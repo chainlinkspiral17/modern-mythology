@@ -1,0 +1,216 @@
+{
+ "id": "the_supply_skiff",
+ "arcana": "ix_hermit",
+ "location": "bayou_lighthouse",
+ "hand": "estelle",
+ "title": "THE SUPPLY SKIFF",
+ "subtitle": "Bayou Lighthouse · 4:47 PM Thursday · the monthly delivery",
+ "difficulty": "medium",
+ "epigraph_upright": "The Hermit is not alone. The Hermit is provisioned. Once a month the world rows out to prove the difference.",
+ "epigraph_reversed": "The list you gave them last month was written by someone with more hope than you have now. The skiff brings that person's groceries.",
+ "scene_description": "The skiff is a dot, then a boat, then Jules and a boy you don't know shipping oars at your pier with a month of cans and the mail. The light doesn't need you until 6:40. The manifest needs checking, the boy needs somewhere to put his eyes, and Jules — Jules has been rowing out here eleven years and has never once come up the stairs. There is an hour and a half of daylight and three people on a pier built for one.",
+ "direction_hint": "Check the manifest. Learn the boy's name. The lamp still gets tended at 6:40 no matter who is on the pier — connect three, keep Inertia under 7, and be somewhere that counts as a threshold when the skiff pushes off.",
+ "opening_log_lines": [
+  "Oarlocks, regular as a clock that likes its work.",
+  "Click [b]PHASE: ACTION[/b] for the rules. TEND LAMP has a window tonight — don't drift past it.",
+  "There's an envelope in the mail sack that isn't a bill. You can see it from here."
+ ],
+ "starting_state": {
+  "player_pos": "door",
+  "time": 6,
+  "time_per_turn": 6,
+  "inertia": 1,
+  "inertia_per_turn": 1,
+  "sanity": 6,
+  "sanity_max": 7,
+  "tension_stat": "loneliness",
+  "tension_label": "LONELINESS",
+  "tension_max": 10,
+  "starting_hand": [
+   "walk",
+   "focus",
+   "search",
+   "short_rest",
+   "log",
+   "tend_lamp",
+   "wait",
+   "signal"
+  ]
+ },
+ "visitors_present_at_start": [],
+ "visitor_schedule": [
+  {
+   "visitor": "jules_in_a_skiff",
+   "arrival_turn": 1,
+   "arrival_space": "pier"
+  },
+  {
+   "visitor": "the_boy_who_rows",
+   "arrival_turn": 1,
+   "arrival_space": "pier"
+  },
+  {
+   "visitor": "the_radio_voice",
+   "arrival_turn": 5,
+   "arrival_space": "lamp_room"
+  }
+ ],
+ "win_conditions": {
+  "require_visitors_connected_min": 3,
+  "require_inertia_below": 7,
+  "require_lamp_tended": true,
+  "require_log_entries_min": 2
+ },
+ "loss_conditions": {
+  "inertia_max": 12,
+  "lamp_untended_at_dusk": true,
+  "skiff_left_unthanked": true
+ },
+ "inertia_thresholds": [
+  {
+   "level": 0,
+   "label": "the lens turns",
+   "tick_per_turn": 1,
+   "effects": []
+  },
+  {
+   "level": 3,
+   "label": "the radio doesn't speak",
+   "tick_per_turn": 1,
+   "effects": []
+  },
+  {
+   "level": 5,
+   "label": "the logbook page wants more on it",
+   "tick_per_turn": 1,
+   "effects": []
+  },
+  {
+   "level": 7,
+   "label": "you have not heard a human voice tonight",
+   "tick_per_turn": 1,
+   "effects": [
+    "gravity_deck_plus_1"
+   ]
+  },
+  {
+   "level": 8,
+   "label": "the bunk room is bigger than it was",
+   "tick_per_turn": 1,
+   "effects": [
+    "claim_closest_unconnected_visitor"
+   ]
+  },
+  {
+   "level": 10,
+   "label": "the lamp could be tended later",
+   "tick_per_turn": 1,
+   "effects": [
+    "action_card_cost_plus_1"
+   ]
+  },
+  {
+   "level": 11,
+   "label": "you forget which hour it is",
+   "tick_per_turn": 1,
+   "effects": [
+    "claim_next_closest_visitor"
+   ]
+  },
+  {
+   "level": 12,
+   "label": "the watch was not, this time, kept",
+   "tick_per_turn": 1,
+   "effects": [
+    "reveal_inertia_finale"
+   ]
+  }
+ ],
+ "claim_turns_to_consume": 3,
+ "thresholds": [
+  {
+   "id": "door",
+   "label": "DOOR",
+   "ending_lore_token": "estelle_walked_down_the_pier",
+   "visible_from_start": true,
+   "flavor": "Out to the cypress-pile platform. The pier under your feet has been here longer than you have."
+  },
+  {
+   "id": "lens_hatch",
+   "label": "LENS HATCH",
+   "ending_lore_token": "estelle_at_the_lens",
+   "visible_from_start": false,
+   "appears_when": "meta_at_least:lamp_tended_count:2",
+   "flavor": "Up. The lens stage above the hatch. Brass and glass and ninety feet of bayou wind."
+  }
+ ],
+ "max_turns": 14,
+ "notes": "Fourth setup (Wave-3, 2026-07-19) · mid-tier at a distinct hour per the bookend pattern. Mechanical scaffolding inherited from the arcana's medium sibling; functional win/loss contract is the generic evaluator (connections + inertia); named keys are the scenario's narrative contract.",
+ "scenario_visitors": [
+  {
+   "id": "the_boy_who_rows",
+   "name": "Rémy (Jules's sister's boy, first run out)",
+   "as_hand_id": null,
+   "arrival": {
+    "kind": "scheduled",
+    "turn": 1,
+    "from": "pier",
+    "to": "pier"
+   },
+   "lore_token": "remy_saw_the_lens",
+   "lore_text": "Rémy. Fourteen. Jules's sister's boy, rowing the supply run for the first time because Jules's shoulder is not what it was and nobody has said so out loud. Has never seen a Fresnel lens. Has been told not to ask to.",
+   "accent": "#a8d8c8",
+   "mood": "preoccupied",
+   "tutorial_note": "Rémy connects through WAIT at the pier — he will ask about the light if you give him enough silence to ask in. Then LOG the visit; he should be in the book.",
+   "steps": {
+    "greet": "He hands up cans two at a time, careful as church. He says nothing that isn't a number off the manifest.",
+    "listen": "Given room, he asks how far the light reaches. Then, quieter, whether you ever get used to the fog horn. Then — the real question — whether it's lonely, asked in the way of someone hoping the answer is no and suspecting it's complicated.",
+    "deliver": "You take him up to see the lens. Jules stays with the skiff. That's not an accident and all three of you know it.",
+    "sit_with": "At the top he doesn't touch anything. He stands where the light will stand at 6:40 and looks at the water the way you did, the first month, before it was work."
+   }
+  },
+  {
+   "id": "the_grocery_manifest",
+   "name": "the manifest, two items amended in pencil",
+   "as_hand_id": null,
+   "arrival": {
+    "kind": "scheduled",
+    "turn": 1,
+    "from": "pier",
+    "to": "pier"
+   },
+   "lore_token": "the_pencil_amendments_read",
+   "lore_text": "The manifest is typed at the co-op, but two lines are amended in Jules's pencil: coffee doubled, and a tin of the biscuits you mentioned once, in March, in passing, to nobody in particular you thought.",
+   "accent": "#d8d0b8",
+   "mood": "lonely",
+   "tutorial_note": "The manifest connects through LOG — enter the delivery, and enter the amendments, because the amendments are the part the log is FOR.",
+   "steps": {
+    "greet": "It's clipped to the crate. The pencil lines are neater than the type.",
+    "listen": "Read in order, it's groceries. Read twice, it's eleven years of someone noticing what runs out early.",
+    "deliver": "You sign the bottom copy and hand it back. Under your name you write 'both received' — Jules will know which both.",
+    "sit_with": "The biscuit tin goes on the shelf where the old keeper kept his. Some shelves have jobs."
+   }
+  }
+ ],
+ "scenario_spaces_additions": [
+  {
+   "id": "pier",
+   "label": "THE PIER",
+   "kind": "named",
+   "pos_xy": [
+    0,
+    0
+   ]
+  },
+  {
+   "id": "lamp_room",
+   "label": "LAMP ROOM",
+   "kind": "named",
+   "pos_xy": [
+    0,
+    0
+   ]
+  }
+ ],
+ "scenario_adjacency_additions": []
+}

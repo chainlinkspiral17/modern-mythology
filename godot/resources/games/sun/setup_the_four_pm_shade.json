@@ -1,0 +1,214 @@
+{
+ "id": "the_four_pm_shade",
+ "arcana": "xix_sun",
+ "location": "solenade_garden",
+ "hand": "frank",
+ "title": "THE FOUR PM SHADE",
+ "subtitle": "Solenade Memorial Garden · 4:12 PM · the light moves and you move with it",
+ "difficulty": "medium",
+ "epigraph_upright": "The Sun in the late afternoon is a scheduled kindness. It puts the east beds in shade at four and anyone who knows the garden knows to move.",
+ "epigraph_reversed": "You stayed on the west bench past four because moving felt like admitting the day was ending. The day ends either way. The bench just gets hot about it.",
+ "scene_description": "Four o'clock does its one trick: the oaks take the east path into shade, the sprinklers on the far side start their slow argument with the salvia, and the whole population of the garden — Mr. Bouchon, Pepper, a boy fighting a kite that has opinions, you — migrates fifteen feet like a tide that read the almanac. There is nothing to solve this afternoon. That is the difficulty. Some people find it very hard.",
+ "direction_hint": "Move with the shade, not against it. The kite will need exactly one adult intervention — time it. Connect three, keep Inertia under 7, and let the sprinklers finish before you cross the west path.",
+ "opening_log_lines": [
+  "The shade line is crossing the second bench like a slow blessing.",
+  "Click [b]PHASE: ACTION[/b] for the rules. SIT IN SUN works in shade after four. The card knows.",
+  "Pepper has pre-positioned. Pepper always pre-positions."
+ ],
+ "starting_state": {
+  "player_pos": "bench_e",
+  "time": 6,
+  "time_per_turn": 6,
+  "inertia": 0,
+  "inertia_per_turn": 1,
+  "sanity": 7,
+  "sanity_max": 7,
+  "tension_stat": "glare",
+  "tension_label": "GLARE",
+  "tension_max": 10,
+  "starting_hand": [
+   "walk",
+   "focus",
+   "search",
+   "short_rest",
+   "sit_in_sun",
+   "walk_path",
+   "tend_bed",
+   "read_sundial"
+  ]
+ },
+ "visitors_present_at_start": [
+  "pepper_the_dog_off_leash"
+ ],
+ "visitor_schedule": [
+  {
+   "visitor": "the_groundskeeper_mr_bouchon",
+   "arrival_turn": 2,
+   "arrival_space": "east_beds"
+  },
+  {
+   "visitor": "the_boy_with_the_kite",
+   "arrival_turn": 3,
+   "arrival_space": "lawn"
+  }
+ ],
+ "win_conditions": {
+  "require_visitors_connected_min": 3,
+  "require_inertia_below": 7,
+  "require_moved_with_the_shade": true,
+  "require_sundial_read_min": 1
+ },
+ "loss_conditions": {
+  "inertia_max": 12,
+  "crossed_the_sprinklers_mid_hour": true,
+  "coached_the_kite": true
+ },
+ "inertia_thresholds": [
+  {
+   "level": 0,
+   "label": "the bench has the shape of you",
+   "tick_per_turn": 1,
+   "effects": []
+  },
+  {
+   "level": 3,
+   "label": "the oak's shadow moves an inch",
+   "tick_per_turn": 1,
+   "effects": []
+  },
+  {
+   "level": 5,
+   "label": "three thirty is the hottest minute",
+   "tick_per_turn": 1,
+   "effects": []
+  },
+  {
+   "level": 7,
+   "label": "you forget which book you brought",
+   "tick_per_turn": 1,
+   "effects": [
+    "gravity_deck_plus_1"
+   ]
+  },
+  {
+   "level": 8,
+   "label": "the bench is hot under your right thigh",
+   "tick_per_turn": 1,
+   "effects": [
+    "claim_closest_unconnected_visitor"
+   ]
+  },
+  {
+   "level": 10,
+   "label": "the gate looks closer than the path",
+   "tick_per_turn": 1,
+   "effects": [
+    "action_card_cost_plus_1"
+   ]
+  },
+  {
+   "level": 11,
+   "label": "your hand is on your knee, holding",
+   "tick_per_turn": 1,
+   "effects": [
+    "claim_next_closest_visitor"
+   ]
+  },
+  {
+   "level": 12,
+   "label": "you stood up to leave",
+   "tick_per_turn": 1,
+   "effects": [
+    "reveal_inertia_finale"
+   ]
+  }
+ ],
+ "claim_turns_to_consume": 3,
+ "thresholds": [
+  {
+   "id": "gate",
+   "label": "GATE",
+   "ending_lore_token": "frank_left_the_garden_at",
+   "visible_from_start": true,
+   "flavor": "The pergola arch and the bricked walk to the gate. Walking out before five-eighteen is, this Wednesday, the loss."
+  }
+ ],
+ "max_turns": 14,
+ "notes": "Fourth setup (Wave-3, 2026-07-19) · mid-tier at a distinct hour per the bookend pattern. Mechanical scaffolding inherited from the arcana's medium sibling; functional win/loss contract is the generic evaluator (connections + inertia); named keys are the scenario's narrative contract.",
+ "scenario_visitors": [
+  {
+   "id": "the_boy_with_the_kite",
+   "name": "a boy, eight or nine, versus a kite",
+   "as_hand_id": null,
+   "arrival": {
+    "kind": "scheduled",
+    "turn": 3,
+    "from": "lawn",
+    "to": "lawn"
+   },
+   "lore_token": "the_kite_flew",
+   "lore_text": "The kite is a hawk-shaped thing from the drugstore, and the boy has been losing to it politely for twenty minutes. His grandmother is on the north bench pretending to read. Everyone in the garden is pretending not to coach him telepathically.",
+   "accent": "#e8c860",
+   "mood": "intense",
+   "tutorial_note": "The boy connects through WALK PATH at the lawn — arrive at the moment the string goes slack, and say the one thing about wind that isn't advice.",
+   "steps": {
+    "greet": "He doesn't greet you. He is negotiating with the sky and cannot come to the phone.",
+    "listen": "He explains, breathless, that it flew for eleven seconds earlier. Eleven. His previous record was four. The kite hears all of this and plans accordingly.",
+    "deliver": "You point at the gap between the oaks where the wind actually is. You don't touch the string. This is important and you get it right.",
+    "sit_with": "It flies. Not for long — but past eleven seconds, and the boy counts every one out loud, and the grandmother stops pretending to read, and the garden briefly has one heartbeat."
+   }
+  },
+  {
+   "id": "the_sprinkler_hour",
+   "name": "the west-side sprinklers, 4:15 to 4:40",
+   "as_hand_id": null,
+   "arrival": {
+    "kind": "scheduled",
+    "turn": 2,
+    "from": "west_path",
+    "to": "west_path"
+   },
+   "lore_token": "waited_out_the_sprinklers",
+   "lore_text": "The west sprinklers run 4:15 to 4:40 and have since before Bouchon, who inherited their schedule like a treaty. Crossing the west path during the hour is legal, wet, and a statement nobody needs you to make.",
+   "accent": "#88b8d8",
+   "mood": "preoccupied",
+   "tutorial_note": "The sprinklers connect through READ SUNDIAL — the connection is knowing what time it is and letting the garden's other clock run.",
+   "steps": {
+    "greet": "They start with one sputter, then commit, the way they have ten thousand times.",
+    "listen": "Listened to properly, they're a rhythm section. The salvia leans in. The gravel dampens a shade darker along the arc line, exact as a compass.",
+    "deliver": "You take the long way around. Thirty extra steps. The garden notices things like this and files them in your favor.",
+    "sit_with": "At 4:40 they stop mid-arc, all at once, and the silence after is one of the garden's better tricks. You were there for it. That was the whole assignment."
+   }
+  }
+ ],
+ "scenario_spaces_additions": [
+  {
+   "id": "east_beds",
+   "label": "EAST BEDS",
+   "kind": "named",
+   "pos_xy": [
+    0,
+    0
+   ]
+  },
+  {
+   "id": "lawn",
+   "label": "THE LAWN",
+   "kind": "named",
+   "pos_xy": [
+    0,
+    0
+   ]
+  },
+  {
+   "id": "west_path",
+   "label": "WEST PATH",
+   "kind": "named",
+   "pos_xy": [
+    0,
+    0
+   ]
+  }
+ ],
+ "scenario_adjacency_additions": []
+}

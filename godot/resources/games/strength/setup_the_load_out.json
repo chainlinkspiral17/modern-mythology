@@ -1,0 +1,210 @@
+{
+ "id": "the_load_out",
+ "arcana": "viii_strength",
+ "location": "carnival_lot",
+ "hand": "roy",
+ "title": "THE LOAD-OUT",
+ "subtitle": "Abandoned Carnival Lot · 8:52 PM · after the auction",
+ "difficulty": "medium",
+ "epigraph_upright": "Strength is not the lifting. Strength is knowing which things go on the truck and which things stay on the lot, and lifting only the first kind.",
+ "epigraph_reversed": "Everything goes on the truck. Everything. The truck cannot hold everything and the night knows it and so do your hands.",
+ "scene_description": "The auction ended at 7:40. The buyers are gone except one flatbed idling by the gate with its lights on your wagon. What sold has tags. What didn't has the dark. Old Pell is walking the lot with a clipboard he isn't reading, and the dog from the field has decided tonight is a night for staying close. You have until the flatbed driver finishes his thermos to decide what the wagon keeps.",
+ "direction_hint": "Load what's tagged. Keep what's yours. Three people are on this lot tonight and every one of them is here for a reason that isn't cargo — connect three, keep Inertia under 7, and be at a threshold when the flatbed pulls out.",
+ "opening_log_lines": [
+  "The flatbed's headlights make one long shadow out of the wagon.",
+  "Click [b]PHASE: ACTION[/b] anytime for the rules. CARRY works different at night.",
+  "The dog is lying where the ring used to be. It knows the geometry better than the buyers did."
+ ],
+ "starting_state": {
+  "player_pos": "front_gate",
+  "time": 6,
+  "time_per_turn": 6,
+  "inertia": 1,
+  "inertia_per_turn": 1,
+  "sanity": 6,
+  "sanity_max": 7,
+  "tension_stat": "strain",
+  "tension_label": "STRAIN",
+  "tension_max": 10,
+  "starting_hand": [
+   "walk",
+   "focus",
+   "search",
+   "short_rest",
+   "soothe",
+   "carry",
+   "stand_ground",
+   "let_go"
+  ]
+ },
+ "visitors_present_at_start": [
+  "the_dog_in_the_field"
+ ],
+ "visitor_schedule": [
+  {
+   "visitor": "old_pell",
+   "arrival_turn": 2,
+   "arrival_space": "wagon"
+  },
+  {
+   "visitor": "the_flatbed_driver",
+   "arrival_turn": 3,
+   "arrival_space": "front_gate"
+  },
+  {
+   "visitor": "miss_lavergne_kid",
+   "arrival_turn": 5,
+   "arrival_space": "ring"
+  }
+ ],
+ "win_conditions": {
+  "require_visitors_connected_min": 3,
+  "require_inertia_below": 7,
+  "require_tagged_pieces_loaded": true,
+  "require_threshold_space": true
+ },
+ "loss_conditions": {
+  "inertia_max": 12,
+  "visitors_claimed_max": 2,
+  "wagon_stripped_bare_by_midnight": true
+ },
+ "inertia_thresholds": [
+  {
+   "level": 0,
+   "label": "the lot is the lot",
+   "tick_per_turn": 1,
+   "effects": []
+  },
+  {
+   "level": 3,
+   "label": "the door creaks once on the hinge",
+   "tick_per_turn": 1,
+   "effects": []
+  },
+  {
+   "level": 5,
+   "label": "the carousel turns half a degree",
+   "tick_per_turn": 1,
+   "effects": []
+  },
+  {
+   "level": 7,
+   "label": "the carousel keeps turning",
+   "tick_per_turn": 1,
+   "effects": [
+    "gravity_deck_plus_1"
+   ]
+  },
+  {
+   "level": 8,
+   "label": "the lion's smell comes back briefly",
+   "tick_per_turn": 1,
+   "effects": [
+    "claim_closest_unconnected_visitor"
+   ]
+  },
+  {
+   "level": 10,
+   "label": "the cage's hinges line up wrong",
+   "tick_per_turn": 1,
+   "effects": [
+    "action_card_cost_plus_1"
+   ]
+  },
+  {
+   "level": 11,
+   "label": "the banner posts lean another half-inch",
+   "tick_per_turn": 1,
+   "effects": [
+    "claim_next_closest_visitor"
+   ]
+  },
+  {
+   "level": 12,
+   "label": "you have not let go",
+   "tick_per_turn": 1,
+   "effects": [
+    "reveal_inertia_finale"
+   ]
+  }
+ ],
+ "claim_turns_to_consume": 3,
+ "thresholds": [
+  {
+   "id": "front_gate",
+   "label": "FRONT GATE",
+   "ending_lore_token": "roy_left_the_lot",
+   "visible_from_start": true,
+   "flavor": "The chain across the gate has been unlocked since September. You haven't locked it. Nobody has. Nobody comes."
+  }
+ ],
+ "max_turns": 14,
+ "notes": "Fourth setup (Wave-3, 2026-07-19) · mid-tier at a distinct hour per the bookend pattern. Mechanical scaffolding inherited from the arcana's medium sibling; functional win/loss contract is the generic evaluator (connections + inertia); named keys are the scenario's narrative contract.",
+ "scenario_visitors": [
+  {
+   "id": "the_flatbed_driver",
+   "name": "Curtis Menard (the last buyer's driver)",
+   "as_hand_id": null,
+   "arrival": {
+    "kind": "scheduled",
+    "turn": 3,
+    "from": "front_gate",
+    "to": "front_gate"
+   },
+   "lore_token": "curtis_waited_out_the_thermos",
+   "lore_text": "Curtis Menard. Drives for whoever pays, hauls whatever's tagged. Has loaded out four dead carnivals, two dance halls, and a church. Drinks his thermos slow on purpose — he has learned the seller always needs the time more than he needs the road.",
+   "accent": "#c8a878",
+   "mood": "preoccupied",
+   "tutorial_note": "Curtis connects through CARRY at the front_gate — help him load one tagged piece and the rest of the night belongs to you both.",
+   "steps": {
+    "greet": "He lifts the thermos an inch off the dash. That's the whole greeting. The engine stays on.",
+    "listen": "He tells you what he's hauled. The church was the worst, he says. Not the pews — the pews were fine. The little table where they signed things. That one rode up front with him.",
+    "deliver": "You take one end of the ticket booth. He takes the other. It goes up onto the flatbed like it weighs what it weighed thirty years ago, which it does not.",
+    "sit_with": "He caps the thermos. \"Anything under that tarp,\" he says, looking at the wagon, \"stays under that tarp far as my manifest knows.\" He pulls out slow with the lights off till the highway."
+   }
+  },
+  {
+   "id": "the_returned_blanket",
+   "name": "the horse blanket, folded on the ring rail",
+   "as_hand_id": null,
+   "arrival": {
+    "kind": "scheduled",
+    "turn": 5,
+    "from": "ring",
+    "to": "ring"
+   },
+   "lore_token": "the_blanket_came_back",
+   "lore_text": "Miss Lavergne's kid washed the horse blanket they bought at the auction and brought it back folded, because their mother looked at it in the truck and said this one wasn't for buying.",
+   "accent": "#d8c8a0",
+   "mood": "lonely",
+   "tutorial_note": "The blanket connects through LET GO at the ring — take it back the way it was offered: without making it a moment.",
+   "steps": {
+    "greet": "It's on the rail. The kid is standing next to it not looking at it.",
+    "listen": "The kid says their mom said some things get sold by accident. The kid says she said you'd know which this was.",
+    "deliver": "You put your hand on the fold. It still smells like the ring. That's the delivery — both directions at once.",
+    "sit_with": "The kid stays while you put it back in the wagon. Where it goes in the wagon matters and the kid watches where."
+   }
+  }
+ ],
+ "scenario_spaces_additions": [
+  {
+   "id": "wagon",
+   "label": "THE WAGON",
+   "kind": "named",
+   "pos_xy": [
+    0,
+    0
+   ]
+  },
+  {
+   "id": "ring",
+   "label": "THE RING",
+   "kind": "named",
+   "pos_xy": [
+    0,
+    0
+   ]
+  }
+ ],
+ "scenario_adjacency_additions": []
+}

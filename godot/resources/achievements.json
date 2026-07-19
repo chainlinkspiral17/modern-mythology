@@ -382,14 +382,15 @@
   {
    "id": "strength_complete",
    "title": "EVERY MORNING AT THE WAGON",
-   "desc": "Win all three Strength scenarios (DAWN AT THE WAGON, LION CAGE OPEN, STORM AFTER STORM).",
+   "desc": "Win all four Strength scenarios (DAWN AT THE WAGON, LION CAGE OPEN, STORM AFTER STORM).",
    "trigger": {
     "kind": "all_scenarios",
     "arcana": "strength",
     "scenarios": [
      "dawn_at_the_wagon",
      "lion_cage_open",
-     "storm_after_storm"
+     "storm_after_storm",
+     "the_load_out"
     ]
    },
    "unlock_key": "achievement:strength_complete",
@@ -411,14 +412,15 @@
   {
    "id": "hermit_complete",
    "title": "THE WATCH, KEPT",
-   "desc": "Win all three Hermit scenarios (THE RELIEF TECHS ARRIVAL, THE STORM VISIT, WATCH KEPT).",
+   "desc": "Win all four Hermit scenarios (THE RELIEF TECHS ARRIVAL, THE STORM VISIT, WATCH KEPT).",
    "trigger": {
     "kind": "all_scenarios",
     "arcana": "hermit",
     "scenarios": [
      "the_relief_techs_arrival",
      "the_storm_visit",
-     "watch_kept"
+     "watch_kept",
+     "the_supply_skiff"
     ]
    },
    "unlock_key": "achievement:hermit_complete",
@@ -469,14 +471,15 @@
   {
    "id": "justice_complete",
    "title": "ON EVERY RECORD",
-   "desc": "Win all three Justice scenarios (CHAMBERS AT NINE, MOTION TO DISMISS, POST DECISION REVIEW).",
+   "desc": "Win all four Justice scenarios (CHAMBERS AT NINE, MOTION TO DISMISS, POST DECISION REVIEW).",
    "trigger": {
     "kind": "all_scenarios",
     "arcana": "justice",
     "scenarios": [
      "chambers_at_nine",
      "motion_to_dismiss",
-     "post_decision_review"
+     "post_decision_review",
+     "the_recess"
     ]
    },
    "unlock_key": "achievement:justice_complete",
@@ -701,14 +704,15 @@
   {
    "id": "sun_complete",
    "title": "THREE HOURS IN THE GARDEN",
-   "desc": "Win all three Sun scenarios (DUST MOTES, THE SHARED BENCH, THE TEN AM WATERING).",
+   "desc": "Win all four Sun scenarios (DUST MOTES, THE SHARED BENCH, THE TEN AM WATERING).",
    "trigger": {
     "kind": "all_scenarios",
     "arcana": "sun",
     "scenarios": [
      "dust_motes",
      "the_shared_bench",
-     "the_ten_am_watering"
+     "the_ten_am_watering",
+     "the_four_pm_shade"
     ]
    },
    "unlock_key": "achievement:sun_complete",
@@ -759,14 +763,15 @@
   {
    "id": "world_complete",
    "title": "THE LOOP, CLOSED",
-   "desc": "Win all three World scenarios (LOOP COMPLETED, THE WALK THROUGH WITH THE NEW TENANTS, THE YEAR AGO FIRST OPEN).",
+   "desc": "Win all four World scenarios (LOOP COMPLETED, THE WALK THROUGH WITH THE NEW TENANTS, THE YEAR AGO FIRST OPEN).",
    "trigger": {
     "kind": "all_scenarios",
     "arcana": "world",
     "scenarios": [
      "loop_completed",
      "the_walk_through_with_the_new_tenants",
-     "the_year_ago_first_open"
+     "the_year_ago_first_open",
+     "the_delivery_run"
     ]
    },
    "unlock_key": "achievement:world_complete",

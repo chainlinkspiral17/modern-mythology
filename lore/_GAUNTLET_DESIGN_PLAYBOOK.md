@@ -403,3 +403,35 @@ Each of these is not yet 5 lessons deep. Watch them.
 - **<Bolded principle>.** <two-to-three-sentence explanation.>
 - **<Bolded principle>.** <two-to-three-sentence explanation.>
 ```
+
+### 2026-07-19 · Wave-3 fourth setups · the sibling-inherit method
+
+- **Wave-2 arcana resolve through the GENERIC evaluator.** The
+  engine's per-arcana win schemas cover Wave-1 only; strength/
+  hermit/justice/sun/world etc. fall through to connections +
+  require_inertia_below. Bespoke keys like require_cage_addressed
+  are narrative contract, not code — author them for the fiction,
+  but know the functional win is connect-N + inertia + threshold.
+- **Inherit the medium sibling's scaffolding wholesale.** Thresholds,
+  ambient pools, starting hand, claim_turns — copy the arcana's
+  medium setup as the base object and override only the authored
+  fields (title/subtitle/epigraphs/scene/hints/casts/schedule/
+  conditions). The numbers are already tuned; the words are the work.
+- **Novel arrival spaces MUST ship in scenario_spaces_additions**
+  ({id, label, kind:"named", pos_xy:[0,0]}). Sibling setups' extra
+  spaces (chambers, pier, county_line) are per-setup additions, not
+  shared vocabulary — referencing one without declaring it strands
+  the visitor. Cross-validate schedule spaces against location
+  spaces + additions before committing; a script catches what
+  eyeballs skim past (this wave: 10 misses caught).
+- **Schedule visitors must exist in visitors.json OR inline.**
+  erica_in_chambers looked canonical; it was another setup's inline
+  cast. Same validation script, same lesson as CP's handlers.
+- **Deck-clear achievements track the scenario list.** Adding a
+  fourth setup means updating the arcana's all_scenarios trigger +
+  desc in the same commit, or the achievement quietly grandfathers
+  the new content out of "complete."
+- Wave-3 remaining: 15 arcana (magician, priestess, empress,
+  emperor, hierophant, wheel_of_fortune, hanged_man, death,
+  temperance, devil, tower, star, moon, judgement + fool's own
+  fourth if wanted). Same method, ~5 per sitting.

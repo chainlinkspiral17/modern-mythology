@@ -1,0 +1,196 @@
+{
+ "id": "the_delivery_run",
+ "arcana": "xxi_world",
+ "location": "frog_knows_best",
+ "hand": "ezra",
+ "title": "THE DELIVERY RUN",
+ "subtitle": "Frog Knows Best · 12:18 PM · the noon run to the county line and back",
+ "difficulty": "medium",
+ "epigraph_upright": "The World is a loop with errands on it. The shop, the road, the county line, the road, the shop. Completing it changes nothing and confirms everything.",
+ "epigraph_reversed": "You could keep driving at the county line. The road continues. That's what the county line is for — reminding you that staying is a choice you make at speed.",
+ "scene_description": "Theroux's nephew called in an order — two dozen nightcrawlers, a filter sponge, the good stink bait — and Theroux's nephew is laid up, so the shop is doing the thing the shop never does: delivering. Lily minds the counter. The cooler rides shotgun. It's eleven minutes to the county line if the bridge traffic behaves, and the whole run is a test the road administers quietly: out, hand it over, turn around, come back. The turning around is the game.",
+ "direction_hint": "Make the delivery. Take the thanks. Turn around AT the line — not before, not after. Connect three, keep Inertia under 7, and have the keys in your hand when you walk back in.",
+ "opening_log_lines": [
+  "Lily has the counter and has announced a no-refunds policy she does not have the authority to announce.",
+  "Click [b]PHASE: ACTION[/b] for the rules. LOCK UP is sealed — you're coming back. That's the premise.",
+  "The cooler is belted in. You belted in the cooler. It's that kind of errand."
+ ],
+ "starting_state": {
+  "player_pos": "retail_counter",
+  "time": 6,
+  "time_per_turn": 6,
+  "inertia": 0,
+  "inertia_per_turn": 1,
+  "sanity": 6,
+  "sanity_max": 7,
+  "tension_stat": "closure",
+  "tension_label": "CLOSURE",
+  "tension_max": 10,
+  "starting_hand": [
+   "walk",
+   "focus",
+   "search",
+   "short_rest",
+   "feed_tank",
+   "check_filter",
+   "stock_tackle",
+   "lock_up"
+  ]
+ },
+ "visitors_present_at_start": [
+  "lily_with_the_jar"
+ ],
+ "visitor_schedule": [
+  {
+   "visitor": "the_nephew_on_the_porch",
+   "arrival_turn": 3,
+   "arrival_space": "county_line"
+  },
+  {
+   "visitor": "theroux_on_the_log",
+   "arrival_turn": 6,
+   "arrival_space": "porch"
+  }
+ ],
+ "win_conditions": {
+  "require_visitors_connected_min": 3,
+  "require_inertia_below": 7,
+  "require_delivery_handed_over": true,
+  "require_keys_in_hand_at_close": true
+ },
+ "loss_conditions": {
+  "inertia_max": 12,
+  "kept_driving_past_the_line": true,
+  "shop_left_past_two": true
+ },
+ "inertia_thresholds": [
+  {
+   "level": 0,
+   "label": "the tanks are the tanks",
+   "tick_per_turn": 1,
+   "effects": []
+  },
+  {
+   "level": 3,
+   "label": "the minnow filter has a sound",
+   "tick_per_turn": 1,
+   "effects": []
+  },
+  {
+   "level": 5,
+   "label": "Theroux has not moved in eleven minutes",
+   "tick_per_turn": 1,
+   "effects": []
+  },
+  {
+   "level": 7,
+   "label": "you check the pegboard twice",
+   "tick_per_turn": 1,
+   "effects": [
+    "gravity_deck_plus_1"
+   ]
+  },
+  {
+   "level": 8,
+   "label": "you check the till twice",
+   "tick_per_turn": 1,
+   "effects": [
+    "claim_closest_unconnected_visitor"
+   ]
+  },
+  {
+   "level": 10,
+   "label": "the small impulse to recount the till",
+   "tick_per_turn": 1,
+   "effects": [
+    "action_card_cost_plus_1"
+   ]
+  },
+  {
+   "level": 11,
+   "label": "you walk to the door and back",
+   "tick_per_turn": 1,
+   "effects": [
+    "claim_next_closest_visitor"
+   ]
+  },
+  {
+   "level": 12,
+   "label": "you have not, yet, walked out",
+   "tick_per_turn": 1,
+   "effects": [
+    "reveal_inertia_finale"
+   ]
+  }
+ ],
+ "claim_turns_to_consume": 2,
+ "thresholds": [
+  {
+   "id": "front_door",
+   "label": "FRONT DOOR",
+   "ending_lore_token": "ezra_walked_out_with_the_keys",
+   "visible_from_start": true,
+   "flavor": "Out onto the bayou road. Em's gas station is two blocks south. The keys are in the right front pocket of your jeans."
+  }
+ ],
+ "max_turns": 12,
+ "notes": "Fourth setup (Wave-3, 2026-07-19) · mid-tier at a distinct hour per the bookend pattern. Mechanical scaffolding inherited from the arcana's medium sibling; functional win/loss contract is the generic evaluator (connections + inertia); named keys are the scenario's narrative contract.",
+ "scenario_visitors": [
+  {
+   "id": "the_nephew_on_the_porch",
+   "name": "Theroux's nephew, foot up, radio on",
+   "as_hand_id": null,
+   "arrival": {
+    "kind": "scheduled",
+    "turn": 3,
+    "from": "county_line",
+    "to": "county_line"
+   },
+   "lore_token": "the_nephew_paid_in_tomatoes",
+   "lore_text": "Theroux's nephew, twenty-two, ankle in a wrap from a ladder that he maintains moved. Fishes the state line water. Pays for things in cash when he has it and in tomatoes when he has those, and today he has those.",
+   "accent": "#a8d888",
+   "mood": "preoccupied",
+   "tutorial_note": "The nephew connects through STOCK TACKLE at the county_line — hand the order over item by item, in the order he'd have picked them off the pegboard himself.",
+   "steps": {
+    "greet": "He waves from the porch with the radio arm. The other arm is committed to the railing.",
+    "listen": "He tells you the ladder story. The ladder does not come off well. Then the water report: they're hitting at the second pylon, mornings, on anything that stinks.",
+    "deliver": "You walk the cooler up. Nightcrawlers, sponge, the good stink bait, in pegboard order. He checks nothing. That's the compliment.",
+    "sit_with": "He sends you back with a bag of tomatoes 'for the shop.' The shop does not eat tomatoes. You will find them distributed among the regulars by Friday, which is what 'for the shop' means."
+   }
+  },
+  {
+   "id": "the_county_line_turnaround",
+   "name": "the county line sign and the wide gravel shoulder",
+   "as_hand_id": null,
+   "arrival": {
+    "kind": "scheduled",
+    "turn": 4,
+    "from": "county_line",
+    "to": "county_line"
+   },
+   "lore_token": "turned_around_at_the_line",
+   "lore_text": "The sign says you are leaving the parish. The shoulder past it is wide enough to keep going and call it a scenic route. Ezra's uncle used to say the line was the most honest spot in the county: it asks the question flat and takes any answer.",
+   "accent": "#c8b878",
+   "mood": "lonely",
+   "tutorial_note": "The turnaround connects through WALK at the county_line — get out, stand at the sign for one beat, get back in facing home. The beat is the mechanic.",
+   "steps": {
+    "greet": "The gravel crunches once when you stop. Then the road noise is gone and it's just the bugs administering the silence.",
+    "listen": "The line doesn't say anything. That's its method. The road going on ahead of you says plenty.",
+    "deliver": "You stand at the sign exactly long enough to mean it. Then you get back in the truck, which is facing home, because you turned it around FIRST — the veterans' trick.",
+    "sit_with": "Eleven minutes back. The shop sign comes up over the trees and something in your chest does the small correct thing it does when a loop closes on purpose."
+   }
+  }
+ ],
+ "scenario_spaces_additions": [
+  {
+   "id": "county_line",
+   "label": "THE COUNTY LINE",
+   "kind": "named",
+   "pos_xy": [
+    0,
+    0
+   ]
+  }
+ ],
+ "scenario_adjacency_additions": []
+}
