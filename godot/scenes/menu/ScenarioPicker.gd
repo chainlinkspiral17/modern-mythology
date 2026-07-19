@@ -35,6 +35,7 @@ func present(entries: Array) -> void:
 	var bank := get_node_or_null("/root/SFXBank")
 	if bank: bank.play("scenario_picker", 0.75)
 	_build()
+	GamepadMgr.focus_first.call_deferred(self)
 
 
 func _input(event: InputEvent) -> void:

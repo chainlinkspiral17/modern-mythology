@@ -566,6 +566,8 @@ func _show_slot_picker() -> void:
 	dlg.add_to_group("ui")
 	add_child(dlg)
 	dlg.popup_centered()
+	# Pad support · land the d-pad on slot 1.
+	GamepadMgr.focus_first.call_deferred(dlg)
 
 
 func _confirm_wipe_slot(slot: int, parent_dlg: AcceptDialog) -> void:

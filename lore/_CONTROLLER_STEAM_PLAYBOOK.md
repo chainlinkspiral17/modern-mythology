@@ -116,10 +116,20 @@ that nobody needs it.
   gate + virtual cursor), input-map fixes (skip→Start, menu_back
   joy stripped), SFXBank rumble grammar (~60 presets mapped),
   `Settings.haptics`, this playbook.
-- **W2 — pending.** Big-surface native nav: MainMenu/GalleryOverlay
-  initial focus + neighbors, VN ChoiceMenu focus, gauntlet action
-  bar bumper cycling, CP board affordances. Verify no ui_* /
-  synth double-fire surface by surface.
+- **W2 — DONE 2026-07-19 (code side).** Initial focus lands
+  automatically via `GamepadMgr.focus_first()` on: MainMenu,
+  GalleryOverlay.open, ScenarioPicker, all four SpreadHost views,
+  the CP slot picker, and the SlowstockShelf. VN ChoiceMenu
+  already grabbed focus (audit finding — pad-native from day
+  one). Stuck-focus auto-heal added to GamepadMgr: a
+  mouse-clicked button that keeps focus would gate arrow synth
+  off forever (killing overworld stick movement); holding a
+  direction 0.6s with no focus movement now releases the orphan
+  and movement resumes. DELIBERATE deferrals: the gauntlet board
+  and GalleryOverlay's chapter-picker rows use FOCUS_NONE flat
+  buttons — the virtual cursor covers them; native focus there
+  is W3-adjacent polish, not a blocker. Needs ON-PAD
+  verification (first real Steam Controller session).
 - **W3 — pending.** Slowstick sweep: all 15 sticks pad-audited
   (movement echo semantics in PS; initial focus in button sticks;
   hotkey sticks get pad equivalents). Keep the inventory here:

@@ -46,6 +46,8 @@ func _ready() -> void:
 	_build_overlays()
 	_select_vol(1)
 	_play_title_music()
+	# Pad support · give the d-pad somewhere to start.
+	GamepadMgr.focus_first.call_deferred(self)
 	# Fade in from black — the book opens.
 	modulate = Color(1, 1, 1, 0)
 	var tw := create_tween()

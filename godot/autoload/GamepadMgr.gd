@@ -53,6 +53,14 @@ const DIR_KEYS := {
 }
 
 var _dir_state: Dictionary = {}     # "up" → {held: bool, t: float}
+# Stuck-focus auto-heal: a mouse-clicked Button keeps focus, which
+# would gate arrow synthesis off forever (killing stick movement in
+# the overworlds). If a direction is held ≥ this long and focus
+# never moves, the owner has no useful neighbors — release it and
+# let arrow synthesis resume.
+const STUCK_FOCUS_AFTER := 0.6
+var _stuck_focus_t: float = 0.0
+var _last_focus_owner: Control = null
 
 var _cursor_layer: CanvasLayer = null
 var _cursor_dot: Control = null
@@ -144,6 +152,22 @@ func _tick_dirs(delta: float) -> void:
 	var vp := get_viewport()
 	var focus_owner: Control = vp.gui_get_focus_owner() if vp != null else null
 	var intent: Dictionary = _dir_intent()
+	# Stuck-focus auto-heal (see const above): direction held, focus
+	# never moved → the owner is an isolated button; free it.
+	var any_dir: bool = bool(intent["up"]) or bool(intent["down"]) \
+			or bool(intent["left"]) or bool(intent["right"])
+	if focus_owner != null and any_dir:
+		if focus_owner == _last_focus_owner:
+			_stuck_focus_t += delta
+			if _stuck_focus_t >= STUCK_FOCUS_AFTER:
+				focus_owner.release_focus()
+				focus_owner = null
+				_stuck_focus_t = 0.0
+		else:
+			_stuck_focus_t = 0.0
+	else:
+		_stuck_focus_t = 0.0
+	_last_focus_owner = focus_owner
 	for d in DIR_KEYS:
 		var st: Dictionary = _dir_state[d]
 		var want: bool = bool(intent[d]) and focus_owner == null
@@ -193,6 +217,30 @@ func _tick_cursor(delta: float) -> void:
 	mm.global_position = _cursor_pos
 	mm.relative = v.normalized() * speed * delta
 	Input.parse_input_event(mm)
+
+
+# ── Initial-focus helper ─────────────────────────────────────────
+# Surfaces call GamepadMgr.focus_first(self) after building so the
+# d-pad has somewhere to start. Finds the first visible, enabled,
+# focusable Button depth-first.
+
+static func focus_first(root: Node) -> void:
+	var btn := _find_first_button(root)
+	if btn != null:
+		btn.grab_focus()
+
+
+static func _find_first_button(n: Node) -> Button:
+	if n is Button:
+		var b := n as Button
+		if b.is_visible_in_tree() and not b.disabled \
+				and b.focus_mode != Control.FOCUS_NONE:
+			return b
+	for c in n.get_children():
+		var r := _find_first_button(c)
+		if r != null:
+			return r
+	return null
 
 
 # ── Synthesis helpers ────────────────────────────────────────────

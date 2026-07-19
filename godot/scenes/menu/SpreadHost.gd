@@ -275,6 +275,7 @@ func _render_draw(cards: Array) -> void:
 		if sfx: sfx.play("card_place", 0.7)
 		_launch_current())
 	_button(actions, "  ← back  ", _close, 13)
+	GamepadMgr.focus_first.call_deferred(_root)
 
 
 func _render_progress() -> void:
@@ -301,6 +302,7 @@ func _render_progress() -> void:
 	_button(actions, "  DEAL THE NEXT CARD  " if idx > 0 else "  TURN THE FIRST CARD  ", _launch_current)
 	_button(actions, "  abandon the reading  ", _abandon, 12)
 	_button(actions, "  ← back  ", _close, 13)
+	GamepadMgr.focus_first.call_deferred(_root)
 
 
 func _abandon() -> void:
@@ -398,6 +400,7 @@ func _render_interstitial(spread: Dictionary, summary: Dictionary) -> void:
 				func() -> void: _commit_carry(final_sanity, carry_inertia, cid), 13)
 	_button(pick_row, "  hold nothing  ",
 			func() -> void: _commit_carry(final_sanity, carry_inertia, ""), 13)
+	GamepadMgr.focus_first.call_deferred(_root)
 
 
 func _commit_carry(sanity: int, inertia: int, held: String) -> void:
@@ -446,3 +449,4 @@ func _render_reading_over(cards: Array, full_reading: bool) -> void:
 	v.add_child(actions)
 	_button(actions, "  DRAW AGAIN  ", func() -> void: _render_draw(_deal()))
 	_button(actions, "  ← back to gallery  ", _close, 13)
+	GamepadMgr.focus_first.call_deferred(_root)

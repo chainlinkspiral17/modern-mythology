@@ -55,6 +55,7 @@ const VOLUME_TITLES: Dictionary = {
 func open() -> void:
 	_rebuild()
 	visible = true
+	GamepadMgr.focus_first.call_deferred(self)
 
 
 func _rebuild() -> void:

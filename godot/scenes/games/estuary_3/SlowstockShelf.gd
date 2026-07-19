@@ -94,6 +94,8 @@ func _ready() -> void:
 
 	_load_data()
 	_build()
+	# Pad support · give the d-pad somewhere to start on the shelf.
+	GamepadMgr.focus_first.call_deferred(self)
 
 
 func open() -> void:
