@@ -480,6 +480,7 @@ func _load_zone(zone_id: String, spawn_id: String) -> void:
 	_apply_world_tint()
 	_first_zone_loaded = true
 	_check_cross_oneironautics_tokens()
+	_counselor_note_zone_entry(zone_id)
 	# Give the world one frame to render before we fade in, so the
 	# player never sees a partially-populated map through the alpha.
 	await get_tree().process_frame
@@ -647,6 +648,160 @@ func _inject_counselor_defs() -> void:
 				sam_def["bunk_pos"] = [int((dbunk as Array)[0]) + 1, int((dbunk as Array)[1])]
 	if String(sam_def.get("hello_line", "")) == "":
 		sam_def["hello_line"] = "Hi, Miss Jenny.  Nothing.  Nothing's in the duffel.  It's clothes."
+
+
+# ── The duty loop · rosters, cabin checks, the medical logbook ──
+
+func _duties_today() -> Dictionary:
+	var all: Dictionary = _run_state.get("duties", {})
+	var key := str(int(_run_state.get("day_index", 0)))
+	if not all.has(key):
+		all[key] = {"cabins": [], "log": false, "event": false}
+		_run_state["duties"] = all
+	return all[key]
+
+
+func _counselor_note_zone_entry(zone_id: String) -> void:
+	if not _is_counselor():
+		return
+	var d := _duties_today()
+	# Cabin checks · walking each cabin counts it for the day.
+	if zone_id.begins_with("cabin_"):
+		var cabin := zone_id.substr(6)
+		var checked: Array = d.get("cabins", [])
+		if not checked.has(cabin):
+			checked.append(cabin)
+			d["cabins"] = checked
+			_show_transient("  %s · checked · %d of 4 cabins today." % [cabin.capitalize(), checked.size()])
+	# Evening event coordination · being at the ring for it counts.
+	elif zone_id == "campfire_ring" and _current_block_id() == "evening_event":
+		if not bool(d.get("event", false)):
+			d["event"] = true
+			_show_transient("  You count heads by firelight · all present.  Tonight's event runs because somebody stood here making sure it did.")
+	# Thursday at the bluff · the dig site, and the decision.
+	if zone_id == "north_bluff" and int(_run_state.get("day_index", 0)) == 4 \
+			and not bool(_run_state.get("bluff_choice_made", false)):
+		call_deferred("_show_bluff_choice")
+
+
+func _counselor_read_logbook() -> void:
+	# The office wall · rosters, tide chart, and the medical logbook.
+	var d := _duties_today()
+	if bool(d.get("log", false)):
+		_show_transient("  Today's page is written.  Fourteen names, no incidents you didn't already handle.  The book closes with a good sound.")
+		return
+	d["log"] = true
+	var day_name := String(_current_day().get("name", "today"))
+	var sfx := get_node_or_null("/root/SFXBank")
+	if sfx: sfx.play("page_turn", 0.5)
+	_show_transient("  The medical logbook · %s · you write the day in your even hand.  Scrapes, one wasp, Ollie's ear drops at noon.  Kept properly, a logbook is a letter to whoever worries next." % day_name)
+
+
+func _show_bluff_choice() -> void:
+	_run_state["bluff_choice_made"] = true
+	var panel := Panel.new()
+	panel.custom_minimum_size = Vector2(640, 300)
+	panel.size = panel.custom_minimum_size
+	panel.set_anchors_preset(Control.PRESET_CENTER)
+	panel.position = -panel.size / 2.0
+	var sb := StyleBoxFlat.new()
+	sb.bg_color = Color(0.030, 0.026, 0.020, 0.98)
+	sb.border_color = C_ACCENT
+	sb.set_border_width_all(1)
+	sb.content_margin_left = 24
+	sb.content_margin_right = 24
+	sb.content_margin_top = 16
+	sb.content_margin_bottom = 16
+	panel.add_theme_stylebox_override("panel", sb)
+	_hud_layer.add_child(panel)
+	var v := VBoxContainer.new()
+	v.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
+	v.add_theme_constant_override("separation", 10)
+	panel.add_child(v)
+	var hdr := Label.new()
+	hdr.text = "· THE DIG SITE ·"
+	hdr.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+	hdr.add_theme_font_size_override("font_size", 18)
+	hdr.add_theme_color_override("font_color", C_ACCENT)
+	v.add_child(hdr)
+	var body := Label.new()
+	body.text = "Thursday.  By the Old Man log, the ground is disturbed the way ground gets when kids have been careful about it.  Sam's crew.  They're a day from finding what's under there · you know exactly what's under there.  A head counselor could rake this over in five minutes and the summer would stay ordinary.  For everyone."
+	body.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+	body.add_theme_font_size_override("font_size", 14)
+	body.add_theme_color_override("font_color", C_TXT)
+	v.add_child(body)
+	var b1 := Button.new()
+	b1.text = "  rake it over · the summer stays ordinary  "
+	b1.add_theme_font_size_override("font_size", 14)
+	b1.pressed.connect(func() -> void:
+		_run_state["jenny_raked_the_dig"] = true
+		panel.queue_free()
+		_show_transient("  Five minutes with the fire rake.  The ground looks like ground.  You tell yourself it's about safety, and it half is."))
+	v.add_child(b1)
+	var b2 := Button.new()
+	b2.text = "  leave it be · let them find it  "
+	b2.add_theme_font_size_override("font_size", 14)
+	b2.pressed.connect(func() -> void:
+		_run_state["jenny_raked_the_dig"] = false
+		panel.queue_free()
+		_show_transient("  You look at the disturbed ground a long time and then you walk the perimeter instead.  Whatever happens tomorrow happens.  Some summers shouldn't stay ordinary."))
+	v.add_child(b2)
+	GamepadMgr.focus_first.call_deferred(panel)
+
+
+func _show_wilson_conversation_choice() -> void:
+	_run_state["wilson_conversation_offered"] = true
+	var panel := Panel.new()
+	panel.custom_minimum_size = Vector2(660, 330)
+	panel.size = panel.custom_minimum_size
+	panel.set_anchors_preset(Control.PRESET_CENTER)
+	panel.position = -panel.size / 2.0
+	var sb := StyleBoxFlat.new()
+	sb.bg_color = Color(0.030, 0.026, 0.020, 0.98)
+	sb.border_color = C_ACCENT
+	sb.set_border_width_all(1)
+	sb.content_margin_left = 24
+	sb.content_margin_right = 24
+	sb.content_margin_top = 16
+	sb.content_margin_bottom = 16
+	panel.add_theme_stylebox_override("panel", sb)
+	_hud_layer.add_child(panel)
+	var v := VBoxContainer.new()
+	v.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
+	v.add_theme_constant_override("separation", 10)
+	panel.add_child(v)
+	var hdr := Label.new()
+	hdr.text = "· WILSON · THURSDAY NIGHT ·"
+	hdr.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+	hdr.add_theme_font_size_override("font_size", 18)
+	hdr.add_theme_color_override("font_color", C_ACCENT)
+	v.add_child(hdr)
+	var body := Label.new()
+	body.text = "The campers are down.  Wilson is banking the fire the way he does everything · like it's owed the full attention.  Eleven summers you have known and said nothing, and he has known you know and said nothing, and the arrangement has held like a good knot.  The 1988 logbook is in the boathouse chest.  You could ask him tonight.  You could also let the quiet keep being kind."
+	body.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+	body.add_theme_font_size_override("font_size", 14)
+	body.add_theme_color_override("font_color", C_TXT)
+	v.add_child(body)
+	var b1 := Button.new()
+	b1.text = "  ask him about the 1988 logbook  "
+	b1.add_theme_font_size_override("font_size", 14)
+	b1.pressed.connect(func() -> void:
+		_run_state["jenny_had_the_conversation"] = true
+		OneironauticsTokens.add("jenny_and_wilson_had_the_conversation")
+		panel.queue_free()
+		var sfx := get_node_or_null("/root/SFXBank")
+		if sfx: sfx.play("win_chord", 0.5)
+		_show_hero("moment_first_campfire_night", "  thursday night · the fire, banked low · the whole story, finally out loud")
+		_show_transient("  You say the year and he goes still, and then he tells you all of it · slowly, in order, like a man laying down a heavy pack strap by strap.  It takes until the fire is coals.  At the end he says: same time next summer?  And means every summer."))
+	v.add_child(b1)
+	var b2 := Button.new()
+	b2.text = "  let the quiet keep being kind  "
+	b2.add_theme_font_size_override("font_size", 14)
+	b2.pressed.connect(func() -> void:
+		panel.queue_free()
+		_show_transient("  You bank your side of the fire and say goodnight.  The knot holds another year, the way it has held eleven."))
+	v.add_child(b2)
+	GamepadMgr.focus_first.call_deferred(panel)
 
 
 func _get_sam_facing_texture(facing: String) -> ImageTexture:
@@ -2228,6 +2383,11 @@ func _do_activity(kind: String, stat: String) -> void:
 
 
 func _read_bulletin_board() -> void:
+	# Counselor Mode · the board is the office wall, and the office
+	# wall holds the medical logbook.  Jenny writes; Sam reads.
+	if _is_counselor():
+		_counselor_read_logbook()
+		return
 	# The bulletin board is a slow discovery · each read pulls out one
 	# fact you haven't seen yet, in a fixed order, so the reader
 	# unfolds it over multiple readings rather than dumping everything.
@@ -2882,6 +3042,20 @@ func _npc_at(x: int, y: int) -> String:
 func _open_dialogue(camper_id: String) -> void:
 	var c: Dictionary = _campers_by_id.get(camper_id, {})
 	if c.is_empty(): return
+	# Counselor beats intercept before the standard dialogue box.
+	if _is_counselor():
+		var day_c: int = int(_run_state.get("day_index", 0))
+		# Ollie at the pond · a head counselor watches the water line.
+		if camper_id == "ollie_fisk" and String(_zone.get("id", "")) == "alder_pond" \
+				and day_c < 4 and not OneironauticsTokens.has("jenny_noticed_ollie_couldnt_swim_before_thursday"):
+			OneironauticsTokens.add("jenny_noticed_ollie_couldnt_swim_before_thursday")
+			_show_transient("  Ollie is doing the thing where a kid stands thigh-deep and splashes loudly so nobody asks him to go deeper.  You've seen it a hundred times.  You put him on the shallow-water buddy list before Thursday's swim test, quietly, so it never has to be a thing.")
+		# Wilson · Thursday night · the question you could finally ask.
+		elif camper_id == "wilson_ashe" and day_c == 4 \
+				and _current_block_id() in ["evening_event", "quiet_time", "lights_out"] \
+				and not bool(_run_state.get("wilson_conversation_offered", false)):
+			_show_wilson_conversation_choice()
+			return
 	_dialogue_open = true
 	var sfx := get_node_or_null("/root/SFXBank")
 	if sfx: sfx.play("customer_bell", 0.4)

@@ -83,6 +83,36 @@
     { "token": "story_beat_reggie_vandermeer",            "tier": "story_beats", "title": "The man, not the boat",             "blurb": "You asked Reggie about his dad the person.  Reggie said 'when he's home we go on the boat.'  Then Reggie asked about your dad.  You answered." },
     { "token": "story_beat_sylvie_nakagawa",              "tier": "story_beats", "title": "One line, off-key",                  "blurb": "You sang along with Sylvie during the Talent Show.  She held the last note six seconds longer so you could catch up.  'You were listening.  That is the whole thing.'" },
     { "token": "story_beat_amelie_rocha",                 "tier": "story_beats", "title": "'honest'",                            "blurb": "You used exactly that word about her gray shirt.  Amelie: 'my grandmother says that too.  Do you know my grandmother.  You would like each other.'" },
-    { "token": "story_beat_priya_sundar",                 "tier": "story_beats", "title": "The sulfite label, before",          "blurb": "You caught Priya's hand before it went in the vat.  Priya read the label twice.  Priya's dad heard about you two weeks later at Sunday dinner." }
+    { "token": "story_beat_priya_sundar",                 "tier": "story_beats", "title": "The sulfite label, before",          "blurb": "You caught Priya's hand before it went in the vat.  Priya read the label twice.  Priya's dad heard about you two weeks later at Sunday dinner." },
+   {
+    "token": "jenny_saw_the_ghost_ship_from_the_dock",
+    "tier": "counselor",
+    "title": "From the dock, every summer",
+    "blurb": "Thursday on, if you know where to stand. Jenny has seen her ride at anchor since she was ten years old and has never told anyone and never gone. Some ships you keep by not boarding them."
+   },
+   {
+    "token": "jenny_noticed_ollie_couldnt_swim_before_thursday",
+    "tier": "counselor",
+    "title": "The shallow-water buddy list",
+    "blurb": "A kid standing thigh-deep, splashing loudly so nobody asks him to go deeper. Jenny put Ollie on the buddy list before the swim test, quietly, so it never had to be a thing. This is the whole job, in one line of a roster."
+   },
+   {
+    "token": "jenny_kept_the_medical_log_perfect",
+    "tier": "counselor",
+    "title": "A letter to whoever worries next",
+    "blurb": "Six days, six pages, one even hand. Scrapes, one wasp, ear drops at noon. Kept properly, a logbook is a promise that somebody was paying attention the whole time."
+   },
+   {
+    "token": "jenny_and_wilson_had_the_conversation",
+    "tier": "counselor",
+    "title": "The Conversation",
+    "blurb": "She said the year. He laid the whole story down strap by strap, and at the end asked whether she'd want a right hand next summer. Four more summers. Fifty-six more Thursdays. The best thing Jenny ever did with one question."
+   },
+   {
+    "token": "jenny_drove_wilson_to_the_bus",
+    "tier": "counselor",
+    "title": "The 3:41, northbound",
+    "blurb": "One page of handwriting like rigging, one bag, one nod to the pines and the water. He got on the bus. She ran the last day so well nobody else knew anything had ended, which is the whole job, and the saddest sentence in it."
+   }
   ]
 }

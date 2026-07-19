@@ -80,6 +80,19 @@ func _load_endings() -> void:
 
 
 func _pick_ending() -> void:
+	# 0. Counselor Mode · Jenny's week resolves on two Thursday
+	# decisions: the dig site, and the question by the banked fire.
+	if bool(_run_state.get("counselor", false)):
+		if bool(_run_state.get("jenny_had_the_conversation", false)):
+			_picked_id = "jenny_the_conversation"
+		elif not bool(_run_state.get("jenny_raked_the_dig", false)):
+			# She let them find it (or never stood at the bluff to
+			# stop it · the kids find the map either way, exactly as
+			# Sam's version of this week says they do).
+			_picked_id = "jenny_wilson_leaves"
+		else:
+			_picked_id = "jenny_ordinary_summer"
+		return
 	# 1. Early exit.
 	if bool(_run_state.get("left_camp_early_friday", false)):
 		_picked_id = "left_camp_early"
@@ -226,6 +239,20 @@ func _finish_and_return() -> void:
 	for t in ["pirate_summer_finished", "camp_sweetgum_visited"]:
 		if not lore_tokens.has(t):
 			lore_tokens.append(t)
+	# Counselor duty verdicts · a logbook kept every day of the week
+	# is the quiet achievement the design doc names.
+	if bool(_run_state.get("counselor", false)):
+		var duties: Dictionary = _run_state.get("duties", {})
+		var log_perfect := true
+		for d in range(6):
+			var day_d: Dictionary = duties.get(str(d), {})
+			if not bool(day_d.get("log", false)):
+				log_perfect = false
+				break
+		if log_perfect:
+			OneironauticsTokens.add("jenny_kept_the_medical_log_perfect")
+			if not lore_tokens.has("jenny_kept_the_medical_log_perfect"):
+				lore_tokens.append("jenny_kept_the_medical_log_perfect")
 	# Wilson-ending variants both drop the recognition token.
 	if (_picked_id == "wilson_ashe" or _picked_id == "wilson_ashe_full") \
 		and not lore_tokens.has("wilson_ashe_recognized"):

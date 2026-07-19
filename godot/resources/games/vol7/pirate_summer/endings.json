@@ -74,6 +74,33 @@
       "canon_var": { "pirate_summer_ending": "left_camp_early" },
       "lore_token": "sam_left_camp_early_on_the_friday_bus",
       "epilogue": "You left on Friday afternoon.  You did not tell anyone.  You walked to the bus stop at 3:12 PM.  The bus came at 3:41.  You paid the driver with the money your mom gave you in case of.  In case of what, you'd never known.  Now you knew.\n\nYou never explained it to yourself.  You never explained it to your mom, either, though she did not ask.  She was that kind of good.\n\nCamp Sweetgum sent you a postcard in August.  It said 'we hope you're okay.'  It was signed by Jenny.  You wrote back once, a paragraph.  You did not go into detail.  Jenny wrote back with the same lack of detail.  It was a good exchange.\n\nSomething at camp had gotten close enough to matter.  You had walked away from it before it could complete.  You would do this, in different ways, for the rest of your life.  It would not always be the right call.  It was the right call once.\n\nThe cartridge sleeve records: SAM LEFT CAMP EARLY ON THE FRIDAY BUS."
+    },
+    {
+      "id": "jenny_the_conversation",
+      "label": "The Conversation",
+      "epilogue": "You say the year out loud and the arrangement of eleven summers changes shape without breaking.\n\nWilson tells you all of it by the banked fire · 1988, the logbook, the boy, the boat, why he came back and kept coming back · and when the coals settle he asks, in the voice of a man who has just discovered he is allowed to, whether you'd want a right hand next summer. You say next summer, and the one after that.\n\nHe stays four more. You run Camp Sweetgum together · you with the rosters and the logbook and the whistle on the red lanyard, Wilson with the fire and the songs and the tide tables · and every Thursday night, campers down, you two split a thermos on the mess hall steps and say almost nothing, companionably, on purpose.\n\nFour more summers. Fifty-six more Thursdays. The knot, retied better.\n\nThis is Jenny's ending, and she chose it with one question.",
+      "lore_token": "jenny_and_wilson_had_the_conversation",
+      "canon_var": {
+        "ps_counselor_ending": "the_conversation"
+      }
+    },
+    {
+      "id": "jenny_wilson_leaves",
+      "label": "Wilson Leaves on Friday",
+      "epilogue": "Friday morning Wilson's letter is on your desk, one page, handwriting like rigging.\n\nThe kids found the map Thursday · of course they did, you watched the ground stay disturbed and chose to keep walking · and whatever forty years had settled in Wilson came loose overnight. He is not angry. He is finished, the way a story is finished.\n\nYou drive him to the 3:41 yourself. Neither of you says anything worth reporting. At the stop he takes his one bag, and looks at the camp the way you look at a word you have finally remembered, and nods · to you, to the pines, to the water.\n\nHe gets on the bus.\n\nYou drive back with the window down and run the last day of camp so well that nobody but you knows anything ended. That part · the running-it-anyway · is the whole job, and you are good at the whole job.",
+      "lore_token": "jenny_drove_wilson_to_the_bus",
+      "canon_var": {
+        "ps_counselor_ending": "wilson_leaves"
+      }
+    },
+    {
+      "id": "jenny_ordinary_summer",
+      "label": "An Ordinary Summer",
+      "epilogue": "Five minutes with a fire rake on Thursday, and the summer stays ordinary.\n\nThe kids never find what they were a day from finding. Sam goes home with fourteen friends and no treasure, which at eleven is a fine haul. Wilson banks the last fire on Friday and says see you next June, and means it, because nothing happened that would mean he couldn't.\n\nYou write the last logbook page Saturday morning · fourteen names, out · and sit on the office steps while the bus pulls away, and ask yourself, in your even voice, whether ordinary was kindness or cowardice.\n\nThe camp doesn't answer. The camp thinks summers should end with everyone on the bus they arrived on. That's why there's a head counselor · somebody has to hold the shape of the week · and this week held.\n\nNext June you'll decide again.",
+      "lore_token": "",
+      "canon_var": {
+        "ps_counselor_ending": "ordinary_summer"
+      }
     }
   ]
 }
