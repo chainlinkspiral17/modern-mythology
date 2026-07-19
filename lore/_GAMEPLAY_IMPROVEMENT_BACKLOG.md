@@ -1,0 +1,208 @@
+# Gameplay Improvement Backlog · Modern Mythology
+
+Companion to `_PACKAGE_IMPROVEMENT_BACKLOG.md` (which covers scenes,
+art, and presentation). THIS list is about the games AS GAMES:
+mechanics, content depth, replayability, feedback loops, onboarding.
+Compiled 2026-07-19 from a data audit: 22 arcana × 3–4 setups each,
+CP's 8 demons / 6 humans / 21 problem templates, per-stick endings
+and scrapbook coverage, the shelf unlock graph.
+
+- **P1** — a player feels the gap in one session
+- **P2** — depth/replayability; felt across a full playthrough
+- **P3** — meta, polish, systems health
+
+─────────────────────────────────────────────────────────────────────
+
+## 1 · TAROT GAUNTLET
+
+**P1 · Achievements for the other 21 arcana.** The evaluator runs at
+every win/loss, but only `fool/achievements.json` exists. Each arcana
+wants 3–5 entries in the Fool's pattern — at least one per named loss
+condition ("lose THIS specific way" achievements teach the systems
+better than any tutorial) and one style-win per setup.
+
+**P1 · Reversed-mode content audit.** `_reversed_mode` mutates
+difficulty (tighter turns, harder loss thresholds) and setups carry
+`epigraph_upright` — AUDIT: does every setup also carry an authored
+`epigraph_reversed` + reversed opening lines, or does reversed play
+show upright text with harder numbers? A mode that changes numbers
+but not words feels like a cheat toggle, not a reading.
+
+**P2 · Fourth setup for the twenty 3-setup arcana.** Lovers and
+Chariot have 4 setups; everyone else has 3. The bookend pattern
+(easy dawn intro → hard night finale) has room for one more mid-tier
+scenario per arcana — 20 setups of content using only existing
+machinery (scenario_visitors inline, time-of-day as difficulty).
+
+**P2 · The Spread — cross-arcana runs.** Play three drawn arcana in
+sequence with a small carryover (leftover composure/doubt, one held
+card). The gauntlet is 22 disconnected scenarios today; a three-card
+spread gives it a campaign shape and a reason to master weak arcana.
+New host screen + carryover rules; scenarios unchanged.
+
+**P2 · Named-loss preview on the title card.** The new arcana title
+card has room for one line: the setup's named loss conditions ("Ways
+this goes wrong: THE ROOM WALKS OUT · SHIFT ENDS BEHIND"). Losses as
+pedagogy, surfaced before play instead of discovered after.
+
+**P3 · Daily draw.** A one-tap "draw a card" entry that picks an
+arcana+setup (optionally date-seeded so everyone gets the same daily).
+Removes choice paralysis from a 70+-scenario menu.
+
+**P3 · Post-run reading.** The end screen states win/loss; add three
+lines of "the reading" — which turns swung it, the visitor who
+mattered, the card never played. Data the engine already tracks,
+rendered as tarot-flavored feedback.
+
+## 2 · COMMUNITY PLANNED
+
+**P1 · Problem-template depth.** 21 templates across a 24-week
+summer means repeats by mid-game. Target ~35: more W12+ escalations
+so late-summer problems feel categorically worse, not just bigger
+numbers. Template schema already supports it.
+
+**P1 · Demon evolution visibility.** `evolution_traits_catalog`
+exists in agents.json — AUDIT: is evolution live in play, and can
+the player SEE a demon's acquired traits (dossier trait chips)? A
+hidden progression system might as well not exist.
+
+**P2 · Between-spike events.** The W6/W12/W18 pressure curve is the
+spine; add rare one-shot events between spikes (a resident
+petition, a demon making an unprompted offer, a BBS thread going
+hot) so mid-summer weeks aren't pure routing.
+
+**P2 · Roster growth.** 6 humans / 8 demons staffs the campaign but
+gives no roster decisions. 2–3 recruitable late-summer agents with
+real tradeoffs (a brilliant human who refuses demon partners; a
+demon whose evolution is fast but public) would make W12+ staffing
+strategic.
+
+**P2 · Post-campaign endless mode.** After the summer resolves,
+reopen the board seasonless with scaling problem pressure — the
+three-slot save keeps campaign saves untouched.
+
+**P3 · Run ledger.** Three save slots exist; add a small compare
+screen (weeks survived, tower brightness curve, problems resolved
+per region) so replays have a target.
+
+**Protected:** BBS thread-gating and the diegetic terminal stay
+as designed.
+
+## 3 · SLOWSTICKS — catalog-wide systems
+
+**P1 · Scrapbooks for the ten newer sticks.** The shelf's scrapbook
+button convention (`scrapbook.json` per stick) is live, but only
+Estuary 3 Manager Mode and Pirate Summer have one. estuary_1/2,
+northwind, sweetgum, riffmaster, hane_no_niwa, glass, wyrd, sss, ksm
+all finish into nothing. Even 6–10 tokens each (endings seen, the
+secret found, the dog's name) makes finishing collect into
+something. Cheapest full-catalog win on this list.
+
+**P1 · Completion must visibly change the cabin.** Manifests carry
+`lore_tokens_awarded_on_completion` — AUDIT which tokens are ever
+CONSUMED (FF/EM's are, per the cross-Oneironautics pass). Rule:
+every finished stick should change at least one observable thing —
+a shelf remark, a cabin radio line, Pirate Summer chatter. Sticks
+whose tokens go nowhere need one consumer each.
+
+**P2 · Unlock legibility.** The shelf says "LOCKED · finish another
+stick to unlock" — say WHICH ("finish NORTHWIND HARBOR"), from the
+unlock_graph. Mystery gating without direction is just friction.
+
+**P3 · Shelf stats page.** Finished count renders; add per-stick
+best-result lines (E1 best report card, PS ending reached, FF
+endings seen ×/7) pulled from the saves the sticks already write.
+
+## 4 · SLOWSTICKS — per-stick gameplay
+
+**P2 · estuary_1** — the one-lever design is sacred; add weekly
+FLAVOR variance (a storm week, an algae bloom) that shifts what the
+lever means without adding controls. More report-card grades than
+the current bands so near-misses read.
+
+**P2 · estuary_2** — twelve walks exist; add walk-to-walk memory
+(something you passed on walk 3 has changed by walk 9). The genre
+is noticing; give it more to notice.
+
+**P2 · northwind_harbor** — seven mornings + the dog: let feeding /
+ignoring the dog across mornings shift the final morning. One
+variable, tracked, paid off.
+
+**P2 · kwik_stop_manager + sams_summer_shifts** — shared Manager
+machinery: one new nightly modifier each and one crossover guest
+(a Pirate Summer camper buying slushies in SSS). KSM's host gd had
+zero "ending" mentions — AUDIT it has a real terminal state, not
+just an exit.
+
+**P2 · fey_faire** — combat scaffold wants one status effect per
+Court (glamour/iron-sick/oathbound) and visible Court reputation
+(the factions data exists; surface a standing meter in the trailer).
+Bookstall quotes should list which fey they've worked on.
+
+**P2 · earthman_chronicles** — the tactical scaffold exists; pick
+ONE chapter boss (the Mines' Thar-Krai-Tam) and make it a full
+arena fight as the pattern-setter before spreading to the rest.
+Workings menu: show consequence previews for consent violations.
+
+**P2 · pirate_summer** — NG+: knowing Wilson's secret / the 1976
+cache from a prior run unlocks early dialogue options and a
+day-one shortcut flag. The dialogue-web supports it; it's mostly
+authoring gated lines.
+
+**P3 · estuary_3 Manager Mode** — balance pass on buy-out ending
+pacing (earliest achievable week vs the six endings' spread).
+
+**P3 · sweetgum / patient_mister_glass / sisters_wyrd /
+riffmaster / hane_no_niwa** — each is deliberately small; the
+improvement is one extra secret each (a hidden night, a hidden
+loop, a hidden room) rather than systems. Respect the minimalism.
+
+## 5 · VN (vols 5–6) as a game
+
+**P2 · Choice consequence surfacing.** ChoiceMenu exists — AUDIT
+choice density per volume and whether any choice sets a flag a
+LATER chapter reads. Even three cross-chapter callbacks per volume
+("you told Hal the truth in ch2; he remembers in ch14") converts
+reading into playing.
+
+**P2 · Chapter select + gallery.** Replay from the volume screen,
+plus a gallery of panels/CGs seen (the panel JSONs double as the
+gallery's data source). Standard VN meta the package now has the
+art to justify.
+
+**P3 · Reading stats.** Words read, panels found, chapters at each
+mood — surfaced at volume end, Oneironautics-flavored.
+
+## 6 · Cross-package systems
+
+**P1 · One profile screen.** Volumes read, gauntlet record per
+arcana, sticks finished, lore tokens held — all tracked today,
+visible nowhere together. One menu screen, read-only, no new state.
+
+**P2 · Package-wide achievements surface.** The gauntlet evaluator +
+global achievements.json is the seed; add CP and slowstick entries
+and one viewer (the profile screen above hosts it).
+
+**P3 · Accessibility pass.** Text-scale exists; add typewriter-speed
+presets (incl. instant), hold-to-skip read text, an accent-palette
+colorblind audit (the arcana hues and CP severity colors do double
+duty as information), and Deck controller glyphs in every game's
+hint text.
+
+**P3 · Deck performance sweep.** SubViewport 3D bgs + post stacks
+per locale: profile the worst three scenes on Deck; HEAVY_MOODS
+already gates some cost — verify it fires on Deck hardware.
+
+─────────────────────────────────────────────────────────────────────
+
+## Suggested batch order
+
+1. §1 P1 achievements ×21 + reversed-content audit (pure data
+   authoring, engine untouched) + §3 P1 scrapbooks ×10.
+2. §2 P1 CP template depth + evolution visibility audit.
+3. §6 P1 profile screen (surfaces everything the rest builds).
+4. §1 P2 fourth setups + named-loss preview; §4 P2 per-stick
+   one-improvement-each wave.
+5. §5 P2 choice callbacks + chapter select/gallery.
+6. The Spread, CP endless, NG+ — the big replayability trio — as
+   individual arcs with design notes first.
