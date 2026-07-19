@@ -158,6 +158,41 @@ each state transition.
 
 ## Recent lessons
 
+### 2026-07-19 · depth passes · Sisters Wyrd + Fey Faire · giving decisions teeth
+
+User called Sisters Wyrd underdeveloped and Fey Faire's gameplay
+thin. Both were right, and the failure mode was the same in both
+sticks: systems that LOOK like decisions but always say yes.
+
+- **Audit for "always yes" before adding content.** Fey Faire had
+  101 authored feys, 331 skills, 51 quotes — and a negotiation
+  where every branch recruited on the first click. Content was
+  never the problem; consequence was. Survey the loop for
+  decisions with no failure shape before authoring another line.
+- **Give every branch a DIFFERENT price and a DIFFERENT failure.**
+  Interchangeable branches are one button wearing four labels.
+  FF now: OFFER spends gold, PROMISE is refused at three
+  outstanding, THREATEN starts fights at the top tier, RECITE
+  needs the actually-matching play. Failure locks the booth for
+  the night — when in doubt, charge TIME; every stick has a
+  clock and it's always the realest currency.
+- **Aftermath beats punishment.** Sisters Wyrd's verbs now write
+  on the whole territory (widow-weather, calm quadrants, prices
+  that land mechanically: the hat means sunstroke, the question
+  means no more lore from asking). The choice matters because
+  the WORLD is different after, not because a number went down.
+- **Grep the data before designing thresholds.** The THREATEN→
+  combat trigger was authored at tier 4; the entire roster is
+  tier 1–3, so the door would never have opened. Same lesson as
+  the HeroImage schema: the data file is the truth, check it
+  first (also: two state-key mismatches had made THREATEN dead
+  code and RECITE gating fictional for a whole build — grep the
+  writer of every key you read).
+- **Economies need a loop, not a pile.** SW silver was dead
+  because nothing consumed it and nothing renewed it. The bounty
+  board fixed both AND produced destinations — a resource loop
+  that also generates rides is worth two systems.
+
 ### 2026-07-09 · four slowsticks end-to-end · what the fourth build taught us
 
 Landed Fey Faire (Gate → Questionnaire → Negotiation → Trailer →

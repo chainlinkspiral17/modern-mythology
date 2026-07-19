@@ -22,6 +22,33 @@ other backlogs.
   reused the whole Act 1 room; recruitment reused the spike-event
   engine for one new verb).
 
+## C · USER-DIRECTED DEPTH PASSES (jumped the queue 2026-07-19)
+
+User feedback mid-pass: "sisters wyrd seems underdeveloped, more
+depth and gameplay may serve several games better" · "fey Faire
+has the most promise but I worry the gameplay is thin." Both
+moved ahead of A1.
+
+**C1 · Sisters Wyrd depth pass — DONE 2026-07-19.** Three waves:
+townships + bounty-board economy (W1), sister auras + verb
+aftermaths (W2), deck 25→40 + chain flags + peddler thread + the
+wrong hex (W3). Design addendum in _SISTERS_WYRD_DESIGN.md.
+Remaining SW idea (THE SECOND DECK) stays in A5.
+
+**C2 · Fey Faire thickening — W1+W2 DONE 2026-07-19.**
+Negotiation teeth (four prices, four failure shapes, booth locks,
+two dead-code key fixes) + combat triangle (implement choice,
+SECOND party action, loss costs half gold, THREATEN→combat at
+tier 3). Full survey + design addendum in _FEY_FAIRE_MECHANICS.md.
+Still open from the survey, queued as C2-tail:
+- connect ~75 orphaned feys to booths (largest content gap;
+  queen_mab, kelpie, selkie, sluagh, redcap etc. are authored
+  but unreachable)
+- booth puzzles (Cobweb rhythm, Erlking wheel, Puck shell-game)
+- death checkpoint economy (checkpoints tracked, never used)
+- mirror-gate puzzles · Titania/Oberon exclusivity
+- gold sinks beyond quotes/OFFER (bakery bread as combat heal)
+
 ## A · SLOWSTICKS
 
 **A1 · Pirate Summer COUNSELOR MODE — the flagship.** Fully
