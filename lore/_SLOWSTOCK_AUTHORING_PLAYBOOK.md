@@ -403,6 +403,36 @@ quotes, promises, the manuscript). Lessons:
   booted.  After any typing fix, sweep ALL game scenes for the
   same pattern, not just the ones in the error log.
 
+### 2026-07-19 · the per-stick improvement waves · one paid-off variable each
+
+- **The cheapest depth is one variable, tracked, paid off.** Six
+  waves, one mechanic each: bosun pets → chapter-7 line tiers;
+  absence gaps in the mudflat journal; water words from the
+  pre-rolled luck; Court statuses in Fey combat; NG+ deja-vu in
+  Pirate Summer; a repave/solo week in KSM/SSS.  Every one is a
+  var in the existing `_run_state`/`_state` (free persistence),
+  one seed site, one payoff site.  If a feature needs a new save
+  shape, it's the wrong feature for a wave.
+- **`<stick>_finished` in OneironauticsTokens is the crossover
+  bus.** Estuary 1 and Pirate Summer already emit it; KSM's heron
+  and SSS's slushie guest consume it.  When writing an ending
+  scene, ALWAYS add the `<id>_finished` token even with no
+  consumer yet — a later stick will want the gate, and retrofitting
+  the emitter means touching a shipped ending.
+- **NG+ = boot-time token check → one seed fact → gated lines.**
+  Pirate Summer's whole NG+ is: OneironauticsTokens check in the
+  fresh-run boot branch, a `ng_*` fact in the dialogue web, and
+  `conditions.requires_fact` lines in the chatter pools.  No new
+  systems; idle chatter just learned the same `requires_fact` key
+  party chatter had.  Check which pools actually honor the gate
+  before authoring gated lines — one grep saved four dead lines.
+- **Scripted boss = branch the boss TURN, not the scaffold.** The
+  Thar-Krai-Tam arena is one `_boss_turn_thar()` dispatched by
+  boss id; the player verbs, HP labels, and outcome flow are
+  untouched, so other bosses stay generic until each earns its
+  own pattern.  Telegraph-then-punish plus a defend-to-counter
+  window is enough to make DEFEND (previously dead) load-bearing.
+
 ## TEMPLATE — new lesson entry
 
 ```
