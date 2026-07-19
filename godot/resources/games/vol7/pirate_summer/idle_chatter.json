@@ -325,6 +325,34 @@
       "character": "amelie_rocha",
       "mood": "wistful",
       "line": "The music-box tune traveled.  From Coimbra to Portland with a grandmother \u00b7 from Portland into a slowstick game \u00b7 from a slowstick game onto a title card a kid in Oregon boots in 1994.  Songs travel further than people.  My grandmother says so.  I believe her."
+    },
+    {
+      "id": "wilson_idle_ng_seen_you_before",
+      "character": "wilson_ashe",
+      "mood": "wistful",
+      "conditions": { "requires_fact": "ng_you_remember_this_summer" },
+      "line": "First day off the bus you looked at me like you were checking my face against something.  Most kids look at the lake first.  You looked at me.  I've been trying to decide if that's a good sign."
+    },
+    {
+      "id": "bea_idle_ng_deja_vu_rock",
+      "character": "bea_hallowell",
+      "mood": "calm",
+      "conditions": { "requires_fact": "ng_you_remember_this_summer" },
+      "line": "There's a kind of quartz that clicks when you warm it twice.  Once for the first time, once for remembering the first time.  You're doing the second click.  I can hear it from here."
+    },
+    {
+      "id": "wu_kai_idle_ng_route_efficiency",
+      "character": "wu_kai",
+      "mood": "curious",
+      "conditions": { "requires_fact": "ng_you_remember_this_summer" },
+      "line": "You walk the paths like you've read the map.  Nobody walks the north fork on their first week \u00b7 it doesn't look like it goes anywhere.  You took it on Sunday.  I noticed.  I notice route efficiency."
+    },
+    {
+      "id": "nika_idle_ng_which_lap",
+      "character": "nika_voss",
+      "mood": "wistful",
+      "conditions": { "requires_fact": "ng_you_remember_this_summer" },
+      "line": "I came back here knowing how the place goes.  It's a strange way to walk around \u00b7 half in the summer, half in your notes on the summer.  You've got the same walk, you know.  Takes one to know one."
     }
   ]
 }

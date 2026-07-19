@@ -1442,6 +1442,36 @@
         "requires_fact": "pirate_radio_friday"
       },
       "line": "Station 1600's Friday broadcast was almost a song.  The cadence.  The pauses.  Whoever broadcasts \u00b7 I think they might sing.  I hope they broadcast a song someday.  I would tune in for a song."
+    },
+    {
+      "id": "elias_ng_birds_repeat",
+      "character": "elias_wren",
+      "kind": "surroundings",
+      "mood": "curious",
+      "conditions": {
+        "requires_fact": "ng_you_remember_this_summer"
+      },
+      "line": "You said 'there'll be an osprey over the point around four' and then there was an osprey over the point around four.  I count birds.  I don't predict them.  How are you predicting my birds?"
+    },
+    {
+      "id": "tessa_ng_finishing_sentences",
+      "character": "tessa_ansen",
+      "kind": "gossip",
+      "mood": "teasing",
+      "conditions": {
+        "requires_fact": "ng_you_remember_this_summer"
+      },
+      "line": "You keep almost finishing people's sentences and then politely not.  I saw you do it to Bear at breakfast.  Either you're psychic or you're the most patient eavesdropper at this camp.  I respect both options."
+    },
+    {
+      "id": "ford_ng_tide_already_known",
+      "character": "ford_mears",
+      "kind": "surroundings",
+      "mood": "calm",
+      "conditions": {
+        "requires_fact": "ng_you_remember_this_summer"
+      },
+      "line": "Low tide's at six.  You nodded before I said it.  My dad does that \u00b7 knows the tide without checking, because he's lived the water long enough.  You've been here six days.  Whose water did you live?"
     }
   ]
 }

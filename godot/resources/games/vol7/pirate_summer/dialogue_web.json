@@ -531,6 +531,11 @@
       "id": "kelait_bar_matches_wilsons_shanty",
       "display": "The last bar of Wilson's Portuguese shanty is the last bar of a mourning song from a game about another planet.  You have heard both now.  They recognize each other.",
       "notes": "Cross-Oneironautics consumer \u00b7 discovered automatically when the OneironauticsTokens store carries kelait_mourning_song_final_bar_recognized (REFUSED THE WORK seen in Earthman Chronicles)."
+    },
+    {
+      "id": "ng_you_remember_this_summer",
+      "display": "You have lived this summer before.  You remember where things are buried.",
+      "notes": "NG+ seed \u00b7 granted on Sunday boot when a prior run's pirate-ending token (sam_and_wilson_have_the_map, or the absolved variant) sits in OneironauticsTokens.  Gates NG+ chatter lines and lets Sam brace the Old Man alone on day one.  The game does not explain the mechanism.  It should not."
     }
   ],
   "hello_grants": {
@@ -1733,6 +1738,24 @@
       "fact": "chain_halstrom_still_involved",
       "tag": "insight",
       "line": "The specific phrasing the fisherman used with Bear \u00b7 'parents in law enforcement or federal service' \u00b7 is a form phrase.  Not a spoken phrase.  It is \u00b7 the language of a document.  Peter Halstrom went into work that involves forms with that exact phrase.  I know because my dad has friends in that field.  I don't want to be right about this.  I might be."
+    },
+    {
+      "character": "wilson_ashe",
+      "fact": "ng_you_remember_this_summer",
+      "tag": "insight",
+      "line": "Wilson stops re-tying the tarp line.  'Deja vu is the cheap kind of haunting,' he says.  'The expensive kind is when you turn out to be right.'  He looks at your hands like they have been somewhere his have."
+    },
+    {
+      "character": "bea_hallowell",
+      "fact": "ng_you_remember_this_summer",
+      "tag": "aside",
+      "line": "'Rocks remember everything and it doesn't bother them at all,' Bea says.  'You'll be fine.  Just don't tell the summer how it ends.  Summers hate that.'"
+    },
+    {
+      "character": "nika_voss",
+      "fact": "ng_you_remember_this_summer",
+      "tag": "insight",
+      "line": "Nika is quiet for longer than the sentence deserved.  'Some places run in a loop,' she says finally.  'The trick is noticing which lap you're on.  Most people never notice.  You noticed.'"
     }
   ]
 }

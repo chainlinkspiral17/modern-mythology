@@ -144,10 +144,19 @@ ONE chapter boss (the Mines' Thar-Krai-Tam) and make it a full
 arena fight as the pattern-setter before spreading to the rest.
 Workings menu: show consequence previews for consent violations.
 
-**P2 · pirate_summer** — NG+: knowing Wilson's secret / the 1976
+**P2 · pirate_summer** — ~~NG+: knowing Wilson's secret / the 1976
 cache from a prior run unlocks early dialogue options and a
 day-one shortcut flag. The dialogue-web supports it; it's mostly
-authoring gated lines.
+authoring gated lines.~~ DONE — a prior pirate ending
+(`sam_and_wilson_have_the_map` or the absolved variant in
+OneironauticsTokens) sets `_run_state.ng_plus` on Sunday boot and
+grants the `ng_you_remember_this_summer` fact. Payoffs: a deja-vu
+paragraph in the Sunday intro modal (points at the north bluff),
+the Old Man brace-able solo on day one (NG+ counts as the third
+pair of hands, with its own transient), 3 authored reactions
+(Wilson / Bea / Nika), 4 fact-gated idle-chatter lines (idle
+chatter now honors `conditions.requires_fact` like party chatter),
+and 3 fact-gated party-chatter lines (Elias / Tessa / Ford).
 
 **P3 · estuary_3 Manager Mode** — balance pass on buy-out ending
 pacing (earliest achievable week vs the six endings' spread).

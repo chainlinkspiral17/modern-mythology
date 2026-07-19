@@ -415,6 +415,13 @@ func boot(host_state: Dictionary) -> void:
 		_discover_fact("wilson_ashe_is_the_new_counselor")
 		_discover_fact("wilson_has_a_bag_he_doesnt_put_down")
 		_discover_fact("something_about_wilson_is_off")
+		# NG+ · a prior run reached the pirate ending; that durable
+		# token reaches back into this fresh Sunday.  Sam remembers
+		# a summer that hasn't happened yet.
+		if OneironauticsTokens.has("sam_and_wilson_have_the_map") \
+				or OneironauticsTokens.has("sam_and_wilson_have_the_map_and_the_captains_word"):
+			_run_state["ng_plus"] = true
+			_discover_fact("ng_you_remember_this_summer")
 		call_deferred("_show_day_intro_modal")
 
 
@@ -1580,9 +1587,13 @@ func _try_dig_old_man() -> void:
 	if _has_fact("wilson_signed_treasure_map_1987"):
 		_show_transient("  The Old Man is where you left it.  The empty tin is still under it.  You've got the map already.")
 		return
-	if not (has_bea or enough_hands):
+	# NG+ · a remembered summer counts as a third pair of hands.
+	var ng_plus: bool = bool(_run_state.get("ng_plus", false))
+	if not (has_bea or enough_hands or ng_plus):
 		_show_transient("  The Old Man is too heavy for you alone.  You need Bea (rocks for climbing) or three of you together.")
 		return
+	if ng_plus and not (has_bea or enough_hands):
+		_show_transient("  Your hands find the brace-point before you think to look for it.  You have done this before.")
 	# Add the map to the duffel · discovers clue 4.  If the duffel is
 	# full we still give the map · plot item, always accepted.
 	var duf: Array = _duffel()
@@ -2446,6 +2457,10 @@ func _fire_idle_chatter(cid: String) -> void:
 		var e: Dictionary = e_v
 		if String(e.get("character", "")) != cid: continue
 		if used.has(String(e.get("id", ""))): continue
+		# Optional fact gate · same key party chatter uses.
+		var cond: Dictionary = e.get("conditions", {})
+		var fact_req := String(cond.get("requires_fact", ""))
+		if fact_req != "" and not _has_fact(fact_req): continue
 		eligible.append(e)
 	if eligible.is_empty(): return
 	var pick: Dictionary = eligible[randi() % eligible.size()]
@@ -3195,6 +3210,10 @@ func _show_day_intro_modal() -> void:
 	body.add_theme_color_override("default_color", C_TXT)
 	for line_v in d.get("intro_narration", []):
 		body.append_text(String(line_v) + "\n\n")
+	# NG+ · Sunday only · the deja-vu line, and the one concrete
+	# thing Sam's hands still know: where the map is buried.
+	if bool(_run_state.get("ng_plus", false)) and int(_run_state.get("day_index", 0)) == 0:
+		body.append_text("[color=#7fb8a8][i]You step off the bus and the smell of the spruce hits you like a door opening.  You have been here before.  You know how this summer goes — or how it went, once.  The Old Man on the north bluff.  You remember how to brace it alone.[/i][/color]\n\n")
 	var anchor: String = String(d.get("anchor_event_summary", ""))
 	if anchor != "":
 		body.append_text("[color=#c8a842][i]  · anchor · %s[/i][/color]" % anchor)
