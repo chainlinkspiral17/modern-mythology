@@ -607,6 +607,7 @@ func _load_data() -> void:
 	_reveals_def = _load_json(DATA_ROOT + "reveals.json")
 	_interludes_def = _load_json(DATA_ROOT + "interludes.json")
 	_vignettes_def = _load_json(DATA_ROOT + "daily_vignettes.json")
+	_spike_events_def = _load_json(DATA_ROOT + "between_spike_events.json")
 	# Weekly regional events (2026-07-02) · JSON-driven pool.
 	# Replaces the earlier 5-week cycle of hardcoded flavor lines.
 	var regional_events_json: Dictionary = _load_json(DATA_ROOT + "regional_events.json")
@@ -2711,6 +2712,7 @@ func _on_advance_day() -> void:
 	_tick_agent_home_rest()
 	_tick_roster_is_loud()
 	_fire_daily_vignette()
+	_maybe_fire_between_spike_event()
 	# Tick problems + accumulate per-region escalation. The actual
 	# weekly spawn pass fires only on Sunday nights (day 7, 14, 21,
 	# ...) per spec §Problems.
@@ -4919,6 +4921,111 @@ func _fire_daily_vignette() -> void:
 	if bool(pick.get("one_shot", false)) and not _vignettes_fired.has(pick_id):
 		_vignettes_fired.append(pick_id)
 	_log("[color=#86c896][i]%s[/i][/color]" % String(pick.get("body", "")))
+
+
+# ── Between-spike events (backlog §2 P2) ─────────────────────────
+# Rare one-shot CHOICE events in the quiet windows between the
+# pressure spikes, so mid-summer weeks aren't pure routing. Data:
+# between_spike_events.json. Fired ids persist in
+# _flags.spike_events_fired; at most one per day, ~30% per
+# eligible day. Effects ride existing verbs only (escalation
+# deltas, _seed_problem, _queued_burns, _log).
+var _spike_events_def: Dictionary = {}
+
+
+func _maybe_fire_between_spike_event() -> void:
+	if _endless:
+		return   # endless is the ratchet's show · campaign flavor stays campaign
+	var pool: Array = _spike_events_def.get("events", [])
+	if pool.is_empty():
+		return
+	var fired: Array = _flags.get("spike_events_fired", [])
+	var eligible: Array = []
+	for e_v in pool:
+		var e: Dictionary = e_v
+		var eid := String(e.get("id", ""))
+		if eid == "" or fired.has(eid):
+			continue
+		var w: Array = e.get("window", [0, 0])
+		if w.size() < 2 or _day < int(w[0]) or _day > int(w[1]):
+			continue
+		eligible.append(e)
+	if eligible.is_empty():
+		return
+	var rng := RandomNumberGenerator.new()
+	rng.randomize()
+	if rng.randf() > 0.30:
+		return
+	var pick: Dictionary = eligible[rng.randi() % eligible.size()]
+	fired.append(String(pick["id"]))
+	_flags["spike_events_fired"] = fired
+	_show_spike_event(pick)
+
+
+func _show_spike_event(ev: Dictionary) -> void:
+	var bank := get_node_or_null("/root/SFXBank")
+	if bank: bank.play("menu_open", 0.7)
+	var dlg := AcceptDialog.new()
+	dlg.title = "COMMUNITY PLANNED · an interruption"
+	dlg.min_size = Vector2(560, 320)
+	dlg.get_ok_button().visible = false   # choose · there is no OK
+	var col := VBoxContainer.new()
+	col.add_theme_constant_override("separation", 10)
+	col.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	dlg.add_child(col)
+	var hdr := Label.new()
+	hdr.text = "· %s ·" % String(ev.get("title", ""))
+	hdr.add_theme_font_size_override("font_size", 14)
+	hdr.add_theme_color_override("font_color", Color(0.96, 0.86, 0.62, 1))
+	col.add_child(hdr)
+	var body := Label.new()
+	body.text = String(ev.get("body", ""))
+	body.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+	body.custom_minimum_size = Vector2(520, 0)
+	body.add_theme_font_size_override("font_size", 13)
+	body.add_theme_color_override("font_color", Color(0.84, 0.86, 0.84, 1))
+	col.add_child(body)
+	for ch_v in ev.get("choices", []):
+		var ch: Dictionary = ch_v
+		var btn := Button.new()
+		btn.text = "  %s  " % String(ch.get("label", ""))
+		btn.alignment = HORIZONTAL_ALIGNMENT_LEFT
+		btn.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+		btn.add_theme_font_size_override("font_size", 12)
+		var effects: Dictionary = ch.get("effects", {})
+		btn.pressed.connect(func() -> void:
+			dlg.queue_free()
+			_apply_spike_effects(effects)
+			_render())
+		col.add_child(btn)
+	dlg.add_to_group("ui")
+	add_child(dlg)
+	dlg.popup_centered()
+	GamepadMgr.focus_first.call_deferred(dlg)
+
+
+func _apply_spike_effects(effects: Dictionary) -> void:
+	var esc: Dictionary = effects.get("escalation", {})
+	for r_id in esc:
+		if _region_state.has(String(r_id)):
+			var st: Dictionary = _region_state[String(r_id)]
+			st["escalation_progress"] = maxf(0.0,
+					float(st.get("escalation_progress", 0.0)) + float(esc[r_id]))
+	var sp: Array = effects.get("spawn_problem", [])
+	if sp.size() >= 2:
+		_seed_problem(String(sp[0]), String(sp[1]))
+	var qb: Dictionary = effects.get("queue_burn", {})
+	if not qb.is_empty():
+		_queued_burns.append({
+			"trigger_day": _day + int(qb.get("days", 7)),
+			"reason": String(qb.get("reason", "the bill comes due")),
+		})
+	var line := String(effects.get("log", ""))
+	if line != "":
+		_log("[color=#c8a86a][i]%s[/i][/color]" % line)
+	var bank := get_node_or_null("/root/SFXBank")
+	if bank: bank.play("signing", 0.6)
+	_write_save()
 
 
 # Queued burns: DM choices and other deferred decisions schedule

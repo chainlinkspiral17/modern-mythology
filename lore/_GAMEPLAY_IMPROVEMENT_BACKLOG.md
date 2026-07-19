@@ -82,10 +82,17 @@ exists in agents.json — AUDIT: is evolution live in play, and can
 the player SEE a demon's acquired traits (dossier trait chips)? A
 hidden progression system might as well not exist.
 
-**P2 · Between-spike events.** The W6/W12/W18 pressure curve is the
-spine; add rare one-shot events between spikes (a resident
-petition, a demon making an unprompted offer, a BBS thread going
-hot) so mid-summer weeks aren't pure routing.
+**P2 · Between-spike events — DONE 2026-07-19.** Six one-shot
+choice events in between_spike_events.json fire in the quiet
+windows (W4-5 days 22-35, W7-8 days 43-56; ~30% per eligible day,
+one per day max, ids persisted in _flags.spike_events_fired,
+campaign-only): the pool petition, Moth's unnamed-rate offer, a
+BACKCHANNEL thread going hot, Mackenzie's open house, Starling's
+public molt, the county reporter. Every effect rides existing
+verbs only (escalation deltas, _seed_problem into real templates,
+_queued_burns, log) — cross-validated against regions.json and
+problems.json. Original note: add rare one-shot events between
+spikes so mid-summer weeks aren't pure routing.
 
 **P2 · Roster growth.** 6 humans / 8 demons staffs the campaign but
 gives no roster decisions. 2–3 recruitable late-summer agents with

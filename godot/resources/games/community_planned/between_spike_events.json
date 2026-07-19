@@ -1,0 +1,139 @@
+{
+ "scope": "community_planned",
+ "notes": "Between-spike one-shot choice events (backlog §2 P2). The W6/W9-12/W13-14 pressure curve is the spine; these fire in the quiet windows (W4-5 · days 22-35, W7-8 · days 43-56) so mid-summer weeks aren't pure routing. Each event fires at most once per save, at most one event per day, ~30% chance per eligible day. Effects vocabulary (interpreted by _apply_spike_effects): escalation {region: float delta}, spawn_problem [region_id, template_id], queue_burn {days, reason}, log str. Template ids must exist in problems.json; region ids in regions.json.",
+ "events": [
+  {
+   "id": "ev_pool_petition",
+   "window": [22, 35],
+   "title": "A RESIDENT PETITION",
+   "body": "Forty-one signatures, delivered to the office window by a nine-year-old deputized for the errand. The petition concerns the pool hours, the retention pond smell, and 'the general feeling lately.' The signatures are real. The general feeling is too.",
+   "choices": [
+    {
+     "label": "Read every name aloud at the office window, then post the reply the same afternoon",
+     "effects": {
+      "escalation": {"harmony_creek": -1.2},
+      "log": "You read all forty-one names. Word gets around that the office reads its mail. The general feeling improves by roughly one pool afternoon."
+     }
+    },
+    {
+     "label": "File it. The summer is long and the pool opens either way",
+     "effects": {
+      "queue_burn": {"days": 10, "reason": "the petition resurfaces at the county desk · forty-one names and a note in a nine-year-old's hand"},
+      "log": "You file it under things the summer will absorb. The summer files you under things it will remember."
+     }
+    }
+   ]
+  },
+  {
+   "id": "ev_moth_offer",
+   "window": [43, 56],
+   "title": "MOTH MAKES AN OFFER",
+   "body": "Moth finds you between dispatches, which Moth does not do. 'Graustark is loud this month. I can make it quiet for a while. You know my rate.' You do not, in fact, know Moth's rate. That is the rate.",
+   "choices": [
+    {
+     "label": "Accept. Quiet now is worth an unnamed later",
+     "effects": {
+      "escalation": {"graustark": -2.0},
+      "queue_burn": {"days": 12, "reason": "Moth's rate comes due · something in Graustark has been missing a name for twelve days and someone finally asks about it"},
+      "log": "Graustark goes quiet the way a room goes quiet when someone very polite enters it. You have twelve days of it."
+     }
+    },
+    {
+     "label": "Decline. Nothing with an unstated price",
+     "effects": {
+      "escalation": {"graustark": 0.3},
+      "log": "Moth nods, unbothered, and returns to the roster. The offer refused keeps a faint hum, like a phone off the hook two rooms away."
+     }
+    }
+   ]
+  },
+  {
+   "id": "ev_bbs_thread_hot",
+   "window": [22, 35],
+   "title": "A THREAD GOES HOT",
+   "body": "Overnight, a BACKCHANNEL thread about the Small Wood tower picks up eleven replies, which for BACKCHANNEL is a stadium crowd. Half the posters have seen the window. The other half have seen the first half posting at 3 AM.",
+   "choices": [
+    {
+     "label": "Post the calm version of the truth, once, and log off",
+     "effects": {
+      "escalation": {"small_wood": -0.8},
+      "log": "You post four sentences, none of them exciting, all of them true. The thread cools the way threads do when someone brings minutes to a meeting."
+     }
+    },
+    {
+     "label": "Let it burn out on its own · the board polices itself",
+     "effects": {
+      "spawn_problem": ["small_wood", "ridge_lights"],
+      "log": "The thread burns three more nights. On the fourth, two of the posters drive up the ridge road to see for themselves."
+     }
+    }
+   ]
+  },
+  {
+   "id": "ev_mackenzie_open_house",
+   "window": [43, 56],
+   "title": "MACKENZIE PROPOSES AN OPEN HOUSE",
+   "body": "Mackenzie wants a Saturday open house at the model home. 'People calm down inside a clean kitchen. It is a fact of the species.' The punch bowl, the sign-in sheet, the good pens · Mackenzie has already priced all of it.",
+   "choices": [
+    {
+     "label": "Approve it. A calm Saturday is cheap at twice the price",
+     "effects": {
+      "escalation": {"harmony_creek": -1.5},
+      "queue_burn": {"days": 7, "reason": "the open-house accounts land · punch bowl, folding chairs, and one good pen that never came back"},
+      "log": "Saturday goes beautifully. Forty residents tour a kitchen none of them will buy and every one of them leaves calmer than they came."
+     }
+    },
+    {
+     "label": "Not this month. The calendar is carrying enough",
+     "effects": {
+      "escalation": {"harmony_creek": 0.5},
+      "log": "Mackenzie takes it professionally, which is somehow worse. The model home's kitchen stays clean for nobody."
+     }
+    }
+   ]
+  },
+  {
+   "id": "ev_starling_public_molt",
+   "window": [22, 35],
+   "title": "STARLING ASKS TO MOLT IN THE OPEN",
+   "body": "Starling's next evolution is due, and Starling would prefer to do it on the green, at noon, where people can see. 'Hiding it costs me a week. Showing it costs you a story.' Starling has clearly rehearsed the line.",
+   "choices": [
+    {
+     "label": "Let it happen on the green · spectacle relocates attention",
+     "effects": {
+      "escalation": {"small_wood": 0.8, "graustark": -0.8},
+      "log": "The molt draws a crowd of thirty and one unattended zoom lens. For a full week, everyone talks about Starling and nobody talks about Graustark."
+     }
+    },
+    {
+     "label": "Behind the substation, after dark, like always",
+     "effects": {
+      "log": "Starling molts at 2 AM behind the substation, unwatched, and is a week slower for it. 'Noted,' Starling says, newly iridescent, and lets it go."
+     }
+    }
+   ]
+  },
+  {
+   "id": "ev_county_reporter",
+   "window": [43, 56],
+   "title": "A CALL FROM THE COUNTY PAPER",
+   "body": "A reporter from the county paper calls the office. She is writing a piece about 'the planned community that stays so calm,' and she says the word calm the way people say a word they intend to investigate.",
+   "choices": [
+    {
+     "label": "Give the interview · boring on the record is armor",
+     "effects": {
+      "escalation": {"graustark": -0.5, "harmony_creek": -0.5, "small_wood": -0.5},
+      "queue_burn": {"days": 14, "reason": "the article prints · WHERE SUMMER BEHAVES · and for one weekend the lots have visitors with cameras"},
+      "log": "You give her forty minutes of zoning history and pool maintenance. She thanks you with the flat voice of a person who found nothing, which was the entire performance."
+     }
+    },
+    {
+     "label": "Decline politely · no comment is a comment, but a quiet one",
+     "effects": {
+      "log": "You decline with the warmth of a man declining seconds at a church supper. The piece runs two column inches on page nine. Nobody in it is quoted."
+     }
+    }
+   ]
+  }
+ ]
+}
