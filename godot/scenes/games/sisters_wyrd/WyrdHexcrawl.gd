@@ -386,6 +386,15 @@ func _on_arrive() -> void:
 					"text": String(bdef.get("arrive", "")),
 					"choices": bdef.get("choices", [])})
 				return
+	# The wrong hex · the previous owner's map is wrong in exactly
+	# one hex. Olaf checked. The cart agrees.
+	var wrong: Dictionary = (_enc.get("special", {}) as Dictionary).get("wrong_hex", {})
+	if not wrong.is_empty():
+		var wh: Array = wrong.get("hex", [99, 99])
+		if _pos.x == int(wh[0]) and _pos.y == int(wh[1]) \
+				and not (_state.get("flags", {}) as Dictionary).has("wrong_hex_done"):
+			_show_encounter(wrong)
+			return
 	# Weather with teeth · the cold, the bare head.
 	_apply_weather_bites()
 	if int(_state.get("grit", 6)) <= 0:
@@ -475,11 +484,35 @@ func _maybe_encounter(terrain: String) -> void:
 	if h % 100 >= chance:
 		return
 	var seen: Array = _state.get("encounters_seen", [])
-	var pool: Array = (_enc.get("by_terrain", {}) as Dictionary).get(terrain, [])
+	var flags: Dictionary = _state.get("flags", {})
+	var pool_all: Array = (_enc.get("by_terrain", {}) as Dictionary).get(terrain, [])
+	if pool_all.is_empty():
+		return
+	# Flag-gated deck · chain beats only surface once their thread is
+	# live, and one-shot beats spend themselves globally.
+	var pool: Array = []
+	var priority: Array = []
+	for e_v in pool_all:
+		var cand: Dictionary = e_v
+		var nf := String(cand.get("need_flag", ""))
+		if nf != "" and not flags.has(nf):
+			continue
+		var bf := String(cand.get("block_flag", ""))
+		if bf != "" and flags.has(bf):
+			continue
+		if bool(cand.get("once", false)) and seen.has(String(cand["id"])):
+			continue
+		pool.append(cand)
+		if bool(cand.get("priority", false)):
+			priority.append(cand)
+	if not priority.is_empty():
+		pool = priority
 	if pool.is_empty():
 		return
 	var e: Dictionary = pool[h % pool.size()]
 	var key := "%s@%d,%d" % [String(e["id"]), _pos.x, _pos.y]
+	if bool(e.get("once", false)):
+		key = String(e["id"])
 	if seen.has(key):
 		return
 	seen.append(key)
@@ -495,7 +528,17 @@ func _show_encounter(e: Dictionary) -> void:
 	for ch_v in e.get("choices", []):
 		var ch: Dictionary = ch_v
 		var b := Button.new()
-		b.text = "  · %s ·  " % String(ch.get("label", ""))
+		var label := "  · %s ·  " % String(ch.get("label", ""))
+		# Choices with a price on them · silver spends, lore gates.
+		var need_ag: int = int(ch.get("need_silver", 0))
+		var need_lo: int = int(ch.get("need_lore", 0))
+		if need_ag > 0:
+			label = "  · %s · %d ag ·  " % [String(ch.get("label", "")), need_ag]
+			b.disabled = int(_state.get("silver", 0)) < need_ag
+		if need_lo > 0:
+			label = "  · %s · needs %d lore ·  " % [String(ch.get("label", "")), need_lo]
+			b.disabled = b.disabled or int(_state.get("lore", 0)) < need_lo
+		b.text = label
 		b.position = Vector2(60.0 + float(idx) * 320.0, y)
 		b.add_theme_font_size_override("font_size", 14)
 		b.pressed.connect(_resolve_encounter.bind(ch))
@@ -512,6 +555,16 @@ func _resolve_encounter(ch: Dictionary) -> void:
 	_choice_btns.clear()
 	var was_bounty := String(_encounter.get("id", "")).begins_with("bounty_")
 	_encounter = {}
+	# Up-front prices · silver spends on the choosing.
+	if int(ch.get("need_silver", 0)) > 0:
+		_state["silver"] = maxi(0, int(_state.get("silver", 0)) - int(ch.get("need_silver", 0)))
+	# Chain flags + tokens the deck can set.
+	if String(ch.get("set_flag", "")) != "":
+		var flags: Dictionary = _state.get("flags", {})
+		flags[String(ch["set_flag"])] = true
+		_state["flags"] = flags
+	if String(ch.get("token", "")) != "":
+		OneironauticsTokens.add(String(ch["token"]))
 	# The south's thirst · in her aura, what costs grit costs deeper.
 	var grit_delta: int = int(ch.get("grit", 0))
 	if grit_delta < 0 and _in_aura("south"):

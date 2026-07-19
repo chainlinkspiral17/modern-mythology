@@ -32,6 +32,18 @@
    "tier": "secrets",
    "title": "Three notices, one ride",
    "blurb": "Hotel, saloon, bookstall, board. You rode the territory like a job, and it paid like one. Somewhere between the second and third delivery, the towns started describing you to strangers, which is how the territory takes your measurements."
+  },
+  {
+   "token": "wyrd_peddler_thread",
+   "tier": "secrets",
+   "title": "The far side of the cart",
+   "blurb": "Three meetings with the salt peddler, one mirror that looks east, and the plainest sky you ever saw. She was holding a direction still until somebody dealt with it proper. Nobody at Sagebrush ever confirmed she was in the game."
+  },
+  {
+   "token": "wyrd_wrong_hex_found",
+   "tier": "secrets",
+   "title": "The map is wrong where the world is",
+   "blurb": "One hex of salt where every map agrees on scrub. The previous owner found it, checked it, and left the note folded in the case: keep both. You kept both. The wrongness is the landmark."
   }
  ]
 }
