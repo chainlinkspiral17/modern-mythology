@@ -2,23 +2,20 @@
   "id": "earthman_chronicles",
   "vol": 7,
   "kind": "gallery_slowstock",
-  "status": "scaffold_boot · title screen · content authored in sibling JSONs · playable acts deferred",
+  "status": "playable_v1 · six chapters + Talikan hub + workings ritual menu → six endings · Jack’s Codex",
   "design_doc": "lore/_EARTHMAN_CHRONICLES_DESIGN.md",
-
   "shelf": {
-    "label_title":       "THE EARTHMAN CHRONICLES",
-    "label_subtitle":    "a lost 1948 manuscript · adapted",
-    "publisher":         "Astro-Cortex Software",
-    "publisher_locale":  "Culver City, CA",
-    "release_year":      1985,
-    "hardware":          "Oneironautics Slowstick · Rev 2 (Astro-Cortex licensed)",
-    "genre_stamp":       "TURN-BASED CRPG",
-    "shelf_condition":   "played · Kelait-brown sleeve · one specific corner slightly warped by heat",
-    "prior_owner":       "Olaf, from an Astro-Cortex estate sale in 1996",
-    "provenance_note":   "Olaf bought this at an estate sale for two dollars in 1996.  The estate was Astro-Cortex's · liquidation · they had folded in 1994.  Nobody Olaf spoke to knew what a slowstick was.  He played it that fall and again the summer after.  He said afterward it was 'a very specific weird game about a real person.'  He did not explain further.",
-
-    "cover_blurb":       "In January of 1946, Doctor Jack Whiteside performed a specific propellant experiment combined with an old text.  The next thing he knew was Parsa · a red desert world under two moons · a lost civilization, its four-armed warriors and silver-blue scholars, its enslaved child-shaped ancient people, its Order of the Prophet.  Nine rituals wait.  Six chapters.  Six endings.  One dedication.  Adapted from an unpublished manuscript by L. Rafayette Hubbard.  Recommended for players 16 and up.  Takes about 25 hours.",
-
+    "label_title": "THE EARTHMAN CHRONICLES",
+    "label_subtitle": "a lost 1948 manuscript · adapted",
+    "publisher": "Astro-Cortex Software",
+    "publisher_locale": "Culver City, CA",
+    "release_year": 1985,
+    "hardware": "Oneironautics Slowstick · Rev 2 (Astro-Cortex licensed)",
+    "genre_stamp": "TURN-BASED CRPG",
+    "shelf_condition": "played · Kelait-brown sleeve · one specific corner slightly warped by heat",
+    "prior_owner": "Olaf, from an Astro-Cortex estate sale in 1996",
+    "provenance_note": "Olaf bought this at an estate sale for two dollars in 1996.  The estate was Astro-Cortex's · liquidation · they had folded in 1994.  Nobody Olaf spoke to knew what a slowstick was.  He played it that fall and again the summer after.  He said afterward it was 'a very specific weird game about a real person.'  He did not explain further.",
+    "cover_blurb": "In January of 1946, Doctor Jack Whiteside performed a specific propellant experiment combined with an old text.  The next thing he knew was Parsa · a red desert world under two moons · a lost civilization, its four-armed warriors and silver-blue scholars, its enslaved child-shaped ancient people, its Order of the Prophet.  Nine rituals wait.  Six chapters.  Six endings.  One dedication.  Adapted from an unpublished manuscript by L. Rafayette Hubbard.  Recommended for players 16 and up.  Takes about 25 hours.",
     "back_of_case": [
       "· A specifically true story, filtered through a specifically self-serving author, corrected by a specifically small QA team.",
       "· Four party members: chemist · four-armed warrior · Kyrindi scholar · a cartographer's assistant who is not entirely a cartographer's assistant.",
@@ -29,28 +26,27 @@
       "'The weirdest cartridge we ever shipped.  I am proud of every specific choice on it.'",
       "    — A. Rocha, in a Reddit AMA in 2011 that has since been deleted."
     ],
-
     "in_fiction_dev_note": "A. Rocha's first significant work in the industry · not creative lead (she was junior QA) but the game reads as hers because she and colleague J.F. modified the ROM to include the Corrections.  Dedication reads 'For Jack.'"
   },
-
   "acts": [
-    { "id": "the_six_chapters", "title": "Six Chapters of Earthman Chronicles", "controller": "EarthmanChroniclesHost" }
+    {
+      "id": "the_six_chapters",
+      "title": "Six Chapters of Earthman Chronicles",
+      "controller": "EarthmanChroniclesHost"
+    }
   ],
-
   "start_chapter": 1,
   "start_scene": "pasadena_1946_bedroom",
-
   "data_files": {
-    "workings":     "res://resources/games/vol7/earthman_chronicles/workings.json",
-    "corrections":  "res://resources/games/vol7/earthman_chronicles/corrections.json",
-    "species":      "res://resources/games/vol7/earthman_chronicles/species.json",
-    "chapters":     "res://resources/games/vol7/earthman_chronicles/chapters.json",
-    "equipment":    "res://resources/games/vol7/earthman_chronicles/equipment.json",
-    "npcs":         "res://resources/games/vol7/earthman_chronicles/npcs.json",
+    "workings": "res://resources/games/vol7/earthman_chronicles/workings.json",
+    "corrections": "res://resources/games/vol7/earthman_chronicles/corrections.json",
+    "species": "res://resources/games/vol7/earthman_chronicles/species.json",
+    "chapters": "res://resources/games/vol7/earthman_chronicles/chapters.json",
+    "equipment": "res://resources/games/vol7/earthman_chronicles/equipment.json",
+    "npcs": "res://resources/games/vol7/earthman_chronicles/npcs.json",
     "dialogue_web": "res://resources/games/vol7/earthman_chronicles/dialogue_web.json",
-    "endings":      "res://resources/games/vol7/earthman_chronicles/endings.json"
+    "endings": "res://resources/games/vol7/earthman_chronicles/endings.json"
   },
-
   "lore_tokens_awarded_on_completion": [
     "earthman_chronicles_finished",
     "parsa_visited",

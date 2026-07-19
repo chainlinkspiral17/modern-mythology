@@ -2,23 +2,20 @@
   "id": "fey_faire",
   "vol": 7,
   "kind": "gallery_slowstock",
-  "status": "scaffold_boot · title screen · content authored in sibling JSONs · playable acts deferred",
+  "status": "playable_v1 · questionnaire → midway/negotiation/combat/big top → seven endings · NG+ + compendium",
   "design_doc": "lore/_FEY_FAIRE_DESIGN.md",
-
   "shelf": {
-    "label_title":       "FEY FAIRE",
-    "label_subtitle":    "six nights",
-    "publisher":         "Oneironautics Inc.",
-    "publisher_locale":  "Portland, OR",
-    "release_year":      1990,
-    "hardware":          "Oneironautics Slowstick · Rev 2",
-    "genre_stamp":       "DARK FANTASY RPG",
-    "shelf_condition":   "well-preserved · label intact · a small crease on the upper-right corner of the sleeve",
-    "prior_owner":       "Tem, borrowed from Kai in 2019 and never returned",
-    "provenance_note":   "Tem's friend Kai lent it to her the summer she graduated.  Kai said 'you have to play this before you're 25.'  She was 22.  She played it that August.  She has not returned it.  Kai does not remember loaning it.  Kai does not remember Fey Faire.",
-
-    "cover_blurb":       "The Fey Faire arrives every seventeen years in a specific town.  This time it's yours.  You get six nights.  Meet the fair-folk.  Cross their thresholds.  Choose which court you'll leave with · or if you'll leave at all.  A specifically dark fairy-carnival JRPG.  Recommended for players 14 and up.  Takes about 20 hours.  Rocha's debut.",
-
+    "label_title": "FEY FAIRE",
+    "label_subtitle": "six nights",
+    "publisher": "Oneironautics Inc.",
+    "publisher_locale": "Portland, OR",
+    "release_year": 1990,
+    "hardware": "Oneironautics Slowstick · Rev 2",
+    "genre_stamp": "DARK FANTASY RPG",
+    "shelf_condition": "well-preserved · label intact · a small crease on the upper-right corner of the sleeve",
+    "prior_owner": "Tem, borrowed from Kai in 2019 and never returned",
+    "provenance_note": "Tem's friend Kai lent it to her the summer she graduated.  Kai said 'you have to play this before you're 25.'  She was 22.  She played it that August.  She has not returned it.  Kai does not remember loaning it.  Kai does not remember Fey Faire.",
+    "cover_blurb": "The Fey Faire arrives every seventeen years in a specific town.  This time it's yours.  You get six nights.  Meet the fair-folk.  Cross their thresholds.  Choose which court you'll leave with · or if you'll leave at all.  A specifically dark fairy-carnival JRPG.  Recommended for players 14 and up.  Takes about 20 hours.  Rocha's debut.",
     "back_of_case": [
       "· One hundred and one named feys · each with their own manifestation at the Faire.",
       "· Nine tiers of ritual progression, drawn from the older texts.",
@@ -30,27 +27,26 @@
       "'Rocha's first game and her strangest.  I do not know what she was going through in 1989 but this is what came out.'",
       "    — Marc Ostrom, in the 2019 team reunion podcast."
     ],
-
     "in_fiction_dev_note": "Amélie Rocha's first credit as creative lead.  She was 25.  She had been at Oneironautics for four years as a junior.  She wrote the whole game while grieving a specific loss she never publicly named."
   },
-
   "acts": [
-    { "id": "the_six_nights", "title": "Six Nights at the Fey Faire", "controller": "FeyFaireHost" }
+    {
+      "id": "the_six_nights",
+      "title": "Six Nights at the Fey Faire",
+      "controller": "FeyFaireHost"
+    }
   ],
-
   "start_scene": "gate",
   "start_night": 1,
-
   "data_files": {
-    "feys":         "res://resources/games/vol7/fey_faire/feys.json",
-    "keepsakes":    "res://resources/games/vol7/fey_faire/keepsakes.json",
-    "skills":       "res://resources/games/vol7/fey_faire/skills.json",
-    "quotes":       "res://resources/games/vol7/fey_faire/quotes.json",
-    "questionnaire":"res://resources/games/vol7/fey_faire/questionnaire.json",
+    "feys": "res://resources/games/vol7/fey_faire/feys.json",
+    "keepsakes": "res://resources/games/vol7/fey_faire/keepsakes.json",
+    "skills": "res://resources/games/vol7/fey_faire/skills.json",
+    "quotes": "res://resources/games/vol7/fey_faire/quotes.json",
+    "questionnaire": "res://resources/games/vol7/fey_faire/questionnaire.json",
     "dialogue_web": "res://resources/games/vol7/fey_faire/dialogue_web.json",
-    "endings":      "res://resources/games/vol7/fey_faire/endings.json"
+    "endings": "res://resources/games/vol7/fey_faire/endings.json"
   },
-
   "lore_tokens_awarded_on_completion": [
     "fey_faire_finished",
     "faire_visited_at_least_once",
