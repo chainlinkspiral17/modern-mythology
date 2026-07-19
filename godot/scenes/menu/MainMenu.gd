@@ -194,6 +194,7 @@ func _build_ui() -> void:
 		["MUSIC PLAYER",      _on_music],
 		["ACHIEVEMENTS",      _on_achievements],
 		["SCRAPBOOK",         _on_scrapbook],
+		["PROFILE",           _on_profile],
 		["SLOWSTOCK LIBRARY", _on_slowstock_library],
 		["SETTINGS",          _on_settings],
 		["SCENE EDITOR",      _on_editor],
@@ -497,6 +498,17 @@ func _on_achievements() -> void:
 		existing.queue_free()
 	var panel := _build_achievements_panel()
 	panel.name = "AchievementsPanel"
+	add_child(panel)
+
+
+func _on_profile() -> void:
+	# The whole reading in one place — VN slots, gauntlet record,
+	# sticks finished, tokens held. Same fresh-build pattern.
+	var existing: Node = get_node_or_null("ProfilePanel")
+	if existing != null and is_instance_valid(existing):
+		existing.queue_free()
+	var ProfilePanel := load("res://scenes/menu/ProfilePanel.gd")
+	var panel: Control = ProfilePanel.build(self)
 	add_child(panel)
 
 
