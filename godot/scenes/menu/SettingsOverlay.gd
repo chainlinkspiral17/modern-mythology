@@ -104,6 +104,14 @@ func _rebuild() -> void:
 			Settings.sfx_vol = v
 			AudioMgr.set_bus_volume("SFX", v)
 	))
+	vbox.add_child(_slider_row("CONTROLLER RUMBLE", Settings.haptics,
+		func(v: float) -> void:
+			Settings.haptics = v
+			# Sample pulse so the strength is felt while dragging.
+			var bank := get_node_or_null("/root/SFXBank")
+			if bank != null and bank.has_method("rumble"):
+				bank.call("rumble", 0.3, 0.2, 0.12)
+	))
 
 	vbox.add_child(_rule())
 

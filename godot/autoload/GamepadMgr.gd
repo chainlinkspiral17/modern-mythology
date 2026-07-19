@@ -41,9 +41,10 @@ const REPEAT_RATE := 0.12           # s between repeats
 # Face/utility buttons → synthesized keys (tap semantics).
 const BUTTON_KEYS := {
 	JOY_BUTTON_B: KEY_ESCAPE,       # back / close · everything checks ESC
-	JOY_BUTTON_X: KEY_E,            # interact (Pirate Summer et al)
-	JOY_BUTTON_Y: KEY_J,            # journal (Pirate Summer)
+	JOY_BUTTON_X: KEY_E,            # interact (PS) · tune up (Basilica)
+	JOY_BUTTON_Y: KEY_J,            # journal (PS) · ledger (PMG) · heard log (NH)
 	JOY_BUTTON_BACK: KEY_F4,        # View button · clean-screenshot HUD toggle
+	JOY_BUTTON_LEFT_SHOULDER: KEY_TAB,  # roster (PS) · map (Basilica) · VN skip
 }
 
 # Directions → arrow keys. D-pad buttons and left-stick axes feed
@@ -113,7 +114,11 @@ func _unhandled_input(event: InputEvent) -> void:
 				or jb.button_index == JOY_BUTTON_RIGHT_STICK:
 			if _cursor_active:
 				_synth_click(jb.pressed)
-				get_viewport().set_input_as_handled()
+			else:
+				# RB with the cursor idle · duffel (PS) / tune down
+				# (Basilica) via KEY_I.
+				_synth_key(KEY_I, jb.pressed, false)
+			get_viewport().set_input_as_handled()
 
 
 func _input(event: InputEvent) -> void:

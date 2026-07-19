@@ -72,9 +72,10 @@ that nobody needs it.
 | Start                | skip               | `skip` action (rebound from LB to Start) |
 | D-pad / left stick   | arrows (synth, focus-gated) | overworld movement, log scrolling; focus nav when a Control is focused |
 | Right stick          | virtual cursor     | GamepadMgr CanvasLayer 120 |
-| RB / R3              | left click (at cursor) | only while the cursor is active |
+| LB                   | TAB (synth)        | roster (PS), map (Basilica), VN skip |
+| RB / R3              | left click while the cursor is active; otherwise RB → I (synth: PS duffel, Basilica tune-down) | GamepadMgr |
 | Trackpads            | Steam Input mouse  | guaranteed fallback, no code |
-| Gyro / grips / triggers | unbound (future) | candidates: trigger = click, gyro = fine cursor |
+| Gyro / grips / triggers | unbound — deliberate | triggers→Q/E rejected: Q hangs up the CP BBS + yaws the VN camera (graze hazard) |
 
 ## Steam Machine build
 
@@ -130,13 +131,35 @@ that nobody needs it.
   buttons — the virtual cursor covers them; native focus there
   is W3-adjacent polish, not a blocker. Needs ON-PAD
   verification (first real Steam Controller session).
-- **W3 — pending.** Slowstick sweep: all 15 sticks pad-audited
-  (movement echo semantics in PS; initial focus in button sticks;
-  hotkey sticks get pad equivalents). Keep the inventory here:
+- **W3 — DONE 2026-07-19 (code audit + fixes; on-pad verify
+  pending).** Every stick's input handling audited for keys the
+  synth doesn't cover, echo semantics, FOCUS_NONE buttons, and
+  mouse-only surfaces. Fixes: LB→TAB and idle-RB→I added to
+  GamepadMgr; NH heard-log and PMG ledger normalized to also
+  accept J (the Y button); Basilica gains KEY_I as tune-down so
+  the radio is tunable both ways on pad (X=up, RB=down).
+  Deliberately NOT mapped: triggers→Q/E (Q hangs up the CP BBS
+  and yaws the VN camera — graze hazard) and Wyrd's Z/C hex
+  diagonals (the four orthogonal steps generate the whole hex
+  lattice; diagonals are shortcuts).
 
   | Stick | Status | Notes |
   |-------|--------|-------|
-  | (fill in per-stick during W3) | | |
+  | pirate_summer | ✔ full | stick/d-pad walk (echo hold-to-walk matches keyboard), X interact, Y journal, LB roster, RB duffel, B closes |
+  | estuary_1 | ✔ full | 1/2/3 gate hotkeys ALSO clickable levers → cursor; A advances week |
+  | estuary_2 | ✔ full | pure buttons · focus nav |
+  | estuary_3 (4 acts + manager) | ✔ cursor | Planner/KwikStop/Walkabout use FOCUS_NONE buttons + drawn surfaces by design → virtual cursor; shelf has initial focus |
+  | northwind_harbor | ✔ full | Y (J) toggles the heard log (normalized from H-only) |
+  | basilica_of_wires | ✔ full | arrows turn/step (echo-filtered steps = press-per-step, matches keyboard), LB map, X/RB tune ±25; A/D fine-tune stays keyboard-only |
+  | sweetgum | ✔ cursor | one drawn gui_input surface |
+  | riffmaster_melody_club | ✔ cursor | one drawn gui_input surface |
+  | hane_no_niwa | ✔ cursor | one drawn gui_input surface |
+  | patient_mister_glass | ✔ full | Y (J) toggles the ledger (normalized from L-only) |
+  | fey_faire | ✔ full | buttons + focus; KP_ENTER alt-accept harmless |
+  | earthman_chronicles | ✔ full | buttons + focus; KP_ENTER alt-accept harmless |
+  | kwik_stop_manager | ✔ full | pure buttons + checkboxes · focus nav |
+  | sams_summer_shifts | ✔ full | pure buttons · focus nav |
+  | sisters_wyrd | ✔ full | d-pad hex steps (press-per-step); Q/E/Z/C diagonals keyboard-only by design |
 
 - **W4 — DONE 2026-07-19.** SteamMachine export preset + build
   script + fullscreen first-run default.

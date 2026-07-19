@@ -440,5 +440,6 @@ func _input(event: InputEvent) -> void:
 			else:
 				quit.emit()
 			get_viewport().set_input_as_handled()
-		elif kev.keycode == KEY_L:
+		elif kev.keycode == KEY_L or kev.keycode == KEY_J:
+			# J rides the pad's Y button (GamepadMgr) · same panel.
 			_toggle_ledger()

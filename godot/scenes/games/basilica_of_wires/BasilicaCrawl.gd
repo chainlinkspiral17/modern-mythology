@@ -197,6 +197,9 @@ func _input(event: InputEvent) -> void:
 		KEY_E: _tune(25.0)
 		KEY_A: _tune(-5.0)
 		KEY_D: _tune(5.0)
+		# Pad tuning pair · X (E synth) tunes up above; RB arrives as
+		# KEY_I via GamepadMgr when the virtual cursor is idle.
+		KEY_I: _tune(-25.0)
 	queue_redraw()
 
 
