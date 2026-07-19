@@ -148,10 +148,22 @@ Court (glamour/iron-sick/oathbound) and visible Court reputation
 (the factions data exists; surface a standing meter in the trailer).
 Bookstall quotes should list which fey they've worked on.
 
-**P2 · earthman_chronicles** — the tactical scaffold exists; pick
-ONE chapter boss (the Mines' Thar-Krai-Tam) and make it a full
-arena fight as the pattern-setter before spreading to the rest.
-Workings menu: show consequence previews for consent violations.
+**P2 · earthman_chronicles — DONE 2026-07-19.** Thar-Krai-Tam now
+runs a scripted arena pattern in EarthmanCombat (`_boss_turn_thar`,
+other bosses keep the generic loop): open-hand cuffs at reduced
+damage while the blade stays sheathed, a TELEGRAPHED four-arm bind
+(DEFEND on the telegraph turn slips it and opens him up ·
+counter-hit ×1.5 · otherwise strike+6), the blade drawn after turn
+3 as its own beat, and the overseer's bellow staggering the next
+player strike −4 every 4th armed turn. Status chips on both HP
+labels; Rocha's "he telegraphs the bind" analyze line is now a
+tutorial, not flavor. Workings menu: performing over a live
+objection now previews the exact cost inline ("regard N → N−1 · a
+thing said aloud stays said") before the button is pressed.
+Original note: — the tactical scaffold exists; pick ONE chapter
+boss (the Mines' Thar-Krai-Tam) and make it a full arena fight as
+the pattern-setter before spreading to the rest. Workings menu:
+show consequence previews for consent violations.
 
 **P2 · pirate_summer** — ~~NG+: knowing Wilson's secret / the 1976
 cache from a prior run unlocks early dialogue options and a

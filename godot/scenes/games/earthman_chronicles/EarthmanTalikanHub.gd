@@ -672,10 +672,12 @@ func _render_ritual_circle() -> void:
 			if not party.has(String(m)):
 				missing.append(String(m).capitalize())
 		var objectors: Array = []
+		var objector_ids: Array = []
 		for r in w.get("party_refuses", []):
 			var rid := String(r).split(" ")[0]
 			if party.has(rid):
 				objectors.append(rid.capitalize())
+				objector_ids.append(rid)
 
 		var btn := Button.new()
 		if done:
@@ -694,6 +696,20 @@ func _render_ritual_circle() -> void:
 			var obj_note: String = "" if objectors.is_empty() else " · " + ", ".join(objectors) + " will object"
 			btn.text = "  perform · fast " + str(int(w.get("fasting_days", 0))) + " day(s)" + obj_note + ("  · -" + str(int(w.get("hp_cost", 0))) + " HP permanent" if int(w.get("hp_cost", 0)) > 0 else "") + "  "
 			btn.pressed.connect(func() -> void: _perform_working(w))
+			# Consequence preview · overruling an objection is a real
+			# cost and the menu says so BEFORE the button is pressed.
+			if not objector_ids.is_empty():
+				var bits: Array = []
+				for oid in objector_ids:
+					var k: String = String(oid) + "_disposition"
+					var cur: int = int(_run_state.get(k, 0))
+					bits.append("%s · regard %d → %d" % [String(oid).capitalize(), cur, cur - 1])
+				var prev := Label.new()
+				prev.text = "    · if performed over their objection · " + " · ".join(bits) + " · a thing said aloud stays said"
+				prev.add_theme_font_size_override("font_size", 12)
+				prev.add_theme_color_override("font_color", C_RED)
+				prev.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+				entry.add_child(prev)
 		btn.add_theme_font_size_override("font_size", 13)
 		entry.add_child(btn)
 

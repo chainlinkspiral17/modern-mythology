@@ -84,6 +84,12 @@ var _turn: int = 1
 var _shield_turns: int = 0
 var _attack_buff: int = 0
 var _weakness_revealed: bool = false
+# Thar-Krai-Tam arena pattern state · the pattern-setter boss.
+# Other bosses run the generic strike loop below.
+var _bind_incoming: bool = false     # telegraphed · resolves next boss turn
+var _blade_drawn: bool = false       # sheathed through turn 3 · a courtesy
+var _counter_open: bool = false      # you slipped the bind · next hit x1.5
+var _staggered: bool = false         # the bellow · next hit −4
 var _party_used: Dictionary = {}     # member id → true
 var _workings_cast: Dictionary = {}  # working id → true (one cast each)
 var _log: Array = []
@@ -135,7 +141,7 @@ func _render() -> void:
 
 	# HP bars
 	var boss_lbl := Label.new()
-	boss_lbl.text = String(_boss.get("name", "?")).split(" ·")[0] + "  " + str(_boss_hp) + "/" + str(_boss_hp_max) + ("   · weak point known ·" if _weakness_revealed else "")
+	boss_lbl.text = String(_boss.get("name", "?")).split(" ·")[0] + "  " + str(_boss_hp) + "/" + str(_boss_hp_max) + ("   · weak point known ·" if _weakness_revealed else "") + ("   · BIND INCOMING · brace ·" if _bind_incoming else "") + ("   · blade drawn ·" if _blade_drawn else "")
 	boss_lbl.set_anchors_preset(Control.PRESET_TOP_LEFT)
 	boss_lbl.position = Vector2(60, 66)
 	boss_lbl.add_theme_font_size_override("font_size", 15)
@@ -143,7 +149,7 @@ func _render() -> void:
 	add_child(boss_lbl)
 
 	var jack_lbl := Label.new()
-	jack_lbl.text = "JACK  " + str(_player_hp) + "/" + str(_player_hp_max) + ("   · warded ·" if _shield_turns > 0 else "") + ("   · +%d ·" % _attack_buff if _attack_buff > 0 else "")
+	jack_lbl.text = "JACK  " + str(_player_hp) + "/" + str(_player_hp_max) + ("   · warded ·" if _shield_turns > 0 else "") + ("   · +%d ·" % _attack_buff if _attack_buff > 0 else "") + ("   · opening ·" if _counter_open else "") + ("   · staggered ·" if _staggered else "")
 	jack_lbl.set_anchors_preset(Control.PRESET_TOP_RIGHT)
 	jack_lbl.position = Vector2(-320, 66)
 	jack_lbl.add_theme_font_size_override("font_size", 15)
@@ -342,6 +348,12 @@ func _player_damage(base: int) -> int:
 	var dmg: int = base + _attack_buff + (_turn % 4)
 	if _weakness_revealed:
 		dmg = int(round(dmg * 1.5))
+	if _counter_open:
+		dmg = int(round(dmg * 1.5))
+		_counter_open = false
+	if _staggered:
+		dmg = maxi(1, dmg - 4)
+		_staggered = false
 	return max(1, dmg)
 
 
@@ -416,6 +428,8 @@ func _end_player_turn() -> void:
 	if _boss_stunned:
 		_boss_stunned = false
 		_log.append("· the tone still hangs · " + String(_boss.get("name", "?")).split(" ·")[0] + " does nothing ·")
+	elif _boss_id == "thar_krai_tam":
+		_boss_turn_thar()
 	else:
 		var skills: Array = _boss.get("skills", [])
 		var raw: int = int(_boss.get("strike", 10)) + (_turn % 3)
@@ -438,6 +452,48 @@ func _end_player_turn() -> void:
 		return
 	_turn += 1
 	_render()
+
+
+func _boss_turn_thar() -> void:
+	# The scripted arena · turn 1 open-hand, turn 2 telegraph, turn 3
+	# the bind, turn 4 the blade, then a bind cycle with the bellow
+	# between.  DEFEND on the telegraph turn slips the bind and opens
+	# him up · Rocha's analyze line ("he telegraphs the bind") is a
+	# tutorial for this fight, not flavor.
+	if _bind_incoming:
+		_bind_incoming = false
+		if _shield_turns > 0:
+			_shield_turns -= 1
+			_counter_open = true
+			_log.append("· the four-arm bind closes on your cover, not on you · you slip it · for one breath he is wide open")
+		else:
+			var raw: int = int(_boss.get("strike", 11)) + 6
+			_player_hp = max(0, _player_hp - raw)
+			_log.append("· the four-arm bind · " + str(raw) + " damage · lifted, held, set down like a point being made")
+			var sfx := get_node_or_null("/root/SFXBank")
+			if sfx: sfx.play("hurt", 0.6)
+		return
+	if _turn == 2 or (_blade_drawn and _turn % 3 == 0):
+		_bind_incoming = true
+		_log.append("· the four lower arms spread wide · the bind is coming · brace for it or pay for it")
+		return
+	if not _blade_drawn and _turn >= 3:
+		_blade_drawn = true
+		_log.append("· the silvered heirloom blade leaves the sheath · unhurried · the courtesy is over")
+		return
+	if _blade_drawn and _turn % 4 == 0:
+		_staggered = true
+		_log.append("· overseer's bellow · the gallery rings off the stone · your next strike wavers")
+		return
+	var raw2: int = int(_boss.get("strike", 11)) + (_turn % 3) + (2 if _blade_drawn else -5)
+	if _shield_turns > 0:
+		raw2 = int(round(raw2 * 0.5))
+		_shield_turns -= 1
+	raw2 = max(1, raw2)
+	_player_hp = max(0, _player_hp - raw2)
+	_log.append("· " + ("one clean silvered arc" if _blade_drawn else "an open-hand cuff · the blade stays sheathed") + " · " + str(raw2) + " damage to you")
+	var sfx2 := get_node_or_null("/root/SFXBank")
+	if sfx2: sfx2.play("hurt", 0.5)
 
 
 func _render_outcome() -> void:
