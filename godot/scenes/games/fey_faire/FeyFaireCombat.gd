@@ -66,6 +66,7 @@ var _fey_id: String = ""
 var _fey: Dictionary = {}
 var _run_state: Dictionary = {}
 var _quotes_by_id: Dictionary = {}
+var _feys_by_id: Dictionary = {}
 
 # Combat state
 var _player_hp: int = 60
@@ -90,6 +91,7 @@ func boot(state: Dictionary) -> void:
 	var payload: Dictionary = state
 	_fey_id = String(payload.get("fey_id", ""))
 	_run_state = payload.get("run_state", {})
+	_implement = String(_run_state.get("implement", ""))
 	_load_fey()
 	# Scale player HP based on lost memories (harder as they wear thin)
 	var lost: int = int(_run_state.get("memories_lost", 0))
@@ -124,9 +126,9 @@ func _load_fey() -> void:
 	if parsed is Dictionary:
 		for entry_v in (parsed as Dictionary).get("feys", []):
 			var entry: Dictionary = entry_v
+			_feys_by_id[String(entry.get("id", ""))] = entry
 			if String(entry.get("id", "")) == _fey_id:
 				_fey = entry
-				break
 	# Quote catalog · for RECITE text + affinity matching
 	if not FileAccess.file_exists(QUOTES_PATH): return
 	var qf := FileAccess.open(QUOTES_PATH, FileAccess.READ)
@@ -445,6 +447,21 @@ func _render_action_menu() -> void:
 	parley_btn.add_theme_color_override("font_color", C_GOLD_DIM)
 	menu.add_child(parley_btn)
 
+	# SECOND · one recruited fey answers the call, once per combat.
+	var second := _best_second()
+	if not second.is_empty():
+		var second_btn := Button.new()
+		if _second_used:
+			second_btn.text = "  SECOND  \n  (they have done their part)  "
+			second_btn.disabled = true
+		else:
+			second_btn.text = "  SECOND  \n  (call " + String(second.get("name", "an ally")) + ")  "
+			second_btn.pressed.connect(_on_second_pressed)
+		second_btn.custom_minimum_size = Vector2(180, 60)
+		second_btn.add_theme_font_size_override("font_size", 15)
+		second_btn.add_theme_color_override("font_color", Color(0.62, 0.82, 0.55, 1.0) if not _second_used else C_GOLD_DIM)
+		menu.add_child(second_btn)
+
 
 func _render_outcome_buttons() -> void:
 	var v := VBoxContainer.new()
@@ -474,6 +491,17 @@ var _iron_sick: bool = false
 var _oath_used: bool = false
 var _oath_pending: bool = false
 
+# ─── The implement · the damage triangle, finally applied ───────────
+var _implement: String = ""
+var _second_used: bool = false
+
+const IMPLEMENT_LABEL := {
+	"iron": "the cold iron nail",
+	"salt": "the twist of salt",
+	"song": "the tin whistle",
+	"flame": "a lucifer match",
+}
+
 
 func _on_attack_pressed() -> void:
 	var sfx := get_node_or_null("/root/SFXBank")
@@ -486,13 +514,67 @@ func _on_attack_pressed() -> void:
 	# Random variance ± 3
 	var dmg: int = base + (_turn % 5) - 2
 	dmg = max(1, dmg)
+	# The triangle the readout always advertised · what you carry
+	# against what they are.
+	var tri := ""
+	if _implement != "":
+		if _implement == _fey_str("weakness", ""):
+			dmg = int(round(dmg * 1.5))
+			tri = " · " + String(IMPLEMENT_LABEL.get(_implement, _implement)) + " · their flesh REMEMBERS it"
+		elif _implement == _fey_str("resistance", ""):
+			dmg = max(1, int(round(dmg * 0.5)))
+			tri = " · " + String(IMPLEMENT_LABEL.get(_implement, _implement)) + " means nothing to them"
 	if _glamour_active:
 		dmg = max(1, int(round(dmg * 0.5)))
 		_fey_hp = max(0, _fey_hp - dmg)
-		_log.append("· you strike · the glamour turns your eye · " + str(dmg) + " damage")
+		_log.append("· you strike · the glamour turns your eye" + tri + " · " + str(dmg) + " damage")
 	else:
 		_fey_hp = max(0, _fey_hp - dmg)
-		_log.append("· you strike · " + str(dmg) + " damage")
+		_log.append("· you strike" + tri + " · " + str(dmg) + " damage")
+	_end_of_player_turn()
+
+
+func _best_second() -> Dictionary:
+	# The highest-tier recruited fey answers the call.
+	var best: Dictionary = {}
+	for rid_v in _run_state.get("recruited_feys", []):
+		var rf: Dictionary = _feys_by_id.get(String(rid_v), {})
+		if rf.is_empty() or String(rf.get("id", "")) == _fey_id:
+			continue
+		if best.is_empty() or int(rf.get("tier", 1)) > int(best.get("tier", 1)):
+			best = rf
+	return best
+
+
+func _on_second_pressed() -> void:
+	var second := _best_second()
+	if second.is_empty() or _second_used:
+		return
+	_second_used = true
+	_player_defending = false
+	var sfx := get_node_or_null("/root/SFXBank")
+	var s_name := String(second.get("name", "an ally"))
+	var gift_v: Variant = second.get("recruit_gift", "")
+	var gift := String(gift_v) if gift_v is String else ""
+	if gift.to_lower().find("heal") >= 0:
+		var healed: int = mini(_player_hp_max, _player_hp + 16) - _player_hp
+		_player_hp += healed
+		if sfx: sfx.play("win_chord", 0.5)
+		_log.append("· " + s_name + " steps out of the dark beside you · " + gift + " · +" + str(healed) + " HP")
+	else:
+		var s_dmg: int = 10 + int(second.get("tier", 1)) * 3
+		var s_type_v: Variant = second.get("damage_type", "")
+		var s_type := String(s_type_v) if s_type_v is String else ""
+		var s_note := ""
+		if s_type != "" and s_type == _fey_str("weakness", ""):
+			s_dmg = int(round(s_dmg * 1.5))
+			s_note = " · " + s_type + " is what they fear"
+		elif s_type != "" and s_type == _fey_str("resistance", ""):
+			s_dmg = max(1, int(round(s_dmg * 0.5)))
+			s_note = " · they shrug the " + s_type + " off"
+		_fey_hp = max(0, _fey_hp - s_dmg)
+		if sfx: sfx.play("press_hit", 0.6)
+		_log.append("· " + s_name + " steps out of the dark beside you · " + (gift if gift != "" else "and strikes") + s_note + " · " + str(s_dmg) + " damage")
 	_end_of_player_turn()
 
 

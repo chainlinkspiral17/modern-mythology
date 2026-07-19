@@ -357,7 +357,7 @@ const IMPLEMENTS := [
 	{"id": "iron", "name": "a cold iron nail", "note": "old, square-cut, from a church door · fey flesh remembers iron"},
 	{"id": "salt", "name": "a paper twist of salt", "note": "kitchen salt · the oldest border there is"},
 	{"id": "song", "name": "a tin whistle", "note": "six holes, one owner · some of them cannot bear a mortal tune"},
-	{"id": "word", "name": "a hawthorn sprig", "note": "cut in May, tied with thread · a word made wood"},
+	{"id": "flame", "name": "a box of lucifer matches", "note": "strike-anywhere · half the old stories end in fire"},
 ]
 
 

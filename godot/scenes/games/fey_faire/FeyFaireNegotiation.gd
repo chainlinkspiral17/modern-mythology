@@ -305,7 +305,7 @@ func _render_main_view() -> void:
 
 	_add_negotiation_button(right, "THREATEN",
 		"invoke their true name" + (" · tier %d · they will not kneel" % int(_fey.get("tier", 1))
-			if int(_fey.get("tier", 1)) >= 4 and can_threaten else ""),
+			if int(_fey.get("tier", 1)) >= 3 and can_threaten else ""),
 		can_threaten, C_GOLD_DIM, _on_threaten_pressed)
 
 	_add_negotiation_button(right, "RECITE",
@@ -454,13 +454,14 @@ func _render_threaten_view() -> void:
 	_render_branch_view(
 		"THREATEN",
 		"You speak the true name: '" + _fey_str("true_name", "?") + "'",
-		("the fey stiffens.  the name is powerful." if tier < 4
+		("the fey stiffens.  the name is powerful." if tier < 3
 			else "the name is powerful · and so are they.  names start fights at this tier."),
 		func() -> void:
-			# The great ones answer their name with violence · the
-			# organic door into combat.  Lesser feys submit, resentful,
-			# and the submission is an UNSEELIE act whoever you took.
-			if tier >= 4:
+			# The great ones (tier 3 · Titania, Oberon, Mab, Hecate...)
+			# answer their name with violence · the organic door into
+			# combat.  Lesser feys submit, resentful, and the submission
+			# is an UNSEELIE act whoever you took.
+			if tier >= 3:
 				var sfx := get_node_or_null("/root/SFXBank")
 				if sfx: sfx.play("loss_thud", 0.7)
 				_render_result_view(
