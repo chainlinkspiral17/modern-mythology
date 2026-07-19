@@ -169,6 +169,12 @@ func _ready() -> void:
 
 func boot(state: Dictionary) -> void:
 	_run_state = state
+	# One solo week per summer · Ray's at the coast and Sam runs the
+	# store alone, so register craft counts double.  Rolled once and
+	# saved; never lands on the intro, the robbery, or the last shift.
+	if not _run_state.has("solo_week"):
+		var pool: Array = [2, 3, 4, 5, 7, 10, 11]
+		_run_state["solo_week"] = int(pool[randi() % pool.size()])
 	_build_frame()
 	_render_week()
 
@@ -257,10 +263,24 @@ func _render_week() -> void:
 	meters.add_theme_color_override("font_color", C_GREEN)
 	v.add_child(meters)
 
+	if week == int(_run_state.get("solo_week", -1)):
+		var mod_lbl := Label.new()
+		mod_lbl.text = "· RAY'S AT THE COAST · you run it solo this week · till swings count double ·"
+		mod_lbl.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+		mod_lbl.add_theme_font_size_override("font_size", 13)
+		mod_lbl.add_theme_color_override("font_color", C_YELLOW)
+		v.add_child(mod_lbl)
+
+	var week_text := String(wk.get("text", ""))
+	# Crossover guest · Fair Weekend only, and only if the shelf has
+	# a finished PIRATE SUMMER save somewhere in the token store.
+	if week == 9 and OneironauticsTokens.has("pirate_summer_finished"):
+		week_text += "\n\nSaturday of the fair, a guy buys a blue slushie and a rock-shaped postcard.  His t-shirt says CAMP SWEETGUM STAFF.  He drums two fingers on the counter · some song you almost know · and says the canteen slushies at camp were never this good, and that a friend of his would want the postcard because it looks like a rock she'd respect.  He leaves humming it.  You hum it for the rest of the shift and can't say where it came from."
+
 	var body := RichTextLabel.new()
 	body.bbcode_enabled = false
 	body.fit_content = true
-	body.text = String(wk.get("text", ""))
+	body.text = week_text
 	body.add_theme_font_size_override("normal_font_size", 16)
 	body.add_theme_color_override("default_color", C_CREAM)
 	body.custom_minimum_size = Vector2(760, 130)
@@ -295,7 +315,8 @@ func _render_week() -> void:
 func _on_choice(choice: Dictionary) -> void:
 	var sfx := get_node_or_null("/root/SFXBank")
 	if sfx: sfx.play("register_ding", 0.5)
-	_run_state["till"] = clampi(int(_run_state.get("till", 3)) + int(choice.get("till", 0)), 0, 10)
+	var till_mult: int = 2 if int(_run_state.get("week", 1)) == int(_run_state.get("solo_week", -1)) else 1
+	_run_state["till"] = clampi(int(_run_state.get("till", 3)) + int(choice.get("till", 0)) * till_mult, 0, 10)
 	_run_state["regulars"] = clampi(int(_run_state.get("regulars", 3)) + int(choice.get("regulars", 0)), 0, 10)
 	_run_state["nerve"] = clampi(int(_run_state.get("nerve", 3)) + int(choice.get("nerve", 0)), 0, 10)
 	var log: Array = _run_state.get("choices_log", [])

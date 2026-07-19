@@ -128,11 +128,20 @@ is noticing; give it more to notice.
 ignoring the dog across mornings shift the final morning. One
 variable, tracked, paid off.
 
-**P2 · kwik_stop_manager + sams_summer_shifts — KSM ENDING AUDIT CLEAN 2026-07-19 (full endings system in the host; earlier zero-count was a wrong-file grep). Modifiers + crossover guest remain. Original note:** — shared Manager
-machinery: one new nightly modifier each and one crossover guest
-(a Pirate Summer camper buying slushies in SSS). KSM's host gd had
-zero "ending" mentions — AUDIT it has a real terminal state, not
-just an exit.
+**P2 · kwik_stop_manager + sams_summer_shifts — DONE 2026-07-19.**
+KSM ending audit CLEAN (full endings system in the host; earlier
+zero-count was a wrong-file grep). Modifiers + crossover guest
+shipped: KSM rolls a REPAVE WEEK once per summer (weeks 3–7,
+persisted in `_state.repave_week`) — traffic ×0.55 but +$95 flat
+crew lunches, announced in the plan phase and itemized in the
+ledger. SSS rolls a solo week once per summer (`solo_week`, never
+weeks 1/6/12) — "RAY'S AT THE COAST" banner, till swings count
+double. Crossover guest: Fair Weekend (week 9) gains a CAMP
+SWEETGUM STAFF shirt buying a blue slushie + rock postcard, gated
+on `OneironauticsTokens.has("pirate_summer_finished")`. Original
+note: — shared Manager machinery: one new nightly modifier each
+and one crossover guest (a Pirate Summer camper buying slushies
+in SSS).
 
 **P2 · ~~fey_faire~~ DONE 2026-07-19** — one status per Court in combat (seelie GLAMOUR dispelled by DEFEND, unseelie IRON-SICK from an affinity RECITE, wildfey OATHBOUND once per fight when any verse invokes the courtesies), status chips on the fey panel, and Court STANDING in words (unmet→beloved) atop the party roster. Bookstall-quote fey lists remain. Original note: — combat scaffold wants one status effect per
 Court (glamour/iron-sick/oathbound) and visible Court reputation

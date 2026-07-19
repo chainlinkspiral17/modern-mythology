@@ -59,6 +59,11 @@ func boot(state: Dictionary) -> void:
 	_state = state
 	_n = clampi(int(_state.get("week_n", 1)), 1, 12)
 	_week = (_weeks.get("weeks", []))[_n - 1]
+	# One repave week per summer · rolled once, weeks 3-7, never
+	# colliding with week 8.  Persists through the save like
+	# everything else in _state.
+	if not _state.has("repave_week"):
+		_state["repave_week"] = 3 + int(randi() % 5)
 	_phase = "plan"
 	_picked = (_state.get("last_crew", []) as Array).duplicate()
 	_stock_order = 0
@@ -197,6 +202,8 @@ func _render_plan() -> void:
 	_body.append_text("[b]THE WEEK AHEAD[/b]\n\ntraffic forecast · ×%.1f\n%s\n\npick a crew of three. skill runs the register. wages come out saturday. the score watches everything, because this is the game where the score is allowed to.\n" % [
 		float(_week.get("traffic", 1.0)),
 		"[color=#c8442c]RENT DUE THIS WEEK · $" + str(int(_weeks.get("rent", 220))) + "[/color]" if _n in _weeks.get("rent_weeks", []) else "rent is not due this week."])
+	if _n == int(_state.get("repave_week", -1)):
+		_body.append_text("\n[color=#c8442c]· COUNTY REPAVE THIS WEEK · flaggers either side of the lot, traffic thinned to a crawl · but a road crew eats where it works. guaranteed lunch-counter money.[/color]\n")
 	_render_crew_picker()
 	_go_btn.visible = true
 	_stock_row.visible = true
@@ -259,6 +266,9 @@ func _run_week() -> void:
 	var stock: int = mini(12, int(_state.get("stock", 5)) + _stock_order)
 	cash -= _stock_order * STOCK_UNIT_COST
 	var traffic: float = float(_week.get("traffic", 1.0))
+	var repave: bool = _n == int(_state.get("repave_week", -1))
+	if repave:
+		traffic *= 0.55
 	var skill := 0.0
 	var wages := 0
 	for sid in _picked:
@@ -277,6 +287,9 @@ func _run_week() -> void:
 	lines.append("stock in · %d units (−$%d)" % [_stock_order, _stock_order * STOCK_UNIT_COST])
 	lines.append("sold · %d of %d demanded · +$%d" % [sold, demand, revenue])
 	lines.append("wages · −$%d (%s)" % [wages, ", ".join(_picked)])
+	if repave:
+		cash += 95
+		lines.append("repave crew lunches · +$95 · eight men, five days, the same order by wednesday")
 	if sold < demand:
 		lines.append("[color=#c8442c]· empty shelves turned away $%d. the score saw.[/color]" % ((demand - sold) * STOCK_UNIT_REVENUE))
 	var landlord: int = int(_state.get("landlord", 5))
