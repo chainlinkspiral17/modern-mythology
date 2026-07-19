@@ -523,6 +523,8 @@ func _directed(n: Dictionary) -> Dictionary:
 					# Paper-slide moment sound: a page turn on open, a
 					# soft close on dismiss. Presets ship in SFXBank.
 					SFXBank.play("menu_close" if arg == "off" else "page_turn", 0.55)
+					if arg != "off":
+						SaveSystem.mark_cg_seen("panel:" + arg)
 		stripped = stripped.substr(m.get_end(0))
 	if stripped == text:
 		return n

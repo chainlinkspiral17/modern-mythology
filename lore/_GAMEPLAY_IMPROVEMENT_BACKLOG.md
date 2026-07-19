@@ -210,10 +210,19 @@ maya_has_envelope (ch2) pays off over the ch4 floorboard envelope.
 Original note: — ChoiceMenu exists — AUDIT choice density per
 volume and whether any choice sets a flag a LATER chapter reads.
 
-**P2 · Chapter select + gallery.** Replay from the volume screen,
-plus a gallery of panels/CGs seen (the panel JSONs double as the
-gallery's data source). Standard VN meta the package now has the
-art to justify.
+**P2 · Chapter select + gallery — DONE 2026-07-19.** Audit:
+chapter select already existed (MainMenu volume screen lists
+chapters per volume with replay), and GalleryOverlay already
+covered CGs + ascii substrates with locked tiles. The gap was
+panels: shipped a STORY PANELS section in GalleryOverlay sourced
+directly from `resources/vn/panels/*.json` (the panel JSONs as
+gallery data, as designed) — HeroImage-rasterized thumbnails,
+locked tiles for unseen, NEAREST-filtered fullscreen viewer with
+the panel id captioned. Seen-state rides the existing gallery.cfg
+via `SaveSystem.mark_cg_seen("panel:<id>")`, marked in GameEngine
+at the `[panel:]` directive. Original note: — Replay from the
+volume screen, plus a gallery of panels/CGs seen (the panel JSONs
+double as the gallery's data source).
 
 **P3 · Reading stats.** Words read, panels found, chapters at each
 mood — surfaced at volume end, Oneironautics-flavored.

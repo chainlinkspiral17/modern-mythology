@@ -235,6 +235,25 @@ func _rebuild() -> void:
 				for it_v in by_set[sset]:
 					flow.add_child(_make_substrate_tile(it_v as Dictionary))
 
+	# Story panels · the [panel:] HeroImage JSONs double as the
+	# gallery's data source. Seen-state rides the same gallery.cfg
+	# store as CGs, keyed "panel:<id>".
+	var panel_ids := _list_panel_ids()
+	if not panel_ids.is_empty():
+		var panels_seen: int = 0
+		for pid: String in panel_ids:
+			if SaveSystem.is_cg_seen("panel:" + pid):
+				panels_seen += 1
+		content.add_child(_section_label("STORY PANELS  ·  %d / %d" % [panels_seen, panel_ids.size()]))
+		var pflow := FlowContainer.new()
+		pflow.alignment = FlowContainer.ALIGNMENT_BEGIN
+		pflow.add_theme_constant_override("h_separation", 10)
+		pflow.add_theme_constant_override("v_separation", 10)
+		pflow.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+		content.add_child(pflow)
+		for pid: String in panel_ids:
+			pflow.add_child(_make_panel_tile(pid, SaveSystem.is_cg_seen("panel:" + pid)))
+
 	# CG section
 	content.add_child(_section_label("CG IMAGES"))
 	if all_cgs.is_empty():
@@ -1552,6 +1571,110 @@ func _make_tile(src: String, is_seen: bool) -> Control:
 		tile.disabled = true
 
 	return tile
+
+
+const PANELS_DIR := "res://resources/vn/panels"
+
+func _list_panel_ids() -> Array:
+	var out: Array = []
+	var d := DirAccess.open(PANELS_DIR)
+	if d == null:
+		return out
+	d.list_dir_begin()
+	var fn := d.get_next()
+	while fn != "":
+		if not d.current_is_dir() and fn.ends_with(".json"):
+			out.append(fn.trim_suffix(".json"))
+		fn = d.get_next()
+	d.list_dir_end()
+	out.sort()
+	return out
+
+
+func _panel_texture(pid: String, size: Vector2i) -> Texture2D:
+	var hero := HeroImage.new()
+	if not hero.load_from(PANELS_DIR + "/" + pid + ".json"):
+		return null
+	return hero.texture(size)
+
+
+func _make_panel_tile(pid: String, is_seen: bool) -> Control:
+	var tile := Button.new()
+	tile.custom_minimum_size = Vector2(THUMB_W, THUMB_H)
+	tile.clip_contents = true
+	var tile_style := StyleBoxFlat.new()
+	tile_style.bg_color     = C_DIM if not is_seen else Color(0, 0, 0, 0.2)
+	tile_style.border_color = C_BORDER
+	tile_style.set_border_width_all(1)
+	tile.add_theme_stylebox_override("normal",  tile_style)
+	var hover_style: StyleBoxFlat = tile_style.duplicate() as StyleBoxFlat
+	hover_style.border_color = Color(C_GOLD.r, C_GOLD.g, C_GOLD.b, 0.7)
+	tile.add_theme_stylebox_override("hover",   hover_style)
+	tile.add_theme_stylebox_override("focus",   hover_style)
+	tile.add_theme_stylebox_override("pressed", hover_style)
+	if is_seen:
+		var tex := _panel_texture(pid, Vector2i(THUMB_W, THUMB_H))
+		if tex != null:
+			var img_rect := TextureRect.new()
+			img_rect.texture = tex
+			img_rect.texture_filter = CanvasItem.TEXTURE_FILTER_NEAREST
+			img_rect.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_COVERED
+			img_rect.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
+			img_rect.mouse_filter = Control.MOUSE_FILTER_IGNORE
+			tile.add_child(img_rect)
+		var p: String = pid
+		tile.pressed.connect(func() -> void: _view_fullscreen_panel(p))
+	else:
+		var lock_lbl := Label.new()
+		lock_lbl.text = "🔒"
+		lock_lbl.set_anchors_and_offsets_preset(Control.PRESET_CENTER)
+		lock_lbl.add_theme_font_size_override("font_size", 24)
+		lock_lbl.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+		lock_lbl.mouse_filter = Control.MOUSE_FILTER_IGNORE
+		tile.add_child(lock_lbl)
+		tile.disabled = true
+	return tile
+
+
+func _view_fullscreen_panel(pid: String) -> void:
+	var viewer := ColorRect.new()
+	viewer.color = Color(0, 0, 0, 0.92)
+	viewer.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
+	viewer.z_index = 10
+	add_child(viewer)
+	var tex := _panel_texture(pid, Vector2i(1080, 720))
+	if tex != null:
+		var img := TextureRect.new()
+		img.texture = tex
+		img.texture_filter = CanvasItem.TEXTURE_FILTER_NEAREST
+		img.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED
+		img.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
+		img.mouse_filter = Control.MOUSE_FILTER_IGNORE
+		viewer.add_child(img)
+	var name_lbl := Label.new()
+	name_lbl.text = pid.replace("_", " ")
+	name_lbl.horizontal_alignment = HORIZONTAL_ALIGNMENT_LEFT
+	name_lbl.vertical_alignment   = VERTICAL_ALIGNMENT_BOTTOM
+	name_lbl.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
+	name_lbl.offset_left   = 16
+	name_lbl.offset_bottom = -16
+	_apply_font(name_lbl, SkinDB.F_CINZEL, 9, Color(C_GOLD.r, C_GOLD.g, C_GOLD.b, 0.5))
+	name_lbl.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	viewer.add_child(name_lbl)
+	var close_lbl := Label.new()
+	close_lbl.text = "CLICK TO CLOSE"
+	close_lbl.horizontal_alignment = HORIZONTAL_ALIGNMENT_RIGHT
+	close_lbl.vertical_alignment   = VERTICAL_ALIGNMENT_BOTTOM
+	close_lbl.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
+	close_lbl.offset_right  = -16
+	close_lbl.offset_bottom = -16
+	_apply_font(close_lbl, SkinDB.F_CINZEL, 9, Color(C_GOLD.r, C_GOLD.g, C_GOLD.b, 0.5))
+	close_lbl.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	viewer.add_child(close_lbl)
+	viewer.gui_input.connect(func(ev: InputEvent) -> void:
+		if ev is InputEventMouseButton and (ev as InputEventMouseButton).pressed:
+			viewer.queue_free()
+	)
 
 
 func _view_fullscreen(src: String) -> void:
