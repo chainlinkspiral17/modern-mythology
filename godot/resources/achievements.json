@@ -442,14 +442,15 @@
   {
    "id": "wheel_of_fortune_complete",
    "title": "THE HOUSE PLAYED FAIR",
-   "desc": "Win all three Wheel Of Fortune scenarios (THE AFTER HOURS COUNT, THE HOUSE EDGE, THE SERVICE CALL SATURDAY).",
+   "desc": "Win all four Wheel Of Fortune scenarios (THE AFTER HOURS COUNT, THE HOUSE EDGE, THE SERVICE CALL SATURDAY).",
    "trigger": {
     "kind": "all_scenarios",
     "arcana": "wheel_of_fortune",
     "scenarios": [
      "the_after_hours_count",
      "the_house_edge",
-     "the_service_call_saturday"
+     "the_service_call_saturday",
+     "the_matinee_shift"
     ]
    },
    "unlock_key": "achievement:wheel_of_fortune_complete",
@@ -501,14 +502,15 @@
   {
    "id": "hanged_man_complete",
    "title": "SEVEN EVENINGS, ONE BOOT",
-   "desc": "Win all three Hanged Man scenarios (AFTER SIMON, THE FIRST NIGHT, THE SEVENTH EVENING).",
+   "desc": "Win all four Hanged Man scenarios (AFTER SIMON, THE FIRST NIGHT, THE SEVENTH EVENING).",
    "trigger": {
     "kind": "all_scenarios",
     "arcana": "hanged_man",
     "scenarios": [
      "after_simon",
      "the_first_night",
-     "the_seventh_evening"
+     "the_seventh_evening",
+     "the_fourth_morning"
     ]
    },
    "unlock_key": "achievement:hanged_man_complete",
@@ -530,14 +532,15 @@
   {
    "id": "death_complete",
    "title": "EVERY THRESHOLD ATTENDED",
-   "desc": "Win all three Death scenarios (MATINS THE MORNING AFTER, THE QUIET COMMITTAL, WALPURGISNACHT).",
+   "desc": "Win all four Death scenarios (MATINS THE MORNING AFTER, THE QUIET COMMITTAL, WALPURGISNACHT).",
    "trigger": {
     "kind": "all_scenarios",
     "arcana": "death",
     "scenarios": [
      "matins_the_morning_after",
      "the_quiet_committal",
-     "walpurgisnacht"
+     "walpurgisnacht",
+     "the_handoff"
     ]
    },
    "unlock_key": "achievement:death_complete",
@@ -559,14 +562,15 @@
   {
    "id": "temperance_complete",
    "title": "BEHIND THE BAR, LEVEL",
-   "desc": "Win all three Temperance scenarios (LAST CALL FRIDAY, PRE SHIFT SETUP, TUESDAY OBSERVATION).",
+   "desc": "Win all four Temperance scenarios (LAST CALL FRIDAY, PRE SHIFT SETUP, TUESDAY OBSERVATION).",
    "trigger": {
     "kind": "all_scenarios",
     "arcana": "temperance",
     "scenarios": [
      "last_call_friday",
      "pre_shift_setup",
-     "tuesday_observation"
+     "tuesday_observation",
+     "the_inventory_pour"
     ]
    },
    "unlock_key": "achievement:temperance_complete",
@@ -588,14 +592,15 @@
   {
    "id": "devil_complete",
    "title": "EVERY CHAIN WEIGHED",
-   "desc": "Win all three Devil scenarios (GUMBO LIMBO NIGHT, THE FIRST MEETING, THE WEDNESDAY CALL).",
+   "desc": "Win all four Devil scenarios (GUMBO LIMBO NIGHT, THE FIRST MEETING, THE WEDNESDAY CALL).",
    "trigger": {
     "kind": "all_scenarios",
     "arcana": "devil",
     "scenarios": [
      "gumbo_limbo_night",
      "the_first_meeting",
-     "the_wednesday_call"
+     "the_wednesday_call",
+     "the_sunday_afternoon"
     ]
    },
    "unlock_key": "achievement:devil_complete",

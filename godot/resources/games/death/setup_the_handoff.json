@@ -1,0 +1,189 @@
+{
+ "id": "the_handoff",
+ "arcana": "xiii_death",
+ "location": "asylum_ward_c",
+ "hand": "beatrice",
+ "title": "THE HANDOFF",
+ "subtitle": "Asylum Ward C · 6:12 AM · the night report, read out loud",
+ "difficulty": "medium",
+ "epigraph_upright": "Death keeps shift hours. The night nurse hands the ward to the day nurse and the ward, which belongs to neither of them, permits the transfer. The report is the rite.",
+ "epigraph_reversed": "You could soften the night in the telling. Rounder numbers, quieter hours. The day nurse would thank you and the ward would know, and the ward keeps its own report.",
+ "scene_description": "6:12 AM. The windows are doing their slow argument with dawn and the ward is at its stillest — the hour the night finally lies down. Delphine arrives at 6:30 with day-shift coffee and the day-shift face. Between now and then: the night report, honest; the water pitchers, filled; Ward 3, who did not sleep and should not be handed over as 'resting.' Beatrice has done four hundred handoffs. The rite still has to be performed whole, every time. That is what a rite is.",
+ "direction_hint": "Write the night true. Fill the pitchers. Tell Delphine about Ward 3 with the words the night actually used — connect three, keep Inertia under 7, and be at the station when the keys change hands.",
+ "opening_log_lines": [
+  "The corridor light does its 6 AM trick: goes from lamp to daylight without permission.",
+  "Click [b]PHASE: ACTION[/b] for the rules. The report writes in ink. It knows why.",
+  "Ward 3's breathing changed around four. The chart knows. Make sure the mouth does too."
+ ],
+ "starting_state": {
+  "player_pos": "nurses_station",
+  "time": 6,
+  "time_per_turn": 6,
+  "inertia": 0,
+  "inertia_per_turn": 1,
+  "sanity": 6,
+  "sanity_max": 7,
+  "tension_stat": "vigil",
+  "tension_label": "VIGIL",
+  "tension_max": 10,
+  "starting_hand": [
+   "walk",
+   "focus",
+   "search",
+   "short_rest",
+   "round",
+   "check_chart",
+   "close_eyes",
+   "hold_hand"
+  ]
+ },
+ "visitors_present_at_start": [],
+ "visitor_schedule": [
+  {
+   "visitor": "pearl_at_the_station",
+   "arrival_turn": 2,
+   "arrival_space": "nurses_station"
+  },
+  {
+   "visitor": "the_night_report",
+   "arrival_turn": 3,
+   "arrival_space": "nurses_station"
+  },
+  {
+   "visitor": "the_day_nurse_delphine",
+   "arrival_turn": 5,
+   "arrival_space": "corridor_s"
+  }
+ ],
+ "win_conditions": {
+  "require_visitors_connected_min": 3,
+  "require_inertia_below": 7,
+  "require_report_read_aloud": true,
+  "require_threshold_space": true
+ },
+ "loss_conditions": {
+  "inertia_max": 12,
+  "softened_the_night_in_the_telling": true,
+  "keys_passed_without_the_report": true
+ },
+ "inertia_thresholds": [
+  {
+   "level": 0,
+   "label": "the corridor is the corridor",
+   "tick_per_turn": 1,
+   "effects": []
+  },
+  {
+   "level": 3,
+   "label": "the fluorescent over ward 3 ticks",
+   "tick_per_turn": 1,
+   "effects": []
+  },
+  {
+   "level": 5,
+   "label": "the cupola has weather coming through it",
+   "tick_per_turn": 1,
+   "effects": []
+  },
+  {
+   "level": 7,
+   "label": "Pearl's chair scrapes the linoleum",
+   "tick_per_turn": 1,
+   "effects": [
+    "gravity_deck_plus_1"
+   ]
+  },
+  {
+   "level": 8,
+   "label": "the gurney moves a half-inch in no draft",
+   "tick_per_turn": 1,
+   "effects": [
+    "claim_closest_unconnected_visitor"
+   ]
+  },
+  {
+   "level": 10,
+   "label": "the chart binder opens by itself",
+   "tick_per_turn": 1,
+   "effects": [
+    "action_card_cost_plus_1"
+   ]
+  },
+  {
+   "level": 11,
+   "label": "you can hear ward 5 breathing",
+   "tick_per_turn": 1,
+   "effects": [
+    "claim_next_closest_visitor"
+   ]
+  },
+  {
+   "level": 12,
+   "label": "the vigil did not, this time, hold",
+   "tick_per_turn": 1,
+   "effects": [
+    "reveal_inertia_finale"
+   ]
+  }
+ ],
+ "claim_turns_to_consume": 3,
+ "thresholds": [
+  {
+   "id": "corridor_s",
+   "label": "SOUTH DOOR",
+   "ending_lore_token": "sister_beatrice_walked_out",
+   "visible_from_start": true,
+   "flavor": "Out into the main hospital corridor. Past the chapel. Toward the staff entrance and the dawn that's coming."
+  }
+ ],
+ "max_turns": 14,
+ "notes": "Fourth setup (Wave-3B, 2026-07-19) · mid-tier at a distinct hour per the bookend pattern. Scaffolding inherited from a sibling; functional win/loss contract is the generic evaluator; named keys are the scenario's narrative contract.",
+ "scenario_visitors": [
+  {
+   "id": "the_night_report",
+   "name": "the night report, blank page, waiting pen",
+   "as_hand_id": null,
+   "arrival": {
+    "kind": "scheduled",
+    "turn": 3,
+    "from": "nurses_station",
+    "to": "nurses_station"
+   },
+   "lore_token": "wrote_the_night_true",
+   "lore_text": "The report book is older than the wing. Nurses who trained you wrote nights into it; nights they never spoke of are in it in their handwriting, exact. The book's one demand is the demand of all true instruments: everything, in order, as it was.",
+   "accent": "#a8b8c0",
+   "mood": "preoccupied",
+   "tutorial_note": "The report connects through FOCUS at the nurses_station — write the night in order, including four o'clock, especially four o'clock.",
+   "steps": {
+    "greet": "The book opens flat at tonight's page the way well-used books do — no holding required.",
+    "listen": "Reading last week's pages first is allowed. It's how the book teaches. Sister Agathe's entries end every night with the same three words: 'All souls counted.'",
+    "deliver": "You write the night. The 2 AM round, the pitchers, four o'clock and what four o'clock was. In order. In ink. As it was.",
+    "sit_with": "You sign it. Under your name, without planning to, you write the three words. The book accepts them the way it accepted hers."
+   }
+  },
+  {
+   "id": "the_day_nurse_delphine",
+   "name": "Delphine, day shift, two coffees",
+   "as_hand_id": null,
+   "arrival": {
+    "kind": "scheduled",
+    "turn": 5,
+    "from": "corridor_s",
+    "to": "corridor_s"
+   },
+   "lore_token": "handed_the_ward_whole",
+   "lore_text": "Delphine. Nine years on days. Brings two coffees every morning — hers and the night nurse's — because her first head nurse did, and told her the handoff goes down easier with something warm in the outgoing hands.",
+   "accent": "#d8b890",
+   "mood": "intense",
+   "tutorial_note": "Delphine connects through the report itself — read her the night OUT LOUD at the station. The out-loud is the rite. Paper alone is a record; the voice is the transfer.",
+   "steps": {
+    "greet": "She comes up the south corridor with the two cups and the day already on her like a clean apron.",
+    "listen": "She asks the only question the handoff requires: 'How was the night?' — and stands still for the answer, which is the part most people can't do.",
+    "deliver": "You read her the report. Out loud, at the station, Ward 3 in the night's own words. She takes it standing still. Then she takes the keys.",
+    "sit_with": "She hands you the second coffee. 'Go home, Bea,' she says, which is the benediction. The ward is hers now. The ward permits it."
+   }
+  }
+ ],
+ "scenario_spaces_additions": [],
+ "scenario_adjacency_additions": []
+}

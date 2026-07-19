@@ -1,0 +1,209 @@
+{
+ "id": "the_fourth_morning",
+ "arcana": "xii_hanged_man",
+ "location": "simon_apartment",
+ "hand": "natalie",
+ "title": "THE FOURTH MORNING",
+ "subtitle": "Simon's Apartment · 7:58 AM · the mail is the clock now",
+ "difficulty": "medium",
+ "epigraph_upright": "The Hanged Man in the morning is just a person who stayed. The suspension is only visible in the evening. Mornings, there is a kettle, and the kettle does not know anything is different.",
+ "epigraph_reversed": "Four mornings of not moving anything is starting to be a decision about moving nothing ever. The boot hangs. The chair tips. You water a plant that might be yours now.",
+ "scene_description": "Fourth morning at Simon's. The kettle whistles flat — it always whistled flat, Simon called it 'the note' — and the mail downstairs has reached the thickness where the landlord will Say Something. The neighbor below runs her shower at 8:05, regular as tide. You are not staying and you are not leaving and this morning, like the three before it, both of those are true at once. Today the mail has to come up. That's the whole mountain.",
+ "direction_hint": "Bring the mail up. Open nothing. Let the neighbor's shower and the landlord's knock happen at their times — connect three, keep Inertia under 7, and be at a threshold when the kettle goes quiet.",
+ "opening_log_lines": [
+  "The kettle finds the flat note. The note is the apartment agreeing to be the apartment.",
+  "Click [b]PHASE: ACTION[/b] for the rules. The tipped chair is not on today's list. It knows it.",
+  "8:05. The pipes shudder. The neighbor below is keeping her own time. Both of you are counting on it."
+ ],
+ "starting_state": {
+  "player_pos": "armchair",
+  "time": 5,
+  "time_per_turn": 5,
+  "inertia": 0,
+  "inertia_per_turn": 1,
+  "sanity": 5,
+  "sanity_max": 6,
+  "tension_stat": "suspension",
+  "tension_label": "SUSPENSION",
+  "tension_max": 10,
+  "starting_hand": [
+   "walk",
+   "focus",
+   "search",
+   "short_rest",
+   "sit_still",
+   "right_the_chair",
+   "take_down_the_boot",
+   "answer_call"
+  ]
+ },
+ "visitors_present_at_start": [
+  "the_flat_kettle"
+ ],
+ "visitor_schedule": [
+  {
+   "visitor": "the_neighbor_below",
+   "arrival_turn": 2,
+   "arrival_space": "front_door"
+  },
+  {
+   "visitor": "the_mail_stack",
+   "arrival_turn": 3,
+   "arrival_space": "the_mailboxes_below"
+  },
+  {
+   "visitor": "the_landlord",
+   "arrival_turn": 5,
+   "arrival_space": "front_door"
+  }
+ ],
+ "win_conditions": {
+  "require_visitors_connected_min": 3,
+  "require_inertia_below": 7,
+  "require_mail_brought_up_unopened": true,
+  "require_threshold_space": true
+ },
+ "loss_conditions": {
+  "inertia_max": 12,
+  "opened_the_padded_envelope": true,
+  "missed_the_landlords_knock": true
+ },
+ "inertia_thresholds": [
+  {
+   "level": 0,
+   "label": "the room is the room",
+   "tick_per_turn": 1,
+   "effects": []
+  },
+  {
+   "level": 3,
+   "label": "the chair is still tipped",
+   "tick_per_turn": 1,
+   "effects": []
+  },
+  {
+   "level": 5,
+   "label": "the boot is still hanging",
+   "tick_per_turn": 1,
+   "effects": []
+  },
+  {
+   "level": 7,
+   "label": "the static stops feeling random",
+   "tick_per_turn": 1,
+   "effects": [
+    "gravity_deck_plus_1"
+   ]
+  },
+  {
+   "level": 8,
+   "label": "the armchair holds you tighter",
+   "tick_per_turn": 1,
+   "effects": [
+    "claim_closest_unconnected_visitor"
+   ]
+  },
+  {
+   "level": 10,
+   "label": "the apartment listens with you",
+   "tick_per_turn": 1,
+   "effects": [
+    "action_card_cost_plus_1"
+   ]
+  },
+  {
+   "level": 11,
+   "label": "the boot turns slow on its laces",
+   "tick_per_turn": 1,
+   "effects": [
+    "claim_next_closest_visitor"
+   ]
+  },
+  {
+   "level": 12,
+   "label": "you have not moved in an hour",
+   "tick_per_turn": 1,
+   "effects": [
+    "reveal_inertia_finale"
+   ]
+  }
+ ],
+ "claim_turns_to_consume": 3,
+ "thresholds": [
+  {
+   "id": "front_door",
+   "label": "FRONT DOOR",
+   "ending_lore_token": "you_left_simons_apartment",
+   "visible_from_start": true,
+   "flavor": "The door Simon never locked. He used to say the building locked itself."
+  },
+  {
+   "id": "fire_escape",
+   "label": "FIRE ESCAPE",
+   "ending_lore_token": "you_went_out_the_window",
+   "visible_from_start": false,
+   "appears_when": "flag_set:window_opened",
+   "flavor": "Out through the front window. The fire escape is metal-cold even in June."
+  }
+ ],
+ "max_turns": 14,
+ "notes": "Fourth setup (Wave-3B, 2026-07-19) · mid-tier at a distinct hour per the bookend pattern. Scaffolding inherited from a sibling; functional win/loss contract is the generic evaluator; named keys are the scenario's narrative contract.",
+ "scenario_spaces_additions": [
+  {
+   "id": "the_mailboxes_below",
+   "label": "THE MAILBOXES",
+   "kind": "named",
+   "pos_xy": [
+    0,
+    0
+   ]
+  }
+ ],
+ "scenario_visitors": [
+  {
+   "id": "the_mail_stack",
+   "name": "four days of Simon's mail, rubber-banded by someone",
+   "as_hand_id": null,
+   "arrival": {
+    "kind": "scheduled",
+    "turn": 3,
+    "from": "the_mailboxes_below",
+    "to": "the_mailboxes_below"
+   },
+   "lore_token": "brought_the_mail_up",
+   "lore_text": "Somebody rubber-banded it. Not the carrier — carriers don't. Someone in the building banded four days of a gone man's mail so it wouldn't spill, which is the building's way of saying it knows, and is being careful with what it knows.",
+   "accent": "#b8a888",
+   "mood": "lonely",
+   "tutorial_note": "The mail connects through WAIT at the mailboxes — take it upstairs unopened. The carrying is the entire gesture. Opening is a different day.",
+   "steps": {
+    "greet": "It's heavier than mail should be. Mail for the present tense weighs nothing. This isn't that.",
+    "listen": "Circulars, the electric bill, a postcard with a lighthouse on it that you do not turn over, and a padded envelope that shifts like cassette tapes.",
+    "deliver": "You carry it up in both hands like a covered dish. You set it on the kitchenette counter square with the edge. Not opened. Placed.",
+    "sit_with": "The rubber band goes in the drawer where Simon kept rubber bands. There is such a drawer. Of course there is such a drawer."
+   }
+  },
+  {
+   "id": "the_flat_kettle",
+   "name": "the kettle and its one flat note",
+   "as_hand_id": null,
+   "arrival": {
+    "kind": "scheduled",
+    "turn": 1,
+    "from": "kitchenette",
+    "to": "kitchenette"
+   },
+   "lore_token": "let_the_kettle_finish",
+   "lore_text": "Simon tuned his life to broken things that still worked. The kettle whistles a quarter-tone flat and he called it 'the note' and made guests wait for it. It is the only voice left in the apartment that does the thing it always did.",
+   "accent": "#d0c090",
+   "mood": "preoccupied",
+   "tutorial_note": "The kettle connects through SHORT REST in the kitchenette — put it on, and do not take it off until the note finishes rising. The waiting is the visit.",
+   "steps": {
+    "greet": "Water, burner, the tick of the heating element. The apartment's oldest ritual, running on its own memory.",
+    "listen": "It starts as breath, finds the note, holds it flat and true to its own flatness. Simon would hold up one finger here. Wait for it.",
+    "deliver": "You wait for it. The whole note, all the way up, kitchen filling with steam and the specific pitch of a man's whole tenancy.",
+    "sit_with": "Two cups out of habit. You drink yours at the front window. The other one steams next to the mail, and that's allowed, and nobody has to say what it is."
+   }
+  }
+ ],
+ "scenario_adjacency_additions": []
+}

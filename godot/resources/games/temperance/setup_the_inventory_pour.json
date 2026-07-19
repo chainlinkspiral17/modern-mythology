@@ -1,0 +1,211 @@
+{
+ "id": "the_inventory_pour",
+ "arcana": "xiv_temperance",
+ "location": "mixing_glass",
+ "hand": "frank",
+ "title": "THE INVENTORY POUR",
+ "subtitle": "The Mixing Glass · 3:40 PM · bottle count before doors",
+ "difficulty": "medium",
+ "epigraph_upright": "Temperance is a clipboard. Before the first customer there is the count: what the bar has, what the bar poured, what the bar is short. The count doesn't judge. The count only knows.",
+ "epigraph_reversed": "The well gin is two fingers shorter than the tickets say. You can carry that number to the owner, or you can carry it for Maddie, and both pours cost exactly what they cost.",
+ "scene_description": "Doors at five. The count sheet is on the backbar, the beer rep is forty minutes early and settling in like weather, and Maddie is cutting limes with the particular quiet of somebody doing math they don't like. The well gin is short. Not drank-on-shift short — short like a heavy hand on comps, which is a kindness problem, which is the hardest kind of inventory. The count is due at 4:30. What the count says is, this afternoon, actually up to you.",
+ "direction_hint": "Count it all. Count it once. Talk to Maddie before you write the gin line — connect three, keep Inertia under 7, and have the sheet done before the rep's third story ends.",
+ "opening_log_lines": [
+  "The ice machine lets go of a sheet of cubes. The bar's idea of an opening bell.",
+  "Click [b]PHASE: ACTION[/b] for the rules. The count sheet has carbon paper. Everything you write, it writes twice.",
+  "Maddie has cut enough limes for a Friday. It is Tuesday. That's the tell."
+ ],
+ "starting_state": {
+  "player_pos": "bar_stool_mid",
+  "time": 6,
+  "time_per_turn": 6,
+  "inertia": 4,
+  "inertia_per_turn": 1,
+  "sanity": 4,
+  "sanity_max": 7,
+  "tension_stat": "off_pour",
+  "tension_label": "OFF POUR RISK",
+  "tension_max": 12,
+  "starting_hand": [
+   "walk",
+   "focus",
+   "search",
+   "short_rest",
+   "pour",
+   "stir",
+   "shake",
+   "garnish"
+  ]
+ },
+ "visitors_present_at_start": [
+  "maddie_behind_the_stick"
+ ],
+ "visitor_schedule": [
+  {
+   "visitor": "the_count_sheet",
+   "arrival_turn": 2,
+   "arrival_space": "backbar"
+  },
+  {
+   "visitor": "the_early_beer_rep",
+   "arrival_turn": 3,
+   "arrival_space": "booth_1"
+  },
+  {
+   "visitor": "the_owner_closing_out",
+   "arrival_turn": 6,
+   "arrival_space": "alley_door"
+  }
+ ],
+ "win_conditions": {
+  "require_visitors_connected_min": 3,
+  "require_inertia_below": 7,
+  "require_count_finished_before_doors": true,
+  "require_maddie_spoken_to_before_gin_line": true
+ },
+ "loss_conditions": {
+  "inertia_max": 12,
+  "wrote_the_gin_line_cold": true,
+  "count_unfinished_at_doors": true
+ },
+ "inertia_thresholds": [
+  {
+   "level": 0,
+   "label": "the Friday rhythm holds",
+   "tick_per_turn": 1,
+   "effects": []
+  },
+  {
+   "level": 3,
+   "label": "the C-stool party is one drink past good",
+   "tick_per_turn": 1,
+   "effects": []
+  },
+  {
+   "level": 5,
+   "label": "Maddie's wrist is starting to count slow",
+   "tick_per_turn": 1,
+   "effects": [
+    "gravity_deck_plus_1"
+   ]
+  },
+  {
+   "level": 7,
+   "label": "the ice well has visible bottom",
+   "tick_per_turn": 1,
+   "effects": [
+    "claim_closest_unconnected_visitor"
+   ]
+  },
+  {
+   "level": 9,
+   "label": "the W stool regular is asking for one more",
+   "tick_per_turn": 1,
+   "effects": [
+    "action_card_cost_plus_1"
+   ]
+  },
+  {
+   "level": 10,
+   "label": "the green-shirt at the C stool stands up",
+   "tick_per_turn": 1,
+   "effects": [
+    "claim_next_closest_visitor"
+   ]
+  },
+  {
+   "level": 12,
+   "label": "the off pour lands · the night tilts",
+   "tick_per_turn": 1,
+   "effects": [
+    "reveal_inertia_finale"
+   ]
+  }
+ ],
+ "claim_turns_to_consume": 3,
+ "thresholds": [
+  {
+   "id": "alley_door",
+   "label": "ALLEY DOOR",
+   "ending_lore_token": "frank_walked_out_through_the_alley",
+   "visible_from_start": true,
+   "flavor": "Out through the alley after close. 2:14 AM. The cage. The walk to your car."
+  },
+  {
+   "id": "the_back_walk_in",
+   "label": "THE BACK WALK-IN",
+   "ending_lore_token": "frank_pulled_the_second_ice_chest",
+   "visible_from_start": true,
+   "flavor": "The walk-in cooler in the back hall. The second ice chest is on the floor against the wall. It weighs forty pounds."
+  }
+ ],
+ "max_turns": 16,
+ "notes": "Fourth setup (Wave-3B, 2026-07-19) · mid-tier at a distinct hour per the bookend pattern. Scaffolding inherited from a sibling; functional win/loss contract is the generic evaluator; named keys are the scenario's narrative contract.",
+ "scenario_visitors": [
+  {
+   "id": "the_count_sheet",
+   "name": "the count sheet, carbon paper, the gin line blank",
+   "as_hand_id": null,
+   "arrival": {
+    "kind": "scheduled",
+    "turn": 2,
+    "from": "backbar",
+    "to": "backbar"
+   },
+   "lore_token": "the_gin_line_written_true",
+   "lore_text": "Two copies of everything: one for the office, one for the ring binder that never leaves the backbar. The sheet has a genius and it's this — it makes shortage a NUMBER, and numbers can be talked about at three-forty in a way that people can't at midnight.",
+   "accent": "#c0b088",
+   "mood": "preoccupied",
+   "tutorial_note": "The sheet connects through FOCUS at the backbar — count everything else first, in order. The gin line goes last, after Maddie, on purpose.",
+   "steps": {
+    "greet": "Clipboard weight, carbon smell. The bar's most honest instrument, and the only one with a duplicate.",
+    "listen": "Rail to top shelf, the sheet walks you through the bar the way the bar actually is, not the way the tickets say it's been.",
+    "deliver": "You count it all. The gin line stays blank until the conversation happens. A blank line is not a lie; it's a held breath.",
+    "sit_with": "When the line gets written, it gets written true — and next to it, in the margin the sheet leaves for exactly this, the one word that makes true survivable: 'comps.'"
+   }
+  },
+  {
+   "id": "the_early_beer_rep",
+   "name": "Delacroix the beer rep, forty minutes early",
+   "as_hand_id": null,
+   "arrival": {
+    "kind": "scheduled",
+    "turn": 3,
+    "from": "booth_1",
+    "to": "booth_1"
+   },
+   "lore_token": "heard_the_reps_third_story",
+   "lore_text": "Delacroix. Reps four parishes for the distributor, early everywhere, keeps a mental ledger of every bar's mood and pours it back out as stories. His third story is always the real one. Everyone in the trade knows about the third story.",
+   "accent": "#d8a860",
+   "mood": "preoccupied",
+   "tutorial_note": "Delacroix connects through SIT — booth one, let the stories run. The first two are the toll. The third is the delivery.",
+   "steps": {
+    "greet": "He's already in booth one with the order book he won't open for an hour. 'Don't mind me. Count your bar.'",
+    "listen": "Story one: the walk-in that flooded in Chalmette. Story two: the wedding keg misdelivered to a funeral, and what the funeral did (kept it).",
+    "deliver": "Story three, quieter: the bar two parishes over that lost a good bartender because an owner read a short count the loud way. He looks at nothing in particular. Reps see everything.",
+    "sit_with": "He opens the order book at last and orders happen, ordinary as weather. On his way out he taps the backbar twice — trade blessing, old as carbon paper."
+   }
+  }
+ ],
+ "scenario_spaces_additions": [
+  {
+   "id": "backbar",
+   "label": "THE BACKBAR",
+   "kind": "named",
+   "pos_xy": [
+    0,
+    0
+   ]
+  },
+  {
+   "id": "alley_door",
+   "label": "ALLEY DOOR",
+   "kind": "named",
+   "pos_xy": [
+    0,
+    0
+   ]
+  }
+ ],
+ "scenario_adjacency_additions": []
+}

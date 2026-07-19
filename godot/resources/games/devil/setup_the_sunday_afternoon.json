@@ -1,0 +1,209 @@
+{
+ "id": "the_sunday_afternoon",
+ "arcana": "xv_devil",
+ "location": "daigles_roadhouse",
+ "hand": "tbd_devil",
+ "title": "THE SUNDAY AFTERNOON",
+ "subtitle": "Daigle's Roadhouse · 3:15 PM Sunday · the building with the lights on and nothing open",
+ "difficulty": "medium",
+ "epigraph_upright": "The Devil keeps Sunday hours too. Sunday afternoon the roadhouse is a room with chairs, and the chairs are folded, and a man can walk through it like weather that isn't for him.",
+ "epigraph_reversed": "The bar is right there. Closed is a word about commerce, not about bars. Sunday afternoon is when the chain gets measured, link by link, by the one wearing it.",
+ "scene_description": "Sunday, 3:15. Lou has the front door propped for the mop bucket and the radio on the station that plays the old stuff. The meeting chairs are folded on their rack by the back room door; the coffee urn from this morning's meeting is still warm; the bar is a long clean shape under a drop cloth like furniture in a house between owners. You came for your jacket, left Wednesday. Everybody knows a jacket takes five minutes. Everybody knows nobody comes to a roadhouse on Sunday for a jacket.",
+ "direction_hint": "Get the jacket. Help Lou with one thing — one. The urn has a last cup in it and it's yours if you want it — connect three, keep Inertia under 7, and go out the front door while the sun's still on it.",
+ "opening_log_lines": [
+  "The mop bucket wheels need oil. Lou likes them that way. Announces the work.",
+  "Click [b]PHASE: ACTION[/b] for the rules. The bar is under a drop cloth. The drop cloth is doing more work than you know.",
+  "The radio finds the song your father used to find. Sundays do this. It's not a sign. It's Sundays."
+ ],
+ "starting_state": {
+  "player_pos": "bar",
+  "time": 5,
+  "time_per_turn": 5,
+  "inertia": 2,
+  "inertia_per_turn": 1,
+  "sanity": 5,
+  "sanity_max": 6,
+  "tension_stat": "chain",
+  "tension_label": "CHAIN",
+  "tension_max": 10,
+  "starting_hand": [
+   "walk",
+   "focus",
+   "search",
+   "short_rest",
+   "another_round",
+   "rack_em",
+   "feed_the_juke",
+   "settle_up"
+  ]
+ },
+ "visitors_present_at_start": [
+  "lou_behind_the_bar"
+ ],
+ "visitor_schedule": [
+  {
+   "visitor": "the_folded_chairs",
+   "arrival_turn": 2,
+   "arrival_space": "back_room_door"
+  },
+  {
+   "visitor": "the_warm_urn",
+   "arrival_turn": 3,
+   "arrival_space": "back_room_door"
+  },
+  {
+   "visitor": "the_one_who_got_out",
+   "arrival_turn": 5,
+   "arrival_space": "front_door"
+  }
+ ],
+ "win_conditions": {
+  "require_visitors_connected_min": 3,
+  "require_inertia_below": 7,
+  "require_left_by_the_front_door": true,
+  "require_jacket_retrieved": true
+ },
+ "loss_conditions": {
+  "inertia_max": 12,
+  "lifted_the_drop_cloth": true,
+  "stayed_past_sundown": true
+ },
+ "inertia_thresholds": [
+  {
+   "level": 0,
+   "label": "the stool is the stool",
+   "tick_per_turn": 1,
+   "effects": []
+  },
+  {
+   "level": 3,
+   "label": "Lou pours before you ask",
+   "tick_per_turn": 1,
+   "effects": []
+  },
+  {
+   "level": 5,
+   "label": "the juke loops back to a song you knew",
+   "tick_per_turn": 1,
+   "effects": []
+  },
+  {
+   "level": 7,
+   "label": "the door is farther than it was",
+   "tick_per_turn": 1,
+   "effects": [
+    "gravity_deck_plus_1"
+   ]
+  },
+  {
+   "level": 8,
+   "label": "the room finds a song that knows you",
+   "tick_per_turn": 1,
+   "effects": [
+    "claim_closest_unconnected_visitor"
+   ]
+  },
+  {
+   "level": 10,
+   "label": "settling up costs more now",
+   "tick_per_turn": 1,
+   "effects": [
+    "action_card_cost_plus_1"
+   ]
+  },
+  {
+   "level": 11,
+   "label": "the gator head turns its head",
+   "tick_per_turn": 1,
+   "effects": [
+    "claim_next_closest_visitor"
+   ]
+  },
+  {
+   "level": 12,
+   "label": "the stool takes you",
+   "tick_per_turn": 1,
+   "effects": [
+    "reveal_inertia_finale"
+   ]
+  }
+ ],
+ "claim_turns_to_consume": 2,
+ "thresholds": [
+  {
+   "id": "front_door",
+   "label": "FRONT DOOR",
+   "ending_lore_token": "leap_out_of_daigles",
+   "visible_from_start": true,
+   "flavor": "Six steps. Always six steps."
+  },
+  {
+   "id": "back_alley",
+   "label": "BACK ALLEY",
+   "ending_lore_token": "left_through_the_back",
+   "visible_from_start": false,
+   "appears_when": "tab_settled:true",
+   "flavor": "The alley behind the dumpsters. You haven't been out this way since the year you stopped trying to."
+  }
+ ],
+ "max_turns": 12,
+ "notes": "Fourth setup (Wave-3B, 2026-07-19) · mid-tier at a distinct hour per the bookend pattern. Scaffolding inherited from a sibling; functional win/loss contract is the generic evaluator; named keys are the scenario's narrative contract.",
+ "scenario_spaces_additions": [
+  {
+   "id": "back_room_door",
+   "label": "BACK ROOM DOOR",
+   "kind": "named",
+   "pos_xy": [
+    0,
+    0
+   ]
+  }
+ ],
+ "scenario_visitors": [
+  {
+   "id": "the_folded_chairs",
+   "name": "the meeting chairs, folded on the rack",
+   "as_hand_id": null,
+   "arrival": {
+    "kind": "scheduled",
+    "turn": 2,
+    "from": "back_room_door",
+    "to": "back_room_door"
+   },
+   "lore_token": "racked_the_last_chair",
+   "lore_text": "Twelve chairs. The morning meeting folds its own but the rack takes a shoulder to roll, and Lou's shoulder is spoken for by the mop. The chairs in the circle are the hardest furniture in the parish. The chairs on the rack are just chairs. The folding is the whole theology.",
+   "accent": "#b09878",
+   "mood": "lonely",
+   "tutorial_note": "The chairs connect through CARRY at the back_room_door — roll the rack into the back room. In the room, empty, is fine to be. That's the discovery.",
+   "steps": {
+    "greet": "The rack leans where somebody left it half-rolled. One chair is on backwards. There's always one on backwards.",
+    "listen": "The back room in daylight is a plain room. Folding table, the urn, the laminated serenity card gone soft at the corners. Rooms are only what's happening in them.",
+    "deliver": "You fix the backwards chair and roll the rack in. It takes a shoulder. You have one.",
+    "sit_with": "You stand in the empty room one beat longer than the job needs. Wednesday night this room will need what it needs. Right now it's just a room, and you were in it, and that was fine."
+   }
+  },
+  {
+   "id": "the_warm_urn",
+   "name": "the coffee urn, still warm from the morning meeting",
+   "as_hand_id": null,
+   "arrival": {
+    "kind": "scheduled",
+    "turn": 3,
+    "from": "back_room_door",
+    "to": "back_room_door"
+   },
+   "lore_token": "took_the_last_cup",
+   "lore_text": "The urn does forty cups and the morning meeting drinks thirty-some. The last cups go to whoever's around Sunday afternoon — Lou, the delivery guy, once famously a lost cyclist. Urn coffee is bad in a way that people drive across the parish for.",
+   "accent": "#c89868",
+   "mood": "lonely",
+   "tutorial_note": "The urn connects through SHORT REST — take the last cup and drink it at the folding table like a person with somewhere to be later, because you are one.",
+   "steps": {
+    "greet": "It ticks as it cools, the sound of a machine that considers its work done.",
+    "listen": "The cup tastes like every 7 AM you ever survived in this room. That's not a flaw of the coffee. That's the recipe.",
+    "deliver": "You drink it at the folding table. Sitting. Not at the bar. Nobody says anything because Lou is watching the mop and the mop only.",
+    "sit_with": "You rinse the cup and set it mouth-down on the towel with the others. Forty cups, every one of them ends the day mouth-down on that towel. There's a sermon in that but Sunday already had one."
+   }
+  }
+ ],
+ "scenario_adjacency_additions": []
+}
