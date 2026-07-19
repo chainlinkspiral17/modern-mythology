@@ -19,6 +19,25 @@ extends Control
 
 const BUST_PORTRAIT := preload("res://scripts/vn/VnBustPortrait.gd")
 
+# Agents with REAL painted face art in the gallery use it on the board;
+# everyone else gets the procedural bust. (Mackenzie has no face plate
+# yet — only phone frames — so she stays on the bust.)
+const _AGENT_FACE_ART: Dictionary = {
+	"john_frank": "res://assets/gallery/johnfrank_face.png",
+	"elicia":     "res://assets/gallery/elicia_face.png",
+	"nicola":     "res://assets/gallery/nicola_face.png",
+}
+
+
+func _agent_portrait(a_id: String, expr: String, accent: Color) -> Texture2D:
+	if _AGENT_FACE_ART.has(a_id):
+		var path: String = _AGENT_FACE_ART[a_id]
+		if ResourceLoader.exists(path):
+			var tex: Texture2D = load(path) as Texture2D
+			if tex != null:
+				return tex
+	return BUST_PORTRAIT.texture(a_id, expr, accent)
+
 const DATA_ROOT := "res://resources/games/community_planned/"
 # Three-slot save system. The active slot is persisted in
 # user://saves/community_planned_active_slot.txt so the next game
@@ -1531,7 +1550,7 @@ func _render_agent_list() -> void:
 		var arow := HBoxContainer.new()
 		arow.add_theme_constant_override("separation", 6)
 		var bust := TextureRect.new()
-		bust.texture = BUST_PORTRAIT.texture(String(a_id), "neutral",
+		bust.texture = _agent_portrait(String(a_id), "neutral",
 			_agent_accent(String(a_id), a))
 		bust.custom_minimum_size = Vector2(26, 28)
 		bust.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED
@@ -1578,7 +1597,7 @@ func _open_agent_dossier(agent_id: String) -> void:
 	col.add_child(hdr_row)
 	var d_bust := TextureRect.new()
 	var d_expr: String = "angry" if a["class"] == "demon" else "neutral"
-	d_bust.texture = BUST_PORTRAIT.texture(agent_id, d_expr,
+	d_bust.texture = _agent_portrait(agent_id, d_expr,
 		_agent_accent(agent_id, a))
 	d_bust.custom_minimum_size = Vector2(84, 90)
 	d_bust.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED
