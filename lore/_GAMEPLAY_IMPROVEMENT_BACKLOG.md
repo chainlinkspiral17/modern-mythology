@@ -15,13 +15,13 @@ and scrapbook coverage, the shelf unlock graph.
 
 ## 1 · TAROT GAUNTLET
 
-**P1 · Achievements for the other 21 arcana.** The evaluator runs at
+**P1 · ~~Achievements~~ DONE 2026-07-19** — registry 28 → 59: deck-clear (rewarding reversed unlock) + named-loss per Wave-2 arcana, septenary capstones, THE FULL DECK. Original note: The evaluator runs at
 every win/loss, but only `fool/achievements.json` exists. Each arcana
 wants 3–5 entries in the Fool's pattern — at least one per named loss
 condition ("lose THIS specific way" achievements teach the systems
 better than any tutorial) and one style-win per setup.
 
-**P1 · Reversed-mode content audit.** `_reversed_mode` mutates
+**P1 · ~~Reversed-mode content audit~~ CLEAN 2026-07-19** — every setup carries an authored epigraph_reversed. Original note: `_reversed_mode` mutates
 difficulty (tighter turns, harder loss thresholds) and setups carry
 `epigraph_upright` — AUDIT: does every setup also carry an authored
 `epigraph_reversed` + reversed opening lines, or does reversed play
@@ -40,7 +40,7 @@ card). The gauntlet is 22 disconnected scenarios today; a three-card
 spread gives it a campaign shape and a reason to master weak arcana.
 New host screen + carryover rules; scenarios unchanged.
 
-**P2 · Named-loss preview on the title card.** The new arcana title
+**P2 · ~~Named-loss preview~~ DONE 2026-07-19** — the title card lists up to four finale titles ('ways this goes wrong'). Original note: The new arcana title
 card has room for one line: the setup's named loss conditions ("Ways
 this goes wrong: THE ROOM WALKS OUT · SHIFT ENDS BEHIND"). Losses as
 pedagogy, surfaced before play instead of discovered after.
@@ -56,12 +56,12 @@ rendered as tarot-flavored feedback.
 
 ## 2 · COMMUNITY PLANNED
 
-**P1 · Problem-template depth.** 21 templates across a 24-week
+**P1 · ~~Problem-template depth~~ PARTIAL 2026-07-19** — 21 → 29 with escalation chains into established templates; ~6 more to reach the 35 target. Original note: 21 templates across a 24-week
 summer means repeats by mid-game. Target ~35: more W12+ escalations
 so late-summer problems feel categorically worse, not just bigger
 numbers. Template schema already supports it.
 
-**P1 · Demon evolution visibility.** `evolution_traits_catalog`
+**P1 · ~~Demon evolution visibility~~ AUDITED CLEAN 2026-07-19** — evolution ticks per resolution, earned traits render in the dossier (checkmarks vs dimmed). Original note: `evolution_traits_catalog`
 exists in agents.json — AUDIT: is evolution live in play, and can
 the player SEE a demon's acquired traits (dossier trait chips)? A
 hidden progression system might as well not exist.
@@ -90,7 +90,7 @@ as designed.
 
 ## 3 · SLOWSTICKS — catalog-wide systems
 
-**P1 · Scrapbooks for the ten newer sticks.** The shelf's scrapbook
+**P1 · ~~Scrapbooks~~ DONE 2026-07-19** — ten scrapbook.json files, 45 entries keyed to tokens the hosts actually emit. Original note: The shelf's scrapbook
 button convention (`scrapbook.json` per stick) is live, but only
 Estuary 3 Manager Mode and Pirate Summer have one. estuary_1/2,
 northwind, sweetgum, riffmaster, hane_no_niwa, glass, wyrd, sss, ksm
@@ -175,7 +175,7 @@ mood — surfaced at volume end, Oneironautics-flavored.
 
 ## 6 · Cross-package systems
 
-**P1 · One profile screen.** Volumes read, gauntlet record per
+**P1 · ~~One profile screen~~ DONE 2026-07-19** — PROFILE panel on the main menu: VN slots, per-arcana W–L, achievements count, sticks finished, tokens held. Original note: Volumes read, gauntlet record per
 arcana, sticks finished, lore tokens held — all tracked today,
 visible nowhere together. One menu screen, read-only, no new state.
 

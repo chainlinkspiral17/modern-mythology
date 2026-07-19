@@ -8703,6 +8703,25 @@ func _show_arcana_title_card() -> void:
 	st.add_theme_font_size_override("font_size", 14)
 	st.add_theme_color_override("font_color", C_TEXT)
 	vb.add_child(st)
+	# Named-loss preview — losses as pedagogy, surfaced BEFORE play.
+	# The finale titles are the ways this reading goes wrong.
+	var loss_titles: Array[String] = []
+	for f_v in _finale_def.get("finales", []):
+		var fd: Dictionary = f_v
+		var lt2: String = String(fd.get("title", "")).strip_edges()
+		if lt2 != "":
+			loss_titles.append(lt2)
+		if loss_titles.size() >= 4:
+			break
+	if not loss_titles.is_empty():
+		var losses := Label.new()
+		losses.text = "ways this goes wrong: " + " · ".join(loss_titles)
+		losses.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+		losses.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+		losses.custom_minimum_size.x = 460.0
+		losses.add_theme_font_size_override("font_size", 12)
+		losses.add_theme_color_override("font_color", C_BAD)
+		vb.add_child(losses)
 	var hint := Label.new()
 	hint.text = "— click to begin —"
 	hint.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
