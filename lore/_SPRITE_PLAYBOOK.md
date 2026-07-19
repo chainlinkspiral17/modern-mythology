@@ -103,6 +103,24 @@ chunky, era-appropriate.
 
 ## Recent lessons
 
+### 2026-07-19 · talk flap + frame vocabulary discipline
+
+- **The bust frame system scales by adding frame NAMES, not code
+  paths.** "talk" joined "open"/"blink" as a third frame: one
+  override branch in the mouth renderer, zero new cache machinery
+  (the cache key already included frame). CharLayer alternates
+  open/talk every 0.14s on the ACTIVE speaker while
+  DialogueBox.is_typing() — and blink yields to flap.
+- **Always restore the resting frame when a timed swap ends.** The
+  flap sets a "talking" meta; the first non-talking tick restores
+  "open" and clears it. Without this the mouth freezes mid-flap
+  until the next blink — the same class of bug as a tween that
+  never writes its end state.
+- **Cross-tree UI lookups: cache the node ref, re-find only on
+  invalidation.** CharLayer finds DialogueBox once via find_child
+  and keeps the ref; a per-frame find_child would walk the whole
+  scene tree 60×/s.
+
 ### 2026-07-19 · VN [panel:] pipeline · first vol6 cutscene panels
 
 - **The VN already had a dormant panel overlay pipeline** — VnDirector

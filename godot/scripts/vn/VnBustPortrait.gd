@@ -336,29 +336,38 @@ static func _build(key: String, fam: String, accent: Color, frame: String) -> Im
 				Vector2i(36, 30), Vector2i(34, 31), Vector2i(37, 32)]:
 			_put(img, fp.x, fp.y, skin_dk2)
 	# ── mouth by family ──────────────────────────────────────────
-	match fam:
-		"happy":
-			_put(img, 26, 34, _INK)
-			_put(img, 34, 34, _INK)
-			_hspan(img, 27, 33, 35, _INK)
-			_hspan(img, 28, 32, 36, lip)
-		"sad":
-			_put(img, 26, 36, _INK)
-			_put(img, 34, 36, _INK)
-			_hspan(img, 27, 33, 35, _INK)
-		"surprised":
-			for y in [34, 35, 36]:
-				_hspan(img, 28, 31, y, _INK)
-			_hspan(img, 29, 30, 35, lip.darkened(0.3))
-		"angry":
-			_hspan(img, 26, 34, 35, _INK)
-			_hspan(img, 27, 33, 36, skin_dk2)
-		"nervous":
-			for i in range(8):
-				_put(img, 26 + i, 35 + (i % 2), _INK)
-		_:
-			_hspan(img, 27, 33, 35, _INK)
-			_hspan(img, 28, 32, 36, lip)
+	# Talk frame (frame == "talk"): the mouth opens regardless of
+	# family — CharLayer alternates open/talk on the ACTIVE speaker
+	# while the typewriter runs, so speech reads on the face.
+	if frame == "talk":
+		for ty in [34, 35, 36]:
+			_hspan(img, 28, 32, ty, _INK)
+		_hspan(img, 29, 31, 36, lip.darkened(0.35))
+		_hspan(img, 29, 31, 34, lip)
+	else:
+		match fam:
+			"happy":
+				_put(img, 26, 34, _INK)
+				_put(img, 34, 34, _INK)
+				_hspan(img, 27, 33, 35, _INK)
+				_hspan(img, 28, 32, 36, lip)
+			"sad":
+				_put(img, 26, 36, _INK)
+				_put(img, 34, 36, _INK)
+				_hspan(img, 27, 33, 35, _INK)
+			"surprised":
+				for y in [34, 35, 36]:
+					_hspan(img, 28, 31, y, _INK)
+				_hspan(img, 29, 30, 35, lip.darkened(0.3))
+			"angry":
+				_hspan(img, 26, 34, 35, _INK)
+				_hspan(img, 27, 33, 36, skin_dk2)
+			"nervous":
+				for i in range(8):
+					_put(img, 26 + i, 35 + (i % 2), _INK)
+			_:
+				_hspan(img, 27, 33, 35, _INK)
+				_hspan(img, 28, 32, 36, lip)
 	# ── expression accents ───────────────────────────────────────
 	if fam == "happy" or fam == "nervous":
 		for bx0 in [22, 35]:

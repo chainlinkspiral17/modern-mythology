@@ -359,10 +359,27 @@ func _ready() -> void:
 
 var _bust_blinkers: Array = []
 
+# ── Talk flap (2026-07-19) — while the typewriter is running, the
+# ACTIVE speaker's bust alternates open/talk mouth frames. The
+# DialogueBox reference is cached lazily (it lives in GameEngine's
+# tree, a sibling subtree of ours).
+var _active_speaker_key: String = ""
+var _dlg_ref: Node = null
+var _talk_flip: float = 0.0
+
+
+func _dlg_typing() -> bool:
+	if _dlg_ref == null or not is_instance_valid(_dlg_ref):
+		_dlg_ref = get_tree().get_root().find_child("DialogueBox", true, false)
+	if _dlg_ref == null:
+		return false
+	return _dlg_ref.has_method("is_typing") and _dlg_ref.call("is_typing")
+
 
 func _process(delta: float) -> void:
 	_t += delta
-	# ── bust blinking (VnBustPortrait v2) ──
+	# ── bust blinking + talk flap (VnBustPortrait v2) ──
+	var talking: bool = _active_speaker_key != "" and _dlg_typing()
 	for i in range(_bust_blinkers.size() - 1, -1, -1):
 		var ph: Control = _bust_blinkers[i] as Control
 		if ph == null or not is_instance_valid(ph):
@@ -378,6 +395,20 @@ func _process(delta: float) -> void:
 			continue
 		var b_expr: String = ph.get_meta("bust_expr") if ph.has_meta("bust_expr") else "neutral"
 		var b_col: Color = ph.get_meta("bust_col") if ph.has_meta("bust_col") else Color.WHITE
+		# Talk flap wins over blink on the active speaker: alternate
+		# open/talk every 0.14s while the typewriter runs. Frames come
+		# from the same cache, so the swap is free.
+		if talking and b_key == _active_speaker_key:
+			var open_phase: bool = fmod(_t, 0.28) < 0.14
+			btr.texture = BUST_PORTRAIT.texture(b_key, b_expr, b_col,
+					"open" if open_phase else "talk")
+			ph.set_meta("blink_until", 0.0)
+			ph.set_meta("talking", true)
+			continue
+		if ph.has_meta("talking"):
+			# Flap just ended — settle back on the open mouth.
+			btr.texture = BUST_PORTRAIT.texture(b_key, b_expr, b_col, "open")
+			ph.remove_meta("talking")
 		var until: float = float(ph.get_meta("blink_until"))
 		var next: float = float(ph.get_meta("blink_next"))
 		if until > 0.0 and _t >= until:
@@ -627,6 +658,7 @@ func activate_speaker(char_name: String) -> void:
 	# lets the camera pull back during third-person narration instead
 	# of leaving the last speaker on the screen as "main".
 	var key := char_key(char_name)
+	_active_speaker_key = key
 	# Find which slot the active speaker occupies so a centre portrait
 	# can turn to face them (left/right slots keep their fixed inward
 	# facing, set at show time).

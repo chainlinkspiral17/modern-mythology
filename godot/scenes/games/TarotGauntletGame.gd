@@ -8715,9 +8715,11 @@ func _show_arcana_title_card() -> void:
 	dim.gui_input.connect(func(ev: InputEvent) -> void:
 		if ev is InputEventMouseButton and (ev as InputEventMouseButton).pressed:
 			if _title_overlay != null and is_instance_valid(_title_overlay):
+				SFXBank.play("card_place", 0.7)
 				_title_overlay.queue_free()
 				_title_overlay = null)
 	add_child(_title_overlay)
+	SFXBank.play("card_flip", 0.8)
 
 
 func _show_end_screen(won: bool, title: String, body: String, cg_path: String = "") -> void:

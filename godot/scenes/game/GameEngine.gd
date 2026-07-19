@@ -499,7 +499,11 @@ func _directed(n: Dictionary) -> Dictionary:
 				"shot":  _director.call("apply_shot", arg)
 				"stage": _director.call("apply_stage", arg)
 				"mood":  _director.call("apply_mood", arg)
-				_:       _director.call("apply_panel", arg)
+				_:
+					_director.call("apply_panel", arg)
+					# Paper-slide moment sound: a page turn on open, a
+					# soft close on dismiss. Presets ship in SFXBank.
+					SFXBank.play("menu_close" if arg == "off" else "page_turn", 0.55)
 		stripped = stripped.substr(m.get_end(0))
 	if stripped == text:
 		return n

@@ -110,20 +110,23 @@ func _present_speaker(char_name: String) -> void:
 	_speaker.text    = char_name.to_upper()
 	_speaker.visible = true
 	_apply_speaker_accent(char_name)
-	# Underline bar sized to the rendered name (standard skin only —
-	# terminal/paper keep their own diegetic chrome).
+	# Underline bar sized to the rendered name — sits just under the
+	# speaker label on every skin (each build places _speaker itself).
 	if _spk_rule != null:
 		_speaker.reset_size()
 		_spk_rule.visible    = true
-		_spk_rule.position   = Vector2(_speaker.position.x, -6.0)
+		_spk_rule.position   = Vector2(_speaker.position.x,
+				_speaker.position.y + _speaker.get_minimum_size().y + 1.0)
 		_spk_rule.size       = Vector2(maxf(_speaker.get_minimum_size().x, 40.0), 3.0)
 		_spk_rule.pivot_offset = Vector2.ZERO
 	var changed := char_name != _last_speaker
 	_last_speaker = char_name
-	if not changed or _variant != SkinDB.DLG_STANDARD:
+	if not changed:
 		return
 	# Speaker handoff: name pops from slightly oversized, underline
-	# wipes in from the left. One beat (~0.2s), no layout shift.
+	# wipes in from the left, a very quiet tick. One beat, no layout
+	# shift.
+	SFXBank.play("blip", 0.22)
 	_speaker.pivot_offset = Vector2(0.0, _speaker.size.y)
 	_speaker.scale = Vector2(1.14, 1.14)
 	var tw := _speaker.create_tween()
@@ -336,6 +339,11 @@ func _build_terminal() -> void:
 	_speaker.visible = false
 	add_child(_speaker)
 
+	_spk_rule = ColorRect.new()
+	_spk_rule.visible = false
+	_spk_rule.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	add_child(_spk_rule)
+
 	_body = RichTextLabel.new()
 	_body.bbcode_enabled = true
 	_body.fit_content    = false
@@ -392,6 +400,11 @@ func _build_paper() -> void:
 				_skin.get("spk_color", Color(0.04, 0.04, 0.04)))
 	_speaker.visible = false
 	add_child(_speaker)
+
+	_spk_rule = ColorRect.new()
+	_spk_rule.visible = false
+	_spk_rule.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	add_child(_spk_rule)
 
 	_body = RichTextLabel.new()
 	_body.bbcode_enabled = true

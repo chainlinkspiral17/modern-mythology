@@ -14,7 +14,7 @@ Strike items as they land; move user-feedback items up a tier.
 
 ## 1 · VN — sets & scenes (vols 5–6)
 
-**P1 · Finish the wrong-room sweep.** 27 `cosmic_comics_back_office`
+**P1 · ~~Finish the wrong-room sweep~~ DONE 2026-07-19.** 29 → 10 legit back-office segments; all repoints + seven builds shipped (ben_bedroom, coach_k_bedroom, kowalski_backyard, henderson_porch_front, gym_weight_room, equipment_shed, nightmare_cell). 27 `cosmic_comics_back_office`
 segments remain in 17 scenes. Audited classification:
 
 - LEGIT (it really is Rick's back office — leave, maybe re-verify the
@@ -47,12 +47,12 @@ scenes stuck on it), `lena_apartment` (14), `miller_back_porch` (16),
 `school_field_evening` (10). Same method: dump narrates under each bg,
 classify legit vs wrong.
 
-**P2 · Vol5 gets zero HeroImage panels today.** The `[panel:]`
+**P2 · ~~Vol5 panels~~ DONE 2026-07-19** (napkin, model city, packing boxes, Q. PAUL, record player). Original note: The `[panel:]`
 pipeline is proven in vol6 (4 panels). Vol5 climax candidates: the
 Fool's diner reveal, the Magician's cathedral workbench, the Priestess
 packing, the riverboat at dusk, the Devil's station. 4–6 panels.
 
-**P2 · More vol6 panels.** Candidates: the Foxhole flyer (ch14), the
+**P2 · ~~More vol6 panels~~ DONE 2026-07-19** (foxhole flyer, Rick's notebook, corkboard sheet). Original note: Candidates: the Foxhole flyer (ch14), the
 photograph pinned on the line (prelude callback at ch12), Maya's
 evidence board, the bridge finally working (ch20 — could be abstract),
 Rick's spiral notebook page.
@@ -73,7 +73,7 @@ authored-override-over-hash-fallback pattern, ported to
 VnBustPortrait: authored 60×64 grids for Sam, Maya, Diego, Rick,
 Graciela, the vol7 five; hash busts for everyone else.
 
-**P2 · Talk animation.** Blink already works; add a 2-frame mouth
+**P2 · ~~Talk animation~~ DONE 2026-07-19** — 'talk' frame + active-speaker flap while the typewriter runs. Original note: Blink already works; add a 2-frame mouth
 flap on the active speaker while the typewriter is running (same
 cache-swap trick as blink — render a "talk" frame with open mouth).
 
@@ -93,7 +93,7 @@ so the CP board's real-art routing covers all four named agents.
 
 ## 3 · VN — presentation chrome
 
-**P2 · Extend nameplate chrome to terminal/paper skins.** The accent
+**P2 · ~~Extend nameplate chrome to terminal/paper skins~~ DONE 2026-07-19.** Original note: The accent
 underline + speaker-change pop currently ship on the standard skin
 only.
 
@@ -111,7 +111,7 @@ open/close SFX (see §7).
 
 ## 4 · Tarot Gauntlet
 
-**P1 · Arcana bookend cards.** All 22 arcana have setups and accent
+**P1 · ~~Arcana bookend cards~~ DONE 2026-07-19** — 22 procedural cards, title overlay + end-screen fallback (killed the dev-placeholder leak). Named-loss illustrations remain future work. Original note: All 22 arcana have setups and accent
 hues; give each a HeroImage title card at gauntlet start + a win/loss
 end card (the loss conditions are named — illustrate the named ones
 over time, pedagogy per the design playbook).
@@ -150,7 +150,7 @@ the wash to panel borders). JSON stays data-truth; render-only.
 
 ## 6 · Slowsticks (vol7)
 
-**P1 · Sync stale manifest metadata.** fey_faire + earthman_chronicles
+**P1 · ~~Sync stale manifest metadata~~ DONE 2026-07-19.** Original note: fey_faire + earthman_chronicles
 manifests still say "playable acts deferred" and pirate_summer says
 "wave_b_playable" — all three are far past that. Whatever the shelf
 UI shows from `status` is lying to the player.
@@ -161,14 +161,14 @@ present and per-studio, font floor 12 respected, no our-timeline
 retro cosplay. The early sticks (estuary_1, northwind_harbor) were
 built fast — most likely to drift.
 
-**P2 · Art passes for the thin playable_v1 sticks.** estuary_1,
+**P2 · Art passes for the thin playable_v1 sticks — AUDIT NOTE 2026-07-19: sweetgum's zero-art is intentional ('Three colors. No sprites. No hero images.'). Audit per-stick before adding art; some minimalism is the studio voice.** Original note: estuary_1,
 estuary_2, sweetgum, riffmaster_melody_club, hane_no_niwa,
 patient_mister_glass, sisters_wyrd, basilica (empty sleeve is canon —
 leave), sams_summer_shifts: each wants its title HeroImage, 1–2
 mid-game images, and an ending card where missing. Audit first —
 some already have them.
 
-**P2 · BGM coverage for the newer sticks.** The Wave A–F audit hit
+**P2 · ~~BGM coverage~~ AUDITED CLEAN 2026-07-19** — all ten newer sticks reference existing per-stick BGM dirs (e1/e2/nh/sg/hnn/pmg/sw/sss/ksm); riffmaster is diegetically scored through the PDP Riffmaster voice BY DESIGN. Original note: The Wave A–F audit hit
 100% for its era; the sticks built after (estuary_1, northwind,
 sweetgum, e2, hane_no_niwa, glass, riffmaster, wyrd) need a
 composition sweep — silence check at boot, one bed per major scene.
@@ -185,7 +185,7 @@ rules apply there too.
 
 ## 7 · Audio
 
-**P2 · Moment SFX for the new chrome.** panel open/close (photo-swish
+**P2 · ~~Moment SFX~~ DONE 2026-07-19** — page_turn/menu_close on panel open/close, blip on speaker change, card_flip/place on the gauntlet title card (existing presets, zero new assets). Original note: panel open/close (photo-swish
 for prints, phone-buzz for the transport order is diegetic in-scene
 already), speaker-change tick (very quiet), CP banner stage stinger.
 All within slowstick_synth presets.
