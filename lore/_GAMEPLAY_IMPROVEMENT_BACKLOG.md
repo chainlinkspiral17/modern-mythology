@@ -60,10 +60,15 @@ replays welcome. Original note: A one-tap "draw a card" entry that
 picks an arcana+setup (optionally date-seeded so everyone gets the
 same daily).
 
-**P3 · Post-run reading.** The end screen states win/loss; add three
-lines of "the reading" — which turns swung it, the visitor who
-mattered, the card never played. Data the engine already tracks,
-rendered as tarot-flavored feedback.
+**P3 · Post-run reading — DONE 2026-07-19.** Every gauntlet end
+screen now closes with · THE READING · — three gold lines under
+the narrative built from tracked run data with fallbacks so it
+never renders empty: the TEMPO (turns used vs max, four
+win/loss/clock variants), the CARD OF THE RUN (most-played, ties
+id-sorted), and the CARD NEVER PLAYED (first unplayed card still
+in hand · else the claimed-visitors count · else "clean hands").
+Original note: add three lines of "the reading" — which turns
+swung it, the visitor who mattered, the card never played.
 
 ## 2 · COMMUNITY PLANNED
 

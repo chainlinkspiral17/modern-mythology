@@ -8769,6 +8769,55 @@ func _show_arcana_title_card() -> void:
 	SFXBank.play("card_flip", 0.8)
 
 
+# THE READING · three tarot-flavored lines under the ending
+# narrative, built from data the run already tracked (turn count,
+# per-card play counts, the hand at the end, claimed visitors).
+# Every line has a fallback so the reading never renders empty.
+func _post_run_reading(won: bool) -> String:
+	var lines: Array = []
+	# I · the tempo
+	var max_t: int = int(_setup.get("max_turns", 8))
+	if won and _turn <= max_t / 2:
+		lines.append("the tempo · %d of %d turns · you left before the room could form an opinion" % [_turn, max_t])
+	elif won:
+		lines.append("the tempo · %d of %d turns · it went the distance and so did you" % [_turn, max_t])
+	elif _turn >= max_t:
+		lines.append("the tempo · all %d turns spent · the clock was the one card you couldn't play around" % max_t)
+	else:
+		lines.append("the tempo · %d of %d turns · it ended before the clock did · that is its own answer" % [_turn, max_t])
+	# II · the card of the run · most-played, ties broken by id sort
+	var best_id: String = ""
+	var best_n: int = 0
+	var played_ids: Array = _cards_played_this_run.keys()
+	played_ids.sort()
+	for cid_v in played_ids:
+		var n: int = int(_cards_played_this_run[cid_v])
+		if n > best_n:
+			best_n = n
+			best_id = String(cid_v)
+	if best_id != "":
+		var best_title: String = String((_action_cards.get(best_id, {}) as Dictionary).get("title", best_id)).to_upper()
+		lines.append("the card of the run · %s · played %d times · when you didn't know what to do, you knew what to do" % [best_title, best_n])
+	else:
+		lines.append("the card of the run · none · you played the room, not the hand")
+	# III · the card never played, else the claimed, else clean hands
+	var unplayed: String = ""
+	for cid_v in _hand_cards:
+		var cid: String = String(cid_v)
+		if int(_cards_played_this_run.get(cid, 0)) == 0:
+			unplayed = cid
+			break
+	if unplayed != "":
+		var un_title: String = String((_action_cards.get(unplayed, {}) as Dictionary).get("title", unplayed)).to_upper()
+		lines.append("the card never played · %s · it sat in your hand all shift, saying nothing · some cards are company" % un_title)
+	elif _claimed_visitors_count > 0:
+		lines.append("the claimed · %d visitor%s the room took · their names stay on the schedule" % [
+				_claimed_visitors_count, "" if _claimed_visitors_count == 1 else "s"])
+	else:
+		lines.append("the hand · every card you held, you played · nothing wasted, nothing spared")
+	return "\n\n[color=#c8a842][b]· THE READING ·[/b]\n%s[/color]" % "\n".join(lines)
+
+
 func _show_end_screen(won: bool, title: String, body: String, cg_path: String = "") -> void:
 	if _end_overlay != null:
 		_end_overlay.queue_free()
@@ -8841,7 +8890,7 @@ func _show_end_screen(won: bool, title: String, body: String, cg_path: String = 
 	b.fit_content = true
 	b.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 	b.size_flags_horizontal = Control.SIZE_EXPAND_FILL
-	b.text = "[i]%s[/i]" % body
+	b.text = "[i]%s[/i]" % body + _post_run_reading(won)
 	b.add_theme_color_override("default_color", C_TEXT)
 	b.add_theme_font_size_override("normal_font_size", 13)
 	scroll.add_child(b)
