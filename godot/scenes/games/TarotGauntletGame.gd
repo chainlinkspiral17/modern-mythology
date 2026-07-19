@@ -155,6 +155,11 @@ var _next_gravity_canceled: bool = false
 var _active_demons: Dictionary = {}         # demon_id → turns_left
 var _player_pos: String = "counter"
 var _hand_cards: Array = []     # array of card ids currently in hand
+# THE SPREAD · carryover from the previous card of a three-card
+# spread. Set by SpreadHost between instantiate and add_child; empty
+# for normal single-scenario runs. Keys: sanity (int), inertia
+# (int), held_card (String, core-deck id). Applied in _init_run.
+var spread_carry: Dictionary = {}
 # Per-card stock counts for tableau buys. Each non-starter card
 # carries a finite stock that decrements on purchase. When stock
 # hits 0 the card disappears from the tableau. Default stock comes
@@ -1023,6 +1028,23 @@ func _init_run() -> void:
 	# Honor starting_steamboat_progress for the hard scenario.
 	_steamboat_progress = int(_setup.get("starting_steamboat_progress", _steamboat_progress))
 	_hand_cards = (start.get("starting_hand", []) as Array).duplicate()
+	# THE SPREAD · apply carryover from the previous card of a
+	# three-card spread (design: _GAUNTLET_DESIGN_PLAYBOOK.md "THE
+	# SPREAD"). Sanity carries only DOWN from this setup's start
+	# (endurance, not a snowball), floored at 2 so the third card
+	# stays winnable. Inertia carries only UP, capped at 3. A held
+	# core-deck card joins the opening hand.
+	if not spread_carry.is_empty():
+		if spread_carry.has("sanity"):
+			_sanity = clampi(int(spread_carry["sanity"]), 2, _sanity)
+		if spread_carry.has("inertia"):
+			_inertia = maxi(_inertia, clampi(int(spread_carry["inertia"]), 0, 3))
+		var held: String = String(spread_carry.get("held_card", ""))
+		if held != "" and not (held in _hand_cards):
+			_hand_cards.append(held)
+		_log_line("[color=#c8a842][b]THE SPREAD.[/b] you carry the last room in with you · sanity %d · inertia %d%s[/color]" % [
+			_sanity, _inertia,
+			(" · held: %s" % held.to_upper()) if held != "" else ""])
 
 	# Visitors: the scenario's `visitors_present_at_start` and
 	# `visitor_schedule` lists are the source of truth — they let the
@@ -8490,6 +8512,9 @@ func _trigger_win(threshold: String) -> void:
 		"contents": contents,
 		"lore_tokens": _lore_tokens_collected,
 		"ending_token": ending_token,
+		"final_sanity": _sanity,
+		"final_inertia": _inertia,
+		"final_hand": _hand_cards.duplicate(),
 	}
 	# CG image path per threshold
 	var cg_path: String = _win_cg_path(threshold)
@@ -8622,6 +8647,9 @@ func _trigger_loss(reason: String) -> void:
 		"finale_id": finale_id,
 		"finale_title": finale_title,
 		"lore_tokens": _lore_tokens_collected,
+		"final_sanity": _sanity,
+		"final_inertia": _inertia,
+		"final_hand": _hand_cards.duplicate(),
 	}
 	var cg_path: String = _loss_cg_path(finale_id)
 	_show_end_screen(false, "REVERSED · " + finale_title, finale_flavor, cg_path)

@@ -75,6 +75,26 @@ func record_loss(arcana: String, location: String, finale: String,
 	_save()
 
 
+# ── THE SPREAD · three-card cross-arcana runs ────────────────────────
+# Shape: { "cards": [{arcana, setup, title, outcome}], "idx": int,
+#          "carry": {sanity, inertia, held_card} }
+# Absent key (or null) = no spread in progress.
+
+func get_spread() -> Dictionary:
+	var s: Variant = state.get("spread", null)
+	return s if s is Dictionary else {}
+
+
+func set_spread(d: Dictionary) -> void:
+	state["spread"] = d
+	_save()
+
+
+func clear_spread() -> void:
+	state.erase("spread")
+	_save()
+
+
 func unlock_achievement(id: String) -> bool:
 	if id in state["achievements_unlocked"]:
 		return false

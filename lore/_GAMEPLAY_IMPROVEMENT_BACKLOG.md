@@ -34,11 +34,17 @@ Chariot have 4 setups; everyone else has 3. The bookend pattern
 scenario per arcana — 20 setups of content using only existing
 machinery (scenario_visitors inline, time-of-day as difficulty).
 
-**P2 · The Spread — cross-arcana runs.** Play three drawn arcana in
-sequence with a small carryover (leftover composure/doubt, one held
-card). The gauntlet is 22 disconnected scenarios today; a three-card
-spread gives it a campaign shape and a reason to master weak arcana.
-New host screen + carryover rules; scenarios unchanged.
+**P2 · The Spread — cross-arcana runs — DONE 2026-07-19.** Shipped
+per the playbook design note: SpreadHost.gd (THE SPREAD tile in the
+gallery-games row) deals three distinct arcana with one setup each
+(fully data-driven from the 88 setup JSONs' own location/hand
+fields — verified all 22 arcana launchable), carryover = sanity
+(down-only, floor 2), inertia (half, cap 3), and one held CORE-deck
+card picked at the interstitial; loss ends the reading; three wins
+= A FULL READING achievement; spread state persists in
+GauntletState for quit-resume. Scenarios untouched. Original note:
+Play three drawn arcana in sequence with a small carryover. New
+host screen + carryover rules; scenarios unchanged.
 
 **P2 · ~~Named-loss preview~~ DONE 2026-07-19** — the title card lists up to four finale titles ('ways this goes wrong'). Original note: The new arcana title
 card has room for one line: the setup's named loss conditions ("Ways

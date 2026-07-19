@@ -289,7 +289,18 @@ description across the batch. Most durable lessons:
   weight. Rule: the last scenario in a batch gets the most care, not
   the least.
 
-## Design note · THE SPREAD (cross-arcana runs) — 2026-07-19, not yet built
+## Design note · THE SPREAD (cross-arcana runs) — 2026-07-19, BUILT same day
+
+Implementation: `godot/scenes/menu/SpreadHost.gd` (tile in
+GalleryOverlay's gallery-games row, violet border), `spread_carry`
++ summary extensions in TarotGauntletGame.gd, spread persistence
+helpers in GauntletState.gd, `achievement:spread_full_reading` in
+achievements.json. Deviations from the note below: none of
+substance — held-card offering is filtered to CORE-deck ids
+(arcana-unique cards don't exist in the next arcana's merged deck,
+so they "stay with their rooms"), and a mid-scenario walk-out
+returns to the spread screen with the card still face-down (the
+gauntlet's own mid-run save resumes it).
 
 The backlog's campaign-shape item, designed against the engine as
 it actually is (grounded in TarotGauntletGame.gd state, verified

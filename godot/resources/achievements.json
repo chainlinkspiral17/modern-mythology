@@ -888,6 +888,15 @@
     "kind": "unlock",
     "key": "unlocked:the_whole_reading"
    }
+  },
+  {
+   "id": "spread_full_reading",
+   "title": "A FULL READING",
+   "desc": "Complete THE SPREAD - three drawn arcana played in sequence, one thread of nerve carried between rooms.",
+   "trigger": {
+    "kind": "spread_full_reading"
+   },
+   "unlock_key": "achievement:spread_full_reading"
   }
  ]
 }

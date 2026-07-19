@@ -145,6 +145,7 @@ func _rebuild() -> void:
 			games_flow.add_child(_make_community_planned_tile())
 		if gauntlet_unlocked:
 			games_flow.add_child(_make_tarot_gauntlet_tile())
+			games_flow.add_child(_make_spread_tile())
 		content.add_child(games_flow)
 	if not cp_unlocked or not gauntlet_unlocked:
 		# Dev hook: a small toggle to fire each gallery-game unlock
@@ -516,6 +517,55 @@ func _make_tarot_gauntlet_tile() -> Control:
 	vbox.add_child(count)
 	tile.pressed.connect(_open_gauntlet_chapter_picker)
 	return tile
+
+
+const SPREAD_HOST_SCRIPT := preload("res://scenes/menu/SpreadHost.gd")
+
+func _make_spread_tile() -> Control:
+	# Violet-edged sibling of the gauntlet tile — the campaign shape.
+	var tile := Button.new()
+	tile.custom_minimum_size = Vector2(THUMB_W * 2, THUMB_H)
+	tile.clip_contents = true
+	var style := StyleBoxFlat.new()
+	style.bg_color = Color(0.07, 0.05, 0.09, 1.0)
+	style.border_color = Color(0.65, 0.40, 0.85, 0.65)
+	style.set_border_width_all(1)
+	style.set_corner_radius_all(2)
+	tile.add_theme_stylebox_override("normal", style)
+	var hover_style: StyleBoxFlat = style.duplicate() as StyleBoxFlat
+	hover_style.border_color = Color(0.65, 0.40, 0.85, 0.95)
+	hover_style.bg_color = Color(0.10, 0.07, 0.13, 1.0)
+	tile.add_theme_stylebox_override("hover", hover_style)
+	tile.add_theme_stylebox_override("focus", hover_style)
+	tile.add_theme_stylebox_override("pressed", hover_style)
+	var vbox := VBoxContainer.new()
+	vbox.anchor_right = 1.0
+	vbox.anchor_bottom = 1.0
+	vbox.alignment = BoxContainer.ALIGNMENT_CENTER
+	tile.add_child(vbox)
+	var label := Label.new()
+	label.text = "THE SPREAD"
+	label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+	label.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	_apply_font(label, SkinDB.F_CINZEL, 14, C_GOLD)
+	vbox.add_child(label)
+	var sub := Label.new()
+	var has_spread: bool = not GauntletState.get_spread().is_empty()
+	sub.text = "· a reading in progress ·" if has_spread else "three cards drawn · played in sequence"
+	sub.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+	sub.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	_apply_font(sub, SkinDB.F_CINZEL, 9, Color(C_GOLD.r, C_GOLD.g, C_GOLD.b, 0.55))
+	vbox.add_child(sub)
+	tile.pressed.connect(_open_spread_host)
+	return tile
+
+
+func _open_spread_host() -> void:
+	var host := Control.new()
+	host.set_script(SPREAD_HOST_SCRIPT)
+	host.z_index = 25
+	add_child(host)
+	host.connect("closed", func() -> void: _rebuild())
 
 
 func _scenarios_for_arcana(scenarios_const_name: String) -> Array:
