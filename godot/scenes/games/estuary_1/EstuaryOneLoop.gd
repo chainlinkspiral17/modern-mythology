@@ -236,10 +236,25 @@ func _finish_season() -> void:
 
 
 func _grade(v: float, cuts: Array) -> String:
-	if v >= float(cuts[0]): return "A"
-	if v >= float(cuts[1]): return "B"
-	if v >= float(cuts[2]): return "C"
+	# Signed bands so near-misses read: the top slice of B is "B+",
+	# the bottom slice is "B-". A stays unsigned at the top (an A is
+	# an A) and D stays unsigned at the bottom (the estuary does not
+	# rub it in).
+	if v >= float(cuts[0]):
+		return "A"
+	if v >= float(cuts[1]):
+		return _signed("B", v, float(cuts[1]), float(cuts[0]))
+	if v >= float(cuts[2]):
+		return _signed("C", v, float(cuts[2]), float(cuts[1]))
 	return "D"
+
+
+func _signed(letter: String, v: float, lo: float, hi: float) -> String:
+	var span: float = maxf(hi - lo, 0.001)
+	var t: float = (v - lo) / span
+	if t >= 0.67: return letter + "+"
+	if t < 0.33:  return letter + "-"
+	return letter
 
 
 func _patience_grade(touches: int) -> String:
@@ -460,6 +475,26 @@ func _draw_gate(week: int) -> void:
 	var font := get_theme_default_font()
 	draw_string(font, Vector2(64, 356), "WK", HORIZONTAL_ALIGNMENT_LEFT, -1, 13, C_WATER)
 	draw_string(font, Vector2(64, 376), "%02d" % week, HORIZONTAL_ALIGNMENT_LEFT, -1, 16, C_WATER)
+	# The water word — this week's tide luck, made legible without
+	# adding a control. The lever means something different in storm
+	# water than in glass calm, and now the gate housing says so.
+	draw_string(font, Vector2(48, 394), _water_word(week),
+			HORIZONTAL_ALIGNMENT_LEFT, -1, 10, Color(C_WATER.r, C_WATER.g, C_WATER.b, 0.75))
+
+
+# Derived from the season's pre-rolled luck (saved with the run, so
+# a continued save shows the same water). Words, not numbers — the
+# cartridge never shows a number it can avoid.
+func _water_word(week: int) -> String:
+	var luck_arr: Array = _state.get("luck", [])
+	if week < 1 or week > luck_arr.size():
+		return ""
+	var luck: float = float(luck_arr[week - 1])
+	if luck < 0.18: return "STORM WATER"
+	if luck < 0.38: return "CHOP"
+	if luck < 0.62: return "ORDINARY WATER"
+	if luck < 0.85: return "SOFT TIDE"
+	return "GLASS CALM"
 
 
 func _draw_heron(flat_top: int) -> void:

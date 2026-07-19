@@ -199,8 +199,26 @@ func _register_observation(sid: String) -> void:
 		_msg("the journal page for %s ILLUMINATES. the math is visible now. its voice joins the walk." % String(sp.get("name", sid)))
 	else:
 		_sfx("page_turn", 0.4)
-		_msg("observed · %s (%d walk%s running). %s" % [String(sp.get("name", sid)), streak,
-				"s" if streak != 1 else "", String(sp.get("keystone", ""))])
+		# Walk-to-walk memory: the flat remembers absences. If this
+		# species was seen before but the streak broke, the gap gets
+		# acknowledged — the genre is noticing, and the sharpest
+		# noticing is of what stopped being there and came back.
+		var prev_max := 0
+		for w_v in walks_seen:
+			var wv := int(w_v)
+			if wv < _n and wv > prev_max:
+				prev_max = wv
+		var gap: int = _n - prev_max
+		if prev_max > 0 and gap >= 3:
+			if illuminated.has(sid):
+				_msg("%s is back — %d walks gone. the page already knows it. still, you look. that's the whole practice." %
+						[String(sp.get("name", sid)), gap - 1])
+			else:
+				_msg("%s is back. you didn't see it for %d walks. neither of you mentions it." %
+						[String(sp.get("name", sid)), gap - 1])
+		else:
+			_msg("observed · %s (%d walk%s running). %s" % [String(sp.get("name", sid)), streak,
+					"s" if streak != 1 else "", String(sp.get("keystone", ""))])
 
 
 func _streak(walks_seen: Array) -> int:

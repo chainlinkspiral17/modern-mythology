@@ -105,7 +105,7 @@ every finished stick should change at least one observable thing —
 a shelf remark, a cabin radio line, Pirate Summer chatter. Sticks
 whose tokens go nowhere need one consumer each.
 
-**P2 · Unlock legibility.** The shelf says "LOCKED · finish another
+**P2 · ~~Unlock legibility~~ DONE 2026-07-19** — the locked line names the gate ('finish ESTUARY 3', 'finish 3 sticks (2 more)', 'continues from Vol 7's story'). Original note: The shelf says "LOCKED · finish another
 stick to unlock" — say WHICH ("finish NORTHWIND HARBOR"), from the
 unlock_graph. Mystery gating without direction is just friction.
 
@@ -115,20 +115,20 @@ endings seen ×/7) pulled from the saves the sticks already write.
 
 ## 4 · SLOWSTICKS — per-stick gameplay
 
-**P2 · estuary_1** — the one-lever design is sacred; add weekly
+**P2 · ~~estuary_1~~ DONE 2026-07-19** (the water word on the gate housing from pre-rolled luck; signed B±/C± grades so near-misses read). Original note: — the one-lever design is sacred; add weekly
 FLAVOR variance (a storm week, an algae bloom) that shifts what the
 lever means without adding controls. More report-card grades than
 the current bands so near-misses read.
 
-**P2 · estuary_2** — twelve walks exist; add walk-to-walk memory
+**P2 · ~~estuary_2~~ DONE 2026-07-19** (return-after-absence memory: species gone 3+ walks get acknowledged on return, illuminated pages get the quieter line). Original note: — twelve walks exist; add walk-to-walk memory
 (something you passed on walk 3 has changed by walk 9). The genre
 is noticing; give it more to notice.
 
-**P2 · northwind_harbor** — seven mornings + the dog: let feeding /
+**P2 · ~~northwind_harbor~~ DONE 2026-07-19** (Bosun pettable once per morning, persisted; four chapter-7 walk variants; nh_bosun_ritual token + scrapbook secret at six-of-seven). Original note: — seven mornings + the dog: let feeding /
 ignoring the dog across mornings shift the final morning. One
 variable, tracked, paid off.
 
-**P2 · kwik_stop_manager + sams_summer_shifts** — shared Manager
+**P2 · kwik_stop_manager + sams_summer_shifts — KSM ENDING AUDIT CLEAN 2026-07-19 (full endings system in the host; earlier zero-count was a wrong-file grep). Modifiers + crossover guest remain. Original note:** — shared Manager
 machinery: one new nightly modifier each and one crossover guest
 (a Pirate Summer camper buying slushies in SSS). KSM's host gd had
 zero "ending" mentions — AUDIT it has a real terminal state, not
