@@ -1,0 +1,191 @@
+{
+ "id": "the_matinee_test_reel",
+ "arcana": "xviii_moon",
+ "location": "static_drive_in",
+ "hand": "natalie",
+ "title": "THE MATINEE TEST REEL",
+ "subtitle": "The Static Drive-In · 1:36 PM · projecting to an empty lot in daylight",
+ "difficulty": "medium",
+ "epigraph_upright": "The Moon in the afternoon is just a screen. The projectionist runs the test reel at 1:30 because light you can barely see is exactly the light you have to check.",
+ "epigraph_reversed": "You can see the picture in daylight if you stand close and want to. Wanting to is the thing to watch. The screen has opinions about being watched at the wrong hour.",
+ "scene_description": "Test-reel Tuesday. The projectionist runs ten minutes of leader and countdowns onto a screen the daylight mostly erases, and somebody has to stand at row three and call focus — which at 1:36 PM means reading a picture that is nine-tenths sun and one-tenth ghost. The lot is empty. The speakers on their posts hum their carrier hum. The kid who is always here is here, alone as always, watching a screen that is showing, to any reasonable eye, nothing.",
+ "direction_hint": "Call the focus honestly — a ghost picture still has a true edge. Keep the kid company without making it a thing. Connect three, keep Inertia under 7, and shut the booth down clean when the reel runs out.",
+ "opening_log_lines": [
+  "The carrier hum is on every post. The lot is a choir warming up for tonight.",
+  "Click [b]PHASE: ACTION[/b] for the rules. Focus is called from row three. It has always been called from row three.",
+  "The kid is in row three already. The kid is always in row three already."
+ ],
+ "starting_state": {
+  "player_pos": "counter",
+  "time": 5,
+  "time_per_turn": 5,
+  "inertia": 1,
+  "inertia_per_turn": 1,
+  "sanity": 5,
+  "sanity_max": 6,
+  "tension_stat": "drift",
+  "tension_label": "MOONDRIFT",
+  "tension_max": 10,
+  "starting_hand": [
+   "walk",
+   "focus",
+   "search",
+   "short_rest",
+   "pop_corn",
+   "pour_soda",
+   "watch_screen",
+   "read_static"
+  ]
+ },
+ "visitors_present_at_start": [
+  "the_kid_alone_in_row_three"
+ ],
+ "visitor_schedule": [
+  {
+   "visitor": "the_projectionist_at_the_booth",
+   "arrival_turn": 2,
+   "arrival_space": "lot_porch"
+  },
+  {
+   "visitor": "the_daylight_picture",
+   "arrival_turn": 3,
+   "arrival_space": "picture_window"
+  },
+  {
+   "visitor": "the_carrier_hum",
+   "arrival_turn": 5,
+   "arrival_space": "lot_porch"
+  }
+ ],
+ "win_conditions": {
+  "require_visitors_connected_min": 3,
+  "require_inertia_below": 7,
+  "require_focus_called_true": true,
+  "require_booth_shut_down_clean": true
+ },
+ "loss_conditions": {
+  "inertia_max": 12,
+  "called_sharp_early": true,
+  "watched_the_screen_too_long": true
+ },
+ "inertia_thresholds": [
+  {
+   "level": 0,
+   "label": "the screen is blank",
+   "tick_per_turn": 1,
+   "effects": []
+  },
+  {
+   "level": 3,
+   "label": "the static has a shape twice",
+   "tick_per_turn": 1,
+   "effects": []
+  },
+  {
+   "level": 5,
+   "label": "the marquee flickers a sequence",
+   "tick_per_turn": 1,
+   "effects": []
+  },
+  {
+   "level": 7,
+   "label": "the static spells a letter you know",
+   "tick_per_turn": 1,
+   "effects": [
+    "gravity_deck_plus_1"
+   ]
+  },
+  {
+   "level": 8,
+   "label": "you have the notebook open",
+   "tick_per_turn": 1,
+   "effects": [
+    "claim_closest_unconnected_visitor"
+   ]
+  },
+  {
+   "level": 10,
+   "label": "the pattern matches the one from June",
+   "tick_per_turn": 1,
+   "effects": [
+    "action_card_cost_plus_1"
+   ]
+  },
+  {
+   "level": 11,
+   "label": "the pen is in your hand",
+   "tick_per_turn": 1,
+   "effects": [
+    "claim_next_closest_visitor"
+   ]
+  },
+  {
+   "level": 12,
+   "label": "you started writing",
+   "tick_per_turn": 1,
+   "effects": [
+    "reveal_inertia_finale"
+   ]
+  }
+ ],
+ "claim_turns_to_consume": 2,
+ "thresholds": [
+  {
+   "id": "lot_porch",
+   "label": "LOT PORCH",
+   "ending_lore_token": "natalie_left_at_eleven",
+   "visible_from_start": true,
+   "flavor": "Out the front of the snack bar. The lot. The pickups."
+  }
+ ],
+ "max_turns": 10,
+ "notes": "Fourth setup (Wave-3C, 2026-07-19) · mid-tier at a distinct hour per the bookend pattern. Scaffolding inherited from a sibling; functional win/loss contract is the generic evaluator; named keys are the scenario's narrative contract.",
+ "scenario_visitors": [
+  {
+   "id": "the_daylight_picture",
+   "name": "the test picture, one-tenth visible",
+   "as_hand_id": null,
+   "arrival": {
+    "kind": "scheduled",
+    "turn": 3,
+    "from": "picture_window",
+    "to": "picture_window"
+   },
+   "lore_token": "called_focus_on_a_ghost",
+   "lore_text": "The countdown leader, the focus chart, the china girl — projected into full daylight, visible the way heat shimmer is visible. Calling focus on it is a skill with maybe thirty living practitioners. The drive-in has two of them and one is fourteen.",
+   "accent": "#a8a8c0",
+   "mood": "preoccupied",
+   "tutorial_note": "The picture connects through FOCUS at the picture_window — read the chart's true edge inside the ghost. Say 'sharp' only when it's sharp. The screen knows the difference and so does the kid.",
+   "steps": {
+    "greet": "The leader flickers up. In daylight it's a rumor of a rectangle. You have to already know where it is, which you do.",
+    "listen": "The chart holds. The edges breathe with the projector the way they do. Somewhere in the wash, the china girl smiles her sixty-year smile at an empty lot.",
+    "deliver": "You call it: soft, soft, better — SHARP. The projectionist locks it. Tonight, four hundred people will see a clean picture and none of them will know about 1:36.",
+    "sit_with": "The kid, without looking over, says 'it was sharp one call before you said.' The kid is right. You add a beat of respect to the ledger the two of you keep."
+   }
+  },
+  {
+   "id": "the_carrier_hum",
+   "name": "the speaker posts, humming their carrier",
+   "as_hand_id": null,
+   "arrival": {
+    "kind": "scheduled",
+    "turn": 5,
+    "from": "lot_porch",
+    "to": "lot_porch"
+   },
+   "lore_token": "walked_the_hum_row",
+   "lore_text": "Every post hums when the transmitter's up. A dead post is silence in the choir, and silence is how you find the broken ones — you walk the rows in daylight LISTENING, which from the road looks like a person pacing an empty parking lot, communing.",
+   "accent": "#8898b8",
+   "mood": "lonely",
+   "tutorial_note": "The hum connects through SEARCH along the lot rows — walk row three end to end and find the dead post. There's always one.",
+   "steps": {
+    "greet": "Forty posts humming one note make a sound your body files under 'night' even at 1:36 PM.",
+    "listen": "Post to post the note is the note is the note — and then, mid-row, a hole in the sound. Row three, post six. Of course it's row three.",
+    "deliver": "You tag the dead post with the orange ribbon. Tonight somebody parks somewhere else and never knows why their evening went the way it went.",
+    "sit_with": "The kid watched the whole walk. 'Post six,' the kid says, before you say it. You are being trained. It's fine. It's probably fine."
+   }
+  }
+ ],
+ "scenario_spaces_additions": [],
+ "scenario_adjacency_additions": []
+}

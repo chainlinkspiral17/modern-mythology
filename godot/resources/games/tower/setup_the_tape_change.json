@@ -1,0 +1,169 @@
+{
+ "id": "the_tape_change",
+ "arcana": "xvi_tower",
+ "location": "wgur_transmitter_shack",
+ "hand": "evangeline",
+ "title": "THE TAPE CHANGE",
+ "subtitle": "WGUR Transmitter Shack · 11:52 AM · eight minutes to the noon logger",
+ "difficulty": "medium",
+ "epigraph_upright": "The Tower does not always fall. Most days the Tower is maintained — a tape changed on time, a meter logged, a bolt that stays a bolt because somebody torqued it in daylight.",
+ "epigraph_reversed": "The logger tape has eight minutes left and the spare is not on the peg. Every collapse in history started as an errand somebody was sure they had time for.",
+ "scene_description": "The noon logger tape runs out at 12:00:00 and the FCC does not accept 'mostly recorded' as a compliance posture. The spare reel is not on the peg — Jules the intern reorganized, with love, and now nothing is anywhere. Rashid is on the phone with the parts house about the exciter, holding without complaint like a man who has spent years on hold. It's the most ordinary shift of the month. Keeping it that way is the entire job description.",
+ "direction_hint": "Find the reel. Thread it before 12:00:00. Let Rashid's call be Rashid's call — connect three, keep Inertia under 7, and be at a threshold when the top of the hour tone drops.",
+ "opening_log_lines": [
+  "Rack B hums at the pitch it hums at when everything is fine. Memorize that pitch.",
+  "Click [b]PHASE: ACTION[/b] for the rules. The logger threads left-over-right. It matters once a day: now.",
+  "Jules labeled the new storage system. The labels are alphabetical by a logic known to Jules."
+ ],
+ "starting_state": {
+  "player_pos": "operator_desk",
+  "time": 5,
+  "time_per_turn": 5,
+  "inertia": 1,
+  "inertia_per_turn": 1,
+  "sanity": 5,
+  "sanity_max": 6,
+  "tension_stat": "carrier",
+  "tension_label": "AFTERSHAKES",
+  "tension_max": 8,
+  "starting_hand": [
+   "walk",
+   "focus",
+   "search",
+   "short_rest",
+   "push_render",
+   "cue_break",
+   "kill_signal",
+   "patch_around"
+  ]
+ },
+ "visitors_present_at_start": [
+  "the_other_engineer_rashid"
+ ],
+ "visitor_schedule": [
+  {
+   "visitor": "the_missing_reel",
+   "arrival_turn": 2,
+   "arrival_space": "rack_c"
+  },
+  {
+   "visitor": "jules_the_intern_asleep",
+   "arrival_turn": 4,
+   "arrival_space": "door"
+  },
+  {
+   "visitor": "the_noon_tone",
+   "arrival_turn": 6,
+   "arrival_space": "operator_desk"
+  }
+ ],
+ "win_conditions": {
+  "require_visitors_connected_min": 3,
+  "require_inertia_below": 7,
+  "require_tape_threaded_before_noon": true,
+  "require_threshold_space": true
+ },
+ "loss_conditions": {
+  "inertia_max": 12,
+  "tone_dropped_on_dead_tape": true,
+  "reorganized_jules_system_in_anger": true
+ },
+ "inertia_thresholds": [
+  {
+   "level": 0,
+   "label": "the shack is quiet",
+   "tick_per_turn": 1,
+   "effects": []
+  },
+  {
+   "level": 2,
+   "label": "your hands are still shaking",
+   "tick_per_turn": 1,
+   "effects": []
+  },
+  {
+   "level": 4,
+   "label": "the obstruction lights' rhythm syncs with you",
+   "tick_per_turn": 1,
+   "effects": [
+    "gravity_deck_plus_1"
+   ]
+  },
+  {
+   "level": 6,
+   "label": "you almost reach for the patch panel again",
+   "tick_per_turn": 1,
+   "effects": [
+    "claim_closest_unconnected_visitor"
+   ]
+  },
+  {
+   "level": 8,
+   "label": "the sunrise · you have not yet drunk the coffee",
+   "tick_per_turn": 1,
+   "effects": [
+    "reveal_inertia_finale"
+   ]
+  }
+ ],
+ "claim_turns_to_consume": 2,
+ "thresholds": [
+  {
+   "id": "door",
+   "label": "DOOR",
+   "ending_lore_token": "evangeline_watched_the_sunrise",
+   "visible_from_start": true,
+   "flavor": "Out into the parking lot. The eastern sky is just starting · pre-dawn pale. The tower's lights are slow."
+  }
+ ],
+ "max_turns": 10,
+ "notes": "Fourth setup (Wave-3C, 2026-07-19) · mid-tier at a distinct hour per the bookend pattern. Scaffolding inherited from a sibling; functional win/loss contract is the generic evaluator; named keys are the scenario's narrative contract.",
+ "scenario_visitors": [
+  {
+   "id": "the_missing_reel",
+   "name": "the spare logger reel, filed under a new logic",
+   "as_hand_id": null,
+   "arrival": {
+    "kind": "scheduled",
+    "turn": 2,
+    "from": "rack_c",
+    "to": "rack_c"
+   },
+   "lore_token": "found_the_reel_before_noon",
+   "lore_text": "Jules filed it under R. R for reel? R for recording? Jules will explain the system when Jules wakes up, and the explanation will be beautiful and the system will still be wrong, and both things will be true, which is interns.",
+   "accent": "#c08858",
+   "mood": "preoccupied",
+   "tutorial_note": "The reel connects through SEARCH at rack_c — check the shelf that makes sense to a person who has never done this under time pressure. That's where it is.",
+   "steps": {
+    "greet": "It's not on the peg. The peg has a label now. The label says 'PEG.'",
+    "listen": "Rack C's bottom shelf holds a box labeled 'ROUND THINGS (AUDIO).' Inside, immaculate, sorted by diameter: the reel.",
+    "deliver": "You take it and leave the box exactly as found, because the box, absurdly, is the best-organized thing in the shack.",
+    "sit_with": "Threading it with four minutes to spare, you decide not to tell Jules the story of the box. You will tell Rashid. Rashid will tell everyone."
+   }
+  },
+  {
+   "id": "the_noon_tone",
+   "name": "the top-of-the-hour tone, on schedule",
+   "as_hand_id": null,
+   "arrival": {
+    "kind": "scheduled",
+    "turn": 6,
+    "from": "operator_desk",
+    "to": "operator_desk"
+   },
+   "lore_token": "the_tone_dropped_on_a_running_tape",
+   "lore_text": "The tone drops at 12:00:00 whether the tape is running or not. It has dropped onto running tape at this station every noon since 1974, through storms, staff changes, and one memorable exciter fire. The streak is unofficial and it is holy.",
+   "accent": "#88a8c8",
+   "mood": "intense",
+   "tutorial_note": "The tone connects through FOCUS at the operator_desk — be watching the meters when it drops. Witnessing the ordinary is the ordinary's price.",
+   "steps": {
+    "greet": "11:59:40. The desk clock and the rack clock disagree by a second and always have. You go by the rack.",
+    "listen": "The last twenty seconds of any hour at a transmitter are longer than other seconds. Known fact. Unpublished.",
+    "deliver": "12:00:00. The tone drops. The tape is running. The needle kicks. The streak continues, unofficial and holy.",
+    "sit_with": "Rashid, still on hold, raises his coffee an inch without looking over. The parts house picks up at 12:01, which is the parts house all over."
+   }
+  }
+ ],
+ "scenario_spaces_additions": [],
+ "scenario_adjacency_additions": []
+}

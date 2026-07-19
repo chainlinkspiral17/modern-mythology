@@ -1,0 +1,170 @@
+{
+ "id": "the_stone_cleaning",
+ "arcana": "xx_judgement",
+ "location": "parish_cemetery",
+ "hand": "the_ensemble",
+ "title": "THE STONE CLEANING",
+ "subtitle": "Parish Cemetery · 9:20 AM Saturday · soft brushes and the volunteer hour",
+ "difficulty": "medium",
+ "epigraph_upright": "Judgement is legible names. Once a season the parish brings soft brushes and distilled water and makes the stones readable again, which is the whole of the doctrine anyone can prove.",
+ "epigraph_reversed": "There is a stone whose name you could restore in twenty minutes and have not, in four seasons, gone near. The brush does not ask why. The brush is available.",
+ "scene_description": "Volunteer Saturday. Soft brushes, distilled water, no bleach ever — Sister Beatrice gives the same materials sermon every season and every season somebody's nephew arrives with a wire brush and has to be gently disarmed. The caretaker has flagged six stones going illegible. The widow is at the mausoleum with her own cloth, doing her own one stone, as is her right and her ritual. The child with the rosary is assigned to you, officially to 'help carry water,' actually because the child asks the questions everyone else has learned not to.",
+ "direction_hint": "Do the six flagged stones properly — slow is the technique. Answer the child's questions with true things. Connect three, keep Inertia under 7, and leave the widow her stone.",
+ "opening_log_lines": [
+  "Dew still on the north-facing stones. Sister Beatrice calls it 'the cemetery washing its own face first.'",
+  "Click [b]PHASE: ACTION[/b] for the rules. Circular strokes, from the center out. The stone teaches your hand by the third one.",
+  "The nephew has a wire brush. Beatrice has already seen it. Watch this."
+ ],
+ "starting_state": {
+  "player_pos": "central_mausoleum",
+  "time": 6,
+  "time_per_turn": 6,
+  "inertia": 0,
+  "inertia_per_turn": 1,
+  "sanity": 6,
+  "sanity_max": 7,
+  "tension_stat": "call",
+  "tension_label": "THE CALL",
+  "tension_max": 10,
+  "starting_hand": [
+   "walk",
+   "focus",
+   "search",
+   "short_rest",
+   "read_name",
+   "light_candle",
+   "leave_flower",
+   "walk_row"
+  ]
+ },
+ "visitors_present_at_start": [
+  "sister_beatrice_at_the_lectern",
+  "the_caretaker_with_lantern"
+ ],
+ "visitor_schedule": [
+  {
+   "visitor": "the_child_with_a_rosary",
+   "arrival_turn": 2,
+   "arrival_space": "path_spine_n"
+  },
+  {
+   "visitor": "the_sixth_stone",
+   "arrival_turn": 4,
+   "arrival_space": "vault_row_w"
+  },
+  {
+   "visitor": "the_widow_at_the_mausoleum",
+   "arrival_turn": 5,
+   "arrival_space": "central_mausoleum"
+  }
+ ],
+ "win_conditions": {
+  "require_visitors_connected_min": 3,
+  "require_inertia_below": 7,
+  "require_six_stones_cleaned": true,
+  "require_widow_left_her_stone": true
+ },
+ "loss_conditions": {
+  "inertia_max": 12,
+  "wire_brush_used": true,
+  "skipped_the_sixth_stone": true
+ },
+ "inertia_thresholds": [
+  {
+   "level": 0,
+   "label": "the gate is open",
+   "tick_per_turn": 1,
+   "effects": []
+  },
+  {
+   "level": 3,
+   "label": "a reading drifts over from the W row",
+   "tick_per_turn": 1,
+   "effects": []
+  },
+  {
+   "level": 5,
+   "label": "the wind through the cypresses",
+   "tick_per_turn": 1,
+   "effects": []
+  },
+  {
+   "level": 7,
+   "label": "the list at the lectern is longer than it was",
+   "tick_per_turn": 1,
+   "effects": [
+    "gravity_deck_plus_1"
+   ]
+  },
+  {
+   "level": 8,
+   "label": "a name on the list is your name",
+   "tick_per_turn": 1,
+   "effects": [
+    "claim_closest_unconnected_visitor"
+   ]
+  },
+  {
+   "level": 10,
+   "label": "the lamps flicker as a chord",
+   "tick_per_turn": 1,
+   "effects": [
+    "action_card_cost_plus_1"
+   ]
+  },
+  {
+   "level": 11,
+   "label": "your hand is on the list",
+   "tick_per_turn": 1,
+   "effects": [
+    "claim_next_closest_visitor"
+   ]
+  },
+  {
+   "level": 12,
+   "label": "you stopped mid-name",
+   "tick_per_turn": 1,
+   "effects": [
+    "reveal_inertia_finale"
+   ]
+  }
+ ],
+ "claim_turns_to_consume": 3,
+ "thresholds": [
+  {
+   "id": "gate",
+   "label": "GATE",
+   "ending_lore_token": "you_left_through_the_iron_gate",
+   "visible_from_start": true,
+   "flavor": "The iron gate, half-open. The street beyond is the parish, the small lit shops, the All Souls' service at the cathedral two blocks east."
+  }
+ ],
+ "max_turns": 12,
+ "notes": "Fourth setup (Wave-3C, 2026-07-19) · mid-tier at a distinct hour per the bookend pattern. Scaffolding inherited from a sibling; functional win/loss contract is the generic evaluator; named keys are the scenario's narrative contract.",
+ "scenario_visitors": [
+  {
+   "id": "the_sixth_stone",
+   "name": "the sixth flagged stone, name almost gone",
+   "as_hand_id": null,
+   "arrival": {
+    "kind": "scheduled",
+    "turn": 4,
+    "from": "vault_row_w",
+    "to": "vault_row_w"
+   },
+   "lore_token": "made_the_sixth_name_legible",
+   "lore_text": "Five of the six flagged stones are strangers. The sixth is not. The caretaker flagged it without comment, which is the caretaker's way of handing you something without making you take it in front of people.",
+   "accent": "#b8b0a0",
+   "mood": "lonely",
+   "tutorial_note": "The stone connects through slow work at vault_row_w — brush, water, patience. The name comes back a letter at a time. All the technique there is.",
+   "steps": {
+    "greet": "Lichen has the date. Weather has most of the name. Four seasons of your not coming here have the rest.",
+    "listen": "Under the brush, the first letter surfaces like something rising through water at its own pace. You know the name. The stone insists on telling you anyway, letter by letter, and it is right to insist.",
+    "deliver": "Twenty minutes, center outward, and the name is legible from the path. Legible from the path is the standard. It was the standard before you and it held.",
+    "sit_with": "The child, carrying water past, reads the restored name aloud — the first voice to say it in four seasons. The child moves on. That was the rite entire, performed by someone who didn't know they were performing it, which is how the real ones get done."
+   }
+  }
+ ],
+ "scenario_spaces_additions": [],
+ "scenario_adjacency_additions": []
+}

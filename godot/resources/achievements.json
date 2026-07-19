@@ -622,14 +622,15 @@
   {
    "id": "tower_complete",
    "title": "EVERY ALARM ANSWERED",
-   "desc": "Win all three Tower scenarios (PRE DAWN QUIET, RENDER QUEUE, THE CLEAR MORNING).",
+   "desc": "Win all four Tower scenarios (PRE DAWN QUIET, RENDER QUEUE, THE CLEAR MORNING).",
    "trigger": {
     "kind": "all_scenarios",
     "arcana": "tower",
     "scenarios": [
      "pre_dawn_quiet",
      "render_queue",
-     "the_clear_morning"
+     "the_clear_morning",
+     "the_tape_change"
     ]
    },
    "unlock_key": "achievement:tower_complete",
@@ -651,14 +652,15 @@
   {
    "id": "star_complete",
    "title": "EVERY DOOR OPENED AT DAWN",
-   "desc": "Win all three Star scenarios (GLASS SKIN, THE LAST SUNDAY, THE NOTICE IN THE PICAYUNE).",
+   "desc": "Win all four Star scenarios (GLASS SKIN, THE LAST SUNDAY, THE NOTICE IN THE PICAYUNE).",
    "trigger": {
     "kind": "all_scenarios",
     "arcana": "star",
     "scenarios": [
      "glass_skin",
      "the_last_sunday",
-     "the_notice_in_the_picayune"
+     "the_notice_in_the_picayune",
+     "the_wednesday_block_order"
     ]
    },
    "unlock_key": "achievement:star_complete",
@@ -680,14 +682,15 @@
   {
    "id": "moon_complete",
    "title": "EVERY REEL PROJECTED",
-   "desc": "Win all three Moon scenarios (CLOSE OUT LAST CAR, PRE DUSK PROJECTION SETUP, SIGILS IN STATIC).",
+   "desc": "Win all four Moon scenarios (CLOSE OUT LAST CAR, PRE DUSK PROJECTION SETUP, SIGILS IN STATIC).",
    "trigger": {
     "kind": "all_scenarios",
     "arcana": "moon",
     "scenarios": [
      "close_out_last_car",
      "pre_dusk_projection_setup",
-     "sigils_in_static"
+     "sigils_in_static",
+     "the_matinee_test_reel"
     ]
    },
    "unlock_key": "achievement:moon_complete",
@@ -739,14 +742,15 @@
   {
    "id": "judgement_complete",
    "title": "ALL THE HARD NAMES READ",
-   "desc": "Win all three Judgement scenarios (EVERYONE STAYS, THE FAMILY PLOT VISIT, THE READING OF THE HARD NAMES).",
+   "desc": "Win all four Judgement scenarios (EVERYONE STAYS, THE FAMILY PLOT VISIT, THE READING OF THE HARD NAMES).",
    "trigger": {
     "kind": "all_scenarios",
     "arcana": "judgement",
     "scenarios": [
      "everyone_stays",
      "the_family_plot_visit",
-     "the_reading_of_the_hard_names"
+     "the_reading_of_the_hard_names",
+     "the_stone_cleaning"
     ]
    },
    "unlock_key": "achievement:judgement_complete",
