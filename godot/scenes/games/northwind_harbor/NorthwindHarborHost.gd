@@ -401,6 +401,10 @@ func _finish_run(good_week: bool) -> void:
 			tokens.append(t)
 	if good_week and not tokens.has("nh_good_week"):
 		tokens.append("nh_good_week")
+	# The bosun ritual: petted six of seven mornings. The dog never
+	# asked. That's why it counts.
+	if int(_run_state.get("bosun_pets", 0)) >= 6 and not tokens.has("nh_bosun_ritual"):
+		tokens.append("nh_bosun_ritual")
 	_run_state["lore_tokens_pending"] = tokens
 	OneironauticsTokens.add_many(tokens)
 	var canon: Dictionary = _run_state.get("canon_vars", {})

@@ -20,6 +20,12 @@
    "tier": "secrets",
    "title": "THE GOOD WEEK",
    "blurb": "Every chain closed before every horn, seven for seven. The harbor has no reward for this. The dog knew, though."
+  },
+  {
+   "token": "nh_bosun_ritual",
+   "tier": "secrets",
+   "title": "The bosun ritual",
+   "blurb": "You petted Bosun six of the seven mornings. He never asked. He was ready before you asked. He is always ready before you ask — and on the last walk, he leaned against your leg at every stop, six mornings of hands in him."
   }
  ]
 }

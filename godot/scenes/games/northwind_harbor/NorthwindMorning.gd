@@ -77,15 +77,61 @@ func boot(state: Dictionary) -> void:
 	_minutes = START_MIN
 	_loc_id = "maddox_porch"
 	_morning_done = false
+	_petted_this_morning = false
 	_enter_location(_loc_id, true)
 	if n == 1:
 		_add_heard(_opening_line())
 		_text_lbl.text = _opening_line()
+	elif n == 7:
+		# The walk. The mornings answer for themselves.
+		var pay := _bosun_payoff_line()
+		_add_heard(pay)
+		_text_lbl.text = pay
 
 
 func _opening_line() -> String:
 	# Canon · the line Sam backed out before hearing again.
 	return "you ask bosun if he's ready to walk. he was ready before you asked. he is always ready before you ask."
+
+
+# ─── Bosun · the tracked variable ────────────────────────────────
+
+var _petted_this_morning: bool = false
+
+
+func _pet_bosun() -> void:
+	if _morning_done:
+		return
+	if _petted_this_morning:
+		_bosun_note.text = "bosun has been petted. bosun would accept more. bosun is not the limit here."
+		return
+	_petted_this_morning = true
+	var pets: int = int(_state.get("bosun_pets", 0)) + 1
+	_state["bosun_pets"] = pets
+	_sfx("pickup", 0.5)
+	match pets:
+		1:
+			_bosun_note.text = "you pet bosun. he accepts this as his due."
+		2, 3:
+			_bosun_note.text = "you pet bosun. he leans into it a half-second longer than yesterday."
+		4, 5:
+			_bosun_note.text = "you pet bosun. this is part of the morning now. he has filed it with the horns and the gulls."
+		_:
+			_bosun_note.text = "you pet bosun. neither of you thinks about it anymore. that's what a ritual is."
+
+
+# The chapter-7 walk reads the total. Zero is its own answer —
+# the game never demanded the petting, and the dog never held it
+# against you, and the line says exactly that.
+func _bosun_payoff_line() -> String:
+	var pets: int = int(_state.get("bosun_pets", 0))
+	if pets >= 6:
+		return "nothing is wrong. you walk the dog. bosun leans against your leg at every stop, six mornings of hands in him, and takes the long way past the cannery on purpose."
+	elif pets >= 3:
+		return "nothing is wrong. you walk the dog. bosun walks at your knee the whole way, close enough to touch, in case."
+	elif pets >= 1:
+		return "nothing is wrong. you walk the dog. bosun checks back over his shoulder at each corner. once, you'd petted him. he remembers the once."
+	return "nothing is wrong. you walk the dog. bosun walks a step ahead the whole way, the way he always has, asking nothing. he was ready before you asked. he is always ready before you ask."
 
 
 # ─── Data ────────────────────────────────────────────────────────
@@ -186,6 +232,14 @@ func _build_ui() -> void:
 
 	_bosun_rect = TextureRect.new()
 	_bosun_rect.stretch_mode = TextureRect.STRETCH_KEEP
+	# Bosun is pettable. Once per morning; the mornings add up and
+	# the chapter-7 walk knows the total. One variable, tracked,
+	# paid off.
+	_bosun_rect.mouse_filter = Control.MOUSE_FILTER_STOP
+	_bosun_rect.mouse_default_cursor_shape = Control.CURSOR_POINTING_HAND
+	_bosun_rect.gui_input.connect(func(ev: InputEvent) -> void:
+		if ev is InputEventMouseButton and (ev as InputEventMouseButton).pressed:
+			_pet_bosun())
 	add_child(_bosun_rect)
 
 	_loc_lbl = Label.new()

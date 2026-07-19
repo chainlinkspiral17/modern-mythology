@@ -198,6 +198,32 @@ func _is_finished(stick_id: String) -> bool:
 	return _finished.has(stick_id)
 
 
+# Unlock legibility — say WHICH stick (or how many) opens this one,
+# from the unlock graph, instead of the mystery "finish another
+# stick." Falls back to the generic line when the graph has no row.
+func _locked_hint(stick_id: String) -> String:
+	var gate: Dictionary = _unlock_graph.get("gated_by_vol7_chapter", {})
+	if gate.has(stick_id):
+		return "LOCKED · continues from Vol 7's story"
+	for w_var in _unlock_graph.get("waves", []):
+		var w: Dictionary = w_var
+		if not (w.get("sticks", []) as Array).has(stick_id):
+			continue
+		var min_count: int = int(w.get("unlocked_by_count_of_finished_min", -1))
+		if min_count >= 0:
+			var remaining: int = maxi(0, min_count - _finished.size())
+			return "LOCKED · finish %d sticks (%d more)" % [min_count, remaining]
+		var deps: Array = w.get("unlocked_by_any_of", [])
+		var names: Array[String] = []
+		for dep in deps:
+			names.append(String(dep).replace("_", " ").to_upper())
+		if names.size() == 1:
+			return "LOCKED · finish %s" % names[0]
+		elif names.size() > 1:
+			return "LOCKED · finish %s" % " or ".join(names)
+	return "LOCKED · finish another stick to unlock"
+
+
 func _is_fully_playable(stick_id: String) -> bool:
 	# A stick with a full manifest (acts field present) is fully
 	# playable; stubs are unlockable but boot into an
@@ -562,7 +588,7 @@ func _on_cart_hover(stick_id: String) -> void:
 	if _card_manager_toggle: _card_manager_toggle.visible = false
 	if _card_scrapbook_btn: _card_scrapbook_btn.visible = false
 	if not unlocked:
-		_card_status.text = "  LOCKED · finish another stick to unlock"
+		_card_status.text = "  " + _locked_hint(stick_id)
 		_card_status.add_theme_color_override("font_color", C_LOCK)
 		_card_boot_btn.disabled = true
 		_card_boot_btn.text = "  LOCKED  "
