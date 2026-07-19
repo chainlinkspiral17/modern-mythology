@@ -28,7 +28,7 @@ difficulty (tighter turns, harder loss thresholds) and setups carry
 show upright text with harder numbers? A mode that changes numbers
 but not words feels like a cheat toggle, not a reading.
 
-**P2 · ~~Fourth setups~~ 14 OF 20 DONE 2026-07-19** — all fourteen Wave-2 arcana now have four scenarios (68 → 82 total). Remaining: the six Wave-1 arcana (fool, magician, priestess, empress, emperor, hierophant) whose bespoke engine schemas need per-arcana study — method + validation script documented in _GAUNTLET_DESIGN_PLAYBOOK.md Wave-3 lesson. Original note: Lovers and
+**P2 · ~~Fourth setups~~ ALL 20 DONE 2026-07-19** — all fourteen Wave-2 arcana now have four scenarios (68 → 82 total). Wave-3D closed the six Wave-1 arcana with win/loss keys inherited verbatim from their bespoke schemas. Every arcana now has four scenarios (88 total). Original note: Lovers and
 Chariot have 4 setups; everyone else has 3. The bookend pattern
 (easy dawn intro → hard night finale) has room for one more mid-tier
 scenario per arcana — 20 setups of content using only existing

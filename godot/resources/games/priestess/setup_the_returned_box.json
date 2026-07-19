@@ -1,0 +1,188 @@
+{
+ "id": "the_returned_box",
+ "arcana": "ii_priestess",
+ "location": "elicia_bungalow",
+ "hand": "elicia",
+ "title": "THE RETURNED BOX",
+ "subtitle": "The Bungalow · 11:40 AM · RETURN TO SENDER, in her own handwriting",
+ "difficulty": "medium",
+ "epigraph_upright": "The High Priestess knows what's in the box without opening it. That was never the question. The question is what it means that the box came back.",
+ "epigraph_reversed": "A box you packed in one life, returned to you in another, is a letter from yourself with no note inside. You can leave it on the porch. Boxes keep. That's their whole job.",
+ "scene_description": "The box went to the Montreal sublet in March. The sublet ended; the forwarding lapsed; the postal system, patient as water, brought it home. It's on the porch with her own March handwriting on it — a person she remembers being, addressing a future that didn't happen. Inside is nothing mysterious: the second camera, the grey sweater, the tarot deck that was never the good deck. The mystery is only and entirely whether to unpack it or re-address it, and to where.",
+ "direction_hint": "Bring the box in. What it becomes — shelf, closet, or a new address — is the reading. Connect three, keep the reel down, and don't let the noon phone call happen AT the box.",
+ "opening_log_lines": [
+  "The porch board creaks under the box's weight. Eleven pounds of March.",
+  "Click [b]PHASE: ACTION[/b] for the rules. The tape is her tape. The tape gun is still in the closet.",
+  "The deck inside is not the good deck. She can feel that through the cardboard. Some knowledge is just knowledge."
+ ],
+ "starting_state": {
+  "player_pos": "the_bookshelf",
+  "time": 5,
+  "time_per_turn": 5,
+  "inertia": 0,
+  "inertia_per_turn": 0,
+  "sanity": 4,
+  "sanity_max": 6,
+  "stagnation": 1,
+  "stagnation_per_turn": 1,
+  "doubt": 1,
+  "doubt_max": 7,
+  "insight": 1,
+  "starting_master_reel": 2,
+  "starting_hand": [
+   "walk",
+   "focus",
+   "search",
+   "short_rest",
+   "frame_the_shot",
+   "pick_up_the_teacup",
+   "open_the_laptop",
+   "smoke_on_the_porch",
+   "exit_through_the_gift_shop"
+  ]
+ },
+ "visitors_present_at_start": [],
+ "visitor_schedule": [
+  {
+   "visitor": "anya_text",
+   "arrival_turn": 2,
+   "arrival_space": "the_bookshelf"
+  },
+  {
+   "visitor": "philip_phone_priestess",
+   "arrival_turn": 4,
+   "arrival_space": "the_editing_desk"
+  },
+  {
+   "visitor": "the_box_itself",
+   "arrival_turn": 1,
+   "arrival_space": "the_porch"
+  }
+ ],
+ "win_conditions": {
+  "require_visitors_connected_min": 3,
+  "require_hard_mood_connections_min": 1,
+  "require_doubt_below": 7,
+  "require_stagnation_below": 10,
+  "require_master_reel_below": 7,
+  "require_threshold_space": true
+ },
+ "loss_conditions": {
+  "stagnation_max": 10,
+  "doubt_max": 7,
+  "visitors_claimed_max": 3
+ },
+ "stagnation_thresholds": [
+  {
+   "level": 0,
+   "label": "the dusk-frequency hum.",
+   "tick_per_turn": 1,
+   "effects": []
+  },
+  {
+   "level": 4,
+   "label": "the script page has been on the side table for nine days.",
+   "tick_per_turn": 1,
+   "effects": []
+  },
+  {
+   "level": 7,
+   "label": "the cult audience has, just now, started typing.",
+   "tick_per_turn": 2,
+   "effects": [
+    "action_card_cost_plus_1"
+   ]
+  },
+  {
+   "level": 10,
+   "label": "the audience stopped waiting.",
+   "tick_per_turn": 2,
+   "effects": [
+    "reveal_stagnation_finale"
+   ]
+  }
+ ],
+ "doubt_thresholds": [
+  {
+   "level": 0,
+   "label": "elicia at the bookshelf. the shard between thumb and forefinger.",
+   "effects": []
+  },
+  {
+   "level": 3,
+   "label": "the reflection is twelve elicias. none whole.",
+   "effects": []
+  },
+  {
+   "level": 5,
+   "label": "the storage closet door is, this evening, slightly ajar.",
+   "effects": [
+    "transcribe_cost_plus_1"
+   ]
+  },
+  {
+   "level": 7,
+   "label": "the brittle thing showed.",
+   "effects": [
+    "reveal_doubt_finale"
+   ]
+  }
+ ],
+ "claim_turns_to_consume": 2,
+ "thresholds": [
+  {
+   "id": "front_door",
+   "label": "FRONT DOOR",
+   "ending_lore_token": "leap_through_the_front_door_night",
+   "visible_from_start": true
+  },
+  {
+   "id": "back_gate",
+   "label": "BACK GATE",
+   "ending_lore_token": "leap_through_the_back_gate_night",
+   "visible_from_start": true
+  },
+  {
+   "id": "roof",
+   "label": "ROOF",
+   "ending_lore_token": "leap_off_the_roof_at_night",
+   "visible_from_start": true
+  }
+ ],
+ "sealed_arcanas_at_start": [],
+ "max_turns": 11,
+ "notes": "Fourth setup (Wave-3D, 2026-07-19) · mid-tier at a distinct hour. Wave-1 arcana: win/loss keys inherited VERBATIM from the medium sibling (bespoke engine schema); numbers between the easy and hard bookends.",
+ "ambient_pool": [
+  "the cicadas at dusk · the shard between thumb and forefinger · twelve elicias.",
+  "the basil has, today, two yellow leaves.",
+  "the storage closet door is slightly ajar. you have not, today, opened it.",
+  "anya on screen, mid-sentence, paused on the breath."
+ ],
+ "ambient_every_n": 2,
+ "scenario_visitors": [
+  {
+   "id": "the_box_itself",
+   "name": "the returned box, eleven pounds, her own handwriting",
+   "as_hand_id": null,
+   "arrival": {
+    "kind": "scheduled",
+    "turn": 1,
+    "from": "the_bookshelf",
+    "to": "the_bookshelf"
+   },
+   "lore_token": "read_the_returned_box",
+   "lore_text": "March-Elicia wrote the address in the good pen, carefully, the way you address a box when the move is still a decision you're proud of. The postal service added its yellow sticker without comment. Between the two inscriptions is the whole spring.",
+   "accent": "#b0a0c8",
+   "mood": "lonely",
+   "tutorial_note": "The box connects through sitting with it — bring it inside, set it on the table, and read the OUTSIDE completely before deciding about the inside.",
+   "steps": {
+    "greet": "It's heavier than memory said. Boxes always are.",
+    "listen": "The handwriting is hers but tilted with optimism — March hand. The yellow sticker is bureaucracy's tarot: UNDELIVERABLE AS ADDRESSED. As addressed. The qualifier is doing the work.",
+    "deliver": "She opens it or she doesn't — but she decides ON PURPOSE, at the table, in the daylight, which is the entire difference between a reading and a haunting.",
+    "sit_with": "The sweater, if the box opens, still smells like the bungalow — it never got to smell like anywhere else. Nothing in the box made the journey. The journey was the contents."
+   }
+  }
+ ],
+ "scenario_spaces_additions": [],
+ "scenario_adjacency_additions": []
+}

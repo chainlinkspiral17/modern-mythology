@@ -23,14 +23,15 @@
   {
    "id": "fool_complete",
    "title": "JOHN'S WHOLE SHIFT",
-   "desc": "Win all three Fool scenarios (THE LEAP, THE RUSH, FULL HOUSE).",
+   "desc": "Win all four Fool scenarios (THE LEAP, THE RUSH, FULL HOUSE).",
    "trigger": {
     "kind": "all_scenarios",
     "arcana": "fool",
     "scenarios": [
      "the_leap",
      "lunch_rush",
-     "evening_service"
+     "evening_service",
+     "the_split_shift"
     ]
    },
    "unlock_key": "achievement:fool_complete",
@@ -42,14 +43,15 @@
   {
    "id": "magician_complete",
    "title": "FRASIER'S WHOLE EVENING",
-   "desc": "Win all three Magician scenarios (SINKING FEELING, WATCH PARTY, BLOW OUT THE CANDLES).",
+   "desc": "Win all four Magician scenarios (SINKING FEELING, WATCH PARTY, BLOW OUT THE CANDLES).",
    "trigger": {
     "kind": "all_scenarios",
     "arcana": "magician",
     "scenarios": [
      "sinking_feeling",
      "watch_party",
-     "blow_out_the_candles"
+     "blow_out_the_candles",
+     "the_commission"
     ]
    },
    "unlock_key": "achievement:magician_complete",
@@ -61,14 +63,15 @@
   {
    "id": "emperor_complete",
    "title": "THE LEDGER CLOSED",
-   "desc": "Win all three Emperor scenarios (THE FRIDAY HELM, TIME'S CALLING CARD, SIX WEEKS APART). The kingdom is your goddamn cage. The brass railing is the wrong brass. You maintain it.",
+   "desc": "Win all four Emperor scenarios (THE FRIDAY HELM, TIME'S CALLING CARD, SIX WEEKS APART). The kingdom is your goddamn cage. The brass railing is the wrong brass. You maintain it.",
    "trigger": {
     "kind": "all_scenarios",
     "arcana": "emperor",
     "scenarios": [
      "the_friday_helm",
      "times_calling_card",
-     "six_weeks_apart"
+     "six_weeks_apart",
+     "the_supplier_call"
     ]
    },
    "unlock_key": "achievement:emperor_complete",
@@ -90,14 +93,15 @@
   {
    "id": "priestess_complete",
    "title": "THE EPISODE HAS SHAPE",
-   "desc": "Win all three Priestess scenarios (PACKING, BROKEN GLASS FRACTAL, THE COMFORTING VOID). The Choose-Your-Own-Adventure has shape. The shard caught the light just so. The breath was the take.",
+   "desc": "Win all four Priestess scenarios (PACKING, BROKEN GLASS FRACTAL, THE COMFORTING VOID). The Choose-Your-Own-Adventure has shape. The shard caught the light just so. The breath was the take.",
    "trigger": {
     "kind": "all_scenarios",
     "arcana": "priestess",
     "scenarios": [
      "packing",
      "broken_glass_fractal",
-     "the_comforting_void"
+     "the_comforting_void",
+     "the_returned_box"
     ]
    },
    "unlock_key": "achievement:priestess_complete",
@@ -129,14 +133,15 @@
   {
    "id": "empress_complete",
    "title": "THE FLOOR HELD",
-   "desc": "Win all three Empress scenarios (STATIC BLOOM, WHEN YOU'RE READY, THE BACK ROOM CALLS). The night held. The floor was done by her. Aria has a name.",
+   "desc": "Win all four Empress scenarios (STATIC BLOOM, WHEN YOU'RE READY, THE BACK ROOM CALLS). The night held. The floor was done by her. Aria has a name.",
    "trigger": {
     "kind": "all_scenarios",
     "arcana": "empress",
     "scenarios": [
      "static_bloom",
      "when_youre_ready",
-     "the_back_room_calls"
+     "the_back_room_calls",
+     "the_tasting"
     ]
    },
    "unlock_key": "achievement:empress_complete",
@@ -168,14 +173,15 @@
   {
    "id": "hierophant_complete",
    "title": "THE OFFICE HELD",
-   "desc": "Win all three Hierophant scenarios (ST JUDE'S MORNING, SUNDAY BRUNCH, THE BANDSTAND CALLS). The office held. The fear of him did its work. The empire was the means.",
+   "desc": "Win all four Hierophant scenarios (ST JUDE'S MORNING, SUNDAY BRUNCH, THE BANDSTAND CALLS). The office held. The fear of him did its work. The empire was the means.",
    "trigger": {
     "kind": "all_scenarios",
     "arcana": "hierophant",
     "scenarios": [
      "st_judes_morning",
      "sunday_brunch",
-     "the_bandstand_calls"
+     "the_bandstand_calls",
+     "the_choir_rehearsal"
     ]
    },
    "unlock_key": "achievement:hierophant_complete",

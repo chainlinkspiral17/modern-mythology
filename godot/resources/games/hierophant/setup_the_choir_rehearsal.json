@@ -1,0 +1,190 @@
+{
+ "id": "the_choir_rehearsal",
+ "arcana": "v_hierophant",
+ "location": "the_hierophant_circuit",
+ "hand": "quentin_paul",
+ "title": "THE CHOIR REHEARSAL",
+ "subtitle": "The Circuit · 6:20 PM Wednesday · nine voices and a furnace hum",
+ "difficulty": "medium",
+ "epigraph_upright": "The Hierophant's real congregation is the Wednesday rehearsal — nine people who show up to be slightly better together than they are alone, over a furnace hum, for no audience at all.",
+ "epigraph_reversed": "The alto section is down to one alto and the one alto knows it. You can fix the blend or you can protect the alto, and the hymn Sunday will reveal which one you chose.",
+ "scene_description": "Wednesday, 6:20. Nine voices in the side chapel — the furnace hums a low B-flat all winter and the choir has learned to tune around it, which Gloria calls 'singing with the building.' Tonight's problem is the descant on Sunday's hymn: it sits exactly where the lone alto's break is, and the lone alto is Mrs. Fontenot, who has held the section alone since February, and who will hold it into the sea if asked, and who should not have to be asked.",
+ "direction_hint": "Run the hymn. Move the descant or move the burden — there's a voicing that saves both the blend and Mrs. Fontenot, and finding it out loud is the pastoral act. Connect three, keep the signal up, and end on time; they have homes.",
+ "opening_log_lines": [
+  "The furnace finds its B-flat. The building is warmed up before the choir is.",
+  "Click [b]PHASE: ACTION[/b] for the rules. Signal climbs on voicings that serve the ROOM, not the arrangement.",
+  "Mrs. Fontenot is in her spot early, marking her part in pencil. She has already found the problem. She will not be the one to say it."
+ ],
+ "starting_state": {
+  "player_pos": "church_interior",
+  "time": 5,
+  "time_per_turn": 5,
+  "inertia": 0,
+  "inertia_per_turn": 0,
+  "sanity": 4,
+  "sanity_max": 6,
+  "stagnation": 1,
+  "stagnation_per_turn": 1,
+  "doubt": 1,
+  "doubt_max": 7,
+  "doctrine": 1,
+  "starting_signal": 1,
+  "starting_hand": [
+   "walk",
+   "focus",
+   "search",
+   "short_rest",
+   "hold_court",
+   "pronounce",
+   "count_sins",
+   "smooth_the_cuff",
+   "the_office_holds"
+  ]
+ },
+ "visitors_present_at_start": [
+  "gloria_reyes"
+ ],
+ "visitor_schedule": [
+  {
+   "visitor": "hector_the_cook",
+   "arrival_turn": 3,
+   "arrival_space": "dambrosios_kitchen"
+  },
+  {
+   "visitor": "jimmy_at_the_steps",
+   "arrival_turn": 5,
+   "arrival_space": "church_steps"
+  },
+  {
+   "visitor": "mrs_fontenots_pencil",
+   "arrival_turn": 2,
+   "arrival_space": "church_interior"
+  }
+ ],
+ "win_conditions": {
+  "require_visitors_connected_min": 3,
+  "require_hard_mood_connections_min": 1,
+  "require_doubt_below": 7,
+  "require_stagnation_below": 10,
+  "require_signal_at_least": 5,
+  "require_threshold_space": true
+ },
+ "loss_conditions": {
+  "stagnation_max": 10,
+  "doubt_max": 7,
+  "visitors_claimed_max": 3
+ },
+ "stagnation_thresholds": [
+  {
+   "level": 0,
+   "label": "the booth is the booth.",
+   "tick_per_turn": 1,
+   "effects": []
+  },
+  {
+   "level": 4,
+   "label": "the mimosa at table 9 got refilled.",
+   "tick_per_turn": 1,
+   "effects": []
+  },
+  {
+   "level": 7,
+   "label": "the laughter at table 12 did not reset.",
+   "tick_per_turn": 2,
+   "effects": [
+    "action_card_cost_plus_1"
+   ]
+  },
+  {
+   "level": 10,
+   "label": "the room stopped listening.",
+   "tick_per_turn": 2,
+   "effects": [
+    "reveal_stagnation_finale"
+   ]
+  }
+ ],
+ "doubt_thresholds": [
+  {
+   "level": 0,
+   "label": "paul at the booth. black coffee. the cuff is straight.",
+   "effects": []
+  },
+  {
+   "level": 3,
+   "label": "gloria did not, on the second pass, give the half-step.",
+   "effects": []
+  },
+  {
+   "level": 5,
+   "label": "the tic near the eye returned.",
+   "effects": [
+    "transcribe_cost_plus_1"
+   ]
+  },
+  {
+   "level": 7,
+   "label": "the brittle thing showed.",
+   "effects": [
+    "reveal_doubt_finale"
+   ]
+  }
+ ],
+ "claim_turns_to_consume": 2,
+ "thresholds": [
+  {
+   "id": "church_interior",
+   "label": "CHURCH INTERIOR",
+   "ending_lore_token": "leap_back_into_the_office",
+   "visible_from_start": false
+  },
+  {
+   "id": "back_corridor",
+   "label": "BACK CORRIDOR",
+   "ending_lore_token": "leap_through_the_kitchen",
+   "visible_from_start": true
+  },
+  {
+   "id": "riverfront",
+   "label": "RIVERFRONT",
+   "ending_lore_token": "leap_to_the_muddy_divide",
+   "visible_from_start": true
+  }
+ ],
+ "sealed_arcanas_at_start": [],
+ "max_turns": 8,
+ "notes": "Fourth setup (Wave-3D, 2026-07-19) · mid-tier at a distinct hour. Wave-1 arcana: win/loss keys inherited VERBATIM from the medium sibling (bespoke engine schema); numbers between the easy and hard bookends.",
+ "ambient_pool": [
+  "the mimosas are too sweet · the eggs florentine break if you look at them wrong.",
+  "from the booth's window, the muddy divide between texas and louisiana.",
+  "hector through the swinging door. he does not, this time, cross himself.",
+  "gloria past the booth without slowing."
+ ],
+ "ambient_every_n": 2,
+ "scenario_visitors": [
+  {
+   "id": "mrs_fontenots_pencil",
+   "name": "Mrs. Fontenot's pencil markings, bar 12",
+   "as_hand_id": null,
+   "arrival": {
+    "kind": "scheduled",
+    "turn": 2,
+    "from": "church_interior",
+    "to": "church_interior"
+   },
+   "lore_token": "revoiced_bar_twelve",
+   "lore_text": "She has bracketed bar 12 and written, tiny, 'breathe here?' — which is alto for 'this sits on my break and I will die before I say so.' Choir directors who can read pencil keep their altos. It's the whole certification.",
+   "accent": "#c0a8d0",
+   "mood": "preoccupied",
+   "tutorial_note": "The pencil connects through reading the part over her shoulder WITHOUT making it an inspection — then revoice bar 12 for the room, out loud, as if it were your own idea.",
+   "steps": {
+    "greet": "Her part is on the rail, open, which is not an accident. Nothing about Mrs. Fontenot is an accident.",
+    "listen": "The bracket. The tiny question. Twenty years of holding sections alone are in four pencil strokes.",
+    "deliver": "You stop the run at bar 11. 'Altos' — plural, deliberately — 'let's drop the descant to the tenors there and float you on the melody. The blend wants it.' The blend did not ask. The blend will take the credit anyway.",
+    "sit_with": "The hymn runs clean. Mrs. Fontenot erases her bracket during the doxology — you're not supposed to see, so you don't. Sunday, the descant will sound inevitable. That's the trick of the trade: mercy, voiced as arrangement."
+   }
+  }
+ ],
+ "scenario_spaces_additions": [],
+ "scenario_adjacency_additions": []
+}
