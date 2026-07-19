@@ -126,6 +126,8 @@ func start_new_run(_manager_mode: bool = false) -> void:
 		"promises":      [],
 		"memories_lost": 0,
 		"gold":          6,
+		"implement":     "",
+		"booth_locks":   {},
 		"canon_vars":    {},
 		"lore_tokens_pending": []
 	}
@@ -340,11 +342,79 @@ func _on_questionnaire_finished(answers: Dictionary) -> void:
 		if not arr.has(kp): arr.append(kp)
 		_run_state["keepsakes"] = arr
 	_save_state()
-	_open_gate()
+	_open_implement_choice()
 
 
 func _on_questionnaire_cancelled() -> void:
 	_build_title_screen()
+
+
+# ─── The implement · what you carry against the fey ─────────────────
+# Chosen once per run, between the questionnaire and the gate. Sets
+# the ATTACK damage type the combat triangle reads.
+
+const IMPLEMENTS := [
+	{"id": "iron", "name": "a cold iron nail", "note": "old, square-cut, from a church door · fey flesh remembers iron"},
+	{"id": "salt", "name": "a paper twist of salt", "note": "kitchen salt · the oldest border there is"},
+	{"id": "song", "name": "a tin whistle", "note": "six holes, one owner · some of them cannot bear a mortal tune"},
+	{"id": "word", "name": "a hawthorn sprig", "note": "cut in May, tied with thread · a word made wood"},
+]
+
+
+func _open_implement_choice() -> void:
+	if String(_run_state.get("implement", "")) != "":
+		_open_gate()
+		return
+	_clear_current_scene()
+	_title_root = Control.new()
+	_title_root.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
+	add_child(_title_root)
+	var bg := ColorRect.new()
+	bg.color = C_BG
+	bg.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
+	_title_root.add_child(bg)
+	var v := VBoxContainer.new()
+	v.set_anchors_and_offsets_preset(Control.PRESET_CENTER)
+	v.offset_left = -320
+	v.offset_right = 320
+	v.offset_top = -220
+	v.offset_bottom = 220
+	v.add_theme_constant_override("separation", 12)
+	_title_root.add_child(v)
+	var hdr := Label.new()
+	hdr.text = "· before the gate · check your pockets ·"
+	hdr.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+	hdr.add_theme_font_size_override("font_size", 20)
+	hdr.add_theme_color_override("font_color", C_GOLD)
+	v.add_child(hdr)
+	var sub := Label.new()
+	sub.text = "You brought exactly one thing that means anything in there.\nWhich was it?"
+	sub.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+	sub.add_theme_font_size_override("font_size", 14)
+	sub.add_theme_color_override("font_color", C_ROSE)
+	v.add_child(sub)
+	for imp_v in IMPLEMENTS:
+		var imp: Dictionary = imp_v
+		var b := Button.new()
+		b.text = "  %s  " % String(imp["name"])
+		b.add_theme_font_size_override("font_size", 15)
+		b.tooltip_text = String(imp["note"])
+		b.pressed.connect(_pick_implement.bind(String(imp["id"])))
+		v.add_child(b)
+		var note := Label.new()
+		note.text = "    · " + String(imp["note"]) + " ·"
+		note.add_theme_font_size_override("font_size", 12)
+		note.add_theme_color_override("font_color", C_GOLD_DIM)
+		v.add_child(note)
+	GamepadMgr.focus_first.call_deferred(v)
+
+
+func _pick_implement(imp_id: String) -> void:
+	_run_state["implement"] = imp_id
+	_save_state()
+	var sfx := get_node_or_null("/root/SFXBank")
+	if sfx: sfx.play("card_place", 0.6)
+	_open_gate()
 
 
 func _open_gate() -> void:
@@ -657,6 +727,11 @@ func _on_negotiation_complete(fey_id: String, outcome: String, mutations: Dictio
 		elif key.begins_with("fey_court_"):
 			# Court cache · endings count unseelie recruits from this
 			_run_state[key] = mutations[k]
+		elif key == "lock_booth" and bool(mutations[k]):
+			# A failed branch closes the flap until the night advances.
+			var locks: Dictionary = _run_state.get("booth_locks", {})
+			locks[fey_id] = int(_run_state.get("night", 1))
+			_run_state["booth_locks"] = locks
 	# Record the meeting regardless of outcome · Compendium "met" tier
 	var met: Array = _run_state.get("feys_met", [])
 	if not met.has(fey_id):
@@ -712,11 +787,14 @@ func _on_combat_complete(fey_id: String, outcome: String, mutations: Dictionary)
 		if not checkpoints.has(fey_id):
 			checkpoints.append(fey_id)
 		_run_state["checkpoints"] = checkpoints
-	# Loss · one memory lost · route back to Gate to represent respawn
+	# Loss · one memory lost, half the purse spilled · route back to
+	# Gate to represent respawn
 	if outcome == "loss":
 		var mirrors: Array = _run_state.get("memory_mirror_state", [])
 		mirrors.append({"fey_id": fey_id, "cause": "combat_loss"})
 		_run_state["memory_mirror_state"] = mirrors
+		var gold: int = int(_run_state.get("gold", 0))
+		_run_state["gold"] = int(floor(gold * 0.5))
 	_save_state()
 	# Parley routes back into negotiation with the same fey
 	if outcome == "parley":

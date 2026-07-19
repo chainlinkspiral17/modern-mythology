@@ -449,17 +449,29 @@ func _render_current_cell() -> void:
 			booth_row.add_child(booth_lbl)
 
 			if not is_recruited:
+				# A failed negotiation closes the flap until the night
+				# advances · time is the currency.
+				var locks: Dictionary = _run_state.get("booth_locks", {})
+				var locked_tonight: bool = locks.has(String(fey_id)) \
+						and int(locks[String(fey_id)]) == int(_run_state.get("night", 1))
 				var special: String = String(cell.get("special_action", ""))
-				var interact_btn := Button.new()
-				if special == "fortune" and not bool(_run_state.get("fortune_read", false)):
-					interact_btn.text = "  sit for a reading  "
-					interact_btn.pressed.connect(func() -> void: read_fortune.emit())
+				if locked_tonight and special != "fortune":
+					var closed_lbl := Label.new()
+					closed_lbl.text = "· the flap is closed tonight ·"
+					closed_lbl.add_theme_font_size_override("font_size", 14)
+					closed_lbl.add_theme_color_override("font_color", C_GOLD_DIM)
+					booth_row.add_child(closed_lbl)
 				else:
-					interact_btn.text = "  approach the booth  "
-					interact_btn.pressed.connect(func() -> void: negotiate_with_fey.emit(String(fey_id)))
-				interact_btn.add_theme_font_size_override("font_size", 15)
-				interact_btn.add_theme_color_override("font_color", C_GOLD)
-				booth_row.add_child(interact_btn)
+					var interact_btn := Button.new()
+					if special == "fortune" and not bool(_run_state.get("fortune_read", false)):
+						interact_btn.text = "  sit for a reading  "
+						interact_btn.pressed.connect(func() -> void: read_fortune.emit())
+					else:
+						interact_btn.text = "  approach the booth  "
+						interact_btn.pressed.connect(func() -> void: negotiate_with_fey.emit(String(fey_id)))
+					interact_btn.add_theme_font_size_override("font_size", 15)
+					interact_btn.add_theme_color_override("font_color", C_GOLD)
+					booth_row.add_child(interact_btn)
 			else:
 				# REST at a recruited booth · advances the night
 				var night_now: int = int(_run_state.get("night", 1))

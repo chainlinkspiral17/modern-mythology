@@ -294,3 +294,51 @@ A player who negotiates every fight never dies (no risk).  BUT:
   ambient music of that fey's manifestation?  RECOMMEND: yes.
   Titania's combat music is the House of Roses ambient with
   a percussion layer.
+
+---
+
+## THICKENING PASS · addendum (2026-07-19)
+
+User read on the build: "most promise, but the gameplay is thin."
+A full survey confirmed it: negotiation auto-succeeded via
+interchangeable branches, THREATEN was dead code (key mismatch:
+read `known_names`, Host writes `known_true_names`), RECITE
+ignored what you'd actually learned (`quotes_learned` vs
+`unlocked_quotes`), the combat damage triangle was displayed but
+never applied, the party did nothing in combat, gold had no sink,
+and death cost almost nothing. The pass, two waves, all riding
+data that feys.json/quotes.json already carry:
+
+**Wave 1 · negotiation gets teeth.** The four branches become
+four different prices with four different failure shapes:
+- OFFER · you procure the fey's exact prize on the midway ·
+  costs 1+tier GOLD (the Faire sells everything). Gold's first
+  real sink. Can't afford it, can't offer.
+- PROMISE · a fey reads your ledger: three or more outstanding
+  unkept promises and they refuse — booth locked for the night.
+  Caps promise-spam at three, making the other verbs necessary.
+- THREATEN · needs the true name (key fixed). Tier 4+ feys
+  answer the name with violence — negotiation drops into combat.
+  Lesser feys submit: recruited, but resentful (-1 disposition,
+  +2 UNSEELIE court regardless of their own).
+- RECITE · needs a quote whose play matches their favorite or
+  whose affinities name them/their court (key fixed, reads
+  unlocked_quotes). The wrong play fails: -1 disposition, booth
+  locked. Makes the Bookstall strategic and show playbill quotes
+  matter on the pacifist path.
+- UNIVERSAL FAILURE COST · a failed branch locks that booth
+  until the night advances. Time is the currency.
+
+**Wave 2 · combat gets its triangle.** New runs choose an
+IMPLEMENT after the questionnaire (cold iron nail · salt packet ·
+tin whistle · hawthorn sprig = iron/salt/song/word). ATTACK
+applies x1.5 vs weakness, x0.5 vs resistance — the triangle the
+readout always advertised. A SECOND action lets one recruited fey
+act once per combat (their recruit_gift: heals if it heals, else
+strikes with their damage type through the same triangle) — the
+party finally fights. Losing costs half your gold on top of the
+memory. THREATEN-fail is the organic door into all of this.
+
+Deferred (next passes): booth puzzles, the designed death
+checkpoint economy, connecting the ~75 orphaned feys to booths,
+mirror-gate puzzles, Titania/Oberon exclusivity.

@@ -26,6 +26,7 @@ signal negotiation_complete(fey_id: String, outcome: String, mutations: Dictiona
 signal quit_to_shelf
 
 const FEYS_PATH := "res://resources/games/vol7/fey_faire/feys.json"
+const QUOTES_PATH := "res://resources/games/vol7/fey_faire/quotes.json"
 
 # Rocha palette
 const C_BG        := Color(0.157, 0.094, 0.173, 1.0)
@@ -46,6 +47,7 @@ var _run_state: Dictionary = {}
 var _fey_id: String = ""
 var _fey: Dictionary = {}
 var _feys_by_id: Dictionary = {}
+var _quotes_by_id: Dictionary = {}
 var _mutations: Dictionary = {}
 var _panel_root: Control = null
 
@@ -60,6 +62,7 @@ func boot(state: Dictionary) -> void:
 	_run_state = state.get("run_state", state)
 	_fey_id = String(state.get("fey_id", ""))
 	_load_feys()
+	_load_quotes()
 	_fey = _feys_by_id.get(_fey_id, {})
 	if _fey.is_empty():
 		push_warning("[FeyFaireNegotiation] unknown fey_id: " + _fey_id)
@@ -82,6 +85,18 @@ func _load_feys() -> void:
 		for entry_v in feys_arr:
 			var entry: Dictionary = entry_v
 			_feys_by_id[String(entry.get("id", ""))] = entry
+
+
+func _load_quotes() -> void:
+	if not FileAccess.file_exists(QUOTES_PATH): return
+	var f := FileAccess.open(QUOTES_PATH, FileAccess.READ)
+	var parsed: Variant = JSON.parse_string(f.get_as_text())
+	f.close()
+	if parsed is Dictionary:
+		var arr: Array = (parsed as Dictionary).get("quotes", [])
+		for q_v in arr:
+			var q: Dictionary = q_v
+			_quotes_by_id[String(q.get("id", ""))] = q
 
 
 func _build_frame() -> void:
@@ -267,26 +282,35 @@ func _render_main_view() -> void:
 	right.add_child(right_header)
 
 	# Precomputed check · does the player HAVE the specific means
-	# to attempt each branch?
-	var can_offer: bool = true    # OFFER always attemptable (may fail)
-	var can_promise: bool = true  # PROMISE always attemptable
+	# to attempt each branch?  Each branch is a different price with
+	# a different failure shape · thin-gameplay pass 2026-07.
+	var offer_cost := _offer_cost()
+	var gold: int = int(_run_state.get("gold", 0))
+	var can_offer: bool = gold >= offer_cost
+	var outstanding := _outstanding_promises()
+	var can_promise: bool = true       # attemptable · they may refuse
 	var can_threaten: bool = _player_knows_true_name()
-	var can_recite: bool = _player_knows_recite_quote()
+	var mq := _matching_quote()
+	var can_recite: bool = not (_run_state.get("unlocked_quotes", []) as Array).is_empty()
 
 	_add_negotiation_button(right, "OFFER",
-		_fey_str("prize", ""),
+		"procure " + _fey_str("prize", "their prize") + " · %d gold" % offer_cost
+			+ ("" if can_offer else " · you carry %d" % gold),
 		can_offer, C_GOLD, _on_offer_pressed)
 
 	_add_negotiation_button(right, "PROMISE",
-		_fey_str("request", ""),
+		_fey_str("request", "")
+			+ ("" if outstanding == 0 else " · %d already outstanding" % outstanding),
 		can_promise, C_ROSE, _on_promise_pressed)
 
 	_add_negotiation_button(right, "THREATEN",
-		"invoke their true name",
+		"invoke their true name" + (" · tier %d · they will not kneel" % int(_fey.get("tier", 1))
+			if int(_fey.get("tier", 1)) >= 4 and can_threaten else ""),
 		can_threaten, C_GOLD_DIM, _on_threaten_pressed)
 
 	_add_negotiation_button(right, "RECITE",
-		"quote " + _fey_str("favorite_play", "the right play"),
+		("you hold their line · " + String(mq.get("play", "")) if not mq.is_empty()
+			else "quote " + _fey_str("favorite_play", "the right play") + " · you hold no matching line"),
 		can_recite, C_MAUVE, _on_recite_pressed)
 
 	var sep3 := Control.new()
@@ -335,20 +359,43 @@ func _add_negotiation_button(parent: Node, action: String, subtitle: String, ena
 
 
 func _player_knows_true_name() -> bool:
-	# The player knows a fey's true name if it's in their run_state's
-	# known_names list.  Scaffold: always false until a specific
-	# keepsake or fey grants a true name.
-	var known: Array = _run_state.get("known_names", [])
+	# The Host writes known_true_names (Bookstall slim volume, fortune
+	# beats, other feys) · this read matched a key nobody wrote and
+	# THREATEN was dead code for a whole build.
+	var known: Array = _run_state.get("known_true_names", [])
 	return known.has(_fey_id)
 
 
-func _player_knows_recite_quote() -> bool:
-	# Similar · true if the player has at least one quote in the
-	# quotes_learned list that lists this fey (or its court) as an
-	# affinity.  Scaffold: assume the three starter quotes.
-	var learned: Array = _run_state.get("quotes_learned", ["q_fools_mortals", "q_dreams_made_on", "q_bank_thyme"])
-	# Any of the starter quotes at least allow attempting a RECITE
-	return not learned.is_empty()
+func _offer_cost() -> int:
+	# You procure the fey's exact prize on the midway before the
+	# offer · the Faire sells everything, at Faire prices.
+	return 1 + int(_fey.get("tier", 1))
+
+
+func _outstanding_promises() -> int:
+	var n := 0
+	for p_v in _run_state.get("promises", []):
+		var p: Dictionary = p_v
+		if not bool(p.get("fulfilled", false)):
+			n += 1
+	return n
+
+
+func _matching_quote() -> Dictionary:
+	# A quote matches if its play is the fey's favorite, or its
+	# affinities name the fey or their court.
+	var fav := _fey_str("favorite_play", "")
+	var court := _fey_str("court", "")
+	for qid_v in _run_state.get("unlocked_quotes", []):
+		var q: Dictionary = _quotes_by_id.get(String(qid_v), {})
+		if q.is_empty():
+			continue
+		if fav != "" and String(q.get("play", "")) == fav:
+			return q
+		var aff: Array = q.get("affinities", [])
+		if aff.has(_fey_id) or (court != "" and aff.has(court)):
+			return q
+	return {}
 
 
 func _on_offer_pressed() -> void:
@@ -368,58 +415,79 @@ func _on_recite_pressed() -> void:
 
 
 func _render_offer_view() -> void:
+	var cost := _offer_cost()
 	_render_branch_view(
 		"OFFER",
-		"You offer " + _fey_str("prize", "a gift") + " to " + _fey_str("name", "the fey") + ".",
-		"if you have exactly the right prize, they will recruit",
+		"You spend the evening finding " + _fey_str("prize", "their prize")
+			+ " among the stalls · %d gold · and bring it to " % cost
+			+ _fey_str("name", "the fey") + ".",
+		"the exact prize, exactly procured · the Faire sells everything, at Faire prices",
 		func() -> void:
-			# Scaffold: OFFER succeeds if the player has the prize in
-			# their keepsakes or their boot_inventory · always succeeds
-			# for simplicity in this pass
-			var kp: Array = _run_state.get("keepsakes", [])
-			var has_related_kp: bool = kp.size() > 0
-			if has_related_kp:
-				_succeed_recruit("OFFER")
-			else:
-				_rebuff("OFFER · the specific item wasn't quite the one they wanted")
+			if int(_run_state.get("gold", 0)) < cost:
+				_rebuff("OFFER · your purse came up short at the last stall", {"lock_booth": true})
+				return
+			_succeed_recruit("OFFER", {"gold_delta": -cost})
 	)
 
 
 func _render_promise_view() -> void:
+	var outstanding := _outstanding_promises()
 	_render_branch_view(
 		"PROMISE",
 		"You promise: " + _fey_str("request", "a service"),
-		"a fulfilled promise recruits · an unkept one costs you later",
+		("a fulfilled promise recruits · an unkept one costs you later" if outstanding < 3
+			else "you already owe three · fey can read a ledger from across a booth"),
 		func() -> void:
-			# Scaffold: PROMISE always accepted · added to promises list
+			# A fey weighs your record before your words.  Three or
+			# more outstanding promises and they refuse outright.
+			if _outstanding_promises() >= 3:
+				_rebuff("PROMISE · they look at you the way a bank looks at a fourth loan"
+					+ " · keep one of the three you owe, then come back",
+					{"lock_booth": true})
+				return
 			_succeed_recruit("PROMISE", {"promise_made": _fey_str("request", "")})
 	)
 
 
 func _render_threaten_view() -> void:
+	var tier: int = int(_fey.get("tier", 1))
 	_render_branch_view(
 		"THREATEN",
 		"You speak the true name: '" + _fey_str("true_name", "?") + "'",
-		"the fey stiffens.  the name is powerful.",
+		("the fey stiffens.  the name is powerful." if tier < 4
+			else "the name is powerful · and so are they.  names start fights at this tier."),
 		func() -> void:
-			# Scaffold: threaten always recruits but adds hostility
-			_succeed_recruit("THREATEN", {"disposition_delta": -1})
+			# The great ones answer their name with violence · the
+			# organic door into combat.  Lesser feys submit, resentful,
+			# and the submission is an UNSEELIE act whoever you took.
+			if tier >= 4:
+				var sfx := get_node_or_null("/root/SFXBank")
+				if sfx: sfx.play("loss_thud", 0.7)
+				_render_result_view(
+					_fey_str("name", "?") + " · THE NAME ANSWERS",
+					"You speak it.  The booth-shape drops all at once, like scenery.\n\n· they were waiting to be called by name · they have been waiting a long time ·",
+					C_COURT_UNSEELIE,
+					func() -> void: negotiation_complete.emit(_fey_id, "hostile", {"combat_pending": true})
+				)
+				return
+			_succeed_recruit("THREATEN", {"disposition_delta": -1}, "unseelie")
 	)
 
 
 func _render_recite_view() -> void:
-	var play := _fey_str("favorite_play", "")
+	var mq := _matching_quote()
 	_render_branch_view(
 		"RECITE",
-		"You recite from " + (play if play != "" else "the right play") + ".",
-		"a correct-fey match doubles the effect and often opens negotiation",
+		("You recite: \"" + String(mq.get("text", "")) + "\"" if not mq.is_empty()
+			else "You recite the nearest line you hold, and hope."),
+		("the line is theirs · this is the courteous key" if not mq.is_empty()
+			else "warning · nothing you hold matches " + _fey_str("favorite_play", "their play") + " · the wrong play offends"),
 		func() -> void:
-			# Scaffold: recite always succeeds if the fey has a
-			# favorite_play (some don't, e.g. certain Wildfey)
-			if play != "":
+			if not mq.is_empty():
 				_succeed_recruit("RECITE")
 			else:
-				_rebuff("RECITE · they do not respond to a written line")
+				_rebuff("RECITE · you brought the wrong play · they correct your scansion and pull the flap shut",
+					{"lock_booth": true, _fey_id + "_disposition_delta": -1})
 	)
 
 
@@ -489,7 +557,7 @@ func _render_branch_view(title: String, prompt: String, note: String, on_confirm
 	buttons.add_child(back_btn)
 
 
-func _succeed_recruit(via: String, extra_mutations: Dictionary = {}) -> void:
+func _succeed_recruit(via: String, extra_mutations: Dictionary = {}, court_override: String = "") -> void:
 	var sfx := get_node_or_null("/root/SFXBank")
 	if sfx: sfx.play("win_chord", 0.7)
 	# Compute mutations to send back
@@ -501,9 +569,10 @@ func _succeed_recruit(via: String, extra_mutations: Dictionary = {}) -> void:
 	for k in extra_mutations.keys():
 		muts[String(k)] = extra_mutations[k]
 	# Compute court shift · +2 seelie/unseelie/wildfey based on this
-	# fey's court (simplified · the design doc has tier-scaled shifts)
+	# fey's court · a THREATEN submission shifts UNSEELIE regardless
+	# of whose name was spoken (the act is the court).
 	var court := _fey_str("court", "wildfey")
-	var court_key := "court_" + court
+	var court_key := "court_" + (court_override if court_override != "" else court)
 	muts[court_key + "_delta"] = 2
 	# Named disposition · recruiting a fey means they like you.
 	# Endings gate on titania/oberon/green_man/cricket dispositions,
@@ -520,14 +589,17 @@ func _succeed_recruit(via: String, extra_mutations: Dictionary = {}) -> void:
 	)
 
 
-func _rebuff(reason: String) -> void:
+func _rebuff(reason: String, mutations: Dictionary = {}) -> void:
 	var sfx := get_node_or_null("/root/SFXBank")
 	if sfx: sfx.play("pair_cold", 0.6)
+	var tail := "\n\nThe flap closes.  This booth will not open again tonight." \
+			if bool(mutations.get("lock_booth", false)) \
+			else "\n\nThey remain at their booth.  You may try again later."
 	_render_result_view(
 		_fey_str("name", "?") + " · REBUFFED",
-		reason + ".\n\nThey remain at their booth.  You may try again later.",
+		reason + "." + tail,
 		C_ROSE,
-		func() -> void: negotiation_complete.emit(_fey_id, "rebuffed", {})
+		func() -> void: negotiation_complete.emit(_fey_id, "rebuffed", mutations)
 	)
 
 
