@@ -181,6 +181,25 @@ that nobody needs it.
   _unhandled_input, gate arrows on focus — exist to keep one
   path per input. Check all three before adding any binding.
 
+### 2026-07-19 · the W3 sweep · normalize sticks, don't grow the pad map
+
+- **When a stick has an odd hotkey, teach the stick the shared
+  vocabulary — don't teach the pad the odd key.** NH's H and
+  PMG's L both became "also accepts J" one-liners; the pad map
+  stayed at seven buttons. Every button added to the global map
+  is a collision surface across ~60 scenes (triggers→Q/E died in
+  audit because Q hangs up the BBS and yaws the VN camera).
+- **Grep the whole repo for a keycode before mapping it.** The
+  audit loop was: list each stick's nonstandard keys, then grep
+  that key EVERYWHERE before deciding. Two of five candidate
+  mappings died on collisions found outside the stick that
+  wanted them.
+- **"Unreachable on pad" is sometimes fine.** Wyrd's hex
+  diagonals and Basilica's fine-tune stay keyboard-only: the
+  orthogonal steps generate the hex lattice, and coarse tune
+  covers the radio. Match capability, not keys — a pad path per
+  FUNCTION, not per binding.
+
 ## TEMPLATE — new lesson entry
 
 ```
