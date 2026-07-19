@@ -36,6 +36,10 @@ var _setups_by_arcana: Dictionary = {}   # arcana → Array[{id,title,subtitle,d
 var _core_card_titles: Dictionary = {}   # core card id → title
 var _root: Control = null
 var _game: Node = null
+# DAILY DRAW mode · set by GalleryOverlay before add_child. One
+# date-seeded card (same card for everyone on the same day), no
+# carryover, no persistence beyond a played-today mark.
+var daily_mode: bool = false
 
 
 func _ready() -> void:
@@ -45,6 +49,9 @@ func _ready() -> void:
 	randomize()
 	_scan_setups()
 	_load_core_titles()
+	if daily_mode:
+		_render_daily()
+		return
 	var spread := GauntletState.get_spread()
 	if spread.is_empty():
 		_render_draw(_deal())
@@ -142,6 +149,98 @@ func _deal() -> Array:
 			"ending": "",
 		})
 	return cards
+
+
+# ── DAILY DRAW ───────────────────────────────────────────────────
+
+static func daily_key() -> String:
+	var d := Time.get_date_dict_from_system()
+	return "%04d%02d%02d" % [int(d["year"]), int(d["month"]), int(d["day"])]
+
+
+func _daily_pick() -> Dictionary:
+	# Deterministic per calendar day · sorted keys so DirAccess
+	# listing order can't shift the draw between machines.
+	var rng := RandomNumberGenerator.new()
+	rng.seed = int(daily_key())
+	var arcs: Array = _setups_by_arcana.keys()
+	arcs.sort()
+	if arcs.is_empty():
+		return {}
+	var arc: String = String(arcs[rng.randi() % arcs.size()])
+	var setups: Array = (_setups_by_arcana[arc] as Array).duplicate()
+	setups.sort_custom(func(a, b) -> bool: return String(a["id"]) < String(b["id"]))
+	var pick: Dictionary = setups[rng.randi() % setups.size()]
+	return {
+		"arcana": arc,
+		"setup": String(pick["id"]),
+		"title": String(pick["title"]),
+		"difficulty": String(pick["difficulty"]),
+		"location": String(pick["location"]),
+		"hand": String(pick["hand"]),
+		"outcome": "",
+		"ending": "",
+	}
+
+
+func _render_daily(after_outcome: String = "") -> void:
+	var cd := _daily_pick()
+	if cd.is_empty():
+		_close()
+		return
+	var v := _build_frame("· THE DAILY DRAW ·")
+	var sub := Label.new()
+	sub.text = "one card, same card, everyone, today"
+	sub.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+	sub.add_theme_font_size_override("font_size", 13)
+	sub.add_theme_color_override("font_color", C_DIM)
+	v.add_child(sub)
+	_card_row(v, [cd], 0)
+	var played_key: String = "daily:" + daily_key()
+	var played: bool = SaveSystem.is_unlocked(played_key)
+	if after_outcome != "" or played:
+		var res := Label.new()
+		if after_outcome == "won":
+			res.text = "· today's card fell your way ·"
+			res.add_theme_color_override("font_color", C_WIN)
+		elif after_outcome == "lost":
+			res.text = "· today's card reversed on you · tomorrow deals fresh ·"
+			res.add_theme_color_override("font_color", C_LOSS)
+		else:
+			res.text = "· played today · replays welcome, the mark is already made ·"
+			res.add_theme_color_override("font_color", C_DIM)
+		res.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+		res.add_theme_font_size_override("font_size", 13)
+		v.add_child(res)
+	var actions := HBoxContainer.new()
+	actions.alignment = BoxContainer.ALIGNMENT_CENTER
+	actions.add_theme_constant_override("separation", 16)
+	v.add_child(actions)
+	_button(actions, "  PLAY TODAY'S CARD  ", _launch_daily)
+	_button(actions, "  ← back  ", _close, 13)
+	GamepadMgr.focus_first.call_deferred(_root)
+
+
+func _launch_daily() -> void:
+	var cd := _daily_pick()
+	if cd.is_empty():
+		return
+	_clear_root()
+	_game = TAROT_GAUNTLET_SCENE.instantiate()
+	_game.call("start_scenario", String(cd["arcana"]), String(cd["location"]),
+			String(cd["hand"]), String(cd["setup"]))
+	_game.set("z_index", 30)
+	add_child(_game)
+	_game.connect("game_ended", _on_daily_ended)
+
+
+func _on_daily_ended(outcome: String, _summary: Dictionary) -> void:
+	if _game != null and is_instance_valid(_game):
+		_game.queue_free()
+	_game = null
+	if outcome == "won" or outcome == "lost":
+		SaveSystem.mark_unlocked("daily:" + daily_key())
+	_render_daily(outcome)
 
 
 func _card_art(arcana: String, size: Vector2i) -> Texture2D:

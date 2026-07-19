@@ -51,9 +51,14 @@ card has room for one line: the setup's named loss conditions ("Ways
 this goes wrong: THE ROOM WALKS OUT · SHIFT ENDS BEHIND"). Losses as
 pedagogy, surfaced before play instead of discovered after.
 
-**P3 · Daily draw.** A one-tap "draw a card" entry that picks an
-arcana+setup (optionally date-seeded so everyone gets the same daily).
-Removes choice paralysis from a 70+-scenario menu.
+**P3 · Daily draw — DONE 2026-07-19.** DAILY DRAW tile beside THE
+SPREAD in the gallery-games row: one date-seeded card
+(yyyymmdd-seeded RNG over sorted arcana/setups so every machine
+deals the same daily), one-tap play via SpreadHost's daily mode,
+played-today ✓ mark on the tile (`daily:<date>` unlock key),
+replays welcome. Original note: A one-tap "draw a card" entry that
+picks an arcana+setup (optionally date-seeded so everyone gets the
+same daily).
 
 **P3 · Post-run reading.** The end screen states win/loss; add three
 lines of "the reading" — which turns swung it, the visitor who

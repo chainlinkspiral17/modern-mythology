@@ -226,6 +226,12 @@ func _render_week() -> void:
 	_clear_content()
 	var week: int = clampi(int(_run_state.get("week", 1)), 1, 12)
 	var wk: Dictionary = WEEKS[week - 1]
+	if week == 6:
+		# The robbery week opens in the hands before it opens on
+		# screen · a slow strong-motor swell, no sound.
+		var bank := get_node_or_null("/root/SFXBank")
+		if bank != null and bank.has_method("rumble"):
+			bank.call("rumble", 0.08, 0.35, 0.9)
 
 	_content_root = Control.new()
 	_content_root.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)

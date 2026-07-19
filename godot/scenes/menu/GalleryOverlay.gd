@@ -147,6 +147,7 @@ func _rebuild() -> void:
 		if gauntlet_unlocked:
 			games_flow.add_child(_make_tarot_gauntlet_tile())
 			games_flow.add_child(_make_spread_tile())
+			games_flow.add_child(_make_daily_draw_tile())
 		content.add_child(games_flow)
 	if not cp_unlocked or not gauntlet_unlocked:
 		# Dev hook: a small toggle to fire each gallery-game unlock
@@ -567,6 +568,50 @@ func _open_spread_host() -> void:
 	host.z_index = 25
 	add_child(host)
 	host.connect("closed", func() -> void: _rebuild())
+
+
+func _make_daily_draw_tile() -> Control:
+	# Slim companion tile · one date-seeded card, same for everyone.
+	var tile := Button.new()
+	tile.custom_minimum_size = Vector2(THUMB_W, THUMB_H)
+	tile.clip_contents = true
+	var style := StyleBoxFlat.new()
+	style.bg_color = Color(0.05, 0.07, 0.06, 1.0)
+	style.border_color = Color(0.55, 0.78, 0.45, 0.60)
+	style.set_border_width_all(1)
+	style.set_corner_radius_all(2)
+	tile.add_theme_stylebox_override("normal", style)
+	var hover_style: StyleBoxFlat = style.duplicate() as StyleBoxFlat
+	hover_style.border_color = Color(0.55, 0.78, 0.45, 0.95)
+	tile.add_theme_stylebox_override("hover", hover_style)
+	tile.add_theme_stylebox_override("focus", hover_style)
+	tile.add_theme_stylebox_override("pressed", hover_style)
+	var vbox := VBoxContainer.new()
+	vbox.anchor_right = 1.0
+	vbox.anchor_bottom = 1.0
+	vbox.alignment = BoxContainer.ALIGNMENT_CENTER
+	tile.add_child(vbox)
+	var label := Label.new()
+	label.text = "DAILY DRAW"
+	label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+	label.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	_apply_font(label, SkinDB.F_CINZEL, 13, C_GOLD)
+	vbox.add_child(label)
+	var sub := Label.new()
+	var played: bool = SaveSystem.is_unlocked("daily:" + SPREAD_HOST_SCRIPT.daily_key())
+	sub.text = "· played today ✓ ·" if played else "one card · today's"
+	sub.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+	sub.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	_apply_font(sub, SkinDB.F_CINZEL, 9, Color(C_GOLD.r, C_GOLD.g, C_GOLD.b, 0.55))
+	vbox.add_child(sub)
+	tile.pressed.connect(func() -> void:
+		var host := Control.new()
+		host.set_script(SPREAD_HOST_SCRIPT)
+		host.set("daily_mode", true)
+		host.z_index = 25
+		add_child(host)
+		host.connect("closed", func() -> void: _rebuild()))
+	return tile
 
 
 func _scenarios_for_arcana(scenarios_const_name: String) -> Array:

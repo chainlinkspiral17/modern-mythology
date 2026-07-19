@@ -476,6 +476,10 @@ func _boss_turn_thar() -> void:
 	if _turn == 2 or (_blade_drawn and _turn % 3 == 0):
 		_bind_incoming = true
 		_log.append("· the four lower arms spread wide · the bind is coming · brace for it or pay for it")
+		# Telegraph judder · the warning you feel before you read it.
+		var bank := get_node_or_null("/root/SFXBank")
+		if bank != null and bank.has_method("rumble"):
+			bank.call("rumble", 0.12, 0.22, 0.3)
 		return
 	if not _blade_drawn and _turn >= 3:
 		_blade_drawn = true

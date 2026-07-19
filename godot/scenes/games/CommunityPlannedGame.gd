@@ -2800,6 +2800,10 @@ func _tick_dean_tower() -> void:
 			break
 	if _tower_brightness == "white":
 		_tower_state_revealed_white_once = true
+		# The dread beat has no sound · a long low roll in the hands.
+		var bank := get_node_or_null("/root/SFXBank")
+		if bank != null and bank.has_method("rumble"):
+			bank.call("rumble", 0.15, 0.45, 0.8)
 	_maybe_fire_anomaly()
 
 
