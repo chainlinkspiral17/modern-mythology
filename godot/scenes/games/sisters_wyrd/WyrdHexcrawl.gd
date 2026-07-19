@@ -97,6 +97,27 @@ const WEATHER_CUES: Dictionary = {
 	"west": "sunset is coming early on that side. west.",
 }
 
+# Wave 2 · the territory after a DRAW · her quadrant wears black.
+const MOURNING_LINES: Dictionary = {
+	"dust": "the dust here has settled flat, the way a room goes after news.",
+	"bone": "the bone flats have stopped being ironic about it.",
+	"scrub": "the scrub has let the wind through without argument. that's new.",
+	"mesa": "the mesa's shadow doesn't move all the while you cross it.",
+	"salt": "the salt has taken your hoofprints and grieved over every one.",
+	"gallows": "the gallows wood is quieter than quiet. even the rope-shade mourns her.",
+	"township": "black crepe on two doors. nobody says for whom. everybody knows for whom.",
+}
+# And after an UNWEAVE · her quadrant, truly calm.
+const PEACE_LINES: Dictionary = {
+	"dust": "dust, and the wind through it easy, like a held breath let go.",
+	"bone": "the bone flats are just old now. old is allowed.",
+	"scrub": "quail everywhere, loud, unbothered. the scrub has decided it's spring.",
+	"mesa": "the mesa's shade is cool and means nothing by it.",
+	"salt": "the salt pan is bright and flat and finally only a place.",
+	"gallows": "the trees are growing straighter. give them forty years.",
+	"township": "somebody's repainting a door. the town has plans again.",
+}
+
 var _state: Dictionary = {}
 var _enc: Dictionary = {}
 var _towns: Dictionary = {}             # "q,r" → township def
@@ -192,6 +213,50 @@ func _hex_dist(a: Vector2i, b: Vector2i) -> int:
 	return (absi(dq) + absi(dr) + absi(dq + dr)) / 2
 
 
+# ─── Wave 2 · sister weather with teeth ──────────────────────────
+
+func _seat_vec(w: String) -> Vector2i:
+	var s: Array = WITCH_SEATS.get(w, [0, 0])
+	return Vector2i(int(s[0]), int(s[1]))
+
+
+func _dealt_verb(w: String) -> String:
+	var dealt: Dictionary = _state.get("witches_dealt", {})
+	return String(dealt.get(w, ""))
+
+
+func _in_aura(w: String, radius: int = 5) -> bool:
+	# An UNDEALT sister projects weather around her seat.
+	if _dealt_verb(w) != "":
+		return false
+	return _hex_dist(_pos, _seat_vec(w)) <= radius
+
+
+func _quadrant_of(p: Vector2i) -> String:
+	# A hex belongs to the sister whose seat sits nearest.
+	var best := ""
+	var best_d := 9999
+	for w in WITCH_SEATS.keys():
+		var d := _hex_dist(p, _seat_vec(String(w)))
+		if d < best_d:
+			best_d = d
+			best = String(w)
+	return best
+
+
+func _apply_weather_bites() -> void:
+	# North cold · her aura takes grit on woven-deterministic hexes.
+	if _in_aura("north", 4) and _hash_qr(_pos.x, _pos.y, 11) % 3 == 0:
+		_state["grit"] = maxi(0, int(_state.get("grit", 6)) - 1)
+		_say("· the cold takes a bite · GRIT %d ·" % int(_state.get("grit", 0)))
+	# The hat you parleyed away · the sun collects on open ground.
+	if _dealt_verb("north") == "parley":
+		var terrain := _terrain_at(_pos.x, _pos.y)
+		if (terrain == "dust" or terrain == "salt") and _hash_qr(_pos.x, _pos.y, 13) % 4 == 0:
+			_state["grit"] = maxi(0, int(_state.get("grit", 6)) - 1)
+			_say("· the sun finds your bare head, the way she said it would · GRIT %d ·" % int(_state.get("grit", 0)))
+
+
 # ─── UI ──────────────────────────────────────────────────────────
 
 func _build_ui() -> void:
@@ -237,10 +302,17 @@ func _say(line: String) -> void:
 
 func _refresh_hud() -> void:
 	var dealt: Dictionary = _state.get("witches_dealt", {})
-	_hud.text = "GRIT %d · SILVER %d · LORE %d      sisters dealt · %d of 4      home · %d hexes" % [
+	# The reckoning home · the east can take it from you two ways:
+	# her parley price removes it, her red aura makes it lie.
+	var home_txt := "%d hexes" % _hex_dist(_pos, Vector2i.ZERO)
+	if _dealt_verb("east") == "parley":
+		home_txt = "you'd have to ask"
+	elif _in_aura("east"):
+		var lie: int = maxi(0, _hex_dist(_pos, Vector2i.ZERO) + (_hash_qr(_pos.x, _pos.y, 19) % 7) - 3)
+		home_txt = "%d hexes, says the light" % lie
+	_hud.text = "GRIT %d · SILVER %d · LORE %d      sisters dealt · %d of 4      home · %s" % [
 		int(_state.get("grit", 6)), int(_state.get("silver", 3)),
-		int(_state.get("lore", 0)), dealt.size(),
-		_hex_dist(_pos, Vector2i.ZERO)]
+		int(_state.get("lore", 0)), dealt.size(), home_txt]
 
 
 # ─── Movement · the ride ─────────────────────────────────────────
@@ -314,11 +386,27 @@ func _on_arrive() -> void:
 					"text": String(bdef.get("arrive", "")),
 					"choices": bdef.get("choices", [])})
 				return
-	# The text engine · every hex says something.
+	# Weather with teeth · the cold, the bare head.
+	_apply_weather_bites()
+	if int(_state.get("grit", 6)) <= 0:
+		_fold_home()
+		queue_redraw()
+		return
+	# The text engine · every hex says something. After a dealing,
+	# the quadrant says it differently.
 	var terrain := _terrain_at(_pos.x, _pos.y)
-	var lines: Array = TRAVEL_LINES.get(terrain, [])
-	if not lines.is_empty():
-		_say(String(lines[_hash_qr(_pos.x, _pos.y, 3) % lines.size()]))
+	var quad_verb := _dealt_verb(_quadrant_of(_pos))
+	var line := ""
+	if quad_verb == "draw" and _hash_qr(_pos.x, _pos.y, 17) % 2 == 0:
+		line = String(MOURNING_LINES.get(terrain, ""))
+	elif quad_verb == "unweave" and _hash_qr(_pos.x, _pos.y, 17) % 3 == 0:
+		line = String(PEACE_LINES.get(terrain, ""))
+	if line == "":
+		var lines: Array = TRAVEL_LINES.get(terrain, [])
+		if not lines.is_empty():
+			line = String(lines[_hash_qr(_pos.x, _pos.y, 3) % lines.size()])
+	if line != "":
+		_say(line)
 	_maybe_whisper_trail()
 	# Sister weather when her corner is near.
 	var dealt2: Dictionary = _state.get("witches_dealt", {})
@@ -377,7 +465,14 @@ func _input(event: InputEvent) -> void:
 
 func _maybe_encounter(terrain: String) -> void:
 	var h := _hash_qr(_pos.x, _pos.y, 7)
-	if h % 100 >= 18:   # ~18% of hexes carry a beat
+	# Base ~18% of hexes carry a beat · the west's early dark doubles
+	# it in her aura · an unwoven quadrant, truly calm, halves it.
+	var chance := 18
+	if _in_aura("west"):
+		chance = 36
+	elif _dealt_verb(_quadrant_of(_pos)) == "unweave":
+		chance = 9
+	if h % 100 >= chance:
 		return
 	var seen: Array = _state.get("encounters_seen", [])
 	var pool: Array = (_enc.get("by_terrain", {}) as Dictionary).get(terrain, [])
@@ -417,11 +512,22 @@ func _resolve_encounter(ch: Dictionary) -> void:
 	_choice_btns.clear()
 	var was_bounty := String(_encounter.get("id", "")).begins_with("bounty_")
 	_encounter = {}
-	_state["grit"] = clampi(int(_state.get("grit", 6)) + int(ch.get("grit", 0)), 0, 9)
+	# The south's thirst · in her aura, what costs grit costs deeper.
+	var grit_delta: int = int(ch.get("grit", 0))
+	if grit_delta < 0 and _in_aura("south"):
+		grit_delta -= 1
+		_say("· the dry air takes its share on top ·")
+	_state["grit"] = clampi(int(_state.get("grit", 6)) + grit_delta, 0, 9)
 	_state["silver"] = maxi(0, int(_state.get("silver", 3)) + int(ch.get("silver", 0)))
-	_state["lore"] = maxi(0, int(_state.get("lore", 0)) + int(ch.get("lore", 0)))
+	# The west's parley price · you gave the question away, and lore
+	# is what questions carry. Bought novels still work; asking doesn't.
+	var lore_delta: int = int(ch.get("lore", 0))
+	if lore_delta > 0 and _dealt_verb("west") == "parley":
+		lore_delta = 0
+		_say("· you reach for the question that would hold it, and the question isn't there. it runs through like water ·")
+	_state["lore"] = maxi(0, int(_state.get("lore", 0)) + lore_delta)
 	_say(String(ch.get("text", "")))
-	if int(ch.get("lore", 0)) > 0:
+	if lore_delta > 0:
 		_sfx("page_turn", 0.5)
 		_say("· that is LORE, and you can hold it · LORE %d ·" % int(_state.get("lore", 0)))
 	# Bounty dealings · capture rides with you, mercy spends the notice.
@@ -466,8 +572,16 @@ func _find_bounty(bid: String) -> Dictionary:
 	return {}
 
 
+func _town_surcharge() -> int:
+	# Widow-weather · a town in a DRAWn sister's quadrant charges
+	# for its grief.
+	return 1 if _dealt_verb(_quadrant_of(_pos)) == "draw" else 0
+
+
 func _arrive_township(t: Dictionary) -> void:
 	_say(String(t.get("arrive", "")))
+	if _town_surcharge() > 0:
+		_say("the town is wearing black for her. prices are up · grief has overheads.")
 	# A captive in tow · any board pays.
 	var bounty: Dictionary = _state.get("bounty", {})
 	if not bounty.is_empty() and String(bounty.get("stage", "")) == "captive":
@@ -512,9 +626,10 @@ func _open_town_menu(t: Dictionary) -> void:
 	_encounter = {"_town": String(t.get("id", ""))}
 	var silver: int = int(_state.get("silver", 0))
 	var grit: int = int(_state.get("grit", 6))
-	var hotel_cost: int = int(_services.get("hotel_cost", 2))
-	var saloon_cost: int = int(_services.get("saloon_cost", 1))
-	var book_cost: int = int(_services.get("bookstall_cost", 2))
+	var surcharge := _town_surcharge()
+	var hotel_cost: int = int(_services.get("hotel_cost", 2)) + surcharge
+	var saloon_cost: int = int(_services.get("saloon_cost", 1)) + surcharge
+	var book_cost: int = int(_services.get("bookstall_cost", 2)) + surcharge
 	var book_cap: int = int(_services.get("bookstall_cap", 2))
 	var bought: Dictionary = _state.get("bookstall_bought", {})
 	var here: int = int(bought.get(String(t.get("id", "")), 0))
@@ -537,7 +652,7 @@ func _close_town() -> void:
 
 
 func _town_hotel(t: Dictionary) -> void:
-	_state["silver"] = maxi(0, int(_state.get("silver", 0)) - int(_services.get("hotel_cost", 2)))
+	_state["silver"] = maxi(0, int(_state.get("silver", 0)) - int(_services.get("hotel_cost", 2)) - _town_surcharge())
 	_state["grit"] = maxi(int(_state.get("grit", 0)), 6)
 	_sfx("coin", 0.5)
 	_say(String(_services.get("hotel_text", "")))
@@ -545,7 +660,7 @@ func _town_hotel(t: Dictionary) -> void:
 
 
 func _town_saloon(t: Dictionary) -> void:
-	_state["silver"] = maxi(0, int(_state.get("silver", 0)) - int(_services.get("saloon_cost", 1)))
+	_state["silver"] = maxi(0, int(_state.get("silver", 0)) - int(_services.get("saloon_cost", 1)) - _town_surcharge())
 	_state["grit"] = clampi(int(_state.get("grit", 0)) + 1, 0, 9)
 	_sfx("coin", 0.4)
 	_say(String(_services.get("saloon_text", "")))
@@ -554,7 +669,7 @@ func _town_saloon(t: Dictionary) -> void:
 
 
 func _town_bookstall(t: Dictionary) -> void:
-	_state["silver"] = maxi(0, int(_state.get("silver", 0)) - int(_services.get("bookstall_cost", 2)))
+	_state["silver"] = maxi(0, int(_state.get("silver", 0)) - int(_services.get("bookstall_cost", 2)) - _town_surcharge())
 	_state["lore"] = int(_state.get("lore", 0)) + 1
 	var bought: Dictionary = _state.get("bookstall_bought", {})
 	var tid := String(t.get("id", ""))
@@ -663,10 +778,12 @@ func _draw() -> void:
 				draw_texture(tex, c - Vector2(TILE_W / 2.0, TILE_H / 2.0),
 						Color(0.5, 0.42, 0.6, 0.55))
 
-	# marks · home + seats + the five towns
+	# marks · home + seats + the five towns. The east's parley price
+	# was a memory of home — the map no longer admits to one.
 	var home_c := _axial_to_px(0, 0)
-	draw_string(font, home_c + Vector2(-18, -26), "HOME",
-			HORIZONTAL_ALIGNMENT_LEFT, -1, 13, C_BLOOD)
+	if _dealt_verb("east") != "parley":
+		draw_string(font, home_c + Vector2(-18, -26), "HOME",
+				HORIZONTAL_ALIGNMENT_LEFT, -1, 13, C_BLOOD)
 	for t_v in _town_defs:
 		var t: Dictionary = t_v
 		var thx: Array = t.get("hex", [0, 0])
