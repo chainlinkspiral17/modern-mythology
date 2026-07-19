@@ -583,3 +583,31 @@ fixes shipped this commit:
   code.
 - **Next lesson.** Same shape.
 ```
+
+### 2026-07-19 · +8 templates (21 → 29) · the escalation lattice
+
+- **New templates chain INTO existing ones, both directions.** The
+  eight new problems spawn established templates when neglected
+  (dock rot → memorial_grief, buyout letters → surveillance, well
+  taste → seed_dying, band bleed → town_meeting_pushback), so the
+  mid-summer board stops repeating and starts COMPOUNDING. When
+  adding problems, wire the severity-6 spawn to a template the
+  player already fears — the dread does double duty.
+- **Reuse existing problem_type values; new ids, old types.** Agent
+  specialty matching keys off problem_type — a novel type string
+  matches no specialist and quietly plays worse. All eight ship on
+  established types (infrastructure_failing, hoa_action,
+  surveillance, ground_refuses_plant, local_press_exposure,
+  lease_and_licensing, model_home_feel).
+- **Validate ideal_handlers against agents.json ids.** The field is
+  advisory, but "the_quiet_one" (invented) and
+  "the_small_wood_contact_jules" (real) look equally plausible in
+  prose. A cross-reference script caught it; eyeballs did not.
+- **BBS gates only on thread ids that exist.** Wanted a CALICHE
+  gate; no CA_* thread ids exist yet — the authoring script
+  auto-remapped to BP_014 rather than shipping a dead gate. Gate
+  fallback beats gate faith.
+- **Late-summer weight class = severity 4 + multi-household
+  stakes.** buyout_letters (sev 4, six households, the 4%% detail)
+  is the escalation shape W12+ wants: not bigger numbers, more
+  people at one kitchen table.
