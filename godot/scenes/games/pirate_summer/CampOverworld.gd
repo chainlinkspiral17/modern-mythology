@@ -881,6 +881,7 @@ func _spawn_sam(spawn_id: String) -> void:
 	_sam_texture_rect.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	_place_sam()
 	_attach_ground_shadow(_sam_texture_rect)
+	_attach_sam_lantern()
 	_world_root.add_child(_sam_texture_rect)
 
 
@@ -2297,6 +2298,38 @@ func _attach_ground_shadow(tr: TextureRect) -> void:
 	tr.add_child(sh)
 
 
+# ── Sam's lantern · dark-zone carry light (pass 6 tail) ──────────
+# In the caves and aboard the ghost ship Sam carries a small warm
+# light · an additive glow child of the Sam sprite, so it follows
+# every step for free. Visible only in the dark tint-override
+# zones; a hair of flicker so it reads as flame, not a spotlight.
+const _LANTERN_ZONES := ["caves_level_1", "caves_level_2",
+		"caves_level_3", "ghost_ship"]
+var _sam_lantern: TextureRect = null
+
+
+func _attach_sam_lantern() -> void:
+	if _sam_texture_rect == null:
+		return
+	_sam_lantern = TextureRect.new()
+	_sam_lantern.texture = _get_glow_texture()
+	var span := float(TILE_PX) * 4.6
+	_sam_lantern.size = Vector2(span, span)
+	# Centered on Sam's chest · local coords inside the Sam rect.
+	_sam_lantern.position = Vector2(
+		(_sam_texture_rect.size.x - span) / 2.0,
+		(_sam_texture_rect.size.y - span) / 2.0 - 2.0)
+	_sam_lantern.stretch_mode = TextureRect.STRETCH_SCALE
+	_sam_lantern.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	_sam_lantern.show_behind_parent = true
+	var mat := CanvasItemMaterial.new()
+	mat.blend_mode = CanvasItemMaterial.BLEND_MODE_ADD
+	_sam_lantern.material = mat
+	_sam_lantern.visible = String(_zone.get("id", "")) in _LANTERN_ZONES
+	_sam_lantern.modulate = Color(1, 1, 1, 0.34)
+	_sam_texture_rect.add_child(_sam_lantern)
+
+
 # ── Fireflies · evening ambience (graphics pass 6 tail) ──────────
 # A handful of small warm motes drift and blink in outdoor zones
 # once the light goes (evening_event onward). They ride the same
@@ -2531,6 +2564,8 @@ func _tick_env_animation(dt: float) -> void:
 		if g_v is TextureRect and is_instance_valid(g_v):
 			var wob: float = 1.0 + 0.18 * sin(float(_env_anim_frame) * 1.7 + float(i) * 2.3)
 			(g_v as TextureRect).modulate.a = clampf(_glow_base_alpha * wob, 0.04, 0.6)
+	if _sam_lantern != null and is_instance_valid(_sam_lantern) and _sam_lantern.visible:
+		_sam_lantern.modulate.a = 0.34 + 0.05 * sin(float(_env_anim_frame) * 2.1)
 
 func _get_npc_directional_texture(cid: String, facing: String) -> ImageTexture:
 	var key := "%s:%s" % [cid, facing]
