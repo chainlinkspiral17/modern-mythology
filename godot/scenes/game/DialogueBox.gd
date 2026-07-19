@@ -12,6 +12,13 @@ var _speaker: Label          = null
 var _body:    RichTextLabel  = null
 var _cursor:  Label          = null
 
+# Nameplate chrome (standard skin only): a short accent-colored
+# underline bar beneath the speaker name, plus a pop/slide animation
+# when the speaker CHANGES — the eye catches the handoff in
+# back-and-forth dialogue without reading the name every line.
+var _spk_rule:     ColorRect = null
+var _last_speaker: String    = ""
+
 # Typewriter state
 var _full_text:  String = ""
 var _char_idx:   int    = 0
@@ -52,6 +59,10 @@ func setup(skin: Dictionary) -> void:
 	_variant = skin.get("variant", SkinDB.DLG_STANDARD)
 	for ch in get_children():
 		ch.queue_free()
+	# The rule node is only rebuilt by the standard skin — clear the
+	# reference so terminal/paper don't poke a freed node.
+	_spk_rule     = null
+	_last_speaker = ""
 	match _variant:
 		SkinDB.DLG_PAPER:    _build_paper()
 		SkinDB.DLG_TERMINAL: _build_terminal()
@@ -62,28 +73,67 @@ func setup(skin: Dictionary) -> void:
 
 func show_narrate(text: String) -> void:
 	_speaker.visible = false
+	if _spk_rule != null:
+		_spk_rule.visible = false
+	# Reset the change-tracker so the same speaker still pops when they
+	# come back after a narration beat — the handoff reads either way.
+	_last_speaker = ""
 	_anchor_to("center")
 	_body.add_theme_color_override("default_color", _skin.get("txt_color", Color.WHITE))
 	_start_type(text)
 
 
 func show_say(char_name: String, text: String) -> void:
-	_speaker.text    = char_name.to_upper()
-	_speaker.visible = true
-	_apply_speaker_accent(char_name)
+	_present_speaker(char_name)
 	_anchor_to(_slot_for(char_name))
 	_body.add_theme_color_override("default_color", _skin.get("txt_color", Color.WHITE))
 	_start_type(text)
 
 
 func show_think(char_name: String, text: String) -> void:
-	_speaker.text    = char_name.to_upper() if char_name != "" else ""
-	_speaker.visible = char_name != ""
 	if char_name != "":
-		_apply_speaker_accent(char_name)
+		_present_speaker(char_name)
+	else:
+		_speaker.text    = ""
+		_speaker.visible = false
+		if _spk_rule != null:
+			_spk_rule.visible = false
+		_last_speaker = ""
 	_anchor_to(_slot_for(char_name) if char_name != "" else "center")
 	_body.add_theme_color_override("default_color", _skin.get("txt_color", Color.WHITE))
 	_start_type("[i]" + text + "[/i]")
+
+
+# Set + style the nameplate for this line's speaker, and animate the
+# handoff when the speaker changed since the previous line.
+func _present_speaker(char_name: String) -> void:
+	_speaker.text    = char_name.to_upper()
+	_speaker.visible = true
+	_apply_speaker_accent(char_name)
+	# Underline bar sized to the rendered name (standard skin only —
+	# terminal/paper keep their own diegetic chrome).
+	if _spk_rule != null:
+		_speaker.reset_size()
+		_spk_rule.visible    = true
+		_spk_rule.position   = Vector2(_speaker.position.x, -6.0)
+		_spk_rule.size       = Vector2(maxf(_speaker.get_minimum_size().x, 40.0), 3.0)
+		_spk_rule.pivot_offset = Vector2.ZERO
+	var changed := char_name != _last_speaker
+	_last_speaker = char_name
+	if not changed or _variant != SkinDB.DLG_STANDARD:
+		return
+	# Speaker handoff: name pops from slightly oversized, underline
+	# wipes in from the left. One beat (~0.2s), no layout shift.
+	_speaker.pivot_offset = Vector2(0.0, _speaker.size.y)
+	_speaker.scale = Vector2(1.14, 1.14)
+	var tw := _speaker.create_tween()
+	tw.tween_property(_speaker, "scale", Vector2.ONE, 0.16)\
+		.set_trans(Tween.TRANS_BACK).set_ease(Tween.EASE_OUT)
+	if _spk_rule != null:
+		_spk_rule.scale = Vector2(0.0, 1.0)
+		var tw2 := _spk_rule.create_tween()
+		tw2.tween_property(_spk_rule, "scale", Vector2.ONE, 0.22)\
+			.set_trans(Tween.TRANS_CUBIC).set_ease(Tween.EASE_OUT)
 
 
 func _apply_speaker_accent(char_name: String) -> void:
@@ -94,6 +144,8 @@ func _apply_speaker_accent(char_name: String) -> void:
 		return
 	var c: Color = char_layer.call("accent_for", char_name)
 	_speaker.add_theme_color_override("font_color", c)
+	if _spk_rule != null:
+		_spk_rule.color = Color(c.r, c.g, c.b, 0.85)
 
 
 # Ask CharLayer which slot this speaker's cutout stands in so the
@@ -208,6 +260,13 @@ func _build_standard() -> void:
 				_skin.get("spk_color", Color(0.96, 0.82, 0.42)))
 	_speaker.visible = false
 	add_child(_speaker)
+
+	# Accent underline bar under the speaker name — sized/positioned
+	# per line in _present_speaker, colored in _apply_speaker_accent.
+	_spk_rule = ColorRect.new()
+	_spk_rule.visible = false
+	_spk_rule.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	add_child(_spk_rule)
 
 	# Body text — top-aligned, no scrollbar. It fills the tall box from
 	# the top down (text rises to just below mid-screen); auto-fit

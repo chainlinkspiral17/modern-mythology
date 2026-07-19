@@ -726,6 +726,10 @@ func _apply_bg_3d(preset_id: String) -> void:
 	# the GLB is present (below) — the scene IS this locale either way,
 	# and a locale with no bed configured is a silent no-op.
 	AudioMgr.enter_locale_ambient(preset_id)
+	# Locale bust tint — like the ambient bed, the scene IS this locale
+	# whether or not the GLB is built, so tint before the GLB check.
+	if _chars != null:
+		_chars.call("set_locale_tint", preset_id)
 	# Pre-check the locale GLB existence BEFORE clearing the PNG bg.
 	# Locale .glb files are build artifacts (not committed) so a
 	# fresh checkout that hasn't run the Blender builders yet would
@@ -783,6 +787,7 @@ func _clear_bg_3d() -> void:
 		_director.call("on_locale_changed")
 	if _chars != null:
 		_chars.set("bg_is_3d", false)
+		_chars.call("set_locale_tint", "")
 	if _bg_3d_node != null and is_instance_valid(_bg_3d_node):
 		_bg_3d_node.visible = false
 	# Restore the 2D substrate + composition layers for any next

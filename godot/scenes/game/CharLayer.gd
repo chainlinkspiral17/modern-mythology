@@ -138,6 +138,38 @@ const EXPR_TINTS := {
 	"uneasy":    Color(0.92, 0.95, 1.00),
 }
 
+# Per-locale bust tint. The 3D portraits sit in the scene because their
+# light rig matches the locale; the pixel busts rendered fullbright and
+# read as stickered on. GameEngine calls set_locale_tint(preset_id) on
+# every "3d:" bg swap; busts multiply by the matched color via
+# self_modulate. Keys are PREFIX-matched against the Background3D
+# preset id so one entry covers a locale's whole preset family — list
+# more-specific keys before shorter prefixes. Unlisted locales stay
+# untinted (Color.WHITE), so this can never wreck an unconsidered room.
+const LOCALE_BUST_TINTS := {
+	"darkroom":            Color(1.00, 0.58, 0.52),  # safelight red
+	"kwik_stop":           Color(1.00, 0.94, 0.80),  # sodium-warm fluorescents
+	"graciela_bedroom":    Color(1.00, 0.87, 0.72),  # altar candles
+	"cathedral":           Color(1.00, 0.90, 0.76),  # candlelight nave
+	"chapel":              Color(1.00, 0.90, 0.76),
+	"foxhole":             Color(1.00, 0.85, 0.68),  # amber stage wash
+	"diner":               Color(1.00, 0.93, 0.82),  # incandescent diner
+	"dambrosios":          Color(1.00, 0.93, 0.82),
+	"riverboat":           Color(1.00, 0.93, 0.82),
+	"new_orleans_bar":     Color(1.00, 0.87, 0.72),
+	"chillwave":           Color(0.90, 0.84, 1.00),  # violet neon
+	"miller_office":       Color(0.85, 0.90, 1.00),  # rain-grey window light
+	"miller_garage":       Color(1.00, 0.87, 0.76),  # dusk through the door
+	"caldwell":            Color(0.82, 0.88, 1.00),  # night exteriors/rooms
+	"school_field_evening":Color(0.88, 0.88, 1.00),
+	"louisiana_road":      Color(0.85, 0.89, 1.00),
+	"graustark_ruins":     Color(0.86, 0.90, 1.00),
+	"hospice":             Color(0.90, 0.95, 1.00),  # pale institutional
+	"hospital":            Color(0.90, 0.95, 1.00),
+	"hans_bakery":         Color(1.00, 0.92, 0.80),  # oven-warm
+}
+var _locale_tint: Color = Color.WHITE
+
 # Modern-VN cutout mode (2026-07-12 redesign): portraits are clean
 # 3/4 cutouts hovering over the full-bleed scene — no dark backdrop
 # box, no scrim, no ASCII border. Larger and bottom-anchored so the
@@ -791,6 +823,28 @@ func set_portrait_backdrop(char_name: String, kind: String) -> void:
 		return
 
 
+# Set the bust tint for the current locale (GameEngine calls this on
+# every "3d:" bg swap; "" resets to untinted). Applies immediately to
+# every live bust and is inherited by busts spawned afterwards.
+func set_locale_tint(preset_id: String) -> void:
+	var t := Color.WHITE
+	if preset_id != "":
+		for k: String in LOCALE_BUST_TINTS:
+			if preset_id.begins_with(k):
+				t = LOCALE_BUST_TINTS[k]
+				break
+	if t == _locale_tint:
+		return
+	_locale_tint = t
+	for ph_v in _bust_blinkers:
+		var ph: Control = ph_v as Control
+		if ph == null or not is_instance_valid(ph) or not ph.has_meta("bust_tex"):
+			continue
+		var btr: TextureRect = ph.get_meta("bust_tex") as TextureRect
+		if btr != null and is_instance_valid(btr):
+			btr.self_modulate = _locale_tint
+
+
 # Debug overlay: small monospace label at the bottom of the portrait
 # wrapper showing the resolved asset path. Lives above ALL other slot
 # children (including the ASCII border) so it stays readable while
@@ -1037,6 +1091,10 @@ func _update_expr(wrapper: Control, char_name: String, expr: String) -> void:
 				var btr: TextureRect = ph.get_meta("bust_tex") as TextureRect
 				var bcol: Color = ph.get_meta("bust_col") if ph.has_meta("bust_col") else _char_color(char_name)
 				btr.texture = BUST_PORTRAIT.texture(key, expr, bcol)
+				if ph.has_meta("bust_shadow"):
+					var bsh: TextureRect = ph.get_meta("bust_shadow") as TextureRect
+					if bsh != null and is_instance_valid(bsh):
+						bsh.texture = btr.texture
 				ph.set_meta("bust_expr", expr)
 
 
@@ -1424,13 +1482,36 @@ func _make_placeholder(char_name: String, expr: String) -> Control:
 	var ph  := Control.new()
 	ph.custom_minimum_size = Vector2(SPRITE_W, SPRITE_H)
 
+	var bust_tex: Texture2D = BUST_PORTRAIT.texture(key, expr, col)
+
+	# Soft drop shadow — the same bust silhouette, black, offset down-
+	# right by ~1 source pixel (5 screen px at the 5x upscale). Grounds
+	# the cutout on the scene instead of floating stickered over it.
+	var sh := TextureRect.new()
+	sh.texture = bust_tex
+	sh.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED
+	sh.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
+	sh.texture_filter = CanvasItem.TEXTURE_FILTER_NEAREST
+	sh.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
+	sh.offset_left = 6.0
+	sh.offset_right = 6.0
+	sh.offset_top = 8.0
+	sh.offset_bottom = 8.0
+	sh.modulate = Color(0.0, 0.0, 0.0, 0.35)
+	sh.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	ph.add_child(sh)
+	ph.set_meta("bust_shadow", sh)
+
 	var tr := TextureRect.new()
-	tr.texture = BUST_PORTRAIT.texture(key, expr, col)
+	tr.texture = bust_tex
 	tr.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED
 	tr.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
 	tr.texture_filter = CanvasItem.TEXTURE_FILTER_NEAREST
 	tr.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
 	tr.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	# Locale integration tint — sodium-warm in the Kwik Stop, safelight
+	# red in the darkroom. WHITE (no-op) for unlisted locales.
+	tr.self_modulate = _locale_tint
 	ph.add_child(tr)
 	ph.set_meta("bust_tex", tr)
 	ph.set_meta("bust_col", col)
