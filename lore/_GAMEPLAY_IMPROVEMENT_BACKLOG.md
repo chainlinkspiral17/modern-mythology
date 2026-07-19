@@ -83,13 +83,23 @@ real tradeoffs (a brilliant human who refuses demon partners; a
 demon whose evolution is fast but public) would make W12+ staffing
 strategic.
 
-**P2 · Post-campaign endless mode.** After the summer resolves,
-reopen the board seasonless with scaling problem pressure — the
-three-slot save keeps campaign saves untouched.
+**P2 · Post-campaign endless mode — DONE 2026-07-19.** SEPTEMBER
+AND AFTER, per the playbook design note: finale-done slots grow a
+reopen row on the slot picker; endless writes to a sibling save
+file so campaign saves stay untouched; the Sunday spawn ratchet
+adds +1/region and another every 4 endless weeks with sev-4+
+templates doubling weight from endless week 8; tower WHITE ends
+the run ("THE TOWER FINISHES"); retire from the picker whenever.
+Original note: After the summer resolves, reopen the board
+seasonless with scaling problem pressure.
 
-**P3 · Run ledger.** Three save slots exist; add a small compare
-screen (weeks survived, tower brightness curve, problems resolved
-per region) so replays have a target.
+**P3 · Run ledger — DONE 2026-07-19 (rode along with endless).**
+Every endless run (white-out or retired) appends to
+community_planned_endless_ledger.json — september days held,
+problems resolved total and per region, anomalies observed, and a
+daily tower-brightness text sparkline — and the end screen lists
+past septembers so replays have a target. Original note: add a
+small compare screen so replays have a target.
 
 **Protected:** BBS thread-gating and the diegetic terminal stay
 as designed.

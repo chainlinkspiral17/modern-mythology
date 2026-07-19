@@ -50,8 +50,21 @@ const NUM_SAVE_SLOTS := 3
 var _current_slot: int = 0
 
 
+# SEPTEMBER AND AFTER · post-campaign endless mode (design:
+# lore/_COMMUNITY_PLANNED_PLAYBOOK.md). When active, all saves route
+# to a sibling file so the finished campaign save stays untouched.
+var _endless: bool = false
+const ENDLESS_LEDGER_PATH := "user://saves/community_planned_endless_ledger.json"
+
+
 func _save_path_for_slot(slot: int) -> String:
+	if _endless:
+		return _endless_path_for_slot(slot)
 	return SAVE_DIR + "community_planned_slot_%d.json" % slot
+
+
+func _endless_path_for_slot(slot: int) -> String:
+	return SAVE_DIR + "community_planned_slot_%d_endless.json" % slot
 
 
 # Compatibility shim. Reads the *current* slot's path; older code
@@ -241,6 +254,190 @@ func _begin_session_with_slot(slot: int) -> void:
 	_audio_play_bgm_for_current_state()
 
 
+# ── SEPTEMBER AND AFTER · endless mode ───────────────────────────
+
+func _endless_save_day(slot: int) -> int:
+	var f := FileAccess.open(_endless_path_for_slot(slot), FileAccess.READ)
+	if f == null:
+		return TURNS_TOTAL
+	var parsed: Variant = JSON.parse_string(f.get_as_text())
+	f.close()
+	if typeof(parsed) != TYPE_DICTIONARY:
+		return TURNS_TOTAL
+	return int((parsed as Dictionary).get("day", TURNS_TOTAL))
+
+
+func _begin_endless_with_slot(slot: int) -> void:
+	_endless = true
+	_current_slot = slot
+	_write_active_slot(slot)
+	if _try_load_save():
+		_log("[color=#a8a8c0]SEPTEMBER · endless save loaded · day %d.[/color]" % _day)
+	else:
+		# Seed from the finished campaign save · same board, same
+		# roster, same regional state · seasonless from here. The
+		# campaign file is only READ; endless writes to its sibling.
+		_endless = false
+		var seeded: bool = _try_load_save()
+		_endless = true
+		if not seeded:
+			_init_state()
+		_flags["endless_mode"] = true
+		_flags["endless_start_day"] = _day
+		_flags["endless_brightness_log"] = []
+		_log("[color=#a8a8c0][b]SEPTEMBER AND AFTER.[/b] The summer resolved. The board did not. Days keep counting, the Sunday spawns only ratchet up, and if the tower ever goes white the run is over. Retire from the slot desk whenever the board is done with you.[/color]")
+		_write_save()
+	_render()
+	_audio_play_bgm_for_current_state()
+
+
+func _end_endless_run(reason: String) -> void:
+	var start_day: int = int(_flags.get("endless_start_day", TURNS_TOTAL))
+	var resolved_total: int = 0
+	for k in _problem_resolved_counts:
+		resolved_total += int(_problem_resolved_counts[k])
+	var entry: Dictionary = {
+		"slot": _current_slot,
+		"reason": reason,
+		"final_day": _day,
+		"endless_days": _day - start_day,
+		"problems_resolved_total": resolved_total,
+		"resolved_by_region": _problem_resolved_by_region.duplicate(),
+		"anomalies_observed": _anomalies_observed,
+		"brightness_log": _flags.get("endless_brightness_log", []),
+	}
+	_append_endless_ledger(entry)
+	var path: String = _endless_path_for_slot(_current_slot)
+	if FileAccess.file_exists(path):
+		DirAccess.remove_absolute(ProjectSettings.globalize_path(path))
+	_endless = false
+	_show_endless_end_screen(entry)
+
+
+func _retire_endless_slot(slot: int) -> void:
+	# Retire without loading · the ledger entry is computed straight
+	# off the endless save file, then the file is removed.
+	var path: String = _endless_path_for_slot(slot)
+	if not FileAccess.file_exists(path):
+		return
+	var f := FileAccess.open(path, FileAccess.READ)
+	if f == null:
+		return
+	var parsed: Variant = JSON.parse_string(f.get_as_text())
+	f.close()
+	if typeof(parsed) == TYPE_DICTIONARY:
+		var d: Dictionary = parsed
+		var flags: Dictionary = d.get("flags", {})
+		var prc: Dictionary = d.get("problem_resolved_counts", {})
+		var resolved_total: int = 0
+		for k in prc:
+			resolved_total += int(prc[k])
+		var final_day: int = int(d.get("day", TURNS_TOTAL))
+		_append_endless_ledger({
+			"slot": slot,
+			"reason": "retired",
+			"final_day": final_day,
+			"endless_days": final_day - int(flags.get("endless_start_day", TURNS_TOTAL)),
+			"problems_resolved_total": resolved_total,
+			"resolved_by_region": d.get("problem_resolved_by_region", {}),
+			"anomalies_observed": int(d.get("anomalies_observed", 0)),
+			"brightness_log": flags.get("endless_brightness_log", []),
+		})
+	DirAccess.remove_absolute(ProjectSettings.globalize_path(path))
+
+
+func _read_endless_ledger() -> Array:
+	var f := FileAccess.open(ENDLESS_LEDGER_PATH, FileAccess.READ)
+	if f == null:
+		return []
+	var parsed: Variant = JSON.parse_string(f.get_as_text())
+	f.close()
+	if typeof(parsed) != TYPE_DICTIONARY:
+		return []
+	return (parsed as Dictionary).get("runs", [])
+
+
+func _append_endless_ledger(entry: Dictionary) -> void:
+	var runs: Array = _read_endless_ledger()
+	runs.append(entry)
+	DirAccess.make_dir_recursive_absolute("user://saves")
+	var f := FileAccess.open(ENDLESS_LEDGER_PATH, FileAccess.WRITE)
+	if f == null:
+		return
+	f.store_string(JSON.stringify({"runs": runs}, "  "))
+
+
+func _brightness_glyphs(log_arr: Array) -> String:
+	# Text sparkline · one glyph per recorded day, most recent 56.
+	var glyph: Dictionary = {"dim": ".", "warming": "·", "bright": ":", "white": "█"}
+	var start: int = maxi(0, log_arr.size() - 56)
+	var out: String = ""
+	for i in range(start, log_arr.size()):
+		out += String(glyph.get(String(log_arr[i]), "?"))
+	return out
+
+
+func _show_endless_end_screen(entry: Dictionary) -> void:
+	var retired: bool = String(entry.get("reason", "")) == "retired"
+	var dlg := AcceptDialog.new()
+	dlg.title = "THE BOARD RETIRES" if retired else "THE TOWER FINISHES"
+	dlg.min_size = Vector2(560, 420)
+	dlg.get_ok_button().text = "back to the slot desk"
+	var col := VBoxContainer.new()
+	col.add_theme_constant_override("separation", 8)
+	col.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	dlg.add_child(col)
+	var hdr := Label.new()
+	hdr.text = "You set the pencil down." if retired \
+			else "The window in Small Wood goes white and stays white. Whatever the tower was for, it is finished being for it."
+	hdr.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+	hdr.add_theme_font_size_override("font_size", 13)
+	hdr.add_theme_color_override("font_color", Color(0.96, 0.86, 0.62, 1))
+	col.add_child(hdr)
+	var lines: Array = []
+	lines.append("september days held · %d" % int(entry.get("endless_days", 0)))
+	lines.append("problems resolved (whole board) · %d" % int(entry.get("problems_resolved_total", 0)))
+	var by_region: Dictionary = entry.get("resolved_by_region", {})
+	for r_id in by_region:
+		lines.append("    %s · %d" % [String(r_id), int(by_region[r_id])])
+	lines.append("anomalies observed · %d" % int(entry.get("anomalies_observed", 0)))
+	lines.append("tower curve · %s" % _brightness_glyphs(entry.get("brightness_log", [])))
+	var body := Label.new()
+	body.text = "\n".join(lines)
+	body.add_theme_font_size_override("font_size", 12)
+	body.add_theme_color_override("font_color", Color(0.84, 0.86, 0.84, 1))
+	col.add_child(body)
+	# The run ledger · past runs, so replays have a target.
+	var runs: Array = _read_endless_ledger()
+	if runs.size() > 1:
+		var prev_hdr := Label.new()
+		prev_hdr.text = "· past septembers ·"
+		prev_hdr.add_theme_font_size_override("font_size", 12)
+		prev_hdr.add_theme_color_override("font_color", Color(0.62, 0.66, 0.72, 1))
+		col.add_child(prev_hdr)
+		var prev_lines: Array = []
+		for run_v in runs:
+			var run: Dictionary = run_v
+			prev_lines.append("slot %d · %d days · %d resolved · %s" % [
+				int(run.get("slot", 0)) + 1, int(run.get("endless_days", 0)),
+				int(run.get("problems_resolved_total", 0)),
+				String(run.get("reason", ""))])
+		var prev := Label.new()
+		prev.text = "\n".join(prev_lines)
+		prev.add_theme_font_size_override("font_size", 11)
+		prev.add_theme_color_override("font_color", Color(0.62, 0.66, 0.72, 1))
+		col.add_child(prev)
+	dlg.confirmed.connect(func() -> void:
+		dlg.queue_free()
+		_show_slot_picker())
+	dlg.canceled.connect(func() -> void:
+		dlg.queue_free()
+		_show_slot_picker())
+	dlg.add_to_group("ui")
+	add_child(dlg)
+	dlg.popup_centered()
+
+
 func _read_active_slot() -> int:
 	if not FileAccess.file_exists(ACTIVE_SLOT_PATH):
 		return 0
@@ -333,6 +530,39 @@ func _show_slot_picker() -> void:
 			wipe_btn.pressed.connect(func() -> void:
 				_confirm_wipe_slot(slot_w, dlg))
 			row.add_child(wipe_btn)
+		# SEPTEMBER AND AFTER · a finished summer reopens seasonless
+		# on a sibling save. The campaign slot above stays untouched.
+		if bool(summary["finale_done"]):
+			var e_row := HBoxContainer.new()
+			e_row.add_theme_constant_override("separation", 10)
+			col.add_child(e_row)
+			var e_btn := Button.new()
+			var e_active: bool = FileAccess.file_exists(_endless_path_for_slot(slot))
+			if e_active:
+				var e_day: int = _endless_save_day(slot)
+				e_btn.text = "    ↳ SEPTEMBER AND AFTER · week %d · continue" % int(ceil(float(e_day) / 7.0))
+			else:
+				e_btn.text = "    ↳ SEPTEMBER AND AFTER · reopen the board, seasonless"
+			e_btn.alignment = HORIZONTAL_ALIGNMENT_LEFT
+			e_btn.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+			e_btn.add_theme_font_size_override("font_size", 12)
+			e_btn.add_theme_color_override("font_color", Color(0.72, 0.80, 0.94, 1))
+			var slot_e: int = slot
+			e_btn.pressed.connect(func() -> void:
+				dlg.queue_free()
+				_begin_endless_with_slot(slot_e))
+			e_row.add_child(e_btn)
+			if e_active:
+				var retire_btn := Button.new()
+				retire_btn.text = "retire"
+				retire_btn.focus_mode = Control.FOCUS_NONE
+				retire_btn.add_theme_font_size_override("font_size", 12)
+				var slot_r: int = slot
+				retire_btn.pressed.connect(func() -> void:
+					_retire_endless_slot(slot_r)
+					dlg.queue_free()
+					_show_slot_picker())
+				e_row.add_child(retire_btn)
 	dlg.add_to_group("ui")
 	add_child(dlg)
 	dlg.popup_centered()
@@ -2505,6 +2735,18 @@ func _on_advance_day() -> void:
 	# Dean's tower: re-roll brightness on the cadence; fire anomalies
 	# when bright/white.
 	_tick_dean_tower()
+	# SEPTEMBER AND AFTER · daily brightness log feeds the run
+	# ledger's curve, and WHITE ends the run · endless has no Labor
+	# Day finale left to absorb a finished tower.
+	if _endless:
+		var blog: Array = _flags.get("endless_brightness_log", [])
+		blog.append(_tower_brightness)
+		if blog.size() > 400:
+			blog = blog.slice(blog.size() - 400, blog.size())
+		_flags["endless_brightness_log"] = blog
+		if _tower_brightness == "white":
+			_end_endless_run("tower_white")
+			return
 	# Check Dean interlude unlock conditions.
 	_check_dean_interludes()
 	# Check the (non-Dean) interlude shelf earn conditions.
@@ -4875,6 +5117,11 @@ func _spawn_weekly_problems_for_region(r_id: String) -> void:
 	elif pressure >= 1.30:
 		# W6-W8 first bump: ensure at least 1 spawn if room
 		wanted = max(wanted, 1)
+	# SEPTEMBER AND AFTER · endless ratchet · +1 spawn per region per
+	# Sunday, plus another every 4 endless weeks. No easing — the
+	# ratchet IS the difficulty.
+	if _endless:
+		wanted += 1 + maxi(0, week - 15) / 4
 	wanted = min(wanted, room)
 	if wanted <= 0:
 		return
@@ -4903,7 +5150,13 @@ func _spawn_weekly_problems_for_region(r_id: String) -> void:
 			continue
 		if String(t.get("spawn_only_by", "")) != "":
 			continue
-		pool.append([t_id, float(weights[t_type])])
+		var t_weight: float = float(weights[t_type])
+		# Endless severity ratchet · from the 8th endless week, the
+		# heavy templates (sev 4+, the chain-starters) double their
+		# draw weight. This is where the severity-6 chains get to run.
+		if _endless and week - 15 >= 8 and int(t.get("base_severity", 1)) >= 4:
+			t_weight *= 2.0
+		pool.append([t_id, t_weight])
 	if pool.is_empty():
 		return
 	# Weighted-pick `wanted` distinct templates.

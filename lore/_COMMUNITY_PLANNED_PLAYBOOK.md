@@ -102,7 +102,19 @@ This playbook is the *how we work on it* doc.
 
 ---
 
-## Design note · POST-CAMPAIGN ENDLESS MODE — 2026-07-19, not yet built
+## Design note · POST-CAMPAIGN ENDLESS MODE — 2026-07-19, BUILT same day
+
+Implementation deviations from the note below: entry lives on the
+SLOT PICKER (a "↳ SEPTEMBER AND AFTER" row under any finale-done
+slot) rather than a separate continue screen — the picker already
+is the continue screen. Retire is a button on that row and works
+without loading (ledger computed straight off the endless save
+file). The ratchet reads `base_severity` (the actual template
+field): sev-4+ templates double their draw weight from the 8th
+endless week. Brightness curve is logged daily (capped 400) in
+`_flags.endless_brightness_log` and rendered as a text sparkline
+(. · : █) on the end screen. Ledger file:
+`user://saves/community_planned_endless_ledger.json`.
 
 The backlog's replayability item, designed against the engine as
 it is (CommunityPlannedGame.gd, TURNS_TOTAL = 100, Labor Day
