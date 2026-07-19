@@ -277,6 +277,42 @@
       "evolution_paths": [
         "controlled_husk"
       ]
+    },
+    {
+      "id": "lantern",
+      "name": "Lantern",
+      "handle_on_bbs": "lantern",
+      "class": "demon",
+      "home_region": "small_wood",
+      "specialty_problem_types": [
+        "surveillance",
+        "contact_going_dark",
+        "town_meeting_pushback"
+      ],
+      "competence_modifier": 1.3,
+      "burn_per_dispatch": 2,
+      "corruption_resistance": "low",
+      "complexity": 1,
+      "signature_failure": "Is seen. Thoroughly. Lantern does not have a low setting.",
+      "failure_effects": [
+        {
+          "kind": "increment_region_state",
+          "region": "current",
+          "key": "press_exposure",
+          "amount": 2
+        },
+        {
+          "kind": "advance_visitor_drift",
+          "target": "the_local_press"
+        }
+      ],
+      "dispatch_speed_modifier": 1.4,
+      "flavor": "Fast, bright, and constitutionally incapable of subtlety. Everything Lantern does works and everyone watches it work. The trade is the whole personality.",
+      "evolution_paths": [
+        "press_invisibility",
+        "policy_intuition"
+      ],
+      "recruited": true
     }
   ],
   "humans": [
@@ -438,6 +474,59 @@
         "small_wood_native"
       ],
       "canonical_character_id": "jules_timberyard"
+    },
+    {
+      "id": "ruth_the_archivist",
+      "name": "Ruth at the County Archive",
+      "handle_on_bbs": "r.uth",
+      "class": "human",
+      "home_region": "graustark",
+      "home_node": "the_county_archive_desk",
+      "specialty_problem_types": [
+        "local_press_exposure",
+        "memorial_grief",
+        "newsletter_item"
+      ],
+      "competence_modifier": 1.8,
+      "obligation_per_dispatch": 2,
+      "obligation_cap_before_stops_picking_up": 3,
+      "time_at_home_cost_days": 1.0,
+      "flavor": "Thirty years in the county records. Can kill a story, settle a grief, or draft a correction before lunch \u2014 but she reads people the way she reads paper, and it takes everything she has. Will not work a job that has a demon on it; she has read those files too.",
+      "life_cost_thresholds": {
+        "2": "starts leaving the archive lamp on overnight",
+        "3": "stops picking up entirely \u00b7 the desk is closed"
+      },
+      "evolution_paths": [
+        "press_voice"
+      ],
+      "recruited": true
+    },
+    {
+      "id": "deputy_royce",
+      "name": "Deputy Royce (retired)",
+      "handle_on_bbs": "royce.r",
+      "class": "human",
+      "home_region": "harmony_creek",
+      "home_node": "the_cul_de_sac_porch",
+      "specialty_problem_types": [
+        "hoa_action",
+        "infrastructure_failing",
+        "community_meeting",
+        "lease_and_licensing"
+      ],
+      "competence_modifier": 0.9,
+      "obligation_per_dispatch": 1,
+      "obligation_cap_before_stops_picking_up": 7,
+      "time_at_home_cost_days": 2.0,
+      "flavor": "Retired county deputy. Not brilliant at anything, adequate at everything, and never, ever unavailable. Drives the speed limit. The speed limit gets there.",
+      "life_cost_thresholds": {
+        "5": "mentions the fishing trip he keeps not taking",
+        "7": "takes the fishing trip"
+      },
+      "evolution_paths": [
+        "community_organizer"
+      ],
+      "recruited": true
     }
   ],
   "evolution_traits_catalog": {

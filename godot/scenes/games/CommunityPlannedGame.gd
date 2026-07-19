@@ -5005,6 +5005,23 @@ func _show_spike_event(ev: Dictionary) -> void:
 
 
 func _apply_spike_effects(effects: Dictionary) -> void:
+	# Roster recruitment (backlog §2 P2 roster growth) · the choice
+	# IS the roster decision. Backfill _agent_state for saves written
+	# before the recruit existed in agents.json.
+	var arrive: String = String(effects.get("agent_arrives", ""))
+	if arrive != "" and _agents.has(arrive):
+		if not _visible_agents.has(arrive):
+			_visible_agents.append(arrive)
+		if not _agent_state.has(arrive):
+			_agent_state[arrive] = {
+				"burn": 0,
+				"corruption": 0,
+				"complexity": int(_agents[arrive].get("complexity", 0)),
+				"obligation": 0,
+				"on_dispatch": false,
+				"return_day": 0,
+			}
+		_log("[color=#62ff9c][b]%s joins the roster.[/b][/color]" % String(_agents[arrive].get("name", arrive)))
 	var esc: Dictionary = effects.get("escalation", {})
 	for r_id in esc:
 		if _region_state.has(String(r_id)):

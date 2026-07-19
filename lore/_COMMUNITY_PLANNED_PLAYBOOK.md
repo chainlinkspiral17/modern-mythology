@@ -173,6 +173,31 @@ rules** once they've held across multiple sessions.
 
 ## Recent lessons
 
+### 2026-07-19 · between-spike events + roster growth · one machine, two features
+
+- **Choice events and recruitment are the same machine.** The
+  between-spike event engine (windowed one-shot choice modals,
+  effects interpreted against existing verbs) shipped for
+  mid-summer texture — then roster growth cost only ONE new
+  effect verb (`agent_arrives`) and three authored events. When
+  adding a system, spend an extra hour making its effects
+  vocabulary data-driven; the second feature rides free.
+- **Effects ride existing verbs ONLY.** Escalation deltas,
+  _seed_problem into real templates, queued burns, log lines,
+  reveal-style agent arrival. No new mechanics entered the game;
+  six events + three recruits are pure data. Cross-validate every
+  id (region, template, agent, trait) in the same commit.
+- **New agents must backfill _agent_state.** Saves written before
+  a roster addition restore an agent_state dict without the new
+  ids; the arrival verb creates the state dict inline (same shape
+  as the boot init). Any future roster addition needs the same
+  guard or old saves crash at the dossier.
+- **Tradeoffs live entirely in the existing schema.** Brilliant-
+  but-brittle is competence 1.8 + obligation 2 + cap 3. Reliable-
+  but-slow is 0.9 + cap 7 + travel 2.0. Fast-but-public is speed
+  1.4 + burn 2 + low resistance + press failure_effects. If a
+  tradeoff needs a new field, simplify it until it doesn't.
+
 ### 2026-07-10 · visual upgrade · region banners + agent busts
 
 Second half of the art pass: imagery, not chrome.

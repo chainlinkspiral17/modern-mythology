@@ -94,11 +94,21 @@ _queued_burns, log) — cross-validated against regions.json and
 problems.json. Original note: add rare one-shot events between
 spikes so mid-summer weeks aren't pure routing.
 
-**P2 · Roster growth.** 6 humans / 8 demons staffs the campaign but
-gives no roster decisions. 2–3 recruitable late-summer agents with
-real tradeoffs (a brilliant human who refuses demon partners; a
-demon whose evolution is fast but public) would make W12+ staffing
-strategic.
+**P2 · Roster growth — DONE 2026-07-19.** Three recruitable
+late-summer agents (agents.json, hidden at start via the existing
+starting_state_overrides), each offered through a W10-14
+recruitment choice event riding the between-spike machinery (new
+`agent_arrives` effect verb, with _agent_state backfill for old
+saves) — decline and they never join that save: RUTH (competence
+1.8, the best on the board, but obligation ×2 and a cap of 3 —
+spend her like the last of something), DEPUTY ROYCE (0.9
+generalist across four problem types, cap 7, never unavailable,
+travels at the speed limit), LANTERN (speed 1.4 demon, burn ×2,
+low corruption resistance, failures are PRESS failures at double
+exposure). All fields ride the existing agent schema;
+cross-validated against problem types and the trait catalog.
+Original note: 2–3 recruitable late-summer agents with real
+tradeoffs would make W12+ staffing strategic.
 
 **P2 · Post-campaign endless mode — DONE 2026-07-19.** SEPTEMBER
 AND AFTER, per the playbook design note: finale-done slots grow a
