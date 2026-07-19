@@ -20,6 +20,12 @@
    "tier": "secrets",
    "title": "The four unlabeled points",
    "blurb": "The loom has eight points. Four have names. You saw the other four. Morgan le Fey reads THIS in your fortune at the Faire, which should not be possible."
+  },
+  {
+   "token": "wyrd_shimmer_crossed",
+   "tier": "secrets",
+   "title": "One hex past the edge",
+   "blurb": "You pushed into the shimmer three times and it stopped pretending. Your own hoofprints, already there. The territory repeats. It is not a figure of speech."
   }
  ]
 }

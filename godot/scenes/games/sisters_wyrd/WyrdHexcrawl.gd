@@ -237,6 +237,23 @@ func _try_step(dq: int, dr: int) -> void:
 	var nq: int = _pos.x + dq
 	var nr: int = _pos.y + dr
 	if _hex_dist(Vector2i(nq, nr), Vector2i.ZERO) > MAP_R:
+		# The hidden hex · push into the shimmer three times from the
+		# same edge hex, once ever, and the repeat shows itself.
+		if not bool(_state.get("shimmer_crossed", false)):
+			var pos_key := "%d,%d" % [_pos.x, _pos.y]
+			var pushes: int = int(_state.get("shimmer_pushes", 0))
+			if String(_state.get("shimmer_push_pos", "")) == pos_key:
+				pushes += 1
+			else:
+				pushes = 1
+			_state["shimmer_pushes"] = pushes
+			_state["shimmer_push_pos"] = pos_key
+			if pushes >= 3:
+				_state["shimmer_crossed"] = true
+				_say("you push a third time and the shimmer stops pretending. one hex past the edge: this hex, again, exactly · your own hoofprints already in it, a version of your campfire, cold. the territory repeats. it is not a figure of speech. you turn the horse, and the horse was already turning.")
+				_sfx("radio_static", 0.25)
+				OneironauticsTokens.add("wyrd_shimmer_crossed")
+				return
 		_say("the shimmer. the territory repeats past here, and the manual says not to look at that too long. you turn the horse.")
 		return
 	# The south sister's parley price · you gave the southwest away.

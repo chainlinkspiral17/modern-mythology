@@ -216,7 +216,19 @@ func _do_verb(verb: String) -> void:
 		"SIT":
 			if _actions_left <= 0: return _no_time()
 			_actions_left -= 1
-			_msg(_sit_line())
+			# The ninth sit · having sat at all eight spots across
+			# the run, the shrine offers the seat it never names.
+			var sat: Array = _state.get("sat_spots", [])
+			if not sat.has(_at):
+				sat.append(_at)
+				_state["sat_spots"] = sat
+			if sat.size() >= SPOTS.size() and not bool(_state.get("ninth_sit_done", false)):
+				_state["ninth_sit_done"] = true
+				_msg("you have sat everywhere there is to sit, and so the shrine offers the ninth seat: the top step, facing DOWN the hill, the way the foxes face. the town below. the season doing what it does to it. you understand, briefly, what the shrine is for. it is not for the shrine.")
+				_sfx("kyrindi_bell", 0.3)
+				OneironauticsTokens.add("hnn_ninth_sit")
+			else:
+				_msg(_sit_line())
 		"OFFER":
 			_offer_menu()
 			return

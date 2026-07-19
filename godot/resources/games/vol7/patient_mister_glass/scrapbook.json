@@ -32,6 +32,12 @@
    "tier": "secrets",
    "title": "The envelopes answer",
    "blurb": "There was a second ledger. Pirate Summer's bulletin board has been quoting it for thirty years and calling it camp trivia."
+  },
+  {
+   "token": "pmg_silent_evening",
+   "tier": "secrets",
+   "title": "The silent evening",
+   "blurb": "A whole evening in the kitchen without one question. At the door: 'my wife used to do that. sit there while i cooked. not asking.' Come again."
   }
  ]
 }

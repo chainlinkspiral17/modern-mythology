@@ -234,9 +234,19 @@ and 3 fact-gated party-chatter lines (Elias / Tessa / Ford).
 pacing (earliest achievable week vs the six endings' spread).
 
 **P3 · sweetgum / patient_mister_glass / sisters_wyrd /
-riffmaster / hane_no_niwa** — each is deliberately small; the
-improvement is one extra secret each (a hidden night, a hidden
-loop, a hidden room) rather than systems. Respect the minimalism.
+riffmaster / hane_no_niwa — DONE 2026-07-19.** One secret each,
+each in the stick's own grammar, each once-ever, each a token +
+scrapbook entry, none explained: SWEETGUM · check your round at
+the waterline while the light is on (no third variation — one
+line inside the existing verb; the author's statement stands).
+PMG · the silent evening — ask nothing, hear the one unprompted
+thing. WYRD · push into the shimmer three times from the same hex
+and see the repeat (hoofprints already there). RIFFMASTER · play
+the five falling notes of the mourning bar on the live keys — the
+club goes quiet; a variant line if you carry the Kelait token.
+HNN · the ninth sit — having sat all eight spots, the top step
+facing down the hill. Original note: one extra secret each rather
+than systems. Respect the minimalism.
 
 ## 5 · VN (vols 5–6) as a game
 

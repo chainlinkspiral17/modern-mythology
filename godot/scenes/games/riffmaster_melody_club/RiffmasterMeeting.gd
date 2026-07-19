@@ -336,8 +336,32 @@ func _playback_open_mic() -> void:
 
 # ─── The voice, watched ──────────────────────────────────────────
 
+# The hidden song · the mourning bar. Five notes, falling then
+# holding: anyone who has heard Kelait's mourning song (Earthman
+# Chronicles) or Wilson's shanty (Pirate Summer) has heard this
+# bar. Play it on the live keys, any meeting, once ever.
+const _MOURNING_BAR := [7, 5, 3, 5, 3]
+var _recent_notes: Array = []
+
+
+func _check_mourning_bar(semitones: int) -> void:
+	if bool(_state.get("mourning_bar_played", false)):
+		return
+	_recent_notes.append(semitones % 12)
+	if _recent_notes.size() > _MOURNING_BAR.size():
+		_recent_notes.pop_front()
+	if _recent_notes == _MOURNING_BAR:
+		_state["mourning_bar_played"] = true
+		if OneironauticsTokens.has("kelait_mourning_song_final_bar_recognized"):
+			_set_line("the club goes quiet. all four of them. BEEBO, finally, small: 'where did you hear that.' nobody plays anything for a while, and the while is the song.")
+		else:
+			_set_line("the club goes quiet. all four of them. DOT-DOT: 'that's an old one.' nobody asks how you know it. nobody plays for a while, and the while is the song.")
+		OneironauticsTokens.add("riffmaster_mourning_bar_played")
+
+
 func _on_note_on(semitones: int) -> void:
 	_active_keys[semitones] = true
+	_check_mourning_bar(semitones)
 	if _phase == "echo":
 		_echo_heard.append(semitones)
 	elif _phase == "open_mic_wait":

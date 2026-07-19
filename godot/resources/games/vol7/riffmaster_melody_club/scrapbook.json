@@ -14,6 +14,12 @@
    "tier": "secrets",
    "title": "OPEN MIC · recorded",
    "blurb": "Your loop is in the save now, next to the heirloom one. Estuary 3's cabin radio can tune to 1620 AM and play it back. No comment."
+  },
+  {
+   "token": "riffmaster_mourning_bar_played",
+   "tier": "secrets",
+   "title": "The old one",
+   "blurb": "Five falling notes on the rubber keys and the club went quiet, all four of them. Nobody asked how you knew it. Nobody played for a while, and the while was the song."
   }
  ]
 }

@@ -14,6 +14,12 @@
    "tier": "secrets",
    "title": "NOT A STATION",
    "blurb": "You tried to file the island light in the log. The log has a stamp for this: NOT A STATION. Somebody had the stamp made, which means you weren't the first."
+  },
+  {
+   "token": "sweetgum_waterline_watched",
+   "tier": "secrets",
+   "title": "The round with no padlock",
+   "blurb": "You stood your check at the waterline while the light was on. No lock there. The water holds itself. Across it, the light did not move when you moved."
   }
  ]
 }

@@ -333,6 +333,14 @@ func _check_station() -> void:
 		_msg("the padlock hangs open. inside: nothing but a made bed.")
 		_sfx("door_open", 0.3)
 		return
+	# The hidden check · standing your round at the waterline WHILE
+	# the light is on. There is no padlock there. Once, ever.
+	if _at == "waterline" and _light_on and not bool(_state.get("waterline_watched", false)):
+		_state["waterline_watched"] = true
+		_msg("waterline · no padlock. no lock at all. the water holds itself. across it, the light does not move when you move.")
+		_sfx("water_slap", 0.3)
+		OneironauticsTokens.add("sweetgum_waterline_watched")
+		return
 	_msg("%s · padlock holds." % STATIONS[_at]["label"])
 	_sfx("stick_scratch", 0.25)
 

@@ -420,6 +420,14 @@ func _end_evening() -> void:
 	# Restraint builds trust · two questions or fewer.
 	if _asked_tonight <= 2:
 		_state["trust"] = mini(10, int(_state.get("trust", 5)) + 1)
+	# The silent evening · sit the whole evening and ask NOTHING.
+	# Once, ever. The candor mechanic taken to its logical end:
+	# the question you never ask is the one he answers.
+	if _asked_tonight == 0 and not bool(_state.get("silent_evening_done", false)):
+		_state["silent_evening_done"] = true
+		_state["trust"] = mini(10, int(_state.get("trust", 5)) + 1)
+		_set_answer("he cooks the whole evening without a word between you, and it is not uncomfortable, and that is the strange part. at the door, with your coat in your hand: 'my wife used to do that. sit there while i cooked. not asking.' he turns back to the stove. 'come again.'")
+		OneironauticsTokens.add("pmg_silent_evening")
 	evening_over.emit(_state)
 
 
