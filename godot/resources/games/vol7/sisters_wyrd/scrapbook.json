@@ -26,6 +26,12 @@
    "tier": "secrets",
    "title": "One hex past the edge",
    "blurb": "You pushed into the shimmer three times and it stopped pretending. Your own hoofprints, already there. The territory repeats. It is not a figure of speech."
+  },
+  {
+   "token": "wyrd_notice_board_cleared",
+   "tier": "secrets",
+   "title": "Three notices, one ride",
+   "blurb": "Hotel, saloon, bookstall, board. You rode the territory like a job, and it paid like one. Somewhere between the second and third delivery, the towns started describing you to strangers, which is how the territory takes your measurements."
   }
  ]
 }

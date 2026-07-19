@@ -124,6 +124,59 @@ down to scale 1, the ground, where boots touch dust.
   points before, in a desert that was a loom). Tokens in: none.
   It is 1983. Nothing on this shelf is older.
 
+## DEPTH PASS · v3 (2026-07-19)
+
+User read on v2: underdeveloped. Right. The ride is atmospheric
+but nothing pushes back — SILVER has one use, townships are a
+travel line, the verbs are flavor-differentiated only, and 25
+one-shot encounters carry a ~700-hex territory. The pass, in
+three waves, all inside the 1983 cart (Sagebrush shipped nothing
+else; everything below is framed as what the cart always did):
+
+**Wave 1 · TOWNSHIPS KEEP HOURS.** Five authored townships at
+fixed hexes, one per quadrant plus one near home: WET MERCY (N) ·
+PROVIDENCIA (E) · NINEMILE (S) · COFFIN FLATS (W) · DOGTOOTH
+(near home). Riding in opens the trading post: THE HOTEL (2
+silver · grit to full) · THE SALOON (1 silver · +1 grit and a
+rumor that points at the nearest undealt sister) · THE BOOKSTALL
+(2 silver · +1 lore · twice per town per ride — the dime novels
+are wrong in useful ways) · THE NOTICE BOARD (bounties). BOUNTIES
+are the silver income and the destination engine: take a notice,
+ride to the marked hex (the log whispers when the trail
+freshens), face a two-choice dealing (bring them in for silver ·
+or let it go for lore/grit), collect at any board. One active at
+a time. ~8 authored notices.
+
+**Wave 2 · THE SISTERS PUSH BACK.** Undealt sisters project
+weather with teeth within 5 hexes of their seats: NORTH cold
+bites grit · EAST red light makes the home-distance readout lie ·
+SOUTH thirst deepens encounter grit costs · WEST early dark
+doubles encounter chance. And the verb chosen writes aftermath on
+the whole territory: PARLEY prices land mechanically (north's hat
+→ the sun bites on open dust/salt forever; east's memory → the
+HOME label and distance readout are gone for the ride; south →
+no southwest, as shipped; west's question → lore-granting choices
+grant nothing after — you gave the asking away, so parley her
+LAST or not at all). DRAW leaves widow-weather in her quadrant
+(mourning travel lines, town prices +1 there). UNWEAVE truly
+calms a quadrant (encounter chance halves, peace travel lines).
+The true ending already requires four unweaves, so the west
+parley lockout punishes runs, never the loom.
+
+**Wave 3 · THE DECK GROWS.** 25 → ~40 encounters. New machinery
+worth having: choices may cost resources up front (`need_silver`
+/ `need_lore`, button shows the price), and may set/require
+chain flags — carrying the salt peddler into a three-part
+recurring thread (she is the one who kept the east sister's
+mirror face-down; the deck finally says so), plus THE WRONG HEX:
+one authored hex whose ink contradicts its ground, Olaf's
+margin-note made playable ("the map is wrong where the world
+is"). New tokens: `wyrd_notice_board_cleared` (three bounties,
+one ride) · `wyrd_peddler_thread` · `wyrd_wrong_hex_found`.
+
+THE SECOND DECK (B-side reshuffle) stays on the expansion
+backlog — it wants this pass to exist first.
+
 ## BUILD
 
 Host + one hexcrawl scene. Address = array of ring digits (0

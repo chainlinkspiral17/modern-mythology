@@ -59,6 +59,10 @@ func _fresh_state(rides: Array) -> Dictionary:
 		"witches_dealt": {},
 		"encounters_seen": [],
 		"no_southwest": false,
+		"bounty": {},
+		"bounties_done": [],
+		"bounties_paid": 0,
+		"bookstall_bought": {},
 		"rides": rides,
 		"canon_vars": {},
 		"lore_tokens_pending": []

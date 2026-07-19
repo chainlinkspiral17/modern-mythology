@@ -25,6 +25,7 @@ signal quit
 signal crawl_event(kind: String, state: Dictionary)
 
 const ENC_PATH := "res://resources/games/vol7/sisters_wyrd/encounters.json"
+const TOWNS_PATH := "res://resources/games/vol7/sisters_wyrd/townships.json"
 # Preload by path — new class_names miss the first editor scan
 # after a pull (sprite playbook rule).
 const HEX_ART := preload("res://scenes/games/sisters_wyrd/WyrdHexArt.gd")
@@ -98,6 +99,10 @@ const WEATHER_CUES: Dictionary = {
 
 var _state: Dictionary = {}
 var _enc: Dictionary = {}
+var _towns: Dictionary = {}             # "q,r" → township def
+var _town_defs: Array = []
+var _bounty_defs: Array = []
+var _services: Dictionary = {}
 var _pos: Vector2i = Vector2i.ZERO      # axial q, r
 var _encounter: Dictionary = {}
 var _choice_btns: Array = []
@@ -116,6 +121,19 @@ func _ready() -> void:
 		f.close()
 		if parsed is Dictionary:
 			_enc = parsed
+	var tf := FileAccess.open(TOWNS_PATH, FileAccess.READ)
+	if tf != null:
+		var tparsed: Variant = JSON.parse_string(tf.get_as_text())
+		tf.close()
+		if tparsed is Dictionary:
+			var tdoc: Dictionary = tparsed
+			_town_defs = tdoc.get("townships", [])
+			_bounty_defs = tdoc.get("bounties", [])
+			_services = tdoc.get("services", {})
+			for t_v in _town_defs:
+				var t: Dictionary = t_v
+				var hx: Array = t.get("hex", [0, 0])
+				_towns["%d,%d" % [int(hx[0]), int(hx[1])]] = t
 	_build_ui()
 
 
@@ -150,6 +168,8 @@ func _hash_qr(q: int, r: int, salt: int = 0) -> int:
 func _terrain_at(q: int, r: int) -> String:
 	if q == 0 and r == 0:
 		return "township"   # home is a porch with a town's manners
+	if _towns.has("%d,%d" % [q, r]):
+		return "township"   # the five authored towns keep hours
 	for w in WITCH_SEATS.keys():
 		var s: Array = WITCH_SEATS[w]
 		if q == int(s[0]) and r == int(s[1]):
@@ -278,11 +298,28 @@ func _on_arrive() -> void:
 			return
 		_say("the porch. it holds your shape. the territory is out there being itself in six directions.")
 		return
+	# Authored townships · the trading post opens.
+	var town_key := "%d,%d" % [_pos.x, _pos.y]
+	if _towns.has(town_key):
+		_arrive_township(_towns[town_key])
+		return
+	# An active notice, and this is the marked hex.
+	var bounty: Dictionary = _state.get("bounty", {})
+	if not bounty.is_empty() and String(bounty.get("stage", "")) == "posted":
+		var bdef := _find_bounty(String(bounty.get("id", "")))
+		if not bdef.is_empty():
+			var tgt: Array = bdef.get("target", [99, 99])
+			if _pos.x == int(tgt[0]) and _pos.y == int(tgt[1]):
+				_show_encounter({"id": "bounty_%s" % String(bdef["id"]),
+					"text": String(bdef.get("arrive", "")),
+					"choices": bdef.get("choices", [])})
+				return
 	# The text engine · every hex says something.
 	var terrain := _terrain_at(_pos.x, _pos.y)
 	var lines: Array = TRAVEL_LINES.get(terrain, [])
 	if not lines.is_empty():
 		_say(String(lines[_hash_qr(_pos.x, _pos.y, 3) % lines.size()]))
+	_maybe_whisper_trail()
 	# Sister weather when her corner is near.
 	var dealt2: Dictionary = _state.get("witches_dealt", {})
 	var cue := ""
@@ -320,7 +357,10 @@ func _input(event: InputEvent) -> void:
 		var kev: InputEventKey = event
 		match kev.keycode:
 			KEY_ESCAPE:
-				if _encounter.is_empty():
+				if _encounter.has("_town"):
+					_close_town()
+					get_viewport().set_input_as_handled()
+				elif _encounter.is_empty():
 					quit.emit()
 					get_viewport().set_input_as_handled()
 			KEY_RIGHT, KEY_D: _try_step(1, 0)
@@ -375,6 +415,7 @@ func _resolve_encounter(ch: Dictionary) -> void:
 		if is_instance_valid(b):
 			b.queue_free()
 	_choice_btns.clear()
+	var was_bounty := String(_encounter.get("id", "")).begins_with("bounty_")
 	_encounter = {}
 	_state["grit"] = clampi(int(_state.get("grit", 6)) + int(ch.get("grit", 0)), 0, 9)
 	_state["silver"] = maxi(0, int(_state.get("silver", 3)) + int(ch.get("silver", 0)))
@@ -383,6 +424,18 @@ func _resolve_encounter(ch: Dictionary) -> void:
 	if int(ch.get("lore", 0)) > 0:
 		_sfx("page_turn", 0.5)
 		_say("· that is LORE, and you can hold it · LORE %d ·" % int(_state.get("lore", 0)))
+	# Bounty dealings · capture rides with you, mercy spends the notice.
+	if was_bounty:
+		var bounty: Dictionary = _state.get("bounty", {})
+		if bool(ch.get("capture", false)):
+			bounty["stage"] = "captive"
+			_state["bounty"] = bounty
+			_say("· the notice is satisfied · deliver to any township board ·")
+		else:
+			var done: Array = _state.get("bounties_done", [])
+			done.append(String(bounty.get("id", "")))
+			_state["bounties_done"] = done
+			_state["bounty"] = {}
 	if int(_state.get("grit", 6)) <= 0:
 		_fold_home()
 	queue_redraw()
@@ -401,6 +454,186 @@ func _pack(extra: String) -> Dictionary:
 	if extra != "":
 		_state["_witch"] = extra
 	return _state
+
+
+# ─── Townships · the trading post keeps hours ────────────────────
+
+func _find_bounty(bid: String) -> Dictionary:
+	for b_v in _bounty_defs:
+		var b: Dictionary = b_v
+		if String(b.get("id", "")) == bid:
+			return b
+	return {}
+
+
+func _arrive_township(t: Dictionary) -> void:
+	_say(String(t.get("arrive", "")))
+	# A captive in tow · any board pays.
+	var bounty: Dictionary = _state.get("bounty", {})
+	if not bounty.is_empty() and String(bounty.get("stage", "")) == "captive":
+		var bdef := _find_bounty(String(bounty.get("id", "")))
+		var reward: int = int(bdef.get("reward", 3))
+		_state["silver"] = int(_state.get("silver", 0)) + reward
+		var done: Array = _state.get("bounties_done", [])
+		done.append(String(bounty.get("id", "")))
+		_state["bounties_done"] = done
+		var paid: int = int(_state.get("bounties_paid", 0)) + 1
+		_state["bounties_paid"] = paid
+		_state["bounty"] = {}
+		_sfx("coin", 0.7)
+		_say("the board pays out · %d SILVER · the clerk does not ask questions, which is what the silver is partly for." % reward)
+		if paid >= 3 and not bool(_state.get("board_cleared_told", false)):
+			_state["board_cleared_told"] = true
+			OneironauticsTokens.add("wyrd_notice_board_cleared")
+			_say("· three notices ridden down in one ride · the territory has started describing YOU to strangers ·")
+	_open_town_menu(t)
+
+
+func _clear_town_buttons() -> void:
+	for b in _choice_btns:
+		if is_instance_valid(b):
+			b.queue_free()
+	_choice_btns.clear()
+
+
+func _town_button(label: String, x: float, disabled: bool, cb: Callable) -> void:
+	var b := Button.new()
+	b.text = label
+	b.position = Vector2(x, 560.0)
+	b.add_theme_font_size_override("font_size", 13)
+	b.disabled = disabled
+	b.pressed.connect(cb)
+	add_child(b)
+	_choice_btns.append(b)
+
+
+func _open_town_menu(t: Dictionary) -> void:
+	_clear_town_buttons()
+	_encounter = {"_town": String(t.get("id", ""))}
+	var silver: int = int(_state.get("silver", 0))
+	var grit: int = int(_state.get("grit", 6))
+	var hotel_cost: int = int(_services.get("hotel_cost", 2))
+	var saloon_cost: int = int(_services.get("saloon_cost", 1))
+	var book_cost: int = int(_services.get("bookstall_cost", 2))
+	var book_cap: int = int(_services.get("bookstall_cap", 2))
+	var bought: Dictionary = _state.get("bookstall_bought", {})
+	var here: int = int(bought.get(String(t.get("id", "")), 0))
+	_town_button("  HOTEL · %d ag  " % hotel_cost, 40.0,
+			silver < hotel_cost or grit >= 6, _town_hotel.bind(t))
+	_town_button("  SALOON · %d ag  " % saloon_cost, 220.0,
+			silver < saloon_cost, _town_saloon.bind(t))
+	_town_button("  BOOKSTALL · %d ag  " % book_cost, 410.0,
+			silver < book_cost or here >= book_cap, _town_bookstall.bind(t))
+	_town_button("  NOTICE BOARD  ", 640.0, false, _open_notice_board.bind(t))
+	_town_button("  · ride on ·  ", 860.0, false, _close_town)
+	queue_redraw()
+
+
+func _close_town() -> void:
+	_clear_town_buttons()
+	_encounter = {}
+	_say("the town lets you go the way towns do · without comment.")
+	queue_redraw()
+
+
+func _town_hotel(t: Dictionary) -> void:
+	_state["silver"] = maxi(0, int(_state.get("silver", 0)) - int(_services.get("hotel_cost", 2)))
+	_state["grit"] = maxi(int(_state.get("grit", 0)), 6)
+	_sfx("coin", 0.5)
+	_say(String(_services.get("hotel_text", "")))
+	_open_town_menu(t)
+
+
+func _town_saloon(t: Dictionary) -> void:
+	_state["silver"] = maxi(0, int(_state.get("silver", 0)) - int(_services.get("saloon_cost", 1)))
+	_state["grit"] = clampi(int(_state.get("grit", 0)) + 1, 0, 9)
+	_sfx("coin", 0.4)
+	_say(String(_services.get("saloon_text", "")))
+	_say(String(t.get("rumor", "%s")) % _town_rumor_line())
+	_open_town_menu(t)
+
+
+func _town_bookstall(t: Dictionary) -> void:
+	_state["silver"] = maxi(0, int(_state.get("silver", 0)) - int(_services.get("bookstall_cost", 2)))
+	_state["lore"] = int(_state.get("lore", 0)) + 1
+	var bought: Dictionary = _state.get("bookstall_bought", {})
+	var tid := String(t.get("id", ""))
+	bought[tid] = int(bought.get(tid, 0)) + 1
+	_state["bookstall_bought"] = bought
+	_sfx("page_turn", 0.5)
+	_say(String(_services.get("bookstall_text", "")))
+	_open_town_menu(t)
+
+
+func _town_rumor_line() -> String:
+	var dealt: Dictionary = _state.get("witches_dealt", {})
+	var best := ""
+	var best_d := 999
+	for w in WITCH_SEATS.keys():
+		if dealt.has(w):
+			continue
+		var s: Array = WITCH_SEATS[w]
+		var d := _hex_dist(_pos, Vector2i(int(s[0]), int(s[1])))
+		if d < best_d:
+			best_d = d
+			best = String(w)
+	match best:
+		"north": return "snow holds the north road · %d hexes out, they say" % best_d
+		"east": return "the dawn's been stuck red past the mission · %d hexes east" % best_d
+		"south": return "the south road's gone dry as a sermon · %d hexes" % best_d
+		"west": return "sunset keeps coming early out west · %d hexes that way" % best_d
+	return "the weather's just weather now, all four roads. nobody trusts it"
+
+
+func _open_notice_board(t: Dictionary) -> void:
+	_clear_town_buttons()
+	var bounty: Dictionary = _state.get("bounty", {})
+	if not bounty.is_empty():
+		var bdef := _find_bounty(String(bounty.get("id", "")))
+		if String(bounty.get("stage", "")) == "captive":
+			_say("the clerk eyes what you brought in. wrong board? any board pays · but you were just paid here, so: the wall, then.")
+		else:
+			_say("your notice, again, in the clerk's fair hand: %s" % String(bdef.get("notice", "")))
+		_town_button("  · back ·  ", 40.0, false, _open_town_menu.bind(t))
+		return
+	var done: Array = _state.get("bounties_done", [])
+	var pool: Array = []
+	for b_v in _bounty_defs:
+		var b: Dictionary = b_v
+		if not done.has(String(b.get("id", ""))):
+			pool.append(b)
+	if pool.is_empty():
+		_say("the board is bare · you cleared it. the clerk has taken up whittling.")
+		_town_button("  · back ·  ", 40.0, false, _open_town_menu.bind(t))
+		return
+	var hx: Array = t.get("hex", [0, 0])
+	var pick: Dictionary = pool[_hash_qr(int(hx[0]), int(hx[1]), done.size()) % pool.size()]
+	_say(String(pick.get("notice", "")))
+	_town_button("  TAKE THE NOTICE  ", 40.0, false, _take_notice.bind(t, pick))
+	_town_button("  · leave it ·  ", 280.0, false, _open_town_menu.bind(t))
+
+
+func _take_notice(t: Dictionary, bdef: Dictionary) -> void:
+	_state["bounty"] = {"id": String(bdef.get("id", "")), "stage": "posted"}
+	_sfx("page_turn", 0.4)
+	_say("you fold the notice into your coat. the territory now contains one hex that is expecting you.")
+	_open_town_menu(t)
+
+
+func _maybe_whisper_trail() -> void:
+	var bounty: Dictionary = _state.get("bounty", {})
+	if bounty.is_empty() or String(bounty.get("stage", "")) != "posted":
+		return
+	if bool(bounty.get("whispered", false)):
+		return
+	var bdef := _find_bounty(String(bounty.get("id", "")))
+	if bdef.is_empty():
+		return
+	var tgt: Array = bdef.get("target", [99, 99])
+	if _hex_dist(_pos, Vector2i(int(tgt[0]), int(tgt[1]))) <= 3:
+		bounty["whispered"] = true
+		_state["bounty"] = bounty
+		_say("· the trail freshens · hoofprints, a cold fire, a wrongness the hexes pass along like gossip · close now ·")
 
 
 # ─── The field · an abundance of tiles ───────────────────────────
@@ -430,10 +663,17 @@ func _draw() -> void:
 				draw_texture(tex, c - Vector2(TILE_W / 2.0, TILE_H / 2.0),
 						Color(0.5, 0.42, 0.6, 0.55))
 
-	# marks · home + seats
+	# marks · home + seats + the five towns
 	var home_c := _axial_to_px(0, 0)
 	draw_string(font, home_c + Vector2(-18, -26), "HOME",
 			HORIZONTAL_ALIGNMENT_LEFT, -1, 13, C_BLOOD)
+	for t_v in _town_defs:
+		var t: Dictionary = t_v
+		var thx: Array = t.get("hex", [0, 0])
+		var tc := _axial_to_px(int(thx[0]), int(thx[1]))
+		if tc.x > -80.0 and tc.x < 1360.0 and tc.y > -60.0 and tc.y < 780.0:
+			draw_string(font, tc + Vector2(-30, -28), String(t.get("name", "")),
+					HORIZONTAL_ALIGNMENT_LEFT, -1, 11, C_BLOOD)
 	var dealt: Dictionary = _state.get("witches_dealt", {})
 	for w in WITCH_SEATS.keys():
 		var s: Array = WITCH_SEATS[w]
