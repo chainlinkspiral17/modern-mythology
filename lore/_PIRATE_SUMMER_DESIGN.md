@@ -563,6 +563,24 @@ list (deferred to a future audio wave):
 
 ## Counselor Mode
 
+> **STATUS: BUILT (2026-07-19)** · four waves: shelf toggle
+> (per-stick toggle text) + host plumbing (separate save file ·
+> `pirate_summer_counselor.save.json` · Jenny starts on the camp
+> path at dawn) / Jenny-in-world (her directional sprite set ·
+> Sam becomes a scheduled NPC via a borrowed sturgeon-mate
+> schedule · perimeter refusals in her own voice · staff walks
+> the east forest gate) / duty loop (cabin checks on zone entry ·
+> the bulletin board becomes the medical logbook · evening-event
+> head-count · Ollie at the pond) / the two Thursday decisions
+> (the dig site at the bluff · the banked-fire question) and
+> THREE endings — the spec's two plus AN ORDINARY SUMMER for
+> raked-and-unasked, since that path needed a mirror to look
+> into. All four counselor tokens live; the log-perfect check
+> runs at the ending screen over days 0–5. Deviation: the ending
+> uses the existing Saturday ending screen rather than a bus-ride
+> scene; the Wilson-resigns bus-ride composition remains on the
+> audio wishlist.
+
 By analogy with Estuary 3's Manager Mode. After finishing
 Pirate Summer once, the shelf card exposes a **COUNSELOR
 MODE** toggle. Selecting it starts a new run in which

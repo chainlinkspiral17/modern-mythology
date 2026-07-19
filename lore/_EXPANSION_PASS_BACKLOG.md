@@ -51,7 +51,11 @@ Still open from the survey, queued as C2-tail:
 
 ## A · SLOWSTICKS
 
-**A1 · Pirate Summer COUNSELOR MODE — the flagship.** Fully
+**A1 · Pirate Summer COUNSELOR MODE — DONE 2026-07-19.** Shipped
+across four waves (toggle+boot / Jenny-in-world / duty loop / the
+two Thursday decisions + three endings + five scrapbook entries).
+Deviations from spec noted in the design doc. Original brief:
+Fully
 authored in _PIRATE_SUMMER_DESIGN.md §Counselor Mode and the
 design doc's own "Wave O and beyond" list — everything else on
 that list has shipped; this is the last authored wave. Jenny
