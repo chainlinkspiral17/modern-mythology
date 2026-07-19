@@ -791,6 +791,8 @@ func _render_grid() -> void:
 	_tile_sprite_cache.clear()
 	_animated_tile_rects.clear()
 	_glow_rects.clear()   # old nodes died with the previous _world_root
+	_fireflies.clear()
+	_firefly_key = ""
 	for y in range(_grid_h):
 		for x in range(_grid_w):
 			var ch: String = _grid[y][x] if y < _grid.size() and x < _grid[y].size() else "."
@@ -2295,6 +2297,89 @@ func _attach_ground_shadow(tr: TextureRect) -> void:
 	tr.add_child(sh)
 
 
+# ── Fireflies · evening ambience (graphics pass 6 tail) ──────────
+# A handful of small warm motes drift and blink in outdoor zones
+# once the light goes (evening_event onward). They ride the same
+# additive glow texture as the firelight, scaled down. Spawned
+# lazily per zone+block, freed when the block or zone changes.
+const _FIREFLY_ZONES := ["camp_path", "campfire_ring", "alder_pond",
+		"archery_range", "north_bluff", "east_forest", "east_forest_deep"]
+const _FIREFLY_BLOCKS := ["evening_event", "lights_out", "quiet_time"]
+const _FIREFLY_COUNT := 9
+var _fireflies: Array = []           # [{node, ox, oy, phase, speed}]
+var _firefly_key: String = ""        # "<zone>|<block>" they were spawned for
+var _firefly_t: float = 0.0
+
+
+func _tick_fireflies(dt: float) -> void:
+	var zone_id := String(_zone.get("id", ""))
+	var block_id := _current_block_id()
+	var want: bool = (zone_id in _FIREFLY_ZONES) and (block_id in _FIREFLY_BLOCKS)
+	var key := "%s|%s" % [zone_id, block_id]
+	if not want:
+		if not _fireflies.is_empty():
+			_clear_fireflies()
+		return
+	if key != _firefly_key or _fireflies.is_empty():
+		_clear_fireflies()
+		_spawn_fireflies(key)
+	_firefly_t += dt
+	for f_v in _fireflies:
+		var f: Dictionary = f_v
+		var node = f.get("node", null)
+		if not (node is TextureRect) or not is_instance_valid(node):
+			continue
+		var tr := node as TextureRect
+		var ph: float = float(f.get("phase", 0.0))
+		var sp: float = float(f.get("speed", 1.0))
+		# Slow figure-eight wander around the home point.
+		tr.position = Vector2(
+			float(f.get("ox", 0.0)) + 14.0 * sin(_firefly_t * 0.35 * sp + ph),
+			float(f.get("oy", 0.0)) + 9.0 * sin(_firefly_t * 0.7 * sp + ph * 1.7))
+		# Blink · mostly dark, brief warm pulses, offset per fly.
+		var blink: float = maxf(0.0, sin(_firefly_t * 1.3 * sp + ph * 3.1))
+		tr.modulate.a = 0.10 + 0.55 * blink * blink * blink
+
+
+func _spawn_fireflies(key: String) -> void:
+	if _world_root == null:
+		return
+	_firefly_key = key
+	# Deterministic per zone+block via a cheap string hash · the same
+	# evening always lights the same corners.
+	var seed_n: int = key.hash()
+	for i in range(_FIREFLY_COUNT):
+		var hx: int = (seed_n * 31 + i * 374761393) & 0x7FFFFFFF
+		var hy: int = (seed_n * 17 + i * 668265263) & 0x7FFFFFFF
+		var ox: float = float(hx % maxi(1, _grid_w * TILE_PX))
+		var oy: float = float(hy % maxi(1, _grid_h * TILE_PX))
+		var g := TextureRect.new()
+		g.texture = _get_glow_texture()
+		g.size = Vector2(7, 7)
+		g.stretch_mode = TextureRect.STRETCH_SCALE
+		g.mouse_filter = Control.MOUSE_FILTER_IGNORE
+		var mat := CanvasItemMaterial.new()
+		mat.blend_mode = CanvasItemMaterial.BLEND_MODE_ADD
+		g.material = mat
+		g.modulate = Color(0.95, 1.0, 0.6, 0.0)
+		g.position = Vector2(ox, oy)
+		_world_root.add_child(g)
+		_fireflies.append({
+			"node": g, "ox": ox, "oy": oy,
+			"phase": float(i) * 2.399,
+			"speed": 0.8 + float((hx >> 8) % 100) / 200.0,
+		})
+
+
+func _clear_fireflies() -> void:
+	for f_v in _fireflies:
+		var node = (f_v as Dictionary).get("node", null)
+		if node is TextureRect and is_instance_valid(node):
+			(node as TextureRect).queue_free()
+	_fireflies.clear()
+	_firefly_key = ""
+
+
 func _add_fire_glow(x: int, y: int) -> void:
 	var g := TextureRect.new()
 	g.texture = _get_glow_texture()
@@ -2501,6 +2586,7 @@ func _process(dt: float) -> void:
 	# Runs regardless of modals · this is world-state, not HUD.
 	if not _animated_tile_rects.is_empty():
 		_tick_env_animation(dt)
+	_tick_fireflies(dt)
 	# NPCs face Sam when he's within 2 tiles.  Uses the new directional
 	# sprites (falls back to bare sprite for any missing variant).
 	if not _npcs.is_empty() and not _sam_moving:
