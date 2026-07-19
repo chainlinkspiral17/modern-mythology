@@ -100,7 +100,19 @@ func boot(state: Dictionary) -> void:
 	var stats: Dictionary = _fey.get("stats", {})
 	_fey_hp_max = int(stats.get("hp", 40))
 	_fey_hp = _fey_hp_max
+	# Court signature statuses — one per Court, keyed to the verbs:
+	#   seelie   · GLAMOUR    · their opening trick; DEFEND dispels it
+	#   unseelie · IRON-SICK  · an affinity RECITE leaves the verse in
+	#                           them like cold iron (strikes weakened)
+	#   wildfey  · OATHBOUND  · any RECITE invokes the old courtesies;
+	#                           they must pause one turn, once
+	_glamour_active = _fey_str("court", "") == "seelie"
+	_iron_sick = false
+	_oath_used = false
+	_oath_pending = false
 	_log = ["· " + _fey_str("name", "fey").to_upper() + " will not be reasoned with.  They have chosen a specific shape."]
+	if _glamour_active:
+		_log.append("· the glamour is on them like weather · your strikes will slide until you set your feet")
 	_render()
 
 
@@ -207,6 +219,19 @@ func _render_fey_status() -> void:
 	court_lbl.set_anchors_preset(Control.PRESET_TOP_LEFT)
 	court_lbl.position = Vector2(80, 118)
 	add_child(court_lbl)
+	# Court status chips — the fight's live conditions, named.
+	var chips: Array[String] = []
+	if _glamour_active: chips.append("GLAMOUR")
+	if _iron_sick: chips.append("IRON-SICK")
+	if _oath_pending: chips.append("OATHBOUND")
+	if not chips.is_empty():
+		var status_lbl := Label.new()
+		status_lbl.text = "· " + " · ".join(chips) + " ·"
+		status_lbl.add_theme_font_size_override("font_size", 12)
+		status_lbl.add_theme_color_override("font_color", C_ROSE.lightened(0.25))
+		status_lbl.set_anchors_preset(Control.PRESET_TOP_LEFT)
+		status_lbl.position = Vector2(80, 138)
+		add_child(status_lbl)
 
 	var hp_lbl := Label.new()
 	hp_lbl.text = "HP  " + str(_fey_hp) + " / " + str(_fey_hp_max)
@@ -443,6 +468,13 @@ func _render_outcome_buttons() -> void:
 
 # ─── Actions ────────────────────────────────────────────────────────
 
+# ─── Court statuses ─────────────────────────────────────────────────
+var _glamour_active: bool = false
+var _iron_sick: bool = false
+var _oath_used: bool = false
+var _oath_pending: bool = false
+
+
 func _on_attack_pressed() -> void:
 	var sfx := get_node_or_null("/root/SFXBank")
 	if sfx: sfx.play("press_hit", 0.7)
@@ -454,8 +486,13 @@ func _on_attack_pressed() -> void:
 	# Random variance ± 3
 	var dmg: int = base + (_turn % 5) - 2
 	dmg = max(1, dmg)
-	_fey_hp = max(0, _fey_hp - dmg)
-	_log.append("· you strike · " + str(dmg) + " damage")
+	if _glamour_active:
+		dmg = max(1, int(round(dmg * 0.5)))
+		_fey_hp = max(0, _fey_hp - dmg)
+		_log.append("· you strike · the glamour turns your eye · " + str(dmg) + " damage")
+	else:
+		_fey_hp = max(0, _fey_hp - dmg)
+		_log.append("· you strike · " + str(dmg) + " damage")
 	_end_of_player_turn()
 
 
@@ -465,7 +502,11 @@ func _on_defend_pressed() -> void:
 	_player_defending = true
 	# Small SP regen
 	_player_sp = min(_player_sp_max, _player_sp + 3)
-	_log.append("· you set your feet · +3 SP · incoming damage halved next turn")
+	if _glamour_active:
+		_glamour_active = false
+		_log.append("· you set your feet · you look away and look back · the glamour slips off like rain")
+	else:
+		_log.append("· you set your feet · +3 SP · incoming damage halved next turn")
 	_end_of_player_turn()
 
 
@@ -502,10 +543,19 @@ func _on_recite_pressed() -> void:
 		var wavering: int = 18
 		_fey_hp = max(0, _fey_hp - wavering)
 		_log.append("· you recite \"" + display + "\" · " + fey_name + " wavers · the line is THEIRS · " + str(wavering) + " to their composure")
+		if _fey_str("court", "") == "unseelie" and not _iron_sick:
+			_iron_sick = true
+			_log.append("· the verse sits in them like cold iron · IRON-SICK · their strikes weaken")
 	else:
 		var wavering: int = 6
 		_fey_hp = max(0, _fey_hp - wavering)
 		_log.append("· you recite \"" + display + "\" · " + fey_name + " looks at you differently · " + str(wavering) + " to their composure")
+	# Wildfey and the old courtesies: any verse spoken aloud invokes
+	# them. Once per combat, the wild one must pause and answer it.
+	if _fey_str("court", "") == "wildfey" and not _oath_used:
+		_oath_used = true
+		_oath_pending = true
+		_log.append("· the old courtesies hear the verse · OATHBOUND · the wild one must pause")
 	_end_of_player_turn()
 
 
@@ -535,6 +585,12 @@ func _end_of_player_turn() -> void:
 
 
 func _fey_turn() -> void:
+	# Oathbound: the wild one must pause this turn — the verse
+	# invoked the old courtesies and the courtesies bind.
+	if _oath_pending:
+		_oath_pending = false
+		_log.append("· " + _fey_str("name", "they") + " stops · bound by the courtesy the verse invoked · the turn passes")
+		return
 	# The fey uses a skill drawn from its list, or a bare strike.
 	var skills: Array = _fey.get("skills", [])
 	var stats: Dictionary = _fey.get("stats", {})
@@ -542,6 +598,8 @@ func _fey_turn() -> void:
 	var raw: int = 8 + strike_stat + int(_fey.get("tier", 1)) * 2
 	# Random variance
 	var dmg: int = raw + (_turn % 4) - 1
+	if _iron_sick:
+		dmg = int(round(dmg * 0.6))
 	if _player_defending:
 		dmg = int(round(dmg * 0.5))
 	dmg = max(1, dmg)

@@ -355,8 +355,35 @@ func _add_keepsake_row(parent: Node, entry: Dictionary) -> void:
 
 
 # ── Cots view ─────────────────────────────────────────────────
+# Standing in words, not numbers — the Courts do not keep score in
+# a way they'd admit to.
+func _standing_word(n: int) -> String:
+	if n >= 8: return "beloved"
+	if n >= 5: return "known"
+	if n >= 2: return "noticed"
+	if n >= 1: return "glimpsed"
+	return "unmet"
+
+
 func _render_cots_view() -> void:
 	_render_sub_view("COTS · PARTY ROSTER", func(v: VBoxContainer) -> void:
+		# Court standing — the three Courts' opinion of you, surfaced
+		# where the party lives. The counters have always been kept
+		# (combat and negotiation both feed them); now they're read.
+		var se: int = int(_run_state.get("court_seelie", 0))
+		var un: int = int(_run_state.get("court_unseelie", 0))
+		var wf: int = int(_run_state.get("court_wildfey", 0))
+		var standing := Label.new()
+		standing.text = "STANDING · seelie %s · unseelie %s · wildfey %s" % [
+			_standing_word(se), _standing_word(un), _standing_word(wf)]
+		standing.add_theme_font_size_override("font_size", 13)
+		standing.add_theme_color_override("font_color", C_CREAM.darkened(0.2))
+		v.add_child(standing)
+		var rule := ColorRect.new()
+		rule.color = Color(C_LAMP.r, C_LAMP.g, C_LAMP.b, 0.25)
+		rule.custom_minimum_size.y = 1
+		v.add_child(rule)
+
 		var protagonist := Label.new()
 		var player_name: String = String(_run_state.get("questionnaire", {}).get("player_name", "you"))
 		protagonist.text = "COT 1 · " + player_name + " · always here"

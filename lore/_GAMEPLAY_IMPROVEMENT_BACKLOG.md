@@ -134,7 +134,7 @@ machinery: one new nightly modifier each and one crossover guest
 zero "ending" mentions — AUDIT it has a real terminal state, not
 just an exit.
 
-**P2 · fey_faire** — combat scaffold wants one status effect per
+**P2 · ~~fey_faire~~ DONE 2026-07-19** — one status per Court in combat (seelie GLAMOUR dispelled by DEFEND, unseelie IRON-SICK from an affinity RECITE, wildfey OATHBOUND once per fight when any verse invokes the courtesies), status chips on the fey panel, and Court STANDING in words (unmet→beloved) atop the party roster. Bookstall-quote fey lists remain. Original note: — combat scaffold wants one status effect per
 Court (glamour/iron-sick/oathbound) and visible Court reputation
 (the factions data exists; surface a standing meter in the trailer).
 Bookstall quotes should list which fey they've worked on.
