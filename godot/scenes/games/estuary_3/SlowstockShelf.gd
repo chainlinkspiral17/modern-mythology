@@ -602,6 +602,13 @@ func _on_cart_hover(stick_id: String) -> void:
 		# Reveal MANAGER MODE toggle for Estuary 3 · the failed 2003
 		# Kwik Stop project revealed after first playthrough.
 		if stick_id == "estuary_3":
+			_card_manager_toggle.text = "  MANAGER MODE  "
+			_card_manager_toggle.visible = true
+			_card_manager_toggle.button_pressed = _manager_mode_on
+		# Reveal COUNSELOR MODE for Pirate Summer · same unlock shape:
+		# finish the week as Sam once, and the shelf offers Jenny's.
+		elif stick_id == "pirate_summer":
+			_card_manager_toggle.text = "  COUNSELOR MODE  "
 			_card_manager_toggle.visible = true
 			_card_manager_toggle.button_pressed = _manager_mode_on
 		# Reveal SCRAPBOOK button when a scrapbook exists for the

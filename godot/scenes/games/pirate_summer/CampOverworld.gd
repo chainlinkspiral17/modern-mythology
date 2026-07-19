@@ -400,6 +400,8 @@ func _load_campers() -> void:
 
 func boot(host_state: Dictionary) -> void:
 	_run_state = host_state
+	if _is_counselor():
+		_inject_counselor_defs()
 	_restore_picked_up_positions()
 	var zone_id := String(host_state.get("zone", "cabin_sturgeon"))
 	var spawn_id := String(host_state.get("spawn", "start"))
@@ -592,17 +594,78 @@ func _on_ambient_tick(interval: float) -> void:
 	_ambient_timer.timeout.connect(_on_ambient_tick.bind(interval))
 
 
+# ─── Counselor Mode · the player is Jenny Copeland ───────────────
+
+func _is_counselor() -> bool:
+	return bool(_run_state.get("counselor", false))
+
+
+func _player_char_id() -> String:
+	return "jenny_copeland" if _is_counselor() else "sam"
+
+
+# Jenny cannot leave the camp perimeter · fourteen campers are her
+# responsibility.  The adventure zones are the campers' to take.
+const _COUNSELOR_OFF_LIMITS := ["caves_level_1", "caves_level_2",
+	"caves_level_3", "ghost_ship", "east_forest_deep"]
+
+
+func _counselor_zone_blocked(zid: String) -> bool:
+	return _is_counselor() and _COUNSELOR_OFF_LIMITS.has(zid)
+
+
+func _inject_counselor_defs() -> void:
+	# Sam becomes one of the fifteen kids Jenny watches.  His camper
+	# entry has no bunk/schedule (he was the player) · borrow a
+	# sturgeon cabinmate's placements, shifted one tile, so he flows
+	# through the standard scheduler untouched.
+	if not _campers_by_id.has("sam"):
+		return
+	var sam_def: Dictionary = _campers_by_id["sam"]
+	if (sam_def.get("schedule", {}) as Dictionary).is_empty():
+		var donor: Dictionary = {}
+		for cid_v in _campers_by_id.keys():
+			var c: Dictionary = _campers_by_id[cid_v]
+			if String(c.get("cabin", "")) == "sturgeon" and String(c.get("id", "")) != "sam" \
+					and not (c.get("schedule", {}) as Dictionary).is_empty():
+				donor = c
+				break
+		if not donor.is_empty():
+			var dsched: Dictionary = (donor.get("schedule", {}) as Dictionary).duplicate(true)
+			for key in ["mess_hall_seat", "campfire_ring_position", "free_time_pos"]:
+				var p: Array = dsched.get(key, [])
+				if p.size() >= 2:
+					dsched[key] = [int(p[0]) + 1, int(p[1])]
+			var acts: Dictionary = dsched.get("activity_positions", {})
+			for zk in acts.keys():
+				var ap: Array = acts[zk]
+				if ap.size() >= 2:
+					acts[zk] = [int(ap[0]) + 1, int(ap[1])]
+			sam_def["schedule"] = dsched
+			var dbunk: Variant = donor.get("bunk_pos", null)
+			if dbunk is Array and (dbunk as Array).size() >= 2:
+				sam_def["bunk_pos"] = [int((dbunk as Array)[0]) + 1, int((dbunk as Array)[1])]
+	if String(sam_def.get("hello_line", "")) == "":
+		sam_def["hello_line"] = "Hi, Miss Jenny.  Nothing.  Nothing's in the duffel.  It's clothes."
+
+
 func _get_sam_facing_texture(facing: String) -> ImageTexture:
-	if _sam_direction_textures.has(facing):
-		return _sam_direction_textures[facing]
+	var cache_key := facing if not _is_counselor() else "jenny_" + facing
+	if _sam_direction_textures.has(cache_key):
+		return _sam_direction_textures[cache_key]
 	var path := String(_SAM_DIRECTIONAL_SPRITE.get(facing, SAM_SPRITE))
+	if _is_counselor():
+		# Jenny's sprite set · base jenny_copeland.json faces down.
+		path = CHAR_SPRITE_DIR + "jenny_copeland_%s.json" % facing
+		if facing == "down" or not FileAccess.file_exists(path):
+			path = CHAR_SPRITE_DIR + "jenny_copeland.json"
 	var s := SlowstockSprite.new()
 	if not s.load_from(path):
 		# Fall back to the base sam.json · if that also fails, null.
 		if not s.load_from(SAM_SPRITE):
 			return null
 	var tex := s.texture()
-	_sam_direction_textures[facing] = tex
+	_sam_direction_textures[cache_key] = tex
 	return tex
 
 
@@ -612,9 +675,15 @@ func _get_sam_walk_texture(facing: String) -> ImageTexture:
 	var use_b: bool = (_step_parity % 2) == 1
 	var dict: Dictionary = _SAM_WALK_B_SPRITE if use_b else _SAM_WALK_SPRITE
 	var cache_key := facing + ("_walk_b" if use_b else "_walk")
+	if _is_counselor():
+		cache_key = "jenny_" + cache_key
 	if _sam_direction_textures.has(cache_key):
 		return _sam_direction_textures[cache_key]
 	var path := String(dict.get(facing, ""))
+	if _is_counselor():
+		path = CHAR_SPRITE_DIR + "jenny_copeland_%s%s.json" % [facing, "_walk_b" if use_b else "_walk"]
+		if not FileAccess.file_exists(path):
+			return null
 	if path == "": return null
 	var s := SlowstockSprite.new()
 	if not s.load_from(path):
@@ -713,9 +782,13 @@ func _resolve_scheduled_npcs_for_zone() -> Array:
 	var block_id := _current_block_id()
 	var day_name := String(_current_day().get("name", ""))
 	var out: Array = []
+	# The player never spawns as an NPC · in base mode that's Sam,
+	# in Counselor Mode it's Jenny — and Sam joins the schedule.
+	var player_id := _player_char_id()
 	for cid_v in _campers_by_id.keys():
 		var cid: String = String(cid_v)
-		if cid == "sam": continue
+		if cid == player_id: continue
+		if cid == "sam" and not _is_counselor(): continue
 		var c: Dictionary = _campers_by_id[cid]
 		var sched: Dictionary = c.get("schedule", {})
 		var placed := _resolve_camper_position(cid, c, sched, zone_id, block_id, day_name)
@@ -1289,6 +1362,10 @@ func _on_move_finished() -> void:
 		var ex: Dictionary = exit_v
 		var zid := String(ex.get("zone", ""))
 		var sid := String(ex.get("spawn", ""))
+		if zid != "" and _counselor_zone_blocked(zid):
+			_show_transient("  You stop at the threshold.  Fourteen campers are your responsibility, and this is theirs, not yours.  Jenny doesn't leave the perimeter.")
+			_update_hover_label()
+			return
 		if zid != "":
 			var sfx := get_node_or_null("/root/SFXBank")
 			if sfx: sfx.play("door_open", 0.5)
@@ -1689,6 +1766,11 @@ func _maybe_reveal_1976_incident() -> void:
 func _try_east_forest_gate() -> void:
 	# Nika's SNEAK gets the party through without being spotted.
 	# Anyone else · Bear catches them and turns them back.
+	# The head counselor walks in the front way · it's her camp.
+	if _is_counselor():
+		zone_changed.emit("east_forest", "from_camp_path")
+		_load_zone("east_forest", "from_camp_path")
+		return
 	if _party().has("nika_voss"):
 		zone_changed.emit("east_forest", "from_camp_path")
 		_load_zone("east_forest", "from_camp_path")
@@ -1700,6 +1782,9 @@ func _try_hollow_log() -> void:
 	# Nika's SNEAK · she notices the disturbed moss where someone
 	# else recently crawled through.  Without her, the log looks
 	# like any other fallen tree.
+	if _is_counselor():
+		_show_transient("  A hollow log.  Someone small has been crawling through it · the moss is worn in a kid-shaped way.  You are twenty-four and the head counselor.  You note it for the safety walk and leave it be.")
+		return
 	if not _party().has("nika_voss"):
 		_show_transient("  A hollow log.  You'd crawl in and get scraped up and nothing would come of it.  Nika would probably notice something you're not noticing.")
 		return
@@ -1766,6 +1851,9 @@ func _try_leave_camp_early() -> void:
 	# Only Friday (day_index 5) can take the bus.  Ends the run
 	# immediately with the left_camp_early flag set · Saturday
 	# transition skipped, ending picks the early_exit epilogue.
+	if _is_counselor():
+		_show_transient("  The 3:41 stops here.  You have put eleven summers of campers on that bus.  You are not a passenger this week, or any week you can currently imagine.")
+		return
 	var day_idx: int = int(_run_state.get("day_index", 0))
 	if day_idx < 5:
 		_show_transient("  The bus sign says the 3:41 bus stops here.  It's not Friday yet.  Nothing to catch today.")
@@ -1785,6 +1873,18 @@ func _try_ghost_ship_approach() -> void:
 	# the ship offshore and Ford tide-times a canoe.  Any missing
 	# requirement produces a specific refusal so the player knows
 	# what's blocking.
+	if _is_counselor():
+		# Jenny sees her from the dock · one of the four counselor
+		# tokens, and all the ship she is permitted.
+		var day_j: int = int(_run_state.get("day_index", 0))
+		if day_j >= 4:
+			if not OneironauticsTokens.has("jenny_saw_the_ghost_ship_from_the_dock"):
+				OneironauticsTokens.add("jenny_saw_the_ghost_ship_from_the_dock")
+			_show_hero("ghost_ship_at_anchor", "  she rides at anchor · Jenny has seen her every summer since she was ten")
+			_show_transient("  There she is.  Every summer, Thursday on, if you know where to stand.  You have never told anyone and never gone.  The dock boards are warm under your feet.")
+		else:
+			_show_transient("  Flat water to the horizon.  She isn't there before Thursday.  You know the schedule better than the tide tables do.")
+		return
 	var day_idx: int = int(_run_state.get("day_index", 0))
 	if day_idx < 4:
 		_show_transient("  You look at the horizon.  Nothing unusual · yet.  The sea takes on a different shape after Wednesday.")

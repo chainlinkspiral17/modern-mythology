@@ -125,7 +125,7 @@ func _on_picked(stick_id: String, manager_mode: bool = false) -> void:
 	if stick_id == "estuary_3":
 		_open_host_estuary_3(manager_mode)
 	elif stick_id == "pirate_summer":
-		_open_host_pirate_summer()
+		_open_host_pirate_summer(manager_mode)
 	elif stick_id == "fey_faire":
 		_open_host_fey_faire()
 	elif stick_id == "earthman_chronicles":
@@ -275,7 +275,7 @@ func _play_boot_sequence(stick_id: String) -> void:
 	tw.tween_callback(ov.queue_free)
 
 
-func _open_host_pirate_summer() -> void:
+func _open_host_pirate_summer(counselor_mode: bool = false) -> void:
 	if _shelf != null:
 		_shelf.queue_free()
 		_shelf = null
@@ -283,6 +283,8 @@ func _open_host_pirate_summer() -> void:
 	_host = load(PIRATE_HOST_SCENE).instantiate()
 	_host.quit_to_shelf.connect(_open_shelf)
 	_host.finished.connect(_on_host_finished)
+	# Must land before add_child · _ready picks the save file by mode.
+	_host.set("counselor_mode", counselor_mode)
 	add_child(_host)
 
 

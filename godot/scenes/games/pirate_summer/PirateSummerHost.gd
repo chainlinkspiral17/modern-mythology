@@ -17,6 +17,12 @@ signal finished(canon_vars: Dictionary, lore_tokens: Array)
 
 const MANIFEST_PATH := "res://resources/games/vol7/pirate_summer/manifest.json"
 const SAVE_PATH     := "user://pirate_summer.save.json"
+const SAVE_PATH_COUNSELOR := "user://pirate_summer_counselor.save.json"
+
+# COUNSELOR MODE · set by SlowstockBoot BEFORE add_child (so _ready
+# loads the right save).  A Jenny Copeland run keeps its own save
+# file — Sam's week is never overwritten by hers.
+var counselor_mode: bool = false
 
 var _manifest: Dictionary = {}
 var _run_state: Dictionary = {
@@ -58,9 +64,13 @@ func _ready() -> void:
 	_build_title_screen()
 
 
+func _save_path() -> String:
+	return SAVE_PATH_COUNSELOR if counselor_mode else SAVE_PATH
+
+
 func _load_save_if_present() -> void:
-	if not FileAccess.file_exists(SAVE_PATH): return
-	var f := FileAccess.open(SAVE_PATH, FileAccess.READ)
+	if not FileAccess.file_exists(_save_path()): return
+	var f := FileAccess.open(_save_path(), FileAccess.READ)
 	var parsed: Variant = JSON.parse_string(f.get_as_text())
 	f.close()
 	if parsed is Dictionary:
@@ -69,19 +79,22 @@ func _load_save_if_present() -> void:
 		# missing a newly-added field doesn't nuke the default.
 		for k in saved.keys():
 			_run_state[String(k)] = saved[k]
+	_run_state["counselor"] = counselor_mode
 
 
-func start_new_run(_unused: bool = false) -> void:
-	# Match Estuary3Host's start_new_run(manager_mode) signature so
-	# SlowstockBoot can call it uniformly. `manager_mode` is ignored
-	# here · Counselor Mode is Pirate Summer's analog and ships in
-	# Wave O.
+func start_new_run(counselor: bool = false) -> void:
+	# Matches Estuary3Host's start_new_run(manager_mode) signature ·
+	# here the flag is COUNSELOR MODE (Jenny Copeland's week).
+	counselor_mode = counselor or counselor_mode
 	if _title_root != null and is_instance_valid(_title_root):
 		_title_root.queue_free()
 		_title_root = null
+	# Jenny doesn't wake in a camper cabin · her week starts on the
+	# camp path at dawn, rosters in hand.
 	_run_state = {
-		"zone":       String(_manifest.get("start_zone", "cabin_sturgeon")),
-		"spawn":      String(_manifest.get("start_spawn", "start")),
+		"counselor":  counselor_mode,
+		"zone":       "camp_path" if counselor_mode else String(_manifest.get("start_zone", "cabin_sturgeon")),
+		"spawn":      "start" if counselor_mode else String(_manifest.get("start_spawn", "start")),
 		"day_index":  0,
 		"time_index": 0,
 		"party":      [],
@@ -160,14 +173,17 @@ func _build_title_screen() -> void:
 	_title_root.add_child(v)
 
 	var title := Label.new()
-	title.text = "PIRATE SUMMER"
+	title.text = "PIRATE SUMMER" if not counselor_mode else "PIRATE SUMMER · COUNSELOR MODE"
 	title.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
-	title.add_theme_font_size_override("font_size", 36)
+	title.add_theme_font_size_override("font_size", 36 if not counselor_mode else 28)
 	title.add_theme_color_override("font_color", Color(0.95, 0.9, 0.78, 1.0))
 	v.add_child(title)
 
 	var premise := Label.new()
-	premise.text = "June 1988 · Camp Sweetgum, one week · you are Sam, eleven years old.\nMake friends. Follow what the counselors won't say. Dig where the map says dig."
+	if counselor_mode:
+		premise.text = "June 1988 · Camp Sweetgum, the same week · you are Jenny Copeland, twenty-four.\nFourteen campers, two counselors, one camp. You've been coming here since you were ten.\nYou know. Wilson knows you know. Nobody speaks of it during camp week."
+	else:
+		premise.text = "June 1988 · Camp Sweetgum, one week · you are Sam, eleven years old.\nMake friends. Follow what the counselors won't say. Dig where the map says dig."
 	premise.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 	premise.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 	premise.add_theme_font_size_override("font_size", 14)
@@ -175,7 +191,10 @@ func _build_title_screen() -> void:
 	v.add_child(premise)
 
 	var start_btn := Button.new()
-	start_btn.text = "  BEGIN THE WEEK  " if int(_run_state.get("day_index", 0)) == 0 else "  BACK TO CAMP  "
+	if counselor_mode:
+		start_btn.text = "  BEGIN THE WEEK AS JENNY  " if int(_run_state.get("day_index", 0)) == 0 and int(_run_state.get("time_index", 0)) == 0 else "  BACK TO CAMP  "
+	else:
+		start_btn.text = "  BEGIN THE WEEK  " if int(_run_state.get("day_index", 0)) == 0 else "  BACK TO CAMP  "
 	start_btn.add_theme_font_size_override("font_size", 14)
 	start_btn.pressed.connect(func() -> void:
 		if _title_root != null and is_instance_valid(_title_root):
