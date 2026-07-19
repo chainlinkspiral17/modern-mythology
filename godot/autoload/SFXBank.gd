@@ -191,10 +191,109 @@ func play(preset: String, volume_ratio: float = 1.0) -> void:
 		return
 	p.volume_db = linear_to_db(effective)
 	p.play()
+	_rumble_for_preset(preset, clampf(volume_ratio, 0.0, 1.0))
 
 
 func has_preset(preset: String) -> bool:
 	return PRESET_MAP.has(preset)
+
+
+# ─── Haptic rumble grammar ───────────────────────────────────────
+# SFXBank is the package's sound grammar, so it is also the haptics
+# grammar: every play() looks up the preset here and drives SDL
+# rumble on all connected pads. Baseline device: the 2026 Steam
+# Controller — its HD haptic motors render SDL rumble, so this one
+# table covers Steam Deck, Steam Controller, and ordinary XInput
+# pads alike. Unmapped presets are silent by design (ambient beds,
+# hover ticks — rumble spam is worse than none).
+# Values: [weak_motor 0-1, strong_motor 0-1, duration_s].
+const RUMBLE_MAP := {
+	# UI paper + cards
+	"blip":              [0.08, 0.00, 0.04],
+	"button_click":      [0.06, 0.00, 0.04],
+	"menu_open":         [0.10, 0.00, 0.06],
+	"menu_close":        [0.10, 0.00, 0.06],
+	"page_turn":         [0.14, 0.00, 0.09],
+	"card_flip":         [0.12, 0.00, 0.06],
+	"card_place":        [0.16, 0.06, 0.09],
+	"hand_deal":         [0.12, 0.00, 0.08],
+	"scenario_picker":   [0.12, 0.00, 0.08],
+	"verb_select":       [0.08, 0.00, 0.05],
+	"control_click":     [0.08, 0.00, 0.05],
+	"cartridge_click":   [0.14, 0.05, 0.08],
+	"boot":              [0.15, 0.20, 0.35],
+	"load_start":        [0.12, 0.10, 0.25],
+	# Rewards + confirmations
+	"register_ding":     [0.16, 0.00, 0.08],
+	"coin":              [0.10, 0.00, 0.05],
+	"pickup":            [0.12, 0.00, 0.07],
+	"save_confirm":      [0.10, 0.00, 0.06],
+	"unlock_chime":      [0.22, 0.10, 0.18],
+	"lore_token_reveal": [0.20, 0.08, 0.15],
+	"scenario_unlock":   [0.22, 0.10, 0.20],
+	"interlude_earned":  [0.18, 0.08, 0.15],
+	"scrapbook_open":    [0.12, 0.00, 0.08],
+	"season_success":    [0.25, 0.20, 0.30],
+	"win_chord":         [0.30, 0.50, 0.45],
+	"signing":           [0.12, 0.00, 0.10],
+	# Impacts + losses
+	"loss_thud":         [0.00, 0.85, 0.40],
+	"press_hit":         [0.20, 0.45, 0.12],
+	"press_miss":        [0.10, 0.00, 0.08],
+	"hurt":              [0.15, 0.55, 0.18],
+	"season_failure":    [0.20, 0.40, 0.30],
+	"tide_swallow":      [0.20, 0.50, 0.35],
+	"threshold_cross":   [0.20, 0.30, 0.20],
+	"labor_day_arrival": [0.30, 0.40, 0.60],
+	"basement_rite":     [0.10, 0.35, 0.80],
+	"jump":              [0.12, 0.08, 0.08],
+	# World + creatures
+	"door_open":         [0.08, 0.00, 0.06],
+	"boot_plank":        [0.10, 0.15, 0.08],
+	"boat_horn":         [0.25, 0.35, 0.70],
+	"customer_bell":     [0.12, 0.00, 0.08],
+	"phone_ring":        [0.15, 0.10, 0.25],
+	"visitor_arrive":    [0.12, 0.00, 0.10],
+	"wave_break":        [0.15, 0.10, 0.25],
+	"tide_gate_toggle":  [0.20, 0.25, 0.15],
+	"marker_set":        [0.10, 0.00, 0.06],
+	"2am_customer_stands_up":       [0.15, 0.30, 0.30],
+	"creature_arrival_2am_customer": [0.20, 0.25, 0.30],
+	"creature_arrival_kid_on_bike":  [0.15, 0.15, 0.25],
+	"creature_arrival_heron":        [0.15, 0.10, 0.25],
+	"creature_arrival_otter":        [0.15, 0.10, 0.25],
+	"creature_arrival_crab":         [0.12, 0.10, 0.20],
+	"creature_arrival_fry":          [0.10, 0.08, 0.18],
+	"tier_crossing_restless":        [0.15, 0.25, 0.25],
+	"tier_crossing_hungry":          [0.18, 0.30, 0.28],
+	"tier_crossing_close":           [0.20, 0.35, 0.30],
+	"tier_crossing_turned":          [0.25, 0.45, 0.40],
+	"pair_loud":         [0.15, 0.20, 0.20],
+	"roster_loud":       [0.15, 0.20, 0.20],
+}
+
+
+func _rumble_for_preset(preset: String, ratio: float) -> void:
+	if not RUMBLE_MAP.has(preset):
+		return
+	var r: Array = RUMBLE_MAP[preset]
+	rumble(float(r[0]) * ratio, float(r[1]) * ratio, float(r[2]))
+
+
+## Public · explicit rumble for beats with no SFX (or beats that
+## deserve more than their sound). Respects Settings.haptics.
+func rumble(weak: float, strong: float, duration_s: float) -> void:
+	var settings := get_node_or_null("/root/Settings")
+	var strength: float = 1.0
+	if settings != null and settings.get("haptics") != null:
+		strength = float(settings.get("haptics"))
+	if strength <= 0.01:
+		return
+	for dev in Input.get_connected_joypads():
+		Input.start_joy_vibration(int(dev),
+				clampf(weak * strength, 0.0, 1.0),
+				clampf(strong * strength, 0.0, 1.0),
+				maxf(0.02, duration_s))
 
 
 func stop_all() -> void:

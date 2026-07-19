@@ -16,6 +16,7 @@ var _voice_vol:      float  = 0.80
 var _skip_unread:    bool   = false
 var _auto_advance_ms: int   = 0
 var _window_mode:    String = "720p"
+var _haptics:        float  = 1.0
 var _music_skin:     String = "diner_booth"
 var _music_viz:      String = "peak_meter"
 var _music_jukebox:  bool   = true
@@ -84,6 +85,16 @@ var window_mode: String:
 		settings_changed.emit("window_mode", val)
 		_save()
 
+# Haptic rumble strength · 0.0 = off, 1.0 = full. Driven by
+# SFXBank's rumble grammar; baseline device is the 2026 Steam
+# Controller (SDL rumble rendered by its HD haptic motors).
+var haptics: float:
+	get: return _haptics
+	set(val):
+		_haptics = clampf(val, 0.0, 1.0)
+		settings_changed.emit("haptics", _haptics)
+		_save()
+
 var music_skin: String:
 	get: return _music_skin
 	set(val):
@@ -149,6 +160,12 @@ func _resize_window(w: int, h: int) -> void:
 func _load() -> void:
 	var cfg := ConfigFile.new()
 	if cfg.load(SAVE_PATH) != OK:
+		# First run with no settings file. Exported builds (the
+		# Steam Machine target) live on a TV — default fullscreen.
+		# Editor / source runs keep the windowed dev default.
+		if OS.has_feature("template"):
+			_window_mode = "fullscreen"
+			_apply_window_mode(_window_mode)
 		return
 	var raw_size = cfg.get_value("settings", "txt_scale", null)
 	if raw_size == null:
@@ -166,6 +183,7 @@ func _load() -> void:
 	_skip_unread     = bool(cfg.get_value("settings",  "skip_unread",    false))
 	_auto_advance_ms = int(cfg.get_value("settings",   "auto_advance_ms", 0))
 	_window_mode     = str(cfg.get_value("settings",   "window_mode",    "720p"))
+	_haptics         = clampf(float(cfg.get_value("settings", "haptics", 1.0)), 0.0, 1.0)
 	_music_skin      = str(cfg.get_value("settings",   "music_skin",     "diner_booth"))
 	_music_viz       = str(cfg.get_value("settings",   "music_viz",      "peak_meter"))
 	_music_jukebox   = bool(cfg.get_value("settings",  "music_jukebox",  true))
@@ -182,6 +200,7 @@ func _save() -> void:
 	cfg.set_value("settings", "skip_unread",     _skip_unread)
 	cfg.set_value("settings", "auto_advance_ms", _auto_advance_ms)
 	cfg.set_value("settings", "window_mode",     _window_mode)
+	cfg.set_value("settings", "haptics",         _haptics)
 	cfg.set_value("settings", "music_skin",      _music_skin)
 	cfg.set_value("settings", "music_viz",       _music_viz)
 	cfg.set_value("settings", "music_jukebox",   _music_jukebox)

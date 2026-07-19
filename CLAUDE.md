@@ -31,9 +31,13 @@ touching code:
 6. `lore/_COMMUNITY_PLANNED_PLAYBOOK.md` — mission stages, BBS
    thread gating, pressure curve, three-slot save. Read before
    editing problems.json, agents.json, or CommunityPlannedGame.gd.
-7. The latest commit message on the working branch — recent context.
-8. If working on a specific volume, the relevant `lore/_VOL{N}_WIKI.md`.
-9. If planning NEW slowsticks or building the deferred early
+7. `lore/_CONTROLLER_STEAM_PLAYBOOK.md` — pad input translation
+   layer (GamepadMgr), one-path-per-input rule, haptics grammar
+   (SFXBank RUMBLE_MAP), Steam Machine build. Read before touching
+   ANY input handling, adding a UI surface, or authoring rumble.
+8. The latest commit message on the working branch — recent context.
+9. If working on a specific volume, the relevant `lore/_VOL{N}_WIKI.md`.
+10. If planning NEW slowsticks or building the deferred early
    ones, `lore/_SLOWSTICK_CATALOG_ROADMAP.md` — full plans for
    Estuary 1 + 2 and six imagined sticks, plus the canon lattice
    (studios, people, dates) that must not be contradicted.
@@ -43,7 +47,7 @@ touching code:
    no our-timeline retro cosplay (scanline loops, phosphor
    fiction), font floor 12. Read before touching ANY slowstick
    visuals or writing a LOOK section.
-10. If touching a slowstock, its per-stick design doc:
+11. If touching a slowstock, its per-stick design doc:
    - `lore/_ESTUARY_3_DESIGN.md` (four-act + Manager Mode)
    - `lore/_PIRATE_SUMMER_DESIGN.md` (six-day + Counselor Mode)
    - `lore/_FEY_FAIRE_DESIGN.md` · `lore/_EARTHMAN_CHRONICLES_DESIGN.md`
@@ -121,6 +125,10 @@ Playbooks currently maintained:
   chapter scenes, the three-phase ending scene pattern (gather →
   choice → ending playback), data-driven scenes for negotiation
   and combat, `_delta` sets convention.
+- `lore/_CONTROLLER_STEAM_PLAYBOOK.md` — GamepadMgr translation
+  layer, one-path-per-input rule (double-fire guards), haptics
+  grammar in SFXBank.RUMBLE_MAP, Steam Machine export + build
+  script, per-stick pad-audit inventory.
 
 When a new domain accumulates ≥ 5 distinct lessons, spin up a
 playbook for it.
