@@ -1228,6 +1228,15 @@ const STYLE_PACKS: Array = [
 	"blend_mode": 0, "blend_amt": 0},
 	{"name": "garage_dusk", "mood": "dusk", "lighting": "scene_default",
 	"blend_mode": 0, "blend_amt": 0},
+	# ── vol6 wrong-room sweep round 2 (2026-07-19) — henderson_garage
+	#    reuses garage_dusk above; these two are new. Both keep the
+	#    neon OFF and let the in-scene practicals carry the look:
+	#    bindery = warm pendant bookshop daylight, stockroom = bare
+	#    fluorescent tubes over concrete.
+	{"name": "bindery_day", "mood": "raw", "lighting": "scene_default",
+	"blend_mode": 0, "blend_amt": 0},
+	{"name": "stockroom_fluorescent", "mood": "raw", "lighting": "scene_default",
+	"blend_mode": 0, "blend_amt": 0},
 	# ── VN CHAPTER LOOKS (2026-07-11) — legible-first packs for the
 	#    directed chapters. Lesson from the playtest: edge-only and
 	#    press moods (linework, substrate_press) render an ESTABLISH

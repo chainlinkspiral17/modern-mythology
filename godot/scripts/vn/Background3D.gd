@@ -470,6 +470,67 @@ const CAMERA_PRESETS := {
 		"fov": 60.0,
 		"suppress_input": true,
 	},
+	"henderson_garage": {
+		"scene": "res://scenes/locales/henderson_garage.tscn",
+		"requires_glb": "res://assets/3d/locales/henderson_garage.glb",
+		# Jesse Henderson's garage, vol6 — Suburban Blight's practice
+		# space. Single bay 5.6×5.8 (godot x∈[-2.8,2.8], z∈[0,-5.8],
+		# ceil 2.7), the roll-up door UP (August rule) at z=0 with the
+		# driveway extending +Z. Kit at back-centre facing the door,
+		# amps flanking W, bass rig E, Tele on its stand, mic front-
+		# centre. Camera on the DRIVEWAY looking in: the lit interior
+		# framed by the open door at dusk, bulb practical warm inside.
+		"camera_origin": Vector3(1.9, 1.5, 2.2),
+		"camera_rotation": Vector3(-0.078, 0.351, 0.0),
+		"fov": 62.0,
+		"suppress_input": true,
+	},
+	"bindery": {
+		"scene": "res://scenes/locales/bindery.tscn",
+		"requires_glb": "res://assets/3d/locales/bindery.glb",
+		# The Bindery, Live Oak Street, New Auburn (vol6 ch2). Narrow
+		# 4.2×9.0 used-bookshop (godot x∈[-2.1,2.1], z∈[0,-9.0], ceil
+		# 3.2). Storefront window + belled door at z=0; tall walnut
+		# cases down both walls; Hal's counter east mid-shop; display
+		# tables make one aisle under three green-shaded pendants; the
+		# Borges bay is back-left. Camera just inside the door looking
+		# N down the aisle: counter frame-right, ladder far-left, the
+		# window display catching daylight behind. Eye 1.6.
+		"camera_origin": Vector3(0.85, 1.6, -1.1),
+		"camera_rotation": Vector3(-0.044, 0.206, 0.0),
+		"fov": 58.0,
+		"suppress_input": true,
+	},
+	"centro_stockroom": {
+		"scene": "res://scenes/locales/centro_stockroom.tscn",
+		"requires_glb": "res://assets/3d/locales/centro_stockroom.glb",
+		# Centro Groceries back-of-house (vol6 ch18 — Diego's 2AM). High
+		# 7.0×8.0 room, ceil 4.6 (godot x∈[-3.5,3.5], z∈[0,-8.0]). Blue/
+		# orange pallet racks down both walls, shrink-wrapped pallet +
+		# jack mid-floor, bare twin-tube fluorescents in two rows, the
+		# OPEN roll-up dock door in the north wall with the empty apron
+		# beyond. Camera by the store swing door looking N up the
+		# stripe lane: racks both sides, pallet mid-frame, the dark
+		# dock opening at the back. Eye 1.7.
+		"camera_origin": Vector3(1.6, 1.7, -1.0),
+		"camera_rotation": Vector3(-0.034, 0.365, 0.0),
+		"fov": 64.0,
+		"suppress_input": true,
+	},
+	"centro_dock": {
+		"scene": "res://scenes/locales/centro_stockroom.tscn",
+		"requires_glb": "res://assets/3d/locales/centro_stockroom.glb",
+		# Same GLB, outside — Diego's second break (ch10 / ch16 dawn).
+		# Camera on the EMPTY apron (drops 1.1 below dock floor),
+		# looking back SE at the open roll-up: fluorescent light
+		# spilling out over the dock edge and bumpers, the warm dock
+		# lamp above, pre-dawn blue everywhere else. The truck has not
+		# come yet.
+		"camera_origin": Vector3(-2.6, 0.6, -10.6),
+		"camera_rotation": Vector3(0.146, -2.253, 0.0),
+		"fov": 60.0,
+		"suppress_input": true,
+	},
 	"darkroom": {
 		"scene": "res://scenes/locales/darkroom.tscn",
 		"requires_glb": "res://assets/3d/locales/darkroom.glb",

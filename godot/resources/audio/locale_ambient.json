@@ -272,6 +272,22 @@
     "chillwave_interior": {
       "bed": "assets/audio/bgm/vol5_venue_ambient.wav",
       "gain": 0.85
+    },
+    "henderson_garage": {
+      "bed": "assets/audio/bgm/vol5_cicadas_dusk.ogg",
+      "gain": 0.72
+    },
+    "bindery": {
+      "bed": "assets/audio/bgm/vol5_store_ambient.wav",
+      "gain": 0.7
+    },
+    "centro_stockroom": {
+      "bed": "assets/audio/bgm/vol5_warehouse_drone.ogg",
+      "gain": 0.74
+    },
+    "centro_dock": {
+      "bed": "assets/audio/bgm/vol5_cicadas_dusk.ogg",
+      "gain": 0.7
     }
   }
 }

@@ -331,6 +331,41 @@ Louisville's hurricane-deck proportions"). Don't guess at numbers.
 
 ## Recent lessons
 
+### 2026-07-19 · wrong-room sweep round 2 · three locales in one pass
+
+- **The audit names lie; the scene text doesn't.** The reuse list
+  said "Substation Nine" and "Ben's room" — the actual rooms behind
+  those segments were the HENDERSON GARAGE (band practice, 6 segments
+  across ch5/ch14/ch20 — Substation Nine is the bill they're playing)
+  and the Kowalski BACKYARD. Always dump the narrate lines under each
+  reused bg before designing the replacement locale, or you'll build
+  the wrong room with full confidence.
+- **One GLB, two presets is the cheap win for inside/outside pairs.**
+  centro_stockroom carries both the ch18 2AM interior AND the ch10/
+  ch16 dock-break exterior: build the apron + bumpers + dock face
+  outside the open roll-up, then add a second CAMERA_PRESETS entry
+  (`centro_dock`) on the apron looking back at the light spilling
+  out. Two rooms of story coverage for one Deck rebuild slot.
+- **Generate sibling tscns by transforming an existing one, not by
+  hand.** The post-process stack is ~200 lines of boilerplate that
+  must stay in exact BackBufferCopy order. A python transform of
+  miller_garage.tscn (swap uid / glb path / node name / Environment
+  block / light blocks / strata+pack via regex) produced all three
+  scenes; assert-check count of Environment blocks, light count, and
+  that no donor-name string survives. Pick the DONOR by look: the
+  dusk garage donated to a dusk garage (accent colors carry over
+  sensibly); darkroom's red-accent shader params would have leaked
+  red into every mood of the bookshop.
+- **Reuse an existing style pack when the recipe matches.**
+  henderson_garage ships `garage_dusk` (built for miller_garage) —
+  same dusk-through-open-door recipe, zero new MoodCycler surface.
+  Only bindery_day and stockroom_fluorescent were genuinely new.
+- **Open-door locales need the outside built.** The garage's
+  establishing shot is FROM the driveway; the dock preset is FROM the
+  apron. Budget geometry beyond the doorway (driveway + lawn +
+  hoop; apron + lane stripes + waiting pallets) or the framing
+  vantage stares at void.
+
 ### 2026-07-16 · Anny full-body base under the GNM heads
 
 - **naver/anny is the licensed realistic-body answer** (Apache 2.0
