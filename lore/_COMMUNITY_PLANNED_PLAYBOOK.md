@@ -102,6 +102,53 @@ This playbook is the *how we work on it* doc.
 
 ---
 
+## Design note · POST-CAMPAIGN ENDLESS MODE — 2026-07-19, not yet built
+
+The backlog's replayability item, designed against the engine as
+it is (CommunityPlannedGame.gd, TURNS_TOTAL = 100, Labor Day
+finale gated on `labor_day_finale_shown`). Implementation is its
+own arc.
+
+**Entry.** After the Labor Day finale has been SHOWN on a save,
+that save's continue screen gains "SEPTEMBER AND AFTER" — reopen
+the same board, same roster, same regional state, seasonless.
+Campaign saves untouched: endless writes to a sibling save key
+(`slot_N_endless`), never over the campaign slot, so the finale
+state stays replayable. The three campaign slots stay three.
+
+**The loop.** Days keep counting past 100. No new anchor events;
+instead a scaling pressure curve:
+- Weekly spawn keeps firing (the existing `_run_weekly_spawn`),
+  but the spawn budget ratchets: +1 problem per week every 4
+  weeks, severity floor rising every 8 (reuses the severity-6
+  chain templates from the 29-template lattice — endless is where
+  those chains get to run long).
+- Tower brightness becomes the run's live health bar: endless has
+  no finale to absorb a WHITE tower, so WHITE = the run ends
+  (a named ending screen, "THE TOWER FINISHES", plus the run
+  ledger below). This is the mode's loss condition and its whole
+  dramatic argument.
+- Demons keep evolving on their existing clocks; humans keep
+  their obligation streaks. No new agent mechanics in v1.
+
+**Run ledger (the P3 item rides along).** On endless end (tower
+white, or player retires the board voluntarily): weeks survived,
+problems resolved per region, tower brightness curve
+(sparkline from a per-week brightness log the mode records),
+demons evolved. Stored per endless run; the compare screen lists
+past runs. This gives replays a target without touching campaign
+scoring.
+
+**Protected, restated.** BBS thread-gating and the diegetic
+terminal stay as designed. Endless does not add BBS content;
+threads already read stay read.
+
+**Non-goals v1.** No new problem templates required (the 29 +
+severity chains suffice at ratcheted volume); no new specialists;
+no difficulty selector — the ratchet IS the difficulty.
+
+---
+
 ## Lesson capture cadence
 
 After every work session that touches Community Planned and

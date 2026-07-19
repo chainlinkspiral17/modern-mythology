@@ -289,6 +289,59 @@ description across the batch. Most durable lessons:
   weight. Rule: the last scenario in a batch gets the most care, not
   the least.
 
+## Design note · THE SPREAD (cross-arcana runs) — 2026-07-19, not yet built
+
+The backlog's campaign-shape item, designed against the engine as
+it actually is (grounded in TarotGauntletGame.gd state, verified
+this date). Implementation is its own arc; scenarios stay
+untouched — that constraint is the whole design.
+
+**Entry.** A THE SPREAD button on the scenario picker. Drawing
+deals three DISTINCT arcana (plain randi; a date-seeded daily
+variant is the separate P3 item). For each card, the setup is
+drawn from that arcana's four setups. Redrawing is free until the
+first scenario starts; after that the spread is committed.
+
+**Carryover — universal knobs only.** The engine's only
+cross-arcana state is `_sanity` (5/5 default), `_inertia`, and
+the hand. Per-arcana currencies (inspiration/insight/signal/...)
+do NOT carry — they're scenario-local by design and carrying them
+would need 22 special cases. Rules:
+- Sanity: scenario N+1 starts at `clamp(final_sanity, 2,
+  sanity_max)`. Damage carries; the floor of 2 keeps every third
+  card winnable. Surplus does NOT carry above the setup's start —
+  a spread is endurance, not a snowball.
+- Inertia: carries at half, rounded down, capped 3. Rooms
+  remember you were just in another room.
+- Held card: on a WIN, the player picks ONE card from the final
+  hand; it's injected into the opening hand of the next scenario.
+  This is the strategic hook (a Gravity vs a cheap action is a
+  real decision) and the only new UI moment inside a scenario.
+- On a LOSS the spread ends. The reading records what completed
+  (0–2 cards). No retry of the failed card inside the same
+  spread — draw again.
+
+**Host shape.** A thin SpreadHost screen (three arcana cards via
+the existing `_arcana_card_tex` machinery, done/current/pending
+markers, carryover values printed between cards) that calls
+`start_scenario()` per card and listens to `game_ended(outcome,
+summary)`. Carryover injects via the existing `start` overrides
+path (sanity/inertia start values already read from setup
+`start`; the host passes a delta dict). Spread state persists in
+`GauntletState.state.spread` `{cards:[{arcana,setup,outcome}],
+idx, carry:{sanity,inertia,held_card}}` so quitting mid-spread
+resumes.
+
+**Completion.** Three wins = a full reading: achievement
+(`trigger.kind: spread_completed`), and the reading screen deals
+the three cards face-up with their ending tokens as the caption —
+the gauntlet's first artifact that is ABOUT a sequence, not a
+scenario.
+
+**Non-goals v1.** No reversed-card modifiers in spreads, no
+cross-arcana narrative stitching, no five-card spreads. Each is a
+separate later item; the v1 is the carryover loop.
+
 ## Templates
 
 ### Easy-bookend scenario template
