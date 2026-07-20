@@ -127,8 +127,7 @@ itself canon).
   reshuffled with the sisters' positions swapped (canon: the
   cart's B-side; Sagebrush shipped nothing else, so this must be
   framed as the same cart read differently, not new product).
-- **Basilica of Wires · SUBFLOOR** — one more level below M,
-  reachable only with the green tag, tuning-gated.
+- **Basilica of Wires · SUBFLOOR — DONE 2026-07-19.** Tenth level below M · green tag in the flooded cavity opens the message-room hatch · tuning-gated at 185 Hz · the other 1985 annotator's room, name kept blank on request. Tokens + design addendum.
 
 ## B · COMMUNITY PLANNED
 
