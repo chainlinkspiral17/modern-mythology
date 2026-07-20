@@ -1,0 +1,33 @@
+{
+  "id": "oneironauts_almanac",
+  "notes": "Top-level cross-pillar compendium. Each entry lights when its `requires` predicates are met against OneironauticsTokens + GauntletState — data the four pillars already write. Chapters: the_reading (VN), the_gauntlet (arcana), the_county (Community Planned), the_shelf (slowsticks), threads (cross-Oneironautics). Predicate shapes: {token},{token_prefix},{arcana_won},{all_arcana},{canon,eq},{any:[]},{all:[]}. See lore/_ONEIRONAUTS_ALMANAC_DESIGN.md.",
+  "entries": [
+    {"id": "reading_vol5_opened", "chapter": "the_reading", "title": "Volume Five", "blurb": "You opened the fifth book. The diner, the cathedral, the rooms behind the rooms.", "requires": [{"canon": "vol5_started"}]},
+    {"id": "reading_vol6_opened", "chapter": "the_reading", "title": "Volume Six", "blurb": "The sixth book. The deck was already dealing itself.", "requires": [{"canon": "vol6_started"}]},
+
+    {"id": "gauntlet_first_win", "chapter": "the_gauntlet", "title": "The First Card Turned", "blurb": "You won a reading. One arcana laid to rest.", "requires": [{"any": [{"arcana_won": "fool"}, {"arcana_won": "magician"}, {"arcana_won": "priestess"}, {"arcana_won": "empress"}, {"arcana_won": "emperor"}, {"arcana_won": "hierophant"}, {"arcana_won": "lovers"}, {"arcana_won": "chariot"}, {"arcana_won": "strength"}, {"arcana_won": "hermit"}, {"arcana_won": "wheel_of_fortune"}, {"arcana_won": "justice"}, {"arcana_won": "hanged_man"}, {"arcana_won": "death"}, {"arcana_won": "temperance"}, {"arcana_won": "devil"}, {"arcana_won": "tower"}, {"arcana_won": "star"}, {"arcana_won": "moon"}, {"arcana_won": "sun"}, {"arcana_won": "judgement"}, {"arcana_won": "world"}]}]},
+    {"id": "gauntlet_the_fool", "chapter": "the_gauntlet", "title": "0 · The Fool", "blurb": "D'Ambrosio's diner. Where every deck begins.", "requires": [{"arcana_won": "fool"}]},
+    {"id": "gauntlet_full_deck", "chapter": "the_gauntlet", "title": "The Whole Deck", "blurb": "All twenty-two arcana, Fool to World, laid down and lifted. The reading is complete.", "requires": [{"all_arcana": true}]},
+
+    {"id": "county_founded", "chapter": "the_county", "title": "The County Seat", "blurb": "You took the planner's chair. Graustark, Harmony Creek, Small Wood — and the tower that dims.", "requires": [{"canon": "cp_started"}]},
+    {"id": "county_deans_ledger", "chapter": "the_county", "title": "Dean's Ledger", "blurb": "You read the ledger that reads back. Dickens Dean keeps his own books.", "requires": [{"canon": "cp_deans_ledger_seen"}]},
+
+    {"id": "shelf_fey_warren", "chapter": "the_shelf", "title": "Fey Faire · The Warren", "blurb": "You reached the feys beyond the fence. The keyring grew itself.", "requires": [{"any": [{"token": "fey_faire_errand_first"}, {"token": "fey_faire_warren_emptied"}]}]},
+    {"id": "shelf_fey_royals", "chapter": "the_shelf", "title": "Fey Faire · The Sundering Healed", "blurb": "You spent Prospero's Word and brought the king and queen back to one court.", "requires": [{"token": "fey_faire_royals_reconciled"}]},
+    {"id": "shelf_earthman_correction", "chapter": "the_shelf", "title": "Earthman Chronicles · The Correction", "blurb": "You read Rocha's version beside Hubbard's, and chose which one was true.", "requires": [{"token": "earthman_correction_ending_seen"}]},
+    {"id": "shelf_earthman_second", "chapter": "the_shelf", "title": "Earthman Chronicles · The Second Reading", "blurb": "You ran it again with the Corrections applied. It remembered.", "requires": [{"token": "em_second_reading_finished"}]},
+    {"id": "shelf_basilica_subfloor", "chapter": "the_shelf", "title": "Basilica of Wires · The Subfloor", "blurb": "You went one level below M, to the room the map does not print.", "requires": [{"token": "basilica_subfloor_reached"}]},
+    {"id": "shelf_glass_second_ledger", "chapter": "the_shelf", "title": "Patient Mister Glass · The Second Ledger", "blurb": "You found the book kept under the book.", "requires": [{"token": "glass_second_ledger_seen"}]},
+    {"id": "shelf_hnn_ninth", "chapter": "the_shelf", "title": "Hane no Niwa · The Ninth Sitting", "blurb": "You stayed for the ninth. The garden noticed.", "requires": [{"token": "hnn_ninth_sit"}]},
+    {"id": "shelf_riffmaster", "chapter": "the_shelf", "title": "Riffmaster · The Mourning Bar", "blurb": "You played the bar nobody plays twice.", "requires": [{"token": "riffmaster_mourning_bar_played"}]},
+    {"id": "shelf_sweetgum", "chapter": "the_shelf", "title": "Sweetgum · The Waterline", "blurb": "You watched the waterline until it watched back.", "requires": [{"token": "sweetgum_waterline_watched"}]},
+    {"id": "shelf_wyrd", "chapter": "the_shelf", "title": "Sisters Wyrd · The Shimmer", "blurb": "You crossed where the shimmer thinned the field.", "requires": [{"token": "wyrd_shimmer_crossed"}]},
+    {"id": "shelf_pmg", "chapter": "the_shelf", "title": "Patient Mister Glass · A Silent Evening", "blurb": "You let one evening pass without a word. It was the loudest.", "requires": [{"token": "pmg_silent_evening"}]},
+    {"id": "shelf_pirate_jenny", "chapter": "the_shelf", "title": "Pirate Summer · The Conversation", "blurb": "Jenny and Wilson finally had the talk on the dock.", "requires": [{"token": "jenny_and_wilson_had_the_conversation"}]},
+
+    {"id": "thread_1976", "chapter": "threads", "title": "THREAD · The 1976 Incident", "blurb": "Camp Sweetgum's dark decade keeps surfacing — in the shortwave, in the cache, in the island light. The same year is bleeding across the shelf.", "requires": [{"token": "almanac_thread_1976_traced"}]},
+    {"id": "thread_rocha", "chapter": "threads", "title": "THREAD · The Rocha Melodies", "blurb": "One tune, welded into a weekend in '95, keeps humming through games it has no business being in.", "requires": [{"token": "rocha_note_permanently_unlocked_in_fey_faire_trailer"}]},
+    {"id": "thread_for_jack", "chapter": "threads", "title": "THREAD · 'for jack'", "blurb": "A note in blue pen, two words, tucked between two books that do not touch it. Nobody in the Faire wrote it.", "requires": [{"token": "rocha_note_permanently_unlocked_in_fey_faire_trailer"}]},
+    {"id": "thread_full_deck_reflex", "chapter": "threads", "title": "THREAD · The Whole Reading", "blurb": "You laid down all twenty-two, and something on the shelf and in the county shifted to match. The walls here were always thin.", "requires": [{"token": "almanac_full_deck"}]}
+  ]
+}

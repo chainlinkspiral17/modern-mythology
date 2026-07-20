@@ -1,0 +1,40 @@
+{
+  "id": "almanac_unlocks",
+  "notes": "Additive cross-pillar rules. On Almanac open and on each pillar's boot, any rule whose `when` predicates all hold grants its `grant_token` (once). Granted tokens are read by Almanac entries AND by the pillars themselves — light-touch bonuses, never gates. Predicate shapes match AlmanacState.predicate_met. See lore/_ONEIRONAUTS_ALMANAC_DESIGN.md.",
+  "rules": [
+    {
+      "grant_token": "almanac_thread_1976_traced",
+      "note": "Two independent brushes with the 1976 incident (Pirate Summer's shortwave + Sweetgum's island light) traces the thread.",
+      "when": [
+        {"token": "ps_1976_incident_known"},
+        {"token": "sweetgum_island_light_logged_attempt"}
+      ]
+    },
+    {
+      "grant_token": "almanac_full_deck",
+      "note": "All 22 arcana won. Lights THREAD · The Whole Reading and can be honored by any pillar as a completionist beat.",
+      "when": [{"all_arcana": true}]
+    },
+    {
+      "grant_token": "almanac_intel_subfloor",
+      "note": "Reaching the Basilica subfloor drops a piece of intel Community Planned can surface at setup (the county reads the deep places).",
+      "when": [{"token": "basilica_subfloor_reached"}]
+    },
+    {
+      "grant_token": "almanac_ff_mastery",
+      "note": "Fey Faire mastery (royals reconciled + warren emptied) — a cross-pillar honor token.",
+      "when": [
+        {"token": "fey_faire_royals_reconciled"},
+        {"token": "fey_faire_warren_emptied"}
+      ]
+    },
+    {
+      "grant_token": "almanac_earthman_corrected",
+      "note": "Both Earthman readings done — the manuscript and its correction. A VN-facing aside token.",
+      "when": [
+        {"token": "earthman_correction_ending_seen"},
+        {"token": "em_second_reading_finished"}
+      ]
+    }
+  ]
+}
