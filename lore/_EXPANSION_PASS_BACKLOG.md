@@ -119,7 +119,7 @@ itself canon).
   Rocha's Corrections applied from the start, and the six endings
   gain Correction-aware variants. Rides the manuscript-vs-game
   toggle already built.
-- **Estuary 3 · YEAR TWO (Manager Mode)** — a second summer at
+- **Estuary 3 · YEAR TWO (Manager Mode) — DONE 2026-07-19.** Second Manager summer auto-carries the year-one ending as starting conditions (stock/till/intro per ending) + TRAIN THE NEXT ONE resolution (sam_passed_the_store_on). The A/B/C backlog is now fully cleared. Original brief: a second summer at
   the Kwik Stop with Jules gone (or bought out), carrying the
   first year's ending as starting conditions. Rides Manager Mode
   + the ending tokens.
@@ -178,3 +178,14 @@ earn condition; recontextualizes the whole campaign.
 7. **B3 September structures.**
 8. **A4 Estuary 4** (the big one, last, after its breadcrumbs
    have all been laid).
+
+---
+
+## STATUS · 2026-07-19 · A/B/C ALL SECTIONS CLEAR
+
+Every slowstick (A1-A5), every Community Planned system (B1-B4),
+and both user-directed depth passes (C1-C2) are DONE. Remaining
+forward work lives OUTSIDE this backlog: the C2-tail Fey Faire
+polish list (orphan booths beyond the first 14, booth puzzles,
+death economy, mirror gates) and the queued tarot-locale director
+pass (awaiting on-device playtest).
