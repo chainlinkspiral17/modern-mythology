@@ -98,8 +98,11 @@ coastline, measurement-as-attention (the E1/E2 DNA matured). The
 doc can specify what the remake got WRONG, and the stick can
 quietly be about that in advance.
 
-**A4 · ESTUARY 4 (Oneironautics, 2005) — the pitched one.**
-Canon: Ines pitched it; the hunter's cabin in PS's east forest
+**A4 · ESTUARY 4 — DONE 2026-07-19.** Four chapters (archive /
+water / hunter / king tide), set 2016, Cade's door note paid
+off, the 2003 notebook read back from cross-stick CANON (not
+just a token — a first), three endings. The classic
+Oneironautics run is closed. Original brief: Canon: Ines pitched it; the hunter's cabin in PS's east forest
 "reappears in Estuary 4"; E3's doc calls it the studio's
 course-[correction]. The largest expansion on the board — full
 stick with a planted breadcrumb to pay off. Design doc first;

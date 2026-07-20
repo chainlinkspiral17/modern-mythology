@@ -57,6 +57,7 @@ touching code:
      _HANE_NO_NIWA_, _PATIENT_MISTER_GLASS_ (all `_DESIGN.md`)
    - `lore/_MRS_WUS_GARDEN_DESIGN.md` — stick #16 (built 2026-07)
    - `lore/_THE_TIDELINE_DESIGN.md` — stick #17 + 2048 remake (built 2026-07)
+   - `lore/_ESTUARY_4_DESIGN.md` — stick #18, the course-correction (built 2026-07)
    These carry the multi-hour authoring context that
    won't fit in a commit-message header.
 
