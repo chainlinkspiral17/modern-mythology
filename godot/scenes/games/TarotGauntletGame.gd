@@ -34,6 +34,7 @@ var _hand_id: String = "john_frank"
 
 # ── Loaded data ──────────────────────────────────────────────────────
 var _setup: Dictionary = {}
+var _campaign_seed: Dictionary = {}   # Major-Arcana thread edge (empty in free play)
 var _action_cards: Dictionary = {}       # id → card def (merged Fool + core)
 var _gravity_deck_def: Dictionary = {}
 var _finale_def: Dictionary = {}
@@ -349,7 +350,12 @@ func start_scenario(arcana: String = "fool",
 					location: String = "dambrosios",
 					hand: String = "john_frank",
 					scenario_id: String = "the_leap",
-					reversed: bool = false) -> void:
+					reversed: bool = false,
+					campaign_seed: Dictionary = {}) -> void:
+	# campaign_seed carries an optional Major-Arcana thread edge
+	# ({"edge": "breath"|"calm"|"time", "label": "..."}) applied as an
+	# ADDITIVE boon to starting_state below. Empty in free play.
+	_campaign_seed = campaign_seed
 	# Hosts have historically passed mixed-convention arcana ids:
 	#   · bare         — "fool", "strength", "wheel_of_fortune"
 	#   · numbered     — "0_fool", "8_strength"
@@ -1113,6 +1119,19 @@ func _init_run() -> void:
 		# Tighter max_turns
 		_setup["max_turns"] = max(4, int(_setup.get("max_turns", 8)) - 1)
 		_log_line("[color=#c8333c][b]REVERSED.[/b] the room is harder to hold.[/color]")
+	# THE QUERENT'S THREAD · a spent-thread edge from the Major Arcana
+	# campaign · ADDITIVE only (stacks on top of reversed if both apply).
+	var edge := String(_campaign_seed.get("edge", ""))
+	if edge != "":
+		match edge:
+			"breath":
+				_setup["max_turns"] = int(_setup.get("max_turns", 8)) + 2
+			"calm":
+				start["doubt"]      = max(0, int(start.get("doubt", 0)) - 2)
+				start["stagnation"] = max(0, int(start.get("stagnation", 0)) - 2)
+			"time":
+				start["time"]       = int(start.get("time", 4)) + 2
+		_log_line("[color=#7fd77f][b]THE THREAD.[/b] %s[/color]" % String(_campaign_seed.get("label", "the reading remembers you")))
 	_player_pos = start.get("player_pos", "counter")
 	_places_visited[_player_pos] = true
 	_time       = int(start.get("time", 4))

@@ -173,7 +173,9 @@ func _render_ladder() -> void:
 			play.add_theme_font_size_override("font_size", 16)
 			play.add_theme_color_override("font_color", C_ACTIVE)
 			var ent := e
-			play.pressed.connect(func() -> void: _launch(ent))
+			play.pressed.connect(func() -> void:
+				if thread > 0: _render_spend(ent)
+				else: _launch(ent, {}))
 			row.add_child(play)
 		else:
 			var lbl := Label.new()
@@ -210,7 +212,84 @@ func _setup_hand(aid: String, scenario: String) -> String:
 	return "john_frank"
 
 
-func _launch(entry: Dictionary) -> void:
+const THREAD_EDGES := [
+	{"edge": "breath", "name": "an extra breath", "desc": "+2 turns to hold the room", "label": "you take an extra breath before you begin (+2 turns)."},
+	{"edge": "calm",   "name": "a steadier hand", "desc": "start with less doubt and stagnation", "label": "your hand is steady; the doubt settles (-2 doubt, -2 stagnation)."},
+	{"edge": "time",   "name": "a longer opening", "desc": "+2 to your opening clock", "label": "the first minutes stretch a little longer (+2 time)."},
+]
+
+func _render_spend(entry: Dictionary) -> void:
+	for c in get_children():
+		c.queue_free()
+	var dim := ColorRect.new()
+	dim.color = C_BG
+	dim.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
+	add_child(dim)
+	var panel := Panel.new()
+	panel.set_anchors_preset(Control.PRESET_CENTER)
+	panel.offset_left = -400
+	panel.offset_right = 400
+	panel.offset_top = -220
+	panel.offset_bottom = 220
+	add_child(panel)
+	var margin := MarginContainer.new()
+	margin.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
+	margin.add_theme_constant_override("margin_left", 30)
+	margin.add_theme_constant_override("margin_right", 30)
+	margin.add_theme_constant_override("margin_top", 24)
+	margin.add_theme_constant_override("margin_bottom", 24)
+	panel.add_child(margin)
+	var v := VBoxContainer.new()
+	v.add_theme_constant_override("separation", 10)
+	margin.add_child(v)
+
+	var gs := get_node_or_null("/root/GauntletState")
+	var thread: int = int(gs.call("campaign_thread")) if gs else 0
+
+	var hdr := Label.new()
+	hdr.text = "· %s · spend the Thread? ·" % _arcana_name(String(entry.get("arcana", "")))
+	hdr.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+	hdr.add_theme_font_size_override("font_size", 19)
+	hdr.add_theme_color_override("font_color", C_ACCENT)
+	v.add_child(hdr)
+	var bal := Label.new()
+	bal.text = "the Querent's Thread: %d   ·   one edge costs 1" % thread
+	bal.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+	bal.add_theme_font_size_override("font_size", 12)
+	bal.add_theme_color_override("font_color", C_DIM)
+	v.add_child(bal)
+
+	for edge_v in THREAD_EDGES:
+		var edge: Dictionary = edge_v
+		var b := Button.new()
+		b.text = "  spend 1 · %s · %s  " % [String(edge.get("name", "")), String(edge.get("desc", ""))]
+		b.add_theme_font_size_override("font_size", 14)
+		b.disabled = thread < 1
+		var seed := {"edge": String(edge.get("edge", "")), "label": String(edge.get("label", ""))}
+		var ent := entry
+		b.pressed.connect(func() -> void:
+			if gs != null and bool(gs.call("campaign_spend_thread", 1)):
+				_launch(ent, seed)
+			else:
+				_launch(ent, {}))
+		v.add_child(b)
+
+	var plain := Button.new()
+	plain.text = "  · play it as it lies ·  "
+	plain.add_theme_font_size_override("font_size", 14)
+	plain.add_theme_color_override("font_color", C_TEXT)
+	var ent2 := entry
+	plain.pressed.connect(func() -> void: _launch(ent2, {}))
+	v.add_child(plain)
+
+	var back := Button.new()
+	back.text = "  · back ·  "
+	back.add_theme_font_size_override("font_size", 13)
+	back.pressed.connect(func() -> void: _render_ladder())
+	v.add_child(back)
+
+
+func _launch(entry: Dictionary, seed: Dictionary = {}) -> void:
 	_active_entry = entry
 	for c in get_children():
 		c.queue_free()
@@ -218,7 +297,7 @@ func _launch(entry: Dictionary) -> void:
 	var loc := String(entry.get("location", ""))
 	var scn := String(entry.get("scenario", ""))
 	_game = TAROT_GAUNTLET_SCENE.instantiate()
-	_game.call("start_scenario", aid, loc, _setup_hand(aid, scn), scn, false)
+	_game.call("start_scenario", aid, loc, _setup_hand(aid, scn), scn, false, seed)
 	_game.set("z_index", 30)
 	add_child(_game)
 	_game.connect("game_ended", _on_gauntlet_ended)

@@ -1,6 +1,6 @@
 # THE MAJOR ARCANA · CAMPAIGN · DESIGN
 ### the twenty-two, in order, as one journey — Fool to World
-### STATUS: DESIGN · v0 (2026-07-20)
+### STATUS: BUILT · playable_v1 (2026-07-20) · ladder + bookend + thread-spend edges all wired
 
 Chosen new-design direction #2 (after the Almanac hub). Turns the 22
 standalone TAROT GAUNTLET scenarios into a single ordered run with a
