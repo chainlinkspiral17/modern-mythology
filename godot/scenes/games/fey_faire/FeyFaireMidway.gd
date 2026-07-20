@@ -424,6 +424,55 @@ func _wildfey_pass_ready() -> bool:
 	return false
 
 
+func _royal_partner(fey_id: String) -> String:
+	if fey_id == "titania": return "oberon"
+	if fey_id == "oberon": return "titania"
+	return ""
+
+
+func _reconcile_ready() -> bool:
+	# The mirror-gate · you may only broker the royal peace if you have
+	# walked Mirror 6 (The Dream · where they are married) AND still hold
+	# Prospero's Word, whose whole purpose is a choice between two things
+	# you want.
+	var walked: Array = _run_state.get("mirrors_completed", [])
+	var kept: Array = _run_state.get("keepsakes", [])
+	return walked.has("mirror_6_dream") and kept.has("prosperos_word")
+
+
+func _render_sundered_royal(row: HBoxContainer, fey_id: String) -> void:
+	var partner_name: String = "Oberon" if fey_id == "titania" else "Titania"
+	var lbl := Label.new()
+	lbl.text = "· sundered · you took " + partner_name + ", and this one will not look at you ·"
+	lbl.add_theme_font_size_override("font_size", 13)
+	lbl.add_theme_color_override("font_color", C_GOLD_DIM)
+	lbl.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+	lbl.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	row.add_child(lbl)
+	# The mirror-gate · reconcile the pair by spending Prospero's Word.
+	if _reconcile_ready():
+		var broker := Button.new()
+		broker.text = "  broker the peace · spend Prospero's Word  "
+		broker.add_theme_font_size_override("font_size", 13)
+		broker.add_theme_color_override("font_color", C_RECRUITED)
+		var fid := fey_id
+		broker.pressed.connect(func() -> void:
+			_run_state["royals_reconciled"] = true
+			_run_state.erase(fid + "_barred")
+			var partner := _royal_partner(fid)
+			if partner != "":
+				_run_state.erase(partner + "_barred")
+			var kp: Array = _run_state.get("keepsakes", [])
+			kp.erase("prosperos_word")
+			_run_state["keepsakes"] = kp
+			var sfx := get_node_or_null("/root/SFXBank")
+			if sfx: sfx.play("unlock_chime", 0.7)
+			OneironauticsTokens.add("fey_faire_royals_reconciled")
+			request_save.emit()
+			negotiate_with_fey.emit(fid))
+		row.add_child(broker)
+
+
 func _load_off_season() -> void:
 	if not FileAccess.file_exists(OFF_SEASON_PATH): return
 	var f := FileAccess.open(OFF_SEASON_PATH, FileAccess.READ)
@@ -597,7 +646,11 @@ func _render_current_cell() -> void:
 				var locked_tonight: bool = locks.has(String(fey_id)) \
 						and int(locks[String(fey_id)]) == int(_run_state.get("night", 1))
 				var special: String = String(cell.get("special_action", ""))
-				if locked_tonight and special != "fortune":
+				# THE SUNDERING · this royal is barred because you took
+				# their estranged partner.  Only the mirror-gate reopens it.
+				if bool(_run_state.get(String(fey_id) + "_barred", false)):
+					_render_sundered_royal(booth_row, String(fey_id))
+				elif locked_tonight and special != "fortune":
 					var closed_lbl := Label.new()
 					closed_lbl.text = "· the flap is closed tonight ·"
 					closed_lbl.add_theme_font_size_override("font_size", 14)

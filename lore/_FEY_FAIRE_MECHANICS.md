@@ -423,3 +423,39 @@ no save-format change beyond the per-fey solved flags.
 
 Deferred still: mirror-gate puzzles, Titania/Oberon exclusivity,
 gold sinks beyond quotes/OFFER/puzzles.
+
+## THE SUNDERING · Titania/Oberon exclusivity + mirror-gate (2026-07-20)
+
+The estranged king and queen were both freely recruitable, which
+made the a_rose (needs titania_liked) and a_red_cap (needs
+oberon_liked) endings a matter of doing both rather than choosing.
+Now the choice is real, with a hidden third way behind a mirror.
+
+- **The Sundering · default exclusivity.** Recruiting one royal sets
+  `<partner>_barred` in the Host recruit path. The barred royal's
+  midway booth shows "· sundered · you took Oberon, and this one will
+  not look at you ·" with no approach button — no negotiation path
+  reaches them. A permanent, run-level fork (persists across death;
+  clears on a new run). Titania is seelie/Night-4, Oberon is
+  unseelie/Night-5, so the fork also splits your court trajectory.
+- **The mirror-gate · reconciliation.** The barred booth grows a
+  "broker the peace · spend Prospero's Word" button ONLY if you have
+  (a) walked Mirror 6 · THE DREAM (`mirrors_completed` has
+  `mirror_6_dream` · the one realm where they are married) AND (b)
+  still hold `prosperos_word` — the keepsake whose own flavor text
+  says "spend it on a night when the choice is between two things you
+  want." Brokering sets `royals_reconciled`, un-bars both, consumes
+  the Word, fires `fey_faire_royals_reconciled`, and drops you into
+  the second royal's negotiation. Both can then join · both boons,
+  both dispositions, both courts lifted.
+- **Why Prospero's Word.** It is granted when Prospero wakes (NG+),
+  so reconciliation is a mastery path — the default first-run
+  experience is the hard choice, and only a player who has gone deep
+  (walked the dream, woken Prospero) can hold the whole court.
+
+Rides existing machinery: the recruit mutation path, the midway
+booth-render branch, `mirrors_completed`, the keepsake list, the
+request_save signal. No new scene, no save-format change beyond the
+`<royal>_barred` / `royals_reconciled` flags.
+
+Deferred still: gold sinks beyond quotes/OFFER/puzzles.

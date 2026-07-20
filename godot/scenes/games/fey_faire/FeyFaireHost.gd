@@ -803,6 +803,13 @@ func _on_negotiation_complete(fey_id: String, outcome: String, mutations: Dictio
 		if not checkpoints.has(fey_id):
 			checkpoints.append(fey_id)
 		_run_state["checkpoints"] = checkpoints
+		# THE SUNDERING · the estranged king and queen. Recruiting one
+		# bars the other for the run, unless you have already brokered
+		# their peace at the mirror-gate (royals_reconciled).
+		var partner: String = _royal_partner(fey_id)
+		if partner != "" and not bool(_run_state.get("royals_reconciled", false)):
+			if not recruited.has(partner):
+				_run_state[partner + "_barred"] = true
 	# Apply court shift deltas
 	for k in mutations.keys():
 		var key: String = String(k)
@@ -842,6 +849,13 @@ func _on_negotiation_complete(fey_id: String, outcome: String, mutations: Dictio
 		_open_midway()
 	else:
 		_open_gate()
+
+
+func _royal_partner(fey_id: String) -> String:
+	# The sundered pair · each bars the other on recruit.
+	if fey_id == "titania": return "oberon"
+	if fey_id == "oberon": return "titania"
+	return ""
 
 
 func _open_combat(fey_id: String) -> void:

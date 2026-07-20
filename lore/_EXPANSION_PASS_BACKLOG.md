@@ -58,7 +58,12 @@ Still open from the survey, queued as C2-tail:
   MIDWAY), half purse + dropped keepsake, sixth death → YOU FORGET
   WHY YOU CAME. New FeyFaireDeath interstitial. See
   _FEY_FAIRE_MECHANICS.md "Death / checkpoint economy · wired."
-- mirror-gate puzzles · Titania/Oberon exclusivity
+- ~~mirror-gate puzzles · Titania/Oberon exclusivity~~ — DONE
+  2026-07-20. THE SUNDERING: recruiting one royal bars the other
+  (route-defining, feeds a_rose/a_red_cap). Mirror-gate: the barred
+  booth offers "broker the peace · spend Prospero's Word" only if
+  you've walked Mirror 6 (The Dream) and hold the Word — reconciles
+  both. See _FEY_FAIRE_MECHANICS.md "The Sundering."
 - gold sinks beyond quotes/OFFER (bakery bread as combat heal)
 
 ## A · SLOWSTICKS
