@@ -227,7 +227,10 @@ Also cleared 2026-07-20 (were queued outside this backlog):
   the_hierophant_circuit) need their per-space FP camera vantages
   re-authored with the 3D scene open — the host SPACE_MAPs were built
   for older, since-renamed boards. Checklist in the director audit doc.
-- Two dead `_BGM_BY_LOCATION` keys (riverboat, anya_bungalow) noted in
-  the director audit — confirm the intended location_ids, then fix.
+- ~~Two dead `_BGM_BY_LOCATION` keys~~ — FIXED 2026-07-20. riverboat →
+  riverboat_interior, anya_bungalow → elicia_bungalow; all 23 BGM keys
+  now map to real location_ids, so every gauntlet plays its ambient.
 
 Nothing else is queued. New work is net-new design, not backlog.
+The ONE remaining open item is the on-device gauntlet vantage
+re-authoring above (three locales), which needs the editor.

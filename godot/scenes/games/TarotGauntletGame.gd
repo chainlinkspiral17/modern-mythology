@@ -505,8 +505,8 @@ const _BGM_BY_LOCATION := {
 	# Wave-1
 	"dambrosios":                 "res://assets/audio/bgm/vol5_ambient.ogg",
 	"cathedral":                  "res://assets/audio/bgm/vol5_warehouse_drone.ogg",
-	"riverboat":                  "res://assets/audio/bgm/vol5_riverboat_drone.ogg",
-	"anya_bungalow":              "res://assets/audio/bgm/vol5_ambient.ogg",
+	"riverboat_interior":         "res://assets/audio/bgm/vol5_riverboat_drone.ogg",  # id is riverboat_interior (was dead key "riverboat")
+	"elicia_bungalow":            "res://assets/audio/bgm/vol5_ambient.ogg",          # id is elicia_bungalow (was dead key "anya_bungalow")
 	"roberts_house":              "res://assets/audio/bgm/vol5_ambient.ogg",
 	"ember_ash_office":           "res://assets/audio/bgm/vol5_ambient.ogg",
 	"lacombe_service_garage":     "res://assets/audio/bgm/vol5_warehouse_drone.ogg",
