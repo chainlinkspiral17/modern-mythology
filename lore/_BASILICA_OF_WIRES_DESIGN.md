@@ -114,3 +114,33 @@ one hole. PHASE B (when engine appetite exists): `WireframeView`
 line renderer + cell JSONs + tuner input + coherence/map systems.
 The only stick here that needs a new renderer; everything else
 is data.
+
+## SUBFLOOR · expansion (2026-07-19) · BUILT
+
+One level below M, per the expansion backlog. A tenth level the
+schematic never drew — you add it in pencil and climb.
+
+- **The green tag.** A maintenance inspection sticker (1985,
+  INSPECTED · SAFE TO ENERGIZE, initialed in a hand you don't
+  know) surfaces on the echo in the flooded cavity — a "G" cell
+  one step off the level-6 landmark. Picking it up sets the flag
+  + token `basilica_green_tag_found`.
+- **The descent.** A "V" hatch in the message-room floor (right
+  border, reachable at any tune) opens ONLY with the tag. It
+  drops to the subfloor (level index 9).
+- **Tuning-gated.** The subfloor's fundamental is 185 Hz — a
+  foundation note below the 220 agreement. Its "B" walls need
+  185 ±15 (you tune DOWN to walk it); the "T" terminal energizes
+  only at 185 ±2, exactly.
+- **The payoff · canon-safe.** The message room broadcasts HER
+  (Amélie, moved to Portland 1986, the Corrections in her
+  format). The subfloor is the OTHER annotator's — J.F., the
+  senior engineer, who signed the tag, energized the floor, and
+  is not in the record after. The final annotation, once you've
+  read the correction ending (or read Earthman the second way),
+  reveals the room keeps his name BLANK on purpose, because he
+  asked to be left out — an agreement the transmitter honors.
+  Resolves nothing the catalog keeps open; deepens the 1985 pair.
+- Tokens out: `basilica_green_tag_found`,
+  `basilica_subfloor_reached`. Tokens in (read/unread fork):
+  `earthman_correction_ending_seen` OR `em_second_reading_finished`.

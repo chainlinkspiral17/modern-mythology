@@ -89,7 +89,7 @@
         "#############",
         "#U.....#....#",
         "#.###..#.##.#",
-        "#.#.4.....#.#",
+        "#.#.4G....#.#",
         "#.#..###..#.#",
         "#.#..#.#..#.#",
         "#.B..#.#..B.#",
@@ -141,7 +141,23 @@
         "#.#########.#",
         "#.HHHHHHHHH.#",
         "#.#########.#",
-        "#MHHHHHHHHH.#",
+        "#MHHHHHHHHHV#",
+        "#############"
+      ]
+    },
+    {
+      "n": 10,
+      "fundamental": 185,
+      "name": "the subfloor",
+      "grid": [
+        "#############",
+        "#U..........#",
+        "#.#########.#",
+        "#.####T####.#",
+        "#.###...###B#",
+        "#.####.####.#",
+        "#.####B####.#",
+        "#...........#",
         "#############"
       ]
     }
@@ -181,5 +197,19 @@
     ],
     "final_annotation_unread": "ITEM 006 \u00b7 reply. STATUS: unread.",
     "final_annotation_read": "ITEM 006 \u00b7 reply. STATUS: read \u00b7 at last \u00b7 the correction is accepted."
+  },
+  "subfloor_page": {
+    "header": "ASTRO-CORTEX SOFTWARE \u00b7 QA ANNOTATION FORM 7-C \u00b7 (this copy never ran through the teletype \u00b7 it was carbon only)",
+    "addressed": "TO: the one who came down the last flight",
+    "green_tag_line": "The green tag is a maintenance inspection sticker, 1985, INSPECTED \u00b7 SAFE TO ENERGIZE, initialed. You do not recognize the initials. They are not hers. They are the other one's.",
+    "annotations": [
+      "ITEM 006 \u00b7 there were TWO staff in the channel in 1985. the upstairs room broadcasts one of them, nightly, in her format. this room is the other one's. STATUS: unbroadcast.",
+      "ITEM 007 \u00b7 he did not move to portland. he did not stay, either, in any way the building can log. he signed the tag, energized the floor, and is not in the record after. STATUS: unresolved, deliberately.",
+      "ITEM 008 \u00b7 the subfloor holds 185 cycles \u2014 a foundation note under the agreement upstairs. it has never carried content. it carries WEIGHT. STATUS: load-bearing.",
+      "ITEM 009 \u00b7 she annotated the manuscript. he annotated the transmitter. one of those got remembered. this room is the correction to THAT. STATUS: filed here, and only here."
+    ],
+    "final_read": "ITEM 010 \u00b7 upstairs, if you read the correction ending, you know her name and what she made. down here there is only the tag, the note, and initials you don't know. some corrections restore a name. this one KEEPS ONE BLANK, on purpose, because he asked \u2014 in the one margin nobody preserved \u2014 to be left out of it. honored. \u2014 filed by the transmitter, which keeps every agreement, including that one.",
+    "final_unread": "ITEM 010 \u00b7 the initials on the tag mean nothing to you yet. read the book the second way, upstairs and elsewhere, and come back down. the floor keeps. the floor is very good at keeping.",
+    "climb_line": "ten levels of instrument between you and the daylight now. the tenth was never on the schematic. you add it, in pencil, and climb."
   }
 }

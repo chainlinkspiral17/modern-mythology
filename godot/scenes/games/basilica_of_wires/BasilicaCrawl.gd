@@ -38,6 +38,10 @@ const SAFE_FREQ := 220.0
 const SAFE_TOL := 2.0
 const FREQ_MIN := 180.0
 const FREQ_MAX := 520.0
+# SUBFLOOR · the tenth level, below the message room · a foundation
+# note. The "V" descent needs the green tag; the "T" terminal holds
+# only when you match the floor exactly.
+const SUBFLOOR_FREQ := 185.0
 
 # View geometry · three depths of trapezoid corridor
 const VP := Rect2(240, 60, 800, 500)
@@ -60,6 +64,7 @@ var _last_junction: Vector2i = Vector2i(1, 1)
 var _map_open: bool = false
 var _msg: String = ""
 var _message_room_reached: bool = false
+var _green_tag: bool = false          # SUBFLOOR · found in the flooded cavity
 var _echo_pending: float = -1.0
 
 # The live hum
@@ -96,10 +101,11 @@ func boot(state: Dictionary) -> void:
 	var am := get_node_or_null("/root/AudioMgr")
 	if am != null and am.has_method("stop_scene_bgm"):
 		am.stop_scene_bgm()   # the hum is the score
-	_level_i = clampi(int(_state.get("level_i", 0)), 0, 8)
+	_level_i = clampi(int(_state.get("level_i", 0)), 0, 9)
 	_freq = float(_state.get("freq", 440.0))
 	_coherence = float(_state.get("coherence", 9.0))
 	_message_room_reached = bool(_state.get("message_room_reached", false))
+	_green_tag = bool(_state.get("green_tag", false))
 	_enter_level(_level_i, true)
 
 
@@ -123,12 +129,19 @@ func _enter_level(i: int, from_above: bool) -> void:
 	_grid = _level().get("grid", [])
 	# find entry: '@' on level 1, else 'U' (from above) or 'S' (from below)
 	var want := "@" if i == 0 and from_above else ("U" if from_above else "S")
-	for y in range(_grid.size()):
-		var row := String(_grid[y])
-		var x := row.find(want)
-		if x >= 0:
-			_px = x
-			_py = y
+	# Climbing UP into the message room (no 'S' there) lands on the
+	# subfloor hatch 'V'; final fallbacks keep any level enterable.
+	var order: Array = [want, "V", "U", "S", "@"]
+	var placed := false
+	for w in order:
+		for y in range(_grid.size()):
+			var x := String(_grid[y]).find(String(w))
+			if x >= 0:
+				_px = x
+				_py = y
+				placed = true
+				break
+		if placed:
 			break
 	_dir = 1
 	_set_msg("LEVEL %d · %s · fundamental %d Hz" % [i + 1, String(_level().get("name", "")).to_upper(),
@@ -150,6 +163,12 @@ func _passable(c: String) -> bool:
 		return absf(_freq - float(_level().get("fundamental", 400))) <= BAND_TOL
 	if c == "M":
 		return absf(_freq - SAFE_FREQ) <= SAFE_TOL
+	if c == "V":
+		# SUBFLOOR descent · the floor won't open without the tag.
+		return _green_tag
+	if c == "T":
+		# The subfloor terminal holds its note only at the floor freq.
+		return absf(_freq - SUBFLOOR_FREQ) <= SAFE_TOL
 	return true
 
 
@@ -233,6 +252,10 @@ func _step(sign: int) -> void:
 			_set_msg("a wall · at this frequency. (fundamental %d Hz)" % int(_level().get("fundamental", 0)))
 		elif c == "M":
 			_set_msg("a door with no handle. it is listening for an agreement.")
+		elif c == "V":
+			_set_msg("a hatch in the floor of the message room, bolted from below. it wants an inspection tag it can read — a green one.")
+		elif c == "T":
+			_set_msg("the subfloor terminal. dead at this pitch. it energizes only when you match the floor itself · 185 cycles, exactly.")
 		return
 	_px = nx
 	_py = ny
@@ -272,6 +295,23 @@ func _after_step(c: String) -> void:
 			return
 		"M":
 			_reach_message_room()
+			return
+		"G":
+			# The green tag surfaces in the black water.
+			if not _green_tag:
+				_green_tag = true
+				_state["green_tag"] = true
+				OneironauticsTokens.add("basilica_green_tag_found")
+				_set_msg("something rides up on the echo · a maintenance tag, green, 1985, INSPECTED · SAFE TO ENERGIZE, initialed in a hand you don't know. you pocket it. the water keeps its face still.")
+			else:
+				_set_msg("the water where the tag was. still, and green-lit, and done with you.")
+			return
+		"V":
+			# SUBFLOOR descent · only reachable with the tag (see _passable).
+			_enter_level(9, true)
+			return
+		"T":
+			_reach_subfloor()
 			return
 		"2", "3", "4", "5":
 			var lm: Dictionary = _data.get("landmarks", {}).get(c, {})
@@ -345,6 +385,71 @@ func _show_teletype() -> void:
 	b.pressed.connect(func() -> void:
 		overlay.queue_free()
 		_set_msg("nine levels of instrument between you and the daylight. it knows you now."))
+	col.add_child(b)
+
+
+func _reach_subfloor() -> void:
+	_state["subfloor_reached"] = true
+	OneironauticsTokens.add("basilica_subfloor_reached")
+	_map_open = false
+	queue_redraw()
+	_show_subfloor_teletype()
+
+
+func _show_subfloor_teletype() -> void:
+	var page: Dictionary = _data.get("subfloor_page", {})
+	var overlay := Panel.new()
+	overlay.set_anchors_and_offsets_preset(Control.PRESET_CENTER)
+	overlay.offset_left = -430
+	overlay.offset_right = 430
+	overlay.offset_top = -320
+	overlay.offset_bottom = 320
+	var sb := StyleBoxFlat.new()
+	sb.bg_color = Color(0, 0, 0, 0.98)
+	sb.border_color = C_AMBER
+	sb.set_border_width_all(1)
+	overlay.add_theme_stylebox_override("panel", sb)
+	add_child(overlay)
+
+	var col := VBoxContainer.new()
+	col.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
+	col.offset_left = 24
+	col.offset_right = -24
+	col.offset_top = 18
+	col.offset_bottom = -18
+	col.add_theme_constant_override("separation", 9)
+	overlay.add_child(col)
+
+	var lines: Array = [
+		String(page.get("header", "")),
+		String(page.get("addressed", "")),
+		String(page.get("green_tag_line", "")),
+	]
+	for a in page.get("annotations", []):
+		lines.append(String(a))
+	# The last item reads differently once you know her side of it —
+	# the correction ending upstairs, or the manuscript read twice.
+	if OneironauticsTokens.has("earthman_correction_ending_seen") \
+			or OneironauticsTokens.has("em_second_reading_finished"):
+		lines.append(String(page.get("final_read", "")))
+	else:
+		lines.append(String(page.get("final_unread", "")))
+	for line in lines:
+		var l := Label.new()
+		l.text = String(line)
+		l.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+		l.add_theme_font_size_override("font_size", 13)
+		l.add_theme_color_override("font_color", C_AMBER)
+		col.add_child(l)
+
+	var b := Button.new()
+	b.text = "  · begin the climb out ·  "
+	b.flat = true
+	b.add_theme_font_size_override("font_size", 14)
+	b.add_theme_color_override("font_color", C_WHITE)
+	b.pressed.connect(func() -> void:
+		overlay.queue_free()
+		_set_msg(String(page.get("climb_line", "you climb."))))
 	col.add_child(b)
 
 
@@ -470,8 +575,10 @@ func _draw_view() -> void:
 
 
 func _wall_color(c: String, base: Color) -> Color:
-	if c == "B" or c == "M":
+	if c == "B" or c == "M" or c == "T":
 		return C_AMBER   # energized · exists per band
+	if c == "V":
+		return C_VIOLET  # the sealed hatch · violet like the scramble
 	return base
 
 
