@@ -46,7 +46,12 @@ Still open from the survey, queued as C2-tail:
   side-quest layer: a party fey vouches for its warren-kin, reached
   through party capability. errands.json + trailer WARREN board +
   four party BOONS. Design: _FEY_FAIRE_WARREN_DESIGN.md.
-- booth puzzles (Cobweb rhythm, Erlking wheel, Puck shell-game)
+- ~~booth puzzles (Cobweb rhythm, Erlking wheel, Puck shell-game)~~ —
+  DONE 2026-07-20. FeyFairePuzzle scene, three verbs: Cobweb timing
+  (swing TRUE), Puck shell-game (track the coin), Erlking wheel
+  (deduce the safe sector). Win → gold + disposition + solved flag
+  (retained on death) → negotiation; lose → flap shuts for the night.
+  See _FEY_FAIRE_MECHANICS.md "Booth puzzles · wired."
 - ~~death checkpoint economy (checkpoints tracked, never used)~~ —
   DONE 2026-07-20. Full designed loop wired: a named memory cracks
   (six in mirror order), respawn at the DEEPEST checkpoint (BFS over
