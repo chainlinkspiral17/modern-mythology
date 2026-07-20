@@ -702,6 +702,21 @@ func _art_path_item(item_id: String) -> String:
 func _art_path_visitor_face(vid: String) -> String:
 	return "res://assets/gallery/" + vid + "_face.png"
 
+# Every arcana visitor gets a face. A hand-painted PNG override
+# (assets/gallery/<vid>_face.png) wins; otherwise a DETERMINISTIC
+# procedural bust keyed on the visitor's authored accent + mood, so
+# all ~131 visitors read as people, not "(no portrait art yet)".
+# Deterministic by vid → the same visitor always wears the same face.
+const _VISITOR_BUST := preload("res://scripts/vn/VnBustPortrait.gd")
+func _visitor_face_texture(vid: String) -> Texture2D:
+	var png: Texture2D = _load_texture_silent(_art_path_visitor_face(vid))
+	if png != null:
+		return png
+	var vdef: Dictionary = _visitors_def.get(vid, {})
+	var accent: Color = Color(String(vdef.get("accent", "#c8a268")))
+	var mood: String = String(vdef.get("mood", "neutral"))
+	return _VISITOR_BUST.texture(vid, mood, accent)
+
 func _art_path_board() -> String:
 	return "res://assets/gallery/locations/" + _location_id + "_gauntlet_board.png"
 
@@ -1701,7 +1716,7 @@ func _show_next_visitor_arrival() -> void:
 	art_panel.add_theme_stylebox_override("panel", _make_panel_style())
 	art_panel.custom_minimum_size = Vector2(320, 448)
 	root.add_child(art_panel)
-	var face_tex: Texture2D = _load_texture_silent(_art_path_visitor_face(vid))
+	var face_tex: Texture2D = _visitor_face_texture(vid)
 	if face_tex:
 		var img := TextureRect.new()
 		img.texture = face_tex
@@ -1957,7 +1972,7 @@ func _open_visitor_view(vid: String) -> void:
 	art_panel.custom_minimum_size = Vector2(360, 480)
 	root.add_child(art_panel)
 	var arrived: bool = st.get("arrived", false)
-	var face_tex: Texture2D = _load_texture_silent(_art_path_visitor_face(vid)) if arrived else null
+	var face_tex: Texture2D = _visitor_face_texture(vid) if arrived else null
 	if face_tex:
 		var img := TextureRect.new()
 		img.texture = face_tex
@@ -4684,7 +4699,7 @@ func _render_visitors() -> void:
 				if mb.pressed and mb.button_index == MOUSE_BUTTON_LEFT:
 					_open_visitor_view(vid))
 		if arrived:
-			var face: Texture2D = _load_texture_silent(_art_path_visitor_face(vid))
+			var face: Texture2D = _visitor_face_texture(vid)
 			if face:
 				var face_rect := TextureRect.new()
 				face_rect.texture = face
@@ -4948,7 +4963,7 @@ func _build_visitors_modal_body() -> Control:
 		var row := HBoxContainer.new()
 		row.add_theme_constant_override("separation", 10)
 		row.size_flags_horizontal = Control.SIZE_EXPAND_FILL
-		var face: Texture2D = _load_texture_silent(_art_path_visitor_face(vid)) if arrived else null
+		var face: Texture2D = _visitor_face_texture(vid) if arrived else null
 		if face:
 			var ico := TextureRect.new()
 			ico.texture = face

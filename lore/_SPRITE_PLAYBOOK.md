@@ -103,6 +103,29 @@ chunky, era-appropriate.
 
 ## Recent lessons
 
+### 2026-07-20 · arcana visitor portraits · the data already held the face
+
+131 gauntlet visitor NPCs showed "(no portrait art yet)" in the
+arrival/roster modals. The fix was ~15 lines, not 131 assets:
+
+- **The portrait inputs were already authored.** Every visitor def in
+  the arcana `visitors.json` files carries an `accent` (hex) and a
+  `mood` word — exactly VnBustPortrait's `(key, expr, accent)` inputs.
+  A deterministic bust keyed on `vid` gives all 131 a consistent face
+  for free. Before generating asset files, check whether the data
+  already describes the thing.
+- **One helper, PNG-override-first, replaces four call sites.**
+  `_visitor_face_texture(vid)` returns the hand-painted
+  `<vid>_face.png` if it exists, else the procedural bust. The four
+  places that loaded the face PNG now call the helper, so the
+  override escape hatch (per the two-tier rule) is preserved and the
+  "(no art yet)" placeholder is dead for arrived visitors.
+- **Watch blanket string-replace against your own new code.** Swapping
+  `_load_texture_silent(_art_path_visitor_face(vid))` → the helper hit
+  FIVE sites — including the line *inside* the helper, making it
+  recurse. When you add a helper that wraps an expression and then
+  replace that expression globally, exclude the helper's own body.
+
 ### 2026-07-19 · PS graphics pass 6 · light, shadow, and the day banner
 
 - **`show_behind_parent` makes ground shadows free.** Character
