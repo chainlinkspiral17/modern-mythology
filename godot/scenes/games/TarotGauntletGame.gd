@@ -779,6 +779,45 @@ const _VISITOR_LOOKS := {
 	"mackenzie_texts_priestess": {"hair_style": 2, "hair_color": 3, "skin_tone": 5, "glasses": "regular"},
 	"the_superfan":        {"hair_style": 6, "hair_color": 2, "skin_tone": 4, "glasses": "round", "freckles": true},
 	"the_critic":          {"hair_style": 1, "hair_color": 4, "skin_tone": 5, "glasses": "regular", "collar": "shirt"},
+	"elicia":              {"hair_style": 6, "hair_color": 1, "skin_tone": 4, "earrings": true},
+	"elicia_phone":        {"hair_style": 2, "hair_color": 6, "skin_tone": 5, "earrings": true},
+	"maya_kid":            {"hair_style": 6, "hair_color": 3, "skin_tone": 5, "beard": false, "freckles": true},
+	"maya_age_7":          {"hair_style": 6, "hair_color": 3, "skin_tone": 5, "beard": false, "freckles": true},
+	"john_as_regular":     {"hair_style": 1, "hair_color": 0, "skin_tone": 5, "beard": false, "collar": "shirt"},
+	"john_frank":          {"hair_style": 1, "hair_color": 0, "skin_tone": 5, "beard": false, "collar": "shirt"},
+	# ── Antonio D'Ambrosio (the younger son / heir) ──
+	"antonio_first_sunday":  {"hair_style": 1, "hair_color": 1, "skin_tone": 4, "collar": "shirt"},
+	"antonio_phone_brief":   {"hair_style": 1, "hair_color": 1, "skin_tone": 4, "collar": "shirt"},
+	"antonio_phone_for_paul":{"hair_style": 1, "hair_color": 1, "skin_tone": 4, "collar": "shirt"},
+	"dean_at_table_14":      {"hair_style": 11, "hair_color": 1, "skin_tone": 4, "glasses": "regular", "collar": "shirt"},
+	"quentin_paul_phone":    {"hair_style": 11, "hair_color": 1, "skin_tone": 4, "collar": "shirt"},
+	"mrs_karras":            {"age": "elder", "hair_style": 10, "hair_color": 5, "skin_tone": 4, "glasses": "regular", "earrings": true},
+	# ── Daigle's roadhouse (Devil) ──
+	"lou_behind_the_bar":    {"age": "elder", "hair_style": 0, "hair_color": 5, "skin_tone": 4, "beard": true, "collar": "shirt"},
+	"the_one_who_got_out":   {"hair_style": 6, "hair_color": 3, "skin_tone": 5},
+	# ── Simon's apartment (Hanged Man) ──
+	"the_landlord":          {"age": "elder", "hair_style": 4, "hair_color": 5, "skin_tone": 5, "collar": "shirt"},
+	"the_neighbor_below":    {"age": "elder", "hair_style": 10, "hair_color": 5, "skin_tone": 4, "earrings": true},
+	# ── Bayou lighthouse (Hermit) ──
+	"the_predecessor":       {"age": "elder", "hair_style": 4, "hair_color": 5, "skin_tone": 4, "beard": true, "collar": "shirt"},
+	"jules_in_a_skiff":      {"age": "elder", "hair_style": 5, "hair_color": 5, "skin_tone": 3, "beard": true, "collar": "tee"},
+	# ── Parish cemetery (Judgement) ──
+	"sister_beatrice_at_the_lectern": {"hair_style": 10, "hair_color": 1, "skin_tone": 4, "collar": "shirt"},
+	"the_caretaker_with_lantern":     {"age": "elder", "hair_style": 0, "hair_color": 5, "skin_tone": 3, "beard": true, "collar": "tee"},
+	"the_widow_at_the_mausoleum":     {"age": "elder", "hair_style": 10, "hair_color": 5, "skin_tone": 3, "glasses": "regular", "earrings": true},
+	"the_child_with_a_rosary":        {"hair_style": 6, "hair_color": 1, "skin_tone": 4, "freckles": true},
+	# ── Courthouse (Justice) ──
+	"erica_on_the_bench":    {"hair_style": 10, "hair_color": 1, "skin_tone": 4, "collar": "shirt"},
+	"tessier_counsel":       {"hair_style": 11, "hair_color": 2, "skin_tone": 5, "glasses": "regular", "collar": "shirt"},
+	"the_court_clerk":       {"age": "elder", "hair_style": 0, "hair_color": 5, "skin_tone": 4, "glasses": "regular", "collar": "shirt"},
+	"the_witness_avant":     {"age": "elder", "hair_style": 0, "hair_color": 5, "skin_tone": 4, "collar": "tee"},
+	# ── Static Drive-In (Moon) ──
+	"the_projectionist_at_the_booth": {"hair_style": 2, "hair_color": 2, "skin_tone": 4, "beard": true, "collar": "tee"},
+	"the_kid_alone_in_row_three":     {"hair_style": 0, "hair_color": 1, "skin_tone": 4, "freckles": true},
+	# ── Christian Ice (Star) ──
+	"the_other_shift_leaving":        {"age": "elder", "hair_style": 0, "hair_color": 5, "skin_tone": 3, "beard": true, "collar": "tee"},
+	"mr_couvillon_at_six_fourteen":   {"age": "elder", "hair_style": 4, "hair_color": 5, "skin_tone": 4, "collar": "shirt"},
+	"the_kid_at_the_glass":           {"hair_style": 0, "hair_color": 3, "skin_tone": 5, "freckles": true},
 }
 
 
