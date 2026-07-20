@@ -194,6 +194,7 @@ func _build_ui() -> void:
 	# Secondary buttons
 	for btn_data: Array in [
 		["THE ALMANAC",       _on_almanac],
+		["THE MAJOR ARCANA",  _on_major_arcana],
 		["GALLERY",           _on_gallery],
 		["MUSIC PLAYER",      _on_music],
 		["ACHIEVEMENTS",      _on_achievements],
@@ -524,6 +525,16 @@ func _on_almanac() -> void:
 		existing.queue_free()
 	var Almanac := load("res://scenes/menu/Almanac.gd")
 	var panel: Control = Almanac.build(self)
+	add_child(panel)
+
+
+func _on_major_arcana() -> void:
+	# The Fool's Journey — the 22 gauntlets in order as one run.
+	var existing: Node = get_node_or_null("MajorArcanaCampaign")
+	if existing != null and is_instance_valid(existing):
+		existing.queue_free()
+	var Campaign := load("res://scenes/menu/MajorArcanaCampaign.gd")
+	var panel: Control = Campaign.build(self)
 	add_child(panel)
 
 
