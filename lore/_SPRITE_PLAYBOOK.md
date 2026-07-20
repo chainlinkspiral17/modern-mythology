@@ -103,6 +103,38 @@ chunky, era-appropriate.
 
 ## Recent lessons
 
+### 2026-07-20 · visitor portraits · the five-tier resolution chain
+
+Built the arcana-visitor face system out to a full priority stack.
+When a procedural portrait needs to serve a big cast, layer it — do
+not choose between "all procedural" and "all authored":
+
+  PNG override → per-def JSON `look` → curated code table
+  (`_VISITOR_LOOKS`) → keyword derivation from name+lore → hash bust
+
+- **A curated code table beats scattering `look` into content JSON.**
+  ~30 marquee characters got bespoke faces via one `_VISITOR_LOOKS`
+  dict in the scene, keyed by visitor id — mirroring how
+  VnBustPortrait keeps its `_OVERRIDES` art data in code. No hand-
+  editing 10 hand-formatted visitors.json files; art data lives with
+  art code. A per-def JSON `look` field still wins for future
+  per-scenario one-offs.
+- **Unify character variants under one look.** dante_phone /
+  dante_at_the_helm, three Sammys, four Albertos, four Mackenzies —
+  each character appears under several ids across arcana. Point them
+  all at the same feature dict so a face stays the same person from
+  scenario to scenario.
+- **Know when to STOP covering.** 79/128 visitors got a curated face;
+  the rest are systems (veil.tv), voices (Coast Guard radio), groups
+  (the six-top), bots, and apparitions — a human bust would be wrong
+  for those, so they correctly ride the derivation+hash. Coverage is
+  a curation decision, not "fill every row."
+- **Ground look choices in canon, not guesswork.** Age/role come from
+  lore (Dante 60, Jules 64, Cleotha 81); ethnicity cues come from
+  stated background (D'Ambrosio Italian-American, Reyes/Hector Latino,
+  Bao East Asian, the Louisiana Cajun surnames) — legitimate
+  character design off authored text, not invention.
+
 ### 2026-07-20 · arcana visitor portraits · the data already held the face
 
 131 gauntlet visitor NPCs showed "(no portrait art yet)" in the
