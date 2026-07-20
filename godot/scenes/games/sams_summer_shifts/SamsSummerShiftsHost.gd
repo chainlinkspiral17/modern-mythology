@@ -211,6 +211,8 @@ func _build_title_screen() -> void:
 		meta.text += "  ·  last summer, the sign got new letters"
 	elif OneironauticsTokens.has("ksm_ending_shuttered"):
 		meta.text += "  ·  last summer, the store never reopened"
+	elif OneironauticsTokens.has("ksm_ending_evicted"):
+		meta.text += "  ·  last summer, aldous didn't renew the lease"
 	meta.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 	meta.add_theme_font_size_override("font_size", 14)
 	meta.add_theme_color_override("font_color", C_DIM)

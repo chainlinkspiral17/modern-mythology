@@ -158,6 +158,34 @@ each state transition.
 
 ## Recent lessons
 
+### 2026-07-20 · slowstick depth pass · spine + de-domination + a second axis
+
+- **The shelf is a system, cheaply.** The catalog already had a dense
+  cross-stick token web but no COLLECTOR spine — nothing responded to
+  how much of the whole shelf you had read. Fix rode existing state:
+  `SlowstockBoot._fire_collector_milestones` crosses first/half/whole
+  thresholds (counted over the 18 CORE sticks, remake excluded) and
+  fires durable tokens the Almanac lights. Centralize the repeated
+  `/root/GauntletState` → `canon_vars`/`slowsticks_finished` reads into
+  `OneironauticsTokens.canon()/finished_sticks()/is_stick_finished()`
+  once, refactor the copies onto it.
+- **De-dominate by scaling the REWARD, not adding rebuffs.** Fey Faire
+  OFFER was a universal solvent because every branch that succeeded
+  granted the same disposition. Give each fey a single WANT (derived
+  from data it already carries — favorite_play → RECITE, else court;
+  curated-override hatch, empty by default) and scale disposition on
+  the match (+3 delighted, +1 cool). OFFER is never a want, so gold
+  stops being optimal. No new rebuffs = no soft-locks, no dead content;
+  only warmth and flavor change. Surface a legible "tell" so it is a
+  READ, not trial-and-error. Same derive+override shape as the gauntlet
+  visitor look table.
+- **A neglected stat needs a HARD-OVERRIDE ending to matter.** KSM
+  tracked landlord but folded it into the single score, where cash
+  outweighed it — so it gated nothing. Adding an `evicted` ending that
+  OVERRIDES the score when landlord ≤ 1 makes it a real second axis:
+  "win the score" and "keep the store" pull apart. Telegraph the danger
+  band in the weekly report so the loss is warned, never a gotcha.
+
 ### 2026-07-20 · the meta-layer trilogy · one work, not four
 
 Built three cross-pillar systems in one arc — the Oneironaut's

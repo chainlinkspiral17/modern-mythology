@@ -302,6 +302,13 @@ func _run_week() -> void:
 	_state["cash"] = cash
 	_state["stock"] = stock
 	_state["landlord"] = clampi(landlord, 0, 9)
+	# Landlord danger band · telegraph the eviction override so losing
+	# the lease is a warned consequence, not a gotcha. Below 2, no score
+	# buys the renewal.
+	if int(_state.get("landlord", 5)) <= 1:
+		lines.append("[color=#c8442c]· mr. aldous has stopped saying 'next year.' the lease is on the line, whatever the score reads.[/color]")
+	elif int(_state.get("landlord", 5)) <= 2:
+		lines.append("[color=#f0c040]· mr. aldous is short with you at the register. the lot is a relationship, and it is cooling.[/color]")
 
 	# a staff life crosses the counter
 	var event_text := ""

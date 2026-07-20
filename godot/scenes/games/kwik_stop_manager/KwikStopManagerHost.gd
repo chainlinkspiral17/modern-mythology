@@ -252,8 +252,15 @@ func _on_summer_over(state: Dictionary) -> void:
 
 	var cash: int = int(_run_state.get("cash", 0))
 	var morale: int = int(_run_state.get("morale", 5))
+	var landlord: int = int(_run_state.get("landlord", 5))
 	var endings: Dictionary = _weeks_def.get("endings", {})
-	var key := "crew" if morale >= 7 else ("corporate" if cash >= 900 else "shuttered")
+	# Landlord is a second, independent pressure axis · it no longer
+	# just feeds the score (where cash could outweigh it). Burn the
+	# landlord and you lose the LEASE, whatever the number says — so
+	# "win the score" and "keep the store" can pull apart. Legibly
+	# telegraphed in the weekly report once it drops to the danger band.
+	var key := "evicted" if landlord <= 1 \
+		else ("crew" if morale >= 7 else ("corporate" if cash >= 900 else "shuttered"))
 	var e: Dictionary = endings.get(key, {})
 	_run_state["ending"] = key
 

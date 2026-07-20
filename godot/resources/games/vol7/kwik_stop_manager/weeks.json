@@ -123,6 +123,11 @@
       "title": "SHUTTERED FOR THE SEASON",
       "req": "otherwise",
       "text": "the reopening sign never goes up. mr. aldous is decent about it, which is worse. the crew scatters up and down the 101 like receipts out a car window.\n\nthe game posts your final score anyway, because it always posts the score. that is the kind of game it is. that was always the argument."
+    },
+    "evicted": {
+      "title": "NOT RENEWED",
+      "req": "landlord <= 1 (overrides score) · a lot is a relationship, and you spent it",
+      "text": "mr. aldous does not renew, and it isn't the money — the money was fine. it's the rent envelopes that came late, or short, or with a note instead of a check. a lot is a relationship, he says, on his way out to the truck. you ran the numbers and let the man who owns the ground go cold.\n\nthe reopening sign goes up over someone else's store. your final score posts to a stockroom door that stopped being yours in august. the number was real. so was the lease."
     }
   }
 }
