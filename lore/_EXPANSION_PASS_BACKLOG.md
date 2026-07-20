@@ -41,9 +41,11 @@ two dead-code key fixes) + combat triangle (implement choice,
 SECOND party action, loss costs half gold, THREATEN→combat at
 tier 3). Full survey + design addendum in _FEY_FAIRE_MECHANICS.md.
 Still open from the survey, queued as C2-tail:
-- connect ~75 orphaned feys to booths (largest content gap;
-  queen_mab, kelpie, selkie, sluagh, redcap etc. are authored
-  but unreachable)
+- ~~connect ~75 orphaned feys to booths~~ — DONE 2026-07-20 via
+  THE WARREN. The 61 unreached feys are not booth cells but a
+  side-quest layer: a party fey vouches for its warren-kin, reached
+  through party capability. errands.json + trailer WARREN board +
+  four party BOONS. Design: _FEY_FAIRE_WARREN_DESIGN.md.
 - booth puzzles (Cobweb rhythm, Erlking wheel, Puck shell-game)
 - death checkpoint economy (checkpoints tracked, never used)
 - mirror-gate puzzles · Titania/Oberon exclusivity
