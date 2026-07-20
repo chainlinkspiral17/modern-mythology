@@ -55,6 +55,7 @@ touching code:
      _ESTUARY_1_, _ESTUARY_2_, _NORTHWIND_HARBOR_,
      _BASILICA_OF_WIRES_, _SWEETGUM_, _RIFFMASTER_MELODY_CLUB_,
      _HANE_NO_NIWA_, _PATIENT_MISTER_GLASS_ (all `_DESIGN.md`)
+   - `lore/_MRS_WUS_GARDEN_DESIGN.md` — stick #16 (built 2026-07)
    These carry the multi-hour authoring context that
    won't fit in a commit-message header.
 

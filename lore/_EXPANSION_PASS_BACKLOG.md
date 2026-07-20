@@ -69,10 +69,14 @@ logbook on Thursday night — Jenny's own ending, four more summers
 with Wilson as her right hand). Four counselor-only scrapbook
 tokens are specified. +4-6 hours over base.
 
-**A2 · MRS. WU'S GARDEN (Oneironautics, Oct 2003) — new stick
-#16.** Canon: Ines Rocha solo, same October she welded Estuary 3
-in a weekend. Not on the shelf; the lattice says it shipped.
-Needs `_MRS_WUS_GARDEN_DESIGN.md` first. Design gravity: an Ines
+**A2 · MRS. WU'S GARDEN — DONE 2026-07-19.** Design doc + full
+build in one pass: six evenings, nine beds, frost triage, the
+unnamed Jenny visitor (gated on pirate_summer_finished), the
+Rocha melody braided audibly via hane_no_niwa/one_melody.wav.
+Set Corvallis fall 1995 per the PS bulletin flier. Shelf slot
+was pre-scaffolded (garage sale 2007 · prior canon kept).
+Original brief: Canon: Ines Rocha solo, same October she welded
+Estuary 3 in a weekend. Design gravity: an Ines
 solo made in stolen evenings right after E3 — small, tender,
 garden-shaped; sits naturally beside Hane no Niwa's maintenance
 grammar but AMERICAN (a Portland backyard, a neighbor, a season).
