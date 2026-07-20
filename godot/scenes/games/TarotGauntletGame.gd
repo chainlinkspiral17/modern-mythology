@@ -510,7 +510,7 @@ const _BGM_BY_LOCATION := {
 	"roberts_house":              "res://assets/audio/bgm/vol5_ambient.ogg",
 	"ember_ash_office":           "res://assets/audio/bgm/vol5_ambient.ogg",
 	"lacombe_service_garage":     "res://assets/audio/bgm/vol5_warehouse_drone.ogg",
-	"hierophant_circuit":         "res://assets/audio/bgm/vol5_cicadas_dusk.ogg",
+	"the_hierophant_circuit":     "res://assets/audio/bgm/vol5_cicadas_dusk.ogg",   # id carries the "the_" (was dead key "hierophant_circuit")
 	"roadside_chapel":            "res://assets/audio/bgm/vol5_cicadas_dusk.ogg",
 	# Wave-2 · reuses the four available Vol5 tracks by tonal fit.
 	# Later polish can source per-location tracks; these are honest
@@ -2402,6 +2402,7 @@ const _LOCATION_SCENE_PATHS := {
 	"riverboat_interior":  "res://scenes/locales/riverboat_interior.tscn", # Empress / Emperor / Hierophant
 	"roberts_house":       "res://scenes/locales/roberts_kitchen.tscn",
 	"ember_ash_office":    "res://scenes/locales/houston_office.tscn",
+	"the_hierophant_circuit": "res://scenes/locales/hierophant_circuit.tscn", # V Hierophant · id carries the "the_"
 	# 2026-06-21 Major-Arcana sweep — every reversed-card scenario
 	# now lands in its own interior.
 	"roadside_chapel":         "res://scenes/locales/roadside_chapel.tscn",        # VI Lovers

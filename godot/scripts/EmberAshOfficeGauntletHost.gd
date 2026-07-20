@@ -27,6 +27,7 @@ const SPACE_MAP := {
 	"back_stair":      [-2.40, 1.00,   0.0],   # at the back stair opening
 	"crew_photo":      [-0.50, 4.90, 270.0],   # at the wall photo
 	"door":            [+0.00, 4.80,  90.0],   # office door (north)
+	"office_door":     [+0.00, 4.80,  90.0],   # = board space "office_door" (same north door; host had it keyed "door")
 	"cypress_beam":    [+0.00, 2.60,  90.0],   # under the cypress beam
 }
 
