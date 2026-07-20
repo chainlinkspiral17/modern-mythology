@@ -384,3 +384,42 @@ beyond the transient `_death_wake_cell`/`forced_ending` keys.
 
 Deferred still: booth puzzles, mirror-gate puzzles,
 Titania/Oberon exclusivity, gold sinks beyond quotes/OFFER.
+
+## BOOTH PUZZLES · wired (2026-07-20)
+
+Three of the midway's carnival booths are now real games you must
+WIN to earn the approach — the cell descriptions always promised it
+("swing TRUE", "keep your eye on it", the wheel nobody beats). One
+data-driven scene (`FeyFairePuzzle`), three distinct verbs, none of
+them luck (failure is authored, per the balancing philosophy):
+
+- **Cobweb · SWING TRUE · timing.** TEST-YOUR-STRENGTH. A mallet
+  marker sweeps a bar; strike (button or SPACE) while it crosses the
+  true band, three times, the band shrinking each hit. One miss and
+  the bell stays silent. The only real-time puzzle (`_process`).
+- **Puck · COIN IN A GLASS · memory.** Three glasses, a coin under
+  the middle, a fixed deterministic swap script you advance through
+  one blur at a time; name the glass at the end. (Tracking, not RNG —
+  the swaps are authored so a careful player always solves it.)
+- **The Erlking · WHEEL OF FORTUNE · deduction.** Four clues (even ·
+  not a power of two · digit-sum in {3,6,9} · under ten) resolve to
+  exactly one safe sector of sixteen. Pick it. Picking sector 16
+  (CHILD) is the worst loss — a colder fail line.
+
+Wiring: the three MIDWAY cells gain a `puzzle` field; the midway
+shows "play their game" instead of "approach the booth" until
+`puzzle_solved_<fey>` is set, then "· their game: won ·". The Host
+`_open_puzzle` routes the new `play_puzzle(fey_id, puzzle)` signal.
+- WIN → +3 gold (booth games are a gold source), +2 disposition,
+  `puzzle_solved_<fey>` (RETAINED ON DEATH — puzzle progress stays
+  won), token `fey_faire_puzzle_won`, then straight into the
+  negotiation the game earned.
+- LOSE → the flap shuts for the night (booth_locks) and -1
+  disposition, exactly like a failed negotiation.
+
+Rides existing machinery: the special-booth button pattern (fortune/
+bookstall), booth_locks, the disposition/token feeds. One new scene,
+no save-format change beyond the per-fey solved flags.
+
+Deferred still: mirror-gate puzzles, Titania/Oberon exclusivity,
+gold sinks beyond quotes/OFFER/puzzles.

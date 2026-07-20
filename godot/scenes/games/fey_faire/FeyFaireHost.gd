@@ -39,6 +39,7 @@ const MIRROR_REALM_SCENE  := "res://scenes/games/fey_faire/FeyFaireMirrorRealm.t
 const COMPENDIUM_SCENE    := "res://scenes/games/fey_faire/FeyFaireCompendium.tscn"
 const FORTUNE_SCENE       := "res://scenes/games/fey_faire/FeyFaireFortune.tscn"
 const DEATH_SCENE         := "res://scenes/games/fey_faire/FeyFaireDeath.tscn"
+const PUZZLE_SCENE        := "res://scenes/games/fey_faire/FeyFairePuzzle.tscn"
 
 # Read the midway booth graph as data without instantiating the scene ·
 # used to score checkpoint depth (BFS from the Gate) at death.
@@ -561,11 +562,55 @@ func _open_midway() -> void:
 		_child_scene.rest_at_booth.connect(_on_rest_at_booth)
 	if _child_scene.has_signal("read_fortune"):
 		_child_scene.read_fortune.connect(_open_fortune)
+	if _child_scene.has_signal("play_puzzle"):
+		_child_scene.play_puzzle.connect(_open_puzzle)
 	if _child_scene.has_signal("request_save"):
 		_child_scene.request_save.connect(_save_state)
 	add_child(_child_scene)
 	if _child_scene.has_method("boot"):
 		_child_scene.call("boot", _run_state)
+
+
+# ─── Booth puzzles ──────────────────────────────────────────────────
+
+func _open_puzzle(fey_id: String, puzzle: String) -> void:
+	_clear_current_scene()
+	_play_bgm("res://assets/audio/bgm/ff/midway_waltz.wav")
+	_child_scene = load(PUZZLE_SCENE).instantiate()
+	_child_scene.puzzle_solved.connect(_on_puzzle_solved)
+	_child_scene.puzzle_failed.connect(_on_puzzle_failed)
+	_child_scene.quit.connect(_open_midway)
+	add_child(_child_scene)
+	if _child_scene.has_method("boot"):
+		_child_scene.call("boot", {
+			"fey_id": fey_id,
+			"fey_name": String(_fey_entry(fey_id).get("name", "they")),
+			"puzzle": puzzle,
+		})
+
+
+func _on_puzzle_solved(fey_id: String) -> void:
+	# Booth games are a gold source; winning warms the fey and the win
+	# is retained on death (puzzle_solved_<fey>).  Then straight into
+	# the negotiation the puzzle earned.
+	_run_state["puzzle_solved_" + fey_id] = true
+	_run_state["gold"] = int(_run_state.get("gold", 0)) + 3
+	var disp_key: String = fey_id + "_disposition"
+	_run_state[disp_key] = int(_run_state.get(disp_key, 0)) + 2
+	OneironauticsTokens.add("fey_faire_puzzle_won")
+	_save_state()
+	_open_negotiation_from_midway(fey_id)
+
+
+func _on_puzzle_failed(fey_id: String) -> void:
+	# Losing shuts the flap for the night, like a failed negotiation.
+	var locks: Dictionary = _run_state.get("booth_locks", {})
+	locks[fey_id] = int(_run_state.get("night", 1))
+	_run_state["booth_locks"] = locks
+	var disp_key: String = fey_id + "_disposition"
+	_run_state[disp_key] = int(_run_state.get(disp_key, 0)) - 1
+	_save_state()
+	_open_midway()
 
 
 func _open_big_top() -> void:

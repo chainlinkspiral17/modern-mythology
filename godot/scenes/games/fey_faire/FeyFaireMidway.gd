@@ -21,6 +21,7 @@ signal negotiate_with_fey(fey_id: String)
 signal enter_big_top
 signal rest_at_booth(fey_id: String)
 signal read_fortune
+signal play_puzzle(fey_id: String, puzzle: String)
 signal request_save
 signal quit
 
@@ -96,6 +97,7 @@ const MIDWAY: Dictionary = {
 		"name": "COIN-IN-A-GLASS BOOTH",
 		"description": "An old man behind the counter demonstrates that if you slide the quarter down the ramp JUST SO it lands in the shot glass.  Two dollars for three tries.  Nobody wins.  He asks your name twice.",
 		"fey": "puck",
+		"puzzle": "puck_shells",
 		"neighbors": ["midway_center", "bookstall"]
 	},
 	"cotton_candy": {
@@ -145,6 +147,7 @@ const MIDWAY: Dictionary = {
 		"name": "WHEEL OF FORTUNE",
 		"description": "A tall painted wheel with sixteen sectors.  A gaunt man in a long grey coat spins it.  His crown is antler.  Sector 16 says CHILD.  Nobody has landed on Sector 16 in living memory.",
 		"fey": "erlking",
+		"puzzle": "erlking_wheel",
 		"neighbors": ["midway_north", "kissing_booth"]
 	},
 	"big_top": {
@@ -269,6 +272,7 @@ const MIDWAY: Dictionary = {
 		"name": "TEST-YOUR-STRENGTH",
 		"description": "A wooden tower with a bell at the top.  Cobweb runs it · she's ninety-three or she's thirteen, depending on the light.  She hands you the mallet and says 'do not swing hard; swing TRUE.'  The mallet is heavier than it looks.  Nobody has rung the bell by swinging hard.",
 		"fey": "cobweb",
+		"puzzle": "cobweb_rhythm",
 		"neighbors": ["dart_gallery", "milk_bottles"]
 	},
 	"milk_bottles": {
@@ -615,16 +619,31 @@ func _render_current_cell() -> void:
 							negotiate_with_fey.emit(fid_pass))
 						booth_row.add_child(pass_btn)
 				else:
+					var puzzle: String = String(cell.get("puzzle", ""))
+					var puzzle_solved: bool = bool(_run_state.get("puzzle_solved_" + String(fey_id), false))
 					var interact_btn := Button.new()
 					if special == "fortune" and not bool(_run_state.get("fortune_read", false)):
 						interact_btn.text = "  sit for a reading  "
 						interact_btn.pressed.connect(func() -> void: read_fortune.emit())
+					elif puzzle != "" and not puzzle_solved:
+						# The fey runs a real carnival game · win it to earn
+						# the approach.  Winning is retained on death.
+						interact_btn.text = "  play their game  "
+						var fid_p := String(fey_id)
+						var puz := puzzle
+						interact_btn.pressed.connect(func() -> void: play_puzzle.emit(fid_p, puz))
 					else:
 						interact_btn.text = "  approach the booth  "
 						interact_btn.pressed.connect(func() -> void: negotiate_with_fey.emit(String(fey_id)))
 					interact_btn.add_theme_font_size_override("font_size", 15)
 					interact_btn.add_theme_color_override("font_color", C_GOLD)
 					booth_row.add_child(interact_btn)
+					if puzzle != "" and puzzle_solved:
+						var won_lbl := Label.new()
+						won_lbl.text = "· their game: won ·"
+						won_lbl.add_theme_font_size_override("font_size", 12)
+						won_lbl.add_theme_color_override("font_color", C_RECRUITED)
+						booth_row.add_child(won_lbl)
 			else:
 				# REST at a recruited booth · advances the night
 				var night_now: int = int(_run_state.get("night", 1))
