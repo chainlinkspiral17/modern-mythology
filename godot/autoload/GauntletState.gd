@@ -19,6 +19,11 @@ var state: Dictionary = {
 	"codex_hotspots_surfaced": {},     # "fool" → ["fool_steamboat_echo", ...]
 	"cp_scenario_unlocks": [],         # ["death:the_quiet_committal", ...] · Community-Planned → Gauntlet crossover
 	"current_run": null,               # optional in-progress run snapshot
+	"campaign": {                      # THE MAJOR ARCANA · the Fool's Journey
+		"cleared": [],                 # arcana ids cleared in the campaign, in order
+		"thread": 0,                   # THE QUERENT'S THREAD · carried insight
+		"acts_closed": [],             # [1,2,3] as each act finishes
+	},
 }
 
 
@@ -157,6 +162,67 @@ func has_item_unlock(id: String) -> bool:
 	return id in state["items_unlocked"]
 
 
+# ── THE MAJOR ARCANA campaign ────────────────────────────────────────
+# The Fool's Journey · a carried run over the 22. Additive over the
+# existing per-arcana win records; the campaign is a framing layer.
+
+func _campaign() -> Dictionary:
+	# Older saves merged before this block existed won't have it.
+	if not state.has("campaign") or not (state["campaign"] is Dictionary):
+		state["campaign"] = {"cleared": [], "thread": 0, "acts_closed": []}
+	var c: Dictionary = state["campaign"]
+	if not c.has("cleared"):     c["cleared"] = []
+	if not c.has("thread"):      c["thread"] = 0
+	if not c.has("acts_closed"): c["acts_closed"] = []
+	return c
+
+
+func campaign_cleared() -> Array:
+	return _campaign()["cleared"]
+
+
+func campaign_is_cleared(arcana: String) -> bool:
+	return arcana in _campaign()["cleared"]
+
+
+func campaign_thread() -> int:
+	return int(_campaign()["thread"])
+
+
+func campaign_clear(arcana: String, thread_gain: int) -> bool:
+	# Records a campaign win. Returns true if this arcana was newly
+	# cleared (so the caller fires tokens / awards once). Idempotent.
+	var c := _campaign()
+	if arcana in c["cleared"]:
+		return false
+	(c["cleared"] as Array).append(arcana)
+	c["thread"] = int(c["thread"]) + maxi(0, thread_gain)
+	_save()
+	return true
+
+
+func campaign_spend_thread(cost: int) -> bool:
+	var c := _campaign()
+	if int(c["thread"]) < cost:
+		return false
+	c["thread"] = int(c["thread"]) - cost
+	_save()
+	return true
+
+
+func campaign_close_act(n: int) -> bool:
+	var c := _campaign()
+	if n in c["acts_closed"]:
+		return false
+	(c["acts_closed"] as Array).append(n)
+	_save()
+	return true
+
+
+func campaign_act_closed(n: int) -> bool:
+	return n in _campaign()["acts_closed"]
+
+
 func reset_all() -> void:
 	state = {
 		"version": 1,
@@ -169,5 +235,6 @@ func reset_all() -> void:
 		"lore_tokens_revealed": [],
 		"codex_hotspots_surfaced": {},
 		"current_run": null,
+		"campaign": {"cleared": [], "thread": 0, "acts_closed": []},
 	}
 	_save()
