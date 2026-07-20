@@ -139,7 +139,7 @@ countersuit). Needs a region JSON + banner + 5-6 templates + the
 reveal. This is the expansion that turns CP's implied antagonist
 into a board position.
 
-**B2 · PAIR DISPATCHES.** The engine already counts
+**B2 · PAIR DISPATCHES — DONE 2026-07-19.** Pair… button on every dispatch row, partner picker, rider-record implementation (stages/undo/revoke all pair-aware), 13 authored lines + class fallbacks + the Ruth refusal. Original brief: The engine already counts
 demon_pair_fires / human_pair_fires; make pairing a first-class
 choice: send two agents on one problem for combined competence
 at combined cost, with pair-specific flavor for authored combos
@@ -151,7 +151,7 @@ pure ratchet today; give it milestones every 8 endless weeks — a
 letter from a departed agent, a county map redrawn, the ledger
 sparkline annotated — so long runs have chapters, not just decay.
 
-**B4 · DEAN'S LEDGER.** The anomaly/fingerprint counters exist
+**B4 · DEAN'S LEDGER — DONE 2026-07-19.** Fourth Dean seed at five fingerprints: the summer from the tower, five dated entries, the blank ruled last line. Original brief: The anomaly/fingerprint counters exist
 and are shown nowhere; a late-campaign interlude (earned at
 fingerprints ≥ 3) where the player reads Dean's own log of THEM —
 the operation as seen from the tower. One interlude JSON + an
