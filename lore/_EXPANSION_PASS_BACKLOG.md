@@ -64,7 +64,14 @@ Still open from the survey, queued as C2-tail:
   booth offers "broker the peace · spend Prospero's Word" only if
   you've walked Mirror 6 (The Dream) and hold the Word — reconciles
   both. See _FEY_FAIRE_MECHANICS.md "The Sundering."
-- gold sinks beyond quotes/OFFER (bakery bread as combat heal)
+- ~~gold sinks beyond quotes/OFFER (bakery bread as combat heal)~~ —
+  DONE 2026-07-20. Provisions: buy snacks at the three food wagons,
+  EAT in combat for +18 HP (gold → survivability → fewer deaths).
+  Strongbox: the Fortune-Teller stashes gold safe from the death-
+  halving for a 2-gold fee. See _FEY_FAIRE_MECHANICS.md "Gold sinks."
+  **C2-tail is now fully cleared** — every item from the thickening
+  survey (orphaned feys/Warren, death economy, booth puzzles, royal
+  exclusivity, gold sinks) is built.
 
 ## A · SLOWSTICKS
 

@@ -61,6 +61,7 @@ const C_HP_GOOD   := Color(0.62, 0.82, 0.55, 1.0)
 const C_HP_MID    := Color(0.973, 0.784, 0.282, 1.0)
 const C_HP_LOW    := Color(0.878, 0.361, 0.361, 1.0)
 const C_SP        := Color(0.55, 0.72, 0.94, 1.0)
+const PROVISION_HEAL := 18   # a snack bought at a food wagon
 
 var _fey_id: String = ""
 var _fey: Dictionary = {}
@@ -422,6 +423,21 @@ func _render_action_menu() -> void:
 	def_btn.pressed.connect(_on_defend_pressed)
 	menu.add_child(def_btn)
 
+	# EAT · spend a provision (bought at the food wagons) to heal.
+	# Costs the turn, like DEFEND · a gold-bought second wind.
+	var snacks: int = int(_run_state.get("provisions", 0))
+	var eat_btn := Button.new()
+	if snacks > 0:
+		eat_btn.text = "  EAT  \n  (" + str(snacks) + " · +" + str(PROVISION_HEAL) + " HP)  "
+		eat_btn.pressed.connect(_on_eat_pressed)
+	else:
+		eat_btn.text = "  EAT  \n  (no snacks · buy at a wagon)  "
+		eat_btn.disabled = true
+	eat_btn.custom_minimum_size = Vector2(150, 60)
+	eat_btn.add_theme_font_size_override("font_size", 15)
+	eat_btn.add_theme_color_override("font_color", C_HP_GOOD if snacks > 0 else C_GOLD_DIM)
+	menu.add_child(eat_btn)
+
 	var recite_btn := Button.new()
 	var quotes: Array = _run_state.get("unlocked_quotes", [])
 	if quotes.size() > 0:
@@ -589,6 +605,19 @@ func _on_defend_pressed() -> void:
 		_log.append("· you set your feet · you look away and look back · the glamour slips off like rain")
 	else:
 		_log.append("· you set your feet · +3 SP · incoming damage halved next turn")
+	_end_of_player_turn()
+
+
+func _on_eat_pressed() -> void:
+	var snacks: int = int(_run_state.get("provisions", 0))
+	if snacks <= 0:
+		return
+	_run_state["provisions"] = snacks - 1
+	var healed: int = mini(_player_hp_max, _player_hp + PROVISION_HEAL) - _player_hp
+	_player_hp += healed
+	var sfx := get_node_or_null("/root/SFXBank")
+	if sfx: sfx.play("card_place", 0.5)
+	_log.append("· you eat · a mouthful of the Faire · +" + str(healed) + " HP · (" + str(snacks - 1) + " left)")
 	_end_of_player_turn()
 
 

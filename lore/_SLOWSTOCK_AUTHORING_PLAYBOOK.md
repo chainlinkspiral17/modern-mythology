@@ -158,6 +158,35 @@ each state transition.
 
 ## Recent lessons
 
+### 2026-07-20 · Fey Faire · closing the economy loop (C2-tail arc)
+
+Finished the whole C2-tail in one arc: Warren, death economy, booth
+puzzles, royal exclusivity, gold sinks. The connective lesson:
+
+- **Every source needs a sink; every sink needs a reason.** Adding
+  the puzzle-win gold SOURCE (+3) meant the loop needed more sinks,
+  so provisions + the strongbox followed. And each sink pays a
+  system that already exists: provisions feed combat survival (which
+  feeds the death economy — fewer deaths, fewer spent memories); the
+  strongbox protects against the exact half-gold-on-death rule wired
+  the same day. Don't add a sink the player has no reason to use.
+- **A choice is only a choice if it costs.** Titania/Oberon were both
+  freely recruitable, so "which royal" wasn't a decision. Barring one
+  on recruit turned an inert pair into the run's defining fork — and
+  the endings that already keyed on their dispositions suddenly
+  meant something. Look for pairs/options the player can currently
+  take ALL of; that's usually a missing exclusivity.
+- **The hidden third way rewards mastery without cheapening the
+  choice.** Reconciling the royals needs BOTH a walked mirror AND an
+  NG+ keepsake (Prospero's Word) whose flavor text already described
+  this exact use. First-run players feel the hard fork; deep players
+  find the door. Gate the "have it all" path behind proof of depth,
+  not behind grinding.
+- **Three puzzles, three verbs.** Cobweb/Puck/Erlking could all have
+  been the same timing game. Making them timing / memory / deduction
+  respectively meant one scene taught three skills. When authoring a
+  set of minigames, vary the VERB, not just the theme.
+
 ### 2026-07-20 · Fey Faire · wiring a specified-but-dead economy
 
 The death/checkpoint economy was fully written in the mechanics doc

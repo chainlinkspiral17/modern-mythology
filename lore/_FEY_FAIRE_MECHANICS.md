@@ -458,4 +458,35 @@ booth-render branch, `mirrors_completed`, the keepsake list, the
 request_save signal. No new scene, no save-format change beyond the
 `<royal>_barred` / `royals_reconciled` flags.
 
-Deferred still: gold sinks beyond quotes/OFFER/puzzles.
+## GOLD SINKS · provisions + the strongbox (2026-07-20)
+
+Gold had three sinks (Bookstall quotes, OFFER, rest-tip) and now,
+after booth-puzzle wins, a fourth SOURCE — the loop needed more
+places to spend. Two new sinks, both tied to the death economy:
+
+- **Provisions · the food wagons.** The three wagon cells (Cotton
+  Candy · Popcorn · Funnel Cake) gain a `provision` field and a
+  "buy <snack> · 1 gold" shop (cap 5). Combat gains an **EAT** action
+  that spends one provision for +18 HP at the cost of the turn — a
+  gold-bought second wind. This is the systemic payoff: gold →
+  provisions → survive combat → fewer deaths → keep your memories.
+  The sink that most directly answers the death economy.
+- **The strongbox · Morgan's stash.** The Fortune-Teller's cell
+  gains a "stash your loose gold · 2-gold fee" service. Stashed gold
+  (`gold_stashed`) is NOT halved on death — the death economy only
+  touches loose `gold`. Withdraw is free. A strategic choice between
+  safety and liquidity (OFFER/shops spend loose gold only), and the
+  first real answer to "half your gold is lost on death."
+
+Rides existing machinery: the bookstall-shop render pattern, the
+cell special_action branch, the combat action menu, run_state
+counters. `provisions` and `gold_stashed` are plain run_state ints
+(cleared on a new run, survive death). No new scene.
+
+This closes the C2-tail economy pass. The negotiation/combat/death/
+puzzle/warren/royal systems now form one loop: earn gold (puzzles,
+negotiations), spend it (quotes, offers, provisions, brokering the
+royals with Prospero's Word), protect it (the strongbox), and every
+death spends a named memory toward the terminal ending.
+
+Deferred still: (nothing from the original C2 survey — all cleared).

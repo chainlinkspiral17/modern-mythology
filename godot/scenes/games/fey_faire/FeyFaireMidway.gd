@@ -104,12 +104,14 @@ const MIDWAY: Dictionary = {
 		"name": "COTTON CANDY WAGON",
 		"description": "A wagoneer in a paper hat.  Green overalls.  The wagon is not hooked to any truck.  Cotton candy stays with you longer than cotton candy should.",
 		"fey": "green_man",
+		"provision": "a paper cone of cotton candy",
 		"neighbors": ["midway_center", "popcorn", "moss_grove"]
 	},
 	"popcorn": {
 		"name": "POPCORN WAGON",
 		"description": "A small hairy fellow in overalls pops corn in a tall glass box.  A dollar a bag.  Every bag has one popped kernel that's the color of blood.  It is not blood.",
 		"fey": "hob_of_the_hedgerow",
+		"provision": "a bag of popcorn",
 		"neighbors": ["cotton_candy", "funnel_cake_vent"]
 	},
 	"funhouse": {
@@ -311,6 +313,7 @@ const MIDWAY: Dictionary = {
 		"name": "FUNNEL CAKE WAGON · BACK VENT",
 		"description": "You smell fresh grease.  Under the fry-sizzle, specific and unmistakable once heard, somebody is weeping.  The wagon staff work around the sound the way you'd work around a load-bearing pillar.  Whatever she is grieving has not happened yet.",
 		"fey": "banshee",
+		"provision": "a funnel cake",
 		"neighbors": ["popcorn"],
 		"needs_night_4": true
 	},
@@ -754,6 +757,15 @@ func _render_current_cell() -> void:
 	if String(cell.get("special_action", "")) == "bookstall" and not _off_season():
 		_render_bookstall_shop(v)
 
+	# Food wagons · a gold sink that buys survivability · a snack you
+	# carry and EAT in combat to heal.  Ties gold to the death economy.
+	if cell.has("provision") and not _off_season():
+		_render_provision_shop(v, String(cell["provision"]))
+
+	# Fortune-Teller · stash gold safe from the death-halving for a fee.
+	if String(cell.get("special_action", "")) == "fortune" and not _off_season():
+		_render_gold_stash(v)
+
 	var sep := Control.new()
 	sep.custom_minimum_size = Vector2(0, 12)
 	v.add_child(sep)
@@ -977,6 +989,100 @@ func _buy_slim_volume() -> void:
 	_run_state["court_seelie"] = int(_run_state.get("court_seelie", 0)) + 1
 	var sfx := get_node_or_null("/root/SFXBank")
 	if sfx: sfx.play("lore_token_reveal", 0.7)
+	request_save.emit()
+	_render_current_cell()
+
+
+const PROVISION_MAX := 5
+const PROVISION_PRICE := 1
+
+func _render_provision_shop(v: VBoxContainer, snack: String) -> void:
+	var gold: int = int(_run_state.get("gold", 0))
+	var have: int = int(_run_state.get("provisions", 0))
+	var hdr := Label.new()
+	hdr.text = "· THE WAGON · %s · %d gold · you carry %d/%d snacks · EAT one in combat to heal ·" % [
+		snack, PROVISION_PRICE, have, PROVISION_MAX]
+	hdr.add_theme_font_size_override("font_size", 14)
+	hdr.add_theme_color_override("font_color", C_GOLD)
+	hdr.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+	v.add_child(hdr)
+
+	var buy := Button.new()
+	if have >= PROVISION_MAX:
+		buy.text = "  · your pockets are full ·  "
+		buy.disabled = true
+	elif gold < PROVISION_PRICE:
+		buy.text = "  buy %s · %d gold · not enough  " % [snack, PROVISION_PRICE]
+		buy.disabled = true
+	else:
+		buy.text = "  buy %s · %d gold  " % [snack, PROVISION_PRICE]
+		buy.pressed.connect(_buy_provision)
+	buy.add_theme_font_size_override("font_size", 14)
+	buy.add_theme_color_override("font_color", C_ROSE)
+	v.add_child(buy)
+
+
+func _buy_provision() -> void:
+	var gold: int = int(_run_state.get("gold", 0))
+	var have: int = int(_run_state.get("provisions", 0))
+	if gold < PROVISION_PRICE or have >= PROVISION_MAX: return
+	_run_state["gold"] = gold - PROVISION_PRICE
+	_run_state["provisions"] = have + 1
+	var sfx := get_node_or_null("/root/SFXBank")
+	if sfx: sfx.play("coin", 0.6)
+	request_save.emit()
+	_render_current_cell()
+
+
+func _render_gold_stash(v: VBoxContainer) -> void:
+	var gold: int = int(_run_state.get("gold", 0))
+	var stashed: int = int(_run_state.get("gold_stashed", 0))
+	var hdr := Label.new()
+	hdr.text = "· MORGAN KEEPS A STRONGBOX · gold in the box survives a fall · purse: %d · box: %d ·" % [gold, stashed]
+	hdr.add_theme_font_size_override("font_size", 14)
+	hdr.add_theme_color_override("font_color", C_GOLD)
+	hdr.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+	v.add_child(hdr)
+
+	var stash_btn := Button.new()
+	if gold >= 3:
+		stash_btn.text = "  stash your loose gold · 2-gold fee  "
+		stash_btn.pressed.connect(_stash_gold)
+	else:
+		stash_btn.text = "  stash your loose gold · 2-gold fee · need 3+  "
+		stash_btn.disabled = true
+	stash_btn.add_theme_font_size_override("font_size", 14)
+	stash_btn.add_theme_color_override("font_color", C_ROSE)
+	v.add_child(stash_btn)
+
+	if stashed > 0:
+		var wd := Button.new()
+		wd.text = "  take back the box · %d gold  " % stashed
+		wd.add_theme_font_size_override("font_size", 14)
+		wd.add_theme_color_override("font_color", C_RECRUITED)
+		wd.pressed.connect(_withdraw_gold)
+		v.add_child(wd)
+
+
+func _stash_gold() -> void:
+	var gold: int = int(_run_state.get("gold", 0))
+	if gold < 3: return
+	var to_stash: int = gold - 2   # a 2-gold fee for the keeping
+	_run_state["gold"] = 0
+	_run_state["gold_stashed"] = int(_run_state.get("gold_stashed", 0)) + to_stash
+	var sfx := get_node_or_null("/root/SFXBank")
+	if sfx: sfx.play("coin", 0.6)
+	request_save.emit()
+	_render_current_cell()
+
+
+func _withdraw_gold() -> void:
+	var stashed: int = int(_run_state.get("gold_stashed", 0))
+	if stashed <= 0: return
+	_run_state["gold"] = int(_run_state.get("gold", 0)) + stashed
+	_run_state["gold_stashed"] = 0
+	var sfx := get_node_or_null("/root/SFXBank")
+	if sfx: sfx.play("coin", 0.6)
 	request_save.emit()
 	_render_current_cell()
 
