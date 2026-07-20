@@ -32,6 +32,7 @@ const FULL_MANIFESTS: Dictionary = {
 	"riffmaster_melody_club": "res://resources/games/vol7/riffmaster_melody_club/manifest.json",
 	"patient_mister_glass": "res://resources/games/vol7/patient_mister_glass/manifest.json",
 	"sweetgum":           "res://resources/games/vol7/sweetgum/manifest.json",
+	"mrs_wus_garden":     "res://resources/games/vol7/mrs_wus_garden/manifest.json",
 	"estuary_2":          "res://resources/games/vol7/estuary_2/manifest.json",
 	"hane_no_niwa":       "res://resources/games/vol7/hane_no_niwa/manifest.json",
 	"basilica_of_wires":  "res://resources/games/vol7/basilica_of_wires/manifest.json",

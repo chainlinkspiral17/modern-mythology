@@ -1,0 +1,24 @@
+{
+ "id": "mrs_wus_garden",
+ "vol": 7,
+ "kind": "slowstick",
+ "status": "playable_v1",
+ "notes": "Oneironautics Inc., Portland OR (October 2003) · GARDEN TENDING / NEIGHBOR STORY. Ines Rocha solo, made in stolen evenings the same October she welded Estuary 3 over Labor Day weekend. Set in Corvallis, fall 1995 — the open-house flier on Camp Sweetgum's bulletin board is THIS garden's flier, with the misprinted date she kept because the fliers were free. The smallest thing the studio ever shipped.",
+ "shelf": {
+  "label_title": "MRS. WU'S GARDEN",
+  "label_subtitle": "nine beds · one fall · the frost is coming",
+  "publisher": "Oneironautics Inc.",
+  "publisher_locale": "Portland, OR",
+  "release_year": 2003,
+  "release_month": "October",
+  "hardware": "Slowstick Rev 2",
+  "genre_stamp": "GARDEN TENDING",
+  "shelf_condition": "bought new · the sleeve still smells faintly of the shrink-wrap · a pressed ginkgo leaf someone slid inside the case, not Olaf's habit, so whose"
+ },
+ "acts": [
+  {
+   "id": "the_fall",
+   "scene": "res://scenes/games/mrs_wus_garden/WuGarden.tscn"
+  }
+ ]
+}
