@@ -97,6 +97,7 @@ var _agents: Dictionary = {}     # id → agent def
 var _problem_templates: Dictionary = {}  # id → template def
 var _dean: Dictionary = {}                # full dean.json
 var _interludes_def: Dictionary = {}      # full interludes.json
+var _pair_lines_def: Dictionary = {}      # full pair_dispatch_lines.json (B2)
 var _vignettes_def: Dictionary = {}       # full daily_vignettes.json
 var _regional_events_pool: Array = []     # regional_events.json events[]
 var _fired_regional_events: Array = []    # event_ids that have fired (never repeat)
@@ -615,6 +616,7 @@ func _load_data() -> void:
 	_last_brightness_change_day = 0
 	_reveals_def = _load_json(DATA_ROOT + "reveals.json")
 	_interludes_def = _load_json(DATA_ROOT + "interludes.json")
+	_pair_lines_def = _load_json(DATA_ROOT + "pair_dispatch_lines.json")
 	_vignettes_def = _load_json(DATA_ROOT + "daily_vignettes.json")
 	_spike_events_def = _load_json(DATA_ROOT + "between_spike_events.json")
 	# Weekly regional events (2026-07-02) · JSON-driven pool.
@@ -2282,6 +2284,22 @@ func _revoke_dispatch(d: Dictionary) -> void:
 				p_ref["in_progress_by"] = ""
 				p_ref["dispatch_agent_id"] = ""
 				p_ref["dispatch_resolution_day"] = 0
+	# Pair rider (B2) · restore the partner from the extended snapshot.
+	var pair_id: String = String(d.get("pair_agent_id", ""))
+	if pair_id != "" and _agent_state.has(pair_id):
+		var p_a: Dictionary = _agents.get(pair_id, {})
+		var p_st: Dictionary = _agent_state[pair_id]
+		if String(p_a.get("class", "")) == "demon":
+			p_st["burn"] = int(snap.get("pair_burn", p_st.get("burn", 0)))
+			p_st["corruption"] = int(snap.get("pair_corruption", p_st.get("corruption", 0)))
+		else:
+			p_st["obligation"] = int(snap.get("pair_obligation", p_st.get("obligation", 0)))
+		p_st["on_dispatch"] = false
+		p_st["return_day"] = 0
+		p_st["days_away_since_dispatch"] = 0
+		p_st["home_node_strained_this_dispatch"] = false
+		_dispatches_this_day = max(0, _dispatches_this_day - 1)
+		_agent_dispatch_counts[pair_id] = max(0, int(_agent_dispatch_counts.get(pair_id, 1)) - 1)
 	# Decrement counters.
 	_active_dispatches.erase(d)
 	_dispatches_this_day = max(0, _dispatches_this_day - 1)
@@ -2587,7 +2605,10 @@ func _make_dispatch_preview_row(agent_id: String, region_id: String,
 		p_lbl.add_theme_color_override("font_color", p_color)
 		p_lbl.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 		lcol.add_child(p_lbl)
-	# Right: dispatch button
+	# Right: dispatch button + pair button
+	var bcol := VBoxContainer.new()
+	bcol.add_theme_constant_override("separation", 4)
+	row.add_child(bcol)
 	var btn := Button.new()
 	btn.text = "Dispatch"
 	btn.focus_mode = Control.FOCUS_NONE
@@ -2599,8 +2620,214 @@ func _make_dispatch_preview_row(agent_id: String, region_id: String,
 		_dispatch_agent(ag_capture, rg_capture, pi_capture)
 		dlg.hide()
 		dlg.queue_free())
-	row.add_child(btn)
+	bcol.add_child(btn)
+	# PAIR DISPATCH (B2) · send two on one problem. A pair burns two
+	# of the day's dispatch slots.
+	var pair_btn := Button.new()
+	pair_btn.text = "Pair…"
+	pair_btn.focus_mode = Control.FOCUS_NONE
+	pair_btn.custom_minimum_size = Vector2(96, 26)
+	pair_btn.add_theme_font_size_override("font_size", 12)
+	pair_btn.disabled = _dispatches_this_day + 2 > MAX_DISPATCHES_PER_DAY \
+			or _eligible_pair_partners(agent_id, region_id).is_empty()
+	pair_btn.pressed.connect(func() -> void:
+		_open_pair_partner_picker(ag_capture, rg_capture, pi_capture, dlg))
+	bcol.add_child(pair_btn)
 	return panel
+
+
+# ── Pair dispatches (B2) ─────────────────────────────────────────
+# Two agents, one problem: combined competence (second at 75%),
+# combined cost, one shared return. Ruth refuses demon partners —
+# canon; she appears in the partner list only to decline.
+
+func _eligible_pair_partners(agent_id: String, region_id: String) -> Array:
+	var out: Array = []
+	for o_id in _visible_agents:
+		if String(o_id) == agent_id or not _agents.has(o_id):
+			continue
+		var o: Dictionary = _agents[o_id]
+		var o_st: Dictionary = _agent_state.get(o_id, {})
+		if bool(o_st.get("on_dispatch", false)):
+			continue
+		if o["class"] == "human" and int(o_st.get("obligation", 0)) >= int(o.get("obligation_cap_before_stops_picking_up", 999)):
+			continue
+		var restrictions: Array = o.get("region_restrictions", [])
+		if not restrictions.is_empty() and not restrictions.has(region_id):
+			continue
+		out.append(String(o_id))
+	return out
+
+
+func _pair_is_ruth_refusal(a_id: String, b_id: String) -> bool:
+	var a: Dictionary = _agents.get(a_id, {})
+	var b: Dictionary = _agents.get(b_id, {})
+	if a_id == "ruth_the_archivist" and String(b.get("class", "")) == "demon":
+		return true
+	if b_id == "ruth_the_archivist" and String(a.get("class", "")) == "demon":
+		return true
+	return false
+
+
+func _pair_entry_for(a_id: String, b_id: String) -> Dictionary:
+	var key_ids: Array = [a_id, b_id]
+	key_ids.sort()
+	var key: String = "%s|%s" % [key_ids[0], key_ids[1]]
+	var pairs: Dictionary = _pair_lines_def.get("pairs", {})
+	if pairs.has(key):
+		var e: Dictionary = pairs[key]
+		return e
+	var ca: String = String(_agents.get(a_id, {}).get("class", "human"))
+	var cb: String = String(_agents.get(b_id, {}).get("class", "human"))
+	var fb_key := "human_demon"
+	if ca == "demon" and cb == "demon":
+		fb_key = "demon_demon"
+	elif ca == "human" and cb == "human":
+		fb_key = "human_human"
+	return {"line": String((_pair_lines_def.get("class_fallbacks", {}) as Dictionary).get(fb_key, ""))}
+
+
+func _open_pair_partner_picker(a1_id: String, region_id: String,
+		problem_index: int, parent_dlg: AcceptDialog) -> void:
+	var dlg := AcceptDialog.new()
+	dlg.title = "Pair dispatch — who rides with %s?" % String(_agents[a1_id].get("name", a1_id))
+	dlg.min_size = Vector2(560, 380)
+	var scroll := ScrollContainer.new()
+	scroll.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	scroll.size_flags_vertical = Control.SIZE_EXPAND_FILL
+	scroll.custom_minimum_size = Vector2(540, 340)
+	dlg.add_child(scroll)
+	var vbox := VBoxContainer.new()
+	vbox.add_theme_constant_override("separation", 6)
+	vbox.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	scroll.add_child(vbox)
+	var note := Label.new()
+	note.text = "A pair burns two of today's dispatch slots. Second pair of hands works at 75%."
+	note.add_theme_font_size_override("font_size", 12)
+	note.add_theme_color_override("font_color", Color(0.62, 0.62, 0.62, 1))
+	vbox.add_child(note)
+	for b_id in _eligible_pair_partners(a1_id, region_id):
+		var b: Dictionary = _agents[b_id]
+		var row := HBoxContainer.new()
+		row.add_theme_constant_override("separation", 8)
+		vbox.add_child(row)
+		var lbl := Label.new()
+		var entry := _pair_entry_for(a1_id, String(b_id))
+		var mods: PackedStringArray = PackedStringArray()
+		if int(entry.get("cover", 0)) != 0: mods.append("cover %+d" % int(entry.get("cover", 0)))
+		if int(entry.get("attention", 0)) != 0: mods.append("attn %+d" % int(entry.get("attention", 0)))
+		lbl.text = "[%s]  %s  · comp %.2fx%s" % [
+			"D" if b["class"] == "demon" else "H",
+			String(b.get("name", b_id)),
+			float(b.get("competence_modifier", 1.0)),
+			("  [" + "  ".join(mods) + "]") if not mods.is_empty() else ""]
+		lbl.add_theme_font_size_override("font_size", 12)
+		lbl.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+		row.add_child(lbl)
+		if _pair_is_ruth_refusal(a1_id, String(b_id)):
+			var no_lbl := Label.new()
+			no_lbl.text = "the archive has a policy"
+			no_lbl.add_theme_font_size_override("font_size", 12)
+			no_lbl.add_theme_color_override("font_color", Color(0.72, 0.58, 0.58, 1))
+			row.add_child(no_lbl)
+			var no_btn := Button.new()
+			no_btn.text = "Ask anyway"
+			no_btn.focus_mode = Control.FOCUS_NONE
+			no_btn.add_theme_font_size_override("font_size", 12)
+			no_btn.pressed.connect(func() -> void:
+				_log("[color=#c8a8a8][i]%s[/i][/color]" % String(_pair_lines_def.get("ruth_refusal", "")))
+				_render_log()
+				dlg.hide()
+				dlg.queue_free())
+			row.add_child(no_btn)
+			continue
+		var b_capture: String = String(b_id)
+		var go := Button.new()
+		go.text = "Send both"
+		go.focus_mode = Control.FOCUS_NONE
+		go.add_theme_font_size_override("font_size", 12)
+		go.pressed.connect(func() -> void:
+			_dispatch_pair(a1_id, b_capture, region_id, problem_index)
+			dlg.hide()
+			dlg.queue_free()
+			if is_instance_valid(parent_dlg):
+				parent_dlg.hide()
+				parent_dlg.queue_free())
+		row.add_child(go)
+	dlg.add_to_group("ui")
+	add_child(dlg)
+	dlg.popup_centered()
+
+
+func _dispatch_pair(a1_id: String, a2_id: String, region_id: String, problem_index: int) -> void:
+	# Primary rides the standard machinery (stages, undo, revoke);
+	# the partner is a rider on the same dispatch record.
+	_dispatch_agent(a1_id, region_id, problem_index)
+	if _active_dispatches.is_empty():
+		return
+	var d: Dictionary = _active_dispatches[_active_dispatches.size() - 1]
+	if String(d.get("agent_id", "")) != a1_id:
+		return
+	var a1: Dictionary = _agents[a1_id]
+	var a2: Dictionary = _agents[a2_id]
+	var st2: Dictionary = _agent_state[a2_id]
+	var r: Dictionary = _regions[region_id]
+	# Faster together: shrink the remaining days by the competence
+	# ratio. Staged dispatches instead get an effort head start —
+	# two sets of hands before the first check-in.
+	var comp1: float = float(a1.get("competence_modifier", 1.0))
+	var comp2: float = float(a2.get("competence_modifier", 1.0)) * 0.75
+	if bool(d.get("is_staged", false)):
+		d["effort_accumulated"] = float(d.get("effort_accumulated", 0.0)) + comp2
+	else:
+		var days_left: int = maxi(1, int(d.get("return_day", _day + 1)) - _day)
+		var new_days: int = maxi(1, int(ceil(float(days_left) * comp1 / maxf(0.1, comp1 + comp2))))
+		d["return_day"] = _day + new_days
+		var st1: Dictionary = _agent_state[a1_id]
+		st1["return_day"] = _day + new_days
+	d["pair_agent_id"] = a2_id
+	# The partner pays their own way.
+	st2["on_dispatch"] = true
+	st2["return_day"] = int(d.get("return_day", _day + 1))
+	var snap: Dictionary = d.get("undo_snapshot", {})
+	if a2["class"] == "demon":
+		snap["pair_burn"] = int(st2.get("burn", 0))
+		snap["pair_corruption"] = int(st2.get("corruption", 0))
+		st2["burn"] = int(st2.get("burn", 0)) + int(a2.get("burn_per_dispatch", 1))
+		if region_id == "small_wood":
+			var per_day: float = float(r.get("demon_corruption_per_day_in_region", 0.0))
+			var days_out: int = maxi(1, int(d.get("return_day", _day + 1)) - _day)
+			var add_corr: int = int(ceil(per_day * float(days_out)))
+			if add_corr > 0:
+				_apply_corruption_to_demon(a2_id, add_corr)
+	else:
+		snap["pair_obligation"] = int(st2.get("obligation", 0))
+		st2["days_away_since_dispatch"] = 0
+		st2["home_node_strained_this_dispatch"] = false
+		_apply_obligation_to_human(a2_id, int(a2.get("obligation_per_dispatch", 1)))
+	d["undo_snapshot"] = snap
+	# The problem carries both names.
+	var probs: Array = _region_state[region_id]["active_problems"]
+	if problem_index < probs.size():
+		var p_ref: Dictionary = probs[problem_index]
+		p_ref["in_progress_by"] = "%s & %s" % [String(a1.get("name", a1_id)), String(a2.get("name", a2_id))]
+	_dispatches_this_day += 1
+	_agent_dispatch_counts[a2_id] = int(_agent_dispatch_counts.get(a2_id, 0)) + 1
+	# The authored line + any cover/attention riders.
+	var entry := _pair_entry_for(a1_id, a2_id)
+	var line := String(entry.get("line", ""))
+	if line != "":
+		_log("[color=#a8c8a8][i]%s[/i][/color]" % line)
+	var d_cover: int = int(entry.get("cover", 0))
+	var d_attn: int = int(entry.get("attention", 0))
+	if d_cover != 0 and _region_state.has(region_id):
+		_region_state[region_id]["cover"] = float(_region_state[region_id].get("cover", 0)) + float(d_cover)
+	if d_attn != 0 and _region_state.has(region_id):
+		_region_state[region_id]["escalation_progress"] = maxf(0.0,
+			float(_region_state[region_id].get("escalation_progress", 0.0)) + float(d_attn) * 0.5)
+	_log("Day %d · [b]pair dispatch[/b] · %s and %s ride together · ETA day %d." %
+		[_day, String(a1.get("name", a1_id)), String(a2.get("name", a2_id)), int(d.get("return_day", _day))])
+	_render()
 
 
 func _dispatch_agent(agent_id: String, region_id: String, problem_index: int) -> void:
@@ -3762,6 +3989,8 @@ func _check_dean_interludes() -> void:
 		match cond:
 			"observe_3_fingerprints":
 				earned = _fingerprints_observed >= 3
+			"observe_5_fingerprints":
+				earned = _fingerprints_observed >= 5
 			"see_tower_at_white_once":
 				earned = _tower_state_revealed_white_once
 			"summer_end_anomalies_observed_min_8":
@@ -3801,6 +4030,11 @@ func _resolve_dispatch(d: Dictionary) -> void:
 	var pi: int = int(d["problem_index"])
 	var st: Dictionary = _agent_state[a_id]
 	var a: Dictionary = _agents[a_id]
+	# Pair rider (B2) · the partner comes home whichever way the
+	# primary's resolution goes.
+	var pair_home: String = String(d.get("pair_agent_id", ""))
+	if pair_home != "" and _agent_state.has(pair_home):
+		_finish_dispatch_and_set_breather(pair_home)
 	var probs: Array = _region_state[r_id]["active_problems"]
 	if pi >= probs.size():
 		_finish_dispatch_and_set_breather(a_id)

@@ -1,0 +1,59 @@
+{
+ "scope": "community_planned",
+ "notes": "B2 pair dispatches. Authored lines keyed by sorted 'a|b' agent-id pairs; class fallbacks when no authored combo exists. Optional cover/attention ints apply to the target region on dispatch. Ruth's refusal is canon: she declines the pairing UI entirely when the partner is a demon.",
+ "pairs": {
+  "moth|vagrant": {
+   "line": "Moth and Vagrant have worked the river country together since before anyone kept minutes. They do not divide the work. The work divides itself, politely, the moment they arrive.",
+   "cover": 1
+  },
+  "filly|weir": {
+   "line": "Filly and Weir, the bayou pair. She does the fast half, he does the deep half, and the problem never learns there were two of them.",
+   "cover": 1
+  },
+  "moth|starling": {
+   "line": "Moth watches Starling the whole ride out, the way you watch a pot near boiling. Starling performs not noticing. Between the vigilance and the performance, the work gets done beautifully.",
+   "attention": 1
+  },
+  "husk|lantern": {
+   "line": "Husk and Lantern in the same county is a weather event. Nothing burns. Everything considers it.",
+   "attention": 1
+  },
+  "cicada|steamboat": {
+   "line": "Cicada sets the tempo, Steamboat carries the load. On the ride back neither of them speaks, which for the two of them is a long conversation about how well it went."
+  },
+  "john_frank|nicola": {
+   "line": "John Frank and Nicola take separate cars and arrive with the same plan without having discussed it. Forty years of that. The problem never had a chance.",
+   "cover": 1
+  },
+  "elicia|nicola": {
+   "line": "Elicia and Nicola work the way two people shell peas: no wasted motion, most of the talking not about the peas."
+  },
+  "john_frank|the_surviving_son": {
+   "line": "John Frank brings the son along and lets him carry the heavier end on purpose. Some dispatches are the errand and some are the apprenticeship. This one is both."
+  },
+  "deputy_royce|mackenzie": {
+   "line": "Royce drives, Mackenzie navigates from a hand-drawn map of the estate she made from memory. Retired law and the woman at the loom. The HOA does not know what hit it, minutes-wise."
+  },
+  "lantern|the_small_wood_contact_jules": {
+   "line": "Jules and Lantern, the Small Wood locals. Jules talks to the people. Lantern stands where the dark is thickest and makes it slightly less thick. Neither mentions the arrangement.",
+   "cover": 1
+  },
+  "john_frank|moth": {
+   "line": "John Frank has never once asked Moth what she is. Moth has never once made him need to. It is the oldest working partnership on the board and it runs on that silence.",
+   "cover": 1
+  },
+  "elicia|filly": {
+   "line": "Filly does a week of legwork in an afternoon and Elicia spends the saved time on the part that can't be hurried: sitting with someone. Between them it looks like one impossibly patient, impossibly fast person.",
+   "attention": -1
+  },
+  "deputy_royce|starling": {
+   "line": "The retired deputy and the estate's showiest demon. Royce narrates procedure in a cop monotone; Starling finds it the most soothing thing it has encountered on this plane. Oddly effective. Odd, and effective."
+  }
+ },
+ "class_fallbacks": {
+  "demon_demon": "Two of THEM on one problem. The problem resolves faster than paper says it should, and the neighbors sleep a little worse without knowing why.",
+  "human_human": "Two sets of human hands, one problem. Slower than the other arrangements, sturdier than all of them. This is what the co-op looked like before anyone needed a word for it.",
+  "human_demon": "One of ours and one of THEIRS on the same errand. It works. It always works. That it works is the thing the summer keeps refusing to let anyone forget."
+ },
+ "ruth_refusal": "Ruth looks at the pairing slip. Looks at the partner column. Looks back at you over the glasses, unhurried, and files the slip in the drawer she does not label. 'The archive has a policy,' she says. The archive is her. The policy is no."
+}
