@@ -410,6 +410,16 @@ func _off_season() -> bool:
 	return bool(_run_state.get("off_season", false))
 
 
+func _wildfey_pass_ready() -> bool:
+	# Warren boon · a wildfey in the party opens one closed flap a night.
+	if int(_run_state.get("wildfey_pass_night", -1)) == int(_run_state.get("night", 1)):
+		return false
+	for fid_v in _run_state.get("recruited_feys", []):
+		if String(_feys_by_id.get(String(fid_v), {}).get("court", "")) == "wildfey":
+			return true
+	return false
+
+
 func _load_off_season() -> void:
 	if not FileAccess.file_exists(OFF_SEASON_PATH): return
 	var f := FileAccess.open(OFF_SEASON_PATH, FileAccess.READ)
@@ -589,6 +599,21 @@ func _render_current_cell() -> void:
 					closed_lbl.add_theme_font_size_override("font_size", 14)
 					closed_lbl.add_theme_color_override("font_color", C_GOLD_DIM)
 					booth_row.add_child(closed_lbl)
+					# Warren boon · a wildfey knows a way under · once a
+					# night it opens one closed flap anyway.
+					if _wildfey_pass_ready():
+						var pass_btn := Button.new()
+						pass_btn.text = "  the wildfey knows a way · open it  "
+						pass_btn.add_theme_font_size_override("font_size", 13)
+						pass_btn.add_theme_color_override("font_color", C_RECRUITED)
+						var fid_pass := String(fey_id)
+						pass_btn.pressed.connect(func() -> void:
+							_run_state["wildfey_pass_night"] = int(_run_state.get("night", 1))
+							var lk: Dictionary = _run_state.get("booth_locks", {})
+							lk.erase(fid_pass)
+							_run_state["booth_locks"] = lk
+							negotiate_with_fey.emit(fid_pass))
+						booth_row.add_child(pass_btn)
 				else:
 					var interact_btn := Button.new()
 					if special == "fortune" and not bool(_run_state.get("fortune_read", false)):

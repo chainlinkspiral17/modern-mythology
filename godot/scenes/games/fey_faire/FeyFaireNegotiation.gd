@@ -61,6 +61,7 @@ func _ready() -> void:
 func boot(state: Dictionary) -> void:
 	_run_state = state.get("run_state", state)
 	_fey_id = String(state.get("fey_id", ""))
+	_run_state.erase("_recite_retry_used")   # fresh RECITE retry per encounter
 	_load_feys()
 	_load_quotes()
 	_fey = _feys_by_id.get(_fey_id, {})
@@ -368,8 +369,35 @@ func _player_knows_true_name() -> bool:
 
 func _offer_cost() -> int:
 	# You procure the fey's exact prize on the midway before the
-	# offer · the Faire sells everything, at Faire prices.
-	return 1 + int(_fey.get("tier", 1))
+	# offer · the Faire sells everything, at Faire prices. A seelie
+	# in the party haggles it down (Warren boon).
+	var cost := 1 + int(_fey.get("tier", 1))
+	if _party_has_court("seelie"):
+		cost = maxi(1, cost - 1)
+	return cost
+
+
+# ─── Warren party boons ──────────────────────────────────────────
+
+func _party_has_court(court: String) -> bool:
+	for fid_v in _run_state.get("recruited_feys", []):
+		if String(_feys_by_id.get(String(fid_v), {}).get("court", "")) == court:
+			return true
+	return false
+
+
+func _party_has_song() -> bool:
+	for fid_v in _run_state.get("recruited_feys", []):
+		if String(_feys_by_id.get(String(fid_v), {}).get("damage_type", "")) == "song":
+			return true
+	return false
+
+
+func _unseelie_vouch_ready() -> bool:
+	# Once per night, an unseelie steps between you and a great one.
+	if not _party_has_court("unseelie"):
+		return false
+	return int(_run_state.get("unseelie_vouch_night", -1)) != int(_run_state.get("night", 1))
 
 
 func _outstanding_promises() -> int:
@@ -462,6 +490,20 @@ func _render_threaten_view() -> void:
 			# combat.  Lesser feys submit, resentful, and the submission
 			# is an UNSEELIE act whoever you took.
 			if tier >= 3:
+				# Warren boon · an unseelie in the party steps between
+				# you and the great one, once a night, and it submits
+				# instead of fighting.
+				if _unseelie_vouch_ready():
+					_run_state["unseelie_vouch_night"] = int(_run_state.get("night", 1))
+					var sfx2 := get_node_or_null("/root/SFXBank")
+					if sfx2: sfx2.play("win_chord", 0.6)
+					_render_result_view(
+						_fey_str("name", "?") + " · VOUCHED",
+						"You speak the name — and one of yours, an unseelie, steps out of your shadow and speaks a name of THEIRS, quietly, first.\n\nThe great one reconsiders the fight it was about to start.  It comes with you instead, on your friend's word, watching that friend the whole way.",
+						C_COURT_UNSEELIE,
+						func() -> void: _succeed_recruit("THREATEN", {"disposition_delta": -1}, "unseelie")
+					)
+					return
 				var sfx := get_node_or_null("/root/SFXBank")
 				if sfx: sfx.play("loss_thud", 0.7)
 				_render_result_view(
@@ -486,6 +528,18 @@ func _render_recite_view() -> void:
 		func() -> void:
 			if not mq.is_empty():
 				_succeed_recruit("RECITE")
+			elif _party_has_song() and not bool(_run_state.get("_recite_retry_used", false)):
+				# Warren boon · a song-fey hums you the scansion · one
+				# retry this negotiation instead of the flap closing.
+				_run_state["_recite_retry_used"] = true
+				var sfx := get_node_or_null("/root/SFXBank")
+				if sfx: sfx.play("page_turn", 0.5)
+				_render_result_view(
+					_fey_str("name", "?") + " · A SECOND TRY",
+					"Wrong play — but a song-fey in your party hums, under the flub, the line you SHOULD have brought.  The fey at the booth tilts its head.  You may try RECITE once more, or choose another branch.",
+					C_MAUVE,
+					func() -> void: _render_main_view()
+				)
 			else:
 				_rebuff("RECITE · you brought the wrong play · they correct your scansion and pull the flap shut",
 					{"lock_booth": true, _fey_id + "_disposition_delta": -1})
