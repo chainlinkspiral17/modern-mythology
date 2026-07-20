@@ -1,0 +1,36 @@
+{
+ "scope": "community_planned",
+ "notes": "B3 · SEPTEMBER STRUCTURES. Endless mode milestones, one every 8 endless weeks, so long runs have chapters instead of pure ratchet. Fired as a modal + log entry; {agent} substitutes the run's most-dispatched agent. Cycles after the last.",
+ "milestones": [
+  {
+   "id": "m1_the_letter",
+   "title": "A LETTER, FORWARDED TWICE",
+   "body": "It reaches the board with two forwarding stamps and a coffee ring that is not yours. {agent}'s hand.\n\n'I hear the board is still up. Of course it is. You should know the thing nobody tells you at the start: it does not end because the problems end. It ends when you can hand it to somebody and sleep. I could not, for the longest time, and then one Tuesday I could.\n\nDon't write back. Resolve something with the time instead. That was always the correspondence.'\n\nNo return address. The postmark is a county you've been to."
+  },
+  {
+   "id": "m2_the_map",
+   "title": "THE COUNTY MAP, REDRAWN",
+   "body": "The county issues its decennial map revision, off schedule, quietly. You get a copy because Ruth gets everything.\n\nThe changes are small and enormous: the timber yard road is a named road now. The estate's retention pond is marked POND (SEASONAL), which is a demotion it earned. And the stretch of river country the board has defended all this time is labeled, for the first time in county history, in the smallest approved font, with its own name instead of 'unincorporated.'\n\nNobody petitioned for that. Somebody in the map office just knew. That is what winning looks like at cartographic speed."
+  },
+  {
+   "id": "m3_the_annotation",
+   "title": "THE LEDGER, ANNOTATED",
+   "body": "The fifth fingerprint's photograph of the ledger page — the one filed under the floorboard of the mind — has changed, which photographs do not do.\n\nIn the margin, in the hand that predates ruling, a new note against the summer's column of adjustments and absorptions:\n\n'STILL OPERATING. NOTED WITHOUT PREJUDICE. THE OVERHEAD REMAINS ACCEPTABLE — TO BOTH LEDGERS.'\n\nIt is the closest thing to professional respect the tower has ever extended. The board decides, unanimously, without discussing it, never to mention it again."
+  },
+  {
+   "id": "m4_the_winter_meeting",
+   "title": "THE FIRST WINTER GENERAL MEETING",
+   "body": "The co-op was a summer thing. Everyone knew that the way everyone knows a creek is seasonal.\n\nTonight the diner stays open late for the first WINTER general meeting — coats on the backs of chairs, the good coffee urn, agenda items that assume a future ('spring courier routes,' 'the estate seed library'). Attendance: everyone. Including three people nobody recruited who heard there was a thing you could join that fixed what the county wouldn't.\n\nThe minutes are two pages. The precedent is permanent. You are no longer running a response. You are running an institution, and institutions get to outlive their emergencies."
+  },
+  {
+   "id": "m5_the_second_spring",
+   "title": "THE SECOND SPRING",
+   "body": "The board has now operated longer past the summer than the summer itself lasted.\n\nSomewhere in the file a founding purpose is written down, and the board has quietly outgrown it the way a windbreak outgrows the field plan — still doing the job, also now HABITAT. Problems arrive and are handled by people who learned from people you dispatched. Two of the demons have started describing their arrangements as 'standing.' The tower watches an operation that no longer needs watching to keep operating.\n\nThere is no mechanical reward for this. There is just the fact of it, which you built, one Sunday at a time."
+  },
+  {
+   "id": "m6_the_relay",
+   "title": "THE RELAY",
+   "body": "A letter arrives addressed not to the board but to 'WHOEVER KEEPS THE BOARD NOW' — from a town two counties over, describing their own summer: their own estate, their own timber yard, their own tower they are not sure they are allowed to mention.\n\n'We heard how you organized. We copied the parts we understood. What did we miss?'\n\nRuth drafts the reply the way she does everything: completely. The package goes out Tuesday — templates, phone-tree diagrams, the courier math, and one sentence of cover letter: 'You missed nothing. It is exactly as much work as it looks like. Start anyway.'\n\nThe board is a seed now. Endless was the point."
+  }
+ ]
+}

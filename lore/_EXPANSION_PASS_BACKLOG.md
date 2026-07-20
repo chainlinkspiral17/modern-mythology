@@ -107,7 +107,7 @@ build LAST of the new sticks (the pitch coming after Tideline is
 itself canon).
 
 **A5 · Per-stick depth expansions (mode-sized, no new sticks):**
-- **Fey Faire · THE OFF SEASON** — the park after close, night 7+:
+- **Fey Faire · THE OFF SEASON — DONE 2026-07-19.** Winter walk on the midway graph, shuttered booths, 10 special + per-court winter lines, gate exit token. Original brief: the park after close, night 7+:
   the Faire in winter, half the booths shuttered, the recruited
   party as the only crowd. Rides the existing midway graph with a
   palette/roster filter. Amélie's grief made literal as venue.
@@ -151,7 +151,7 @@ at combined cost, with pair-specific flavor for authored combos
 (Ruth+demon refusal is already canon — she declines the pairing
 UI entirely). ~12 authored pair lines, one dispatch-UI change.
 
-**B3 · SEPTEMBER STRUCTURES (endless milestones).** Endless is a
+**B3 · SEPTEMBER STRUCTURES — DONE 2026-07-19.** Six authored milestones cycling every 8 endless weeks (the forwarded letter from {agent}, the county map redrawn, the ledger annotated, the winter general meeting, the second spring, the relay), fired as modal + log chapter markers. Original brief: Endless is a
 pure ratchet today; give it milestones every 8 endless weeks — a
 letter from a departed agent, a county map redrawn, the ledger
 sparkline annotated — so long runs have chapters, not just decay.

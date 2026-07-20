@@ -301,6 +301,70 @@ func _begin_endless_with_slot(slot: int) -> void:
 	_audio_play_bgm_for_current_state()
 
 
+# ── SEPTEMBER STRUCTURES (B3) · endless milestones ───────────────
+# Every 8 endless weeks a chapter marker lands: a letter, the map
+# redrawn, the ledger annotated. Authored in endless_milestones.json,
+# cycling after the last. {agent} = the run's most-dispatched agent.
+
+var _endless_milestones_def: Dictionary = {}
+
+
+func _maybe_fire_endless_milestone() -> void:
+	var week: int = int(ceil(float(_day) / 7.0))
+	var endless_weeks: int = week - 15
+	if endless_weeks < 8:
+		return
+	@warning_ignore("integer_division")
+	var due: int = endless_weeks / 8
+	var fired: int = int(_flags.get("endless_milestones_fired", 0))
+	if due <= fired:
+		return
+	_flags["endless_milestones_fired"] = due
+	if _endless_milestones_def.is_empty():
+		_endless_milestones_def = _load_json(DATA_ROOT + "endless_milestones.json")
+	var pool: Array = _endless_milestones_def.get("milestones", [])
+	if pool.is_empty():
+		return
+	var m: Dictionary = pool[(due - 1) % pool.size()]
+	# The run's most-dispatched agent carries the letter.
+	var best_id := ""
+	var best_n: int = -1
+	for a_id in _agent_dispatch_counts:
+		if int(_agent_dispatch_counts[a_id]) > best_n:
+			best_n = int(_agent_dispatch_counts[a_id])
+			best_id = String(a_id)
+	var agent_name: String = String(_agents.get(best_id, {}).get("name", "an old friend"))
+	var body: String = String(m.get("body", "")).replace("{agent}", agent_name)
+	_log("[color=#c8b8e8][b]· ENDLESS WEEK %d · %s ·[/b][/color]" % [endless_weeks, String(m.get("title", ""))])
+	_log("[color=#b0a8c8][i]%s[/i][/color]" % body)
+	var sfx := get_node_or_null("/root/SFXBank")
+	if sfx: sfx.play("page_turn", 0.6)
+	# The chapter marker as a modal · same shape as the spike events.
+	var dlg := AcceptDialog.new()
+	dlg.title = "Endless week %d" % endless_weeks
+	dlg.min_size = Vector2(600, 420)
+	dlg.get_ok_button().text = "back to the board"
+	var col := VBoxContainer.new()
+	col.add_theme_constant_override("separation", 10)
+	col.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	dlg.add_child(col)
+	var hdr := Label.new()
+	hdr.text = "· %s ·" % String(m.get("title", ""))
+	hdr.add_theme_font_size_override("font_size", 16)
+	hdr.add_theme_color_override("font_color", Color(0.78, 0.72, 0.91, 1))
+	col.add_child(hdr)
+	var body_lbl := Label.new()
+	body_lbl.text = body
+	body_lbl.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+	body_lbl.custom_minimum_size = Vector2(560, 0)
+	body_lbl.add_theme_font_size_override("font_size", 13)
+	col.add_child(body_lbl)
+	dlg.add_to_group("ui")
+	add_child(dlg)
+	dlg.popup_centered()
+	GamepadMgr.focus_first.call_deferred(dlg)
+
+
 func _end_endless_run(reason: String) -> void:
 	var start_day: int = int(_flags.get("endless_start_day", TURNS_TOTAL))
 	var resolved_total: int = 0
@@ -3004,6 +3068,9 @@ func _on_advance_day() -> void:
 		if _tower_brightness == "white":
 			_end_endless_run("tower_white")
 			return
+		# SEPTEMBER STRUCTURES (B3) · a milestone every 8 endless
+		# weeks, so long runs have chapters instead of pure ratchet.
+		_maybe_fire_endless_milestone()
 	# Check Dean interlude unlock conditions.
 	_check_dean_interludes()
 	# Check the (non-Dean) interlude shelf earn conditions.
