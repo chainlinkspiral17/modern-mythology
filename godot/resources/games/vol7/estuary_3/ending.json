@@ -100,8 +100,29 @@
       },
       "canon_var": { "estuary_3_ending": "sam_quits" },
       "lore_token": "sam_closed_at_three_forty_seven"
+    },
+    {
+     "id": "pass_it_on",
+     "label": "Train the next one.  Hand it on.",
+     "hotkey": "5",
+     "requires": {
+      "year_two": true
+     },
+     "notes": "YEAR TWO ending (A5). Available on any second Manager summer. The one resolution the first summer could not offer: you have done this long enough to give it away.",
+     "epilogue_base": "Sam had done a second summer of it now, and the second summer taught the thing the first one couldn't: how to not be the only one who knows where the second till drawer is.\n\nHer name was Reyes.  Nineteen.  She rang slow and apologized for it and Sam said don't apologize, ring RIGHT, slow is a thing you fix by Tuesday.  By Tuesday she rang right.  Sam taught her the cooler rotation, the 2 AM regular who tips in exact change and stories, the tide gate you can see from the register and why you should look at it, the modifier a Friday-before-a-long-weekend puts on everything.  Sam taught her to make the note in the ledger BEFORE the shift got away from her, not after.\n\nOn the last Friday Sam worked the floor and let Reyes run the register, and stood back by the coolers where Jules used to stand, and understood for the first time what Jules had been doing back there all those years, which was: being available, and not being needed.\n\nFive years later Reyes manages it.  Sam comes in Wednesdays for coffee and corn nuts and sits in the corner booth by the window, and when a customer at the register is short a quarter, Sam watches Reyes wave it off exactly the way Sam taught her, which is exactly the way Jules taught Sam, and the estuary next to the store continues at its own tempo, and the line goes out, and comes back, and is handed on.",
+     "line_shape_riders": {
+      "smooth": "On the beach that morning Sam had drawn a line that ran clean, and teaching Reyes was the same line drawn through another person: clean, transferable, true.",
+      "jagged": "On the beach that morning Sam had drawn a jagged line.  Teaching is jagged too — a slow week, a Tuesday it clicked, a Friday she cried in the stockroom the way Sam once did — and the shape came out right anyway, corner by corner.",
+      "returned": "On the beach that morning Sam had drawn a line that went out and came back.  Teaching is that shape exactly: everything Jules gave Sam, Sam gave Reyes, and the returning is the whole point of the drawing.",
+      "unfinished": "On the beach that morning Sam did not finish the line.  This one finishes itself, in someone else's hands, on a Friday Sam is not scheduled to work — which is the only way a line like this was ever going to end.",
+      "fallback": "Whatever Sam drew on the beach, the second drawing was a person who can now do it without you.  Reyes runs it.  The store is still the store."
+     },
+     "canon_var": {
+      "estuary_3_ending": "pass_it_on"
+     },
+     "lore_token": "sam_passed_the_store_on"
     }
-  ],
+   ],
 
   "runtime_notes": {
     "epilogue_composition": "The Godot Estuary3Ending.gd host reads: (1) `options[picked].epilogue_base` and (2) `options[picked].line_shape_riders[canon_vars.estuary_3_line_shape]`, then renders base + '\\n\\n' + rider.  If the line-shape canon_var is unset for any reason (e.g. player quit mid-Act-4), the host falls back to the 'fallback' rider entry.",

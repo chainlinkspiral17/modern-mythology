@@ -92,22 +92,40 @@ func _ready() -> void:
 
 func start_new_run(manager_mode: bool = false) -> void:
 	_close_title()
+	# YEAR TWO · the SECOND Manager Mode summer carries the first
+	# year's ending as its starting conditions (A5 depth expansion).
+	# Detected automatically: a Manager run booted while a prior
+	# Manager ending is on the canon record is Year Two.
+	var y2_prior := _prior_manager_ending() if manager_mode else ""
+	var year_two := y2_prior != ""
+	# Starting cooler stock is the first payoff of the carried ending:
+	# owning the store (buyout) stocks deep; reopening after quitting
+	# is lean; a clean ledger earns a modest cushion.
+	var start_stock := 12
+	match y2_prior:
+		"buy_out_jules":   start_stock = 15
+		"perfect_ledger":  start_stock = 13
+		"sam_quits":       start_stock = 8
 	_run_state = {
 		"current_act": "act1_kwik_stop",
 		"night_index": 0,
 		"register_tape": [],
 		"canon_vars": {},
-		"lore_tokens_pending": [],
+		"lore_tokens_pending": (["estuary_3_year_two_run"] if year_two else []),
 		"act2_season_choices": [],
 		"act3_locations_visited": [],
 		"act3_clock_minutes": 512,
 		"act4_line_buffer": [],
 		"manager_mode":          manager_mode,
+		"year_two":              year_two,
+		"year_two_prior":        y2_prior,
+		"year_two_opening_till": _year_two_opening_till(y2_prior),
+		"year_two_intro":        _year_two_intro(y2_prior),
 		"manager_cash_by_night": [],
 		"manager_inventory": {
-			"cooler_top":    12,
-			"cooler_middle": 12,
-			"cooler_bottom": 12,
+			"cooler_top":    start_stock,
+			"cooler_middle": start_stock,
+			"cooler_bottom": start_stock,
 		} if manager_mode else {},
 		"manager_night_events":  [],
 		"run_seed":              randi(),
@@ -115,6 +133,40 @@ func start_new_run(manager_mode: bool = false) -> void:
 	_current_act = "act1_kwik_stop"
 	_save()
 	_boot_controller_for_current_act()
+
+
+# The carried Manager ending, from the cross-run canon record.
+# Empty string if no prior Manager summer has been finished.
+func _prior_manager_ending() -> String:
+	var gs := get_node_or_null("/root/GauntletState")
+	if gs == null:
+		return ""
+	var st: Variant = gs.get("state")
+	if not (st is Dictionary):
+		return ""
+	var prior := String(((st as Dictionary).get("canon_vars", {}) as Dictionary).get("estuary_3_ending", ""))
+	if prior in ["buy_out_jules", "perfect_ledger", "sam_quits"]:
+		return prior
+	return ""
+
+
+func _year_two_opening_till(prior: String) -> float:
+	match prior:
+		"buy_out_jules":  return 320.0   # the owner's float
+		"perfect_ledger": return 240.0   # a small cushion, earned
+		"sam_quits":      return 160.0   # you reopened on a thin till
+	return 200.0
+
+
+func _year_two_intro(prior: String) -> String:
+	match prior:
+		"buy_out_jules":
+			return "Year two. The Kwik Stop is yours now — the sign says so, in Jules's old lettering you never repainted. Jules is gone to the coast and doesn't write. Owning the quiet is different from working in it. The cooler's full. The store is emptier."
+		"perfect_ledger":
+			return "Year two. Corporate sent a letter about last summer's ledger — zero walkouts, a clean twelve nights — and a modest raise you can see in the opening till. Jules retired on the strength of your numbers. The bar you set is the bar you now have to clear."
+		"sam_quits":
+			return "Year two. You walked out at 3:47 last August and swore you were done. You are back, on a thin till, because the store reopened and nobody else would take the nights. Coming back is its own kind of ending. Nobody makes you explain it."
+	return ""
 
 
 func resume_from_save() -> bool:

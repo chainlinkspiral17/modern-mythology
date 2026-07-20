@@ -95,6 +95,8 @@ func boot(host_state: Dictionary) -> void:
 	_register_tape = host_state.get("register_tape", []) as Array
 	_manager_mode = bool(host_state.get("manager_mode", false))
 	_manager_cash_by_night = host_state.get("manager_cash_by_night", []) as Array
+	_year_two = bool(host_state.get("year_two", false))
+	_year_two_prior = String(host_state.get("year_two_prior", ""))
 	_season_index = 0
 	_season_choices.clear()
 	_reset_current_choice()
@@ -107,6 +109,8 @@ func boot(host_state: Dictionary) -> void:
 
 var _manager_mode: bool = false
 var _manager_cash_by_night: Array = []
+var _year_two: bool = false
+var _year_two_prior: String = ""
 var _manager_marker_tint: Color = C_KWIK
 var _manager_boost_slots: int = 2       # base · 2 species per season
 var _manager_stress_extra_cost: bool = false   # add +1 effort on stressed
@@ -728,6 +732,15 @@ func _render_final_choice() -> void:
 	if _manager_mode and _manager_max_consecutive_bad_nights >= 3:
 		opts.append({"id": "sam_quits", "label": "Close the store.  Walk out."})
 		_narration_lbl.append_text("\n[color=#c88070][i]  · three bad nights in a row broke something in you · [b]close the store · walk out[/b] is on the table.[/i][/color]\n")
+	# YEAR TWO · a resolution the first summer couldn't offer: you have
+	# done this before, and now you can hand it on. On the table for any
+	# second Manager summer (A5).
+	if _year_two:
+		opts.append({"id": "pass_it_on", "label": "Train the next one.  Hand it on."})
+		var whose := "the store you bought" if _year_two_prior == "buy_out_jules" \
+			else ("the ledger you kept clean" if _year_two_prior == "perfect_ledger" \
+			else "the store you swore you'd left")
+		_narration_lbl.append_text("\n[color=#7cffb0][i]  · year two taught you the one thing year one couldn't · %s is a thing you can now GIVE AWAY · [b]train the next one[/b] is on the table.[/i][/color]\n" % whose)
 	for o_var in opts:
 		var o: Dictionary = o_var
 		var b := Button.new()

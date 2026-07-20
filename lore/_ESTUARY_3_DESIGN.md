@@ -576,3 +576,32 @@ that survives the boot into Estuary3Host.
 
 Ship each commit with the mechanic testable in isolation and
 Manager Mode still-optional throughout.
+
+## YEAR TWO · expansion (2026-07-19) · BUILT
+
+The final A5 depth expansion. A SECOND Manager Mode summer that
+carries the first year's ending in as its starting conditions —
+detected automatically: a Manager run booted while a prior
+Manager ending sits on the canon record IS Year Two (the shelf
+toggle relabels to MANAGER MODE · YEAR TWO to say so).
+
+- **Carried ending → starting conditions** (the payoff, at boot,
+  in `Estuary3Host.start_new_run`):
+  - `buy_out_jules` → you own the store; deep cooler stock (15),
+    an owner's $320 opening float, and a lonelier intro (Jules
+    gone to the coast).
+  - `perfect_ledger` → a modest earned cushion (13 stock, $240
+    till); corporate noticed; the bar you set is the bar to clear.
+  - `sam_quits` → you reopened on a thin till (8 stock, $160);
+    the intro is about why you came back.
+- **Night one** opens with a YEAR TWO card keyed to the carried
+  ending (KwikStopRoom).
+- **The new resolution** (EstuaryPlanner Act-2 final, any Year
+  Two run): TRAIN THE NEXT ONE · HAND IT ON → ending option
+  `pass_it_on`, token `sam_passed_the_store_on`. The one thing
+  the first summer couldn't offer: you've done this long enough
+  to give it away. Reyes runs it five years on, waving off a
+  short quarter exactly the way Jules taught Sam.
+- Token out: `estuary_3_year_two_run` (at boot). Rides entirely
+  on Manager Mode + the ending tokens/canon; no new act, no new
+  scene.

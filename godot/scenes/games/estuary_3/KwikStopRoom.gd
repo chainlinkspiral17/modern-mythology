@@ -80,6 +80,8 @@ var _manager_night_rung: float = 0.0
 var _manager_night_tips: float = 0.0
 var _manager_night_walkouts: int = 0
 var _manager_active_customer: String = ""     # "" if none
+var _year_two: bool = false
+var _year_two_intro: String = ""
 var _manager_customer_patience_left: float = 0.0
 var _manager_customer_hud: Panel = null
 var _run_seed: int = 0
@@ -170,6 +172,12 @@ func boot(host_state: Dictionary) -> void:
 	_manager_mode = bool(host_state.get("manager_mode", false))
 	_manager_inventory = host_state.get("manager_inventory", {}) as Dictionary
 	_run_seed = int(host_state.get("run_seed", 0))
+	# YEAR TWO · the carried ending sets the opening till and the
+	# night-one intro (A5).
+	_year_two = bool(host_state.get("year_two", false))
+	_year_two_intro = String(host_state.get("year_two_intro", ""))
+	if _year_two:
+		_manager_night_cash = float(host_state.get("year_two_opening_till", 200.0))
 	if _manager_mode and _manager_inventory.is_empty():
 		# Fresh manager run · initialize the cooler.
 		_manager_inventory = {
@@ -460,6 +468,12 @@ func _start_night() -> void:
 	if _manager_mode and _night_index < 11:
 		_roll_shift_modifier_and_guest()
 		_apply_shift_modifier_effects()
+	# YEAR TWO · the carried-ending opening lands before night one's
+	# own narration, once.
+	if _year_two and _night_index == 0 and _year_two_intro != "":
+		_log_line("[color=#7cffb0][b]· YEAR TWO ·[/b][/color]", "#7cffb0", true)
+		_log_line("[i]%s[/i]" % _year_two_intro, "#7cd0a0", false)
+		_log_line("", "", false)
 	# Print night intro.
 	for line in night.get("intro_narration", []):
 		_log_line(String(line), "#c8a842", true)
@@ -1114,7 +1128,7 @@ func _end_night() -> void:
 				"register_tape": _register_tape.duplicate(),
 				"manager_night_summary": {
 					"night":    _night_index + 1,
-					"opening":  200.0,
+					"opening":  _manager_night_cash,
 					"rung":     _manager_night_rung,
 					"tips":     _manager_night_tips,
 					"walkouts": _manager_night_walkouts,

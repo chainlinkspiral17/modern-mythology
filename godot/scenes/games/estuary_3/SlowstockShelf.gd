@@ -606,7 +606,12 @@ func _on_cart_hover(stick_id: String) -> void:
 		# Reveal MANAGER MODE toggle for Estuary 3 · the failed 2003
 		# Kwik Stop project revealed after first playthrough.
 		if stick_id == "estuary_3":
-			_card_manager_toggle.text = "  MANAGER MODE  "
+			# Once a Manager summer has ended, the toggle names the
+			# second summer: YEAR TWO carries that ending in (A5).
+			var y2: bool = OneironauticsTokens.has("sam_owns_the_kwik_stop") \
+				or OneironauticsTokens.has("sam_ran_the_clean_ledger") \
+				or OneironauticsTokens.has("sam_closed_at_three_forty_seven")
+			_card_manager_toggle.text = "  MANAGER MODE · YEAR TWO  " if y2 else "  MANAGER MODE  "
 			_card_manager_toggle.visible = true
 			_card_manager_toggle.button_pressed = _manager_mode_on
 		# Reveal COUNSELOR MODE for Pirate Summer · same unlock shape:
