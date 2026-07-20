@@ -1,0 +1,25 @@
+{
+ "id": "tideline_survey_2048_scrapbook",
+ "title": "Tideline Survey · the archive",
+ "notes": "Entries reveal when their token lands in GauntletState.lore_tokens_revealed.",
+ "entries": [
+  {
+   "token": "tideline_survey_2048_finished",
+   "tier": "finished",
+   "title": "Nothing was missed",
+   "blurb": "Every station kept, every observation kept, every string kept, and the two-line limit removed, because limits test poorly. Coverage 100%. Walk duration three minutes. The report is complete, exhaustive, and empty of anyone. [something was missed.]"
+  },
+  {
+   "token": "tideline_2048_the_seal_still",
+   "tier": "secrets",
+   "title": "License §4(c)",
+   "blurb": "One manual interaction, preserved by legal requirement: the pencil, the seal, the watch. The only moment in the cart Ines Rocha wrote. It survives the remodel the way a doorway does — load-bearing, and the new owners don't know why the house stands."
+  },
+  {
+   "token": "tideline_original_compared",
+   "tier": "secrets",
+   "title": "What the remake got wrong",
+   "blurb": "Both carts, walked. The 2048 build is faithful to every noun and false to the verb: completeness is not attention, and a sensor cannot put the pencil down. Tem annotated the self-cleaning case in pen. The annotation reads: 'play the other one first.'"
+  }
+ ]
+}

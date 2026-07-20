@@ -1,0 +1,24 @@
+{
+ "id": "tideline_survey_2048",
+ "vol": 7,
+ "kind": "slowstick",
+ "status": "playable_v1",
+ "notes": "Meridian Heritage Interactive, New Portland Arcology (2048) · HERITAGE REMAKE. The licensed rebuild of Ines Rocha's The Tideline (2004): every station kept, every observation kept, every string kept — and the two-line limit removed, because limits test poorly. The limit was the game. One original interaction survives, at station 11, per license §4(c). Tem's cart.",
+ "shelf": {
+  "label_title": "TIDELINE SURVEY",
+  "label_subtitle": "the 2048 remake · nothing was missed",
+  "publisher": "Meridian Heritage Interactive",
+  "publisher_locale": "New Portland Arcology",
+  "release_year": 2048,
+  "release_month": "—",
+  "hardware": "ambient compute · Slowstick compatibility layer",
+  "genre_stamp": "HERITAGE EXPERIENCE",
+  "shelf_condition": "pristine · the case self-cleans · Tem has annotated it anyway, in pen, which voids something"
+ },
+ "acts": [
+  {
+   "id": "the_survey",
+   "scene": "res://scenes/games/the_tideline/TidelineWalk.tscn"
+  }
+ ]
+}

@@ -1,0 +1,287 @@
+{
+ "id": "the_tideline_data",
+ "notes": "Twelve stations, walked in order. Two notebook lines per station in the original; the 2048 remake auto-records everything. Categories (living/lost/line) are never displayed — they only shape the report register.",
+ "stations": [
+  {
+   "id": "s1",
+   "name": "the creek mouth",
+   "arrive": "6:41 AM, the tide already turning. The creek is running backward with the last of the push, which it does four mornings a year and this is one. The county notebook is stiff with cold. Two ruled lines under STATION ONE, same as every station. The pencil is yours to lose.",
+   "obs": [
+    {
+     "id": "creek_backward",
+     "line": "creek running inland, salt over sweet, approx. 40 yds",
+     "cat": "line"
+    },
+    {
+     "id": "heron_stump",
+     "line": "heron on the stump snag, hunting the wrong direction, catching things anyway",
+     "cat": "living"
+    },
+    {
+     "id": "rope_coil",
+     "line": "coil of blue poly rope, machine-cut end, no wear — lost, not discarded",
+     "cat": "lost"
+    }
+   ]
+  },
+  {
+   "id": "s2",
+   "name": "the first wrack",
+   "arrive": "The night's high line is drawn in kelp and everything the kelp caught. It is higher up the beach than the notebook's printed reference mark, which is the kind of fact the survey exists to hold.",
+   "obs": [
+    {
+     "id": "line_above_ref",
+     "line": "wrack line 2.5 ft above printed reference — highest of the notebook's examples",
+     "cat": "line"
+    },
+    {
+     "id": "gull_1",
+     "line": "one gull working the wrack ahead of me, methodical, left to right like reading",
+     "cat": "living"
+    },
+    {
+     "id": "doll_arm",
+     "line": "doll's arm, porcelain, older than me, sea-frosted white",
+     "cat": "lost"
+    },
+    {
+     "id": "kelp_holdfast",
+     "line": "bull kelp holdfast still gripping its rock — brought the rock along",
+     "cat": "line"
+    }
+   ]
+  },
+  {
+   "id": "s3",
+   "name": "the flat",
+   "arrive": "A hundred yards of mirror where the beach forgets to drain. Everything on it is doubled. Offshore, something surfaces once and goes down before the pencil is up.",
+   "obs": [
+    {
+     "id": "seal_1",
+     "line": "seal(?), one surfacing, 60 yds out, gone — logging it anyway",
+     "cat": "living"
+    },
+    {
+     "id": "sand_dollars",
+     "line": "sand dollars, dozens, all face down — the flat buried its money",
+     "cat": "living"
+    },
+    {
+     "id": "chair_leg",
+     "line": "one wooden chair leg, turned, painted green twice, two different greens",
+     "cat": "lost"
+    }
+   ]
+  },
+  {
+   "id": "s4",
+   "name": "the midden bank",
+   "arrive": "The cut bank where the storms have opened the old shell midden. Whoever ate here ate here for two thousand years, and the tide is taking the evidence a spoonful a winter.",
+   "obs": [
+    {
+     "id": "midden_layers",
+     "line": "midden exposure grown ~8 in. since last survey mark — the bank is giving it up",
+     "cat": "line"
+    },
+    {
+     "id": "shell_lens",
+     "line": "lens of pure mussel shell, thumb-deep, purple as the day of the meal",
+     "cat": "lost"
+    },
+    {
+     "id": "crow_pair",
+     "line": "two crows auditing the fresh fall, unhurried, proprietary",
+     "cat": "living"
+    }
+   ]
+  },
+  {
+   "id": "s5",
+   "name": "the drift log line",
+   "arrive": "The big logs, rearranged. The sea moves furniture nobody else can lift and never once gets credit. The gull from station two has kept pace the whole way.",
+   "obs": [
+    {
+     "id": "log_new",
+     "line": "new arrival: old-growth butt log, 5 ft through, bark gone, one choker scar",
+     "cat": "lost"
+    },
+    {
+     "id": "gull_2",
+     "line": "same gull — confirmed, notch left wing — still working, still left to right",
+     "cat": "living"
+    },
+    {
+     "id": "log_moved",
+     "line": "the schoolbus log has moved 30 yds north. it has been the reference since '98.",
+     "cat": "line"
+    }
+   ]
+  },
+  {
+   "id": "s6",
+   "name": "the buoy reach",
+   "arrive": "The bell buoy is talking on the swell. The notebook, alone of all its lines, is pre-printed here: 'buoy, bell, tone (A3 · 220 Hz)'. Somebody at the county decided this one was always true. The notebook is right.",
+   "obs": [
+    {
+     "id": "buoy_bell",
+     "line": "buoy confirmed per printed line — tone steady on the swell, twice a wave",
+     "cat": "line"
+    },
+    {
+     "id": "cormorants",
+     "line": "cormorants on the buoy rail, wings out, drying — the buoy's whole other job",
+     "cat": "living"
+    },
+    {
+     "id": "float_glass",
+     "line": "glass float, softball size, green, net-scarred — twenty years crossing, one night arriving",
+     "cat": "lost"
+    }
+   ]
+  },
+  {
+   "id": "s7",
+   "name": "the outfall",
+   "arrive": "The old creamery outfall pipe, dry since the fifties, barnacled into geology. The seal surfaces again, closer, and this time it is certainly a seal and certainly watching the beach, not the water.",
+   "obs": [
+    {
+     "id": "seal_2",
+     "line": "seal again — closer, 30 yds, watching shoreward. watching me, if the line is honest",
+     "cat": "living"
+    },
+    {
+     "id": "pipe_reef",
+     "line": "outfall pipe now fully reef — anemones the length of it, the county's accidental garden",
+     "cat": "line"
+    },
+    {
+     "id": "boot_one",
+     "line": "one rubber boot, left, standing upright and full of sand like someone stepped out of it",
+     "cat": "lost"
+    }
+   ]
+  },
+  {
+   "id": "s8",
+   "name": "the cave mouth",
+   "arrive": "The sea cave the tide only opens at the lowest lows. This morning, after the highest high, it is exhaling — long cold breaths that smell like the underside of everything.",
+   "obs": [
+    {
+     "id": "cave_breath",
+     "line": "cave venting on the ebb, ~8-second period — breathing with the swell",
+     "cat": "line"
+    },
+    {
+     "id": "bat_star",
+     "line": "bat star at the entrance, vermilion, arm regrowing — the cave's doorkeeper",
+     "cat": "living"
+    },
+    {
+     "id": "oar_half",
+     "line": "half an oar, the blade half, hand-shaped, old — the handle is somebody else's story",
+     "cat": "lost"
+    }
+   ]
+  },
+  {
+   "id": "s9",
+   "name": "the high berm",
+   "arrive": "The storm berm the king tide built overnight — gravel stacked like a decision. The gull is here first, standing on the crest, and for once it is not eating. It is looking at the same beach you are.",
+   "obs": [
+    {
+     "id": "berm_new",
+     "line": "new berm, 4 ft crest, full length of the reach — one night's work",
+     "cat": "line"
+    },
+    {
+     "id": "gull_3",
+     "line": "the gull, notch wing, on the crest, not feeding — off duty, or on a different duty",
+     "cat": "living"
+    },
+    {
+     "id": "letters_jar",
+     "line": "jar, sealed, paper inside, ink gone to ghost — recording THAT it is, not what it says",
+     "cat": "lost"
+    }
+   ]
+  },
+  {
+   "id": "s10",
+   "name": "the graveyard of floats",
+   "arrive": "The back-eddy corner where the sea files its lost buoyancy: crab floats, net floats, one fender off something big. Every color that plastic ships in, sanded to pastel.",
+   "obs": [
+    {
+     "id": "float_count",
+     "line": "float count 34 — up nine from the printed prior; the eddy is keeping more",
+     "cat": "line"
+    },
+    {
+     "id": "wren_in_floats",
+     "line": "winter wren hunting IN the float pile, threading it like brush — the sea's junk is habitat now",
+     "cat": "living"
+    },
+    {
+     "id": "fender_name",
+     "line": "ship's fender, name band sanded to 'A—A'. recording the two letters that held on",
+     "cat": "lost"
+    }
+   ]
+  },
+  {
+   "id": "s11",
+   "name": "the shallows below the point",
+   "arrive": "And there is the seal. Ten yards, in the shallows, upright in the water the way they stand when the water is their chair. It is not hunting. The pencil is in your hand. It looks at the pencil, and then it looks at you, and the difference between those two looks is the widest thing on this beach.",
+   "obs": [
+    {
+     "id": "seal_3",
+     "line": "seal, 10 yds, stationary, upright — third sighting, certainly the same animal",
+     "cat": "living"
+    },
+    {
+     "id": "shallows_cut",
+     "line": "new channel cut through the shallows bar — the point rearranged its doorstep overnight",
+     "cat": "line"
+    }
+   ],
+   "special_watch": {
+    "label": "put the pencil down and watch",
+    "text": "You put the pencil down. The seal stays. The water breathes, the buoy says its one true thing far off, and for a while the survey has no surveyor — just two animals at the edge of the water, one of them off duty. However long it is, it ends when the seal decides, not you, which is how you know it counted. Both lines under STATION ELEVEN stay blank. They are the fullest lines in the book.",
+    "token": "tideline_the_seal"
+   }
+  },
+  {
+   "id": "s12",
+   "name": "the point",
+   "arrive": "The point, and the survey's end nail in the old fir, and the whole reach behind you in one look — creek to cave to berm to here. The notebook goes back in the bag. What it holds now is a coastline, the one you chose, two lines at a time."
+  }
+ ],
+ "remake": {
+  "arrive_prefix": "MERIDIAN HERITAGE · TIDELINE SURVEY · station telemetry nominal.",
+  "auto_line": "%d observations · %s s · confidence %s%% · logged",
+  "continue_label": "CONTINUE",
+  "compliance_note": "HERITAGE COMPLIANCE · original interaction preserved per license §4(c)",
+  "watch_text": "You put the pencil down. There is no pencil; the gesture is preserved anyway, per license. The seal stays. The sensors, for eleven seconds, record nothing that was not already recorded, and the product does not know what to do with that, and does nothing, beautifully. It is the only moment in the cart that Ines Rocha wrote, and it survives the way a doorway survives a remodel: load-bearing.",
+  "watch_token": "tideline_2048_the_seal_still",
+  "report_title": "SURVEY COMPLETE",
+  "report_body": "33 of 33 observations logged. Coverage 100%. Mean confidence 99.1%. Walk duration 3 m 12 s (efficiency: excellent).\n\nNothing was missed.\n\n[something was missed.]\n\nThank you for surveying with Meridian Heritage. Your coastline has been archived and will be preserved, complete and identical, forever."
+ },
+ "reports": {
+  "living": {
+   "title": "THE LIVING SHORE",
+   "coda": "Read back in order, your notebook is an animal census with a beach attached — the heron hunting backward, the gull reading the wrack left to right, the seal's three approaches. The county wanted the line. You gave them everything that crosses it. Somebody at a desk this spring will look up from your two-line entries and out a window, and lose a whole minute."
+  },
+  "lost": {
+   "title": "THE SHORE OF LOST THINGS",
+   "coda": "Read back in order, your notebook is a catalog of arrivals — the rope, the doll's arm, the float that crossed an ocean for twenty years to be on time this morning. The survey wanted the tide line. You recorded what the tide was FOR. Every lost thing you wrote down is now found in the one way that lasts: on paper, dated, in somebody's hand."
+  },
+  "line": {
+   "title": "THE LINE ITSELF",
+   "coda": "Read back in order, your notebook is the beach's own pulse sheet — the wrack above reference, the berm built in a night, the bank giving up its shells a spoonful a winter. This is the notebook the survey dreamed of when it printed two lines and hoped. The measurements will hold. In some archive, decades on, they will be the only honest instrument this coast had."
+  },
+  "whole": {
+   "title": "THE WHOLE BEACH",
+   "coda": "Read back in order, your notebook refuses to specialize — a seal, then a berm, then a jar of ghost-ink letters, in whatever order the beach offered them. This is either poor survey discipline or the entire point of sending a person instead of an instrument, and the county, to its lasting credit, has never once said which."
+  },
+  "footer": "Filed with the county. Read, later, by exactly one person, carefully."
+ }
+}

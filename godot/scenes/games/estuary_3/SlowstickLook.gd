@@ -61,6 +61,15 @@ const PRESETS: Dictionary = {
 		"scanline_strength": 0.0, "chromatic_aberration": 0.0004,
 		"ascii_strength": 0.0
 	},
+	# Meridian Heritage Interactive · New Portland Arcology · 2048
+	# heritage-product rendering · perfectly, wrongly clean — no
+	# grain, no quantize, no texture at all. The sterility IS the
+	# period look; the wrongness is the point.
+	"meridian": {
+		"palette_size": 48.0, "dither_strength": 0.0,
+		"scanline_strength": 0.0, "chromatic_aberration": 0.0,
+		"ascii_strength": 0.0
+	},
 	# Sagebrush Engineworks · Amarillo · pulp-paperback cover inks ·
 	# warm dust field, heavy linework, one violet held in reserve
 	"sagebrush": {

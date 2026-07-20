@@ -1,0 +1,24 @@
+{
+ "id": "the_tideline",
+ "vol": 7,
+ "kind": "slowstick",
+ "status": "playable_v1",
+ "notes": "Oneironautics Inc., Portland OR (2004) · SURVEY WALK / MEASUREMENT-AS-ATTENTION. Ines Rocha solo, the year after Mrs. Wu's Garden, the year before she pitched Estuary 4. One king-tide morning, twelve stations, a county notebook with two ruled lines per station. The limit is the game. Meridian Heritage remade it in 2048 and removed the limit, which is the whole story of 2048.",
+ "shelf": {
+  "label_title": "THE TIDELINE",
+  "label_subtitle": "one morning · twelve stations · two lines each",
+  "publisher": "Oneironautics Inc.",
+  "publisher_locale": "Portland, OR",
+  "release_year": 2004,
+  "release_month": "—",
+  "hardware": "Slowstick Rev 2",
+  "genre_stamp": "SURVEY WALK",
+  "shelf_condition": "the case corner is salt-swollen · inside, a real pencil stub, sharpened with a knife, that nobody in this cabin will throw away"
+ },
+ "acts": [
+  {
+   "id": "the_walk",
+   "scene": "res://scenes/games/the_tideline/TidelineWalk.tscn"
+  }
+ ]
+}

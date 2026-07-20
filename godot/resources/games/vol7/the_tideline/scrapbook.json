@@ -1,0 +1,25 @@
+{
+ "id": "the_tideline_scrapbook",
+ "title": "The Tideline · the notebook",
+ "notes": "Entries reveal when their token lands in GauntletState.lore_tokens_revealed.",
+ "entries": [
+  {
+   "token": "the_tideline_finished",
+   "tier": "finished",
+   "title": "Two lines at a time",
+   "blurb": "Ines Rocha, solo, 2004 — the E1/E2 DNA matured into one December morning. Twelve stations, a county pencil, and room for less than you'll see. The limit is the game. Say that sentence at Meridian Heritage and watch the room."
+  },
+  {
+   "token": "tideline_full_notebook",
+   "tier": "endings",
+   "title": "All twenty-four lines",
+   "blurb": "Every ruled line spent. A full notebook is not the best notebook — the game never says so, but station eleven knows — and it is still a real way to love a beach: completely, in pencil, before breakfast."
+  },
+  {
+   "token": "tideline_the_seal",
+   "tier": "secrets",
+   "title": "The fullest lines in the book",
+   "blurb": "Ten yards, upright in the shallows, watching you decide. You put the pencil down. Both lines under STATION ELEVEN stay blank, and they are the fullest lines in the book. Forty-four years later this is the only moment a license clause forces the remake to keep."
+  }
+ ]
+}

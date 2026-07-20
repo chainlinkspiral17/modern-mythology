@@ -87,6 +87,15 @@ static func make(preset: String) -> Theme:
 			text_hover = Color("#f4eee2")
 			wash = Color(0.54, 0.48, 0.41, 0.06)
 			radius = 3
+		"meridian":
+			# 2048 heritage-product chrome — pale teal hairline on
+			# near-white lettering, wide radius, no wash to speak
+			# of. Frictionless. That is the criticism.
+			accent = Color("#7ac8c0")
+			text = Color("#f2f6f6")
+			text_hover = Color("#ffffff")
+			wash = Color(0.48, 0.78, 0.75, 0.03)
+			radius = 10
 		_:
 			# House neutral (the shelf's warm gold).
 			accent = Color(0.78, 0.66, 0.29)

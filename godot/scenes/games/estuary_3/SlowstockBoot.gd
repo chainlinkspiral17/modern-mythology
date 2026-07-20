@@ -28,6 +28,7 @@ const RMC_HOST_SCENE := "res://scenes/games/riffmaster_melody_club/RiffmasterClu
 const PMG_HOST_SCENE := "res://scenes/games/patient_mister_glass/PatientGlassHost.tscn"
 const SG_HOST_SCENE  := "res://scenes/games/sweetgum/SweetgumHost.tscn"
 const MW_HOST_SCENE  := "res://scenes/games/mrs_wus_garden/MrsWuHost.tscn"
+const TL_HOST_SCENE  := "res://scenes/games/the_tideline/TidelineHost.tscn"
 const E2_HOST_SCENE  := "res://scenes/games/estuary_2/Estuary2Host.tscn"
 const HNN_HOST_SCENE := "res://scenes/games/hane_no_niwa/HaneNoNiwaHost.tscn"
 const SW_HOST_SCENE  := "res://scenes/games/sisters_wyrd/SistersWyrdHost.tscn"
@@ -145,6 +146,10 @@ func _on_picked(stick_id: String, manager_mode: bool = false) -> void:
 		_open_host_sweetgum()
 	elif stick_id == "mrs_wus_garden":
 		_open_host_mrs_wus_garden()
+	elif stick_id == "the_tideline":
+		_open_host_tideline(false)
+	elif stick_id == "tideline_survey_2048":
+		_open_host_tideline(true)
 	elif stick_id == "estuary_2":
 		_open_host_estuary_2()
 	elif stick_id == "hane_no_niwa":
@@ -376,6 +381,20 @@ func _open_host_mrs_wus_garden() -> void:
 	_host = load(MW_HOST_SCENE).instantiate()
 	_host.quit_to_shelf.connect(_open_shelf)
 	_host.finished.connect(_on_host_finished)
+	add_child(_host)
+
+
+func _open_host_tideline(remake: bool) -> void:
+	if _shelf != null:
+		_shelf.queue_free()
+		_shelf = null
+	_current_stick_id = "tideline_survey_2048" if remake else "the_tideline"
+	_host = load(TL_HOST_SCENE).instantiate()
+	_host.quit_to_shelf.connect(_open_shelf)
+	_host.finished.connect(_on_host_finished)
+	# Must land before add_child · _ready picks look, theme, and
+	# save file by mode (the Counselor Mode pattern).
+	_host.set("remake_mode", remake)
 	add_child(_host)
 
 
