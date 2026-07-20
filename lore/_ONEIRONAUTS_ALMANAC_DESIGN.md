@@ -3,7 +3,7 @@
 ### STATUS: BUILT · playable_v1 (2026-07-20)
 ### Reachable from Main Menu → "THE ALMANAC". Steps 1-4 of the build
 ### order below are done (AlmanacState + data + reader UI + menu entry).
-### Step 5 (wire evaluate_unlocks into each pillar's boot) and step 6
+### Step 5 (evaluate_unlocks wired into MainMenu + gauntlet + CP + slowstick boots · DONE) done; step 6
 ### (campaign + shelf pour content) are the remaining spokes.
 
 User ask (2026-07-20): "new design to enhance the full package, from

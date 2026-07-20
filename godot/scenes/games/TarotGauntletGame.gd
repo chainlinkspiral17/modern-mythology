@@ -393,6 +393,7 @@ static func _normalize_arcana_id(raw: String) -> String:
 
 func _ready() -> void:
 	add_to_group("ui")   # F4 master-toggle sweep (CLAUDE.md hard rule)
+	AlmanacState.evaluate_unlocks()   # cross-pillar unlocks fire on entry
 	set_process_unhandled_key_input(true)
 	_load_data()
 	_build_ui()

@@ -42,6 +42,7 @@ var _unlock_overlay:   Control = null
 
 
 func _ready() -> void:
+	AlmanacState.evaluate_unlocks()   # cross-pillar unlocks light on menu return
 	_build_ui()
 	_build_overlays()
 	_select_vol(1)
