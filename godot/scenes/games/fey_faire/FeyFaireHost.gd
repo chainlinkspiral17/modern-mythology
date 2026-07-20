@@ -38,6 +38,26 @@ const ENDINGS_SCENE       := "res://scenes/games/fey_faire/FeyFaireEndings.tscn"
 const MIRROR_REALM_SCENE  := "res://scenes/games/fey_faire/FeyFaireMirrorRealm.tscn"
 const COMPENDIUM_SCENE    := "res://scenes/games/fey_faire/FeyFaireCompendium.tscn"
 const FORTUNE_SCENE       := "res://scenes/games/fey_faire/FeyFaireFortune.tscn"
+const DEATH_SCENE         := "res://scenes/games/fey_faire/FeyFaireDeath.tscn"
+
+# Read the midway booth graph as data without instantiating the scene ·
+# used to score checkpoint depth (BFS from the Gate) at death.
+const MidwayScript = preload("res://scenes/games/fey_faire/FeyFaireMidway.gd")
+
+# The six MEMORIES the Faire spends, one per death, IN THIS ORDER (the
+# Trailer's memory-mirror wall cracks them in exactly this sequence,
+# keyed off memories_lost — keep the two in lockstep).  Each pairs the
+# mirror label with the diegetic blurred paraphrase spoken at death.
+const MEMORY_SLOTS: Array = [
+	["your bedroom",              "... a room you used to fall asleep in?  The light came from one side ..."],
+	["the song you played",       "... a song you used to hum.  You cannot find the tune now ..."],
+	["the meal you enjoyed",      "... something you ate that you were glad to be eating ..."],
+	["the holiday that matters",  "... a day that came once a year and meant something.  Which day? ..."],
+	["the argument with a parent","... a voice you raised, or one raised at you.  You cannot hear the words ..."],
+	["the first kiss",            "... someone leaned in, once.  You have lost their face ..."],
+]
+# Keepsakes the Faire will NOT take on death · earned, not carried.
+const PROTECTED_KEEPSAKES: Array = ["prosperos_word"]
 
 # Rocha's title-card palette
 const C_BG        := Color(0.157, 0.094, 0.173, 1.0)
@@ -816,14 +836,12 @@ func _on_combat_complete(fey_id: String, outcome: String, mutations: Dictionary)
 		if not checkpoints.has(fey_id):
 			checkpoints.append(fey_id)
 		_run_state["checkpoints"] = checkpoints
-	# Loss · one memory lost, half the purse spilled · route back to
-	# Gate to represent respawn
+	# Loss · the designed death/checkpoint economy · a specific memory
+	# cracks, half the purse spills, the most-recent keepsake falls,
+	# and you wake at the deepest checkpoint a recruit/vanquish opened.
 	if outcome == "loss":
-		var mirrors: Array = _run_state.get("memory_mirror_state", [])
-		mirrors.append({"fey_id": fey_id, "cause": "combat_loss"})
-		_run_state["memory_mirror_state"] = mirrors
-		var gold: int = int(_run_state.get("gold", 0))
-		_run_state["gold"] = int(floor(gold * 0.5))
+		_resolve_death(fey_id)
+		return
 	_save_state()
 	# Parley routes back into negotiation with the same fey
 	if outcome == "parley":
@@ -835,6 +853,183 @@ func _on_combat_complete(fey_id: String, outcome: String, mutations: Dictionary)
 		_open_midway()
 	else:
 		_open_gate()
+
+
+# ─── Death / checkpoint economy ─────────────────────────────────────
+
+func _resolve_death(fey_id: String) -> void:
+	# memories_lost was already incremented by the _delta mutation loop
+	# above (combat emits memories_lost_delta = 1), so the memory JUST
+	# cracked is at slot (memories_lost - 1).
+	var lost_now: int = int(_run_state.get("memories_lost", 0))
+	var slot_idx: int = clampi(lost_now - 1, 0, MEMORY_SLOTS.size() - 1)
+	var mem_label: String = String(MEMORY_SLOTS[slot_idx][0])
+	var mem_blur: String = String(MEMORY_SLOTS[slot_idx][1])
+
+	# Log the crack for the memory-mirror wall (kept for continuity).
+	var mirrors: Array = _run_state.get("memory_mirror_state", [])
+	mirrors.append({"fey_id": fey_id, "cause": "combat_loss", "slot": slot_idx})
+	_run_state["memory_mirror_state"] = mirrors
+
+	# Half the purse spills.
+	var gold_before: int = int(_run_state.get("gold", 0))
+	var gold_after: int = int(floor(gold_before * 0.5))
+	_run_state["gold"] = gold_after
+
+	# The most-recent non-protected keepsake falls from your pocket.
+	var item_lost: String = _drop_recent_keepsake()
+
+	# Where you wake · the deepest checkpoint, or the Gate.
+	var wake: Array = _deepest_checkpoint_cell()
+	var wake_cell: String = String(wake[0])
+	var wake_name: String = String(wake[1])
+
+	var is_final: bool = lost_now >= MEMORY_SLOTS.size()
+
+	# The fey you fell to (for the interstitial's flavor).
+	var fey: Dictionary = _fey_entry(fey_id)
+	var fey_name: String = String(fey.get("name", "they"))
+	var manifestation: String = _short_manifestation(fey)
+
+	_run_state["_death_wake_cell"] = wake_cell
+	if is_final:
+		_run_state["forced_ending"] = "you_forget_why_you_came"
+	_save_state()
+
+	_open_death({
+		"fey_name": fey_name,
+		"manifestation": manifestation,
+		"memory_label": mem_label,
+		"memory_blur": mem_blur,
+		"gold_before": gold_before,
+		"gold_after": gold_after,
+		"item_lost": item_lost,
+		"wake_name": wake_name,
+		"memories_left": maxi(0, MEMORY_SLOTS.size() - lost_now),
+		"is_final": is_final,
+	})
+
+
+func _drop_recent_keepsake() -> String:
+	var kp: Array = _run_state.get("keepsakes", [])
+	for i in range(kp.size() - 1, -1, -1):
+		var kid: String = String(kp[i])
+		if PROTECTED_KEEPSAKES.has(kid):
+			continue
+		kp.remove_at(i)
+		_run_state["keepsakes"] = kp
+		var entry: Dictionary = _keepsake_entry(kid)
+		return String(entry.get("name", kid))
+	return ""
+
+
+func _deepest_checkpoint_cell() -> Array:
+	# BFS distance from the Gate over the midway adjacency, then pick
+	# the checkpoint fey whose booth cell sits deepest.  Returns
+	# [cell_id, cell_display_name].  Falls back to the Gate.
+	var graph: Dictionary = MidwayScript.MIDWAY
+	var checkpoints: Array = _run_state.get("checkpoints", [])
+	if checkpoints.is_empty() or not graph.has("gate"):
+		return ["gate", "the Gate"]
+
+	# Distances from gate.
+	var dist: Dictionary = {"gate": 0}
+	var queue: Array = ["gate"]
+	while not queue.is_empty():
+		var cur: String = String(queue.pop_front())
+		var cur_d: int = int(dist[cur])
+		var cell: Dictionary = graph.get(cur, {})
+		for n_v in cell.get("neighbors", []):
+			var n: String = String(n_v)
+			if not dist.has(n) and graph.has(n):
+				dist[n] = cur_d + 1
+				queue.append(n)
+
+	# Map each checkpoint fey → its booth cell, keep the deepest.
+	var best_cell: String = "gate"
+	var best_name: String = "the Gate"
+	var best_d: int = -1
+	for cid in graph.keys():
+		var cell2: Dictionary = graph[cid]
+		var fey_v: Variant = cell2.get("fey", null)
+		if fey_v == null:
+			continue
+		var fey_here: String = String(fey_v)
+		if fey_here == "" or not checkpoints.has(fey_here):
+			continue
+		var d: int = int(dist.get(String(cid), 0))
+		if d > best_d:
+			best_d = d
+			best_cell = String(cid)
+			best_name = String(cell2.get("name", cid))
+	return [best_cell, best_name]
+
+
+func _open_death(report: Dictionary) -> void:
+	_clear_current_scene()
+	_play_bgm("res://assets/audio/bgm/ff/trailer_hearth.wav")
+	_child_scene = load(DEATH_SCENE).instantiate()
+	_child_scene.revive.connect(_on_revive)
+	add_child(_child_scene)
+	if _child_scene.has_method("boot"):
+		_child_scene.call("boot", report)
+
+
+func _on_revive() -> void:
+	# All six memories gone → the Faire keeps you (the bad ending).
+	if String(_run_state.get("forced_ending", "")) == "you_forget_why_you_came":
+		_open_endings()
+		return
+	# Otherwise wake at the checkpoint cell inside the midway.
+	var wake_cell: String = String(_run_state.get("_death_wake_cell", "gate"))
+	_run_state["midway_cell"] = wake_cell
+	_run_state.erase("_death_wake_cell")
+	_run_state["_negotiation_return_to_midway"] = false
+	_save_state()
+	_open_midway()
+
+
+func _fey_entry(fey_id: String) -> Dictionary:
+	var path := "res://resources/games/vol7/fey_faire/feys.json"
+	if not FileAccess.file_exists(path):
+		return {}
+	var f := FileAccess.open(path, FileAccess.READ)
+	var parsed: Variant = JSON.parse_string(f.get_as_text())
+	f.close()
+	if parsed is Dictionary:
+		for e_v in (parsed as Dictionary).get("feys", []):
+			var e: Dictionary = e_v
+			if String(e.get("id", "")) == fey_id:
+				return e
+	return {}
+
+
+func _keepsake_entry(kid: String) -> Dictionary:
+	var path := "res://resources/games/vol7/fey_faire/keepsakes.json"
+	if not FileAccess.file_exists(path):
+		return {}
+	var f := FileAccess.open(path, FileAccess.READ)
+	var parsed: Variant = JSON.parse_string(f.get_as_text())
+	f.close()
+	if parsed is Dictionary:
+		for e_v in (parsed as Dictionary).get("keepsakes", []):
+			var e: Dictionary = e_v
+			if String(e.get("id", "")) == kid:
+				return e
+	return {}
+
+
+func _short_manifestation(fey: Dictionary) -> String:
+	var m: String = String(fey.get("manifestation", ""))
+	if m == "":
+		return "the tent"
+	# First clause only · the interstitial wants a place, not a paragraph.
+	var cut: int = m.find(".")
+	if cut > 0 and cut < 80:
+		return m.substr(0, cut)
+	if m.length() > 80:
+		return m.substr(0, 80) + "…"
+	return m
 
 
 func _input(event: InputEvent) -> void:

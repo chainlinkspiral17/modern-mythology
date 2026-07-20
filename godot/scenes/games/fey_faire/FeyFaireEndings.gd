@@ -197,6 +197,13 @@ func boot(state: Dictionary) -> void:
 	_run_state = state
 	_build_frame()
 	_beat_idx = 0
+	# A forced ending (set by the Host when the sixth memory is lost on
+	# death) skips the Night-6 gather beats and plays straight through.
+	var forced: String = String(_run_state.get("forced_ending", ""))
+	if forced != "" and ENDINGS.has(forced.trim_prefix("ending_")):
+		_run_state.erase("forced_ending")
+		_choose(forced.trim_prefix("ending_"))
+		return
 	_render_gather_beat()
 
 

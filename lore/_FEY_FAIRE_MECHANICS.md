@@ -342,3 +342,45 @@ memory. THREATEN-fail is the organic door into all of this.
 Deferred (next passes): booth puzzles, the designed death
 checkpoint economy, connecting the ~75 orphaned feys to booths,
 mirror-gate puzzles, Titania/Oberon exclusivity.
+
+## DEATH / CHECKPOINT ECONOMY · wired (2026-07-20)
+
+The "Death and checkpoints" section above was fully specified but
+never fired: combat set `memories_lost += 1` and halved gold, then
+silently routed to the Gate. Checkpoints were APPENDED on every
+recruit/vanquish and then read by nobody. Now the whole loop runs.
+
+- **A specific memory cracks, and it is named.** Death consumes the
+  six memories IN THE TRAILER'S MIRROR ORDER (bedroom → song → meal
+  → holiday → parent-argument → first-kiss), keyed off
+  `memories_lost` so the mirror wall and the death screen never
+  disagree. `FeyFaireHost.MEMORY_SLOTS` pairs each with a diegetic
+  blurred paraphrase ("... a song you used to hum ..."); the same
+  paraphrases now show on the cracked mirror in the Trailer.
+- **You wake at the DEEPEST checkpoint, not the Gate.** The Host
+  reads `FeyFaireMidway.MIDWAY` via preload (no instantiation),
+  BFS-scores every cell's distance from the Gate, maps each
+  checkpoint fey to its booth cell, and respawns you at the deepest
+  one by setting `midway_cell` before reopening the midway. Recruits
+  and vanquishes both open checkpoints, so a deep run is protected —
+  the mechanic the design promised.
+- **The purse spills, a keepsake falls.** Half gold (kept) plus the
+  most-recent non-protected keepsake drops from your pocket
+  (`PROSPERO'S WORD` is protected — earned, not carried).
+- **The sixth death is terminal.** When the last memory goes, the
+  Host sets `forced_ending = "you_forget_why_you_came"`; the death
+  screen's button reads "sit down in the empty lot" and routes
+  straight to that ending (FeyFaireEndings.boot honors a forced
+  ending, skipping the Night-6 gather beats).
+- **A death interstitial teaches the lesson.** New scene
+  `FeyFaireDeath` names every cost and what survived (party,
+  promises, quotes, court standing) — death rewinds LOUDLY now, per
+  the "every death should teach a specific lesson" rule.
+
+Rides existing machinery: the checkpoints array (already tracked),
+the combat "loss" outcome, `midway_cell` restore-on-boot, the
+endings scene. One new interstitial scene, no save-format change
+beyond the transient `_death_wake_cell`/`forced_ending` keys.
+
+Deferred still: booth puzzles, mirror-gate puzzles,
+Titania/Oberon exclusivity, gold sinks beyond quotes/OFFER.

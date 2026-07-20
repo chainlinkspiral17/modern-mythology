@@ -615,13 +615,16 @@ func _render_memory_view() -> void:
 	_render_sub_view("MEMORY MIRRORS · six on the wall", func(v: VBoxContainer) -> void:
 		var q: Dictionary = _run_state.get("questionnaire", {})
 		var lost: int = int(_run_state.get("memories_lost", 0))
+		# Fourth column · the blurred paraphrase shown once the mirror
+		# cracks (a death spends memories in this exact order; kept in
+		# lockstep with FeyFaireHost.MEMORY_SLOTS).
 		var slot_map: Array = [
-			["bedroom_description", "your bedroom",           "mirror_1_rose_garden"],
-			["favorite_song",       "the song you played",    "mirror_2_storm_coast"],
-			["favorite_meal",       "the meal you enjoyed",   "mirror_3_court_beneath"],
-			["holiday",             "the holiday that matters", "mirror_4_the_green"],
-			["parent_argument",     "the argument with a parent", "mirror_5_undertide"],
-			["first_kiss",          "the first kiss",         "mirror_6_dream"],
+			["bedroom_description", "your bedroom",           "mirror_1_rose_garden", "... a room you used to fall asleep in?  The light came from one side ..."],
+			["favorite_song",       "the song you played",    "mirror_2_storm_coast", "... a song you used to hum.  You cannot find the tune now ..."],
+			["favorite_meal",       "the meal you enjoyed",   "mirror_3_court_beneath", "... something you ate that you were glad to be eating ..."],
+			["holiday",             "the holiday that matters", "mirror_4_the_green", "... a day that came once a year and meant something.  Which day? ..."],
+			["parent_argument",     "the argument with a parent", "mirror_5_undertide", "... a voice you raised, or one raised at you.  You cannot hear the words ..."],
+			["first_kiss",          "the first kiss",         "mirror_6_dream", "... someone leaned in, once.  You have lost their face ..."],
 		]
 		var completed: Array = _run_state.get("mirrors_completed", [])
 		for i in range(slot_map.size()):
@@ -652,7 +655,8 @@ func _render_memory_view() -> void:
 			hdr.add_theme_color_override("font_color", C_BG)
 			vh.add_child(hdr)
 			var body := Label.new()
-			body.text = value if not cracked else "· ... a specific memory that used to be here ..."
+			var blur: String = slot_map[i][3] if slot_map[i].size() > 3 else "· ... a specific memory that used to be here ..."
+			body.text = value if not cracked else blur
 			body.add_theme_font_size_override("font_size", 13)
 			body.add_theme_color_override("font_color", C_BG)
 			body.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
