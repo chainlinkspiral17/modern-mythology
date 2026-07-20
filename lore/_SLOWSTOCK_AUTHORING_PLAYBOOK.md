@@ -158,6 +158,45 @@ each state transition.
 
 ## Recent lessons
 
+### 2026-07-20 · the meta-layer trilogy · one work, not four
+
+Built three cross-pillar systems in one arc — the Oneironaut's
+Almanac (hub), the Major Arcana campaign, the collector's Catalog —
+all on the SAME read-only spine. Lessons for wrapping finished
+pillars into one work:
+
+- **A tiny predicate engine unifies everything.** `AlmanacState.
+  predicate_met({token / token_prefix / arcana_won / all_arcana /
+  canon-eq / any / all})` is ~40 lines, and all three systems reuse
+  it: Almanac entries light, Catalog carts show played, Catalog
+  achievements resolve, campaign tokens surface. One matcher over
+  the tokens the pillars ALREADY write beats bespoke checks per
+  screen. Build the matcher first; pour JSON into it.
+- **Read-only over the existing spine = zero migration risk.** The
+  whole trilogy adds no save format (GauntletState gained one
+  additive `campaign` block, guarded for old saves). It lights up on
+  an existing save because it reads tokens/canon that already fire.
+  When connecting shipped systems, READ, don't re-plumb.
+- **The campaign is a launcher + bookend, not a second engine.**
+  MajorArcanaCampaign reuses SpreadHost's exact launch contract
+  (`start_scenario` + `game_ended`); it sequences and frames the 22,
+  carries a thin thread, and never touches the board/combat code.
+  Free play stays. A "campaign" over existing content is mostly a
+  selection screen + an interstitial + a progress dict.
+- **Menu overlays: one proven scaffold, three screens.** All three
+  are ProfilePanel-pattern (`static build(parent)`, ui group, Esc,
+  fresh each open). Copying the known-good overlay skeleton made each
+  new screen a content problem, not a lifecycle one.
+- **Lattice canon lives in docs; structure it once for the UI.** The
+  studio/year/credits lattice was prose in the roadmap + aesthetic
+  bible. catalog.json is that canon structured — authored ONCE,
+  cross-checked against the source (every cart's studio ∈ the studio
+  table) so it can't silently contradict the fiction.
+- **Commit messages: no backticks, and prefer double quotes.** Twice
+  a backticked word ran as a shell command and an apostrophe in a
+  single-quoted message broke out. House rule now: plain words in
+  commit bodies, double-quoted.
+
 ### 2026-07-20 · Fey Faire · closing the economy loop (C2-tail arc)
 
 Finished the whole C2-tail in one arc: Warren, death economy, booth
