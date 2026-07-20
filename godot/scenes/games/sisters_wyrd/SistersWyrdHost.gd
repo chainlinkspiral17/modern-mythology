@@ -103,6 +103,14 @@ func start_new_run(_manager_mode: bool = false) -> void:
 	_open_crawl()
 
 
+func _start_b_side() -> void:
+	# Fully built before the crawl boots · same fresh state, other
+	# side of the loom.
+	_run_state = _fresh_state(_run_state.get("rides", []))
+	_run_state["b_side"] = true
+	_open_crawl()
+
+
 func _clear_current_scene() -> void:
 	for n in [_title_root, _child_scene, _beat_root]:
 		if n != null and is_instance_valid(n):
@@ -224,6 +232,18 @@ func _build_title_screen() -> void:
 	new_btn.add_theme_font_size_override("font_size", 14)
 	new_btn.pressed.connect(func() -> void: start_new_run(false))
 	v.add_child(new_btn)
+
+	# THE SECOND DECK · the B-side · offered once the loom has been
+	# seen. Sagebrush shipped nothing else — this is the same cart
+	# read the other way: sisters swap corners, the territory
+	# re-weaves under the same theology.
+	if OneironauticsTokens.has("wyrd_eighth_point_seen"):
+		var b_btn := Button.new()
+		b_btn.text = "  READ THE B-SIDE  "
+		b_btn.add_theme_font_size_override("font_size", 14)
+		b_btn.add_theme_color_override("font_color", C_WYRD)
+		b_btn.pressed.connect(_start_b_side)
+		v.add_child(b_btn)
 
 	if _has_save():
 		var cont_btn := Button.new()
@@ -558,6 +578,8 @@ func _finish_run(true_end: bool) -> void:
 		tokens.append("wyrd_all_four_unwoven")
 	if bool(_run_state.get("eighth_point_seen", false)) and not tokens.has("wyrd_eighth_point_seen"):
 		tokens.append("wyrd_eighth_point_seen")
+	if bool(_run_state.get("b_side", false)) and not tokens.has("wyrd_b_side_read"):
+		tokens.append("wyrd_b_side_read")
 	_run_state["lore_tokens_pending"] = tokens
 	OneironauticsTokens.add_many(tokens)
 	var canon: Dictionary = _run_state.get("canon_vars", {})

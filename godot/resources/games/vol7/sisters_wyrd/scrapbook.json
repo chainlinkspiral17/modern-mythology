@@ -44,6 +44,12 @@
    "tier": "secrets",
    "title": "The map is wrong where the world is",
    "blurb": "One hex of salt where every map agrees on scrub. The previous owner found it, checked it, and left the note folded in the case: keep both. You kept both. The wrongness is the landmark."
+  },
+  {
+   "token": "wyrd_b_side_read",
+   "tier": "secrets",
+   "title": "The B-side",
+   "blurb": "The same cart, read the other way: the sisters swap corners and the whole territory re-weaves under the same theology. Sagebrush shipped nothing else, ever - so this was always in there, on the flip side of the loom, waiting for a rider who had seen the eighth point and wondered what the manual meant by 'both'."
   }
  ]
 }

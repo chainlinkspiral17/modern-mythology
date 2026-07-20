@@ -46,6 +46,21 @@ const TERRAINS := ["dust", "bone", "scrub", "mesa", "salt", "gallows", "township
 const MAP_R := 15                       # rideable radius from home
 const WITCH_SEATS := {"north": [0, -13], "east": [13, 0],
 	"south": [0, 13], "west": [-13, 0]}
+# THE SECOND DECK · the B-side · the same cart read the other way:
+# the sisters swap corners (N<->S, E<->W) and the whole territory
+# re-weaves under a different salt. Sagebrush shipped nothing
+# else; this is not new product, it is the manual's last page
+# read in a mirror.
+const WITCH_SEATS_B := {"north": [0, 13], "east": [-13, 0],
+	"south": [0, -13], "west": [13, 0]}
+
+
+func _b_side() -> bool:
+	return bool(_state.get("b_side", false))
+
+
+func _seats() -> Dictionary:
+	return WITCH_SEATS_B if _b_side() else WITCH_SEATS
 const HOME := [0, 0]
 
 # Tile geometry · native WyrdHexArt tiles (40×46) laid as a field.
@@ -179,7 +194,8 @@ func boot(state: Dictionary) -> void:
 # ─── The address is still the world ──────────────────────────────
 
 func _hash_qr(q: int, r: int, salt: int = 0) -> int:
-	var h := 5381 + salt
+	# The B-side re-weaves the whole territory · same loom, other side.
+	var h := 5381 + salt + (1009 if _b_side() else 0)
 	h = ((h << 5) + h + q + 907) & 0x7FFFFFFF
 	h = ((h << 5) + h + r + 2029) & 0x7FFFFFFF
 	h = ((h << 5) + h + q * 31 + r * 7) & 0x7FFFFFFF
@@ -191,16 +207,16 @@ func _terrain_at(q: int, r: int) -> String:
 		return "township"   # home is a porch with a town's manners
 	if _towns.has("%d,%d" % [q, r]):
 		return "township"   # the five authored towns keep hours
-	for w in WITCH_SEATS.keys():
-		var s: Array = WITCH_SEATS[w]
+	for w in _seats().keys():
+		var s: Array = _seats()[w]
 		if q == int(s[0]) and r == int(s[1]):
 			return "gallows" if w == "west" else ("salt" if w == "north" else ("mesa" if w == "east" else "dust"))
 	return TERRAINS[_hash_qr(q, r) % TERRAINS.size()]
 
 
 func _seat_at(q: int, r: int) -> String:
-	for w in WITCH_SEATS.keys():
-		var s: Array = WITCH_SEATS[w]
+	for w in _seats().keys():
+		var s: Array = _seats()[w]
 		if q == int(s[0]) and r == int(s[1]):
 			return String(w)
 	return ""
@@ -216,7 +232,7 @@ func _hex_dist(a: Vector2i, b: Vector2i) -> int:
 # ─── Wave 2 · sister weather with teeth ──────────────────────────
 
 func _seat_vec(w: String) -> Vector2i:
-	var s: Array = WITCH_SEATS.get(w, [0, 0])
+	var s: Array = _seats().get(w, [0, 0])
 	return Vector2i(int(s[0]), int(s[1]))
 
 
@@ -236,7 +252,7 @@ func _quadrant_of(p: Vector2i) -> String:
 	# A hex belongs to the sister whose seat sits nearest.
 	var best := ""
 	var best_d := 9999
-	for w in WITCH_SEATS.keys():
+	for w in _seats().keys():
 		var d := _hex_dist(p, _seat_vec(String(w)))
 		if d < best_d:
 			best_d = d
@@ -420,10 +436,10 @@ func _on_arrive() -> void:
 	# Sister weather when her corner is near.
 	var dealt2: Dictionary = _state.get("witches_dealt", {})
 	var cue := ""
-	for w in WITCH_SEATS.keys():
+	for w in _seats().keys():
 		if dealt2.has(w):
 			continue
-		var s: Array = WITCH_SEATS[w]
+		var s: Array = _seats()[w]
 		if _hex_dist(_pos, Vector2i(int(s[0]), int(s[1]))) <= 4:
 			cue = String(w)
 			break
@@ -737,10 +753,10 @@ func _town_rumor_line() -> String:
 	var dealt: Dictionary = _state.get("witches_dealt", {})
 	var best := ""
 	var best_d := 999
-	for w in WITCH_SEATS.keys():
+	for w in _seats().keys():
 		if dealt.has(w):
 			continue
-		var s: Array = WITCH_SEATS[w]
+		var s: Array = _seats()[w]
 		var d := _hex_dist(_pos, Vector2i(int(s[0]), int(s[1])))
 		if d < best_d:
 			best_d = d
@@ -845,8 +861,8 @@ func _draw() -> void:
 			draw_string(font, tc + Vector2(-30, -28), String(t.get("name", "")),
 					HORIZONTAL_ALIGNMENT_LEFT, -1, 11, C_BLOOD)
 	var dealt: Dictionary = _state.get("witches_dealt", {})
-	for w in WITCH_SEATS.keys():
-		var s: Array = WITCH_SEATS[w]
+	for w in _seats().keys():
+		var s: Array = _seats()[w]
 		var sc := _axial_to_px(int(s[0]), int(s[1]))
 		if sc.x > -60.0 and sc.x < 1340.0 and sc.y > -60.0 and sc.y < 780.0:
 			draw_string(font, sc + Vector2(-30, -28), "HER SEAT",
@@ -854,10 +870,10 @@ func _draw() -> void:
 			if dealt.has(w):
 				draw_line(sc + Vector2(-10, -6), sc + Vector2(10, 6), C_WYRD, 2.0)
 	# seat direction arrows at the screen edge for undealt sisters
-	for w2 in WITCH_SEATS.keys():
+	for w2 in _seats().keys():
 		if dealt.has(w2):
 			continue
-		var s2: Array = WITCH_SEATS[w2]
+		var s2: Array = _seats()[w2]
 		var sc2 := _axial_to_px(int(s2[0]), int(s2[1]))
 		if sc2.x < 0.0 or sc2.x > 1280.0 or sc2.y < 0.0 or sc2.y > 720.0:
 			var dir := (sc2 - VIEW_CENTER).normalized()
