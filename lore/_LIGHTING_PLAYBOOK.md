@@ -151,6 +151,28 @@ Position note: lamp omnis are placed AT the lamp-head mesh position
 
 ## Recent lessons
 
+### 2026-07-20 · lighting-coverage audit + the ambient/practical caveat
+
+New tool `godot/tools/audit_locale_lighting.py` reports the three-
+light foundation across all 94 locales: 70 carry >=3 directional
+lights; 24 do not. It tiers the 24 into 10 intentionally LOW-KEY (a
+darkroom's safelight, the nightmare cell, night porches, the god's-eye
+diner with 29 practicals — leave the rig, verify practicals only) and
+14 "normal" rig candidates.
+
+- **BUT "directional < 3" is a proxy, not a verdict.** Reading the
+  flagged rooms (e.g. ember_ash_office) shows many already have a
+  CONSIDERED look via KEY directional + WorldEnvironment ambient +
+  fill/back OmniLight practicals — a valid alternative to three
+  directionals. Baking two more directional lights into those would
+  over-light them.
+- **So the audit is a MAP, not a fix-list.** The actual rig work per
+  locale is eyes-on: energies, colours, and whether a room wants the
+  textbook three-light or a mood-driven single-key look are calls you
+  make looking at the render. Don't bulk-bake rigs blind — that ships
+  a visual change you can't verify (same rule as the gauntlet camera
+  vantages). Run the audit, then rig on-device.
+
 ### 2026-07-13 · stray practicals at +Z is a recurring bug — audit every rig
 
 During the scene-standard sweep, FOUR hand-authored locale rigs
