@@ -205,6 +205,30 @@ rules** once they've held across multiple sessions.
 
 ## Recent lessons
 
+### 2026-07-19 · County Seat + pair dispatches + Dean's Ledger
+
+- **Ride the primary's record, don't duplicate the machinery.**
+  Pair dispatches could have meant a parallel _dispatch_pair copy
+  of stages/undo/revoke/resolve. Instead the partner is a RIDER
+  on the primary's dispatch record (pair_agent_id + extended undo
+  snapshot), with three small patches where the record is
+  consumed (revoke, resolve, breather). New feature, near-zero
+  new surface area for bugs.
+- **A refusal is content.** Ruth appears in the partner picker
+  specifically so she can decline — the 'Ask anyway' button
+  exists to deliver one line. The cheapest characterization on
+  the board is a NO with a voice.
+- **Deepen an existing earn-ladder instead of a new system.**
+  Dean's Ledger is the fingerprints-≥5 rung above the existing
+  napkin at ≥3 — one match arm, one seed, and the counter the
+  player was already accumulating suddenly has a payoff curve.
+- **Hand-formatted JSON stays hand-formatted.** dean.json,
+  reveals.json, regions.json, endings.json, PS scrapbook — none
+  round-trip through json.dump. The surgical-append pattern
+  (render entry, indent to match, insert before the array close,
+  re-parse to verify) is now the house method; diffs stay
+  append-only and reviewable.
+
 ### 2026-07-19 · between-spike events + roster growth · one machine, two features
 
 - **Choice events and recruitment are the same machine.** The
