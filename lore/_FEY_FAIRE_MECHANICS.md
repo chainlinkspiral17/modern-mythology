@@ -490,3 +490,44 @@ royals with Prospero's Word), protect it (the strongbox), and every
 death spends a named memory toward the terminal ending.
 
 Deferred still: (nothing from the original C2 survey — all cleared).
+
+---
+
+## Negotiation de-domination · the fey WANTS (2026-07-20)
+
+The four branches were resource-GATED but not tactically distinct:
+a gold-rich player OFFERed everyone, because every branch that
+succeeded routed through `_succeed_recruit` and granted the same
++2 disposition. OFFER was a universal solvent — the choice was
+"what can I afford," not "who is this fey."
+
+Fix, riding existing data (no new authoring pass): each fey now has
+a single branch that DELIGHTS it, DERIVED from fields it already
+carries, with a curated override hatch:
+
+- holds a real `favorite_play` (not "" / "None") -> **RECITE** (29)
+- else tier 3 -> **PROMISE** (great ones won't be bought or bossed)
+- else seelie -> **PROMISE** · unseelie -> **THREATEN** · wildfey -> **PROMISE**
+
+Spread over the 101: RECITE 29 · PROMISE 51 · THREATEN 21. OFFER is
+NEVER a want, so gold stops dominating. Crucially no THREATEN-want
+lands on a tier-3 fey (tier-3 THREATEN triggers combat, not recruit),
+so a want never routes into a forced fight — verified by simulation.
+
+`_succeed_recruit` now scales the per-fey disposition by match:
+hitting the want DELIGHTS (+3), OFFER or any mismatch still recruits
+but COOLLY (+1). Endings gate on per-fey disposition (titania/oberon/
+green_man/cricket) and Helia's tail-flick reads it, so the gradient
+is felt, not cosmetic. No new rebuffs were added — every branch still
+recruits, so there is no soft-lock and no dead content; the change is
+purely the WARMTH of the recruit and the flavor line.
+
+Legibility: a "tell" line renders on the main negotiation view, read
+from the same court/play the panel already shows, so the want is a
+READ, not trial-and-error — consistent with the legible-only ethos.
+
+Pattern reused: derive-by-default + curated-override, the same shape
+as the gauntlet visitor look table. `_WANTS_OVERRIDE` starts empty
+because the derivation is already characterful (favorite_play routes
+the literary feys correctly); add rows only where a fey reads against
+its court/play.

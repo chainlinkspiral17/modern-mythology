@@ -282,6 +282,20 @@ func _render_main_view() -> void:
 	right_header.add_theme_color_override("font_color", C_GOLD)
 	right.add_child(right_header)
 
+	# Legible tell · what THIS fey actually responds to, read from its
+	# court and whether it holds a play. OFFER always recruits but never
+	# DELIGHTS — gold is a solvent, not a key. Hitting the real want is
+	# what wins full disposition (which the endings gate on). This turns
+	# the branch choice from "what can I afford" into "what is this fey."
+	# de-domination pass 2026-07.
+	var tell := Label.new()
+	tell.text = _wants_tell()
+	tell.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+	tell.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+	tell.add_theme_font_size_override("font_size", 13)
+	tell.add_theme_color_override("font_color", C_MAUVE)
+	right.add_child(tell)
+
 	# Precomputed check · does the player HAVE the specific means
 	# to attempt each branch?  Each branch is a different price with
 	# a different failure shape · thin-gameplay pass 2026-07.
@@ -424,6 +438,50 @@ func _matching_quote() -> Dictionary:
 		if aff.has(_fey_id) or (court != "" and aff.has(court)):
 			return q
 	return {}
+
+
+# ── What this fey actually wants (de-domination) ─────────────────
+# Each fey has a single branch that DELIGHTS it — hitting it wins
+# full disposition; OFFER (or any mismatch) still recruits but coolly,
+# at reduced disposition. OFFER is never a want, so gold stops being a
+# universal solvent. The want is DERIVED from data every fey already
+# carries (court + whether it holds a play), with a curated override
+# hatch for feys whose character reads against the derivation. This
+# mirrors the visitor-portrait look table: derive by default, override
+# the marquee cases. Endings gate on per-fey disposition, so the
+# gradient has teeth.
+const _WANTS_OVERRIDE: Dictionary = {
+	# id → "RECITE" | "PROMISE" | "THREATEN". Empty by default; the
+	# derivation below is characterful because favorite_play already
+	# routes the literary feys to RECITE. Add rows only where a fey's
+	# character contradicts its court/play.
+}
+
+
+func _fey_wants() -> String:
+	if _WANTS_OVERRIDE.has(_fey_id):
+		return String(_WANTS_OVERRIDE[_fey_id])
+	var fav := _fey_str("favorite_play", "")
+	var has_play: bool = fav != "" and fav != "None"
+	if has_play:
+		return "RECITE"          # the literary ones want their own line
+	var tier: int = int(_fey.get("tier", 1))
+	if tier >= 3:
+		return "PROMISE"         # great ones won't be bought or bossed
+	match _fey_str("court", "wildfey"):
+		"seelie":   return "PROMISE"   # courtly — a bond binds them
+		"unseelie": return "THREATEN"  # they wait to be called by name
+		_:          return "PROMISE"   # wildfey take a bargain
+
+
+func _wants_tell() -> String:
+	match _fey_wants():
+		"RECITE":
+			return "· it holds a play close · win it with the right line, not coin ·"
+		"THREATEN":
+			return "· it is waiting to be called by its true name ·"
+		_:
+			return "· it wants a promise it can hold you to, not coin ·"
 
 
 func _on_offer_pressed() -> void:
@@ -629,16 +687,23 @@ func _succeed_recruit(via: String, extra_mutations: Dictionary = {}, court_overr
 	var court := _fey_str("court", "wildfey")
 	var court_key := "court_" + (court_override if court_override != "" else court)
 	muts[court_key + "_delta"] = 2
-	# Named disposition · recruiting a fey means they like you.
-	# Endings gate on titania/oberon/green_man/cricket dispositions,
-	# and Helia's tail-flick reads per-fey disposition · feed both.
-	muts[_fey_id + "_disposition_delta"] = 2
+	# Named disposition · recruiting a fey means they like you, but HOW
+	# MUCH depends on whether you read them right. The branch that
+	# matches their want DELIGHTS them (+3); OFFER or any mismatch still
+	# recruits, but coolly (+1). Endings gate on titania/oberon/
+	# green_man/cricket dispositions, and Helia's tail-flick reads
+	# per-fey disposition · so the gradient is felt.
+	var delighted: bool = (via == _fey_wants())
+	muts[_fey_id + "_disposition_delta"] = 3 if delighted else 1
 	# Court cache · the endings count unseelie recruits via this key.
 	muts["fey_court_" + _fey_id] = court
 
+	var recruit_line := ("They join your party gladly — you read them true." if delighted
+		else ("They join your party, but coolly — bought, not won." if via == "OFFER"
+			else "They join your party, but warily — recruited, not won over."))
 	_render_result_view(
 		_fey_str("name", "?") + " · RECRUITED",
-		"They have joined your party.  A checkpoint has opened at " + _short_manifestation() + ".",
+		recruit_line + "  A checkpoint has opened at " + _short_manifestation() + ".",
 		C_COURT_SEELIE if court == "seelie" else (C_COURT_UNSEELIE if court == "unseelie" else C_COURT_WILDFEY),
 		func() -> void: negotiation_complete.emit(_fey_id, "recruited", muts)
 	)
