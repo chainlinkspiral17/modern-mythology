@@ -58,10 +58,13 @@ def main():
             bgs = []
             mood_cues = 0
             stage_cues = 0
+            interludes = 0
             has_bgm = False
             for n in nodes:
                 if not isinstance(n, dict): continue
                 t = n.get("t", "")
+                if t == "interlude":
+                    interludes += 1
                 if t == "bg":
                     src = str(n.get("src", ""))
                     if src.startswith("3d:"):
@@ -76,15 +79,18 @@ def main():
                 mood_cues += len(re.findall(r"\[mood:", blob))
                 stage_cues += len(re.findall(r"\[stage:", blob))
             distinct_bg = len(set(bgs))
-            # "flat": a substantial scene, one or zero backdrops, few mood shifts
-            if len(nodes) >= 40 and distinct_bg <= 1 and mood_cues <= 1:
-                flat.append((f"{vol}/{fn}", len(nodes), distinct_bg, mood_cues, stage_cues, has_bgm))
+            # "flat" = a direction-pass candidate: substantial, one backdrop,
+            # <=1 mood cue, AND >=2 interludes (its own structural beats to
+            # hang mood shifts on). A long one-room, single-interlude scene is
+            # an intentionally STEADY two-hander, not a defect — excluded.
+            if len(nodes) >= 40 and distinct_bg <= 1 and mood_cues <= 1 and interludes >= 2:
+                flat.append((f"{vol}/{fn}", len(nodes), distinct_bg, mood_cues, stage_cues, interludes, has_bgm))
 
     print(f"\n=== scanned {scanned} scenes · {broken} broken bg ref(s) ===")
     if flat:
-        print(f"\n--- {len(flat)} FLAT scenes (>=40 nodes, <=1 backdrop, <=1 mood cue) — direction-pass candidates ---")
-        for f, nc, db, mc, sc, bg in sorted(flat, key=lambda r: -r[1]):
-            print(f"   {f:42s} nodes={nc:3d}  backdrops={db}  moods={mc}  stages={sc}  bgm={'y' if bg else 'n'}")
+        print(f"\n--- {len(flat)} FLAT scenes (>=40 nodes, <=1 backdrop, <=1 mood, >=2 interludes) — direction-pass candidates ---")
+        for f, nc, db, mc, sc, il, bg in sorted(flat, key=lambda r: -r[1]):
+            print(f"   {f:42s} nodes={nc:3d}  backdrops={db}  moods={mc}  stages={sc}  interludes={il}  bgm={'y' if bg else 'n'}")
     return 1 if broken else 0
 
 if __name__ == "__main__":

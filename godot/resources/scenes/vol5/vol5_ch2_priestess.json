@@ -84,7 +84,7 @@
     },
     {
       "t": "narrate",
-      "text": "Her web series — Whispers from the Liminal — had drunk deep from this town's poisoned well. Oh, the material. She had framed Graustark's rust as existential patina. The sinkhole's lingering psychic miasma as compelling thematic resonance. The way the locals occasionally lost an hour and recovered it with the wrong shoes on as Lynchian quotidian.",
+      "text": "[mood:liminal_interior]Her web series — Whispers from the Liminal — had drunk deep from this town's poisoned well. Oh, the material. She had framed Graustark's rust as existential patina. The sinkhole's lingering psychic miasma as compelling thematic resonance. The way the locals occasionally lost an hour and recovered it with the wrong shoes on as Lynchian quotidian.",
       "voice": "assets/audio/voice/vol5_ch2_priestess/015.mp3"
     },
     {
@@ -192,7 +192,7 @@
     },
     {
       "t": "narrate",
-      "text": "[stage:elicia living][shot:insert script_page]She picked up a script page from the table — notes for the Whispers choose-your-own-adventure episode. She had been promising the audience the episode for six months. The audience had been patient. The audience would not, she suspected, be patient much longer.",
+      "text": "[mood:dream_blur][stage:elicia living][shot:insert script_page]She picked up a script page from the table — notes for the Whispers choose-your-own-adventure episode. She had been promising the audience the episode for six months. The audience had been patient. The audience would not, she suspected, be patient much longer.",
       "voice": "assets/audio/voice/vol5_ch2_priestess/036.mp3"
     },
     {
