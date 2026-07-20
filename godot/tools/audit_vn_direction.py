@@ -43,6 +43,7 @@ def main():
     broken = 0
     flat = []
     scanned = 0
+    with_mood = with_shot = with_stage = 0
     for vol in ("vol5", "vol6"):
         vdir = os.path.join(SCENES, vol)
         if not os.path.isdir(vdir): continue
@@ -78,6 +79,13 @@ def main():
                 blob = text_of(n)
                 mood_cues += len(re.findall(r"\[mood:", blob))
                 stage_cues += len(re.findall(r"\[stage:", blob))
+            shot_cues = 0
+            for n in nodes:
+                if isinstance(n, dict):
+                    shot_cues += len(re.findall(r"\[shot:", text_of(n)))
+            if mood_cues > 0: with_mood += 1
+            if shot_cues > 0: with_shot += 1
+            if stage_cues > 0: with_stage += 1
             distinct_bg = len(set(bgs))
             # "flat" = a direction-pass candidate: substantial, one backdrop,
             # <=1 mood cue, AND >=2 interludes (its own structural beats to
@@ -87,6 +95,14 @@ def main():
                 flat.append((f"{vol}/{fn}", len(nodes), distinct_bg, mood_cues, stage_cues, interludes, has_bgm))
 
     print(f"\n=== scanned {scanned} scenes · {broken} broken bg ref(s) ===")
+    print(f"    (direction coverage: {with_mood}/{scanned} use a mood cue · "
+          f"{with_shot}/{scanned} use a shot cue · {with_stage}/{scanned} use stage blocking)")
+    print(f"    NOTE: [stage:] blocking is currently INERT — Background3D."
+          f"CAST_ENABLED\n    is false, so stage_character() no-ops for every"
+          f" scene. Authoring\n    stage cues is pointless until the 3D cast"
+          f" system is enabled (owner\n    call: cast GLBs at cast_<spot> marks"
+          f" + flip CAST_ENABLED). mood +\n    shot are the live direction"
+          f" dimensions and both read strong.")
     if flat:
         print(f"\n--- {len(flat)} FLAT scenes (>=40 nodes, <=1 backdrop, <=1 mood, >=2 interludes) — direction-pass candidates ---")
         for f, nc, db, mc, sc, il, bg in sorted(flat, key=lambda r: -r[1]):
