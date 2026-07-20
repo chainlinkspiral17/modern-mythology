@@ -476,10 +476,19 @@ func _render_ending_beat() -> void:
 
 
 func _render_end_screen() -> void:
-	_write_narrative(
-		"· FIN ·",
-		"You have seen this ending.  Return to the title screen to view the endings compendium, or start a new run.\n\nCross-Oneironautics facts learned in this run have been passed forward."
-	)
+	# THE SECOND READING · the book, read the second way, has its
+	# own last page — and its own token.
+	if bool(_run_state.get("second_reading", false)):
+		OneironauticsTokens.add("em_second_reading_finished")
+		_write_narrative(
+			"· FIN · THE SECOND READING ·",
+			"You have read the book the second way now — with the Corrections in from page one, the way Amélie Rocha read it at her QA desk in 1985, red pencil in hand, knowing everything and required to change almost nothing.\n\nThe two readings do not agree. They were never going to. The manuscript is what Hubbard wanted true; the Corrections are what happened; the GAME is the argument between them, and you have now stood on both sides of it.\n\nSomewhere between the first reading and this one, the book stopped being his.\n\nCross-Oneironautics facts learned in this run have been passed forward."
+		)
+	else:
+		_write_narrative(
+			"· FIN ·",
+			"You have seen this ending.  Return to the title screen to view the endings compendium, or start a new run.\n\nCross-Oneironautics facts learned in this run have been passed forward."
+		)
 	if _choices_root != null and is_instance_valid(_choices_root):
 		_choices_root.queue_free()
 	_choices_root = Control.new()

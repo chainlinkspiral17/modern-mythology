@@ -185,6 +185,19 @@ func _build_frame() -> void:
 
 	var hud_top_text := Label.new()
 	hud_top_text.text = "CHAPTER 1 · PASADENA · 1946"
+	if bool(_run_state.get("second_reading", false)):
+		hud_top_text.text = "CHAPTER 1 · PASADENA · 1946 · THE SECOND READING"
+		# The book opens already annotated · six Corrections in the
+		# margins from page one, in a QA hand, in red.
+		var sr_note := Label.new()
+		sr_note.text = "· the margins are already written in · six corrections, red pencil, a QA hand · you know how this book actually goes ·"
+		sr_note.set_anchors_preset(Control.PRESET_TOP_WIDE)
+		sr_note.offset_top = 26
+		sr_note.offset_bottom = 46
+		sr_note.add_theme_font_size_override("font_size", 12)
+		sr_note.add_theme_color_override("font_color", Color(0.85, 0.45, 0.40, 1.0))
+		sr_note.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+		add_child(sr_note)
 	hud_top_text.set_anchors_preset(Control.PRESET_TOP_LEFT)
 	hud_top_text.position = Vector2(12, 6)
 	hud_top_text.add_theme_font_size_override("font_size", 14)

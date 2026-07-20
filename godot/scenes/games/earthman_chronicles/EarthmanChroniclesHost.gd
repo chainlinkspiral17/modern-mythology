@@ -102,6 +102,34 @@ func _save_state() -> void:
 	f.close()
 
 
+# NG+ · the chapters replay with the Corrections already in hand ·
+# the six endings' correction-aware paths are open from page one,
+# and the finale knows this is the second time through the book.
+# State is fully built BEFORE the chapter boots (dictionaries are
+# shared by reference, but chapter boot may read at boot time).
+func _start_second_reading() -> void:
+	_run_state = {
+		"chapter":             1,
+		"class_focus":         "",
+		"shenin":              36,
+		"rafaton_disposition": 0,
+		"workings_completed":  [],
+		"corrections_found":   [
+			"correction_pasadena_fire", "correction_saras_letter",
+			"correction_oto_contract", "correction_autopsy_report",
+			"correction_rochas_signature", "correction_the_dedication",
+		],
+		"second_reading":      true,
+		"party_disposition":   {},
+		"party_members":       ["jack"],
+		"party_alive":         {"jack": true},
+		"choices_log":         [],
+		"canon_vars":          {},
+		"lore_tokens_pending": []
+	}
+	_open_chapter_1()
+
+
 func start_new_run(_manager_mode: bool = false) -> void:
 	_run_state = {
 		"chapter":             1,
@@ -260,6 +288,17 @@ func _build_title_screen() -> void:
 		codex_btn.add_theme_font_size_override("font_size", 16)
 		codex_btn.pressed.connect(_open_codex)
 		v.add_child(codex_btn)
+
+	# THE SECOND READING · NG+ where the manuscript toggle becomes
+	# the game: all six of Rocha's Corrections applied from page one.
+	# Offered once the book has been read the first way.
+	if OneironauticsTokens.has("earthman_chronicles_finished"):
+		var second_btn := Button.new()
+		second_btn.text = "  THE SECOND READING  "
+		second_btn.add_theme_font_size_override("font_size", 16)
+		second_btn.add_theme_color_override("font_color", Color(0.72, 0.84, 0.78, 1.0))
+		second_btn.pressed.connect(_start_second_reading)
+		v.add_child(second_btn)
 
 		# Talikan is only meaningful once chapter 3+
 		if int(_run_state.get("chapter", 1)) >= 3:
