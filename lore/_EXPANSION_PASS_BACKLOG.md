@@ -83,8 +83,13 @@ grammar but AMERICAN (a Portland backyard, a neighbor, a season).
 Should braid at least one lattice thread quietly (the Rocha
 melodies are the obvious one).
 
-**A3 · THE TIDELINE (Oneironautics, 2004) — new stick #17.**
-Canon: Ines solo, 2004, and Meridian Heritage remade it as
+**A3 · THE TIDELINE — DONE 2026-07-19, grown to both carts.**
+Stick #17 (twelve stations, two-line notebook, the seal, the
+220 Hz buoy, four report registers) AND the Meridian Heritage
+2048 remake on the same engine (auto-sensors, one surviving
+manual moment per license §4(c), new `meridian` look preset).
+Both shelf slots were pre-scaffolded; both now boot. Original
+brief: Canon: Ines solo, 2004, and Meridian Heritage remade it as
 "Tideline Survey" in 2048 — meaning the original mattered.
 Needs `_THE_TIDELINE_DESIGN.md` first. Design gravity: between
 Estuary 2's species math and Estuary 4's pitch — a survey walk, a
