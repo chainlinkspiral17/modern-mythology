@@ -120,12 +120,22 @@ static var _cache: Dictionary = {}
 
 
 static func texture(key: String, expr: String, accent: Color,
-		frame: String = "open") -> ImageTexture:
+		frame: String = "open", look: Dictionary = {}) -> ImageTexture:
 	var fam := _expr_family(expr)
-	var cache_key := "%s|%s|%s|%s" % [key, fam, accent.to_html(false), frame]
+	# `look` is a per-call feature override (same keys as _OVERRIDES) —
+	# lets callers derive a face from their own data without touching
+	# the static table. Folded into the cache key so distinct looks
+	# don't collide.
+	var look_sig := ""
+	if not look.is_empty():
+		var lk := look.keys()
+		lk.sort()
+		for k in lk:
+			look_sig += "%s=%s;" % [k, look[k]]
+	var cache_key := "%s|%s|%s|%s|%s" % [key, fam, accent.to_html(false), frame, look_sig]
 	if _cache.has(cache_key):
 		return _cache[cache_key]
-	var tex := _build(key, fam, accent, frame)
+	var tex := _build(key, fam, accent, frame, look)
 	_cache[cache_key] = tex
 	return tex
 
@@ -150,7 +160,7 @@ static func _expr_family(expr: String) -> String:
 			return "neutral"
 
 
-static func _build(key: String, fam: String, accent: Color, frame: String) -> ImageTexture:
+static func _build(key: String, fam: String, accent: Color, frame: String, look: Dictionary = {}) -> ImageTexture:
 	var img := Image.create(_W, _H, false, Image.FORMAT_RGBA8)
 	img.fill(Color(0, 0, 0, 0))
 
@@ -172,7 +182,12 @@ static func _build(key: String, fam: String, accent: Color, frame: String) -> Im
 	var earrings: bool = false
 	var collar: String = "v"
 
-	var ov: Dictionary = _OVERRIDES.get(key, {})
+	# Static table override, then the per-call `look` (look wins) — so
+	# a caller can derive features from its own data without editing
+	# the table.
+	var ov: Dictionary = (_OVERRIDES.get(key, {}) as Dictionary).duplicate()
+	for lk in look:
+		ov[String(lk)] = look[lk]
 	if ov.has("face"):
 		face = String(ov["face"])
 	if ov.has("age"):

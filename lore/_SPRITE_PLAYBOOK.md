@@ -125,6 +125,17 @@ arrival/roster modals. The fix was ~15 lines, not 131 assets:
   FIVE sites — including the line *inside* the helper, making it
   recurse. When you add a helper that wraps an expression and then
   replace that expression globally, exclude the helper's own body.
+- **Look-derivation: read the SUBJECT's name, not the surrounding
+  prose.** Follow-up pass gave VnBustPortrait an optional per-call
+  `look` dict (merged over `_OVERRIDES`, look wins) and derived it from
+  each visitor's authored text so faces match the fiction (an "older
+  man" goes grey, a "Dr" gets a collar). First cut keyworded the
+  name+lore blob and aged `the_child_with_a_rosary` to elder — its
+  LORE mentioned a grandmother. Fix: derive AGE from the NAME field
+  only, with a youth guard AND a relative-age guard ("older brother" ≠
+  elderly). Precision over recall — 11/131 got a derived feature, zero
+  jarring; the rest ride the hash, which already differentiates them.
+  Lower-risk features (collar/glasses) can still read the lore blob.
 
 ### 2026-07-19 · PS graphics pass 6 · light, shadow, and the day banner
 

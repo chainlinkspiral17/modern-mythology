@@ -715,7 +715,47 @@ func _visitor_face_texture(vid: String) -> Texture2D:
 	var vdef: Dictionary = _visitors_def.get(vid, {})
 	var accent: Color = Color(String(vdef.get("accent", "#c8a268")))
 	var mood: String = String(vdef.get("mood", "neutral"))
-	return _VISITOR_BUST.texture(vid, mood, accent)
+	return _VISITOR_BUST.texture(vid, mood, accent, "open", _derive_visitor_look(vdef))
+
+
+# Turn a visitor's authored name + lore into portrait features the bust
+# can draw, so the face matches the fiction (an "older man" goes grey,
+# a "Dr" wears a collar) instead of a pure hash roll. Reads only
+# EXPLICIT appearance/role words — no identity guessing. An authored
+# `look` dict on the def wins over every derived hint.
+func _derive_visitor_look(vdef: Dictionary) -> Dictionary:
+	var look: Dictionary = {}
+	var nm: String = String(vdef.get("name", "")).to_lower()
+	var t: String = (nm + " " + String(vdef.get("lore_text", ""))).to_lower()
+	# AGE from the NAME only (the subject's own descriptor) with a youth
+	# guard — lore often describes OTHER people (a child's grandmother),
+	# which would wrongly age the subject.
+	# youth OR a relative-age phrase ("older brother" = relative, not old)
+	var youth: bool = ("child" in nm) or ("boy" in nm) or ("girl" in nm) \
+			or (" kid" in nm) or ("young" in nm) or ("teen" in nm) \
+			or ("daughter" in nm) or (" son" in nm) or ("baby" in nm) or ("infant" in nm) \
+			or ("older brother" in nm) or ("older sister" in nm) or ("older sibling" in nm)
+	if not youth and (("older" in nm) or ("elderly" in nm) or ("old man" in nm) \
+			or ("old woman" in nm) or ("grandmother" in nm) or ("grandfather" in nm) \
+			or ("grandpa" in nm) or ("grandma" in nm) or ("patriarch" in nm) \
+			or ("matriarch" in nm) or ("the widow" in nm)):
+		look["age"] = "elder"
+	if ("beard" in t) or ("bearded" in t) or ("goatee" in t) or ("mustache" in t) \
+			or ("moustache" in t) or ("whiskers" in t) or ("stubble" in t):
+		look["beard"] = true
+	if ("round glasses" in t) or ("round spectacles" in t):
+		look["glasses"] = "round"
+	elif ("glasses" in t) or ("spectacles" in t) or ("bifocals" in t):
+		look["glasses"] = "regular"
+	if ("lawyer" in t) or ("suit" in t) or ("attorney" in t) or ("banker" in t) \
+			or ("attending" in t) or ("dr " in t) or ("doctor" in t) or ("reverend" in t) \
+			or ("detective" in t) or (" rn" in t) or ("nurse" in t) or ("officer" in t):
+		look["collar"] = "shirt"
+	var authored: Variant = vdef.get("look", null)
+	if authored is Dictionary:
+		for k in authored:
+			look[String(k)] = (authored as Dictionary)[k]
+	return look
 
 func _art_path_board() -> String:
 	return "res://assets/gallery/locations/" + _location_id + "_gauntlet_board.png"
