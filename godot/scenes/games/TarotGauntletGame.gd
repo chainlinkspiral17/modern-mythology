@@ -715,7 +715,71 @@ func _visitor_face_texture(vid: String) -> Texture2D:
 	var vdef: Dictionary = _visitors_def.get(vid, {})
 	var accent: Color = Color(String(vdef.get("accent", "#c8a268")))
 	var mood: String = String(vdef.get("mood", "neutral"))
-	return _VISITOR_BUST.texture(vid, mood, accent, "open", _derive_visitor_look(vdef))
+	return _VISITOR_BUST.texture(vid, mood, accent, "open", _derive_visitor_look(vid, vdef))
+
+
+# Curated bespoke faces for the marquee RECURRING cast (the D'Ambrosio
+# riverboat crew, the Houston office, Ward C, the Roberts orbit, and
+# the cross-Oneironautics regulars). Grounded in each character's canon
+# — age, role, and stated background. Keyed by visitor id; character
+# variants across scenarios share a look so a face stays the same
+# person from arcana to arcana. Palette: skin_tone 0 dark→6 fair,
+# hair_color 0 black·5 grey·7 blond, hair_style per VnBustPortrait.
+const _VISITOR_LOOKS := {
+	# ── D'Ambrosio riverboat (Graustark) ──
+	"dante_phone":         {"age": "elder", "hair_style": 11, "hair_color": 5, "skin_tone": 4, "collar": "shirt"},
+	"dante_at_the_helm":   {"age": "elder", "hair_style": 11, "hair_color": 5, "skin_tone": 4, "collar": "shirt"},
+	"sammy_at_the_bar":    {"age": "elder", "hair_style": 0, "hair_color": 5, "skin_tone": 3, "collar": "shirt"},
+	"sammy_for_dante":     {"age": "elder", "hair_style": 0, "hair_color": 5, "skin_tone": 3, "collar": "shirt"},
+	"sammy_phone":         {"age": "elder", "hair_style": 0, "hair_color": 5, "skin_tone": 3, "collar": "shirt"},
+	"hector_at_the_pass":  {"hair_style": 0, "hair_color": 0, "skin_tone": 2, "beard": true, "collar": "tee"},
+	"hector_for_dante":    {"hair_style": 0, "hair_color": 0, "skin_tone": 2, "beard": true, "collar": "tee"},
+	"hector_the_cook":     {"hair_style": 0, "hair_color": 0, "skin_tone": 2, "beard": true, "collar": "tee"},
+	"gloria_at_the_floor": {"hair_style": 10, "hair_color": 1, "skin_tone": 3, "earrings": true, "collar": "shirt"},
+	"gloria_reyes":        {"hair_style": 10, "hair_color": 1, "skin_tone": 3, "earrings": true, "collar": "shirt"},
+	"nicola_for_dante":    {"hair_style": 6, "hair_color": 2, "skin_tone": 5, "earrings": true, "collar": "shirt"},
+	"nicola":              {"hair_style": 6, "hair_color": 2, "skin_tone": 5, "earrings": true, "collar": "shirt"},
+	"alberto_phone":            {"hair_style": 1, "hair_color": 1, "skin_tone": 3, "collar": "shirt"},
+	"alberto_for_dante":        {"hair_style": 1, "hair_color": 1, "skin_tone": 3, "collar": "shirt"},
+	"alberto_passing_through":  {"hair_style": 1, "hair_color": 1, "skin_tone": 3, "collar": "shirt"},
+	"alberto":                  {"hair_style": 1, "hair_color": 1, "skin_tone": 3, "collar": "shirt"},
+	"the_bus_kid":         {"hair_style": 0, "hair_color": 0, "skin_tone": 2, "collar": "tee"},
+	"bus_kid":             {"hair_style": 0, "hair_color": 0, "skin_tone": 2, "collar": "tee"},
+	"dean_at_table_14_for_dante": {"hair_style": 11, "hair_color": 1, "skin_tone": 4, "glasses": "regular", "collar": "shirt"},
+	"q_paul":                   {"hair_style": 11, "hair_color": 1, "skin_tone": 4, "collar": "shirt"},
+	"paul_at_table_17_for_dante": {"hair_style": 11, "hair_color": 1, "skin_tone": 4, "collar": "shirt"},
+	"the_driver":          {"age": "elder", "hair_style": 0, "hair_color": 5, "skin_tone": 3, "glasses": "regular", "collar": "shirt"},
+	# ── Houston office / Ember & Ash ──
+	"jimmy_daigle":        {"hair_style": 5, "hair_color": 2, "skin_tone": 3, "beard": true, "collar": "tee"},
+	"jimmy_at_the_steps":  {"hair_style": 5, "hair_color": 2, "skin_tone": 3, "beard": true, "collar": "tee"},
+	"the_foreman":         {"hair_style": 5, "hair_color": 4, "skin_tone": 4, "beard": true, "collar": "tee"},
+	"lila_bao":            {"hair_style": 7, "hair_color": 0, "skin_tone": 4, "collar": "tee"},
+	"the_older_man_in_charcoal": {"age": "elder", "hair_style": 11, "hair_color": 5, "skin_tone": 4, "collar": "shirt"},
+	# ── Ward C (Death) ──
+	"pearl_at_the_station":    {"hair_style": 10, "hair_color": 2, "skin_tone": 3, "collar": "shirt"},
+	"the_attending_dr_savoy":  {"age": "elder", "hair_style": 0, "hair_color": 5, "skin_tone": 4, "beard": true, "glasses": "regular", "collar": "shirt"},
+	"the_family_in_the_hall":  {"hair_style": 6, "hair_color": 1, "skin_tone": 4, "collar": "v"},
+	# ── Roberts orbit (Lovers) ──
+	"philip_roberts":          {"hair_style": 0, "hair_color": 2, "skin_tone": 4, "beard": true, "collar": "tee"},
+	"philip_phone_priestess":  {"hair_style": 0, "hair_color": 2, "skin_tone": 4, "beard": true, "collar": "tee"},
+	"the_boy_with_the_envelope": {"hair_style": 0, "hair_color": 3, "skin_tone": 5, "beard": false, "freckles": true},
+	"mrs_theriot":             {"age": "elder", "hair_style": 10, "hair_color": 5, "skin_tone": 5, "glasses": "regular", "earrings": true},
+	"mackenzies_sister":       {"hair_style": 2, "hair_color": 2, "skin_tone": 4, "collar": "v"},
+	# ── cross-Oneironautics regulars ──
+	"frasier":             {"hair_style": 3, "hair_color": 0, "skin_tone": 1, "beard": false},
+	"frasier_as_regular":  {"hair_style": 3, "hair_color": 0, "skin_tone": 1, "beard": false},
+	"ft_veil_comment":     {"hair_style": 3, "hair_color": 0, "skin_tone": 1, "beard": false},
+	"john_email":          {"hair_style": 1, "hair_color": 0, "skin_tone": 5, "beard": false, "collar": "shirt"},
+	"anya_on_screen":      {"hair_style": 6, "hair_color": 1, "skin_tone": 5, "earrings": true},
+	"anya_text":           {"hair_style": 6, "hair_color": 1, "skin_tone": 5, "earrings": true},
+	"anya_recording":      {"hair_style": 6, "hair_color": 1, "skin_tone": 5, "earrings": true},
+	"mackenzie":               {"hair_style": 2, "hair_color": 3, "skin_tone": 5, "glasses": "regular"},
+	"mackenzie_in_person":     {"hair_style": 2, "hair_color": 3, "skin_tone": 5, "glasses": "regular"},
+	"mackenzie_remote":        {"hair_style": 2, "hair_color": 3, "skin_tone": 5, "glasses": "regular"},
+	"mackenzie_texts_priestess": {"hair_style": 2, "hair_color": 3, "skin_tone": 5, "glasses": "regular"},
+	"the_superfan":        {"hair_style": 6, "hair_color": 2, "skin_tone": 4, "glasses": "round", "freckles": true},
+	"the_critic":          {"hair_style": 1, "hair_color": 4, "skin_tone": 5, "glasses": "regular", "collar": "shirt"},
+}
 
 
 # Turn a visitor's authored name + lore into portrait features the bust
@@ -723,7 +787,7 @@ func _visitor_face_texture(vid: String) -> Texture2D:
 # a "Dr" wears a collar) instead of a pure hash roll. Reads only
 # EXPLICIT appearance/role words — no identity guessing. An authored
 # `look` dict on the def wins over every derived hint.
-func _derive_visitor_look(vdef: Dictionary) -> Dictionary:
+func _derive_visitor_look(vid: String, vdef: Dictionary) -> Dictionary:
 	var look: Dictionary = {}
 	var nm: String = String(vdef.get("name", "")).to_lower()
 	var t: String = (nm + " " + String(vdef.get("lore_text", ""))).to_lower()
@@ -751,6 +815,11 @@ func _derive_visitor_look(vdef: Dictionary) -> Dictionary:
 			or ("attending" in t) or ("dr " in t) or ("doctor" in t) or ("reverend" in t) \
 			or ("detective" in t) or (" rn" in t) or ("nurse" in t) or ("officer" in t):
 		look["collar"] = "shirt"
+	# Curated bespoke face for the marquee cast wins over derivation.
+	var curated: Dictionary = _VISITOR_LOOKS.get(vid, {})
+	for ck in curated:
+		look[String(ck)] = curated[ck]
+	# An authored `look` on the def itself wins over everything.
 	var authored: Variant = vdef.get("look", null)
 	if authored is Dictionary:
 		for k in authored:
