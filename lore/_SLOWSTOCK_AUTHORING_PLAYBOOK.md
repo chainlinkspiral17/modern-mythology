@@ -158,6 +158,39 @@ each state transition.
 
 ## Recent lessons
 
+### 2026-07-20 · Fey Faire · THE WARREN · giving 101 authored feys a purpose
+
+User: "use all the fey, find a purpose... reasons for having them in
+a party." The survey found the party did four small things and 61 of
+101 feys were authored-but-unreachable. One loop answered both:
+
+- **Split the roster by REACH, not by rarity.** 40 feys are the
+  on-map booth cast (you walk to them); the other 61 live "beyond
+  the fence" and are reached ONLY through a party fey vouching for
+  its kin. Don't build 61 more booth cells — that's a chore, not a
+  game. The unreached majority became a side-quest layer (errands)
+  that the party UNLOCKS, so a broad roster is the key.
+- **"Boons ride existing machinery" is the modes rule at feature
+  scale.** Four passive party benefits (seelie OFFER discount,
+  unseelie THREATEN-vouch, wildfey booth-pass, song RECITE-retry)
+  are each a `_party_has_court()/_party_has_song()` scan + a
+  once-per-night guard flag on run_state (`*_night == night`). No
+  new scene, no save-format change — the existing negotiation/
+  midway scenes just branch on party composition. Holding a fey now
+  CHANGES what you can do, which is the whole point of a party.
+- **Compose side-quest cards from the target's OWN authored
+  fields.** 61 errands read specific and true because each card is
+  built at runtime from the target fey's name/manifestation/
+  `request`, wrapped in ONE authored hook line in errands.json.
+  Generated against feys.json so coverage is total and every `needs`
+  (damage_type == weakness, or court_not for weakness "none") is
+  satisfiable from the roster. Total bespoke prose written: 61
+  lines, not 61 pages.
+- **A boon must be a SENTENCE in the roster, not a stat.** Each boon
+  shows in the COTS readout as plain language ("Moth · SONG · she'll
+  hum you a second try at a line") so party composition is a visible,
+  legible choice — not a hidden modifier the player has to infer.
+
 ### 2026-07-19 · the expansion pass · A5 depth expansions + two new sticks
 
 Closed the whole expansion backlog (A1-A5, B1-B4, C1-C2) across
