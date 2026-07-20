@@ -166,6 +166,25 @@ func _refresh_finished() -> void:
 		_finished = []
 
 
+# Collector standing · a short phrase appended to the progress
+# footer once the shelf-as-a-whole thresholds are crossed. Counted
+# over the CORE roster (the Tideline Survey 2048 remake excluded),
+# matching SlowstockBoot._fire_collector_milestones exactly.
+func _collector_standing() -> String:
+	var core: Array = FULL_MANIFESTS.keys()
+	core.erase("tideline_survey_2048")
+	var total: int = core.size()
+	var count: int = 0
+	for sid in core:
+		if _finished.has(sid):
+			count += 1
+	if count >= total:
+		return " · the whole shelf read"
+	if count >= total / 2:
+		return " · half the shelf read"
+	return ""
+
+
 func _is_unlocked(stick_id: String) -> bool:
 	# Debug override (F9) — everything renders unlocked this session.
 	if _debug_all_unlocked:
@@ -315,8 +334,8 @@ func _build() -> void:
 	for m in _manifests.values():
 		if (m as Dictionary).get("status", "").begins_with("authored_stub") or (m as Dictionary).has("acts"):
 			total_authored += 1
-	progress.text = "  %d of %d sticks finished · %d authored on the shelf" % [
-		_finished.size(), total_authored, total_authored]
+	progress.text = "  %d of %d sticks finished · %d authored on the shelf%s" % [
+		_finished.size(), total_authored, total_authored, _collector_standing()]
 	progress.add_theme_font_size_override("font_size", 14)
 	progress.add_theme_color_override("font_color", C_TXT_DIM)
 	shelf_col.add_child(progress)

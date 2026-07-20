@@ -138,13 +138,7 @@ func start_new_run(manager_mode: bool = false) -> void:
 # The carried Manager ending, from the cross-run canon record.
 # Empty string if no prior Manager summer has been finished.
 func _prior_manager_ending() -> String:
-	var gs := get_node_or_null("/root/GauntletState")
-	if gs == null:
-		return ""
-	var st: Variant = gs.get("state")
-	if not (st is Dictionary):
-		return ""
-	var prior := String(((st as Dictionary).get("canon_vars", {}) as Dictionary).get("estuary_3_ending", ""))
+	var prior := String(OneironauticsTokens.canon("estuary_3_ending", ""))
 	if prior in ["buy_out_jules", "perfect_ledger", "sam_quits"]:
 		return prior
 	return ""

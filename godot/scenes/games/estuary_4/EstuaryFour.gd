@@ -115,14 +115,8 @@ func _tideline_register() -> String:
 	# stick's canon var, not just a token.
 	if not OneironauticsTokens.has("the_tideline_finished"):
 		return ""
-	var gs := get_node_or_null("/root/GauntletState")
-	if gs != null:
-		var st: Variant = gs.get("state")
-		if st is Dictionary:
-			var reg := String(((st as Dictionary).get("canon_vars", {}) as Dictionary).get("tideline_report", ""))
-			if reg != "":
-				return reg
-	return "THE WHOLE BEACH"
+	var reg := String(OneironauticsTokens.canon("tideline_report", ""))
+	return reg if reg != "" else "THE WHOLE BEACH"
 
 
 func _show_archive() -> void:

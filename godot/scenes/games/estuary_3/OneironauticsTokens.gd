@@ -74,3 +74,52 @@ static func _write(tokens: Array) -> void:
 		return
 	f.store_string(JSON.stringify({"tokens": tokens}, "  "))
 	f.close()
+
+
+# ─── Cross-stick chronicle reads ─────────────────────────────────
+# The token set above holds boolean lore flags. Richer run outcomes
+# land in GauntletState.state as `canon_vars` (key → value) and
+# `slowsticks_finished` (which sticks are done). These readers
+# centralize the /root/GauntletState lookup that consumers would
+# otherwise hand-roll, and — like the token store — work from any
+# context, including static callers with no scene `self`, via
+# Engine.get_main_loop(). GauntletState absent (test scenes, nested
+# console play) returns empty/defaults, never crashes.
+
+static func _gauntlet_state() -> Dictionary:
+	var ml := Engine.get_main_loop()
+	if not (ml is SceneTree):
+		return {}
+	var root := (ml as SceneTree).root
+	if root == null:
+		return {}
+	var gs := root.get_node_or_null("/root/GauntletState")
+	if gs == null:
+		return {}
+	var st: Variant = gs.get("state")
+	return st if st is Dictionary else {}
+
+
+## Value of a cross-run canon var (e.g. "tideline_report",
+## "estuary_3_ending"), or default_value if unset.
+static func canon(key: String, default_value: Variant = "") -> Variant:
+	var cv: Variant = _gauntlet_state().get("canon_vars", {})
+	if cv is Dictionary and (cv as Dictionary).has(key):
+		return (cv as Dictionary)[key]
+	return default_value
+
+
+## The list of stick ids the player has finished.
+static func finished_sticks() -> Array:
+	var arr: Variant = _gauntlet_state().get("slowsticks_finished", [])
+	return arr if arr is Array else []
+
+
+## True if a specific stick has been finished at least once.
+static func is_stick_finished(stick_id: String) -> bool:
+	return finished_sticks().has(stick_id)
+
+
+## How many sticks are finished (raw count, includes the remake).
+static func finished_count() -> int:
+	return finished_sticks().size()

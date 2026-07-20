@@ -35,6 +35,10 @@
     {"id": "shelf_pmg", "chapter": "the_shelf", "title": "Patient Mister Glass · A Silent Evening", "blurb": "You let one evening pass without a word. It was the loudest.", "requires": [{"token": "pmg_silent_evening"}]},
     {"id": "shelf_pirate_jenny", "chapter": "the_shelf", "title": "Pirate Summer · The Conversation", "blurb": "Jenny and Wilson finally had the talk on the dock.", "requires": [{"token": "jenny_and_wilson_had_the_conversation"}]},
 
+    {"id": "shelf_collector_first", "chapter": "the_shelf", "title": "The Shelf Begun", "blurb": "One stick read to its end. Olaf's shelf has a first reader in thirty years.", "requires": [{"token": "collector_first_stick"}]},
+    {"id": "shelf_collector_half", "chapter": "the_shelf", "title": "Half the Shelf Read", "blurb": "Nine sticks laid down. The cabin knows which of them you are now.", "requires": [{"token": "collector_half_shelf"}]},
+    {"id": "shelf_collector_whole", "chapter": "the_shelf", "title": "The Whole Shelf Read", "blurb": "Every stick Olaf kept, read to its end. What he was collecting was never the games. It was whoever would finally sit down and play them all.", "requires": [{"token": "collector_whole_shelf"}]},
+
     {"id": "thread_1976", "chapter": "threads", "title": "THREAD · The 1976 Incident", "blurb": "Camp Sweetgum's dark decade keeps surfacing — in the shortwave, in the cache, in the island light. The same year is bleeding across the shelf.", "requires": [{"token": "almanac_thread_1976_traced"}]},
     {"id": "thread_rocha", "chapter": "threads", "title": "THREAD · The Rocha Melodies", "blurb": "One tune, welded into a weekend in '95, keeps humming through games it has no business being in.", "requires": [{"token": "rocha_note_permanently_unlocked_in_fey_faire_trailer"}]},
     {"id": "thread_for_jack", "chapter": "threads", "title": "THREAD · 'for jack'", "blurb": "A note in blue pen, two words, tucked between two books that do not touch it. Nobody in the Faire wrote it.", "requires": [{"token": "rocha_note_permanently_unlocked_in_fey_faire_trailer"}]},

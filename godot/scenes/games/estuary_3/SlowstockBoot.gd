@@ -519,12 +519,7 @@ func _open_basilica_absence() -> void:
 
 	# The auction beat unlocks once Tem knows Astro-Cortex from the
 	# inside · Earthman Chronicles finished.
-	var em_finished := false
-	var gs := get_node_or_null("/root/GauntletState")
-	if gs != null:
-		var st: Variant = gs.get("state")
-		if st is Dictionary:
-			em_finished = ((st as Dictionary).get("slowsticks_finished", []) as Array).has("earthman_chronicles")
+	var em_finished := OneironauticsTokens.is_stick_finished("earthman_chronicles")
 	if em_finished:
 		var auction := Label.new()
 		auction.text = "· 2048 · one has surfaced at auction. It costs more than the cabin is worth."
@@ -603,7 +598,31 @@ func _on_host_finished(canon_vars: Dictionary, lore_tokens: Array) -> void:
 			if not sf.has(stick_id):
 				sf.append(stick_id)
 			d["slowsticks_finished"] = sf
+			_fire_collector_milestones(sf)
 			if gs.has_method("_save"):
 				gs.call("_save")
 	_open_shelf()
+
+
+# ── Collector spine ──────────────────────────────────────────────
+# The shelf itself is a system: finishing sticks crosses thresholds
+# that other pillars can read (the Almanac lights them; future
+# consumers can gate on them). Counted over the CORE roster only —
+# the Tideline Survey 2048 remake is a bonus, never required for
+# "the whole shelf." Tokens are idempotent (add() no-ops on repeat),
+# so re-finishing a stick is harmless.
+func _fire_collector_milestones(finished: Array) -> void:
+	var core: Array = SHELF_SCRIPT.FULL_MANIFESTS.keys()
+	core.erase("tideline_survey_2048")
+	var total: int = core.size()
+	var count: int = 0
+	for sid in core:
+		if finished.has(sid):
+			count += 1
+	if count >= 1:
+		OneironauticsTokens.add("collector_first_stick")
+	if count >= total / 2:
+		OneironauticsTokens.add("collector_half_shelf")
+	if count >= total:
+		OneironauticsTokens.add("collector_whole_shelf")
 
