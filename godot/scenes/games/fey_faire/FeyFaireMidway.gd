@@ -26,6 +26,7 @@ signal quit
 
 const FEYS_PATH := "res://resources/games/vol7/fey_faire/feys.json"
 const QUOTES_PATH := "res://resources/games/vol7/fey_faire/quotes.json"
+const OFF_SEASON_PATH := "res://resources/games/vol7/fey_faire/off_season.json"
 
 # Rocha palette
 const C_BG        := Color(0.157, 0.094, 0.173, 1.0)
@@ -402,6 +403,22 @@ func _schedule_ambient() -> void:
 	_ambient_timer.timeout.connect(_schedule_ambient)
 
 
+var _off_season_def: Dictionary = {}
+
+
+func _off_season() -> bool:
+	return bool(_run_state.get("off_season", false))
+
+
+func _load_off_season() -> void:
+	if not FileAccess.file_exists(OFF_SEASON_PATH): return
+	var f := FileAccess.open(OFF_SEASON_PATH, FileAccess.READ)
+	var parsed: Variant = JSON.parse_string(f.get_as_text())
+	f.close()
+	if parsed is Dictionary:
+		_off_season_def = parsed
+
+
 func boot(state: Dictionary) -> void:
 	_run_state = state
 	# Restore last cell if saved
@@ -410,6 +427,11 @@ func boot(state: Dictionary) -> void:
 		_current_cell = saved_cell
 	_load_feys()
 	_load_quotes()
+	_load_off_season()
+	# The off season starts at the gate, from the outside.
+	if _off_season() and not bool(_run_state.get("_off_season_entered", false)):
+		_run_state["_off_season_entered"] = true
+		_current_cell = "gate"
 	_render_current_cell()
 
 
@@ -459,7 +481,7 @@ func _render_current_cell() -> void:
 		bd.stretch_mode = TextureRect.STRETCH_SCALE
 		bd.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
 		bd.mouse_filter = Control.MOUSE_FILTER_IGNORE
-		bd.modulate = Color(0.72, 0.72, 0.72, 1.0)
+		bd.modulate = Color(0.52, 0.58, 0.68, 1.0) if _off_season() else Color(0.72, 0.72, 0.72, 1.0)
 		add_child(bd)
 
 	# Mauve tent-stripe hint · top
@@ -475,10 +497,13 @@ func _render_current_cell() -> void:
 
 	# Top: cell name
 	var header := Label.new()
-	header.text = "· " + String(cell.get("name", "?")) + " ·"
+	if _off_season():
+		header.text = "· THE OFF SEASON · " + String(cell.get("name", "?")) + " ·"
+	else:
+		header.text = "· " + String(cell.get("name", "?")) + " ·"
 	header.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 	header.add_theme_font_size_override("font_size", 20)
-	header.add_theme_color_override("font_color", C_GOLD)
+	header.add_theme_color_override("font_color", Color(0.72, 0.82, 0.88, 1.0) if _off_season() else C_GOLD)
 	header.set_anchors_preset(Control.PRESET_TOP_WIDE)
 	header.offset_top = 46
 	header.offset_bottom = 74
@@ -486,7 +511,10 @@ func _render_current_cell() -> void:
 
 	# Purse · night · top-right
 	var purse := Label.new()
-	purse.text = "night " + str(int(_run_state.get("night", 1))) + "/6 · " + str(int(_run_state.get("gold", 0))) + " gold"
+	if _off_season():
+		purse.text = "winter · the gate is open"
+	else:
+		purse.text = "night " + str(int(_run_state.get("night", 1))) + "/6 · " + str(int(_run_state.get("gold", 0))) + " gold"
 	purse.set_anchors_preset(Control.PRESET_TOP_RIGHT)
 	purse.position = Vector2(-170, 50)
 	purse.add_theme_font_size_override("font_size", 14)
@@ -522,9 +550,13 @@ func _render_current_cell() -> void:
 	desc.custom_minimum_size = Vector2(0, 80)
 	v.add_child(desc)
 
+	# THE OFF SEASON · winter overlay + booths without commerce.
+	if _off_season():
+		_render_off_season_cell(v, cell)
+
 	# Booth-fey (if any)
 	var fey_id: Variant = cell.get("fey", null)
-	if fey_id != null and fey_id != "":
+	if fey_id != null and fey_id != "" and not _off_season():
 		var fey: Dictionary = _feys_by_id.get(String(fey_id), {})
 		if not fey.is_empty():
 			var recruited: Array = _run_state.get("recruited_feys", [])
@@ -588,7 +620,7 @@ func _render_current_cell() -> void:
 				booth_row.add_child(rest_btn)
 
 	# Special-case: trailer link
-	if bool(cell.get("leads_to_trailer", false)):
+	if bool(cell.get("leads_to_trailer", false)) and not _off_season():
 		var trailer_btn := Button.new()
 		trailer_btn.text = "  ⌂  walk up to the trailer door  "
 		trailer_btn.add_theme_font_size_override("font_size", 15)
@@ -597,7 +629,7 @@ func _render_current_cell() -> void:
 		v.add_child(trailer_btn)
 
 	# Big Top backstage lock message + attend-show action
-	if bool(cell.get("needs_night_4_for_backstage", false)):
+	if bool(cell.get("needs_night_4_for_backstage", false)) and not _off_season():
 		var night: int = int(_run_state.get("night", 1))
 		var attended: Array = _run_state.get("shows_attended", [])
 		var attend_btn := Button.new()
@@ -622,7 +654,7 @@ func _render_current_cell() -> void:
 		v.add_child(lock_lbl)
 
 	# Bookstall shop · paperbacks at 2 gold · each teaches a RECITE line
-	if String(cell.get("special_action", "")) == "bookstall":
+	if String(cell.get("special_action", "")) == "bookstall" and not _off_season():
 		_render_bookstall_shop(v)
 
 	var sep := Control.new()
@@ -681,6 +713,81 @@ func _render_current_cell() -> void:
 	back_btn.add_theme_font_size_override("font_size", 15)
 	back_btn.pressed.connect(_on_back)
 	v.add_child(back_btn)
+
+
+# ─── THE OFF SEASON · the park after close ───────────────────────
+# Winter overlay + booths without commerce. The recruited party is
+# the only crowd; everything else is laced shut. Exit by the gate.
+
+func _render_off_season_cell(v: VBoxContainer, cell: Dictionary) -> void:
+	var cid := String(cell.get("name", _current_cell))
+	# One winter line per cell, stable per cell id.
+	var winters: Array = _off_season_def.get("winter_lines", [])
+	if not winters.is_empty():
+		var w_lbl := Label.new()
+		w_lbl.text = String(winters[posmod(_current_cell.hash(), winters.size())])
+		w_lbl.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+		w_lbl.add_theme_font_size_override("font_size", 13)
+		w_lbl.add_theme_color_override("font_color", Color(0.70, 0.78, 0.86, 1.0))
+		v.add_child(w_lbl)
+	# The Big Top, dark.
+	if bool(cell.get("needs_night_4_for_backstage", false)):
+		var bt_lbl := Label.new()
+		bt_lbl.text = String(_off_season_def.get("big_top_dark", ""))
+		bt_lbl.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+		bt_lbl.add_theme_font_size_override("font_size", 14)
+		bt_lbl.add_theme_color_override("font_color", C_CREAM)
+		v.add_child(bt_lbl)
+	# The booth, off season.
+	var fey_id_v: Variant = cell.get("fey", null)
+	if fey_id_v != null and fey_id_v != "":
+		var f_id := String(fey_id_v)
+		var fey: Dictionary = _feys_by_id.get(f_id, {})
+		var recruited: Array = _run_state.get("recruited_feys", [])
+		var line := ""
+		var color := C_ROSE
+		if recruited.has(f_id):
+			var specials: Dictionary = _off_season_def.get("special_lines", {})
+			if specials.has(f_id):
+				line = String(specials[f_id])
+			else:
+				var court := String(fey.get("court", "wildfey"))
+				var pool: Array = (_off_season_def.get("court_lines", {}) as Dictionary).get(court, [])
+				if not pool.is_empty():
+					line = String(pool[posmod(f_id.hash(), pool.size())]) % String(fey.get("name", f_id))
+			color = C_RECRUITED
+		elif String(cell.get("special_action", "")) == "fortune":
+			line = String(_off_season_def.get("fortune_empty", ""))
+			color = C_MAUVE
+		else:
+			var shut: Array = _off_season_def.get("shuttered_lines", [])
+			if not shut.is_empty():
+				line = String(shut[posmod(f_id.hash(), shut.size())])
+			color = C_GOLD_DIM
+		if line != "":
+			var b_lbl := Label.new()
+			b_lbl.text = line
+			b_lbl.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+			b_lbl.add_theme_font_size_override("font_size", 14)
+			b_lbl.add_theme_color_override("font_color", color)
+			v.add_child(b_lbl)
+	# The way out.
+	if _current_cell == "gate":
+		var leave := Button.new()
+		leave.text = "  · %s ·  " % String(_off_season_def.get("gate_leave_label", "leave by the gate"))
+		leave.add_theme_font_size_override("font_size", 15)
+		leave.add_theme_color_override("font_color", C_GOLD)
+		leave.pressed.connect(_on_off_season_leave)
+		v.add_child(leave)
+	if cid == "":
+		pass
+
+
+func _on_off_season_leave() -> void:
+	var tok := String(_off_season_def.get("token", "fey_faire_off_season_walked"))
+	OneironauticsTokens.add(tok)
+	_run_state["_off_season_left"] = true
+	quit.emit()
 
 
 func _render_bookstall_shop(v: VBoxContainer) -> void:

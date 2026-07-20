@@ -1,0 +1,51 @@
+{
+ "id": "fey_faire_off_season",
+ "notes": "THE OFF SEASON · the park after close, the winter after an ending. Unrecruited booths are shuttered; the recruited party is the only crowd. No negotiation, no shows, no rest — a walk through what you built. Amélie's grief made literal as venue.",
+ "winter_lines": [
+  "Frost on the guy-ropes. The Edison bulbs are strung and dark, and one of them, somewhere down the line, is still faintly warm.",
+  "The mud has frozen into last summer's footprints. Some of them are yours. One set is much older than the season.",
+  "A tarp breathes in and out where a wall used to be canvas. The Faire in winter is mostly its ropes.",
+  "Snow has drifted against the ticket stanchions in the shape of a queue. Nobody is in it. It holds its shape anyway.",
+  "The paint on the signage has gone matte in the cold, which makes everything look painted from memory.",
+  "Somewhere two rows over, a wind chime that was never installed by anyone is doing its work.",
+  "The smell of fried dough is gone, and under it, discovered by its absence: cedar, rope, riverwater. What the Faire smells like to itself.",
+  "Your breath hangs. In the summer crowd it would have been nothing. Alone on the midway it is the only weather."
+ ],
+ "shuttered_lines": [
+  "Canvas down, laced tight, knots professional. Whoever they were, they closed up like they meant to come back.",
+  "The booth is boarded with its own counter. A season of it is folded in there, breathing slow.",
+  "Laced shut. Through the gap at the grommet: darkness with furniture in it.",
+  "Closed. The sign is turned around, and the back of the sign is unpainted wood, which feels more honest than anything it said all summer."
+ ],
+ "court_lines": {
+  "seelie": [
+   "%s is at their booth with no booth to run, gold thread on a winter coat, and nods at you like the season is a shared joke with a long setup.",
+   "%s has swept the frost off their counter out of habit, and is now leaning on it, watching the empty promenade with unhidden fondness."
+  ],
+  "unseelie": [
+   "%s stands in their doorway in the cold that does not touch them, and says nothing, and it is somehow the warmest greeting on the row.",
+   "%s is rearranging things inside the dark booth that do not need rearranging. Winter is theirs, they explain, by treaty. They do not explain the treaty."
+  ],
+  "wildfey": [
+   "%s is simply THERE, mid-midway, in the weather, of the weather, and grins at you with a mouthful of January.",
+   "%s has let the frost grow over half of them and reports, accurately, that it is the most comfortable they have been all year."
+  ]
+ },
+ "special_lines": {
+  "puck": "Puck sits on the coin-in-a-glass counter spinning a quarter that has not come down yet. 'Off season,' he says, watching it. 'My favorite act. The one where nobody has to be anybody.' The quarter continues not coming down.",
+  "ondine": "Ondine has drained the ring-toss tank and stands beside it wrapped in a coat of the fog that used to be in it. 'The prizes get the winter off,' she says. 'They earned it. Nobody won them all summer. Holding still is work.'",
+  "moth": "Moth's tent is open, one candle. She puts a moth on your palm — slower in the cold, wings like wet paper. It spells the wish anyway. It takes the whole minute, and you give it the whole minute.",
+  "titania": "Titania walks the backstage rack of empty costumes, touching sleeves. 'Every part I played this summer is asleep,' she says. 'This is the month I get to be the understudy's understudy. I have never once missed a crown in January.'",
+  "oberon": "Oberon has the studio theatre's one work light on and is reading, of all things, the script. 'I have played it four hundred years,' he says, not looking up. 'In the off season I read it. There is a difference and the difference is everything.'",
+  "kitsune": "The fox-woman has all nine tails wrapped around herself like a bad chair. 'I counted your nights all summer,' she says. 'In the winter I count mine. I am up to nine hundred and some. The alley keeps good books.'",
+  "green_man": "The Green Man IS the off season, it turns out — moss gone bronze, wagon wheels rooted an inch into the frozen mud. 'Everything you are walking past,' he says pleasantly, 'is not dead. Write that down somewhere you'll believe it.'",
+  "caliban": "Caliban's cage door stands open, has stood open since the last night, and he sits INSIDE it anyway, by choice, with a blanket and a paperback. 'It's the best-built thing on the grounds,' he says. 'I checked. I built none of it. The joke is mine now.'",
+  "morgan_le_fey": "Morgan's tent holds its shape without her — she is gone wherever fortune-tellers winter, and the velvet is folded, and on the table one card lies face up. It is not one you were dealt. It was left for whoever came walking in January, which tonight is you.",
+  "herne_the_hunter": "The corn is cut and Herne stands in the stubble where the maze was, antlered against the grey, and for once there is nothing to be lost in. 'The maze was a courtesy,' he says. 'The winter is the real one.'"
+ },
+ "fortune_empty": "The fortune-teller's tent, off season: velvet folded, ball wrapped in wool, and Morgan gone wherever Morgans go. The tent holds her shape without her.",
+ "big_top_dark": "The Big Top, dark, is the largest quiet in the county. The rigging ticks as it cools toward morning. On the center pole, at head height, somebody has pinned this summer's final playbill, and next to it a nail — bare — where next summer's will go.",
+ "gate_leave_label": "leave by the gate · the season is over",
+ "gate_leave_text": "Cricket's window is shuttered, and taped inside the glass, facing out, in careful ticket-taker's hand: SEE YOU IN JUNE. You step through the gate the wrong way round — leaving — and the Faire lets you, which all summer was never certain.",
+ "token": "fey_faire_off_season_walked"
+}

@@ -289,6 +289,16 @@ func _build_title_screen() -> void:
 		comp_btn.pressed.connect(_open_compendium)
 		menu.add_child(comp_btn)
 
+		# THE OFF SEASON · the park after close, the winter after an
+		# ending. Only offered once an ending has been seen.
+		if not (_run_state.get("endings_seen", []) as Array).is_empty():
+			var off_btn := Button.new()
+			off_btn.text = "  THE OFF SEASON  "
+			off_btn.add_theme_font_size_override("font_size", 16)
+			off_btn.add_theme_color_override("font_color", Color(0.72, 0.82, 0.88, 1.0))
+			off_btn.pressed.connect(_open_off_season)
+			menu.add_child(off_btn)
+
 	var back_btn := Button.new()
 	back_btn.text = "  ← back to shelf  "
 	back_btn.pressed.connect(_on_back_to_shelf)
@@ -666,7 +676,24 @@ func _on_endings_finished(canon_vars: Dictionary, lore_tokens: Array) -> void:
 	finished.emit(canon, pending)
 
 
+func _open_off_season() -> void:
+	_run_state["off_season"] = true
+	_run_state.erase("_off_season_entered")
+	_open_midway()
+	# Winter has its own quiet · the hearth track, not the waltz.
+	_play_bgm("res://assets/audio/bgm/ff/trailer_hearth.wav")
+
+
 func _on_midway_quit() -> void:
+	# Leaving the off season goes home to the title, not the Gate ·
+	# the season is over and the run stays finished.
+	if bool(_run_state.get("off_season", false)):
+		_run_state.erase("off_season")
+		_run_state.erase("_off_season_entered")
+		_run_state.erase("_off_season_left")
+		_save_state()
+		_build_title_screen()
+		return
 	# Midway may set _route_to_trailer flag when leaving via the
 	# trailer-adjacent cell.  Otherwise return to Gate.
 	if bool(_run_state.get("_route_to_trailer", false)):
