@@ -1,0 +1,24 @@
+{
+ "id": "estuary_4",
+ "vol": 7,
+ "kind": "slowstick",
+ "status": "playable_v1",
+ "notes": "Oneironautics Inc., Portland OR (2005) · RESTORATION CAMPAIGN, set 2016. The studio's course-correct after Estuary 3's cult reception - and the strangest object in the classic run: a 2005 game set eleven years ahead, imagining a near future where somebody finally goes back and fixes the water. Ashford Cade's cabin note ('back in the spring · 2016') was always this game's door.",
+ "shelf": {
+  "label_title": "ESTUARY 4",
+  "label_subtitle": "the archive · the water · the hunter · the king tide",
+  "publisher": "Oneironautics Inc.",
+  "publisher_locale": "Portland, OR",
+  "release_year": 2005,
+  "release_month": "—",
+  "hardware": "Slowstick Rev 2",
+  "genre_stamp": "RESTORATION CAMPAIGN",
+  "shelf_condition": "the big box of the line · the fold-out watershed map is soft at the creases from being folded out"
+ },
+ "acts": [
+  {
+   "id": "the_campaign",
+   "scene": "res://scenes/games/estuary_4/EstuaryFour.tscn"
+  }
+ ]
+}

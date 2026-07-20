@@ -1,0 +1,25 @@
+{
+ "id": "estuary_4_scrapbook",
+ "title": "Estuary 4 · the campaign",
+ "notes": "Entries reveal when their token lands in GauntletState.lore_tokens_revealed.",
+ "entries": [
+  {
+   "token": "estuary_4_finished",
+   "tier": "finished",
+   "title": "The course-correction",
+   "blurb": "Oneironautics, 2005, set 2016: a studio imagining a near future where somebody finally goes back and fixes the water. Bigger than anything they'd made and quieter than all of it - the future, as imagined by these people, looked like better weather, not better screens."
+  },
+  {
+   "token": "e4_read_the_2003_notebook",
+   "tier": "secrets",
+   "title": "The one person, carefully",
+   "blurb": "A fourth folder in the archive: the December 2003 king-tide notebook, two ruled lines per station, some held blank on purpose. Your hand. The Tideline promised somebody would read it carefully; it took the county thirteen years to grow you."
+  },
+  {
+   "token": "e4_cade_walked_the_line",
+   "tier": "secrets",
+   "title": "Four hours, no shortcuts",
+   "blurb": "Ashford Cade walked the whole restoration line and disagreed with the paper in exactly two places, and was right about one. Paper is sure everywhere; a hunter is sure only where he has stood. 'Spring after next, I'll walk it again and tell you what you got right.'"
+  }
+ ]
+}

@@ -29,6 +29,7 @@ const PMG_HOST_SCENE := "res://scenes/games/patient_mister_glass/PatientGlassHos
 const SG_HOST_SCENE  := "res://scenes/games/sweetgum/SweetgumHost.tscn"
 const MW_HOST_SCENE  := "res://scenes/games/mrs_wus_garden/MrsWuHost.tscn"
 const TL_HOST_SCENE  := "res://scenes/games/the_tideline/TidelineHost.tscn"
+const E4_HOST_SCENE  := "res://scenes/games/estuary_4/EstuaryFourHost.tscn"
 const E2_HOST_SCENE  := "res://scenes/games/estuary_2/Estuary2Host.tscn"
 const HNN_HOST_SCENE := "res://scenes/games/hane_no_niwa/HaneNoNiwaHost.tscn"
 const SW_HOST_SCENE  := "res://scenes/games/sisters_wyrd/SistersWyrdHost.tscn"
@@ -148,6 +149,8 @@ func _on_picked(stick_id: String, manager_mode: bool = false) -> void:
 		_open_host_mrs_wus_garden()
 	elif stick_id == "the_tideline":
 		_open_host_tideline(false)
+	elif stick_id == "estuary_4":
+		_open_host_estuary_4()
 	elif stick_id == "tideline_survey_2048":
 		_open_host_tideline(true)
 	elif stick_id == "estuary_2":
@@ -379,6 +382,17 @@ func _open_host_mrs_wus_garden() -> void:
 		_shelf = null
 	_current_stick_id = "mrs_wus_garden"
 	_host = load(MW_HOST_SCENE).instantiate()
+	_host.quit_to_shelf.connect(_open_shelf)
+	_host.finished.connect(_on_host_finished)
+	add_child(_host)
+
+
+func _open_host_estuary_4() -> void:
+	if _shelf != null:
+		_shelf.queue_free()
+		_shelf = null
+	_current_stick_id = "estuary_4"
+	_host = load(E4_HOST_SCENE).instantiate()
 	_host.quit_to_shelf.connect(_open_shelf)
 	_host.finished.connect(_on_host_finished)
 	add_child(_host)
