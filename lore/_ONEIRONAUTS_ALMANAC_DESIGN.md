@@ -1,6 +1,10 @@
 # THE ONEIRONAUT'S ALMANAC · DESIGN
 ### the meta-layer that makes four pillars one work
-### STATUS: DESIGN · v0 (2026-07-20)
+### STATUS: BUILT · playable_v1 (2026-07-20)
+### Reachable from Main Menu → "THE ALMANAC". Steps 1-4 of the build
+### order below are done (AlmanacState + data + reader UI + menu entry).
+### Step 5 (wire evaluate_unlocks into each pillar's boot) and step 6
+### (campaign + shelf pour content) are the remaining spokes.
 
 User ask (2026-07-20): "new design to enhance the full package, from
 visual novel to arcana games to community planned to slowsticks."

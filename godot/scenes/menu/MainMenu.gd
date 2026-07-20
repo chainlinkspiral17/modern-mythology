@@ -192,6 +192,7 @@ func _build_ui() -> void:
 
 	# Secondary buttons
 	for btn_data: Array in [
+		["THE ALMANAC",       _on_almanac],
 		["GALLERY",           _on_gallery],
 		["MUSIC PLAYER",      _on_music],
 		["ACHIEVEMENTS",      _on_achievements],
@@ -511,6 +512,17 @@ func _on_profile() -> void:
 		existing.queue_free()
 	var ProfilePanel := load("res://scenes/menu/ProfilePanel.gd")
 	var panel: Control = ProfilePanel.build(self)
+	add_child(panel)
+
+
+func _on_almanac() -> void:
+	# The cross-pillar compendium — chapters + threads that light up
+	# as you play across VN / gauntlet / CP / slowsticks. Fresh build.
+	var existing: Node = get_node_or_null("Almanac")
+	if existing != null and is_instance_valid(existing):
+		existing.queue_free()
+	var Almanac := load("res://scenes/menu/Almanac.gd")
+	var panel: Control = Almanac.build(self)
 	add_child(panel)
 
 
