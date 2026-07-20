@@ -47,7 +47,12 @@ Still open from the survey, queued as C2-tail:
   through party capability. errands.json + trailer WARREN board +
   four party BOONS. Design: _FEY_FAIRE_WARREN_DESIGN.md.
 - booth puzzles (Cobweb rhythm, Erlking wheel, Puck shell-game)
-- death checkpoint economy (checkpoints tracked, never used)
+- ~~death checkpoint economy (checkpoints tracked, never used)~~ —
+  DONE 2026-07-20. Full designed loop wired: a named memory cracks
+  (six in mirror order), respawn at the DEEPEST checkpoint (BFS over
+  MIDWAY), half purse + dropped keepsake, sixth death → YOU FORGET
+  WHY YOU CAME. New FeyFaireDeath interstitial. See
+  _FEY_FAIRE_MECHANICS.md "Death / checkpoint economy · wired."
 - mirror-gate puzzles · Titania/Oberon exclusivity
 - gold sinks beyond quotes/OFFER (bakery bread as combat heal)
 

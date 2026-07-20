@@ -158,6 +158,41 @@ each state transition.
 
 ## Recent lessons
 
+### 2026-07-20 · Fey Faire · wiring a specified-but-dead economy
+
+The death/checkpoint economy was fully written in the mechanics doc
+and half-scaffolded in code (checkpoints APPENDED on every recruit/
+vanquish, `memories_lost` incremented, gold halved) — but nothing
+consumed any of it: loss silently routed to the Gate. Wiring it up:
+
+- **Grep for the half-built scaffold before designing from scratch.**
+  The checkpoints array, the loss outcome, `memories_lost`, and
+  `midway_cell`-restore-on-boot all already existed. The feature was
+  90% latent state that no code read. The build was mostly "make the
+  existing writes have a reader," not new systems.
+- **Respawn = set the restore key, reopen the scene.** The midway
+  already restored `_run_state["midway_cell"]` on boot. So
+  "respawn at checkpoint X" is one line — set midway_cell, call
+  _open_midway — not a new navigation path. Look for the scene's
+  existing boot-restore before writing a teleport.
+- **Read another scene's const graph via preload, don't duplicate.**
+  Checkpoint depth needed the midway adjacency, which lives as a
+  `const MIDWAY` in the midway SCENE script. `preload(".../Midway.gd")
+  .MIDWAY` reads it with zero instantiation — BFS from the Gate in
+  the Host, no copy of the graph, no drift.
+- **Keep two views of one counter in lockstep, in a comment.** The
+  Trailer's mirror wall cracks memories by `i < memories_lost`; the
+  death screen names the memory at slot `memories_lost - 1`. Both
+  index the SAME ordered list — so the list lives once conceptually,
+  with a comment in each file pointing at the other. A drifting
+  second copy would crack mirror 3 while the death screen mourned
+  memory 4.
+- **A cost the player can't see didn't happen.** Halving gold in
+  silence taught nothing. The interstitial that NAMES each loss (and
+  what survived) is the actual feature — the numbers were already
+  moving. "Every death teaches a specific lesson" is a UI rule as
+  much as a balance one.
+
 ### 2026-07-20 · Fey Faire · THE WARREN · giving 101 authored feys a purpose
 
 User: "use all the fey, find a purpose... reasons for having them in
