@@ -114,7 +114,7 @@ itself canon).
   the Faire in winter, half the booths shuttered, the recruited
   party as the only crowd. Rides the existing midway graph with a
   palette/roster filter. Amélie's grief made literal as venue.
-- **Earthman Chronicles · THE SECOND READING** — NG+ where the
+- **Earthman Chronicles · THE SECOND READING — DONE 2026-07-19.** NG+ with all six Corrections in from page one, Ch1 margin note, finale's own last page + token. Original brief: NG+ where the
   manuscript toggle becomes the game: chapters replay with
   Rocha's Corrections applied from the start, and the six endings
   gain Correction-aware variants. Rides the manuscript-vs-game
@@ -123,7 +123,7 @@ itself canon).
   the Kwik Stop with Jules gone (or bought out), carrying the
   first year's ending as starting conditions. Rides Manager Mode
   + the ending tokens.
-- **Sisters Wyrd · THE SECOND DECK** — the encounter deck
+- **Sisters Wyrd · THE SECOND DECK — DONE 2026-07-19.** Seats swapped, one salt re-weaves the territory, gated on the eighth point, token + scrapbook. Original brief: the encounter deck
   reshuffled with the sisters' positions swapped (canon: the
   cart's B-side; Sagebrush shipped nothing else, so this must be
   framed as the same cart read differently, not new product).
