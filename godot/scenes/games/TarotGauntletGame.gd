@@ -818,6 +818,37 @@ const _VISITOR_LOOKS := {
 	"the_other_shift_leaving":        {"age": "elder", "hair_style": 0, "hair_color": 5, "skin_tone": 3, "beard": true, "collar": "tee"},
 	"mr_couvillon_at_six_fourteen":   {"age": "elder", "hair_style": 4, "hair_color": 5, "skin_tone": 4, "collar": "shirt"},
 	"the_kid_at_the_glass":           {"hair_style": 0, "hair_color": 3, "skin_tone": 5, "freckles": true},
+	# ── the diner (Fool) — line staff ──
+	"dawn_cook":            {"hair_style": 0, "hair_color": 2, "skin_tone": 4, "collar": "tee"},
+	"line_cook":            {"hair_style": 8, "hair_color": 1, "skin_tone": 3, "collar": "tee"},
+	# ── Elicia's party (Magician) ──
+	"the_drifter":          {"hair_style": 2, "hair_color": 1, "skin_tone": 4, "beard": true, "collar": "tee"},
+	"the_birdwatcher":      {"hair_style": 7, "hair_color": 2, "skin_tone": 4, "glasses": "regular"},
+	"the_college_friend":   {"hair_style": 1, "hair_color": 2, "skin_tone": 5, "collar": "shirt"},
+	"drunk_uncle":          {"age": "elder", "hair_style": 4, "hair_color": 5, "skin_tone": 5, "beard": true, "collar": "v"},
+	# ── the carnival lot (Strength) ──
+	"the_auctioneer":       {"hair_style": 11, "hair_color": 2, "skin_tone": 4, "collar": "shirt"},
+	"miss_lavergne_kid":    {"hair_style": 0, "hair_color": 3, "skin_tone": 4, "freckles": true},
+	"old_pell":             {"age": "elder", "hair_style": 4, "hair_color": 5, "skin_tone": 4, "beard": true, "collar": "v"},
+	# ── Solenade garden (Sun) ──
+	"a_grandfather_with_a_newspaper": {"age": "elder", "hair_style": 4, "hair_color": 5, "skin_tone": 4, "glasses": "regular", "collar": "shirt"},
+	"the_groundskeeper_mr_bouchon":   {"hair_style": 0, "hair_color": 2, "skin_tone": 3, "beard": true, "collar": "tee"},
+	# ── the Mixing Glass (Temperance) ──
+	"maddie_behind_the_stick":  {"hair_style": 7, "hair_color": 2, "skin_tone": 4, "collar": "tee"},
+	"the_regular_at_the_w_stool":{"hair_style": 0, "hair_color": 4, "skin_tone": 5, "collar": "shirt"},
+	"the_owner_closing_out":    {"hair_style": 1, "hair_color": 2, "skin_tone": 4, "collar": "shirt"},
+	# ── WGUR tower (Tower) ──
+	"jules_the_intern_asleep":  {"hair_style": 0, "hair_color": 2, "skin_tone": 5, "freckles": true},
+	"the_other_engineer_rashid":{"hair_style": 8, "hair_color": 0, "skin_tone": 1, "beard": true, "collar": "shirt"},
+	# ── Le Roulant casino (Wheel) ──
+	"maddox_in_the_pit":    {"hair_style": 11, "hair_color": 1, "skin_tone": 4, "collar": "shirt"},
+	"the_regular_at_the_table": {"age": "elder", "hair_style": 4, "hair_color": 5, "skin_tone": 5, "glasses": "regular", "collar": "shirt"},
+	"the_inspector":        {"hair_style": 0, "hair_color": 2, "skin_tone": 5, "glasses": "regular", "collar": "shirt"},
+	"your_brother_calling": {"hair_style": 1, "hair_color": 2, "skin_tone": 4, "collar": "shirt"},
+	# ── Frog Knows Best (World) ──
+	"the_morning_customer": {"age": "elder", "hair_style": 5, "hair_color": 5, "skin_tone": 4, "beard": true, "collar": "tee"},
+	"lily_with_the_jar":    {"hair_style": 6, "hair_color": 3, "skin_tone": 4, "freckles": true},
+	"uncle_em_on_the_phone":{"age": "elder", "hair_style": 4, "hair_color": 5, "skin_tone": 4, "collar": "v"},
 }
 
 
