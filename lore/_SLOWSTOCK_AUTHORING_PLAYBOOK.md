@@ -158,6 +158,44 @@ each state transition.
 
 ## Recent lessons
 
+### 2026-07-19 · the expansion pass · A5 depth expansions + two new sticks
+
+Closed the whole expansion backlog (A1-A5, B1-B4, C1-C2) across
+one long arc. What the five A5 depth expansions taught, together:
+
+- **"Modes ride existing machinery" held every time.** Counselor
+  Mode, Off Season, Second Reading, Second Deck, Subfloor, Year
+  Two - none needed a new scene. Each was a flag on the existing
+  run state that the existing scene reads: `counselor`, `off_season`,
+  `second_reading`, `b_side`, `year_two`. The cheapest depth on
+  the shelf is a boolean the host sets before add_child and the
+  child branches on.
+- **Cross-stick CANON reads, not just tokens.** Estuary 4 reads
+  The Tideline's filed register (`canon_vars.tideline_report`)
+  from GauntletState; Year Two reads `estuary_3_ending`. Tokens
+  answer "did X happen"; canon vars answer "which way" - and
+  reading the latter is what makes a sequel feel like it
+  remembers YOUR run, not just that a run occurred.
+- **Pre-scaffolded slots are a gift; grep for them first.** Mrs.
+  Wu, both Tidelines, Estuary 4 all had shelf slots + unlock
+  waves already in the library JSONs from earlier sessions. The
+  Mrs. Wu build nearly re-created one. ALWAYS grep shelf_layout +
+  unlock_graph for the stick id before authoring registration.
+- **Hand-formatted JSON: surgical-append or lose the file.** Bit
+  twice this arc - once an `open(w)` truncated ending.json before
+  json.dump threw on a None format probe. The rule now: probe
+  format; if it round-trips, dump; if it DOESN'T (hand-authored),
+  read the file, find the array close bracket by brace-depth
+  scan, splice the new entry rendered at the detected indent, and
+  re-parse to verify BEFORE writing. Never `open(w)` a
+  hand-formatted file you haven't already built the full new
+  string for.
+- **Carry the ending as the OPENING.** Year Two's whole feeling
+  comes from the year-one ending becoming the starting cooler
+  stock, opening till, and first-night card. A sequel's best
+  starting condition is the previous ending, stated in mechanics
+  the player already reads (stock, cash) not just prose.
+
 ### 2026-07-19 · depth passes · Sisters Wyrd + Fey Faire · giving decisions teeth
 
 User called Sisters Wyrd underdeveloped and Fey Faire's gameplay
