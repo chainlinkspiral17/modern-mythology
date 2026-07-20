@@ -459,6 +459,8 @@ func _open_trailer() -> void:
 	_child_scene.quit.connect(_open_gate)
 	if _child_scene.has_signal("enter_mirror"):
 		_child_scene.enter_mirror.connect(_open_mirror_realm)
+	if _child_scene.has_signal("request_save"):
+		_child_scene.request_save.connect(_save_state)
 	add_child(_child_scene)
 	if _child_scene.has_method("boot"):
 		_child_scene.call("boot", _run_state)

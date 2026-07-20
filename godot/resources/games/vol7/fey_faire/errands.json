@@ -1,0 +1,616 @@
+{
+ "id": "fey_faire_errands",
+ "notes": "THE WARREN · one errand per unreached fey. Availability: party holds a fey of giver_court. Requirement: party fields a fey satisfying `needs` (damage_type == this fey's weakness, else a fey of another court). The engine composes each card from the target's feys.json name/manifestation/request + the `hook` line here. Completing an errand recruits the target.",
+ "errands": [
+  {
+   "id": "errand_domovoi",
+   "target": "domovoi",
+   "giver_court": "seelie",
+   "needs": {
+    "damage_type": "flame"
+   },
+   "needs_line": "bring someone flame-touched · they know the courtesies you don't",
+   "hook": "One of yours mentions a cousin out past the string-lights who never comes in where it's bright."
+  },
+  {
+   "id": "errand_kodama",
+   "target": "kodama",
+   "giver_court": "seelie",
+   "needs": {
+    "damage_type": "iron"
+   },
+   "needs_line": "bring someone iron-touched · they know the courtesies you don't",
+   "hook": "A seelie in your party leaves a saucer of something sweet at the fence and tells you who it's for."
+  },
+  {
+   "id": "errand_mustardseed",
+   "target": "mustardseed",
+   "giver_court": "seelie",
+   "needs": {
+    "damage_type": "salt"
+   },
+   "needs_line": "bring someone salt-touched · they know the courtesies you don't",
+   "hook": "Word comes gently, the seelie way: someone kind is waiting to be asked, and only asked."
+  },
+  {
+   "id": "errand_naiad",
+   "target": "naiad",
+   "giver_court": "seelie",
+   "needs": {
+    "damage_type": "flame"
+   },
+   "needs_line": "bring someone flame-touched · they know the courtesies you don't",
+   "hook": "Your seelie draws you a small map on a napkin. The X is past where the Faire admits to ending."
+  },
+  {
+   "id": "errand_salt_sisters",
+   "target": "salt_sisters",
+   "giver_court": "seelie",
+   "needs": {
+    "damage_type": "flame"
+   },
+   "needs_line": "bring someone flame-touched · they know the courtesies you don't",
+   "hook": "One of yours mentions a cousin out past the string-lights who never comes in where it's bright."
+  },
+  {
+   "id": "errand_tylwyth_teg",
+   "target": "tylwyth_teg",
+   "giver_court": "seelie",
+   "needs": {
+    "damage_type": "iron"
+   },
+   "needs_line": "bring someone iron-touched · they know the courtesies you don't",
+   "hook": "A seelie in your party leaves a saucer of something sweet at the fence and tells you who it's for."
+  },
+  {
+   "id": "errand_wichtel",
+   "target": "wichtel",
+   "giver_court": "seelie",
+   "needs": {
+    "damage_type": "flame"
+   },
+   "needs_line": "bring someone flame-touched · they know the courtesies you don't",
+   "hook": "Word comes gently, the seelie way: someone kind is waiting to be asked, and only asked."
+  },
+  {
+   "id": "errand_xana",
+   "target": "xana",
+   "giver_court": "seelie",
+   "needs": {
+    "damage_type": "flame"
+   },
+   "needs_line": "bring someone flame-touched · they know the courtesies you don't",
+   "hook": "Your seelie draws you a small map on a napkin. The X is past where the Faire admits to ending."
+  },
+  {
+   "id": "errand_befana",
+   "target": "befana",
+   "giver_court": "seelie",
+   "needs": {
+    "damage_type": "iron"
+   },
+   "needs_line": "bring someone iron-touched · they know the courtesies you don't",
+   "hook": "One of yours mentions a cousin out past the string-lights who never comes in where it's bright."
+  },
+  {
+   "id": "errand_ceres_masque",
+   "target": "ceres_masque",
+   "giver_court": "seelie",
+   "needs": {
+    "damage_type": "salt"
+   },
+   "needs_line": "bring someone salt-touched · they know the courtesies you don't",
+   "hook": "A seelie in your party leaves a saucer of something sweet at the fence and tells you who it's for."
+  },
+  {
+   "id": "errand_encantada",
+   "target": "encantada",
+   "giver_court": "seelie",
+   "needs": {
+    "damage_type": "iron"
+   },
+   "needs_line": "bring someone iron-touched · they know the courtesies you don't",
+   "hook": "Word comes gently, the seelie way: someone kind is waiting to be asked, and only asked."
+  },
+  {
+   "id": "errand_ghillie_dhu",
+   "target": "ghillie_dhu",
+   "giver_court": "seelie",
+   "needs": {
+    "damage_type": "flame"
+   },
+   "needs_line": "bring someone flame-touched · they know the courtesies you don't",
+   "hook": "Your seelie draws you a small map on a napkin. The X is past where the Faire admits to ending."
+  },
+  {
+   "id": "errand_gwragedd_annwn",
+   "target": "gwragedd_annwn",
+   "giver_court": "seelie",
+   "needs": {
+    "damage_type": "iron"
+   },
+   "needs_line": "bring someone iron-touched · they know the courtesies you don't",
+   "hook": "One of yours mentions a cousin out past the string-lights who never comes in where it's bright."
+  },
+  {
+   "id": "errand_iris_masque",
+   "target": "iris_masque",
+   "giver_court": "seelie",
+   "needs": {
+    "damage_type": "iron"
+   },
+   "needs_line": "bring someone iron-touched · they know the courtesies you don't",
+   "hook": "A seelie in your party leaves a saucer of something sweet at the fence and tells you who it's for."
+  },
+  {
+   "id": "errand_ophelia_ghost",
+   "target": "ophelia_ghost",
+   "giver_court": "seelie",
+   "needs": {
+    "damage_type": "iron"
+   },
+   "needs_line": "bring someone iron-touched · they know the courtesies you don't",
+   "hook": "Word comes gently, the seelie way: someone kind is waiting to be asked, and only asked."
+  },
+  {
+   "id": "errand_peri",
+   "target": "peri",
+   "giver_court": "seelie",
+   "needs": {
+    "damage_type": "iron"
+   },
+   "needs_line": "bring someone iron-touched · they know the courtesies you don't",
+   "hook": "Your seelie draws you a small map on a napkin. The X is past where the Faire admits to ending."
+  },
+  {
+   "id": "errand_skogsra",
+   "target": "skogsra",
+   "giver_court": "seelie",
+   "needs": {
+    "damage_type": "iron"
+   },
+   "needs_line": "bring someone iron-touched · they know the courtesies you don't",
+   "hook": "One of yours mentions a cousin out past the string-lights who never comes in where it's bright."
+  },
+  {
+   "id": "errand_weisse_frau",
+   "target": "weisse_frau",
+   "giver_court": "seelie",
+   "needs": {
+    "damage_type": "iron"
+   },
+   "needs_line": "bring someone iron-touched · they know the courtesies you don't",
+   "hook": "A seelie in your party leaves a saucer of something sweet at the fence and tells you who it's for."
+  },
+  {
+   "id": "errand_ariel",
+   "target": "ariel",
+   "giver_court": "seelie",
+   "needs": {
+    "damage_type": "iron"
+   },
+   "needs_line": "bring someone iron-touched · they know the courtesies you don't",
+   "hook": "Word comes gently, the seelie way: someone kind is waiting to be asked, and only asked."
+  },
+  {
+   "id": "errand_brollachan",
+   "target": "brollachan",
+   "giver_court": "unseelie",
+   "needs": {
+    "damage_type": "flame"
+   },
+   "needs_line": "bring someone flame-touched · they know the courtesies you don't",
+   "hook": "Your unseelie will vouch for you out there — once — if you go tonight and go correct."
+  },
+  {
+   "id": "errand_grindylow",
+   "target": "grindylow",
+   "giver_court": "unseelie",
+   "needs": {
+    "damage_type": "iron"
+   },
+   "needs_line": "bring someone iron-touched · they know the courtesies you don't",
+   "hook": "One of yours says the name low, so the wrong things don't hear it, and tells you where it keeps."
+  },
+  {
+   "id": "errand_kikimora",
+   "target": "kikimora",
+   "giver_court": "unseelie",
+   "needs": {
+    "damage_type": "iron"
+   },
+   "needs_line": "bring someone iron-touched · they know the courtesies you don't",
+   "hook": "An unseelie in your party owes a debt out in the dark and would rather you paid the visit."
+  },
+  {
+   "id": "errand_alp_fey",
+   "target": "alp_fey",
+   "giver_court": "unseelie",
+   "needs": {
+    "damage_type": "iron"
+   },
+   "needs_line": "bring someone iron-touched · they know the courtesies you don't",
+   "hook": "The word arrives the unseelie way: not an invitation, a location, and a warning attached."
+  },
+  {
+   "id": "errand_bean_nighe",
+   "target": "bean_nighe",
+   "giver_court": "unseelie",
+   "needs": {
+    "damage_type": "flame"
+   },
+   "needs_line": "bring someone flame-touched · they know the courtesies you don't",
+   "hook": "Your unseelie will vouch for you out there — once — if you go tonight and go correct."
+  },
+  {
+   "id": "errand_draugr",
+   "target": "draugr",
+   "giver_court": "unseelie",
+   "needs": {
+    "damage_type": "flame"
+   },
+   "needs_line": "bring someone flame-touched · they know the courtesies you don't",
+   "hook": "One of yours says the name low, so the wrong things don't hear it, and tells you where it keeps."
+  },
+  {
+   "id": "errand_fear_dearg",
+   "target": "fear_dearg",
+   "giver_court": "unseelie",
+   "needs": {
+    "damage_type": "salt"
+   },
+   "needs_line": "bring someone salt-touched · they know the courtesies you don't",
+   "hook": "An unseelie in your party owes a debt out in the dark and would rather you paid the visit."
+  },
+  {
+   "id": "errand_fear_gorta",
+   "target": "fear_gorta",
+   "giver_court": "unseelie",
+   "needs": {
+    "damage_type": "flame"
+   },
+   "needs_line": "bring someone flame-touched · they know the courtesies you don't",
+   "hook": "The word arrives the unseelie way: not an invitation, a location, and a warning attached."
+  },
+  {
+   "id": "errand_jolakotturinn",
+   "target": "jolakotturinn",
+   "giver_court": "unseelie",
+   "needs": {
+    "damage_type": "iron"
+   },
+   "needs_line": "bring someone iron-touched · they know the courtesies you don't",
+   "hook": "Your unseelie will vouch for you out there — once — if you go tonight and go correct."
+  },
+  {
+   "id": "errand_lamia",
+   "target": "lamia",
+   "giver_court": "unseelie",
+   "needs": {
+    "damage_type": "flame"
+   },
+   "needs_line": "bring someone flame-touched · they know the courtesies you don't",
+   "hook": "One of yours says the name low, so the wrong things don't hear it, and tells you where it keeps."
+  },
+  {
+   "id": "errand_malabestia",
+   "target": "malabestia",
+   "giver_court": "unseelie",
+   "needs": {
+    "damage_type": "flame"
+   },
+   "needs_line": "bring someone flame-touched · they know the courtesies you don't",
+   "hook": "An unseelie in your party owes a debt out in the dark and would rather you paid the visit."
+  },
+  {
+   "id": "errand_nain_rouge",
+   "target": "nain_rouge",
+   "giver_court": "unseelie",
+   "needs": {
+    "damage_type": "salt"
+   },
+   "needs_line": "bring someone salt-touched · they know the courtesies you don't",
+   "hook": "The word arrives the unseelie way: not an invitation, a location, and a warning attached."
+  },
+  {
+   "id": "errand_nuckelavee",
+   "target": "nuckelavee",
+   "giver_court": "unseelie",
+   "needs": {
+    "damage_type": "salt"
+   },
+   "needs_line": "bring someone salt-touched · they know the courtesies you don't",
+   "hook": "Your unseelie will vouch for you out there — once — if you go tonight and go correct."
+  },
+  {
+   "id": "errand_peg_powler",
+   "target": "peg_powler",
+   "giver_court": "unseelie",
+   "needs": {
+    "damage_type": "flame"
+   },
+   "needs_line": "bring someone flame-touched · they know the courtesies you don't",
+   "hook": "One of yours says the name low, so the wrong things don't hear it, and tells you where it keeps."
+  },
+  {
+   "id": "errand_poludnitsa",
+   "target": "poludnitsa",
+   "giver_court": "unseelie",
+   "needs": {
+    "damage_type": "flame"
+   },
+   "needs_line": "bring someone flame-touched · they know the courtesies you don't",
+   "hook": "An unseelie in your party owes a debt out in the dark and would rather you paid the visit."
+  },
+  {
+   "id": "errand_siren",
+   "target": "siren",
+   "giver_court": "unseelie",
+   "needs": {
+    "damage_type": "iron"
+   },
+   "needs_line": "bring someone iron-touched · they know the courtesies you don't",
+   "hook": "The word arrives the unseelie way: not an invitation, a location, and a warning attached."
+  },
+  {
+   "id": "errand_vodyanoy",
+   "target": "vodyanoy",
+   "giver_court": "unseelie",
+   "needs": {
+    "damage_type": "iron"
+   },
+   "needs_line": "bring someone iron-touched · they know the courtesies you don't",
+   "hook": "Your unseelie will vouch for you out there — once — if you go tonight and go correct."
+  },
+  {
+   "id": "errand_weird_sister_second",
+   "target": "weird_sister_second",
+   "giver_court": "unseelie",
+   "needs": {
+    "damage_type": "iron"
+   },
+   "needs_line": "bring someone iron-touched · they know the courtesies you don't",
+   "hook": "One of yours says the name low, so the wrong things don't hear it, and tells you where it keeps."
+  },
+  {
+   "id": "errand_weird_sister_third",
+   "target": "weird_sister_third",
+   "giver_court": "unseelie",
+   "needs": {
+    "damage_type": "iron"
+   },
+   "needs_line": "bring someone iron-touched · they know the courtesies you don't",
+   "hook": "An unseelie in your party owes a debt out in the dark and would rather you paid the visit."
+  },
+  {
+   "id": "errand_black_annis",
+   "target": "black_annis",
+   "giver_court": "unseelie",
+   "needs": {
+    "damage_type": "iron"
+   },
+   "needs_line": "bring someone iron-touched · they know the courtesies you don't",
+   "hook": "The word arrives the unseelie way: not an invitation, a location, and a warning attached."
+  },
+  {
+   "id": "errand_setebos",
+   "target": "setebos",
+   "giver_court": "unseelie",
+   "needs": {
+    "court_not": "unseelie"
+   },
+   "needs_line": "bring a fey of another court · this one distrusts its own kind",
+   "hook": "Your unseelie will vouch for you out there — once — if you go tonight and go correct."
+  },
+  {
+   "id": "errand_anguana",
+   "target": "anguana",
+   "giver_court": "wildfey",
+   "needs": {
+    "damage_type": "iron"
+   },
+   "needs_line": "bring someone iron-touched · they know the courtesies you don't",
+   "hook": "One of yours points with its chin at a part of the grounds that isn't on any map and is real."
+  },
+  {
+   "id": "errand_ceasg",
+   "target": "ceasg",
+   "giver_court": "wildfey",
+   "needs": {
+    "damage_type": "iron"
+   },
+   "needs_line": "bring someone iron-touched · they know the courtesies you don't",
+   "hook": "A wildfey in your party knows a way under the fence and will show you the mouth of it, not the end."
+  },
+  {
+   "id": "errand_cluricaunes_cat",
+   "target": "cluricaunes_cat",
+   "giver_court": "wildfey",
+   "needs": {
+    "damage_type": "iron"
+   },
+   "needs_line": "bring someone iron-touched · they know the courtesies you don't",
+   "hook": "The wild one tells you sideways: something out there has been waiting the way weather waits."
+  },
+  {
+   "id": "errand_coblyn",
+   "target": "coblyn",
+   "giver_court": "wildfey",
+   "needs": {
+    "damage_type": "flame"
+   },
+   "needs_line": "bring someone flame-touched · they know the courtesies you don't",
+   "hook": "Your wildfey grins and names it, which for a wildfey is nearly an introduction."
+  },
+  {
+   "id": "errand_kappa",
+   "target": "kappa",
+   "giver_court": "wildfey",
+   "needs": {
+    "damage_type": "iron"
+   },
+   "needs_line": "bring someone iron-touched · they know the courtesies you don't",
+   "hook": "One of yours points with its chin at a part of the grounds that isn't on any map and is real."
+  },
+  {
+   "id": "errand_lutin",
+   "target": "lutin",
+   "giver_court": "wildfey",
+   "needs": {
+    "damage_type": "iron"
+   },
+   "needs_line": "bring someone iron-touched · they know the courtesies you don't",
+   "hook": "A wildfey in your party knows a way under the fence and will show you the mouth of it, not the end."
+  },
+  {
+   "id": "errand_ossory_wolf",
+   "target": "ossory_wolf",
+   "giver_court": "wildfey",
+   "needs": {
+    "damage_type": "salt"
+   },
+   "needs_line": "bring someone salt-touched · they know the courtesies you don't",
+   "hook": "The wild one tells you sideways: something out there has been waiting the way weather waits."
+  },
+  {
+   "id": "errand_trasgo",
+   "target": "trasgo",
+   "giver_court": "wildfey",
+   "needs": {
+    "damage_type": "flame"
+   },
+   "needs_line": "bring someone flame-touched · they know the courtesies you don't",
+   "hook": "Your wildfey grins and names it, which for a wildfey is nearly an introduction."
+  },
+  {
+   "id": "errand_blue_man_minch",
+   "target": "blue_man_minch",
+   "giver_court": "wildfey",
+   "needs": {
+    "damage_type": "iron"
+   },
+   "needs_line": "bring someone iron-touched · they know the courtesies you don't",
+   "hook": "One of yours points with its chin at a part of the grounds that isn't on any map and is real."
+  },
+  {
+   "id": "errand_huldra",
+   "target": "huldra",
+   "giver_court": "wildfey",
+   "needs": {
+    "damage_type": "iron"
+   },
+   "needs_line": "bring someone iron-touched · they know the courtesies you don't",
+   "hook": "A wildfey in your party knows a way under the fence and will show you the mouth of it, not the end."
+  },
+  {
+   "id": "errand_leprechaun",
+   "target": "leprechaun",
+   "giver_court": "wildfey",
+   "needs": {
+    "damage_type": "salt"
+   },
+   "needs_line": "bring someone salt-touched · they know the courtesies you don't",
+   "hook": "The wild one tells you sideways: something out there has been waiting the way weather waits."
+  },
+  {
+   "id": "errand_lobisomem",
+   "target": "lobisomem",
+   "giver_court": "wildfey",
+   "needs": {
+    "damage_type": "salt"
+   },
+   "needs_line": "bring someone salt-touched · they know the courtesies you don't",
+   "hook": "Your wildfey grins and names it, which for a wildfey is nearly an introduction."
+  },
+  {
+   "id": "errand_mouras_encantadas",
+   "target": "mouras_encantadas",
+   "giver_court": "wildfey",
+   "needs": {
+    "damage_type": "iron"
+   },
+   "needs_line": "bring someone iron-touched · they know the courtesies you don't",
+   "hook": "One of yours points with its chin at a part of the grounds that isn't on any map and is real."
+  },
+  {
+   "id": "errand_nokken",
+   "target": "nokken",
+   "giver_court": "wildfey",
+   "needs": {
+    "damage_type": "iron"
+   },
+   "needs_line": "bring someone iron-touched · they know the courtesies you don't",
+   "hook": "A wildfey in your party knows a way under the fence and will show you the mouth of it, not the end."
+  },
+  {
+   "id": "errand_rusalka",
+   "target": "rusalka",
+   "giver_court": "wildfey",
+   "needs": {
+    "damage_type": "flame"
+   },
+   "needs_line": "bring someone flame-touched · they know the courtesies you don't",
+   "hook": "The wild one tells you sideways: something out there has been waiting the way weather waits."
+  },
+  {
+   "id": "errand_tengu",
+   "target": "tengu",
+   "giver_court": "wildfey",
+   "needs": {
+    "damage_type": "song"
+   },
+   "needs_line": "bring someone song-touched · they know the courtesies you don't",
+   "hook": "Your wildfey grins and names it, which for a wildfey is nearly an introduction."
+  },
+  {
+   "id": "errand_yuki_onna",
+   "target": "yuki_onna",
+   "giver_court": "wildfey",
+   "needs": {
+    "damage_type": "flame"
+   },
+   "needs_line": "bring someone flame-touched · they know the courtesies you don't",
+   "hook": "One of yours points with its chin at a part of the grounds that isn't on any map and is real."
+  },
+  {
+   "id": "errand_cailleach",
+   "target": "cailleach",
+   "giver_court": "wildfey",
+   "needs": {
+    "damage_type": "flame"
+   },
+   "needs_line": "bring someone flame-touched · they know the courtesies you don't",
+   "hook": "A wildfey in your party knows a way under the fence and will show you the mouth of it, not the end."
+  },
+  {
+   "id": "errand_melusine",
+   "target": "melusine",
+   "giver_court": "wildfey",
+   "needs": {
+    "damage_type": "iron"
+   },
+   "needs_line": "bring someone iron-touched · they know the courtesies you don't",
+   "hook": "The wild one tells you sideways: something out there has been waiting the way weather waits."
+  },
+  {
+   "id": "errand_pan",
+   "target": "pan",
+   "giver_court": "wildfey",
+   "needs": {
+    "damage_type": "iron"
+   },
+   "needs_line": "bring someone iron-touched · they know the courtesies you don't",
+   "hook": "Your wildfey grins and names it, which for a wildfey is nearly an introduction."
+  },
+  {
+   "id": "errand_rubezahl",
+   "target": "rubezahl",
+   "giver_court": "wildfey",
+   "needs": {
+    "damage_type": "iron"
+   },
+   "needs_line": "bring someone iron-touched · they know the courtesies you don't",
+   "hook": "One of yours points with its chin at a part of the grounds that isn't on any map and is real."
+  }
+ ]
+}

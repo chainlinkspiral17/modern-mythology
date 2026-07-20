@@ -24,9 +24,13 @@ extends Control
 
 signal quit
 signal enter_mirror(mirror_id: String)
+signal request_save
 
 const FEYS_PATH      := "res://resources/games/vol7/fey_faire/feys.json"
 const KEEPSAKES_PATH := "res://resources/games/vol7/fey_faire/keepsakes.json"
+const ERRANDS_PATH   := "res://resources/games/vol7/fey_faire/errands.json"
+
+var _errands: Array = []
 
 # Trailer palette · warmer, more mundane than the Faire
 const C_BG        := Color(0.145, 0.098, 0.075, 1.0)   # inside-a-trailer dark
@@ -39,6 +43,7 @@ const C_GOLD_DIM  := Color(0.72, 0.52, 0.26, 1.0)
 const C_LAMP      := Color(0.973, 0.816, 0.518, 1.0)   # warm lamplight
 const C_MEMORY    := Color(0.62, 0.55, 0.72, 1.0)      # memory-mirror silvery
 const C_CRACKED   := Color(0.42, 0.30, 0.30, 1.0)      # cracked mirror
+const C_RECRUITED := Color(0.62, 0.82, 0.55, 1.0)      # warren need met · green
 
 var _run_state: Dictionary = {}
 var _feys_by_id: Dictionary = {}
@@ -76,6 +81,12 @@ func _load_data() -> void:
 			for entry_v in (parsed2 as Dictionary).get("keepsakes", []):
 				var entry: Dictionary = entry_v
 				_keepsakes_by_id[String(entry.get("id", ""))] = entry
+	if FileAccess.file_exists(ERRANDS_PATH):
+		var f3 := FileAccess.open(ERRANDS_PATH, FileAccess.READ)
+		var parsed3: Variant = JSON.parse_string(f3.get_as_text())
+		f3.close()
+		if parsed3 is Dictionary:
+			_errands = (parsed3 as Dictionary).get("errands", [])
 
 
 func _build_frame() -> void:
@@ -156,9 +167,14 @@ func _render_main_view() -> void:
 		_render_bookcase_view)
 
 	_add_fixture_button(grid, "COTS · PARTY ROSTER",
-		"four beds · one for you, three for recruited feys",
+		"recruited feys · and what each grants the party",
 		_party_summary_string(),
 		_render_cots_view)
+
+	_add_fixture_button(grid, "THE WARREN · ERRANDS",
+		"feys beyond the fence · your party vouches you in",
+		_warren_summary_string(),
+		_render_warren_view)
 
 	_add_fixture_button(grid, "WRITING DESK · COMPENDIUM",
 		"met · recruited · defeated · dismissed",
@@ -383,6 +399,13 @@ func _render_cots_view() -> void:
 		rule.color = Color(C_LAMP.r, C_LAMP.g, C_LAMP.b, 0.25)
 		rule.custom_minimum_size.y = 1
 		v.add_child(rule)
+
+		# BOONS · what the roster GRANTS · reasons to hold each fey.
+		_add_boons_readout(v)
+		var rule2 := ColorRect.new()
+		rule2.color = Color(C_LAMP.r, C_LAMP.g, C_LAMP.b, 0.25)
+		rule2.custom_minimum_size.y = 1
+		v.add_child(rule2)
 
 		var protagonist := Label.new()
 		var player_name: String = String(_run_state.get("questionnaire", {}).get("player_name", "you"))
@@ -728,6 +751,268 @@ func _tail_flick_color(disp: int) -> Color:
 
 
 # ── Sub-view frame helper ─────────────────────────────────────
+# ─── BOONS · what the roster grants · reasons to hold each fey ───
+
+func _add_boons_readout(v: VBoxContainer) -> void:
+	var hdr := Label.new()
+	hdr.text = "BOONS · what your party grants:"
+	hdr.add_theme_font_size_override("font_size", 13)
+	hdr.add_theme_color_override("font_color", C_LAMP)
+	v.add_child(hdr)
+	var courts := _party_courts()
+	var types := _party_damage_types()
+	var boons: Array = []
+	if courts.has("seelie"):
+		boons.append("· a seelie in the party haggles the stalls · OFFER costs 1 less gold")
+	if courts.has("unseelie"):
+		boons.append("· an unseelie vouches · once a night a named great one submits instead of fighting")
+	if courts.has("wildfey"):
+		boons.append("· a wildfey knows the ways · once a night one closed flap opens anyway")
+	if types.has("song"):
+		boons.append("· a song-fey hums you the scansion · one failed RECITE may be re-tried")
+	var covered: Array = []
+	for t in ["iron", "salt", "flame", "song", "bone", "word"]:
+		if types.has(t):
+			covered.append(t)
+	if not covered.is_empty():
+		boons.append("· combat SECOND can strike: " + ", ".join(covered))
+	if boons.is_empty():
+		boons.append("· no boons yet · recruit feys and the party starts doing things for you")
+	for b in boons:
+		var lbl := Label.new()
+		lbl.text = String(b)
+		lbl.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+		lbl.add_theme_font_size_override("font_size", 12)
+		lbl.add_theme_color_override("font_color", C_RECRUITED if not String(b).begins_with("· no boons") else C_GOLD_DIM)
+		v.add_child(lbl)
+
+
+# ─── THE WARREN · errands · a purpose for all 101 feys ───────────
+
+func _party_courts() -> Dictionary:
+	var out := {}
+	for fid_v in _run_state.get("recruited_feys", []):
+		var f: Dictionary = _feys_by_id.get(String(fid_v), {})
+		out[String(f.get("court", ""))] = true
+	return out
+
+
+func _party_damage_types() -> Dictionary:
+	var out := {}
+	for fid_v in _run_state.get("recruited_feys", []):
+		var f: Dictionary = _feys_by_id.get(String(fid_v), {})
+		out[String(f.get("damage_type", ""))] = true
+	return out
+
+
+func _errand_available(e: Dictionary) -> bool:
+	# The target isn't recruited yet, and the party holds one of the
+	# target's own kind (giver_court) to vouch it out.
+	var recruited: Array = _run_state.get("recruited_feys", [])
+	if recruited.has(String(e.get("target", ""))):
+		return false
+	return _party_courts().has(String(e.get("giver_court", "")))
+
+
+func _errand_need_met(e: Dictionary) -> bool:
+	var need: Dictionary = e.get("needs", {})
+	if need.has("damage_type"):
+		return _party_damage_types().has(String(need["damage_type"]))
+	if need.has("court_not"):
+		# Any party fey of a DIFFERENT court than the forbidden one.
+		for c in _party_courts().keys():
+			if String(c) != String(need["court_not"]) and String(c) != "":
+				return true
+		return false
+	return true
+
+
+func _qualifying_fey(e: Dictionary) -> String:
+	# The party fey who satisfies the need · the one "sent."
+	var need: Dictionary = e.get("needs", {})
+	for fid_v in _run_state.get("recruited_feys", []):
+		var f: Dictionary = _feys_by_id.get(String(fid_v), {})
+		if need.has("damage_type") and String(f.get("damage_type", "")) == String(need["damage_type"]):
+			return String(fid_v)
+		if need.has("court_not") and String(f.get("court", "")) != String(need["court_not"]):
+			return String(fid_v)
+	return ""
+
+
+func _warren_summary_string() -> String:
+	var recruited: Array = _run_state.get("recruited_feys", [])
+	var total := _errands.size()
+	var done := 0
+	var avail := 0
+	for e_v in _errands:
+		var e: Dictionary = e_v
+		if recruited.has(String(e.get("target", ""))):
+			done += 1
+		elif _errand_available(e):
+			avail += 1
+	return "%d of %d reached · %d ready to run" % [done, total, avail]
+
+
+func _render_warren_view() -> void:
+	_render_sub_view("THE WARREN · errands beyond the fence", func(v: VBoxContainer) -> void:
+		var note := Label.new()
+		note.text = "Feys out past the string-lights. One of your own vouches you in; to walk to a fey you bring the thing it respects. Reaching one recruits it — and it vouches for the next."
+		note.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+		note.add_theme_font_size_override("font_size", 13)
+		note.add_theme_color_override("font_color", C_GOLD_DIM)
+		v.add_child(note)
+		var recruited: Array = _run_state.get("recruited_feys", [])
+		var any_shown := false
+		for e_v in _errands:
+			var e: Dictionary = e_v
+			var tid := String(e.get("target", ""))
+			if recruited.has(tid):
+				continue          # already brought in
+			if not _errand_available(e):
+				continue          # no voucher of that court in the party yet
+			any_shown = true
+			_add_errand_row(v, e)
+		if not any_shown:
+			var empty := Label.new()
+			var all_done := true
+			for e2_v in _errands:
+				if not recruited.has(String((e2_v as Dictionary).get("target", ""))):
+					all_done = false
+					break
+			empty.text = "The warren is empty. Every fey beyond the fence has come in." if all_done \
+				else "No errands yet. Recruit a fey on the midway first — its kind will vouch the next one out."
+			empty.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+			empty.add_theme_font_size_override("font_size", 14)
+			empty.add_theme_color_override("font_color", C_CREAM)
+			v.add_child(empty)
+	)
+
+
+func _add_errand_row(parent: Node, e: Dictionary) -> void:
+	var tid := String(e.get("target", ""))
+	var fey: Dictionary = _feys_by_id.get(tid, {})
+	var cell := ColorRect.new()
+	cell.color = C_WOOD_HI
+	cell.custom_minimum_size = Vector2(0, 96)
+	parent.add_child(cell)
+	var col := VBoxContainer.new()
+	col.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
+	col.offset_left = 10
+	col.offset_right = -10
+	col.offset_top = 6
+	col.offset_bottom = -6
+	col.add_theme_constant_override("separation", 2)
+	cell.add_child(col)
+	var name_lbl := Label.new()
+	name_lbl.text = "· %s · %s · tier %d" % [String(fey.get("name", tid)),
+		String(fey.get("court", "?")), int(fey.get("tier", 1))]
+	name_lbl.add_theme_font_size_override("font_size", 15)
+	name_lbl.add_theme_color_override("font_color", C_LAMP)
+	col.add_child(name_lbl)
+	var hook_lbl := Label.new()
+	# The card is composed from the target's OWN manifestation + the
+	# authored hook. Short manifestation (first clause).
+	var manif := String(fey.get("manifestation", ""))
+	var idx := manif.find("  ")
+	if idx < 0:
+		idx = manif.find(".")
+	var manif_short := manif.substr(0, idx) if idx > 0 else manif.substr(0, min(70, manif.length()))
+	hook_lbl.text = "%s  (%s)" % [String(e.get("hook", "")), manif_short]
+	hook_lbl.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+	hook_lbl.add_theme_font_size_override("font_size", 12)
+	hook_lbl.add_theme_color_override("font_color", C_CREAM)
+	col.add_child(hook_lbl)
+	var need_row := HBoxContainer.new()
+	need_row.add_theme_constant_override("separation", 10)
+	col.add_child(need_row)
+	var met := _errand_need_met(e)
+	var need_lbl := Label.new()
+	need_lbl.text = "· %s" % String(e.get("needs_line", "bring the right kin"))
+	need_lbl.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	need_lbl.add_theme_font_size_override("font_size", 12)
+	need_lbl.add_theme_color_override("font_color", C_RECRUITED if met else C_GOLD_DIM)
+	need_row.add_child(need_lbl)
+	var run_btn := Button.new()
+	run_btn.text = "  send %s  " % String(_feys_by_id.get(_qualifying_fey(e), {}).get("name", "them")) if met else "  can't yet  "
+	run_btn.add_theme_font_size_override("font_size", 12)
+	run_btn.disabled = not met
+	if met:
+		run_btn.pressed.connect(_run_errand.bind(e))
+	need_row.add_child(run_btn)
+
+
+func _run_errand(e: Dictionary) -> void:
+	var tid := String(e.get("target", ""))
+	var fey: Dictionary = _feys_by_id.get(tid, {})
+	var sent := _qualifying_fey(e)
+	var sent_name := String(_feys_by_id.get(sent, {}).get("name", "your ally"))
+	# Recruit the target · same mutation shape as a booth recruit.
+	var recruited: Array = _run_state.get("recruited_feys", [])
+	if not recruited.has(tid):
+		recruited.append(tid)
+	_run_state["recruited_feys"] = recruited
+	var court := String(fey.get("court", "wildfey"))
+	var court_key := "court_" + court
+	_run_state[court_key] = int(_run_state.get(court_key, 0)) + 2
+	_run_state[tid + "_disposition"] = int(_run_state.get(tid + "_disposition", 0)) + 2
+	_run_state["fey_court_" + tid] = court
+	var met: Array = _run_state.get("met_feys", [])
+	if not met.has(tid):
+		met.append(tid)
+	_run_state["met_feys"] = met
+	# Milestone tokens.
+	OneironauticsTokens.add("fey_faire_errand_first")
+	_check_warren_milestones()
+	var sfx := get_node_or_null("/root/SFXBank")
+	if sfx: sfx.play("win_chord", 0.6)
+	request_save.emit()
+	# Confirm screen · the fey's own request lands as the promise made.
+	_render_sub_view("· %s comes in ·" % String(fey.get("name", tid)), func(v: VBoxContainer) -> void:
+		var body := Label.new()
+		body.text = "%s walked you out past the fence and vouched. %s asks one thing, the way its kind does:\n\n\"%s\"\n\nYou said yes. %s joins the party." % [
+			sent_name, String(fey.get("name", tid)),
+			String(fey.get("request", "nothing you can't give")),
+			String(fey.get("name", tid))]
+		body.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+		body.add_theme_font_size_override("font_size", 14)
+		body.add_theme_color_override("font_color", C_CREAM)
+		v.add_child(body)
+		# The request becomes a promise on Ondine's ledger, honestly.
+		var promises: Array = _run_state.get("promises", [])
+		promises.append({"fey_id": tid, "promise": String(fey.get("request", "")), "resolved": false})
+		_run_state["promises"] = promises
+		var back := Button.new()
+		back.text = "  · back to the warren ·  "
+		back.add_theme_font_size_override("font_size", 14)
+		back.pressed.connect(_render_warren_view)
+		v.add_child(back)
+	)
+
+
+func _check_warren_milestones() -> void:
+	var recruited: Array = _run_state.get("recruited_feys", [])
+	# Per-court emptied.
+	for court in ["seelie", "unseelie", "wildfey"]:
+		var court_targets := 0
+		var court_done := 0
+		for e_v in _errands:
+			var e: Dictionary = e_v
+			if String(e.get("giver_court", "")) == court:
+				court_targets += 1
+				if recruited.has(String(e.get("target", ""))):
+					court_done += 1
+		if court_targets > 0 and court_done == court_targets:
+			OneironauticsTokens.add("fey_faire_warren_court_" + court)
+	# All errands done.
+	var all_done := true
+	for e2_v in _errands:
+		if not recruited.has(String((e2_v as Dictionary).get("target", ""))):
+			all_done = false
+			break
+	if all_done:
+		OneironauticsTokens.add("fey_faire_warren_emptied")
+
+
 func _render_sub_view(title: String, populator: Callable) -> void:
 	_clear_panel()
 	_panel_root = Control.new()
