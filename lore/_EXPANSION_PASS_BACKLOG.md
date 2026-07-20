@@ -205,11 +205,29 @@ earn condition; recontextualizes the whole campaign.
 
 ---
 
-## STATUS · 2026-07-19 · A/B/C ALL SECTIONS CLEAR
+## STATUS · 2026-07-20 · A/B/C + ALL C2-TAIL CLEAR
 
 Every slowstick (A1-A5), every Community Planned system (B1-B4),
-and both user-directed depth passes (C1-C2) are DONE. Remaining
-forward work lives OUTSIDE this backlog: the C2-tail Fey Faire
-polish list (orphan booths beyond the first 14, booth puzzles,
-death economy, mirror gates) and the queued tarot-locale director
-pass (awaiting on-device playtest).
+and both user-directed depth passes (C1-C2) are DONE — and as of
+2026-07-20 the entire C2-tail Fey Faire list is built too:
+- THE WARREN (errands + boons · all 101 feys used)
+- death / checkpoint economy (named memory, deepest-checkpoint respawn)
+- booth puzzles (Cobweb rhythm, Puck shells, Erlking wheel)
+- THE SUNDERING (Titania/Oberon exclusivity + mirror-gate reconcile)
+- gold sinks (provisions + the strongbox)
+
+Also cleared 2026-07-20 (were queued outside this backlog):
+- tarot locale director pass — audit tool + 20/23 verified, 3 desyncs
+  documented (needs on-device vantage authoring), data bugs fixed.
+  See lore/_GAUNTLET_LOCALE_DIRECTOR_AUDIT.md.
+- arcana visitor portraits — five-tier face system; 102/128 curated.
+
+### Known forward work still OPEN (small, needs the editor/device):
+- The three desynced gauntlet locales (ember_ash_office, roberts_house,
+  the_hierophant_circuit) need their per-space FP camera vantages
+  re-authored with the 3D scene open — the host SPACE_MAPs were built
+  for older, since-renamed boards. Checklist in the director audit doc.
+- Two dead `_BGM_BY_LOCATION` keys (riverboat, anya_bungalow) noted in
+  the director audit — confirm the intended location_ids, then fix.
+
+Nothing else is queued. New work is net-new design, not backlog.
