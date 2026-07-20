@@ -195,6 +195,7 @@ func _build_ui() -> void:
 	for btn_data: Array in [
 		["THE ALMANAC",       _on_almanac],
 		["THE MAJOR ARCANA",  _on_major_arcana],
+		["THE CATALOG",       _on_catalog],
 		["GALLERY",           _on_gallery],
 		["MUSIC PLAYER",      _on_music],
 		["ACHIEVEMENTS",      _on_achievements],
@@ -535,6 +536,17 @@ func _on_major_arcana() -> void:
 		existing.queue_free()
 	var Campaign := load("res://scenes/menu/MajorArcanaCampaign.gd")
 	var panel: Control = Campaign.build(self)
+	add_child(panel)
+
+
+func _on_catalog() -> void:
+	# The collector's shelf — the slowstick catalog lattice as liner
+	# notes, grouped by studio, with cross-cart achievements.
+	var existing: Node = get_node_or_null("CatalogShelf")
+	if existing != null and is_instance_valid(existing):
+		existing.queue_free()
+	var Catalog := load("res://scenes/menu/CatalogShelf.gd")
+	var panel: Control = Catalog.build(self)
 	add_child(panel)
 
 
