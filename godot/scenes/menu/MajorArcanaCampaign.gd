@@ -184,6 +184,14 @@ func _render_ladder() -> void:
 			lbl.add_theme_color_override("font_color", C_DONE if cleared else C_DIM)
 			row.add_child(lbl)
 
+		# VN <-> Gauntlet binding: you have read this card's chapter.
+		if OneironauticsTokens.has("vn_read_" + aid):
+			var read := Label.new()
+			read.text = "✎ read"
+			read.add_theme_font_size_override("font_size", 12)
+			read.add_theme_color_override("font_color", C_ACCENT)
+			row.add_child(read)
+
 	if active < 0:
 		var done := Label.new()
 		done.text = "· THE READING IS COMPLETE · Fool to World ·"

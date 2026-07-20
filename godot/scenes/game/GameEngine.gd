@@ -1074,7 +1074,30 @@ func _advance() -> void:
 
 # ── End ───────────────────────────────────────────────────────────────────────
 
+const VN_ARCANA_MAP := "res://resources/almanac/vn_arcana_map.json"
+
+func _record_vn_reading(scene_id: String) -> void:
+	# VN <-> Gauntlet binding (conservative). Finishing a Vol-5 arcana
+	# chapter fires vn_read_<arcana>, which lights the Almanac's THE
+	# READING chapter and marks the arcana on the Major Arcana ladder.
+	# Legible only — reading never grants a gauntlet advantage.
+	if not FileAccess.file_exists(VN_ARCANA_MAP):
+		return
+	var f := FileAccess.open(VN_ARCANA_MAP, FileAccess.READ)
+	if f == null:
+		return
+	var parsed: Variant = JSON.parse_string(f.get_as_text())
+	f.close()
+	if not (parsed is Dictionary):
+		return
+	var m: Dictionary = (parsed as Dictionary).get("scene_to_arcana", {})
+	var arc := String(m.get(scene_id, ""))
+	if arc != "":
+		OneironauticsTokens.add("vn_read_" + arc)
+
+
 func _end_scene() -> void:
+	_record_vn_reading(_scene_id)
 	_dlg.visible = false
 	AudioMgr.stop_voice()
 	AudioMgr.unduck()
