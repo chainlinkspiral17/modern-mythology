@@ -100,7 +100,7 @@
     },
     {
       "t": "narrate",
-      "text": "[shot:closeup nicola]A flicker behind her eyes. Not the restaurant's calculated mood lighting, which was set tonight to intimate but not improper. Lines of shimmering code, emerald green against an infinite black void. A whisper — not of gossip from Table 3, but a digital ghost asking, in a voice that was Nicola's own voice and was also not Nicola's voice at all:",
+      "text": "[mood:dream_blur][shot:closeup nicola]A flicker behind her eyes. Not the restaurant's calculated mood lighting, which was set tonight to intimate but not improper. Lines of shimmering code, emerald green against an infinite black void. A whisper — not of gossip from Table 3, but a digital ghost asking, in a voice that was Nicola's own voice and was also not Nicola's voice at all:",
       "voice": "assets/audio/voice/vol5_ch3_empress/018.mp3"
     },
     {
@@ -232,7 +232,7 @@
     },
     {
       "t": "narrate",
-      "text": "[shot:closeup nicola]Nicola seated the man, returned to the stand, and felt a kick.",
+      "text": "[mood:candlelight_low][shot:closeup nicola]Nicola seated the man, returned to the stand, and felt a kick.",
       "voice": "assets/audio/voice/vol5_ch3_empress/041.mp3"
     },
     {
@@ -387,7 +387,7 @@
     },
     {
       "t": "narrate",
-      "text": "[shot:closeup dean]Across the dining room, at Table 14, a man Nicola did not recognize was watching her.",
+      "text": "[mood:arcana_cool][shot:closeup dean]Across the dining room, at Table 14, a man Nicola did not recognize was watching her.",
       "voice": "assets/audio/voice/vol5_ch3_empress/069.mp3"
     },
     {

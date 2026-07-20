@@ -225,6 +225,28 @@ through them in order.
 
 ## Recent lessons
 
+### 2026-07-20 · VN direction audit + the mood-shift-at-interludes pass
+
+- **Audit direction density, not just correctness.** New tool
+  `godot/tools/audit_vn_direction.py` validates every scene's
+  `{"t":"bg","src":"3d:<preset>"}` against Background3D.CAMERA_PRESETS
+  (0 broken across 145 scenes — the bg wiring is clean) AND flags
+  FLAT scenes: >=40 nodes on <=1 backdrop with <=1 `[mood:]` cue.
+  Eight surfaced; that list IS the direction-pass worklist.
+- **Place mood shifts on the interlude beats.** A scene's own
+  `{"t":"interlude"}` cards mark its structural turns. The empress
+  scene (113 nodes, one `smoky_bar` mood) had interludes at "A
+  flicker behind her eyes", "A kick", "Table 14" — three ready-made
+  shift points. Prepend `[mood:X]` to the first `narrate` after each:
+  dream_blur for the interior flicker, candlelight_low for the
+  grounded beat, arcana_cool for Dean's entrance (the arcana-thread
+  antagonist). Direction from the text's own scaffolding.
+- **Only use moods already in the corpus.** `grep -ohE "\[mood:[a-z_]+\]"`
+  over the scenes gives the 28 de-facto-valid moods — reuse those so
+  a cue can't reference a mood the engine can't build. Same discipline
+  as the gauntlet visitor look-derivation: author from the known set.
+
+
 ### 2026-07-13 · "wireframe nightmare" — neon-1.0 moods are NOT direction-safe
 
 User verdict on ch1 + the tarot chapters: scenes "read as a wireframe
