@@ -35,6 +35,12 @@ const C_DARK   := Color("2a3038")
 const SPEED := 170.0
 const REACH := 52.0
 const LOOK_HOLD := 1.2
+# Attention is finite within a single walk. You can reach more of the
+# flat than you can truly attend to, so WHICH species you follow toward
+# its three-walks-running page is a choice, not a checklist. Resets each
+# walk (fresh attention, never a summer-long lockout) — the scarcity is
+# in the moment, matching the stick's "the genre is noticing" thesis.
+const LOOKS_PER_WALK := 4
 
 const NEIGHBORS := {
 	"ruth": {"pos": Vector2(220, 380), "name": "RUTH", "col": Color("6a4a30")},
@@ -56,6 +62,7 @@ var _dir := Vector2.ZERO
 var _look_target: String = ""
 var _look_t: float = 0.0
 var _looked_this_walk: Dictionary = {}
+var _looks_left: int = LOOKS_PER_WALK
 var _petition_asked: Dictionary = {}
 var _sprites: Dictionary = {}       # species id → SlowstockSprite
 var _walker := SlowstockSprite.new()
@@ -82,6 +89,7 @@ func boot(state: Dictionary) -> void:
 	_walk = (_walks.get("walks", []))[_n - 1]
 	_pos = Vector2(640, 200)
 	_looked_this_walk = {}
+	_looks_left = LOOKS_PER_WALK
 	_petition_asked = {}
 	var am := get_node_or_null("/root/AudioMgr")
 	if am != null and am.has_method("request_scene_bgm"):
@@ -89,6 +97,7 @@ func boot(state: Dictionary) -> void:
 	_hdr_lbl.text = "%s · WALK %d OF 12 · %s" % [String(_walk.get("month", "")), _n,
 			String(_walk.get("weather", "")).replace("_", " ")]
 	_msg("the flat at low tide. the radio is on the boardwalk rail. home is the county road.")
+	_update_hint()
 	queue_redraw()
 
 
@@ -132,6 +141,11 @@ func _build_ui() -> void:
 	add_child(_hint_lbl)
 
 
+func _update_hint() -> void:
+	if _hint_lbl != null:
+		_hint_lbl.text = "arrows · E interact · J journal · attention today · %d" % _looks_left
+
+
 # ─── Movement + verbs ────────────────────────────────────────────
 
 func _process(delta: float) -> void:
@@ -157,7 +171,11 @@ func _process(delta: float) -> void:
 				_look_t = 0.0
 			_look_t += delta
 			if _look_t >= LOOK_HOLD and not _looked_this_walk.has(near):
-				_register_observation(near)
+				if _looks_left > 0:
+					_register_observation(near)
+				else:
+					_msg("your attention is spent for today. what is left of the flat, you walk past.")
+					_look_t = 0.0   # re-hold to see the note again; no per-frame spam
 			queue_redraw()
 	else:
 		_look_target = ""
@@ -181,6 +199,8 @@ func _pop(sp: Dictionary) -> int:
 
 func _register_observation(sid: String) -> void:
 	_looked_this_walk[sid] = true
+	_looks_left = maxi(0, _looks_left - 1)
+	_update_hint()
 	var obs: Dictionary = _state.get("observations", {})
 	var walks_seen: Array = obs.get(sid, [])
 	if not walks_seen.has(_n):
