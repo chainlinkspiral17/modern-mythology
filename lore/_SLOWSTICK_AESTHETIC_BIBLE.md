@@ -111,3 +111,31 @@ because a PERSON made them, not because a machine did.
 - Per-mesh or per-scene bespoke post shaders (use the demoscene_post
   presets; if a stick truly needs a new uniform, extend the shader
   house-wide, don't fork it)
+
+---
+
+## Per-studio render LANGUAGES (2026-07-21)
+
+The presets used to differ only by uniform dials (palette/dither/
+scanline/aberration). They now also select a render MODE in
+`demoscene_post` (`look_mode`), a distinct treatment per design
+culture — house STYLE, still subtle, still "material not filter":
+
+| mode | `look_mode` | reads as | studios |
+|---|---|---|---|
+| none      | 0 | clean, crisp | pdp_toys, ranch, meridian |
+| gouache   | 1 | paper-tooth grain + gentle wash toward stock | oneironautics, yumemi, shelf |
+| halftone  | 2 | posterized silkscreen inks broken by the bayer dot | rocha_faire |
+| ink bleed | 3 | darkening where luminance edges pool (linework) | astro_cortex, sagebrush |
+| grain     | 4 | fine warm speckle, near-nothing | homebrew |
+
+Rules:
+- **`look_mode` defaults to 0**, and CP / TAROT GAUNTLET never set it —
+  they render exactly as before. Modes are a slowstick-only layer on the
+  shared shader; backward-compatible.
+- Extra uniforms: `paper_tint` (gouache/grain wash + tint), `grain_amount`,
+  `ink_amount`. Set per preset in `SlowstickLook.PRESETS`.
+- Keep it a whisper. If a screenshot says "filter," dial the mode's
+  amount down. The mode should read as the studio's chosen medium — a
+  gouache field guide, a silkscreen playbill, an inked pulp cover — not
+  as an effect. Deck-verify; shader modes can't be proofed in CI.

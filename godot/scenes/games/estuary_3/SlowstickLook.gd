@@ -27,6 +27,7 @@ const PRESETS: Dictionary = {
 	# Oneironautics · Portland · soft field-guide gouache · gentle
 	# grain like paper tooth, barely-there line cadence
 	"oneironautics": {
+		"look_mode": 1, "grain_amount": 0.6, "paper_tint": Color(0.92, 0.88, 0.76),
 		"palette_size": 24.0, "dither_strength": 0.10,
 		"scanline_strength": 0.06, "chromatic_aberration": 0.0008,
 		"ascii_strength": 0.0
@@ -34,6 +35,7 @@ const PRESETS: Dictionary = {
 	# Fey Faire · Rocha 1990 · hand-inked cel over cream stock ·
 	# slightly deeper quantize so the mauves band like silkscreen
 	"rocha_faire": {
+		"look_mode": 2,
 		"palette_size": 20.0, "dither_strength": 0.14,
 		"scanline_strength": 0.05, "chromatic_aberration": 0.0012,
 		"ascii_strength": 0.0
@@ -42,6 +44,7 @@ const PRESETS: Dictionary = {
 	# deeper palette crush, a breath of aberration at the edges ·
 	# the closest any slowstick gets to feeling like a machine
 	"astro_cortex": {
+		"look_mode": 3, "ink_amount": 0.5,
 		"palette_size": 14.0, "dither_strength": 0.22,
 		"scanline_strength": 0.10, "chromatic_aberration": 0.0018,
 		"ascii_strength": 0.0
@@ -50,6 +53,7 @@ const PRESETS: Dictionary = {
 	# background, primary colors, no grain worth mentioning · a
 	# children's product photographed in a catalog
 	"pdp_toys": {
+		"look_mode": 0,
 		"palette_size": 32.0, "dither_strength": 0.03,
 		"scanline_strength": 0.0, "chromatic_aberration": 0.0006,
 		"ascii_strength": 0.0
@@ -57,6 +61,7 @@ const PRESETS: Dictionary = {
 	# RANCH · San Francisco · laminate-and-signage commercial
 	# graphics · nearly clean · the crispest image in the catalog
 	"ranch": {
+		"look_mode": 0,
 		"palette_size": 28.0, "dither_strength": 0.05,
 		"scanline_strength": 0.0, "chromatic_aberration": 0.0004,
 		"ascii_strength": 0.0
@@ -66,6 +71,7 @@ const PRESETS: Dictionary = {
 	# grain, no quantize, no texture at all. The sterility IS the
 	# period look; the wrongness is the point.
 	"meridian": {
+		"look_mode": 0,
 		"palette_size": 48.0, "dither_strength": 0.0,
 		"scanline_strength": 0.0, "chromatic_aberration": 0.0,
 		"ascii_strength": 0.0
@@ -73,6 +79,7 @@ const PRESETS: Dictionary = {
 	# Sagebrush Engineworks · Amarillo · pulp-paperback cover inks ·
 	# warm dust field, heavy linework, one violet held in reserve
 	"sagebrush": {
+		"look_mode": 3, "ink_amount": 0.8, "paper_tint": Color(0.90, 0.82, 0.66),
 		"palette_size": 22.0, "dither_strength": 0.12,
 		"scanline_strength": 0.0, "chromatic_aberration": 0.0010,
 		"ascii_strength": 0.0
@@ -80,6 +87,7 @@ const PRESETS: Dictionary = {
 	# Yumemi Denshi · Kyoto · inked line on paper tones · a hanging
 	# scroll's patience · the gentlest treatment in the catalog
 	"yumemi": {
+		"look_mode": 1, "grain_amount": 0.4, "paper_tint": Color(0.90, 0.90, 0.82),
 		"palette_size": 26.0, "dither_strength": 0.06,
 		"scanline_strength": 0.0, "chromatic_aberration": 0.0006,
 		"ascii_strength": 0.0
@@ -88,12 +96,14 @@ const PRESETS: Dictionary = {
 	# dialed to near-nothing · the crudeness is in the DRAWING,
 	# not the display
 	"homebrew": {
+		"look_mode": 4, "grain_amount": 0.7,
 		"palette_size": 30.0, "dither_strength": 0.04,
 		"scanline_strength": 0.0, "chromatic_aberration": 0.0,
 		"ascii_strength": 0.0
 	},
 	# The shelf itself · Olaf's cabin · warm neutral
 	"shelf": {
+		"look_mode": 1, "grain_amount": 0.5, "paper_tint": Color(0.92, 0.88, 0.76),
 		"palette_size": 24.0, "dither_strength": 0.08,
 		"scanline_strength": 0.04, "chromatic_aberration": 0.0008,
 		"ascii_strength": 0.0
