@@ -1,0 +1,37 @@
+{
+ "id": "the_point",
+ "notes": "The Tideline · Station 12, the Point · the headland where the notebook is read back to you as a coastline. Gulls over dark rock, the sea gone flat.",
+ "w": 160,
+ "h": 90,
+ "palette": [
+  "#b8c0c4",
+  "#9aa6a8",
+  "#5c7076",
+  "#45565c",
+  "#6a7a5c",
+  "#4a4a44",
+  "#dfe4e2",
+  "#2a2e30",
+  "#e8e2d0",
+  "#8c8574"
+ ],
+ "layers": [
+  {"op": "fill", "color": 0},
+  {"op": "vgrad", "y_range": [0, 42], "stops": [0, 1]},
+  {"op": "hband", "y_range": [42, 90], "color": 2},
+  {"op": "hband", "y_range": [42, 44], "color": 6},
+  {"op": "hband", "y_range": [64, 90], "color": 3},
+  {"op": "poly", "points": [[159, 40], [96, 45], [104, 55], [126, 62], [159, 66]], "color": 5},
+  {"op": "poly", "points": [[159, 40], [98, 44], [120, 48], [159, 49]], "color": 4},
+  {"op": "shade", "xywh": [96, 44, 64, 22], "color": 7, "amount": 0.12},
+  {"op": "dot", "xy": [108, 60], "size": 2, "color": 5},
+  {"op": "dot", "xy": [116, 63], "size": 2, "color": 5},
+  {"op": "polyline", "points": [[0, 67], [40, 65], [90, 68], [126, 66]], "color": 6},
+  {"op": "dot", "xy": [40, 18], "size": 1, "color": 7},
+  {"op": "dot", "xy": [47, 22], "size": 1, "color": 7},
+  {"op": "dot", "xy": [33, 24], "size": 1, "color": 7},
+  {"op": "dot", "xy": [54, 15], "size": 1, "color": 7},
+  {"op": "disk", "xy": [28, 30], "r": 7, "color": 6},
+  {"op": "shade", "xywh": [21, 23, 15, 15], "color": 0, "amount": 0.5}
+ ]
+}

@@ -1,0 +1,37 @@
+{
+ "id": "the_walk",
+ "notes": "The Tideline · the walk itself · a lone figure on the wet line, station stakes receding up the beach under an overcast Pacific sky.",
+ "w": 160,
+ "h": 90,
+ "palette": [
+  "#b8c0c4",
+  "#9aa6a8",
+  "#5c7076",
+  "#45565c",
+  "#8c8574",
+  "#b0a892",
+  "#4a4a44",
+  "#dfe4e2",
+  "#2a2e30",
+  "#e8e2d0"
+ ],
+ "layers": [
+  {"op": "fill", "color": 5},
+  {"op": "vgrad", "y_range": [0, 33], "stops": [0, 1]},
+  {"op": "hband", "y_range": [33, 45], "color": 2},
+  {"op": "hband", "y_range": [43, 46], "color": 3},
+  {"op": "hband", "y_range": [46, 53], "color": 4},
+  {"op": "polyline", "points": [[0, 48], [40, 46], [80, 49], [120, 46], [159, 48]], "color": 7},
+  {"op": "noise", "xywh": [0, 53, 160, 37], "color": 4, "density": 0.06, "seed": 11},
+  {"op": "noise", "xywh": [0, 70, 160, 20], "color": 6, "density": 0.03, "seed": 23},
+  {"op": "vline", "x": 26, "y_range": [42, 47], "color": 8},
+  {"op": "vline", "x": 58, "y_range": [43, 47], "color": 8},
+  {"op": "vline", "x": 96, "y_range": [43, 46], "color": 8},
+  {"op": "vline", "x": 128, "y_range": [44, 46], "color": 8},
+  {"op": "rect", "xywh": [82, 44, 2, 6], "color": 8},
+  {"op": "dot", "xy": [83, 42], "size": 2, "color": 8},
+  {"op": "dot", "xy": [118, 16], "size": 1, "color": 9},
+  {"op": "dot", "xy": [124, 19], "size": 1, "color": 9},
+  {"op": "dot", "xy": [112, 21], "size": 1, "color": 9}
+ ]
+}
