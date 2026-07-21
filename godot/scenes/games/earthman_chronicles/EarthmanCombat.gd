@@ -431,17 +431,7 @@ func _end_player_turn() -> void:
 	elif _boss_id == "thar_krai_tam":
 		_boss_turn_thar()
 	else:
-		var skills: Array = _boss.get("skills", [])
-		var raw: int = int(_boss.get("strike", 10)) + (_turn % 3)
-		if _shield_turns > 0:
-			raw = int(round(raw * 0.5))
-			_shield_turns -= 1
-		raw = max(1, raw)
-		_player_hp = max(0, _player_hp - raw)
-		var skill_name: String = String(skills[_turn % max(1, skills.size())]) if not skills.is_empty() else "a strike"
-		_log.append("· " + skill_name + " · " + str(raw) + " damage to you")
-		var sfx := get_node_or_null("/root/SFXBank")
-		if sfx: sfx.play("hurt", 0.5)
+		_boss_turn_generic()
 	if _player_hp <= 0:
 		_combat_over = true
 		_outcome = "defeat"
@@ -452,6 +442,47 @@ func _end_player_turn() -> void:
 		return
 	_turn += 1
 	_render()
+
+
+func _boss_turn_generic() -> void:
+	# Every foe now shares the telegraph -> DEFEND -> counter rhythm the
+	# Thar arena introduced: a wind-up you can read, a heavy blow you can
+	# fully SLIP by bracing (DEFEND), and a one-breath opening (x1.5) if
+	# you do. DEFEND stops being just +5 HP; on the telegraphed turn it is
+	# the whole exchange. Reuses _bind_incoming / _counter_open.
+	var sfx := get_node_or_null("/root/SFXBank")
+	# Resolve a telegraphed heavy blow.
+	if _bind_incoming:
+		_bind_incoming = false
+		if _shield_turns > 0:
+			_shield_turns -= 1
+			_counter_open = true
+			_log.append("· the heavy blow breaks on your cover, not on you · you slip it · for one breath it is wide open")
+			return
+		var heavy: int = int(_boss.get("strike", 10)) + 7
+		_player_hp = max(0, _player_hp - heavy)
+		_log.append("· the blow you didn't brace lands full · " + str(heavy) + " damage · that was the one to read")
+		if sfx: sfx.play("hurt", 0.6)
+		return
+	# Telegraph a heavy blow every third turn.
+	if _turn % 3 == 2:
+		_bind_incoming = true
+		_log.append("· it winds up wide · the big one is coming · brace for it or pay for it")
+		var bank := get_node_or_null("/root/SFXBank")
+		if bank != null and bank.has_method("rumble"):
+			bank.call("rumble", 0.12, 0.22, 0.3)
+		return
+	# Ordinary strike (DEFEND still halves these).
+	var skills: Array = _boss.get("skills", [])
+	var raw: int = int(_boss.get("strike", 10)) + (_turn % 3)
+	if _shield_turns > 0:
+		raw = int(round(raw * 0.5))
+		_shield_turns -= 1
+	raw = max(1, raw)
+	_player_hp = max(0, _player_hp - raw)
+	var skill_name: String = String(skills[_turn % max(1, skills.size())]) if not skills.is_empty() else "a strike"
+	_log.append("· " + skill_name + " · " + str(raw) + " damage to you")
+	if sfx: sfx.play("hurt", 0.5)
 
 
 func _boss_turn_thar() -> void:

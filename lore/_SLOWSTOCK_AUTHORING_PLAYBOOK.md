@@ -185,6 +185,17 @@ each state transition.
   OVERRIDES the score when landlord ≤ 1 makes it a real second axis:
   "win the score" and "keep the store" pull apart. Telegraph the danger
   band in the weekly report so the loss is warned, never a gotcha.
+- **Promote one boss's good idea to a shared idiom.** Earthman built a
+  telegraph -> DEFEND -> counter rhythm for exactly one boss (Thar), and
+  DEFEND was near-dead (+5 HP) in every other fight, in both combat
+  sticks. Generalizing the pattern — a readable wind-up every third
+  enemy turn, DEFEND on that turn fully SLIPS the heavy blow and opens a
+  x1.5 counter, DEFEND still halves ordinary hits — makes DEFEND
+  load-bearing everywhere with no new engine. Reuse the boss's own state
+  flags (`_bind_incoming` -> `_counter_open`); port the same three
+  branches into the sibling stick (Fey Faire `_fey_turn`). When one
+  encounter proves a mechanic, the cheapest depth is making it the rule,
+  not leaving it a one-off.
 - **Turn a hazard stat into a spendable one for a route economy.**
   Basilica's coherence was purely a thing you protected. Letting the
   player BURN it to force a "B" wall (a corridor at another pitch)

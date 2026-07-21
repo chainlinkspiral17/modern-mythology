@@ -75,6 +75,8 @@ var _player_hp_max: int = 60
 var _player_sp: int = 20
 var _player_sp_max: int = 20
 var _player_defending: bool = false
+var _fey_winding: bool = false     # telegraphed heavy blow · resolves next fey turn
+var _counter_open: bool = false    # you slipped the wind-up · next strike x1.5
 var _fey_hp: int = 40
 var _fey_hp_max: int = 40
 var _turn: int = 1
@@ -540,6 +542,12 @@ func _on_attack_pressed() -> void:
 		elif _implement == _fey_str("resistance", ""):
 			dmg = max(1, int(round(dmg * 0.5)))
 			tri = " · " + String(IMPLEMENT_LABEL.get(_implement, _implement)) + " means nothing to them"
+	# Counter · you slipped their telegraphed wind-up last turn by
+	# bracing; this strike lands in the opening they left.
+	if _counter_open:
+		dmg = int(round(dmg * 1.5))
+		_counter_open = false
+		tri += " · you take the opening"
 	if _glamour_active:
 		dmg = max(1, int(round(dmg * 0.5)))
 		_fey_hp = max(0, _fey_hp - dmg)
@@ -701,6 +709,32 @@ func _fey_turn() -> void:
 	if _oath_pending:
 		_oath_pending = false
 		_log.append("· " + _fey_str("name", "they") + " stops · bound by the courtesy the verse invoked · the turn passes")
+		return
+	# Telegraph -> DEFEND -> counter rhythm (shared with Earthman). A
+	# wind-up you can read; DEFEND on the next turn fully SLIPS the heavy
+	# blow and opens them for a x1.5 counter; unbraced, it hits hard.
+	# DEFEND still halves ordinary strikes too, so it is never wasted.
+	if _fey_winding:
+		_fey_winding = false
+		if _player_defending:
+			_counter_open = true
+			_log.append("· the wind-up breaks on your guard · you slip it · for one breath " + _fey_str("name", "they") + " is open")
+			return
+		var heavy: int = 12 + int((_fey.get("stats", {}) as Dictionary).get("strike", 6)) + int(_fey.get("tier", 1)) * 3
+		if _iron_sick:
+			heavy = int(round(heavy * 0.6))
+		heavy = max(1, heavy)
+		_player_hp = max(0, _player_hp - heavy)
+		var sfxh := get_node_or_null("/root/SFXBank")
+		if sfxh: sfxh.play("hurt", 0.65)
+		_log.append("· " + _fey_str("name", "they") + " · the blow you didn't brace · " + str(heavy) + " damage")
+		return
+	if _turn % 3 == 2:
+		_fey_winding = true
+		_log.append("· " + _fey_str("name", "they") + " draws back wide · something big is coming · brace for it or pay for it")
+		var bank := get_node_or_null("/root/SFXBank")
+		if bank != null and bank.has_method("rumble"):
+			bank.call("rumble", 0.12, 0.22, 0.3)
 		return
 	# The fey uses a skill drawn from its list, or a bare strike.
 	var skills: Array = _fey.get("skills", [])
