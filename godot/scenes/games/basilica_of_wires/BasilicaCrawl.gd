@@ -185,6 +185,16 @@ func _mark_visited() -> void:
 
 # ─── Movement + the tuner ────────────────────────────────────────
 
+# Coherence is spendable, not just a hazard. A "B" wall is really a
+# corridor at another pitch; you can TUNE to its fundamental (safe, but
+# it costs steps and exposes you to standing-wave rooms on the way) OR
+# shoulder through it here and now by burning coherence. Forcing turns
+# your sense-of-place into a currency — a shortcut economy against the
+# retune-and-detour route. Guarded so a force can never itself drop you
+# to the junction; the risk is being thin for the NEXT interference room.
+const FORCE_COST := 3.0
+
+
 func _input(event: InputEvent) -> void:
 	if not is_visible_in_tree():
 		return
@@ -216,10 +226,37 @@ func _input(event: InputEvent) -> void:
 		KEY_E: _tune(25.0)
 		KEY_A: _tune(-5.0)
 		KEY_D: _tune(5.0)
+		KEY_F: _force_wall()
 		# Pad tuning pair · X (E synth) tunes up above; RB arrives as
 		# KEY_I via GamepadMgr when the virtual cursor is idle.
 		KEY_I: _tune(-25.0)
 	queue_redraw()
+
+
+# Shoulder through the wall you face by spending coherence, instead of
+# tuning to its band. Only a "B" cell (a corridor at another pitch)
+# yields; structural walls and the agreement/tag/floor gates do not.
+func _force_wall() -> void:
+	var d: Vector2i = DIRS[_dir]
+	var c := _cell(_px + d.x, _py + d.y)
+	if c != "B":
+		_set_msg("nothing here yields to force · only a wall that is really a corridor at another pitch.")
+		return
+	if _passable(c):
+		return   # already tuned to it — just step through
+	if _coherence <= FORCE_COST:
+		_set_msg("you reach for the wall and your sense of the room slides. too little left to spend · force it now and you would not find your way back. tune to it instead. (fundamental %d Hz)" % int(_level().get("fundamental", 0)))
+		return
+	_coherence -= FORCE_COST
+	_px += d.x
+	_py += d.y
+	if _coherence <= 3.0:
+		_scrambled = true
+	if not OneironauticsTokens.has("basilica_wall_forced"):
+		OneironauticsTokens.add("basilica_wall_forced")
+	_set_msg("you shoulder through the wire before it agrees to be a door. it gives — and the map frays where you stopped listening.")
+	_mark_visited()
+	_after_step(c)
 
 
 func _tune(delta: float) -> void:
@@ -249,7 +286,7 @@ func _step(sign: int) -> void:
 	var c := _cell(nx, ny)
 	if not _passable(c):
 		if c == "B":
-			_set_msg("a wall · at this frequency. (fundamental %d Hz)" % int(_level().get("fundamental", 0)))
+			_set_msg("a wall · at this frequency. (fundamental %d Hz) · tune to it, or press F to shoulder through · costs coherence" % int(_level().get("fundamental", 0)))
 		elif c == "M":
 			_set_msg("a door with no handle. it is listening for an agreement.")
 		elif c == "V":

@@ -185,6 +185,14 @@ each state transition.
   OVERRIDES the score when landlord ≤ 1 makes it a real second axis:
   "win the score" and "keep the store" pull apart. Telegraph the danger
   band in the weekly report so the loss is warned, never a gotcha.
+- **Turn a hazard stat into a spendable one for a route economy.**
+  Basilica's coherence was purely a thing you protected. Letting the
+  player BURN it to force a "B" wall (a corridor at another pitch)
+  instead of tuning to its band creates a real shortcut-vs-detour
+  choice: fast but thins your buffer for the next interference room.
+  Guard the spend so a force can never itself zero you (the risk is
+  being thin AFTER), and print the option on the wall you can't pass so
+  it is discovered, not hidden.
 
 ### 2026-07-20 · the meta-layer trilogy · one work, not four
 
