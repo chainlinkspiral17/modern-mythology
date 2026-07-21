@@ -1,0 +1,542 @@
+{
+ "id": "the_garden",
+ "notes": "Mrs. Wu's Garden - the 3x3 of raised beds at dusk, the lit kitchen window behind, Mrs. Wu stooped at a bed. Corvallis, fall 1995.",
+ "w": 160,
+ "h": 90,
+ "palette": [
+  "#22281f",
+  "#3a4230",
+  "#5a5038",
+  "#4a4438",
+  "#d8b878",
+  "#6a5a44",
+  "#4a4632",
+  "#8aa870",
+  "#a89058",
+  "#ece4d0",
+  "#2a2e24",
+  "#1a1e18"
+ ],
+ "layers": [
+  {
+   "op": "fill",
+   "color": 10
+  },
+  {
+   "op": "vgrad",
+   "y_range": [
+    0,
+    36
+   ],
+   "stops": [
+    0,
+    1,
+    2
+   ]
+  },
+  {
+   "op": "rect",
+   "xywh": [
+    0,
+    20,
+    160,
+    18
+   ],
+   "color": 3
+  },
+  {
+   "op": "poly",
+   "points": [
+    [
+     0,
+     20
+    ],
+    [
+     40,
+     12
+    ],
+    [
+     120,
+     12
+    ],
+    [
+     160,
+     20
+    ]
+   ],
+   "color": 11
+  },
+  {
+   "op": "rect",
+   "xywh": [
+    96,
+    24,
+    20,
+    10
+   ],
+   "color": 4
+  },
+  {
+   "op": "vline",
+   "x": 106,
+   "y_range": [
+    24,
+    34
+   ],
+   "color": 3
+  },
+  {
+   "op": "hline",
+   "y": 29,
+   "x_range": [
+    96,
+    116
+   ],
+   "color": 3
+  },
+  {
+   "op": "shade",
+   "xywh": [
+    90,
+    22,
+    34,
+    16
+   ],
+   "color": 4,
+   "amount": 0.2
+  },
+  {
+   "op": "hline",
+   "y": 38,
+   "x_range": [
+    0,
+    160
+   ],
+   "color": 2
+  },
+  {
+   "op": "noise",
+   "xywh": [
+    0,
+    38,
+    160,
+    52
+   ],
+   "color": 1,
+   "density": 0.05,
+   "seed": 7
+  },
+  {
+   "op": "rect",
+   "xywh": [
+    35,
+    44,
+    26,
+    12
+   ],
+   "color": 5
+  },
+  {
+   "op": "rect",
+   "xywh": [
+    37,
+    46,
+    22,
+    8
+   ],
+   "color": 6
+  },
+  {
+   "op": "noise",
+   "xywh": [
+    37,
+    46,
+    22,
+    8
+   ],
+   "color": 7,
+   "density": 0.55,
+   "seed": 10
+  },
+  {
+   "op": "dot",
+   "xy": [
+    43,
+    49
+   ],
+   "size": 1,
+   "color": 8
+  },
+  {
+   "op": "dot",
+   "xy": [
+    51,
+    51
+   ],
+   "size": 1,
+   "color": 8
+  },
+  {
+   "op": "rect",
+   "xywh": [
+    67,
+    44,
+    26,
+    12
+   ],
+   "color": 5
+  },
+  {
+   "op": "rect",
+   "xywh": [
+    69,
+    46,
+    22,
+    8
+   ],
+   "color": 6
+  },
+  {
+   "op": "noise",
+   "xywh": [
+    69,
+    46,
+    22,
+    8
+   ],
+   "color": 8,
+   "density": 0.3,
+   "seed": 21
+  },
+  {
+   "op": "rect",
+   "xywh": [
+    99,
+    44,
+    26,
+    12
+   ],
+   "color": 5
+  },
+  {
+   "op": "rect",
+   "xywh": [
+    101,
+    46,
+    22,
+    8
+   ],
+   "color": 6
+  },
+  {
+   "op": "noise",
+   "xywh": [
+    101,
+    46,
+    22,
+    8
+   ],
+   "color": 7,
+   "density": 0.55,
+   "seed": 12
+  },
+  {
+   "op": "dot",
+   "xy": [
+    107,
+    49
+   ],
+   "size": 1,
+   "color": 8
+  },
+  {
+   "op": "dot",
+   "xy": [
+    115,
+    51
+   ],
+   "size": 1,
+   "color": 8
+  },
+  {
+   "op": "rect",
+   "xywh": [
+    35,
+    62,
+    26,
+    12
+   ],
+   "color": 5
+  },
+  {
+   "op": "rect",
+   "xywh": [
+    37,
+    64,
+    22,
+    8
+   ],
+   "color": 6
+  },
+  {
+   "op": "noise",
+   "xywh": [
+    37,
+    64,
+    22,
+    8
+   ],
+   "color": 8,
+   "density": 0.3,
+   "seed": 23
+  },
+  {
+   "op": "rect",
+   "xywh": [
+    67,
+    62,
+    26,
+    12
+   ],
+   "color": 5
+  },
+  {
+   "op": "rect",
+   "xywh": [
+    69,
+    64,
+    22,
+    8
+   ],
+   "color": 6
+  },
+  {
+   "op": "noise",
+   "xywh": [
+    69,
+    64,
+    22,
+    8
+   ],
+   "color": 7,
+   "density": 0.55,
+   "seed": 14
+  },
+  {
+   "op": "dot",
+   "xy": [
+    75,
+    67
+   ],
+   "size": 1,
+   "color": 8
+  },
+  {
+   "op": "dot",
+   "xy": [
+    83,
+    69
+   ],
+   "size": 1,
+   "color": 8
+  },
+  {
+   "op": "rect",
+   "xywh": [
+    99,
+    62,
+    26,
+    12
+   ],
+   "color": 5
+  },
+  {
+   "op": "rect",
+   "xywh": [
+    101,
+    64,
+    22,
+    8
+   ],
+   "color": 6
+  },
+  {
+   "op": "rect",
+   "xywh": [
+    35,
+    80,
+    26,
+    12
+   ],
+   "color": 5
+  },
+  {
+   "op": "rect",
+   "xywh": [
+    37,
+    82,
+    22,
+    8
+   ],
+   "color": 6
+  },
+  {
+   "op": "noise",
+   "xywh": [
+    37,
+    82,
+    22,
+    8
+   ],
+   "color": 7,
+   "density": 0.55,
+   "seed": 16
+  },
+  {
+   "op": "dot",
+   "xy": [
+    43,
+    85
+   ],
+   "size": 1,
+   "color": 8
+  },
+  {
+   "op": "dot",
+   "xy": [
+    51,
+    87
+   ],
+   "size": 1,
+   "color": 8
+  },
+  {
+   "op": "rect",
+   "xywh": [
+    67,
+    80,
+    26,
+    12
+   ],
+   "color": 5
+  },
+  {
+   "op": "rect",
+   "xywh": [
+    69,
+    82,
+    22,
+    8
+   ],
+   "color": 6
+  },
+  {
+   "op": "noise",
+   "xywh": [
+    69,
+    82,
+    22,
+    8
+   ],
+   "color": 8,
+   "density": 0.3,
+   "seed": 27
+  },
+  {
+   "op": "rect",
+   "xywh": [
+    99,
+    80,
+    26,
+    12
+   ],
+   "color": 5
+  },
+  {
+   "op": "rect",
+   "xywh": [
+    101,
+    82,
+    22,
+    8
+   ],
+   "color": 6
+  },
+  {
+   "op": "noise",
+   "xywh": [
+    101,
+    82,
+    22,
+    8
+   ],
+   "color": 8,
+   "density": 0.3,
+   "seed": 28
+  },
+  {
+   "op": "rect",
+   "xywh": [
+    41,
+    54,
+    2,
+    6
+   ],
+   "color": 11
+  },
+  {
+   "op": "dot",
+   "xy": [
+    42,
+    53
+   ],
+   "size": 2,
+   "color": 9
+  },
+  {
+   "op": "dot",
+   "xy": [
+    42,
+    56
+   ],
+   "size": 2,
+   "color": 9
+  },
+  {
+   "op": "dot",
+   "xy": [
+    122,
+    30
+   ],
+   "size": 1,
+   "color": 8
+  },
+  {
+   "op": "dot",
+   "xy": [
+    130,
+    40
+   ],
+   "size": 1,
+   "color": 8
+  },
+  {
+   "op": "dot",
+   "xy": [
+    70,
+    26
+   ],
+   "size": 1,
+   "color": 8
+  },
+  {
+   "op": "dot",
+   "xy": [
+    54,
+    34
+   ],
+   "size": 1,
+   "color": 8
+  }
+ ]
+}

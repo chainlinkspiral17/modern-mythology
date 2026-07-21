@@ -1,0 +1,468 @@
+{
+ "id": "the_frost",
+ "notes": "Mrs. Wu's Garden - the frost night. Four sheets, nine beds, not enough. Covered beds draped white; the exposed ones rimed blue under a cold moon.",
+ "w": 160,
+ "h": 90,
+ "palette": [
+  "#1a2028",
+  "#2a3440",
+  "#4a5866",
+  "#3a3428",
+  "#c8a860",
+  "#5a5444",
+  "#3a4038",
+  "#b8c8d8",
+  "#e8eef2",
+  "#8a98a8",
+  "#12161c",
+  "#d8e4ee"
+ ],
+ "layers": [
+  {
+   "op": "fill",
+   "color": 0
+  },
+  {
+   "op": "vgrad",
+   "y_range": [
+    0,
+    40
+   ],
+   "stops": [
+    0,
+    1,
+    2
+   ]
+  },
+  {
+   "op": "noise",
+   "xywh": [
+    0,
+    0,
+    160,
+    32
+   ],
+   "color": 11,
+   "density": 0.02,
+   "seed": 19
+  },
+  {
+   "op": "disk",
+   "xy": [
+    132,
+    16
+   ],
+   "r": 6,
+   "color": 11
+  },
+  {
+   "op": "rect",
+   "xywh": [
+    0,
+    22,
+    160,
+    16
+   ],
+   "color": 3
+  },
+  {
+   "op": "rect",
+   "xywh": [
+    96,
+    26,
+    20,
+    10
+   ],
+   "color": 4
+  },
+  {
+   "op": "hline",
+   "y": 38,
+   "x_range": [
+    0,
+    160
+   ],
+   "color": 9
+  },
+  {
+   "op": "shade",
+   "xywh": [
+    0,
+    38,
+    160,
+    52
+   ],
+   "color": 7,
+   "amount": 0.18
+  },
+  {
+   "op": "rect",
+   "xywh": [
+    35,
+    44,
+    26,
+    12
+   ],
+   "color": 5
+  },
+  {
+   "op": "rect",
+   "xywh": [
+    37,
+    46,
+    22,
+    8
+   ],
+   "color": 6
+  },
+  {
+   "op": "rect",
+   "xywh": [
+    36,
+    44,
+    24,
+    9
+   ],
+   "color": 8
+  },
+  {
+   "op": "shade",
+   "xywh": [
+    36,
+    44,
+    24,
+    9
+   ],
+   "color": 9,
+   "amount": 0.22
+  },
+  {
+   "op": "rect",
+   "xywh": [
+    67,
+    44,
+    26,
+    12
+   ],
+   "color": 5
+  },
+  {
+   "op": "rect",
+   "xywh": [
+    69,
+    46,
+    22,
+    8
+   ],
+   "color": 6
+  },
+  {
+   "op": "noise",
+   "xywh": [
+    69,
+    46,
+    22,
+    8
+   ],
+   "color": 7,
+   "density": 0.35,
+   "seed": 31
+  },
+  {
+   "op": "hline",
+   "y": 45,
+   "x_range": [
+    68,
+    92
+   ],
+   "color": 7
+  },
+  {
+   "op": "rect",
+   "xywh": [
+    99,
+    44,
+    26,
+    12
+   ],
+   "color": 5
+  },
+  {
+   "op": "rect",
+   "xywh": [
+    101,
+    46,
+    22,
+    8
+   ],
+   "color": 6
+  },
+  {
+   "op": "noise",
+   "xywh": [
+    101,
+    46,
+    22,
+    8
+   ],
+   "color": 7,
+   "density": 0.35,
+   "seed": 32
+  },
+  {
+   "op": "hline",
+   "y": 45,
+   "x_range": [
+    100,
+    124
+   ],
+   "color": 7
+  },
+  {
+   "op": "rect",
+   "xywh": [
+    35,
+    62,
+    26,
+    12
+   ],
+   "color": 5
+  },
+  {
+   "op": "rect",
+   "xywh": [
+    37,
+    64,
+    22,
+    8
+   ],
+   "color": 6
+  },
+  {
+   "op": "rect",
+   "xywh": [
+    36,
+    62,
+    24,
+    9
+   ],
+   "color": 8
+  },
+  {
+   "op": "shade",
+   "xywh": [
+    36,
+    62,
+    24,
+    9
+   ],
+   "color": 9,
+   "amount": 0.22
+  },
+  {
+   "op": "rect",
+   "xywh": [
+    67,
+    62,
+    26,
+    12
+   ],
+   "color": 5
+  },
+  {
+   "op": "rect",
+   "xywh": [
+    69,
+    64,
+    22,
+    8
+   ],
+   "color": 6
+  },
+  {
+   "op": "rect",
+   "xywh": [
+    68,
+    62,
+    24,
+    9
+   ],
+   "color": 8
+  },
+  {
+   "op": "shade",
+   "xywh": [
+    68,
+    62,
+    24,
+    9
+   ],
+   "color": 9,
+   "amount": 0.22
+  },
+  {
+   "op": "rect",
+   "xywh": [
+    99,
+    62,
+    26,
+    12
+   ],
+   "color": 5
+  },
+  {
+   "op": "rect",
+   "xywh": [
+    101,
+    64,
+    22,
+    8
+   ],
+   "color": 6
+  },
+  {
+   "op": "noise",
+   "xywh": [
+    101,
+    64,
+    22,
+    8
+   ],
+   "color": 7,
+   "density": 0.35,
+   "seed": 35
+  },
+  {
+   "op": "hline",
+   "y": 63,
+   "x_range": [
+    100,
+    124
+   ],
+   "color": 7
+  },
+  {
+   "op": "rect",
+   "xywh": [
+    35,
+    80,
+    26,
+    12
+   ],
+   "color": 5
+  },
+  {
+   "op": "rect",
+   "xywh": [
+    37,
+    82,
+    22,
+    8
+   ],
+   "color": 6
+  },
+  {
+   "op": "noise",
+   "xywh": [
+    37,
+    82,
+    22,
+    8
+   ],
+   "color": 7,
+   "density": 0.35,
+   "seed": 36
+  },
+  {
+   "op": "hline",
+   "y": 81,
+   "x_range": [
+    36,
+    60
+   ],
+   "color": 7
+  },
+  {
+   "op": "rect",
+   "xywh": [
+    67,
+    80,
+    26,
+    12
+   ],
+   "color": 5
+  },
+  {
+   "op": "rect",
+   "xywh": [
+    69,
+    82,
+    22,
+    8
+   ],
+   "color": 6
+  },
+  {
+   "op": "noise",
+   "xywh": [
+    69,
+    82,
+    22,
+    8
+   ],
+   "color": 7,
+   "density": 0.35,
+   "seed": 37
+  },
+  {
+   "op": "hline",
+   "y": 81,
+   "x_range": [
+    68,
+    92
+   ],
+   "color": 7
+  },
+  {
+   "op": "rect",
+   "xywh": [
+    99,
+    80,
+    26,
+    12
+   ],
+   "color": 5
+  },
+  {
+   "op": "rect",
+   "xywh": [
+    101,
+    82,
+    22,
+    8
+   ],
+   "color": 6
+  },
+  {
+   "op": "rect",
+   "xywh": [
+    100,
+    80,
+    24,
+    9
+   ],
+   "color": 8
+  },
+  {
+   "op": "shade",
+   "xywh": [
+    100,
+    80,
+    24,
+    9
+   ],
+   "color": 9,
+   "amount": 0.22
+  }
+ ]
+}
