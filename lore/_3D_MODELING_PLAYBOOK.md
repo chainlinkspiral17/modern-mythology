@@ -2135,3 +2135,39 @@ and toddler at the plaza, etc.). Same for the chapter-one cast.
   what we learned, plus the rule that came out of it>.
 - ...
 ```
+
+---
+
+### 2026-07-21 · Meshy image-to-3D hero-asset pipeline (untextured T2)
+
+Added an external-API path to the 3D pipeline for HERO objects (statement
+pieces a locale can't reach with procedural cubes) — image → low-poly
+untextured GLB → normalized into the vertex-color pipeline. Two halves,
+mirroring the house `runway_render.py` / `elevenlabs_render.py` pattern:
+
+- `godot/tools/meshy_render.py` — stdlib runner. `POST /openapi/v1/
+  image-to-3d`, poll, download `model_urls.glb` to `assets/3d/meshy/`.
+  Auth via `MESHY_API_KEY` env or gitignored `.meshy_key`. Every request
+  field passes through the queue's `params`, so the **T2 model id** and any
+  new Meshy fields are data, not code. Defaults are the untextured low-poly
+  workflow (`should_texture:false`, low `target_polycount`, triangle topo).
+- `godot/tools/blender/build_meshy_import.py` — Deck-run normalizer:
+  join → recenter (min Z→0) → scale to a real metre height → optional
+  decimate → **bake a flat vertex-color layer + minimal material** (the T2
+  output is untextured, so we give it the pipeline's flat identifier) →
+  re-export GLB. Runs via `run_cathedral.sh` like every `build_*.py`.
+
+Lessons worth keeping:
+- **Keep the network half Blender-free and the Blender half network-free.**
+  The runner runs anywhere (CI, this container); the normalizer runs on the
+  Deck. Neither imports the other's world. Same split the audio/video tools use.
+- **Pass API fields through as data.** A new model tier ("T2") or a renamed
+  field shouldn't need a code edit — the queue's `params` dict is merged over
+  defaults straight into the request body.
+- **Untextured is the feature, not a gap.** T2's no-texture output drops
+  cleanly into the vertex-color / Light3D / screen-space stack; the normalizer
+  bakes one flat vertex color so it reads like every other locale mesh. Hero
+  objects raise the silhouette ceiling, not the texture rule.
+- Verified the Blender script with the STOP-RULE stubbed-bpy smoke test
+  (main()/helpers run clean); real bpy-API correctness still needs a Deck run.
+  Gitignore the key + raw `assets/3d/meshy/**/*.glb`; keep the manifest.

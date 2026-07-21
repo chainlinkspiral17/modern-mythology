@@ -16,3 +16,7 @@ Thumbs.db
 # Runway-generated videos — curate manually; commit a piece by piece
 godot/assets/video/generated/
 builds/
+
+# Meshy 3D-gen API key (never commit) + raw downloaded GLB staging
+godot/tools/.meshy_key
+godot/assets/3d/meshy/**/*.glb

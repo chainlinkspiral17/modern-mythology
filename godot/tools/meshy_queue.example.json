@@ -1,0 +1,17 @@
+{
+  "notes": "Meshy image-to-3D queue -- HERO assets for scenes. Copy to meshy_queue.json, edit, then: python3 godot/tools/meshy_render.py godot/tools/meshy_queue.json. Set params.ai_model to the untextured T2 model id; keep should_texture false to stay in the vertex-color / Light3D pipeline. Raw GLBs land in assets/3d/meshy/<tag>/<slug>.glb -- then normalize with tools/blender/build_meshy_import.py before using in a scene.",
+  "jobs": [
+    {
+      "tag": "hero",
+      "slug": "riverboat_wheelhouse",
+      "image": "godot/tools/meshy_refs/riverboat_wheelhouse.png",
+      "params": {
+        "ai_model": "meshy-5",
+        "should_texture": false,
+        "target_polycount": 8000,
+        "topology": "triangle",
+        "symmetry_mode": "auto"
+      }
+    }
+  ]
+}

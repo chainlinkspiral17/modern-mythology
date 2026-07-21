@@ -1,0 +1,12 @@
+{
+  "notes": "Normalize raw Meshy GLBs into scene-ready hero assets. Copy to meshy_import.json, then on the Deck: ./run_cathedral.sh build_meshy_import.py. Paths are relative to tools/blender/. height is the finished real-world size in metres (1 unit = 1 m); color is the flat vertex-color hex baked onto the untextured T2 mesh; decimate (0..1) is an optional extra low-poly pass.",
+  "jobs": [
+    {
+      "in":  "../../assets/3d/meshy/hero/riverboat_wheelhouse.glb",
+      "out": "../../assets/3d/locales/riverboat_wheelhouse.glb",
+      "height": 3.2,
+      "color": "8a8878",
+      "decimate": 0
+    }
+  ]
+}
