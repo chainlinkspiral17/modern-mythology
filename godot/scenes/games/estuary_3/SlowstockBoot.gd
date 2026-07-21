@@ -598,6 +598,11 @@ func _on_host_finished(canon_vars: Dictionary, lore_tokens: Array) -> void:
 			if not sf.has(stick_id):
 				sf.append(stick_id)
 			d["slowsticks_finished"] = sf
+			# Normalize the completion token for EVERY stick. Most emit
+			# their own <id>_finished via lore tokens (idempotent here);
+			# this guarantees it for the few that don't (estuary_3), so the
+			# Almanac and any future consumer can gate uniformly.
+			OneironauticsTokens.add(stick_id + "_finished")
 			_fire_collector_milestones(sf)
 			if gs.has_method("_save"):
 				gs.call("_save")
