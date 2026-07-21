@@ -17,6 +17,7 @@ signal evening_done(state: Dictionary)
 signal garden_over(state: Dictionary)
 
 const DATA_PATH := "res://resources/games/vol7/mrs_wus_garden/garden.json"
+const HERO_DIR := "res://resources/games/vol7/mrs_wus_garden/hero_images/"
 
 const C_DUSK   := Color("2a3028")
 const C_PANEL  := Color("39412f")
@@ -54,6 +55,9 @@ var _actions_lbl: Label = null
 var _sit_btn: Button = null
 var _end_btn: Button = null
 var _over: bool = false
+var _backdrop: TextureRect = null
+var _backdrop_id: String = ""
+var _hero_cache: Dictionary = {}   # id → ImageTexture
 
 
 func _ready() -> void:
@@ -90,6 +94,18 @@ func _build_ui() -> void:
 	bg.color = C_DUSK
 	bg.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
 	add_child(bg)
+
+	# A dimmed hero backdrop behind the whole UI (added right after the
+	# dusk fill, before header/grid/log, so it never covers text). Swaps
+	# by evening: the garden, the frost night on evening 5, the porch at
+	# the aftermath. Held faint so the bed grid stays legible.
+	_backdrop = TextureRect.new()
+	_backdrop.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
+	_backdrop.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_COVERED
+	_backdrop.texture_filter = CanvasItem.TEXTURE_FILTER_NEAREST
+	_backdrop.modulate = Color(1, 1, 1, 0.42)
+	_backdrop.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	add_child(_backdrop)
 
 	_hdr_lbl = Label.new()
 	_hdr_lbl.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
@@ -167,6 +183,19 @@ func _build_ui() -> void:
 	add_child(_log_lbl)
 
 
+func _set_backdrop(hero_id: String) -> void:
+	if _backdrop == null or hero_id == _backdrop_id:
+		return
+	_backdrop_id = hero_id
+	if not _hero_cache.has(hero_id):
+		var hero := HeroImage.new()
+		_hero_cache[hero_id] = hero.texture(Vector2i(640, 360)) \
+			if hero.load_from(HERO_DIR + hero_id + ".json") else null
+	var tex: Variant = _hero_cache[hero_id]
+	_backdrop.texture = tex
+	_backdrop.visible = tex != null
+
+
 func _say(line: String) -> void:
 	_log_lines.append(line)
 	while _log_lines.size() > 4:
@@ -220,6 +249,7 @@ func _need_tonight(bed: Dictionary) -> String:
 func _render() -> void:
 	var n: int = int(_state.get("evening", 1))
 	var e := _evening_def(n)
+	_set_backdrop("the_frost" if n == 5 else "the_garden")
 	_hdr_lbl.text = "· %s ·" % String(e.get("date", ""))
 	if n == 5:
 		_actions_lbl.text = "armloads of sheets left · %d" % _actions_left
@@ -375,6 +405,10 @@ func _run_aftermath() -> void:
 	var e := _evening_def(6)
 	_hdr_lbl.text = "· %s ·" % String(e.get("date", ""))
 	_actions_lbl.text = ""
+	# The grid is gone now; the porch can come up stronger for the close.
+	_set_backdrop("the_porch")
+	if _backdrop != null:
+		_backdrop.modulate = Color(1, 1, 1, 0.62)
 
 	var conditions: Dictionary = _state.get("conditions", {})
 	var covered: Array = _state.get("covered", [])
