@@ -78,8 +78,8 @@ not per game.
 
 Current wiring: FeyFaireHost → `rocha_faire` ·
 EarthmanChroniclesHost → `astro_cortex` · SamsSummerShiftsHost →
-`ranch` · PirateSummerHost → `oneironautics` · SlowstockShelf →
-`shelf`. Estuary 3's host predates the layer and inherits the
+`ranch` · PirateSummerHost → `oneironautics` · SpiderdropsHost →
+`pdp_toys` · SlowstockShelf → `shelf`. Estuary 3's host predates the layer and inherits the
 shelf treatment when launched from it; give it `oneironautics`
 if it ever gets its own pass.
 

@@ -1,0 +1,48 @@
+{
+  "id": "spiderdrops",
+  "vol": 7,
+  "kind": "slowstick",
+  "status": "playable_v1",
+  "notes": "SPIDERDROPS (PDP Toys, 1993). A real-time physics arcade toy: keep an orb-weaver's web up through a thunderstorm. Rain pools into mass, debris blows in on the gusts, and the spider crawls the web to pluck water, brace nodes, and re-spin what snaps. Marketed as a high-score toy; the design never lets you actually beat the storm. The eight radial spokes are the last thing to go, and when only they remain the web is the Order's eight-pointed star — uncommented, the way the star always leaks. Uncredited PDP R&D design (the Riffmaster-moonlight pattern).",
+  "shelf": {
+    "label_title": "SPIDERDROPS",
+    "label_subtitle": "keep the web up",
+    "publisher": "PDP Toys",
+    "publisher_locale": "Beaverton, OR",
+    "release_year": 1993,
+    "release_month": "September",
+    "hardware": "Oneironautics Slowstick · Rev 2",
+    "genre_stamp": "ARCADE / PHYSICS PUZZLE",
+    "shelf_condition": "blister-pack cart · the clamshell long gone · a price-gun sticker on the back reads $1.00",
+    "prior_owner": "Olaf, from a bargain bin at the Beaverton Fred Meyer",
+    "provenance_note": "A dollar in a bin. It is a toy. Olaf's note on it: 'I have never once kept the web up to the end. I do not think you are supposed to.'",
+    "cover_blurb": "REAL PHYSICS!  A storm is coming and your web is all you have.  Pluck the drops, brace the gusts, spin it back together.  How long can you hold on?  From PDP Toys — the fun people.  1 player (2-player pass-the-stick).  Ages 6 and up.",
+    "back_of_case": [
+      "· REAL bouncy web physics — every strand simulated!",
+      "· Rain pools and DROPS get BIGGER — shake 'em off!",
+      "· Six howling GUSTS, each one worse than the last.",
+      "· Leaves and twigs blow right into your web!",
+      "· Chase your best STORM SCORE!",
+      "",
+      "Can YOU keep the web up till morning?",
+      "",
+      "PDP Toys — also makers of the RIFFMASTER MELODY CLUB!"
+    ],
+    "in_fiction_dev_note": "PDP Toys' physics-toy phase, two years after the Riffmaster. Credited only to 'PDP Toys R&D' — the same deniable in-house crediting that let Marc Ostrom moonlight on the Riffmaster voice. Whoever designed it built a game the marketing did not understand: there is no ending where you beat the weather. The storm escalates until the web cannot hold, and the game grades the SHAPE the web is in when it goes. The 1993 arcade press filed it under 'high-score physics toy' and moved on. It is, structurally, Estuary 1's thesis — you were responsible for something — wearing a bargain-bin blister pack.",
+    "meta_note": "An orb web stands on eight radial spokes. When the storm strips the soft capture spiral and only the eight spokes remain, the web is the Order's eight-pointed star, exactly. PDP never drew a compass. It is just what an orb web is when the storm takes everything but the frame. The third publisher the star has leaked into, uncommented, after Astro-Cortex (the Basilica breaker) and Sagebrush (the compass)."
+  },
+  "lore_tokens_awarded_on_completion": [
+    "spiderdrops_finished"
+  ],
+  "lore_tokens_conditional": {
+    "spiderdrops_whole": "THE WEB HELD — seven or eight spokes intact, spiral 60%+",
+    "spiderdrops_star": "THE EIGHT-POINTED STAR — only the spokes survived (joins the Order thread)",
+    "spiderdrops_storm": "THE STORM — the web came down before the last gust"
+  },
+  "acts": [
+    {
+      "id": "the_storm",
+      "scene": "res://scenes/games/spiderdrops/SpiderdropsWeb.tscn"
+    }
+  ]
+}

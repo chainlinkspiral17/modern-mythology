@@ -88,6 +88,16 @@
         "hane_no_niwa"
       ],
       "notes": "Ono's half of the Ono\u2013Rocha correspondence \u00b7 it surfaces once Tem has met the Faire."
+    },
+    {
+      "wave": 2.8,
+      "unlocked_by_any_of": [
+        "riffmaster_melody_club"
+      ],
+      "sticks": [
+        "spiderdrops"
+      ],
+      "notes": "PDP Toys' physics arcade cart · surfaces once Tem knows PDP Toys made real games (finished the Riffmaster)."
     }
   ],
   "gated_by_vol7_chapter": {

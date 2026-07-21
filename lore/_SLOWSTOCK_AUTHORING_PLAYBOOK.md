@@ -158,6 +158,46 @@ each state transition.
 
 ## Recent lessons
 
+### 2026-07-21 · SPIDERDROPS · a live physics stick on the same frame
+
+Stick #19 (PDP Toys, 1993) — a real-time Verlet web sim, the first
+action/physics stick. It slotted into the exact same host contract as
+the text-forward sticks. Lessons:
+
+- **A real-time stick is still host + one scene + data.** The web sim
+  is one child (`SpiderdropsWeb`) emitting the uniform `quit` +
+  scene-specific `run_over(result)`; the host title/ending/save is the
+  Estuary-1 shape verbatim. New GENRE did not mean new frame — the
+  boot contract carried an arcade toy as cleanly as it carries a beat
+  scene. The one thing that earned new code was the renderer (the
+  "core mechanic deserves the renderer" rule): a ~50-line Verlet loop
+  (`_integrate` → N× `_solve_constraints` → `_snap_and_cull`) in
+  `_physics_process`, all drawing in `_draw` (sky first, web, spider,
+  rain), HUD as child Labels so the font floor + F4 still hold.
+- **Draw the WORLD in `_draw`, keep only HUD as children.** A Control
+  paints its own `_draw` BEFORE its children, so a child sky ColorRect
+  would cover the web. Everything world-space goes in `_draw` in order;
+  Labels (crisp font, floor 12) ride on top as children. Same split
+  any live `_draw` stick will want.
+- **One-path-per-input still bites in real time.** Movement polls the
+  built-in `ui_*` actions each physics tick; PLUCK is `ui_accept`;
+  BRACE is a held raw `KEY_SHIFT`; SPIN is raw `KEY_S`. Before picking
+  a raw key, grep the `[input]` map — here only advance/menu_back/
+  menu_select/skip are custom and WASD is unbound, so `KEY_S` is free.
+  A raw key that collides with a movement action double-fires.
+- **The MM twist can be structural, not a cameo.** The "standard game
+  experience" is honest arcade physics; the twist is that the storm
+  ALWAYS wins and the run grades the web's SHAPE (the Tideline-register
+  pattern), and that an orb web stripped to its 8 spokes IS the Order's
+  eight-pointed star — a THIRD publisher the star leaks into,
+  uncommented. Emit `spiderdrops_star` now for a future Order consumer
+  (readers-vs-writers: emit before the reader exists).
+- **Tuning is Deck-work; ship reasonable starts and say so.** Break
+  ratio, rain rate, gust strength, verb cooldowns, resource regen — all
+  physics feel that can't be proofed in CI. Author sane constants,
+  gdparse-clean, and flag the numbers for a Deck pass rather than
+  claiming they're balanced.
+
 ### 2026-07-20 · slowstick depth pass · spine + de-domination + a second axis
 
 - **The shelf is a system, cheaply.** The catalog already had a dense

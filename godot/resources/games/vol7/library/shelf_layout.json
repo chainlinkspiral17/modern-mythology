@@ -143,6 +143,13 @@
       "slot": 1,
       "case": "cartridge_sleeve",
       "prior_owner_note": "used, 1991 \u00b7 the previous owner's hex maps folded inside \u00b7 wrong in exactly one hex"
+    },
+    {
+      "stick": "spiderdrops",
+      "shelf": 0,
+      "slot": 11,
+      "case": "cartridge_sleeve",
+      "prior_owner_note": "Olaf, a dollar in a bargain bin at the Beaverton Fred Meyer \u00b7 a $1.00 price-gun sticker still on the back"
     }
   ],
   "empty_slots": [
@@ -164,11 +171,6 @@
     {
       "shelf": 0,
       "slot": 9,
-      "note": "Empty."
-    },
-    {
-      "shelf": 0,
-      "slot": 11,
       "note": "Empty."
     },
     {
