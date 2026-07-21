@@ -976,3 +976,31 @@ Lessons:
   new ops are validated on a contact sheet BEFORE they touch a stick. Ported
   the four here and proofed on `the_point` (before/after) first.
 - Additive/backward-compatible: existing heroes are untouched; ops opt in.
+
+---
+
+### 2026-07-21 · HeroParallax · 2.5D depth for flat HeroImage backdrops
+
+`HeroParallax.gd` (scenes/games/estuary_3/) stacks HeroImage planes at
+depth and drifts them — a flat vector backdrop gains layered motion
+without leaving the silkscreen look. Each plane is an oversized (14%),
+NEAREST TextureRect; a slow idle sway (time sine) plus an optional
+`set_drive()` external push offsets each by its own `parallax` factor.
+Joins `"world_render"` (F4 leaves it — it is the picture).
+
+Authoring pattern (proofed on the Tideline walk, far/near split):
+- Split one backdrop into depth planes as separate HeroImage JSONs.
+- The FAR plane is opaque (sky/sea/distance). NEAR planes fill with a
+  `"transparent"` palette entry for their sky so the planes behind show
+  through as everything drifts — verified on a checker in the previewer.
+- Overscan the planes so a drift never bares an edge; centre the overscan.
+
+Lessons:
+- **Transparency is just a palette entry.** HeroImage already maps
+  `"transparent"` → RGBA(0,0,0,0); a near plane's `fill` on that index
+  gives a see-through sky, no engine change. Append it as a new index so
+  existing colour indices don't shift.
+- Static stills prove the SPLIT (far / near-on-checker / composite); the
+  drift itself is runtime — gdparse-clean here, motion Deck-verified.
+- Reusable: `build([{json,parallax,sway}...], view_size)`; wire behind a
+  stick's UI, SlowstickLook on top.
