@@ -37,6 +37,7 @@ var _data: Dictionary = {}
 var _stations: Array = []
 var _slots_left: int = 2
 var _root: VBoxContainer = null
+var _parallax: HeroParallax = null   # drifting far/near backdrop (original mode)
 
 # Attention is scarce across the WHOLE walk, not refilled each station.
 # Eleven stations offer far more to notice than the notebook can hold,
@@ -68,6 +69,20 @@ func boot(state: Dictionary) -> void:
 	bg.color = C_MER_BG if remake_mode else C_SEA
 	bg.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
 	add_child(bg)
+
+	# A drifting far/near parallax backdrop of the walk, behind the UI
+	# (original mode only; the 2048 survey keeps its plainer look). Held
+	# dim so the station text over it stays legible. Advancing a station
+	# nudges it along the beach via set_drive().
+	if not remake_mode:
+		_parallax = HeroParallax.new()
+		_parallax.build([
+			{"json": HERO_DIR + "the_walk_far.json",  "parallax": 0.25, "sway": 3.0},
+			{"json": HERO_DIR + "the_walk_near.json", "parallax": 1.00, "sway": 7.0},
+		], Vector2(1280, 720))
+		_parallax.modulate = Color(1, 1, 1, 0.5)
+		add_child(_parallax)
+
 	var am := get_node_or_null("/root/AudioMgr")
 	if am != null:
 		# The walk gets a slow surf-drone loop; the 2048 survey keeps its
@@ -160,9 +175,16 @@ func _show_station() -> void:
 	hdr.add_theme_color_override("font_color", C_MER_OK if remake_mode else C_KELP)
 	_root.add_child(hdr)
 
-	# The notebook is handed to you at the first station; every station
-	# after is the walk itself.
-	_add_hero("the_notebook" if idx == 0 else "the_walk")
+	# The notebook is handed to you at the first station (a banner over
+	# the drifting backdrop). Every station after IS the walk — the
+	# parallax backdrop carries it, no banner needed. Advancing nudges
+	# the backdrop along the beach.
+	if idx == 0:
+		_add_hero("the_notebook")
+	elif _parallax == null:
+		_add_hero("the_walk")   # remake / no-backdrop fallback keeps the banner
+	if _parallax != null:
+		_parallax.set_drive(Vector2(float(idx) * 26.0, 0.0))
 
 	if remake_mode:
 		_add_body(String((_data.get("remake", {}) as Dictionary).get("arrive_prefix", "")), 12, C_MER_OK)
