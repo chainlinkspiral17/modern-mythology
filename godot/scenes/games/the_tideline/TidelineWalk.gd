@@ -69,8 +69,13 @@ func boot(state: Dictionary) -> void:
 	bg.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
 	add_child(bg)
 	var am := get_node_or_null("/root/AudioMgr")
-	if am != null and am.has_method("stop_scene_bgm"):
-		am.stop_scene_bgm()
+	if am != null:
+		# The walk gets a slow surf-drone loop; the 2048 survey keeps its
+		# own quiet.
+		if not remake_mode and am.has_method("request_scene_bgm"):
+			am.request_scene_bgm("res://assets/audio/bgm/the_tideline/walk.wav")
+		elif am.has_method("stop_scene_bgm"):
+			am.stop_scene_bgm()
 	_show_station()
 
 
