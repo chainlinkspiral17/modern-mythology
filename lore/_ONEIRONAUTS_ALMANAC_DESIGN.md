@@ -109,3 +109,34 @@ poured into it, not new plumbing.
   one pillar never hits a wall referencing another.
 - No new art pipeline — procedural placeholder tiles + the existing
   HeroImage/bust systems, per house rules.
+
+## The Evidence Board (2026-07-20)
+
+The Almanac's `almanac_unlocks.json` already assembles cross-stick
+threads PASSIVELY — on Almanac-open, any rule whose two secret-tokens
+both hold grants a thread token. The Evidence Board adds the
+INTERACTIVE half of the same idea: the deduction VERB the meta-layer
+lacked. The collector pins two DISCOVERED stick-secrets and holds them
+against each other; if they form an authored connection, a thread
+assembles. Modeled on the Patient Mister Glass contradiction ledger
+(pin two answers to make a finding) — the deepest verb in the catalog,
+promoted to the shelf level.
+
+- Data: `godot/resources/almanac/evidence_board.json` — `secrets[]`
+  (each a stick-secret keyed to its OneironauticsTokens flag) and
+  `connections[]` (each a `pair` of two secret tokens + `fires` token
+  + assembling text).
+- UI: `godot/scenes/menu/EvidenceBoard.gd`, Almanac overlay pattern
+  (static build, "ui" group, Esc close). Entry: MainMenu "THE EVIDENCE
+  BOARD". Only DISCOVERED secrets show; undiscovered are a count, never
+  a spoiler. Revealed connections persist via their `fires` token and
+  light a matching THREADS entry in the Almanac.
+- Canon rule (hard): connections ASSEMBLE, never RESOLVE. Each text
+  NAMES the shared element (a year, a shape, a hand, a note) and the
+  resonance, and stops. 1976 stays open; the eight-pointed star stays a
+  shape; 'for jack' stays two words. The board proves the walls are
+  thin; it never tells you what is on the other side.
+- Distinct from the passive rules: the board's four connections use
+  their own `evidence_*_assembled` tokens, so it never double-fires the
+  automatic thread grants. Both systems can coexist on the same secret
+  tokens.

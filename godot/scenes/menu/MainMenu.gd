@@ -194,6 +194,7 @@ func _build_ui() -> void:
 	# Secondary buttons
 	for btn_data: Array in [
 		["THE ALMANAC",       _on_almanac],
+		["THE EVIDENCE BOARD", _on_evidence_board],
 		["THE MAJOR ARCANA",  _on_major_arcana],
 		["THE CATALOG",       _on_catalog],
 		["GALLERY",           _on_gallery],
@@ -526,6 +527,17 @@ func _on_almanac() -> void:
 		existing.queue_free()
 	var Almanac := load("res://scenes/menu/Almanac.gd")
 	var panel: Control = Almanac.build(self)
+	add_child(panel)
+
+
+func _on_evidence_board() -> void:
+	# The interactive meta-mystery — pin two discovered stick-secrets and
+	# assemble a cross-shelf thread. Fresh build each open.
+	var existing: Node = get_node_or_null("EvidenceBoard")
+	if existing != null and is_instance_valid(existing):
+		existing.queue_free()
+	var Board := load("res://scenes/menu/EvidenceBoard.gd")
+	var panel: Control = Board.build(self)
 	add_child(panel)
 
 
