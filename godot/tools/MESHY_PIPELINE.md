@@ -15,6 +15,15 @@ pipeline. Two halves, deliberately split:
                               assets/3d/locales/<slug>.glb (scene-ready)
 ```
 
+## 0 · Queue builder — `meshy_studio.html` (optional)
+
+Open it in a browser to assemble jobs visually: set tag/slug, point at a
+reference image (a repo-relative path, or pick a file to embed), tune the
+params (T2 `ai_model`, `target_polycount`, topology, `should_texture`), reorder
+the queue, then **Export queue JSON** → save as `godot/tools/meshy_queue.json`.
+Round-trips the same schema the runner reads; queue persists in localStorage.
+Self-contained, no build step. (Same role `runway_studio.html` plays for video.)
+
 ## 1 · Runner — `meshy_render.py` (no Blender needed)
 
 Calls Meshy's `POST /openapi/v1/image-to-3d`, polls, downloads `model_urls.glb`.
