@@ -2171,3 +2171,30 @@ Lessons worth keeping:
 - Verified the Blender script with the STOP-RULE stubbed-bpy smoke test
   (main()/helpers run clean); real bpy-API correctness still needs a Deck run.
   Gitignore the key + raw `assets/3d/meshy/**/*.glb`; keep the manifest.
+
+---
+
+### 2026-07-21 · SlowstickDiorama · shallow 3D behind a 2D stick
+
+`SlowstickDiorama.gd` (scenes/games/estuary_3/) puts a shallow 3D
+diorama behind a slowstick's UI: a SubViewport with a slow-turning
+UNTEXTURED low-poly hero object under a key+fill Light3D rig and a soft
+ambient Environment. The flagship of the graphics program and the first
+consumer of the Meshy pipeline — point `glb_path` at a normalized
+assets/3d hero and it renders; with none it builds a procedural
+"resonator" (stacked torus rings + core, one flat material) so the
+pilot works before any asset exists.
+
+Lessons / gotchas (Deck-verify — SubViewport 3D can't render in CI):
+- **`show_behind_parent` on the SubViewportContainer** is how the 3D
+  renders BEHIND a host Control's own `_draw` (e.g. Basilica's
+  wireframe) instead of over it. A `_draw` parent draws beneath its
+  children by default, so without this the diorama would cover the game.
+- **`msaa_3d = DISABLED`** keeps the chunky low-fi silhouette — smoothing
+  fights the silkscreen look. Tint/material come from the host's
+  SlowstickLook on top; the diorama is the picture, joins "world_render"
+  so F4 leaves it.
+- Untextured is the point: a StandardMaterial3D flat albedo + Light3D
+  gives the vertex-color-era read without any texture asset.
+- Verify path: SlowstickDioramaDemo.tscn opens standalone (F6) to prove
+  the diorama in isolation before any risky wire into a live stick.
