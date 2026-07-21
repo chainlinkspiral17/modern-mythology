@@ -19,6 +19,7 @@ signal station_done(state: Dictionary)
 signal walk_over(state: Dictionary)
 
 const DATA_PATH := "res://resources/games/vol7/the_tideline/tideline.json"
+const HERO_DIR := "res://resources/games/vol7/the_tideline/hero_images/"
 
 const C_SEA    := Color("2c343a")
 const C_FOG    := Color("dfe4e2")
@@ -95,6 +96,24 @@ func _make_root() -> void:
 	add_child(_root)
 
 
+## A HeroImage banner at the top of a station/report screen. Missing
+## JSON renders nothing (fallback discipline). Original mode only — the
+## 2048 survey keeps its plainer look.
+func _add_hero(hero_id: String, banner_h: int = 108) -> void:
+	if remake_mode:
+		return
+	var hero := HeroImage.new()
+	if not hero.load_from(HERO_DIR + hero_id + ".json"):
+		return
+	@warning_ignore("integer_division")
+	var tr := TextureRect.new()
+	tr.texture = hero.texture(Vector2i(banner_h * 16 / 9, banner_h))
+	tr.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED
+	tr.texture_filter = CanvasItem.TEXTURE_FILTER_NEAREST
+	tr.custom_minimum_size = Vector2(0, banner_h)
+	_root.add_child(tr)
+
+
 func _add_body(text: String, size: int = 15, color: Color = Color.TRANSPARENT) -> void:
 	var lbl := Label.new()
 	lbl.text = text
@@ -135,6 +154,10 @@ func _show_station() -> void:
 	hdr.add_theme_font_size_override("font_size", 18)
 	hdr.add_theme_color_override("font_color", C_MER_OK if remake_mode else C_KELP)
 	_root.add_child(hdr)
+
+	# The notebook is handed to you at the first station; every station
+	# after is the walk itself.
+	_add_hero("the_notebook" if idx == 0 else "the_walk")
 
 	if remake_mode:
 		_add_body(String((_data.get("remake", {}) as Dictionary).get("arrive_prefix", "")), 12, C_MER_OK)
@@ -293,6 +316,7 @@ func _show_report() -> void:
 	hdr.add_theme_font_size_override("font_size", 18)
 	hdr.add_theme_color_override("font_color", C_MER_OK if remake_mode else C_KELP)
 	_root.add_child(hdr)
+	_add_hero("the_point", 120)
 	_add_body(String(last.get("arrive", "")))
 
 	var scroll := ScrollContainer.new()
