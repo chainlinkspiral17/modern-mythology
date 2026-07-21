@@ -1,6 +1,6 @@
 {
  "id": "the_walk",
- "notes": "The Tideline · the walk itself · a lone figure on the wet line, station stakes receding up the beach under an overcast Pacific sky.",
+ "notes": "The Tideline · the walk itself · a lone figure on the wet line, station stakes receding, a wrack line and a tide pool in the foreground under an overcast Pacific sky.",
  "w": 160,
  "h": 90,
  "palette": [
@@ -13,25 +13,39 @@
   "#4a4a44",
   "#dfe4e2",
   "#2a2e30",
-  "#e8e2d0"
+  "#e8e2d0",
+  "#3a4a3c",
+  "#6a5a48"
  ],
  "layers": [
   {"op": "fill", "color": 5},
   {"op": "vgrad", "y_range": [0, 33], "stops": [0, 1]},
   {"op": "hband", "y_range": [33, 45], "color": 2},
   {"op": "hband", "y_range": [43, 46], "color": 3},
-  {"op": "hband", "y_range": [46, 53], "color": 4},
+  {"op": "hband", "y_range": [46, 54], "color": 4},
+  {"op": "shade", "xywh": [0, 46, 160, 6], "color": 0, "amount": 0.22},
   {"op": "polyline", "points": [[0, 48], [40, 46], [80, 49], [120, 46], [159, 48]], "color": 7},
-  {"op": "noise", "xywh": [0, 53, 160, 37], "color": 4, "density": 0.06, "seed": 11},
-  {"op": "noise", "xywh": [0, 70, 160, 20], "color": 6, "density": 0.03, "seed": 23},
+  {"op": "noise", "xywh": [0, 50, 160, 3], "color": 10, "density": 0.24, "seed": 41},
+  {"op": "noise", "xywh": [0, 54, 160, 36], "color": 4, "density": 0.06, "seed": 11},
+  {"op": "noise", "xywh": [0, 72, 160, 18], "color": 6, "density": 0.03, "seed": 23},
+  {"op": "poly", "points": [[18, 79], [31, 74], [47, 77], [41, 83], [24, 84]], "color": 2},
+  {"op": "shade", "xywh": [20, 74, 28, 10], "color": 0, "amount": 0.30},
+  {"op": "dot", "xy": [70, 58], "size": 1, "color": 6},
+  {"op": "dot", "xy": [74, 56], "size": 1, "color": 6},
+  {"op": "dot", "xy": [78, 54], "size": 1, "color": 6},
+  {"op": "dot", "xy": [80, 52], "size": 1, "color": 6},
   {"op": "vline", "x": 26, "y_range": [42, 47], "color": 8},
   {"op": "vline", "x": 58, "y_range": [43, 47], "color": 8},
   {"op": "vline", "x": 96, "y_range": [43, 46], "color": 8},
   {"op": "vline", "x": 128, "y_range": [44, 46], "color": 8},
-  {"op": "rect", "xywh": [82, 44, 2, 6], "color": 8},
+  {"op": "rect", "xywh": [82, 43, 2, 7], "color": 8},
   {"op": "dot", "xy": [83, 42], "size": 2, "color": 8},
+  {"op": "rect", "xywh": [82, 50, 2, 3], "color": 6},
+  {"op": "polyline", "points": [[100, 80], [118, 83]], "color": 11},
+  {"op": "polyline", "points": [[100, 81], [118, 84]], "color": 11},
   {"op": "dot", "xy": [118, 16], "size": 1, "color": 9},
   {"op": "dot", "xy": [124, 19], "size": 1, "color": 9},
-  {"op": "dot", "xy": [112, 21], "size": 1, "color": 9}
+  {"op": "dot", "xy": [112, 21], "size": 1, "color": 9},
+  {"op": "dot", "xy": [131, 22], "size": 1, "color": 9}
  ]
 }
