@@ -231,3 +231,21 @@ func _parse_vol_ch(s: String) -> Vector2i:
 	if m == null:
 		return Vector2i(-1, -1)
 	return Vector2i(m.get_string(1).to_int(), m.get_string(2).to_int())
+
+
+## True if any save slot has reached at least (vol, min_chapter). Used
+## by the slowstock shelf to gate sticks Tem only acquires late in a
+## given volume (e.g. the Tideline Survey 2048, bought in Vol 7 ch 22).
+## Scene ids that don't parse fall back to the save's `vol` field at a
+## very-late chapter, matching the substrate-migration heuristic above.
+func reached_vol_chapter(vol: int, min_chapter: int) -> bool:
+	for i in range(1, MAX_SLOTS + 1):
+		var save := read_save(i)
+		if save.is_empty():
+			continue
+		var sv: Vector2i = _parse_vol_ch(str(save.get("scene", "")))
+		if sv.x == -1:
+			sv = Vector2i(int(save.get("vol", 0)), 9999)
+		if sv.x > vol or (sv.x == vol and sv.y >= min_chapter):
+			return true
+	return false

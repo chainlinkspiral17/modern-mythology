@@ -193,14 +193,20 @@ func _is_unlocked(stick_id: String) -> bool:
 	var starts: Array = _unlock_graph.get("starts_unlocked", [])
 	if starts.has(stick_id):
 		return true
-	# Chapter gate.
+	# Chapter gate · shelf-visibility for sticks Tem only acquires late
+	# in a volume. Until a save has reached that chapter the stick cannot
+	# unlock at all; once reached, it unlocks like any other via its wave
+	# below (so the Tideline Survey still wants its wave-5 count of five).
 	var gate: Dictionary = _unlock_graph.get("gated_by_vol7_chapter", {})
 	if gate.has(stick_id):
-		# TODO · read the current Vol 7 chapter from save state; for
-		# now, assume locked to keep the design honest. When save
-		# integration lands this reads `saved_vol` + `saved_chapter`
-		# from the VN save.
-		return false
+		var g: Dictionary = gate[stick_id]
+		var min_ch: int = int(g.get("min_chapter", 0))
+		var ss := get_node_or_null("/root/SaveSystem")
+		var reached: bool = ss != null and ss.has_method("reached_vol_chapter") \
+			and bool(ss.call("reached_vol_chapter", 7, min_ch))
+		if not reached:
+			return false
+		# reached · fall through to the wave-graph check
 	# Wave-graph.
 	for w_var in _unlock_graph.get("waves", []):
 		var w: Dictionary = w_var
