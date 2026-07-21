@@ -73,6 +73,28 @@ class_name HeroImage
 ##     "cell": int }
 ##       Two-color checkerboard. Tile floors, table cloths.
 ##
+##   ── HeroImage 2.0 (compositing ops) ──
+##   These blend in true colour and SNAP to the nearest palette index,
+##   so results stay in the authored ink set (silkscreen, not a filter).
+##
+##   { "op": "radial", "xy": [cx, cy], "r": int, "stops": [i, ...] }
+##       Radial gradient disk, Bayer-dithered. Soft suns, vignettes,
+##       lamp falloff.
+##
+##   { "op": "glow", "xy": [cx, cy], "r": int, "color": int,
+##     "strength": float }
+##       Additive soft halo (screen blend, quadratic falloff). Light
+##       blooming off lamps, windows, suns.
+##
+##   { "op": "streak", "from": [x, y], "to": [x, y], "color": int,
+##     "width": float, "strength": float, "blend": str }
+##       Soft directional band. Light shafts, rain, glare, sun-track
+##       shimmer. blend: normal|add|screen|mul (default screen).
+##
+##   { "op": "hatch", "xywh": [x, y, w, h], "color": int,
+##     "spacing": float, "angle_deg": float }
+##       Parallel printmaker hatching — directional shade that stays ink.
+##
 ## Rendered image is palette-indexed rgba, upscaled to the target
 ## size with NEAREST-NEIGHBOR so the chunky "vector-style" look
 ## survives.
@@ -307,6 +329,71 @@ func _apply(op: Dictionary) -> void:
 					@warning_ignore("integer_division")
 					var pick: int = ((xx / cell) + (yy / cell)) % 2
 					_put(xx, yy, int(cols[pick]))
+		# ── HeroImage 2.0 ops ────────────────────────────────────
+		# All composite WITHIN the palette (blend true-colour, then
+		# snap to nearest palette index) so the result still reads as
+		# silkscreen ink, never a post filter.
+		"radial":
+			# Radial gradient disk. { xy, r, stops:[i,...] } — soft
+			# suns, vignettes, lamp falloff. Opaque, Bayer-dithered.
+			var rd_xy: Array = op.get("xy", [w / 2, h / 2])
+			var rd_r: float = maxf(1.0, float(op.get("r", 8)))
+			var rd_stops: Array = op.get("stops", [color])
+			var rcx: int = int(rd_xy[0]); var rcy: int = int(rd_xy[1])
+			var rr: int = int(ceil(rd_r))
+			for yy in range(rcy - rr, rcy + rr + 1):
+				for xx in range(rcx - rr, rcx + rr + 1):
+					var dd: float = sqrt(float((xx - rcx) ** 2 + (yy - rcy) ** 2))
+					if dd <= rd_r:
+						_put(xx, yy, _grad_pick(rd_stops, dd / rd_r, xx, yy))
+		"glow":
+			# Additive soft halo. { xy, r, color, strength }. Light
+			# blooms off lamps/windows/suns; screen-blends up.
+			var g_xy: Array = op.get("xy", [w / 2, h / 2])
+			var g_r: float = maxf(1.0, float(op.get("r", 10)))
+			var g_str: float = clampf(float(op.get("strength", 0.8)), 0.0, 1.0)
+			var gcx: int = int(g_xy[0]); var gcy: int = int(g_xy[1])
+			var gr: int = int(ceil(g_r))
+			var g_col: Color = _pal(color)
+			for yy in range(gcy - gr, gcy + gr + 1):
+				for xx in range(gcx - gr, gcx + gr + 1):
+					var gd: float = sqrt(float((xx - gcx) ** 2 + (yy - gcy) ** 2))
+					if gd <= g_r:
+						var fall: float = (1.0 - gd / g_r)
+						_composite(xx, yy, g_col, "screen", g_str * fall * fall)
+		"streak":
+			# Soft directional band — light shafts, rain, glare lines.
+			# { from:[x,y], to:[x,y], color, width, strength, blend }
+			var s_a: Array = op.get("from", [0, 0])
+			var s_b: Array = op.get("to", [w, h])
+			var s_w: float = maxf(0.5, float(op.get("width", 2)))
+			var s_str: float = clampf(float(op.get("strength", 0.6)), 0.0, 1.0)
+			var s_blend: String = String(op.get("blend", "screen"))
+			var s_col: Color = _pal(color)
+			var ax: float = float(s_a[0]); var ay: float = float(s_a[1])
+			var bx: float = float(s_b[0]); var by: float = float(s_b[1])
+			var vx: float = bx - ax; var vy: float = by - ay
+			var vlen2: float = maxf(1e-4, vx * vx + vy * vy)
+			for yy in range(h):
+				for xx in range(w):
+					var t: float = clampf(((xx - ax) * vx + (yy - ay) * vy) / vlen2, 0.0, 1.0)
+					var px: float = ax + t * vx; var py: float = ay + t * vy
+					var perp: float = sqrt((xx - px) ** 2 + (yy - py) ** 2)
+					if perp <= s_w:
+						_composite(xx, yy, s_col, s_blend, s_str * (1.0 - perp / s_w))
+		"hatch":
+			# Parallel printmaker hatching in a rect. { xywh, color,
+			# spacing, angle_deg } — directional shade that stays ink.
+			var h_rect: Array = op.get("xywh", [0, 0, w, h])
+			var h_sp: float = maxf(1.0, float(op.get("spacing", 3)))
+			var h_ang: float = deg_to_rad(float(op.get("angle_deg", 45)))
+			var hca: float = cos(h_ang); var hsa: float = sin(h_ang)
+			var hx0: int = int(h_rect[0]); var hy0: int = int(h_rect[1])
+			for yy in range(hy0, hy0 + int(h_rect[3])):
+				for xx in range(hx0, hx0 + int(h_rect[2])):
+					var proj: float = float(xx) * hca + float(yy) * hsa
+					if fposmod(proj, h_sp) < 1.0:
+						_put(xx, yy, color)
 
 
 # 4x4 Bayer matrix for ordered-dither gradients and shading.
@@ -317,6 +404,52 @@ const _BAYER4: Array = [0, 8, 2, 10, 12, 4, 14, 6, 3, 11, 1, 9, 15, 7, 13, 5]
 
 func _bayer(x: int, y: int) -> float:
 	return (float(_BAYER4[(posmod(y, 4)) * 4 + posmod(x, 4)]) + 0.5) / 16.0
+
+
+func _pal(idx: int) -> Color:
+	return _palette[idx] if idx >= 0 and idx < _palette.size() else Color(0, 0, 0, 1)
+
+
+# Nearest palette index to an arbitrary colour, by squared RGB distance.
+# Keeps composited results inside the authored ink set (silkscreen look).
+var _near_cache: Dictionary = {}
+func _nearest_palette(c: Color) -> int:
+	var key: int = (int(c.r * 31) << 10) | (int(c.g * 31) << 5) | int(c.b * 31)
+	if _near_cache.has(key):
+		return _near_cache[key]
+	var best: int = 0
+	var best_d: float = 1e9
+	for i in range(_palette.size()):
+		var p: Color = _palette[i]
+		var d: float = (p.r - c.r) ** 2 + (p.g - c.g) ** 2 + (p.b - c.b) ** 2
+		if d < best_d:
+			best_d = d
+			best = i
+	_near_cache[key] = best
+	return best
+
+
+# Composite `src` over the existing pixel with a blend mode at `amount`,
+# then snap the result to the nearest palette index.
+func _composite(x: int, y: int, src: Color, mode: String, amount: float) -> void:
+	if x < 0 or x >= w or y < 0 or y >= h or amount <= 0.0:
+		return
+	var dst: Color = _pal(_pixels[y * w + x])
+	var m: Color
+	match mode:
+		"add":
+			m = Color(dst.r + src.r, dst.g + src.g, dst.b + src.b)
+		"screen":
+			m = Color(1.0 - (1.0 - dst.r) * (1.0 - src.r),
+				1.0 - (1.0 - dst.g) * (1.0 - src.g),
+				1.0 - (1.0 - dst.b) * (1.0 - src.b))
+		"mul":
+			m = Color(dst.r * src.r, dst.g * src.g, dst.b * src.b)
+		_:
+			m = src
+	var out := dst.lerp(m, clampf(amount, 0.0, 1.0))
+	out = Color(clampf(out.r, 0, 1), clampf(out.g, 0, 1), clampf(out.b, 0, 1))
+	_pixels[y * w + x] = _nearest_palette(out)
 
 
 # Pick a palette index along a multi-stop gradient at t in 0..1,

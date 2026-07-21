@@ -945,3 +945,34 @@ previewed through preview_hero.py.
 - **Punchy lesson, present tense.** Two-to-four sentences.
 - **Next lesson.** Same shape.
 ```
+
+---
+
+### 2026-07-21 · HeroImage 2.0 · compositing ops (glow / radial / streak / hatch)
+
+The HeroImage rasterizer was flat-fill only (bands, polys, noise, shade,
+gradients). Added four ops that COMPOSITE in true colour and snap to the
+nearest palette index, so light/shadow read as ink, never a post filter:
+
+- `radial` — Bayer-dithered radial gradient disk (soft suns, vignettes,
+  lamp falloff).
+- `glow` — additive screen-blend halo, quadratic falloff (light blooming
+  off lamps/windows/suns).
+- `streak` — soft directional band with perpendicular falloff (light
+  shafts, rain, glare, low-sun shimmer on water). blend defaults to screen.
+- `hatch` — parallel printmaker hatching at an angle (directional shade
+  that stays ink).
+
+Lessons:
+- **Composite, then quantize.** `_composite()` blends dst⊕src (add/screen/
+  mul) at an amount, then `_nearest_palette()` snaps back into the authored
+  set. A small quantized-key cache keeps the per-pixel nearest search cheap.
+  Result: real light on a 20-24 colour ink palette, no new colours leaking
+  in, no "filter" look.
+- **Additive is the money op.** A single `glow` over a flat sun disk was the
+  biggest per-pixel-cost-to-payoff win — a warm core (`radial`) + a screen
+  halo (`glow`) turned a pale dot into a lit sky.
+- The Python previewer (scratchpad `hero_preview.py`) mirrors every op, so
+  new ops are validated on a contact sheet BEFORE they touch a stick. Ported
+  the four here and proofed on `the_point` (before/after) first.
+- Additive/backward-compatible: existing heroes are untouched; ops opt in.
