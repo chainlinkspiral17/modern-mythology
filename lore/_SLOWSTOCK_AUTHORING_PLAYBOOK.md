@@ -193,6 +193,17 @@ each state transition.
   Guard the spend so a force can never itself zero you (the risk is
   being thin AFTER), and print the option on the wall you can't pass so
   it is discovered, not hidden.
+- **Scarcity makes a witnessing loop a decision.** Tideline reset its
+  2 ruled lines EVERY station, so recording was free and "record
+  everything" was optimal — no choice. Re-scoping the counter to a
+  SEASON-WIDE budget (8 lines for 11 stations) makes WHAT you choose to
+  notice the game, and the ending register (living/lost/line/whole)
+  emerges from that allocation: go broad for "the whole beach" or spend
+  deep in one category. Persist the budget in run_state; gate the
+  per-station cap to `min(2, budget_left)`; show the season number, not
+  just the station one. Fits the stick's own restraint theme rather
+  than fighting it — the same re-scope is the smallest real-choice add
+  for any "attention is the verb" loop (Estuary 2's LOOK is next).
 
 ### 2026-07-20 · the meta-layer trilogy · one work, not four
 

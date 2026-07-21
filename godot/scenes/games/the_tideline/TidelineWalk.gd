@@ -37,6 +37,16 @@ var _stations: Array = []
 var _slots_left: int = 2
 var _root: VBoxContainer = null
 
+# Attention is scarce across the WHOLE walk, not refilled each station.
+# Eleven stations offer far more to notice than the notebook can hold,
+# so WHAT you choose to rule down is the game — and the register at the
+# Point emerges from that allocation (go broad for "the whole beach,"
+# or spend deep in one category). Restraint, mechanized. Persists in
+# _state so it survives station-to-station saves. Original mode only;
+# the 2048 remake survey does not record lines.
+const NOTEBOOK_BUDGET := 8
+var _notebook_left: int = NOTEBOOK_BUDGET
+
 
 func _ready() -> void:
 	set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
@@ -52,6 +62,7 @@ func _ready() -> void:
 
 func boot(state: Dictionary) -> void:
 	_state = state
+	_notebook_left = int(_state.get("notebook_left", NOTEBOOK_BUDGET))
 	var bg := ColorRect.new()
 	bg.color = C_MER_BG if remake_mode else C_SEA
 	bg.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
@@ -113,7 +124,9 @@ func _show_station() -> void:
 	if idx >= _stations.size() - 1:
 		_show_report()
 		return
-	_slots_left = 2
+	# Never offer more ruled lines at a station than the whole walk has
+	# left — the notebook is a season budget, not a per-station refill.
+	_slots_left = mini(2, _notebook_left)
 	_make_root()
 	var st := _station_def(idx)
 	var hdr := Label.new()
@@ -134,12 +147,23 @@ func _show_station() -> void:
 	GamepadMgr.focus_first.call_deferred(_root)
 
 
+func _slots_text() -> String:
+	return "notebook · %d ruled lines left for the whole walk · %d usable here" % [_notebook_left, _slots_left]
+
+
 func _show_station_original(idx: int, st: Dictionary) -> void:
 	var slots_lbl := Label.new()
-	slots_lbl.text = "ruled lines left at this station · %d" % _slots_left
+	slots_lbl.text = _slots_text()
 	slots_lbl.add_theme_font_size_override("font_size", 12)
 	slots_lbl.add_theme_color_override("font_color", C_PENCIL)
 	_root.add_child(slots_lbl)
+	if _notebook_left <= 0:
+		var full := Label.new()
+		full.text = "the notebook is full. what is left of the beach, you will have to just look at."
+		full.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+		full.add_theme_font_size_override("font_size", 12)
+		full.add_theme_color_override("font_color", C_PENCIL)
+		_root.add_child(full)
 	var recorded := _recorded_ids()
 	for o_v in st.get("obs", []):
 		var o: Dictionary = o_v
@@ -147,7 +171,7 @@ func _show_station_original(idx: int, st: Dictionary) -> void:
 		var b := Button.new()
 		b.text = "  record · %s  " % String(o.get("line", ""))
 		b.add_theme_font_size_override("font_size", 13)
-		b.disabled = recorded.has(oid)
+		b.disabled = recorded.has(oid) or _slots_left <= 0
 		b.pressed.connect(_on_record.bind(idx, o, slots_lbl))
 		_root.add_child(b)
 	# Station 11's third thing, which is not an observation.
@@ -210,7 +234,9 @@ func _on_record(idx: int, o: Dictionary, slots_lbl: Label) -> void:
 		"line": String(o.get("line", "")), "cat": String(o.get("cat", "line"))})
 	_state["lines"] = lines
 	_slots_left -= 1
-	slots_lbl.text = "ruled lines left at this station · %d" % _slots_left
+	_notebook_left = maxi(0, _notebook_left - 1)
+	_state["notebook_left"] = _notebook_left
+	slots_lbl.text = _slots_text()
 	var sfx := get_node_or_null("/root/SFXBank")
 	if sfx: sfx.play("page_turn", 0.4)
 	# Disable the chosen row; lock all rows when the page is full.
