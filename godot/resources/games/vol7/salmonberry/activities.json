@@ -61,7 +61,7 @@
     },
     {
       "id": "row_the_bay", "label": "Take the skiff out past the jetty",
-      "months": [6, 7, 8, 9], "require": {"apt": "sea", "min": 2}, "apts": {"sea": 2, "grit": 1}, "bond": "del", "bond_amt": 1,
+      "months": [6, 7, 8, 9], "require_any": [{"apt": "sea", "min": 2}, {"bond": "del", "min": 3}], "apts": {"sea": 2, "grit": 1}, "bond": "del", "bond_amt": 1,
       "journal": "At slack water the bar lies flat and lies about what it is.",
       "outcome": "You cross the bar and come back in and Del does not say well done, which means well done."
     },
@@ -78,7 +78,7 @@
     },
     {
       "id": "sit_estelle", "label": "Bring in Estelle's wood",
-      "apts": {"heart": 1}, "bond": "estelle", "bond_amt": 2, "thread": 1,
+      "apts": {"heart": 1}, "bond": "estelle", "bond_amt": 2, "clue": "estelle_light",
       "outcome": "She keeps a light in the window that faces the bar. You do not ask why. You are starting to know."
     },
     {
@@ -91,6 +91,18 @@
       "id": "church_supper", "label": "Go to the church supper",
       "apts": {"heart": 2}, "bond": "ruth", "bond_amt": 1, "bond2": "estelle", "bond2_amt": 1,
       "outcome": "The whole town in one warm room. Even Estelle comes, and sits at the back, and stays."
+    },
+    {
+      "id": "boathouse_radio", "label": "Listen for the fleet on Del's boathouse radio",
+      "require_any": [{"bond": "del", "min": 2}], "apts": {"sea": 1, "word": 1}, "bond": "del", "bond_amt": 1,
+      "journal": "Every boat has a call sign and a voice. You learn to tell them apart in the static.",
+      "outcome": "Del lets you keep the watch while he mends. You listen for the ones that answer, and notice the one channel that never does."
+    },
+    {
+      "id": "county_records", "label": "Read the county register with Iris",
+      "require_any": [{"bond": "iris", "min": 2}], "apts": {"word": 2}, "bond": "iris", "bond_amt": 1,
+      "journal": "The town keeps two histories: the one they printed, and the one in Iris's back room.",
+      "outcome": "Iris turns the ledger to a page she has clearly turned to before, and lets you read it, and says nothing."
     }
   ]
 }

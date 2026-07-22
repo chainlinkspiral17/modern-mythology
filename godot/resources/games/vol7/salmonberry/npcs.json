@@ -22,7 +22,8 @@
         "He shows you how to read the bar — where it stands up, where it lies down.",
         "He lets you take the skiff out past the jetty on a slack tide. Alone.",
         "He tells you what he saw the morning the boat did not come back in. He has told no one."
-      ]
+      ],
+      "clues": [{ "at": 6, "id": "del_saw" }]
     },
     {
       "id": "iris",
@@ -33,7 +34,8 @@
         "She keeps the tide tables and the bird books behind the desk, for the ones who ask.",
         "She lends you the county history, the real one, not the one they printed.",
         "She tells you the library is the town's memory and someone has to be the one who keeps it. She is looking at you when she says it."
-      ]
+      ],
+      "clues": [{ "at": 4, "id": "iris_record" }]
     },
     {
       "id": "manny",
@@ -77,7 +79,8 @@
         "She lets you bring in her wood. She does not say much.",
         "She keeps a light on at the window that faces the bar, every night, still.",
         "She says his name to you, once, the son who took the boat out. She has not said it aloud in a year."
-      ]
+      ],
+      "clues": [{ "at": 6, "id": "estelle_name" }]
     },
     {
       "id": "tuck",

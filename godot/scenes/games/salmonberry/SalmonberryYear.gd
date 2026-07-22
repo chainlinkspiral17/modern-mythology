@@ -64,6 +64,7 @@ func boot(state: Dictionary) -> void:
 	if not _s.has("apts"): _s["apts"] = {"hands": 0, "sea": 0, "word": 0, "heart": 0, "wild": 0, "grit": 0}
 	if not _s.has("bonds"): _s["bonds"] = {}
 	if not _s.has("journal"): _s["journal"] = []
+	if not _s.has("thread_clues"): _s["thread_clues"] = []
 	_render()
 
 
@@ -185,6 +186,13 @@ func _render_month() -> void:
 		b.pressed.connect(_on_activity.bind(act))
 		list.add_child(b)
 
+	var book := Button.new()
+	book.text = "  · open the book of the coast ·  "
+	book.add_theme_font_size_override("font_size", 12)
+	book.add_theme_color_override("font_color", C_GOLD)
+	book.pressed.connect(_show_book)
+	v.add_child(book)
+
 	var back := Button.new()
 	back.text = "  · put it down for now (save & quit) ·  "
 	back.add_theme_font_size_override("font_size", 12)
@@ -194,22 +202,91 @@ func _render_month() -> void:
 	GamepadMgr.focus_first.call_deferred(scroll)
 
 
+# ── the book of the coast · the collectible, read back ──
+func _show_book() -> void:
+	_sfx("page_turn")
+	_clear_ui()
+	_paint_backdrop()
+	var v := _panel()
+	var hdr := Label.new()
+	hdr.text = "The Book of the Coast"
+	hdr.add_theme_font_size_override("font_size", 24)
+	hdr.add_theme_color_override("font_color", C_RUST)
+	v.add_child(hdr)
+
+	var scroll := ScrollContainer.new()
+	scroll.size_flags_vertical = Control.SIZE_EXPAND_FILL
+	scroll.horizontal_scroll_mode = ScrollContainer.SCROLL_MODE_DISABLED
+	v.add_child(scroll)
+	var list := VBoxContainer.new()
+	list.add_theme_constant_override("separation", 8)
+	list.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	scroll.add_child(list)
+
+	var journal: Array = _s.get("journal", [])
+	var jh := Label.new()
+	jh.text = "· what you noticed (%d of %d) ·" % [journal.size(), _journal_total]
+	jh.add_theme_font_size_override("font_size", 14)
+	jh.add_theme_color_override("font_color", C_GOLD)
+	list.add_child(jh)
+	if journal.is_empty():
+		list.add_child(_book_line("The pages are still blank. Go and look at something.", C_FIR))
+	for e in journal:
+		list.add_child(_book_line("— " + String(e), C_INK))
+
+	var clues: Array = _s.get("thread_clues", [])
+	if not clues.is_empty():
+		var ch := Label.new()
+		ch.text = "· what you know ·"
+		ch.add_theme_font_size_override("font_size", 14)
+		ch.add_theme_color_override("font_color", C_GOLD)
+		list.add_child(ch)
+		for cid in clues:
+			list.add_child(_book_line("— " + String(CLUE_TEXT.get(String(cid), "")), C_INK))
+
+	var back := Button.new()
+	back.text = "  · close the book ·  "
+	back.add_theme_font_size_override("font_size", 14)
+	back.pressed.connect(_render)
+	v.add_child(back)
+	GamepadMgr.focus_first.call_deferred(scroll)
+
+
+func _book_line(text: String, col: Color) -> Label:
+	var l := Label.new()
+	l.text = text
+	l.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+	l.add_theme_font_size_override("font_size", 14)
+	l.add_theme_color_override("font_color", col)
+	return l
+
+
 func _eligible(act: Dictionary, month: int) -> bool:
 	if act.has("months"):
 		var ms: Array = act["months"]
 		if not ms.has(month):
 			return false
-	if act.has("require"):
-		var req: Dictionary = act["require"]
-		if req.has("apt"):
-			if _apt(String(req["apt"])) < int(req.get("min", 0)):
-				return false
-		if req.has("bond"):
-			if _bond(String(req["bond"])) < int(req.get("min", 0)):
-				return false
-		if req.has("money"):
-			if int(_s.get("money", 0)) < int(req.get("min", 0)):
-				return false
+	# require: ALL of the listed conditions. require_any: at least ONE.
+	if act.has("require") and not _req_met(act["require"]):
+		return false
+	if act.has("require_any"):
+		var ok: bool = false
+		for r_v in act["require_any"]:
+			if _req_met(r_v):
+				ok = true
+				break
+		if not ok:
+			return false
+	return true
+
+
+func _req_met(req: Dictionary) -> bool:
+	if req.has("apt") and _apt(String(req["apt"])) < int(req.get("min", 0)):
+		return false
+	if req.has("bond") and _bond(String(req["bond"])) < int(req.get("min", 0)):
+		return false
+	if req.has("money") and int(_s.get("money", 0)) < int(req.get("min", 0)):
+		return false
 	return true
 
 
@@ -251,9 +328,9 @@ func _on_activity(act: Dictionary) -> void:
 	# song
 	if bool(act.get("song", false)):
 		_s["songs"] = int(_s.get("songs", 0)) + 1
-	# thread
-	if act.has("thread"):
-		_s["thread"] = int(_s.get("thread", 0)) + int(act["thread"])
+	# a clue toward the boat that didn't come back
+	if act.has("clue"):
+		lines.append_array(_grant_clue(String(act["clue"])))
 	# journal
 	if act.has("journal"):
 		var j: Array = _s["journal"]
@@ -272,15 +349,46 @@ func _raise_bond(id: String, amt: int) -> Array:
 	var after: int = before + amt
 	bonds[id] = after
 	var out: Array = []
+	var npc: Dictionary = _npcs.get(id, {})
 	# crossing a threshold (2/4/6) surfaces the next bond line
 	for i in range(3):
 		var thresh: int = 2 + i * 2
 		if before < thresh and after >= thresh:
-			var npc: Dictionary = _npcs.get(id, {})
 			var bl: Array = npc.get("bond_lines", [])
 			if i < bl.size():
 				out.append("%s — %s" % [_npc_name(id), String(bl[i])])
+	# a deep enough bond can turn up a clue about the boat
+	for c_v in npc.get("clues", []):
+		var c: Dictionary = c_v
+		var at: int = int(c.get("at", 99))
+		if before < at and after >= at:
+			out.append_array(_grant_clue(String(c.get("id", ""))))
 	return out
+
+
+# ── the boat that didn't come back · the year's quiet thread ──
+const CLUE_TEXT := {
+	"estelle_light": "the boat · Estelle keeps a light in the window that faces the bar. Someone she loved went out on it, and did not come back.",
+	"del_saw": "the boat · Del told you what he saw the morning it did not come in. He has never told anyone else.",
+	"iris_record": "the boat · the county register has the crew, and a date, and after the date nothing at all.",
+	"estelle_name": "the boat · Estelle said his name to you. Once. You are the only one she has told.",
+}
+
+
+func _grant_clue(id: String) -> Array:
+	if id == "":
+		return []
+	var clues: Array = _s.get("thread_clues", [])
+	if clues.has(id):
+		return []
+	clues.append(id)
+	_s["thread_clues"] = clues
+	_sfx("page_turn")
+	return ["· " + String(CLUE_TEXT.get(id, "you learn something the town does not say."))]
+
+
+func _thread_depth() -> int:
+	return (_s.get("thread_clues", []) as Array).size()
 
 
 func _advance_after(outcome: String, extra: Array) -> void:
@@ -361,6 +469,23 @@ func _render_wave() -> void:
 			"Get Estelle to high ground",
 			"She will not leave the window that faces the bar. You take her hand and you say the thing only someone who has sat with her could say, and she comes. You are both on the hill when the water takes the gray house.",
 			"estelle", 2, "heart", 2, true))
+	# the thread pays off: if you have followed the boat, you know where
+	# Estelle will be, and what she cannot be left alone with tonight.
+	var clues: Array = _s.get("thread_clues", [])
+	if _thread_depth() >= 2 and (clues.has("estelle_light") or clues.has("estelle_name")):
+		var tb := Button.new()
+		tb.text = "  Go straight to Estelle — you know now"
+		tb.add_theme_font_size_override("font_size", 15)
+		tb.alignment = HORIZONTAL_ALIGNMENT_LEFT
+		tb.pressed.connect(func() -> void:
+			_raise_bond("estelle", 3)
+			var ap: Dictionary = _s["apts"]
+			ap["heart"] = int(ap.get("heart", 0)) + 2
+			_s["helped_wave"] = true
+			_s["told_estelle"] = true
+			_advance_after("You are already running before the bell finishes. She is at the window that faces the bar, the way she is every night, waiting the way she has waited a year. This time someone came for her. She lets you take her up the hill, and she does not look back at the water, she looks at you, and that is the thing the boat could not do and you could.", []))
+		v.add_child(tb)
+
 	v.add_child(_wave_btn(
 		"Get yourself and Vovo up the hill",
 		"You take Vovo's arm and you climb, and you watch from the top as the river walks up into the town and back out again, taking pieces. You are safe. That is also a choice, and not a small one.",
@@ -394,8 +519,14 @@ func _end_year() -> void:
 		coda = "And the town remembers you were there the night the water came."
 	else:
 		coda = "The water came and went, and you were up the hill with Vovo, safe. That is a kind of choice too."
-	if int(_s.get("thread", 0)) >= 4:
-		coda += " Estelle said his name to you, once. You are the only one she told."
+	# the boat thread pays off in the coda, by how far you followed it
+	var depth: int = _thread_depth()
+	if bool(_s.get("told_estelle", false)):
+		coda += " You got to Estelle before the water did. Whatever the boat took from her, she did not have to face this one alone."
+	elif depth >= 3:
+		coda += " You know the whole of it now — the boat, the crew, the morning Del cannot forget. The town's quietest grief has one more keeper."
+	elif depth >= 1:
+		coda += " You know a little of what the town will not say aloud about the boat that did not come back."
 	year_over.emit({"state": _s, "register": register, "coda": coda})
 
 

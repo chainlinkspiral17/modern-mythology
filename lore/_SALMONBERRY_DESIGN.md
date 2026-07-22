@@ -175,8 +175,16 @@ Tokens: `salmonberry_finished` always; `salmonberry_hands` /
 - **Wave A · the town overworld** — the walkable Salmonberry (PS/E2
   tile engine); "explore" activities open real locations with people to
   find and listen to.
-- **Wave B · the boat that didn't come back** — the year-long mystery
-  as a bond-gated thread resolving Good Friday night.
+- **Wave B · the boat that didn't come back (DONE 2026-07-22):** a
+  bond-gated clue thread (estelle_light from sitting with Estelle;
+  del_saw / iris_record / estelle_name surfaced by deepening those
+  bonds), read back in the Book of the Coast. At 2+ clues it opens a
+  fourth wave-night choice — go straight to Estelle, because you know —
+  and it deepens the ending coda by how far you followed it. Also this
+  pass: bonds now UNLOCK activities (`require_any` — e.g. Del's skiff
+  via sea OR the del bond; boathouse-radio and county-records are
+  bond-gated), and a Book-of-the-Coast viewer reads your journal +
+  what you know.
 - **Wave C · the wave** — the March '64 tsunami as a real, playable
   crisis: what you saved is what you'd built.
 - **Wave D · deepen the roster** — the full townsfolk cast, seasonal
