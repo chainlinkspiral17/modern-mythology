@@ -232,6 +232,22 @@ Post-game sequel. Reuses the game-1 SFX (`wind_gust`/`thread_spin`/
 turned kind: G major, I-V-vi-IV, it lifts and lands and lifts again
 (`compositions/spiderdrops_2_long_wind.json`).
 
+## SALMONBERRY · Vol 7 gallery slowstick (Oneironautics, 2006)
+
+The coastal RPG. Reuses the shared bank for ambient one-shots
+(gull_cry, water_slap, wave_break, cooler_whoosh, customer_bell,
+door_open, page_turn, season_settle, tile_enter); adds the March bell.
+
+| slot | tag | file |
+|---|---|---|
+| harbor bell (Good Friday alarm) | `[preset]` | sfx/sb/harbor_bell.wav |
+| the coast · Vovo's song (year bed) | `[rendered]` | bgm/salmonberry/coast.wav |
+
+`harbor_bell` has a Python + importer.html JS twin. The bed IS the
+recurring Rocha melody, quoted exactly from `hnn_one_melody` at its
+source (`compositions/salmonberry_coast.json`) — the catalog's whole
+soundtrack, at the kitchen it came from.
+
 ## Adding a new preset
 
 1. Write a function `sfx_<name>(sr)` in `slowstick_synth.py`

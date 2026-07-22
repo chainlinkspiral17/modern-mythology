@@ -1,0 +1,345 @@
+{
+  "id": "salmonberry_ending_hands",
+  "notes": "THE HANDS \u00b7 the working harbor \u2014 hulls, masts, a hung net; you belong here now.",
+  "w": 160,
+  "h": 90,
+  "palette": [
+    "#23282a",
+    "#c8cec4",
+    "#3b5a6b",
+    "#b8a882",
+    "#33452f",
+    "#9c5a3a",
+    "#d8b048",
+    "#eef0ec",
+    "#caa25a",
+    "#e8c060",
+    "#6c7f8a",
+    "#d98a9a"
+  ],
+  "layers": [
+    {
+      "op": "fill",
+      "color": 1
+    },
+    {
+      "op": "vgrad",
+      "y_range": [
+        46,
+        90
+      ],
+      "x_range": [
+        0,
+        160
+      ],
+      "stops": [
+        2,
+        2
+      ]
+    },
+    {
+      "op": "rect",
+      "xywh": [
+        0,
+        58,
+        160,
+        3
+      ],
+      "color": 3
+    },
+    {
+      "op": "rect",
+      "xywh": [
+        34,
+        60,
+        26,
+        7
+      ],
+      "color": 5
+    },
+    {
+      "op": "streak",
+      "from": [
+        47,
+        60
+      ],
+      "to": [
+        47,
+        46
+      ],
+      "color": 4,
+      "width": 1.0,
+      "strength": 0.9,
+      "blend": "screen"
+    },
+    {
+      "op": "rect",
+      "xywh": [
+        80,
+        64,
+        30,
+        7
+      ],
+      "color": 5
+    },
+    {
+      "op": "streak",
+      "from": [
+        95,
+        64
+      ],
+      "to": [
+        95,
+        50
+      ],
+      "color": 4,
+      "width": 1.0,
+      "strength": 0.9,
+      "blend": "screen"
+    },
+    {
+      "op": "rect",
+      "xywh": [
+        120,
+        60,
+        22,
+        7
+      ],
+      "color": 5
+    },
+    {
+      "op": "streak",
+      "from": [
+        131,
+        60
+      ],
+      "to": [
+        131,
+        46
+      ],
+      "color": 4,
+      "width": 1.0,
+      "strength": 0.9,
+      "blend": "screen"
+    },
+    {
+      "op": "streak",
+      "from": [
+        96,
+        30
+      ],
+      "to": [
+        99,
+        52
+      ],
+      "color": 7,
+      "width": 1.0,
+      "strength": 0.5,
+      "blend": "screen"
+    },
+    {
+      "op": "streak",
+      "from": [
+        101,
+        30
+      ],
+      "to": [
+        104,
+        52
+      ],
+      "color": 7,
+      "width": 1.0,
+      "strength": 0.5,
+      "blend": "screen"
+    },
+    {
+      "op": "streak",
+      "from": [
+        106,
+        30
+      ],
+      "to": [
+        109,
+        52
+      ],
+      "color": 7,
+      "width": 1.0,
+      "strength": 0.5,
+      "blend": "screen"
+    },
+    {
+      "op": "streak",
+      "from": [
+        111,
+        30
+      ],
+      "to": [
+        114,
+        52
+      ],
+      "color": 7,
+      "width": 1.0,
+      "strength": 0.5,
+      "blend": "screen"
+    },
+    {
+      "op": "streak",
+      "from": [
+        116,
+        30
+      ],
+      "to": [
+        119,
+        52
+      ],
+      "color": 7,
+      "width": 1.0,
+      "strength": 0.5,
+      "blend": "screen"
+    },
+    {
+      "op": "streak",
+      "from": [
+        121,
+        30
+      ],
+      "to": [
+        124,
+        52
+      ],
+      "color": 7,
+      "width": 1.0,
+      "strength": 0.5,
+      "blend": "screen"
+    },
+    {
+      "op": "streak",
+      "from": [
+        126,
+        30
+      ],
+      "to": [
+        129,
+        52
+      ],
+      "color": 7,
+      "width": 1.0,
+      "strength": 0.5,
+      "blend": "screen"
+    },
+    {
+      "op": "streak",
+      "from": [
+        131,
+        30
+      ],
+      "to": [
+        134,
+        52
+      ],
+      "color": 7,
+      "width": 1.0,
+      "strength": 0.5,
+      "blend": "screen"
+    },
+    {
+      "op": "streak",
+      "from": [
+        96,
+        34
+      ],
+      "to": [
+        130,
+        36
+      ],
+      "color": 7,
+      "width": 1.0,
+      "strength": 0.5,
+      "blend": "screen"
+    },
+    {
+      "op": "streak",
+      "from": [
+        96,
+        39
+      ],
+      "to": [
+        130,
+        41
+      ],
+      "color": 7,
+      "width": 1.0,
+      "strength": 0.5,
+      "blend": "screen"
+    },
+    {
+      "op": "streak",
+      "from": [
+        96,
+        44
+      ],
+      "to": [
+        130,
+        46
+      ],
+      "color": 7,
+      "width": 1.0,
+      "strength": 0.5,
+      "blend": "screen"
+    },
+    {
+      "op": "streak",
+      "from": [
+        96,
+        49
+      ],
+      "to": [
+        130,
+        51
+      ],
+      "color": 7,
+      "width": 1.0,
+      "strength": 0.5,
+      "blend": "screen"
+    },
+    {
+      "op": "streak",
+      "from": [
+        47,
+        24
+      ],
+      "to": [
+        50,
+        22
+      ],
+      "color": 7,
+      "width": 1.0,
+      "strength": 0.9,
+      "blend": "screen"
+    },
+    {
+      "op": "streak",
+      "from": [
+        50,
+        22
+      ],
+      "to": [
+        53,
+        24
+      ],
+      "color": 7,
+      "width": 1.0,
+      "strength": 0.9,
+      "blend": "screen"
+    },
+    {
+      "op": "text",
+      "xy": [
+        56,
+        80
+      ],
+      "s": "THE HANDS",
+      "color": 5
+    }
+  ]
+}

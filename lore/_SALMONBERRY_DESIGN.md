@@ -178,10 +178,12 @@ Tokens: `salmonberry_finished` always; `salmonberry_hands` /
   crisis: what you saved is what you'd built.
 - **Wave D · deepen the roster** — the full townsfolk cast, seasonal
   errands, the summer show ('76 seed).
-- **Wave E · audio + art** — the grandmother's songs (the Rocha
-  melodies, authored via slowstick_synth) as the score; hero images
-  (title, the town, the four seasons, the ending registers); shelf
-  spine; SFX (cannery, gulls, the bar, the rising water).
+- **Wave E · audio + art (DONE 2026-07-22, core):** the year bed
+  `coast.wav` IS the Rocha melody quoted from `hnn_one_melody` at its
+  source; `harbor_bell` SFX for Good Friday; ambient one-shots wired
+  into the loop (gull/surf/cannery/cafe/page/season); hero images
+  (title + the five ending registers) + shelf spine. Remaining
+  (optional): per-season BGM variants and standalone ambient loops.
 - **Deck-verify:** loop pacing, aptitude/bond tuning, register
   thresholds, the tone of the two real events.
 

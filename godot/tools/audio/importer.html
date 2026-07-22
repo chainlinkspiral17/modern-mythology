@@ -1652,7 +1652,26 @@ function sfx_silk_cast(sr) {
   }
   return out;
 }
+function sfx_harbor_bell(sr) {
+  const n = Math.floor(1.6 * sr);
+  const out = new Float32Array(n);
+  const dt = 1 / sr;
+  const f0 = 520;
+  const parts = [[1.0,1.0],[2.76,0.6],[5.40,0.4],[8.93,0.25]];
+  const ph = [0,0,0,0];
+  const rng = makeNoiseRng(6161);
+  for (let i = 0; i < n; i++) {
+    const t = i * dt;
+    const env = Math.exp(-t * 2.2);
+    const strike = rng() * 0.4 * Math.exp(-t * 80);
+    let sm = 0;
+    for (let k = 0; k < parts.length; k++) { ph[k] += f0 * parts[k][0] * dt; sm += oscSine(ph[k]) * parts[k][1]; }
+    out[i] = (sm * 0.18 * env + strike) * 0.7;
+  }
+  return out;
+}
 const SFX_PRESETS = {
+  harbor_bell:                sfx_harbor_bell,
   silk_cast:                  sfx_silk_cast,
   thread_pluck:               sfx_thread_pluck,
   thread_snap:                sfx_thread_snap,

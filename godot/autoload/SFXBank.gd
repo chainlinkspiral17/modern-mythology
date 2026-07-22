@@ -26,6 +26,7 @@ const SFX_EM_ROOT := "res://assets/audio/sfx/em/"
 const SFX_NH_ROOT := "res://assets/audio/sfx/nh/"
 const SFX_PMG_ROOT := "res://assets/audio/sfx/pmg/"
 const SFX_SD_ROOT := "res://assets/audio/sfx/sd/"
+const SFX_SB_ROOT := "res://assets/audio/sfx/sb/"
 const POOL_SIZE := 8
 
 # Preset → (root, filename). Kept explicit so the audit doc doubles
@@ -34,6 +35,8 @@ const PRESET_MAP := {
 	# Patient Mister Glass kitchen foley
 	"kettle_hiss":            ["pmg", "kettle_hiss.wav"],
 	"knife_board":            ["pmg", "knife_board.wav"],
+	# Salmonberry (Oneironautics, 2006) · coastal RPG
+	"harbor_bell":            ["sb", "harbor_bell.wav"],
 	# Spiderdrops (PDP Toys, 1993) · the storm on the web
 	"thread_pluck":           ["sd", "thread_pluck.wav"],
 	"thread_snap":            ["sd", "thread_snap.wav"],
@@ -159,6 +162,7 @@ func _preset_path(preset: String) -> String:
 		"nh":       root = SFX_NH_ROOT
 		"pmg":      root = SFX_PMG_ROOT
 		"sd":       root = SFX_SD_ROOT
+		"sb":       root = SFX_SB_ROOT
 		_:          root = SFX_E3_ROOT
 	return root + String(entry[1])
 
@@ -270,6 +274,7 @@ const RUMBLE_MAP := {
 	"thread_snap":       [0.18, 0.30, 0.12],
 	"thread_pluck":      [0.10, 0.00, 0.06],
 	"wind_gust":         [0.12, 0.22, 0.55],
+	"harbor_bell":       [0.10, 0.28, 0.45],
 	"marker_set":        [0.10, 0.00, 0.06],
 	"2am_customer_stands_up":       [0.15, 0.30, 0.30],
 	"creature_arrival_2am_customer": [0.20, 0.25, 0.30],

@@ -234,6 +234,7 @@ func _effect_hint(act: Dictionary) -> String:
 # ─── resolve an activity ─────────────────────────────────────────
 
 func _on_activity(act: Dictionary) -> void:
+	_sfx(String(ACT_SFX.get(String(act.get("id", "")), "tile_enter")))
 	var lines: Array = []
 	# aptitudes
 	var apts_d: Dictionary = act.get("apts", {})
@@ -260,6 +261,7 @@ func _on_activity(act: Dictionary) -> void:
 		if not j.has(entry):
 			j.append(entry)
 			lines.append("· your book of the coast: \"%s\"" % entry)
+			_sfx("page_turn")
 	var outcome: String = String(act.get("outcome", ""))
 	_advance_after(outcome, lines)
 
@@ -313,6 +315,7 @@ func _advance_after(outcome: String, extra: Array) -> void:
 	# advance the month now (persist), then continue.
 	_s["month"] = int(_s.get("month", 0)) + 1
 	month_complete.emit(_s)
+	_sfx("season_settle")
 
 	var cont := Button.new()
 	cont.text = "  the month passes  →  " if int(_s["month"]) < MONTHS.size() else "  the year ends  →  "
@@ -325,6 +328,7 @@ func _advance_after(outcome: String, extra: Array) -> void:
 # ─── March · the water comes ─────────────────────────────────────
 
 func _render_wave() -> void:
+	_sfx("harbor_bell")
 	var v := _panel()
 	var hdr := Label.new()
 	hdr.text = "March 1964 · Good Friday"
@@ -456,6 +460,25 @@ func _status_strip() -> Label:
 	l.add_theme_font_size_override("font_size", 13)
 	l.add_theme_color_override("font_color", C_FIR)
 	return l
+
+
+func _sfx(preset: String) -> void:
+	var sb := get_node_or_null("/root/SFXBank")
+	if sb != null and sb.has_method("play"):
+		sb.play(preset)
+
+
+# Which ambient one-shot an activity earns, by id. Reuses the shared bank.
+const ACT_SFX := {
+	"walk_the_beach": "gull_cry",
+	"clamming": "water_slap",
+	"storm_watch": "wave_break",
+	"row_the_bay": "water_slap",
+	"cannery_line": "cooler_whoosh",
+	"berry_picking": "gull_cry",
+	"cafe_dishes": "customer_bell",
+	"store_errand": "door_open",
+}
 
 
 func _input(event: InputEvent) -> void:

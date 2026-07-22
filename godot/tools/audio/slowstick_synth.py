@@ -2233,7 +2233,31 @@ def sfx_silk_cast(sr):
     return out
 
 
+def sfx_harbor_bell(sr):
+    # Salmonberry · the harbormaster's bell · a struck brass bell with
+    # inharmonic partials and a long urgent tail. The Good Friday alarm.
+    n = int(1.6 * sr)
+    out = [0.0] * n
+    dt = 1.0 / sr
+    f0 = 520.0
+    parts = [(1.0, 1.0), (2.76, 0.6), (5.40, 0.4), (8.93, 0.25)]
+    ph = [0.0] * len(parts)
+    rng = [6161]
+    for i in range(n):
+        t = i * dt
+        env = math.exp(-t * 2.2)
+        strike = osc_noise(rng) * 0.4 * math.exp(-t * 80.0)
+        s = 0.0
+        for k in range(len(parts)):
+            ph[k] += f0 * parts[k][0] * dt
+            s += osc_sine(ph[k]) * parts[k][1]
+        out[i] = (s * 0.18 * env + strike) * 0.7
+    return out
+
+
 SFX_PRESETS = {
+    # Salmonberry · Oneironautics coastal RPG
+    'harbor_bell':        sfx_harbor_bell,
     # Spiderdrops · PDP Toys physics arcade
     'thread_pluck':       sfx_thread_pluck,
     'silk_cast':          sfx_silk_cast,
