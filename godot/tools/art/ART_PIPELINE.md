@@ -38,9 +38,26 @@ whole catalog shares one period register regardless of source.
 - `scene_render.py` — image-gen client (Meshy-pattern: key via env or
   `.image_key`, dry-run, queue JSON → source → era-filter). PENDING an
   image service + key.
-- `art_studio.html` — browser tool to generate/preview/replace every
-  asset, organized BY STUDIO. PENDING (built after the style is signed
-  off).
+- `art_studio.html` — BUILT. Browser tool: drop a painted source (from
+  ArtCraft or any model), dial the era-filter live (size / colors /
+  dither / saturation, adaptive median-cut palette, FS or Bayer), and
+  place it against a per-STUDIO asset slot (shows the repo target path,
+  downloads the PNG). Source-agnostic — the companion to whatever
+  generator we use. The definitive filter stays `svga_quantize.py`;
+  the HTML previews it (JS twin) so you can dial before committing.
+
+## Generating sources · ArtCraft (storytold/artcraft)
+
+ArtCraft is the recommended interactive SOURCE generator — an
+open-source desktop app fronting Flux / GPT-Image / Nano Banana
+(Gemini) / Midjourney / etc., with compositing, inpainting, background
+removal, character posing, and image-to-3D (which also complements the
+Meshy hero pipeline). It has no headless/CLI/API, so it is a tool the
+ARTIST drives, not one we automate: generate/compose in ArtCraft →
+export PNG → `art_studio.html` (era-filter + place) → drop at the slot
+path. For AUTOMATED batch runs, point `scene_render.py` at one
+underlying model's direct API (Flux/BFL, OpenAI images, or Gemini) with
+a key at `.image_key`.
 
 ## Getting an AI source (the front half)
 
