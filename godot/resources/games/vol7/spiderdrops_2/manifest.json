@@ -1,0 +1,47 @@
+{
+  "id": "spiderdrops_2",
+  "vol": 7,
+  "kind": "slowstick",
+  "status": "playable_v1",
+  "notes": "SPIDERDROPS 2 · THE LONG WIND (PDP Toys, 1995). The post-game sequel. The storm is over and the web cannot be held forever, so the spider lets go on purpose and travels — casting silk into the wind and ballooning across the gaps, riding the exact gusts that tore the old web apart, to a new anchor, to build again. The thing that destroyed you in the first game carries you in this one. Marketed 'NOW YOU FLY!'; it is a game about moving on. Carries your first-game ending in as your starting silk; only a player who kept the eight-pointed star can find where the wind finally sets the spider down.",
+  "shelf": {
+    "label_title": "SPIDERDROPS 2",
+    "label_subtitle": "the long wind",
+    "publisher": "PDP Toys",
+    "publisher_locale": "Beaverton, OR",
+    "release_year": 1995,
+    "release_month": "October",
+    "hardware": "Oneironautics Slowstick · Rev 2",
+    "genre_stamp": "ARCADE / PHYSICS",
+    "shelf_condition": "blister-pack cart · a $1.00 price-gun sticker on the back, same bin as the first",
+    "prior_owner": "Olaf, from the same Beaverton bargain bin, a year later",
+    "provenance_note": "The sequel to the spider game. Olaf's note: 'This one you can win. I did not believe it the first time it happened.'",
+    "cover_blurb": "NOW YOU FLY!  The storm blew your web away — so catch the wind and GO!  Balloon across the gaps, dodge the debris, land on a new branch and build again.  How far can you travel?  From PDP Toys — the fun people.  1 player.  Ages 6 and up.",
+    "back_of_case": [
+      "· CATCH the gust and BALLOON on your own silk!",
+      "· STEER through rain and blowing debris!",
+      "· Land on a NEW branch and rest up for the next leg!",
+      "· SEVEN legs of the long wind — how far will you get?",
+      "· Bring your STORM SCORE from SPIDERDROPS 1!",
+      "",
+      "The wind took your web.  Now let it take YOU.",
+      "",
+      "PDP Toys — also makers of SPIDERDROPS and the RIFFMASTER MELODY CLUB!"
+    ],
+    "in_fiction_dev_note": "PDP's sequel instinct: make it brighter, put a smiling spider on the box, promise flight. The uncredited R&D designer (the same deniable byline as the first) built the other half of a single idea instead. The first game is about holding your ground while the storm always, eventually, wins. This one is about letting go on purpose — the wind that broke the web is the wind that carries the spider, and for the first time in either game you can actually arrive. The 1995 press, still filing it under 'physics toy,' missed that the two carts are one small myth about loss and going on.",
+    "meta_note": "The true ending sets the spider down in the corner of a cabin by the water, out of the weather at last — reachable only if you carried the eight-pointed star (the Order's figure) in from the first game. It is never said which cabin. It is this one."
+  },
+  "lore_tokens_awarded_on_completion": [
+    "spiderdrops_2_finished"
+  ],
+  "lore_tokens_conditional": {
+    "spiderdrops_2_arrived": "A NEW TREE — completed the long wind, built again",
+    "spiderdrops_the_eaves": "UNDER THE EAVES — the true ending, carrying the eight-pointed star in (the Order thread comes home)"
+  },
+  "acts": [
+    {
+      "id": "the_long_wind",
+      "scene": "res://scenes/games/spiderdrops_2/LongWindFlight.tscn"
+    }
+  ]
+}

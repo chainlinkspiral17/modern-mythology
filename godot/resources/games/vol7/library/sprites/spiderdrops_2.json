@@ -1,0 +1,244 @@
+{
+  "id": "spiderdrops_2",
+  "notes": "PDP Toys sequel cart, 1995 \u00b7 a spider rising on a thread.",
+  "w": 44,
+  "h": 128,
+  "palette": [
+    "#141018",
+    "#f2c14e",
+    "#3a4d6b",
+    "#e8ecef",
+    "#6fb7e0",
+    "#9c7a24",
+    "#5a8a4a"
+  ],
+  "layers": [
+    {
+      "op": "fill",
+      "color": 1
+    },
+    {
+      "op": "vband",
+      "x_range": [
+        0,
+        2
+      ],
+      "color": 5
+    },
+    {
+      "op": "vband",
+      "x_range": [
+        42,
+        44
+      ],
+      "color": 5
+    },
+    {
+      "op": "hband",
+      "y_range": [
+        0,
+        2
+      ],
+      "color": 5
+    },
+    {
+      "op": "hband",
+      "y_range": [
+        126,
+        128
+      ],
+      "color": 5
+    },
+    {
+      "op": "rect",
+      "xywh": [
+        4,
+        18,
+        36,
+        72
+      ],
+      "color": 2
+    },
+    {
+      "op": "streak",
+      "from": [
+        12,
+        74
+      ],
+      "to": [
+        34,
+        26
+      ],
+      "color": 3,
+      "width": 1.0,
+      "strength": 0.9
+    },
+    {
+      "op": "streak",
+      "from": [
+        12,
+        74
+      ],
+      "to": [
+        17,
+        74
+      ],
+      "color": 5,
+      "width": 1.0,
+      "strength": 0.85
+    },
+    {
+      "op": "streak",
+      "from": [
+        12,
+        74
+      ],
+      "to": [
+        16,
+        77
+      ],
+      "color": 5,
+      "width": 1.0,
+      "strength": 0.85
+    },
+    {
+      "op": "streak",
+      "from": [
+        12,
+        74
+      ],
+      "to": [
+        12,
+        78
+      ],
+      "color": 5,
+      "width": 1.0,
+      "strength": 0.85
+    },
+    {
+      "op": "streak",
+      "from": [
+        12,
+        74
+      ],
+      "to": [
+        8,
+        77
+      ],
+      "color": 5,
+      "width": 1.0,
+      "strength": 0.85
+    },
+    {
+      "op": "streak",
+      "from": [
+        12,
+        74
+      ],
+      "to": [
+        7,
+        74
+      ],
+      "color": 5,
+      "width": 1.0,
+      "strength": 0.85
+    },
+    {
+      "op": "streak",
+      "from": [
+        12,
+        74
+      ],
+      "to": [
+        8,
+        71
+      ],
+      "color": 5,
+      "width": 1.0,
+      "strength": 0.85
+    },
+    {
+      "op": "streak",
+      "from": [
+        12,
+        74
+      ],
+      "to": [
+        12,
+        70
+      ],
+      "color": 5,
+      "width": 1.0,
+      "strength": 0.85
+    },
+    {
+      "op": "streak",
+      "from": [
+        12,
+        74
+      ],
+      "to": [
+        16,
+        71
+      ],
+      "color": 5,
+      "width": 1.0,
+      "strength": 0.85
+    },
+    {
+      "op": "disk",
+      "xy": [
+        12,
+        76
+      ],
+      "r": 3,
+      "color": 1
+    },
+    {
+      "op": "disk",
+      "xy": [
+        34,
+        26
+      ],
+      "r": 2,
+      "color": 6
+    },
+    {
+      "op": "rect",
+      "xywh": [
+        6,
+        96,
+        32,
+        10
+      ],
+      "color": 2
+    },
+    {
+      "op": "text",
+      "xy": [
+        8,
+        98
+      ],
+      "s": "SPIDER",
+      "color": 3
+    },
+    {
+      "op": "text",
+      "xy": [
+        10,
+        108
+      ],
+      "s": "DROPS",
+      "color": 3
+    },
+    {
+      "op": "text",
+      "xy": [
+        10,
+        118
+      ],
+      "s": "2",
+      "color": 6
+    }
+  ]
+}

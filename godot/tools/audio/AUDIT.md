@@ -218,6 +218,20 @@ sound. SFX under `sfx/sd/`, BGM under `bgm/spiderdrops/`.
 All five presets have Python + importer.html JS twins (parity). BGM is
 a 60s Em-that-never-resolves loop (`compositions/spiderdrops_storm.json`).
 
+## SPIDERDROPS 2 · THE LONG WIND (PDP Toys, 1995)
+
+Post-game sequel. Reuses the game-1 SFX (`wind_gust`/`thread_spin`/
+`thread_snap`) for the glide; adds one launch sound + a hopeful bed.
+
+| slot | tag | file |
+|---|---|---|
+| silk cast (balloon launch) | `[preset]` | sfx/sd/silk_cast.wav |
+| the long wind (whole-run bed) | `[rendered]` | bgm/spiderdrops_2/long_wind.wav |
+
+`silk_cast` has a Python + JS twin. The bed is the storm's weather
+turned kind: G major, I-V-vi-IV, it lifts and lands and lifts again
+(`compositions/spiderdrops_2_long_wind.json`).
+
 ## Adding a new preset
 
 1. Write a function `sfx_<name>(sr)` in `slowstick_synth.py`

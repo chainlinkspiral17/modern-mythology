@@ -150,6 +150,14 @@
       "slot": 11,
       "case": "cartridge_sleeve",
       "prior_owner_note": "Olaf, a dollar in a bargain bin at the Beaverton Fred Meyer \u00b7 a $1.00 price-gun sticker still on the back"
+    },
+    {
+      "stick": "spiderdrops_2",
+      "shelf": 0,
+      "slot": 15,
+      "case": "cartridge_sleeve",
+      "hidden_until_token": "spiderdrops_finished",
+      "prior_owner_note": "Olaf, the same bargain bin a year later \u00b7 'This one you can win.'"
     }
   ],
   "empty_slots": [
@@ -171,11 +179,6 @@
     {
       "shelf": 0,
       "slot": 9,
-      "note": "Empty."
-    },
-    {
-      "shelf": 0,
-      "slot": 15,
       "note": "Empty."
     },
     {

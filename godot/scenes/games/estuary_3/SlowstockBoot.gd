@@ -35,6 +35,7 @@ const HNN_HOST_SCENE := "res://scenes/games/hane_no_niwa/HaneNoNiwaHost.tscn"
 const SW_HOST_SCENE  := "res://scenes/games/sisters_wyrd/SistersWyrdHost.tscn"
 const KSM_HOST_SCENE := "res://scenes/games/kwik_stop_manager/KwikStopManagerHost.tscn"
 const SD_HOST_SCENE  := "res://scenes/games/spiderdrops/SpiderdropsHost.tscn"
+const SD2_HOST_SCENE := "res://scenes/games/spiderdrops_2/SpiderdropsTwoHost.tscn"
 
 var _shelf: Node = null
 var _host: Node = null
@@ -165,6 +166,8 @@ func _on_picked(stick_id: String, manager_mode: bool = false) -> void:
 		_open_host_kwik_stop_manager()
 	elif stick_id == "spiderdrops":
 		_open_host_spiderdrops()
+	elif stick_id == "spiderdrops_2":
+		_open_host_spiderdrops_2()
 	elif stick_id == "basilica_of_wires":
 		if OneironauticsTokens.has("basilica_cart_acquired"):
 			_open_host_basilica()
@@ -560,6 +563,17 @@ func _open_host_spiderdrops() -> void:
 		_shelf = null
 	_current_stick_id = "spiderdrops"
 	_host = load(SD_HOST_SCENE).instantiate()
+	_host.quit_to_shelf.connect(_open_shelf)
+	_host.finished.connect(_on_host_finished)
+	add_child(_host)
+
+
+func _open_host_spiderdrops_2() -> void:
+	if _shelf != null:
+		_shelf.queue_free()
+		_shelf = null
+	_current_stick_id = "spiderdrops_2"
+	_host = load(SD2_HOST_SCENE).instantiate()
 	_host.quit_to_shelf.connect(_open_shelf)
 	_host.finished.connect(_on_host_finished)
 	add_child(_host)

@@ -170,4 +170,6 @@ two-to-a-clamshell. Olaf's note:
 - Deck-verify: physics stability at 60fps on the Deck, verb feel,
   telegraph readability, break-ratio + rain-rate tuning; audio mix +
   rumble feel; hero legibility over the ending text.
-- BUILD the sequel when the pilot lands (engine reuse; see the plan).
+- DONE (2026-07-22): the sequel is BUILT — SPIDERDROPS 2 · THE LONG
+  WIND (#20, `_SPIDERDROPS_2_DESIGN.md`). Post-game, carries the
+  register in.

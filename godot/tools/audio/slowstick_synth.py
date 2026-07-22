@@ -2211,9 +2211,32 @@ def sfx_spider_step(sr):
     return out
 
 
+def sfx_silk_cast(sr):
+    # Spiderdrops 2 · silk released into the wind · a soft rising airy
+    # whoosh with a light tonal lift. The friendliest launch.
+    n = int(0.40 * sr)
+    out = [0.0] * n
+    dt = 1.0 / sr
+    rng = [3777]
+    y = 0.0
+    for i in range(n):
+        t = i * dt
+        p = t / (n * dt)
+        cutoff = 400.0 + 2400.0 * p
+        rc = 1.0 / (2.0 * math.pi * cutoff)
+        a = dt / (rc + dt)
+        env = math.sin(math.pi * p) ** 0.7
+        x = osc_noise(rng) * 0.5 * env
+        y = y + a * (x - y)
+        tone = osc_sine(t * (300.0 + 400.0 * p)) * 0.08 * env
+        out[i] = (y + tone) * 0.5
+    return out
+
+
 SFX_PRESETS = {
     # Spiderdrops · PDP Toys physics arcade
     'thread_pluck':       sfx_thread_pluck,
+    'silk_cast':          sfx_silk_cast,
     'thread_snap':        sfx_thread_snap,
     'thread_spin':        sfx_thread_spin,
     'wind_gust':          sfx_wind_gust,

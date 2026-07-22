@@ -40,6 +40,7 @@ const PRESET_MAP := {
 	"thread_spin":            ["sd", "thread_spin.wav"],
 	"wind_gust":              ["sd", "wind_gust.wav"],
 	"spider_step":            ["sd", "spider_step.wav"],
+	"silk_cast":              ["sd", "silk_cast.wav"],
 	# Northwind Harbor one-shots (1988 · almost no sound, so each counts)
 	"boat_horn":              ["nh", "boat_horn.wav"],
 	"lamp_buzz":              ["nh", "lamp_buzz.wav"],

@@ -1,0 +1,378 @@
+{
+  "id": "spiderdrops_2_new_tree",
+  "notes": "A NEW TREE \u00b7 the wind set you down where the storm never reached; you build again.",
+  "w": 160,
+  "h": 90,
+  "palette": [
+    "#18202e",
+    "#3a4d6b",
+    "#6c7fa0",
+    "#e8ecef",
+    "#b9c4cf",
+    "#6fb7e0",
+    "#f2c14e",
+    "#9c7a24",
+    "#241c18",
+    "#5a8a4a",
+    "#ffffff",
+    "#6b4a2e",
+    "#e8b860"
+  ],
+  "layers": [
+    {
+      "op": "fill",
+      "color": 2
+    },
+    {
+      "op": "vgrad",
+      "y_range": [
+        0,
+        44
+      ],
+      "x_range": [
+        0,
+        160
+      ],
+      "stops": [
+        2,
+        3
+      ]
+    },
+    {
+      "op": "glow",
+      "xy": [
+        28,
+        14
+      ],
+      "r": 22,
+      "color": 10,
+      "strength": 0.5
+    },
+    {
+      "op": "rect",
+      "xywh": [
+        120,
+        30,
+        7,
+        50
+      ],
+      "color": 11
+    },
+    {
+      "op": "disk",
+      "xy": [
+        118,
+        28
+      ],
+      "r": 14,
+      "color": 9
+    },
+    {
+      "op": "disk",
+      "xy": [
+        134,
+        34
+      ],
+      "r": 12,
+      "color": 9
+    },
+    {
+      "op": "disk",
+      "xy": [
+        126,
+        20
+      ],
+      "r": 11,
+      "color": 9
+    },
+    {
+      "op": "ring",
+      "xy": [
+        118,
+        44
+      ],
+      "r": 7,
+      "stops": [
+        4
+      ]
+    },
+    {
+      "op": "ring",
+      "xy": [
+        118,
+        44
+      ],
+      "r": 12,
+      "stops": [
+        4
+      ]
+    },
+    {
+      "op": "streak",
+      "from": [
+        118,
+        44
+      ],
+      "to": [
+        118,
+        32
+      ],
+      "color": 3,
+      "width": 1.0,
+      "strength": 0.85,
+      "blend": "screen"
+    },
+    {
+      "op": "streak",
+      "from": [
+        118,
+        44
+      ],
+      "to": [
+        126,
+        36
+      ],
+      "color": 3,
+      "width": 1.0,
+      "strength": 0.85,
+      "blend": "screen"
+    },
+    {
+      "op": "streak",
+      "from": [
+        118,
+        44
+      ],
+      "to": [
+        130,
+        44
+      ],
+      "color": 3,
+      "width": 1.0,
+      "strength": 0.85,
+      "blend": "screen"
+    },
+    {
+      "op": "streak",
+      "from": [
+        118,
+        44
+      ],
+      "to": [
+        126,
+        52
+      ],
+      "color": 3,
+      "width": 1.0,
+      "strength": 0.85,
+      "blend": "screen"
+    },
+    {
+      "op": "streak",
+      "from": [
+        118,
+        44
+      ],
+      "to": [
+        118,
+        56
+      ],
+      "color": 3,
+      "width": 1.0,
+      "strength": 0.85,
+      "blend": "screen"
+    },
+    {
+      "op": "streak",
+      "from": [
+        118,
+        44
+      ],
+      "to": [
+        110,
+        52
+      ],
+      "color": 3,
+      "width": 1.0,
+      "strength": 0.85,
+      "blend": "screen"
+    },
+    {
+      "op": "streak",
+      "from": [
+        118,
+        44
+      ],
+      "to": [
+        106,
+        44
+      ],
+      "color": 3,
+      "width": 1.0,
+      "strength": 0.85,
+      "blend": "screen"
+    },
+    {
+      "op": "streak",
+      "from": [
+        118,
+        44
+      ],
+      "to": [
+        110,
+        36
+      ],
+      "color": 3,
+      "width": 1.0,
+      "strength": 0.85,
+      "blend": "screen"
+    },
+    {
+      "op": "streak",
+      "from": [
+        118,
+        44
+      ],
+      "to": [
+        124,
+        44
+      ],
+      "color": 7,
+      "width": 1.0,
+      "strength": 0.9,
+      "blend": "screen"
+    },
+    {
+      "op": "streak",
+      "from": [
+        118,
+        44
+      ],
+      "to": [
+        122,
+        47
+      ],
+      "color": 7,
+      "width": 1.0,
+      "strength": 0.9,
+      "blend": "screen"
+    },
+    {
+      "op": "streak",
+      "from": [
+        118,
+        44
+      ],
+      "to": [
+        118,
+        48
+      ],
+      "color": 7,
+      "width": 1.0,
+      "strength": 0.9,
+      "blend": "screen"
+    },
+    {
+      "op": "streak",
+      "from": [
+        118,
+        44
+      ],
+      "to": [
+        114,
+        47
+      ],
+      "color": 7,
+      "width": 1.0,
+      "strength": 0.9,
+      "blend": "screen"
+    },
+    {
+      "op": "streak",
+      "from": [
+        118,
+        44
+      ],
+      "to": [
+        112,
+        44
+      ],
+      "color": 7,
+      "width": 1.0,
+      "strength": 0.9,
+      "blend": "screen"
+    },
+    {
+      "op": "streak",
+      "from": [
+        118,
+        44
+      ],
+      "to": [
+        114,
+        41
+      ],
+      "color": 7,
+      "width": 1.0,
+      "strength": 0.9,
+      "blend": "screen"
+    },
+    {
+      "op": "streak",
+      "from": [
+        118,
+        44
+      ],
+      "to": [
+        118,
+        40
+      ],
+      "color": 7,
+      "width": 1.0,
+      "strength": 0.9,
+      "blend": "screen"
+    },
+    {
+      "op": "streak",
+      "from": [
+        118,
+        44
+      ],
+      "to": [
+        122,
+        41
+      ],
+      "color": 7,
+      "width": 1.0,
+      "strength": 0.9,
+      "blend": "screen"
+    },
+    {
+      "op": "disk",
+      "xy": [
+        118,
+        46
+      ],
+      "r": 4,
+      "color": 6
+    },
+    {
+      "op": "disk",
+      "xy": [
+        118,
+        44
+      ],
+      "r": 3,
+      "color": 7
+    },
+    {
+      "op": "text",
+      "xy": [
+        52,
+        80
+      ],
+      "s": "A NEW TREE",
+      "color": 0
+    }
+  ]
+}

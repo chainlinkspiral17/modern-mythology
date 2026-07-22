@@ -1,0 +1,353 @@
+{
+  "meta": {
+    "title": "the long wind",
+    "composer": "PDP Toys R&D \u00b7 Beaverton, OR \u00b7 1995",
+    "for": "Spiderdrops 2 \u00b7 a tailwind, not a storm \u00b7 the same weather, turned kind \u00b7 G major, I-V-vi-IV, it keeps rising",
+    "notes": "The first game's bed never resolved; this one lifts and lands and lifts again. 16 bars at 76 BPM, loops."
+  },
+  "tempo_bpm": 76,
+  "time_sig": [
+    4,
+    4
+  ],
+  "sample_rate": 44100,
+  "tracks": [
+    {
+      "instrument": "ambient_drone",
+      "gain": 0.26,
+      "notes": [
+        {
+          "pitch": "G2",
+          "bar": 1,
+          "beat": 1,
+          "dur": 64.0,
+          "vel": 0.4
+        }
+      ]
+    },
+    {
+      "instrument": "rain",
+      "gain": 0.12,
+      "notes": [
+        {
+          "pitch": "G4",
+          "bar": 1,
+          "beat": 1,
+          "dur": 32.0,
+          "vel": 0.4
+        },
+        {
+          "pitch": "G4",
+          "bar": 9,
+          "beat": 1,
+          "dur": 32.0,
+          "vel": 0.4
+        }
+      ]
+    },
+    {
+      "instrument": "slowstick_pad",
+      "gain": 0.15,
+      "notes": [
+        {
+          "pitch": "G3",
+          "bar": 1,
+          "beat": 1,
+          "dur": 16.0,
+          "vel": 0.2
+        },
+        {
+          "pitch": "B3",
+          "bar": 1,
+          "beat": 1,
+          "dur": 16.0,
+          "vel": 0.2
+        },
+        {
+          "pitch": "D4",
+          "bar": 1,
+          "beat": 1,
+          "dur": 16.0,
+          "vel": 0.2
+        },
+        {
+          "pitch": "D3",
+          "bar": 5,
+          "beat": 1,
+          "dur": 16.0,
+          "vel": 0.2
+        },
+        {
+          "pitch": "F#3",
+          "bar": 5,
+          "beat": 1,
+          "dur": 16.0,
+          "vel": 0.2
+        },
+        {
+          "pitch": "A3",
+          "bar": 5,
+          "beat": 1,
+          "dur": 16.0,
+          "vel": 0.2
+        },
+        {
+          "pitch": "E3",
+          "bar": 9,
+          "beat": 1,
+          "dur": 16.0,
+          "vel": 0.2
+        },
+        {
+          "pitch": "G3",
+          "bar": 9,
+          "beat": 1,
+          "dur": 16.0,
+          "vel": 0.2
+        },
+        {
+          "pitch": "B3",
+          "bar": 9,
+          "beat": 1,
+          "dur": 16.0,
+          "vel": 0.2
+        },
+        {
+          "pitch": "C3",
+          "bar": 13,
+          "beat": 1,
+          "dur": 16.0,
+          "vel": 0.2
+        },
+        {
+          "pitch": "E3",
+          "bar": 13,
+          "beat": 1,
+          "dur": 16.0,
+          "vel": 0.2
+        },
+        {
+          "pitch": "G3",
+          "bar": 13,
+          "beat": 1,
+          "dur": 16.0,
+          "vel": 0.2
+        }
+      ]
+    },
+    {
+      "instrument": "slowstick_bass",
+      "gain": 0.18,
+      "notes": [
+        {
+          "pitch": "G1",
+          "bar": 1,
+          "beat": 1,
+          "dur": 3.2,
+          "vel": 0.42
+        },
+        {
+          "pitch": "G1",
+          "bar": 2,
+          "beat": 1,
+          "dur": 3.2,
+          "vel": 0.42
+        },
+        {
+          "pitch": "G1",
+          "bar": 3,
+          "beat": 1,
+          "dur": 3.2,
+          "vel": 0.42
+        },
+        {
+          "pitch": "G1",
+          "bar": 4,
+          "beat": 1,
+          "dur": 3.2,
+          "vel": 0.42
+        },
+        {
+          "pitch": "D1",
+          "bar": 5,
+          "beat": 1,
+          "dur": 3.2,
+          "vel": 0.42
+        },
+        {
+          "pitch": "D1",
+          "bar": 6,
+          "beat": 1,
+          "dur": 3.2,
+          "vel": 0.42
+        },
+        {
+          "pitch": "D1",
+          "bar": 7,
+          "beat": 1,
+          "dur": 3.2,
+          "vel": 0.42
+        },
+        {
+          "pitch": "D1",
+          "bar": 8,
+          "beat": 1,
+          "dur": 3.2,
+          "vel": 0.42
+        },
+        {
+          "pitch": "E1",
+          "bar": 9,
+          "beat": 1,
+          "dur": 3.2,
+          "vel": 0.42
+        },
+        {
+          "pitch": "E1",
+          "bar": 10,
+          "beat": 1,
+          "dur": 3.2,
+          "vel": 0.42
+        },
+        {
+          "pitch": "E1",
+          "bar": 11,
+          "beat": 1,
+          "dur": 3.2,
+          "vel": 0.42
+        },
+        {
+          "pitch": "E1",
+          "bar": 12,
+          "beat": 1,
+          "dur": 3.2,
+          "vel": 0.42
+        },
+        {
+          "pitch": "C1",
+          "bar": 13,
+          "beat": 1,
+          "dur": 3.2,
+          "vel": 0.42
+        },
+        {
+          "pitch": "C1",
+          "bar": 14,
+          "beat": 1,
+          "dur": 3.2,
+          "vel": 0.42
+        },
+        {
+          "pitch": "C1",
+          "bar": 15,
+          "beat": 1,
+          "dur": 3.2,
+          "vel": 0.42
+        },
+        {
+          "pitch": "C1",
+          "bar": 16,
+          "beat": 1,
+          "dur": 3.2,
+          "vel": 0.42
+        }
+      ]
+    },
+    {
+      "instrument": "soft_sine",
+      "gain": 0.13,
+      "notes": [
+        {
+          "pitch": "D5",
+          "bar": 3,
+          "beat": 1,
+          "dur": 20.0,
+          "vel": 0.26
+        },
+        {
+          "pitch": "G5",
+          "bar": 11,
+          "beat": 1,
+          "dur": 20.0,
+          "vel": 0.24
+        }
+      ]
+    },
+    {
+      "instrument": "chiptune_arp",
+      "gain": 0.07,
+      "notes": [
+        {
+          "pitch": "G5",
+          "bar": 2,
+          "beat": 1,
+          "dur": 0.4,
+          "vel": 0.14
+        },
+        {
+          "pitch": "B5",
+          "bar": 2,
+          "beat": 2.5,
+          "dur": 0.4,
+          "vel": 0.14
+        },
+        {
+          "pitch": "D6",
+          "bar": 2,
+          "beat": 4,
+          "dur": 0.4,
+          "vel": 0.14
+        },
+        {
+          "pitch": "A5",
+          "bar": 6,
+          "beat": 1,
+          "dur": 0.4,
+          "vel": 0.14
+        },
+        {
+          "pitch": "D6",
+          "bar": 6,
+          "beat": 2.5,
+          "dur": 0.4,
+          "vel": 0.14
+        },
+        {
+          "pitch": "B5",
+          "bar": 10,
+          "beat": 1,
+          "dur": 0.4,
+          "vel": 0.14
+        },
+        {
+          "pitch": "E6",
+          "bar": 10,
+          "beat": 3,
+          "dur": 0.4,
+          "vel": 0.14
+        },
+        {
+          "pitch": "G5",
+          "bar": 14,
+          "beat": 1,
+          "dur": 0.4,
+          "vel": 0.14
+        },
+        {
+          "pitch": "C6",
+          "bar": 14,
+          "beat": 2.5,
+          "dur": 0.4,
+          "vel": 0.14
+        },
+        {
+          "pitch": "E6",
+          "bar": 14,
+          "beat": 4,
+          "dur": 0.4,
+          "vel": 0.14
+        }
+      ]
+    }
+  ]
+}

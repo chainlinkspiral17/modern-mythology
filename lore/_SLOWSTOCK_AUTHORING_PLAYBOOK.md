@@ -158,6 +158,34 @@ each state transition.
 
 ## Recent lessons
 
+### 2026-07-22 · SPIDERDROPS 2 · a post-game sequel that inverts the verb
+
+Stick #20, THE LONG WIND — the sequel to #19, built the next session.
+
+- **A sequel is the host shape reused + one new physics mode + carry
+  the ending in.** SpiderdropsTwoHost is Spiderdrops' host verbatim
+  (title/run/ending-register/save); only the boot reads
+  `OneironauticsTokens.canon("spiderdrops_result")` and
+  `.has("spiderdrops_star")` to set starting silk and the true-ending
+  gate. "Carry the ending as the opening" (the Year-Two rule) works
+  across two different GENRES, not just two summers of the same one.
+- **Invert the verb, don't escalate it.** Game 1 is defense (hold the
+  web); the sequel is traversal (balloon on the wind). The hazard
+  becomes the vehicle — the same gust system, re-signed from threat to
+  tailwind. A sequel that's "the first game but harder" wastes the
+  chance; a sequel that completes the first game's SENTENCE (nothing
+  holds → so you move on) is worth building.
+- **Post-game unlock = the Sweetgum gate.** `starts_unlocked` +
+  `hidden_until_token: <prequel>_finished` in shelf_layout: the slot
+  literally does not exist until you finish the first, then it is
+  immediately bootable. Cleaner than a wave for "you can't own the
+  sequel before the original."
+- **One forgiving fail path beats many.** The glide's only loss is
+  running out of silk (STILL FLYING — reframed as peace, not defeat);
+  reaching all legs ARRIVES. All the tension lives in one resource
+  (silk) vs one distance, per leg. A physics toy wants a single legible
+  stake, not a punish grid.
+
 ### 2026-07-21 · SPIDERDROPS · a live physics stick on the same frame
 
 Stick #19 (PDP Toys, 1993) — a real-time Verlet web sim, the first

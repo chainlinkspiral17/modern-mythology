@@ -3,7 +3,8 @@
 **Proposed stick #20 · PDP Toys · Beaverton, OR · 1995**
 **Genre stamp:** ARCADE / PHYSICS · **Subtitle:** "let go"
 **Preset:** `pdp_toys` (`look_mode` 0, toy-bright)
-**Status:** PLANNED · post-game sequel to Spiderdrops (#19). Not built.
+**Status:** BUILT · playable_v1 (2026-07-22) · post-game sequel to
+Spiderdrops (#19). Host + LongWindFlight (balloon-glide) + audio + art.
 
 Companion to `_SPIDERDROPS_DESIGN.md`. Read that first — this reuses
 its Verlet engine and inverts its thesis.

@@ -1632,7 +1632,28 @@ function sfx_spider_step(sr) {
   }
   return out;
 }
+function sfx_silk_cast(sr) {
+  const n = Math.floor(0.40 * sr);
+  const out = new Float32Array(n);
+  const dt = 1 / sr;
+  const rng = makeNoiseRng(3777);
+  let y = 0;
+  for (let i = 0; i < n; i++) {
+    const t = i * dt;
+    const p = t / (n * dt);
+    const cutoff = 400 + 2400 * p;
+    const rc = 1 / (2 * Math.PI * cutoff);
+    const a = dt / (rc + dt);
+    const env = Math.pow(Math.sin(Math.PI * p), 0.7);
+    const x = rng() * 0.5 * env;
+    y += a * (x - y);
+    const tone = oscSine(t * (300 + 400 * p)) * 0.08 * env;
+    out[i] = (y + tone) * 0.5;
+  }
+  return out;
+}
 const SFX_PRESETS = {
+  silk_cast:                  sfx_silk_cast,
   thread_pluck:               sfx_thread_pluck,
   thread_snap:                sfx_thread_snap,
   thread_spin:                sfx_thread_spin,
