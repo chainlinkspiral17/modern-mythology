@@ -190,7 +190,7 @@ func _build_title_screen() -> void:
 	v.add_child(subtitle)
 
 	var meta := Label.new()
-	meta.text = "Oneironautics Inc. · Portland, OR · 2006 · Salmonberry, 1963"
+	meta.text = "Oneironautics Inc. · Portland, OR · 1992 · Salmonberry, 1963"
 	meta.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 	meta.add_theme_font_size_override("font_size", 12)
 	meta.add_theme_color_override("font_color", C_FIR)

@@ -1,6 +1,9 @@
 # SALMONBERRY · DESIGN DOC
 
-**Stick #21 · Oneironautics Inc. · Portland, OR · 2006**
+**Stick #21 · Oneironautics Inc. · Portland, OR · 1992**
+**Made by:** Amelie Rocha, her most personal game, right after Fey
+Faire (1990) — the SVGA-adventure era; the look bar is early-90s
+256-color Sierra/LucasArts, NOT flat vector (see the art note below).
 **Genre stamp:** RPG / ADVENTURE · **Subtitle:** a year on the coast
 **Preset:** `oneironautics` (field-guide gouache, `look_mode` 1)
 **Status:** BUILT · playable_v1 (2026-07-22) — host + the year loop.
