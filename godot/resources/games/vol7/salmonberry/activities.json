@@ -1,0 +1,96 @@
+{
+  "scope": "vol7/salmonberry/activities",
+  "notes": "The month's choices. Each activity spends the month: it moves aptitudes (hands/sea/word/heart/wild/grit), maybe a bond, maybe money, maybe adds a journal entry. 'months' (0=Sep .. 9=Jun) gates a seasonal activity; absent = any month. 'require' gates on an aptitude min, a bond min, or money. March (index 6) is handled specially by the scene (the water comes) and does not draw from this pool.",
+  "journal_total": 12,
+  "activities": [
+    {
+      "id": "mend_nets", "label": "Mend nets on the dock with Del",
+      "apts": {"hands": 2}, "bond": "del", "bond_amt": 1, "money": 1,
+      "journal": "A net is a year of small repairs. You can read a man's winter in his mending.",
+      "outcome": "Del works in silence and you learn to work in it too."
+    },
+    {
+      "id": "cannery_line", "label": "Take a shift on the cannery line",
+      "months": [0, 1, 9], "apts": {"hands": 1, "grit": 1}, "bond": "manny", "bond_amt": 1, "money": 3,
+      "outcome": "Cold, wet, loud, and by the end your hands know the knife."
+    },
+    {
+      "id": "library_afternoon", "label": "Spend the afternoon at the library",
+      "apts": {"word": 2}, "bond": "iris", "bond_amt": 1,
+      "journal": "The tide tables are a book that tells the future, and nobody calls it that.",
+      "outcome": "Iris slides you the book she thinks you actually want."
+    },
+    {
+      "id": "cafe_dishes", "label": "Wash dishes for Ruth at the cafe",
+      "apts": {"heart": 1, "grit": 1}, "bond": "ruth", "bond_amt": 1, "money": 2,
+      "outcome": "You hear half the town's news over the sink and keep all of it."
+    },
+    {
+      "id": "clamming", "label": "Dig razor clams on the minus tide",
+      "months": [3, 4, 5], "apts": {"sea": 1, "wild": 1}, "money": 2,
+      "journal": "Razor clams go down faster than you can dig. The tide is the only clock that matters.",
+      "outcome": "Freezing, filthy, a full bucket. A good morning."
+    },
+    {
+      "id": "berry_picking", "label": "Pick salmonberries up the draw",
+      "months": [8, 9], "apts": {"wild": 1}, "money": 2, "bond": "boyd", "bond_amt": 1,
+      "journal": "Salmonberry first, then thimbleberry, then blackberry — the summer keeps a calendar in fruit.",
+      "outcome": "You eat as many as you sell. Boyd eats more."
+    },
+    {
+      "id": "walk_the_beach", "label": "Walk the beach and see what came in",
+      "apts": {"wild": 1}, "journal": "Sanderlings run the wave-edge like they are sewing it shut.",
+      "outcome": "A glass float, a gull's wing, a boot. The beach gives what it gives."
+    },
+    {
+      "id": "gran_garden", "label": "Help Vovo in the garden",
+      "apts": {"hands": 1}, "bond": "gran", "bond_amt": 2,
+      "journal": "The grandmother grows things that are not from here — kale that is a tree, a bean nobody names in English.",
+      "outcome": "She corrects your hands without a word and you feel it as kindness."
+    },
+    {
+      "id": "gran_sing", "label": "Sit with Vovo while she sings",
+      "apts": {"heart": 1, "word": 1}, "bond": "gran", "bond_amt": 2, "song": true,
+      "journal": "The songs are older than the town and came across an ocean to get here.",
+      "outcome": "You catch a little more of it each time. It is starting to stay in you."
+    },
+    {
+      "id": "school_day", "label": "Just go to school",
+      "apts": {"word": 1, "heart": 1},
+      "outcome": "You are the new kid until, one ordinary Tuesday, you are not."
+    },
+    {
+      "id": "row_the_bay", "label": "Take the skiff out past the jetty",
+      "months": [6, 7, 8, 9], "require": {"apt": "sea", "min": 2}, "apts": {"sea": 2, "grit": 1}, "bond": "del", "bond_amt": 1,
+      "journal": "At slack water the bar lies flat and lies about what it is.",
+      "outcome": "You cross the bar and come back in and Del does not say well done, which means well done."
+    },
+    {
+      "id": "woods_with_boyd", "label": "Go up into the woods with Boyd",
+      "apts": {"wild": 2}, "bond": "boyd", "bond_amt": 2,
+      "journal": "Elk sign, bear scat, a spring nobody marked. The woods are a town too.",
+      "outcome": "Boyd shows you the coast from the bluff. You do not talk for a while."
+    },
+    {
+      "id": "store_errand", "label": "Run the delivery route for Tuck",
+      "apts": {"heart": 1, "grit": 1}, "money": 2, "bond": "tuck", "bond_amt": 1,
+      "outcome": "Every porch is a person. By the end you know the town by its doors."
+    },
+    {
+      "id": "sit_estelle", "label": "Bring in Estelle's wood",
+      "apts": {"heart": 1}, "bond": "estelle", "bond_amt": 2, "thread": 1,
+      "outcome": "She keeps a light in the window that faces the bar. You do not ask why. You are starting to know."
+    },
+    {
+      "id": "storm_watch", "label": "Watch the storm come in from the point",
+      "months": [2, 3, 4, 5], "apts": {"sea": 1, "wild": 1, "grit": 1},
+      "journal": "When the glass falls fast, the town brings the boats in and nobody has to be told.",
+      "outcome": "The whole coast goes the color of a bruise and then it hits."
+    },
+    {
+      "id": "church_supper", "label": "Go to the church supper",
+      "apts": {"heart": 2}, "bond": "ruth", "bond_amt": 1, "bond2": "estelle", "bond2_amt": 1,
+      "outcome": "The whole town in one warm room. Even Estelle comes, and sits at the back, and stays."
+    }
+  ]
+}

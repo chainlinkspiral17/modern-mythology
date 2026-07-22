@@ -158,6 +158,37 @@ each state transition.
 
 ## Recent lessons
 
+### 2026-07-22 · SALMONBERRY · an RPG-of-a-life on the Estuary-1 loop
+
+Stick #21 — a part-RPG part-adventure about a year in a 1960s coastal
+Oregon town, the studio's biggest genre. Built v1 as the SMALLEST
+complete version (the Estuary-1 discipline), not the full overworld.
+
+- **An RPG's growth doesn't need combat — it needs a verb and a
+  ledger.** Six aptitudes raised by DOING (hands/sea/word/heart/wild/
+  grit), a bond web, and a journal, all moved by one data-driven
+  "spend the month" choice. It's Estuary 1's one-lever loop grown two
+  more axes (bonds + collection), and it reads as an RPG because the
+  numbers go up and the town's response changes. Ship the loop first;
+  the walkable town is a wave, not the MVP.
+- **Data-driven activities make the town a JSON file.** activities.json
+  (season gate + require + apts/bond/money/journal deltas + outcome)
+  and npcs.json (bond_lines that surface at thresholds 2/4/6) mean new
+  content is data, never code — the same lesson as Fey Faire's feys and
+  the gauntlet visitors. The register resolves from the ledger (the
+  Tideline pattern), no win flag.
+- **Real history as tentpoles, handled with the Sweetgum restraint.**
+  The year is framed by two events everyone from that coast remembers
+  (a November afternoon, a Good Friday night); both are felt through
+  the town, never staged. The March tsunami is the one scripted month —
+  a climactic choice gated by what you built (SEA/bonds), so the RPG
+  systems PAY OFF as a rescue. When a real tragedy anchors a stick,
+  make it a consequence of the player's year, not a cutscene.
+- **The meta-hook lives in provenance + the true ending, not the UI.**
+  The grandmother's songs ARE the catalog's recurring melodies; the
+  game is their origin. Said once (THE SONG ending, the manifest),
+  never on the HUD. The deepest canon payoff is the quietest.
+
 ### 2026-07-22 · SPIDERDROPS 2 · a post-game sequel that inverts the verb
 
 Stick #20, THE LONG WIND — the sequel to #19, built the next session.

@@ -63,6 +63,10 @@ touching code:
    - `lore/_SPIDERDROPS_2_DESIGN.md` — stick #20, THE LONG WIND ·
      post-game sequel · balloon-glide, carries the register in
      (built 2026-07)
+   - `lore/_SALMONBERRY_DESIGN.md` — stick #21, Oneironautics 2006 ·
+     part-RPG part-adventure, a year in a 1960s coastal Oregon town ·
+     v1 = the month/aptitude/bond loop; town overworld + arc waved
+     (built 2026-07)
    These carry the multi-hour authoring context that
    won't fit in a commit-message header.
 

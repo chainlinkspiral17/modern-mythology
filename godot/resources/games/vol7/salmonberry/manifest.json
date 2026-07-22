@@ -1,0 +1,50 @@
+{
+  "id": "salmonberry",
+  "vol": 7,
+  "kind": "slowstick",
+  "status": "playable_v1",
+  "notes": "SALMONBERRY (Oneironautics, 2006). The studio's most personal and ambitious game: a year in the life of a kid sent to live with a grandmother in the fictional cannery town of Salmonberry, on the mid Oregon coast, across the school year 1963-64. Part adventure (a town, people with stories, a boat that did not come back), part RPG (you grow by living — the aptitudes of a coastal life, a web of bonds, a naturalist's journal — never by fighting). Framed with restraint by the two events everyone from that coast remembers: the Kennedy assassination and the Good Friday tsunami. Amelie Rocha's story, Ines Rocha's build; the grandmother's songs are the Portuguese folk melodies that thread the whole catalog.",
+  "shelf": {
+    "label_title": "SALMONBERRY",
+    "label_subtitle": "a year on the coast",
+    "publisher": "Oneironautics Inc.",
+    "publisher_locale": "Portland, OR",
+    "release_year": 2006,
+    "release_month": "November",
+    "hardware": "Oneironautics Slowstick · Rev 2",
+    "genre_stamp": "RPG / ADVENTURE",
+    "shelf_condition": "near mint · a gift copy · Ines Rocha's initials inside the case in pencil",
+    "prior_owner": "Olaf, a gift from Ines Rocha herself",
+    "provenance_note": "Ines gave Olaf this one in person. Olaf's note: 'She said it was the only one that was true. I did not ask true about what.'",
+    "cover_blurb": "A year in a small town on the coast, a long time ago.  You come to live with your grandmother in Salmonberry, Oregon, in the fall of 1963.  You learn the tides and the people and the woods.  You do not fight anyone.  By June the town knows your name.  From Oneironautics Inc.  One long, quiet game.",
+    "back_of_case": [
+      "· Ten months, September to June.",
+      "· Grow the skills of a coastal life — hands, sea, word, heart, wild, grit.",
+      "· A whole town of people to come to know.",
+      "· Keep a book of the coast: birds, tides, weather, lore.",
+      "· No combat.  No score.  A year, and what you made of it.",
+      "",
+      "'The largest thing we ever tried, and the smallest.'",
+      "    — from the manual, unsigned"
+    ],
+    "in_fiction_dev_note": "The late-career magnum opus. Amelie Rocha carried the story for years before Ines built it in 2006 — the two Rochas' one full collaboration. It is Amelie's grandmother's town, the mid-coast cannery place the family came up in, and the grandmother in the game sings the songs that had by then already wandered into every Oneironautics score (the Fey Faire music box, Wilson's shanty, the Estuary drones). The studio spent one game admitting where its whole sound came from. The 2006 press did not know what to file it as — too slow for an RPG, too systemic for a memory piece — and it sold accordingly. Ines has called it the only one that was true.",
+    "meta_note": "The year is framed by two events the manual never names: a November afternoon the cannery radio goes quiet, and a Good Friday night in March when the water comes up the river. Both are felt through the town, not staged. The traveling show that comes to the cannery lot in the last summer is small and harmless — a Ferris wheel, a fortune tent — twelve years before the Faire that took Amelie's sister. Nobody in 1964 could know that. The game does not say it."
+  },
+  "lore_tokens_awarded_on_completion": [
+    "salmonberry_finished"
+  ],
+  "lore_tokens_conditional": {
+    "salmonberry_hands": "THE HANDS — you became useful; you belong",
+    "salmonberry_listener": "THE LISTENER — you learned the town's stories",
+    "salmonberry_keeper": "THE KEEPER — the book of the coast near full",
+    "salmonberry_the_song": "THE SONG (true) — you carry the grandmother's melodies out; the catalog's soundtrack begins here",
+    "salmonberry_the_wave": "you helped the night the water came (Good Friday, 1964)",
+    "salmonberry_faire_seen": "the traveling show on the cannery lot, summer 1964 (a 1976 seed)"
+  },
+  "acts": [
+    {
+      "id": "the_year",
+      "scene": "res://scenes/games/salmonberry/SalmonberryYear.tscn"
+    }
+  ]
+}

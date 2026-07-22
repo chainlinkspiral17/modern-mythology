@@ -158,6 +158,13 @@
       "case": "cartridge_sleeve",
       "hidden_until_token": "spiderdrops_finished",
       "prior_owner_note": "Olaf, the same bargain bin a year later \u00b7 'This one you can win.'"
+    },
+    {
+      "stick": "salmonberry",
+      "shelf": 1,
+      "slot": 7,
+      "case": "cartridge_sleeve",
+      "prior_owner_note": "a gift from Ines Rocha herself \u00b7 her initials in pencil inside the case \u00b7 'the only one that was true'"
     }
   ],
   "empty_slots": [
@@ -204,11 +211,6 @@
     {
       "shelf": 1,
       "slot": 6,
-      "note": "Empty."
-    },
-    {
-      "shelf": 1,
-      "slot": 7,
       "note": "Empty."
     },
     {

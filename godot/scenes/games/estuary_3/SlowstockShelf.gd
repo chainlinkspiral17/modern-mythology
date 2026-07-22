@@ -49,6 +49,7 @@ const FULL_MANIFESTS: Dictionary = {
 	"sams_summer_shifts": "res://resources/games/vol7/sams_summer_shifts/manifest.json",
 	"spiderdrops":        "res://resources/games/vol7/spiderdrops/manifest.json",
 	"spiderdrops_2":      "res://resources/games/vol7/spiderdrops_2/manifest.json",
+	"salmonberry":        "res://resources/games/vol7/salmonberry/manifest.json",
 }
 
 const C_BG        := Color(0.024, 0.020, 0.014, 0.97)

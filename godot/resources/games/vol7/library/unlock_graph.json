@@ -99,6 +99,14 @@
         "spiderdrops"
       ],
       "notes": "PDP Toys' physics arcade cart · surfaces once Tem knows PDP Toys made real games (finished the Riffmaster)."
+    },
+    {
+      "wave": 4.5,
+      "unlocked_by_count_of_finished_min": 4,
+      "sticks": [
+        "salmonberry"
+      ],
+      "notes": "Oneironautics' 2006 magnum opus · a late capstone that surfaces once the player is invested in the shelf."
     }
   ],
   "gated_by_vol7_chapter": {

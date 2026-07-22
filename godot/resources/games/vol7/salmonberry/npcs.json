@@ -1,0 +1,94 @@
+{
+  "scope": "vol7/salmonberry/npcs",
+  "notes": "The townsfolk of Salmonberry, 1963-64. bond_lines surface as the bond deepens (index 0 at bond>=2, 1 at >=4, 2 at >=6). The grandmother (gran) is the spine and the true-ending gate.",
+  "npcs": [
+    {
+      "id": "gran",
+      "name": "Vovo",
+      "role": "your grandmother · the house at the river mouth",
+      "intro": "She meets the bus with a coat that is not yours and is exactly your size.",
+      "bond_lines": [
+        "She hums while she works. You do not know the words. They are not English.",
+        "She teaches you the song about the boat that goes out and the boat that comes back. There are more verses than she sings.",
+        "She sings you all of it, the last verse too, the one for the boat that does not come back. Now you know it. Now it is yours to carry."
+      ]
+    },
+    {
+      "id": "del",
+      "name": "Del",
+      "role": "harbormaster · fifty years on the bar",
+      "intro": "He watches you look at the water like he is deciding something.",
+      "bond_lines": [
+        "He shows you how to read the bar — where it stands up, where it lies down.",
+        "He lets you take the skiff out past the jetty on a slack tide. Alone.",
+        "He tells you what he saw the morning the boat did not come back in. He has told no one."
+      ]
+    },
+    {
+      "id": "iris",
+      "name": "Iris",
+      "role": "librarian · the one warm room on Main",
+      "intro": "She stamps your card before you finish asking for one.",
+      "bond_lines": [
+        "She keeps the tide tables and the bird books behind the desk, for the ones who ask.",
+        "She lends you the county history, the real one, not the one they printed.",
+        "She tells you the library is the town's memory and someone has to be the one who keeps it. She is looking at you when she says it."
+      ]
+    },
+    {
+      "id": "manny",
+      "name": "Manny",
+      "role": "cannery foreman · runs the line",
+      "intro": "He puts you on the line without asking if you have done it before.",
+      "bond_lines": [
+        "He shows you the trick of the knife so your hands stop bleeding by the end of the shift.",
+        "He tells you the cannery has maybe three seasons left and to learn something else.",
+        "He says the town is the cannery and when it goes the town goes, and he is not angry about it, which is worse."
+      ]
+    },
+    {
+      "id": "ruth",
+      "name": "Ruth",
+      "role": "the cafe on the corner",
+      "intro": "She sets down a plate you did not order and will not let you pay for.",
+      "bond_lines": [
+        "She knows everyone's order and everyone's business and keeps both.",
+        "She tells you who to trust and who to only be kind to.",
+        "She says the cafe is where the town says the things it cannot say at home, and she is the one who holds them."
+      ]
+    },
+    {
+      "id": "boyd",
+      "name": "Boyd",
+      "role": "a kid your age · knows the woods",
+      "intro": "He is up a spruce before he says hello.",
+      "bond_lines": [
+        "He shows you the elk trail and the good salmonberry patch and swears you to secrecy.",
+        "He takes you to the place on the bluff where you can see the whole coast at once.",
+        "He tells you he is going to leave the first chance he gets, and asks if you will too, and means it as the biggest question there is."
+      ]
+    },
+    {
+      "id": "estelle",
+      "name": "Estelle",
+      "role": "the gray house past the church",
+      "intro": "She does not come to the door but the curtain moves.",
+      "bond_lines": [
+        "She lets you bring in her wood. She does not say much.",
+        "She keeps a light on at the window that faces the bar, every night, still.",
+        "She says his name to you, once, the son who took the boat out. She has not said it aloud in a year."
+      ]
+    },
+    {
+      "id": "tuck",
+      "name": "Tuck",
+      "role": "the store · knows the price of everything",
+      "intro": "He sizes you up like inventory.",
+      "bond_lines": [
+        "He fronts you a nickel's credit and remembers it exactly.",
+        "He tells you the state men were in, measuring the highway, and what it will do to Main.",
+        "He shows you the ledger going back forty years — every family, what they bought, what they owed. The town, in his hand."
+      ]
+    }
+  ]
+}
