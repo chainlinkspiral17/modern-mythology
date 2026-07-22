@@ -8,6 +8,40 @@ this file wins and the doc gets fixed.
 
 ---
 
+## ⚑ DIRECTION CHANGE (2026-07-22) · this supersedes everything below for 2D scene art
+
+User verdict: the flat-vector HeroImage look is not good enough. "I keep
+asking for much better graphics." The bar, stated plainly:
+
+> **Minimum early-1990s 256-color SVGA graphics, à la Sierra and
+> LucasArts graphic adventures.** Slowsticks are modern games seen
+> through an alt-reality prism — so their art is a rich painted source
+> pressed through a period 256-color dithered SVGA "era filter."
+
+What this changes:
+- **Flat vector `HeroImage` (polys/gradients at 160×90) is retired for
+  scene/hero art.** It stays only as a fallback and for tiny UI glyphs.
+- **New pipeline (`godot/tools/art/`, see `ART_PIPELINE.md`):** a
+  painted SOURCE (AI via `scene_render.py`, or procedural placeholder
+  via `scene_painter.py`) → the ERA FILTER (`svga_quantize.py`,
+  ~320×200, 256-color, dithered). Both source kinds share one filter,
+  so the catalog keeps one register.
+- **The old "banned list" below is REVERSED for slowstick 2D scenes:**
+  low-res 256-color render targets, dithering, and a period SVGA look
+  are now the GOAL, not banned. (The bans still apply to the 3D VN
+  locales and the `demoscene_post` shader stack — those are a separate
+  system.) Font floor 12 still holds for UI text drawn over scenes.
+- **Rollout:** sign off the style on Salmonberry, build `art_studio.html`
+  (generate/replace every asset, by studio), then retrofit the whole
+  catalog studio by studio.
+
+Everything below predates this change; treat it as the 3D/locale +
+post-process guidance and the historical record of the flat era.
+
+---
+
+---
+
 ## The premise · alternate-universe tech
 
 **Slowsticks are technology from an alternate timeline.** They

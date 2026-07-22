@@ -20,3 +20,8 @@ builds/
 # Meshy 3D-gen API key (never commit) + raw downloaded GLB staging
 godot/tools/.meshy_key
 godot/assets/3d/meshy/**/*.glb
+
+# art pipeline
+godot/tools/art/.image_key
+godot/tools/art/*.config.json
+**/*.src.png
