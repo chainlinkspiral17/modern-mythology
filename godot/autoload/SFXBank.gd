@@ -25,6 +25,7 @@ const SFX_FF_ROOT := "res://assets/audio/sfx/ff/"
 const SFX_EM_ROOT := "res://assets/audio/sfx/em/"
 const SFX_NH_ROOT := "res://assets/audio/sfx/nh/"
 const SFX_PMG_ROOT := "res://assets/audio/sfx/pmg/"
+const SFX_SD_ROOT := "res://assets/audio/sfx/sd/"
 const POOL_SIZE := 8
 
 # Preset → (root, filename). Kept explicit so the audit doc doubles
@@ -33,6 +34,12 @@ const PRESET_MAP := {
 	# Patient Mister Glass kitchen foley
 	"kettle_hiss":            ["pmg", "kettle_hiss.wav"],
 	"knife_board":            ["pmg", "knife_board.wav"],
+	# Spiderdrops (PDP Toys, 1993) · the storm on the web
+	"thread_pluck":           ["sd", "thread_pluck.wav"],
+	"thread_snap":            ["sd", "thread_snap.wav"],
+	"thread_spin":            ["sd", "thread_spin.wav"],
+	"wind_gust":              ["sd", "wind_gust.wav"],
+	"spider_step":            ["sd", "spider_step.wav"],
 	# Northwind Harbor one-shots (1988 · almost no sound, so each counts)
 	"boat_horn":              ["nh", "boat_horn.wav"],
 	"lamp_buzz":              ["nh", "lamp_buzz.wav"],
@@ -150,6 +157,7 @@ func _preset_path(preset: String) -> String:
 		"em":       root = SFX_EM_ROOT
 		"nh":       root = SFX_NH_ROOT
 		"pmg":      root = SFX_PMG_ROOT
+		"sd":       root = SFX_SD_ROOT
 		_:          root = SFX_E3_ROOT
 	return root + String(entry[1])
 
@@ -256,6 +264,11 @@ const RUMBLE_MAP := {
 	"visitor_arrive":    [0.12, 0.00, 0.10],
 	"wave_break":        [0.15, 0.10, 0.25],
 	"tide_gate_toggle":  [0.20, 0.25, 0.15],
+	# Spiderdrops · a snap you feel, a gust that rolls. Step/spin are
+	# too frequent/soft to rumble (spam is worse than none).
+	"thread_snap":       [0.18, 0.30, 0.12],
+	"thread_pluck":      [0.10, 0.00, 0.06],
+	"wind_gust":         [0.12, 0.22, 0.55],
 	"marker_set":        [0.10, 0.00, 0.06],
 	"2am_customer_stands_up":       [0.15, 0.30, 0.30],
 	"creature_arrival_2am_customer": [0.20, 0.25, 0.30],

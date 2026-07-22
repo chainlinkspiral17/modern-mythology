@@ -303,6 +303,18 @@ func _show_ending(result: Dictionary) -> void:
 	bg.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
 	_ending_root.add_child(bg)
 
+	# The register's own picture, held subtle behind the text.
+	var hero := HeroImage.new()
+	if hero.load_from("res://resources/games/vol7/spiderdrops/hero_images/ending_%s.json" % register):
+		var tr := TextureRect.new()
+		tr.texture = hero.texture(Vector2i(1120, 630))
+		tr.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
+		tr.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_COVERED
+		tr.texture_filter = CanvasItem.TEXTURE_FILTER_NEAREST
+		tr.mouse_filter = Control.MOUSE_FILTER_IGNORE
+		tr.modulate.a = 0.45
+		_ending_root.add_child(tr)
+
 	var v := VBoxContainer.new()
 	v.set_anchors_and_offsets_preset(Control.PRESET_CENTER)
 	v.offset_left = -360

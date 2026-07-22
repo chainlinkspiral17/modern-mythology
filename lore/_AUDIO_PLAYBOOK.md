@@ -85,6 +85,22 @@ the result is intelligible-enough with 30% static overlay.
 
 ## Recent lessons
 
+### 2026-07-22 · Spiderdrops · scoring a real-time physics stick
+
+Five verb/weather SFX + one whole-run BGM bed for the new physics
+stick, in one pass. Nothing new about the pipeline; two reminders:
+
+- **`sfx <name> <output>` is POSITIONAL, not `--output`.** Lost a
+  minute to `--output`. The subcommand takes the preset then a bare
+  output path.
+- **A live game wants the verb sounds SHORT and the bed LONG.** The
+  four verbs are 50–340 ms (pluck/snap/spin/step); only the gust is
+  ~1.1 s. The BGM is a 60 s Em loop that never resolves — the storm
+  keeps coming. Ported all five presets to importer.html the same
+  commit (parity rule held). normalize_bank gave the bed a 3.3x dir
+  gain; run it after any render or the stick sits buried under the
+  menu music.
+
 ### 2026-07-13 · per-locale ambient bed · the inverted soundtrack player
 
 The VN now has a fourth audio layer: when a 3D locale loads, the

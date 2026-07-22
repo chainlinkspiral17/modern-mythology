@@ -1,0 +1,243 @@
+{
+  "id": "spiderdrops",
+  "notes": "PDP Toys blister-pack cart, 1993 \u00b7 toy-yellow, the web motif.",
+  "w": 44,
+  "h": 128,
+  "palette": [
+    "#141018",
+    "#f2c14e",
+    "#2b3a52",
+    "#e8ecef",
+    "#6fb7e0",
+    "#9c7a24",
+    "#18202e"
+  ],
+  "layers": [
+    {
+      "op": "fill",
+      "color": 1
+    },
+    {
+      "op": "vband",
+      "x_range": [
+        0,
+        2
+      ],
+      "color": 6
+    },
+    {
+      "op": "vband",
+      "x_range": [
+        42,
+        44
+      ],
+      "color": 6
+    },
+    {
+      "op": "hband",
+      "y_range": [
+        0,
+        2
+      ],
+      "color": 6
+    },
+    {
+      "op": "hband",
+      "y_range": [
+        126,
+        128
+      ],
+      "color": 6
+    },
+    {
+      "op": "rect",
+      "xywh": [
+        4,
+        20,
+        36,
+        70
+      ],
+      "color": 2
+    },
+    {
+      "op": "ring",
+      "xy": [
+        22,
+        54
+      ],
+      "r": 6,
+      "stops": [
+        3
+      ]
+    },
+    {
+      "op": "ring",
+      "xy": [
+        22,
+        54
+      ],
+      "r": 11,
+      "stops": [
+        4
+      ]
+    },
+    {
+      "op": "streak",
+      "from": [
+        22,
+        54
+      ],
+      "to": [
+        22,
+        41
+      ],
+      "color": 3,
+      "width": 1.0,
+      "strength": 0.9
+    },
+    {
+      "op": "streak",
+      "from": [
+        22,
+        54
+      ],
+      "to": [
+        31,
+        45
+      ],
+      "color": 3,
+      "width": 1.0,
+      "strength": 0.9
+    },
+    {
+      "op": "streak",
+      "from": [
+        22,
+        54
+      ],
+      "to": [
+        35,
+        54
+      ],
+      "color": 3,
+      "width": 1.0,
+      "strength": 0.9
+    },
+    {
+      "op": "streak",
+      "from": [
+        22,
+        54
+      ],
+      "to": [
+        31,
+        63
+      ],
+      "color": 3,
+      "width": 1.0,
+      "strength": 0.9
+    },
+    {
+      "op": "streak",
+      "from": [
+        22,
+        54
+      ],
+      "to": [
+        22,
+        67
+      ],
+      "color": 3,
+      "width": 1.0,
+      "strength": 0.9
+    },
+    {
+      "op": "streak",
+      "from": [
+        22,
+        54
+      ],
+      "to": [
+        13,
+        63
+      ],
+      "color": 3,
+      "width": 1.0,
+      "strength": 0.9
+    },
+    {
+      "op": "streak",
+      "from": [
+        22,
+        54
+      ],
+      "to": [
+        9,
+        54
+      ],
+      "color": 3,
+      "width": 1.0,
+      "strength": 0.9
+    },
+    {
+      "op": "streak",
+      "from": [
+        22,
+        54
+      ],
+      "to": [
+        13,
+        45
+      ],
+      "color": 3,
+      "width": 1.0,
+      "strength": 0.9
+    },
+    {
+      "op": "disk",
+      "xy": [
+        22,
+        54
+      ],
+      "r": 2,
+      "color": 5
+    },
+    {
+      "op": "rect",
+      "xywh": [
+        6,
+        96,
+        32,
+        10
+      ],
+      "color": 2
+    },
+    {
+      "op": "text",
+      "xy": [
+        8,
+        98
+      ],
+      "s": "SPIDER",
+      "color": 3
+    },
+    {
+      "op": "text",
+      "xy": [
+        10,
+        110
+      ],
+      "s": "DROPS",
+      "color": 3
+    },
+    {
+      "op": "text",
+      "xy": [
+        12,
+        118
+      ],
+      "s": "PDP",
+      "color": 4
+    }
+  ]
+}

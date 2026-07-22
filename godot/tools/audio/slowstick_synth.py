@@ -2108,9 +2108,119 @@ def sfx_knife_board(sr):
     return out
 
 
+# ─── Spiderdrops (PDP Toys, 1993) · the storm on the web ───────────
+
+def sfx_thread_pluck(sr):
+    # A single silk strand plucked · a soft detuned string ping with a
+    # quick woody body and a faint buzzy tail.
+    n = int(0.28 * sr)
+    out = [0.0] * n
+    dt = 1.0 / sr
+    ph = 0.0
+    ph2 = 0.0
+    rng = [4111]
+    f0 = 520.0
+    for i in range(n):
+        t = i * dt
+        env = math.exp(-t * 12.0)
+        body = osc_sine(ph) * 0.6 + osc_saw(ph2) * 0.12
+        buzz = osc_noise(rng) * 0.05 * math.exp(-t * 40.0)
+        out[i] = (body * env + buzz) * 0.5
+        f = f0 * (1.0 + 0.15 * math.exp(-t * 30.0))
+        ph += f * dt
+        ph2 += f * 2.01 * dt
+    return out
+
+
+def sfx_thread_snap(sr):
+    # A strand giving way · a bright noise crack over a fast downward
+    # body thump. Sharp, a little violent.
+    n = int(0.22 * sr)
+    out = [0.0] * n
+    dt = 1.0 / sr
+    ph = 0.0
+    rng = [7321]
+    for i in range(n):
+        t = i * dt
+        crack = osc_noise(rng) * 0.7 * math.exp(-t * 55.0)
+        env = math.exp(-t * 18.0)
+        body = osc_sine(ph) * 0.4 * env
+        out[i] = (crack + body) * 0.55
+        f = 320.0 - t * 900.0
+        if f < 40.0:
+            f = 40.0
+        ph += f * dt
+    return out
+
+
+def sfx_thread_spin(sr):
+    # Laying fresh silk · a soft rising filtered-noise whir with a faint
+    # tonal shimmer. The friendliest sound in the storm.
+    n = int(0.34 * sr)
+    out = [0.0] * n
+    dt = 1.0 / sr
+    rng = [2599]
+    y = 0.0
+    for i in range(n):
+        t = i * dt
+        p = t / (n * dt)
+        cutoff = 600.0 + 1800.0 * p
+        rc = 1.0 / (2.0 * math.pi * cutoff)
+        a = dt / (rc + dt)
+        env = math.sin(math.pi * p) ** 0.8
+        x = osc_noise(rng) * 0.5 * env
+        y = y + a * (x - y)
+        tone = osc_sine(t * 900.0) * 0.06 * env
+        out[i] = (y + tone) * 0.5
+    return out
+
+
+def sfx_wind_gust(sr):
+    # A gust arriving · a long low band-passed noise swell that rises
+    # then falls. The wave that hits the web.
+    n = int(1.1 * sr)
+    out = [0.0] * n
+    dt = 1.0 / sr
+    rng = [8080]
+    lo = 0.0
+    hi = 0.0
+    for i in range(n):
+        t = i * dt
+        p = t / (n * dt)
+        env = math.sin(math.pi * p) ** 1.3
+        x = osc_noise(rng)
+        lo = lo + 0.10 * (x - lo)     # low-pass
+        hi = hi + 0.010 * (lo - hi)   # slower low-pass, subtracted = band
+        out[i] = (lo - hi) * env * 0.8
+    return out
+
+
+def sfx_spider_step(sr):
+    # The spider crossing a strand · a tiny soft tick, almost nothing.
+    n = int(0.05 * sr)
+    out = [0.0] * n
+    dt = 1.0 / sr
+    ph = 0.0
+    rng = [1201]
+    for i in range(n):
+        t = i * dt
+        env = math.exp(-t * 90.0)
+        tick = (osc_sine(ph) * 0.5 + osc_noise(rng) * 0.3) * env
+        out[i] = tick * 0.35
+        ph += 1400.0 * dt
+    return out
+
+
 SFX_PRESETS = {
+    # Spiderdrops · PDP Toys physics arcade
+    'thread_pluck':       sfx_thread_pluck,
+    'thread_snap':        sfx_thread_snap,
+    'thread_spin':        sfx_thread_spin,
+    'wind_gust':          sfx_wind_gust,
+    'spider_step':        sfx_spider_step,
     # Patient Mister Glass kitchen foley
     'kettle_hiss':        sfx_kettle_hiss,
+    'knife_board':        sfx_knife_board,
     'knife_board':        sfx_knife_board,
     # Northwind Harbor one-shots
     'boat_horn':          sfx_boat_horn,

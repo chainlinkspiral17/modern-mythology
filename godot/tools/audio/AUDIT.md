@@ -201,6 +201,23 @@ Suggested waves to unblock the most gameplay per commit:
    authored-per-line moments · Act 1 radio programs, Act 4
    creature-specific sounds.
 
+## SPIDERDROPS · Vol 7 gallery slowstick (PDP Toys, 1993)
+
+The storm on the web. Real-time physics; each verb + weather beat has
+sound. SFX under `sfx/sd/`, BGM under `bgm/spiderdrops/`.
+
+| slot | tag | file |
+|---|---|---|
+| thread pluck (shed water) | `[preset]` | sfx/sd/thread_pluck.wav |
+| thread snap (strand breaks) | `[preset]` | sfx/sd/thread_snap.wav |
+| thread spin (re-spin silk) | `[preset]` | sfx/sd/thread_spin.wav |
+| wind gust (the wave hits) | `[preset]` | sfx/sd/wind_gust.wav |
+| spider step (crawl a strand) | `[preset]` | sfx/sd/spider_step.wav |
+| the storm (whole-run bed) | `[rendered]` | bgm/spiderdrops/storm.wav |
+
+All five presets have Python + importer.html JS twins (parity). BGM is
+a 60s Em-that-never-resolves loop (`compositions/spiderdrops_storm.json`).
+
 ## Adding a new preset
 
 1. Write a function `sfx_<name>(sr)` in `slowstick_synth.py`

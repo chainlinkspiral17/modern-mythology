@@ -157,9 +157,17 @@ two-to-a-clamshell. Olaf's note:
 
 ## FOLLOW-UPS / BACKLOG
 
-- Audio: storm BGM + pluck/snap/gust SFX.
+- DONE (2026-07-22): Audio — storm BGM (`bgm/spiderdrops/storm.wav`)
+  + 5 SFX (pluck/snap/spin/gust/step, `sfx/sd/`), wired in SFXBank
+  with rumble; Python + importer.html parity.
+- DONE (2026-07-22): Hero art — title + 4 ending registers
+  (whole/held/star/storm) + shelf spine; ending screen shows the
+  register's hero.
+- DONE (2026-07-22): Sequel PLAN — `_SPIDERDROPS_2_DESIGN.md`
+  (THE LONG WIND, post-game, carries the register in).
 - Two-player pass-the-stick mode (the box promised it) — a Manager/
   Counselor-style flag on the host, alternating storms, best-of.
-- Hero images: title card, the four ending registers.
 - Deck-verify: physics stability at 60fps on the Deck, verb feel,
-  telegraph readability, break-ratio + rain-rate tuning.
+  telegraph readability, break-ratio + rain-rate tuning; audio mix +
+  rumble feel; hero legibility over the ending text.
+- BUILD the sequel when the pilot lands (engine reuse; see the plan).

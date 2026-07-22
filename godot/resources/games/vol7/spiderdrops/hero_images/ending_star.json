@@ -1,0 +1,433 @@
+{
+  "id": "spiderdrops_ending_star",
+  "notes": "THE EIGHT-POINTED STAR \u00b7 only the eight spokes endure \u2014 the Orders figure, uncommented.",
+  "w": 160,
+  "h": 90,
+  "palette": [
+    "#18202e",
+    "#2b3a52",
+    "#47597a",
+    "#e8ecef",
+    "#b9c4cf",
+    "#6fb7e0",
+    "#f2c14e",
+    "#9c7a24",
+    "#241c18",
+    "#ff7a5c",
+    "#ffffff",
+    "#6b5535"
+  ],
+  "layers": [
+    {
+      "op": "fill",
+      "color": 0
+    },
+    {
+      "op": "glow",
+      "xy": [
+        80,
+        40
+      ],
+      "r": 30,
+      "color": 6,
+      "strength": 0.35
+    },
+    {
+      "op": "streak",
+      "from": [
+        80,
+        40
+      ],
+      "to": [
+        80,
+        6
+      ],
+      "color": 6,
+      "width": 1.0,
+      "strength": 0.95,
+      "blend": "screen"
+    },
+    {
+      "op": "streak",
+      "from": [
+        80,
+        40
+      ],
+      "to": [
+        80,
+        6
+      ],
+      "color": 3,
+      "width": 0.6,
+      "strength": 0.6,
+      "blend": "screen"
+    },
+    {
+      "op": "streak",
+      "from": [
+        80,
+        40
+      ],
+      "to": [
+        104,
+        16
+      ],
+      "color": 6,
+      "width": 1.0,
+      "strength": 0.95,
+      "blend": "screen"
+    },
+    {
+      "op": "streak",
+      "from": [
+        80,
+        40
+      ],
+      "to": [
+        104,
+        16
+      ],
+      "color": 3,
+      "width": 0.6,
+      "strength": 0.6,
+      "blend": "screen"
+    },
+    {
+      "op": "streak",
+      "from": [
+        80,
+        40
+      ],
+      "to": [
+        114,
+        40
+      ],
+      "color": 6,
+      "width": 1.0,
+      "strength": 0.95,
+      "blend": "screen"
+    },
+    {
+      "op": "streak",
+      "from": [
+        80,
+        40
+      ],
+      "to": [
+        114,
+        40
+      ],
+      "color": 3,
+      "width": 0.6,
+      "strength": 0.6,
+      "blend": "screen"
+    },
+    {
+      "op": "streak",
+      "from": [
+        80,
+        40
+      ],
+      "to": [
+        104,
+        64
+      ],
+      "color": 6,
+      "width": 1.0,
+      "strength": 0.95,
+      "blend": "screen"
+    },
+    {
+      "op": "streak",
+      "from": [
+        80,
+        40
+      ],
+      "to": [
+        104,
+        64
+      ],
+      "color": 3,
+      "width": 0.6,
+      "strength": 0.6,
+      "blend": "screen"
+    },
+    {
+      "op": "streak",
+      "from": [
+        80,
+        40
+      ],
+      "to": [
+        80,
+        74
+      ],
+      "color": 6,
+      "width": 1.0,
+      "strength": 0.95,
+      "blend": "screen"
+    },
+    {
+      "op": "streak",
+      "from": [
+        80,
+        40
+      ],
+      "to": [
+        80,
+        74
+      ],
+      "color": 3,
+      "width": 0.6,
+      "strength": 0.6,
+      "blend": "screen"
+    },
+    {
+      "op": "streak",
+      "from": [
+        80,
+        40
+      ],
+      "to": [
+        56,
+        64
+      ],
+      "color": 6,
+      "width": 1.0,
+      "strength": 0.95,
+      "blend": "screen"
+    },
+    {
+      "op": "streak",
+      "from": [
+        80,
+        40
+      ],
+      "to": [
+        56,
+        64
+      ],
+      "color": 3,
+      "width": 0.6,
+      "strength": 0.6,
+      "blend": "screen"
+    },
+    {
+      "op": "streak",
+      "from": [
+        80,
+        40
+      ],
+      "to": [
+        46,
+        40
+      ],
+      "color": 6,
+      "width": 1.0,
+      "strength": 0.95,
+      "blend": "screen"
+    },
+    {
+      "op": "streak",
+      "from": [
+        80,
+        40
+      ],
+      "to": [
+        46,
+        40
+      ],
+      "color": 3,
+      "width": 0.6,
+      "strength": 0.6,
+      "blend": "screen"
+    },
+    {
+      "op": "streak",
+      "from": [
+        80,
+        40
+      ],
+      "to": [
+        56,
+        16
+      ],
+      "color": 6,
+      "width": 1.0,
+      "strength": 0.95,
+      "blend": "screen"
+    },
+    {
+      "op": "streak",
+      "from": [
+        80,
+        40
+      ],
+      "to": [
+        56,
+        16
+      ],
+      "color": 3,
+      "width": 0.6,
+      "strength": 0.6,
+      "blend": "screen"
+    },
+    {
+      "op": "glow",
+      "xy": [
+        80,
+        40
+      ],
+      "r": 9,
+      "color": 6,
+      "strength": 0.4
+    },
+    {
+      "op": "streak",
+      "from": [
+        80,
+        40
+      ],
+      "to": [
+        87,
+        40
+      ],
+      "color": 7,
+      "width": 1.0,
+      "strength": 0.9,
+      "blend": "screen"
+    },
+    {
+      "op": "streak",
+      "from": [
+        80,
+        40
+      ],
+      "to": [
+        85,
+        44
+      ],
+      "color": 7,
+      "width": 1.0,
+      "strength": 0.9,
+      "blend": "screen"
+    },
+    {
+      "op": "streak",
+      "from": [
+        80,
+        40
+      ],
+      "to": [
+        80,
+        45
+      ],
+      "color": 7,
+      "width": 1.0,
+      "strength": 0.9,
+      "blend": "screen"
+    },
+    {
+      "op": "streak",
+      "from": [
+        80,
+        40
+      ],
+      "to": [
+        75,
+        44
+      ],
+      "color": 7,
+      "width": 1.0,
+      "strength": 0.9,
+      "blend": "screen"
+    },
+    {
+      "op": "streak",
+      "from": [
+        80,
+        40
+      ],
+      "to": [
+        73,
+        40
+      ],
+      "color": 7,
+      "width": 1.0,
+      "strength": 0.9,
+      "blend": "screen"
+    },
+    {
+      "op": "streak",
+      "from": [
+        80,
+        40
+      ],
+      "to": [
+        75,
+        36
+      ],
+      "color": 7,
+      "width": 1.0,
+      "strength": 0.9,
+      "blend": "screen"
+    },
+    {
+      "op": "streak",
+      "from": [
+        80,
+        40
+      ],
+      "to": [
+        80,
+        35
+      ],
+      "color": 7,
+      "width": 1.0,
+      "strength": 0.9,
+      "blend": "screen"
+    },
+    {
+      "op": "streak",
+      "from": [
+        80,
+        40
+      ],
+      "to": [
+        85,
+        36
+      ],
+      "color": 7,
+      "width": 1.0,
+      "strength": 0.9,
+      "blend": "screen"
+    },
+    {
+      "op": "disk",
+      "xy": [
+        80,
+        42
+      ],
+      "r": 3,
+      "color": 6
+    },
+    {
+      "op": "disk",
+      "xy": [
+        80,
+        40
+      ],
+      "r": 2,
+      "color": 7
+    },
+    {
+      "op": "text",
+      "xy": [
+        30,
+        80
+      ],
+      "s": "THE EIGHT-POINTED STAR",
+      "color": 3
+    }
+  ]
+}
