@@ -50,6 +50,13 @@ var _veil: ColorRect = null
 var _chapter_card: Control = null
 var _transition_lock: bool = false
 
+# The producer keeps the departments on one clock across transitions:
+# story dispatch waits for the curtain, audio dips/stops/returns in
+# sync with the veil, and a settle beat lands the establishing shot
+# before the first line. See scripts/vn/VnProducer.gd.
+const VN_PRODUCER_SCRIPT := preload("res://scripts/vn/VnProducer.gd")
+var _producer: Node = null
+
 var _bg_solid:       ColorRect   = null
 var _bg_composition: Control     = null
 var _composition_active: bool    = false
@@ -81,6 +88,8 @@ var _direct_rx:  RegEx       = RegEx.create_from_string("^\\[(shot|panel|stage|m
 
 func _ready() -> void:
 	_build_layers()
+	_producer = VN_PRODUCER_SCRIPT.new()
+	add_child(_producer)
 
 
 func _build_layers() -> void:
@@ -349,7 +358,13 @@ func _load_scene(scene_id: String, start_at: int = 0) -> void:
 	_auto_load_substrate(scene_id)
 	_unlock_gallery_for_scene(scene_id)
 	_apply_chapter_music_context(scene_id)
-	_run_next()
+	# Dispatch through the producer's curtain gate: across a real
+	# transition (veil/chapter card up) the first node waits for the
+	# reveal + settle beat; mid-story jumps pass straight through.
+	if _producer != null:
+		_producer.call("when_curtain_up", Callable(self, "_run_next"))
+	else:
+		_run_next()
 
 
 # Tell AudioMgr which catalog tracks belong to the current chapter.
@@ -1127,15 +1142,21 @@ func _end_scene() -> void:
 	_record_vn_reading(_scene_id)
 	_dlg.visible = false
 	AudioMgr.stop_voice()
-	AudioMgr.unduck()
-	AudioMgr.stop_scene_bgm()
-	if _director != null:
-		_director.call("release")
 	var next := SceneDataDB.get_next_scene_id(_scene_id)
 	if next == "":
+		AudioMgr.unduck()
+		AudioMgr.stop_scene_bgm()
+		if _director != null:
+			_director.call("release")
 		_set_vn_focus(false)
 		game_ended.emit()
 		return
+	# Producer sequencing: the music dips WITH the fade-out; the bed
+	# stops and the camera releases only at full black. (Before this,
+	# BGM hard-cut and the camera snapped while the scene was still
+	# on screen.)
+	if _producer != null:
+		_producer.call("scene_out_begin")
 	# Capture the boundary BEFORE _load_scene replaces _scene_data.
 	var prev_ch := str(_scene_data.get("chapter", ""))
 	var prev_vol := _vol
@@ -1151,6 +1172,10 @@ func _end_scene() -> void:
 	# present the chapter plate (boundary) or fade back in (same-frame
 	# cuts are gone — every scene change breathes).
 	await _fade_veil_in(0.3)
+	if _producer != null:
+		_producer.call("scene_out_black")
+	if _director != null:
+		_director.call("release")
 	_load_scene(next)
 	if chapter_break and titled:
 		_present_chapter_card(next_scene)
@@ -1175,25 +1200,35 @@ func _set_veil(alpha: float) -> void:
 	_ensure_veil()
 	_veil.color.a = alpha
 	_transition_lock = alpha > 0.0
+	if _transition_lock and _producer != null:
+		_producer.call("hold_curtain")
 
 
 func _fade_veil_in(dur: float) -> void:
 	# to black
 	_ensure_veil()
 	_transition_lock = true
+	if _producer != null:
+		_producer.call("hold_curtain")
 	var tw := create_tween()
 	tw.tween_property(_veil, "color:a", 1.0, dur)
 	await tw.finished
 
 
 func _fade_veil_out(dur: float) -> void:
-	# reveal; releases the input lock when fully clear
+	# reveal; the music returns with the light, the input lock lifts
+	# when fully clear, and the producer raises the curtain (settle
+	# beat, then the held first node runs).
 	_ensure_veil()
 	_transition_lock = true
+	if _producer != null:
+		_producer.call("reveal_begin")
 	var tw := create_tween()
 	tw.tween_property(_veil, "color:a", 0.0, dur)
 	tw.tween_callback(func() -> void:
-		_transition_lock = false)
+		_transition_lock = false
+		if _producer != null:
+			_producer.call("curtain_up"))
 
 
 func _present_chapter_card(scene: Dictionary) -> void:
@@ -1212,7 +1247,12 @@ func _present_chapter_card(scene: Dictionary) -> void:
 			if _chapter_card != null and is_instance_valid(_chapter_card):
 				_chapter_card.queue_free()
 			_chapter_card = null
-			_transition_lock = false)
+			_transition_lock = false
+			# The plate sat in hush; music and the first line arrive
+			# together as it clears.
+			if _producer != null:
+				_producer.call("reveal_begin")
+				_producer.call("curtain_up"))
 	# The card is opaque — drop the veil behind it so the world is
 	# already revealed when the card fades itself out.
 	if _veil != null and is_instance_valid(_veil):

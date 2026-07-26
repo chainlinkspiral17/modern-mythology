@@ -118,6 +118,41 @@ no-op (fallback discipline — a script must never crash the reader).
 
 ## Recent lessons
 
+### 2026-07-22 · the PRODUCER · departments on one clock
+
+User: the project has a director module; it needs a producer to bring
+the departments together and get the work in sync. Built
+`scripts/vn/VnProducer.gd`, owned by GameEngine beside the VnDirector.
+
+- **Director stages shots; producer runs the clock.** Three desyncs
+  existed the moment scene fades were added: the first line typed away
+  UNDER the chapter card (typewriter moment spent before the curtain
+  was up), BGM hard-cut while the picture faded, and the camera
+  released (snap) while the old scene was still visible.
+- **The curtain gate.** `_load_scene` dispatches its first node through
+  `producer.when_curtain_up()`. Across a real transition the node
+  waits; mid-story jumps (choice targets, gotos) never hold the curtain
+  and pass straight through. The veil's own lifecycle holds/raises the
+  curtain — no second state machine.
+- **Audio rides existing machinery.** scene_out_begin = AudioMgr.duck()
+  (music dips with the 0.3s fade); scene_out_black = stop_scene_bgm +
+  director release at full black; reveal_begin = unduck (the NEW
+  scene's bed, requested under duck while the veil was up, rises with
+  the light). The chapter plate sits in hush; music and the first line
+  arrive together as it clears. No new audio paths.
+- **The settle beat.** curtain_up waits 0.25s before flushing the held
+  node — the establishing shot lands as a picture before it becomes a
+  page.
+- **Ordering is what makes one duck flag safe.** Dialogue ducking and
+  transition ducking share AudioMgr's single flag; the curtain gate
+  guarantees no say-node can duck until after reveal_begin's unduck.
+  Sequencing beats flags.
+- LightController is CP-only (appears in zero VN locale scenes) — the
+  producer deliberately does NOT bridge mood→lights; VN mood authority
+  stays VnDirector→MoodCycler. Bridging would have driven nothing.
+- Future departments hook the producer: painted art plates, portrait
+  relighting on mood, per-scene ambience choreography.
+
 ### 2026-07-22 · presentation wave 1 · the book finally has chapter breaks
 
 - **The scene JSON carried `title` for 177 scenes and nobody displayed
