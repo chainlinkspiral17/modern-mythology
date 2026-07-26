@@ -15,6 +15,8 @@ const VOL_TITLES: Dictionary = {
 }
 
 var _dot_rects: Dictionary = {}
+var _chapter_lbl: Label = null
+var _chapter_text: String = ""
 
 
 func setup(skin: Dictionary, vol: int, skills: Dictionary, _unused: Variant = null) -> void:
@@ -22,6 +24,17 @@ func setup(skin: Dictionary, vol: int, skills: Dictionary, _unused: Variant = nu
 		ch.queue_free()
 	_dot_rects = {}
 	_build(skin, vol, skills)
+
+
+## Persistent echo of the chapter plate — "· CH II · A Fool Between
+## Acts" whispered beside the volume title, so the reader always knows
+## where they are in the book. Survives setup() rebuilds (skin swaps
+## re-apply the cached text).
+func set_chapter(text: String) -> void:
+	_chapter_text = text
+	if _chapter_lbl != null and is_instance_valid(_chapter_lbl):
+		_chapter_lbl.text = text
+		_chapter_lbl.visible = text != ""
 
 
 func update_skills(skills: Dictionary) -> void:
@@ -67,6 +80,18 @@ func _build(skin: Dictionary, vol: int, skills: Dictionary) -> void:
 	if ResourceLoader.exists(hud_font):
 		title_lbl.add_theme_font_override("font", load(hud_font) as Font)
 	row.add_child(title_lbl)
+
+	# Chapter whisper — dimmer than the volume title, serif italic.
+	_chapter_lbl = Label.new()
+	_chapter_lbl.text = _chapter_text
+	_chapter_lbl.visible = _chapter_text != ""
+	_chapter_lbl.vertical_alignment = VERTICAL_ALIGNMENT_CENTER
+	_chapter_lbl.add_theme_font_size_override("font_size", 12)
+	_chapter_lbl.add_theme_color_override("font_color",
+			Color(hud_col.r, hud_col.g, hud_col.b, 0.55))
+	if ResourceLoader.exists(SkinDB.F_IMFELL_I):
+		_chapter_lbl.add_theme_font_override("font", load(SkinDB.F_IMFELL_I) as Font)
+	row.add_child(_chapter_lbl)
 
 	var sp1 := Control.new()
 	sp1.size_flags_horizontal = Control.SIZE_EXPAND_FILL

@@ -358,6 +358,16 @@ func _load_scene(scene_id: String, start_at: int = 0) -> void:
 	_auto_load_substrate(scene_id)
 	_unlock_gallery_for_scene(scene_id)
 	_apply_chapter_music_context(scene_id)
+	# Persistent chapter echo in the HUD (the plate's quiet twin).
+	if _hud != null and _hud.has_method("set_chapter"):
+		var ch := str(_scene_data.get("chapter", "")).strip_edges()
+		var ttl := String(_scene_data.get("title", "")).strip_edges()
+		var parts: PackedStringArray = PackedStringArray()
+		if ch != "":
+			parts.append("CH %s" % ch.to_upper())
+		if ttl != "":
+			parts.append(ttl)
+		_hud.call("set_chapter", ("·  " + "  ·  ".join(parts)) if parts.size() > 0 else "")
 	# Dispatch through the producer's curtain gate: across a real
 	# transition (veil/chapter card up) the first node waits for the
 	# reveal + settle beat; mid-story jumps pass straight through.
