@@ -7,6 +7,10 @@ Project guidance for Claude (any session) working on Modern Mythology.
 When picking up a session in this repo, **read these first** before
 touching code:
 
+0. `lore/_IMPROVEMENT_ROADMAP.md` — the living prioritized plan
+   (per-pillar backlogs, the user-side gates, recommended sequence).
+   Update it when items ship or a blocking decision lands.
+
 1. `lore/_3D_MODELING_PLAYBOOK.md` — hard-won rules for the Blender
    → glTF → Godot pipeline. Read the Core rules (especially the
    "Coordinate frame" section) and the latest two entries under
