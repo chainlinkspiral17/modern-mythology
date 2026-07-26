@@ -431,7 +431,8 @@ func _process(delta: float) -> void:
 		var node: Control = slot["node"]
 		var phase: float  = IDLE_PHASE[pos]
 		var idle_y: float = sin((_t + phase) * TAU / IDLE_PERIOD) * IDLE_AMP
-		node.position = POSITIONS[pos] + Vector2(pdx, idle_y + pdy)
+		var entrance_y: float = float(node.get_meta("entrance_y")) if node.has_meta("entrance_y") else 0.0
+		node.position = POSITIONS[pos] + Vector2(pdx, idle_y + pdy + entrance_y)
 		# ── Subtle breath: ±1% scale on the tint_holder, longer period
 		# than position sway so the two motions don't beat against each
 		# other. Reads as the figure inhaling.
@@ -1084,8 +1085,19 @@ func _make_portrait(char_name: String, expr: String, pos: String) -> Control:
 	wrapper.set_meta("char", char_name)
 
 	add_child(wrapper)
+	# Entrance: fade + a short rise (12px) so a character arrives with
+	# a breath instead of materializing in place. _process writes
+	# wrapper.position absolutely every frame (idle bob), so the rise
+	# rides an "entrance_y" meta that the bob math composes in.
+	wrapper.set_meta("entrance_y", 12.0)
 	var tw := wrapper.create_tween()
-	tw.tween_property(wrapper, "modulate:a", 1.0, 0.3)
+	tw.set_parallel(true)
+	tw.tween_property(wrapper, "modulate:a", 1.0, 0.35)\
+		.set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT)
+	tw.tween_method(func(v: float) -> void:
+		if is_instance_valid(wrapper):
+			wrapper.set_meta("entrance_y", v), 12.0, 0.0, 0.35)\
+		.set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT)
 	return wrapper
 
 

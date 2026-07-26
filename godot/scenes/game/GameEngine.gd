@@ -21,7 +21,9 @@ const BG_FRAME_SCRIPT     := preload("res://scenes/game/BgFrame.gd")
 # Debug: overlay the resolved bg asset path on the bg image so you
 # can see which file each scene's bg directive is loading while
 # playing. Disable once you're done debugging.
-const DEBUG_BG_OVERLAY: bool = true
+const DEBUG_BG_OVERLAY: bool = false
+
+const CHAPTER_CARD_SCRIPT := preload("res://scenes/game/ChapterCard.gd")
 
 var _vol:         int        = 1
 var _scene_id:    String     = ""
@@ -38,6 +40,15 @@ var _active_slot: int        = -1
 var _waiting:     bool  = false
 var _auto_timer:  float = 0.0
 var _paused:      bool  = false
+
+# ── Scene transitions (2026-07 presentation wave) ────────────────
+# A fade veil above all UI (z 140) carries scene→scene cuts; a
+# ChapterCard (z 150) presents the scene JSON's `title` at every
+# (vol, chapter) boundary. `_transition_lock` gates _input so a
+# click during a fade can't advance the story underneath.
+var _veil: ColorRect = null
+var _chapter_card: Control = null
+var _transition_lock: bool = false
 
 var _bg_solid:       ColorRect   = null
 var _bg_composition: Control     = null
@@ -252,7 +263,15 @@ func start(vol: int, scene_id: String = "", slot: int = -1, start_node: int = 0)
 			push_error("GameEngine: no chapters for vol %d" % vol)
 			return
 		scene_id = chapters[0].get("id", "")
+	# Open on black; the first scene arrives through its chapter card
+	# (fresh sessions always deserve the plate) or a fade-in.
+	_set_veil(1.0)
 	_load_scene(scene_id, start_node)
+	var sc := SceneDataDB.get_scene(scene_id)
+	if start_node == 0 and String(sc.get("title", "")).strip_edges() != "":
+		_present_chapter_card(sc)
+	else:
+		_fade_veil_out(0.6)
 
 
 func load_save(save_data: Dictionary) -> void:
@@ -267,7 +286,10 @@ func load_save(save_data: Dictionary) -> void:
 	_apply_skin(_vol)
 	# Load scene data without auto-running, then jump to saved node index
 	var target_idx: int = int(save_data.get("nodeIndex", 0))
+	# Mid-scene resume: no chapter card, just a quiet fade-in.
+	_set_veil(1.0)
 	_load_scene(save_data.get("scene", ""), target_idx)
+	_fade_veil_out(0.5)
 
 
 # ── Skin ──────────────────────────────────────────────────────────────────────
@@ -1003,6 +1025,11 @@ func _vn_debug_overlay_visible() -> bool:
 func _input(event: InputEvent) -> void:
 	if _paused:
 		return
+	# Scene transition in flight — the veil or a chapter card owns the
+	# screen. The ChapterCard handles its own advance input; nothing
+	# may reach the story underneath.
+	if _transition_lock:
+		return
 	# Modal fence: a full-screen overlay (the cabin TV / slowstock
 	# library) is open somewhere above us. _input fires before ANY
 	# gui routing, so without this gate every key pressed inside a
@@ -1105,16 +1132,91 @@ func _end_scene() -> void:
 	if _director != null:
 		_director.call("release")
 	var next := SceneDataDB.get_next_scene_id(_scene_id)
-	if next != "":
-		var next_scene := SceneDataDB.get_scene(next)
-		var next_vol: int = int(next_scene.get("vol", _vol))
-		if next_vol != _vol:
-			_vol = next_vol
-			_apply_skin(_vol)
-		_load_scene(next)
-	else:
+	if next == "":
 		_set_vn_focus(false)
 		game_ended.emit()
+		return
+	# Capture the boundary BEFORE _load_scene replaces _scene_data.
+	var prev_ch := str(_scene_data.get("chapter", ""))
+	var prev_vol := _vol
+	var next_scene := SceneDataDB.get_scene(next)
+	var next_vol: int = int(next_scene.get("vol", _vol))
+	if next_vol != _vol:
+		_vol = next_vol
+		_apply_skin(_vol)
+	var chapter_break: bool = next_vol != prev_vol \
+		or str(next_scene.get("chapter", "")) != prev_ch
+	var titled: bool = String(next_scene.get("title", "")).strip_edges() != ""
+	# Fade to black, build the next scene under the veil, then either
+	# present the chapter plate (boundary) or fade back in (same-frame
+	# cuts are gone — every scene change breathes).
+	await _fade_veil_in(0.3)
+	_load_scene(next)
+	if chapter_break and titled:
+		_present_chapter_card(next_scene)
+	else:
+		_fade_veil_out(0.45)
+
+
+# ── Transition machinery ────────────────────────────────────────
+
+func _ensure_veil() -> void:
+	if _veil != null and is_instance_valid(_veil):
+		return
+	_veil = ColorRect.new()
+	_veil.color = Color(0.01, 0.008, 0.005, 0.0)
+	_veil.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
+	_veil.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	_veil.z_index = UI_Z + 40
+	add_child(_veil)
+
+
+func _set_veil(alpha: float) -> void:
+	_ensure_veil()
+	_veil.color.a = alpha
+	_transition_lock = alpha > 0.0
+
+
+func _fade_veil_in(dur: float) -> void:
+	# to black
+	_ensure_veil()
+	_transition_lock = true
+	var tw := create_tween()
+	tw.tween_property(_veil, "color:a", 1.0, dur)
+	await tw.finished
+
+
+func _fade_veil_out(dur: float) -> void:
+	# reveal; releases the input lock when fully clear
+	_ensure_veil()
+	_transition_lock = true
+	var tw := create_tween()
+	tw.tween_property(_veil, "color:a", 0.0, dur)
+	tw.tween_callback(func() -> void:
+		_transition_lock = false)
+
+
+func _present_chapter_card(scene: Dictionary) -> void:
+	_transition_lock = true
+	if _chapter_card != null and is_instance_valid(_chapter_card):
+		_chapter_card.queue_free()
+	_chapter_card = CHAPTER_CARD_SCRIPT.new()
+	_chapter_card.z_index = UI_Z + 50
+	add_child(_chapter_card)
+	var ch := str(scene.get("chapter", "")).strip_edges()
+	var kicker := "VOLUME %d" % _vol
+	if ch != "":
+		kicker += "   ·   CHAPTER %s" % ch.to_upper()
+	_chapter_card.call("present", kicker, String(scene.get("title", "")),
+		func() -> void:
+			if _chapter_card != null and is_instance_valid(_chapter_card):
+				_chapter_card.queue_free()
+			_chapter_card = null
+			_transition_lock = false)
+	# The card is opaque — drop the veil behind it so the world is
+	# already revealed when the card fades itself out.
+	if _veil != null and is_instance_valid(_veil):
+		_veil.color.a = 0.0
 
 
 # ── Auto-portrait fallback ──────────────────────────────────────

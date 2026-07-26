@@ -118,6 +118,34 @@ no-op (fallback discipline — a script must never crash the reader).
 
 ## Recent lessons
 
+### 2026-07-22 · presentation wave 1 · the book finally has chapter breaks
+
+- **The scene JSON carried `title` for 177 scenes and nobody displayed
+  it.** GameEngine now presents a ChapterCard (InterludePanel register:
+  ornaments, Cinzel kicker VOLUME N · CHAPTER X, IM Fell title) at every
+  (vol, chapter) boundary — 71 boundaries across vols 5-7 — plus on
+  fresh session start. Data that ships unread is a presentation bug.
+- **Every scene change now breathes.** A fade veil (z UI+40) carries
+  scene→scene: 0.3s to black, build the next scene under it, then the
+  chapter plate or a 0.45s reveal. `_transition_lock` gates
+  GameEngine._input so a click mid-fade cannot advance the story
+  underneath; the ChapterCard handles its own advance and releases the
+  lock in its dismiss callback. Same-frame hard cuts are gone.
+- **The typewriter now reads with the prose.** Punctuation-aware pacing
+  in DialogueBox._process: sentence stops hold 7x the char delay,
+  em-dash/ellipsis 5x, colon/semicolon 4x, comma 2.6x — all scaled off
+  the user's char-delay setting, so faster settings stay faster.
+- **Tween against the writer, not the property.** CharLayer._process
+  writes wrapper.position absolutely every frame (idle bob), so the new
+  portrait entrance rise rides an `entrance_y` meta the bob math
+  composes in — never tween a property something else owns per-frame.
+- **CgPanel fades (0.5s in with a 1.03→1.0 settle-zoom, 0.35s out) and
+  DEBUG_BG_OVERLAY is finally false.** A debug label had been shipping
+  in the corner of every scene.
+- Deck-verify: card typography, fade durations, pacing multipliers, the
+  entrance rise amount — all feel numbers.
+
+
 ### 2026-07-13 · v5 · game-wide render fixes + the ~220-scene direction sweep
 
 A long playtest surfaced three CLASSES of bug that read as "black"

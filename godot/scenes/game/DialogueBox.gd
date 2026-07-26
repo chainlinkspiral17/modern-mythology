@@ -489,9 +489,15 @@ func _process(delta: float) -> void:
 	if _typing:
 		_char_timer -= delta
 		if _char_timer <= 0.0:
-			_char_timer = Settings.get_char_delay_ms() / 1000.0
 			_char_idx += 1
-			_body.text  = _substr_visible(_full_text, _char_idx)
+			var shown := _substr_visible(_full_text, _char_idx)
+			_body.text = shown
+			# Punctuation-aware pacing (2026-07 presentation wave): the
+			# reveal breathes with the prose instead of ticking flatly.
+			# Sentence stops hold longest, clause marks hold a little;
+			# everything scales off the user's char-delay setting.
+			var base := Settings.get_char_delay_ms() / 1000.0
+			_char_timer = base * _pause_mult_after(shown)
 			# No scroll_to_line — the box auto-fits the whole passage, and
 			# scrolling to the last line was hiding the opening lines.
 			if _char_idx >= _count_visible(_full_text):
@@ -502,6 +508,28 @@ func _process(delta: float) -> void:
 		var a: float = 0.4 + 0.6 * (0.5 + 0.5 * sin(_cursor_t * TAU / 1.5))
 		_cursor.modulate.a = a
 		_place_cursor()
+
+
+# Multiplier for the delay AFTER the character just revealed (the
+# last visible char of `shown`). Ellipses read as the middle dot of
+# "..." so the hold lands once, on the final dot.
+func _pause_mult_after(shown: String) -> float:
+	if shown.is_empty():
+		return 1.0
+	var c := shown[shown.length() - 1]
+	match c:
+		".", "!", "?":
+			return 7.0
+		"—", "…":
+			return 5.0
+		";", ":":
+			return 4.0
+		",":
+			return 2.6
+		"\n":
+			return 3.0
+		_:
+			return 1.0
 
 
 func _substr_visible(text: String, n: int) -> String:

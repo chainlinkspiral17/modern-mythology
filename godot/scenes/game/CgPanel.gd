@@ -45,11 +45,32 @@ func present(src: String, caption: String, callback: Callable) -> void:
 	else:
 		_img.texture = null
 
+	# Fade in — the illustration arrives with a slow reveal and a
+	# barely-there settle-zoom instead of popping on.
+	_dismissing = false
+	modulate.a = 0.0
+	_img.pivot_offset = _img.size * 0.5
+	_img.scale = Vector2(1.03, 1.03)
+	var tw := create_tween()
+	tw.set_parallel(true)
+	tw.tween_property(self, "modulate:a", 1.0, 0.5)\
+		.set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT)
+	tw.tween_property(_img, "scale", Vector2.ONE, 2.2)\
+		.set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT)
+
+
+var _dismissing: bool = false
 
 func _input(event: InputEvent) -> void:
-	if not visible:
+	if not visible or _dismissing:
 		return
 	if event.is_action_pressed("advance"):
 		get_viewport().set_input_as_handled()
-		if _callback.is_valid():
-			_callback.call()
+		_dismissing = true
+		var tw := create_tween()
+		tw.tween_property(self, "modulate:a", 0.0, 0.35)\
+			.set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN)
+		tw.tween_callback(func() -> void:
+			modulate.a = 1.0
+			if _callback.is_valid():
+				_callback.call())
