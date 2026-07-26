@@ -118,6 +118,23 @@ no-op (fallback discipline — a script must never crash the reader).
 
 ## Recent lessons
 
+### 2026-07-22 · choice plates · the turning points get the register
+
+- **Eight choices across vols 5-7 — each one a chapter-grade moment
+  that looked like a debug menu** (stock 13px buttons at the top of a
+  near-opaque 70%x80% slab). Rebuilt ChoiceMenu in the plate register:
+  translucent scrim (the scene stays visible, dimmed, alpha capped
+  0.78), centered column with rule-diamond-rule ornaments, IM Fell
+  italic 22 prompt, centered chrome-less option lines (StyleBoxEmpty at
+  rest, thin gold underline + gold text on hover/focus), skill checks
+  as "· logic 3 ·" annotations. Font floor for options raised to 19
+  while keeping each volume's skin font. Hover tick + select SFX from
+  the shared bank. Public API (setup/present/visible), pad focus,
+  number keys, staggered entrance all preserved.
+- **Options are TEXT, the way the dialogue is.** The chrome-less
+  July-12 philosophy extends to choices: rest state is pure type;
+  interaction state is an underline, not a box.
+
 ### 2026-07-22 · the PRODUCER · departments on one clock
 
 User: the project has a director module; it needs a producer to bring
