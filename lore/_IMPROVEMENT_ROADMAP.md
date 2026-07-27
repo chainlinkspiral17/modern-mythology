@@ -53,10 +53,13 @@ producer discipline).
   backing plates, CG art, locale PNG fallbacks for unbuilt GLB
   locales. Extend `art_studio.html`'s catalog with VN slots; hook
   plate display through the producer clock.
-- **P1 · Locale coverage report** — small tool: cross-reference the
-  380 `3d:` scene directives against locale GLBs actually built on
-  the Deck, output the build-priority list (which `build_*.py` runs
-  unlock the most scenes). Makes gate-3 Deck time efficient.
+- **SHIPPED 2026-07 · Locale coverage report** —
+  `python3 godot/tools/locale_coverage.py` (run on the Deck):
+  cross-references the 78 GLB-requiring camera presets against the
+  `3d:` story directives and the files on disk, prints the missing
+  list in build-priority order with the exact `run_cathedral.sh`
+  command per locale. Born from a real boot error
+  (riverboat_interior.glb unbuilt).
 - **P1 · Dialogue-surface iteration** — after the Deck look: scrim
   number, and the parked taste call on any further chrome.
 - **SHIPPED 2026-07 · Kinetic text** — grammar documented in the
