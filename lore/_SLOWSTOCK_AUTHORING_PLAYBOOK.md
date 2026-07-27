@@ -840,3 +840,27 @@ quotes, promises, the manuscript). Lessons:
 - **Punchy lesson, present tense.** Two-to-four sentences.
 - **Next lesson.** Same shape.
 ```
+
+### 2026-07-27 · Northwind Harbor full build · depth without breaking a quiet game
+
+- **Scarcity through abundance fits even the gentlest design.** The
+  depth floor asks for expiring tradeoffs, but Northwind's soul is
+  "no fail states." Resolution: author MORE morning than the 73
+  minutes hold (main chain + 4-5 optional kindness chains, each
+  with its own overheard hint). Nothing fails — you just can't do
+  everything, and what you skip carries over with the town
+  noticing. Pressure without punishment.
+- **Make the signature mechanic mechanical.** "Listening" was
+  flavor; now every optional chain is gated behind its own heard
+  step, so the hint system IS the quest log. If a stick has a
+  stated core mechanic, the depth pass should route real play
+  through it, not around it.
+- **Pay off tracked variables with capability, not just prose.**
+  Bosun's pets were a ch7 text payoff; now trust ≥3 also buys one
+  fetch per morning (adjacent-screen pickup, tagged fetchable) —
+  the relationship becomes a mastery lever while keeping its prose
+  payoff intact.
+- **Expand content in the canon's own voice or not at all.** All 26
+  v1 steps kept verbatim (Sam's 1988 save is canon); the 26 new
+  steps imitate the lowercase working-harbor register. A depth pass
+  that rewrites canon prose is a different, worse thing.

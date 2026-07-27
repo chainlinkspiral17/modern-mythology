@@ -53,7 +53,7 @@ var _loc_lbl: Label = null
 var _clock_lbl: Label = null
 var _text_lbl: Label = null
 var _nav_row: HBoxContainer = null
-var _act_btn: Button = null
+var _act_col: VBoxContainer = null
 var _pocket_lbl: Label = null
 var _heard_btn: Button = null
 var _heard_overlay: Control = null
@@ -78,6 +78,8 @@ func boot(state: Dictionary) -> void:
 	_loc_id = "maddox_porch"
 	_morning_done = false
 	_petted_this_morning = false
+	_fetched_this_morning = false
+	_kindness_today = 0
 	_enter_location(_loc_id, true)
 	if n == 1:
 		_add_heard(_opening_line())
@@ -206,6 +208,14 @@ func _live_step_here() -> Dictionary:
 	return {}
 
 
+func _live_steps_here() -> Array:
+	var out: Array = []
+	for s in _live_steps():
+		if String(s["loc"]) == _loc_id:
+			out.append(s)
+	return out
+
+
 func _next_step_loc() -> String:
 	var here: Dictionary = _live_step_here()
 	if not here.is_empty():
@@ -275,14 +285,11 @@ func _build_ui() -> void:
 	_nav_row.add_theme_constant_override("separation", 10)
 	add_child(_nav_row)
 
-	_act_btn = Button.new()
-	_act_btn.flat = true
-	_act_btn.position = Vector2(1010, 608)
-	_act_btn.size = Vector2(200, 30)
-	_act_btn.add_theme_font_size_override("font_size", 14)
-	_act_btn.add_theme_color_override("font_color", C_LAMP)
-	_act_btn.pressed.connect(_do_step)
-	add_child(_act_btn)
+	_act_col = VBoxContainer.new()
+	_act_col.position = Vector2(1000, 560)
+	_act_col.size = Vector2(268, 130)
+	_act_col.add_theme_constant_override("separation", 2)
+	add_child(_act_col)
 
 	_pocket_lbl = Label.new()
 	_pocket_lbl.position = Vector2(730, 668)
@@ -318,9 +325,12 @@ func _enter_location(loc_id: String, first: bool = false) -> void:
 	_render()
 	# The town talks AT you · a step line if one is live and it is a
 	# heard/look type (those fire on arrival · listening is passive).
-	var step: Dictionary = _live_step_here()
-	if not step.is_empty() and String(step.get("type", "")) in ["heard", "look"]:
-		_do_step()
+	for step_v in _live_steps_here():
+		var step: Dictionary = step_v
+		var t := String(step.get("type", ""))
+		if t == "heard" or (t == "look" and not bool(step.get("optional", false))):
+			_do_step(step)
+			break
 
 
 func _render() -> void:
@@ -335,7 +345,9 @@ func _render() -> void:
 	_tableau.modulate = Color(0.62, 0.66, 0.72) if fog else Color.WHITE
 
 	_loc_lbl.text = String(loc.get("name", _loc_id)) + ("  · fog ·" if fog else "")
-	_clock_lbl.text = "%d:%02d" % [_minutes / 60, _minutes % 60]
+	var left: int = HORN_MIN - _minutes
+	_clock_lbl.text = "%d:%02d · %d min" % [_minutes / 60, _minutes % 60, left]
+	_clock_lbl.add_theme_color_override("font_color", C_LAMP if left <= 15 else C_GULL)
 
 	# Ambient line unless a step already spoke
 	if _live_step_here().is_empty():
@@ -346,7 +358,7 @@ func _render() -> void:
 			_text_lbl.text = carry if carry != "" else String(lines[_ambient_flip % lines.size()])
 
 	_render_nav(fog, n)
-	_render_action()
+	_render_actions()
 	_render_pockets()
 	_render_bosun(n)
 
@@ -396,19 +408,44 @@ func _render_nav(fog: bool, n: int) -> void:
 		_nav_row.add_child(b)
 
 
-func _render_action() -> void:
-	var step: Dictionary = _live_step_here()
-	if step.is_empty():
-		_act_btn.visible = false
-		return
-	var t := String(step.get("type", ""))
-	match t:
-		"pickup": _act_btn.text = "· pick up: %s ·" % String(step.get("item", ""))
-		"give":   _act_btn.text = "· give: %s ·" % String(step.get("item", ""))
-		"use":    _act_btn.text = "· use: %s ·" % String(step.get("item", ""))
-		"look":   _act_btn.text = "· look ·"
-		_:        _act_btn.text = "· listen ·"
-	_act_btn.visible = true
+func _render_actions() -> void:
+	for c in _act_col.get_children():
+		c.queue_free()
+	for step_v in _live_steps_here():
+		var step: Dictionary = step_v
+		var t := String(step.get("type", ""))
+		var b := Button.new()
+		b.flat = true
+		b.alignment = HORIZONTAL_ALIGNMENT_RIGHT
+		b.add_theme_font_size_override("font_size", 14)
+		b.add_theme_color_override("font_color", C_LAMP)
+		match t:
+			"pickup": b.text = "· pick up: %s ·" % String(step.get("item", ""))
+			"give":   b.text = "· give: %s ·" % String(step.get("item", ""))
+			"use":    b.text = "· use: %s ·" % String(step.get("item", ""))
+			"look":   b.text = "· look ·"
+			"help":   b.text = "· lend a hand ·"
+			_:        b.text = "· listen ·"
+		b.pressed.connect(_do_step.bind(step))
+		_act_col.add_child(b)
+	# bosun fetch · six mornings of hands buys one errand of nose.
+	# a trusted dog will fetch a plain object from the next screen.
+	if int(_state.get("bosun_pets", 0)) >= 3 and not _fetched_this_morning:
+		var loc: Dictionary = _locs.get(_loc_id, {})
+		for adj_v in loc.get("adjacent", []):
+			for s2_v in _live_steps():
+				var s2: Dictionary = s2_v
+				if String(s2["loc"]) == String(adj_v) and bool(s2.get("fetchable", false)) \
+						and String(s2.get("type", "")) == "pickup":
+					var fb := Button.new()
+					fb.flat = true
+					fb.alignment = HORIZONTAL_ALIGNMENT_RIGHT
+					fb.add_theme_font_size_override("font_size", 14)
+					fb.add_theme_color_override("font_color", C_PILE)
+					fb.text = "· send bosun for the %s ·" % String(s2.get("item", ""))
+					fb.pressed.connect(_bosun_fetch.bind(s2))
+					_act_col.add_child(fb)
+					return
 
 
 func _render_pockets() -> void:
@@ -452,8 +489,7 @@ func _render_bosun(n: int) -> void:
 
 # ─── Steps ───────────────────────────────────────────────────────
 
-func _do_step() -> void:
-	var step: Dictionary = _live_step_here()
+func _do_step(step: Dictionary) -> void:
 	if step.is_empty() or _morning_done:
 		return
 	var t := String(step.get("type", ""))
@@ -481,6 +517,11 @@ func _do_step() -> void:
 			_text_lbl.text = String(step.get("text", ""))
 			_mark_done(sid)
 			_sfx("pickup", 0.6)
+		"help":
+			_text_lbl.text = String(step.get("line", ""))
+			_mark_done(sid)
+			_minutes += 2
+			_sfx("pickup", 0.4)
 		"give", "use":
 			var item := String(step.get("item", ""))
 			var p2: Array = _pockets()
@@ -495,7 +536,35 @@ func _do_step() -> void:
 			_mark_done(sid)
 			if sid == "fix_lamp":
 				_sfx("lamp_buzz", 0.8)
+	if bool(step.get("kindness", false)):
+		_state["kindness_total"] = int(_state.get("kindness_total", 0)) + 1
+		_kindness_today += 1
 	_minutes += ACT_COST
+	if _minutes >= HORN_MIN:
+		_end_morning()
+		return
+	_render()
+
+
+var _fetched_this_morning: bool = false
+var _kindness_today: int = 0
+
+
+func _bosun_fetch(step: Dictionary) -> void:
+	if _morning_done or _fetched_this_morning:
+		return
+	if _pockets().size() >= POCKET_SLOTS:
+		_text_lbl.text = "your pockets are full. even bosun cannot argue with five."
+		return
+	_fetched_this_morning = true
+	var p: Array = _pockets()
+	p.append(String(step.get("item", "")))
+	_state["pockets"] = p
+	_mark_done(String(step["id"]))
+	_minutes += 2
+	_bosun_note.text = "bosun is gone ninety seconds and comes back carrying it like the crown jewels. six mornings of hands bought this."
+	_text_lbl.text = "the %s, delivered by dog." % String(step.get("item", ""))
+	_sfx("pickup", 0.7)
 	if _minutes >= HORN_MIN:
 		_end_morning()
 		return
@@ -509,7 +578,7 @@ func _show_poster() -> void:
 		_tableau.texture = hero.texture(Vector2i(1056, 594))
 	_loc_lbl.text = ""
 	_nav_row.visible = false
-	_act_btn.visible = false
+	_act_col.visible = false
 	_heard_btn.visible = false
 	_pocket_lbl.visible = false
 	_add_heard("the poster on the cannery wall · CARNIVAL · SEVEN YEARS · 1976 · half torn · bosun would not come near it")
@@ -525,8 +594,37 @@ func _end_morning() -> void:
 		return
 	_morning_done = true
 	_sfx("boat_horn", 1.0)
-	_text_lbl.text = "the horns blow across the water. the morning is over, however it went."
-	_act_btn.visible = false
+	var n: int = int(_chapter.get("n", 1))
+	var req_total: int = 0
+	var req_done: int = 0
+	for step_v in _chapter.get("steps", []):
+		var st: Dictionary = step_v
+		if bool(st.get("optional", false)):
+			continue
+		req_total += 1
+		if _steps_done().has(String(st["id"])):
+			req_done += 1
+	var lines: Array = ["the horns blow across the water. the morning is over, however it went."]
+	if req_total > 0:
+		if req_done >= req_total:
+			lines.append("the morning's errand closed. the town will not mention it, which is how you know it counted.")
+		else:
+			lines.append("the morning's errand did not close. it will keep · things here keep · but the town notices.")
+	if _kindness_today > 0:
+		lines.append("%d small thing%s done that nobody asked for." % [_kindness_today, "" if _kindness_today == 1 else "s"])
+	if n == 7:
+		var week_done := true
+		for ch_v in _chapters:
+			for st2_v in (ch_v as Dictionary).get("steps", []):
+				var st2: Dictionary = st2_v
+				if not bool(st2.get("optional", false)) and not _steps_done().has(String(st2["id"])):
+					week_done = false
+		_state["nh_good_week"] = week_done
+		if week_done:
+			lines.append("seven mornings. every chain closed. THE GOOD WEEK · the manual said you could not be good at this. the manual lied by one week.")
+	_text_lbl.text = "\n".join(PackedStringArray(lines))
+	_text_lbl.size = Vector2(880, 90)
+	_act_col.visible = false
 	_nav_row.visible = false
 	var home := Button.new()
 	home.text = "  · walk home ·  "

@@ -1,7 +1,15 @@
 # NORTHWIND HARBOR · DESIGN
 ### Oneironautics Inc. · 1988 · PUZZLE / ADVENTURE
 ### seven mornings · a boy, a dog, a harbor · the founding text
-### STATUS: BUILT · playable_v1 (2026-07) · host + NorthwindMorning,
+### STATUS: BUILT · full_game_v2 (2026-07-27) · the depth build:
+### 52 steps (26 canon + 26 optional kindness/errand chains, each
+### with its own overheard hint), help step type, kindness ledger
+### the horn summary reads back, Bosun fetch at trust ≥3 (pets buy
+### one adjacent-screen errand of nose), horn-countdown clock, more
+### morning than the 73 minutes allow (scarcity through abundance),
+### chains + kindnesses carry across mornings, THE GOOD WEEK
+### computed at the ch7 horn (nh_good_week). v1 line:
+### playable_v1 (2026-07) · host + NorthwindMorning,
 ### 12 tableau HeroImages + 3 designed, 6 Bosun stances, HEARD list,
 ### pockets, fog nav by sound cue, concertina + title pad + 4 SFX,
 ### Sam's 1988 save on the title screen, blacked-out Delisle chart
