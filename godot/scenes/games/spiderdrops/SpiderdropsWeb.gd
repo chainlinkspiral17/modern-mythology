@@ -48,6 +48,11 @@ const DROP_ADD := 0.28
 const RAIN_BASE := 5.0                # drops/sec at wave 1
 const RAIN_PER_WAVE := 2.2
 const DEBRIS_MAX := 3.0
+const DROP_FALL_ACCEL := 900.0        # falling raindrop gravity
+const DROP_HOME := 3.0                # falling drop homing toward its (swaying) node
+const LAND_KICK := 1.8                # verlet impulse when a drop lands
+const FLOW_RATE := 0.4               # water/sec down a fully vertical strand
+const PULSE_T := 0.25                 # impact grow-pulse length
 
 # ── storm waves
 const WAVE_COUNT := 6
@@ -117,6 +122,8 @@ var _pluck_cd: float = 0.0
 var _spin_cd: float = 0.0
 var _rain_accum: float = 0.0
 var _score: float = 0.0
+var _falling: Array = []              # {pos,vel,target,kind}
+var _splashes: Array = []             # {pos,t}
 
 # HUD
 var _hud_wave: Label = null
@@ -259,14 +266,94 @@ func _accumulate_rain(delta: float) -> void:
 		_rain_accum -= 1.0
 		var i: int = _rain_target()
 		if i >= 0:
-			var n: Dictionary = _nodes[i]
-			n["water"] = minf(float(n["water"]) + DROP_ADD, WATER_MAX)
-	# debris on the gust
+			_spawn_falling(i, "water")
+	# debris rides in on the gust
 	if _phase == "gust" and randf() < 4.0 * delta:
 		var j: int = _rain_target()
 		if j >= 0:
-			var m: Dictionary = _nodes[j]
-			m["debris"] = minf(float(m["debris"]) + 1.0, DEBRIS_MAX)
+			_spawn_falling(j, "debris")
+
+
+func _spawn_falling(target: int, kind: String) -> void:
+	var tp: Vector2 = _nodes[target]["pos"]
+	var lead: float = -_wind.x * 0.14   # start upwind so the slant lands true
+	var start := Vector2(tp.x + lead + randf_range(-30.0, 30.0), -20.0 - randf() * 60.0)
+	var vel := Vector2(_wind.x * 0.12, 260.0 + randf() * 120.0)
+	if kind == "debris":
+		start = Vector2(tp.x - signf(_gust_dir.x) * 420.0, tp.y - randf_range(60.0, 180.0))
+		vel = _gust_dir.normalized() * 420.0 + Vector2(0, 60.0)
+	_falling.append({"pos": start, "vel": vel, "target": target, "kind": kind})
+
+
+func _update_falling(delta: float) -> void:
+	for k in range(_falling.size() - 1, -1, -1):
+		var d: Dictionary = _falling[k]
+		var target: int = int(d["target"])
+		var tn: Dictionary = _nodes[target]
+		var vel: Vector2 = d["vel"]
+		vel.y += DROP_FALL_ACCEL * delta
+		vel.x += _wind.x * 0.35 * delta
+		var pos: Vector2 = d["pos"]
+		if bool(tn["alive"]):
+			# home gently on the swaying node so the landing reads true
+			var to_t: Vector2 = (tn["pos"] as Vector2) - pos
+			vel = vel.lerp(vel + to_t * DROP_HOME, 0.5 * delta * 60.0 * 0.02)
+			vel.x += clampf(to_t.x, -80.0, 80.0) * DROP_HOME * delta
+		pos += vel * delta
+		d["pos"] = pos
+		d["vel"] = vel
+		if bool(tn["alive"]) and pos.distance_to(tn["pos"]) < 10.0:
+			_land_drop(target, String(d["kind"]))
+			_falling.remove_at(k)
+		elif pos.y > VH + 40.0:
+			_falling.remove_at(k)
+	for k2 in range(_splashes.size() - 1, -1, -1):
+		var sp: Dictionary = _splashes[k2]
+		sp["t"] = float(sp["t"]) + delta
+		if float(sp["t"]) > 0.35:
+			_splashes.remove_at(k2)
+
+
+func _land_drop(i: int, kind: String) -> void:
+	var n: Dictionary = _nodes[i]
+	if kind == "debris":
+		n["debris"] = minf(float(n["debris"]) + 1.0, DEBRIS_MAX)
+	else:
+		n["water"] = minf(float(n["water"]) + DROP_ADD, WATER_MAX)
+	# the strand CATCHES the weight: a small downward verlet impulse
+	n["prev"] = (n["prev"] as Vector2) + Vector2(0.0, -LAND_KICK / _mass(i))
+	n["pulse"] = PULSE_T
+	_splashes.append({"pos": (n["pos"] as Vector2), "t": 0.0})
+
+
+# ── gravity pulls water DOWN the strands · it pools at the bottom ──
+func _flow_water(delta: float) -> void:
+	for t_v in _threads:
+		var t: Dictionary = t_v
+		if not bool(t["alive"]):
+			continue
+		var na: Dictionary = _nodes[int(t["a"])]
+		var nb: Dictionary = _nodes[int(t["b"])]
+		if not bool(na["alive"]) or not bool(nb["alive"]):
+			continue
+		var hi: Dictionary = na
+		var lo: Dictionary = nb
+		if (nb["pos"] as Vector2).y < (na["pos"] as Vector2).y:
+			hi = nb
+			lo = na
+		var dy: float = (lo["pos"] as Vector2).y - (hi["pos"] as Vector2).y
+		var length: float = maxf(1.0, (lo["pos"] as Vector2).distance_to(hi["pos"]))
+		var slope: float = clampf(dy / length, 0.0, 1.0)
+		var have: float = float(hi["water"])
+		if have < 0.06 or slope < 0.15:
+			continue
+		var xfer: float = minf(have, FLOW_RATE * slope * delta * (1.0 + have * 0.4))
+		var room: float = WATER_MAX - float(lo["water"])
+		xfer = minf(xfer, room)
+		if xfer <= 0.0:
+			continue
+		hi["water"] = have - xfer
+		lo["water"] = float(lo["water"]) + xfer
 
 
 func _rain_target() -> int:
@@ -494,6 +581,12 @@ func _physics_process(delta: float) -> void:
 	_read_held_input(delta)
 	_update_storm(delta)
 	_accumulate_rain(delta)
+	_update_falling(delta)
+	_flow_water(delta)
+	for n_v in _nodes:
+		var n: Dictionary = n_v
+		if float(n.get("pulse", 0.0)) > 0.0:
+			n["pulse"] = maxf(0.0, float(n["pulse"]) - delta)
 
 	_integrate(delta)
 	for _i in range(ITER):
@@ -673,6 +766,8 @@ func _draw() -> void:
 	_draw_rain(vp)
 	_draw_branches()
 	_draw_threads()
+	_draw_falling()
+	_draw_splashes()
 	_draw_nodes()
 	_draw_spider()
 	if _phase == "telegraph":
@@ -689,6 +784,34 @@ func _draw_rain(vp: Vector2) -> void:
 		var y: float = fmod(base_y + _t * speed, vp.y)
 		var p: Vector2 = Vector2(px + slant.x * 46.0 * (y / vp.y), y)
 		draw_line(p, p + slant * 14.0, col, 1.0)
+
+
+func _draw_falling() -> void:
+	for d_v in _falling:
+		var d: Dictionary = d_v
+		var pos: Vector2 = d["pos"]
+		var vel: Vector2 = d["vel"]
+		if String(d["kind"]) == "debris":
+			draw_rect(Rect2(pos - Vector2(3.0, 2.0), Vector2(6.0, 4.0)), C_DEBRIS)
+			draw_line(pos, pos - vel.normalized() * 10.0, Color(C_DEBRIS.r, C_DEBRIS.g, C_DEBRIS.b, 0.4), 2.0)
+		else:
+			draw_line(pos, pos - vel.normalized() * 9.0, Color(C_DROP.r, C_DROP.g, C_DROP.b, 0.45), 1.5)
+			draw_circle(pos, 2.4, C_DROP)
+			draw_circle(pos + Vector2(-0.8, -0.8), 0.9, Color(1, 1, 1, 0.6))
+
+
+func _draw_splashes() -> void:
+	for sp_v in _splashes:
+		var sp: Dictionary = sp_v
+		var k: float = float(sp["t"]) / 0.35
+		var pos: Vector2 = sp["pos"]
+		var a: float = (1.0 - k) * 0.7
+		draw_arc(pos, 3.0 + k * 9.0, 0.0, TAU, 10, Color(C_DROP.r, C_DROP.g, C_DROP.b, a), 1.2)
+		for f in range(3):
+			var ang: float = -PI * 0.5 + (float(f) - 1.0) * 0.7
+			var fp: Vector2 = pos + Vector2(cos(ang), sin(ang)) * (4.0 + k * 14.0)
+			fp.y += k * k * 16.0
+			draw_circle(fp, 1.1 * (1.0 - k), Color(C_DROP.r, C_DROP.g, C_DROP.b, a))
 
 
 func _draw_branches() -> void:
@@ -723,6 +846,16 @@ func _draw_threads() -> void:
 			col = col.lerp(C_WARN, clampf((strain - 1.4) / 0.6, 0.0, 1.0))
 		var w: float = (2.4 if is_spoke else 1.4) + wet * 1.6
 		draw_line(pa, pb, col, w)
+		# gravity runs the water down the strand — a bead slides
+		# toward the lower end whenever both ends are carrying
+		if wet > 0.12:
+			var lo_end: Vector2 = pb if pb.y > pa.y else pa
+			var hi_end: Vector2 = pa if pb.y > pa.y else pb
+			var slope: float = absf(pb.y - pa.y) / maxf(1.0, dist)
+			if slope > 0.15:
+				var phase: float = fmod(_t * (0.6 + wet * 0.8) + float(int(t["a"])) * 0.37, 1.0)
+				var bead: Vector2 = hi_end.lerp(lo_end, phase)
+				draw_circle(bead, 1.6 + wet * 1.4, Color(C_DROP.r, C_DROP.g, C_DROP.b, 0.35 + wet * 0.4))
 
 
 func _draw_nodes() -> void:
@@ -734,7 +867,14 @@ func _draw_nodes() -> void:
 		var water: float = float(n["water"])
 		if water > 0.05:
 			var rad: float = 2.0 + water * 3.2
-			draw_circle(p + Vector2(0.0, rad * 0.5), rad, C_DROP)
+			var pulse: float = float(n.get("pulse", 0.0))
+			if pulse > 0.0:
+				# landing overshoot: swells past size, settles back
+				rad *= 1.0 + 0.4 * (pulse / PULSE_T)
+			# heavy drops hang lower and stretch — gravity is visible
+			var sag: float = 0.5 + water * 0.22
+			draw_circle(p + Vector2(0.0, rad * sag), rad, C_DROP)
+			draw_circle(p + Vector2(0.0, rad * sag * 0.5), rad * 0.8, C_DROP)
 			draw_circle(p + Vector2(-rad * 0.3, rad * 0.2), rad * 0.35, Color(1, 1, 1, 0.5))
 		if float(n["debris"]) > 0.05:
 			draw_rect(Rect2(p - Vector2(3.0, 2.0), Vector2(6.0, 4.0)), C_DEBRIS)

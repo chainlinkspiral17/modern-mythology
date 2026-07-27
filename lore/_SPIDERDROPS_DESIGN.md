@@ -173,3 +173,16 @@ two-to-a-clamshell. Olaf's note:
 - DONE (2026-07-22): the sequel is BUILT — SPIDERDROPS 2 · THE LONG
   WIND (#20, `_SPIDERDROPS_2_DESIGN.md`). Post-game, carries the
   register in.
+
+## 2026-07-27 · rain feel pass (user: "drops landing, not just appearing")
+
+Rain is now diegetic end to end: every drop SPAWNS above the frame,
+falls with gravity + wind slant (homing gently on its swaying target
+node), LANDS with a splash ring + flecks, kicks the strand with a
+real Verlet impulse (the web visibly catches the weight), and the
+drop swells with a landing overshoot pulse before settling. Debris
+flies in horizontally on the gust. NEW SYSTEM: water flows DOWN the
+strands (rate scales with slope and load) with runner beads sliding
+along wet silk — weight pools at the web's bottom, which makes
+plucking the low drops the right play. Heavy drops hang lower and
+stretch (visible gravity).
