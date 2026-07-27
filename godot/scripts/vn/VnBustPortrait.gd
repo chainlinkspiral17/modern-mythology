@@ -77,6 +77,9 @@ const _OVERRIDES: Dictionary = {
 					   "beard": false, "glasses": "none"},
 	"frasier_temple": {"hair_style": 3, "hair_color": 0, "skin_tone": 0,
 					   "beard": false, "glasses": "none"},
+	# Faith — the diner dog (white). Mandatory leap witness. NOT a
+	# person: routes to the dog painter, never the human face.
+	"faith": {"species": "dog"},
 	# Graciela Ramos — 71, Diego's abuela: long grey hair + reading
 	# glasses (the hash was rendering her bald and bearded).
 	"graciela":       {"hair_style": 10, "hair_color": 5, "beard": false,
@@ -211,6 +214,14 @@ static func _build(key: String, fam: String, accent: Color, frame: String, look:
 		has_glasses = g != "none"
 		if has_glasses:
 			gkind = g
+
+	# Non-human visitors route to a dedicated painter with the same
+	# canvas + expression/frame contract (blink closes the eyes,
+	# talk opens the mouth). First resident: Faith the diner dog.
+	if String(ov.get("species", "")) == "dog":
+		_paint_dog(img, fam, frame, accent)
+		img.resize(_W * _SCALE, _H * _SCALE, Image.INTERPOLATE_NEAREST)
+		return ImageTexture.create_from_image(img)
 
 	var skin_dk: Color = skin.darkened(0.20)
 	var skin_dk2: Color = skin.darkened(0.34)
@@ -573,6 +584,100 @@ static func _build(key: String, fam: String, accent: Color, frame: String, look:
 
 	img.resize(_W * _SCALE, _H * _SCALE, Image.INTERPOLATE_NEAREST)
 	return ImageTexture.create_from_image(img)
+
+
+# ── dog bust (species: "dog") ────────────────────────────────────
+# White-coat dog in the same framing as the human bust: head high on
+# the canvas, chest filling the bottom rows, an accent-colored collar
+# standing in for the accent-colored shirt.
+static func _paint_dog(img: Image, fam: String, frame: String, accent: Color) -> void:
+	var coat := Color("#f0ede4")
+	var coat_lt := Color("#fbfaf5")
+	var coat_dk := coat.darkened(0.14)
+	var coat_dk2 := coat.darkened(0.32)
+	var nose_c := Color("#1a1614")
+	var tongue := Color("#d8837e")
+	var iris := Color("#5a4028")
+	var collar_c := Color(accent.r * 0.8, accent.g * 0.8, accent.b * 0.8, 1.0)
+	# ── chest fills the frame bottom like the human torso ──
+	for y in range(50, _H):
+		var half: int = mini(27, 12 + (y - 50) * 3)
+		_hspan(img, 30 - half, 30 + half, y, coat)
+		_put(img, 30 - half, y, coat_dk)
+		_put(img, 30 + half, y, coat_lt)
+	for tx in [24, 30, 36]:                          # chest fur tufts
+		_put(img, tx, 53, coat_lt)
+		_put(img, tx - 1, 54, coat_dk)
+	# ── neck (chin overpaints the top rows) ──
+	for y in range(42, 50):
+		_hspan(img, 22, 38, y, coat)
+	# ── collar + tag ──
+	_hspan(img, 21, 39, 47, collar_c.darkened(0.2))
+	_hspan(img, 21, 39, 48, collar_c)
+	_hspan(img, 21, 39, 49, collar_c.darkened(0.35))
+	for tp in [Vector2i(30, 50), Vector2i(31, 50), Vector2i(30, 51), Vector2i(31, 51)]:
+		_put(img, tp.x, tp.y, _GOLD)
+	# ── head: skull dome tapering into the muzzle (half-width per
+	# row, centered on x=30, rows start at y=10) ──
+	var hw: Array = [6, 8, 10, 11, 12, 13, 13, 14, 14, 15, 15, 15,
+			15, 15, 15, 15, 15, 14, 14, 13, 12, 11, 10, 9, 9, 8,
+			8, 8, 8, 7, 7, 6, 5, 4]
+	for i in range(hw.size()):
+		var y: int = 10 + i
+		var half2: int = int(hw[i])
+		for x in range(30 - half2, 30 + half2 + 1):
+			var c: Color = coat
+			if x <= 30 - half2 + 1: c = coat_dk
+			elif x >= 30 + half2 - 2: c = coat_lt
+			_put(img, x, y, c)
+	# blaze — lighter strip down the center of the face
+	for y in range(26, 42):
+		_hspan(img, 27, 33, y, coat_lt)
+	# ── floppy ears hanging past the cheeks ──
+	var ear_w: Array = [2, 3, 3, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 3, 3, 3, 2, 2, 1]
+	for i in range(ear_w.size()):
+		var y: int = 10 + i
+		var w: int = int(ear_w[i])
+		for ecx in [14, 46]:
+			for x in range(ecx - w, ecx + w + 1):
+				var edge: bool = x == ecx - w or x == ecx + w or i >= ear_w.size() - 2
+				_put(img, x, y, coat_dk2 if edge else coat_dk)
+	# ── expression brows (fur creases) ──
+	if fam == "sad" or fam == "nervous":
+		_put(img, 23, 21, coat_dk2); _put(img, 24, 20, coat_dk2)
+		_put(img, 37, 21, coat_dk2); _put(img, 36, 20, coat_dk2)
+	elif fam == "angry":
+		_put(img, 24, 21, coat_dk2); _put(img, 25, 22, coat_dk2)
+		_put(img, 36, 21, coat_dk2); _put(img, 35, 22, coat_dk2)
+	# ── eyes ──
+	if frame == "blink" or fam == "tired":
+		_hspan(img, 22, 26, 24, _INK)
+		_hspan(img, 34, 38, 24, _INK)
+	else:
+		for x0 in [22, 34]:
+			_hspan(img, x0, x0 + 3, 23, _INK)
+			for y in range(24, 26):
+				_hspan(img, x0, x0 + 3, y, iris)
+			_put(img, x0 + 1, 24, nose_c)
+			_put(img, x0 + 2, 24, nose_c)
+			_put(img, x0 + 1, 25, nose_c)
+			_put(img, x0 + 2, 25, nose_c)
+			_put(img, x0 + 1, 24, _CATCH)
+	# ── nose + philtrum + mouth ──
+	_hspan(img, 27, 33, 31, nose_c)
+	_hspan(img, 27, 33, 32, nose_c)
+	_hspan(img, 28, 32, 33, nose_c)
+	_hspan(img, 29, 31, 34, nose_c)
+	_put(img, 28, 31, Color("#4a4442"))              # nose sheen
+	for y in range(35, 39):
+		_put(img, 30, y, coat_dk2)
+	_hspan(img, 26, 29, 39, coat_dk2)                # jowl lines
+	_hspan(img, 31, 34, 39, coat_dk2)
+	if frame == "talk" or fam == "happy" or fam == "surprised":
+		_hspan(img, 27, 33, 40, _INK)
+		_hspan(img, 28, 32, 41, _INK)
+		_hspan(img, 28, 32, 42, tongue)
+		_hspan(img, 29, 31, 43, tongue.darkened(0.15))
 
 
 # ── low-level helpers ────────────────────────────────────────────

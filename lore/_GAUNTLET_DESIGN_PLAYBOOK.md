@@ -436,6 +436,31 @@ accumulate ≥ 5 distinct lessons each, spin them up:
 
 Each of these is not yet 5 lessons deep. Watch them.
 
+### 2026-07-27 · Deck playtest · the bottom strip overflowed the window
+
+- **Size fixed-height UI from its content, never from what's left
+  over.** The bottom strip (tableau row + hand row) was given 336px
+  by fiat while its content needed ~372 — the hand cards rendered
+  past the 720p window edge (user screenshot). Now the strip's
+  height is derived from the card-tile math (108 art + 34 title +
+  scrollbar clearance per row, see the `MID_BOTTOM`/`STRIP_TOP`/
+  `CARD_ROW_H` consts by `_build_ui`) and the MAP pane gets the
+  remainder. When a row of interactive controls and a decorative
+  pane compete for pixels, the controls win.
+- **The h-scrollbar needs budgeted height.** SCROLL_MODE_AUTO takes
+  ~8px INSIDE the ScrollContainer when it appears — a min height
+  equal to the tile height means the scrollbar overlays the card
+  titles. CARD_ROW_H = tile + 8.
+- **Accent the loop-driver.** Advance → is the one button that
+  keeps the game moving; it now wears C_ACCENT so a new player's
+  eye lands on it. One accented button per surface, no more.
+- **Faith is a dog.** Visitor "faith" was getting the human bust.
+  VnBustPortrait now has a `species: "dog"` painter (white coat,
+  floppy ears, accent collar; blink/talk frames honored) and a
+  global `_OVERRIDES` pin, so every render path — gauntlet roster,
+  dossiers, any future VN bust — draws the dog. When a visitor is
+  not a person, say so in the portrait layer, not just the prose.
+
 ### 2026-07-11 · direction pass · insert cuts on the FP camera
 
 - **The gauntlet's comic grammar is the insert cut, not the marker.**

@@ -1379,6 +1379,16 @@ func _init_run() -> void:
 
 # ── UI build ─────────────────────────────────────────────────────────
 
+# ── Layout budget (720p canvas) ──────────────────────────────────
+# The middle band (board + right column) ends where the bottom strip
+# begins. The strip must hold TWO full card rows (108px art + 34px
+# title) plus their header rows and horizontal-scrollbar clearance
+# without spilling past the window edge — size the strip from that
+# content and give the board whatever is left, never the reverse.
+const MID_BOTTOM := -384     # board + right column offset_bottom
+const STRIP_TOP := -380      # bottom strip offset_top
+const CARD_ROW_H := 152      # tableau/hand scroll min height (144 tile + scrollbar)
+
 func _build_ui() -> void:
 	_bg = ColorRect.new()
 	_bg.color = C_BG
@@ -1456,7 +1466,7 @@ func _build_ui() -> void:
 	_board_root.set_anchors_preset(Control.PRESET_FULL_RECT)
 	_board_root.offset_top = 52
 	_board_root.offset_left = 8
-	_board_root.offset_bottom = -346
+	_board_root.offset_bottom = MID_BOTTOM
 	_board_root.offset_right = -440
 	# Outer panel + stylebox so the board reads as its own window.
 	var board_panel := PanelContainer.new()
@@ -1567,7 +1577,7 @@ func _build_ui() -> void:
 	right.offset_top = 52
 	right.offset_right = -8
 	right.offset_left = -432
-	right.offset_bottom = -346
+	right.offset_bottom = MID_BOTTOM
 	right.add_theme_constant_override("separation", 6)
 	add_child(right)
 
@@ -1598,7 +1608,7 @@ func _build_ui() -> void:
 	# GRAVITY — slim summary bar
 	var grav_panel := PanelContainer.new()
 	grav_panel.add_theme_stylebox_override("panel", _make_panel_style())
-	grav_panel.custom_minimum_size = Vector2(420, 56)
+	grav_panel.custom_minimum_size = Vector2(420, 48)
 	var grav_vb := VBoxContainer.new()
 	grav_vb.add_theme_constant_override("separation", 2)
 	grav_panel.add_child(grav_vb)
@@ -1615,7 +1625,7 @@ func _build_ui() -> void:
 	# INVENTORY / BINDLE — slim summary bar (full list in the ⛶ modal)
 	var inv_panel := PanelContainer.new()
 	inv_panel.add_theme_stylebox_override("panel", _make_panel_style())
-	inv_panel.custom_minimum_size = Vector2(420, 56)
+	inv_panel.custom_minimum_size = Vector2(420, 48)
 	var inv_vb := VBoxContainer.new()
 	inv_vb.add_theme_constant_override("separation", 2)
 	inv_panel.add_child(inv_vb)
@@ -1639,7 +1649,7 @@ func _build_ui() -> void:
 	# sits flush against its right edge.
 	var bottom := PanelContainer.new()
 	bottom.set_anchors_preset(Control.PRESET_BOTTOM_WIDE)
-	bottom.offset_top = -342
+	bottom.offset_top = STRIP_TOP
 	bottom.offset_left = 8
 	bottom.offset_right = -8
 	bottom.offset_bottom = -6
@@ -1683,7 +1693,7 @@ func _build_ui() -> void:
 	tableau_label.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	tableau_title_hb.add_child(tableau_label)
 	_tableau_scroll = ScrollContainer.new()
-	_tableau_scroll.custom_minimum_size = Vector2(540, 144)
+	_tableau_scroll.custom_minimum_size = Vector2(540, CARD_ROW_H)
 	_tableau_scroll.horizontal_scroll_mode = ScrollContainer.SCROLL_MODE_AUTO
 	_tableau_scroll.vertical_scroll_mode = ScrollContainer.SCROLL_MODE_DISABLED
 	cards_vb.add_child(_tableau_scroll)
@@ -1709,11 +1719,16 @@ func _build_ui() -> void:
 	_advance_btn = Button.new()
 	_advance_btn.text = "Advance →"
 	_advance_btn.add_theme_font_size_override("font_size", 12)
+	# The primary loop-driver — accent it so the eye finds "what do I
+	# click to keep the game moving" from anywhere on the screen.
+	_advance_btn.add_theme_color_override("font_color", C_ACCENT)
+	_advance_btn.add_theme_color_override("font_hover_color", C_ACCENT.lightened(0.3))
+	_advance_btn.custom_minimum_size = Vector2(120, 24)
 	_advance_btn.pressed.connect(_on_advance)
 	hand_title_hb.add_child(_advance_btn)
 	# (Leave moved to the top bar so it isn't adjacent to ADVANCE.)
 	var hand_scroll := ScrollContainer.new()
-	hand_scroll.custom_minimum_size = Vector2(540, 144)
+	hand_scroll.custom_minimum_size = Vector2(540, CARD_ROW_H)
 	hand_scroll.horizontal_scroll_mode = ScrollContainer.SCROLL_MODE_AUTO
 	hand_scroll.vertical_scroll_mode = ScrollContainer.SCROLL_MODE_DISABLED
 	cards_vb.add_child(hand_scroll)
@@ -4221,7 +4236,7 @@ func _toggle_board_fullscreen() -> void:
 		_board_root.set_anchors_preset(Control.PRESET_FULL_RECT)
 		_board_root.offset_top = 52
 		_board_root.offset_left = 8
-		_board_root.offset_bottom = -346
+		_board_root.offset_bottom = MID_BOTTOM
 		_board_root.offset_right = -440
 		_board_expand_btn.visible = true
 		_board_expand_btn.text = "⛶"
