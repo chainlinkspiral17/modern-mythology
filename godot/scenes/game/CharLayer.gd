@@ -381,14 +381,23 @@ func _process(delta: float) -> void:
 	# ── bust blinking + talk flap (VnBustPortrait v2) ──
 	var talking: bool = _active_speaker_key != "" and _dlg_typing()
 	for i in range(_bust_blinkers.size() - 1, -1, -1):
-		var ph: Control = _bust_blinkers[i] as Control
-		if ph == null or not is_instance_valid(ph):
+		# "as Control" on a freed object is itself a runtime error, so
+		# validity must be checked on the raw Variant BEFORE any cast.
+		var ph_v: Variant = _bust_blinkers[i]
+		if ph_v == null or not is_instance_valid(ph_v):
+			_bust_blinkers.remove_at(i)
+			continue
+		var ph: Control = ph_v as Control
+		if ph == null:
 			_bust_blinkers.remove_at(i)
 			continue
 		if not ph.has_meta("bust_tex"):
 			continue
-		var btr: TextureRect = ph.get_meta("bust_tex") as TextureRect
-		if btr == null or not is_instance_valid(btr):
+		var btr_v: Variant = ph.get_meta("bust_tex")
+		if btr_v == null or not is_instance_valid(btr_v):
+			continue
+		var btr: TextureRect = btr_v as TextureRect
+		if btr == null:
 			continue
 		var b_key: String = ph.get_meta("bust_key") if ph.has_meta("bust_key") else ""
 		if b_key == "":
@@ -428,7 +437,11 @@ func _process(delta: float) -> void:
 		var slot = _slots[pos]
 		if slot == null:
 			continue
-		var node: Control = slot["node"]
+		var node_v: Variant = slot["node"]
+		if node_v == null or not is_instance_valid(node_v):
+			_slots[pos] = null
+			continue
+		var node: Control = node_v
 		var phase: float  = IDLE_PHASE[pos]
 		var idle_y: float = sin((_t + phase) * TAU / IDLE_PERIOD) * IDLE_AMP
 		var entrance_y: float = float(node.get_meta("entrance_y")) if node.has_meta("entrance_y") else 0.0
@@ -450,6 +463,14 @@ func _process(delta: float) -> void:
 				# show_character via "flip_x" meta — -1 to mirror,
 				# +1 to keep natural orientation).
 				var flip_x: float = node.get_meta("flip_x") if node.has_meta("flip_x") else 1.0
+				# Composition portraits bake TEXT into the art (THE
+				# DEMON's banner) — never mirror them. A flipped glyph
+				# is a bug, not a facing (user report 2026-07: the
+				# demon rendered backwards). One gate here covers
+				# show-time facing AND _reface_center, since both only
+				# write the meta and this is the sole read site.
+				if node.has_meta("kind") and String(node.get_meta("kind")) == "composition":
+					flip_x = 1.0
 				tint_holder.pivot_offset = tint_holder.size * 0.5
 				tint_holder.scale = Vector2(flip_x * breath_s, breath_s)
 		# Blink overlay disabled — was a fixed-anchor dark band at

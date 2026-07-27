@@ -210,6 +210,39 @@ the departments together and get the work in sync. Built
 - Future departments hook the producer: painted art plates, portrait
   relighting on mood, per-scene ambience choreography.
 
+### 2026-07-27 · Deck playtest batch · five live bugs from one chapter
+
+- **Speaker-blip ≠ speaker-pop.** show_narrate deliberately clears
+  `_last_speaker` so the visual name-pop re-fires after narration —
+  but the SFX tick was keyed on the same variable, so alternating
+  narration/dialogue beeped constantly ("hearing a beeping through
+  ch0"). Sound now gates on `_last_named_speaker` (survives
+  narration): the tick fires only on genuine character→character
+  handoff. When one variable serves a visual and an audio behavior,
+  split it the moment their reset rules differ.
+- **Panel cards must live UNDER the dialogue z.** The `[panel:]`
+  image band (was z 101, rows 40–480) sat over the text zone; prose
+  is the product — art yields. Now capped 700×300 in a 36–370 band
+  at z 99 with a 0.25s fade-in.
+- **Never mirror composition portraits.** Facing flip (`flip_x`
+  meta) mirrored THE DEMON's ASCII art — baked banner text rendered
+  backwards. Gate at the single read site in CharLayer._process:
+  `kind == "composition"` → flip 1.0. Compositions bake TEXT; text
+  has a correct orientation, facing doesn't.
+- **`as Object` on a freed instance IS the error.** The ch2→3 crash:
+  `_bust_blinkers[i] as Control` threw "Trying to cast a freed
+  object" BEFORE the `is_instance_valid` guard on the next line
+  could run. Validity-check the raw Variant first, cast second —
+  now applied to the blinker list AND the slot table in _process.
+- **A shot directive is a prop contract.** `[shot:insert phone]`
+  fired in the diner for two ch0 scenes but Frasier's phone mesh
+  existed only in the cathedral build (ch1). The insert marker was
+  even aimed at empty formica. When authoring `[shot:insert X]`,
+  grep the locale's build_*.py for X before shipping the line. The
+  diner phone now sits exactly where the existing marker's
+  center-ray meets the counter (ray-trace the marker: pos, pitch,
+  yaw → surface point; place the prop there, zero marker edits).
+
 ### 2026-07-22 · presentation wave 1 · the book finally has chapter breaks
 
 - **The scene JSON carried `title` for 177 scenes and nobody displayed

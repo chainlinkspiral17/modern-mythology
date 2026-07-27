@@ -407,9 +407,11 @@ func _build_panel_card(id: String) -> Control:
 	var content: Control = null
 	if FileAccess.file_exists(path) and hero.load_from(path):
 		var texr := TextureRect.new()
-		# Integer-ish upscale of the pixel doc, capped to the upper
-		# half of the screen so the dialog box stays clear.
-		var scale_i: int = maxi(1, mini(int(900.0 / maxf(1.0, float(hero.w))), int(420.0 / maxf(1.0, float(hero.h)))))
+		# Integer-ish upscale of the pixel doc. Height cap 300 keeps
+		# the card INSIDE the upper field — the dialogue text zone
+		# starts around y≈390 (box is ~46% of a 720 viewport) and the
+		# old 420 cap was landing the card right on top of the prose.
+		var scale_i: int = maxi(1, mini(int(700.0 / maxf(1.0, float(hero.w))), int(300.0 / maxf(1.0, float(hero.h)))))
 		var target := Vector2i(hero.w * scale_i, hero.h * scale_i)
 		texr.texture = hero.texture(target)
 		texr.texture_filter = CanvasItem.TEXTURE_FILTER_NEAREST
@@ -428,13 +430,22 @@ func _build_panel_card(id: String) -> Control:
 		lbl.vertical_alignment = VERTICAL_ALIGNMENT_CENTER
 		content = lbl
 	card.add_child(content)
-	# Center in the upper field (dialog owns the bottom third). A
-	# CenterContainer band does the layout math for us.
+	# Center in the upper field — and STAY there. The dialogue text
+	# zone begins ≈y390 (the box is ~46% of a 720 viewport), so the
+	# band ends at 370. And the card sits BELOW the dialogue z
+	# (UI_Z=100): if they ever do touch, the prose reads over the
+	# image, never the reverse (user report 2026-07: "image over
+	# text" — the old band reached 480 at z 101).
 	var holder := CenterContainer.new()
 	holder.set_anchors_preset(Control.PRESET_TOP_WIDE)
-	holder.offset_top = 40.0
-	holder.offset_bottom = 480.0
+	holder.offset_top = 36.0
+	holder.offset_bottom = 370.0
 	holder.mouse_filter = Control.MOUSE_FILTER_IGNORE
-	holder.z_index = 101
+	holder.z_index = 99
 	holder.add_child(card)
+	# Arrive like a document laid on the table, not a popup.
+	card.modulate.a = 0.0
+	var tw := card.create_tween()
+	tw.tween_property(card, "modulate:a", 1.0, 0.25)\
+		.set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT)
 	return holder
