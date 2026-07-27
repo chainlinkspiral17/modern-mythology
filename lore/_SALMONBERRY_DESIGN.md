@@ -145,10 +145,11 @@ Tokens: `salmonberry_finished` always; `salmonberry_hands` /
 
 ## Canon lattice fit
 
-- **Studio/year:** Oneironautics, 2006 — after Estuary 4 (2005), the
-  studio's late-career magnum opus. **Amélie Rocha's story** (her
-  grandmother's town), **Ines Rocha's build** — the two Rochas' one
-  full collaboration.
+- **Studio/year:** Oneironautics, 1992 — right after Fey Faire
+  (1990). **Amélie Rocha's most personal game**, made while grieving
+  the loss she never named: her grandmother's town, admitted once.
+  (Retconned from 2006 on 2026-07-22 — the alt-reality premise and
+  the SVGA look both demand the early-90s date.)
 - **Setting era:** 1963–64 — earlier than any studio; this is a period
   piece, a memory reconstructed, not a contemporary game.
 - **Coast geography:** the same fictional mid/south Oregon coast as
