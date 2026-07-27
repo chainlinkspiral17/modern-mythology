@@ -286,13 +286,21 @@ func _build_ui() -> void:
 
 	# The text engine — the ride narrating itself.
 	var log_bg := ColorRect.new()
-	log_bg.color = Color(C_INK.r, C_INK.g, C_INK.b, 0.82)
+	log_bg.color = Color(C_INK.r, C_INK.g, C_INK.b, 0.94)
 	log_bg.set_anchors_preset(Control.PRESET_BOTTOM_WIDE)
 	log_bg.offset_left = 24
 	log_bg.offset_right = -24
 	log_bg.offset_top = -132
 	log_bg.offset_bottom = -12
 	add_child(log_bg)
+	var log_edge := ColorRect.new()
+	log_edge.color = Color(C_BONE.r, C_BONE.g, C_BONE.b, 0.30)
+	log_edge.set_anchors_preset(Control.PRESET_BOTTOM_WIDE)
+	log_edge.offset_left = 24
+	log_edge.offset_right = -24
+	log_edge.offset_top = -133
+	log_edge.offset_bottom = -132
+	add_child(log_edge)
 
 	_log_lbl = RichTextLabel.new()
 	_log_lbl.bbcode_enabled = false
@@ -310,7 +318,7 @@ func _build_ui() -> void:
 
 func _say(line: String) -> void:
 	_log_lines.append(line)
-	while _log_lines.size() > 5:
+	while _log_lines.size() > 4:
 		_log_lines.pop_front()
 	if _log_lbl != null:
 		_log_lbl.text = "\n".join(PackedStringArray(_log_lines))
@@ -539,7 +547,7 @@ func _maybe_encounter(terrain: String) -> void:
 func _show_encounter(e: Dictionary) -> void:
 	_encounter = e
 	_say("— " + String(e.get("text", "")))
-	var y := 560.0
+	var y := 540.0
 	var idx := 0
 	for ch_v in e.get("choices", []):
 		var ch: Dictionary = ch_v
@@ -557,6 +565,7 @@ func _show_encounter(e: Dictionary) -> void:
 		b.text = label
 		b.position = Vector2(60.0 + float(idx) * 320.0, y)
 		b.add_theme_font_size_override("font_size", 14)
+		_style_choice_btn(b)
 		b.pressed.connect(_resolve_encounter.bind(ch))
 		add_child(b)
 		_choice_btns.append(b)
@@ -672,6 +681,22 @@ func _arrive_township(t: Dictionary) -> void:
 	_open_town_menu(t)
 
 
+# Choice buttons float over map art — a solid dark box with a bone
+# border keeps them legible on any terrain.
+func _style_choice_btn(b: Button) -> void:
+	var sb := StyleBoxFlat.new()
+	sb.bg_color = Color(C_INK.r, C_INK.g, C_INK.b, 0.92)
+	sb.border_color = Color(C_BONE.r, C_BONE.g, C_BONE.b, 0.55)
+	sb.set_border_width_all(1)
+	sb.set_corner_radius_all(3)
+	sb.set_content_margin_all(6)
+	b.add_theme_stylebox_override("normal", sb)
+	var sbh := sb.duplicate()
+	sbh.border_color = C_BONE
+	b.add_theme_stylebox_override("hover", sbh)
+	b.add_theme_color_override("font_color", C_BONE)
+
+
 func _clear_town_buttons() -> void:
 	for b in _choice_btns:
 		if is_instance_valid(b):
@@ -682,9 +707,10 @@ func _clear_town_buttons() -> void:
 func _town_button(label: String, x: float, disabled: bool, cb: Callable) -> void:
 	var b := Button.new()
 	b.text = label
-	b.position = Vector2(x, 560.0)
+	b.position = Vector2(x, 540.0)
 	b.add_theme_font_size_override("font_size", 13)
 	b.disabled = disabled
+	_style_choice_btn(b)
 	b.pressed.connect(cb)
 	add_child(b)
 	_choice_btns.append(b)
@@ -841,32 +867,38 @@ func _draw() -> void:
 			var tex: ImageTexture = HEX_ART.tile(_terrain_at(q, r), _hash_qr(q, r),
 					Vector2i(int(TILE_W), int(TILE_H)))
 			if inside:
-				draw_texture(tex, c - Vector2(TILE_W / 2.0, TILE_H / 2.0))
+				# Focus falloff: full light where you are, dusk two hexes
+				# out, near-dark at the horizon. Without this every hex
+				# renders at equal weight and the field reads as soup.
+				var d: int = _hex_dist(Vector2i(q, r), _pos)
+				var tint := Color(1, 1, 1)
+				if d > 6:
+					tint = Color(0.40, 0.40, 0.46)
+				elif d > 2:
+					tint = Color(0.66, 0.66, 0.68)
+				draw_texture(tex, c - Vector2(TILE_W / 2.0, TILE_H / 2.0), tint)
 			else:
 				# past the rim, the weave shows — dimmed, violet-shot
 				draw_texture(tex, c - Vector2(TILE_W / 2.0, TILE_H / 2.0),
-						Color(0.5, 0.42, 0.6, 0.55))
+						Color(0.30, 0.26, 0.38, 0.5))
 
 	# marks · home + seats + the five towns. The east's parley price
 	# was a memory of home — the map no longer admits to one.
 	var home_c := _axial_to_px(0, 0)
 	if _dealt_verb("east") != "parley":
-		draw_string(font, home_c + Vector2(-18, -26), "HOME",
-				HORIZONTAL_ALIGNMENT_LEFT, -1, 13, C_BLOOD)
+		_label_plate(font, home_c + Vector2(-18, -26), "HOME", 13, C_BONE)
 	for t_v in _town_defs:
 		var t: Dictionary = t_v
 		var thx: Array = t.get("hex", [0, 0])
 		var tc := _axial_to_px(int(thx[0]), int(thx[1]))
 		if tc.x > -80.0 and tc.x < 1360.0 and tc.y > -60.0 and tc.y < 780.0:
-			draw_string(font, tc + Vector2(-30, -28), String(t.get("name", "")),
-					HORIZONTAL_ALIGNMENT_LEFT, -1, 11, C_BLOOD)
+			_label_plate(font, tc + Vector2(-30, -28), String(t.get("name", "")), 11, C_BONE)
 	var dealt: Dictionary = _state.get("witches_dealt", {})
 	for w in _seats().keys():
 		var s: Array = _seats()[w]
 		var sc := _axial_to_px(int(s[0]), int(s[1]))
 		if sc.x > -60.0 and sc.x < 1340.0 and sc.y > -60.0 and sc.y < 780.0:
-			draw_string(font, sc + Vector2(-30, -28), "HER SEAT",
-					HORIZONTAL_ALIGNMENT_LEFT, -1, 13, C_WYRD)
+			_label_plate(font, sc + Vector2(-30, -28), "HER SEAT", 13, C_WYRD)
 			if dealt.has(w):
 				draw_line(sc + Vector2(-10, -6), sc + Vector2(10, 6), C_WYRD, 2.0)
 	# seat direction arrows at the screen edge for undealt sisters
@@ -882,7 +914,10 @@ func _draw() -> void:
 			draw_string(font, edge + dir * 24.0 + Vector2(-8, 4), String(w2[0]).to_upper(),
 					HORIZONTAL_ALIGNMENT_LEFT, -1, 14, C_WYRD)
 
-	# the drifter, on the hex
+	# the drifter, on the hex — with a ground-ring so the eye can
+	# always find them in one glance
+	draw_arc(VIEW_CENTER + Vector2(0, 6), 22.0, 0.0, TAU, 24, C_BONE, 2.0)
+	draw_arc(VIEW_CENTER + Vector2(0, 6), 25.0, 0.0, TAU, 24, Color(C_INK.r, C_INK.g, C_INK.b, 0.8), 2.0)
 	draw_texture(FIGURE_ART.drifter(), VIEW_CENTER - Vector2(9.0, 26.0))
 
 	# the eight-pointed compass card corner · always · uncommented
@@ -891,6 +926,14 @@ func _draw() -> void:
 		var a := float(i) * PI / 4.0
 		draw_line(cc, cc + Vector2(cos(a), sin(a)) * 24.0, C_BONE if i % 2 == 0 else C_WYRD, 1.5)
 	draw_circle(cc, 3.0, C_BLOOD)
+
+
+# Dark plate behind map text — labels drawn bare on hex art vanish.
+func _label_plate(font: Font, at: Vector2, text: String, size: int, col: Color) -> void:
+	var w: float = font.get_string_size(text, HORIZONTAL_ALIGNMENT_LEFT, -1, size).x
+	draw_rect(Rect2(at + Vector2(-4, -size - 2), Vector2(w + 8, size + 7)),
+			Color(C_INK.r, C_INK.g, C_INK.b, 0.82))
+	draw_string(font, at, text, HORIZONTAL_ALIGNMENT_LEFT, -1, size, col)
 
 
 func _sfx(preset: String, vol: float = 1.0) -> void:

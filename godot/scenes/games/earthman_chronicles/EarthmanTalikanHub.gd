@@ -38,13 +38,13 @@ const C_BG           := Color(0.098, 0.086, 0.114, 1.0)
 const C_STONE        := Color(0.588, 0.510, 0.416, 1.0)
 const C_CREAM        := Color(0.912, 0.816, 0.565, 1.0)
 const C_SILVER_BLUE  := Color(0.635, 0.729, 0.827, 1.0)
-const C_AMBER        := Color(0.784, 0.376, 0.125, 1.0)
+const C_AMBER        := Color(0.760, 0.478, 0.251, 1.0)
 const C_STAR         := Color(0.973, 0.784, 0.282, 1.0)
-const C_GREEN        := Color(0.0, 0.753, 0.376, 1.0)
-const C_WHITE        := Color(0.941, 0.941, 0.941, 1.0)
+const C_GREEN        := Color(0.353, 0.620, 0.420, 1.0)
+const C_WHITE        := Color(0.898, 0.867, 0.804, 1.0)
 const C_GRAY         := Color(0.282, 0.282, 0.314, 1.0)
 const C_DIM          := Color(0.545, 0.463, 0.302, 1.0)
-const C_RED          := Color(0.753, 0.125, 0.125, 1.0)
+const C_RED          := Color(0.702, 0.302, 0.259, 1.0)
 
 # Location scripts · each has a name, description, and one action.
 const LOCATIONS: Dictionary = {

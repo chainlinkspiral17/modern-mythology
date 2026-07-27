@@ -218,3 +218,47 @@ grandmother. SALMONBERRY is the studio finally making the whole thing —
 the town those games all remember, in the year it was still itself,
 before the wave and the highway and everything after. Their magnum
 opus, and, quietly, an origin story for the catalog's own soul.
+
+---
+
+## v2 · THE WEEK LOOP (built 2026-07-27 · the depth pass)
+
+User verdict on v1: "make one choice a month, twelve times? Really?"
+v1's month-menu is gone. The month is now FOUR WEEKS, each a real
+decision inside interlocking systems (SalmonberryYear.gd v2):
+
+- **Energy (0–10)** — every activity costs it (tagged per-activity
+  in activities.json); hard labor costs more than a week gives back
+  (+2/week sleep). Going in worn thin is −2 on the work and the
+  text says so. "Keep to the house" restores 5 and touches Vovo's
+  bond — rest is a real choice, not a skipped turn.
+- **Weather** — rolled per week from per-month climate tables,
+  deterministic from the save seed (no reroll-scumming). Storms
+  close the bay (clamming/rowing disabled with the reason shown);
+  minus tides supercharge the flats; rain taxes outdoor work unless
+  you bought the slicker. The glass forecasts one week ahead —
+  planning information, not trivia.
+- **Money is owed, not just earned** — $2 board into the flour tin
+  every month; an empty tin strains the household (strain counter +
+  Vovo bond −1, and ≥3 strained months marks the year's coda).
+- **Shown checks** — activities roll aptitude + luck(0–2, seeded) +
+  weather/gear mods vs. the work's difficulty, breakdown printed
+  ("sea 2 + luck 1 +2 minus tide vs. the work 2 — a strong week").
+  Strong pays bonus money/aptitude; rough halves pay and teaches
+  grit.
+- **The general store** — clam gun, rain slicker, bicycle (+1
+  weekly energy), guitar strings (songs double), field glasses.
+  Gear changes what weeks can do; browsing doesn't spend the week.
+- **Nine calendar events (events.json)** — one (month, week) slot
+  each, gone if missed: the fall run's biggest day, the grange
+  dance, the vigil, Christmas Eve, the lowest tide, THE BOAT OFF
+  THE BAR (a stakes check — success sets helped_boat and a new wave
+  -night option + coda line), rebuilding week, Salmonberry Sunday,
+  the travelling show.
+- **Bond decay** — friendships untouched for 8 weeks slip a point,
+  with a line. Maintenance is play.
+
+The wave night, the boat thread, the book, the town overlay, and
+the five registers are unchanged — they just sit on 40 decisions
+now instead of 10. Old v1 saves upgrade in place via boot()
+defaults.

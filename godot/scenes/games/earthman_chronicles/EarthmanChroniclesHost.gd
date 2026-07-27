@@ -35,11 +35,11 @@ const TALIKAN_SCENE := "res://scenes/games/earthman_chronicles/EarthmanTalikanHu
 # Astro-Cortex palette
 const C_BG           := Color(0.094, 0.094, 0.157, 1.0)
 const C_CORTEX       := Color(0.345, 0.188, 0.376, 1.0)
-const C_AMBER        := Color(0.784, 0.376, 0.125, 1.0)
-const C_GREEN        := Color(0.0, 0.753, 0.376, 1.0)
-const C_RED          := Color(0.753, 0.125, 0.125, 1.0)
+const C_AMBER        := Color(0.760, 0.478, 0.251, 1.0)
+const C_GREEN        := Color(0.353, 0.620, 0.420, 1.0)
+const C_RED          := Color(0.702, 0.302, 0.259, 1.0)
 const C_CREAM        := Color(0.912, 0.816, 0.565, 1.0)
-const C_WHITE        := Color(0.941, 0.941, 0.941, 1.0)
+const C_WHITE        := Color(0.898, 0.867, 0.804, 1.0)
 const C_GRAY         := Color(0.282, 0.282, 0.314, 1.0)
 
 var _manifest: Dictionary = {}

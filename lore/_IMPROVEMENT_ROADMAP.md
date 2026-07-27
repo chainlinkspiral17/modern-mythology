@@ -71,6 +71,44 @@ producer discipline).
 
 ### Slowsticks (the shelf)
 
+- **P0 · DEPTH FLOOR sweep (2026-07-27 user verdict: "far too
+  basic... I want depth of play")** — the authoring playbook now
+  carries a six-point depth floor (three interlocking systems, ≥30
+  decisions/run, visible checks, expiring scarcity, a build,
+  textured failure). Audit result: roughly half the shelf is under
+  it. Rebuild queue, worst-first by user impact:
+  1. **SHIPPED 2026-07 · Salmonberry v2** — the week loop: 4 weeks
+     per month (40 decisions), energy budget, deterministic weather
+     + one-week forecast, board owed monthly, shown skill checks
+     with strong/fair/rough tiers, the general store (5 gear items
+     that change play), 9 one-week-only calendar events incl. a
+     stakes rescue off the bar, bond decay. Deck-verify pending.
+  2. **Northwind Harbor** — "is it even a game?" It isn't yet: one
+     screen, seven mornings. Design: the morning ROUTE — plan the
+     dog's walk through a hex-free street graph where route choice
+     spends limited minutes before school; weather/tide/holiday
+     variants; the dog's trust as a built stat gating which fences,
+     shortcuts, and encounters open; the 1976 poster thread paced
+     across mornings with evidence you can miss; a paper-route
+     money loop for gear (leash, torch, thermos).
+  3. **Estuary 4** (274 lines — thinnest in the catalog) — apply
+     its own design doc's course-correction premise as systems:
+     lever-scheduling against tide tables + a maintenance economy.
+  4. **The Tideline / Spiderdrops 2 / Mrs Wu** — each has one good
+     verb; give each a second system that trades against it + an
+     expiring calendar.
+  5. **Sweetgum / Sam's Summer Shifts / Patient Mister Glass /
+     Riffmaster / Hane no Niwa** — hosts with vignettes; full
+     builds through the floor, one per arc.
+- **SHIPPED 2026-07 · Sisters Wyrd readability triage** (user: "an
+  eyesore") — focus dimming by distance from the drifter (the soup
+  fix), label plates, position ring, styled choice buttons lifted
+  clear of the log, log opacity/edge. Depth machinery was already
+  in (task #175); re-verify feel on Deck after the readability pass.
+- **SHIPPED 2026-07 · Earthman palette soften** (user: "hard on the
+  eyes") — neon green/pure red/hot amber/stark white desaturated to
+  sage/brick/soft amber/warm paper across all 10 scenes; ch2 rust
+  glare dimmed.
 - **P0 · SVGA retrofit pilot** (gate 1) — the approved direction:
   painted source → `svga_quantize` era filter → per-studio slots via
   `art_studio.html`. Pilot on Salmonberry (title + 5 endings), then

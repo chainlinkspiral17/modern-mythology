@@ -12,6 +12,39 @@ scene.
 
 ## Core rules
 
+### THE DEPTH FLOOR (2026-07-27 · standing user verdict)
+
+"Slowstick games just far too basic. I keep repeating this. I want
+depth of play." The premise is MODERN GAMES through an alt-reality
+prism — modern game DEPTH is part of the premise, and a vignette
+with a title screen breaks it as surely as flat art does. No stick
+ships (and no stick is called done) unless it clears ALL of:
+
+1. **Three interlocking systems minimum.** Resources that trade
+   against each other (time/energy/money/relationships), not one
+   track that only goes up. The test: can the player want two
+   things and only afford one?
+2. **≥ 30 meaningful decisions per run.** One choice per
+   month/morning/day is a menu, not a game (Salmonberry v1 shipped
+   ~10 — the user called it out by name). Subdivide the clock until
+   the decision count is real.
+3. **Visible chance + mastery.** Checks roll against built stats
+   WITH the roll shown; strong and rough outcomes both exist and
+   both matter. Deterministic-per-save seeds so reloads don't
+   reroll.
+4. **Scarcity that expires.** Limited-time opportunities, deadlines,
+   decay — something the player can permanently miss. If nothing
+   can be lost, nothing is chosen.
+5. **A build.** Purchases/gear/unlocks that change what later play
+   CAN do, not just numbers that grow.
+6. **Failure with texture.** Rough weeks/losses teach something or
+   cost something and leave a line in the fiction — never a bare
+   "try again."
+
+Reference implementations: Estuary 3 Manager Mode, Pirate Summer,
+Fey Faire, Salmonberry v2 (the week loop). The roadmap carries the
+rebuild queue for the sticks below the floor.
+
 ### The Host / child-scene contract
 
 Every slowstick has ONE host controller (e.g. `FeyFaireHost.gd`)

@@ -33,11 +33,11 @@ const C_PAPER        := Color(0.851, 0.788, 0.702, 1.0)   # aged notebook page
 const C_PAPER_DIM    := Color(0.545, 0.502, 0.451, 1.0)
 const C_INK          := Color(0.196, 0.137, 0.098, 1.0)   # brown notebook ink
 const C_INK_FADED    := Color(0.451, 0.373, 0.294, 1.0)
-const C_AMBER        := Color(0.784, 0.376, 0.125, 1.0)
-const C_GREEN        := Color(0.0, 0.753, 0.376, 1.0)
-const C_RED          := Color(0.753, 0.125, 0.125, 1.0)
+const C_AMBER        := Color(0.760, 0.478, 0.251, 1.0)
+const C_GREEN        := Color(0.353, 0.620, 0.420, 1.0)
+const C_RED          := Color(0.702, 0.302, 0.259, 1.0)
 const C_STAR         := Color(0.973, 0.784, 0.282, 1.0)
-const C_WHITE        := Color(0.941, 0.941, 0.941, 1.0)
+const C_WHITE        := Color(0.898, 0.867, 0.804, 1.0)
 const C_GRAY         := Color(0.282, 0.282, 0.314, 1.0)
 const C_DIM          := Color(0.545, 0.463, 0.302, 1.0)
 

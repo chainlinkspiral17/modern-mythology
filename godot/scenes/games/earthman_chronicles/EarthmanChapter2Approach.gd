@@ -20,14 +20,14 @@ signal quit_to_shelf
 signal chapter_complete(state: Dictionary)
 
 # Astro-Cortex palette
-const C_BG           := Color(0.486, 0.220, 0.125, 1.0)   # rust red · Parsa daytime
+const C_BG           := Color(0.361, 0.204, 0.145, 1.0)   # rust red · Parsa daytime
 const C_BG_DUSK      := Color(0.235, 0.157, 0.220, 1.0)   # Parsa dusk
 const C_CORTEX       := Color(0.345, 0.188, 0.376, 1.0)
-const C_AMBER        := Color(0.784, 0.376, 0.125, 1.0)
-const C_GREEN        := Color(0.0, 0.753, 0.376, 1.0)
-const C_RED          := Color(0.753, 0.125, 0.125, 1.0)
+const C_AMBER        := Color(0.760, 0.478, 0.251, 1.0)
+const C_GREEN        := Color(0.353, 0.620, 0.420, 1.0)
+const C_RED          := Color(0.702, 0.302, 0.259, 1.0)
 const C_CREAM        := Color(0.912, 0.816, 0.565, 1.0)
-const C_WHITE        := Color(0.941, 0.941, 0.941, 1.0)
+const C_WHITE        := Color(0.898, 0.867, 0.804, 1.0)
 const C_GRAY         := Color(0.282, 0.282, 0.314, 1.0)
 const C_DIM          := Color(0.545, 0.463, 0.302, 1.0)
 const C_SAND         := Color(0.784, 0.541, 0.298, 1.0)
