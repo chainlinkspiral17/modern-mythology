@@ -1,7 +1,15 @@
 # ESTUARY 4 · DESIGN
 ### Oneironautics Inc. · Portland OR · 2005 · RESTORATION CAMPAIGN
 ### set in 2016 · the archive, the water, the hunter, the king tide
-### STATUS: BUILT · playable_v1 (2026-07) · host + EstuaryFour
+### STATUS: BUILT · full_game_v2 (2026-07-27) · THE WORKING SEASON:
+### the three calls become the season's planning weeks, then 13
+### field weeks under budget / crew morale / a seeded tide table
+### (gate + channel need the water low) / storms the glass warns
+### about one week ahead (prep or pay), the week-6 grant deadline,
+### storm damage + repair, and shown work rolls. The king tide now
+### reads BUILT quality per project (held / held mostly / went)
+### alongside plan alignment for the ending. v1 line:
+### playable_v1 (2026-07) · host + EstuaryFour
 ### chapter scene (beat-sequence pattern), four chapters, the
 ### 2003 notebook read back from the archive when the token bus
 ### carries it, Ashford Cade back in the spring, endings read

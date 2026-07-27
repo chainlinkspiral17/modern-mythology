@@ -83,17 +83,16 @@ producer discipline).
      with strong/fair/rough tiers, the general store (5 gear items
      that change play), 9 one-week-only calendar events incl. a
      stakes rescue off the bar, bond decay. Deck-verify pending.
-  2. **Northwind Harbor** — "is it even a game?" It isn't yet: one
-     screen, seven mornings. Design: the morning ROUTE — plan the
-     dog's walk through a hex-free street graph where route choice
-     spends limited minutes before school; weather/tide/holiday
-     variants; the dog's trust as a built stat gating which fences,
-     shortcuts, and encounters open; the 1976 poster thread paced
-     across mornings with evidence you can miss; a paper-route
-     money loop for gear (leash, torch, thermos).
-  3. **Estuary 4** (274 lines — thinnest in the catalog) — apply
-     its own design doc's course-correction premise as systems:
-     lever-scheduling against tide tables + a maintenance economy.
+  2. **SHIPPED 2026-07 · Northwind Harbor full game** — 26
+     optional kindness/errand chains (52 steps), each gated behind
+     its own overheard hint; more morning than the 73 minutes
+     allow; Bosun fetch at trust ≥3; horn summary + THE GOOD WEEK.
+     All canon steps verbatim. Deck-verify pending.
+  3. **SHIPPED 2026-07 · Estuary 4 · THE WORKING SEASON** — 13
+     field weeks between the calls and the king tide: budget, crew
+     morale, seeded tide windows, forecast storms with prep-or-pay,
+     grant deadline, storm damage/repair; the king tide reads built
+     quality per project. Deck-verify pending.
   4. **The Tideline / Spiderdrops 2 / Mrs Wu** — each has one good
      verb; give each a second system that trades against it + an
      expiring calendar.
