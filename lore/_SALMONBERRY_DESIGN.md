@@ -172,9 +172,20 @@ Tokens: `salmonberry_finished` always; `salmonberry_hands` /
   bonds, money, journal, the Nov + Mar beats, five-register ending) +
   `activities.json` + `npcs.json`. The smallest complete version of the
   whole idea (the Estuary-1 discipline).
-- **Wave A · the town overworld** — the walkable Salmonberry (PS/E2
-  tile engine); "explore" activities open real locations with people to
-  find and listen to.
+- **Wave A · the town overworld (DONE 2026-07 · v1):** walkable
+  Salmonberry on the E2 MudflatWalk pattern (one Control, painted in
+  _draw, SlowstockSprite kid walker — the rust coat Vovo had waiting).
+  Eleven places on one screen (Vovo's house at the river mouth, Main
+  Street: store/cafe/library/church, Estelle's gray house, the school,
+  the woods band, the dock, the cannery on pilings, the beach path);
+  the season repaints the palette as the year turns. A WALK INTO TOWN
+  button on every month menu opens it as a child overlay (the
+  combat-overlay pattern — the year loop never loses its place); E at
+  a place lists that month's eligible activities THERE (same
+  activities.json data, new `loc` field), choosing spends the month
+  through the same _on_activity path; empty places give flavor lines.
+  Bond warmth shows as a gold dot at a person's place. Deck-verify:
+  walk feel, palette per season, place layout legibility.
 - **Wave B · the boat that didn't come back (DONE 2026-07-22):** a
   bond-gated clue thread (estelle_light from sitting with Estelle;
   del_saw / iris_record / estelle_name surfaced by deepening those

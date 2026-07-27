@@ -166,6 +166,15 @@ func _render_month() -> void:
 	prompt.add_theme_color_override("font_color", C_GOLD)
 	v.add_child(prompt)
 
+	# The adventure half — walk the town and spend the month in place.
+	# Same activities, same data; the town is the interface.
+	var town_btn := Button.new()
+	town_btn.text = "  ·  WALK INTO TOWN  ·  "
+	town_btn.add_theme_font_size_override("font_size", 15)
+	town_btn.add_theme_color_override("font_color", C_RUST)
+	town_btn.pressed.connect(_open_town)
+	v.add_child(town_btn)
+
 	var scroll := ScrollContainer.new()
 	scroll.size_flags_vertical = Control.SIZE_EXPAND_FILL
 	scroll.horizontal_scroll_mode = ScrollContainer.SCROLL_MODE_DISABLED
@@ -200,6 +209,46 @@ func _render_month() -> void:
 	v.add_child(back)
 
 	GamepadMgr.focus_first.call_deferred(scroll)
+
+
+# ── the walkable town · Wave A ──────────────────────────────────
+# Overlay pattern (the playbook's combat-overlay lesson): the town is
+# a child of this scene, so the year loop never loses its place. The
+# town emits activity_chosen (spends the month through the SAME
+# _on_activity path as the menu) or quit (back to the month menu).
+
+const TOWN_SCRIPT := preload("res://scenes/games/salmonberry/SalmonberryTown.gd")
+var _town: Control = null
+
+
+func _open_town() -> void:
+	_clear_ui()
+	var month: int = int(_s.get("month", 0))
+	# Group this month's eligible activities by their town location.
+	var by_loc: Dictionary = {}
+	for act_v in _acts:
+		var act: Dictionary = act_v
+		if not _eligible(act, month):
+			continue
+		var loc := String(act.get("loc", ""))
+		if loc == "":
+			continue
+		var arr: Array = by_loc.get(loc, [])
+		arr.append(act)
+		by_loc[loc] = arr
+	_town = TOWN_SCRIPT.new()
+	add_child(_town)
+	_town.connect("activity_chosen", func(act: Dictionary) -> void:
+		if _town != null and is_instance_valid(_town):
+			_town.queue_free()
+		_town = null
+		_on_activity(act))
+	_town.connect("quit", func() -> void:
+		if _town != null and is_instance_valid(_town):
+			_town.queue_free()
+		_town = null
+		_render())
+	_town.call("boot", month, by_loc, _s.get("bonds", {}))
 
 
 # ── the book of the coast · the collectible, read back ──
@@ -613,6 +662,10 @@ const ACT_SFX := {
 
 
 func _input(event: InputEvent) -> void:
+	# The town overlay owns input while open (its own ESC goes back to
+	# the month menu, not the title).
+	if _town != null and is_instance_valid(_town):
+		return
 	if event.is_action_pressed("ui_cancel"):
 		quit.emit()
 		get_viewport().set_input_as_handled()

@@ -76,10 +76,11 @@ producer discipline).
   scenes remain only as fallbacks.
 - **P1 · Estuary 4 thinness pass** — the last thinness-cluster stick
   still bare (art through the new pipeline + a BGM pass).
-- **P1 · Salmonberry Wave A: the town overworld** — the biggest
-  gameplay build on the board (PS/E2 tile engine reuse; "explore"
-  activities open real walkable locations). Waves C (playable
-  tsunami crisis) and D (full roster/errands) follow.
+- **SHIPPED 2026-07 · Salmonberry Wave A: the town overworld (v1)**
+  — walkable Salmonberry as the month interface (see the design doc).
+  Next: Waves C (playable tsunami crisis) and D (full roster/errands);
+  town v2 candidates: NPC figures at their places, month-gated
+  weather/light, interior beats.
 - **P1 · Mrs Wu BGM sign-off** — two composition scores are written
   and awaiting your ear before render/wire.
 - **P2 · Spiderdrops 2-player pass-the-stick** (the box promised it)
