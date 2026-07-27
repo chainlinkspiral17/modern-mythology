@@ -59,10 +59,9 @@ producer discipline).
   unlock the most scenes). Makes gate-3 Deck time efficient.
 - **P1 · Dialogue-surface iteration** — after the Deck look: scrim
   number, and the parked taste call on any further chrome.
-- **P2 · Kinetic text authoring** — RichTextLabel's native
-  [wave]/[shake]/[fade] BBCode already passes through the typewriter;
-  document the grammar in the direction playbook and seed a few
-  emphatic lines in vol 5.
+- **SHIPPED 2026-07 · Kinetic text** — grammar documented in the
+  direction playbook; first seeds in vol5_ch0. Ongoing: seed
+  sparingly at the lines that turn.
 - **P2 · Speaker-biased text columns** (`DialogueBox._anchor_to` dead
   intent) · letterbox on `establish~` shots · CharLayer
   resolution-relative positions. All taste/robustness, low urgency.
@@ -111,11 +110,13 @@ producer discipline).
 
 ### Cross-cutting / systems
 
-- **P1 · Producer beats** — extend the producer with a small
-  `[beat:x]` grammar (scene-directive) for synchronized emphasis
-  moments: sting + camera punch + letterbox + optional rumble in one
-  call. The VN direction playbook gains one verb; every emphatic
-  reveal in vols 5–7 gets cheaper to author.
+- **SHIPPED 2026-07 · Producer beats + kinetic text** — `[beat:
+  still|hit|chill|lift]` directive (sting + haptic + camera breath +
+  letterbox pulse in one call, VnDirector-executed, locale-parked,
+  drift-safe) and the native BBCode kinetic-text grammar documented;
+  first seeds in vol5_ch0 (the bell · "the walls are thin"). Next:
+  seed beats across vols 5-7's emphatic reveals as chapters are
+  reread.
 - **P2 · Screenshot mode** — F4 already hides HUD; a deliberate
   photo mode (letterbox + pause + no cursor) is ~30 lines and serves
   the user's clean-pictures habit.

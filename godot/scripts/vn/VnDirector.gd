@@ -61,6 +61,12 @@ var _pending_ops: Array[Dictionary] = []
 var _pending_op_frames: int = 0
 const PENDING_OP_MAX_FRAMES := 120
 
+# Letterbox bookkeeping for beats: _letterbox_on mirrors the bars'
+# logical state; _lb_seq bumps on every _set_letterbox so a beat's
+# delayed release can tell whether a later shot re-claimed the bars.
+var _letterbox_on: bool = false
+var _lb_seq: int = 0
+
 
 func setup(overlay_parent: Control) -> void:
 	_overlay_parent = overlay_parent
@@ -122,6 +128,64 @@ func apply_mood(spec: String) -> void:
 	_try_apply_ops()
 
 
+# ── Beats · [beat:x] · synchronized emphasis in one directive ─────
+# The producer discipline at line level: a sting (with its haptic,
+# free via SFXBank.RUMBLE_MAP), a camera breath (quick push or pull,
+# easing home), and a letterbox pulse fire TOGETHER. Four house
+# beats — a small vocabulary on purpose; a beat that appears twice a
+# chapter stays an event.
+#
+#   still · a held hush — letterbox + the gentlest push, no sting
+#   hit   · the hard beat — thud sting, sharp push-in
+#   chill · the uncanny — cold sting, slow push, longest hold
+#   lift  · wonder/relief — warm sting, a pull BACK (fov opens)
+const BEATS := {
+	"still": {"sting": "",                   "vol": 0.0,  "punch": 0.94, "hold": 1.8},
+	"hit":   {"sting": "loss_thud",          "vol": 0.55, "punch": 0.88, "hold": 1.2},
+	"chill": {"sting": "tier_crossing_close", "vol": 0.5, "punch": 0.93, "hold": 2.2},
+	"lift":  {"sting": "interlude_earned",   "vol": 0.5,  "punch": 1.06, "hold": 1.6},
+}
+
+
+func apply_beat(spec: String) -> void:
+	_pending_ops.append({"kind": "beat", "arg": spec.strip_edges().to_lower()})
+	_pending_op_frames = 0
+	_try_apply_ops()
+
+
+func _do_beat(beat_name: String) -> bool:
+	if not BEATS.has(beat_name):
+		return false
+	var b: Dictionary = BEATS[beat_name]
+	var sting := String(b["sting"])
+	if sting != "":
+		SFXBank.play(sting, float(b["vol"]))
+	var hold := float(b["hold"])
+	# Letterbox pulse. If a shot already has the bars in, they stay —
+	# the beat only borrows them, tracked by _lb_seq so a shot fired
+	# during the hold cancels the stale release.
+	var was_on := _letterbox_on
+	_set_letterbox(true)
+	var my_seq := _lb_seq
+	if not was_on:
+		var tw2 := create_tween()
+		tw2.tween_interval(hold)
+		tw2.tween_callback(func() -> void:
+			if _lb_seq == my_seq:
+				_set_letterbox(false))
+	# Camera breath: quick punch (in, or OUT for lift), ease home.
+	var cam: Camera3D = _bg3d.get_camera() if _bg3d.has_method("get_camera") else null
+	if cam != null:
+		_drifting = false
+		var fov0 := cam.fov
+		var tw := create_tween()
+		tw.tween_property(cam, "fov", fov0 * float(b["punch"]), 0.12)\
+			.set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT)
+		tw.tween_property(cam, "fov", fov0, maxf(0.4, hold * 0.6))\
+			.set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN_OUT)
+	return true
+
+
 func _try_apply_ops() -> void:
 	if _pending_ops.is_empty():
 		return
@@ -135,7 +199,10 @@ func _try_apply_ops() -> void:
 		return
 	for op: Dictionary in _pending_ops:
 		var arg := String(op.get("arg", ""))
-		if op.get("kind") == "stage":
+		if op.get("kind") == "beat":
+			var bok := _do_beat(arg)
+			print("[VnDirector] BEAT → %s%s" % [arg, "" if bok else " · MISS"])
+		elif op.get("kind") == "stage":
 			var parts := arg.split(" ", false)
 			if parts.size() < 2:
 				continue
@@ -288,6 +355,8 @@ func _process(delta: float) -> void:
 func _set_letterbox(on: bool) -> void:
 	if _bar_top == null:
 		return
+	_letterbox_on = on
+	_lb_seq += 1
 	var h := BAR_HEIGHT if on else 0.0
 	_bar_top.visible = true
 	_bar_bottom.visible = true

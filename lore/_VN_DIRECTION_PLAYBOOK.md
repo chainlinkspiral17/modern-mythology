@@ -19,6 +19,46 @@ Cuts by default. A shot may DRIFT (slow push-in, ~2%/sec) when the
 text lingers — mark it explicitly. Never ease between shots like a
 camera operator walked there; a comic does not pan between panels.
 
+## Beats · [beat:x] · synchronized emphasis (2026-07)
+
+The producer discipline at line level: one directive fires a sting
+(haptic included, via SFXBank.RUMBLE_MAP), a camera breath, and a
+letterbox pulse TOGETHER. Four house beats — keep the vocabulary
+small; a beat that appears twice a chapter stays an event:
+
+| beat | reads as | sting | camera |
+|---|---|---|---|
+| `[beat:still]` | a held hush | none | gentlest push (0.94) |
+| `[beat:hit]`   | the hard beat | loss_thud | sharp push (0.88) |
+| `[beat:chill]` | the uncanny | tier_crossing_close | slow push, longest hold |
+| `[beat:lift]`  | wonder / relief | interlude_earned | pulls BACK (1.06) |
+
+Rules: beats chain with other directives (`[beat:chill][shot:closeup
+x]` fires both); they park until the locale loads like mood/stage; a
+beat borrows the letterbox and returns it unless a shot claims the
+bars during the hold; a beat cancels drift (the next shot restores
+it). Camera breath eases home on its own — never author a beat as a
+persistent state; that is what [mood:] is for.
+
+First seeds: vol5_ch0_booth6 node 12 (`[beat:still]` on the bell) and
+node 17 (`[beat:chill]` on "the walls are thin").
+
+## Kinetic text (native BBCode · 2026-07)
+
+`bbcode_enabled` is on in every dialogue variant and the typewriter's
+tag-skipper passes bracketed runs through whole — so RichTextLabel's
+effect tags work TODAY in narrate/say/think text:
+
+- `[wave amp=8 freq=3]...[/wave]` — the words go soft/unstable (first
+  seed: the stranger's "The walls are thin.")
+- `[shake rate=12 level=4]...[/shake]` — fear, cold, interference
+- `[fade start=4 length=14]...[/fade]` — trailing off
+
+Restraint rules: one effect per line at most; amp/level low (the 34px
+serif carries scale already); never on a whole passage — mark the
+three or four words that turn. Pairs naturally with a beat on the
+same line.
+
 ## Script syntax (parsed + stripped at line display)
 
 Directives lead a VN script line, square-bracketed:
