@@ -232,7 +232,7 @@
     },
     {
       "t": "narrate",
-      "text": "[mood:candlelight_low][shot:closeup nicola]Nicola seated the man, returned to the stand, and felt a kick.",
+      "text": "[beat:hit][mood:candlelight_low][shot:closeup nicola]Nicola seated the man, returned to the stand, and felt a kick.",
       "voice": "assets/audio/voice/vol5_ch3_empress/041.mp3"
     },
     {
@@ -498,7 +498,7 @@
       "char": "Dean",
       "role": "— Table 14 —",
       "expr": "neutral",
-      "text": "\"Please give my best to Mr. D'Ambrosio. And — congratulations. I understand they'll be lovely.\"",
+      "text": "[beat:chill]\"Please give my best to Mr. D'Ambrosio. And — congratulations. [wave amp=6 freq=2]I understand they'll be lovely.[/wave]\"",
       "voice": "assets/audio/voice/vol5_ch3_empress/087.mp3"
     },
     {

@@ -176,7 +176,7 @@
     },
     {
       "t": "narrate",
-      "text": "[shot:insert mirror~]She picked up the mirror shard again. Looked into the fractal Elicias. Saw, this time, not aloof control. Not the practiced amusement she had been cultivating since her early twenties — but something disconcertingly like fear.",
+      "text": "[shot:insert mirror~]She picked up the mirror shard again. Looked into the fractal Elicias. Saw, this time, not aloof control. Not the practiced amusement she had been cultivating since her early twenties — but something [wave amp=6 freq=2]disconcertingly like fear[/wave].",
       "voice": "assets/audio/voice/vol5_ch2_priestess_b/032.mp3"
     },
     {
@@ -289,7 +289,7 @@
     },
     {
       "t": "narrate",
-      "text": "The bungalow's wallpaper, which had been peeling along the seam by the bedroom door for as long as Elicia had lived here, peeled a little further. And then stopped — as if waiting for permission.",
+      "text": "[beat:chill]The bungalow's wallpaper, which had been peeling along the seam by the bedroom door for as long as Elicia had lived here, peeled a little further. And then stopped — as if waiting for permission.",
       "voice": "assets/audio/voice/vol5_ch2_priestess_b/051.mp3"
     },
     {

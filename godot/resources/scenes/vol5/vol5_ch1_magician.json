@@ -377,7 +377,7 @@
       "char": "The Demon",
       "role": "— imp —",
       "expr": "neutral",
-      "text": "\"Recommendation revised. Subject proximate to riverboat: do not place. Repeat: do not place.\"",
+      "text": "[beat:chill]\"Recommendation revised. Subject proximate to riverboat: do not place. [shake rate=10 level=3]Repeat: do not place.[/shake]\"",
       "voice": "assets/audio/voice/vol5_ch1_magician/069.mp3"
     },
     {
@@ -420,7 +420,7 @@
     },
     {
       "t": "narrate",
-      "text": "He set it back on the workbench. Carefully. The way you set down something that has, against your better judgment, started to be alive.",
+      "text": "[beat:still]He set it back on the workbench. Carefully. The way you set down something that has, against your better judgment, started to be alive.",
       "voice": "assets/audio/voice/vol5_ch1_magician/076.mp3"
     },
     {
