@@ -93,9 +93,17 @@ producer discipline).
      morale, seeded tide windows, forecast storms with prep-or-pay,
      grant deadline, storm damage/repair; the king tide reads built
      quality per project. Deck-verify pending.
-  4. **The Tideline / Spiderdrops 2 / Mrs Wu** — each has one good
-     verb; give each a second system that trades against it + an
-     expiring calendar.
+  4. **SHIPPED 2026-07 · Tideline / Spiderdrops 2 / Mrs Wu second
+     systems** — Tideline: THE TIDE CLOCK (walking/recording/
+     watching cost minutes; nine observations live in tide windows
+     with authored gone/early ghost lines; the report reads your
+     pace). SD2: airborne drops hang low near the churn (+silk,
+     risk/reward) + gold thermal columns with free lift, each
+     scrolling past exactly once. Mrs Wu: weather rewrites the
+     evening's needs (wind = tie up TONIGHT, rain = slugs + free
+     watering), the linen chest (frost sheets EARNED by spending
+     drying-weather actions washing), the pumpkin boy covers a bed
+     on frost night if you tended his twice. Deck-verify pending.
   5. **Sweetgum / Sam's Summer Shifts / Patient Mister Glass /
      Riffmaster / Hane no Niwa** — hosts with vignettes; full
      builds through the floor, one per arc.

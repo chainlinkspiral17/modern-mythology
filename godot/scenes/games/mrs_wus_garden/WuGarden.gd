@@ -46,6 +46,34 @@ var _state: Dictionary = {}
 var _data: Dictionary = {}
 var _beds: Array = []
 var _actions_left: int = 3
+var _wash_btn: Button = null
+
+# ── WEATHER (2026-07-27 depth pass) — each evening arrives with its
+# own sky, and the sky rewrites the work: wind nights make tying
+# urgent TONIGHT, rain feeds the beds but brings the slugs, dry
+# evenings are the only ones that dry laundry — which matters,
+# because frost-night sheets are EARNED from the linen chest, one
+# washed sheet per spent action. Start with two.
+const WEATHER := {
+	1: {"kind": "clear", "line": "A dry evening with a small wind off the hills. Good drying weather, Mrs. Wu says, to no one in particular."},
+	2: {"kind": "wind", "line": "The wind is up off the gorge and the whole garden leans. The dahlias and the peas are being pulled at by their own height.",
+		"urgent": ["dahlias", "peas"], "urgent_need": "tie up · TONIGHT",
+		"miss_line": "%s fought the wind all night alone, and lost some of itself."},
+	3: {"kind": "rain", "line": "Rain since noon. Nothing wants water tonight — but the slugs have come up for the bok choy like it's a dinner invitation.",
+		"urgent": ["bok_choy"], "urgent_need": "slug patrol · TONIGHT",
+		"miss_line": "%s hosted the slugs until dawn. They were not careful guests.", "free_water": true},
+	4: {"kind": "cold", "line": "Clear and cold, the stars sharpened. Good drying weather again — the last of it, says the radio, before the real cold."},
+}
+const SHEETS_START := 2
+const SHEETS_MAX := 5
+
+
+func _weather(n: int) -> Dictionary:
+	return WEATHER.get(n, {})
+
+
+func _sheets() -> int:
+	return int(_state.get("sheets", SHEETS_START))
 var _tended_tonight: Array = []
 var _grid: GridContainer = null
 var _log_lbl: RichTextLabel = null
@@ -153,6 +181,13 @@ func _build_ui() -> void:
 	_sit_btn.pressed.connect(_on_sit)
 	porch.add_child(_sit_btn)
 
+	_wash_btn = Button.new()
+	_wash_btn.text = "  WASH A SHEET  "
+	_wash_btn.add_theme_font_size_override("font_size", 14)
+	_wash_btn.tooltip_text = "The frost will come, and the sheets only cover what you have ready. Needs drying weather."
+	_wash_btn.pressed.connect(_on_wash)
+	porch.add_child(_wash_btn)
+
 	_end_btn = Button.new()
 	_end_btn.text = "  END THE EVENING  "
 	_end_btn.add_theme_font_size_override("font_size", 14)
@@ -219,9 +254,23 @@ func _begin_evening() -> void:
 		_run_aftermath()
 		return
 	_tended_tonight = []
-	_actions_left = 4 if n == 5 else 3
+	_actions_left = _sheets() if n == 5 else 3
 	var e := _evening_def(n)
 	_say(String(e.get("intro", "")))
+	var wx := _weather(n)
+	if not wx.is_empty():
+		_say(String(wx.get("line", "")))
+	if n == 5:
+		# the pumpkin boy · two evenings of tending his bed for him
+		# and he arrives with his mother's beach towel
+		var tc: Dictionary = _state.get("tend_counts", {})
+		if int(tc.get("pumpkin", 0)) >= 2 and not bool(_state.get("boy_came", false)):
+			_state["boy_came"] = true
+			var cov: Array = _state.get("covered", [])
+			if not cov.has("pumpkin"):
+				cov.append("pumpkin")
+				_state["covered"] = cov
+			_say("The boy from two doors down is at the fence with his mother's beach towel. 'For the pumpkin,' he says, like he's been watering it all along. Mrs. Wu does not correct him. Neither do you.")
 	# The humming, before the melody resolves.
 	if n >= 2 and not bool(_state.get("melody_heard", false)):
 		_say(String((_data.get("melody", {}) as Dictionary).get("fragment", "")))
@@ -252,9 +301,10 @@ func _render() -> void:
 	_set_backdrop("the_frost" if n == 5 else "the_garden")
 	_hdr_lbl.text = "· %s ·" % String(e.get("date", ""))
 	if n == 5:
-		_actions_lbl.text = "armloads of sheets left · %d" % _actions_left
+		_actions_lbl.text = "sheets from the linen chest · %d" % _actions_left
 	else:
-		_actions_lbl.text = "evening actions left · %d" % _actions_left
+		_actions_lbl.text = "evening actions left · %d      linen chest · %d sheet%s ready" % [
+			_actions_left, _sheets(), "" if _sheets() == 1 else "s"]
 	for c in _grid.get_children():
 		c.queue_free()
 	var conditions: Dictionary = _state.get("conditions", {})
@@ -271,6 +321,9 @@ func _render() -> void:
 			btn.text = "%s\n%s · %s" % [String(bed["name"]), line, mark]
 		elif _tended_tonight.has(bid):
 			btn.text = "%s\n%s · tended tonight" % [String(bed["name"]), line]
+		elif (_weather(n).get("urgent", []) as Array).has(bid):
+			btn.text = "%s\n%s · wants · %s" % [String(bed["name"]), line, String(_weather(n).get("urgent_need", need))]
+			btn.add_theme_color_override("font_color", C_GOLD)
 		else:
 			btn.text = "%s\n%s · wants · %s" % [String(bed["name"]), line, need.replace("_", " ")]
 		btn.custom_minimum_size = Vector2(275, 62)
@@ -281,6 +334,15 @@ func _render() -> void:
 		_grid.add_child(btn)
 	_sit_btn.disabled = _actions_left <= 0 or n == 5
 	_sit_btn.visible = n != 5
+	var dry: bool = String(_weather(n).get("kind", "")) in ["clear", "cold"]
+	_wash_btn.visible = n != 5
+	_wash_btn.disabled = _actions_left <= 0 or not dry or _sheets() >= SHEETS_MAX
+	if not dry and n != 5:
+		_wash_btn.tooltip_text = "Nothing dries in this weather."
+	elif _sheets() >= SHEETS_MAX:
+		_wash_btn.tooltip_text = "The chest holds five. It holds five."
+	else:
+		_wash_btn.tooltip_text = "The frost will come, and the sheets only cover what you have ready."
 
 
 func _find_bed(bid: String) -> Dictionary:
@@ -313,12 +375,26 @@ func _on_bed_pressed(bid: String) -> void:
 		missed[bid] = 0
 		_state["missed"] = missed
 		_tended_tonight.append(bid)
+		var tc: Dictionary = _state.get("tend_counts", {})
+		tc[bid] = int(tc.get(bid, 0)) + 1
+		_state["tend_counts"] = tc
 		_state["last_tended"] = bid
 		_actions_left -= 1
 		var need := _need_tonight(bed)
 		var need_line := String((_data.get("need_lines", {}) as Dictionary).get(need, ""))
 		if sfx: sfx.play("coin" if need == "water" else "card_place", 0.35)
 		_say("%s · %s." % [String(bed.get("name", bid)), need_line])
+	_render()
+
+
+func _on_wash() -> void:
+	if _actions_left <= 0 or _sheets() >= SHEETS_MAX:
+		return
+	_actions_left -= 1
+	_state["sheets"] = _sheets() + 1
+	_say("You bring a sheet up from the cellar, wash it at the outside tap, and pin it on the line while the light lasts. It will smell like this evening when it matters.")
+	var sfx := get_node_or_null("/root/SFXBank")
+	if sfx: sfx.play("water_slap", 0.3)
 	_render()
 
 
@@ -356,12 +432,24 @@ func _on_end_evening() -> void:
 		_resolve_frost()
 	else:
 		# Neglect ticks · two evenings unmissed and a bed declines.
+		var wx := _weather(n)
 		var conditions: Dictionary = _state.get("conditions", {})
 		var missed: Dictionary = _state.get("missed", {})
+		for ub_v in wx.get("urgent", []):
+			# the sky's demands don't wait two evenings
+			var ubid := String(ub_v)
+			if _tended_tonight.has(ubid) or int(conditions.get(ubid, 2)) <= 0:
+				continue
+			conditions[ubid] = maxi(0, int(conditions.get(ubid, 2)) - 1)
+			_say(String(wx.get("miss_line", "%s suffered.")) % String(_find_bed(ubid).get("name", ubid)))
 		for b_v in _beds:
 			var bid := String((b_v as Dictionary)["id"])
 			if _tended_tonight.has(bid) or int(conditions.get(bid, 2)) <= 0:
 				continue
+			if (wx.get("urgent", []) as Array).has(bid):
+				continue   # already took the urgent hit tonight
+			if bool(wx.get("free_water", false)) and _need_tonight(_find_bed(bid)) == "water":
+				continue   # the rain did the watering
 			missed[bid] = int(missed.get(bid, 0)) + 1
 			if int(missed[bid]) >= 2:
 				missed[bid] = 0

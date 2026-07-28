@@ -64,7 +64,9 @@
     {
      "id": "sand_dollars",
      "line": "sand dollars, dozens, all face down — the flat buried its money",
-     "cat": "living"
+     "cat": "living",
+     "before": 26,
+     "gone": "the flat is under an inch of tide now. the sand dollar bed sleeps till the next minus morning."
     },
     {
      "id": "chair_leg",
@@ -86,7 +88,9 @@
     {
      "id": "shell_lens",
      "line": "lens of pure mussel shell, thumb-deep, purple as the day of the meal",
-     "cat": "lost"
+     "cat": "lost",
+     "before": 36,
+     "gone": "the flood has reached the bank. the shell lens pours its two thousand years back under water."
     },
     {
      "id": "crow_pair",
@@ -113,7 +117,9 @@
     {
      "id": "log_moved",
      "line": "the schoolbus log has moved 30 yds north. it has been the reference since '98.",
-     "cat": "line"
+     "cat": "line",
+     "before": 46,
+     "gone": "whatever track the log left in the sand, the tide has redrafted it."
     }
    ]
   },
@@ -135,7 +141,9 @@
     {
      "id": "float_glass",
      "line": "glass float, softball size, green, net-scarred — twenty years crossing, one night arriving",
-     "cat": "lost"
+     "cat": "lost",
+     "before": 55,
+     "gone": "a green glint riding OUT on the flood — twenty years ashore for one morning. somebody slower than the sea will wonder forever."
     }
    ]
   },
@@ -157,7 +165,9 @@
     {
      "id": "boot_one",
      "line": "one rubber boot, left, standing upright and full of sand like someone stepped out of it",
-     "cat": "lost"
+     "cat": "lost",
+     "before": 66,
+     "gone": "the boot has gone back to sea, half a story lighter."
     }
    ]
   },
@@ -169,7 +179,9 @@
     {
      "id": "cave_breath",
      "line": "cave venting on the ebb, ~8-second period — breathing with the swell",
-     "cat": "line"
+     "cat": "line",
+     "after": 60,
+     "early": "the cave is silent. it only breathes when the tide reaches its throat."
     },
     {
      "id": "bat_star",
@@ -201,7 +213,9 @@
     {
      "id": "letters_jar",
      "line": "jar, sealed, paper inside, ink gone to ghost — recording THAT it is, not what it says",
-     "cat": "lost"
+     "cat": "lost",
+     "before": 82,
+     "gone": "the berm toe is awash. if the jar is still there, it is a secret between the beach and the next low water."
     }
    ]
   },
@@ -235,12 +249,16 @@
     {
      "id": "seal_3",
      "line": "seal, 10 yds, stationary, upright — third sighting, certainly the same animal",
-     "cat": "living"
+     "cat": "living",
+     "after": 70,
+     "early": "the shallows are still too thin off the point. the seal keeps her distance, a head in deeper water, waiting for the sea to bring the beach to her."
     },
     {
      "id": "shallows_cut",
      "line": "new channel cut through the shallows bar — the point rearranged its doorstep overnight",
-     "cat": "line"
+     "cat": "line",
+     "before": 100,
+     "gone": "the cut is drowned. the king tide has made the shallows one water."
     }
    ],
    "special_watch": {

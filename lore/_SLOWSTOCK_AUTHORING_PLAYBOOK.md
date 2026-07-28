@@ -864,3 +864,20 @@ quotes, promises, the manuscript). Lessons:
   v1 steps kept verbatim (Sam's 1988 save is canon); the 26 new
   steps imitate the lowercase working-harbor register. A depth pass
   that rewrites canon prose is a different, worse thing.
+
+### 2026-07-27 · the second-system batch · Tideline, SD2, Mrs Wu
+
+- **The second system is already in the fiction — find it, don't
+  invent it.** The Tideline's is in its NAME (the tide erases the
+  beach behind your attention); Mrs Wu's is October itself (weather
+  rewrites the beds' needs; sheets need drying weather); SD2's is
+  the sky that gives as well as takes. If the second system needs
+  new nouns, keep looking.
+- **Expiring windows want authored ghost lines.** A tide-taken
+  observation renders as dimmed prose ("a green glint riding OUT on
+  the flood...") — the loss is FELT, which is the whole point of
+  expiring scarcity. Silently absent content reads as a bug.
+- **Earn the crisis resources in the calm.** Mrs Wu's frost sheets
+  moved from a flat 4 to the linen chest (wash on drying evenings)
+  — the triage now reads the whole game back at you. If a finale
+  hands out its resources, the finale is a cutscene.

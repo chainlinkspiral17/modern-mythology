@@ -77,6 +77,20 @@ var _resolved: bool = false
 var _debris: Array = []          # each {x, y, vx}
 var _debris_timer: float = 0.0
 
+# ── 2026-07-27 depth pass: the sky gives as well as takes ──
+# AIRBORNE DROPS hang low, near the churn — dip out of the fast
+# band to drink them (+silk) at the cost of speed and risk.
+# THERMALS rise twice a leg and scroll past exactly once: inside
+# the shimmer, lifting is free. Expiring windows, both.
+var _air_drops: Array = []       # each {x, y, vx}
+var _drop_timer: float = 0.0
+var _drops_caught: int = 0
+var _thermals: Array = []        # each {x, w}
+var _thermal_marks: Array = []   # leg fractions already spawned
+const DROP_SILK := 8.0
+const THERMAL_W := 130.0
+const THERMAL_UPDRAFT := 420.0
+
 # HUD
 var _hud_leg: Label = null
 var _hud_silk: Label = null
@@ -113,6 +127,9 @@ func _start_settle() -> void:
 	_vy = 0.0
 	_dist = 0.0
 	_debris.clear()
+	_air_drops.clear()
+	_thermals.clear()
+	_thermal_marks = []
 
 
 func _cast() -> void:
@@ -159,9 +176,13 @@ func _fly_step(delta: float) -> void:
 	_phase_t += delta
 	# ── vertical ──
 	_vy += GRAVITY * delta
+	var in_thermal := _in_thermal()
+	if in_thermal:
+		_vy -= THERMAL_UPDRAFT * delta * 0.4
 	if Input.is_action_pressed("ui_accept") and _silk > 0.0:
 		_vy -= LIFT * delta
-		_silk -= LIFT_COST * delta
+		if not in_thermal:
+			_silk -= LIFT_COST * delta
 	if Input.is_action_pressed("ui_up"):
 		_vy -= STEER * delta
 		_silk -= STEER_COST * delta
@@ -183,6 +204,8 @@ func _fly_step(delta: float) -> void:
 	_score += wind * band * delta * SCORE_RATE
 
 	_step_debris(delta)
+	_step_air_drops(delta, wind)
+	_step_thermals(delta, wind)
 
 	_silk = maxf(0.0, _silk)
 	if _silk <= 0.0:
@@ -200,6 +223,50 @@ func _band_factor(y: float) -> float:
 		return clampf(0.4 + 0.6 * (y / BAND_HI), 0.3, 1.0)
 	# below the band, fading toward the churn
 	return clampf(1.0 - (y - BAND_LO) / (CHURN_Y - BAND_LO) * 0.85, 0.15, 1.0)
+
+
+func _in_thermal() -> bool:
+	for th_v in _thermals:
+		var th: Dictionary = th_v
+		if SPIDER_X >= float(th["x"]) and SPIDER_X <= float(th["x"]) + float(th["w"]):
+			return true
+	return false
+
+
+func _step_air_drops(delta: float, wind: float) -> void:
+	_drop_timer -= delta
+	if _drop_timer <= 0.0:
+		_drop_timer = randf_range(0.8, 1.5)
+		_air_drops.append({"x": VW + 16.0, "y": randf_range(430.0, 585.0),
+			"vx": -(wind * 0.85 + randf_range(-30.0, 30.0))})
+	var keep: Array = []
+	for d_v in _air_drops:
+		var d: Dictionary = d_v
+		d["x"] = float(d["x"]) + float(d["vx"]) * delta
+		d["y"] = float(d["y"]) + sin(_t * 3.0 + float(d["x"]) * 0.01) * 10.0 * delta
+		if float(d["x"]) < -20.0:
+			continue
+		if absf(float(d["x"]) - SPIDER_X) < 18.0 and absf(float(d["y"]) - _sy) < 20.0:
+			_silk = minf(SILK_MAX, _silk + DROP_SILK)
+			_drops_caught += 1
+			_sfx("pickup")
+			continue
+		keep.append(d)
+	_air_drops = keep
+
+
+func _step_thermals(delta: float, wind: float) -> void:
+	for frac in [0.30, 0.62]:
+		if _dist / LEG_DIST >= float(frac) and not _thermal_marks.has(frac):
+			_thermal_marks.append(frac)
+			_thermals.append({"x": VW + 40.0, "w": THERMAL_W})
+	var keep: Array = []
+	for th_v in _thermals:
+		var th: Dictionary = th_v
+		th["x"] = float(th["x"]) - wind * delta
+		if float(th["x"]) + float(th["w"]) > 0.0:
+			keep.append(th)
+	_thermals = keep
 
 
 func _step_debris(delta: float) -> void:
@@ -236,6 +303,7 @@ func _resolve(register: String) -> void:
 		"legs_crossed": _legs_crossed,
 		"legs_total": LEGS,
 		"score": int(_score),
+		"drops_caught": _drops_caught,
 	})
 
 
@@ -259,7 +327,7 @@ func _build_hud() -> void:
 	_hud_hint.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 	_hud_hint.add_theme_font_size_override("font_size", 12)
 	_hud_hint.add_theme_color_override("font_color", Color(C_SILK.r, C_SILK.g, C_SILK.b, 0.65))
-	_hud_hint.text = "HOLD accept to lift  ·  ↑↓ steer into the bright band  ·  stay out of the rain"
+	_hud_hint.text = "HOLD accept to lift  ·  ↑↓ steer  ·  the bright band carries you  ·  low drops refill silk  ·  gold shimmer lifts free"
 	add_child(_hud_hint)
 
 	_banner = Label.new()
@@ -286,7 +354,7 @@ func _update_hud() -> void:
 		return
 	_hud_leg.text = "LEG %d / %d" % [_leg, LEGS]
 	_hud_dist.text = "%d%%" % int(clampf(_dist / LEG_DIST, 0.0, 1.0) * 100.0)
-	_hud_silk.text = "silk %d" % int(_silk)
+	_hud_silk.text = "silk %d · drops %d" % [int(_silk), _drops_caught]
 	if _phase == "settle":
 		if _phase_t >= SETTLE_MIN:
 			_banner.text = "leg %d · CAST (accept) to catch the wind" % _leg
@@ -310,8 +378,10 @@ func _draw() -> void:
 		Color(C_BAND.r, C_BAND.g, C_BAND.b, band_a))
 	# the churn
 	draw_rect(Rect2(Vector2(0.0, CHURN_Y), Vector2(VW, VH - CHURN_Y)), C_CHURN)
+	_draw_thermals()
 	_draw_rain()
 	_draw_debris()
+	_draw_air_drops()
 	if _phase == "fly":
 		_draw_progress_branch()
 	_draw_spider()
@@ -327,6 +397,29 @@ func _draw_rain() -> void:
 		var y: float = fmod(base_y + _t * speed, VH)
 		var p: Vector2 = Vector2(fmod(px + _t * 80.0, VW), y)
 		draw_line(p, p + slant * 12.0, col, 1.0)
+
+
+func _draw_thermals() -> void:
+	for th_v in _thermals:
+		var th: Dictionary = th_v
+		var x: float = float(th["x"])
+		var w: float = float(th["w"])
+		draw_rect(Rect2(Vector2(x, 0.0), Vector2(w, VH)),
+			Color(C_STAR.r, C_STAR.g, C_STAR.b, 0.06))
+		# rising dashes — the shimmer reads as UP
+		for k in range(7):
+			var dx: float = x + w * (0.15 + 0.7 * fmod(float(k) * 0.37, 1.0))
+			var dy: float = fmod(VH - _t * 160.0 + float(k) * 110.0, VH)
+			draw_line(Vector2(dx, dy), Vector2(dx, dy - 22.0),
+				Color(C_STAR.r, C_STAR.g, C_STAR.b, 0.35), 1.5)
+
+
+func _draw_air_drops() -> void:
+	for d_v in _air_drops:
+		var d: Dictionary = d_v
+		var p := Vector2(float(d["x"]), float(d["y"]))
+		draw_circle(p, 4.0, C_DROP)
+		draw_circle(p + Vector2(-1.2, -1.2), 1.4, Color(1, 1, 1, 0.6))
 
 
 func _draw_debris() -> void:

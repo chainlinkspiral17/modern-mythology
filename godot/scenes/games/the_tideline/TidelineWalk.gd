@@ -188,6 +188,8 @@ func _show_station() -> void:
 
 	if remake_mode:
 		_add_body(String((_data.get("remake", {}) as Dictionary).get("arrive_prefix", "")), 12, C_MER_OK)
+	else:
+		_add_body(_tide_line(), 12, C_PENCIL)
 	_add_body(String(st.get("arrive", "")))
 
 	if remake_mode:
@@ -195,6 +197,49 @@ func _show_station() -> void:
 	else:
 		_show_station_original(idx, st)
 	GamepadMgr.focus_first.call_deferred(_root)
+
+
+# ── THE TIDE CLOCK (2026-07-27 depth pass) ───────────────────────
+# It is a KING TIDE morning and the water is coming back.  Walking
+# costs minutes, writing costs minutes, watching costs most of all —
+# and nine observations live inside tide windows: hurry and the cave
+# has not started breathing, linger and the float refloats.  The
+# remake is untouched: its walk takes three minutes and that is the
+# thesis.
+const TRANSIT_MIN := 6
+const RECORD_MIN := 3
+const WATCH_MIN := 8
+
+
+func _clock() -> int:
+	return int(_state.get("clock_min", 0))
+
+
+func _add_minutes(m: int) -> void:
+	_state["clock_min"] = _clock() + m
+
+
+func _tide_line() -> String:
+	var c := _clock()
+	var hh: int = 6 + (40 + c) / 60
+	var mm: int = (40 + c) % 60
+	var phase := "low slack · the whole beach is out"
+	if c >= 90:
+		phase = "king flood · the beach is a shrinking country"
+	elif c >= 60:
+		phase = "flooding · the low beach is going under"
+	elif c >= 30:
+		phase = "the turn · the water has started back"
+	return "%d:%02d am · %s" % [hh, mm, phase]
+
+
+func _obs_window_state(o: Dictionary) -> String:
+	# "open" · "gone" (tide took it) · "early" (tide hasn't brought it)
+	if o.has("before") and _clock() >= int(o["before"]):
+		return "gone"
+	if o.has("after") and _clock() < int(o["after"]):
+		return "early"
+	return "open"
 
 
 func _slots_text() -> String:
@@ -218,6 +263,15 @@ func _show_station_original(idx: int, st: Dictionary) -> void:
 	for o_v in st.get("obs", []):
 		var o: Dictionary = o_v
 		var oid := String(o.get("id", ""))
+		var wstate := _obs_window_state(o)
+		if wstate != "open" and not recorded.has(oid):
+			var ghost := Label.new()
+			ghost.text = "  — " + String(o.get("gone" if wstate == "gone" else "early", ""))
+			ghost.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+			ghost.add_theme_font_size_override("font_size", 12)
+			ghost.add_theme_color_override("font_color", C_PENCIL)
+			_root.add_child(ghost)
+			continue
 		var b := Button.new()
 		b.text = "  record · %s  " % String(o.get("line", ""))
 		b.add_theme_font_size_override("font_size", 13)
@@ -284,6 +338,8 @@ func _on_record(idx: int, o: Dictionary, slots_lbl: Label) -> void:
 		"line": String(o.get("line", "")), "cat": String(o.get("cat", "line"))})
 	_state["lines"] = lines
 	_slots_left -= 1
+	if not remake_mode:
+		_add_minutes(RECORD_MIN)
 	_notebook_left = maxi(0, _notebook_left - 1)
 	_state["notebook_left"] = _notebook_left
 	slots_lbl.text = _slots_text()
@@ -299,7 +355,9 @@ func _on_record(idx: int, o: Dictionary, slots_lbl: Label) -> void:
 
 
 func _on_watch(watch: Dictionary) -> void:
-	# Spends both remaining lines. Writes nothing.
+	# Spends both remaining lines. Writes nothing. Costs the most
+	# minutes of anything on the beach, which is the point.
+	_add_minutes(WATCH_MIN)
 	_slots_left = 0
 	_state["watched_the_seal"] = true
 	_make_root()
@@ -328,6 +386,8 @@ func _on_watch_remake(rk: Dictionary) -> void:
 
 func _advance_station() -> void:
 	_state["station"] = int(_state.get("station", 0)) + 1
+	if not remake_mode:
+		_add_minutes(TRANSIT_MIN)
 	station_done.emit(_state)
 	_show_station()
 
@@ -381,10 +441,16 @@ func _show_report() -> void:
 		var canon: Dictionary = _state.get("canon_vars", {})
 		canon["tideline_report"] = String(pick.get("title", ""))
 		_state["canon_vars"] = canon
-		body.text = "THE REPORT · %s\n\n%s\n\n%s\n\n%s" % [
+		var pace := "You finished ahead of the flood, the whole beach still yours behind you."
+		if _clock() >= 135:
+			pace = "The point was an island of minutes by the time you reached it. The survey does not dock marks for cutting it fine. The sea keeps its own attendance."
+		elif _clock() >= 105:
+			pace = "The last stations you walked with the water at your boots."
+		body.text = "THE REPORT · %s\n\n%s\n\n%s\n\n%s\n\n%s" % [
 			String(pick.get("title", "")),
 			"\n".join(read_back) if not read_back.is_empty() else "(the notebook went home blank, which is also a reading of the beach)",
 			String(pick.get("coda", "")),
+			pace,
 			String(reports.get("footer", ""))]
 
 	var done := Button.new()
