@@ -1,12 +1,12 @@
 extends Control
-## RIFFMASTER MELODY CLUB · one club meeting.
+## RIFFROCKER MELODY CLUB · one club meeting.
 ##
 ## Upper two-thirds: the clubhouse · four members on a couch,
-## whoever is talking sits forward.  Lower third: the Riffmaster
+## whoever is talking sits forward.  Lower third: the Riffrocker
 ## itself, drawn — eight rubber keys that light as played, two
 ## chunky OSC sliders, the frog SUB button, the smiling power
 ## light.  Keys 1–8 play live through the real 3-osc voice
-## (PDPRiffmaster.gd); SHIFT is the upper octave.
+## (PDRiffrocker.gd); SHIFT is the upper octave.
 ##
 ## Call-and-response, graded generously on pitch sequence only ·
 ## three tries, then BEEBO declares it jazz and the club moves on.
@@ -20,9 +20,9 @@ extends Control
 signal quit
 signal meeting_over(state: Dictionary)
 
-const MEETINGS_PATH := "res://resources/games/vol7/riffmaster_melody_club/meetings.json"
-const SPRITE_DIR := "res://resources/games/vol7/riffmaster_melody_club/sprites/"
-const VOICE_SCRIPT := "res://scripts/PDPRiffmaster.gd"
+const MEETINGS_PATH := "res://resources/games/vol7/riffrocker_melody_club/meetings.json"
+const SPRITE_DIR := "res://resources/games/vol7/riffrocker_melody_club/sprites/"
+const VOICE_SCRIPT := "res://scripts/PDRiffrocker.gd"
 
 # Toy palette
 const C_WHITE  := Color("f4f4f0")
@@ -41,7 +41,7 @@ const OPEN_MIC_SILENCE_END := 2.5
 var _state: Dictionary = {}
 var _meeting: Dictionary = {}
 var _voice: Node = null
-var _player: RiffmasterLoopPlayer = null
+var _player: RiffrockerLoopPlayer = null
 var _active_keys: Dictionary = {}      # semitones → true (for key highlights)
 
 # Meeting flow
@@ -76,7 +76,7 @@ func _ready() -> void:
 	_voice.connect("note_on", _on_note_on)
 	_voice.connect("note_off", _on_note_off)
 
-	_player = RiffmasterLoopPlayer.new()
+	_player = RiffrockerLoopPlayer.new()
 	add_child(_player)
 	# Calls play through OUR voice · the drawn keys light up.
 	_player.use_external_voice(_voice)
@@ -356,7 +356,7 @@ func _check_mourning_bar(semitones: int) -> void:
 			_set_line("the club goes quiet. all four of them. BEEBO, finally, small: 'where did you hear that.' nobody plays anything for a while, and the while is the song.")
 		else:
 			_set_line("the club goes quiet. all four of them. DOT-DOT: 'that's an old one.' nobody asks how you know it. nobody plays for a while, and the while is the song.")
-		OneironauticsTokens.add("riffmaster_mourning_bar_played")
+		OneironauticsTokens.add("riffrocker_mourning_bar_played")
 
 
 func _on_note_on(semitones: int) -> void:
@@ -422,10 +422,10 @@ func _draw() -> void:
 		var y := (268.0 if is_speaking else 258.0) - h
 		draw_texture_rect(tex, Rect2(Vector2(x, y), Vector2(w, h)), false)
 
-	_draw_riffmaster()
+	_draw_riffrocker()
 
 
-func _draw_riffmaster() -> void:
+func _draw_riffrocker() -> void:
 	# The machine fills the lower third.
 	draw_rect(Rect2(0, 470, 1280, 250), C_WHITE)
 	draw_rect(Rect2(60, 480, 1160, 220), Color("e4e4de"))     # molded body

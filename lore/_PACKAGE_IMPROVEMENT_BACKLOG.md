@@ -162,15 +162,15 @@ retro cosplay. The early sticks (estuary_1, northwind_harbor) were
 built fast — most likely to drift.
 
 **P2 · Art passes for the thin playable_v1 sticks — AUDIT NOTE 2026-07-19: sweetgum's zero-art is intentional ('Three colors. No sprites. No hero images.'). Audit per-stick before adding art; some minimalism is the studio voice.** Original note: estuary_1,
-estuary_2, sweetgum, riffmaster_melody_club, hane_no_niwa,
+estuary_2, sweetgum, riffrocker_melody_club, hane_no_niwa,
 patient_mister_glass, sisters_wyrd, basilica (empty sleeve is canon —
 leave), sams_summer_shifts: each wants its title HeroImage, 1–2
 mid-game images, and an ending card where missing. Audit first —
 some already have them.
 
-**P2 · ~~BGM coverage~~ AUDITED CLEAN 2026-07-19** — all ten newer sticks reference existing per-stick BGM dirs (e1/e2/nh/sg/hnn/pmg/sw/sss/ksm); riffmaster is diegetically scored through the PDP Riffmaster voice BY DESIGN. Original note: The Wave A–F audit hit
+**P2 · ~~BGM coverage~~ AUDITED CLEAN 2026-07-19** — all ten newer sticks reference existing per-stick BGM dirs (e1/e2/nh/sg/hnn/pmg/sw/sss/ksm); riffrocker is diegetically scored through the PD Riffrocker voice BY DESIGN. Original note: The Wave A–F audit hit
 100% for its era; the sticks built after (estuary_1, northwind,
-sweetgum, e2, hane_no_niwa, glass, riffmaster, wyrd) need a
+sweetgum, e2, hane_no_niwa, glass, riffrocker, wyrd) need a
 composition sweep — silence check at boot, one bed per major scene.
 
 **P3 · Fey Faire / Earthman presentation polish.** Combat and

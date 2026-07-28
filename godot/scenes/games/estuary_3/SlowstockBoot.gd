@@ -24,7 +24,7 @@ const EARTHMAN_HOST_SCENE  := "res://scenes/games/earthman_chronicles/EarthmanCh
 const SSS_HOST_SCENE := "res://scenes/games/sams_summer_shifts/SamsSummerShiftsHost.tscn"
 const E1_HOST_SCENE  := "res://scenes/games/estuary_1/Estuary1Host.tscn"
 const NH_HOST_SCENE  := "res://scenes/games/northwind_harbor/NorthwindHarborHost.tscn"
-const RMC_HOST_SCENE := "res://scenes/games/riffmaster_melody_club/RiffmasterClubHost.tscn"
+const RMC_HOST_SCENE := "res://scenes/games/riffrocker_melody_club/RiffrockerClubHost.tscn"
 const PMG_HOST_SCENE := "res://scenes/games/patient_mister_glass/PatientGlassHost.tscn"
 const SG_HOST_SCENE  := "res://scenes/games/sweetgum/SweetgumHost.tscn"
 const MW_HOST_SCENE  := "res://scenes/games/mrs_wus_garden/MrsWuHost.tscn"
@@ -143,8 +143,8 @@ func _on_picked(stick_id: String, manager_mode: bool = false) -> void:
 		_open_host_estuary_1()
 	elif stick_id == "northwind_harbor":
 		_open_host_northwind_harbor()
-	elif stick_id == "riffmaster_melody_club":
-		_open_host_riffmaster()
+	elif stick_id == "riffrocker_melody_club":
+		_open_host_riffrocker()
 	elif stick_id == "patient_mister_glass":
 		_open_host_patient_glass()
 	elif stick_id == "sweetgum":
@@ -353,11 +353,11 @@ func _open_host_northwind_harbor() -> void:
 	add_child(_host)
 
 
-func _open_host_riffmaster() -> void:
+func _open_host_riffrocker() -> void:
 	if _shelf != null:
 		_shelf.queue_free()
 		_shelf = null
-	_current_stick_id = "riffmaster_melody_club"
+	_current_stick_id = "riffrocker_melody_club"
 	_host = load(RMC_HOST_SCENE).instantiate()
 	_host.quit_to_shelf.connect(_open_shelf)
 	_host.finished.connect(_on_host_finished)

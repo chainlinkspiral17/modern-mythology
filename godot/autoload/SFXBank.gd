@@ -37,7 +37,7 @@ const PRESET_MAP := {
 	"knife_board":            ["pmg", "knife_board.wav"],
 	# Salmonberry (Oneironautics, 2006) · coastal RPG
 	"harbor_bell":            ["sb", "harbor_bell.wav"],
-	# Spiderdrops (PDP Toys, 1993) · the storm on the web
+	# Spiderdrops (Pretty Dreams, 1993) · the storm on the web
 	"thread_pluck":           ["sd", "thread_pluck.wav"],
 	"thread_snap":            ["sd", "thread_snap.wav"],
 	"thread_spin":            ["sd", "thread_spin.wav"],

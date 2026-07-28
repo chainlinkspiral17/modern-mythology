@@ -37,7 +37,7 @@ func _ready() -> void:
 	resized.connect(_layout_cells)
 	_layout_cells()
 	set_process(true)
-	# Watch for joypad input so Riffmaster (or any HID gamepad)
+	# Watch for joypad input so Riffrocker (or any HID gamepad)
 	# triggers cells. Buttons 0..7 → cells 0..7. Anything past 7 is
 	# ignored. _unhandled_input catches buttons even when the overlay
 	# doesn't have keyboard focus.

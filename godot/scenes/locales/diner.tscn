@@ -14,7 +14,7 @@
 [ext_resource type="Shader" path="res://assets/shaders/motion_ascii.gdshader" id="12_motion"]
 [ext_resource type="Shader" path="res://assets/shaders/gauss_blur.gdshader" id="13_blur"]
 [ext_resource type="Shader" path="res://assets/shaders/old_film.gdshader" id="14_oldfilm"]
-[ext_resource type="Script" path="res://scripts/PDPRiffmaster.gd" id="15_riff"]
+[ext_resource type="Script" path="res://scripts/PDRiffrocker.gd" id="15_riff"]
 [ext_resource type="Script" path="res://scripts/DebugMenu.gd" id="16_dbgm"]
 [ext_resource type="Script" path="res://scripts/DinerGauntletHost.gd" id="17_gauntlet"]
 [ext_resource type="Shader" path="res://assets/shaders/liminal_proximity.gdshader" id="18_lim"]
@@ -645,7 +645,7 @@ location_json = "res://resources/games/locations/dambrosios.json"
 inner_metres = 1.4
 falloff_metres = 4.0
 
-[node name="PDPRiffmaster" type="Node" parent="."]
+[node name="PDRiffrocker" type="Node" parent="."]
 script = ExtResource("15_riff")
 
 [node name="HUD" type="CanvasLayer" parent="." groups=["ui"]]
@@ -664,7 +664,7 @@ offset_left = 16.0
 offset_top = 240.0
 offset_right = 1260.0
 offset_bottom = 360.0
-text = "WASD/QE/RF move · Space/Ctrl up·dn · F1 collide · F2 tp · F4 hud · 1-8 Riffmaster
+text = "WASD/QE/RF move · Space/Ctrl up·dn · F1 collide · F2 tp · F4 hud · 1-8 Riffrocker
 F3 mood · F5 shimmer · F6 rift · F9 blend · F10 amt · F11 light · F12 style · RMB+look strata · F7/F8 track · Shift+F1 QA snap · Shift+F12 expert"
 autowrap_mode = 2
 theme_override_font_sizes/font_size = 18

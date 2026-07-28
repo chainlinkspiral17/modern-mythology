@@ -144,7 +144,7 @@ as designed.
 **P1 · ~~Scrapbooks~~ DONE 2026-07-19** — ten scrapbook.json files, 45 entries keyed to tokens the hosts actually emit. Original note: The shelf's scrapbook
 button convention (`scrapbook.json` per stick) is live, but only
 Estuary 3 Manager Mode and Pirate Summer have one. estuary_1/2,
-northwind, sweetgum, riffmaster, hane_no_niwa, glass, wyrd, sss, ksm
+northwind, sweetgum, riffrocker, hane_no_niwa, glass, wyrd, sss, ksm
 all finish into nothing. Even 6–10 tokens each (endings seen, the
 secret found, the dog's name) makes finishing collect into
 something. Cheapest full-catalog win on this list.
@@ -234,14 +234,14 @@ and 3 fact-gated party-chatter lines (Elias / Tessa / Ford).
 pacing (earliest achievable week vs the six endings' spread).
 
 **P3 · sweetgum / patient_mister_glass / sisters_wyrd /
-riffmaster / hane_no_niwa — DONE 2026-07-19.** One secret each,
+riffrocker / hane_no_niwa — DONE 2026-07-19.** One secret each,
 each in the stick's own grammar, each once-ever, each a token +
 scrapbook entry, none explained: SWEETGUM · check your round at
 the waterline while the light is on (no third variation — one
 line inside the existing verb; the author's statement stands).
 PMG · the silent evening — ask nothing, hear the one unprompted
 thing. WYRD · push into the shimmer three times from the same hex
-and see the repeat (hoofprints already there). RIFFMASTER · play
+and see the repeat (hoofprints already there). RIFFROCKER · play
 the five falling notes of the mourning bar on the live keys — the
 club goes quiet; a variant line if you carry the Kelait token.
 HNN · the ninth sit — having sat all eight spots, the top step

@@ -503,21 +503,21 @@ func _start_night() -> void:
 			String(rp.get("1150_fishing", "?")),
 			String(rp.get("1600_static", "?"))
 			], "#5c6a56", false)
-		# Riffmaster cross-token · a station playing the player's
+		# Riffrocker cross-token · a station playing the player's
 		# own OPEN MIC loop, faint, looping.  No announcer.  No
 		# comment · from the game or from anyone.
-		if OneironauticsTokens.has("riffmaster_open_mic_recorded"):
+		if OneironauticsTokens.has("riffrocker_open_mic_recorded"):
 			_log_line("[i]· 1620 AM, faint: four bars on a toy synth, looping.[/i]", "#5c6a56", false)
-			_play_riffmaster_station()
+			_play_riffrocker_station()
 		_log_line("", "", false)
 
 
-var _riff_station: RiffmasterLoopPlayer = null
+var _riff_station: RiffrockerLoopPlayer = null
 
-func _play_riffmaster_station() -> void:
+func _play_riffrocker_station() -> void:
 	# One wall away, volume down · two passes, then the station
 	# drifts back under the static.
-	var save_path := "user://riffmaster_melody_club.save.json"
+	var save_path := "user://riffrocker_melody_club.save.json"
 	if not FileAccess.file_exists(save_path):
 		return
 	var f := FileAccess.open(save_path, FileAccess.READ)
@@ -529,7 +529,7 @@ func _play_riffmaster_station() -> void:
 	if (loop.get("events", []) as Array).is_empty():
 		return
 	if _riff_station == null or not is_instance_valid(_riff_station):
-		_riff_station = RiffmasterLoopPlayer.new()
+		_riff_station = RiffrockerLoopPlayer.new()
 		add_child(_riff_station)
 		_riff_station.set_gain_db(-14.0)
 	_riff_station.play_loop(loop)

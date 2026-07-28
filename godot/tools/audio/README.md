@@ -9,8 +9,8 @@ WAV files Godot can load directly.
 The pipeline Marc Ostrom used at Oneironautics Inc. Portland to
 render the loops on the Estuary series slowsticks. A small
 soft-synth built around the same 3-oscillator saw + saw +
-sub-triangle voice used inside the games' PDP Riffmaster
-kids'-synth toy (see `godot/scripts/PDPRiffmaster.gd`), an ADSR
+sub-triangle voice used inside the games' PD Riffrocker
+kids'-synth toy (see `godot/scripts/PDRiffrocker.gd`), an ADSR
 envelope, and a handful of authored instruments for the
 different musical roles a slowstick score needs — lead / pad /
 bass / arp / drone / fluorescent hum / rain.
@@ -102,7 +102,7 @@ Authored:
 
 - **slowstick_lead** — 3-osc saw+saw+sub-triangle with a 6-cent
   detune, medium ADSR, 6.5 kHz LPF. Matches the in-game
-  PDPRiffmaster voice.
+  PDRiffrocker voice.
 - **slowstick_pad** — same voice, wider detune (14 cents),
   longer attack + release, 3.2 kHz LPF. Slow chords.
 - **slowstick_bass** — heavier sub-triangle (95%), tight
@@ -198,7 +198,7 @@ in your player, the pipeline works.
   exports.
 - Runtime AudioStreamGenerator playback of these compositions
   in Godot (i.e. no WAV file, generate on the fly). See
-  PDPRiffmaster.gd for the pattern; a shared `SlowstockSynth.gd`
+  PDRiffrocker.gd for the pattern; a shared `SlowstockSynth.gd`
   autoload could grow from that.
 - Effects · reverb, delay, chorus. All authored dry right now.
   A convolution reverb via a small impulse-response table is a

@@ -8,7 +8,7 @@
     {"id": "basilica_sub",   "token": "basilica_subfloor_reached",                         "stick": "Basilica of Wires",    "label": "the subfloor",          "note": "one level below M, the room the map declines to print."},
     {"id": "earthman_corr",  "token": "earthman_correction_ending_seen",                   "stick": "Earthman Chronicles",  "label": "Rocha's correction",    "note": "the version Rocha kept, set beside the one Hubbard printed."},
     {"id": "ff_note",        "token": "rocha_note_permanently_unlocked_in_fey_faire_trailer", "stick": "Fey Faire",         "label": "'for jack'",            "note": "two words in blue pen, tucked between two books in the trailer that do not touch it."},
-    {"id": "riff_bar",       "token": "riffmaster_mourning_bar_played",                    "stick": "Riffmaster",           "label": "the mourning bar",      "note": "one bar nobody plays twice. it does not resolve; it just holds."}
+    {"id": "riff_bar",       "token": "riffrocker_mourning_bar_played",                    "stick": "Riffrocker",           "label": "the mourning bar",      "note": "one bar nobody plays twice. it does not resolve; it just holds."}
   ],
   "connections": [
     {
@@ -34,7 +34,7 @@
     },
     {
       "id": "tone",
-      "pair": ["basilica_subfloor_reached", "riffmaster_mourning_bar_played"],
+      "pair": ["basilica_subfloor_reached", "riffrocker_mourning_bar_played"],
       "fires": "evidence_tone_assembled",
       "title": "THE NOTE THAT WILL NOT MOVE",
       "text": "In the Basilica, one pitch holds still while every other frequency shreds you — the null line, the safe frequency, the room that agrees to stay. In the Melody Club, one bar refuses to resolve and nobody plays it twice. Two rooms, decades apart, built around a single tone that declines to end. You never learn what the note is for. You learn that it is the same note."

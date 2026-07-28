@@ -152,7 +152,7 @@ that nobody needs it.
   | northwind_harbor | ✔ full | Y (J) toggles the heard log (normalized from H-only) |
   | basilica_of_wires | ✔ full | arrows turn/step (echo-filtered steps = press-per-step, matches keyboard), LB map, X/RB tune ±25; A/D fine-tune stays keyboard-only |
   | sweetgum | ✔ cursor | one drawn gui_input surface |
-  | riffmaster_melody_club | ✔ cursor | one drawn gui_input surface |
+  | riffrocker_melody_club | ✔ cursor | one drawn gui_input surface |
   | hane_no_niwa | ✔ cursor | one drawn gui_input surface |
   | patient_mister_glass | ✔ full | Y (J) toggles the ledger (normalized from L-only) |
   | fey_faire | ✔ full | buttons + focus; KP_ENTER alt-accept harmless |

@@ -201,7 +201,7 @@ Suggested waves to unblock the most gameplay per commit:
    authored-per-line moments · Act 1 radio programs, Act 4
    creature-specific sounds.
 
-## SPIDERDROPS · Vol 7 gallery slowstick (PDP Toys, 1993)
+## SPIDERDROPS · Vol 7 gallery slowstick (Pretty Dreams, 1993)
 
 The storm on the web. Real-time physics; each verb + weather beat has
 sound. SFX under `sfx/sd/`, BGM under `bgm/spiderdrops/`.
@@ -218,7 +218,7 @@ sound. SFX under `sfx/sd/`, BGM under `bgm/spiderdrops/`.
 All five presets have Python + importer.html JS twins (parity). BGM is
 a 60s Em-that-never-resolves loop (`compositions/spiderdrops_storm.json`).
 
-## SPIDERDROPS 2 · THE LONG WIND (PDP Toys, 1995)
+## SPIDERDROPS 2 · THE LONG WIND (Pretty Dreams, 1995)
 
 Post-game sequel. Reuses the game-1 SFX (`wind_gust`/`thread_spin`/
 `thread_snap`) for the glide; adds one launch sound + a hopeful bed.

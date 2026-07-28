@@ -80,7 +80,7 @@ const PLUCK_KICK := 6.0
 const SPIN_RANGE := 200.0
 const SCORE_RATE := 1.6
 
-# ── palette (PDP toy-bright, storm register)
+# ── palette (PD toy-bright, storm register)
 const C_SKY := Color("2b3a52")
 const C_SKY2 := Color("3a4d6b")
 const C_BRANCH := Color("241c18")

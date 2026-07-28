@@ -1,5 +1,5 @@
 extends Control
-## RIFFMASTER MELODY CLUB · run controller · PDP Toys, 1991.
+## RIFFROCKER MELODY CLUB · run controller · Pretty Dreams, 1991.
 ##
 ## The kids'-synth company's own slowstick · twelve club meetings
 ## that teach the 3-oscillator voice the whole catalog is scored
@@ -12,7 +12,7 @@ extends Control
 ## their own OPEN MIC loop, which becomes the title music of THIS
 ## CARTRIDGE forever after.
 ##
-## Save file: user://riffmaster_melody_club.save.json
+## Save file: user://riffrocker_melody_club.save.json
 ##
 ## Signals · uniform slowstock host contract:
 ##   quit_to_shelf · finished(canon_vars, lore_tokens)
@@ -22,11 +22,11 @@ extends Control
 signal quit_to_shelf
 signal finished(canon_vars: Dictionary, lore_tokens: Array)
 
-const MANIFEST_PATH := "res://resources/games/vol7/riffmaster_melody_club/manifest.json"
-const HEIRLOOM_PATH := "res://resources/games/vol7/riffmaster_melody_club/heirloom_loop.json"
-const SAVE_PATH     := "user://riffmaster_melody_club.save.json"
-const MEETING_SCENE := "res://scenes/games/riffmaster_melody_club/RiffmasterMeeting.tscn"
-const HERO_DIR      := "res://resources/games/vol7/riffmaster_melody_club/hero_images/"
+const MANIFEST_PATH := "res://resources/games/vol7/riffrocker_melody_club/manifest.json"
+const HEIRLOOM_PATH := "res://resources/games/vol7/riffrocker_melody_club/heirloom_loop.json"
+const SAVE_PATH     := "user://riffrocker_melody_club.save.json"
+const MEETING_SCENE := "res://scenes/games/riffrocker_melody_club/RiffrockerMeeting.tscn"
+const HERO_DIR      := "res://resources/games/vol7/riffrocker_melody_club/hero_images/"
 
 const C_WHITE  := Color("f4f4f0")
 const C_RED    := Color("e83030")
@@ -39,7 +39,7 @@ var _manifest: Dictionary = {}
 var _run_state: Dictionary = {}
 var _title_root: Node = null
 var _child_scene: Node = null
-var _loop_player: RiffmasterLoopPlayer = null
+var _loop_player: RiffrockerLoopPlayer = null
 
 
 func _ready() -> void:
@@ -53,7 +53,7 @@ func _ready() -> void:
 	_run_state = _fresh_state({}, [])
 	_load_manifest()
 	_load_save_if_present()
-	_loop_player = RiffmasterLoopPlayer.new()
+	_loop_player = RiffrockerLoopPlayer.new()
 	add_child(_loop_player)
 	_build_title_screen()
 
@@ -176,14 +176,14 @@ func _build_title_screen() -> void:
 	var shelf: Dictionary = _manifest.get("shelf", {})
 
 	var title := Label.new()
-	title.text = String(shelf.get("label_title", "RIFFMASTER MELODY CLUB"))
+	title.text = String(shelf.get("label_title", "RIFFROCKER MELODY CLUB"))
 	title.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 	title.add_theme_font_size_override("font_size", 34)
 	title.add_theme_color_override("font_color", C_RED)
 	v.add_child(title)
 
 	var subtitle := Label.new()
-	subtitle.text = "PDP TOYS · 1991 · no wrong notes. (some notes are jazz.)"
+	subtitle.text = "PD TOYS · 1991 · no wrong notes. (some notes are jazz.)"
 	subtitle.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 	subtitle.add_theme_font_size_override("font_size", 13)
 	subtitle.add_theme_color_override("font_color", C_BLUE)
@@ -272,16 +272,16 @@ func _on_meeting_over(state: Dictionary) -> void:
 
 func _finish_run() -> void:
 	var tokens: Array = _run_state.get("lore_tokens_pending", [])
-	if not tokens.has("riffmaster_finished"):
-		tokens.append("riffmaster_finished")
+	if not tokens.has("riffrocker_finished"):
+		tokens.append("riffrocker_finished")
 	var mine: Dictionary = _run_state.get("open_mic_loop", {})
 	if not (mine.get("events", []) as Array).is_empty() \
-			and not tokens.has("riffmaster_open_mic_recorded"):
-		tokens.append("riffmaster_open_mic_recorded")
+			and not tokens.has("riffrocker_open_mic_recorded"):
+		tokens.append("riffrocker_open_mic_recorded")
 	_run_state["lore_tokens_pending"] = tokens
 	OneironauticsTokens.add_many(tokens)
 	var canon: Dictionary = _run_state.get("canon_vars", {})
-	canon["riffmaster_club_graduate"] = true
+	canon["riffrocker_club_graduate"] = true
 	_run_state["canon_vars"] = canon
 	_run_state["meeting_n"] = 1
 	_save_state()

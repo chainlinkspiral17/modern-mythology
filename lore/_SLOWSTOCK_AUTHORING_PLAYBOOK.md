@@ -252,7 +252,7 @@ Stick #20, THE LONG WIND — the sequel to #19, built the next session.
 
 ### 2026-07-21 · SPIDERDROPS · a live physics stick on the same frame
 
-Stick #19 (PDP Toys, 1993) — a real-time Verlet web sim, the first
+Stick #19 (Pretty Dreams, 1993) — a real-time Verlet web sim, the first
 action/physics stick. It slotted into the exact same host contract as
 the text-forward sticks. Lessons:
 
@@ -754,7 +754,7 @@ quotes, promises, the manuscript). Lessons:
 ### 2026-07-10 · the catalog run · eight sticks in one arc
 
 - **The uniform host contract scaled to sixteen sticks without a
-  crack.** Every build this arc (Riffmaster, Glass, Sweetgum,
+  crack.** Every build this arc (Riffrocker, Glass, Sweetgum,
   E2, Hane no Niwa, Basilica) was host + one core scene +
   data JSONs, wired identically into SlowstockBoot/Shelf.  Cost
   per stick kept falling because nothing about the frame was

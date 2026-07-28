@@ -1,5 +1,5 @@
 extends Control
-## SPIDERDROPS 2 · THE LONG WIND · run controller · PDP Toys, 1995.
+## SPIDERDROPS 2 · THE LONG WIND · run controller · Pretty Dreams, 1995.
 ##
 ## The post-game sequel. The storm is over; the web cannot be held, so
 ## the spider lets go and travels — ballooning on the gusts that once
@@ -192,7 +192,7 @@ func _build_title_screen() -> void:
 	v.add_child(subtitle)
 
 	var meta := Label.new()
-	meta.text = "PDP Toys · Beaverton, OR · 1995"
+	meta.text = "Pretty Dreams · Beaverton, OR · 1995"
 	meta.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 	meta.add_theme_font_size_override("font_size", 12)
 	meta.add_theme_color_override("font_color", C_DROP)

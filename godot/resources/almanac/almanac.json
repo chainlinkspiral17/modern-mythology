@@ -30,7 +30,7 @@
     {"id": "shelf_basilica_forced", "chapter": "the_shelf", "title": "Basilica of Wires · The Forced Door", "blurb": "You spent your sense of the room and shouldered through a wall the tuner never opened. The wire gave before it agreed.", "requires": [{"token": "basilica_wall_forced"}]},
     {"id": "shelf_glass_second_ledger", "chapter": "the_shelf", "title": "Patient Mister Glass · The Second Ledger", "blurb": "You found the book kept under the book.", "requires": [{"token": "glass_second_ledger_seen"}]},
     {"id": "shelf_hnn_ninth", "chapter": "the_shelf", "title": "Hane no Niwa · The Ninth Sitting", "blurb": "You stayed for the ninth. The garden noticed.", "requires": [{"token": "hnn_ninth_sit"}]},
-    {"id": "shelf_riffmaster", "chapter": "the_shelf", "title": "Riffmaster · The Mourning Bar", "blurb": "You played the bar nobody plays twice.", "requires": [{"token": "riffmaster_mourning_bar_played"}]},
+    {"id": "shelf_riffrocker", "chapter": "the_shelf", "title": "Riffrocker · The Mourning Bar", "blurb": "You played the bar nobody plays twice.", "requires": [{"token": "riffrocker_mourning_bar_played"}]},
     {"id": "shelf_sweetgum", "chapter": "the_shelf", "title": "Sweetgum · The Waterline", "blurb": "You watched the waterline until it watched back.", "requires": [{"token": "sweetgum_waterline_watched"}]},
     {"id": "shelf_wyrd", "chapter": "the_shelf", "title": "Sisters Wyrd · The Shimmer", "blurb": "You crossed where the shimmer thinned the field.", "requires": [{"token": "wyrd_shimmer_crossed"}]},
     {"id": "shelf_pmg", "chapter": "the_shelf", "title": "Patient Mister Glass · A Silent Evening", "blurb": "You let one evening pass without a word. It was the loudest.", "requires": [{"token": "pmg_silent_evening"}]},

@@ -1,6 +1,6 @@
 # SPIDERDROPS 2 · THE LONG WIND · DESIGN DOC (PLAN)
 
-**Proposed stick #20 · PDP Toys · Beaverton, OR · 1995**
+**Proposed stick #20 · Pretty Dreams · Beaverton, OR · 1995**
 **Genre stamp:** ARCADE / PHYSICS · **Subtitle:** "let go"
 **Preset:** `pdp_toys` (`look_mode` 0, toy-bright)
 **Status:** BUILT · playable_v1 (2026-07-22) · post-game sequel to
@@ -102,8 +102,8 @@ consumer for a Vol-7 cabin beat or an Almanac Order entry).
 
 ## Canon lattice fit
 
-- **Studio/year:** PDP Toys, Beaverton, 1995 — two years after the
-  first, PDP's "make the sequel brighter" instinct hiding a sadder
+- **Studio/year:** Pretty Dreams, Beaverton, 1995 — two years after the
+  first, PD's "make the sequel brighter" instinct hiding a sadder
   game (uncredited R&D again).
 - **Unlock:** post-game — a new `unlock_graph` wave
   `unlocked_by_any_of: [spiderdrops]`, OR shelf `hidden_until_token:

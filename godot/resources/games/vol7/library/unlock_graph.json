@@ -16,10 +16,10 @@
       "sticks": [
         "estuary_2",
         "pirate_summer",
-        "riffmaster_melody_club",
+        "riffrocker_melody_club",
         "sisters_wyrd"
       ],
-      "notes": " Riffmaster is the family's own cart \u00b7 it surfaces as soon as Tem starts digging."
+      "notes": " Riffrocker is the family's own cart \u00b7 it surfaces as soon as Tem starts digging."
     },
     {
       "wave": 2.5,
@@ -93,12 +93,12 @@
     {
       "wave": 2.8,
       "unlocked_by_any_of": [
-        "riffmaster_melody_club"
+        "riffrocker_melody_club"
       ],
       "sticks": [
         "spiderdrops"
       ],
-      "notes": "PDP Toys' physics arcade cart · surfaces once Tem knows PDP Toys made real games (finished the Riffmaster)."
+      "notes": "Pretty Dreams' physics arcade cart · surfaces once Tem knows Pretty Dreams made real games (finished the Riffrocker)."
     },
     {
       "wave": 4.5,

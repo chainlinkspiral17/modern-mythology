@@ -57,12 +57,12 @@ touching code:
    - `lore/_FEY_FAIRE_DESIGN.md` · `lore/_EARTHMAN_CHRONICLES_DESIGN.md`
    - The eight planned sticks each have full docs too:
      _ESTUARY_1_, _ESTUARY_2_, _NORTHWIND_HARBOR_,
-     _BASILICA_OF_WIRES_, _SWEETGUM_, _RIFFMASTER_MELODY_CLUB_,
+     _BASILICA_OF_WIRES_, _SWEETGUM_, _RIFFROCKER_MELODY_CLUB_,
      _HANE_NO_NIWA_, _PATIENT_MISTER_GLASS_ (all `_DESIGN.md`)
    - `lore/_MRS_WUS_GARDEN_DESIGN.md` — stick #16 (built 2026-07)
    - `lore/_THE_TIDELINE_DESIGN.md` — stick #17 + 2048 remake (built 2026-07)
    - `lore/_ESTUARY_4_DESIGN.md` — stick #18, the course-correction (built 2026-07)
-   - `lore/_SPIDERDROPS_DESIGN.md` — stick #19, PDP Toys physics
+   - `lore/_SPIDERDROPS_DESIGN.md` — stick #19, Pretty Dreams physics
      puzzle · the one live Verlet renderer (built 2026-07)
    - `lore/_SPIDERDROPS_2_DESIGN.md` — stick #20, THE LONG WIND ·
      post-game sequel · balloon-glide, carries the register in

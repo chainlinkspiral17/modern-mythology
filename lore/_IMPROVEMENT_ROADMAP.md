@@ -105,7 +105,7 @@ producer discipline).
      drying-weather actions washing), the pumpkin boy covers a bed
      on frost night if you tended his twice. Deck-verify pending.
   5. **Sweetgum / Sam's Summer Shifts / Patient Mister Glass /
-     Riffmaster / Hane no Niwa** — hosts with vignettes; full
+     Riffrocker / Hane no Niwa** — hosts with vignettes; full
      builds through the floor, one per arc.
 - **SHIPPED 2026-07 · Sisters Wyrd readability triage** (user: "an
   eyesore") — focus dimming by distance from the drifter (the soup

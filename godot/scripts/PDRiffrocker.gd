@@ -1,6 +1,6 @@
-# PDPRiffmaster.gd
+# PDRiffrocker.gd
 # ════════════════════════════════════════════════════════════════
-# IN-FICTION · the PDP Riffmaster — a kids' synth toy from the
+# IN-FICTION · the PD Riffrocker — a kids' synth toy from the
 # slowstick game ecosystem (vol 7 era). Big plastic buttons, eight
 # notes plus a shift key for the upper octave, a single chunky tone
 # that's secretly a 3-oscillator saw + saw + sub-triangle with an
@@ -20,7 +20,7 @@ extends Node
 
 ## Fired for every note the voice starts/stops, whether it came
 ## from the key row or from play_note()/release_note().  The
-## Riffmaster Melody Club grades echoes and records the OPEN MIC
+## Riffrocker Melody Club grades echoes and records the OPEN MIC
 ## loop through these.
 signal note_on(semitones: int)
 signal note_off(semitones: int)
@@ -60,7 +60,7 @@ func _ready() -> void:
 	add_child(_stream_player)
 	_stream_player.play()
 	_playback = _stream_player.get_stream_playback()
-	print("[PDPRiffmaster] online · keys 1-8 (Shift = octave up)")
+	print("[PDRiffrocker] online · keys 1-8 (Shift = octave up)")
 
 
 ## Attenuate the whole voice · the Estuary 3 radio plays the OPEN

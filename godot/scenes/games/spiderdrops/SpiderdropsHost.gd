@@ -1,5 +1,5 @@
 extends Control
-## SPIDERDROPS · run controller · PDP Toys, Beaverton OR, 1993.
+## SPIDERDROPS · run controller · Pretty Dreams, Beaverton OR, 1993.
 ##
 ## A real-time physics arcade toy: keep the orb-weaver's web up through
 ## a six-gust thunderstorm. Marketed as a high-score toy; the design
@@ -24,12 +24,12 @@ const MANIFEST_PATH := "res://resources/games/vol7/spiderdrops/manifest.json"
 const SAVE_PATH     := "user://spiderdrops.save.json"
 const WEB_SCENE     := "res://scenes/games/spiderdrops/SpiderdropsWeb.tscn"
 
-# PDP toy-bright palette · storm register
+# PD toy-bright palette · storm register
 const C_SKY    := Color("2b3a52")   # storm slate-blue
 const C_SKY2   := Color("47597a")   # lighter band
 const C_SILK   := Color("e8ecef")   # web silk
 const C_DROP   := Color("6fb7e0")   # rain / water
-const C_SPIDER := Color("f2c14e")   # PDP toy-yellow spider
+const C_SPIDER := Color("f2c14e")   # PD toy-yellow spider
 const C_DARK   := Color("18202e")
 const C_TXT    := Color("d8e0e8")
 
@@ -178,7 +178,7 @@ func _build_title_screen() -> void:
 	v.add_child(subtitle)
 
 	var meta := Label.new()
-	meta.text = "PDP Toys · Beaverton, OR · 1993"
+	meta.text = "Pretty Dreams · Beaverton, OR · 1993"
 	meta.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 	meta.add_theme_font_size_override("font_size", 12)
 	meta.add_theme_color_override("font_color", C_DROP)

@@ -29,7 +29,7 @@ const SHELF_LAYOUT := LIBRARY_ROOT + "shelf_layout.json"
 const STUBS_DIR    := LIBRARY_ROOT + "stubs/"
 const FULL_MANIFESTS: Dictionary = {
 	"northwind_harbor":   "res://resources/games/vol7/northwind_harbor/manifest.json",
-	"riffmaster_melody_club": "res://resources/games/vol7/riffmaster_melody_club/manifest.json",
+	"riffrocker_melody_club": "res://resources/games/vol7/riffrocker_melody_club/manifest.json",
 	"patient_mister_glass": "res://resources/games/vol7/patient_mister_glass/manifest.json",
 	"sweetgum":           "res://resources/games/vol7/sweetgum/manifest.json",
 	"mrs_wus_garden":     "res://resources/games/vol7/mrs_wus_garden/manifest.json",

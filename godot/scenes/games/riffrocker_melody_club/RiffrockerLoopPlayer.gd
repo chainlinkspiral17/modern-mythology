@@ -1,14 +1,14 @@
 extends Node
-class_name RiffmasterLoopPlayer
-## Replays a recorded Riffmaster loop through the real voice.
+class_name RiffrockerLoopPlayer
+## Replays a recorded Riffrocker loop through the real voice.
 ##
 ## A loop is {"events": [{"s": semitones, "t": start_sec, "d": dur_sec}]}
 ## — the shape the OPEN MIC recorder writes and the heirloom JSON
-## uses.  Owns a PDPRiffmaster child with input_enabled = false, so
+## uses.  Owns a PDRiffrocker child with input_enabled = false, so
 ## it can live anywhere (the club title screen, the Estuary 3
 ## cabin radio) without eating the key row.
 
-const VOICE_SCRIPT := "res://scripts/PDPRiffmaster.gd"
+const VOICE_SCRIPT := "res://scripts/PDRiffrocker.gd"
 
 var _voice: Node = null
 var _generation: int = 0

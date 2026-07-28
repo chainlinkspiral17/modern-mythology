@@ -9,7 +9,7 @@ Every stick below now has a FULL design doc (look · sound ·
 playstyle · ambition · build): `_ESTUARY_1_DESIGN.md`,
 `_ESTUARY_2_DESIGN.md`, `_NORTHWIND_HARBOR_DESIGN.md`,
 `_BASILICA_OF_WIRES_DESIGN.md`, `_SWEETGUM_DESIGN.md`,
-`_RIFFMASTER_MELODY_CLUB_DESIGN.md`, `_HANE_NO_NIWA_DESIGN.md`,
+`_RIFFROCKER_MELODY_CLUB_DESIGN.md`, `_HANE_NO_NIWA_DESIGN.md`,
 `_PATIENT_MISTER_GLASS_DESIGN.md`, `_SISTERS_WYRD_DESIGN.md`
 (added 2026-07 · user pitch · built same arc). This file remains the index
 and the canon lattice; the per-stick docs carry the depth.
@@ -59,7 +59,7 @@ and the library stubs in `godot/resources/games/vol7/library/`.
   Mrs. Wu's Garden solo same October, The Tideline solo 2004,
   pitched Estuary 4 (2005).
 - **Marc Ostrom**: composer on everything Oneironautics; lead on
-  Estuary 2; built the studio soft-synth around the PDP Riffmaster
+  Estuary 2; built the studio soft-synth around the PD Riffrocker
   kids'-toy voice.
 - **Sarah Delahaye**: pixel artist; every sprite in the early
   sticks. The 2001 studio was these three people.
@@ -299,16 +299,16 @@ JOB to stay awake."*
 Small; enormously heavy. Gate it: unlocks only after Pirate
 Summer's 1976 facts are discovered.
 
-## 4 · RIFFMASTER MELODY CLUB (PDP Toys, 1991)
-### STATUS: BUILT · playable_v1 (2026-07) · see _RIFFMASTER_MELODY_CLUB_DESIGN.md
+## 4 · RIFFROCKER MELODY CLUB (Pretty Dreams, 1991)
+### STATUS: BUILT · playable_v1 (2026-07) · see _RIFFROCKER_MELODY_CLUB_DESIGN.md
 
 **Genre:** MUSIC / INSTRUMENT — the music gap, and canon
-compression: the PDP Riffmaster kids' synth already exists in-repo
-(`PDPRiffmaster.gd`), and slowstick_synth is documented as built
+compression: the PD Riffrocker kids' synth already exists in-repo
+(`PDRiffrocker.gd`), and slowstick_synth is documented as built
 around its 3-oscillator voice.
 
 The toy company's own slowstick: twelve "club meetings" that
-teach the Riffmaster voice — saw, saw, sub-triangle, one envelope
+teach the Riffrocker voice — saw, saw, sub-triangle, one envelope
 — through call-and-response with four cartoon club members. The
 final meeting is an open mic: the player's own loop, recorded to
 the save file. In-fiction, Marc Ostrom moonlighted on it
@@ -323,7 +323,7 @@ can HEAR the whole catalog differently. Final club member's line:
 **Provenance:** Tem's grandfather bought it for Tem's parent.
 The save file still holds a loop recorded by a seven-year-old.
 
-**Build:** the PDPRiffmaster scene already exists — wrap it in a
+**Build:** the PDRiffrocker scene already exists — wrap it in a
 host with twelve lesson beats. Mostly done before starting.
 
 ## 5 · HANE NO NIWA · THE FEATHER GARDEN (Yumemi Denshi, Kyoto, 1993)
@@ -390,7 +390,7 @@ replayed: *"you don't reread a confession."*
 1. **Estuary 1** — smallest, deepest lore payout, one lever.
 2. **Northwind Harbor** — canon-promised; the cart is already at
    camp; Chapter One must match Sam's save.
-3. **Riffmaster Melody Club** — engine already in repo.
+3. **Riffrocker Melody Club** — engine already in repo.
 4. **The Patient Mister Glass** — SSS machinery reuse.
 5. **Sweetgum** — small, but gate behind PS discoveries.
 6. **Estuary 2** — the big tile-engine reuse project.

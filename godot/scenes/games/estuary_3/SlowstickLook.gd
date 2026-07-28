@@ -49,7 +49,7 @@ const PRESETS: Dictionary = {
 		"scanline_strength": 0.10, "chromatic_aberration": 0.0018,
 		"ascii_strength": 0.0
 	},
-	# PDP Toys · Beaverton · injection-molded toy-bright · white
+	# Pretty Dreams · Beaverton · injection-molded toy-bright · white
 	# background, primary colors, no grain worth mentioning · a
 	# children's product photographed in a catalog
 	"pdp_toys": {

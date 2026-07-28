@@ -1,6 +1,6 @@
 # SPIDERDROPS · DESIGN DOC
 
-**Stick #19 · PDP Toys · Beaverton, OR · 1993**
+**Stick #19 · Pretty Dreams · Beaverton, OR · 1993**
 **Genre stamp:** ARCADE / PHYSICS PUZZLE
 **Preset:** `pdp_toys` (toy-bright, catalog-clean, `look_mode` 0)
 **Status:** BUILT · playable_v1 (2026-07-21)
@@ -19,11 +19,11 @@ this stick.
 > web and position for survival. maybe the gusts are waves."
 
 A standard game experience — a real-time physics arcade toy — with
-the modern-mythology twist buried where PDP's marketing never looked.
+the modern-mythology twist buried where PD's marketing never looked.
 
 ## The twist · a high-score toy that is secretly about impermanence
 
-PDP Toys shipped SPIDERDROPS as a cute physics arcade game: keep the
+Pretty Dreams shipped SPIDERDROPS as a cute physics arcade game: keep the
 spider's web up in a thunderstorm, chase a survival score. The blister
 pack promised "REAL PHYSICS!" and a two-player pass-the-stick mode.
 
@@ -41,9 +41,9 @@ spokes. The eight-pointed star is the Order's sign (the Basilica
 breaker, Sagebrush's compass). SPIDERDROPS never comments on it — but
 one ending register is THE EIGHT-POINTED STAR: the capture spiral torn
 away, only the eight structural spokes surviving the storm, the web
-reduced to the Order's exact figure. PDP is the third publisher the
+reduced to the Order's exact figure. PD is the third publisher the
 star has now leaked into, uncommented, the way it always leaks. Nobody
-at PDP drew a compass. It is just what an orb web is when the storm
+at PD drew a compass. It is just what an orb web is when the storm
 takes everything soft and leaves only the frame.
 
 ## Core loop · the verlet web
@@ -125,7 +125,7 @@ Emit-and-note now (readers-vs-writers: emit even without a consumer):
 
 ## Provenance (Olaf's note)
 
-A mall blister-pack PDP cart, common and cheap — the kind that came
+A mall blister-pack PD cart, common and cheap — the kind that came
 two-to-a-clamshell. Olaf's note:
 
 > "A dollar in a bin at the Beaverton Fred Meyer. It is a toy. I have
@@ -134,12 +134,12 @@ two-to-a-clamshell. Olaf's note:
 
 ## Canon lattice fit
 
-- **Studio:** PDP Toys, Beaverton (already canon — made the Riffmaster
-  kids' synth; the other PDP cart on the shelf). Uncredited R&D design,
-  the way Ostrom moonlighted on the Riffmaster.
-- **Year:** 1993 (Riffmaster 1991; PDP's physics-toy phase after).
-- **Unlock:** surfaces once Tem has finished RIFFMASTER MELODY CLUB —
-  "once you know PDP Toys made real games, the other PDP cart shows
+- **Studio:** Pretty Dreams, Beaverton (already canon — made the Riffrocker
+  kids' synth; the other PD cart on the shelf). Uncredited R&D design,
+  the way Ostrom moonlighted on the Riffrocker.
+- **Year:** 1993 (Riffrocker 1991; PD's physics-toy phase after).
+- **Unlock:** surfaces once Tem has finished RIFFROCKER MELODY CLUB —
+  "once you know Pretty Dreams made real games, the other PD cart shows
   up." (Mirrors hane_no_niwa←fey_faire, patient_mister_glass←sams.)
 - **Shelf slot:** shelf 0, slot 11.
 
@@ -151,7 +151,7 @@ two-to-a-clamshell. Olaf's note:
 - Real-time, one-sitting (~5–8 min a storm), like Sweetgum — no
   mid-run save; the save holds best register + run count only.
 - `pdp_toys` preset, `look_mode` 0 (clean/toy-bright). Font floor 12.
-- Follow-ups (not in v1): BGM (a PDP arcade loop + storm bed) and SFX
+- Follow-ups (not in v1): BGM (a PD arcade loop + storm bed) and SFX
   (thread pluck, snap, rain, gust) — author per the audio playbook
   before wiring; do not fake it.
 
