@@ -622,11 +622,11 @@
       "t": "narrate"
     },
     {
-      "text": "[wave amp=6 freq=2]It was warm.[/wave]",
+      "text": "It was warm.",
       "t": "narrate"
     },
     {
-      "text": "She put her palm flat on the table beside the bowl. The table was cool. She put her palm on the bowl. The bowl was warm. The warmth was not heat from a fire. The warmth was the warmth of a thing that had something inside it.",
+      "text": "She put her palm flat on the table beside the bowl. The table was cool. She put her palm on the bowl. The bowl was warm. The warmth was not heat from a fire. The warmth was the warmth of a thing that had [wave amp=6 freq=2]something inside it[/wave].",
       "t": "narrate"
     },
     {
