@@ -104,9 +104,26 @@ producer discipline).
      watering), the linen chest (frost sheets EARNED by spending
      drying-weather actions washing), the pumpkin boy covers a bed
      on frost night if you tended his twice. Deck-verify pending.
-  5. **Sweetgum / Sam's Summer Shifts / Patient Mister Glass /
-     Riffrocker / Hane no Niwa** — hosts with vignettes; full
-     builds through the floor, one per arc.
+  5. Vignette tier, corrected and in progress:
+     - **EXEMPT · Sweetgum** — the audit mislabeled it (truncated
+       listing): SweetgumNight.gd (458 lines) delivers its design
+       doc 1:1 — rounds, the typed palimpsest log, NOT A STATION,
+       the 3 AM sounds, 06:00 QUIET, the NAMES field. Its design
+       explicitly forbids expansion ("there is no third
+       variation"); deliberate single-scene art objects are judged
+       by their own doc, and this one passes.
+     - **SHIPPED 2026-07 · Sam's Summer Shifts · THE SHIFT** — the
+       "one scripted beat per week" pattern (the exact Salmonberry
+       sin) fixed: every week opens at the register with a seeded
+       customer queue — ring the right total from three (register
+       craft feeds TILL; ≥80% right pays the drawer, <50% costs
+       it), handle authored counter moments (Gus's dime, the
+       out-of-county check, the unfinished mustache), Heritage
+       week rings a longer line with tighter totals, the solo week
+       doubles till swings, and week 6's third customer is not a
+       customer. ~100 decisions per summer. Deck-verify pending.
+     - **Patient Mister Glass / Riffrocker / Hane no Niwa** — next,
+       one per arc.
 - **SHIPPED 2026-07 · Sisters Wyrd readability triage** (user: "an
   eyesore") — focus dimming by distance from the drifter (the soup
   fix), label plates, position ring, styled choice buttons lifted

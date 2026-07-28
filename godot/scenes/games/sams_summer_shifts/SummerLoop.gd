@@ -156,7 +156,260 @@ const ENDINGS: Dictionary = {
 }
 
 var _run_state: Dictionary = {}
-var _phase: String = "week"        # week | ending
+var _phase: String = "week"        # shift | week | ending
+
+# ── THE SHIFT (2026-07-27 depth pass) ────────────────────────────
+# Every week now OPENS at the register: a seeded queue of customers
+# you actually ring — pick the right total (register craft · TILL)
+# and handle the counter moments (REGULARS · NERVE) — before the
+# week's beat. Week 6's third customer is the robbery. Heritage
+# Days rings a longer line with tighter totals.
+const CUSTOMERS := [
+	{"id": "gus", "line": "Gus, first through the door, exact same order since Nixon.",
+	 "items": [["scratcher", 1.00], ["coffee, small", 0.65]],
+	 "moment": {"prompt": "He's a dime short. He knows it. You know it. He's looking at you.",
+		"choices": [
+			{"label": "  Wave it off. It's Gus.  ", "regulars": 1, "till": 0, "note": "the drawer is a dime light and the morning is right"},
+			{"label": "  'Dime, Gus.'  ", "till": 1, "regulars": -1, "note": "he pays it and calls you Ray Junior for a week"}]}},
+	{"id": "dot", "line": "Dot from the diner, buying the register's whole roll of quarters.",
+	 "items": [["roll of quarters", 10.00], ["iced tea", 0.89]]},
+	{"id": "hay_crew", "line": "Two guys off a hay truck, sunburned past argument.",
+	 "items": [["gas", 14.50], ["ice", 1.85], ["pop, two", 1.30]]},
+	{"id": "film_lady", "line": "A woman with a station wagon full of kids wants film before the light goes.",
+	 "items": [["film, 24 exp", 4.99], ["candy, assorted", 2.15]],
+	 "moment": {"prompt": "The kids are eyeing the candy rack like a jury.",
+		"choices": [
+			{"label": "  Slip each kid a tootsie roll on the house.  ", "regulars": 1, "till": -1, "note": "four future customers, one nickel each"},
+			{"label": "  Keep the line moving.  ", "till": 1, "note": "the drawer stays honest and the wagon rolls on"}]}},
+	{"id": "trucker", "line": "A long-hauler wants the works and wants it counted back out loud.",
+	 "items": [["diesel", 22.75], ["coffee, large", 0.95], ["jerky", 3.49]]},
+	{"id": "check_guy", "line": "A man you've never seen wants to pay with an out-of-county check.",
+	 "items": [["gas", 11.20], ["oil, quart", 2.29]],
+	 "moment": {"prompt": "Ray's rule is county checks only. The man is polite and in a hurry, which is either nothing or something.",
+		"choices": [
+			{"label": "  Take the check.  ", "till": -1, "nerve": 0, "note": "it clears, or it doesn't · you'll know friday"},
+			{"label": "  'Cash or county, sorry.'  ", "till": 1, "nerve": 1, "regulars": -1, "note": "he pays cash, unhappily · the rule holds because somebody holds it"}]}},
+	{"id": "teens", "line": "Three teenagers, one of them auditioning to buy beer with a mustache that isn't finished.",
+	 "items": [["pop, three", 1.95], ["chips", 1.59]],
+	 "moment": {"prompt": "The tall one sets a six-pack on the counter and dares you with his eyebrows.",
+		"choices": [
+			{"label": "  Card him.  ", "nerve": 1, "regulars": 0, "note": "he's sixteen · the pack goes back · his friends are delighted"},
+			{"label": "  Pretend not to see the six-pack until he puts it back himself.  ", "regulars": 1, "note": "the town's oldest de-escalation"}]}},
+	{"id": "rainier_lady", "line": "A woman from Rainier who talks to you like the store is a museum of itself.",
+	 "items": [["postcard", 0.35], ["pop", 0.65], ["film, 12 exp", 3.49]]},
+	{"id": "night_guy", "line": "The quiet man who buys the same two things and never says which shift he's coming off.",
+	 "items": [["coffee, large", 0.95], ["sandwich, egg", 2.25]]},
+	{"id": "mrs_alvarez", "line": "Mrs. Alvarez, fourteen items, coupons for six of them, patience for all of it.",
+	 "items": [["groceries", 18.40], ["ice cream, pints", 4.50]],
+	 "moment": {"prompt": "Her coupon for the ice cream expired Tuesday.",
+		"choices": [
+			{"label": "  Take it anyway.  ", "regulars": 1, "till": -1, "note": "forty cents of neighborliness"},
+			{"label": "  'This one's expired, sorry.'  ", "till": 1, "note": "she pays it and respects you slightly more and likes you slightly less"}]}},
+	{"id": "fisherman", "line": "A fisherman off the Columbia with a cooler and a theory about the weather.",
+	 "items": [["ice, two bags", 3.70], ["bait", 2.95], ["beer", 4.25]]},
+	{"id": "bus_kids", "line": "The church bus stops and eleven kids want eleven different things simultaneously.",
+	 "items": [["slushies, eleven", 8.25], ["napkins", 0.00]]},
+	{"id": "salesman", "line": "A rack-jobber wants to sell Ray a display of sunglasses nobody in this county will buy.",
+	 "items": [["coffee, small", 0.65]],
+	 "moment": {"prompt": "He wants you to 'just sign for the trial rack, kid.'",
+		"choices": [
+			{"label": "  'Ray signs. Ray's at the coast.'  ", "till": 1, "nerve": 1, "note": "the oldest counter-move · he respects it"},
+			{"label": "  Sign it. How bad can it be.  ", "till": -2, "note": "the rack arrives thursday · Ray's face on friday is a whole education"}]}},
+	{"id": "dot_late", "line": "Dot again, off-shift now, buying one pack of the cigarettes she quit.",
+	 "items": [["cigarettes", 1.85], ["matches", 0.10]]},
+	{"id": "old_ray_friend", "line": "An old man who knew Ray's father, narrating the store as it was in 1958.",
+	 "items": [["pop", 0.65], ["pretzels", 1.19]]},
+	{"id": "heritage_family", "line": "A family in matching festival shirts needs gas, ice, film, and directions.",
+	 "items": [["gas", 13.60], ["ice", 1.85], ["film, 24 exp", 4.99]]},
+]
+
+var _shift_queue: Array = []
+var _shift_idx: int = 0
+var _rings_right: int = 0
+var _rings_total: int = 0
+var _shift_week_done: int = -1
+
+
+func _shift_rng(week: int, salt: int) -> RandomNumberGenerator:
+	var rng := RandomNumberGenerator.new()
+	if not _run_state.has("seed"):
+		_run_state["seed"] = randi() % 100000
+	rng.seed = int(_run_state["seed"]) * 41 + week * 17 + salt
+	return rng
+
+
+func _start_shift(week: int) -> void:
+	_phase = "shift"
+	var rng := _shift_rng(week, 0)
+	var pool: Array = CUSTOMERS.duplicate()
+	var count: int = 8 if week == 8 else 6
+	if week == 6:
+		count = 3   # the third customer is not a customer
+	_shift_queue = []
+	for _i in range(count):
+		if pool.is_empty():
+			break
+		_shift_queue.append(pool.pop_at(rng.randi_range(0, pool.size() - 1)))
+	_shift_idx = 0
+	_rings_right = 0
+	_rings_total = 0
+	_render_customer()
+
+
+func _render_customer() -> void:
+	var week: int = int(_run_state.get("week", 1))
+	if _shift_idx >= _shift_queue.size():
+		_end_shift()
+		return
+	_clear_content()
+	var cust: Dictionary = _shift_queue[_shift_idx]
+	_content_root = Control.new()
+	_content_root.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
+	add_child(_content_root)
+	var v := VBoxContainer.new()
+	v.set_anchors_and_offsets_preset(Control.PRESET_CENTER)
+	v.offset_left = -400
+	v.offset_right = 400
+	v.offset_top = -230
+	v.offset_bottom = 250
+	v.add_theme_constant_override("separation", 10)
+	_content_root.add_child(v)
+	var hdr := Label.new()
+	hdr.text = "· WEEK %d · THE SHIFT · customer %d of %d ·      %s" % [week, _shift_idx + 1, _shift_queue.size(), _meters_string()]
+	hdr.add_theme_font_size_override("font_size", 13)
+	hdr.add_theme_color_override("font_color", C_DIM)
+	v.add_child(hdr)
+	var line := Label.new()
+	line.text = String(cust.get("line", ""))
+	line.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+	line.add_theme_font_size_override("font_size", 16)
+	line.add_theme_color_override("font_color", C_CREAM)
+	v.add_child(line)
+	var total: float = 0.0
+	for it_v in cust.get("items", []):
+		var it: Array = it_v
+		total += float(it[1])
+		var il := Label.new()
+		il.text = "    %s · $%.2f" % [String(it[0]), float(it[1])]
+		il.add_theme_font_size_override("font_size", 14)
+		il.add_theme_color_override("font_color", C_YELLOW)
+		v.add_child(il)
+	var prompt := Label.new()
+	prompt.text = "RING IT:"
+	prompt.add_theme_font_size_override("font_size", 14)
+	prompt.add_theme_color_override("font_color", C_RED)
+	v.add_child(prompt)
+	# three totals · one true · Heritage week cuts the spread tight
+	var rng := _shift_rng(week, 100 + _shift_idx)
+	var spread_lo: float = 0.10 if week == 8 else 0.30
+	var spread_hi: float = 0.35 if week == 8 else 0.95
+	var opts: Array = [total]
+	while opts.size() < 3:
+		var d: float = rng.randf_range(spread_lo, spread_hi) * (1.0 if rng.randi_range(0, 1) == 0 else -1.0)
+		var cand: float = snappedf(total + d, 0.05)
+		if cand > 0.0 and not opts.has(cand):
+			opts.append(cand)
+	# seeded shuffle
+	for i in range(opts.size() - 1, 0, -1):
+		var j: int = rng.randi_range(0, i)
+		var tmp: Variant = opts[i]
+		opts[i] = opts[j]
+		opts[j] = tmp
+	var row := HBoxContainer.new()
+	row.add_theme_constant_override("separation", 16)
+	row.alignment = BoxContainer.ALIGNMENT_CENTER
+	v.add_child(row)
+	for o_v in opts:
+		var amount: float = float(o_v)
+		var b := Button.new()
+		b.text = "  $%.2f  " % amount
+		b.add_theme_font_size_override("font_size", 16)
+		b.pressed.connect(_on_ring.bind(cust, absf(amount - total) < 0.01))
+		row.add_child(b)
+	GamepadMgr.focus_first.call_deferred(row)
+
+
+func _on_ring(cust: Dictionary, right: bool) -> void:
+	_rings_total += 1
+	var sfx := get_node_or_null("/root/SFXBank")
+	if right:
+		_rings_right += 1
+		if sfx: sfx.play("register_ding", 0.4)
+	else:
+		if sfx: sfx.play("loss_thud", 0.3)
+	var moment: Dictionary = cust.get("moment", {})
+	if not moment.is_empty():
+		_render_moment(cust, moment, right)
+	else:
+		_shift_idx += 1
+		_render_customer()
+
+
+func _render_moment(cust: Dictionary, moment: Dictionary, rang_right: bool) -> void:
+	_clear_content()
+	_content_root = Control.new()
+	_content_root.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
+	add_child(_content_root)
+	var v := VBoxContainer.new()
+	v.set_anchors_and_offsets_preset(Control.PRESET_CENTER)
+	v.offset_left = -400
+	v.offset_right = 400
+	v.offset_top = -170
+	v.offset_bottom = 210
+	v.add_theme_constant_override("separation", 10)
+	_content_root.add_child(v)
+	var ring_note := Label.new()
+	ring_note.text = "· rung true ·" if rang_right else "· rung wrong · you'll find it at count-out ·"
+	ring_note.add_theme_font_size_override("font_size", 13)
+	ring_note.add_theme_color_override("font_color", C_GREEN if rang_right else C_RED)
+	v.add_child(ring_note)
+	var prompt := Label.new()
+	prompt.text = String(moment.get("prompt", ""))
+	prompt.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+	prompt.add_theme_font_size_override("font_size", 16)
+	prompt.add_theme_color_override("font_color", C_CREAM)
+	v.add_child(prompt)
+	for c_v in moment.get("choices", []):
+		var choice: Dictionary = c_v
+		var b := Button.new()
+		b.text = String(choice.get("label", ""))
+		b.add_theme_font_size_override("font_size", 15)
+		b.pressed.connect(func() -> void:
+			_apply_deltas(choice)
+			_shift_idx += 1
+			_render_customer())
+		v.add_child(b)
+		var note := Label.new()
+		note.text = "     " + String(choice.get("note", ""))
+		note.add_theme_font_size_override("font_size", 12)
+		note.add_theme_color_override("font_color", C_DIM)
+		note.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+		v.add_child(note)
+	GamepadMgr.focus_first.call_deferred(v)
+
+
+func _apply_deltas(choice: Dictionary) -> void:
+	var till_mult: int = 2 if int(_run_state.get("week", 1)) == int(_run_state.get("solo_week", -1)) else 1
+	_run_state["till"] = clampi(int(_run_state.get("till", 3)) + int(choice.get("till", 0)) * till_mult, 0, 10)
+	_run_state["regulars"] = clampi(int(_run_state.get("regulars", 3)) + int(choice.get("regulars", 0)), 0, 10)
+	_run_state["nerve"] = clampi(int(_run_state.get("nerve", 3)) + int(choice.get("nerve", 0)), 0, 10)
+
+
+func _end_shift() -> void:
+	var week: int = int(_run_state.get("week", 1))
+	_shift_week_done = week
+	# register craft converts to the drawer
+	var frac: float = float(_rings_right) / maxf(1.0, float(_rings_total))
+	var till_mult: int = 2 if week == int(_run_state.get("solo_week", -1)) else 1
+	if frac >= 0.8:
+		_run_state["till"] = clampi(int(_run_state.get("till", 3)) + 1 * till_mult, 0, 10)
+	elif frac < 0.5:
+		_run_state["till"] = clampi(int(_run_state.get("till", 3)) - 1 * till_mult, 0, 10)
+	if int(_run_state.get("nerve", 3)) <= 0:
+		_render_ending("walked_off")
+		return
+	_phase = "week"
+	_render_week_beat()
 var _ending_id: String = ""
 var _content_root: Control = null
 
@@ -223,10 +476,19 @@ func _clear_content() -> void:
 
 
 func _render_week() -> void:
+	var wknum: int = clampi(int(_run_state.get("week", 1)), 1, 12)
+	if _shift_week_done != wknum:
+		_start_shift(wknum)
+		return
+	_render_week_beat()
+
+
+func _render_week_beat() -> void:
 	_clear_content()
 	var week: int = clampi(int(_run_state.get("week", 1)), 1, 12)
 	var wk: Dictionary = WEEKS[week - 1]
 	if week == 6:
+		# (the shift's third customer was not a customer)
 		# The robbery week opens in the hands before it opens on
 		# screen · a slow strong-motor swell, no sound.
 		var bank := get_node_or_null("/root/SFXBank")
@@ -345,6 +607,7 @@ func _on_choice(choice: Dictionary) -> void:
 
 	_run_state["week"] = week + 1
 	week_complete.emit(_run_state)
+	_shift_week_done = -1
 	_render_week()
 
 
