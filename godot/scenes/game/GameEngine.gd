@@ -49,6 +49,11 @@ var _paused:      bool  = false
 var _veil: ColorRect = null
 var _chapter_card: Control = null
 var _transition_lock: bool = false
+# ── reading furniture (2026-07 detail pass) ──
+var _backlog_overlay: Control = null
+var _photo_on: bool = false
+var _photo_bars: Array = []          # two ColorRects, built lazily
+var _photo_restore: Dictionary = {}  # node path -> was-visible
 
 # The producer keeps the departments on one clock across transitions:
 # story dispatch waits for the curtain, audio dips/stops/returns in
@@ -1054,6 +1059,27 @@ func _vn_debug_overlay_visible() -> bool:
 func _input(event: InputEvent) -> void:
 	if _paused:
 		return
+	# ── PHOTO MODE (F6) · chrome off, bars on, cursor gone. While
+	# on, every other input is swallowed so framing a shot can't
+	# advance the story. Deliberately not part of the F4 sweep — the
+	# bars ARE the picture.
+	if event is InputEventKey and event.pressed and not event.echo \
+			and (event as InputEventKey).keycode == KEY_F6:
+		_toggle_photo_mode()
+		get_viewport().set_input_as_handled()
+		return
+	if _photo_on:
+		return
+	# ── THE BACKLOG (H or wheel-up) · everything read, re-readable.
+	var wheel_up: bool = event is InputEventMouseButton and event.pressed \
+			and (event as InputEventMouseButton).button_index == MOUSE_BUTTON_WHEEL_UP
+	var h_key: bool = event is InputEventKey and event.pressed and not event.echo \
+			and (event as InputEventKey).keycode == KEY_H
+	if (wheel_up or h_key) and _backlog_overlay == null and not _transition_lock \
+			and not _choices.visible:
+		_open_backlog()
+		get_viewport().set_input_as_handled()
+		return
 	# Scene transition in flight — the veil or a chapter card owns the
 	# screen. The ChapterCard handles its own advance input; nothing
 	# may reach the story underneath.
@@ -1102,6 +1128,132 @@ func _input(event: InputEvent) -> void:
 	elif event.is_action_pressed("menu_back"):
 		get_viewport().set_input_as_handled()
 		_open_in_game_menu()
+
+
+# ─── the backlog overlay ─────────────────────────────────────────
+
+func _open_backlog() -> void:
+	var entries: Array = _dlg.get("backlog") if _dlg != null else []
+	_backlog_overlay = Control.new()
+	_backlog_overlay.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
+	_backlog_overlay.z_index = UI_Z + 55
+	_backlog_overlay.mouse_filter = Control.MOUSE_FILTER_STOP
+	_backlog_overlay.add_to_group("ui")
+	_backlog_overlay.add_to_group("vn_input_blocker")
+	add_child(_backlog_overlay)
+
+	var dim := ColorRect.new()
+	dim.color = Color(0.01, 0.01, 0.02, 0.88)
+	dim.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
+	_backlog_overlay.add_child(dim)
+
+	var col := VBoxContainer.new()
+	col.set_anchors_and_offsets_preset(Control.PRESET_CENTER)
+	col.offset_left = -420
+	col.offset_right = 420
+	col.offset_top = -300
+	col.offset_bottom = 300
+	col.add_theme_constant_override("separation", 8)
+	_backlog_overlay.add_child(col)
+
+	var hdr := Label.new()
+	hdr.text = "· the story so far · H or ESC returns ·"
+	hdr.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+	hdr.add_theme_font_size_override("font_size", 13)
+	hdr.add_theme_color_override("font_color", Color(0.62, 0.58, 0.50))
+	col.add_child(hdr)
+
+	var scroll := ScrollContainer.new()
+	scroll.size_flags_vertical = Control.SIZE_EXPAND_FILL
+	scroll.horizontal_scroll_mode = ScrollContainer.SCROLL_MODE_DISABLED
+	col.add_child(scroll)
+
+	var body := RichTextLabel.new()
+	body.bbcode_enabled = true
+	body.fit_content = true
+	body.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	body.custom_minimum_size = Vector2(820, 0)
+	body.add_theme_font_size_override("normal_font_size", 15)
+	body.add_theme_color_override("default_color", Color(0.88, 0.86, 0.82))
+	body.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	scroll.add_child(body)
+
+	var lines := PackedStringArray()
+	for e_v in entries:
+		var e: Dictionary = e_v
+		var nm := String(e.get("name", ""))
+		var txt := String(e.get("text", ""))
+		if bool(e.get("think", false)):
+			txt = "[i]" + txt + "[/i]"
+		if nm == "":
+			lines.append("[color=#a8a49a]" + txt + "[/color]")
+		else:
+			var accent := Color(0.82, 0.72, 0.52)
+			if _chars != null and _chars.has_method("accent_for"):
+				var av: Variant = _chars.call("accent_for", nm)
+				if av is Color:
+					accent = av
+			lines.append("[color=%s][b]%s[/b][/color] · %s" % [accent.to_html(false), nm, txt])
+	body.text = "\n\n".join(lines) if not lines.is_empty() else "[i]nothing read yet — the book is still open to its first page.[/i]"
+
+	# open at the freshest line, not the top of the session
+	scroll.set_deferred("scroll_vertical", 999999)
+
+	_backlog_overlay.gui_input.connect(func(ev: InputEvent) -> void:
+		var close := false
+		if ev is InputEventKey and ev.pressed:
+			var k := (ev as InputEventKey).keycode
+			close = k == KEY_ESCAPE or k == KEY_H
+		elif ev is InputEventMouseButton and ev.pressed \
+				and (ev as InputEventMouseButton).button_index == MOUSE_BUTTON_WHEEL_DOWN \
+				and scroll.scroll_vertical >= int(scroll.get_v_scroll_bar().max_value - scroll.size.y) - 4:
+			close = true   # wheel past the freshest line rolls back to the story
+		if close:
+			_close_backlog()
+			get_viewport().set_input_as_handled())
+	# keys land on the overlay
+	_backlog_overlay.focus_mode = Control.FOCUS_ALL
+	_backlog_overlay.grab_focus.call_deferred()
+
+
+func _close_backlog() -> void:
+	if _backlog_overlay != null and is_instance_valid(_backlog_overlay):
+		_backlog_overlay.queue_free()
+	_backlog_overlay = null
+
+
+# ─── photo mode ──────────────────────────────────────────────────
+
+func _toggle_photo_mode() -> void:
+	_photo_on = not _photo_on
+	if _photo_bars.is_empty():
+		for top in [true, false]:
+			var bar := ColorRect.new()
+			bar.color = Color.BLACK
+			bar.z_index = UI_Z + 60
+			bar.set_anchors_preset(Control.PRESET_TOP_WIDE if top else Control.PRESET_BOTTOM_WIDE)
+			bar.offset_bottom = 54 if top else 0
+			bar.offset_top = 0 if top else -54
+			bar.visible = false
+			bar.mouse_filter = Control.MOUSE_FILTER_IGNORE
+			add_child(bar)
+			_photo_bars.append(bar)
+	if _photo_on:
+		_photo_restore = {}
+		for n in [_dlg, _hud, _choices]:
+			if n != null and is_instance_valid(n):
+				_photo_restore[n.get_instance_id()] = n.visible
+				n.visible = false
+		for b in _photo_bars:
+			(b as ColorRect).visible = true
+		Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
+	else:
+		for n2 in [_dlg, _hud, _choices]:
+			if n2 != null and is_instance_valid(n2) and _photo_restore.has(n2.get_instance_id()):
+				n2.visible = bool(_photo_restore[n2.get_instance_id()])
+		for b2 in _photo_bars:
+			(b2 as ColorRect).visible = false
+		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 
 
 # True when the mouse is over a Button (or inside one — icon /

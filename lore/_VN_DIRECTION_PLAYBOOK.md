@@ -476,3 +476,22 @@ or "flat/unreal," plus a full mood-direction sweep of vol5/6/7.
 - **Punchy lesson, present tense.** Two-to-four sentences.
 - **Next lesson.** Same shape.
 ```
+
+### 2026-07-28 · reading furniture · the backlog + photo mode
+
+- **A VN without a backlog loses lines forever.** DialogueBox now
+  records every say/think/narrate (cap 300); H or wheel-up opens
+  the overlay — speaker names in their portrait accents, thoughts
+  italicized, opened at the freshest line, wheel-down past the
+  bottom rolls back to the story. The overlay joins
+  `vn_input_blocker` so reading history can never advance the
+  story underneath.
+- **Photo mode is F6, and it is deliberately NOT F4.** F4 hides
+  HUD; F6 composes: dialogue + HUD + choices off, cinematic bars
+  on, cursor gone, and every other input swallowed so framing a
+  shot can't advance the page. The bars intentionally bypass the
+  F4 sweep — in photo mode the bars ARE the picture.
+- Verified-non-gaps this pass: portrait exits already fade with an
+  ASCII ghost; letterbox grammar is already correct (bars on tight
+  shots, clear on establishes) — the roadmap's "letterbox on
+  establish~" idea is superseded by that reading.

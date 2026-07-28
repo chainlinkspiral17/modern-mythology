@@ -75,7 +75,20 @@ func setup(skin: Dictionary) -> void:
 
 # ── Public API ────────────────────────────────────────────────────────────────
 
+# ── the backlog · everything read this session, for the reader who
+# tapped once too fast. GameEngine renders it (H / wheel-up).
+var backlog: Array = []
+const BACKLOG_CAP := 300
+
+
+func _log_line(char_name: String, text: String, think: bool) -> void:
+	backlog.append({"name": char_name, "text": text, "think": think})
+	while backlog.size() > BACKLOG_CAP:
+		backlog.pop_front()
+
+
 func show_narrate(text: String) -> void:
+	_log_line("", text, false)
 	_speaker.visible = false
 	if _spk_rule != null:
 		_spk_rule.visible = false
@@ -88,6 +101,7 @@ func show_narrate(text: String) -> void:
 
 
 func show_say(char_name: String, text: String) -> void:
+	_log_line(char_name, text, false)
 	_present_speaker(char_name)
 	_anchor_to(_slot_for(char_name))
 	_body.add_theme_color_override("default_color", _skin.get("txt_color", Color.WHITE))
@@ -95,6 +109,7 @@ func show_say(char_name: String, text: String) -> void:
 
 
 func show_think(char_name: String, text: String) -> void:
+	_log_line(char_name, text, true)
 	if char_name != "":
 		_present_speaker(char_name)
 	else:
