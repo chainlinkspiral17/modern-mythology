@@ -83,6 +83,8 @@ var _card_meta:     Label = null
 var _card_blurb:    Label = null
 var _card_status:   Label = null
 var _card_boot_btn: Button = null
+var _card_manual_btn: Button = null
+var _manual_overlay: Control = null
 var _card_manager_toggle: CheckButton = null
 var _card_scrapbook_btn: Button = null
 var _scrapbook_overlay: Node = null
@@ -417,6 +419,14 @@ func _build() -> void:
 	_card_scrapbook_btn.pressed.connect(_on_scrapbook_pressed)
 	card_col.add_child(_card_scrapbook_btn)
 
+	# MANUAL button · every cartridge shipped with one. Readable even
+	# on a locked stick — the box copy was always on the outside.
+	_card_manual_btn = Button.new()
+	_card_manual_btn.text = "  MANUAL  "
+	_card_manual_btn.visible = false
+	_card_manual_btn.pressed.connect(_on_manual_pressed)
+	card_col.add_child(_card_manual_btn)
+
 	# Default card state (nothing hovered)
 	_show_card_default()
 
@@ -621,6 +631,7 @@ func _on_cart_hover(stick_id: String) -> void:
 	# the finished branch below re-enables them.
 	if _card_manager_toggle: _card_manager_toggle.visible = false
 	if _card_scrapbook_btn: _card_scrapbook_btn.visible = false
+	if _card_manual_btn: _card_manual_btn.visible = _manual_path_for(stick_id) != ""
 	if not unlocked:
 		_card_status.text = "  " + _locked_hint(stick_id)
 		_card_status.add_theme_color_override("font_color", C_LOCK)
@@ -673,6 +684,7 @@ func _on_cart_unhover(stick_id: String) -> void:
 
 func _show_card_default() -> void:
 	_hovered_id = ""
+	if _card_manual_btn: _card_manual_btn.visible = false
 	_card_title.text = "· hover a cartridge"
 	_card_subtitle.text = ""
 	_card_meta.text = ""
@@ -686,6 +698,7 @@ func _show_card_default() -> void:
 
 func _show_card_empty_note(note: String) -> void:
 	_hovered_id = ""
+	if _card_manual_btn: _card_manual_btn.visible = false
 	_card_title.text = "· not a slowstick"
 	_card_subtitle.text = ""
 	_card_meta.text = ""
@@ -702,6 +715,33 @@ func _on_boot_pressed() -> void:
 		var b := get_node_or_null("/root/SFXBank")
 		if b: b.play("boot")
 		picked.emit(_hovered_id, _manager_mode_on)
+
+
+func _manual_path_for(stick_id: String) -> String:
+	# One manual can serve two carts (the Tideline's covers the 2048
+	# remake — same beach, opposite thesis).
+	var mid := stick_id
+	if stick_id == "tideline_survey_2048":
+		mid = "the_tideline"
+	var path := "res://resources/manuals/%s.md" % mid
+	return path if FileAccess.file_exists(path) else ""
+
+
+func _on_manual_pressed() -> void:
+	if _hovered_id == "" or (_manual_overlay != null and is_instance_valid(_manual_overlay)):
+		return
+	var path := _manual_path_for(_hovered_id)
+	if path == "":
+		return
+	var sb := get_node_or_null("/root/SFXBank")
+	if sb: sb.play("page_turn", 0.7)
+	var viewer_script = load("res://scripts/ManualViewer.gd")
+	if viewer_script == null:
+		return
+	_manual_overlay = viewer_script.new()
+	add_child(_manual_overlay)
+	_manual_overlay.connect("closed", func() -> void: _manual_overlay = null)
+	_manual_overlay.call("boot", path)
 
 
 func _scrapbook_path_for(stick_id: String) -> String:
