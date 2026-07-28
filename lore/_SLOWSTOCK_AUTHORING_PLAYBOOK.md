@@ -881,3 +881,23 @@ quotes, promises, the manuscript). Lessons:
   moved from a flat 4 to the linen chest (wash on drying evenings)
   — the triage now reads the whole game back at you. If a finale
   hands out its resources, the finale is a cutscene.
+
+### 2026-07-27 · the vignette tier that mostly wasn't · audit by content, not line count
+
+- **wc -l is not a depth audit.** The "hosts with vignettes" tier
+  was built from controller line counts; on content inspection,
+  four of five (Sweetgum, Patient Mister Glass, Riffrocker, Hane
+  no Niwa) are complete designed works — small ENGINES over rich
+  DATA (PMG: 453 lines of engine, 39 authored rotations + 9 wired
+  findings in the deck). Data-driven sticks put their depth in
+  JSON, exactly as this playbook tells them to. Audit the data.
+- **Read the data with its real keys.** Three successive wrong
+  conclusions in one audit came from grepping guessed key names
+  ("answers" vs "variants", "pin" vs "pair", "call" vs "calls").
+  Dump one raw entry FIRST, then measure.
+- **The floor bends to the design doc, not the reverse.** Sweetgum
+  ("no third variation") and Riffrocker ("the only fail state is
+  quitting") pass as deliberate art objects; Sam's Summer Shifts
+  ("one scripted beat per week") did not and got the register.
+  The test is whether the stick delivers ITS OWN stated design at
+  full depth — not whether every stick is a resource sim.

@@ -122,8 +122,23 @@ producer discipline).
        week rings a longer line with tighter totals, the solo week
        doubles till swings, and week 6's third customer is not a
        customer. ~100 decisions per summer. Deck-verify pending.
-     - **Patient Mister Glass / Riffrocker / Hane no Niwa** — next,
-       one per arc.
+     - **RE-AUDITED COMPLETE · Patient Mister Glass** — the deck
+       is fully authored (39 rotation variants, trust/cooking/rain
+       gates) and all nine ledger findings are wired to real
+       variant pairs with unlock chains and three verdicts. The
+       slow-detective design is implemented 1:1.
+     - **RE-AUDITED COMPLETE · Riffrocker Melody Club** — twelve
+       meetings × ~3 call-and-response phrases on the live 3-osc
+       PD Riffrocker voice; meeting 12's open mic records YOUR
+       take as the cartridge's title music forever. An instrument
+       with a club around it, per its design.
+     - **RE-AUDITED COMPLETE · Hane no Niwa** — 4 seasons × 9
+       visits, four verbs with visible maintenance memory, a
+       20-item offering economy, the letters system, fox
+       expressions reading unshown upkeep. Passes on its own doc.
+     THE DEPTH SWEEP IS CLOSED. Lesson captured in the authoring
+     playbook: audit sticks by READING THEIR DATA, not by wc -l —
+     the line-count audit mislabeled four of five in this tier.
 - **SHIPPED 2026-07 · Sisters Wyrd readability triage** (user: "an
   eyesore") — focus dimming by distance from the drifter (the soup
   fix), label plates, position ring, styled choice buttons lifted
