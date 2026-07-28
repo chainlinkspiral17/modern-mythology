@@ -231,7 +231,7 @@
     },
     {
       "t": "narrate",
-      "text": "She thought, with the small terrible clarity that was, she suspected, the actual gift of the Star and not the consolation prize people who had not been to the Star imagined: I did not lose Douglas. I sent him."
+      "text": "[beat:hit]She thought, with the small terrible clarity that was, she suspected, the actual gift of the Star and not the consolation prize people who had not been to the Star imagined: I did not lose Douglas. [wave amp=6 freq=2]I sent him.[/wave]"
     },
     {
       "t": "narrate",
@@ -407,7 +407,7 @@
     },
     {
       "t": "narrate",
-      "text": "[mood:dawn_warm][shot:insert letter~]She wrote, in the body, three words: I am ready."
+      "text": "[beat:still][mood:dawn_warm][shot:insert letter~]She wrote, in the body, three words: I am ready."
     },
     {
       "t": "narrate",

@@ -230,7 +230,7 @@
     },
     {
       "t": "narrate",
-      "text": "[mood:studio][shot:insert window~]Across the street, an older man Antonio did not recognize was leaning against a streetlight, smoking. He wore a charcoal suit. He wore lawyer-shoes. He was watching the warehouse."
+      "text": "[beat:chill][mood:studio][shot:insert window~]Across the street, an older man Antonio did not recognize was leaning against a streetlight, smoking. He wore a charcoal suit. He wore lawyer-shoes. He was watching the warehouse."
     },
     {
       "t": "narrate",
@@ -457,7 +457,7 @@
     {
       "t": "say",
       "char": "jimmy",
-      "text": "It means you don't ask me what it means."
+      "text": "[beat:hit]It means you don't ask me what it means."
     },
     {
       "t": "narrate",
@@ -602,7 +602,7 @@
     },
     {
       "t": "narrate",
-      "text": "The remaining speed was gone."
+      "text": "[fade start=4 length=14]The remaining speed was gone.[/fade]"
     },
     {
       "t": "end"

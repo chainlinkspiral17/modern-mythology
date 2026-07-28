@@ -308,7 +308,7 @@
     {
       "t": "say",
       "char": "erica",
-      "text": "[shot:closeup erica]Alberto. If this is about your brother, the answer is no."
+      "text": "[beat:hit][shot:closeup erica]Alberto. If this is about your brother, the answer is no."
     },
     {
       "t": "narrate",
@@ -385,7 +385,7 @@
     {
       "t": "say",
       "char": "alberto",
-      "text": "Eri. Not yet enough."
+      "text": "Eri. [wave amp=6 freq=2]Not yet enough.[/wave]"
     },
     {
       "t": "narrate",
@@ -462,7 +462,7 @@
     },
     {
       "t": "narrate",
-      "text": "She thought, I have been on the wheel for some time, and I have been telling myself I was the one spinning it."
+      "text": "[beat:still]She thought, I have been on the wheel for some time, and I have been telling myself I was the one spinning it."
     },
     {
       "t": "narrate",

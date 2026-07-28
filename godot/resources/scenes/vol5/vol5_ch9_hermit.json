@@ -195,7 +195,7 @@
     },
     {
       "t": "narrate",
-      "text": "See you soon."
+      "text": "[beat:chill][wave amp=6 freq=2]See you soon.[/wave]"
     },
     {
       "t": "narrate",
@@ -290,7 +290,7 @@
     },
     {
       "t": "narrate",
-      "text": "The pull, this evening, was running the other way."
+      "text": "[beat:lift]The pull, this evening, was running the other way."
     },
     {
       "t": "narrate",

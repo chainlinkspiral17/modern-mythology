@@ -254,7 +254,7 @@
     },
     {
       "t": "narrate",
-      "text": "Admired is not enough."
+      "text": "[fade start=4 length=14]Admired is not enough.[/fade]"
     },
     {
       "t": "narrate",
@@ -266,7 +266,7 @@
     },
     {
       "t": "narrate",
-      "text": "[mood:dream_blur][shot:closeup elicia~]She did, in front of the camera, allow her face to do the small honest collapsing that the realization required."
+      "text": "[beat:hit][mood:dream_blur][shot:closeup elicia~]She did, in front of the camera, allow her face to do the small honest collapsing that the realization required."
     },
     {
       "t": "narrate",
@@ -382,7 +382,7 @@
     },
     {
       "t": "narrate",
-      "text": "J — Yes. — E."
+      "text": "[beat:lift]J — Yes. — E."
     },
     {
       "t": "narrate",

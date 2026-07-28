@@ -193,7 +193,7 @@
     {
       "t": "say",
       "char": "marcus",
-      "text": "He didn't ask to come up. He's in the lobby. He left a card with the desk. He said he'd wait until ten and then leave, and that he wasn't going to call again, and that his name was Mr. D. Dean."
+      "text": "[beat:chill]He didn't ask to come up. He's in the lobby. He left a card with the desk. He said he'd wait until ten and then leave, and that he wasn't going to call again, and that his name was [wave amp=6 freq=2]Mr. D. Dean.[/wave]"
     },
     {
       "t": "narrate",
@@ -229,7 +229,7 @@
     },
     {
       "t": "narrate",
-      "text": "She thought, I knew."
+      "text": "[beat:hit]She thought, I knew."
     },
     {
       "t": "narrate",

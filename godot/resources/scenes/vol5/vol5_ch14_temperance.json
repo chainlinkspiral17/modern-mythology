@@ -181,7 +181,7 @@
     },
     {
       "t": "narrate",
-      "text": "did you feel it"
+      "text": "[beat:chill][wave amp=6 freq=2]did you feel it[/wave]"
     },
     {
       "t": "narrate",
@@ -217,7 +217,7 @@
     },
     {
       "t": "narrate",
-      "text": "yes."
+      "text": "[beat:still]yes."
     },
     {
       "t": "narrate",

@@ -135,7 +135,7 @@
     },
     {
       "t": "narrate",
-      "text": "[mood:macro_haze][shot:establish]As her fingers brushed the cardstock, the image seemed to shimmer. Ripple like water. For a vertiginous second, the room tilted — the floor becoming the ceiling, the sparse furniture hanging precariously above her, Nina Simone's voice still coming from the record player but the record player now somewhere up there, somewhere on what had been the ceiling, the cord trailing improbably toward a wall that had been, until ten seconds ago, a floor."
+      "text": "[beat:chill][mood:macro_haze][shot:establish]As her fingers brushed the cardstock, the image seemed to shimmer. Ripple like water. For a vertiginous second, the room tilted — the floor becoming the ceiling, the sparse furniture hanging precariously above her, Nina Simone's voice still coming from the record player but the record player now somewhere up there, somewhere on what had been the ceiling, the cord trailing improbably toward a wall that had been, until ten seconds ago, a floor."
     },
     {
       "t": "narrate",
@@ -514,7 +514,7 @@
     {
       "t": "say",
       "char": "nicola",
-      "text": "Two. There are two of us. Which one of us would you like to read."
+      "text": "[beat:still]Two. [wave amp=6 freq=2]There are two of us.[/wave] Which one of us would you like to read."
     },
     {
       "t": "narrate",

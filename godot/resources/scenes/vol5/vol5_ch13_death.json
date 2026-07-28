@@ -149,7 +149,7 @@
     },
     {
       "t": "narrate",
-      "text": "[mood:dream_blur][shot:closeup alice~]The room shifted, very slightly, and Alice understood that she was not, this time, alone."
+      "text": "[beat:chill][mood:dream_blur][shot:closeup alice~]The room shifted, very slightly, and Alice understood that she was not, this time, alone."
     },
     {
       "t": "narrate",
@@ -245,7 +245,7 @@
     },
     {
       "t": "narrate",
-      "text": "She felt — she felt a small specific lift, the kind of lift she had not felt since she was a young woman dancing at a wedding — the unmistakable warmth of being expected."
+      "text": "[beat:lift]She felt — she felt a small specific lift, the kind of lift she had not felt since she was a young woman dancing at a wedding — the unmistakable [wave amp=6 freq=2]warmth of being expected[/wave]."
     },
     {
       "t": "narrate",

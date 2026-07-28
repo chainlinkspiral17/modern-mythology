@@ -55,7 +55,7 @@
     },
     {
       "t": "narrate",
-      "text": "And, in the small impossible space between the needle and the vinyl, a voice — not Nina's, but something like her, or the memory of her as rendered by an instrument that had heard her once and had, over decades, been re-rendering her without the original — sang the first three words of I Put a Spell on You, and then trailed off. Not as if the recording had ended. As if the voice had, mid-note, remembered something it had come to say and chosen, instead, to say it.\n\nThe voice said: Natalie.\n\nThe voice said: You have a visitor coming. Wake the girl. Both of her.\n\nThen the tonearm, of its own accord, lifted again, crossed the five inches in reverse, and returned to its rest. The unit continued to be off."
+      "text": "[beat:chill]And, in the small impossible space between the needle and the vinyl, a voice — not Nina's, but something like her, or the memory of her as rendered by an instrument that had heard her once and had, over decades, been re-rendering her without the original — sang the first three words of I Put a Spell on You, and then trailed off. Not as if the recording had ended. As if the voice had, mid-note, remembered something it had come to say and chosen, instead, to say it.\n\nThe voice said: Natalie.\n\nThe voice said: You have a visitor coming. Wake the girl. [wave amp=6 freq=2]Both of her.[/wave]\n\nThen the tonearm, of its own accord, lifted again, crossed the five inches in reverse, and returned to its rest. The unit continued to be off."
     },
     {
       "t": "narrate",
@@ -207,7 +207,7 @@
     },
     {
       "t": "narrate",
-      "text": "A long silence.\n\nNatalie felt, behind her sternum, the small cold clarifying bloom that meant the older system had just made a move on the board that was much larger than the board anyone in this room had been playing on."
+      "text": "[beat:still]A long silence.\n\nNatalie felt, behind her sternum, the small cold clarifying bloom that meant the older system had just made a move on the board that was much larger than the board anyone in this room had been playing on."
     },
     {
       "t": "say",

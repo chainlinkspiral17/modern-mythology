@@ -366,7 +366,7 @@
     },
     {
       "t": "narrate",
-      "text": "[mood:dream_blur][shot:insert microwave~]The Devil looked back."
+      "text": "[beat:chill][mood:dream_blur][shot:insert microwave~]The Devil looked back."
     },
     {
       "t": "narrate",
@@ -536,7 +536,7 @@
     },
     {
       "t": "narrate",
-      "text": "I am the operated."
+      "text": "[beat:hit][shake rate=10 level=3]I am the operated.[/shake]"
     },
     {
       "t": "narrate",

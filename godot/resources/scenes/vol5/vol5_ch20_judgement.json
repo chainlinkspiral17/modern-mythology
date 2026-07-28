@@ -39,7 +39,7 @@
     },
     {
       "t": "narrate",
-      "text": "[shot:establish~]And then the stillness broke.\n\nNot gradually. Not like dawn easing over a weary horizon. Like flawed glass shattering under immense unseen pressure.\n\nThe hush that had fallen over the ragged edges of Graustark — that quiet not of peace but of terrible ringing clarity — imploded into a sound that was less sound and more the raw tearing of the world's fabric. It began as a low groan from the gut of the earth, the tormented sigh of ancient salt beds yielding beneath the accumulated weight of human ambition and folly. The scarred earth, where the Sinkhole had long breathed its patient exhalations of sulfur and memory, now inhaled sharply. Greedily. The way a thing inhales when it has finally been granted permission to take back what was always, in the older system's accounting, its own."
+      "text": "[beat:hit][shot:establish~]And then the stillness broke.\n\nNot gradually. Not like dawn easing over a weary horizon. Like flawed glass shattering under immense unseen pressure.\n\nThe hush that had fallen over the ragged edges of Graustark — that quiet not of peace but of terrible ringing clarity — imploded into a sound that was less sound and more the raw tearing of the world's fabric. It began as a low groan from the gut of the earth, the tormented sigh of ancient salt beds yielding beneath the accumulated weight of human ambition and folly. The scarred earth, where the Sinkhole had long breathed its patient exhalations of sulfur and memory, now inhaled sharply. Greedily. The way a thing inhales when it has finally been granted permission to take back what was always, in the older system's accounting, its own."
     },
     {
       "t": "narrate",
@@ -359,7 +359,7 @@
     {
       "t": "say",
       "c": "child",
-      "text": "Mama. Mom. It's okay. I know where we're going. Stay in the car.",
+      "text": "[beat:chill]Mama. Mom. It's okay. [wave amp=6 freq=2]I know where we're going.[/wave] Stay in the car.",
       "char": "nicola"
     },
     {

@@ -440,7 +440,7 @@
     {
       "t": "say",
       "c": "elicia",
-      "text": "[shot:closeup elicia~]That woman is in your pattern, John.",
+      "text": "[beat:chill][shot:closeup elicia~]That woman is [wave amp=6 freq=2]in your pattern[/wave], John.",
       "char": "elicia"
     },
     {
@@ -499,7 +499,7 @@
     },
     {
       "t": "narrate",
-      "text": "[shot:establish]He meant it. He would, in fact, tell her tomorrow. He did not yet know what he would be telling her, but he would, by the time the telling arrived, have figured it out.\n\nTemperance had brought him to this table. The Sun, this morning, was lighting it.\n\nJudgement was coming.\n\nBut not yet.\n\nNot, at least, for the length of this one warm bright Tuesday in late May, in a café on Saint-Viateur, over two croissants, at the small round metal table in the back corner under the window where the dust motes did what they did.\n\nNot yet.\n\nNot yet.\n\nThe light held."
+      "text": "[beat:lift][shot:establish]He meant it. He would, in fact, tell her tomorrow. He did not yet know what he would be telling her, but he would, by the time the telling arrived, have figured it out.\n\nTemperance had brought him to this table. The Sun, this morning, was lighting it.\n\nJudgement was coming.\n\nBut not yet.\n\nNot, at least, for the length of this one warm bright Tuesday in late May, in a café on Saint-Viateur, over two croissants, at the small round metal table in the back corner under the window where the dust motes did what they did.\n\nNot yet.\n\nNot yet.\n\nThe light held."
     },
     {
       "t": "end"

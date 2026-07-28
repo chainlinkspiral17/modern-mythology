@@ -209,7 +209,7 @@
     },
     {
       "t": "narrate",
-      "text": "[shot:closeup douglas]He knew it before it happened."
+      "text": "[beat:chill][shot:closeup douglas]He knew it before it happened."
     },
     {
       "t": "narrate",
@@ -217,7 +217,7 @@
     },
     {
       "t": "narrate",
-      "text": "And Douglas? Solid. Reliable. Expendable."
+      "text": "And Douglas? [fade start=4 length=14]Solid. Reliable. Expendable.[/fade]"
     },
     {
       "t": "narrate",
@@ -305,7 +305,7 @@
     },
     {
       "t": "narrate",
-      "text": "I know what option four is. I figured it out tonight at the bar. I'm not going to tell you I figured it out. I'm not going to do anything different. You should not change your plan."
+      "text": "[beat:hit]I know what option four is. I figured it out tonight at the bar. I'm not going to tell you I figured it out. I'm not going to do anything different. You should not change your plan."
     },
     {
       "t": "narrate",

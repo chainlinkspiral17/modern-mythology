@@ -273,7 +273,7 @@
     },
     {
       "t": "narrate",
-      "text": "In the foreground, walking with his back to the camera, hands in his pockets, was Mackenzie's older brother."
+      "text": "[beat:hit]In the foreground, walking with his back to the camera, hands in his pockets, was Mackenzie's older brother."
     },
     {
       "t": "narrate",
@@ -289,7 +289,7 @@
     },
     {
       "t": "narrate",
-      "text": "He waved."
+      "text": "[beat:chill][wave amp=6 freq=2]He waved.[/wave]"
     },
     {
       "t": "narrate",
