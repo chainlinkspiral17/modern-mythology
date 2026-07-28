@@ -621,7 +621,7 @@
     },
     {
       "char": "tem",
-      "text": "I want it to be a thing again.",
+      "text": "[beat:lift]I want it to be a thing again.",
       "expr": "serious",
       "t": "say"
     },
