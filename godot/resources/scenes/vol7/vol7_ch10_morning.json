@@ -815,7 +815,7 @@
     },
     {
       "char": "tem",
-      "text": "[shot:closeup tem~]You should know that the sticks are not, in the place we are about to put you, safe. People who play sticks the way the people who really play them play them have come out of sticks — have come out of experiences — having lost time. Having lost weight. Having had relationships they were in dissolve over the next six months because the people they came out as were not, by every measure that mattered to the people who loved them, the same people who went in. The sticks are popular because the experiences in them are extraordinary. The experiences are extraordinary because the substrate gives them. The substrate gives them by taking. The taking is what we are walking you into.",
+      "text": "[beat:chill][shot:closeup tem~]You should know that the sticks are not, in the place we are about to put you, safe. People who play sticks the way the people who really play them play them have come out of sticks — have come out of experiences — having lost time. Having lost weight. Having had relationships they were in dissolve over the next six months because the people they came out as were not, by every measure that mattered to the people who loved them, the same people who went in. The sticks are popular because the experiences in them are extraordinary. The experiences are extraordinary because the substrate gives them. The substrate [wave amp=6 freq=2]gives them by taking[/wave]. The taking is what we are walking you into.",
       "expr": "serious",
       "t": "say"
     },

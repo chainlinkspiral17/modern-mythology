@@ -90,7 +90,7 @@
       "t": "narrate"
     },
     {
-      "text": "[shot:closeup aria~]Aria.",
+      "text": "[beat:still][shot:closeup aria~]Aria.",
       "t": "narrate"
     },
     {
@@ -142,7 +142,7 @@
       "t": "narrate"
     },
     {
-      "text": "Aria smiled. The smile, through the translucent window, was visible as a smile.",
+      "text": "[beat:lift]Aria smiled. The smile, through the translucent window, was visible as a smile.",
       "t": "narrate"
     },
     {
@@ -402,7 +402,7 @@
       "t": "narrate"
     },
     {
-      "text": "He would go on waiting.",
+      "text": "[fade start=4 length=14]He would go on waiting.[/fade]",
       "t": "narrate"
     },
     {

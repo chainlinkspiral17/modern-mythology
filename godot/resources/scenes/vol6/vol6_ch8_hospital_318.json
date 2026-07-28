@@ -283,7 +283,7 @@
     {
       "t": "say",
       "char": "Linda Caldwell",
-      "text": "Yes, sweetheart. He is still.",
+      "text": "Yes, sweetheart. [wave amp=6 freq=2]He is still.[/wave]",
       "expr": "neutral"
     },
     {

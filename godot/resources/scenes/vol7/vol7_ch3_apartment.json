@@ -502,7 +502,7 @@
       "t": "say"
     },
     {
-      "text": "[shot:closeup lena~]Lena set the cup down on the floor beside her chair. She put her face in her hands for a second and then took her hands away.",
+      "text": "[beat:still][shot:closeup lena~]Lena set the cup down on the floor beside her chair. She put her face in her hands for a second and then took her hands away.",
       "t": "narrate"
     },
     {

@@ -137,7 +137,7 @@
     },
     {
       "t": "narrate",
-      "text": "[shot:closeup diego~]In the back of the van, on the floor, wrapped in a blanket, Diego Ramos opens his eyes."
+      "text": "[beat:still][shot:closeup diego~]In the back of the van, on the floor, wrapped in a blanket, Diego Ramos opens his eyes."
     },
     {
       "t": "hide",

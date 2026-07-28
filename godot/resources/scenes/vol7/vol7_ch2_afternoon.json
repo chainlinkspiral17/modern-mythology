@@ -258,7 +258,7 @@
       "t": "say"
     },
     {
-      "text": "[shot:closeup tem~]Tem went very still. Lena, behind the counter, registered Tem going still. Kai, at the table, registered it also.",
+      "text": "[beat:still][shot:closeup tem~]Tem went very still. Lena, behind the counter, registered Tem going still. Kai, at the table, registered it also.",
       "t": "narrate"
     },
     {

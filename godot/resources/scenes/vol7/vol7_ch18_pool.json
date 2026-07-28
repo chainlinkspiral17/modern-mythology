@@ -173,7 +173,7 @@
     },
     {
       "char": "old_man",
-      "text": "Her name is Aria.",
+      "text": "[beat:hit]Her name is Aria.",
       "t": "say"
     },
     {
@@ -187,7 +187,7 @@
     },
     {
       "char": "old_man",
-      "text": "Brandon named her in his head the week after he got her in '42 and never said it aloud. Eight years of the bird. I'm telling you because the name needs to be in the room with you when the ringing happens. The crow rings. The daughter comes.",
+      "text": "Brandon named her in his head the week after he got her in '42 and never said it aloud. Eight years of the bird. I'm telling you because the name needs to be in the room with you when the ringing happens. The crow rings. [wave amp=6 freq=2]The daughter comes.[/wave]",
       "t": "say"
     },
     {
@@ -282,7 +282,7 @@
       "t": "narrate"
     },
     {
-      "text": "The hand was holding a bell the size of a thimble.",
+      "text": "[beat:still]The hand was holding a bell the size of a thimble.",
       "t": "narrate"
     },
     {

@@ -636,7 +636,7 @@
     {
       "t": "say",
       "char": "Doug",
-      "text": "[shot:closeup doug]He told me last week.",
+      "text": "[beat:still][shot:closeup doug]He told me last week.",
       "expr": "neutral"
     },
     {

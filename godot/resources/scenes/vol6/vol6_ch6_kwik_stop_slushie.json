@@ -81,7 +81,7 @@
     },
     {
       "t": "narrate",
-      "text": "[shot:closeup sam~]Sam holds the five in her hand. She does not, immediately, give him the change. She does not, immediately, do anything."
+      "text": "[beat:lift][shot:closeup sam~]Sam holds the five in her hand. She does not, immediately, give him the change. She does not, immediately, do anything."
     },
     {
       "t": "narrate",

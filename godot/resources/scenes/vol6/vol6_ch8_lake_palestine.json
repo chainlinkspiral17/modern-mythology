@@ -132,7 +132,7 @@
     {
       "t": "say",
       "char": "Chief Miller",
-      "text": "I started in 2016.",
+      "text": "[beat:hit]I started in 2016.",
       "expr": "neutral"
     },
     {

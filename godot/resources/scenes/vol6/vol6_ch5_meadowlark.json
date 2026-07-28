@@ -89,7 +89,7 @@
     {
       "t": "say",
       "char": "Mrs. Miller",
-      "text": "[shot:closeup mrs_miller]Your father has, tomorrow morning, agreed to meet with Detective Ramirez at the NAPD substation at seven AM. He is going to give Ramirez a — everything he has. What he knows. Who he knows. What he's done. Everything. This is not a negotiation. This is him making a full statement with a lawyer. Ramirez has agreed to keep him out of custody through the weekend so he can see the — the rescue thing, which I am not supposed to know about but which I know about, through. He will be arrested Monday morning."
+      "text": "[beat:hit][shot:closeup mrs_miller]Your father has, tomorrow morning, agreed to meet with Detective Ramirez at the NAPD substation at seven AM. He is going to give Ramirez a — everything he has. What he knows. Who he knows. What he's done. Everything. This is not a negotiation. This is him making a full statement with a lawyer. Ramirez has agreed to keep him out of custody through the weekend so he can see the — the rescue thing, which I am not supposed to know about but which I know about, through. He will be arrested Monday morning."
     },
     {
       "t": "narrate",

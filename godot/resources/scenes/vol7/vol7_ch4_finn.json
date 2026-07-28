@@ -236,7 +236,7 @@
       "t": "say"
     },
     {
-      "text": "[mood:candlelight_low][shot:insert bowl~]He got up. He lifted the small cedar bowl off the shelf and held it in both hands, and his face did not change but he stood there a long count before he set it back.",
+      "text": "[beat:chill][mood:candlelight_low][shot:insert bowl~]He got up. He lifted the small cedar bowl off the shelf and held it in both hands, and his face did not change but he stood there a long count before he set it back.",
       "t": "narrate"
     },
     {
@@ -291,7 +291,7 @@
     },
     {
       "char": "tem",
-      "text": "Because Lena is in love with me.",
+      "text": "[beat:still]Because Lena is in love with me.",
       "expr": "serious",
       "t": "say"
     },
@@ -622,7 +622,7 @@
       "t": "narrate"
     },
     {
-      "text": "It was warm.",
+      "text": "[wave amp=6 freq=2]It was warm.[/wave]",
       "t": "narrate"
     },
     {

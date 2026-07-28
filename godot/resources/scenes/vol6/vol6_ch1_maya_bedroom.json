@@ -47,7 +47,7 @@
       "t": "say",
       "char": "F.T.",
       "expr": "neutral",
-      "text": "\"thing three. diego ramos is alive. i want you to know that first. he is not okay, but he is alive. he is being held in a building on the east side of the subdivision that is not currently on any map.\""
+      "text": "\"thing three. [wave amp=5 freq=2]diego ramos is alive[/wave]. i want you to know that first. he is not okay, but he is alive. he is being held in a building on the east side of the subdivision that is not currently on any map.\""
     },
     {
       "t": "say",

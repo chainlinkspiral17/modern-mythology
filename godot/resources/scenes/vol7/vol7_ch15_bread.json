@@ -433,7 +433,7 @@
       "t": "narrate"
     },
     {
-      "text": "she would ring when the room was ready",
+      "text": "[beat:lift]she would ring [wave amp=6 freq=2]when the room was ready[/wave]",
       "t": "narrate"
     },
     {
@@ -558,7 +558,7 @@
     },
     {
       "char": "hans",
-      "text": "I have known Roy has the bowl since '37.",
+      "text": "[beat:hit]I have known Roy has the bowl since '37.",
       "expr": "serious",
       "t": "say"
     },

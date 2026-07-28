@@ -79,7 +79,7 @@
     },
     {
       "char": "aud",
-      "text": "[shot:closeup aud]I'm the third watcher in this town and Hans has been telling me for thirty years.",
+      "text": "[beat:hit][shot:closeup aud]I'm the third watcher in this town and Hans has been telling me for thirty years.",
       "t": "say"
     },
     {
@@ -802,7 +802,7 @@
       "t": "narrate"
     },
     {
-      "text": "[shot:insert face~]But — by what Kai registered at the wall, in the gray-blue of the late afternoon, in a way he had not been able to anticipate — the closed eyelids of the face on the wall moved. Not opened. Moved.",
+      "text": "[shot:insert face~]But — by what Kai registered at the wall, in the gray-blue of the late afternoon, in a way he had not been able to anticipate — the closed eyelids of the face on the wall moved. [wave amp=6 freq=2]Not opened. Moved.[/wave]",
       "t": "narrate"
     },
     {

@@ -812,7 +812,7 @@
     {
       "t": "say",
       "char": "Sam",
-      "text": "[shot:closeup sam]I don't know your situation. I'm not going to pretend I do. But — I have one twenty in my wallet. It's mine. It's not the store's. You can have it. It's not — it's not enough to do any of what you need to do. But it might be enough to — to get a motel tonight. Eat. Make a call from somewhere with AC. I'm — I'm offering it because I can. You don't have to take it. You don't have to talk about it. You can just — take it, if you want, and figure the rest out from there.",
+      "text": "[beat:still][shot:closeup sam]I don't know your situation. I'm not going to pretend I do. But — I have one twenty in my wallet. It's mine. It's not the store's. You can have it. It's not — it's not enough to do any of what you need to do. But it might be enough to — to get a motel tonight. Eat. Make a call from somewhere with AC. I'm — I'm offering it because I can. You don't have to take it. You don't have to talk about it. You can just — take it, if you want, and figure the rest out from there.",
       "expr": "neutral"
     },
     {
@@ -914,7 +914,7 @@
     {
       "t": "say",
       "char": "Mark",
-      "text": "Thank you. I — I don't know how to —",
+      "text": "Thank you. I — [fade start=4 length=14]I don't know how to —[/fade]",
       "expr": "neutral"
     },
     {
@@ -1289,7 +1289,7 @@
     },
     {
       "t": "narrate",
-      "text": "The list reads: gas for the day — $80 / food (sandwiches?) — $25 / coffee — $8 / motel maybe — $60–80 / mark's meds at walgreens — $40 / $$ remaining at end of day — ?"
+      "text": "[beat:still]The list reads: gas for the day — $80 / food (sandwiches?) — $25 / coffee — $8 / motel maybe — $60–80 / mark's meds at walgreens — $40 / $$ remaining at end of day — ?"
     },
     {
       "t": "narrate",

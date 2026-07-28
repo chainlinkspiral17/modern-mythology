@@ -113,11 +113,11 @@
     },
     {
       "t": "narrate",
-      "text": "[mood:arcana][shot:insert photograph~]The photograph shows a dock at dusk. Two men. One with his back to the camera, thin, wearing a raincoat, handing a wooden crate down from the rail of a small boat. The other man receiving the crate, facing the camera at a three-quarters angle, a man of maybe forty, clean-shaven, wearing a charcoal suit that does not, in any way, fit the scene — a charcoal suit at a dock at dusk in Graustark in 1978."
+      "text": "[beat:chill][mood:arcana][shot:insert photograph~]The photograph shows a dock at dusk. Two men. One with his back to the camera, thin, wearing a raincoat, handing a wooden crate down from the rail of a small boat. The other man receiving the crate, facing the camera at a three-quarters angle, a man of maybe forty, clean-shaven, wearing a charcoal suit that does not, in any way, fit the scene — a charcoal suit at a dock at dusk in Graustark in 1978."
     },
     {
       "t": "narrate",
-      "text": "The man's face is younger than Maya has ever seen this face, but it is, unmistakably, the same face. The face in Jesse's father's photograph. The face Sam had dreamed about Tuesday night. The face on Dante D'Ambrosio's desk. The face Joanna LeMoine had opened her door to four days after the Calamity, the face that had said not today. I will be back when the child is ready. Rest."
+      "text": "The man's face is younger than Maya has ever seen this face, but it is, [wave amp=6 freq=2]unmistakably, the same face[/wave]. The face in Jesse's father's photograph. The face Sam had dreamed about Tuesday night. The face on Dante D'Ambrosio's desk. The face Joanna LeMoine had opened her door to four days after the Calamity, the face that had said not today. I will be back when the child is ready. Rest."
     },
     {
       "t": "show",

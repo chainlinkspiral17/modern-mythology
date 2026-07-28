@@ -74,7 +74,7 @@
     {
       "t": "think",
       "char": "Sam",
-      "text": "[mood:fluorescent_corridor][shot:closeup sam~]He is, she realizes, not looking at the beer. He is looking at the reflection of Sam in the cooler glass."
+      "text": "[beat:chill][mood:fluorescent_corridor][shot:closeup sam~]He is, she realizes, not looking at the beer. He is looking at the reflection of Sam in the cooler glass."
     },
     {
       "t": "narrate",

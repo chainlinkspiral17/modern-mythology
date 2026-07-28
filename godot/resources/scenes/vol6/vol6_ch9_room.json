@@ -387,7 +387,7 @@
     },
     {
       "t": "narrate",
-      "text": "The device — Diego will swear this later, will write it in the spiral notebook, will not, even in the writing, be fully able to convince himself it had really happened — pulses, once, in response."
+      "text": "[beat:chill]The device — Diego will swear this later, will write it in the spiral notebook, will not, even in the writing, be fully able to convince himself it had really happened — pulses, once, in response."
     },
     {
       "t": "narrate",
@@ -638,7 +638,7 @@
     {
       "t": "say",
       "char": "Boyd",
-      "text": "Kid. For what it's worth. Your grandmother loves you. I have been listening to her on the radio in the room above this one for three days. She has been — sending Morse. She has not stopped. The Morse says: he is alive. she is here. we are coming. she has been saying it on a loop for three days. I do not know how she knows. But she knows.",
+      "text": "Kid. For what it's worth. Your grandmother loves you. I have been listening to her on the radio in the room above this one for three days. She has been — sending Morse. She has not stopped. The Morse says: he is alive. she is here. [wave amp=5 freq=2]we are coming.[/wave] she has been saying it on a loop for three days. I do not know how she knows. But she knows.",
       "expr": "neutral"
     },
     {

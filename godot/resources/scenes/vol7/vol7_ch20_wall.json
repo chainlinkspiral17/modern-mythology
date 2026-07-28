@@ -264,7 +264,7 @@
       "t": "say"
     },
     {
-      "text": "[mood:morning_bright][shot:closeup face~]At seven-thirty the face on the wall opened its eyes.",
+      "text": "[mood:morning_bright][shot:closeup face~]At seven-thirty the face on the wall [wave amp=6 freq=2]opened its eyes[/wave].",
       "t": "narrate"
     },
     {

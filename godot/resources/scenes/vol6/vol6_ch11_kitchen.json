@@ -532,7 +532,7 @@
     {
       "t": "say",
       "char": "Bianca",
-      "text": "Of course you should leave.",
+      "text": "[beat:still]Of course you should leave.",
       "expr": "neutral"
     },
     {

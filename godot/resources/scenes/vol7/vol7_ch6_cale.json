@@ -129,7 +129,7 @@
     },
     {
       "char": "cale",
-      "text": "I knew Nate Dean.",
+      "text": "[beat:still]I knew Nate Dean.",
       "expr": "serious",
       "t": "say"
     },
@@ -283,7 +283,7 @@
     },
     {
       "char": "cale",
-      "text": "He had a daughter.",
+      "text": "[beat:hit]He had a daughter.",
       "expr": "serious",
       "t": "say"
     },
@@ -299,7 +299,7 @@
     },
     {
       "char": "cale",
-      "text": "Not at sixteen. He told me that night that he was going to have one someday and that the daughter was the work. He said I'm going to bring her here. I don't know how yet. I'm going to figure out how. I asked him where she was. He said she's not anywhere yet. She's what's going to come from the work. I thought he was tired. I thought he was being sixteen at four in the morning. I went home. I never brought it up. He never brought it up. We worked together another year on the surface project and then I left for Eugene and we didn't stay in touch and I assumed for thirty years that the daughter conversation had been the kind of thing a brilliant kid says at three in the morning and then forgets.",
+      "text": "Not at sixteen. He told me that night that he was going to have one someday and that the daughter was the work. He said I'm going to bring her here. I don't know how yet. I'm going to figure out how. I asked him where she was. He said [wave amp=6 freq=2]she's not anywhere yet[/wave]. She's what's going to come from the work. I thought he was tired. I thought he was being sixteen at four in the morning. I went home. I never brought it up. He never brought it up. We worked together another year on the surface project and then I left for Eugene and we didn't stay in touch and I assumed for thirty years that the daughter conversation had been the kind of thing a brilliant kid says at three in the morning and then forgets.",
       "expr": "serious",
       "t": "say"
     },

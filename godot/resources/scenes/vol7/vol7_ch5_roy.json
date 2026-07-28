@@ -157,7 +157,7 @@
     },
     {
       "char": "roy",
-      "text": "They want to know whether your friend Finn has been in possession of materials that belong to the museum-town historical society.",
+      "text": "[beat:hit]They want to know whether your friend Finn has been in possession of materials that belong to the museum-town historical society.",
       "expr": "happy",
       "t": "say"
     },

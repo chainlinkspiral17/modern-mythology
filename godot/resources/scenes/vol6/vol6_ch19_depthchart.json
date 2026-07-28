@@ -375,7 +375,7 @@
     },
     {
       "t": "narrate",
-      "text": "His name is at TE-1."
+      "text": "[beat:lift]His name is at TE-1."
     },
     {
       "t": "narrate",
@@ -799,7 +799,7 @@
     },
     {
       "t": "narrate",
-      "text": "[shot:closeup ben]Ben, with a tee in his hand, is, for a long moment, very still."
+      "text": "[beat:still][shot:closeup ben]Ben, with a tee in his hand, is, for a long moment, very still."
     },
     {
       "t": "say",

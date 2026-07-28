@@ -319,7 +319,7 @@
     },
     {
       "char": "finn",
-      "text": "The danger is not Roy. The danger is that Roy is the small visible end of a very long and not-visible thing, and that thing has just learned our names.",
+      "text": "[beat:chill]The danger is not Roy. The danger is that Roy is the small visible end of a very long and not-visible thing, and that thing has [shake rate=10 level=3]just learned our names[/shake].",
       "expr": "serious",
       "t": "say"
     },
@@ -616,7 +616,7 @@
       "t": "show"
     },
     {
-      "text": "[shot:insert deadbolt]Lena turned the deadbolt.",
+      "text": "[beat:still][shot:insert deadbolt]Lena turned the deadbolt.",
       "t": "narrate"
     },
     {

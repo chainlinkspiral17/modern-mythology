@@ -95,7 +95,7 @@
       "t": "narrate"
     },
     {
-      "text": "[shot:insert bowls~]The figures on the four bowls — Tem registered, watching from above as she stood at the table — began to align.",
+      "text": "[beat:chill][shot:insert bowls~]The figures on the four bowls — Tem registered, watching from above as she stood at the table — began to align.",
       "t": "narrate"
     },
     {
@@ -192,7 +192,7 @@
     },
     {
       "char": "marina",
-      "text": "[shot:closeup marina]She is looking at me.",
+      "text": "[shot:closeup marina][wave amp=6 freq=2]She is looking at me.[/wave]",
       "t": "say"
     },
     {

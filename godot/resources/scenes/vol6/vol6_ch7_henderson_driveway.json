@@ -192,7 +192,7 @@
     {
       "t": "say",
       "char": "Maya",
-      "text": "ben. my grandmother fell down the stairs. she's at the hospital. broken hip. she's going to be okay. i'm at the er with her now. you don't have to come. i just wanted to tell you.",
+      "text": "[beat:hit]ben. my grandmother fell down the stairs. she's at the hospital. broken hip. she's going to be okay. i'm at the er with her now. you don't have to come. i just wanted to tell you.",
       "expr": "neutral"
     },
     {

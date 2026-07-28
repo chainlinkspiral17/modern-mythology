@@ -123,7 +123,7 @@
     },
     {
       "t": "narrate",
-      "text": "[mood:candlelight_low][shot:insert door~]At seven oh-eight the basement door opens."
+      "text": "[beat:still][mood:candlelight_low][shot:insert door~]At seven oh-eight the basement door opens."
     },
     {
       "t": "narrate",
@@ -326,7 +326,7 @@
     {
       "t": "say",
       "char": "Mr. Henderson",
-      "text": "In April — Eileen — in April this year, the substation began — broadcasting — at me. Through the camera. I do not — I do not know how to explain it. It was not — it was not a voice. It was a — it was a direction. The camera would tell me where to point. The prints would — the prints would report. I was — I was not, by then, fully — fully me. I was — I was an eye. I was only an eye. The eye was — the eye was theirs.",
+      "text": "In April — Eileen — in April this year, the substation began — broadcasting — at me. Through the camera. I do not — I do not know how to explain it. It was not — it was not a voice. It was a — it was a direction. The camera would tell me where to point. The prints would — the prints would report. I was — I was not, by then, fully — fully me. I was — I was an eye. [shake rate=8 level=2]I was only an eye.[/shake] The eye was — the eye was theirs.",
       "expr": "sad"
     },
     {

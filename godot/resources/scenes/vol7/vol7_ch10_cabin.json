@@ -246,7 +246,7 @@
       "t": "say"
     },
     {
-      "text": "[shot:closeup per~]Per was quiet a long count.",
+      "text": "[beat:still][shot:closeup per~]Per was quiet a long count.",
       "t": "narrate"
     },
     {

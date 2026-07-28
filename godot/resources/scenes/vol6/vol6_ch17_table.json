@@ -727,7 +727,7 @@
     },
     {
       "t": "narrate",
-      "text": "[shot:establish~]The kitchen is, for a beat, very quiet."
+      "text": "[beat:still][shot:establish~]The kitchen is, for a beat, very quiet."
     },
     {
       "t": "say",
@@ -1262,7 +1262,7 @@
     {
       "t": "say",
       "char": "Anita",
-      "text": "[shot:closeup anita~]She's going to leave.",
+      "text": "[beat:still][shot:closeup anita~]She's going to leave.",
       "expr": "neutral"
     },
     {

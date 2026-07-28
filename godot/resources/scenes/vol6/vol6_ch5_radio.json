@@ -114,7 +114,7 @@
     },
     {
       "t": "narrate",
-      "text": "[mood:arcana][shot:insert radio~]She is sending, on 1776 kHz, a single phrase, over and over, in Morse code she has not used since 1989, in the cadence her husband Thomas had taught her: Thomas is gone. Maya is here. I remember."
+      "text": "[mood:arcana][shot:insert radio~]She is sending, on 1776 kHz, a single phrase, over and over, in Morse code she has not used since 1989, in the cadence her husband Thomas had taught her: Thomas is gone. [wave amp=5 freq=2]Maya is here. I remember.[/wave]"
     },
     {
       "t": "narrate",

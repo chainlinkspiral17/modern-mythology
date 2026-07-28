@@ -63,7 +63,7 @@
       "t": "say",
       "char": "Graciela",
       "expr": "cold",
-      "text": "[mood:macro_haze][shot:closeup graciela~]\"Sam. My grandson was taken. Last night. At eleven-fifty-two. I heard the truck leave the driveway.\""
+      "text": "[beat:hit][mood:macro_haze][shot:closeup graciela~]\"Sam. My grandson was taken. Last night. At eleven-fifty-two. I heard the truck leave the driveway.\""
     },
     {
       "t": "say",

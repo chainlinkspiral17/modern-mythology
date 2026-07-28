@@ -588,7 +588,7 @@
     {
       "t": "say",
       "char": "Linda",
-      "text": "He said the rhythm of a man whose wife is going to be okay.",
+      "text": "[beat:lift]He said the rhythm of a man whose wife is going to be okay.",
       "expr": "neutral"
     },
     {

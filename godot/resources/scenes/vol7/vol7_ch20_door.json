@@ -146,7 +146,7 @@
       "t": "narrate"
     },
     {
-      "text": "[shot:closeup figure~]On the porch, at the door, was a person.",
+      "text": "[beat:still][shot:closeup figure~]On the porch, at the door, was a person.",
       "t": "narrate"
     },
     {

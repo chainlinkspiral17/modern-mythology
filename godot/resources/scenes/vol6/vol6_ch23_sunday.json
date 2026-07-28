@@ -757,7 +757,7 @@
     },
     {
       "t": "narrate",
-      "text": "[shot:closeup bianca]Bianca, at the table, is for a beat very still."
+      "text": "[beat:still][shot:closeup bianca]Bianca, at the table, is for a beat very still."
     },
     {
       "t": "say",

@@ -203,7 +203,7 @@
       "t": "narrate"
     },
     {
-      "text": "[shot:insert crow~]The crow said, very quietly:",
+      "text": "[beat:still][shot:insert crow~]The crow said, very quietly:",
       "t": "narrate"
     },
     {
@@ -545,7 +545,7 @@
       "t": "narrate"
     },
     {
-      "text": "[shot:closeup figure~]The figure was at the second stack from the headland. The figure was standing on the seaward edge of the second stack, in a way no person could stand on a sea-stack at this hour with the tide what it was. The figure was standing on the water. Or on nothing.",
+      "text": "[beat:chill][shot:closeup figure~]The figure was at the second stack from the headland. The figure was standing on the seaward edge of the second stack, in a way no person could stand on a sea-stack at this hour with the tide what it was. The figure was standing on [wave amp=6 freq=2]the water. Or on nothing[/wave].",
       "t": "narrate"
     },
     {

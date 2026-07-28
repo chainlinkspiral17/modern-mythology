@@ -254,7 +254,7 @@
     {
       "t": "say",
       "char": "abuela",
-      "text": "[shot:closeup abuela~]*The watcher in your head. He has been quieter today.*",
+      "text": "[beat:still][shot:closeup abuela~]*The watcher in your head. He has been quieter today.*",
       "expr": "neutral"
     },
     {

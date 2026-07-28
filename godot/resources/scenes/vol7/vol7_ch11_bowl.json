@@ -140,7 +140,7 @@
     },
     {
       "char": "per",
-      "text": "[shot:closeup per]That is my father's hand.",
+      "text": "[beat:hit][shot:closeup per]That is my father's hand.",
       "expr": "serious",
       "t": "say"
     },
@@ -719,7 +719,7 @@
       "t": "narrate"
     },
     {
-      "text": "The figures in the cedar were not staying still. The figures were moving at the pace cedar moves at, which is slow, and patient, and beyond the attention of a person who is not looking. Kai was looking. He saw.",
+      "text": "The figures in the cedar were [wave amp=6 freq=2]not staying still[/wave]. The figures were moving at the pace cedar moves at, which is slow, and patient, and beyond the attention of a person who is not looking. Kai was looking. He saw.",
       "t": "narrate"
     },
     {

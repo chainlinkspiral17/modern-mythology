@@ -603,7 +603,7 @@
     },
     {
       "t": "narrate",
-      "text": "Wren tells Maya the thing."
+      "text": "[beat:still]Wren tells Maya the thing."
     },
     {
       "t": "say",
@@ -994,7 +994,7 @@
     {
       "t": "say",
       "char": "Curtis",
-      "text": "You're doing fine, kid.",
+      "text": "[beat:lift]You're doing fine, kid.",
       "expr": "neutral"
     },
     {

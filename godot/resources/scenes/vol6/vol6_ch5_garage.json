@@ -462,7 +462,7 @@
     },
     {
       "t": "narrate",
-      "text": "[shot:establish]They play Blowback. The chorus is — even Jesse will later admit — the thing that makes the song. The chorus is four lines. It goes: There is a door / The door is not locked / We have not, yet, tried / The handle."
+      "text": "[beat:lift][shot:establish]They play Blowback. The chorus is — even Jesse will later admit — the thing that makes the song. The chorus is four lines. It goes: There is a door / The door is not locked / We have not, yet, tried / The handle."
     },
     {
       "t": "show",

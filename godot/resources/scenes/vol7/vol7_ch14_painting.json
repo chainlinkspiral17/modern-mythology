@@ -403,7 +403,7 @@
       "t": "narrate"
     },
     {
-      "text": "[shot:insert face~]The face on the wall was the face.",
+      "text": "[beat:still][shot:insert face~]The face on the wall was the face.",
       "t": "narrate"
     },
     {

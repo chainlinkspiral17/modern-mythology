@@ -243,7 +243,7 @@
     },
     {
       "t": "narrate",
-      "text": "[shot:insert hands~]She takes his hand."
+      "text": "[beat:lift][shot:insert hands~]She takes his hand."
     },
     {
       "t": "narrate",

@@ -222,7 +222,7 @@
       "t": "say",
       "char": "Grandmother",
       "expr": "neutral",
-      "text": "\"Honey. Your grandfather was a photographer. In Graustark. In the seventies. He took a picture he should not have taken. It cost him fifteen years.\""
+      "text": "[beat:still]\"Honey. Your grandfather was a photographer. In Graustark. In the seventies. He took a picture he should not have taken. It cost him fifteen years.\""
     },
     {
       "t": "narrate",

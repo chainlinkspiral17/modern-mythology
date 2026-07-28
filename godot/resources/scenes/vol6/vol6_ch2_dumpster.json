@@ -75,7 +75,7 @@
       "t": "say",
       "char": "Jesse",
       "expr": "neutral",
-      "text": "\"Of the town. He does this. He's had the camera forever. But he's — the prints, Ben. The prints. I was in the garage this morning and I saw them on the line. They have — people in them. People that aren't in the actual pictures. He had the raw film still in a holder. I looked at the negatives. The negatives don't have the people. The prints do.\""
+      "text": "\"Of the town. He does this. He's had the camera forever. But he's — the prints, Ben. The prints. I was in the garage this morning and I saw them on the line. They have — people in them. People that aren't in the actual pictures. He had the raw film still in a holder. I looked at the negatives. The negatives don't have the people. [shake rate=8 level=2]The prints do.[/shake]\""
     },
     {
       "t": "narrate",
@@ -313,7 +313,7 @@
     },
     {
       "t": "narrate",
-      "text": "[shot:insert prints~]In the third — the front entrance of the subdivision. Under the archway. A man in a charcoal suit, looking directly at the camera."
+      "text": "[beat:chill][shot:insert prints~]In the third — the front entrance of the subdivision. Under the archway. A man in a charcoal suit, looking directly at the camera."
     },
     {
       "t": "narrate",

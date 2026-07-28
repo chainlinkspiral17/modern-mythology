@@ -102,7 +102,7 @@
     {
       "t": "say",
       "char": "Diego",
-      "text": "yes. sorry it took so long.",
+      "text": "yes. [wave amp=5 freq=2]sorry it took so long[/wave].",
       "expr": "neutral"
     },
     {

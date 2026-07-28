@@ -212,7 +212,7 @@
       "t": "narrate"
     },
     {
-      "text": "[shot:insert bowls~]The bowls on the table were — by what Per could see in the kerosene light, by the small alarm in his body that had woken him without his asking — still.",
+      "text": "[beat:still][shot:insert bowls~]The bowls on the table were — by what Per could see in the kerosene light, by the small alarm in his body that had woken him without his asking — still.",
       "t": "narrate"
     },
     {
@@ -302,7 +302,7 @@
       "t": "narrate"
     },
     {
-      "text": "The crow rang.",
+      "text": "[wave amp=6 freq=2]The crow rang.[/wave]",
       "t": "narrate"
     },
     {
@@ -310,7 +310,7 @@
       "t": "narrate"
     },
     {
-      "text": "[shot:insert door]Outside, on the porch of the cabin, somebody knocked.",
+      "text": "[beat:hit][shot:insert door]Outside, on the porch of the cabin, somebody knocked.",
       "t": "narrate"
     },
     {

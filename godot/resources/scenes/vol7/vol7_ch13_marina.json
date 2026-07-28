@@ -617,7 +617,7 @@
       "t": "narrate"
     },
     {
-      "text": "The figure was at the base of the spiral. The figure was a man with a beard. The man was holding a piece of wood in his hands and was looking at it. The man's expression was an expression of recognition. The man was looking at the wood with the look of a man who had just realized the wood was looking back.",
+      "text": "The figure was at the base of the spiral. The figure was a man with a beard. The man was holding a piece of wood in his hands and was looking at it. The man's expression was an expression of recognition. The man was looking at the wood with the look of a man who had just realized [wave amp=6 freq=2]the wood was looking back[/wave].",
       "t": "narrate"
     },
     {
@@ -823,7 +823,7 @@
     },
     {
       "char": "tem",
-      "text": "The face is turning toward the road.",
+      "text": "[beat:still]The face is turning toward the road.",
       "expr": "serious",
       "t": "say"
     },

@@ -245,7 +245,7 @@
     },
     {
       "t": "narrate",
-      "text": "[mood:arcana_cool][shot:insert speak_spell~]Maya, at the counter, with the customer's change in her hand, has about one second to decide what to do. She looks at the shelf above the file cabinet. The Speak & Spell is slightly visible from her angle. The Speak & Spell, from her angle, has — for the first time since June — a red glow at the speaker grille."
+      "text": "[beat:chill][mood:arcana_cool][shot:insert speak_spell~]Maya, at the counter, with the customer's change in her hand, has about one second to decide what to do. She looks at the shelf above the file cabinet. The Speak & Spell is slightly visible from her angle. The Speak & Spell, from her angle, has — for the first time since June — a red glow at the speaker grille."
     },
     {
       "t": "show",
@@ -255,7 +255,7 @@
     },
     {
       "t": "narrate",
-      "text": "The wanderer reaches into the back office. He picks up the Speak & Spell. He turns. He walks out of the back office. He walks, with the Speak & Spell in his hands, into the back of the shop. He is not quite present. His attention has slipped one room sideways and he is, in the slip, doing a thing his body has decided to do without consulting his head."
+      "text": "The wanderer reaches into the back office. He picks up the Speak & Spell. He turns. He walks out of the back office. He walks, with the Speak & Spell in his hands, into the back of the shop. He is not quite present. His attention has [wave amp=6 freq=2]slipped one room sideways[/wave] and he is, in the slip, doing a thing his body has decided to do without consulting his head."
     },
     {
       "t": "narrate",
