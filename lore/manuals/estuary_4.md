@@ -114,8 +114,8 @@ held to the plan you chose in the archive, and how much of what
 you built survived the water.
 
 - **THE ESTUARY REMEMBERS** — all three calls aligned with the
-  plan AND the work built strong across all three projects. The
-  water takes the shape you argued for.
+  plan AND most of what you built held strong. The water takes
+  the shape you argued for.
 - **THE WATER DECIDES** — mixed calls or a mixed season. Half
   the plan holds and the estuary edits the rest, not unkindly.
 - **THE SECOND SURVEY** — a contrarian season, or one the water

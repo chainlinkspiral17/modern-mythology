@@ -88,7 +88,7 @@ The fourth act does not say what kind of game it is, and
 neither will we. You will need one key — SPACE, once per bar,
 in time with the drone — and a beach, and the patience to find
 out what the timing of your pressing draws. The tide is coming
-in at forty times the speed of the world. Things will come and
+in much faster than the world's. Things will come and
 look at what you make. What remains of the summer is its shape.
 
 ## MANAGER MODE
