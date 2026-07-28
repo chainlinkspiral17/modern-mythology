@@ -24,7 +24,7 @@ as they exist in the current build.
 | year | cartridge | manual |
 |---|---|---|
 | 1988 | Northwind Harbor | [manual](northwind_harbor.md) |
-| 1988 | Pirate Summer | [manual](pirate_summer.md) |
+| 2002 | Pirate Summer | [manual](pirate_summer.md) |
 | 1990 | Fey Faire | [manual](fey_faire.md) |
 | 1992 | Salmonberry | [manual](salmonberry.md) |
 | 1993 | Estuary 3 (+ Manager Mode · Year Two) | [manual](estuary_3.md) |
@@ -38,15 +38,15 @@ as they exist in the current build.
 
 | year | cartridge | studio | manual |
 |---|---|---|---|
-| 1985 | Earthman Chronicles | (see manual) | [manual](earthman_chronicles.md) |
+| 1985 | Earthman Chronicles | Astro-Cortex Software | [manual](earthman_chronicles.md) |
 | 1993 | Spiderdrops | Pretty Dreams | [manual](spiderdrops.md) |
 | — | Spiderdrops 2 · The Long Wind | Pretty Dreams | [manual](spiderdrops_2.md) |
 | — | Riffrocker Melody Club | Pretty Dreams | [manual](riffrocker_melody_club.md) |
 | 1996 | Sweetgum | zine-traded homebrew | [manual](sweetgum.md) |
-| — | Sisters Wyrd | (see manual) | [manual](sisters_wyrd.md) |
-| — | Basilica of Wires | (see manual) | [manual](basilica_of_wires.md) |
-| — | Hane no Niwa | (see manual) | [manual](hane_no_niwa.md) |
-| — | Kwik Stop Manager | (see manual) | [manual](kwik_stop_manager.md) |
+| 1983 | Sisters Wyrd | Sagebrush Engineworks | [manual](sisters_wyrd.md) |
+| 1987 | Basilica of Wires | Astro-Cortex Software | [manual](basilica_of_wires.md) |
+| 1993 | Hane no Niwa | Yumemi Denshi | [manual](hane_no_niwa.md) |
+| 2002 | Kwik Stop Manager | RANCH | [manual](kwik_stop_manager.md) |
 | — | Sam's Summer Shifts | RANCH | [manual](sams_summer_shifts.md) |
 | — | The Patient Mister Glass | RANCH | [manual](patient_mister_glass.md) |
 
