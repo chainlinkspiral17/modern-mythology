@@ -13,6 +13,9 @@ signal quit_to_shelf
 signal finished(canon_vars: Dictionary, lore_tokens: Array)
 
 const WALK_SCENE := "res://scenes/games/the_tideline/TidelineWalk.tscn"
+const HERO_DIR := "res://resources/games/vol7/the_tideline/hero_images/"
+# The whole walk's ruled-line budget · kept in lockstep with the walk scene.
+const NOTEBOOK_BUDGET: int = preload("res://scenes/games/the_tideline/TidelineWalk.gd").NOTEBOOK_BUDGET
 
 # December-morning inks (original) · product chrome (remake)
 const C_SEA    := Color("2c343a")
@@ -210,7 +213,12 @@ func _on_walk_over(state: Dictionary) -> void:
 	else:
 		if not tokens.has("the_tideline_finished"):
 			tokens.append("the_tideline_finished")
-		if (_run_state.get("lines", []) as Array).size() >= 22 and not tokens.has("tideline_full_notebook"):
+		# Full notebook = every ruled line spent.  The whole walk only
+		# carries NOTEBOOK_BUDGET lines, so key the token off the budget.
+		var lines_recorded: int = (_run_state.get("lines", []) as Array).size()
+		var budget_spent: bool = lines_recorded >= NOTEBOOK_BUDGET \
+				or int(_run_state.get("notebook_left", NOTEBOOK_BUDGET)) <= 0
+		if budget_spent and not tokens.has("tideline_full_notebook"):
 			tokens.append("tideline_full_notebook")
 		if bool(_run_state.get("watched_the_seal", false)) and not tokens.has("tideline_the_seal"):
 			tokens.append("tideline_the_seal")
@@ -222,6 +230,10 @@ func _on_walk_over(state: Dictionary) -> void:
 	canon["tideline_lines_recorded"] = (_run_state.get("lines", []) as Array).size()
 	canon["tideline_remake"] = remake_mode
 	_run_state["canon_vars"] = canon
+	# The walk is over: reset the saved station so the next visit's
+	# button starts a fresh walk instead of re-booting the report
+	# forever.  The report/canon vars and tokens stay in the save.
+	_run_state["station"] = 0
 	_save_state()
 	finished.emit(canon, tokens)
 

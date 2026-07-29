@@ -175,6 +175,12 @@ func _on_pick_notebook(nb: Dictionary, reg: String) -> void:
 func _show_water() -> void:
 	var ch: Dictionary = _data.get("ch2", {})
 	var calls: Array = ch.get("calls", [])
+	# Mid-season resume: _call_index is transient, but the saved calls
+	# dictionary is not.  If every call has already been made, skip
+	# straight to the season instead of replaying the three calls.
+	if (_state.get("calls", {}) as Dictionary).size() >= calls.size():
+		_show_season_week()
+		return
 	if _call_index >= calls.size():
 		_show_season_week()
 		return
