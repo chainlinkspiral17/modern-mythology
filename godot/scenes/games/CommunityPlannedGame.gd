@@ -169,7 +169,7 @@ var _interlude_shelf: Array = []  # list of unlocked interlude ids
 @onready var _dispatches_label: Label = $VBox/HeaderBar/DispatchesLabel
 @onready var _region_panels_box: HBoxContainer = $VBox/RegionsRow
 @onready var _agent_list_box: VBoxContainer = $VBox/BottomRow/AgentScroll/AgentList
-@onready var _log_label: RichTextLabel = $VBox/BottomRow/LogScroll/LogLabel
+@onready var _log_label: RichTextLabel = $VBox/BottomRow/LogLabel
 @onready var _advance_button: Button = $VBox/BottomRow/Actions/AdvanceDayButton
 @onready var _new_game_button: Button = $VBox/BottomRow/Actions/NewGameButton
 @onready var _back_button: Button = $VBox/BottomRow/Actions/BackButton
@@ -185,6 +185,7 @@ func _ready() -> void:
 	_install_backdrop()
 	_load_data()
 	_build_ui()
+	_install_bottom_plates()
 	# Three-slot save picker fires before any state load. The player
 	# picks a slot; the slot's save is loaded (or a new game starts
 	# in that slot). The picker remembers the active slot via
@@ -499,7 +500,7 @@ func _show_endless_end_screen(entry: Dictionary) -> void:
 				String(run.get("reason", ""))])
 		var prev := Label.new()
 		prev.text = "\n".join(prev_lines)
-		prev.add_theme_font_size_override("font_size", 11)
+		prev.add_theme_font_size_override("font_size", 12)
 		prev.add_theme_color_override("font_color", Color(0.62, 0.66, 0.72, 1))
 		col.add_child(prev)
 	dlg.confirmed.connect(func() -> void:
@@ -570,7 +571,21 @@ func _show_slot_picker() -> void:
 	var dlg := AcceptDialog.new()
 	dlg.title = "COMMUNITY PLANNED · slot"
 	dlg.min_size = Vector2(560, 420)
-	dlg.get_ok_button().visible = false  # No OK — pick a slot or close window.
+	dlg.get_ok_button().visible = false  # No OK — the picker resolves via a slot.
+	# Soft-lock guard (audit): ESC / window-close used to dismiss the
+	# picker and leave a live board with no slot state behind it. The
+	# picker can only resolve through a slot choice — any close attempt
+	# re-shows it. The "settled" meta marks intentional resolutions so
+	# the reopen handler never double-fires against them.
+	dlg.dialog_close_on_escape = false
+	var reopen_picker := func() -> void:
+		if dlg.has_meta("settled"):
+			return
+		dlg.set_meta("settled", true)
+		dlg.queue_free()
+		call_deferred("_show_slot_picker")
+	dlg.close_requested.connect(reopen_picker)
+	dlg.canceled.connect(reopen_picker)
 	var col := VBoxContainer.new()
 	col.add_theme_constant_override("separation", 10)
 	col.size_flags_horizontal = Control.SIZE_EXPAND_FILL
@@ -592,6 +607,7 @@ func _show_slot_picker() -> void:
 		btn.add_theme_font_size_override("font_size", 12)
 		var slot_capture: int = slot
 		btn.pressed.connect(func() -> void:
+			dlg.set_meta("settled", true)
 			dlg.queue_free()
 			_begin_session_with_slot(slot_capture))
 		row.add_child(btn)
@@ -624,6 +640,7 @@ func _show_slot_picker() -> void:
 			e_btn.add_theme_color_override("font_color", Color(0.72, 0.80, 0.94, 1))
 			var slot_e: int = slot
 			e_btn.pressed.connect(func() -> void:
+				dlg.set_meta("settled", true)
 				dlg.queue_free()
 				_begin_endless_with_slot(slot_e))
 			e_row.add_child(e_btn)
@@ -635,6 +652,7 @@ func _show_slot_picker() -> void:
 				var slot_r: int = slot
 				retire_btn.pressed.connect(func() -> void:
 					_retire_endless_slot(slot_r)
+					dlg.set_meta("settled", true)
 					dlg.queue_free()
 					_show_slot_picker())
 				e_row.add_child(retire_btn)
@@ -654,7 +672,9 @@ func _confirm_wipe_slot(slot: int, parent_dlg: AcceptDialog) -> void:
 		if FileAccess.file_exists(path):
 			DirAccess.remove_absolute(path)
 		confirm.queue_free()
-		# Refresh the picker.
+		# Refresh the picker. Mark the old one settled so its reopen
+		# guard doesn't fire a second picker on top of this one.
+		parent_dlg.set_meta("settled", true)
 		parent_dlg.queue_free()
 		_show_slot_picker())
 	confirm.canceled.connect(func() -> void: confirm.queue_free())
@@ -1445,6 +1465,47 @@ func _build_ui() -> void:
 	_style_flat_btn(_shelf_button)
 
 
+# Bottom-strip plates (audit): the roster and log sit on the same
+# StyleBoxFlat family as the region folders — the roster carries an
+# agent-amber accent stripe, the log a neutral slate one. Wrapped in
+# code at build time because both areas come from the .tscn.
+func _install_bottom_plates() -> void:
+	var bottom: HBoxContainer = get_node_or_null("VBox/BottomRow") as HBoxContainer
+	if bottom == null:
+		return
+	var roster: Control = bottom.get_node_or_null("AgentScroll") as Control
+	if roster != null:
+		_wrap_in_plate(bottom, roster, Color(0.80, 0.66, 0.30, 0.9))
+	var log_area: Control = bottom.get_node_or_null("LogLabel") as Control
+	if log_area != null:
+		_wrap_in_plate(bottom, log_area, Color(0.42, 0.52, 0.62, 0.6))
+
+
+func _wrap_in_plate(parent: Control, child: Control, accent: Color) -> void:
+	var plate := PanelContainer.new()
+	plate.name = String(child.name) + "Plate"
+	plate.size_flags_horizontal = child.size_flags_horizontal
+	plate.size_flags_vertical = child.size_flags_vertical
+	var sb := StyleBoxFlat.new()
+	sb.bg_color = Color(0.08, 0.09, 0.12, 0.95)
+	sb.border_color = accent
+	sb.set_border_width_all(1)
+	sb.border_width_left = 4
+	sb.set_corner_radius_all(2)
+	sb.content_margin_left = 10
+	sb.content_margin_right = 8
+	sb.content_margin_top = 8
+	sb.content_margin_bottom = 8
+	plate.add_theme_stylebox_override("panel", sb)
+	var idx: int = child.get_index()
+	parent.remove_child(child)
+	parent.add_child(plate)
+	parent.move_child(plate, idx)
+	plate.add_child(child)
+	child.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	child.size_flags_vertical = Control.SIZE_EXPAND_FILL
+
+
 func _style_primary_btn(btn: Button) -> void:
 	if btn == null:
 		return
@@ -1678,8 +1739,19 @@ func _render_tower_strip() -> void:
 		btn.text = "send to tower"
 		btn.focus_mode = Control.FOCUS_NONE
 		btn.add_theme_font_size_override("font_size", 12)
+		_style_flat_btn(btn)
 		btn.pressed.connect(_open_tower_dispatch)
 		tower_row.add_child(btn)
+	# Dispatch cap reads as control state here too (audit): the tower
+	# button disables at 3/3 instead of logging a refusal on click.
+	var tower_btn: Button = tower_row.get_node("TowerBtn") as Button
+	if _dispatches_this_day >= MAX_DISPATCHES_PER_DAY:
+		tower_btn.disabled = true
+		tower_btn.tooltip_text = "%d/%d dispatched today — advance the day." % [
+			MAX_DISPATCHES_PER_DAY, MAX_DISPATCHES_PER_DAY]
+	else:
+		tower_btn.disabled = false
+		tower_btn.tooltip_text = ""
 	var tower_label: Label = tower_row.get_node("TowerLine") as Label
 	var color_map: Dictionary = {
 		"dim":     Color(0.42, 0.42, 0.50, 1),
@@ -1751,11 +1823,19 @@ func _render_region(r_id: String) -> void:
 		var lbl := Button.new()
 		var sev_dots := ""
 		var sev_int: int = int(round(p["severity"]))
-		for i in range(min(sev_int, 9)):
+		# Clamp the dot string so a runaway severity can't stretch the
+		# row — six dots then a "+" (audit: horizontal overflow).
+		for i in range(min(sev_int, 6)):
 			sev_dots += "●"
+		if sev_int > 6:
+			sev_dots += "+"
 		lbl.text = "%s  %s  (effort %.1f)" % [p["title"], sev_dots, p["effort_remaining"]]
 		lbl.alignment = HORIZONTAL_ALIGNMENT_LEFT
 		lbl.flat = true
+		# Long titles trim inside the row instead of pushing the region
+		# panels past the screen edge with four folders open.
+		lbl.clip_text = true
+		lbl.text_overrun_behavior = TextServer.OVERRUN_TRIM_ELLIPSIS
 		lbl.focus_mode = Control.FOCUS_NONE
 		lbl.add_theme_font_size_override("font_size", 12)
 		# Severity reads at a glance: calm tan → amber → alarm red.
@@ -1782,6 +1862,13 @@ func _render_region(r_id: String) -> void:
 			btn.text = "dispatch"
 			btn.focus_mode = Control.FOCUS_NONE
 			btn.add_theme_font_size_override("font_size", 12)
+			_style_flat_btn(btn)
+			# Dispatch cap reads as control state, not as a log line
+			# after the click: the button disables at 3/3.
+			if _dispatches_this_day >= MAX_DISPATCHES_PER_DAY:
+				btn.disabled = true
+				btn.tooltip_text = "%d/%d dispatched today — advance the day." % [
+					MAX_DISPATCHES_PER_DAY, MAX_DISPATCHES_PER_DAY]
 			var r_id_capture: String = String(r_id)
 			var pi_capture: int = int(pi)
 			btn.pressed.connect(func() -> void: _open_dispatch_picker(r_id_capture, pi_capture))
@@ -1866,6 +1953,10 @@ func _render_agent_list() -> void:
 			a["name"], econ, tier_tag, status]
 		btn.alignment = HORIZONTAL_ALIGNMENT_LEFT
 		btn.flat = true
+		# Long roster lines trim inside the strip instead of widening
+		# the bottom row (audit: horizontal overflow).
+		btn.clip_text = true
+		btn.text_overrun_behavior = TextServer.OVERRUN_TRIM_ELLIPSIS
 		btn.focus_mode = Control.FOCUS_NONE
 		btn.add_theme_font_size_override("font_size", 12)
 		btn.size_flags_horizontal = Control.SIZE_EXPAND_FILL
@@ -2269,6 +2360,27 @@ func _open_problem_dossier(region_id: String, problem_index: int) -> void:
 		sh.add_theme_font_size_override("font_size", 12)
 		sh.add_theme_color_override("font_color", Color(0.86, 0.86, 0.86, 1))
 		col.add_child(sh)
+	# Primary action (audit): dispatch straight from the dossier —
+	# closes this modal and opens the picker for the same problem.
+	# Hidden while someone is already on it; disabled at the day cap.
+	if String(p.get("in_progress_by", "")) == "":
+		col.add_child(_dossier_rule())
+		var go_btn := Button.new()
+		go_btn.text = "Dispatch…"
+		go_btn.focus_mode = Control.FOCUS_NONE
+		go_btn.custom_minimum_size = Vector2(160, 36)
+		_style_primary_btn(go_btn)
+		if _dispatches_this_day >= MAX_DISPATCHES_PER_DAY:
+			go_btn.disabled = true
+			go_btn.tooltip_text = "%d/%d dispatched today — advance the day." % [
+				MAX_DISPATCHES_PER_DAY, MAX_DISPATCHES_PER_DAY]
+		var rg_capture: String = region_id
+		var pi_capture: int = problem_index
+		go_btn.pressed.connect(func() -> void:
+			dlg.hide()
+			dlg.queue_free()
+			_open_dispatch_picker(rg_capture, pi_capture))
+		col.add_child(go_btn)
 	dlg.add_to_group("ui")  # F4 sweep catches modals
 	add_child(dlg)
 	dlg.popup_centered()
@@ -2314,6 +2426,7 @@ func _render_todays_dispatches() -> void:
 		btn.focus_mode = Control.FOCUS_NONE
 		btn.custom_minimum_size = Vector2(28, 22)
 		btn.add_theme_font_size_override("font_size", 12)
+		_style_flat_btn(btn)
 		var d_capture: Dictionary = d
 		btn.pressed.connect(func() -> void: _revoke_dispatch(d_capture))
 		row.add_child(btn)
@@ -2540,17 +2653,18 @@ func _open_dispatch_picker(region_id: String, problem_index: int) -> void:
 	var any_eligible := false
 	for a_id in _visible_agents:
 		if not _agents.has(a_id): continue
-		var a: Dictionary = _agents[a_id]
 		var st: Dictionary = _agent_state[a_id]
+		# Agents already on the road show on the board as ↳ tags; the
+		# picker skips them. Everyone else HOME but ineligible renders
+		# as a disabled row that says why (audit: silent ineligibility).
 		if bool(st["on_dispatch"]):
 			continue
-		if a["class"] == "human" and int(st["obligation"]) >= int(a.get("obligation_cap_before_stops_picking_up", 999)):
-			continue
-		var restrictions: Array = a.get("region_restrictions", [])
-		if not restrictions.is_empty() and not restrictions.has(region_id):
-			continue
-		vbox.add_child(_make_dispatch_preview_row(a_id, region_id, problem_index, p, dlg))
-		any_eligible = true
+		var block_reason: String = _agent_dispatch_block_reason(String(a_id), region_id)
+		if block_reason == "":
+			vbox.add_child(_make_dispatch_preview_row(a_id, region_id, problem_index, p, dlg))
+			any_eligible = true
+		else:
+			vbox.add_child(_make_ineligible_agent_row(String(a_id), block_reason))
 	if not any_eligible:
 		var none := Label.new()
 		none.text = "No agents available."
@@ -2693,8 +2807,16 @@ func _make_dispatch_preview_row(agent_id: String, region_id: String,
 	pair_btn.focus_mode = Control.FOCUS_NONE
 	pair_btn.custom_minimum_size = Vector2(96, 26)
 	pair_btn.add_theme_font_size_override("font_size", 12)
-	pair_btn.disabled = _dispatches_this_day + 2 > MAX_DISPATCHES_PER_DAY \
-			or _eligible_pair_partners(agent_id, region_id).is_empty()
+	# Why-not tooltip (audit): the disabled state names its actual
+	# reason — slot math vs partner availability — at build time.
+	var pair_no_slot: bool = _dispatches_this_day + 2 > MAX_DISPATCHES_PER_DAY
+	var pair_partners: Array = _eligible_pair_partners(agent_id, region_id)
+	pair_btn.disabled = pair_no_slot or pair_partners.is_empty()
+	if pair_no_slot:
+		pair_btn.tooltip_text = "A pair burns two dispatch slots — only %d left today." % (
+			MAX_DISPATCHES_PER_DAY - _dispatches_this_day)
+	elif pair_partners.is_empty():
+		pair_btn.tooltip_text = "No eligible partner is free right now."
 	pair_btn.pressed.connect(func() -> void:
 		_open_pair_partner_picker(ag_capture, rg_capture, pi_capture, dlg))
 	bcol.add_child(pair_btn)
@@ -2711,17 +2833,74 @@ func _eligible_pair_partners(agent_id: String, region_id: String) -> Array:
 	for o_id in _visible_agents:
 		if String(o_id) == agent_id or not _agents.has(o_id):
 			continue
-		var o: Dictionary = _agents[o_id]
-		var o_st: Dictionary = _agent_state.get(o_id, {})
-		if bool(o_st.get("on_dispatch", false)):
-			continue
-		if o["class"] == "human" and int(o_st.get("obligation", 0)) >= int(o.get("obligation_cap_before_stops_picking_up", 999)):
-			continue
-		var restrictions: Array = o.get("region_restrictions", [])
-		if not restrictions.is_empty() and not restrictions.has(region_id):
-			continue
-		out.append(String(o_id))
+		# One shared eligibility read: on-dispatch, resting, obligation-
+		# capped and region-restricted agents all filter out here (the
+		# rest breather previously leaked through pair dispatches).
+		if _agent_dispatch_block_reason(String(o_id), region_id) == "":
+			out.append(String(o_id))
 	return out
+
+
+# One-line reason an agent cannot take a NEW dispatch right now.
+# "" = eligible. Shared by the dispatch picker (disabled rows), the
+# pair-partner filter, and the Pair… why-not tooltip, so the four
+# gates can never drift apart again.
+func _agent_dispatch_block_reason(a_id: String, region_id: String) -> String:
+	if not _agents.has(a_id) or not _agent_state.has(a_id):
+		return "unknown agent"
+	var a: Dictionary = _agents[a_id]
+	var st: Dictionary = _agent_state[a_id]
+	if bool(st.get("on_dispatch", false)):
+		return "on dispatch · returns day %d" % int(st.get("return_day", 0))
+	if _agent_is_resting(a_id):
+		var needed: int = int(st.get("home_days_needed", 0))
+		var used: int = int(st.get("home_days_used", 0))
+		return "resting · back day %d" % (_day + maxi(1, needed - used))
+	if String(a.get("class", "")) == "human" \
+			and int(st.get("obligation", 0)) >= int(a.get("obligation_cap_before_stops_picking_up", 999)):
+		return "obligation full (%d/%d) · stopped picking up" % [
+			int(st.get("obligation", 0)),
+			int(a.get("obligation_cap_before_stops_picking_up", 0))]
+	var restrictions: Array = a.get("region_restrictions", [])
+	if not restrictions.is_empty() and not restrictions.has(region_id):
+		var names: PackedStringArray = PackedStringArray()
+		for rr in restrictions:
+			names.append(String(_regions.get(String(rr), {}).get("name", String(rr))))
+		return "works only in %s" % ", ".join(names)
+	return ""
+
+
+# Disabled row in the dispatch picker: an agent who is home but can't
+# take this dispatch, with the one-line reason inline instead of the
+# agent silently vanishing from the list.
+func _make_ineligible_agent_row(agent_id: String, reason: String) -> Control:
+	var a: Dictionary = _agents[agent_id]
+	var panel := PanelContainer.new()
+	var sb := StyleBoxFlat.new()
+	sb.bg_color = Color(0.06, 0.07, 0.10, 0.35)
+	sb.border_color = Color(0.32, 0.42, 0.52, 0.3)
+	sb.set_border_width_all(1)
+	sb.content_margin_left = 6
+	sb.content_margin_right = 6
+	sb.content_margin_top = 4
+	sb.content_margin_bottom = 4
+	panel.add_theme_stylebox_override("panel", sb)
+	var lcol := VBoxContainer.new()
+	lcol.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	panel.add_child(lcol)
+	var name_lbl := Label.new()
+	name_lbl.text = "[%s]  %s" % [
+		"D" if a["class"] == "demon" else "H", String(a["name"])]
+	name_lbl.add_theme_font_size_override("font_size", 12)
+	name_lbl.add_theme_color_override("font_color", Color(0.48, 0.50, 0.54, 1))
+	lcol.add_child(name_lbl)
+	var why := Label.new()
+	why.text = "  " + reason
+	why.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+	why.add_theme_font_size_override("font_size", 12)
+	why.add_theme_color_override("font_color", Color(0.55, 0.50, 0.42, 1))
+	lcol.add_child(why)
+	return panel
 
 
 func _pair_is_ruth_refusal(a_id: String, b_id: String) -> bool:
@@ -3643,6 +3822,7 @@ func _open_stage_modal(d: Dictionary) -> void:
 	col.add_child(body)
 	col.add_child(_dossier_rule())
 	var choices: Array = stage.get("choices", [])
+	var enabled_choices: int = 0
 	for choice_v in choices:
 		var choice: Dictionary = choice_v as Dictionary
 		# BBS-lookup gate: a choice that requires the player to have
@@ -3652,6 +3832,8 @@ func _open_stage_modal(d: Dictionary) -> void:
 		# and the summary names the required thread + board.
 		var requires_thread: String = String(choice.get("requires_bbs_thread", ""))
 		var locked: bool = (requires_thread != "" and not _bbs_read_thread_ids.has(requires_thread))
+		if not locked:
+			enabled_choices += 1
 		var btn := Button.new()
 		btn.text = String(choice.get("label", "(choice)"))
 		if locked:
@@ -3683,6 +3865,31 @@ func _open_stage_modal(d: Dictionary) -> void:
 		btn.pressed.connect(func() -> void:
 			dlg.queue_free()
 			_apply_stage_choice(d_capture, choice_capture))
+	# Engine guard (audit): if every choice is gated — or a stage
+	# shipped with none — inject a fallback so the modal can never
+	# strand the dispatch with zero enabled buttons. The agent holds
+	# position and the same stage fires again tomorrow; no data change.
+	if enabled_choices == 0:
+		var hold_btn := Button.new()
+		hold_btn.text = "Hold position"
+		hold_btn.alignment = HORIZONTAL_ALIGNMENT_LEFT
+		hold_btn.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+		hold_btn.add_theme_font_size_override("font_size", 12)
+		hold_btn.add_theme_color_override("font_color", Color(0.86, 0.96, 0.74, 1))
+		col.add_child(hold_btn)
+		var hold_note := Label.new()
+		hold_note.text = "        wait a day · nothing here is open to %s yet" % agent_name
+		hold_note.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+		hold_note.add_theme_font_size_override("font_size", 12)
+		hold_note.add_theme_color_override("font_color", Color(0.62, 0.78, 0.62, 1))
+		col.add_child(hold_note)
+		var d_hold: Dictionary = d
+		var hold_name: String = agent_name
+		hold_btn.pressed.connect(func() -> void:
+			dlg.queue_free()
+			d_hold["next_stage_day"] = _day + 1
+			_log("[color=#c8e896]Day %d · [b]%s[/b] · holds position.[/color]" % [_day, hold_name])
+			_render())
 	dlg.add_to_group("ui")
 	add_child(dlg)
 	dlg.popup_centered()

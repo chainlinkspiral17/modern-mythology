@@ -56,5 +56,5 @@ theme_override_colors/default_color = Color(0.62, 0.96, 0.62, 1)
 [node name="CmdLine" type="Label" parent="VBox"]
 layout_mode = 2
 text = "> _"
-theme_override_font_sizes/font_size = 11
+theme_override_font_sizes/font_size = 12
 theme_override_colors/font_color = Color(0.42, 0.78, 0.42, 1)
