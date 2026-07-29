@@ -104,6 +104,11 @@ func _rebuild() -> void:
 			Settings.sfx_vol = v
 			AudioMgr.set_bus_volume("SFX", v)
 	))
+	vbox.add_child(_slider_row("VOICE VOLUME", Settings.voice_vol,
+		func(v: float) -> void:
+			Settings.voice_vol = v
+			AudioMgr.set_bus_volume("Voice", v)
+	))
 	vbox.add_child(_slider_row("CONTROLLER RUMBLE", Settings.haptics,
 		func(v: float) -> void:
 			Settings.haptics = v
@@ -116,10 +121,8 @@ func _rebuild() -> void:
 	vbox.add_child(_rule())
 
 	# ── MISC ──────────────────────────────────────────────────────────────────
-	vbox.add_child(_toggle_row("SKIP UNREAD TEXT", Settings.skip_unread,
-		func(v: bool) -> void: Settings.skip_unread = v
-	))
-
+	# ("SKIP UNREAD TEXT" removed 2026-07 — no gameplay code ever read
+	# Settings.skip_unread; the Settings var stays for save compat.)
 	vbox.add_child(_row_label("AUTO ADVANCE"))
 	var aa_options := ["OFF", "1 SEC", "3 SEC", "5 SEC"]
 	var aa_values  := [0, 1000, 3000, 5000]
@@ -342,16 +345,3 @@ func _slider_row(label: String, init_val: float, on_change: Callable) -> VBoxCon
 	)
 	col.add_child(slider)
 	return col
-
-
-func _toggle_row(label: String, init_val: bool, on_change: Callable) -> HBoxContainer:
-	var row := HBoxContainer.new()
-	row.add_theme_constant_override("separation", 8)
-	var lbl := _row_label(label)
-	lbl.size_flags_horizontal = Control.SIZE_EXPAND_FILL
-	row.add_child(lbl)
-	var chk := CheckButton.new()
-	chk.button_pressed = init_val
-	chk.toggled.connect(func(v: bool) -> void: on_change.call(v))
-	row.add_child(chk)
-	return row

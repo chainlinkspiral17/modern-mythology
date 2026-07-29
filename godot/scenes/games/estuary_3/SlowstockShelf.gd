@@ -90,6 +90,10 @@ var _card_scrapbook_btn: Button = null
 var _scrapbook_overlay: Node = null
 var _hovered_id: String = ""
 var _manager_mode_on: bool = false
+# Double-fire guard: once picked has been emitted this shelf stays
+# inert.  Every reopen instantiates a fresh shelf (SlowstockBoot's
+# _open_shelf), so the flag resets with the scene.
+var _boot_fired: bool = false
 
 
 func _ready() -> void:
@@ -563,7 +567,8 @@ func _make_cartridge_slot(entry: Dictionary) -> Control:
 	panel.mouse_exited.connect(func() -> void: _on_cart_unhover(sid))
 	panel.gui_input.connect(func(ev: InputEvent) -> void:
 		if ev is InputEventMouseButton and (ev as InputEventMouseButton).pressed:
-			if unlocked:
+			if unlocked and not _boot_fired:
+				_boot_fired = true
 				var b := get_node_or_null("/root/SFXBank")
 				if b: b.play("cartridge_click")
 				picked.emit(sid, _manager_mode_on))
@@ -711,7 +716,10 @@ func _show_card_empty_note(note: String) -> void:
 
 
 func _on_boot_pressed() -> void:
+	if _boot_fired:
+		return
 	if _hovered_id != "" and _is_unlocked(_hovered_id):
+		_boot_fired = true
 		var b := get_node_or_null("/root/SFXBank")
 		if b: b.play("boot")
 		picked.emit(_hovered_id, _manager_mode_on)

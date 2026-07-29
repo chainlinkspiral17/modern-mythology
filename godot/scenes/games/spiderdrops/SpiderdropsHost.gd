@@ -380,6 +380,7 @@ func _award_run_tokens(register: String) -> void:
 	var reg_token := ""
 	match register:
 		"whole": reg_token = "spiderdrops_whole"
+		"held":  reg_token = "spiderdrops_held"
 		"star":  reg_token = "spiderdrops_star"
 		"storm": reg_token = "spiderdrops_storm"
 	if reg_token != "" and not tokens.has(reg_token):

@@ -454,6 +454,84 @@ func _load_scene(scene_id: String, start_at: int = 0) -> void:
 		_run_next()
 
 
+# ── Resume fast-forward ──────────────────────────────────────────
+# Walk nodes [0..target) applying only silent state, mirroring
+# _dispatch's node-type vocabulary: flags and character show/hide in
+# order (flags gate later nodes via when_flag / when_not_flag), the
+# LAST bg / substrate / composition / bgm each (dispatched in their
+# original relative order so composition-suppresses-bg semantics
+# hold), and the LAST [mood:...] / [shot:...] directive prefix seen
+# in narrate/say/think text. Everything display- or time-shaped —
+# text, waits, sfx, choices, interlude, cg, jump, end, videoscene,
+# gallery — is skipped. Saved flags stay authoritative: values loaded
+# from the save are re-asserted after the replay so a replayed early
+# `flag` node can't undo what a later choice set.
+func _fast_forward_to(target: int) -> void:
+	var nodes: Array = _scene_data.get("nodes", [])
+	var authoritative: Dictionary = _flags.duplicate()
+	var last_env: Dictionary = {}   # node type -> last node index
+	var last_mood: String = ""
+	var last_shot: String = ""
+	var limit: int = mini(target, nodes.size())
+	for i in limit:
+		var nv: Variant = nodes[i]
+		if not (nv is Dictionary):
+			continue
+		var n: Dictionary = nv
+		# Same conditional gate as _dispatch.
+		if n.has("when_flag"):
+			var wv: Variant = _flags.get(String(n.get("when_flag")), false)
+			var want: bool
+			if n.has("is"):
+				want = str(wv) == str(n.get("is"))
+			elif wv is String:
+				want = String(wv) != ""
+			else:
+				want = bool(wv)
+			if not want:
+				continue
+		if n.has("when_not_flag") and _flags.get(String(n.get("when_not_flag")), false):
+			continue
+		match n.get("t", ""):
+			"show": _do_show(n)
+			"hide": _do_hide(n)
+			"flag": _do_flag(n)
+			"bg", "substrate", "composition", "bgm":
+				last_env[String(n.get("t", ""))] = i
+			"narrate", "say", "think":
+				# Remember only the last mood/shot direction seen.
+				var text: String = _s(n, "text")
+				if text.begins_with("["):
+					while true:
+						var m := _direct_rx.search(text)
+						if m == null:
+							break
+						var arg: String = m.get_string(2).strip_edges()
+						match m.get_string(1):
+							"mood": last_mood = arg
+							"shot": last_shot = arg
+						text = text.substr(m.get_end(0))
+			_:
+				pass
+	# Environment nodes in original relative order.
+	var env_indices: Array = last_env.values()
+	env_indices.sort()
+	for idx_v in env_indices:
+		var n2: Dictionary = nodes[int(idx_v)]
+		match n2.get("t", ""):
+			"bg":          _do_bg(n2)
+			"substrate":   _do_substrate(n2)
+			"composition": _do_composition(n2)
+			"bgm":         _do_bgm(n2)
+	if _director != null:
+		if last_shot != "":
+			_director.call("apply_shot", last_shot)
+		if last_mood != "":
+			_director.call("apply_mood", last_mood)
+	# Save-file flags win over replayed flag nodes.
+	_flags.merge(authoritative, true)
+
+
 # Tell AudioMgr which catalog tracks belong to the current chapter.
 func _on_track_unlocked(_src: String, title: String) -> void:
 	if _toast != null:
@@ -1058,13 +1136,28 @@ func _process(delta: float) -> void:
 	if _paused:
 		return
 	_tick_reading_comfort(delta)
-	if _auto_timer > 0.0:
+	# Voiced/auto-advance timer honors the same modal fences as
+	# _tick_reading_comfort — it must not fire through a transition,
+	# photo mode, the backlog, a choice, an interlude, or a slowstick
+	# overlay. The timer HOLDS while fenced (no decrement) so the
+	# advance resumes cleanly when the modal clears.
+	if _auto_timer > 0.0 and _can_timed_advance():
 		_auto_timer -= delta
 		if _auto_timer <= 0.0:
 			_auto_timer = 0.0
 			if not AudioMgr.is_voice_playing():
 				_advance()
 	_apply_bg_motion(delta)
+
+
+func _can_timed_advance() -> bool:
+	if _transition_lock or _photo_on or _backlog_overlay != null:
+		return false
+	if _choices != null and _choices.visible:
+		return false
+	if _interlude != null and _interlude.visible:
+		return false
+	return get_tree().get_first_node_in_group("vn_input_blocker") == null
 
 
 func _toggle_auto_mode() -> void:
@@ -1178,6 +1271,18 @@ func _vn_debug_overlay_visible() -> bool:
 func _input(event: InputEvent) -> void:
 	if _paused:
 		return
+	# Cursor wake is not VN chrome — it stays above the modal fence
+	# so the pointer still un-hides while a slowstick is open.
+	if event is InputEventMouseMotion and not _photo_on:
+		_cursor_idle_t = 0.0
+		if Input.get_mouse_mode() == Input.MOUSE_MODE_HIDDEN:
+			Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+	# Modal fence FIRST — while a full-screen overlay (the cabin TV /
+	# slowstock library) owns the keyboard, no VN hotkey (F6/A/H) may
+	# toggle chrome underneath. Photo mode keeps its swallow: when
+	# photo is itself on, F6 below stays reachable to exit it.
+	if not _photo_on and get_tree().get_first_node_in_group("vn_input_blocker") != null:
+		return
 	# ── PHOTO MODE (F6) · chrome off, bars on, cursor gone. While
 	# on, every other input is swallowed so framing a shot can't
 	# advance the story. Deliberately not part of the F4 sweep — the
@@ -1189,14 +1294,14 @@ func _input(event: InputEvent) -> void:
 		return
 	if _photo_on:
 		return
-	if event is InputEventMouseMotion:
-		_cursor_idle_t = 0.0
-		if Input.get_mouse_mode() == Input.MOUSE_MODE_HIDDEN:
-			Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 	if event is InputEventKey and event.pressed and not event.echo \
 			and (event as InputEventKey).keycode == KEY_A:
-		_toggle_auto_mode()
-		get_viewport().set_input_as_handled()
+		# AUTO toggle is ignored mid-transition and while a choice is
+		# up — flipping hands-free mode there could advance past the
+		# decision or fight the veil.
+		if not _transition_lock and not _choices.visible:
+			_toggle_auto_mode()
+			get_viewport().set_input_as_handled()
 		return
 	# ── THE BACKLOG (H or wheel-up) · everything read, re-readable.
 	var wheel_up: bool = event is InputEventMouseButton and event.pressed \
@@ -1367,8 +1472,10 @@ func _toggle_photo_mode() -> void:
 			add_child(bar)
 			_photo_bars.append(bar)
 	if _photo_on:
+		# Entering the frame: the backlog is chrome too — drop it.
+		_close_backlog()
 		_photo_restore = {}
-		for n in [_dlg, _hud, _choices]:
+		for n in [_dlg, _hud, _choices, _auto_chip]:
 			if n != null and is_instance_valid(n):
 				_photo_restore[n.get_instance_id()] = n.visible
 				n.visible = false
@@ -1376,7 +1483,7 @@ func _toggle_photo_mode() -> void:
 			(b as ColorRect).visible = true
 		Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
 	else:
-		for n2 in [_dlg, _hud, _choices]:
+		for n2 in [_dlg, _hud, _choices, _auto_chip]:
 			if n2 != null and is_instance_valid(n2) and _photo_restore.has(n2.get_instance_id()):
 				n2.visible = bool(_photo_restore[n2.get_instance_id()])
 		for b2 in _photo_bars:

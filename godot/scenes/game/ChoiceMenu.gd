@@ -99,7 +99,12 @@ func present(prompt: String, opts: Array, callback: Callable) -> void:
 	_prompt_label.text    = prompt
 	_prompt_label.visible = prompt != ""
 
+	# Remove stale options from the tree BEFORE building. queue_free
+	# alone leaves the dying buttons as children until end of frame,
+	# so get_child(0) below would grab a corpse for focus, and the
+	# stagger loop / number keys would count them too.
 	for child in _vbox.get_children():
+		_vbox.remove_child(child)
 		child.queue_free()
 
 	for i in opts.size():
@@ -159,7 +164,7 @@ func present(prompt: String, opts: Array, callback: Callable) -> void:
 		_vbox.add_child(btn)
 
 	if _vbox.get_child_count() > 0:
-		_vbox.get_child(0).grab_focus()
+		(_vbox.get_child(0) as Control).grab_focus()
 
 	# Staggered entrance — options settle in like a dealt hand
 	# instead of popping as a block.

@@ -253,8 +253,11 @@ func _begin_evening() -> void:
 	if n >= 6:
 		_run_aftermath()
 		return
-	_tended_tonight = []
-	_actions_left = _sheets() if n == 5 else 3
+	# Restore the evening budget from the save if a quit happened
+	# mid-evening — otherwise a resume would refresh _actions_left
+	# (unlimited-actions exploit).  Both keys are cleared at evening end.
+	_tended_tonight = (_state.get("tended_tonight", []) as Array)
+	_actions_left = int(_state.get("actions_left", _sheets() if n == 5 else 3))
 	var e := _evening_def(n)
 	_say(String(e.get("intro", "")))
 	var wx := _weather(n)
@@ -345,6 +348,13 @@ func _render() -> void:
 		_wash_btn.tooltip_text = "The frost will come, and the sheets only cover what you have ready."
 
 
+func _persist_actions() -> void:
+	# Written into _state on every action so a mid-evening quit/resume
+	# keeps the evening's remaining budget instead of refreshing it.
+	_state["actions_left"] = _actions_left
+	_state["tended_tonight"] = _tended_tonight
+
+
 func _find_bed(bid: String) -> Dictionary:
 	for b_v in _beds:
 		if String((b_v as Dictionary)["id"]) == bid:
@@ -384,6 +394,7 @@ func _on_bed_pressed(bid: String) -> void:
 		var need_line := String((_data.get("need_lines", {}) as Dictionary).get(need, ""))
 		if sfx: sfx.play("coin" if need == "water" else "card_place", 0.35)
 		_say("%s · %s." % [String(bed.get("name", bid)), need_line])
+	_persist_actions()
 	_render()
 
 
@@ -391,6 +402,7 @@ func _on_wash() -> void:
 	if _actions_left <= 0 or _sheets() >= SHEETS_MAX:
 		return
 	_actions_left -= 1
+	_persist_actions()
 	_state["sheets"] = _sheets() + 1
 	_say("You bring a sheet up from the cellar, wash it at the outside tap, and pin it on the line while the light lasts. It will smell like this evening when it matters.")
 	var sfx := get_node_or_null("/root/SFXBank")
@@ -402,6 +414,7 @@ func _on_sit() -> void:
 	if _actions_left <= 0:
 		return
 	_actions_left -= 1
+	_persist_actions()
 	_state["sits"] = int(_state.get("sits", 0)) + 1
 	var last := String(_state.get("last_tended", ""))
 	var heard: Array = _state.get("stories_heard", [])
@@ -458,6 +471,10 @@ func _on_end_evening() -> void:
 					_say("%s has gone quiet. Nobody says anything about it, which is how you know it was noticed." % String((b_v as Dictionary).get("name", bid)))
 		_state["conditions"] = conditions
 		_state["missed"] = missed
+	# The evening is over: drop the mid-evening budget keys so the next
+	# evening starts fresh.
+	_state.erase("actions_left")
+	_state.erase("tended_tonight")
 	_state["evening"] = n + 1
 	evening_done.emit(_state)
 	_begin_evening()

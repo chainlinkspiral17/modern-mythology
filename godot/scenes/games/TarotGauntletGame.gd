@@ -254,6 +254,12 @@ var _view_mode: String = "fp"
 var _last_rendered_time: int = -1
 var _last_rendered_inertia: int = -1
 var _last_rendered_sanity: int = -1
+var _last_rendered_stagnation: int = -1
+var _last_rendered_doubt: int = -1
+# The per-arcana third-slot currency (Inspiration / Insight / Harvest
+# / Authority / Doctrine / Verb / Fuel) — tracked so _inspiration_label
+# pulses on change like the Fool's stats do.
+var _last_rendered_arcana_stat: int = -1
 # Every space the player has stood on at least once. Used by composite
 # connect_via conditions (e.g. stranger requires stood_on:card_wall).
 var _places_visited: Dictionary = {}
@@ -1444,6 +1450,8 @@ func _build_ui() -> void:
 	_doubt_label.visible = false
 	_inspiration_label.visible = false
 	_pieces_label.visible = false
+	# Bindle chrome is Fool-only — the other arcanas have no bindle.
+	_bindle_label.visible = (_arcana_id == "fool")
 	# Push the Leave button to the far right of the top bar so it
 	# isn't sitting next to MOVE / ADVANCE where it gets misclicked.
 	var top_spacer := Control.new()
@@ -1606,6 +1614,18 @@ func _build_ui() -> void:
 	var v_vb := VBoxContainer.new()
 	v_panel.add_child(v_vb)
 	v_vb.add_child(_make_pane_header("VISITORS", "visitors"))
+	# Live goal readout — one clamped line, rebuilt every _render from
+	# the setup's honored win keys vs live state.
+	_goal_label = RichTextLabel.new()
+	_goal_label.bbcode_enabled = true
+	_goal_label.fit_content = false
+	_goal_label.scroll_active = false
+	_goal_label.clip_contents = true
+	_goal_label.autowrap_mode = TextServer.AUTOWRAP_OFF
+	_goal_label.custom_minimum_size = Vector2(0, 18)
+	_goal_label.add_theme_color_override("default_color", C_TEXT)
+	_goal_label.add_theme_font_size_override("normal_font_size", 12)
+	v_vb.add_child(_goal_label)
 	var v_scroll := ScrollContainer.new()
 	v_scroll.size_flags_vertical = Control.SIZE_EXPAND_FILL
 	v_scroll.horizontal_scroll_mode = ScrollContainer.SCROLL_MODE_DISABLED
@@ -1626,7 +1646,13 @@ func _build_ui() -> void:
 	grav_vb.add_child(_make_pane_header("GRAVITY", "gravity"))
 	_gravity_card_label = RichTextLabel.new()
 	_gravity_card_label.bbcode_enabled = true
-	_gravity_card_label.fit_content = true
+	# Clamped to a single line — fit_content let this bar grow and
+	# steal height from the VISITORS pane above it.
+	_gravity_card_label.fit_content = false
+	_gravity_card_label.scroll_active = false
+	_gravity_card_label.clip_contents = true
+	_gravity_card_label.autowrap_mode = TextServer.AUTOWRAP_OFF
+	_gravity_card_label.custom_minimum_size = Vector2(0, 20)
 	_gravity_card_label.add_theme_color_override("default_color", C_TEXT)
 	_gravity_card_label.add_theme_font_size_override("normal_font_size", 12)
 	_gravity_card_label.text = "[color=#7c8398]Deck — 12 remaining · click ⛶ for details[/color]"
@@ -1640,10 +1666,15 @@ func _build_ui() -> void:
 	var inv_vb := VBoxContainer.new()
 	inv_vb.add_theme_constant_override("separation", 2)
 	inv_panel.add_child(inv_vb)
-	inv_vb.add_child(_make_pane_header("INVENTORY / BINDLE", "inventory"))
+	inv_vb.add_child(_make_pane_header("INVENTORY / BINDLE" if _arcana_id == "fool" else "INVENTORY", "inventory"))
 	_inv_summary_label = RichTextLabel.new()
 	_inv_summary_label.bbcode_enabled = true
-	_inv_summary_label.fit_content = true
+	# Clamped to a single line (see gravity bar note above).
+	_inv_summary_label.fit_content = false
+	_inv_summary_label.scroll_active = false
+	_inv_summary_label.clip_contents = true
+	_inv_summary_label.autowrap_mode = TextServer.AUTOWRAP_OFF
+	_inv_summary_label.custom_minimum_size = Vector2(0, 20)
 	_inv_summary_label.add_theme_color_override("default_color", C_TEXT)
 	_inv_summary_label.add_theme_font_size_override("normal_font_size", 12)
 	_inv_summary_label.text = "[color=#7c8398](nothing yet — search a pile)[/color]"
@@ -2219,12 +2250,24 @@ func _open_visitor_view(vid: String) -> void:
 		ph.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 		ph.size_flags_vertical = Control.SIZE_EXPAND_FILL
 		art_panel.add_child(ph)
-	# Right: bio + status + per-step beats
+	# Right: bio + status + per-step beats. The content can exceed the
+	# fixed panel height (long sequences + order block), so it lives
+	# in a ScrollContainer — same pattern as _open_pane_modal — with
+	# the close button pinned below the scroll so it's always visible.
+	var info_col := VBoxContainer.new()
+	info_col.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	info_col.size_flags_vertical = Control.SIZE_EXPAND_FILL
+	info_col.add_theme_constant_override("separation", 10)
+	root.add_child(info_col)
+	var info_scroll := ScrollContainer.new()
+	info_scroll.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	info_scroll.size_flags_vertical = Control.SIZE_EXPAND_FILL
+	info_scroll.horizontal_scroll_mode = ScrollContainer.SCROLL_MODE_DISABLED
+	info_col.add_child(info_scroll)
 	var info := VBoxContainer.new()
 	info.size_flags_horizontal = Control.SIZE_EXPAND_FILL
-	info.size_flags_vertical = Control.SIZE_EXPAND_FILL
 	info.add_theme_constant_override("separation", 10)
-	root.add_child(info)
+	info_scroll.add_child(info)
 	# Name + mood
 	var name_lbl := Label.new()
 	name_lbl.text = String(v.get("name", vid)) if arrived else String(v.get("placeholder_name", "someone"))
@@ -2346,16 +2389,14 @@ func _open_visitor_view(vid: String) -> void:
 			if not ord_item.is_empty():
 				order_rt.text = "[b]ORDER:[/b]  %s\n[color=#7c8398][i]%s[/i][/color]" % [ord_item.get("title", ord_id), ord_item.get("flavor", "")]
 		info.add_child(order_rt)
-	# Spacer + close button
-	var spacer := Control.new()
-	spacer.size_flags_vertical = Control.SIZE_EXPAND_FILL
-	info.add_child(spacer)
+	# Close button — outside the scroll (in info_col) so it stays
+	# visible however long the scrolled content gets.
 	var close := Button.new()
 	close.text = "✕  Close  (Esc)"
 	close.add_theme_font_size_override("font_size", 13)
 	close.custom_minimum_size = Vector2(140, 32)
 	close.pressed.connect(_close_pane_modal.bind(dim))
-	info.add_child(close)
+	info_col.add_child(close)
 
 
 func _open_card_view(cid: String, mode: String) -> void:
@@ -2422,12 +2463,23 @@ func _open_card_view(cid: String, mode: String) -> void:
 		ph.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 		art_panel.add_child(ph)
 
-	# Right column: info + action buttons
+	# Right column: info (scrollable — long effect summaries can exceed
+	# the fixed panel height; same pattern as _open_pane_modal) with
+	# the action row pinned below the scroll, always visible.
+	var info_col := VBoxContainer.new()
+	info_col.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	info_col.size_flags_vertical = Control.SIZE_EXPAND_FILL
+	info_col.add_theme_constant_override("separation", 10)
+	root.add_child(info_col)
+	var info_scroll := ScrollContainer.new()
+	info_scroll.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	info_scroll.size_flags_vertical = Control.SIZE_EXPAND_FILL
+	info_scroll.horizontal_scroll_mode = ScrollContainer.SCROLL_MODE_DISABLED
+	info_col.add_child(info_scroll)
 	var info := VBoxContainer.new()
 	info.size_flags_horizontal = Control.SIZE_EXPAND_FILL
-	info.size_flags_vertical = Control.SIZE_EXPAND_FILL
 	info.add_theme_constant_override("separation", 10)
-	root.add_child(info)
+	info_scroll.add_child(info)
 
 	var title := Label.new()
 	title.text = card.get("title", cid)
@@ -2448,6 +2500,21 @@ func _open_card_view(cid: String, mode: String) -> void:
 	else:
 		cost_line.text = "[b]Cost:[/b] %d Time" % cost
 	info.add_child(cost_line)
+
+	# Why-blocked line — when the Play button below is disabled, say
+	# why right here instead of leaving the player to hover-hunt.
+	if mode == "play":
+		var why_blocked_view: String = _why_blocked_play(card)
+		if why_blocked_view != "":
+			var blocked_rt := RichTextLabel.new()
+			blocked_rt.bbcode_enabled = true
+			blocked_rt.fit_content = true
+			blocked_rt.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+			blocked_rt.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+			blocked_rt.add_theme_color_override("default_color", Color(1.0, 0.50, 0.39))
+			blocked_rt.add_theme_font_size_override("normal_font_size", 12)
+			blocked_rt.text = "[b]Can't play:[/b] %s" % why_blocked_view
+			info.add_child(blocked_rt)
 
 	var flavor_label: String = String(card.get("flavor", ""))
 	if flavor_label != "":
@@ -2481,15 +2548,11 @@ func _open_card_view(cid: String, mode: String) -> void:
 	effects.text = summary
 	info.add_child(effects)
 
-	# Spacer pushes the action row to the bottom
-	var spacer := Control.new()
-	spacer.size_flags_vertical = Control.SIZE_EXPAND_FILL
-	info.add_child(spacer)
-
-	# Action row
+	# Action row — outside the scroll (in info_col) so Play / Buy /
+	# Cancel stay reachable however long the scrolled content gets.
 	var actions := HBoxContainer.new()
 	actions.add_theme_constant_override("separation", 10)
-	info.add_child(actions)
+	info_col.add_child(actions)
 	var cancel := Button.new()
 	cancel.text = "✕  Cancel  (Esc)"
 	cancel.add_theme_font_size_override("font_size", 13)
@@ -4423,6 +4486,27 @@ func _position_meeples() -> void:
 
 # ── Hand + visitor rendering ─────────────────────────────────────────
 
+# Why a hand card can't be played right now — the single source for
+# the hand tooltip, the card-view modal line, and the blocked-play
+# toast. Empty string when the card is playable.
+func _why_blocked_play(card: Dictionary) -> String:
+	if _game_over:
+		return "(the run is over)"
+	if _phase != Phase.ACTION:
+		return "(Action phase only — currently %s)" % Phase.keys()[_phase]
+	var time_cost: int = int(card.get("time_cost", 1))
+	if _time < time_cost:
+		return "(needs %d Time; you have %d)" % [time_cost, _time]
+	if not _can_play_card(card):
+		var wb_cid: String = String(card.get("id", ""))
+		if wb_cid == "leap":
+			return "(LEAP needs every win condition met — see the GOAL line)"
+		if wb_cid == "bundle":
+			return "(BUNDLE needs stick + cloth + a contents item)"
+		return "(requirements not met — see effect summary)"
+	return ""
+
+
 func _render_hand() -> void:
 	for c in _hand_box.get_children():
 		c.queue_free()
@@ -4439,14 +4523,7 @@ func _render_hand() -> void:
 		var is_disabled: bool = (not playable) or (_phase != Phase.ACTION) or _game_over
 		# Tooltip leads with a "why not" line when the card is
 		# disabled, so the player isn't left guessing.
-		var why_blocked: String = ""
-		if is_disabled:
-			if _phase != Phase.ACTION:
-				why_blocked = "(Action phase only — currently %s)" % Phase.keys()[_phase]
-			elif _time < time_cost:
-				why_blocked = "(needs %d Time; you have %d)" % [time_cost, _time]
-			elif not playable:
-				why_blocked = "(requirements not met — see effect summary)"
+		var why_blocked: String = _why_blocked_play(card) if is_disabled else ""
 		btn.tooltip_text = "%s — costs %d Time%s\n\n%s\n\n%s\n\n(Click to preview + play.)" % [
 			card.get("title", cid), time_cost,
 			("\n" + why_blocked) if why_blocked != "" else "",
@@ -4865,6 +4942,14 @@ func _render_inventory() -> void:
 	# ⛶ modal (see _build_inventory_modal_body).
 	if _inv_summary_label == null:
 		return
+	# Bindle chrome is Fool-only — the other arcanas get a plain
+	# item-count summary.
+	if _arcana_id != "fool":
+		if _inventory.is_empty():
+			_inv_summary_label.text = "[color=#7c8398](nothing yet — search a pile)[/color]"
+		else:
+			_inv_summary_label.text = "[color=#c8a268]%d item(s) carried[/color] · click ⛶ for details" % _inventory.size()
+		return
 	if _bindle_assembled:
 		_inv_summary_label.text = "[color=#ffd07a][b]BINDLE assembled[/b][/color] · %d item(s) carried · click ⛶ for details" % _inventory.size()
 		return
@@ -4889,6 +4974,25 @@ func _render_inventory() -> void:
 func _render_visitors() -> void:
 	for c in _visitors_box.get_children():
 		c.queue_free()
+	# "VISITORS · n here / m total" counts in the pane header. Counts
+	# follow the same visibility rules as the rows below (hidden
+	# conditionals and dormant unscheduled visitors don't leak).
+	var v_here: int = 0
+	var v_total: int = 0
+	for cvid in _visitors_def:
+		var cv: Dictionary = _visitors_def[cvid]
+		var cst: Dictionary = _visitors_state.get(cvid, {})
+		var c_arrived: bool = cst.get("arrived", false)
+		if cv.get("hidden_until_arrived", false) and not c_arrived:
+			continue
+		if not c_arrived and not cst.has("scheduled_turn") and not cst.get("consumed", false):
+			continue
+		v_total += 1
+		if c_arrived and not cst.get("consumed", false):
+			v_here += 1
+	var v_title: Label = _pane_title_labels.get("visitors") as Label
+	if v_title != null:
+		v_title.text = "  VISITORS · %d here / %d total" % [v_here, v_total]
 	for vid in _visitors_def:
 		var v: Dictionary = _visitors_def[vid]
 		var st: Dictionary = _visitors_state.get(vid, {})
@@ -5104,10 +5208,58 @@ func _build_phase_help_modal_body() -> Control:
 	llr.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	llr.add_theme_color_override("default_color", C_TEXT)
 	llr.add_theme_font_size_override("normal_font_size", 12)
-	llr.text = "[b]WIN:[/b] assemble the BUNDLE (stick + cloth + a contents item), connect with at least 3 visitors, keep Faith adjacent, and play LEAP at an open threshold while Inertia is under 7.\n\n[b]LOSS:[/b] Inertia reaches 12 (the 24-hour diner of the soul) [i]or[/i] 3 visitors stay claimed and get consumed."
+	llr.text = "[b]WIN:[/b] %s\n\n[b]LOSS:[/b] %s" % [_win_summary_text(), _loss_summary_text()]
 	lvb.add_child(llr)
 	vb.add_child(legend)
 	return vb
+
+
+# Build the WIN legend line from the keys the engine actually honors
+# in this setup's win_conditions (see _win_conditions_met and
+# _force_end_of_shift_check) instead of hardcoded Fool text. If the
+# setup carries an authored description, that wins.
+func _win_summary_text() -> String:
+	var wc: Dictionary = _setup.get("win_conditions", {})
+	var authored: String = String(wc.get("description", _setup.get("win_description", "")))
+	if authored != "":
+		return authored
+	var parts: PackedStringArray = []
+	if _arcana_id == "fool":
+		parts.append("assemble the BUNDLE (stick + cloth + a contents item)")
+	parts.append("connect with at least %d visitors" % int(wc.get("require_visitors_connected_min", 3)))
+	if wc.has("require_hard_mood_connections_min"):
+		parts.append("%d of them hard-mood" % int(wc.get("require_hard_mood_connections_min", 0)))
+	if wc.has("require_orders_delivered_min"):
+		parts.append("deliver at least %d orders by end of shift" % int(wc.get("require_orders_delivered_min", 0)))
+	if wc.has("require_pieces_completed_min"):
+		parts.append("complete at least %d pieces" % int(wc.get("require_pieces_completed_min", 0)))
+	if _arcana_id == "fool":
+		parts.append("keep Inertia under %d" % int(wc.get("require_inertia_below", 7)))
+		parts.append("keep Faith adjacent")
+		parts.append("play LEAP at an open threshold")
+	else:
+		if wc.has("require_doubt_below"):
+			parts.append("keep Doubt under %d" % int(wc.get("require_doubt_below", 99)))
+		if wc.has("require_stagnation_below"):
+			parts.append("keep Stagnation under %d" % int(wc.get("require_stagnation_below", 99)))
+		if bool(wc.get("require_threshold_space", true)):
+			parts.append("finish at an open threshold")
+	return ", ".join(parts) + "."
+
+
+# LOSS legend line from the setup's loss_conditions (as honored by
+# _check_game_end and the per-arcana loss triggers).
+func _loss_summary_text() -> String:
+	var lc: Dictionary = _setup.get("loss_conditions", {})
+	var parts: PackedStringArray = []
+	if lc.has("inertia_max") or _arcana_id == "fool":
+		parts.append("Inertia reaches %d (the 24-hour diner of the soul)" % int(lc.get("inertia_max", 12)))
+	if lc.has("stagnation_max"):
+		parts.append("Stagnation reaches %d" % int(lc.get("stagnation_max", 12)))
+	if lc.has("doubt_max"):
+		parts.append("Doubt reaches %d" % int(lc.get("doubt_max", 7)))
+	parts.append("%d visitors stay claimed and get consumed" % int(lc.get("visitors_claimed_max", 3)))
+	return " [i]or[/i] ".join(parts) + "."
 
 
 func _build_log_modal_body() -> Control:
@@ -5408,11 +5560,43 @@ func _render() -> void:
 		_pulse_label(_inertia_label, Color(0.49, 1.0, 0.69) if _inertia < _last_rendered_inertia else Color(1.0, 0.50, 0.39))
 	if _last_rendered_sanity != -1 and _sanity != _last_rendered_sanity:
 		_pulse_label(_sanity_label, Color(0.49, 1.0, 0.69) if _sanity > _last_rendered_sanity else Color(1.0, 0.50, 0.39))
+	# Major-arcana stats pulse too (Stagnation / Doubt inverted like
+	# Inertia: rising is bad; the third-slot currency rising is good).
+	if _last_rendered_stagnation != -1 and _stagnation != _last_rendered_stagnation:
+		_pulse_label(_stagnation_label, Color(0.49, 1.0, 0.69) if _stagnation < _last_rendered_stagnation else Color(1.0, 0.50, 0.39))
+	if _last_rendered_doubt != -1 and _doubt != _last_rendered_doubt:
+		_pulse_label(_doubt_label, Color(0.49, 1.0, 0.69) if _doubt < _last_rendered_doubt else Color(1.0, 0.50, 0.39))
+	var arcana_stat: int = 0
+	if is_magician:
+		arcana_stat = _inspiration
+	elif is_priestess:
+		arcana_stat = _insight
+	elif is_empress:
+		arcana_stat = _harvest
+	elif is_emperor:
+		arcana_stat = _authority
+	elif is_hierophant:
+		arcana_stat = _doctrine
+	elif is_lovers:
+		arcana_stat = _verb
+	elif is_chariot:
+		arcana_stat = _fuel
+	if _last_rendered_arcana_stat != -1 and arcana_stat != _last_rendered_arcana_stat:
+		_pulse_label(_inspiration_label, Color(0.49, 1.0, 0.69) if arcana_stat > _last_rendered_arcana_stat else Color(1.0, 0.50, 0.39))
 	_last_rendered_time = _time
 	_last_rendered_inertia = _inertia
 	_last_rendered_sanity = _sanity
+	_last_rendered_stagnation = _stagnation
+	_last_rendered_doubt = _doubt
+	_last_rendered_arcana_stat = arcana_stat
 	_player_pos_label.text = "at: " + _player_pos
-	_bindle_label.text = "Bindle: " + _bindle_display()
+	# Bindle chrome is Fool-only.
+	_bindle_label.visible = (_arcana_id == "fool")
+	if _bindle_label.visible:
+		_bindle_label.text = "Bindle: " + _bindle_display()
+	# Live goal readout in the VISITORS pane header area.
+	if _goal_label != null:
+		_goal_label.text = _goal_line_text()
 	# Rebuild the board so the » chevron + highlight color follow
 	# the player to their new space. Cheap (~20 labels).
 	_render_board()
@@ -5422,6 +5606,26 @@ func _render() -> void:
 	_render_visitors()
 	_render_inventory()
 	_update_advance_label()
+
+
+# One-line "GOAL · connect n/m · inertia < k" readout built from the
+# honored win keys vs live state. Fool tracks Inertia; the majors
+# track Doubt / Stagnation ceilings instead.
+func _goal_line_text() -> String:
+	var wc: Dictionary = _setup.get("win_conditions", {})
+	var parts: PackedStringArray = []
+	var need_connect: int = int(wc.get("require_visitors_connected_min", 3))
+	parts.append("connect %d/%d" % [_connections_made.size(), need_connect])
+	if wc.has("require_orders_delivered_min"):
+		parts.append("orders %d/%d" % [int(_flags.get("orders_delivered", 0)), int(wc.get("require_orders_delivered_min", 0))])
+	if _arcana_id == "fool":
+		parts.append("inertia %d < %d" % [_inertia, int(wc.get("require_inertia_below", 7))])
+	else:
+		if wc.has("require_doubt_below"):
+			parts.append("doubt %d < %d" % [_doubt, int(wc.get("require_doubt_below", 99))])
+		if wc.has("require_stagnation_below"):
+			parts.append("stagnation %d < %d" % [_stagnation, int(wc.get("require_stagnation_below", 99))])
+	return "  [color=#c8a268]GOAL[/color] · " + " · ".join(parts)
 
 
 func _bindle_display() -> String:
@@ -5977,7 +6181,11 @@ func _on_play_card(cid: String) -> void:
 		return
 	var card: Dictionary = _action_cards.get(cid, {})
 	if not _can_play_card(card):
-		_log_line("[i]can't play %s now[/i]" % card.get("title", cid))
+		var why: String = _why_blocked_play(card)
+		if why == "":
+			why = "(can't play it right now)"
+		_log_line("[i]can't play %s now %s[/i]" % [card.get("title", cid), why])
+		_show_toast("Can't play [b]%s[/b]  %s" % [String(card.get("title", cid)), why], "#ff8060")
 		return
 	# Achievement bookkeeping — count cards played per run.
 	_cards_played_this_run[cid] = int(_cards_played_this_run.get(cid, 0)) + 1
@@ -5994,6 +6202,7 @@ func _on_play_card(cid: String) -> void:
 		_log_line("[color=#ff8060][i]the counter knows: +1 Time on %s[/i][/color]" % card.get("title", cid))
 	if _time < cost:
 		_log_line("[i]not enough Time to play %s (need %d, have %d)[/i]" % [card.get("title", cid), cost, _time])
+		_show_toast("Not enough Time for [b]%s[/b] (need %d, have %d)" % [String(card.get("title", cid)), cost, _time], "#ff8060")
 		return
 	_time -= cost
 	_played_this_turn.append(cid)
@@ -7698,6 +7907,15 @@ func _resolve_framework_card(card: Dictionary) -> void:
 	var result: String = roll["result"]
 	var line: String = roll["line"]
 	_log_line("[i]threshold roll: %s → %s[/i]" % [line, result])
+	# Surface the roll where the player is looking — the log line
+	# alone was easy to miss. Symbols + outcome, colored by result.
+	match result:
+		"ss":
+			_show_toast("threshold roll  %s  →  [b]★★ double success[/b]" % line, "#7cffb0")
+		"s":
+			_show_toast("threshold roll  %s  →  [b]★ success[/b]" % line, "#7cffb0")
+		_:
+			_show_toast("threshold roll  %s  →  [b]✕ failure[/b]" % line, "#ff8060")
 	# Apply outcome — log flavor AND apply mechanical effect.
 	match result:
 		"ss":
@@ -7905,6 +8123,33 @@ func _on_advance() -> void:
 			_show_phase_banner("──  TURN %d  ── ACTION" % (_turn + 1))
 			_phase_action()
 	_render()
+	_maybe_schedule_auto_advance()
+
+
+# DRIFT and UPKEEP are decision-free — after their resolution +
+# banner beat, auto-advance through the same path as the Advance
+# button. SHADOW stays manual (the player should read the Gravity
+# card). The serial guards against double-advance: a click during
+# the timer runs _on_advance itself, which schedules a NEW timer
+# (bumping the serial) and invalidates the pending one.
+var _auto_advance_serial: int = 0
+
+func _maybe_schedule_auto_advance() -> void:
+	if _game_over:
+		return
+	if _phase != Phase.DRIFT and _phase != Phase.UPKEEP:
+		return
+	_auto_advance_serial += 1
+	var my_serial: int = _auto_advance_serial
+	var phase_at_schedule: int = int(_phase)
+	get_tree().create_timer(0.9).timeout.connect(func() -> void:
+		if _game_over or not is_inside_tree():
+			return
+		if my_serial != _auto_advance_serial:
+			return   # a newer schedule (or a manual click) superseded this one
+		if int(_phase) != phase_at_schedule:
+			return   # the player already advanced during the beat
+		_on_advance())
 
 
 # Phase transition banner — slides in from the top center, fades out
@@ -8534,16 +8779,22 @@ func _force_end_of_shift_check() -> void:
 func _check_game_end() -> void:
 	if _game_over:
 		return
-	# Inertia 12
-	if _inertia >= 12:
+	# Honor the setup's authored loss_conditions instead of hardcoded
+	# Fool defaults (12 inertia / 3 claimed). Reversed mode already
+	# tightens visitors_claimed_max in _setup at init time.
+	var lc: Dictionary = _setup.get("loss_conditions", {})
+	# Inertia ceiling
+	var inertia_max: int = int(lc.get("inertia_max", 12))
+	if _inertia >= inertia_max:
 		_trigger_loss("inertia_12")
 		return
-	# Three Visitors claimed
+	# Visitors consumed ceiling
+	var claimed_max: int = int(lc.get("visitors_claimed_max", 3))
 	var consumed := 0
 	for vid in _visitors_state:
 		if _visitors_state[vid].get("consumed", false):
 			consumed += 1
-	if consumed >= 3:
+	if consumed >= claimed_max:
 		_trigger_loss("visitors_claimed_3")
 		return
 

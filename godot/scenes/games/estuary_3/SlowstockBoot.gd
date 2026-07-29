@@ -129,6 +129,12 @@ func _open_stub_screen(stick_id: String) -> void:
 # ─── Signals from children ───────────────────────────────────────
 
 func _on_picked(stick_id: String, manager_mode: bool = false) -> void:
+	# Double-fire guard · a repeated pick (double-click, stacked
+	# signal) must not boot a second host on top of the first.
+	if _host != null and is_instance_valid(_host):
+		return
+	if _stub_screen != null and is_instance_valid(_stub_screen):
+		return
 	if stick_id == "estuary_3":
 		_open_host_estuary_3(manager_mode)
 	elif stick_id == "pirate_summer":

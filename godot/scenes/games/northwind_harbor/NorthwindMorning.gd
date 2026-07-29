@@ -428,7 +428,7 @@ func _render_actions() -> void:
 			_:        b.text = "· listen ·"
 		b.pressed.connect(_do_step.bind(step))
 		_act_col.add_child(b)
-	# bosun fetch · six mornings of hands buys one errand of nose.
+	# bosun fetch · three mornings of hands buys one errand of nose.
 	# a trusted dog will fetch a plain object from the next screen.
 	if int(_state.get("bosun_pets", 0)) >= 3 and not _fetched_this_morning:
 		var loc: Dictionary = _locs.get(_loc_id, {})
@@ -562,7 +562,7 @@ func _bosun_fetch(step: Dictionary) -> void:
 	_state["pockets"] = p
 	_mark_done(String(step["id"]))
 	_minutes += 2
-	_bosun_note.text = "bosun is gone ninety seconds and comes back carrying it like the crown jewels. six mornings of hands bought this."
+	_bosun_note.text = "bosun is gone ninety seconds and comes back carrying it like the crown jewels. three mornings of hands bought this."
 	_text_lbl.text = "the %s, delivered by dog." % String(step.get("item", ""))
 	_sfx("pickup", 0.7)
 	if _minutes >= HORN_MIN:

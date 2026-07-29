@@ -15,12 +15,30 @@ const C_TXT    := Color(0.83, 0.79, 0.69)
 
 var _active_slot: int = -1
 var _save_status: Label = null
+var _slot_overlay: Node = null
 
 
 func open(active_slot: int) -> void:
 	_active_slot = active_slot
 	_rebuild()
 	visible = true
+
+
+func _input(event: InputEvent) -> void:
+	if not visible:
+		return
+	# ESC / pad-back resumes play — mirrors the RESUME button exactly.
+	# When the SAVE AS… slot picker is up, ESC closes that first.
+	# set_input_as_handled() stops the event before GameEngine._input
+	# (parent runs after children) so the same press can't re-open us.
+	if event.is_action_pressed("ui_cancel") or event.is_action_pressed("menu_back"):
+		get_viewport().set_input_as_handled()
+		if _slot_overlay != null and is_instance_valid(_slot_overlay):
+			_slot_overlay.queue_free()
+			_slot_overlay = null
+			return
+		visible = false
+		resume_requested.emit()
 
 
 func _rebuild() -> void:
@@ -110,11 +128,12 @@ func _rebuild() -> void:
 
 
 func _open_save_as() -> void:
-	var slots := SaveSystem.list_saves()
 	var slot_overlay := preload("res://scenes/menu/SaveSlotOverlay.tscn").instantiate()
 	add_child(slot_overlay)
+	_slot_overlay = slot_overlay
 	slot_overlay.open("new", func(slot: int, _sd: Dictionary) -> void:
 		slot_overlay.queue_free()
+		_slot_overlay = null
 		save_requested.emit(slot)
 		_active_slot = slot
 		_show_status("Saved to slot %d." % slot)

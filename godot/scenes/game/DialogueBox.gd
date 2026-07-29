@@ -5,6 +5,22 @@ extends Control
 var _skin: Dictionary = {}
 var _variant: String = SkinDB.DLG_STANDARD
 
+# CharLayer reference, injected by GameEngine._build_layers via
+# set_char_layer() so accent/slot lookups don't tree-walk every
+# line. find_child stays as the fallback when nothing was injected
+# (e.g. the box used outside GameEngine).
+var _char_layer_ref: Node = null
+
+
+func set_char_layer(n: Node) -> void:
+	_char_layer_ref = n
+
+
+func _get_char_layer() -> Node:
+	if _char_layer_ref != null and is_instance_valid(_char_layer_ref):
+		return _char_layer_ref
+	return get_tree().get_root().find_child("CharLayer", true, false)
+
 # UI nodes built in setup()
 var _bg:      Panel          = null
 var _rule:    TextureRect    = null
@@ -167,7 +183,7 @@ func _present_speaker(char_name: String) -> void:
 func _apply_speaker_accent(char_name: String) -> void:
 	# Pull the accent from CharLayer's registry so portrait borders,
 	# speaker names, and any future char-keyed chrome stay aligned.
-	var char_layer := get_tree().get_root().find_child("CharLayer", true, false)
+	var char_layer: Node = _get_char_layer()
 	if char_layer == null or not char_layer.has_method("accent_for"):
 		return
 	var c: Color = char_layer.call("accent_for", char_name)
@@ -180,7 +196,7 @@ func _apply_speaker_accent(char_name: String) -> void:
 # text column can shift under them. Falls back to centre if CharLayer
 # is absent or the speaker has no on-screen portrait.
 func _slot_for(char_name: String) -> String:
-	var char_layer := get_tree().get_root().find_child("CharLayer", true, false)
+	var char_layer: Node = _get_char_layer()
 	if char_layer != null and char_layer.has_method("slot_of"):
 		var s: String = char_layer.call("slot_of", char_name)
 		if s != "":

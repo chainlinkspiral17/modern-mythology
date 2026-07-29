@@ -14,6 +14,7 @@ signal finished(canon_vars: Dictionary, lore_tokens: Array)
 const MANIFEST_PATH := "res://resources/games/vol7/mrs_wus_garden/manifest.json"
 const SAVE_PATH     := "user://mrs_wus_garden.save.json"
 const GARDEN_SCENE  := "res://scenes/games/mrs_wus_garden/WuGarden.tscn"
+const HERO_DIR      := "res://resources/games/vol7/mrs_wus_garden/hero_images/"
 
 # Field-guide gouache · dusk garden inks
 const C_DUSK  := Color("2a3028")
@@ -112,6 +113,19 @@ func _build_title_screen() -> void:
 	bg.color = C_DUSK
 	bg.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
 	_title_root.add_child(bg)
+
+	# The porch at dusk as a backdrop · falls back to the flat dusk
+	# fill if the hero JSON fails to load.
+	var hero := HeroImage.new()
+	if hero.load_from(HERO_DIR + "the_porch.json"):
+		var tr := TextureRect.new()
+		tr.texture = hero.texture(Vector2i(1120, 630))
+		tr.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
+		tr.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_COVERED
+		tr.texture_filter = CanvasItem.TEXTURE_FILTER_NEAREST
+		tr.mouse_filter = Control.MOUSE_FILTER_IGNORE
+		tr.modulate.a = 0.5
+		_title_root.add_child(tr)
 
 	preload("res://scenes/games/TitleMotion.gd").attach(_title_root, "oneironautics")
 

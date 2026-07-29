@@ -396,9 +396,11 @@ func _show_ending() -> void:
 
 func _finish_run(good_week: bool) -> void:
 	var tokens: Array = _run_state.get("lore_tokens_pending", [])
-	for t in ["northwind_harbor_finished", "nh_poster_seen"]:
-		if not tokens.has(t):
-			tokens.append(t)
+	if not tokens.has("northwind_harbor_finished"):
+		tokens.append("northwind_harbor_finished")
+	# Only if the player actually stopped at the poster.
+	if bool(_run_state.get("poster_seen", false)) and not tokens.has("nh_poster_seen"):
+		tokens.append("nh_poster_seen")
 	if good_week and not tokens.has("nh_good_week"):
 		tokens.append("nh_good_week")
 	# The bosun ritual: petted six of seven mornings. The dog never

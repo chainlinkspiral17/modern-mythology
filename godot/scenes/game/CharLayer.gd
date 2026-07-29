@@ -368,6 +368,13 @@ var _dlg_ref: Node = null
 var _talk_flip: float = 0.0
 
 
+# Injected by GameEngine._build_layers so the talk flap doesn't
+# tree-walk with find_child; the lazy find_child in _dlg_typing()
+# remains as the fallback when nothing was injected.
+func set_dialogue(n: Node) -> void:
+	_dlg_ref = n
+
+
 func _dlg_typing() -> bool:
 	if _dlg_ref == null or not is_instance_valid(_dlg_ref):
 		_dlg_ref = get_tree().get_root().find_child("DialogueBox", true, false)
