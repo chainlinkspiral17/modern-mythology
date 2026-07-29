@@ -398,6 +398,9 @@ func _apply_deltas(choice: Dictionary) -> void:
 func _end_shift() -> void:
 	var week: int = int(_run_state.get("week", 1))
 	_shift_week_done = week
+	# Persisted so a quit/resume mid-week doesn't replay the shift and
+	# re-apply its meter deltas.
+	_run_state["shift_done_week"] = week
 	# register craft converts to the drawer
 	var frac: float = float(_rings_right) / maxf(1.0, float(_rings_total))
 	var till_mult: int = 2 if week == int(_run_state.get("solo_week", -1)) else 1
@@ -428,6 +431,9 @@ func boot(state: Dictionary) -> void:
 	if not _run_state.has("solo_week"):
 		var pool: Array = [2, 3, 4, 5, 7, 10, 11]
 		_run_state["solo_week"] = int(pool[randi() % pool.size()])
+	# Restore the shift-done marker · transient before, which replayed
+	# a finished shift (and its meter deltas) on quit/resume.
+	_shift_week_done = int(_run_state.get("shift_done_week", -1))
 	_build_frame()
 	_render_week()
 

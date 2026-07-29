@@ -210,6 +210,14 @@ var _inspiration_label: Label = null
 var _pieces_label: Label = null
 var _player_pos_label: Label = null
 var _bindle_label: Label = null
+# Chrome panels captured at build time so board-fullscreen can hide
+# them — invisible-but-clickable controls were eating clicks over the
+# fullscreen map (a player could play cards blind).
+var _top_bar_panel: PanelContainer = null
+var _right_column: VBoxContainer = null
+var _bottom_strip: PanelContainer = null
+# Live goal readout in the VISITORS pane header area, rebuilt on _render.
+var _goal_label: RichTextLabel = null
 
 # Live BGM mood manipulator — attaches LowPass + Distortion to the
 # BGM bus and is fed by _stagnation / _doubt every _render(). Magician
@@ -473,10 +481,11 @@ func _ready() -> void:
 		Phase.keys()[_phase])
 	_log_line("")
 	_render()
-	# Pop the FULL LOG modal at game start so the player reads the
-	# title + scene + direction hint full-screen before play begins.
-	# Deferred so layout completes first.
-	call_deferred("_open_pane_modal_by_key", "log")
+	# The FULL LOG modal (title + scene + direction hint full-screen)
+	# opens from the title card's dismiss handler — NOT here. Opening
+	# both in the same frame stacked the log modal's dim above the
+	# title card in input order, so the player's first click closed a
+	# modal they never saw. See _show_arcana_title_card.
 
 
 func _unhandled_key_input(event: InputEvent) -> void:
@@ -1397,6 +1406,7 @@ func _build_ui() -> void:
 
 	# ── Top tracks bar ───────────────────────────────────────────────
 	var top := PanelContainer.new()
+	_top_bar_panel = top
 	top.set_anchors_preset(Control.PRESET_TOP_WIDE)
 	top.offset_top = 6
 	top.offset_left = 8
@@ -1573,6 +1583,7 @@ func _build_ui() -> void:
 
 	# ── Right column: codex card + gravity card + visitor states + log
 	var right := VBoxContainer.new()
+	_right_column = right
 	right.set_anchors_preset(Control.PRESET_RIGHT_WIDE)
 	right.offset_top = 52
 	right.offset_right = -8
@@ -1648,6 +1659,7 @@ func _build_ui() -> void:
 	# most of the width, the card stack (tableau row above hand row)
 	# sits flush against its right edge.
 	var bottom := PanelContainer.new()
+	_bottom_strip = bottom
 	bottom.set_anchors_preset(Control.PRESET_BOTTOM_WIDE)
 	bottom.offset_top = STRIP_TOP
 	bottom.offset_left = 8
@@ -4228,6 +4240,15 @@ func _toggle_board_fullscreen() -> void:
 		# viewport-level overlay exit button is the working one.
 		_board_expand_btn.visible = false
 		_board_root.z_index = 10
+		# Hide the covered chrome. z_index only changes draw order —
+		# invisible controls under the fullscreen board kept input
+		# priority and ate clicks (the player could play cards blind).
+		if _top_bar_panel != null:
+			_top_bar_panel.visible = false
+		if _right_column != null:
+			_right_column.visible = false
+		if _bottom_strip != null:
+			_bottom_strip.visible = false
 	else:
 		# Restore uses PRESET_FULL_RECT (same as the initial setup) —
 		# PRESET_LEFT_WIDE anchors BOTH edges to the parent's LEFT
@@ -4243,6 +4264,13 @@ func _toggle_board_fullscreen() -> void:
 		_board_expand_btn.tooltip_text = "Open the top-down MAP (fullscreen). 1st-person of the current space is the default normal view."
 		_board_expand_btn.custom_minimum_size = Vector2(28, 20)
 		_board_root.z_index = 0
+		# Restore the chrome hidden on fullscreen entry.
+		if _top_bar_panel != null:
+			_top_bar_panel.visible = true
+		if _right_column != null:
+			_right_column.visible = true
+		if _bottom_strip != null:
+			_bottom_strip.visible = true
 	# Show/hide the viewport-level exit button (the working one)
 	if _board_fullscreen_exit_btn != null:
 		_board_fullscreen_exit_btn.visible = _board_fullscreen
@@ -8924,6 +8952,9 @@ func _arcana_card_tex() -> ImageTexture:
 func _show_arcana_title_card() -> void:
 	var tex: ImageTexture = _arcana_card_tex()
 	if tex == null:
+		# No card art — still show the opening FULL LOG modal that
+		# normally chains off the title card's dismissal.
+		_open_pane_modal_by_key("log")
 		return
 	if _title_overlay != null and is_instance_valid(_title_overlay):
 		_title_overlay.queue_free()
@@ -8994,7 +9025,10 @@ func _show_arcana_title_card() -> void:
 			if _title_overlay != null and is_instance_valid(_title_overlay):
 				SFXBank.play("card_place", 0.7)
 				_title_overlay.queue_free()
-				_title_overlay = null)
+				_title_overlay = null
+				# First-boot sequence: the opening FULL LOG modal
+				# follows the title card instead of hiding beneath it.
+				_open_pane_modal_by_key("log"))
 	add_child(_title_overlay)
 	SFXBank.play("card_flip", 0.8)
 

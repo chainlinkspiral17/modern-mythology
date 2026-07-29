@@ -41,6 +41,12 @@ var _waiting:     bool  = false
 var _auto_timer:  float = 0.0
 var _paused:      bool  = false
 
+# HUD chapter echo memory — untitled scenes inherit the last
+# non-empty title seen within the same (vol, chapter) instead of
+# degrading the whisper to a bare chapter number.
+var _last_chapter_title: String = ""
+var _last_title_ch_key:  String = ""
+
 # ── Scene transitions (2026-07 presentation wave) ────────────────
 # A fade veil above all UI (z 140) carries scene→scene cuts; a
 # ChapterCard (z 150) presents the scene JSON's `title` at every
@@ -212,6 +218,14 @@ func _build_layers() -> void:
 	_dlg.z_index = UI_Z
 	add_child(_dlg)
 	_dlg.visible = false
+	# Direct cross-references — DialogueBox needs CharLayer for speaker
+	# accents/slots, CharLayer needs DialogueBox for the talk flap.
+	# Injecting here kills the per-line find_child tree walks; each
+	# component keeps its find_child as a null-member fallback.
+	if _dlg.has_method("set_char_layer"):
+		_dlg.call("set_char_layer", _chars)
+	if _chars.has_method("set_dialogue"):
+		_chars.call("set_dialogue", _dlg)
 	# Scrim follows the dialogue's visibility so full-screen CGs and
 	# interludes aren't darkened along the bottom.
 	_dlg_scrim.visible = false
@@ -252,7 +266,7 @@ func _build_layers() -> void:
 	add_child(_ig_menu)
 	_ig_menu.connect("resume_requested",    func() -> void: _resume_from_menu())
 	_ig_menu.connect("save_requested",      func(slot: int) -> void: _save_to_slot(slot))
-	_ig_menu.connect("main_menu_requested", func() -> void: game_ended.emit())
+	_ig_menu.connect("main_menu_requested", func() -> void: _exit_to_main_menu())
 	_ig_menu.connect("settings_opened",     func() -> void: _open_settings())
 	_ig_menu.connect("music_opened",        func() -> void: _open_music())
 
@@ -345,7 +359,38 @@ func _save_to_slot(slot: int) -> void:
 	if slot < 1:
 		return
 	_active_slot = slot
-	SaveSystem.write_save(slot, _vol, _scene_id, _node_idx, _flags, _skills, _log)
+	# _run_next bumps _node_idx BEFORE dispatch, so while a line is
+	# displayed (_waiting) or a choice is up, _node_idx already points
+	# one PAST the node the reader is looking at. Saving that raw value
+	# made resume skip the current line — or skip a pending choice
+	# entirely when saved from the menu. Save the displayed node's own
+	# index; on resume _load_scene re-dispatches exactly that node
+	# (safe: the fast-forward pass owns all earlier side effects).
+	var idx: int = _node_idx
+	if _waiting or (_choices != null and _choices.visible):
+		idx = maxi(0, _node_idx - 1)
+	SaveSystem.write_save(slot, _vol, _scene_id, idx, _flags, _skills, _log)
+
+
+func _exit_to_main_menu() -> void:
+	# Leaving for the main menu never silently drops progress: write an
+	# autosave first — into the active slot when one exists, else the
+	# most recently written occupied slot, else slot 1.
+	var slot: int = _active_slot
+	if slot < 1:
+		var best_ts: float = -1.0
+		for sd_v in SaveSystem.list_saves():
+			var sd: Dictionary = sd_v
+			if bool(sd.get("empty", false)):
+				continue
+			var ts: float = float(sd.get("ts", 0.0))
+			if ts > best_ts:
+				best_ts = ts
+				slot = int(sd.get("slot", -1))
+	if slot < 1:
+		slot = 1
+	_save_to_slot(slot)
+	game_ended.emit()
 
 
 func _open_settings() -> void:
@@ -379,12 +424,27 @@ func _load_scene(scene_id: String, start_at: int = 0) -> void:
 	if _hud != null and _hud.has_method("set_chapter"):
 		var ch := str(_scene_data.get("chapter", "")).strip_edges()
 		var ttl := String(_scene_data.get("title", "")).strip_edges()
+		var ch_key := "%d::%s" % [_vol, ch]
+		if ttl != "":
+			_last_chapter_title = ttl
+			_last_title_ch_key  = ch_key
+		elif _last_title_ch_key == ch_key and _last_chapter_title != "":
+			# Untitled scene mid-chapter — keep whispering the chapter's
+			# last real title instead of degrading to a bare number.
+			ttl = _last_chapter_title
 		var parts: PackedStringArray = PackedStringArray()
 		if ch != "":
 			parts.append("CH %s" % ch.to_upper())
 		if ttl != "":
 			parts.append(ttl)
 		_hud.call("set_chapter", ("·  " + "  ·  ".join(parts)) if parts.size() > 0 else "")
+	# Resume fast-forward: a mid-scene start (save resume) must not
+	# open on a bare stage. Replay the silent side effects of every
+	# node before the target — bg / bgm / stage / flags — and re-assert
+	# the last mood/shot direction, so the resumed line lands in the
+	# world the reader left.
+	if start_at > 0:
+		_fast_forward_to(start_at)
 	# Dispatch through the producer's curtain gate: across a real
 	# transition (veil/chapter card up) the first node waits for the
 	# reveal + settle beat; mid-story jumps pass straight through.

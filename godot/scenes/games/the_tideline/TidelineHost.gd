@@ -107,6 +107,19 @@ func _build_title_screen() -> void:
 	bg.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
 	_title_root.add_child(bg)
 
+	# The far walk as a backdrop · falls back to the flat ink if the
+	# hero JSON fails to load.
+	var hero := HeroImage.new()
+	if hero.load_from(HERO_DIR + "the_walk_far.json"):
+		var tr := TextureRect.new()
+		tr.texture = hero.texture(Vector2i(1120, 630))
+		tr.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
+		tr.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_COVERED
+		tr.texture_filter = CanvasItem.TEXTURE_FILTER_NEAREST
+		tr.mouse_filter = Control.MOUSE_FILTER_IGNORE
+		tr.modulate.a = 0.35 if remake_mode else 0.5
+		_title_root.add_child(tr)
+
 	if not remake_mode:
 		preload("res://scenes/games/TitleMotion.gd").attach(_title_root, "oneironautics")
 

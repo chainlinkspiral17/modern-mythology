@@ -243,8 +243,13 @@ func _month_name(i: int) -> String:
 
 
 func _has_save() -> bool:
-	return FileAccess.file_exists(SAVE_PATH) and int(_run_state.get("month", 0)) > 0 \
-			and int(_run_state.get("month", 0)) < MONTHS.size()
+	if not FileAccess.file_exists(SAVE_PATH):
+		return false
+	var month: int = int(_run_state.get("month", 0))
+	var week: int = int(_run_state.get("week", 1))
+	# A save partway through September (month 0, week > 1) is just as
+	# resumable as one that has reached October.
+	return (month > 0 or week > 1) and month < MONTHS.size()
 
 
 func _on_back_to_shelf() -> void:

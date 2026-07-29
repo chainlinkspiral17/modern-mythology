@@ -340,7 +340,7 @@ func _show_ending(result: Dictionary) -> void:
 	_ending_root.add_child(bg)
 
 	var hero := HeroImage.new()
-	if hero.load_from("res://resources/games/vol7/spiderdrops_2/hero_images/ending_%s.json" % register):
+	if hero.load_from("res://resources/games/vol7/spiderdrops_2/hero_images/%s.json" % register):
 		var tr := TextureRect.new()
 		tr.texture = hero.texture(Vector2i(1120, 630))
 		tr.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)

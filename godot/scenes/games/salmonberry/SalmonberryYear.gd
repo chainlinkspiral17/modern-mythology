@@ -133,7 +133,15 @@ func boot(state: Dictionary) -> void:
 	if not _s.has("energy"): _s["energy"] = 8
 	if not _s.has("gear"): _s["gear"] = []
 	if not _s.has("strain"): _s["strain"] = 0
-	if not _s.has("bond_touch"): _s["bond_touch"] = {}
+	if not _s.has("bond_touch"):
+		# Pre-depth saves never tracked touches.  Seed every existing
+		# bond to "touched now" so the upgrade does not fire one
+		# spurious decay wave across the whole web.
+		var seeded: Dictionary = {}
+		var now_week: int = int(_s.get("month", 0)) * WEEKS_PER_MONTH + int(_s.get("week", 1))
+		for id_v in (_s.get("bonds", {}) as Dictionary).keys():
+			seeded[String(id_v)] = now_week
+		_s["bond_touch"] = seeded
 	if not _s.has("events_taken"): _s["events_taken"] = []
 	if not _s.has("board_month"): _s["board_month"] = -1
 	if not _s.has("seed"): _s["seed"] = randi() % 100000
