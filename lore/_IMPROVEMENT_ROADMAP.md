@@ -223,3 +223,22 @@ producer discipline).
 
 Items 3 and 4 are fully Claude-side and can proceed in any gap while
 gates 1–2 wait.
+
+---
+
+## 2026-07-28 · FULL AUDIT + FIX WAVE (shipped same day)
+
+Four pillar audits (VN, slowsticks, CP, gauntlet) → 48 ranked
+findings → five fix waves, all landed. Highlights: the vol 7
+index no longer hard-ends the book and its 19-scene expanded
+ch6/ch7 rewrite is live · VN resume rebuilds the full scene state
+and saves land on the line being read · the in-game menu closes on
+ESC and autosaves on exit · gauntlet fullscreen no longer feeds
+clicks to invisible controls, the authored inertia_max /
+visitors_claimed_max difficulty knobs are honored at last, help
+and goal lines are arcana-correct, DRIFT/UPKEEP auto-advance ·
+CP enforces rest, explains every ineligibility, and fits 1280
+with four regions · seven slowstick resume exploits closed ·
+23 procedural floor plates under the gauntlet board (default ON
+at 0.42 — pure material, nothing to misalign). Deck-verify the
+lot on the next session.

@@ -239,7 +239,7 @@ var _board_bg_btn: Button = null
 # Default OFF — the painted board art (when present) is loose-fit
 # atmospheric texture and tends to compete with the engine-drawn
 # markers + labels. Player can toggle it back on via the MAP header.
-var _board_bg_visible: bool = false
+var _board_bg_visible: bool = true
 var _board_fullscreen_exit_btn: Button = null   # viewport-level overlay
 # Computed each _render_board: scales markers/meeples/labels to fit
 # the actual board content size (normal vs fullscreen).
@@ -3545,12 +3545,12 @@ func _render_topdown_map() -> void:
 		# they only align with the painted stations when the image
 		# covers the same rect.
 		bg.stretch_mode = TextureRect.STRETCH_SCALE
-		# Low alpha — the AI-generated board image's painted stations
-		# rarely line up with the JSON's pos_xy coordinates. Treat the
-		# image as ATMOSPHERIC TEXTURE / mood, not a literal map. The
-		# engine-drawn markers + adjacency lines are the authoritative
-		# board.
-		bg.modulate = Color(1, 1, 1, 0.12)
+		# Atmospheric under-layer only — the engine-drawn markers +
+		# adjacency lines are the authoritative board.
+		# The 2026-07 floor plates are pure material + light (no
+		# painted stations), so nothing can misalign with pos_xy —
+		# they can afford real presence under the engine-drawn map.
+		bg.modulate = Color(1, 1, 1, 0.42)
 		bg.mouse_filter = Control.MOUSE_FILTER_IGNORE
 		_board_content.add_child(bg)
 	# Draw spaces as labels positioned per the JSON's pos_xy.
