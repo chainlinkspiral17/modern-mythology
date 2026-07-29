@@ -199,14 +199,28 @@ func _anchor_to(slot: String) -> void:
 	var pad: Array = _skin.get("dlg_pad", [22.0, 48.0, 28.0, 48.0])
 	var left_pad: float  = float(pad[3])
 	var right_pad: float = float(pad[1])
-	# Wide box: text spans the full width with only small edge margins —
-	# lots of room to work with, and left-anchored so there's more space
-	# on the left (the portrait usually sits at the right). The speaker
-	# name shares the left margin.
-	_body.offset_left  = left_pad
-	_body.offset_right = -right_pad
+	# The column leans gently toward the speaker's portrait slot —
+	# a subtle bias, not a jump: the eye's path from face to words
+	# shortens without the box visibly rearranging itself.
+	const COL_BIAS := 110.0
+	var target_l: float = left_pad
+	var target_r: float = -right_pad
+	match slot:
+		"left":
+			target_r = -right_pad - COL_BIAS
+		"right":
+			target_l = left_pad + COL_BIAS
+	var tw := create_tween().set_parallel(true)
+	tw.tween_property(_body, "offset_left", target_l, 0.25)\
+		.set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT)
+	tw.tween_property(_body, "offset_right", target_r, 0.25)\
+		.set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT)
 	if _speaker != null:
-		_speaker.position.x = left_pad
+		tw.tween_property(_speaker, "position:x", target_l, 0.25)\
+			.set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT)
+	if _spk_rule != null and _spk_rule.visible:
+		tw.tween_property(_spk_rule, "position:x", target_l, 0.25)\
+			.set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT)
 
 
 func is_typing() -> bool:

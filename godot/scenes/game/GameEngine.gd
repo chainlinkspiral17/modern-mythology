@@ -51,6 +51,15 @@ var _chapter_card: Control = null
 var _transition_lock: bool = false
 # ── reading furniture (2026-07 detail pass) ──
 var _backlog_overlay: Control = null
+# AUTO mode (A key) · hands-free reading: the page turns itself a
+# beat after the typewriter rests, scaled to line length. Distinct
+# from _auto_timer, which serves voiced-node sync.
+var _auto_mode: bool = false
+var _auto_read_t: float = 0.0
+var _auto_chip: Label = null
+# idle cursor · the pointer fades after a few still seconds so it
+# never sits in a held frame
+var _cursor_idle_t: float = 0.0
 var _photo_on: bool = false
 var _photo_bars: Array = []          # two ColorRects, built lazily
 var _photo_restore: Dictionary = {}  # node path -> was-visible
@@ -988,6 +997,7 @@ func _wait() -> void:
 func _process(delta: float) -> void:
 	if _paused:
 		return
+	_tick_reading_comfort(delta)
 	if _auto_timer > 0.0:
 		_auto_timer -= delta
 		if _auto_timer <= 0.0:
@@ -995,6 +1005,55 @@ func _process(delta: float) -> void:
 			if not AudioMgr.is_voice_playing():
 				_advance()
 	_apply_bg_motion(delta)
+
+
+func _toggle_auto_mode() -> void:
+	_auto_mode = not _auto_mode
+	_auto_read_t = 0.0
+	if _auto_chip == null:
+		_auto_chip = Label.new()
+		_auto_chip.text = "AUTO ▸"
+		_auto_chip.add_theme_font_size_override("font_size", 13)
+		_auto_chip.add_theme_color_override("font_color", Color(0.82, 0.72, 0.52, 0.9))
+		_auto_chip.add_theme_color_override("font_outline_color", Color(0, 0, 0, 0.8))
+		_auto_chip.add_theme_constant_override("outline_size", 4)
+		_auto_chip.set_anchors_preset(Control.PRESET_BOTTOM_RIGHT)
+		_auto_chip.offset_left = -86
+		_auto_chip.offset_top = -30
+		_auto_chip.z_index = UI_Z + 5
+		_auto_chip.add_to_group("ui")
+		add_child(_auto_chip)
+	_auto_chip.visible = _auto_mode
+	var sb := get_node_or_null("/root/SFXBank")
+	if sb: sb.play("blip", 0.3)
+
+
+func _tick_reading_comfort(delta: float) -> void:
+	# the pointer fades out of a held frame
+	_cursor_idle_t += delta
+	if _cursor_idle_t > 3.5 and not _photo_on \
+			and Input.get_mouse_mode() == Input.MOUSE_MODE_VISIBLE:
+		Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
+	# hands-free page turn: a beat after the typewriter rests,
+	# scaled to how much was just read
+	if not _auto_mode or _transition_lock or _photo_on \
+			or _backlog_overlay != null or _choices.visible \
+			or _interlude.visible \
+			or get_tree().get_first_node_in_group("vn_input_blocker") != null:
+		_auto_read_t = 0.0
+		return
+	if _dlg == null or not _dlg.visible or bool(_dlg.call("is_typing")):
+		_auto_read_t = 0.0
+		return
+	_auto_read_t += delta
+	var chars: int = 0
+	var bl: Array = _dlg.get("backlog")
+	if not bl.is_empty():
+		chars = String((bl[bl.size() - 1] as Dictionary).get("text", "")).length()
+	var hold: float = clampf(1.3 + float(chars) * 0.03, 2.2, 7.0)
+	if _auto_read_t >= hold:
+		_auto_read_t = 0.0
+		_advance()
 
 
 # Background idle motion. Bg now displays in fit-mode (whole image
@@ -1069,6 +1128,15 @@ func _input(event: InputEvent) -> void:
 		get_viewport().set_input_as_handled()
 		return
 	if _photo_on:
+		return
+	if event is InputEventMouseMotion:
+		_cursor_idle_t = 0.0
+		if Input.get_mouse_mode() == Input.MOUSE_MODE_HIDDEN:
+			Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+	if event is InputEventKey and event.pressed and not event.echo \
+			and (event as InputEventKey).keycode == KEY_A:
+		_toggle_auto_mode()
+		get_viewport().set_input_as_handled()
 		return
 	# ── THE BACKLOG (H or wheel-up) · everything read, re-readable.
 	var wheel_up: bool = event is InputEventMouseButton and event.pressed \
