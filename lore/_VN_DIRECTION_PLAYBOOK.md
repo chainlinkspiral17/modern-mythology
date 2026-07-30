@@ -519,3 +519,21 @@ or "flat/unreal," plus a full mood-direction sweep of vol5/6/7.
   substance.
 - The plate fades in over 1.0s against the type's 0.7s so the page
   reads as laid down, not switched on.
+
+### 2026-07-28 · the dialogue box is SILENT on advance (hard rule)
+
+- **A per-line tick cannot be saved by gating it.** A speaker-change
+  blip was added, then gated to genuine character→character handoffs
+  after the first "beeping as I progress" report — and was reported
+  again as "super annoying." The reason is structural: in
+  back-and-forth dialogue EVERY line IS a speaker change, so any
+  handoff-gated sound fires on nearly every advance. There is no
+  gate that fixes this; the sound itself was the mistake.
+- **The handoff is carried visually and that is enough** — the
+  nameplate pops from 1.14 scale and the accent underline wipes in
+  from the left. That was always the design intent; the tick was
+  redundant reinforcement.
+- The rule now lives as a comment block at the top of DialogueBox so
+  a later pass doesn't helpfully re-add it. Sound in the VN belongs
+  to BEATS (authored, a few per chapter) and to scene `sfx` nodes —
+  never to the act of turning a page.

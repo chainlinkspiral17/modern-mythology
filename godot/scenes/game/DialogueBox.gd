@@ -34,10 +34,13 @@ var _cursor:  Label          = null
 # back-and-forth dialogue without reading the name every line.
 var _spk_rule:     ColorRect = null
 var _last_speaker: String    = ""
-# Survives narration beats (show_narrate clears _last_speaker but not
-# this) — gates the handoff TICK to genuine character-to-character
-# changes while the visual pop keeps its broader trigger.
-var _last_named_speaker: String = ""
+# NO SPEAKER TICK. The dialogue box is SILENT on advance — the
+# nameplate pop and the underline wipe carry the handoff on their
+# own, which was always the design intent. A per-change blip was
+# tried twice (2026-07) and reported both times as "a beeping as I
+# progress" / "super annoying": in back-and-forth dialogue EVERY
+# line is a speaker change, so any handoff-gated tick fires on
+# nearly every advance. Do not re-add a per-line sound here.
 
 # Typewriter state
 var _full_text:  String = ""
@@ -158,16 +161,8 @@ func _present_speaker(char_name: String) -> void:
 	_last_speaker = char_name
 	if not changed:
 		return
-	# Speaker handoff: name pops from slightly oversized, underline
-	# wipes in from the left. The tick plays ONLY when a different
-	# named character takes over — narrate resets _last_speaker so the
-	# visual pop re-fires after narration (deliberate), but in
-	# narrate-heavy chapters that made the tick fire on nearly every
-	# line ("a beeping as I progress", 2026-07). _last_named_speaker
-	# survives narration beats, so John→narrate→John pops silently.
-	if char_name != "" and char_name != _last_named_speaker:
-		SFXBank.play("blip", 0.18)
-	_last_named_speaker = char_name
+	# Speaker handoff, silently: the name pops from slightly oversized
+	# and the underline wipes in from the left. No sound (see above).
 	_speaker.pivot_offset = Vector2(0.0, _speaker.size.y)
 	_speaker.scale = Vector2(1.14, 1.14)
 	var tw := _speaker.create_tween()
