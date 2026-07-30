@@ -262,3 +262,34 @@ The wave night, the boat thread, the book, the town overlay, and
 the five registers are unchanged — they just sit on 40 decisions
 now instead of 10. Old v1 saves upgrade in place via boot()
 defaults.
+
+---
+
+## WAVE C · THE NIGHT, PLAYED (built 2026-07-28)
+
+March is no longer a menu. The bell rings and you are IN the
+walkable town: eighteen seconds of slack while the water is out
+(the bay drains to mud on screen), then the flood climbs the map
+from the bay — the dock drowns first, so the boats are the first
+hard choice — and every rescue roots you in place for real seconds
+(a progress ring) while the water keeps coming. Reach targets and
+press E:
+
+- THE FLEET (dock, 6s) — gated on sea ≥3 or Del ≥2, same as ever.
+- THE ONES THE FLEET FORGOT (cannery, 5s) — only if you went out
+  for the Ida Rose in February.
+- THE GRAY HOUSE (Estelle, 5s) — gated on the bond, the heart, or
+  the thread; arriving WITH the thread knowledge upgrades the
+  scene to the told_estelle ending.
+- VOVO'S HOUSE — E ends the night up the hill, on your terms; if
+  the water reaches her porch first, the night ends itself at a
+  run.
+
+The bicycle bought in October is 240 speed instead of 190 tonight
+— the year's build is literally how fast you can run. Ineligible
+targets explain themselves in fiction ("you don't know the bar
+well enough to be more than in the way"). Multiple rescues are
+possible with good routing; every one writes through the same
+reward paths the old menu used, so registers, codas, and tokens
+are unchanged. ESC does not work: "there is no putting this night
+down."

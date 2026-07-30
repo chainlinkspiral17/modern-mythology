@@ -22,6 +22,7 @@ class_name SalmonberryTown
 
 signal activity_chosen(act: Dictionary)
 signal quit
+signal crisis_over(results: Dictionary)
 
 const WALKER_SPRITE := "res://resources/games/vol7/salmonberry/sprites/walker.json"
 
@@ -91,6 +92,36 @@ var _hdr_lbl: Label = null
 var _msg_lbl: Label = null
 var _hint_lbl: Label = null
 
+# ── WAVE C · the night the water comes (2026-07-28) ──────────────
+# The same town, played once, against the clock. The bell rings,
+# the water goes out, and then it comes back — climbing the map
+# from the bay. Who you save is who you physically REACH: each
+# rescue roots you in place while the water keeps rising. What
+# you built all year (sea-sense, bonds, the bicycle, the night
+# off the bar, the thread) is speed, access, and options here.
+const CRISIS_LEN := 75.0        # seconds, bell to the last water
+const CRISIS_SLACK := 18.0      # the water is OUT · position yourself
+const FLOOD_TOP := 392.0        # the highest the water walks
+var _crisis: bool = false
+var _crisis_t: float = 0.0
+var _crisis_state: Dictionary = {}
+var _flood_y: float = 580.0
+var _rescues: Array = []        # completed target ids
+var _rescue_busy: String = ""   # target mid-rescue
+var _rescue_left: float = 0.0
+var _crisis_speed: float = 190.0
+var _crisis_done: bool = false
+
+# target id -> availability + the work it takes
+const RESCUES := {
+	"dock":    {"label": "CAST OFF THE FLEET", "work": 6.0,
+		"line": "You and Del get lines off cleat after cleat, shouting boats out to deep water."},
+	"cannery": {"label": "THE ONES THE FLEET FORGOT", "work": 5.0,
+		"line": "The night crew is still on the finger pier. You take the skiff out for them the way you did once before."},
+	"estelle": {"label": "THE GRAY HOUSE", "work": 5.0,
+		"line": "She will not leave the window. You say what only someone who has sat with her could say."},
+}
+
 
 func _ready() -> void:
 	set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
@@ -100,6 +131,123 @@ func _ready() -> void:
 	_walker.load_from(WALKER_SPRITE)
 	_build_ui()
 	set_process(true)
+
+
+func boot_crisis(state: Dictionary) -> void:
+	_crisis = true
+	_crisis_state = state
+	_month = 6
+	_season = SEASONS["winter"]
+	_bonds = state.get("bonds", {})
+	_acts_by_loc = {}
+	_pos = Vector2(160, 470)
+	_crisis_t = 0.0
+	_flood_y = 640.0
+	_rescues = []
+	_rescue_busy = ""
+	_crisis_done = false
+	_crisis_speed = 240.0 if (state.get("gear", []) as Array).has("bicycle") else 190.0
+	_hdr_lbl.text = "SALMONBERRY · MARCH 1964 · GOOD FRIDAY"
+	_hint_lbl.text = "arrows run · E where it matters"
+	_msg("The bell. The water has gone out — too far out. It is coming back. Vovo is at the house; E there ends the night, up the hill.")
+	_sfx("harbor_bell", 1.0)
+	queue_redraw()
+
+
+func _crisis_available(tid: String) -> bool:
+	if _rescues.has(tid):
+		return false
+	var apts: Dictionary = _crisis_state.get("apts", {})
+	match tid:
+		"dock":
+			return int(apts.get("sea", 0)) >= 3 or int(_bonds.get("del", 0)) >= 2
+		"cannery":
+			return bool(_crisis_state.get("helped_boat", false))
+		"estelle":
+			return int(_bonds.get("estelle", 0)) >= 2 or int(apts.get("heart", 0)) >= 3 				or _crisis_thread_ready()
+	return false
+
+
+func _crisis_thread_ready() -> bool:
+	var clues: Array = _crisis_state.get("thread_clues", [])
+	return clues.size() >= 2 and (clues.has("estelle_light") or clues.has("estelle_name"))
+
+
+func _crisis_flooded(tid: String) -> bool:
+	return _flood_y < float((PLACES[tid]["pos"] as Vector2).y) - 14.0
+
+
+func _crisis_tick(delta: float) -> void:
+	if _crisis_done:
+		return
+	_crisis_t += delta
+	# the water: out for the slack, then walking up the town
+	if _crisis_t > CRISIS_SLACK:
+		var k: float = clampf((_crisis_t - CRISIS_SLACK) / (CRISIS_LEN - CRISIS_SLACK), 0.0, 1.0)
+		_flood_y = 640.0 - (640.0 - FLOOD_TOP) * pow(k, 1.25)
+	# mid-rescue: rooted in place while the work happens
+	if _rescue_busy != "":
+		_rescue_left -= delta
+		if _rescue_left <= 0.0:
+			_rescues.append(_rescue_busy)
+			_msg(String((RESCUES[_rescue_busy] as Dictionary)["line"]))
+			_sfx("wave_break", 0.6)
+			_rescue_busy = ""
+		queue_redraw()
+		return
+	# movement (faster with the bicycle year)
+	_dir = Vector2.ZERO
+	if Input.is_key_pressed(KEY_LEFT) or Input.is_key_pressed(KEY_A): _dir.x -= 1
+	if Input.is_key_pressed(KEY_RIGHT) or Input.is_key_pressed(KEY_D): _dir.x += 1
+	if Input.is_key_pressed(KEY_UP) or Input.is_key_pressed(KEY_W): _dir.y -= 1
+	if Input.is_key_pressed(KEY_DOWN) or Input.is_key_pressed(KEY_S): _dir.y += 1
+	if _dir != Vector2.ZERO:
+		_pos += _dir.normalized() * _crisis_speed * delta
+		_pos.x = clampf(_pos.x, 40, 1240)
+		_pos.y = clampf(_pos.y, 60, minf(640.0, _flood_y - 18.0))
+	# the water reaches Vovo's porch → the night takes itself
+	if _flood_y < float((PLACES["home"]["pos"] as Vector2).y) + 20.0:
+		_end_crisis(true)
+		return
+	queue_redraw()
+
+
+func _crisis_interact() -> void:
+	var pid := _place_near()
+	if pid == "":
+		return
+	if pid == "home":
+		_end_crisis(false)
+		return
+	if not RESCUES.has(pid):
+		_msg("Nothing here the water wants tonight. Vovo. The hill.")
+		return
+	if _crisis_flooded(pid):
+		_msg("Too late — the water is already through here. It does not renegotiate.")
+		return
+	if not _crisis_available(pid):
+		match pid:
+			"dock":
+				_msg("Del is already shouting men to lines. You don't know the bar well enough to be more than in the way.")
+			"cannery":
+				_msg("The night crew is being seen to. Nobody here knows to listen for you.")
+			"estelle":
+				_msg("The curtain does not move. You have not sat with her enough for the door to open tonight.")
+		return
+	_rescue_busy = pid
+	_rescue_left = float((RESCUES[pid] as Dictionary)["work"])
+	_msg("(" + String((RESCUES[pid] as Dictionary)["label"]) + " — hold on. This takes what it takes.)")
+
+
+func _end_crisis(forced: bool) -> void:
+	if _crisis_done:
+		return
+	_crisis_done = true
+	crisis_over.emit({
+		"saved": _rescues.duplicate(),
+		"told_estelle": _rescues.has("estelle") and _crisis_thread_ready(),
+		"forced": forced,
+	})
 
 
 func boot(month: int, acts_by_loc: Dictionary, bonds: Dictionary) -> void:
@@ -151,6 +299,9 @@ func _msg(t: String) -> void:
 
 func _process(delta: float) -> void:
 	_t += delta
+	if _crisis:
+		_crisis_tick(delta)
+		return
 	if _panel != null:
 		return
 	_dir = Vector2.ZERO
@@ -183,15 +334,21 @@ func _input(event: InputEvent) -> void:
 		var kev: InputEventKey = event
 		if kev.keycode == KEY_ESCAPE:
 			get_viewport().set_input_as_handled()
-			if _panel != null:
+			if _crisis:
+				_msg("There is no putting this night down. Vovo. The hill.")
+			elif _panel != null:
 				_close_panel()
 			else:
 				quit.emit()
 		elif kev.keycode == KEY_E and _panel == null:
-			var pid := _place_near()
-			if pid != "":
-				get_viewport().set_input_as_handled()
-				_open_offers(pid)
+			get_viewport().set_input_as_handled()
+			if _crisis:
+				if _rescue_busy == "" and not _crisis_done:
+					_crisis_interact()
+			else:
+				var pid := _place_near()
+				if pid != "":
+					_open_offers(pid)
 
 
 # ─── the offers panel · what this month can be, here ─────────────
@@ -319,6 +476,43 @@ func _draw() -> void:
 			var lvl: int = int(_bonds.get("gran" if key == "vovo" else key, 0))
 			if lvl > 0:
 				draw_circle(p + Vector2(26, -26), 3.0 + minf(float(lvl), 6.0) * 0.5, C_GOLD)
+
+	# ── the crisis layer: night, risen water, the work ──
+	if _crisis:
+		# dusk falls over everything painted so far
+		draw_rect(Rect2(0, 0, 1280, 720), Color(0.06, 0.08, 0.12, 0.45))
+		# lit windows hold against it
+		draw_rect(Rect2(float((PLACES["home"]["pos"] as Vector2).x) - 10.0,
+			float((PLACES["home"]["pos"] as Vector2).y) - 6.0, 20.0, 16.0), Color("e8c060"))
+		draw_rect(Rect2(float((PLACES["estelle"]["pos"] as Vector2).x) - 10.0,
+			float((PLACES["estelle"]["pos"] as Vector2).y) - 6.0, 20.0, 16.0), Color("e8c060"))
+		# the water, wherever it has walked to
+		if _flood_y < 640.0:
+			draw_rect(Rect2(0, _flood_y, 1280, 720.0 - _flood_y), Color(0.16, 0.24, 0.30, 0.88))
+			var churn := sin(_t * 5.0) * 3.0
+			draw_line(Vector2(0, _flood_y + churn), Vector2(1280, _flood_y - churn), C_FOAM, 3.0)
+			draw_line(Vector2(0, _flood_y + 10.0 - churn), Vector2(1280, _flood_y + 12.0 + churn),
+				Color(C_FOAM.r, C_FOAM.g, C_FOAM.b, 0.35), 1.5)
+		elif _crisis_t < CRISIS_SLACK:
+			# the bay GONE — mud where the water should be
+			draw_rect(Rect2(0, 580, 1280, 140), Color("6a6252"))
+			draw_line(Vector2(0, 582), Vector2(1280, 582), Color("54503f"), 2.0)
+		# countdown + targets
+		var left: float = maxf(0.0, CRISIS_LEN - _crisis_t)
+		_label(Vector2(640, 40), ("the water is out · %d" if _crisis_t < CRISIS_SLACK else "THE WATER · %d") % int(ceil(left)), C_FOAM, 16)
+		for tid in RESCUES.keys():
+			var tp: Vector2 = PLACES[tid]["pos"]
+			if _rescues.has(String(tid)):
+				_label(tp + Vector2(0, -60), "· SAFE ·", C_GOLD, 13)
+			elif _crisis_flooded(String(tid)):
+				_label(tp + Vector2(0, -60), "· gone ·", C_FOAM, 12)
+			elif _crisis_available(String(tid)):
+				_label(tp + Vector2(0, -60), "· " + String((RESCUES[tid] as Dictionary)["label"]) + " ·",
+					Color(C_GOLD.r, C_GOLD.g, C_GOLD.b, 0.7 + 0.3 * sin(_t * 5.0)), 12)
+		# mid-rescue progress arc on the kid
+		if _rescue_busy != "":
+			var frac: float = 1.0 - _rescue_left / float((RESCUES[_rescue_busy] as Dictionary)["work"])
+			draw_arc(_pos, 26.0, -PI * 0.5, -PI * 0.5 + TAU * frac, 24, C_GOLD, 3.0)
 
 	# ── the kid ──
 	var tex := _walker.texture()

@@ -919,63 +919,84 @@ func _render_wave() -> void:
 
 	v.add_child(_rule())
 	var prompt := Label.new()
-	prompt.text = "You have a few minutes. What do you do with them?"
+	prompt.text = "You have a few minutes, and legs. What you built this year is who you can reach."
 	prompt.add_theme_font_size_override("font_size", 14)
 	prompt.add_theme_color_override("font_color", C_GOLD)
 	v.add_child(prompt)
 
-	if _apt("sea") >= 3 or _bond("del") >= 2:
-		v.add_child(_wave_btn(
-			"Run for the boats with Del",
-			"You know the bar and Del knows you. You get lines cast off and the fleet stood off the bar in deep water, and it rides the surge instead of splintering on the pilings. Half the town's living, saved.",
-			"del", 2, "sea", 2, true))
-	if bool(_s.get("helped_boat", false)):
-		v.add_child(_wave_btn(
-			"Take the skiff for the ones the fleet forgot",
-			"The men remember the night off the bar — when you shout, they listen. You pull two of the cannery's night crew off the finger pier and a dog nobody owns off a swamped float, and you are over the turn basin when the surge walks in under you, lifting the skiff like a hand.",
-			"manny", 2, "sea", 2, true))
-	if _bond("estelle") >= 2 or _apt("heart") >= 3:
-		v.add_child(_wave_btn(
-			"Get Estelle to high ground",
-			"She will not leave the window that faces the bar. You take her hand and you say the thing only someone who has sat with her could say, and she comes. You are both on the hill when the water takes the gray house.",
-			"estelle", 2, "heart", 2, true))
-	var clues: Array = _s.get("thread_clues", [])
-	if _thread_depth() >= 2 and (clues.has("estelle_light") or clues.has("estelle_name")):
-		var tb := Button.new()
-		tb.text = "  Go straight to Estelle — you know now"
-		tb.add_theme_font_size_override("font_size", 15)
-		tb.alignment = HORIZONTAL_ALIGNMENT_LEFT
-		tb.pressed.connect(func() -> void:
-			_raise_bond("estelle", 3)
-			var ap: Dictionary = _s["apts"]
-			ap["heart"] = int(ap.get("heart", 0)) + 2
-			_s["helped_wave"] = true
-			_s["told_estelle"] = true
-			_advance_wave("You are already running before the bell finishes. She is at the window that faces the bar, the way she is every night, waiting the way she has waited a year. This time someone came for her. She lets you take her up the hill, and she does not look back at the water, she looks at you, and that is the thing the boat could not do and you could."))
-		v.add_child(tb)
-
-	v.add_child(_wave_btn(
-		"Get yourself and Vovo up the hill",
-		"You take Vovo's arm and you climb, and you watch from the top as the river walks up into the town and back out again, taking pieces. You are safe. That is also a choice, and not a small one.",
-		"gran", 1, "grit", 1, false))
-
+	var run_btn := Button.new()
+	run_btn.text = "  ·  RUN  ·  "
+	run_btn.add_theme_font_size_override("font_size", 18)
+	run_btn.add_theme_color_override("font_color", C_RUST)
+	run_btn.pressed.connect(_open_crisis)
+	v.add_child(run_btn)
 	GamepadMgr.focus_first.call_deferred(v)
 
 
-func _wave_btn(label: String, result: String, bond_id: String, bond_amt: int,
-		apt_name: String, apt_amt: int, helped: bool) -> Button:
-	var b := Button.new()
-	b.text = "  " + label
-	b.add_theme_font_size_override("font_size", 15)
-	b.alignment = HORIZONTAL_ALIGNMENT_LEFT
-	b.pressed.connect(func() -> void:
-		_raise_bond(bond_id, bond_amt)
-		var apts: Dictionary = _s["apts"]
-		apts[apt_name] = int(apts.get(apt_name, 0)) + apt_amt
-		if helped:
-			_s["helped_wave"] = true
-		_advance_wave(result))
-	return b
+# ── WAVE C · the night, played ───────────────────────────────────
+# The walkable town runs the crisis (timer, rising water, rescues
+# gated on the year's build); the results come back here and write
+# through the SAME reward paths the old choice menu used.
+func _open_crisis() -> void:
+	_clear_ui()
+	_town = TOWN_SCRIPT.new()
+	add_child(_town)
+	_town.connect("crisis_over", func(results: Dictionary) -> void:
+		if _town != null and is_instance_valid(_town):
+			_town.queue_free()
+		_town = null
+		_resolve_crisis(results))
+	_town.call("boot_crisis", _s)
+
+
+func _resolve_crisis(results: Dictionary) -> void:
+	var saved: Array = results.get("saved", [])
+	var told: bool = bool(results.get("told_estelle", false))
+	var forced: bool = bool(results.get("forced", false))
+	var apts: Dictionary = _s["apts"]
+	var lines: Array = []
+	var parts := PackedStringArray()
+
+	if saved.has("dock"):
+		lines.append_array(_raise_bond("del", 2))
+		apts["sea"] = int(apts.get("sea", 0)) + 2
+		_s["helped_wave"] = true
+		parts.append("You got lines cast off with Del and the fleet stood off the bar in deep water, and it rides the surge instead of splintering on the pilings. Half the town's living, saved.")
+	if saved.has("cannery"):
+		lines.append_array(_raise_bond("manny", 2))
+		apts["sea"] = int(apts.get("sea", 0)) + 2
+		_s["helped_wave"] = true
+		parts.append("The skiff again, like the night off the bar — the cannery's night crew off the finger pier, and a dog nobody owns off a swamped float.")
+	if saved.has("estelle"):
+		if told:
+			lines.append_array(_raise_bond("estelle", 3))
+			apts["heart"] = int(apts.get("heart", 0)) + 2
+			_s["told_estelle"] = true
+			parts.append("You were already running to the gray house before the bell finished, because you knew. She lets you take her up the hill, and she does not look back at the water — she looks at you.")
+		else:
+			lines.append_array(_raise_bond("estelle", 2))
+			apts["heart"] = int(apts.get("heart", 0)) + 2
+			parts.append("Estelle would not leave the window that faces the bar, and then, for you, she did.")
+		_s["helped_wave"] = true
+
+	# Vovo, always — the night ends on the hill either way
+	lines.append_array(_raise_bond("gran", 1))
+	apts["grit"] = int(apts.get("grit", 0)) + 1
+
+	if parts.is_empty():
+		parts.append("You take Vovo's arm and you climb, and you watch from the top as the river walks up into the town and back out again, taking pieces. You are safe. That is also a choice, and not a small one.")
+	elif forced:
+		parts.append("The water reached the porch before you meant it to. You take Vovo up the hill at a run, her hand weighing nothing, the town going dark below by streets.")
+	else:
+		parts.append("Then Vovo, and the hill, and the watching — the river walking up into the town and back out, taking pieces, but fewer than it wanted.")
+
+	var outcome := "  ".join(parts)
+	if not lines.is_empty():
+		var extra := PackedStringArray()
+		for ln_v in lines:
+			extra.append(String(ln_v))
+		outcome += "\n\n" + "\n".join(extra)
+	_advance_wave(outcome)
 
 
 # The wave night skips the week machinery — one night, one month.

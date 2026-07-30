@@ -157,7 +157,14 @@ producer discipline).
   still bare (art through the new pipeline + a BGM pass).
 - **SHIPPED 2026-07 · Salmonberry Wave A: the town overworld (v1)**
   — walkable Salmonberry as the month interface (see the design doc).
-  Next: Waves C (playable tsunami crisis) and D (full roster/errands);
+  **SHIPPED 2026-07-28 · Wave C: THE NIGHT, PLAYED** — the March
+  wave is a real-time crisis in the walkable town: 18s slack while
+  the bay drains, then the flood climbs from the water up; rescues
+  root you in place (progress ring) while it rises; the dock
+  drowns first; the bicycle is speed; ineligibility explains
+  itself in fiction; multi-rescue with good routing; same reward
+  paths as the old menu (registers/codas/tokens unchanged).
+  Next: Wave D (full roster/errands);
   town v2 candidates: NPC figures at their places, month-gated
   weather/light, interior beats.
 - **P1 · Mrs Wu BGM sign-off** — two composition scores are written
