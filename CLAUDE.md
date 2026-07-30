@@ -103,6 +103,31 @@ recurring complaint. The rules:
    members (music player, mood label) have had time to spawn,
    then waiting for them to spawn — they must NOT pop up.
 
+## Verify GDScript with BOTH checkers (hard rule)
+
+`gdparse <file>` checks GRAMMAR only. Godot **also** runs type
+inference and rejects `:=` when the right-hand side has no static
+type — syntactically perfect code the linter waves through. This
+shipped a broken build on 2026-07-28 (`var x := {...}[key]` in
+Estuary 4's working season: "Cannot infer the type").
+
+So every GDScript change is verified twice:
+
+```bash
+gdparse <file> && python3 godot/tools/gdinfer_check.py <file>
+```
+
+`gdinfer_check.py` flags the Variant-returning right-hand sides
+(`{...}[k]`, `.get()`, `.call()`, `get_meta()`, `JSON.parse_string`,
+untyped container indexes) and is tuned to report **zero** on the
+working tree — if it ever prints something, it is real. Fix by
+naming the value and typing it explicitly:
+
+```gdscript
+var lines: Dictionary = {...}
+var line: String = String(lines.get(key, ""))
+```
+
 ## Lesson-capture cadence (durable rule)
 
 After every significant work session — meaning anything that

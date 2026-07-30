@@ -270,9 +270,15 @@ func _show_season_week() -> void:
 	var storm_now := _storm_for(week)
 	var storm_next := _storm_for(week + 1)
 	_add_header("THE WORKING SEASON · %s · week %d of 13" % [WEEK_DATES[week], week - 3])
-	var tide_line := {"low": "the tide book gives you the flats — gate and channel are workable, and gladly.",
+	# NOTE: an inline dictionary literal indexed on the spot (`{...}[k]`)
+	# parses in the linter but NOT in Godot — infer fails on the
+	# element type. Name the dictionary, then index it, typed.
+	var tide_lines: Dictionary = {
+		"low": "the tide book gives you the flats — gate and channel are workable, and gladly.",
 		"neutral": "middling water. the tidal work is possible, not generous.",
-		"high": "the water sits high on the pilings all week. no gate, no channel — the estuary is closed for business."}[tide]
+		"high": "the water sits high on the pilings all week. no gate, no channel — the estuary is closed for business.",
+	}
+	var tide_line: String = String(tide_lines.get(tide, ""))
 	_add_body(tide_line, 13, C_DIM)
 	if storm_now:
 		_add_body("a storm is ON the water this week. unprepped work will pay for it.", 13, C_GOLD)
