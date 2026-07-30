@@ -21,14 +21,14 @@ signal chapter_complete(state: Dictionary)
 const C_BG           := Color(0.157, 0.220, 0.290, 1.0)   # Kyrindi twilight
 const C_STONE        := Color(0.910, 0.878, 0.816, 1.0)   # white marble
 const C_STONE_HI     := Color(0.784, 0.808, 0.816, 1.0)   # green-tinted glass
-const C_CORTEX       := Color(0.345, 0.188, 0.376, 1.0)
-const C_AMBER        := Color(0.760, 0.478, 0.251, 1.0)
-const C_GREEN        := Color(0.353, 0.620, 0.420, 1.0)
-const C_RED          := Color(0.702, 0.302, 0.259, 1.0)
+const C_CORTEX       := Color(0.145, 0.110, 0.180, 1.0)
+const C_AMBER        := Color(0.960, 0.740, 0.420, 1.0)
+const C_GREEN        := Color(0.460, 0.800, 0.560, 1.0)
+const C_RED          := Color(0.910, 0.530, 0.470, 1.0)
 const C_CREAM        := Color(0.912, 0.816, 0.565, 1.0)
 const C_WHITE        := Color(0.898, 0.867, 0.804, 1.0)
-const C_GRAY         := Color(0.282, 0.282, 0.314, 1.0)
-const C_DIM          := Color(0.545, 0.463, 0.302, 1.0)
+const C_GRAY         := Color(0.110, 0.118, 0.157, 1.0)
+const C_DIM          := Color(0.760, 0.680, 0.520, 1.0)
 const C_KYRINDI      := Color(0.678, 0.780, 0.859, 1.0)
 
 var _run_state: Dictionary = {}

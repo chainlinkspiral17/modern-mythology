@@ -38,13 +38,13 @@ const C_BG           := Color(0.098, 0.086, 0.114, 1.0)
 const C_STONE        := Color(0.588, 0.510, 0.416, 1.0)
 const C_CREAM        := Color(0.912, 0.816, 0.565, 1.0)
 const C_SILVER_BLUE  := Color(0.635, 0.729, 0.827, 1.0)
-const C_AMBER        := Color(0.760, 0.478, 0.251, 1.0)
+const C_AMBER        := Color(0.960, 0.740, 0.420, 1.0)
 const C_STAR         := Color(0.973, 0.784, 0.282, 1.0)
-const C_GREEN        := Color(0.353, 0.620, 0.420, 1.0)
+const C_GREEN        := Color(0.460, 0.800, 0.560, 1.0)
 const C_WHITE        := Color(0.898, 0.867, 0.804, 1.0)
-const C_GRAY         := Color(0.282, 0.282, 0.314, 1.0)
-const C_DIM          := Color(0.545, 0.463, 0.302, 1.0)
-const C_RED          := Color(0.702, 0.302, 0.259, 1.0)
+const C_GRAY         := Color(0.110, 0.118, 0.157, 1.0)
+const C_DIM          := Color(0.760, 0.680, 0.520, 1.0)
+const C_RED          := Color(0.910, 0.530, 0.470, 1.0)
 
 # Location scripts · each has a name, description, and one action.
 const LOCATIONS: Dictionary = {
@@ -143,7 +143,7 @@ const LOCATIONS: Dictionary = {
 	},
 	"observatory": {
 		"name": "· ROOFTOP OBSERVATORY ·",
-		"tint": Color(0.345, 0.188, 0.376, 1.0),
+		"tint": Color(0.145, 0.110, 0.180, 1.0),
 		"beats": [
 			{"text": "A specific circular platform on the roof of the highest Kyrindi building.  Two brass telescopes.  Parsa's two moons are visible tonight · a specific alignment the Kyrindi called MITHENAI · once every 47 nights.  You are lucky."},
 			{"text": "Under the alignment, your spectrum analyzer's 220-Hz light pulses.  The signal is not coming from the Academy.  It is coming from everywhere · from under the ROM itself.  You tune it in.\n\nA voice · flat · reading aloud · a document with a date on it.  The date is June 18, 1952.  The document is a Los Angeles County coroner's report.  The decedent's name is yours.\n\nThe voice reads it all the way through.  Then, quietly, a second voice · a young woman's · says: 'You deserved to know how it ends.  Now change it.  · A.R.'"}

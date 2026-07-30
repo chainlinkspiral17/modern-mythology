@@ -143,6 +143,14 @@ var _pos: Vector2i = Vector2i.ZERO      # axial q, r
 var _encounter: Dictionary = {}
 var _choice_btns: Array = []
 var _hud: Label = null
+# Choice buttons live in an ANCHORED row above the log, never at
+# hardcoded pixel coordinates. The old code placed them at literal
+# y=540 / x=40..860, which collided with the prose panel on any
+# viewport that wasn't exactly 1280×720 — the buttons landed on top
+# of the text and, because a live encounter blocks _try_step, an
+# unreachable button meant the ride simply stopped. (Reported
+# 2026-07-30: "I move once, and the game stops?")
+var _choice_row: HFlowContainer = null
 var _log_lbl: RichTextLabel = null
 var _log_lines: Array = []
 var _last_cue: String = ""
@@ -315,6 +323,20 @@ func _build_ui() -> void:
 	_log_lbl.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	add_child(_log_lbl)
 
+	# The choice row · anchored to sit directly above the log panel,
+	# wrapping when there are more choices than fit. Added last so it
+	# draws over the map, never under the prose.
+	_choice_row = HFlowContainer.new()
+	_choice_row.set_anchors_preset(Control.PRESET_BOTTOM_WIDE)
+	_choice_row.offset_left = 40
+	_choice_row.offset_right = -40
+	_choice_row.offset_top = -216       # room for two wrapped rows
+	_choice_row.offset_bottom = -140    # 8px clear of the log edge
+	_choice_row.alignment = FlowContainer.ALIGNMENT_CENTER
+	_choice_row.add_theme_constant_override("h_separation", 10)
+	_choice_row.add_theme_constant_override("v_separation", 6)
+	add_child(_choice_row)
+
 
 func _say(line: String) -> void:
 	_log_lines.append(line)
@@ -476,6 +498,18 @@ func _input(event: InputEvent) -> void:
 		return
 	if event is InputEventKey and event.pressed and not event.echo:
 		var kev: InputEventKey = event
+		# Number keys pick the Nth choice while an encounter or a town
+		# menu is up — a keyboard/pad path that never depends on
+		# finding a small button with the pointer.
+		if not _choice_btns.is_empty() \
+				and kev.keycode >= KEY_1 and kev.keycode <= KEY_9:
+			var pick: int = int(kev.keycode) - int(KEY_1)
+			if pick < _choice_btns.size():
+				var pb: Button = _choice_btns[pick] as Button
+				if pb != null and is_instance_valid(pb) and not pb.disabled:
+					pb.emit_signal("pressed")
+					get_viewport().set_input_as_handled()
+			return
 		match kev.keycode:
 			KEY_ESCAPE:
 				if _encounter.has("_town"):
@@ -545,39 +579,43 @@ func _maybe_encounter(terrain: String) -> void:
 
 
 func _show_encounter(e: Dictionary) -> void:
+	_clear_town_buttons()
 	_encounter = e
 	_say("— " + String(e.get("text", "")))
-	var y := 540.0
-	var idx := 0
+	var idx := 1
 	for ch_v in e.get("choices", []):
 		var ch: Dictionary = ch_v
-		var b := Button.new()
-		var label := "  · %s ·  " % String(ch.get("label", ""))
+		var label := "  %d · %s  " % [idx, String(ch.get("label", ""))]
+		var blocked := false
 		# Choices with a price on them · silver spends, lore gates.
 		var need_ag: int = int(ch.get("need_silver", 0))
 		var need_lo: int = int(ch.get("need_lore", 0))
 		if need_ag > 0:
-			label = "  · %s · %d ag ·  " % [String(ch.get("label", "")), need_ag]
-			b.disabled = int(_state.get("silver", 0)) < need_ag
+			label = "  %d · %s · %d ag  " % [idx, String(ch.get("label", "")), need_ag]
+			blocked = int(_state.get("silver", 0)) < need_ag
 		if need_lo > 0:
-			label = "  · %s · needs %d lore ·  " % [String(ch.get("label", "")), need_lo]
-			b.disabled = b.disabled or int(_state.get("lore", 0)) < need_lo
-		b.text = label
-		b.position = Vector2(60.0 + float(idx) * 320.0, y)
-		b.add_theme_font_size_override("font_size", 14)
-		_style_choice_btn(b)
-		b.pressed.connect(_resolve_encounter.bind(ch))
-		add_child(b)
-		_choice_btns.append(b)
+			label = "  %d · %s · needs %d lore  " % [idx, String(ch.get("label", "")), need_lo]
+			blocked = blocked or int(_state.get("lore", 0)) < need_lo
+		_add_choice_button(label, blocked, _resolve_encounter.bind(ch))
 		idx += 1
+	# NEVER leave the rider with a live encounter and no way out of
+	# it — that is precisely how the ride "stops". An encounter whose
+	# every choice is priced out of reach, or which shipped with no
+	# choices at all, still gets a way to ride on.
+	var any_live := false
+	for b_v in _choice_btns:
+		var b: Button = b_v as Button
+		if b != null and is_instance_valid(b) and not b.disabled:
+			any_live = true
+			break
+	if not any_live:
+		_add_choice_button("  · ride on ·  ", false,
+				_resolve_encounter.bind({"text": "you leave it where it lies."}))
 	queue_redraw()
 
 
 func _resolve_encounter(ch: Dictionary) -> void:
-	for b in _choice_btns:
-		if is_instance_valid(b):
-			b.queue_free()
-	_choice_btns.clear()
+	_clear_town_buttons()
 	var was_bounty := String(_encounter.get("id", "")).begins_with("bounty_")
 	_encounter = {}
 	# Up-front prices · silver spends on the choosing.
@@ -698,22 +736,43 @@ func _style_choice_btn(b: Button) -> void:
 
 
 func _clear_town_buttons() -> void:
-	for b in _choice_btns:
-		if is_instance_valid(b):
+	# remove_child BEFORE queue_free: queue_free is deferred, so a
+	# clear-then-rebuild in the same frame would otherwise leave the
+	# old buttons sitting in the row beside the new ones.
+	for b_v in _choice_btns:
+		var b: Node = b_v as Node
+		if b != null and is_instance_valid(b):
+			if b.get_parent() != null:
+				b.get_parent().remove_child(b)
 			b.queue_free()
 	_choice_btns.clear()
 
 
-func _town_button(label: String, x: float, disabled: bool, cb: Callable) -> void:
+func _town_button(label: String, disabled: bool, cb: Callable) -> void:
+	_add_choice_button(label, disabled, cb, 13)
+
+
+# The one place a choice button gets made. Everything lands in the
+# anchored row — no caller may pass pixel coordinates.
+func _add_choice_button(label: String, disabled: bool, cb: Callable,
+		font_size: int = 14) -> Button:
 	var b := Button.new()
 	b.text = label
-	b.position = Vector2(x, 540.0)
-	b.add_theme_font_size_override("font_size", 13)
+	b.add_theme_font_size_override("font_size", font_size)
 	b.disabled = disabled
+	b.focus_mode = Control.FOCUS_ALL
 	_style_choice_btn(b)
 	b.pressed.connect(cb)
-	add_child(b)
+	if _choice_row != null:
+		_choice_row.add_child(b)
+	else:
+		add_child(b)
 	_choice_btns.append(b)
+	# First enabled button takes focus so the pad/keyboard can act
+	# without hunting for the pointer.
+	if not disabled and _choice_btns.size() == 1:
+		b.grab_focus.call_deferred()
+	return b
 
 
 func _open_town_menu(t: Dictionary) -> void:
@@ -728,14 +787,14 @@ func _open_town_menu(t: Dictionary) -> void:
 	var book_cap: int = int(_services.get("bookstall_cap", 2))
 	var bought: Dictionary = _state.get("bookstall_bought", {})
 	var here: int = int(bought.get(String(t.get("id", "")), 0))
-	_town_button("  HOTEL · %d ag  " % hotel_cost, 40.0,
+	_town_button("  HOTEL · %d ag  " % hotel_cost,
 			silver < hotel_cost or grit >= 6, _town_hotel.bind(t))
-	_town_button("  SALOON · %d ag  " % saloon_cost, 220.0,
+	_town_button("  SALOON · %d ag  " % saloon_cost,
 			silver < saloon_cost, _town_saloon.bind(t))
-	_town_button("  BOOKSTALL · %d ag  " % book_cost, 410.0,
+	_town_button("  BOOKSTALL · %d ag  " % book_cost,
 			silver < book_cost or here >= book_cap, _town_bookstall.bind(t))
-	_town_button("  NOTICE BOARD  ", 640.0, false, _open_notice_board.bind(t))
-	_town_button("  · ride on ·  ", 860.0, false, _close_town)
+	_town_button("  NOTICE BOARD  ", false, _open_notice_board.bind(t))
+	_town_button("  · ride on ·  ", false, _close_town)
 	queue_redraw()
 
 
@@ -804,7 +863,7 @@ func _open_notice_board(t: Dictionary) -> void:
 			_say("the clerk eyes what you brought in. wrong board? any board pays · but you were just paid here, so: the wall, then.")
 		else:
 			_say("your notice, again, in the clerk's fair hand: %s" % String(bdef.get("notice", "")))
-		_town_button("  · back ·  ", 40.0, false, _open_town_menu.bind(t))
+		_town_button("  · back ·  ", false, _open_town_menu.bind(t))
 		return
 	var done: Array = _state.get("bounties_done", [])
 	var pool: Array = []
@@ -814,13 +873,13 @@ func _open_notice_board(t: Dictionary) -> void:
 			pool.append(b)
 	if pool.is_empty():
 		_say("the board is bare · you cleared it. the clerk has taken up whittling.")
-		_town_button("  · back ·  ", 40.0, false, _open_town_menu.bind(t))
+		_town_button("  · back ·  ", false, _open_town_menu.bind(t))
 		return
 	var hx: Array = t.get("hex", [0, 0])
 	var pick: Dictionary = pool[_hash_qr(int(hx[0]), int(hx[1]), done.size()) % pool.size()]
 	_say(String(pick.get("notice", "")))
-	_town_button("  TAKE THE NOTICE  ", 40.0, false, _take_notice.bind(t, pick))
-	_town_button("  · leave it ·  ", 280.0, false, _open_town_menu.bind(t))
+	_town_button("  TAKE THE NOTICE  ", false, _take_notice.bind(t, pick))
+	_town_button("  · leave it ·  ", false, _open_town_menu.bind(t))
 
 
 func _take_notice(t: Dictionary, bdef: Dictionary) -> void:

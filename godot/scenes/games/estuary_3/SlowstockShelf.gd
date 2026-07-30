@@ -64,6 +64,7 @@ const C_TXT       := Color(0.83, 0.79, 0.69, 1.00)
 const C_TXT_DIM   := Color(0.50, 0.47, 0.38, 1.00)
 const C_LOCK      := Color(0.30, 0.28, 0.24, 1.00)
 const C_BETA      := Color(0.42, 0.36, 0.24, 1.00)  # betamax case
+const C_SELECT    := Color(1.00, 0.93, 0.66, 1.00)  # selected-cart ring
 
 const SLOT_W := 44
 const SLOT_H := 128
@@ -89,6 +90,17 @@ var _card_manager_toggle: CheckButton = null
 var _card_scrapbook_btn: Button = null
 var _scrapbook_overlay: Node = null
 var _hovered_id: String = ""
+# SELECTION vs HOVER. The info card used to be hover-driven, which
+# made the MANUAL / SCRAPBOOK / MANAGER MODE buttons unreachable:
+# the moment the pointer left the cartridge to travel to them,
+# mouse_exited cleared the card and hid the buttons. And a single
+# click on a cartridge booted straight into the game, so there was
+# no way to stop on a stick and look at it. Now:
+#   click a cartridge      → SELECT it (card sticks, buttons stay)
+#   click it again / BOOT  → launch
+# Hover still previews, but ONLY while nothing is selected.
+var _selected_id: String = ""
+var _slot_panels: Dictionary = {}     # stick_id -> Panel (for the ring)
 var _manager_mode_on: bool = false
 # Double-fire guard: once picked has been emitted this shelf stays
 # inert.  Every reopen instantiates a fresh shelf (SlowstockBoot's
@@ -107,6 +119,11 @@ func _ready() -> void:
 
 	_load_data()
 	_build()
+	# Clicking bare shelf (not a cartridge) drops the selection and
+	# returns the card to its resting blurb.
+	gui_input.connect(func(ev: InputEvent) -> void:
+		if ev is InputEventMouseButton and (ev as InputEventMouseButton).pressed:
+			_deselect_cart())
 	# Pad support · give the d-pad somewhere to start on the shelf.
 	GamepadMgr.focus_first.call_deferred(self)
 
@@ -558,22 +575,69 @@ func _make_cartridge_slot(entry: Dictionary) -> Control:
 	glyph.position = Vector2(4, SLOT_H - 14)
 	panel.add_child(glyph)
 
-	# Interaction. Use a MouseArea via mouse_entered/exited on the panel.
+	# Interaction · hover previews, CLICK SELECTS, click-again boots.
+	# See the _selected_id comment at the top of the file: a hover-only
+	# card made MANUAL / SCRAPBOOK / MANAGER MODE physically
+	# unreachable, and a boot-on-first-click meant you could never stop
+	# on a cartridge and read about it.
+	_slot_panels[sid] = panel
 	panel.mouse_filter = Control.MOUSE_FILTER_STOP
+	panel.focus_mode = Control.FOCUS_ALL   # d-pad walks the shelf
 	panel.mouse_entered.connect(func() -> void:
+		if _selected_id != "":
+			return                          # a selection outranks hover
 		_on_cart_hover(sid)
 		var b := get_node_or_null("/root/SFXBank")
 		if b: b.play("cartridge_hover", 0.7))
 	panel.mouse_exited.connect(func() -> void: _on_cart_unhover(sid))
+	# Pad focus selects, exactly like a click — so A on a cartridge
+	# fills the card and the buttons become reachable with the d-pad.
+	panel.focus_entered.connect(func() -> void: _select_cart(sid))
 	panel.gui_input.connect(func(ev: InputEvent) -> void:
-		if ev is InputEventMouseButton and (ev as InputEventMouseButton).pressed:
-			if unlocked and not _boot_fired:
-				_boot_fired = true
-				var b := get_node_or_null("/root/SFXBank")
-				if b: b.play("cartridge_click")
-				picked.emit(sid, _manager_mode_on))
+		if ev is InputEventMouseButton and (ev as InputEventMouseButton).pressed \
+				and (ev as InputEventMouseButton).button_index == MOUSE_BUTTON_LEFT:
+			if _selected_id == sid:
+				_on_boot_pressed()          # second click on the same cart = boot
+			else:
+				_select_cart(sid))
 
 	return panel
+
+
+# Selecting a cartridge · pins the info card open so the pointer can
+# travel to MANUAL / SCRAPBOOK / BOOT without the card evaporating.
+func _select_cart(stick_id: String) -> void:
+	if _selected_id == stick_id:
+		return
+	_selected_id = stick_id
+	var b := get_node_or_null("/root/SFXBank")
+	if b: b.play("cartridge_click", 0.8)
+	_on_cart_hover(stick_id)
+	_refresh_slot_rings()
+	# Say out loud how to actually start it, now that one click no
+	# longer does. Locked carts keep their own explanatory hint.
+	if _card_status != null and _is_unlocked(stick_id):
+		_card_status.text += "   ·   click again to start"
+
+
+func _refresh_slot_rings() -> void:
+	# The selected cartridge wears a bright 2px ring; everything else
+	# keeps the border it was built with.
+	for k in _slot_panels.keys():
+		var sid: String = String(k)
+		var p: Panel = _slot_panels[k] as Panel
+		if p == null or not is_instance_valid(p):
+			continue
+		var sb: StyleBoxFlat = p.get_theme_stylebox("panel") as StyleBoxFlat
+		if sb == null:
+			continue
+		if sid == _selected_id:
+			sb.border_color = C_SELECT
+			sb.set_border_width_all(2)
+		else:
+			sb.border_color = C_ACCENT if _is_finished(sid) else Color(
+				sb.bg_color.r * 0.7, sb.bg_color.g * 0.7, sb.bg_color.b * 0.7, 1.0)
+			sb.set_border_width_all(1)
 
 
 func _make_empty_slot(entry: Dictionary) -> Control:
@@ -683,8 +747,20 @@ func _on_cart_hover(stick_id: String) -> void:
 
 
 func _on_cart_unhover(stick_id: String) -> void:
+	# A pinned selection survives the pointer leaving the cartridge —
+	# that trip is exactly how you reach MANUAL and BOOT.
+	if _selected_id != "":
+		return
 	if _hovered_id == stick_id:
 		_show_card_default()
+
+
+func _deselect_cart() -> void:
+	if _selected_id == "":
+		return
+	_selected_id = ""
+	_refresh_slot_rings()
+	_show_card_default()
 
 
 func _show_card_default() -> void:

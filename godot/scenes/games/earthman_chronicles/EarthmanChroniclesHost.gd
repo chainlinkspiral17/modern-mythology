@@ -34,13 +34,13 @@ const TALIKAN_SCENE := "res://scenes/games/earthman_chronicles/EarthmanTalikanHu
 
 # Astro-Cortex palette
 const C_BG           := Color(0.094, 0.094, 0.157, 1.0)
-const C_CORTEX       := Color(0.345, 0.188, 0.376, 1.0)
-const C_AMBER        := Color(0.760, 0.478, 0.251, 1.0)
-const C_GREEN        := Color(0.353, 0.620, 0.420, 1.0)
-const C_RED          := Color(0.702, 0.302, 0.259, 1.0)
+const C_CORTEX       := Color(0.145, 0.110, 0.180, 1.0)
+const C_AMBER        := Color(0.960, 0.740, 0.420, 1.0)
+const C_GREEN        := Color(0.460, 0.800, 0.560, 1.0)
+const C_RED          := Color(0.910, 0.530, 0.470, 1.0)
 const C_CREAM        := Color(0.912, 0.816, 0.565, 1.0)
 const C_WHITE        := Color(0.898, 0.867, 0.804, 1.0)
-const C_GRAY         := Color(0.282, 0.282, 0.314, 1.0)
+const C_GRAY         := Color(0.110, 0.118, 0.157, 1.0)
 
 var _manifest: Dictionary = {}
 var _run_state: Dictionary = {
@@ -204,8 +204,10 @@ func _build_title_screen() -> void:
 		tex_rect.set_anchors_and_offsets_preset(Control.PRESET_CENTER)
 		tex_rect.offset_left = -320
 		tex_rect.offset_right = 320
-		tex_rect.offset_top = -320
-		tex_rect.offset_bottom = -160
+		# Below the HUD band, above the panel — the logo used to start
+		# at y=40 and cut the "· CULVER CITY CA · REV 2" band in half.
+		tex_rect.offset_top = -290
+		tex_rect.offset_bottom = -150
 		tex_rect.stretch_mode = TextureRect.STRETCH_KEEP
 		_title_root.add_child(tex_rect)
 

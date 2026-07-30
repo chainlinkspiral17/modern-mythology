@@ -154,10 +154,16 @@ const ARCANA: Dictionary = {
 var _run_state: Dictionary = {}
 var _phase: String = "intro"    # intro | draw1 | draw2 | draw3 | close
 var _drawn: Array = []           # 3 card IDs
+# LAYOUT · one panel, built once, filled per beat. The old version
+# spawned a fresh absolutely-positioned node per beat, and the card
+# face's offset_top of -344 put it 344px ABOVE centre — straight
+# through the header, which it obscured ("· MORGAN LE FEY ·" cut in
+# half by a card). Nothing here is positioned by hand any more: the
+# card and the reading are two columns of one container.
 var _card_face_rect: TextureRect = null
 var _speaker_lbl: Label = null
 var _content_lbl: RichTextLabel = null
-var _choices_root: Control = null
+var _btn_row: HBoxContainer = null
 
 
 func _ready() -> void:
@@ -245,80 +251,101 @@ func _build_frame() -> void:
 					add_child(face)
 					break
 
-	# Header
+	# Header · owns the top band alone. Nothing else may be drawn in
+	# the first 64px of the tent.
 	var header := Label.new()
 	header.text = "· MORGAN LE FEY · FORTUNE-TELLER ·"
 	header.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 	header.add_theme_font_size_override("font_size", 18)
 	header.add_theme_color_override("font_color", C_GOLD)
 	header.set_anchors_preset(Control.PRESET_TOP_WIDE)
-	header.offset_top = 40
-	header.offset_bottom = 68
+	header.offset_top = 22
+	header.offset_bottom = 52
 	add_child(header)
 
-	# HeroImage · Morgan at her table with three cards, top-right of the tent
+	# HeroImage · Morgan at her table, top-right, clear of the panel.
 	var hero := HeroImage.new()
 	if hero.load_from("res://resources/games/vol7/fey_faire/hero_images/fortune_teller.json"):
 		var tex_rect := TextureRect.new()
-		tex_rect.texture = hero.texture(Vector2i(220, 124))
+		tex_rect.texture = hero.texture(Vector2i(180, 100))
 		tex_rect.set_anchors_preset(Control.PRESET_TOP_RIGHT)
-		tex_rect.position = Vector2(-240, 76)
-		tex_rect.size = Vector2(220, 124)
+		tex_rect.position = Vector2(-216, 72)
+		tex_rect.size = Vector2(180, 100)
 		tex_rect.stretch_mode = TextureRect.STRETCH_KEEP
+		tex_rect.texture_filter = CanvasItem.TEXTURE_FILTER_NEAREST
 		add_child(tex_rect)
 
-	# Panel
-	var panel := ColorRect.new()
-	panel.color = C_PANEL
+	# The reading panel · one box, built once, refilled per beat.
+	var panel := PanelContainer.new()
+	var pstyle := StyleBoxFlat.new()
+	pstyle.bg_color = C_PANEL
+	pstyle.border_color = Color(C_GOLD_DIM.r, C_GOLD_DIM.g, C_GOLD_DIM.b, 0.7)
+	pstyle.set_border_width_all(1)
+	pstyle.set_corner_radius_all(3)
+	pstyle.set_content_margin_all(22)
+	panel.add_theme_stylebox_override("panel", pstyle)
 	panel.set_anchors_and_offsets_preset(Control.PRESET_CENTER)
 	panel.offset_left = -420
 	panel.offset_right = 420
-	panel.offset_top = -220
-	panel.offset_bottom = 260
+	panel.offset_top = -172
+	panel.offset_bottom = 248
 	add_child(panel)
 
+	var row := HBoxContainer.new()
+	row.add_theme_constant_override("separation", 22)
+	panel.add_child(row)
 
-func _clear_narrative() -> void:
-	if _speaker_lbl != null and is_instance_valid(_speaker_lbl):
-		_speaker_lbl.queue_free()
-	if _content_lbl != null and is_instance_valid(_content_lbl):
-		_content_lbl.queue_free()
-	if _choices_root != null and is_instance_valid(_choices_root):
-		_choices_root.queue_free()
-	if _card_face_rect != null and is_instance_valid(_card_face_rect):
-		_card_face_rect.queue_free()
-	_card_face_rect = null
-	_speaker_lbl = null
-	_content_lbl = null
-	_choices_root = null
+	# Left column · the dealt card, at its own reserved width so the
+	# prose never reflows when a card turns.
+	var card_col := VBoxContainer.new()
+	card_col.custom_minimum_size = Vector2(116, 0)
+	row.add_child(card_col)
+	_card_face_rect = TextureRect.new()
+	_card_face_rect.custom_minimum_size = Vector2(116, 154)
+	_card_face_rect.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED
+	_card_face_rect.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
+	_card_face_rect.texture_filter = CanvasItem.TEXTURE_FILTER_NEAREST
+	_card_face_rect.visible = false
+	card_col.add_child(_card_face_rect)
 
+	# Right column · speaker, reading, then the advance button pinned
+	# to the bottom of the panel.
+	var text_col := VBoxContainer.new()
+	text_col.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	text_col.add_theme_constant_override("separation", 12)
+	row.add_child(text_col)
 
-func _write(speaker: String, text: String) -> void:
-	_clear_narrative()
 	_speaker_lbl = Label.new()
-	_speaker_lbl.text = "· " + speaker.to_upper() + " ·"
-	_speaker_lbl.set_anchors_preset(Control.PRESET_CENTER)
-	_speaker_lbl.offset_left = -400
-	_speaker_lbl.offset_right = 400
-	_speaker_lbl.offset_top = -200
-	_speaker_lbl.offset_bottom = -178
-	_speaker_lbl.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 	_speaker_lbl.add_theme_font_size_override("font_size", 15)
 	_speaker_lbl.add_theme_color_override("font_color", C_GOLD_DIM)
-	add_child(_speaker_lbl)
+	text_col.add_child(_speaker_lbl)
 
 	_content_lbl = RichTextLabel.new()
 	_content_lbl.bbcode_enabled = false
-	_content_lbl.fit_content = true
-	_content_lbl.set_anchors_preset(Control.PRESET_CENTER)
-	_content_lbl.offset_left = -400
-	_content_lbl.offset_right = 400
-	_content_lbl.offset_top = -170
-	_content_lbl.offset_bottom = 180
-	_content_lbl.text = _substitute(text)
+	_content_lbl.scroll_active = true
+	_content_lbl.size_flags_vertical = Control.SIZE_EXPAND_FILL
 	_content_lbl.add_theme_font_size_override("normal_font_size", 16)
 	_content_lbl.add_theme_color_override("default_color", C_CREAM)
-	add_child(_content_lbl)
+	text_col.add_child(_content_lbl)
+
+	_btn_row = HBoxContainer.new()
+	_btn_row.alignment = BoxContainer.ALIGNMENT_END
+	text_col.add_child(_btn_row)
+
+
+func _write(speaker: String, text: String) -> void:
+	# Refill the panel that already exists. No node is created here,
+	# so nothing can land on top of anything else.
+	if _speaker_lbl != null:
+		_speaker_lbl.text = "· " + speaker.to_upper() + " ·"
+	if _content_lbl != null:
+		_content_lbl.text = _substitute(text)
+	if _card_face_rect != null:
+		_card_face_rect.visible = false
+	if _btn_row != null:
+		for c in _btn_row.get_children():
+			_btn_row.remove_child(c)
+			c.queue_free()
 
 
 func _substitute(text: String) -> String:
@@ -332,21 +359,17 @@ func _substitute(text: String) -> String:
 
 
 func _render_advance(label: String, cb: Callable) -> void:
-	_choices_root = Control.new()
-	_choices_root.set_anchors_preset(Control.PRESET_CENTER)
-	_choices_root.offset_left = -140
-	_choices_root.offset_right = 140
-	_choices_root.offset_top = 200
-	_choices_root.offset_bottom = 260
-	add_child(_choices_root)
-
+	if _btn_row == null:
+		return
 	var btn := Button.new()
 	btn.text = label
 	btn.add_theme_font_size_override("font_size", 16)
 	btn.add_theme_color_override("font_color", C_GOLD)
+	btn.custom_minimum_size = Vector2(260, 40)
+	btn.focus_mode = Control.FOCUS_ALL
 	btn.pressed.connect(cb)
-	btn.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
-	_choices_root.add_child(btn)
+	_btn_row.add_child(btn)
+	btn.grab_focus.call_deferred()
 
 
 func _render_intro() -> void:
@@ -389,16 +412,11 @@ func _render_card(idx: int) -> void:
 		"· " + String(card.get("name", "?")) + " ·\n\n" + String(card.get("reading", ""))
 	)
 	# The turned card itself — Morgan deals a real face, not a name.
-	_card_face_rect = TextureRect.new()
-	_card_face_rect.texture = CARD_FACE.face(card_id, card, card_id)
-	_card_face_rect.set_anchors_and_offsets_preset(Control.PRESET_CENTER)
-	_card_face_rect.offset_left = -54
-	_card_face_rect.offset_right = 54
-	_card_face_rect.offset_top = -344
-	_card_face_rect.offset_bottom = -236
-	_card_face_rect.stretch_mode = TextureRect.STRETCH_KEEP
-	_card_face_rect.texture_filter = CanvasItem.TEXTURE_FILTER_NEAREST
-	add_child(_card_face_rect)
+	# It fills the panel's reserved left column; it is never placed
+	# over the header again.
+	if _card_face_rect != null:
+		_card_face_rect.texture = CARD_FACE.face(card_id, card, card_id)
+		_card_face_rect.visible = true
 	if idx < _drawn.size() - 1:
 		_render_advance("  · turn the next card ·  ", func() -> void: _render_card(idx + 1))
 	else:

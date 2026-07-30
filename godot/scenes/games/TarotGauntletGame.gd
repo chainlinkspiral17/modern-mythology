@@ -9203,9 +9203,8 @@ func _arcana_card_tex() -> ImageTexture:
 func _show_arcana_title_card() -> void:
 	var tex: ImageTexture = _arcana_card_tex()
 	if tex == null:
-		# No card art — still show the opening FULL LOG modal that
-		# normally chains off the title card's dismissal.
-		_open_pane_modal_by_key("log")
+		# No card art — go straight to the board. The opening
+		# narration is in the log panel either way.
 		return
 	if _title_overlay != null and is_instance_valid(_title_overlay):
 		_title_overlay.queue_free()
@@ -9217,12 +9216,24 @@ func _show_arcana_title_card() -> void:
 	dim.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
 	dim.mouse_filter = Control.MOUSE_FILTER_STOP
 	_title_overlay.add_child(dim)
+	# CENTERING · a CenterContainer over the full rect, not hand math.
+	# The old version anchored a VBoxContainer to PRESET_CENTER (which
+	# gives it a 0×0 rect, so its children laid out ragged-left) and
+	# then guessed the offset from card_h — the column landed
+	# off-centre and could run off the bottom on a short viewport.
+	# That is the "screen seems broken" on boot.
+	var center := CenterContainer.new()
+	center.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
+	center.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	_title_overlay.add_child(center)
 	var vb := VBoxContainer.new()
 	vb.add_theme_constant_override("separation", 10)
-	vb.set_anchors_preset(Control.PRESET_CENTER)
-	_title_overlay.add_child(vb)
+	vb.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	center.add_child(vb)
 	var view: Vector2 = get_viewport_rect().size
-	var card_h: float = minf(view.y * 0.62, 480.0)
+	# The card takes at most half the height so the title, the loss
+	# preview and the prompt all fit under it at any window size.
+	var card_h: float = clampf(view.y * 0.46, 200.0, 400.0)
 	var img := TextureRect.new()
 	img.texture = tex
 	img.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED
@@ -9233,16 +9244,34 @@ func _show_arcana_title_card() -> void:
 	vb.add_child(img)
 	var t := Label.new()
 	t.text = String(_setup.get("title", ""))
+	t.custom_minimum_size.x = 460.0
 	t.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 	t.add_theme_font_size_override("font_size", 24)
 	t.add_theme_color_override("font_color", C_ACCENT)
 	vb.add_child(t)
 	var st := Label.new()
 	st.text = String(_setup.get("subtitle", ""))
+	st.custom_minimum_size.x = 460.0
+	st.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 	st.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 	st.add_theme_font_size_override("font_size", 14)
 	st.add_theme_color_override("font_color", C_TEXT)
 	vb.add_child(st)
+	# The scene-setting prose lives HERE now, on the one card the
+	# player is already reading. It used to arrive as a second
+	# full-screen FULL LOG modal chained off this card's dismissal,
+	# so the first click never revealed the board — it swapped one
+	# wall of text for another ("after a click, it goes to the log").
+	var scene_line: String = String(_setup.get("scene_description", "")).strip_edges()
+	if scene_line != "":
+		var sc := Label.new()
+		sc.text = scene_line
+		sc.custom_minimum_size.x = 460.0
+		sc.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+		sc.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+		sc.add_theme_font_size_override("font_size", 12)
+		sc.add_theme_color_override("font_color", Color(C_ACCENT.r, C_ACCENT.g, C_ACCENT.b, 0.82))
+		vb.add_child(sc)
 	# Named-loss preview — losses as pedagogy, surfaced BEFORE play.
 	# The finale titles are the ways this reading goes wrong.
 	var loss_titles: Array[String] = []
@@ -9264,22 +9293,20 @@ func _show_arcana_title_card() -> void:
 		vb.add_child(losses)
 	var hint := Label.new()
 	hint.text = "— click to begin —"
+	hint.custom_minimum_size.x = 460.0
 	hint.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 	hint.add_theme_font_size_override("font_size", 12)
 	hint.add_theme_color_override("font_color", Color(C_TEXT.r, C_TEXT.g, C_TEXT.b, 0.55))
 	vb.add_child(hint)
-	# Recentre the column after size resolves (PRESET_CENTER anchors
-	# to a point; give the box its size then offset by half).
-	vb.position = Vector2(view.x * 0.5, view.y * 0.5) - Vector2(card_h * 0.33, card_h * 0.56)
 	dim.gui_input.connect(func(ev: InputEvent) -> void:
 		if ev is InputEventMouseButton and (ev as InputEventMouseButton).pressed:
 			if _title_overlay != null and is_instance_valid(_title_overlay):
 				SFXBank.play("card_place", 0.7)
 				_title_overlay.queue_free()
-				_title_overlay = null
-				# First-boot sequence: the opening FULL LOG modal
-				# follows the title card instead of hiding beneath it.
-				_open_pane_modal_by_key("log"))
+				_title_overlay = null)
+				# Dismissing the card lands you on the BOARD. The
+				# opening narration is already in the side log and on
+				# the card itself; it no longer opens a second modal.
 	add_child(_title_overlay)
 	SFXBank.play("card_flip", 0.8)
 
