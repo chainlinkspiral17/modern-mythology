@@ -32,11 +32,27 @@ func _ready() -> void:
 	_build()
 
 
+# The endpaper plate behind the type — one dyed sheet per volume,
+# three variants so consecutive chapters never repeat. The flat
+# field stays underneath as the fallback (and as the floor the
+# plate's deckle edges fall to).
+const PLATE_DIR := "res://assets/vn/plates/"
+const PLATE_VARIANTS := 3
+var _plate: TextureRect = null
+
+
 func _build() -> void:
 	var bg := ColorRect.new()
 	bg.color = Color(0.01, 0.008, 0.005, 1.0)
 	bg.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
 	add_child(bg)
+
+	_plate = TextureRect.new()
+	_plate.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
+	_plate.stretch_mode = TextureRect.STRETCH_SCALE
+	_plate.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	_plate.visible = false
+	add_child(_plate)
 
 	_center = VBoxContainer.new()
 	_center.set_anchors_and_offsets_preset(Control.PRESET_CENTER)
@@ -92,6 +108,25 @@ func _rule() -> ColorRect:
 	r.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	r.size_flags_vertical = Control.SIZE_SHRINK_CENTER
 	return r
+
+
+# vol/chapter pick the sheet; the plate breathes in a hair slower
+# than the type so the page feels laid down, not switched on.
+func set_plate(vol: int, chapter: int) -> void:
+	if _plate == null:
+		return
+	var path := PLATE_DIR + "chapter_v%d_%d.png" % [vol, absi(chapter) % PLATE_VARIANTS]
+	if not ResourceLoader.exists(path):
+		return
+	var tex: Texture2D = load(path) as Texture2D
+	if tex == null:
+		return
+	_plate.texture = tex
+	_plate.visible = true
+	_plate.modulate.a = 0.0
+	var tw := create_tween()
+	tw.tween_property(_plate, "modulate:a", 1.0, 1.0)\
+		.set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT)
 
 
 func present(kicker: String, title: String, callback: Callable) -> void:

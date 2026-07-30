@@ -495,3 +495,27 @@ or "flat/unreal," plus a full mood-direction sweep of vol5/6/7.
   ASCII ghost; letterbox grammar is already correct (bars on tight
   shots, clear on establishes) — the roadmap's "letterbox on
   establish~" idea is superseded by that reading.
+
+### 2026-07-28 · the chapter card gets a sheet · endpaper plates
+
+- **The most-seen page deserved more than a black field.** 71
+  chapter boundaries across vols 5-7 rendered ornaments + type on
+  flat near-black. Now each volume has a dyed ENDPAPER behind the
+  type — laid paper (wire lines + chain lines), a marbler's comb
+  raked in the volume's own ink, sparse foxing, and a deckle
+  vignette. Vol 5 warm brass, vol 6 slate blue, vol 7 deep green;
+  three variants per volume keyed off chapter number so
+  consecutive cards never repeat the sheet.
+- **Procedural texture beats painted illustration for backdrops
+  behind type.** Same lesson as the gauntlet floor plates: art
+  with no depicted SUBJECT can't misalign, can't date, and can't
+  fight the words. Reserve the painted-art gate for art that is
+  the subject.
+- **Two render bugs worth remembering:** ellipse OUTLINES at
+  increasing alpha draw RINGS, not a radial gradient (build the
+  falloff as a real distance ramp at low res and scale it up);
+  and per-channel color jitter reads as rainbow noise — jitter
+  LUMINANCE with one shared delta so a material stays one
+  substance.
+- The plate fades in over 1.0s against the type's 0.7s so the page
+  reads as laid down, not switched on.
