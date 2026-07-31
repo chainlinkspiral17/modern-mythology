@@ -270,9 +270,17 @@ func _quadrant_of(p: Vector2i) -> String:
 
 func _apply_weather_bites() -> void:
 	# North cold · her aura takes grit on woven-deterministic hexes.
-	if _in_aura("north", 4) and _hash_qr(_pos.x, _pos.y, 11) % 3 == 0:
-		_state["grit"] = maxi(0, int(_state.get("grit", 6)) - 1)
-		_say("· the cold takes a bite · GRIT %d ·" % int(_state.get("grit", 0)))
+	# THE OUTFIT · the long coat eats the ride's first cold bite, and
+	# the second canteen widens the interval the north bites on.
+	var north_mod: int = 3 + StickLoop.effect("sisters_wyrd", "bite_grace")
+	if _in_aura("north", 4) and _hash_qr(_pos.x, _pos.y, 11) % north_mod == 0:
+		if StickLoop.flag("sisters_wyrd", "warm_coat") \
+				and not bool(_state.get("coat_ate_a_bite", false)):
+			_state["coat_ate_a_bite"] = true
+			_say("· the cold reaches for you and finds oilcloth · the coat earns itself ·")
+		else:
+			_state["grit"] = maxi(0, int(_state.get("grit", 6)) - 1)
+			_say("· the cold takes a bite · GRIT %d ·" % int(_state.get("grit", 0)))
 	# The hat you parleyed away · the sun collects on open ground.
 	if _dealt_verb("north") == "parley":
 		var terrain := _terrain_at(_pos.x, _pos.y)
@@ -351,9 +359,13 @@ func _refresh_hud() -> void:
 	# The reckoning home · the east can take it from you two ways:
 	# her parley price removes it, her red aura makes it lie.
 	var home_txt := "%d hexes" % _hex_dist(_pos, Vector2i.ZERO)
-	if _dealt_verb("east") == "parley":
+	# THE OUTFIT · brass doesn't lie. The east sister can take the
+	# memory of home or make the light misreport it; the compass
+	# answers anyway.
+	var brass := StickLoop.flag("sisters_wyrd", "dead_reckoning")
+	if _dealt_verb("east") == "parley" and not brass:
 		home_txt = "you'd have to ask"
-	elif _in_aura("east"):
+	elif _in_aura("east") and not brass:
 		var lie: int = maxi(0, _hex_dist(_pos, Vector2i.ZERO) + (_hash_qr(_pos.x, _pos.y, 19) % 7) - 3)
 		home_txt = "%d hexes, says the light" % lie
 	_hud.text = "GRIT %d · SILVER %d · LORE %d      sisters dealt · %d of 4      home · %s" % [
@@ -375,6 +387,16 @@ func _try_step(dq: int, dr: int) -> void:
 	var nq: int = _pos.x + dq
 	var nr: int = _pos.y + dr
 	if _hex_dist(Vector2i(nq, nr), Vector2i.ZERO) > MAP_R:
+		# THE OUTFIT · THE EIGHTH POINT · you have crossed once and
+		# kept the memory, so the edge stops making you ask three
+		# times. Buying it turns a one-time ritual into a route.
+		if StickLoop.flag("sisters_wyrd", "open_road") \
+				and not bool(_state.get("shimmer_crossed", false)):
+			_state["shimmer_crossed"] = true
+			_say("you ride at the shimmer the way you would ride at a gate, and it opens, sullen about it. the eighth point knew the way.")
+			_sfx("radio_static", 0.25)
+			OneironauticsTokens.add("wyrd_shimmer_crossed")
+			return
 		# The hidden hex · push into the shimmer three times from the
 		# same edge hex, once ever, and the repeat shows itself.
 		if not bool(_state.get("shimmer_crossed", false)):
@@ -690,7 +712,10 @@ func _find_bounty(bid: String) -> Dictionary:
 
 func _town_surcharge() -> int:
 	# Widow-weather · a town in a DRAWn sister's quadrant charges
-	# for its grief.
+	# for its grief. THE OUTFIT · the mourning veil says you are
+	# grieving too, and the surcharge is quietly not mentioned.
+	if StickLoop.flag("sisters_wyrd", "mourning_veil"):
+		return 0
 	return 1 if _dealt_verb(_quadrant_of(_pos)) == "draw" else 0
 
 
@@ -787,12 +812,20 @@ func _open_town_menu(t: Dictionary) -> void:
 	var book_cap: int = int(_services.get("bookstall_cap", 2))
 	var bought: Dictionary = _state.get("bookstall_bought", {})
 	var here: int = int(bought.get(String(t.get("id", "")), 0))
+	# THE OUTFIT · CREDIT AT THE BOARDS · five townships, one name in
+	# five ledgers. Two silver of slack, once per ride, so a bad
+	# stretch doesn't hard-lock you out of every service in town.
+	var slack := 0
+	if StickLoop.flag("sisters_wyrd", "town_credit") \
+			and not bool(_state.get("credit_spent", false)):
+		slack = 2
+	var purse: int = silver + slack
 	_town_button("  HOTEL · %d ag  " % hotel_cost,
-			silver < hotel_cost or grit >= 6, _town_hotel.bind(t))
+			purse < hotel_cost or grit >= 6, _town_hotel.bind(t))
 	_town_button("  SALOON · %d ag  " % saloon_cost,
-			silver < saloon_cost, _town_saloon.bind(t))
+			purse < saloon_cost, _town_saloon.bind(t))
 	_town_button("  BOOKSTALL · %d ag  " % book_cost,
-			silver < book_cost or here >= book_cap, _town_bookstall.bind(t))
+			purse < book_cost or here >= book_cap, _town_bookstall.bind(t))
 	_town_button("  NOTICE BOARD  ", false, _open_notice_board.bind(t))
 	_town_button("  · ride on ·  ", false, _close_town)
 	queue_redraw()
@@ -805,8 +838,19 @@ func _close_town() -> void:
 	queue_redraw()
 
 
+## Pay for a service. When the purse can't cover it, the boards'
+## credit does — once per ride, and the clerk says so out loud.
+func _pay(cost: int) -> void:
+	var have: int = int(_state.get("silver", 0))
+	if cost > have and StickLoop.flag("sisters_wyrd", "town_credit") \
+			and not bool(_state.get("credit_spent", false)):
+		_state["credit_spent"] = true
+		_say("· the clerk writes your name down instead of taking coin · that was the once ·")
+	_state["silver"] = maxi(0, have - cost)
+
+
 func _town_hotel(t: Dictionary) -> void:
-	_state["silver"] = maxi(0, int(_state.get("silver", 0)) - int(_services.get("hotel_cost", 2)) - _town_surcharge())
+	_pay(int(_services.get("hotel_cost", 2)) + _town_surcharge())
 	_state["grit"] = maxi(int(_state.get("grit", 0)), 6)
 	_sfx("coin", 0.5)
 	_say(String(_services.get("hotel_text", "")))
@@ -814,7 +858,7 @@ func _town_hotel(t: Dictionary) -> void:
 
 
 func _town_saloon(t: Dictionary) -> void:
-	_state["silver"] = maxi(0, int(_state.get("silver", 0)) - int(_services.get("saloon_cost", 1)) - _town_surcharge())
+	_pay(int(_services.get("saloon_cost", 1)) + _town_surcharge())
 	_state["grit"] = clampi(int(_state.get("grit", 0)) + 1, 0, 9)
 	_sfx("coin", 0.4)
 	_say(String(_services.get("saloon_text", "")))
@@ -823,7 +867,7 @@ func _town_saloon(t: Dictionary) -> void:
 
 
 func _town_bookstall(t: Dictionary) -> void:
-	_state["silver"] = maxi(0, int(_state.get("silver", 0)) - int(_services.get("bookstall_cost", 2)) - _town_surcharge())
+	_pay(int(_services.get("bookstall_cost", 2)) + _town_surcharge())
 	_state["lore"] = int(_state.get("lore", 0)) + 1
 	var bought: Dictionary = _state.get("bookstall_bought", {})
 	var tid := String(t.get("id", ""))

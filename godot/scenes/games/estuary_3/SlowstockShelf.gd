@@ -85,7 +85,9 @@ var _card_blurb:    Label = null
 var _card_status:   Label = null
 var _card_boot_btn: Button = null
 var _card_manual_btn: Button = null
+var _card_outfit_btn: Button = null
 var _manual_overlay: Control = null
+var _outfit_overlay: Control = null
 var _card_manager_toggle: CheckButton = null
 var _card_scrapbook_btn: Button = null
 var _scrapbook_overlay: Node = null
@@ -448,6 +450,15 @@ func _build() -> void:
 	_card_manual_btn.pressed.connect(_on_manual_pressed)
 	card_col.add_child(_card_manual_btn)
 
+	# THE OUTFIT · the shared SPEND screen. Shows on any cartridge
+	# that ships a loadout.json — the middle link of the StickLoop
+	# contract (earn on a run, spend here, carry into the next one).
+	_card_outfit_btn = Button.new()
+	_card_outfit_btn.text = "  OUTFIT  "
+	_card_outfit_btn.visible = false
+	_card_outfit_btn.pressed.connect(_on_outfit_pressed)
+	card_col.add_child(_card_outfit_btn)
+
 	# Default card state (nothing hovered)
 	_show_card_default()
 
@@ -701,6 +712,9 @@ func _on_cart_hover(stick_id: String) -> void:
 	if _card_manager_toggle: _card_manager_toggle.visible = false
 	if _card_scrapbook_btn: _card_scrapbook_btn.visible = false
 	if _card_manual_btn: _card_manual_btn.visible = _manual_path_for(stick_id) != ""
+	# OUTFIT rides with UNLOCKED carts only — you cannot outfit a
+	# stick you have never played.
+	if _card_outfit_btn: _card_outfit_btn.visible = unlocked and StickLoop.has_loadout(stick_id)
 	if not unlocked:
 		_card_status.text = "  " + _locked_hint(stick_id)
 		_card_status.add_theme_color_override("font_color", C_LOCK)
@@ -766,6 +780,7 @@ func _deselect_cart() -> void:
 func _show_card_default() -> void:
 	_hovered_id = ""
 	if _card_manual_btn: _card_manual_btn.visible = false
+	if _card_outfit_btn: _card_outfit_btn.visible = false
 	_card_title.text = "· hover a cartridge"
 	_card_subtitle.text = ""
 	_card_meta.text = ""
@@ -780,6 +795,7 @@ func _show_card_default() -> void:
 func _show_card_empty_note(note: String) -> void:
 	_hovered_id = ""
 	if _card_manual_btn: _card_manual_btn.visible = false
+	if _card_outfit_btn: _card_outfit_btn.visible = false
 	_card_title.text = "· not a slowstick"
 	_card_subtitle.text = ""
 	_card_meta.text = ""
@@ -826,6 +842,24 @@ func _on_manual_pressed() -> void:
 	add_child(_manual_overlay)
 	_manual_overlay.connect("closed", func() -> void: _manual_overlay = null)
 	_manual_overlay.call("boot", path)
+
+
+func _on_outfit_pressed() -> void:
+	if _hovered_id == "" or (_outfit_overlay != null and is_instance_valid(_outfit_overlay)):
+		return
+	if not StickLoop.has_loadout(_hovered_id):
+		return
+	var sb := get_node_or_null("/root/SFXBank")
+	if sb: sb.play("page_turn", 0.7)
+	var vs = load("res://scripts/StickOutfitViewer.gd")
+	if vs == null:
+		return
+	var title: String = String((_manifests.get(_hovered_id, {}) as Dictionary)
+			.get("shelf", {}).get("label_title", _hovered_id.to_upper()))
+	_outfit_overlay = vs.new()
+	add_child(_outfit_overlay)
+	_outfit_overlay.connect("closed", func() -> void: _outfit_overlay = null)
+	_outfit_overlay.call("boot", _hovered_id, title)
 
 
 func _scrapbook_path_for(stick_id: String) -> String:

@@ -189,6 +189,70 @@ unit. If a slowstick has multiple progression axes, pick one
 canonical routing axis and store it in `_run_state` explicitly at
 each state transition.
 
+## THE LOOP — every stick earns, spends, and carries (hard rule)
+
+The DEPTH FLOOR made single runs deep. It did nothing about the
+space *between* runs: you finished, you got an ending, and the next
+run started identical. Reported 2026-07-31 as *"need gameplay loops
+in each individual game, so the progression and reward and
+customization feed back into each other."*
+
+Every slowstick now implements the same four-part contract, through
+the shared `StickLoop` (`scenes/games/estuary_3/StickLoop.gd`, static
++ file-backed at `user://stick_loop.json`, same shape as
+`OneironauticsTokens`):
+
+| part | where | what |
+|---|---|---|
+| **EARN** | end of a run | `StickLoop.finish_run(id, {"credit": n, "outcome": s})` |
+| **SPEND** | shelf → OUTFIT | `resources/games/vol7/<stick>/loadout.json` |
+| **CARRY** | stick boot | `StickLoop.effect(id, key)` / `StickLoop.flag(id, key)` |
+| **MASTER** | automatic | `needs_mastery` on an upgrade gates it behind N finished runs |
+
+### The rules that keep it from being a treadmill
+
+1. **Every tier ships at least one FLAG, not just numbers.** A number
+   makes the same run easier. A flag opens a verb or a route — the
+   long coat eats a cold bite (number-ish), but the brass compass
+   makes the east sister unable to lie to you, and the eighth point
+   turns a one-time ritual into a permanent road. Numbers alone are
+   not customization; they are a difficulty slider you paid for.
+2. **The currency is the stick's own noun.** SILVER, friendship,
+   catch weight, depth. Never "points". `currency.name` in the
+   loadout, shown everywhere the OUTFIT screen shows a price.
+3. **A locked row states its unlock.** `blocked_reason()` returns the
+   exact sentence ("finish 3 runs first", "needs THE LONG COAT"), and
+   the OUTFIT screen prints it. The shop doubles as the roadmap.
+4. **Earning must name what paid.** `earn_line` in the loadout says
+   how credit is made, in the stick's voice, so a bad run still
+   teaches you the economy.
+5. **Nothing bought may be required.** Every ending stays reachable
+   on a bare loadout. The outfit changes HOW, never WHETHER.
+
+### Legibility is part of the loop
+
+A reward you can't evaluate isn't a reward. Where a stick asks
+"engage or not?", it must show the answer **relative to the player's
+current strength**, not in absolute terms. Fey Faire's midway prints
+a five-pip read plus a sentence against the party you are actually
+carrying — tier alone told you what the fey *is*, never whether *you*
+should walk in.
+
+Calibrate that read against the real data before shipping it. The
+first Fey Faire model summed the party and scored 700 against a
+median tier-3 of 235 — every encounter read "in hand" by mid-game.
+The model that matches the roster is *strongest standing member +15%
+per extra body*, with a solo floor at the median tier-1 weight.
+**Run the numbers over the actual JSON, in every band, at both ends
+of the campaign.** A threat readout that lies is worse than none.
+
+### Status across the catalog
+
+Wired: **Sisters Wyrd** (9-item outfit, silver banked per ride).
+Everything else still needs its `loadout.json` and its two call
+sites. The engine, the OUTFIT screen and the shelf button are done
+and generic — a new stick needs data plus two lines of code.
+
 ## Recent lessons
 
 ### 2026-07-22 · SALMONBERRY · an RPG-of-a-life on the Estuary-1 loop

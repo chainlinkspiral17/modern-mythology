@@ -40,6 +40,25 @@ const C_GOLD      := Color(0.973, 0.784, 0.282, 1.0)
 const C_GOLD_DIM  := Color(0.72, 0.52, 0.26, 1.0)
 const C_RECRUITED := Color(0.62, 0.82, 0.55, 1.0)
 
+# ─── THE READ · how hard is this one, for ME, right now ──────────
+#
+# Every booth on the midway used to announce only its court and its
+# tier, which tells you what the fey IS but nothing about whether
+# YOU should walk in. Tier 2 with a full party is a stroll; tier 2 on
+# night one alone is a mugging. The midway now reads the encounter
+# RELATIVE to the party you are actually carrying, in five bands with
+# words attached, so the decision to engage is an informed one.
+#
+# The number is deliberately coarse. It is a read, not a solver — the
+# Faire should never tell you it has done your thinking for you.
+const READ_BANDS: Array = [
+	{"at": 2.00, "word": "you have this one in hand", "col": Color(0.55, 0.84, 0.55)},
+	{"at": 1.30, "word": "a fair fight",              "col": Color(0.72, 0.86, 0.50)},
+	{"at": 0.90, "word": "an even thing · either way", "col": Color(0.95, 0.83, 0.42)},
+	{"at": 0.60, "word": "you are outmatched here",   "col": Color(0.93, 0.60, 0.36)},
+	{"at": 0.00, "word": "do not · not tonight",      "col": Color(0.90, 0.40, 0.40)},
+]
+
 # Midway map · grown from the 48-cell layout · ~42 cells, 40 booths.
 # Each cell: id, name, description, fey (or null if no booth),
 # neighbors (adjacency).
@@ -638,9 +657,15 @@ func _render_current_cell() -> void:
 			else:
 				booth_lbl.text = "· " + String(fey.get("name", fey_id)) + " · " + String(fey.get("court", "?")) + " · tier " + str(int(fey.get("tier", 1))) + " ·"
 				booth_lbl.add_theme_color_override("font_color", C_ROSE)
+				# THE READ · this fey measured against the party you
+				# are actually carrying, so you can decide whether to
+				# walk in. Goes under the name, in the row's own column.
+				booth_lbl.vertical_alignment = VERTICAL_ALIGNMENT_CENTER
 			booth_lbl.add_theme_font_size_override("font_size", 15)
 			booth_lbl.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 			booth_row.add_child(booth_lbl)
+			if not is_recruited:
+				booth_row.add_child(_make_threat_read(fey))
 
 			if not is_recruited:
 				# A failed negotiation closes the flap until the night
@@ -827,6 +852,98 @@ func _render_current_cell() -> void:
 # ─── THE OFF SEASON · the park after close ───────────────────────
 # Winter overlay + booths without commerce. The recruited party is
 # the only crowd; everything else is laced shut. Exit by the gate.
+
+# ─── THE READ · challenge, relative to who you're carrying ───────
+
+## One fey's weight, from its own combat line. Strike and resist are
+## what actually decides a fight, so they carry the multipliers;
+## charm and wit matter because a negotiation is a fight too.
+func _fey_weight(fey: Dictionary) -> float:
+	var s: Dictionary = fey.get("stats", {})
+	return float(int(s.get("hp", 20)))            \
+		+ 3.0 * float(int(s.get("strike", 5)))    \
+		+ 2.0 * float(int(s.get("resist", 5)))    \
+		+ 1.0 * float(int(s.get("charm", 5)))     \
+		+ 1.0 * float(int(s.get("wit", 5)))
+
+
+## What you can actually field.
+##
+## NOT a sum. Summing the party made a mid-game roster read "in hand"
+## against literally everything — checked against the real roster,
+## four tier-2 recruits scored 700 against a median tier-3 of 235.
+## A fey fights the party, so party size can't multiply linearly.
+##
+## The model that matches the roster: your STRONGEST standing member
+## carries the encounter, and each additional body adds 15%. The solo
+## floor is set at the median tier-1 weight, so an unaccompanied
+## night one reads "even" against a tier 1 (true — you can take one)
+## and "do not" against a tier 2 (also true).
+const SOLO_FLOOR := 62.0
+const ASSIST_PER_BODY := 0.15
+const STANDING_MAX := 4
+
+func _party_weight() -> float:
+	var weights: Array[float] = []
+	for fid_v in _run_state.get("recruited_feys", []):
+		var f: Dictionary = _feys_by_id.get(String(fid_v), {})
+		if not f.is_empty():
+			weights.append(_fey_weight(f))
+	weights.sort()
+	weights.reverse()
+	var standing: int = mini(STANDING_MAX, weights.size())
+	var best: float = SOLO_FLOOR
+	if standing > 0:
+		best = maxf(SOLO_FLOOR, weights[0])
+	return best * (1.0 + ASSIST_PER_BODY * float(maxi(0, standing - 1)))
+
+
+func _read_band(fey: Dictionary) -> Dictionary:
+	var theirs: float = maxf(1.0, _fey_weight(fey))
+	var ratio: float = _party_weight() / theirs
+	for b_v in READ_BANDS:
+		var b: Dictionary = b_v
+		if ratio >= float(b.get("at", 0.0)):
+			return b
+	return READ_BANDS[READ_BANDS.size() - 1]
+
+
+## Five pips and a sentence. The pips give the glance; the sentence
+## gives the decision. Both come from the same band so they can never
+## disagree with each other.
+func _make_threat_read(fey: Dictionary) -> Control:
+	var band := _read_band(fey)
+	var col: Color = band.get("col", C_ROSE)
+	var filled := 1
+	for i in range(READ_BANDS.size()):
+		if READ_BANDS[i] == band:
+			filled = READ_BANDS.size() - i
+			break
+
+	var col_box := VBoxContainer.new()
+	col_box.add_theme_constant_override("separation", 2)
+	col_box.size_flags_horizontal = Control.SIZE_SHRINK_END
+
+	var pips := HBoxContainer.new()
+	pips.add_theme_constant_override("separation", 3)
+	pips.alignment = BoxContainer.ALIGNMENT_END
+	col_box.add_child(pips)
+	for i in range(READ_BANDS.size()):
+		var pip := ColorRect.new()
+		pip.custom_minimum_size = Vector2(14, 6)
+		pip.color = col if i < filled else Color(col.r, col.g, col.b, 0.18)
+		pips.add_child(pip)
+
+	var word := Label.new()
+	word.text = String(band.get("word", ""))
+	word.horizontal_alignment = HORIZONTAL_ALIGNMENT_RIGHT
+	word.add_theme_font_size_override("font_size", 12)
+	word.add_theme_color_override("font_color", col)
+	col_box.add_child(word)
+
+	col_box.tooltip_text = "measured against the four strongest feys you are carrying · a read, not a promise"
+	return col_box
+
 
 func _render_off_season_cell(v: VBoxContainer, cell: Dictionary) -> void:
 	var cid := String(cell.get("name", _current_cell))

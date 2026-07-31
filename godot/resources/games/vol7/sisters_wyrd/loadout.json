@@ -1,0 +1,124 @@
+{
+  "notes": [
+    "THE OUTFIT · Sisters Wyrd's half of the shared StickLoop contract.",
+    "EARN: silver you rode home with, plus 4 per sister dealt with,",
+    "plus 6 for reaching the loom. SPEND: this list, from the shelf's",
+    "OUTFIT screen. CARRY: WyrdHexcrawl reads effects[] at boot and",
+    "checks flags[] during the ride.",
+    "",
+    "The rule from the playbook: every tier carries at least one FLAG,",
+    "not just numbers. A flag opens a verb or a route — that is the",
+    "difference between customization and a stat treadmill. Tier 1 has",
+    "warm_coat / dead_reckoning, tier 2 has notice_pocket / hard_ride,",
+    "tier 3 has open_road / mourning_veil.",
+    "",
+    "Fiction check (per the aesthetic bible): all nine are things a",
+    "1993 rider could put in a saddlebag. Nothing here is a stat card."
+  ],
+  "currency": {
+    "id": "silver",
+    "name": "SILVER",
+    "earn_line": "silver you rode home with · sisters dealt pay 4 each · the loom pays 6"
+  },
+  "upgrades": [
+    {
+      "id": "long_coat",
+      "name": "THE LONG COAT",
+      "cost": 8,
+      "tier": 1,
+      "needs_mastery": 0,
+      "requires": [],
+      "blurb": "oilcloth to the boot-top. the first cold that would have taken its cut each ride doesn't.",
+      "effects": {"start_grit": 1},
+      "flags": ["warm_coat"]
+    },
+    {
+      "id": "second_canteen",
+      "name": "THE SECOND CANTEEN",
+      "cost": 6,
+      "tier": 1,
+      "needs_mastery": 0,
+      "requires": [],
+      "blurb": "water for two, carried by one. the dry country asks less often.",
+      "effects": {"start_grit": 2, "bite_grace": 2},
+      "flags": []
+    },
+    {
+      "id": "brass_compass",
+      "name": "THE BRASS COMPASS",
+      "cost": 7,
+      "tier": 1,
+      "needs_mastery": 0,
+      "requires": [],
+      "blurb": "eight points, four of them labelled. the east sister can make the light lie; she cannot make brass lie.",
+      "effects": {},
+      "flags": ["dead_reckoning"]
+    },
+    {
+      "id": "dog_eared_paperback",
+      "name": "THE DOG-EARED PAPERBACK",
+      "cost": 6,
+      "tier": 2,
+      "needs_mastery": 1,
+      "requires": [],
+      "blurb": "somebody's copy, read to pieces. you start the ride already knowing one thing.",
+      "effects": {"start_lore": 1},
+      "flags": []
+    },
+    {
+      "id": "coat_pocket",
+      "name": "THE INSIDE POCKET",
+      "cost": 9,
+      "tier": 2,
+      "needs_mastery": 1,
+      "requires": ["long_coat"],
+      "blurb": "deep enough for two notices. the boards start describing you to each other.",
+      "effects": {},
+      "flags": ["notice_pocket"]
+    },
+    {
+      "id": "good_horse",
+      "name": "A BETTER HORSE",
+      "cost": 12,
+      "tier": 2,
+      "needs_mastery": 2,
+      "requires": [],
+      "blurb": "she has one hard ride in her per day, and she knows which day.",
+      "effects": {"start_silver": 1},
+      "flags": ["hard_ride"]
+    },
+    {
+      "id": "credit_at_the_boards",
+      "name": "CREDIT AT THE BOARDS",
+      "cost": 10,
+      "tier": 3,
+      "needs_mastery": 3,
+      "requires": [],
+      "blurb": "five townships, one name in five ledgers. you may run two silver under, once per ride.",
+      "effects": {"start_silver": 2},
+      "flags": ["town_credit"]
+    },
+    {
+      "id": "mourning_veil",
+      "name": "THE MOURNING VEIL",
+      "cost": 11,
+      "tier": 3,
+      "needs_mastery": 3,
+      "requires": [],
+      "blurb": "black crepe, borrowed. a town wearing black for a sister you DREW stops charging you for its grief.",
+      "effects": {},
+      "flags": ["mourning_veil"]
+    },
+    {
+      "id": "the_eighth_point",
+      "name": "THE EIGHTH POINT",
+      "cost": 16,
+      "tier": 3,
+      "needs_mastery": 4,
+      "requires": ["brass_compass"],
+      "blurb": "you have crossed the shimmer once and remembered it. now the edge lets you through without the third push.",
+      "effects": {"start_lore": 1},
+      "flags": ["open_road"]
+    }
+  ]
+}

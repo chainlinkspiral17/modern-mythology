@@ -51,11 +51,16 @@ func _ready() -> void:
 
 
 func _fresh_state(rides: Array) -> Dictionary:
+	# THE OUTFIT rides out with you. Silver banked from past rides
+	# buys the loadout from the shelf's OUTFIT screen; what you bought
+	# is read here, at the start of the next ride, so the spending
+	# visibly changes how the territory plays. See StickLoop.gd and
+	# resources/games/vol7/sisters_wyrd/loadout.json.
 	return {
 		"addr":  [0, 0, 0, 0, 0, 0],
-		"grit":  6,
-		"silver": 3,
-		"lore":  0,
+		"grit":  6 + StickLoop.effect("sisters_wyrd", "start_grit"),
+		"silver": 3 + StickLoop.effect("sisters_wyrd", "start_silver"),
+		"lore":  StickLoop.effect("sisters_wyrd", "start_lore"),
 		"witches_dealt": {},
 		"encounters_seen": [],
 		"no_southwest": false,
@@ -589,6 +594,16 @@ func _finish_run(true_end: bool) -> void:
 	var rides: Array = _run_state.get("rides", [])
 	rides.append("the loom" if true_end else "%d/4" % dealt.size())
 	_run_state["rides"] = rides
+	# BANK THE RIDE · the silver in your pouch when the porch takes you
+	# back, plus what the sisters were worth. This is the whole point of
+	# the loop: the ride pays into the OUTFIT, and the outfit pays back
+	# into the next ride.
+	var banked: int = maxi(0, int(_run_state.get("silver", 0))) \
+			+ 4 * dealt.size() + (6 if true_end else 0)
+	StickLoop.finish_run("sisters_wyrd", {
+		"credit": banked,
+		"outcome": "the_loom" if true_end else "rode_home",
+	})
 	_save_state()
 	finished.emit(canon, tokens)
 
