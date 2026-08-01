@@ -1,0 +1,94 @@
+{
+  "notes": [
+    "THE TOOLBELT · Basilica of Wires' half of the StickLoop contract.",
+    "EARN: WIRE picked up in the finds, plus depth reached, plus a",
+    "bonus for the message room or the subfloor, banked on the climb",
+    "out. CARRY: BasilicaCrawl reads effects/flags at boot.",
+    "Playbook rule honored: at least one FLAG per tier — verbs and",
+    "safety nets, not just numbers."
+  ],
+  "currency": {
+    "id": "wire",
+    "name": "WIRE",
+    "earn_line": "wire found in the mountain · depth pays too · the message room and the subfloor pay best"
+  },
+  "upgrades": [
+    {
+      "id": "good_copper",
+      "name": "A COIL OF GOOD COPPER",
+      "cost": 4,
+      "tier": 1,
+      "needs_mastery": 0,
+      "requires": [],
+      "blurb": "ballast for the sense of place. you start each descent holding one more point of coherence.",
+      "effects": {"start_coherence": 1},
+      "flags": []
+    },
+    {
+      "id": "splice_kit",
+      "name": "THE SPLICE KIT",
+      "cost": 6,
+      "tier": 1,
+      "needs_mastery": 0,
+      "requires": [],
+      "blurb": "the first collapse of each descent knits back tighter — you wake holding more of the map, and the violet does not take.",
+      "effects": {},
+      "flags": ["splice"]
+    },
+    {
+      "id": "linemans_gloves",
+      "name": "THE LINEMAN'S GLOVES",
+      "cost": 7,
+      "tier": 2,
+      "needs_mastery": 1,
+      "requires": [],
+      "blurb": "shouldering through a wall that is really a corridor costs 2 coherence instead of 3. the wire respects covered hands.",
+      "effects": {},
+      "flags": ["gloves"]
+    },
+    {
+      "id": "felt_earmuffs",
+      "name": "FELT EARMUFFS",
+      "cost": 8,
+      "tier": 2,
+      "needs_mastery": 1,
+      "requires": [],
+      "blurb": "the standing waves still beat against you, but through felt. interference takes 1.0 coherence, not 1.5.",
+      "effects": {},
+      "flags": ["damped"]
+    },
+    {
+      "id": "tuning_fork",
+      "name": "THE TUNING FORK · A 220",
+      "cost": 10,
+      "tier": 2,
+      "needs_mastery": 2,
+      "requires": [],
+      "blurb": "strike it on the rail (key 2) and pull your tune onto the maintenance note in one motion. the mountain's one mercy, pocketable.",
+      "effects": {},
+      "flags": ["fork_220"]
+    },
+    {
+      "id": "second_coil",
+      "name": "A SECOND COIL",
+      "cost": 9,
+      "tier": 3,
+      "needs_mastery": 2,
+      "requires": ["good_copper"],
+      "blurb": "more ballast. another point of coherence at the adit.",
+      "effects": {"start_coherence": 1},
+      "flags": []
+    },
+    {
+      "id": "inspectors_stamp",
+      "name": "THE INSPECTOR'S STAMP",
+      "cost": 12,
+      "tier": 3,
+      "needs_mastery": 3,
+      "requires": [],
+      "blurb": "the green tag, once found, stays found — descents after the first begin with the hatch already answerable. INSPECTED · SAFE TO ENERGIZE.",
+      "effects": {},
+      "flags": ["keep_tag"]
+    }
+  ]
+}

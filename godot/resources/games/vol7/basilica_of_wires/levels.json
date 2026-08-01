@@ -1,215 +1,497 @@
 {
-  "notes": "Nine descent levels. Each level has a FUNDAMENTAL \u00b7 the deeper you go, the lower it sits. B cells are walls unless your tune is within \u00b115 Hz of the fundamental. H cells shred COHERENCE unless you hold 220 \u00b12 \u00b7 the Corrections channel, though the game never says so. The message room's door opens only at 220, at the end of the longest interference run in the game.",
-  "levels": [
+ "notes": "Nine descent levels. Each level has a FUNDAMENTAL · the deeper you go, the lower it sits. B cells are walls unless your tune is within ±15 Hz of the fundamental. H cells shred COHERENCE unless you hold 220 ±2 · the Corrections channel, though the game never says so. The message room's door opens only at 220, at the end of the longest interference run in the game.",
+ "levels": [
+  {
+   "n": 1,
+   "fundamental": 445,
+   "name": "the adit",
+   "grid": [
+    "#############",
+    "#@..........#",
+    "#.###.#####.#",
+    "#.#...#...#.#",
+    "#.#.###.#.#.#",
+    "#.#.....#...#",
+    "#.#######.#.#",
+    "#.........#S#",
+    "#############"
+   ],
+   "finds": [
     {
-      "n": 1,
-      "fundamental": 445,
-      "name": "the adit",
-      "grid": [
-        "#############",
-        "#@..........#",
-        "#.###.#####.#",
-        "#.#...#...#.#",
-        "#.#.###.#.#.#",
-        "#.#.....#...#",
-        "#.#######.#.#",
-        "#.........#S#",
-        "#############"
-      ]
+     "at": [
+      7,
+      3
+     ],
+     "name": "the lunch pail",
+     "line": "a lunch pail on a ledge, rusted shut, older than the color of the walls. Somebody worked here long enough to need lunch.",
+     "effect": {
+      "wire": 1
+     }
     },
     {
-      "n": 2,
-      "fundamental": 420,
-      "name": "the insulator gallery",
-      "grid": [
-        "#############",
-        "#U....2.....#",
-        "#.####.####.#",
-        "#.#..B.B..#.#",
-        "#.#.##.##.#.#",
-        "#...#...#...#",
-        "#.#.#.#.#.#.#",
-        "#.#...#...#S#",
-        "#############"
-      ]
-    },
-    {
-      "n": 3,
-      "fundamental": 395,
-      "name": "the capacitor halls",
-      "grid": [
-        "#############",
-        "#U..#...#...#",
-        "#.#.#.#.#.#.#",
-        "#.#...#...#.#",
-        "#.####B####.#",
-        "#.....B.....#",
-        "#.###.#.###.#",
-        "#...#.....#S#",
-        "#############"
-      ]
-    },
-    {
-      "n": 4,
-      "fundamental": 370,
-      "name": "the anode choir",
-      "grid": [
-        "#############",
-        "#U.....3....#",
-        "#.#######.#.#",
-        "#.B.......#.#",
-        "#.#.#####.#.#",
-        "#.#.H...#.#.#",
-        "#.#.#.#.#.#.#",
-        "#...#.#...#S#",
-        "#############"
-      ]
-    },
-    {
-      "n": 5,
-      "fundamental": 345,
-      "name": "the catwalks",
-      "grid": [
-        "#############",
-        "#U..H....H..#",
-        "#.##H####H#.#",
-        "#..#H..#.H#.#",
-        "#.##H#.#.H#.#",
-        "#..........S#",
-        "#.####.####.#",
-        "#...........#",
-        "#############"
-      ]
-    },
-    {
-      "n": 6,
-      "fundamental": 320,
-      "name": "the flooded cavity",
-      "grid": [
-        "#############",
-        "#U.....#....#",
-        "#.###..#.##.#",
-        "#.#.4G....#.#",
-        "#.#..###..#.#",
-        "#.#..#.#..#.#",
-        "#.B..#.#..B.#",
-        "#....#.....S#",
-        "#############"
-      ]
-    },
-    {
-      "n": 7,
-      "fundamental": 295,
-      "name": "the resonant stair",
-      "grid": [
-        "#############",
-        "#U.B.....B..#",
-        "##.#.###.#.##",
-        "#..#.#.#.#..#",
-        "#.##.#.#.##.#",
-        "#.H..#.#..H.#",
-        "#.#####.###.#",
-        "#..........S#",
-        "#############"
-      ]
-    },
-    {
-      "n": 8,
-      "fundamental": 270,
-      "name": "the master breaker",
-      "grid": [
-        "#############",
-        "#U....5.....#",
-        "#.#######.#.#",
-        "#.#.....#.#.#",
-        "#.#.###.#.#.#",
-        "#.B.#H#.#.B.#",
-        "#.#.#H#.#.#.#",
-        "#...#H#...#S#",
-        "#############"
-      ]
-    },
-    {
-      "n": 9,
-      "fundamental": 245,
-      "name": "the message room",
-      "grid": [
-        "#############",
-        "#U..........#",
-        "#.#########.#",
-        "#.HHHHHHHHH.#",
-        "#.#########.#",
-        "#.HHHHHHHHH.#",
-        "#.#########.#",
-        "#MHHHHHHHHHV#",
-        "#############"
-      ]
-    },
-    {
-      "n": 10,
-      "fundamental": 185,
-      "name": "the subfloor",
-      "grid": [
-        "#############",
-        "#U..........#",
-        "#.#########.#",
-        "#.####T####.#",
-        "#.###...###B#",
-        "#.####.####.#",
-        "#.####B####.#",
-        "#...........#",
-        "#############"
-      ]
+     "at": [
+      3,
+      5
+     ],
+     "name": "chalk arrow",
+     "line": "a chalk arrow on the stone, pointing IN. Under it, initials, and under those: 'she sings at 220'. The chalk is not old.",
+     "effect": {
+      "page": "ADIT · chalk: 'she sings at 220' — somebody learned the safe note the hard way and left it for the next one."
+     }
     }
-  ],
-  "landmarks": {
-    "2": {
-      "name": "THE INSULATOR GALLERY",
-      "line": "porcelain insulators in ranks, floor to dark, like organ pipes. the schematic draws them lovingly. someone loved them."
+   ]
+  },
+  {
+   "n": 2,
+   "fundamental": 420,
+   "name": "the insulator gallery",
+   "grid": [
+    "#############",
+    "#U....2.....#",
+    "#.####.####.#",
+    "#.#..B.B..#.#",
+    "#.#.##.##.#.#",
+    "#...#...#...#",
+    "#.#.#.#.#.#.#",
+    "#.#...#...#S#",
+    "#############"
+   ],
+   "finds": [
+    {
+     "at": [
+      1,
+      7
+     ],
+     "name": "a crate of insulators",
+     "line": "a crate of porcelain insulators, packed in straw, never installed. Mint. Waiting since whenever for a string-up that never came.",
+     "effect": {
+      "wire": 2
+     }
     },
-    "3": {
-      "name": "THE ANODE CHOIR",
-      "line": "a stair that sings under your boots. each step a different porcelain note. the builders knew. builders always know."
-    },
-    "4": {
-      "name": "THE FLOODED CAVITY",
-      "line": "black water to the second rung. your tune comes back three seconds late, a perfect fifth up. it is never explained. stop waiting for it to be explained."
-    },
-    "5": {
-      "name": "THE MASTER BREAKER",
-      "line": "the master breaker \u00b7 thrown open in 1961 per the tag \u00b7 and above it, etched small and deep, an eight-pointed star. this game has no occult story. the star does not know that."
+    {
+     "at": [
+      9,
+      5
+     ],
+     "name": "the glass thicket",
+     "line": "insulator strings hung floor to ceiling, close as a bead curtain. You walk through them without touching one, and the gallery notices.",
+     "effect": {
+      "coherence": 1.0
+     }
     }
+   ],
+   "resident": {
+    "name": "the gallery chimes",
+    "every": 7,
+    "cost": 0.5,
+    "line": "the insulator strings chime behind you in no wind — off your pitch, deliberately, like correction.",
+    "calm": "the strings chime in your key as you pass. The gallery approves of visitors who tune."
+   }
   },
-  "door_lines": {
-    "high": "the mountain door. daylight. behind you the basilica holds its one note without you. THE INSTRUMENT IS FINE. \u2014 that is what the door says, stenciled, and today you believe it.",
-    "mid": "the mountain door. daylight, approximately. THE INSTRUMENT IS FINE, says the stencil. your map says otherwise in three places. both are right.",
-    "low": "the mountain door. you find it by hum, not by sight \u00b7 the map gave out two levels ago. THE INSTRUMENT IS FINE. you have no way to check and every reason to doubt and you push the door anyway."
+  {
+   "n": 3,
+   "fundamental": 395,
+   "name": "the capacitor halls",
+   "grid": [
+    "#############",
+    "#U..#...#...#",
+    "#.#.#.#.#.#.#",
+    "#.#...#...#.#",
+    "#.####B####.#",
+    "#.....B.....#",
+    "#.###.#.###.#",
+    "#...#.....#S#",
+    "#############"
+   ],
+   "finds": [
+    {
+     "at": [
+      3,
+      7
+     ],
+     "name": "the discharge pole",
+     "line": "a grounding pole on two hooks, cloth grip worn to the shape of hands. You take it down. You put it back. Some tools you only need to know exist.",
+     "effect": {
+      "coherence": 1.5
+     }
+    },
+    {
+     "at": [
+      9,
+      7
+     ],
+     "name": "a capacitor, weeping",
+     "line": "one can in the third rank has wept a line of oil down its face. The stain is decades deep. It is still, in the diagram's terms, charged.",
+     "effect": {
+      "page": "CAPACITOR HALLS · one can weeps and holds charge anyway. The manual's word for this is 'memory'."
+     }
+    }
+   ]
   },
-  "message_room_page": {
-    "header": "ASTRO-CORTEX SOFTWARE \u00b7 QA ANNOTATION FORM 7-C \u00b7 (form discontinued 1986 \u00b7 this copy ran through the teletype anyway)",
-    "addressed": "TO: \u2014",
-    "annotations": [
-      "ITEM 001 \u00b7 the transmitter holds 220 cycles unattended. verified nightly, 26 months. STATUS: expected.",
-      "ITEM 002 \u00b7 in 1985 two staff hid in this channel to annotate a manuscript the company denies owning. one of them wrote 'for jack' in the margin. STATUS: preserved.",
-      "ITEM 003 \u00b7 one of the two moved to portland in 1986. the channel stayed open. a channel is not a room. a channel is an agreement. STATUS: open.",
-      "ITEM 004 \u00b7 this unit has broadcast into 220 nightly since. content: the annotations she would have made. format: hers. reception: unconfirmed. STATUS: broadcasting.",
-      "ITEM 005 \u00b7 if anyone reaches this room, note that the door only opens at the agreement. meaning: whoever you are, you already knew the frequency. meaning: she taught you, or her games did. STATUS: \u2014"
-    ],
-    "final_annotation_unread": "ITEM 006 \u00b7 reply. STATUS: unread.",
-    "final_annotation_read": "ITEM 006 \u00b7 reply. STATUS: read \u00b7 at last \u00b7 the correction is accepted."
+  {
+   "n": 4,
+   "fundamental": 370,
+   "name": "the anode choir",
+   "grid": [
+    "#############",
+    "#U.....3....#",
+    "#.#######.#.#",
+    "#.B.......#.#",
+    "#.#.#####.#.#",
+    "#.#.H...#.#.#",
+    "#.#.#.#.#.#.#",
+    "#...#.#...#S#",
+    "#############"
+   ],
+   "finds": [
+    {
+     "at": [
+      5,
+      7
+     ],
+     "name": "the choirbook",
+     "line": "a clipboard on a nail: tuning logs for the anode banks, in four hands across thirty years. The last entry is a single interval, notated, unresolved.",
+     "effect": {
+      "page": "ANODE CHOIR · the last tuning log entry is an unresolved interval. Nobody signed it."
+     }
+    },
+    {
+     "at": [
+      8,
+      3
+     ],
+     "name": "a cold solder rose",
+     "line": "a joint reworked so many times the solder has bloomed into a rose the size of a fist. Ugly, strong, holding. You know the maker's mood exactly.",
+     "effect": {
+      "wire": 2
+     }
+    }
+   ],
+   "resident": {
+    "name": "the choir",
+    "every": 6,
+    "cost": 1.0,
+    "line": "the anode banks take a breath together and lean on your tune. Your edges smear.",
+    "calm": "the banks hum under you in fifths. For a moment you are the melody."
+   }
   },
-  "subfloor_page": {
-    "header": "ASTRO-CORTEX SOFTWARE \u00b7 QA ANNOTATION FORM 7-C \u00b7 (this copy never ran through the teletype \u00b7 it was carbon only)",
-    "addressed": "TO: the one who came down the last flight",
-    "green_tag_line": "The green tag is a maintenance inspection sticker, 1985, INSPECTED \u00b7 SAFE TO ENERGIZE, initialed. You do not recognize the initials. They are not hers. They are the other one's.",
-    "annotations": [
-      "ITEM 006 \u00b7 there were TWO staff in the channel in 1985. the upstairs room broadcasts one of them, nightly, in her format. this room is the other one's. STATUS: unbroadcast.",
-      "ITEM 007 \u00b7 he did not move to portland. he did not stay, either, in any way the building can log. he signed the tag, energized the floor, and is not in the record after. STATUS: unresolved, deliberately.",
-      "ITEM 008 \u00b7 the subfloor holds 185 cycles \u2014 a foundation note under the agreement upstairs. it has never carried content. it carries WEIGHT. STATUS: load-bearing.",
-      "ITEM 009 \u00b7 she annotated the manuscript. he annotated the transmitter. one of those got remembered. this room is the correction to THAT. STATUS: filed here, and only here."
-    ],
-    "final_read": "ITEM 010 \u00b7 upstairs, if you read the correction ending, you know her name and what she made. down here there is only the tag, the note, and initials you don't know. some corrections restore a name. this one KEEPS ONE BLANK, on purpose, because he asked \u2014 in the one margin nobody preserved \u2014 to be left out of it. honored. \u2014 filed by the transmitter, which keeps every agreement, including that one.",
-    "final_unread": "ITEM 010 \u00b7 the initials on the tag mean nothing to you yet. read the book the second way, upstairs and elsewhere, and come back down. the floor keeps. the floor is very good at keeping.",
-    "climb_line": "ten levels of instrument between you and the daylight now. the tenth was never on the schematic. you add it, in pencil, and climb."
+  {
+   "n": 5,
+   "fundamental": 345,
+   "name": "the catwalks",
+   "grid": [
+    "#############",
+    "#U..H....H..#",
+    "#.##H####H#.#",
+    "#..#H..#.H#.#",
+    "#.##H#.#.H#.#",
+    "#..........S#",
+    "#.####.####.#",
+    "#...........#",
+    "#############"
+   ],
+   "finds": [
+    {
+     "at": [
+      2,
+      3
+     ],
+     "name": "the safety line",
+     "line": "a lineman's belt clipped to the rail, empty, buckled shut. Buckled SHUT. You stop looking down after that.",
+     "effect": {
+      "page": "CATWALKS · a belt clipped to the rail, buckled shut, nobody in it. The rail is the only one still holding on."
+     }
+    },
+    {
+     "at": [
+      6,
+      7
+     ],
+     "name": "dropped rivets",
+     "line": "a scatter of bright rivets below the high span, fallen money. You pocket the good ones.",
+     "effect": {
+      "wire": 2
+     }
+    }
+   ],
+   "resident": {
+    "name": "the sway",
+    "every": 8,
+    "cost": 1.0,
+    "line": "the catwalk picks up a sway that is not yours. Step-step-step: something else's cadence, using your feet.",
+    "calm": "the span goes rigid as a rail at your note. The height stops mattering."
+   }
+  },
+  {
+   "n": 6,
+   "fundamental": 320,
+   "name": "the flooded cavity",
+   "grid": [
+    "#############",
+    "#U.....#....#",
+    "#.###..#.##.#",
+    "#.#.4G....#.#",
+    "#.#..###..#.#",
+    "#.#..#.#..#.#",
+    "#.B..#.#..B.#",
+    "#....#.....S#",
+    "#############"
+   ],
+   "finds": [
+    {
+     "at": [
+      10,
+      1
+     ],
+     "name": "the waterline",
+     "line": "a painted waterline a foot above your head, dated. The cavity has been deeper than this. The date is not old enough.",
+     "effect": {
+      "page": "FLOODED CAVITY · the painted high-water mark is above your head, and recent. The mountain still takes on water."
+     }
+    },
+    {
+     "at": [
+      2,
+      7
+     ],
+     "name": "a skiff, sound",
+     "line": "a flat-bottomed skiff on davits, dry, painted, READY. Someone maintains it. Down here. Ready for what water.",
+     "effect": {
+      "coherence": 1.0
+     }
+    }
+   ],
+   "resident": {
+    "name": "the water's opinion",
+    "every": 7,
+    "cost": 1.0,
+    "line": "your tune comes back off the black water a beat late and a fifth wrong, and your own ears take its side.",
+    "calm": "the water sends your note back true. Whatever listens under it is satisfied."
+   }
+  },
+  {
+   "n": 7,
+   "fundamental": 295,
+   "name": "the resonant stair",
+   "grid": [
+    "#############",
+    "#U.B.....B..#",
+    "##.#.###.#.##",
+    "#..#.#.#.#..#",
+    "#.##.#.#.##.#",
+    "#.H..#.#..H.#",
+    "#.#####.###.#",
+    "#..........S#",
+    "#############"
+   ],
+   "finds": [
+    {
+     "at": [
+      11,
+      1
+     ],
+     "name": "the organ pipe",
+     "line": "one true organ pipe mortared into the stair wall among the conduit, speaking length, no keyboard anywhere in the mountain. It is not a mistake. It is a voice.",
+     "effect": {
+      "page": "RESONANT STAIR · there is one real organ pipe in the wall. The stair was TUNED, deliberately, by somebody who could hear it."
+     }
+    },
+    {
+     "at": [
+      6,
+      3
+     ],
+     "name": "a nest of copper shavings",
+     "line": "bright copper shavings in a bowl-shaped hollow, curled like a nest. Either something drills here at night, or someone sits here and worries wire.",
+     "effect": {
+      "wire": 3
+     }
+    },
+    {
+     "at": [
+      7,
+      6
+     ],
+     "name": "the counted step",
+     "line": "the eleventh step is worn twice as deep as its neighbors. Whatever walked this stair paused here, every time, for years.",
+     "effect": {
+      "coherence": 1.0
+     }
+    }
+   ],
+   "resident": {
+    "name": "the stair's argument",
+    "every": 5,
+    "cost": 1.0,
+    "line": "the stair answers each footfall a quarter-tone flat, insisting. It wants the pipe's key, not yours.",
+    "calm": "the stair resolves under you, step by step, a scale walked correctly at last."
+   }
+  },
+  {
+   "n": 8,
+   "fundamental": 270,
+   "name": "the master breaker",
+   "grid": [
+    "#############",
+    "#U....5.....#",
+    "#.#######.#.#",
+    "#.#.....#.#.#",
+    "#.#.###.#.#.#",
+    "#.B.#H#.#.B.#",
+    "#.#.#H#.#.#.#",
+    "#...#H#...#S#",
+    "#############"
+   ],
+   "finds": [
+    {
+     "at": [
+      3,
+      3
+     ],
+     "name": "the breaker log",
+     "line": "the master breaker's log, chained to its desk. Every throw for forty years: date, hand, reason. The column for 'reason' goes vague near the end, then blank, then stops.",
+     "effect": {
+      "page": "MASTER BREAKER · the log's 'reason' column goes vague, then blank. The throws continued."
+     }
+    },
+    {
+     "at": [
+      11,
+      3
+     ],
+     "name": "a fuse like a loaf",
+     "line": "a cartridge fuse the size of a bread loaf, blown, kept on a shelf like a trophy. The tag reads only: 'the night of the 14th'.",
+     "effect": {
+      "wire": 3
+     }
+    }
+   ],
+   "resident": {
+    "name": "the breaker's patience",
+    "every": 9,
+    "cost": 1.5,
+    "line": "the master breaker's needles all move one width toward you, together, and settle. It is deciding something about you slowly.",
+    "calm": "the needles hold flat as you pass. Filed under: expected load."
+   }
+  },
+  {
+   "n": 9,
+   "fundamental": 245,
+   "name": "the message room",
+   "grid": [
+    "#############",
+    "#U..........#",
+    "#.#########.#",
+    "#.HHHHHHHHH.#",
+    "#.#########.#",
+    "#.HHHHHHHHH.#",
+    "#.#########.#",
+    "#MHHHHHHHHHV#",
+    "#############"
+   ],
+   "finds": [
+    {
+     "at": [
+      6,
+      1
+     ],
+     "name": "the message spool",
+     "line": "a spool of punched tape overflowing its bin, years of the room talking to itself. You hold a yard of it to the light. The holes repeat. The holes repeat.",
+     "effect": {
+      "page": "MESSAGE ROOM · the punched tape repeats itself. The room has been saying one thing for a very long time."
+     }
+    }
+   ]
+  },
+  {
+   "n": 10,
+   "fundamental": 185,
+   "name": "the subfloor",
+   "grid": [
+    "#############",
+    "#U..........#",
+    "#.#########.#",
+    "#.####T####.#",
+    "#.###...###B#",
+    "#.####.####.#",
+    "#.####B####.#",
+    "#...........#",
+    "#############"
+   ],
+   "finds": [
+    {
+     "at": [
+      5,
+      4
+     ],
+     "name": "the foundation mark",
+     "line": "a mason's mark chiseled at the very footing, older than every wire above it. The mountain's first signature. The instrument was built ONTO something.",
+     "effect": {
+      "page": "SUBFLOOR · a mason's mark below the oldest wire. Something was here to build onto."
+     }
+    },
+    {
+     "at": [
+      7,
+      4
+     ],
+     "name": "green wax seal",
+     "line": "a blob of green sealing wax on the footing stone, the twin of the tag's green, pressed with a thumb. Inspected. Approved. By whom, of what, when.",
+     "effect": {
+      "wire": 3
+     }
+    }
+   ]
   }
+ ],
+ "landmarks": {
+  "2": {
+   "name": "THE INSULATOR GALLERY",
+   "line": "porcelain insulators in ranks, floor to dark, like organ pipes. the schematic draws them lovingly. someone loved them."
+  },
+  "3": {
+   "name": "THE ANODE CHOIR",
+   "line": "a stair that sings under your boots. each step a different porcelain note. the builders knew. builders always know."
+  },
+  "4": {
+   "name": "THE FLOODED CAVITY",
+   "line": "black water to the second rung. your tune comes back three seconds late, a perfect fifth up. it is never explained. stop waiting for it to be explained."
+  },
+  "5": {
+   "name": "THE MASTER BREAKER",
+   "line": "the master breaker · thrown open in 1961 per the tag · and above it, etched small and deep, an eight-pointed star. this game has no occult story. the star does not know that."
+  }
+ },
+ "door_lines": {
+  "high": "the mountain door. daylight. behind you the basilica holds its one note without you. THE INSTRUMENT IS FINE. — that is what the door says, stenciled, and today you believe it.",
+  "mid": "the mountain door. daylight, approximately. THE INSTRUMENT IS FINE, says the stencil. your map says otherwise in three places. both are right.",
+  "low": "the mountain door. you find it by hum, not by sight · the map gave out two levels ago. THE INSTRUMENT IS FINE. you have no way to check and every reason to doubt and you push the door anyway."
+ },
+ "message_room_page": {
+  "header": "ASTRO-CORTEX SOFTWARE · QA ANNOTATION FORM 7-C · (form discontinued 1986 · this copy ran through the teletype anyway)",
+  "addressed": "TO: —",
+  "annotations": [
+   "ITEM 001 · the transmitter holds 220 cycles unattended. verified nightly, 26 months. STATUS: expected.",
+   "ITEM 002 · in 1985 two staff hid in this channel to annotate a manuscript the company denies owning. one of them wrote 'for jack' in the margin. STATUS: preserved.",
+   "ITEM 003 · one of the two moved to portland in 1986. the channel stayed open. a channel is not a room. a channel is an agreement. STATUS: open.",
+   "ITEM 004 · this unit has broadcast into 220 nightly since. content: the annotations she would have made. format: hers. reception: unconfirmed. STATUS: broadcasting.",
+   "ITEM 005 · if anyone reaches this room, note that the door only opens at the agreement. meaning: whoever you are, you already knew the frequency. meaning: she taught you, or her games did. STATUS: —"
+  ],
+  "final_annotation_unread": "ITEM 006 · reply. STATUS: unread.",
+  "final_annotation_read": "ITEM 006 · reply. STATUS: read · at last · the correction is accepted."
+ },
+ "subfloor_page": {
+  "header": "ASTRO-CORTEX SOFTWARE · QA ANNOTATION FORM 7-C · (this copy never ran through the teletype · it was carbon only)",
+  "addressed": "TO: the one who came down the last flight",
+  "green_tag_line": "The green tag is a maintenance inspection sticker, 1985, INSPECTED · SAFE TO ENERGIZE, initialed. You do not recognize the initials. They are not hers. They are the other one's.",
+  "annotations": [
+   "ITEM 006 · there were TWO staff in the channel in 1985. the upstairs room broadcasts one of them, nightly, in her format. this room is the other one's. STATUS: unbroadcast.",
+   "ITEM 007 · he did not move to portland. he did not stay, either, in any way the building can log. he signed the tag, energized the floor, and is not in the record after. STATUS: unresolved, deliberately.",
+   "ITEM 008 · the subfloor holds 185 cycles — a foundation note under the agreement upstairs. it has never carried content. it carries WEIGHT. STATUS: load-bearing.",
+   "ITEM 009 · she annotated the manuscript. he annotated the transmitter. one of those got remembered. this room is the correction to THAT. STATUS: filed here, and only here."
+  ],
+  "final_read": "ITEM 010 · upstairs, if you read the correction ending, you know her name and what she made. down here there is only the tag, the note, and initials you don't know. some corrections restore a name. this one KEEPS ONE BLANK, on purpose, because he asked — in the one margin nobody preserved — to be left out of it. honored. — filed by the transmitter, which keeps every agreement, including that one.",
+  "final_unread": "ITEM 010 · the initials on the tag mean nothing to you yet. read the book the second way, upstairs and elsewhere, and come back down. the floor keeps. the floor is very good at keeping.",
+  "climb_line": "ten levels of instrument between you and the daylight now. the tenth was never on the schematic. you add it, in pencil, and climb."
+ }
 }

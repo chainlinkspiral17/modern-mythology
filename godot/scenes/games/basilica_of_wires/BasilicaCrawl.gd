@@ -67,6 +67,21 @@ var _message_room_reached: bool = false
 var _green_tag: bool = false          # SUBFLOOR · found in the flooded cavity
 var _echo_pending: float = -1.0
 
+# ── CONTENT PASS (2026-08-01) · the floors stop being vacant ─────
+# The mountain had ten mazes and five wall-props ("basilica of wires
+# is still just one short thing?"). Two data layers from levels.json:
+#   FINDS     placed set pieces at specific cells — pages, WIRE
+#             (the loop currency), coherence back. Once per descent.
+#   RESIDENTS each floor's named presence, surfacing every N clean
+#             steps. Tuned to the floor's fundamental — or safe at
+#             220 — it is company; otherwise it costs coherence.
+#             The floors PLAY differently now, not just draw so.
+var _finds_taken: Array = []          # "lvl:x:y" · persists in _state
+var _wire_found: int = 0              # banked on the climb out
+var _pages_found: Array = []          # maintenance pages, kept in _state
+var _steps_on_level: int = 0
+var _deepest: int = 0
+
 # The live hum
 var _hum_player: AudioStreamPlayer = null
 var _hum_playback: AudioStreamGeneratorPlayback = null
@@ -103,9 +118,19 @@ func boot(state: Dictionary) -> void:
 		am.stop_scene_bgm()   # the hum is the score
 	_level_i = clampi(int(_state.get("level_i", 0)), 0, 9)
 	_freq = float(_state.get("freq", 440.0))
-	_coherence = float(_state.get("coherence", 9.0))
+	_coherence = float(_state.get("coherence", 9.0)) \
+			+ float(StickLoop.effect("basilica_of_wires", "start_coherence"))
 	_message_room_reached = bool(_state.get("message_room_reached", false))
 	_green_tag = bool(_state.get("green_tag", false))
+	# THE INSPECTOR'S STAMP · the tag, once found, stays found.
+	if not _green_tag and StickLoop.flag("basilica_of_wires", "keep_tag") \
+			and OneironauticsTokens.has("basilica_green_tag_found"):
+		_green_tag = true
+		_state["green_tag"] = true
+	_finds_taken = _state.get("finds_taken", [])
+	_pages_found = _state.get("pages_found", [])
+	_wire_found = 0
+	_deepest = _level_i
 	_enter_level(_level_i, true)
 
 
@@ -144,6 +169,8 @@ func _enter_level(i: int, from_above: bool) -> void:
 		if placed:
 			break
 	_dir = 1
+	_steps_on_level = 0
+	_deepest = maxi(_deepest, i)
 	_set_msg("LEVEL %d · %s · fundamental %d Hz" % [i + 1, String(_level().get("name", "")).to_upper(),
 			int(_level().get("fundamental", 0))])
 	_mark_visited()
@@ -227,6 +254,11 @@ func _input(event: InputEvent) -> void:
 		KEY_A: _tune(-5.0)
 		KEY_D: _tune(5.0)
 		KEY_F: _force_wall()
+		# THE TUNING FORK · A 220 · strike it (key 2) and match it.
+		KEY_2:
+			if StickLoop.flag("basilica_of_wires", "fork_220"):
+				_tune(SAFE_FREQ - _freq)
+				_set_msg("you strike the fork on the rail and pull your tune onto it. A 220 · the maintenance note.")
 		# Pad tuning pair · X (E synth) tunes up above; RB arrives as
 		# KEY_I via GamepadMgr when the virtual cursor is idle.
 		KEY_I: _tune(-25.0)
@@ -244,10 +276,14 @@ func _force_wall() -> void:
 		return
 	if _passable(c):
 		return   # already tuned to it — just step through
-	if _coherence <= FORCE_COST:
+	# THE LINEMAN'S GLOVES take a third off the shoulder-through cost.
+	var force_cost := FORCE_COST
+	if StickLoop.flag("basilica_of_wires", "gloves"):
+		force_cost = 2.0
+	if _coherence <= force_cost:
 		_set_msg("you reach for the wall and your sense of the room slides. too little left to spend · force it now and you would not find your way back. tune to it instead. (fundamental %d Hz)" % int(_level().get("fundamental", 0)))
 		return
-	_coherence -= FORCE_COST
+	_coherence -= force_cost
 	_px += d.x
 	_py += d.y
 	if _coherence <= 3.0:
@@ -302,11 +338,14 @@ func _step(sign: int) -> void:
 
 func _after_step(c: String) -> void:
 	var at_safe := absf(_freq - SAFE_FREQ) <= SAFE_TOL
+	_steps_on_level += 1
 	if c == "H":
 		if at_safe:
 			_set_msg("the standing wave parts around 220. you walk the null line.")
 		else:
-			_coherence -= 1.5
+			# FELT EARMUFFS take the edge off the beat frequency.
+			var bite := 1.0 if StickLoop.flag("basilica_of_wires", "damped") else 1.5
+			_coherence -= bite
 			_set_msg("interference. your tune beats against the room's. the map crawls at the edges.")
 			if _coherence <= 3.0:
 				_scrambled = true
@@ -315,6 +354,32 @@ func _after_step(c: String) -> void:
 				return
 	elif at_safe:
 		_coherence = minf(9.0, _coherence + 0.34)
+	# FINDS · the set pieces. Once each, per descent.
+	var fkey := "%d:%d:%d" % [_level_i, _px, _py]
+	if not _finds_taken.has(fkey):
+		for f_v in _level().get("finds", []):
+			var f: Dictionary = f_v
+			var at: Array = f.get("at", [-1, -1])
+			if int(at[0]) == _px and int(at[1]) == _py:
+				_finds_taken.append(fkey)
+				_state["finds_taken"] = _finds_taken
+				_apply_find(f)
+				return
+	# RESIDENTS · the floor's presence keeps its own count of you.
+	var res: Dictionary = _level().get("resident", {})
+	if not res.is_empty() and c != "H" \
+			and _steps_on_level % maxi(2, int(res.get("every", 7))) == 0:
+		var fund := float(_level().get("fundamental", 400))
+		if at_safe or absf(_freq - fund) <= BAND_TOL:
+			_set_msg(String(res.get("name", "")) + " · " + String(res.get("calm", "")))
+		else:
+			_coherence -= float(res.get("cost", 1.0))
+			_set_msg(String(res.get("name", "")) + " · " + String(res.get("line", "")))
+			if _coherence <= 3.0:
+				_scrambled = true
+			if _coherence <= 0.0:
+				_wake_at_junction()
+				return
 	match c:
 		"S":
 			if _level_i < 8:
@@ -358,9 +423,36 @@ func _after_step(c: String) -> void:
 				_echo_freq = _freq * 1.5
 
 
+func _apply_find(f: Dictionary) -> void:
+	var line := String(f.get("line", ""))
+	var eff: Dictionary = f.get("effect", {})
+	if eff.has("wire"):
+		_wire_found += int(eff["wire"])
+		line += "  · WIRE +%d ·" % int(eff["wire"])
+	if eff.has("coherence"):
+		_coherence = minf(9.0, _coherence + float(eff["coherence"]))
+		line += "  · the room steadies · coherence +%.1f ·" % float(eff["coherence"])
+	if eff.has("page"):
+		var pg := String(eff["page"])
+		if not _pages_found.has(pg):
+			_pages_found.append(pg)
+			_state["pages_found"] = _pages_found
+			line += "  · filed · maintenance page %d ·" % _pages_found.size()
+	_set_msg(String(f.get("name", "")).to_upper() + " · " + line)
+
+
 func _wake_at_junction() -> void:
 	_px = _last_junction.x
 	_py = _last_junction.y
+	# THE SPLICE KIT · the first collapse of a descent knits back
+	# tighter — you wake holding more of the map than you should.
+	if StickLoop.flag("basilica_of_wires", "splice") \
+			and not bool(_state.get("splice_used", false)):
+		_state["splice_used"] = true
+		_coherence = 5.0
+		_scrambled = false
+		_set_msg("— you wake at the last junction, and your hands have already spliced the break. The kit's tape, the kit's habit. Once per descent; it is used now.")
+		return
 	_coherence = 3.0
 	_scrambled = true
 	_set_msg("— you wake at the last junction you trusted. the map is violet. no time seems to have passed, which is not the same as none passing.")
@@ -493,6 +585,22 @@ func _show_subfloor_teletype() -> void:
 func _exit_mountain() -> void:
 	_state["coherence"] = _coherence
 	_state["freq"] = _freq
+	_state["splice_used"] = false     # per-descent; resets at the adit
+	# THE LOOP · the climb out banks the descent. WIRE found below
+	# plus depth pay into the outfit; what you buy reads at next boot.
+	var banked: int = _wire_found + _deepest
+	if bool(_state.get("subfloor_reached", false)):
+		banked += 4
+	elif _message_room_reached:
+		banked += 3
+	var outcome := "climbed_out"
+	if bool(_state.get("subfloor_reached", false)):
+		outcome = "subfloor"
+	elif _message_room_reached:
+		outcome = "message_room"
+	StickLoop.finish_run("basilica_of_wires", {"credit": banked, "outcome": outcome})
+	if banked > 0:
+		_set_msg("daylight. the pockets pay out: %d WIRE for the outfit shelf." % banked)
 	descent_over.emit(_state)
 
 
