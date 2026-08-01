@@ -458,6 +458,11 @@ func _finish_run(vid: String) -> void:
 	_run_state["verdicts_seen"] = seen
 	_run_state["evening_n"] = 1
 	_save_state()
+	# THE LOOP (earn side) · a finished run banks credit and
+	# mastery now; this stick's loadout arrives with its carry
+	# pass (no purchasable upgrade ships before its effect).
+	var _sl_bonus: int = seen.size()
+	StickLoop.finish_run("patient_mister_glass", {"credit": 8 + _sl_bonus, "outcome": "verdict"})
 	finished.emit(canon, tokens)
 
 

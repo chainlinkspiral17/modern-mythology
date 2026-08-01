@@ -51,6 +51,12 @@ A stick is DONE when it clears all six. Anything less is a wave.
 | sweetgum | 678 | 14K | — | **B−** · Wave 4a: 3 micro-events/watch (18-pool), palimpsest 6→11 years |
 | tideline_survey_2048 | (shares tideline) | 2K | — | **C** · no manual entry of its own (by design: tideline's covers it) |
 
+Loop column: ✓ = full earn/spend/carry. The ten remaining sticks
+(northwind, spiderdrops/2, e1, e2, glass, hane, wu, riffrocker,
+tideline) have the EARN side wired as of 2026-08-01 — credit and
+mastery bank now; each gets its loadout with a carry pass, because
+no purchasable upgrade ships before its effect exists.
+
 Verdicts: **A** = clears depth, needs loop/flavor polish only.
 **B** = solid run, one bar missing. **C** = playable but thin —
 data volume can't sustain a second run. **D** = structurally empty.

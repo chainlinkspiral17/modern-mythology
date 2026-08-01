@@ -396,6 +396,11 @@ func _finish_run(letter: Dictionary) -> void:
 	_run_state["ng_plus"] = true
 	_run_state["visit_total"] = 0
 	_save_state()
+	# THE LOOP (earn side) · a finished run banks credit and
+	# mastery now; this stick's loadout arrives with its carry
+	# pass (no purchasable upgrade ships before its effect).
+	var _sl_bonus: int = 4
+	StickLoop.finish_run("hane_no_niwa", {"credit": 8 + _sl_bonus, "outcome": "garden_done"})
 	finished.emit(canon, tokens)
 
 

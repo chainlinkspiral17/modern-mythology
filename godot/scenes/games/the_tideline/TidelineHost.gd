@@ -248,6 +248,11 @@ func _on_walk_over(state: Dictionary) -> void:
 	# forever.  The report/canon vars and tokens stay in the save.
 	_run_state["station"] = 0
 	_save_state()
+	# THE LOOP (earn side) · a finished run banks credit and
+	# mastery now; this stick's loadout arrives with its carry
+	# pass (no purchasable upgrade ships before its effect).
+	var _sl_bonus: int = 4
+	StickLoop.finish_run("the_tideline", {"credit": 8 + _sl_bonus, "outcome": "walk_done"})
 	finished.emit(canon, tokens)
 
 

@@ -410,6 +410,11 @@ func _put_the_cart_back() -> void:
 	_run_state["canon_vars"] = canon
 	_save_state()
 	var tokens: Array = _run_state.get("lore_tokens_pending", [])
+	# THE LOOP (earn side) · a finished run banks credit and
+	# mastery now; this stick's loadout arrives with its carry
+	# pass (no purchasable upgrade ships before its effect).
+	var _sl_bonus: int = 4
+	StickLoop.finish_run("spiderdrops_2", {"credit": 8 + _sl_bonus, "outcome": String(_run_state.get("best_register", "still_flying"))})
 	finished.emit(canon, tokens)
 
 

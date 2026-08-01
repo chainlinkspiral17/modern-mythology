@@ -419,6 +419,11 @@ func _finish_run(grades: Dictionary) -> void:
 	# The season is over · a fresh title shows a week-1 state
 	_run_state["week"] = 1
 	_save_state()
+	# THE LOOP (earn side) · a finished run banks credit and
+	# mastery now; this stick's loadout arrives with its carry
+	# pass (no purchasable upgrade ships before its effect).
+	var _sl_bonus: int = (_run_state.get("cards_signed", []) as Array).size()
+	StickLoop.finish_run("estuary_1", {"credit": 8 + _sl_bonus, "outcome": "season_done"})
 	finished.emit(canon, tokens)
 
 

@@ -403,6 +403,11 @@ func _finish_run(result: String) -> void:
 	_run_state["summers"] = summers
 	_run_state["walk_n"] = 1
 	_save_state()
+	# THE LOOP (earn side) · a finished run banks credit and
+	# mastery now; this stick's loadout arrives with its carry
+	# pass (no purchasable upgrade ships before its effect).
+	var _sl_bonus: int = summers.size()
+	StickLoop.finish_run("estuary_2", {"credit": 8 + _sl_bonus, "outcome": "summer_done"})
 	finished.emit(canon, tokens)
 
 

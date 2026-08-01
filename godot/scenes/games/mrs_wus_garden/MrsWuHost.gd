@@ -244,6 +244,11 @@ func _on_garden_over(state: Dictionary) -> void:
 	canon["wu_garden_stories_heard"] = (_run_state.get("stories_heard", []) as Array).size()
 	_run_state["canon_vars"] = canon
 	_save_state()
+	# THE LOOP (earn side) · a finished run banks credit and
+	# mastery now; this stick's loadout arrives with its carry
+	# pass (no purchasable upgrade ships before its effect).
+	var _sl_bonus: int = alive
+	StickLoop.finish_run("mrs_wus_garden", {"credit": 8 + _sl_bonus, "outcome": "season_done"})
 	finished.emit(canon, tokens)
 
 

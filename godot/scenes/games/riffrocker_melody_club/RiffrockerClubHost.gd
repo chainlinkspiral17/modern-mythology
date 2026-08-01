@@ -285,6 +285,11 @@ func _finish_run() -> void:
 	_run_state["canon_vars"] = canon
 	_run_state["meeting_n"] = 1
 	_save_state()
+	# THE LOOP (earn side) · a finished run banks credit and
+	# mastery now; this stick's loadout arrives with its carry
+	# pass (no purchasable upgrade ships before its effect).
+	var _sl_bonus: int = 4
+	StickLoop.finish_run("riffrocker_melody_club", {"credit": 8 + _sl_bonus, "outcome": "graduate"})
 	finished.emit(canon, tokens)
 
 
