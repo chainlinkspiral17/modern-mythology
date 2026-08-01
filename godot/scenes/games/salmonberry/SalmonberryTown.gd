@@ -23,6 +23,9 @@ class_name SalmonberryTown
 signal activity_chosen(act: Dictionary)
 signal quit
 signal crisis_over(results: Dictionary)
+# A route-only reward found by WALKING (town_life.json moments) —
+# the year scene applies gives{} without spending the week.
+signal town_moment(moment: Dictionary)
 
 const WALKER_SPRITE := "res://resources/games/vol7/salmonberry/sprites/walker.json"
 
@@ -92,6 +95,24 @@ var _hdr_lbl: Label = null
 var _msg_lbl: Label = null
 var _hint_lbl: Label = null
 
+# ── TOWN LIFE · what walking gives that a list cannot ────────────
+# ("walking around versus picking from a list is superficial.")
+# Three systems, all data in town_life.json:
+#   PRESENCE  people are AT places by month + weather — and away.
+#             Approaching a place says who is (or isn't) there
+#             before you commit; absence is information.
+#   OVERHEARD crossing Main Street catches fragments of the town
+#             talking to itself, per season.
+#   MOMENTS   route-only encounters at spots BETWEEN places. Only
+#             a walker finds them, and they pay (journal lines,
+#             bond touches, thread clues) WITHOUT spending a week.
+var _life: Dictionary = {}
+var _wx: String = "clear"
+var _moments_taken: Array = []      # ids spent (run-persistent, from the year)
+var _last_near: String = ""         # sight lines fire once per approach
+var _street_cd: float = 0.0         # overheard cooldown
+var _overheard_n: int = 0           # rotation index within a visit
+
 # ── WAVE C · the night the water comes (2026-07-28) ──────────────
 # The same town, played once, against the clock. The bell rings,
 # the water goes out, and then it comes back — climbing the map
@@ -129,6 +150,12 @@ func _ready() -> void:
 	texture_filter = CanvasItem.TEXTURE_FILTER_NEAREST
 	add_to_group("ui")
 	_walker.load_from(WALKER_SPRITE)
+	var lf := FileAccess.open("res://resources/games/vol7/salmonberry/town_life.json", FileAccess.READ)
+	if lf != null:
+		var parsed: Variant = JSON.parse_string(lf.get_as_text())
+		lf.close()
+		if parsed is Dictionary:
+			_life = parsed
 	_build_ui()
 	set_process(true)
 
@@ -250,15 +277,75 @@ func _end_crisis(forced: bool) -> void:
 	})
 
 
-func boot(month: int, acts_by_loc: Dictionary, bonds: Dictionary) -> void:
+func boot(month: int, acts_by_loc: Dictionary, bonds: Dictionary,
+		extra: Dictionary = {}) -> void:
 	_month = clampi(month, 0, 9)
 	_acts_by_loc = acts_by_loc
 	_bonds = bonds
+	_wx = String(extra.get("wx", "clear"))
+	_moments_taken = extra.get("moments_taken", [])
+	_last_near = ""
+	_street_cd = 4.0     # let the arrival line breathe before gossip
+	_overheard_n = int(extra.get("seed", 0)) + month   # varies per run+month
 	_season = SEASONS[_season_key()]
 	_pos = Vector2(160, 470)
 	_hdr_lbl.text = "SALMONBERRY · %s %d" % [MONTHS[_month].to_upper(), (1963 if _month <= 3 else 1964)]
 	_msg("the town is one walk wide. E at a place to spend the month there. ESC for the list.")
 	queue_redraw()
+
+
+# ── PRESENCE · who is actually here, this month, this weather ────
+
+func _presence_for(pid: String) -> Dictionary:
+	for e_v in _life.get("presence", []):
+		var e: Dictionary = e_v
+		if String(e.get("pid", "")) != pid:
+			continue
+		var months: Array = e.get("months", [])
+		if not months.is_empty() and not months.has(float(_month)) and not months.has(_month):
+			continue
+		var wxs: Array = e.get("wx", [])
+		if not wxs.is_empty() and not wxs.has(_wx):
+			continue
+		return e
+	return {}
+
+
+func _life_tick(delta: float) -> void:
+	# sight lines · fire once each time you come near a place
+	var near := _place_near()
+	if near != _last_near:
+		_last_near = near
+		if near != "":
+			var pr := _presence_for(near)
+			var sight := String(pr.get("sight", ""))
+			if sight != "":
+				_msg(sight)
+	# overheard · crossing the Main Street band
+	_street_cd = maxf(0.0, _street_cd - delta)
+	if _street_cd == 0.0 and _pos.y > 290.0 and _pos.y < 385.0 \
+			and _pos.x > 180.0 and _pos.x < 1020.0 and _dir != Vector2.ZERO:
+		var pool: Array = (_life.get("overheard", {}) as Dictionary).get(_season_key(), [])
+		if not pool.is_empty():
+			_msg(String(pool[_overheard_n % pool.size()]))
+			_overheard_n += 1
+			_street_cd = 22.0
+	# moments · route-only finds, at spots between places
+	for m_v in _life.get("moments", []):
+		var m: Dictionary = m_v
+		var mid := String(m.get("id", ""))
+		if _moments_taken.has(mid):
+			continue
+		var months: Array = m.get("months", [])
+		if not months.is_empty() and not months.has(float(_month)) and not months.has(_month):
+			continue
+		var mp: Array = m.get("pos", [0, 0])
+		if _pos.distance_to(Vector2(float(mp[0]), float(mp[1]))) < 42.0:
+			_moments_taken.append(mid)
+			_msg(String(m.get("line", "")))
+			_sfx("hotspot_look", 0.6)
+			town_moment.emit(m)
+			break
 
 
 func _season_key() -> String:
@@ -313,6 +400,7 @@ func _process(delta: float) -> void:
 		_pos += _dir.normalized() * SPEED * delta
 		_pos.x = clampf(_pos.x, 40, 1240)
 		_pos.y = clampf(_pos.y, 60, 640)
+	_life_tick(delta)
 	queue_redraw()
 
 
@@ -356,8 +444,15 @@ func _input(event: InputEvent) -> void:
 func _open_offers(pid: String) -> void:
 	var place: Dictionary = PLACES[pid]
 	var acts: Array = _acts_by_loc.get(pid, [])
+	var pr := _presence_for(pid)
+	# When the usual person is AWAY, their activities go with them —
+	# the month is different because of who is where. That is what a
+	# walk knows and a list doesn't.
+	if bool(pr.get("away", false)):
+		acts = []
 	if acts.is_empty():
-		_msg(String(place.get("empty", "nothing to do here this month.")))
+		var talk := String(pr.get("talk", ""))
+		_msg(talk if talk != "" else String(place.get("empty", "nothing to do here this month.")))
 		_sfx("hotspot_look", 0.5)
 		return
 	_sfx("door_open", 0.5)
@@ -378,7 +473,7 @@ func _open_offers(pid: String) -> void:
 	_panel.add_child(v)
 
 	var hdr := Label.new()
-	var who := String(place.get("who", ""))
+	var who := String(pr.get("who", place.get("who", "")))
 	hdr.text = String(place["name"]) + ("   ·   %s" % who if who != "" else "")
 	hdr.add_theme_font_size_override("font_size", 17)
 	hdr.add_theme_color_override("font_color", C_GOLD)
@@ -476,6 +571,31 @@ func _draw() -> void:
 			var lvl: int = int(_bonds.get("gran" if key == "vovo" else key, 0))
 			if lvl > 0:
 				draw_circle(p + Vector2(26, -26), 3.0 + minf(float(lvl), 6.0) * 0.5, C_GOLD)
+		# PRESENCE, drawn · a small figure by the door when somebody
+		# is here; nothing when they are away. Readable at a glance
+		# before you cross the map for them.
+		if not _crisis:
+			var pr := _presence_for(String(pid))
+			var here_who := String(pr.get("who", who))
+			if not bool(pr.get("away", false)) and here_who != "":
+				var fp := p + Vector2(-30, 20)
+				draw_circle(fp + Vector2(0, -8), 3.0, C_INK)
+				draw_rect(Rect2(fp.x - 3, fp.y - 5, 6, 12), C_INK)
+
+	# MOMENTS · a faint glint where a route-only find waits. Subtle on
+	# purpose — a shimmer you notice walking past, not a map marker.
+	if not _crisis:
+		for m_v in _life.get("moments", []):
+			var m: Dictionary = m_v
+			if _moments_taken.has(String(m.get("id", ""))):
+				continue
+			var mm: Array = m.get("months", [])
+			if not mm.is_empty() and not mm.has(float(_month)) and not mm.has(_month):
+				continue
+			var mp: Array = m.get("pos", [0, 0])
+			var gp := Vector2(float(mp[0]), float(mp[1]))
+			var a: float = 0.18 + 0.14 * sin(_t * 2.4 + gp.x)
+			draw_circle(gp, 2.5, Color(C_FOAM.r, C_FOAM.g, C_FOAM.b, a))
 
 	# ── the crisis layer: night, risen water, the work ──
 	if _crisis:

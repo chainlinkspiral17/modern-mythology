@@ -740,6 +740,7 @@ func _raise_bond(id: String, amt: int) -> Array:
 
 
 const CLUE_TEXT := {
+	"estelle_grave": "the boat · a grave behind the church, flowers fresh against the rain, nineteen years on this month. Somebody still comes.",
 	"estelle_light": "the boat · Estelle keeps a light in the window that faces the bar. Someone she loved went out on it, and did not come back.",
 	"del_saw": "the boat · Del told you what he saw the morning it did not come in. He has never told anyone else.",
 	"iris_record": "the boat · the county register has the crew, and a date, and after the date nothing at all.",
@@ -902,7 +903,31 @@ func _open_town() -> void:
 			_town.queue_free()
 		_town = null
 		_render())
-	_town.call("boot", month, by_loc, _s.get("bonds", {}))
+	# Route-only finds (town_life.json moments) pay WITHOUT spending
+	# the week — the walk itself is the price. Applied here so the
+	# rewards live in the run state like any other.
+	_town.connect("town_moment", func(m: Dictionary) -> void:
+		var taken: Array = _s.get("town_moments", [])
+		var mid := String(m.get("id", ""))
+		if taken.has(mid):
+			return
+		taken.append(mid)
+		_s["town_moments"] = taken
+		var gives: Dictionary = m.get("gives", {})
+		if gives.has("journal"):
+			var j: Array = _s["journal"]
+			var entry := String(gives["journal"])
+			if not j.has(entry):
+				j.append(entry)
+		if gives.has("clue"):
+			_grant_clue(String(gives["clue"]))
+		if gives.has("bond"):
+			_raise_bond(String(gives["bond"]), int(gives.get("bond_amt", 1))))
+	_town.call("boot", month, by_loc, _s.get("bonds", {}), {
+		"wx": wx,
+		"moments_taken": _s.get("town_moments", []),
+		"seed": int(_s.get("seed", 0)),
+	})
 
 
 # ── the book of the coast · the collectible, read back ──

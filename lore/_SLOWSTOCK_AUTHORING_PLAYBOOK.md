@@ -255,6 +255,38 @@ and generic — a new stick needs data plus two lines of code.
 
 ## Recent lessons
 
+### 2026-08-01 · SALMONBERRY · a walkable map must know things the menu doesn't
+
+The town overworld shipped as "an interface, not a second economy" —
+the same activities.json entries, arranged spatially. The user called
+it precisely: *"walking around versus picking from a list is
+superficial."* The fix was not more prose on the list; it was giving
+the walk its own knowledge, all data-driven (`town_life.json`):
+
+- **PRESENCE** · people are AT places by month + weather, and AWAY —
+  Del's slip is empty during the run, Boyd winters off-map, the
+  school shuts in June. An away person takes their activities with
+  them, so who-is-where genuinely changes the month. Approach lines
+  fire once per approach; a small drawn figure marks occupied doors.
+- **OVERHEARD** · crossing Main Street catches seasonal fragments of
+  the town talking to itself. Cooldown 22s so it stays a texture,
+  not a ticker.
+- **MOMENTS** · route-only encounters at coordinates BETWEEN places
+  (the bridge rail, the boardwalk, the hill path). They pay real
+  state — journal lines, bond touches, thread clues — WITHOUT
+  spending the week: the walk itself is the price, which is the
+  entire argument for walking. Marked by a faint glint, not a map
+  pin; spent ids persist in the run state.
+
+Rule to carry: **an overworld earns its existence by holding
+information and rewards that the menu path cannot reach.** If every
+fact and payoff is list-accessible, the map is decor and will read
+as such.
+
+Also this wave: outcome variants (tier > season > rotation > base in
+`_pick_outcome`) and one authored line per calendar week
+(`week_flavor.json`) — the flavor-density bar from the content map.
+
 ### 2026-07-22 · SALMONBERRY · an RPG-of-a-life on the Estuary-1 loop
 
 Stick #21 — a part-RPG part-adventure about a year in a 1960s coastal
