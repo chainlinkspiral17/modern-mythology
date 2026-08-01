@@ -1,376 +1,506 @@
 {
-  "scope": "vol7/salmonberry/activities",
-  "notes": "The month's choices. Each activity spends the month: it moves aptitudes (hands/sea/word/heart/wild/grit), maybe a bond, maybe money, maybe adds a journal entry. 'months' (0=Sep .. 9=Jun) gates a seasonal activity; absent = any month. 'require' gates on an aptitude min, a bond min, or money. March (index 6) is handled specially by the scene (the water comes) and does not draw from this pool.",
-  "journal_total": 12,
-  "activities": [
+ "scope": "vol7/salmonberry/activities",
+ "notes": "The month's choices. Each activity spends the month: it moves aptitudes (hands/sea/word/heart/wild/grit), maybe a bond, maybe money, maybe adds a journal entry. 'months' (0=Sep .. 9=Jun) gates a seasonal activity; absent = any month. 'require' gates on an aptitude min, a bond min, or money. March (index 6) is handled specially by the scene (the water comes) and does not draw from this pool.",
+ "journal_total": 12,
+ "activities": [
+  {
+   "id": "mend_nets",
+   "label": "Mend nets on the dock with Del",
+   "apts": {
+    "hands": 2
+   },
+   "bond": "del",
+   "bond_amt": 1,
+   "money": 1,
+   "journal": "A net is a year of small repairs. You can read a man's winter in his mending.",
+   "outcome": "Del works in silence and you learn to work in it too.",
+   "loc": "dock",
+   "energy": 2,
+   "check": {
+    "apt": "hands",
+    "diff": 2
+   },
+   "outcome_rough": "Your splices pull loose twice. Del undoes them without comment, which stings worse than comment would.",
+   "outcome_strong": "By dark you have run a whole panel yourself. Del holds it to the lamp, turns it, and hangs it with the good nets.",
+   "outcome_by_season": {
+    "winter": "The twine is stiff with cold and your fingers stop being yours by noon. Del works bare-handed, ancient, unbothered.",
+    "summer": "You mend on the dock in the long light, and half the town drifts by with opinions about your clove hitch."
+   },
+   "outcome_alt": [
+    "Del hums three notes of something while he works, catches himself, and stops. You add it to the list of things you know about him.",
+    "A seal watches the whole session from the water like a foreman. Del says its name is Herbert. He does not explain."
+   ]
+  },
+  {
+   "id": "cannery_line",
+   "label": "Take a shift on the cannery line",
+   "months": [
+    0,
+    1,
+    9
+   ],
+   "apts": {
+    "hands": 1,
+    "grit": 1
+   },
+   "bond": "manny",
+   "bond_amt": 1,
+   "money": 3,
+   "outcome": "Cold, wet, loud, and by the end your hands know the knife.",
+   "loc": "cannery",
+   "energy": 4,
+   "check": {
+    "apt": "grit",
+    "diff": 3
+   },
+   "outcome_rough": "You lose the rhythm of the line and the fish pile up at your station until Mrs. Vieira wordlessly halves your lane.",
+   "outcome_strong": "The floor boss moves you up the line to the fast table. Nobody says anything. On the line, being moved up IS the saying.",
+   "outcome_by_season": {
+    "autumn": "Run season. The line doesn't stop for lunch — sandwiches come TO the line, one-handed, and you learn to eat like a deckhand.",
+    "spring": "Slack season. Half the line is cleaning and painting instead, and the gossip has room to stretch its legs."
+   },
+   "outcome_alt": [
+    "The woman across the table works with a photograph of a man in a uniform propped at her station. You never ask. She never tells.",
+    "Someone starts a song down the line and it travels to your end in pieces, wrong and better for it."
+   ]
+  },
+  {
+   "id": "library_afternoon",
+   "label": "Spend the afternoon at the library",
+   "apts": {
+    "word": 2
+   },
+   "bond": "iris",
+   "bond_amt": 1,
+   "journal": "The tide tables are a book that tells the future, and nobody calls it that.",
+   "outcome": "Iris slides you the book she thinks you actually want.",
+   "loc": "library",
+   "energy": 1,
+   "check": {
+    "apt": "word",
+    "diff": 1
+   },
+   "outcome_rough": "You fall asleep over the atlas and wake with the page's crease printed on your cheek. Iris pretends not to notice, theatrically.",
+   "outcome_strong": "You finish the book in a sitting and Iris, watching you close it, goes to the back room and returns with the one she doesn't lend.",
+   "outcome_alt": [
+    "A logging man comes in, orders poetry the way you'd order feed, and leaves. Iris files the request like treasure.",
+    "The rain on the library roof is the whole conversation, and it is enough."
+   ]
+  },
+  {
+   "id": "cafe_dishes",
+   "label": "Wash dishes for Ruth at the cafe",
+   "apts": {
+    "heart": 1,
+    "grit": 1
+   },
+   "bond": "ruth",
+   "bond_amt": 1,
+   "money": 2,
+   "outcome": "You hear half the town's news over the sink and keep all of it.",
+   "loc": "cafe",
+   "energy": 2,
+   "check": {
+    "apt": "heart",
+    "diff": 2
+   },
+   "outcome_rough": "You break a cup. The cook docks you a nickel and the waitress slips you a dime, and that is the whole town in one transaction.",
+   "outcome_strong": "You get ahead of the rush and stay ahead, and the cook — who has never once addressed you — says 'kid's alright' to the window.",
+   "outcome_alt": [
+    "Two fishermen argue about a boat sale through the whole lunch rush. By the dishes' end you know more about both men than their wives do.",
+    "Somebody leaves a paperback western on the counter. The cook reads it on breaks all week like it's the news."
+   ]
+  },
+  {
+   "id": "clamming",
+   "label": "Dig razor clams on the minus tide",
+   "months": [
+    3,
+    4,
+    5
+   ],
+   "apts": {
+    "sea": 1,
+    "wild": 1
+   },
+   "money": 2,
+   "journal": "Razor clams go down faster than you can dig. The tide is the only clock that matters.",
+   "outcome": "Freezing, filthy, a full bucket. A good morning.",
+   "loc": "beach",
+   "energy": 3,
+   "check": {
+    "apt": "sea",
+    "diff": 2
+   },
+   "outdoor": true,
+   "bay": true,
+   "outcome_rough": "You misread the show and dig a foot of empty sand while the tide comes back to correct you. Half a bucket, soaked through.",
+   "outcome_strong": "You limit out before the light is even properly up. Walking back past the late risers with a full bucket is its own wage.",
+   "outcome_by_season": {
+    "winter": "The January minus tide, by lantern. The cold is a fact you wear. The flats glitter out to the black water and it is worth it, barely, entirely."
+   },
+   "outcome_alt": [
+    "An old woman two holes over digs faster than you ever will and gives you exactly one tip, which works.",
+    "Boyd's dog finds a dead skate and rolls in it, joyfully, completely. The walk home is long."
+   ]
+  },
+  {
+   "id": "berry_picking",
+   "label": "Pick salmonberries up the draw",
+   "months": [
+    8,
+    9
+   ],
+   "apts": {
+    "wild": 1
+   },
+   "money": 2,
+   "bond": "boyd",
+   "bond_amt": 1,
+   "journal": "Salmonberry first, then thimbleberry, then blackberry — the summer keeps a calendar in fruit.",
+   "outcome": "You eat as many as you sell. Boyd eats more.",
+   "loc": "woods",
+   "energy": 2,
+   "check": {
+    "apt": "wild",
+    "diff": 1
+   },
+   "outdoor": true,
+   "outcome_rough": "The good draw is picked out — someone beat you to it at dawn. You come back scratched and light and Boyd blames the birds.",
+   "outcome_strong": "You find an unpicked draw up a creek nobody bothers with. You fill everything you brought and your hat besides.",
+   "outcome_by_season": {
+    "summer": "Peak berries. The stain won't leave your fingers for days and you stop wanting it to."
+   },
+   "outcome_alt": [
+    "A bear was here first — the bushes are stripped chest-high and the two of you leave with sudden, mutual efficiency.",
+    "Boyd tells you which berries his mother used to can, in a voice that closes the subject even as it opens it."
+   ]
+  },
+  {
+   "id": "walk_the_beach",
+   "label": "Walk the beach and see what came in",
+   "apts": {
+    "wild": 1
+   },
+   "journal": "Sanderlings run the wave-edge like they are sewing it shut.",
+   "outcome": "A glass float, a gull's wing, a boot. The beach gives what it gives.",
+   "loc": "beach",
+   "energy": 1,
+   "check": {
+    "apt": "wild",
+    "diff": 1
+   },
+   "outdoor": true,
+   "outcome_rough": "Wind out of the north with sand in its teeth. You cut it short and come home scoured.",
+   "outcome_strong": "You find a glass float — a real one, Japanese, unbroken, green as a wave's inside. Del will know how far it came.",
+   "outcome_by_season": {
+    "winter": "Storm-wrack for a mile: bull kelp in ropes, a ship's ladder, lightbulbs that somehow crossed an ocean whole.",
+    "spring": "The beach rewrites itself all spring. Today it has uncovered a wrecked hull's ribs that by Friday it will bury again."
+   },
+   "outcome_alt": [
+    "You walk the whole arc to the point and back and meet nobody, which is a kind of wealth.",
+    "Sanderlings run the wave-edge like they're being wound up. You watch longer than you meant to."
+   ]
+  },
+  {
+   "id": "gran_garden",
+   "label": "Help Vovo in the garden",
+   "apts": {
+    "hands": 1
+   },
+   "bond": "gran",
+   "bond_amt": 2,
+   "journal": "The grandmother grows things that are not from here — kale that is a tree, a bean nobody names in English.",
+   "outcome": "She corrects your hands without a word and you feel it as kindness.",
+   "loc": "home",
+   "energy": 1,
+   "check": {
+    "apt": "wild",
+    "diff": 1
+   },
+   "outdoor": true,
+   "outcome_rough": "You pull three of her starts thinking them weeds. Vovo says nothing at the time, which is how you learn she saw.",
+   "outcome_strong": "She lets you plant the bean rows alone, start to finish, and inspects them after with her hands behind her back like a general, and nods.",
+   "outcome_by_season": {
+    "winter": "Winter work: turning beds, hauling seaweed for mulch. Vovo says the garden is made in winter and merely happens in summer.",
+    "summer": "Everything at once now. You eat supper out of the rows standing up and Vovo pretends that is not allowed."
+   },
+   "outcome_alt": [
+    "She names each plant in Portuguese, once, quietly — a lesson she'd deny giving.",
+    "The neighbor's chickens stage a raid. Vovo's counter-offensive is total and the détente afterward is formal."
+   ]
+  },
+  {
+   "id": "gran_sing",
+   "label": "Sit with Vovo while she sings",
+   "apts": {
+    "heart": 1,
+    "word": 1
+   },
+   "bond": "gran",
+   "bond_amt": 2,
+   "song": true,
+   "journal": "The songs are older than the town and came across an ocean to get here.",
+   "outcome": "You catch a little more of it each time. It is starting to stay in you.",
+   "loc": "home",
+   "energy": 1,
+   "check": {
+    "apt": "heart",
+    "diff": 1
+   },
+   "outcome_rough": "You lose the tune's middle again. Vovo does not correct you; she just sings it once more, from the start, all the way.",
+   "outcome_strong": "You carry the second verse alone and her voice drops out under you on purpose, and holds, listening, and comes back in warmer.",
+   "outcome_alt": [
+    "Tonight she tells you where the song is from, which is not where you thought, and is a longer story than one night can hold.",
+    "Halfway through, you realize she has changed a word — a name — and you keep her secret without knowing what it is."
+   ]
+  },
+  {
+   "id": "school_day",
+   "label": "Just go to school",
+   "apts": {
+    "word": 1,
+    "heart": 1
+   },
+   "outcome": "You are the new kid until, one ordinary Tuesday, you are not.",
+   "loc": "school",
+   "energy": 2,
+   "check": {
+    "apt": "word",
+    "diff": 2
+   },
+   "outcome_rough": "You say the wrong river in geography and the Aandahl twins ride it all recess. Small town: it will be legend by Friday, forgotten by June.",
+   "outcome_strong": "Your essay gets read aloud. You study your desk the whole time, and it is the best minute of the month.",
+   "outcome_alt": [
+    "A whale goes past the windows mid-arithmetic and the teacher surrenders instantly and entirely.",
+    "You get mail in the class post-office game from someone who signs only 'a friend', and spend the day being a detective."
+   ]
+  },
+  {
+   "id": "row_the_bay",
+   "label": "Take the skiff out past the jetty",
+   "months": [
+    6,
+    7,
+    8,
+    9
+   ],
+   "require_any": [
     {
-      "id": "mend_nets",
-      "label": "Mend nets on the dock with Del",
-      "apts": {
-        "hands": 2
-      },
-      "bond": "del",
-      "bond_amt": 1,
-      "money": 1,
-      "journal": "A net is a year of small repairs. You can read a man's winter in his mending.",
-      "outcome": "Del works in silence and you learn to work in it too.",
-      "loc": "dock",
-      "energy": 2,
-      "check": {
-        "apt": "hands",
-        "diff": 2
-      }
+     "apt": "sea",
+     "min": 2
     },
     {
-      "id": "cannery_line",
-      "label": "Take a shift on the cannery line",
-      "months": [
-        0,
-        1,
-        9
-      ],
-      "apts": {
-        "hands": 1,
-        "grit": 1
-      },
-      "bond": "manny",
-      "bond_amt": 1,
-      "money": 3,
-      "outcome": "Cold, wet, loud, and by the end your hands know the knife.",
-      "loc": "cannery",
-      "energy": 4,
-      "check": {
-        "apt": "grit",
-        "diff": 3
-      }
-    },
-    {
-      "id": "library_afternoon",
-      "label": "Spend the afternoon at the library",
-      "apts": {
-        "word": 2
-      },
-      "bond": "iris",
-      "bond_amt": 1,
-      "journal": "The tide tables are a book that tells the future, and nobody calls it that.",
-      "outcome": "Iris slides you the book she thinks you actually want.",
-      "loc": "library",
-      "energy": 1,
-      "check": {
-        "apt": "word",
-        "diff": 1
-      }
-    },
-    {
-      "id": "cafe_dishes",
-      "label": "Wash dishes for Ruth at the cafe",
-      "apts": {
-        "heart": 1,
-        "grit": 1
-      },
-      "bond": "ruth",
-      "bond_amt": 1,
-      "money": 2,
-      "outcome": "You hear half the town's news over the sink and keep all of it.",
-      "loc": "cafe",
-      "energy": 2,
-      "check": {
-        "apt": "heart",
-        "diff": 2
-      }
-    },
-    {
-      "id": "clamming",
-      "label": "Dig razor clams on the minus tide",
-      "months": [
-        3,
-        4,
-        5
-      ],
-      "apts": {
-        "sea": 1,
-        "wild": 1
-      },
-      "money": 2,
-      "journal": "Razor clams go down faster than you can dig. The tide is the only clock that matters.",
-      "outcome": "Freezing, filthy, a full bucket. A good morning.",
-      "loc": "beach",
-      "energy": 3,
-      "check": {
-        "apt": "sea",
-        "diff": 2
-      },
-      "outdoor": true,
-      "bay": true
-    },
-    {
-      "id": "berry_picking",
-      "label": "Pick salmonberries up the draw",
-      "months": [
-        8,
-        9
-      ],
-      "apts": {
-        "wild": 1
-      },
-      "money": 2,
-      "bond": "boyd",
-      "bond_amt": 1,
-      "journal": "Salmonberry first, then thimbleberry, then blackberry — the summer keeps a calendar in fruit.",
-      "outcome": "You eat as many as you sell. Boyd eats more.",
-      "loc": "woods",
-      "energy": 2,
-      "check": {
-        "apt": "wild",
-        "diff": 1
-      },
-      "outdoor": true
-    },
-    {
-      "id": "walk_the_beach",
-      "label": "Walk the beach and see what came in",
-      "apts": {
-        "wild": 1
-      },
-      "journal": "Sanderlings run the wave-edge like they are sewing it shut.",
-      "outcome": "A glass float, a gull's wing, a boot. The beach gives what it gives.",
-      "loc": "beach",
-      "energy": 1,
-      "check": {
-        "apt": "wild",
-        "diff": 1
-      },
-      "outdoor": true
-    },
-    {
-      "id": "gran_garden",
-      "label": "Help Vovo in the garden",
-      "apts": {
-        "hands": 1
-      },
-      "bond": "gran",
-      "bond_amt": 2,
-      "journal": "The grandmother grows things that are not from here — kale that is a tree, a bean nobody names in English.",
-      "outcome": "She corrects your hands without a word and you feel it as kindness.",
-      "loc": "home",
-      "energy": 1,
-      "check": {
-        "apt": "wild",
-        "diff": 1
-      },
-      "outdoor": true
-    },
-    {
-      "id": "gran_sing",
-      "label": "Sit with Vovo while she sings",
-      "apts": {
-        "heart": 1,
-        "word": 1
-      },
-      "bond": "gran",
-      "bond_amt": 2,
-      "song": true,
-      "journal": "The songs are older than the town and came across an ocean to get here.",
-      "outcome": "You catch a little more of it each time. It is starting to stay in you.",
-      "loc": "home",
-      "energy": 1,
-      "check": {
-        "apt": "heart",
-        "diff": 1
-      }
-    },
-    {
-      "id": "school_day",
-      "label": "Just go to school",
-      "apts": {
-        "word": 1,
-        "heart": 1
-      },
-      "outcome": "You are the new kid until, one ordinary Tuesday, you are not.",
-      "loc": "school",
-      "energy": 2,
-      "check": {
-        "apt": "word",
-        "diff": 2
-      }
-    },
-    {
-      "id": "row_the_bay",
-      "label": "Take the skiff out past the jetty",
-      "months": [
-        6,
-        7,
-        8,
-        9
-      ],
-      "require_any": [
-        {
-          "apt": "sea",
-          "min": 2
-        },
-        {
-          "bond": "del",
-          "min": 3
-        }
-      ],
-      "apts": {
-        "sea": 2,
-        "grit": 1
-      },
-      "bond": "del",
-      "bond_amt": 1,
-      "journal": "At slack water the bar lies flat and lies about what it is.",
-      "outcome": "You cross the bar and come back in and Del does not say well done, which means well done.",
-      "loc": "dock",
-      "energy": 3,
-      "check": {
-        "apt": "sea",
-        "diff": 3
-      },
-      "outdoor": true,
-      "bay": true
-    },
-    {
-      "id": "woods_with_boyd",
-      "label": "Go up into the woods with Boyd",
-      "apts": {
-        "wild": 2
-      },
-      "bond": "boyd",
-      "bond_amt": 2,
-      "journal": "Elk sign, bear scat, a spring nobody marked. The woods are a town too.",
-      "outcome": "Boyd shows you the coast from the bluff. You do not talk for a while.",
-      "loc": "woods",
-      "energy": 3,
-      "check": {
-        "apt": "wild",
-        "diff": 2
-      },
-      "outdoor": true
-    },
-    {
-      "id": "store_errand",
-      "label": "Run the delivery route for Tuck",
-      "apts": {
-        "heart": 1,
-        "grit": 1
-      },
-      "money": 2,
-      "bond": "tuck",
-      "bond_amt": 1,
-      "outcome": "Every porch is a person. By the end you know the town by its doors.",
-      "loc": "store",
-      "energy": 2,
-      "check": {
-        "apt": "grit",
-        "diff": 1
-      }
-    },
-    {
-      "id": "sit_estelle",
-      "label": "Bring in Estelle's wood",
-      "apts": {
-        "heart": 1
-      },
-      "bond": "estelle",
-      "bond_amt": 2,
-      "clue": "estelle_light",
-      "outcome": "She keeps a light in the window that faces the bar. You do not ask why. You are starting to know.",
-      "loc": "estelle",
-      "energy": 1,
-      "check": {
-        "apt": "heart",
-        "diff": 1
-      }
-    },
-    {
-      "id": "storm_watch",
-      "label": "Watch the storm come in from the point",
-      "months": [
-        2,
-        3,
-        4,
-        5
-      ],
-      "apts": {
-        "sea": 1,
-        "wild": 1,
-        "grit": 1
-      },
-      "journal": "When the glass falls fast, the town brings the boats in and nobody has to be told.",
-      "outcome": "The whole coast goes the color of a bruise and then it hits.",
-      "loc": "beach",
-      "energy": 1,
-      "check": {
-        "apt": "wild",
-        "diff": 1
-      },
-      "outdoor": true
-    },
-    {
-      "id": "church_supper",
-      "label": "Go to the church supper",
-      "apts": {
-        "heart": 2
-      },
-      "bond": "ruth",
-      "bond_amt": 1,
-      "bond2": "estelle",
-      "bond2_amt": 1,
-      "outcome": "The whole town in one warm room. Even Estelle comes, and sits at the back, and stays.",
-      "loc": "church",
-      "energy": 1,
-      "check": {
-        "apt": "heart",
-        "diff": 1
-      }
-    },
-    {
-      "id": "boathouse_radio",
-      "label": "Listen for the fleet on Del's boathouse radio",
-      "require_any": [
-        {
-          "bond": "del",
-          "min": 2
-        }
-      ],
-      "apts": {
-        "sea": 1,
-        "word": 1
-      },
-      "bond": "del",
-      "bond_amt": 1,
-      "journal": "Every boat has a call sign and a voice. You learn to tell them apart in the static.",
-      "outcome": "Del lets you keep the watch while he mends. You listen for the ones that answer, and notice the one channel that never does.",
-      "loc": "dock",
-      "energy": 2,
-      "check": {
-        "apt": "word",
-        "diff": 2
-      }
-    },
-    {
-      "id": "county_records",
-      "label": "Read the county register with Iris",
-      "require_any": [
-        {
-          "bond": "iris",
-          "min": 2
-        }
-      ],
-      "apts": {
-        "word": 2
-      },
-      "bond": "iris",
-      "bond_amt": 1,
-      "journal": "The town keeps two histories: the one they printed, and the one in Iris's back room.",
-      "outcome": "Iris turns the ledger to a page she has clearly turned to before, and lets you read it, and says nothing.",
-      "loc": "library",
-      "energy": 2,
-      "check": {
-        "apt": "word",
-        "diff": 2
-      }
+     "bond": "del",
+     "min": 3
     }
-  ]
+   ],
+   "apts": {
+    "sea": 2,
+    "grit": 1
+   },
+   "bond": "del",
+   "bond_amt": 1,
+   "journal": "At slack water the bar lies flat and lies about what it is.",
+   "outcome": "You cross the bar and come back in and Del does not say well done, which means well done.",
+   "loc": "dock",
+   "energy": 3,
+   "check": {
+    "apt": "sea",
+    "diff": 3
+   },
+   "outdoor": true,
+   "bay": true,
+   "outcome_rough": "The chop stands up on the ebb and you ship water twice and come in white-knuckled the long way round. Del watched the whole time. That is the lesson.",
+   "outcome_strong": "You read the bar's timing yourself, pick your window, and take it clean. Del is mending when you tie up and says only 'saw that'.",
+   "outcome_alt": [
+    "A harbor porpoise pilots your bow wave the whole crossing, escorting or supervising, hard to say.",
+    "You rest on your oars in mid-bay and the town sits on the water in miniature, complete, and yours."
+   ]
+  },
+  {
+   "id": "woods_with_boyd",
+   "label": "Go up into the woods with Boyd",
+   "apts": {
+    "wild": 2
+   },
+   "bond": "boyd",
+   "bond_amt": 2,
+   "journal": "Elk sign, bear scat, a spring nobody marked. The woods are a town too.",
+   "outcome": "Boyd shows you the coast from the bluff. You do not talk for a while.",
+   "loc": "woods",
+   "energy": 3,
+   "check": {
+    "apt": "wild",
+    "diff": 2
+   },
+   "outdoor": true,
+   "outcome_rough": "Boyd is silent in the wrong way today, and you learn there are days the woods are the only room he can be in. You keep up and keep quiet.",
+   "outcome_strong": "He shows you the tree. THE tree — the one his family has cut around for three generations. You are, you understand, being introduced.",
+   "outcome_alt": [
+    "An elk and her calf cross the trail and Boyd stops you with one hand, and for a full minute nobody in the world breathes.",
+    "He names the mushrooms you can eat and the ones you can't with the flat authority of a man teaching survival, because he is."
+   ]
+  },
+  {
+   "id": "store_errand",
+   "label": "Run the delivery route for Tuck",
+   "apts": {
+    "heart": 1,
+    "grit": 1
+   },
+   "money": 2,
+   "bond": "tuck",
+   "bond_amt": 1,
+   "outcome": "Every porch is a person. By the end you know the town by its doors.",
+   "loc": "store",
+   "energy": 2,
+   "check": {
+    "apt": "grit",
+    "diff": 1
+   },
+   "outcome_rough": "You deliver Mrs. Pettersen's order to the wrong Pettersen. The two households have not spoken since 1951. You have made history's smallest diplomatic incident.",
+   "outcome_strong": "You run the whole list from memory and collect two new orders on the way, and the grocer starts calling you by name to other customers, which is a promotion.",
+   "outcome_alt": [
+    "The lighthouse keeper's order is the same every week, plus, this week only, birthday candles. You carry that up the hill like intelligence.",
+    "Old Mr. Nunes pays you in exact coins and one story about your Vovo as a girl that you will trade to no one."
+   ]
+  },
+  {
+   "id": "sit_estelle",
+   "label": "Bring in Estelle's wood",
+   "apts": {
+    "heart": 1
+   },
+   "bond": "estelle",
+   "bond_amt": 2,
+   "clue": "estelle_light",
+   "outcome": "She keeps a light in the window that faces the bar. You do not ask why. You are starting to know.",
+   "loc": "estelle",
+   "energy": 1,
+   "check": {
+    "apt": "heart",
+    "diff": 1
+   },
+   "outcome_rough": "She is far away tonight, at the window with the light. You wash the cups, bank the stove, and leave her with the sea, which is who she was talking to.",
+   "outcome_strong": "Tonight she gets out the box of photographs. She names each man on each boat, slowly, and the one she pauses over she does not name, and you memorize his face.",
+   "outcome_alt": [
+    "She teaches you two-handed whist and cheats — magnificently, openly, daring you to say so.",
+    "She asks after Del in a voice built to sound casual, and you answer carefully, and something eases half an inch."
+   ]
+  },
+  {
+   "id": "storm_watch",
+   "label": "Watch the storm come in from the point",
+   "months": [
+    2,
+    3,
+    4,
+    5
+   ],
+   "apts": {
+    "sea": 1,
+    "wild": 1,
+    "grit": 1
+   },
+   "journal": "When the glass falls fast, the town brings the boats in and nobody has to be told.",
+   "outcome": "The whole coast goes the color of a bruise and then it hits.",
+   "loc": "beach",
+   "energy": 1,
+   "check": {
+    "apt": "wild",
+    "diff": 1
+   },
+   "outdoor": true,
+   "outcome_rough": "The wind shifts on you and the spray finds you on the bluff and the walk home is a fight you lose politely the whole way.",
+   "outcome_strong": "You count the swell period like Del taught you and call the biggest set before it lands. The sea rearranges the beach; you saw it order the change.",
+   "outcome_alt": [
+    "The lighthouse disappears in spray to the lamp gallery and surfaces, disappears and surfaces, all afternoon, like the coast breathing.",
+    "Half the town's trucks are parked along the bluff, engines off, wipers going. Storm-watching is company here."
+   ]
+  },
+  {
+   "id": "church_supper",
+   "label": "Go to the church supper",
+   "apts": {
+    "heart": 2
+   },
+   "bond": "ruth",
+   "bond_amt": 1,
+   "bond2": "estelle",
+   "bond2_amt": 1,
+   "outcome": "The whole town in one warm room. Even Estelle comes, and sits at the back, and stays.",
+   "loc": "church",
+   "energy": 1,
+   "check": {
+    "apt": "heart",
+    "diff": 1
+   },
+   "outcome_rough": "You are seated at the far end with the little kids and spend the evening being beaten at checkers by a six-year-old with no mercy in her.",
+   "outcome_strong": "Vovo's pan goes first — before the pastor's wife's, an upheaval — and you get the credit for carrying it in, which you accept shamelessly.",
+   "outcome_alt": [
+    "The men end up in the parking lot around somebody's new engine; the women end up around the coffee urn running the actual town.",
+    "The pastor tells a joke that lands, to his own visible astonishment."
+   ]
+  },
+  {
+   "id": "boathouse_radio",
+   "label": "Listen for the fleet on Del's boathouse radio",
+   "require_any": [
+    {
+     "bond": "del",
+     "min": 2
+    }
+   ],
+   "apts": {
+    "sea": 1,
+    "word": 1
+   },
+   "bond": "del",
+   "bond_amt": 1,
+   "journal": "Every boat has a call sign and a voice. You learn to tell them apart in the static.",
+   "outcome": "Del lets you keep the watch while he mends. You listen for the ones that answer, and notice the one channel that never does.",
+   "loc": "dock",
+   "energy": 2,
+   "check": {
+    "apt": "word",
+    "diff": 2
+   },
+   "outcome_rough": "Static all night, and the one voice you find is a Canadian trawler complaining about the price of fuel, at length.",
+   "outcome_strong": "You log every call correctly through the evening traffic, and Del reads the log after and initials the page — an instrument now, not a toy.",
+   "outcome_alt": [
+    "Two boats you can't see talk each other through the bar in the dark, easy as neighbors over a fence, and you hold your breath the whole time.",
+    "The quiet channel again. A count, then nothing. Del turns the dial past it one click too fast."
+   ]
+  },
+  {
+   "id": "county_records",
+   "label": "Read the county register with Iris",
+   "require_any": [
+    {
+     "bond": "iris",
+     "min": 2
+    }
+   ],
+   "apts": {
+    "word": 2
+   },
+   "bond": "iris",
+   "bond_amt": 1,
+   "journal": "The town keeps two histories: the one they printed, and the one in Iris's back room.",
+   "outcome": "Iris turns the ledger to a page she has clearly turned to before, and lets you read it, and says nothing.",
+   "loc": "library",
+   "energy": 2,
+   "check": {
+    "apt": "word",
+    "diff": 2
+   },
+   "outcome_rough": "The ledger hand defeats you — spidery, faded, abbreviated. Iris says the records keep best the things people wanted least remembered.",
+   "outcome_strong": "You cross-check a date against the parish register and the two books disagree by one year, deliberately, and Iris goes very still when you show her.",
+   "outcome_alt": [
+    "A name is inked out in the 1919 book. Under the lamp, at an angle, you can almost read it. Almost.",
+    "Iris leaves you alone with the drawer this time. The trust is the finding."
+   ]
+  }
+ ]
 }

@@ -38,6 +38,9 @@ const EVENTS_PATH := "res://resources/games/vol7/salmonberry/events.json"
 
 const MONTHS := ["September", "October", "November", "December", "January",
 	"February", "March", "April", "May", "June"]
+# Season keys for outcome_by_season variants (see _pick_outcome).
+const SEASON_OF := ["autumn", "autumn", "autumn", "winter", "winter",
+	"winter", "spring", "spring", "spring", "summer"]
 const SEASON_LINE := [
 	"The fog does not lift until noon. The whole town smells of fish and cut cedar. You are the new kid.",
 	"The fall run is on. The cannery runs day and night and the gulls never sleep.",
@@ -170,6 +173,27 @@ func _read_json(path: String) -> Dictionary:
 
 
 # ─── deterministic weather ───────────────────────────────────────
+
+var _week_flavor: Dictionary = {}   # "month,week" -> line · lazy-loaded
+
+func _week_flavor_line(month: int, week: int) -> String:
+	if _week_flavor.is_empty():
+		var f := FileAccess.open(
+				"res://resources/games/vol7/salmonberry/week_flavor.json",
+				FileAccess.READ)
+		if f == null:
+			_week_flavor = {"_missing": true}
+			return ""
+		var parsed: Variant = JSON.parse_string(f.get_as_text())
+		f.close()
+		if parsed is Dictionary:
+			var weeks: Variant = (parsed as Dictionary).get("weeks", {})
+			if weeks is Dictionary:
+				_week_flavor = weeks
+		if _week_flavor.is_empty():
+			_week_flavor = {"_missing": true}
+	return String(_week_flavor.get("%d,%d" % [month, week], ""))
+
 
 func _weather_for(month: int, week: int) -> String:
 	if month == 6:
@@ -309,6 +333,19 @@ func _render_week() -> void:
 		season.add_theme_font_size_override("font_size", 14)
 		season.add_theme_color_override("font_color", C_INK if month != 2 else C_RUST)
 		v.add_child(season)
+
+	# THE WEEK ITSELF · every one of the 40 weeks has its own line —
+	# what the town is doing right now, independent of your choices.
+	# From week_flavor.json ("salmonberry is lifeless" fix); missing
+	# file or missing week degrades to nothing, silently.
+	var wk_line: String = _week_flavor_line(month, week)
+	if wk_line != "":
+		var fl := Label.new()
+		fl.text = wk_line
+		fl.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+		fl.add_theme_font_size_override("font_size", 14)
+		fl.add_theme_color_override("font_color", C_INK)
+		v.add_child(fl)
 
 	# weather now + the glass for next week (planning information)
 	var wline := Label.new()
@@ -563,7 +600,7 @@ func _on_activity(act: Dictionary, is_event: bool) -> void:
 			(" ".join(mod_bits) if not mod_bits.is_empty() else ""), diff, tier_word]
 
 	# ── stakes events branch on the check ──
-	var outcome: String = String(act.get("outcome", ""))
+	var outcome: String = _pick_outcome(act, tier)
 	var apply_full: bool = true
 	if act.has("check_stakes") and tier == 0:
 		outcome = String(act.get("fail_outcome", outcome))
@@ -626,6 +663,48 @@ func _on_activity(act: Dictionary, is_event: bool) -> void:
 	if breakdown != "":
 		lines.push_front("· " + breakdown)
 	_advance_after(outcome, lines)
+
+
+# FLAVOR · which line the week actually says.
+#
+# Reported 2026-07-31: "salmonberry is lifeless. add flavor text for
+# every week, and every choice." Measured cause: every activity had
+# ONE outcome string, reused across all 40 weeks. The data now
+# carries variants and this picks between them:
+#
+#   outcome            · the base line (always present · fallback)
+#   outcome_by_season  · {"summer": "...", "autumn": ...} overrides
+#                        the base for that season
+#   outcome_rough      · replaces on a rough week (tier 0)
+#   outcome_strong     · replaces on a strong week (tier 2)
+#   outcome_alt        · [..] extra variants rotated by visit count,
+#                        so the third net-haul doesn't read like the
+#                        first even inside one season
+#
+# Priority: tier line > season line > alt rotation > base. Tier wins
+# because the tier is the news; season is scenery.
+func _pick_outcome(act: Dictionary, tier: int) -> String:
+	var base: String = String(act.get("outcome", ""))
+	if tier == 0 and act.has("outcome_rough"):
+		return String(act["outcome_rough"])
+	if tier == 2 and act.has("outcome_strong"):
+		return String(act["outcome_strong"])
+	var month: int = int(_s.get("month", 0))
+	var season: String = SEASON_OF[month]
+	var by_season: Dictionary = act.get("outcome_by_season", {})
+	if by_season.has(season):
+		return String(by_season[season])
+	var alts: Array = act.get("outcome_alt", [])
+	if not alts.is_empty():
+		# visit count per activity id · persists in the run state
+		var visits: Dictionary = _s.get("act_visits", {})
+		var aid: String = String(act.get("id", ""))
+		var n: int = int(visits.get(aid, 0))
+		visits[aid] = n + 1
+		_s["act_visits"] = visits
+		if n > 0:   # first visit keeps the authored base line
+			return String(alts[(n - 1) % alts.size()])
+	return base
 
 
 func _on_rest() -> void:
