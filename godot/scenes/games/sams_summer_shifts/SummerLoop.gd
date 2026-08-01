@@ -221,6 +221,34 @@ const CUSTOMERS := [
 	 "items": [["pop", 0.65], ["pretzels", 1.19]]},
 	{"id": "heritage_family", "line": "A family in matching festival shirts needs gas, ice, film, and directions.",
 	 "items": [["gas", 13.60], ["ice", 1.85], ["film, 24 exp", 4.99]]},
+	{"id": "phone_guy", "line": "A man in a suit needs change for the payphone and radiates a bad day.",
+	 "items": [["coffee, small", 0.65]],
+	 "moment": {"prompt": "He asks, too casually, whether the phone booth 'has any privacy to speak of'.",
+		"choices": [
+			{"label": "  'Booth's around the side. Can't hear a thing from here.'  ", "regulars": 1, "note": "true, and kindly meant · he tips a quarter into the take-a-penny tray"},
+			{"label": "  'It's a parking lot, mister.'  ", "nerve": 1, "note": "also true · he makes the call anyway, shoulders squared at the highway"}]}},
+	{"id": "berry_kids", "line": "Two kids off the berry fields, paid in cash today and rich by any measure that matters.",
+	 "items": [["pop, two", 1.30], ["ice cream, bars", 1.50], ["comic", 0.60]]},
+	{"id": "night_nurse", "line": "A nurse coming off nights at the Longview hospital, running on fumes and habit.",
+	 "items": [["coffee, large", 0.95], ["aspirin", 1.29]],
+	 "moment": {"prompt": "She's asleep on her feet at the counter, keys in hand, forty minutes of highway left.",
+		"choices": [
+			{"label": "  'Coffee's on me if you drink it HERE, sitting down.'  ", "regulars": 1, "till": -1, "note": "she sits · ten minutes · the highway gets a safer driver"},
+			{"label": "  Ring it and wish her a careful drive.  ", "till": 1, "note": "not your call to make · you watch her taillights the whole way to the bend"}]}},
+	{"id": "county_deputy", "line": "The county deputy, coffee and a look around, the look being most of the job.",
+	 "items": [["coffee, large", 0.95], ["donut", 0.55]],
+	 "moment": {"prompt": "He asks, conversationally, whether the camera over the register ever got fixed.",
+		"choices": [
+			{"label": "  'June. Still broke. Ray knows.'  ", "nerve": 1, "note": "the truth, on the record · he writes nothing down, which is how you know he wrote it down"},
+			{"label": "  'Works fine.'  ", "till": 1, "nerve": -1, "note": "the lie is for the store's sake and sits wrong all shift"}]}},
+	{"id": "flower_man", "line": "An old man buying a single carnation from the cooler bucket, exact change ready.",
+	 "items": [["carnation", 0.75]]},
+	{"id": "returning_clerk", "line": "A woman in her thirties who stands in the doorway a beat too long before coming in. She worked this register once.",
+	 "items": [["pop", 0.65], ["postcard", 0.35]],
+	 "moment": {"prompt": "'The drawer still start at eighty even?' she asks, like a password.",
+		"choices": [
+			{"label": "  'Eighty even. Counted twice.'  ", "regulars": 1, "nerve": 1, "note": "the password answers itself · she buys the postcard OF the store, which you did not know existed"},
+			{"label": "  'Who's asking?'  ", "till": 1, "note": "fair · she laughs, introduces herself · summer of '89, before the new pumps"}]}},
 ]
 
 var _shift_queue: Array = []

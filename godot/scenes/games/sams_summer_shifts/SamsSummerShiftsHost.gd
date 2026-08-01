@@ -88,11 +88,13 @@ func _save_state() -> void:
 
 func start_new_run(_manager_mode: bool = false) -> void:
 	var seen: Array = _run_state.get("endings_seen", [])
+	# THE APRON POCKET (StickLoop outfit) · what past summers at the
+	# Hi-Way 30 left in the pocket rides into this one.
 	_run_state = {
 		"week":     1,
-		"till":     3,
-		"regulars": 3,
-		"nerve":    3,
+		"till":     3 + StickLoop.effect("sams_summer_shifts", "start_till"),
+		"regulars": 3 + StickLoop.effect("sams_summer_shifts", "start_regulars"),
+		"nerve":    3 + StickLoop.effect("sams_summer_shifts", "start_nerve"),
 		"choices_log": [],
 		"endings_seen": seen,
 		"canon_vars": {},
@@ -294,6 +296,14 @@ func _on_summer_over(state: Dictionary, ending_id: String) -> void:
 	var canon: Dictionary = _run_state.get("canon_vars", {})
 	canon["sams_summer_shifts_ending"] = ending_id
 	_run_state["canon_vars"] = canon
+	# THE LOOP · a finished summer banks QUARTERS: weeks worked plus
+	# where the three meters ended. Spent at the shelf's OUTFIT.
+	var quarters: int = int(_run_state.get("week", 1)) \
+			+ int(_run_state.get("till", 0)) \
+			+ int(_run_state.get("regulars", 0)) \
+			+ int(_run_state.get("nerve", 0))
+	StickLoop.finish_run("sams_summer_shifts", {
+		"credit": quarters, "outcome": ending_id})
 	_save_state()
 	finished.emit(canon, tokens)
 

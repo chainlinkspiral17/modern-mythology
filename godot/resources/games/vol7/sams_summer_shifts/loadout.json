@@ -1,0 +1,59 @@
+{
+  "notes": [
+    "THE APRON POCKET · Sam's Summer Shifts' half of the StickLoop",
+    "contract. EARN: quarters for a finished summer — weeks worked +",
+    "where TILL/REGULARS/NERVE ended. CARRY: SamsSummerShiftsHost",
+    "reads at start_new_run. ≥1 FLAG per tier per the playbook."
+  ],
+  "currency": {
+    "id": "quarters",
+    "name": "QUARTERS",
+    "earn_line": "a finished summer pays quarters · weeks worked and where the three meters ended count"
+  },
+  "upgrades": [
+    {
+      "id": "rays_count",
+      "name": "RAY'S COUNTING TRICK",
+      "cost": 6,
+      "tier": 1,
+      "needs_mastery": 0,
+      "requires": [],
+      "blurb": "count by feel, confirm by eye, once each. TILL starts one higher — the drawer trusts hands it recognizes.",
+      "effects": {"start_till": 1},
+      "flags": []
+    },
+    {
+      "id": "dots_stool",
+      "name": "DOT'S NOD",
+      "cost": 7,
+      "tier": 1,
+      "needs_mastery": 0,
+      "requires": [],
+      "blurb": "she remembers you from a summer that has already happened, and lets the 5:40 crowd see her remembering. REGULARS starts one higher.",
+      "effects": {"start_regulars": 1},
+      "flags": ["dots_nod"]
+    },
+    {
+      "id": "steady_hands",
+      "name": "STEADY HANDS",
+      "cost": 9,
+      "tier": 2,
+      "needs_mastery": 1,
+      "requires": [],
+      "blurb": "the chime is just a chime. NERVE starts one higher, and it matters most in the week nobody wants.",
+      "effects": {"start_nerve": 1},
+      "flags": ["steady"]
+    },
+    {
+      "id": "the_lanyard",
+      "name": "THE SPARE LANYARD",
+      "cost": 12,
+      "tier": 3,
+      "needs_mastery": 2,
+      "requires": ["rays_count"],
+      "blurb": "Ray cut you your own key the last time. TILL and REGULARS each start one higher — the store opens like it never closed.",
+      "effects": {"start_till": 1, "start_regulars": 1},
+      "flags": ["own_key"]
+    }
+  ]
+}

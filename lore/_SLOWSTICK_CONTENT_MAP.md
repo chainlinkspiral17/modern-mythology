@@ -36,7 +36,7 @@ A stick is DONE when it clears all six. Anything less is a wave.
 | salmonberry | 2118 | 58K | — | **B** · Wave 1 shipped: 40 week lines, 18×4 outcome variants, town life (presence/overheard/moments) |
 | spiderdrops | 1372 | 31K | — | **B** · feel-complete · loop only |
 | northwind_harbor | 1137 | 75K | — | **B** · data-rich · loop only |
-| sams_summer_shifts | 994 | 6K | — | **C** · 6K data = thin runs |
+| sams_summer_shifts | 994 | 6K* | ✓ | **B−** · re-measured: 12 authored weeks + 22-customer shift pool INLINE in the GD (*wc lied) · Wave 4b: +6 customers, QUARTERS loop |
 | basilica_of_wires | 966 | 28K | ✓ | **B−** · Wave 2 shipped: 20 finds, 6 floor residents, WIRE loop + 7-item toolbelt |
 | estuary_1 | 951 | 15K | — | **C+** · by-design austere |
 | patient_mister_glass | 921 | 30K | — | **B−** |

@@ -171,8 +171,18 @@ func _enter_level(i: int, from_above: bool) -> void:
 	_dir = 1
 	_steps_on_level = 0
 	_deepest = maxi(_deepest, i)
-	_set_msg("LEVEL %d · %s · fundamental %d Hz" % [i + 1, String(_level().get("name", "")).to_upper(),
-			int(_level().get("fundamental", 0))])
+	# THE READ (content-map bar 5) · what this floor will cost AT THE
+	# TUNE YOU ARE CARRYING, said at the threshold — engage informed.
+	var fund := float(_level().get("fundamental", 0))
+	var read := ""
+	if absf(_freq - SAFE_FREQ) <= SAFE_TOL:
+		read = "at 220 the floor is a hallway"
+	elif absf(_freq - fund) <= BAND_TOL:
+		read = "your tune sits in the floor's band · it will treat you as furniture"
+	else:
+		read = "your tune argues with this floor · it will collect"
+	_set_msg("LEVEL %d · %s · fundamental %d Hz · %s" % [i + 1,
+			String(_level().get("name", "")).to_upper(), int(fund), read])
 	_mark_visited()
 	queue_redraw()
 
