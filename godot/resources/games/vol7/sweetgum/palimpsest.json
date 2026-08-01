@@ -1,107 +1,182 @@
 {
-  "notes": "The log file that ships ON the cartridge \u00b7 authored content presented as accumulated saves. The A.G. 1979 entry is injected at read time only when glass_second_ledger_seen is held (the ferry clerk stood one watch). Player entries append below, undated.",
-  "seeded": [
+ "notes": "The log file that ships ON the cartridge · authored content presented as accumulated saves. The A.G. 1979 entry is injected at read time only when glass_second_ledger_seen is held (the ferry clerk stood one watch). Player entries append below, undated.",
+ "seeded": [
+  {
+   "year": "1977",
+   "who": "the author, thirteen",
+   "entries": [
     {
-      "year": "1977",
-      "who": "the author, thirteen",
-      "entries": [
-        {
-          "t": "21:05",
-          "station": "gate",
-          "text": "first watch. dad says just walk it and write it."
-        },
-        {
-          "t": "23:40",
-          "station": "cabin_2",
-          "text": "locks fine. cold for august."
-        },
-        {
-          "t": "02:58",
-          "station": "waterline",
-          "text": "heard it. three. not writing what."
-        },
-        {
-          "t": "06:00",
-          "station": "all",
-          "text": "quiet. going home."
-        }
-      ]
+     "t": "21:05",
+     "station": "gate",
+     "text": "first watch. dad says just walk it and write it."
     },
     {
-      "year": "1981",
-      "who": "unsigned",
-      "entries": [
-        {
-          "t": "22:15",
-          "station": "mess",
-          "text": "padlock stiff. oiled it. someone should fix the gutter."
-        },
-        {
-          "t": "03:10",
-          "station": "waterline",
-          "text": "light on the island again. tried to log it under condition. machine says NOT A STATION. fine. keeping it here in words then: there is a light."
-        }
-      ]
+     "t": "23:40",
+     "station": "cabin_2",
+     "text": "locks fine. cold for august."
     },
     {
-      "year": "1984",
-      "who": "unsigned",
-      "entries": [
-        {
-          "t": "01:30",
-          "station": "boathouse",
-          "text": "checked twice. i know i checked twice because i wrote it once and didn't believe myself."
-        }
-      ]
+     "t": "02:58",
+     "station": "waterline",
+     "text": "heard it. three. not writing what."
     },
     {
-      "year": "1988",
-      "who": "W.A.",
-      "entries": [
-        {
-          "t": "21:00",
-          "station": "gate",
-          "text": "taking the watch this summer. someone has to. \u2014 W.A."
-        },
-        {
-          "t": "02:55",
-          "station": "waterline",
-          "text": "three sounds. right on time. you get used to it. you should not get used to it."
-        }
-      ]
-    },
-    {
-      "year": "1991",
-      "who": "the author, again",
-      "entries": [
-        {
-          "t": "21:30",
-          "station": "gate",
-          "text": "came back to stand one more before i finish the build. the game will not confirm anything. that is the design. that was always the design."
-        }
-      ]
-    },
-    {
-      "year": "1995",
-      "who": "unsigned",
-      "entries": [
-        {
-          "t": "04:44",
-          "station": "cabin_3",
-          "text": "door was open. bed made. logged it. filing NAMES blank because the field is blank because the field is always blank"
-        }
-      ]
+     "t": "06:00",
+     "station": "all",
+     "text": "quiet. going home."
     }
-  ],
-  "glass_entry": {
-    "year": "1979",
-    "who": "A.G.",
-    "entries": [
-      {
-        "t": "23:59",
-        "station": "waterline",
-        "text": "stood the watch tonight so the regular man could take the envelope run. fair is fair. the water was quiet. the ledger balances. \u2014 A.G."
-      }
-    ]
+   ]
+  },
+  {
+   "year": "1978",
+   "who": "unsigned",
+   "entries": [
+    {
+     "t": "22:40",
+     "station": "mess",
+     "text": "rain since supper. logged every station from the mess porch with binoculars. if that's cheating the rain started it."
+    },
+    {
+     "t": "04:12",
+     "station": "gate",
+     "text": "rain quit all at once. like a tap. the quiet after was louder than the rain."
+    }
+   ]
+  },
+  {
+   "year": "1981",
+   "who": "unsigned",
+   "entries": [
+    {
+     "t": "22:15",
+     "station": "mess",
+     "text": "padlock stiff. oiled it. someone should fix the gutter."
+    },
+    {
+     "t": "03:10",
+     "station": "waterline",
+     "text": "light on the island again. tried to log it under condition. machine says NOT A STATION. fine. keeping it here in words then: there is a light."
+    }
+   ]
+  },
+  {
+   "year": "1983",
+   "who": "unsigned",
+   "entries": [
+    {
+     "t": "21:10",
+     "station": "gate",
+     "text": "first watch. the man who trained me said write everything and believe half. didn't say which half."
+    },
+    {
+     "t": "02:50",
+     "station": "waterline",
+     "text": "nothing tonight. stood the whole ten minutes. almost disappointed. worse: relieved."
+    }
+   ]
+  },
+  {
+   "year": "1984",
+   "who": "unsigned",
+   "entries": [
+    {
+     "t": "01:30",
+     "station": "boathouse",
+     "text": "checked twice. i know i checked twice because i wrote it once and didn't believe myself."
+    }
+   ]
+  },
+  {
+   "year": "1986",
+   "who": "unsigned",
+   "entries": [
+    {
+     "t": "23:55",
+     "station": "cabin_2",
+     "text": "cold again. brought a thermometer this year to settle it. thermometer says 61. my hands say otherwise. filing the number, keeping the opinion."
+    }
+   ]
+  },
+  {
+   "year": "1988",
+   "who": "W.A.",
+   "entries": [
+    {
+     "t": "21:00",
+     "station": "gate",
+     "text": "taking the watch this summer. someone has to. — W.A."
+    },
+    {
+     "t": "02:55",
+     "station": "waterline",
+     "text": "three sounds. right on time. you get used to it. you should not get used to it."
+    }
+   ]
+  },
+  {
+   "year": "1990",
+   "who": "W.A.",
+   "entries": [
+    {
+     "t": "21:00",
+     "station": "gate",
+     "text": "third summer standing it. the trick is you stop asking the questions out loud. — W.A."
+    },
+    {
+     "t": "03:05",
+     "station": "waterline",
+     "text": "three. always three. counted a fourth once in '88 and have decided since that I miscounted. deciding is allowed. — W.A."
+    }
+   ]
+  },
+  {
+   "year": "1991",
+   "who": "the author, again",
+   "entries": [
+    {
+     "t": "21:30",
+     "station": "gate",
+     "text": "came back to stand one more before i finish the build. the game will not confirm anything. that is the design. that was always the design."
+    }
+   ]
+  },
+  {
+   "year": "1993",
+   "who": "unsigned",
+   "entries": [
+    {
+     "t": "01:15",
+     "station": "boathouse",
+     "text": "oars racked in pairs again. I don't rack them in pairs. leaving them unpaired tonight on purpose. we'll see."
+    },
+    {
+     "t": "05:40",
+     "station": "boathouse",
+     "text": "paired."
+    }
+   ]
+  },
+  {
+   "year": "1995",
+   "who": "unsigned",
+   "entries": [
+    {
+     "t": "04:44",
+     "station": "cabin_3",
+     "text": "door was open. bed made. logged it. filing NAMES blank because the field is blank because the field is always blank"
+    }
+   ]
   }
+ ],
+ "glass_entry": {
+  "year": "1979",
+  "who": "A.G.",
+  "entries": [
+   {
+    "t": "23:59",
+    "station": "waterline",
+    "text": "stood the watch tonight so the regular man could take the envelope run. fair is fair. the water was quiet. the ledger balances. — A.G."
+   }
+  ]
+ }
 }

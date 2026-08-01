@@ -327,6 +327,34 @@ func _run_week() -> void:
 		_show_robbery(lines)
 		return
 
+	# WEEK INCIDENT · one small thing per ordinary week, drawn from
+	# the weeks.json pool, seeded so a summer replays differently but
+	# a reloaded save doesn't reroll. Rent weeks keep their weight.
+	if not (_n in _weeks.get("rent_weeks", [])):
+		var pool: Array = _weeks.get("incidents", [])
+		if not pool.is_empty():
+			var salt := 0
+			for sid2 in _picked:
+				salt += String(sid2).hash() % 997
+			var inc: Dictionary = pool[(salt + _n * 31) % pool.size()]
+			var inc_done: Array = _state.get("incidents_done", [])
+			var iid := String(inc.get("id", ""))
+			if not inc_done.has(iid):
+				inc_done.append(iid)
+				_state["incidents_done"] = inc_done
+				_state["cash"] = int(_state.get("cash", 0)) + int(inc.get("cash", 0))
+				_state["stock"] = maxi(0, int(_state.get("stock", 0)) + int(inc.get("stock", 0)))
+				_state["landlord"] = clampi(int(_state.get("landlord", 5)) + int(inc.get("landlord", 0)), 0, 9)
+				var delta_bits: Array = []
+				if int(inc.get("cash", 0)) != 0:
+					delta_bits.append("$%+d" % int(inc.get("cash", 0)))
+				if int(inc.get("stock", 0)) != 0:
+					delta_bits.append("stock %+d" % int(inc.get("stock", 0)))
+				if int(inc.get("landlord", 0)) != 0:
+					delta_bits.append("mr. aldous %+d" % int(inc.get("landlord", 0)))
+				var tail := ("  · " + " · ".join(delta_bits)) if not delta_bits.is_empty() else ""
+				lines.append("\n[color=#8a9a8a][i]%s[/i]%s[/color]" % [String(inc.get("line", "")), tail])
+
 	if bool(_week.get("heron", false)):
 		var heron := String(_weeks.get("heron_line", ""))
 		if OneironauticsTokens.has("estuary_1_finished"):

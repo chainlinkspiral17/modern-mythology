@@ -255,6 +255,32 @@ and generic — a new stick needs data plus two lines of code.
 
 ## Recent lessons
 
+### 2026-08-01 · WAVE 4 · drawn incident pools are the cheapest honest replay texture
+
+The 6-17K sticks read identical on a second run because every beat
+was authored exactly once. The fix that respects small games: a
+POOL of small drawn incidents, seeded per run, surfaced through the
+stick's existing verb — Sweetgum's on CHECK at a station (3 per
+watch from an 18-pool + the palimpsest grown 6→11 years), KSM's as
+one report line per ordinary week (16-pool, seeded by crew hash so
+a reload doesn't reroll but a new summer does).
+
+Two rules that made it work:
+1. **Authored beats keep their weight.** Rent weeks, week 8's
+   robbery, Sweetgum's light — the pool never fires on top of the
+   moments the game is actually about. Texture frames the beats; it
+   must not dilute them.
+2. **Respect the stick's fiction ceiling.** Sweetgum's design rule
+   is "the game never confirms anything" — so every pool entry is a
+   watchman's mundane texture (stiff locks, raccoons, paint smell)
+   that a nervous mind COULD read into. The one supernatural
+   exception stays the only one.
+
+Also learned: check whether a "thin" stick is thin before
+thickening it. Estuary 4 measured 14K but its variety is SYSTEMIC
+(seeded tide tables against a budget/morale sim) — data volume was
+the wrong metric, and it needed a re-verdict, not a pass.
+
 ### 2026-08-01 · SALMONBERRY · a walkable map must know things the menu doesn't
 
 The town overworld shipped as "an interface, not a second economy" —

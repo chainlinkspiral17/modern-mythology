@@ -1,133 +1,224 @@
 {
-  "notes": "Twelve weeks, summer 1998, Highway 101. Rent due weeks 4/8/12. Week 8 is the robbery and it cannot be prevented \u00b7 the design is what you do after. Endings read the fall reopening: cash + morale + landlord.",
-  "start": {
-    "cash": 300,
-    "stock": 5,
-    "morale": 5,
-    "landlord": 5
+ "notes": "Twelve weeks, summer 1998, Highway 101. Rent due weeks 4/8/12. Week 8 is the robbery and it cannot be prevented · the design is what you do after. Endings read the fall reopening: cash + morale + landlord.",
+ "start": {
+  "cash": 300,
+  "stock": 5,
+  "morale": 5,
+  "landlord": 5
+ },
+ "rent": 220,
+ "rent_weeks": [
+  4,
+  8,
+  12
+ ],
+ "weeks": [
+  {
+   "n": 1,
+   "note": "june. the highway wakes up. the last manager left a note that says only 'watch week eight' and no forwarding address.",
+   "traffic": 1.0
   },
-  "rent": 220,
-  "rent_weeks": [
-    4,
-    8,
-    12
-  ],
-  "weeks": [
-    {
-      "n": 1,
-      "note": "june. the highway wakes up. the last manager left a note that says only 'watch week eight' and no forwarding address.",
-      "traffic": 1.0
-    },
-    {
-      "n": 2,
-      "note": "school's out. the candy aisle becomes a weather system.",
-      "traffic": 1.1
-    },
-    {
-      "n": 3,
-      "note": "first heat wave. the cooler becomes the town's living room.",
-      "traffic": 1.2
-    },
-    {
-      "n": 4,
-      "note": "RENT WEEK. mr. aldous counts the parking lot's cars from his sedan before he comes in. he thinks nobody sees.",
-      "traffic": 1.1
-    },
-    {
-      "n": 5,
-      "note": "fourth of july traffic. everything sells. even the letter Q candy.",
-      "traffic": 1.4
-    },
-    {
-      "n": 6,
-      "note": "the mid-summer flat. the highway hums past without stopping. stock sits.",
-      "traffic": 0.8
-    },
-    {
-      "n": 7,
-      "note": "a tour bus breaks down out front for six hours. the register does not stop. neither does anyone.",
-      "traffic": 1.5
-    },
-    {
-      "n": 8,
-      "note": "RENT WEEK.",
-      "traffic": 1.0,
-      "robbery": true
-    },
-    {
-      "n": 9,
-      "note": "the week after. the bell over the door sounds different to everyone and nobody says so.",
-      "traffic": 0.7,
-      "heron": true
-    },
-    {
-      "n": 10,
-      "note": "county fair week. the highway is a parade going somewhere else.",
-      "traffic": 1.2
-    },
-    {
-      "n": 11,
-      "note": "the light goes gold early. regulars buy school supplies and pretend they aren't sad.",
-      "traffic": 1.0
-    },
-    {
-      "n": 12,
-      "note": "RENT WEEK. last week of summer. the fall reopening sign is in the stockroom, waiting to find out what it says.",
-      "traffic": 1.1
-    }
-  ],
-  "robbery": {
-    "text": "tuesday. 9:40 PM. a man in a rain jacket in august. it takes ninety seconds and the till and something else that doesn't show on the ledger. nobody is hurt. the last manager knew. you couldn't have stopped it. the game will not pretend otherwise.",
-    "after_choices": [
-      {
-        "id": "close_two_days",
-        "label": "close two days \u00b7 everyone paid",
-        "text": "you close wednesday and thursday, wages paid, and sit with whoever wants to sit. the ledger takes the hit. the crew takes the point.",
-        "cash": -120,
-        "morale": 3,
-        "landlord": -1
-      },
-      {
-        "id": "open_next_day",
-        "label": "open at 6 AM like always",
-        "text": "you open on time with new lightbulbs and the radio a notch louder. some crews need normal. this one mostly does. mostly.",
-        "cash": 40,
-        "morale": -1,
-        "landlord": 1
-      },
-      {
-        "id": "cover_from_own",
-        "label": "cover the till from your own pocket",
-        "text": "the ledger never shows the robbery. mr. aldous never knows. the crew knows, because DEE reads ledgers, and what the crew knows travels as respect.",
-        "cash": -200,
-        "morale": 2,
-        "landlord": 2
-      }
-    ],
-    "witness_line": "%s was on shift. you find them in the stockroom after, sitting on the flour pallet, and you sit too, and the flour pallet does the talking."
+  {
+   "n": 2,
+   "note": "school's out. the candy aisle becomes a weather system.",
+   "traffic": 1.1
   },
-  "heron_line": "week nine, early, before open: a great blue heron stands in the drainage ditch out back, exactly like the ditch is an estuary. you watch it the length of a coffee. it does not care about your score.",
-  "heron_line_e1": " \u00b7 and for one specific minute you are ten years old at a school library computer, being responsible for something, without once being told you were.",
-  "endings": {
-    "crew": {
-      "title": "THE CREW'S STORE",
-      "req": "morale >= 7",
-      "text": "the fall reopening sign says UNDER SAME MANAGEMENT, which the crew painted themselves, as a joke, that isn't one. everyone who could stay, stayed. mr. aldous renews at the old rate because full parking lots count cars for him.\n\nfinal score posted on the stockroom door, where scores go. under it, in DEE's handwriting: 'the number was never the store.'"
-    },
-    "corporate": {
-      "title": "THE NEW LETTERS",
-      "req": "cash >= 900 and morale < 7",
-      "text": "the reopening sign gets new letters \u00b7 a franchise logo, a slogan committee-built to be forgettable. head office calls your summer 'a strong quarter.' the crew's fall schedule has new names on it.\n\nyour score is the best in the region. it is printed on a certificate. the certificate fits in a drawer."
-    },
-    "shuttered": {
-      "title": "SHUTTERED FOR THE SEASON",
-      "req": "otherwise",
-      "text": "the reopening sign never goes up. mr. aldous is decent about it, which is worse. the crew scatters up and down the 101 like receipts out a car window.\n\nthe game posts your final score anyway, because it always posts the score. that is the kind of game it is. that was always the argument."
-    },
-    "evicted": {
-      "title": "NOT RENEWED",
-      "req": "landlord <= 1 (overrides score) · a lot is a relationship, and you spent it",
-      "text": "mr. aldous does not renew, and it isn't the money — the money was fine. it's the rent envelopes that came late, or short, or with a note instead of a check. a lot is a relationship, he says, on his way out to the truck. you ran the numbers and let the man who owns the ground go cold.\n\nthe reopening sign goes up over someone else's store. your final score posts to a stockroom door that stopped being yours in august. the number was real. so was the lease."
-    }
+  {
+   "n": 3,
+   "note": "first heat wave. the cooler becomes the town's living room.",
+   "traffic": 1.2
+  },
+  {
+   "n": 4,
+   "note": "RENT WEEK. mr. aldous counts the parking lot's cars from his sedan before he comes in. he thinks nobody sees.",
+   "traffic": 1.1
+  },
+  {
+   "n": 5,
+   "note": "fourth of july traffic. everything sells. even the letter Q candy.",
+   "traffic": 1.4
+  },
+  {
+   "n": 6,
+   "note": "the mid-summer flat. the highway hums past without stopping. stock sits.",
+   "traffic": 0.8
+  },
+  {
+   "n": 7,
+   "note": "a tour bus breaks down out front for six hours. the register does not stop. neither does anyone.",
+   "traffic": 1.5
+  },
+  {
+   "n": 8,
+   "note": "RENT WEEK.",
+   "traffic": 1.0,
+   "robbery": true
+  },
+  {
+   "n": 9,
+   "note": "the week after. the bell over the door sounds different to everyone and nobody says so.",
+   "traffic": 0.7,
+   "heron": true
+  },
+  {
+   "n": 10,
+   "note": "county fair week. the highway is a parade going somewhere else.",
+   "traffic": 1.2
+  },
+  {
+   "n": 11,
+   "note": "the light goes gold early. regulars buy school supplies and pretend they aren't sad.",
+   "traffic": 1.0
+  },
+  {
+   "n": 12,
+   "note": "RENT WEEK. last week of summer. the fall reopening sign is in the stockroom, waiting to find out what it says.",
+   "traffic": 1.1
   }
+ ],
+ "robbery": {
+  "text": "tuesday. 9:40 PM. a man in a rain jacket in august. it takes ninety seconds and the till and something else that doesn't show on the ledger. nobody is hurt. the last manager knew. you couldn't have stopped it. the game will not pretend otherwise.",
+  "after_choices": [
+   {
+    "id": "close_two_days",
+    "label": "close two days · everyone paid",
+    "text": "you close wednesday and thursday, wages paid, and sit with whoever wants to sit. the ledger takes the hit. the crew takes the point.",
+    "cash": -120,
+    "morale": 3,
+    "landlord": -1
+   },
+   {
+    "id": "open_next_day",
+    "label": "open at 6 AM like always",
+    "text": "you open on time with new lightbulbs and the radio a notch louder. some crews need normal. this one mostly does. mostly.",
+    "cash": 40,
+    "morale": -1,
+    "landlord": 1
+   },
+   {
+    "id": "cover_from_own",
+    "label": "cover the till from your own pocket",
+    "text": "the ledger never shows the robbery. mr. aldous never knows. the crew knows, because DEE reads ledgers, and what the crew knows travels as respect.",
+    "cash": -200,
+    "morale": 2,
+    "landlord": 2
+   }
+  ],
+  "witness_line": "%s was on shift. you find them in the stockroom after, sitting on the flour pallet, and you sit too, and the flour pallet does the talking."
+ },
+ "heron_line": "week nine, early, before open: a great blue heron stands in the drainage ditch out back, exactly like the ditch is an estuary. you watch it the length of a coffee. it does not care about your score.",
+ "heron_line_e1": " · and for one specific minute you are ten years old at a school library computer, being responsible for something, without once being told you were.",
+ "endings": {
+  "crew": {
+   "title": "THE CREW'S STORE",
+   "req": "morale >= 7",
+   "text": "the fall reopening sign says UNDER SAME MANAGEMENT, which the crew painted themselves, as a joke, that isn't one. everyone who could stay, stayed. mr. aldous renews at the old rate because full parking lots count cars for him.\n\nfinal score posted on the stockroom door, where scores go. under it, in DEE's handwriting: 'the number was never the store.'"
+  },
+  "corporate": {
+   "title": "THE NEW LETTERS",
+   "req": "cash >= 900 and morale < 7",
+   "text": "the reopening sign gets new letters · a franchise logo, a slogan committee-built to be forgettable. head office calls your summer 'a strong quarter.' the crew's fall schedule has new names on it.\n\nyour score is the best in the region. it is printed on a certificate. the certificate fits in a drawer."
+  },
+  "shuttered": {
+   "title": "SHUTTERED FOR THE SEASON",
+   "req": "otherwise",
+   "text": "the reopening sign never goes up. mr. aldous is decent about it, which is worse. the crew scatters up and down the 101 like receipts out a car window.\n\nthe game posts your final score anyway, because it always posts the score. that is the kind of game it is. that was always the argument."
+  },
+  "evicted": {
+   "title": "NOT RENEWED",
+   "req": "landlord <= 1 (overrides score) · a lot is a relationship, and you spent it",
+   "text": "mr. aldous does not renew, and it isn't the money — the money was fine. it's the rent envelopes that came late, or short, or with a note instead of a check. a lot is a relationship, he says, on his way out to the truck. you ran the numbers and let the man who owns the ground go cold.\n\nthe reopening sign goes up over someone else's store. your final score posts to a stockroom door that stopped being yours in august. the number was real. so was the lease."
+  }
+ },
+ "incidents_notes": [
+  "WEEK INCIDENTS · one drawn per non-rent week (seeded by the run's",
+  "picked-staff hash + week number in KsmWeek), appended to the report",
+  "with its small delta. Twelve weeks stop reading identical across",
+  "summers. Rent weeks and week 8 keep their authored weight alone."
+ ],
+ "incidents": [
+  {
+   "id": "ice_machine",
+   "line": "the ice machine dies on the hottest day and resurrects when the repairman's van pulls in. $40 call-out for a machine that is, his word, 'shy'.",
+   "cash": -40
+  },
+  {
+   "id": "penny_kid",
+   "line": "a kid pays for a candy bar entirely in pennies, counted twice, proudly. the line behind him waits. nobody complains. it's that kind of town.",
+   "cash": 0
+  },
+  {
+   "id": "supplier_short",
+   "line": "the distributor shorts the cooler order and doesn't answer the phone. you sell what you have.",
+   "stock": -4
+  },
+  {
+   "id": "road_crew",
+   "line": "a county road crew adopts the lot for their lunch hour all week. coffee and sandwiches move like it's the fourth again.",
+   "cash": 55
+  },
+  {
+   "id": "payphone",
+   "line": "the payphone eats a trucker's quarter and he tells everyone for three counties. you tape OUT OF ORDER over it and give him a free coffee. diplomacy.",
+   "cash": -2,
+   "landlord": 0
+  },
+  {
+   "id": "lotto_rumor",
+   "line": "a rumor goes around that the winning scratcher came from your rack. it didn't. sales say otherwise all week.",
+   "cash": 45
+  },
+  {
+   "id": "cooler_door",
+   "line": "the middle cooler door starts hanging open a half-inch. you fix it with a matchbook until you fix it with a hinge. the electric bill notices anyway.",
+   "cash": -25
+  },
+  {
+   "id": "aldous_nephew",
+   "line": "mr. aldous's nephew 'helps' for an afternoon, unasked, unpaid, underfoot. you say thank you. the lot is a relationship.",
+   "landlord": 1
+  },
+  {
+   "id": "church_van",
+   "line": "the church van stops in every evening after services. decaf and dignity. mrs. pettersen leaves a tract by the register. you leave it there.",
+   "cash": 25
+  },
+  {
+   "id": "beer_permit",
+   "line": "the beer distributor leaves paperwork about a license upgrade. you file it under someday. the folder is getting thick.",
+   "cash": 0
+  },
+  {
+   "id": "dropped_jar",
+   "line": "a pickle jar hits the floor at rush and the whole store helps, which makes it worse, beautifully.",
+   "cash": -8,
+   "stock": -1
+  },
+  {
+   "id": "night_moths",
+   "line": "the parking-lot lamp draws a snowstorm of moths all week. two customers mention it like a show. one photographs it. free advertising, technically.",
+   "cash": 10
+  },
+  {
+   "id": "radio_contest",
+   "line": "WGUR runs a call-in contest and the winner has to claim it here. for one day you are the most important building in the county.",
+   "cash": 35
+  },
+  {
+   "id": "stray_dog",
+   "line": "a stray dog adopts the dumpster corner. by thursday he has a name, a dish, and opinions about the delivery schedule. mr. aldous pretends not to see him, fondly.",
+   "landlord": 1
+  },
+  {
+   "id": "freezer_burn",
+   "line": "a freezer case cycles wrong overnight. the ice cream refreezes into modern art. you mark it down and the teenagers buy all of it.",
+   "cash": -15,
+   "stock": -2
+  },
+  {
+   "id": "exact_change",
+   "line": "the till comes up seventeen cents over three nights running. you stop trying to find it. some stores round up on their own.",
+   "cash": 1
+  }
+ ]
 }

@@ -74,6 +74,14 @@ var _over: bool = false
 var _second_night: bool = false
 var _run_entries: Array = []         # this night's typed entries
 
+# NIGHT EVENTS · three small mundane things per watch, drawn from
+# night_events.json seeded by nights_stood, surfaced on CHECK at the
+# right station in the right window. The watch stops being the same
+# nine hours every time — without the game ever confirming anything;
+# the light and the three sounds remain the only exception.
+var _night_events: Array = []        # tonight's drawn events
+var _events_seen: Dictionary = {}    # id -> true
+
 var _clock_lbl: Label = null
 var _cond_edit: LineEdit = null
 var _names_edit: LineEdit = null
@@ -94,12 +102,45 @@ func boot(state: Dictionary) -> void:
 	_state = state
 	_second_night = int(_state.get("nights_stood", 0)) >= 1
 	_game_min = float(START_MIN)
+	_draw_night_events(int(_state.get("nights_stood", 0)))
 	_ensure_log_file()
 	_names_edit.visible = _second_night
 	_play_bed("res://assets/audio/bgm/sg/room_crickets.wav")
 	_refresh_log_view()
 	_msg("21:00. the watch is yours. rounds are hourly. nobody said by whom.")
 	queue_redraw()
+
+
+func _draw_night_events(nights: int) -> void:
+	_night_events = []
+	_events_seen = {}
+	var f := FileAccess.open("res://resources/games/vol7/sweetgum/night_events.json", FileAccess.READ)
+	if f == null:
+		return
+	var parsed: Variant = JSON.parse_string(f.get_as_text())
+	f.close()
+	if not (parsed is Dictionary):
+		return
+	var pool: Array = []
+	for e_v in (parsed as Dictionary).get("events", []):
+		var e: Dictionary = e_v
+		if bool(e.get("second_night", false)) and not _second_night:
+			continue
+		pool.append(e)
+	if pool.is_empty():
+		return
+	var rng := RandomNumberGenerator.new()
+	rng.seed = 7919 * (nights + 1)
+	pool.shuffle()   # order first by rng below, not Godot's global rng
+	var picked: Array = []
+	var idx := {}
+	while picked.size() < mini(3, pool.size()):
+		var i := rng.randi_range(0, pool.size() - 1)
+		if idx.has(i):
+			continue
+		idx[i] = true
+		picked.append(pool[i])
+	_night_events = picked
 
 
 # ─── The palimpsest ──────────────────────────────────────────────
@@ -340,6 +381,20 @@ func _check_station() -> void:
 		_msg("waterline · no padlock. no lock at all. the water holds itself. across it, the light does not move when you move.")
 		_sfx("water_slap", 0.3)
 		OneironauticsTokens.add("sweetgum_waterline_watched")
+		return
+	# tonight's small things · at the right station, in the window
+	var uh := int(_game_min / 60.0)   # unwrapped: 21..30
+	for e_v in _night_events:
+		var e: Dictionary = e_v
+		var eid := String(e.get("id", ""))
+		if _events_seen.has(eid) or String(e.get("station", "")) != _at:
+			continue
+		var w: Array = e.get("window", [21, 30])
+		if uh < int(w[0]) or uh > int(w[1]):
+			continue
+		_events_seen[eid] = true
+		_msg(String(e.get("line", "")))
+		_sfx("stick_scratch", 0.25)
 		return
 	_msg("%s · padlock holds." % STATIONS[_at]["label"])
 	_sfx("stick_scratch", 0.25)

@@ -45,10 +45,10 @@ A stick is DONE when it clears all six. Anything less is a wave.
 | hane_no_niwa | 874 | 26K | — | **B−** |
 | mrs_wus_garden | 850 | 25K | — | **B−** |
 | riffrocker_melody_club | 848 | 36K | — | **B−** |
-| kwik_stop_manager | 789 | 17K | — | **C+** |
+| kwik_stop_manager | 789 | 21K | — | **B−** · Wave 4a: 16-incident weekly pool, seeded per summer |
 | the_tideline | 731 | 30K | — | **B−** |
-| estuary_4 | 713 | 14K | — | **C+** · new · watch feedback |
-| sweetgum | 678 | 6K | — | **C** · 6K data = thin runs |
+| estuary_4 | 713 | 14K | — | **B−** · re-verdict: working-season variety is SYSTEMIC (seeded tides + budget/morale), not data-thin |
+| sweetgum | 678 | 14K | — | **B−** · Wave 4a: 3 micro-events/watch (18-pool), palimpsest 6→11 years |
 | tideline_survey_2048 | (shares tideline) | 2K | — | **C** · no manual entry of its own (by design: tideline's covers it) |
 
 Verdicts: **A** = clears depth, needs loop/flavor polish only.
