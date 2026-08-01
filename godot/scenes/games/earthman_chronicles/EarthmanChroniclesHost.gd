@@ -134,7 +134,9 @@ func start_new_run(_manager_mode: bool = false) -> void:
 	_run_state = {
 		"chapter":             1,
 		"class_focus":         "",
-		"shenin":              36,
+		# THE TRAVELING CASE (StickLoop outfit) · shenin saved from
+		# readings already taken ride into the new one.
+		"shenin":              36 + StickLoop.effect("earthman_chronicles", "start_shenin"),
 		"rafaton_disposition": 0,
 		"workings_completed":  [],
 		"corrections_found":   [],
@@ -145,6 +147,14 @@ func start_new_run(_manager_mode: bool = false) -> void:
 		"canon_vars":          {},
 		"lore_tokens_pending": []
 	}
+	# ROCHA'S UNDERLINES · her pencil in your copy: you begin already
+	# holding the first correction. The other four stay findable.
+	if StickLoop.flag("earthman_chronicles", "underlines"):
+		_run_state["corrections_found"] = ["correction_pasadena_fire"]
+	# THE FIELD ALTAR · Working I arrives pre-consecrated: it counts
+	# as performed once, unlocking its downstream recognitions.
+	if StickLoop.flag("earthman_chronicles", "field_altar"):
+		_run_state["workings_completed"] = ["working_1"]
 	_open_chapter_1()
 
 
@@ -457,6 +467,14 @@ func _open_chapter_6() -> void:
 
 func _on_chapter_6_complete(state: Dictionary) -> void:
 	_run_state = state
+	# THE LOOP · a finished reading banks SHENIN NOTES: chapters read
+	# + corrections found + workings performed. Spent on the shelf's
+	# OUTFIT; read back at the next reading's first page.
+	var notes: int = 6 \
+			+ (_run_state.get("corrections_found", []) as Array).size() \
+			+ (_run_state.get("workings_completed", []) as Array).size()
+	var outcome := "second_reading" if bool(_run_state.get("second_reading", false)) else "first_reading"
+	StickLoop.finish_run("earthman_chronicles", {"credit": notes, "outcome": outcome})
 	_save_state()
 	_build_title_screen()
 

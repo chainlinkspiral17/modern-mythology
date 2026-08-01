@@ -936,6 +936,18 @@ func _make_threat_read(fey: Dictionary) -> Control:
 
 	var word := Label.new()
 	word.text = String(band.get("word", ""))
+	# MARGIN NOTES · your own hand from half-remembered summers —
+	# the read also names what the fey leads with, so you know
+	# WHICH fight you would be walking into.
+	if StickLoop.flag("fey_faire", "margin_notes"):
+		var s: Dictionary = fey.get("stats", {})
+		var best_k := "strike"
+		var best_v := -1
+		for k in ["strike", "resist", "charm", "wit"]:
+			if int(s.get(k, 0)) > best_v:
+				best_v = int(s.get(k, 0))
+				best_k = k
+		word.text += " · leads with %s" % best_k
 	word.horizontal_alignment = HORIZONTAL_ALIGNMENT_RIGHT
 	word.add_theme_font_size_override("font_size", 12)
 	word.add_theme_color_override("font_color", col)
@@ -1142,7 +1154,19 @@ func _render_provision_shop(v: VBoxContainer, snack: String) -> void:
 func _buy_provision() -> void:
 	var gold: int = int(_run_state.get("gold", 0))
 	var have: int = int(_run_state.get("provisions", 0))
-	if gold < PROVISION_PRICE or have >= PROVISION_MAX: return
+	if have >= PROVISION_MAX: return
+	# THE THERMOS · one provision per summer costs nothing — you
+	# carried it in, and the Faire's food rules don't apply to it.
+	if StickLoop.flag("fey_faire", "thermos") \
+			and not bool(_run_state.get("thermos_poured", false)):
+		_run_state["thermos_poured"] = true
+		_run_state["provisions"] = have + 1
+		var sfx2 := get_node_or_null("/root/SFXBank")
+		if sfx2: sfx2.play("coin", 0.4)
+		request_save.emit()
+		_render_current_cell()
+		return
+	if gold < PROVISION_PRICE: return
 	_run_state["gold"] = gold - PROVISION_PRICE
 	_run_state["provisions"] = have + 1
 	var sfx := get_node_or_null("/root/SFXBank")

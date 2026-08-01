@@ -108,6 +108,26 @@ func start_new_run(counselor: bool = false) -> void:
 		"discovered_facts": [],
 		"used_chatter_ids": [],
 	}
+	# THE FOOTLOCKER (StickLoop outfit) · what past weeks at Alder
+	# Cove packed for this one. Items land in the duffel on day one;
+	# the stat bump is the summer's muscle memory.
+	# Item ids match items.json exactly — the duffel renders by id.
+	# The traced map is safe to carry early: the bluff dig also
+	# requires the Wilson fact, so no sequence breaks.
+	if StickLoop.flag("pirate_summer", "lucky_penny"):
+		(_run_state["duffel"] as Array).append("lucky_penny")
+	if StickLoop.flag("pirate_summer", "tide_table"):
+		(_run_state["duffel"] as Array).append("tide_table_pamphlet")
+	if StickLoop.flag("pirate_summer", "traced_map"):
+		(_run_state["duffel"] as Array).append("the_treasure_map")
+	var knack_bump: int = StickLoop.effect("pirate_summer", "start_knack")
+	if knack_bump > 0:
+		var st: Dictionary = _run_state["stats"]
+		st["knack"] = int(st.get("knack", 2)) + knack_bump
+	var luck_bump: int = StickLoop.effect("pirate_summer", "start_luck")
+	if luck_bump > 0:
+		var st2: Dictionary = _run_state["stats"]
+		st2["luck"] = int(st2.get("luck", 2)) + luck_bump
 	_save()
 	if _overworld != null and is_instance_valid(_overworld):
 		_overworld.queue_free()
@@ -297,6 +317,18 @@ func _on_ending_finished(canon_vars: Dictionary, lore_tokens: Array) -> void:
 		if not pending.has(s):
 			pending.append(s)
 	_run_state["lore_tokens_pending"] = pending
+	# THE LOOP · a finished week banks POG MILKCAPS: days survived +
+	# friendships made + facts uncovered. Spent at the shelf OUTFIT.
+	var caps: int = int(_run_state.get("day_index", 0)) + 1
+	var fr: Dictionary = _run_state.get("friendship", {})
+	for k2 in fr.keys():
+		if int(fr[k2]) >= 2:
+			caps += 1
+	caps += (_run_state.get("discovered_facts", []) as Array).size() / 4
+	StickLoop.finish_run("pirate_summer", {
+		"credit": caps,
+		"outcome": "counselor_week" if bool(_run_state.get("counselor", false)) else "camper_week",
+	})
 	_save()
 	finished.emit(cv, pending)
 

@@ -1,0 +1,82 @@
+{
+  "notes": [
+    "THE STUB BOOK · Fey Faire's half of the StickLoop contract.",
+    "EARN: ticket stubs for a finished summer — nights spent + feys",
+    "recruited + half the gold you walk out with. CARRY: FeyFaireHost",
+    "reads effects/flags at start_new_run; the midway reads booth and",
+    "provision flags live. ≥1 FLAG per tier per the playbook."
+  ],
+  "currency": {
+    "id": "stubs",
+    "name": "TICKET STUBS",
+    "earn_line": "a finished summer pays stubs · nights spent + feys recruited + half your leaving gold"
+  },
+  "upgrades": [
+    {
+      "id": "seed_purse",
+      "name": "A HEAVIER PURSE",
+      "cost": 5,
+      "tier": 1,
+      "needs_mastery": 0,
+      "requires": [],
+      "blurb": "you arrive with three more gold. the gate does not ask where it came from, which is itself information.",
+      "effects": {"start_gold": 3},
+      "flags": []
+    },
+    {
+      "id": "pressed_rose",
+      "name": "THE PRESSED ROSE",
+      "cost": 7,
+      "tier": 1,
+      "needs_mastery": 0,
+      "requires": [],
+      "blurb": "a rose from a summer that has already happened, flat in wax paper. it rides in as a keepsake — and the feys can smell which summer.",
+      "effects": {},
+      "flags": ["pressed_rose"]
+    },
+    {
+      "id": "thermos_of_tea",
+      "name": "A THERMOS OF STRONG TEA",
+      "cost": 8,
+      "tier": 2,
+      "needs_mastery": 1,
+      "requires": [],
+      "blurb": "one free provision's worth of warmth per summer, no gold down. the Faire's food rules do not apply to what you carried in.",
+      "effects": {"free_provision": 1},
+      "flags": ["thermos"]
+    },
+    {
+      "id": "map_margins",
+      "name": "MARGIN NOTES",
+      "cost": 9,
+      "tier": 2,
+      "needs_mastery": 1,
+      "requires": [],
+      "blurb": "your own hand, from summers you half-remember, in the midway map's margins. deep cells stop pretending to be new.",
+      "effects": {},
+      "flags": ["margin_notes"]
+    },
+    {
+      "id": "stub_string",
+      "name": "THE STRING OF STUBS",
+      "cost": 10,
+      "tier": 3,
+      "needs_mastery": 2,
+      "requires": ["seed_purse"],
+      "blurb": "every ride you have ever taken, on one string. booth games pay one extra gold — the barkers respect a regular.",
+      "effects": {"booth_bonus": 1},
+      "flags": []
+    },
+    {
+      "id": "morgans_bookmark",
+      "name": "MORGAN'S BOOKMARK",
+      "cost": 12,
+      "tier": 3,
+      "needs_mastery": 3,
+      "requires": [],
+      "blurb": "she left it in a book you bought. carrying it, the fortune tent reads you on night one without being found first — the reading comes to YOU.",
+      "effects": {},
+      "flags": ["bookmark"]
+    }
+  ]
+}

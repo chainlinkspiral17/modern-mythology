@@ -1,0 +1,71 @@
+{
+  "notes": [
+    "THE MILK CRATE · Estuary 3's half of the StickLoop contract.",
+    "EARN: bottle caps for a finished summer (8 + nights worked, plus",
+    "the Manager ledger's nights). CARRY: Estuary3Host reads at",
+    "start_new_run — opening stock, opening till, the Act 3 clock.",
+    "≥1 FLAG per tier per the playbook."
+  ],
+  "currency": {
+    "id": "caps",
+    "name": "BOTTLE CAPS",
+    "earn_line": "a finished summer pays caps · nights worked count · a Manager summer's ledger counts double"
+  },
+  "upgrades": [
+    {
+      "id": "deposit_jar",
+      "name": "THE DEPOSIT JAR",
+      "cost": 5,
+      "tier": 1,
+      "needs_mastery": 0,
+      "requires": [],
+      "blurb": "a summer of nickels, banked. Manager summers open with $10 more in the till per rank.",
+      "effects": {"till_pad": 1},
+      "flags": []
+    },
+    {
+      "id": "cooler_note",
+      "name": "JULES' COOLER NOTE",
+      "cost": 7,
+      "tier": 1,
+      "needs_mastery": 0,
+      "requires": [],
+      "blurb": "his restock order, copied in your hand. every cooler shelf opens one deeper.",
+      "effects": {"start_stock": 1},
+      "flags": ["knows_the_order"]
+    },
+    {
+      "id": "bicycle",
+      "name": "THE BICYCLE",
+      "cost": 9,
+      "tier": 2,
+      "needs_mastery": 1,
+      "requires": [],
+      "blurb": "the blue one from behind the store, chain fixed. Act 3's town day starts half an hour earlier — the walkabout owns more clock.",
+      "effects": {},
+      "flags": ["bicycle"]
+    },
+    {
+      "id": "second_jar",
+      "name": "A SECOND JAR",
+      "cost": 8,
+      "tier": 2,
+      "needs_mastery": 1,
+      "requires": ["deposit_jar"],
+      "blurb": "more nickels. another $10 on Manager openings.",
+      "effects": {"till_pad": 1},
+      "flags": []
+    },
+    {
+      "id": "deep_stock",
+      "name": "THE BACK-ROOM KEY",
+      "cost": 10,
+      "tier": 3,
+      "needs_mastery": 2,
+      "requires": ["cooler_note"],
+      "blurb": "Jules trusts you with the storeroom. coolers open two deeper still.",
+      "effects": {"start_stock": 2},
+      "flags": ["back_room"]
+    }
+  ]
+}

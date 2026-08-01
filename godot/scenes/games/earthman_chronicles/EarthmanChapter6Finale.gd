@@ -178,6 +178,15 @@ func _ready() -> void:
 func boot(state: Dictionary) -> void:
 	_run_state = state
 	_build_frame()
+	# SARA'S RIBBON (StickLoop outfit) · carrying the ribbon from a
+	# reading that has already happened, the gather opens on her
+	# knowing you have heard the refusal before. One extra beat,
+	# played FIRST, so the whole finale is read in its light.
+	if StickLoop.flag("earthman_chronicles", "ribbon"):
+		_write_narrative("sara nai",
+			"Before anyone else speaks she looks at the ribbon at your wrist — hers, from a page she marked in a reading that has already happened — and says, quietly, so only you hear it: 'You know what I am going to say when he asks. You have heard me say it. Remember that you can act on what you remember.'")
+		_render_advance_button(func() -> void: _render_gather_beat(0))
+		return
 	_render_gather_beat(0)
 
 

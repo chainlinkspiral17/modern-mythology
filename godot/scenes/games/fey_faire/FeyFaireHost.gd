@@ -146,12 +146,19 @@ func start_new_run(_manager_mode: bool = false) -> void:
 		"keepsakes":     [],
 		"promises":      [],
 		"memories_lost": 0,
-		"gold":          6,
+		# THE STUB BOOK · what past summers bought rides in with you
+		# (StickLoop · loadout.json · the shelf's OUTFIT screen).
+		"gold":          6 + StickLoop.effect("fey_faire", "start_gold"),
 		"implement":     "",
 		"booth_locks":   {},
 		"canon_vars":    {},
 		"lore_tokens_pending": []
 	}
+	if StickLoop.flag("fey_faire", "pressed_rose"):
+		# The rose rides in as a keepsake — negotiations recognize it.
+		var ks: Array = _run_state.get("keepsakes", [])
+		ks.append("pressed_rose_outfit")
+		_run_state["keepsakes"] = ks
 	_open_questionnaire()
 
 
@@ -550,6 +557,15 @@ func _on_mirror_completed(mirror_id: String, rewards: Dictionary) -> void:
 
 
 func _open_midway() -> void:
+	# MORGAN'S BOOKMARK · carrying it, the reading comes to YOU —
+	# night one routes through the fortune tent before the midway.
+	if StickLoop.flag("fey_faire", "bookmark") \
+			and int(_run_state.get("night", 1)) == 1 \
+			and not bool(_run_state.get("fortune_read", false)) \
+			and not bool(_run_state.get("_bookmark_fired", false)):
+		_run_state["_bookmark_fired"] = true
+		_open_fortune()
+		return
 	_clear_current_scene()
 	_play_bgm("res://assets/audio/bgm/ff/midway_waltz.wav")
 	_child_scene = load(MIDWAY_SCENE).instantiate()
@@ -594,7 +610,9 @@ func _on_puzzle_solved(fey_id: String) -> void:
 	# is retained on death (puzzle_solved_<fey>).  Then straight into
 	# the negotiation the puzzle earned.
 	_run_state["puzzle_solved_" + fey_id] = true
-	_run_state["gold"] = int(_run_state.get("gold", 0)) + 3
+	# THE STRING OF STUBS · the barkers respect a regular (+1 gold).
+	_run_state["gold"] = int(_run_state.get("gold", 0)) + 3 \
+			+ StickLoop.effect("fey_faire", "booth_bonus")
 	var disp_key: String = fey_id + "_disposition"
 	_run_state[disp_key] = int(_run_state.get(disp_key, 0)) + 2
 	OneironauticsTokens.add("fey_faire_puzzle_won")
@@ -739,6 +757,17 @@ func _on_endings_finished(canon_vars: Dictionary, lore_tokens: Array) -> void:
 			pending.append(t)
 	_run_state["lore_tokens_pending"] = pending
 	OneironauticsTokens.add_many(pending)
+	# THE LOOP · a finished summer banks TICKET STUBS: nights spent,
+	# feys recruited, gold walked out with. Spent on the shelf's
+	# OUTFIT screen; read back at the next summer's start.
+	var stubs: int = int(_run_state.get("night", 1)) \
+			+ (_run_state.get("recruited_feys", []) as Array).size() \
+			+ int(_run_state.get("gold", 0)) / 2
+	var last_ending := ""
+	var seen: Array = _run_state.get("endings_seen", [])
+	if not seen.is_empty():
+		last_ending = String(seen[seen.size() - 1])
+	StickLoop.finish_run("fey_faire", {"credit": stubs, "outcome": last_ending})
 	_save_state()
 	finished.emit(canon, pending)
 

@@ -106,6 +106,9 @@ func start_new_run(manager_mode: bool = false) -> void:
 		"buy_out_jules":   start_stock = 15
 		"perfect_ledger":  start_stock = 13
 		"sam_quits":       start_stock = 8
+	# THE MILK CRATE (StickLoop outfit) · deposit-bottle money from
+	# past summers becomes deeper opening stock and a fatter till.
+	start_stock += StickLoop.effect("estuary_3", "start_stock")
 	_run_state = {
 		"current_act": "act1_kwik_stop",
 		"night_index": 0,
@@ -114,7 +117,9 @@ func start_new_run(manager_mode: bool = false) -> void:
 		"lore_tokens_pending": (["estuary_3_year_two_run"] if year_two else []),
 		"act2_season_choices": [],
 		"act3_locations_visited": [],
-		"act3_clock_minutes": 512,
+		# THE BICYCLE (outfit flag) · Act 3's town clock starts earlier
+		# — you get to town faster, so the walkabout owns more minutes.
+		"act3_clock_minutes": 512 - 30 * (1 if StickLoop.flag("estuary_3", "bicycle") else 0),
 		"act4_line_buffer": [],
 		"manager_mode":          manager_mode,
 		"year_two":              year_two,
@@ -145,11 +150,13 @@ func _prior_manager_ending() -> String:
 
 
 func _year_two_opening_till(prior: String) -> float:
+	var base := 200.0
 	match prior:
-		"buy_out_jules":  return 320.0   # the owner's float
-		"perfect_ledger": return 240.0   # a small cushion, earned
-		"sam_quits":      return 160.0   # you reopened on a thin till
-	return 200.0
+		"buy_out_jules":  base = 320.0   # the owner's float
+		"perfect_ledger": base = 240.0   # a small cushion, earned
+		"sam_quits":      base = 160.0   # you reopened on a thin till
+	# THE MILK CRATE · bottle-deposit savings pad the opening till.
+	return base + 10.0 * float(StickLoop.effect("estuary_3", "till_pad"))
 
 
 func _year_two_intro(prior: String) -> String:
@@ -312,6 +319,17 @@ func _on_ending_completed(canon_vars: Dictionary, lore_tokens: Array) -> void:
 		if not pending.has(s):
 			pending.append(s)
 	_run_state["lore_tokens_pending"] = pending
+	# THE LOOP · a finished summer banks BOTTLE CAPS: one per night
+	# worked, plus the Manager ledger's health if this was a Manager
+	# run. Spent at the shelf's OUTFIT; read back at the next boot.
+	var caps: int = 8 + int(_run_state.get("night_index", 0))
+	var ledger: Array = _run_state.get("manager_cash_by_night", [])
+	if not ledger.is_empty():
+		caps += ledger.size()
+	StickLoop.finish_run("estuary_3", {
+		"credit": caps,
+		"outcome": String(cv.get("e3_ending", "finished")),
+	})
 	_save()
 	# SlowstockBoot listens on `finished(canon_vars, lore_tokens)` and
 	# writes slowsticks_finished += ['estuary_3'] to GauntletState.

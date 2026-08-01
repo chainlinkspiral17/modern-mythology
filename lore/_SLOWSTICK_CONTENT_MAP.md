@@ -28,10 +28,10 @@ A stick is DONE when it clears all six. Anything less is a wave.
 
 | stick | gdloc | jsonKB | loop | verdict |
 |---|---|---|---|---|
-| fey_faire | 9470 | 457K | — | **A** · deep · needs loop |
-| estuary_3 | 7823 | 212K | — | **A** · deep · needs loop |
-| earthman_chronicles | 6302 | 311K | — | **A** · deep · needs loop |
-| pirate_summer | 4689 | 1346K | — | **A** · deep · needs loop |
+| fey_faire | 9470 | 457K | ✓ | **A** · Wave 3 shipped: loop wired |
+| estuary_3 | 7823 | 212K | ✓ | **A** · Wave 3 shipped: loop wired |
+| earthman_chronicles | 6302 | 311K | ✓ | **A** · Wave 3 shipped: loop wired |
+| pirate_summer | 4689 | 1346K | ✓ | **A** · Wave 3 shipped: loop wired |
 | sisters_wyrd | 2388 | 83K | ✓ | **B+** · loop reference · more encounters |
 | salmonberry | 2118 | 58K | — | **B** · Wave 1 shipped: 40 week lines, 18×4 outcome variants, town life (presence/overheard/moments) |
 | spiderdrops | 1372 | 31K | — | **B** · feel-complete · loop only |
