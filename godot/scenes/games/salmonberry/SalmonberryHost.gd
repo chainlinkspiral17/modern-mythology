@@ -393,6 +393,11 @@ func _finish_run(register: String) -> void:
 	canon["salmonberry_result"] = register
 	_run_state["canon_vars"] = canon
 	_run_state["month"] = 0
+	# THE LOOP (earn side) · a finished year banks credit and mastery;
+	# the loadout arrives with its carry pass (no dead purchases).
+	var _sl_bonus: int = (_run_state.get("journal", []) as Array).size() \
+			+ (_run_state.get("thread_clues", []) as Array).size()
+	StickLoop.finish_run("salmonberry", {"credit": 8 + _sl_bonus, "outcome": register})
 	_save_state()
 	finished.emit(canon, tokens)
 
