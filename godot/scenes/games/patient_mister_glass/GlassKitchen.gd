@@ -29,6 +29,8 @@ const C_AMBER   := Color("e8a038")
 const C_BROWN   := Color("6a4a30")
 const C_OCTOBER := Color("8a98a8")
 const C_RED     := Color("c8442c")
+const C_RED_TXT := Color("e06a50")   # type on C_DARK · 5.9:1 (audit)
+const C_RED_TXT := Color("e06a50")   # type on C_DARK · 5.9:1 (audit)
 const C_CREAM   := Color("d8ccb8")
 const C_WOOL    := Color("3a4438")
 
@@ -330,7 +332,7 @@ func _rebuild_ledger() -> void:
 	hdr.text = "· THE LEDGER · pin two answers against each other ·" \
 			+ ("   [first pin: %s, evening %d]" % [String(_pin_first.get("label", "")), int(_pin_first.get("evening", 0))] if not _pin_first.is_empty() else "")
 	hdr.add_theme_font_size_override("font_size", 14)
-	hdr.add_theme_color_override("font_color", C_RED)
+	hdr.add_theme_color_override("font_color", C_RED_TXT)
 	col.add_child(hdr)
 
 	# Findings so far
@@ -356,7 +358,7 @@ func _rebuild_ledger() -> void:
 		b.custom_minimum_size = Vector2(900, 0)
 		b.add_theme_font_size_override("font_size", 13)
 		b.add_theme_color_override("font_color", C_CREAM)
-		b.add_theme_color_override("font_hover_color", C_RED)
+		b.add_theme_color_override("font_hover_color", C_RED_TXT)
 		b.pressed.connect(_pin.bind(h))
 		col.add_child(b)
 

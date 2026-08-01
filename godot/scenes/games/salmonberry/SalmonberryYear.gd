@@ -59,6 +59,11 @@ const C_SAND := Color("b8a882")
 const C_FOG  := Color("c8cec4")
 const C_FIR  := Color("33452f")
 const C_RUST := Color("9c5a3a")
+# Text variants · the paint hues fail WCAG on the dark panel
+# (rust 3.2:1, sea 2.3:1 measured) · type uses these, fills
+# keep the originals. contrast_audit.py is the enforcement.
+const C_RUST_TXT := Color("d08a5e")
+const C_SEA_TXT  := Color("8fb8c8")
 const C_GOLD := Color("d8b048")
 const C_INK  := Color("23282a")
 const C_DIM  := Color("6a7068")
@@ -323,7 +328,7 @@ func _render_week() -> void:
 	hdr.text = "%s %d · week %d of %d   %s" % [MONTHS[month], (1963 if month <= 3 else 1964),
 		week, WEEKS_PER_MONTH, String(WEATHER_TAG.get(wx, ""))]
 	hdr.add_theme_font_size_override("font_size", 24)
-	hdr.add_theme_color_override("font_color", C_RUST)
+	hdr.add_theme_color_override("font_color", C_RUST_TXT)
 	v.add_child(hdr)
 
 	if week == 1 and SEASON_LINE[month] != "":
@@ -352,7 +357,7 @@ func _render_week() -> void:
 	wline.text = String(WEATHER_LINE.get(wx, ""))
 	wline.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 	wline.add_theme_font_size_override("font_size", 13)
-	wline.add_theme_color_override("font_color", C_SEA.darkened(0.2))
+	wline.add_theme_color_override("font_color", C_SEA_TXT)
 	v.add_child(wline)
 	var nxt: String = _forecast_line(month, week)
 	if nxt != "":
@@ -396,7 +401,7 @@ func _render_week() -> void:
 	var town_btn := Button.new()
 	town_btn.text = "  ·  WALK INTO TOWN  ·  "
 	town_btn.add_theme_font_size_override("font_size", 15)
-	town_btn.add_theme_color_override("font_color", C_RUST)
+	town_btn.add_theme_color_override("font_color", C_RUST_TXT)
 	town_btn.pressed.connect(_open_town)
 	v.add_child(town_btn)
 
@@ -439,7 +444,7 @@ func _render_week() -> void:
 	var store := Button.new()
 	store.text = "  · the general store ·  "
 	store.add_theme_font_size_override("font_size", 12)
-	store.add_theme_color_override("font_color", C_SEA)
+	store.add_theme_color_override("font_color", C_SEA_TXT)
 	store.pressed.connect(_show_store)
 	row.add_child(store)
 	var book := Button.new()
@@ -826,7 +831,7 @@ func _show_store() -> void:
 	var hdr := Label.new()
 	hdr.text = "The General Store"
 	hdr.add_theme_font_size_override("font_size", 24)
-	hdr.add_theme_color_override("font_color", C_RUST)
+	hdr.add_theme_color_override("font_color", C_RUST_TXT)
 	v.add_child(hdr)
 	var sub := Label.new()
 	sub.text = "Wanting a thing is free. You have $%d." % int(_s.get("money", 0))
@@ -940,7 +945,7 @@ func _show_book() -> void:
 	var hdr := Label.new()
 	hdr.text = "The Book of the Coast"
 	hdr.add_theme_font_size_override("font_size", 24)
-	hdr.add_theme_color_override("font_color", C_RUST)
+	hdr.add_theme_color_override("font_color", C_RUST_TXT)
 	v.add_child(hdr)
 
 	var scroll := ScrollContainer.new()
@@ -1011,7 +1016,7 @@ func _render_wave() -> void:
 	var hdr := Label.new()
 	hdr.text = "March 1964 · Good Friday"
 	hdr.add_theme_font_size_override("font_size", 26)
-	hdr.add_theme_color_override("font_color", C_RUST)
+	hdr.add_theme_color_override("font_color", C_RUST_TXT)
 	v.add_child(hdr)
 
 	var body := Label.new()
@@ -1031,7 +1036,7 @@ func _render_wave() -> void:
 	var run_btn := Button.new()
 	run_btn.text = "  ·  RUN  ·  "
 	run_btn.add_theme_font_size_override("font_size", 18)
-	run_btn.add_theme_color_override("font_color", C_RUST)
+	run_btn.add_theme_color_override("font_color", C_RUST_TXT)
 	run_btn.pressed.connect(_open_crisis)
 	v.add_child(run_btn)
 	GamepadMgr.focus_first.call_deferred(v)

@@ -28,6 +28,11 @@ const C_SAND := Color("b8a882")
 const C_FOG  := Color("c8cec4")
 const C_FIR  := Color("33452f")
 const C_RUST := Color("9c5a3a")
+# Text variants · the paint hues fail WCAG on the dark panel
+# (rust 3.2:1, sea 2.3:1 measured) · type uses these, fills
+# keep the originals. contrast_audit.py is the enforcement.
+const C_RUST_TXT := Color("d08a5e")
+const C_SEA_TXT  := Color("8fb8c8")
 const C_GOLD := Color("d8b048")
 const C_INK  := Color("23282a")
 
@@ -180,7 +185,7 @@ func _build_title_screen() -> void:
 	title.text = String(shelf.get("label_title", "SALMONBERRY"))
 	title.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 	title.add_theme_font_size_override("font_size", 44)
-	title.add_theme_color_override("font_color", C_RUST)
+	title.add_theme_color_override("font_color", C_RUST_TXT)
 	v.add_child(title)
 
 	var subtitle := Label.new()
@@ -338,7 +343,7 @@ func _on_year_over(result: Dictionary) -> void:
 	title.text = String(REGISTER_TITLE.get(register, "THE LEAVER"))
 	title.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 	title.add_theme_font_size_override("font_size", 34)
-	title.add_theme_color_override("font_color", C_RUST)
+	title.add_theme_color_override("font_color", C_RUST_TXT)
 	v.add_child(title)
 
 	var line := Label.new()

@@ -21,6 +21,7 @@ const HERO_DIR      := "res://resources/games/vol7/kwik_stop_manager/hero_images
 
 const C_CREAM := Color("f4f0e8")
 const C_RED   := Color("c8442c")
+const C_RED_TXT := Color("f0705a")   # type on C_DARK · 4.5:1 (audit)
 const C_DARK  := Color("2a3038")
 const C_GOLD  := Color("f0c040")
 const C_SAGE  := Color("6a7a72")
@@ -171,7 +172,7 @@ func _build_title_screen() -> void:
 	title.text = "KWIK STOP MANAGER"
 	title.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 	title.add_theme_font_size_override("font_size", 34)
-	title.add_theme_color_override("font_color", C_RED)
+	title.add_theme_color_override("font_color", C_RED_TXT)
 	v.add_child(title)
 
 	var subtitle := Label.new()

@@ -21,6 +21,7 @@ const WEEKS_PATH := "res://resources/games/vol7/kwik_stop_manager/weeks.json"
 
 const C_CREAM := Color("f4f0e8")
 const C_RED   := Color("c8442c")
+const C_RED_TXT := Color("f0705a")   # type on C_DARK · 4.5:1 (audit)
 const C_DARK  := Color("2a3038")
 const C_GOLD  := Color("f0c040")
 const C_SAGE  := Color("6a7a72")
@@ -215,7 +216,7 @@ func _render_crew_picker() -> void:
 	var hdr := Label.new()
 	hdr.text = "· THE CREW · pick 3 · (everyone has a life · the schedule is where you find out)"
 	hdr.add_theme_font_size_override("font_size", 13)
-	hdr.add_theme_color_override("font_color", C_RED)
+	hdr.add_theme_color_override("font_color", C_RED_TXT)
 	_crew_col.add_child(hdr)
 	for s_v in _staff:
 		var s: Dictionary = s_v

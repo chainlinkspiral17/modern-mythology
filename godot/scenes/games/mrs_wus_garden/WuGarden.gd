@@ -24,7 +24,7 @@ const C_PANEL  := Color("39412f")
 const C_CREAM  := Color("ece4d0")
 const C_LEAF   := Color("8aa870")
 const C_GOLD   := Color("d8b878")
-const C_DIM    := Color("6a7460")
+const C_DIM    := Color("a8b29a")   # was 6a7460 · 2.2:1 on the panel (audit)
 const C_FROST  := Color("b8c8d8")
 const C_GONE   := Color("54503f")
 

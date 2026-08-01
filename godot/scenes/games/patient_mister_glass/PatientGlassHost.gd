@@ -27,6 +27,8 @@ const C_AMBER   := Color("e8a038")
 const C_BROWN   := Color("6a4a30")
 const C_OCTOBER := Color("8a98a8")
 const C_RED     := Color("c8442c")
+const C_RED_TXT := Color("e06a50")   # type on C_DARK · 5.9:1 (audit)
+const C_RED_TXT := Color("e06a50")   # type on C_DARK · 5.9:1 (audit)
 const C_CREAM   := Color("d8ccb8")
 
 var _manifest: Dictionary = {}
@@ -346,7 +348,7 @@ func _show_verdict() -> void:
 	hdr.text = "· EVENING FOURTEEN · THE VERDICT ·"
 	hdr.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 	hdr.add_theme_font_size_override("font_size", 20)
-	hdr.add_theme_color_override("font_color", C_RED)
+	hdr.add_theme_color_override("font_color", C_RED_TXT)
 	v.add_child(hdr)
 
 	var findings: Array = _run_state.get("findings", [])

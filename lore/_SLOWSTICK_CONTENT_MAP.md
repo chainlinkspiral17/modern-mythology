@@ -112,6 +112,10 @@ title/endings check across all 22.
 ## Standing rules while executing
 
 - Verify with `gdparse` AND `gdinfer_check.py` (CLAUDE.md).
+- Palettes: `python3 godot/tools/contrast_audit.py` must report 0
+  failing pairs. Type on a dark panel gets a `*_TXT` variant when
+  the paint hue fails — fills keep the fiction's hue, type gets a
+  readable one. The tool knows the `_TXT` convention.
 - Layout: containers only, no hand-placed pixels (2026-07-30 sweep:
   five screens broke the same way).
 - Every wave ends with a Recent-lessons entry in
