@@ -157,8 +157,18 @@ static func _expr_family(expr: String) -> String:
 			return "surprised"
 		"tired":
 			return "tired"
-		"nervous", "scared", "uneasy":
+		"nervous", "scared", "uneasy", "worried":
 			return "nervous"
+		# orphan tokens (2026-08 audit) · emotional ones join their
+		# family; the stern/thought set stays neutral-faced (the tint
+		# layer carries those) — a bust squinting at "thinking" would
+		# overact.
+		"hurt":
+			return "sad"
+		"amused", "softening":
+			return "happy"
+		"impressed":
+			return "surprised"
 		_:
 			return "neutral"
 

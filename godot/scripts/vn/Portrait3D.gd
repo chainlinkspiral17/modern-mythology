@@ -256,6 +256,20 @@ const MOOD_ALIASES := {
 	"frustrated": "angry",
 	"scared":     "nervous",
 	"uneasy":     "nervous",
+	# orphan tokens (2026-08 audit) · nearest camera/light mood
+	"worried":    "nervous",
+	"hurt":       "sad",
+	"amused":     "happy",
+	"softening":  "happy",
+	"serious":    "neutral",
+	"focused":    "neutral",
+	"calculating": "neutral",
+	"cold":       "neutral",
+	"thinking":   "neutral",
+	"considering": "neutral",
+	"thoughtful": "neutral",
+	"patient":    "neutral",
+	"impressed":  "surprised",
 }
 
 

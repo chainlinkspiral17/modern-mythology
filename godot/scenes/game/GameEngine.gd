@@ -1640,7 +1640,7 @@ func _present_chapter_card(scene: Dictionary) -> void:
 	_chapter_card.z_index = UI_Z + 50
 	add_child(_chapter_card)
 	var ch := str(scene.get("chapter", "")).strip_edges()
-	_chapter_card.call("set_plate", _vol, int(scene.get("chapter", 0)))
+	_chapter_card.call("set_plate", _vol, scene.get("chapter", 0))
 	var kicker := "VOLUME %d" % _vol
 	if ch != "":
 		kicker += "   ·   CHAPTER %s" % ch.to_upper()

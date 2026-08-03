@@ -112,10 +112,39 @@ func _rule() -> ColorRect:
 
 # vol/chapter pick the sheet; the plate breathes in a hair slower
 # than the type so the page feels laid down, not switched on.
-func set_plate(vol: int, chapter: int) -> void:
+# chapter arrives as whatever the scene JSON holds. Vol 5 numbers its
+# chapters in ROMAN NUMERALS ("I".."XXI") and int("I") is 0 — which
+# for a month meant 26 of Vol 5's 27 scenes wore plate 0 and plate 2
+# had never been displayed. Parse the numeral properly; anything
+# unparseable hashes, so every plate still rotates.
+func _chapter_ordinal(chapter_v: Variant) -> int:
+	if chapter_v is int or chapter_v is float:
+		return absi(int(chapter_v))
+	var s := String(chapter_v).strip_edges().to_upper()
+	if s.is_valid_int():
+		return absi(int(s))
+	var vals := {"I": 1, "V": 5, "X": 10, "L": 50, "C": 100}
+	var total := 0
+	var ok := s.length() > 0
+	for i in range(s.length()):
+		if not vals.has(s[i]):
+			ok = false
+			break
+		var v: int = vals[s[i]]
+		if i + 1 < s.length() and vals.has(s[i + 1]) and int(vals[s[i + 1]]) > v:
+			total -= v
+		else:
+			total += v
+	if ok:
+		return total
+	return absi(s.hash())
+
+
+func set_plate(vol: int, chapter_v: Variant) -> void:
 	if _plate == null:
 		return
-	var path := PLATE_DIR + "chapter_v%d_%d.png" % [vol, absi(chapter) % PLATE_VARIANTS]
+	var chapter := _chapter_ordinal(chapter_v)
+	var path := PLATE_DIR + "chapter_v%d_%d.png" % [vol, chapter % PLATE_VARIANTS]
 	if not ResourceLoader.exists(path):
 		return
 	var tex: Texture2D = load(path) as Texture2D

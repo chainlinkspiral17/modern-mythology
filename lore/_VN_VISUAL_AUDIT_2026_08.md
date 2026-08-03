@@ -60,7 +60,19 @@ hurt, considering, calculating, impressed, patient, thoughtful,
 focused` all collapse to `neutral` without a warning. Map each to
 the nearest family + tint; add unknown-token warnings.
 
-### 1.6 · Dead wiring (harmless today, misleading forever)
+### 1.6 · Vols 1-2 play over missing backgrounds (found by the gate, post-audit)
+The surveys checked vols 5-7 (all-3D, clean). The new
+`vn_asset_audit.py` gate's first run found the older estate: **~40
+distinct 2D background JPEGs referenced by Vol 1-2 scenes do not
+exist on disk** (`assets/backgrounds/vol1_*.jpg`, `vol2_*.jpg` —
+the bar, the club, the dream sequences, all of Briar Falls), plus a
+handful of vol1 scenes with no bg at all. Vols 3-4 are near-stubs.
+Those volumes predate the 3D-locale era and largely play over black.
+Recorded as a KNOWN baseline in the gate (81 items, counted but
+non-failing); restoring vols 1-4's visual estate is its own project
+— plate-style 2D backgrounds via the PIL pipeline would fit.
+
+### 1.7 · Dead wiring (harmless today, misleading forever)
 - 22 of 38 `PORTRAIT_3D_KEY_TO_GLB` entries point at GLBs that don't
   exist (kai, finn, tem, lena, wren, petra…). The demon's GLB dir
   contains only a README.

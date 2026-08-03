@@ -39,8 +39,11 @@ const PORTRAIT_3D_GLB_ROOT := "res://assets/3d/characters/heroes/"
 # explicit entry here.
 const PORTRAIT_3D_DEMON_ROOT := "res://assets/3d/characters/demons/"
 const PORTRAIT_3D_DEMON_KEY_TO_GLB := {
-	# ch1 — the only demon for The Magician's first scenarios
-	"the_demon":         "the_demon.glb",
+	# ch1 — the demon's GLB was never built (demons/ holds only a
+	# README); the mapping is parked so the ASCII composition —
+	# which IS the demon's authored look — serves without a dead
+	# lookup first. Restore when a real model lands.
+	# "the_demon":       "the_demon.glb",
 	# Reserved slots (placeholders — drop models in as they're built)
 	# "the_drifter":     "the_drifter.glb",
 	# "the_birdwatcher": "the_birdwatcher.glb",
@@ -81,32 +84,15 @@ const PORTRAIT_3D_KEY_TO_GLB := {
 	# uncomment with sam_miller_gnm.glb to resume).
 	# "sam":             "sam_miller_gnm.glb",
 	# "sam_miller":      "sam_miller_gnm.glb",
-	"diego":             "diego_ramos.glb",
-	"diego_ramos":       "diego_ramos.glb",
-	"maya":              "maya_daigle.glb",
-	"maya_daigle":       "maya_daigle.glb",
-	"rick":              "rick_cosmic.glb",
-	"rick_cosmic":       "rick_cosmic.glb",
-	"skip":              "skip_donnelly.glb",
-	"skip_donnelly":     "skip_donnelly.glb",
-	"tanya":             "tanya_horne.glb",
-	"tanya_horne":       "tanya_horne.glb",
-	"carl":              "carl_reno.glb",
-	"carl_reno":         "carl_reno.glb",
-	# ── VOL 7 · LAND OF MILK AND HONEY (Smolvud, Oregon coast) ──
-	"lena":              "lena_vargas.glb",
-	"lena_vargas":       "lena_vargas.glb",
-	"wren":              "wren.glb",
-	"tem":               "tem.glb",
-	"gable":             "mrs_gable.glb",
-	"mrs_gable":         "mrs_gable.glb",
-	"marian_gable":      "mrs_gable.glb",
-	"petra":             "petra.glb",
-	"kai":               "kai.glb",
-	"per":               "per.glb",
-	"sal":               "sal_carratura.glb",
-	"sal_carratura":     "sal_carratura.glb",
-	"finn":              "finn.glb",
+	# ── PRUNED 2026-08-02 (visual audit §1.6) ──
+	# 22 vol6/vol7 entries here (diego, maya, rick, skip, tanya, carl,
+	# lena, wren, tem, mrs_gable, petra, kai, per, sal, finn) pointed
+	# at GLBs that were never built. They fell through harmlessly at
+	# runtime, but the table read as a promise — future sessions kept
+	# treating those characters as "3D-portrayed" when they are bust-
+	# tier. The vol6/7 cast is bust-tier BY DECISION until real models
+	# exist; when a GLB lands in assets/3d/characters/heroes/, add its
+	# mapping back here and it takes over automatically.
 }
 const PORTRAIT_TEX_ROOT  := "res://assets/characters/"
 
@@ -134,6 +120,24 @@ const EXPR_TINTS := {
 	"frustrated":Color(1.00, 0.55, 0.50),
 	"tired":     Color(0.78, 0.82, 0.92),
 	"nervous":   Color(0.92, 0.95, 1.00),
+	# Orphan tokens (2026-08 audit) · 13 words the scripts already
+	# use — "serious" alone appears on 26 characters — previously
+	# collapsed to neutral silently. Mapped, not invented: stern set
+	# cools, thought set warms faintly, and the emotional ones join
+	# their nearest family.
+	"serious":   Color(0.88, 0.92, 0.98),
+	"focused":   Color(0.88, 0.92, 0.98),
+	"calculating": Color(0.88, 0.92, 0.98),
+	"cold":      Color(0.82, 0.90, 1.00),
+	"thinking":  Color(0.97, 0.95, 0.88),
+	"considering": Color(0.97, 0.95, 0.88),
+	"thoughtful": Color(0.97, 0.95, 0.88),
+	"patient":   Color(0.97, 0.95, 0.88),
+	"impressed": Color(1.00, 0.97, 0.86),
+	"worried":   Color(0.92, 0.95, 1.00),
+	"amused":    Color(1.00, 0.96, 0.80),
+	"softening": Color(1.00, 0.97, 0.88),
+	"hurt":      Color(0.72, 0.82, 1.00),
 	"scared":    Color(0.92, 0.95, 1.00),
 	"uneasy":    Color(0.92, 0.95, 1.00),
 }
@@ -1302,10 +1306,31 @@ func _find_in_gallery_index(key: String) -> Dictionary:
 	# Substring fallback — any filename whose stem CONTAINS the key.
 	# Sorted by stem length asc so the closest match wins (e.g.
 	# "john" matches "johnfrank" before "johnfrank_face_cutout").
+	#
+	# GUARDED (2026-08-02 audit) · the raw substring scan put the
+	# WRONG ART on real characters: "tem" (945 lines · Vol 7's lead)
+	# matched Temperance the tarot card, "lena" matched
+	# soLENAde_garden's gauntlet board, "per"/"em" matched the
+	# Emperor, "man" the Hanged Man, "judge" Judgement, "jo" John.
+	# Two rules close the class:
+	#   1. keys shorter than 5 chars never fuzzy-match (the exact-
+	#      stem list above still serves them);
+	#   2. a match must start at a WORD BOUNDARY (stem start or right
+	#      after _ or -), so an interior hit like soLENAde can never
+	#      claim a character again.
+	# A key with no legitimate art falls through to its procedural
+	# bust, which is correct — a hash-face is honest, a tarot card
+	# in a dialogue slot is not.
+	if k.length() < 5:
+		return {"texture": null, "path": ""}
 	var candidates: Array = []
 	for stem in _gallery_index:
-		if k in stem:
-			candidates.append(stem)
+		var at := String(stem).find(k)
+		while at != -1:
+			if at == 0 or String(stem)[at - 1] == "_" or String(stem)[at - 1] == "-":
+				candidates.append(stem)
+				break
+			at = String(stem).find(k, at + 1)
 	candidates.sort_custom(func(a, b): return a.length() < b.length())
 	for stem: String in candidates:
 		var path: String = _gallery_index[stem]
