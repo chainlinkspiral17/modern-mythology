@@ -84,11 +84,58 @@ func boot(state: Dictionary) -> void:
 	if n == 1:
 		_add_heard(_opening_line())
 		_text_lbl.text = _opening_line()
+		if not bool(_state.get("tutorial_seen", false)):
+			_state["tutorial_seen"] = true
+			_show_how_card()
 	elif n == 7:
 		# The walk. The mornings answer for themselves.
 		var pay := _bosun_payoff_line()
 		_add_heard(pay)
 		_text_lbl.text = pay
+
+
+func _show_how_card() -> void:
+	# The card that would have been printed inside the box lid.
+	# Shown once per save; dismissed with one press anywhere.
+	var overlay := ColorRect.new()
+	overlay.color = Color(C_DARK, 0.93)
+	overlay.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
+	overlay.mouse_filter = Control.MOUSE_FILTER_STOP
+	add_child(overlay)
+	var v := VBoxContainer.new()
+	v.set_anchors_and_offsets_preset(Control.PRESET_CENTER)
+	v.offset_left = -330; v.offset_right = 330
+	v.offset_top = -190; v.offset_bottom = 190
+	v.add_theme_constant_override("separation", 14)
+	overlay.add_child(v)
+	var head := Label.new()
+	head.text = "HOW A MORNING WORKS"
+	head.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+	head.add_theme_font_size_override("font_size", 22)
+	head.add_theme_color_override("font_color", C_LAMP)
+	v.add_child(head)
+	for line in [
+			"WALK · the wooden signs along the bottom of the screen. each screen is four minutes.",
+			"LISTEN · working people talk while they work. every word lands in your HEARD list (H).",
+			"DO · lamp-colored lines on the right are things your hands can do here.",
+			"THE DOG · what bosun noses is live. when a sign says he looks that way — believe him.",
+			"THE HORN · 7:00 ends the morning, finished or not. nothing fails. choose."]:
+		var l := Label.new()
+		l.text = line
+		l.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+		l.add_theme_font_size_override("font_size", 15)
+		l.add_theme_color_override("font_color", C_GULL)
+		v.add_child(l)
+	var foot := Label.new()
+	foot.text = "· press anywhere · the harbor is waiting ·"
+	foot.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+	foot.add_theme_font_size_override("font_size", 13)
+	foot.add_theme_color_override("font_color", C_PILE)
+	v.add_child(foot)
+	overlay.gui_input.connect(func(ev: InputEvent) -> void:
+		if (ev is InputEventMouseButton and (ev as InputEventMouseButton).pressed) \
+				or (ev is InputEventKey and (ev as InputEventKey).pressed):
+			overlay.queue_free())
 
 
 func _opening_line() -> String:
@@ -279,10 +326,13 @@ func _build_ui() -> void:
 	_bosun_note.add_theme_color_override("font_color", C_FOG)
 	add_child(_bosun_note)
 
+	# The walk-signs. The single most important control in the game
+	# — previously 14px flat gray text at the screen's bottom edge,
+	# which playtested as "nothing happens" (user, 2026-08-03).
 	_nav_row = HBoxContainer.new()
-	_nav_row.position = Vector2(120, 694)
-	_nav_row.size = Vector2(1040, 26)
-	_nav_row.add_theme_constant_override("separation", 10)
+	_nav_row.position = Vector2(120, 682)
+	_nav_row.size = Vector2(1040, 32)
+	_nav_row.add_theme_constant_override("separation", 14)
 	add_child(_nav_row)
 
 	_act_col = VBoxContainer.new()
@@ -357,6 +407,7 @@ func _render() -> void:
 			var carry := _carryover_line_here()
 			_text_lbl.text = carry if carry != "" else String(lines[_ambient_flip % lines.size()])
 
+	_bosun_hop = _first_hop_toward(_next_step_loc())
 	_render_nav(fog, n)
 	_render_actions()
 	_render_pockets()
@@ -397,13 +448,26 @@ func _render_nav(fog: bool, n: int) -> void:
 		var b := Button.new()
 		var target: Dictionary = _locs.get(adj, {})
 		if fog:
-			b.text = "→ (" + String(target.get("sound_cue", "something out there")) + ")"
+			b.text = " → (" + String(target.get("sound_cue", "something out there")) + ") "
 		else:
-			b.text = "→ " + String(target.get("name", adj))
-		b.flat = true
-		b.add_theme_font_size_override("font_size", 14)
-		b.add_theme_color_override("font_color", C_GULL)
-		b.add_theme_color_override("font_hover_color", C_LAMP)
+			b.text = " → " + String(target.get("name", adj)) + " "
+		# Bosun is the hint system: the sign he'd take gets his mark.
+		if adj == _bosun_hop:
+			b.text += "· bosun looks this way "
+		b.add_theme_font_size_override("font_size", 17)
+		b.add_theme_color_override("font_color", C_LAMP if adj == _bosun_hop else C_GULL)
+		b.add_theme_color_override("font_hover_color", Color("f0b050"))
+		var sb := StyleBoxFlat.new()
+		sb.bg_color = Color(C_WOOD, 0.85)
+		sb.border_color = C_PILE
+		sb.set_border_width_all(1)
+		sb.set_content_margin_all(6)
+		b.add_theme_stylebox_override("normal", sb)
+		var sbh: StyleBoxFlat = sb.duplicate()
+		sbh.border_color = C_LAMP
+		b.add_theme_stylebox_override("hover", sbh)
+		b.add_theme_stylebox_override("pressed", sbh)
+		b.add_theme_stylebox_override("focus", sbh)
 		b.pressed.connect(_enter_location.bind(adj))
 		_nav_row.add_child(b)
 
@@ -428,6 +492,13 @@ func _render_actions() -> void:
 			_:        b.text = "· listen ·"
 		b.pressed.connect(_do_step.bind(step))
 		_act_col.add_child(b)
+	if _act_col.get_child_count() == 0:
+		var idle := Label.new()
+		idle.text = "· nothing needs hands here ·\n· listen, or walk on ·"
+		idle.horizontal_alignment = HORIZONTAL_ALIGNMENT_RIGHT
+		idle.add_theme_font_size_override("font_size", 13)
+		idle.add_theme_color_override("font_color", C_PILE)
+		_act_col.add_child(idle)
 	# bosun fetch · three mornings of hands buys one errand of nose.
 	# a trusted dog will fetch a plain object from the next screen.
 	if int(_state.get("bosun_pets", 0)) >= 3 and not _fetched_this_morning:
@@ -485,6 +556,33 @@ func _render_bosun(n: int) -> void:
 		var ay := 10.0 + float(anchor[1]) * (594.0 / 720.0)
 		_bosun_rect.position = Vector2(ax - 48, ay - 72)
 	_bosun_note.text = note
+
+
+var _bosun_hop: String = ""
+
+
+func _first_hop_toward(target: String) -> String:
+	# BFS over the harbor graph: which adjacent screen starts the
+	# shortest walk to `target`. "" when nowhere to point.
+	if target == "" or target == _loc_id:
+		return ""
+	var prev: Dictionary = {_loc_id: ""}
+	var queue: Array = [_loc_id]
+	while queue.size() > 0:
+		var cur: String = String(queue.pop_front())
+		if cur == target:
+			# Walk back to the first hop.
+			var node := cur
+			while String(prev.get(node, "")) != _loc_id and String(prev.get(node, "")) != "":
+				node = String(prev[node])
+			return node
+		var loc: Dictionary = _locs.get(cur, {})
+		for adj_v in loc.get("adjacent", []):
+			var adj := String(adj_v)
+			if not prev.has(adj):
+				prev[adj] = cur
+				queue.append(adj)
+	return ""
 
 
 # ─── Steps ───────────────────────────────────────────────────────

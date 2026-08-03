@@ -41,6 +41,8 @@ Current ledger (draft counts are honest, not aspirational):
 | Cedar tower (vol7 ch22) | 1 | per-floor dressing density, portal-room staging |
 | Graustark ruin quarter / riverfront park | 1 | silhouette shaping, mid-ground detail bands |
 | CP region banners + agent busts | 1 | per plan file; then variant states |
+| Northwind Harbor playability | 2 (onboarding pass) | Deck-verify the first five minutes actually teach; then mornings 2-6 pacing |
+| Slowstick manuals + packaging (NH = model) | 1 | era-voice + walkthrough sweep across ~20 sticks; box art after experiences are good (task #234) |
 | Model chapters (diner, kwik stop, cathedral, henderson) | many | the BAR — mine them for what a finished space has |
 
 ### Workstream · HIGHWAY 9 ACTION STAGE (user-directed)

@@ -12,6 +12,13 @@
    ],
    "steps": [
     {
+     "id": "porch_morning",
+     "loc": "maddox_porch",
+     "type": "look",
+     "line": "maddox's cough carries up from the slip. the town is already at work without you · which is the town's way of saying you're late. bosun is off the porch before you are.",
+     "heard_as": "the morning starts down the boardwalk. it always has."
+    },
+    {
      "id": "hear_glove",
      "loc": "fuel_dock",
      "type": "heard",
