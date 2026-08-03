@@ -293,3 +293,16 @@ offset_top = 360.0
 offset_right = 520.0
 offset_bottom = 980.0
 script = ExtResource("14_dbgm")
+
+[node name="KitchenWindow_Spill" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.4, 1.55, -0.3)
+light_color = Color(0.96, 0.72, 0.42, 1)
+light_energy = 1.1
+shadow_enabled = false
+omni_range = 3.5
+
+[node name="Back_Rim" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.707, -0.5, 0.5, 0, 0.707, 0.707, -0.707, -0.5, 0.5, 0, 4, 5)
+light_color = Color(0.32, 0.42, 0.62, 1)
+light_energy = 0.22
+shadow_enabled = false

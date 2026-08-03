@@ -291,3 +291,17 @@ offset_top = 360.0
 offset_right = 520.0
 offset_bottom = 980.0
 script = ExtResource("14_dbgm")
+
+[node name="Fluor0_Practical" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0, 2.4, -1.5)
+light_color = Color(0.86, 0.92, 0.88, 1)
+light_energy = 1.1
+shadow_enabled = false
+omni_range = 4.0
+
+[node name="Fluor1_Practical" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0, 2.4, -3.5)
+light_color = Color(0.86, 0.92, 0.88, 1)
+light_energy = 1.1
+shadow_enabled = false
+omni_range = 4.0

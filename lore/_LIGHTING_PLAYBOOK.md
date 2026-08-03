@@ -151,6 +151,24 @@ Position note: lamp omnis are placed AT the lamp-head mesh position
 
 ## Recent lessons
 
+### 2026-08-02 · practicals-from-build-scripts · the zero-practical four
+
+The visual audit found four rooms with NO practicals at all despite
+visible fixtures (cabin_interior, cosmic_comics_back_office,
+pit_stop_interior each ship fluorescent tube fixtures in their
+builders; kowalski_backyard has a kitchen window). Without the GLBs
+on this machine, fixture positions were derived from the BUILD
+SCRIPTS (blender (bx,by,bz) → godot (bx, bz, −by)) and the omnis
+hung 0.2 m below each tube — the same read-the-builder method as the
+camera-preset sweep. Fluorescents got the cool 4000K-ish tint
+(0.86, 0.92, 0.88) at 1.1-1.2 energy; the kitchen window spills
+2700K warm. Kowalski also gained its missing third directional
+(Back_Rim, the standard cool-blue back). audit_locale_lighting now
+reports 71 locales at the full foundation and none of the four in
+the rig-pass list. VERIFY ON DECK: positions are derived, not
+eyeballed against the GLB — if a tube moved since its builder was
+last run, the light floats; re-run the builders if so.
+
 ### 2026-07-20 · lighting-coverage audit + the ambient/practical caveat
 
 New tool `godot/tools/audit_locale_lighting.py` reports the three-
