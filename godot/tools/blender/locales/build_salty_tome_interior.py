@@ -19,6 +19,9 @@ from _props.store_fixtures import make_counter, make_register
 from _props.decor import make_wall_clock, make_floor_plant, make_faded_poster, make_calendar
 from _props.safety import make_smoke_detector, make_hvac_vent
 from _props.signage import make_hanging_banner
+from _props.detail import (make_traffic_wear, make_floor_stain, make_scuff_band,
+                           make_wall_tint_band, make_threshold, make_wall_outlet,
+                           make_light_switch, make_cord_run)
 
 ROOM_W = 8.0; ROOM_D = 6.0; CEIL = 2.8
 PAL_WALL = {"wall": (0.80, 0.72, 0.58, 1.0), "baseboard": (0.42, 0.32, 0.22, 1.0)}
@@ -366,6 +369,63 @@ def build_alley_2026_08():
     make_cyl("Downspout", (-3.9, 9.15, 1.40), 0.05, 2.80, (0.44, 0.44, 0.46, 1.0), segments=8)
 
 
+def build_detail_pass_2026_08():
+    """D2 surface breakup + a first D3 taste (set-detail playbook).
+    Forty-one years of Petra: the shop's wear is deep and settled —
+    the aisle path is nearly a groove, the kitchenette has poured
+    ten thousand kettles, the alley is honest about the dumpster.
+    D4 (use states) next."""
+    wear = (0.46, 0.35, 0.24, 1.0)
+    # The aisle groove: door -> counter -> the N doorway -> annex.
+    make_traffic_wear("Wear_Aisle", [(0.0, 0.6), (0.0, 2.6), (2.0, 2.6)],
+                      width=0.75, tint=wear)
+    make_traffic_wear("Wear_ToBack", [(2.9, 3.4), (2.9, 6.6)],
+                      width=0.65, tint=wear)
+    # Kitchenette path: back door -> kettle -> the window table; and
+    # the cat chair's patch (he is walked around, never moved).
+    make_traffic_wear("Wear_Kitch", [(-3.3, 8.4), (-3.3, 7.4), (-1.9, 7.4)],
+                      width=0.6, tint=(0.50, 0.41, 0.30, 1.0))
+    make_floor_stain("Stain_Kettle", (-3.5, 7.85, ), radius=0.22,
+                     tint=(0.48, 0.39, 0.28, 1.0))
+    make_floor_stain("Stain_CatChair", (-0.5, 6.7), radius=0.40,
+                     tint=(0.50, 0.42, 0.32, 1.0))
+    # Reading-nook rug shadow (the rug has not moved since 2015).
+    make_floor_stain("Stain_NookEdge", (-2.6, 1.3), radius=0.30, tint=wear)
+    # Kick scuffs: sales counter + the back door's boot line.
+    make_scuff_band("Scuff_Counter", (ROOM_W/2.0-1.4, 2.24), length=2.5, axis='X',
+                    band_z=0.11, tint=(0.28, 0.20, 0.13, 1.0))
+    make_scuff_band("Scuff_BackDoor", (-3.3, 8.90), length=0.9, axis='X',
+                    band_z=0.09, tint=(0.26, 0.20, 0.14, 1.0))
+    # Ceiling gather over the tall shelf walls.
+    make_wall_tint_band("Band_W", (-ROOM_W/2.0+0.105, 3.0, 0.0), length=5.4,
+                        axis='Y', band_z=CEIL-0.16, tint=(0.72, 0.64, 0.50, 1.0))
+    make_wall_tint_band("Band_E", (ROOM_W/2.0-0.105, 3.0, 0.0), length=5.4,
+                        axis='Y', band_z=CEIL-0.16, tint=(0.72, 0.64, 0.50, 1.0))
+    # Thresholds at every door the scenes use.
+    make_threshold("Threshold_Front", (0.0, 0.10), width=1.9, axis='X',
+                   tint=(0.46, 0.32, 0.20, 1.0))
+    make_threshold("Threshold_Annex", (2.9, ROOM_D), width=1.0, axis='X',
+                   tint=(0.46, 0.32, 0.20, 1.0))
+    make_threshold("Threshold_Back", (-3.3, 9.0), width=0.95, axis='X',
+                   tint=(0.46, 0.32, 0.20, 1.0))
+    # First infrastructure: switch by the door, the kitchenette
+    # outlet the kettle cord actually reaches.
+    make_light_switch("Switch_Front", (1.15, 0.0), axis='X', face_sign=1, aged=True)
+    make_wall_outlet("Outlet_Kitch", (-4.0, 7.6), axis='Y', face_sign=1, aged=True)
+    make_cord_run("Cord_Kettle", (-3.55, 7.85, 0.98), (-3.89, 7.6, 0.30))
+    # ── Alley truth ──
+    make_floor_stain("Alley_Dumpster_Juice", (2.4, 9.65), radius=0.5,
+                     tint=(0.22, 0.22, 0.22, 1.0))
+    make_floor_stain("Alley_Puddle", (-1.2, 10.6), radius=0.45,
+                     tint=(0.26, 0.27, 0.30, 1.0))
+    # Downspout streak on the store's back wall + grime base band
+    # along the mural wall.
+    make_box("Alley_Downspout_Streak", (-3.9, 9.06, 1.30), (0.22, 0.02, 2.5),
+             (0.36, 0.36, 0.36, 1.0))
+    make_box("Alley_MuralWall_Grime", (0.0, 11.86, 0.25), (10.8, 0.02, 0.5),
+             (0.34, 0.24, 0.20, 1.0))
+
+
 def main():
     clear_scene()
     build_shell()
@@ -378,6 +438,7 @@ def main():
     build_decor()
     build_back_annex_2026_08()
     build_alley_2026_08()
+    build_detail_pass_2026_08()
     out = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)),
         "../../../assets/3d/locales/salty_tome_interior.glb"))
     print(f"\n[build_salty_tome_interior] exporting to {out}")

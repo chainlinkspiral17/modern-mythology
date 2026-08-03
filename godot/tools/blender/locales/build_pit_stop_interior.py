@@ -305,6 +305,78 @@ def build_detail_pass_2026_08():
     make_corner_guard("CornerGuard_Swing", (2.9, PART_Y-0.12))
 
 
+def build_use_states_2026_08():
+    """D4 · mid-task, not showroom (set-detail playbook). The diner
+    is CAUGHT WORKING: the wipe-rag still on the counter, an order
+    up on the grill, one table half-bussed, the trash telling the
+    truth. D6 (coverage + light) is the next pass."""
+    # Counter mid-wipe: the rag where Brenda left it + a customer's
+    # half-finished coffee two stools down from the register.
+    make_box("Counter_Rag", (0.2, 4.42, 1.005), (0.24, 0.18, 0.02), (0.72, 0.74, 0.70, 1.0))
+    make_cyl("Counter_Coffee", (2.4, 4.40, 1.05), 0.04, 0.09, (0.92, 0.90, 0.86, 1.0), segments=8)
+    make_cyl("Counter_Coffee_Ring", (2.55, 4.36, 1.001), 0.05, 0.003, (0.66, 0.60, 0.52, 1.0), segments=8)
+    # The grill mid-order: two patties, the spatula resting on the
+    # flat-top edge, a side towel over the hood bar.
+    for pi, pxo in enumerate([-0.25, 0.05]):
+        make_cyl(f"Grill_Patty_{pi}", (-1.0+pxo, 8.4, 1.01), 0.07, 0.02, (0.36, 0.22, 0.14, 1.0), segments=10)
+    make_box("Grill_Spatula_Blade", (-0.35, 8.35, 1.005), (0.09, 0.11, 0.008), P.METAL_STEEL)
+    make_box("Grill_Spatula_Handle", (-0.35, 8.15, 1.02), (0.03, 0.22, 0.02), (0.20, 0.20, 0.22, 1.0))
+    make_box("Hood_Towel", (-0.2, 8.35, 2.10), (0.30, 0.06, 0.28), (0.80, 0.80, 0.76, 1.0))
+    # Ticket on the pass-through rail mid-order (one more than the
+    # static three — this one's crooked).
+    make_box("Pass_Ticket_Live", (1.05, PART_Y-0.11, 1.78), (0.13, 0.005, 0.15), (0.96, 0.94, 0.86, 1.0))
+    # Table A half-bussed: two plates stacked, crumpled napkin, one
+    # chair shoved out of true.
+    make_cyl("TableA_Plate_Stack", (1.45, 1.55, 0.79), 0.11, 0.035, (0.90, 0.88, 0.84, 1.0), segments=10)
+    make_box("TableA_Napkin_Crumple", (1.85, 1.70, 0.78), (0.07, 0.06, 0.045), (0.86, 0.86, 0.82, 1.0))
+    make_box("TableA_Chair_Shoved_Seat", (1.6, 0.62, 0.45), (0.42, 0.42, 0.05), COL_WOOD)
+    make_box("TableA_Chair_Shoved_Back", (1.6, 0.44, 0.72), (0.42, 0.05, 0.50), COL_WOOD)
+    # Pie case truth: one slice already out, on a plate beside it.
+    make_cyl("Pie_Slice_Plate", (-0.35, 4.65, 1.005), 0.09, 0.015, (0.90, 0.88, 0.84, 1.0), segments=10)
+    make_box("Pie_Slice", (-0.35, 4.65, 1.035), (0.09, 0.06, 0.045), (0.78, 0.56, 0.30, 1.0))
+    # The trash tells the truth: two crumples NEAR the can.
+    for ci, (cxo, cyo) in enumerate([(-0.35, 0.15), (0.28, -0.22)]):
+        make_box(f"Trash_Crumple_{ci}", (4.9+cxo, 0.9+cyo, 0.035), (0.07, 0.06, 0.06), (0.88, 0.87, 0.82, 1.0))
+    # Second milk crate stacked askew by the walk-in (Jesse's seat
+    # has a spare — crates accumulate).
+    make_box("Milk_Crate_2", (-3.30, 6.42, 0.50), (0.35, 0.35, 0.33), (0.24, 0.36, 0.62, 1.0))
+    # Swing-door wedge kicked half under the door.
+    make_box("Swing_Door_Wedge", (3.35, PART_Y-0.18, 0.03), (0.10, 0.14, 0.06), (0.52, 0.40, 0.28, 1.0))
+
+
+def build_beyond_glass_2026_08():
+    """D5 · something through every window. W + N glass show the
+    PARKING LOT — including the Louisiana pickup that sits in the
+    Pit Stop lot with a driver who never enters (Ben's list, item
+    2, vol6_ch3). S glass shows the road + the strip across it.
+    Cheap silhouette band geometry; fog and glass do the rest."""
+    # ── The lot, west of the building (out the booth windows) ──
+    make_box("Lot_Asphalt_W", (-9.5, 4.5, -0.02), (7.6, 11.0, 0.04), (0.30, 0.30, 0.32, 1.0))
+    for si, sy in enumerate([2.0, 4.4, 6.8]):
+        make_box(f"Lot_Stripe_W_{si}", (-7.2, sy, 0.005), (0.10, 1.8, 0.01), (0.86, 0.84, 0.78, 1.0))
+    # Two parked cars + THE LOUISIANA PICKUP (nose-in, engine cold,
+    # driver never enters) framed by the W_Mid booth window.
+    for tag, cy2, col in [("A", 1.9, (0.32, 0.34, 0.40, 1.0)), ("B", 6.6, (0.62, 0.60, 0.56, 1.0))]:
+        make_box(f"Lot_Car_{tag}_Body", (-7.6, cy2, 0.55), (4.2, 1.75, 0.55), col)
+        make_box(f"Lot_Car_{tag}_Cabin", (-7.9, cy2, 1.02), (2.2, 1.6, 0.45), col)
+    make_box("Lot_LA_Pickup_Body", (-7.4, 4.35, 0.62), (4.8, 1.85, 0.70), (0.30, 0.24, 0.20, 1.0))
+    make_box("Lot_LA_Pickup_Cab", (-8.4, 4.35, 1.25), (1.8, 1.75, 0.55), (0.30, 0.24, 0.20, 1.0))
+    make_box("Lot_LA_Pickup_Bed_Rim", (-6.2, 4.35, 1.02), (2.3, 1.85, 0.08), (0.24, 0.19, 0.16, 1.0))
+    # Lot light pole + far treeline wall (edge-of-set).
+    make_cyl("Lot_Pole", (-11.5, 4.5, 3.0), 0.09, 6.0, (0.40, 0.40, 0.42, 1.0), segments=8)
+    make_box("Lot_Pole_Head", (-11.2, 4.5, 6.0), (0.7, 0.25, 0.18), (0.30, 0.30, 0.32, 1.0))
+    make_box("Lot_Treeline_W", (-13.6, 4.5, 2.2), (0.4, 12.0, 4.4), (0.13, 0.18, 0.13, 1.0))
+    # ── North strip (out the kitchen window): the lot corner Ben
+    # catalogues + the same treeline running behind ──
+    make_box("Lot_Asphalt_N", (-2.0, 11.0, -0.02), (8.0, 3.6, 0.04), (0.30, 0.30, 0.32, 1.0))
+    make_box("Lot_Treeline_N", (-2.0, 13.2, 2.2), (10.0, 0.4, 4.4), (0.13, 0.18, 0.13, 1.0))
+    # ── South: the state-highway strip + the building across it ──
+    make_box("Road_S", (0.0, -3.2, -0.02), (16.0, 3.0, 0.04), (0.26, 0.26, 0.28, 1.0))
+    make_box("Road_S_Centerline", (0.0, -3.2, 0.005), (14.0, 0.10, 0.01), (0.85, 0.76, 0.30, 1.0))
+    make_box("Strip_Across", (1.5, -6.4, 1.7), (10.0, 0.8, 3.4), (0.42, 0.38, 0.34, 1.0))
+    make_box("Strip_Across_Sign", (-2.0, -5.9, 3.0), (1.6, 0.12, 0.7), (0.66, 0.58, 0.42, 1.0))
+
+
 def main():
     clear_scene()
     build_shell()
@@ -317,6 +389,8 @@ def main():
     build_decor()
     build_ceiling_infra()
     build_detail_pass_2026_08()
+    build_use_states_2026_08()
+    build_beyond_glass_2026_08()
     out = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)),
         "../../../assets/3d/locales/pit_stop_interior.glb"))
     print(f"\n[build_pit_stop_interior] exporting to {out}")

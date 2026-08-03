@@ -35,9 +35,9 @@ Current ledger (draft counts are honest, not aspirational):
 |---|---|---|
 | Tail-wave locales (~40, 2026-08-03) | 1 | Deck screenshots → reframe cameras; lighting pass per the lighting playbook; edge-of-set treatment; second vantages |
 | Vols 1–2 migration locales | 1–2 | same as tail wave |
-| Pit Stop diner / ChillWave (re-themes) | 2 (D2+D3 done) | D4 use states, D5 through-the-windows, D6 coverage — per _SET_DETAIL_PLAYBOOK |
-| Salty Tome back + alley | 1 | D2 surface breakup first (kitchenette wear, alley grime) |
-| **Highway 9 (planned community)** | **2** | draft 3: vn_shot coverage + camera motion (see workstream) |
+| Pit Stop diner / ChillWave (re-themes) | 3 (D2-D5 done) | D6 coverage + light: practicals on the new fixtures, vn_shot setups, Deck reframe |
+| Salty Tome back + alley | 2 (D2 done) | D3 remaining infrastructure, D4 use states (Petra's desk mid-call, the four mugs poured) |
+| **Highway 9 (planned community)** | **3** | draft 4: Deck screenshot loops on all six framings + the five vn_shot markers |
 | Cedar tower (vol7 ch22) | 1 | per-floor dressing density, portal-room staging |
 | Graustark ruin quarter / riverfront park | 1 | silhouette shaping, mid-ground detail bands |
 | CP region banners + agent busts | 1 | per plan file; then variant states |
@@ -62,14 +62,13 @@ staged like that, using still camera set-ups and camera motion."*
   into a deformed guardrail + debris fan + glass at y=+210 — the
   road's own history mark), exit ramp + gore paint at y=-60,
   gravel rest turnout + semi stand-in at y=-330.
-- **Draft 3 — camera coverage**: vn_shot still setups in
-  harmony_terrain.tscn (low shoulder wide · median close · overpass
-  high angle · long lens down the vanishing point · behind-guardrail
-  cover position), PLUS the new capability: **camera motion** in the
-  VN background layer (dolly/track/chase presets — likely a
-  `camera_track` field on Background3D presets or an animated
-  Camera3D the VnDirector can cut to). This capability then serves
-  every future action beat, not just this one.
+- **Draft 3 (shipped 2026-08-03)** — the camera_track capability
+  in Background3D ({to, secs, rot_to, loop} on any preset; sine
+  dolly, ping-pong, killed by manual vantage overrides), six
+  highway presets (long / shoulder / overpass / scar / turnout
+  stills + highway9_drive, the first MOVING background), and five
+  vn_shot Marker3D setups in harmony_terrain.tscn for VnDirector
+  in-scene cutting. All framings derived from build coords.
 - **Draft 4+** — Deck screenshot loops: frame, re-stage, re-light
   until it reads like a location, not a set. Dozens of passes is
   the expectation, not the exception.

@@ -258,6 +258,62 @@ def build_detail_pass_2026_08():
     make_cord_run("Cord_Transformer", (3.05, 7.3, 0.92), (3.39, 6.9, 0.30))
 
 
+def build_use_states_2026_08():
+    """D4 · mid-task (set-detail playbook). Cale's shop caught in
+    the middle of an ordinary hour: shelving half-done, the repair
+    open under good light, tea going cold. Tidy-worn — the mess is
+    PRECISE."""
+    # Shelving in progress: two sticks out of the crate, on the
+    # floor beside it, one atop the other slightly off-square.
+    make_box("Shelving_Stick_A", (2.15, PART_Y+0.85, 0.08), (0.10, 0.16, 0.15), STICK_TINTS[3])
+    make_box("Shelving_Stick_B", (2.20, PART_Y+0.90, 0.235), (0.10, 0.16, 0.15), STICK_TINTS[1])
+    # One inventory stick half-pulled, proud of its row (the shelf
+    # gap Cale is walking back and forth to).
+    make_box("InvStick_HalfOut", (-1.15, ROOM_D-0.44, 1.11), (0.10, 0.16, 0.16), STICK_TINTS[0])
+    # The bench mid-repair: tweezers, three screws in a saucer, the
+    # magnifier loupe set down lens-up.
+    make_box("Bench_Tweezers", (2.90, 6.62, 0.95), (0.015, 0.11, 0.01), P.METAL_STEEL)
+    make_cyl("Bench_Screw_Saucer", (3.05, 6.72, 0.955), 0.04, 0.012, (0.88, 0.86, 0.80, 1.0), segments=8)
+    for si, (sxo, syo) in enumerate([(-0.012, 0.008), (0.010, -0.006), (0.002, 0.014)]):
+        make_cyl(f"Bench_Screw_{si}", (3.05+sxo, 6.72+syo, 0.968), 0.004, 0.008,
+                 (0.55, 0.55, 0.58, 1.0), segments=6)
+    make_cyl("Bench_Loupe", (2.72, 6.55, 0.955), 0.035, 0.025, (0.24, 0.24, 0.26, 1.0), segments=10)
+    # Tea going cold at the bench's far corner — ring already dry
+    # beside it (yesterday's cup sat there too).
+    make_cyl("Bench_Tea", (3.15, 7.05, 0.98), 0.04, 0.09, (0.62, 0.58, 0.50, 1.0), segments=8)
+    make_cyl("Bench_Tea_Ring", (3.08, 6.95, 0.933), 0.045, 0.003, (0.44, 0.30, 0.20, 1.0), segments=8)
+    # Reading glasses folded on the counter beside the paperback.
+    make_box("Counter_Glasses_Bridge", (-0.95, 2.90, 0.965), (0.10, 0.015, 0.01), (0.24, 0.22, 0.20, 1.0))
+    for gi, gxo in enumerate([-0.055, 0.055]):
+        make_cyl(f"Counter_Glasses_Lens_{gi}", (-0.95+gxo, 2.90, 0.962), 0.025, 0.006,
+                 (0.70, 0.76, 0.78, 0.6), segments=8)
+    # One brass letter tab crooked — the alphabet is human.
+    make_box("InvTab_Crooked", (0.65, ROOM_D-0.455, 1.64), (0.08, 0.02, 0.06), COL_BRASS)
+
+
+def build_beyond_glass_2026_08():
+    """D5 · through the storefront: the street ChillWave lives on —
+    sidewalk, parked car, the shop across the way with one lit
+    window (somebody else keeps late hours too). Edge-of-set bands;
+    fog does the fade."""
+    make_box("Street_Sidewalk", (0.0, -1.6, -0.02), (14.0, 2.6, 0.04), (0.56, 0.55, 0.52, 1.0))
+    for ji, jx in enumerate([-4.5, -1.5, 1.5, 4.5]):
+        make_box(f"Street_Sidewalk_Joint_{ji}", (jx, -1.6, 0.005), (0.04, 2.6, 0.01),
+                 (0.44, 0.43, 0.40, 1.0))
+    make_box("Street_Asphalt", (0.0, -4.6, -0.02), (14.0, 3.4, 0.04), (0.27, 0.27, 0.29, 1.0))
+    # The parked car at the curb, framed by the SE glass.
+    make_box("Street_Car_Body", (2.6, -2.5, 0.55), (4.2, 1.75, 0.55), (0.36, 0.30, 0.26, 1.0))
+    make_box("Street_Car_Cabin", (2.3, -2.5, 1.02), (2.2, 1.6, 0.45), (0.36, 0.30, 0.26, 1.0))
+    # The shopfront across the street: facade band + one lit window.
+    make_box("Across_Facade", (0.0, -7.2, 2.0), (13.0, 0.6, 4.0), (0.38, 0.34, 0.30, 1.0))
+    make_box("Across_Window_Dark", (-2.6, -6.85, 1.6), (1.6, 0.06, 1.3), (0.14, 0.15, 0.18, 1.0))
+    make_box("Across_Window_Lit", (2.2, -6.85, 1.6), (1.6, 0.06, 1.3), (0.88, 0.78, 0.52, 1.0))
+    make_box("Across_Door", (0.0, -6.85, 1.15), (0.95, 0.06, 2.3), (0.22, 0.20, 0.18, 1.0))
+    # A street tree between the windows' sightlines.
+    make_cyl("Street_Tree_Trunk", (-3.4, -2.2, 1.2), 0.12, 2.4, (0.30, 0.24, 0.18, 1.0), segments=8)
+    make_box("Street_Tree_Crown", (-3.4, -2.2, 3.2), (1.8, 1.6, 1.8), (0.16, 0.24, 0.15, 1.0))
+
+
 def main():
     clear_scene()
     build_shell()
@@ -268,6 +324,8 @@ def main():
     build_ceiling_infra()
     build_decor()
     build_detail_pass_2026_08()
+    build_use_states_2026_08()
+    build_beyond_glass_2026_08()
     out = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)),
         "../../../assets/3d/locales/chillwave_interior.glb"))
     print(f"\n[build_chillwave_interior] exporting to {out}")

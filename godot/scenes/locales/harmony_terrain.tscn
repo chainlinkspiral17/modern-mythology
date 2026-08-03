@@ -360,3 +360,33 @@ offset_top = 16.0
 offset_right = 940.0
 offset_bottom = 360.0
 script = ExtResource("14_dbgm")
+
+; ── HIGHWAY 9 vn_shot coverage (draft 3, 2026-08-03) ──
+; Five still setups for the action stage; VnDirector cuts the
+; SubViewport camera between them (metadata/fov per shot).
+; Framings derived from build coords — Deck-tune pending.
+
+; long lens down the vanishing point
+[node name="shot_establish_hwy_long" type="Marker3D" parent="." groups=["vn_shot"]]
+transform = Transform3D(1, 0, 0, 0, 0.99995, -0.01, 0, 0.01, 0.99995, -510, -0.2, -40)
+metadata/fov = 30.0
+
+; low wide from the E shoulder, scar ahead
+[node name="shot_wide_hwy_shoulder" type="Marker3D" parent="." groups=["vn_shot"]]
+transform = Transform3D(0.9998, 0, -0.019999, -0.0004, 0.9998, -0.019995, 0.019995, 0.019999, 0.9996, -498, -1, -185)
+metadata/fov = 68.0
+
+; overpass high angle looking S
+[node name="shot_high_hwy_overpass" type="Marker3D" parent="." groups=["vn_shot"]]
+transform = Transform3D(-1, 0, -0, -0, 0.996802, 0.079915, 0, 0.079915, -0.996802, -510, 5.1, -296)
+metadata/fov = 50.0
+
+; the deformed rail + debris fan
+[node name="shot_closeup_hwy_scar" type="Marker3D" parent="." groups=["vn_shot"]]
+transform = Transform3D(0.841901, 0, 0.539632, 0.032358, 0.998201, -0.050484, -0.538661, 0.059964, 0.840386, -502.5, -0.6, -206)
+metadata/fov = 55.0
+
+; the rest turnout + semi
+[node name="shot_wide_hwy_turnout" type="Marker3D" parent="." groups=["vn_shot"]]
+transform = Transform3D(0.783822, 0, -0.620986, -0.012419, 0.9998, -0.015675, 0.620862, 0.019999, 0.783665, -519, -0.5, 350)
+metadata/fov = 58.0

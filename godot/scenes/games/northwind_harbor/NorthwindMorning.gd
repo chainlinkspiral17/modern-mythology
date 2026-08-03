@@ -744,18 +744,34 @@ func _toggle_heard() -> void:
 		_heard_overlay.queue_free()
 		_heard_overlay = null
 		return
-	_heard_overlay = Panel.new()
-	_heard_overlay.set_anchors_and_offsets_preset(Control.PRESET_CENTER)
-	_heard_overlay.offset_left = -420
-	_heard_overlay.offset_right = 420
-	_heard_overlay.offset_top = -280
-	_heard_overlay.offset_bottom = 280
+	# Full-screen dim wrapper: ANY left/right click — on the page,
+	# on the dim, anywhere — closes the list (user 2026-08-03:
+	# "can't minimize heard"; the panel used to swallow clicks and
+	# the only way out was the same small button or a guessed key).
+	# Wheel clicks are excluded so scrolling still works.
+	var close_on_click := func(ev: InputEvent) -> void:
+		if ev is InputEventMouseButton and (ev as InputEventMouseButton).pressed \
+				and (ev as InputEventMouseButton).button_index in [MOUSE_BUTTON_LEFT, MOUSE_BUTTON_RIGHT]:
+			_toggle_heard()
+	_heard_overlay = ColorRect.new()
+	(_heard_overlay as ColorRect).color = Color(0.0, 0.0, 0.0, 0.45)
+	_heard_overlay.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
+	_heard_overlay.mouse_filter = Control.MOUSE_FILTER_STOP
+	_heard_overlay.gui_input.connect(close_on_click)
+	add_child(_heard_overlay)
+	var page := Panel.new()
+	page.set_anchors_and_offsets_preset(Control.PRESET_CENTER)
+	page.offset_left = -420
+	page.offset_right = 420
+	page.offset_top = -280
+	page.offset_bottom = 280
 	var sb := StyleBoxFlat.new()
 	sb.bg_color = Color(C_DARK.r, C_DARK.g, C_DARK.b, 0.96)
 	sb.border_color = C_FOG
 	sb.set_border_width_all(1)
-	_heard_overlay.add_theme_stylebox_override("panel", sb)
-	add_child(_heard_overlay)
+	page.add_theme_stylebox_override("panel", sb)
+	page.gui_input.connect(close_on_click)
+	_heard_overlay.add_child(page)
 
 	var scroll := ScrollContainer.new()
 	scroll.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
@@ -763,7 +779,8 @@ func _toggle_heard() -> void:
 	scroll.offset_right = -16
 	scroll.offset_top = 16
 	scroll.offset_bottom = -16
-	_heard_overlay.add_child(scroll)
+	scroll.gui_input.connect(close_on_click)
+	page.add_child(scroll)
 
 	var col := VBoxContainer.new()
 	col.size_flags_horizontal = Control.SIZE_EXPAND_FILL
@@ -771,7 +788,7 @@ func _toggle_heard() -> void:
 	scroll.add_child(col)
 
 	var hdr := Label.new()
-	hdr.text = "· HEARD · everything anyone said, you keep ·"
+	hdr.text = "· HEARD · everything anyone said, you keep ·   (press anywhere, or H, to close)"
 	hdr.add_theme_font_size_override("font_size", 14)
 	hdr.add_theme_color_override("font_color", C_LAMP)
 	col.add_child(hdr)
