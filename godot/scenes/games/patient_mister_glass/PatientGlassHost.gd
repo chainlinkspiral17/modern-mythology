@@ -28,7 +28,6 @@ const C_BROWN   := Color("6a4a30")
 const C_OCTOBER := Color("8a98a8")
 const C_RED     := Color("c8442c")
 const C_RED_TXT := Color("e06a50")   # type on C_DARK · 5.9:1 (audit)
-const C_RED_TXT := Color("e06a50")   # type on C_DARK · 5.9:1 (audit)
 const C_CREAM   := Color("d8ccb8")
 
 var _manifest: Dictionary = {}
