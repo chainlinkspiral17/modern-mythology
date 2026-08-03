@@ -331,6 +331,37 @@ Louisville's hurricane-deck proportions"). Don't guess at numbers.
 
 ## Recent lessons
 
+### 2026-08-03 · vols 5-7 hero-prop sweep · parallel agents, every locale failed
+
+- **The audit scales as a fan-out.** Four parallel read-only agents
+  each took 4-5 locales with the same brief: grep the volume dirs
+  for `3d:<preset>`, read every matching scene's FULL text, list
+  named physical props, read the build script, report ONLY what's
+  missing (with canon quote + suggested blender coords) plus
+  contradictions. All sixteen top-traffic locales failed — three
+  were the wrong ROOM entirely (Lena's "apartment" was a dorm cell,
+  Board Lords was a board-game store instead of Kai's skate shop,
+  vol7's Oregon road played over the Louisiana swamp set). Traffic
+  rank is the right priority order; the next tier gets the same
+  sweep.
+- **Recurring failure classes to check first on any locale:**
+  (1) office fluorescent tubes in homes/porches/cabins — the
+  generated-script boilerplate leaks `build_ceiling_infra()`
+  everywhere; the prose almost always names the real light (lamp,
+  under-cabinet, oil lamp, pull-chain bulb, ceiling fan).
+  (2) Round pedestal tables where the prose stages seating
+  positions ("Mike's chair on the short side near the window") —
+  a seating motif needs a RECTANGULAR table.
+  (3) Props floated outside the walls or buried in them — comment
+  says "room y 0..6.4" while ROOM_D=6.0; re-derive, don't trust.
+  (4) The named hero object simply absent (Speak & Spell, Morse
+  key, loose floorboard, clicking fan, communal table).
+- **Wire the orphan twin before patching the wrong one.** The Gas &
+  Go had a rich 21 KB build with NO tscn while its three scenes
+  played over the FM-3411 fueling station. Same lesson as
+  carnival_lot/parish_cemetery: check for unwired builds/tscn
+  before adding geometry to a mismatched set.
+
 ### 2026-08-03 · hero-prop pass · the prose is the set dressing spec
 
 - **Before calling a locale done, dump the FULL text of every scene
