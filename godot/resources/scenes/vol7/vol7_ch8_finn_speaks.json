@@ -25,7 +25,7 @@
    "t": "say",
    "char": "Kai",
    "expr": "neutral",
-   "text": "\"I'm not. The Roy thing this morning is going to take me a minute to come down from. I am still hot. I want you to know my saying this is not me being hot. This is me trying to be honest with you the way you are trying to be honest with us.\""
+   "text": "[panel:vol7_freq_log]\"I'm not. The Roy thing this morning is going to take me a minute to come down from. I am still hot. I want you to know my saying this is not me being hot. This is me trying to be honest with you the way you are trying to be honest with us.\""
   },
   {
    "t": "say",
@@ -41,7 +41,7 @@
   },
   {
    "t": "narrate",
-   "text": "Finn, who had been eating, set his spoon down."
+   "text": "[panel:off]Finn, who had been eating, set his spoon down."
   },
   {
    "t": "say",

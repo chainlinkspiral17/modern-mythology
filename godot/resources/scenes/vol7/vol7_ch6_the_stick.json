@@ -23,7 +23,7 @@
   },
   {
    "t": "narrate",
-   "text": "She turned. The wooden box held three sticks. The third was Estuary 7, Ines Rocha 2046 in his small careful hand on the white label. She put it in the inside pocket of her coat."
+   "text": "[panel:vol7_estuary7_label]She turned. The wooden box held three sticks. The third was Estuary 7, Ines Rocha 2046 in his small careful hand on the white label. She put it in the inside pocket of her coat."
   },
   {
    "t": "cg",
@@ -44,7 +44,7 @@
    "t": "say",
    "char": "Lena",
    "expr": "neutral",
-   "text": "\"Go ahead.\""
+   "text": "[panel:off]\"Go ahead.\""
   },
   {
    "t": "say",

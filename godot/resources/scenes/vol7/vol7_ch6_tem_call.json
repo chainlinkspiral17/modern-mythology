@@ -25,7 +25,7 @@
    "t": "say",
    "char": "Lena",
    "expr": "neutral",
-   "text": "\"Should I call Cale. He has a truck.\""
+   "text": "[panel:vol7_bus_schedule]\"Should I call Cale. He has a truck.\""
   },
   {
    "t": "say",
@@ -43,7 +43,7 @@
    "t": "say",
    "char": "Tem",
    "expr": "cold",
-   "text": "\"Roy Hummel came into Kai's shop this morning and asked Kai whether Finn has been in possession of materials belonging to the museum-town historical society.\""
+   "text": "[panel:off]\"Roy Hummel came into Kai's shop this morning and asked Kai whether Finn has been in possession of materials belonging to the museum-town historical society.\""
   },
   {
    "t": "narrate",
