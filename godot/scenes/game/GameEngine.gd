@@ -1182,10 +1182,14 @@ func _toggle_auto_mode() -> void:
 
 
 func _tick_reading_comfort(delta: float) -> void:
-	# the pointer fades out of a held frame
+	# the pointer fades out of a held frame — but NOT while a modal
+	# overlay (cabin TV / slowstock shelf / backlog) is open: those
+	# are pointer-driven surfaces, and hiding the cursor there reads
+	# as a bug, not reading comfort.
 	_cursor_idle_t += delta
 	if _cursor_idle_t > 3.5 and not _photo_on \
-			and Input.get_mouse_mode() == Input.MOUSE_MODE_VISIBLE:
+			and Input.get_mouse_mode() == Input.MOUSE_MODE_VISIBLE \
+			and get_tree().get_first_node_in_group("vn_input_blocker") == null:
 		Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
 	# hands-free page turn: a beat after the typewriter rests,
 	# scaled to how much was just read
@@ -1272,8 +1276,11 @@ func _input(event: InputEvent) -> void:
 	if _paused:
 		return
 	# Cursor wake is not VN chrome — it stays above the modal fence
-	# so the pointer still un-hides while a slowstick is open.
-	if event is InputEventMouseMotion and not _photo_on:
+	# so the pointer still un-hides while a slowstick is open. Wakes
+	# on BUTTONS too: clicking without moving (or Deck touchscreen
+	# taps, which emit no motion events) must also bring it back.
+	if (event is InputEventMouseMotion or event is InputEventMouseButton) \
+			and not _photo_on:
 		_cursor_idle_t = 0.0
 		if Input.get_mouse_mode() == Input.MOUSE_MODE_HIDDEN:
 			Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)

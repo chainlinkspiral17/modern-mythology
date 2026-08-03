@@ -102,6 +102,13 @@ var _hovered_id: String = ""
 #   click it again / BOOT  → launch
 # Hover still previews, but ONLY while nothing is selected.
 var _selected_id: String = ""
+# When the selection landed (msec). A mouse click on a focusable
+# panel grants focus BEFORE gui_input sees the press, so
+# focus_entered -> _select_cart runs and the SAME click then reads
+# as "second click on the selected cart" and boots — MANUAL /
+# SCRAPBOOK become unreachable. gui_input only boots when the
+# selection is older than this same-click window.
+var _selected_at_ms: int = 0
 var _slot_panels: Dictionary = {}     # stick_id -> Panel (for the ring)
 var _manager_mode_on: bool = false
 # Double-fire guard: once picked has been emitted this shelf stays
@@ -607,9 +614,13 @@ func _make_cartridge_slot(entry: Dictionary) -> Control:
 	panel.gui_input.connect(func(ev: InputEvent) -> void:
 		if ev is InputEventMouseButton and (ev as InputEventMouseButton).pressed \
 				and (ev as InputEventMouseButton).button_index == MOUSE_BUTTON_LEFT:
-			if _selected_id == sid:
+			if _selected_id == sid \
+					and Time.get_ticks_msec() - _selected_at_ms > 300:
 				_on_boot_pressed()          # second click on the same cart = boot
 			else:
+				# Either a fresh selection, or the click that GRANTED
+				# focus (which already selected via focus_entered) —
+				# never boot off that same press.
 				_select_cart(sid))
 
 	return panel
@@ -621,6 +632,7 @@ func _select_cart(stick_id: String) -> void:
 	if _selected_id == stick_id:
 		return
 	_selected_id = stick_id
+	_selected_at_ms = Time.get_ticks_msec()
 	var b := get_node_or_null("/root/SFXBank")
 	if b: b.play("cartridge_click", 0.8)
 	_on_cart_hover(stick_id)

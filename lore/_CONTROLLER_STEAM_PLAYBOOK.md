@@ -166,6 +166,35 @@ that nobody needs it.
 
 ## Recent lessons
 
+### 2026-08-03 · shelf click-to-boot regression · focus fires before gui_input
+
+**User report:** "can't click on manual — it only clicks once and
+plays," plus the mouse cursor disappearing.
+
+**Root cause 1 (the click):** the W2 pad-nav wiring gave shelf
+cartridge panels `focus_mode = FOCUS_ALL` with
+`focus_entered -> _select_cart` ("pad focus selects, exactly like a
+click"). But in Godot 4 a MOUSE click on a focusable Control grants
+focus BEFORE the press reaches `gui_input` — so the same click ran
+_select_cart via focus_entered, then gui_input saw
+`_selected_id == sid` and took the "second click on the same cart =
+boot" branch. One click booted the stick; MANUAL / SCRAPBOOK were
+unreachable. This is the one-path-per-input rule failing in a new
+shape: the two paths were different SIGNALS of the same event, not
+two devices. Fix: `_select_cart` stamps `_selected_at_ms`; the
+gui_input boot branch requires the selection to be >300ms old.
+**Rule: any "second activation = confirm" surface with pad focus
+must debounce against the focus-grant of the first activation.**
+
+**Root cause 2 (the cursor):** GameEngine's reading-comfort
+idle-hide (3.5s) kept running while the shelf overlay was open, and
+the wake handler only listened for `InputEventMouseMotion` —
+clicking without moving, and Deck touchscreen taps (which emit no
+motion events), never brought the pointer back. Fix: no idle-hide
+while a `vn_input_blocker` overlay is open (pointer-driven surface,
+hiding reads as a bug), and wake on `InputEventMouseButton` too.
+
+
 ### 2026-07-19 · the translation-layer decision
 
 - **Translate at the edge, don't rewrite the middle.** Sixty
