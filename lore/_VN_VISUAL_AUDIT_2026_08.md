@@ -116,6 +116,29 @@ trailer, the four vol *_end codas, vol3 choice, vol4 standoff).
 Vols 1-2 are now 100% 3D-locale backgrounds: 12 new builds, 24 new
 presets, 0 flat images.
 
+HERO-PROP PASS (2026-08-03, third wave): every scene's full prose
+was dumped and cross-checked against its set's geometry; the named
+props are now built. Missing Link ext: two gas pumps (one retired),
+wet asphalt apron + puddles, depot awning + schedule behind cracked
+plexiglass, door bell. Briar Falls: brown-brick building w/ two
+marked doors + vending machine + dangling pay phone + brochure
+alcove + mother's bench, trailhead sign-in box (pencil on string),
+post-and-beam picnic shelter (third table off-square, paperback +
+snapped sunglasses), falls in two stages below the rail + ribbon +
+707 key + feather, blue faux-wood minivan, lot moss. Faust: mirror
+cabinet + vitamins, alarm clock, water glass, the three-elementals
+canvas (water/air/fire), bicycle. Pharmacy office: computer +
+coffee + pill bottle. Skatepark: THE POOL. Wagner home: record
+player + records + skateboard + metal poster. Sapo Falls re-skinned
+to Canaima (tepui skyline, dense dark green). School newspaper:
+Katrina's camera + Jay Rose's DriftWood strip on the pinboard.
+Bespoke upgrades: build_cliffside_circus.py (bordello front on the
+cliff, Delores's pool + island + rail, jagged rocks + surf) replaces
+the carnival_lot reuse for cliffside/seagash/interlude-one + the
+ice-storm ref; crumpled_barn_int (new vantage) frames Jiggles the
+Juggler's cabinet + the carved mermaid sign, replacing the
+equipment_shed reuse. Presets now 26 new across 13 builds.
+
 ### 1.7 · Dead wiring (harmless today, misleading forever)
 - 22 of 38 `PORTRAIT_3D_KEY_TO_GLB` entries point at GLBs that don't
   exist (kai, finn, tem, lena, wren, petra…). The demon's GLB dir

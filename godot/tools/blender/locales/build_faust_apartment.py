@@ -102,8 +102,12 @@ def build_bed():
     make_cyl("NLamp_Post", (-0.85, 4.65, 0.78), 0.02, 0.32, COL_STEEL, segments=6)
     make_cyl("NLamp_Shade", (-0.85, 4.65, 0.98), 0.13, 0.16, COL_SHADE, segments=10)
     make_cyl("NLamp_Bulb", (-0.85, 4.65, 0.90), 0.05, 0.06, COL_LAMP, segments=8)
-    # A dream journal and pen on the stand
+    # A dream journal, the alarm clock ("wakes at four a.m. with the
+    # sound of an alarm"), and the glass of water ("a tug of water")
     make_box("Journal", (-0.72, 4.52, 0.63), (0.20, 0.15, 0.035), (0.24, 0.22, 0.34, 1.0))
+    make_box("Alarm_Clock", (-0.98, 4.74, 0.68), (0.16, 0.10, 0.14), (0.20, 0.18, 0.16, 1.0))
+    make_box("Alarm_Face", (-0.98, 4.68, 0.68), (0.12, 0.02, 0.09), (0.72, 0.24, 0.20, 1.0))
+    make_cyl("Water_Glass", (-0.70, 4.74, 0.66), 0.035, 0.11, COL_GLASS, segments=8)
 
 
 def build_window():
@@ -131,10 +135,11 @@ def build_easel():
         make_cyl(f"Easel_Leg_{i}", (lx, ly, 0.78), 0.025, 1.56, COL_WOOD_LT, segments=6)
     make_box("Easel_Ledge", (ex, ey - 0.10, 0.78), (0.72, 0.09, 0.06), COL_WOOD_LT)
     make_box("Easel_Canvas", (ex, ey - 0.06, 1.32), (0.66, 0.03, 0.92), COL_CANVAS)
-    # The painting in progress — three broad passes
-    make_box("Canvas_Pass_Sky", (ex, ey - 0.075, 1.56), (0.56, 0.012, 0.34), (0.36, 0.42, 0.55, 1.0))
-    make_box("Canvas_Pass_Ground", (ex, ey - 0.075, 1.16), (0.56, 0.012, 0.30), (0.40, 0.30, 0.20, 1.0))
-    make_box("Canvas_Pass_Figure", (ex - 0.08, ey - 0.08, 1.34), (0.14, 0.012, 0.42), (0.62, 0.20, 0.16, 1.0))
+    # The painting in progress — canon: "three elementals — water on
+    # the left, fire on the right, air in the middle"
+    make_box("Canvas_Water", (ex - 0.20, ey - 0.075, 1.32), (0.15, 0.012, 0.60), (0.28, 0.40, 0.56, 1.0))
+    make_box("Canvas_Air", (ex, ey - 0.075, 1.38), (0.14, 0.012, 0.66), (0.80, 0.80, 0.74, 1.0))
+    make_box("Canvas_Fire", (ex + 0.20, ey - 0.075, 1.30), (0.15, 0.012, 0.58), (0.72, 0.30, 0.16, 1.0))
     # Paint table
     tx, ty = 2.3, 1.4
     make_box("PaintTable_Top", (tx, ty, 0.66), (0.7, 0.5, 0.05), COL_WOOD)
@@ -180,13 +185,36 @@ def build_bookcase_desk():
 
 
 def build_kitchenette():
-    """SW corner: short counter run, sink, cupboard, kettle."""
+    """SW corner: short counter run, sink, cupboard, kettle — and
+    the MIRROR CABINET above the sink (canon: "Faust looks in the
+    mirror… He OPENS the mirror to get his vitamins")."""
     make_box("Kit_Counter", (-2.55, 0.75, 0.45), (0.85, 1.3, 0.90), COL_COUNTER)
     make_box("Kit_Top", (-2.55, 0.75, 0.92), (0.90, 1.35, 0.05), COL_STEEL)
     make_box("Kit_Sink", (-2.55, 1.05, 0.93), (0.45, 0.40, 0.06), (0.40, 0.42, 0.44, 1.0))
     make_cyl("Kit_Faucet", (-2.78, 1.05, 1.05), 0.02, 0.22, COL_STEEL, segments=6)
     make_box("Kit_Cupboard", (-2.72, 0.55, 1.85), (0.5, 0.9, 0.6), COL_WOOD)
     make_cyl("Kettle", (-2.45, 0.35, 1.02), 0.10, 0.18, COL_STEEL, segments=10)
+    # The mirror cabinet over the sink, W wall — door hinged, ajar
+    make_box("Mirror_Cabinet", (-2.90, 1.05, 1.62), (0.10, 0.50, 0.65), COL_WOOD)
+    make_box("Mirror_Door", (-2.83, 0.94, 1.62), (0.03, 0.42, 0.58), (0.68, 0.74, 0.78, 1.0))
+    make_box("Vitamin_Bottle", (-2.86, 1.18, 1.38), (0.05, 0.05, 0.10), (0.66, 0.52, 0.24, 1.0))
+
+
+def build_bicycle():
+    """Faust bicycles to work — his bike leans on the S wall by the
+    door: two wheels, frame bars, seat, handlebars."""
+    bx, by = 1.2, 0.28
+    for wx in (bx - 0.52, bx + 0.52):
+        make_cyl(f"Bike_Wheel_{wx:.2f}", (wx, by, 0.34), 0.33, 0.04, COL_FRAME,
+                 segments=14, axis='Y')
+        make_cyl(f"Bike_Hub_{wx:.2f}", (wx, by, 0.34), 0.05, 0.06, COL_STEEL,
+                 segments=8, axis='Y')
+    make_box("Bike_Bar_Top", (bx, by, 0.62), (0.72, 0.03, 0.04), (0.46, 0.20, 0.16, 1.0))
+    make_box("Bike_Bar_Down", (bx - 0.12, by, 0.48), (0.55, 0.03, 0.04), (0.46, 0.20, 0.16, 1.0))
+    make_box("Bike_Seat", (bx - 0.30, by, 0.78), (0.16, 0.06, 0.05), COL_FRAME)
+    make_box("Bike_Post", (0.90, by, 0.70), (0.03, 0.03, 0.14), COL_STEEL)
+    make_box("Bike_Handlebar", (bx + 0.42, by, 0.82), (0.05, 0.30, 0.04), COL_STEEL)
+    make_box("Bike_Stem", (bx + 0.44, by, 0.72), (0.03, 0.03, 0.18), COL_STEEL)
 
 
 def build_fixtures():
@@ -211,6 +239,7 @@ def main():
     build_easel()
     build_bookcase_desk()
     build_kitchenette()
+    build_bicycle()
     build_fixtures()
     out = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)),
         "../../../assets/3d/locales/faust_apartment.glb"))

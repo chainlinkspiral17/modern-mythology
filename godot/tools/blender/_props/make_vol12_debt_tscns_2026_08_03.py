@@ -225,8 +225,38 @@ CONFIGS = [
             ("Overcast_Key", "DirectionalLight3D", B_KEY.format(0, 8, 0), c(0.85, 0.86, 0.86), 0.9),
             ("Fill", "DirectionalLight3D", B_FILL.format(-3, 5, 0), c(0.70, 0.70, 0.72), 0.4),
             ("Back", "DirectionalLight3D", B_BACK.format(0, 5, 5), c(0.62, 0.64, 0.68), 0.25),
+            # Daylight shaft through the broken roof onto the
+            # marionette cabinet + carved sign (interior vantage)
+            ("Interior_Shaft", "OmniLight3D", I.format(-0.6, 2.4, -9.8), c(0.88, 0.87, 0.80), 1.1, {"omni_range": 4.0}),
         ],
         "mood_strata": ["raw", "noir", "linework", "lithograph",
+                        "silent_film_18", "memory_warm"],
+    },
+    {
+        # 1902 coastal sideshow: cold overcast key, warm bordello
+        # windows + porch as practicals, surf rim from the sea.
+        "out_path": os.path.join(ROOT, "cliffside_circus.tscn"),
+        "uid": "uid://cliffside_circus",
+        "root_node": "CliffsideCircus",
+        "glb": "res://assets/3d/locales/cliffside_circus.glb",
+        "env": {"bg": (0.62, 0.66, 0.68, 1), "amb": (0.52, 0.55, 0.56, 1),
+                "amb_e": 0.7, "fog": (0.55, 0.58, 0.60, 1), "fog_e": 0.5,
+                "fog_d": 0.008, "sat": 0.88, "glow_i": 0.7, "glow_b": 0.12},
+        "shader": {"warm": (0.88, 0.80, 0.64, 1), "bg": (0.24, 0.26, 0.27, 1),
+                   "neon_edge": (0.72, 0.62, 0.55, 1), "neon_lo": (0.30, 0.24, 0.24, 1),
+                   "neon_hi": (0.14, 0.16, 0.17, 1), "lim_tint": (0.66, 0.58, 0.48, 1)},
+        "lights": [
+            ("Overcast_Key", "DirectionalLight3D", B_KEY.format(0, 9, 0), c(0.80, 0.83, 0.85), 0.85),
+            ("Fill", "DirectionalLight3D", B_FILL.format(-3, 5, 0), c(0.72, 0.70, 0.68), 0.35),
+            ("Back_Sea", "DirectionalLight3D", B_BACK.format(0, 5, 6), c(0.60, 0.68, 0.74), 0.35),
+            # Bordello front: door + the two warm ground windows
+            ("Porch_Warm", "OmniLight3D", I.format(-4.0, 1.8, -8.1), c(0.95, 0.72, 0.42), 1.4, {"omni_range": 4.5}),
+            ("GWin_W", "OmniLight3D", I.format(-6.2, 1.65, -8.2), c(0.95, 0.72, 0.42), 1.0, {"omni_range": 3.0}),
+            ("GWin_E", "OmniLight3D", I.format(-1.8, 1.65, -8.2), c(0.95, 0.72, 0.42), 1.0, {"omni_range": 3.0}),
+            # Lantern by the mermaid rail (David's watch post)
+            ("Rail_Lantern", "OmniLight3D", I.format(6.1, 1.4, -5.6), c(0.98, 0.80, 0.48), 0.8, {"omni_range": 3.0}),
+        ],
+        "mood_strata": ["raw", "noir", "ink_blue", "lithograph",
                         "silent_film_18", "memory_warm"],
     },
 ]

@@ -7,7 +7,7 @@
   "nodes": [
     {
       "t": "bg",
-      "src": "3d:carnival_lot"
+      "src": "3d:cliffside_circus"
     },
     {
       "t": "interlude",
@@ -53,7 +53,7 @@
     },
     {
       "t": "bg",
-      "src": "3d:louisiana_road"
+      "src": "3d:cliffside_circus"
     },
     {
       "t": "interlude",

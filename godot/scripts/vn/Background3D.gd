@@ -1177,12 +1177,14 @@ const CAMERA_PRESETS := {
 		"requires_glb": "res://assets/3d/locales/missing_link_exterior.glb",
 		# OUTDOOR dusk roadside. Build coords: road E-W at y∈[0,3.4],
 		# gravel lot behind it, diner front face y=8 (godot z=-8),
-		# x∈[-4.5,3.5]; MISSING LINK pole sign at (-6.5, z=-6.5); bus
-		# shelter east at (6.5, z=-4.9). Camera in the lot at the road
-		# edge looking NNE at the lit window band + door; sign frame
-		# left, shelter far right.
-		"camera_origin": Vector3(-2.6, 1.70, -3.2),
-		"camera_rotation": Vector3(-0.02, deg_to_rad(-23.0), 0.0),
+		# x∈[-4.5,3.5]; MISSING LINK pole sign at (-6.5, z=-6.5); gas
+		# pump island mid-apron (-3.2, z=-5.4); depot awning against
+		# the diner's east end (5.6, z=-6.6). Camera across the road
+		# on the far shoulder — the full wide: road + puddles
+		# foreground, pumps, diner window band, sign frame-left,
+		# awning frame-right.
+		"camera_origin": Vector3(-3.0, 1.75, 0.5),
+		"camera_rotation": Vector3(-0.02, deg_to_rad(-8.0), 0.0),
 		"fov": 62.0,
 		"suppress_input": true,
 	},
@@ -1191,11 +1193,11 @@ const CAMERA_PRESETS := {
 		"requires_glb": "res://assets/3d/locales/missing_link_exterior.glb",
 		# Same set, second vantage — vol1's highest-traffic bg (the
 		# whole link_* chain plays sitting at the stop). Seated height
-		# at the shelter (godot 6.5, z=-4.9) looking W down the
-		# shoulder: road frame-left, diner + pole sign center-right,
-		# shelter roof edge kissing frame right.
-		"camera_origin": Vector3(6.3, 1.35, -4.9),
-		"camera_rotation": Vector3(-0.02, deg_to_rad(78.0), 0.0),
+		# under the depot awning (godot 5.6, z=-6.6) looking W past
+		# the diner front: window band right, pumps + pole sign
+		# center, wet road left, awning post kissing frame right.
+		"camera_origin": Vector3(5.5, 1.35, -6.3),
+		"camera_rotation": Vector3(-0.02, deg_to_rad(72.0), 0.0),
 		"fov": 58.0,
 		"suppress_input": true,
 	},
@@ -1207,11 +1209,12 @@ const CAMERA_PRESETS := {
 		# x∈[-5,-0.5]; trailhead posts (6.5, z=-8.6); overlook deck
 		# NE (9.25, z=-14.5); picnic tables west grass; pines all
 		# round; valley ridges + falls thread far north. Camera
-		# mid-lot looking N: building center, info board, trailhead
-		# frame right, pines framing.
-		"camera_origin": Vector3(-3.5, 1.70, -2.0),
-		"camera_rotation": Vector3(-0.02, deg_to_rad(-6.0), 0.0),
-		"fov": 64.0,
+		# east of the minivan (parked at godot -3.2, z=-3.6) looking
+		# NW: van faux-wood flank frame-left, brown-brick building +
+		# vending machine center, trailhead box right.
+		"camera_origin": Vector3(0.5, 1.70, -1.2),
+		"camera_rotation": Vector3(-0.02, deg_to_rad(22.0), 0.0),
+		"fov": 66.0,
 		"suppress_input": true,
 	},
 	"briar_falls_building": {
@@ -1239,22 +1242,23 @@ const CAMERA_PRESETS := {
 	"briar_falls_overlook": {
 		"scene": "res://scenes/locales/briar_falls.tscn",
 		"requires_glb": "res://assets/3d/locales/briar_falls.glb",
-		# On the deck at the rail looking N over the valley: mid
-		# ridge, far ridge, the falls as a white thread frame right,
-		# rail posts in the foreground.
+		# On the basalt slab at the rail: the first-stage shelf and
+		# the column dropping out of sight below, mist rising, the
+		# ribbon + 707 key on the top rail frame-right, ridges beyond.
 		"camera_origin": Vector3(9.2, 1.75, -13.8),
-		"camera_rotation": Vector3(-0.04, deg_to_rad(0.0), 0.0),
+		"camera_rotation": Vector3(-0.08, deg_to_rad(0.0), 0.0),
 		"fov": 66.0,
 		"suppress_input": true,
 	},
 	"briar_falls_picnic": {
 		"scene": "res://scenes/locales/briar_falls.tscn",
 		"requires_glb": "res://assets/3d/locales/briar_falls.glb",
-		# Among the tables on the west grass looking WNW: both
-		# timber tables, pines behind, building edge frame right.
-		"camera_origin": Vector3(-4.2, 1.60, -8.4),
-		"camera_rotation": Vector3(-0.03, deg_to_rad(64.0), 0.0),
-		"fov": 58.0,
+		# At the shelter's SE corner looking NW under the corrugated
+		# roof: all three tables (the loose third shoved off-square),
+		# the carved-initials tabletop nearest, pines beyond.
+		"camera_origin": Vector3(-3.6, 1.60, -8.6),
+		"camera_rotation": Vector3(-0.03, deg_to_rad(42.0), 0.0),
+		"fov": 60.0,
 		"suppress_input": true,
 	},
 	"faust_apartment_day": {
@@ -1361,12 +1365,12 @@ const CAMERA_PRESETS := {
 	"skatepark_day": {
 		"scene": "res://scenes/locales/skatepark.tscn",
 		"requires_glb": "res://assets/3d/locales/skatepark.glb",
-		# OUTDOOR municipal concrete, day. Slab z∈[0,-12]: pipe humps
-		# (x=-4.5 z=-5 · x=3 z=-8), ledge pair, flat rail (-2,-3.5),
-		# stair set W, chain-link at back, trees beyond. Camera at
-		# the slab's S edge looking N across the features.
+		# OUTDOOR municipal concrete, day. Slab z∈[0,-12]: THE POOL
+		# (coping ring at 0.5, z=-7.2), one pipe hump W, ledge pair,
+		# flat rail (-2,-3.5), stair set, chain-link at back, trees
+		# beyond. Camera at the slab's S edge looking N at the pool.
 		"camera_origin": Vector3(-2.0, 1.70, -0.8),
-		"camera_rotation": Vector3(-0.03, deg_to_rad(-18.0), 0.0),
+		"camera_rotation": Vector3(-0.03, deg_to_rad(-21.0), 0.0),
 		"fov": 64.0,
 		"suppress_input": true,
 	},
@@ -1446,6 +1450,35 @@ const CAMERA_PRESETS := {
 		"camera_origin": Vector3(-2.2, 1.70, -2.5),
 		"camera_rotation": Vector3(-0.02, deg_to_rad(-16.0), 0.0),
 		"fov": 62.0,
+		"suppress_input": true,
+	},
+	"crumpled_barn_int": {
+		"scene": "res://scenes/locales/crumpled_barn.tscn",
+		"requires_glb": "res://assets/3d/locales/crumpled_barn.glb",
+		# Same set, INSIDE the surviving bay behind the gable: the
+		# marionette cabinet (Jiggles the Juggler, name in red paint,
+		# broken glass fourth wall) and the carved mermaid sign side
+		# by side on the gable's inner face; the fallen roof plane
+		# fills the low foreground; a daylight shaft falls across
+		# them. Camera atop the collapse looking S at the pair.
+		"camera_origin": Vector3(-0.4, 1.35, -11.4),
+		"camera_rotation": Vector3(-0.06, deg_to_rad(180.0), 0.0),
+		"fov": 62.0,
+		"suppress_input": true,
+	},
+	"cliffside_circus": {
+		"scene": "res://scenes/locales/cliffside_circus.tscn",
+		"requires_glb": "res://assets/3d/locales/cliffside_circus.glb",
+		# The 1902 sideshow on the headland: "more like a bordello or
+		# gaming parlor than an actual circus," built at the cliff's
+		# edge over jagged black outcroppings and surf. Camera inside
+		# the gate looking N: maroon main building + porch frame-left
+		# (z=-8.5), Delores's pool + rail + island center-right
+		# (3, z=-5.6), satellite shacks, bunting, the cold sea beyond
+		# the edge.
+		"camera_origin": Vector3(2.0, 1.70, -1.6),
+		"camera_rotation": Vector3(-0.02, deg_to_rad(18.0), 0.0),
+		"fov": 68.0,
 		"suppress_input": true,
 	},
 }

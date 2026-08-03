@@ -83,6 +83,11 @@ def build_layout_island():
     for i, (px, py, dz) in enumerate(pages):
         col = COL_PAPER if i % 3 else COL_PAPER_DK
         make_box(f"Page_{i}", (px, py, 0.75 + dz), (0.34, 0.44, 0.008), col)
+    # Katrina's camera, strap pooled beside it on the island
+    make_box("Camera_Body", (-1.05, 3.45, 0.80), (0.22, 0.14, 0.13), COL_TYPE)
+    make_cyl("Camera_Lens", (-1.05, 3.36, 0.80), 0.05, 0.06, COL_DESK_LEG,
+             segments=10, axis='Y')
+    make_box("Camera_Strap", (-0.80, 3.50, 0.755), (0.30, 0.20, 0.015), (0.30, 0.22, 0.16, 1.0))
     # The typewriter, corner of the island
     make_box("Type_Body", (1.0, 3.55, 0.83), (0.44, 0.36, 0.16), COL_TYPE)
     make_box("Type_Keys", (1.0, 3.42, 0.78), (0.36, 0.14, 0.05), COL_DESK_LEG)
@@ -107,6 +112,12 @@ def build_pinboard():
     for i, (py, pz) in enumerate(pins):
         col = COL_PAPER if i % 2 else COL_PAPER_DK
         make_box(f"Pinned_{i}", (-3.88, py, pz), (0.02, 0.30, 0.40), col)
+    # Jay Rose's comic strip — DRIFTWOOD — a horizontal four-panel
+    # strip pinned along the board's top edge
+    make_box("DriftWood_Strip", (-3.87, 2.9, 2.10), (0.02, 1.30, 0.28), COL_PAPER)
+    for p in range(4):
+        make_box(f"DriftWood_Panel_{p}", (-3.86, 2.42 + p * 0.32, 2.10),
+                 (0.015, 0.26, 0.22), COL_PAPER_DK)
 
 
 def build_chalkboard():

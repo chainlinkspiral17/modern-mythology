@@ -331,6 +331,45 @@ Louisville's hurricane-deck proportions"). Don't guess at numbers.
 
 ## Recent lessons
 
+### 2026-08-03 · hero-prop pass · the prose is the set dressing spec
+
+- **Before calling a locale done, dump the FULL text of every scene
+  that plays over it and list the named props.** The user's "polish:
+  make sure hero props and scene details are in the scenes" pass
+  found the prose specifies sets to a degree the build headers
+  guessed at: the Missing Link canon names "two gas pumps, one of
+  them retired in place," a WET ASPHALT apron, and the bench "under
+  a metal awning" attached to the diner (I'd built a freestanding
+  municipal shelter on gravel). Briar Falls names the brown-brick
+  building, the vending machine, the dangling pay-phone receiver,
+  the trailhead sign-in box THE DOG IS STARING AT, the three-table
+  shelter with one table off-square, the falls "in two stages" right
+  below the rail with a red ribbon + 707 key tied to it, and the
+  blue minivan with faux wood trim. None of that is optional — the
+  camera line and the prose line land in the same frame.
+- **Set-reuse has a canon ceiling.** carnival_lot (sun-bleached
+  midwest lot) served the Cliffside Circus refs structurally but the
+  prose says "more like a bordello or gaming parlor… built up along
+  the edge of a cliff" with the mermaid pool + rail — a bespoke
+  build_cliffside_circus.py replaced the reuse. Same with Sapo
+  Falls: the dream is CANAIMA (tepuis, dense dark green), not a
+  temperate gorge — the backdrop is now a flat-topped tepui. Reuse
+  by room type is the right first pass; upgrade to bespoke when the
+  prose names features the borrowed set contradicts.
+- **Interior hero props deserve their own vantage.** The crumpled
+  barn's marionette cabinet (Jiggles the Juggler) + carved mermaid
+  sign are the origin of vol2's whole Delores thread and were
+  invisible in the exterior shot — crumpled_barn_int now frames them
+  against the gable's inner face, and the interior ref dropped its
+  equipment_shed reuse. When one location carries both an establish
+  and a relic, that's two presets, not one.
+- **Moving a hero prop moves the camera.** Every relocation above
+  came with its preset re-derived in the same commit (bench →
+  shuttle_bench origin/yaw; minivan parked on the old rest_stop
+  camera spot → camera moved east; falls under the rail → pitch
+  down). Geometry edits and CAMERA_PRESETS edits are one atomic
+  change.
+
 ### 2026-08-03 · vols 1-2 3D migration · "VN backgrounds are 3d scenes"
 
 - **The 2D-plate direction was rejected by the user** ("visual novel

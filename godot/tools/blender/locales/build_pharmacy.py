@@ -139,8 +139,15 @@ def build_office():
     make_box("Office_Desk", (3.2, 5.60, 0.72), (1.3, 0.65, 0.06), COL_DESK)
     for lx in (2.65, 3.75):
         make_box(f"Office_DeskLeg_{lx:.2f}", (lx, 5.60, 0.36), (0.06, 0.6, 0.72), COL_DESK)
-    make_box("Office_Papers", (3.0, 5.55, 0.78), (0.4, 0.3, 0.08), COL_PAPER)
-    make_box("Office_Ledger", (3.5, 5.62, 0.77), (0.30, 0.22, 0.04), (0.30, 0.24, 0.20, 1.0))
+    # The computer (canon: "sits down at the computer") — beige CRT
+    # + keyboard — plus his coffee and the pill bottle
+    make_box("Office_CRT", (3.35, 5.68, 0.95), (0.42, 0.40, 0.38), (0.74, 0.70, 0.60, 1.0))
+    make_box("Office_Screen", (3.35, 5.47, 0.96), (0.30, 0.02, 0.24), (0.30, 0.42, 0.38, 1.0))
+    make_box("Office_Keyboard", (3.35, 5.38, 0.77), (0.36, 0.14, 0.03), (0.66, 0.62, 0.54, 1.0))
+    make_cyl("Office_Coffee", (2.95, 5.42, 0.80), 0.045, 0.10, (0.50, 0.28, 0.22, 1.0), segments=8)
+    make_cyl("Pill_Bottle", (3.68, 5.44, 0.79), 0.035, 0.09, (0.78, 0.56, 0.28, 1.0), segments=8)
+    make_box("Office_Papers", (2.75, 5.68, 0.78), (0.4, 0.3, 0.08), COL_PAPER)
+    make_box("Office_Ledger", (3.75, 5.66, 0.77), (0.28, 0.20, 0.04), (0.30, 0.24, 0.20, 1.0))
     make_cyl("Office_Lamp_Post", (3.75, 5.75, 0.92), 0.018, 0.34, COL_MIRROR_FR, segments=6)
     make_box("Office_Lamp_Shade", (3.70, 5.72, 1.10), (0.22, 0.14, 0.08), (0.30, 0.34, 0.28, 1.0))
     # File cabinet + chair

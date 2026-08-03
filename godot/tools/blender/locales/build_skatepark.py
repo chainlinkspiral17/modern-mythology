@@ -46,9 +46,22 @@ def build_ground():
 
 
 def build_features():
-    # Two half-buried pipe humps (cylinders lying along X, sunk)
+    # THE POOL (canon: "waiting to push off into the pool") — an
+    # in-ground bowl suggested without booleans: darker basin patch,
+    # steel coping ring, a visible far inner wall band, deck lip.
+    px, py = 0.5, 7.2
+    make_box("Pool_Basin", (px, py, 0.028), (5.6, 4.0, 0.02), (0.40, 0.41, 0.41, 1.0))
+    make_box("Pool_Deep", (px + 0.6, py + 0.4, 0.034), (3.0, 2.2, 0.015), (0.34, 0.35, 0.36, 1.0))
+    # Coping ring: short segments tracing the rounded-rect rim
+    rim = [(-2.8, 0.0, 0.14, 3.6), (2.8, 0.0, 0.14, 3.6), (0.0, -2.0, 5.2, 0.14),
+           (0.0, 2.0, 5.2, 0.14), (-2.55, -1.75, 0.6, 0.6), (2.55, -1.75, 0.6, 0.6),
+           (-2.55, 1.75, 0.6, 0.6), (2.55, 1.75, 0.6, 0.6)]
+    for i, (dx, dy, w, d) in enumerate(rim):
+        make_box(f"Pool_Coping_{i}", (px + dx, py + dy, 0.065), (w, d, 0.05), COL_COPING)
+    # Far inner wall band (visible over the rim from the S camera)
+    make_box("Pool_Wall_N", (px, py + 1.85, 0.0), (5.2, 0.10, 0.10), COL_SLAB_DK)
+    # One half-buried pipe hump keeps the flow line west
     make_cyl("Hump_W", (-4.5, 5.0, -0.25), 1.15, 5.0, COL_SLAB_DK, segments=18, axis='X')
-    make_cyl("Hump_E", (3.0, 8.0, -0.35), 1.35, 6.0, COL_SLAB_DK, segments=18, axis='X')
     # Grind ledge pair
     make_box("Ledge_Lo", (1.5, 4.0, 0.20), (2.6, 0.65, 0.40), COL_LEDGE)
     make_box("Ledge_Lo_Coping", (1.5, 4.0, 0.415), (2.6, 0.65, 0.035), COL_COPING)

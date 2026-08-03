@@ -147,6 +147,29 @@ def build_details():
         make_box(f"Pic_{i}", (-2.91, py, 1.75), (0.03, pw - 0.08, 0.34), COL_PIC)
     # Ceiling fixture
     make_cyl("Ceiling_Dome", (0.0, 2.5, CEIL - 0.10), 0.16, 0.16, COL_LAMP, segments=10)
+    # The record player (canon: "goes to the record player, starts
+    # some metal") — console table + turntable + spinning disc +
+    # record crate below, E wall south of the TV
+    make_box("Record_Console", (2.5, 1.55, 0.32), (0.7, 0.85, 0.62), COL_WOOD)
+    make_box("Turntable_Deck", (2.5, 1.55, 0.68), (0.6, 0.7, 0.08), COL_FRAME)
+    make_cyl("Turntable_Disc", (2.48, 1.52, 0.735), 0.26, 0.015, (0.10, 0.10, 0.11, 1.0),
+             segments=16)
+    make_cyl("Turntable_Label", (2.48, 1.52, 0.745), 0.06, 0.012, (0.62, 0.28, 0.24, 1.0),
+             segments=10)
+    make_box("Turntable_Arm", (2.72, 1.72, 0.75), (0.20, 0.03, 0.02), COL_FRAME)
+    make_box("Record_Crate", (2.55, 0.95, 0.20), (0.45, 0.35, 0.38), COL_WOOD)
+    for i in range(5):
+        make_box(f"Record_{i}", (2.44 + i * 0.055, 0.95, 0.42), (0.012, 0.30, 0.30),
+                 (0.14 + 0.04 * (i % 3), 0.13, 0.14, 1.0))
+    # Wagner's skateboard, put up against the wall by the door
+    make_box("Skateboard_Deck", (1.05, 0.14, 0.55), (0.22, 0.05, 0.80), (0.50, 0.30, 0.18, 1.0))
+    for wz in (0.28, 0.82):
+        make_cyl(f"Skate_Wheels_{wz:.2f}", (1.05, 0.18, wz), 0.035, 0.20,
+                 (0.78, 0.72, 0.50, 1.0), segments=8, axis='X')
+    # A black-metal poster over the record corner — dark field, pale
+    # unreadable logo scrawl
+    make_box("Poster", (2.93, 1.55, 1.75), (0.03, 0.55, 0.75), (0.10, 0.10, 0.11, 1.0))
+    make_box("Poster_Logo", (2.91, 1.55, 1.95), (0.02, 0.40, 0.16), (0.72, 0.72, 0.68, 1.0))
 
 
 def main():

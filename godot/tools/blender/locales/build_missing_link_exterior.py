@@ -3,14 +3,18 @@ lot, plus THE SHUTTLE BENCH (vol1's highest-traffic background: the
 whole link_* question chain is played sitting at this stop).
 
 Companion to build_missing_link_interior.py — same diner, seen from
-outside at dusk. Canon: a roadside bus-depot diner; the shuttle
-stops at a three-sided shelter on the shoulder east of the building.
+outside in the rain. Canon (vol1_missing_link): "a single rectangle
+of warm yellow light pinned to a wet asphalt apron. Two gas pumps,
+one of them retired in place. A sign hand-lettered on enamel — THE
+MISSING LINK. Beside the diner, under a metal awning, is the depot
+bench. The schedule is taped to the wall behind cracked plexiglass."
 
-Hero features: the stainless-clad diner front with its warm window
-band and glazed door, the double-panel MISSING LINK pole sign with
-arrow, the bus shelter with slat bench + route board + trash can,
-a cobra-head lamppost, telephone poles along the far shoulder, a
-parked pickup, and a dark treeline under a dusk sky.
+Hero features (all canon): the wet asphalt apron with puddle
+gleams, the two gas pumps (the retired one visibly dead — no hose,
+duller paint), the enamel pole sign, the metal depot awning against
+the diner's east end with slat bench + schedule board under cracked
+plexiglass + trash can, the bell over the door, a cobra-head
+lamppost, telephone poles, a parked pickup, dark treeline, low sky.
 
 Coordinate frame: Blender Z-up. y=0 is the road's south edge (the
 camera side); +Y runs north through road → gravel lot → diner front
@@ -26,11 +30,15 @@ _BT = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)), 
 if _BT not in sys.path: sys.path.insert(0, _BT)
 from _props.geometry import clear_scene, make_box, make_cyl, export_glb
 
-# ── Palette (dusk) ──
+# ── Palette (rain dusk) ──
 COL_ASPHALT = (0.16, 0.16, 0.18, 1.0)
+COL_APRON = (0.19, 0.19, 0.21, 1.0)      # wet asphalt apron
+COL_PUDDLE = (0.34, 0.36, 0.42, 1.0)     # sky caught in standing water
 COL_DASH = (0.72, 0.68, 0.52, 1.0)
-COL_GRAVEL = (0.42, 0.38, 0.32, 1.0)
 COL_GRASS = (0.24, 0.28, 0.18, 1.0)
+COL_PUMP_DEAD = (0.38, 0.30, 0.28, 1.0)  # the retired pump, faded
+COL_PUMP_DEAD_FACE = (0.52, 0.48, 0.42, 1.0)
+COL_PLEXI = (0.62, 0.66, 0.68, 0.5)      # cracked plexiglass
 COL_CLAD = (0.58, 0.60, 0.63, 1.0)       # stainless cladding
 COL_CLAD_DK = (0.44, 0.46, 0.50, 1.0)
 COL_TRIM = (0.55, 0.18, 0.16, 1.0)       # diner red band
@@ -56,11 +64,34 @@ def build_ground():
     make_box("Road", (0.0, 1.7, 0.0), (34.0, 3.4, 0.04), COL_ASPHALT)
     for i in range(11):
         make_box(f"Dash_{i}", (-15.0 + i * 3.0, 1.7, 0.045), (1.3, 0.12, 0.012), COL_DASH)
-    # Gravel shoulder / diner lot north of the road
-    make_box("Lot", (0.0, 5.7, 0.0), (34.0, 4.6, 0.05), COL_GRAVEL)
-    # Grass fringes: south of road, and between lot and treeline
+    # The asphalt apron ("wet asphalt apron" — canon) north of the road
+    make_box("Apron", (0.0, 5.7, 0.0), (34.0, 4.6, 0.05), COL_APRON)
+    # Rain: puddle gleams scattered on apron + road
+    puddles = [(-6.5, 4.8, 1.6, 0.8), (-1.5, 6.4, 2.2, 1.0), (3.8, 5.2, 1.3, 0.7),
+               (7.4, 4.4, 1.8, 0.9), (-10.5, 5.9, 1.4, 0.8), (1.2, 2.2, 2.4, 0.7),
+               (-4.0, 1.2, 1.7, 0.6)]
+    for i, (px, py, pw, pd) in enumerate(puddles):
+        make_box(f"Puddle_{i}", (px, py, 0.055), (pw, pd, 0.008), COL_PUDDLE)
+    # Grass fringes: south of road, and between apron and treeline
     make_box("Grass_S", (0.0, -2.0, 0.0), (34.0, 4.0, 0.04), COL_GRASS)
     make_box("Grass_N", (0.0, 14.5, 0.0), (34.0, 5.0, 0.04), COL_GRASS)
+
+
+def build_gas_pumps():
+    """Two pumps on a low island, mid-apron west of the door. The
+    east one still works; the west one retired in place — duller,
+    no hose, a bag-taped nozzle slot."""
+    make_box("Pump_Island", (-3.2, 5.4, 0.10), (2.6, 1.0, 0.20), COL_CLAD_DK)
+    # Working pump (east)
+    make_box("Pump_E_Body", (-2.5, 5.4, 0.80), (0.55, 0.45, 1.40), COL_TRIM)
+    make_box("Pump_E_Face", (-2.5, 5.16, 1.05), (0.40, 0.04, 0.55), COL_SIGN)
+    make_box("Pump_E_Crown", (-2.5, 5.4, 1.58), (0.58, 0.48, 0.16), COL_CLAD_DK)
+    make_cyl("Pump_E_Hose", (-2.19, 5.4, 0.72), 0.035, 1.1, COL_POLE, segments=6)
+    # Retired pump (west) — faded, capped, hoseless
+    make_box("Pump_W_Body", (-3.9, 5.4, 0.78), (0.55, 0.45, 1.36), COL_PUMP_DEAD)
+    make_box("Pump_W_Face", (-3.9, 5.16, 1.02), (0.40, 0.04, 0.55), COL_PUMP_DEAD_FACE)
+    make_box("Pump_W_Crown", (-3.9, 5.4, 1.54), (0.58, 0.48, 0.16), COL_PUMP_DEAD)
+    make_box("Pump_W_Cap", (-3.59, 5.4, 0.95), (0.10, 0.20, 0.24), COL_CLAD_DK)
 
 
 def build_diner():
@@ -78,6 +109,9 @@ def build_diner():
     make_box("Diner_Door", (2.4, 7.94, 1.25), (0.92, 0.08, 2.30), COL_DOOR)
     make_box("Diner_DoorGlass", (2.4, 7.90, 1.55), (0.62, 0.05, 1.20), COL_GLOW)
     make_box("Diner_Step", (2.4, 7.65, 0.09), (1.3, 0.7, 0.18), COL_CLAD_DK)
+    # The bell over the door ("unsubtle about your leaving")
+    make_cyl("Door_Bell", (2.4, 7.86, 2.48), 0.05, 0.06, (0.66, 0.52, 0.24, 1.0),
+             segments=8)
     # Roof clutter: A/C unit + vent
     make_box("Diner_AC", (-2.5, 10.8, 3.85), (1.2, 1.0, 0.6), COL_CLAD_DK)
     make_cyl("Diner_Vent", (1.5, 11.5, 3.85), 0.16, 0.55, COL_POLE, segments=8)
@@ -95,28 +129,36 @@ def build_pole_sign():
     make_box("Sign_Arrow_Tip", (-5.15, 6.5, 3.85), (0.28, 0.09, 0.7), COL_SIGN_RED)
 
 
-def build_shelter():
-    """The shuttle shelter: concrete pad, three walls, flat roof,
-    slat bench, route board, trash can. Opening faces the road."""
-    sx, sy = 6.5, 4.9          # shelter center
-    make_box("Shelter_Pad", (sx, sy, 0.05), (3.0, 1.8, 0.10), COL_CLAD_DK)
-    # Back wall (north) + side walls
-    make_box("Shelter_Back", (sx, sy + 0.85, 1.25), (3.0, 0.10, 2.3), COL_SHELTER)
-    make_box("Shelter_Side_W", (sx - 1.45, sy, 1.25), (0.10, 1.8, 2.3), COL_SHELTER)
-    make_box("Shelter_Side_E", (sx + 1.45, sy, 1.25), (0.10, 1.8, 2.3), COL_SHELTER)
-    make_box("Shelter_Roof", (sx, sy, 2.46), (3.3, 2.1, 0.12), COL_CLAD_DK)
-    # Slat bench along the back wall
+def build_depot_awning():
+    """Canon: "Beside the diner, under a metal awning, is the depot
+    bench. The schedule is taped to the wall behind cracked
+    plexiglass." A corrugated metal awning off the diner's east end,
+    back panel carrying the schedule, slat bench beneath, trash can."""
+    sx, sy = 5.6, 6.6          # awning center, abutting the diner's SE corner
+    # Posts + sloped-read roof (two stacked slabs, lower lip south)
+    for px, py in ((sx - 1.5, sy - 0.85), (sx + 1.5, sy - 0.85)):
+        make_cyl(f"Awning_Post_{px:.1f}", (px, py, 1.25), 0.06, 2.5, COL_POLE, segments=6)
+    make_box("Awning_Roof_Hi", (sx, sy + 0.5, 2.72), (3.5, 1.1, 0.10), COL_CLAD_DK)
+    make_box("Awning_Roof_Lo", (sx, sy - 0.5, 2.52), (3.5, 1.2, 0.10), COL_CLAD_DK)
+    make_box("Awning_Corrugate", (sx, sy, 2.64), (3.4, 2.0, 0.05), COL_SHELTER)
+    # Back panel (the "wall" the schedule is taped to)
+    make_box("Awning_Back", (sx, sy + 1.0, 1.30), (3.5, 0.10, 2.4), COL_SHELTER)
+    # The schedule: paper sheet + cracked plexiglass + a crack line
+    make_box("Schedule_Paper", (sx - 0.6, sy + 0.93, 1.55), (0.55, 0.03, 0.75), COL_SIGN)
+    make_box("Schedule_Plexi", (sx - 0.6, sy + 0.90, 1.55), (0.62, 0.02, 0.82), COL_PLEXI)
+    make_box("Schedule_Crack", (sx - 0.72, sy + 0.885, 1.50), (0.03, 0.015, 0.70), COL_CLAD_DK)
+    # Slat bench under the awning
     for i in range(3):
-        make_box(f"Bench_Slat_{i}", (sx, sy + 0.55 - i * 0.13, 0.46), (2.3, 0.11, 0.04), COL_BENCH)
-    make_box("Bench_Back", (sx, sy + 0.72, 0.72), (2.3, 0.06, 0.34), COL_BENCH)
+        make_box(f"Bench_Slat_{i}", (sx, sy + 0.62 - i * 0.13, 0.46), (2.4, 0.11, 0.04), COL_BENCH)
+    make_box("Bench_Back", (sx, sy + 0.80, 0.72), (2.4, 0.06, 0.34), COL_BENCH)
     for lx in (sx - 1.0, sx + 1.0):
-        make_box(f"Bench_Leg_{lx:.1f}", (lx, sy + 0.45, 0.22), (0.08, 0.34, 0.44), COL_POLE)
-    # Route board on its own post, just west of the shelter
-    make_cyl("Route_Post", (sx - 2.0, sy - 0.6, 0.85), 0.04, 1.7, COL_POLE, segments=6)
-    make_box("Route_Board", (sx - 2.0, sy - 0.55, 1.95), (0.55, 0.06, 0.75), COL_SIGN)
-    make_box("Route_Board_Head", (sx - 2.0, sy - 0.53, 2.22), (0.55, 0.05, 0.16), COL_SIGN_RED)
+        make_box(f"Bench_Leg_{lx:.1f}", (lx, sy + 0.52, 0.22), (0.08, 0.34, 0.44), COL_POLE)
+    # Route board on its own post at the awning's road side
+    make_cyl("Route_Post", (sx - 2.1, sy - 1.4, 0.85), 0.04, 1.7, COL_POLE, segments=6)
+    make_box("Route_Board", (sx - 2.1, sy - 1.35, 1.95), (0.55, 0.06, 0.75), COL_SIGN)
+    make_box("Route_Board_Head", (sx - 2.1, sy - 1.33, 2.22), (0.55, 0.05, 0.16), COL_SIGN_RED)
     # Trash can east of the bench
-    make_cyl("Trash", (sx + 1.9, sy - 0.3, 0.38), 0.24, 0.76, COL_SHELTER, segments=10)
+    make_cyl("Trash", (sx + 2.1, sy - 0.6, 0.38), 0.24, 0.76, COL_SHELTER, segments=10)
 
 
 def build_street_furniture():
@@ -155,9 +197,10 @@ def build_backdrop():
 def main():
     clear_scene()
     build_ground()
+    build_gas_pumps()
     build_diner()
     build_pole_sign()
-    build_shelter()
+    build_depot_awning()
     build_street_furniture()
     build_backdrop()
     out = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)),

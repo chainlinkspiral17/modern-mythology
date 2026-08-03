@@ -13,9 +13,15 @@ Coordinate frame: Blender Z-up. y=0 is the field's south edge (the
 camera side); +Y runs north to the gable face at y≈8. glTF export
 remaps to Godot (x, z, -y).
 
-Vantage wired in Background3D.CAMERA_PRESETS:
+Vantages wired in Background3D.CAMERA_PRESETS:
   crumpled_barn_ext — in the field looking N at the standing gable
   with the fallen roof behind.
+  crumpled_barn_int — inside the standing half: the marionette
+  cabinet (Jiggles the Juggler, head resting on his shoulder,
+  glass fourth wall broken) facing the carved wooden sign of the
+  mermaid — "Come Visit Today. A Twisted Beauty and a Beast. Only
+  at The Cliffside Circus Attraction." The hero props of the whole
+  Delores thread.
 """
 import os, sys
 _BT = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)), ".."))
@@ -64,9 +70,12 @@ def build_gable():
 def build_collapse():
     """The fallen roof: two big shingle planes lying low on rubble at
     slightly different heights, plus surviving frame posts."""
-    make_box("Roof_Plane_W", (-2.6, 11.0, 0.75), (4.4, 4.6, 0.30), COL_ROOF)
-    make_box("Roof_Plane_E", (1.9, 11.4, 1.15), (4.0, 4.2, 0.30), COL_ROOF_DK)
-    make_box("Roof_Ridge_Piece", (-0.3, 12.6, 1.55), (3.2, 0.7, 0.35), COL_ROOF_DK)
+    # The planes slid off the BACK half as they fell — the front bay
+    # behind the gable survives as a sheltered pocket (the interior
+    # vantage stands there)
+    make_box("Roof_Plane_W", (-2.6, 12.4, 0.75), (4.4, 4.2, 0.30), COL_ROOF)
+    make_box("Roof_Plane_E", (1.9, 12.8, 1.15), (4.0, 3.8, 0.30), COL_ROOF_DK)
+    make_box("Roof_Ridge_Piece", (-0.3, 13.6, 1.55), (3.2, 0.7, 0.35), COL_ROOF_DK)
     # Rubble bed under and around the planes
     rubble = [(-3.8, 9.6, 0.5), (-1.0, 10.2, 0.7), (2.8, 9.8, 0.45), (0.6, 12.8, 0.55),
               (-4.4, 11.8, 0.4), (4.0, 11.6, 0.6), (2.0, 13.4, 0.35)]
@@ -109,6 +118,53 @@ def build_yard():
                      (0.05, 0.05, h), col)
 
 
+def build_interior():
+    """Inside the standing half, y ∈ [8.6, 13]: the cabinet with the
+    broken marionette, and the carved sign half-hanging opposite."""
+    # A patch of old plank floor under the props (the surviving bay)
+    make_box("Int_Floor", (-0.6, 9.6, 0.03), (5.0, 1.8, 0.06), (0.34, 0.28, 0.22, 1.0))
+    # The cabinet — against the gable's inner face beside the sign,
+    # glass fourth wall facing north into the bay
+    cbx, cby = -1.8, 8.95
+    make_box("Cab_Body", (cbx, cby, 0.95), (0.7, 0.9, 1.9), (0.30, 0.22, 0.16, 1.0))
+    make_box("Cab_Stage", (cbx + 0.1, cby, 0.75), (0.45, 0.7, 0.06), (0.44, 0.34, 0.22, 1.0))
+    # Glass fourth wall (north face), broken: partial pane + shard
+    make_box("Cab_Glass", (cbx - 0.12, cby + 0.44, 1.30), (0.55, 0.02, 0.75),
+             (0.55, 0.62, 0.66, 0.35))
+    make_box("Cab_Glass_Shard", (cbx + 0.24, cby + 0.42, 0.82), (0.20, 0.02, 0.16),
+             (0.55, 0.62, 0.66, 0.5))
+    # Jiggles the Juggler — sagging at the hip, head against shoulder
+    make_box("Jiggles_Torso", (cbx + 0.08, cby, 1.10), (0.14, 0.18, 0.30),
+             (0.56, 0.44, 0.30, 1.0))
+    make_box("Jiggles_Hip_Sag", (cbx + 0.06, cby + 0.06, 0.90), (0.13, 0.16, 0.14),
+             (0.48, 0.36, 0.26, 1.0))
+    make_cyl("Jiggles_Head", (cbx + 0.14, cby - 0.09, 1.30), 0.07, 0.12,
+             (0.78, 0.68, 0.55, 1.0), segments=8)
+    make_box("Jiggles_Arm_L", (cbx + 0.04, cby - 0.16, 1.02), (0.05, 0.05, 0.26),
+             (0.56, 0.44, 0.30, 1.0))
+    make_box("Jiggles_Arm_R", (cbx + 0.04, cby + 0.17, 1.12), (0.05, 0.05, 0.22),
+             (0.56, 0.44, 0.30, 1.0))
+    # His name in red paint on the cabinet base (north face)
+    make_box("Jiggles_Name", (cbx, cby + 0.46, 0.62), (0.5, 0.02, 0.08),
+             (0.58, 0.16, 0.12, 1.0))
+    # Marionette strings up into the case head
+    for i, sy in enumerate((cby - 0.1, cby, cby + 0.1)):
+        make_box(f"Jiggles_String_{i}", (cbx + 0.08, sy, 1.60), (0.008, 0.008, 0.45),
+                 (0.62, 0.60, 0.55, 1.0))
+    # The carved wooden sign, half-hanging on the gable's inner face:
+    # one corner up, one dropped (two offset panels read as a tilt)
+    make_box("Sign_Panel_Hi", (1.2, 8.62, 1.75), (0.9, 0.06, 0.65), (0.46, 0.34, 0.20, 1.0))
+    make_box("Sign_Panel_Lo", (0.55, 8.60, 1.45), (0.75, 0.06, 0.60), (0.42, 0.30, 0.18, 1.0))
+    # The mermaid relief: rock, seated figure, the fall of dark hair
+    make_box("Sign_Rock", (0.85, 8.55, 1.35), (0.34, 0.04, 0.22), (0.36, 0.30, 0.24, 1.0))
+    make_box("Sign_Figure", (0.88, 8.52, 1.62), (0.16, 0.04, 0.36), (0.62, 0.50, 0.38, 1.0))
+    make_box("Sign_Hair", (0.94, 8.50, 1.58), (0.10, 0.03, 0.42), (0.22, 0.16, 0.12, 1.0))
+    # The old-script line below, a lighter incised band
+    make_box("Sign_Script", (0.85, 8.53, 1.16), (0.80, 0.03, 0.10), (0.58, 0.48, 0.34, 1.0))
+    # A shaft of daylight through the broken roof: pale dust plane
+    make_box("Light_Shaft", (-0.6, 9.8, 1.6), (1.1, 0.9, 3.0), (0.72, 0.70, 0.62, 0.18))
+
+
 def build_backdrop():
     # Distant hedgerow + flat sky
     for i in range(6):
@@ -122,6 +178,7 @@ def main():
     build_field()
     build_gable()
     build_collapse()
+    build_interior()
     build_yard()
     build_backdrop()
     out = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)),

@@ -1,11 +1,15 @@
-"""Sapo Falls — vol2 ch2 interlude one. A waterfall in a green
-gorge, seen from the viewing rocks at the pool's edge.
+"""Sapo Falls — vol2 ch2 interlude one. Canon places the dream in
+VENEZUELA: "the Canaima region — naturally rich in elevated tepuis,
+dense with dark green vegetation and flowing with towering
+waterfalls." So this is Salto El Sapo country, not a temperate
+gorge: a flat-topped tepui on the skyline, vegetation dense and
+dark, the fall tall.
 
 Hero features: the white fall column dropping from the rim notch,
-the churned pool with its foam ring, stepped gray rock walls
-flanking the gorge, mist slabs at the base, wet boulders in the
-foreground, green growth clinging to the rim and ledges, and the
-bright sky notch above.
+the churned pool with its foam ring, stepped rock walls flanking
+the gorge under heavy green growth, mist slabs at the base, wet
+boulders in the foreground, the TEPUI — sheer-sided, flat-topped —
+standing on the skyline, and the bright sky notch above.
 
 Coordinate frame: Blender Z-up. y=0 is the viewing side (camera);
 +Y runs north up the gorge to the falls face (y≈14). glTF export
@@ -29,9 +33,11 @@ COL_POOL = (0.20, 0.30, 0.30, 1.0)
 COL_POOL_DK = (0.14, 0.22, 0.23, 1.0)
 COL_FOAM = (0.78, 0.82, 0.80, 1.0)
 COL_MIST = (0.72, 0.76, 0.76, 0.45)
-COL_GREEN = (0.24, 0.38, 0.22, 1.0)
-COL_GREEN_LT = (0.32, 0.46, 0.26, 1.0)
-COL_MOSS = (0.30, 0.40, 0.24, 1.0)
+COL_GREEN = (0.18, 0.32, 0.18, 1.0)      # dense Canaima green, dark
+COL_GREEN_LT = (0.26, 0.42, 0.22, 1.0)
+COL_MOSS = (0.24, 0.36, 0.20, 1.0)
+COL_TEPUI = (0.46, 0.42, 0.44, 1.0)      # sheer sandstone flank
+COL_TEPUI_TOP = (0.30, 0.38, 0.28, 1.0)  # the green table top
 COL_SKY = (0.72, 0.80, 0.84, 1.0)
 
 
@@ -86,15 +92,27 @@ def build_foreground():
         make_box(f"Boulder_{i}", (rx, ry, rz / 2.0 + 0.02), (rs, rs * 0.8, rz),
                  COL_ROCK_WET if i % 2 == 0 else COL_ROCK_DK)
     make_box("Shore", (0.0, 2.2, 0.05), (12.0, 3.4, 0.14), COL_ROCK)
-    # Green growth on the rims and along the shore edges
+    # Green growth — dense, everywhere the rock lets it hold: rims,
+    # ledges, shore, and hanging masses down the gorge walls
     fringe = [(-5.2, 2.5, 0.9), (5.0, 2.8, 0.8), (-4.4, 12.6, 10.1),
-              (4.2, 12.6, 10.1), (-6.2, 7.0, 4.3), (6.4, 8.0, 5.4)]
+              (4.2, 12.6, 10.1), (-6.2, 7.0, 4.3), (6.4, 8.0, 5.4),
+              (-5.6, 5.0, 2.2), (5.8, 5.6, 2.6), (-7.0, 10.0, 6.8),
+              (7.2, 10.5, 7.4), (-4.8, 8.5, 5.6), (5.2, 11.5, 8.6),
+              (-2.6, 13.4, 9.8), (2.4, 13.4, 9.8)]
     for i, (gx, gy, gz) in enumerate(fringe):
         col = COL_GREEN if i % 2 == 0 else COL_GREEN_LT
-        make_box(f"Green_{i}", (gx, gy, gz), (1.8, 1.4, 1.0), col)
+        make_box(f"Green_{i}", (gx, gy, gz), (2.0, 1.5, 1.2), col)
 
 
 def build_sky():
+    # The tepui on the skyline: sheer flanks, dead-flat green top —
+    # the shape that says Canaima and nowhere else
+    make_box("Tepui_Flank", (-9.0, 17.2, 8.5), (9.0, 0.8, 7.0), COL_TEPUI)
+    make_box("Tepui_Band", (-9.0, 17.1, 6.2), (9.4, 0.7, 1.0), (0.38, 0.34, 0.36, 1.0))
+    make_box("Tepui_Top", (-9.0, 17.2, 12.15), (9.6, 1.0, 0.5), COL_TEPUI_TOP)
+    # A second, farther table to the east, hazier
+    make_box("Tepui_Far", (11.0, 17.6, 7.0), (7.0, 0.6, 5.2), (0.54, 0.52, 0.56, 1.0))
+    make_box("Tepui_Far_Top", (11.0, 17.6, 9.75), (7.4, 0.8, 0.4), (0.42, 0.48, 0.42, 1.0))
     make_box("Sky", (0.0, 18.0, 8.0), (40.0, 0.06, 16.0), COL_SKY)
 
 
