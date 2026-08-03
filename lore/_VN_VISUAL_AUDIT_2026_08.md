@@ -139,6 +139,79 @@ ice-storm ref; crumpled_barn_int (new vantage) frames Jiggles the
 Juggler's cabinet + the carved mermaid sign, replacing the
 equipment_shed reuse. Presets now 26 new across 13 builds.
 
+VOLS 5-7 HERO-PROP PASS (2026-08-03, fourth wave — four parallel
+audit agents swept the 16 highest-traffic locales' full prose
+against build geometry; every locale failed):
+- lena_apartment REBUILT: it shipped as a dorm room; the prose is a
+  one-bedroom — kitchen (window on the Starfish Nebula mural,
+  stove, fridge, wobbling oak table + mismatched chairs), couch +
+  wool blanket, chair-by-the-window + the Estuary 7 side table,
+  four coat hooks, the deadbolt, the three ceiling water stains,
+  bedroom partition. Desk + laptop cut (Lena writes by hand).
+- cabin_interior REBUILT: daybed, sleeping loft + ladder (ceiling
+  3.4), thermometer-above-the-door (1979), east room with writing
+  desk + cedar shelf + bed under its window + basin/mirror, rotary
+  phone by the new kitchen window, stove side table, cedar chest,
+  firewood basket, COPPER kettle (dented), coffee cone (not
+  percolator), 7-seat table, armchairs at the stove, hanging oil
+  lamp (fluorescents cut — off-grid), north-wall art un-floated.
+- board_lords_interior REBUILT: it was a board-GAME store; canon is
+  Kai's SKATEBOARD shop — glass deck wall, repair bench + work lamp
+  + lathe, register drawer + stool, parents' bench, kettle +
+  burner, Devon's office + bearings boxes, alley door, parts wall.
+- cosmic_comics: THE SPEAK & SPELL built (shelf above the file
+  cabinet, cracked corner, emissive grille), one-way mirror both
+  sides, desk drawers, milk crate, slide bolt, safe, mini-fridge,
+  service door; floor gets the painted Galactus + purple floor
+  bars, brass bell, OPEN sign, door leaf, office doorway, window
+  bench, under-register shelf, manga/YA/Pokemon/indie/new-arrivals.
+- kwik_stop: the three window tables, the microwave with the
+  nine-minutes-fast clock + the actual clock by the office door,
+  back office, employee restroom, the TASTE HOME decals ported in
+  from the exterior shell, convex mirror, anti-fatigue mat, break
+  nook, novelty cooler, tip cup.
+- miller_kitchen: RECTANGULAR table with the named seats (Sammy's
+  head / Bianca's long side / Mike's short side by the window),
+  dishwasher, landline, upper cabinets + under-cabinet light, nook
+  TV, pantry, microwave, back door, sheer curtain, cast iron;
+  fluorescents -> recessed cans + pendant.
+- miller_back_porch: SCREENED (walls -> knee wall + screen panels),
+  her mother's wicker chair with cup-width arms, house door + lit
+  window, crepe myrtle + browning yard + steps, smokers' tin +
+  Eddvard's carved cedar on the rail, fan not fluorescents.
+- maya_bedroom: THE LOOSE THIRD FLOORBOARD + cavity + manila
+  envelope (relocated clear of the bed), countable plank seams,
+  pale-yellow flat ceiling, box fan, spiral notebook, packing-order
+  supplies, phone. sam_bedroom: THE CLICKING CEILING FAN, box
+  spring + the 99-cent notebook at the seam, curtains, dresser +
+  phone, closet, bedside lamp.
+- hans_bakery: THE COMMUNAL TABLE (ten chairs + Tem's head chair +
+  ROY'S CHAIR), Hemlock window + sill + chair, Greta's cloth
+  drawer + chapbook drawer, press + brotchen basket; clock 8:15 ->
+  6:01. centro: meat counter, deli case, pallet + hand truck +
+  forgotten pallet jack, propped cooler door + milk crate, frozen
+  run, cardboard bale, tag rails, cubby, aisle numerals 7/9 + two
+  more runs, the leaking dented can.
+- nexcorp_fueling_station: restroom (Boyd's scene + the plumbing
+  Demon's pipes), SIX pumps (pump six exists), NexCorp NAVY rebrand
+  (was green), entry door, dumpster, vape back-bar, security dome,
+  price pole. nexcorp_gas_go WIRED (tscn + preset — its rich build
+  had no tscn); ch1/ch2 Gas & Go scenes retagged onto it.
+- NEW build_cabin_road.py + preset: vol7's Oregon road (Sitka
+  stand, creek crossing + culverts, asphalt-to-gravel transition,
+  switchback, mist) — 27 vol7 scenes retagged off the Louisiana
+  swamp road. louisiana_road itself: reeds moved to the water side,
+  guardrail off the driving shoulder, sedan de-clipped, lamp poles
+  out of the sidewalk, sky raised, and the vol6 civic landmarks
+  built (water tower, gas canopy + pumps + store, traffic light,
+  NAPD SUBSTATION B sign).
+- Caldwell pair (committed earlier): two iced-tea glasses, Maya's
+  bike, porch fan, THE MORSE KEY + frequency card.
+Deferred (documented, low priority): kwik_stop dumpster/stockroom
+buzz, gas station motel/strip-mall/overpass/lay-by/cul-de-sac
+build-out on louisiana_road, centro clock choice, sam_bedroom
+comics-decor canon ruling.
+
 ### 1.7 · Dead wiring (harmless today, misleading forever)
 - 22 of 38 `PORTRAIT_3D_KEY_TO_GLB` entries point at GLBs that don't
   exist (kai, finn, tem, lena, wren, petra…). The demon's GLB dir

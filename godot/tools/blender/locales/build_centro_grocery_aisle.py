@@ -51,6 +51,16 @@ def build_aisles():
     for ai in range(2):
         ay = ROOM_D * (0.35 + ai * 0.30)
         make_snack_aisle(f"Aisle_{ai}", (0.0, ay, 0.0), length=6.0, shelf_count=5)
+        # Shelf-edge price-tag rails (the inventory chapter runs on
+        # facings and tags)
+        for side in (-1, 1):
+            for lvl in range(5):
+                make_box(f"TagRail_{ai}_{side}_{lvl}", (0.0, ay + side * 0.62, 0.30 + lvl * 0.36),
+                         (6.0, 0.012, 0.035), (0.94, 0.94, 0.92, 1.0))
+    # Two more runs so "Aisle Seven … Aisle Nine" reads as a store,
+    # not a pair
+    make_snack_aisle("Aisle_2", (0.0, ROOM_D * 0.22, 0.0), length=6.0, shelf_count=5)
+    make_snack_aisle("Aisle_3", (0.0, ROOM_D * 0.80, 0.0), length=6.0, shelf_count=5)
 
 def build_endcaps():
     for ei, ex in enumerate([-3.5, +3.5]):
@@ -71,6 +81,14 @@ def build_aisle_signs():
             make_cyl(f"AisleNum_{ai}_Wire_{'L' if wo<0 else 'R'}", (wo, ay, CEIL-0.35), 0.006, 0.60, P.METAL_STEEL)
         make_box(f"AisleNum_{ai}_Board", (0.0, ay, CEIL-0.68), (0.80, 0.05, 0.34), COL_ACCENT)
         make_box(f"AisleNum_{ai}_Num", (0.0, ay-0.03, CEIL-0.68), (0.20, 0.02, 0.22), P.PAPER)
+        # Legible numerals: 7 and 9 (the prose counts twelve aisles;
+        # these two are named)
+        if ai == 0:
+            make_box(f"AisleNum_{ai}_D_Top", (0.0, ay-0.045, CEIL-0.60), (0.14, 0.012, 0.03), (0.18, 0.18, 0.20, 1.0))
+            make_box(f"AisleNum_{ai}_D_Diag", (0.02, ay-0.045, CEIL-0.70), (0.03, 0.012, 0.16), (0.18, 0.18, 0.20, 1.0))
+        else:
+            make_cyl(f"AisleNum_{ai}_D_Ring", (0.0, ay-0.045, CEIL-0.63), 0.055, 0.012, (0.18, 0.18, 0.20, 1.0), axis='Y', segments=10)
+            make_box(f"AisleNum_{ai}_D_Tail", (0.05, ay-0.045, CEIL-0.72), (0.03, 0.012, 0.12), (0.18, 0.18, 0.20, 1.0))
 
 def build_checkout():
     # Checkout lane near the SE entrance: conveyor counter + register +
@@ -191,7 +209,7 @@ def build_dressing():
         make_cyl(f"Cart_Wheel_{wi}", (cx+wx, cy+wy, 0.06), 0.06, 0.05, P.METAL_BLACK, axis='X', segments=8)
     # Chest freezer, east wall (body + frosty glass lid)
     fx = ROOM_W/2.0 - 0.6
-    make_box("Freezer_Body", (fx, ROOM_D-2.0, 0.45), (0.90, 1.80, 0.90), (0.82, 0.86, 0.90, 1.0))
+    make_box("Freezer_Body", (fx, ROOM_D-3.4, 0.45), (0.90, 1.80, 0.90), (0.82, 0.86, 0.90, 1.0))
     make_box("Freezer_Lid", (fx, ROOM_D-2.0, 0.94), (0.86, 1.72, 0.04), (0.80, 0.90, 0.96, 0.5))
     make_box("Freezer_Kick", (fx, ROOM_D-2.0, 0.06), (0.90, 1.80, 0.12), P.METAL_STEEL)
     # Hanging aisle-number sign over the aisle mouth
@@ -204,6 +222,50 @@ def build_dressing():
     # Wet-floor cone
     make_cyl("Cone_Body", (1.4, 1.2, 0.18), 0.14, 0.36, (0.96, 0.72, 0.20, 1.0), segments=10)
     make_box("Cone_Base", (1.4, 1.2, 0.02), (0.30, 0.30, 0.04), (0.96, 0.72, 0.20, 1.0))
+
+def build_departments():
+    """2026-08-03 hero-prop pass: meat counter, deli case, the
+    pallet + hand truck + forgotten pallet jack, the propped cooler
+    door + milk crate, the frozen run, the cardboard bale, the
+    register cubby, the leaking dented can."""
+    steel = (0.60, 0.62, 0.63, 1.0)
+    glass = (0.55, 0.62, 0.66, 0.4)
+    # Meat counter, E wall north end
+    make_box("Meat_Case_Body", (4.15, 6.6, 0.55), (1.10, 2.40, 1.10), (0.86, 0.86, 0.84, 1.0))
+    make_box("Meat_Case_Glass", (3.62, 6.6, 1.25), (0.04, 2.30, 0.55), glass)
+    for mi in range(4):
+        make_box(f"Meat_Tray_{mi}", (4.05, 5.75 + mi * 0.55, 1.12), (0.60, 0.42, 0.06),
+                 [(0.72, 0.32, 0.30, 1.0), (0.80, 0.46, 0.42, 1.0)][mi % 2])
+    # Deli case + wipe-down worktop
+    make_box("Deli_Case_Body", (4.15, 4.0, 0.55), (1.00, 1.60, 1.10), (0.86, 0.86, 0.84, 1.0))
+    make_box("Deli_Case_Glass", (3.68, 4.0, 1.28), (0.04, 1.50, 0.50), glass)
+    make_box("Deli_Worktop", (4.62, 4.0, 0.92), (0.30, 1.50, 0.05), steel)
+    # Pallet + hand truck + the forgotten pallet jack
+    make_box("Pallet", (-1.0, 1.55, 0.08), (1.00, 1.20, 0.16), (0.62, 0.48, 0.30, 1.0))
+    make_box("Pallet_Load", (-1.0, 1.55, 0.46), (0.90, 1.05, 0.60), (0.68, 0.56, 0.38, 1.0))
+    make_box("HandTruck_Frame", (-1.9, 1.5, 0.60), (0.08, 0.40, 1.20), (0.62, 0.28, 0.24, 1.0))
+    make_box("HandTruck_Toe", (-1.86, 1.5, 0.04), (0.30, 0.44, 0.03), steel)
+    make_box("PalletJack_Forks", (2.9, 1.55, 0.08), (0.56, 1.10, 0.12), (0.86, 0.52, 0.16, 1.0))
+    make_box("PalletJack_Tiller", (2.9, 2.20, 0.55), (0.08, 0.10, 0.90), (0.30, 0.30, 0.32, 1.0))
+    # Cooler swing door propped open with the milk crate (sticking
+    # lock since July)
+    make_box("Cooler_Door_Leaf", (-3.72, 7.35, 1.00), (0.30, 0.05, 1.90), (0.82, 0.84, 0.86, 1.0))
+    make_box("Milk_Crate_Prop", (-3.55, 7.15, 0.14), (0.32, 0.32, 0.28), (0.30, 0.44, 0.62, 1.0))
+    # Frozen run: upright glass doors, W wall north end
+    make_box("Frozen_Bank", (-4.62, 6.8, 1.10), (0.55, 1.70, 2.20), (0.80, 0.84, 0.88, 1.0))
+    for fi in range(3):
+        make_box(f"Frozen_Door_{fi}", (-4.34, 6.25 + fi * 0.56, 1.15), (0.03, 0.50, 1.80), glass)
+    # The cardboard bale at the aisle's north mouth
+    make_box("Card_Bale", (-3.1, 5.2, 0.70), (0.90, 0.80, 1.40), (0.44, 0.48, 0.52, 1.0))
+    make_box("Card_Bale_Lid", (-3.1, 5.2, 1.42), (0.86, 0.76, 0.05), steel)
+    make_box("Card_Bale_Stack", (-3.1, 5.15, 0.90), (0.70, 0.60, 0.30), (0.66, 0.54, 0.36, 1.0))
+    # Register cubby (Diego's backpack)
+    make_box("Register_Cubby", (3.15, 1.6, 0.45), (0.36, 1.20, 0.90), (0.46, 0.42, 0.36, 1.0))
+    make_box("Cubby_Backpack", (3.15, 1.4, 0.30), (0.28, 0.30, 0.42), (0.30, 0.36, 0.30, 1.0))
+    # The dented can of cream of mushroom, leaking under row 4F
+    make_cyl("Dented_Can", (1.2, 2.22, 0.055), 0.05, 0.11, (0.84, 0.80, 0.70, 1.0), axis='X', segments=10)
+    make_cyl("Can_Puddle", (1.28, 2.20, 0.006), 0.09, 0.005, (0.72, 0.68, 0.56, 1.0), segments=10)
+
 
 def main():
     clear_scene()
@@ -222,6 +284,7 @@ def main():
     build_ceiling_infra()
     build_dressing()
     build_more_decor()
+    build_departments()
     out = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)),
         "../../../assets/3d/locales/centro_grocery_aisle.glb"))
     print(f"\n[build_centro_grocery_aisle] exporting to {out}")

@@ -74,7 +74,7 @@ def build_bakery():
     a flour-dusted prep table with dough balls + a rolling pin, stacked
     flour sacks, and a wall shelf of mixing bowls."""
     # Speed rack (rolling tray rack) near the centre
-    rx, ry = -0.3, ROOM_D/2.0 - 0.3
+    rx, ry = -2.2, ROOM_D/2.0 - 0.3
     make_box("Rack_Frame", (rx, ry, 0.90), (0.70, 0.60, 1.80), P.METAL_STEEL)
     for ti, tz in enumerate([0.4, 0.7, 1.0, 1.3, 1.6]):
         make_box(f"Rack_Tray_{ti}", (rx, ry, tz), (0.64, 0.54, 0.03), (0.72, 0.72, 0.74, 1.0))
@@ -137,7 +137,7 @@ def build_equipment():
 
 def build_cooling_rack():
     # Wire cooling rack of finished loaves, center-east floor.
-    rx, ry = 0.9, ROOM_D/2.0 - 0.9
+    rx, ry = 2.2, ROOM_D/2.0 - 0.9
     make_box("Cool_Frame", (rx, ry, 0.85), (0.66, 0.50, 1.70), P.METAL_STEEL)
     for si, sz in enumerate([0.5, 0.85, 1.2, 1.55]):
         make_box(f"Cool_Shelf_{si}", (rx, ry, sz), (0.62, 0.46, 0.02), P.METAL_STEEL)
@@ -187,13 +187,63 @@ def build_decor():
     make_floor_plant("Plant", (-ROOM_W/2.0+0.5, ROOM_D-0.6, 0.0))
 
 def build_clock():
-    make_wall_clock("Clock", (0.0, ROOM_D-0.05, CEIL-0.50), frozen_hour=8, frozen_min=15)
+    make_wall_clock("Clock", (0.0, ROOM_D-0.05, CEIL-0.50), frozen_hour=6, frozen_min=1)
 
 def build_ceiling_infra():
     for j in range(2):
         ypos = ROOM_D * (0.30 + j * 0.40)
         make_fluorescent_tube_fixture(f"Fluor_{j}", (0.0, ypos, CEIL), length=1.40, width=0.34)
     make_smoke_detector("Smoke", (0.0, ROOM_D/2.0, CEIL))
+
+def build_communal_table():
+    """2026-08-03 hero-prop pass. THE TABLE — all six scenes are
+    staged at it: "The ten of them were at the table. Tem at one
+    end. Hans at the other." / "the eleven of us at the table." Long
+    N-S run down the room center, ten side chairs + two head chairs
+    (the far head is ROY'S CHAIR — the four carved crows watch it).
+    Plus the Hemlock window with its sill, the chair by the window,
+    Greta's cloth drawer, the chapbook drawer, and the table
+    dressing (press, brotchen basket, preserves)."""
+    wood = (0.46, 0.34, 0.22, 1.0)
+    wood_dk = (0.36, 0.26, 0.16, 1.0)
+    make_box("Communal_Table_Top", (0.0, 2.3, 0.75), (1.10, 3.40, 0.06), wood)
+    for lx, ly in ((-0.50, 0.75), (0.50, 0.75), (-0.50, 3.85), (0.50, 3.85)):
+        make_box(f"Communal_Leg_{lx:.1f}_{ly:.2f}", (lx, ly, 0.37), (0.08, 0.08, 0.74), wood_dk)
+    # Ten side chairs
+    for si, cy in enumerate((1.0, 1.65, 2.30, 2.95, 3.60)):
+        for xi, cx in enumerate((-0.85, 0.85)):
+            nm = f"TChair_{si}_{xi}"
+            make_box(f"{nm}_Seat", (cx, cy, 0.45), (0.40, 0.40, 0.05), wood)
+            make_box(f"{nm}_Back", (cx + (0.18 if cx > 0 else -0.18), cy, 0.74), (0.05, 0.40, 0.52), wood)
+            for li, (lx, ly) in enumerate(((-0.15, -0.15), (0.15, -0.15), (-0.15, 0.15), (0.15, 0.15))):
+                make_box(f"{nm}_Leg_{li}", (cx + lx, cy + ly, 0.22), (0.045, 0.045, 0.44), wood)
+    # Head chairs: Tem's (near) and ROY'S (far — distinct, darker)
+    make_box("HeadChair_Tem_Seat", (0.0, 0.45, 0.45), (0.42, 0.42, 0.05), wood)
+    make_box("HeadChair_Tem_Back", (0.0, 0.26, 0.76), (0.42, 0.05, 0.56), wood)
+    make_box("Roys_Chair_Seat", (0.0, 4.15, 0.45), (0.44, 0.44, 0.05), wood_dk)
+    make_box("Roys_Chair_Back", (0.0, 4.35, 0.80), (0.44, 0.06, 0.64), wood_dk)
+    for nm, hy in (("HeadChair_Tem", 0.45), ("Roys_Chair", 4.15)):
+        for li, (lx, ly) in enumerate(((-0.16, -0.16), (0.16, -0.16), (-0.16, 0.16), (0.16, 0.16))):
+            make_box(f"{nm}_Leg_{li}", (lx, hy + ly, 0.22), (0.05, 0.05, 0.44),
+                     wood if nm.startswith("Head") else wood_dk)
+    # Table dressing: coffee press, brotchen basket, preserves, butter
+    make_cyl("Coffee_Press", (0.0, 2.7, 0.90), 0.06, 0.24, (0.55, 0.62, 0.66, 0.6), segments=10)
+    make_cyl("Press_Plunger", (0.0, 2.7, 1.04), 0.012, 0.08, (0.20, 0.19, 0.20, 1.0), segments=6)
+    make_box("Brotchen_Basket", (0.0, 2.1, 0.84), (0.34, 0.28, 0.12), (0.62, 0.46, 0.26, 1.0))
+    for bi in range(3):
+        make_cyl(f"Brotchen_{bi}", (-0.08 + bi * 0.09, 2.1, 0.92), 0.05, 0.07, (0.80, 0.62, 0.36, 1.0), segments=8)
+    make_cyl("Preserve_Jar", (0.28, 2.45, 0.85), 0.045, 0.12, (0.48, 0.22, 0.30, 0.9), segments=8)
+    make_box("Butter_Dish", (-0.28, 2.45, 0.80), (0.16, 0.10, 0.06), (0.90, 0.88, 0.80, 1.0))
+    # The Hemlock window + sill + the chair beside it (W wall)
+    make_window("Win_W", (-2.99, 2.6, 1.50), width=1.10, height=1.10)
+    make_box("Win_W_Sill", (-2.86, 2.6, 0.95), (0.26, 1.10, 0.06), wood)
+    make_box("WinChair_Seat", (-2.35, 2.6, 0.45), (0.40, 0.40, 0.05), wood)
+    make_box("WinChair_Back", (-2.53, 2.6, 0.74), (0.05, 0.40, 0.52), wood)
+    # Greta's cloth drawer + the chapbook drawer, N counter faces
+    make_box("Greta_Drawer", (-1.5, 3.62, 0.74), (0.44, 0.02, 0.16), wood_dk)
+    make_box("Greta_Cloth", (-1.5, 3.70, 0.70), (0.20, 0.12, 0.02), (0.88, 0.86, 0.80, 1.0))
+    make_box("Chapbook_Drawer", (-1.9, 3.62, 0.56), (0.44, 0.02, 0.16), wood_dk)
+
 
 def main():
     clear_scene()
@@ -209,6 +259,7 @@ def main():
     build_pass_window()
     build_decor()
     build_clock()
+    build_communal_table()
     build_ceiling_infra()
     out = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)),
         "../../../assets/3d/locales/hans_bakery_back_kitchen.glb"))

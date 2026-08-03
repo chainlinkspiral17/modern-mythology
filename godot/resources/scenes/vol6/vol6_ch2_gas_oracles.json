@@ -7,7 +7,7 @@
   "nodes": [
     {
       "t": "bg",
-      "src": "3d:nexcorp_fueling_station"
+      "src": "3d:nexcorp_gas_go"
     },
     {
       "t": "bgm",

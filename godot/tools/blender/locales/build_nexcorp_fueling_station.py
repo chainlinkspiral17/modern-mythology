@@ -14,7 +14,7 @@ from _props.safety import make_smoke_detector, make_hvac_vent, make_fluorescent_
 ROOM_W = 8.0; ROOM_D = 6.0; CEIL = 2.8
 PAL_WALL = {"wall":(0.88,0.88,0.86,1.0),"baseboard":(0.42,0.42,0.40,1.0)}
 COL_FLOOR = (0.78,0.78,0.74,1.0); COL_SEAM = (0.42,0.42,0.40,1.0); COL_WOOD = (0.62,0.62,0.60,1.0)
-COL_ACCENT = (0.32,0.62,0.42,1.0)
+COL_ACCENT = (0.18,0.32,0.50,1.0)  # NexCorp navy — a bruise that doesn't know it's a bruise yet
 
 def build_shell():
     make_floor("Floor", (0.0, ROOM_D/2.0, 0.0), size_x=ROOM_W+0.4, size_y=ROOM_D+0.4,
@@ -74,15 +74,25 @@ def build_storefront():
     wx = -ROOM_W/2.0
     make_box("Storefront_Frame", (wx+0.04, ROOM_D/2.0, 1.40), (0.06, 2.60, 1.80), P.METAL_STEEL)
     make_box("Storefront_Glass", (wx+0.06, ROOM_D/2.0, 1.40), (0.02, 2.40, 1.60), (0.66, 0.78, 0.86, 0.40))
-    px = wx - 1.6
-    make_box("PumpIsland_Base", (px, ROOM_D/2.0, 0.10), (1.20, 2.00, 0.20), (0.36, 0.36, 0.38, 1.0))
-    for pi, py in enumerate([ROOM_D/2.0-0.7, ROOM_D/2.0+0.7]):
-        make_box(f"Pump_{pi}_Body", (px, py, 0.85), (0.40, 0.50, 1.40), (0.86, 0.28, 0.24, 1.0))
-        make_box(f"Pump_{pi}_Screen", (px-0.22, py, 1.15), (0.02, 0.34, 0.30), (0.12, 0.16, 0.20, 1.0))
-        make_cyl(f"Pump_{pi}_Hose", (px-0.24, py+0.28, 0.90), 0.02, 0.50, P.METAL_BLACK)
-    make_box("Canopy_Beam", (px, ROOM_D/2.0, 3.20), (1.60, 2.60, 0.30), (0.90, 0.90, 0.92, 1.0))
-    for ci, cy in enumerate([ROOM_D/2.0-0.9, ROOM_D/2.0+0.9]):
-        make_cyl(f"Canopy_Post_{ci}", (px+0.5, cy, 1.70), 0.08, 3.00, P.METAL_STEEL, segments=8)
+    # SIX pumps on three islands, navy-branded — "The unmarked van
+    # is at pump six" needs a pump six to be at
+    for isl, px in enumerate((wx - 1.6, wx - 3.4, wx - 5.2)):
+        make_box(f"PumpIsland_{isl}_Base", (px, ROOM_D/2.0, 0.10), (1.20, 2.00, 0.20), (0.36, 0.36, 0.38, 1.0))
+        for pi, py in enumerate([ROOM_D/2.0-0.7, ROOM_D/2.0+0.7]):
+            n = isl * 2 + pi
+            make_box(f"Pump_{n}_Body", (px, py, 0.85), (0.40, 0.50, 1.40), COL_ACCENT)
+            make_box(f"Pump_{n}_Screen", (px-0.22, py, 1.15), (0.02, 0.34, 0.30), (0.12, 0.16, 0.20, 1.0))
+            make_box(f"Pump_{n}_NumTag", (px-0.22, py, 1.52), (0.015, 0.14, 0.14), (0.90, 0.90, 0.92, 1.0))
+            make_cyl(f"Pump_{n}_Hose", (px-0.24, py+0.28, 0.90), 0.02, 0.50, P.METAL_BLACK)
+    make_box("Canopy_Beam", (wx - 3.4, ROOM_D/2.0, 3.20), (5.4, 2.60, 0.30), (0.90, 0.90, 0.92, 1.0))
+    make_box("Canopy_Trim", (wx - 3.4, ROOM_D/2.0, 3.02), (5.5, 2.70, 0.08), COL_ACCENT)
+    for ci, (cx2, cy) in enumerate([(wx-1.1, ROOM_D/2.0-0.9), (wx-1.1, ROOM_D/2.0+0.9),
+                                     (wx-5.7, ROOM_D/2.0-0.9), (wx-5.7, ROOM_D/2.0+0.9)]):
+        make_cyl(f"Canopy_Post_{ci}", (cx2, cy, 1.70), 0.08, 3.00, P.METAL_STEEL, segments=8)
+    # No-smoking placard + waste bin at the island end
+    make_box("NoSmoking_Placard", (wx-1.6, ROOM_D/2.0-1.15, 1.60), (0.04, 0.26, 0.20), (0.90, 0.90, 0.92, 1.0))
+    make_box("NoSmoking_Bar", (wx-1.6, ROOM_D/2.0-1.16, 1.60), (0.03, 0.22, 0.04), (0.72, 0.20, 0.18, 1.0))
+    make_cyl("Pump_Bin", (wx-1.0, ROOM_D/2.0-1.3, 0.40), 0.20, 0.80, (0.30, 0.32, 0.34, 1.0), segments=10)
 
 def build_brand_and_register():
     # Backlit brand sign on the north wall behind the register
@@ -92,6 +102,45 @@ def build_brand_and_register():
         for c in range(5):
             make_box(f"Impulse_{r}_{c}", (ROOM_W/4.0-0.72+c*0.36, ROOM_D-1.5-0.62, 0.62+r*0.22),
                      (0.14, 0.03, 0.16), P.SNACK_TINTS[(r+c) % len(P.SNACK_TINTS)])
+
+def build_hero_props():
+    """2026-08-03 hero-prop pass: the restroom (Boyd's whole "Nine
+    Minutes" scene — and the Demon in the plumbing), the entry door,
+    the dumpster Vince's sedan waits near, the vape back-bar, the
+    security dome, the pole sign."""
+    # Restroom alcove off the N wall: door, tiled wall, toilet, pipe
+    make_box("Restroom_Door", (-2.4, ROOM_D-0.05, 1.03), (0.80, 0.06, 2.05), (0.62, 0.60, 0.56, 1.0))
+    make_box("Restroom_Plaque", (-2.4, ROOM_D-0.09, 1.75), (0.22, 0.02, 0.10), (0.30, 0.34, 0.44, 1.0))
+    # Alcove built as an attached box behind the wall
+    make_box("Restroom_Shell", (-2.4, ROOM_D+0.85, 1.20), (2.0, 1.7, 2.40), (0.66, 0.68, 0.66, 1.0))
+    make_box("Restroom_Tile", (-2.4, ROOM_D+1.62, 1.10), (1.8, 0.05, 2.0), (0.78, 0.82, 0.80, 1.0))
+    make_box("Restroom_Toilet_Base", (-2.4, ROOM_D+1.25, 0.22), (0.40, 0.55, 0.44), (0.90, 0.90, 0.88, 1.0))
+    make_box("Restroom_Toilet_Tank", (-2.4, ROOM_D+1.50, 0.62), (0.42, 0.18, 0.40), (0.90, 0.90, 0.88, 1.0))
+    make_cyl("Restroom_Sink", (-1.7, ROOM_D+1.35, 0.80), 0.18, 0.10, (0.90, 0.90, 0.88, 1.0), segments=10)
+    # The plumbing run (something for the plumbing-class Demon to
+    # live in): exposed pipe from the restroom down the back wall
+    make_cyl("Plumbing_Run", (-1.2, ROOM_D-0.10, 1.9), 0.035, 2.6, (0.52, 0.50, 0.46, 1.0), axis='X', segments=8)
+    # Entry door leaf with push-bar
+    make_box("Entry_Door", (0.0, 0.03, 1.02), (1.90, 0.04, 2.04), (0.30, 0.30, 0.34, 1.0))
+    make_box("Entry_Door_Glass", (0.0, 0.02, 1.20), (1.50, 0.02, 1.55), (0.66, 0.78, 0.86, 0.4))
+    make_box("Entry_PushBar", (0.0, 0.06, 1.05), (1.30, 0.03, 0.06), (0.60, 0.62, 0.64, 1.0))
+    # Dumpster on the lot side away from the pumps
+    make_box("Dumpster", (5.2, 7.6, 0.60), (1.80, 1.20, 1.20), (0.24, 0.36, 0.30, 1.0))
+    make_box("Dumpster_Lid", (5.2, 7.6, 1.24), (1.84, 1.24, 0.08), (0.20, 0.30, 0.26, 1.0))
+    # Vape/cig back-bar behind the register
+    make_box("Vape_Backbar", (ROOM_W/4.0, ROOM_D-0.25, 1.75), (1.80, 0.30, 0.70), (0.30, 0.30, 0.34, 1.0))
+    for r in range(2):
+        for c in range(6):
+            make_box(f"Vape_Pack_{r}_{c}", (ROOM_W/4.0-0.75+c*0.30, ROOM_D-0.38, 1.55+r*0.32),
+                     (0.14, 0.03, 0.18), P.SNACK_TINTS[(r*3+c) % len(P.SNACK_TINTS)])
+    # Security dome covering register + door line
+    make_cyl("Security_Dome", (0.0, 5.7, 2.72), 0.10, 0.08, (0.16, 0.16, 0.20, 1.0), segments=10)
+    # Fuel-price pole sign out west
+    make_cyl("Price_Pole", (-9.0, 1.0, 2.5), 0.12, 5.0, P.METAL_STEEL, segments=8)
+    make_box("Price_Sign", (-9.0, 1.0, 5.4), (0.15, 1.6, 1.4), COL_ACCENT)
+    for di in range(3):
+        make_box(f"Price_Digits_{di}", (-8.91, 1.0, 5.75 - di * 0.40), (0.02, 1.2, 0.26), (0.94, 0.94, 0.90, 1.0))
+
 
 def main():
     clear_scene()
@@ -104,6 +153,7 @@ def main():
     build_storefront()
     build_brand_and_register()
     build_ceiling_infra()
+    build_hero_props()
     out = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)),
         "../../../assets/3d/locales/nexcorp_fueling_station.glb"))
     print(f"\n[build_nexcorp_fueling_station] exporting to {out}")

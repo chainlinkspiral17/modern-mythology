@@ -236,6 +236,71 @@ def build_dressing():
     make_cyl("Stool_Seat", (ROOM_W/4.0 - 0.7, ROOM_D - 2.6, 0.56), 0.18, 0.06, P.METAL_BLACK, segments=12)
     make_cyl("Stool_Post", (ROOM_W/4.0 - 0.7, ROOM_D - 2.6, 0.28), 0.03, 0.54, P.METAL_STEEL, segments=8)
 
+def build_hero_props():
+    """2026-08-03 hero-prop pass — the props the vol6 comics-floor
+    scenes name. Frame: x -5..5, y 0 storefront .. 8 back wall."""
+    brass = (0.74, 0.58, 0.28, 1.0)
+    wood = (0.42, 0.30, 0.18, 1.0)
+    # THE PAINTED GALACTUS on the front window + the purple bars it
+    # lays across the floor in the ten-AM light
+    make_box("Galactus_Paint", (-3.0, 0.12, 1.55), (2.50, 0.01, 1.40), (0.44, 0.26, 0.58, 0.55))
+    make_box("Galactus_Helm", (-3.0, 0.13, 2.05), (1.30, 0.01, 0.55), (0.34, 0.18, 0.48, 0.7))
+    make_box("Galactus_Face", (-3.0, 0.135, 1.70), (0.70, 0.01, 0.50), (0.62, 0.48, 0.72, 0.7))
+    for bi in range(4):
+        make_box(f"Galactus_FloorBar_{bi}", (-4.1 + bi * 0.72, 1.7, 0.012),
+                 (0.34, 2.6, 0.006), (0.46, 0.30, 0.58, 0.30))
+    # The brass bell above the door (1994 estate sale)
+    make_box("Bell_Bracket", (0.0, 0.16, 2.40), (0.04, 0.14, 0.04), (0.20, 0.19, 0.20, 1.0))
+    make_cyl("Brass_Bell", (0.0, 0.24, 2.34), 0.05, 0.07, brass, segments=8)
+    # The front door leaf + OPEN/CLOSED card + deadbolt + chain
+    make_box("Front_Door", (0.0, 0.03, 1.02), (1.90, 0.04, 2.04), (0.30, 0.28, 0.26, 1.0))
+    make_box("Front_Door_Glass", (0.0, 0.02, 1.20), (1.50, 0.02, 1.55), (0.45, 0.52, 0.60, 0.5))
+    make_box("Open_Sign", (0.45, 0.055, 1.60), (0.30, 0.01, 0.20), (0.86, 0.82, 0.72, 1.0))
+    make_box("Open_Sign_Text", (0.45, 0.06, 1.60), (0.22, 0.008, 0.09), (0.62, 0.20, 0.16, 1.0))
+    make_box("Door_Deadbolt", (0.80, 0.06, 1.05), (0.06, 0.03, 0.10), brass)
+    make_box("Door_Chain", (0.70, 0.06, 1.55), (0.10, 0.02, 0.03), (0.60, 0.62, 0.64, 1.0))
+    # Back-office doorway + the one-way mirror beside it (N wall)
+    make_box("Office_Doorframe", (3.6, 7.96, 1.08), (1.10, 0.10, 2.16), wood)
+    make_box("Office_Doorway_Dark", (3.6, 7.92, 1.05), (0.95, 0.06, 2.05), (0.10, 0.09, 0.08, 1.0))
+    make_box("OneWay_Frame", (1.6, 7.95, 1.70), (1.30, 0.06, 1.00), (0.30, 0.26, 0.22, 1.0))
+    make_box("OneWay_Mirror", (1.6, 7.92, 1.70), (1.20, 0.04, 0.90), (0.46, 0.52, 0.56, 1.0))
+    # The small bench by the front window (Rick, 2018, for waiting kids)
+    make_box("Window_Bench", (-3.0, 1.05, 0.42), (1.60, 0.42, 0.06), wood)
+    for lx in (-3.65, -2.35):
+        make_box(f"Window_Bench_Leg_{lx:.2f}", (lx, 1.05, 0.20), (0.08, 0.36, 0.40), (0.32, 0.22, 0.14, 1.0))
+    # Shelf under the register (the Speak & Spell + Maya's wallet
+    # ride here) + the small waste bin
+    make_box("Register_UnderShelf", (2.5, 6.7, 0.55), (2.20, 0.70, 0.04), wood)
+    make_box("Register_Bin", (3.4, 6.8, 0.18), (0.30, 0.30, 0.36), (0.34, 0.36, 0.38, 1.0))
+    # The floor census sections: manga wall (E), YA shelf (W),
+    # Pokemon endcap, indie rack, new-arrivals table
+    make_box("Manga_Wall", (4.72, 5.0, 1.10), (0.30, 2.60, 2.20), wood)
+    for r in range(4):
+        for c in range(8):
+            make_box(f"Manga_{r}_{c}", (4.55, 3.85 + c * 0.30, 0.35 + r * 0.52),
+                     (0.16, 0.24, 0.34), [(0.86, 0.80, 0.72, 1.0), (0.74, 0.30, 0.30, 1.0),
+                                          (0.30, 0.44, 0.62, 1.0)][(r + c) % 3])
+    make_box("YA_Shelf", (-4.72, 2.4, 0.90), (0.30, 1.80, 1.80), wood)
+    for r in range(3):
+        for c in range(6):
+            make_box(f"YA_{r}_{c}", (-4.55, 1.62 + c * 0.28, 0.35 + r * 0.55),
+                     (0.16, 0.22, 0.32), [(0.62, 0.24, 0.24, 1.0), (0.24, 0.42, 0.52, 1.0),
+                                          (0.72, 0.62, 0.30, 1.0)][(r * 2 + c) % 3])
+    make_box("Pokemon_Endcap", (-2.6, 1.2, 0.65), (0.80, 0.45, 1.30), (0.72, 0.20, 0.20, 1.0))
+    make_box("Pokemon_Topper", (-2.6, 1.2, 1.38), (0.60, 0.35, 0.16), (0.94, 0.82, 0.24, 1.0))
+    make_box("Indie_Rack", (-3.6, 2.6, 0.62), (0.90, 0.60, 1.24), wood)
+    for ti in range(3):
+        make_box(f"Indie_Talker_{ti}", (-3.85 + ti * 0.25, 2.28, 1.30), (0.16, 0.02, 0.10),
+                 (0.94, 0.90, 0.78, 1.0))
+    make_box("NewArrivals_Table", (0.0, 2.0, 0.40), (1.40, 0.80, 0.06), wood)
+    for lx, ly in ((-0.6, 1.68), (0.6, 1.68), (-0.6, 2.32), (0.6, 2.32)):
+        make_box(f"NewArrivals_Leg_{lx:.1f}_{ly:.2f}", (lx, ly, 0.20), (0.06, 0.06, 0.40), (0.32, 0.22, 0.14, 1.0))
+    for ci in range(6):
+        make_box(f"NewArrivals_Comic_{ci}", (-0.55 + (ci % 3) * 0.55, 1.82 + (ci // 3) * 0.38, 0.445),
+                 (0.30, 0.42, 0.01), [(0.74, 0.30, 0.30, 1.0), (0.30, 0.44, 0.62, 1.0),
+                                      (0.86, 0.72, 0.28, 1.0)][ci % 3])
+
+
 def main():
     clear_scene()
     build_shell()
@@ -256,6 +321,7 @@ def main():
     out = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)),
         "../../../assets/3d/locales/cosmic_comics_interior.glb"))
     print(f"\n[build_cosmic_comics_interior] exporting to {out}")
+    build_hero_props()
     export_glb(out)
 
 if __name__ == "__main__":

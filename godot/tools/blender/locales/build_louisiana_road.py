@@ -47,7 +47,7 @@ COL_STREETSIGN_G = (0.20, 0.46, 0.32, 1.0)
 # spans +/-Y (godot +/-Z), so the practicals sit at both +Z and -Z (not a bug).
 LAMP_FIXTURES = [
     (-3.7, -2.0, -2.8), (-3.7, 6.0, -2.8), (-3.7, 14.0, -2.8),  # west verge
-    (+4.2, 2.0, 2.9), (+4.2, 10.0, 2.9),                        # east verge
+    (+5.4, 2.0, 3.0), (+5.4, 10.0, 3.0),                        # east verge
 ]
 
 
@@ -125,7 +125,7 @@ def build_signs_and_markers():
 
 def build_sky_backdrop():
     # Large sky-color plane far behind (north) — at distance acts as horizon backdrop
-    make_box("SkyBackdrop", (0.0, 24.0, 6.0), (40.0, 0.04, 12.0), COL_SKY)
+    make_box("SkyBackdrop", (0.0, 30.0, 11.0), (56.0, 0.04, 22.0), COL_SKY)
     # A few cloud puffs
     for ci, (cx, cz) in enumerate([(-8.0, 8.0), (-2.0, 9.5), (5.0, 8.5), (12.0, 9.0)]):
         make_cyl(f"Cloud_{ci}", (cx, 23.9, cz), 1.40, 0.20, (0.26, 0.28, 0.36, 1.0), axis='Y', segments=10)
@@ -173,16 +173,16 @@ def build_roadside_detail():
                 sag = 0.55 * _m.sin(_m.pi * tm)   # dip lowest mid-span
                 make_cyl(f"Wire_{i}_{seg}", (pole_x, py + span * tm, top_z - 0.30 - sag),
                          0.012, span / 4.0 + 0.05, wire_col, segments=3, axis='Y')
-    # ── Guardrail on the SWAMP (west) side, x=-2.5, dented ──
+    # ── Guardrail on the SWAMP (east) side, x=+3.0, dented ──
     for i in range(9):
         gy = -3.0 + i * 3.0
         dent = 0.05 if i == 5 else 0.0   # one bashed post
-        make_box(f"Guardrail_Beam_{i}", (-2.5 - dent, gy + 1.5, 0.55),
+        make_box(f"Guardrail_Beam_{i}", (3.0 + dent, gy + 1.5, 0.55),
                  (0.04, 3.0, 0.16), steel)
-        make_cyl(f"Guardrail_Post_{i}", (-2.5, gy, 0.28), 0.05, 0.56,
+        make_cyl(f"Guardrail_Post_{i}", (3.0, gy, 0.28), 0.05, 0.56,
                  steel_dk, segments=5)
     # ── Stalled sedan on the WEST shoulder, nosed north ──
-    cxp, cyp = -3.1, 8.0
+    cxp, cyp = -2.55, 8.0
     body = (0.46, 0.16, 0.16, 1.0)
     glass = (0.20, 0.26, 0.30, 1.0)
     make_box("Sedan_LowerBody", (cxp, cyp, 0.44), (1.7, 4.0, 0.5), body)
@@ -200,9 +200,10 @@ def build_roadside_detail():
     make_box("Sedan_Bumper_F", (cxp, cyp + 2.02, 0.42), (1.6, 0.10, 0.24), steel)
     make_box("Sedan_HoodUp", (cxp, cyp + 1.3, 1.02), (1.4, 1.2, 0.06),
              (0.42, 0.15, 0.15, 1.0))   # hood popped (broken down)
-    # ── Cattail reed clumps in the swamp (west of guardrail) ──
-    for i, (rx, ry) in enumerate([(-5.5, 2.0), (-6.2, 9.0), (-4.8, 15.0),
-                                  (-7.0, 20.0), (-5.0, -4.0)]):
+    # ── Cattail reed clumps in the swamp (EAST — where the water
+    # actually is; they used to stand on the mowed west lawn) ──
+    for i, (rx, ry) in enumerate([(7.6, 2.0), (8.2, 9.0), (6.8, 15.0),
+                                  (8.4, 20.0), (7.2, -4.0)]):
         for b in range(5):
             a = b * 1.3
             bx = rx + _m.cos(a) * 0.18; by = ry + _m.sin(a) * 0.18
@@ -366,6 +367,39 @@ def build_suburban_street():
     make_box("StreetSign_Text", (-3.03, -5.0, 2.3), (0.005, 0.9, 0.12), P.PAPER)
 
 
+def build_vol6_landmarks():
+    """2026-08-03 hero-prop pass: the civic reads the vol6 prose
+    keeps naming — the Harmony Creek water tower (62 ft), the gas
+    station the sign already advertised (canopy + pumps + store),
+    the traffic light over its exit, the NAPD SUBSTATION B sign."""
+    steel = (0.55, 0.57, 0.58, 1.0)
+    # Water tower, SW skyline (62 ft ~ 18.9 m)
+    for li, (dx, dy) in enumerate(((-2.2, -2.2), (2.2, -2.2), (-2.2, 2.2), (2.2, 2.2))):
+        make_cyl(f"WTower_Leg_{li}", (-18.0 + dx, 21.0 + dy, 7.0), 0.20, 14.0, steel, segments=8)
+    make_cyl("WTower_Tank", (-18.0, 21.0, 16.2), 3.0, 4.6, (0.72, 0.74, 0.76, 1.0), segments=14)
+    make_cyl("WTower_Cap", (-18.0, 21.0, 18.8), 2.2, 0.8, (0.62, 0.64, 0.66, 1.0), segments=14)
+    make_box("WTower_Band", (-18.0, 20.9, 16.2), (6.2, 0.05, 1.0), (0.30, 0.44, 0.62, 1.0))
+    # The gas station behind its sign (canopy, two islands, store)
+    make_box("Gas_Canopy", (7.5, 20.0, 4.85), (10.0, 8.0, 0.5), (0.90, 0.90, 0.92, 1.0))
+    for ci, (cx, cy) in enumerate(((4.0, 17.0), (11.0, 17.0), (4.0, 23.0), (11.0, 23.0))):
+        make_cyl(f"Gas_Canopy_Post_{ci}", (cx, cy, 2.3), 0.16, 4.6, steel, segments=8)
+    for ii, (ix, iy) in enumerate(((5.8, 18.8), (9.2, 18.8), (5.8, 21.2), (9.2, 21.2))):
+        make_box(f"Gas_Pump_{ii}", (ix, iy, 0.85), (0.45, 0.55, 1.40), (0.18, 0.32, 0.50, 1.0))
+    make_box("Gas_Store", (13.5, 20.0, 1.8), (6.0, 8.0, 3.6), (0.66, 0.62, 0.55, 1.0))
+    make_box("Gas_Store_Glow", (10.55, 20.0, 1.4), (0.06, 5.0, 1.6), (0.98, 0.84, 0.55, 1.0))
+    # Traffic light over the gas-station exit (the crow's perch)
+    make_cyl("Signal_Mast", (3.0, 17.0, 3.0), 0.10, 6.0, steel, segments=8)
+    make_box("Signal_Arm", (4.75, 17.0, 5.8), (3.5, 0.09, 0.09), steel)
+    make_box("Signal_Head", (6.3, 17.0, 5.35), (0.30, 0.30, 0.90), (0.16, 0.16, 0.18, 1.0))
+    for si, (sz, col) in enumerate(((5.62, (0.72, 0.20, 0.16, 1.0)), (5.35, (0.86, 0.64, 0.20, 1.0)),
+                                    (5.08, (0.26, 0.62, 0.30, 1.0)))):
+        make_cyl(f"Signal_Lamp_{si}", (6.16, 17.0, sz), 0.08, 0.03, col, axis='X', segments=8)
+    # NAPD SUBSTATION B — hand-touched-up dark-blue enamel
+    make_box("NAPD_Base", (-4.35, 12.0, 0.25), (0.30, 1.9, 0.50), (0.52, 0.50, 0.46, 1.0))
+    make_box("NAPD_Sign", (-4.35, 12.0, 0.95), (0.15, 1.8, 0.90), (0.12, 0.18, 0.38, 1.0))
+    make_box("NAPD_Text", (-4.26, 12.0, 1.05), (0.02, 1.4, 0.30), (0.86, 0.86, 0.82, 1.0))
+
+
 def main():
     clear_scene()
     build_sky_backdrop()
@@ -375,6 +409,7 @@ def main():
     build_signs_and_markers()
     build_roadside_detail()
     build_suburban_street()
+    build_vol6_landmarks()
     out = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)), "../../../assets/3d/locales/louisiana_road.glb"))
     print(f"\n[build_louisiana_road] exporting to {out}")
     export_glb(out)

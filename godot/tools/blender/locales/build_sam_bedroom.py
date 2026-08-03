@@ -33,7 +33,9 @@ def build_shell():
     make_wall("Wall_S_W", (-(ROOM_W/4.0+0.5), 0.0, 0), length=ROOM_W/2.0-1.0, height=CEIL, axis='X', palette=PAL_WALL)
     make_wall("Wall_S_E", (+(ROOM_W/4.0+0.5), 0.0, 0), length=ROOM_W/2.0-1.0, height=CEIL, axis='X', palette=PAL_WALL)
     make_box("Wall_S_AboveDoor", (0.0, 0.0, CEIL-0.30), (2.0, 0.20, 0.60), PAL_WALL["wall"])
-    make_ceiling("Ceil", (0.0, ROOM_D/2.0, CEIL), size_x=ROOM_W+0.4, size_y=ROOM_D+0.4)
+    make_ceiling("Ceil", (0.0, ROOM_D/2.0, CEIL), size_x=ROOM_W+0.4, size_y=ROOM_D+0.4,
+                 with_grid=False, with_stains=False,
+                 palette={"tile": (0.90, 0.90, 0.86, 1.0)})
 
 def build_bed():
     # Captain's bed: raised frame with a row of storage drawers underneath.
@@ -88,10 +90,20 @@ def build_win():
     make_window("Window_N", (0.0, ROOM_D-0.02, 1.50), width=1.20, height=1.00)
 
 def build_ceiling_infra():
-    for j in range(2):
-        ypos = ROOM_D * (0.30 + j * 0.40)
-        make_fluorescent_tube_fixture(f"Fluor_{j}", (0.0, ypos, CEIL), length=1.40, width=0.34)
-    make_smoke_detector("Smoke", (0.0, ROOM_D/2.0, CEIL))
+    # THE CEILING FAN — clicks on the third, sixth, ninth rotation.
+    # The most-repeated object in Sam's room; the fluorescents that
+    # occupied its centreline are gone.
+    make_cyl("Fan_Downrod", (0.0, 2.5, CEIL-0.10), 0.02, 0.20, P.METAL_BLACK, segments=6)
+    make_cyl("Fan_Hub", (0.0, 2.5, CEIL-0.24), 0.11, 0.10, P.METAL_BLACK, segments=10)
+    import math as _m
+    for bi in range(5):
+        ang = bi * (2.0 * _m.pi / 5.0)
+        make_box(f"Fan_Blade_{bi}", (0.45 * _m.cos(ang), 2.5 + 0.45 * _m.sin(ang), CEIL-0.26),
+                 (0.62 if abs(_m.cos(ang)) > 0.5 else 0.18,
+                  0.18 if abs(_m.cos(ang)) > 0.5 else 0.62, 0.02),
+                 (0.44, 0.32, 0.22, 1.0))
+    make_smoke_detector("Smoke", (0.9, ROOM_D/2.0, CEIL))
+
 
 def build_dressing():
     """Comics-and-games clutter: a nightstand + clock, a shelf of comic
@@ -131,6 +143,33 @@ def build_dressing():
     # Single small sprout on the windowsill (wires the imported helper)
     make_floor_plant("Sill_Sprout", (0.5, ROOM_D-0.4, 0.0), palette={"leaf": (0.40, 0.58, 0.34, 1.0), "pot": (0.30, 0.42, 0.30, 1.0)})
 
+def build_hero_props():
+    """2026-08-03 hero-prop pass: box spring (the notebook's hiding
+    place), the 99-cent spiral notebook at the mattress seam,
+    curtains, dresser + phone, closet doors, bedside lamp."""
+    # Box spring under the mattress — "She slides it between the
+    # mattress and the box spring."
+    make_box("Box_Spring", (-1.0, 2.5, 0.50), (1.12, 1.72, 0.14), (0.86, 0.84, 0.78, 1.0))
+    make_box("Sams_Notebook", (-0.55, 2.10, 0.58), (0.16, 0.22, 0.012), (0.72, 0.62, 0.30, 1.0))
+    # Curtains on the N window
+    make_cyl("Curtain_Rod", (0.0, 4.88, 2.14), 0.015, 1.60, (0.20, 0.19, 0.20, 1.0), axis='X', segments=6)
+    for cx in (-0.72, 0.72):
+        make_box(f"Curtain_{cx:+.2f}", (cx, 4.88, 1.50), (0.44, 0.04, 1.20), (0.55, 0.60, 0.70, 1.0))
+    # Dresser with the phone on it ("Sam's phone, on her dresser,
+    # buzzes")
+    make_box("Dresser", (1.62, 2.0, 0.42), (0.50, 1.00, 0.84), (0.46, 0.34, 0.22, 1.0))
+    for di in range(3):
+        make_box(f"Dresser_Drawer_{di}", (1.36, 2.0, 0.20 + di * 0.26), (0.02, 0.86, 0.20), (0.38, 0.28, 0.18, 1.0))
+    make_box("Sams_Phone", (1.62, 2.0, 0.855), (0.08, 0.15, 0.012), (0.12, 0.12, 0.14, 1.0))
+    # Closet bi-fold in the S wall east segment
+    for ci, cx in enumerate((1.10, 1.60)):
+        make_box(f"Closet_Leaf_{ci}", (cx, 0.10, 1.05), (0.48, 0.05, 2.10), (0.82, 0.80, 0.74, 1.0))
+    # Bedside lamp on the nightstand
+    make_cyl("Bedside_Lamp_Base", (-0.05, 3.2, 0.62), 0.08, 0.03, (0.42, 0.30, 0.18, 1.0), segments=10)
+    make_cyl("Bedside_Lamp_Post", (-0.05, 3.2, 0.74), 0.015, 0.22, (0.20, 0.19, 0.20, 1.0), segments=6)
+    make_cyl("Bedside_Lamp_Shade", (-0.05, 3.2, 0.88), 0.11, 0.16, (0.86, 0.78, 0.62, 1.0), segments=10)
+
+
 def main():
     clear_scene()
     build_shell()
@@ -141,6 +180,7 @@ def main():
     build_win()
     build_ceiling_infra()
     build_dressing()
+    build_hero_props()
     out = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)),
         "../../../assets/3d/locales/sam_bedroom.glb"))
     print(f"\n[build_sam_bedroom] exporting to {out}")

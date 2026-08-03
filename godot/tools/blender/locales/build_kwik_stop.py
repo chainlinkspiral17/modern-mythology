@@ -2827,6 +2827,64 @@ def export_glb():
         print(f"[build_kwik_stop] ✓ wrote {out_path} ({size} bytes)")
 
 
+def build_hero_props_2026_08():
+    """2026-08-03 hero-prop pass — vol6's most-repeated fixtures.
+    Frame: x -6..6, y 0 storefront .. 9 north wall, counter L at
+    east (cx 5.0, cy 4.5, top 1.04)."""
+    wood = (0.42, 0.30, 0.18, 1.0)
+    steel = (0.60, 0.62, 0.63, 1.0)
+    # THE THREE TABLES BY THE WINDOW (the Red Peugeot chapter lives
+    # here). One aligned to the existing west outlet.
+    for ti, tx in enumerate((-4.4, -3.5, -2.6)):
+        make_box(f"WinTable_{ti}_Top", (tx, 1.05, 0.74), (0.70, 0.70, 0.04), wood)
+        make_cyl(f"WinTable_{ti}_Post", (tx, 1.05, 0.37), 0.05, 0.70, steel, segments=8)
+        make_cyl(f"WinTable_{ti}_Foot", (tx, 1.05, 0.03), 0.24, 0.03, steel, segments=10)
+        for ci, cy in enumerate((0.55, 1.55)):
+            make_box(f"WinChair_{ti}_{ci}_Seat", (tx, cy, 0.44), (0.38, 0.38, 0.04), (0.62, 0.28, 0.24, 1.0))
+            make_box(f"WinChair_{ti}_{ci}_Back", (tx, cy + (0.17 if ci else -0.17), 0.70),
+                     (0.38, 0.04, 0.48), (0.55, 0.24, 0.20, 1.0))
+    # THE MICROWAVE, its clock set nine minutes fast on purpose —
+    # green LED face, on the coffee/food counter
+    make_box("Microwave", (-4.6, 3.2, 1.22), (0.50, 0.36, 0.30), (0.26, 0.26, 0.28, 1.0))
+    make_box("Microwave_Door", (-4.6, 3.01, 1.22), (0.38, 0.02, 0.24), (0.12, 0.12, 0.14, 1.0))
+    make_box("Microwave_ClockLED", (-4.42, 3.005, 1.30), (0.10, 0.015, 0.035), (0.30, 0.92, 0.42, 1.0))
+    # THE ACTUAL CLOCK — second face by the office door, east wall.
+    # The pairing with the fast microwave clock is the point.
+    make_cyl("Clock_Office_Face", (5.88, 8.05, 2.10), 0.16, 0.04, (0.92, 0.90, 0.84, 1.0), axis='X', segments=14)
+    make_box("Clock_Office_HandH", (5.85, 8.02, 2.12), (0.02, 0.015, 0.08), (0.14, 0.14, 0.15, 1.0))
+    make_box("Clock_Office_HandM", (5.85, 8.09, 2.11), (0.02, 0.10, 0.015), (0.14, 0.14, 0.15, 1.0))
+    # The back office door (Jen's deposit paperwork) + lit pocket
+    make_box("Office_Doorframe", (5.94, 7.2, 1.08), (0.10, 0.98, 2.16), wood)
+    make_box("Office_Door_Open", (5.90, 7.2, 1.05), (0.05, 0.85, 2.05), (0.50, 0.40, 0.28, 1.0))
+    make_box("Office_Light_Pocket", (5.97, 7.2, 1.30), (0.02, 0.70, 1.70), (0.98, 0.92, 0.72, 1.0))
+    # The employee bathroom door, north wall — RESTROOM plaque
+    make_box("Restroom_Door", (3.6, 8.94, 1.03), (0.80, 0.06, 2.05), (0.62, 0.60, 0.56, 1.0))
+    make_box("Restroom_Plaque", (3.6, 8.90, 1.75), (0.24, 0.02, 0.10), (0.30, 0.34, 0.44, 1.0))
+    # The layered window decals on the west picture window: lottery,
+    # dead cigarette brand, and the TASTE HOME hamburger missing an
+    # eye (ported in from the exterior shell where it was hiding)
+    make_box("Decal_Lottery", (-4.1, -0.02, 1.62), (0.55, 0.01, 0.40), (0.90, 0.72, 0.24, 0.85))
+    make_box("Decal_Cigs", (-3.4, -0.025, 1.45), (0.50, 0.01, 0.35), (0.70, 0.28, 0.24, 0.85))
+    make_box("Decal_Burger", (-2.9, -0.03, 1.30), (0.45, 0.01, 0.45), (0.88, 0.62, 0.30, 0.9))
+    make_box("Decal_Burger_Sign", (-2.9, -0.035, 1.10), (0.30, 0.008, 0.12), (0.94, 0.90, 0.80, 0.9))
+    make_box("Decal_Burger_Eye", (-2.98, -0.035, 1.40), (0.05, 0.008, 0.05), (0.14, 0.14, 0.15, 1.0))
+    # Convex security mirror above the door, angled at the counter
+    make_cyl("Convex_Mirror", (0.0, 0.30, 2.55), 0.28, 0.06, (0.62, 0.68, 0.72, 1.0), axis='Y', segments=14)
+    make_cyl("Convex_Mirror_Rim", (0.0, 0.27, 2.55), 0.30, 0.02, (0.94, 0.42, 0.20, 1.0), axis='Y', segments=14)
+    # Rubber anti-fatigue mat on the working side of the counter
+    make_box("AntiFatigue_Mat", (5.55, 4.5, 0.010), (0.80, 3.60, 0.015), (0.14, 0.14, 0.15, 1.0))
+    # Employee break nook, NE corner: bench + two lockers
+    make_box("Break_Bench", (4.8, 8.35, 0.42), (1.10, 0.40, 0.06), wood)
+    for li, lx in enumerate((4.45, 4.85)):
+        make_box(f"Break_Locker_{li}", (lx, 8.75, 0.95), (0.38, 0.35, 1.90), (0.44, 0.50, 0.54, 1.0))
+    # Indoor ice-cream novelty cooler (the one acting up)
+    make_box("Novelty_Cooler", (-1.2, 7.4, 0.45), (1.60, 0.80, 0.90), (0.86, 0.88, 0.90, 1.0))
+    make_box("Novelty_Cooler_Lid", (-1.2, 7.4, 0.92), (1.55, 0.75, 0.04), (0.55, 0.62, 0.66, 0.6))
+    make_box("Novelty_Cooler_Decal", (-1.2, 6.99, 0.55), (1.20, 0.01, 0.40), (0.92, 0.56, 0.62, 1.0))
+    # Tip cup at the register
+    make_cyl("Tip_Cup", (4.55, 3.6, 1.12), 0.05, 0.14, (0.80, 0.82, 0.72, 0.7), segments=8)
+
+
 def main():
     clear_scene()
     build_shell()
@@ -2844,6 +2902,7 @@ def main():
     build_polish_pass_3()
     build_polish_pass_4()
     build_polish_pass_5()
+    build_hero_props_2026_08()
     export_glb()
 
 

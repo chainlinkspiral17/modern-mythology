@@ -36,7 +36,9 @@ def build_shell():
     make_wall("Wall_S_W", (-(ROOM_W/4.0+0.5), 0.0, 0), length=ROOM_W/2.0-1.0, height=CEIL, axis='X', palette=PAL_WALL)
     make_wall("Wall_S_E", (+(ROOM_W/4.0+0.5), 0.0, 0), length=ROOM_W/2.0-1.0, height=CEIL, axis='X', palette=PAL_WALL)
     make_box("Wall_S_AboveDoor", (0.0, 0.0, CEIL-0.30), (2.0, 0.20, 0.60), PAL_WALL["wall"])
-    make_ceiling("Ceil", (0.0, ROOM_D/2.0, CEIL), size_x=ROOM_W+0.4, size_y=ROOM_D+0.4)
+    make_ceiling("Ceil", (0.0, ROOM_D/2.0, CEIL), size_x=ROOM_W+0.4, size_y=ROOM_D+0.4,
+                 with_grid=False, with_stains=False,
+                 palette={"tile": (0.96, 0.93, 0.74, 1.0)})  # the pale yellow ceiling
     for nm, ax, length, wx, wy in [
             ("Crown_W", 'Y', ROOM_D, -ROOM_W/2.0+0.10, ROOM_D/2.0),
             ("Crown_E", 'Y', ROOM_D, +ROOM_W/2.0-0.10, ROOM_D/2.0),
@@ -92,11 +94,12 @@ def build_win():
     make_window("Window_N", (0.0, ROOM_D-0.02, 1.50), width=1.20, height=1.00)
 
 def build_ceiling_infra():
-    for j in range(2):
-        ypos = ROOM_D * (0.30 + j * 0.40)
-        make_fluorescent_tube_fixture(f"Fluor_{j}", (0.0, ypos, CEIL), length=1.40, width=0.34)
-    make_smoke_detector("Smoke", (0.0, ROOM_D/2.0, CEIL))
+    # A 1991 bedroom: one dome fixture, no shop tubes (lamp is the
+    # scene light — "She turns off the lamp.")
+    make_cyl("Ceiling_Dome", (0.0, 2.5, CEIL-0.10), 0.16, 0.16, (0.96, 0.90, 0.72, 1.0), segments=12)
+    make_smoke_detector("Smoke", (0.9, ROOM_D/2.0, CEIL))
     make_hvac_vent("HVAC", (-ROOM_W/4.0, ROOM_D-0.5, CEIL), width=0.80, depth=0.40)
+
 
 def build_dressing():
     """Teen-girl dressing: a vanity with a ROUND mirror + trinket bottles,
@@ -146,6 +149,41 @@ def build_dressing():
     for i in range(8):
         make_cyl(f"Fairy_{i}", (-1.4+i*0.4, ROOM_D-0.08, 2.05), 0.028, 0.028, (1.0, 0.84, 0.6, 1.0), segments=6)
 
+def build_hero_props():
+    """2026-08-03 hero-prop pass. THE LOOSE THIRD FLOORBOARD —
+    counted in from the N window, under the pulled-back rug — with
+    the shallow cavity and the sealed manila envelope (the whole of
+    vol6_ch4_maya_floor). Cavity at y=3.30 so it's clear of the bed;
+    the rug re-centres over it."""
+    pine = (0.78, 0.62, 0.38, 1.0)       # worn honey pine
+    pine_dk = (0.66, 0.52, 0.30, 1.0)
+    # Countable plank seams running E-W, 0.14 m apart, over the slab
+    n = int(5.0 / 0.14)
+    for i in range(n):
+        py = 0.07 + i * 0.14
+        make_box(f"Plank_Seam_{i}", (0.0, py, 0.004), (4.0, 0.012, 0.004), pine_dk)
+    make_box("Plank_Field", (0.0, 2.5, 0.002), (4.0, 5.0, 0.003), pine)
+    # The loose board, lifted a crack at one end
+    make_box("Loose_Board", (0.0, 3.30, 0.020), (0.90, 0.13, 0.018), pine_dk)
+    # The cavity + the envelope
+    make_box("Cavity_Void", (0.0, 3.30, -0.035), (0.42, 0.125, 0.07), (0.10, 0.08, 0.06, 1.0))
+    make_box("Manila_Envelope", (0.0, 3.30, -0.008), (0.26, 0.11, 0.006), (0.82, 0.72, 0.50, 1.0))
+    # Rug re-centred so it covers the board when smoothed back
+    # (the build's Rug cyl stays; this ring marks the pulled-back lip)
+    make_cyl("Rug_Fold", (0.0, 3.02, 0.018), 0.55, 0.012, (0.72, 0.42, 0.44, 1.0), segments=14)
+    # The box fan by the window ("The fan is on.")
+    make_box("Box_Fan", (-1.30, 4.40, 0.24), (0.44, 0.16, 0.44), (0.80, 0.78, 0.74, 1.0))
+    make_cyl("Box_Fan_Grille", (-1.30, 4.31, 0.24), 0.17, 0.02, (0.30, 0.30, 0.32, 1.0), axis='Y', segments=12)
+    # The spiral notebook on the desk + the packing-order supplies
+    make_box("Spiral_Notebook", (0.64, 1.62, 0.765), (0.20, 0.26, 0.012), (0.30, 0.44, 0.62, 1.0))
+    make_cyl("Spiral_Coil", (0.545, 1.62, 0.772), 0.008, 0.25, (0.60, 0.62, 0.64, 1.0), axis='Y', segments=6)
+    for si, (sx, col) in enumerate(((0.60, (0.62, 0.24, 0.24, 1.0)), (0.80, (0.24, 0.42, 0.52, 1.0)),
+                                    (1.00, (0.72, 0.62, 0.30, 1.0)), (1.20, (0.86, 0.82, 0.72, 1.0)))):
+        make_box(f"Pack_Supply_{si}", (sx, 1.30, 0.785), (0.14, 0.10, 0.03), col)
+    # Phone on the nightstand
+    make_box("Phone", (0.95, 4.55, 0.585), (0.08, 0.15, 0.012), (0.12, 0.12, 0.14, 1.0))
+
+
 def main():
     clear_scene()
     build_shell()
@@ -156,6 +194,7 @@ def main():
     build_win()
     build_ceiling_infra()
     build_dressing()
+    build_hero_props()
     out = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)),
         "../../../assets/3d/locales/maya_bedroom.glb"))
     print(f"\n[build_maya_bedroom] exporting to {out}")

@@ -1466,6 +1466,34 @@ const CAMERA_PRESETS := {
 		"fov": 62.0,
 		"suppress_input": true,
 	},
+	# ── Vols 5-7 · hero-prop pass (2026-08-03) ───────────────────
+	"cabin_road": {
+		"scene": "res://scenes/locales/cabin_road.tscn",
+		"requires_glb": "res://assets/3d/locales/cabin_road.glb",
+		# vol7's road, split off louisiana_road (the prose is Oregon:
+		# Sitka stand, creek crossings, asphalt giving out to gravel,
+		# the switchback). Camera on the asphalt looking N up the
+		# climb: transition line at z=-6, creek at z=-10, the bend
+		# swinging east, mist in the stand, the clearing gap ahead.
+		"camera_origin": Vector3(0.3, 1.70, -2.0),
+		"camera_rotation": Vector3(0.02, deg_to_rad(-4.0), 0.0),
+		"fov": 62.0,
+		"suppress_input": true,
+	},
+	"nexcorp_gas_go": {
+		"scene": "res://scenes/locales/nexcorp_gas_go.tscn",
+		"requires_glb": "res://assets/3d/locales/nexcorp_gas_go.glb",
+		# The Harmony Creek Gas & Go (Skip's shift) — its rich build
+		# existed with no tscn while its scenes played over the
+		# FM-3411 fueling station. Interior 12×9, pumps + canopy
+		# beyond the south glass, locker room back-NW (#4 is
+		# Skip's). Camera inside the door looking N across the
+		# store to the counter.
+		"camera_origin": Vector3(0.0, 1.65, -1.5),
+		"camera_rotation": Vector3(-0.02, deg_to_rad(10.0), 0.0),
+		"fov": 64.0,
+		"suppress_input": true,
+	},
 	"cliffside_circus": {
 		"scene": "res://scenes/locales/cliffside_circus.tscn",
 		"requires_glb": "res://assets/3d/locales/cliffside_circus.glb",

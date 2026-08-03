@@ -1,0 +1,137 @@
+"""cabin_road — the road to Tem's cabin, Oregon coast (vol7's ~20
+road scenes, split off louisiana_road 2026-08-03: the prose is "the
+switchbacks above the third creek crossing where the asphalt gave
+out and the gravel started," Sitka stands, alders, cedars — nothing
+a Louisiana swamp road can play).
+
+Hero features: the asphalt-to-gravel transition line, the creek
+crossing (culvert pipe under the roadbed, water band, mossed
+stones), the switchback bend climbing away right, dense Sitka
+spruce + cedar walls with alder lightening the lower story, the
+clearing gap ahead where the cabin's smoke would hang, roadside
+ferns, a leaning mile marker, coastal mist.
+
+Coordinate frame: Blender Z-up. y=0 south (camera, downhill end);
++Y climbs north: asphalt → transition (y≈6) → gravel → creek
+crossing (y≈10) → switchback bend (y≈15, road curves east) →
+treewall/clearing gap. Grade suggested by raising the far roadbed.
+glTF export remaps to Godot (x, z, -y).
+
+Vantage wired in Background3D.CAMERA_PRESETS:
+  cabin_road — on the asphalt looking N up the climb: transition
+  line, creek, the bend, the Sitka walls.
+"""
+import os, sys
+_BT = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)), ".."))
+if _BT not in sys.path: sys.path.insert(0, _BT)
+from _props.geometry import clear_scene, make_box, make_cyl, export_glb
+
+COL_ASPHALT = (0.24, 0.24, 0.25, 1.0)   # wet coastal asphalt
+COL_GRAVEL = (0.52, 0.48, 0.42, 1.0)
+COL_GRAVEL_DK = (0.44, 0.40, 0.35, 1.0)
+COL_SHOULDER = (0.36, 0.34, 0.28, 1.0)
+COL_FERN = (0.24, 0.40, 0.24, 1.0)
+COL_MOSS = (0.28, 0.42, 0.24, 1.0)
+COL_SITKA = (0.12, 0.22, 0.16, 1.0)     # dense dark conifer
+COL_SITKA_LT = (0.16, 0.28, 0.19, 1.0)
+COL_CEDAR = (0.18, 0.30, 0.18, 1.0)
+COL_ALDER = (0.38, 0.48, 0.30, 1.0)     # lighter lower story
+COL_TRUNK = (0.30, 0.24, 0.18, 1.0)
+COL_ALDER_BARK = (0.62, 0.62, 0.58, 1.0)
+COL_CREEK = (0.30, 0.38, 0.40, 1.0)
+COL_CREEK_FOAM = (0.72, 0.76, 0.76, 1.0)
+COL_CULVERT = (0.46, 0.46, 0.44, 1.0)
+COL_MIST = (0.72, 0.76, 0.76, 0.35)
+COL_SKY = (0.66, 0.70, 0.70, 1.0)       # coastal gray-bright
+
+
+def build_road():
+    # Asphalt run, y 0..6, slightly crowned
+    make_box("Asphalt", (0.0, 3.0, 0.0), (4.6, 6.0, 0.06), COL_ASPHALT)
+    make_box("Asphalt_Patch", (0.6, 4.6, 0.035), (1.2, 0.9, 0.02), (0.20, 0.20, 0.21, 1.0))
+    # THE TRANSITION — where the asphalt gives out
+    make_box("Transition_Lip", (0.0, 6.05, 0.045), (4.6, 0.25, 0.03), COL_GRAVEL_DK)
+    # Gravel climbing away, rising with the grade
+    make_box("Gravel_0", (0.0, 8.0, 0.10), (4.4, 4.0, 0.08), COL_GRAVEL)
+    make_box("Gravel_1", (0.4, 12.0, 0.30), (4.2, 4.0, 0.08), COL_GRAVEL)
+    # The switchback: the bend swings east and up
+    make_box("Gravel_Bend", (2.6, 15.5, 0.55), (5.0, 3.4, 0.08), COL_GRAVEL_DK)
+    make_box("Gravel_Upper", (5.4, 17.5, 0.95), (4.4, 3.0, 0.08), COL_GRAVEL)
+    # Soft shoulders
+    for sx in (-2.6, 2.6):
+        make_box(f"Shoulder_{sx:+.1f}", (sx, 5.0, 0.02), (0.8, 10.0, 0.05), COL_SHOULDER)
+
+
+def build_creek():
+    """The creek crossing at y≈10: water band under the roadbed,
+    culvert mouths both sides, mossed stones."""
+    make_box("Creek_W", (-5.5, 10.0, 0.02), (6.5, 1.6, 0.05), COL_CREEK)
+    make_box("Creek_E", (5.5, 10.0, 0.02), (6.5, 1.6, 0.05), COL_CREEK)
+    make_box("Creek_Foam_W", (-3.1, 10.0, 0.06), (1.2, 0.5, 0.02), COL_CREEK_FOAM)
+    make_box("Creek_Foam_E", (2.9, 10.2, 0.06), (1.0, 0.4, 0.02), COL_CREEK_FOAM)
+    for sgn in (-1, 1):
+        make_cyl(f"Culvert_{sgn:+d}", (sgn * 2.5, 10.0, 0.14), 0.30, 0.6, COL_CULVERT,
+                 segments=10, axis='X')
+    stones = [(-3.6, 9.4, 0.30), (-4.8, 10.5, 0.42), (3.4, 9.6, 0.34), (4.6, 10.6, 0.28)]
+    for i, (px, py, s) in enumerate(stones):
+        make_box(f"Creek_Stone_{i}", (px, py, s / 2.0), (s * 1.6, s * 1.2, s), (0.44, 0.44, 0.42, 1.0))
+        make_box(f"Creek_Stone_{i}_Moss", (px, py, s + 0.02), (s * 1.2, s * 0.9, 0.05), COL_MOSS)
+
+
+def _conifer(prefix, px, py, h, col):
+    make_cyl(f"{prefix}_Trunk", (px, py, h * 0.25), 0.16, h * 0.5, COL_TRUNK, segments=6)
+    make_box(f"{prefix}_T0", (px, py, h * 0.45), (2.2, 2.2, h * 0.34), col)
+    make_box(f"{prefix}_T1", (px, py, h * 0.70), (1.5, 1.5, h * 0.28), col)
+    make_box(f"{prefix}_T2", (px, py, h * 0.92), (0.8, 0.8, h * 0.22), col)
+
+
+def build_forest():
+    """The Sitka stand: tall dark walls both sides, cedar mixed in,
+    alder lightening the road edge, ferns at the shoulders."""
+    west = [(-4.5, 2.0, 7.5), (-5.5, 5.5, 9.0), (-4.8, 8.0, 8.0), (-5.8, 12.0, 9.5),
+            (-4.6, 15.0, 8.5), (-6.5, 18.0, 10.0), (-7.5, 8.5, 9.0), (-8.0, 14.0, 10.0)]
+    east = [(4.6, 1.5, 8.0), (5.6, 4.5, 9.5), (4.9, 7.5, 8.5), (6.0, 12.5, 9.0),
+            (7.5, 9.0, 10.0), (8.2, 15.5, 9.5), (7.0, 20.0, 10.5), (2.2, 19.5, 9.0)]
+    for i, (px, py, h) in enumerate(west):
+        _conifer(f"SitkaW_{i}", px, py, h, COL_SITKA if i % 3 else COL_CEDAR)
+    for i, (px, py, h) in enumerate(east):
+        _conifer(f"SitkaE_{i}", px, py, h, COL_SITKA_LT if i % 3 else COL_SITKA)
+    # Alders at the road edge: pale trunks, light crowns
+    for i, (px, py) in enumerate([(-3.2, 4.0), (3.3, 6.5), (-3.4, 13.0), (3.0, 12.0)]):
+        make_cyl(f"Alder_{i}_Trunk", (px, py, 1.4), 0.08, 2.8, COL_ALDER_BARK, segments=6)
+        make_cyl(f"Alder_{i}_Crown", (px, py, 3.4), 1.0, 1.6, COL_ALDER, segments=8)
+    # Ferns along the shoulders
+    ferns = [(-2.9, 1.5), (2.9, 3.0), (-3.0, 7.2), (3.1, 8.6), (-3.2, 11.5), (2.8, 14.0)]
+    for i, (px, py) in enumerate(ferns):
+        for b in range(4):
+            make_box(f"Fern_{i}_{b}", (px + 0.10 * ((b * 3) % 3 - 1), py + 0.08 * (b % 2),
+                     0.18 + 0.04 * b), (0.34 - 0.06 * b, 0.05, 0.05), COL_FERN)
+    # Leaning mile marker at the transition
+    make_box("Mile_Marker", (-2.65, 6.0, 0.50), (0.08, 0.08, 1.00), (0.86, 0.86, 0.82, 1.0))
+    make_box("Mile_Marker_Band", (-2.65, 6.0, 0.85), (0.09, 0.09, 0.12), (0.26, 0.44, 0.30, 1.0))
+
+
+def build_atmosphere():
+    """Coastal mist hanging in the stand + the clearing gap ahead."""
+    make_box("Mist_Low", (0.0, 14.0, 1.6), (12.0, 3.0, 1.6), COL_MIST)
+    make_box("Mist_High", (2.0, 18.0, 3.4), (10.0, 2.5, 2.0), COL_MIST)
+    # The clearing gap — a lighter break in the treewall where the
+    # road disappears toward the cabin
+    make_box("Clearing_Glow", (4.5, 21.5, 2.6), (3.4, 0.3, 5.0), (0.78, 0.80, 0.74, 1.0))
+    make_box("Sky", (0.0, 26.0, 8.0), (46.0, 0.06, 16.0), COL_SKY)
+
+
+def main():
+    clear_scene()
+    build_road()
+    build_creek()
+    build_forest()
+    build_atmosphere()
+    out = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)),
+        "../../../assets/3d/locales/cabin_road.glb"))
+    print(f"\n[build_cabin_road] exporting to {out}")
+    export_glb(out)
+
+
+if __name__ == "__main__":
+    main()
