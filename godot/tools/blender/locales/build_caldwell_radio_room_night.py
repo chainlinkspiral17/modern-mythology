@@ -186,6 +186,23 @@ def build_on_air_sign():
 def build_coffee_and_clutter():
     dx, dy = 0.0, ROOM_D - 1.10
     top_z = 0.76
+    # THE MORSE KEY (vol6 ch5: "sending, on 1776 kHz, a single
+    # phrase, over and over, in Morse code she has not used since
+    # 1989") — brass straight key on its bakelite base, front and
+    # center where the operator's hand falls
+    make_box("MorseKey_Base", (dx - 0.30, dy - 0.32, top_z + 0.015), (0.16, 0.11, 0.03),
+             COL_BAKELITE)
+    make_box("MorseKey_Lever", (dx - 0.30, dy - 0.30, top_z + 0.06), (0.03, 0.14, 0.015),
+             (0.74, 0.58, 0.28, 1.0))
+    make_cyl("MorseKey_Knob", (dx - 0.30, dy - 0.36, top_z + 0.08), 0.022, 0.025,
+             (0.16, 0.14, 0.12, 1.0), axis='Z', segments=8)
+    make_cyl("MorseKey_Pivot", (dx - 0.30, dy - 0.26, top_z + 0.055), 0.015, 0.03,
+             (0.74, 0.58, 0.28, 1.0), axis='X', segments=6)
+    # The frequency, penciled on a card propped against the board
+    make_box("FreqCard", (dx + 0.22, dy - 0.26, top_z + 0.06), (0.14, 0.015, 0.10),
+             (0.86, 0.82, 0.72, 1.0))
+    make_box("FreqCard_Digits", (dx + 0.22, dy - 0.27, top_z + 0.06), (0.10, 0.01, 0.03),
+             (0.28, 0.26, 0.24, 1.0))
     # Coffee mug on the desk (going cold), E side near the operator
     mug_x, mug_y = 0.55, dy - 0.30
     make_cyl("Mug_Body", (mug_x, mug_y, top_z + 0.05), 0.045, 0.10, (0.72, 0.30, 0.22, 1.0),

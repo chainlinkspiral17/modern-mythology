@@ -70,9 +70,24 @@ def build_dressing():
     make_box("SideTable_Top", (tx, ty, 0.52), (0.44, 0.44, 0.04), COL_WOOD)
     for k,(ox,oy) in enumerate([(-0.18,-0.18),(0.18,-0.18),(-0.18,0.18),(0.18,0.18)]):
         make_box(f"SideTable_Leg_{k}", (tx+ox, ty+oy, 0.26), (0.04,0.04,0.50), COL_WOOD)
-    make_cyl("Mug_Body", (tx-0.08, ty, 0.60), 0.05, 0.10, (0.86,0.82,0.74,1.0))
-    make_cyl("Mug_Handle", (tx-0.14, ty, 0.60), 0.02, 0.05, (0.86,0.82,0.74,1.0), axis='Y', segments=6)
-    make_box("Paper", (tx+0.10, ty, 0.55), (0.20, 0.14, 0.03), P.NEWSPRINT)
+    # Canon (vol6 ch21): "two glasses of iced tea — the one she
+    # poured for herself and the one she poured for Maya"
+    for gi, gx in enumerate((tx-0.10, tx+0.08)):
+        make_cyl(f"IcedTea_Glass_{gi}", (gx, ty-0.05, 0.61), 0.04, 0.14,
+                 (0.62,0.52,0.34,0.8))
+        make_cyl(f"IcedTea_Ice_{gi}", (gx, ty-0.05, 0.66), 0.032, 0.03,
+                 (0.86,0.88,0.86,0.9), segments=6)
+    make_box("Paper", (tx+0.12, ty+0.12, 0.55), (0.20, 0.14, 0.03), P.NEWSPRINT)
+    # Maya's bike, leaned at the porch's east end past the railing
+    bx, by = 2.6, 0.35
+    for wx in (bx-0.50, bx+0.50):
+        make_cyl(f"MayaBike_Wheel_{wx:.1f}", (wx, by, 0.33), 0.32, 0.04,
+                 P.METAL_BLACK, segments=14, axis='Y')
+    make_box("MayaBike_TopBar", (bx, by, 0.60), (0.70, 0.03, 0.04), (0.30,0.42,0.55,1.0))
+    make_box("MayaBike_DownBar", (bx-0.12, by, 0.47), (0.52, 0.03, 0.04), (0.30,0.42,0.55,1.0))
+    make_box("MayaBike_Seat", (bx-0.28, by, 0.76), (0.15, 0.06, 0.05), P.METAL_BLACK)
+    make_box("MayaBike_Bars", (bx+0.40, by, 0.80), (0.05, 0.28, 0.04), P.METAL_BLACK)
+    make_box("MayaBike_Basket", (bx+0.50, by, 0.62), (0.20, 0.24, 0.16), (0.46,0.36,0.24,1.0))
     # Doormat at the door.
     make_box("Doormat", (0.0, 0.55, 0.02), (0.90, 0.55, 0.03), P.RUBBER_MAT)
     make_box("Doormat_Trim", (0.0, 0.55, 0.03), (0.78, 0.44, 0.02), (0.36,0.30,0.22,1.0))
@@ -94,10 +109,16 @@ def build_dressing():
         make_cyl(f"HangLeaf_{i}", (hx+dx, hy+dy, CEIL-0.94), 0.03, 0.16, (0.36,0.48,0.32,1.0))
 
 def build_ceiling_infra():
-    for j in range(2):
-        ypos = ROOM_D * (0.30 + j * 0.40)
-        make_fluorescent_tube_fixture(f"Fluor_{j}", (0.0, ypos, CEIL), length=1.40, width=0.34)
-    make_smoke_detector("Smoke", (0.0, ROOM_D/2.0, CEIL))
+    # A porch gets a ceiling fan, not office fluorescents (the tube
+    # fixtures were interior boilerplate — a wrong-room tell on a
+    # Texas porch; the carriage lamp is the practical).
+    fx, fy = 0.0, ROOM_D/2.0
+    make_cyl("Fan_Downrod", (fx, fy, CEIL-0.12), 0.025, 0.24, P.METAL_BLACK, segments=6)
+    make_cyl("Fan_Hub", (fx, fy, CEIL-0.28), 0.10, 0.10, P.METAL_BLACK, segments=10)
+    for bi, (dx, dy) in enumerate([(0.55,0.0),(-0.55,0.0),(0.0,0.55),(0.0,-0.55)]):
+        make_box(f"Fan_Blade_{bi}", (fx+dx, fy+dy, CEIL-0.30),
+                 (0.72 if dy==0.0 else 0.20, 0.20 if dy==0.0 else 0.72, 0.025),
+                 (0.40,0.30,0.22,1.0))
 
 def main():
     clear_scene()
