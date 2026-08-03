@@ -3,31 +3,35 @@
   "vol": 1,
   "chapter": 2,
   "type": "chapter",
-  "title": "Act One — The Sitting Hour (cont.)",
+  "title": "Act One \u2014 The Sitting Hour (cont.)",
   "nodes": [
+    {
+      "t": "bg",
+      "src": "3d:faust_apartment_day"
+    },
     {
       "t": "say",
       "char": "Fire",
       "expr": "neutral",
-      "text": "Such a dork. Relax and enjoy the moment. Take a deep breath and breathe — because you, Sir, summoned frickin' elementals. Without a monstrous manual, no less."
+      "text": "Such a dork. Relax and enjoy the moment. Take a deep breath and breathe \u2014 because you, Sir, summoned frickin' elementals. Without a monstrous manual, no less."
     },
     {
       "t": "say",
       "char": "Faust",
       "expr": "neutral",
-      "text": "You have to admit — that is worth some mad real-life XP right there. This tinnitus in my ear is like a ding. Methinks I've leveled up."
+      "text": "You have to admit \u2014 that is worth some mad real-life XP right there. This tinnitus in my ear is like a ding. Methinks I've leveled up."
     },
     {
       "t": "say",
       "char": "Water",
       "expr": "neutral",
-      "text": "So just roll with it, brother. You're posting good stats. Keep an eye on the endgame. Move the balls down field. And remember to use all the players — (who are players who are players)."
+      "text": "So just roll with it, brother. You're posting good stats. Keep an eye on the endgame. Move the balls down field. And remember to use all the players \u2014 (who are players who are players)."
     },
     {
       "t": "say",
       "char": "Faust",
       "expr": "neutral",
-      "text": "It's cool. I get it. But you have to realize certain things about me. Firstly — my life is a work in progress. Second — I've got much to do yet."
+      "text": "It's cool. I get it. But you have to realize certain things about me. Firstly \u2014 my life is a work in progress. Second \u2014 I've got much to do yet."
     },
     {
       "t": "say",
@@ -57,7 +61,7 @@
       "t": "say",
       "char": "Air",
       "expr": "neutral",
-      "text": "Alas — our sitting hour is up. You must pee, and break concentration."
+      "text": "Alas \u2014 our sitting hour is up. You must pee, and break concentration."
     },
     {
       "t": "hide",
@@ -85,7 +89,7 @@
       "t": "say",
       "char": "Faust",
       "expr": "neutral",
-      "text": "Bladder is bursting. (as he pees) Oh — what a wonderful tea party."
+      "text": "Bladder is bursting. (as he pees) Oh \u2014 what a wonderful tea party."
     },
     {
       "t": "jump",

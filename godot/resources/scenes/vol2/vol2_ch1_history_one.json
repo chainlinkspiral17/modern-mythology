@@ -7,7 +7,7 @@
   "nodes": [
     {
       "t": "bg",
-      "src": "assets/backgrounds/vol2_little_switzerland.jpg"
+      "src": "3d:little_switzerland"
     },
     {
       "t": "bgm",
@@ -141,7 +141,7 @@
     },
     {
       "t": "bg",
-      "src": "assets/backgrounds/vol2_crumpled_barn_ext.jpg"
+      "src": "3d:crumpled_barn_ext"
     },
     {
       "t": "interlude",

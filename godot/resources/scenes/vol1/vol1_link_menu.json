@@ -3,43 +3,47 @@
   "vol": 1,
   "chapter": 1,
   "type": "interlude",
-  "title": "The Missing Link — the menu",
+  "title": "The Missing Link \u2014 the menu",
   "nodes": [
+    {
+      "t": "bg",
+      "src": "3d:missing_link_interior"
+    },
     {
       "t": "narrate",
       "text": "The menu is laminated and slightly tacky. It has been hand-typed on a typewriter and photocopied at some point in the last decade or two. The header reads THE MISSING LINK in the same chipped enamel as the sign, and below it, in smaller letters: We have what we have."
     },
     {
       "t": "narrate",
-      "text": "THE FAUST — BLT with extra ham. Named for a regular who has not been in for nine years. Owner will not take it off the menu. $6.50."
+      "text": "THE FAUST \u2014 BLT with extra ham. Named for a regular who has not been in for nine years. Owner will not take it off the menu. $6.50."
     },
     {
       "t": "narrate",
-      "text": "THE PASADENA — fried egg, garlic toast, the hot sauce nobody asks the name of. Listed as For the rocket scientist. $5."
+      "text": "THE PASADENA \u2014 fried egg, garlic toast, the hot sauce nobody asks the name of. Listed as For the rocket scientist. $5."
     },
     {
       "t": "narrate",
-      "text": "SMOLVUD TOAST — sourdough, butter, cinnamon. Comes dipped in stout if you ask, no charge for the asking. $3."
+      "text": "SMOLVUD TOAST \u2014 sourdough, butter, cinnamon. Comes dipped in stout if you ask, no charge for the asking. $3."
     },
     {
       "t": "narrate",
-      "text": "SANDERLING EGGS — two over easy, side of patty sausage, a slice of orange that does not belong on the plate but is always there. $5.50."
+      "text": "SANDERLING EGGS \u2014 two over easy, side of patty sausage, a slice of orange that does not belong on the plate but is always there. $5.50."
     },
     {
       "t": "narrate",
-      "text": "THE CALE — coffee, slow drip, no second cup. $2. The footnote reads: One is enough. Anyone who tells you otherwise is selling."
+      "text": "THE CALE \u2014 coffee, slow drip, no second cup. $2. The footnote reads: One is enough. Anyone who tells you otherwise is selling."
     },
     {
       "t": "narrate",
-      "text": "BRIAR FALLS PIE — chess pie, served cold. The footnote reads: Aunt Sybil's. We do not have the recipe and we do not need it."
+      "text": "BRIAR FALLS PIE \u2014 chess pie, served cold. The footnote reads: Aunt Sybil's. We do not have the recipe and we do not need it."
     },
     {
       "t": "narrate",
-      "text": "F.T.'S FLOAT — root beer, a scoop of vanilla, and a single book of matches set on the saucer beside it. $4. The match is not for lighting."
+      "text": "F.T.'S FLOAT \u2014 root beer, a scoop of vanilla, and a single book of matches set on the saucer beside it. $4. The match is not for lighting."
     },
     {
       "t": "narrate",
-      "text": "LAFAYETTE — black coffee. The price line reads: no charge for the coffee, ask the owner about the second cup."
+      "text": "LAFAYETTE \u2014 black coffee. The price line reads: no charge for the coffee, ask the owner about the second cup."
     },
     {
       "t": "narrate",

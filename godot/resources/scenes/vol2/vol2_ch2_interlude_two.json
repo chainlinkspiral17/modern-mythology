@@ -7,7 +7,7 @@
   "nodes": [
     {
       "t": "bg",
-      "src": "assets/backgrounds/vol2_grunion_beach.jpg"
+      "src": "3d:grunion_beach"
     },
     {
       "t": "interlude",

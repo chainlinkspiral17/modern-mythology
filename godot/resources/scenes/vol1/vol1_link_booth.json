@@ -3,8 +3,12 @@
   "vol": 1,
   "chapter": 1,
   "type": "interlude",
-  "title": "The Missing Link — the photographs",
+  "title": "The Missing Link \u2014 the photographs",
   "nodes": [
+    {
+      "t": "bg",
+      "src": "3d:missing_link_interior"
+    },
     {
       "t": "narrate",
       "text": "The booth in the corner has a wall of framed photographs above it. None of them are labeled. None of them are recent. All of them are square."
@@ -23,7 +27,7 @@
     },
     {
       "t": "narrate",
-      "text": "A sanderling — the small shorebird — painted on a mural on the side of a brick building. The mural is intact in the photograph. A square patch of it, fresh white primer, sits at the bottom right, as if someone had begun erasing it and stopped."
+      "text": "A sanderling \u2014 the small shorebird \u2014 painted on a mural on the side of a brick building. The mural is intact in the photograph. A square patch of it, fresh white primer, sits at the bottom right, as if someone had begun erasing it and stopped."
     },
     {
       "t": "narrate",
@@ -31,7 +35,7 @@
     },
     {
       "t": "narrate",
-      "text": "A polaroid, this one, smaller than the others and not in a frame — taped to the wall with brittle tape that has yellowed. A young man in a trench coat at a depot bench. The polaroid was taken in the rain. The seams of the coat are not glowing. They are not yet glowing. The date written in pen along the white border, in someone else's hand, is a date that has not happened yet."
+      "text": "A polaroid, this one, smaller than the others and not in a frame \u2014 taped to the wall with brittle tape that has yellowed. A young man in a trench coat at a depot bench. The polaroid was taken in the rain. The seams of the coat are not glowing. They are not yet glowing. The date written in pen along the white border, in someone else's hand, is a date that has not happened yet."
     },
     {
       "t": "jump",

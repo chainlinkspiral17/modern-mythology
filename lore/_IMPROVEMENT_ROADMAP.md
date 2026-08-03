@@ -55,15 +55,19 @@ producer discipline).
   plate display through the producer clock. **Constraint (2026-08-03
   verdict): VN scene BACKGROUNDS are 3D scenes — painted art is for
   cards/CGs/plates, never a scene bg.**
-- **SHIPPED 2026-08-03 · Vols 1-2 → 3D migration** — "visual novel
-  backgrounds are 3d scenes": 47 bg placements rewired onto `3d:`
-  presets (17 set-reuse onto existing locales, carnival_lot newly
-  wired, THREE new multi-vantage builds: missing_link_exterior +
-  shuttle_bench · briar_falls ×5 · faust_apartment ×2). 12 bg refs
-  remain 2D debt (pharmacy, skatepark, beaches, sapo falls…) —
-  vn_asset_audit prints them per-ref. USER STEP: run the three new
-  builders on the Deck (`./run_cathedral.sh build_missing_link_exterior.py`
-  etc.) or vols 1-2's new sets render the black fallback.
+- **SHIPPED 2026-08-03 · Vols 1-2 → 3D migration, COMPLETE** —
+  "visual novel backgrounds are 3d scenes": every vol1/vol2 bg is
+  now a `3d:` preset; migration debt ZERO; the 2D plate generator
+  retired. Two waves: (1) 47 placements rewired — 17 set-reuse,
+  carnival_lot wired, three new multi-vantage builds
+  (missing_link_exterior + shuttle_bench · briar_falls ×5 ·
+  faust_apartment ×2); (2) nine more builds for the last 12 refs
+  (pharmacy ×2 · grunion_beach ×2 · bar_exterior · skatepark ·
+  wagner_home · school_newspaper · sapo_falls · little_switzerland
+  · crumpled_barn) + parish_cemetery wired for vol2_graveyard + six
+  link_* diner sub-scenes homed. USER STEP: run the TWELVE new
+  builders on the Deck (single chained command in the session log)
+  or the new sets render the black fallback until then.
 - **SHIPPED 2026-07 · Locale coverage report** —
   `python3 godot/tools/locale_coverage.py` (run on the Deck):
   cross-references the 78 GLB-requiring camera presets against the

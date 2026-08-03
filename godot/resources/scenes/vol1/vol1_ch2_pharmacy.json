@@ -7,7 +7,7 @@
   "nodes": [
     {
       "t": "bg",
-      "src": "assets/backgrounds/vol1_pharmacy_office.jpg"
+      "src": "3d:pharmacy_office"
     },
     {
       "t": "hide",

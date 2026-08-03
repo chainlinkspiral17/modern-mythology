@@ -357,6 +357,16 @@ Louisville's hurricane-deck proportions"). Don't guess at numbers.
   in .tscn). Fixed + extended with per-light `omni_range` overrides.
   Lesson: a generator no shipped file exercises is a generator that
   drifts — smoke-run it against a known-good donor before trusting.
+- **Second wave closed the estate (same day): debt zero.** Nine more
+  builds covered the last 12 refs; the whole vols 1-2 estate now
+  runs on 24 new presets over 12 new builds + reuse. Two transfer
+  rules that held: (a) an unreachable tscn is free coverage — check
+  the unwired list (carnival_lot, parish_cemetery both got wired
+  before any new geometry was considered); (b) "no bg node" legacy
+  scenes split cleanly into inherits-by-accident (give them the
+  obvious home: the six link_* diner sub-scenes) and black-on-
+  purpose (montage/finale codas — leave them; the audit carries
+  them as the known baseline, now 10).
 
 ### 2026-07-19 · wrong-room sweep CLOSED · seven builds + eight repoints
 

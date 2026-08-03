@@ -7,7 +7,7 @@
   "nodes": [
     {
       "t": "bg",
-      "src": "assets/backgrounds/vol1_skatepark_day.jpg"
+      "src": "3d:skatepark_day"
     },
     {
       "t": "hide",
@@ -127,7 +127,7 @@
     },
     {
       "t": "bg",
-      "src": "assets/backgrounds/vol1_wagner_home.jpg"
+      "src": "3d:wagner_home"
     },
     {
       "t": "hide",

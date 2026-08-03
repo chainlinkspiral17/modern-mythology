@@ -3,31 +3,35 @@
   "vol": 1,
   "chapter": 1,
   "type": "interlude",
-  "title": "The Missing Link — the jukebox",
+  "title": "The Missing Link \u2014 the jukebox",
   "nodes": [
+    {
+      "t": "bg",
+      "src": "3d:missing_link_interior"
+    },
     {
       "t": "narrate",
       "text": "The jukebox is a Wurlitzer of the wrong vintage to be in a diner this size. The selection wheel sticks at K and again at S. The card behind the glass has been hand-typed on the same typewriter as the menu and has been corrected, in pencil, more than once."
     },
     {
       "t": "narrate",
-      "text": "A-04 — Burzum — Det Som Engang Var. Marked WAGNER'S, underlined twice."
+      "text": "A-04 \u2014 Burzum \u2014 Det Som Engang Var. Marked WAGNER'S, underlined twice."
     },
     {
       "t": "narrate",
-      "text": "B-11 — Faust (the band, the Krautrock one) — The Faust Tapes, side B. The label says: not the regular."
+      "text": "B-11 \u2014 Faust (the band, the Krautrock one) \u2014 The Faust Tapes, side B. The label says: not the regular."
     },
     {
       "t": "narrate",
-      "text": "C-07 — John Cale — Paris 1919. Pencilled note: ask the owner before playing C-07."
+      "text": "C-07 \u2014 John Cale \u2014 Paris 1919. Pencilled note: ask the owner before playing C-07."
     },
     {
       "t": "narrate",
-      "text": "D-02 — A song listed only as SHILLELAGH. No artist. No B-side. The card says, in someone's handwriting: Plays once a day. Has been playing for longer than the jukebox."
+      "text": "D-02 \u2014 A song listed only as SHILLELAGH. No artist. No B-side. The card says, in someone's handwriting: Plays once a day. Has been playing for longer than the jukebox."
     },
     {
       "t": "narrate",
-      "text": "E-09 — Patsy Cline — Crazy. Three pencilled crosses beside the title; you cannot tell whether they are marking the song as favored or warning you off."
+      "text": "E-09 \u2014 Patsy Cline \u2014 Crazy. Three pencilled crosses beside the title; you cannot tell whether they are marking the song as favored or warning you off."
     },
     {
       "t": "narrate",

@@ -98,6 +98,24 @@ locale presets and their JPEGs were deleted:
   vn_asset_audit.py now prints every 2D bg src as a per-ref
   migration-debt line so the remainder can't hide.
 
+CLOSED (2026-08-03, second wave): **migration debt is ZERO and
+gen_legacy_backgrounds.py is retired** (deleted; git history keeps
+it). Nine more builds cover the remaining 12 refs, several
+multi-vantage: build_pharmacy.py (pharmacy_floor + pharmacy_office),
+build_grunion_beach.py (beach_night + grunion_beach),
+build_bar_exterior.py, build_skatepark.py, build_wagner_home.py,
+build_school_newspaper.py, build_sapo_falls.py,
+build_little_switzerland.py, build_crumpled_barn.py. Bonus: 8 of the
+18 no-bg legacy scenes got homes (six link_* diner sub-scenes →
+missing_link_interior, painting_b → faust_apartment_day, and
+vol2_graveyard wires the previously-unreachable parish_cemetery tscn
+as a preset). Legacy baseline 18 → 10 — every survivor is a
+stylized montage/finale scene that plays over black on purpose
+(ch1_s2 myth-voice, demographic montage, editing-suite prelude,
+trailer, the four vol *_end codas, vol3 choice, vol4 standoff).
+Vols 1-2 are now 100% 3D-locale backgrounds: 12 new builds, 24 new
+presets, 0 flat images.
+
 ### 1.7 · Dead wiring (harmless today, misleading forever)
 - 22 of 38 `PORTRAIT_3D_KEY_TO_GLB` entries point at GLBs that don't
   exist (kai, finn, tem, lena, wren, petra…). The demon's GLB dir

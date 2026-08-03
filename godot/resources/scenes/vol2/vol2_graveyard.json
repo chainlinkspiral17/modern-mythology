@@ -2,6 +2,10 @@
   "id": "vol2_graveyard",
   "nodes": [
     {
+      "t": "bg",
+      "src": "3d:parish_cemetery"
+    },
+    {
       "t": "flag",
       "key": "vol2_funeral_attended",
       "val": true
@@ -46,7 +50,7 @@
       "t": "say",
       "char": "Jo",
       "expr": "hurt",
-      "text": "That's — okay. That's your right."
+      "text": "That's \u2014 okay. That's your right."
     },
     {
       "t": "narrate",

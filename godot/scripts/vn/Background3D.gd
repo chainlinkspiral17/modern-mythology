@@ -1296,6 +1296,158 @@ const CAMERA_PRESETS := {
 		"fov": 68.0,
 		"suppress_input": true,
 	},
+	# ── Vols 1-2 · migration debt wave (2026-08-03, second pass) ──
+	# The nine sets that close the 2D-background estate to zero.
+	"pharmacy_floor": {
+		"scene": "res://scenes/locales/pharmacy.tscn",
+		"requires_glb": "res://assets/3d/locales/pharmacy.glb",
+		# Retail interior 8×6 (godot x∈[-4,4], z∈[0,-6], ceil 2.8).
+		# Two gondola runs (x=±1.5, z∈[-1.2,-4.2]), RX counter + green
+		# sign at back (z=-5.15), mirror pillar E wall (3.9,-2.8),
+		# checkout by the door SW. Camera front-of-store center aisle
+		# looking N to the RX sign; mirror catches frame right.
+		"camera_origin": Vector3(0.0, 1.60, -0.9),
+		"camera_rotation": Vector3(-0.03, deg_to_rad(11.0), 0.0),
+		"fov": 64.0,
+		"suppress_input": true,
+	},
+	"pharmacy_office": {
+		"scene": "res://scenes/locales/pharmacy.tscn",
+		"requires_glb": "res://assets/3d/locales/pharmacy.glb",
+		# Same set, the annex — NE corner behind the partition: desk
+		# against the N wall (3.2,-5.6) with lamp + ledger, file
+		# cabinet left, the partition window back onto the floor.
+		"camera_origin": Vector3(2.5, 1.55, -4.6),
+		"camera_rotation": Vector3(-0.05, deg_to_rad(-35.0), 0.0),
+		"fov": 56.0,
+		"suppress_input": true,
+	},
+	"beach_night": {
+		"scene": "res://scenes/locales/grunion_beach.tscn",
+		"requires_glb": "res://assets/3d/locales/grunion_beach.glb",
+		# OUTDOOR clouded-moon shore. Dry sand → wet band (z≈-9) →
+		# surf lines → black sea → cloud bank with the hidden-moon
+		# glow patch (z≈-28). Camera on the dry sand looking N at the
+		# water — the ghost scene's vantage; driftwood frame left.
+		"camera_origin": Vector3(-1.0, 1.65, -4.0),
+		"camera_rotation": Vector3(-0.01, deg_to_rad(-14.0), 0.0),
+		"fov": 66.0,
+		"suppress_input": true,
+	},
+	"grunion_beach": {
+		"scene": "res://scenes/locales/grunion_beach.tscn",
+		"requires_glb": "res://assets/3d/locales/grunion_beach.glb",
+		# Same set, low at the tide's edge looking W along the wet
+		# band — the silver run receding up the beach, surf frame
+		# right.
+		"camera_origin": Vector3(2.0, 1.30, -7.5),
+		"camera_rotation": Vector3(-0.10, deg_to_rad(55.0), 0.0),
+		"fov": 60.0,
+		"suppress_input": true,
+	},
+	"bar_exterior_night": {
+		"scene": "res://scenes/locales/bar_exterior.tscn",
+		"requires_glb": "res://assets/3d/locales/bar_exterior.glb",
+		# OUTDOOR night street. Brick face at z=-4.5: recessed door
+		# with warm spill (x=-1), neon over it, glowing front window
+		# east (x=2.4), parked sedan at the curb, streetlamp (4.8).
+		# Camera on the sidewalk looking WNW at door + neon — the
+		# superpower conversation happens here.
+		"camera_origin": Vector3(2.2, 1.65, -2.2),
+		"camera_rotation": Vector3(0.02, deg_to_rad(55.0), 0.0),
+		"fov": 60.0,
+		"suppress_input": true,
+	},
+	"skatepark_day": {
+		"scene": "res://scenes/locales/skatepark.tscn",
+		"requires_glb": "res://assets/3d/locales/skatepark.glb",
+		# OUTDOOR municipal concrete, day. Slab z∈[0,-12]: pipe humps
+		# (x=-4.5 z=-5 · x=3 z=-8), ledge pair, flat rail (-2,-3.5),
+		# stair set W, chain-link at back, trees beyond. Camera at
+		# the slab's S edge looking N across the features.
+		"camera_origin": Vector3(-2.0, 1.70, -0.8),
+		"camera_rotation": Vector3(-0.03, deg_to_rad(-18.0), 0.0),
+		"fov": 64.0,
+		"suppress_input": true,
+	},
+	"wagner_home": {
+		"scene": "res://scenes/locales/wagner_home.tscn",
+		"requires_glb": "res://assets/3d/locales/wagner_home.glb",
+		# Family front room 6×5 (godot x∈[-3,3], z∈[0,-5], ceil 2.6).
+		# Sofa W wall (-2.35,-2.6) facing the CRT console E (2.45),
+		# coffee table between, armchair SE, N-wall window +
+		# curtains, bookshelf NW, floor lamp. Camera inside the door
+		# looking N — sofa left, window back, TV right.
+		"camera_origin": Vector3(0.7, 1.50, -0.7),
+		"camera_rotation": Vector3(-0.03, deg_to_rad(24.0), 0.0),
+		"fov": 63.0,
+		"suppress_input": true,
+	},
+	"school_newspaper": {
+		"scene": "res://scenes/locales/school_newspaper.tscn",
+		"requires_glb": "res://assets/3d/locales/school_newspaper.glb",
+		# Borrowed classroom 8×6 (godot x∈[-4,4], z∈[0,-6], ceil
+		# 2.9). Four desks butted into the layout island center
+		# (paste-up pages + typewriter), pinboard W wall, chalkboard
+		# N, teacher desk NE, E-window band pouring light. Camera
+		# inside the door looking N over the island.
+		"camera_origin": Vector3(-1.4, 1.60, -0.9),
+		"camera_rotation": Vector3(-0.04, deg_to_rad(-21.0), 0.0),
+		"fov": 64.0,
+		"suppress_input": true,
+	},
+	"sapo_falls": {
+		"scene": "res://scenes/locales/sapo_falls.tscn",
+		"requires_glb": "res://assets/3d/locales/sapo_falls.glb",
+		# OUTDOOR gorge. Stepped rock walls flank; the fall column
+		# drops from the rim notch (z≈-13.3, top ~9.5) into the pool
+		# with foam ring + mist; wet boulders foreground. Camera on
+		# the viewing rocks, pitched up at the column.
+		"camera_origin": Vector3(0.5, 1.70, -2.8),
+		"camera_rotation": Vector3(0.10, deg_to_rad(3.0), 0.0),
+		"fov": 64.0,
+		"suppress_input": true,
+	},
+	"little_switzerland": {
+		"scene": "res://scenes/locales/little_switzerland.tscn",
+		"requires_glb": "res://assets/3d/locales/little_switzerland.glb",
+		# OUTDOOR alpine-kitsch village. Road z∈[0,-3], pull-off,
+		# three chalet fronts at z=-7 (x -7 / -0.5 / +6) with timber
+		# grids + flower boxes, sign W on posts, pines, two ridge
+		# planes with snow caps. Camera across the road looking N at
+		# the chalets, ridges over the rooflines.
+		"camera_origin": Vector3(-3.5, 1.70, -1.5),
+		"camera_rotation": Vector3(-0.02, deg_to_rad(-8.0), 0.0),
+		"fov": 66.0,
+		"suppress_input": true,
+	},
+	"parish_cemetery": {
+		"scene": "res://scenes/locales/parish_cemetery.tscn",
+		"requires_glb": "res://assets/3d/locales/parish_cemetery.glb",
+		# The Graustark above-ground tomb city (built for the
+		# Judgement arcana, now also vol2's gravesite). Lot 24×18
+		# centered on origin; white vault rows on a walkway grid,
+		# central mausoleum (door on its S face, godot z=+2.2), iron
+		# fence + gate at the S edge (z=+9). Camera just inside the
+		# gate looking N up the central path to the mausoleum door,
+		# vault rows flanking.
+		"camera_origin": Vector3(1.4, 1.65, 8.2),
+		"camera_rotation": Vector3(-0.02, deg_to_rad(13.0), 0.0),
+		"fov": 62.0,
+		"suppress_input": true,
+	},
+	"crumpled_barn_ext": {
+		"scene": "res://scenes/locales/crumpled_barn.tscn",
+		"requires_glb": "res://assets/3d/locales/crumpled_barn.glb",
+		# OUTDOOR overcast field. The standing gable face at z=-8.4
+		# (doorway + hay door punched dark), fallen roof planes low
+		# behind on rubble, surviving frame posts, remnant fence,
+		# weeds. Camera in the field looking N at the gable.
+		"camera_origin": Vector3(-2.2, 1.70, -2.5),
+		"camera_rotation": Vector3(-0.02, deg_to_rad(-16.0), 0.0),
+		"fov": 62.0,
+		"suppress_input": true,
+	},
 }
 
 const BG_W: int = 1280

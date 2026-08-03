@@ -3,15 +3,19 @@
   "vol": 1,
   "chapter": 1,
   "type": "interlude",
-  "title": "The Missing Link — the window",
+  "title": "The Missing Link \u2014 the window",
   "nodes": [
+    {
+      "t": "bg",
+      "src": "3d:missing_link_interior"
+    },
     {
       "t": "narrate",
       "text": "You stand at the window. The glass is glazed with rain on the outside and breath on the inside. Beyond it, the apron of asphalt, the two pumps, the bench, the awning, the young man."
     },
     {
       "t": "narrate",
-      "text": "He has turned slightly. He is now facing the road that runs past the depot — though there is, at this hour, no road traffic at all. The road goes east into a darkness that has no lights in it for a long way."
+      "text": "He has turned slightly. He is now facing the road that runs past the depot \u2014 though there is, at this hour, no road traffic at all. The road goes east into a darkness that has no lights in it for a long way."
     },
     {
       "t": "narrate",
