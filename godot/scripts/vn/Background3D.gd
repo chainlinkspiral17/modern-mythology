@@ -81,6 +81,75 @@ const CAMERA_PRESETS := {
 		"fov": 55.0,
 		"suppress_input": true,
 	},
+	"highway9_long": {
+		"scene": "res://scenes/locales/harmony_terrain.tscn",
+		"requires_glb": "res://assets/3d/locales/harmony_terrain.glb",
+		# HIGHWAY 9 · the long lens down the vanishing point — camera
+		# on the median (godot -510, ground -2) aimed N; 2.8 km of
+		# divided highway compress into the fog. The establishing
+		# still of the action stage.
+		"camera_origin": Vector3(-510.0, -0.2, -40.0),
+		"camera_rotation": Vector3(-0.01, 0.0, 0.0),
+		"fov": 30.0,
+		"suppress_input": true,
+	},
+	"highway9_shoulder": {
+		"scene": "res://scenes/locales/harmony_terrain.tscn",
+		"requires_glb": "res://assets/3d/locales/harmony_terrain.glb",
+		# Low wide from the E shoulder short of THE SCAR (deformed
+		# rail + debris at godot -498.6,-212): guardrail runs
+		# frame-right, skid marks pull the eye N. Knee-height drama.
+		"camera_origin": Vector3(-498.0, -1.0, -185.0),
+		"camera_rotation": Vector3(-0.02, 0.02, 0.0),
+		"fov": 68.0,
+		"suppress_input": true,
+	},
+	"highway9_overpass": {
+		"scene": "res://scenes/locales/harmony_terrain.tscn",
+		"requires_glb": "res://assets/3d/locales/harmony_terrain.glb",
+		# High angle from the overpass deck (godot -510, deck y≈3.6,
+		# z=-300) looking S down both carriageways to the scar zone —
+		# the surveillance/geometry shot of the stage.
+		"camera_origin": Vector3(-510.0, 5.1, -296.0),
+		"camera_rotation": Vector3(-0.08, 3.1416, 0.0),
+		"fov": 50.0,
+		"suppress_input": true,
+	},
+	"highway9_scar": {
+		"scene": "res://scenes/locales/harmony_terrain.tscn",
+		"requires_glb": "res://assets/3d/locales/harmony_terrain.glb",
+		# Close on the aftermath: bowed guardrail, debris fan, glass
+		# glitter (godot -498..-495, z -210..-216). Something already
+		# happened on this road.
+		"camera_origin": Vector3(-502.5, -0.6, -206.0),
+		"camera_rotation": Vector3(-0.06, -0.57, 0.0),
+		"fov": 55.0,
+		"suppress_input": true,
+	},
+	"highway9_turnout": {
+		"scene": "res://scenes/locales/harmony_terrain.tscn",
+		"requires_glb": "res://assets/3d/locales/harmony_terrain.glb",
+		# The gravel rest turnout on the southbound side (godot z
+		# +330..+370): the parked semi as scale anchor, the highway
+		# running away N behind it.
+		"camera_origin": Vector3(-519.0, -0.5, 350.0),
+		"camera_rotation": Vector3(-0.02, 0.67, 0.0),
+		"fov": 58.0,
+		"suppress_input": true,
+	},
+	"highway9_drive": {
+		"scene": "res://scenes/locales/harmony_terrain.tscn",
+		"requires_glb": "res://assets/3d/locales/harmony_terrain.glb",
+		# THE MOVING ONE — windshield-height push N up the northbound
+		# lane toward the scar zone, 150 m over 16 s, ping-ponged.
+		# First use of the camera_track capability; the action beat
+		# plays over a road that is actually traveling.
+		"camera_origin": Vector3(-505.9, -0.5, -40.0),
+		"camera_rotation": Vector3(-0.01, 0.0, 0.0),
+		"camera_track": {"to": Vector3(-505.9, -0.5, -190.0), "secs": 16.0, "loop": "pingpong"},
+		"fov": 62.0,
+		"suppress_input": true,
+	},
 	"chapel_exterior": {
 		# Hierophant §I — Maya outside St. Jude's. SURVEYED: chapel
 		# building blender x -3..+3, y 0..+7, front wall + steps at
@@ -1745,6 +1814,7 @@ func load_location(preset_id: String) -> bool:
 	if spec.has("fov"):
 		_camera.fov = float(spec["fov"])
 	_camera.make_current()
+	_start_camera_track(spec)
 	_loaded_preset = preset_id
 	# Re-apply any user-stamped MoodCycler overrides for this preset.
 	# Deferred a frame so the locale's PostProcess _ready has run and
@@ -1777,10 +1847,57 @@ func get_viewport_texture() -> Texture2D:
 func set_camera_vantage(origin: Vector3, rotation: Vector3, fov: float) -> void:
 	if _camera == null or not is_instance_valid(_camera):
 		return
+	_stop_camera_track()
 	_camera.position = origin
 	_camera.rotation = rotation
 	_camera.fov = fov
 	_camera.make_current()
+
+
+# ── Camera motion · the action-stage capability ──────────────────
+# A preset may carry "camera_track": {"to": Vector3, "secs": float,
+# "rot_to": Vector3 (optional), "loop": "pingpong"|"once"}. The
+# SubViewport camera glides from camera_origin to `to` — a dolly /
+# drive-by / chase feel for scenes where the frame itself should
+# move (the Highway 9 action stage is the first customer). Manual
+# vantage overrides (set_camera_vantage / VnDirector cuts) stop the
+# track; restore_preset_vantage restarts it.
+
+var _track_tween: Tween = null
+
+
+func _stop_camera_track() -> void:
+	if _track_tween != null and _track_tween.is_valid():
+		_track_tween.kill()
+	_track_tween = null
+
+
+func _start_camera_track(spec: Dictionary) -> void:
+	_stop_camera_track()
+	if not spec.has("camera_track"):
+		return
+	var track: Dictionary = spec["camera_track"]
+	var to_pos: Vector3 = track.get("to", _camera.position)
+	var secs: float = float(track.get("secs", 12.0))
+	var loop_mode: String = String(track.get("loop", "pingpong"))
+	var from_pos: Vector3 = spec.get("camera_origin", _camera.position)
+	var from_rot: Vector3 = spec.get("camera_rotation", _camera.rotation)
+	_track_tween = create_tween()
+	_track_tween.set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN_OUT)
+	_track_tween.tween_property(_camera, "position", to_pos, secs)
+	if track.has("rot_to"):
+		_track_tween.parallel().tween_property(
+				_camera, "rotation", track.get("rot_to", from_rot), secs)
+	if loop_mode == "pingpong":
+		_track_tween.tween_property(_camera, "position", from_pos, secs)
+		if track.has("rot_to"):
+			_track_tween.parallel().tween_property(_camera, "rotation", from_rot, secs)
+		_track_tween.set_loops()
+	elif loop_mode == "loop":
+		_track_tween.tween_callback(func() -> void:
+			_camera.position = from_pos
+			_camera.rotation = from_rot)
+		_track_tween.set_loops()
 
 
 # ── VnDirector hooks ─────────────────────────────────────────────
@@ -1936,6 +2053,7 @@ func restore_preset_vantage() -> void:
 		spec.get("camera_origin", Vector3.ZERO),
 		spec.get("camera_rotation", Vector3.ZERO),
 		float(spec.get("fov", 60.0)))
+	_start_camera_track(spec)
 
 
 # ── Internal ─────────────────────────────────────────────────────

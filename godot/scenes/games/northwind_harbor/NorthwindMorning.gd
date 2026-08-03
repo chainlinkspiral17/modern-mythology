@@ -288,7 +288,11 @@ func _build_ui() -> void:
 	add_child(_tableau)
 
 	_bosun_rect = TextureRect.new()
-	_bosun_rect.stretch_mode = TextureRect.STRETCH_KEEP
+	# STRETCH_SCALE, not KEEP: the sprite is 16x12 native — KEEP drew
+	# him at literal sprite size, a two-dot speck on the porch wall
+	# (the user's screenshot). SCALE honors the 96x72 rect; NEAREST
+	# filtering (inherited) keeps the pixels honest.
+	_bosun_rect.stretch_mode = TextureRect.STRETCH_SCALE
 	# Bosun is pettable. Once per morning; the mornings add up and
 	# the chapter-7 walk knows the total. One variable, tracked,
 	# paid off.

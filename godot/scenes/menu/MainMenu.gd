@@ -746,7 +746,30 @@ func _on_slowstock_library() -> void:
 	ssb.set_corner_radius_all(8)
 	screen.add_theme_stylebox_override("panel", ssb)
 	wrap.add_child(screen)
-	screen.add_child(_slowstock_root)
+	# ── The fit frame (2026-08-03) ──────────────────────────────
+	# Every slowstick lays out in an absolute 1280x720 design space.
+	# The screen panel is the window MINUS the bezel insets — so
+	# mounting hosts directly on it CLIPPED the bottom 72px of every
+	# stick (Northwind's walk signs, pockets and HEARD rendered into
+	# the void — the "still can't play" screenshot). The fit frame
+	# is a fixed 1280x720 Control letterboxed into the glass:
+	# uniform scale, centered, input transforms included.
+	var fit := Control.new()
+	fit.name = "FitFrame"
+	fit.size = Vector2(1280, 720)
+	fit.mouse_filter = Control.MOUSE_FILTER_PASS
+	screen.add_child(fit)
+	var refit := func() -> void:
+		var ss: Vector2 = screen.size
+		if ss.x < 2.0 or ss.y < 2.0:
+			return
+		var k: float = minf(ss.x / 1280.0, ss.y / 720.0)
+		fit.scale = Vector2(k, k)
+		fit.position = Vector2((ss.x - 1280.0 * k) * 0.5,
+				(ss.y - 720.0 * k) * 0.5)
+	screen.resized.connect(refit)
+	refit.call()
+	fit.add_child(_slowstock_root)
 	# Chin plate: brand + power LED.
 	var brand := Label.new()
 	brand.text = "S L O W S T O C K"

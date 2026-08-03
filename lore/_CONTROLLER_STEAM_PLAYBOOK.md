@@ -166,6 +166,37 @@ that nobody needs it.
 
 ## Recent lessons
 
+### 2026-08-03 · the TV was eating the bottom of every stick
+
+**User report:** "still can't play" + a screenshot of Northwind
+Harbor with NO walk signs, NO pockets, NO HEARD, and a two-pixel
+dog.
+
+**Root cause 1 — the cabin TV clipped the design space.** Sticks
+lay out in an absolute 1280x720 coordinate space. The TV
+container's screen panel is FULL_RECT minus bezel insets (30 px
+sides, 72 px total vertical) with clip_contents on — so on a
+720-tall window the glass is 648 tall and the BOTTOM 72 PIXELS OF
+EVERY SLOWSTICK rendered into the void. Any control living near
+y=720 (Northwind's nav row, any stick's bottom status bar) was
+invisible AND unclickable. Fix: the FitFrame — a fixed 1280x720
+Control letterboxed into the glass (uniform min-scale, centered;
+Control.scale transforms input too). **Rule: a stick's design
+space is 1280x720 and whatever mounts a stick must letterbox that
+space, never hand the stick a smaller rect.**
+
+**Root cause 2 — STRETCH_KEEP on a 16x12 sprite.** Bosun's
+TextureRect had a 96x72 size but stretch_mode KEEP, which draws
+the texture at native sprite size — a speck. STRETCH_SCALE +
+NEAREST is the pattern for SlowstockSprite display rects.
+
+**Meta-lesson:** the "nothing happens" bug had THREE layers
+(affordance, clipping, sprite scale) and the first fix pass only
+addressed the first because it was reasoned from code, not from a
+screenshot. A player screenshot beats a code read. Ask for one
+early.
+
+
 ### 2026-08-03 · shelf click-to-boot regression · focus fires before gui_input
 
 **User report:** "can't click on manual — it only clicks once and
