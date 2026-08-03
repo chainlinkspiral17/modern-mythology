@@ -140,6 +140,33 @@ def build_red_dots():
         make_box(f"Dot_{i}", (wx, dy, dz), (0.006, s, s), COL_DOT)
 
 
+def build_hero_props():
+    """2026-08-03 tail pass: THE WALL DEVICE with its red LED (the
+    chapter's second character), the interrogation table, Boyd's
+    chair, the ceiling camera, the sandwich on its paper plate, the
+    bottom food slot the prose actually uses."""
+    make_box("Wall_Device", (1.35, 0.14, 2.55), (0.09, 0.06, 0.13), (0.10, 0.10, 0.12, 1.0))
+    make_cyl("Device_LED", (1.35, 0.10, 2.55), 0.008, 0.01, (0.96, 0.16, 0.14, 1.0), axis='Y', segments=6)
+    # Interrogation table between cot and door
+    make_box("Interro_Table", (0.0, 2.10, 0.72), (0.90, 0.60, 0.04), (0.55, 0.57, 0.58, 1.0))
+    for lx, ly in ((-0.40, 1.85), (0.40, 1.85), (-0.40, 2.35), (0.40, 2.35)):
+        make_box(f"IT_Leg_{lx:+.1f}_{ly:.2f}", (lx, ly, 0.36), (0.04, 0.04, 0.70), (0.40, 0.42, 0.44, 1.0))
+    make_box("May_Calendar", (0.0, 2.05, 0.745), (0.24, 0.30, 0.008), (0.90, 0.88, 0.82, 1.0))
+    for di in range(4):
+        make_cyl(f"Red_Dot_{di}", (-0.07 + di * 0.05, 2.00, 0.751), 0.006, 0.004,
+                 (0.86, 0.16, 0.14, 1.0), segments=5)
+    # Boyd's chair, facing the cot
+    make_box("Boyd_Chair_Seat", (0.0, 1.35, 0.44), (0.42, 0.42, 0.05), (0.44, 0.46, 0.48, 1.0))
+    make_box("Boyd_Chair_Back", (0.0, 1.16, 0.70), (0.42, 0.05, 0.48), (0.40, 0.42, 0.44, 1.0))
+    # The ceiling camera in the opposite corner
+    make_box("Ceiling_Cam", (-1.52, 0.20, 3.10), (0.12, 0.14, 0.10), (0.16, 0.16, 0.18, 1.0))
+    make_cyl("Cam_Lens", (-1.48, 0.28, 3.05), 0.03, 0.04, (0.08, 0.08, 0.10, 1.0), axis='Y', segments=8)
+    # The bottom food slot + the sandwich just inside it
+    make_box("Door_Food_Slot", (0.35, 0.08, 0.22), (0.45, 0.04, 0.10), (0.30, 0.30, 0.33, 1.0))
+    make_cyl("Paper_Plate", (0.35, 0.32, 0.010), 0.11, 0.008, (0.92, 0.90, 0.86, 1.0), segments=12)
+    make_box("Sandwich", (0.35, 0.32, 0.035), (0.12, 0.09, 0.04), (0.80, 0.68, 0.46, 1.0))
+
+
 def main():
     clear_scene()
     build_shell()
@@ -147,6 +174,7 @@ def main():
     build_light()
     build_cot()
     build_red_dots()
+    build_hero_props()
     out = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)),
         "../../../assets/3d/locales/nightmare_cell.glb"))
     print(f"\n[build_nightmare_cell] exporting to {out}")

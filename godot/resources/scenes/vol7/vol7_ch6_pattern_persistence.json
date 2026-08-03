@@ -7,7 +7,7 @@
  "nodes": [
   {
    "t": "bg",
-   "src": "3d:chillwave_interior"
+   "src": "3d:chillwave_backroom"
   },
   {
    "t": "narrate",

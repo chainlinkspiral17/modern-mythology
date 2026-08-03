@@ -8,7 +8,7 @@ _BT = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)), 
 if _BT not in sys.path: sys.path.insert(0, _BT)
 from _props import palette as P
 from _props.geometry import clear_scene, make_box, make_cyl, export_glb
-from _props.structure import make_floor, make_wall, make_ceiling
+from _props.structure import make_floor, make_wall, make_ceiling, make_window
 from _props.store_fixtures import make_register
 from _props.food_service import make_coffee_pots, make_donut_display, make_paper_cup_stack, make_sugar_creamer_caddy
 from _props.decor import make_floor_plant
@@ -33,6 +33,15 @@ def build_shell():
     make_wall("Wall_S_E", (+(ROOM_W/4.0+0.5), 0.0, 0), length=ROOM_W/2.0-1.0, height=CEIL, axis='X', palette=PAL_WALL)
     make_box("Wall_S_AboveDoor", (0.0, 0.0, CEIL-0.30), (2.0, 0.20, 0.60), PAL_WALL["wall"])
     make_ceiling("Ceil", (0.0, ROOM_D/2.0, CEIL), size_x=ROOM_W+0.4, size_y=ROOM_D+0.4)
+    # 2026-08 tail pass: FRONT WINDOWS in both S segments (street
+    # light on the tables) + the BELL over the entry door.
+    make_window("Win_SW", (-2.25, 0.10, 1.60), width=1.70, height=1.40)
+    make_window("Win_SE", (+2.25, 0.10, 1.60), width=1.70, height=1.40)
+    make_box("DoorBell_Arm", (0.55, 0.16, 2.28), (0.03, 0.14, 0.03), COL_STEEL)
+    make_cyl("DoorBell", (0.55, 0.26, 2.22), 0.05, 0.07, (0.82, 0.72, 0.42, 1.0), segments=10)
+    # BACK DOOR in the N wall's E end (to the alley), mostly closed.
+    make_box("Back_Door", (2.95, ROOM_D-0.06, 1.05), (0.90, 0.06, 2.10), (0.36, 0.30, 0.24, 1.0))
+    make_cyl("Back_Door_Knob", (2.67, ROOM_D-0.12, 1.02), 0.03, 0.04, COL_STEEL, segments=8)
 
 def build_service_counter():
     # Espresso bar running along X in front of the north wall.
@@ -50,6 +59,21 @@ def build_service_counter():
         make_cyl(f"Espresso_Group_{gi}_Spout", (gx, ey-0.20, top_z+0.10), 0.02, 0.08, COL_STEEL)
         make_cyl(f"Espresso_Cup_{gi}", (gx, ey-0.20, top_z+0.04), 0.04, 0.06, P.PAPER)
     make_cyl("Espresso_SteamWand", (ex+0.54, ey-0.10, top_z+0.28), 0.012, 0.28, COL_STEEL)
+    # 2026-08 tail pass: steaming MILK PITCHERS by the wand + the
+    # under-counter milk COOLER + the house MARSHMALLOW SLAB on its
+    # cutting board (the hot-chocolate ritual).
+    for mi, (mxo, myo) in enumerate([(0.72, -0.15), (0.86, 0.02)]):
+        make_cyl(f"Milk_Pitcher_{mi}_Body", (ex+mxo, ey+myo, top_z+0.07), 0.05, 0.14, COL_STEEL, segments=10)
+        make_box(f"Milk_Pitcher_{mi}_Handle", (ex+mxo+0.06, ey+myo, top_z+0.08), (0.02, 0.02, 0.10), COL_STEEL)
+    make_box("Milk_Cooler", (ex+0.85, ey+0.05, 0.38), (0.55, 0.50, 0.70), (0.66, 0.68, 0.70, 1.0))
+    make_box("Milk_Cooler_Door", (ex+0.85, ey-0.21, 0.38), (0.48, 0.02, 0.60), (0.58, 0.60, 0.62, 1.0))
+    make_box("Milk_Cooler_Handle", (ex+1.02, ey-0.23, 0.50), (0.03, 0.02, 0.14), COL_BLACK)
+    make_box("Marshmallow_Board", (0.9, 5.05, top_z+0.045), (0.40, 0.28, 0.03), (0.52, 0.40, 0.28, 1.0))
+    make_box("Marshmallow_Slab", (0.9, 5.05, top_z+0.10), (0.30, 0.20, 0.08), (0.97, 0.95, 0.90, 1.0))
+    for si, (sxo, syo) in enumerate([(0.20, 0.06), (0.24, -0.05)]):
+        make_box(f"Marshmallow_Cube_{si}", (0.9+sxo, 5.05+syo, top_z+0.075), (0.05, 0.05, 0.05),
+                 (0.97, 0.95, 0.90, 1.0))
+    make_box("Marshmallow_Knife", (0.9, 4.88, top_z+0.05), (0.22, 0.03, 0.01), COL_STEEL)
     make_paper_cup_stack("CupStack", (ex-0.66, ey+0.02, top_z), count=16)
     # Drip coffee pots (make_coffee_pots — was imported but never used).
     make_coffee_pots("Coffee", (0.5, 5.25, top_z), pots=2)
@@ -86,7 +110,21 @@ def _make_cafe_table(prefix, tx, ty):
 def build_tables():
     _make_cafe_table("Table_0", -2.0, 2.3)
     _make_cafe_table("Table_1", 0.4, 1.9)
-    _make_cafe_table("Table_2", 2.3, 2.7)
+    # The CORNER FOUR-TOP (SE, by the front window) — square, four
+    # chairs; where the group scenes actually sit.
+    tx, ty = 2.55, 1.3
+    make_box("FourTop_Top", (tx, ty, 0.74), (0.95, 0.95, 0.05), COL_WOOD)
+    for li,(lxo,lyo) in enumerate([(-0.40,-0.40),(0.40,-0.40),(-0.40,0.40),(0.40,0.40)]):
+        make_box(f"FourTop_Leg_{li}", (tx+lxo, ty+lyo, 0.36), (0.06, 0.06, 0.72), COL_ESPRESSO_TRIM)
+    for ci,(cxo,cyo,along_x) in enumerate([(0.0,-0.78,True),(0.0,0.78,True),(-0.78,0.0,False),(0.78,0.0,False)]):
+        make_cyl(f"FourTop_Chair_{ci}_Seat", (tx+cxo, ty+cyo, 0.46), 0.18, 0.04, COL_WOOD, segments=12)
+        if along_x:
+            byo = 0.17 if cyo > 0 else -0.17
+            make_box(f"FourTop_Chair_{ci}_Back", (tx+cxo, ty+cyo+byo, 0.72), (0.36, 0.04, 0.52), COL_WOOD)
+        else:
+            bxo = 0.17 if cxo > 0 else -0.17
+            make_box(f"FourTop_Chair_{ci}_Back", (tx+cxo+bxo, ty+cyo, 0.72), (0.04, 0.36, 0.52), COL_WOOD)
+    make_cyl("FourTop_Cup", (tx-0.15, ty+0.12, 0.81), 0.04, 0.06, P.PAPER)
 
 def build_lounge():
     # Couch + armchair + low table nook in the SW corner.

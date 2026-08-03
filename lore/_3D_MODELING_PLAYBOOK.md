@@ -331,6 +331,38 @@ Louisville's hurricane-deck proportions"). Don't guess at numbers.
 
 ## Recent lessons
 
+### 2026-08-03 · tail wave · wholesale re-themes and the stale-preset class
+
+**What happened.** The closing tail of the hero-prop arc (final 40
+low-traffic locales) surfaced two failure classes ABOVE the prop
+level:
+
+1. **Wholesale wrong building.** `pit_stop_interior` was a
+   convenience store while every scene in it is a diner (grill,
+   pass-through, back booth, waitress). `chillwave_interior` was a
+   synthwave cocktail lounge while the scenes are a cedar slowstick
+   shop. A generated template can be internally rich and still be
+   the WRONG BUILDING — prop-level patching can't fix it; re-theme
+   the whole build from the prose and re-light the tscn to match
+   (the lounge's neon practicals + purple ambient would have made
+   the cedar shop look haunted).
+2. **Preset aimed at a disabled builder.** `dambrosios_formal`
+   framed the NE formal-dining annex — whose builder had been
+   commented out of `main()` weeks earlier when formal dining moved
+   to the west extension. The camera was pointing at an empty room
+   and nothing warned. When a builder is disabled, grep
+   `Background3D.gd` for presets that reference its coordinates in
+   their comments; when adding a preset, note WHICH build function
+   dresses the framed zone.
+
+**Also proven again:** scenes that move between rooms of one build
+want per-room presets (`pit_stop_kitchen`, `salty_tome_kitchenette`,
+`chillwave_backroom`) + per-node bg retags, not one wide default.
+Cheap: annex zones (Salty Tome's kitchenette/office/alley) can be
+appended to an existing build beyond its N wall — split the wall
+for a doorway, extend floor/ceiling, and the single GLB carries
+front + back + exterior exactly like the multi-floor towers.
+
 ### 2026-08-03 · vols 5-7 hero-prop sweep · parallel agents, every locale failed
 
 - **The audit scales as a fan-out.** Four parallel read-only agents

@@ -1009,10 +1009,13 @@ def build_west_extension():
 
     # Floor accent (formal dining gets a dark hardwood floor; bar gets
     # a warm wood floor; corridor stays tile)
+    # 2026-08 tail pass: dark hardwood -> the PLUSH BURGUNDY CARPET
+    # of D'Ambrosio's ("burgundy swamp, probably hiding generations
+    # of spilled Syrah").
     make_box("WestExt_FormalFloor",
              (EX_cx, -3.5, 0.025),
              (WEST_EXT_W - 0.20, 4.8, 0.005),
-             (0.18, 0.10, 0.06, 1.0))
+             (0.34, 0.11, 0.13, 1.0))
     make_box("WestExt_BarFloor",
              (EX_cx, +4.0, 0.025),
              (WEST_EXT_W - 0.20, 3.8, 0.005),
@@ -5853,6 +5856,74 @@ def build_closing_shift_props():
              (0.78, 0.74, 0.62, 1.0), segments=7)
 
 
+def build_dambrosios_dressing_2026_08():
+    """The Empress chapter's Friday-night floor (west formal dining,
+    X=-15..-9, Y=-6..-1): NUMBERED TABLES with brass plaques (the
+    prose names Tables 4, 9, 12's speaker section, and 14 where
+    Dean signals for the check), VELVET ROPES on brass moorings at
+    the entry, Nicola's stack of WINE LISTS, the CHECK FOLDER on
+    Table 14, and the SERVICE BAR stub the bartender runs cards
+    from."""
+    burg = (0.42, 0.13, 0.16, 1.0)
+    brass = (0.72, 0.58, 0.28, 1.0)
+    linen = (0.94, 0.90, 0.78, 1.0)
+    # Four corner 2-tops around the central banquet table.
+    tables = [("T4", -14.15, -1.75), ("T9", -9.85, -1.75),
+              ("T12", -14.15, -5.25), ("T14", -9.85, -5.25)]
+    for tag, tx, ty in tables:
+        make_cyl(f"Damb_{tag}_Pedestal", (tx, ty, 0.36), 0.05, 0.72, (0.24, 0.16, 0.10, 1.0),
+                 segments=8, axis='Z')
+        make_cyl(f"Damb_{tag}_Top", (tx, ty, 0.74), 0.40, 0.04, linen, segments=12, axis='Z')
+        make_box(f"Damb_{tag}_Cloth", (tx, ty, 0.55), (0.60, 0.60, 0.38), linen)
+        # Brass number plaque on a small stand.
+        make_box(f"Damb_{tag}_PlaqueStem", (tx, ty + 0.18, 0.80), (0.015, 0.015, 0.08), brass)
+        make_box(f"Damb_{tag}_Plaque", (tx, ty + 0.18, 0.87), (0.10, 0.012, 0.07), brass)
+        # Two upholstered chairs.
+        for ci, cxo in enumerate([-0.62, 0.62]):
+            make_box(f"Damb_{tag}_Ch{ci}_Seat", (tx + cxo, ty, 0.46), (0.42, 0.42, 0.06),
+                     (0.32, 0.20, 0.12, 1.0))
+            bxo = -0.19 if cxo < 0 else 0.19
+            make_box(f"Damb_{tag}_Ch{ci}_Back", (tx + cxo + bxo, ty, 0.82), (0.05, 0.42, 0.66),
+                     (0.32, 0.20, 0.12, 1.0))
+            make_box(f"Damb_{tag}_Ch{ci}_Cushion", (tx + cxo, ty, 0.50), (0.40, 0.40, 0.04), burg)
+        # Wine glass per cover.
+        make_cyl(f"Damb_{tag}_Glass", (tx - 0.14, ty - 0.12, 0.83), 0.03, 0.15,
+                 (0.86, 0.92, 0.94, 1.0), segments=6, axis='Z')
+    # Table 14: the CHECK FOLDER + the unanswered calling card
+    # (Dean's "check, please" with nothing ordered).
+    make_box("Damb_T14_CheckFolder", (-9.72, -5.05, 0.765), (0.17, 0.24, 0.018),
+             (0.14, 0.14, 0.16, 1.0))
+    make_box("Damb_T14_Card", (-9.72, -5.05, 0.778), (0.09, 0.05, 0.004),
+             (0.92, 0.90, 0.84, 1.0))
+    # Table 12's section: the slightly-too-loud wall speaker.
+    make_box("Damb_T12_Speaker", (-14.85, -5.25, 2.30), (0.10, 0.30, 0.42), (0.16, 0.14, 0.14, 1.0))
+    make_box("Damb_T12_Speaker_Grille", (-14.79, -5.25, 2.30), (0.02, 0.22, 0.32), (0.10, 0.10, 0.10, 1.0))
+    # VELVET ROPES on brass moorings at the formal-partition door
+    # (Y=-1, door at X=-12).
+    for ri, rx in enumerate([-12.95, -11.05]):
+        make_cyl(f"Damb_RopePost_{ri}", (rx, -1.45, 0.50), 0.035, 1.00, brass, segments=8, axis='Z')
+        make_cyl(f"Damb_RopePost_{ri}_Ball", (rx, -1.45, 1.04), 0.05, 0.06, brass, segments=8, axis='Z')
+        make_cyl(f"Damb_RopePost_{ri}_Base", (rx, -1.45, 0.03), 0.11, 0.05, brass, segments=10, axis='Z')
+    # Sagging rope between the posts (three segments approximate the
+    # catenary droop).
+    make_box("Damb_Rope_Mid", (-12.0, -1.45, 0.82), (0.80, 0.05, 0.05), burg)
+    make_box("Damb_Rope_L", (-12.60, -1.45, 0.90), (0.50, 0.05, 0.05), burg)
+    make_box("Damb_Rope_R", (-11.40, -1.45, 0.90), (0.50, 0.05, 0.05), burg)
+    # SERVICE BAR stub against the room's E wall — where the
+    # bartender runs cards up to the helm.
+    make_box("Damb_ServiceBar_Body", (-9.35, -4.3, 0.55), (0.50, 1.60, 1.10), (0.30, 0.18, 0.10, 1.0))
+    make_box("Damb_ServiceBar_Top", (-9.35, -4.3, 1.12), (0.56, 1.70, 0.05), (0.22, 0.13, 0.08, 1.0))
+    make_box("Damb_ServiceBar_Rail", (-9.60, -4.3, 1.16), (0.03, 1.60, 0.03), brass)
+    for bi, byo in enumerate([-0.55, -0.18, 0.18, 0.55]):
+        make_cyl(f"Damb_ServiceBar_Bottle_{bi}", (-9.30, -4.3 + byo, 1.28), 0.045, 0.30,
+                 [(0.30, 0.16, 0.12, 1.0), (0.16, 0.26, 0.18, 1.0),
+                  (0.62, 0.50, 0.28, 1.0), (0.24, 0.18, 0.30, 1.0)][bi], segments=6, axis='Z')
+    # Nicola's stack of WINE LISTS on the service bar's front corner.
+    for wi in range(5):
+        make_box(f"Damb_WineList_{wi}", (-9.42, -3.62, 1.15 + wi * 0.012), (0.20, 0.28, 0.010),
+                 (0.34, 0.10, 0.12, 1.0) if wi % 2 == 0 else (0.30, 0.09, 0.11, 1.0))
+
+
 def main():
     clear_scene()
     build_shell()
@@ -5868,6 +5939,7 @@ def main():
     build_table_dressings()
     build_riverboat_galley()
     build_interior_partitions()
+    build_dambrosios_dressing_2026_08()
     # NOTE: formal dining + bar both moved to the WEST extension
     # (build_west_extension). The old NE-annex formal, the north-
     # annex bar, AND the old annex_hallway are DISABLED. The entry

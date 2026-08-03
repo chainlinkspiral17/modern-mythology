@@ -114,13 +114,11 @@ def build_visitor_chair_and_decor():
     make_cyl("BedLamp_Column", (tx+0.02, ty+0.10, 0.92), 0.015, 0.24, (0.62, 0.52, 0.40, 1.0), segments=8, axis='Z')
     make_cyl("BedLamp_Shade", (tx+0.02, ty+0.10, 1.10), 0.11, 0.14, COL_LAMP_SHADE, segments=12, axis='Z')
     # A vase of flowers on the bedside table
-    make_cyl("Vase_Body", (tx-0.02, ty-0.12, 0.82), 0.05, 0.16, COL_VASE, segments=10, axis='Z')
+    make_cyl("Vase_Body", (0.0, 5.36, 0.82), 0.05, 0.16, COL_VASE, segments=10, axis='Z')
     for fi in range(3):
         a = fi * 2.0
         make_cyl(f"Flower_Stem_{fi}", (tx-0.02, ty-0.12, 0.98), 0.006, 0.14, COL_PLANT_LEAF, segments=4, axis='Z')
-        make_cyl(f"Flower_Bloom_{fi}", (tx-0.02 + 0.04*(fi-1), ty-0.12, 1.08 + fi*0.02),
-                 0.035, 0.03, COL_FLOWER[fi % len(COL_FLOWER)], segments=8, axis='Z')
-    # Small dresser against the W wall
+        # Small dresser against the W wall
     dxx, dyy = -2.62, 3.40
     make_box("Dresser_Body", (dxx, dyy, 0.44), (0.50, 1.00, 0.88), COL_DRESSER)
     make_box("Dresser_Top", (dxx, dyy, 0.90), (0.54, 1.04, 0.04), (0.46, 0.34, 0.22, 1.0))
@@ -141,12 +139,42 @@ def build_visitor_chair_and_decor():
 
 def build_ceiling_infra():
     for j, ypos in enumerate([1.8, 3.8]):
-        make_fluorescent_tube_fixture(f"Fluor_{j}", (0.0, ypos, CEIL), length=1.20, width=0.32, palette={"diffuser": (1.0, 0.98, 0.92, 1.0)})
-    make_smoke_detector("Smoke", (0.0, 2.5, CEIL))
+        make_smoke_detector("Smoke", (0.0, 2.5, CEIL))
     make_sprinkler("Spr", (-1.0, 2.5, CEIL))
+
+def build_hero_props():
+    """2026-08-03 tail pass: the single white rose in its votive
+    glass ON THE SILL, the sink + the under-cabinet light that is
+    the scene's only light, the unidentified-beach print above the
+    bed, the Book of Common Prayer, the swab dispenser + bent
+    straw, the unworn slippers."""
+    # The rose (single bloom) in the votive glass on the north sill
+    make_cyl("Rose_Votive", (0.0, 5.36, 0.72), 0.035, 0.09, (0.80, 0.84, 0.86, 0.5), segments=8)
+    make_cyl("Rose_Stem", (0.0, 5.36, 0.83), 0.005, 0.14, (0.30, 0.42, 0.28, 1.0), segments=5)
+    make_cyl("Rose_Bloom", (0.0, 5.36, 0.915), 0.028, 0.04, (0.94, 0.93, 0.90, 1.0), segments=8)
+    # Sink + cabinet + the under-cabinet light, east wall
+    make_box("Sink_Counter", (2.40, 4.60, 0.45), (0.9, 0.55, 0.90), (0.72, 0.70, 0.66, 1.0))
+    make_box("Sink_Basin", (2.40, 4.60, 0.91), (0.42, 0.36, 0.05), (0.86, 0.86, 0.84, 1.0))
+    make_box("Sink_Cabinet", (2.70, 4.60, 1.70), (0.35, 0.55, 0.60), (0.66, 0.62, 0.56, 1.0))
+    make_box("UnderCab_Light", (2.48, 4.60, 1.395), (0.30, 0.45, 0.03), (0.98, 0.90, 0.72, 1.0))
+    # The beach print above the bed (north wall)
+    make_box("Beach_Print_Frame", (0.0, 5.44, 1.85), (0.70, 0.04, 0.50), (0.42, 0.36, 0.28, 1.0))
+    make_box("Beach_Print_Sky", (0.0, 5.43, 1.95), (0.60, 0.03, 0.24), (0.66, 0.74, 0.78, 1.0))
+    make_box("Beach_Print_Sand", (0.0, 5.43, 1.74), (0.60, 0.03, 0.18), (0.78, 0.70, 0.54, 1.0))
+    # The Book of Common Prayer, closed, doing its quiet work
+    make_box("Prayer_Book", (1.62, 2.62, 0.785), (0.13, 0.19, 0.04), (0.24, 0.20, 0.28, 1.0))
+    # Mouth-swab dispenser + the bent straw
+    make_box("Swab_Dispenser", (1.40, 2.36, 0.83), (0.10, 0.07, 0.14), (0.86, 0.88, 0.90, 0.8))
+    make_cyl("Bent_Straw_Lower", (1.34, 2.50, 0.90), 0.006, 0.10, (0.90, 0.90, 0.92, 1.0), segments=5)
+    make_box("Bent_Straw_Upper", (1.36, 2.48, 0.965), (0.012, 0.012, 0.06), (0.90, 0.90, 0.92, 1.0))
+    # The slippers by the door, three weeks unworn
+    make_box("Slipper_L", (-0.75, 0.35, 0.03), (0.10, 0.26, 0.05), (0.66, 0.58, 0.50, 1.0))
+    make_box("Slipper_R", (-0.55, 0.32, 0.03), (0.10, 0.26, 0.05), (0.66, 0.58, 0.50, 1.0))
+
 
 def main():
     clear_scene(); build_shell(); build_hospital_bed(); build_iv_stand_and_monitor(); build_visitor_chair_and_decor(); build_ceiling_infra()
+    build_hero_props()
     out = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)), "../../../assets/3d/locales/hospice_room.glb"))
     print(f"\n[build_hospice_room] exporting to {out}")
     export_glb(out)

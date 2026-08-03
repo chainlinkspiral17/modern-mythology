@@ -166,6 +166,52 @@ def build_wall_dressing():
     make_cyl("Cooler_Jug", (1.4, 0.45, 1.28), 0.16, 0.36, (0.45, 0.60, 0.70, 0.7), segments=10)
 
 
+def build_vol6_hero_props_2026_08():
+    """2026-08-03 tail pass — the vol6 gym gaps: the DEADLIFT
+    PLATFORM (rubber-strip deck, bar loaded on the floor), the LAT
+    PULLDOWN stack against the N wall, the squat rack's MISSING
+    BOLT (empty hole + the bolt lying in the dust below), and the
+    80s — the heaviest pair on the rack, oversized and worn."""
+    # Deadlift platform mid-east floor.
+    px, py = 2.3, 2.6
+    make_box("DL_Platform", (px, py, 0.025), (2.0, 2.0, 0.05), (0.42, 0.30, 0.20, 1.0))
+    for si, syo in enumerate([-0.72, 0.72]):
+        make_box(f"DL_Rubber_{si}", (px, py + syo, 0.055), (2.02, 0.52, 0.012), (0.12, 0.12, 0.13, 1.0))
+    make_cyl("DL_Bar", (px, py, 0.28), 0.025, 2.2, COL_IRON, segments=8, axis='X')
+    for sgn in (-1, 1):
+        for pi, pr in enumerate((0.22, 0.22)):
+            make_cyl(f"DL_Plate_{sgn:+d}_{pi}", (px + sgn * (0.85 + pi * 0.06), py, 0.28),
+                     pr, 0.05, COL_PLATE, segments=14, axis='X')
+    make_cyl("DL_Chalk_Hand", (px - 0.6, py - 0.55, 0.06), 0.09, 0.01, COL_CHALK, segments=8)
+    # Lat pulldown stack against the N wall, E of the squat rack.
+    lx, ly = 2.2, ROOM_D - 0.55
+    make_box("Pulldown_Frame_Post", (lx, ly, 1.05), (0.09, 0.09, 2.10), COL_RACK)
+    make_box("Pulldown_Frame_Arm", (lx, ly - 0.45, 2.06), (0.09, 0.95, 0.08), COL_RACK)
+    make_box("Pulldown_Stack_Guard", (lx, ly + 0.02, 0.85), (0.55, 0.30, 1.55), COL_RACK)
+    for wi in range(8):
+        make_box(f"Pulldown_Weight_{wi}", (lx, ly, 0.22 + wi * 0.09), (0.42, 0.22, 0.075), COL_IRON)
+    make_cyl("Pulldown_Pin", (lx + 0.24, ly, 0.49), 0.012, 0.10, (0.72, 0.60, 0.24, 1.0),
+             segments=6, axis='X')
+    make_cyl("Pulldown_Pulley", (lx, ly - 0.85, 2.02), 0.06, 0.05, COL_IRON, segments=10, axis='X')
+    make_box("Pulldown_Cable", (lx, ly - 0.85, 1.55), (0.015, 0.015, 0.90), (0.30, 0.30, 0.32, 1.0))
+    make_cyl("Pulldown_LatBar", (lx, ly - 0.85, 1.10), 0.018, 1.05, COL_IRON, segments=8, axis='X')
+    make_box("Pulldown_Seat", (lx, ly - 1.15, 0.42), (0.45, 0.32, 0.08), COL_BENCH_PAD)
+    make_box("Pulldown_ThighPad", (lx, ly - 1.05, 0.70), (0.40, 0.14, 0.10), COL_BENCH_PAD)
+    # The MISSING BOLT on the squat rack's SE post: empty dark hole
+    # + the bolt itself in the dust at the post's foot.
+    make_cyl("Rack_BoltHole_Empty", (-1.2 + 0.045, ROOM_D - 0.7 - 0.35, 0.95), 0.018, 0.02,
+             (0.05, 0.05, 0.06, 1.0), segments=6, axis='X')
+    make_cyl("Rack_Bolt_OnFloor", (-1.05, ROOM_D - 1.25, 0.015), 0.014, 0.06,
+             (0.55, 0.55, 0.58, 1.0), segments=6, axis='X')
+    # The 80s: the outsized pair parked on the floor at the rack's
+    # S end (too heavy for the shelf, per gym custom).
+    dx = -ROOM_W / 2.0 + 0.45
+    for di, dy in enumerate((0.95, 1.20)):
+        make_cyl(f"DB80_{di}_HeadA", (dx - 0.16, dy, 0.10), 0.095, 0.10, COL_IRON, segments=10, axis='X')
+        make_cyl(f"DB80_{di}_HeadB", (dx + 0.16, dy, 0.10), 0.095, 0.10, COL_IRON, segments=10, axis='X')
+        make_cyl(f"DB80_{di}_Bar", (dx, dy, 0.10), 0.02, 0.26, COL_PLATE_RIM, segments=6, axis='X')
+
+
 def build_fluorescents():
     for fx in (-1.8, 1.4):
         for fy in (1.8, 4.4):
@@ -183,6 +229,7 @@ def main():
     build_benches()
     build_dumbbells_and_plates()
     build_wall_dressing()
+    build_vol6_hero_props_2026_08()
     build_fluorescents()
     out = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)),
         "../../../assets/3d/locales/gym_weight_room.glb"))

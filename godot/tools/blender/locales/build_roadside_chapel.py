@@ -190,6 +190,44 @@ def build_lovers_exterior():
                  (0.46, 0.40, 0.34, 1.0))   # limestone-darker
 
 
+def build_facade_2026_08():
+    """2026-08-03 tail pass: the chapel_exterior preset photographs
+    the front — which never existed. Portico + steps + door +
+    steeple + the asphalt apron, the idling black car, the trash
+    can from the lemonade beat."""
+    wood = (0.82, 0.80, 0.74, 1.0)      # white clapboard
+    trim = (0.62, 0.60, 0.55, 1.0)
+    # Steps + portico
+    for si, (sy, sz) in enumerate(((-0.45, 0.15), (-0.75, 0.30), (-1.05, 0.45))):
+        make_box(f"Church_Step_{si}", (0.0, sy, sz - 0.075), (2.4, 0.32, 0.15), trim)
+    for px in (-1.0, 1.0):
+        make_cyl(f"Portico_Col_{px:+.0f}", (px, -0.9, 1.55), 0.09, 2.6, wood, segments=8)
+    make_box("Portico_Roof", (0.0, -0.7, 3.05), (2.8, 1.8, 0.22), (0.42, 0.36, 0.30, 1.0))
+    make_box("Portico_Pediment", (0.0, -0.55, 3.35), (2.4, 1.2, 0.4), wood)
+    # Door + facade face + steeple
+    make_box("Church_Door", (0.0, -0.02, 1.30), (1.10, 0.08, 2.30), (0.36, 0.26, 0.16, 1.0))
+    make_box("Facade_Face", (0.0, -0.05, 1.85), (5.2, 0.06, 3.7), wood)
+    make_box("Facade_Gable", (0.0, -0.05, 4.2), (3.4, 0.06, 1.2), wood)
+    make_box("Steeple_Base", (0.0, 0.8, 4.6), (1.2, 1.2, 1.6), wood)
+    make_box("Steeple_Spire_0", (0.0, 0.8, 5.9), (0.85, 0.85, 1.2), trim)
+    make_box("Steeple_Spire_1", (0.0, 0.8, 7.1), (0.5, 0.5, 1.4), trim)
+    make_box("Steeple_Cross_V", (0.0, 0.8, 8.2), (0.06, 0.06, 0.8), (0.74, 0.58, 0.28, 1.0))
+    make_box("Steeple_Cross_H", (0.0, 0.8, 8.4), (0.4, 0.06, 0.06), (0.74, 0.58, 0.28, 1.0))
+    # The shimmering asphalt apron + curb
+    make_box("Asphalt_Apron", (0.0, -6.5, -0.01), (14.0, 10.0, 0.04), (0.22, 0.22, 0.24, 1.0))
+    make_box("Curb", (0.0, -9.0, 0.05), (14.0, 0.25, 0.12), (0.55, 0.53, 0.48, 1.0))
+    # The long black car idling by the curb
+    make_box("Black_Car_Body", (4.5, -8.0, 0.55), (4.6, 1.75, 0.55), (0.08, 0.08, 0.10, 1.0))
+    make_box("Black_Car_Cabin", (4.2, -8.0, 1.02), (2.4, 1.6, 0.45), (0.08, 0.08, 0.10, 1.0))
+    make_box("Black_Car_Glass", (4.2, -8.0, 1.04), (2.2, 1.45, 0.36), (0.16, 0.18, 0.22, 1.0))
+    for wx in (3.0, 5.9):
+        for wy in (-8.75, -7.25):
+            make_cyl(f"BC_Wheel_{wx:.0f}_{wy:.2f}", (wx, wy, 0.30), 0.30, 0.22,
+                     (0.06, 0.06, 0.07, 1.0), segments=10, axis='Y')
+    # The trash can at the foot of the steps (the lemonade cup)
+    make_cyl("Trash_Can", (1.8, -2.2, 0.45), 0.28, 0.90, (0.30, 0.34, 0.30, 1.0), segments=10)
+
+
 def main():
     clear_scene()
     build_shell()
@@ -201,6 +239,7 @@ def main():
     build_ceiling_infra()
     build_decor()
     build_lovers_exterior()
+    build_facade_2026_08()
     out = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)),
                                          "../../../assets/3d/locales/roadside_chapel.glb"))
     print(f"\n[build_roadside_chapel] exporting to {out}")

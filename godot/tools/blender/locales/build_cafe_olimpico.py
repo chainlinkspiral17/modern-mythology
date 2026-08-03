@@ -34,6 +34,15 @@ def build_shell():
         make_crown_molding(nm, wall_x=wx, wall_y=wy, length=length, axis=ax, ceil_z=CEIL, palette={"wood": COL_WOOD})
     make_window("Window_SW", (-2.0, 0.0, 1.60), width=2.20, height=1.60)
     make_window("Window_SE", (+2.0, 0.0, 1.60), width=2.20, height=1.60)
+    # 2026-08 tail pass: the BELL over the door + the BACK-CORNER
+    # window in the W wall (X-thin, hand-built) the corner table
+    # sits under.
+    make_box("DoorBell_Arm", (0.55, 0.16, 2.42), (0.03, 0.14, 0.03), P.METAL_STEEL)
+    make_cyl("DoorBell", (0.55, 0.26, 2.36), 0.05, 0.07, (0.82, 0.72, 0.42, 1.0), segments=10)
+    wx = -ROOM_W/2.0 + 0.10
+    make_box("Win_BackCorner_Frame", (wx, 4.3, 1.65), (0.06, 1.30, 1.40), COL_WOOD)
+    make_box("Win_BackCorner_Glass", (wx+0.01, 4.3, 1.65), (0.03, 1.16, 1.26), (0.68, 0.76, 0.78, 0.6))
+    make_box("Win_BackCorner_Mullion", (wx+0.02, 4.3, 1.65), (0.03, 0.05, 1.26), COL_WOOD)
 
 def build_bar_counter():
     # Long bar counter along north wall
@@ -58,7 +67,9 @@ def build_bar_counter():
 
 def build_seating():
     # Marble round tables (2) with bentwood chairs
-    for ti, (tx, ty) in enumerate([(-2.0, 1.80), (+2.0, 1.80)]):
+    # Table_0 moved against the SW front window (2026-08 — the
+    # street-watching seat the scenes describe).
+    for ti, (tx, ty) in enumerate([(-2.0, 0.95), (+2.0, 1.80)]):
         make_cyl(f"Table_{ti}_Top", (tx, ty, 0.74), 0.42, 0.04, COL_MARBLE)
         make_cyl(f"Table_{ti}_Pedestal", (tx, ty, 0.37), 0.06, 0.70, COL_ESPRESSO_TRIM)
         make_cyl(f"Table_{ti}_Foot", (tx, ty, 0.04), 0.24, 0.04, COL_ESPRESSO_TRIM)
@@ -76,6 +87,25 @@ def build_seating():
     make_box("Booth_Back", (bx+0.20, by, 0.92), (0.20, 2.20, 1.00), COL_VINYL_BOOTH)
     make_box("Booth_Table", (bx-0.60, by, 0.72), (0.50, 1.40, 0.04), COL_MARBLE)
     make_cyl("Booth_Table_Pedestal", (bx-0.60, by, 0.37), 0.06, 0.70, COL_ESPRESSO_TRIM)
+    # The BACK-CORNER table (NW, under its window): water glass, the
+    # open notebook, and the croissant in its paper bag.
+    ctx, cty = -3.25, 4.25
+    make_cyl("CornerTable_Top", (ctx, cty, 0.74), 0.42, 0.04, COL_MARBLE)
+    make_cyl("CornerTable_Pedestal", (ctx, cty, 0.37), 0.06, 0.70, COL_ESPRESSO_TRIM)
+    make_cyl("CornerTable_Foot", (ctx, cty, 0.04), 0.24, 0.04, COL_ESPRESSO_TRIM)
+    for ci2, (cxo, cyo) in enumerate([(0.60, 0.0), (0.0, -0.60)]):
+        ccx, ccy = ctx + cxo, cty + cyo
+        make_cyl(f"CornerTable_Chair_{ci2}_Seat", (ccx, ccy, 0.46), 0.20, 0.04, COL_WOOD)
+        if cxo != 0.0:
+            make_box(f"CornerTable_Chair_{ci2}_Back", (ccx+0.18, ccy, 0.74), (0.04, 0.40, 0.56), COL_WOOD)
+        else:
+            make_box(f"CornerTable_Chair_{ci2}_Back", (ccx, ccy-0.18, 0.74), (0.40, 0.04, 0.56), COL_WOOD)
+    make_cyl("CornerTable_WaterGlass", (ctx+0.18, cty+0.14, 0.81), 0.035, 0.13, (0.80, 0.86, 0.88, 0.6), segments=8)
+    make_box("CornerTable_Notebook", (ctx-0.10, cty-0.05, 0.765), (0.30, 0.21, 0.015), (0.92, 0.90, 0.84, 1.0))
+    make_box("CornerTable_Notebook_Spine", (ctx-0.10, cty-0.05, 0.772), (0.015, 0.21, 0.012), (0.30, 0.28, 0.26, 1.0))
+    make_cyl("CornerTable_Pen", (ctx+0.08, cty-0.16, 0.775), 0.007, 0.13, (0.16, 0.18, 0.32, 1.0), axis='X', segments=6)
+    make_box("CornerTable_CroissantBag", (ctx-0.02, cty+0.20, 0.775), (0.20, 0.13, 0.05), (0.80, 0.68, 0.48, 1.0))
+    make_box("CornerTable_Croissant", (ctx-0.02, cty+0.24, 0.795), (0.13, 0.06, 0.04), (0.86, 0.64, 0.34, 1.0))
 
 def build_pennants_and_decor():
     # Soccer pennants hanging on north wall over bar
@@ -87,9 +117,12 @@ def build_pennants_and_decor():
     make_faded_poster("Poster_W", (-3.95, 3.0, 1.80))
 
 def build_ceiling_infra():
-    for j, ypos in enumerate([1.5, 3.5, 5.5]):
-        for i in range(-1, 2):
-            make_fluorescent_tube_fixture(f"Fluor_{j}_{i}", (i*2.0, ypos, CEIL), length=1.20, width=0.30)
+    # 2026-08 tail pass: the 3x3 office fluorescent grid was the
+    # template leak — the marble-and-pennants idiom takes warm
+    # globe pendants over bar and floor.
+    for pi2, (px, py) in enumerate([(-2.0, 2.4), (2.0, 2.4), (0.0, 4.6)]):
+        make_cyl(f"Globe_{pi2}_Cord", (px, py, CEIL-0.22), 0.008, 0.44, P.METAL_BLACK)
+        make_cyl(f"Globe_{pi2}_Sphere", (px, py, CEIL-0.55), 0.14, 0.24, (0.97, 0.90, 0.72, 1.0), segments=12)
     make_smoke_detector("Smoke", (0.0, 3.0, CEIL))
     make_ceiling_speaker("Speaker", (-1.0, 3.0, CEIL))
 

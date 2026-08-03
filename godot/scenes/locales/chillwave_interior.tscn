@@ -126,25 +126,25 @@ shader_parameter/edge_ca = 0.012
 shader_parameter/wobble_amp = 0.0018
 shader_parameter/wobble_freq = 0.85
 shader_parameter/tint_amount = 0.18
-shader_parameter/tint_color = Color(0.86, 0.42, 0.96, 1)
+shader_parameter/tint_color = Color(0.92, 0.78, 0.55, 1)
 
 [sub_resource type="Environment" id="Env_Locale"]
 background_mode = 1
-background_color = Color(0.08, 0.06, 0.10, 1)
+background_color = Color(0.16, 0.13, 0.10, 1)
 ambient_light_source = 2
-ambient_light_color = Color(0.62, 0.46, 0.74, 1)
-ambient_light_energy = 0.75
+ambient_light_color = Color(0.72, 0.62, 0.48, 1)
+ambient_light_energy = 0.7
 fog_enabled = true
-fog_light_color = Color(0.32, 0.22, 0.42, 1)
-fog_light_energy = 0.4
-fog_density = 0.006
+fog_light_color = Color(0.42, 0.35, 0.27, 1)
+fog_light_energy = 0.3
+fog_density = 0.004
 adjustment_enabled = true
 adjustment_brightness = 1.0
 adjustment_contrast = 1.1
 adjustment_saturation = 0.96
 glow_enabled = true
-glow_intensity = 0.85
-glow_bloom = 0.18
+glow_intensity = 0.6
+glow_bloom = 0.1
 glow_blend_mode = 1
 glow_hdr_threshold = 0.95
 glow_hdr_scale = 2.4
@@ -156,55 +156,48 @@ environment = SubResource("Env_Locale")
 
 [node name="Key" type="DirectionalLight3D" parent="."]
 transform = Transform3D(0.9396926207859084, -0.2801664995932355, 0.1961746949690111, 0, 0.5735764363510462, 0.8191520442889918, -0.3420201433256687, -0.7697511313200572, 0.5389855446957563, 0, 5, -3)
-light_color = Color(0.86, 0.82, 0.96, 1)
-light_energy = 0.8
+light_color = Color(0.95, 0.88, 0.74, 1)
+light_energy = 0.85
 shadow_enabled = false
 
 [node name="Fill" type="DirectionalLight3D" parent="."]
 transform = Transform3D(-0.707, -0.354, -0.612, 0, 0.866, -0.5, 0.707, -0.354, -0.612, 3, 3, -1)
-light_color = Color(0.42, 0.62, 0.96, 1)
-light_energy = 0.28
+light_color = Color(0.74, 0.68, 0.56, 1)
+light_energy = 0.32
 shadow_enabled = false
 
 [node name="Back" type="DirectionalLight3D" parent="."]
 transform = Transform3D(0.707, -0.5, 0.5, 0, 0.707, 0.707, -0.707, -0.5, 0.5, -4, 3, -4)
-light_color = Color(0.78, 0.42, 0.96, 1)
-light_energy = 0.35
+light_color = Color(0.60, 0.56, 0.48, 1)
+light_energy = 0.28
 shadow_enabled = false
 
-[node name="Practical_BackbarNeon" type="OmniLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.7, -5.86)
-light_color = Color(0.92, 0.28, 0.72, 1)
-light_energy = 1.2
+[node name="Practical_Dome_Front" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.6, -2.2)
+light_color = Color(0.96, 0.9, 0.76, 1)
+light_energy = 1.1
 omni_range = 4.5
 shadow_enabled = false
 
-[node name="Practical_BarPendantHot" type="OmniLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.2, -5.1)
-light_color = Color(0.98, 0.78, 0.52, 1)
+[node name="Practical_Dome_Back" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.6, -6.2)
+light_color = Color(0.96, 0.9, 0.76, 1)
 light_energy = 1.0
-omni_range = 4.0
+omni_range = 4.5
 shadow_enabled = false
 
-[node name="Practical_SunsetMural" type="OmniLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.3, 1.7, -2.6)
-light_color = Color(0.96, 0.44, 0.5, 1)
-light_energy = 1.0
-omni_range = 3.8
+[node name="Practical_TaskLamp" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.95, 1.5, -7.35)
+light_color = Color(0.98, 0.92, 0.74, 1)
+light_energy = 0.9
+omni_range = 2.5
 shadow_enabled = false
 
-[node name="Practical_LoungeCyan" type="OmniLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.6, 2.5, -3.0)
-light_color = Color(0.36, 0.86, 0.94, 1)
-light_energy = 0.5
-omni_range = 4.0
-shadow_enabled = false
-
-[node name="Practical_DJGlow" type="OmniLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.65, 1.3, -1.15)
-light_color = Color(0.58, 0.34, 0.86, 1)
-light_energy = 0.55
-omni_range = 3.0
+[node name="Practical_Storefront_Spill" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.7, -0.4)
+light_color = Color(0.9, 0.9, 0.86, 1)
+light_energy = 0.6
+omni_range = 3.5
 shadow_enabled = false
 
 [node name="Interior" parent="." instance=ExtResource("1_glb")]
@@ -212,7 +205,7 @@ shadow_enabled = false
 [node name="PostProcess" type="CanvasLayer" parent="."]
 layer = 50
 script = ExtResource("5_mood")
-mood_strata = Array[String](["raw", "noir", "studio", "psychedelic_substrate", "vaporwave_dream", "cyberpunk_neon"])
+mood_strata = Array[String](["raw", "noir", "studio", "lithograph", "memory_warm", "liminal_interior"])
 default_style_pack = ""
 
 [node name="NeonQuad" type="ColorRect" parent="PostProcess"]

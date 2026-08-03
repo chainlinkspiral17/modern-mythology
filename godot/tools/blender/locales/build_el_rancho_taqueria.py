@@ -1,4 +1,11 @@
-"""el_rancho_taqueria — vol5-7 locale (auto-generated placement script)."""
+"""el_rancho_taqueria — El Rancho, the taqueria (vols 5-7).
+
+2026-08-03 tail pass: the round pedestal 2-tops (where group scenes
+stage) are replaced with the LONG BOOTH + two square 6-tops the
+prose seats; added the DRIVE-THRU window on the E wall with its
+speaker box and the taped "SPEAKER BROKE — PULL FORWARD" sign, the
+tip jar, the counter's yellow order pad, and the sauce-packet box.
+"""
 import os, sys
 _BT = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)), ".."))
 if _BT not in sys.path: sys.path.insert(0, _BT)
@@ -38,6 +45,19 @@ def build_register_counter():
     make_box("ChipWarmer_Lamp", (cx, cy, top_z+0.42), (0.44,0.44,0.03), (1.0,0.78,0.32,1.0))
     for i in range(3):
         make_box(f"Chips_{i}", (cx-0.12+i*0.12, cy, top_z+0.10), (0.08,0.32,0.14), (0.92,0.78,0.42,1.0))
+    # Tip jar by the register (a few coins + folded bills).
+    jx, jy = ROOM_W/4.0+0.55, ROOM_D-1.85
+    make_cyl("TipJar", (jx, jy, top_z+0.09), 0.055, 0.18, (0.80, 0.86, 0.88, 0.55), segments=10)
+    make_box("TipJar_Bills", (jx, jy, top_z+0.06), (0.07, 0.05, 0.05), (0.55, 0.62, 0.48, 1.0))
+    make_box("TipJar_Label", (jx, jy-0.055, top_z+0.10), (0.07, 0.005, 0.05), (0.94, 0.92, 0.84, 1.0))
+    # The yellow order pad + pen by the register.
+    make_box("Order_Pad", (ROOM_W/4.0+0.35, ROOM_D-1.25, top_z+0.012), (0.15, 0.21, 0.012), (0.94, 0.88, 0.42, 1.0))
+    make_cyl("Order_Pen", (ROOM_W/4.0+0.50, ROOM_D-1.20, top_z+0.02), 0.007, 0.13, (0.20, 0.24, 0.40, 1.0), axis='Y', segments=6)
+    # Cardboard sauce-packet box at the counter's end.
+    make_box("Sauce_Box", (ROOM_W/4.0+0.95, ROOM_D-1.5, top_z+0.07), (0.30, 0.24, 0.13), (0.62, 0.50, 0.34, 1.0))
+    for si2 in range(6):
+        make_box(f"Sauce_Packet_{si2}", (ROOM_W/4.0+0.86+0.06*(si2%3), ROOM_D-1.56+0.07*(si2//3), top_z+0.145),
+                 (0.05, 0.06, 0.012), (0.70, 0.18, 0.12, 1.0))
 
 def build_menu_board():
     mx, my, mz = ROOM_W/4.0, ROOM_D-0.06, 2.05
@@ -76,8 +96,59 @@ def _make_table(prefix, cx, cy):
             make_box(f"{prefix}_Ch{ci}_Leg_{k}", (chx+lx, chy+ly, 0.22), (0.04,0.04,0.42), P.METAL_BLACK)
 
 def build_tables():
-    for ti,(tx,ty) in enumerate([(-1.7,2.0),(1.7,2.0),(0.0,3.5)]):
-        _make_table(f"Table{ti}", tx, ty)
+    # LONG BOOTH down the W wall — vinyl bench + long table + loose
+    # chairs on the room side (seats a crowd, not a couple).
+    bx = -ROOM_W/2.0 + 0.50
+    make_box("LongBooth_Seat", (bx, 2.4, 0.44), (0.46, 3.4, 0.10), COL_ACCENT)
+    make_box("LongBooth_Back", (bx-0.20, 2.4, 0.80), (0.10, 3.4, 0.85), COL_ACCENT)
+    make_box("LongBooth_Base", (bx, 2.4, 0.20), (0.44, 3.35, 0.38), (0.40, 0.22, 0.12, 1.0))
+    make_box("LongBooth_Table", (bx+0.62, 2.4, 0.74), (0.72, 3.2, 0.05), COL_WOOD)
+    for li,(lyo) in enumerate([-1.35, 0.0, 1.35]):
+        make_box(f"LongBooth_TLeg_{li}", (bx+0.62, 2.4+lyo, 0.36), (0.06, 0.06, 0.72), P.METAL_BLACK)
+    for ci,cyo in enumerate([-1.1, -0.35, 0.35, 1.1]):
+        make_box(f"LongBooth_Ch{ci}_Seat", (bx+1.35, 2.4+cyo, 0.45), (0.38, 0.38, 0.05), COL_ACCENT)
+        make_box(f"LongBooth_Ch{ci}_Back", (bx+1.52, 2.4+cyo, 0.68), (0.04, 0.38, 0.44), COL_ACCENT)
+    # Two square SIX-TOPS mid-floor.
+    for ti,(tx,ty) in enumerate([(0.9, 1.6), (0.9, 3.4)]):
+        make_box(f"SixTop_{ti}_Top", (tx, ty, 0.74), (1.60, 0.90, 0.05), COL_WOOD)
+        for li2,(lxo,lyo) in enumerate([(-0.70,-0.38),(0.70,-0.38),(-0.70,0.38),(0.70,0.38)]):
+            make_box(f"SixTop_{ti}_Leg_{li2}", (tx+lxo, ty+lyo, 0.36), (0.06, 0.06, 0.72), P.METAL_BLACK)
+        for ci2,(cxo,cyo,along_x) in enumerate([(-0.50,-0.75,True),(0.50,-0.75,True),
+                                                (-0.50,0.75,True),(0.50,0.75,True),
+                                                (-1.05,0.0,False),(1.05,0.0,False)]):
+            make_box(f"SixTop_{ti}_Ch{ci2}_Seat", (tx+cxo, ty+cyo, 0.45), (0.38, 0.38, 0.05), COL_ACCENT)
+            if along_x:
+                byo = 0.17 if cyo > 0 else -0.17
+                make_box(f"SixTop_{ti}_Ch{ci2}_Back", (tx+cxo, ty+cyo+byo, 0.68), (0.38, 0.04, 0.44), COL_ACCENT)
+            else:
+                bxo = 0.17 if cxo > 0 else -0.17
+                make_box(f"SixTop_{ti}_Ch{ci2}_Back", (tx+cxo+bxo, ty+cyo, 0.68), (0.04, 0.38, 0.44), COL_ACCENT)
+        # Sauce caddy + napkins on each six-top.
+        make_box(f"SixTop_{ti}_Caddy", (tx, ty+0.15, 0.80), (0.16, 0.12, 0.10), (0.72, 0.20, 0.14, 1.0))
+        make_box(f"SixTop_{ti}_Napkins", (tx-0.20, ty-0.10, 0.79), (0.13, 0.06, 0.10), P.METAL_STEEL)
+
+
+def build_drive_thru_2026_08():
+    """The DRIVE-THRU on the E wall: sliding service window, the
+    outside speaker box, and the taped SPEAKER BROKE sign (the
+    order everyone yells through the window instead)."""
+    wx = ROOM_W/2.0 - 0.10
+    # X-thin window (E wall — hand-built; make_window is Y-axis only).
+    make_box("DriveThru_Frame", (wx, 4.6, 1.45), (0.08, 1.30, 1.20), (0.55, 0.55, 0.58, 1.0))
+    make_box("DriveThru_Glass", (wx+0.01, 4.85, 1.45), (0.03, 0.60, 1.04), (0.62, 0.72, 0.76, 0.6))
+    make_box("DriveThru_Slide", (wx+0.02, 4.30, 1.45), (0.03, 0.55, 1.04), (0.58, 0.68, 0.72, 0.7))
+    make_box("DriveThru_Sill", (wx-0.10, 4.6, 0.86), (0.30, 1.40, 0.05), (0.66, 0.62, 0.56, 1.0))
+    # Interior headset hook + ticket spike at the window.
+    make_cyl("DriveThru_Headset_Hook", (wx-0.14, 5.15, 1.65), 0.02, 0.06, P.METAL_STEEL, axis='X', segments=6)
+    make_cyl("DriveThru_Ticket_Spike", (wx-0.16, 4.25, 0.92), 0.006, 0.12, P.METAL_STEEL)
+    # Outside: the speaker box on a post + the taped sign.
+    make_cyl("Speaker_Post", (ROOM_W/2.0+1.2, 3.2, 0.60), 0.04, 1.20, P.METAL_BLACK)
+    make_box("Speaker_Box", (ROOM_W/2.0+1.2, 3.2, 1.35), (0.34, 0.24, 0.44), (0.30, 0.30, 0.32, 1.0))
+    make_box("Speaker_Grille", (ROOM_W/2.0+1.06, 3.2, 1.40), (0.02, 0.16, 0.20), (0.16, 0.16, 0.18, 1.0))
+    make_box("Speaker_Broke_Sign", (ROOM_W/2.0+1.04, 3.2, 1.12), (0.015, 0.20, 0.14), (0.94, 0.92, 0.84, 1.0))
+    make_box("Speaker_Sign_Tape", (ROOM_W/2.0+1.03, 3.2, 1.20), (0.012, 0.10, 0.02), (0.75, 0.72, 0.60, 1.0))
+    # Asphalt lane strip under the window.
+    make_box("DriveThru_Lane", (ROOM_W/2.0+1.5, 4.2, -0.02), (2.6, 5.5, 0.04), (0.30, 0.30, 0.32, 1.0))
 
 def build_neon_sign():
     sx = ROOM_W/2.0-0.06; sy = ROOM_D/2.0; sz = 2.0
@@ -114,6 +185,7 @@ def main():
     build_menu_board()
     build_salsa_station()
     build_tables()
+    build_drive_thru_2026_08()
     build_neon_sign()
     build_string_lights()
     build_ceiling_infra()

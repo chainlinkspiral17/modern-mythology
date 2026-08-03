@@ -7,7 +7,7 @@
   "nodes": [
     {
       "t": "bg",
-      "src": "3d:pit_stop_interior"
+      "src": "3d:pit_stop_kitchen"
     },
     {
       "t": "hide",

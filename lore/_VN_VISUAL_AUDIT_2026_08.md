@@ -419,3 +419,80 @@ Photo mode = hide-chrome + bars only: no screenshot, no free-cam.
 T1 items 1-5 in one wave (they are all finishing moves), then T2.6
 + T2.7 as the visible-lift wave, then T2.8-11 as the craft wave.
 T3 gated on user say-so per the roadmap convention.
+
+## SIXTH WAVE · 2026-08-03 · the tail (final 40 low-traffic locales)
+
+Four parallel Explore agents swept every remaining `3d:` locale
+against the FULL scene prose. Patches shipped in three batches:
+
+**Batch A (apartments/offices/homes/bedrooms)** — committed as
+"Tail hero-prop pass A": finn/kai/elicia/montreal apartments, the
+three New Orleans rooms, both Houston offices, miller_office
+chandelier, bianca/ramos/caldwell/roberts kitchens, diego/ben/
+coach_k/graciela/safehouse bedrooms, natalie_apartment (turntable,
+Hanged Man sill card, kitchen rebuild).
+
+**Batch B (civic/institutional/exterior)**: roadside_chapel facade
+(steps, portico, steeple, black car), equipment_shed tee bin +
+Ben's milk crate, nightmare_cell (wall device, May calendar,
+food slot), hospice_room (sill rose votive, beach print, sink),
+hospital_room waiting corner (+ `hospital_waiting` preset,
+vol6_ch7 retagged), darkroom avocado floor + notebook, courthouse
+pew aisle split + clerk screen + Dean's folder, graustark ruin
+quarter (Sinkhole, chalked wall, cottage, Minstral's Green wreck),
+riverfront park (lawn, chipped bench, bandstand, armory + new
+`riverfront_park` preset; vol1_ch2_park ×2 and vol5_ch5 §IV
+retagged).
+
+**Batch C (commercial)** — two WHOLESALE RE-THEMES and eight prop
+patches:
+- `pit_stop_interior` was a convenience store; every vol6 scene is
+  a DINER. Rebuilt 11×9: booth row + back corner booth, counter +
+  stools, pass-through + bell + swing door, kitchen (grill/hood/
+  fryer/walk-in + milk crate + office door + N window). New
+  presets `pit_stop_kitchen` + `pit_stop_back_booth`; vol6 ch2/4/6
+  retagged to kitchen, ch7 to the booth. tscn re-lit (pendants FOH,
+  fluor kitchen).
+- `chillwave_interior` was a synthwave cocktail lounge; vol7_ch6 is
+  Cale's SLOWSTICK SHOP. Rebuilt 7×8: door bell, counter (service
+  bell + paperback), cedar display + alphabetized inventory
+  shelves, crate, workbench (soldering iron/LED strip/transformer/
+  task lamp), the three-slot box w/ Estuary 7 label, two chairs.
+  New preset `chillwave_backroom`; the_stick + pattern_persistence
+  retagged. tscn re-lit warm cedar; strata swapped off the neon
+  families.
+- `salty_tome_interior` grew the whole BACK of the store the vol7
+  scenes live in: kitchenette (kettle, Margit's clay mug, table by
+  its window, radiator, the cat asleep), Petra's office (door,
+  desk+phone, couch, coat hook), back door, and the ALLEY (mural
+  wall with the painted face, dumpster, crate). New presets
+  `salty_tome_kitchenette` + `salty_tome_alley`; ch8_monday,
+  ch14_petra, ch14_figure retagged.
+- `dambrosios_formal` preset pointed at the NE annex whose builder
+  was DISABLED 2026-07 (unwired-twin class). Dressing now lives in
+  the real west formal room: burgundy carpet, numbered tables
+  T4/T9/T12/T14 w/ brass plaques, T14 check folder + card, T12
+  wall speaker, velvet ropes on brass posts, service bar + wine
+  lists. Preset camera moved to the west room.
+- pit_stop_office (legal pad, drawer pedestal + folded apron,
+  de-garaged), el_rancho (long booth + two 6-tops replacing round
+  2-tops, drive-thru + SPEAKER BROKE sign, tip jar, order pad,
+  sauce box), daily_grind (front windows, door bell, back door,
+  corner four-top, milk pitchers + cooler, marshmallow slab),
+  cafe_olimpico (door bell, back-corner window + table w/ water
+  glass + notebook + croissant bag, front-window table move, fluor
+  grid → globe pendants), gym_weight_room (deadlift platform, lat
+  pulldown, missing bolt + bolt on floor, the 80s), bungalow
+  (face-down phone, wallpaper peel seam on the S wall, watering
+  can by the porch steps).
+
+### Deferred (noted, not shipped)
+- new_orleans_office scale/genre rebuild; houston_design_studio
+  building mismatch; vol6_ch17_porch points miller_office at
+  Bianca's upstairs office; pit_stop prelude ownership prose
+  contradiction; vol6_ch2_dumpster plays over the diner interior
+  (no diner exterior exists); ramos window prose conflict;
+  courthouse era-dressing toggle; cathedral scale; gym as vol2
+  rec-center (would want a small_wood_rec_center preset).
+- All ~45 tail-wave builders need Deck rebuilds; every new camera
+  framing is untuned until Deck screenshots (task #227).

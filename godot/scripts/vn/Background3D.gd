@@ -67,6 +67,20 @@ const CAMERA_PRESETS := {
 		"fov": 50.0,
 		"suppress_input": true,
 	},
+	"riverfront_park": {
+		"scene": "res://scenes/locales/riverfront.tscn",
+		"requires_glb": "res://assets/3d/locales/riverfront.glb",
+		# The riverside PARK west of the boardwalk (vol1_ch2 / the
+		# Hierophant's bench scenes): chipped bench godot (-50.5,-22),
+		# bandstand (-48,-26), the black car at the curb (-54,-24), the
+		# Old Armory mass rising behind (-62,-34). Camera on the jog
+		# path SE of the bench looking NW across the lawn so bench,
+		# bandstand and armory silhouette stack in one frame.
+		"camera_origin": Vector3(-45.5, 1.7, -16.5),
+		"camera_rotation": Vector3(-0.02, 0.49, 0.0),
+		"fov": 55.0,
+		"suppress_input": true,
+	},
 	"chapel_exterior": {
 		# Hierophant §I — Maya outside St. Jude's. SURVEYED: chapel
 		# building blender x -3..+3, y 0..+7, front wall + steps at
@@ -80,17 +94,20 @@ const CAMERA_PRESETS := {
 		"suppress_input": true,
 	},
 	"dambrosios_formal": {
-		# The Empress chapter's side of D'Ambrosio's: the NE formal
-		# dining annex (blender X+5..+9, Y+1..+6) + the vestibule
-		# hostess stand (7.0,-0.7). Camera at the main-floor archway
-		# looking NE across the long formal table. The chapter was
-		# establishing on the lunch counter before — the wrong room
-		# entirely for Friday-night service.
+		# The Empress chapter's D'Ambrosio's floor — the WEST formal
+		# dining room (blender X-15..-9, Y-6..-1; the old NE-annex
+		# camera framed a room whose builder was disabled 2026-07).
+		# Burgundy carpet, the linen banquet table centre (godot
+		# -12,+3.5), numbered corner tables T4/T9/T12/T14 with brass
+		# plaques (T14 godot -9.85,+5.25 carries Dean's check folder
+		# + card), velvet ropes at the door, service bar + wine lists
+		# E. Camera inside the partition door looking SSW across the
+		# ropes to the banquet + Table 14.
 		"scene": "res://scenes/locales/diner.tscn",
 		"requires_glb": "res://assets/3d/locales/diner.glb",
-		"camera_origin": Vector3(5.3, 2.0, -1.4),
-		"camera_rotation": Vector3(-0.08, deg_to_rad(-39.0), 0.0),
-		"fov": 60.0,
+		"camera_origin": Vector3(-10.4, 1.90, 0.3),
+		"camera_rotation": Vector3(-0.08, 2.67, 0.0),
+		"fov": 62.0,
 		"suppress_input": true,
 	},
 	"kwik_stop_godseye": {
@@ -868,13 +885,39 @@ const CAMERA_PRESETS := {
 	"pit_stop_interior": {
 		"scene": "res://scenes/locales/pit_stop_interior.tscn",
 		"requires_glb": "res://assets/3d/locales/pit_stop_interior.glb",
-		# Convenience store 7×6 (godot x∈[-3.5,3.5], z∈[0,-6], ceil 2.8).
-		# Register counter NE (godot 1.75,-4.5), two snack aisles centre
-		# (z=-2.1,-3.9). Camera SW just inside the door looking NE across
-		# the aisles to the register counter + product wall.
-		"camera_origin": Vector3(-2.4, 1.80, -0.9),
-		"camera_rotation": Vector3(-0.05, deg_to_rad(-49.0), 0.0),
+		# The Pit Stop DINER 11×9 (godot x∈[-5.5,5.5], z∈[0,-9], ceil 3.0;
+		# 2026-08 re-theme — was wrongly a convenience store). Booth row
+		# along the W wall (back corner booth SW at godot -4.9,-0.85),
+		# lunch counter + stools (z≈-4.6), pass-through + bell in the
+		# partition (z=-6), kitchen beyond. Camera just inside the door
+		# looking NW so booths, counter and pass-through stack.
+		"camera_origin": Vector3(1.8, 1.65, -0.9),
+		"camera_rotation": Vector3(-0.04, 0.82, 0.0),
 		"fov": 62.0,
+		"suppress_input": true,
+	},
+	"pit_stop_kitchen": {
+		"scene": "res://scenes/locales/pit_stop_interior.tscn",
+		"requires_glb": "res://assets/3d/locales/pit_stop_interior.glb",
+		# Ben's side of the pass-through: the grill line on the N wall
+		# (flat-top godot -1,-8.45 under the vent hood), fryer, prep
+		# table, walk-in + milk crate W (godot -3.35,-6.45), office door
+		# E. Camera by the swing door looking NW down the line.
+		"camera_origin": Vector3(2.2, 1.65, -6.7),
+		"camera_rotation": Vector3(-0.03, 1.0, 0.0),
+		"fov": 60.0,
+		"suppress_input": true,
+	},
+	"pit_stop_back_booth": {
+		"scene": "res://scenes/locales/pit_stop_interior.tscn",
+		"requires_glb": "res://assets/3d/locales/pit_stop_interior.glb",
+		# vol6_ch7 — the back corner booth, "three from the kitchen,
+		# with a window": SW corner at godot (-4.9,-0.85), W window
+		# beside it, water glass + check folder on the table. Camera
+		# mid-floor looking SW into the booth.
+		"camera_origin": Vector3(-1.4, 1.60, -3.4),
+		"camera_rotation": Vector3(-0.04, 2.23, 0.0),
+		"fov": 55.0,
 		"suppress_input": true,
 	},
 	"pit_stop_office": {
@@ -971,6 +1014,19 @@ const CAMERA_PRESETS := {
 		"fov": 58.0,
 		"suppress_input": true,
 	},
+	"hospital_waiting": {
+		"scene": "res://scenes/locales/hospital_room.tscn",
+		"requires_glb": "res://assets/3d/locales/hospital_room.glb",
+		# vol6_ch7's WAITING ROOM beat — the NE corner of the hospital
+		# build: four linked chairs (godot x -0.85..0.83, z -4.55),
+		# vending machine (-1.9,-4.55), paper coffee cup on the end
+		# seat. Camera south of the row looking N so the bed stays out
+		# of frame — waiting, not visiting.
+		"camera_origin": Vector3(0.7, 1.5, -1.0),
+		"camera_rotation": Vector3(-0.05, 0.42, 0.0),
+		"fov": 58.0,
+		"suppress_input": true,
+	},
 	"safehouse_bedroom": {
 		"scene": "res://scenes/locales/safehouse_bedroom.tscn",
 		"requires_glb": "res://assets/3d/locales/safehouse_bedroom.glb",
@@ -1025,6 +1081,33 @@ const CAMERA_PRESETS := {
 		"fov": 62.0,
 		"suppress_input": true,
 	},
+	"salty_tome_kitchenette": {
+		"scene": "res://scenes/locales/salty_tome_interior.tscn",
+		"requires_glb": "res://assets/3d/locales/salty_tome_interior.glb",
+		# The back annex (godot z∈[-6,-9]): Petra's kitchenette — the
+		# kettle + hob (godot -3.55,-7.85), four mugs + the Margit's
+		# clay mug, the table by the kitchenette window (-1.6,-8.1),
+		# radiator, the old cat asleep on its chair (-0.5,-6.7), the
+		# back door W, Petra's office door E. Camera by the office
+		# partition looking W across cat, table and kettle.
+		"camera_origin": Vector3(0.5, 1.55, -6.4),
+		"camera_rotation": Vector3(-0.05, 1.03, 0.0),
+		"fov": 60.0,
+		"suppress_input": true,
+	},
+	"salty_tome_alley": {
+		"scene": "res://scenes/locales/salty_tome_interior.tscn",
+		"requires_glb": "res://assets/3d/locales/salty_tome_interior.glb",
+		# The alley behind the store (godot z∈[-9,-12]): the MURAL
+		# WALL with the painted three-foot face (godot -0.8,-12,
+		# hair to waist height), the dumpster (2.4,-10.2), Lena's
+		# crate, the back door behind camera. Camera near the back
+		# door looking NW so the face fills frame-left.
+		"camera_origin": Vector3(0.8, 1.60, -9.5),
+		"camera_rotation": Vector3(-0.02, 0.58, 0.0),
+		"fov": 58.0,
+		"suppress_input": true,
+	},
 	"hans_bakery_back_kitchen": {
 		"scene": "res://scenes/locales/hans_bakery_back_kitchen.tscn",
 		"requires_glb": "res://assets/3d/locales/hans_bakery_back_kitchen.glb",
@@ -1057,16 +1140,30 @@ const CAMERA_PRESETS := {
 	"chillwave_interior": {
 		"scene": "res://scenes/locales/chillwave_interior.tscn",
 		"requires_glb": "res://assets/3d/locales/chillwave_interior.glb",
-		# Synthwave cocktail lounge 7×6 (godot x∈[-3.5,3.5], z∈[0,-6], ceil
-		# 2.8). Copper-topped bar runs E-W along the N wall (godot z≈-5.4,
-		# 4.6m wide) with a neon-lit back-bar bottle wall behind (z≈-5.86),
-		# four chrome stools, leather banquette + cocktail tables on the W
-		# wall, twin-turntable DJ console SE corner (godot 2.65,-1.15),
-		# magenta sunset mural E wall. Camera SW just inside the door looking
-		# NE along the bar to the neon bottle wall; DJ console frame-right.
-		"camera_origin": Vector3(-2.6, 1.90, -0.9),
-		"camera_rotation": Vector3(-0.06, deg_to_rad(-34.5), 0.0),
-		"fov": 64.0,
+		# ChillWave — Cale's slowstick shop 7×8 (godot x∈[-3.5,3.5],
+		# z∈[0,-8], ceil 2.8; 2026-08 re-theme — was wrongly a cocktail
+		# lounge). Counter + service bell + paperback (godot -1.1,-3.1),
+		# cedar display shelves W/E, bell over the door, partition
+		# doorway at (1.9,-4.6) into the back room (inventory shelves,
+		# workbench, crate, the three-slot stick box). Camera just
+		# inside the door looking N past the counter to the doorway.
+		"camera_origin": Vector3(1.2, 1.65, -0.8),
+		"camera_rotation": Vector3(-0.04, 0.35, 0.0),
+		"fov": 60.0,
+		"suppress_input": true,
+	},
+	"chillwave_backroom": {
+		"scene": "res://scenes/locales/chillwave_interior.tscn",
+		"requires_glb": "res://assets/3d/locales/chillwave_interior.glb",
+		# The back of ChillWave — where the inventory lives: cedar
+		# shelves N/W with brass letter tabs, Cale's workbench E
+		# (soldering iron, transformer, LED strip, task lamp), the
+		# crate by the doorway, the three-slot stick box on its table
+		# (godot -2.4,-5.2). Camera at the doorway looking NW so the
+		# stick box, shelves and workbench chair share the frame.
+		"camera_origin": Vector3(1.7, 1.62, -4.9),
+		"camera_rotation": Vector3(-0.04, 0.62, 0.0),
+		"fov": 62.0,
 		"suppress_input": true,
 	},
 	"lena_apartment": {

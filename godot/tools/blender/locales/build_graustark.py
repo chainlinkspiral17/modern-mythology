@@ -4647,6 +4647,58 @@ def export_glb():
 
 # ── MAIN ────────────────────────────────────────────────────────
 
+def build_ruin_quarter_2026_08():
+    """2026-08-03 tail pass: the post-Calamity geometry the ruin
+    chapters (Hermit/Star/Judgement/World) actually stage on — THE
+    SINKHOLE, Joanna's chalked wall, the rusted I-beam (the crow's
+    perch), the Minstral's Green wreck + paddlewheel cover (the
+    Frog's seat), the cottage flagstone path + gate + herb patch,
+    the rubble field. Plain world-coordinate boxes near the
+    Hermit_Cottage placement (+50, -380); cameras Deck-tuned."""
+    from _props.geometry import make_box as _mb, make_cyl as _mc
+    conc = (0.52, 0.50, 0.46, 1.0)
+    conc_dk = (0.40, 0.38, 0.35, 1.0)
+    rust = (0.46, 0.28, 0.18, 1.0)
+    # THE SINKHOLE: stepped rings descending, broken-pavement lip
+    sx, sy = 10.0, -300.0
+    for ri, (r, dz) in enumerate(((34.0, -2.0), (26.0, -7.0), (18.0, -13.0), (10.0, -19.0))):
+        _mc(f"Sinkhole_Ring_{ri}", (sx, sy, dz), r, 4.5, conc_dk if ri % 2 else (0.30, 0.28, 0.26, 1.0), segments=20)
+    _mc("Sinkhole_Floor", (sx, sy, -22.0), 8.0, 0.5, (0.18, 0.16, 0.15, 1.0), segments=16)
+    for li in range(10):
+        import math as _m
+        a = li * 0.63
+        _mb(f"Sinkhole_Lip_{li}", (sx + _m.cos(a) * 35.5, sy + _m.sin(a) * 35.5, 0.3),
+            (3.0, 2.0, 0.7), conc)
+    # Joanna's chalked wall + the I-beam, near the cottage
+    _mb("Chalked_Wall", (44.0, -374.0, 2.0), (0.3, 8.0, 4.0), (0.55, 0.54, 0.52, 1.0))
+    _mb("Chalk_Verses_A", (43.82, -376.0, 2.2), (0.02, 2.6, 0.5), (0.85, 0.84, 0.80, 1.0))
+    _mb("Chalk_Verses_B", (43.82, -372.5, 1.5), (0.02, 2.0, 0.4), (0.82, 0.80, 0.76, 1.0))
+    _mb("I_Beam", (40.5, -371.0, 1.05), (0.3, 9.0, 0.3), rust)
+    _mb("I_Beam_Buried_End", (40.5, -375.3, 0.2), (0.5, 1.0, 0.5), conc_dk)
+    # Rubble field with one flat-topped sitting block
+    for i, (dx, dy, s) in enumerate(((2, -3, 1.2), (-4, 1, 0.9), (5, 4, 1.6), (-2, 6, 1.1),
+                                     (7, -1, 0.8), (0, -6, 1.4), (-6, -4, 1.0), (3, 8, 0.9))):
+        _mb(f"Ruin_Rubble_{i}", (46.0 + dx, -368.0 + dy, s * 0.25), (s, s * 0.8, s * 0.5), conc)
+    _mb("Sitting_Block", (47.5, -370.0, 0.225), (0.9, 0.7, 0.45), conc_dk)
+    # Cottage path + gate + herbs (cottage at +50, -380)
+    for fi in range(6):
+        _mb(f"Flagstone_{fi}", (50.0, -381.5 - fi * 1.0, 0.03), (0.9, 0.8, 0.05), (0.58, 0.56, 0.50, 1.0))
+    for gx in (49.5, 50.5):
+        _mb(f"Gate_Post_{gx:.1f}", (gx, -387.8, 0.6), (0.12, 0.12, 1.2), (0.42, 0.30, 0.20, 1.0))
+    _mb("Herb_Bed", (52.2, -379.0, 0.10), (2.0, 3.0, 0.20), (0.36, 0.28, 0.20, 1.0))
+    for hi in range(6):
+        _mb(f"Herb_{hi}", (51.6 + (hi % 3) * 0.6, -380.0 + (hi // 3) * 1.2, 0.32),
+            (0.35, 0.35, 0.25), (0.34, 0.48, 0.28, 1.0))
+    # The Minstral's Green: beached steamship, listed, paddlewheel
+    # cover top = the Frog's seat
+    _mb("Minstral_Hull", (38.0, -120.0, 0.6), (7.0, 20.0, 5.0), (0.30, 0.40, 0.34, 1.0))
+    _mb("Minstral_Deckhouse", (38.0, -116.0, 4.2), (4.5, 8.0, 2.2), (0.36, 0.44, 0.38, 1.0))
+    _mc("Minstral_Stack", (38.0, -112.0, 6.4), 0.7, 3.0, rust, segments=10)
+    _mb("Paddlewheel_Cover", (42.2, -124.0, 1.4), (2.4, 4.5, 1.6), rust)
+    _mb("Paddlewheel_Cover_Top", (42.2, -124.0, 2.25), (2.6, 4.7, 0.1), (0.38, 0.24, 0.16, 1.0))
+    _mc("Paddlewheel_Hub", (43.6, -124.0, 1.2), 1.4, 0.4, (0.30, 0.20, 0.14, 1.0), segments=12, axis='X')
+
+
 def main():
     # Phase 0 — riverfront. Each rf.build_* writes into the scene.
     # We mirror riverfront's main() build order verbatim so the
@@ -4674,6 +4726,7 @@ def main():
     build_district_characters_and_props()
     report_arcana_status()
 
+    build_ruin_quarter_2026_08()
     export_glb()
 
 

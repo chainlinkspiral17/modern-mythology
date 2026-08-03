@@ -39,7 +39,7 @@ CEIL = 2.4
 # ── Palette (albedo; the red safelight does the tinting) ──
 COL_WALL = (0.06, 0.06, 0.07, 1.0)      # matte black wall
 COL_BASE = (0.03, 0.03, 0.04, 1.0)      # near-black baseboard
-COL_FLOOR = (0.09, 0.08, 0.08, 1.0)     # dark sealed concrete
+COL_FLOOR = (0.42, 0.44, 0.26, 1.0)     # dark sealed concrete
 COL_SEAM = (0.04, 0.04, 0.05, 1.0)
 COL_BENCH = (0.20, 0.15, 0.11, 1.0)     # dark stained plywood bench
 COL_BENCH_DK = (0.14, 0.10, 0.08, 1.0)
@@ -289,6 +289,20 @@ def build_wall_dressing():
                      (0.03, 0.03, 0.42), COL_BENCH_DK)
 
 
+def build_hero_props():
+    """2026-08-03 tail pass: Rick's notebook on the dry bench, and
+    the 1974 avocado tile wainscot that makes this a converted
+    half-bath (the floor is retinted avocado above)."""
+    make_box("Ricks_Notebook", (0.55, 2.05, 0.94), (0.15, 0.21, 0.02), (0.30, 0.26, 0.22, 1.0))
+    for wy, wlen, wx, ax in ((1.7, 3.2, -1.28, 'Y'), (0.02, 2.4, 0.0, 'X')):
+        if ax == 'Y':
+            make_box("Wainscot_W", (wx, wy, 0.60), (0.03, wlen, 1.20), (0.46, 0.50, 0.30, 1.0))
+        else:
+            make_box("Wainscot_S", (wx, wy, 0.60), (wlen, 0.03, 1.20), (0.46, 0.50, 0.30, 1.0))
+    for gi in range(9):
+        make_box(f"Tile_Seam_{gi}", (-1.2 + gi * 0.28, 1.7, 0.005), (0.008, 3.2, 0.004), (0.32, 0.36, 0.22, 1.0))
+
+
 def main():
     clear_scene()
     build_shell()
@@ -297,6 +311,7 @@ def main():
     build_drying_line()
     build_safelight()
     build_wall_dressing()
+    build_hero_props()
     out = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)),
         "../../../assets/3d/locales/darkroom.glb"))
     print(f"\n[build_darkroom] exporting to {out}")

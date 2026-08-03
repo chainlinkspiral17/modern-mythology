@@ -7,7 +7,7 @@
   "nodes": [
     {
       "t": "bg",
-      "src": "3d:hospital_room"
+      "src": "3d:hospital_waiting"
     },
     {
       "t": "hide",

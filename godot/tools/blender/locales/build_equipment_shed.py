@@ -152,11 +152,24 @@ def build_big_gear():
     make_box("Chalk_Dust", (lx, ly - 0.4, 0.005), (0.5, 0.4, 0.006), COL_CHALK)
 
 
+def build_hero_props():
+    """2026-08-03 tail pass: the bin of kicking tees (the sorting IS
+    the scene) + the three graded piles, and the overturned milk
+    crate Ben actually sits on."""
+    make_box("Tee_Bin", (-0.55, 4.90, 0.13), (0.50, 0.40, 0.25), (0.36, 0.32, 0.28, 1.0))
+    for pi, (px, h) in enumerate(((-0.15, 0.05), (0.15, 0.065), (0.45, 0.08))):
+        for t in range(3):
+            make_cyl(f"Tee_{pi}_{t}", (px + 0.03 * t, 4.75 - 0.04 * t, h / 2.0), 0.025, h,
+                     (0.90, 0.46, 0.14, 1.0), segments=6)
+    make_box("Milk_Crate_Ben", (0.75, 4.55, 0.14), (0.33, 0.33, 0.28), (0.62, 0.28, 0.24, 1.0))
+
+
 def main():
     clear_scene()
     build_shell()
     build_shelving()
     build_big_gear()
+    build_hero_props()
     out = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)),
         "../../../assets/3d/locales/equipment_shed.glb"))
     print(f"\n[build_equipment_shed] exporting to {out}")

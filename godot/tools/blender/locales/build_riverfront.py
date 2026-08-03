@@ -4269,6 +4269,48 @@ def build_distant_atmosphere():
                  (0.4, 0.4, 0.2), (0.42, 0.38, 0.32, 1.0))
 
 
+def build_park_2026_08():
+    """2026-08-03 tail pass: the park the Hierophant's §IV and
+    vol1's jog play in — lawn, jogging path, the chipped bench, the
+    bandstand, the armory silhouette, the old-church steeple, the
+    idling black car. World coords in the green buffer between
+    River Road (x=-55) and the lot curb (x=-41)."""
+    from _props.geometry import make_box as _mb, make_cyl as _mc
+    import math as _m
+    _mb("Park_Lawn", (-49.0, 24.0, 0.01), (13.0, 26.0, 0.04), (0.40, 0.50, 0.30, 1.0))
+    # Jogging path arc (segments)
+    for i in range(7):
+        t = i / 6.0
+        px = -52.0 + 6.0 * t
+        py = 14.0 + 20.0 * t
+        _mb(f"Jog_Path_{i}", (px, py, 0.03), (3.0, 3.6, 0.04), (0.60, 0.54, 0.44, 1.0))
+    # The chipped park bench, facing the bandstand
+    _mb("Park_Bench_Seat", (-50.5, 22.0, 0.45), (0.5, 1.6, 0.06), (0.48, 0.38, 0.26, 1.0))
+    _mb("Park_Bench_Back", (-50.24, 22.0, 0.75), (0.06, 1.6, 0.5), (0.44, 0.34, 0.23, 1.0))
+    _mb("Park_Bench_Chip", (-50.5, 22.6, 0.48), (0.2, 0.12, 0.04), (0.62, 0.55, 0.44, 1.0))
+    for ly in (21.4, 22.6):
+        _mb(f"Park_Bench_Leg_{ly:.1f}", (-50.4, ly, 0.22), (0.4, 0.08, 0.44), (0.30, 0.30, 0.32, 1.0))
+    # The bandstand (octagonal-read deck + posts + roof)
+    bx, by = -48.0, 26.0
+    _mc("Bandstand_Deck", (bx, by, 0.45), 3.0, 0.25, (0.55, 0.44, 0.30, 1.0), segments=8)
+    for pi in range(8):
+        a = pi * (_m.pi / 4.0)
+        _mc(f"Bandstand_Post_{pi}", (bx + _m.cos(a) * 2.6, by + _m.sin(a) * 2.6, 2.0),
+            0.08, 3.0, (0.70, 0.66, 0.58, 1.0), segments=6)
+    _mc("Bandstand_Roof", (bx, by, 3.9), 3.4, 0.6, (0.38, 0.30, 0.24, 1.0), segments=8)
+    _mc("Bandstand_Finial", (bx, by, 4.6), 0.5, 0.8, (0.32, 0.26, 0.20, 1.0), segments=8)
+    # The Old Armory silhouette behind the park
+    _mb("Armory_Mass", (-62.0, 34.0, 4.5), (18.0, 12.0, 9.0), (0.44, 0.32, 0.26, 1.0))
+    for ci in range(7):
+        _mb(f"Armory_Crenel_{ci}", (-69.5 + ci * 2.5, 28.2, 9.4), (1.2, 0.6, 0.8), (0.40, 0.29, 0.23, 1.0))
+    # The old church three blocks off
+    _mb("Old_Church_Mass", (-70.0, 12.0, 3.75), (8.0, 12.0, 7.5), (0.72, 0.70, 0.62, 1.0))
+    _mb("Old_Church_Steeple", (-70.0, 8.5, 10.5), (1.6, 1.6, 6.5), (0.66, 0.64, 0.56, 1.0))
+    # The long black car idling on the River Road shoulder
+    _mb("Black_Car_Body", (-54.0, 24.0, 0.55), (1.75, 4.6, 0.55), (0.08, 0.08, 0.10, 1.0))
+    _mb("Black_Car_Cabin", (-54.0, 23.7, 1.02), (1.6, 2.4, 0.45), (0.08, 0.08, 0.10, 1.0))
+
+
 def main():
     clear_scene()
     # Build order matters: ground & roads first so features sit ON
@@ -4288,6 +4330,7 @@ def main():
     build_bayou()
     build_far_horizons()
     build_distant_atmosphere()
+    build_park_2026_08()
     export_glb()
 
 

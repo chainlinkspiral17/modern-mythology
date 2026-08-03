@@ -135,10 +135,13 @@ def build_counsel_tables():
 
 def build_public_pews():
     # Three pews S of the bar separating audience from well
+    # Split pews: a 1.0 m CENTER AISLE (Miriam crosses it; Sam sits
+    # across it) — the old single slabs had none
     for pi in range(3):
         py = 1.50 + pi * 1.20
-        make_box(f"Pew_{pi}_Seat", (0.0, py, 0.46), (5.20, 0.50, 0.06), COL_WOOD_DARK)
-        make_box(f"Pew_{pi}_Back", (0.0, py-0.22, 0.84), (5.20, 0.06, 0.70), COL_WOOD_DARK)
+        for side, sx in (("W", -1.60), ("E", 1.60)):
+            make_box(f"Pew_{pi}_{side}_Seat", (sx, py, 0.46), (2.20, 0.50, 0.06), COL_WOOD_DARK)
+            make_box(f"Pew_{pi}_{side}_Back", (sx, py-0.22, 0.84), (2.20, 0.06, 0.70), COL_WOOD_DARK)
     # The bar (low railing separating well from audience)
     make_box("Bar_Rail", (0.0, 4.20, 1.00), (5.40, 0.04, 0.86), COL_WOOD_DARK)
     make_box("Bar_Cap",  (0.0, 4.20, 1.46), (5.40, 0.08, 0.06), COL_BENCH_TOP)
@@ -495,6 +498,17 @@ def build_justice_wave2_props():
              (0.86, 0.68, 0.32, 1.0))
 
 
+def build_arraignment_props():
+    """2026-08-03 tail pass: the side door the marshals use, the
+    clerk's docket screen, Dean's manila folder in the second
+    gallery row."""
+    make_box("Side_Door", (ROOM_W/2.0-0.06, 9.20, 1.05), (0.06, 0.95, 2.10), COL_WOOD_DARK)
+    make_cyl("Side_Door_Knob", (ROOM_W/2.0-0.14, 8.85, 1.02), 0.03, 0.04, (0.74, 0.58, 0.28, 1.0), axis='X', segments=8)
+    make_box("Clerk_Screen", (-1.55, 10.05, 1.15), (0.42, 0.06, 0.30), (0.14, 0.15, 0.17, 1.0))
+    make_box("Clerk_Screen_Doc", (-1.55, 10.01, 1.15), (0.34, 0.01, 0.22), (0.86, 0.88, 0.84, 1.0))
+    make_box("Deans_Folder", (-1.90, 2.70, 0.50), (0.30, 0.22, 0.02), (0.82, 0.72, 0.50, 1.0))
+
+
 def main():
     clear_scene()
     build_shell()
@@ -509,6 +523,7 @@ def main():
     build_decor()
     build_justice_dressing()
     build_justice_wave2_props()
+    build_arraignment_props()
     out = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)),
                                          "../../../assets/3d/locales/courthouse_chamber.glb"))
     print(f"\n[build_courthouse_chamber] exporting to {out}")

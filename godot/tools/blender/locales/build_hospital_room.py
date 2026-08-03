@@ -102,6 +102,21 @@ def build_ceiling_infra():
         make_fluorescent_tube_fixture(f"Fluor_{j}", (0.0, ypos, CEIL), length=1.40, width=0.34)
     make_smoke_detector("Smoke", (0.0, ROOM_D/2.0, CEIL))
 
+def build_waiting_corner():
+    """2026-08-03 tail pass: vol6_ch7 is a WAITING ROOM scene — a
+    linked chair row + vending machine dress the far corner so the
+    new hospital_waiting preset can frame it without the patient
+    bed."""
+    for ci in range(4):
+        cx = -0.85 + ci * 0.56
+        make_box(f"Wait_Chair_{ci}_Seat", (cx, 4.55, 0.44), (0.50, 0.46, 0.05), (0.36, 0.46, 0.56, 1.0))
+        make_box(f"Wait_Chair_{ci}_Back", (cx, 4.76, 0.72), (0.50, 0.05, 0.50), (0.32, 0.42, 0.52, 1.0))
+    make_box("Wait_Chair_Beam", (0.0, 4.55, 0.34), (2.3, 0.08, 0.06), (0.55, 0.57, 0.58, 1.0))
+    make_box("Vending_Machine", (-1.90, 4.55, 0.93), (0.85, 0.75, 1.85), (0.62, 0.28, 0.24, 1.0))
+    make_box("Vending_Face", (-1.90, 4.16, 1.10), (0.55, 0.05, 1.20), (0.26, 0.30, 0.38, 1.0))
+    make_cyl("Paper_Coffee_Cup", (-0.85, 4.42, 0.50), 0.035, 0.10, (0.88, 0.86, 0.80, 1.0), segments=8)
+
+
 def main():
     clear_scene()
     build_shell()
@@ -113,6 +128,7 @@ def main():
     build_tray_table()
     build_window()
     build_ceiling_infra()
+    build_waiting_corner()
     out = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)),
         "../../../assets/3d/locales/hospital_room.glb"))
     print(f"\n[build_hospital_room] exporting to {out}")

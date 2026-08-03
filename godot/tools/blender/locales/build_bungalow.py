@@ -502,6 +502,26 @@ def build_living_room():
     make_box("LR_ScriptPage",
              (table_x + 0.04, table_y + 0.05, 0.638),
              (0.21, 0.27, 0.003), COL_PAPER)
+    # 2026-08 tail pass: the FACE-DOWN PHONE beside the script page
+    # (screen against the wood, on purpose).
+    make_box("LR_Phone_FaceDown",
+             (table_x - 0.15, table_y - 0.10, 0.642),
+             (0.075, 0.15, 0.009), (0.16, 0.16, 0.18, 1.0))
+    make_box("LR_Phone_CameraBump",
+             (table_x - 0.17, table_y - 0.15, 0.649),
+             (0.03, 0.03, 0.005), (0.10, 0.10, 0.12, 1.0))
+    # The WALLPAPER PEEL SEAM — a curling strip on the S wall's
+    # interior face by the seating, backing plaster showing above
+    # where the paper has let go.
+    make_box("LR_Wallpaper_Peel",
+             (-2.5, 0.115, 2.05),
+             (0.30, 0.03, 0.55), (0.72, 0.66, 0.52, 1.0))
+    make_box("LR_Wallpaper_Peel_Curl",
+             (-2.5, 0.17, 1.78),
+             (0.28, 0.09, 0.04), (0.78, 0.72, 0.58, 1.0))
+    make_box("LR_Wallpaper_Plaster",
+             (-2.5, 0.105, 2.35),
+             (0.26, 0.015, 0.28), (0.62, 0.58, 0.50, 1.0))
     # A red ink scribble across it (Elicia's notes)
     make_box("LR_ScriptPage_Mark",
              (table_x - 0.04, table_y + 0.02, 0.640),
@@ -1212,6 +1232,11 @@ def build_porch():
 
     # ── Ashtray on a small side table between the chairs ──
     st_x, st_y = +0.0, -1.4
+    # 2026-08 tail pass: the WATERING CAN by the porch steps.
+    make_cyl("Porch_WateringCan_Body", (2.6, -1.7, 0.20), 0.14, 0.28, (0.42, 0.52, 0.44, 1.0), segments=10)
+    make_cyl("Porch_WateringCan_Spout", (2.82, -1.62, 0.24), 0.02, 0.30, (0.38, 0.48, 0.40, 1.0),
+             axis='X', segments=6)
+    make_box("Porch_WateringCan_Handle", (2.6, -1.85, 0.34), (0.12, 0.02, 0.03), (0.38, 0.48, 0.40, 1.0))
     make_cyl("Porch_SideTable_Top",
              (st_x, st_y, 0.56),
              0.20, 0.02, (0.32, 0.22, 0.14, 1.0))

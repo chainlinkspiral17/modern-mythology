@@ -7,7 +7,7 @@
   "nodes": [
     {
       "t": "bg",
-      "src": "3d:riverfront_exterior"
+      "src": "3d:riverfront_park"
     },
     {
       "t": "hide",
@@ -200,7 +200,7 @@
     },
     {
       "t": "bg",
-      "src": "3d:riverfront_exterior"
+      "src": "3d:riverfront_park"
     },
     {
       "t": "show",
