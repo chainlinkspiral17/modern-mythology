@@ -4028,12 +4028,23 @@ def _rotate_mesh_y(obj, pivot_xz, angle):
         v.co[2] = pz + dx * sa + dz * ca
 
 
+def build_back_door_bell():
+    """The bell over the KITCHEN/back door — 'did not jingle. It
+    jangled.' Harsher, bigger, brassier than the front one."""
+    make_box("BackBell_Bracket", (5.05, -4.36, 2.10), (0.05, 0.14, 0.05), (0.20, 0.19, 0.20, 1.0))
+    make_cyl("BackBell", (5.05, -4.28, 2.02), 0.07, 0.09, (0.66, 0.50, 0.22, 1.0), segments=8)
+    make_cyl("BackBell_Clapper", (5.05, -4.28, 1.95), 0.02, 0.05, (0.30, 0.28, 0.24, 1.0), segments=6)
+
+
 def build_wall_decor():
     """Wall clock + framed photos + neon sign. Things players see
     looking AT the walls while walking around."""
-    # Wall clock — circular face on the north wall
+    # Wall clock — canon puts it ON THE KITCHEN WALL ("The clock on
+    # the kitchen wall… sagged on its single bent nail"), which is
+    # the SOUTH galley partition, in front of the camera — not the
+    # north wall behind it.
     clock_cz = D_H - 0.80
-    clock_cy = D_D/2 - 0.18
+    clock_cy = -D_D/2 + 1.62
     # ── REBUILT 2026-07-12 (user: "make it look like a real diner
     # clock" / "scenes have a box problem"). Chrome-rimmed diner
     # wall clock reading 3:47: chrome bezel + black gasket + white
@@ -4048,9 +4059,9 @@ def build_wall_decor():
     sag = 0.025
     tilt = _cm.radians(4.0)
     ccz = clock_cz - sag
-    make_cyl("WallClock_Nail", (0.0, clock_cy - 0.03, clock_cz + 0.46),
+    make_cyl("WallClock_Nail", (0.0, clock_cy + 0.03, clock_cz + 0.46),
              0.008, 0.06, (0.30, 0.30, 0.32, 1.0), segments=5, axis='Y')
-    make_cyl("WallClock_NailHead", (0.0, clock_cy - 0.062, clock_cz + 0.46),
+    make_cyl("WallClock_NailHead", (0.0, clock_cy + 0.062, clock_cz + 0.46),
              0.016, 0.008, (0.36, 0.36, 0.38, 1.0), segments=6, axis='Y')
     # Bezel: bright chrome ring + darker inner gasket + white face
     make_cyl("WallClock_Bezel", (0, clock_cy, ccz),
@@ -5905,6 +5916,7 @@ def main():
     # the framing system is wired up properly via Godot Node3D
     # markers instead of camera nodes.
     # add_camera_markers()  # DISABLED
+    build_back_door_bell()
     export_glb()
 
 

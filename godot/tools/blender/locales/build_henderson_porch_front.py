@@ -85,10 +85,10 @@ def build_house():
     make_box("Win_Up_Frame", (-1.6, 0.02, HOUSE_H - 0.42), (1.1, 0.08, 0.75), COL_TRIM)
     make_box("Win_Up", (-1.6, 0.05, HOUSE_H - 0.42), (0.98, 0.02, 0.62), COL_DARKGLASS)
     # THE lit window
-    make_box("Win_Kitchen_Frame", (2.55, 0.04, 1.55), (1.4, 0.10, 1.05), COL_TRIM)
-    make_box("Win_Kitchen_LIT", (2.55, 0.07, 1.55), (1.26, 0.02, 0.92), COL_LITGLASS)
-    make_box("Win_Kitchen_Mull", (2.55, 0.085, 1.55), (0.04, 0.02, 0.92), COL_TRIM)
-    make_box("Win_Kitchen_Sill", (2.55, 0.10, 1.0), (1.5, 0.14, 0.05), COL_TRIM)
+    make_box("Win_Kitchen_Frame", (1.45, 0.04, 1.55), (0.90, 0.10, 1.05), COL_TRIM)
+    make_box("Win_Kitchen_LIT", (1.45, 0.07, 1.55), (0.78, 0.02, 0.92), COL_LITGLASS)
+    make_box("Win_Kitchen_Mull", (1.45, 0.085, 1.55), (0.04, 0.02, 0.92), COL_TRIM)
+    make_box("Win_Kitchen_Sill", (1.45, 0.10, 1.0), (1.00, 0.14, 0.05), COL_TRIM)
 
 
 def build_porch():
@@ -102,7 +102,7 @@ def build_porch():
     for sgn in (-1, 1):
         make_box(f"Porch_Post_{sgn:+d}", (sgn * 1.45, 1.35, 1.35), (0.12, 0.12, 2.35), COL_POST)
         make_box(f"Porch_Rail_{sgn:+d}", (sgn * 1.45, 0.65, 0.85), (0.08, 1.3, 0.08), COL_POST)
-    make_box("Porch_Header", (0.0, 1.35, 2.55), (3.1, 0.14, 0.14), COL_POST)
+    make_box("Porch_Header", (0.0, 1.35, 1.40), (3.1, 0.14, 0.14), COL_POST)
     # Porch light by the door — OFF (dark glass), the kitchen carries
     make_box("Porch_Lamp", (-0.65, 0.06, 2.0), (0.12, 0.10, 0.20), COL_MAILBOX)
     # A forgotten glass of iced tea on the top step (they sat a while)
@@ -139,12 +139,44 @@ def build_car_and_curb():
              (0.80, 0.78, 0.62, 1.0))
 
 
+def build_hero_props():
+    """2026-08-03 hero-prop pass: Jim's truck in the driveway (two
+    vehicles), Ben's truck at the curb, the garage door at the
+    driveway's end."""
+    steel = (0.55, 0.57, 0.58, 1.0)
+    # Jim's truck nose-in ahead of the sedan
+    tx, ty = 3.4, 1.9
+    make_box("JimTruck_Bed", (tx, ty+0.8, 0.78), (1.8, 2.0, 0.72), (0.30, 0.34, 0.30, 1.0))
+    make_box("JimTruck_Cab", (tx, ty-0.6, 1.05), (1.7, 1.4, 0.62), (0.30, 0.34, 0.30, 1.0))
+    make_box("JimTruck_Glass", (tx, ty-0.6, 1.10), (1.5, 1.2, 0.44), (0.14, 0.16, 0.20, 1.0))
+    for wx in (tx-0.85, tx+0.85):
+        for wy in (ty-0.9, ty+1.2):
+            make_cyl(f"JimTruck_Wheel_{wx:.1f}_{wy:.1f}", (wx, wy, 0.34), 0.34, 0.22,
+                     (0.10, 0.10, 0.11, 1.0), segments=10, axis='X')
+    # Ben's truck at the curb, parallel
+    bx, by = -2.0, 9.6
+    make_box("BenTruck_Body", (bx, by, 0.72), (3.9, 1.7, 0.66), (0.46, 0.36, 0.26, 1.0))
+    make_box("BenTruck_Cab", (bx+0.9, by, 1.18), (1.5, 1.55, 0.52), (0.46, 0.36, 0.26, 1.0))
+    make_box("BenTruck_Glass", (bx+0.9, by, 1.20), (1.3, 1.35, 0.40), (0.14, 0.16, 0.20, 1.0))
+    for wx in (bx-1.2, bx+1.2):
+        for wy in (by-0.85, by+0.85):
+            make_cyl(f"BenTruck_Wheel_{wx:.1f}_{wy:.1f}", (wx, wy, 0.32), 0.32, 0.22,
+                     (0.10, 0.10, 0.11, 1.0), segments=10, axis='Y')
+    # Garage door at the driveway terminus (the fold-out table +
+    # broom closet live behind it)
+    make_box("Garage_Door", (3.4, 0.03, 1.15), (2.60, 0.06, 2.30), (0.80, 0.78, 0.72, 1.0))
+    for gi in range(4):
+        make_box(f"Garage_Panel_{gi}", (3.4, 0.065, 0.42 + gi * 0.55), (2.45, 0.01, 0.06), (0.62, 0.60, 0.55, 1.0))
+    make_box("Garage_Handle", (3.4, 0.09, 0.55), (0.24, 0.03, 0.05), steel)
+
+
 def main():
     clear_scene()
     build_ground()
     build_house()
     build_porch()
     build_car_and_curb()
+    build_hero_props()
     out = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)),
         "../../../assets/3d/locales/henderson_porch_front.glb"))
     print(f"\n[build_henderson_porch_front] exporting to {out}")

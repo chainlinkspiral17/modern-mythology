@@ -80,8 +80,8 @@ def _make_mic_stand(prefix, cx, cy):
     make_cyl(f"{prefix}_Mic", (cx, cy-0.36, cz+1.40), 0.03, 0.11, P.METAL_BLACK, axis='Y')
 
 def build_mics():
-    _make_mic_stand("Mic0", -1.0, 3.65)
-    _make_mic_stand("Mic1", 0.6, 3.60)
+    _make_mic_stand("Mic0", -1.0, 3.95)
+    _make_mic_stand("Mic1", 0.6, 3.90)
 
 def build_monitors():
     for mi, mx in enumerate([-1.0, 0.8]):
@@ -93,17 +93,52 @@ def build_monitors():
 def build_pa():
     for si, sx in enumerate([-3.3, 3.3]):
         sy = 3.4
-        make_box(f"PA_{si}_Sub", (sx, sy, 0.35), (0.60, 0.60, 0.70), (0.12,0.11,0.10,1.0))
+        make_box(f"PA_{si}_Sub", (sx, sy-0.35, 0.35), (0.60, 0.60, 0.70), (0.12,0.11,0.10,1.0))
         make_box(f"PA_{si}_Top", (sx, sy, 1.35), (0.52, 0.52, 1.20), (0.14,0.12,0.11,1.0))
         make_cyl(f"PA_{si}_Woofer", (sx, sy-0.27, 1.15), 0.20, 0.04, (0.08,0.07,0.07,1.0), axis='Y', segments=14)
         make_box(f"PA_{si}_Horn", (sx, sy-0.27, 1.65), (0.30, 0.04, 0.18), (0.20,0.18,0.16,1.0))
         make_box(f"PA_{si}_LED", (sx+0.20, sy-0.27, 0.35), (0.03,0.02,0.03), (0.30,0.86,0.36,1.0))
 
 def build_ceiling_infra():
-    for j in range(2):
-        ypos = ROOM_D * (0.30 + j * 0.40)
-        make_fluorescent_tube_fixture(f"Fluor_{j}", (0.0, ypos, CEIL), length=1.40, width=0.34)
-    make_smoke_detector("Smoke", (0.0, ROOM_D/2.0, CEIL))
+    # A venue: house rig, not office tubes (the LEDs on the towers
+    # are the motivated light; house dome for the dim)
+    make_cyl("House_Light_A", (-2.0, 1.5, 3.15), 0.14, 0.10, (0.66, 0.60, 0.50, 1.0), segments=10)
+    make_cyl("House_Light_B", (2.0, 1.5, 3.15), 0.14, 0.10, (0.66, 0.60, 0.50, 1.0), segments=10)
+
+
+def build_show_props():
+    """2026-08-03 hero-prop pass: the crowd rail, the set list taped
+    to the stage floor (masking tape, back of a flyer), the FOH
+    board across the room, truss towers + LEDs, the DJ booth for
+    Chess's set, Jesse's combo amp at his feet, the cord."""
+    truss = (0.40, 0.42, 0.46, 1.0)
+    # Crowd rail
+    for px in (-3.2, -1.6, 0.0, 1.6, 3.2):
+        make_box(f"Rail_Post_{px:+.1f}", (px, 2.9, 0.52), (0.06, 0.06, 1.05), truss)
+    make_cyl("Crowd_Rail", (0.0, 2.9, 1.05), 0.035, 6.6, truss, segments=8, axis='X')
+    # The set list at Jesse's feet
+    make_box("SetList_Paper", (1.6, 3.75, 0.305), (0.21, 0.30, 0.002), (0.92, 0.90, 0.82, 1.0))
+    make_box("SetList_Tape_N", (1.6, 3.905, 0.306), (0.16, 0.03, 0.002), (0.86, 0.84, 0.74, 1.0))
+    make_box("SetList_Tape_S", (1.6, 3.595, 0.306), (0.16, 0.03, 0.002), (0.86, 0.84, 0.74, 1.0))
+    # Jesse's combo amp at his position + the cord
+    make_box("Combo_Amp", (1.35, 4.05, 0.52), (0.55, 0.42, 0.45), (0.16, 0.14, 0.13, 1.0))
+    make_box("Combo_Grille", (1.35, 3.83, 0.50), (0.45, 0.02, 0.34), (0.30, 0.26, 0.20, 1.0))
+    make_cyl("Guitar_Cord", (1.5, 3.9, 0.315), 0.012, 0.7, (0.14, 0.14, 0.15, 1.0), segments=6, axis='X')
+    # FOH board across the room, facing the stage
+    make_box("FOH_Desk", (0.0, 0.9, 0.92), (1.4, 0.7, 0.06), (0.24, 0.22, 0.20, 1.0))
+    make_box("FOH_Console", (0.0, 0.98, 1.02), (1.20, 0.40, 0.12), (0.14, 0.14, 0.16, 1.0))
+    for lx in (-0.6, 0.6):
+        make_box(f"FOH_Leg_{lx:+.1f}", (lx, 0.9, 0.45), (0.06, 0.6, 0.90), (0.20, 0.19, 0.20, 1.0))
+    # Truss towers + six LEDs at the lip
+    for ti, tx in enumerate((-3.4, 3.4)):
+        make_box(f"Truss_{ti}", (tx, 3.25, 1.45), (0.25, 0.25, 2.90), truss)
+        for li, lz in enumerate((1.2, 1.9, 2.6)):
+            make_box(f"Truss_{ti}_LED_{li}", (tx, 3.10, lz), (0.16, 0.14, 0.12),
+                     [(0.72, 0.26, 0.60, 1.0), (0.26, 0.55, 0.80, 1.0), (0.86, 0.62, 0.22, 1.0)][li])
+    # DJ booth stage-left on the deck (Chess up in fifteen)
+    make_box("DJ_Booth", (-3.3, 4.4, 0.30 + 0.55), (1.0, 0.6, 1.10), (0.18, 0.17, 0.19, 1.0))
+    make_box("DJ_Laptop", (-3.3, 4.3, 1.44), (0.30, 0.22, 0.03), (0.55, 0.57, 0.58, 1.0))
+
 
 def main():
     clear_scene()
@@ -116,6 +151,7 @@ def main():
     build_monitors()
     build_pa()
     build_ceiling_infra()
+    build_show_props()
     out = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)),
         "../../../assets/3d/locales/foxhole_stage.glb"))
     print(f"\n[build_foxhole_stage] exporting to {out}")

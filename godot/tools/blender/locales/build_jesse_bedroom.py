@@ -81,11 +81,11 @@ def build_win():
     make_window("Window_N", (0.0, ROOM_D-0.02, 1.50), width=1.20, height=1.00)
 
 def build_ceiling_infra():
-    for j in range(2):
-        ypos = ROOM_D * (0.30 + j * 0.40)
-        make_fluorescent_tube_fixture(f"Fluor_{j}", (0.0, ypos, CEIL), length=1.40, width=0.34)
-    make_smoke_detector("Smoke", (0.0, ROOM_D/2.0, CEIL))
-    make_hvac_vent("HVAC", (-ROOM_W/4.0, ROOM_D-0.5, CEIL), width=0.80, depth=0.40)
+    # Teen bedroom: one warm ceiling fixture; the bedside lamp is
+    # the scene light ("He turns off the lamp. / The room is dark.")
+    make_cyl("Ceiling_Dome", (0.0, 2.25, CEIL-0.10), 0.15, 0.14, (0.94, 0.88, 0.70, 1.0), segments=12)
+    make_smoke_detector("Smoke", (0.8, 2.25, CEIL))
+
 
 def build_dressing():
     """Musician's dressing: a guitar on a stand + a practice amp, a crate
@@ -132,12 +132,39 @@ def build_dressing():
     # Corner plant (wires the imported helper)
     make_floor_plant("Plant", (-ROOM_W/2.0+0.5, ROOM_D-0.6, 0.0), palette={"leaf": (0.34, 0.42, 0.28, 1.0), "pot": (0.50, 0.34, 0.22, 1.0)})
 
+def build_hero_props():
+    """2026-08-03 hero-prop pass: bedside lamp, the two notebooks
+    (bridge lyrics + general songwriting) on the nightstand, the
+    closed door (narrowed to bedroom width), the guitar case, the
+    face-down phone, the carpet the phone lands on."""
+    wood = (0.42, 0.30, 0.20, 1.0)
+    # Bedside lamp on the nightstand
+    make_cyl("Bedside_Lamp_Base", (-0.05, 2.95, 0.50), 0.07, 0.03, wood, segments=10)
+    make_cyl("Bedside_Lamp_Post", (-0.05, 2.95, 0.62), 0.014, 0.20, (0.20, 0.19, 0.20, 1.0), segments=6)
+    make_cyl("Bedside_Lamp_Shade", (-0.05, 2.95, 0.76), 0.10, 0.14, (0.86, 0.76, 0.58, 1.0), segments=10)
+    # The bridge notebook + the songwriting notebook
+    make_box("Bridge_Notebook", (-0.14, 2.90, 0.50), (0.15, 0.21, 0.015), (0.30, 0.44, 0.62, 1.0))
+    make_box("Song_Notebook", (0.12, 2.98, 0.50), (0.15, 0.21, 0.015), (0.62, 0.30, 0.26, 1.0))
+    # Narrow the garage-sized S gap and hang the CLOSED door
+    make_box("Door_Jamb_W", (-0.72, 0.0, 1.15), (0.56, 0.20, 2.30), PAL_WALL["wall"])
+    make_box("Door_Jamb_E", (0.72, 0.0, 1.15), (0.56, 0.20, 2.30), PAL_WALL["wall"])
+    make_box("Bedroom_Door", (0.0, 0.04, 1.02), (0.88, 0.05, 2.04), wood)
+    make_cyl("Door_Knob", (0.32, 0.09, 1.00), 0.03, 0.04, (0.66, 0.52, 0.24, 1.0), axis='Y', segments=8)
+    # Guitar case laid beside the stand
+    make_box("Guitar_Case", (1.35, 0.45, 0.08), (0.45, 1.20, 0.16), (0.16, 0.14, 0.13, 1.0))
+    make_box("Guitar_Case_Ridge", (1.35, 0.45, 0.17), (0.28, 1.00, 0.03), (0.22, 0.19, 0.17, 1.0))
+    # The carpet (the phone lands face-down on it) + the phone
+    make_cyl("Carpet", (-0.4, 2.0, 0.010), 1.05, 0.008, (0.46, 0.40, 0.34, 1.0), segments=16)
+    make_box("Phone_Facedown", (-0.55, 1.9, 0.024), (0.08, 0.16, 0.012), (0.14, 0.14, 0.16, 1.0))
+
+
 def main():
     clear_scene()
     build_shell()
     build_bed()
     build_desk_lamp()
     build_dressing()
+    build_hero_props()
     build_posters()
     build_win()
     build_ceiling_infra()

@@ -72,11 +72,12 @@ def build_window():
     make_box("Window_E_Glass", (ROOM_W/2.0-0.06, ROOM_D/2.0+0.5, 1.55), (0.005, 1.50, 1.10), (0.78, 0.84, 0.86, 0.55))
 
 def build_ceiling_infra():
-    for j in range(2):
-        ypos = ROOM_D * (0.30 + j * 0.40)
-        make_fluorescent_tube_fixture(f"Fluor_{j}", (0.0, ypos, CEIL), length=1.40, width=0.34)
-    make_smoke_detector("Smoke", (0.0, ROOM_D/2.0, CEIL))
-    make_hvac_vent("HVAC", (-ROOM_W/4.0, ROOM_D-0.5, CEIL), width=0.80, depth=0.40)
+    # Family kitchen: flush dome + over-table pendant, no shop tubes
+    make_cyl("Ceiling_Dome", (0.0, 1.6, CEIL-0.10), 0.16, 0.16, (0.96, 0.90, 0.72, 1.0), segments=12)
+    make_cyl("Table_Pendant_Cord", (0.0, ROOM_D/2.0, CEIL-0.14), 0.008, 0.28, P.METAL_BLACK)
+    make_cyl("Table_Pendant_Shade", (0.0, ROOM_D/2.0, CEIL-0.36), 0.15, 0.15, (0.62, 0.46, 0.28, 1.0), segments=12)
+    make_smoke_detector("Smoke", (0.9, ROOM_D/2.0, CEIL))
+
 
 def build_fridge():
     fx, fy = +ROOM_W/2.0 - 0.55, 1.0
@@ -101,6 +102,34 @@ def build_dressing():
     # Floor plant in the SW corner (make_floor_plant was unused)
     make_floor_plant("Plant", (-ROOM_W/2.0+0.5, 0.7, 0.0), palette={"leaf": (0.36, 0.48, 0.30, 1.0), "pot": (0.60, 0.40, 0.26, 1.0)})
 
+def build_hero_props():
+    """2026-08-03 hero-prop pass: upper cabinets (hot sauce to the
+    left of the stove), the under-cabinet light Anita sits by, the
+    couch + noon-news TV, the stair mouth, the window over the
+    sink (Gracie's dad yells about weeds through it)."""
+    wood = (0.52, 0.40, 0.26, 1.0)
+    # Upper cabinets over the counter + the box left of the stove
+    make_box("Upper_Cabs", (-1.5, ROOM_D-0.18, 1.85), (2.40, 0.35, 0.72), wood)
+    for di, dx in enumerate((-2.3, -1.75, -1.2, -0.65)):
+        make_box(f"Upper_Cab_Door_{di}", (dx, ROOM_D-0.355, 1.85), (0.50, 0.02, 0.64), (0.58, 0.46, 0.30, 1.0))
+    make_box("HotSauce_Cab", (0.75, ROOM_D-0.18, 1.85), (0.60, 0.35, 0.72), wood)
+    # The under-cabinet light — the only light in the ch19 beat
+    make_box("UnderCab_Light", (-1.5, ROOM_D-0.38, 1.46), (1.20, 0.05, 0.04), (0.98, 0.90, 0.70, 1.0))
+    # The window over the sink onto the backyard
+    make_window("Sink_Window", (-1.5, ROOM_D-0.05, 0), width=1.50, height=1.00)
+    # Couch + Daisy's spot + the muted noon news
+    make_box("Couch_Base", (-2.35, 2.0, 0.24), (0.85, 2.00, 0.38), (0.44, 0.38, 0.30, 1.0))
+    make_box("Couch_Back", (-2.72, 2.0, 0.62), (0.18, 2.00, 0.58), (0.40, 0.34, 0.27, 1.0))
+    for py in (1.5, 2.5):
+        make_box(f"Couch_Cushion_{py:.1f}", (-2.28, py, 0.46), (0.70, 0.85, 0.14), (0.48, 0.42, 0.34, 1.0))
+    make_box("TV", (2.85, 2.0, 1.15), (0.06, 0.85, 0.50), (0.10, 0.10, 0.12, 1.0))
+    make_box("TV_Screen", (2.80, 2.0, 1.15), (0.01, 0.75, 0.42), (0.32, 0.38, 0.44, 1.0))
+    # Stair mouth at the S gap edge
+    make_box("Stair_Newel", (0.92, 0.15, 0.60), (0.10, 0.10, 1.20), wood)
+    for s in range(3):
+        make_box(f"Stair_Tread_{s}", (1.4, 0.20, 0.16 + s * 0.18), (0.80, 0.28, 0.05), wood)
+
+
 def main():
     clear_scene()
     build_shell()
@@ -111,6 +140,7 @@ def main():
     build_window()
     build_ceiling_infra()
     build_dressing()
+    build_hero_props()
     out = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)),
         "../../../assets/3d/locales/kowalski_kitchen.glb"))
     print(f"\n[build_kowalski_kitchen] exporting to {out}")

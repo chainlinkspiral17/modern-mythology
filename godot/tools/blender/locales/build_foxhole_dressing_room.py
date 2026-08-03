@@ -128,6 +128,32 @@ def build_rug():
 def build_ceiling_infra():
     make_smoke_detector("Smoke", (0.0, ROOM_D/2.0, CEIL))
 
+def build_hero_props():
+    """2026-08-03 hero-prop pass: the two folding chairs (canon
+    calls this room "a storage closet with two folding chairs and a
+    clothing rack"), the BUZZING FLUORESCENT overhead (the room's
+    named light), the door with DRESSING ROOM in marker, Carl's
+    sticks on the floor by the wall."""
+    steel = (0.55, 0.57, 0.58, 1.0)
+    for fi, (fx, fy) in enumerate(((-0.55, 1.55), (0.45, 1.35))):
+        make_box(f"Folding_Chair_{fi}_Seat", (fx, fy, 0.45), (0.40, 0.40, 0.03), (0.48, 0.42, 0.36, 1.0))
+        make_box(f"Folding_Chair_{fi}_Back", (fx, fy+0.19, 0.72), (0.40, 0.03, 0.34), (0.48, 0.42, 0.36, 1.0))
+        for lx in (fx-0.17, fx+0.17):
+            make_box(f"Folding_Chair_{fi}_LegF_{lx:.2f}", (lx, fy-0.15, 0.22), (0.025, 0.025, 0.44), steel)
+            make_box(f"Folding_Chair_{fi}_LegB_{lx:.2f}", (lx, fy+0.15, 0.22), (0.025, 0.025, 0.44), steel)
+    # The fluorescent overhead with the slow buzz — the ONLY named
+    # light in the room
+    make_box("Fluor_Housing", (0.0, 2.0, 2.56), (1.20, 0.24, 0.08), (0.72, 0.72, 0.70, 1.0))
+    make_box("Fluor_Tube", (0.0, 2.0, 2.51), (1.05, 0.10, 0.03), (0.92, 0.95, 0.88, 1.0))
+    # The door + the marker sign
+    make_box("DR_Door", (-0.55, 0.03, 1.02), (0.85, 0.05, 2.03), (0.38, 0.32, 0.28, 1.0))
+    make_box("DR_Sign", (-0.55, -0.005, 1.62), (0.30, 0.01, 0.22), (0.90, 0.88, 0.80, 1.0))
+    make_box("DR_Sign_Marker", (-0.55, -0.012, 1.62), (0.24, 0.008, 0.06), (0.16, 0.16, 0.18, 1.0))
+    # Carl's sticks on the floor against the wall
+    for si, dy in enumerate((0.0, 0.06)):
+        make_cyl(f"Drum_Stick_{si}", (-0.2, 0.9+dy, 0.02), 0.012, 0.40, (0.72, 0.58, 0.36, 1.0), segments=6, axis='Y')
+
+
 def main():
     clear_scene()
     build_shell()
@@ -139,6 +165,7 @@ def main():
     build_mini_fridge()
     build_rug()
     build_ceiling_infra()
+    build_hero_props()
     out = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)),
         "../../../assets/3d/locales/foxhole_dressing_room.glb"))
     print(f"\n[build_foxhole_dressing_room] exporting to {out}")

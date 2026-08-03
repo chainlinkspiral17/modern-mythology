@@ -64,10 +64,10 @@ def build_table():
             make_box(f"Chair_{ci}_Leg_{k}", (cx+ox, cy+oy, 0.22), (0.05, 0.05, 0.42), COL_WOOD)
 
 def build_clock():
-    make_wall_clock("Clock", (0.0, ROOM_D-0.05, CEIL-0.50), frozen_hour=8, frozen_min=15)
+    make_wall_clock("Clock", (0.0, ROOM_D-0.05, CEIL-0.50), frozen_hour=10, frozen_min=38)
 
 def build_fridge():
-    fx, fy = +ROOM_W/2.0 - 0.50, ROOM_D - 1.0
+    fx, fy = +ROOM_W/2.0 - 0.50, 1.5
     make_box("Fridge_Body", (fx, fy, 1.00), (0.70, 0.70, 2.00), (0.86, 0.84, 0.80, 1.0))
     make_box("Fridge_DoorTop", (fx-0.34, fy, 1.50), (0.04, 0.66, 0.80), (0.86, 0.84, 0.80, 1.0))
     make_box("Fridge_DoorBot", (fx-0.34, fy, 0.40), (0.04, 0.66, 1.00), (0.86, 0.84, 0.80, 1.0))
@@ -90,11 +90,48 @@ def build_dressing():
     make_floor_plant("Plant", (-ROOM_W/2.0+0.5, 0.7, 0.0), palette={"leaf": (0.36, 0.48, 0.30, 1.0), "pot": (0.60, 0.40, 0.26, 1.0)})
 
 def build_ceiling_infra():
-    for j in range(2):
-        ypos = ROOM_D * (0.30 + j * 0.40)
-        make_fluorescent_tube_fixture(f"Fluor_{j}", (0.0, ypos, CEIL), length=1.40, width=0.34)
-    make_smoke_detector("Smoke", (0.0, ROOM_D/2.0, CEIL))
-    make_hvac_vent("HVAC", (-ROOM_W/4.0, ROOM_D-0.5, CEIL), width=0.80, depth=0.40)
+    # A night kitchen lit warm and low — dome + pendant, no tubes
+    make_cyl("Ceiling_Dome", (0.0, 1.6, CEIL-0.10), 0.16, 0.16, (0.96, 0.88, 0.68, 1.0), segments=12)
+    make_cyl("Table_Pendant_Cord", (0.0, ROOM_D/2.0, CEIL-0.14), 0.008, 0.28, P.METAL_BLACK)
+    make_cyl("Table_Pendant_Shade", (0.0, ROOM_D/2.0, CEIL-0.36), 0.15, 0.15, (0.60, 0.44, 0.28, 1.0), segments=12)
+    make_smoke_detector("Smoke", (0.9, ROOM_D/2.0, CEIL))
+
+
+def build_hero_props():
+    """2026-08-03 hero-prop pass: the front kitchen window (the one
+    the porch build lights from outside), THE BASEMENT DOOR (the
+    ch7 hinge), the stair mouth, the oven face, the microwave, four
+    place settings — the fourth, at the head, unset for eight days
+    until tonight — and the coffee mugs."""
+    wood = (0.48, 0.36, 0.24, 1.0)
+    # Front window, S wall east of the doorway — matches the porch
+    # build's lit window at x=+2.55
+    make_window("Front_Window", (1.45, 0.05, 0), width=0.90, height=1.05)
+    # The basement door, E wall, dark stair void behind
+    make_box("Basement_Doorframe", (ROOM_W/2.0-0.04, 1.6, 1.08), (0.10, 1.00, 2.16), wood)
+    make_box("Basement_Door", (ROOM_W/2.0-0.07, 1.6, 1.05), (0.05, 0.85, 2.05), (0.42, 0.32, 0.22, 1.0))
+    make_box("Basement_Void", (ROOM_W/2.0-0.02, 1.6, 1.00), (0.02, 0.80, 2.00), (0.06, 0.05, 0.05, 1.0))
+    # Stair mouth (up), S gap edge
+    make_box("Stair_Newel", (0.92, 0.15, 0.60), (0.10, 0.10, 1.20), wood)
+    for s in range(3):
+        make_box(f"Stair_Tread_{s}", (1.4, 0.20, 0.16 + s * 0.18), (0.80, 0.28, 0.05), wood)
+    # Oven face on the stove front (the pot roast on warm)
+    sx, sy = ROOM_W/4.0, ROOM_D-1.0
+    make_box("Oven_Door", (sx, sy-0.36, 0.50), (0.60, 0.03, 0.55), (0.72, 0.70, 0.66, 1.0))
+    make_box("Oven_Window", (sx, sy-0.375, 0.55), (0.40, 0.015, 0.26), (0.14, 0.12, 0.10, 1.0))
+    make_box("Oven_Handle", (sx, sy-0.39, 0.80), (0.50, 0.03, 0.04), (0.55, 0.57, 0.58, 1.0))
+    # Microwave, counter east end
+    make_box("Microwave", (-0.25, ROOM_D-1.0, 1.14), (0.50, 0.38, 0.30), (0.30, 0.30, 0.32, 1.0))
+    # Four place settings — the head setting is the shot
+    tx, ty = 0.0, ROOM_D/2.0
+    for si, (dx, dy) in enumerate(((-0.45, 0.0), (0.0, -0.32), (0.0, 0.32), (0.45, 0.0))):
+        make_cyl(f"Setting_{si}_Plate", (tx+dx, ty+dy, 0.77), 0.11, 0.012, (0.90, 0.88, 0.84, 1.0), segments=12)
+        make_box(f"Setting_{si}_Fork", (tx+dx-0.15, ty+dy, 0.772), (0.02, 0.12, 0.008), (0.60, 0.62, 0.63, 1.0))
+    # Coffee mugs by the pot: three poured, one never drunk
+    for mi, (mx, my) in enumerate(((-2.3, ROOM_D-1.15), (-2.15, ROOM_D-0.95), (0.35, ty-0.05))):
+        make_cyl(f"Mug_{mi}", (mx, my, 0.99 if mi < 2 else 0.79), 0.04, 0.09,
+                 [(0.72, 0.30, 0.22, 1.0), (0.30, 0.40, 0.52, 1.0), (0.86, 0.82, 0.74, 1.0)][mi], segments=10)
+
 
 def main():
     clear_scene()
@@ -102,6 +139,7 @@ def main():
     build_counter()
     build_table()
     build_dressing()
+    build_hero_props()
     build_clock()
     build_fridge()
     build_ceiling_infra()

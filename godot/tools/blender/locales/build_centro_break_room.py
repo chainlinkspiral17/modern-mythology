@@ -131,6 +131,40 @@ def build_ceiling_infra():
     make_smoke_detector("Smoke", (0.0, ROOM_D/2.0, CEIL))
     make_hvac_vent("HVAC", (-ROOM_W/4.0, ROOM_D-0.5, CEIL), width=0.80, depth=0.40)
 
+def build_hero_props():
+    """2026-08-03 hero-prop pass: DOUG'S CHAIR against the wall
+    (thermos at its feet) — the most-staged object here — the
+    Tejano radio above the microwave, Jessa's small dishwasher, the
+    jacket hooks, the dock door leaf. Plus the table squared into
+    the card table canon names."""
+    wood = (0.46, 0.36, 0.26, 1.0)
+    # Doug's chair, E wall, facing west, thermos at its feet
+    make_box("Dougs_Chair_Seat", (2.10, 2.6, 0.44), (0.42, 0.42, 0.04), (0.40, 0.36, 0.30, 1.0))
+    make_box("Dougs_Chair_Back", (2.30, 2.6, 0.74), (0.05, 0.42, 0.54), (0.36, 0.32, 0.27, 1.0))
+    for li, (lx, ly) in enumerate(((-0.16, -0.16), (0.16, -0.16), (-0.16, 0.16), (0.16, 0.16))):
+        make_box(f"Dougs_Chair_Leg_{li}", (2.10 + lx, 2.6 + ly, 0.22), (0.045, 0.045, 0.44), wood)
+    make_cyl("Dougs_Thermos", (1.90, 2.35, 0.13), 0.05, 0.26, (0.30, 0.42, 0.30, 1.0), segments=10)
+    # Radio above the microwave (the Tejano station since 2019)
+    make_box("Break_Radio", (-2.15, 2.85, 1.62), (0.22, 0.13, 0.13), (0.36, 0.30, 0.26, 1.0))
+    make_cyl("Break_Radio_Dial", (-2.06, 2.79, 1.62), 0.028, 0.02, (0.86, 0.82, 0.72, 1.0), axis='Y', segments=8)
+    # Jessa's small dishwasher, under-counter
+    make_box("Small_Dishwasher", (-2.22, 1.05, 0.44), (0.52, 0.60, 0.85), (0.78, 0.76, 0.72, 1.0))
+    make_box("Dishwasher_Handle", (-1.94, 1.05, 0.78), (0.03, 0.42, 0.04), (0.55, 0.57, 0.58, 1.0))
+    # Jacket hooks by the doorway
+    for hi, hx in enumerate((1.35, 1.6, 1.85)):
+        make_cyl(f"Jacket_Hook_{hi}", (hx, 0.10, 1.70), 0.015, 0.06, (0.20, 0.19, 0.20, 1.0), axis='Y', segments=6)
+    make_box("Hung_Jacket", (1.6, 0.16, 1.34), (0.18, 0.10, 0.68), (0.30, 0.34, 0.40, 1.0))
+    # The dock door: steel leaf + push bar (its 8:01 close is a beat)
+    make_box("Dock_Door", (0.0, 0.03, 1.02), (0.90, 0.05, 2.05), (0.55, 0.57, 0.58, 1.0))
+    make_box("Dock_Door_PushBar", (0.0, 0.07, 1.05), (0.70, 0.03, 0.06), (0.40, 0.42, 0.44, 1.0))
+    make_box("Dock_Door_Sign", (0.0, 0.005, 1.70), (0.30, 0.01, 0.12), (0.86, 0.30, 0.24, 1.0))
+    # Square the round table into a CARD TABLE (folding, mismatched
+    # chairs already exist around it)
+    make_box("Card_Table_Top", (0.0, 2.0, 0.735), (0.86, 0.86, 0.035), (0.28, 0.30, 0.28, 1.0))
+    for li, (lx, ly) in enumerate(((-0.36, -0.36), (0.36, -0.36), (-0.36, 0.36), (0.36, 0.36))):
+        make_box(f"Card_Table_Leg_{li}", (lx, 2.0 + ly, 0.36), (0.03, 0.03, 0.72), (0.40, 0.42, 0.44, 1.0))
+
+
 def main():
     clear_scene()
     build_shell()
@@ -141,6 +175,7 @@ def main():
     build_board()
     build_break_decor()
     build_ceiling_infra()
+    build_hero_props()
     out = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)),
         "../../../assets/3d/locales/centro_break_room.glb"))
     print(f"\n[build_centro_break_room] exporting to {out}")

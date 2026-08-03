@@ -43,8 +43,8 @@ def build_counter():
     make_box("Sink_Bowl", (-ROOM_W/4.0, ROOM_D-1.0, 0.86), (0.50, 0.40, 0.12), (0.86, 0.86, 0.84, 1.0))
     make_cyl("Sink_Faucet", (-ROOM_W/4.0, ROOM_D-1.10, top_z+0.04), 0.015, 0.30, P.METAL_STEEL)
     # Stove
-    make_box("Stove_Body", (ROOM_W/4.0, ROOM_D-1.0, 0.45), (0.70, 0.70, 0.92), (0.86, 0.84, 0.80, 1.0))
-    make_box("Stove_Top", (ROOM_W/4.0, ROOM_D-1.0, 0.92), (0.70, 0.70, 0.04), P.METAL_BLACK)
+    # (stove lives in build_stove() — the duplicate that used to sit
+    # here collided with it on export)
 
 def build_table():
     tx, ty = 0.0, ROOM_D/2.0
@@ -54,9 +54,11 @@ def build_table():
     for ci in range(4):
         import math
         ang = ci * 1.57
-        cx, cy = tx + math.cos(ang)*1.10, ty + math.sin(ang)*1.10
+        cx, cy = tx + math.cos(ang)*0.82, ty + math.sin(ang)*0.82
         make_box(f"Chair_{ci}_Seat", (cx, cy, 0.44), (0.42, 0.42, 0.04), COL_WOOD)
         make_box(f"Chair_{ci}_Back", (cx + math.cos(ang)*0.18, cy + math.sin(ang)*0.18, 0.72), (0.42, 0.04, 0.56), COL_WOOD)
+        for li, (lx, ly) in enumerate([(-0.17, -0.17), (0.17, -0.17), (-0.17, 0.17), (0.17, 0.17)]):
+            make_box(f"Chair_{ci}_Leg_{li}", (cx+lx, cy+ly, 0.22), (0.05, 0.05, 0.42), COL_WOOD)
 
 def build_stove():
     sx, sy = +ROOM_W/4.0, ROOM_D-1.0
@@ -69,11 +71,13 @@ def build_clock():
     make_wall_clock("Clock", (0.0, ROOM_D-0.05, CEIL-0.50), frozen_hour=8, frozen_min=15)
 
 def build_ceiling_infra():
-    for j in range(2):
-        ypos = ROOM_D * (0.30 + j * 0.40)
-        make_fluorescent_tube_fixture(f"Fluor_{j}", (0.0, ypos, CEIL), length=1.40, width=0.34)
-    make_smoke_detector("Smoke", (0.0, ROOM_D/2.0, CEIL))
-    make_hvac_vent("HVAC", (-ROOM_W/4.0, ROOM_D-0.5, CEIL), width=0.80, depth=0.40)
+    # An abuela's kitchen: flush dome + a warm pendant over the
+    # table, not office tubes
+    make_cyl("Ceiling_Dome", (0.0, 2.0, CEIL-0.10), 0.16, 0.16, (0.96, 0.90, 0.72, 1.0), segments=12)
+    make_cyl("Table_Pendant_Cord", (0.0, ROOM_D/2.0, CEIL-0.14), 0.008, 0.28, P.METAL_BLACK)
+    make_cyl("Table_Pendant_Shade", (0.0, ROOM_D/2.0, CEIL-0.36), 0.15, 0.15, (0.72, 0.52, 0.30, 1.0), segments=12)
+    make_smoke_detector("Smoke", (0.9, ROOM_D/2.0, CEIL))
+
 
 def build_dressing():
     """Grandmotherly warmth: a china hutch of stacked plates + cups, a
@@ -106,6 +110,34 @@ def build_dressing():
     # Corner floor plant
     make_floor_plant("Plant", (ROOM_W/2.0-0.5, 0.7, 0.0), palette={"leaf": (0.36, 0.48, 0.30, 1.0), "pot": (0.62, 0.42, 0.28, 1.0)})
 
+def build_hero_props():
+    """2026-08-03 hero-prop pass. THE KITCHEN WINDOW she has been at
+    every morning since June — over the sink, looking at the
+    driveway — with the sill radio (San Antonio news in Spanish),
+    the small wooden salt box, the microwave, the yellow chipped
+    plate, the exterior screen door, the stair mouth."""
+    make_window("Kitchen_Window", (-ROOM_W/4.0, ROOM_D-0.05, 0), width=1.40, height=1.00)
+    make_box("Window_Sill", (-ROOM_W/4.0, ROOM_D-0.20, 1.02), (1.55, 0.22, 0.05), COL_WOOD)
+    # The kitchen radio, just a radio
+    make_box("Kitchen_Radio", (-1.75, ROOM_D-0.20, 1.12), (0.24, 0.14, 0.14), (0.44, 0.30, 0.22, 1.0))
+    make_cyl("Radio_Dial", (-1.66, ROOM_D-0.28, 1.12), 0.03, 0.02, (0.86, 0.82, 0.72, 1.0), axis='Y', segments=8)
+    # The small wooden salt box
+    make_box("Salt_Box", (-0.95, ROOM_D-0.20, 1.095), (0.10, 0.10, 0.09), (0.58, 0.44, 0.28, 1.0))
+    # Microwave, counter east end
+    make_box("Microwave", (-0.45, ROOM_D-1.0, 1.14), (0.50, 0.38, 0.30), (0.82, 0.80, 0.76, 1.0))
+    make_box("Microwave_Door", (-0.45, ROOM_D-1.20, 1.14), (0.38, 0.02, 0.22), (0.20, 0.20, 0.22, 1.0))
+    # The yellow plate with the chip, set at his place
+    make_cyl("Yellow_Plate", (0.0, ROOM_D/2.0-0.30, 0.77), 0.12, 0.012, (0.90, 0.82, 0.38, 1.0), segments=14)
+    make_box("Plate_Chip", (0.115, ROOM_D/2.0-0.30, 0.775), (0.02, 0.02, 0.014), (0.96, 0.93, 0.74, 1.0))
+    # Exterior screen door to the porch, E wall
+    make_box("Porch_Door", (ROOM_W/2.0-0.05, 1.5, 1.05), (0.05, 0.90, 2.10), (0.62, 0.50, 0.36, 1.0))
+    make_box("Porch_Door_Screen", (ROOM_W/2.0-0.08, 1.5, 1.25), (0.02, 0.64, 1.30), (0.42, 0.42, 0.40, 0.45))
+    # Stair mouth at the S gap edge (up + the sopa-de-pollo down)
+    make_box("Stair_Newel", (0.92, 0.15, 0.60), (0.10, 0.10, 1.20), COL_WOOD)
+    for s in range(3):
+        make_box(f"Stair_Tread_{s}", (1.35, 0.20 - s * 0.0, 0.16 + s * 0.18), (0.75, 0.28, 0.05), COL_WOOD)
+
+
 def main():
     clear_scene()
     build_shell()
@@ -113,6 +145,7 @@ def main():
     build_table()
     build_stove()
     build_dressing()
+    build_hero_props()
     build_clock()
     build_ceiling_infra()
     out = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)),

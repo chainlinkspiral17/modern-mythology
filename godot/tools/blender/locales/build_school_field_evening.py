@@ -93,13 +93,16 @@ def build_spectators():
 
 
 def build_benches():
-    # Team sideline area on the EAST side (opposite the stands): two
-    # players' benches, water coolers, and a ball/helmet rack.
-    ex = +(FIELD_W/2.0 + 1.0)
+    # OPPOSITE SIDELINES (canon: "Visiting bench. Move it." — the
+    # home bench stays east, the visiting red bench goes west under
+    # the stands).
     for bi, by in enumerate([FIELD_D/2.0-3.0, FIELD_D/2.0+3.0]):
-        col = (0.30, 0.36, 0.52, 1.0) if bi == 0 else (0.52, 0.30, 0.30, 1.0)
+        home = bi == 0
+        ex = +(FIELD_W/2.0 + 1.0) if home else -(FIELD_W/2.0 + 1.0)
+        back_dx = 0.24 if home else -0.24
+        col = (0.30, 0.36, 0.52, 1.0) if home else (0.52, 0.30, 0.30, 1.0)
         make_box(f"Bench_{bi}_Seat", (ex, by, 0.46), (0.50, 4.4, 0.08), (0.42, 0.34, 0.26, 1.0))
-        make_box(f"Bench_{bi}_Back", (ex+0.24, by, 0.70), (0.06, 4.4, 0.40), col)
+        make_box(f"Bench_{bi}_Back", (ex+back_dx, by, 0.70), (0.06, 4.4, 0.40), col)
         for lo in (-2.0, 2.0):
             make_box(f"Bench_{bi}_Leg_{'S' if lo<0 else 'N'}", (ex, by+lo, 0.22), (0.46, 0.08, 0.44), COL_METAL)
     # Two orange water coolers with white lids + spigots
@@ -198,6 +201,65 @@ def build_fence():
     make_box("FenceRail_Mid", (0.0, FIELD_D+0.6, 0.60), (FIELD_W, 0.03, 0.04), COL_METAL)
 
 
+def build_hero_props():
+    """2026-08-03 hero-prop pass: THE FIELD GATE (the locale's
+    staging anchor), the corkboard outside the field-house door
+    (the depth-chart climax), the parking lot + the three staged
+    vehicles, Eileen's single folding chair in the third row, the
+    equipment shed + Coach Dale's truck, the cart + cones, the
+    spigots."""
+    steel = (0.48, 0.50, 0.52, 1.0)
+    wood = (0.42, 0.30, 0.18, 1.0)
+    # Fence run + swing gate at the south/parking end
+    for i in range(6):
+        fx = 2.0 + i * 2.6
+        make_cyl(f"SFence_Post_{i}", (fx, -0.6, 0.9), 0.05, 1.8, steel, segments=6)
+    make_cyl("SFence_Rail", (8.0, -0.6, 1.78), 0.035, 13.5, steel, segments=6, axis='X')
+    make_box("Field_Gate", (8.5, -0.6, 0.95), (2.8, 0.06, 1.7), steel)
+    make_box("Field_Gate_Mesh", (8.5, -0.62, 0.95), (2.6, 0.02, 1.5), (0.55, 0.57, 0.58, 0.35))
+    # Field house + THE CORKBOARD outside its door
+    make_box("Field_House", (-6.0, -4.5, 1.45), (5.0, 2.4, 2.9), (0.55, 0.50, 0.44, 1.0))
+    make_box("Field_House_Roof", (-6.0, -4.5, 3.02), (5.4, 2.8, 0.24), (0.32, 0.28, 0.24, 1.0))
+    make_box("Field_House_Door", (-7.4, -3.28, 1.05), (0.90, 0.06, 2.10), (0.30, 0.32, 0.36, 1.0))
+    make_box("Corkboard", (-5.6, -3.26, 1.55), (1.40, 0.05, 1.00), (0.52, 0.38, 0.26, 1.0))
+    make_box("Corkboard_Frame", (-5.6, -3.28, 1.55), (1.50, 0.04, 1.10), wood)
+    make_box("DepthChart_Sheet", (-5.6, -3.23, 1.60), (0.30, 0.01, 0.42), (0.92, 0.90, 0.82, 1.0))
+    # Parking lot + the staged vehicles
+    make_box("Parking_Lot", (0.0, -8.0, 0.01), (28.0, 12.0, 0.04), (0.24, 0.24, 0.26, 1.0))
+    for si in range(6):
+        make_box(f"Lot_Stripe_{si}", (-10.0 + si * 4.0, -3.2, 0.035), (0.10, 2.2, 0.01), (0.72, 0.70, 0.60, 1.0))
+    # Coach K's F-250 in the head-of-lot spot by the gate
+    make_box("F250_Body", (10.5, -3.6, 0.85), (2.0, 4.6, 0.85), (0.62, 0.20, 0.18, 1.0))
+    make_box("F250_Cab", (10.5, -2.6, 1.45), (1.85, 1.7, 0.60), (0.62, 0.20, 0.18, 1.0))
+    make_box("F250_Glass", (10.5, -2.6, 1.48), (1.65, 1.5, 0.45), (0.14, 0.16, 0.20, 1.0))
+    # Ben's Civic + Tucker's Tacoma near the corkboard
+    make_box("Civic_Body", (-9.0, -6.5, 0.62), (1.75, 4.0, 0.60), (0.55, 0.58, 0.62, 1.0))
+    make_box("Civic_Cabin", (-9.0, -6.3, 1.08), (1.6, 2.0, 0.48), (0.50, 0.53, 0.57, 1.0))
+    make_box("Tacoma_Body", (-4.5, -7.0, 0.78), (1.9, 4.4, 0.75), (0.24, 0.30, 0.26, 1.0))
+    make_box("Tacoma_Cab", (-4.5, -6.0, 1.35), (1.75, 1.6, 0.55), (0.24, 0.30, 0.26, 1.0))
+    # Eileen's folding chair — the only folding chair in the third row
+    make_box("Eileen_Chair_Seat", (-12.3, 7.4, 1.35), (0.42, 0.42, 0.03), (0.36, 0.42, 0.55, 1.0))
+    make_box("Eileen_Chair_Back", (-12.5, 7.4, 1.65), (0.03, 0.42, 0.36), (0.32, 0.38, 0.50, 1.0))
+    # Equipment shed + Coach Dale's truck behind it
+    make_box("Equip_Shed", (-9.0, 16.0, 1.3), (4.0, 3.0, 2.6), (0.48, 0.42, 0.34, 1.0))
+    make_box("Equip_Shed_Roof", (-9.0, 16.0, 2.75), (4.4, 3.4, 0.3), (0.34, 0.30, 0.26, 1.0))
+    make_box("Equip_Shed_Door", (-9.0, 14.46, 1.05), (1.3, 0.06, 2.1), (0.30, 0.26, 0.22, 1.0))
+    make_box("Dale_Truck_Body", (-9.0, 18.6, 0.80), (1.9, 4.2, 0.78), (0.44, 0.40, 0.34, 1.0))
+    make_box("Dale_Truck_Cab", (-9.0, 17.6, 1.38), (1.75, 1.6, 0.55), (0.44, 0.40, 0.34, 1.0))
+    # Equipment cart + the morning's cones
+    make_box("Equip_Cart", (11.8, 7.0, 0.45), (0.9, 1.4, 0.70), steel)
+    for wi, (wx, wy) in enumerate(((11.4, 6.4), (12.2, 6.4), (11.4, 7.6), (12.2, 7.6))):
+        make_cyl(f"Cart_Wheel_{wi}", (wx, wy, 0.10), 0.10, 0.06, (0.10, 0.10, 0.11, 1.0), segments=8, axis='X')
+    for ci, (cx, cy) in enumerate(((-3.0, 4.0), (-1.0, 5.5), (1.0, 4.5), (3.0, 6.5),
+                                   (-2.0, 8.0), (0.5, 7.5), (2.5, 8.5), (4.0, 5.0))):
+        make_cyl(f"Cone_{ci}", (cx, cy, 0.12), 0.10, 0.24, (0.92, 0.46, 0.14, 1.0), segments=8)
+        make_box(f"Cone_{ci}_Base", (cx, cy, 0.015), (0.22, 0.22, 0.03), (0.86, 0.40, 0.12, 1.0))
+    # Spigots at the side of the field
+    for pi, py in enumerate((1.2, 1.8)):
+        make_cyl(f"Spigot_{pi}_Pipe", (11.5, py, 0.45), 0.025, 0.90, steel, segments=6)
+        make_box(f"Spigot_{pi}_Tap", (11.42, py, 0.88), (0.10, 0.04, 0.04), (0.66, 0.52, 0.24, 1.0))
+
+
 def main():
     clear_scene()
     build_ground()
@@ -211,6 +273,7 @@ def main():
     build_floodlights()
     build_fence()
     build_banners()
+    build_hero_props()
     out = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)),
         "../../../assets/3d/locales/school_field_evening.glb"))
     print(f"\n[build_school_field_evening] exporting to {out}")

@@ -212,6 +212,63 @@ buzz, gas station motel/strip-mall/overpass/lay-by/cul-de-sac
 build-out on louisiana_road, centro clock choice, sam_bedroom
 comics-decor canon ruling.
 
+TIER-TWO HERO-PROP PASS (2026-08-03, fifth wave — three more
+agents, sixteen more locales; kowalski_backyard was the FIRST
+locale in either sweep to pass clean):
+- Three template kitchens (kowalski/grandmother/henderson) shared a
+  convenience-store scaffold: no windows anywhere, office
+  fluorescents, generic clocks. Now: grandmother's KITCHEN WINDOW
+  she's been at every morning since June + sill radio + salt box +
+  yellow chipped plate + porch door + stairs (and the twice-built
+  stove deduplicated, chairs given legs and pulled to the table);
+  kowalski uppers + under-cabinet light + couch/TV + sink window;
+  henderson front window (aligned with the porch build at x=1.45),
+  THE BASEMENT DOOR, oven face, the four place settings with the
+  eight-days-unset head seat, night clock, fridge unblocked.
+  Porch: Jim's truck + Ben's truck at the curb + garage door;
+  window moved out of the driveway's mouth; vol6_ch14 gets its
+  missing interior bg change.
+- Foxhole: the bar-side preset that hosts the whole ch20 concert
+  now has the stage + truss towers + six LEDs + rail + FOH board
+  (Topo Chico cooler beneath) + DJ booth + work light + PA; stage
+  side gets the crowd rail, the SET LIST taped to the deck,
+  Jesse's combo amp + cord, FOH, truss, DJ booth; house lights
+  replace office tubes; PA subs/mics de-clipped. Dressing room:
+  the two folding chairs, the BUZZING FLUORESCENT (its only
+  named light), the marker DRESSING ROOM sign, Carl's sticks.
+- new_orleans_bar: the muted bar TV (Strength's refrain), the
+  cheap-vinyl corner booth + saltshaker + folded twenty, three
+  beer neons (two dead brands), vol1's CHALK TABLE + cue rack,
+  the pinball machine + Missile Command cabinet, a six-top;
+  windows pulled back inside their walls, mirror out of the slab,
+  pendants not tubes. jesse_bedroom: bedside lamp, both
+  notebooks, the CLOSED door (gap narrowed from garage width),
+  guitar case, carpet + face-down phone. riverboat: the
+  bent-edge brass ashtray + lighter, Dean's note + hundred on
+  Table 14, the helm office door, wife's photograph moved to the
+  wall opposite the desk.
+- diner: the grease-stained clock moved to the KITCHEN wall it
+  canonically sags on; the back-door bell that jangles. cathedral:
+  the gutted-CRT casino hologram, the e-waste city vocabulary
+  (heat-sink monuments, capacitor water towers, server-rack
+  tenements, smartphone paving), the aquarium-pump river glow,
+  the sputtering seraphim tubes. centro_break_room: DOUG'S CHAIR
+  + thermos, the Tejano radio, the small dishwasher, jacket
+  hooks, the dock door, the card table. school_field: THE FIELD
+  GATE, the corkboard + field house (the depth-chart climax), the
+  parking lot + F-250/Civic/Tacoma, Eileen's single folding chair
+  in the third row, the equipment shed + Coach Dale's truck,
+  cart + cones, spigots; visiting bench moved to the opposite
+  sideline.
+- Routing/camera: kwik_stop_godseye dropped below the ceiling slab
+  it used to photograph; vol5_ch5_hierophant's park section →
+  riverfront_exterior; vol6_ch10's 7 AM Centro lot →  centro_dock.
+- OPEN (needs its own build): vol7_ch22_floors/portal +
+  interlude_ii point cathedral_interior at the Oregon cedar tower
+  (Oneironautics lobby/portal room) — a different building
+  entirely; cathedral "kingdom covered the floor" scale ceiling
+  noted.
+
 ### 1.7 · Dead wiring (harmless today, misleading forever)
 - 22 of 38 `PORTRAIT_3D_KEY_TO_GLB` entries point at GLBs that don't
   exist (kai, finn, tem, lena, wren, petra…). The demon's GLB dir

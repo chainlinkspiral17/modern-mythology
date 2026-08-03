@@ -1009,7 +1009,7 @@ def build_helm():
              (dk_x - 0.60, dk_y - 0.30, cz + 1.16),
              0.10, 0.14, (0.92, 0.78, 0.46, 1.0), segments=10)
     # Wife's photograph — in a brass frame on the desk
-    make_box("Helm_WifePhoto_Frame",
+    make_box("Helm_DeskPhoto_Frame_retired",
              (dk_x + 0.60, dk_y - 0.30, cz + 0.86),
              (0.18, 0.02, 0.22), COL_BRASS)
     make_box("Helm_WifePhoto",
@@ -1736,6 +1736,29 @@ def build_empress_dressing():
                  (placard_x + 0.022, placard_y, placard_z + 1.64 - tl * 0.02),
                  (0.003, 0.14, 0.006),
                  (0.22, 0.18, 0.14, 1.0))
+
+
+def build_emperor_props():
+    """2026-08-03 hero-prop pass: the brass ashtray with the bent
+    edge (his father's — the card is held over it), the lighter,
+    Dean's folded note + the hundred weighted on it at Table 14,
+    the helm office door; the wife's photograph moves to the wall
+    OPPOSITE the desk (canon: "the photograph he had not replaced
+    in twenty-three years")."""
+    brass = (0.74, 0.58, 0.28, 1.0)
+    # The ashtray, desk corner, one rim segment bent
+    make_cyl("Helm_Ashtray", (0.80, -1.15, 5.905), 0.07, 0.03, brass, segments=12)
+    make_box("Helm_Ashtray_Bent", (0.86, -1.10, 5.925), (0.035, 0.02, 0.015), (0.60, 0.46, 0.22, 1.0))
+    make_box("Helm_Lighter", (0.68, -1.22, 5.905), (0.03, 0.05, 0.02), (0.55, 0.57, 0.58, 1.0))
+    # Dean's note + the hundred, Table 14 (main deck)
+    make_box("Dean_Note", (0.15, -3.42, 3.264), (0.10, 0.07, 0.004), (0.90, 0.88, 0.80, 1.0))
+    make_box("Dean_Hundred", (0.15, -3.42, 3.269), (0.156, 0.066, 0.003), (0.62, 0.66, 0.54, 1.0))
+    # The office door at the helm's south partition
+    make_box("Helm_Office_Door", (2.2, -2.95, 6.10), (0.86, 0.06, 1.98), (0.34, 0.24, 0.16, 1.0))
+    make_cyl("Helm_Office_Knob", (2.52, -2.90, 6.05), 0.03, 0.04, brass, axis='Y', segments=8)
+    # The photograph on the wall OPPOSITE the desk (north partition)
+    make_box("Helm_WifePhoto_Wall_Frame", (0.95, 2.94, 6.80), (0.40, 0.02, 0.50), (0.30, 0.22, 0.14, 1.0))
+    make_box("Helm_WifePhoto_Wall", (0.95, 2.93, 6.80), (0.32, 0.015, 0.42), (0.72, 0.68, 0.58, 1.0))
 
 
 def main():

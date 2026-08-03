@@ -3,7 +3,7 @@
   "vol": 6,
   "chapter": 14,
   "type": "chapter",
-  "title": "Ch 14 — Live Oak",
+  "title": "Ch 14 \u2014 Live Oak",
   "nodes": [
     {
       "t": "bg",
@@ -24,7 +24,7 @@
     {
       "t": "interlude",
       "text": "Live Oak",
-      "sub": "Wednesday — 22:30 — New Auburn",
+      "sub": "Wednesday \u2014 22:30 \u2014 New Auburn",
       "duration": 2000
     },
     {
@@ -39,7 +39,7 @@
     },
     {
       "t": "narrate",
-      "text": "He pulls into the parking lot at ten oh-eight. The lot is — at this hour, on a Wednesday — mostly empty. The Coin Wash next door is dark. The Bindery is dark. The other small storefronts are dark. The Foxhole's marquee — which is the small lit sign above the front door, with the venue logo and a chalk-board insert below it announcing the next show — is on. The chalk insert reads, in someone's handwriting from this afternoon: SAT 8/22 — SUBURBAN BLIGHT // DJ CHESS — DOORS 8."
+      "text": "He pulls into the parking lot at ten oh-eight. The lot is \u2014 at this hour, on a Wednesday \u2014 mostly empty. The Coin Wash next door is dark. The Bindery is dark. The other small storefronts are dark. The Foxhole's marquee \u2014 which is the small lit sign above the front door, with the venue logo and a chalk-board insert below it announcing the next show \u2014 is on. The chalk insert reads, in someone's handwriting from this afternoon: SAT 8/22 \u2014 SUBURBAN BLIGHT // DJ CHESS \u2014 DOORS 8."
     },
     {
       "t": "narrate",
@@ -71,11 +71,11 @@
     },
     {
       "t": "narrate",
-      "text": "The unit is — Jesse pulls the Civic past slowly, with the lights off, in the way he has done seven times in the past month — dark. The white panel van is not, this evening, in the loading area."
+      "text": "The unit is \u2014 Jesse pulls the Civic past slowly, with the lights off, in the way he has done seven times in the past month \u2014 dark. The white panel van is not, this evening, in the loading area."
     },
     {
       "t": "narrate",
-      "text": "The papered-over window is — Jesse cannot, from the car, see the window, because the window is at the front, not the back. But the back door of the unit is, from the loading area, visible. The back door is a metal service door, painted institutional gray, with no signage. The door, every other time Jesse has driven past, has been closed."
+      "text": "The papered-over window is \u2014 Jesse cannot, from the car, see the window, because the window is at the front, not the back. But the back door of the unit is, from the loading area, visible. The back door is a metal service door, painted institutional gray, with no signage. The door, every other time Jesse has driven past, has been closed."
     },
     {
       "t": "narrate",
@@ -83,7 +83,7 @@
     },
     {
       "t": "narrate",
-      "text": "Jesse, in the Civic, slows further. He stops the car at the corner of the lot, in the small position where the sodium lamp does not directly illuminate the Civic's silhouette and where the angle to the back door is — by his three previous reconnaissances — the angle from which he is least visible to anyone who might, from inside the unit, look out."
+      "text": "Jesse, in the Civic, slows further. He stops the car at the corner of the lot, in the small position where the sodium lamp does not directly illuminate the Civic's silhouette and where the angle to the back door is \u2014 by his three previous reconnaissances \u2014 the angle from which he is least visible to anyone who might, from inside the unit, look out."
     },
     {
       "t": "narrate",
@@ -156,7 +156,7 @@
     {
       "t": "say",
       "char": "Jesse",
-      "text": "yeah. i'm sure. i'm — i'm just looking.",
+      "text": "yeah. i'm sure. i'm \u2014 i'm just looking.",
       "expr": "neutral"
     },
     {
@@ -205,7 +205,7 @@
     },
     {
       "t": "narrate",
-      "text": "The man is — Jesse, at the Civic, ducks low — backlit by the faint interior light. Jesse cannot see his face. The man is medium build. The man is wearing what looks, in the sodium light, like a polo shirt and slacks. The man pulls the back door closed behind him. The man locks it — Jesse can hear, at this distance, the small click of a deadbolt turning. The man crosses the loading area to a vehicle Jesse has not, until this moment, registered, parked at the far end of the lot in the shadow of the dumpster."
+      "text": "The man is \u2014 Jesse, at the Civic, ducks low \u2014 backlit by the faint interior light. Jesse cannot see his face. The man is medium build. The man is wearing what looks, in the sodium light, like a polo shirt and slacks. The man pulls the back door closed behind him. The man locks it \u2014 Jesse can hear, at this distance, the small click of a deadbolt turning. The man crosses the loading area to a vehicle Jesse has not, until this moment, registered, parked at the far end of the lot in the shadow of the dumpster."
     },
     {
       "t": "narrate",
@@ -213,7 +213,7 @@
     },
     {
       "t": "narrate",
-      "text": "The man gets in. The man starts the engine. The man pulls out of the lot — in the direction away from where Jesse is parked, which Jesse registers with the small relief of a kid whose pulse has, in the past forty seconds, gotten higher than he was prepared for."
+      "text": "The man gets in. The man starts the engine. The man pulls out of the lot \u2014 in the direction away from where Jesse is parked, which Jesse registers with the small relief of a kid whose pulse has, in the past forty seconds, gotten higher than he was prepared for."
     },
     {
       "t": "narrate",
@@ -263,11 +263,15 @@
     },
     {
       "t": "narrate",
-      "text": "He pulls into his driveway at ten forty-eight. His parents' house is mostly dark. The kitchen light is on — his mother has, all summer, been leaving the kitchen light on for him on practice nights. His father's truck is in the driveway. His father, by the hour, is in bed."
+      "text": "He pulls into his driveway at ten forty-eight. His parents' house is mostly dark. The kitchen light is on \u2014 his mother has, all summer, been leaving the kitchen light on for him on practice nights. His father's truck is in the driveway. His father, by the hour, is in bed."
     },
     {
       "t": "narrate",
       "text": "He goes inside."
+    },
+    {
+      "t": "bg",
+      "src": "3d:henderson_kitchen"
     },
     {
       "t": "say",
@@ -308,7 +312,7 @@
     {
       "t": "say",
       "char": "Maya",
-      "text": "f.t. sent me one message in june and one in july and that's it for the summer. the imps are quiet. frasier's quiet. the substation has been an empty building since june. the apparatus has been doing — almost nothing — since the summer started. the almost nothing is the worrying thing, not the loud thing. if you have, by your own observation, found a unit at the back of a strip mall that has lights on at one in the morning and a white panel van that visits and a man in a polo shirt who locks the door behind him at ten thirty PM on a wednesday — that is, by my read, exactly the kind of thing the apparatus would be doing if the apparatus were, this summer, doing a small careful thing it did not want anyone to be watching.",
+      "text": "f.t. sent me one message in june and one in july and that's it for the summer. the imps are quiet. frasier's quiet. the substation has been an empty building since june. the apparatus has been doing \u2014 almost nothing \u2014 since the summer started. the almost nothing is the worrying thing, not the loud thing. if you have, by your own observation, found a unit at the back of a strip mall that has lights on at one in the morning and a white panel van that visits and a man in a polo shirt who locks the door behind him at ten thirty PM on a wednesday \u2014 that is, by my read, exactly the kind of thing the apparatus would be doing if the apparatus were, this summer, doing a small careful thing it did not want anyone to be watching.",
       "expr": "serious"
     },
     {
@@ -342,7 +346,7 @@
     {
       "t": "say",
       "char": "Maya",
-      "text": "okay. one week. but jesse — if anything escalates — if the door is open during your gig, if the man in the polo shows up at the gig, if the sedan parks in the foxhole's lot — you tell me immediately. and you do not, under any circumstance, walk over to the unit. you stay in the foxhole. you finish your set. you come find me afterward. okay?",
+      "text": "okay. one week. but jesse \u2014 if anything escalates \u2014 if the door is open during your gig, if the man in the polo shows up at the gig, if the sedan parks in the foxhole's lot \u2014 you tell me immediately. and you do not, under any circumstance, walk over to the unit. you stay in the foxhole. you finish your set. you come find me afterward. okay?",
       "expr": "serious"
     },
     {
@@ -382,7 +386,7 @@
     {
       "t": "say",
       "char": "Jesse",
-      "text": "practice was good. em is running the band. i didn't realize until tonight. she's been running it for months. i've been the lead singer, she's been the band. the song is the song. she made me put it in the set saturday. second song. she said write the bridge about the people, not the substation. i'm — i'm going to.",
+      "text": "practice was good. em is running the band. i didn't realize until tonight. she's been running it for months. i've been the lead singer, she's been the band. the song is the song. she made me put it in the set saturday. second song. she said write the bridge about the people, not the substation. i'm \u2014 i'm going to.",
       "expr": "happy"
     },
     {
@@ -447,7 +451,7 @@
     },
     {
       "t": "narrate",
-      "text": "He thinks: the people are — the people are Em, and Carl, and Nate, and Sam, and Maya, and Ben, and Diego, and my mom, and my dad, and Linda Caldwell, and Walt who is making sandwiches at his kitchen counter on Wednesday nights, and the kid on the skateboard who told me to bring my own water."
+      "text": "He thinks: the people are \u2014 the people are Em, and Carl, and Nate, and Sam, and Maya, and Ben, and Diego, and my mom, and my dad, and Linda Caldwell, and Walt who is making sandwiches at his kitchen counter on Wednesday nights, and the kid on the skateboard who told me to bring my own water."
     },
     {
       "t": "narrate",
@@ -467,15 +471,15 @@
     },
     {
       "t": "narrate",
-      "text": "[shot:insert guitar]He picks up his Telecaster — the one in his bedroom, the unplugged one, the smaller of his two — and he holds it in his lap, and he thinks about the bridge."
+      "text": "[shot:insert guitar]He picks up his Telecaster \u2014 the one in his bedroom, the unplugged one, the smaller of his two \u2014 and he holds it in his lap, and he thinks about the bridge."
     },
     {
       "t": "narrate",
-      "text": "He plays one chord. Then another. Then a third. The chord progression, by the third chord, is — by his own internal sense, which is, this week, becoming a thing he can trust — the right progression. He plays it through three times."
+      "text": "He plays one chord. Then another. Then a third. The chord progression, by the third chord, is \u2014 by his own internal sense, which is, this week, becoming a thing he can trust \u2014 the right progression. He plays it through three times."
     },
     {
       "t": "narrate",
-      "text": "[shot:insert notebook]Then he puts the guitar down. He gets out his notebook — the small spiral one he has been writing lyrics in since 2023 — and he writes, on a fresh page: bridge — substation nine — here we are anyway — with the thing we have been carrying, the weight of it — and the room we are carrying it in — and the people we are carrying it with — and the small late evening, in mid-august, when the door is open two inches and the light is faint, and we are in the parking lot but not closer — and the song we wrote about the substation but the bridge is not about the substation — the bridge is about the parking lot."
+      "text": "[shot:insert notebook]Then he puts the guitar down. He gets out his notebook \u2014 the small spiral one he has been writing lyrics in since 2023 \u2014 and he writes, on a fresh page: bridge \u2014 substation nine \u2014 here we are anyway \u2014 with the thing we have been carrying, the weight of it \u2014 and the room we are carrying it in \u2014 and the people we are carrying it with \u2014 and the small late evening, in mid-august, when the door is open two inches and the light is faint, and we are in the parking lot but not closer \u2014 and the song we wrote about the substation but the bridge is not about the substation \u2014 the bridge is about the parking lot."
     },
     {
       "t": "narrate",
@@ -487,7 +491,7 @@
     },
     {
       "t": "narrate",
-      "text": "He puts the notebook back in the desk drawer. He gets undressed. He gets in bed. He sets the alarm for nine, because tomorrow morning is the diner — he has his Pit Stop shift, eleven to seven — and he wants the morning to write."
+      "text": "He puts the notebook back in the desk drawer. He gets undressed. He gets in bed. He sets the alarm for nine, because tomorrow morning is the diner \u2014 he has his Pit Stop shift, eleven to seven \u2014 and he wants the morning to write."
     },
     {
       "t": "narrate",
@@ -515,7 +519,7 @@
     },
     {
       "t": "narrate",
-      "text": "He thinks, with the small careful honesty Em has, this evening, modeled for him: I have been treating the map as the more important thing because the map is the thing that, if it pays off, would prove I was right to be paying attention. I have been treating the band as the thing I get to do while I wait for the map to pay off. The band is the thing. The map is — the map is the small obsessive thing I do on the back roads on the way home from practice. The band is the thing."
+      "text": "He thinks, with the small careful honesty Em has, this evening, modeled for him: I have been treating the map as the more important thing because the map is the thing that, if it pays off, would prove I was right to be paying attention. I have been treating the band as the thing I get to do while I wait for the map to pay off. The band is the thing. The map is \u2014 the map is the small obsessive thing I do on the back roads on the way home from practice. The band is the thing."
     },
     {
       "t": "narrate",
@@ -541,12 +545,12 @@
     },
     {
       "t": "narrate",
-      "text": "In a different bedroom in a different cul-de-sac, Maya — at her grandmother's, in her own bed, with her phone on the nightstand and the porch light off and her grandmother already asleep two doors down — opens her ThinkPad on her lap."
+      "text": "In a different bedroom in a different cul-de-sac, Maya \u2014 at her grandmother's, in her own bed, with her phone on the nightstand and the porch light off and her grandmother already asleep two doors down \u2014 opens her ThinkPad on her lap."
     },
     {
       "t": "say",
       "char": "Maya",
-      "text": "F.T. — quick. Jesse Henderson has been mapping nexcorp activity in town since june. tonight he found an active site at the back of the strip mall on live oak street in new auburn. small commercial unit. lights at night, white panel van, a man in a polo shirt who locked up at 10:30 tonight. i told jesse to watch it for a week with no escalation. no getting closer. but i am telling you because it is — it is the kind of thing you would want to know. — m.",
+      "text": "F.T. \u2014 quick. Jesse Henderson has been mapping nexcorp activity in town since june. tonight he found an active site at the back of the strip mall on live oak street in new auburn. small commercial unit. lights at night, white panel van, a man in a polo shirt who locked up at 10:30 tonight. i told jesse to watch it for a week with no escalation. no getting closer. but i am telling you because it is \u2014 it is the kind of thing you would want to know. \u2014 m.",
       "expr": "serious"
     },
     {
@@ -559,7 +563,7 @@
     },
     {
       "t": "narrate",
-      "text": "The reply will read, in F.T.'s usual lower-case voice: \"kid. thank you for telling me. i had — i had not been watching that strip mall. i should have been. i am putting the imp on it tonight. tell jesse to keep watching but not closer. tell him saturday's gig is the gig. tell him to play the gig and let the unit be the unit. i will know more by next week. — f.t.\""
+      "text": "The reply will read, in F.T.'s usual lower-case voice: \"kid. thank you for telling me. i had \u2014 i had not been watching that strip mall. i should have been. i am putting the imp on it tonight. tell jesse to keep watching but not closer. tell him saturday's gig is the gig. tell him to play the gig and let the unit be the unit. i will know more by next week. \u2014 f.t.\""
     },
     {
       "t": "narrate",
@@ -571,7 +575,7 @@
     },
     {
       "t": "narrate",
-      "text": "Tonight, on the porch with her grandmother already inside, the radio is — for the third night in a row — off."
+      "text": "Tonight, on the porch with her grandmother already inside, the radio is \u2014 for the third night in a row \u2014 off."
     },
     {
       "t": "narrate",

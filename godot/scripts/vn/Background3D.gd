@@ -96,12 +96,11 @@ const CAMERA_PRESETS := {
 	"kwik_stop_godseye": {
 		"scene": "res://scenes/locales/kwik_stop.tscn",
 		"requires_glb": "res://assets/3d/locales/kwik_stop.glb",
-		# Diagnostic vantage. Straight-down god's-eye 8m above
-		# floor-center. Use when debugging whether the build/GLB
-		# actually contains the geometry it should — point a scene
-		# at "3d:kwik_stop_godseye" and the floor + counter outline
-		# read unambiguously.
-		"camera_origin": Vector3(0.0, 8.0, -4.5),
+		# Diagnostic vantage. Straight-down god's-eye just BELOW the
+		# ceiling slab (CEIL_Z=3.00 — an 8m camera renders the roof,
+		# not the floor). Point a scene at "3d:kwik_stop_godseye"
+		# and the floor + counter outline read unambiguously.
+		"camera_origin": Vector3(0.0, 2.75, -4.5),
 		"camera_rotation": Vector3(-PI / 2.0, 0.0, 0.0),
 		"fov": 70.0,
 		"suppress_input": true,

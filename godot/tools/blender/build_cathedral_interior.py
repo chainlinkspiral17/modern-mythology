@@ -2305,6 +2305,49 @@ def build_graffiti_and_schematics():
                  (0.30, 0.01, 0.03), (0.14, 0.15, 0.16, 1.0))
 
 
+def build_magician_props_2026_08():
+    """2026-08-03 hero-prop pass (vol5_ch1_magician): the gutted CRT
+    projecting the miniature casino, the e-waste vocabulary of the
+    model city (heat-sink monuments, capacitor water towers,
+    server-rack tenements, smartphone-screen paving), the aquarium
+    pump under-lighting the crushed-glass river, and the sputtering
+    fluorescent tubes overhead."""
+    # Gutted CRT + the holographic casino cone (Boll Parish corner)
+    make_box("Gutted_CRT", (6.2, 0.9, 0.42), (0.40, 0.38, 0.34), (0.62, 0.58, 0.50, 1.0))
+    make_box("Gutted_CRT_Hollow", (6.2, 0.9, 0.50), (0.28, 0.26, 0.16), (0.08, 0.07, 0.07, 1.0))
+    make_cyl("Casino_Holo_Cone", (6.2, 0.9, 0.74), 0.14, 0.30, (0.55, 0.80, 0.88, 0.30), segments=10)
+    make_box("Casino_Holo_Core", (6.2, 0.9, 0.78), (0.10, 0.10, 0.16), (0.72, 0.92, 0.96, 0.55))
+    # E-waste city on the Graustark platform (centered ~(5,2,0.30))
+    for i, (dx, dy) in enumerate(((-1.4, -0.9), (-0.6, -1.1), (0.4, -0.8), (1.2, -1.2))):
+        make_box(f"Motherboard_Plaza_{i}", (5.0+dx, 2.0+dy, 0.315), (0.55, 0.40, 0.01), (0.20, 0.42, 0.26, 1.0))
+    for i, (dx, dy, h) in enumerate(((-1.2, 0.4, 0.34), (-0.5, 0.7, 0.46), (0.3, 0.5, 0.28))):
+        make_box(f"HeatSink_Monument_{i}", (5.0+dx, 2.0+dy, 0.30 + h/2.0), (0.16, 0.16, h), (0.60, 0.62, 0.64, 1.0))
+        for f in range(3):
+            make_box(f"HeatSink_{i}_Fin_{f}", (5.0+dx, 2.0+dy - 0.07 + f*0.07, 0.30 + h + 0.015),
+                     (0.18, 0.015, 0.03), (0.68, 0.70, 0.72, 1.0))
+    for i, (dx, dy) in enumerate(((1.0, 0.9), (1.5, 0.3))):
+        make_cyl(f"Capacitor_WaterTower_{i}", (5.0+dx, 2.0+dy, 0.46), 0.05, 0.28, (0.22, 0.24, 0.44, 1.0), segments=8)
+        make_cyl(f"Capacitor_{i}_Cap", (5.0+dx, 2.0+dy, 0.61), 0.055, 0.02, (0.72, 0.72, 0.70, 1.0), segments=8)
+    for i, (dx, dy, h) in enumerate(((-1.6, 1.1, 0.40), (0.0, 1.2, 0.52))):
+        make_box(f"ServerRack_Tenement_{i}", (5.0+dx, 2.0+dy, 0.30 + h/2.0), (0.28, 0.20, h), (0.28, 0.28, 0.30, 1.0))
+        for s in range(4):
+            make_box(f"ServerRack_{i}_Slot_{s}", (5.0+dx, 2.0+dy-0.105, 0.36 + s*(h/4.5)),
+                     (0.22, 0.01, 0.03), (0.44, 0.30, 0.18, 1.0))
+    for i, (dx, dy) in enumerate(((-0.9, -0.2), (0.1, -0.3), (0.9, -0.1))):
+        make_box(f"Screen_Paving_{i}", (5.0+dx, 2.0+dy, 0.312), (0.45, 0.16, 0.008), (0.16, 0.20, 0.28, 1.0))
+        make_box(f"Screen_Paving_{i}_Crack", (5.0+dx+0.05, 2.0+dy, 0.316), (0.02, 0.14, 0.004), (0.55, 0.62, 0.66, 1.0))
+    # Aquarium pump + under-glow on the model river
+    make_box("Aquarium_Pump", (5.0, 3.3, 0.36), (0.20, 0.14, 0.12), (0.30, 0.32, 0.30, 1.0))
+    make_box("River_Underglow", (5.0, 2.6, 0.308), (1.8, 0.30, 0.006), (0.42, 0.62, 0.80, 1.0))
+    # The sputtering fluorescent tubes overhead — cantankerous
+    # seraphim (this warehouse EARNS them)
+    for r, ry in enumerate((-3.0, 2.0)):
+        for c in range(4):
+            tx = -6.0 + c * 4.0
+            make_box(f"Seraphim_Tube_{r}_{c}", (tx, ry, 6.2), (1.30, 0.12, 0.06), (0.90, 0.94, 0.86, 1.0))
+            make_box(f"Seraphim_Housing_{r}_{c}", (tx, ry, 6.28), (1.40, 0.20, 0.06), (0.40, 0.40, 0.42, 1.0))
+
+
 def main():
     clear_scene()
     build_floor()
@@ -2333,6 +2376,7 @@ def main():
     # his glass, the osprey nest at the river window. Always present
     # in the GLB.
     build_magician_party_dressing()
+    build_magician_props_2026_08()
     export_glb()
 
 

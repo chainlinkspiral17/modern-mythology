@@ -47,13 +47,13 @@ def build_bar():
     # Back-bar bottle shelves against the north wall.
     for shf in range(3):
         sz = 1.30 + shf * 0.44
-        make_box(f"BackBar_Shelf_{shf}", (0.0, 5.85, sz), (5.6, 0.24, 0.03), COL_WOOD)
+        make_box(f"BackBar_Shelf_{shf}", (0.0, 5.78, sz), (5.6, 0.24, 0.03), COL_WOOD)
         for bi in range(16):
             bx = -2.80 + bi * 0.373
             tint = [COL_BOTTLE_AMBER, COL_BOTTLE_CLEAR, COL_BOTTLE_GREEN][(shf + bi) % 3]
             make_cyl(f"BackBar_Bottle_{shf}_{bi}", (bx, 5.85, sz + 0.17), 0.045, 0.30, tint, segments=6)
     # Long back mirror behind the bottles.
-    make_box("BackBar_Mirror", (0.0, 5.94, 2.05), (5.6, 0.02, 1.50), (0.30, 0.32, 0.36, 0.85))
+    make_box("BackBar_Mirror", (0.0, 5.87, 2.05), (5.6, 0.02, 1.50), (0.30, 0.32, 0.36, 0.85))
     # Draft-beer tap tower on the bar top.
     _make_tap_tower("Taps", -1.4, 5.05, top_z)
 
@@ -84,11 +84,11 @@ def _make_high_top(prefix, tx, ty):
         _make_bar_stool(f"{prefix}_Stool_{ci}", tx + ox, ty + oy)
 
 def build_high_tops():
-    _make_high_top("HighTop_0", -2.3, 1.9)
+    _make_high_top("HighTop_0", 0.3, 1.9)
     _make_high_top("HighTop_1", 2.3, 2.2)
 
 def _make_neon_sign(prefix, cx, cz, w, h, col):
-    y = 5.90
+    y = 5.855
     make_box(f"{prefix}_Top",   (cx, y, cz + h/2.0), (w, 0.03, 0.05), col)
     make_box(f"{prefix}_Bottom",(cx, y, cz - h/2.0), (w, 0.03, 0.05), col)
     make_box(f"{prefix}_Left",  (cx - w/2.0, y, cz), (0.05, 0.03, h), col)
@@ -121,6 +121,45 @@ def build_flyers():
 def build_ceiling_infra():
     make_smoke_detector("Smoke", (0.0, ROOM_D/2.0, CEIL))
 
+def build_venue_side():
+    """2026-08-03 hero-prop pass: vol6_ch20 plays the WHOLE venue on
+    this preset — it needs the stage side. Stage along the W wall
+    with truss towers + six LEDs, front rail, FOH board + the
+    Topo Chico cooler, DJ booth, work light, PA."""
+    deckcol = (0.20, 0.16, 0.14, 1.0)
+    truss = (0.40, 0.42, 0.46, 1.0)
+    # Stage deck + lip along the W wall
+    make_box("Stage_Deck", (-3.15, 3.0, 0.15), (1.7, 5.0, 0.30), deckcol)
+    make_box("Stage_Lip", (-2.28, 3.0, 0.16), (0.06, 5.0, 0.32), (0.28, 0.22, 0.18, 1.0))
+    # Two truss towers with three LED fixtures each
+    for ti, ty in enumerate((0.8, 5.2)):
+        make_box(f"Truss_{ti}", (-2.45, ty, 1.30), (0.25, 0.25, 2.60), truss)
+        for li, lz in enumerate((1.2, 1.8, 2.4)):
+            make_box(f"Truss_{ti}_LED_{li}", (-2.30, ty, lz), (0.14, 0.16, 0.12),
+                     [(0.72, 0.26, 0.60, 1.0), (0.26, 0.55, 0.80, 1.0), (0.86, 0.62, 0.22, 1.0)][li])
+    # Front-of-stage rail (Carl's spot)
+    for py in (1.0, 2.3, 3.7, 5.0):
+        make_box(f"Rail_Post_{py:.1f}", (-2.02, py, 0.52), (0.06, 0.06, 1.05), truss)
+    make_cyl("Stage_Rail", (-2.02, 3.0, 1.05), 0.035, 4.4, truss, segments=8, axis='Y')
+    # FOH board + the cooler under it (Ricky's Topo Chico)
+    make_box("FOH_Desk", (2.9, 2.0, 0.92), (0.7, 1.4, 0.06), (0.24, 0.22, 0.20, 1.0))
+    make_box("FOH_Console", (2.82, 2.0, 1.02), (0.40, 1.20, 0.12), (0.14, 0.14, 0.16, 1.0))
+    for lx in (2.62, 3.18):
+        make_box(f"FOH_Leg_{lx:.2f}", (lx, 2.0, 0.45), (0.06, 1.3, 0.90), (0.20, 0.19, 0.20, 1.0))
+    make_box("FOH_Cooler", (2.9, 2.0, 0.24), (0.45, 0.60, 0.44), (0.72, 0.20, 0.18, 1.0))
+    # DJ booth beside the stage + laptop
+    make_box("DJ_Booth", (-2.6, 0.55, 0.55), (1.1, 0.6, 1.10), (0.18, 0.17, 0.19, 1.0))
+    make_box("DJ_Laptop_Base", (-2.6, 0.55, 1.12), (0.30, 0.22, 0.02), (0.55, 0.57, 0.58, 1.0))
+    make_box("DJ_Laptop_Screen", (-2.6, 0.66, 1.24), (0.30, 0.02, 0.20), (0.16, 0.20, 0.26, 1.0))
+    # The one work light at the back
+    make_cyl("Work_Light_Stand", (3.4, 5.3, 0.90), 0.03, 1.80, truss, segments=6)
+    make_cyl("Work_Light_Head", (3.35, 5.25, 1.85), 0.10, 0.14, (0.96, 0.88, 0.66, 1.0), segments=8)
+    # PA flanking the stage
+    for si, sy in enumerate((0.6, 5.4)):
+        make_box(f"PA_{si}_Sub", (-2.9, sy, 0.35), (0.60, 0.60, 0.70), (0.12, 0.11, 0.10, 1.0))
+        make_box(f"PA_{si}_Top", (-2.9, sy, 1.30), (0.52, 0.52, 1.10), (0.14, 0.12, 0.11, 1.0))
+
+
 def main():
     clear_scene()
     build_shell()
@@ -131,6 +170,7 @@ def main():
     build_pendants()
     build_flyers()
     build_ceiling_infra()
+    build_venue_side()
     out = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)),
         "../../../assets/3d/locales/foxhole_bar.glb"))
     print(f"\n[build_foxhole_bar] exporting to {out}")
