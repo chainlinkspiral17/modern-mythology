@@ -117,6 +117,21 @@ const _OVERRIDES: Dictionary = {
 	"nate":    {"hair_style": 1, "beard": false},
 	"petra":   {"hair_style": 2, "glasses": "regular", "beard": false},
 	"wren":    {"hair_style": 6, "beard": false},
+
+	# ── T2 cast pass (2026-08 audit) · top vol6/vol1 speakers whose
+	# hash faces were arbitrary get pinned reads.
+	"ben":          {"hair_style": 0, "hair_color": 3, "beard": false, "collar": "tee"},
+	"jesse":        {"hair_style": 9, "hair_color": 2, "beard": false, "collar": "tee"},
+	"diego":        {"hair_style": 0, "hair_color": 0, "skin_tone": 1, "beard": false},
+	"diego_ramos":  {"hair_style": 0, "hair_color": 0, "skin_tone": 1, "beard": false},
+	"bianca":       {"hair_style": 2, "hair_color": 0, "skin_tone": 2, "beard": false, "earrings": true},
+	"eileen":       {"hair_style": 10, "hair_color": 5, "beard": false, "age": "elder", "glasses": "regular"},
+	"chief_miller": {"hair_style": 8, "hair_color": 5, "beard": false, "collar": "shirt", "age": "elder"},
+	"bt":           {"hair_style": 3, "hair_color": 1, "beard": true},
+	"anita":        {"hair_style": 6, "hair_color": 1, "skin_tone": 2, "beard": false, "earrings": true},
+	"linda":        {"hair_style": 2, "hair_color": 4, "beard": false},
+	"faust":        {"hair_style": 11, "hair_color": 0, "skin_tone": 5, "beard": false, "collar": "shirt", "face": "narrow"},
+	"hugo":         {"hair_style": 5, "hair_color": 2, "beard": true},
 }
 
 static var _cache: Dictionary = {}

@@ -68,9 +68,11 @@ exist on disk** (`assets/backgrounds/vol1_*.jpg`, `vol2_*.jpg` —
 the bar, the club, the dream sequences, all of Briar Falls), plus a
 handful of vol1 scenes with no bg at all. Vols 3-4 are near-stubs.
 Those volumes predate the 3D-locale era and largely play over black.
-Recorded as a KNOWN baseline in the gate (81 items, counted but
-non-failing); restoring vols 1-4's visual estate is its own project
-— plate-style 2D backgrounds via the PIL pipeline would fit.
+RESOLVED IN PART (2026-08-02, T2): all 39 missing backgrounds now
+exist — gen_legacy_backgrounds.py renders them as flat-graphic
+full-screen plates (calm centers for the portrait layer; vol1 warm-
+dark urban, vol2 muted coastal-Americana). Legacy baseline dropped
+81 -> 21; the remainder is old no-bg hub scenes, not missing art.
 
 ### 1.7 · Dead wiring (harmless today, misleading forever)
 - 22 of 38 `PORTRAIT_3D_KEY_TO_GLB` entries point at GLBs that don't

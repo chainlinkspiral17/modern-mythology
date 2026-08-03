@@ -232,6 +232,38 @@ const CHAR_ACCENTS := {
 	"elicia":    Color("#b89ad6"),
 	"nicola":    Color("#e8a860"),
 	"the_demon": Color("#7cffb0"),
+	# ── T2 cast pass (2026-08 audit) · the top speakers stop sharing
+	# the default parchment. Accents drive the nameplate, the
+	# underline wipe, and the bust's shirt — the cheapest way for the
+	# cast to read as CAST. Hues chosen to stay distinct in a scene's
+	# likely pairings (Tem/Lena/Kai/Finn share most frames).
+	# vol6 · Harmony Creek
+	"sam":          Color("#8fd6c0"),
+	"maya":         Color("#f0a8c8"),
+	"jesse":        Color("#d0b060"),
+	"diego":        Color("#88b8e8"),
+	"ben":          Color("#c8987a"),
+	"bianca":       Color("#e07a6a"),
+	"eileen":       Color("#a8c890"),
+	"chief_miller": Color("#7a90b8"),
+	"bt":           Color("#c8c060"),
+	"anita":        Color("#d890b0"),
+	"linda":        Color("#b0a8d8"),
+	# vol7 · Smolvud
+	"tem":          Color("#7ec8a8"),
+	"lena":         Color("#e8b070"),
+	"kai":          Color("#90a8e0"),
+	"finn":         Color("#c0d878"),
+	"cale":         Color("#d09a58"),
+	"hans":         Color("#e8d8a8"),
+	"roy":          Color("#a89078"),
+	"marina":       Color("#88c8d8"),
+	"marit":        Color("#e898a0"),
+	"aud":          Color("#b8b0e0"),
+	"petra":        Color("#c8a8d8"),
+	"wren":         Color("#98d0a0"),
+	# vol1
+	"faust":        Color("#c89ae8"),
 }
 const ACCENT_DEFAULT := Color("#d6c8a8")
 
