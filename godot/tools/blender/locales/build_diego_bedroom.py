@@ -84,11 +84,15 @@ def build_win():
     make_window("Window_N", (0.0, ROOM_D-0.02, 1.50), width=1.20, height=1.00)
 
 def build_ceiling_infra():
-    for j in range(2):
-        ypos = ROOM_D * (0.30 + j * 0.40)
-        make_fluorescent_tube_fixture(f"Fluor_{j}", (0.0, ypos, CEIL), length=1.40, width=0.34)
-    make_smoke_detector("Smoke", (0.0, ROOM_D/2.0, CEIL))
-    make_hvac_vent("HVAC", (-ROOM_W/4.0, ROOM_D-0.5, CEIL), width=0.80, depth=0.40)
+    # THE FAN that clicks on the third rotation — not shop tubes
+    make_cyl("Fan_Downrod", (0.0, ROOM_D/2.0, CEIL-0.08), 0.02, 0.16, (0.20, 0.19, 0.20, 1.0), segments=6)
+    make_cyl("Fan_Hub", (0.0, ROOM_D/2.0, CEIL-0.20), 0.10, 0.09, (0.20, 0.19, 0.20, 1.0), segments=10)
+    for bi, (dx, dy) in enumerate([(0.5, 0.0), (-0.5, 0.0), (0.0, 0.5), (0.0, -0.5)]):
+        make_box(f"Fan_Blade_{bi}", (dx, ROOM_D/2.0 + dy, CEIL-0.22),
+                 (0.62 if dy == 0.0 else 0.18, 0.18 if dy == 0.0 else 0.62, 0.02),
+                 (0.44, 0.32, 0.22, 1.0))
+    make_smoke_detector("Smoke", (0.9, ROOM_D/2.0, CEIL))
+
 
 def build_dressing():
     """Soccer-everything dressing: a ball + cleats on the floor, a dresser,
@@ -140,6 +144,24 @@ def build_dressing():
     # Corner sprout (wires the imported helper)
     make_floor_plant("Plant", (-ROOM_W/2.0+0.5, ROOM_D-0.6, 0.0), palette={"leaf": (0.30, 0.54, 0.34, 1.0), "pot": (0.78, 0.24, 0.22, 1.0)})
 
+def build_hero_props():
+    """2026-08-03 tail pass: the BLACKOUT curtains (and the regular
+    pair), the clock moved to the dresser, the letter's envelope on
+    the desk corner, the laptop."""
+    make_cyl("Curtain_Rod", (0.0, ROOM_D-0.14, 2.12), 0.015, 1.60, (0.20, 0.19, 0.20, 1.0), segments=6, axis='X')
+    for cx in (-0.42, 0.42):
+        make_box(f"Blackout_{cx:+.2f}", (cx, ROOM_D-0.16, 1.50), (0.50, 0.04, 1.30), (0.14, 0.14, 0.18, 1.0))
+        make_box(f"Regular_Curtain_{cx:+.2f}", (cx, ROOM_D-0.22, 1.50), (0.46, 0.03, 1.26), (0.55, 0.52, 0.60, 1.0))
+    # Clock on the DRESSER ("The clock on the dresser says three eleven")
+    make_box("Dresser_Clock", (1.70, 2.78, 1.00), (0.14, 0.09, 0.09), (0.16, 0.16, 0.18, 1.0))
+    make_box("Dresser_Clock_Face", (1.70, 2.73, 1.00), (0.10, 0.01, 0.055), (0.72, 0.24, 0.20, 1.0))
+    # The envelope on the desk's SE corner
+    make_box("Letter_Envelope", (1.40, 1.24, 0.765), (0.22, 0.11, 0.005), (0.94, 0.93, 0.90, 1.0))
+    # The laptop with the schedule open
+    make_box("Laptop_Base", (1.00, 1.44, 0.77), (0.32, 0.24, 0.02), (0.30, 0.30, 0.34, 1.0))
+    make_box("Laptop_Screen", (1.00, 1.56, 0.87), (0.32, 0.02, 0.20), (0.16, 0.20, 0.26, 1.0))
+
+
 def main():
     clear_scene()
     build_shell()
@@ -149,6 +171,7 @@ def main():
     build_posters()
     build_win()
     build_ceiling_infra()
+    build_hero_props()
     out = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)),
         "../../../assets/3d/locales/diego_bedroom.glb"))
     print(f"\n[build_diego_bedroom] exporting to {out}")

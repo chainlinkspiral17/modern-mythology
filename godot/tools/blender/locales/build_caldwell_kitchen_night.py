@@ -28,9 +28,9 @@ def build_shell():
     make_ceiling("Ceil", (0.0, ROOM_D/2.0, CEIL), size_x=ROOM_W+0.4, size_y=ROOM_D+0.4)
 
 def build_counter():
-    top_z = make_counter("Counter", (-ROOM_W/4.0, ROOM_D-1.0, 0.0), length=2.40, depth=0.70, height=0.92,
+    top_z = make_counter("Counter", (-ROOM_W/4.0, ROOM_D-1.35, 0.0), length=2.40, depth=0.70, height=0.92,
                          palette={"formica": (0.78, 0.66, 0.42, 1.0), "top": (0.32, 0.22, 0.14, 1.0), "kick": (0.32, 0.22, 0.14, 1.0)})
-    make_counter_bullnose("Counter", (-ROOM_W/4.0-0.35, ROOM_D-1.0, top_z), length=2.40)
+    make_counter_bullnose("Counter", (-ROOM_W/4.0-0.35, ROOM_D-1.35, top_z), length=2.40)
     # Sink + faucet (was missing)
     make_box("Sink_Bowl", (-ROOM_W/4.0, ROOM_D-1.0, 0.86), (0.50, 0.40, 0.12), (0.86, 0.86, 0.84, 1.0))
     make_cyl("Sink_Faucet", (-ROOM_W/4.0, ROOM_D-1.10, top_z+0.04), 0.015, 0.30, P.METAL_STEEL)
@@ -74,13 +74,29 @@ def build_dressing():
     make_floor_plant("Plant", (-ROOM_W/2.0+0.5, 0.7, 0.0), palette={"leaf": (0.36, 0.48, 0.30, 1.0), "pot": (0.60, 0.40, 0.26, 1.0)})
 
 def build_clock():
-    make_wall_clock("Clock", (0.0, ROOM_D-0.05, CEIL-0.50), frozen_hour=8, frozen_min=15)
+    make_wall_clock("Clock", (0.0, ROOM_D-0.12, CEIL-0.50), frozen_hour=11, frozen_min=5)
 
 def build_ceiling_infra():
-    for j in range(2):
-        ypos = ROOM_D * (0.30 + j * 0.40)
-        make_fluorescent_tube_fixture(f"Fluor_{j}", (0.0, ypos, CEIL), length=1.40, width=0.34)
-    make_smoke_detector("Smoke", (0.0, ROOM_D/2.0, CEIL))
+    # Domestic light, not shop tubes (hero-prop pass)
+    make_cyl("Ceiling_Dome", (0.0, 2.2, CEIL-0.10), 0.15, 0.14, (0.94, 0.88, 0.70, 1.0), segments=12)
+    make_smoke_detector("Smoke", (0.9, 2.2, CEIL))
+
+
+def build_hero_props():
+    """2026-08-03 tail pass: the night window Maya pauses at (the
+    dogs), the water glass, the stair mouth, burners + oven face on
+    the blank stove."""
+    make_window("Window_N", (-1.5, ROOM_D-0.10, 0), width=1.20, height=1.00)
+    make_cyl("Water_Glass", (-1.55, 3.30, 1.02), 0.035, 0.12, (0.55, 0.62, 0.66, 0.5), segments=8)
+    make_box("Stair_Newel", (0.92, 0.15, 0.60), (0.10, 0.10, 1.20), (0.46, 0.34, 0.22, 1.0))
+    for s in range(3):
+        make_box(f"Stair_Tread_{s}", (1.4, 0.20, 0.16 + s * 0.18), (0.80, 0.28, 0.05), (0.46, 0.34, 0.22, 1.0))
+    sx, sy = ROOM_W/4.0, ROOM_D-1.0
+    for bi, (ox, oy) in enumerate(((-0.16, -0.16), (0.16, -0.16), (-0.16, 0.16), (0.16, 0.16))):
+        make_cyl(f"Stove_Burner_{bi}", (sx+ox, sy+oy, 0.95), 0.09, 0.012, (0.16, 0.16, 0.18, 1.0), segments=10)
+    make_box("Oven_Door_Face", (sx, sy-0.36, 0.50), (0.60, 0.03, 0.55), (0.72, 0.70, 0.66, 1.0))
+    make_box("Oven_Handle", (sx, sy-0.39, 0.80), (0.50, 0.03, 0.04), (0.55, 0.57, 0.58, 1.0))
+
 
 def main():
     clear_scene()
@@ -91,6 +107,7 @@ def main():
     build_dressing()
     build_clock()
     build_ceiling_infra()
+    build_hero_props()
     out = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)),
         "../../../assets/3d/locales/caldwell_kitchen_night.glb"))
     print(f"\n[build_caldwell_kitchen_night] exporting to {out}")

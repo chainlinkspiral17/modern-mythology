@@ -1,4 +1,5 @@
-"""VOL 5 · Natalie's Apartment — Empress chapter (vol5_ch3).
+"""RELOCATED (canon): Simons, Gulf Coast parish walk-up — not San Francisco.
+VOL 5 · Natalie's Apartment — Empress chapter (vol5_ch3).
 
 PLACEMENT SCRIPT (uses _props/* library).
 
@@ -177,12 +178,12 @@ def build_kitchenette():
     make_cyl("Kitchen_Faucet", (-3.0, 4.10, top_z + 0.02),
              0.015, 0.30, P.METAL_STEEL)
     # Counter run east — under fridge
-    make_box("Kitchen_Counter_N", (-1.50, 5.20, 0.46),
+    make_box("Kitchen_Counter_N", (-1.50, 5.050, 0.46),
              (2.40, 0.70, 0.92), PAL_APT_COUNTER["formica"])
-    make_box("Kitchen_Counter_N_Top", (-1.50, 5.20, top_z),
+    make_box("Kitchen_Counter_N_Top", (-1.50, 5.050, top_z),
              (2.50, 0.80, 0.06), PAL_APT_COUNTER["top"])
     # Stove
-    make_box("Stove_Body", (-0.50, 5.20, 0.46),
+    make_box("Stove_Body", (-0.50, 5.050, 0.46),
              (0.70, 0.70, 0.92), (0.86, 0.84, 0.80, 1.0))
     make_box("Stove_Top", (-0.50, 5.20, 0.94),
              (0.70, 0.70, 0.04), P.METAL_BLACK)
@@ -193,7 +194,7 @@ def build_kitchenette():
     # Coffee pots on the counter
     make_coffee_pots("Coffee", (-2.0, 5.20, top_z), pots=1)
     # Fridge — east end of counter run
-    make_box("Fridge_Body", (0.80, 5.20, 1.00),
+    make_box("Fridge_Body", (0.80, 5.050, 1.00),
              (0.70, 0.70, 2.00), (0.86, 0.84, 0.80, 1.0))
     make_box("Fridge_Handle", (0.46, 4.85, 1.40),
              (0.03, 0.04, 0.10), P.METAL_STEEL)
@@ -238,12 +239,49 @@ def build_decor():
 
 
 def build_ceiling_infra():
-    for j, ypos in enumerate([1.6, 3.6]):
-        make_fluorescent_tube_fixture(
-            f"Fluor_{j}", (0.0, ypos, CEIL_Z),
-            length=1.20, width=0.32)
+    # Candle-and-lamp apartment: no tubes; the under-cabinet strip,
+    # the scarf lamp and the blinds' moonlight carry the room
     make_smoke_detector("Smoke", (0.0, 3.0, CEIL_Z))
     make_hvac_vent("HVAC", (-1.0, 5.0, CEIL_Z), width=0.60, depth=0.30)
+
+
+def build_hero_props():
+    """2026-08-03 tail pass: THE DUAL 1219 record player, the
+    windowsill (the Hanged Man lives on it), the kettle, the rug +
+    the low reading table + fanned cards, the under-cabinet light
+    (the apartment's you're-welcome lamp), the futon quilt, the
+    step-stool, the scarf lamp, the blinds."""
+    # The Dual turntable on its stand, west corner
+    make_box("Turntable_Stand", (-3.00, 1.90, 0.30), (0.50, 0.42, 0.60), (0.36, 0.26, 0.17, 1.0))
+    make_box("Turntable_Plinth", (-3.00, 1.90, 0.66), (0.42, 0.36, 0.10), (0.30, 0.22, 0.14, 1.0))
+    make_cyl("Turntable_Platter", (-3.03, 1.90, 0.73), 0.15, 0.02, (0.12, 0.12, 0.13, 1.0), segments=14)
+    make_box("Turntable_Tonearm", (-2.86, 1.98, 0.745), (0.02, 0.20, 0.015), (0.60, 0.62, 0.63, 1.0))
+    # The windowsill + the Hanged Man face-up on it
+    make_box("W_Sill", (-3.32, 2.5, 0.55), (0.16, 1.90, 0.05), (0.42, 0.30, 0.20, 1.0))
+    make_box("HangedMan_Card", (-3.32, 2.20, 0.585), (0.10, 0.07, 0.002), (0.86, 0.82, 0.70, 1.0))
+    make_box("HangedMan_Figure", (-3.32, 2.20, 0.587), (0.03, 0.045, 0.002), (0.30, 0.34, 0.52, 1.0))
+    # The kettle on the front burner
+    make_cyl("Kettle", (-0.68, 4.95, 1.07), 0.09, 0.18, (0.62, 0.64, 0.65, 1.0), segments=10)
+    # The worn rug + the low reading table (daytime footstool) +
+    # fanned cards
+    make_box("Reading_Rug", (-0.60, 1.90, 0.012), (2.20, 1.80, 0.02), (0.46, 0.34, 0.30, 1.0))
+    make_box("Rug_Worn_Patch", (-1.40, 1.90, 0.024), (0.55, 0.45, 0.006), (0.54, 0.42, 0.36, 1.0))
+    make_box("Low_Table", (-0.60, 1.90, 0.22), (0.55, 0.55, 0.10), (0.42, 0.30, 0.20, 1.0))
+    for ci in range(5):
+        make_box(f"Fanned_Card_{ci}", (-0.75 + ci * 0.09, 1.72 + 0.02 * (ci % 2), 0.276),
+                 (0.07, 0.11, 0.002), (0.86, 0.82, 0.70, 1.0))
+    # Upper cabinets + THE under-cabinet light
+    make_box("Upper_Cabs", (-1.50, 5.18, 1.85), (2.40, 0.34, 0.70), (0.42, 0.32, 0.24, 1.0))
+    make_box("UnderCab_Light", (-1.50, 5.04, 1.49), (2.30, 0.06, 0.03), (0.98, 0.90, 0.70, 1.0))
+    # Futon-ify: the twilight quilt over the sofa/futon
+    make_box("Twilight_Quilt", (2.10, 2.4, 0.62), (1.30, 0.85, 0.08), (0.34, 0.30, 0.50, 1.0))
+    # Step-stool by the bookshelf, the scarf lamp, the blinds
+    make_box("Step_Stool", (2.55, 4.55, 0.16), (0.36, 0.30, 0.32), (0.46, 0.34, 0.22, 1.0))
+    make_cyl("Scarf_Lamp_Base", (1.15, 0.55, 0.62), 0.06, 0.03, (0.30, 0.22, 0.14, 1.0), segments=8)
+    make_cyl("Scarf_Lamp_Shade", (1.15, 0.55, 0.92), 0.12, 0.18, (0.62, 0.34, 0.44, 0.9), segments=10)
+    make_box("Draped_Scarf", (1.20, 0.50, 1.02), (0.20, 0.16, 0.05), (0.56, 0.28, 0.40, 1.0))
+    for bi in range(8):
+        make_box(f"Blind_Slat_{bi}", (-3.30, 2.5, 0.80 + bi * 0.14), (0.02, 1.80, 0.03), (0.72, 0.70, 0.64, 1.0))
 
 
 def main():
@@ -258,6 +296,7 @@ def main():
         os.path.dirname(os.path.abspath(__file__)),
         "../../../assets/3d/locales/natalie_apartment.glb"))
     print(f"\n[build_natalie_apartment] exporting to {out_path}")
+    build_hero_props()
     export_glb(out_path)
 
 

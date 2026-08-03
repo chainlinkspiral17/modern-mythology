@@ -126,9 +126,7 @@ def build_exec_furniture():
         make_box(f"Credenza_Door_{pi}", (crx+px, cry-0.22, 0.42), (0.56, 0.02, 0.72), COL_CREDENZA)
         make_box(f"Credenza_Pull_{pi}", (crx+px+0.22, cry-0.24, 0.42), (0.03, 0.02, 0.14), P.METAL_BLACK)
     # A framed photo + a small trophy on the credenza top
-    make_box("Credenza_Photo", (crx-0.60, cry+0.05, 0.98), (0.24, 0.04, 0.20), COL_TRIM)
-    make_cyl("Credenza_Trophy_Cup", (crx+0.55, cry, 1.00), 0.06, 0.10, P.METAL_STEEL)
-    make_box("Credenza_Trophy_Base", (crx+0.55, cry, 0.905), (0.10, 0.10, 0.05), COL_TRIM)
+    make_box("Mother_Photo_Galveston", (-2.95, 1.25, 0.80), (0.16, 0.03, 0.14), COL_TRIM)  # the ONLY personal item — desk corner
     # Two guest chairs facing the manager desk (north side)
     for gi, gx in enumerate([-3.95, -3.05]):
         gy = 2.55
@@ -137,19 +135,18 @@ def build_exec_furniture():
         for li,(lx,ly) in enumerate([(gx-0.18,gy-0.18),(gx+0.18,gy-0.18),(gx-0.18,gy+0.18),(gx+0.18,gy+0.18)]):
             make_box(f"Guest_{gi}_Leg_{li}", (lx, ly, 0.23), (0.03, 0.03, 0.46), P.METAL_BLACK)
     # Framed diploma on the W wall of the manager office
-    make_box("Diploma_Frame", (-4.95, 1.5, 1.90), (0.03, 0.44, 0.34), COL_TRIM)
-    make_box("Diploma_Mat", (-4.94, 1.5, 1.90), (0.02, 0.36, 0.26), P.PAPER)
 
 def build_window_blinds():
-    # Horizontal venetian blinds over the N window (partly open)
-    for bi in range(14):
-        bz = 0.65 + bi*0.11
-        make_box(f"Blind_Slat_{bi}", (0.0, ROOM_D-0.10, bz), (4.90, 0.02, 0.03), COL_BLIND)
-    make_box("Blind_Header", (0.0, ROOM_D-0.11, 2.78), (5.0, 0.08, 0.08), COL_TRIM)
-    make_cyl("Blind_Cord", (2.30, ROOM_D-0.12, 1.80), 0.006, 1.90, COL_TRIM)
+    # Blinds removed (hero-prop pass): the office is "glass walls,
+    # chrome accents" and Erica watches the freeway + hawk through
+    # them — full-height glazing instead.
+    make_box("Glass_Wall", (0.0, ROOM_D-0.06, 1.40), (9.4, 0.04, 2.80), (0.55, 0.66, 0.74, 0.30))
+    for mi, mx in enumerate((-3.2, -1.1, 1.1, 3.2)):
+        make_box(f"Glass_Mullion_{mi}", (mx, ROOM_D-0.05, 1.40), (0.06, 0.06, 2.80), (0.42, 0.44, 0.46, 1.0))
+
 
 def build_decor():
-    make_wall_clock("Clock", (0.0, ROOM_D-0.05, 2.30), frozen_hour=2, frozen_min=15)
+    make_wall_clock("Clock", (0.0, ROOM_D-0.05, 2.30), frozen_hour=8, frozen_min=40)
     make_floor_plant("Plant_NE", (+4.0, ROOM_D-1.0, 0.0))
     make_floor_plant("Plant_NW", (-4.0, ROOM_D-1.0, 0.0))
     # Water cooler
@@ -166,8 +163,31 @@ def build_ceiling_infra():
     make_security_camera("Cam", (3.5, 5.5, CEIL))
     make_ceiling_speaker("Speaker", (1.5, 4.0, CEIL))
 
+def build_hero_props():
+    """2026-08-03 tail pass: the second monitor with the settlement
+    open, armrests + pillar on the ergonomic chair she grips, the
+    teak desk's drawer faces (third drawer holds the eyedrops)."""
+    make_box("Second_Monitor", (-2.90, 1.70, 1.05), (0.42, 0.03, 0.28), (0.14, 0.15, 0.17, 1.0))
+    make_box("Second_Monitor_Doc", (-2.90, 1.685, 1.05), (0.34, 0.01, 0.20), (0.88, 0.88, 0.84, 1.0))
+    # Chair arms + pillar + casters
+    for ax in (-3.78, -3.22):
+        make_box(f"Chair_Arm_{ax:.2f}", (ax, 0.80, 0.72), (0.06, 0.34, 0.05), (0.20, 0.20, 0.22, 1.0))
+        make_box(f"Chair_ArmPost_{ax:.2f}", (ax, 0.72, 0.62), (0.05, 0.05, 0.16), (0.20, 0.20, 0.22, 1.0))
+    make_cyl("Chair_Pillar", (-3.5, 0.80, 0.30), 0.04, 0.30, (0.30, 0.31, 0.33, 1.0), segments=8)
+    for ci in range(4):
+        import math as _m
+        a = ci * 1.57 + 0.4
+        make_cyl(f"Chair_Caster_{ci}", (-3.5 + 0.22 * _m.cos(a), 0.80 + 0.22 * _m.sin(a), 0.04),
+                 0.035, 0.04, (0.16, 0.16, 0.18, 1.0), segments=8, axis='X')
+    # Teak drawer faces — the third holds the eyedrops
+    for di in range(3):
+        make_box(f"Desk_Drawer_{di}", (-2.62, 1.22, 0.60 - di * 0.19), (0.03, 0.44, 0.15), (0.40, 0.28, 0.16, 1.0))
+        make_box(f"Desk_Drawer_{di}_Pull", (-2.60, 1.22, 0.60 - di * 0.19), (0.02, 0.12, 0.025), (0.62, 0.64, 0.66, 1.0))
+
+
 def main():
     clear_scene(); build_shell(); build_cubicles(); build_glass_office(); build_exec_furniture(); build_window_blinds(); build_decor(); build_ceiling_infra()
+    build_hero_props()
     out = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)), "../../../assets/3d/locales/houston_office.glb"))
     print(f"\n[build_houston_office] exporting to {out}")
     export_glb(out)

@@ -68,7 +68,8 @@ def build_shell():
                  size_y=ROOM_D + 0.4, with_grid=False, with_stains=False)
     # The CRACKED door — ajar ~25 degrees into the room (canon: the
     # small specific way, for Mister)
-    make_box("Door", (-0.72, 0.30, 1.02), (0.14, 0.85, 2.04), COL_DOOR)
+    make_box("Door_Leaf", (-0.81, 0.06, 1.02), (0.82, 0.05, 2.03), COL_WOOD)
+    make_box("Door_Crack_Dark", (-0.28, 0.05, 1.02), (0.12, 0.03, 2.00), (0.05, 0.05, 0.06, 1.0))
     make_cyl("Door_Knob", (-0.62, 0.62, 0.98), 0.035, 0.05, COL_FRAME_DK,
              segments=8, axis='X')
     make_box("Door_Jamb", (-1.28, 0.0, 1.02), (0.08, 0.22, 2.04), COL_FRAME_DK)
@@ -145,12 +146,18 @@ def build_gear_and_pack():
         make_box(f"Cleat_{k}", (-1.3 + k * 0.24, 3.15, 0.06), (0.12, 0.30, 0.10),
                  (0.15, 0.15, 0.16, 1.0))
     # Jersey on a hanger, north wall
-    make_box("Jersey", (0.45, ROOM_D - 0.05, 1.55), (0.55, 0.04, 0.6), COL_JERSEY)
-    make_box("Jersey_Num", (0.45, ROOM_D - 0.075, 1.55), (0.22, 0.01, 0.3), COL_PILLOW)
-    make_cyl("Jersey_Rod", (0.45, ROOM_D - 0.06, 1.92), 0.015, 0.7, COL_FRAME_DK,
+    make_box("Jersey", (-0.75, ROOM_D - 0.12, 1.55), (0.55, 0.04, 0.6), COL_JERSEY)
+    make_box("Jersey_Num", (-0.75, ROOM_D - 0.145, 1.55), (0.22, 0.01, 0.3), COL_PILLOW)
+    make_cyl("Jersey_Rod", (-0.75, ROOM_D - 0.13, 1.92), 0.015, 0.7, COL_FRAME_DK,
              segments=6, axis='X')
-    # Window on the north wall (dark outside — the room is dark)
-    make_box("Window_Frame", (0.45, ROOM_D - 0.02, 1.9), (1.0, 0.06, 0.06), COL_FRAME_DK)
+    # A REAL window on the north wall (the cicadas are loud through
+    # it; the old build was a single 6 cm stick inside the wall)
+    make_box("Window_Frame_T", (0.45, ROOM_D - 0.12, 2.02), (1.06, 0.05, 0.06), COL_FRAME_DK)
+    make_box("Window_Frame_B", (0.45, ROOM_D - 0.12, 1.06), (1.06, 0.05, 0.06), COL_FRAME_DK)
+    make_box("Window_Frame_L", (-0.06, ROOM_D - 0.12, 1.54), (0.05, 0.05, 1.02), COL_FRAME_DK)
+    make_box("Window_Frame_R", (0.96, ROOM_D - 0.12, 1.54), (0.05, 0.05, 1.02), COL_FRAME_DK)
+    make_box("Window_Glass", (0.45, ROOM_D - 0.12, 1.54), (1.00, 0.005, 0.92), (0.14, 0.17, 0.24, 0.6))
+    make_box("Window_Sill", (0.45, ROOM_D - 0.17, 1.02), (1.14, 0.14, 0.05), COL_FRAME_DK)
 
 
 def main():

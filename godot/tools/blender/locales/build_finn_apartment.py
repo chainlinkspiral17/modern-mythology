@@ -88,10 +88,49 @@ def build_win():
     make_window("Window_N", (0.0, ROOM_D-0.02, 1.50), width=1.20, height=1.00)
 
 def build_ceiling_infra():
-    for j in range(2):
-        ypos = ROOM_D * (0.30 + j * 0.40)
-        make_fluorescent_tube_fixture(f"Fluor_{j}", (0.0, ypos, CEIL), length=1.40, width=0.34)
-    make_smoke_detector("Smoke", (0.0, ROOM_D/2.0, CEIL))
+    # A home: warm dome fixture, no shop tubes
+    make_cyl("Ceiling_Dome", (0.0, 2.5, CEIL-0.10), 0.15, 0.14, (0.94, 0.88, 0.70, 1.0), segments=12)
+    make_smoke_detector("Smoke", (0.9, 2.5, CEIL))
+
+
+def build_hero_props():
+    """2026-08-03 tail pass: the kitchen table the charred wood is
+    laid out on, the crow's perch-chair beside the bed, the
+    nine-month duffel, the kettle + counter + cone, the SOUTH
+    kitchen window (Cape Perpetua's direction), the bedroom
+    partition of the one-bedroom."""
+    wood = (0.44, 0.32, 0.20, 1.0)
+    # Kitchen table + two facing chairs
+    make_box("Kitchen_Table", (0.0, 1.60, 0.74), (1.10, 0.80, 0.05), wood)
+    for lx, ly in ((-0.48, 1.28), (0.48, 1.28), (-0.48, 1.92), (0.48, 1.92)):
+        make_box(f"KT_Leg_{lx:+.2f}_{ly:.2f}", (lx, ly, 0.37), (0.05, 0.05, 0.72), wood)
+    for ci, cy in enumerate((0.95, 2.25)):
+        make_box(f"KT_Chair_{ci}_Seat", (0.0, cy, 0.44), (0.40, 0.40, 0.05), wood)
+        make_box(f"KT_Chair_{ci}_Back", (0.0, cy + (0.18 if ci else -0.18), 0.72), (0.40, 0.05, 0.52), wood)
+    # The folded cloth + three pieces of charred wood
+    make_box("Folded_Cloth", (0.0, 1.60, 0.775), (0.40, 0.30, 0.008), (0.82, 0.78, 0.68, 1.0))
+    for wi in range(3):
+        make_box(f"Charred_Wood_{wi}", (-0.12 + wi * 0.12, 1.60, 0.79), (0.08, 0.03, 0.025), (0.10, 0.09, 0.08, 1.0))
+    # The crow's chair beside the bed — tall back, the perch
+    make_box("Perch_Chair_Seat", (0.55, 3.65, 0.45), (0.42, 0.42, 0.05), (0.36, 0.26, 0.17, 1.0))
+    make_box("Perch_Chair_Back", (0.55, 3.86, 0.70), (0.42, 0.05, 0.52), (0.36, 0.26, 0.17, 1.0))
+    make_cyl("Perch_Chair_Rail", (0.55, 3.86, 0.97), 0.022, 0.42, (0.30, 0.22, 0.14, 1.0), segments=6, axis='X')
+    # The duffel, SE corner, nine months
+    make_box("Duffel", (1.85, 0.55, 0.18), (0.70, 0.34, 0.36), (0.34, 0.36, 0.30, 1.0))
+    make_box("Duffel_Strap", (1.85, 0.55, 0.37), (0.55, 0.06, 0.03), (0.24, 0.25, 0.22, 1.0))
+    # Counter along the W wall: kettle + cone
+    make_box("Counter", (-1.85, 1.30, 0.44), (0.70, 1.60, 0.88), (0.50, 0.44, 0.36, 1.0))
+    make_box("Counter_Top", (-1.85, 1.30, 0.92), (0.74, 1.66, 0.05), (0.34, 0.28, 0.22, 1.0))
+    make_cyl("Kettle", (-1.80, 0.90, 1.03), 0.09, 0.16, (0.62, 0.64, 0.65, 1.0), segments=10)
+    make_cyl("Pour_Cone", (-1.80, 1.55, 1.02), 0.06, 0.09, (0.86, 0.82, 0.74, 1.0), segments=8)
+    # The SOUTH kitchen window (toward Cape Perpetua) — S wall east
+    # segment, above the entry level
+    make_box("S_Window_Frame", (1.55, 0.05, 1.55), (0.90, 0.08, 1.00), (0.34, 0.28, 0.22, 1.0))
+    make_box("S_Window_Glass", (1.55, 0.03, 1.55), (0.76, 0.05, 0.86), (0.45, 0.52, 0.60, 0.5))
+    # Bedroom partition (the crow flies low through this doorway)
+    make_box("Bedroom_Part", (-0.55, 3.05, 1.3), (1.9, 0.14, 2.6), (0.62, 0.55, 0.46, 1.0))
+    make_box("Bedroom_Part_Header", (0.75, 3.05, 2.35), (0.7, 0.14, 0.5), (0.62, 0.55, 0.46, 1.0))
+
 
 def main():
     clear_scene()
@@ -102,6 +141,7 @@ def main():
     build_dressing()
     build_win()
     build_ceiling_infra()
+    build_hero_props()
     out = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)),
         "../../../assets/3d/locales/finn_apartment.glb"))
     print(f"\n[build_finn_apartment] exporting to {out}")

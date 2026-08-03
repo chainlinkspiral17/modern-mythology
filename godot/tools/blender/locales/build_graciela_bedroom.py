@@ -284,6 +284,13 @@ def build_dressing():
         make_box(f"Slipper_{sgn:+d}", (0.5 + sgn * 0.09, 2.3, 0.04), (0.10, 0.24, 0.06), COL_SPREAD_DK)
 
 
+def build_hero_props():
+    """2026-08-03 tail pass: the nightstand telephone ("She will
+    call Sam later. Not yet.")."""
+    make_box("Phone_Base", (0.98, 2.86, 0.60), (0.14, 0.10, 0.05), (0.24, 0.24, 0.26, 1.0))
+    make_box("Phone_Handset", (0.98, 2.86, 0.66), (0.16, 0.05, 0.04), (0.20, 0.20, 0.22, 1.0))
+
+
 def main():
     clear_scene()
     build_shell()
@@ -293,6 +300,7 @@ def main():
     build_nightstand()
     build_rocker()
     build_dressing()
+    build_hero_props()
     out = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)),
         "../../../assets/3d/locales/graciela_bedroom.glb"))
     print(f"\n[build_graciela_bedroom] exporting to {out}")

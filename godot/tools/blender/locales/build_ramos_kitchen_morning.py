@@ -28,9 +28,9 @@ def build_shell():
     make_ceiling("Ceil", (0.0, ROOM_D/2.0, CEIL), size_x=ROOM_W+0.4, size_y=ROOM_D+0.4)
 
 def build_counter():
-    top_z = make_counter("Counter", (-ROOM_W/4.0, ROOM_D-1.0, 0.0), length=2.40, depth=0.70, height=0.92,
+    top_z = make_counter("Counter", (-ROOM_W/4.0, ROOM_D-1.35, 0.0), length=2.40, depth=0.70, height=0.92,
                          palette={"formica": (0.78, 0.66, 0.42, 1.0), "top": (0.32, 0.22, 0.14, 1.0), "kick": (0.32, 0.22, 0.14, 1.0)})
-    make_counter_bullnose("Counter", (-ROOM_W/4.0-0.35, ROOM_D-1.0, top_z), length=2.40)
+    make_counter_bullnose("Counter", (-ROOM_W/4.0-0.35, ROOM_D-1.35, top_z), length=2.40)
     # Sink + faucet (was missing)
     make_box("Sink_Bowl", (-ROOM_W/4.0, ROOM_D-1.0, 0.86), (0.50, 0.40, 0.12), (0.86, 0.86, 0.84, 1.0))
     make_cyl("Sink_Faucet", (-ROOM_W/4.0, ROOM_D-1.10, top_z+0.04), 0.015, 0.30, P.METAL_STEEL)
@@ -93,13 +93,34 @@ def build_dressing():
     make_floor_plant("Plant", (-ROOM_W/2.0+0.5, 0.7, 0.0), palette={"leaf": (0.40, 0.50, 0.32, 1.0), "pot": (0.62, 0.40, 0.24, 1.0)})
 
 def build_clock():
-    make_wall_clock("Clock", (0.0, ROOM_D-0.05, CEIL-0.50), frozen_hour=7, frozen_min=30)
+    make_wall_clock("Clock", (0.0, ROOM_D-0.12, CEIL-0.50), frozen_hour=7, frozen_min=30)
 
 def build_ceiling_infra():
-    for j in range(2):
-        ypos = ROOM_D * (0.30 + j * 0.40)
-        make_fluorescent_tube_fixture(f"Fluor_{j}", (0.0, ypos, CEIL), length=1.40, width=0.34)
-    make_smoke_detector("Smoke", (0.0, ROOM_D/2.0, CEIL))
+    # Domestic light, not shop tubes (hero-prop pass)
+    make_cyl("Ceiling_Dome", (0.0, 2.2, CEIL-0.10), 0.15, 0.14, (0.94, 0.88, 0.70, 1.0), segments=12)
+    make_smoke_detector("Smoke", (0.9, 2.2, CEIL))
+
+
+def build_hero_props():
+    """2026-08-03 tail pass: the kitchen window she has been at
+    since six forty-five (+ sill + radio), the charging cordless
+    landline + green LED, the rosary on the table, the bills
+    drawer."""
+    make_window("Window_N", (0.0, ROOM_D-0.10, 0), width=1.20, height=1.00)
+    make_box("Window_Sill", (0.0, ROOM_D-0.24, 0.98), (1.30, 0.16, 0.05), (0.52, 0.40, 0.28, 1.0))
+    make_box("Sill_Radio", (0.55, ROOM_D-0.24, 1.07), (0.24, 0.14, 0.14), (0.44, 0.30, 0.22, 1.0))
+    # The cordless landline, plugged in and charging — face-up
+    make_box("Cordless_Base", (0.30, 2.55, 0.775), (0.10, 0.14, 0.05), (0.20, 0.20, 0.22, 1.0))
+    make_box("Cordless_Handset", (0.18, 2.42, 0.775), (0.05, 0.18, 0.03), (0.24, 0.24, 0.26, 1.0))
+    make_box("Charge_LED", (0.34, 2.50, 0.805), (0.012, 0.012, 0.012), (0.30, 0.86, 0.42, 1.0))
+    # The rosary she is not, at this moment, using
+    for bi in range(6):
+        make_cyl(f"Rosary_Bead_{bi}", (-0.18 + bi * 0.045, 2.42, 0.775), 0.008, 0.012,
+                 (0.30, 0.22, 0.16, 1.0), segments=5)
+    make_box("Rosary_Cross", (0.12, 2.42, 0.775), (0.03, 0.012, 0.045), (0.44, 0.34, 0.22, 1.0))
+    # The drawer with the bills (blue pen + envelopes)
+    make_box("Bills_Drawer", (-1.62, 3.55, 0.80), (0.03, 0.55, 0.14), (0.36, 0.26, 0.16, 1.0))
+
 
 def main():
     clear_scene()
@@ -111,6 +132,7 @@ def main():
     build_dressing()
     build_clock()
     build_ceiling_infra()
+    build_hero_props()
     out = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)),
         "../../../assets/3d/locales/ramos_kitchen_morning.glb"))
     print(f"\n[build_ramos_kitchen_morning] exporting to {out}")

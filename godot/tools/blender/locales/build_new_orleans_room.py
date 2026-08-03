@@ -66,10 +66,14 @@ def build_decor():
     make_wall_clock("Clock", (-1.95, 2.0, 2.10), frozen_hour=11, frozen_min=24)
     make_faded_poster("Poster", (+1.95, 2.0, 1.50))
     # Single chair
-    make_box("Chair_Seat", (-1.20, 2.0, 0.46), (0.40, 0.40, 0.04), COL_BED_FRAME)
-    make_box("Chair_Back", (-1.20, 2.18, 0.70), (0.40, 0.04, 0.50), COL_BED_FRAME)
-    # Suitcase on floor
-    make_box("Suitcase", (+1.20, 1.50, 0.10), (0.50, 0.36, 0.20), (0.42, 0.30, 0.18, 1.0))
+    # Chair at the desk, the jacket over its back (the sealed
+    # envelope rides the inside pocket)
+    make_box("Chair_Seat", (0.0, 4.05, 0.46), (0.40, 0.40, 0.04), COL_BED_FRAME)
+    make_box("Chair_Back", (0.0, 4.23, 0.70), (0.40, 0.04, 0.50), COL_BED_FRAME)
+    make_box("Jacket_Draped", (0.0, 4.26, 0.72), (0.44, 0.10, 0.46), (0.30, 0.28, 0.26, 1.0))
+    # The Korea duffle, battered enough to look intentional
+    make_cyl("Canvas_Duffle", (+1.20, 1.50, 0.16), 0.17, 0.62, (0.42, 0.40, 0.30, 1.0), segments=10, axis='Y')
+    make_box("Duffle_Strap", (+1.20, 1.50, 0.34), (0.30, 0.05, 0.02), (0.30, 0.28, 0.22, 1.0))
     # Strap detail
     make_box("Suitcase_Strap", (+1.20, 1.50, 0.22), (0.04, 0.40, 0.005), (0.86, 0.62, 0.28, 1.0))
 
@@ -80,8 +84,29 @@ def build_ceiling_infra():
     make_cyl("Bulb_Glass", (0.0, 2.5, CEIL-0.80), 0.06, 0.12, COL_BULB)
     make_smoke_detector("Smoke", (+1.0, 1.5, CEIL))
 
+def build_hero_props():
+    """2026-08-03 tail pass: the small desk under the N window
+    (paper, pen, the addressed envelope), the dresser + the small
+    mirror above it."""
+    wood = (0.38, 0.28, 0.18, 1.0)
+    make_box("Desk_Top", (0.0, 4.55, 0.74), (1.00, 0.55, 0.05), wood)
+    for lx in (-0.44, 0.44):
+        make_box(f"Desk_Leg_{lx:+.2f}", (lx, 4.55, 0.37), (0.06, 0.50, 0.72), wood)
+    make_box("Desk_Drawer", (0.0, 4.30, 0.62), (0.60, 0.02, 0.12), (0.30, 0.22, 0.14, 1.0))
+    make_box("Letter_Paper", (-0.10, 4.50, 0.775), (0.16, 0.22, 0.005), (0.92, 0.90, 0.84, 1.0))
+    make_box("Letter_Pen", (0.14, 4.48, 0.775), (0.02, 0.13, 0.01), (0.14, 0.14, 0.16, 1.0))
+    make_box("Addressed_Envelope", (0.24, 4.60, 0.775), (0.20, 0.10, 0.005), (0.90, 0.88, 0.82, 1.0))
+    # Dresser + the small mirror
+    make_box("Dresser", (-1.75, 2.60, 0.44), (0.45, 1.00, 0.88), wood)
+    for di in range(3):
+        make_box(f"Dresser_Drawer_{di}", (-1.52, 2.60, 0.20 + di * 0.26), (0.02, 0.86, 0.20), (0.30, 0.22, 0.14, 1.0))
+    make_box("Small_Mirror_Frame", (-1.96, 2.60, 1.45), (0.03, 0.44, 0.56), (0.28, 0.20, 0.13, 1.0))
+    make_box("Small_Mirror", (-1.94, 2.60, 1.45), (0.02, 0.36, 0.48), (0.68, 0.74, 0.78, 1.0))
+
+
 def main():
     clear_scene(); build_shell(); build_bed(); build_washbasin(); build_decor(); build_ceiling_infra()
+    build_hero_props()
     out = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)), "../../../assets/3d/locales/new_orleans_room.glb"))
     print(f"\n[build_new_orleans_room] exporting to {out}")
     export_glb(out)

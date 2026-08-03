@@ -128,8 +128,24 @@ def build_ceiling_infra():
     make_smoke_detector("Smoke", (0.0, 3.5, CEIL))
     make_hvac_vent("HVAC", (-2.0, 6.0, CEIL), width=1.00, depth=0.50)
 
+def build_hero_props():
+    """2026-08-03 tail pass: Anna's third monitor (EMBER & ASH in
+    Helvetica), the expensive air purifiers (the room's named
+    sound), the cold brew, her phone. (Deferred: the brick-loft vs
+    greige-high-rise shell mismatch, noted in the audit doc.)"""
+    make_box("Third_Monitor", (-3.10, 1.70, 1.08), (0.44, 0.03, 0.28), (0.14, 0.15, 0.17, 1.0))
+    make_box("Third_Monitor_Art", (-3.10, 1.685, 1.08), (0.36, 0.01, 0.20), (0.30, 0.20, 0.16, 1.0))
+    make_box("Third_Monitor_Type", (-3.10, 1.68, 1.12), (0.28, 0.008, 0.05), (0.92, 0.90, 0.86, 1.0))
+    for pi, (px, py) in enumerate(((-3.90, 1.50), (2.6, 4.8))):
+        make_cyl(f"Air_Purifier_{pi}", (px, py, 0.30), 0.14, 0.60, (0.90, 0.90, 0.88, 1.0), segments=12)
+        make_cyl(f"Air_Purifier_{pi}_Vent", (px, py, 0.58), 0.12, 0.04, (0.70, 0.72, 0.72, 1.0), segments=12)
+    make_cyl("Cold_Brew", (-3.55, 1.45, 0.86), 0.04, 0.14, (0.42, 0.30, 0.20, 0.85), segments=8)
+    make_box("Anna_Phone", (-3.35, 1.35, 0.775), (0.075, 0.15, 0.009), (0.12, 0.12, 0.14, 1.0))
+
+
 def main():
     clear_scene(); build_shell(); build_drafting_row(); build_workstations(); build_task_chairs(); build_materials_shelf(); build_plotter_and_mood_board(); build_decor(); build_ceiling_infra()
+    build_hero_props()
     out = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)), "../../../assets/3d/locales/houston_design_studio.glb"))
     print(f"\n[build_houston_design_studio] exporting to {out}")
     export_glb(out)

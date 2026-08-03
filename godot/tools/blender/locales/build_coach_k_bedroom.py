@@ -138,12 +138,24 @@ def build_dresser():
                  (0.30, 0.26, 0.055), (0.5 + 0.08 * li, 0.5, 0.46, 1.0))
 
 
+def build_hero_props():
+    """2026-08-03 tail pass: the nightstand lamp he turns off, and
+    real glass + a visible moon seam behind the curtains (the old
+    seam was buried inside the wall slab)."""
+    make_cyl("Lamp_Base", (1.25, ROOM_D-0.62, 0.60), 0.06, 0.04, (0.42, 0.30, 0.20, 1.0), segments=10)
+    make_cyl("Lamp_Stem", (1.25, ROOM_D-0.62, 0.72), 0.012, 0.20, (0.20, 0.19, 0.20, 1.0), segments=6)
+    make_cyl("Lamp_Shade", (1.25, ROOM_D-0.62, 0.86), 0.10, 0.14, (0.82, 0.74, 0.58, 1.0), segments=10)
+    make_box("W_Window_Glass", (-2.09, 2.6, 1.55), (0.02, 1.10, 1.00), (0.14, 0.18, 0.26, 0.6))
+    make_box("Moon_Seam", (-2.06, 2.6, 1.55), (0.015, 0.05, 0.96), (0.72, 0.76, 0.84, 1.0))
+
+
 def main():
     clear_scene()
     build_shell()
     build_bed()
     build_nightstands()
     build_dresser()
+    build_hero_props()
     out = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)),
         "../../../assets/3d/locales/coach_k_bedroom.glb"))
     print(f"\n[build_coach_k_bedroom] exporting to {out}")

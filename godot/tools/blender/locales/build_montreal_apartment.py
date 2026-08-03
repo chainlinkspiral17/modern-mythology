@@ -140,12 +140,56 @@ def build_decor():
         make_box(f"FloorBook_{bi}", (-1.20, 0.80, 0.04+bi*0.05), (0.30, 0.22, 0.05), col)
 
 def build_ceiling_infra():
-    for j, ypos in enumerate([1.5, 3.5]):
-        make_fluorescent_tube_fixture(f"Fluor_{j}", (0.0, ypos, CEIL), length=1.20, width=0.32)
-    make_smoke_detector("Smoke", (0.0, 2.5, CEIL))
+    # Mile-End apartment: one warm dome, no shop tubes
+    make_cyl("Ceiling_Dome", (0.0, 2.5, CEIL-0.10), 0.15, 0.14, (0.94, 0.88, 0.70, 1.0), segments=12)
+    make_smoke_detector("Smoke", (0.9, 2.5, CEIL))
+
+
+def build_hero_props():
+    """2026-08-03 tail pass: John's desk (its paper drifts), the
+    narwhal mug on its coaster, the gurgling drip coffee maker, the
+    notebook ziggurats, the fridge + dish rack, and the ALLEY the
+    window actually looks at (bins, mossy brick, the drainpipe)."""
+    wood = (0.42, 0.30, 0.20, 1.0)
+    # The desk, W wall, task chair — everything happens here
+    make_box("Desk_Top", (-2.20, 3.40, 0.74), (1.40, 0.70, 0.05), wood)
+    for lx, ly in ((-2.82, 3.10), (-1.58, 3.10), (-2.82, 3.70), (-1.58, 3.70)):
+        make_box(f"Desk_Leg_{lx:.2f}_{ly:.2f}", (lx, ly, 0.37), (0.05, 0.05, 0.72), wood)
+    make_box("Desk_Paper_Drift_A", (-2.45, 3.30, 0.775), (0.45, 0.35, 0.04), (0.88, 0.86, 0.80, 1.0))
+    make_box("Desk_Paper_Drift_B", (-1.95, 3.55, 0.79), (0.38, 0.30, 0.06), (0.84, 0.82, 0.74, 1.0))
+    make_box("Desk_Phone", (-2.05, 3.20, 0.775), (0.08, 0.15, 0.012), (0.12, 0.12, 0.14, 1.0))
+    make_box("Task_Chair", (-1.50, 3.40, 0.46), (0.44, 0.44, 0.05), (0.28, 0.28, 0.30, 1.0))
+    make_box("Task_Chair_Back", (-1.28, 3.40, 0.80), (0.05, 0.44, 0.55), (0.24, 0.24, 0.26, 1.0))
+    # THE NARWHAL MUG on its coaster
+    make_cyl("Coaster", (-2.55, 3.55, 0.772), 0.06, 0.008, (0.34, 0.26, 0.20, 1.0), segments=10)
+    make_cyl("Narwhal_Mug", (-2.55, 3.55, 0.82), 0.045, 0.09, (0.55, 0.72, 0.80, 1.0), segments=10)
+    make_box("Narwhal_Decal", (-2.51, 3.55, 0.83), (0.012, 0.045, 0.04), (0.90, 0.92, 0.94, 1.0))
+    make_cyl("Narwhal_Tusk", (-2.49, 3.53, 0.86), 0.006, 0.04, (0.94, 0.92, 0.86, 1.0), segments=5)
+    # The drip coffee maker (a French press does not gurgle)
+    make_box("Drip_Maker", (2.80, 4.50, 1.10), (0.28, 0.28, 0.36), (0.20, 0.20, 0.22, 1.0))
+    make_cyl("Drip_Carafe", (2.80, 4.42, 1.00), 0.09, 0.16, (0.45, 0.38, 0.28, 0.7), segments=10)
+    # Notebook ziggurats on every available surface
+    for zi, (zx, zy, zz, n) in enumerate(((-2.65, 2.9, 0.775, 4), (0.4, 2.2, 0.44, 3), (1.9, 4.5, 0.94, 3))):
+        for k in range(n):
+            make_box(f"Ziggurat_{zi}_{k}", (zx + 0.01 * (k % 2), zy, zz + k * 0.035),
+                     (0.20 - 0.02 * k, 0.26 - 0.02 * k, 0.03),
+                     [(0.62, 0.24, 0.24, 1.0), (0.24, 0.42, 0.52, 1.0), (0.72, 0.62, 0.30, 1.0)][k % 3])
+    # Fridge + dish rack
+    make_box("Fridge", (2.72, 3.4, 0.85), (0.60, 0.60, 1.70), (0.85, 0.84, 0.80, 1.0))
+    make_box("Dish_Rack", (2.35, 4.75, 0.98), (0.30, 0.26, 0.05), (0.60, 0.62, 0.63, 1.0))
+    # THE ALLEY beyond the N window: opposite brick, moss, the
+    # graffiti-scarred drainpipe, recycling bins
+    make_box("Alley_Brick", (0.0, 7.4, 1.8), (7.0, 0.2, 3.6), (0.42, 0.30, 0.26, 1.0))
+    make_box("Alley_Moss", (-1.2, 7.28, 0.9), (1.6, 0.03, 1.2), (0.30, 0.40, 0.26, 1.0))
+    make_cyl("Alley_Drainpipe", (1.4, 7.25, 1.8), 0.06, 3.6, (0.36, 0.38, 0.40, 1.0), segments=8)
+    make_box("Drainpipe_Graffiti", (1.33, 7.20, 1.3), (0.02, 0.03, 0.35), (0.72, 0.32, 0.52, 1.0))
+    for bi, bx in enumerate((-0.8, 0.2)):
+        make_box(f"Alley_Bin_{bi}", (bx, 6.6, 0.55), (0.55, 0.5, 1.1), (0.26, 0.40, 0.52, 1.0))
+
 
 def main():
     clear_scene(); build_shell(); build_living(); build_dining_nook(); build_floor_lamp(); build_kitchenette(); build_radiator_under_window(); build_decor(); build_ceiling_infra()
+    build_hero_props()
     out = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)), "../../../assets/3d/locales/montreal_apartment.glb"))
     print(f"\n[build_montreal_apartment] exporting to {out}")
     export_glb(out)

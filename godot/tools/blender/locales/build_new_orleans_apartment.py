@@ -77,7 +77,7 @@ def build_armoire():
     make_cyl("Armoire_KnobR", (ax+0.24, ay+0.06, 1.20), 0.025, 0.04, (0.86, 0.62, 0.28, 1.0), axis='X')
 
 def build_decor():
-    make_wall_clock("Clock", (-3.45, 2.0, 2.10), frozen_hour=2, frozen_min=14)
+    make_wall_clock("Clock", (-3.45, 2.0, 2.10), frozen_hour=6, frozen_min=23)
     make_faded_poster("PosterW", (-3.45, 1.0, 1.50))
     make_floor_plant("Plant_S", (+2.50, 1.50, 0.0))
     # Ceiling fan
@@ -94,8 +94,48 @@ def build_decor():
 def build_ceiling_infra():
     make_smoke_detector("Smoke", (+1.5, 3.5, CEIL))
 
+def build_hero_props():
+    """2026-08-03 tail pass: the rented sofa Jimmy crashes on, the
+    kitchenette monument to neglect (cloudy glasses, ashtray
+    volcano, warm bourbon), the greasy microwave the Devil looks
+    back from, the disintegrating lace curtain — and vol1's TV +
+    console + bass for Jacob's place."""
+    # The rented sofa, springs and all
+    make_box("Rented_Sofa_Base", (-2.40, 2.40, 0.26), (0.90, 2.00, 0.40), (0.42, 0.36, 0.30, 1.0))
+    make_box("Rented_Sofa_Back", (-2.80, 2.40, 0.66), (0.20, 2.00, 0.60), (0.38, 0.32, 0.27, 1.0))
+    for cy in (1.95, 2.85):
+        make_box(f"Sofa_Cushion_{cy:.2f}", (-2.32, cy, 0.49), (0.72, 0.80, 0.14), (0.46, 0.40, 0.33, 1.0))
+    make_box("Sofa_Blanket_Tangle", (-2.35, 1.80, 0.60), (0.70, 0.55, 0.10), (0.52, 0.44, 0.36, 1.0))
+    # Kitchenette, N wall: counter, sink of cloudy glasses, ashtray,
+    # bourbon, microwave-mirror
+    make_box("Kitchenette", (0.0, 5.60, 0.46), (2.4, 0.62, 0.92), (0.58, 0.54, 0.46, 1.0))
+    make_box("Kitchenette_Formica", (0.0, 5.60, 0.94), (2.5, 0.68, 0.05), (0.72, 0.68, 0.58, 1.0))
+    make_box("Kitchenette_Sink", (-0.6, 5.60, 0.95), (0.45, 0.40, 0.05), (0.44, 0.46, 0.47, 1.0))
+    for gi in range(3):
+        make_cyl(f"Cloudy_Glass_{gi}", (-0.72 + gi * 0.14, 5.55, 1.02), 0.03, 0.10,
+                 (0.72, 0.74, 0.70, 0.6), segments=8)
+    make_cyl("Ashtray_Volcano", (0.35, 5.50, 0.985), 0.07, 0.04, (0.30, 0.30, 0.32, 1.0), segments=10)
+    make_box("Ash_Heap", (0.35, 5.50, 1.02), (0.08, 0.08, 0.035), (0.55, 0.53, 0.50, 1.0))
+    make_cyl("Warm_Bourbon", (0.72, 5.62, 1.07), 0.045, 0.26, (0.52, 0.32, 0.14, 0.85), segments=8)
+    make_box("Microwave_Greasy", (1.20, 5.60, 1.12), (0.50, 0.38, 0.30), (0.58, 0.56, 0.52, 1.0))
+    make_box("Microwave_Mirror_Door", (1.20, 5.40, 1.12), (0.38, 0.02, 0.22), (0.36, 0.38, 0.40, 1.0))
+    # The yellowed lace curtain over the W window
+    make_box("Lace_Curtain", (-2.50, -0.02, 1.80), (1.4, 0.03, 1.9), (0.86, 0.82, 0.66, 0.5))
+    # vol1: TV + console + the bass in the corner
+    make_box("TV", (2.80, 2.2, 0.95), (0.10, 0.85, 0.55), (0.12, 0.12, 0.14, 1.0))
+    make_box("TV_Screen", (2.74, 2.2, 0.95), (0.02, 0.72, 0.44), (0.30, 0.36, 0.42, 1.0))
+    make_box("TV_Stand", (2.80, 2.2, 0.34), (0.55, 0.90, 0.62), (0.36, 0.28, 0.20, 1.0))
+    make_box("Game_Console", (2.72, 1.85, 0.68), (0.28, 0.22, 0.07), (0.22, 0.22, 0.26, 1.0))
+    for wi in range(2):
+        make_box(f"Controller_Cord_{wi}", (2.5 - wi * 0.4, 2.0 + wi * 0.2, 0.02), (0.5, 0.02, 0.01), (0.14, 0.14, 0.16, 1.0))
+    make_box("Bass_Body", (2.65, 4.4, 0.55), (0.14, 0.36, 0.50), (0.52, 0.22, 0.16, 1.0))
+    make_box("Bass_Neck", (2.65, 4.4, 1.25), (0.05, 0.07, 0.95), (0.30, 0.22, 0.14, 1.0))
+    make_box("Bass_Amp", (2.60, 4.85, 0.25), (0.40, 0.35, 0.48), (0.16, 0.14, 0.13, 1.0))
+
+
 def main():
     clear_scene(); build_shell(); build_shuttered_windows(); build_bed(); build_armoire(); build_decor(); build_ceiling_infra()
+    build_hero_props()
     out = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)), "../../../assets/3d/locales/new_orleans_apartment.glb"))
     print(f"\n[build_new_orleans_apartment] exporting to {out}")
     export_glb(out)

@@ -89,19 +89,52 @@ def build_studio_nook():
     make_box("Laptop_Lid",  (mx+0.20, my+0.10, 0.50), (0.34, 0.02, 0.20), P.METAL_BLACK)
 
 def build_decor():
-    make_wall_clock("Clock", (-3.45, 3.0, 2.10), frozen_hour=11, frozen_min=15)
+    make_wall_clock("Clock", (-3.45, 3.0, 2.10), frozen_hour=4, frozen_min=22)
     make_faded_poster("Poster_N", (0.0, ROOM_D-0.02, 1.70), palette={"body": (0.62, 0.42, 0.52, 1.0)})
     make_floor_plant("Plant_S1", (-3.0, 0.80, 0.0))
     make_floor_plant("Plant_S2", (+3.0, 0.80, 0.0), palette={"leaf": (0.62, 0.74, 0.56, 1.0)})
 
 def build_ceiling_infra():
-    for j, ypos in enumerate([1.5, 3.5]):
-        make_fluorescent_tube_fixture(f"Fluor_{j}", (0.0, ypos, CEIL), length=1.40, width=0.34)
-    make_smoke_detector("Smoke", (0.0, 3.0, CEIL))
-    make_hvac_vent("HVAC", (-1.0, 5.0, CEIL), width=0.60, depth=0.30)
+    # The docstring wanted "warm tungsten lamp duotone" — here is
+    # the lamp; the tubes are gone
+    make_cyl("Tungsten_Lamp_Base", (-1.2, 1.0, 0.02), 0.12, 0.03, (0.24, 0.20, 0.17, 1.0), segments=10)
+    make_cyl("Tungsten_Lamp_Post", (-1.2, 1.0, 0.72), 0.02, 1.40, (0.24, 0.20, 0.17, 1.0), segments=6)
+    make_cyl("Tungsten_Lamp_Shade", (-1.2, 1.0, 1.52), 0.16, 0.22, (0.86, 0.68, 0.42, 1.0), segments=10)
+    make_smoke_detector("Smoke", (0.9, 2.75, CEIL))
+
+
+def build_hero_props():
+    """2026-08-03 tail pass: the kitchen counter with her mother's
+    dust-filled teacup + the green sponge by the sink, the camera
+    with its red record light on the windowsill, the heavy glass
+    award, the eviction envelope, and the wreckage (data slates,
+    script-page drifts, cable ivy)."""
+    make_box("Kitchen_Counter", (2.2, 5.20, 0.46), (1.6, 0.60, 0.92), (0.50, 0.46, 0.40, 1.0))
+    make_box("Kitchen_Counter_Top", (2.2, 5.20, 0.94), (1.66, 0.66, 0.05), (0.62, 0.60, 0.56, 1.0))
+    make_box("Kitchen_Sink", (2.6, 5.20, 0.95), (0.42, 0.40, 0.05), (0.42, 0.44, 0.45, 1.0))
+    make_box("Green_Sponge", (2.36, 5.05, 0.985), (0.09, 0.06, 0.03), (0.34, 0.62, 0.36, 1.0))
+    make_cyl("Mothers_Teacup", (1.90, 5.20, 1.00), 0.045, 0.07, (0.90, 0.88, 0.82, 1.0), segments=10)
+    make_cyl("Teacup_Saucer", (1.90, 5.20, 0.965), 0.075, 0.012, (0.90, 0.88, 0.82, 1.0), segments=10)
+    # The camera on the windowsill, red light on
+    make_box("Camera_Body", (2.0, 0.14, 1.05), (0.16, 0.10, 0.10), (0.14, 0.14, 0.16, 1.0))
+    make_cyl("Camera_Lens", (2.0, 0.06, 1.05), 0.035, 0.05, (0.10, 0.10, 0.12, 1.0), axis='Y', segments=8)
+    make_box("Camera_RedLight", (2.06, 0.10, 1.11), (0.015, 0.015, 0.015), (0.96, 0.16, 0.14, 1.0))
+    # The award + the eviction envelope on the coffee table
+    make_box("Glass_Award", (-0.30, 0.70, 0.42), (0.10, 0.06, 0.20), (0.66, 0.78, 0.84, 0.7))
+    make_box("Award_Base", (-0.30, 0.70, 0.335), (0.14, 0.10, 0.03), (0.20, 0.20, 0.22, 1.0))
+    make_box("Eviction_Envelope", (0.25, 0.70, 0.33), (0.22, 0.11, 0.006), (0.94, 0.93, 0.90, 1.0))
+    # The wreckage
+    for i, (sx, sy) in enumerate(((-2.4, 2.2), (-1.2, 3.6), (0.8, 2.8), (2.4, 1.6))):
+        make_box(f"Data_Slate_{i}", (sx, sy, 0.02), (0.42, 0.28, 0.03), (0.18, 0.20, 0.24, 1.0))
+    for i, (px, py) in enumerate(((-2.0, 1.4), (-0.4, 2.6), (1.4, 3.6), (0.2, 4.2), (2.6, 2.4))):
+        make_box(f"Script_Drift_{i}", (px, py, 0.012), (0.55, 0.45, 0.02), (0.88, 0.86, 0.80, 1.0))
+    for i, (cx, cy, cl) in enumerate(((-1.5, 2.9, 1.4), (0.9, 1.9, 1.1), (1.9, 4.1, 1.6))):
+        make_cyl(f"Cable_Ivy_{i}", (cx, cy, 0.03), 0.018, cl, (0.30, 0.32, 0.34, 1.0), segments=6, axis='X' if i % 2 else 'Y')
+
 
 def main():
     clear_scene(); build_shell(); build_living(); build_studio_nook(); build_decor(); build_ceiling_infra()
+    build_hero_props()
     out = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)), "../../../assets/3d/locales/elicia_apartment.glb"))
     print(f"\n[build_elicia_apartment] exporting to {out}")
     export_glb(out)

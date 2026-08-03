@@ -205,8 +205,31 @@ def build_bulb():
     make_cyl("Bulb_Glass", (0.0, ROOM_D/2.0, CEIL-0.86), 0.06, 0.14, (0.96, 0.86, 0.46, 1.0))
 
 def build_ceiling_infra():
-    make_fluorescent_tube_fixture("Fluor_0", (0.35, ROOM_D-0.6, CEIL), length=1.40, width=0.34)
     make_smoke_detector("Smoke", (0.0, ROOM_D/2.0, CEIL))
+
+def build_hero_props():
+    """2026-08-03 tail pass: the IV stand + bag + line, the chair
+    BESIDE the bed (Sam's two hours), the bedside table on the open
+    side with the taped-lid slushie + red spoon, Diego's phone, the
+    Kwik Stop spiral notebook."""
+    steel = (0.60, 0.62, 0.63, 1.0)
+    make_cyl("IV_Pole", (-0.35, 3.30, 0.85), 0.015, 1.70, steel, segments=6)
+    make_cyl("IV_Base", (-0.35, 3.30, 0.03), 0.16, 0.03, steel, segments=10)
+    make_box("IV_Bag", (-0.35, 3.30, 1.58), (0.10, 0.04, 0.16), (0.86, 0.90, 0.92, 0.8))
+    make_box("IV_Line", (-0.55, 3.20, 1.10), (0.008, 0.008, 0.85), (0.80, 0.84, 0.86, 0.9))
+    # The chair beside the bed
+    make_box("Bedside_Chair_Seat", (-0.10, 2.75, 0.44), (0.42, 0.42, 0.05), (0.44, 0.34, 0.24, 1.0))
+    make_box("Bedside_Chair_Back", (0.10, 2.75, 0.72), (0.05, 0.42, 0.52), (0.40, 0.30, 0.21, 1.0))
+    for li, (lx, ly) in enumerate(((-0.26, 2.59), (0.06, 2.59), (-0.26, 2.91), (0.06, 2.91))):
+        make_box(f"Bedside_Chair_Leg_{li}", (lx, ly, 0.22), (0.045, 0.045, 0.44), (0.36, 0.28, 0.20, 1.0))
+    # Bedside table on the OPEN side: slushie + spoon + phone + notebook
+    make_box("Bedside_Table", (-0.15, 3.60, 0.28), (0.40, 0.36, 0.56), (0.46, 0.34, 0.22, 1.0))
+    make_cyl("Slushie_Cup", (-0.22, 3.55, 0.63), 0.045, 0.14, (0.72, 0.30, 0.34, 0.9), segments=10)
+    make_box("Slushie_TapedLid", (-0.22, 3.55, 0.705), (0.10, 0.10, 0.012), (0.86, 0.84, 0.74, 1.0))
+    make_box("Red_Spoon", (-0.20, 3.53, 0.74), (0.015, 0.015, 0.09), (0.86, 0.24, 0.20, 1.0))
+    make_box("Diegos_Phone", (-0.05, 3.66, 0.575), (0.075, 0.15, 0.009), (0.12, 0.12, 0.14, 1.0))
+    make_box("Spiral_Notebook", (-0.10, 3.48, 0.575), (0.15, 0.21, 0.012), (0.72, 0.62, 0.30, 1.0))
+
 
 def main():
     clear_scene()
@@ -225,6 +248,7 @@ def main():
     build_wall_decor()
     build_bulb()
     build_ceiling_infra()
+    build_hero_props()
     out = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)),
         "../../../assets/3d/locales/safehouse_bedroom.glb"))
     print(f"\n[build_safehouse_bedroom] exporting to {out}")

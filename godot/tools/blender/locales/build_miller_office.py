@@ -52,7 +52,7 @@ COL_SCANNER = (0.14, 0.14, 0.16, 1.0)
 COL_SCANNER_LED = (0.90, 0.30, 0.16, 1.0)
 COL_LAMPSHADE = (0.86, 0.78, 0.58, 1.0)
 COL_LAMPGLOW = (1.0, 0.86, 0.58, 1.0)
-COL_CANDLE = (1.0, 0.86, 0.50, 1.0)     # chandelier bulbs — bloom
+COL_CANDLE = (0.55, 0.52, 0.46, 1.0)    # chandelier bulbs — UNLIT (canon)
 COL_RUG = (0.44, 0.26, 0.24, 1.0)
 COL_RUG_BORDER = (0.28, 0.16, 0.15, 1.0)
 COL_MAP = (0.72, 0.70, 0.60, 1.0)       # subdivision plat map
@@ -168,10 +168,11 @@ def build_china_cabinet():
 
 
 def build_chandelier():
-    """The kept brass chandelier over where the table used to center — a
-    domestic thing left in place. Six candle-arms; the bulbs bloom warm
-    (chandelier is the warm practical in miller_office.tscn)."""
-    cx, cy = 0.0, ROOM_D / 2.0 + 0.2
+    """The kept brass chandelier ABOVE THE DESK — and canon says it
+    is NOT lit ("The chandelier above his desk — which is not lit —
+    rattles very faintly"). Unlit glass, centered on the desk at
+    y=3.70; the desk lamp is the practical."""
+    cx, cy = 0.0, 3.70
     import math as _m
     make_cyl("Chand_Chain", (cx, cy, CEIL - 0.20), 0.01, 0.40, COL_WALNUT_DK, segments=4)
     make_cyl("Chand_Hub", (cx, cy, CEIL - 0.44), 0.06, 0.10, COL_BRASS, segments=8)

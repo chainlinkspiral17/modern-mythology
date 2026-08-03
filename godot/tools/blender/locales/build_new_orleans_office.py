@@ -88,8 +88,41 @@ def build_ceiling_infra():
     make_cyl("Pendant_Shade", (0.0, 3.0, CEIL-0.80), 0.26, 0.20, COL_BANKER_GREEN)
     make_smoke_detector("Smoke", (0.0, 1.5, CEIL))
 
+def build_hero_props():
+    """2026-08-03 tail pass: the two exits the scenes need (front
+    iron-stair door + back-stair door), the personality-having
+    window AC unit, the small leaded window, the emergency bourbon
+    + chipped glass, the rolled plans, the pacing carpet. (Known
+    deferred: the room is ~4x canon's twelve-by-ten and dressed a
+    genre too grand — full rebuild noted in the audit doc.)"""
+    wood = (0.36, 0.26, 0.16, 1.0)
+    # Front door (to the rusted iron stair), S wall west end
+    make_box("Front_Door", (-2.6, 0.06, 1.05), (0.95, 0.06, 2.10), wood)
+    make_cyl("Front_Knob", (-2.25, 0.10, 1.02), 0.03, 0.04, (0.66, 0.52, 0.24, 1.0), axis='Y', segments=8)
+    # Back-stair door, N wall east end
+    make_box("Back_Door", (2.6, ROOM_D-0.06, 1.05), (0.95, 0.06, 2.10), wood)
+    # The window AC, wedged into the S street window, half-capacity
+    make_box("Window_AC", (-0.80, 0.10, 1.10), (0.60, 0.45, 0.40), (0.78, 0.76, 0.70, 1.0))
+    make_box("Window_AC_Grille", (-0.80, -0.14, 1.10), (0.50, 0.02, 0.30), (0.60, 0.58, 0.54, 1.0))
+    # The small leaded window beside it (the charcoal-suit watch)
+    make_box("Leaded_Win_Frame", (0.85, 0.04, 1.45), (0.80, 0.08, 0.90), wood)
+    make_box("Leaded_Win_Glass", (0.85, 0.02, 1.45), (0.66, 0.05, 0.76), (0.50, 0.56, 0.60, 0.5))
+    make_box("Leaded_Win_MullV", (0.85, 0.015, 1.45), (0.03, 0.04, 0.76), wood)
+    make_box("Leaded_Win_MullH", (0.85, 0.015, 1.45), (0.66, 0.04, 0.03), wood)
+    # Emergency bourbon (second drawer) + the chipped glass on the desk
+    make_cyl("Bourbon_Bottle", (2.75, 5.15, 0.75), 0.05, 0.28, (0.48, 0.30, 0.12, 0.9), segments=8)
+    make_cyl("Chipped_Glass", (0.35, 3.45, 0.83), 0.04, 0.09, (0.72, 0.74, 0.70, 0.6), segments=8)
+    # The rolled architectural plans on the desk
+    for ri, (rx, ry) in enumerate(((0.55, 3.60), (0.62, 3.72))):
+        make_cyl(f"Plans_Roll_{ri}", (rx, ry, 0.84), 0.045, 0.75, (0.88, 0.85, 0.76, 1.0), segments=8, axis='X')
+    # The pacing carpet, worn path visible
+    make_box("Pacing_Carpet", (0.0, 2.2, 0.012), (2.6, 1.4, 0.015), (0.36, 0.26, 0.22, 1.0))
+    make_box("Pacing_Path", (0.0, 2.2, 0.022), (2.0, 0.45, 0.006), (0.30, 0.21, 0.18, 1.0))
+
+
 def main():
     clear_scene(); build_shell(); build_desk_and_chair(); build_bookcase_and_filing(); build_decor(); build_ceiling_infra()
+    build_hero_props()
     out = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)), "../../../assets/3d/locales/new_orleans_office.glb"))
     print(f"\n[build_new_orleans_office] exporting to {out}")
     export_glb(out)

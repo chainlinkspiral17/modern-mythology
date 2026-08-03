@@ -84,10 +84,26 @@ def build_win():
     make_window("Window_N", (0.0, ROOM_D-0.02, 1.50), width=1.20, height=1.00)
 
 def build_ceiling_infra():
-    for j in range(2):
-        ypos = ROOM_D * (0.30 + j * 0.40)
-        make_fluorescent_tube_fixture(f"Fluor_{j}", (0.0, ypos, CEIL), length=1.40, width=0.34)
-    make_smoke_detector("Smoke", (0.0, ROOM_D/2.0, CEIL))
+    # A home: warm dome fixture, no shop tubes
+    make_cyl("Ceiling_Dome", (0.0, 2.5, CEIL-0.10), 0.15, 0.14, (0.94, 0.88, 0.70, 1.0), segments=12)
+    make_smoke_detector("Smoke", (0.9, 2.5, CEIL))
+
+
+def build_hero_props():
+    """2026-08-03 tail pass: the kitchen table, the wall clock at
+    seven oh-eight, the bathroom door."""
+    wood = (0.44, 0.32, 0.20, 1.0)
+    make_box("Kitchen_Table", (0.6, 3.6, 0.74), (1.00, 0.75, 0.05), wood)
+    for lx, ly in ((0.18, 3.28), (1.02, 3.28), (0.18, 3.92), (1.02, 3.92)):
+        make_box(f"KT_Leg_{lx:.2f}_{ly:.2f}", (lx, ly, 0.37), (0.05, 0.05, 0.72), wood)
+    make_box("KT_Chair_Seat", (0.6, 2.95, 0.44), (0.40, 0.40, 0.05), wood)
+    make_box("KT_Chair_Back", (0.6, 2.77, 0.72), (0.40, 0.05, 0.52), wood)
+    make_cyl("Water_Glass", (0.75, 3.55, 0.82), 0.035, 0.11, (0.55, 0.62, 0.66, 0.5), segments=8)
+    make_wall_clock("Clock_Kitchen", (0.0, 4.95, 2.05), frozen_hour=7, frozen_min=8)
+    # Bathroom door, E wall ("He showered.")
+    make_box("Bathroom_Door", (2.20, 1.4, 1.03), (0.05, 0.80, 2.05), (0.50, 0.40, 0.28, 1.0))
+    make_cyl("Bathroom_Knob", (2.14, 1.10, 1.00), 0.025, 0.03, (0.66, 0.52, 0.24, 1.0), axis='X', segments=8)
+
 
 def main():
     clear_scene()
@@ -98,6 +114,7 @@ def main():
     build_dressing()
     build_win()
     build_ceiling_infra()
+    build_hero_props()
     out = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)),
         "../../../assets/3d/locales/kai_apartment.glb"))
     print(f"\n[build_kai_apartment] exporting to {out}")

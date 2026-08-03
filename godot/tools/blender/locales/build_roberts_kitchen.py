@@ -244,13 +244,33 @@ def build_decor():
 
 
 def build_ceiling_infra():
-    for j, ypos in enumerate([2.0, 4.5]):
-        make_fluorescent_tube_fixture(
-            f"Fluor_{j}", (0.0, ypos, CEIL_Z),
-            length=1.60, width=0.40)
-    make_smoke_detector("Smoke", (0.0, 3.0, CEIL_Z))
-    make_hvac_vent("HVAC", (-1.0, 5.5, CEIL_Z), width=0.80, depth=0.40)
-    make_ceiling_speaker("Speaker", (1.5, 4.0, CEIL_Z))
+    # Domestic light, not shop tubes (hero-prop pass)
+    make_cyl("Ceiling_Dome", (0.0, 2.2, CEIL-0.10), 0.15, 0.14, (0.94, 0.88, 0.70, 1.0), segments=12)
+    make_smoke_detector("Smoke", (0.9, 2.2, CEIL))
+
+
+def build_hero_props():
+    """2026-08-03 tail pass: THE WRENCH, the World's Okayest Weaver
+    mug, the windowsill radio + driftwood, the front-hall table
+    (keys / mail / pinecone bowl / the Polaroid), the dishtowel."""
+    make_box("Wrench", (-2.0, 5.25, 0.945), (0.05, 0.26, 0.03), (0.42, 0.44, 0.46, 1.0))
+    make_cyl("Mug_Weaver", (-1.30, 5.35, 0.98), 0.045, 0.10, (0.72, 0.62, 0.44, 1.0), segments=10)
+    make_box("Mug_Weaver_Band", (-1.285, 5.35, 1.00), (0.02, 0.06, 0.03), (0.30, 0.30, 0.34, 1.0))
+    # Sill under the E window: radio + Philip's driftwood
+    make_box("E_Sill", (ROOM_W/2.0-0.24, 3.5, 0.94), (0.16, 1.90, 0.05), (0.46, 0.34, 0.22, 1.0))
+    make_box("Sill_Radio", (ROOM_W/2.0-0.26, 3.10, 1.05), (0.14, 0.24, 0.16), (0.36, 0.32, 0.28, 1.0))
+    make_cyl("Sill_Driftwood", (ROOM_W/2.0-0.26, 3.95, 1.00), 0.05, 0.30, (0.62, 0.55, 0.44, 1.0), segments=7, axis='Y')
+    # The small table by the door: keys, unopened mail, pinecones,
+    # and the Polaroid the scene ends on
+    make_box("Hall_Table", (-1.90, 0.55, 0.76), (0.80, 0.40, 0.04), (0.42, 0.30, 0.20, 1.0))
+    for lx in (-2.24, -1.56):
+        make_box(f"Hall_Table_Leg_{lx:.2f}", (lx, 0.55, 0.38), (0.05, 0.35, 0.74), (0.34, 0.24, 0.15, 1.0))
+    make_box("Hall_Keys", (-2.10, 0.48, 0.79), (0.08, 0.05, 0.015), (0.62, 0.64, 0.66, 1.0))
+    make_box("Unopened_Mail", (-1.85, 0.60, 0.79), (0.22, 0.14, 0.03), (0.88, 0.86, 0.78, 1.0))
+    make_cyl("Pinecone_Bowl", (-1.62, 0.48, 0.80), 0.09, 0.06, (0.52, 0.42, 0.30, 1.0), segments=10)
+    make_box("The_Polaroid", (-2.02, 0.62, 0.785), (0.09, 0.11, 0.003), (0.92, 0.90, 0.86, 1.0))
+    # The dishtowel, clean an hour ago
+    make_box("Dishtowel", (0.0, 5.20, 0.68), (0.30, 0.04, 0.28), (0.78, 0.74, 0.66, 1.0))
 
 
 def main():
@@ -266,6 +286,7 @@ def main():
         os.path.dirname(os.path.abspath(__file__)),
         "../../../assets/3d/locales/roberts_kitchen.glb"))
     print(f"\n[build_roberts_kitchen] exporting to {out_path}")
+    build_hero_props()
     export_glb(out_path)
 
 
