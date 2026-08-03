@@ -16951,6 +16951,213 @@ def build_strip_mall_nightclub():
                            col, facing='+Y')
 
 
+
+def build_highway9_2026_08():
+    """DRAFT 1 of Highway 9 — the west-side divided highway.
+
+    User note (2026-08-03): "the highway stretch feels like a small
+    set, it cuts off, the highway doesn't run for miles off into the
+    horizon. there will be an action scene of sorts here — it needs
+    to be staged like that, using still camera set-ups and camera
+    motion." Until now there was NO real highway geometry at all —
+    only arterials that die at the world edge.
+
+    This pass lays the bones: a 4-lane divided highway at x=-510
+    running y -1400..+1400 (3.4x the world's north-south extent),
+    terrain-following inside the world and easing to flat beyond it,
+    with median, shoulders, guardrails, lane paint, two sign
+    gantries, an overpass + a far silhouette overpass, embankment
+    fill + berm silhouettes past the world edge, and sparse traffic.
+    Distance haze comes from the scene fog; the far treelines stop
+    the ribbon reading as a cut plane if fog is thin.
+
+    LATER PASSES (scheduled — see the roadmap's Drafting Program):
+    2) action dressing (skid marks, debris lane, crash barrier
+       scars, rest-stop turnout, reflector posts, exit ramp)
+    3) vn_shot still camera coverage + camera-motion capability
+       (dolly / chase) for the action scene
+    4+) Deck screenshot loops against the model chapters.
+    """
+    HX = -510.0                 # highway centerline
+    MED_HW = 1.5                # median half-width
+    LANE_W = 7.2                # one carriageway (2 x 3.6)
+    SHLD_W = 2.5
+    Y0, Y1 = -1400.0, 1400.0
+    SEG = 50.0
+    COL_ASPH = (0.20, 0.20, 0.22, 1.0)
+    COL_SHLD = (0.30, 0.29, 0.28, 1.0)
+    COL_MED = (0.30, 0.40, 0.24, 1.0)
+    COL_WHITE = (0.92, 0.90, 0.84, 1.0)
+    COL_RAIL = (0.62, 0.63, 0.65, 1.0)
+    COL_EMB = (0.26, 0.33, 0.21, 1.0)
+    COL_BERM = (0.16, 0.22, 0.14, 1.0)
+    COL_CONC = (0.60, 0.58, 0.54, 1.0)
+    COL_SIGN = (0.10, 0.35, 0.20, 1.0)
+
+    def hz(px, py):
+        # Terrain-following in-world; eased to the flat -2 WestComm
+        # datum beyond the edge so the extension never steps.
+        if -415.0 <= py <= 415.0:
+            return mesh_z(px, py)
+        edge_y = 415.0 if py > 0 else -415.0
+        ze = mesh_z(px, edge_y)
+        t = min(1.0, (abs(py) - 415.0) / 150.0)
+        return ze + (-2.0 - ze) * t
+
+    def ribbon(prefix, x_lo, x_hi, col, lift, y_step=SEG):
+        i = 0
+        yy = Y0
+        while yy < Y1 - 0.01:
+            y_next = min(yy + y_step, Y1)
+            v = [(x_lo, yy, hz(x_lo, yy) + lift),
+                 (x_hi, yy, hz(x_hi, yy) + lift),
+                 (x_hi, y_next, hz(x_hi, y_next) + lift),
+                 (x_lo, y_next, hz(x_lo, y_next) + lift)]
+            _finalize_mesh(f"{prefix}_{i}", v, [[0, 1, 2, 3]], col)
+            i += 1
+            yy = y_next
+
+    # ── Roadbed: median, two carriageways, two shoulders ──
+    ribbon("Hwy9_Median", HX - MED_HW, HX + MED_HW, COL_MED, 0.05)
+    for sgn, tag in ((-1, "W"), (1, "E")):
+        lane_lo = HX + sgn * MED_HW
+        lane_hi = HX + sgn * (MED_HW + LANE_W)
+        ribbon(f"Hwy9_Lanes_{tag}", min(lane_lo, lane_hi),
+               max(lane_lo, lane_hi), COL_ASPH, 0.06)
+        sh_lo = lane_hi
+        sh_hi = lane_hi + sgn * SHLD_W
+        ribbon(f"Hwy9_Shoulder_{tag}", min(sh_lo, sh_hi),
+               max(sh_lo, sh_hi), COL_SHLD, 0.05)
+        # Solid edge lines (outer white, inner yellow-white kept
+        # white in draft 1 — paint pass is scheduled).
+        for ex, ltag in ((lane_hi - sgn * 0.18, "Out"),
+                         (lane_lo + sgn * 0.18, "In")):
+            ribbon(f"Hwy9_Edge_{tag}_{ltag}", ex - 0.09, ex + 0.09,
+                   COL_WHITE, 0.075, y_step=SEG)
+        # Dashed centre line of each carriageway, every 25 m.
+        dash_x = HX + sgn * (MED_HW + LANE_W / 2.0)
+        di = 0
+        yy = Y0 + 6.0
+        while yy < Y1 - 6.0:
+            v = [(dash_x - 0.09, yy, hz(dash_x, yy) + 0.075),
+                 (dash_x + 0.09, yy, hz(dash_x, yy) + 0.075),
+                 (dash_x + 0.09, yy + 3.0, hz(dash_x, yy + 3.0) + 0.075),
+                 (dash_x - 0.09, yy + 3.0, hz(dash_x, yy + 3.0) + 0.075)]
+            _finalize_mesh(f"Hwy9_Dash_{tag}_{di}", v, [[0, 1, 2, 3]],
+                            COL_WHITE)
+            di += 1
+            yy += 25.0
+        # Guardrail: a low w-beam ribbon floating at rail height
+        # along the outer shoulder edge (posts are pass-2 dressing).
+        rail_x = lane_hi + sgn * (SHLD_W + 0.2)
+        ri = 0
+        yy = Y0
+        while yy < Y1 - 0.01:
+            y_next = min(yy + SEG, Y1)
+            z0 = hz(rail_x, yy); z1 = hz(rail_x, y_next)
+            v = [(rail_x, yy, z0 + 0.45),
+                 (rail_x, y_next, z1 + 0.45),
+                 (rail_x, y_next, z1 + 0.78),
+                 (rail_x, yy, z0 + 0.78)]
+            _finalize_mesh(f"Hwy9_Rail_{tag}_{ri}", v, [[0, 1, 2, 3]],
+                            COL_RAIL)
+            ri += 1
+            yy = y_next
+
+    # ── Embankment fill + berm silhouettes beyond the world edge ──
+    for (ey0, ey1, tag) in ((Y0, -420.0, "S"), (420.0, Y1, "N")):
+        i = 0
+        yy = ey0
+        while yy < ey1 - 0.01:
+            y_next = min(yy + 100.0, ey1)
+            v = [(-548.0, yy, hz(-548.0, yy) - 0.1),
+                 (-472.0, yy, hz(-472.0, yy) - 0.1),
+                 (-472.0, y_next, hz(-472.0, y_next) - 0.1),
+                 (-548.0, y_next, hz(-548.0, y_next) - 0.1)]
+            _finalize_mesh(f"Hwy9_Emb_{tag}_{i}", v, [[0, 1, 2, 3]],
+                            COL_EMB)
+            for bx, btag in ((-552.0, "W"), (-468.0, "E")):
+                bv = [(bx, yy, hz(bx, yy) - 0.1),
+                      (bx, y_next, hz(bx, y_next) - 0.1),
+                      (bx, y_next, hz(bx, y_next) + 2.8),
+                      (bx, yy, hz(bx, yy) + 2.8)]
+                _finalize_mesh(f"Hwy9_Berm_{tag}_{btag}_{i}", bv,
+                                [[0, 1, 2, 3]], COL_BERM)
+            i += 1
+            yy = y_next
+    # Terminal treelines — the last thing before full fog.
+    for ty, tag in ((Y0 + 5.0, "S"), (Y1 - 5.0, "N")):
+        v = [(-560.0, ty, -2.1), (-460.0, ty, -2.1),
+             (-460.0, ty, 4.5), (-560.0, ty, 4.5)]
+        _finalize_mesh(f"Hwy9_Treeline_{tag}", v, [[0, 1, 2, 3]],
+                        (0.10, 0.14, 0.10, 1.0))
+
+    # ── Overpass at y=+300 (the action scene's high vantage) +
+    # a far silhouette twin at y=-800 for depth ──
+    for (oy, deep) in ((300.0, False), (-800.0, True)):
+        base = hz(HX, oy)
+        deck_z = base + 5.6
+        col = COL_CONC if not deep else (0.42, 0.41, 0.38, 1.0)
+        tagp = "Near" if not deep else "Far"
+        # Deck: top + south/north fascia.
+        v = [(-528.0, oy - 5.0, deck_z), (-492.0, oy - 5.0, deck_z),
+             (-492.0, oy + 5.0, deck_z), (-528.0, oy + 5.0, deck_z)]
+        _finalize_mesh(f"Hwy9_Ovp_{tagp}_Deck", v, [[0, 1, 2, 3]], col)
+        for fy, ftag in ((oy - 5.0, "S"), (oy + 5.0, "N")):
+            fv = [(-528.0, fy, deck_z - 1.1), (-492.0, fy, deck_z - 1.1),
+                  (-492.0, fy, deck_z), (-528.0, fy, deck_z)]
+            _finalize_mesh(f"Hwy9_Ovp_{tagp}_Fascia_{ftag}", fv,
+                            [[0, 1, 2, 3]], col)
+        # Piers: median + both ends beyond the shoulders.
+        for px2, ptag in ((HX, "Mid"), (-526.0, "W"), (-494.0, "E")):
+            pz = hz(px2, oy)
+            pv = [(px2 - 0.8, oy - 0.8, pz), (px2 + 0.8, oy - 0.8, pz),
+                  (px2 + 0.8, oy - 0.8, deck_z - 0.1),
+                  (px2 - 0.8, oy - 0.8, deck_z - 0.1)]
+            _finalize_mesh(f"Hwy9_Ovp_{tagp}_Pier_{ptag}", pv,
+                            [[0, 1, 2, 3]], col)
+        # Guard parapet on the deck.
+        for fy, ftag in ((oy - 4.6, "S"), (oy + 4.6, "N")):
+            gv = [(-528.0, fy, deck_z), (-492.0, fy, deck_z),
+                  (-492.0, fy, deck_z + 1.0), (-528.0, fy, deck_z + 1.0)]
+            _finalize_mesh(f"Hwy9_Ovp_{tagp}_Parapet_{ftag}", gv,
+                            [[0, 1, 2, 3]], col)
+
+    # ── Sign gantries at y=+100 and y=-500 ──
+    for gy in (100.0, -500.0):
+        gz = hz(HX, gy)
+        for gx in (HX - 12.0, HX + 12.0):
+            pv = [(gx - 0.25, gy, gz), (gx + 0.25, gy, gz),
+                  (gx + 0.25, gy, gz + 7.0), (gx - 0.25, gy, gz + 7.0)]
+            _finalize_mesh(f"Hwy9_Gantry_{gy:+.0f}_Post_{gx:+.0f}", pv,
+                            [[0, 1, 2, 3]], COL_RAIL)
+        bv = [(HX - 12.0, gy, gz + 6.4), (HX + 12.0, gy, gz + 6.4),
+              (HX + 12.0, gy, gz + 7.0), (HX - 12.0, gy, gz + 7.0)]
+        _finalize_mesh(f"Hwy9_Gantry_{gy:+.0f}_Beam", bv,
+                        [[0, 1, 2, 3]], COL_RAIL)
+        for sx_off, stag in ((-6.0, "L"), (4.0, "R")):
+            sv = [(HX + sx_off, gy - 0.1, gz + 4.6),
+                  (HX + sx_off + 4.5, gy - 0.1, gz + 4.6),
+                  (HX + sx_off + 4.5, gy - 0.1, gz + 6.4),
+                  (HX + sx_off, gy - 0.1, gz + 6.4)]
+            _finalize_mesh(f"Hwy9_Gantry_{gy:+.0f}_Sign_{stag}", sv,
+                            [[0, 1, 2, 3]], COL_SIGN)
+
+    # ── Sparse traffic (draft 1: parked-car boxes as stand-ins;
+    # motion is a camera problem, not a geometry one) ──
+    traffic = [(-1100.0, "W", (0.72, 0.70, 0.66, 1.0)),
+               (-620.0, "E", (0.18, 0.18, 0.20, 1.0)),
+               (-180.0, "W", (0.55, 0.12, 0.12, 1.0)),
+               (90.0, "E", (0.80, 0.78, 0.72, 1.0)),
+               (480.0, "W", (0.20, 0.28, 0.45, 1.0)),
+               (940.0, "E", (0.30, 0.30, 0.32, 1.0))]
+    for (ty2, side, col) in traffic:
+        cx2 = HX + (-1 if side == "W" else 1) * (MED_HW + LANE_W / 2.0)
+        cz2 = hz(cx2, ty2) + 0.06
+        _build_parked_car(f"Hwy9_Car_{ty2:+.0f}", cx2, ty2, cz2, col,
+                           facing='-Y' if side == "W" else '+Y')
+
+
 def build_high_school_field():
     """Harmony Creek High School football field + stadium. Carved
     out of the new HighSchoolField settlement zone (240..440 x,
@@ -17343,6 +17550,7 @@ def main():
     build_community_garden()
     build_wild_zone_trees()
     build_district_arterials()
+    build_highway9_2026_08()
     build_community_landmarks()
     build_connector_roads()
     build_chapter1_pedestrian_network()

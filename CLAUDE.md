@@ -75,6 +75,36 @@ touching code:
    These carry the multi-hour authoring context that
    won't fit in a commit-message header.
 
+## NOTHING IS DONE — THE DRAFTING PROGRAM (hard rule)
+
+The user's standing verdict (2026-08-03): *"It all reads like first
+draft. Keep drafting into the dozens and dozens."* Every build,
+scene, system, and art pass in this project is a NUMBERED DRAFT,
+not a deliverable. The quality bar is the **model chapters** — the
+handful of spaces that have absorbed many sessions of iteration
+(the diner, the kwik stop, the cathedral, the henderson house).
+Everything else is below the bar by definition until repeated
+passes bring it up.
+
+Rules:
+1. **Never report work as "done", "complete", or "closing the
+   arc".** Report it as *"draft N shipped; draft N+1 targets: …"*
+   and record the next-pass targets in
+   `lore/_IMPROVEMENT_ROADMAP.md` under THE DRAFTING PROGRAM.
+2. **Anticipate the next pass while making this one.** Leave the
+   next session a concrete list of what draft N+1 should do — in
+   the builder's docstring and in the roadmap — the way
+   build_highway9_2026_08() does.
+3. **A first-generation build (template + props) is draft 1**, no
+   matter how many props it has. Model-chapter quality means:
+   staged sightlines, camera coverage, lighting that models the
+   space, prose-anchored hero objects, edge-of-set treatment (no
+   visible world edges), and Deck-verified framing. Most locales
+   have only the props.
+4. When the user says a space "feels like a set", the fix is
+   usually SCALE + EDGES + COVERAGE (run the geometry past the
+   frame, hide the world edge, add camera setups), not more props.
+
 ## DEBUG HUD — F4 IS THE MASTER TOGGLE (hard rule)
 
 **Every new HUD overlay MUST honor F4.** The player wants clean

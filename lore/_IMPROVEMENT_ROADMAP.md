@@ -17,6 +17,60 @@ producer discipline).
 
 ---
 
+## THE DRAFTING PROGRAM (standing · 2026-08-03 · read first)
+
+The user's verdict on the whole 2026-08 wave: **"first pass of all
+the new stuff, it's still very primitive… It all reads like first
+draft. Keep drafting into the dozens and dozens."** So: no area is
+"done." Every area carries a draft number and a next-pass target
+list. Sessions pick an area, run ONE more pass against the model
+chapters (diner / kwik stop / cathedral / henderson — the spaces
+with many sessions of iteration in them), record what the pass
+after that should do, and repeat. Report "draft N shipped," never
+"complete."
+
+Current ledger (draft counts are honest, not aspirational):
+
+| Area | Draft | Next-pass targets |
+|---|---|---|
+| Tail-wave locales (~40, 2026-08-03) | 1 | Deck screenshots → reframe cameras; lighting pass per the lighting playbook; edge-of-set treatment; second vantages |
+| Vols 1–2 migration locales | 1–2 | same as tail wave |
+| Pit Stop diner / ChillWave / Salty Tome back (re-themes) | 1 | density + wear passes (grease, wear lines, clutter grammar per model chapters) |
+| **Highway 9 (planned community)** | **1** | see workstream below |
+| Cedar tower (vol7 ch22) | 1 | per-floor dressing density, portal-room staging |
+| Graustark ruin quarter / riverfront park | 1 | silhouette shaping, mid-ground detail bands |
+| CP region banners + agent busts | 1 | per plan file; then variant states |
+| Model chapters (diner, kwik stop, cathedral, henderson) | many | the BAR — mine them for what a finished space has |
+
+### Workstream · HIGHWAY 9 ACTION STAGE (user-directed)
+
+The user: *"the highway stretch feels like a small set, it cuts
+off… there will be an action scene of sorts here, it needs to be
+staged like that, using still camera set-ups and camera motion."*
+
+- **Draft 1 (shipped 2026-08-03)** — `build_highway9_2026_08()` in
+  build_harmony_terrain.py: 4-lane divided highway at x=-510
+  running y ±1400 (3.4× the world), median/shoulders/guardrails/
+  paint, near overpass (y=+300) + far silhouette overpass (y=-800),
+  two sign gantries, embankment + berm silhouettes past the world
+  edge, terminal treelines, sparse traffic. Fog carries the fade.
+- **Draft 2 — action dressing**: reflector posts, skid marks,
+  debris, exit ramp + turnout, crash-scar guardrail section,
+  rest-stop pull-off, semi truck stand-in, road grime bands.
+- **Draft 3 — camera coverage**: vn_shot still setups in
+  harmony_terrain.tscn (low shoulder wide · median close · overpass
+  high angle · long lens down the vanishing point · behind-guardrail
+  cover position), PLUS the new capability: **camera motion** in the
+  VN background layer (dolly/track/chase presets — likely a
+  `camera_track` field on Background3D presets or an animated
+  Camera3D the VnDirector can cut to). This capability then serves
+  every future action beat, not just this one.
+- **Draft 4+** — Deck screenshot loops: frame, re-stage, re-light
+  until it reads like a location, not a set. Dozens of passes is
+  the expectation, not the exception.
+
+---
+
 ## The three gates (user-side; everything flows faster once these land)
 
 1. **ART ROUTE** — the standing decision: hybrid (AI-painted sources +
