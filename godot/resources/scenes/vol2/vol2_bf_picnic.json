@@ -7,7 +7,7 @@
   "nodes": [
     {
       "t": "bg",
-      "src": "assets/backgrounds/vol2_briar_falls_picnic.jpg"
+      "src": "3d:briar_falls_picnic"
     },
     {
       "t": "narrate",

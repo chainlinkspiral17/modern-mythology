@@ -16,6 +16,7 @@ ROOT = os.path.join(os.path.dirname(__file__), "..")
 SCENES = os.path.join(ROOT, "resources", "scenes")
 fails = 0
 legacy = 0
+debt_refs = []   # 2D bg srcs still awaiting 3D-locale migration
 
 # Vols 1-4 predate the 3D-locale era and reference dozens of 2D
 # background JPEGs that were never produced (discovered by this
@@ -108,7 +109,12 @@ for path in scene_files():
             if src.startswith("3d:"):
                 if src[3:] not in PRESETS:
                     fail("%s: bg preset '%s' not in CAMERA_PRESETS" % (rel, src), rel)
-            elif src:
+            elif src and isinstance(n.get("src"), str):
+                # "Visual novel backgrounds are 3d scenes" (2026-08-03):
+                # any 2D file src is migration debt, tracked per-ref so
+                # the remaining estate is always visible in the summary.
+                # (A JSON-null src — the title cards — is not a bg ref.)
+                debt_refs.append("%s -> %s" % (rel, src))
                 if not os.path.exists(os.path.join(ROOT, src)):
                     fail("%s: bg image missing: %s" % (rel, src), rel)
         elif t == "cg":
@@ -151,6 +157,12 @@ for key, glb in re.findall(r'"([a-z_]+)"\s*:\s*"([a-z0-9_]+\.glb)"',
     if not os.path.exists(p) and not os.path.exists(pd):
         fail("CharLayer GLB mapping '%s' -> %s: file missing" % (key, glb))
 
+if debt_refs:
+    print("\n2D-background migration debt (%d ref(s) — VN backgrounds are"
+          " 3D scenes; these still play over a flat image):" % len(debt_refs))
+    for d in sorted(debt_refs):
+        print("  " + d)
+
 print("\nvn_asset_audit: %d problem(s) · %d legacy vol1-4 known issue(s)"
-      % (fails, legacy))
+      " · %d migration-debt bg ref(s)" % (fails, legacy, len(debt_refs)))
 sys.exit(1 if fails else 0)

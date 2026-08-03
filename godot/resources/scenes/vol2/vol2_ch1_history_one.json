@@ -105,7 +105,7 @@
     },
     {
       "t": "bg",
-      "src": "assets/backgrounds/vol2_road_running.jpg"
+      "src": "3d:louisiana_road"
     },
     {
       "t": "narrate",
@@ -155,7 +155,7 @@
     },
     {
       "t": "bg",
-      "src": "assets/backgrounds/vol2_barn_interior.jpg"
+      "src": "3d:equipment_shed"
     },
     {
       "t": "narrate",

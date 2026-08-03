@@ -7,7 +7,7 @@
   "nodes": [
     {
       "t": "bg",
-      "src": "assets/backgrounds/vol2_cliffside_circus.jpg"
+      "src": "3d:carnival_lot"
     },
     {
       "t": "interlude",
@@ -53,7 +53,7 @@
     },
     {
       "t": "bg",
-      "src": "assets/backgrounds/vol2_ice_storm.jpg"
+      "src": "3d:louisiana_road"
     },
     {
       "t": "interlude",

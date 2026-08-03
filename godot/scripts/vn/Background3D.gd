@@ -1169,6 +1169,133 @@ const CAMERA_PRESETS := {
 		"fov": 64.0,
 		"suppress_input": true,
 	},
+	# ── Vols 1-2 · 3D migration (2026-08-03) ─────────────────────
+	# "Visual novel backgrounds are 3d scenes." The legacy 2D JPEG
+	# refs migrated onto locales; these presets are the new sets.
+	"missing_link_exterior": {
+		"scene": "res://scenes/locales/missing_link_exterior.tscn",
+		"requires_glb": "res://assets/3d/locales/missing_link_exterior.glb",
+		# OUTDOOR dusk roadside. Build coords: road E-W at y∈[0,3.4],
+		# gravel lot behind it, diner front face y=8 (godot z=-8),
+		# x∈[-4.5,3.5]; MISSING LINK pole sign at (-6.5, z=-6.5); bus
+		# shelter east at (6.5, z=-4.9). Camera in the lot at the road
+		# edge looking NNE at the lit window band + door; sign frame
+		# left, shelter far right.
+		"camera_origin": Vector3(-2.6, 1.70, -3.2),
+		"camera_rotation": Vector3(-0.02, deg_to_rad(-23.0), 0.0),
+		"fov": 62.0,
+		"suppress_input": true,
+	},
+	"shuttle_bench": {
+		"scene": "res://scenes/locales/missing_link_exterior.tscn",
+		"requires_glb": "res://assets/3d/locales/missing_link_exterior.glb",
+		# Same set, second vantage — vol1's highest-traffic bg (the
+		# whole link_* chain plays sitting at the stop). Seated height
+		# at the shelter (godot 6.5, z=-4.9) looking W down the
+		# shoulder: road frame-left, diner + pole sign center-right,
+		# shelter roof edge kissing frame right.
+		"camera_origin": Vector3(6.3, 1.35, -4.9),
+		"camera_rotation": Vector3(-0.02, deg_to_rad(78.0), 0.0),
+		"fov": 58.0,
+		"suppress_input": true,
+	},
+	"briar_falls_rest_stop": {
+		"scene": "res://scenes/locales/briar_falls.tscn",
+		"requires_glb": "res://assets/3d/locales/briar_falls.glb",
+		# OUTDOOR mountain day. Build coords: lot y∈[0,6] (godot
+		# z∈[0,-6], x∈[-8,4]); stone building front y=8 (z=-8) at
+		# x∈[-5,-0.5]; trailhead posts (6.5, z=-8.6); overlook deck
+		# NE (9.25, z=-14.5); picnic tables west grass; pines all
+		# round; valley ridges + falls thread far north. Camera
+		# mid-lot looking N: building center, info board, trailhead
+		# frame right, pines framing.
+		"camera_origin": Vector3(-3.5, 1.70, -2.0),
+		"camera_rotation": Vector3(-0.02, deg_to_rad(-6.0), 0.0),
+		"fov": 64.0,
+		"suppress_input": true,
+	},
+	"briar_falls_building": {
+		"scene": "res://scenes/locales/briar_falls.tscn",
+		"requires_glb": "res://assets/3d/locales/briar_falls.glb",
+		# Three-quarter on the CCC stone building from the walk's
+		# east side: door + lintel center, flanking windows, stepped
+		# timber roof, info board frame left.
+		"camera_origin": Vector3(-0.3, 1.65, -6.2),
+		"camera_rotation": Vector3(-0.03, deg_to_rad(54.0), 0.0),
+		"fov": 55.0,
+		"suppress_input": true,
+	},
+	"briar_falls_trail": {
+		"scene": "res://scenes/locales/briar_falls.tscn",
+		"requires_glb": "res://assets/3d/locales/briar_falls.glb",
+		# At the trailhead posts looking up the path as it bends NE
+		# through the pines toward the overlook; crossbeam sign
+		# overhead, dirt path leading the eye.
+		"camera_origin": Vector3(5.8, 1.70, -7.8),
+		"camera_rotation": Vector3(-0.02, deg_to_rad(-17.0), 0.0),
+		"fov": 60.0,
+		"suppress_input": true,
+	},
+	"briar_falls_overlook": {
+		"scene": "res://scenes/locales/briar_falls.tscn",
+		"requires_glb": "res://assets/3d/locales/briar_falls.glb",
+		# On the deck at the rail looking N over the valley: mid
+		# ridge, far ridge, the falls as a white thread frame right,
+		# rail posts in the foreground.
+		"camera_origin": Vector3(9.2, 1.75, -13.8),
+		"camera_rotation": Vector3(-0.04, deg_to_rad(0.0), 0.0),
+		"fov": 66.0,
+		"suppress_input": true,
+	},
+	"briar_falls_picnic": {
+		"scene": "res://scenes/locales/briar_falls.tscn",
+		"requires_glb": "res://assets/3d/locales/briar_falls.glb",
+		# Among the tables on the west grass looking WNW: both
+		# timber tables, pines behind, building edge frame right.
+		"camera_origin": Vector3(-4.2, 1.60, -8.4),
+		"camera_rotation": Vector3(-0.03, deg_to_rad(64.0), 0.0),
+		"fov": 58.0,
+		"suppress_input": true,
+	},
+	"faust_apartment_day": {
+		"scene": "res://scenes/locales/faust_apartment.tscn",
+		"requires_glb": "res://assets/3d/locales/faust_apartment.glb",
+		# Studio 6×5 (godot x∈[-3,3], z∈[0,-5], ceil 2.7). Bed NW
+		# corner (godot -1.9,-4.2), E-wall window + curtains
+		# (z=-2.4), easel + canvas mid-SE (1.4,-2.2), W-wall
+		# bookcase, kitchenette SW. Camera just inside the door
+		# looking N — the whole studio in one wide: bed far left,
+		# window right, easel frame-right.
+		"camera_origin": Vector3(-0.7, 1.62, -0.6),
+		"camera_rotation": Vector3(-0.03, deg_to_rad(-21.0), 0.0),
+		"fov": 66.0,
+		"suppress_input": true,
+	},
+	"faust_bedroom": {
+		"scene": "res://scenes/locales/faust_apartment.tscn",
+		"requires_glb": "res://assets/3d/locales/faust_apartment.glb",
+		# Same set, the 4am vantage — mid-room looking NW at the bed
+		# corner: red blanket, pillow, nightstand lamp + dream
+		# journal, headboard wall; bookcase edge frame left.
+		"camera_origin": Vector3(0.9, 1.50, -1.4),
+		"camera_rotation": Vector3(-0.06, deg_to_rad(45.0), 0.0),
+		"fov": 58.0,
+		"suppress_input": true,
+	},
+	"carnival_lot": {
+		"scene": "res://scenes/locales/carnival_lot.tscn",
+		"requires_glb": "res://assets/3d/locales/carnival_lot.glb",
+		# The abandoned carnival (built for the Strength arcana, now
+		# also vol2's cliffside/Seagash circus). Build coords: lot
+		# 24×18 centered on origin (godot z∈[-9,9] both ways), big
+		# top at (-6, z=0), ticket booth + lion wagon east. Camera at
+		# the south wall looking N across the dirt: big top frame
+		# left, merry-go-round center, limestone wall foreground.
+		"camera_origin": Vector3(2.0, 1.70, 7.5),
+		"camera_rotation": Vector3(-0.02, deg_to_rad(12.0), 0.0),
+		"fov": 68.0,
+		"suppress_input": true,
+	},
 }
 
 const BG_W: int = 1280

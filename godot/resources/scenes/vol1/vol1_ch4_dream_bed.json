@@ -7,7 +7,7 @@
   "nodes": [
     {
       "t": "bg",
-      "src": "assets/backgrounds/vol1_dream_bed.jpg"
+      "src": "3d:faust_bedroom"
     },
     {
       "t": "hide",

@@ -7,7 +7,7 @@
   "nodes": [
     {
       "t": "bg",
-      "src": "assets/backgrounds/vol1_missing_link_interior.jpg"
+      "src": "3d:missing_link_interior"
     },
     {
       "t": "hide",

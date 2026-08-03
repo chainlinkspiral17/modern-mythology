@@ -7,7 +7,7 @@
   "nodes": [
     {
       "t": "bg",
-      "src": "assets/backgrounds/vol2_small_town_road.jpg"
+      "src": "3d:louisiana_road"
     },
     {
       "t": "interlude",

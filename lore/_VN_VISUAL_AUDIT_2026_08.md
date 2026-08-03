@@ -74,6 +74,30 @@ full-screen plates (calm centers for the portrait layer; vol1 warm-
 dark urban, vol2 muted coastal-Americana). Legacy baseline dropped
 81 -> 21; the remainder is old no-bg hub scenes, not missing art.
 
+SUPERSEDED (2026-08-03): user verdict — **"visual novel
+backgrounds are 3d scenes."** The 2D plates were the wrong
+direction. 28 of the 39 refs (47 bg placements) migrated to `3d:`
+locale presets and their JPEGs were deleted:
+- Set-reuse by room type onto existing locales: bar →
+  new_orleans_bar, club → foxhole_stage/foxhole_bar, roads/ice
+  storm → louisiana_road, football → school_field_evening, barn →
+  equipment_shed, cannery → centro_dock, dance → gym_weight_room,
+  park → riverfront_exterior, grandparents → grandmother_kitchen,
+  Jacob → new_orleans_apartment; both circus refs wired onto the
+  previously-unreachable carnival_lot tscn (new preset).
+- THREE NEW BUILDS (multi-vantage — each serves a scene cluster):
+  build_missing_link_exterior.py (presets missing_link_exterior +
+  shuttle_bench — vol1's ×8 highest-traffic bg), build_briar_falls.py
+  (×5 presets: rest_stop/building/trail/overlook/picnic — the whole
+  bf_* cluster), build_faust_apartment.py (faust_bedroom ×5 +
+  faust_apartment_day). GLBs are Deck build artifacts — run the
+  three builders before vols 1-2 render the new sets.
+- Remaining debt: 12 bg refs (pharmacy ×2, skatepark, wagner home,
+  bar exterior ×2, beaches ×2, crumpled barn, sapo falls, little
+  switzerland, school newspaper) still play over 2D plates.
+  vn_asset_audit.py now prints every 2D bg src as a per-ref
+  migration-debt line so the remainder can't hide.
+
 ### 1.7 · Dead wiring (harmless today, misleading forever)
 - 22 of 38 `PORTRAIT_3D_KEY_TO_GLB` entries point at GLBs that don't
   exist (kai, finn, tem, lena, wren, petra…). The demon's GLB dir

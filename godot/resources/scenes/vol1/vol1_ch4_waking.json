@@ -7,7 +7,7 @@
   "nodes": [
     {
       "t": "bg",
-      "src": "assets/backgrounds/vol1_club_sharp.jpg"
+      "src": "3d:foxhole_bar"
     },
     {
       "t": "show",
@@ -50,7 +50,7 @@
     },
     {
       "t": "bg",
-      "src": "assets/backgrounds/vol1_faust_bedroom_night.jpg"
+      "src": "3d:faust_bedroom"
     },
     {
       "t": "interlude",

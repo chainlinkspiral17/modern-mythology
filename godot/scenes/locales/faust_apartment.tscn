@@ -1,35 +1,6 @@
-"""_props/make_locale_tscn.py — generator for full-feature-parity
-locale .tscn files.
+[gd_scene load_steps=24 format=3 uid="uid://faust_apartment"]
 
-Per `_VOL5_LOCALES_MANIFEST.md`'s hard rule, every locale must
-include all 8 elements (WorldEnvironment + three-light foundation
-+ GLB + PostProcess+MoodCycler+9-shader stack + LiminalProximity
-+ PDRiffrocker + HUD+DebugMenu). Hand-writing each one is ~260
-lines of mechanical boilerplate. This generator takes a config
-dict and renders the canonical .tscn.
-
-Usage from a build / one-shot script:
-
-    from _props.make_locale_tscn import write_locale_tscn
-    write_locale_tscn({
-        "out_path": "godot/scenes/locales/foo.tscn",
-        "uid": "uid://foo_id",
-        "root_node": "Foo",
-        "glb": "res://assets/3d/locales/foo.glb",
-        "env": { ... },              # bg / amb / fog / glow knobs
-        "shader": { ... },           # warm / bg / neon_edge / neon_lo / neon_hi / lim_tint
-        "lights": [ (name, type, xform, color, energy), ... ],
-        "mood_strata": [...],
-    })
-
-All paths are resolved by the CALLER — generator only writes the
-content. Lights with type 'OmniLight3D' get a default omni_range
-of 4.0 (override per-locale if needed).
-"""
-
-TEMPLATE = '''[gd_scene load_steps=24 format=3 uid="{uid}"]
-
-[ext_resource type="PackedScene" path="{glb}" id="1_glb"]
+[ext_resource type="PackedScene" path="res://assets/3d/locales/faust_apartment.glb" id="1_glb"]
 [ext_resource type="Script" path="res://scripts/DebugHUD.gd" id="3_hud"]
 [ext_resource type="Shader" path="res://assets/shaders/demoscene_post.gdshader" id="4_post"]
 [ext_resource type="Script" path="res://scripts/MoodCycler.gd" id="5_mood"]
@@ -52,15 +23,15 @@ shader_parameter/dither_strength = 0.10
 shader_parameter/scanline_strength = 0.18
 shader_parameter/chromatic_aberration = 0.0008
 shader_parameter/ascii_strength = 0.0
-shader_parameter/ascii_color = {warm}
-shader_parameter/ascii_bg = {shader_bg}
+shader_parameter/ascii_color = Color(0.92, 0.82, 0.60, 1)
+shader_parameter/ascii_bg = Color(0.10, 0.09, 0.07, 1)
 
 [sub_resource type="ShaderMaterial" id="Mat_Ascii"]
 shader = ExtResource("6_ascii")
 shader_parameter/cell_size = 10.0
 shader_parameter/strength = 0.0
-shader_parameter/fg_color = {warm}
-shader_parameter/bg_color = {shader_bg}
+shader_parameter/fg_color = Color(0.92, 0.82, 0.60, 1)
+shader_parameter/bg_color = Color(0.10, 0.09, 0.07, 1)
 shader_parameter/tint_from_scene = true
 shader_parameter/gamma = 0.85
 
@@ -69,9 +40,9 @@ shader = ExtResource("7_neon")
 shader_parameter/strength = 0.0
 shader_parameter/edge_threshold = 0.10
 shader_parameter/edge_thickness = 1.6
-shader_parameter/edge_color = {neon_edge}
-shader_parameter/fill_low = {neon_lo}
-shader_parameter/fill_high = {neon_hi}
+shader_parameter/edge_color = Color(0.72, 0.70, 0.60, 1)
+shader_parameter/fill_low = Color(0.32, 0.28, 0.20, 1)
+shader_parameter/fill_high = Color(0.08, 0.08, 0.09, 1)
 shader_parameter/fill_gradient = 1.0
 shader_parameter/edge_glow = 0.4
 shader_parameter/scene_blend = 0.0
@@ -91,13 +62,13 @@ shader = ExtResource("8_dir")
 shader_parameter/strength = 0.0
 shader_parameter/cell_size = 10.0
 shader_parameter/edge_threshold = 0.10
-shader_parameter/line_color = {neon_edge}
+shader_parameter/line_color = Color(0.72, 0.70, 0.60, 1)
 shader_parameter/fill_color = Color(0.02, 0.02, 0.03, 1)
 shader_parameter/tint_from_scene = false
 shader_parameter/input_scale = 1.0
 shader_parameter/mono_with_red = false
-shader_parameter/mono_white = {warm}
-shader_parameter/mono_red = {neon_edge}
+shader_parameter/mono_white = Color(0.92, 0.82, 0.60, 1)
+shader_parameter/mono_red = Color(0.72, 0.70, 0.60, 1)
 shader_parameter/red_threshold = 0.20
 
 [sub_resource type="ShaderMaterial" id="Mat_Starscape"]
@@ -106,7 +77,7 @@ shader_parameter/strength = 0.0
 shader_parameter/cell_size = 10.0
 shader_parameter/time_scale = 0.40
 shader_parameter/sky_thresh = 0.10
-shader_parameter/star_white = {warm}
+shader_parameter/star_white = Color(0.92, 0.82, 0.60, 1)
 shader_parameter/galaxy_col = Color(0.78, 0.82, 0.95, 1)
 shader_parameter/chip_col = Color(0.62, 0.78, 0.88, 1)
 shader_parameter/galaxy_strength = 0.6
@@ -125,7 +96,7 @@ shader_parameter/strength = 0.0
 shader_parameter/motion_speed = 0.0
 shader_parameter/motion_dir = Vector2(1, 0)
 shader_parameter/cell_size = 9.0
-shader_parameter/line_color = {warm}
+shader_parameter/line_color = Color(0.92, 0.82, 0.60, 1)
 shader_parameter/trail_strength = 0.6
 shader_parameter/line_density = 0.85
 
@@ -140,7 +111,7 @@ shader_parameter/motion_dir = Vector2(1, 0)
 shader = ExtResource("12_oldfilm")
 shader_parameter/strength = 0.0
 shader_parameter/sim_fps = 18.0
-shader_parameter/tint_color = {warm}
+shader_parameter/tint_color = Color(0.92, 0.82, 0.60, 1)
 shader_parameter/tint_amount = 0.55
 shader_parameter/grain_strength = 0.18
 shader_parameter/flicker_strength = 0.20
@@ -155,42 +126,79 @@ shader_parameter/edge_ca = 0.012
 shader_parameter/wobble_amp = 0.0018
 shader_parameter/wobble_freq = 0.85
 shader_parameter/tint_amount = 0.18
-shader_parameter/tint_color = {lim_tint}
+shader_parameter/tint_color = Color(0.70, 0.60, 0.44, 1)
 
 [sub_resource type="Environment" id="Env_Locale"]
 background_mode = 1
-background_color = {env_bg}
+background_color = Color(0.08, 0.06, 0.04, 1)
 ambient_light_source = 2
-ambient_light_color = {env_amb}
-ambient_light_energy = {env_amb_e}
+ambient_light_color = Color(0.66, 0.56, 0.40, 1)
+ambient_light_energy = 0.6
 fog_enabled = true
-fog_light_color = {env_fog}
-fog_light_energy = {env_fog_e}
-fog_density = {env_fog_d}
+fog_light_color = Color(0.38, 0.30, 0.22, 1)
+fog_light_energy = 0.4
+fog_density = 0.005
 adjustment_enabled = true
-adjustment_brightness = {env_bright}
-adjustment_contrast = {env_cont}
-adjustment_saturation = {env_sat}
+adjustment_brightness = 1.0
+adjustment_contrast = 1.04
+adjustment_saturation = 0.92
 glow_enabled = true
-glow_intensity = {env_glow_i}
-glow_bloom = {env_glow_b}
+glow_intensity = 0.65
+glow_bloom = 0.1
 glow_blend_mode = 1
 glow_hdr_threshold = 0.95
 glow_hdr_scale = 2.4
 
-[node name="{root_node}" type="Node3D"]
+[node name="FaustApartment" type="Node3D"]
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Env_Locale")
 
-{lights_block}
+[node name="Key_Window" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.707, -0.707, 0, 0.707, 0.707, 0, 6, 0)
+light_color = Color(0.66, 0.72, 0.92, 1)
+light_energy = 0.45
+shadow_enabled = false
+
+[node name="Fill_Warm" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.707, -0.354, -0.612, 0, 0.866, -0.5, 0.707, -0.354, -0.612, 0, 3, -2)
+light_color = Color(0.96, 0.78, 0.42, 1)
+light_energy = 0.22
+shadow_enabled = false
+
+[node name="Back" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.707, -0.5, 0.5, 0, 0.707, 0.707, -0.707, -0.5, 0.5, 0, 3, 3)
+light_color = Color(0.42, 0.32, 0.22, 1)
+light_energy = 0.15
+shadow_enabled = false
+
+[node name="Practical_NightLamp" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.85, 1.05, -4.65)
+light_color = Color(0.98, 0.84, 0.5, 1)
+light_energy = 1.0
+shadow_enabled = false
+omni_range = 2.2
+
+[node name="Practical_Bulb" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.3, -2.5)
+light_color = Color(1.0, 0.86, 0.52, 1)
+light_energy = 1.2
+shadow_enabled = false
+omni_range = 4.5
+
+[node name="Moon_Spill" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.5, 1.7, -2.4)
+light_color = Color(0.6, 0.7, 0.95, 1)
+light_energy = 0.5
+shadow_enabled = false
+omni_range = 3.0
 
 [node name="Interior" parent="." instance=ExtResource("1_glb")]
 
 [node name="PostProcess" type="CanvasLayer" parent="."]
 layer = 50
 script = ExtResource("5_mood")
-mood_strata = Array[String]({mood_strata})
+mood_strata = Array[String](["raw", "noir", "lithograph", "macro_haze", "silent_film_18", "candlelight", "memory_warm"])
 default_style_pack = ""
 
 [node name="NeonQuad" type="ColorRect" parent="PostProcess"]
@@ -304,55 +312,3 @@ offset_top = 360.0
 offset_right = 520.0
 offset_bottom = 980.0
 script = ExtResource("14_dbgm")
-'''
-
-
-def col(rgb):
-    return "Color({:.2f}, {:.2f}, {:.2f}, {})".format(*rgb)
-
-
-def write_locale_tscn(cfg):
-    lights = []
-    for light in cfg["lights"]:
-        nm, t, xform, c, energy = light[:5]
-        extra = light[5] if len(light) > 5 else {}
-        s = (f'[node name="{nm}" type="{t}" parent="."]\n'
-             f'transform = {xform}\n'
-             f'light_color = {c}\n'
-             f'light_energy = {energy}\n'
-             f'shadow_enabled = false')
-        if t == "OmniLight3D":
-            s += "\nomni_range = {}".format(extra.get("omni_range", 4.0))
-        for k, v in extra.items():
-            if k != "omni_range":
-                s += f"\n{k} = {v}"
-        lights.append(s)
-    sh = cfg["shader"]
-    env = cfg["env"]
-    content = TEMPLATE.format(
-        uid=cfg["uid"],
-        root_node=cfg["root_node"],
-        glb=cfg["glb"],
-        warm=col(sh["warm"]),
-        shader_bg=col(sh["bg"]),
-        neon_edge=col(sh["neon_edge"]),
-        neon_lo=col(sh["neon_lo"]),
-        neon_hi=col(sh["neon_hi"]),
-        lim_tint=col(sh["lim_tint"]),
-        env_bg=col(env["bg"]),
-        env_amb=col(env["amb"]),
-        env_amb_e=env["amb_e"],
-        env_fog=col(env["fog"]),
-        env_fog_e=env["fog_e"],
-        env_fog_d=env["fog_d"],
-        env_bright=env.get("bright", 1.0),
-        env_cont=env.get("cont", 1.04),
-        env_sat=env.get("sat", 0.94),
-        env_glow_i=env.get("glow_i", 0.70),
-        env_glow_b=env.get("glow_b", 0.12),
-        lights_block="\n\n".join(lights),
-        mood_strata="[" + ", ".join(f'"{m}"' for m in cfg["mood_strata"]) + "]",
-    )
-    with open(cfg["out_path"], "w") as f:
-        f.write(content)
-    return cfg["out_path"]

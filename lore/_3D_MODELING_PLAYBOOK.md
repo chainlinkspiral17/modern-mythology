@@ -331,6 +331,33 @@ Louisville's hurricane-deck proportions"). Don't guess at numbers.
 
 ## Recent lessons
 
+### 2026-08-03 · vols 1-2 3D migration · "VN backgrounds are 3d scenes"
+
+- **The 2D-plate direction was rejected by the user** ("visual novel
+  backgrounds are 3d scenes"). Never author a flat background image
+  for a VN scene again — every bg is a `3d:` preset. If a locale
+  doesn't exist, that's a build script to write, not a JPEG to
+  generate. `vn_asset_audit.py` now prints every remaining 2D bg
+  src as a per-ref migration-debt line so the estate is visible.
+- **Set-reuse by room type is the cheap half of a migration.** 17 of
+  28 refs landed on EXISTING locales (bar → new_orleans_bar, roads →
+  louisiana_road, football → school_field_evening…) — instant wins
+  on the Deck since those GLBs are already built. Match on room
+  TYPE, not name; note the reuse in the audit doc.
+- **One build, many presets.** New builders were chosen by cluster
+  traffic and every one carries multiple CAMERA_PRESETS vantages:
+  missing_link_exterior serves the diner front AND the shuttle
+  bench (vol1's ×8 hottest bg); briar_falls serves five presets
+  (lot/building/trail/overlook/picnic). An outdoor set with distinct
+  zones is five backgrounds for one build's cost — design the zone
+  layout around the shots before placing geometry.
+- **make_locale_tscn.py had rotted while unused** — it referenced
+  `PDPRiffmaster.gd` (doesn't exist; real script is PDRiffrocker.gd)
+  and serialized mood_strata via `str(list)` (single quotes, invalid
+  in .tscn). Fixed + extended with per-light `omni_range` overrides.
+  Lesson: a generator no shipped file exercises is a generator that
+  drifts — smoke-run it against a known-good donor before trusting.
+
 ### 2026-07-19 · wrong-room sweep CLOSED · seven builds + eight repoints
 
 - **The sweep is done.** vol6's cosmic_comics_back_office reuse went

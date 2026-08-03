@@ -52,7 +52,18 @@ producer discipline).
   art (the VN is the modern frame — NO era filter): chapter-card
   backing plates, CG art, locale PNG fallbacks for unbuilt GLB
   locales. Extend `art_studio.html`'s catalog with VN slots; hook
-  plate display through the producer clock.
+  plate display through the producer clock. **Constraint (2026-08-03
+  verdict): VN scene BACKGROUNDS are 3D scenes — painted art is for
+  cards/CGs/plates, never a scene bg.**
+- **SHIPPED 2026-08-03 · Vols 1-2 → 3D migration** — "visual novel
+  backgrounds are 3d scenes": 47 bg placements rewired onto `3d:`
+  presets (17 set-reuse onto existing locales, carnival_lot newly
+  wired, THREE new multi-vantage builds: missing_link_exterior +
+  shuttle_bench · briar_falls ×5 · faust_apartment ×2). 12 bg refs
+  remain 2D debt (pharmacy, skatepark, beaches, sapo falls…) —
+  vn_asset_audit prints them per-ref. USER STEP: run the three new
+  builders on the Deck (`./run_cathedral.sh build_missing_link_exterior.py`
+  etc.) or vols 1-2's new sets render the black fallback.
 - **SHIPPED 2026-07 · Locale coverage report** —
   `python3 godot/tools/locale_coverage.py` (run on the Deck):
   cross-references the 78 GLB-requiring camera presets against the

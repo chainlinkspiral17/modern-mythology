@@ -1,9 +1,20 @@
 #!/usr/bin/env python3
 """gen_legacy_backgrounds.py — the 39 missing Vol 1/2 backgrounds.
 
-Vols 1-2 predate the 3D-locale era; their scenes reference 2D
-backgrounds that were never produced, so both volumes largely played
-over black (found by vn_asset_audit's first run, audit finding 1.6).
+SUPERSEDED IN PART (2026-08-03): "visual novel backgrounds are 3d
+scenes." 28 of these 39 migrated to 3d: locale presets (see
+Background3D.CAMERA_PRESETS' vols-1-2 migration block + audit
+finding 1.6) and their JPEGs were deleted from assets/backgrounds.
+Only the 11 refs vn_asset_audit reports as 2D migration debt remain
+in use (bar exterior, pharmacy x2, skatepark, wagner home, beaches
+x2, crumpled barn, sapo falls, little switzerland, school
+newspaper). Re-running this script regenerates ALL 39 — do NOT
+commit the 28 orphans back; they are replaced by real sets.
+
+Original context: Vols 1-2 predate the 3D-locale era; their scenes
+referenced 2D backgrounds that were never produced, so both volumes
+largely played over black (found by vn_asset_audit's first run,
+audit finding 1.6).
 
 These are full-screen BACKGROUNDS, not plates: no deckle margin,
 compositions keep the center third calm (portraits and the dialogue
