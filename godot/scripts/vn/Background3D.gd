@@ -1479,6 +1479,69 @@ const CAMERA_PRESETS := {
 		"fov": 62.0,
 		"suppress_input": true,
 	},
+	"cedar_tower_lobby": {
+		"scene": "res://scenes/locales/cedar_tower.tscn",
+		"requires_glb": "res://assets/3d/locales/cedar_tower.glb",
+		# The Oneironautics tower off Old Yachats Road (vol7 ch22 —
+		# previously mis-played on the Texas warehouse cathedral).
+		# Floors stack vertically in one GLB (riverboat precedent):
+		# lobby y=0, studio y=5, quarters y=10, portal y=15;
+		# exterior clearing at x≈45. LOBBY: polished cedar, twelve-
+		# foot ceiling, the empty reception desk, Dean's portrait on
+		# the N wall (looking at his daughter at the photographer's
+		# left), cedar stairs + brass handrail at back-right.
+		"camera_origin": Vector3(0.0, 1.62, -1.2),
+		"camera_rotation": Vector3(-0.02, deg_to_rad(0.0), 0.0),
+		"fov": 62.0,
+		"suppress_input": true,
+	},
+	"cedar_tower_studio": {
+		"scene": "res://scenes/locales/cedar_tower.tscn",
+		"requires_glb": "res://assets/3d/locales/cedar_tower.glb",
+		# Second floor: server racks (green LEDs) at back, desk
+		# clusters of four, the poster archive floor-to-ceiling on
+		# the S+W walls (Estuary 7 half-sized in brass), the smaller
+		# framed photographs of Dean on the E wall. Camera looks NW
+		# so the W poster run and the racks share the frame.
+		"camera_origin": Vector3(-1.2, 6.60, -1.5),
+		"camera_rotation": Vector3(-0.03, deg_to_rad(18.0), 0.0),
+		"fov": 66.0,
+		"suppress_input": true,
+	},
+	"cedar_tower_quarters": {
+		"scene": "res://scenes/locales/cedar_tower.tscn",
+		"requires_glb": "res://assets/3d/locales/cedar_tower.glb",
+		# Third floor: bunks W, the twelve-seat communal table
+		# center, the cedar-cabinet kitchen + wood-stove at the E
+		# end, the open book on the table.
+		"camera_origin": Vector3(0.5, 11.60, -1.0),
+		"camera_rotation": Vector3(-0.03, deg_to_rad(8.0), 0.0),
+		"fov": 64.0,
+		"suppress_input": true,
+	},
+	"cedar_tower_portal": {
+		"scene": "res://scenes/locales/cedar_tower.tscn",
+		"requires_glb": "res://assets/3d/locales/cedar_tower.glb",
+		# Fourth floor: the landing, the single unmarked cedar door,
+		# the six-by-six translucent window at chest height — and
+		# through it the portal room: the smart-glass wall rendering
+		# the substrate, the far door where Aria waves.
+		"camera_origin": Vector3(0.0, 16.55, -1.3),
+		"camera_rotation": Vector3(-0.02, deg_to_rad(0.0), 0.0),
+		"fov": 56.0,
+		"suppress_input": true,
+	},
+	"cedar_tower_exterior": {
+		"scene": "res://scenes/locales/cedar_tower.tscn",
+		"requires_glb": "res://assets/3d/locales/cedar_tower.glb",
+		# The gravel clearing: the wagon, the Sitka ring, the tower's
+		# seven cedar-and-glass floors, the seventh running the
+		# garden green behind its smart-glass.
+		"camera_origin": Vector3(41.0, 1.70, 6.0),
+		"camera_rotation": Vector3(0.30, deg_to_rad(-16.0), 0.0),
+		"fov": 70.0,
+		"suppress_input": true,
+	},
 	"nexcorp_gas_go": {
 		"scene": "res://scenes/locales/nexcorp_gas_go.tscn",
 		"requires_glb": "res://assets/3d/locales/nexcorp_gas_go.glb",

@@ -65,6 +65,37 @@ CONFIGS = [
         "mood_strata": ["raw", "noir", "sodium_streetlamp", "lithograph",
                         "silent_film_24", "memory_warm"],
     },
+    {
+        # The Oneironautics cedar tower: warm cedar interiors, the
+        # portal floor's substrate glow, the seventh-floor garden.
+        "out_path": os.path.join(ROOT, "cedar_tower.tscn"),
+        "uid": "uid://cedar_tower_v7",
+        "root_node": "CedarTower",
+        "glb": "res://assets/3d/locales/cedar_tower.glb",
+        "env": {"bg": (0.20, 0.18, 0.15, 1), "amb": (0.62, 0.52, 0.40, 1),
+                "amb_e": 0.65, "fog": (0.36, 0.30, 0.24, 1), "fog_e": 0.35,
+                "fog_d": 0.004, "sat": 0.96, "glow_i": 0.75, "glow_b": 0.14},
+        "shader": {"warm": (0.92, 0.82, 0.62, 1), "bg": (0.16, 0.13, 0.10, 1),
+                   "neon_edge": (0.80, 0.66, 0.44, 1), "neon_lo": (0.34, 0.28, 0.20, 1),
+                   "neon_hi": (0.12, 0.10, 0.08, 1), "lim_tint": (0.70, 0.62, 0.46, 1)},
+        "lights": [
+            ("Key_Warm", "DirectionalLight3D", B_KEY.format(0, 8, 0), c(0.95, 0.86, 0.70), 0.85),
+            ("Fill", "DirectionalLight3D", B_FILL.format(-3, 5, 0), c(0.72, 0.64, 0.52), 0.35),
+            ("Back", "DirectionalLight3D", B_BACK.format(0, 5, 5), c(0.55, 0.50, 0.44), 0.25),
+            # The portrait wash in the lobby
+            ("Portrait_Wash", "OmniLight3D", I.format(0, 2.4, -7.4), c(0.98, 0.88, 0.68), 1.0, {"omni_range": 3.5}),
+            # Studio rack LEDs' green ambient
+            ("Rack_Green", "OmniLight3D", I.format(0, 6.6, -8.4), c(0.40, 0.80, 0.48), 0.7, {"omni_range": 5.0}),
+            # Quarters wood-stove ember
+            ("Q_Stove_Ember", "OmniLight3D", I.format(5.0, 10.6, -6.6), c(0.96, 0.52, 0.24), 0.8, {"omni_range": 3.5}),
+            # The substrate's held light in the portal room
+            ("Substrate_Glow", "OmniLight3D", I.format(0, 16.6, -20.4), c(0.60, 0.82, 0.88), 1.6, {"omni_range": 12.0}),
+            # The seventh floor's garden glass, from the clearing
+            ("Garden_Glass", "OmniLight3D", I.format(45.0, 25.0, -7.6), c(0.55, 0.80, 0.58), 1.2, {"omni_range": 8.0}),
+        ],
+        "mood_strata": ["raw", "noir", "lithograph", "macro_haze",
+                        "liminal_interior", "memory_warm"],
+    },
 ]
 
 

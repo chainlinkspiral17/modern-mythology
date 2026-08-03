@@ -263,11 +263,26 @@ locale in either sweep to pass clean):
 - Routing/camera: kwik_stop_godseye dropped below the ceiling slab
   it used to photograph; vol5_ch5_hierophant's park section →
   riverfront_exterior; vol6_ch10's 7 AM Centro lot →  centro_dock.
-- OPEN (needs its own build): vol7_ch22_floors/portal +
-  interlude_ii point cathedral_interior at the Oregon cedar tower
-  (Oneironautics lobby/portal room) — a different building
-  entirely; cathedral "kingdom covered the floor" scale ceiling
-  noted.
+- RESOLVED (2026-08-03): THE CEDAR TOWER built —
+  build_cedar_tower.py, one GLB with the floors stacked (riverboat
+  precedent) and FIVE presets: cedar_tower_lobby (polished cedar,
+  the empty reception desk, Dean's portrait looking at his daughter
+  at the photographer's left, brass-railed stairs), _studio (server
+  racks with green LEDs, desk clusters, the floor-to-ceiling poster
+  archive with Estuary 7 half-sized in brass, the E-wall photo
+  row), _quarters (bunks, twelve-seat table, cedar kitchen +
+  wood-stove, the open book), _portal (the landing, the unmarked
+  cedar door with its six-by-six translucent window, and beyond it
+  the 18 m portal room — substrate rendered on the smart-glass
+  wall, air-shimmer volumes, the far door Aria leaves through),
+  _exterior (gravel clearing, the wagon, the Sitka ring, seven
+  floors of cedar + glass with the seventh running the garden).
+  vol7_ch22_floors now walks lobby → studio → quarters with real
+  bg changes; vol7_ch22_portal opens on the fourth floor, returns
+  through the lobby, and ends in the clearing. interlude_ii keeps
+  the cathedral bg (its frame narrative is the Demon's warehouse
+  transmission). Remaining note: cathedral "kingdom covered the
+  floor" scale ceiling.
 
 ### 1.7 · Dead wiring (harmless today, misleading forever)
 - 22 of 38 `PORTRAIT_3D_KEY_TO_GLB` entries point at GLBs that don't
