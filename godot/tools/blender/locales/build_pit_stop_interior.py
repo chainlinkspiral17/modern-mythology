@@ -36,6 +36,10 @@ from _props.cleaning import make_trash_can
 from _props.decor import make_wall_clock, make_faded_poster, make_calendar
 from _props.safety import (make_smoke_detector, make_hvac_vent,
                            make_fluorescent_tube_fixture)
+from _props.detail import (make_traffic_wear, make_floor_stain, make_scuff_band,
+                           make_wall_tint_band, make_threshold, make_wall_outlet,
+                           make_light_switch, make_cord_run, make_thermostat,
+                           make_corner_guard)
 
 ROOM_W = 11.0; ROOM_D = 9.0; CEIL = 3.0
 PART_Y = 6.0          # FOH/kitchen partition
@@ -255,6 +259,52 @@ def build_ceiling_infra():
     make_hvac_vent("HVAC", (3.5, 1.0, CEIL), width=0.80, depth=0.40)
 
 
+def build_detail_pass_2026_08():
+    """D2 surface breakup + D3 infrastructure (set-detail playbook).
+    The diner's wear is 30 years of boots: traffic ribbon from the
+    door past the counter to the pass-through, kick scuffs, grease
+    shadow at the grill, plugged-in everything. D4 (use states) and
+    D5 (through-the-windows) are the next passes."""
+    wear = (0.70, 0.68, 0.62, 1.0)         # floor darkened ~12%
+    scuff = (0.20, 0.17, 0.16, 1.0)
+    # D2 · the path feet actually take: door -> counter front ->
+    # swing door (L-shaped axis-aligned runs).
+    make_traffic_wear("Wear_Main", [(0.0, 0.6), (0.0, 3.6), (3.2, 3.6)],
+                      width=0.9, tint=wear)
+    make_traffic_wear("Wear_Booths", [(0.0, 1.2), (-3.4, 1.2)],
+                      width=0.7, tint=wear)
+    make_traffic_wear("Wear_Kitchen", [(3.65, 6.4), (-1.0, 6.4), (-1.0, 8.0)],
+                      width=0.8, tint=(0.66, 0.64, 0.58, 1.0))
+    # Stains: grill grease shadow, fryer drips, counter coffee ring.
+    make_floor_stain("Stain_Grill", (-1.0, 7.9), radius=0.65,
+                     tint=(0.55, 0.52, 0.46, 1.0))
+    make_floor_stain("Stain_Fryer", (0.6, 7.8), radius=0.35,
+                     tint=(0.50, 0.47, 0.42, 1.0))
+    make_floor_stain("Stain_Counter", (1.2, 3.75), radius=0.28, tint=wear)
+    # Kick scuffs: counter customer face + swing door + booth bases.
+    make_scuff_band("Scuff_Counter", (1.4, 4.11), length=5.6, axis='X',
+                    band_z=0.12, tint=scuff)
+    make_scuff_band("Scuff_SwingDoor", (3.65, PART_Y+0.13), length=1.0,
+                    axis='X', band_z=0.10, tint=scuff)
+    # Ceiling-shadow gather at the top of the big walls (proud 5mm).
+    make_wall_tint_band("Band_N", (0.0, ROOM_D-0.105, 0.0), length=ROOM_W-0.4,
+                        axis='X', band_z=CEIL-0.18, tint=(0.82, 0.79, 0.72, 1.0))
+    make_wall_tint_band("Band_W", (-ROOM_W/2.0+0.105, ROOM_D/2.0, 0.0),
+                        length=ROOM_D-0.4, axis='Y', band_z=CEIL-0.18,
+                        tint=(0.82, 0.79, 0.72, 1.0))
+    make_threshold("Threshold_Front", (0.0, 0.10), width=1.9, axis='X')
+    # D3 · the room is plugged in.
+    make_light_switch("Switch_Front", (1.15, 0.0), axis='X', face_sign=1, aged=True)
+    make_wall_outlet("Outlet_Booths", (-ROOM_W/2.0, 2.9), axis='Y', face_sign=1, aged=True)
+    make_wall_outlet("Outlet_BackLine", (0.6, PART_Y), axis='X', face_sign=-1, aged=True)
+    make_wall_outlet("Outlet_Kitchen", (ROOM_W/2.0, 8.3), axis='Y', face_sign=-1, aged=True)
+    make_thermostat("Thermostat", (2.2, PART_Y), axis='X', face_sign=-1)
+    # Cords: register + coffee station reach real outlets.
+    make_cord_run("Cord_Register", (4.0, 4.85, 0.90), (5.39, 8.3, 0.30))
+    make_cord_run("Cord_Coffee", (0.0, PART_Y-0.45, 0.85), (0.6, PART_Y-0.11, 0.30))
+    make_corner_guard("CornerGuard_Swing", (2.9, PART_Y-0.12))
+
+
 def main():
     clear_scene()
     build_shell()
@@ -266,6 +316,7 @@ def main():
     build_kitchen()
     build_decor()
     build_ceiling_infra()
+    build_detail_pass_2026_08()
     out = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)),
         "../../../assets/3d/locales/pit_stop_interior.glb"))
     print(f"\n[build_pit_stop_interior] exporting to {out}")

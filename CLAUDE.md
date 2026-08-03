@@ -201,6 +201,10 @@ Playbooks currently maintained:
   layer, one-path-per-input rule (double-fire guards), haptics
   grammar in SFXBank.RUMBLE_MAP, Steam Machine export + build
   script, per-stick pad-audit inventory.
+- `lore/_SET_DETAIL_PLAYBOOK.md` — the detail-pass method for THE
+  DRAFTING PROGRAM: D2 surface breakup, D3 infrastructure, D4 use
+  states, D5 depth bands + edges, D6 coverage + light. Read before
+  running ANY detail pass on a locale.
 
 When a new domain accumulates ≥ 5 distinct lessons, spin up a
 playbook for it.

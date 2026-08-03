@@ -35,8 +35,9 @@ Current ledger (draft counts are honest, not aspirational):
 |---|---|---|
 | Tail-wave locales (~40, 2026-08-03) | 1 | Deck screenshots → reframe cameras; lighting pass per the lighting playbook; edge-of-set treatment; second vantages |
 | Vols 1–2 migration locales | 1–2 | same as tail wave |
-| Pit Stop diner / ChillWave / Salty Tome back (re-themes) | 1 | density + wear passes (grease, wear lines, clutter grammar per model chapters) |
-| **Highway 9 (planned community)** | **1** | see workstream below |
+| Pit Stop diner / ChillWave (re-themes) | 2 (D2+D3 done) | D4 use states, D5 through-the-windows, D6 coverage — per _SET_DETAIL_PLAYBOOK |
+| Salty Tome back + alley | 1 | D2 surface breakup first (kitchenette wear, alley grime) |
+| **Highway 9 (planned community)** | **2** | draft 3: vn_shot coverage + camera motion (see workstream) |
 | Cedar tower (vol7 ch22) | 1 | per-floor dressing density, portal-room staging |
 | Graustark ruin quarter / riverfront park | 1 | silhouette shaping, mid-ground detail bands |
 | CP region banners + agent busts | 1 | per plan file; then variant states |
@@ -54,9 +55,11 @@ staged like that, using still camera set-ups and camera motion."*
   paint, near overpass (y=+300) + far silhouette overpass (y=-800),
   two sign gantries, embankment + berm silhouettes past the world
   edge, terminal treelines, sparse traffic. Fog carries the fade.
-- **Draft 2 — action dressing**: reflector posts, skid marks,
-  debris, exit ramp + turnout, crash-scar guardrail section,
-  rest-stop pull-off, semi truck stand-in, road grime bands.
+- **Draft 2 (shipped 2026-08-03)** — build_highway9_draft2_2026_08():
+  reflector posts, lane grime bands, THE SCAR (skid marks curving
+  into a deformed guardrail + debris fan + glass at y=+210 — the
+  road's own history mark), exit ramp + gore paint at y=-60,
+  gravel rest turnout + semi stand-in at y=-330.
 - **Draft 3 — camera coverage**: vn_shot still setups in
   harmony_terrain.tscn (low shoulder wide · median close · overpass
   high angle · long lens down the vanishing point · behind-guardrail

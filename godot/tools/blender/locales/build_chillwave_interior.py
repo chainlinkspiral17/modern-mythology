@@ -30,6 +30,9 @@ from _props.structure import make_floor, make_wall, make_ceiling, make_crown_mol
 from _props.store_fixtures import make_counter, make_register
 from _props.decor import make_wall_clock, make_floor_plant
 from _props.safety import make_smoke_detector, make_hvac_vent
+from _props.detail import (make_traffic_wear, make_floor_stain, make_scuff_band,
+                           make_wall_tint_band, make_threshold, make_wall_outlet,
+                           make_light_switch, make_cord_run, make_thermostat)
 
 ROOM_W = 7.0; ROOM_D = 8.0; CEIL = 2.8
 PART_Y = 4.6          # front-shop / back-room partition
@@ -212,6 +215,49 @@ def build_decor():
     make_box("Runner", (0.0, 1.6, 0.015), (1.00, 2.20, 0.015), (0.54, 0.42, 0.32, 1.0))
 
 
+def build_detail_pass_2026_08():
+    """D2 surface breakup + D3 infrastructure (set-detail playbook).
+    Cale's shop is TIDY-WORN: the wear is soft and local (the path
+    he walks forty times a day, the burn ring where the iron lives),
+    not grime. D4 (use states) and D5 (through-the-glass) next."""
+    wear = (0.46, 0.35, 0.24, 1.0)          # floor darkened ~12%
+    # The path: door -> counter -> partition doorway -> workbench.
+    make_traffic_wear("Wear_Main", [(0.0, 0.6), (0.0, 2.6), (-1.1, 2.6)],
+                      width=0.7, tint=wear)
+    make_traffic_wear("Wear_Back", [(1.9, 3.2), (1.9, 5.4), (2.6, 5.4), (2.6, 6.4)],
+                      width=0.65, tint=wear)
+    # The workbench's life: solder-burn ring + a pale ring where
+    # the transformer sat for years before its last move.
+    make_floor_stain("Stain_Bench", (2.55, 6.1), radius=0.30,
+                     tint=(0.40, 0.30, 0.21, 1.0))
+    make_floor_stain("Stain_Bench_Ring", (2.55, 6.1), radius=0.18,
+                     tint=(0.55, 0.43, 0.31, 1.0))
+    # Soft kick scuff on the counter's customer face only.
+    make_scuff_band("Scuff_Counter", (-1.1, 2.73), length=2.4, axis='X',
+                    band_z=0.10, tint=(0.42, 0.30, 0.20, 1.0))
+    # Ceiling gather on the two long walls.
+    make_wall_tint_band("Band_W", (-ROOM_W/2.0+0.105, ROOM_D/2.0, 0.0),
+                        length=ROOM_D-0.4, axis='Y', band_z=CEIL-0.16,
+                        tint=(0.74, 0.66, 0.54, 1.0))
+    make_wall_tint_band("Band_E", (ROOM_W/2.0-0.105, ROOM_D/2.0, 0.0),
+                        length=ROOM_D-0.4, axis='Y', band_z=CEIL-0.16,
+                        tint=(0.74, 0.66, 0.54, 1.0))
+    make_threshold("Threshold_Front", (0.0, 0.10), width=1.9, axis='X',
+                   tint=(0.50, 0.34, 0.20, 1.0))
+    make_threshold("Threshold_Back", (1.9, PART_Y), width=1.0, axis='X',
+                   tint=(0.50, 0.34, 0.20, 1.0))
+    # D3 · plugged in.
+    make_light_switch("Switch_Front", (1.15, 0.0), axis='X', face_sign=1)
+    make_wall_outlet("Outlet_Counter", (-ROOM_W/2.0, 3.0), axis='Y', face_sign=1)
+    make_wall_outlet("Outlet_Bench", (ROOM_W/2.0, 6.9), axis='Y', face_sign=-1)
+    make_thermostat("Thermostat", (-1.05, PART_Y), axis='X', face_sign=-1)
+    # Cords: register, the task lamp, and the transformer all reach
+    # the bench outlet — the honest tangle of a one-man repair shop.
+    make_cord_run("Cord_Register", (-1.9, 3.35, 0.90), (-3.39, 3.0, 0.30))
+    make_cord_run("Cord_TaskLamp", (3.0, 7.5, 0.95), (3.39, 6.9, 0.30))
+    make_cord_run("Cord_Transformer", (3.05, 7.3, 0.92), (3.39, 6.9, 0.30))
+
+
 def main():
     clear_scene()
     build_shell()
@@ -221,6 +267,7 @@ def main():
     build_workbench()
     build_ceiling_infra()
     build_decor()
+    build_detail_pass_2026_08()
     out = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)),
         "../../../assets/3d/locales/chillwave_interior.glb"))
     print(f"\n[build_chillwave_interior] exporting to {out}")

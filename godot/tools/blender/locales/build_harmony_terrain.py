@@ -17158,6 +17158,187 @@ def build_highway9_2026_08():
                            facing='-Y' if side == "W" else '+Y')
 
 
+
+def build_highway9_draft2_2026_08():
+    """DRAFT 2 of Highway 9 — action dressing (see the workstream in
+    _IMPROVEMENT_ROADMAP.md). Adds the layer the action scene reads
+    off: reflector posts, skid marks into a crash-scarred guardrail
+    section, debris field, an exit ramp + turnout, a rest-stop
+    pull-off with a semi stand-in, and grime bands down the lane
+    centers. DRAFT 3 (scheduled): vn_shot still coverage + camera
+    motion. DRAFT 4+: Deck loops."""
+    HX = -510.0
+    MED_HW = 1.5
+    LANE_W = 7.2
+    SHLD_W = 2.5
+    COL_POST = (0.85, 0.83, 0.78, 1.0)
+    COL_REFL = (0.90, 0.30, 0.20, 1.0)
+    COL_SKID = (0.10, 0.10, 0.11, 1.0)
+    COL_GRIME = (0.16, 0.16, 0.18, 1.0)
+    COL_DEBRIS = (0.35, 0.33, 0.30, 1.0)
+    COL_RAIL_SCAR = (0.38, 0.36, 0.34, 1.0)
+    COL_GRAVEL = (0.44, 0.42, 0.38, 1.0)
+
+    def hz(px, py):
+        if -415.0 <= py <= 415.0:
+            return mesh_z(px, py)
+        edge_y = 415.0 if py > 0 else -415.0
+        ze = mesh_z(px, edge_y)
+        t = min(1.0, (abs(py) - 415.0) / 150.0)
+        return ze + (-2.0 - ze) * t
+
+    # ── Reflector posts every 100 m along both outer shoulders ──
+    for sgn in (-1, 1):
+        px2 = HX + sgn * (MED_HW + LANE_W + SHLD_W + 0.6)
+        yy = -1400.0 + 50.0
+        pi = 0
+        while yy < 1400.0:
+            z0 = hz(px2, yy)
+            v = [(px2 - 0.05, yy, z0), (px2 + 0.05, yy, z0),
+                 (px2 + 0.05, yy, z0 + 1.0), (px2 - 0.05, yy, z0 + 1.0)]
+            _finalize_mesh(f"Hwy9_ReflPost_{sgn:+d}_{pi}", v,
+                            [[0, 1, 2, 3]], COL_POST)
+            rv = [(px2 - 0.05, yy, z0 + 0.82), (px2 + 0.05, yy, z0 + 0.82),
+                  (px2 + 0.05, yy, z0 + 0.94), (px2 - 0.05, yy, z0 + 0.94)]
+            _finalize_mesh(f"Hwy9_Refl_{sgn:+d}_{pi}", rv,
+                            [[0, 1, 2, 3]], COL_REFL)
+            pi += 1
+            yy += 100.0
+
+    # ── Lane-center grime bands (tire polish + drip line) ──
+    for sgn in (-1, 1):
+        gx = HX + sgn * (MED_HW + LANE_W / 2.0)
+        i = 0
+        yy = -1400.0
+        while yy < 1400.0 - 0.01:
+            y_next = min(yy + 100.0, 1400.0)
+            v = [(gx - 0.45, yy, hz(gx, yy) + 0.065),
+                 (gx + 0.45, yy, hz(gx, yy) + 0.065),
+                 (gx + 0.45, y_next, hz(gx, y_next) + 0.065),
+                 (gx - 0.45, y_next, hz(gx, y_next) + 0.065)]
+            _finalize_mesh(f"Hwy9_Grime_{sgn:+d}_{i}", v,
+                            [[0, 1, 2, 3]], COL_GRIME)
+            i += 1
+            yy = y_next
+
+    # ── THE SCAR · skid marks curving off the northbound lane into
+    # a deformed guardrail section at y=+210, debris fanned past it.
+    # This is the action scene's anchor mark — something already
+    # HAPPENED on this road before the story gets there. ──
+    sk_x0 = HX + MED_HW + LANE_W / 2.0
+    rail_x = HX + (MED_HW + LANE_W + SHLD_W + 0.2)
+    for si in range(6):
+        t = si / 5.0
+        yA = 165.0 + t * 40.0
+        yB = yA + 7.0
+        xA = sk_x0 + t * t * (rail_x - 0.6 - sk_x0)
+        xB = sk_x0 + ((si + 1) / 5.0) ** 2 * (rail_x - 0.6 - sk_x0)
+        for lo, tag in ((-0.35, "L"), (0.35, "R")):
+            v = [(xA + lo - 0.10, yA, hz(xA, yA) + 0.07),
+                 (xA + lo + 0.10, yA, hz(xA, yA) + 0.07),
+                 (xB + lo + 0.10, yB, hz(xB, yB) + 0.07),
+                 (xB + lo - 0.10, yB, hz(xB, yB) + 0.07)]
+            _finalize_mesh(f"Hwy9_Skid_{tag}_{si}", v,
+                            [[0, 1, 2, 3]], COL_SKID)
+    # Deformed rail: a section bowed outward + dented tone.
+    z0 = hz(rail_x, 212.0)
+    v = [(rail_x + 0.55, 206.0, z0 + 0.40), (rail_x + 0.9, 212.0, z0 + 0.35),
+         (rail_x + 0.9, 212.0, z0 + 0.72), (rail_x + 0.55, 206.0, z0 + 0.75)]
+    _finalize_mesh("Hwy9_RailScar_A", v, [[0, 1, 2, 3]], COL_RAIL_SCAR)
+    v = [(rail_x + 0.9, 212.0, z0 + 0.35), (rail_x + 0.5, 218.0, z0 + 0.42),
+         (rail_x + 0.5, 218.0, z0 + 0.76), (rail_x + 0.9, 212.0, z0 + 0.72)]
+    _finalize_mesh("Hwy9_RailScar_B", v, [[0, 1, 2, 3]], COL_RAIL_SCAR)
+    # Debris fan beyond the scar: glass glitter patch + part shapes.
+    for di, (dx2, dy2, s) in enumerate(((1.6, 214.0, 0.5), (2.4, 216.5, 0.35),
+                                        (2.0, 210.5, 0.4), (3.1, 213.0, 0.25))):
+        px3 = rail_x + dx2
+        zd = hz(px3, dy2)
+        v = [(px3 - s, dy2 - s, zd + 0.03), (px3 + s, dy2 - s, zd + 0.03),
+             (px3 + s, dy2 + s, zd + 0.03), (px3 - s, dy2 + s, zd + 0.03)]
+        _finalize_mesh(f"Hwy9_Debris_{di}", v, [[0, 1, 2, 3]], COL_DEBRIS)
+    gl = [(rail_x + 0.8, 211.0), (rail_x + 1.1, 215.0)]
+    for gi, (gx2, gy2) in enumerate(gl):
+        zg = hz(gx2, gy2)
+        v = [(gx2 - 0.6, gy2 - 0.25, zg + 0.035),
+             (gx2 + 0.6, gy2 - 0.25, zg + 0.035),
+             (gx2 + 0.6, gy2 + 0.25, zg + 0.035),
+             (gx2 - 0.6, gy2 + 0.25, zg + 0.035)]
+        _finalize_mesh(f"Hwy9_Glass_{gi}", v, [[0, 1, 2, 3]],
+                        (0.72, 0.78, 0.80, 1.0))
+
+    # ── EXIT RAMP at y=-60 (northbound off toward WestComm strip /
+    # the SCRATCH club): a widening gore then a curving one-lane
+    # ramp descending east. ──
+    ramp_x0 = HX + MED_HW + LANE_W
+    for ri in range(8):
+        t = ri / 7.0
+        yA = -60.0 + ri * 14.0
+        yB = yA + 14.0
+        wA = 0.5 + t * 3.4
+        wB = 0.5 + min(1.0, (ri + 1) / 7.0) * 3.4
+        v = [(ramp_x0, yA, hz(ramp_x0, yA) + 0.06),
+             (ramp_x0 + wA, yA, hz(ramp_x0 + wA, yA) + 0.06),
+             (ramp_x0 + wB, yB, hz(ramp_x0 + wB, yB) + 0.06),
+             (ramp_x0, yB, hz(ramp_x0, yB) + 0.06)]
+        _finalize_mesh(f"Hwy9_Ramp_{ri}", v, [[0, 1, 2, 3]],
+                        (0.20, 0.20, 0.22, 1.0))
+    # Gore chevron paint at the split.
+    gz = hz(ramp_x0 + 0.8, -46.0)
+    v = [(ramp_x0 + 0.15, -58.0, gz + 0.075),
+         (ramp_x0 + 0.55, -58.0, gz + 0.075),
+         (ramp_x0 + 2.6, -6.0, gz + 0.075),
+         (ramp_x0 + 2.2, -6.0, gz + 0.075)]
+    _finalize_mesh("Hwy9_Gore_Line", v, [[0, 1, 2, 3]],
+                    (0.92, 0.90, 0.84, 1.0))
+    # Ramp continues east as a short connector to the WestComm edge.
+    for ci in range(4):
+        xA = ramp_x0 + 3.9 + ci * 12.0
+        xB = xA + 12.0
+        yc = 56.0 + ci * 6.0
+        v = [(xA, yc - 2.5, hz(xA, yc) + 0.05),
+             (xB, yc + 4.0 - 2.5, hz(xB, yc + 4.0) + 0.05),
+             (xB, yc + 4.0 + 2.5, hz(xB, yc + 4.0) + 0.05),
+             (xA, yc + 2.5, hz(xA, yc) + 0.05)]
+        _finalize_mesh(f"Hwy9_RampConn_{ci}", v, [[0, 1, 2, 3]],
+                        (0.21, 0.21, 0.23, 1.0))
+
+    # ── REST TURNOUT at y=-330 (southbound side): gravel pull-off
+    # with a parked SEMI stand-in — scale anchor for the whole
+    # stretch (nothing sells highway distance like a truck). ──
+    to_x = HX - (MED_HW + LANE_W + SHLD_W)
+    for ti in range(4):
+        yA = -370.0 + ti * 20.0
+        yB = yA + 20.0
+        w = 6.0 if ti in (1, 2) else 3.5
+        v = [(to_x - w, yA, hz(to_x - w, yA) + 0.04),
+             (to_x, yA, hz(to_x, yA) + 0.04),
+             (to_x, yB, hz(to_x, yB) + 0.04),
+             (to_x - w, yB, hz(to_x - w, yB) + 0.04)]
+        _finalize_mesh(f"Hwy9_Turnout_{ti}", v, [[0, 1, 2, 3]],
+                        COL_GRAVEL)
+    # Semi: tractor + trailer as two boxes (draft-2 stand-in; a
+    # real cab profile is a later-pass model).
+    sx2 = to_x - 3.2
+    sz2 = hz(sx2, -340.0) + 0.05
+    for (name2, cy2, sy2, szh, col2) in (
+            ("Hwy9_Semi_Trailer", -344.0, 14.0, 3.6, (0.82, 0.82, 0.84, 1.0)),
+            ("Hwy9_Semi_Cab", -334.0, 4.5, 2.9, (0.45, 0.10, 0.12, 1.0))):
+        half_w = 1.3
+        base = sz2 + (0.9 if "Trailer" in name2 else 0.4)
+        top = sz2 + szh
+        for (fy, tag) in ((cy2 - sy2 / 2, "S"), (cy2 + sy2 / 2, "N")):
+            v = [(sx2 - half_w, fy, base), (sx2 + half_w, fy, base),
+                 (sx2 + half_w, fy, top), (sx2 - half_w, fy, top)]
+            _finalize_mesh(f"{name2}_{tag}", v, [[0, 1, 2, 3]], col2)
+        for (fx, tag) in ((sx2 - half_w, "W"), (sx2 + half_w, "E")):
+            v = [(fx, cy2 - sy2 / 2, base), (fx, cy2 + sy2 / 2, base),
+                 (fx, cy2 + sy2 / 2, top), (fx, cy2 - sy2 / 2, top)]
+            _finalize_mesh(f"{name2}_{tag}", v, [[0, 1, 2, 3]], col2)
+        v = [(sx2 - half_w, cy2 - sy2 / 2, top), (sx2 + half_w, cy2 - sy2 / 2, top),
+             (sx2 + half_w, cy2 + sy2 / 2, top), (sx2 - half_w, cy2 + sy2 / 2, top)]
+        _finalize_mesh(f"{name2}_Top", v, [[0, 1, 2, 3]], col2)
+
+
 def build_high_school_field():
     """Harmony Creek High School football field + stadium. Carved
     out of the new HighSchoolField settlement zone (240..440 x,
@@ -17551,6 +17732,7 @@ def main():
     build_wild_zone_trees()
     build_district_arterials()
     build_highway9_2026_08()
+    build_highway9_draft2_2026_08()
     build_community_landmarks()
     build_connector_roads()
     build_chapter1_pedestrian_network()

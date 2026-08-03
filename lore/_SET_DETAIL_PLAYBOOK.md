@@ -1,0 +1,94 @@
+# SET DETAIL PLAYBOOK — how a draft-1 set becomes a location
+
+Created 2026-08-03, the same day as THE DRAFTING PROGRAM (see
+CLAUDE.md + `lore/_IMPROVEMENT_ROADMAP.md`). This is the METHOD for
+the "dozens and dozens" of passes: what each detail pass actually
+adds, in what order, within the honest constraints (no textures —
+vertex color + geometry + real lights only).
+
+## Why sets read as primitive
+
+A draft-1 build is: flat single-color walls, a flat single-color
+floor, template furniture, and prose props floating in clean space.
+Real rooms read differently because every surface carries HISTORY
+(wear), every object carries INFRASTRUCTURE (cords, outlets,
+fasteners), and every cluster carries USE (asymmetry, mid-task
+states). The model chapters (diner, kwik stop, cathedral,
+henderson) got there by accumulating exactly these layers.
+
+## The five detail passes (run in order, one per visit)
+
+### D2 · SURFACE BREAKUP — no surface is one color
+- Walls: wainscot line or color band; slightly darker band at the
+  top 30 cm (ceiling shadow gather); per-wall ±0.02 tint variance.
+- Floors: traffic-path darkening (a slightly darker ribbon from
+  door to counter/table — where feet actually go), 2-3 stains near
+  work zones, thresholds at doorways.
+- Ceilings: slightly darker than walls, never the same tone.
+- Big furniture: top surfaces lighter (dust/light), kick zones
+  darker (scuff), edges a contrasting worn strip.
+- Tool: `_props/detail.py` (`make_traffic_wear`, `make_floor_stain`,
+  `make_scuff_band`, `make_wall_tint_band`).
+
+### D3 · INFRASTRUCTURE — rooms are plugged in
+- Outlets + switch plates at real heights (outlet 0.30, switch 1.20,
+  by the door).
+- Cords: everything electric gets a cord to a wall (lamp → outlet,
+  register → floor, neon → junction). Sagging cord = two-segment run.
+- Fasteners/joins where two materials meet: door hinges, corner
+  guards, counter edge strips.
+- HVAC: registers low on walls in old buildings, ceiling vents in
+  commercial; a thermostat.
+- Tool: `make_wall_outlet`, `make_light_switch`, `make_cord_run`,
+  `make_thermostat`.
+
+### D4 · USE STATES — mid-task, not showroom
+- Every work surface gets one task IN PROGRESS (a half-wiped
+  counter with the rag still on it; an open ledger with a pen).
+- Asymmetric multiples: chairs at angles ≠ 90°, one stack leaning,
+  papers fanned not squared. (Rotation isn't available from
+  make_box — fake it with offset stacking and off-grid anchors.)
+- Containers open: one drawer ajar, one cabinet door open, a lid off.
+- The trash tells the truth: crumples near the bin, not in it.
+
+### D5 · DEPTH BANDS + EDGES — the set never ends at the walls
+- Interiors: something THROUGH every window (a wall, a car shape, a
+  tree band, a lit window across the street) at believable distance.
+- Exteriors: three bands — playable detail (0-30 m), silhouette
+  band (30-150 m: massed simple shapes), horizon band (150 m+:
+  berms/treelines/rooflines + fog). The Highway 9 rule: geometry
+  runs PAST the frame in every direction a camera looks.
+- No raw world edge may be visible from any vn_shot or preset
+  camera. Check every camera, not just the default.
+
+### D6 · COVERAGE + LIGHT (the cinematography pass)
+- Per the lighting playbook: practicals tied to the fixtures the
+  detail passes added (that task lamp now casts).
+- vn_shot still setups for every place a scene lingers; camera
+  motion where action moves (see the Highway 9 workstream).
+- Deck screenshots → reframe. This pass repeats forever.
+
+## Rules
+
+1. **One pass per visit.** Don't smear D2-D6 thin in one session;
+   run one deep and record the next.
+2. **Helpers over one-offs.** Any detail used twice goes into
+   `_props/detail.py` so it costs nothing the third time.
+3. **The wear must agree with the fiction.** The diner's wear is
+   30 years of boots; Cale's shop is tidy-worn; NexCorp spaces are
+   unnervingly wearless (that IS their detail).
+4. **Budget**: a detail pass should roughly double a build's
+   mesh-object count, not 10x it. Silhouette bands are cheap quads,
+   not modeled buildings.
+5. Update the DRAFTING PROGRAM ledger row after every pass.
+
+## Recent lessons
+
+### 2026-08-03 · founding · first D2+D3 passes
+Applied to pit_stop_interior + chillwave_interior (the freshest
+re-themes) as proof of method, alongside Highway 9 draft 2 (action
+dressing). What worked / broke goes here after Deck review.
+
+### TEMPLATE for next session
+### YYYY-MM-DD · <area> · <pass run>
+- What was added, what read well on Deck, what to do differently.
