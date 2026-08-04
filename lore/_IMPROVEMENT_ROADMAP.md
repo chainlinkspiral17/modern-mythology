@@ -35,12 +35,12 @@ Current ledger (draft counts are honest, not aspirational):
 |---|---|---|
 | Tail-wave locales (~40, 2026-08-03) | 1 | Deck screenshots → reframe cameras; lighting pass per the lighting playbook; edge-of-set treatment; second vantages |
 | Vols 1–2 migration locales | 1–2 | same as tail wave |
-| Pit Stop diner / ChillWave (re-themes) | 4 (D2-D6 authored) | Deck reframe loops; pit_stop mood_strata still carries store-era names (convenience_night) — retune with the shader playbook open |
-| Salty Tome back + alley | 3 (D2-D4 done) | D5 through-the-windows (Hemlock St beyond the front glass), D6 coverage, Deck reframe of the three presets |
+| Pit Stop diner / ChillWave (re-themes) | 4 (D2-D6 + strata) | Deck reframe loops (strata retuned to the model diner's vocabulary: lunch/kitchen_practical/dawn_warm) |
+| Salty Tome back + alley | 4 (D2-D6 authored) | Deck reframe of three presets + six vn_shot setups; then wear deepening vs the model chapters |
 | **Highway 9 (planned community)** | **3** | draft 4: Deck screenshot loops on all six framings + the five vn_shot markers |
 | Cedar tower (vol7 ch22) | 3 (coverage authored) | draft 4: D2 wear pass, Deck reframe of the five presets + seven vn_shot setups |
 | Graustark ruin quarter / riverfront park | 2 (skyline + mid-ground) | draft 3: Deck reframe; graustark ruin cameras still untuned; park lamp practicals in tscn |
-| CP region banners + agent busts | 1 | per plan file; then variant states |
+| CP region banners + agent busts | 2 (plan SHIPPED — verified in code 2026-08-03: banners incl. county_seat, tower variants, roster + dossier busts) | banner art iteration vs the SVGA bar; authored face overrides for marquee agents |
 | Northwind Harbor playability | 2 (onboarding pass) | Deck-verify the first five minutes actually teach; then mornings 2-6 pacing |
 | Slowstick manuals + packaging (NH = model) | 1 | era-voice + walkthrough sweep across ~20 sticks; box art after experiences are good (task #234) |
 | Model chapters (diner, kwik stop, cathedral, henderson) | many | the BAR — mine them for what a finished space has |

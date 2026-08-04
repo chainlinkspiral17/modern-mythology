@@ -478,6 +478,33 @@ def build_use_states_2026_08():
     make_box("Alley_Newspaper_Fold", (1.1, 10.72, 0.345), (0.22, 0.015, 0.008), (0.70, 0.68, 0.62, 1.0))
 
 
+def build_beyond_glass_2026_08():
+    """D5 · Hemlock Street through the front glass (set-detail
+    playbook): sidewalk with joints, a parked car at the curb, the
+    facing building with one lit window, a mailbox, a street tree.
+    The alley (N) was dressed in the annex pass; this closes the
+    last raw edge. D6 coverage rides in the tscn markers."""
+    make_box("Hemlock_Sidewalk", (0.0, -1.6, -0.02), (14.0, 2.6, 0.04), (0.56, 0.55, 0.52, 1.0))
+    for ji, jx in enumerate([-4.5, -1.5, 1.5, 4.5]):
+        make_box(f"Hemlock_Joint_{ji}", (jx, -1.6, 0.005), (0.04, 2.6, 0.01), (0.44, 0.43, 0.40, 1.0))
+    make_box("Hemlock_Asphalt", (0.0, -4.8, -0.02), (14.0, 3.8, 0.04), (0.27, 0.27, 0.29, 1.0))
+    make_box("Hemlock_Centerline", (0.0, -4.8, 0.005), (12.5, 0.10, 0.01), (0.85, 0.76, 0.30, 1.0))
+    # The parked car framed by the front window (x=-2.5 glass).
+    make_box("Hemlock_Car_Body", (-2.7, -2.6, 0.55), (4.2, 1.75, 0.55), (0.30, 0.34, 0.30, 1.0))
+    make_box("Hemlock_Car_Cabin", (-3.0, -2.6, 1.02), (2.2, 1.6, 0.45), (0.30, 0.34, 0.30, 1.0))
+    # Mailbox on the sidewalk + street tree between sightlines.
+    make_box("Hemlock_Mailbox_Body", (2.6, -1.0, 1.05), (0.5, 0.4, 0.5), (0.22, 0.30, 0.46, 1.0))
+    make_box("Hemlock_Mailbox_Leg", (2.6, -1.0, 0.4), (0.08, 0.08, 0.8), (0.30, 0.30, 0.32, 1.0))
+    make_cyl("Hemlock_Tree_Trunk", (4.3, -1.4, 1.2), 0.12, 2.4, (0.30, 0.24, 0.18, 1.0), segments=8)
+    make_box("Hemlock_Tree_Crown", (4.3, -1.4, 3.2), (1.8, 1.6, 1.8), (0.16, 0.24, 0.15, 1.0))
+    # The facing building: facade band, one lit window (the town is
+    # awake), a dark doorway.
+    make_box("Hemlock_Across_Facade", (0.0, -7.6, 2.0), (13.0, 0.6, 4.0), (0.42, 0.36, 0.30, 1.0))
+    make_box("Hemlock_Across_Win_Dark", (-3.0, -7.25, 1.6), (1.6, 0.06, 1.3), (0.14, 0.15, 0.18, 1.0))
+    make_box("Hemlock_Across_Win_Lit", (1.8, -7.25, 1.6), (1.6, 0.06, 1.3), (0.88, 0.78, 0.52, 1.0))
+    make_box("Hemlock_Across_Door", (-0.6, -7.25, 1.15), (0.95, 0.06, 2.3), (0.24, 0.20, 0.18, 1.0))
+
+
 def main():
     clear_scene()
     build_shell()
@@ -492,6 +519,7 @@ def main():
     build_alley_2026_08()
     build_detail_pass_2026_08()
     build_use_states_2026_08()
+    build_beyond_glass_2026_08()
     out = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)),
         "../../../assets/3d/locales/salty_tome_interior.glb"))
     print(f"\n[build_salty_tome_interior] exporting to {out}")
