@@ -3937,7 +3937,7 @@ func _apply_stage_choice(d: Dictionary, choice: Dictionary) -> void:
 
 # ── Summer intro ────────────────────────────────────────────────
 # Fires once per save on first day. Frasier's letter to himself at
-# the cathedral desk on Memorial Day morning, '96. Sets the season
+# the cathedral desk on Memorial Day morning, 2025. Sets the season
 # up + hints at the gameplay rhythm in voice — Sundays are the
 # circle's night, weekdays are the dispatch work, the shelf at the
 # end is what the summer leaves you. Diegetic, not a tutorial popup.
@@ -3946,7 +3946,7 @@ func _show_summer_intro() -> void:
 		return
 	_flags["summer_intro_shown"] = true
 	var dlg := AcceptDialog.new()
-	dlg.title = "Memorial Day · 1996"
+	dlg.title = "Memorial Day · 2025"
 	dlg.min_size = Vector2(640, 520)
 	dlg.get_ok_button().text = "begin the summer"
 	var scroll := ScrollContainer.new()
@@ -4027,13 +4027,13 @@ func _labor_day_cookout_vignette() -> String:
 	var aria: String = String(_canon_vars.get("aria_w11_choice", "none"))
 	match aria:
 		"rebind":
-			return "Sunday, September 1, 1996. The back lot of the storefront, 4 PM into the long blue dusk. Hector brought the brisket from Baton Rouge and the boy carried the second pan. Mom is at the picnic table Pop's father built in '64. Nicola is at the picnic table next to her. Aria is between them, fourteen, leaning against her mother's shoulder, eating a piece of cornbread with both hands."
+			return "Sunday, August 31, 2025. The back lot of the storefront, 4 PM into the long blue dusk. Hector brought the brisket from Baton Rouge and the boy carried the second pan. Mom is at the picnic table Pop's father built in '64. Nicola is at the picnic table next to her. Aria is between them, fourteen, leaning against her mother's shoulder, eating a piece of cornbread with both hands."
 		"let_her_hold_it":
-			return "Sunday, September 1, 1996. The back lot of the storefront. The cookout took the shape it took. Aria came with the wooden box JF made her in '94. She set it under her seat. Nobody asked. Hector's brisket sold out at 7. Mom said the gumbo was the gumbo Pop liked. Aria stayed until 8 and then walked home with Nicola the long way."
+			return "Sunday, August 31, 2025. The back lot of the storefront. The cookout took the shape it took. Aria came with the wooden box JF made her in '23. She set it under her seat. Nobody asked. Hector's brisket sold out at 7. Mom said the gumbo was the gumbo Pop liked. Aria stayed until 8 and then walked home with Nicola the long way."
 		"send_her_away":
-			return "Sunday, September 1, 1996. The back lot of the storefront. The seat next to Mom was empty. Mom kept looking up at the back door as if Aria were going to come through it. Elicia drove down from the bungalow with a print of the cottonwood and stayed through dinner; she sat in the seat next to Mom and the seat was less empty than it had been."
+			return "Sunday, August 31, 2025. The back lot of the storefront. The seat next to Mom was empty. Mom kept looking up at the back door as if Aria were going to come through it. Elicia drove down from the bungalow with a print of the cottonwood and stayed through dinner; she sat in the seat next to Mom and the seat was less empty than it had been."
 		_:
-			return "Sunday, September 1, 1996. The back lot of the storefront. The cookout was the cookout. The brisket was the brisket. Hector's boy was at the picnic table with his college acceptance folded in his pocket and he showed it to anyone who asked. The summer ended in the kind of dusk it ended in every year."
+			return "Sunday, August 31, 2025. The back lot of the storefront. The cookout was the cookout. The brisket was the brisket. Hector's boy was at the picnic table with his college acceptance folded in his pocket and he showed it to anyone who asked. The summer ended in the kind of dusk it ended in every year."
 
 
 func _closing_line_for(canonical: String) -> String:
@@ -4068,7 +4068,7 @@ func _closing_line_for(canonical: String) -> String:
 
 func _show_labor_day_finale() -> void:
 	var dlg := AcceptDialog.new()
-	dlg.title = "Labor Day · September 1, 1996"
+	dlg.title = "Labor Day · September 1, 2025"
 	dlg.min_size = Vector2(820, 720)
 	var scroll := ScrollContainer.new()
 	scroll.size_flags_horizontal = Control.SIZE_EXPAND_FILL

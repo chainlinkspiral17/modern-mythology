@@ -66,6 +66,25 @@ This playbook is the *how we work on it* doc.
 
 ### Content discipline
 
+0. **The present is summer 2025.** (User canon 2026-08-04; anchor:
+   `_VOL6_WIKI.md` — the frog goes unstable in 2025, *concurrent
+   with COMMUNITY PLANNED's summer*.) All live thread/DM dates are
+   2025; Labor Day is Monday September 1, 2025. The boards
+   themselves are old — RUST_CODE since 1991, SNACKS since 1992,
+   BEDROCK since 1993, CALICHE's binding sticky since 1981 — and
+   the dial-up anachronism is DIEGETIC: Frasier's circle keeps the
+   old network alive on purpose. Fixed points: Sinkhole + Dante ·
+   October 2004. Pop dies · November 2023 (funeral, inspection
+   roster, JF's box for Aria, transitions all sit in 2022-2023).
+   Boathouse fire · 2022. First Faith (the dog) dies 2013; Cicada
+   arrives 2016; Aria is fourteen (b. ~2011), eighteenth birthday
+   2029. The back-porch regulars have been the same found family
+   since the mid-nineties — their '96 talk is memory with
+   receipts, never present tense. Real-world facts land as-is
+   (Lynch died January 2025; Elliott Smith 2003; the BayBears
+   left Mobile 2019). NEVER author a new post that treats the
+   nineties as the present.
+
 1. **Every thread / DM / reveal carries `available_from_week`.**
    Authoring is staggered. The BBS engine filters on `<= _current_week`.
 2. **Canon humans use canonical_character_id everywhere.** Posts,
