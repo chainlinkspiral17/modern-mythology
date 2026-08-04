@@ -52,12 +52,18 @@ func _ready() -> void:
 
 
 func _open_shelf() -> void:
-	if _host != null:
+	# Defensive: a freed-but-non-nulled reference here would raise
+	# mid-function and abort BEFORE the shelf is instantiated —
+	# leaving a black TV with no way back. Guard every teardown.
+	if _host != null and is_instance_valid(_host):
 		_host.queue_free()
-		_host = null
-	if _stub_screen != null:
+	_host = null
+	if _stub_screen != null and is_instance_valid(_stub_screen):
 		_stub_screen.queue_free()
-		_stub_screen = null
+	_stub_screen = null
+	if _shelf != null and is_instance_valid(_shelf):
+		_shelf.queue_free()
+	_shelf = null
 	_shelf = load(SHELF_SCENE).instantiate()
 	_shelf.picked.connect(_on_picked)
 	_shelf.closed.connect(_on_closed)
