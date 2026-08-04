@@ -85,6 +85,24 @@ the result is intelligible-enough with 30% static overlay.
 
 ## Recent lessons
 
+### 2026-08-04 · CP · four dedicated beds + weekly rotation
+
+- **When the user says "more of that," rotate — don't replace.**
+  CP's three shared vol5 tracks stayed; four new compositions
+  (cp_drafting_table / cp_phosphor_night / cp_tower_watch /
+  cp_labor_day_dusk) alternate with them by week parity, so a
+  100-day campaign stops wearing one groove without losing the
+  sound the user praised.
+- **Give states their own pieces, and give exactly one piece
+  permission to resolve.** The tower bright/white + endless mode
+  share an unresolving minor-second bed (the mode's argument is
+  that nothing resolves); the Labor Day finale gets the only CP
+  track with a cadence. Music routing IS state legibility — same
+  principle as the banner variants.
+- **normalize_bank after every render, still.** The fresh cp/ dir
+  peaked at 0.23 and took a 3.71x gain; unnormalized it would sit
+  buried under the menu music.
+
 ### 2026-07-22 · Spiderdrops · scoring a real-time physics stick
 
 Five verb/weather SFX + one whole-run BGM bed for the new physics

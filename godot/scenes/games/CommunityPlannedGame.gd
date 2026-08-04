@@ -4250,6 +4250,8 @@ func _closing_line_for(canonical: String) -> String:
 
 
 func _show_labor_day_finale() -> void:
+	# The one CP track that resolves plays over the last day.
+	_audio_play_bgm_track(_CP_BGM_LABOR_DAY)
 	var dlg := AcceptDialog.new()
 	dlg.title = "Labor Day · September 1, 2025"
 	dlg.min_size = Vector2(820, 720)
@@ -5825,9 +5827,11 @@ func _open_bbs_night() -> void:
 		return
 	var overlay := ps.instantiate()
 	add_child(overlay)
-	# Switch BGM to the night-modem track for the duration of the
-	# overlay. The strategic-day BGM resumes after hung_up (see below).
-	_audio_play_bgm_track("res://assets/audio/bgm/vol5_cicadas_dusk.ogg")
+	# Switch BGM to a night track for the duration of the overlay —
+	# alternating weeks get the phosphor-night composition vs the
+	# cicadas. The strategic-day BGM resumes after hung_up (see below).
+	var bbs_week: int = int(ceil(float(_day) / 7.0))
+	_audio_play_bgm_track(_CP_BGM_PHOSPHOR if bbs_week % 2 == 1 else _CP_BGM_BBS_NIGHT)
 	var week: int = int(ceil(float(_day) / 7.0))
 	# Glossary unlock fires once the player has read >= 6 SNACKS
 	# bleached-counter threads and reached the unlock week.
@@ -6040,6 +6044,14 @@ func _spawn_weekly_problems_for_region(r_id: String) -> void:
 const _CP_BGM_STRATEGIC := "res://assets/audio/bgm/vol5_ambient.ogg"
 const _CP_BGM_BBS_NIGHT := "res://assets/audio/bgm/vol5_cicadas_dusk.ogg"
 const _CP_BGM_STORM     := "res://assets/audio/bgm/vol5_warehouse_drone.ogg"
+# Dedicated CP compositions (slowstick_synth · compositions/cp_*.json).
+# Day and night beds rotate weekly with the shared vol5 tracks so the
+# summer doesn't wear one groove; the tower and the last day get
+# their own pieces.
+const _CP_BGM_DRAFTING   := "res://assets/audio/bgm/cp/cp_drafting_table.wav"
+const _CP_BGM_PHOSPHOR   := "res://assets/audio/bgm/cp/cp_phosphor_night.wav"
+const _CP_BGM_TOWER      := "res://assets/audio/bgm/cp/cp_tower_watch.wav"
+const _CP_BGM_LABOR_DAY  := "res://assets/audio/bgm/cp/cp_labor_day_dusk.wav"
 
 
 func _audio_play_bgm_track(path: String) -> void:
@@ -6054,13 +6066,19 @@ func _audio_play_bgm_track(path: String) -> void:
 
 func _audio_play_bgm_for_current_state() -> void:
 	# Route BGM by current pressure tier · storm window gets the
-	# warehouse-drone track for the W13-W14 crush; everything else
-	# gets the standard strategic-day ambient. BBS-night is handled
-	# separately by _open_bbs_night's explicit call.
+	# warehouse-drone track for the W13-W14 crush; endless mode and a
+	# bright/white tower get the tower-watch piece; ordinary days
+	# rotate weekly between the drafting-table composition and the
+	# shared vol5 ambient. BBS-night is handled separately by
+	# _open_bbs_night's explicit call.
 	var week: int = int(ceil(float(_day) / 7.0))
 	var pressure: float = _week_pressure_tier(week)
 	if pressure >= 1.80:
 		_audio_play_bgm_track(_CP_BGM_STORM)
+	elif _endless or _tower_brightness == "bright" or _tower_brightness == "white":
+		_audio_play_bgm_track(_CP_BGM_TOWER)
+	elif week % 2 == 1:
+		_audio_play_bgm_track(_CP_BGM_DRAFTING)
 	else:
 		_audio_play_bgm_track(_CP_BGM_STRATEGIC)
 

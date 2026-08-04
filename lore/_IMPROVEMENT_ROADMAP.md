@@ -41,6 +41,7 @@ Current ledger (draft counts are honest, not aspirational):
 | Cedar tower (vol7 ch22) | 3 (coverage authored) | draft 4: D2 wear pass, Deck reframe of the five presets + seven vn_shot setups |
 | Graustark ruin quarter / riverfront park | 2 (skyline + mid-ground) | draft 3: Deck reframe; graustark ruin cameras still untuned; park lamp practicals in tscn |
 | CP region banners + agent busts | 2 (plan SHIPPED — verified in code 2026-08-03: banners incl. county_seat, tower variants, roster + dossier busts) | banner art iteration vs the SVGA bar; authored face overrides for marquee agents |
+| CP coherency + presentation (2026-08-04) | 1 (timeline→2025, Faith II dog, demons electronic, type 15px, 25 problem stamps, demon sigils, 4 BGM) | Deck check: stamp legibility at row size + clipped rows at new type scale; THE_BASEMENT threads in the electronic register; per-class {agent} stage phrasing; mission-text vagueness sweep; stamp severity tinting; more BBS 2025-era threads in the regulars' aged voices |
 | Northwind Harbor playability | 2 (onboarding pass) | Deck-verify the first five minutes actually teach; then mornings 2-6 pacing |
 | Slowstick manuals + packaging (NH = model) | 1 | era-voice + walkthrough sweep across ~20 sticks; box art after experiences are good (task #234) |
 | Model chapters (diner, kwik stop, cathedral, henderson) | many | the BAR — mine them for what a finished space has |

@@ -224,6 +224,46 @@ rules** once they've held across multiple sessions.
 
 ## Recent lessons
 
+### 2026-08-04 · the 2025 re-anchor + Faith II + electronic demons + presentation
+
+- **The game's present is 2025; check every new line against the
+  fixed-point table in Content rule 0.** The BBS shipped an entire
+  coherent summer of 1996 — 377 dates, Quake-as-new, Aria's
+  birthday in 2000 — against a strategic layer that said Cicada
+  2016 and Faith dead in '13. Cross-layer date drift is invisible
+  from inside either layer; only the fixed-point table catches it.
+- **Re-anchoring content the user loves means aging it, not
+  replacing it.** The back-porch threads kept every beloved beat
+  (the Tomb of Horrors line, the teleport-counter, 'the window for
+  this trip is the window') by becoming the same room 29 years on:
+  anniversary rewatches, receipts held since '96, elegies. Time
+  passing IS material — chainlinkspiral's dad in past tense does
+  more work than the original present tense did.
+- **A species is a register.** Faith II drifted human because
+  'runs the register' is the path of least resistance for a named
+  character at a counter. The fix that keeps the charm is dog-verb
+  substitution (guards the pad, catfish skin under the table, in
+  charge of the closed register), not deletion. Same rule now
+  applies to demons: electronic, on their plane, touching the
+  parish only through powered infrastructure — never in chairs,
+  cars, or diners (agents.json notes carries the rule).
+- **When canon changes what a class IS, the art must follow.**
+  Demons became electronic; their VnBustPortrait faces became
+  lies. Procedural sigils (per-id glyphs in the class violet)
+  replaced them the same day. Prose canon and render canon drift
+  independently — patch both in one commit.
+- **Every problem type now carries a stamp.** 96x54 HeroImages
+  from gen_cp_problem_stamps.py, shown in rows, dossiers, and the
+  dispatch picker. Same discipline as banners: deterministic
+  generator, missing-file null cache, render-only.
+- **Type floor at couch distance is ~15, not 12.** The 12 floor
+  from 2026-07-10 was still 'far too small for the screen real
+  estate.' 104 sites rescaled +25% (15/16/17/20/22).
+- **CP music is four tracks deep now** (drafting table / phosphor
+  night / tower watch / labor day dusk) rotating weekly with the
+  vol5 beds; the tower gets its own unresolving piece and the
+  finale gets the only track allowed to end.
+
 ### 2026-07-19 · County Seat + pair dispatches + Dean's Ledger
 
 - **Ride the primary's record, don't duplicate the machinery.**
