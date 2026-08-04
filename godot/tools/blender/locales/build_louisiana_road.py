@@ -51,20 +51,38 @@ LAMP_FIXTURES = [
 ]
 
 
+# The road's far end. Everything that must run to the horizon reads
+# this. (2026-08-04: the road was 48m long with a painted sky wall
+# 33m ahead of the camera — "the highway is a stump, it does not
+# stretch." A highway reads as a highway because its lines converge
+# to a vanishing point; you cannot fake that with 33 metres.)
+ROAD_FAR = 1200.0
+ROAD_NEAR = -40.0
+
+
 def build_road():
     # Road runs N-S along Y axis. Half-width 2m.
-    # Asphalt
-    make_box("Asphalt", (0.0, 6.0, 0.0), (4.0, 24.0, 0.04), COL_ASPHALT)
-    # Center yellow dashed line
-    for di in range(11):
-        dy = -5.0 + di*1.40
-        make_box(f"CenterLine_{di}", (0.0, dy, 0.022), (0.10, 0.60, 0.005), COL_LANE_LINE)
+    span = (ROAD_FAR - ROAD_NEAR) / 2.0
+    mid = (ROAD_FAR + ROAD_NEAR) / 2.0
+    # Asphalt · one long ribbon to the horizon
+    make_box("Asphalt", (0.0, mid, 0.0), (4.0, span, 0.04), COL_ASPHALT)
+    # Center yellow dashes · a real 3m-on / 9m-off cadence, run the
+    # whole length. The convergence of THESE is the sense of distance.
+    di = 0
+    dy = ROAD_NEAR
+    while dy < ROAD_FAR:
+        make_box(f"CenterLine_{di}", (0.0, dy, 0.022), (0.10, 1.50, 0.005),
+                 COL_LANE_LINE)
+        dy += 12.0
+        di += 1
     # White edge lines
     for sgn in (-1, +1):
-        make_box(f"EdgeLine_{sgn:+d}", (sgn*1.85, 6.0, 0.022), (0.06, 24.0, 0.005), (0.92, 0.92, 0.86, 1.0))
+        make_box(f"EdgeLine_{sgn:+d}", (sgn*1.85, mid, 0.022),
+                 (0.06, span, 0.005), (0.92, 0.92, 0.86, 1.0))
     # Dirt shoulders
     for sgn in (-1, +1):
-        make_box(f"Shoulder_{sgn:+d}", (sgn*2.50, 6.0, 0.02), (0.80, 24.0, 0.04), COL_DIRT_SHOULDER)
+        make_box(f"Shoulder_{sgn:+d}", (sgn*2.50, mid, 0.02),
+                 (0.80, span, 0.04), COL_DIRT_SHOULDER)
 
 
 def build_grass_and_swamp():
@@ -124,11 +142,24 @@ def build_signs_and_markers():
 
 
 def build_sky_backdrop():
-    # Large sky-color plane far behind (north) — at distance acts as horizon backdrop
-    make_box("SkyBackdrop", (0.0, 30.0, 11.0), (56.0, 0.04, 22.0), COL_SKY)
-    # A few cloud puffs
-    for ci, (cx, cz) in enumerate([(-8.0, 8.0), (-2.0, 9.5), (5.0, 8.5), (12.0, 9.0)]):
-        make_cyl(f"Cloud_{ci}", (cx, 23.9, cz), 1.40, 0.20, (0.26, 0.28, 0.36, 1.0), axis='Y', segments=10)
+    # The old backdrop was a 56m-wide panel standing 33m in front of
+    # the camera: a WALL at the end of the road. It is why the
+    # highway read as a stump. The horizon is the environment's job
+    # (fog + sky in the .tscn); geometry's job is to run out far
+    # enough that fog eats it.
+    #
+    # What's left here is depth-cueing scenery that lives BEYOND the
+    # drivable road: receding treelines either side, stepping back in
+    # bands so aerial perspective has something to grade.
+    for i, (by, bw, bh, shade) in enumerate([
+            (120.0, 70.0, 7.0, 0.90), (240.0, 110.0, 8.5, 0.76),
+            (420.0, 170.0, 10.0, 0.62), (700.0, 260.0, 12.0, 0.50),
+            (1050.0, 380.0, 15.0, 0.40)]):
+        c = (COL_SKY[0] * shade, COL_SKY[1] * shade, COL_SKY[2] * shade, 1.0)
+        for sgn in (-1, +1):
+            make_box(f"FarTreeline_{i}_{sgn:+d}",
+                     (sgn * (12.0 + bw * 0.5), by, bh * 0.5),
+                     (bw, 6.0, bh), c)
 
 
 
@@ -151,7 +182,9 @@ def build_roadside_detail():
     steel_dk  = (0.34, 0.35, 0.37, 1.0)
     # ── Utility poles + sagging wires down the EAST verge (x=+3.4) ──
     pole_x = 3.4
-    pole_ys = [-2.0, 4.0, 10.0, 16.0, 22.0]
+    # Poles march to the horizon at a real 40m spacing — the
+    # repeating vertical that tells the eye how far it is seeing.
+    pole_ys = [-2.0 + i * 40.0 for i in range(28)]
     top_z = 5.2
     for i, py in enumerate(pole_ys):
         lean = _m.radians(3 + (i % 3))   # each leans a hair differently
@@ -174,7 +207,7 @@ def build_roadside_detail():
                 make_cyl(f"Wire_{i}_{seg}", (pole_x, py + span * tm, top_z - 0.30 - sag),
                          0.012, span / 4.0 + 0.05, wire_col, segments=3, axis='Y')
     # ── Guardrail on the SWAMP (east) side, x=+3.0, dented ──
-    for i in range(9):
+    for i in range(180):
         gy = -3.0 + i * 3.0
         dent = 0.05 if i == 5 else 0.0   # one bashed post
         make_box(f"Guardrail_Beam_{i}", (3.0 + dent, gy + 1.5, 0.55),

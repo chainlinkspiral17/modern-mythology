@@ -1002,7 +1002,10 @@ func _spawn_npcs() -> void:
 		tr.texture = sprite.texture()
 		var upscale := 1.5
 		tr.size = Vector2(sprite.w * upscale, sprite.h * upscale)
-		tr.stretch_mode = TextureRect.STRETCH_KEEP
+		# See _spawn_sam: KEEP draws native-size in the rect's corner
+		# and divorces the sprite from its own shadow.
+		tr.stretch_mode = TextureRect.STRETCH_SCALE
+		tr.texture_filter = CanvasItem.TEXTURE_FILTER_NEAREST
 		tr.mouse_filter = Control.MOUSE_FILTER_IGNORE
 		var nx: int = int(pos_a[0])
 		var ny: int = int(pos_a[1])
@@ -1100,6 +1103,30 @@ func _resolve_camper_position(cid: String, c: Dictionary, sched: Dictionary,
 			return {}
 
 
+# Sprites that ARE the ground (or a solid architectural surface).
+# These stay full-bleed opaque and never get an underlay; everything
+# else is a prop with a transparent margin drawn on top of one.
+const _GROUND_SPRITES := {
+	"grass": true, "grass_flower": true, "grass_thick": true,
+	"sand": true, "sand_shell": true, "path": true, "path_pebble": true,
+	"wood_floor": true, "deck_wood": true, "dock": true,
+	"dock_edge": true, "water_deep": true, "water_shallow": true,
+	"rock_wall": true, "rock_wall_moss": true, "cabin_wall": true,
+	"dune_grass": true, "dune_grass_wind": true, "disturbed_earth": true,
+	"cabin_roof": true, "cabin_face": true, "window": true,
+	"door_wood": true, "screen_door": true, "cave_mouth": true,
+}
+
+
+func _zone_ground_sprite() -> String:
+	# The tile a prop in this zone stands on: grass outdoors, plank
+	# floor in the cabins, sand on the beach, stone in the caves.
+	var ch := _default_walkable_char_for_zone()
+	var kind := String((_tileset.get(ch, {}) as Dictionary).get("kind", ""))
+	var sid := String(_TILE_SPRITE_FOR_KIND.get(kind, ""))
+	return sid if sid != "" else "grass"
+
+
 func _render_grid() -> void:
 	var zone_id := String(_zone.get("id", ""))
 	_tile_sprite_cache.clear()
@@ -1121,6 +1148,26 @@ func _render_grid() -> void:
 			var kind := String(def.get("kind", ""))
 			var sprite_id := String(_TILE_SPRITE_FOR_KIND.get(kind, ""))
 			if sprite_id != "":
+				# ── Ground underlay (production pass 4 · 2026-08-04) ──
+				# Props used to be full-bleed opaque 16x16 squares, so a
+				# tree was a green BOX and a stump was a brown BOX ("too
+				# blocky, this isn't Minecraft"). Props are now drawn
+				# with transparent margins — which only reads if there is
+				# ground beneath them. Anything that isn't itself ground
+				# gets the zone's base tile laid down first, so the prop
+				# shows its own silhouette against grass / floor / sand.
+				if not _GROUND_SPRITES.has(sprite_id):
+					var base_tex: ImageTexture = _get_tile_texture(
+							_zone_ground_sprite())
+					if base_tex != null:
+						var gr := TextureRect.new()
+						gr.texture = base_tex
+						gr.size = Vector2(TILE_PX, TILE_PX)
+						gr.position = Vector2(x * TILE_PX, y * TILE_PX)
+						gr.stretch_mode = TextureRect.STRETCH_SCALE
+						gr.texture_filter = CanvasItem.TEXTURE_FILTER_NEAREST
+						gr.mouse_filter = Control.MOUSE_FILTER_IGNORE
+						_world_root.add_child(gr)
 				var tex: ImageTexture = _get_tile_texture(sprite_id)
 				if tex != null:
 					var tr := TextureRect.new()
@@ -1191,7 +1238,13 @@ func _spawn_sam(spawn_id: String) -> void:
 	# Upscale 1.5× so the 16×24 native reads well against 24-px tiles.
 	var upscale := 1.5
 	_sam_texture_rect.size = Vector2(16 * upscale, 24 * upscale)
-	_sam_texture_rect.stretch_mode = TextureRect.STRETCH_KEEP
+	# STRETCH_SCALE, not KEEP. With KEEP the 16x24 texture drew at
+	# NATIVE size in the top-left of the 24x36 rect — so Sam was
+	# never actually upscaled, and the ground shadow (placed against
+	# the RECT, not the drawn pixels) sat ~11px below and ~4px right
+	# of his feet: "Sam hovers over the ground, as per shadow."
+	_sam_texture_rect.stretch_mode = TextureRect.STRETCH_SCALE
+	_sam_texture_rect.texture_filter = CanvasItem.TEXTURE_FILTER_NEAREST
 	_sam_texture_rect.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	_place_sam()
 	_attach_ground_shadow(_sam_texture_rect)
@@ -2677,9 +2730,13 @@ func _attach_ground_shadow(tr: TextureRect) -> void:
 	sh.texture = _get_shadow_texture()
 	sh.show_behind_parent = true
 	sh.mouse_filter = Control.MOUSE_FILTER_IGNORE
-	var w: float = tr.size.x * 0.9
+	var w: float = tr.size.x * 0.72
 	sh.size = Vector2(w, w * 0.34)
-	sh.position = Vector2((tr.size.x - w) / 2.0, tr.size.y - sh.size.y * 0.62)
+	# Centre the ellipse ON the soles: the sprite's feet are the last
+	# drawn row, so the contact point is tr.size.y. A shadow whose
+	# CENTRE is anywhere else reads as the character floating.
+	sh.position = Vector2((tr.size.x - w) / 2.0,
+			tr.size.y - sh.size.y * 0.5 - 1.0)
 	tr.add_child(sh)
 
 

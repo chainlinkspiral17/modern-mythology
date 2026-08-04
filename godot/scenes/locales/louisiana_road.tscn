@@ -130,14 +130,27 @@ shader_parameter/tint_color = Color(0.62, 0.74, 0.62, 1)
 
 [sub_resource type="Environment" id="Env_Locale"]
 background_mode = 1
-background_color = Color(0.06, 0.08, 0.14, 1)
+background_color = Color(0.10, 0.13, 0.20, 1)
 ambient_light_source = 2
 ambient_light_color = Color(0.44, 0.48, 0.58, 1)
 ambient_light_energy = 0.44
+; ── Distance (2026-08-04) ─────────────────────────────────────────
+; The road now runs 1200m. Fog is what turns that length into a
+; READ: aerial perspective grading the receding treelines, and a
+; horizon the vanishing point can sit in. The old settings
+; (density 0.010 over a near-black background) made everything past
+; ~30m go to void — which is why a long road still looked like a
+; stump. Sky-affecting fog + aerial perspective puts atmosphere
+; where the geometry ends instead of a hole.
 fog_enabled = true
-fog_light_color = Color(0.12, 0.15, 0.24, 1)
-fog_light_energy = 0.4
-fog_density = 0.010
+fog_light_color = Color(0.30, 0.34, 0.44, 1)
+fog_light_energy = 0.9
+fog_sun_scatter = 0.12
+fog_density = 0.0042
+fog_sky_affect = 1.0
+fog_aerial_perspective = 1.0
+fog_height = 6.0
+fog_height_density = 0.06
 adjustment_enabled = true
 adjustment_brightness = 1.06
 adjustment_contrast = 1.05
