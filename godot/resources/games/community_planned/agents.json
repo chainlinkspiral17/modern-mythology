@@ -1,6 +1,6 @@
 {
   "scope": "community_planned",
-  "notes": "Frasier's dispatchable roster. Two classes: demons (loud, fast, burnable, corruptible) and humans (slow, quiet, indebted). Per _COMMUNITY_PLANNED_SPEC.md \u00a7Agents. Each agent has a home region (for travel-speed modifiers), a specialty (the problem-types they handle well), a signature failure mode, and an economy state (burn / corruption / obligation) that ticks with use.",
+  "notes": "Frasier's dispatchable roster. Two classes: demons (loud, fast, burnable, corruptible) and humans (slow, quiet, indebted). Per _COMMUNITY_PLANNED_SPEC.md \u00a7Agents. Each agent has a home region (for travel-speed modifiers), a specialty (the problem-types they handle well), a signature failure mode, and an economy state (burn / corruption / obligation) that ticks with use. Demons are not people in coats: they are electronic — they live on their own plane, the mayhem side of the wire, and touch the parish only through powered infrastructure. Dispatch means routing them down the network into a region's lines, lights, and telemetry. Their flavor text must never put them in chairs, cars, or diners.",
   "demons": [
     {
       "id": "vagrant",
@@ -31,7 +31,7 @@
         }
       ],
       "dispatch_speed_modifier": 1.1,
-      "flavor": "Long-distance reconnaissance. Walks into a town quiet and walks out quieter. The reports come back clipped to the back of a postcard.",
+      "flavor": "Long-distance reconnaissance. Rides the trunk lines exchange to exchange and drifts through a town's dial tone for a week without tripping a single ring. The reports come back as three minutes of patterned static on the night line; Frasier transcribes.",
       "evolution_paths": [
         "cold_terrain_resistance",
         "press_invisibility"
@@ -66,7 +66,7 @@
         }
       ],
       "dispatch_speed_modifier": 0.9,
-      "flavor": "Long-watch surveillance. Has been embedded in Harmony Creek for nine years; the residents next to her think she is the residents next to them.",
+      "flavor": "Long-watch surveillance. Has lived in Harmony Creek's grid for nine years — the irrigation timers, the porch-light sensors, the HOA's own cameras. The residents think the hum on their line is the line.",
       "evolution_paths": [
         "policy_intuition",
         "embedded_permanence"
@@ -99,7 +99,7 @@
         }
       ],
       "dispatch_speed_modifier": 1.0,
-      "flavor": "Light demolitions, distraction. Goes in fluttering, leaves a small flame the room had been wanting.",
+      "flavor": "Light demolitions, distraction. Enters through whatever is switched on and leaves a small failure the room had been wanting — a breaker, a smoke alarm at 3 AM, a garage door with opinions. Nothing burns that wasn't ready to.",
       "evolution_paths": [
         "controlled_burn",
         "smoke_only"
@@ -131,7 +131,7 @@
         }
       ],
       "dispatch_speed_modifier": 0.7,
-      "flavor": "Heavy infrastructure. Was already old when the riverboat was new. Cannot, by physics, be sent to Small Wood \u2014 there's no water big enough for him.",
+      "flavor": "Heavy infrastructure. Was already old when the riverboat was new \u2014 he predates the grid and haunts it the way rivers haunt bridges. Moves through pump stations, lock telemetry, boiler lines. Cannot, by physics, be sent to Small Wood \u2014 there's no wire out there thick enough to carry him.",
       "evolution_paths": [
         "wake_management"
       ],
@@ -168,7 +168,7 @@
         }
       ],
       "dispatch_speed_modifier": 1.0,
-      "flavor": "Water work, river-bound. Only operates in Graustark.",
+      "flavor": "Water work, river-bound. Lives in the river gauges, the lock telemetry, the drawbridge circuit. Only operates in Graustark — the river is the only conductor he trusts.",
       "evolution_paths": [
         "bayou_native",
         "tidal_patience"
@@ -202,7 +202,7 @@
         }
       ],
       "dispatch_speed_modifier": 1.6,
-      "flavor": "Fast courier. The only demon Frasier sends without a cover identity; she carries her own.",
+      "flavor": "Fast courier. Moves at switching speed, exchange to exchange; the only demon Frasier routes without a cover signature — hers scorches too clean to fake. What she carries arrives before the line stops ringing.",
       "evolution_paths": [
         "dead_drop_specialist",
         "long_courier"
@@ -238,7 +238,7 @@
         }
       ],
       "dispatch_speed_modifier": 1.0,
-      "flavor": "Flock surveillance. Embedded in places like Harmony Creek where seven shapes overhead don't look like seven shapes.",
+      "flavor": "Flock surveillance. Runs as seven quiet loads on seven meters in places like Harmony Creek, where seven extra milliamps don't look like seven extra milliamps.",
       "evolution_paths": [
         "coordinated_flock",
         "single_shape"
@@ -273,7 +273,7 @@
         }
       ],
       "dispatch_speed_modifier": 0.5,
-      "flavor": "Last-resort blunt instrument. Frasier has used him twice in twenty years.",
+      "flavor": "Last-resort blunt instrument. A brownout with intent. Frasier has routed him twice in twenty years, and both towns still talk about the winter the power acted funny.",
       "evolution_paths": [
         "controlled_husk"
       ]
@@ -307,7 +307,7 @@
         }
       ],
       "dispatch_speed_modifier": 1.4,
-      "flavor": "Fast, bright, and constitutionally incapable of subtlety. Everything Lantern does works and everyone watches it work. The trade is the whole personality.",
+      "flavor": "Fast, bright, and constitutionally incapable of subtlety. Every screen on the block flickers when Lantern comes down the line, everything Lantern does works, and everyone watches it work. The trade is the whole personality.",
       "evolution_paths": [
         "press_invisibility",
         "policy_intuition"
@@ -385,7 +385,7 @@
       "obligation_per_dispatch": 1,
       "obligation_cap_before_stops_picking_up": 6,
       "time_at_home_cost_days": 0.8,
-      "flavor": "The diner. The counter. Faith died in '13; the dog he has now is named after her sister, but he calls it Faith anyway when he isn't paying attention. Will go anywhere in Graustark on a half-day's notice; cross-region takes more.",
+      "flavor": "The diner. The counter. The first Faith — the dog under the counter through the good years — died in '13. The dog under it now is Faith II, and he calls her Faith anyway when he isn't paying attention. Will go anywhere in Graustark on a half-day's notice; cross-region takes more.",
       "life_cost_thresholds": {
         "4": "the diner's grill goes cold a day in a way the regulars notice",
         "6": "stops picking up"

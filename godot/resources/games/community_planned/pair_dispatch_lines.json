@@ -3,7 +3,7 @@
  "notes": "B2 pair dispatches. Authored lines keyed by sorted 'a|b' agent-id pairs; class fallbacks when no authored combo exists. Optional cover/attention ints apply to the target region on dispatch. Ruth's refusal is canon: she declines the pairing UI entirely when the partner is a demon.",
  "pairs": {
   "moth|vagrant": {
-   "line": "Moth and Vagrant have worked the river country together since before anyone kept minutes. They do not divide the work. The work divides itself, politely, the moment they arrive.",
+   "line": "Moth and Vagrant have worked the river country together since before anyone kept minutes. They do not divide the work. The work divides itself, politely, the moment the line goes live.",
    "cover": 1
   },
   "filly|weir": {
@@ -11,7 +11,7 @@
    "cover": 1
   },
   "moth|starling": {
-   "line": "Moth watches Starling the whole ride out, the way you watch a pot near boiling. Starling performs not noticing. Between the vigilance and the performance, the work gets done beautifully.",
+   "line": "Moth watches Starling the whole way down the wire, the way you watch a pot near boiling. Starling performs not noticing. Between the vigilance and the performance, the work gets done beautifully.",
    "attention": 1
   },
   "husk|lantern": {
@@ -19,7 +19,7 @@
    "attention": 1
   },
   "cicada|steamboat": {
-   "line": "Cicada sets the tempo, Steamboat carries the load. On the ride back neither of them speaks, which for the two of them is a long conversation about how well it went."
+   "line": "Cicada sets the tempo, Steamboat carries the load. On the line home neither of them transmits, which for the two of them is a long conversation about how well it went."
   },
   "john_frank|nicola": {
    "line": "John Frank and Nicola take separate cars and arrive with the same plan without having discussed it. Forty years of that. The problem never had a chance.",
@@ -35,7 +35,7 @@
    "line": "Royce drives, Mackenzie navigates from a hand-drawn map of the estate she made from memory. Retired law and the woman at the loom. The HOA does not know what hit it, minutes-wise."
   },
   "lantern|the_small_wood_contact_jules": {
-   "line": "Jules and Lantern, the Small Wood locals. Jules talks to the people. Lantern stands where the dark is thickest and makes it slightly less thick. Neither mentions the arrangement.",
+   "line": "Jules and Lantern, the Small Wood locals. Jules talks to the people. Lantern sits in the streetlight circuit where the dark is thickest and makes it slightly less thick. Neither mentions the arrangement.",
    "cover": 1
   },
   "john_frank|moth": {
@@ -43,7 +43,7 @@
    "cover": 1
   },
   "elicia|filly": {
-   "line": "Filly does a week of legwork in an afternoon and Elicia spends the saved time on the part that can't be hurried: sitting with someone. Between them it looks like one impossibly patient, impossibly fast person.",
+   "line": "Filly does a week of legwork in an afternoon without touching the ground, and Elicia spends the saved time on the part that can't be hurried: sitting with someone. Between them it looks like one impossibly patient, impossibly fast person.",
    "attention": -1
   },
   "deputy_royce|starling": {

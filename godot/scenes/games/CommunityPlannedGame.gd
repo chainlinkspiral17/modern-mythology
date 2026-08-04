@@ -3980,7 +3980,7 @@ func _show_summer_intro() -> void:
 		"[color=#a8e0a8]Sunday night — the modem.[/color] The cathedral office goes dark around 9 and the dial-up wakes up around 10. The circle is on the line. STEEPLE in Mobile. WIRE_MOTHER in Lubbock. PALOMINO in Santa Fe. THE_QUARRY in Pennsylvania. SNACKS, once the matriarch lets us back in. There is reading to do and a DM panel for the canon humans — pick a number to open a board, M for mail, B back, Q to hang up. Pace yourself; the circle doesn't reward speed.",
 		"[color=#a8e0a8]The shelf — what the summer leaves.[/color] Every choice that matters lands on a shelf at Labor Day. Interludes, artifacts, the canon facts the family will carry into the fall. The summer is the choice-making; the shelf is the record.",
 		"Three beats to mark on the calendar without circling them: W11, when the question that has been forming for fifteen years gets asked out loud; W14, when the gulf decides which way to come; Labor Day, when the cookout in the back lot of the storefront either happens or doesn't, depending on who is at booth four.",
-		"There will be days that read quiet. Read the quiet too. The boiler hums two semitones flat. Faith II brings coffee at 11:14. The cathedral bell pulls at 11 and three of the regulars are inside before the second pull. That's all the work too.",
+		"There will be days that read quiet. Read the quiet too. The boiler hums two semitones flat. Faith II makes her rounds at 11:14. The cathedral bell pulls at 11 and three of the regulars are inside before the second pull. That's all the work too.",
 		"  — F."
 	]
 	for p_text in paragraphs:
@@ -4865,19 +4865,19 @@ func _demon_tier_color(tier: String) -> Color:
 # the mechanical warning.
 const _DEMON_VOICE_LINES: Dictionary = {
 	"vagrant": {
-		"hungry": "Vagrant sat too long at the picnic table.",
-		"restless": "Vagrant went to a diner they've been to before and did not order water.",
-		"close_to_turning": "Vagrant walked the same block three times before it was dark.",
+		"hungry": "Vagrant sat on the town's night exchange an hour past the last call it was listening for.",
+		"restless": "Vagrant came back up a line it had already read and would not say why.",
+		"close_to_turning": "Vagrant looped the same four numbers three times before dark, and none of them rang.",
 	},
 	"cicada": {
-		"hungry": "Cicada made a sound they can't take back.",
-		"restless": "Cicada surfaced under the parish road bridge and did not go back down.",
-		"close_to_turning": "Cicada stopped counting seconds between the sound and the far echo.",
+		"hungry": "Cicada put a hum on the daytime line that the daytime line can't take back.",
+		"restless": "Cicada surfaced in the parish road-bridge sensors and did not go back down.",
+		"close_to_turning": "Cicada stopped counting the seconds between the signal and the far echo.",
 	},
 	"moth": {
-		"hungry": "Moth stayed at the porch light past the bulb warming up.",
-		"restless": "Moth held the match a second longer than it needed the match held.",
-		"close_to_turning": "Moth's shape lengthened at dusk and it did not shorten by full dark.",
+		"hungry": "Moth stayed in the porch-light circuit past the bulb warming up.",
+		"restless": "Moth held the breaker open a second longer than it needed the breaker held.",
+		"close_to_turning": "Moth's flicker lengthened at dusk and it did not shorten by full dark.",
 	},
 	"steamboat": {
 		"hungry": "Steamboat's wake reached the drainage ditch three counties over.",
@@ -4891,18 +4891,18 @@ const _DEMON_VOICE_LINES: Dictionary = {
 	},
 	"filly": {
 		"hungry": "Filly took the long road twice.",
-		"restless": "Filly's hands stopped remembering which pocket the second envelope was in.",
-		"close_to_turning": "Filly said the wrong name at a diner she's been to sixty times.",
+		"restless": "Filly stopped remembering which line the second envelope goes down.",
+		"close_to_turning": "Filly signed the wrong name on a drop she's made sixty times.",
 	},
 	"starling": {
 		"hungry": "Starling counted the phone lines and forgot the middle one.",
-		"restless": "Starling scattered above the cul-de-sac at 6:47 PM and did not fully reassemble.",
+		"restless": "Starling scattered across the cul-de-sac's seven meters at 6:47 PM and did not fully reassemble.",
 		"close_to_turning": "Starling could not name the neighborhood watch chair for the first time all year.",
 	},
 	"husk": {
-		"hungry": "Husk kept the coat on inside the safehouse.",
-		"restless": "Husk drove the back roads at 2 AM without turning the headlights on.",
-		"close_to_turning": "Husk closed a door twice as hard as the door needed closed.",
+		"hungry": "Husk kept the coat on inside the rest line.",
+		"restless": "Husk walked the county's dark fiber at 2 AM with the repeaters off.",
+		"close_to_turning": "Husk closed a relay twice as hard as the relay needed closed.",
 	},
 }
 
@@ -4927,7 +4927,7 @@ const _DEMON_PAIR_INTERACTIONS: Dictionary = {
 	},
 	"filly+husk": {
 		"tone": "warm",
-		"log": "Filly carried the letter and Husk carried the road behind her. Neither of them looked back. The state line was quiet.",
+		"log": "Filly carried the letter down the trunk line and Husk carried the dark behind her. Neither signal looked back. The state line was quiet.",
 		"cover": 1,
 	},
 	"moth+starling": {
@@ -4942,16 +4942,16 @@ const _DEMON_PAIR_INTERACTIONS: Dictionary = {
 	},
 	"husk+steamboat": {
 		"tone": "cold",
-		"log": "Husk arrived at the parish dock while Steamboat's wake was still moving · the wake ended at the third plank · a jogger noticed but did not stop.",
+		"log": "Husk settled into the dock lights while Steamboat's wake was still moving · the wake ended at the third plank · the lights dropped a shade · a jogger noticed but did not stop.",
 	},
 	"vagrant+cicada": {
 		"tone": "warm",
-		"log": "Vagrant walked past the parish-road bridge at 3:14 AM while Cicada was under it · neither one of them acknowledged · both routines held.",
+		"log": "Vagrant rolled through the bridge's call box at 3:14 AM while Cicada was under it · neither routine acknowledged the other · both held.",
 		"cover": 1,
 	},
 	"filly+starling": {
 		"tone": "warm",
-		"log": "Filly carried and Starling counted · the two of them passed each other on the parish road and did not slow · the count matched the letter's weight to the ounce.",
+		"log": "Filly carried and Starling counted · the two of them crossed on the parish trunk and did not slow · the count matched the letter's weight to the ounce.",
 	},
 	"moth+weir": {
 		"tone": "warm",
@@ -4965,24 +4965,24 @@ const _DEMON_PAIR_INTERACTIONS: Dictionary = {
 	},
 	"vagrant+starling": {
 		"tone": "warm",
-		"log": "Vagrant walked the phone-line route Starling had counted · pole 41's missing insulator read as a walking man's shadow twice from a mile away · the count adjusted.",
+		"log": "Vagrant ran the phone-line route Starling had counted · pole 41's missing insulator read as a walking man's shadow twice from a mile away · the count adjusted.",
 	},
 	"husk+weir": {
 		"tone": "cold",
-		"log": "Husk stood at the parish dock at 3 AM while Weir was underneath · a boat's engine died at the far bend and its owner rowed back rather than call · Husk did not offer.",
+		"log": "Husk sat in the dock's one sodium light at 3 AM while Weir was underneath · a boat's engine died at the far bend and its owner rowed back rather than call · Husk did not offer.",
 	},
 	"husk+moth": {
 		"tone": "cold",
-		"log": "Moth's porch light held while Husk was in the yard · the light stayed on the coat and did not touch the face · the neighbor's dog barked once and stopped.",
+		"log": "Moth's porch light held while Husk was in the yard's floodlight · the light stayed on the coat-shape and did not reach for a face · the neighbor's dog barked once and stopped.",
 	},
 	"filly+moth": {
 		"tone": "warm",
-		"log": "Moth held the light at the state line rest stop while Filly stopped for coffee · the second envelope moved from the second pocket to the third pocket and stayed there.",
+		"log": "Moth held the rest-stop light while Filly idled in the payphone circuit · the second envelope moved one drop down the route and stayed there.",
 		"cover": 1,
 	},
 	"vagrant+moth": {
 		"tone": "warm",
-		"log": "Vagrant took the same porch light Moth had been at the night before · Vagrant nodded at the light · the light was the light · nothing amplified.",
+		"log": "Vagrant came up in the same porch light Moth had held the night before · the light acknowledged the light · nothing amplified.",
 	},
 	"cicada+vagrant": {
 		"tone": "warm",
@@ -4990,17 +4990,17 @@ const _DEMON_PAIR_INTERACTIONS: Dictionary = {
 	},
 	"filly+weir": {
 		"tone": "warm",
-		"log": "Filly crossed the river on the parish ferry while Weir sat under the ferry's third support · the letter did not get wet · the water did not lift.",
+		"log": "Filly crossed the river on the ferry's radio while Weir held the third support's sounder · the letter did not get wet · the water did not lift.",
 		"cover": 1,
 	},
 	"cicada+filly": {
 		"tone": "warm",
-		"log": "Cicada under the bridge as Filly crossed it · a hum long enough to cover Filly's footsteps · nobody at the diner heard either the hum or the walking.",
+		"log": "Cicada under the bridge as Filly crossed it · a hum long enough to cover Filly's passage on the line · nobody at the diner heard either the hum or the carrying.",
 		"cover": 1,
 	},
 	"husk+starling": {
 		"tone": "cold",
-		"log": "Starling counted the wires above Husk's parked car at the state-line rest stop · the count came out fifty-nine · fifty-nine is one under the number the count has been all summer.",
+		"log": "Starling counted the wires above Husk's dark stretch of the state-line rest stop · the count came out fifty-nine · fifty-nine is one under the number the count has been all summer.",
 	},
 	"cicada+steamboat": {
 		"tone": "loud",

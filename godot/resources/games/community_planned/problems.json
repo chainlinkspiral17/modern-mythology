@@ -845,8 +845,8 @@
        ]
       },
       {
-       "label": "wave Faith over · order coffee · let her run the table read.",
-       "summary": "+1.0 effort · Faith works the booth · diner's own threshold tightens",
+       "label": "wave JF over · order coffee · let Faith II take the booth-side floor.",
+       "summary": "+1.0 effort · Faith II settles under booth 6 · diner's own threshold tightens",
        "effort_applied": 1.0,
        "effects": [
         {
@@ -941,7 +941,7 @@
     "He left at 3:48 PM · cup half-drunk · ticket wheel turned once on its own. The diner held."
    ],
    "resolution_flavor_failure": [
-    "{agent} read the booth wrong. Booth 6 was still occupied at close · Faith wiped around him like he wasn't there."
+    "{agent} read the booth wrong. Booth 6 was still occupied at close · Faith II wouldn't settle, and JF wiped around him like he wasn't there."
    ]
   },
   {
@@ -1342,7 +1342,7 @@
    ],
    "resolution_flavor_success": [
     "He came home Thursday afternoon. The deputy filed the report and the report stayed local.",
-    "The flier came off the pool bulletin Friday morning. Faith pinned a thank-you card up in its place."
+    "The flier came off the pool bulletin Friday morning. The mother pinned a thank-you card up in its place."
    ],
    "resolution_flavor_failure": [
     "The flier is still on the bulletin. The corners are more curled. The mother is at the HOA office at 9 AM again on Thursday."
