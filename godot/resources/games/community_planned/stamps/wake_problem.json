@@ -1,0 +1,140 @@
+{
+ "id": "wake_problem",
+ "notes": "The covered table, the dishes, the one empty chair.",
+ "w": 96,
+ "h": 54,
+ "palette": [
+  "#141a22",
+  "#1d2530",
+  "#d8cfae",
+  "#8a8570",
+  "#c8a25a",
+  "#7c93a8",
+  "#8a5aa8",
+  "#0c1016",
+  "#5a7a52",
+  "#b06048"
+ ],
+ "layers": [
+  {
+   "op": "fill",
+   "color": 0
+  },
+  {
+   "op": "hline",
+   "y": 44,
+   "x_range": [
+    4,
+    92
+   ],
+   "color": 3
+  },
+  {
+   "op": "rect",
+   "xywh": [
+    24,
+    28,
+    40,
+    4
+   ],
+   "color": 2
+  },
+  {
+   "op": "rect",
+   "xywh": [
+    26,
+    32,
+    36,
+    10
+   ],
+   "color": 1
+  },
+  {
+   "op": "vline",
+   "x": 26,
+   "y_range": [
+    32,
+    42
+   ],
+   "color": 3
+  },
+  {
+   "op": "vline",
+   "x": 62,
+   "y_range": [
+    32,
+    42
+   ],
+   "color": 3
+  },
+  {
+   "op": "dot",
+   "xy": [
+    32,
+    27
+   ],
+   "size": 1,
+   "color": 3
+  },
+  {
+   "op": "dot",
+   "xy": [
+    44,
+    27
+   ],
+   "size": 1,
+   "color": 3
+  },
+  {
+   "op": "dot",
+   "xy": [
+    56,
+    27
+   ],
+   "size": 1,
+   "color": 3
+  },
+  {
+   "op": "polyline",
+   "points": [
+    [
+     74,
+     44
+    ],
+    [
+     74,
+     34
+    ],
+    [
+     82,
+     34
+    ],
+    [
+     82,
+     44
+    ]
+   ],
+   "color": 2
+  },
+  {
+   "op": "hline",
+   "y": 37,
+   "x_range": [
+    74,
+    82
+   ],
+   "color": 2
+  },
+  {
+   "op": "shade",
+   "xywh": [
+    0,
+    0,
+    96,
+    54
+   ],
+   "color": 7,
+   "strength": 0.2
+  }
+ ]
+}

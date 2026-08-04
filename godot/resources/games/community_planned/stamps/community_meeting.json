@@ -1,0 +1,186 @@
+{
+ "id": "community_meeting",
+ "notes": "The circle of chairs with the coffee urn \u2014 the parish's own room.",
+ "w": 96,
+ "h": 54,
+ "palette": [
+  "#141a22",
+  "#1d2530",
+  "#d8cfae",
+  "#8a8570",
+  "#c8a25a",
+  "#7c93a8",
+  "#8a5aa8",
+  "#0c1016",
+  "#5a7a52",
+  "#b06048"
+ ],
+ "layers": [
+  {
+   "op": "fill",
+   "color": 0
+  },
+  {
+   "op": "hline",
+   "y": 44,
+   "x_range": [
+    4,
+    92
+   ],
+   "color": 3
+  },
+  {
+   "op": "dot",
+   "xy": [
+    24,
+    30
+   ],
+   "size": 2,
+   "color": 2
+  },
+  {
+   "op": "vline",
+   "x": 24,
+   "y_range": [
+    33,
+    38
+   ],
+   "color": 3
+  },
+  {
+   "op": "dot",
+   "xy": [
+    38,
+    24
+   ],
+   "size": 2,
+   "color": 3
+  },
+  {
+   "op": "vline",
+   "x": 38,
+   "y_range": [
+    27,
+    32
+   ],
+   "color": 3
+  },
+  {
+   "op": "dot",
+   "xy": [
+    56,
+    24
+   ],
+   "size": 2,
+   "color": 2
+  },
+  {
+   "op": "vline",
+   "x": 56,
+   "y_range": [
+    27,
+    32
+   ],
+   "color": 3
+  },
+  {
+   "op": "dot",
+   "xy": [
+    70,
+    30
+   ],
+   "size": 2,
+   "color": 3
+  },
+  {
+   "op": "vline",
+   "x": 70,
+   "y_range": [
+    33,
+    38
+   ],
+   "color": 3
+  },
+  {
+   "op": "dot",
+   "xy": [
+    62,
+    38
+   ],
+   "size": 2,
+   "color": 2
+  },
+  {
+   "op": "vline",
+   "x": 62,
+   "y_range": [
+    41,
+    46
+   ],
+   "color": 3
+  },
+  {
+   "op": "dot",
+   "xy": [
+    32,
+    38
+   ],
+   "size": 2,
+   "color": 3
+  },
+  {
+   "op": "vline",
+   "x": 32,
+   "y_range": [
+    41,
+    46
+   ],
+   "color": 3
+  },
+  {
+   "op": "rect",
+   "xywh": [
+    44,
+    32,
+    8,
+    8
+   ],
+   "color": 1
+  },
+  {
+   "op": "polyline",
+   "points": [
+    [
+     44,
+     32
+    ],
+    [
+     52,
+     32
+    ],
+    [
+     52,
+     40
+    ],
+    [
+     44,
+     40
+    ],
+    [
+     44,
+     32
+    ]
+   ],
+   "color": 4
+  },
+  {
+   "op": "dot",
+   "xy": [
+    48,
+    29
+   ],
+   "size": 1,
+   "color": 3
+  }
+ ]
+}

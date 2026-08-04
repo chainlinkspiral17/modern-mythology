@@ -1,0 +1,170 @@
+{
+ "id": "diner_threshold",
+ "notes": "Booth six under the hanging lamp, the door ajar with spill.",
+ "w": 96,
+ "h": 54,
+ "palette": [
+  "#141a22",
+  "#1d2530",
+  "#d8cfae",
+  "#8a8570",
+  "#c8a25a",
+  "#7c93a8",
+  "#8a5aa8",
+  "#0c1016",
+  "#5a7a52",
+  "#b06048"
+ ],
+ "layers": [
+  {
+   "op": "fill",
+   "color": 0
+  },
+  {
+   "op": "hline",
+   "y": 44,
+   "x_range": [
+    4,
+    92
+   ],
+   "color": 3
+  },
+  {
+   "op": "vline",
+   "x": 48,
+   "y_range": [
+    6,
+    14
+   ],
+   "color": 3
+  },
+  {
+   "op": "poly",
+   "points": [
+    [
+     42,
+     14
+    ],
+    [
+     54,
+     14
+    ],
+    [
+     50,
+     18
+    ],
+    [
+     46,
+     18
+    ]
+   ],
+   "color": 4
+  },
+  {
+   "op": "vgrad",
+   "y_range": [
+    18,
+    34
+   ],
+   "stops": [
+    4,
+    1,
+    0
+   ]
+  },
+  {
+   "op": "polyline",
+   "points": [
+    [
+     28,
+     44
+    ],
+    [
+     28,
+     30
+    ],
+    [
+     40,
+     30
+    ],
+    [
+     40,
+     44
+    ]
+   ],
+   "color": 2
+  },
+  {
+   "op": "polyline",
+   "points": [
+    [
+     56,
+     44
+    ],
+    [
+     56,
+     30
+    ],
+    [
+     68,
+     30
+    ],
+    [
+     68,
+     44
+    ]
+   ],
+   "color": 2
+  },
+  {
+   "op": "hline",
+   "y": 36,
+   "x_range": [
+    28,
+    68
+   ],
+   "color": 3
+  },
+  {
+   "op": "vline",
+   "x": 84,
+   "y_range": [
+    20,
+    44
+   ],
+   "color": 2
+  },
+  {
+   "op": "poly",
+   "points": [
+    [
+     84,
+     44
+    ],
+    [
+     92,
+     44
+    ],
+    [
+     84,
+     24
+    ]
+   ],
+   "color": 1
+  },
+  {
+   "op": "polyline",
+   "points": [
+    [
+     84,
+     24
+    ],
+    [
+     92,
+     44
+    ]
+   ],
+   "color": 3
+  }
+ ]
+}

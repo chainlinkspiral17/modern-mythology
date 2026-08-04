@@ -1,0 +1,156 @@
+{
+ "id": "missing_kid",
+ "notes": "The flier on the pole \u2014 staples, curled corner.",
+ "w": 96,
+ "h": 54,
+ "palette": [
+  "#141a22",
+  "#1d2530",
+  "#d8cfae",
+  "#8a8570",
+  "#c8a25a",
+  "#7c93a8",
+  "#8a5aa8",
+  "#0c1016",
+  "#5a7a52",
+  "#b06048"
+ ],
+ "layers": [
+  {
+   "op": "fill",
+   "color": 0
+  },
+  {
+   "op": "hline",
+   "y": 44,
+   "x_range": [
+    4,
+    92
+   ],
+   "color": 3
+  },
+  {
+   "op": "vline",
+   "x": 30,
+   "y_range": [
+    8,
+    44
+   ],
+   "color": 2
+  },
+  {
+   "op": "rect",
+   "xywh": [
+    36,
+    12,
+    26,
+    22
+   ],
+   "color": 1
+  },
+  {
+   "op": "polyline",
+   "points": [
+    [
+     36,
+     12
+    ],
+    [
+     62,
+     12
+    ],
+    [
+     62,
+     34
+    ],
+    [
+     36,
+     34
+    ],
+    [
+     36,
+     12
+    ]
+   ],
+   "color": 2
+  },
+  {
+   "op": "rect",
+   "xywh": [
+    43,
+    15,
+    12,
+    9
+   ],
+   "color": 3
+  },
+  {
+   "op": "hline",
+   "y": 27,
+   "x_range": [
+    39,
+    59
+   ],
+   "color": 3
+  },
+  {
+   "op": "hline",
+   "y": 30,
+   "x_range": [
+    39,
+    55
+   ],
+   "color": 3
+  },
+  {
+   "op": "dot",
+   "xy": [
+    37,
+    13
+   ],
+   "size": 1,
+   "color": 5
+  },
+  {
+   "op": "dot",
+   "xy": [
+    61,
+    13
+   ],
+   "size": 1,
+   "color": 5
+  },
+  {
+   "op": "poly",
+   "points": [
+    [
+     62,
+     34
+    ],
+    [
+     58,
+     34
+    ],
+    [
+     62,
+     30
+    ]
+   ],
+   "color": 0
+  },
+  {
+   "op": "polyline",
+   "points": [
+    [
+     58,
+     34
+    ],
+    [
+     62,
+     30
+    ]
+   ],
+   "color": 3
+  }
+ ]
+}

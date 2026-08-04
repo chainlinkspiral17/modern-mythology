@@ -1,0 +1,170 @@
+{
+ "id": "lease_and_licensing",
+ "notes": "The storefront with the notice taped inside the glass.",
+ "w": 96,
+ "h": 54,
+ "palette": [
+  "#141a22",
+  "#1d2530",
+  "#d8cfae",
+  "#8a8570",
+  "#c8a25a",
+  "#7c93a8",
+  "#8a5aa8",
+  "#0c1016",
+  "#5a7a52",
+  "#b06048"
+ ],
+ "layers": [
+  {
+   "op": "fill",
+   "color": 0
+  },
+  {
+   "op": "hline",
+   "y": 44,
+   "x_range": [
+    4,
+    92
+   ],
+   "color": 3
+  },
+  {
+   "op": "rect",
+   "xywh": [
+    24,
+    14,
+    48,
+    30
+   ],
+   "color": 1
+  },
+  {
+   "op": "polyline",
+   "points": [
+    [
+     24,
+     14
+    ],
+    [
+     72,
+     14
+    ],
+    [
+     72,
+     44
+    ],
+    [
+     24,
+     44
+    ],
+    [
+     24,
+     14
+    ]
+   ],
+   "color": 2
+  },
+  {
+   "op": "hline",
+   "y": 20,
+   "x_range": [
+    24,
+    72
+   ],
+   "color": 4
+  },
+  {
+   "op": "rect",
+   "xywh": [
+    30,
+    24,
+    18,
+    14
+   ],
+   "color": 7
+  },
+  {
+   "op": "polyline",
+   "points": [
+    [
+     30,
+     24
+    ],
+    [
+     48,
+     24
+    ],
+    [
+     48,
+     38
+    ],
+    [
+     30,
+     38
+    ],
+    [
+     30,
+     24
+    ]
+   ],
+   "color": 3
+  },
+  {
+   "op": "rect",
+   "xywh": [
+    36,
+    27,
+    8,
+    9
+   ],
+   "color": 2
+  },
+  {
+   "op": "hline",
+   "y": 29,
+   "x_range": [
+    37,
+    43
+   ],
+   "color": 3
+  },
+  {
+   "op": "hline",
+   "y": 31,
+   "x_range": [
+    37,
+    42
+   ],
+   "color": 3
+  },
+  {
+   "op": "rect",
+   "xywh": [
+    56,
+    26,
+    10,
+    18
+   ],
+   "color": 7
+  },
+  {
+   "op": "polyline",
+   "points": [
+    [
+     56,
+     26
+    ],
+    [
+     66,
+     26
+    ],
+    [
+     66,
+     44
+    ]
+   ],
+   "color": 3
+  }
+ ]
+}

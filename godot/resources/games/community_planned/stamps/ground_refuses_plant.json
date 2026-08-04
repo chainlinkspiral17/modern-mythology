@@ -1,0 +1,152 @@
+{
+ "id": "ground_refuses_plant",
+ "notes": "The bare mound, the wilted stakes, one green ring of refusal.",
+ "w": 96,
+ "h": 54,
+ "palette": [
+  "#141a22",
+  "#1d2530",
+  "#d8cfae",
+  "#8a8570",
+  "#c8a25a",
+  "#7c93a8",
+  "#8a5aa8",
+  "#0c1016",
+  "#5a7a52",
+  "#b06048"
+ ],
+ "layers": [
+  {
+   "op": "fill",
+   "color": 0
+  },
+  {
+   "op": "hline",
+   "y": 44,
+   "x_range": [
+    4,
+    92
+   ],
+   "color": 3
+  },
+  {
+   "op": "poly",
+   "points": [
+    [
+     30,
+     44
+    ],
+    [
+     48,
+     36
+    ],
+    [
+     66,
+     44
+    ]
+   ],
+   "color": 1
+  },
+  {
+   "op": "polyline",
+   "points": [
+    [
+     30,
+     44
+    ],
+    [
+     48,
+     36
+    ],
+    [
+     66,
+     44
+    ]
+   ],
+   "color": 3
+  },
+  {
+   "op": "polyline",
+   "points": [
+    [
+     20,
+     44
+    ],
+    [
+     22,
+     30
+    ]
+   ],
+   "color": 3
+  },
+  {
+   "op": "polyline",
+   "points": [
+    [
+     40,
+     44
+    ],
+    [
+     42,
+     33
+    ]
+   ],
+   "color": 3
+  },
+  {
+   "op": "polyline",
+   "points": [
+    [
+     58,
+     44
+    ],
+    [
+     60,
+     30
+    ]
+   ],
+   "color": 3
+  },
+  {
+   "op": "polyline",
+   "points": [
+    [
+     76,
+     44
+    ],
+    [
+     78,
+     33
+    ]
+   ],
+   "color": 3
+  },
+  {
+   "op": "dot",
+   "xy": [
+    48,
+    40
+   ],
+   "size": 6,
+   "color": 0
+  },
+  {
+   "op": "dot",
+   "xy": [
+    48,
+    40
+   ],
+   "size": 4,
+   "color": 8
+  },
+  {
+   "op": "dot",
+   "xy": [
+    48,
+    40
+   ],
+   "size": 2,
+   "color": 0
+  }
+ ]
+}

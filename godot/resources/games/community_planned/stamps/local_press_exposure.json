@@ -1,0 +1,254 @@
+{
+ "id": "local_press_exposure",
+ "notes": "The front page block with the flash burst over it.",
+ "w": 96,
+ "h": 54,
+ "palette": [
+  "#141a22",
+  "#1d2530",
+  "#d8cfae",
+  "#8a8570",
+  "#c8a25a",
+  "#7c93a8",
+  "#8a5aa8",
+  "#0c1016",
+  "#5a7a52",
+  "#b06048"
+ ],
+ "layers": [
+  {
+   "op": "fill",
+   "color": 0
+  },
+  {
+   "op": "hline",
+   "y": 44,
+   "x_range": [
+    4,
+    92
+   ],
+   "color": 3
+  },
+  {
+   "op": "rect",
+   "xywh": [
+    28,
+    10,
+    32,
+    28
+   ],
+   "color": 1
+  },
+  {
+   "op": "polyline",
+   "points": [
+    [
+     28,
+     10
+    ],
+    [
+     60,
+     10
+    ],
+    [
+     60,
+     38
+    ],
+    [
+     28,
+     38
+    ],
+    [
+     28,
+     10
+    ]
+   ],
+   "color": 2
+  },
+  {
+   "op": "hline",
+   "y": 15,
+   "x_range": [
+    31,
+    57
+   ],
+   "color": 2
+  },
+  {
+   "op": "hline",
+   "y": 19,
+   "x_range": [
+    31,
+    50
+   ],
+   "color": 3
+  },
+  {
+   "op": "rect",
+   "xywh": [
+    31,
+    22,
+    12,
+    10
+   ],
+   "color": 3
+  },
+  {
+   "op": "hline",
+   "y": 24,
+   "x_range": [
+    46,
+    57
+   ],
+   "color": 3
+  },
+  {
+   "op": "hline",
+   "y": 27,
+   "x_range": [
+    46,
+    57
+   ],
+   "color": 3
+  },
+  {
+   "op": "hline",
+   "y": 30,
+   "x_range": [
+    46,
+    57
+   ],
+   "color": 3
+  },
+  {
+   "op": "hline",
+   "y": 33,
+   "x_range": [
+    46,
+    57
+   ],
+   "color": 3
+  },
+  {
+   "op": "dot",
+   "xy": [
+    70,
+    14
+   ],
+   "size": 2,
+   "color": 2
+  },
+  {
+   "op": "polyline",
+   "points": [
+    [
+     72,
+     14
+    ],
+    [
+     75,
+     14
+    ]
+   ],
+   "color": 4
+  },
+  {
+   "op": "polyline",
+   "points": [
+    [
+     67,
+     14
+    ],
+    [
+     65,
+     14
+    ]
+   ],
+   "color": 4
+  },
+  {
+   "op": "polyline",
+   "points": [
+    [
+     70,
+     16
+    ],
+    [
+     70,
+     19
+    ]
+   ],
+   "color": 4
+  },
+  {
+   "op": "polyline",
+   "points": [
+    [
+     70,
+     11
+    ],
+    [
+     70,
+     9
+    ]
+   ],
+   "color": 4
+  },
+  {
+   "op": "polyline",
+   "points": [
+    [
+     72,
+     16
+    ],
+    [
+     74,
+     18
+    ]
+   ],
+   "color": 4
+  },
+  {
+   "op": "polyline",
+   "points": [
+    [
+     68,
+     12
+    ],
+    [
+     66,
+     10
+    ]
+   ],
+   "color": 4
+  },
+  {
+   "op": "polyline",
+   "points": [
+    [
+     72,
+     12
+    ],
+    [
+     74,
+     10
+    ]
+   ],
+   "color": 4
+  },
+  {
+   "op": "polyline",
+   "points": [
+    [
+     68,
+     16
+    ],
+    [
+     66,
+     18
+    ]
+   ],
+   "color": 4
+  }
+ ]
+}

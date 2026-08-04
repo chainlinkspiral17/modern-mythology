@@ -36,7 +36,128 @@ func _agent_portrait(a_id: String, expr: String, accent: Color) -> Texture2D:
 			var tex: Texture2D = load(path) as Texture2D
 			if tex != null:
 				return tex
+	# Demons are electronic (agents.json rule): a sigil, not a face.
+	var a: Dictionary = _agents.get(a_id, {})
+	if String(a.get("class", "")) == "demon":
+		return _demon_sigil_tex(a_id)
 	return BUST_PORTRAIT.texture(a_id, expr, accent)
+
+
+# ── Demon sigils ────────────────────────────────────────────────
+# 20x22 deterministic per-id glyph in the class violet: a waveform /
+# circuit reading, never a body. Authored motifs for the nine core
+# demons; the hash cross-hatch covers future recruits.
+const _SIGIL_W := 20
+const _SIGIL_H := 22
+var _sigil_cache: Dictionary = {}
+
+
+func _demon_sigil_tex(a_id: String) -> ImageTexture:
+	if _sigil_cache.has(a_id):
+		return _sigil_cache[a_id]
+	var img := Image.create(_SIGIL_W, _SIGIL_H, false, Image.FORMAT_RGBA8)
+	img.fill(Color(0.06, 0.05, 0.09, 0.9))
+	var violet := Color("#a877c8")
+	var dim := Color(0.42, 0.30, 0.52, 1.0)
+	var seed_v: int = posmod(a_id.hash(), 9973)
+	# faint static field
+	for y in range(_SIGIL_H):
+		for x in range(_SIGIL_W):
+			var h: int = posmod((x * 73856093) ^ (y * 19349663) ^ seed_v, 1000)
+			if h < 55:
+				img.set_pixel(x, y, Color(dim.r, dim.g, dim.b, 0.45))
+	match a_id:
+		"vagrant":
+			# dotted meander — a route read off a trunk line
+			var yy := 6
+			for x in range(2, 18):
+				if x % 3 != 0:
+					_sig_px(img, x, yy, violet)
+				if x % 5 == 0:
+					yy = clampi(yy + (1 if posmod(x ^ seed_v, 2) == 0 else 5), 4, 18)
+		"cicada":
+			# nested arcs — the hum under the bridge
+			for r in [3, 6, 9]:
+				for x in range(_SIGIL_W):
+					for y in range(12):
+						var d: float = Vector2(x - 10, y - 12).length()
+						if absf(d - float(r)) < 0.7:
+							_sig_px(img, x, y + 2, violet if r != 6 else dim)
+		"moth":
+			# twin wing triangles around a bright spine
+			for i in range(6):
+				_sig_px(img, 9 - i, 8 + i, dim)
+				_sig_px(img, 11 + i, 8 + i, dim)
+				for x2 in range(9 - i, 12 + i):
+					if posmod(x2 + i, 2) == 0:
+						_sig_px(img, x2, 8 + i, dim)
+			for y in range(4, 18):
+				_sig_px(img, 10, y, violet)
+		"steamboat":
+			# three heavy bars — the wake in telemetry
+			for bar in range(3):
+				var hw: int = (14 - bar * 4) >> 1
+				for x in range(10 - hw, 10 + hw):
+					_sig_px(img, x, 6 + bar * 5, violet if bar == 0 else dim)
+					_sig_px(img, x, 7 + bar * 5, violet if bar == 0 else dim)
+		"weir":
+			# chevrons pointing down — the current's shape
+			for c in range(3):
+				for i in range(5):
+					_sig_px(img, 5 + i, 5 + c * 5 + i, violet if c == 1 else dim)
+					_sig_px(img, 15 - i, 5 + c * 5 + i, violet if c == 1 else dim)
+		"filly":
+			# one lightning stroke — switching speed
+			var pts := [Vector2i(13, 3), Vector2i(7, 10), Vector2i(11, 10),
+					Vector2i(6, 19)]
+			for i in range(pts.size() - 1):
+				_sig_line(img, pts[i], pts[i + 1], violet)
+		"starling":
+			# seven quiet loads in a loose V
+			var offs := [Vector2i(3, 6), Vector2i(6, 9), Vector2i(9, 12),
+					Vector2i(12, 9), Vector2i(15, 6), Vector2i(7, 15),
+					Vector2i(12, 15)]
+			for o in offs:
+				_sig_px(img, o.x, o.y, violet)
+				_sig_px(img, o.x + 1, o.y, dim)
+		"husk":
+			# mostly dark — one dim column that should not be there
+			for y in range(3, 19):
+				for x in range(5, 15):
+					img.set_pixel(x, y, Color(0.04, 0.03, 0.06, 1.0))
+			for y in range(5, 17):
+				_sig_px(img, 10, y, dim)
+			_sig_px(img, 10, 11, violet)
+		"lantern":
+			# radiating spokes — everyone watches it work
+			for ang in range(8):
+				var v := Vector2.RIGHT.rotated(float(ang) * PI / 4.0)
+				for r in range(2, 8):
+					var p := Vector2(10, 11) + v * float(r)
+					_sig_px(img, int(p.x), int(p.y), violet if r < 5 else dim)
+			_sig_px(img, 10, 11, Color(1, 0.95, 0.8, 1))
+		_:
+			# hash cross-hatch fallback for recruits
+			for y in range(4, 18):
+				for x in range(4, 16):
+					if posmod((x * 31) ^ (y * 17) ^ seed_v, 7) == 0:
+						_sig_px(img, x, y, violet if posmod(x + y, 3) == 0 else dim)
+	var tex := ImageTexture.create_from_image(img)
+	_sigil_cache[a_id] = tex
+	return tex
+
+
+func _sig_px(img: Image, x: int, y: int, c: Color) -> void:
+	if x >= 0 and x < _SIGIL_W and y >= 0 and y < _SIGIL_H:
+		img.set_pixel(x, y, c)
+
+
+func _sig_line(img: Image, a: Vector2i, b: Vector2i, c: Color) -> void:
+	var steps: int = maxi(absi(b.x - a.x), absi(b.y - a.y))
+	for i in range(steps + 1):
+		var t: float = float(i) / float(maxi(steps, 1))
+		_sig_px(img, int(roundf(lerpf(float(a.x), float(b.x), t))),
+				int(roundf(lerpf(float(a.y), float(b.y), t))), c)
 
 const DATA_ROOT := "res://resources/games/community_planned/"
 # Three-slot save system. The active slot is persisted in
@@ -1667,6 +1788,33 @@ func _banner_tex(banner_id: String) -> ImageTexture:
 	return tex
 
 
+# Problem-type stamp cache — HeroImage JSONs under stamps/, one per
+# problem_type (gen_cp_problem_stamps.py). Same missing-file
+# discipline as the banners: null is cached, warning fires once.
+var _stamp_cache: Dictionary = {}
+
+
+func _stamp_tex(ptype: String) -> ImageTexture:
+	if _stamp_cache.has(ptype):
+		return _stamp_cache[ptype]
+	var hero := HeroImage.new()
+	var path := "res://resources/games/community_planned/stamps/%s.json" % ptype
+	if not hero.load_from(path):
+		_stamp_cache[ptype] = null
+		return null
+	var tex: ImageTexture = hero.texture(Vector2i(384, 216))
+	_stamp_cache[ptype] = tex
+	return tex
+
+
+func _problem_stamp(p: Dictionary) -> ImageTexture:
+	var t: Dictionary = _problem_templates.get(String(p.get("template_id", "")), {})
+	var ptype: String = String(t.get("problem_type", ""))
+	if ptype == "":
+		return null
+	return _stamp_tex(ptype)
+
+
 # Accent color for an agent's procedural bust. Demons share one
 # sickly violet so they read as a class at a glance; humans get a
 # stable hash hue.
@@ -1816,6 +1964,18 @@ func _render_region(r_id: String) -> void:
 		var p: Dictionary = probs[pi]
 		var row := HBoxContainer.new()
 		row.add_theme_constant_override("separation", 4)
+		# Problem-type stamp: the row leads with a picture of the
+		# problem's shape, not just its words.
+		var row_stamp: ImageTexture = _problem_stamp(p)
+		if row_stamp != null:
+			var icon := TextureRect.new()
+			icon.texture = row_stamp
+			icon.custom_minimum_size = Vector2(38, 21)
+			icon.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED
+			icon.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
+			icon.texture_filter = CanvasItem.TEXTURE_FILTER_NEAREST
+			icon.mouse_filter = Control.MOUSE_FILTER_IGNORE
+			row.add_child(icon)
 		# Problem label is a flat button that opens the dossier. The
 		# title + severity dots + effort read the same as before, but
 		# clicking now surfaces the template flavor + threshold info
@@ -1969,7 +2129,7 @@ func _render_agent_list() -> void:
 		var bust := TextureRect.new()
 		bust.texture = _agent_portrait(String(a_id), "neutral",
 			_agent_accent(String(a_id), a))
-		bust.custom_minimum_size = Vector2(26, 28)
+		bust.custom_minimum_size = Vector2(40, 44)
 		bust.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED
 		bust.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
 		bust.texture_filter = CanvasItem.TEXTURE_FILTER_NEAREST
@@ -2016,7 +2176,7 @@ func _open_agent_dossier(agent_id: String) -> void:
 	var d_expr: String = "angry" if a["class"] == "demon" else "neutral"
 	d_bust.texture = _agent_portrait(agent_id, d_expr,
 		_agent_accent(agent_id, a))
-	d_bust.custom_minimum_size = Vector2(84, 90)
+	d_bust.custom_minimum_size = Vector2(100, 108)
 	d_bust.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED
 	d_bust.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
 	d_bust.texture_filter = CanvasItem.TEXTURE_FILTER_NEAREST
@@ -2286,6 +2446,17 @@ func _open_problem_dossier(region_id: String, problem_index: int) -> void:
 	col.add_theme_constant_override("separation", 6)
 	col.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	scroll.add_child(col)
+	# Problem-type stamp leads the dossier.
+	var dossier_art: ImageTexture = _problem_stamp(p)
+	if dossier_art != null:
+		var art_tr := TextureRect.new()
+		art_tr.texture = dossier_art
+		art_tr.custom_minimum_size = Vector2(240, 135)
+		art_tr.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED
+		art_tr.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
+		art_tr.texture_filter = CanvasItem.TEXTURE_FILTER_NEAREST
+		art_tr.mouse_filter = Control.MOUSE_FILTER_IGNORE
+		col.add_child(art_tr)
 	var hdr := Label.new()
 	hdr.text = String(p["title"])
 	hdr.add_theme_font_size_override("font_size", 17)
@@ -2634,6 +2805,18 @@ func _open_dispatch_picker(region_id: String, problem_index: int) -> void:
 	vbox.add_theme_constant_override("separation", 6)
 	vbox.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	scroll.add_child(vbox)
+	# The event's artwork leads the picker — the picture of what the
+	# agent is being sent into.
+	var picker_art: ImageTexture = _problem_stamp(p)
+	if picker_art != null:
+		var art_tr := TextureRect.new()
+		art_tr.texture = picker_art
+		art_tr.custom_minimum_size = Vector2(200, 112)
+		art_tr.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED
+		art_tr.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
+		art_tr.texture_filter = CanvasItem.TEXTURE_FILTER_NEAREST
+		art_tr.mouse_filter = Control.MOUSE_FILTER_IGNORE
+		vbox.add_child(art_tr)
 	var hint := Label.new()
 	hint.text = "%s (%s) · severity %.1f · effort %.1f" % [
 		p["title"], _regions[region_id]["name"],

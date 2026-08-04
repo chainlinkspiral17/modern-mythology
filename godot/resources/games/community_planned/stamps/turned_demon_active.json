@@ -1,0 +1,136 @@
+{
+ "id": "turned_demon_active",
+ "notes": "The sigil half out of its broken binding ring.",
+ "w": 96,
+ "h": 54,
+ "palette": [
+  "#141a22",
+  "#1d2530",
+  "#d8cfae",
+  "#8a8570",
+  "#c8a25a",
+  "#7c93a8",
+  "#8a5aa8",
+  "#0c1016",
+  "#5a7a52",
+  "#b06048"
+ ],
+ "layers": [
+  {
+   "op": "fill",
+   "color": 0
+  },
+  {
+   "op": "hline",
+   "y": 46,
+   "x_range": [
+    4,
+    92
+   ],
+   "color": 3
+  },
+  {
+   "op": "dot",
+   "xy": [
+    48,
+    26
+   ],
+   "size": 14,
+   "color": 0
+  },
+  {
+   "op": "dot",
+   "xy": [
+    48,
+    26
+   ],
+   "size": 13,
+   "color": 2
+  },
+  {
+   "op": "dot",
+   "xy": [
+    48,
+    26
+   ],
+   "size": 11,
+   "color": 0
+  },
+  {
+   "op": "poly",
+   "points": [
+    [
+     44,
+     10
+    ],
+    [
+     60,
+     18
+    ],
+    [
+     48,
+     26
+    ]
+   ],
+   "color": 0
+  },
+  {
+   "op": "polyline",
+   "points": [
+    [
+     40,
+     14
+    ],
+    [
+     56,
+     34
+    ]
+   ],
+   "color": 6
+  },
+  {
+   "op": "polyline",
+   "points": [
+    [
+     56,
+     18
+    ],
+    [
+     44,
+     38
+    ]
+   ],
+   "color": 6
+  },
+  {
+   "op": "vline",
+   "x": 48,
+   "y_range": [
+    12,
+    40
+   ],
+   "color": 6
+  },
+  {
+   "op": "dot",
+   "xy": [
+    48,
+    26
+   ],
+   "size": 2,
+   "color": 6
+  },
+  {
+   "op": "noise",
+   "xywh": [
+    30,
+    8,
+    36,
+    36
+   ],
+   "color": 6,
+   "density": 0.05,
+   "seed": 11
+  }
+ ]
+}
