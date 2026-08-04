@@ -35,7 +35,7 @@ Current ledger (draft counts are honest, not aspirational):
 |---|---|---|
 | Tail-wave locales (~40, 2026-08-03) | 1 | Deck screenshots → reframe cameras; lighting pass per the lighting playbook; edge-of-set treatment; second vantages |
 | Vols 1–2 migration locales | 1–2 | same as tail wave |
-| Pit Stop diner / ChillWave (re-themes) | 3 (D2-D5 done) | D6 coverage + light: practicals on the new fixtures, vn_shot setups, Deck reframe |
+| Pit Stop diner / ChillWave (re-themes) | 4 (D2-D6 authored) | Deck reframe loops; pit_stop mood_strata still carries store-era names (convenience_night) — retune with the shader playbook open |
 | Salty Tome back + alley | 2 (D2 done) | D3 remaining infrastructure, D4 use states (Petra's desk mid-call, the four mugs poured) |
 | **Highway 9 (planned community)** | **3** | draft 4: Deck screenshot loops on all six framings + the five vn_shot markers |
 | Cedar tower (vol7 ch22) | 1 | per-floor dressing density, portal-room staging |

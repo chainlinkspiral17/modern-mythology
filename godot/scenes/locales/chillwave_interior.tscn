@@ -319,3 +319,39 @@ offset_top = 360.0
 offset_right = 520.0
 offset_bottom = 980.0
 script = ExtResource("14_dbgm")
+
+; ── CHILLWAVE SHOP vn_shot coverage (D6, 2026-08-03) · Deck-tune pending ──
+
+; in the door with the bell: counter + doorway
+[node name="shot_establish_shop" type="Marker3D" parent="." groups=["vn_shot"]]
+transform = Transform3D(0.939373, 0, -0.342898, -0.013712, 0.9992, -0.037565, 0.342624, 0.039989, 0.938621, 1.2, 1.65, -0.8)
+metadata/fov = 60.0
+
+; the service bell + face-down paperback
+[node name="shot_closeup_counter" type="Marker3D" parent="." groups=["vn_shot"]]
+transform = Transform3D(0.644827, 0, -0.764329, -0.038201, 0.99875, -0.032228, 0.763374, 0.049979, 0.644021, 0.3, 1.3, -1.9)
+metadata/fov = 45.0
+
+; through the doorway: inventory + workbench + stick box
+[node name="shot_wide_backroom" type="Marker3D" parent="." groups=["vn_shot"]]
+transform = Transform3D(0.813878, 0, -0.581035, -0.023235, 0.9992, -0.032546, 0.58057, 0.039989, 0.813227, 1.7, 1.62, -4.9)
+metadata/fov = 62.0
+
+; the three-slot box, Estuary 7 label (the_stick)
+[node name="shot_closeup_stickbox" type="Marker3D" parent="." groups=["vn_shot"]]
+transform = Transform3D(0.50622, 0, -0.862404, -0.051713, 0.998201, -0.030355, 0.860852, 0.059964, 0.505309, -0.9, 1.3, -4.3)
+metadata/fov = 42.0
+
+; Cale's bench mid-repair under the task lamp
+[node name="shot_closeup_workbench" type="Marker3D" parent="." groups=["vn_shot"]]
+transform = Transform3D(0.305817, 0, 0.95209, 0.047585, 0.99875, -0.015284, -0.9509, 0.049979, 0.305435, 1.7, 1.35, -6)
+metadata/fov = 45.0
+
+; The lit window across the street (D5) — its glow reaches the
+; storefront glass at night moods.
+[node name="Across_LitWindow_Practical" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.2, 1.6, 6.85)
+light_color = Color(0.88, 0.78, 0.52, 1)
+light_energy = 0.8
+shadow_enabled = false
+omni_range = 4.5
