@@ -426,6 +426,58 @@ def build_detail_pass_2026_08():
              (0.34, 0.24, 0.20, 1.0))
 
 
+def build_use_states_2026_08():
+    """D3 remainder + D4 use states (set-detail playbook). The store
+    mid-morning: Petra ON the phone behind her door, the four mugs
+    actually poured, the hold shelf doing its slow work. Also lands
+    the three commercial-report props draft 1 missed: the SLOW
+    TERMINAL, the HOLD SHELF, the open LEDGER. D5/D6 next."""
+    # ── Counter: the ledger open beside the register, the slow
+    # terminal (a CRT that takes its time), the hold shelf below
+    # with three tagged books waiting for their people ──
+    cx, cy = ROOM_W/2.0 - 1.4, 2.6
+    make_box("Ledger_Open_L", (cx - 0.75, cy - 0.15, 0.965), (0.18, 0.26, 0.015), (0.90, 0.88, 0.80, 1.0))
+    make_box("Ledger_Open_R", (cx - 0.56, cy - 0.15, 0.965), (0.18, 0.26, 0.015), (0.90, 0.88, 0.80, 1.0))
+    make_box("Ledger_Spine", (cx - 0.655, cy - 0.15, 0.972), (0.02, 0.26, 0.012), (0.36, 0.24, 0.16, 1.0))
+    make_box("SlowTerminal_Body", (cx + 0.85, cy + 0.35, 1.13), (0.40, 0.36, 0.34), (0.78, 0.75, 0.68, 1.0))
+    make_box("SlowTerminal_Screen", (cx + 0.85, cy + 0.16, 1.15), (0.30, 0.02, 0.22), (0.16, 0.24, 0.18, 1.0))
+    make_box("SlowTerminal_Cursor", (cx + 0.76, cy + 0.148, 1.10), (0.03, 0.005, 0.02), (0.55, 0.85, 0.55, 1.0))
+    make_box("SlowTerminal_Keyboard", (cx + 0.85, cy - 0.12, 0.975), (0.36, 0.14, 0.025), (0.70, 0.67, 0.60, 1.0))
+    for hi in range(3):
+        make_box(f"Hold_Book_{hi}", (cx - 0.9 + hi * 0.35, cy + 0.42, 0.62),
+                 (0.24, 0.17, 0.05), BOOK_SPINES[(hi * 2) % len(BOOK_SPINES)])
+        make_box(f"Hold_Slip_{hi}", (cx - 0.9 + hi * 0.35, cy + 0.34, 0.655),
+                 (0.06, 0.14, 0.005), (0.94, 0.92, 0.84, 1.0))
+    make_box("Hold_Shelf", (cx - 0.55, cy + 0.42, 0.59), (1.35, 0.25, 0.03), COL_WOOD_DK)
+    # ── Petra's office mid-call: handset OFF the cradle, coiled
+    # cord to her ear-height, papers pushed to one side ──
+    make_box("Office_Handset_InUse", (2.35, 8.05, 1.35), (0.06, 0.20, 0.05), COL_BLACK)
+    for ci in range(4):
+        make_cyl(f"Office_PhoneCoil_{ci}", (2.35, 8.12 + ci * 0.05, 0.95 + ci * 0.10),
+                 0.025, 0.03, COL_BLACK, segments=6)
+    make_box("Office_Papers_Pushed", (3.25, 8.45, 0.775), (0.30, 0.24, 0.03), (0.88, 0.86, 0.80, 1.0))
+    # ── The four mugs POURED (dark coffee discs) + the kettle just
+    # set down off-center on the hob ──
+    for mi in range(4):
+        mx = -3.40 + 0.14 * (mi % 2)
+        my = 6.55 + 0.16 * (mi // 2)
+        make_cyl(f"Mug_{mi}_Coffee", (mx, my, 1.075), 0.033, 0.008, (0.24, 0.16, 0.10, 1.0), segments=8)
+    make_cyl("Clay_Mug_Coffee", (-3.62, 6.70, 1.085), 0.038, 0.008, (0.26, 0.17, 0.11, 1.0), segments=8)
+    # ── The reading nook mid-read: the side-table book now OPEN on
+    # the chair arm, cushion dented (darker patch) ──
+    make_box("Nook_Book_Open_L", (-2.62, 1.62, 0.665), (0.11, 0.16, 0.01), (0.90, 0.88, 0.80, 1.0))
+    make_box("Nook_Book_Open_R", (-2.50, 1.62, 0.665), (0.11, 0.16, 0.01), (0.90, 0.88, 0.80, 1.0))
+    make_box("Nook_Cushion_Dent", (-2.9, 1.3, 0.555), (0.36, 0.34, 0.015), (0.40, 0.24, 0.17, 1.0))
+    # ── The alley crate as a reading perch: Petra's glasses folded
+    # on it + the folded newspaper ("by my reading at the dumpster") ──
+    make_box("Alley_Glasses_Bridge", (1.1, 10.55, 0.335), (0.09, 0.012, 0.008), (0.24, 0.22, 0.20, 1.0))
+    for gi, gxo in enumerate([-0.05, 0.05]):
+        make_cyl(f"Alley_Glasses_Lens_{gi}", (1.1 + gxo, 10.55, 0.333), 0.022, 0.005,
+                 (0.70, 0.76, 0.78, 0.6), segments=8)
+    make_box("Alley_Newspaper", (1.1, 10.72, 0.335), (0.22, 0.16, 0.012), (0.84, 0.82, 0.76, 1.0))
+    make_box("Alley_Newspaper_Fold", (1.1, 10.72, 0.345), (0.22, 0.015, 0.008), (0.70, 0.68, 0.62, 1.0))
+
+
 def main():
     clear_scene()
     build_shell()
@@ -439,6 +491,7 @@ def main():
     build_back_annex_2026_08()
     build_alley_2026_08()
     build_detail_pass_2026_08()
+    build_use_states_2026_08()
     out = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)),
         "../../../assets/3d/locales/salty_tome_interior.glb"))
     print(f"\n[build_salty_tome_interior] exporting to {out}")
