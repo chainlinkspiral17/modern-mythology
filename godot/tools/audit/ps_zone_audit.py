@@ -14,6 +14,10 @@ they can't come back silently:
      that isn't the tile kind it claims to be, or is out of bounds.
   5. Ragged grids — a row whose length disagrees with size[0].
   6. Undeclared tiles — a character in tiles[] with no tileset entry.
+  7. Invisible props — a SOLID tile drawn with the same sprite as
+     the ground it stands on. This is how the mess hall's three
+     long tables and their benches rendered as floor: 'table' and
+     'bench' both pointed at wood_floor.
 
 Exit code is nonzero if anything is found. Run before committing zone
 or camper JSON:
@@ -44,13 +48,13 @@ def load_mapped_kinds():
     src = open(OVERWORLD).read()
     m = re.search(r"_TILE_SPRITE_FOR_KIND := \{(.*?)\n\}", src, re.S)
     if not m:
-        return None, None
+        return None, None, None
     pairs = re.findall(r'"([a-z_0-9]+)":\s*"([a-z_0-9]+)"', m.group(1))
-    return {k for k, _ in pairs}, {v for _, v in pairs}
+    return {k for k, _ in pairs}, {v for _, v in pairs}, dict(pairs)
 
 
 def main():
-    mapped, targets = load_mapped_kinds()
+    mapped, targets, sprite_of = load_mapped_kinds()
     problems = []
     if mapped is None:
         print("could not parse _TILE_SPRITE_FOR_KIND")
@@ -109,6 +113,28 @@ def main():
             elif kind not in mapped and kind not in SILHOUETTE_KINDS:
                 problems.append("%s: tile %r (kind %s) has no tile art"
                                 % (zid, ch, kind))
+
+        # A solid prop drawn with the same sprite as the ground it
+        # stands on is invisible. This is how the mess hall's three
+        # long tables and their benches rendered as floor for months:
+        # "table" and "bench" both pointed at wood_floor.
+        base_kind = ""
+        for ch in (".", ","):
+            if ch in ts and ts[ch].get("walkable"):
+                base_kind = ts[ch].get("kind", "")
+                break
+        base_sprite = sprite_of.get(base_kind, "")
+        if base_sprite:
+            for ch, d in ts.items():
+                if ch not in used or d.get("walkable"):
+                    continue
+                k = d.get("kind", "")
+                if k in SILHOUETTE_KINDS:
+                    continue
+                if sprite_of.get(k, "") == base_sprite:
+                    problems.append("%s: solid tile %r (kind %s) draws with "
+                                    "the ground sprite %r — invisible"
+                                    % (zid, ch, k, base_sprite))
 
         for name, pos in z.get("spawns", {}).items():
             if len(pos) < 2:

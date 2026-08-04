@@ -68,7 +68,7 @@
    "kind": "mess_ext",
    "color": "#5c3a24",
    "walkable": false,
-   "label": "the mess hall \u00b7 walk to the door and press space"
+   "label": "the mess hall"
   },
   "m": {
    "kind": "mess_door",
@@ -141,7 +141,7 @@
    "kind": "beaver_ext",
    "color": "#4a3826",
    "walkable": false,
-   "label": "Cabin Beaver \u00b7 Tessa's cabin \u00b7 walk to the door and press space"
+   "label": "Cabin Beaver \u00b7 Tessa's cabin"
   },
   "v": {
    "kind": "beaver_door",
@@ -211,14 +211,32 @@
    "label": "a smooth river stone gleaming in the path dirt",
    "interact": "pickup",
    "item_id": "smooth_river_stone"
+  },
+  "y": {
+   "kind": "cabin_roof",
+   "color": "#4a3a2c",
+   "walkable": false,
+   "label": "cedar shingles \u00b7 mossy on the north slope"
+  },
+  "w": {
+   "kind": "cabin_face",
+   "color": "#5c4a34",
+   "walkable": false,
+   "label": "a lit window"
+  },
+  "g": {
+   "kind": "cabin_sign",
+   "color": "#8a7048",
+   "walkable": false,
+   "label": "the cabin's name board \u00b7 repainted every June"
   }
  },
  "tiles": [
   "T.T.T.T.T.T.T.T.T.u.T.ne",
   "*.b......TTTTTTT.......~",
-  ".......T.MMMMMMMM.T.*...",
-  ".......T.MMMMMMMM.T.....",
-  ".......T.MMMMmMMM.T.....",
+  ".......T.yyyyyyyy.T.*...",
+  ".......T.yyyyyyyy.T.....",
+  ".......T.wMwgmgwM.T.....",
   "..*....T....B...T....*..",
   "f.,,,,,,,,,,,,,,,,,,,pa.",
   ".~,....................,",
@@ -227,12 +245,12 @@
   "........,........@...*..",
   ".TTT.T.,.T.T.R1.T.T.t.T.",
   "...T.T.,.T.T....T.t.T.T.",
-  ".CCCCCsCCCCC.VVVVVvVVVVV",
-  ".CCCCCsCCCCC.VVVVVVVVVVV",
+  ".CwCwgsgwCwC.VwVwgvgwVwV",
+  ".yyyyysyyyyy.yyyyyyyyyyy",
   ".,,,,,,,,,,,,,,,,,,,,,,.",
   "........................",
-  ".OOOOOoOOOOO.KKKKKkKKKKK",
-  ".OOOOOoOOOOO.KKKKKKKKKKK",
+  ".OwOwgogwOwO.KwKwgkgwKwK",
+  ".yyyyyoyyyyy.yyyyyyyyyyy",
   "T.T.T.T.T.T.T.T.T.T.T.T."
  ],
  "spawns": {

@@ -1,43 +1,103 @@
 {
-  "id": "campfire_ring",
-  "display_name": "the campfire ring",
-  "size": [24, 16],
-
-  "tileset": {
-    ".": { "kind": "grass",     "color": "#28401e", "walkable": true },
-    ",": { "kind": "path",      "color": "#6a5a3e", "walkable": true },
-    "T": { "kind": "tree",      "color": "#0a1e10", "walkable": false, "label": "a pine, dark at evening" },
-    "L": { "kind": "log_bench", "color": "#5a3e26", "walkable": false, "label": "a log bench worn smooth by campers over forty summers" },
-    "F": { "kind": "fire",      "color": "#e88030", "walkable": false, "label": "the campfire · popping quietly", "interact": "campfire" },
-    "s": { "kind": "stones",    "color": "#4a4238", "walkable": false, "label": "the fire ring · rocks arranged in a circle" },
-    "p": { "kind": "back_path", "color": "#6a5a3e", "walkable": true,  "exit": {"zone": "camp_path", "spawn": "from_campfire_ring"}, "label": "the path back toward camp" }
+ "id": "campfire_ring",
+ "display_name": "the campfire ring",
+ "size": [
+  24,
+  16
+ ],
+ "tileset": {
+  ".": {
+   "kind": "grass",
+   "color": "#28401e",
+   "walkable": true
   },
-
-  "tiles": [
-    "T.T.T.T.T.T.T.T.T.T.T.T.",
-    ".T.T.T.T.T.T.T.T.T.T.T.T",
-    "..T....................T",
-    ".T..T..T............T..T",
-    "..............L.L.......",
-    ".........L.L............",
-    "........L..sss..L.......",
-    "........L.sFFFs.L.......",
-    "........L..sss..L.......",
-    ".........L.L............",
-    "..............L.L.......",
-    ".T..T..T............T..T",
-    "..T....................T",
-    ".T.T.T.T.T.T.T.T.T.T.T.T",
-    "T.T.T.T.T.T.T.T.T.T.T.T.",
-    "...........p............"
+  ",": {
+   "kind": "path",
+   "color": "#6a5a3e",
+   "walkable": true
+  },
+  "T": {
+   "kind": "tree",
+   "color": "#0a1e10",
+   "walkable": false,
+   "label": "a pine, dark at evening"
+  },
+  "L": {
+   "kind": "log_bench",
+   "color": "#5a3e26",
+   "walkable": false,
+   "label": "a log bench worn smooth by campers over forty summers"
+  },
+  "F": {
+   "kind": "fire",
+   "color": "#e88030",
+   "walkable": false,
+   "label": "the campfire \u00b7 popping quietly",
+   "interact": "campfire"
+  },
+  "s": {
+   "kind": "stones",
+   "color": "#4a4238",
+   "walkable": false,
+   "label": "the fire ring \u00b7 rocks arranged in a circle"
+  },
+  "p": {
+   "kind": "back_path",
+   "color": "#6a5a3e",
+   "walkable": true,
+   "exit": {
+    "zone": "camp_path",
+    "spawn": "from_campfire_ring"
+   },
+   "label": "the path back toward camp"
+  },
+  "W": {
+   "kind": "woodpile",
+   "color": "#7a6244",
+   "walkable": false,
+   "label": "split rounds under a tarp \u00b7 Bear splits them Sundays"
+  },
+  "u": {
+   "kind": "stump",
+   "color": "#8a7050",
+   "walkable": false,
+   "label": "a cut stump \u00b7 the counselor's chair, by custom"
+  },
+  "l": {
+   "kind": "oil_lamp",
+   "color": "#e8c060",
+   "walkable": false,
+   "label": "a lantern on a shepherd's hook \u00b7 lit before dusk"
+  }
+ },
+ "tiles": [
+  "T.T.T.T.T.T.T.T.T.T.T.T.",
+  ".T.T.T.T.T.T.T.T.T.T.T.T",
+  "..T....................T",
+  ".T..T..T............T..T",
+  "...W..........L.L.l.....",
+  "...W.....L.L............",
+  "........L..sss..L.......",
+  "........L.sFFFs.L..u....",
+  "........L..sss..L.......",
+  ".........L.L............",
+  ".....l........L.L.......",
+  ".T..T..T............T..T",
+  "..T....................T",
+  ".T.T.T.T.T.T.T.T.T.T.T.T",
+  "T.T.T.T.T.T.T.T.T.T.T.T.",
+  "...........p............"
+ ],
+ "spawns": {
+  "start": [
+   11,
+   15
   ],
-
-  "spawns": {
-    "start":            [11, 15],
-    "from_camp_path":   [11, 15]
-  },
-
-  "npcs": [],
-
-  "notes": "The campfire ring is a clearing west of camp with log benches around a central fire pit.  Where evening events happen: opening campfire Sunday, Reptile Skit Monday, Homesick Night Tuesday (no skit, quiet singing), Ghost Pirate Play Wednesday, Talent Show Thursday, Closing Bonfire Friday.  Path back to camp is at the south edge."
+  "from_camp_path": [
+   11,
+   15
+  ]
+ },
+ "npcs": [],
+ "notes": "The campfire ring is a clearing west of camp with log benches around a central fire pit.  Where evening events happen: opening campfire Sunday, Reptile Skit Monday, Homesick Night Tuesday (no skit, quiet singing), Ghost Pirate Play Wednesday, Talent Show Thursday, Closing Bonfire Friday.  Path back to camp is at the south edge."
 }

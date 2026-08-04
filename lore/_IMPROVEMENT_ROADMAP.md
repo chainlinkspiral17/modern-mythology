@@ -94,10 +94,31 @@ read-size art, UI coherence, scale-to-fiction).
     Three reserved bands now (top-left where/when · top-right BACK
     only · bottom two-line hover + controls), everything clipped
     with ellipsis, dialogue panels lifted clear of the band.
-- **Next**: Deck screenshot pass on the rebuilt cabins + camp path
-  (do the new tiles read at 24px?), mess hall + campfire ring
-  dressing to the same standard, then the same sweep per stick:
-  Estuary 3 → NH tableaux detail → the rest.
+- **Pass 3 (shipped 2026-08-04) · the three most-seen zones**:
+  - **The mess hall's tables AND benches both mapped to
+    `wood_floor`** — the room the player eats in three times a day
+    rendered as an empty box with invisible furniture. Same bug
+    class as the doors. `ps_zone_audit` grew **check 7**: a SOLID
+    tile drawn with the same sprite as the ground it stands on is
+    invisible. It immediately caught a second instance (the ghost
+    ship's deckhouse drawn with the deck sprite).
+  - **The camp path's four cabins + the mess hall were five flat
+    rectangles of one wall tile each.** Every structure now has a
+    roof course, a face with lit windows on a regular architectural
+    cadence (wall·window·wall·window·SIGN·DOOR·…), and a name board
+    beside its door — `tools/sprites/dress_ps_zones.py`, which
+    asserts the walkability mask and every exit are byte-identical
+    before/after, and is idempotent.
+  - Mess hall got a serving line and hanging lamps; the campfire
+    ring got the woodpile, the counselor's stump, and two lanterns
+    on the approach. 8 more procgen tiles (table, bench, serving
+    counter, roof, face, sign, woodpile, stump).
+- **Next (draft 4)**: Deck screenshots — do the 16x16 tiles read at
+  24px, and does the roof-below-face ordering read correctly in the
+  top-down projection (the door faces north, so the roof mass sits
+  south of it)? Then alder pond / archery range / north bluff to the
+  same standard, then the sweep per stick: Estuary 3 → NH tableaux
+  detail → the rest.
 
 ### Workstream · HIGHWAY 9 ACTION STAGE (user-directed)
 

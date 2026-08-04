@@ -1198,7 +1198,210 @@ def tile_cave_mouth():
     return pal, d
 
 
+# ── Zone dressing wave 2 (production pass 3 · 2026-08-04) ────────
+# The mess hall's tables AND benches both mapped to wood_floor, so
+# the room the player eats in three times a day rendered as an empty
+# box. The camp path's four cabins were four identical flat walls.
+# These are the pieces that make furniture furniture and a building
+# a building.
+
+
+def tile_table_long():
+    # mess-hall table top · seen from above, planked, worn light
+    pal = ['#7a5a34', '#8c6a40', '#5a3e22', '#a08050', '#4a3018']
+    d = blank()
+    fill(d, 0)
+    # plank seams down the length
+    for y in range(H):
+        for x in range(W):
+            if (y % 5) == 0:
+                d[y * W + x] = 2
+            elif (x + y * 3) % 11 == 0:
+                d[y * W + x] = 1
+    # the worn stripe down the middle where forearms go
+    for x in range(W):
+        d[7 * W + x] = 3
+        d[8 * W + x] = 3
+    # edge shadow so it sits above the floor
+    for x in range(W):
+        d[15 * W + x] = 4
+    for y in range(H):
+        d[y * W + 15] = 4
+    return pal, d
+
+
+def tile_bench_wood():
+    # bench · a narrower plank with legs, floor visible above/below
+    pal = ['#5c4432', '#8a6a44', '#6a4e30', '#3a2a18']
+    d = blank()
+    fill(d, 0)          # floor showing through
+    for y in range(4, 12):
+        for x in range(W):
+            d[y * W + x] = 1
+    # plank seam
+    for x in range(W):
+        d[7 * W + x] = 2
+    # front edge shadow
+    for x in range(W):
+        d[11 * W + x] = 3
+    # legs
+    for lx in (2, 13):
+        for y in range(12, 15):
+            d[y * W + lx] = 3
+            d[y * W + lx + 1] = 2
+    return pal, d
+
+
+def tile_serving_counter():
+    # the mess line · stainless top, a rail, steam
+    pal = ['#6a5a4a', '#9aa2a6', '#c0c8cc', '#4a4038', '#7a8a90']
+    d = blank()
+    fill(d, 0)
+    # counter body
+    for y in range(5, 15):
+        for x in range(W):
+            d[y * W + x] = 3
+    # the steel top
+    for y in range(3, 6):
+        for x in range(W):
+            d[y * W + x] = 1
+    for x in range(W):
+        d[3 * W + x] = 2
+    # tray rail
+    for x in range(W):
+        d[9 * W + x] = 4
+    # a well of something hot
+    for y in range(6, 9):
+        for x in range(4, 12):
+            d[y * W + x] = 0
+    return pal, d
+
+
+def tile_cabin_roof():
+    # shingled roof · the building's mass, read from above
+    pal = ['#4a3a2c', '#3a2c20', '#5a4836', '#241a12']
+    d = blank()
+    fill(d, 0)
+    # shingle courses, offset row to row
+    for row in range(0, H, 4):
+        for x in range(W):
+            d[row * W + x] = 3
+        off = 0 if (row // 4) % 2 == 0 else 3
+        for x in range(off, W, 6):
+            for y in range(row, min(row + 4, H)):
+                d[y * W + x] = 1
+    # sun on the upper courses
+    for x in range(W):
+        d[1 * W + x] = 2
+    return pal, d
+
+
+def tile_cabin_face():
+    # cabin front · planks with a lit window, so a wall reads as a
+    # place somebody is
+    pal = ['#4a3826', '#3a2a1c', '#5c4a34', '#241814', '#c8a85a', '#8a7a4a']
+    d = blank()
+    for y in range(H):
+        band = (y // 4) % 3
+        c = [0, 2, 1][band]
+        for x in range(W):
+            d[y * W + x] = c
+    for y in (3, 7, 11, 15):
+        for x in range(W):
+            d[y * W + x] = 3
+    # the window · frame, glass, muntins
+    for y in range(4, 12):
+        for x in range(4, 12):
+            d[y * W + x] = 3
+    for y in range(5, 11):
+        for x in range(5, 11):
+            d[y * W + x] = 4
+    for y in range(5, 11):
+        d[y * W + 7] = 5
+        d[y * W + 8] = 5
+    for x in range(5, 11):
+        d[7 * W + x] = 5
+    return pal, d
+
+
+def tile_cabin_sign():
+    # the cabin's name board on a post beside the door
+    pal = ['#4a3826', '#8a7048', '#d8cfae', '#2a1e14', '#6a5436']
+    d = blank()
+    fill(d, 0)
+    # post
+    for y in range(9, 16):
+        d[y * W + 7] = 4
+        d[y * W + 8] = 4
+    # the board
+    for y in range(3, 10):
+        for x in range(1, 15):
+            d[y * W + x] = 1
+    for x in range(1, 15):
+        d[3 * W + x] = 3
+        d[9 * W + x] = 3
+    # lettering · unreadable at this size, which is right
+    for x in range(3, 13, 2):
+        d[5 * W + x] = 2
+        d[6 * W + x] = 2
+    return pal, d
+
+
+def tile_woodpile():
+    # split rounds stacked against a tree · the fire's supply
+    pal = ['#5a4632', '#7a6244', '#3a2c1e', '#c8b58a', '#8a7050']
+    d = blank()
+    fill(d, 2)
+    # log ends, three courses
+    for row, ys in enumerate((2, 7, 12)):
+        for col in range(4):
+            cx = 2 + col * 4 + (2 if row % 2 else 0)
+            for y in range(ys, min(ys + 4, H)):
+                for x in range(cx - 1, cx + 2):
+                    if 0 <= x < W:
+                        d[y * W + x] = 0
+            # the pale split face
+            if 0 <= cx < W and ys + 1 < H:
+                d[(ys + 1) * W + cx] = 3
+                d[(ys + 2) * W + cx] = 4
+    return pal, d
+
+
+def tile_stump():
+    # a cut stump · someone always sits here
+    pal = ['#4a5a38', '#6a5236', '#8a7050', '#c0a878', '#3a2c1e']
+    d = blank()
+    mottle(d, [(0, 1.0)], 3)
+    cx, cy = 7.5, 8.0
+    for y in range(H):
+        for x in range(W):
+            dist = ((x - cx) ** 2 + ((y - cy) * 1.15) ** 2) ** 0.5
+            if dist <= 6.0:
+                d[y * W + x] = 1
+            if dist <= 4.6:
+                d[y * W + x] = 2
+    # rings
+    for r in (1.6, 3.0):
+        for y in range(H):
+            for x in range(W):
+                dist = ((x - cx) ** 2 + ((y - cy) * 1.15) ** 2) ** 0.5
+                if abs(dist - r) < 0.6:
+                    d[y * W + x] = 3
+    # bark shadow at the base
+    for x in range(3, 13):
+        d[14 * W + x] = 4
+    return pal, d
+
+
 TILES = {
+    'table_long':       tile_table_long,
+    'bench_wood':       tile_bench_wood,
+    'serving_counter':  tile_serving_counter,
+    'cabin_roof':       tile_cabin_roof,
+    'cabin_face':       tile_cabin_face,
+    'cabin_sign':       tile_cabin_sign,
+    'woodpile':         tile_woodpile,
+    'stump':            tile_stump,
     'fence':            tile_fence,
     'log_bench':        tile_log_bench,
     'hay_bale':         tile_hay_bale,

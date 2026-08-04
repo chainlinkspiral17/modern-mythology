@@ -161,7 +161,9 @@ const _TILE_SPRITE_FOR_KIND := {
 	# props · the high-count ones first (fence x24, cabin x18,
 	# log_bench x14 were the largest flat-color areas in the game)
 	"fence":         "fence",
-	"cabin":         "deck_wood",
+	# The ship's deckhouse drawn with the deck sprite was invisible
+	# against the deck it stands on (audit check 7).
+	"cabin":         "cabin_wall",
 	"log_bench":     "log_bench",
 	"hay":           "hay_bale",
 	"target":        "archery_target",
@@ -200,6 +202,21 @@ const _TILE_SPRITE_FOR_KIND := {
 	"cubby":         "cubby",
 	"clothesline":   "clothesline",
 	"oil_lamp":      "oil_lamp",
+	# ── Zone dressing wave 2 (production pass 3) ──────────────────
+	# "table" and "bench" both pointed at wood_floor, so the mess
+	# hall's three long tables and their benches rendered AS THE
+	# FLOOR — the room read as an empty box. Same bug class as the
+	# doors: a thing the player is meant to see, drawn as nothing.
+	"table_long":      "table_long",
+	"bench_wood":      "bench_wood",
+	"serving_counter": "serving_counter",
+	# Structures: a roof course, a face with a lit window, and a name
+	# board, so four cabins stop being four identical rectangles.
+	"cabin_roof":    "cabin_roof",
+	"cabin_face":    "cabin_face",
+	"cabin_sign":    "cabin_sign",
+	"woodpile":      "woodpile",
+	"stump":         "stump",
 	"duff":          "grass",
 	"back_path":     "path",
 	"back_boat":     "deck_wood",
