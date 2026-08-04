@@ -9,6 +9,7 @@ from _props.geometry import clear_scene, make_box, make_cyl, export_glb
 from _props.structure import make_floor, make_wall, make_ceiling, make_window, make_crown_molding
 from _props.decor import make_wall_clock, make_floor_plant
 from _props.safety import make_smoke_detector, make_hvac_vent, make_fluorescent_tube_fixture, make_ceiling_speaker, make_security_camera
+from _props.detail import (make_wall_outlet, make_wall_tint_band)
 
 PAL_WALL = {"wall": (0.86, 0.84, 0.80, 1.0), "baseboard": (0.32, 0.30, 0.28, 1.0)}
 COL_CARPET = (0.32, 0.30, 0.32, 1.0); COL_CARPET_SEAM = (0.22, 0.20, 0.22, 1.0)
@@ -185,9 +186,27 @@ def build_hero_props():
         make_box(f"Desk_Drawer_{di}_Pull", (-2.60, 1.22, 0.60 - di * 0.19), (0.02, 0.12, 0.025), (0.62, 0.64, 0.66, 1.0))
 
 
+
+def build_detail_pass_2026_08():
+    """D2 surface breakup + first D3 (adaptive template pass per
+    lore/_SET_DETAIL_PLAYBOOK.md). Per-locale wear personality is
+    the next pass."""
+    pw = PAL_WALL["wall"]
+    band = (pw[0] * 0.90, pw[1] * 0.90, pw[2] * 0.88, 1.0)
+    make_wall_tint_band("Band_W", (-ROOM_W / 2.0 + 0.105, ROOM_D / 2.0, 0.0),
+                        length=ROOM_D - 0.4, axis='Y', band_z=CEIL - 0.16, tint=band)
+    make_wall_tint_band("Band_E", (ROOM_W / 2.0 - 0.105, ROOM_D / 2.0, 0.0),
+                        length=ROOM_D - 0.4, axis='Y', band_z=CEIL - 0.16, tint=band)
+    make_wall_outlet("Outlet_W", (-ROOM_W / 2.0, ROOM_D * 0.35), axis='Y',
+                     face_sign=1, aged=False)
+    make_wall_outlet("Outlet_E", (ROOM_W / 2.0, ROOM_D * 0.70), axis='Y',
+                     face_sign=-1, aged=False)
+
+
 def main():
     clear_scene(); build_shell(); build_cubicles(); build_glass_office(); build_exec_furniture(); build_window_blinds(); build_decor(); build_ceiling_infra()
     build_hero_props()
+    build_detail_pass_2026_08()
     out = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)), "../../../assets/3d/locales/houston_office.glb"))
     print(f"\n[build_houston_office] exporting to {out}")
     export_glb(out)

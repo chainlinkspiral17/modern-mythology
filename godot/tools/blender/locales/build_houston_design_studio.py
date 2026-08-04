@@ -10,6 +10,7 @@ from _props.geometry import clear_scene, make_box, make_cyl, export_glb
 from _props.structure import make_floor, make_wall, make_ceiling, make_window, make_crown_molding
 from _props.decor import make_faded_poster, make_floor_plant
 from _props.safety import make_fluorescent_tube_fixture, make_hvac_vent, make_smoke_detector
+from _props.detail import (make_floor_stain, make_traffic_wear, make_wall_outlet, make_wall_tint_band)
 
 PAL_WALL = {"wall": (0.86, 0.78, 0.70, 1.0), "baseboard": (0.42, 0.32, 0.22, 1.0)}
 COL_BRICK = (0.62, 0.42, 0.34, 1.0); COL_BRICK_SEAM = (0.32, 0.22, 0.18, 1.0)
@@ -143,9 +144,32 @@ def build_hero_props():
     make_box("Anna_Phone", (-3.35, 1.35, 0.775), (0.075, 0.15, 0.009), (0.12, 0.12, 0.14, 1.0))
 
 
+
+def build_detail_pass_2026_08():
+    """D2 surface breakup + first D3 (adaptive template pass per
+    lore/_SET_DETAIL_PLAYBOOK.md). Per-locale wear personality is
+    the next pass."""
+    wear = (COL_FLOOR[0] * 0.88, COL_FLOOR[1] * 0.88, COL_FLOOR[2] * 0.88, 1.0)
+    make_traffic_wear("Wear_Entry", [(0.0, 0.6), (0.0, ROOM_D * 0.55)],
+                      width=0.75, tint=wear)
+    make_floor_stain("Stain_WorkZone", (ROOM_W * 0.22, ROOM_D * 0.62), radius=0.24,
+                     tint=(COL_FLOOR[0] * 0.82, COL_FLOOR[1] * 0.82, COL_FLOOR[2] * 0.82, 1.0))
+    pw = PAL_WALL["wall"]
+    band = (pw[0] * 0.90, pw[1] * 0.90, pw[2] * 0.88, 1.0)
+    make_wall_tint_band("Band_W", (-ROOM_W / 2.0 + 0.105, ROOM_D / 2.0, 0.0),
+                        length=ROOM_D - 0.4, axis='Y', band_z=CEIL - 0.16, tint=band)
+    make_wall_tint_band("Band_E", (ROOM_W / 2.0 - 0.105, ROOM_D / 2.0, 0.0),
+                        length=ROOM_D - 0.4, axis='Y', band_z=CEIL - 0.16, tint=band)
+    make_wall_outlet("Outlet_W", (-ROOM_W / 2.0, ROOM_D * 0.35), axis='Y',
+                     face_sign=1, aged=False)
+    make_wall_outlet("Outlet_E", (ROOM_W / 2.0, ROOM_D * 0.70), axis='Y',
+                     face_sign=-1, aged=False)
+
+
 def main():
     clear_scene(); build_shell(); build_drafting_row(); build_workstations(); build_task_chairs(); build_materials_shelf(); build_plotter_and_mood_board(); build_decor(); build_ceiling_infra()
     build_hero_props()
+    build_detail_pass_2026_08()
     out = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)), "../../../assets/3d/locales/houston_design_studio.glb"))
     print(f"\n[build_houston_design_studio] exporting to {out}")
     export_glb(out)

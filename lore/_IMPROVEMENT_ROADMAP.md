@@ -33,7 +33,7 @@ Current ledger (draft counts are honest, not aspirational):
 
 | Area | Draft | Next-pass targets |
 |---|---|---|
-| Tail-wave locales (~40, 2026-08-03) | 1 | Deck screenshots → reframe cameras; lighting pass per the lighting playbook; edge-of-set treatment; second vantages |
+| Tail-wave locales (~40, 2026-08-03) | 2 (22 interiors D2-seeded) | per-locale wear PERSONALITY (whose feet, whose spills — the generic pass is scaffolding); D5 through-windows; lighting; reframe |
 | Vols 1–2 migration locales | 1–2 | same as tail wave |
 | Pit Stop diner / ChillWave (re-themes) | 4 (D2-D6 + strata) | Deck reframe loops (strata retuned to the model diner's vocabulary: lunch/kitchen_practical/dawn_warm) |
 | Salty Tome back + alley | 4 (D2-D6 authored) | Deck reframe of three presets + six vn_shot setups; then wear deepening vs the model chapters |

@@ -25,6 +25,7 @@ from _props import palette as P
 from _props.geometry import clear_scene, make_box, make_cyl, export_glb
 from _props.structure import (make_floor, make_wall, make_ceiling,
                               make_crown_molding, make_window)
+from _props.detail import (make_floor_stain, make_light_switch, make_threshold, make_traffic_wear, make_wall_outlet, make_wall_tint_band)
 
 ROOM_W = 4.6      # x ∈ [-2.3, 2.3]
 ROOM_D = 5.2      # y ∈ [0, 5.2]  (door/S wall at y=0)
@@ -220,6 +221,30 @@ def build_wall_dressing():
     make_box("Rug_Field", (0.0, ROOM_D / 2.0 - 0.3, 0.03), (2.3, 2.7, 0.012), COL_RUG)
 
 
+
+def build_detail_pass_2026_08():
+    """D2 surface breakup + first D3 (adaptive template pass per
+    lore/_SET_DETAIL_PLAYBOOK.md). Per-locale wear personality is
+    the next pass."""
+    wear = (COL_FLOOR[0] * 0.88, COL_FLOOR[1] * 0.88, COL_FLOOR[2] * 0.88, 1.0)
+    make_traffic_wear("Wear_Entry", [(0.0, 0.6), (0.0, ROOM_D * 0.55)],
+                      width=0.75, tint=wear)
+    make_floor_stain("Stain_WorkZone", (ROOM_W * 0.22, ROOM_D * 0.62), radius=0.24,
+                     tint=(COL_FLOOR[0] * 0.82, COL_FLOOR[1] * 0.82, COL_FLOOR[2] * 0.82, 1.0))
+    pw = COL_WALL
+    band = (pw[0] * 0.90, pw[1] * 0.90, pw[2] * 0.88, 1.0)
+    make_wall_tint_band("Band_W", (-ROOM_W / 2.0 + 0.105, ROOM_D / 2.0, 0.0),
+                        length=ROOM_D - 0.4, axis='Y', band_z=CEIL - 0.16, tint=band)
+    make_wall_tint_band("Band_E", (ROOM_W / 2.0 - 0.105, ROOM_D / 2.0, 0.0),
+                        length=ROOM_D - 0.4, axis='Y', band_z=CEIL - 0.16, tint=band)
+    make_threshold("Threshold_Entry", (0.0, 0.10), width=1.9, axis='X')
+    make_light_switch("Switch_Entry", (1.15, 0.0), axis='X', face_sign=1, aged=True)
+    make_wall_outlet("Outlet_W", (-ROOM_W / 2.0, ROOM_D * 0.35), axis='Y',
+                     face_sign=1, aged=True)
+    make_wall_outlet("Outlet_E", (ROOM_W / 2.0, ROOM_D * 0.70), axis='Y',
+                     face_sign=-1, aged=True)
+
+
 def main():
     clear_scene()
     build_shell()
@@ -227,6 +252,7 @@ def main():
     build_china_cabinet()
     build_chandelier()
     build_wall_dressing()
+    build_detail_pass_2026_08()
     out = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)),
         "../../../assets/3d/locales/miller_office.glb"))
     print(f"\n[build_miller_office] exporting to {out}")

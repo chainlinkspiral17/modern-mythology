@@ -43,6 +43,7 @@ from _props.safety import (
     make_smoke_detector, make_hvac_vent, make_fluorescent_tube_fixture,
     make_ceiling_speaker,
 )
+from _props.detail import (make_wall_outlet, make_wall_tint_band)
 
 
 # Roberts house palette — warm domestic Texas: cream walls,
@@ -273,6 +274,23 @@ def build_hero_props():
     make_box("Dishtowel", (0.0, 5.20, 0.68), (0.30, 0.04, 0.28), (0.78, 0.74, 0.66, 1.0))
 
 
+
+def build_detail_pass_2026_08():
+    """D2 surface breakup + first D3 (adaptive template pass per
+    lore/_SET_DETAIL_PLAYBOOK.md). Per-locale wear personality is
+    the next pass."""
+    pw = PAL_DOMESTIC_WALL["wall"]
+    band = (pw[0] * 0.90, pw[1] * 0.90, pw[2] * 0.88, 1.0)
+    make_wall_tint_band("Band_W", (-ROOM_W / 2.0 + 0.105, ROOM_D / 2.0, 0.0),
+                        length=ROOM_D - 0.4, axis='Y', band_z=CEIL_Z - 0.16, tint=band)
+    make_wall_tint_band("Band_E", (ROOM_W / 2.0 - 0.105, ROOM_D / 2.0, 0.0),
+                        length=ROOM_D - 0.4, axis='Y', band_z=CEIL_Z - 0.16, tint=band)
+    make_wall_outlet("Outlet_W", (-ROOM_W / 2.0, ROOM_D * 0.35), axis='Y',
+                     face_sign=1, aged=True)
+    make_wall_outlet("Outlet_E", (ROOM_W / 2.0, ROOM_D * 0.70), axis='Y',
+                     face_sign=-1, aged=True)
+
+
 def main():
     clear_scene()
     build_shell()
@@ -287,6 +305,7 @@ def main():
         "../../../assets/3d/locales/roberts_kitchen.glb"))
     print(f"\n[build_roberts_kitchen] exporting to {out_path}")
     build_hero_props()
+    build_detail_pass_2026_08()
     export_glb(out_path)
 
 

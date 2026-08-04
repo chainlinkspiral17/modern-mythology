@@ -10,6 +10,7 @@ from _props.geometry import clear_scene, make_box, make_cyl, export_glb
 from _props.structure import make_floor, make_wall, make_ceiling, make_crown_molding
 from _props.decor import make_wall_clock, make_floor_plant, make_faded_poster
 from _props.safety import make_smoke_detector, make_fluorescent_tube_fixture, make_sprinkler
+from _props.detail import (make_floor_stain, make_light_switch, make_threshold, make_traffic_wear, make_wall_outlet, make_wall_tint_band)
 
 # Warm, home-like palette (hospice reads gentle, not clinical)
 PAL = {"wall": (0.90, 0.84, 0.74, 1.0), "baseboard": (0.62, 0.52, 0.40, 1.0)}
@@ -172,9 +173,34 @@ def build_hero_props():
     make_box("Slipper_R", (-0.55, 0.32, 0.03), (0.10, 0.26, 0.05), (0.66, 0.58, 0.50, 1.0))
 
 
+
+def build_detail_pass_2026_08():
+    """D2 surface breakup + first D3 (adaptive template pass per
+    lore/_SET_DETAIL_PLAYBOOK.md). Per-locale wear personality is
+    the next pass."""
+    wear = (COL_FLOOR[0] * 0.88, COL_FLOOR[1] * 0.88, COL_FLOOR[2] * 0.88, 1.0)
+    make_traffic_wear("Wear_Entry", [(0.0, 0.6), (0.0, ROOM_D * 0.55)],
+                      width=0.75, tint=wear)
+    make_floor_stain("Stain_WorkZone", (ROOM_W * 0.22, ROOM_D * 0.62), radius=0.24,
+                     tint=(COL_FLOOR[0] * 0.82, COL_FLOOR[1] * 0.82, COL_FLOOR[2] * 0.82, 1.0))
+    pw = PAL["wall"]
+    band = (pw[0] * 0.90, pw[1] * 0.90, pw[2] * 0.88, 1.0)
+    make_wall_tint_band("Band_W", (-ROOM_W / 2.0 + 0.105, ROOM_D / 2.0, 0.0),
+                        length=ROOM_D - 0.4, axis='Y', band_z=CEIL - 0.16, tint=band)
+    make_wall_tint_band("Band_E", (ROOM_W / 2.0 - 0.105, ROOM_D / 2.0, 0.0),
+                        length=ROOM_D - 0.4, axis='Y', band_z=CEIL - 0.16, tint=band)
+    make_threshold("Threshold_Entry", (0.0, 0.10), width=1.9, axis='X')
+    make_light_switch("Switch_Entry", (1.15, 0.0), axis='X', face_sign=1, aged=True)
+    make_wall_outlet("Outlet_W", (-ROOM_W / 2.0, ROOM_D * 0.35), axis='Y',
+                     face_sign=1, aged=True)
+    make_wall_outlet("Outlet_E", (ROOM_W / 2.0, ROOM_D * 0.70), axis='Y',
+                     face_sign=-1, aged=True)
+
+
 def main():
     clear_scene(); build_shell(); build_hospital_bed(); build_iv_stand_and_monitor(); build_visitor_chair_and_decor(); build_ceiling_infra()
     build_hero_props()
+    build_detail_pass_2026_08()
     out = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)), "../../../assets/3d/locales/hospice_room.glb"))
     print(f"\n[build_hospice_room] exporting to {out}")
     export_glb(out)

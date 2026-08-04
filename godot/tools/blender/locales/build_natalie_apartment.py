@@ -41,6 +41,7 @@ from _props.decor import (
 from _props.safety import (
     make_smoke_detector, make_hvac_vent, make_fluorescent_tube_fixture,
 )
+from _props.detail import (make_floor_stain, make_traffic_wear, make_wall_outlet, make_wall_tint_band)
 
 
 # Natalie's apartment palette — soft cream walls, warm wood floor,
@@ -284,6 +285,28 @@ def build_hero_props():
         make_box(f"Blind_Slat_{bi}", (-3.30, 2.5, 0.80 + bi * 0.14), (0.02, 1.80, 0.03), (0.72, 0.70, 0.64, 1.0))
 
 
+
+def build_detail_pass_2026_08():
+    """D2 surface breakup + first D3 (adaptive template pass per
+    lore/_SET_DETAIL_PLAYBOOK.md). Per-locale wear personality is
+    the next pass."""
+    wear = (COL_FLOOR_OAK[0] * 0.88, COL_FLOOR_OAK[1] * 0.88, COL_FLOOR_OAK[2] * 0.88, 1.0)
+    make_traffic_wear("Wear_Entry", [(0.0, 0.6), (0.0, ROOM_D * 0.55)],
+                      width=0.75, tint=wear)
+    make_floor_stain("Stain_WorkZone", (ROOM_W * 0.22, ROOM_D * 0.62), radius=0.24,
+                     tint=(COL_FLOOR_OAK[0] * 0.82, COL_FLOOR_OAK[1] * 0.82, COL_FLOOR_OAK[2] * 0.82, 1.0))
+    pw = PAL_APT_WALL["wall"]
+    band = (pw[0] * 0.90, pw[1] * 0.90, pw[2] * 0.88, 1.0)
+    make_wall_tint_band("Band_W", (-ROOM_W / 2.0 + 0.105, ROOM_D / 2.0, 0.0),
+                        length=ROOM_D - 0.4, axis='Y', band_z=CEIL_Z - 0.16, tint=band)
+    make_wall_tint_band("Band_E", (ROOM_W / 2.0 - 0.105, ROOM_D / 2.0, 0.0),
+                        length=ROOM_D - 0.4, axis='Y', band_z=CEIL_Z - 0.16, tint=band)
+    make_wall_outlet("Outlet_W", (-ROOM_W / 2.0, ROOM_D * 0.35), axis='Y',
+                     face_sign=1, aged=True)
+    make_wall_outlet("Outlet_E", (ROOM_W / 2.0, ROOM_D * 0.70), axis='Y',
+                     face_sign=-1, aged=True)
+
+
 def main():
     clear_scene()
     build_shell()
@@ -297,6 +320,7 @@ def main():
         "../../../assets/3d/locales/natalie_apartment.glb"))
     print(f"\n[build_natalie_apartment] exporting to {out_path}")
     build_hero_props()
+    build_detail_pass_2026_08()
     export_glb(out_path)
 
 

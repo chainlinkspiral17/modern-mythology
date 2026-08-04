@@ -10,6 +10,9 @@ from _props.shelving import make_snack_aisle, make_endcap
 from _props.food_service import make_coffee_pots
 from _props.decor import make_wall_clock, make_floor_plant, make_faded_poster, make_calendar
 from _props.safety import make_smoke_detector, make_hvac_vent, make_fluorescent_tube_fixture
+from _props.detail import (make_traffic_wear, make_floor_stain,
+                           make_wall_tint_band, make_threshold,
+                           make_wall_outlet, make_light_switch)
 
 ROOM_W = 5.0; ROOM_D = 5.0; CEIL = 2.8
 PAL_WALL = {"wall":(0.74,0.74,0.70,1.0),"baseboard":(0.32,0.30,0.28,1.0)}
@@ -117,6 +120,33 @@ def build_waiting_corner():
     make_cyl("Paper_Coffee_Cup", (-0.85, 4.42, 0.50), 0.035, 0.10, (0.88, 0.86, 0.80, 1.0), segments=8)
 
 
+
+def build_detail_pass_2026_08():
+    """D2 surface breakup + first D3 (generic template pass per
+    lore/_SET_DETAIL_PLAYBOOK.md): the entry walk-line, a work-zone
+    stain, ceiling gather on the long walls, a threshold, and the
+    switch/outlet pair every room earns. Per-locale wear
+    PERSONALITY (whose feet, whose spills) is the next pass."""
+    wear = (COL_FLOOR[0] * 0.88, COL_FLOOR[1] * 0.88, COL_FLOOR[2] * 0.88, 1.0)
+    stain = (COL_FLOOR[0] * 0.82, COL_FLOOR[1] * 0.82, COL_FLOOR[2] * 0.82, 1.0)
+    pw = PAL_WALL["wall"]
+    band = (pw[0] * 0.90, pw[1] * 0.90, pw[2] * 0.88, 1.0)
+    make_traffic_wear("Wear_Entry", [(0.0, 0.6), (0.0, ROOM_D * 0.55)],
+                      width=0.75, tint=wear)
+    make_floor_stain("Stain_WorkZone", (ROOM_W * 0.22, ROOM_D * 0.62),
+                     radius=0.24, tint=stain)
+    make_wall_tint_band("Band_W", (-ROOM_W / 2.0 + 0.105, ROOM_D / 2.0, 0.0),
+                        length=ROOM_D - 0.4, axis='Y', band_z=CEIL - 0.16, tint=band)
+    make_wall_tint_band("Band_E", (ROOM_W / 2.0 - 0.105, ROOM_D / 2.0, 0.0),
+                        length=ROOM_D - 0.4, axis='Y', band_z=CEIL - 0.16, tint=band)
+    make_threshold("Threshold_Entry", (0.0, 0.10), width=1.9, axis='X')
+    make_light_switch("Switch_Entry", (1.15, 0.0), axis='X', face_sign=1, aged=True)
+    make_wall_outlet("Outlet_W", (-ROOM_W / 2.0, ROOM_D * 0.35), axis='Y',
+                     face_sign=1, aged=True)
+    make_wall_outlet("Outlet_E", (ROOM_W / 2.0, ROOM_D * 0.70), axis='Y',
+                     face_sign=-1, aged=True)
+
+
 def main():
     clear_scene()
     build_shell()
@@ -129,6 +159,7 @@ def main():
     build_window()
     build_ceiling_infra()
     build_waiting_corner()
+    build_detail_pass_2026_08()
     out = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)),
         "../../../assets/3d/locales/hospital_room.glb"))
     print(f"\n[build_hospital_room] exporting to {out}")
