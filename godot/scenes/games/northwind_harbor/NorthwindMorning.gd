@@ -77,6 +77,7 @@ func boot(state: Dictionary) -> void:
 	_minutes = START_MIN
 	_loc_id = "maddox_porch"
 	_morning_done = false
+	_morning_reported = false
 	_petted_this_morning = false
 	_fetched_this_morning = false
 	_kindness_today = 0
@@ -650,6 +651,7 @@ func _do_step(step: Dictionary) -> void:
 
 var _fetched_this_morning: bool = false
 var _kindness_today: int = 0
+var _morning_reported: bool = false
 
 
 func _bosun_fetch(step: Dictionary) -> void:
@@ -730,10 +732,20 @@ func _end_morning() -> void:
 	_nav_row.visible = false
 	var home := Button.new()
 	home.text = "  · walk home ·  "
-	home.add_theme_font_size_override("font_size", 14)
+	home.add_theme_font_size_override("font_size", 15)
 	home.set_anchors_preset(Control.PRESET_BOTTOM_RIGHT)
-	home.position = Vector2(1020, 690)
-	home.pressed.connect(func() -> void: morning_over.emit(_state))
+	home.position = Vector2(1000, 672)
+	# ONE-SHOT. The un-guarded version fired morning_over on every
+	# press — the host frees this scene DEFERRED, so mashing the
+	# button advanced a morning per click: 1 -> 7 in a burst, straight
+	# to the ending, and the shelf read FINISHED after one real day
+	# (user report 2026-08-03). One press, then the button dies.
+	home.pressed.connect(func() -> void:
+		if _morning_reported:
+			return
+		_morning_reported = true
+		home.disabled = true
+		morning_over.emit(_state))
 	add_child(home)
 
 

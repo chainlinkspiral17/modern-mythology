@@ -40,6 +40,7 @@ var _title_root: Node = null
 var _card_root: Node = null
 var _child_scene: Node = null
 var _ending_root: Node = null
+var _run_finish_fired: bool = false
 
 
 func _ready() -> void:
@@ -287,6 +288,8 @@ func _show_chapter_card(n: int) -> void:
 
 
 func _open_morning() -> void:
+	if _child_scene != null and is_instance_valid(_child_scene):
+		return   # double-press on the chapter card must not stack mornings
 	_clear_current_scene()
 	_play_bgm("res://assets/audio/bgm/nh/harbor_quiet.wav")
 	_child_scene = load(MORNING_SCENE).instantiate()
@@ -303,6 +306,11 @@ func _on_morning_quit() -> void:
 
 
 func _on_morning_over(state: Dictionary) -> void:
+	# Idempotence: the morning frees DEFERRED, so a stacked second
+	# emission could arrive after we've already advanced. Only the
+	# live child may report.
+	if _child_scene == null or not is_instance_valid(_child_scene):
+		return
 	_run_state = state
 	var n: int = int(_run_state.get("chapter_n", 1))
 	if n >= 7:
@@ -395,6 +403,9 @@ func _show_ending() -> void:
 
 
 func _finish_run(good_week: bool) -> void:
+	if _run_finish_fired:
+		return
+	_run_finish_fired = true
 	var tokens: Array = _run_state.get("lore_tokens_pending", [])
 	if not tokens.has("northwind_harbor_finished"):
 		tokens.append("northwind_harbor_finished")

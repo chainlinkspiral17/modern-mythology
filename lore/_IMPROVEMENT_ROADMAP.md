@@ -45,6 +45,23 @@ Current ledger (draft counts are honest, not aspirational):
 | Slowstick manuals + packaging (NH = model) | 1 | era-voice + walkthrough sweep across ~20 sticks; box art after experiences are good (task #234) |
 | Model chapters (diner, kwik stop, cathedral, henderson) | many | the BAR — mine them for what a finished space has |
 
+### Workstream · SLOWSTICK PRODUCTION PASS (user-directed · 2026-08-03)
+
+*"Visual logic, detail and sophistication."* Per-stick direction +
+production audit against the PRODUCTION RULES in the slowstock
+authoring playbook (first-screen test: camera, visual logic, exits,
+read-size art, UI coherence, scale-to-fiction).
+
+- **Pass 1 (shipped 2026-08-03) · Pirate Summer bones**: zone-fit
+  zoom (small interiors fill the frame at up to 2.75x), the
+  door_wood tile (doors rendered as WALLS — every exit invisible),
+  Cabin Sturgeon redrawn 14x10 and dressed, dedicated title cover
+  replacing the tally-text moment image.
+- **Next**: PS remaining zones (beaver/osprey/kestrel cabins share
+  the warehouse layout; mess hall, boathouse audit), PS HUD overlap
+  audit ("UI overlapping and incoherent"), then the same sweep
+  per stick: Estuary 3 → NH tableaux detail → the rest.
+
 ### Workstream · HIGHWAY 9 ACTION STAGE (user-directed)
 
 The user: *"the highway stretch feels like a small set, it cuts

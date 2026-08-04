@@ -135,8 +135,8 @@ const _TILE_SPRITE_FOR_KIND := {
 	"cross":         "cabin_wall",
 	"grave":         "boulder",
 	"hunter_cab":    "cabin_wall",
-	"cabin_door":    "cabin_wall",
-	"door":          "cabin_wall",
+	"cabin_door":    "door_wood",
+	"door":          "door_wood",
 	"duff":          "grass",
 	"back_path":     "path",
 	"back_boat":     "deck_wood",
@@ -1132,12 +1132,23 @@ func _recenter_camera() -> void:
 	# of the character.") Zones smaller than the screen sit
 	# centered.
 	if _sam_texture_rect == null or _world_root == null: return
-	var sam_center := _sam_texture_rect.position + Vector2(
-		_sam_texture_rect.size.x / 2.0, _sam_texture_rect.size.y / 2.0)
 	var screen := get_viewport_rect().size
+	# ZONE-FIT ZOOM (production pass 2026-08-03 · "zoom in perhaps?"):
+	# small interiors rendered as a postage stamp in a black void —
+	# the cabin was 480x288 px on a 1280x720 frame. Scale the world
+	# so the CURRENT zone fills ~92% of the tighter axis (capped at
+	# 2.75x so pixels stay chunky, floored at 1x so big zones keep
+	# their clamped scrolling unchanged).
+	var zone_w_raw: float = float(_grid_w) * TILE_PX
+	var zone_h_raw: float = float(_grid_h) * TILE_PX
+	var k: float = clampf(minf(screen.x / zone_w_raw, screen.y / zone_h_raw) * 0.92,
+			1.0, 2.75)
+	_world_root.scale = Vector2(k, k)
+	var sam_center: Vector2 = (_sam_texture_rect.position + Vector2(
+		_sam_texture_rect.size.x / 2.0, _sam_texture_rect.size.y / 2.0)) * k
 	var desired: Vector2 = screen / 2.0 - sam_center
-	var zone_w: float = float(_grid_w) * TILE_PX
-	var zone_h: float = float(_grid_h) * TILE_PX
+	var zone_w: float = zone_w_raw * k
+	var zone_h: float = zone_h_raw * k
 	if zone_w > screen.x:
 		desired.x = clampf(desired.x, screen.x - zone_w, 0.0)
 	else:

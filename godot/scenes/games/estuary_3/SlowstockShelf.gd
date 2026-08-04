@@ -108,7 +108,7 @@ var _selected_id: String = ""
 # as "second click on the selected cart" and boots — MANUAL /
 # SCRAPBOOK become unreachable. gui_input only boots when the
 # selection is older than this same-click window.
-var _selected_at_ms: int = 0
+var _focus_click_pending: bool = false
 var _slot_panels: Dictionary = {}     # stick_id -> Panel (for the ring)
 var _manager_mode_on: bool = false
 # Double-fire guard: once picked has been emitted this shelf stays
@@ -610,17 +610,26 @@ func _make_cartridge_slot(entry: Dictionary) -> Control:
 	panel.mouse_exited.connect(func() -> void: _on_cart_unhover(sid))
 	# Pad focus selects, exactly like a click — so A on a cartridge
 	# fills the card and the buttons become reachable with the d-pad.
-	panel.focus_entered.connect(func() -> void: _select_cart(sid))
+	panel.focus_entered.connect(func() -> void:
+		# Mouse clicks grant focus BEFORE gui_input sees the press —
+		# flag it so that same press can never read as "second click".
+		if _selected_id != sid:
+			_focus_click_pending = true
+		_select_cart(sid))
 	panel.gui_input.connect(func(ev: InputEvent) -> void:
 		if ev is InputEventMouseButton and (ev as InputEventMouseButton).pressed \
 				and (ev as InputEventMouseButton).button_index == MOUSE_BUTTON_LEFT:
-			if _selected_id == sid \
-					and Time.get_ticks_msec() - _selected_at_ms > 300:
+			if _focus_click_pending:
+				# This press is the one that granted focus (it already
+				# selected via focus_entered). Consume it — it can
+				# never boot. Deterministic: no timers, so a genuine
+				# fast second click boots instantly (the 300ms
+				# debounce read as "sometimes it works").
+				_focus_click_pending = false
+				_select_cart(sid)
+			elif _selected_id == sid:
 				_on_boot_pressed()          # second click on the same cart = boot
 			else:
-				# Either a fresh selection, or the click that GRANTED
-				# focus (which already selected via focus_entered) —
-				# never boot off that same press.
 				_select_cart(sid))
 
 	return panel
@@ -632,7 +641,6 @@ func _select_cart(stick_id: String) -> void:
 	if _selected_id == stick_id:
 		return
 	_selected_id = stick_id
-	_selected_at_ms = Time.get_ticks_msec()
 	var b := get_node_or_null("/root/SFXBank")
 	if b: b.play("cartridge_click", 0.8)
 	_on_cart_hover(stick_id)
@@ -655,12 +663,17 @@ func _refresh_slot_rings() -> void:
 		if sb == null:
 			continue
 		if sid == _selected_id:
+			# ACTIVE HIGHLIGHT (user 2026-08-03): the selected cart
+			# must read from across the room — thick lit ring + the
+			# whole cartridge brightening.
 			sb.border_color = C_SELECT
-			sb.set_border_width_all(2)
+			sb.set_border_width_all(4)
+			p.modulate = Color(1.22, 1.18, 1.06, 1.0)
 		else:
 			sb.border_color = C_ACCENT if _is_finished(sid) else Color(
 				sb.bg_color.r * 0.7, sb.bg_color.g * 0.7, sb.bg_color.b * 0.7, 1.0)
 			sb.set_border_width_all(1)
+			p.modulate = Color.WHITE
 
 
 func _make_empty_slot(entry: Dictionary) -> Control:

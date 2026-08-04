@@ -253,6 +253,39 @@ Everything else still needs its `loadout.json` and its two call
 sites. The engine, the OUTFIT screen and the shelf button are done
 and generic — a new stick needs data plus two lines of code.
 
+## PRODUCTION RULES — think before you build (hard rule · 2026-08-03)
+
+The user's verdict, screenshot in hand: *"slowsticks need a logic
+and direction and production pass. you aren't thinking about a
+thing before you make it."* The sticks were built systems-first —
+data, chains, saves — and nobody asked what the player SEES. Every
+new scene, and every production pass over an old one, answers the
+FIRST-SCREEN TEST before any code:
+
+1. **Camera** — does the play space fill the frame? A zone smaller
+   than the screen gets zone-fit zoom (CampOverworld's
+   _recenter_camera is the model), never a postage stamp in a void.
+2. **Visual logic** — can a stranger name the room in one second?
+   The space's PURPOSE must be legible from its layout (a bunkroom
+   is bunks + a rug + a door, not floor).
+3. **Exits** — every way out is VISIBLE and distinct. A door drawn
+   with the wall's sprite is an invisible exit (the 'can't leave
+   cabin' bug). Doors get door art + a tell (light seam, mat).
+4. **Detail at read-size** — author art at the size it renders.
+   A 16px tile seen at 2x needs interior detail; a 160x90 hero
+   image on a title screen is a COVER, composed as one (no baked
+   status text, no ambiguous blobs).
+5. **UI coherence** — one owner per screen region; overlays claim
+   the whole screen or none of it; nothing overlaps ("the UI is
+   also overlapping and incoherent"). Audit HUD + dialogue + panels
+   together, not per-widget.
+6. **Scale to fiction** — a 4-bunk cabin is small. Rooms are sized
+   to their story, then dressed to their size.
+
+Model: Cabin Sturgeon (2026-08-03) — 20x12 empty warehouse became
+a 14x10 dressed bunkroom with a visible double door, under zone-fit
+zoom. Run this checklist over every zone of every stick.
+
 ## Recent lessons
 
 ### 2026-08-01 · WAVE 4 · drawn incident pools are the cheapest honest replay texture

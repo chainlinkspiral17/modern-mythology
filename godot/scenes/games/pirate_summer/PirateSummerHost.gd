@@ -167,9 +167,10 @@ func _build_title_screen() -> void:
 	bg.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
 	_title_root.add_child(bg)
 
-	# The first campfire night — the summer's front cover.
+	# The DEDICATED front cover (2026-08-03) — the title used to wear
+	# the Sunday name-game MOMENT image, tally text baked in.
 	var hero := HeroImage.new()
-	if hero.load_from("res://resources/games/vol7/pirate_summer/sprites/scenes/moment_first_campfire_night.json"):
+	if hero.load_from("res://resources/games/vol7/pirate_summer/sprites/scenes/title_pirate_summer.json"):
 		var tex_rect := TextureRect.new()
 		tex_rect.texture = hero.texture(Vector2i(800, 450))
 		tex_rect.set_anchors_and_offsets_preset(Control.PRESET_CENTER)
