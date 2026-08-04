@@ -774,7 +774,449 @@ def tile_hollow_tree():
     return pal, d
 
 
+# ── Cabin dressing (production pass 2 · 2026-08-04) ──────────────
+# The four cabins were 18x10 rooms with four props in them. These
+# are the tiles that make an interior read as lived in: a footlocker
+# at the end of a bunk, a shelf with somebody's things on it, wet
+# swimsuits on a line, the cabin's one oil lamp, a screen door.
+
+
+def tile_footlocker():
+    # camp trunk at the foot of a bunk · canvas over wood, brass corners
+    pal = ['#6a4e30', '#4a3420', '#2a1c10', '#8a7a52', '#9a8a62']
+    d = blank()
+    fill(d, 0)
+    # floorboard hint above and below
+    for x in range(W):
+        d[0 * W + x] = 1
+        d[15 * W + x] = 1
+    # the trunk body
+    for y in range(3, 13):
+        for x in range(1, 15):
+            d[y * W + x] = 1
+    # lid line
+    for x in range(1, 15):
+        d[6 * W + x] = 2
+        d[3 * W + x] = 2
+        d[12 * W + x] = 2
+    # brass corners + latch
+    for (cx, cy) in ((1, 3), (14, 3), (1, 12), (14, 12)):
+        set_pixel(d, cx, cy, 3)
+        set_pixel(d, cx, cy + 1 if cy < 8 else cy - 1, 3)
+    for y in range(6, 9):
+        set_pixel(d, 7, y, 4)
+        set_pixel(d, 8, y, 4)
+    return pal, d
+
+
+def tile_cubby():
+    # open shelf unit · three bays, somebody's folded things
+    pal = ['#5a4028', '#3a2818', '#241408', '#7a6a4a', '#8a6a58']
+    d = blank()
+    fill(d, 1)
+    # carcass
+    for x in range(W):
+        for y in (0, 5, 10, 15):
+            d[y * W + x] = 2
+    for y in range(H):
+        d[y * W + 0] = 2
+        d[y * W + 15] = 2
+    # bay interiors
+    for band, col in ((1, 0), (6, 0), (11, 0)):
+        for y in range(band, band + 4):
+            for x in range(1, 15):
+                d[y * W + x] = col
+    # folded clothes / a rolled towel per bay
+    for (by, c) in ((3, 3), (8, 4), (13, 3)):
+        for x in range(2, 8):
+            set_pixel(d, x, by, c)
+            set_pixel(d, x, by + 1, c)
+    for x in range(9, 14):
+        set_pixel(d, x, 8, 3)
+    return pal, d
+
+
+def tile_clothesline():
+    # wet swimsuits + a towel on a line strung across the cabin
+    pal = ['#6a5a3e', '#3a3428', '#c05a5a', '#4a7ab0', '#d8c890']
+    d = blank()
+    fill(d, 0)
+    # the line
+    for x in range(W):
+        d[3 * W + x] = 1
+    # a red suit
+    for y in range(4, 11):
+        for x in range(2, 6):
+            d[y * W + x] = 2
+    d[10 * W + 3] = 0
+    # a blue one
+    for y in range(4, 9):
+        for x in range(7, 10):
+            d[y * W + x] = 3
+    # a towel, hung long
+    for y in range(4, 13):
+        for x in range(11, 15):
+            d[y * W + x] = 4
+    return pal, d
+
+
+def tile_oil_lamp():
+    # the cabin's one lamp on a nail · warm, small, off by day
+    pal = ['#4a3826', '#2a1c10', '#8a8a94', '#e8c060', '#f8e8a8']
+    d = blank()
+    fill(d, 0)
+    # nail + bracket
+    set_pixel(d, 8, 1, 1)
+    for x in range(6, 11):
+        d[2 * W + x] = 1
+    # glass chimney
+    for y in range(3, 9):
+        for x in range(6, 11):
+            d[y * W + x] = 2
+    # flame
+    for y in range(5, 8):
+        for x in range(7, 10):
+            d[y * W + x] = 3
+    set_pixel(d, 8, 6, 4)
+    # brass base
+    for x in range(5, 12):
+        d[9 * W + x] = 1
+        d[10 * W + x] = 1
+    return pal, d
+
+
+def tile_screen_door():
+    # the cabin's screen door · mesh, spring, the light behind it
+    pal = ['#4a3620', '#2a1c10', '#6a6a5a', '#8a8a72', '#c8b888']
+    d = blank()
+    fill(d, 0)
+    # frame
+    for x in range(W):
+        d[0 * W + x] = 1
+        d[15 * W + x] = 1
+    for y in range(H):
+        d[y * W + 0] = 1
+        d[y * W + 15] = 1
+    # the mesh · daylight through it
+    for y in range(2, 14):
+        for x in range(2, 14):
+            d[y * W + x] = 3 if (x + y) % 2 == 0 else 2
+    # rail across the middle
+    for x in range(1, 15):
+        d[7 * W + x] = 1
+        d[8 * W + x] = 1
+    # the spring, and the handle
+    for y in range(2, 6):
+        set_pixel(d, 13, y, 4)
+    set_pixel(d, 12, 9, 4)
+    set_pixel(d, 12, 10, 4)
+    return pal, d
+
+
+# ── Unmapped-kind sweep (production pass 2 · 2026-08-04) ─────────
+# An audit found 58 tile kinds in use with no sprite — they rendered
+# as flat color rects. Eight of them were EXITS. These cover the
+# high-count props and every remaining affordance.
+
+
+def tile_fence():
+    # split-rail fence · the archery range's boundary
+    pal = ['#6a7a4a', '#7a6a48', '#5a4a30', '#3a3020']
+    d = blank()
+    mottle(d, [(0, 0.55), (0, 1.0)], 3)
+    # two rails
+    for y in (5, 6, 10, 11):
+        for x in range(W):
+            d[y * W + x] = 1 if y in (5, 10) else 2
+    # posts
+    for px in (3, 12):
+        for y in range(3, 15):
+            d[y * W + px] = 2
+            d[y * W + px + 1] = 3
+    return pal, d
+
+
+def tile_log_bench():
+    # a split log on two rounds · the campfire ring's seating
+    pal = ['#5a5038', '#7a6244', '#8a7250', '#3a2e1c', '#4a3c26']
+    d = blank()
+    fill(d, 0)
+    # the log body
+    for y in range(4, 11):
+        for x in range(W):
+            d[y * W + x] = 1
+    # flat cut top
+    for x in range(W):
+        d[4 * W + x] = 2
+        d[5 * W + x] = 2
+    # bark shadow underside
+    for x in range(W):
+        d[10 * W + x] = 3
+    # grain
+    for x in range(0, W, 3):
+        d[7 * W + x] = 4
+        d[8 * W + ((x + 1) % W)] = 4
+    # legs
+    for lx in (2, 12):
+        for y in range(11, 15):
+            d[y * W + lx] = 3
+            d[y * W + lx + 1] = 4
+    return pal, d
+
+
+def tile_hay_bale():
+    # straw bale backstop
+    pal = ['#b09a52', '#c8b268', '#8a7638', '#6a5a28']
+    d = blank()
+    fill(d, 0)
+    for y in range(H):
+        for x in range(W):
+            if h01(x, y, 4) > 0.72:
+                d[y * W + x] = 1
+            elif h01(x, y, 9) > 0.86:
+                d[y * W + x] = 2
+    # binding twine
+    for x in range(W):
+        d[4 * W + x] = 3
+        d[11 * W + x] = 3
+    # edges
+    for y in range(H):
+        d[y * W + 0] = 2
+        d[y * W + 15] = 2
+    return pal, d
+
+
+def tile_archery_target():
+    # the classic boss · concentric rings on a stand
+    pal = ['#d8d0c0', '#c04040', '#4a6ab0', '#e8d060', '#3a3028']
+    d = blank()
+    fill(d, 4)
+    cx, cy = 7.5, 6.5
+    for y in range(H):
+        for x in range(W):
+            dist = ((x - cx) ** 2 + (y - cy) ** 2) ** 0.5
+            if dist <= 1.6:
+                d[y * W + x] = 3
+            elif dist <= 3.0:
+                d[y * W + x] = 1
+            elif dist <= 4.4:
+                d[y * W + x] = 0
+            elif dist <= 5.6:
+                d[y * W + x] = 2
+    # legs
+    for y in range(12, 16):
+        d[y * W + 5] = 4
+        d[y * W + 10] = 4
+    return pal, d
+
+
+def tile_canoe():
+    # an aluminum canoe upside down on the rack
+    pal = ['#7a8a94', '#9aaab4', '#5a6a74', '#3a4a52']
+    d = blank()
+    fill(d, 3)
+    # hull · a long lens shape
+    for y in range(5, 11):
+        span = 7 - abs(y - 7)
+        for x in range(8 - span, 8 + span):
+            d[y * W + x] = 0
+    # highlight along the keel
+    for x in range(3, 13):
+        d[6 * W + x] = 1
+    # shadowed gunwale
+    for x in range(2, 14):
+        d[10 * W + x] = 2
+    return pal, d
+
+
+def tile_barrel():
+    # a staved barrel, head-on
+    pal = ['#6a4a2a', '#8a6238', '#4a3018', '#8a8a94']
+    d = blank()
+    fill(d, 2)
+    for y in range(2, 14):
+        for x in range(3, 13):
+            d[y * W + x] = 0
+    # staves
+    for x in range(4, 13, 3):
+        for y in range(2, 14):
+            d[y * W + x] = 1
+    # hoops
+    for y in (4, 11):
+        for x in range(2, 14):
+            d[y * W + x] = 3
+    return pal, d
+
+
+def tile_wall_paper():
+    # anything pinned to a wall · map, poster, postcard, note, chart
+    pal = ['#3a2e1e', '#d8cfae', '#b0a582', '#8a7a58', '#c04040']
+    d = blank()
+    fill(d, 0)
+    for y in range(2, 14):
+        for x in range(2, 14):
+            d[y * W + x] = 1
+    # a curl of shadow on two edges
+    for y in range(2, 14):
+        d[y * W + 13] = 2
+    for x in range(2, 14):
+        d[13 * W + x] = 2
+    # writing / ink marks
+    for y in (5, 7, 9, 11):
+        for x in range(4, 12):
+            if (x + y) % 3 != 0:
+                d[y * W + x] = 3
+    # one red pin
+    set_pixel(d, 8, 3, 4)
+    return pal, d
+
+
+def tile_carved_mark():
+    # scratched into rock or wood · graffiti, tally, initials
+    pal = ['#4a4238', '#5a5248', '#302a22', '#7a7264']
+    d = blank()
+    mottle(d, [(1, 0.35), (0, 1.0)], 6)
+    # tally scratches
+    for i, x in enumerate((3, 6, 9)):
+        for y in range(4, 12):
+            d[y * W + x] = 2
+            d[y * W + x + 1] = 3
+    # the crossing stroke
+    for i in range(9):
+        set_pixel(d, 2 + i, 11 - i, 2)
+    return pal, d
+
+
+def tile_console_tv():
+    # the slowstick console / the shortwave set · a screen with a glow
+    pal = ['#2a2a30', '#4a4a52', '#1a2a24', '#5ac088', '#8a8a94']
+    d = blank()
+    fill(d, 0)
+    # case
+    for y in range(2, 13):
+        for x in range(1, 15):
+            d[y * W + x] = 1
+    # screen
+    for y in range(4, 10):
+        for x in range(3, 11):
+            d[y * W + x] = 2
+    # a scanline of phosphor
+    for x in range(4, 10):
+        d[6 * W + x] = 3
+        d[7 * W + ((x + 2) % 10 + 3)] = 3
+    # knobs
+    for y in (5, 8):
+        set_pixel(d, 12, y, 4)
+        set_pixel(d, 13, y, 4)
+    # feet
+    for x in (2, 13):
+        d[13 * W + x] = 4
+    return pal, d
+
+
+def tile_sail_canvas():
+    # ghost-ship sail · rotted canvas, wind-lifted
+    pal = ['#2a2a2e', '#9a9280', '#7a7264', '#c8c0aa']
+    d = blank()
+    fill(d, 0)
+    for y in range(H):
+        span = min(15, 2 + y)
+        for x in range(0, span):
+            d[y * W + x] = 1
+    # weave shading
+    for y in range(H):
+        for x in range(W):
+            if d[y * W + x] == 1 and (x + y) % 4 == 0:
+                d[y * W + x] = 2
+    # a lit edge
+    for y in range(H):
+        span = min(15, 2 + y)
+        if span > 0:
+            d[y * W + span - 1] = 3
+    # tears
+    for (tx, ty) in ((4, 9), (5, 10), (6, 11), (9, 3)):
+        set_pixel(d, tx, ty, 0)
+    return pal, d
+
+
+def tile_rope_coil():
+    # a coil of old rope on the ground
+    pal = ['#4a4438', '#a08a58', '#7a6840', '#5a4c30']
+    d = blank()
+    fill(d, 0)
+    cx, cy = 7.5, 8.0
+    for y in range(H):
+        for x in range(W):
+            dist = ((x - cx) ** 2 + ((y - cy) * 1.35) ** 2) ** 0.5
+            if 2.0 < dist <= 3.2:
+                d[y * W + x] = 1
+            elif 4.0 < dist <= 5.2:
+                d[y * W + x] = 2
+    # frayed tail
+    for i in range(5):
+        set_pixel(d, 12 + i % 3, 12 + i // 3, 3)
+    return pal, d
+
+
+def tile_item_glint():
+    # a small object worth picking up · reads as "something is here"
+    pal = ['#5c4432', '#c8b070', '#8a7040', '#f0e0a8']
+    d = blank()
+    mottle(d, [(0, 1.0)], 5)
+    # the object
+    for y in range(7, 11):
+        for x in range(5, 11):
+            d[y * W + x] = 1
+    for x in range(5, 11):
+        d[10 * W + x] = 2
+    # glint
+    set_pixel(d, 6, 6, 3)
+    set_pixel(d, 7, 5, 3)
+    set_pixel(d, 5, 5, 3)
+    return pal, d
+
+
+def tile_cave_mouth():
+    # the opening in the rock · dark, and clearly an opening
+    pal = ['#4a4438', '#3a352c', '#141210', '#5a5248']
+    d = blank()
+    mottle(d, [(1, 0.40), (0, 1.0)], 8)
+    cx = 7.5
+    for y in range(H):
+        # arch: widest at the bottom
+        half = 2.0 + (y / 15.0) * 5.0
+        for x in range(W):
+            if abs(x - cx) < half and y >= 2:
+                d[y * W + x] = 2
+    # lit lip of the arch
+    for y in range(2, H):
+        half = 2.0 + (y / 15.0) * 5.0
+        lx = int(cx - half)
+        rx = int(cx + half)
+        set_pixel(d, lx, y, 3)
+        set_pixel(d, rx, y, 3)
+    return pal, d
+
+
 TILES = {
+    'fence':            tile_fence,
+    'log_bench':        tile_log_bench,
+    'hay_bale':         tile_hay_bale,
+    'archery_target':   tile_archery_target,
+    'canoe':            tile_canoe,
+    'barrel':           tile_barrel,
+    'wall_paper':       tile_wall_paper,
+    'carved_mark':      tile_carved_mark,
+    'console_tv':       tile_console_tv,
+    'sail_canvas':      tile_sail_canvas,
+    'rope_coil':        tile_rope_coil,
+    'item_glint':       tile_item_glint,
+    'cave_mouth':       tile_cave_mouth,
+    'footlocker':       tile_footlocker,
+    'cubby':            tile_cubby,
+    'clothesline':      tile_clothesline,
+    'oil_lamp':         tile_oil_lamp,
+    'screen_door':      tile_screen_door,
     'grass':            tile_grass,
     'sand':             tile_sand,
     'path':             tile_path,

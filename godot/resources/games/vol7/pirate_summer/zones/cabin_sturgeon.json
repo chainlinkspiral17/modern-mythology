@@ -1,129 +1,112 @@
 {
-  "id": "cabin_sturgeon",
-  "display_name": "Cabin Sturgeon · interior",
-  "size": [
-    14,
-    10
-  ],
-  "tileset": {
-    ".": {
-      "kind": "floor",
-      "color": "#5c4432",
-      "walkable": true
-    },
-    "#": {
-      "kind": "wall",
-      "color": "#2a1e14",
-      "walkable": false
-    },
-    "B": {
-      "kind": "bunk",
-      "color": "#6a4e30",
-      "walkable": false,
-      "label": "a bunk"
-    },
-    "S": {
-      "kind": "sams_bunk",
-      "color": "#8c6a3e",
-      "walkable": false,
-      "label": "Sam's bunk · press space to sleep · advances the day",
-      "interact": "sleep"
-    },
-    "P": {
-      "kind": "pickup",
-      "color": "#c4a878",
-      "walkable": false,
-      "label": "a pencil with a good point on the floor by the rug",
-      "interact": "pickup",
-      "item_id": "pencil_good_point"
-    },
-    "W": {
-      "kind": "window",
-      "color": "#8ea6b0",
-      "walkable": false,
-      "label": "the window · you can see the mess hall"
-    },
-    "R": {
-      "kind": "rug",
-      "color": "#8c5c34",
-      "walkable": true
-    },
-    "D": {
-      "kind": "door",
-      "color": "#8c6a3e",
-      "walkable": true,
-      "exit": {
-        "zone": "camp_path",
-        "spawn": "from_sturgeon"
-      },
-      "label": "the cabin door · out to the path"
-    },
-    "T": {
-      "kind": "duffel",
-      "color": "#4a3a26",
-      "walkable": false,
-      "label": "Sam's duffel bag · a slowstick inside",
-      "interact": "duffel"
-    }
+ "id": "cabin_sturgeon",
+ "display_name": "Cabin Sturgeon \u00b7 interior",
+ "size": [
+  14,
+  10
+ ],
+ "tileset": {
+  ".": {
+   "kind": "floor",
+   "color": "#5c4432",
+   "walkable": true
   },
-  "tiles": [
-    "##############",
-    "#B..B..B..ST.#",
-    "#............#",
-    "#....RRRR....W",
-    "#....RRRR....W",
-    "#............#",
-    "#..P.........#",
-    "#............#",
-    "#............#",
-    "######DD######"
-  ],
-  "spawns": {
-    "start": [
-      6,
-      5
-    ],
-    "from_camp_path": [
-      6,
-      8
-    ]
+  "#": {
+   "kind": "wall",
+   "color": "#2a1e14",
+   "walkable": false
   },
-  "npcs": [
-    {
-      "camper": "bea_hallowell",
-      "pos": [
-        2,
-        2
-      ]
-    },
-    {
-      "camper": "wu_kai",
-      "pos": [
-        5,
-        2
-      ]
-    },
-    {
-      "camper": "elias_wren",
-      "pos": [
-        8,
-        2
-      ]
-    },
-    {
-      "camper": "ford_mears",
-      "pos": [
-        4,
-        6
-      ]
-    },
-    {
-      "camper": "xavier_lund",
-      "pos": [
-        10,
-        6
-      ]
-    }
+  "B": {
+   "kind": "bunk",
+   "color": "#6a4e30",
+   "walkable": false,
+   "label": "a bunk"
+  },
+  "F": {
+   "kind": "footlocker",
+   "color": "#6a4e30",
+   "walkable": false,
+   "label": "a camp trunk \u00b7 somebody's name inked on the lid"
+  },
+  "C": {
+   "kind": "cubby",
+   "color": "#5a4028",
+   "walkable": false,
+   "label": "the cubby \u00b7 folded towels, a rolled sleeping bag"
+  },
+  "L": {
+   "kind": "clothesline",
+   "color": "#6a5a3e",
+   "walkable": false,
+   "label": "swimsuits on a line \u00b7 still damp from this afternoon"
+  },
+  "N": {
+   "kind": "oil_lamp",
+   "color": "#e8c060",
+   "walkable": false,
+   "label": "the cabin's one lamp \u00b7 lit after lights-out, briefly"
+  },
+  "R": {
+   "kind": "rug",
+   "color": "#8c5c34",
+   "walkable": true
+  },
+  "S": {
+   "kind": "sams_bunk",
+   "color": "#7a5a3a",
+   "walkable": false,
+   "label": "Sam's bunk \u00b7 press space to sleep \u00b7 advances the day"
+  },
+  "T": {
+   "kind": "duffel",
+   "color": "#6a5a3e",
+   "walkable": false,
+   "label": "Sam's duffel bag \u00b7 a slowstick inside"
+  },
+  "P": {
+   "kind": "pickup",
+   "color": "#c8b070",
+   "walkable": false,
+   "label": "a pencil with a good point on the floor by the rug"
+  },
+  "W": {
+   "kind": "window",
+   "color": "#8ea6b0",
+   "walkable": false,
+   "label": "the window \u00b7 you can see the mess hall porch from here"
+  },
+  "D": {
+   "kind": "door",
+   "color": "#8c6a3e",
+   "walkable": true,
+   "exit": {
+    "zone": "camp_path",
+    "spawn": "from_sturgeon"
+   },
+   "label": "the screen door \u00b7 out to the path"
+  }
+ },
+ "tiles": [
+  "##############",
+  "#B..B..B...S.#",
+  "#F..F..F...T.#",
+  "#...........N#",
+  "#...RRRR.....W",
+  "#...RRRR.....W",
+  "#B..B........#",
+  "#F..F...P....#",
+  "#C..........L#",
+  "######DD######"
+ ],
+ "spawns": {
+  "start": [
+   10,
+   2
   ],
-  "notes": "2026-08-03 production pass — was 20x12 and mostly empty ('a giant empty warehouse with a few cots'). Now 14x10: bunks line the N wall with Sam's at the E end beside his duffel, rug centered, windows E, the DOUBLE DOOR visible bottom-center (door_wood tile + light seam). With the zone-fit zoom this fills the frame at ~2.1x."
+  "from_camp_path": [
+   6,
+   8
+  ]
+ },
+ "npcs": []
 }

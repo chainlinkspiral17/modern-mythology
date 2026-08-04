@@ -1,38 +1,106 @@
 {
-  "id": "cabin_osprey",
-  "display_name": "Cabin Osprey · interior",
-  "size": [18, 10],
-
-  "tileset": {
-    ".": { "kind": "floor",  "color": "#5c4432", "walkable": true },
-    "#": { "kind": "wall",   "color": "#2a1e14", "walkable": false },
-    "B": { "kind": "bunk",   "color": "#6a4e30", "walkable": false, "label": "a bunk" },
-    "W": { "kind": "window", "color": "#8ea6b0", "walkable": false, "label": "the window · you can see the north bluff from here" },
-    "R": { "kind": "rug",    "color": "#8c5c34", "walkable": true },
-    "D": { "kind": "door",   "color": "#8c6a3e", "walkable": true,  "exit": {"zone": "camp_path", "spawn": "from_osprey"}, "label": "the cabin door · out to the path" },
-    "P": { "kind": "poster", "color": "#c86a3a", "walkable": false, "label": "a poster of a great blue heron · Sylvie's" },
-    "L": { "kind": "cassette","color": "#3a3a3a", "walkable": false, "label": "a stack of cassette tapes · Nika's · one is labeled 'Portland 7/93'" }
+ "id": "cabin_osprey",
+ "display_name": "Cabin Osprey \u00b7 interior",
+ "size": [
+  12,
+  10
+ ],
+ "tileset": {
+  ".": {
+   "kind": "floor",
+   "color": "#5c4432",
+   "walkable": true
   },
-
-  "tiles": [
-    "##################",
-    "#B..B........P...#",
-    "#B..B............#",
-    "#................#",
-    "#......RR........W",
-    "#......RR........W",
-    "#................#",
-    "#..B.........L...#",
-    "#..B.............#",
-    "#########D########"
+  "#": {
+   "kind": "wall",
+   "color": "#2a1e14",
+   "walkable": false
+  },
+  "B": {
+   "kind": "bunk",
+   "color": "#6a4e30",
+   "walkable": false,
+   "label": "a bunk"
+  },
+  "F": {
+   "kind": "footlocker",
+   "color": "#6a4e30",
+   "walkable": false,
+   "label": "a camp trunk \u00b7 somebody's name inked on the lid"
+  },
+  "C": {
+   "kind": "cubby",
+   "color": "#5a4028",
+   "walkable": false,
+   "label": "the cubby \u00b7 folded towels, a rolled sleeping bag"
+  },
+  "L": {
+   "kind": "clothesline",
+   "color": "#6a5a3e",
+   "walkable": false,
+   "label": "swimsuits on a line \u00b7 still damp from this afternoon"
+  },
+  "N": {
+   "kind": "oil_lamp",
+   "color": "#e8c060",
+   "walkable": false,
+   "label": "the cabin's one lamp \u00b7 lit after lights-out, briefly"
+  },
+  "R": {
+   "kind": "rug",
+   "color": "#8c5c34",
+   "walkable": true
+  },
+  "P": {
+   "kind": "poster",
+   "color": "#6a8ab0",
+   "walkable": false,
+   "label": "a poster of a great blue heron \u00b7 Sylvie's"
+  },
+  "A": {
+   "kind": "cassette",
+   "color": "#8a7a54",
+   "walkable": false,
+   "label": "a stack of cassette tapes \u00b7 Nika's \u00b7 one is labeled 'Portland 7/93'"
+  },
+  "W": {
+   "kind": "window",
+   "color": "#8ea6b0",
+   "walkable": false,
+   "label": "the window \u00b7 you can see the north bluff from here"
+  },
+  "D": {
+   "kind": "door",
+   "color": "#8c6a3e",
+   "walkable": true,
+   "exit": {
+    "zone": "camp_path",
+    "spawn": "from_osprey"
+   },
+   "label": "the screen door \u00b7 out to the path"
+  }
+ },
+ "tiles": [
+  "############",
+  "#B..B..B...#",
+  "#F..F..F...#",
+  "#.........P#",
+  "#..RRRR....W",
+  "#..RRRR....W",
+  "#.........A#",
+  "#C........N#",
+  "#L.........#",
+  "#####DD#####"
+ ],
+ "spawns": {
+  "start": [
+   5,
+   7
   ],
-
-  "spawns": {
-    "start":         [8, 8],
-    "from_camp_path":[9, 9]
-  },
-
-  "npcs": [],
-
-  "notes": "Cabin Osprey · three campers · Sylvie Nakagawa (the singer), Ollie Fisk (the anxious swimmer), Nika Voss (the rebel).  Sylvie's heron poster on the north wall.  Nika's cassette tapes on the south bunk shelf · one labeled 'Portland 7/93.'  Door south to the camp path."
+  "from_camp_path": [
+   5,
+   8
+  ]
+ },
+ "npcs": []
 }

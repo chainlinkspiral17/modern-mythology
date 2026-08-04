@@ -1,37 +1,99 @@
 {
-  "id": "cabin_kestrel",
-  "display_name": "Cabin Kestrel · interior",
-  "size": [18, 10],
-
-  "tileset": {
-    ".": { "kind": "floor",  "color": "#5c4432", "walkable": true },
-    "#": { "kind": "wall",   "color": "#2a1e14", "walkable": false },
-    "B": { "kind": "bunk",   "color": "#6a4e30", "walkable": false, "label": "a bunk with a linen headband hanging on the post" },
-    "W": { "kind": "window", "color": "#8ea6b0", "walkable": false, "label": "the window · you can see the mess hall porch from here" },
-    "R": { "kind": "rug",    "color": "#8c5c34", "walkable": true },
-    "D": { "kind": "door",   "color": "#8c6a3e", "walkable": true,  "exit": {"zone": "camp_path", "spawn": "from_kestrel"}, "label": "the cabin door · out to the path" },
-    "K": { "kind": "postcard","color": "#e8d0a0", "walkable": false, "label": "a small cream postcard of Coimbra's library, older than either of Amelie's parents" }
+ "id": "cabin_kestrel",
+ "display_name": "Cabin Kestrel \u00b7 interior",
+ "size": [
+  11,
+  9
+ ],
+ "tileset": {
+  ".": {
+   "kind": "floor",
+   "color": "#5c4432",
+   "walkable": true
   },
-
-  "tiles": [
-    "##################",
-    "#B..B............#",
-    "#B..B............#",
-    "#..............K.#",
-    "#......RR........W",
-    "#......RR........W",
-    "#................#",
-    "#................#",
-    "#................#",
-    "#########D########"
+  "#": {
+   "kind": "wall",
+   "color": "#2a1e14",
+   "walkable": false
+  },
+  "B": {
+   "kind": "bunk",
+   "color": "#6a4e30",
+   "walkable": false,
+   "label": "a bunk"
+  },
+  "F": {
+   "kind": "footlocker",
+   "color": "#6a4e30",
+   "walkable": false,
+   "label": "a camp trunk \u00b7 somebody's name inked on the lid"
+  },
+  "C": {
+   "kind": "cubby",
+   "color": "#5a4028",
+   "walkable": false,
+   "label": "the cubby \u00b7 folded towels, a rolled sleeping bag"
+  },
+  "L": {
+   "kind": "clothesline",
+   "color": "#6a5a3e",
+   "walkable": false,
+   "label": "swimsuits on a line \u00b7 still damp from this afternoon"
+  },
+  "N": {
+   "kind": "oil_lamp",
+   "color": "#e8c060",
+   "walkable": false,
+   "label": "the cabin's one lamp \u00b7 lit after lights-out, briefly"
+  },
+  "R": {
+   "kind": "rug",
+   "color": "#8c5c34",
+   "walkable": true
+  },
+  "K": {
+   "kind": "postcard",
+   "color": "#d8cfae",
+   "walkable": false,
+   "label": "a small cream postcard of Coimbra's library, older than either of Amelie's parents"
+  },
+  "W": {
+   "kind": "window",
+   "color": "#8ea6b0",
+   "walkable": false,
+   "label": "the window \u00b7 you can see the mess hall porch from here"
+  },
+  "D": {
+   "kind": "door",
+   "color": "#8c6a3e",
+   "walkable": true,
+   "exit": {
+    "zone": "camp_path",
+    "spawn": "from_kestrel"
+   },
+   "label": "the screen door \u00b7 out to the path"
+  }
+ },
+ "tiles": [
+  "###########",
+  "#B..B.....#",
+  "#F..F.....#",
+  "#........K#",
+  "#..RRR....W",
+  "#..RRR....W",
+  "#C.......N#",
+  "#L........#",
+  "####DD#####"
+ ],
+ "spawns": {
+  "start": [
+   5,
+   6
   ],
-
-  "spawns": {
-    "start":         [8, 8],
-    "from_camp_path":[9, 9]
-  },
-
-  "npcs": [],
-
-  "notes": "Cabin Kestrel · two campers · Priya Sundar (the allergy-noticer) and Amelie Rocha (the grandmother-from-Coimbra one).  Amelie's tiny postcard of Coimbra's library is tacked to the wall.  Door south to the camp path."
+  "from_camp_path": [
+   4,
+   7
+  ]
+ },
+ "npcs": []
 }

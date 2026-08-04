@@ -135,8 +135,71 @@ const _TILE_SPRITE_FOR_KIND := {
 	"cross":         "cabin_wall",
 	"grave":         "boulder",
 	"hunter_cab":    "cabin_wall",
-	"cabin_door":    "door_wood",
-	"door":          "door_wood",
+	"cabin_door":    "screen_door",
+	"door":          "screen_door",
+	# ── Unmapped-kind sweep (production pass 2 · 2026-08-04) ──────
+	# An audit found 58 kind-uses with no sprite — they rendered as
+	# flat ColorRects. EIGHT WERE EXITS: the camp path's four cabin
+	# doors, the mess door, the four trailheads, the cave mouth and
+	# the forest back-trail all read as colored squares, which is the
+	# same bug class as the invisible cabin door. Every affordance
+	# gets art; nothing walkable is a flat rect.
+	"beaver_door":   "screen_door",
+	"osprey_door":   "screen_door",
+	"kestrel_door":  "screen_door",
+	"mess_door":     "door_wood",
+	"pond_path":     "path_pebble",
+	"fire_path":     "path_pebble",
+	"bluff_path":    "path_pebble",
+	"arch_path":     "path_pebble",
+	"east_trail":    "path_pebble",
+	"back_trail":    "path_pebble",
+	"caves_mouth":   "cave_mouth",
+	"shoot_spot":    "path_pebble",
+	"swim_spot":     "water_shallow",
+	"dock_end":      "dock_edge",
+	# props · the high-count ones first (fence x24, cabin x18,
+	# log_bench x14 were the largest flat-color areas in the game)
+	"fence":         "fence",
+	"cabin":         "deck_wood",
+	"log_bench":     "log_bench",
+	"hay":           "hay_bale",
+	"target":        "archery_target",
+	"line":          "path_pebble",
+	"rack":          "cubby",
+	"canoes":        "canoe",
+	"barrel":        "barrel",
+	"barrel_open":   "barrel",
+	"sail":          "sail_canvas",
+	"old_rope":      "rope_coil",
+	"slowstick_console": "console_tv",
+	"shortwave":     "console_tv",
+	"bus_stop_sign": "sign",
+	# anything pinned, written, or printed
+	"map":           "wall_paper",
+	"poster":        "wall_paper",
+	"postcard":      "wall_paper",
+	"cassette":      "wall_paper",
+	"old_newspaper": "wall_paper",
+	"cab_note":      "wall_paper",
+	"letter":        "wall_paper",
+	"chart":         "wall_paper",
+	"graffiti_1976": "carved_mark",
+	"graffiti_a":    "carved_mark",
+	"graffiti_b":    "carved_mark",
+	"wall_scratch":  "carved_mark",
+	# small findable objects
+	"pickup":        "item_glint",
+	"water_bottle":  "item_glint",
+	"whistle":       "item_glint",
+	"satchel":       "chest",
+	"duffel":        "chest",
+	"sams_bunk":     "bunk",
+	# cabin dressing (production pass 2)
+	"footlocker":    "footlocker",
+	"cubby":         "cubby",
+	"clothesline":   "clothesline",
+	"oil_lamp":      "oil_lamp",
 	"duff":          "grass",
 	"back_path":     "path",
 	"back_boat":     "deck_wood",
@@ -209,6 +272,14 @@ const C_BG        := Color(0.024, 0.020, 0.014, 1.0)
 const C_ACCENT    := Color(0.78, 0.66, 0.29, 1.00)
 const C_TXT       := Color(0.83, 0.79, 0.69, 1.00)
 const C_TXT_DIM   := Color(0.50, 0.47, 0.38, 1.00)
+const C_TXT_FAINT := Color(0.38, 0.36, 0.30, 1.00)
+
+# HUD band geometry · see _build_hud. The top-right reserve is the
+# strip the BACK button owns; nothing else may extend into it. The
+# bottom band holds the hover line + the control line.
+const HUD_BACK_RESERVE := 156
+const HUD_BOTTOM_BAND := 48
+const _HUD_CONTROL_HINT := "WASD move · SPACE interact · TAB roster · I duffel · J journal · ESC back"
 
 # Loaded zone.
 var _zone: Dictionary = {}
@@ -1165,28 +1236,51 @@ func _build_hud() -> void:
 	add_child(_hud_layer)
 	_hud_layer.visible = FirstPersonController.hud_visible
 
+	# ── HUD layout (production pass 2 · 2026-08-04) ───────────────
+	# The old layout put the control hints in a 400px box anchored
+	# top-right holding ~790px of text. Labels don't clip by default,
+	# so the hints ran straight through the BACK button and off the
+	# right edge of the screen — the "UI is overlapping and
+	# incoherent" report. The screen now has three reserved bands
+	# that cannot collide by construction:
+	#   top-left   · where you are + when it is (clipped short of BACK)
+	#   top-right  · BACK, and only BACK
+	#   bottom     · two stacked full-width lines: what you're facing,
+	#                then the controls
 	var top := HBoxContainer.new()
+	top.set_anchors_preset(Control.PRESET_TOP_WIDE)
 	top.offset_left = 16
 	top.offset_top = 8
-	top.offset_right = 800
+	top.offset_right = -HUD_BACK_RESERVE   # never reaches the button
 	top.offset_bottom = 32
 	top.add_theme_constant_override("separation", 16)
+	top.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	_hud_layer.add_child(top)
 
 	_zone_label = Label.new()
 	_zone_label.add_theme_font_size_override("font_size", 16)
 	_zone_label.add_theme_color_override("font_color", C_ACCENT)
+	# A long display_name trims instead of shoving the day label out
+	# from under the clock.
+	_zone_label.clip_text = true
+	_zone_label.text_overrun_behavior = TextServer.OVERRUN_TRIM_ELLIPSIS
+	_zone_label.custom_minimum_size = Vector2(0, 20)
+	_zone_label.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	top.add_child(_zone_label)
 
 	_day_label = Label.new()
 	_day_label.add_theme_font_size_override("font_size", 15)
 	_day_label.add_theme_color_override("font_color", C_TXT_DIM)
+	_day_label.clip_text = true
+	_day_label.text_overrun_behavior = TextServer.OVERRUN_TRIM_ELLIPSIS
+	_day_label.horizontal_alignment = HORIZONTAL_ALIGNMENT_RIGHT
 	top.add_child(_day_label)
 
-	# Right-side back button in its own container.
+	# Right-side back button in its own container · the only thing
+	# allowed in the top-right band.
 	var right_wrap := Control.new()
 	right_wrap.set_anchors_preset(Control.PRESET_TOP_RIGHT)
-	right_wrap.offset_left = -140
+	right_wrap.offset_left = -(HUD_BACK_RESERVE - 16)
 	right_wrap.offset_right = -16
 	right_wrap.offset_top = 8
 	right_wrap.offset_bottom = 32
@@ -1198,31 +1292,35 @@ func _build_hud() -> void:
 	back.pressed.connect(func() -> void: quit_to_shelf.emit())
 	right_wrap.add_child(back)
 
-	# Bottom hover-label · shows the label of the tile Sam is facing.
-	var bot := Control.new()
+	# Bottom band · two stacked full-width lines. The hover line says
+	# what Sam is facing; the control line sits under it. Both get the
+	# whole screen width, so neither can run into anything.
+	var bot := VBoxContainer.new()
 	bot.set_anchors_preset(Control.PRESET_BOTTOM_WIDE)
-	bot.offset_top = -48
-	bot.offset_bottom = -12
+	bot.offset_top = -HUD_BOTTOM_BAND
+	bot.offset_bottom = -8
 	bot.offset_left = 16
 	bot.offset_right = -16
+	bot.add_theme_constant_override("separation", 2)
+	bot.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	_hud_layer.add_child(bot)
 
 	_hover_label = Label.new()
 	_hover_label.add_theme_font_size_override("font_size", 15)
 	_hover_label.add_theme_color_override("font_color", C_TXT_DIM)
-	_hover_label.set_anchors_preset(Control.PRESET_FULL_RECT)
+	_hover_label.clip_text = true
+	_hover_label.text_overrun_behavior = TextServer.OVERRUN_TRIM_ELLIPSIS
+	_hover_label.custom_minimum_size = Vector2(0, 20)
 	bot.add_child(_hover_label)
 
 	_prompt_label = Label.new()
-	_prompt_label.text = "  WASD · move  ·  space · interact  ·  tab · roster  ·  i · duffel  ·  j · journal  ·  esc · back  "
+	_prompt_label.text = _HUD_CONTROL_HINT
 	_prompt_label.add_theme_font_size_override("font_size", 13)
-	_prompt_label.add_theme_color_override("font_color", C_TXT_DIM)
-	_prompt_label.set_anchors_preset(Control.PRESET_TOP_RIGHT)
-	_prompt_label.offset_left = -560
-	_prompt_label.offset_right = -160
-	_prompt_label.offset_top = 8
-	_prompt_label.offset_bottom = 24
-	_hud_layer.add_child(_prompt_label)
+	_prompt_label.add_theme_color_override("font_color", C_TXT_FAINT)
+	_prompt_label.clip_text = true
+	_prompt_label.text_overrun_behavior = TextServer.OVERRUN_TRIM_ELLIPSIS
+	_prompt_label.custom_minimum_size = Vector2(0, 18)
+	bot.add_child(_prompt_label)
 
 
 func _update_zone_label() -> void:
@@ -1650,8 +1748,10 @@ func _show_chatter(cid: String, entry: Dictionary) -> void:
 	panel.set_anchors_preset(Control.PRESET_BOTTOM_WIDE)
 	panel.offset_left = 40
 	panel.offset_right = -40
-	panel.offset_top = -108
-	panel.offset_bottom = -48
+	# Sits directly ON TOP of the HUD bottom band (48px) with a
+	# 12px gutter — panel and controls never touch.
+	panel.offset_top = -HUD_BOTTOM_BAND - 72
+	panel.offset_bottom = -HUD_BOTTOM_BAND - 12
 	var sb := StyleBoxFlat.new()
 	sb.bg_color = Color(0.020, 0.018, 0.014, 0.92)
 	sb.border_color = color
@@ -2995,8 +3095,10 @@ func _show_idle_balloon(cid: String, entry: Dictionary) -> void:
 	panel.set_anchors_preset(Control.PRESET_BOTTOM_WIDE)
 	panel.offset_left = 40
 	panel.offset_right = -40
-	panel.offset_top = -108
-	panel.offset_bottom = -48
+	# Sits directly ON TOP of the HUD bottom band (48px) with a
+	# 12px gutter — panel and controls never touch.
+	panel.offset_top = -HUD_BOTTOM_BAND - 72
+	panel.offset_bottom = -HUD_BOTTOM_BAND - 12
 	var sb := StyleBoxFlat.new()
 	sb.bg_color = Color(0.014, 0.020, 0.020, 0.92)
 	sb.border_color = color.darkened(0.20)   # slightly darker border · idle marker
@@ -3084,8 +3186,10 @@ func _open_dialogue(camper_id: String) -> void:
 	panel.set_anchors_preset(Control.PRESET_BOTTOM_WIDE)
 	panel.offset_left = 40
 	panel.offset_right = -40
-	panel.offset_top = -380
-	panel.offset_bottom = -20
+	# Clears the HUD bottom band · the dialogue box used to sit ON
+	# the hover + control lines.
+	panel.offset_top = -(HUD_BOTTOM_BAND + 12 + 360)
+	panel.offset_bottom = -(HUD_BOTTOM_BAND + 12)
 	var sb := StyleBoxFlat.new()
 	sb.bg_color = Color(0.030, 0.026, 0.020, 0.98)
 	sb.border_color = C_ACCENT

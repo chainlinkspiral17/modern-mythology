@@ -58,10 +58,46 @@ read-size art, UI coherence, scale-to-fiction).
   door_wood tile (doors rendered as WALLS — every exit invisible),
   Cabin Sturgeon redrawn 14x10 and dressed, dedicated title cover
   replacing the tally-text moment image.
-- **Next**: PS remaining zones (beaver/osprey/kestrel cabins share
-  the warehouse layout; mess hall, boathouse audit), PS HUD overlap
-  audit ("UI overlapping and incoherent"), then the same sweep
-  per stick: Estuary 3 → NH tableaux detail → the rest.
+- **Pass 2 (shipped 2026-08-04) · PS zones + HUD + the audit that
+  finds this class of bug**:
+  - `godot/tools/audit/ps_zone_audit.py` — NEW gate. Checks exits
+    with no tile art, dangling exit targets/spawn keys, spawns on
+    non-walkable tiles, stranded scheduled NPC positions, ragged
+    grids, undeclared tiles. It found 17 real bugs on first run.
+  - **The boathouse was unenterable** — its wet decking was
+    non-walkable, so every tile reachable from the door was water
+    or deck: you walked in and could only walk back out, with the
+    1988 logbook / shortwave / chest thread sealed behind it.
+  - Sam spawned INSIDE the alder-pond boathouse building and ON the
+    camp-path bulletin board; caves level 2's climb-out named a
+    spawn that didn't exist; east_forest_deep's grid was ragged
+    (22/23/24-wide rows against a declared 22) so its right column
+    was silently clipped.
+  - **58 tile kinds had no art** and rendered as flat ColorRects —
+    EIGHT WERE EXITS (all four camp-path cabin doors, the mess
+    door, the four trailheads, the cave mouth, the forest
+    back-trail). This is the general form of the invisible cabin
+    door. 18 new procgen tiles authored (fence, log bench, hay
+    bale, target, canoe, barrel, pinned paper, carved mark,
+    console, sail, rope coil, item glint, cave mouth + the five
+    cabin-dressing tiles) and every kind mapped; only deliberate
+    multi-tile silhouettes (the Old Man, the watched island, the
+    heron) stay flat.
+  - **All four cabins rebuilt to the size their roster needs**
+    (`tools/sprites/build_ps_cabins.py`): 18x10 warehouses with
+    ~120 open tiles → 11x9–14x10 with 55–80, ONE REAL BUNK PER
+    CAMPER (Sturgeon had 3 bunks for 5 kids), a footlocker at each
+    foot, cubby / clothesline / oil lamp / rug dressing, and
+    campers.json `bunk_pos` rewritten to land on the actual bunk.
+  - **HUD bands**: the control hints were ~790px of text in a 400px
+    top-right box, running through the BACK button and off-screen.
+    Three reserved bands now (top-left where/when · top-right BACK
+    only · bottom two-line hover + controls), everything clipped
+    with ellipsis, dialogue panels lifted clear of the band.
+- **Next**: Deck screenshot pass on the rebuilt cabins + camp path
+  (do the new tiles read at 24px?), mess hall + campfire ring
+  dressing to the same standard, then the same sweep per stick:
+  Estuary 3 → NH tableaux detail → the rest.
 
 ### Workstream · HIGHWAY 9 ACTION STAGE (user-directed)
 
