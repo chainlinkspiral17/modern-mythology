@@ -768,7 +768,6 @@ func _on_slowstock_library() -> void:
 		fit.position = Vector2((ss.x - 1280.0 * k) * 0.5,
 				(ss.y - 720.0 * k) * 0.5)
 	screen.resized.connect(refit)
-	refit.call()
 	fit.add_child(_slowstock_root)
 	# Chin plate: brand + power LED.
 	var brand := Label.new()
@@ -793,6 +792,11 @@ func _on_slowstock_library() -> void:
 	led.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	wrap.add_child(led)
 	add_child(wrap)
+	# The tree-entry resized signal is not guaranteed on every layout
+	# path — a missed one leaves fit.scale at 1.0 and the bottom of
+	# every stick crops again. One deferred refit after the layout
+	# pass makes the letterbox unconditional.
+	refit.call_deferred()
 	# ESC on the shelf's dim-click / closed signal frees the wrap.
 	# We poll for it by listening on the SlowstockBoot's tree exit.
 	_slowstock_root.tree_exited.connect(func() -> void:
