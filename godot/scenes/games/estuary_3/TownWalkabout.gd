@@ -401,7 +401,7 @@ func _render_location(loc_id: String) -> void:
 		if outro != "":
 			response_log.append_text("\n[i]%s[/i]\n" % outro)
 			# Small delay so the outro reads before returning.
-			get_tree().create_timer(0.6).timeout.connect(func() -> void: _show_hub())
+			NodeDelay.after(self, 0.6, func() -> void: _show_hub())
 		else:
 			_show_hub())
 	actions.add_child(leave)

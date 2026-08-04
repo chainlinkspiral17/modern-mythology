@@ -160,7 +160,7 @@ func _schedule_ambient() -> void:
 		return
 	var sfx := get_node_or_null("/root/SFXBank")
 	if sfx: sfx.play("parsa_wind", 0.5)
-	get_tree().create_timer(18.0).timeout.connect(_schedule_ambient)
+	NodeDelay.after(self, 18.0, _schedule_ambient)
 
 
 

@@ -3234,7 +3234,7 @@ func _insert_cut_to_space(space_id: String, hold_sec: float = 1.7) -> void:
 	_cached_fp_cam.rotation = spec.get("rotation", Vector3.ZERO)
 	_cached_fp_cam.fov = maxf(34.0, float(spec.get("fov", 62.0)) - 12.0)
 	print("[Gauntlet FP] insert cut → %s (hold %.1fs)" % [space_id, hold_sec])
-	get_tree().create_timer(hold_sec).timeout.connect(_insert_cut_return)
+	NodeDelay.after(self, hold_sec, _insert_cut_return)
 
 
 func _insert_cut_return() -> void:
@@ -8142,7 +8142,7 @@ func _maybe_schedule_auto_advance() -> void:
 	_auto_advance_serial += 1
 	var my_serial: int = _auto_advance_serial
 	var phase_at_schedule: int = int(_phase)
-	get_tree().create_timer(0.9).timeout.connect(func() -> void:
+	NodeDelay.after(self, 0.9, func() -> void:
 		if _game_over or not is_inside_tree():
 			return
 		if my_serial != _auto_advance_serial:

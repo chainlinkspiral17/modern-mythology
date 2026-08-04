@@ -261,7 +261,6 @@ var _chatter_pool: Array = []
 var _chatter_speaker_cursor: int = 0
 var _steps_since_chatter: int = 0
 var _chatter_balloon: Panel = null
-var _chatter_balloon_timer: SceneTreeTimer = null
 
 # Idle chatter · loaded pool + per-NPC dwell timer + cooldown timers.
 var _idle_pool: Array = []
@@ -530,7 +529,7 @@ const _AMBIENT_FOR_ZONE := {
 	"ghost_ship":      { "path": "res://assets/audio/sfx/ps/ghost_moan.wav",      "interval": 20.0, "vol_db": -10.0 },
 }
 var _ambient_player: AudioStreamPlayer = null
-var _ambient_timer: SceneTreeTimer = null
+var _ambient_scheduled: bool = false
 var _current_ambient_path: String = ""
 
 
@@ -574,25 +573,24 @@ func _start_zone_ambient(zone_id: String) -> void:
 
 
 func _schedule_next_ambient(interval: float) -> void:
-	if _ambient_timer != null and _ambient_timer.is_connected("timeout", _on_ambient_tick):
+	if _ambient_scheduled:
 		return  # already ticking
-	_ambient_timer = get_tree().create_timer(interval)
-	_ambient_timer.timeout.connect(_on_ambient_tick.bind(interval))
+	_ambient_scheduled = true
+	NodeDelay.after(self, interval, _on_ambient_tick.bind(interval))
 
 
 func _on_ambient_tick(interval: float) -> void:
 	# Only fire if we're still in the same zone and the ambient
 	# player is still valid.
+	_ambient_scheduled = false
 	if _ambient_player == null or not is_instance_valid(_ambient_player):
-		_ambient_timer = null
 		return
 	if _current_ambient_path == "":
-		_ambient_timer = null
 		return
 	_ambient_player.play()
 	# Reschedule.
-	_ambient_timer = get_tree().create_timer(interval)
-	_ambient_timer.timeout.connect(_on_ambient_tick.bind(interval))
+	_ambient_scheduled = true
+	NodeDelay.after(self, interval, _on_ambient_tick.bind(interval))
 
 
 # ─── Counselor Mode · the player is Jenny Copeland ───────────────
@@ -1561,7 +1559,7 @@ func _maybe_schedule_reply(primary_id: String) -> void:
 	var pick: Dictionary = candidates[randi() % candidates.size()]
 	# Fire the reply 4.0 seconds after the primary, once the primary
 	# balloon has been visible long enough to read.
-	get_tree().create_timer(4.0).timeout.connect(func() -> void:
+	NodeDelay.after(self, 4.0, func() -> void:
 		# Suppress if a modal is now open · deferred replies shouldn't
 		# ambush the player in a menu.
 		if _dialogue_open or _roster_open or _duffel_open \
@@ -1692,8 +1690,7 @@ func _show_chatter(cid: String, entry: Dictionary) -> void:
 	# Schedule a reply · scan for any authored reply that responds
 	# to this line and whose speaker is currently in the party.
 	_maybe_schedule_reply(String(entry.get("id", "")))
-	_chatter_balloon_timer = get_tree().create_timer(CHATTER_LIFETIME)
-	_chatter_balloon_timer.timeout.connect(func() -> void:
+	NodeDelay.after(self, CHATTER_LIFETIME, func() -> void:
 		if _chatter_balloon == panel and is_instance_valid(panel):
 			panel.queue_free()
 			_chatter_balloon = null)
@@ -2030,7 +2027,7 @@ func _try_leave_camp_early() -> void:
 	# Confirm-adjacent: fire directly · the message frames the choice.
 	_run_state["left_camp_early_friday"] = true
 	_show_transient("  You walk to the bus stop.  The bus comes at 3:41.  You pay the driver.  You do not look back.")
-	get_tree().create_timer(2.0).timeout.connect(func() -> void:
+	NodeDelay.after(self, 2.0, func() -> void:
 		run_finished.emit({}, []))
 
 
@@ -2447,7 +2444,7 @@ func _sleep_and_advance_day() -> void:
 	# wait for modal-dismissed rather than firing on a timer).
 	if (cur + 1) == 6:
 		_show_hero("moment_saturday_bus_home", "  saturday · you know fourteen names")
-		get_tree().create_timer(3.0).timeout.connect(func() -> void:
+		NodeDelay.after(self, 3.0, func() -> void:
 			run_finished.emit({}, []))
 
 
@@ -3034,8 +3031,7 @@ func _show_idle_balloon(cid: String, entry: Dictionary) -> void:
 
 	var sfx := get_node_or_null("/root/SFXBank")
 	if sfx: sfx.play("tile_hover", 0.28)
-	_chatter_balloon_timer = get_tree().create_timer(CHATTER_LIFETIME)
-	_chatter_balloon_timer.timeout.connect(func() -> void:
+	NodeDelay.after(self, CHATTER_LIFETIME, func() -> void:
 		if _chatter_balloon == panel and is_instance_valid(panel):
 			panel.queue_free()
 			_chatter_balloon = null)
@@ -4106,7 +4102,7 @@ func _show_hero(hero_id: String, caption: String = "") -> void:
 		overlay.add_child(cap)
 	_hud_layer.add_child(overlay)
 	_hero_overlay = overlay
-	get_tree().create_timer(6.0).timeout.connect(func() -> void:
+	NodeDelay.after(self, 6.0, func() -> void:
 		if _hero_overlay != null and is_instance_valid(_hero_overlay):
 			_hero_overlay.queue_free()
 			_hero_overlay = null)
@@ -4125,7 +4121,7 @@ func _show_transient(text: String) -> void:
 	_transient_lbl.offset_left = 16
 	_transient_lbl.offset_right = -16
 	_hud_layer.add_child(_transient_lbl)
-	get_tree().create_timer(3.0).timeout.connect(func() -> void:
+	NodeDelay.after(self, 3.0, func() -> void:
 		if _transient_lbl != null and is_instance_valid(_transient_lbl):
 			_transient_lbl.queue_free()
 			_transient_lbl = null)

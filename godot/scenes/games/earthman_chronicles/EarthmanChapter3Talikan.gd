@@ -189,7 +189,7 @@ func _schedule_ambient() -> void:
 		return
 	var sfx := get_node_or_null("/root/SFXBank")
 	if sfx: sfx.play("kyrindi_bell", 0.35)
-	get_tree().create_timer(26.0).timeout.connect(_schedule_ambient)
+	NodeDelay.after(self, 26.0, _schedule_ambient)
 
 
 

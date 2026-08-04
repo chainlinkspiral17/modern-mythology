@@ -687,7 +687,7 @@ func _end_run(quit: bool) -> void:
 	var sfx := get_node_or_null("/root/SFXBank")
 	if sfx:
 		sfx.play("tide_swallow", 0.75)
-		get_tree().create_timer(1.20).timeout.connect(func() -> void:
+		NodeDelay.after(self, 1.20, func() -> void:
 			sfx.play("signing", 0.65))
 	# Compute line stats.
 	var stats := _compute_line_stats()

@@ -638,7 +638,7 @@ func _on_next_pressed() -> void:
 	# Score this season's choice.
 	var hit := _score_season_targets(season, _current_choice)
 	# Result stinger after a short beat so it lands separately.
-	get_tree().create_timer(0.5).timeout.connect(func() -> void:
+	NodeDelay.after(self, 0.5, func() -> void:
 		_play_sfx("season_success" if hit else "season_failure", 0.75))
 	_season_choices.append({
 		"season_id":   String(season.get("id", "")),
@@ -657,7 +657,7 @@ func _on_next_pressed() -> void:
 	_season_index += 1
 	# Small delay so the outcome text lingers before the next season
 	# clobbers the panel. Uses a one-shot Timer via SceneTree.
-	get_tree().create_timer(0.6).timeout.connect(func() -> void:
+	NodeDelay.after(self, 0.6, func() -> void:
 		_narration_lbl.append_text("\n")
 		_render_current_season())
 

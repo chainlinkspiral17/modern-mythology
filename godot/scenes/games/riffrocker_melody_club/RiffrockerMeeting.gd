@@ -188,7 +188,7 @@ func _play_call() -> void:
 	for ev in loop.get("events", []):
 		_echo_expected.append(int((ev as Dictionary)["s"]))
 	var wait := _player.loop_length(loop) + 0.6
-	get_tree().create_timer(wait).timeout.connect(_begin_echo)
+	NodeDelay.after(self, wait, _begin_echo)
 
 
 func _call_to_loop(call: Dictionary) -> Dictionary:
@@ -329,7 +329,7 @@ func _playback_open_mic() -> void:
 	var loop: Dictionary = _state.get("open_mic_loop", {})
 	_player.play_loop(loop)
 	var wait := _player.loop_length(loop) + 1.0
-	get_tree().create_timer(wait).timeout.connect(func() -> void:
+	NodeDelay.after(self, wait, func() -> void:
 		_go_btn.pressed.connect(_on_go)
 		_begin_outro())
 

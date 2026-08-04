@@ -534,7 +534,7 @@ func _play_riffrocker_station() -> void:
 		_riff_station.set_gain_db(-14.0)
 	_riff_station.play_loop(loop)
 	var second_pass := _riff_station.loop_length(loop) + 2.0
-	get_tree().create_timer(second_pass).timeout.connect(func() -> void:
+	NodeDelay.after(self, second_pass, func() -> void:
 		if _riff_station != null and is_instance_valid(_riff_station):
 			_riff_station.play_loop(loop))
 
@@ -751,7 +751,7 @@ func _render_customer_at_counter(cust_id: String) -> void:
 			_on_customer_click(cust_id))
 	_room_container.add_child(tex_rect)
 	# Fade + free after lifetime.
-	get_tree().create_timer(_CHAR_LIFETIME).timeout.connect(func() -> void:
+	NodeDelay.after(self, _CHAR_LIFETIME, func() -> void:
 		if is_instance_valid(tex_rect): tex_rect.queue_free())
 
 
@@ -1034,7 +1034,7 @@ func _fire_backroom_transition() -> void:
 		sfx.play("2am_customer_stands_up", 0.85)
 		# Backroom door opens after the walk · slight delay so the
 		# footsteps play out first.
-		get_tree().create_timer(1.5).timeout.connect(func() -> void:
+		NodeDelay.after(self, 1.5, func() -> void:
 			sfx.play("door_open", 0.85))
 	_log_line("", "", false)
 	_log_line("[b][color=#e8c060]═══ BACKROOM DOOR OPENED ═══[/color][/b]", "#e8c060", false)
@@ -1043,7 +1043,7 @@ func _fire_backroom_transition() -> void:
 	_log_line("[b][color=#7cffb0]Act 2 · THE ESTUARY begins.[/color][/b]", "#7cffb0", false)
 	_paused = true
 	# Fire the transition signal after a beat.
-	get_tree().create_timer(0.5).timeout.connect(func() -> void: act1_finished.emit(_register_tape))
+	NodeDelay.after(self, 0.5, func() -> void: act1_finished.emit(_register_tape))
 
 
 func _end_night() -> void:

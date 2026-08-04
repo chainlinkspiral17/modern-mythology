@@ -307,7 +307,7 @@ func _trigger_card(idx: int) -> void:
 		sb.border_color = C_GOLD_HI
 		sb.set_border_width_all(2)
 		btn.add_theme_stylebox_override("normal", sb)
-		get_tree().create_timer(0.09).timeout.connect(func():
+		NodeDelay.after(self, 0.09, func():
 			btn.remove_theme_stylebox_override("normal"))
 
 	_now_playing_label.text = "▶ %02d · %s · %s" % [entry[0], entry[1], timbre]
