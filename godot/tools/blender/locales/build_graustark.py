@@ -4647,6 +4647,67 @@ def export_glb():
 
 # ── MAIN ────────────────────────────────────────────────────────
 
+def build_ruin_draft2_2026_08():
+    """DRAFT 2 (drafting-program ledger): silhouette shaping +
+    mid-ground bands for the ruin quarter. Draft 1 placed the hero
+    marks (sinkhole, chalked wall, wreck, cottage); this pass gives
+    the quarter a SKYLINE — broken rooflines, leaning chimneys, a
+    fallen archway — and a mid-ground of rubble density + scrub so
+    the eye crosses three distances, not one. Draft 3: Deck reframe.
+    """
+    from _props.geometry import make_box as _mb, make_cyl as _mc
+    import math as _m
+    conc = (0.52, 0.50, 0.46, 1.0)
+    conc_dk = (0.40, 0.38, 0.35, 1.0)
+    brick = (0.44, 0.32, 0.26, 1.0)
+    brick_dk = (0.36, 0.26, 0.21, 1.0)
+    scrub = (0.30, 0.34, 0.22, 1.0)
+    # ── Skyline band: broken rooflines ringing the quarter ──
+    # Shells with stepped, collapsed tops — ruins read by SILHOUETTE.
+    shells = [(-12.0, -338.0, 7.0, 9.0, 6.5), (2.0, -352.0, 6.0, 7.0, 8.5),
+              (26.0, -344.0, 8.0, 10.0, 5.0), (60.0, -350.0, 7.0, 8.0, 7.5),
+              (66.0, -320.0, 6.0, 9.0, 9.5)]
+    for si, (sx2, sy2, w, d, h) in enumerate(shells):
+        _mb(f"RuinShell_{si}_Body", (sx2, sy2, h / 2.0), (w, d, h), brick)
+        # Collapsed top: a stepped notch (darker inner face showing).
+        _mb(f"RuinShell_{si}_Notch", (sx2 + w * 0.2, sy2, h - 0.6), (w * 0.55, d + 0.2, 1.2),
+            (0.20, 0.17, 0.15, 1.0))
+        _mb(f"RuinShell_{si}_Step", (sx2 - w * 0.28, sy2, h + 0.5), (w * 0.35, d * 0.8, 1.0), brick_dk)
+        # Empty window sockets — dark punches in the shell face.
+        for wi in range(3):
+            _mb(f"RuinShell_{si}_Socket_{wi}", (sx2 - w / 2.0 + 0.9 + wi * (w / 3.2), sy2 - d / 2.0 - 0.02,
+                h * 0.45), (1.1, 0.06, 1.5), (0.14, 0.12, 0.11, 1.0))
+    # Leaning chimney stacks — two, opposite leans faked by offset
+    # stacked boxes (no rotation in the pipeline).
+    for ci, (cx2, cy2, lean) in enumerate(((18.0, -358.0, 0.35), (-4.0, -330.0, -0.30))):
+        for zi in range(4):
+            _mb(f"Ruin_Chimney_{ci}_{zi}", (cx2 + lean * zi, cy2, 1.0 + zi * 1.9),
+                (1.3 - zi * 0.08, 1.3 - zi * 0.08, 2.0), brick_dk if zi % 2 else brick)
+    # The fallen archway: two piers + the collapsed span on the ground.
+    _mb("Ruin_Arch_Pier_W", (34.0, -332.0, 2.6), (1.6, 1.6, 5.2), conc)
+    _mb("Ruin_Arch_Pier_E", (41.0, -332.0, 1.7), (1.6, 1.6, 3.4), conc_dk)
+    _mb("Ruin_Arch_Span_Fallen", (37.5, -329.5, 0.5), (5.5, 1.8, 1.0), conc_dk)
+    _mb("Ruin_Arch_Span_Frag", (39.5, -327.8, 0.35), (1.8, 1.2, 0.7), conc)
+    # ── Mid-ground band: rubble density + scrub around the sinkhole ──
+    for ri2 in range(12):
+        a = ri2 * 0.524
+        r = 40.0 + (ri2 % 3) * 5.0
+        rx2 = 10.0 + _m.cos(a) * r
+        ry2 = -300.0 + _m.sin(a) * r
+        _mb(f"Rubble_Mid_{ri2}", (rx2, ry2, 0.35), (1.6 + (ri2 % 3) * 0.7, 1.2, 0.7 + (ri2 % 2) * 0.5),
+            conc_dk if ri2 % 2 else conc)
+    for ti2 in range(8):
+        a2 = 0.4 + ti2 * 0.785
+        tx2 = 10.0 + _m.cos(a2) * 52.0
+        ty2 = -300.0 + _m.sin(a2) * 52.0
+        _mc(f"Ruin_Scrub_{ti2}", (tx2, ty2, 0.5), 0.9, 1.0, scrub, segments=8)
+    # A downed power pole crossing the quarter road — the Calamity
+    # left the infrastructure where it fell.
+    _mc("Ruin_Pole_Downed", (24.0, -366.0, 0.35), 0.14, 11.0, (0.34, 0.28, 0.22, 1.0),
+        axis='Y', segments=8)
+    _mb("Ruin_Pole_Crossarm", (24.0, -361.5, 0.55), (1.8, 0.14, 0.14), (0.30, 0.25, 0.20, 1.0))
+
+
 def build_ruin_quarter_2026_08():
     """2026-08-03 tail pass: the post-Calamity geometry the ruin
     chapters (Hermit/Star/Judgement/World) actually stage on — THE
@@ -4727,6 +4788,7 @@ def main():
     report_arcana_status()
 
     build_ruin_quarter_2026_08()
+    build_ruin_draft2_2026_08()
     export_glb()
 
 

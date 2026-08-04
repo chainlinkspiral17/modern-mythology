@@ -208,6 +208,153 @@ def build_portal_floor():
     make_cyl("Far_Door_Handle", (-0.32, 20.86, z0 + 1.10), 0.025, 0.05, BRASS, axis='Y', segments=8)
 
 
+
+def build_draft2_density_2026_08():
+    """DRAFT 2 (drafting-program ledger): per-floor dressing density
+    + portal-room staging. Draft 1 was the named hero objects in
+    empty cedar rooms; this pass makes each floor read as USED —
+    and stages the portal room's sixty-foot walk as a walk.
+    Draft 3 targets: vn_shot coverage per floor, D2 wear pass,
+    Deck reframe of the five presets."""
+    # ── LOBBY (z0=0) · a lobby someone keeps, not a void ──
+    z0 = 0.0
+    # Ceiling beams — the twelve-foot ceiling earns its height.
+    for bi, by in enumerate((2.0, 4.0, 6.0)):
+        make_box(f"Lobby_Beam_{bi}", (0.0, by, z0 + 3.42), (10.2, 0.30, 0.28), CEDAR_DK)
+    # Pendant lamps hung from the beams.
+    for pi, (px, py) in enumerate(((-2.4, 4.0), (2.4, 4.0))):
+        make_cyl(f"Lobby_Pendant_{pi}_Cord", (px, py, z0 + 3.15), 0.012, 0.45, (0.20, 0.18, 0.16, 1.0), segments=6)
+        make_cyl(f"Lobby_Pendant_{pi}_Shade", (px, py, z0 + 2.85), 0.16, 0.18, BRASS, segments=10)
+        make_cyl(f"Lobby_Pendant_{pi}_Bulb", (px, py, z0 + 2.78), 0.05, 0.06, (0.98, 0.92, 0.72, 1.0), segments=8)
+    # Runner from the doors to the desk — the walk-in line.
+    make_box("Lobby_Runner", (0.0, 2.6, z0 + 0.055), (1.4, 4.4, 0.015), (0.46, 0.30, 0.22, 1.0))
+    make_box("Lobby_Runner_Border", (0.0, 2.6, z0 + 0.062), (1.15, 4.15, 0.008), (0.52, 0.36, 0.26, 1.0))
+    # Reception desk dress: the visitor ledger OPEN, a pen, the
+    # small brass bell (the studio's motif rings here too).
+    make_box("Lobby_Ledger_L", (-0.30, 5.05, z0 + 1.155), (0.16, 0.22, 0.012), (0.90, 0.88, 0.80, 1.0))
+    make_box("Lobby_Ledger_R", (-0.13, 5.05, z0 + 1.155), (0.16, 0.22, 0.012), (0.90, 0.88, 0.80, 1.0))
+    make_cyl("Lobby_Pen", (0.10, 5.00, z0 + 1.16), 0.007, 0.13, (0.16, 0.18, 0.30, 1.0), axis='X', segments=6)
+    make_cyl("Lobby_Bell_Base", (0.55, 5.05, z0 + 1.165), 0.05, 0.02, (0.62, 0.64, 0.66, 1.0), segments=10)
+    make_cyl("Lobby_Bell_Dome", (0.55, 5.05, z0 + 1.20), 0.045, 0.05, BRASS, segments=10)
+    # Coat rack (one coat — somebody IS here) + umbrella stand.
+    make_cyl("Lobby_CoatRack_Pole", (-4.5, 6.8, z0 + 0.95), 0.03, 1.90, CEDAR_DK, segments=8)
+    make_cyl("Lobby_CoatRack_Base", (-4.5, 6.8, z0 + 0.03), 0.22, 0.05, CEDAR_DK, segments=10)
+    make_box("Lobby_Coat", (-4.5, 6.75, z0 + 1.30), (0.34, 0.16, 0.85), (0.30, 0.32, 0.38, 1.0))
+    make_cyl("Lobby_Umbrella_Stand", (-4.0, 6.9, z0 + 0.25), 0.11, 0.50, BRASS, segments=10)
+    make_cyl("Lobby_Umbrella", (-3.97, 6.87, z0 + 0.55), 0.03, 0.75, (0.20, 0.24, 0.30, 1.0), segments=6)
+    # Low table by the bench, brochures fanned.
+    make_box("Lobby_SideTable", (-4.35, 2.0, z0 + 0.42), (0.5, 0.6, 0.05), CEDAR)
+    make_box("Lobby_SideTable_Leg", (-4.35, 2.0, z0 + 0.20), (0.08, 0.08, 0.40), CEDAR_DK)
+    for fi in range(3):
+        make_box(f"Lobby_Brochure_{fi}", (-4.38 + fi * 0.05, 2.0 - fi * 0.04, z0 + 0.455 + fi * 0.006),
+                 (0.12, 0.20, 0.005), POSTER_TINTS[fi % len(POSTER_TINTS)])
+    # Wall sconces flanking the portrait.
+    for sx in (-1.4, 1.4):
+        make_box(f"Lobby_Sconce_{sx:+.1f}_Back", (sx, 7.86, z0 + 2.10), (0.10, 0.04, 0.22), BRASS)
+        make_cyl(f"Lobby_Sconce_{sx:+.1f}_Glow", (sx, 7.80, z0 + 2.16), 0.045, 0.09, (0.98, 0.90, 0.70, 1.0), segments=8)
+
+    # ── STUDIO (z0=5) · people work here mid-shift ──
+    z0 = 5.0
+    for ci, (cx, cy) in enumerate(((-2.2, 4.2), (2.2, 4.2))):
+        for di, (dx, dy) in enumerate(((-0.75, -0.5), (0.75, -0.5), (-0.75, 0.5), (0.75, 0.5))):
+            make_box(f"Kbd_{ci}_{di}", (cx + dx, cy + dy - 0.10, z0 + 0.755), (0.36, 0.13, 0.02),
+                     (0.22, 0.23, 0.25, 1.0))
+        # One mug per cluster, one chair shoved out of true.
+        make_cyl(f"Studio_Mug_{ci}", (cx + 0.55, cy - 0.62, z0 + 0.80), 0.04, 0.09,
+                 POSTER_TINTS[(ci * 2) % len(POSTER_TINTS)], segments=8)
+    make_box("Studio_Chair_Shoved", (-1.45, 3.05, z0 + 0.44), (0.42, 0.42, 0.06), CEDAR_DK)
+    # Task lamps on the two rack-side desks.
+    for ti, tx in enumerate((-2.95, 1.45)):
+        make_cyl(f"Studio_TaskLamp_{ti}_Arm", (tx, 4.75, z0 + 0.95), 0.012, 0.40, (0.22, 0.22, 0.24, 1.0), segments=6)
+        make_cyl(f"Studio_TaskLamp_{ti}_Head", (tx + 0.12, 4.70, z0 + 1.12), 0.06, 0.09, (0.96, 0.90, 0.72, 1.0), segments=8)
+    # Cable tray from desk clusters to the racks + floor cable runs
+    # (the room is PLUGGED IN — D3 rule at tower scale).
+    make_box("Studio_CableTray", (0.0, 6.6, z0 + 2.65), (9.5, 0.25, 0.08), (0.30, 0.31, 0.33, 1.0))
+    for ci2, cx2 in enumerate((-2.2, 2.2)):
+        make_box(f"Studio_CableDrop_{ci2}", (cx2, 6.6, z0 + 1.70), (0.10, 0.06, 1.90), (0.24, 0.24, 0.26, 1.0))
+        make_box(f"Studio_CableFloor_{ci2}", (cx2, 5.6, z0 + 0.045), (0.12, 2.0, 0.025), (0.22, 0.22, 0.24, 1.0))
+    # Rack labels + ONE rack door ajar (mid-maintenance).
+    for ri in range(5):
+        make_box(f"Rack_{ri}_Label", (-4.6 + ri * 2.3, 8.44, z0 + 2.00), (0.30, 0.005, 0.08),
+                 (0.88, 0.86, 0.78, 1.0))
+    make_box("Rack_2_Door_Ajar", (0.35, 8.02, z0 + 1.05), (0.55, 0.03, 2.00), (0.28, 0.29, 0.32, 1.0))
+
+    # ── QUARTERS (z0=10) · twelve people live here ──
+    z0 = 10.0
+    for bi, by in enumerate((1.6, 3.8, 6.0)):
+        # Bunk ladders + a footlocker per bunk.
+        make_box(f"Bunk_{bi}_Ladder_L", (-4.52, by + 0.80, z0 + 0.85), (0.05, 0.05, 1.60), CEDAR_DK)
+        make_box(f"Bunk_{bi}_Ladder_R", (-4.52, by + 1.00, z0 + 0.85), (0.05, 0.05, 1.60), CEDAR_DK)
+        for ri2 in range(3):
+            make_box(f"Bunk_{bi}_Rung_{ri2}", (-4.52, by + 0.90, z0 + 0.45 + ri2 * 0.45),
+                     (0.04, 0.22, 0.04), CEDAR)
+        make_box(f"Bunk_{bi}_Footlocker", (-4.4, by - 0.85, z0 + 0.22), (0.85, 0.42, 0.40), CEDAR_DK)
+    # Folded clothes on one mattress, a guitar leaning at the last bunk.
+    make_box("Q_Folded_Clothes", (-5.1, 1.35, z0 + 0.52), (0.30, 0.40, 0.10), (0.52, 0.46, 0.42, 1.0))
+    make_box("Q_Guitar_Body", (-4.35, 6.85, z0 + 0.30), (0.32, 0.10, 0.40), (0.55, 0.38, 0.22, 1.0))
+    make_box("Q_Guitar_Neck", (-4.35, 6.88, z0 + 0.75), (0.06, 0.05, 0.55), CEDAR_DK)
+    # Kitchen life: kettle on the stove, dish rack, mug pegs, pot rail.
+    make_cyl("Q_Kettle", (5.0, 6.6, z0 + 0.92), 0.11, 0.16, (0.74, 0.76, 0.78, 1.0), segments=10)
+    make_box("Q_DishRack", (5.05, 2.9, z0 + 0.98), (0.45, 0.32, 0.10), (0.62, 0.64, 0.66, 1.0))
+    for di2 in range(4):
+        make_box(f"Q_Dish_{di2}", (5.05, 2.80 + di2 * 0.07, z0 + 1.06), (0.30, 0.015, 0.16),
+                 (0.88, 0.86, 0.80, 1.0))
+    for mi in range(5):
+        make_cyl(f"Q_MugPeg_{mi}", (5.62, 2.6 + mi * 0.28, z0 + 1.55), 0.015, 0.06,
+                 CEDAR_DK, axis='X', segments=6)
+        make_cyl(f"Q_PegMug_{mi}", (5.55, 2.6 + mi * 0.28, z0 + 1.47), 0.04, 0.08,
+                 POSTER_TINTS[mi % len(POSTER_TINTS)], segments=8)
+    # Table life: three mugs at seats, a dealt card fan mid-game.
+    for mi2, (mx, my) in enumerate(((-1.6, 3.6), (0.4, 4.4), (1.0, 3.6))):
+        make_cyl(f"Q_TableMug_{mi2}", (mx, my, z0 + 0.84), 0.04, 0.09,
+                 POSTER_TINTS[(mi2 + 2) % len(POSTER_TINTS)], segments=8)
+    for ci3 in range(5):
+        make_box(f"Q_Card_{ci3}", (-0.8 + ci3 * 0.09, 4.32 - (ci3 % 2) * 0.03, z0 + 0.805),
+                 (0.06, 0.09, 0.003), (0.92, 0.90, 0.84, 1.0))
+    make_box("Q_Card_Deck", (-0.35, 4.05, z0 + 0.815), (0.07, 0.10, 0.02), (0.42, 0.20, 0.18, 1.0))
+    # Rug under the communal table.
+    make_box("Q_Rug", (-0.4, 4.0, z0 + 0.055), (5.2, 2.4, 0.012), (0.40, 0.34, 0.26, 1.0))
+
+    # ── PORTAL FLOOR (z0=15) · staging the sixty-foot walk ──
+    z0 = 15.0
+    # Landing: boot mat, coat hooks with ONE coat, the waiting bench.
+    make_box("Landing_BootMat", (0.0, 0.7, z0 + 0.055), (1.2, 0.7, 0.02), (0.30, 0.26, 0.22, 1.0))
+    for hi, hx in enumerate((-1.7, -1.45, -1.2)):
+        make_cyl(f"Landing_Hook_{hi}", (hx, 2.92, z0 + 1.70), 0.015, 0.06, BRASS, axis='Y', segments=6)
+    make_box("Landing_Hung_Coat", (-1.45, 2.86, z0 + 1.25), (0.30, 0.12, 0.85), (0.34, 0.30, 0.28, 1.0))
+    make_box("Landing_Bench", (1.5, 1.0, z0 + 0.40), (1.2, 0.42, 0.08), CEDAR)
+    make_box("Landing_Bench_Base", (1.5, 1.0, z0 + 0.20), (1.1, 0.36, 0.32), CEDAR_DK)
+    # THE WALK: a darker cedar path from the door to the smart glass
+    # — the leading line of the whole floor; two brass threshold
+    # strips at the thirds pace it like held breaths.
+    make_box("Portal_Walk", (0.0, 12.0, z0 + 0.055), (1.6, 17.6, 0.015), (0.48, 0.33, 0.22, 1.0))
+    for ti2, ty in enumerate((9.0, 15.0)):
+        make_box(f"Portal_Threshold_{ti2}", (0.0, ty, z0 + 0.065), (1.7, 0.06, 0.012), BRASS)
+    # Light pool under the smart glass — the substrate reaches the
+    # floor before you reach it.
+    make_box("Portal_GlassPool", (0.0, 20.2, z0 + 0.058), (17.6, 1.4, 0.012),
+             (0.46, 0.58, 0.62, 1.0))
+    # Low cedar sconces pacing the W/E walls — the walk is LIT.
+    for si2, sy2 in enumerate((6.0, 10.5, 15.0, 19.0)):
+        for sx2 in (-8.98, 8.98):
+            make_box(f"Portal_Sconce_{si2}_{sx2:+.0f}_Back", (sx2, sy2, z0 + 1.9),
+                     (0.06, 0.10, 0.22), CEDAR_DK)
+            make_cyl(f"Portal_Sconce_{si2}_{sx2:+.0f}_Glow", (sx2 * 0.985, sy2, z0 + 1.96),
+                     0.04, 0.08, (0.96, 0.88, 0.66, 1.0), axis='X', segments=8)
+    # A second, dimmer rank of substrate bands behind the first —
+    # depth in the render, not a flat pattern.
+    for bi2 in range(4):
+        make_box(f"Substrate_Band_Deep_{bi2}", (-5.5 + bi2 * 3.6, 20.96, z0 + 1.3 + (bi2 % 2) * 0.8),
+                 (1.6, 0.03, 0.22), (0.44, 0.60, 0.66, 0.6))
+    # Vertical seams in the smart glass — it is PANES, not a void.
+    for vi in range(3):
+        make_box(f"SmartGlass_Seam_{vi}", (-4.6 + vi * 4.6, 20.98, z0 + 1.6),
+                 (0.05, 0.04, 3.0), (0.28, 0.42, 0.50, 1.0))
+    # The far door earns a surround: frame + a single step.
+    make_box("Far_Door_Frame", (0.0, 20.90, z0 + 2.55), (1.15, 0.10, 0.12), CEDAR)
+    make_box("Far_Door_Step", (0.0, 20.55, z0 + 0.06), (1.2, 0.45, 0.08), CEDAR_DK)
+
+
 def build_exterior():
     """The clearing at x≈+45: gravel, the wagon, the tower — seven
     floors of cedar band + glass band, the seventh running the
@@ -252,6 +399,7 @@ def main():
     build_studio()
     build_quarters()
     build_portal_floor()
+    build_draft2_density_2026_08()
     build_exterior()
     out = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)),
         "../../../assets/3d/locales/cedar_tower.glb"))

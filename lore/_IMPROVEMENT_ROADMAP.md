@@ -38,8 +38,8 @@ Current ledger (draft counts are honest, not aspirational):
 | Pit Stop diner / ChillWave (re-themes) | 4 (D2-D6 authored) | Deck reframe loops; pit_stop mood_strata still carries store-era names (convenience_night) — retune with the shader playbook open |
 | Salty Tome back + alley | 2 (D2 done) | D3 remaining infrastructure, D4 use states (Petra's desk mid-call, the four mugs poured) |
 | **Highway 9 (planned community)** | **3** | draft 4: Deck screenshot loops on all six framings + the five vn_shot markers |
-| Cedar tower (vol7 ch22) | 1 | per-floor dressing density, portal-room staging |
-| Graustark ruin quarter / riverfront park | 1 | silhouette shaping, mid-ground detail bands |
+| Cedar tower (vol7 ch22) | 2 (density + walk staging) | draft 3: vn_shot coverage per floor, D2 wear, Deck reframe of the five presets |
+| Graustark ruin quarter / riverfront park | 2 (skyline + mid-ground) | draft 3: Deck reframe; graustark ruin cameras still untuned; park lamp practicals in tscn |
 | CP region banners + agent busts | 1 | per plan file; then variant states |
 | Northwind Harbor playability | 2 (onboarding pass) | Deck-verify the first five minutes actually teach; then mornings 2-6 pacing |
 | Slowstick manuals + packaging (NH = model) | 1 | era-voice + walkthrough sweep across ~20 sticks; box art after experiences are good (task #234) |

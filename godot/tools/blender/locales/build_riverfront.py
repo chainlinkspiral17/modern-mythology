@@ -4269,6 +4269,51 @@ def build_distant_atmosphere():
                  (0.4, 0.4, 0.2), (0.42, 0.38, 0.32, 1.0))
 
 
+def build_park_draft2_2026_08():
+    """DRAFT 2 (drafting-program ledger): silhouette shaping +
+    mid-ground bands. Draft 1 was bench/bandstand/armory-mass on a
+    lawn; this pass gives the park the three distance bands the
+    set-detail playbook asks for — near detail, a mid-ground rhythm
+    (trees, lamps, hedge, fence), and a shaped skyline instead of
+    one crenellated box. Draft 3: Deck reframe of riverfront_park.
+    """
+    from _props.geometry import make_box as _mb, make_cyl as _mc
+    import math as _m
+    # ── Near band: park furniture beyond the bench ──
+    _mc("Park_Bin", (-47.2, 21.0, 0.45), 0.28, 0.9, (0.24, 0.30, 0.26, 1.0), segments=10)
+    _mb("Park_Bin_Rim", (-47.2, 21.0, 0.92), (0.62, 0.62, 0.05), (0.20, 0.24, 0.20, 1.0))
+    _mb("Park_Sign_Post", (-51.5, 16.5, 1.0), (0.10, 0.10, 2.0), (0.30, 0.30, 0.32, 1.0))
+    _mb("Park_Sign_Board", (-51.5, 16.5, 2.15), (0.9, 0.06, 0.55), (0.32, 0.40, 0.30, 1.0))
+    # Lamp posts pacing the jog path arc.
+    for li, (lx, ly) in enumerate(((-52.5, 18.0), (-47.5, 30.0), (-44.5, 24.0))):
+        _mc(f"Park_Lamp_{li}_Post", (lx, ly, 1.9), 0.07, 3.8, (0.26, 0.26, 0.28, 1.0), segments=8)
+        _mc(f"Park_Lamp_{li}_Head", (lx, ly, 3.95), 0.18, 0.3, (0.92, 0.86, 0.66, 1.0), segments=10)
+    # ── Mid-ground band: tree clumps + hedge + park fence ──
+    for ti, (tx, ty, th) in enumerate(((-54.0, 30.0, 4.2), (-44.0, 33.5, 3.6),
+                                       (-55.0, 13.0, 3.8), (-43.5, 15.5, 3.2))):
+        _mc(f"Park_Tree_{ti}_Trunk", (tx, ty, th * 0.25), 0.16, th * 0.5, (0.30, 0.24, 0.18, 1.0), segments=8)
+        _mc(f"Park_Tree_{ti}_Crown", (tx, ty, th * 0.75), th * 0.35, th * 0.6, (0.22, 0.32, 0.20, 1.0), segments=10)
+    # Hedge along the armory side — the park's mid-ground floor line.
+    for hi in range(6):
+        _mb(f"Park_Hedge_{hi}", (-58.5, 16.0 + hi * 3.4, 0.6), (1.2, 3.0, 1.2), (0.24, 0.34, 0.22, 1.0))
+    # Low iron fence along River Road (west edge treatment).
+    for fi in range(9):
+        fy = 12.0 + fi * 3.0
+        _mb(f"Park_Fence_Rail_{fi}", (-55.6, fy, 0.85), (0.05, 3.0, 0.06), (0.18, 0.18, 0.20, 1.0))
+        _mb(f"Park_Fence_Post_{fi}", (-55.6, fy - 1.4, 0.5), (0.08, 0.08, 1.0), (0.16, 0.16, 0.18, 1.0))
+    # ── Skyline band: shape the armory + add rooftops behind ──
+    _mb("Armory_Tower", (-68.5, 30.0, 6.5), (5.0, 5.0, 13.0), (0.42, 0.30, 0.24, 1.0))
+    _mb("Armory_Tower_Cap", (-68.5, 30.0, 13.4), (5.6, 5.6, 0.8), (0.38, 0.27, 0.22, 1.0))
+    _mb("Armory_Arch_Shadow", (-61.0, 28.05, 2.2), (3.2, 0.1, 4.4), (0.16, 0.13, 0.11, 1.0))
+    for ci, cx in enumerate((-66.0, -63.5)):
+        _mb(f"Armory_Chimney_{ci}", (cx, 36.0, 10.2), (0.9, 0.9, 2.4), (0.38, 0.28, 0.22, 1.0))
+    # Rooftop rhythm behind the armory gap — the town continues.
+    for ri, (rx, ry, rh, rw) in enumerate(((-74.0, 20.0, 6.5, 6.0), (-77.0, 30.0, 8.0, 5.0),
+                                           (-73.0, 40.0, 5.5, 7.0))):
+        _mb(f"Skyline_Block_{ri}", (rx, ry, rh / 2.0), (rw, 6.0, rh), (0.40, 0.33, 0.28, 1.0))
+        _mb(f"Skyline_Roof_{ri}", (rx, ry, rh + 0.4), (rw + 0.4, 6.4, 0.8), (0.30, 0.24, 0.20, 1.0))
+
+
 def build_park_2026_08():
     """2026-08-03 tail pass: the park the Hierophant's §IV and
     vol1's jog play in — lawn, jogging path, the chipped bench, the
@@ -4331,6 +4376,7 @@ def main():
     build_far_horizons()
     build_distant_atmosphere()
     build_park_2026_08()
+    build_park_draft2_2026_08()
     export_glb()
 
 
