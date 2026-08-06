@@ -58,18 +58,6 @@
    "walkable": false,
    "label": "a boulder \u00b7 Bea would like this rock"
   },
-  "C": {
-   "kind": "cabin_ext",
-   "color": "#4a3826",
-   "walkable": false,
-   "label": "Cabin Sturgeon \u00b7 your cabin"
-  },
-  "M": {
-   "kind": "mess_ext",
-   "color": "#5c3a24",
-   "walkable": false,
-   "label": "the mess hall"
-  },
   "m": {
    "kind": "mess_door",
    "color": "#8c6a3e",
@@ -137,28 +125,6 @@
    "interact": "east_forest_gate",
    "label": "a faint deer trail heading east into the forest \u00b7 counselors say not to"
   },
-  "V": {
-   "kind": "beaver_ext",
-   "color": "#4a3826",
-   "walkable": false,
-   "label": "Cabin Beaver \u00b7 Tessa's cabin"
-  },
-  "v": {
-   "kind": "beaver_door",
-   "color": "#8c6a3e",
-   "walkable": true,
-   "exit": {
-    "zone": "cabin_beaver",
-    "spawn": "from_camp_path"
-   },
-   "label": "into Cabin Beaver"
-  },
-  "O": {
-   "kind": "osprey_ext",
-   "color": "#463020",
-   "walkable": false,
-   "label": "Cabin Osprey \u00b7 Sylvie and Nika's cabin"
-  },
   "o": {
    "kind": "osprey_door",
    "color": "#8c6a3e",
@@ -168,22 +134,6 @@
     "spawn": "from_camp_path"
    },
    "label": "into Cabin Osprey"
-  },
-  "K": {
-   "kind": "kestrel_ext",
-   "color": "#4a3624",
-   "walkable": false,
-   "label": "Cabin Kestrel \u00b7 Amelie and Priya's cabin"
-  },
-  "k": {
-   "kind": "kestrel_door",
-   "color": "#8c6a3e",
-   "walkable": true,
-   "exit": {
-    "zone": "cabin_kestrel",
-    "spawn": "from_camp_path"
-   },
-   "label": "into Cabin Kestrel"
   },
   "u": {
    "kind": "bus_stop_sign",
@@ -212,11 +162,17 @@
    "interact": "pickup",
    "item_id": "smooth_river_stone"
   },
+  "Y": {
+   "kind": "cabin_roof_ridge",
+   "color": "#5a4836",
+   "walkable": false,
+   "label": "the ridge \u00b7 cedar shingles, mossy on the north slope"
+  },
   "y": {
    "kind": "cabin_roof",
    "color": "#4a3a2c",
    "walkable": false,
-   "label": "cedar shingles \u00b7 mossy on the north slope"
+   "label": "cedar shingles, and the eave over the door"
   },
   "w": {
    "kind": "cabin_face",
@@ -224,19 +180,65 @@
    "walkable": false,
    "label": "a lit window"
   },
+  "W": {
+   "kind": "cabin_front",
+   "color": "#4a3826",
+   "walkable": false,
+   "label": "board-and-batten, under the eave"
+  },
   "g": {
    "kind": "cabin_sign",
    "color": "#8a7048",
    "walkable": false,
    "label": "the cabin's name board \u00b7 repainted every June"
+  },
+  "Q": {
+   "kind": "cabin_doorway",
+   "color": "#8c6a3e",
+   "walkable": true,
+   "exit": {
+    "zone": "cabin_sturgeon",
+    "spawn": "from_camp_path"
+   },
+   "label": "the doorway \u00b7 dark past the screen"
+  },
+  "Z": {
+   "kind": "cabin_doorway",
+   "color": "#8c6a3e",
+   "walkable": true,
+   "exit": {
+    "zone": "cabin_beaver",
+    "spawn": "from_camp_path"
+   },
+   "label": "the doorway \u00b7 dark past the screen"
+  },
+  "X": {
+   "kind": "cabin_doorway",
+   "color": "#8c6a3e",
+   "walkable": true,
+   "exit": {
+    "zone": "cabin_osprey",
+    "spawn": "from_camp_path"
+   },
+   "label": "the doorway \u00b7 dark past the screen"
+  },
+  "J": {
+   "kind": "cabin_doorway",
+   "color": "#8c6a3e",
+   "walkable": true,
+   "exit": {
+    "zone": "cabin_kestrel",
+    "spawn": "from_camp_path"
+   },
+   "label": "the doorway \u00b7 dark past the screen"
   }
  },
  "tiles": [
   "T.T.T.T.T.T.T.T.T.u.T.ne",
   "*.b......TTTTTTT.......~",
-  ".......T.yyyyyyyy.T.*...",
+  ".......T.YYYYYYYY.T.*...",
   ".......T.yyyyyyyy.T.....",
-  ".......T.wMwgmgwM.T.....",
+  ".......T.wWwgmWwW.T.....",
   "..*....T....B...T....*..",
   "f.,,,,,,,,,,,,,,,,,,,pa.",
   ".~,....................,",
@@ -245,12 +247,12 @@
   "........,........@...*..",
   ".TTT.T.,.T.T.R1.T.T.t.T.",
   "...T.T.,.T.T....T.t.T.T.",
-  ".CwCwgsgwCwC.VwVwgvgwVwV",
-  ".yyyyysyyyyy.yyyyyyyyyyy",
+  ".YYYYYQYYYYY.YYYYYZYYYYY",
+  ".WwWwgsWwWwW.WwWwWwWwWwW",
   ".,,,,,,,,,,,,,,,,,,,,,,.",
   "........................",
-  ".OwOwgogwOwO.KwKwgkgwKwK",
-  ".yyyyyoyyyyy.yyyyyyyyyyy",
+  ".YYYYYXYYYYY.YYYYYJYYYYY",
+  ".WwWwgoWwWwW.WwWwWwWwWwW",
   "T.T.T.T.T.T.T.T.T.T.T.T."
  ],
  "spawns": {

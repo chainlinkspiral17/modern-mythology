@@ -14,7 +14,9 @@ they can't come back silently:
      that isn't the tile kind it claims to be, or is out of bounds.
   5. Ragged grids — a row whose length disagrees with size[0].
   6. Undeclared tiles — a character in tiles[] with no tileset entry.
-  7. Invisible props — a SOLID tile drawn with the same sprite as
+  7. Unreachable exits — an exit sealed behind geometry, so a
+     whole zone can never be entered (Cabin Beaver).
+  8. Invisible props — a SOLID tile drawn with the same sprite as
      the ground it stands on. This is how the mess hall's three
      long tables and their benches rendered as floor: 'table' and
      'bench' both pointed at wood_floor.
@@ -135,6 +137,42 @@ def main():
                     problems.append("%s: solid tile %r (kind %s) draws with "
                                     "the ground sprite %r — invisible"
                                     % (zid, ch, k, base_sprite))
+
+        # ── Reachability (check 8) ───────────────────────────────
+        # An exit can be walkable, have art, and name a valid target
+        # and still be sealed behind geometry. Cabin Beaver's door
+        # had a tree above it and wall below: the cabin could never
+        # be entered. Flood-fill from every spawn; every exit must be
+        # standing in the reachable set of at least one of them.
+        reach = set()
+        for pos in z.get("spawns", {}).values():
+            if len(pos) < 2:
+                continue
+            sx, sy = int(pos[0]), int(pos[1])
+            if not (0 <= sy < len(rows) and 0 <= sx < len(rows[sy])):
+                continue
+            if rows[sy][sx] not in walkable:
+                continue
+            stack = [(sx, sy)]
+            while stack:
+                cx, cy = stack.pop()
+                if (cx, cy) in reach:
+                    continue
+                reach.add((cx, cy))
+                for dx, dy in ((1, 0), (-1, 0), (0, 1), (0, -1)):
+                    nx, ny = cx + dx, cy + dy
+                    if 0 <= ny < len(rows) and 0 <= nx < len(rows[ny]) \
+                            and (nx, ny) not in reach \
+                            and rows[ny][nx] in walkable:
+                        stack.append((nx, ny))
+        for y, row in enumerate(rows):
+            for x, ch in enumerate(row):
+                d = ts.get(ch, {})
+                if d.get("exit") and (x, y) not in reach:
+                    problems.append("%s: exit %r at (%d,%d) -> %s is "
+                                    "UNREACHABLE from every spawn"
+                                    % (zid, ch, x, y,
+                                       d["exit"].get("zone", "?")))
 
         for name, pos in z.get("spawns", {}).items():
             if len(pos) < 2:

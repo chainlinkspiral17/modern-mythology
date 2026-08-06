@@ -1425,32 +1425,637 @@ def tile_stump():
     return pal, d
 
 
+
+# ══ Silhouette pass (production pass 4 · 2026-08-04) ═════════════
+# "Too blocky, this isn't Minecraft. Use transparency of sprites,
+# they don't have to be a perfect square."
+#
+# Every prop below was a full-bleed opaque 16x16: a tree was a green
+# BOX, a boulder a grey BOX. These are drawn on a transparent canvas
+# with organic silhouettes, and CampOverworld lays the zone's ground
+# tile underneath so the shape reads against grass / plank / sand.
+#
+# Rules that hold for all of them:
+#   · prop() to start — never fill() to an opaque colour
+#   · the base of the object sits near y=13-15 (its contact with the
+#     ground), never dead-centre; a prop centred in its cell floats
+#   · one darker rim colour so the shape separates from the ground
+#   · a contact shadow ellipse under the base, semi-detached, so the
+#     object sits ON something
+
+
+def tile_tree_top_v2():
+    # forest canopy · three overlapping lobes, gaps to the sky
+    pal = ['#26401e', '#1a3216', '#33552a', '#12240f', '#3d6633']
+    d = prop()
+    blob(d, 7.5, 7.0, 7.4, 6.8, 0)
+    blob(d, 4.6, 5.4, 4.2, 3.9, 2)
+    blob(d, 10.6, 6.2, 4.0, 3.6, 2)
+    blob(d, 7.2, 10.4, 4.6, 3.4, 0)
+    # lit crowns
+    blob(d, 4.4, 4.6, 2.2, 1.9, 4)
+    blob(d, 10.4, 5.6, 1.8, 1.5, 4)
+    # shadowed underside + rim
+    blob_edge(d, 7.5, 7.0, 7.4, 6.8, 1, band=0.30)
+    for x in range(4, 12):
+        if d[12 * W + x] != TRANSPARENT:
+            d[12 * W + x] = 3
+    # bite the corners back so it never squares off
+    for (x, y) in ((0, 0), (1, 0), (0, 1), (15, 0), (14, 0), (15, 1),
+                   (0, 15), (0, 14), (15, 15), (15, 14)):
+        d[y * W + x] = TRANSPARENT
+    return pal, d
+
+
+def tile_tree_short_v2():
+    # a younger tree · smaller crown, trunk showing at the base
+    pal = ['#2e4a24', '#1e3419', '#3d6633', '#4a3826', '#14240f']
+    d = prop()
+    blob(d, 7.5, 6.4, 5.6, 5.2, 0)
+    blob(d, 6.0, 4.8, 2.6, 2.3, 2)
+    blob_edge(d, 7.5, 6.4, 5.6, 5.2, 1, band=0.32)
+    # trunk
+    for y in range(11, 15):
+        d[y * W + 7] = 3
+        d[y * W + 8] = 3
+    d[14 * W + 7] = 4
+    d[14 * W + 8] = 4
+    return pal, d
+
+
+def tile_brush_v2():
+    # salal clump · low, wide, ragged top edge
+    pal = ['#2a4a1e', '#1a3a14', '#3f6329', '#132a0e']
+    d = prop()
+    blob(d, 5.0, 10.0, 4.6, 3.6, 0)
+    blob(d, 10.6, 10.4, 4.4, 3.4, 0)
+    blob(d, 7.8, 8.4, 4.0, 3.2, 2)
+    blob_edge(d, 5.0, 10.0, 4.6, 3.6, 1, band=0.34)
+    blob_edge(d, 10.6, 10.4, 4.4, 3.4, 1, band=0.34)
+    # a few leaves breaking the outline upward
+    for (lx, ly) in ((3, 6), (6, 5), (9, 4), (12, 6), (13, 8)):
+        d[ly * W + lx] = 2
+        d[(ly + 1) * W + lx] = 0
+    for x in range(3, 13):
+        if d[13 * W + x] != TRANSPARENT:
+            d[13 * W + x] = 3
+    return pal, d
+
+
+def tile_brush_berry_v2():
+    # the same clump, carrying huckleberries
+    pal, d = tile_brush_v2()
+    pal = list(pal) + ['#5a3a66', '#7a5a86']
+    for (bx, by) in ((5, 8), (9, 7), (11, 10), (6, 11), (12, 8)):
+        d[by * W + bx] = 4
+        if bx + 1 < W:
+            d[by * W + bx + 1] = 5
+    return pal, d
+
+
+def tile_boulder_v2():
+    # a rounded rock, lit from the upper left, sitting IN the ground
+    pal = ['#6a6a64', '#8a8a82', '#4a4a46', '#33332f', '#2a2a26']
+    d = prop()
+    blob(d, 7.6, 8.6, 6.4, 5.2, 0)
+    blob(d, 6.2, 6.8, 3.4, 2.6, 1)          # lit shoulder
+    blob_edge(d, 7.6, 8.6, 6.4, 5.2, 2, band=0.26)
+    # a fracture line
+    for i in range(5):
+        set_pixel(d, 9 + i // 2, 7 + i, 3)
+    # contact shadow · the rock meets the dirt
+    blob(d, 7.6, 13.4, 5.6, 1.5, 4)
+    return pal, d
+
+
+def tile_stump_v2():
+    # cut stump · rings on top, bark rim, shadow at the base
+    pal = ['#7a6244', '#a08050', '#4a3a26', '#2e2418', '#c0a878']
+    d = prop()
+    blob(d, 7.5, 12.6, 5.4, 1.8, 3)         # ground shadow
+    for y in range(7, 14):                   # the trunk sides
+        for x in range(3, 13):
+            d[y * W + x] = 2
+    blob(d, 7.5, 7.4, 5.2, 3.0, 0)           # the cut face
+    blob(d, 7.5, 7.4, 3.4, 1.9, 1)
+    blob(d, 7.5, 7.4, 1.4, 0.8, 4)
+    blob_edge(d, 7.5, 7.4, 5.2, 3.0, 2, band=0.30)
+    return pal, d
+
+
+def tile_log_bench_v2():
+    # a split log on rounds · long, low, legs under the ends
+    pal = ['#7a6244', '#8f7452', '#4a3a26', '#2e2418', '#5a4632']
+    d = prop()
+    blob(d, 7.5, 12.8, 7.0, 1.6, 3)          # shadow
+    for y in range(5, 12):                    # the log
+        for x in range(0, W):
+            d[y * W + x] = 0
+    for x in range(W):                        # flat sawn seat
+        d[5 * W + x] = 1
+        d[6 * W + x] = 1
+        d[11 * W + x] = 2
+    for x in range(0, W, 4):                  # grain
+        d[8 * W + x] = 4
+    for lx in (2, 12):                        # rounds it rests on
+        for y in range(12, 15):
+            d[y * W + lx] = 2
+            d[y * W + lx + 1] = 4
+    return pal, d
+
+
+def tile_bunk_v2():
+    # a bunk seen from above · frame, mattress, folded blanket, pillow
+    pal = ['#5a4028', '#8a7a62', '#a89a80', '#3a2a18', '#6a5a8a', '#d8d0bc']
+    d = prop()
+    for y in range(1, 15):                    # frame
+        for x in range(1, 15):
+            d[y * W + x] = 0
+    for y in range(2, 14):                    # mattress
+        for x in range(2, 14):
+            d[y * W + x] = 1
+    for y in range(2, 6):                     # pillow at the head
+        for x in range(3, 13):
+            d[y * W + x] = 5
+    for y in range(8, 13):                    # blanket folded down
+        for x in range(2, 14):
+            d[y * W + x] = 4
+    for x in range(2, 14):
+        d[8 * W + x] = 2
+    for y in range(1, 15):                    # rails
+        d[y * W + 1] = 3
+        d[y * W + 14] = 3
+    for x in range(1, 15):
+        d[1 * W + x] = 3
+        d[14 * W + x] = 3
+    return pal, d
+
+
+def tile_footlocker_v2():
+    # trunk at the foot of a bunk · smaller than its cell
+    pal = ['#6a4e30', '#4a3420', '#2a1c10', '#8a7a52', '#9a8a62']
+    d = prop()
+    blob(d, 8.0, 13.4, 6.0, 1.3, 2)           # shadow
+    for y in range(4, 13):
+        for x in range(2, 14):
+            d[y * W + x] = 1
+    for x in range(2, 14):                     # lid
+        d[4 * W + x] = 3
+        d[7 * W + x] = 2
+        d[12 * W + x] = 2
+    for y in range(4, 13):
+        d[y * W + 2] = 2
+        d[y * W + 13] = 2
+    for y in range(7, 10):                     # latch
+        set_pixel(d, 7, y, 4)
+        set_pixel(d, 8, y, 4)
+    return pal, d
+
+
+def tile_chest_v2():
+    # a duffel / satchel shape · soft, not a crate
+    pal = ['#5a4632', '#7a6244', '#3a2c1e', '#8a7a52', '#241a10']
+    d = prop()
+    blob(d, 7.8, 13.2, 6.2, 1.3, 4)           # shadow
+    blob(d, 7.5, 9.0, 6.6, 4.2, 0)
+    blob(d, 6.6, 7.6, 4.6, 2.4, 1)            # top light
+    blob_edge(d, 7.5, 9.0, 6.6, 4.2, 2, band=0.24)
+    for x in range(5, 11):                     # the strap
+        d[9 * W + x] = 3
+    set_pixel(d, 7, 5, 3)
+    set_pixel(d, 8, 5, 3)
+    return pal, d
+
+
+def tile_barrel_v2():
+    # staved barrel · round, banded, standing
+    pal = ['#6a4a2a', '#8a6238', '#4a3018', '#8a8a94', '#241810']
+    d = prop()
+    blob(d, 7.8, 13.6, 5.4, 1.2, 4)
+    for y in range(2, 14):
+        for x in range(3, 13):
+            d[y * W + x] = 0
+    blob(d, 7.5, 2.6, 4.8, 1.6, 1)            # the head, seen at an angle
+    for x in range(4, 12, 3):
+        for y in range(3, 14):
+            d[y * W + x] = 1
+    for y in (5, 11):
+        for x in range(3, 13):
+            d[y * W + x] = 3
+    for y in range(2, 14):
+        d[y * W + 3] = 2
+        d[y * W + 12] = 2
+    return pal, d
+
+
+def tile_woodpile_v2():
+    # split rounds stacked · a pile, wider at the bottom
+    pal = ['#5a4632', '#7a6244', '#c8b58a', '#3a2c1e', '#8a7050']
+    d = prop()
+    blob(d, 7.5, 14.0, 7.2, 1.4, 3)
+    courses = ((12, 1, 15), (8, 2, 14), (4, 4, 12))
+    for (cy, x0, x1) in courses:
+        for x in range(x0, x1):
+            for y in range(cy, min(cy + 4, H)):
+                d[y * W + x] = 0
+        for cx in range(x0 + 1, x1 - 1, 3):
+            blob(d, cx + 0.5, cy + 1.6, 1.4, 1.6, 1)
+            set_pixel(d, cx, cy + 1, 2)
+            set_pixel(d, cx + 1, cy + 2, 4)
+    return pal, d
+
+
+def tile_hay_bale_v2():
+    # straw bale · rounded corners, loose ends
+    pal = ['#b09a52', '#c8b268', '#8a7638', '#6a5a28']
+    d = prop()
+    blob(d, 7.5, 8.6, 7.0, 5.4, 0)
+    for y in range(H):
+        for x in range(W):
+            if d[y * W + x] != TRANSPARENT and h01(x, y, 4) > 0.72:
+                d[y * W + x] = 1
+    for x in range(W):
+        for y in (5, 12):
+            if d[y * W + x] != TRANSPARENT:
+                d[y * W + x] = 3
+    blob_edge(d, 7.5, 8.6, 7.0, 5.4, 2, band=0.22)
+    for (sx, sy) in ((1, 7), (14, 9), (2, 11), (13, 6)):
+        set_pixel(d, sx, sy, 1)
+    return pal, d
+
+
+def tile_archery_target_v2():
+    # round target on legs
+    pal = ['#d8d0c0', '#c04040', '#4a6ab0', '#e8d060', '#3a3028', '#241c18']
+    d = prop()
+    blob(d, 7.5, 14.2, 4.6, 1.1, 5)
+    for y in range(11, 15):                    # legs
+        set_pixel(d, 5, y, 4)
+        set_pixel(d, 10, y, 4)
+    cx, cy = 7.5, 6.6
+    blob(d, cx, cy, 6.4, 6.2, 2)
+    blob(d, cx, cy, 5.6, 5.4, 0)
+    blob(d, cx, cy, 4.0, 3.9, 1)
+    blob(d, cx, cy, 2.4, 2.3, 0)
+    blob(d, cx, cy, 1.1, 1.0, 3)
+    return pal, d
+
+
+def tile_canoe_v2():
+    # aluminium canoe · a lens, nothing square about it
+    pal = ['#7a8a94', '#9aaab4', '#5a6a74', '#3a4a52']
+    d = prop()
+    blob(d, 7.8, 12.6, 6.6, 1.2, 3)
+    for y in range(4, 12):
+        span = 7.6 - abs(y - 7.8) * 0.95
+        for x in range(W):
+            if abs(x - 7.5) <= span:
+                d[y * W + x] = 0
+    for x in range(2, 14):
+        d[6 * W + x] = 1
+    for y in range(4, 12):
+        span = 7.6 - abs(y - 7.8) * 0.95
+        lx, rx = int(7.5 - span), int(7.5 + span)
+        set_pixel(d, lx, y, 2)
+        set_pixel(d, rx, y, 2)
+    return pal, d
+
+
+def tile_oil_lamp_v2():
+    # lamp on a nail · narrow, hanging, mostly empty cell
+    pal = ['#4a3826', '#2a1c10', '#8a8a94', '#e8c060', '#f8e8a8']
+    d = prop()
+    set_pixel(d, 8, 0, 1)
+    for y in range(1, 4):
+        set_pixel(d, 8, y, 0)
+    blob(d, 7.8, 7.4, 3.0, 4.0, 2)             # glass chimney
+    blob(d, 7.8, 8.0, 1.7, 2.4, 3)             # flame
+    blob(d, 7.8, 8.2, 0.8, 1.2, 4)
+    for x in range(5, 11):                      # brass base
+        d[11 * W + x] = 0
+        d[12 * W + x] = 1
+    return pal, d
+
+
+def tile_item_glint_v2():
+    # something small worth picking up
+    pal = ['#c8b070', '#8a7040', '#f0e0a8', '#3a3020']
+    d = prop()
+    blob(d, 7.8, 12.4, 3.4, 0.9, 3)
+    blob(d, 7.5, 10.0, 3.0, 2.2, 0)
+    blob(d, 7.0, 9.2, 1.6, 1.1, 2)
+    blob_edge(d, 7.5, 10.0, 3.0, 2.2, 1, band=0.34)
+    set_pixel(d, 11, 5, 2)
+    set_pixel(d, 12, 4, 2)
+    set_pixel(d, 10, 4, 2)
+    return pal, d
+
+
+def tile_fence_v2():
+    # split rail · posts and two rails, sky between them
+    pal = ['#7a6a48', '#5a4a30', '#3a3020', '#2a2418']
+    d = prop()
+    for y in (5, 6, 10, 11):
+        for x in range(W):
+            d[y * W + x] = 0 if y in (5, 10) else 1
+    for px in (3, 12):
+        for y in range(2, 15):
+            d[y * W + px] = 1
+            d[y * W + px + 1] = 2
+        d[14 * W + px] = 3
+    return pal, d
+
+
+def tile_rope_coil_v2():
+    pal = ['#a08a58', '#7a6840', '#5a4c30', '#3a3428']
+    d = prop()
+    blob(d, 7.6, 11.6, 5.4, 1.4, 3)
+    for r, c in ((5.0, 1), (3.2, 0)):
+        blob_edge(d, 7.5, 9.0, r, r * 0.62, c, band=0.5)
+    set_pixel(d, 13, 12, 1)
+    set_pixel(d, 14, 12, 1)
+    return pal, d
+
+
+def tile_table_long_v2():
+    # mess table · a top with an edge, floor showing at the ends
+    pal = ['#8c6a40', '#7a5a34', '#5a3e22', '#a08050', '#3a2818']
+    d = prop()
+    for y in range(1, 14):
+        for x in range(W):
+            d[y * W + x] = 1
+    for x in range(W):
+        d[1 * W + x] = 0
+        d[2 * W + x] = 0
+    for y in range(1, 14):
+        if (y % 5) == 0:
+            for x in range(W):
+                d[y * W + x] = 2
+    for x in range(W):
+        d[7 * W + x] = 3
+    for x in range(W):
+        d[13 * W + x] = 4
+        d[14 * W + x] = 4
+    return pal, d
+
+
+def tile_bench_wood_v2():
+    # bench · a plank with air above and below it
+    pal = ['#8a6a44', '#6a4e30', '#3a2a18', '#a08050']
+    d = prop()
+    for y in range(5, 11):
+        for x in range(W):
+            d[y * W + x] = 0
+    for x in range(W):
+        d[5 * W + x] = 3
+        d[8 * W + x] = 1
+        d[10 * W + x] = 2
+    for lx in (2, 13):
+        for y in range(11, 14):
+            d[y * W + lx] = 1
+            d[y * W + lx + 1] = 2
+    return pal, d
+
+
+def tile_cubby_v2():
+    pal = ['#3a2818', '#5a4028', '#241408', '#7a6a4a', '#8a6a58']
+    d = prop()
+    for y in range(0, 15):
+        for x in range(1, 15):
+            d[y * W + x] = 0
+    for y in (0, 5, 10, 14):
+        for x in range(1, 15):
+            d[y * W + x] = 2
+    for y in range(0, 15):
+        d[y * W + 1] = 2
+        d[y * W + 14] = 2
+    for (by, c) in ((3, 3), (8, 4), (12, 3)):
+        for x in range(3, 9):
+            d[by * W + x] = c
+            d[(by + 1) * W + x] = c
+    for x in range(10, 14):
+        d[8 * W + x] = 3
+    return pal, d
+
+
+def tile_clothesline_v2():
+    # suits on a line · fabric hanging, air everywhere else
+    pal = ['#3a3428', '#c05a5a', '#4a7ab0', '#d8c890', '#6a5a3e']
+    d = prop()
+    for x in range(W):
+        d[2 * W + x] = 0
+    for (x0, x1, y1, c) in ((2, 6, 11, 1), (7, 10, 9, 2), (11, 15, 13, 3)):
+        for y in range(3, y1):
+            for x in range(x0, x1):
+                d[y * W + x] = c
+        for x in range(x0, x1):
+            d[(y1 - 1) * W + x] = 4
+    d[10 * W + 3] = TRANSPARENT
+    d[12 * W + 12] = TRANSPARENT
+    return pal, d
+
+
+def tile_serving_counter_v2():
+    pal = ['#9aa2a6', '#c0c8cc', '#6a5a4a', '#4a4038', '#7a8a90']
+    d = prop()
+    for y in range(3, 15):
+        for x in range(1, 15):
+            d[y * W + x] = 2
+    for y in range(3, 6):
+        for x in range(1, 15):
+            d[y * W + x] = 0
+    for x in range(1, 15):
+        d[3 * W + x] = 1
+    for x in range(1, 15):
+        d[9 * W + x] = 4
+    for y in range(6, 9):
+        for x in range(4, 12):
+            d[y * W + x] = 3
+    for y in range(3, 15):
+        d[y * W + 1] = 3
+        d[y * W + 14] = 3
+    return pal, d
+
+
+# ── Buildings · a roof plane over a wall plane ───────────────────
+# "The outdoor building sprites look bad, like doors and windows
+# placed in roofs, needs slight isometric design."
+#
+# A structure now reads top-to-bottom as ROOF (ridge course, then
+# slope courses) sitting over a FRONT WALL that carries the eave
+# shadow at its top edge, the windows, the door and the sign. The
+# eave band is the whole trick: a dark overhang line where the roof
+# meets the wall is what gives a flat top-down tile depth.
+
+EAVE = '#1a120c'
+
+
+def _eave(d, c):
+    """The roof's overhang shadow across the top two rows of a wall."""
+    for x in range(W):
+        d[0 * W + x] = c
+        d[1 * W + x] = c
+
+
+def tile_cabin_roof_v2():
+    # slope course · shingles, darker toward the eave at the bottom
+    pal = ['#4a3a2c', '#3a2c20', '#5a4836', '#241a12', EAVE]
+    d = blank()
+    fill(d, 0)
+    for row in range(0, H, 4):
+        shade = 2 if row < 8 else 0
+        for y in range(row, min(row + 4, H)):
+            for x in range(W):
+                d[y * W + x] = shade
+        for x in range(W):
+            d[row * W + x] = 3
+        off = 0 if (row // 4) % 2 == 0 else 3
+        for x in range(off, W, 6):
+            for y in range(row, min(row + 4, H)):
+                d[y * W + x] = 1
+    # the eave: the roof's lowest edge, in shadow
+    for x in range(W):
+        d[14 * W + x] = 3
+        d[15 * W + x] = 4
+    return pal, d
+
+
+def tile_cabin_roof_ridge_v2():
+    # the top course · ridge cap catching the sky
+    pal = ['#4a3a2c', '#3a2c20', '#6a5844', '#241a12', '#7a6850']
+    d = blank()
+    fill(d, 0)
+    for x in range(W):
+        d[0 * W + x] = 3
+        d[1 * W + x] = 4
+        d[2 * W + x] = 2
+    for row in range(3, H, 4):
+        for x in range(W):
+            d[row * W + x] = 3
+        off = 0 if (row // 4) % 2 == 0 else 3
+        for x in range(off, W, 6):
+            for y in range(row, min(row + 4, H)):
+                d[y * W + x] = 1
+    return pal, d
+
+
+def tile_cabin_front_v2():
+    # plain front wall · planks under the eave shadow
+    pal = ['#4a3826', '#3a2a1c', '#5c4a34', '#241814', EAVE]
+    d = blank()
+    for y in range(H):
+        band = (y // 4) % 3
+        for x in range(W):
+            d[y * W + x] = [0, 2, 1][band]
+    for y in (5, 9, 13):
+        for x in range(W):
+            d[y * W + x] = 3
+    _eave(d, 4)
+    return pal, d
+
+
+def tile_cabin_face_v2():
+    # front wall WITH a window · frame, sill, lit glass, muntins
+    pal = ['#4a3826', '#3a2a1c', '#5c4a34', '#241814', '#e8c878',
+           '#7a6242', EAVE]
+    d = blank()
+    for y in range(H):
+        band = (y // 4) % 3
+        for x in range(W):
+            d[y * W + x] = [0, 2, 1][band]
+    for y in (5, 9, 13):
+        for x in range(W):
+            d[y * W + x] = 3
+    # window
+    for y in range(4, 12):
+        for x in range(3, 13):
+            d[y * W + x] = 3
+    for y in range(5, 11):
+        for x in range(4, 12):
+            d[y * W + x] = 4
+    for y in range(5, 11):
+        d[y * W + 7] = 5
+        d[y * W + 8] = 5
+    for x in range(4, 12):
+        d[7 * W + x] = 5
+    for x in range(2, 14):          # sill
+        d[12 * W + x] = 5
+    _eave(d, 6)
+    return pal, d
+
+
+def tile_cabin_doorway_v2():
+    # the dark threshold behind an open door, seen under the roof
+    pal = ['#241814', '#0e0a08', '#3a2a1c', '#4a3826', EAVE]
+    d = blank()
+    fill(d, 3)
+    for y in range(2, H):
+        for x in range(3, 13):
+            d[y * W + x] = 1
+    for y in range(2, H):
+        d[y * W + 3] = 2
+        d[y * W + 12] = 2
+    for x in range(3, 13):
+        d[2 * W + x] = 0
+    _eave(d, 4)
+    return pal, d
+
+
+def tile_cabin_sign_v2():
+    # name board on a post · beside the door, against the wall
+    pal = ['#4a3826', '#8a7048', '#d8cfae', '#2a1e14', '#6a5436', EAVE]
+    d = blank()
+    for y in range(H):
+        band = (y // 4) % 3
+        for x in range(W):
+            d[y * W + x] = [0, 4, 0][band]
+    _eave(d, 5)
+    for y in range(11, 16):
+        d[y * W + 7] = 3
+        d[y * W + 8] = 3
+    for y in range(4, 11):
+        for x in range(2, 14):
+            d[y * W + x] = 1
+    for x in range(2, 14):
+        d[4 * W + x] = 3
+        d[10 * W + x] = 3
+    for y in range(4, 11):
+        d[y * W + 2] = 3
+        d[y * W + 13] = 3
+    for x in range(4, 12, 2):
+        d[6 * W + x] = 2
+        d[7 * W + x] = 2
+    return pal, d
+
 TILES = {
-    'table_long':       tile_table_long,
-    'bench_wood':       tile_bench_wood,
-    'serving_counter':  tile_serving_counter,
-    'cabin_roof':       tile_cabin_roof,
-    'cabin_face':       tile_cabin_face,
-    'cabin_sign':       tile_cabin_sign,
-    'woodpile':         tile_woodpile,
-    'stump':            tile_stump,
-    'fence':            tile_fence,
-    'log_bench':        tile_log_bench,
-    'hay_bale':         tile_hay_bale,
-    'archery_target':   tile_archery_target,
-    'canoe':            tile_canoe,
-    'barrel':           tile_barrel,
+    'table_long':       tile_table_long_v2,
+    'bench_wood':       tile_bench_wood_v2,
+    'serving_counter':  tile_serving_counter_v2,
+    'cabin_roof':       tile_cabin_roof_v2,
+    'cabin_roof_ridge': tile_cabin_roof_ridge_v2,
+    'cabin_front':      tile_cabin_front_v2,
+    'cabin_doorway':    tile_cabin_doorway_v2,
+    'cabin_face':       tile_cabin_face_v2,
+    'cabin_sign':       tile_cabin_sign_v2,
+    'woodpile':         tile_woodpile_v2,
+    'stump':            tile_stump_v2,
+    'fence':            tile_fence_v2,
+    'log_bench':        tile_log_bench_v2,
+    'hay_bale':         tile_hay_bale_v2,
+    'archery_target':   tile_archery_target_v2,
+    'canoe':            tile_canoe_v2,
+    'barrel':           tile_barrel_v2,
     'wall_paper':       tile_wall_paper,
     'carved_mark':      tile_carved_mark,
     'console_tv':       tile_console_tv,
     'sail_canvas':      tile_sail_canvas,
-    'rope_coil':        tile_rope_coil,
-    'item_glint':       tile_item_glint,
+    'rope_coil':        tile_rope_coil_v2,
+    'item_glint':       tile_item_glint_v2,
     'cave_mouth':       tile_cave_mouth,
-    'footlocker':       tile_footlocker,
-    'cubby':            tile_cubby,
-    'clothesline':      tile_clothesline,
-    'oil_lamp':         tile_oil_lamp,
+    'footlocker':       tile_footlocker_v2,
+    'cubby':            tile_cubby_v2,
+    'clothesline':      tile_clothesline_v2,
+    'oil_lamp':         tile_oil_lamp_v2,
     'screen_door':      tile_screen_door,
     'grass':            tile_grass,
     'sand':             tile_sand,
@@ -1461,16 +2066,16 @@ TILES = {
     'wood_floor':       tile_wood_floor,
     'rock_wall':        tile_rock_wall,
     'cabin_wall':       tile_cabin_wall,
-    'tree_top':         tile_tree_top,
-    'brush':            tile_brush,
+    'tree_top':         tile_tree_top_v2,
+    'brush':            tile_brush_v2,
     'dune_grass':       tile_dune_grass,
-    'boulder':          tile_boulder,
-    'bunk':             tile_bunk,
+    'boulder':          tile_boulder_v2,
+    'bunk':             tile_bunk_v2,
     'deck_wood':        tile_deck_wood,
     'fire':             tile_fire,
     'window':           tile_window,
     'sign':             tile_sign,
-    'chest':            tile_chest,
+    'chest':            tile_chest_v2,
     'dock_edge':        tile_dock_edge,
     'seaweed':          tile_seaweed,
     'mattress':         tile_mattress,
@@ -1480,9 +2085,9 @@ TILES = {
     'grass_thick':      tile_grass_thick,
     'sand_shell':       tile_sand_shell,
     'path_pebble':      tile_path_pebble,
-    'brush_berry':      tile_brush_berry,
+    'brush_berry':      tile_brush_berry_v2,
     'rock_wall_moss':   tile_rock_wall_moss,
-    'tree_short':       tile_tree_short,
+    'tree_short':       tile_tree_short_v2,
     'dune_grass_wind':  tile_dune_grass_wind,
     'fallen_log':       tile_fallen_log,
     'disturbed_earth':  tile_disturbed_earth,

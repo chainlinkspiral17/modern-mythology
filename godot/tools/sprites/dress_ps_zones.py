@@ -61,6 +61,19 @@ def snapshot(doc):
 
 def dress_camp_path():
     z = load("camp_path")
+
+    # ── Layout repair, BEFORE the dressing snapshot ──────────────
+    # Cabin Beaver was UNREACHABLE. Its door tile sat only on the
+    # structure's upper row, with a tree above it and solid wall
+    # below — so no walkable tile touched it and Tessa's cabin could
+    # never be entered. Sturgeon and Osprey have a two-tall door
+    # column reaching down to the path; Beaver gets the same, which
+    # is also what makes the roof/wall composition legible.
+    rows0 = [list(r) for r in z["tiles"]]
+    if rows0[13][18] == "V" and rows0[13 - 1][18] not in (".", ","):
+        rows0[14][18] = "v"
+        z["tiles"] = ["".join(r) for r in rows0]
+
     before = snapshot(z)
     rows = [list(r) for r in z["tiles"]]
     ts = z["tileset"]
@@ -73,52 +86,82 @@ def dress_camp_path():
         ("K", "k", "Cabin Kestrel · Amelie and Priya's cabin"),
         ("M", "m", "the mess hall"),
     ]
-    ROOF, FACE, SIGN = "y", "w", "g"
+    # y=roof slope · Y=ridge course · w=window wall · W=plain front
+    # wall · g=name board · Q=doorway recess under the roof
+    ROOF, RIDGE, FACE, FRONT, SIGN = "y", "Y", "w", "W", "g"
+    # One recess char PER STRUCTURE. A single shared one would have
+    # given all four cabins Sturgeon's exit — the walkability/exit
+    # snapshot assert caught it, which is exactly what it is for.
+    RECESS_CHARS = ["Q", "Z", "X", "J", "q"]
 
+    ts[RIDGE] = {"kind": "cabin_roof_ridge", "color": "#5a4836",
+                 "walkable": False,
+                 "label": "the ridge · cedar shingles, mossy on the north slope"}
     ts[ROOF] = {"kind": "cabin_roof", "color": "#4a3a2c", "walkable": False,
-                "label": "cedar shingles · mossy on the north slope"}
+                "label": "cedar shingles, and the eave over the door"}
     ts[FACE] = {"kind": "cabin_face", "color": "#5c4a34", "walkable": False,
                 "label": "a lit window"}
+    ts[FRONT] = {"kind": "cabin_front", "color": "#4a3826", "walkable": False,
+                 "label": "board-and-batten, under the eave"}
     ts[SIGN] = {"kind": "cabin_sign", "color": "#8a7048", "walkable": False,
                 "label": "the cabin's name board · repainted every June"}
 
-    for fill_ch, door_ch, name in STRUCTS:
-        # rows this structure occupies
-        occupied = [y for y, r in enumerate(rows) if fill_ch in r]
+    for s_i, (fill_ch, door_ch, name) in enumerate(STRUCTS):
+        occupied = sorted(y for y, r in enumerate(rows) if fill_ch in r)
         if not occupied:
             continue
-        door_rows = [y for y in occupied if door_ch in rows[y]]
-        face_row = door_rows[0] if door_rows else max(occupied)
+        # THE FACE IS THE ROW NEAREST THE APPROACH — always the
+        # structure's LOWEST row. Roof above, wall below, door and
+        # windows only ever in the wall. Taking the FIRST door row
+        # instead put the openings in the upper band and the shingles
+        # under them: "doors and windows placed in roofs."
+        face_row = occupied[-1]
+        roof_rows = [y for y in occupied if y != face_row]
         for y in occupied:
             xs = [x for x, ch in enumerate(rows[y]) if ch == fill_ch]
-            if not xs:
-                continue
             if y == face_row:
-                # the face: windows flanking the door, planks elsewhere
                 door_x = rows[y].index(door_ch) if door_ch in rows[y] else None
-                # Windows on an even cadence out from the door, wall
-                # between them: wall·window·wall·window·SIGN·DOOR·...
-                # An irregular scatter reads as damage, not carpentry.
                 for x in xs:
                     if door_x is None:
-                        rows[y][x] = FACE if x % 2 == 0 else fill_ch
+                        rows[y][x] = FACE if x % 2 == 0 else FRONT
                     else:
                         dist = abs(x - door_x)
                         rows[y][x] = FACE if (dist >= 2 and dist % 2 == 0) \
-                            else fill_ch
-                # a name board immediately beside the door
+                            else FRONT
                 if door_x is not None:
                     for cand in (door_x - 1, door_x + 1):
                         if cand in xs:
                             rows[y][cand] = SIGN
                             break
             else:
+                # roof: the topmost course is the ridge, the rest slope
+                band = RIDGE if y == roof_rows[0] else ROOF
                 for x in xs:
-                    rows[y][x] = ROOF
-        # the remaining fill char is the plain wall between windows
+                    rows[y][x] = band
+        # A door tile sitting in a ROOF row is the threshold seen
+        # under the eave — the recess behind the door, not a hole in
+        # the shingles. Same walkability, same exit, its own art.
+        door_def = ts.get(door_ch)
+        recess_ch = RECESS_CHARS[s_i]
+        if door_def is not None:
+            for y in roof_rows:
+                if door_ch not in rows[y]:
+                    continue
+                if recess_ch not in ts:
+                    rec = dict(door_def)
+                    rec["kind"] = "cabin_doorway"
+                    rec["label"] = "the doorway · dark past the screen"
+                    ts[recess_ch] = rec
+                for x, ch in enumerate(rows[y]):
+                    if ch == door_ch:
+                        rows[y][x] = recess_ch
         ts[fill_ch]["label"] = name
 
     z["tiles"] = ["".join(r) for r in rows]
+    # drop tileset entries no structure uses any more
+    live = {ch for r in rows for ch in r}
+    for ch in [c for c in ts if c not in live]:
+        del ts[ch]
     after = snapshot(z)
     assert before[0] == after[0], "camp_path walkability changed"
     assert before[1] == after[1], "camp_path exits changed"

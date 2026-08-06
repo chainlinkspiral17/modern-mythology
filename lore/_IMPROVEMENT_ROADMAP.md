@@ -113,7 +113,38 @@ read-size art, UI coherence, scale-to-fiction).
     ring got the woodpile, the counselor's stump, and two lanterns
     on the approach. 8 more procgen tiles (table, bench, serving
     counter, roof, face, sign, woodpile, stump).
-- **Next (draft 4)**: Deck screenshots — do the 16x16 tiles read at
+- **Pass 4 (shipped 2026-08-04) · silhouettes, buildings, and the
+  bug the composition fix exposed**:
+  - **Every prop was a full-bleed opaque 16x16 box** — a tree was a
+    green BOX ("too blocky, this isn't Minecraft"). The renderer now
+    lays the zone's ground tile under anything that isn't itself
+    ground, the generator grew a `-1 = transparent` sentinel plus
+    blob/blob_edge helpers, and 24 props were redrawn as shapes
+    (canopies with gaps, rounded boulders, a lens-shaped canoe, a
+    lamp that is mostly empty cell). Props now run 40-80%
+    transparent with contact shadows; ground/architecture stays
+    full-bleed.
+  - **Buildings were "doors and windows placed in roofs."** The face
+    row was picked as the FIRST row containing the door — which for
+    the cabins is the row AWAY from the path, so openings landed in
+    the upper band with shingles beneath them. The face is now
+    always the structure's LOWEST row (the side the player walks up
+    to): ridge course on top, slope course with an eave shadow, then
+    the front wall carrying windows/door/sign. The eave band is what
+    gives a flat top-down tile the slight-isometric depth. A door
+    tile stranded in a roof row becomes a doorway recess — dark past
+    the screen — instead of a hole in the shingles.
+  - **CABIN BEAVER WAS UNREACHABLE.** Its door tile existed only on
+    the upper row, with a tree above and solid wall below: no
+    walkable tile touched it, so Tessa's cabin could never be
+    entered. Found by flood-filling the hub while checking the
+    composition fix. Repaired (two-tall door column, as Sturgeon and
+    Osprey have) and the audit grew **check 8 · reachability**:
+    every exit must stand in the reachable set of some spawn.
+  - The dressing script's walkability/exit snapshot assert earned
+    its keep — it caught a shared doorway-recess tile that would
+    have given all four cabins Sturgeon's exit.
+- **Next (draft 5)**: Deck screenshots — do the 16x16 tiles read at
   24px, and does the roof-below-face ordering read correctly in the
   top-down projection (the door faces north, so the roof mass sits
   south of it)? Then alder pond / archery range / north bluff to the

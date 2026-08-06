@@ -212,9 +212,15 @@ const _TILE_SPRITE_FOR_KIND := {
 	"serving_counter": "serving_counter",
 	# Structures: a roof course, a face with a lit window, and a name
 	# board, so four cabins stop being four identical rectangles.
-	"cabin_roof":    "cabin_roof",
-	"cabin_face":    "cabin_face",
-	"cabin_sign":    "cabin_sign",
+	# A structure reads ROOF (ridge course, then slope with its eave
+	# shadow) over a FRONT WALL that carries the windows, the door and
+	# the sign — never openings in the shingles.
+	"cabin_roof":       "cabin_roof",
+	"cabin_roof_ridge": "cabin_roof_ridge",
+	"cabin_front":      "cabin_front",
+	"cabin_face":       "cabin_face",
+	"cabin_doorway":    "cabin_doorway",
+	"cabin_sign":       "cabin_sign",
 	"woodpile":      "woodpile",
 	"stump":         "stump",
 	"duff":          "grass",
@@ -1113,7 +1119,9 @@ const _GROUND_SPRITES := {
 	"dock_edge": true, "water_deep": true, "water_shallow": true,
 	"rock_wall": true, "rock_wall_moss": true, "cabin_wall": true,
 	"dune_grass": true, "dune_grass_wind": true, "disturbed_earth": true,
-	"cabin_roof": true, "cabin_face": true, "window": true,
+	"cabin_roof": true, "cabin_roof_ridge": true, "cabin_front": true,
+	"cabin_face": true, "cabin_doorway": true, "cabin_sign": true,
+	"window": true,
 	"door_wood": true, "screen_door": true, "cave_mouth": true,
 }
 
