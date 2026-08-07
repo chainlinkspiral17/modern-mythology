@@ -500,8 +500,20 @@ def main():
     out = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)),
                                          "../../../assets/3d/locales/carnival_lot.glb"))
     print(f"\n[build_carnival_lot] exporting to {out}")
+    build_horizon_2026_08()
     export_glb(out)
 
 
 if __name__ == "__main__":
     main()
+
+
+def build_horizon_2026_08():
+    """STUMP HUNT: view stopped at 36m. The lot sits at the town's
+    edge — a hedgerow ring, then the limestone town's far rooflines."""
+    from _props.detail import make_far_bands
+    make_far_bands("FarHedge", (0.24, 0.30, 0.20),
+                   [(60.0, 70.0, 6.0, 0.90), (130.0, 110.0, 8.0, 0.70),
+                    (260.0, 190.0, 10.0, 0.54)], profile="treeline")
+    make_far_bands("FarTown", (0.42, 0.40, 0.36),
+                   [(430.0, 300.0, 12.0, 0.42)], profile="roofline")

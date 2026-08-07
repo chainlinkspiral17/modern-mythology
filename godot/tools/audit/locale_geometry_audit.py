@@ -80,7 +80,45 @@ def install_stubs():
     for attr in ("ops", "data", "context", "types", "utils"):
         setattr(bpy, attr, types.SimpleNamespace())
     sys.modules["bpy"] = bpy
-    sys.modules["mathutils"] = types.ModuleType("mathutils")
+    mu = types.ModuleType("mathutils")
+
+    class Vector:
+        # Minimal stand-in: diner / graustark / riverfront import
+        # mathutils.Vector; without it three builders (including a
+        # MODEL CHAPTER) were unmeasurable and the audit could not
+        # claim completeness.
+        def __init__(self, seq=(0.0, 0.0, 0.0)):
+            v = list(seq) + [0.0] * (3 - len(list(seq)))
+            self.x, self.y, self.z = (float(v[0]), float(v[1]),
+                                      float(v[2]))
+
+        def __iter__(self):
+            return iter((self.x, self.y, self.z))
+
+        def __getitem__(self, i):
+            return (self.x, self.y, self.z)[i]
+
+        def __add__(self, o):
+            return Vector((self.x + o[0], self.y + o[1], self.z + o[2]))
+
+        def __sub__(self, o):
+            return Vector((self.x - o[0], self.y - o[1], self.z - o[2]))
+
+        def __mul__(self, k):
+            return Vector((self.x * k, self.y * k, self.z * k))
+
+        __rmul__ = __mul__
+
+        @property
+        def length(self):
+            return (self.x ** 2 + self.y ** 2 + self.z ** 2) ** 0.5
+
+        def normalized(self):
+            l = self.length or 1.0
+            return Vector((self.x / l, self.y / l, self.z / l))
+
+    mu.Vector = Vector
+    sys.modules["mathutils"] = mu
 
     pkg = types.ModuleType("_props")
     pkg.__path__ = []
@@ -112,6 +150,22 @@ def install_stubs():
         sys.modules["_props." + sub] = m
         setattr(pkg, sub, m)
 
+    # _props.detail contains REAL geometry logic (make_far_bands lays
+    # out the horizon bands). Stubbing it to noops made the audit
+    # blind to exactly the fix it demanded — half the patched locales
+    # stayed flagged because their bands were never recorded. Execute
+    # the real module with its relative geometry import resolving to
+    # the recording stub above.
+    detail_path = os.path.join(BLENDER, "_props", "detail.py")
+    if os.path.exists(detail_path):
+        real = types.ModuleType("_props.detail")
+        real.__package__ = "_props"
+        real.__file__ = detail_path
+        sys.modules["_props.detail"] = real
+        setattr(pkg, "detail", real)
+        exec(compile(open(detail_path).read(), detail_path, "exec"),
+             real.__dict__)
+
 
 def camera_presets():
     """preset id -> (origin Vector3 tuple, yaw radians, scene path)."""
@@ -126,9 +180,19 @@ def camera_presets():
                        r'\s*([-\d.]+)\)', body)
         if not (sm and om):
             continue
+        # Yaw is the rotation's second component — written either as
+        # deg_to_rad(N) or as raw radians. Matching only the former
+        # defaulted raw-radian presets to yaw 0 and produced a false
+        # positive (riverfront_park, which looks NW at 0.49 rad, was
+        # measured looking S and reported an 18m stump).
         ym = re.search(r'"camera_rotation":\s*Vector3\([^,]+,\s*'
                        r'deg_to_rad\(([-\d.]+)\)', body)
-        yaw = math.radians(float(ym.group(1))) if ym else 0.0
+        if ym:
+            yaw = math.radians(float(ym.group(1)))
+        else:
+            ym = re.search(r'"camera_rotation":\s*Vector3\([^,]+,'
+                           r'\s*([-\d.]+)\s*,', body)
+            yaw = float(ym.group(1)) if ym else 0.0
         out.setdefault(sm.group(1), []).append(
             (pid, tuple(float(om.group(i)) for i in (1, 2, 3)), yaw))
     return out

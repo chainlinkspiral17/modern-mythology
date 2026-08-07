@@ -404,8 +404,21 @@ def main():
     out = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)),
         "../../../assets/3d/locales/cedar_tower.glb"))
     print(f"\n[build_cedar_tower] exporting to {out}")
+    build_horizon_2026_08()
     export_glb(out)
 
 
 if __name__ == "__main__":
     main()
+
+
+def build_horizon_2026_08():
+    """STUMP HUNT: view stopped at 31m. The tower has a town under
+    it — rooflines stepping down the hill, then the tree country."""
+    from _props.detail import make_far_bands
+    make_far_bands("FarTown", (0.30, 0.28, 0.27),
+                   [(60.0, 70.0, 7.0, 0.90), (130.0, 110.0, 8.5, 0.72)],
+                   profile="roofline")
+    make_far_bands("FarWood", (0.16, 0.24, 0.15),
+                   [(250.0, 200.0, 12.0, 0.56), (460.0, 330.0, 15.0, 0.42)],
+                   profile="treeline")

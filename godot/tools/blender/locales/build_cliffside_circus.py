@@ -176,8 +176,28 @@ def main():
     out = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)),
         "../../../assets/3d/locales/cliffside_circus.glb"))
     print(f"\n[build_cliffside_circus] exporting to {out}")
+    build_horizon_2026_08()
     export_glb(out)
 
 
 if __name__ == "__main__":
     main()
+
+
+def build_horizon_2026_08():
+    """STUMP HUNT: view stopped at 36m. Seaward: the water runs to a
+    real horizon with two dim headlands. Landward: coastal scrub
+    ridges. The old Sea_Far ended 28m out."""
+    make_box("Sea_Mid", (0.0, 60.0, -2.2), (140.0, 34.0, 0.06), COL_SEA)
+    make_box("Sea_Horizon", (0.0, 240.0, -1.6), (420.0, 150.0, 0.06),
+             (COL_SEA_FAR[0] * 1.15, COL_SEA_FAR[1] * 1.15,
+              COL_SEA_FAR[2] * 1.2, 1.0))
+    make_box("Headland_W", (-120.0, 150.0, 2.5), (40.0, 18.0, 5.0),
+             (0.20, 0.21, 0.22, 1.0))
+    make_box("Headland_E", (150.0, 200.0, 3.0), (55.0, 22.0, 6.0),
+             (0.17, 0.18, 0.20, 1.0))
+    from _props.detail import make_far_bands
+    make_far_bands("FarScrub", COL_GRASS,
+                   [(70.0, 80.0, 6.0, 0.80), (150.0, 130.0, 8.0, 0.60),
+                    (300.0, 220.0, 11.0, 0.44)], sides="SEW",
+                   profile="ridge")

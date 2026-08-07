@@ -100,8 +100,23 @@ def main():
     out = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)),
         "../../../assets/3d/locales/grunion_beach.glb"))
     print(f"\n[build_grunion_beach] exporting to {out}")
+    build_horizon_2026_08()
     export_glb(out)
 
 
 if __name__ == "__main__":
     main()
+
+
+def build_horizon_2026_08():
+    """STUMP HUNT: view stopped at 50m. Night sea to a true horizon
+    seaward; dune ridges and a distant point light landward."""
+    make_box("Sea_Deep", (0.0, 90.0, 0.3), (180.0, 62.0, 0.05), COL_SEA_FAR)
+    make_box("Sea_Horizon", (0.0, 300.0, 0.2), (460.0, 150.0, 0.05),
+             (COL_SEA_FAR[0] * 1.3, COL_SEA_FAR[1] * 1.3,
+              COL_SEA_FAR[2] * 1.25, 1.0))
+    from _props.detail import make_far_bands
+    make_far_bands("FarDune", (0.24, 0.23, 0.20),
+                   [(70.0, 80.0, 5.0, 0.85), (150.0, 130.0, 7.0, 0.65),
+                    (300.0, 230.0, 9.0, 0.48)], sides="SEW",
+                   profile="ridge")

@@ -130,8 +130,20 @@ def main():
     out = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)),
         "../../../assets/3d/locales/cabin_road.glb"))
     print(f"\n[build_cabin_road] exporting to {out}")
+    build_horizon_2026_08()
     export_glb(out)
 
 
 if __name__ == "__main__":
     main()
+
+
+def build_horizon_2026_08():
+    """STUMP HUNT (locale_geometry_audit): view stopped at 22m. The
+    Oregon coast road now runs into receding Sitka ridgelines on
+    every side until the marine fog takes them."""
+    from _props.detail import make_far_bands
+    make_far_bands("FarSitka", COL_SITKA,
+                   [(60.0, 70.0, 7.0, 0.90), (130.0, 120.0, 9.0, 0.74),
+                    (260.0, 200.0, 12.0, 0.58), (450.0, 320.0, 15.0, 0.44),
+                    (760.0, 480.0, 18.0, 0.34)], profile="treeline")

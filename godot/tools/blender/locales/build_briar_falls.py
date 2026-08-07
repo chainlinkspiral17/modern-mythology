@@ -279,8 +279,21 @@ def main():
     out = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)),
         "../../../assets/3d/locales/briar_falls.glb"))
     print(f"\n[build_briar_falls] exporting to {out}")
+    build_horizon_2026_08()
     export_glb(out)
 
 
 if __name__ == "__main__":
     main()
+
+
+def build_horizon_2026_08():
+    """STUMP HUNT: view stopped at 56m. Stone ridges and wooded
+    slopes closing the valley the falls cut through."""
+    from _props.detail import make_far_bands
+    make_far_bands("FarStone", COL_STONE_DK,
+                   [(70.0, 80.0, 11.0, 0.86), (150.0, 130.0, 15.0, 0.68)],
+                   profile="ridge")
+    make_far_bands("FarWood", (0.18, 0.26, 0.15),
+                   [(300.0, 230.0, 14.0, 0.52), (540.0, 380.0, 18.0, 0.40)],
+                   profile="treeline")

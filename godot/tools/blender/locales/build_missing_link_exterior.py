@@ -206,8 +206,24 @@ def main():
     out = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)),
         "../../../assets/3d/locales/missing_link_exterior.glb"))
     print(f"\n[build_missing_link_exterior] exporting to {out}")
+    build_horizon_2026_08()
     export_glb(out)
 
 
 if __name__ == "__main__":
     main()
+
+
+def build_horizon_2026_08():
+    """STUMP HUNT: view stopped at 60m. The station sits on a road
+    that goes somewhere: receding grass hills carrying the road's
+    line of poles away."""
+    from _props.detail import make_far_bands
+    make_far_bands("FarHill", COL_GRASS,
+                   [(80.0, 90.0, 8.0, 0.85), (170.0, 150.0, 12.0, 0.66),
+                    (340.0, 260.0, 17.0, 0.50), (620.0, 440.0, 24.0, 0.38)],
+                   profile="ridge")
+    for pi in range(8):
+        d = 70.0 + pi * 34.0
+        make_cyl("FarPole_%d" % pi, (6.0, d, 3.4), 0.10, 6.8,
+                 (0.22, 0.20, 0.18, 1.0), segments=6)

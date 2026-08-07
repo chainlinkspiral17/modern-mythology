@@ -119,8 +119,29 @@ def main():
     out = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)),
         "../../../assets/3d/locales/bar_exterior.glb"))
     print(f"\n[build_bar_exterior] exporting to {out}")
+    build_horizon_2026_08()
     export_glb(out)
 
 
 if __name__ == "__main__":
     main()
+
+
+def build_horizon_2026_08():
+    """STUMP HUNT: view stopped at 43m. The bar is on a street in a
+    town: brick rooflines continuing down the block, a water tower
+    silhouette, treeline past the edge of town."""
+    from _props.detail import make_far_bands
+    make_far_bands("FarBlock", COL_BRICK_DK,
+                   [(60.0, 70.0, 7.5, 0.92), (130.0, 110.0, 9.0, 0.74)],
+                   profile="roofline")
+    make_far_bands("FarEdge", (0.20, 0.26, 0.17),
+                   [(260.0, 200.0, 11.0, 0.55), (470.0, 330.0, 14.0, 0.42)],
+                   profile="treeline")
+    make_cyl("WaterTower_Tank", (95.0, 180.0, 26.0), 7.0, 8.0,
+             (0.30, 0.30, 0.32, 1.0), segments=10)
+    for li in range(4):
+        make_cyl("WaterTower_Leg_%d" % li,
+                 (95.0 + (5.0 if li % 2 else -5.0),
+                  180.0 + (5.0 if li < 2 else -5.0), 11.0),
+                 0.5, 22.0, (0.24, 0.24, 0.26, 1.0), segments=6)

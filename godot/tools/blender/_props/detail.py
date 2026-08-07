@@ -167,3 +167,58 @@ def make_corner_guard(name, corner_point, height=1.2,
     x, y = corner_point
     make_box(f"{name}_A", (x, y, height / 2.0), (0.035, 0.012, height), tint)
     make_box(f"{name}_B", (x, y, height / 2.0), (0.012, 0.035, height), tint)
+
+
+# ── D5 edge treatment · far bands (2026-08-04, THE STUMP HUNT) ────
+# locale_geometry_audit found 14 exteriors whose view stopped at
+# 22-60m against the 120m threshold — dioramas. The fix is always
+# the same shape: receding silhouette bands along the sightline,
+# each dimmer and taller-but-farther, until scene fog eats them.
+# This is the shared machinery; each locale supplies its own
+# palette, profile and band distances so the horizon stays in
+# character (Sitka ridgelines are not Louisiana hedgerows).
+
+def make_far_bands(prefix, base_color, bands, sides="NSEW",
+                   cx=0.0, cy=0.0, profile="treeline"):
+    """Receding horizon bands for an exterior.
+
+    bands   list of (dist, half_span, height, shade) — shade scales
+            base_color per ring so aerial perspective has steps.
+    sides   subset of "NSEW"; leave out a side that is open water
+            or already handled (a sea plane, a real skyline).
+    profile 'treeline' lumpy crowns · 'ridge' long overlapping
+            wedges · 'roofline' blocky steps with a chimney or two.
+    """
+    for i, (dist, half_span, height, shade) in enumerate(bands):
+        c = (base_color[0] * shade, base_color[1] * shade,
+             base_color[2] * shade, 1.0)
+        for side in sides:
+            if side == "N":
+                ctr, half = (cx, cy + dist), (half_span, 5.0)
+            elif side == "S":
+                ctr, half = (cx, cy - dist), (half_span, 5.0)
+            elif side == "E":
+                ctr, half = (cx + dist, cy), (5.0, half_span)
+            else:
+                ctr, half = (cx - dist, cy), (5.0, half_span)
+            nm = "%s_%s%d" % (prefix, side, i)
+            make_box(nm, (ctr[0], ctr[1], height * 0.5),
+                     (half[0], half[1], height * 0.5), c)
+            # break the top line so the band doesn't read as a slab
+            along_x = side in "NS"
+            n_lumps = 3 + (i % 2)
+            for j in range(n_lumps):
+                t = (2 * j + 1) / (2.0 * n_lumps) - 0.5
+                off = t * half_span * 1.6
+                if profile == "treeline":
+                    lw, lh = half_span * 0.14, height * (0.30 + 0.12 * ((i + j) % 3))
+                elif profile == "ridge":
+                    lw, lh = half_span * 0.34, height * 0.22
+                else:  # roofline
+                    lw, lh = half_span * 0.10, height * (0.35 if (i + j) % 3 else 0.55)
+                lc = (ctr[0] + (off if along_x else 0.0),
+                      ctr[1] + (0.0 if along_x else off))
+                lhalf = ((lw, 4.0) if along_x else (4.0, lw))
+                make_box("%s_%s%d_l%d" % (prefix, side, i, j),
+                         (lc[0], lc[1], height + lh * 0.5),
+                         (lhalf[0], lhalf[1], lh * 0.5), c)

@@ -153,7 +153,14 @@ ambient_light_color = Color(0.42, 0.48, 0.58, 1)
 ambient_light_energy = 0.50
 fog_enabled = true
 fog_light_color = Color(0.05, 0.06, 0.08, 1)
-fog_density = 0.008
+; STUMP HUNT (2026-08-04): this exterior's geometry now runs
+; past 120m. Fog retuned so the new distance reads as air —
+; density capped so bands 200-800m out survive to the eye,
+; aerial perspective + sky-affect so the horizon is haze,
+; not a cut edge.
+fog_density = 0.0045
+fog_sky_affect = 1.0
+fog_aerial_perspective = 1.0
 glow_enabled = true
 glow_intensity = 0.85
 glow_bloom = 0.15

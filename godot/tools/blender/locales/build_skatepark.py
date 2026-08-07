@@ -117,8 +117,21 @@ def main():
     out = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)),
         "../../../assets/3d/locales/skatepark.glb"))
     print(f"\n[build_skatepark] exporting to {out}")
+    build_horizon_2026_08()
     export_glb(out)
 
 
 if __name__ == "__main__":
     main()
+
+
+def build_horizon_2026_08():
+    """STUMP HUNT: view stopped at 31m. The park sits in a real
+    suburb: house rooflines one street over, then treelines."""
+    from _props.detail import make_far_bands
+    make_far_bands("FarRoofline", (0.36, 0.33, 0.30),
+                   [(55.0, 60.0, 6.0, 0.92), (120.0, 100.0, 7.0, 0.74)],
+                   profile="roofline")
+    make_far_bands("FarTrees", (0.24, 0.32, 0.19),
+                   [(220.0, 180.0, 10.0, 0.60), (420.0, 300.0, 13.0, 0.45)],
+                   profile="treeline")

@@ -4377,8 +4377,31 @@ def main():
     build_distant_atmosphere()
     build_park_2026_08()
     build_park_draft2_2026_08()
+    build_park_horizon_2026_08()
     export_glb()
 
 
 if __name__ == "__main__":
     main()
+
+
+def build_park_horizon_2026_08():
+    """STUMP HUNT (locale_geometry_audit): the riverfront_park camera
+    looks NW across bench / bandstand / armory — and the world ended
+    4m past the armory (28m total). Graustark continues behind it:
+    the west side's rooflines stepping away, water tower, then the
+    tree country the town sits in. Anchored on the park at blender
+    (-49, 24), marching N and W so the NW sightline never hits air.
+    """
+    from _props.detail import make_far_bands
+    from _props.geometry import make_cyl as _mc
+    make_far_bands("ParkFarTown", (0.34, 0.31, 0.29),
+                   [(55.0, 60.0, 6.5, 0.92), (110.0, 95.0, 8.0, 0.76)],
+                   sides="NW", cx=-49.0, cy=24.0, profile="roofline")
+    make_far_bands("ParkFarWood", (0.18, 0.26, 0.16),
+                   [(210.0, 170.0, 11.0, 0.58), (400.0, 290.0, 14.0, 0.44)],
+                   sides="NW", cx=-49.0, cy=24.0, profile="treeline")
+    _mc("ParkFar_WaterTower", (-120.0, 105.0, 24.0), 6.0, 7.0,
+        (0.32, 0.31, 0.33, 1.0), segments=10)
+    _mc("ParkFar_WaterTower_Stem", (-120.0, 105.0, 10.0), 1.0, 21.0,
+        (0.26, 0.26, 0.28, 1.0), segments=8)

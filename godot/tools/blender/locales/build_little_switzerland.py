@@ -147,8 +147,22 @@ def main():
     out = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)),
         "../../../assets/3d/locales/little_switzerland.glb"))
     print(f"\n[build_little_switzerland] exporting to {out}")
+    build_horizon_2026_08()
     export_glb(out)
 
 
 if __name__ == "__main__":
     main()
+
+
+def build_horizon_2026_08():
+    """STUMP HUNT: view stopped at 41m. It is called Little
+    Switzerland — it owes the view mountains: conifer bands, then
+    blue-grey ridgelines stacking back."""
+    from _props.detail import make_far_bands
+    make_far_bands("FarConifer", (0.14, 0.22, 0.14),
+                   [(60.0, 70.0, 9.0, 0.90), (130.0, 120.0, 12.0, 0.72)],
+                   profile="treeline")
+    make_far_bands("FarRidge", (0.34, 0.37, 0.42),
+                   [(260.0, 220.0, 22.0, 0.62), (480.0, 380.0, 34.0, 0.46),
+                    (820.0, 600.0, 48.0, 0.34)], profile="ridge")

@@ -126,8 +126,22 @@ def main():
     out = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)),
         "../../../assets/3d/locales/sapo_falls.glb"))
     print(f"\n[build_sapo_falls] exporting to {out}")
+    build_horizon_2026_08()
     export_glb(out)
 
 
 if __name__ == "__main__":
     main()
+
+
+def build_horizon_2026_08():
+    """STUMP HUNT: view stopped at 25m. The gorge keeps rising —
+    rock shoulders stepping back, jungle canopy over them."""
+    from _props.detail import make_far_bands
+    make_far_bands("FarRidge", COL_ROCK_DK,
+                   [(55.0, 60.0, 10.0, 0.88), (115.0, 100.0, 14.0, 0.72),
+                    (230.0, 170.0, 18.0, 0.56), (420.0, 280.0, 24.0, 0.42)],
+                   profile="ridge")
+    make_far_bands("FarCanopy", (0.16, 0.26, 0.16),
+                   [(80.0, 80.0, 6.0, 0.85), (170.0, 140.0, 8.0, 0.66),
+                    (330.0, 240.0, 10.0, 0.50)], profile="treeline")

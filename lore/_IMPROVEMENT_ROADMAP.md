@@ -63,26 +63,33 @@ finds), and a wall with nothing behind it is only a fault if it is
 standing in for the horizon (a 22m `House_Wall` behind a porch is
 architecture; a 104m slab named `Sky` is a painted backdrop).
 
-**Findings · 15 of 99 locales. Three fixed 2026-08-04 (all three
-painted-horizon cases); 13 shallow exteriors remain. Each fix needs
-a Deck rebuild to land.**
+**Status 2026-08-04 · ALL CLEAR IN MEASUREMENT — every fix awaits a
+Deck rebuild to be visible.** The audit now runs all 101 builders
+(mathutils.Vector stubbed; real `_props.detail` executed against the
+recording geometry stub so `make_far_bands` output is measured; yaw
+parser handles raw-radian rotations — that last bug produced a false
+positive on riverfront_park and mis-measured every raw-radian
+preset). Fixed this wave:
 
-| Locale | Fault |
-|---|---|
-| louisiana_road | FIXED 2026-08-04 · 48m + sky wall → 1200m, wall deleted, receding treelines |
-| crumpled_barn | FIXED 2026-08-04 · `Sky` slab deleted → receding windbreaks to 760m + fog |
-| parish_cemetery | FIXED 2026-08-04 · 4 sky panels deleted → receding treelines to 520m + fog |
-| cabin_road | exterior view stops at 22m |
-| sapo_falls | 25m |
-| roadside_chapel | 29m |
-| skatepark / cedar_tower | 31m |
-| carnival_lot / cliffside_circus | 36m |
-| school_field_evening | 35m |
-| little_switzerland | 41m |
-| bar_exterior | 43m |
-| grunion_beach | 50m |
-| briar_falls | 56m |
-| missing_link_exterior | 60m |
+- **Painted horizons (3)**: louisiana_road (48m + sky wall → 1200m),
+  crumpled_barn (`Sky` slab → windbreaks to 760m), parish_cemetery
+  (4 sky panels → treelines to 520m).
+- **Shallow exteriors (14)** via `make_far_bands` in
+  `_props/detail.py` (D5 edge treatment, per-locale palette +
+  profile): cabin_road Sitka ridgelines · sapo_falls gorge shoulders
+  + canopy · roadside_chapel cane hedgerows · skatepark suburb
+  rooflines · cedar_tower town-then-woods · school_field_evening
+  evening treelines · carnival_lot hedge ring + limestone town ·
+  cliffside_circus sea to a true horizon + two headlands ·
+  little_switzerland conifers then blue-grey ridges to 820m ·
+  bar_exterior block rooflines + water tower · grunion_beach night
+  sea + dune ridges · briar_falls stone ridges · missing_link
+  receding hills + the road's pole line · riverfront park NW town
+  edge behind the armory (bespoke).
+- **Fog retuned in all 17 scenes** — density capped at 0.0045,
+  aerial perspective + sky-affect on. cabin_road was DOUBLE-stumped:
+  22m of geometry inside fog dense enough (0.014) to end the world
+  at ~70m regardless.
 
 The exterior threshold is 120m — below that an outdoor space reads
 as a diorama. Order of attack: the two painted-sky walls first (they
