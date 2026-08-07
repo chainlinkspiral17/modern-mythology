@@ -151,6 +151,36 @@ Position note: lamp omnis are placed AT the lamp-head mesh position
 
 ## Recent lessons
 
+### 2026-08-04 · rig pass x13 · practicals from the builder's coordinates
+
+- **Lighting is the love that lands on pull.** Lights live in the
+  .tscn, not the GLB — a lighting wave needs no Blender rebuild.
+  When the user says the 3D backgrounds need work and the Deck
+  can't rebuild yet, lighting is the highest-leverage lever.
+- **Extract fixture positions from the build scripts; never place
+  practicals by guesswork.** The geometry-audit stub records every
+  make_box/make_cyl — regex the names (lamp/tube/window/sconce/
+  neon) and the practical lands AT the visible fixture, converted
+  blender→godot (x, z, -y). A light with no visible source is a
+  fault; a light glued to its fixture sells the room.
+- **Dedupe emitted practicals by ground distance (~1.5m), not by
+  name.** WindowBay_0_Frame and WindowBar_0_V_0 are the same
+  window; both matching the fixture regex doubled the spill until
+  a distance pass caught it.
+- **13 scenes were below the foundation (1 directional, 2
+  practicals each): asylum_ward_c, ben_bedroom, christian_ice_co,
+  coach_k_bedroom, daigles_roadhouse, ember_ash_office,
+  frog_knows_best, graciela_bedroom, gym_weight_room,
+  miller_garage, miller_office, mixing_glass, roberts_house.**
+  All now carry KEY (salty_tome's hand-tuned D6 matrix) + FILL +
+  BACK plus fixture practicals where the builders declare
+  fixtures. audit_locale_lighting: 100 locales at full
+  foundation, 0 candidates. Draft 2: per-scene mood color on the
+  KEY (a bedroom at night is not an office at noon) — this pass
+  used one house rig.
+
+
+
 ### 2026-08-02 · practicals-from-build-scripts · the zero-practical four
 
 The visual audit found four rooms with NO practicals at all despite
