@@ -63,13 +63,15 @@ finds), and a wall with nothing behind it is only a fault if it is
 standing in for the horizon (a 22m `House_Wall` behind a porch is
 architecture; a 104m slab named `Sky` is a painted backdrop).
 
-**Findings · 15 of 99 locales (fix list, each needs a Deck rebuild):**
+**Findings · 15 of 99 locales. Three fixed 2026-08-04 (all three
+painted-horizon cases); 13 shallow exteriors remain. Each fix needs
+a Deck rebuild to land.**
 
 | Locale | Fault |
 |---|---|
 | louisiana_road | FIXED 2026-08-04 · 48m + sky wall → 1200m, wall deleted, receding treelines |
-| crumpled_barn | `Sky` slab 11m out, 104m wide, nothing behind it; view stops 63m |
-| parish_cemetery | `Sky_NS_-18` slab 20m out, 120m wide; view stops 80m |
+| crumpled_barn | FIXED 2026-08-04 · `Sky` slab deleted → receding windbreaks to 760m + fog |
+| parish_cemetery | FIXED 2026-08-04 · 4 sky panels deleted → receding treelines to 520m + fog |
 | cabin_road | exterior view stops at 22m |
 | sapo_falls | 25m |
 | roadside_chapel | 29m |

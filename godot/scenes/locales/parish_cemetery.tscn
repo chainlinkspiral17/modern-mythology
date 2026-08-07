@@ -137,7 +137,16 @@ ambient_light_energy = 0.54
 fog_enabled = true
 fog_light_color = Color(0.74, 0.74, 0.70, 1.0)
 fog_light_energy = 0.16
-fog_density = 0.006
+; ── Distance (2026-08-04) ─────────────────────────────────
+; The painted sky slab is gone and the parish road runs past the wall. Fog is what turns
+; that length into a read: aerial perspective grading the
+; receding bands, sky-affecting so the horizon is haze and
+; not a hole where the panel used to be.
+fog_density = 0.0038
+fog_sky_affect = 1.0
+fog_aerial_perspective = 1.0
+fog_height = 8.0
+fog_height_density = 0.04
 adjustment_enabled = true
 adjustment_brightness = 0.98
 adjustment_contrast = 1.06

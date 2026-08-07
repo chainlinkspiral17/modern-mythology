@@ -26,14 +26,22 @@ LOT_W = 24.0; LOT_D = 18.0
 def build_ground():
     # Grass field
     make_box("Ground_Grass", (0.0, 0.0, 0.0), (LOT_W + 4.0, LOT_D + 4.0, 0.04), COL_GRASS)
-    # Sky dome
-    for sx, sy in [(0.0, LOT_D), (0.0, -LOT_D), (LOT_W, 0.0), (-LOT_W, 0.0)]:
-        if sy != 0:
-            make_box(f"Sky_NS_{sy:+.0f}", (sx, sy + (LOT_D if sy>0 else -LOT_D)*0.6, 8.0),
-                     (60.0, 0.04, 16.0), COL_SKY)
-        else:
-            make_box(f"Sky_EW_{sx:+.0f}", (sx + (LOT_W if sx>0 else -LOT_W)*0.6, sy, 8.0),
-                     (0.04, 60.0, 16.0), COL_SKY)
+    # 2026-08-04 · this was four 120m sky panels boxing the lot in at
+    # 20m — a painted room, not a cemetery on a parish road. Same
+    # failure as louisiana_road. The sky belongs to the environment;
+    # what geometry owes the view is DEPTH: treelines and the parish
+    # roofline receding past the wall until fog takes them.
+    for i, (dist, bw, bh, shade) in enumerate([
+            (70.0, 70.0, 6.0, 0.86), (150.0, 120.0, 7.5, 0.72),
+            (300.0, 200.0, 9.0, 0.58), (520.0, 320.0, 11.0, 0.46)]):
+        c = (COL_TREE[0] * shade, COL_TREE[1] * shade,
+             COL_TREE[2] * shade, 1.0) if "COL_TREE" in globals() else \
+            (COL_SKY[0] * shade, COL_SKY[1] * shade, COL_SKY[2] * shade, 1.0)
+        for sgn in (-1, +1):
+            make_box(f"FarTree_NS_{i}_{sgn:+d}", (0.0, sgn * dist, bh * 0.5),
+                     (bw, 6.0, bh), c)
+            make_box(f"FarTree_EW_{i}_{sgn:+d}", (sgn * dist, 0.0, bh * 0.5),
+                     (6.0, bw, bh), c)
 
 
 def build_paths():

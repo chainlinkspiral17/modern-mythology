@@ -166,11 +166,28 @@ def build_interior():
 
 
 def build_backdrop():
-    # Distant hedgerow + flat sky
+    # 2026-08-04 · this was a hedgerow and then a 104m-wide "Sky"
+    # slab standing 11m past it with NOTHING behind it — the
+    # louisiana_road failure exactly: the field stopped at a painted
+    # wall. The horizon is the environment's job (fog + sky in the
+    # .tscn). Geometry's job is to keep receding until fog eats it.
     for i in range(6):
         tx = -14.0 + i * 5.5
         make_box(f"Hedge_{i}", (tx, 17.0, 1.6), (4.8, 1.6, 3.2), COL_TREE)
-    make_box("Sky", (0.0, 22.0, 7.0), (52.0, 0.06, 14.0), COL_SKY)
+    # Receding hedgerows and windbreaks out across the section, each
+    # band dimmer and lower so aerial perspective has steps to grade.
+    for i, (by, bw, bh, shade) in enumerate([
+            (60.0, 60.0, 5.0, 0.88), (130.0, 110.0, 6.0, 0.74),
+            (260.0, 190.0, 7.5, 0.60), (460.0, 300.0, 9.0, 0.48),
+            (760.0, 440.0, 11.0, 0.38)]):
+        c = (COL_TREE[0] * shade, COL_TREE[1] * shade,
+             COL_TREE[2] * shade, 1.0)
+        make_box(f"FarWindbreak_{i}", (0.0, by, bh * 0.5),
+                 (bw, 5.0, bh), c)
+        # a farm building or two out on the section line
+        if i in (1, 3):
+            make_box(f"FarBarn_{i}", (bw * 0.35, by - 8.0, 3.0),
+                     (7.0, 5.0, 6.0), c)
 
 
 def main():
