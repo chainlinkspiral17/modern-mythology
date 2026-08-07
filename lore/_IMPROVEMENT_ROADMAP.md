@@ -46,6 +46,48 @@ Current ledger (draft counts are honest, not aspirational):
 | Slowstick manuals + packaging (NH = model) | 1 | era-voice + walkthrough sweep across ~20 sticks; box art after experiences are good (task #234) |
 | Model chapters (diner, kwik stop, cathedral, henderson) | many | the BAR — mine them for what a finished space has |
 
+### Workstream · THE STUMP HUNT (2026-08-04)
+
+*"The highway is a stump. It does not stretch."* — and it was: the
+game's most-seen backdrop (louisiana_road, 67 instances) was 48m of
+road with a painted sky panel standing 33m in front of the camera.
+Nothing caught it for months, so the fix is a gate, not a patch:
+
+**`godot/tools/audit/locale_geometry_audit.py`** runs all 99 locale
+builders with bpy stubbed out, records every make_box/make_cyl, and
+measures — per camera preset — how far the world extends along the
+VIEW DIRECTION, plus any large thin upright slab with nothing behind
+it. Two calibrations that matter: there is deliberately NO interior
+depth test (a 4m kitchen is correct, and flagging it buries the real
+finds), and a wall with nothing behind it is only a fault if it is
+standing in for the horizon (a 22m `House_Wall` behind a porch is
+architecture; a 104m slab named `Sky` is a painted backdrop).
+
+**Findings · 15 of 99 locales (fix list, each needs a Deck rebuild):**
+
+| Locale | Fault |
+|---|---|
+| louisiana_road | FIXED 2026-08-04 · 48m + sky wall → 1200m, wall deleted, receding treelines |
+| crumpled_barn | `Sky` slab 11m out, 104m wide, nothing behind it; view stops 63m |
+| parish_cemetery | `Sky_NS_-18` slab 20m out, 120m wide; view stops 80m |
+| cabin_road | exterior view stops at 22m |
+| sapo_falls | 25m |
+| roadside_chapel | 29m |
+| skatepark / cedar_tower | 31m |
+| carnival_lot / cliffside_circus | 36m |
+| school_field_evening | 35m |
+| little_switzerland | 41m |
+| bar_exterior | 43m |
+| grunion_beach | 50m |
+| briar_falls | 56m |
+| missing_link_exterior | 60m |
+
+The exterior threshold is 120m — below that an outdoor space reads
+as a diorama. Order of attack: the two painted-sky walls first (they
+are the louisiana_road failure exactly), then the shallowest views.
+`diner`, `graustark` and `riverfront` import `mathutils.Vector` and
+need a richer stub before they can be measured at all.
+
 ### Workstream · SLOWSTICK PRODUCTION PASS (user-directed · 2026-08-03)
 
 *"Visual logic, detail and sophistication."* Per-stick direction +
