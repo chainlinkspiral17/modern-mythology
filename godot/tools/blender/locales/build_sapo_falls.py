@@ -113,7 +113,9 @@ def build_sky():
     # A second, farther table to the east, hazier
     make_box("Tepui_Far", (11.0, 17.6, 7.0), (7.0, 0.6, 5.2), (0.54, 0.52, 0.56, 1.0))
     make_box("Tepui_Far_Top", (11.0, 17.6, 9.75), (7.4, 0.8, 0.4), (0.42, 0.48, 0.42, 1.0))
-    make_box("Sky", (0.0, 18.0, 8.0), (40.0, 0.06, 16.0), COL_SKY)
+    # (Sky wall deleted 2026-08-04 — it stood between the camera
+    # and the new far bands, occluding the horizon it faked.
+    # The sky is the .tscn environment's job.)
 
 
 def main():

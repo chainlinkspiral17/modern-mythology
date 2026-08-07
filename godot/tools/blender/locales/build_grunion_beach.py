@@ -57,7 +57,9 @@ def build_sea():
 
 
 def build_sky():
-    make_box("Sky", (0.0, 28.0, 7.0), (60.0, 0.06, 14.0), COL_SKY)
+    # (Sky wall deleted 2026-08-04 — it stood between the camera
+    # and the new far bands, occluding the horizon it faked.
+    # The sky is the .tscn environment's job.)
     # Cloud bank slabs, slightly proud of the sky plane
     make_box("Cloud_0", (-8.0, 27.8, 9.5), (22.0, 0.06, 2.6), COL_CLOUD)
     make_box("Cloud_1", (10.0, 27.9, 8.2), (18.0, 0.06, 2.0), COL_CLOUD)

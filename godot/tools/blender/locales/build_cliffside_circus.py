@@ -162,7 +162,9 @@ def build_cliff_and_sea():
     make_box("Surf_1", (-2.0, 15.6, -2.6), (24.0, 0.35, 0.05), COL_SURF)
     make_box("Sea_Near", (0.0, 18.0, -2.8), (40.0, 4.5, 0.06), COL_SEA)
     make_box("Sea_Far", (0.0, 23.0, -1.8), (48.0, 5.0, 0.06), COL_SEA_FAR)
-    make_box("Sky", (0.0, 28.0, 6.0), (60.0, 0.06, 16.0), COL_SKY)
+    # (Sky wall deleted 2026-08-04 — it stood between the camera
+    # and the new far bands, occluding the horizon it faked.
+    # The sky is the .tscn environment's job.)
 
 
 def main():

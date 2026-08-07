@@ -390,7 +390,9 @@ def build_exterior():
         h = 9.0 + (i * 3) % 4
         make_cyl(f"Ext_Sitka_{i}_Trunk", (tx, ty, h * 0.25), 0.20, h * 0.5, (0.30, 0.24, 0.18, 1.0), segments=6)
         make_box(f"Ext_Sitka_{i}_Crown", (tx, ty, h * 0.65), (2.4, 2.4, h * 0.6), SITKA)
-    make_box("Ext_Sky", (X, 30.0, 12.0), (60.0, 0.06, 26.0), (0.66, 0.70, 0.70, 1.0))
+    # (Sky wall deleted 2026-08-04 — it stood between the camera
+    # and the new far bands, occluding the horizon it faked.
+    # The sky is the .tscn environment's job.)
 
 
 def main():

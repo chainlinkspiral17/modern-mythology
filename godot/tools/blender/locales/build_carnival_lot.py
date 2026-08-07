@@ -31,7 +31,9 @@ def build_ground():
     make_box("Grass_W", (-LOT_W/2.0 - 2.0, 0.0, 0.02), (4.0, LOT_D, 0.04), COL_GRASS)
     make_box("Grass_E", (+LOT_W/2.0 + 2.0, 0.0, 0.02), (4.0, LOT_D, 0.04), COL_GRASS)
     # Sky backdrop
-    make_box("SkyBackdrop", (0.0, +LOT_D/2.0 + 20.0, 8.0), (60.0, 0.04, 16.0), COL_SKY)
+    # (Sky wall deleted 2026-08-04 — it stood between the camera
+    # and the new far bands, occluding the horizon it faked.
+    # The sky is the .tscn environment's job.)
 
 
 def build_limestone_wall():

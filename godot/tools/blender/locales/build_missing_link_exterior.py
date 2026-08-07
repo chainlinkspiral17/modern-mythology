@@ -190,8 +190,11 @@ def build_backdrop():
         make_box(f"Tree_{i}", (tx, 16.5, h / 2.0), (2.6, 1.8, h),
                  COL_TREE if i % 2 == 0 else COL_TREE_LT)
     # Low hill band + dusk sky
-    make_box("Hills", (0.0, 20.0, 3.0), (48.0, 0.06, 6.0), COL_HILL)
-    make_box("Sky", (0.0, 24.0, 8.0), (60.0, 0.06, 16.0), COL_SKY)
+    # (occluder slab deleted 2026-08-04 — a paper-thin wall 20m out
+    # hiding the real receding bands built behind it)
+    # (Sky wall deleted 2026-08-04 — it stood between the camera
+    # and the new far bands, occluding the horizon it faked.
+    # The sky is the .tscn environment's job.)
 
 
 def main():

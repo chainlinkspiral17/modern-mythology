@@ -130,13 +130,17 @@ def build_village():
 
 
 def build_mountains():
-    make_box("Ridge_Near", (2.0, 16.0, 4.5), (46.0, 0.06, 9.0), COL_RIDGE_NEAR)
-    make_box("Ridge_Far", (-4.0, 20.0, 6.5), (54.0, 0.06, 13.0), COL_RIDGE_FAR)
+    # (cardboard ridge slab deleted 2026-08-04 — a 0.06m-thick
+    # 'mountain' occluding the real banded ridges behind it)
+    # (occluder slab deleted 2026-08-04 — a paper-thin wall 20m out
+    # hiding the real receding bands built behind it)
     # Snow caps: light bands along the far ridge tops
     make_box("Snow_Far_A", (-12.0, 19.95, 12.0), (10.0, 0.05, 2.0), COL_SNOW)
     make_box("Snow_Far_B", (4.0, 19.95, 12.6), (8.0, 0.05, 1.6), COL_SNOW)
     make_box("Snow_Near", (10.0, 15.95, 8.4), (7.0, 0.05, 1.2), COL_SNOW)
-    make_box("Sky", (0.0, 25.0, 9.0), (64.0, 0.06, 18.0), COL_SKY)
+    # (Sky wall deleted 2026-08-04 — it stood between the camera
+    # and the new far bands, occluding the horizon it faked.
+    # The sky is the .tscn environment's job.)
 
 
 def main():

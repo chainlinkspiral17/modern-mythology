@@ -57,7 +57,7 @@ LAMP_FIXTURES = [
 # stretch." A highway reads as a highway because its lines converge
 # to a vanishing point; you cannot fake that with 33 metres.)
 ROAD_FAR = 1200.0
-ROAD_NEAR = -40.0
+ROAD_NEAR = -1200.0
 
 
 def build_road():
@@ -108,20 +108,14 @@ def build_cypress_trees():
         (+9.0, 2.0, 7.0), (+9.5, 6.0, 6.5), (+9.0, 10.5, 7.5),
         (+9.5, 14.0, 6.0), (+10.5, 17.0, 6.5),
     ]
+    # 2026-08-04: crowns were three stacked flat discs (layer-cake).
+    # Real cypress now: buttressed taper trunk + one wide squashed
+    # blob crown + moss, from _props.trees.
+    from _props.trees import make_cypress
     for ti, (tx, ty, th) in enumerate(positions):
-        # Trunk (buttressed base wider than top)
-        make_cyl(f"Cypress_{ti}_TrunkBase", (tx, ty, 0.50), 0.60, 1.00, COL_CYPRESS_TRUNK, segments=10)
-        make_cyl(f"Cypress_{ti}_Trunk", (tx, ty, th/2.0 + 1.0), 0.30, th, COL_CYPRESS_TRUNK, segments=10)
-        # Foliage clusters (3 stacked)
-        for fi in range(3):
-            fr = 1.40 - fi*0.30
-            fz = th + 1.0 + fi*0.80
-            make_cyl(f"Cypress_{ti}_Foliage_{fi}", (tx, ty, fz), fr, 1.20, COL_CYPRESS_FOLIAGE, segments=10)
-        # Spanish moss strands hanging
-        for mi in range(3):
-            mx = tx + (mi - 1) * 0.30
-            mz = th + 0.8
-            make_box(f"Cypress_{ti}_Moss_{mi}", (mx, ty, mz - 0.80), (0.04, 0.04, 1.20), COL_SPANISH_MOSS)
+        make_cypress(f"Cypress_{ti}", tx, ty, th,
+                     COL_CYPRESS_FOLIAGE, COL_CYPRESS_TRUNK,
+                     COL_SPANISH_MOSS)
 
 
 def build_signs_and_markers():
@@ -157,9 +151,10 @@ def build_sky_backdrop():
             (1050.0, 380.0, 15.0, 0.40)]):
         c = (COL_SKY[0] * shade, COL_SKY[1] * shade, COL_SKY[2] * shade, 1.0)
         for sgn in (-1, +1):
-            make_box(f"FarTreeline_{i}_{sgn:+d}",
-                     (sgn * (12.0 + bw * 0.5), by, bh * 0.5),
-                     (bw, 6.0, bh), c)
+            for ns in (-1, +1):
+                make_box(f"FarTreeline_{i}_{sgn:+d}_{ns:+d}",
+                         (sgn * (12.0 + bw * 0.5), ns * by, bh * 0.5),
+                         (bw, 6.0, bh), c)
 
 
 
@@ -184,7 +179,7 @@ def build_roadside_detail():
     pole_x = 3.4
     # Poles march to the horizon at a real 40m spacing — the
     # repeating vertical that tells the eye how far it is seeing.
-    pole_ys = [-2.0 + i * 40.0 for i in range(28)]
+    pole_ys = [-1080.0 + i * 40.0 for i in range(55)]
     top_z = 5.2
     for i, py in enumerate(pole_ys):
         lean = _m.radians(3 + (i % 3))   # each leans a hair differently
@@ -207,8 +202,8 @@ def build_roadside_detail():
                 make_cyl(f"Wire_{i}_{seg}", (pole_x, py + span * tm, top_z - 0.30 - sag),
                          0.012, span / 4.0 + 0.05, wire_col, segments=3, axis='Y')
     # ── Guardrail on the SWAMP (east) side, x=+3.0, dented ──
-    for i in range(180):
-        gy = -3.0 + i * 3.0
+    for i in range(730):
+        gy = -1095.0 + i * 3.0
         dent = 0.05 if i == 5 else 0.0   # one bashed post
         make_box(f"Guardrail_Beam_{i}", (3.0 + dent, gy + 1.5, 0.55),
                  (0.04, 3.0, 0.16), steel)

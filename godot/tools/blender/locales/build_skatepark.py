@@ -105,7 +105,8 @@ def build_backdrop():
         make_cyl(f"Tree_{i}_Trunk", (px, py, h * 0.22), 0.18, h * 0.44, COL_TRUNK, segments=6)
         col = COL_LEAF if i % 2 == 0 else COL_LEAF_LT
         make_box(f"Tree_{i}_Crown", (px, py, h * 0.68), (2.6, 2.4, h * 0.55), col)
-    make_box("Sky", (0.0, 22.0, 7.0), (50.0, 0.06, 14.0), COL_SKY)
+    # (occluder slab deleted 2026-08-04 — a paper-thin wall 20m out
+    # hiding the real receding bands built behind it)
 
 
 def main():

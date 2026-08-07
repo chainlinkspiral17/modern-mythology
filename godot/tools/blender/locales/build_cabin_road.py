@@ -79,10 +79,11 @@ def build_creek():
 
 
 def _conifer(prefix, px, py, h, col):
-    make_cyl(f"{prefix}_Trunk", (px, py, h * 0.25), 0.16, h * 0.5, COL_TRUNK, segments=6)
-    make_box(f"{prefix}_T0", (px, py, h * 0.45), (2.2, 2.2, h * 0.34), col)
-    make_box(f"{prefix}_T1", (px, py, h * 0.70), (1.5, 1.5, h * 0.28), col)
-    make_box(f"{prefix}_T2", (px, py, h * 0.92), (0.8, 0.8, h * 0.22), col)
+    # 2026-08-04: was three stacked CUBES on a pole — a Minecraft
+    # tree on the game's Oregon road. Now a real spruce silhouette
+    # (tapered trunk + stacked cones) from _props.trees.
+    from _props.trees import make_conifer
+    make_conifer(prefix, px, py, h, col, COL_TRUNK)
 
 
 def build_forest():
@@ -118,7 +119,9 @@ def build_atmosphere():
     # The clearing gap — a lighter break in the treewall where the
     # road disappears toward the cabin
     make_box("Clearing_Glow", (4.5, 21.5, 2.6), (3.4, 0.3, 5.0), (0.78, 0.80, 0.74, 1.0))
-    make_box("Sky", (0.0, 26.0, 8.0), (46.0, 0.06, 16.0), COL_SKY)
+    # (Sky wall deleted 2026-08-04 — it stood between the camera
+    # and the new far bands, occluding the horizon it faked.
+    # The sky is the .tscn environment's job.)
 
 
 def main():

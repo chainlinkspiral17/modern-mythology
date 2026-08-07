@@ -124,13 +124,31 @@ def install_stubs():
     pkg.__path__ = []
     sys.modules["_props"] = pkg
 
+    def _rec_prism(name, center, size, color=None, *a, **k):
+        return _make_box(name, center,
+                         tuple(abs(float(v)) / 2.0 for v in size))
+
+    def _rec_taper(name, center, r_bottom, r_top=0.0, height=1.0,
+                   color=None, segments=10, axis='Z', *a, **k):
+        return _make_cyl(name, center, max(r_bottom, r_top), height,
+                         color, segments, axis)
+
+    def _rec_round(name, center, radius, color=None, *a, **k):
+        r = abs(float(radius))
+        BOXES.append((str(name),
+                      tuple(float(c) for c in center), (r, r, r)))
+        return types.SimpleNamespace(name=str(name))
+
+    _RECORDERS = {
+        "make_box": _make_box, "make_cyl": _make_cyl,
+        "make_chamfer_box": _rec_prism, "make_wedge": _rec_prism,
+        "make_gable": _rec_prism, "make_taper_cyl": _rec_taper,
+        "make_dome": _rec_round, "make_blob": _rec_round,
+    }
+
     class _Any(types.ModuleType):
         def __getattr__(self, item):
-            if item == "make_box":
-                return _make_box
-            if item == "make_cyl":
-                return _make_cyl
-            return _noop
+            return _RECORDERS.get(item, _noop)
 
     # Discover the real _props.* module names instead of guessing —
     # a hardcoded list silently skipped 66 of 81 builders on the
@@ -156,15 +174,16 @@ def install_stubs():
     # stayed flagged because their bands were never recorded. Execute
     # the real module with its relative geometry import resolving to
     # the recording stub above.
-    detail_path = os.path.join(BLENDER, "_props", "detail.py")
-    if os.path.exists(detail_path):
-        real = types.ModuleType("_props.detail")
+    for real_mod in ("detail", "trees"):
+        mpath = os.path.join(BLENDER, "_props", real_mod + ".py")
+        if not os.path.exists(mpath):
+            continue
+        real = types.ModuleType("_props." + real_mod)
         real.__package__ = "_props"
-        real.__file__ = detail_path
-        sys.modules["_props.detail"] = real
-        setattr(pkg, "detail", real)
-        exec(compile(open(detail_path).read(), detail_path, "exec"),
-             real.__dict__)
+        real.__file__ = mpath
+        sys.modules["_props." + real_mod] = real
+        setattr(pkg, real_mod, real)
+        exec(compile(open(mpath).read(), mpath, "exec"), real.__dict__)
 
 
 def camera_presets():
@@ -231,10 +250,15 @@ def analyse(boxes, cams):
     if cams:
         best = 0.0
         for _pid, (gx, gy, gz), yaw in cams:
-            # Godot (x,y,z) -> Blender (x, -z, y); view is Blender -Y
-            # turned by the preset yaw (yaw 180 looks up +Y).
+            # Godot camera forward is -Z rotated by yaw about +Y:
+            # forward_godot = (-sin y, 0, -cos y). Blender maps
+            # (x, -z): forward_blender = (-sin y, +COS y). The
+            # original -cos coincided with the truth only at yaw 180
+            # (louisiana) — every other preset was measured looking
+            # BACKWARD, which hid cabin_road's Sky wall standing
+            # 24m in front of the real view.
             bx, by = gx, -gz
-            vx, vy = -math.sin(yaw), -math.cos(yaw)
+            vx, vy = -math.sin(yaw), math.cos(yaw)
             far = 0.0
             for _n, c, h in boxes:
                 d = (c[0] - bx) * vx + (c[1] - by) * vy
@@ -254,7 +278,7 @@ def analyse(boxes, cams):
                 continue
             for _pid, (gx, gy, gz), yaw in cams:
                 bx, by = gx, -gz
-                vx, vy = -math.sin(yaw), -math.cos(yaw)
+                vx, vy = -math.sin(yaw), math.cos(yaw)
                 d = (c[0] - bx) * vx + (c[1] - by) * vy
                 if d <= 0:
                     continue
@@ -262,8 +286,13 @@ def analyse(boxes, cams):
                 behind = sum(
                     1 for _n2, c2, _h2 in boxes
                     if (c2[0] - bx) * vx + (c2[1] - by) * vy > d + 1.0)
-                if behind <= max(2, int(len(boxes) * BACKDROP_BEHIND_FRAC)):
-                    report["backdrops"].append((n, d, span, behind))
+                # Both cases are faults now. A horizon-named slab
+                # with nothing behind it is a painted backdrop; one
+                # WITH geometry behind it is an OCCLUDER — it hides
+                # the horizon that exists (this is how 11 'fixed'
+                # exteriors kept their new far bands invisible: the
+                # old Sky wall was still standing in front of them).
+                report["backdrops"].append((n, d, span, behind))
                 break
     return report
 
@@ -290,8 +319,10 @@ def main():
         why = []
         if r["backdrops"]:
             bn, bd, bs, bh = r["backdrops"][0]
-            why.append("BACKDROP %r %.0fm out, %.0fm wide, %d parts behind it"
-                       % (bn, bd, bs, bh))
+            kind_s = "OCCLUDER (hides the horizon behind it)" if bh > 2 \
+                else "BACKDROP (painted end of the world)"
+            why.append("%s %r %.0fm out, %.0fm wide, %d parts behind"
+                       % (kind_s, bn, bd, bs, bh))
         outdoor = max(r["bbox"][0], r["bbox"][1]) > EXTERIOR_BBOX_M
         if r["reach"] is not None and outdoor and r["reach"] < SHALLOW_EXTERIOR_M:
             why.append("exterior view stops at %.0fm" % r["reach"])

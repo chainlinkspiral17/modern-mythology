@@ -118,3 +118,280 @@ def export_glb(out_path, *, export_lights=False, export_cameras=False):
     if os.path.exists(out_path):
         size = os.path.getsize(out_path)
         print(f"[props.export_glb] wrote {out_path} ({size} bytes)")
+
+
+# ════════════════════════════════════════════════════════════════
+# DE-MINECRAFT VOCABULARY (2026-08-04)
+# ════════════════════════════════════════════════════════════════
+# "Lighting won't fix the minecraft, blender will." Correct: with
+# only axis-aligned make_box / make_cyl, every locale is literally
+# built from blocks — hard 90° edges, flat facets, no slopes, no
+# organics. These primitives grow the vocabulary. All pure pydata
+# (no bpy.ops, no modifiers), deterministic, vertex-coloured like
+# the originals.
+#
+#   make_chamfer_box  the box replacement — edges cut at `chamfer`
+#                     so they catch light instead of knifing it
+#   make_wedge        right-triangular prism · ramps, hoods, banks
+#   make_gable        symmetric triangular prism · ROOFS
+#   make_taper_cyl    frustum · trunks, shades, funnels (r_top=0
+#                     makes a cone)
+#   make_dome         UV hemisphere · tanks, hills, awnings
+#   make_blob         noise-displaced sphere · TREE CROWNS, rocks,
+#                     bushes — the organic silhouette boxes can't do
+#
+# All accept `yaw` (radians, about Z at the object's own center) —
+# rotation was banned because free rotation made the coordinate
+# frame illegible; yaw-only through this parameter keeps footprints
+# reasoned about in plan view while killing the everything-faces-
+# the-same-way grid look.
+#
+# Winding is computed, not hand-tracked: every face is checked
+# against the outward direction from the shape's center and flipped
+# if inward, so no primitive can ship invisible faces.
+
+
+def _yaw_rot(verts, center, yaw):
+    if not yaw:
+        return verts
+    cx, cy, cz = center
+    c, s = math.cos(yaw), math.sin(yaw)
+    out = []
+    for (x, y, z) in verts:
+        dx, dy = x - cx, y - cy
+        out.append((cx + dx * c - dy * s, cy + dx * s + dy * c, z))
+    return out
+
+
+def _fix_winding(verts, faces, center):
+    cx, cy, cz = center
+    fixed = []
+    for f in faces:
+        v0, v1, v2 = verts[f[0]], verts[f[1]], verts[f[2]]
+        e1 = (v1[0]-v0[0], v1[1]-v0[1], v1[2]-v0[2])
+        e2 = (v2[0]-v0[0], v2[1]-v0[1], v2[2]-v0[2])
+        nx = e1[1]*e2[2] - e1[2]*e2[1]
+        ny = e1[2]*e2[0] - e1[0]*e2[2]
+        nz = e1[0]*e2[1] - e1[1]*e2[0]
+        mx = sum(verts[i][0] for i in f) / len(f) - cx
+        my = sum(verts[i][1] for i in f) / len(f) - cy
+        mz = sum(verts[i][2] for i in f) / len(f) - cz
+        fixed.append(list(reversed(f))
+                     if nx*mx + ny*my + nz*mz < 0 else list(f))
+    return fixed
+
+
+def _h01g(a, b, c=0):
+    n = (a * 374761393 + b * 668265263 + c * 1442695041) & 0xFFFFFFFF
+    n = ((n ^ (n >> 13)) * 1274126177) & 0xFFFFFFFF
+    return ((n ^ (n >> 16)) & 0xFFFF) / 65536.0
+
+
+def make_chamfer_box(name, center, size, base_color,
+                     chamfer=0.05, yaw=0.0):
+    """Box with every edge cut back by `chamfer` — the single
+    biggest de-blocking move: a zero-radius edge reads as CAD, a
+    cut edge catches a highlight and reads as a made thing. Use for
+    counters, furniture, appliances, vehicles, machine bodies."""
+    cx, cy, cz = center
+    hx, hy, hz = size[0]/2.0, size[1]/2.0, size[2]/2.0
+    c = min(chamfer, hx * 0.45, hy * 0.45, hz * 0.45)
+    verts, idx = [], {}
+    for i in (-1, 1):
+        for j in (-1, 1):
+            for k in (-1, 1):
+                idx[(i, j, k, 'x')] = len(verts)
+                verts.append((cx + i*hx, cy + j*(hy-c), cz + k*(hz-c)))
+                idx[(i, j, k, 'y')] = len(verts)
+                verts.append((cx + i*(hx-c), cy + j*hy, cz + k*(hz-c)))
+                idx[(i, j, k, 'z')] = len(verts)
+                verts.append((cx + i*(hx-c), cy + j*(hy-c), cz + k*hz))
+    faces = []
+    for i in (-1, 1):   # X faces
+        faces.append([idx[(i, -1, -1, 'x')], idx[(i, 1, -1, 'x')],
+                      idx[(i, 1, 1, 'x')], idx[(i, -1, 1, 'x')]])
+    for j in (-1, 1):   # Y faces
+        faces.append([idx[(-1, j, -1, 'y')], idx[(1, j, -1, 'y')],
+                      idx[(1, j, 1, 'y')], idx[(-1, j, 1, 'y')]])
+    for k in (-1, 1):   # Z faces
+        faces.append([idx[(-1, -1, k, 'z')], idx[(1, -1, k, 'z')],
+                      idx[(1, 1, k, 'z')], idx[(-1, 1, k, 'z')]])
+    for i in (-1, 1):   # 12 edge chamfer quads
+        for j in (-1, 1):
+            faces.append([idx[(i, j, -1, 'x')], idx[(i, j, 1, 'x')],
+                          idx[(i, j, 1, 'y')], idx[(i, j, -1, 'y')]])
+    for i in (-1, 1):
+        for k in (-1, 1):
+            faces.append([idx[(i, -1, k, 'x')], idx[(i, 1, k, 'x')],
+                          idx[(i, 1, k, 'z')], idx[(i, -1, k, 'z')]])
+    for j in (-1, 1):
+        for k in (-1, 1):
+            faces.append([idx[(-1, j, k, 'y')], idx[(1, j, k, 'y')],
+                          idx[(1, j, k, 'z')], idx[(-1, j, k, 'z')]])
+    for i in (-1, 1):   # 8 corner triangles
+        for j in (-1, 1):
+            for k in (-1, 1):
+                faces.append([idx[(i, j, k, 'x')], idx[(i, j, k, 'y')],
+                              idx[(i, j, k, 'z')]])
+    verts = _yaw_rot(verts, center, yaw)
+    return _finalize_mesh(name, verts, _fix_winding(verts, faces, center),
+                          base_color)
+
+
+def make_wedge(name, center, size, base_color, yaw=0.0, high_end='+Y'):
+    """Right-triangular prism: full height at `high_end` ('+Y','-Y',
+    '+X','-X'), zero at the other. Ramps, car hoods, lean-to roofs,
+    embankments."""
+    cx, cy, cz = center
+    hx, hy, hz = size[0]/2.0, size[1]/2.0, size[2]/2.0
+    lo, hi = cz - hz, cz + hz
+    if high_end in ('+Y', '-Y'):
+        s = 1 if high_end == '+Y' else -1
+        verts = [(cx-hx, cy-s*hy, lo), (cx+hx, cy-s*hy, lo),
+                 (cx+hx, cy+s*hy, lo), (cx-hx, cy+s*hy, lo),
+                 (cx-hx, cy+s*hy, hi), (cx+hx, cy+s*hy, hi)]
+    else:
+        s = 1 if high_end == '+X' else -1
+        verts = [(cx-s*hx, cy-hy, lo), (cx-s*hx, cy+hy, lo),
+                 (cx+s*hx, cy+hy, lo), (cx+s*hx, cy-hy, lo),
+                 (cx+s*hx, cy-hy, hi), (cx+s*hx, cy+hy, hi)]
+    faces = [[0, 1, 2, 3], [0, 1, 5, 4], [2, 3, 4, 5],
+             [0, 3, 4], [1, 2, 5]]
+    verts = _yaw_rot(verts, center, yaw)
+    return _finalize_mesh(name, verts, _fix_winding(verts, faces, center),
+                          base_color)
+
+
+def make_gable(name, center, size, base_color, yaw=0.0, ridge_axis='X'):
+    """Symmetric triangular prism — ridge along `ridge_axis`, full
+    `size` footprint, apex at +Z. THE roof shape: every flat-topped
+    building in the project can carry one of these instead of a
+    slab lid."""
+    cx, cy, cz = center
+    hx, hy, hz = size[0]/2.0, size[1]/2.0, size[2]/2.0
+    lo, hi = cz - hz, cz + hz
+    if ridge_axis == 'X':
+        verts = [(cx-hx, cy-hy, lo), (cx+hx, cy-hy, lo),
+                 (cx+hx, cy+hy, lo), (cx-hx, cy+hy, lo),
+                 (cx-hx, cy, hi), (cx+hx, cy, hi)]
+        faces = [[0, 1, 2, 3], [0, 1, 5, 4], [2, 3, 4, 5],
+                 [0, 3, 4], [1, 2, 5]]
+    else:
+        verts = [(cx-hx, cy-hy, lo), (cx+hx, cy-hy, lo),
+                 (cx+hx, cy+hy, lo), (cx-hx, cy+hy, lo),
+                 (cx, cy-hy, hi), (cx, cy+hy, hi)]
+        faces = [[0, 1, 2, 3], [0, 1, 4], [2, 3, 5],
+                 [1, 2, 5, 4], [0, 3, 5, 4]]
+    verts = _yaw_rot(verts, center, yaw)
+    return _finalize_mesh(name, verts, _fix_winding(verts, faces, center),
+                          base_color)
+
+
+def make_taper_cyl(name, center, r_bottom, r_top, height, base_color,
+                   segments=10, axis='Z'):
+    """Frustum — r_top=0 gives a cone. Tree trunks taper; lamp
+    shades flare; a straight cylinder is a pipe and almost nothing
+    else in the world is a pipe."""
+    cx, cy, cz = center
+    h2 = height / 2.0
+    verts = []
+    apex_top = r_top <= 1e-6
+    for ring, (z_off, rr) in enumerate(((-h2, r_bottom), (h2, r_top))):
+        if ring == 1 and apex_top:
+            break
+        for i in range(segments):
+            ang = 2.0 * math.pi * i / segments
+            a, b = math.cos(ang) * rr, math.sin(ang) * rr
+            if axis == 'Z':
+                verts.append((cx + a, cy + b, cz + z_off))
+            elif axis == 'Y':
+                verts.append((cx + a, cy + z_off, cz + b))
+            else:
+                verts.append((cx + z_off, cy + a, cz + b))
+    faces = []
+    if apex_top:
+        apex = len(verts)
+        if axis == 'Z':
+            verts.append((cx, cy, cz + h2))
+        elif axis == 'Y':
+            verts.append((cx, cy + h2, cz))
+        else:
+            verts.append((cx + h2, cy, cz))
+        for i in range(segments):
+            faces.append([i, (i + 1) % segments, apex])
+        faces.append(list(reversed(range(segments))))
+    else:
+        for i in range(segments):
+            ni = (i + 1) % segments
+            faces.append([i, ni, ni + segments, i + segments])
+        faces.append(list(reversed(range(segments))))
+        faces.append(list(range(segments, segments * 2)))
+    return _finalize_mesh(name, verts, _fix_winding(verts, faces, center),
+                          base_color)
+
+
+def _uv_sphere(center, radius, rings, segments, squash, noise, seed):
+    cx, cy, cz = center
+    verts = [(cx, cy, cz + radius * squash)]
+    for r in range(1, rings):
+        phi = math.pi * r / rings
+        for s in range(segments):
+            th = 2.0 * math.pi * s / segments
+            k = 1.0 + (0.0 if not noise
+                       else (_h01g(r, s, seed) - 0.5) * 2.0 * noise)
+            rr = radius * k
+            verts.append((cx + rr * math.sin(phi) * math.cos(th),
+                          cy + rr * math.sin(phi) * math.sin(th),
+                          cz + rr * math.cos(phi) * squash))
+    verts.append((cx, cy, cz - radius * squash))
+    faces = []
+    for s in range(segments):
+        faces.append([0, 1 + s, 1 + (s + 1) % segments])
+    for r in range(rings - 2):
+        base = 1 + r * segments
+        for s in range(segments):
+            ns = (s + 1) % segments
+            faces.append([base + s, base + segments + s,
+                          base + segments + ns, base + ns])
+    last = len(verts) - 1
+    base = 1 + (rings - 2) * segments
+    for s in range(segments):
+        faces.append([last, base + (s + 1) % segments, base + s])
+    return verts, faces
+
+
+def make_dome(name, center, radius, base_color, rings=4, segments=10,
+              squash=1.0):
+    """UV hemisphere sitting on its equator (base at center z).
+    Tanks, hills, awning crowns, boulder tops."""
+    cx, cy, cz = center
+    verts, faces = _uv_sphere((cx, cy, cz), radius, rings * 2,
+                              segments, squash, 0.0, 0)
+    keep = [i for i, v in enumerate(verts) if v[2] >= cz - 1e-6]
+    remap = {old: new for new, old in enumerate(keep)}
+    verts2 = [verts[i] for i in keep]
+    faces2 = [[remap[i] for i in f] for f in faces
+              if all(i in remap for i in f)]
+    rim = [remap[i] for i in keep
+           if abs(verts[i][2] - cz) < radius * 0.35 and i != 0]
+    if len(rim) >= 3:
+        cxy = (cx, cy, cz)
+        rim.sort(key=lambda i: math.atan2(verts2[i][1] - cy,
+                                          verts2[i][0] - cx))
+        faces2.append(list(reversed(rim)))
+    return _finalize_mesh(name, verts2,
+                          _fix_winding(verts2, faces2,
+                                       (cx, cy, cz + radius * 0.4)),
+                          base_color)
+
+
+def make_blob(name, center, radius, base_color, noise=0.22, seed=0,
+              rings=5, segments=9, squash=0.8):
+    """Noise-displaced sphere — the organic silhouette a box cannot
+    make. Tree crowns, bushes, rocks, hay, cloud puffs. Deterministic
+    per `seed`; lumpy low-poly on purpose (the facets ARE the
+    foliage read at our art scale)."""
+    verts, faces = _uv_sphere(center, radius, rings, segments,
+                              squash, noise, seed)
+    return _finalize_mesh(name, verts, _fix_winding(verts, faces, center),
+                          base_color)

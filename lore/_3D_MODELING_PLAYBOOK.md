@@ -198,6 +198,30 @@ and document where it's used. **Do not** scale, only remap axes.
 
 ### Primitive selection — never reach for `make_box` first
 
+**2026-08-04 — the vocabulary finally exists.** This section used to
+name helpers (`make_sphere`…) that `_props/geometry.py` never had —
+so every builder fell back to axis-aligned boxes and the whole game
+read as Minecraft ("lighting won't fix the minecraft, blender
+will"). The real set now, all pure pydata, deterministic, winding
+auto-fixed, all accepting `yaw` (Z-rotation about the object's own
+center — yaw-only keeps plan-view reasoning intact):
+
+| Helper | Use for |
+|---|---|
+| `make_chamfer_box(…, chamfer=0.05, yaw=0)` | ANY box a camera gets near — counters, appliances, vehicles, machines. The cut edge catches a highlight; a zero-radius edge reads as CAD. |
+| `make_wedge(…, high_end='+Y')` | ramps, hoods, lean-tos, embankments |
+| `make_gable(…, ridge_axis='X')` | ROOFS — every flat slab lid should become one |
+| `make_taper_cyl(r_bottom, r_top)` | trunks, shades, funnels; `r_top=0` = cone |
+| `make_dome(radius, squash)` | tanks, hills, awning crowns |
+| `make_blob(radius, noise, seed)` | tree crowns, bushes, rocks, hay — the organic silhouette a box cannot make |
+| `_props.trees` | `make_conifer` / `make_broadleaf` / `make_cypress` — assembled trees; cabin_road + louisiana already converted |
+
+Rollout rule: NEW geometry uses this vocabulary from day one.
+Existing builders convert opportunistically — hero objects and
+anything within ~10m of a camera preset first.
+
+
+
 The project's lowpoly aesthetic looks like Atari 2600 if everything is
 axis-aligned boxes. Pick the right primitive for the shape:
 
@@ -330,6 +354,35 @@ the reference in a code comment ("modeled after the Belle of
 Louisville's hurricane-deck proportions"). Don't guess at numbers.
 
 ## Recent lessons
+
+### 2026-08-04 · de-Minecraft vocabulary + the view-direction sign bug
+
+- **The playbook demanded shapes the module didn't have.** The
+  primitive-selection table named `make_sphere` for years while
+  geometry.py shipped exactly two axis-aligned prims — so every
+  "wrong" column in that table was what actually got built. When a
+  doc says never-do-X and the tooling only offers X, the tooling is
+  the bug. Six new prims + `_props/trees.py` close it.
+- **Winding is computed, not hand-tracked.** Every new prim runs
+  `_fix_winding` (face normal vs outward-from-center) — validated
+  headlessly: 9 prims, all closed manifolds, 0 inward faces, 0 open
+  edges, without opening Blender once.
+- **The audit's camera forward had a sign error** (`-cos` for
+  `+cos`): every preset except yaw-180 was measured looking
+  BACKWARD. Fixed and validated two independent ways (a preset
+  comment naming its subject NW; the louisiana screenshot's void
+  matching the true south view). Consequence found immediately:
+  **14 'fixed' exteriors still had their old Sky wall standing
+  9-36m out IN FRONT of the new far bands** — deleted in all of
+  them, plus two paper-thin cardboard ridges. Occluder detection
+  (thin horizon slab WITH geometry behind it) is now a permanent
+  audit check.
+- **louisiana's preset faces SOUTH** — the 1200m extension went
+  north, behind the camera. The highway now runs -1200..+1200 with
+  poles, guardrail and treelines both ways: cuts in either
+  direction read.
+
+
 
 ### 2026-08-03 · tail wave · wholesale re-themes and the stale-preset class
 

@@ -103,7 +103,9 @@ def build_street_furniture():
 
 
 def build_backdrop():
-    make_box("Sky", (0.0, 14.0, 6.5), (48.0, 0.06, 13.0), COL_SKY)
+    # (Sky wall deleted 2026-08-04 — it stood between the camera
+    # and the new far bands, occluding the horizon it faked.
+    # The sky is the .tscn environment's job.)
     # Far rooflines across the street behind the camera don't render;
     # a low distant block face beyond the building's roof
     make_box("Far_Block", (6.0, 9.0, 7.2), (20.0, 0.06, 2.4), (0.07, 0.07, 0.10, 1.0))

@@ -261,9 +261,13 @@ def build_pines():
 def build_valley():
     """Ridge planes beyond the bluff. Tops kept low so the rail sees
     over them; the falls themselves live at the overlook now."""
-    make_box("Ridge_Mid", (6.0, 21.0, 2.2), (40.0, 0.06, 4.4), COL_RIDGE_MID)
-    make_box("Ridge_Far", (0.0, 25.0, 3.2), (52.0, 0.06, 6.4), COL_RIDGE_FAR)
-    make_box("Sky", (0.0, 30.0, 9.0), (70.0, 0.06, 18.0), COL_SKY)
+    # (cardboard ridge slab deleted 2026-08-04 — a 0.06m-thick
+    # 'mountain' occluding the real banded ridges behind it)
+    # (occluder slab deleted 2026-08-04 — a paper-thin wall 20m out
+    # hiding the real receding bands built behind it)
+    # (Sky wall deleted 2026-08-04 — it stood between the camera
+    # and the new far bands, occluding the horizon it faked.
+    # The sky is the .tscn environment's job.)
 
 
 def main():
