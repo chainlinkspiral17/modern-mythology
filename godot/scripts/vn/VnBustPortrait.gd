@@ -245,8 +245,7 @@ static func _build(key: String, fam: String, accent: Color, frame: String, look:
 	# talk opens the mouth). First resident: Faith the diner dog.
 	if String(ov.get("species", "")) == "dog":
 		_paint_dog(img, fam, frame, accent)
-		img.resize(_W * _SCALE, _H * _SCALE, Image.INTERPOLATE_NEAREST)
-		return ImageTexture.create_from_image(img)
+		return _finish(img)
 
 	var skin_dk: Color = skin.darkened(0.20)
 	var skin_dk2: Color = skin.darkened(0.34)
@@ -607,9 +606,56 @@ static func _build(key: String, fam: String, accent: Color, frame: String, look:
 					_put(img, x, y, hair if _hash01(x, y, h) > 0.12 else hair_dk)
 		_hspan(img, 26, 34, 33, hair_dk)
 
-	img.resize(_W * _SCALE, _H * _SCALE, Image.INTERPOLATE_NEAREST)
-	return ImageTexture.create_from_image(img)
+	return _finish(img)
 
+
+
+# ── Scale2x / EPX upscale (2026-08-04 · the de-blocking pass) ────
+# "Everything is still too blocky and primitive." The busts were
+# 60x64 pixels nearest-scaled 5x, so every art pixel rendered as a
+# 10px+ square. EPX is the era's own answer — the algorithm the
+# 90s used to double pixel art: each pixel becomes four, and a
+# corner copies its neighbor only when the two adjacent edges
+# agree, which turns staircases into clean diagonals WITHOUT
+# blurring flat areas. Two passes take the canvas to 240x256; the
+# final resize to slot size is then a 1.25x bilinear kiss instead
+# of a 5x nearest hammer. Deterministic, cached, and every consumer
+# (VN portraits, CP roster, dialogue busts) inherits it for free.
+static func _epx2x(src: Image) -> Image:
+	var w := src.get_width()
+	var h := src.get_height()
+	var dst := Image.create(w * 2, h * 2, false, Image.FORMAT_RGBA8)
+	for y in range(h):
+		for x in range(w):
+			var p := src.get_pixel(x, y)
+			var a := src.get_pixel(x, maxi(y - 1, 0))
+			var b := src.get_pixel(mini(x + 1, w - 1), y)
+			var c := src.get_pixel(maxi(x - 1, 0), y)
+			var d := src.get_pixel(x, mini(y + 1, h - 1))
+			var p1 := p
+			var p2 := p
+			var p3 := p
+			var p4 := p
+			if c == a and c != d and a != b:
+				p1 = a
+			if a == b and a != c and b != d:
+				p2 = b
+			if d == c and d != b and c != a:
+				p3 = c
+			if b == d and b != a and d != c:
+				p4 = d
+			dst.set_pixel(x * 2, y * 2, p1)
+			dst.set_pixel(x * 2 + 1, y * 2, p2)
+			dst.set_pixel(x * 2, y * 2 + 1, p3)
+			dst.set_pixel(x * 2 + 1, y * 2 + 1, p4)
+	return dst
+
+
+static func _finish(img: Image) -> ImageTexture:
+	img = _epx2x(img)
+	img = _epx2x(img)
+	img.resize(_W * _SCALE, _H * _SCALE, Image.INTERPOLATE_BILINEAR)
+	return ImageTexture.create_from_image(img)
 
 # ── dog bust (species: "dog") ────────────────────────────────────
 # White-coat dog in the same framing as the human bust: head high on

@@ -1589,12 +1589,20 @@ func _spawn_ghost(node: Control) -> void:
 	ghost.position = POSITIONS.get(pos, Vector2(490, 80)) + Vector2(40, 30)
 	ghost.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	add_child(ghost)
-	# fade IN as the live portrait fades OUT — they cross-fade
+	# Cross-fade in as the live portrait fades out, hold a beat,
+	# then FADE OUT AND FREE. The ghost used to fade in to 0.30
+	# alpha and stay until scene change — every mid-scene `hide`
+	# left a permanent grey glyph column at that slot ("an empty
+	# center portrait"). An after-image is a BEAT, not a resident.
 	var tw_g: Tween = ghost.create_tween()
-	tw_g.tween_property(ghost, "modulate:a", 0.30, 0.40)
-	# subtle slow drift upward
+	tw_g.tween_property(ghost, "modulate:a", 0.22, 0.40)
 	tw_g.parallel().tween_property(ghost, "position:y",
 		ghost.position.y - 8, 1.2)
+	tw_g.tween_interval(0.9)
+	tw_g.tween_property(ghost, "modulate:a", 0.0, 0.8)
+	tw_g.parallel().tween_property(ghost, "position:y",
+		ghost.position.y - 16, 0.8)
+	tw_g.tween_callback(ghost.queue_free)
 	_ghosts.append(ghost)
 
 
