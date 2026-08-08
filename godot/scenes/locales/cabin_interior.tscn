@@ -275,6 +275,27 @@ location_json = ""
 [node name="PDRiffrocker" type="Node" parent="."]
 script = ExtResource("13_riff")
 
+; ── vn_shot coverage (2026-08-04 directing pass) ────────
+; rotation B: from the kitchen corner looking back at the door and daybed — the reverse for doorway beats
+[node name="shot_establish_b" type="Marker3D" parent="." groups=["vn_shot"]]
+transform = Transform3D(-0.909065, 0, 0.416655, 0.0353811, 0.996388, 0.0771951, -0.41515, 0.084917, -0.905781, -2.2, 1.55, -4.9)
+metadata/fov = 56.0
+
+; rotation C: low past the daybed, across at the bed and basin — the morning axis
+[node name="shot_establish_c" type="Marker3D" parent="." groups=["vn_shot"]]
+transform = Transform3D(-0.129339, 0, 0.9916, 0.0639927, 0.997915, 0.00834688, -0.989533, 0.0645348, -0.12907, -2.5, 1.1, -2.4)
+metadata/fov = 52.0
+
+; insert: the phone table
+[node name="shot_insert_phone" type="Marker3D" parent="." groups=["vn_shot"]]
+transform = Transform3D(0.6, 0, -0.8, -0.328292, 0.911922, -0.246219, 0.729537, 0.410365, 0.547153, -1.8, 1.2, -4.7)
+metadata/fov = 36.0
+
+; insert: the cedar chest
+[node name="shot_insert_chest" type="Marker3D" parent="." groups=["vn_shot"]]
+transform = Transform3D(0.664364, 0, 0.747409, 0.286618, 0.923548, -0.254772, -0.690268, 0.383482, 0.613572, 1.6, 1, -2.7)
+metadata/fov = 38.0
+
 [node name="HUD" type="CanvasLayer" parent="." groups=["ui"]]
 layer = 100
 

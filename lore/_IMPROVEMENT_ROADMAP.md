@@ -45,7 +45,7 @@ Current ledger (draft counts are honest, not aspirational):
 | Northwind Harbor playability | 2 (onboarding pass) | Deck-verify the first five minutes actually teach; then mornings 2-6 pacing |
 | Slowstick manuals + packaging (NH = model) | 1 | era-voice + walkthrough sweep across ~20 sticks; box art after experiences are good (task #234) |
 | VN portrait busts (de-blocking · 2026-08-04) | 2 (EPX×2 + soft finish; hide-ghosts made ephemeral) | screenshot check vs the SVGA bar; if still chunky: raise the 60x64 base canvas itself (more shading ramps, finer features); dialogue-box busts + CP roster inherit automatically |
-| Scene direction · coverage rotation (2026-08-04) | 1 (rotation live; roads carry 4 setups each) | Deck screenshots of all 8 new setups; then the single-angle interiors get coverage: cabin_interior (29 uses/1 angle), lena_apartment (22/1), miller_back_porch (16/1), miller_kitchen, cosmic_comics ×2, missing_link_interior, maya/sam bedrooms, school_field, centro_grocery |
+| Scene direction · coverage rotation (2026-08-04) | 2 (rotation live; roads + cabin_interior + lena_apartment + miller_back_porch carry 4 setups each — 20 authored) | Deck screenshots of all 8 new setups; then the single-angle interiors get coverage: cabin_interior (29 uses/1 angle), lena_apartment (22/1), miller_back_porch (16/1), miller_kitchen, cosmic_comics ×2, missing_link_interior, maya/sam bedrooms, school_field, centro_grocery |
 | Model chapters (diner, kwik stop, cathedral, henderson) | many | the BAR — mine them for what a finished space has |
 
 ### Workstream · THE STUMP HUNT (2026-08-04)
