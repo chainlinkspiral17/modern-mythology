@@ -405,6 +405,10 @@ func _open_music() -> void:
 
 func _load_scene(scene_id: String, start_at: int = 0) -> void:
 	_scene_id   = scene_id
+	# Coverage rotation: the director assigns each chapter its
+	# establish angle from this key (see VnDirector._rotation_marker).
+	if _director != null:
+		_director.set("scene_key", scene_id)
 	_node_idx   = start_at
 	_scene_data = SceneDataDB.get_scene(scene_id)
 	if _scene_data.is_empty():

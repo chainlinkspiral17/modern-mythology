@@ -40,6 +40,16 @@ const DRIFT_MIN_RATIO := 0.86
 # Default FOV per shot type when the marker carries no metadata/fov.
 const TYPE_FOV := {"closeup": 45.0, "insert": 35.0}
 
+# ── Coverage rotation (2026-08-04, "directing the scenes") ──────
+# A locale like louisiana_road appears in 37 scenes through ONE
+# photograph: every [shot:establish] is the same frame. When a
+# locale authors shot_establish_b / _c / _d markers, the director
+# picks ONE per chapter (hash of the scene key) — a chapter holds
+# its angle consistently, but across the volume the same road is
+# seen from different setups. Zero scene-JSON edits; locales opt in
+# simply by carrying the extra markers.
+var scene_key: String = ""
+
 var _bg3d: Node = null              # Background3D (SubViewportContainer)
 var _bar_top: ColorRect = null
 var _bar_bottom: ColorRect = null
@@ -220,6 +230,24 @@ func _try_apply_ops() -> void:
 
 
 # ── Shots ─────────────────────────────────────────────────────────
+func _rotation_marker() -> Node3D:
+	if _bg3d == null or not _bg3d.has_method("find_shot_marker"):
+		return null
+	# Variant 0 is ALWAYS the locale's default view — the authored
+	# shot_establish marker if present, else null meaning "the
+	# Background3D preset vantage". Alternates extend the deck; they
+	# never evict the original framing from rotation.
+	var variants: Array = [_bg3d.find_shot_marker("shot_establish")]
+	for suffix in ["b", "c", "d", "e"]:
+		var m: Node3D = _bg3d.find_shot_marker("shot_establish_" + suffix)
+		if m != null:
+			variants.append(m)
+	if variants.size() <= 1 or scene_key == "":
+		return variants[0]
+	var idx: int = posmod(scene_key.hash(), variants.size())
+	return variants[idx]
+
+
 func apply_shot(spec: String) -> void:
 	_pending_shot = spec.strip_edges()
 	_pending_frames = 0
@@ -255,6 +283,13 @@ func _try_apply_shot() -> void:
 	var marker: Node3D = null
 	if _bg3d.has_method("find_shot_marker"):
 		marker = _bg3d.find_shot_marker(marker_name)
+
+	if shot_type == "establish" and shot_id == "":
+		# Coverage rotation: prefer this chapter's assigned variant
+		# when the locale authors alternates.
+		var rot := _rotation_marker()
+		if rot != null:
+			marker = rot
 
 	if shot_type == "establish":
 		_set_letterbox(false)

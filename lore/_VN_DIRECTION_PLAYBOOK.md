@@ -158,6 +158,34 @@ no-op (fallback discipline — a script must never crash the reader).
 
 ## Recent lessons
 
+### 2026-08-04 · coverage rotation + the roads get real setups
+
+- **A locale used 37 times through one photograph is not directed.**
+  The usage/coverage table (scene bg refs vs presets) found
+  louisiana_road at 37 uses / 1 angle and cabin_road at 36 / 1 —
+  73 appearances from two frames. Track this ratio; it is the
+  production number that matters.
+- **Coverage rotation**: when a locale authors shot_establish_b/_c
+  (…_e) markers, VnDirector picks ONE per chapter (hash of the
+  scene id set by GameEngine._load_scene). A chapter holds its
+  angle; across a volume the same road is seen from different
+  setups. Zero scene-JSON edits — locales opt in by carrying
+  markers. Variant 0 is always the default view (authored
+  shot_establish, else the preset vantage): alternates extend the
+  deck, never evict the original.
+- **Compute framings from the builder's coordinates, not by eye.**
+  Camera positions/targets in blender frame; yaw = atan2(-dx, dy),
+  pitch = atan2(dz, ground distance); blender→godot origin is
+  (x, z, -y); the basis serializes as Ry(yaw)·Rx(pitch) columns —
+  validated against harmony_terrain's hand-tuned markers.
+- **The setups are drafts until screenshotted.** Eight markers
+  authored blind from geometry (verge, long-lens approach, sedan
+  insert, swamp wide; the bend reverse, creekside, mile-marker and
+  creek-stone inserts). The framing MATH is verified; the framing
+  TASTE needs the Deck.
+
+
+
 ### 2026-07-22 · choice plates · the turning points get the register
 
 - **Eight choices across vols 5-7 — each one a chapter-grade moment
