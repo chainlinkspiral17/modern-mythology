@@ -158,10 +158,13 @@ def build_oaks_and_moss():
     # 3 oaks scattered through the rows
     for oi, (ox, oy) in enumerate([(-8.5, -8.0), (+8.5, +6.0), (-3.0, +8.0)]):
         make_cyl(f"Oak_{oi}_Trunk", (ox, oy, 2.50), 0.40, 5.00, COL_OAK_TRUNK, segments=10)
+        # 2026-08-04: foliage was three flat discs. Blob lobes now.
+        from _props.geometry import make_blob
         for fi, (fdx, fdy, fdz) in enumerate([(0.0, 0.0, 5.50), (0.6, 0.3, 5.80),
                                                 (-0.4, -0.5, 5.60)]):
-            make_cyl(f"Oak_{oi}_Foliage_{fi}", (ox+fdx, oy+fdy, fdz),
-                     1.40, 1.20, COL_OAK_FOLIAGE, segments=10)
+            make_blob(f"Oak_{oi}_Foliage_{fi}", (ox+fdx, oy+fdy, fdz),
+                      1.55, COL_OAK_FOLIAGE, noise=0.20,
+                      seed=oi * 31 + fi, squash=0.78)
     # Moss patches on a few vault caps
     for mi, (mx, my) in enumerate([(-5.0, +1.5), (+7.0, -3.5), (-7.0, +5.5)]):
         make_box(f"Moss_{mi}", (mx, my, 1.36), (1.10, 0.70, 0.04), COL_MOSS)

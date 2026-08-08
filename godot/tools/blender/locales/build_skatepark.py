@@ -102,9 +102,10 @@ def build_backdrop():
     spots = [(-10.0, 14.5), (-5.0, 15.5), (0.5, 14.8), (6.0, 15.2), (10.5, 14.3)]
     for i, (px, py) in enumerate(spots):
         h = 4.2 + 1.0 * ((i * 3) % 3)
-        make_cyl(f"Tree_{i}_Trunk", (px, py, h * 0.22), 0.18, h * 0.44, COL_TRUNK, segments=6)
+        # 2026-08-04: crown was a BOX. Real broadleaf silhouette now.
+        from _props.trees import make_broadleaf
         col = COL_LEAF if i % 2 == 0 else COL_LEAF_LT
-        make_box(f"Tree_{i}_Crown", (px, py, h * 0.68), (2.6, 2.4, h * 0.55), col)
+        make_broadleaf(f"Tree_{i}", px, py, h, col, COL_TRUNK)
     # (occluder slab deleted 2026-08-04 — a paper-thin wall 20m out
     # hiding the real receding bands built behind it)
 

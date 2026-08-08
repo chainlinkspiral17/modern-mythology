@@ -220,6 +220,18 @@ Rollout rule: NEW geometry uses this vocabulary from day one.
 Existing builders convert opportunistically — hero objects and
 anything within ~10m of a camera preset first.
 
+Conversion ledger (2026-08-04, wave 1): cabin_road conifers (were
+stacked cubes) · louisiana cypress (layer-cake discs) · skatepark
+box crowns · solenade_garden's great oak (disc stack) ·
+parish_cemetery oaks · kowalski_backyard canopy — all real
+silhouettes now. kowalski_backyard + henderson_porch_front houses
+were ROOFLESS BILLBOARDS (a 0.3m siding slab against the sky):
+both carry a make_gable roof + eave fascia now. harmony_terrain
+and riverfront were already fine — they'd hand-rolled LOCAL sphere
+helpers because the shared module lacked one, which was this whole
+problem in miniature. Still to convert: their local helpers should
+be retired onto _props.geometry in a later pass.
+
 
 
 The project's lowpoly aesthetic looks like Atari 2600 if everything is

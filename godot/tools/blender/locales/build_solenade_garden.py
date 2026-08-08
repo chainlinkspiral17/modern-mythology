@@ -72,11 +72,17 @@ def build_central_oak():
     # Branching foliage (5 clusters)
     foliage_positions = [(0.0, 0.0, 6.50), (1.50, 0.50, 6.80), (-1.20, 1.40, 6.60),
                           (0.80, -1.80, 6.40), (-1.80, -1.00, 6.70)]
+    # 2026-08-04: the great oak's crown was stacked DISCS (layer
+    # cake). Two-tone blob lobes now — dark mass below, lit cap
+    # above, same positions.
+    from _props.geometry import make_blob
     for fi, (fx, fy, fz) in enumerate(foliage_positions):
-        # Lower (darker) hemisphere
-        make_cyl(f"Oak_Foliage_Lo_{fi}", (fx, fy, fz), 2.20, 1.60, COL_OAK_FOLIAGE_LO, segments=12)
-        # Upper (brighter) cap
-        make_cyl(f"Oak_Foliage_Hi_{fi}", (fx, fy, fz + 1.20), 1.80, 1.40, COL_OAK_FOLIAGE_HI, segments=12)
+        make_blob(f"Oak_Foliage_Lo_{fi}", (fx, fy, fz), 2.30,
+                  COL_OAK_FOLIAGE_LO, noise=0.18, seed=41 + fi,
+                  squash=0.72)
+        make_blob(f"Oak_Foliage_Hi_{fi}", (fx, fy, fz + 1.30), 1.70,
+                  COL_OAK_FOLIAGE_HI, noise=0.22, seed=97 + fi,
+                  squash=0.80)
 
 
 def build_sundial():

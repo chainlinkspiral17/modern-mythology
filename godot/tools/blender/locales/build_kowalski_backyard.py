@@ -71,6 +71,17 @@ def build_house_back():
     """The back of the house: siding wall, sliding glass door onto
     the patio, kitchen window, gutter + eave line."""
     make_box("House_Wall", (0.0, -0.15, HOUSE_H / 2.0), (YARD_W, 0.3, HOUSE_H), COL_SIDING)
+    # 2026-08-04: the house was a ROOFLESS BILLBOARD — a 0.3m siding
+    # slab whose top edge cut raw against the sky. A real gable now
+    # rises behind the wall (ridge along X, slight overhang) with an
+    # eave fascia where roof meets siding, so the top of frame reads
+    # as a house instead of a stage flat.
+    from _props.geometry import make_gable
+    make_gable("House_Roof", (0.0, -2.6, HOUSE_H + 1.1),
+               (YARD_W + 0.8, 5.6, 2.2), (0.30, 0.26, 0.23, 1.0),
+               ridge_axis='X')
+    make_box("House_Eave", (0.0, -0.02, HOUSE_H + 0.06),
+             (YARD_W + 0.6, 0.34, 0.16), (0.24, 0.21, 0.19, 1.0))
     # Siding lap lines
     for k in range(6):
         make_box(f"Siding_Line_{k}", (0.0, 0.02, 0.35 + k * 0.45), (YARD_W - 0.2, 0.02, 0.03),
@@ -115,9 +126,15 @@ def build_fence_and_tree():
     tx, ty = 3.4, 6.6
     make_cyl("Tree_Trunk", (tx, ty, 1.3), 0.28, 2.6, COL_TRUNK, segments=10)
     make_cyl("Tree_Branch", (tx - 0.7, ty, 2.45), 0.10, 1.5, COL_TRUNK, segments=7, axis='X')
-    make_cyl("Tree_Canopy_A", (tx, ty, 3.3), 1.9, 1.4, COL_CANOPY, segments=12)
-    make_cyl("Tree_Canopy_B", (tx - 0.9, ty + 0.4, 2.9), 1.2, 1.0, COL_CANOPY_LT, segments=10)
-    make_cyl("Tree_Canopy_C", (tx + 0.8, ty - 0.5, 3.0), 1.1, 1.0, COL_CANOPY_LT, segments=10)
+    # 2026-08-04: canopy was three cylinders. Blob lobes now — the
+    # branch and the tire swing keep their exact geometry.
+    from _props.geometry import make_blob
+    make_blob("Tree_Canopy_A", (tx, ty, 3.4), 1.95, COL_CANOPY,
+              noise=0.20, seed=11, squash=0.80)
+    make_blob("Tree_Canopy_B", (tx - 0.9, ty + 0.4, 2.9), 1.25,
+              COL_CANOPY_LT, noise=0.22, seed=23, squash=0.85)
+    make_blob("Tree_Canopy_C", (tx + 0.8, ty - 0.5, 3.0), 1.15,
+              COL_CANOPY_LT, noise=0.22, seed=37, squash=0.85)
     # Tire swing on the branch
     make_box("Swing_Rope", (tx - 1.25, ty, 1.75), (0.03, 0.03, 1.4), (0.62, 0.56, 0.42, 1.0))
     make_cyl("Swing_Tire", (tx - 1.25, ty, 1.0), 0.30, 0.16, COL_TIRE, segments=14, axis='Y')

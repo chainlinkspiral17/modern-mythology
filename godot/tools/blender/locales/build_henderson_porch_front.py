@@ -67,6 +67,17 @@ def build_ground():
 def build_house():
     """Front elevation: mostly dark. One warm window."""
     make_box("House_Wall", (0.0, -0.15, HOUSE_H / 2.0), (YARD_W - 1.0, 0.3, HOUSE_H), COL_SIDING)
+    # 2026-08-04: the house was a ROOFLESS BILLBOARD — a 0.3m siding
+    # slab whose top edge cut raw against the sky. A real gable now
+    # rises behind the wall (ridge along X, slight overhang) with an
+    # eave fascia where roof meets siding, so the top of frame reads
+    # as a house instead of a stage flat.
+    from _props.geometry import make_gable
+    make_gable("House_Roof", (0.0, -2.6, HOUSE_H + 1.1),
+               ((YARD_W - 1.0) + 0.8, 5.6, 2.2), (0.30, 0.26, 0.23, 1.0),
+               ridge_axis='X')
+    make_box("House_Eave", (0.0, -0.02, HOUSE_H + 0.06),
+             ((YARD_W - 1.0) + 0.6, 0.34, 0.16), (0.24, 0.21, 0.19, 1.0))
     for k in range(6):
         make_box(f"Siding_Line_{k}", (0.0, 0.02, 0.4 + k * 0.5), (YARD_W - 1.2, 0.02, 0.03),
                  COL_SIDING_DK)
