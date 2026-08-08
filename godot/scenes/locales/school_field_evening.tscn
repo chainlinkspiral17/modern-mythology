@@ -334,20 +334,24 @@ script = ExtResource("14_dbgm")
 ; ── vn_shot coverage (2026-08-08 directing pass 3) ────────
 ; rotation B: from the top bleacher bench looking across the field to the visitor bench
 [node name="shot_establish_b" type="Marker3D" parent="." groups=["vn_shot"]]
-transform = Transform3D(-0.0550346, 0.15131, -0.986953, 0, 0.988451, 0.15154, 0.998484, 0.00833994, -0.054399, -16.4, 4.6, -7)
+position = Vector3(-16.4, 4.6, -7)
+rotation = Vector3(-0.152126, -1.62586, 0)
 metadata/fov = 58.0
 
 ; rotation C: from under the scoreboard looking south down the field through the goalposts
 [node name="shot_establish_c" type="Marker3D" parent="." groups=["vn_shot"]]
-transform = Transform3D(-1, -2.5867e-18, -1.22437e-16, 0, 0.999777, -0.021122, 1.22465e-16, -0.021122, -0.999777, 0, 2.2, -15.4)
+position = Vector3(0, 2.2, -15.4)
+rotation = Vector3(0.0211236, -3.14159, 0)
 metadata/fov = 56.0
 
 ; insert: the scoreboard panel
 [node name="shot_insert_scoreboard" type="Marker3D" parent="." groups=["vn_shot"]]
-transform = Transform3D(1, -0, -0, 0, 0.923077, -0.384615, 0, 0.384615, 0.923077, 0, 3, -12.4)
+position = Vector3(0, 3, -12.4)
+rotation = Vector3(0.394791, 0, 0)
 metadata/fov = 44.0
 
 ; insert: the fans in the stands
 [node name="shot_insert_bleachers" type="Marker3D" parent="." groups=["vn_shot"]]
-transform = Transform3D(0.742268, 0.0687186, 0.66657, 0, 0.994728, -0.102549, -0.670103, 0.076119, 0.738355, -9.6, 1.4, -4.8)
+position = Vector3(-9.6, 1.4, -4.8)
+rotation = Vector3(0.10273, 0.734348, 0)
 metadata/fov = 46.0

@@ -419,3 +419,16 @@ metadata/fov = 45.0
 position = Vector3(5.5, 1.72, -4.4)
 rotation = Vector3(0.0, 1.97, 0.0)
 metadata/fov = 45.0
+
+; ── vn_shot coverage (2026-08-08 directing pass 4) ────────
+; rotation B: customer POV from the door - aisles right, counter and register ahead
+[node name="shot_establish_b" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(-0.9, 1.6, -1.1)
+rotation = Vector3(-0.0871245, -1.21388, 0)
+metadata/fov = 58.0
+
+; rotation C: from the coffee station looking east across the aisles to the counter
+[node name="shot_establish_c" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(-4.4, 1.55, -5.8)
+rotation = Vector3(-0.0578942, -1.70822, 0)
+metadata/fov = 56.0

@@ -299,3 +299,28 @@ offset_top = 360.0
 offset_right = 520.0
 offset_bottom = 980.0
 script = ExtResource("14_dbgm")
+
+; ── vn_shot coverage (2026-08-08 directing pass 4) ────────
+; rotation B: from the sink to the BASEMENT DOOR and fridge
+[node name="shot_establish_b" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(-1.4, 1.55, -4.2)
+rotation = Vector3(-0.110129, -2.09742, 0)
+metadata/fov = 56.0
+
+; rotation C: from the hall door north over the table to the stove run
+[node name="shot_establish_c" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(-0.6, 1.5, -0.7)
+rotation = Vector3(-0.160303, -0.244979, 0)
+metadata/fov = 54.0
+
+; insert: the basement door
+[node name="shot_insert_basement" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(1.7, 1.4, -2.6)
+rotation = Vector3(-0.193498, -2.16501, 0)
+metadata/fov = 42.0
+
+; insert: the place settings
+[node name="shot_insert_table" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(0, 1.35, -1.5)
+rotation = Vector3(-0.411631, 0.345556, 0)
+metadata/fov = 42.0

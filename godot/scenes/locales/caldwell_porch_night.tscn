@@ -299,3 +299,28 @@ offset_top = 360.0
 offset_right = 520.0
 offset_bottom = 980.0
 script = ExtResource("14_dbgm")
+
+; ── vn_shot coverage (2026-08-08 directing pass 4) ────────
+; rotation B: from the porch edge back at the screen door and lamp
+[node name="shot_establish_b" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(-0.4, 1.5, -2.9)
+rotation = Vector3(-0.109472, -2.99451, 0)
+metadata/fov = 56.0
+
+; rotation C: along the porch from the bike end to the rockers
+[node name="shot_establish_c" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(2.7, 1.45, -1.3)
+rotation = Vector3(-0.173651, 1.38257, 0)
+metadata/fov = 54.0
+
+; insert: the iced tea and folded paper on the side table
+[node name="shot_insert_tea" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(0.6, 1.1, -1.4)
+rotation = Vector3(-0.549797, 0.785398, 0)
+metadata/fov = 42.0
+
+; insert: Maya's bike at the porch steps
+[node name="shot_insert_bike" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(2, 1.1, -1.4)
+rotation = Vector3(-0.375806, -2.33294, 0)
+metadata/fov = 44.0

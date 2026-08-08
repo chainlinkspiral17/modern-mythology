@@ -338,30 +338,36 @@ script = ExtResource("14_dbgm")
 
 ; in the door: shelf aisle to the counter
 [node name="shot_establish_shop" type="Marker3D" parent="." groups=["vn_shot"]]
-transform = Transform3D(0.581683, 0.032528, -0.812765, 0, 0.9992, 0.039989, 0.813416, -0.023261, 0.581218, -2.2, 1.7, -0.7)
+position = Vector3(-2.2, 1.7, -0.7)
+rotation = Vector3(-0.0399997, -0.95, 0)
 metadata/fov = 62.0
 
 ; the ledger, the slow terminal, the hold shelf
 [node name="shot_closeup_counter" type="Marker3D" parent="." groups=["vn_shot"]]
-transform = Transform3D(0.50622, 0.051713, -0.860852, 0, 0.998201, 0.059964, 0.862404, -0.030355, 0.505309, 0.9, 1.4, -1.6)
+position = Vector3(0.9, 1.4, -1.6)
+rotation = Vector3(-0.06, -1.04, 0)
 metadata/fov = 45.0
 
 ; cat, table, kettle — the vol7 mornings
 [node name="shot_wide_kitchenette" type="Marker3D" parent="." groups=["vn_shot"]]
-transform = Transform3D(0.514819, -0.042847, 0.856228, 0, 0.99875, 0.049979, -0.857299, -0.02573, 0.514175, 0.5, 1.55, -6.4)
+position = Vector3(0.5, 1.55, -6.4)
+rotation = Vector3(-0.0499998, 1.03, 0)
 metadata/fov = 60.0
 
 ; the old cat asleep on its chair
 [node name="shot_closeup_cat" type="Marker3D" parent="." groups=["vn_shot"]]
-transform = Transform3D(1, 0, 0, 0, 0.913089, 0.40776, 0, -0.40776, 0.913089, -0.5, 1.1, -5.6)
+position = Vector3(-0.5, 1.1, -5.6)
+rotation = Vector3(-0.42, 0, 0)
 metadata/fov = 40.0
 
 ; back door, dumpster, the mural wall
 [node name="shot_wide_alley" type="Marker3D" parent="." groups=["vn_shot"]]
-transform = Transform3D(0.836463, -0.01096, 0.547914, 0, 0.9998, 0.019999, -0.548024, -0.016728, 0.836295, 0.8, 1.6, -9.5)
+position = Vector3(0.8, 1.6, -9.5)
+rotation = Vector3(-0.0200003, 0.58, 0)
 metadata/fov = 58.0
 
 ; the painted face, hair to waist height (ch14)
 [node name="shot_closeup_face" type="Marker3D" parent="." groups=["vn_shot"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.8, 1.6, -10.2)
+position = Vector3(-0.8, 1.6, -10.2)
+rotation = Vector3(0, 0, 0)
 metadata/fov = 42.0

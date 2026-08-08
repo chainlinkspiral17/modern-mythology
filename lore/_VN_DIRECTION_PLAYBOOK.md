@@ -193,6 +193,33 @@ no-op (fallback discipline — a script must never crash the reader).
   hand-authored markers; keep matrices only for generator output
   (where the validator runs).
 
+### 2026-08-08 · pass 4 · the 7-9-use tier + everything goes euler
+
+- **All 81 matrix-form markers converted to `position` + `rotation`
+  euler in place** (pitch = atan2(−f5, f4), yaw = atan2(−f6, f0) from
+  the row-major floats; rotation = Vector3(pitch, yaw, 0), YXZ
+  order). The generator now emits euler directly. There is no longer
+  ANY matrix-form vn_shot marker in the repo — the convention trap
+  from the lesson above cannot recur.
+- **Pass-4 decks (34 markers)**: kwik_stop (B/C only — its
+  model-chapter inserts already existed), missing_link_exterior,
+  grandmother_kitchen_morning, kowalski_kitchen, henderson_kitchen
+  (insert = THE BASEMENT DOOR), caldwell_porch_night (inserts = iced
+  tea + Maya's bike), hans_bakery_back_kitchen, finn_apartment
+  (insert = the packed duffel), board_lords_interior. 22 locales
+  carry decks; 86 authored setups.
+- **A deck is shared by every preset that lives in the scene.**
+  missing_link_exterior.tscn hosts two presets (missing_link_exterior
+  + shuttle_bench); one deck serves both, so design its B/C to read
+  as the LOCATION, not as one preset's reverse. Check
+  Background3D for co-tenant presets before designing a deck.
+- **Hand-rolled early builders are invisible to the landmark
+  extractor** (kwik_stop vendors its own make_box, never touches
+  _props) — the audit records nothing, so collision-checks silently
+  pass. When the extractor returns no boxes, say so in the check
+  output and place cameras from the builder's layout comments
+  instead of trusting the empty result.
+
 ### 2026-08-08 · directing pass 3 · the next eight get their decks
 
 - miller_kitchen, cosmic_comics ×2, missing_link_interior, maya/sam

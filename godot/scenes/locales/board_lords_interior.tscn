@@ -299,3 +299,28 @@ offset_top = 360.0
 offset_right = 520.0
 offset_bottom = 980.0
 script = ExtResource("14_dbgm")
+
+; ── vn_shot coverage (2026-08-08 directing pass 4) ────────
+; rotation B: from the repair bench south past the deck wall to the front door
+[node name="shot_establish_b" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(0.4, 1.6, -5.2)
+rotation = Vector3(-0.162806, 2.80686, 0)
+metadata/fov = 56.0
+
+; rotation C: from the wait bench north to the repair bench and Devon's office
+[node name="shot_establish_c" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(-2.6, 1.5, -1.1)
+rotation = Vector3(-0.0964613, -0.659629, 0)
+metadata/fov = 56.0
+
+; insert: the deck display wall
+[node name="shot_insert_deckwall" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(-2.9, 1.5, -3.8)
+rotation = Vector3(-0.165149, 1.5708, 0)
+metadata/fov = 42.0
+
+; insert: the lathe on the repair bench
+[node name="shot_insert_lathe" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(-1.4, 1.35, -5.5)
+rotation = Vector3(-0.201245, 0.954499, 0)
+metadata/fov = 42.0

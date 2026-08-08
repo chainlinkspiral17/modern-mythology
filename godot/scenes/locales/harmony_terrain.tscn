@@ -368,25 +368,30 @@ script = ExtResource("14_dbgm")
 
 ; long lens down the vanishing point
 [node name="shot_establish_hwy_long" type="Marker3D" parent="." groups=["vn_shot"]]
-transform = Transform3D(1, 0, 0, 0, 0.99995, 0.01, 0, -0.01, 0.99995, -510, -0.2, -40)
+position = Vector3(-510, -0.2, -40)
+rotation = Vector3(-0.0100002, 0, 0)
 metadata/fov = 30.0
 
 ; low wide from the E shoulder, scar ahead
 [node name="shot_wide_hwy_shoulder" type="Marker3D" parent="." groups=["vn_shot"]]
-transform = Transform3D(0.9998, -0.0004, 0.019995, 0, 0.9998, 0.019999, -0.019999, -0.019995, 0.9996, -498, -1, -185)
+position = Vector3(-498, -1, -185)
+rotation = Vector3(-0.0200003, 0.0200003, 0)
 metadata/fov = 68.0
 
 ; overpass high angle looking S
 [node name="shot_high_hwy_overpass" type="Marker3D" parent="." groups=["vn_shot"]]
-transform = Transform3D(-1, -0, 0, 0, 0.996802, 0.079915, -0, 0.079915, -0.996802, -510, 5.1, -296)
+position = Vector3(-510, 5.1, -296)
+rotation = Vector3(-0.0800003, 3.14159, 0)
 metadata/fov = 50.0
 
 ; the deformed rail + debris fan
 [node name="shot_closeup_hwy_scar" type="Marker3D" parent="." groups=["vn_shot"]]
-transform = Transform3D(0.841901, 0.032358, -0.538661, 0, 0.998201, 0.059964, 0.539632, -0.050484, 0.840386, -502.5, -0.6, -206)
+position = Vector3(-502.5, -0.6, -206)
+rotation = Vector3(-0.06, -0.57, 0)
 metadata/fov = 55.0
 
 ; the rest turnout + semi
 [node name="shot_wide_hwy_turnout" type="Marker3D" parent="." groups=["vn_shot"]]
-transform = Transform3D(0.783822, -0.012419, 0.620862, 0, 0.9998, 0.019999, -0.620986, -0.015675, 0.783665, -519, -0.5, 350)
+position = Vector3(-519, -0.5, 350)
+rotation = Vector3(-0.0200003, 0.67, 0)
 metadata/fov = 58.0

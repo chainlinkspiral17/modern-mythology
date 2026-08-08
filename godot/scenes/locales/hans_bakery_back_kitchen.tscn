@@ -300,3 +300,28 @@ offset_top = 360.0
 offset_right = 520.0
 offset_bottom = 980.0
 script = ExtResource("14_dbgm")
+
+; ── vn_shot coverage (2026-08-08 directing pass 4) ────────
+; rotation B: from the oven end looking south down the communal table
+[node name="shot_establish_b" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(0.35, 1.6, -4.4)
+rotation = Vector3(-0.217675, 3.04468, 0)
+metadata/fov = 56.0
+
+; rotation C: from the prep corner to the oven and proofer
+[node name="shot_establish_c" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(-2.2, 1.55, -1.2)
+rotation = Vector3(-0.0979306, -0.940395, 0)
+metadata/fov = 58.0
+
+; insert: the brotchen basket on the communal table
+[node name="shot_insert_brotchen" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(0.7, 1.2, -1.5)
+rotation = Vector3(-0.362822, 0.86217, 0)
+metadata/fov = 42.0
+
+; insert: the stand mixer
+[node name="shot_insert_mixer" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(-1.5, 1.35, -3.3)
+rotation = Vector3(-0.0470014, 0.851966, 0)
+metadata/fov = 42.0

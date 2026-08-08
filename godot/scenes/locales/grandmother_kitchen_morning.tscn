@@ -299,3 +299,28 @@ offset_top = 360.0
 offset_right = 520.0
 offset_bottom = 980.0
 script = ExtResource("14_dbgm")
+
+; ── vn_shot coverage (2026-08-08 directing pass 4) ────────
+; rotation B: from the porch door looking across the table to the sink window
+[node name="shot_establish_b" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(2.1, 1.55, -1)
+rotation = Vector3(-0.146891, 0.849825, 0)
+metadata/fov = 56.0
+
+; rotation C: from the sink looking back over the table to the stairs and porch door
+[node name="shot_establish_c" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(-1.4, 1.5, -4.4)
+rotation = Vector3(-0.189781, -2.54539, 0)
+metadata/fov = 54.0
+
+; insert: the pie and fruit bowl on the little table
+[node name="shot_insert_pie" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(0.6, 1.15, -1.9)
+rotation = Vector3(-0.350704, 0.915101, 0)
+metadata/fov = 42.0
+
+; insert: the kitchen radio on the window sill
+[node name="shot_insert_radio" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(-1.1, 1.25, -4.1)
+rotation = Vector3(-0.135259, 0.748378, 0)
+metadata/fov = 40.0

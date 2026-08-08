@@ -312,20 +312,24 @@ script = ExtResource("14_dbgm")
 ; ── vn_shot coverage (2026-08-08 directing pass 3) ────────
 ; rotation B: from the frozen bank looking down the aisle to the register cubby
 [node name="shot_establish_b" type="Marker3D" parent="." groups=["vn_shot"]]
-transform = Transform3D(-0.643762, 0.0785879, -0.76118, 0, 0.994712, 0.102699, 0.765226, 0.0661136, -0.640358, -3.4, 1.7, -6.9)
+position = Vector3(-3.4, 1.7, -6.9)
+rotation = Vector3(-0.10288, -2.2702, 0)
 metadata/fov = 58.0
 
 ; rotation C: from the produce corner diagonally to the meat case
 [node name="shot_establish_c" type="Marker3D" parent="." groups=["vn_shot"]]
-transform = Transform3D(0.587512, 0.0581559, -0.807123, 0, 0.997414, 0.0718671, 0.809215, -0.0422228, 0.585993, -3.4, 1.6, -1.1)
+position = Vector3(-3.4, 1.6, -1.1)
+rotation = Vector3(-0.0719291, -0.942815, 0)
 metadata/fov = 60.0
 
 ; insert: the produce tiers
 [node name="shot_insert_produce" type="Marker3D" parent="." groups=["vn_shot"]]
-transform = Transform3D(-0.106533, -0.442641, 0.890348, 0, 0.895444, 0.445174, -0.994309, 0.0474258, -0.0953945, -2.2, 1.4, -2.5)
+position = Vector3(-2.2, 1.4, -2.5)
+rotation = Vector3(-0.461369, 1.67753, 0)
 metadata/fov = 42.0
 
 ; insert: the meat case glass
 [node name="shot_insert_meatcase" type="Marker3D" parent="." groups=["vn_shot"]]
-transform = Transform3D(6.12323e-17, 0.351123, -0.936329, 0, 0.936329, 0.351123, 1, -2.15001e-17, 5.73336e-17, 2.7, 1.45, -6.6)
+position = Vector3(2.7, 1.45, -6.6)
+rotation = Vector3(-0.35877, -1.5708, 0)
 metadata/fov = 40.0

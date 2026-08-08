@@ -340,3 +340,28 @@ offset_top = 360.0
 offset_right = 520.0
 offset_bottom = 980.0
 script = ExtResource("14_dbgm")
+
+; ── vn_shot coverage (2026-08-08 directing pass 4) ────────
+; rotation B: from across the road - the whole stop: diner, pumps, sign, bench
+[node name="shot_establish_b" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(2, 1.7, 1.5)
+rotation = Vector3(-0.0217537, 0.390607, 0)
+metadata/fov = 62.0
+
+; rotation C: along the shuttle bench under the awning, west to the pumps and the truck
+[node name="shot_establish_c" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(7.6, 1.5, -7.3)
+rotation = Vector3(-0.0273508, 1.74494, 0)
+metadata/fov = 56.0
+
+; insert: the road sign against the sky
+[node name="shot_insert_sign" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(-4.6, 1.6, -3.5)
+rotation = Vector3(0.71065, 0.555656, 0)
+metadata/fov = 44.0
+
+; insert: the shuttle bench
+[node name="shot_insert_bench" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(4, 1.3, -4.9)
+rotation = Vector3(-0.183222, -0.569313, 0)
+metadata/fov = 44.0

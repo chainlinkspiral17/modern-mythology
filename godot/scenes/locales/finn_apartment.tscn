@@ -299,3 +299,28 @@ offset_top = 360.0
 offset_right = 520.0
 offset_bottom = 980.0
 script = ExtResource("14_dbgm")
+
+; ── vn_shot coverage (2026-08-08 directing pass 4) ────────
+; rotation B: from the partition gap south to the kitchen table, desk and window
+[node name="shot_establish_b" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(1.45, 1.5, -2.6)
+rotation = Vector3(-0.320315, 2.50757, 0)
+metadata/fov = 56.0
+
+; rotation C: from the kitchen counter over the table to the bed nook
+[node name="shot_establish_c" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(-1.7, 1.5, -0.9)
+rotation = Vector3(-0.206461, -0.679414, 0)
+metadata/fov = 54.0
+
+; insert: the packed duffel by the door
+[node name="shot_insert_duffel" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(1, 0.95, -1)
+rotation = Vector3(-0.594325, -2.0577, 0)
+metadata/fov = 44.0
+
+; insert: the clock on the nightstand
+[node name="shot_insert_nightstand" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(1.42, 1.1, -3.35)
+rotation = Vector3(-0.551655, 1.17601, 0)
+metadata/fov = 42.0

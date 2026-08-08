@@ -319,20 +319,24 @@ script = ExtResource("14_dbgm")
 ; ── vn_shot coverage (2026-08-08 directing pass 3) ────────
 ; rotation B: register POV down the longbox bins to the front door
 [node name="shot_establish_b" type="Marker3D" parent="." groups=["vn_shot"]]
-transform = Transform3D(-0.83205, -0.103897, 0.544883, 0, 0.982302, 0.187304, -0.5547, 0.155846, -0.817325, 2.6, 1.7, -6.6)
+position = Vector3(2.6, 1.7, -6.6)
+rotation = Vector3(-0.188417, 2.55359, 0)
 metadata/fov = 58.0
 
 ; rotation C: from the YA shelf corner up the store to the register and manga wall
 [node name="shot_establish_c" type="Marker3D" parent="." groups=["vn_shot"]]
-transform = Transform3D(0.642612, 0.0472526, -0.764733, 0, 0.998096, 0.061672, 0.766192, -0.0396312, 0.641389, -3.8, 1.6, -1.2)
+position = Vector3(-3.8, 1.6, -1.2)
+rotation = Vector3(-0.0617112, -0.872894, 0)
 metadata/fov = 60.0
 
 ; insert: the glass grail tower by the entrance
 [node name="shot_insert_tower" type="Marker3D" parent="." groups=["vn_shot"]]
-transform = Transform3D(-0.066519, -0.25656, 0.964237, 0, 0.966377, 0.25713, -0.997785, 0.017104, -0.0642824, 1.5, 1.55, -1.4)
+position = Vector3(1.5, 1.55, -1.4)
+rotation = Vector3(-0.260051, 1.63736, 0)
 metadata/fov = 42.0
 
 ; insert: the one-way mirror into the back office
 [node name="shot_insert_oneway" type="Marker3D" parent="." groups=["vn_shot"]]
-transform = Transform3D(1, -0, -0, 0, 0.993307, -0.115501, 0, 0.115501, 0.993307, 1.6, 1.5, -6.2)
+position = Vector3(1.6, 1.5, -6.2)
+rotation = Vector3(0.115759, 0, 0)
 metadata/fov = 40.0

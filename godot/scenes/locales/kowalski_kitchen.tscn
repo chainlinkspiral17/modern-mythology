@@ -299,3 +299,28 @@ offset_top = 360.0
 offset_right = 520.0
 offset_bottom = 980.0
 script = ExtResource("14_dbgm")
+
+; ── vn_shot coverage (2026-08-08 directing pass 4) ────────
+; rotation B: from the fridge corner across the table to the couch
+[node name="shot_establish_b" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(1.6, 1.55, -0.65)
+rotation = Vector3(-0.218728, 1.09545, 0)
+metadata/fov = 56.0
+
+; rotation C: from the sink over the table to the TV and fridge
+[node name="shot_establish_c" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(-1.3, 1.5, -4.35)
+rotation = Vector3(-0.144038, -2.36474, 0)
+metadata/fov = 54.0
+
+; insert: the hot sauce cabinet
+[node name="shot_insert_hotsauce" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(0.75, 1.5, -3.9)
+rotation = Vector3(0.363527, 0, 0)
+metadata/fov = 42.0
+
+; insert: the little TV by the window
+[node name="shot_insert_tv" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(1.7, 1.25, -2)
+rotation = Vector3(-0.0867383, -1.5708, 0)
+metadata/fov = 40.0
