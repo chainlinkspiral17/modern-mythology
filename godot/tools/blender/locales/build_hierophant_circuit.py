@@ -546,12 +546,15 @@ def build_trees():
                  (tx, ty, 1.40),
                  0.20, 2.80,
                  COL_TREE_TRUNK, segments=6, axis='Z')
-        # Canopy (3 overlapping spheres for foliage)
+        # Canopy — the comment always said "3 overlapping spheres"
+        # but the code drew CYLINDERS (the module had no sphere until
+        # 2026-08-04). Actual blobs now, per the original intent.
+        from _props.geometry import make_blob
         for sj, dz in enumerate([2.60, 3.00, 2.80]):
-            make_cyl("Tree_%d_Canopy_%d" % (ti, sj),
-                     (tx + (sj - 1) * 0.20, ty, dz),
-                     0.90, 1.60,
-                     COL_TREE_LEAF, segments=8, axis='Z')
+            make_blob("Tree_%d_Canopy_%d" % (ti, sj),
+                      (tx + (sj - 1) * 0.20, ty, dz), 0.95,
+                      COL_TREE_LEAF, noise=0.20,
+                      seed=ti * 13 + sj, squash=0.85)
 
 
 def main():

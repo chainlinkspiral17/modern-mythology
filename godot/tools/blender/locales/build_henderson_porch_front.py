@@ -140,9 +140,15 @@ def build_car_and_curb():
     # The live oak at the curb — big dark canopy over the street edge
     tx, ty = -4.6, YARD_D - 0.8
     make_cyl("Oak_Trunk", (tx, ty, 1.5), 0.34, 3.0, COL_TREE, segments=10)
-    make_cyl("Oak_Canopy_A", (tx, ty, 3.6), 2.4, 1.6, COL_CANOPY, segments=12)
-    make_cyl("Oak_Canopy_B", (tx + 1.2, ty - 0.6, 3.2), 1.5, 1.2, COL_CANOPY, segments=10)
-    make_cyl("Oak_Canopy_C", (tx - 1.1, ty + 0.5, 3.3), 1.4, 1.1, COL_CANOPY, segments=10)
+    # 2026-08-04: canopy was three cylinders. Blob lobes — the last
+    # blocky tree in the project.
+    from _props.geometry import make_blob
+    make_blob("Oak_Canopy_A", (tx, ty, 3.7), 2.5, COL_CANOPY,
+              noise=0.20, seed=71, squash=0.78)
+    make_blob("Oak_Canopy_B", (tx + 1.2, ty - 0.6, 3.2), 1.55,
+              COL_CANOPY, noise=0.22, seed=73, squash=0.85)
+    make_blob("Oak_Canopy_C", (tx - 1.1, ty + 0.5, 3.3), 1.45,
+              COL_CANOPY, noise=0.22, seed=79, squash=0.85)
     # Streetlamp far east — a cool pool on the asphalt edge
     make_cyl("StreetLamp_Pole", (5.6, YARD_D + 0.4, 2.4), 0.07, 4.8, COL_MAILBOX, segments=8)
     make_box("StreetLamp_Arm", (5.25, YARD_D + 0.4, 4.7), (0.7, 0.07, 0.07), COL_MAILBOX)

@@ -229,8 +229,19 @@ were ROOFLESS BILLBOARDS (a 0.3m siding slab against the sky):
 both carry a make_gable roof + eave fascia now. harmony_terrain
 and riverfront were already fine — they'd hand-rolled LOCAL sphere
 helpers because the shared module lacked one, which was this whole
-problem in miniature. Still to convert: their local helpers should
-be retired onto _props.geometry in a later pass.
+problem in miniature. Wave 3 (same day)
+closed the class COMPLETELY: salty_tome + chillwave street trees,
+miller_back_porch crepe myrtle + oak, hierophant_circuit (whose
+comment said "3 overlapping spheres" but drew cylinders),
+bayou_lighthouse distant cypress (+ its unaudited Sky_Panel
+deleted), cabin_road alders, cedar_tower box-crown sitkas,
+christian_ice magnolia (comment: "spheres approximated as
+cylinders"), henderson's front-yard oak. A residual grep for
+box/cyl Crown|Canopy|Foliage now matches ONLY hardware (gas
+canopies, lamp canopies, register crowns). THREE builders carried
+comments confessing they wanted spheres the module didn't have.
+Still to convert: harmony/riverfront local sphere helpers retire
+onto _props.geometry in a later pass.
 
 
 

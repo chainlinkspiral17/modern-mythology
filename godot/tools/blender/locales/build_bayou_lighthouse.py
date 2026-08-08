@@ -104,10 +104,15 @@ def build_bayou_view_window():
     for ti, (tx, tz) in enumerate([(-3.0, 4.0), (-1.0, 3.6), (+2.0, 4.2), (+4.0, 3.8)]):
         make_cyl(f"Cypress_Distant_{ti}", (tx, +RADIUS + 6.0, tz/2.0 + 1.0),
                  0.20, tz, COL_CYPRESS, segments=8)
-        make_cyl(f"Cypress_Distant_Foliage_{ti}", (tx, +RADIUS + 6.0, tz + 1.2),
-                 0.80, 0.80, (0.32, 0.42, 0.30, 1.0), segments=8)
+        from _props.geometry import make_blob
+        make_blob(f"Cypress_Distant_Foliage_{ti}",
+                  (tx, +RADIUS + 6.0, tz + 1.3), 0.90,
+                  (0.32, 0.42, 0.30, 1.0), noise=0.22,
+                  seed=ti * 7, squash=0.65)
     # Sky panel above
-    make_box("Sky_Panel", (0.0, +RADIUS + 8.0, 6.0), (12.0, 0.04, 5.0), (0.62, 0.66, 0.62, 1.0))
+    # (Sky_Panel deleted 2026-08-04 — painted-horizon class; no
+    # camera preset meant the audit never saw it. The environment
+    # owns the sky.)
 
 
 def build_lens_stage_above():

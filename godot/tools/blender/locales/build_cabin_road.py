@@ -99,8 +99,12 @@ def build_forest():
         _conifer(f"SitkaE_{i}", px, py, h, COL_SITKA_LT if i % 3 else COL_SITKA)
     # Alders at the road edge: pale trunks, light crowns
     for i, (px, py) in enumerate([(-3.2, 4.0), (3.3, 6.5), (-3.4, 13.0), (3.0, 12.0)]):
-        make_cyl(f"Alder_{i}_Trunk", (px, py, 1.4), 0.08, 2.8, COL_ALDER_BARK, segments=6)
-        make_cyl(f"Alder_{i}_Crown", (px, py, 3.4), 1.0, 1.6, COL_ALDER, segments=8)
+        # 2026-08-04: alder crowns were cylinders (the sitkas got
+        # real silhouettes earlier the same day; these were missed in
+        # the same file). Broadleaf now — pale trunk kept via look.
+        from _props.trees import make_broadleaf
+        make_broadleaf(f"Alder_{i}", px, py, 4.4, COL_ALDER,
+                       COL_ALDER_BARK, crown=0.30)
     # Ferns along the shoulders
     ferns = [(-2.9, 1.5), (2.9, 3.0), (-3.0, 7.2), (3.1, 8.6), (-3.2, 11.5), (2.8, 14.0)]
     for i, (px, py) in enumerate(ferns):

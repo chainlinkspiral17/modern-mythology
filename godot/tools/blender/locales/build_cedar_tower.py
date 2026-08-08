@@ -388,8 +388,10 @@ def build_exterior():
         tx = X - 13.0 + (i * 41) % 27
         ty = -3.0 if i % 2 == 0 else 20.0 + (i % 3) * 2.0
         h = 9.0 + (i * 3) % 4
-        make_cyl(f"Ext_Sitka_{i}_Trunk", (tx, ty, h * 0.25), 0.20, h * 0.5, (0.30, 0.24, 0.18, 1.0), segments=6)
-        make_box(f"Ext_Sitka_{i}_Crown", (tx, ty, h * 0.65), (2.4, 2.4, h * 0.6), SITKA)
+        # 2026-08-04: crowns were BOXES. Real spruce silhouettes.
+        from _props.trees import make_conifer
+        make_conifer(f"Ext_Sitka_{i}", tx, ty, h, SITKA,
+                     (0.30, 0.24, 0.18, 1.0))
     # (Sky wall deleted 2026-08-04 — it stood between the camera
     # and the new far bands, occluding the horizon it faked.
     # The sky is the .tscn environment's job.)

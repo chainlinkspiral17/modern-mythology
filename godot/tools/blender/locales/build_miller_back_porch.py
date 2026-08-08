@@ -128,11 +128,17 @@ def build_yard():
                  (0.55, 0.46, 0.40, 1.0), segments=6)
     for bi, (dx, dy, dz, r) in enumerate(((0.0, 0.0, 2.3, 0.75), (0.45, 0.2, 2.0, 0.55),
                                           (-0.4, 0.15, 2.1, 0.5), (0.1, -0.3, 2.55, 0.45))):
-        make_cyl(f"Myrtle_Canopy_{bi}", (mx+dx, my+dy, dz-0.44), r, 0.55,
-                 (0.86, 0.52, 0.62, 1.0), segments=10)
+        # 2026-08-04: the crepe myrtle's bloom clusters were flat
+        # cylinders. Blobs now — flowering mass, not pink pucks.
+        from _props.geometry import make_blob
+        make_blob(f"Myrtle_Canopy_{bi}", (mx+dx, my+dy, dz-0.40),
+                  r * 1.05, (0.86, 0.52, 0.62, 1.0), noise=0.24,
+                  seed=61 + bi, squash=0.75)
     # The neighbor's oak, farther off (the mockingbird's)
     make_cyl("Oak_Trunk", (-6.5, -5.5, 1.6-0.44), 0.22, 3.2, (0.36, 0.28, 0.20, 1.0), segments=8)
-    make_cyl("Oak_Canopy", (-6.5, -5.5, 3.8-0.44), 2.2, 2.4, (0.30, 0.40, 0.24, 1.0), segments=12)
+    from _props.geometry import make_blob as _mb_oak
+    _mb_oak("Oak_Canopy", (-6.5, -5.5, 3.9-0.44), 2.35,
+            (0.30, 0.40, 0.24, 1.0), noise=0.20, seed=83, squash=0.80)
 
 
 def build_porchlamp():

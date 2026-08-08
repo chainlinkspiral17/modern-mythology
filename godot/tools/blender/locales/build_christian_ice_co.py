@@ -384,12 +384,15 @@ def build_star_wave2_props():
              (mag_x, mag_y, 1.10),
              0.022, 1.60,
              (0.42, 0.30, 0.22, 1.0), segments=6, axis='Z')
-    # Foliage cluster (three offset spheres approximated as cylinders)
+    # Foliage cluster — the comment always said "three offset
+    # SPHERES approximated as cylinders": the module had no sphere
+    # until 2026-08-04. Actual blobs now, per the original intent.
+    from _props.geometry import make_blob
     for fi, (dx, dz) in enumerate([(-0.10, 1.70), (+0.10, 1.80), (0.0, 1.94)]):
-        make_cyl("Magnolia_Foliage_%d" % fi,
-                 (mag_x + dx, mag_y, dz),
-                 0.16, 0.20,
-                 (0.34, 0.46, 0.30, 1.0), segments=10, axis='Z')
+        make_blob("Magnolia_Foliage_%d" % fi,
+                  (mag_x + dx, mag_y, dz), 0.22,
+                  (0.34, 0.46, 0.30, 1.0), noise=0.22,
+                  seed=fi * 3 + 1, squash=0.9)
 
     # Mr Theriot's 1949 brass shovel leaning on the wagon
     # (wagon is offscreen · we place the shovel against the west wall)

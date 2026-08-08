@@ -311,7 +311,10 @@ def build_beyond_glass_2026_08():
     make_box("Across_Door", (0.0, -6.85, 1.15), (0.95, 0.06, 2.3), (0.22, 0.20, 0.18, 1.0))
     # A street tree between the windows' sightlines.
     make_cyl("Street_Tree_Trunk", (-3.4, -2.2, 1.2), 0.12, 2.4, (0.30, 0.24, 0.18, 1.0), segments=8)
-    make_box("Street_Tree_Crown", (-3.4, -2.2, 3.2), (1.8, 1.6, 1.8), (0.16, 0.24, 0.15, 1.0))
+    # 2026-08-04: box crown -> blob (seen through the shop window).
+    from _props.geometry import make_blob
+    make_blob("Street_Tree_Crown", (-3.4, -2.2, 3.3), 1.05,
+              (0.16, 0.24, 0.15, 1.0), noise=0.22, seed=9, squash=0.9)
 
 
 def main():

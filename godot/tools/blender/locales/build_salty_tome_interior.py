@@ -496,7 +496,11 @@ def build_beyond_glass_2026_08():
     make_box("Hemlock_Mailbox_Body", (2.6, -1.0, 1.05), (0.5, 0.4, 0.5), (0.22, 0.30, 0.46, 1.0))
     make_box("Hemlock_Mailbox_Leg", (2.6, -1.0, 0.4), (0.08, 0.08, 0.8), (0.30, 0.30, 0.32, 1.0))
     make_cyl("Hemlock_Tree_Trunk", (4.3, -1.4, 1.2), 0.12, 2.4, (0.30, 0.24, 0.18, 1.0), segments=8)
-    make_box("Hemlock_Tree_Crown", (4.3, -1.4, 3.2), (1.8, 1.6, 1.8), (0.16, 0.24, 0.15, 1.0))
+    # 2026-08-04: the street tree seen through the window had a BOX
+    # crown. Blob now.
+    from _props.geometry import make_blob
+    make_blob("Hemlock_Tree_Crown", (4.3, -1.4, 3.3), 1.05,
+              (0.16, 0.24, 0.15, 1.0), noise=0.22, seed=5, squash=0.9)
     # The facing building: facade band, one lit window (the town is
     # awake), a dark doorway.
     make_box("Hemlock_Across_Facade", (0.0, -7.6, 2.0), (13.0, 0.6, 4.0), (0.42, 0.36, 0.30, 1.0))
