@@ -8,7 +8,7 @@ import os, sys
 _BT = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)), ".."))
 if _BT not in sys.path: sys.path.insert(0, _BT)
 from _props import palette as P
-from _props.geometry import clear_scene, make_box, make_cyl, export_glb
+from _props.geometry import clear_scene, make_box, make_chamfer_box, make_cyl, export_glb
 from _props.structure import make_floor, make_wall, make_ceiling, make_crown_molding, make_window
 from _props.store_fixtures import make_counter, make_counter_bullnose, make_register
 from _props.shelving import make_snack_aisle, make_endcap
@@ -53,15 +53,15 @@ def build_bed():
     # violet/teal duvet + throw pillows.
     bx, by = 0.0, ROOM_D - 1.15
     make_box("Bed_Frame", (bx, by, 0.20), (1.24, 1.86, 0.20), (0.52, 0.40, 0.50, 1.0))
-    make_box("Bed_Mattress", (bx, by, 0.40), (1.14, 1.76, 0.16), (0.92, 0.86, 0.84, 1.0))
+    make_chamfer_box("Bed_Mattress", (bx, by, 0.40), (1.14, 1.76, 0.16), (0.92, 0.86, 0.84, 1.0))
     make_box("Bed_Headboard", (bx, by+0.94, 0.66), (1.28, 0.10, 0.72), (0.50, 0.36, 0.48, 1.0))
     # Patterned duvet: violet body + a teal cross-band
-    make_box("Bed_Duvet", (bx, by-0.10, 0.50), (1.20, 1.10, 0.12), COL_DUVET)
-    make_box("Bed_DuvetBand", (bx, by-0.55, 0.52), (1.20, 0.34, 0.13), COL_DUVET2)
+    make_chamfer_box("Bed_Duvet", (bx, by-0.10, 0.50), (1.20, 1.10, 0.12), COL_DUVET)
+    make_chamfer_box("Bed_DuvetBand", (bx, by-0.55, 0.52), (1.20, 0.34, 0.13), COL_DUVET2)
     # Throw pillows in front of the sleeping pillow
-    make_box("Bed_Pillow", (bx, by+0.66, 0.50), (1.04, 0.34, 0.12), P.PAPER)
-    make_box("Bed_ThrowPillow_A", (bx-0.30, by+0.44, 0.56), (0.34, 0.34, 0.16), COL_PILLOW)
-    make_box("Bed_ThrowPillow_B", (bx+0.30, by+0.44, 0.56), (0.34, 0.34, 0.16), COL_ACCENT)
+    make_chamfer_box("Bed_Pillow", (bx, by+0.66, 0.50), (1.04, 0.34, 0.12), P.PAPER)
+    make_chamfer_box("Bed_ThrowPillow_A", (bx-0.30, by+0.44, 0.56), (0.34, 0.34, 0.16), COL_PILLOW)
+    make_chamfer_box("Bed_ThrowPillow_B", (bx+0.30, by+0.44, 0.56), (0.34, 0.34, 0.16), COL_ACCENT)
 
 def build_desk_lamp():
     dx, dy = +ROOM_W/4.0, 1.5
@@ -109,11 +109,11 @@ def build_dressing():
     bx, by = 0.0, ROOM_D - 1.15
     # Nightstand + alarm clock beside the bed
     nsx = bx + 0.95
-    make_box("Nightstand", (nsx, by+0.7, 0.28), (0.40, 0.40, 0.56), COL_WOOD)
+    make_chamfer_box("Nightstand", (nsx, by+0.7, 0.28), (0.40, 0.40, 0.56), COL_WOOD)
     make_box("Clock", (nsx, by+0.7, 0.62), (0.15, 0.10, 0.10), P.METAL_BLACK)
     # Vanity dresser against the east wall: body, three drawers, ROUND mirror
     vx = ROOM_W/2.0 - 0.30
-    make_box("Vanity_Body", (vx, ROOM_D-1.2, 0.42), (0.50, 0.90, 0.84), COL_WOOD)
+    make_chamfer_box("Vanity_Body", (vx, ROOM_D-1.2, 0.42), (0.50, 0.90, 0.84), COL_WOOD)
     for di in range(3):
         make_box(f"Vanity_Drawer_{di}", (vx-0.26, ROOM_D-1.2, 0.24+di*0.24), (0.02, 0.80, 0.18), (0.44, 0.32, 0.42, 1.0))
     make_cyl("Vanity_Mirror", (vx-0.02, ROOM_D-1.2, 1.34), 0.34, 0.03, (0.80, 0.86, 0.92, 0.6), axis='X', segments=16)
@@ -131,7 +131,7 @@ def build_dressing():
         make_box(f"Pin_{pi}", (bbx+0.03, oy, oz), (0.01, 0.24, 0.18), col)
     # Bookshelf of paperbacks against the north wall
     shx = ROOM_W/2.0 - 0.9
-    make_box("Bookshelf_Body", (shx, ROOM_D-0.20, 0.90), (0.90, 0.26, 1.80), COL_WOOD)
+    make_chamfer_box("Bookshelf_Body", (shx, ROOM_D-0.20, 0.90), (0.90, 0.26, 1.80), COL_WOOD)
     for r in range(3):
         for c in range(7):
             make_box(f"Book_{r}_{c}", (shx-0.42+c*0.12, ROOM_D-0.22, 0.42+r*0.52),
@@ -139,7 +139,7 @@ def build_dressing():
     # Record player on a milk crate, SE
     rcx, rcy = ROOM_W/2.0-0.4, 0.8
     make_box("Crate", (rcx, rcy, 0.24), (0.44, 0.44, 0.48), (0.42, 0.52, 0.62, 1.0))
-    make_box("RecordPlayer", (rcx, rcy, 0.52), (0.42, 0.42, 0.10), P.METAL_BLACK)
+    make_chamfer_box("RecordPlayer", (rcx, rcy, 0.52), (0.42, 0.42, 0.10), P.METAL_BLACK)
     make_cyl("RecordPlatter", (rcx, rcy, 0.58), 0.16, 0.01, (0.14, 0.14, 0.16, 1.0), segments=16)
     # Wicker hamper, corner
     make_cyl("Hamper", (-ROOM_W/2.0+0.5, 0.6, 0.34), 0.26, 0.68, (0.74, 0.62, 0.44, 1.0), segments=12)
@@ -172,7 +172,7 @@ def build_hero_props():
     # (the build's Rug cyl stays; this ring marks the pulled-back lip)
     make_cyl("Rug_Fold", (0.0, 3.02, 0.018), 0.55, 0.012, (0.72, 0.42, 0.44, 1.0), segments=14)
     # The box fan by the window ("The fan is on.")
-    make_box("Box_Fan", (-1.30, 4.40, 0.24), (0.44, 0.16, 0.44), (0.80, 0.78, 0.74, 1.0))
+    make_chamfer_box("Box_Fan", (-1.30, 4.40, 0.24), (0.44, 0.16, 0.44), (0.80, 0.78, 0.74, 1.0))
     make_cyl("Box_Fan_Grille", (-1.30, 4.31, 0.24), 0.17, 0.02, (0.30, 0.30, 0.32, 1.0), axis='Y', segments=12)
     # The spiral notebook on the desk + the packing-order supplies
     make_box("Spiral_Notebook", (0.64, 1.62, 0.765), (0.20, 0.26, 0.012), (0.30, 0.44, 0.62, 1.0))

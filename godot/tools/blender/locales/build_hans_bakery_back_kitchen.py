@@ -13,7 +13,7 @@ import os, sys
 _BT = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)), ".."))
 if _BT not in sys.path: sys.path.insert(0, _BT)
 from _props import palette as P
-from _props.geometry import clear_scene, make_box, make_cyl, export_glb
+from _props.geometry import clear_scene, make_box, make_chamfer_box, make_blob, make_cyl, export_glb
 from _props.structure import make_floor, make_wall, make_ceiling, make_crown_molding, make_window
 from _props.store_fixtures import make_counter, make_counter_bullnose, make_register
 from _props.shelving import make_snack_aisle, make_endcap
@@ -62,12 +62,12 @@ def build_stove():
     # Commercial deck oven: stainless body, two glass doors with warm
     # interiors + bar handles, a vent hood above.
     sx, sy = +ROOM_W/4.0, ROOM_D-1.0
-    make_box("Oven_Body", (sx, sy, 0.75), (1.00, 0.80, 1.50), (0.80, 0.82, 0.86, 1.0))
+    make_chamfer_box("Oven_Body", (sx, sy, 0.75), (1.00, 0.80, 1.50), (0.80, 0.82, 0.86, 1.0))
     for di, dz in enumerate([0.55, 1.05]):
         make_box(f"Oven_Door_{di}", (sx-0.42, sy, dz), (0.06, 0.66, 0.40), (0.28, 0.24, 0.22, 1.0))
         make_box(f"Oven_Window_{di}", (sx-0.46, sy, dz), (0.02, 0.46, 0.24), (1.0, 0.62, 0.26, 0.8))
         make_cyl(f"Oven_Handle_{di}", (sx-0.50, sy, dz-0.24), 0.02, 0.60, P.METAL_STEEL, axis='Y', segments=8)
-    make_box("Oven_Hood", (sx, sy, 1.70), (1.10, 0.90, 0.30), P.METAL_STEEL)
+    make_chamfer_box("Oven_Hood", (sx, sy, 1.70), (1.10, 0.90, 0.30), P.METAL_STEEL)
 
 def build_bakery():
     """Back-of-house bakery: a rolling speed rack of sheet trays + loaves,
@@ -84,7 +84,7 @@ def build_bakery():
         make_cyl(f"Rack_Wheel_{wi}", (rx+wx, ry, 0.04), 0.05, 0.05, P.METAL_BLACK, axis='X', segments=8)
     # Flour-dusted prep table with dough balls + rolling pin
     tx, ty = -ROOM_W/4.0, ROOM_D/2.0 - 0.8
-    make_box("Prep_Top", (tx, ty, 0.90), (1.20, 0.70, 0.06), (0.86, 0.84, 0.80, 1.0))
+    make_chamfer_box("Prep_Top", (tx, ty, 0.90), (1.20, 0.70, 0.06), (0.86, 0.84, 0.80, 1.0))
     for i, (lx, ly) in enumerate([(-0.54, -0.3), (0.54, -0.3), (-0.54, 0.3), (0.54, 0.3)]):
         make_box(f"Prep_Leg_{i}", (tx+lx, ty+ly, 0.45), (0.06, 0.06, 0.90), P.METAL_STEEL)
     for di in range(4):
@@ -92,7 +92,9 @@ def build_bakery():
     make_cyl("RollingPin", (tx+0.2, ty+0.22, 0.95), 0.04, 0.44, COL_WOOD, axis='X', segments=8)
     # Stacked flour sacks in the SW corner
     for si, (sx2, sz) in enumerate([(-ROOM_W/2.0+0.6, 0.22), (-ROOM_W/2.0+0.55, 0.62), (-ROOM_W/2.0+0.85, 0.22)]):
-        make_box(f"FlourSack_{si}", (sx2, 0.7, sz), (0.34, 0.30, 0.42), (0.88, 0.84, 0.76, 1.0))
+        make_blob(f"FlourSack_{si}", (sx2, 0.7, sz), 0.21,
+                  (0.88, 0.84, 0.76, 1.0), noise=0.16, seed=11 + si,
+                  squash=0.95)
     # Wall shelf of mixing bowls, west wall
     make_box("BowlShelf", (-ROOM_W/2.0+0.14, ROOM_D-1.4, 1.7), (0.10, 1.20, 0.06), COL_WOOD)
     for bi in range(3):
@@ -102,7 +104,7 @@ def build_proofer():
     # Roll-in proofing cabinet on casters, east of the oven: stainless
     # body, a full glass door showing racked trays, a warm proof glow.
     px, py = ROOM_W/2.0 - 0.55, ROOM_D - 1.4
-    make_box("Proofer_Body", (px, py, 1.00), (0.66, 0.80, 1.90), (0.78, 0.80, 0.84, 1.0))
+    make_chamfer_box("Proofer_Body", (px, py, 1.00), (0.66, 0.80, 1.90), (0.78, 0.80, 0.84, 1.0))
     make_box("Proofer_Door", (px-0.30, py, 1.05), (0.06, 0.66, 1.60), (0.30, 0.30, 0.32, 1.0))
     make_box("Proofer_Glass", (px-0.34, py, 1.05), (0.02, 0.54, 1.44), (0.72, 0.82, 0.86, 0.4))
     make_cyl("Proofer_Handle", (px-0.38, py+0.24, 1.05), 0.02, 0.70, P.METAL_STEEL, axis='Z', segments=8)
@@ -116,14 +118,14 @@ def build_equipment():
     # Planetary stand mixer on the north counter's west end.
     mx, my = -ROOM_W/4.0-0.9, ROOM_D-1.0
     top = 0.96
-    make_box("Mixer_Base", (mx, my, top+0.06), (0.28, 0.34, 0.12), (0.86, 0.84, 0.82, 1.0))
+    make_chamfer_box("Mixer_Base", (mx, my, top+0.06), (0.28, 0.34, 0.12), (0.86, 0.84, 0.82, 1.0))
     make_box("Mixer_Column", (mx+0.10, my, top+0.34), (0.14, 0.24, 0.44), (0.86, 0.84, 0.82, 1.0))
-    make_box("Mixer_Head", (mx-0.06, my, top+0.52), (0.34, 0.22, 0.16), (0.86, 0.84, 0.82, 1.0))
+    make_chamfer_box("Mixer_Head", (mx-0.06, my, top+0.52), (0.34, 0.22, 0.16), (0.86, 0.84, 0.82, 1.0))
     make_cyl("Mixer_Whisk", (mx-0.10, my, top+0.30), 0.05, 0.20, P.METAL_STEEL, segments=8)
     make_cyl("Mixer_Bowl", (mx-0.10, my, top+0.14), 0.13, 0.18, P.METAL_STEEL, segments=12)
     # Rolling flour ingredient bin in the SW.
     fx, fy = -ROOM_W/2.0+0.55, ROOM_D/2.0+0.5
-    make_box("FlourBin_Body", (fx, fy, 0.40), (0.50, 0.60, 0.72), (0.72, 0.60, 0.42, 1.0))
+    make_chamfer_box("FlourBin_Body", (fx, fy, 0.40), (0.50, 0.60, 0.72), (0.72, 0.60, 0.42, 1.0))
     make_box("FlourBin_Lid", (fx, fy, 0.78), (0.52, 0.62, 0.06), (0.56, 0.46, 0.32, 1.0))
     make_cyl("FlourBin_Scoop", (fx, fy-0.10, 0.86), 0.05, 0.14, P.METAL_STEEL, segments=8)
     for wi, wo in enumerate([-0.20, 0.20]):
@@ -206,7 +208,7 @@ def build_communal_table():
     dressing (press, brotchen basket, preserves)."""
     wood = (0.46, 0.34, 0.22, 1.0)
     wood_dk = (0.36, 0.26, 0.16, 1.0)
-    make_box("Communal_Table_Top", (0.0, 2.3, 0.75), (1.10, 3.40, 0.06), wood)
+    make_chamfer_box("Communal_Table_Top", (0.0, 2.3, 0.75), (1.10, 3.40, 0.06), wood)
     for lx, ly in ((-0.50, 0.75), (0.50, 0.75), (-0.50, 3.85), (0.50, 3.85)):
         make_box(f"Communal_Leg_{lx:.1f}_{ly:.2f}", (lx, ly, 0.37), (0.08, 0.08, 0.74), wood_dk)
     # Ten side chairs
@@ -229,7 +231,7 @@ def build_communal_table():
     # Table dressing: coffee press, brotchen basket, preserves, butter
     make_cyl("Coffee_Press", (0.0, 2.7, 0.90), 0.06, 0.24, (0.55, 0.62, 0.66, 0.6), segments=10)
     make_cyl("Press_Plunger", (0.0, 2.7, 1.04), 0.012, 0.08, (0.20, 0.19, 0.20, 1.0), segments=6)
-    make_box("Brotchen_Basket", (0.0, 2.1, 0.84), (0.34, 0.28, 0.12), (0.62, 0.46, 0.26, 1.0))
+    make_chamfer_box("Brotchen_Basket", (0.0, 2.1, 0.84), (0.34, 0.28, 0.12), (0.62, 0.46, 0.26, 1.0))
     for bi in range(3):
         make_cyl(f"Brotchen_{bi}", (-0.08 + bi * 0.09, 2.1, 0.92), 0.05, 0.07, (0.80, 0.62, 0.36, 1.0), segments=8)
     make_cyl("Preserve_Jar", (0.28, 2.45, 0.85), 0.045, 0.12, (0.48, 0.22, 0.30, 0.9), segments=8)

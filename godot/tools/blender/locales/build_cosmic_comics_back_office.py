@@ -3,7 +3,7 @@ import os, sys
 _BT = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)), ".."))
 if _BT not in sys.path: sys.path.insert(0, _BT)
 from _props import palette as P
-from _props.geometry import clear_scene, make_box, make_cyl, export_glb
+from _props.geometry import clear_scene, make_box, make_chamfer_box, make_cyl, export_glb
 from _props.structure import make_floor, make_wall, make_ceiling, make_crown_molding, make_window
 from _props.store_fixtures import make_counter, make_counter_bullnose, make_register
 from _props.shelving import make_snack_aisle, make_endcap
@@ -51,7 +51,7 @@ def build_desk():
 def build_filing():
     for ci in range(2):
         cx = -ROOM_W/2.0+0.30+ci*0.50
-        make_box(f"Filing_{ci}", (cx, 1.0, 0.65), (0.50, 0.60, 1.30), (0.62, 0.62, 0.58, 1.0))
+        make_chamfer_box(f"Filing_{ci}", (cx, 1.0, 0.65), (0.50, 0.60, 1.30), (0.62, 0.62, 0.58, 1.0))
         for di in range(4):
             make_box(f"Filing_{ci}_Drawer_{di}", (cx, 0.70, 1.20-di*0.30), (0.46, 0.04, 0.26), (0.78, 0.78, 0.74, 1.0))
 
@@ -138,7 +138,7 @@ def build_backoffice_detail():
                  [(0.8,0.2,0.2,1),(0.2,0.4,0.8,1),(0.9,0.8,0.2,1)][i%3], segments=5, axis='Y')
     # ── Coffee maker on the filing cabinets (top z 1.3) ──
     cmx, cmy = -1.2, 1.0
-    make_box("CoffeeMaker_Body", (cmx, cmy, 1.48), (0.22, 0.28, 0.34), (0.16, 0.16, 0.18, 1.0))
+    make_chamfer_box("CoffeeMaker_Body", (cmx, cmy, 1.48), (0.22, 0.28, 0.34), (0.16, 0.16, 0.18, 1.0))
     make_cyl("CoffeeMaker_Carafe", (cmx, cmy - 0.02, 1.40), 0.07, 0.14, (0.40, 0.28, 0.20, 0.9), segments=8)
     make_box("CoffeeMaker_Warmer", (cmx, cmy - 0.02, 1.33), (0.18, 0.20, 0.02), (0.10, 0.10, 0.11, 1.0))
     # ── Taped wall shelf with trade spines (west wall over table) ──
@@ -168,7 +168,7 @@ def build_hero_props():
     # corner, on the shelf above the file cabinet. Grille is its own
     # emissive object so the red glow can read (dim ch12, red ch21).
     make_box("SpeakSpell_Shelf", (-1.45, 1.0, 1.62), (0.60, 0.30, 0.035), (0.44, 0.32, 0.20, 1.0))
-    make_box("SpeakSpell_Body", (-1.45, 1.0, 1.665), (0.26, 0.20, 0.05), (0.72, 0.16, 0.14, 1.0))
+    make_chamfer_box("SpeakSpell_Body", (-1.45, 1.0, 1.665), (0.26, 0.20, 0.05), (0.72, 0.16, 0.14, 1.0))
     make_box("SpeakSpell_Keys", (-1.48, 0.96, 1.695), (0.16, 0.10, 0.01), (0.92, 0.88, 0.72, 1.0))
     make_box("SpeakSpell_Grille", (-1.36, 1.05, 1.695), (0.06, 0.06, 0.012), (0.94, 0.42, 0.30, 1.0))
     make_box("SpeakSpell_Crack", (-1.57, 0.92, 1.66), (0.03, 0.03, 0.045), (0.44, 0.10, 0.09, 1.0))
@@ -177,7 +177,7 @@ def build_hero_props():
     make_box("OneWay_Mirror", (1.4, 0.08, 1.70), (1.10, 0.02, 0.85), (0.46, 0.52, 0.56, 1.0))
     # Desk drawer pedestal (top drawer takes the slip; green folder
     # in the second)
-    make_box("Desk_Pedestal", (0.62, 3.5, 0.38), (0.52, 0.72, 0.70), (0.40, 0.30, 0.20, 1.0))
+    make_chamfer_box("Desk_Pedestal", (0.62, 3.5, 0.38), (0.52, 0.72, 0.70), (0.40, 0.30, 0.20, 1.0))
     for di in range(3):
         make_box(f"Desk_Drawer_{di}", (0.62, 3.13, 0.62 - di * 0.21), (0.44, 0.02, 0.16), (0.34, 0.24, 0.16, 1.0))
         make_box(f"Desk_Drawer_{di}_Pull", (0.62, 3.11, 0.62 - di * 0.21), (0.12, 0.015, 0.03), iron)
@@ -185,12 +185,12 @@ def build_hero_props():
     make_box("Desk_Phone", (0.55, 3.72, 0.82), (0.22, 0.16, 0.08), (0.16, 0.16, 0.18, 1.0))
     make_box("Desk_Phone_Handset", (0.55, 3.72, 0.90), (0.20, 0.06, 0.04), (0.12, 0.12, 0.14, 1.0))
     # Overturned milk crate — Sam's seat, opposite the desk
-    make_box("Milk_Crate", (0.0, 2.55, 0.16), (0.36, 0.36, 0.32), (0.62, 0.28, 0.24, 1.0))
+    make_chamfer_box("Milk_Crate", (0.0, 2.55, 0.16), (0.36, 0.36, 0.32), (0.62, 0.28, 0.24, 1.0))
     make_box("Milk_Crate_Rim", (0.0, 2.55, 0.315), (0.38, 0.38, 0.03), (0.52, 0.22, 0.20, 1.0))
     # Mini-fridge + floor safe (one of the six keys)
-    make_box("Mini_Fridge", (1.65, 0.75, 0.42), (0.55, 0.55, 0.84), (0.82, 0.80, 0.76, 1.0))
+    make_chamfer_box("Mini_Fridge", (1.65, 0.75, 0.42), (0.55, 0.55, 0.84), (0.82, 0.80, 0.76, 1.0))
     make_box("Mini_Fridge_Handle", (1.38, 0.55, 0.55), (0.03, 0.03, 0.30), iron)
-    make_box("Office_Safe", (1.62, 4.4, 0.28), (0.50, 0.50, 0.56), (0.24, 0.25, 0.28, 1.0))
+    make_chamfer_box("Office_Safe", (1.62, 4.4, 0.28), (0.50, 0.50, 0.56), (0.24, 0.25, 0.28, 1.0))
     make_cyl("Safe_Dial", (1.62, 4.14, 0.32), 0.06, 0.03, (0.60, 0.62, 0.64, 1.0), axis='Y', segments=10)
     # The office door + the slide bolt Sam did not realize was there
     make_box("Office_Door", (0.0, 0.05, 1.03), (1.90, 0.05, 2.05), (0.40, 0.30, 0.20, 1.0))

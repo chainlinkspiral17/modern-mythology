@@ -16,7 +16,7 @@ import os, sys, math
 _BT = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)), ".."))
 if _BT not in sys.path: sys.path.insert(0, _BT)
 from _props import palette as P
-from _props.geometry import clear_scene, make_box, make_cyl, export_glb
+from _props.geometry import clear_scene, make_box, make_chamfer_box, make_cyl, export_glb
 from _props.structure import make_floor, make_wall, make_ceiling, make_crown_molding, make_window
 from _props.store_fixtures import make_counter, make_counter_bullnose, make_register
 from _props.shelving import make_snack_aisle, make_endcap
@@ -105,7 +105,7 @@ def build_key_wall():
             make_box(f"Key_{r}_{c}_Bag", (kx, ROOM_D-0.10, kz), (0.36, 0.02, 0.40), (0.82, 0.86, 0.90, 0.4))
             make_box(f"Key_{r}_{c}_Cover", (kx, ROOM_D-0.115, kz), (0.30, 0.01, 0.34), tint)
     # Statue shelf below the key wall
-    make_box("StatShelf", (cx, ROOM_D-0.30, 1.02), (3.6, 0.36, 0.05), COL_WOOD)
+    make_chamfer_box("StatShelf", (cx, ROOM_D-0.30, 1.02), (3.6, 0.36, 0.05), COL_WOOD)
     for si in range(6):
         sx = cx - 1.5 + si * 0.6
         make_mini_statue(f"Statue_{si}", (sx, ROOM_D-0.30, 1.045), h=0.36,
@@ -115,7 +115,7 @@ def build_key_wall():
 def build_statue_tower():
     # Freestanding glass statue tower near the entrance — three tiers.
     tx, ty = 0.0, 1.3
-    make_box("Tower_Base", (tx, ty, 0.30), (0.90, 0.90, 0.60), COL_WOOD)
+    make_chamfer_box("Tower_Base", (tx, ty, 0.30), (0.90, 0.90, 0.60), COL_WOOD)
     make_box("Tower_Glass", (tx, ty, 1.20), (0.86, 0.86, 1.20), (0.70, 0.80, 0.92, 0.30))
     for tier, tz in enumerate([0.66, 1.10, 1.54]):
         make_box(f"Tower_Shelf_{tier}", (tx, ty, tz), (0.84, 0.84, 0.03), (0.72, 0.74, 0.80, 1.0))
@@ -217,7 +217,7 @@ def build_dressing():
     standee, and a stool behind the counter."""
     # Glass display case beside the register
     dx, dy = ROOM_W/4.0 - 1.7, ROOM_D - 1.5
-    make_box("Case_Body", (dx, dy, 0.45), (1.20, 0.60, 0.90), COL_WOOD)
+    make_chamfer_box("Case_Body", (dx, dy, 0.45), (1.20, 0.60, 0.90), COL_WOOD)
     make_box("Case_Glass", (dx, dy, 1.06), (1.16, 0.56, 0.32), (0.70, 0.80, 0.92, 0.35))
     for gi in range(5):
         make_box(f"Case_Slab_{gi}", (dx-0.48+gi*0.24, dy, 0.96), (0.16, 0.30, 0.02),
@@ -265,7 +265,7 @@ def build_hero_props():
     make_box("OneWay_Frame", (1.6, 7.95, 1.70), (1.30, 0.06, 1.00), (0.30, 0.26, 0.22, 1.0))
     make_box("OneWay_Mirror", (1.6, 7.92, 1.70), (1.20, 0.04, 0.90), (0.46, 0.52, 0.56, 1.0))
     # The small bench by the front window (Rick, 2018, for waiting kids)
-    make_box("Window_Bench", (-3.0, 1.05, 0.42), (1.60, 0.42, 0.06), wood)
+    make_chamfer_box("Window_Bench", (-3.0, 1.05, 0.42), (1.60, 0.42, 0.06), wood)
     for lx in (-3.65, -2.35):
         make_box(f"Window_Bench_Leg_{lx:.2f}", (lx, 1.05, 0.20), (0.08, 0.36, 0.40), (0.32, 0.22, 0.14, 1.0))
     # Shelf under the register (the Speak & Spell + Maya's wallet
@@ -280,19 +280,19 @@ def build_hero_props():
             make_box(f"Manga_{r}_{c}", (4.55, 3.85 + c * 0.30, 0.35 + r * 0.52),
                      (0.16, 0.24, 0.34), [(0.86, 0.80, 0.72, 1.0), (0.74, 0.30, 0.30, 1.0),
                                           (0.30, 0.44, 0.62, 1.0)][(r + c) % 3])
-    make_box("YA_Shelf", (-4.72, 2.4, 0.90), (0.30, 1.80, 1.80), wood)
+    make_chamfer_box("YA_Shelf", (-4.72, 2.4, 0.90), (0.30, 1.80, 1.80), wood)
     for r in range(3):
         for c in range(6):
             make_box(f"YA_{r}_{c}", (-4.55, 1.62 + c * 0.28, 0.35 + r * 0.55),
                      (0.16, 0.22, 0.32), [(0.62, 0.24, 0.24, 1.0), (0.24, 0.42, 0.52, 1.0),
                                           (0.72, 0.62, 0.30, 1.0)][(r * 2 + c) % 3])
-    make_box("Pokemon_Endcap", (-2.6, 1.2, 0.65), (0.80, 0.45, 1.30), (0.72, 0.20, 0.20, 1.0))
+    make_chamfer_box("Pokemon_Endcap", (-2.6, 1.2, 0.65), (0.80, 0.45, 1.30), (0.72, 0.20, 0.20, 1.0))
     make_box("Pokemon_Topper", (-2.6, 1.2, 1.38), (0.60, 0.35, 0.16), (0.94, 0.82, 0.24, 1.0))
-    make_box("Indie_Rack", (-3.6, 2.6, 0.62), (0.90, 0.60, 1.24), wood)
+    make_chamfer_box("Indie_Rack", (-3.6, 2.6, 0.62), (0.90, 0.60, 1.24), wood)
     for ti in range(3):
         make_box(f"Indie_Talker_{ti}", (-3.85 + ti * 0.25, 2.28, 1.30), (0.16, 0.02, 0.10),
                  (0.94, 0.90, 0.78, 1.0))
-    make_box("NewArrivals_Table", (0.0, 2.0, 0.40), (1.40, 0.80, 0.06), wood)
+    make_chamfer_box("NewArrivals_Table", (0.0, 2.0, 0.40), (1.40, 0.80, 0.06), wood)
     for lx, ly in ((-0.6, 1.68), (0.6, 1.68), (-0.6, 2.32), (0.6, 2.32)):
         make_box(f"NewArrivals_Leg_{lx:.1f}_{ly:.2f}", (lx, ly, 0.20), (0.06, 0.06, 0.40), (0.32, 0.22, 0.14, 1.0))
     for ci in range(6):

@@ -3,7 +3,7 @@ import os, sys
 _BT = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)), ".."))
 if _BT not in sys.path: sys.path.insert(0, _BT)
 from _props import palette as P
-from _props.geometry import clear_scene, make_box, make_cyl, export_glb
+from _props.geometry import clear_scene, make_box, make_chamfer_box, make_cyl, export_glb
 from _props.structure import make_floor, make_wall, make_ceiling, make_crown_molding, make_window
 from _props.store_fixtures import make_counter, make_counter_bullnose, make_register
 from _props.shelving import make_snack_aisle, make_endcap
@@ -44,19 +44,19 @@ def build_counter():
     make_cyl("Sink_Faucet", (-ROOM_W/4.0, ROOM_D-1.10, top_z+0.04), 0.015, 0.30, P.METAL_STEEL)
     # Stove, with the cast-iron roasting pan on it ("roast something
     # — tonight, a chicken — in the cast-iron")
-    make_box("Stove_Body", (ROOM_W/4.0, ROOM_D-1.0, 0.45), (0.70, 0.70, 0.92), (0.86, 0.84, 0.80, 1.0))
+    make_chamfer_box("Stove_Body", (ROOM_W/4.0, ROOM_D-1.0, 0.45), (0.70, 0.70, 0.92), (0.86, 0.84, 0.80, 1.0))
     make_box("Stove_Top", (ROOM_W/4.0, ROOM_D-1.0, 0.92), (0.70, 0.70, 0.04), P.METAL_BLACK)
     make_box("CastIron_Pan", (ROOM_W/4.0, ROOM_D-1.0, 0.99), (0.42, 0.30, 0.10), (0.16, 0.16, 0.17, 1.0))
     # Dishwasher under-counter beside the sink (three scenes end on it)
-    make_box("Dishwasher_Face", (-ROOM_W/4.0+0.90, ROOM_D-0.68, 0.44), (0.60, 0.04, 0.82), (0.80, 0.78, 0.74, 1.0))
+    make_chamfer_box("Dishwasher_Face", (-ROOM_W/4.0+0.90, ROOM_D-0.68, 0.44), (0.60, 0.04, 0.82), (0.80, 0.78, 0.74, 1.0))
     make_box("Dishwasher_Handle", (-ROOM_W/4.0+0.90, ROOM_D-0.70, 0.80), (0.44, 0.03, 0.04), P.METAL_STEEL)
     # Microwave on the counter
-    make_box("Microwave", (-ROOM_W/4.0-0.85, ROOM_D-1.0, 1.10), (0.48, 0.36, 0.28), (0.30, 0.30, 0.32, 1.0))
-    make_box("Microwave_Door", (-ROOM_W/4.0-0.85, ROOM_D-1.19, 1.10), (0.36, 0.02, 0.20), (0.14, 0.14, 0.16, 1.0))
+    make_chamfer_box("Microwave", (-ROOM_W/4.0-0.85, ROOM_D-1.0, 1.10), (0.48, 0.36, 0.28), (0.30, 0.30, 0.32, 1.0))
+    make_chamfer_box("Microwave_Door", (-ROOM_W/4.0-0.85, ROOM_D-1.19, 1.10), (0.36, 0.02, 0.20), (0.14, 0.14, 0.16, 1.0))
     # Upper cabinets + the under-cabinet light over the sink ("She
     # does not turn on the overhead. She turns on, instead, the
     # small under-cabinet light over the sink")
-    make_box("Upper_Cabinets", (-ROOM_W/4.0, ROOM_D-0.55, 1.95), (2.40, 0.34, 0.75), (0.72, 0.60, 0.40, 1.0))
+    make_chamfer_box("Upper_Cabinets", (-ROOM_W/4.0, ROOM_D-0.55, 1.95), (2.40, 0.34, 0.75), (0.72, 0.60, 0.40, 1.0))
     for di, dx in enumerate((-0.85, -0.28, 0.28, 0.85)):
         make_box(f"Upper_Cab_Door_{di}", (-ROOM_W/4.0+dx, ROOM_D-0.72, 1.95), (0.52, 0.02, 0.68), (0.78, 0.66, 0.42, 1.0))
     make_box("UnderCab_Light", (-ROOM_W/4.0, ROOM_D-0.74, 1.56), (1.10, 0.05, 0.04), (0.98, 0.92, 0.74, 1.0))
@@ -75,7 +75,7 @@ def build_table():
     Since June she has been sitting in Mike's chair, which is on the
     short side near the window." Short side toward the E window."""
     tx, ty = 0.5, ROOM_D/2.0
-    make_box("Table_Top", (tx, ty, 0.74), (1.60, 0.95, 0.05), COL_WOOD)
+    make_chamfer_box("Table_Top", (tx, ty, 0.74), (1.60, 0.95, 0.05), COL_WOOD)
     for li, (lx, ly) in enumerate([(-0.70, -0.38), (0.70, -0.38), (-0.70, 0.38), (0.70, 0.38)]):
         make_box(f"Table_Leg_{li}", (tx+lx, ty+ly, 0.36), (0.06, 0.06, 0.72), COL_WOOD)
     # Sammy's chair — the HEAD (west end)
@@ -101,9 +101,9 @@ def build_table():
 
 def build_fridge():
     fx, fy = +ROOM_W/2.0 - 0.50, ROOM_D - 1.0
-    make_box("Fridge_Body", (fx, fy, 1.00), (0.70, 0.70, 2.00), (0.86, 0.84, 0.80, 1.0))
-    make_box("Fridge_DoorTop", (fx-0.34, fy, 1.50), (0.04, 0.66, 0.80), (0.86, 0.84, 0.80, 1.0))
-    make_box("Fridge_DoorBot", (fx-0.34, fy, 0.40), (0.04, 0.66, 1.00), (0.86, 0.84, 0.80, 1.0))
+    make_chamfer_box("Fridge_Body", (fx, fy, 1.00), (0.70, 0.70, 2.00), (0.86, 0.84, 0.80, 1.0))
+    make_chamfer_box("Fridge_DoorTop", (fx-0.34, fy, 1.50), (0.04, 0.66, 0.80), (0.86, 0.84, 0.80, 1.0))
+    make_chamfer_box("Fridge_DoorBot", (fx-0.34, fy, 0.40), (0.04, 0.66, 1.00), (0.86, 0.84, 0.80, 1.0))
     make_box("Fridge_Handle", (fx-0.38, fy-0.20, 1.30), (0.04, 0.04, 0.50), P.METAL_STEEL)
     for mi in range(6):
         make_box(f"Magnet_{mi}", (fx-0.36, fy-0.20+mi*0.10, 1.60), (0.005, 0.06, 0.08), P.SNACK_TINTS[mi%len(P.SNACK_TINTS)])
@@ -124,7 +124,7 @@ def build_window():
     make_box("Back_Door", (ROOM_W/2.0-0.05, 1.20, 1.05), (0.05, 0.90, 2.10), (0.70, 0.58, 0.40, 1.0))
     make_cyl("Back_Door_Knob", (ROOM_W/2.0-0.12, 0.85, 1.02), 0.03, 0.04, (0.66, 0.52, 0.24, 1.0), axis='X', segments=8)
     # Small flat-screen above the breakfast nook corner, volume low
-    make_box("Nook_TV", (2.60, ROOM_D-0.10, 1.85), (0.68, 0.05, 0.40), (0.10, 0.10, 0.12, 1.0))
+    make_chamfer_box("Nook_TV", (2.60, ROOM_D-0.10, 1.85), (0.68, 0.05, 0.40), (0.10, 0.10, 0.12, 1.0))
     make_box("Nook_TV_Screen", (2.60, ROOM_D-0.135, 1.85), (0.60, 0.01, 0.34), (0.30, 0.36, 0.42, 1.0))
 
 def build_ceiling_infra():

@@ -55,9 +55,15 @@ NAME_HINT = re.compile(r"sky|backdrop|horizon|cyclo", re.I)
 BOXES = []
 
 
-def _make_box(name, center, half, color=None, *a, **k):
+def _make_box(name, center, size, color=None, *a, **k):
+    # `size` is FULL extents — every real make_box (both the _props
+    # one and the vendored model-chapter copies) halves internally.
+    # Recording it unhalved inflated every box 2x for the audit's
+    # whole first life: reach was overstated by up to one prop-size,
+    # thickness tests ran against doubled walls, and the camera
+    # collision checks were double-conservative.
     BOXES.append((str(name), tuple(float(c) for c in center),
-                  tuple(abs(float(h)) for h in half)))
+                  tuple(abs(float(s)) / 2.0 for s in size)))
     return types.SimpleNamespace(name=str(name))
 
 
@@ -125,8 +131,7 @@ def install_stubs():
     sys.modules["_props"] = pkg
 
     def _rec_prism(name, center, size, color=None, *a, **k):
-        return _make_box(name, center,
-                         tuple(abs(float(v)) / 2.0 for v in size))
+        return _make_box(name, center, size)
 
     def _rec_taper(name, center, r_bottom, r_top=0.0, height=1.0,
                    color=None, segments=10, axis='Z', *a, **k):

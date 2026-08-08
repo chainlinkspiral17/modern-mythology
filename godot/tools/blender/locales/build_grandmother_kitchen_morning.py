@@ -3,7 +3,7 @@ import os, sys
 _BT = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)), ".."))
 if _BT not in sys.path: sys.path.insert(0, _BT)
 from _props import palette as P
-from _props.geometry import clear_scene, make_box, make_cyl, export_glb
+from _props.geometry import clear_scene, make_box, make_chamfer_box, make_cyl, export_glb
 from _props.structure import make_floor, make_wall, make_ceiling, make_crown_molding, make_window
 from _props.store_fixtures import make_counter, make_counter_bullnose, make_register
 from _props.shelving import make_snack_aisle, make_endcap
@@ -62,7 +62,7 @@ def build_table():
 
 def build_stove():
     sx, sy = +ROOM_W/4.0, ROOM_D-1.0
-    make_box("Stove_Body", (sx, sy, 0.45), (0.80, 0.70, 0.90), (0.92, 0.88, 0.82, 1.0))
+    make_chamfer_box("Stove_Body", (sx, sy, 0.45), (0.80, 0.70, 0.90), (0.92, 0.88, 0.82, 1.0))
     make_box("Stove_Top", (sx, sy, 0.92), (0.80, 0.70, 0.04), P.METAL_BLACK)
     for bi, (bx, by) in enumerate([(-0.22, -0.16), (+0.22, -0.16), (-0.22, +0.16), (+0.22, +0.16)]):
         make_cyl(f"Burner_{bi}", (sx+bx, sy+by, 0.94), 0.08, 0.02, P.METAL_STEEL)
@@ -86,7 +86,7 @@ def build_dressing():
     corner floor plant."""
     # China hutch against the west wall
     hx = -ROOM_W/2.0 + 0.28
-    make_box("Hutch_Body", (hx, ROOM_D/2.0, 1.05), (0.44, 1.20, 2.10), COL_WOOD)
+    make_chamfer_box("Hutch_Body", (hx, ROOM_D/2.0, 1.05), (0.44, 1.20, 2.10), COL_WOOD)
     for sh in range(3):
         make_box(f"Hutch_Glass_{sh}", (hx-0.20, ROOM_D/2.0, 1.20+sh*0.02), (0.02, 1.10, 0.02), (0.78, 0.84, 0.90, 0.4))
         for pi in range(4):
@@ -119,13 +119,13 @@ def build_hero_props():
     make_window("Kitchen_Window", (-ROOM_W/4.0, ROOM_D-0.05, 0), width=1.40, height=1.00)
     make_box("Window_Sill", (-ROOM_W/4.0, ROOM_D-0.20, 1.02), (1.55, 0.22, 0.05), COL_WOOD)
     # The kitchen radio, just a radio
-    make_box("Kitchen_Radio", (-1.75, ROOM_D-0.20, 1.12), (0.24, 0.14, 0.14), (0.44, 0.30, 0.22, 1.0))
+    make_chamfer_box("Kitchen_Radio", (-1.75, ROOM_D-0.20, 1.12), (0.24, 0.14, 0.14), (0.44, 0.30, 0.22, 1.0))
     make_cyl("Radio_Dial", (-1.66, ROOM_D-0.28, 1.12), 0.03, 0.02, (0.86, 0.82, 0.72, 1.0), axis='Y', segments=8)
     # The small wooden salt box
-    make_box("Salt_Box", (-0.95, ROOM_D-0.20, 1.095), (0.10, 0.10, 0.09), (0.58, 0.44, 0.28, 1.0))
+    make_chamfer_box("Salt_Box", (-0.95, ROOM_D-0.20, 1.095), (0.10, 0.10, 0.09), (0.58, 0.44, 0.28, 1.0))
     # Microwave, counter east end
-    make_box("Microwave", (-0.45, ROOM_D-1.0, 1.14), (0.50, 0.38, 0.30), (0.82, 0.80, 0.76, 1.0))
-    make_box("Microwave_Door", (-0.45, ROOM_D-1.20, 1.14), (0.38, 0.02, 0.22), (0.20, 0.20, 0.22, 1.0))
+    make_chamfer_box("Microwave", (-0.45, ROOM_D-1.0, 1.14), (0.50, 0.38, 0.30), (0.82, 0.80, 0.76, 1.0))
+    make_chamfer_box("Microwave_Door", (-0.45, ROOM_D-1.20, 1.14), (0.38, 0.02, 0.22), (0.20, 0.20, 0.22, 1.0))
     # The yellow plate with the chip, set at his place
     make_cyl("Yellow_Plate", (0.0, ROOM_D/2.0-0.30, 0.77), 0.12, 0.012, (0.90, 0.82, 0.38, 1.0), segments=14)
     make_box("Plate_Chip", (0.115, ROOM_D/2.0-0.30, 0.775), (0.02, 0.02, 0.014), (0.96, 0.93, 0.74, 1.0))

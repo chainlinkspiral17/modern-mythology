@@ -21,7 +21,7 @@ import os, sys
 _BT = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)), ".."))
 if _BT not in sys.path: sys.path.insert(0, _BT)
 from _props import palette as P
-from _props.geometry import clear_scene, make_box, make_cyl, export_glb
+from _props.geometry import clear_scene, make_box, make_chamfer_box, make_cyl, export_glb
 from _props.structure import make_floor, make_wall, make_ceiling, make_window
 from _props.store_fixtures import make_counter, make_register
 from _props.decor import make_wall_clock, make_floor_plant, make_faded_poster
@@ -107,8 +107,8 @@ def build_repair_back():
     """The back of the shop: repair bench + work lamp + the lathe,
     each with its own light — 'turned on the back light over the
     repair bench.'"""
-    make_box("Repair_Bench", (0.0, 6.2, 0.45), (2.20, 0.70, 0.90), COL_WOOD)
-    make_box("Repair_Bench_Top", (0.0, 6.2, 0.92), (2.26, 0.76, 0.05), (0.32, 0.24, 0.16, 1.0))
+    make_chamfer_box("Repair_Bench", (0.0, 6.2, 0.45), (2.20, 0.70, 0.90), COL_WOOD)
+    make_chamfer_box("Repair_Bench_Top", (0.0, 6.2, 0.92), (2.26, 0.76, 0.05), (0.32, 0.24, 0.16, 1.0))
     # A board mid-repair on the bench, trucks off
     make_box("Repair_Board", (0.15, 6.15, 0.98), (0.80, 0.22, 0.03), DECK_TINTS[1])
     make_box("Repair_Truck_Loose", (-0.45, 6.3, 0.96), (0.16, 0.10, 0.06), COL_STEEL)
@@ -118,7 +118,7 @@ def build_repair_back():
     # The single small tube over the bench (its own light)
     make_fluorescent_tube_fixture("Bench_Light", (0.0, 6.2, CEIL), length=1.00, width=0.20)
     # The lathe, west of the bench against the N wall
-    make_box("Lathe_Bed", (-2.6, 6.35, 1.00), (1.40, 0.40, 0.25), COL_STEEL)
+    make_chamfer_box("Lathe_Bed", (-2.6, 6.35, 1.00), (1.40, 0.40, 0.25), COL_STEEL)
     for lx in (-3.15, -2.05):
         make_box(f"Lathe_Leg_{lx:.2f}", (lx, 6.35, 0.45), (0.14, 0.34, 0.90), (0.30, 0.32, 0.34, 1.0))
     make_cyl("Lathe_Head", (-3.05, 6.35, 1.20), 0.14, 0.24, (0.30, 0.32, 0.34, 1.0), axis='X', segments=10)
@@ -129,7 +129,7 @@ def build_office():
     """The back office: Devon's old desk, the chair Devon also left,
     two cardboard boxes of bearings on the floor."""
     make_box("Office_Part", (3.55, 6.0, CEIL/2.0), (1.90, 0.10, CEIL), PAL_WALL["wall"])
-    make_box("Devon_Desk", (3.9, 6.55, 0.37), (1.00, 0.55, 0.74), COL_WOOD)
+    make_chamfer_box("Devon_Desk", (3.9, 6.55, 0.37), (1.00, 0.55, 0.74), COL_WOOD)
     make_box("Devon_Chair_Seat", (3.35, 6.35, 0.44), (0.40, 0.40, 0.05), COL_WOOD)
     make_box("Devon_Chair_Back", (3.35, 6.53, 0.72), (0.40, 0.05, 0.50), COL_WOOD)
     for bi, by in enumerate((6.2, 6.5)):
@@ -147,14 +147,14 @@ def build_retail():
             make_box(f"Part_{r}_{c}", (4.38, py, pz), (0.07, 0.16, 0.14),
                      [(0.72, 0.26, 0.22, 1.0), COL_STEEL, (0.86, 0.72, 0.26, 1.0)][(r + c) % 3])
     # Wheels in a low bin
-    make_box("Wheel_Bin", (4.15, 2.4, 0.35), (0.55, 0.55, 0.55), COL_WOOD)
+    make_chamfer_box("Wheel_Bin", (4.15, 2.4, 0.35), (0.55, 0.55, 0.55), COL_WOOD)
     for wi in range(4):
         make_cyl(f"Wheel_{wi}", (4.05 + (wi % 2) * 0.18, 2.3 + (wi // 2) * 0.18, 0.66),
                  0.07, 0.09, (0.92, 0.88, 0.66, 1.0), segments=10)
     # Front window + the parents' bench under it (NO staged board
     # games — the mural across Main does the window's work)
     make_window("Win_S", (-2.75, 0.10, 1.55), width=2.60, height=1.50)
-    make_box("Wait_Bench", (-2.75, 0.55, 0.42), (1.80, 0.42, 0.06), COL_WOOD)
+    make_chamfer_box("Wait_Bench", (-2.75, 0.55, 0.42), (1.80, 0.42, 0.06), COL_WOOD)
     for lx in (-3.5, -2.0):
         make_box(f"Wait_Bench_Leg_{lx:.1f}", (lx, 0.55, 0.20), (0.08, 0.36, 0.40), (0.30, 0.22, 0.14, 1.0))
 

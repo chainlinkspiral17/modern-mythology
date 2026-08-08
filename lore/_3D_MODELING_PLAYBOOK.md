@@ -243,6 +243,27 @@ comments confessing they wanted spheres the module didn't have.
 Still to convert: harmony/riverfront local sphere helpers retire
 onto _props.geometry in a later pass.
 
+Wave 4 (2026-08-08) — HERO FURNITURE: 118 make_box→make_chamfer_box
+swaps across the 14 decked interiors, targeted at exactly the
+objects the new insert shots frame from ~1m: every kitchen fridge
+(miller/henderson/kowalski + doors), stoves, microwaves,
+grandmother's hutch + radio, the missing-link jukebox + pie case +
+counters, cosmic's display case/tower/safe/filing/mini-fridge,
+centro's meat + deli cases + freezer + produce base, finn's
+counter/dresser/kitchen table, board-lords' repair bench + Devon's
+desk + wheel bin, caldwell's side table + bike seat/basket, the
+bakery oven/proofer/mixer/flour bin, both bedrooms' mattress +
+pillow + comforter stacks, dressers, monitor, console, skateboard.
+Soft goods went BLOB, not chamfer: finn's nine-month duffel and
+the bakery's three flour sacks (noise-displaced, per-sack seeds).
+Chamfer default 0.05 self-clamps to 45% of the smallest
+half-extent, so a pillow rounds subtly while a fridge takes a
+visible edge cut. Verified: all 14 builders re-run through the
+audit stub with byte-identical object-name sets.
+Deliberately NOT done: retiring harmony/riverfront's local sphere
+helpers — they draw correct spheres today; a refactor of two
+model-scale builders for zero visual delta is not a drafting pass.
+
 
 
 The project's lowpoly aesthetic looks like Atari 2600 if everything is

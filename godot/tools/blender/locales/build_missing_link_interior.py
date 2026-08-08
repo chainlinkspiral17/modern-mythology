@@ -13,7 +13,7 @@ import os, sys
 _BT = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)), ".."))
 if _BT not in sys.path: sys.path.insert(0, _BT)
 from _props import palette as P
-from _props.geometry import clear_scene, make_box, make_cyl, export_glb
+from _props.geometry import clear_scene, make_box, make_chamfer_box, make_cyl, export_glb
 from _props.structure import make_floor, make_wall, make_ceiling, make_crown_molding, make_window
 from _props.food_service import make_coffee_pots
 from _props.decor import make_wall_clock, make_floor_plant, make_faded_poster, make_calendar
@@ -64,9 +64,9 @@ def build_shell():
 
 def build_counter_and_stools():
     cy = 4.30
-    make_box("Counter_Body", (0.0, cy, 0.53), (5.40, 0.62, 1.02), COL_LAMINATE)
+    make_chamfer_box("Counter_Body", (0.0, cy, 0.53), (5.40, 0.62, 1.02), COL_LAMINATE)
     make_box("Counter_Front", (0.0, cy - 0.32, 0.53), (5.40, 0.02, 1.00), COL_STEEL)
-    make_box("Counter_Top", (0.0, cy, 1.07), (5.60, 0.76, 0.05), COL_LAMINATE)
+    make_chamfer_box("Counter_Top", (0.0, cy, 1.07), (5.60, 0.76, 0.05), COL_LAMINATE)
     # Chrome edge band + kick
     make_cyl("Counter_EdgeBand", (0.0, cy - 0.39, 1.05), 0.03, 5.40, COL_CHROME, axis='X', segments=8)
     make_box("Counter_Kick", (0.0, cy - 0.32, 0.10), (5.40, 0.04, 0.18), COL_BLACK)
@@ -94,14 +94,14 @@ def build_counter_and_stools():
 
 def build_backbar_kitchen():
     by = ROOM_D - 0.45
-    make_box("BackCounter_Body", (0.0, by, 0.45), (5.60, 0.46, 0.90), COL_STEEL)
-    make_box("BackCounter_Top", (0.0, by, 0.92), (5.60, 0.50, 0.05), COL_STEEL)
+    make_chamfer_box("BackCounter_Body", (0.0, by, 0.45), (5.60, 0.46, 0.90), COL_STEEL)
+    make_chamfer_box("BackCounter_Top", (0.0, by, 0.92), (5.60, 0.50, 0.05), COL_STEEL)
     # Coffee station (drip pots on burners)
     make_coffee_pots("CoffeeStation", (-2.2, by - 0.02, 0.95), pots=2,
                      palette={"glass": COL_GLASS})
     # Pie / dessert display case
     px = +1.5
-    make_box("PieCase_Body", (px, by, 1.20), (0.60, 0.44, 0.56), COL_STEEL)
+    make_chamfer_box("PieCase_Body", (px, by, 1.20), (0.60, 0.44, 0.56), COL_STEEL)
     make_box("PieCase_Glass", (px, by - 0.22, 1.20), (0.56, 0.02, 0.52), COL_GLASS)
     for ti, tz in enumerate([1.06, 1.30]):
         make_box(f"PieCase_Shelf_{ti}", (px, by, tz), (0.54, 0.40, 0.02), COL_CHROME)
@@ -111,7 +111,7 @@ def build_backbar_kitchen():
                      segments=12)
     # Milkshake multi-spindle mixer
     mx = +2.5
-    make_box("Shake_Body", (mx, by, 1.14), (0.24, 0.28, 0.44), (0.40, 0.60, 0.52, 1.0))
+    make_chamfer_box("Shake_Body", (mx, by, 1.14), (0.24, 0.28, 0.44), (0.40, 0.60, 0.52, 1.0))
     for mi in range(3):
         make_cyl(f"Shake_Spindle_{mi}", (mx - 0.08 + mi * 0.08, by - 0.06, 1.02), 0.015, 0.20,
                  COL_CHROME, segments=6)
@@ -159,7 +159,7 @@ def build_window_booths():
 
 def build_jukebox():
     jx, jy = +ROOM_W/2.0 - 0.35, 2.90
-    make_box("Juke_Body", (jx, jy, 0.66), (0.44, 0.72, 1.30), COL_JUKE)
+    make_chamfer_box("Juke_Body", (jx, jy, 0.66), (0.44, 0.72, 1.30), COL_JUKE)
     make_cyl("Juke_Dome", (jx, jy, 1.38), 0.34, 0.44, COL_JUKE, axis='X', segments=12)
     # Glowing selection panel facing W (into the room)
     make_box("Juke_Panel", (jx - 0.23, jy, 1.05), (0.03, 0.56, 0.42), COL_JUKE_GLOW)
@@ -218,8 +218,8 @@ def build_exterior():
             make_cyl(f"Pump_{pi}_Hose", (px + 0.28, py, 0.90), 0.02, 0.50, COL_BLACK, segments=6)
             make_box(f"Pump_{pi}_Nozzle", (px + 0.28, py, 0.60), (0.06, 0.10, 0.14), COL_STEEL)
     # Depot bench under the awning
-    make_box("DepotBench_Seat", (+3.0, -1.6, 0.42), (1.20, 0.36, 0.06), COL_WOOD)
-    make_box("DepotBench_Back", (+3.0, -1.42, 0.66), (1.20, 0.06, 0.42), COL_WOOD)
+    make_chamfer_box("DepotBench_Seat", (+3.0, -1.6, 0.42), (1.20, 0.36, 0.06), COL_WOOD)
+    make_chamfer_box("DepotBench_Back", (+3.0, -1.42, 0.66), (1.20, 0.06, 0.42), COL_WOOD)
     for lx in (-0.5, +0.5):
         make_box(f"DepotBench_Leg_{lx:+.0f}", (+3.0 + lx, -1.6, 0.20), (0.06, 0.30, 0.40), COL_BLACK)
 

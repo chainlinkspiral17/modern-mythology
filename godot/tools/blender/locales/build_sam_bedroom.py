@@ -8,7 +8,7 @@ import os, sys
 _BT = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)), ".."))
 if _BT not in sys.path: sys.path.insert(0, _BT)
 from _props import palette as P
-from _props.geometry import clear_scene, make_box, make_cyl, export_glb
+from _props.geometry import clear_scene, make_box, make_chamfer_box, make_cyl, export_glb
 from _props.structure import make_floor, make_wall, make_ceiling, make_crown_molding, make_window
 from _props.store_fixtures import make_counter, make_counter_bullnose, make_register
 from _props.shelving import make_snack_aisle, make_endcap
@@ -44,11 +44,11 @@ def build_bed():
     for di in range(3):
         make_box(f"Bed_Drawer_{di}", (bx+0.64, by-0.6+di*0.6, 0.24), (0.02, 0.52, 0.36), (0.30, 0.36, 0.30, 1.0))
         make_cyl(f"Bed_DrawerPull_{di}", (bx+0.66, by-0.6+di*0.6, 0.24), 0.03, 0.04, P.METAL_STEEL, axis='X', segments=6)
-    make_box("Bed_Mattress", (bx, by, 0.56), (1.10, 1.70, 0.16), (0.90, 0.90, 0.86, 1.0))
+    make_chamfer_box("Bed_Mattress", (bx, by, 0.56), (1.10, 1.70, 0.16), (0.90, 0.90, 0.86, 1.0))
     make_box("Bed_Headboard", (bx, by+0.90, 0.86), (1.24, 0.10, 0.68), COL_WOOD)
-    make_box("Bed_Pillow", (bx, by+0.58, 0.68), (0.96, 0.36, 0.12), (0.92, 0.92, 0.86, 1.0))
-    make_box("Bed_Comforter", (bx, by-0.24, 0.66), (1.14, 1.14, 0.12), COL_BLUE)
-    make_box("Bed_ComforterStripe", (bx, by-0.6, 0.68), (1.14, 0.30, 0.13), COL_ACCENT)
+    make_chamfer_box("Bed_Pillow", (bx, by+0.58, 0.68), (0.96, 0.36, 0.12), (0.92, 0.92, 0.86, 1.0))
+    make_chamfer_box("Bed_Comforter", (bx, by-0.24, 0.66), (1.14, 1.14, 0.12), COL_BLUE)
+    make_chamfer_box("Bed_ComforterStripe", (bx, by-0.6, 0.68), (1.14, 0.30, 0.13), COL_ACCENT)
 
 def build_desk_lamp():
     dx, dy = +ROOM_W/4.0, 1.5
@@ -60,11 +60,11 @@ def build_desk_lamp():
     make_cyl("Lamp_Col", (dx-0.34, dy+0.18, 0.98), 0.02, 0.40, P.METAL_BLACK)
     make_cyl("Lamp_Head", (dx-0.24, dy+0.20, 1.16), 0.06, 0.10, COL_ACCENT)
     # Chunky CRT monitor + keyboard
-    make_box("Monitor_Body", (dx+0.10, dy+0.14, 0.98), (0.42, 0.40, 0.38), (0.24, 0.24, 0.26, 1.0))
+    make_chamfer_box("Monitor_Body", (dx+0.10, dy+0.14, 0.98), (0.42, 0.40, 0.38), (0.24, 0.24, 0.26, 1.0))
     make_box("Monitor_Screen", (dx+0.10, dy-0.06, 0.98), (0.34, 0.02, 0.28), (0.30, 0.52, 0.70, 1.0))
     make_box("Keyboard", (dx+0.10, dy-0.20, 0.77), (0.40, 0.16, 0.03), (0.32, 0.32, 0.34, 1.0))
     # Game console + controller
-    make_box("Console", (dx-0.30, dy-0.16, 0.79), (0.26, 0.20, 0.06), P.METAL_BLACK)
+    make_chamfer_box("Console", (dx-0.30, dy-0.16, 0.79), (0.26, 0.20, 0.06), P.METAL_BLACK)
     make_box("Controller", (dx+0.02, dy-0.22, 0.77), (0.14, 0.09, 0.03), COL_ACCENT)
     # Comic sketches / drawing pad + pencils spread on the desk
     make_box("SketchPad", (dx-0.20, dy+0.12, 0.765), (0.30, 0.40, 0.01), P.PAPER)
@@ -113,11 +113,11 @@ def build_dressing():
     bx, by = -ROOM_W/4.0, ROOM_D/2.0
     TINTS = P.SNACK_TINTS
     nsx = bx + 0.95
-    make_box("Nightstand", (nsx, by+0.7, 0.28), (0.40, 0.40, 0.56), COL_WOOD)
+    make_chamfer_box("Nightstand", (nsx, by+0.7, 0.28), (0.40, 0.40, 0.56), COL_WOOD)
     make_box("Clock", (nsx, by+0.7, 0.62), (0.16, 0.10, 0.10), P.METAL_BLACK)
     # Shelf on the east wall: comic longboxes on the bottom, figures on top
     shx = ROOM_W/2.0 - 0.18
-    make_box("Shelf_Body", (shx, ROOM_D-1.4, 0.80), (0.34, 1.20, 1.60), COL_WOOD)
+    make_chamfer_box("Shelf_Body", (shx, ROOM_D-1.4, 0.80), (0.34, 1.20, 1.60), COL_WOOD)
     # comic longboxes (long white boxes) on the lowest shelf
     for c in range(3):
         make_box(f"Longbox_{c}", (shx-0.02, ROOM_D-1.9+c*0.36, 0.34), (0.28, 0.32, 0.20), (0.88, 0.86, 0.80, 1.0))
@@ -134,7 +134,7 @@ def build_dressing():
     for di in range(3):
         make_cyl(f"Beanbag_{di}", (0.3, 1.1, 0.14+di*0.10), 0.42-di*0.08, 0.12, COL_ACCENT, segments=14)
     # Skateboard leaning against the south wall
-    make_box("Skateboard", (0.9, 0.15, 0.42), (0.20, 0.06, 0.80), COL_BLUE)
+    make_chamfer_box("Skateboard", (0.9, 0.15, 0.42), (0.20, 0.06, 0.80), COL_BLUE)
     for wi, wz in enumerate([0.10, 0.74]):
         make_cyl(f"Skate_Wheel_{wi}", (0.9, 0.10, wz), 0.05, 0.10, (0.86, 0.82, 0.30, 1.0), axis='X', segments=8)
     # Laundry pile in the corner
@@ -149,7 +149,7 @@ def build_hero_props():
     curtains, dresser + phone, closet doors, bedside lamp."""
     # Box spring under the mattress — "She slides it between the
     # mattress and the box spring."
-    make_box("Box_Spring", (-1.0, 2.5, 0.50), (1.12, 1.72, 0.14), (0.86, 0.84, 0.78, 1.0))
+    make_chamfer_box("Box_Spring", (-1.0, 2.5, 0.50), (1.12, 1.72, 0.14), (0.86, 0.84, 0.78, 1.0))
     make_box("Sams_Notebook", (-0.55, 2.10, 0.58), (0.16, 0.22, 0.012), (0.72, 0.62, 0.30, 1.0))
     # Curtains on the N window
     make_cyl("Curtain_Rod", (0.0, 4.88, 2.14), 0.015, 1.60, (0.20, 0.19, 0.20, 1.0), axis='X', segments=6)
@@ -157,7 +157,7 @@ def build_hero_props():
         make_box(f"Curtain_{cx:+.2f}", (cx, 4.88, 1.50), (0.44, 0.04, 1.20), (0.55, 0.60, 0.70, 1.0))
     # Dresser with the phone on it ("Sam's phone, on her dresser,
     # buzzes")
-    make_box("Dresser", (1.62, 2.0, 0.42), (0.50, 1.00, 0.84), (0.46, 0.34, 0.22, 1.0))
+    make_chamfer_box("Dresser", (1.62, 2.0, 0.42), (0.50, 1.00, 0.84), (0.46, 0.34, 0.22, 1.0))
     for di in range(3):
         make_box(f"Dresser_Drawer_{di}", (1.36, 2.0, 0.20 + di * 0.26), (0.02, 0.86, 0.20), (0.38, 0.28, 0.18, 1.0))
     make_box("Sams_Phone", (1.62, 2.0, 0.855), (0.08, 0.15, 0.012), (0.12, 0.12, 0.14, 1.0))

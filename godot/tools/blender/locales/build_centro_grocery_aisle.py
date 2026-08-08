@@ -13,7 +13,7 @@ import os, sys
 _BT = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)), ".."))
 if _BT not in sys.path: sys.path.insert(0, _BT)
 from _props import palette as P
-from _props.geometry import clear_scene, make_box, make_cyl, export_glb
+from _props.geometry import clear_scene, make_box, make_chamfer_box, make_cyl, export_glb
 from _props.structure import make_floor, make_wall, make_ceiling, make_crown_molding, make_window
 from _props.store_fixtures import (make_counter, make_counter_bullnose, make_register,
                                    make_credit_card_terminal)
@@ -120,7 +120,7 @@ def build_checkout():
 def build_produce():
     # Angled two-tier produce stand in the SW, piled with fruit/veg.
     px, py = -3.6, 2.4
-    make_box("Produce_Base", (px, py, 0.30), (1.40, 1.40, 0.60), (0.42, 0.30, 0.20, 1.0))
+    make_chamfer_box("Produce_Base", (px, py, 0.30), (1.40, 1.40, 0.60), (0.42, 0.30, 0.20, 1.0))
     make_box("Produce_Tier1", (px, py-0.10, 0.66), (1.40, 1.20, 0.06), (0.52, 0.38, 0.26, 1.0))
     make_box("Produce_Tier2", (px, py+0.30, 0.92), (1.40, 0.60, 0.06), (0.52, 0.38, 0.26, 1.0))
     # Piles of produce (short cylinders grouped by colour)
@@ -209,7 +209,7 @@ def build_dressing():
         make_cyl(f"Cart_Wheel_{wi}", (cx+wx, cy+wy, 0.06), 0.06, 0.05, P.METAL_BLACK, axis='X', segments=8)
     # Chest freezer, east wall (body + frosty glass lid)
     fx = ROOM_W/2.0 - 0.6
-    make_box("Freezer_Body", (fx, ROOM_D-3.4, 0.45), (0.90, 1.80, 0.90), (0.82, 0.86, 0.90, 1.0))
+    make_chamfer_box("Freezer_Body", (fx, ROOM_D-3.4, 0.45), (0.90, 1.80, 0.90), (0.82, 0.86, 0.90, 1.0))
     make_box("Freezer_Lid", (fx, ROOM_D-2.0, 0.94), (0.86, 1.72, 0.04), (0.80, 0.90, 0.96, 0.5))
     make_box("Freezer_Kick", (fx, ROOM_D-2.0, 0.06), (0.90, 1.80, 0.12), P.METAL_STEEL)
     # Hanging aisle-number sign over the aisle mouth
@@ -231,18 +231,18 @@ def build_departments():
     steel = (0.60, 0.62, 0.63, 1.0)
     glass = (0.55, 0.62, 0.66, 0.4)
     # Meat counter, E wall north end
-    make_box("Meat_Case_Body", (4.15, 6.6, 0.55), (1.10, 2.40, 1.10), (0.86, 0.86, 0.84, 1.0))
+    make_chamfer_box("Meat_Case_Body", (4.15, 6.6, 0.55), (1.10, 2.40, 1.10), (0.86, 0.86, 0.84, 1.0))
     make_box("Meat_Case_Glass", (3.62, 6.6, 1.25), (0.04, 2.30, 0.55), glass)
     for mi in range(4):
         make_box(f"Meat_Tray_{mi}", (4.05, 5.75 + mi * 0.55, 1.12), (0.60, 0.42, 0.06),
                  [(0.72, 0.32, 0.30, 1.0), (0.80, 0.46, 0.42, 1.0)][mi % 2])
     # Deli case + wipe-down worktop
-    make_box("Deli_Case_Body", (4.15, 4.0, 0.55), (1.00, 1.60, 1.10), (0.86, 0.86, 0.84, 1.0))
+    make_chamfer_box("Deli_Case_Body", (4.15, 4.0, 0.55), (1.00, 1.60, 1.10), (0.86, 0.86, 0.84, 1.0))
     make_box("Deli_Case_Glass", (3.68, 4.0, 1.28), (0.04, 1.50, 0.50), glass)
     make_box("Deli_Worktop", (4.62, 4.0, 0.92), (0.30, 1.50, 0.05), steel)
     # Pallet + hand truck + the forgotten pallet jack
     make_box("Pallet", (-1.0, 1.55, 0.08), (1.00, 1.20, 0.16), (0.62, 0.48, 0.30, 1.0))
-    make_box("Pallet_Load", (-1.0, 1.55, 0.46), (0.90, 1.05, 0.60), (0.68, 0.56, 0.38, 1.0))
+    make_chamfer_box("Pallet_Load", (-1.0, 1.55, 0.46), (0.90, 1.05, 0.60), (0.68, 0.56, 0.38, 1.0))
     make_box("HandTruck_Frame", (-1.9, 1.5, 0.60), (0.08, 0.40, 1.20), (0.62, 0.28, 0.24, 1.0))
     make_box("HandTruck_Toe", (-1.86, 1.5, 0.04), (0.30, 0.44, 0.03), steel)
     make_box("PalletJack_Forks", (2.9, 1.55, 0.08), (0.56, 1.10, 0.12), (0.86, 0.52, 0.16, 1.0))
@@ -252,16 +252,16 @@ def build_departments():
     make_box("Cooler_Door_Leaf", (-3.72, 7.35, 1.00), (0.30, 0.05, 1.90), (0.82, 0.84, 0.86, 1.0))
     make_box("Milk_Crate_Prop", (-3.55, 7.15, 0.14), (0.32, 0.32, 0.28), (0.30, 0.44, 0.62, 1.0))
     # Frozen run: upright glass doors, W wall north end
-    make_box("Frozen_Bank", (-4.62, 6.8, 1.10), (0.55, 1.70, 2.20), (0.80, 0.84, 0.88, 1.0))
+    make_chamfer_box("Frozen_Bank", (-4.62, 6.8, 1.10), (0.55, 1.70, 2.20), (0.80, 0.84, 0.88, 1.0))
     for fi in range(3):
         make_box(f"Frozen_Door_{fi}", (-4.34, 6.25 + fi * 0.56, 1.15), (0.03, 0.50, 1.80), glass)
     # The cardboard bale at the aisle's north mouth
-    make_box("Card_Bale", (-3.1, 5.2, 0.70), (0.90, 0.80, 1.40), (0.44, 0.48, 0.52, 1.0))
+    make_chamfer_box("Card_Bale", (-3.1, 5.2, 0.70), (0.90, 0.80, 1.40), (0.44, 0.48, 0.52, 1.0))
     make_box("Card_Bale_Lid", (-3.1, 5.2, 1.42), (0.86, 0.76, 0.05), steel)
     make_box("Card_Bale_Stack", (-3.1, 5.15, 0.90), (0.70, 0.60, 0.30), (0.66, 0.54, 0.36, 1.0))
     # Register cubby (Diego's backpack)
-    make_box("Register_Cubby", (3.15, 1.6, 0.45), (0.36, 1.20, 0.90), (0.46, 0.42, 0.36, 1.0))
-    make_box("Cubby_Backpack", (3.15, 1.4, 0.30), (0.28, 0.30, 0.42), (0.30, 0.36, 0.30, 1.0))
+    make_chamfer_box("Register_Cubby", (3.15, 1.6, 0.45), (0.36, 1.20, 0.90), (0.46, 0.42, 0.36, 1.0))
+    make_chamfer_box("Cubby_Backpack", (3.15, 1.4, 0.30), (0.28, 0.30, 0.42), (0.30, 0.36, 0.30, 1.0))
     # The dented can of cream of mushroom, leaking under row 4F
     make_cyl("Dented_Can", (1.2, 2.22, 0.055), 0.05, 0.11, (0.84, 0.80, 0.70, 1.0), axis='X', segments=10)
     make_cyl("Can_Puddle", (1.28, 2.20, 0.006), 0.09, 0.005, (0.72, 0.68, 0.56, 1.0), segments=10)

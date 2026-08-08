@@ -3,7 +3,7 @@ import os, sys
 _BT = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)), ".."))
 if _BT not in sys.path: sys.path.insert(0, _BT)
 from _props import palette as P
-from _props.geometry import clear_scene, make_box, make_cyl, export_glb
+from _props.geometry import clear_scene, make_box, make_chamfer_box, make_cyl, export_glb
 from _props.structure import make_floor, make_wall, make_ceiling, make_crown_molding, make_window
 from _props.store_fixtures import make_counter, make_counter_bullnose, make_register
 from _props.shelving import make_snack_aisle, make_endcap
@@ -36,8 +36,8 @@ def build_railing():
 def _make_rocker(prefix, cx, cy):
     """Compound rocking chair — seat faces south (toward the railing),
     back at +Y with spindles, armrests, four legs, two curved runners."""
-    make_box(f"{prefix}_Seat", (cx, cy, 0.46), (0.50, 0.46, 0.05), COL_WOOD)
-    make_box(f"{prefix}_Back", (cx, cy+0.22, 0.76), (0.48, 0.04, 0.56), COL_WOOD)
+    make_chamfer_box(f"{prefix}_Seat", (cx, cy, 0.46), (0.50, 0.46, 0.05), COL_WOOD)
+    make_chamfer_box(f"{prefix}_Back", (cx, cy+0.22, 0.76), (0.48, 0.04, 0.56), COL_WOOD)
     for si in range(4):
         sx = cx - 0.18 + si*0.12
         make_box(f"{prefix}_Spindle_{si}", (sx, cy+0.22, 0.74), (0.02, 0.03, 0.50), COL_ACCENT)
@@ -67,7 +67,7 @@ def build_porchlamp():
 def build_dressing():
     # Side table between the rockers, with a mug and a folded paper.
     tx, ty = 0.0, ROOM_D/2.0
-    make_box("SideTable_Top", (tx, ty, 0.52), (0.44, 0.44, 0.04), COL_WOOD)
+    make_chamfer_box("SideTable_Top", (tx, ty, 0.52), (0.44, 0.44, 0.04), COL_WOOD)
     for k,(ox,oy) in enumerate([(-0.18,-0.18),(0.18,-0.18),(-0.18,0.18),(0.18,0.18)]):
         make_box(f"SideTable_Leg_{k}", (tx+ox, ty+oy, 0.26), (0.04,0.04,0.50), COL_WOOD)
     # Canon (vol6 ch21): "two glasses of iced tea — the one she
@@ -85,9 +85,9 @@ def build_dressing():
                  P.METAL_BLACK, segments=14, axis='Y')
     make_box("MayaBike_TopBar", (bx, by, 0.60), (0.70, 0.03, 0.04), (0.30,0.42,0.55,1.0))
     make_box("MayaBike_DownBar", (bx-0.12, by, 0.47), (0.52, 0.03, 0.04), (0.30,0.42,0.55,1.0))
-    make_box("MayaBike_Seat", (bx-0.28, by, 0.76), (0.15, 0.06, 0.05), P.METAL_BLACK)
+    make_chamfer_box("MayaBike_Seat", (bx-0.28, by, 0.76), (0.15, 0.06, 0.05), P.METAL_BLACK)
     make_box("MayaBike_Bars", (bx+0.40, by, 0.80), (0.05, 0.28, 0.04), P.METAL_BLACK)
-    make_box("MayaBike_Basket", (bx+0.50, by, 0.62), (0.20, 0.24, 0.16), (0.46,0.36,0.24,1.0))
+    make_chamfer_box("MayaBike_Basket", (bx+0.50, by, 0.62), (0.20, 0.24, 0.16), (0.46,0.36,0.24,1.0))
     # Doormat at the door.
     make_box("Doormat", (0.0, 0.55, 0.02), (0.90, 0.55, 0.03), P.RUBBER_MAT)
     make_box("Doormat_Trim", (0.0, 0.55, 0.03), (0.78, 0.44, 0.02), (0.36,0.30,0.22,1.0))

@@ -3,7 +3,7 @@ import os, sys
 _BT = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)), ".."))
 if _BT not in sys.path: sys.path.insert(0, _BT)
 from _props import palette as P
-from _props.geometry import clear_scene, make_box, make_cyl, export_glb
+from _props.geometry import clear_scene, make_box, make_chamfer_box, make_blob, make_cyl, export_glb
 from _props.structure import make_floor, make_wall, make_ceiling, make_crown_molding, make_window
 from _props.store_fixtures import make_counter, make_counter_bullnose, make_register
 from _props.shelving import make_snack_aisle, make_endcap
@@ -47,9 +47,9 @@ def build_bed():
             make_box(f"Bed_Post_{sx}_{sy}", (bx + sx * 0.9, by + sy * 0.5, 0.25),
                      (0.08, 0.08, 0.50), COL_WOOD)
     make_box("Bed_Deck", (bx, by, 0.52), (1.92, 1.14, 0.06), COL_WOOD)
-    make_box("Bed_Mattress", (bx, by, 0.62), (1.80, 1.04, 0.16), (0.92, 0.86, 0.78, 1.0))
-    make_box("Bed_Comforter", (bx, by - 0.04, 0.72), (1.82, 1.02, 0.10), COL_ACCENT)
-    make_box("Bed_Pillow", (bx, by + 0.40, 0.74), (1.40, 0.30, 0.12), P.PAPER)
+    make_chamfer_box("Bed_Mattress", (bx, by, 0.62), (1.80, 1.04, 0.16), (0.92, 0.86, 0.78, 1.0))
+    make_chamfer_box("Bed_Comforter", (bx, by - 0.04, 0.72), (1.82, 1.02, 0.10), COL_ACCENT)
+    make_chamfer_box("Bed_Pillow", (bx, by + 0.40, 0.74), (1.40, 0.30, 0.12), P.PAPER)
     for ci, cx in enumerate((bx - 0.55, bx + 0.1, bx + 0.65)):
         make_box(f"Bed_Crate_{ci}", (cx, by, 0.18), (0.40, 0.90, 0.28), (0.34, 0.24, 0.16, 1.0))
 
@@ -70,10 +70,10 @@ def build_rug():
 
 def build_dressing():
     bx, by = -0.5, ROOM_D - 1.35
-    make_box("Nightstand", (bx+1.2, by, 0.28), (0.40, 0.40, 0.56), COL_WOOD)
+    make_chamfer_box("Nightstand", (bx+1.2, by, 0.28), (0.40, 0.40, 0.56), COL_WOOD)
     make_box("Clock", (bx+1.2, by, 0.62), (0.15, 0.10, 0.10), P.METAL_BLACK)
     # Dresser against the east wall
-    make_box("Dresser", (ROOM_W/2.0-0.30, ROOM_D-1.3, 0.45), (0.44, 1.0, 0.90), COL_WOOD)
+    make_chamfer_box("Dresser", (ROOM_W/2.0-0.30, ROOM_D-1.3, 0.45), (0.44, 1.0, 0.90), COL_WOOD)
     for di in range(3):
         make_box(f"Dresser_Drawer_{di}", (ROOM_W/2.0-0.52, ROOM_D-1.3, 0.24+di*0.24), (0.02, 0.86, 0.16), (0.34, 0.24, 0.16, 1.0))
     # Desk chair
@@ -104,25 +104,26 @@ def build_hero_props():
     partition of the one-bedroom."""
     wood = (0.44, 0.32, 0.20, 1.0)
     # Kitchen table + two facing chairs
-    make_box("Kitchen_Table", (0.0, 1.60, 0.74), (1.10, 0.80, 0.05), wood)
+    make_chamfer_box("Kitchen_Table", (0.0, 1.60, 0.74), (1.10, 0.80, 0.05), wood)
     for lx, ly in ((-0.48, 1.28), (0.48, 1.28), (-0.48, 1.92), (0.48, 1.92)):
         make_box(f"KT_Leg_{lx:+.2f}_{ly:.2f}", (lx, ly, 0.37), (0.05, 0.05, 0.72), wood)
     for ci, cy in enumerate((0.95, 2.25)):
         make_box(f"KT_Chair_{ci}_Seat", (0.0, cy, 0.44), (0.40, 0.40, 0.05), wood)
         make_box(f"KT_Chair_{ci}_Back", (0.0, cy + (0.18 if ci else -0.18), 0.72), (0.40, 0.05, 0.52), wood)
     # The folded cloth + three pieces of charred wood
-    make_box("Folded_Cloth", (0.0, 1.60, 0.775), (0.40, 0.30, 0.008), (0.82, 0.78, 0.68, 1.0))
+    make_chamfer_box("Folded_Cloth", (0.0, 1.60, 0.775), (0.40, 0.30, 0.008), (0.82, 0.78, 0.68, 1.0))
     for wi in range(3):
         make_box(f"Charred_Wood_{wi}", (-0.12 + wi * 0.12, 1.60, 0.79), (0.08, 0.03, 0.025), (0.10, 0.09, 0.08, 1.0))
     # The crow's chair beside the bed — tall back, the perch
     make_box("Perch_Chair_Seat", (0.55, 3.65, 0.45), (0.42, 0.42, 0.05), (0.36, 0.26, 0.17, 1.0))
     make_box("Perch_Chair_Back", (0.55, 3.86, 0.70), (0.42, 0.05, 0.52), (0.36, 0.26, 0.17, 1.0))
     make_cyl("Perch_Chair_Rail", (0.55, 3.86, 0.97), 0.022, 0.42, (0.30, 0.22, 0.14, 1.0), segments=6, axis='X')
-    # The duffel, SE corner, nine months
-    make_box("Duffel", (1.85, 0.55, 0.18), (0.70, 0.34, 0.36), (0.34, 0.36, 0.30, 1.0))
+    # The duffel, SE corner, nine months — soft canvas, not luggage
+    make_blob("Duffel", (1.85, 0.55, 0.18), 0.34, (0.34, 0.36, 0.30, 1.0),
+              noise=0.14, seed=7, squash=0.55)
     make_box("Duffel_Strap", (1.85, 0.55, 0.37), (0.55, 0.06, 0.03), (0.24, 0.25, 0.22, 1.0))
     # Counter along the W wall: kettle + cone
-    make_box("Counter", (-1.85, 1.30, 0.44), (0.70, 1.60, 0.88), (0.50, 0.44, 0.36, 1.0))
+    make_chamfer_box("Counter", (-1.85, 1.30, 0.44), (0.70, 1.60, 0.88), (0.50, 0.44, 0.36, 1.0))
     make_box("Counter_Top", (-1.85, 1.30, 0.92), (0.74, 1.66, 0.05), (0.34, 0.28, 0.22, 1.0))
     make_cyl("Kettle", (-1.80, 0.90, 1.03), 0.09, 0.16, (0.62, 0.64, 0.65, 1.0), segments=10)
     make_cyl("Pour_Cone", (-1.80, 1.55, 1.02), 0.06, 0.09, (0.86, 0.82, 0.74, 1.0), segments=8)

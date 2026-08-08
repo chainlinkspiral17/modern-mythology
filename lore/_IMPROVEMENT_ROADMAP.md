@@ -99,6 +99,19 @@ are the louisiana_road failure exactly), then the shallowest views.
 `diner`, `graustark` and `riverfront` import `mathutils.Vector` and
 need a richer stub before they can be measured at all.
 
+**2026-08-08 · recorder calibration + wave 4 (hero furniture).**
+The audit's box recorder was treating builders' `size` argument
+(full extents) as half-extents — every plain box measured 2× for
+the audit's whole first life. Fixed; all 101 builders re-measured
+at true extents; still 0 flagged (the stump fixes hold under the
+honest metric). Then de-Minecraft wave 4: 118 make_box→
+make_chamfer_box swaps + 4 blob conversions (finn's duffel, the
+bakery flour sacks) across the 14 decked interiors — targeted at
+the hero objects the new insert shots frame from ~1m. Ledger
+detail in the 3D playbook. Wave 5 candidates: chamfer sweep for
+the 5-6-use tier once it earns decks; harmony/riverfront sphere-
+helper retirement stays deliberately deferred (zero visual delta).
+
 ### Workstream · SLOWSTICK PRODUCTION PASS (user-directed · 2026-08-03)
 
 *"Visual logic, detail and sophistication."* Per-stick direction +

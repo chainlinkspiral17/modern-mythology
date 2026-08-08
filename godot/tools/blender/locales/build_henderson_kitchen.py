@@ -3,7 +3,7 @@ import os, sys
 _BT = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)), ".."))
 if _BT not in sys.path: sys.path.insert(0, _BT)
 from _props import palette as P
-from _props.geometry import clear_scene, make_box, make_cyl, export_glb
+from _props.geometry import clear_scene, make_box, make_chamfer_box, make_cyl, export_glb
 from _props.structure import make_floor, make_wall, make_ceiling, make_crown_molding, make_window
 from _props.store_fixtures import make_counter, make_counter_bullnose, make_register
 from _props.shelving import make_snack_aisle, make_endcap
@@ -43,12 +43,12 @@ def build_counter():
     make_box("Sink_Bowl", (-ROOM_W/4.0, ROOM_D-1.0, 0.86), (0.50, 0.40, 0.12), (0.86, 0.86, 0.84, 1.0))
     make_cyl("Sink_Faucet", (-ROOM_W/4.0, ROOM_D-1.10, top_z+0.04), 0.015, 0.30, P.METAL_STEEL)
     # Stove
-    make_box("Stove_Body", (ROOM_W/4.0, ROOM_D-1.0, 0.45), (0.70, 0.70, 0.92), (0.86, 0.84, 0.80, 1.0))
+    make_chamfer_box("Stove_Body", (ROOM_W/4.0, ROOM_D-1.0, 0.45), (0.70, 0.70, 0.92), (0.86, 0.84, 0.80, 1.0))
     make_box("Stove_Top", (ROOM_W/4.0, ROOM_D-1.0, 0.92), (0.70, 0.70, 0.04), P.METAL_BLACK)
 
 def build_table():
     tx, ty = 0.0, ROOM_D/2.0
-    make_box("Table_Top", (tx, ty, 0.74), (1.20, 0.80, 0.04), COL_WOOD)
+    make_chamfer_box("Table_Top", (tx, ty, 0.74), (1.20, 0.80, 0.04), COL_WOOD)
     for li in range(4):
         lx = tx + (-0.54, +0.54, -0.54, +0.54)[li]
         ly = ty + (-0.34, -0.34, +0.34, +0.34)[li]
@@ -68,9 +68,9 @@ def build_clock():
 
 def build_fridge():
     fx, fy = +ROOM_W/2.0 - 0.50, 1.5
-    make_box("Fridge_Body", (fx, fy, 1.00), (0.70, 0.70, 2.00), (0.86, 0.84, 0.80, 1.0))
-    make_box("Fridge_DoorTop", (fx-0.34, fy, 1.50), (0.04, 0.66, 0.80), (0.86, 0.84, 0.80, 1.0))
-    make_box("Fridge_DoorBot", (fx-0.34, fy, 0.40), (0.04, 0.66, 1.00), (0.86, 0.84, 0.80, 1.0))
+    make_chamfer_box("Fridge_Body", (fx, fy, 1.00), (0.70, 0.70, 2.00), (0.86, 0.84, 0.80, 1.0))
+    make_chamfer_box("Fridge_DoorTop", (fx-0.34, fy, 1.50), (0.04, 0.66, 0.80), (0.86, 0.84, 0.80, 1.0))
+    make_chamfer_box("Fridge_DoorBot", (fx-0.34, fy, 0.40), (0.04, 0.66, 1.00), (0.86, 0.84, 0.80, 1.0))
     make_box("Fridge_Handle", (fx-0.38, fy-0.20, 1.30), (0.04, 0.04, 0.50), P.METAL_STEEL)
     for mi in range(6):
         make_box(f"Magnet_{mi}", (fx-0.36, fy-0.20+mi*0.10, 1.60), (0.005, 0.06, 0.08), P.SNACK_TINTS[mi%len(P.SNACK_TINTS)])
@@ -109,7 +109,7 @@ def build_hero_props():
     make_window("Front_Window", (1.45, 0.05, 0), width=0.90, height=1.05)
     # The basement door, E wall, dark stair void behind
     make_box("Basement_Doorframe", (ROOM_W/2.0-0.04, 1.6, 1.08), (0.10, 1.00, 2.16), wood)
-    make_box("Basement_Door", (ROOM_W/2.0-0.07, 1.6, 1.05), (0.05, 0.85, 2.05), (0.42, 0.32, 0.22, 1.0))
+    make_chamfer_box("Basement_Door", (ROOM_W/2.0-0.07, 1.6, 1.05), (0.05, 0.85, 2.05), (0.42, 0.32, 0.22, 1.0))
     make_box("Basement_Void", (ROOM_W/2.0-0.02, 1.6, 1.00), (0.02, 0.80, 2.00), (0.06, 0.05, 0.05, 1.0))
     # Stair mouth (up), S gap edge
     make_box("Stair_Newel", (0.92, 0.15, 0.60), (0.10, 0.10, 1.20), wood)
@@ -117,11 +117,11 @@ def build_hero_props():
         make_box(f"Stair_Tread_{s}", (1.4, 0.20, 0.16 + s * 0.18), (0.80, 0.28, 0.05), wood)
     # Oven face on the stove front (the pot roast on warm)
     sx, sy = ROOM_W/4.0, ROOM_D-1.0
-    make_box("Oven_Door", (sx, sy-0.36, 0.50), (0.60, 0.03, 0.55), (0.72, 0.70, 0.66, 1.0))
+    make_chamfer_box("Oven_Door", (sx, sy-0.36, 0.50), (0.60, 0.03, 0.55), (0.72, 0.70, 0.66, 1.0))
     make_box("Oven_Window", (sx, sy-0.375, 0.55), (0.40, 0.015, 0.26), (0.14, 0.12, 0.10, 1.0))
     make_box("Oven_Handle", (sx, sy-0.39, 0.80), (0.50, 0.03, 0.04), (0.55, 0.57, 0.58, 1.0))
     # Microwave, counter east end
-    make_box("Microwave", (-0.25, ROOM_D-1.0, 1.14), (0.50, 0.38, 0.30), (0.30, 0.30, 0.32, 1.0))
+    make_chamfer_box("Microwave", (-0.25, ROOM_D-1.0, 1.14), (0.50, 0.38, 0.30), (0.30, 0.30, 0.32, 1.0))
     # Four place settings — the head setting is the shot
     tx, ty = 0.0, ROOM_D/2.0
     for si, (dx, dy) in enumerate(((-0.45, 0.0), (0.0, -0.32), (0.0, 0.32), (0.45, 0.0))):
