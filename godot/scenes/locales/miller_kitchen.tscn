@@ -301,3 +301,25 @@ offset_top = 360.0
 offset_right = 520.0
 offset_bottom = 980.0
 script = ExtResource("14_dbgm")
+
+
+; ── vn_shot coverage (2026-08-08 directing pass 3) ────────
+; rotation B: from the fridge corner looking back across the dinner table to the sink wall
+[node name="shot_establish_b" type="Marker3D" parent="." groups=["vn_shot"]]
+transform = Transform3D(-0.824932, -0.134206, 0.549068, 0, 0.971403, 0.237435, -0.565231, 0.195868, -0.801342, 2.05, 1.55, -5.3)
+metadata/fov = 56.0
+
+; rotation C: sink-side POV over the table toward the nook TV and back door
+[node name="shot_establish_c" type="Marker3D" parent="." groups=["vn_shot"]]
+transform = Transform3D(-0.581238, 0.162218, -0.7974, 0, 0.979928, 0.19935, 0.813733, 0.11587, -0.569572, -1.6, 1.5, -4.6)
+metadata/fov = 54.0
+
+; insert: the table setting - fruit bowl and four chairs
+[node name="shot_insert_table" type="Marker3D" parent="." groups=["vn_shot"]]
+transform = Transform3D(1, 0, -0, 0, 0.902604, 0.430473, 0, -0.430473, 0.902604, 0.5, 1.4, -1.7)
+metadata/fov = 42.0
+
+; insert: the fridge door - magnets, notes, the family surface
+[node name="shot_insert_fridge" type="Marker3D" parent="." groups=["vn_shot"]]
+transform = Transform3D(0.753425, 0.153285, -0.639418, 0, 0.972448, 0.233121, 0.657534, -0.175639, 0.732666, 1.7, 1.45, -3.9)
+metadata/fov = 42.0

@@ -339,32 +339,32 @@ script = ExtResource("14_dbgm")
 
 ; in the doors: runner, desk, Dean's portrait
 [node name="shot_establish_lobby" type="Marker3D" parent="." groups=["vn_shot"]]
-transform = Transform3D(0.975897, 0, -0.21823, -0.006546, 0.99955, -0.029273, 0.218131, 0.029996, 0.975458, 0.9, 1.7, -1.2)
+transform = Transform3D(0.975897, -0.006546, 0.218131, 0, 0.99955, 0.029996, -0.21823, -0.029273, 0.975458, 0.9, 1.7, -1.2)
 metadata/fov = 55.0
 
 ; Dean at forty-eight, sconce-lit
 [node name="shot_closeup_portrait" type="Marker3D" parent="." groups=["vn_shot"]]
-transform = Transform3D(1, 0, 0, 0, 0.9998, 0.019999, 0, -0.019999, 0.9998, 0, 1.75, -6.2)
+transform = Transform3D(1, 0, 0, 0, 0.9998, -0.019999, 0, 0.019999, 0.9998, 0, 1.75, -6.2)
 metadata/fov = 40.0
 
 ; across the desk clusters to the racks
 [node name="shot_wide_studio" type="Marker3D" parent="." groups=["vn_shot"]]
-transform = Transform3D(0.710914, 0, 0.703279, 0.021095, 0.99955, -0.021324, -0.702963, 0.029996, 0.710594, -4.5, 6.6, -1.4)
+transform = Transform3D(0.710914, 0.021095, -0.702963, 0, 0.99955, 0.029996, 0.703279, -0.021324, 0.710594, -4.5, 6.6, -1.4)
 metadata/fov = 62.0
 
 ; the half-sized Estuary 7 poster on the archive wall
 [node name="shot_closeup_estuary7" type="Marker3D" parent="." groups=["vn_shot"]]
-transform = Transform3D(-1, 0, -0, 0, 1, 0, 0, 0, -1, 0.55, 6.55, -1.6)
+transform = Transform3D(-1, 0, 0, 0, 1, 0, -0, 0, -1, 0.55, 6.55, -1.6)
 metadata/fov = 35.0
 
 ; the communal table + bunks, mid-card-game
 [node name="shot_wide_quarters" type="Marker3D" parent="." groups=["vn_shot"]]
-transform = Transform3D(0.682221, 0, -0.731146, -0.021931, 0.99955, -0.020464, 0.730817, 0.029996, 0.681914, 2.8, 11.55, -1)
+transform = Transform3D(0.682221, -0.021931, 0.730817, 0, 0.99955, 0.029996, -0.731146, -0.020464, 0.681914, 2.8, 11.55, -1)
 metadata/fov = 60.0
 
 ; through the door: the sixty-foot walk to the substrate
 [node name="shot_walk_portal" type="Marker3D" parent="." groups=["vn_shot"]]
-transform = Transform3D(1, 0, 0, 0, 0.99995, -0.01, 0, 0.01, 0.99995, 0, 16.6, -3.4)
+transform = Transform3D(1, 0, 0, 0, 0.99995, 0.01, 0, -0.01, 0.99995, 0, 16.6, -3.4)
 metadata/fov = 55.0
 
 ; the far door, handle-side, the exit Aria takes

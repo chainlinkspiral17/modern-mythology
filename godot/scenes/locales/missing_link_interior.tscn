@@ -326,3 +326,25 @@ offset_top = 360.0
 offset_right = 520.0
 offset_bottom = 980.0
 script = ExtResource("14_dbgm")
+
+
+; ── vn_shot coverage (2026-08-08 directing pass 3) ────────
+; rotation B: counterman POV over the counter to the booths and the pumps outside
+[node name="shot_establish_b" type="Marker3D" parent="." groups=["vn_shot"]]
+transform = Transform3D(-0.932798, -0.0639144, 0.354687, 0, 0.984149, 0.177343, -0.360399, 0.165426, -0.918012, 0.8, 1.7, -5)
+metadata/fov = 58.0
+
+; rotation C: from the jukebox looking down the length of the counter
+[node name="shot_establish_c" type="Marker3D" parent="." groups=["vn_shot"]]
+transform = Transform3D(0.429359, -0.0865139, 0.898981, 0, 0.995401, 0.095793, -0.903134, -0.0411296, 0.427384, 3.1, 1.6, -1.7)
+metadata/fov = 56.0
+
+; insert: the pie case on the back counter
+[node name="shot_insert_pie" type="Marker3D" parent="." groups=["vn_shot"]]
+transform = Transform3D(1, 0, -0, 0, 0.969302, 0.245872, 0, -0.245872, 0.969302, 1.5, 1.7, -3.5)
+metadata/fov = 40.0
+
+; insert: the jukebox
+[node name="shot_insert_juke" type="Marker3D" parent="." groups=["vn_shot"]]
+transform = Transform3D(0.644136, 0.260571, -0.719161, 0, 0.940188, 0.340655, 0.764911, -0.219428, 0.605609, 2.2, 1.4, -2.1)
+metadata/fov = 42.0

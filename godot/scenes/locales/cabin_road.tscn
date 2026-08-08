@@ -286,22 +286,22 @@ script = ExtResource("13_riff")
 ; until now. establish_b/_c join the coverage rotation.
 ; coverage rotation B: from the gravel bend looking BACK down over the creek and the transition line
 [node name="shot_establish_b" type="Marker3D" parent="." groups=["vn_shot"]]
-transform = Transform3D(-0.964529, 0, -0.263976, -0.0423273, 0.987061, 0.154658, 0.260561, 0.160345, -0.952049, 2.6, 1.9, -15.5)
+transform = Transform3D(-0.964529, -0.0423273, 0.260561, 0, 0.987061, 0.160345, -0.263976, 0.154658, -0.952049, 2.6, 1.9, -15.5)
 metadata/fov = 56.0
 
 ; coverage rotation C: creekside low, culvert and mossed stones, road above
 [node name="shot_establish_c" type="Marker3D" parent="." groups=["vn_shot"]]
-transform = Transform3D(0.164399, 0, 0.986394, 0.0647251, 0.997845, -0.0107875, -0.984268, 0.0656179, 0.164045, -3.5, 0.9, -9)
+transform = Transform3D(0.164399, 0.0647251, -0.984268, 0, 0.997845, 0.0656179, 0.986394, -0.0107875, 0.164045, -3.5, 0.9, -9)
 metadata/fov = 54.0
 
 ; insert: the leaning mile marker at the asphalt-to-gravel transition
 [node name="shot_insert_marker" type="Marker3D" parent="." groups=["vn_shot"]]
-transform = Transform3D(0.723356, 0, -0.690476, -0.11201, 0.986754, -0.117344, 0.68133, 0.162221, 0.713774, -1.6, 1.1, -4.9)
+transform = Transform3D(0.723356, -0.11201, 0.68133, 0, 0.986754, 0.162221, -0.690476, -0.117344, 0.713774, -1.6, 1.1, -4.9)
 metadata/fov = 38.0
 
 ; insert: the creek stones, moss caps wet
 [node name="shot_insert_stones" type="Marker3D" parent="." groups=["vn_shot"]]
-transform = Transform3D(0.529999, 0, 0.847998, 0.200858, 0.971543, -0.125537, -0.823867, 0.236862, 0.514917, 1.8, 0.8, -8.6)
+transform = Transform3D(0.529999, 0.200858, -0.823867, 0, 0.971543, 0.236862, 0.847998, -0.125537, 0.514917, 1.8, 0.8, -8.6)
 metadata/fov = 36.0
 
 [node name="HUD" type="CanvasLayer" parent="." groups=["ui"]]

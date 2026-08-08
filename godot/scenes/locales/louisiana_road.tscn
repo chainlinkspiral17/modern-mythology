@@ -347,22 +347,22 @@ script = ExtResource("13_riff")
 ; setups. establish_b/_c join the coverage rotation.
 ; coverage rotation B: east verge under the pole line, looking across at the stalled sedan
 [node name="shot_establish_b" type="Marker3D" parent="." groups=["vn_shot"]]
-transform = Transform3D(0.92502, 0, -0.379919, -0.0175529, 0.998932, -0.0427374, 0.379513, 0.0462016, 0.924032, 3.2, 1.7, 6)
+transform = Transform3D(0.92502, -0.0175529, 0.379513, 0, 0.998932, 0.0462016, -0.379919, -0.0427374, 0.924032, 3.2, 1.7, 6)
 metadata/fov = 58.0
 
 ; coverage rotation C: long lens south down the centerline — compression, someone approaching
 [node name="shot_establish_c" type="Marker3D" parent="." groups=["vn_shot"]]
-transform = Transform3D(-0.999841, 0, 0.0178543, 0.000509833, 0.999592, 0.0285507, -0.017847, 0.0285552, -0.999433, -1.5, 3.6, -24)
+transform = Transform3D(-0.999841, 0.000509833, -0.017847, 0, 0.999592, 0.0285552, 0.0178543, 0.0285507, -0.999433, -1.5, 3.6, -24)
 metadata/fov = 34.0
 
 ; insert: the stalled sedan on the west shoulder
 [node name="shot_insert_sedan" type="Marker3D" parent="." groups=["vn_shot"]]
-transform = Transform3D(0.808008, 0, 0.589172, 0.0786328, 0.991054, -0.107839, -0.583901, 0.133463, 0.800779, -4.3, 1.3, -5.6)
+transform = Transform3D(0.808008, 0.0786328, -0.583901, 0, 0.991054, 0.133463, 0.589172, -0.107839, 0.800779, -4.3, 1.3, -5.6)
 metadata/fov = 40.0
 
 ; wide: across the road into the swamp and cypress
 [node name="shot_wide_swamp" type="Marker3D" parent="." groups=["vn_shot"]]
-transform = Transform3D(6.12323e-17, 0, -1, -0.0399893, 0.9992, -2.44864e-18, 0.9992, 0.0399893, 6.11834e-17, 2, 2.2, -10)
+transform = Transform3D(6.12323e-17, -0.0399893, 0.9992, 0, 0.9992, 0.0399893, -1, -2.44864e-18, 6.11834e-17, 2, 2.2, -10)
 metadata/fov = 66.0
 
 [node name="HUD" type="CanvasLayer" parent="." groups=["ui"]]

@@ -158,6 +158,56 @@ no-op (fallback discipline — a script must never crash the reader).
 
 ## Recent lessons
 
+### 2026-08-08 · tscn Transform3D is ROW-major · every matrix marker was transposed
+
+- **THE BUG: 49 markers across three sessions serialized the basis
+  column-major; Godot's tscn format is ROW-major.** The stored matrix
+  was the transpose of the intent: mirrored aim, inverted pitch, and
+  a dutch roll. Every matrix-form vn_shot marker ever authored
+  (harmony_terrain and the four shop interiors from the original
+  shot-grammar session, the 8 road setups of pass 1, the 12 interior
+  setups of pass 2) carried it. Fixed by transposing the 9 basis
+  floats in place — stored = intendedᵀ, so the transpose restores the
+  intent exactly.
+- **The proof is structural and worth memorizing: row1 of
+  Ry(yaw)·Rx(pitch) is (0, cos p, −sin p) — the serialized zero sits
+  at FLOAT INDEX 3.** Editor-authored matrices (the classic default
+  light `Transform3D(0.707107, -0.5, 0.5, 0, 0.707107, ...)`, the
+  salty_tome Key) all have f3 = 0. The broken markers had f1 = 0.
+  Correct serialization: `(cy, sy·sp, sy·cp, 0, cp, −sp, −sy, cy·sp,
+  cy·cp, ox, oy, oz)`.
+- **A validation against your own earlier output is not a
+  validation.** The 08-04 lesson claimed the column convention was
+  "validated against harmony_terrain's hand-tuned markers" — but those
+  came from the same generator lineage. The independent referent that
+  broke the loop was an editor-authored matrix. Always test
+  serialization conventions against something the ENGINE wrote.
+- **Orthonormality checks can't catch a transpose** — the transpose
+  of a rotation is a rotation. The checks that do: f3 == 0 (no roll),
+  f4 > 0 (never upside down), and re-deriving forward = −(f2, f5, f8)
+  and confirming it points camera→target (< 0.5°). All three are now
+  in the pass-3 validator and should run on any future marker wave.
+- **The model chapters were immune because they use `position` +
+  `rotation` euler properties, not matrices.** That form has no
+  convention trap and reads better in diffs — prefer it for
+  hand-authored markers; keep matrices only for generator output
+  (where the validator runs).
+
+### 2026-08-08 · directing pass 3 · the next eight get their decks
+
+- miller_kitchen, cosmic_comics ×2, missing_link_interior, maya/sam
+  bedrooms, school_field_evening, centro_grocery_aisle: 4 setups each
+  (B/C rotation + two inserts), 32 markers, all aimed at
+  builder-extracted landmarks (the loose floorboard, the one-way
+  mirror, the pie case, the scoreboard). 13 locales now carry
+  rotation decks — 52 authored setups total.
+- **Give the inserts to the PLOT objects, not the pretty ones.**
+  maya_bedroom's insert is the loose floorboard cavity;
+  cosmic_comics' is the one-way mirror. When a scene cue says
+  [shot:insert x] the director already falls back gracefully, so an
+  insert marker is only worth authoring where the object carries
+  story weight.
+
 ### 2026-08-04 · coverage rotation + the roads get real setups
 
 - **A locale used 37 times through one photograph is not directed.**
@@ -176,8 +226,9 @@ no-op (fallback discipline — a script must never crash the reader).
 - **Compute framings from the builder's coordinates, not by eye.**
   Camera positions/targets in blender frame; yaw = atan2(-dx, dy),
   pitch = atan2(dz, ground distance); blender→godot origin is
-  (x, z, -y); the basis serializes as Ry(yaw)·Rx(pitch) columns —
-  validated against harmony_terrain's hand-tuned markers.
+  (x, z, -y). (CORRECTION 2026-08-08: this pass serialized the basis
+  column-major; tscn is ROW-major — see the lesson above. The
+  framings' intent was right; the serialization was transposed.)
 - **The setups are drafts until screenshotted.** Eight markers
   authored blind from geometry (verge, long-lens approach, sedan
   insert, swamp wide; the bend reverse, creekside, mile-marker and
