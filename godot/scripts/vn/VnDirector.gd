@@ -337,11 +337,15 @@ func _punch_in(shot_type: String, drift: bool) -> bool:
 	if cam == null:
 		return false
 	var rot: Vector3 = v["rotation"]
-	var fwd: Vector3 = Basis.from_euler(rot) * Vector3(0, 0, -1)
-	var dist := 1.2 if shot_type == "closeup" else 1.8
-	cam.position = (v["origin"] as Vector3) + fwd * dist
+	# ZOOM, don't dolly. The old fallback moved the camera 1.2-1.8m
+	# forward along the view — with no collision data that landed
+	# INSIDE shelving in tight interiors (a screen-filling product
+	# box where a scene should be). A lens push can never enter
+	# geometry; locales that want true dollied framings author
+	# closeup/insert markers.
+	cam.position = v["origin"] as Vector3
 	cam.rotation = rot
-	cam.fov = 44.0 if shot_type == "closeup" else 34.0
+	cam.fov = 30.0 if shot_type == "closeup" else 24.0
 	cam.make_current()
 	_set_letterbox(true)
 	_start_drift(drift)

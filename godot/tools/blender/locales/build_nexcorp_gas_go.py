@@ -331,18 +331,26 @@ def build_floor_props():
     ax, ay = -1.0, 4.0
     make_box("Aisle_Base", (ax, ay, 0.10),
              (5.0, 0.80, 0.20), COL_COUNTER_LAMINATE)
+    # Center spine panel the two shelf sides hang off (a real
+    # gondola). The old "shelves" were built (5.0, 0.04, 0.30) —
+    # thin VERTICAL walls, not shelf plates — so every product
+    # floated, half-buried in a 30cm steel fin ("clipping through
+    # each other at odd angles").
+    make_box("Aisle_Spine", (ax, ay, 0.95), (5.0, 0.06, 1.50), COL_METAL_STEEL)
     for sh in range(3):
         shz = 0.50 + sh * 0.45
         for sy_sgn in (-1, +1):
+            # Horizontal shelf plate, cantilevered off the spine
             make_box(f"Aisle_Shelf_{sh}_y{sy_sgn:+d}",
-                     (ax, ay + sy_sgn * 0.38, shz),
-                     (5.0, 0.04, 0.30), COL_METAL_STEEL)
+                     (ax, ay + sy_sgn * 0.21, shz),
+                     (5.0, 0.36, 0.04), COL_METAL_STEEL)
             for p in range(10):
-                px = ax - 2.3 + p * 0.50
+                px = ax - 2.25 + p * 0.50
                 tint = SNACK_TINTS[(sh + p) % len(SNACK_TINTS)]
+                ph = 0.20 + ((sh + p) % 3) * 0.05
                 make_box(f"Aisle_Product_{sh}_y{sy_sgn:+d}_{p}",
-                         (px, ay + sy_sgn * 0.30, shz + 0.18),
-                         (0.16, 0.20, 0.26), tint)
+                         (px, ay + sy_sgn * 0.23, shz + 0.02 + ph / 2.0),
+                         (0.16, 0.20, ph), tint)
     # Aisle top sign — corporate blue
     make_box("Aisle_Sign", (ax, ay, 2.30),
              (5.0, 0.10, 0.26), COL_WALL_NEXCORP)
