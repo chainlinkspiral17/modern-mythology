@@ -171,17 +171,20 @@ def build_bookcase_desk():
             h = 0.20 + 0.05 * ((i * 3 + zi) % 4)
             make_box(f"Book_{zi}_{i}", (wx, 1.92 + i * 0.125, z + 0.02 + h / 2.0),
                      (0.16, 0.10, h), SPINES[k])
-    # Writing desk + chair, W wall south of the case
-    make_box("Desk_Top", (wx + 0.15, 0.85, 0.74), (0.55, 1.0, 0.05), COL_WOOD_LT)
-    for ly in (0.42, 1.28):
-        make_box(f"Desk_Leg_{ly:.2f}", (wx + 0.36, ly, 0.37), (0.05, 0.05, 0.74), COL_WOOD)
-        make_box(f"Desk_Leg_i_{ly:.2f}", (wx - 0.06, ly, 0.37), (0.05, 0.05, 0.74), COL_WOOD)
-    make_box("Desk_Papers", (wx + 0.15, 0.85, 0.775), (0.32, 0.42, 0.01), COL_CANVAS)
-    make_cyl("Chair_Seat", (-1.9, 0.9, 0.46), 0.19, 0.05, COL_WOOD_LT, segments=10)
+    # Writing desk + chair — EAST wall, north of the window. It was
+    # on the W wall at y 0.85, which is the same stretch as the
+    # kitchenette: the desk stood INSIDE the kitchen counter.
+    dx, dy = 2.55, 4.15
+    make_box("Desk_Top", (dx, dy, 0.74), (0.55, 1.0, 0.05), COL_WOOD_LT)
+    for ly in (dy - 0.43, dy + 0.43):
+        make_box(f"Desk_Leg_{ly:.2f}", (dx - 0.21, ly, 0.37), (0.05, 0.05, 0.74), COL_WOOD)
+        make_box(f"Desk_Leg_i_{ly:.2f}", (dx + 0.21, ly, 0.37), (0.05, 0.05, 0.74), COL_WOOD)
+    make_box("Desk_Papers", (dx, dy, 0.775), (0.32, 0.42, 0.01), COL_CANVAS)
+    make_cyl("Chair_Seat", (2.0, dy, 0.46), 0.19, 0.05, COL_WOOD_LT, segments=10)
     for li in range(3):
         ang = li * 2.09
-        make_cyl(f"Chair_Leg_{li}", (-1.9 + 0.13 * math.cos(ang),
-                 0.9 + 0.13 * math.sin(ang), 0.22), 0.018, 0.44, COL_WOOD, segments=5)
+        make_cyl(f"Chair_Leg_{li}", (2.0 + 0.13 * math.cos(ang),
+                 dy + 0.13 * math.sin(ang), 0.22), 0.018, 0.44, COL_WOOD, segments=5)
 
 
 def build_kitchenette():
@@ -192,7 +195,9 @@ def build_kitchenette():
     make_box("Kit_Top", (-2.55, 0.75, 0.92), (0.90, 1.35, 0.05), COL_STEEL)
     make_box("Kit_Sink", (-2.55, 1.05, 0.93), (0.45, 0.40, 0.06), (0.40, 0.42, 0.44, 1.0))
     make_cyl("Kit_Faucet", (-2.78, 1.05, 1.05), 0.02, 0.22, COL_STEEL, segments=6)
-    make_box("Kit_Cupboard", (-2.72, 0.55, 1.85), (0.5, 0.9, 0.6), COL_WOOD)
+    # Cupboard pulled south + narrowed — at y 0.55 x 0.9 wide it ran
+    # through the mirror cabinet's corner.
+    make_box("Kit_Cupboard", (-2.72, 0.40, 1.85), (0.5, 0.7, 0.6), COL_WOOD)
     make_cyl("Kettle", (-2.45, 0.35, 1.02), 0.10, 0.18, COL_STEEL, segments=10)
     # The mirror cabinet over the sink, W wall — door hinged, ajar
     make_box("Mirror_Cabinet", (-2.90, 1.05, 1.62), (0.10, 0.50, 0.65), COL_WOOD)

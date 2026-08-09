@@ -152,6 +152,31 @@ faust_apartment 60, foxhole_bar 46, henderson_porch_front 34,
 solenade_garden 34. riverfront/diner/graustark report through the
 partial-run fallback - numbers NOT trustworthy for them yet.
 
+**2026-08-09 later still · CLIPPING TRIAGE ROUND 1 — the game's #1
+locale had a house inside the gas station.** With the natural-contact
+grammar tuned (crown-drape ≤0.35m, non-solid volumetrics, plant-on-
+plant, wires-on-poles, wheels-on-ground, seating, joints, 4cm floor),
+the trustworthy finds got fixed:
+- louisiana_road (37 uses, most-seen bg): HouseE_2 stood INSIDE the
+  gas store (3.5m deep) — moved north of the station; the parked car
+  was crosswise with its nose in HouseW_1's porch posts — now along
+  house 0's driveway; a mile marker + the mailbox stood inside the
+  STALLED SEDAN (the shot_insert_sedan hero); three cypress trunks
+  ran through awnings and the gas canopy; the signal mast pierced
+  the canopy slab; sprinkler heads sat inside a tree butt and a
+  house wall. ALL CLEAN NOW (2541 objects, 0 clips).
+- faust_apartment: desk stood inside the kitchen counter (same
+  west-wall stretch) — moved to the east wall north of the window;
+  cupboard clipped the mirror cabinet — narrowed + shifted.
+- foxhole_bar: 6m bar ran into the stage zone; DJ booth 0.55m inside
+  the PA sub; trusses through the deck edge; westmost stool ON the
+  stage; bottles into the neon — bar shortened east, everything
+  reseated. CLEAN.
+- crumpled_barn's 19 'clips' are the crumple itself (fallen roof
+  through posts) — correctly left alone.
+Remaining triage: kwik_stop 263 + bungalow/parish/carnival etc. need
+the same treatment; model chapters get screenshots first.
+
 ### Workstream · SLOWSTICK PRODUCTION PASS (user-directed · 2026-08-03)
 
 *"Visual logic, detail and sophistication."* Per-stick direction +

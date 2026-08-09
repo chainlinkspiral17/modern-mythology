@@ -35,27 +35,30 @@ def build_shell():
     make_ceiling("Ceil", (0.0, ROOM_D/2.0, CEIL), size_x=ROOM_W+0.4, size_y=ROOM_D+0.4)
 
 def build_bar():
-    # Long bar counter running along X, in front of the north wall.
+    # Bar counter along the north wall — EAST side only. At 6m
+    # centered on x=0 it ran straight into the stage zone (the
+    # stage's front rail post and the deck itself stood inside the
+    # bar body).
     top_z = 1.14
-    make_box("Bar_Front", (0.0, 5.0, 0.55), (6.0, 0.60, 1.10), COL_BAR)
-    make_box("Bar_Top",   (0.0, 4.94, top_z), (6.2, 0.80, 0.06), COL_BAR_TOP)
-    make_box("Bar_Kick",  (0.0, 4.70, 0.10), (6.0, 0.05, 0.20), COL_BLACK)
+    make_box("Bar_Front", (0.7, 5.0, 0.55), (4.6, 0.60, 1.10), COL_BAR)
+    make_box("Bar_Top",   (0.7, 4.94, top_z), (4.8, 0.80, 0.06), COL_BAR_TOP)
+    make_box("Bar_Kick",  (0.7, 4.70, 0.10), (4.6, 0.05, 0.20), COL_BLACK)
     # Brass foot rail along the customer (south) side.
-    make_cyl("Bar_FootRail", (0.0, 4.62, 0.16), 0.03, 6.0, COL_BRASS, axis='X', segments=8)
-    for si, sx in enumerate([-2.5, -1.25, 0.0]):
+    make_cyl("Bar_FootRail", (0.7, 4.62, 0.16), 0.03, 4.6, COL_BRASS, axis='X', segments=8)
+    for si, sx in enumerate([-0.8, 0.7, 2.2]):
         make_cyl(f"Bar_RailPost_{si}", (sx, 4.62, 0.08), 0.02, 0.16, COL_STEEL)
     # Back-bar bottle shelves against the north wall.
     for shf in range(3):
-        sz = 1.30 + shf * 0.44
-        make_box(f"BackBar_Shelf_{shf}", (0.0, 5.78, sz), (5.6, 0.24, 0.03), COL_WOOD)
-        for bi in range(16):
-            bx = -2.80 + bi * 0.373
+        sz = 1.30 + shf * 0.40
+        make_box(f"BackBar_Shelf_{shf}", (0.7, 5.78, sz), (4.2, 0.24, 0.03), COL_WOOD)
+        for bi in range(14):
+            bx = -1.25 + bi * 0.30
             tint = [COL_BOTTLE_AMBER, COL_BOTTLE_CLEAR, COL_BOTTLE_GREEN][(shf + bi) % 3]
             make_cyl(f"BackBar_Bottle_{shf}_{bi}", (bx, 5.85, sz + 0.17), 0.045, 0.30, tint, segments=6)
     # Long back mirror behind the bottles.
-    make_box("BackBar_Mirror", (0.0, 5.87, 2.05), (5.6, 0.02, 1.50), (0.30, 0.32, 0.36, 0.85))
+    make_box("BackBar_Mirror", (0.7, 5.87, 2.05), (4.2, 0.02, 1.50), (0.30, 0.32, 0.36, 0.85))
     # Draft-beer tap tower on the bar top.
-    _make_tap_tower("Taps", -1.4, 5.05, top_z)
+    _make_tap_tower("Taps", -0.9, 5.05, top_z)
 
 def _make_tap_tower(prefix, cx, cy, top_z):
     make_cyl(f"{prefix}_Base",   (cx, cy, top_z + 0.03), 0.06, 0.06, COL_STEEL, segments=12)
@@ -73,7 +76,9 @@ def _make_bar_stool(prefix, cx, cy, seat_r=0.19):
     make_cyl(f"{prefix}_Base",   (cx, cy, 0.03), seat_r, 0.04, COL_BLACK, segments=12)
 
 def build_stools():
-    for si, sx in enumerate([-2.4, -1.2, 0.0, 1.2, 2.4]):
+    # Recentered on the shortened bar — the westmost stool used to
+    # stand on the stage deck.
+    for si, sx in enumerate([-1.3, -0.3, 0.7, 1.7, 2.7]):
         _make_bar_stool(f"Stool_{si}", sx, 4.1)
 
 def _make_high_top(prefix, tx, ty):
@@ -98,7 +103,7 @@ def _make_neon_sign(prefix, cx, cz, w, h, col):
 
 def build_neon_signs():
     _make_neon_sign("Neon_Magenta", -2.1, 2.60, 1.30, 0.60, COL_NEON_MAGENTA)
-    _make_neon_sign("Neon_Cyan",     2.1, 2.60, 1.10, 0.55, COL_NEON_CYAN)
+    _make_neon_sign("Neon_Cyan",     2.1, 2.72, 1.10, 0.55, COL_NEON_CYAN)
     _make_neon_sign("Neon_Amber",    0.0, 2.66, 0.90, 0.45, COL_NEON_AMBER)
 
 def build_pendants():
@@ -131,11 +136,13 @@ def build_venue_side():
     # Stage deck + lip along the W wall
     make_box("Stage_Deck", (-3.15, 3.0, 0.15), (1.7, 5.0, 0.30), deckcol)
     make_box("Stage_Lip", (-2.28, 3.0, 0.16), (0.06, 5.0, 0.32), (0.28, 0.22, 0.18, 1.0))
-    # Two truss towers with three LED fixtures each
-    for ti, ty in enumerate((0.8, 5.2)):
-        make_box(f"Truss_{ti}", (-2.45, ty, 1.30), (0.25, 0.25, 2.60), truss)
+    # Two truss towers with three LED fixtures each — standing ON
+    # the deck (they used to straddle the deck edge and pass through
+    # its body).
+    for ti, ty in enumerate((1.9, 4.1)):
+        make_box(f"Truss_{ti}", (-2.7, ty, 1.45), (0.25, 0.25, 2.30), truss)
         for li, lz in enumerate((1.2, 1.8, 2.4)):
-            make_box(f"Truss_{ti}_LED_{li}", (-2.30, ty, lz), (0.14, 0.16, 0.12),
+            make_box(f"Truss_{ti}_LED_{li}", (-2.55, ty, lz), (0.14, 0.16, 0.12),
                      [(0.72, 0.26, 0.60, 1.0), (0.26, 0.55, 0.80, 1.0), (0.86, 0.62, 0.22, 1.0)][li])
     # Front-of-stage rail (Carl's spot)
     for py in (1.0, 2.3, 3.7, 5.0):
@@ -147,17 +154,20 @@ def build_venue_side():
     for lx in (2.62, 3.18):
         make_box(f"FOH_Leg_{lx:.2f}", (lx, 2.0, 0.45), (0.06, 1.3, 0.90), (0.20, 0.19, 0.20, 1.0))
     make_box("FOH_Cooler", (2.9, 2.0, 0.24), (0.45, 0.60, 0.44), (0.72, 0.20, 0.18, 1.0))
-    # DJ booth beside the stage + laptop
-    make_box("DJ_Booth", (-2.6, 0.55, 0.55), (1.1, 0.6, 1.10), (0.18, 0.17, 0.19, 1.0))
-    make_box("DJ_Laptop_Base", (-2.6, 0.55, 1.12), (0.30, 0.22, 0.02), (0.55, 0.57, 0.58, 1.0))
-    make_box("DJ_Laptop_Screen", (-2.6, 0.66, 1.24), (0.30, 0.02, 0.20), (0.16, 0.20, 0.26, 1.0))
+    # DJ booth beside the stage + laptop — east of the lip, clear of
+    # PA_0 (they used to occupy the same corner, booth 0.55m inside
+    # the sub).
+    make_box("DJ_Booth", (-1.7, 0.48, 0.55), (1.1, 0.6, 1.10), (0.18, 0.17, 0.19, 1.0))
+    make_box("DJ_Laptop_Base", (-1.7, 0.48, 1.12), (0.30, 0.22, 0.02), (0.55, 0.57, 0.58, 1.0))
+    make_box("DJ_Laptop_Screen", (-1.7, 0.59, 1.24), (0.30, 0.02, 0.20), (0.16, 0.20, 0.26, 1.0))
     # The one work light at the back
     make_cyl("Work_Light_Stand", (3.4, 5.3, 0.90), 0.03, 1.80, truss, segments=6)
     make_cyl("Work_Light_Head", (3.35, 5.25, 1.85), 0.10, 0.14, (0.96, 0.88, 0.66, 1.0), segments=8)
-    # PA flanking the stage
-    for si, sy in enumerate((0.6, 5.4)):
-        make_box(f"PA_{si}_Sub", (-2.9, sy, 0.35), (0.60, 0.60, 0.70), (0.12, 0.11, 0.10, 1.0))
-        make_box(f"PA_{si}_Top", (-2.9, sy, 1.30), (0.52, 0.52, 1.10), (0.14, 0.12, 0.11, 1.0))
+    # PA flanking the stage — fully on the deck, stacked on its
+    # surface (z base 0.30), not embedded through it.
+    for si, sy in enumerate((0.9, 5.1)):
+        make_box(f"PA_{si}_Sub", (-2.9, sy, 0.65), (0.60, 0.60, 0.70), (0.12, 0.11, 0.10, 1.0))
+        make_box(f"PA_{si}_Top", (-2.9, sy, 1.60), (0.52, 0.52, 1.10), (0.14, 0.12, 0.11, 1.0))
 
 
 def main():

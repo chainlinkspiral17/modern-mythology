@@ -103,10 +103,11 @@ def build_grass_and_swamp():
 def build_cypress_trees():
     # Cypress trees east + west of road, varying distances + heights
     positions = [
-        (-8.5, 1.0, 6.5), (-9.0, 4.5, 7.0), (-7.5, 8.0, 5.8),
-        (-9.5, 11.5, 6.8), (-8.0, 15.0, 7.2), (-9.0, 18.0, 6.0),
-        (+9.0, 2.0, 7.0), (+9.5, 6.0, 6.5), (+9.0, 10.5, 7.5),
-        (+9.5, 14.0, 6.0), (+10.5, 17.0, 6.5),
+        (-8.5, 0.4, 6.5), (-8.9, 2.4, 7.0), (-7.5, 8.0, 5.8),
+        (-8.9, 10.2, 6.8), (-8.0, 15.0, 7.2), (-9.0, 18.0, 6.0),
+        (+9.0, 2.0, 7.0), (+9.2, 5.7, 6.5), (+9.0, 10.5, 7.5),
+        (+9.7, 13.1, 6.0), (+9.4, 24.4, 6.5),
+        # trunks 1/3/10 were through HouseW awnings + the gas canopy
     ]
     # 2026-08-04: crowns were three stacked flat discs (layer-cake).
     # Real cypress now: buttressed taper trunk + one wide squashed
@@ -120,8 +121,9 @@ def build_cypress_trees():
 
 def build_signs_and_markers():
     # Mile-marker reflectors along edge
-    for mi in range(6):
-        my = -2.0 + mi*3.5
+    # explicit list — the stalled sedan occupies y 6..10 of the
+    # shoulder and marker 3 used to stand inside its body
+    for mi, my in enumerate([-2.0, 1.5, 5.0, 12.0, 15.5, 19.0]):
         make_box(f"Marker_W_{mi}_Post", (-2.80, my, 0.40), (0.04, 0.04, 0.80), COL_MILE_MARKER)
         make_box(f"Marker_W_{mi}_Reflector", (-2.80, my, 0.70), (0.06, 0.04, 0.10), (0.96, 0.62, 0.20, 1.0))
     # Distant gas-station sign (north end of road)
@@ -349,7 +351,7 @@ def build_suburban_street():
     for i, (hy, style, col) in enumerate(west_houses):
         _make_house(f"HouseW_{i}", -12.5, hy, +1, style, col)
     east_houses = [(1.0, 'two_story', COL_HOUSE_BRK), (9.0, 'ranch', COL_HOUSE_TAN),
-                   (16.5, 'two_story', COL_HOUSE_GRY)]
+                   (29.5, 'two_story', COL_HOUSE_GRY)]  # north of the gas station — at 16.5 it stood inside the store
     for i, (hy, style, col) in enumerate(east_houses):
         _make_house(f"HouseE_{i}", 14.5, hy, -1, style, col)
     # ── Driveways (curb-cut apron to each west house) + one parked car ──
@@ -357,21 +359,28 @@ def build_suburban_street():
         make_box(f"DriveW_{i}", (-6.8, hy, 0.032), (6.0, 2.6, 0.05), COL_DRIVEWAY)
         make_box(f"DriveApron_W_{i}", (-3.2, hy, 0.031), (1.6, 2.2, 0.04), COL_DRIVEWAY)
     # parked sedan on the middle west driveway (nosed toward the house)
-    cxp, cyp = -8.2, 6.5
-    make_box("Parked_Body", (cxp, cyp, 0.5), (2.0, 4.2, 0.6), (0.20, 0.28, 0.40, 1.0))
-    make_box("Parked_Cabin", (cxp, cyp - 0.2, 1.05), (1.7, 2.2, 0.5), (0.16, 0.22, 0.32, 1.0))
-    make_box("Parked_Windshield", (cxp, cyp + 0.85, 1.06), (1.5, 0.05, 0.42), (0.30, 0.36, 0.42, 1.0))
-    for wx in (-0.8, 0.8):
-        for wy in (-1.5, 1.5):
+    # On house 0's driveway, along it (E-W), nosed west at the
+    # house. It was authored crosswise on drive 1: nose inside the
+    # porch posts, tail across the cypress buttresses, and drive 1's
+    # mouth is where the sedan stalled anyway.
+    cxp, cyp = -6.0, -1.3
+    make_box("Parked_Body", (cxp, cyp, 0.5), (3.8, 2.0, 0.6), (0.20, 0.28, 0.40, 1.0))
+    make_box("Parked_Cabin", (cxp + 0.2, cyp, 1.05), (2.0, 1.7, 0.5), (0.16, 0.22, 0.32, 1.0))
+    make_box("Parked_Windshield", (cxp - 0.75, cyp, 1.06), (0.05, 1.5, 0.42), (0.30, 0.36, 0.42, 1.0))
+    for wx in (-1.35, 1.35):
+        for wy in (-0.8, 0.8):
             make_cyl(f"Parked_Wheel_{wx:+.0f}_{wy:+.0f}", (cxp + wx, cyp + wy, 0.32),
-                     0.34, 0.28, (0.08, 0.08, 0.09, 1.0), segments=8, axis='X')
+                     0.34, 0.28, (0.08, 0.08, 0.09, 1.0), segments=8, axis='Y')
     # ── Mailboxes on posts at each west driveway mouth ──
     for i, (hy, _s, _c) in enumerate(west_houses):
-        make_cyl(f"Mailbox_Post_{i}", (-3.1, hy + 1.4, 0.55), 0.05, 1.1, COL_MAIL_POST, segments=6)
-        make_box(f"Mailbox_Box_{i}", (-3.1, hy + 1.4, 1.15), (0.24, 0.42, 0.24), COL_MAILBOX)
-        make_box(f"Mailbox_Flag_{i}", (-2.95, hy + 1.2, 1.2), (0.02, 0.04, 0.14), COL_SIGN_RED)
+        # house 1's box sits SOUTH of its drive: the stalled sedan
+        # stands exactly where hy+1.4 lands
+        mb_y = hy - 1.4 if i == 1 else hy + 1.4
+        make_cyl(f"Mailbox_Post_{i}", (-3.1, mb_y, 0.55), 0.05, 1.1, COL_MAIL_POST, segments=6)
+        make_box(f"Mailbox_Box_{i}", (-3.1, mb_y, 1.15), (0.24, 0.42, 0.24), COL_MAILBOX)
+        make_box(f"Mailbox_Flag_{i}", (-2.95, mb_y - 0.2, 1.2), (0.02, 0.04, 0.14), COL_SIGN_RED)
     # ── Sprinklers on the west lawns: heads + faint arcing spray ──
-    for i, (sx, sy) in enumerate([(-9.0, 0.0), (-7.5, 8.0), (-10.0, 15.0)]):
+    for i, (sx, sy) in enumerate([(-6.8, 0.5), (-6.4, 7.6), (-9.6, 16.8)]):
         make_cyl(f"Sprinkler_{i}", (sx, sy, 0.08), 0.05, 0.16, COL_SPRINK, segments=6)
         # parabolic arc of droplets rising and falling from the head
         for d in range(6):
@@ -416,11 +425,13 @@ def build_vol6_landmarks():
     make_box("Gas_Store", (13.5, 20.0, 1.8), (6.0, 8.0, 3.6), (0.66, 0.62, 0.55, 1.0))
     make_box("Gas_Store_Glow", (10.55, 20.0, 1.4), (0.06, 5.0, 1.6), (0.98, 0.84, 0.55, 1.0))
     # Traffic light over the gas-station exit (the crow's perch)
-    make_cyl("Signal_Mast", (3.0, 17.0, 3.0), 0.10, 6.0, steel, segments=8)
-    make_box("Signal_Arm", (4.75, 17.0, 5.8), (3.5, 0.09, 0.09), steel)
-    make_box("Signal_Head", (6.3, 17.0, 5.35), (0.30, 0.30, 0.90), (0.16, 0.16, 0.18, 1.0))
-    for si, (sz, col) in enumerate(((5.62, (0.72, 0.20, 0.16, 1.0)), (5.35, (0.86, 0.64, 0.20, 1.0)),
-                                    (5.08, (0.26, 0.62, 0.30, 1.0)))):
+    # mast west of the canopy edge, head raised above the slab —
+    # the pole used to pass through the canopy, the head hung in it
+    make_cyl("Signal_Mast", (1.9, 17.0, 3.3), 0.10, 6.6, steel, segments=8)
+    make_box("Signal_Arm", (4.05, 17.0, 6.2), (4.2, 0.09, 0.09), steel)
+    make_box("Signal_Head", (6.3, 17.0, 5.75), (0.30, 0.30, 0.90), (0.16, 0.16, 0.18, 1.0))
+    for si, (sz, col) in enumerate(((6.02, (0.72, 0.20, 0.16, 1.0)), (5.75, (0.86, 0.64, 0.20, 1.0)),
+                                    (5.48, (0.26, 0.62, 0.30, 1.0)))):
         make_cyl(f"Signal_Lamp_{si}", (6.16, 17.0, sz), 0.08, 0.03, col, axis='X', segments=8)
     # NAPD SUBSTATION B — hand-touched-up dark-blue enamel
     make_box("NAPD_Base", (-4.35, 12.0, 0.25), (0.30, 1.9, 0.50), (0.52, 0.50, 0.46, 1.0))

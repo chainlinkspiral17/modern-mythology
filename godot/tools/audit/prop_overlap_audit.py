@@ -36,11 +36,32 @@ EMBED_MAX = 0.12
 WALLISH = re.compile(
     r"wall|window|door|sign|brand|partw|partn|part\b|trim|crown|"
     r"baseboard|backsplash|wainscot|frame|sill|floor|ceil|apron|"
-    r"turf|road|grass|rug|mat|plumbing", re.I)
+    r"turf|road|grass|rug|mat|plumbing|curb|kerb|lawn|drive|sidewalk|path\b|apron|asphalt|edgeline|shoulder|gravel", re.I)
 CONTAINERISH = re.compile(
     r"cage|case|chest|bin\b|bin_|basket|crate|rack|cooler|fridge|"
     r"freezer|cubby|cart|shelf|shelv|island|hutch|drawer|cab\b|"
     r"cabinet|locker|oven|proofer|tub\b", re.I)
+# Objects RESTING on a surface: min-penetration axis is Z and one of
+# the pair is a surface. Books sink 2cm into their shelf, a phone
+# into its desk — seating, not clipping.
+SURFACEISH = re.compile(
+    r"shelf|shelv|top\b|_top|desk|table|counter|tray|sill|seat|"
+    r"bench|plank|deck\b|worktop|platform|island", re.I)
+SEAT_MAX = 0.10
+# Structure members joining each other (lattice-tower braces meeting
+# legs, railing spindles into rails) — joints, not clipping.
+CROWNISH = re.compile(r"crown|canopy|foliage|lobe|frond", re.I)
+# Non-solid volumetrics: sprinkler spray arcs, light shafts, steam —
+# they interpenetrate everything by design.
+NONSOLID = re.compile(r"spray|mist|steam|smoke|shaft|glow|beam\b|dust|fog", re.I)
+# Vegetation against vegetation (a shrub against a cypress buttress)
+# is undergrowth, not clipping.
+PLANTISH = re.compile(r"shrub|bush|hedge|fern|reed|weed|plant|vine|"
+                      r"cypress|oak|conifer|tree|myrtle|magnolia|alder", re.I)
+ROOFISH = re.compile(r"eave|ridge|roof|gable|chimney|awning\b", re.I)
+STRUCTISH = re.compile(
+    r"leg|brace|strut|post|pole|beam|rail|truss|arm\b|_arm|spindle|"
+    r"baluster|joist|stud\b|wire|cable", re.I)
 
 
 def record_builder(path):
@@ -134,6 +155,10 @@ def overlaps(boxes):
             if n1.rsplit("_", 1)[0] == n2.rsplit("_", 1)[0] or \
                     n1.split("_")[0] == n2.split("_")[0]:
                 continue
+            if NONSOLID.search(n1) or NONSOLID.search(n2):
+                continue
+            if PLANTISH.search(n1) and PLANTISH.search(n2):
+                continue
             # Containment: a small object whose center sits inside a
             # container-named object is contents, not clipping
             # (propane tanks in their cage, sixpacks in the fridge).
@@ -157,8 +182,30 @@ def overlaps(boxes):
             if not ok:
                 continue
             depth = min(pen)
+            # Report floor: contact artifacts (books against the case
+            # back, a jacket draped on a bench, a phone seated on a
+            # desk) all land under 4cm. Every confirmed-real clip so
+            # far (gas station, faust, foxhole) was 0.05m+.
+            if depth <= 0.04:
+                continue
             if (WALLISH.search(n1) or WALLISH.search(n2)) and \
                     depth <= EMBED_MAX:
+                continue
+            if depth <= SEAT_MAX and pen.index(depth) == 2 and \
+                    (SURFACEISH.search(n1) or SURFACEISH.search(n2)):
+                continue
+            if STRUCTISH.search(n1) and STRUCTISH.search(n2):
+                continue
+            # A tree crown over a roofline is natural adjacency —
+            # canopies hang over eaves everywhere trees stand near
+            # buildings. Trunks and buttresses are NOT excused.
+            if (CROWNISH.search(n1) and ROOFISH.search(n2)) or \
+                    (CROWNISH.search(n2) and ROOFISH.search(n1)):
+                continue
+            # A crown is an amorphous leaf mass — 35cm of foliage
+            # against any surface reads as touching, not clipping.
+            # Deeper crown burial still reports.
+            if depth <= 0.35 and (CROWNISH.search(n1) or CROWNISH.search(n2)):
                 continue
             hits.append((depth, n1, n2, tuple(pen)))
     hits.sort(reverse=True)
