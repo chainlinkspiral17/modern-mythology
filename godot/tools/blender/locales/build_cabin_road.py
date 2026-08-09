@@ -141,9 +141,6 @@ def main():
     export_glb(out)
 
 
-if __name__ == "__main__":
-    main()
-
 
 def build_horizon_2026_08():
     """STUMP HUNT (locale_geometry_audit): view stopped at 22m. The
@@ -154,3 +151,7 @@ def build_horizon_2026_08():
                    [(60.0, 70.0, 7.0, 0.90), (130.0, 120.0, 9.0, 0.74),
                     (260.0, 200.0, 12.0, 0.58), (450.0, 320.0, 15.0, 0.44),
                     (760.0, 480.0, 18.0, 0.34)], profile="treeline")
+
+
+if __name__ == "__main__":
+    main()

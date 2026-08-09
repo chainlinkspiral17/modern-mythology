@@ -182,9 +182,6 @@ def main():
     export_glb(out)
 
 
-if __name__ == "__main__":
-    main()
-
 
 def build_horizon_2026_08():
     """STUMP HUNT: view stopped at 36m. Seaward: the water runs to a
@@ -203,3 +200,7 @@ def build_horizon_2026_08():
                    [(70.0, 80.0, 6.0, 0.80), (150.0, 130.0, 8.0, 0.60),
                     (300.0, 220.0, 11.0, 0.44)], sides="SEW",
                    profile="ridge")
+
+
+if __name__ == "__main__":
+    main()

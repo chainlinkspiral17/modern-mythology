@@ -155,9 +155,6 @@ def main():
     export_glb(out)
 
 
-if __name__ == "__main__":
-    main()
-
 
 def build_horizon_2026_08():
     """STUMP HUNT: view stopped at 41m. It is called Little
@@ -170,3 +167,7 @@ def build_horizon_2026_08():
     make_far_bands("FarRidge", (0.34, 0.37, 0.42),
                    [(260.0, 220.0, 22.0, 0.62), (480.0, 380.0, 34.0, 0.46),
                     (820.0, 600.0, 48.0, 0.34)], profile="ridge")
+
+
+if __name__ == "__main__":
+    main()

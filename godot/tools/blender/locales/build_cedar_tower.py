@@ -412,9 +412,6 @@ def main():
     export_glb(out)
 
 
-if __name__ == "__main__":
-    main()
-
 
 def build_horizon_2026_08():
     """STUMP HUNT: view stopped at 31m. The tower has a town under
@@ -426,3 +423,7 @@ def build_horizon_2026_08():
     make_far_bands("FarWood", (0.16, 0.24, 0.15),
                    [(250.0, 200.0, 12.0, 0.56), (460.0, 330.0, 15.0, 0.42)],
                    profile="treeline")
+
+
+if __name__ == "__main__":
+    main()

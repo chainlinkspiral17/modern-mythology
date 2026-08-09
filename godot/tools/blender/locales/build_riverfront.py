@@ -4381,9 +4381,6 @@ def main():
     export_glb()
 
 
-if __name__ == "__main__":
-    main()
-
 
 def build_park_horizon_2026_08():
     """STUMP HUNT (locale_geometry_audit): the riverfront_park camera
@@ -4405,3 +4402,7 @@ def build_park_horizon_2026_08():
         (0.32, 0.31, 0.33, 1.0), segments=10)
     _mc("ParkFar_WaterTower_Stem", (-120.0, 105.0, 10.0), 1.0, 21.0,
         (0.26, 0.26, 0.28, 1.0), segments=8)
+
+
+if __name__ == "__main__":
+    main()

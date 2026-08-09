@@ -247,9 +247,6 @@ def main():
     export_glb(out)
 
 
-if __name__ == "__main__":
-    main()
-
 
 def build_horizon_2026_08():
     """STUMP HUNT: view stopped at 32m. Cane fields and hedgerow
@@ -259,3 +256,7 @@ def build_horizon_2026_08():
                    [(60.0, 70.0, 5.0, 0.90), (130.0, 120.0, 6.5, 0.72),
                     (260.0, 200.0, 8.0, 0.56), (460.0, 320.0, 10.0, 0.42)],
                    profile="treeline")
+
+
+if __name__ == "__main__":
+    main()

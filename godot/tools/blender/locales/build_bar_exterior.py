@@ -125,9 +125,6 @@ def main():
     export_glb(out)
 
 
-if __name__ == "__main__":
-    main()
-
 
 def build_horizon_2026_08():
     """STUMP HUNT: view stopped at 43m. The bar is on a street in a
@@ -147,3 +144,7 @@ def build_horizon_2026_08():
                  (95.0 + (5.0 if li % 2 else -5.0),
                   180.0 + (5.0 if li < 2 else -5.0), 11.0),
                  0.5, 22.0, (0.24, 0.24, 0.26, 1.0), segments=6)
+
+
+if __name__ == "__main__":
+    main()

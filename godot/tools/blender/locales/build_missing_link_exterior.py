@@ -213,9 +213,6 @@ def main():
     export_glb(out)
 
 
-if __name__ == "__main__":
-    main()
-
 
 def build_horizon_2026_08():
     """STUMP HUNT: view stopped at 60m. The station sits on a road
@@ -230,3 +227,7 @@ def build_horizon_2026_08():
         d = 70.0 + pi * 34.0
         make_cyl("FarPole_%d" % pi, (6.0, d, 3.4), 0.10, 6.8,
                  (0.22, 0.20, 0.18, 1.0), segments=6)
+
+
+if __name__ == "__main__":
+    main()

@@ -181,6 +181,36 @@ def make_cyl(name, center, radius, height, base_color,
     return _finalize_mesh(name, verts, faces, base_color)
 
 
+def make_sphere_low(name, center, radius, base_color, rings=3, segments=8):
+    # Low-poly UV sphere (the helm door knob calls this — it was
+    # never defined, which crashed the whole build at main()).
+    cx, cy, cz = center
+    verts = [(cx, cy, cz + radius)]
+    for r in range(1, rings):
+        phi = math.pi * r / rings
+        rr = radius * math.sin(phi)
+        zh = radius * math.cos(phi)
+        for s in range(segments):
+            ang = 2.0 * math.pi * s / segments
+            verts.append((cx + rr * math.cos(ang),
+                          cy + rr * math.sin(ang), cz + zh))
+    verts.append((cx, cy, cz - radius))
+    faces = []
+    for s in range(segments):
+        faces.append([0, 1 + s, 1 + (s + 1) % segments])
+    for r in range(rings - 2):
+        base = 1 + r * segments
+        nxt = base + segments
+        for s in range(segments):
+            faces.append([base + s, nxt + s,
+                          nxt + (s + 1) % segments, base + (s + 1) % segments])
+    last = len(verts) - 1
+    base = 1 + (rings - 2) * segments
+    for s in range(segments):
+        faces.append([last, base + (s + 1) % segments, base + s])
+    return _finalize_mesh(name, verts, faces, base_color)
+
+
 # ── Gauntlet station marker ──────────────────────────────────────
 def gauntlet_marker(label, cx, cy, cz, w, d, numeral):
     """Brass-stencil rectangle painted onto the deck at height cz +

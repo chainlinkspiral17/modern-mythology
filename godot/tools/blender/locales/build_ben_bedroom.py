@@ -69,7 +69,7 @@ def build_shell():
                  size_y=ROOM_D + 0.4, with_grid=False, with_stains=False)
     # The CRACKED door — ajar ~25 degrees into the room (canon: the
     # small specific way, for Mister)
-    make_box("Door_Leaf", (-0.81, 0.06, 1.02), (0.82, 0.05, 2.03), COL_WOOD)
+    make_box("Door_Leaf", (-0.81, 0.06, 1.02), (0.82, 0.05, 2.03), COL_DOOR)
     make_box("Door_Crack_Dark", (-0.28, 0.05, 1.02), (0.12, 0.03, 2.00), (0.05, 0.05, 0.06, 1.0))
     make_cyl("Door_Knob", (-0.62, 0.62, 0.98), 0.035, 0.05, COL_FRAME_DK,
              segments=8, axis='X')

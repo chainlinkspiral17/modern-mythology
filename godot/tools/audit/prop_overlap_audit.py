@@ -76,19 +76,39 @@ def record_builder(path):
         g["make_box"] = rec_box
     if "make_cyl" in g:
         g["make_cyl"] = rec_cyl
-    for fname in sorted(g):
-        fn = g[fname]
-        if fname.startswith("build_") and callable(fn) and \
-                getattr(fn, "__code__", None) is not None:
-            fn2 = types.FunctionType(fn.__code__, g, fn.__name__,
-                                     fn.__defaults__)
-            try:
-                fn2()
-            except TypeError:
-                pass
-            except Exception:
-                pass
-    return list(A.BOXES), None
+    for noop_name in ("export_glb", "clear_scene"):
+        if noop_name in g:
+            g[noop_name] = lambda *a, **k: None
+
+    def _rebound(fn):
+        return types.FunctionType(fn.__code__, g, fn.__name__,
+                                  fn.__defaults__)
+
+    # Run the builder's CANONICAL entrypoint. Calling every build_*
+    # alphabetically mis-runs composite builders — kwik_stop's
+    # polish passes executed out of order produced 291 phantom
+    # pairs. main() is the same sequence Blender runs.
+    err = None
+    if "main" in g and callable(g.get("main")):
+        # main() calls module-level names, which resolve through g —
+        # the vendored make_box/export_glb patches above apply.
+        try:
+            _rebound(g["main"])()
+        except Exception as e:
+            err = "main(): %s: %s" % (type(e).__name__, e)
+    if err or "main" not in g:
+        # Fallback sweep: run each build_* individually to recover
+        # coverage past the failure point. Name-dedupe (first emit
+        # wins) keeps main()'s canonical placements where both ran.
+        for fname in sorted(g):
+            fn = g[fname]
+            if fname.startswith("build_") and callable(fn) and \
+                    getattr(fn, "__code__", None) is not None:
+                try:
+                    _rebound(fn)()
+                except Exception:
+                    pass
+    return list(A.BOXES), err
 
 
 def overlaps(boxes):
@@ -163,9 +183,11 @@ def main():
             print("%-32s NO BUILDER" % name)
             continue
         boxes, err = record_builder(path)
-        if err:
+        if err and not boxes:
             print("%-32s ERR %s" % (name, err))
             continue
+        if err:
+            print("%-32s (partial: %s)" % (name, err))
         hits = overlaps(boxes)
         if hits:
             print("== %s · %d objects · %d clips" % (name, len(boxes), len(hits)))

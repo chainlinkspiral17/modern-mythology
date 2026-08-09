@@ -506,9 +506,6 @@ def main():
     export_glb(out)
 
 
-if __name__ == "__main__":
-    main()
-
 
 def build_horizon_2026_08():
     """STUMP HUNT: view stopped at 36m. The lot sits at the town's
@@ -519,3 +516,7 @@ def build_horizon_2026_08():
                     (260.0, 190.0, 10.0, 0.54)], profile="treeline")
     make_far_bands("FarTown", (0.42, 0.40, 0.36),
                    [(430.0, 300.0, 12.0, 0.42)], profile="roofline")
+
+
+if __name__ == "__main__":
+    main()

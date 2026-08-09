@@ -287,9 +287,6 @@ def main():
     export_glb(out)
 
 
-if __name__ == "__main__":
-    main()
-
 
 def build_horizon_2026_08():
     """STUMP HUNT: view stopped at 56m. Stone ridges and wooded
@@ -301,3 +298,7 @@ def build_horizon_2026_08():
     make_far_bands("FarWood", (0.18, 0.26, 0.15),
                    [(300.0, 230.0, 14.0, 0.52), (540.0, 380.0, 18.0, 0.40)],
                    profile="treeline")
+
+
+if __name__ == "__main__":
+    main()

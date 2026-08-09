@@ -128,6 +128,30 @@ execution-fidelity work so the tool can sweep composite builders
 may mis-run when called blind; teach the tool per-builder
 entrypoints before believing repo-wide numbers).
 
+**2026-08-09 later · THE SWEEP THAT FOUND THE DEAD CODE.** Teaching
+the overlap tool to run each builder's canonical main() (instead of
+calling build_* alphabetically) surfaced something much bigger than
+clipping: **three whole classes of silently-broken builders.**
+(1) All 14 exteriors patched in the 2026-08 horizon wave had
+`build_horizon_2026_08()` defined AFTER the `if __name__` gate —
+Blender executes top-to-bottom, so main() ran before the def
+existed: NameError, no export, stale GLB. THE ENTIRE HORIZON WAVE
+NEVER LANDED ON THE DECK for: bar_exterior briar_falls cabin_road
+carnival_lot cedar_tower cliffside_circus grunion_beach
+little_switzerland missing_link_exterior riverfront roadside_chapel
+sapo_falls school_field_evening skatepark. Gates moved to EOF; a
+check_gate_position() guard now runs in the geometry audit so the
+class can't recur. (2) ben_bedroom used undefined COL_WOOD (crash),
+(3) roberts_kitchen used CEIL for its CEIL_Z (crash),
+riverboat_interior called a make_sphere_low that never existed
+(crash — now vendored). All three fixed + verified headless.
+Clipping triage backlog (full-main()-run numbers, trustworthy):
+kwik_stop 291 (model chapter - triage w/ screenshots before
+believing), new_orleans_office 67, wgur_transmitter_shack 66,
+faust_apartment 60, foxhole_bar 46, henderson_porch_front 34,
+solenade_garden 34. riverfront/diner/graustark report through the
+partial-run fallback - numbers NOT trustworthy for them yet.
+
 ### Workstream · SLOWSTICK PRODUCTION PASS (user-directed · 2026-08-03)
 
 *"Visual logic, detail and sophistication."* Per-stick direction +

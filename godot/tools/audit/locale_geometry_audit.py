@@ -76,15 +76,40 @@ def _make_cyl(name, center, radius=1.0, height=1.0, color=None,
     return types.SimpleNamespace(name=str(name))
 
 
-def _noop(*a, **k):
-    return types.SimpleNamespace(name="stub")
+class _StubVal(float):
+    """Universal stub: builders do arithmetic on helper returns
+    (top_z = make_counter(...) + 0.06), read .name off them, call
+    them, len() palette constants (len(P.SNACK_TINTS)), and index
+    color tuples. A float subclass that answers everything keeps a
+    builder's main() running to completion under the stubs."""
+    def __getattr__(self, _k):
+        return self
+
+    def __call__(self, *a, **k):
+        return self
+
+    def __len__(self):
+        return 4
+
+    def __getitem__(self, _i):
+        return _StubVal(0.5)
+
+    def __iter__(self):
+        return iter((_StubVal(0.5), _StubVal(0.5),
+                     _StubVal(0.5), _StubVal(1.0)))
+
+
+_noop = _StubVal(0.9)
 
 
 def install_stubs():
     """Stand in for every _props.* helper and for bpy itself."""
     bpy = types.ModuleType("bpy")
     for attr in ("ops", "data", "context", "types", "utils"):
-        setattr(bpy, attr, types.SimpleNamespace())
+        # _StubVal answers any attribute chain / call / len / index,
+        # so direct bpy usage (bpy.data.meshes.new, bpy.context.object)
+        # in the hand-rolled builders no-ops instead of raising.
+        setattr(bpy, attr, _StubVal(0.9))
     sys.modules["bpy"] = bpy
     mu = types.ModuleType("mathutils")
 
@@ -302,6 +327,27 @@ def analyse(boxes, cams):
     return report
 
 
+def check_gate_position(path):
+    """Code after `if __name__ == "__main__": main()` never exists
+    when main() runs — Blender executes the file top-to-bottom and
+    the gate CALLS main() mid-file. 14 exteriors shipped their
+    entire 2026-08 horizon wave as dead code this way: every one
+    NameError'd at build time and kept its stale GLB, silently.
+    The gate must be the last statement in every builder."""
+    lines = open(path).read().split("\n")
+    gate = None
+    for i, ln in enumerate(lines):
+        if ln.startswith("if __name__"):
+            gate = i
+            break
+    if gate is None:
+        return None
+    for ln in lines[gate + 1:]:
+        if ln.startswith(("def ", "class ")) or re.match(r"^[A-Z_]+\s*=", ln):
+            return "code after the __main__ gate (dead at build time)"
+    return None
+
+
 def main():
     show_all = "--all" in sys.argv
     install_stubs()
@@ -311,6 +357,9 @@ def main():
         if not (f.startswith("build_") and f.endswith(".py")):
             continue
         name = f[6:-3]
+        gate_err = check_gate_position(os.path.join(LOCALES, f))
+        if gate_err:
+            errs.append((name, gate_err))
         boxes, err = run_builder(os.path.join(LOCALES, f))
         if err:
             errs.append((name, err))

@@ -132,9 +132,6 @@ def main():
     export_glb(out)
 
 
-if __name__ == "__main__":
-    main()
-
 
 def build_horizon_2026_08():
     """STUMP HUNT: view stopped at 25m. The gorge keeps rising —
@@ -147,3 +144,7 @@ def build_horizon_2026_08():
     make_far_bands("FarCanopy", (0.16, 0.26, 0.16),
                    [(80.0, 80.0, 6.0, 0.85), (170.0, 140.0, 8.0, 0.66),
                     (330.0, 240.0, 10.0, 0.50)], profile="treeline")
+
+
+if __name__ == "__main__":
+    main()

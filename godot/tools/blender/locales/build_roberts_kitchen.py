@@ -246,8 +246,8 @@ def build_decor():
 
 def build_ceiling_infra():
     # Domestic light, not shop tubes (hero-prop pass)
-    make_cyl("Ceiling_Dome", (0.0, 2.2, CEIL-0.10), 0.15, 0.14, (0.94, 0.88, 0.70, 1.0), segments=12)
-    make_smoke_detector("Smoke", (0.9, 2.2, CEIL))
+    make_cyl("Ceiling_Dome", (0.0, 2.2, CEIL_Z-0.10), 0.15, 0.14, (0.94, 0.88, 0.70, 1.0), segments=12)
+    make_smoke_detector("Smoke", (0.9, 2.2, CEIL_Z))
 
 
 def build_hero_props():
