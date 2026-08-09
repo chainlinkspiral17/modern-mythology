@@ -633,11 +633,10 @@ func hide_at(pos: String) -> void:
 
 
 func hide_all() -> void:
-	# Scene transitions hard-clear portraits + ghosts immediately.
-	# Cross-fade (with ghost silhouette) is reserved for hide_at
-	# during a scene; on scene/chapter change we drop everything
-	# in the same frame so the next scene starts clean instead of
-	# overlapping a half-faded prior portrait with new dialogue.
+	# Scene transitions hard-clear portraits immediately — on
+	# scene/chapter change we drop everything in the same frame so
+	# the next scene starts clean instead of overlapping a
+	# half-faded prior portrait with new dialogue.
 	for pos: String in _slots:
 		var slot = _slots.get(pos)
 		if slot != null:
@@ -645,10 +644,6 @@ func hide_all() -> void:
 			if is_instance_valid(node):
 				node.queue_free()
 			_slots[pos] = null
-	for g in _ghosts:
-		if is_instance_valid(g):
-			g.queue_free()
-	_ghosts.clear()
 
 
 # Returns true if a portrait for this character is currently in
@@ -1143,8 +1138,8 @@ func _make_portrait(char_name: String, expr: String, pos: String) -> Control:
 	if not CUTOUT_MODE:
 		_make_border(wrapper, char_name)
 
-	# Tag the wrapper with pos + char so the ghost spawner on
-	# dismiss can place + tint the silhouette correctly.
+	# Tag the wrapper with its slot + character identity for
+	# lookups on dismiss / re-show.
 	wrapper.set_meta("pos", pos)
 	wrapper.set_meta("char", char_name)
 
@@ -1467,10 +1462,6 @@ func _fade_out_free(node: Control) -> void:
 	# resurrect the dimmed-but-visible portrait into the next scene.
 	node.set_meta("fading", true)
 	node.mouse_filter = Control.MOUSE_FILTER_IGNORE
-	# Spawn an ASCII silhouette ghost at the dismiss position before
-	# the live portrait fades out. The ghost lingers on the scene as
-	# a faded after-image of the character.
-	_spawn_ghost(node)
 	var tw := node.create_tween()
 	tw.tween_property(node, "modulate:a", 0.0, 0.35)
 	tw.tween_callback(node.queue_free)
@@ -1557,62 +1548,12 @@ func _make_border(wrapper: Control, char_name: String) -> Control:
 	return b
 
 
-# ── ASCII silhouette ghost on dismiss ──────────────────────────────
-# When a portrait fades out, we spawn a Control containing a Label
-# of ASCII-block characters in the shape of a generic figure, at low
-# alpha, in the character's accent color. The ghost lingers on the
-# scene until cleared by hide_all (scene end / chapter change).
-const _GHOST_ASCII := """    ▄▄▄▄▄
-   ▐█████▌
-   ▐██▀██▌
-	▐████▌
-   ▐██████▌
-  ▐████████▌
-   ▐██████▌
-	██████
-	██▌▐██
-	██▌▐██
-"""
-
-var _ghosts: Array = []
-
-func _spawn_ghost(node: Control) -> void:
-	var pos: String = node.get_meta("pos") if node.has_meta("pos") else "center"
-	var char_name: String = node.get_meta("char") if node.has_meta("char") else ""
-	var ghost := Label.new()
-	ghost.text = _GHOST_ASCII
-	ghost.add_theme_font_size_override("font_size", 14)
-	ghost.modulate = Color(0.0, 0.0, 0.0, 0.0)
-	var accent := accent_for(char_name)
-	ghost.add_theme_color_override("font_color",
-		Color(accent.r, accent.g, accent.b, 1.0))
-	ghost.position = POSITIONS.get(pos, Vector2(490, 80)) + Vector2(40, 30)
-	ghost.mouse_filter = Control.MOUSE_FILTER_IGNORE
-	add_child(ghost)
-	# Cross-fade in as the live portrait fades out, hold a beat,
-	# then FADE OUT AND FREE. The ghost used to fade in to 0.30
-	# alpha and stay until scene change — every mid-scene `hide`
-	# left a permanent grey glyph column at that slot ("an empty
-	# center portrait"). An after-image is a BEAT, not a resident.
-	var tw_g: Tween = ghost.create_tween()
-	tw_g.tween_property(ghost, "modulate:a", 0.22, 0.40)
-	tw_g.parallel().tween_property(ghost, "position:y",
-		ghost.position.y - 8, 1.2)
-	tw_g.tween_interval(0.9)
-	tw_g.tween_property(ghost, "modulate:a", 0.0, 0.8)
-	tw_g.parallel().tween_property(ghost, "position:y",
-		ghost.position.y - 16, 0.8)
-	tw_g.tween_callback(ghost.queue_free)
-	_ghosts.append(ghost)
-
-
-func _clear_ghosts() -> void:
-	for g in _ghosts:
-		if is_instance_valid(g):
-			var tw_c: Tween = g.create_tween()
-			tw_c.tween_property(g, "modulate:a", 0.0, 0.30)
-			tw_c.tween_callback(g.queue_free)
-	_ghosts.clear()
+# ── ASCII silhouette ghost on dismiss — REMOVED (2026-08-09) ────────
+# A portrait dismiss used to spawn a lingering ASCII-block figure
+# ("the empty center portrait"). Softening it to an ephemeral beat
+# wasn't enough — the user's verdict: gone entirely. A dismiss is
+# now just the 0.35s alpha fade of the live portrait, nothing left
+# behind.
 
 
 # ── Placeholder portrait ──────────────────────────────────────────────────────

@@ -172,8 +172,10 @@ def build_shell():
     # Ceiling
     make_box("Ceiling", (0.0, 4.5, CEIL_Z + 0.05),
              (12.4, 9.4, 0.10), COL_CEILING_TILE)
-    # Fluorescent fixtures (less than Kwik Stop — fewer aisles)
-    for j, ypos in enumerate([2.5, 6.0]):
+    # Fluorescent fixtures (less than Kwik Stop — fewer aisles).
+    # Back row at 5.3, not 6.0 — at 6.0 the east tube crossed the
+    # office's glass partition corner.
+    for j, ypos in enumerate([2.5, 5.3]):
         for i in range(-1, 2):
             xp = i * 2.4
             make_box(f"Tube_{j}_{i}", (xp, ypos, CEIL_Z - 0.08),
@@ -204,21 +206,25 @@ def build_counter():
         make_box(f"Pump_LED_{i}",
                  (cx + 0.5 - 0.30 + i * 0.08, cy + 0.34, 1.20),
                  (0.04, 0.005, 0.04), led_col)
-    # Stool
-    make_cyl("Stool_Seat", (cx, cy + 0.32, 0.66),
+    # Stool — BEHIND the counter (Skip's side). At cy+0.32 the seat
+    # was buried 0.14m in the counter body.
+    make_cyl("Stool_Seat", (cx, cy + 0.62, 0.66),
              0.16, 0.04, COL_LOCKER_GREY, segments=10)
-    make_cyl("Stool_Post", (cx, cy + 0.32, 0.36),
+    make_cyl("Stool_Post", (cx, cy + 0.62, 0.36),
              0.030, 0.56, COL_METAL_BLACK)
-    make_cyl("Stool_Base", (cx, cy + 0.32, 0.05),
+    make_cyl("Stool_Base", (cx, cy + 0.62, 0.05),
              0.20, 0.04, COL_METAL_BLACK, segments=8)
-    # Back-counter cigarette shelves
-    cig_y = 8.85
+    # Back-wall cigarette + stock shelves — north wall, west of the
+    # office. They used to sit at x≈4.0, y=8.85, which ran them
+    # straight THROUGH the office's west glass partition.
+    cig_x = 0.6
+    cig_y = 8.78
     for sh in range(3):
         shz = 1.40 + sh * 0.42
-        make_box(f"CigShelf_{sh}", (cx + 0.5, cig_y, shz),
+        make_box(f"CigShelf_{sh}", (cig_x, cig_y, shz),
                  (3.20, 0.22, 0.02), (0.72, 0.60, 0.46, 1.0))
         for ci in range(12):
-            box_x = cx + 0.5 - 1.45 + ci * 0.26
+            box_x = cig_x - 1.45 + ci * 0.26
             make_box(f"CigBox_{sh}_{ci}",
                      (box_x, cig_y - 0.04, shz + 0.13),
                      (0.20, 0.12, 0.22),
@@ -229,31 +235,35 @@ def build_counter():
 # LOCKER ROOM (back-NW · Locker #4 is Skip's, canonical)
 # ════════════════════════════════════════════════════════════════
 def build_lockers():
-    # Lockers along the west wall, back half, Y ∈ [5.5, 8.5]
-    lx = -5.70
+    # Lockers along the west wall, back half, Y ∈ [5.5, 8.5].
+    # Doors/handles/vents/plates sit at lx + offset (EAST face,
+    # toward the room). They were authored at lx - offset — the
+    # entire bank presented its back to the room with every front
+    # detail buried inside the west wall.
+    lx = -5.62
     for i in range(6):
         ly = 5.7 + i * 0.55
         # Body
         make_box(f"Locker_{i+1}_Body", (lx, ly, 1.00),
                  (0.50, 0.50, 1.80), COL_LOCKER_GREY)
         # Door seam
-        make_box(f"Locker_{i+1}_Door", (lx - 0.21, ly, 1.00),
+        make_box(f"Locker_{i+1}_Door", (lx + 0.21, ly, 1.00),
                  (0.02, 0.48, 1.74), COL_LOCKER_DOORSEAM)
         # Handle
-        make_box(f"Locker_{i+1}_Handle", (lx - 0.23, ly + 0.16, 1.00),
+        make_box(f"Locker_{i+1}_Handle", (lx + 0.23, ly + 0.16, 1.00),
                  (0.02, 0.06, 0.06), COL_METAL_BLACK)
         # Vent grille
         for j in range(3):
             make_box(f"Locker_{i+1}_Vent_{j}",
-                     (lx - 0.22, ly, 1.70 + j * 0.08),
+                     (lx + 0.22, ly, 1.70 + j * 0.08),
                      (0.005, 0.30, 0.02), COL_METAL_BLACK)
         # Number plate — #4 is Skip's, paint it brass instead of paper
         plate_col = (0.78, 0.62, 0.30, 1.0) if (i + 1) == 4 else COL_PAPER
-        make_box(f"Locker_{i+1}_Plate", (lx - 0.22, ly, 1.85),
+        make_box(f"Locker_{i+1}_Plate", (lx + 0.22, ly, 1.85),
                  (0.005, 0.18, 0.06), plate_col)
         # The combination lock on #4 (Skip's: ex-wife's birthday backward)
         if (i + 1) == 4:
-            make_cyl(f"Locker_{i+1}_Lock", (lx - 0.24, ly - 0.04, 1.30),
+            make_cyl(f"Locker_{i+1}_Lock", (lx + 0.24, ly - 0.04, 1.30),
                      0.04, 0.04, COL_METAL_BLACK, segments=10, axis='X')
 
     # Bench in front of lockers
@@ -264,7 +274,7 @@ def build_lockers():
                  (lx + 0.6, 6.8 + sy * 1.10, 0.20),
                  (0.32, 0.06, 0.40), (0.42, 0.30, 0.18, 1.0))
     # A spare uniform jacket hanging off the bench (NexCorp blue)
-    make_box("Spare_Jacket", (lx + 0.42, 5.9, 0.65),
+    make_box("Spare_Jacket", (lx + 0.48, 5.9, 0.65),
              (0.04, 0.30, 0.50), COL_WALL_NEXCORP)
 
 
@@ -295,7 +305,7 @@ def build_office():
     make_box("Monitor_Screen", (dx, dy + 0.135, 1.00),
              (0.46, 0.001, 0.32), (0.16, 0.32, 0.56, 1.0))
     # Phone (Skip takes the dispatch calls here)
-    make_box("Office_Phone", (dx + 0.50, dy, 0.78),
+    make_box("Office_Phone", (dx + 0.50, dy, 0.81),
              (0.20, 0.30, 0.10), (0.32, 0.30, 0.28, 1.0))
     # Office chair
     make_box("OfficeChair_Seat", (dx, dy - 0.40, 0.46),
@@ -358,8 +368,11 @@ def build_floor_props():
         make_cyl(f"Coffee_Cup_{i}", (cfx + 0.25, 2.5, 0.90 + i * 0.04),
                  0.04, 0.04, (0.92, 0.86, 0.74, 1.0), segments=10)
 
-    # Beer fridge (single door, smaller than Kwik Stop's wall of them)
-    fx, fy = -5.5, 8.0
+    # Beer fridge (single door, smaller than Kwik Stop's wall of them).
+    # North wall, between the locker room and Skip's office — it was
+    # at (-5.5, 8.0), which is INSIDE the locker bank: lockers 5-6,
+    # the bench end and the west wall all ran through its body.
+    fx, fy = -3.6, 8.35
     make_box("BeerFridge_Body", (fx, fy, 1.20),
              (1.00, 0.80, 2.30), (0.42, 0.42, 0.46, 1.0))
     make_box("BeerFridge_Glass", (fx, fy - 0.36, 1.20),

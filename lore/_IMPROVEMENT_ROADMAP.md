@@ -112,6 +112,22 @@ detail in the 3D playbook. Wave 5 candidates: chamfer sweep for
 the 5-6-use tier once it earns decks; harmony/riverfront sphere-
 helper retirement stays deliberately deferred (zero visual delta).
 
+**2026-08-09 · THE CLIPPING HUNT (user: "gas and go objects are
+clipping through each other at odd angles").** New gate:
+`godot/tools/audit/prop_overlap_audit.py` — records every emitted
+box/cyl (shared _props helpers AND vendored model-chapter copies),
+reports pairwise interpenetration with intentional-contact filters
+(same assembly, wall embeds ≤0.12m, container contents). Found and
+fixed in the Gas & Go: the beer fridge was INSIDE the locker bank
+(0.55m), the entire locker row FACED THE WALL (every door/handle/
+vent/plate buried in plaster), cig shelves ran through the office
+glass, a ceiling tube crossed the partition corner, the stool was in
+the counter. nexcorp_fueling_station audits clean. Next pass:
+execution-fidelity work so the tool can sweep composite builders
+(kwik_stop reports 291 pairs that need triage — its build_* fns
+may mis-run when called blind; teach the tool per-builder
+entrypoints before believing repo-wide numbers).
+
 ### Workstream · SLOWSTICK PRODUCTION PASS (user-directed · 2026-08-03)
 
 *"Visual logic, detail and sophistication."* Per-stick direction +
