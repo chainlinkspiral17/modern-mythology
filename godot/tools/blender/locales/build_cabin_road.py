@@ -46,8 +46,14 @@ COL_SKY = (0.66, 0.70, 0.70, 1.0)       # coastal gray-bright
 
 
 def build_road():
-    # Asphalt run, y 0..6, slightly crowned
-    make_box("Asphalt", (0.0, 3.0, 0.0), (4.6, 6.0, 0.06), COL_ASPHALT)
+    # GROUND (2026-08-09): full forest-floor plane under everything —
+    # the road used to float in a void past the tree trunks. Oregon
+    # duff: dark red-brown, unlike louisiana's green swamp floor.
+    make_box("Forest_Floor", (0.0, 60.0, -0.012), (300.0, 420.0, 0.02),
+             (0.16, 0.13, 0.10, 1.0))
+    # Asphalt approach runs BEHIND the camera too — the road arrives
+    # from somewhere (was a 6m stub starting at the lens).
+    make_box("Asphalt", (0.0, -27.0, 0.0), (4.6, 66.0, 0.06), COL_ASPHALT)
     make_box("Asphalt_Patch", (0.6, 4.6, 0.035), (1.2, 0.9, 0.02), (0.20, 0.20, 0.21, 1.0))
     # THE TRANSITION — where the asphalt gives out
     make_box("Transition_Lip", (0.0, 6.05, 0.045), (4.6, 0.25, 0.03), COL_GRAVEL_DK)

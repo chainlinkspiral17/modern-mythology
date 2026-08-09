@@ -177,6 +177,26 @@ the trustworthy finds got fixed:
 Remaining triage: kwik_stop 263 + bungalow/parish/carnival etc. need
 the same treatment; model chapters get screenshots first.
 
+**2026-08-09 lookthrough round 2 (user screenshots + notes).** Fixed
+this wave: (1) THE FOOTBALL FIELD REBUILT AT TRUE SCALE — was a
+20x14m toy with goalposts standing inside the playing surface; now a
+real 120yd x 53 1/3yd HS gridiron (yard lines every 5yd, yard-ticks
+at the HS inbound lines, abstract numbers, mow stripes, goalposts ON
+the end lines at regulation size, 8 corner pylons, 36m stands, six
+18m light poles, scoreboard past the north end zone; tscn floods
+moved to the new poles; all 4 vn_shot markers re-authored).
+(2) GROUND PLANES: louisiana got 2500m of swamp floor + a standing-
+water sheet east (the "floating black slabs" were bands with no
+terrain under them); cabin_road got an Oregon duff floor + a 66m
+asphalt approach (was a 6m stub starting at the lens) — which also
+begins the roads-look-identical fix (green swamp floor vs red-brown
+duff). Overlap grammar grew: buried infrastructure, conifer species
+names, per-name crown/lobe parts.
+STILL OPEN (tasks #3-8): gas & go aisle product jumble + punch-in
+landing inside shelving; cliffside_circus identity; floating bunting
+at the camp main building; ground planes for the REMAINING exteriors;
+the Emperor scene black/empty; arcana scenarios 3+ production pass.
+
 ### Workstream · SLOWSTICK PRODUCTION PASS (user-directed · 2026-08-03)
 
 *"Visual logic, detail and sophistication."* Per-stick direction +

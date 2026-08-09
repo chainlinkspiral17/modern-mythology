@@ -54,10 +54,14 @@ CROWNISH = re.compile(r"crown|canopy|foliage|lobe|frond", re.I)
 # Non-solid volumetrics: sprinkler spray arcs, light shafts, steam —
 # they interpenetrate everything by design.
 NONSOLID = re.compile(r"spray|mist|steam|smoke|shaft|glow|beam\b|dust|fog", re.I)
+# Infrastructure DESIGNED to be buried — culverts under roads,
+# pipes through creek beds, footings in the ground.
+BURIEDISH = re.compile(r"culvert|drain|conduit|footing|foundation|piling", re.I)
 # Vegetation against vegetation (a shrub against a cypress buttress)
 # is undergrowth, not clipping.
 PLANTISH = re.compile(r"shrub|bush|hedge|fern|reed|weed|plant|vine|"
-                      r"cypress|oak|conifer|tree|myrtle|magnolia|alder", re.I)
+                      r"cypress|oak|conifer|tree|myrtle|magnolia|alder|sitka|spruce|"
+                      r"cedar|fir\b|pine|birch|willow", re.I)
 ROOFISH = re.compile(r"eave|ridge|roof|gable|chimney|awning\b", re.I)
 STRUCTISH = re.compile(
     r"leg|brace|strut|post|pole|beam|rail|truss|arm\b|_arm|spindle|"
@@ -156,6 +160,8 @@ def overlaps(boxes):
                     n1.split("_")[0] == n2.split("_")[0]:
                 continue
             if NONSOLID.search(n1) or NONSOLID.search(n2):
+                continue
+            if BURIEDISH.search(n1) or BURIEDISH.search(n2):
                 continue
             if PLANTISH.search(n1) and PLANTISH.search(n2):
                 continue

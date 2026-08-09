@@ -179,37 +179,50 @@ light_color = Color(0.32, 0.42, 0.62, 1)
 light_energy = 0.4
 shadow_enabled = false
 
-; Stadium floodlights — cool-white banks atop the four corner poles
-; (blender bank z≈7.8 → godot y 7.8; pole y 0.5/13.5 → godot z -0.5/-13.5,
-; x ±9). Friday-night-lights pools over the turf.
+; Stadium floodlights — cool-white banks atop the six 18m poles
+; (blender (±33.9, 13.7/54.9/96.0) bank z 17.2 → godot y 17.2,
+;  z -13.7/-54.9/-96.0). Friday-night-lights pools over the turf.
 [node name="Flood_SW" type="OmniLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.0, 7.8, -0.5)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -33.9, 17.2, -13.7)
 light_color = Color(0.96, 0.97, 1.0, 1)
-light_energy = 2.6
-omni_range = 16.0
+light_energy = 3.2
+omni_range = 46.0
 shadow_enabled = false
 
-[node name="Flood_SE" type="OmniLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.0, 7.8, -0.5)
+[node name="Flood_W" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -33.9, 17.2, -54.9)
 light_color = Color(0.96, 0.97, 1.0, 1)
-light_energy = 2.6
-omni_range = 16.0
+light_energy = 3.2
+omni_range = 46.0
 shadow_enabled = false
 
 [node name="Flood_NW" type="OmniLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.0, 7.8, -13.5)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -33.9, 17.2, -96.0)
 light_color = Color(0.96, 0.97, 1.0, 1)
-light_energy = 2.6
-omni_range = 16.0
+light_energy = 3.2
+omni_range = 46.0
+shadow_enabled = false
+
+[node name="Flood_SE" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 33.9, 17.2, -13.7)
+light_color = Color(0.96, 0.97, 1.0, 1)
+light_energy = 3.2
+omni_range = 46.0
+shadow_enabled = false
+
+[node name="Flood_E" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 33.9, 17.2, -54.9)
+light_color = Color(0.96, 0.97, 1.0, 1)
+light_energy = 3.2
+omni_range = 46.0
 shadow_enabled = false
 
 [node name="Flood_NE" type="OmniLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.0, 7.8, -13.5)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 33.9, 17.2, -96.0)
 light_color = Color(0.96, 0.97, 1.0, 1)
-light_energy = 2.6
-omni_range = 16.0
+light_energy = 3.2
+omni_range = 46.0
 shadow_enabled = false
-
 [node name="Interior" parent="." instance=ExtResource("1_glb")]
 
 [node name="PostProcess" type="CanvasLayer" parent="."]
@@ -331,27 +344,28 @@ offset_bottom = 980.0
 script = ExtResource("14_dbgm")
 
 
-; ── vn_shot coverage (2026-08-08 directing pass 3) ────────
-; rotation B: from the top bleacher bench looking across the field to the visitor bench
+
+; ── vn_shot coverage (2026-08-09 · re-authored for the TRUE-SCALE field) ────────
+; rotation B: from the top row of the home stands at the 50, across to the visitor side
 [node name="shot_establish_b" type="Marker3D" parent="." groups=["vn_shot"]]
-position = Vector3(-16.4, 4.6, -7)
-rotation = Vector3(-0.152126, -1.62586, 0)
+position = Vector3(-31.5, 4.8, -54.9)
+rotation = Vector3(-0.0676156, -1.65823, 0)
 metadata/fov = 58.0
 
-; rotation C: from under the scoreboard looking south down the field through the goalposts
+; rotation C: from under the scoreboard, south down all 120 yards through both goalposts
 [node name="shot_establish_c" type="Marker3D" parent="." groups=["vn_shot"]]
-position = Vector3(0, 2.2, -15.4)
-rotation = Vector3(0.0211236, -3.14159, 0)
-metadata/fov = 56.0
+position = Vector3(0, 2.6, -114.5)
+rotation = Vector3(0.00361989, -3.14159, 0)
+metadata/fov = 54.0
 
-; insert: the scoreboard panel
+; insert: the scoreboard beyond the north end zone
 [node name="shot_insert_scoreboard" type="Marker3D" parent="." groups=["vn_shot"]]
-position = Vector3(0, 3, -12.4)
-rotation = Vector3(0.394791, 0, 0)
+position = Vector3(0, 3.8, -103)
+rotation = Vector3(0.237471, 0, 0)
 metadata/fov = 44.0
 
-; insert: the fans in the stands
+; insert: the Friday-night crowd in the stands
 [node name="shot_insert_bleachers" type="Marker3D" parent="." groups=["vn_shot"]]
-position = Vector3(-9.6, 1.4, -4.8)
-rotation = Vector3(0.10273, 0.734348, 0)
+position = Vector3(-20.5, 1.5, -47)
+rotation = Vector3(0.0803829, 0.785398, 0)
 metadata/fov = 46.0

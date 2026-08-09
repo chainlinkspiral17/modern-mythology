@@ -86,7 +86,18 @@ def build_road():
 
 
 def build_grass_and_swamp():
-    # Grass strips west of west shoulder; swamp east of east shoulder
+    # GROUND (2026-08-09, user: "no ground on any of the roads,
+    # outside the road it's a flat expanse of nothing"): the terrain
+    # runs the road's full 2400m, out past the treeline bands.
+    # West: bottomland floor. East: the swamp proper — floor plus a
+    # standing-water sheet (this is the guardrail side).
+    make_box("Swamp_Floor_W", (-66.0, 0.0, -0.012), (120.0, 2500.0, 0.02),
+             (0.13, 0.17, 0.11, 1.0))
+    make_box("Swamp_Floor_E", (+66.0, 0.0, -0.012), (120.0, 2500.0, 0.02),
+             (0.12, 0.16, 0.11, 1.0))
+    make_box("Swamp_Water_E", (+80.0, 0.0, 0.002), (100.0, 2500.0, 0.008),
+             (0.10, 0.15, 0.15, 1.0))
+    # Near-road grass strips (the settlement block keeps its lawn)
     make_box("Grass_W", (-5.50, 6.0, 0.02), (4.60, 24.0, 0.04), COL_GRASS)
     make_box("Grass_E", (+5.50, 6.0, 0.02), (4.60, 24.0, 0.04), COL_GRASS)
     # Swamp water patches east
