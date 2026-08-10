@@ -11,6 +11,7 @@ from _props.structure import make_floor, make_wall, make_ceiling, make_crown_mol
 from _props.decor import make_wall_clock, make_floor_plant, make_faded_poster
 from _props.safety import make_smoke_detector
 from _props.detail import (make_floor_stain, make_light_switch, make_threshold, make_traffic_wear, make_wall_outlet, make_wall_tint_band)
+from _props.objects import make_can
 
 PAL = {"wall": (0.92, 0.84, 0.66, 1.0), "baseboard": (0.42, 0.28, 0.18, 1.0)}
 COL_FLOOR = (0.46, 0.32, 0.20, 1.0); COL_SEAM = (0.22, 0.14, 0.10, 1.0)
@@ -49,7 +50,9 @@ def build_shuttered_windows():
             make_box(f"Shutter_{sgn:+d}_{shs:+d}", (sx + shs*0.70, 0.02, 1.80), (0.10, 0.04, 2.20), COL_SHUTTER)
 
 def build_bed():
-    bx, by = 0.0, 4.80
+    # 2026-08-09: was (0.0, 4.80) — the bed's head stood INSIDE the
+    # kitchenette and its posts inside the counter. East of it now.
+    bx, by = 0.9, 4.30
     # Four-poster bed
     make_box("Bed_Frame", (bx, by, 0.20), (1.80, 2.00, 0.20), COL_BED_WOOD)
     make_box("Bed_Mattress", (bx, by, 0.50), (1.60, 1.80, 0.30), COL_LINEN)
@@ -70,7 +73,9 @@ def build_bed():
 
 def build_armoire():
     # Wardrobe west wall
-    ax, ay = -2.80, 3.0
+    # 2026-08-09: was (-2.80, 3.0) — inside the rented sofa. East
+    # wall now, between the TV stand and the bed corner.
+    ax, ay = 2.80, 3.55
     make_box("Armoire_Body", (ax, ay, 1.20), (0.50, 1.40, 2.40), COL_BED_WOOD)
     make_box("Armoire_Door_L", (ax+0.21, ay-0.34, 1.20), (0.04, 0.66, 2.30), (0.42, 0.30, 0.20, 1.0))
     make_box("Armoire_Door_R", (ax+0.21, ay+0.34, 1.20), (0.04, 0.66, 2.30), (0.42, 0.30, 0.20, 1.0))
@@ -158,10 +163,39 @@ def build_detail_pass_2026_08():
                      face_sign=-1, aged=True)
 
 
+def build_use_states_d4():
+    """D4 use states: takeout, cans, the microwave door ajar —
+    Jimmy's week is visible on the surfaces."""
+    # Takeout on the kitchenette: two containers, one lid off
+    make_box("Takeout_A", (-0.45, 5.55, 0.99), (0.16, 0.16, 0.09),
+             (0.92, 0.92, 0.88, 1.0))
+    make_box("Takeout_B", (-0.18, 5.52, 0.98), (0.16, 0.16, 0.07),
+             (0.92, 0.92, 0.88, 1.0))
+    make_box("Takeout_B_Lid", (0.04, 5.44, 0.935), (0.17, 0.17, 0.01),
+             (0.88, 0.88, 0.84, 1.0))
+    # Microwave door ajar (a container open)
+    make_box("Microwave_Door_Ajar", (0.42, 5.38, 1.06), (0.03, 0.26, 0.24),
+             (0.24, 0.24, 0.26, 1.0))
+    # Cans: two standing on the TV stand, one on its side by the bin
+    make_can("Can_TV_0", 2.62, 2.02, 0.66, (0.72, 0.20, 0.18, 1.0))
+    make_can("Can_TV_1", 2.74, 2.30, 0.66, (0.72, 0.20, 0.18, 1.0))
+    make_cyl("Can_Floor", (2.45, 1.15, 0.033), 0.033, 0.12,
+             (0.66, 0.18, 0.16, 1.0), segments=8, axis='Y')
+    make_cyl("Trash_Bin", (2.85, 0.75, 0.18), 0.14, 0.36,
+             (0.30, 0.32, 0.34, 1.0), segments=10)
+    make_box("Trash_Crumple_0", (2.62, 0.62, 0.03), (0.07, 0.07, 0.06),
+             (0.88, 0.86, 0.80, 1.0))
+    make_box("Trash_Crumple_1", (3.02, 0.95, 0.025), (0.06, 0.06, 0.05),
+             (0.86, 0.84, 0.78, 1.0))
+    # Jacket over the sofa back
+    make_box("Sofa_Jacket", (-2.72, 2.15, 0.62), (0.16, 0.60, 0.30),
+             (0.26, 0.28, 0.34, 1.0))
+
 def main():
     clear_scene(); build_shell(); build_shuttered_windows(); build_bed(); build_armoire(); build_decor(); build_ceiling_infra()
     build_hero_props()
     build_detail_pass_2026_08()
+    build_use_states_d4()
     out = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)), "../../../assets/3d/locales/new_orleans_apartment.glb"))
     print(f"\n[build_new_orleans_apartment] exporting to {out}")
     export_glb(out)

@@ -11,6 +11,7 @@ from _props.structure import make_floor, make_wall, make_ceiling, make_crown_mol
 from _props.decor import make_wall_clock, make_floor_plant, make_faded_poster
 from _props.safety import make_smoke_detector, make_fluorescent_tube_fixture, make_sprinkler
 from _props.detail import (make_floor_stain, make_light_switch, make_threshold, make_traffic_wear, make_wall_outlet, make_wall_tint_band)
+from _props.objects import make_drinking_glass
 
 # Warm, home-like palette (hospice reads gentle, not clinical)
 PAL = {"wall": (0.90, 0.84, 0.74, 1.0), "baseboard": (0.62, 0.52, 0.40, 1.0)}
@@ -200,10 +201,42 @@ def build_detail_pass_2026_08():
                      face_sign=-1, aged=True)
 
 
+def build_use_states_d4():
+    """D4 use states (2026-08-09): mid-vigil, not showroom. The
+    visitor's paperback face-down on the chair, water with a straw,
+    the spare blanket, slippers not quite squared, the nurse's
+    clipboard at the door."""
+    wood = (0.40, 0.28, 0.18, 1.0)
+    # Water glass with straw on the bedside table (drinks are round)
+    make_drinking_glass("Water", 0.85, 4.15, 0.62, h=0.09, r=0.032)
+    make_cyl("Water_Straw", (0.87, 4.13, 0.74), 0.004, 0.10,
+             (0.85, 0.85, 0.88, 1.0), segments=5)
+    # The visitor's paperback, face-down and splayed on the chair seat
+    make_box("Chair_Paperback", (-1.85, 4.92, 0.56), (0.13, 0.19, 0.025),
+             (0.62, 0.54, 0.40, 1.0))
+    make_box("Chair_Paperback_Pages", (-1.85, 4.92, 0.545), (0.12, 0.18, 0.012),
+             (0.90, 0.88, 0.80, 1.0))
+    # Spare blanket folded at the bed's foot, one corner off-square
+    make_box("Spare_Blanket", (0.0, 2.35, 0.62), (0.55, 0.34, 0.07),
+             (0.58, 0.62, 0.58, 1.0))
+    make_box("Spare_Blanket_Corner", (0.22, 2.22, 0.665), (0.18, 0.14, 0.02),
+             (0.54, 0.58, 0.54, 1.0))
+    # Slippers under the bed edge, slightly apart, toes uneven
+    make_box("Slipper_L", (0.55, 2.6, 0.035), (0.10, 0.26, 0.07), (0.44, 0.38, 0.34, 1.0))
+    make_box("Slipper_R", (0.72, 2.52, 0.035), (0.10, 0.26, 0.07), (0.44, 0.38, 0.34, 1.0))
+    # The nurse's clipboard hanging at the door
+    make_box("Door_Clipboard", (-0.55, 0.10, 1.35), (0.24, 0.02, 0.32), wood)
+    make_box("Door_Clipboard_Sheet", (-0.55, 0.115, 1.34), (0.20, 0.005, 0.26),
+             (0.92, 0.92, 0.88, 1.0))
+    # Erica's unsent thank-you: an envelope square on the dresser
+    make_box("Dresser_Envelope", (-2.60, 3.25, 0.895), (0.16, 0.11, 0.008),
+             (0.90, 0.88, 0.80, 1.0))
+
 def main():
     clear_scene(); build_shell(); build_hospital_bed(); build_iv_stand_and_monitor(); build_visitor_chair_and_decor(); build_ceiling_infra()
     build_hero_props()
     build_detail_pass_2026_08()
+    build_use_states_d4()
     out = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)), "../../../assets/3d/locales/hospice_room.glb"))
     print(f"\n[build_hospice_room] exporting to {out}")
     export_glb(out)

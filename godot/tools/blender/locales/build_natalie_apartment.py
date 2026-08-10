@@ -42,6 +42,7 @@ from _props.safety import (
     make_smoke_detector, make_hvac_vent, make_fluorescent_tube_fixture,
 )
 from _props.detail import (make_floor_stain, make_traffic_wear, make_wall_outlet, make_wall_tint_band)
+from _props.objects import make_mug
 
 
 # Natalie's apartment palette — soft cream walls, warm wood floor,
@@ -184,12 +185,12 @@ def build_kitchenette():
     make_box("Kitchen_Counter_N_Top", (-1.50, 5.050, top_z),
              (2.50, 0.80, 0.06), PAL_APT_COUNTER["top"])
     # Stove
-    make_box("Stove_Body", (-0.50, 5.050, 0.46),
+    make_box("Stove_Body", (0.05, 5.050, 0.46),
              (0.70, 0.70, 0.92), (0.86, 0.84, 0.80, 1.0))
-    make_box("Stove_Top", (-0.50, 5.20, 0.94),
+    make_box("Stove_Top", (0.05, 5.05, 0.94),
              (0.70, 0.70, 0.04), P.METAL_BLACK)
     for bi, (bx, by) in enumerate([
-            (-0.70, 5.10), (-0.30, 5.10), (-0.70, 5.30), (-0.30, 5.30)]):
+            (-0.15, 4.90), (0.25, 4.90), (-0.15, 5.20), (0.25, 5.20)]):
         make_cyl(f"Stove_Burner_{bi}", (bx, by, 0.96),
                  0.08, 0.02, P.METAL_STEEL)
     # Coffee pots on the counter
@@ -277,7 +278,7 @@ def build_hero_props():
     # Futon-ify: the twilight quilt over the sofa/futon
     make_box("Twilight_Quilt", (2.10, 2.4, 0.62), (1.30, 0.85, 0.08), (0.34, 0.30, 0.50, 1.0))
     # Step-stool by the bookshelf, the scarf lamp, the blinds
-    make_box("Step_Stool", (2.55, 4.55, 0.16), (0.36, 0.30, 0.32), (0.46, 0.34, 0.22, 1.0))
+    make_box("Step_Stool", (3.15, 3.55, 0.16), (0.36, 0.30, 0.32), (0.46, 0.34, 0.22, 1.0))
     make_cyl("Scarf_Lamp_Base", (1.15, 0.55, 0.62), 0.06, 0.03, (0.30, 0.22, 0.14, 1.0), segments=8)
     make_cyl("Scarf_Lamp_Shade", (1.15, 0.55, 0.92), 0.12, 0.18, (0.62, 0.34, 0.44, 0.9), segments=10)
     make_box("Draped_Scarf", (1.20, 0.50, 1.02), (0.20, 0.16, 0.05), (0.56, 0.28, 0.40, 1.0))
@@ -307,6 +308,32 @@ def build_detail_pass_2026_08():
                      face_sign=-1, aged=True)
 
 
+def build_use_states_d4():
+    """D4 use states: the record playing, the reading half-dealt,
+    the mug with its ring. A room used at 2am."""
+    make_cyl("Turntable_Record", (-3.0, 1.9, 0.625), 0.15, 0.005,
+             (0.10, 0.10, 0.11, 1.0), segments=12)
+    make_box("Record_Sleeve", (-2.72, 2.05, 0.75), (0.30, 0.02, 0.30),
+             (0.50, 0.30, 0.24, 1.0))
+    # Tarot: two cards face-up on the rug, the deck stacked off-square
+    make_box("Tarot_Card_A", (-0.75, 1.75, 0.022), (0.07, 0.12, 0.004),
+             (0.88, 0.84, 0.72, 1.0))
+    make_box("Tarot_Card_B", (-0.52, 1.62, 0.022), (0.07, 0.12, 0.004),
+             (0.88, 0.84, 0.72, 1.0))
+    make_box("Tarot_Deck", (-0.95, 1.55, 0.035), (0.075, 0.125, 0.03),
+             (0.30, 0.24, 0.38, 1.0))
+    make_box("Tarot_Deck_Skew", (-0.945, 1.545, 0.055), (0.075, 0.125, 0.012),
+             (0.32, 0.26, 0.40, 1.0))
+    # Coffee mug on the kitchen counter + the ring it left earlier
+    make_mug("Counter_Mug", -1.2, 4.95, 0.92, (0.62, 0.28, 0.24, 1.0))
+    make_cyl("Counter_MugRing", (-0.95, 4.90, 0.925), 0.045, 0.002,
+             (0.38, 0.30, 0.24, 1.0), segments=10)
+    # Blanket half-slid off the sofa
+    make_box("Sofa_Blanket", (-0.75, 1.15, 0.42), (0.55, 0.42, 0.06),
+             (0.46, 0.36, 0.30, 1.0))
+    make_box("Sofa_Blanket_Drape", (-1.05, 0.95, 0.22), (0.25, 0.30, 0.30),
+             (0.44, 0.34, 0.28, 1.0))
+
 def main():
     clear_scene()
     build_shell()
@@ -321,6 +348,7 @@ def main():
     print(f"\n[build_natalie_apartment] exporting to {out_path}")
     build_hero_props()
     build_detail_pass_2026_08()
+    build_use_states_d4()
     export_glb(out_path)
 
 

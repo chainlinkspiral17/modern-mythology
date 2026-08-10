@@ -10,6 +10,7 @@ from _props.structure import make_floor, make_wall, make_ceiling, make_window, m
 from _props.decor import make_wall_clock, make_floor_plant
 from _props.safety import make_smoke_detector, make_hvac_vent, make_fluorescent_tube_fixture, make_ceiling_speaker, make_security_camera
 from _props.detail import (make_wall_outlet, make_wall_tint_band)
+from _props.objects import make_mug
 
 PAL_WALL = {"wall": (0.86, 0.84, 0.80, 1.0), "baseboard": (0.32, 0.30, 0.28, 1.0)}
 COL_CARPET = (0.32, 0.30, 0.32, 1.0); COL_CARPET_SEAM = (0.22, 0.20, 0.22, 1.0)
@@ -203,10 +204,39 @@ def build_detail_pass_2026_08():
                      face_sign=-1, aged=False)
 
 
+def build_use_states_d4():
+    """D4 use states: the case files are OUT, the office is
+    mid-week — stacks off-square, a banker's box open, mugs."""
+    paper = (0.90, 0.88, 0.82, 1.0)
+    # Case files on the manager desk: three stacks, none square
+    make_box("Desk_Files_A", (-4.05, 1.42, 0.76), (0.24, 0.32, 0.06), paper)
+    make_box("Desk_Files_A2", (-4.02, 1.46, 0.80), (0.22, 0.30, 0.03),
+             (0.86, 0.84, 0.78, 1.0))
+    make_box("Desk_Files_B", (-3.70, 1.68, 0.75), (0.24, 0.32, 0.045), paper)
+    # Banker's box OPEN on the credenza, lid leaning against it
+    make_box("Bankers_Box", (-3.2, 0.35, 0.98), (0.40, 0.30, 0.26),
+             (0.62, 0.50, 0.36, 1.0))
+    make_box("Bankers_Box_Lid", (-2.82, 0.42, 0.90), (0.03, 0.32, 0.28),
+             (0.60, 0.48, 0.34, 1.0))
+    make_box("Bankers_Box_Tabs", (-3.2, 0.35, 1.13), (0.34, 0.24, 0.04), paper)
+    # Mugs: the manager's on the desk, one at the cubicle
+    make_mug("Desk_Mug", -3.45, 1.25, 0.735, (0.30, 0.36, 0.52, 1.0))
+    make_mug("Cub_Mug", -2.25, 3.85, 0.74, (0.62, 0.58, 0.50, 1.0))
+    # Sticky notes on the manager monitor edge
+    for i, (ox, oz) in enumerate(((0.14, 0.05), (0.16, -0.06), (-0.15, 0.02))):
+        make_box(f"Sticky_{i}", (-3.9 + ox, 1.34, 1.20 + oz), (0.05, 0.005, 0.05),
+                 (0.95, 0.88, 0.40, 1.0) if i != 1 else (0.70, 0.88, 0.60, 1.0))
+    # Water cooler: cup sleeve on top, one cup abandoned on the sill
+    make_cyl("Cooler_CupSleeve", (4.60, 1.00, 1.22), 0.035, 0.20,
+             (0.90, 0.90, 0.88, 1.0), segments=8)
+    make_cyl("Cooler_LoneCup", (4.35, 1.35, 0.045), 0.03, 0.09,
+             (0.92, 0.92, 0.90, 1.0), segments=8)
+
 def main():
     clear_scene(); build_shell(); build_cubicles(); build_glass_office(); build_exec_furniture(); build_window_blinds(); build_decor(); build_ceiling_infra()
     build_hero_props()
     build_detail_pass_2026_08()
+    build_use_states_d4()
     out = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)), "../../../assets/3d/locales/houston_office.glb"))
     print(f"\n[build_houston_office] exporting to {out}")
     export_glb(out)

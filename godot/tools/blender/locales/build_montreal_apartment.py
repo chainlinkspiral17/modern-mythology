@@ -12,6 +12,7 @@ from _props.store_fixtures import make_counter, make_counter_bullnose
 from _props.decor import make_wall_clock, make_faded_poster, make_floor_plant
 from _props.safety import make_smoke_detector, make_fluorescent_tube_fixture
 from _props.detail import (make_floor_stain, make_light_switch, make_threshold, make_traffic_wear, make_wall_outlet, make_wall_tint_band)
+from _props.objects import make_mug, make_plate, make_bowl
 
 PAL = {"wall": (0.92, 0.88, 0.78, 1.0), "baseboard": (0.42, 0.32, 0.22, 1.0)}
 COL_FLOOR = (0.62, 0.46, 0.30, 1.0); COL_SEAM = (0.32, 0.22, 0.14, 1.0)
@@ -212,10 +213,43 @@ def build_detail_pass_2026_08():
                      face_sign=-1, aged=True)
 
 
+def build_use_states_d4():
+    """D4 use states: Temperance is patience — the notebook open
+    mid-entry, dishes drying, the kettle waiting."""
+    # The notebook OPEN on the reading chair, pen in the gutter
+    make_box("Chair_Notebook_L", (-2.38, 2.28, 0.415), (0.14, 0.20, 0.015),
+             (0.90, 0.88, 0.82, 1.0))
+    make_box("Chair_Notebook_R", (-2.22, 2.30, 0.418), (0.14, 0.20, 0.015),
+             (0.92, 0.90, 0.84, 1.0))
+    make_cyl("Chair_Pen", (-2.30, 2.29, 0.44), 0.006, 0.13,
+             (0.20, 0.22, 0.30, 1.0), segments=6, axis='X')
+    # Drying rack by the fridge: two plates on edge, a bowl, a mug
+    make_box("Drying_Rack", (2.35, 2.75, 0.90), (0.40, 0.28, 0.04),
+             (0.60, 0.62, 0.64, 1.0))
+    make_box("Drying_Plate_A", (2.28, 2.72, 1.02), (0.02, 0.24, 0.24),
+             (0.88, 0.86, 0.82, 1.0))
+    make_box("Drying_Plate_B", (2.38, 2.74, 1.01), (0.02, 0.23, 0.23),
+             (0.86, 0.84, 0.80, 1.0))
+    make_bowl("Drying_Bowl", 2.52, 2.70, 0.92, (0.80, 0.76, 0.68, 1.0), r=0.09)
+    make_mug("Counter_Mug", 2.60, 3.05, 0.92, (0.46, 0.54, 0.50, 1.0))
+    # Kettle on the stove-side of the fridge counter
+    make_cyl("Kettle_Body", (2.72, 2.45, 0.99), 0.09, 0.14,
+             (0.72, 0.72, 0.74, 1.0), segments=10)
+    make_cyl("Kettle_Lidknob", (2.72, 2.45, 1.075), 0.02, 0.03,
+             (0.30, 0.30, 0.32, 1.0), segments=6)
+    make_box("Kettle_Spout", (2.62, 2.36, 1.00), (0.05, 0.05, 0.04),
+             (0.70, 0.70, 0.72, 1.0))
+    # Folded laundry on the sofa arm, one sock off the stack
+    make_box("Laundry_Stack", (-1.42, 0.95, 0.52), (0.28, 0.24, 0.14),
+             (0.76, 0.72, 0.66, 1.0))
+    make_box("Laundry_Sock", (-1.25, 0.78, 0.44), (0.08, 0.14, 0.03),
+             (0.50, 0.54, 0.60, 1.0))
+
 def main():
     clear_scene(); build_shell(); build_living(); build_dining_nook(); build_floor_lamp(); build_kitchenette(); build_radiator_under_window(); build_decor(); build_ceiling_infra()
     build_hero_props()
     build_detail_pass_2026_08()
+    build_use_states_d4()
     out = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)), "../../../assets/3d/locales/montreal_apartment.glb"))
     print(f"\n[build_montreal_apartment] exporting to {out}")
     export_glb(out)

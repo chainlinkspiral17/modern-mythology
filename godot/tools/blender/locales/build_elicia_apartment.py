@@ -157,10 +157,41 @@ def build_detail_pass_2026_08():
                      face_sign=-1, aged=True)
 
 
+def build_use_states_d4():
+    """D4 use states: the Tower is the week it all comes down —
+    papers fanned by the door, the laptop open, boxes half-packed."""
+    # The eviction notice on the desk + papers fanned on the floor
+    make_box("Desk_Notice", (2.65, 4.35, 0.395), (0.15, 0.21, 0.004),
+             (0.94, 0.92, 0.86, 1.0))
+    for i, (px, py, rot_off) in enumerate(((0.35, 0.55, 0.0), (0.55, 0.42, 0.06),
+                                           (0.22, 0.38, -0.04))):
+        make_box(f"Floor_Paper_{i}", (px + rot_off, py, 0.012 + i * 0.003),
+                 (0.15, 0.21, 0.003), (0.90, 0.88, 0.82, 1.0))
+    # Laptop OPEN on the desk: base + tilted-back lid (offset fake)
+    make_box("Laptop_Base", (2.95, 4.55, 0.395), (0.30, 0.21, 0.015),
+             (0.30, 0.31, 0.33, 1.0))
+    make_box("Laptop_Lid", (2.95, 4.68, 0.50), (0.30, 0.03, 0.20),
+             (0.26, 0.27, 0.29, 1.0))
+    make_box("Laptop_Screen", (2.95, 4.665, 0.50), (0.26, 0.005, 0.16),
+             (0.18, 0.24, 0.30, 1.0))
+    # Half-packed boxes by the door: one closed, one open with flaps
+    make_box("Pack_Box_A", (-0.9, 0.5, 0.18), (0.45, 0.35, 0.36),
+             (0.52, 0.40, 0.28, 1.0))
+    make_box("Pack_Box_B", (-1.45, 0.55, 0.15), (0.42, 0.34, 0.30),
+             (0.50, 0.38, 0.26, 1.0))
+    for sgn in (-1, 1):
+        make_box(f"Pack_Box_B_Flap_{sgn:+d}", (-1.45 + sgn * 0.24, 0.55, 0.34),
+                 (0.10, 0.32, 0.02), (0.48, 0.36, 0.25, 1.0))
+    # The second teacup — one on the coffee table (marker), one
+    # abandoned on the desk corner
+    make_cyl("Desk_Teacup", (2.35, 4.62, 0.425), 0.032, 0.055,
+             (0.86, 0.84, 0.80, 1.0), segments=8)
+
 def main():
     clear_scene(); build_shell(); build_living(); build_studio_nook(); build_decor(); build_ceiling_infra()
     build_hero_props()
     build_detail_pass_2026_08()
+    build_use_states_d4()
     out = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)), "../../../assets/3d/locales/elicia_apartment.glb"))
     print(f"\n[build_elicia_apartment] exporting to {out}")
     export_glb(out)
