@@ -53,18 +53,19 @@ SEAT_MAX = 0.10
 CROWNISH = re.compile(r"crown|canopy|foliage|lobe|frond", re.I)
 # Non-solid volumetrics: sprinkler spray arcs, light shafts, steam —
 # they interpenetrate everything by design.
-NONSOLID = re.compile(r"spray|mist|steam|smoke|shaft|glow|beam\b|dust|fog|surf|foam|wake", re.I)
+NONSOLID = re.compile(r"spray|mist|steam|smoke|shaft|glow|beam\b|dust|fog|surf|foam|wake|"
+    r"fall_|veil|cascade|plunge", re.I)
 # Infrastructure DESIGNED to be buried — culverts under roads,
 # pipes through creek beds, footings in the ground.
 BURIEDISH = re.compile(r"culvert|drain|conduit|footing|foundation|piling", re.I)
 # Rock against rock — talus piles, jagged outcrops, scree — is
 # geology, not clipping.
-ROCKISH = re.compile(r"jag|talus|rock|outcrop|boulder|scree|crag|cliff", re.I)
+ROCKISH = re.compile(r"jag|talus|rock|outcrop|boulder|scree|crag|cliff|rim\b|rim_|face\b|face_|gorge|tepui|ledge", re.I)
 # Vegetation against vegetation (a shrub against a cypress buttress)
 # is undergrowth, not clipping.
 PLANTISH = re.compile(r"shrub|bush|hedge|fern|reed|weed|plant|vine|"
                       r"cypress|oak|conifer|tree|myrtle|magnolia|alder|sitka|spruce|"
-                      r"cedar|fir\b|pine|birch|willow", re.I)
+                      r"cedar|fir\b|pine|birch|willow|green\b|green_|growth|ivy|moss", re.I)
 ROOFISH = re.compile(r"eave|ridge|roof|gable|chimney|awning\b", re.I)
 STRUCTISH = re.compile(
     r"leg|brace|strut|post|pole|beam|rail|truss|arm\b|_arm|spindle|"
@@ -169,6 +170,14 @@ def overlaps(boxes):
             if PLANTISH.search(n1) and PLANTISH.search(n2):
                 continue
             if ROCKISH.search(n1) and ROCKISH.search(n2):
+                continue
+            # Vegetation rooted in / draped over rock and walls grows
+            # THROUGH them by nature — any depth.
+            if (PLANTISH.search(n1) or CROWNISH.search(n1)) and \
+                    (WALLISH.search(n2) or ROCKISH.search(n2)):
+                continue
+            if (PLANTISH.search(n2) or CROWNISH.search(n2)) and \
+                    (WALLISH.search(n1) or ROCKISH.search(n1)):
                 continue
             # Containment: a small object whose center sits inside a
             # container-named object is contents, not clipping

@@ -22,7 +22,8 @@ Vantage wired in Background3D.CAMERA_PRESETS:
 import os, sys
 _BT = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)), ".."))
 if _BT not in sys.path: sys.path.insert(0, _BT)
-from _props.geometry import clear_scene, make_box, make_cyl, export_glb
+from _props.geometry import (clear_scene, make_box, make_cyl,
+                             make_blob, make_taper_cyl, export_glb)
 
 COL_ROCK = (0.42, 0.42, 0.40, 1.0)
 COL_ROCK_DK = (0.32, 0.32, 0.31, 1.0)
@@ -62,14 +63,38 @@ def build_gorge():
 
 
 def build_falls():
-    """The column: a bright core inside a softer sheet, plus the
-    lip where it leaves the rim."""
-    make_box("Fall_Sheet", (0.0, 13.35, 5.2), (2.6, 0.30, 8.4), COL_FALL)
-    make_box("Fall_Core", (0.0, 13.30, 5.6), (1.4, 0.22, 7.4), COL_FALL_CORE)
-    make_box("Fall_Lip", (0.0, 13.6, 9.35), (2.9, 0.8, 0.5), COL_FALL)
-    # Broken side threads
-    make_box("Thread_W", (-1.9, 13.4, 4.2), (0.30, 0.20, 5.6), COL_FALL)
-    make_box("Thread_E", (1.7, 13.4, 3.4), (0.22, 0.20, 4.2), COL_FALL)
+    """The column, rebuilt (user: "the waterfalls are primitive").
+    Real falls WIDEN and BREAK as they drop: five stacked veil
+    segments, each wider and slightly forward of the one above, a
+    bright core riding inside each, vertical streamers striating
+    the face, taper-round side threads, and a bulged lip where the
+    water leaves the rim."""
+    # Veil segments, lip to plunge — (z_bottom, z_top, width, y)
+    segs = [(8.5, 9.5, 2.3, 13.50), (6.5, 8.7, 2.6, 13.46),
+            (4.3, 6.7, 3.0, 13.40), (2.1, 4.5, 3.5, 13.30),
+            (0.15, 2.3, 4.1, 13.16)]
+    for i, (z0, z1, w, y) in enumerate(segs):
+        zc, h = (z0 + z1) / 2.0, z1 - z0
+        make_box(f"Fall_Veil_{i}", (0.0, y, zc), (w, 0.30, h), COL_FALL)
+        make_box(f"Fall_Core_{i}", (0.15 * (1 if i % 2 else -1), y - 0.06, zc),
+                 (w * 0.45, 0.20, h * 0.92), COL_FALL_CORE)
+    # Vertical streamers striating the veil faces
+    for i, (sx, s0, s1) in enumerate(((-1.6, 0.3, 8.8), (-0.9, 0.2, 9.2),
+                                      (-0.2, 0.3, 9.4), (0.5, 0.2, 9.0),
+                                      (1.1, 0.3, 8.6), (1.7, 0.2, 7.8))):
+        zc, h = (s0 + s1) / 2.0, s1 - s0
+        col = COL_FALL_CORE if i % 2 == 0 else COL_FALL
+        make_box(f"Fall_Streamer_{i}", (sx, 13.06, zc), (0.16, 0.08, h), col)
+    # The lip: a bulge of water leaving the rim notch
+    make_blob("Fall_Lip", (0.0, 13.55, 9.5), 1.05, COL_FALL,
+              noise=0.10, seed=3, squash=0.45)
+    # Side threads — thin round columns, broken heights
+    make_taper_cyl("Thread_W", (-2.1, 13.35, 4.2), 0.16, 0.10, 5.6, COL_FALL, segments=6)
+    make_taper_cyl("Thread_E", (1.9, 13.35, 3.4), 0.13, 0.08, 4.2, COL_FALL, segments=6)
+    # Wet streaks on the face flanking the column
+    for sx in (-2.6, 2.6):
+        make_box(f"Face_Wet_{sx:+.0f}", (sx, 13.38, 4.6), (0.9, 0.06, 8.2),
+                 (0.22, 0.23, 0.24, 1.0))
 
 
 def build_pool():
@@ -79,9 +104,20 @@ def build_pool():
     make_box("Foam_Ring", (0.0, 12.6, 0.07), (3.6, 1.0, 0.03), COL_FOAM)
     make_box("Foam_Drift_0", (-1.6, 10.8, 0.065), (2.2, 0.18, 0.02), COL_FOAM)
     make_box("Foam_Drift_1", (1.4, 9.8, 0.06), (1.7, 0.14, 0.02), COL_FOAM)
-    # Mist slabs at the base of the column
-    make_box("Mist_Lo", (0.0, 12.7, 1.2), (4.4, 1.4, 2.2), COL_MIST)
-    make_box("Mist_Hi", (0.0, 13.0, 3.0), (3.0, 1.0, 1.6), COL_MIST)
+    # The plunge: churned foam MOUNDS (soft blobs), not slabs
+    make_blob("Foam_Mound", (0.0, 12.6, 0.35), 1.7, COL_FOAM,
+              noise=0.18, seed=11, squash=0.38)
+    make_blob("Foam_Mound_W", (-1.9, 12.2, 0.2), 0.9, COL_FOAM,
+              noise=0.2, seed=12, squash=0.4)
+    make_blob("Foam_Mound_E", (1.8, 12.35, 0.22), 1.0, COL_FOAM,
+              noise=0.2, seed=13, squash=0.4)
+    # Mist: translucent blobs climbing the column base + a low bank
+    make_blob("Mist_Lo", (0.0, 12.5, 1.5), 2.2, COL_MIST,
+              noise=0.22, seed=21, squash=0.6)
+    make_blob("Mist_Hi", (0.4, 12.9, 3.4), 1.5, COL_MIST,
+              noise=0.24, seed=22, squash=0.7)
+    make_blob("Mist_Bank", (0.0, 11.2, 0.8), 3.0, COL_MIST,
+              noise=0.2, seed=23, squash=0.3)
 
 
 def build_foreground():
