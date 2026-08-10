@@ -251,6 +251,11 @@ def main():
 def build_horizon_2026_08():
     """STUMP HUNT: view stopped at 32m. Cane fields and hedgerow
     lines running out to the parish section roads."""
+    # GROUND under everything out past the last band (2026-08-09,
+    # user: "no ground on any of the roads — a flat expanse of
+    # nothing"). Locale-colored so exteriors stop sharing a void.
+    make_box("Ground_Far", (0.0, 0.0, -0.03), (1080.0, 1080.0, 0.02),
+             (0.22, 0.28, 0.16, 1.0))
     from _props.detail import make_far_bands
     make_far_bands("FarHedgerow", (0.30, 0.38, 0.26),
                    [(60.0, 70.0, 5.0, 0.90), (130.0, 120.0, 6.5, 0.72),

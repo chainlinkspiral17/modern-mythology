@@ -510,6 +510,11 @@ def main():
 def build_horizon_2026_08():
     """STUMP HUNT: view stopped at 36m. The lot sits at the town's
     edge — a hedgerow ring, then the limestone town's far rooflines."""
+    # GROUND under everything out past the last band (2026-08-09,
+    # user: "no ground on any of the roads — a flat expanse of
+    # nothing"). Locale-colored so exteriors stop sharing a void.
+    make_box("Ground_Far", (0.0, 0.0, -0.03), (1020.0, 1020.0, 0.02),
+             (0.30, 0.27, 0.18, 1.0))
     from _props.detail import make_far_bands
     make_far_bands("FarHedge", (0.24, 0.30, 0.20),
                    [(60.0, 70.0, 6.0, 0.90), (130.0, 110.0, 8.0, 0.70),

@@ -174,6 +174,10 @@ def build_backdrop():
     for i in range(6):
         tx = -14.0 + i * 5.5
         make_box(f"Hedge_{i}", (tx, 17.0, 1.6), (4.8, 1.6, 3.2), COL_TREE)
+    # GROUND out past the last windbreak (2026-08-09 ground wave):
+    # wheat-stubble section, not a void.
+    make_box("Ground_Far", (0.0, 0.0, -0.03), (1680.0, 1680.0, 0.02),
+             (0.34, 0.30, 0.20, 1.0))
     # Receding hedgerows and windbreaks out across the section, each
     # band dimmer and lower so aerial perspective has steps to grade.
     for i, (by, bw, bh, shade) in enumerate([

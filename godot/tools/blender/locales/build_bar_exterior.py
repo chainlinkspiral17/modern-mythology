@@ -130,6 +130,11 @@ def build_horizon_2026_08():
     """STUMP HUNT: view stopped at 43m. The bar is on a street in a
     town: brick rooflines continuing down the block, a water tower
     silhouette, treeline past the edge of town."""
+    # GROUND under everything out past the last band (2026-08-09,
+    # user: "no ground on any of the roads — a flat expanse of
+    # nothing"). Locale-colored so exteriors stop sharing a void.
+    make_box("Ground_Far", (0.0, 0.0, -0.03), (1100.0, 1100.0, 0.02),
+             (0.20, 0.19, 0.18, 1.0))
     from _props.detail import make_far_bands
     make_far_bands("FarBlock", COL_BRICK_DK,
                    [(60.0, 70.0, 7.5, 0.92), (130.0, 110.0, 9.0, 0.74)],

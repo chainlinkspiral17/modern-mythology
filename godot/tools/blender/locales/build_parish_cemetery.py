@@ -31,6 +31,10 @@ def build_ground():
     # failure as louisiana_road. The sky belongs to the environment;
     # what geometry owes the view is DEPTH: treelines and the parish
     # roofline receding past the wall until fog takes them.
+    # GROUND out past the treelines (2026-08-09 ground wave):
+    # parish lawn and pasture, not a void.
+    make_box("Ground_Far", (0.0, 0.0, -0.03), (1200.0, 1200.0, 0.02),
+             (0.20, 0.28, 0.16, 1.0))
     for i, (dist, bw, bh, shade) in enumerate([
             (70.0, 70.0, 6.0, 0.86), (150.0, 120.0, 7.5, 0.72),
             (300.0, 200.0, 9.0, 0.58), (520.0, 320.0, 11.0, 0.46)]):

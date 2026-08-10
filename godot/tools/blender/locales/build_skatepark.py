@@ -127,6 +127,11 @@ def main():
 def build_horizon_2026_08():
     """STUMP HUNT: view stopped at 31m. The park sits in a real
     suburb: house rooflines one street over, then treelines."""
+    # GROUND under everything out past the last band (2026-08-09,
+    # user: "no ground on any of the roads — a flat expanse of
+    # nothing"). Locale-colored so exteriors stop sharing a void.
+    make_box("Ground_Far", (0.0, 0.0, -0.03), (1000.0, 1000.0, 0.02),
+             (0.22, 0.28, 0.17, 1.0))
     from _props.detail import make_far_bands
     make_far_bands("FarRoofline", (0.36, 0.33, 0.30),
                    [(55.0, 60.0, 6.0, 0.92), (120.0, 100.0, 7.0, 0.74)],

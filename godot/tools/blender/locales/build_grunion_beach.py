@@ -110,6 +110,11 @@ def main():
 def build_horizon_2026_08():
     """STUMP HUNT: view stopped at 50m. Night sea to a true horizon
     seaward; dune ridges and a distant point light landward."""
+    # GROUND under everything out past the last band (2026-08-09,
+    # user: "no ground on any of the roads — a flat expanse of
+    # nothing"). Locale-colored so exteriors stop sharing a void.
+    make_box("Ground_Far", (0.0, 0.0, -0.03), (1080.0, 1080.0, 0.02),
+             (0.30, 0.28, 0.24, 1.0))
     make_box("Sea_Deep", (0.0, 90.0, 0.3), (180.0, 62.0, 0.05), COL_SEA_FAR)
     make_box("Sea_Horizon", (0.0, 300.0, 0.2), (460.0, 150.0, 0.05),
              (COL_SEA_FAR[0] * 1.3, COL_SEA_FAR[1] * 1.3,

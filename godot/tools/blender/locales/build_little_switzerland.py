@@ -160,6 +160,11 @@ def build_horizon_2026_08():
     """STUMP HUNT: view stopped at 41m. It is called Little
     Switzerland — it owes the view mountains: conifer bands, then
     blue-grey ridgelines stacking back."""
+    # GROUND under everything out past the last band (2026-08-09,
+    # user: "no ground on any of the roads — a flat expanse of
+    # nothing"). Locale-colored so exteriors stop sharing a void.
+    make_box("Ground_Far", (0.0, 0.0, -0.03), (1800.0, 1800.0, 0.02),
+             (0.22, 0.30, 0.18, 1.0))
     from _props.detail import make_far_bands
     make_far_bands("FarConifer", (0.14, 0.22, 0.14),
                    [(60.0, 70.0, 9.0, 0.90), (130.0, 120.0, 12.0, 0.72)],

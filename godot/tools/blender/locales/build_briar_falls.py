@@ -291,6 +291,11 @@ def main():
 def build_horizon_2026_08():
     """STUMP HUNT: view stopped at 56m. Stone ridges and wooded
     slopes closing the valley the falls cut through."""
+    # GROUND under everything out past the last band (2026-08-09,
+    # user: "no ground on any of the roads — a flat expanse of
+    # nothing"). Locale-colored so exteriors stop sharing a void.
+    make_box("Ground_Far", (0.0, 0.0, -0.03), (1240.0, 1240.0, 0.02),
+             (0.24, 0.22, 0.18, 1.0))
     from _props.detail import make_far_bands
     make_far_bands("FarStone", COL_STONE_DK,
                    [(70.0, 80.0, 11.0, 0.86), (150.0, 130.0, 15.0, 0.68)],

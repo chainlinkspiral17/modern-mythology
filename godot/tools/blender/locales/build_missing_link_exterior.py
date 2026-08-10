@@ -218,6 +218,11 @@ def build_horizon_2026_08():
     """STUMP HUNT: view stopped at 60m. The station sits on a road
     that goes somewhere: receding grass hills carrying the road's
     line of poles away."""
+    # GROUND under everything out past the last band (2026-08-09,
+    # user: "no ground on any of the roads — a flat expanse of
+    # nothing"). Locale-colored so exteriors stop sharing a void.
+    make_box("Ground_Far", (0.0, 0.0, -0.03), (1400.0, 1400.0, 0.02),
+             (0.26, 0.24, 0.16, 1.0))
     from _props.detail import make_far_bands
     make_far_bands("FarHill", COL_GRASS,
                    [(80.0, 90.0, 8.0, 0.85), (170.0, 150.0, 12.0, 0.66),

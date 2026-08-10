@@ -416,6 +416,11 @@ def main():
 def build_horizon_2026_08():
     """STUMP HUNT: view stopped at 31m. The tower has a town under
     it — rooflines stepping down the hill, then the tree country."""
+    # GROUND under everything out past the last band (2026-08-09,
+    # user: "no ground on any of the roads — a flat expanse of
+    # nothing"). Locale-colored so exteriors stop sharing a void.
+    make_box("Ground_Far", (0.0, 0.0, -0.03), (1080.0, 1080.0, 0.02),
+             (0.20, 0.24, 0.16, 1.0))
     from _props.detail import make_far_bands
     make_far_bands("FarTown", (0.30, 0.28, 0.27),
                    [(60.0, 70.0, 7.0, 0.90), (130.0, 110.0, 8.5, 0.72)],

@@ -350,6 +350,11 @@ def build_horizon_2026_08():
     """STUMP HUNT: evening treelines past the fences, centered on the
     FIELD (cy=55) so the first band clears the 110m gridiron + the
     scoreboard instead of standing on the 50-yard line."""
+    # GROUND under everything out past the last band (2026-08-09,
+    # user: "no ground on any of the roads — a flat expanse of
+    # nothing"). Locale-colored so exteriors stop sharing a void.
+    make_box("Ground_Far", (0.0, 55.0, -0.03), (1240.0, 1240.0, 0.02),
+             (0.15, 0.24, 0.13, 1.0))
     from _props.detail import make_far_bands
     make_far_bands("FarTrees", (0.13, 0.20, 0.11),
                    [(95.0, 110.0, 8.0, 0.90), (180.0, 170.0, 11.0, 0.70),
