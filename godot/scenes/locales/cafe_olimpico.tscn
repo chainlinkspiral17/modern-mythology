@@ -307,3 +307,34 @@ offset_top = 360.0
 offset_right = 520.0
 offset_bottom = 980.0
 script = ExtResource("14_dbgm")
+
+; ── vn_shot coverage (2026-08-09 · arcana sets round 2) ────────
+; rotation B: from behind the espresso machine, over the floor to the front tables
+[node name="shot_establish_b" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(0, 1.5, -4.6)
+rotation = Vector3(-0.171934, 2.73344, 0)
+metadata/fov = 54.0
+
+; closeup: Elicia at the front table
+[node name="shot_closeup_elicia" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(-1.1, 1.25, -1.7)
+rotation = Vector3(-0.273009, 2.2143, 0)
+metadata/fov = 36.0
+
+; closeup: John across the same table
+[node name="shot_closeup_john" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(-2.9, 1.25, -1.8)
+rotation = Vector3(-0.242612, -2.35619, 0)
+metadata/fov = 36.0
+
+; insert: the croissant on the table
+[node name="shot_insert_croissant" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(-1.6, 1.05, -1.5)
+rotation = Vector3(-0.377931, 2.5128, 0)
+metadata/fov = 38.0
+
+; insert: the cafe door to the street
+[node name="shot_insert_door" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(-0.8, 1.4, -2.6)
+rotation = Vector3(-0.113797, -2.83189, 0)
+metadata/fov = 44.0

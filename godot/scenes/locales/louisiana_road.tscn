@@ -132,7 +132,7 @@ shader_parameter/tint_color = Color(0.62, 0.74, 0.62, 1)
 background_mode = 1
 background_color = Color(0.10, 0.13, 0.20, 1)
 ambient_light_source = 2
-ambient_light_color = Color(0.44, 0.48, 0.58, 1)
+ambient_light_color = Color(0.42, 0.39, 0.33, 1)
 ambient_light_energy = 0.44
 ; ── Distance (2026-08-04) ─────────────────────────────────────────
 ; The road now runs 1200m. Fog is what turns that length into a
@@ -143,7 +143,7 @@ ambient_light_energy = 0.44
 ; stump. Sky-affecting fog + aerial perspective puts atmosphere
 ; where the geometry ends instead of a hole.
 fog_enabled = true
-fog_light_color = Color(0.30, 0.34, 0.44, 1)
+fog_light_color = Color(0.36, 0.31, 0.24, 1)
 fog_light_energy = 0.9
 fog_sun_scatter = 0.12
 fog_density = 0.0042

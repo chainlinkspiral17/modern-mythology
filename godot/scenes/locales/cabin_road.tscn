@@ -132,10 +132,10 @@ shader_parameter/tint_color = Color(0.55, 0.66, 0.58, 1)
 background_mode = 1
 background_color = Color(0.66, 0.70, 0.70, 1)
 ambient_light_source = 2
-ambient_light_color = Color(0.54, 0.58, 0.56, 1)
+ambient_light_color = Color(0.45, 0.54, 0.50, 1)
 ambient_light_energy = 0.75
 fog_enabled = true
-fog_light_color = Color(0.62, 0.66, 0.66, 1)
+fog_light_color = Color(0.55, 0.64, 0.60, 1)
 fog_light_energy = 0.55
 ; STUMP HUNT (2026-08-04): this exterior's geometry now runs
 ; past 120m. Fog retuned so the new distance reads as air —

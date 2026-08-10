@@ -307,3 +307,40 @@ offset_top = 360.0
 offset_right = 520.0
 offset_bottom = 980.0
 script = ExtResource("14_dbgm")
+
+; ── vn_shot coverage (2026-08-09 · arcana sets round 2) ────────
+; rotation B: from the back door across the office to the front
+[node name="shot_establish_b" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(2.2, 1.55, -5.4)
+rotation = Vector3(-0.110822, 2.47755, 0)
+metadata/fov = 54.0
+
+; closeup: Antonio behind the desk
+[node name="shot_closeup_antonio" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(-1.1, 1.3, -2.2)
+rotation = Vector3(-0.208026, -0.885067, 0)
+metadata/fov = 36.0
+
+; closeup: Jimmy on the pacing carpet
+[node name="shot_closeup_jimmy" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(0.9, 1.3, -3.6)
+rotation = Vector3(-0.207274, 2.57026, 0)
+metadata/fov = 36.0
+
+; insert: the phone on the desk
+[node name="shot_insert_phone" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(-0.6, 1.15, -2.7)
+rotation = Vector3(-0.283808, -0.785398, 0)
+metadata/fov = 38.0
+
+; insert: the bourbon on the bookcase shelf
+[node name="shot_insert_bourbon" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(-1.9, 1.15, -2.3)
+rotation = Vector3(-0.202014, 0.96007, 0)
+metadata/fov = 40.0
+
+; insert: the east window over the street
+[node name="shot_insert_window" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(2.3, 1.5, -2.4)
+rotation = Vector3(0.152984, -1.08991, 0)
+metadata/fov = 42.0
