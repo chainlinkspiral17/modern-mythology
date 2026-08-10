@@ -305,3 +305,28 @@ offset_top = 360.0
 offset_right = 520.0
 offset_bottom = 980.0
 script = ExtResource("14_dbgm")
+
+; ── vn_shot coverage (2026-08-09 · the arcana sets get the markers their scripts call for) ────────
+; rotation B: from the dresser corner - the bed, the window, the sink
+[node name="shot_establish_b" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(-2.2, 1.5, -1.4)
+rotation = Vector3(-0.145182, -0.750929, 0)
+metadata/fov = 54.0
+
+; closeup: Alice against the pillow, the window light behind her
+[node name="shot_closeup_alice" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(0.9, 1.15, -4.6)
+rotation = Vector3(-0.37838, 2.1588, 0)
+metadata/fov = 36.0
+
+; insert: the white rose in the votive glass on the windowsill
+[node name="shot_insert_rose" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(0.7, 1.28, -4.35)
+rotation = Vector3(-0.136348, 0.54042, 0)
+metadata/fov = 38.0
+
+; insert: the visitor chair by the window - where the presence sits
+[node name="shot_insert_chair" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(-0.3, 1.2, -3.3)
+rotation = Vector3(-0.399461, 2.45586, 0)
+metadata/fov = 42.0
