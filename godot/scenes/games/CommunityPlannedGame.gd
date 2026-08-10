@@ -1815,6 +1815,22 @@ func _problem_stamp(p: Dictionary) -> ImageTexture:
 	return _stamp_tex(ptype)
 
 
+# Severity tint for a problem's stamp: parchment-neutral while it
+# simmers, warming through amber to a red heat as it climbs. Applied
+# as modulate wherever a stamp renders (row, dossier, picker), so
+# the SAME stamp reads hotter as the problem worsens - the picture
+# carries the number.
+func _stamp_severity_tint(p: Dictionary) -> Color:
+	var sev: float = float(p.get("severity", 0.0))
+	if sev >= 7.0:
+		return Color(1.0, 0.62, 0.55, 1.0)     # red heat - crisis
+	if sev >= 5.0:
+		return Color(1.0, 0.78, 0.58, 1.0)     # orange - urgent
+	if sev >= 3.0:
+		return Color(1.0, 0.92, 0.72, 1.0)     # amber - worsening
+	return Color(1, 1, 1, 1)                   # neutral - simmering
+
+
 # Accent color for an agent's procedural bust. Demons share one
 # sickly violet so they read as a class at a glance; humans get a
 # stable hash hue.
@@ -1970,6 +1986,7 @@ func _render_region(r_id: String) -> void:
 		if row_stamp != null:
 			var icon := TextureRect.new()
 			icon.texture = row_stamp
+			icon.modulate = _stamp_severity_tint(p)
 			icon.custom_minimum_size = Vector2(38, 21)
 			icon.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED
 			icon.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
@@ -2451,6 +2468,7 @@ func _open_problem_dossier(region_id: String, problem_index: int) -> void:
 	if dossier_art != null:
 		var art_tr := TextureRect.new()
 		art_tr.texture = dossier_art
+		art_tr.modulate = _stamp_severity_tint(p)
 		art_tr.custom_minimum_size = Vector2(240, 135)
 		art_tr.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED
 		art_tr.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
@@ -2811,6 +2829,7 @@ func _open_dispatch_picker(region_id: String, problem_index: int) -> void:
 	if picker_art != null:
 		var art_tr := TextureRect.new()
 		art_tr.texture = picker_art
+		art_tr.modulate = _stamp_severity_tint(p)
 		art_tr.custom_minimum_size = Vector2(200, 112)
 		art_tr.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED
 		art_tr.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
