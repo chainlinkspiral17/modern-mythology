@@ -295,19 +295,19 @@ def build_shell():
              (12.4, 9.4, 0.10), COL_CEILING_TILE)
     # Tile grid divider strips
     for i in range(-5, 6):
-        make_box(f"Ceiling_GridX_{i}", (i*1.0, 4.5, CEIL_Z + 0.02),
-                 (0.04, 9.4, 0.005), COL_CEILING_GRID)
+        make_box(f"Ceiling_GridX_{i}", (i*1.0, 4.5, CEIL_Z - 0.010),
+                 (0.04, 9.4, 0.012), COL_CEILING_GRID)
     for j in range(0, 10):
-        make_box(f"Ceiling_GridY_{j}", (0.0, float(j), CEIL_Z + 0.02),
-                 (12.4, 0.04, 0.005), COL_CEILING_GRID)
+        make_box(f"Ceiling_GridY_{j}", (0.0, float(j), CEIL_Z - 0.010),
+                 (12.4, 0.04, 0.012), COL_CEILING_GRID)
     # Water stains on ceiling tiles — canonical convenience-store
     # detail. Three darker patches at specific tile centres.
     for stain_i, (sx, sy) in enumerate([
         (-2.0, 2.5), (+1.0, 5.5), (+3.0, 7.5),
     ]):
         make_box(f"Ceiling_Stain_{stain_i}",
-                 (sx, sy, CEIL_Z + 0.025),
-                 (0.80, 0.80, 0.003), COL_CEILING_STAIN)
+                 (sx, sy, CEIL_Z - 0.004),
+                 (0.80, 0.80, 0.004), COL_CEILING_STAIN)
 
     # ── Fluorescent tube fixtures (3 rows of 2 each) ────────────
     for j, ypos in enumerate([2.5, 5.0, 7.5]):

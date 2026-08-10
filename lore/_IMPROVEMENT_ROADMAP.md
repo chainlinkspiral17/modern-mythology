@@ -192,6 +192,17 @@ asphalt approach (was a 6m stub starting at the lens) — which also
 begins the roads-look-identical fix (green swamp floor vs red-brown
 duff). Overlap grammar grew: buried infrastructure, conifer species
 names, per-name crown/lobe parts.
+FIXED SINCE (2026-08-09 continued): the football field grew a
+practice scrimmage (players = the scale reference); cliffside got
+its tall cliff / anchored bunting / arch / kiosk / bandstand; the
+Emperor was the missing riverboat GLB (rebuild fixes it); the
+punch-in dolly-into-walls bug was betraying EVERY well-authored
+arcana chapter (zoom now, wide restores preset); Sapo Falls is
+veils/streamers/foam-mounds/mist-blobs; the store-ceiling flicker
+was grid+stains EMBEDDED INSIDE the ceiling slab, z-fighting its
+underside — fixed in the SHARED make_ceiling (every interior) and
+kwik_stop's vendored copy. Rebuild-on-next-touch applies the
+ceiling fix per locale; kwik_stop + centro first.
 STILL OPEN (tasks #3-8): gas & go aisle product jumble + punch-in
 landing inside shelving; cliffside_circus identity; floating bunting
 at the camp main building; ground planes for the REMAINING exteriors;

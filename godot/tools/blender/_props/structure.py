@@ -68,18 +68,22 @@ def make_ceiling(prefix, anchor, *, size_x, size_y, palette=None,
     cx, cy, ceil_z = anchor
     make_box(f"{prefix}_Plane", (cx, cy, ceil_z + 0.05),
              (size_x, size_y, 0.10), tile)
+    # Grid + stains hang BELOW the slab's underside (z-fight fix
+    # 2026-08-09: they used to sit INSIDE the slab volume, near-
+    # coplanar with its bottom face — "flickering geometry in the
+    # roof" at glancing angles, in every interior using this).
     if with_grid:
         for i in range(int(cx - size_x / 2), int(cx + size_x / 2) + 1):
-            make_box(f"{prefix}_GridX_{i}", (i, cy, ceil_z + 0.02),
-                     (0.04, size_y, 0.005), grid)
+            make_box(f"{prefix}_GridX_{i}", (i, cy, ceil_z - 0.010),
+                     (0.04, size_y, 0.012), grid)
         for j in range(int(cy - size_y / 2), int(cy + size_y / 2) + 1):
-            make_box(f"{prefix}_GridY_{j}", (cx, j, ceil_z + 0.02),
-                     (size_x, 0.04, 0.005), grid)
+            make_box(f"{prefix}_GridY_{j}", (cx, j, ceil_z - 0.010),
+                     (size_x, 0.04, 0.012), grid)
     if with_stains:
         for si, (sx, sy) in enumerate([
                 (cx - 2, cy - 2), (cx + 1, cy + 1), (cx + 3, cy + 3)]):
             make_box(f"{prefix}_Stain_{si}",
-                     (sx, sy, ceil_z + 0.025),
+                     (sx, sy, ceil_z - 0.004),
                      (0.80, 0.80, 0.003), stain)
 
 
