@@ -2441,24 +2441,36 @@ def build_soda_bottle_pyramid():
     # Tier 0 — 4 bottles
     for i in range(4):
         col, capcol = bottles[i % 3]
-        make_cyl(f"SodaPyr_T0_{i}", (bx - 0.30 + i * 0.20, by, base_z),
-                 0.07, 0.30, col)
-        make_cyl(f"SodaPyr_T0_Cap_{i}", (bx - 0.30 + i * 0.20, by, base_z + 0.16),
-                 0.05, 0.06, capcol)
+        # 2-liter silhouette: body + shoulder-neck + cap (was a fat
+        # straight tube - "all the bottles are cubes")
+        make_cyl(f"SodaPyr_T0_{i}", (bx - 0.30 + i * 0.20, by, base_z - 0.045),
+                 0.048, 0.21, col)
+        make_cyl(f"SodaPyr_T0_Neck_{i}", (bx - 0.30 + i * 0.20, by, base_z + 0.095),
+                 0.020, 0.07, col)
+        make_cyl(f"SodaPyr_T0_Cap_{i}", (bx - 0.30 + i * 0.20, by, base_z + 0.145),
+                 0.022, 0.025, capcol)
     # Tier 1 — 3 bottles (offset)
     for i in range(3):
         col, capcol = bottles[(i + 1) % 3]
-        make_cyl(f"SodaPyr_T1_{i}", (bx - 0.20 + i * 0.20, by, base_z + 0.32),
-                 0.07, 0.30, col)
-        make_cyl(f"SodaPyr_T1_Cap_{i}", (bx - 0.20 + i * 0.20, by, base_z + 0.48),
-                 0.05, 0.06, capcol)
+        # 2-liter silhouette: body + shoulder-neck + cap (was a fat
+        # straight tube - "all the bottles are cubes")
+        make_cyl(f"SodaPyr_T1_{i}", (bx - 0.20 + i * 0.20, by, base_z + 0.32 - 0.045),
+                 0.048, 0.21, col)
+        make_cyl(f"SodaPyr_T1_Neck_{i}", (bx - 0.20 + i * 0.20, by, base_z + 0.32 + 0.095),
+                 0.020, 0.07, col)
+        make_cyl(f"SodaPyr_T1_Cap_{i}", (bx - 0.20 + i * 0.20, by, base_z + 0.32 + 0.145),
+                 0.022, 0.025, capcol)
     # Tier 2 — 2 bottles
     for i in range(2):
         col, capcol = bottles[i]
-        make_cyl(f"SodaPyr_T2_{i}", (bx - 0.10 + i * 0.20, by, base_z + 0.64),
-                 0.07, 0.30, col)
-        make_cyl(f"SodaPyr_T2_Cap_{i}", (bx - 0.10 + i * 0.20, by, base_z + 0.80),
-                 0.05, 0.06, capcol)
+        # 2-liter silhouette: body + shoulder-neck + cap (was a fat
+        # straight tube - "all the bottles are cubes")
+        make_cyl(f"SodaPyr_T2_{i}", (bx - 0.10 + i * 0.20, by, base_z + 0.64 - 0.045),
+                 0.048, 0.21, col)
+        make_cyl(f"SodaPyr_T2_Neck_{i}", (bx - 0.10 + i * 0.20, by, base_z + 0.64 + 0.095),
+                 0.020, 0.07, col)
+        make_cyl(f"SodaPyr_T2_Cap_{i}", (bx - 0.10 + i * 0.20, by, base_z + 0.64 + 0.145),
+                 0.022, 0.025, capcol)
     # Topper SALE banner
     make_box("SodaPyr_Topper", (bx, by, base_z + 1.04),
              (0.50, 0.30, 0.16), COL_LOTTERY_YEL)

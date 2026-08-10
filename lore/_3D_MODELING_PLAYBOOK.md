@@ -399,6 +399,35 @@ Louisville's hurricane-deck proportions"). Don't guess at numbers.
 
 ## Recent lessons
 
+### 2026-08-09 · RECOGNIZABLE OBJECTS — a bottle is a silhouette, not a tube
+
+- **User: "the bar, all the bottles are cubes. make bottles, make
+  cans, make recognizable objects for all the scenes."** The bars'
+  bottles were single fat cylinders (r 0.05 × h 0.30 — a 10cm-wide
+  tube) — under the dither they read as extruded blocks. The new
+  `_props/objects.py` vocabulary: make_bottle / make_liquor_bottle /
+  make_wine_bottle (body + shoulder taper + neck + cap),
+  make_can (body + chamfered rims + lid), make_drinking_glass /
+  make_pint_glass (tapered walls), make_mug (+ handle), make_jar,
+  make_plate, make_bowl. Real-world sizes; callers pass the surface
+  z the object STANDS on.
+- **Converted this pass**: new_orleans_bar (60 shelf bottles),
+  foxhole_bar (42), daigles_roadhouse, el_rancho table bottles,
+  foxhole dressing-room vanity, carnival lot Roy's bottle, faust's
+  vitamin bottle, kwik_stop's soda pyramid (2-liter silhouettes),
+  and the DINER's three bar shelves inline (vendored builder — no
+  _props import; body/neck/cap stacks with its local make_cyl).
+- **Already good, left alone**: bungalow wine bottles, ember_ash
+  bourbon, darkroom chemistry jugs — they had real silhouettes.
+  Pill bottles and spray bottles ARE plain cylinders; don't "fix"
+  them into liquor bottles.
+- **The rule going forward: any object a hand can hold gets a
+  silhouette with at least one diameter change.** A tube is a pipe;
+  a box is a carton. If the name says bottle/can/glass/mug/jar, it
+  comes from _props.objects.
+
+
+
 ### 2026-08-04 · de-Minecraft vocabulary + the view-direction sign bug
 
 - **The playbook demanded shapes the module didn't have.** The

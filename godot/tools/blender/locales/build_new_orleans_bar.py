@@ -10,6 +10,7 @@ from _props.structure import make_floor, make_wall, make_ceiling, make_crown_mol
 from _props.store_fixtures import make_counter, make_counter_bullnose
 from _props.decor import make_wall_clock
 from _props.safety import make_fluorescent_tube_fixture, make_smoke_detector, make_ceiling_speaker
+from _props.objects import make_liquor_bottle
 
 PAL = {"wall": (0.42, 0.30, 0.22, 1.0), "baseboard": (0.18, 0.12, 0.10, 1.0)}
 COL_FLOOR = (0.32, 0.22, 0.16, 1.0); COL_SEAM = (0.18, 0.12, 0.10, 1.0)
@@ -47,7 +48,9 @@ def build_bar():
         for bi in range(20):
             bx = -3.0 + bi*0.32
             tint = [COL_BOTTLE_AMBER, COL_BOTTLE_CLEAR, COL_BOTTLE_GREEN][(shf+bi)%3]
-            make_cyl(f"Bottle_{shf}_{bi}", (bx, 5.40, sz+0.16), 0.05, 0.30, tint)
+            make_liquor_bottle(f"Bottle_{shf}_{bi}", bx, 5.40, sz + 0.01,
+                               tint, h=0.24 + ((shf + bi) % 3) * 0.035,
+                               r=0.033)
     # Back mirror (long horizontal — bartender's reflection canon)
     make_box("Bar_Mirror", (0.0, 5.87, top_z+0.85), (6.4, 0.02, 1.50), (0.78, 0.84, 0.86, 0.85))
 
@@ -139,14 +142,14 @@ def build_hero_props():
     make_box("MissileCmd_Marquee", (3.80, 4.5, 1.68), (0.05, 0.62, 0.18), (0.80, 0.30, 0.24, 1.0))
     make_box("MissileCmd_Panel", (3.72, 4.5, 0.90), (0.16, 0.60, 0.06), (0.24, 0.24, 0.28, 1.0))
     # A six-top for the vol1 party
-    make_cyl("Group_Table", (1.2, 2.0, 0.74), 0.65, 0.05, wood, segments=14)
-    make_cyl("Group_Table_Post", (1.2, 2.0, 0.37), 0.07, 0.70, (0.20, 0.19, 0.20, 1.0), segments=8)
+    make_cyl("Group_Table", (0.6, 1.9, 0.74), 0.65, 0.05, wood, segments=14)
+    make_cyl("Group_Table_Post", (0.6, 1.9, 0.37), 0.07, 0.70, (0.20, 0.19, 0.20, 1.0), segments=8)
     import math as _m
     for ci in range(6):
         ang = ci * (2.0 * _m.pi / 6.0) + 0.3
-        cx, cy = 1.2 + _m.cos(ang) * 1.0, 2.0 + _m.sin(ang) * 1.0
+        cx, cy = 0.6 + _m.cos(ang) * 1.0, 1.9 + _m.sin(ang) * 1.0
         make_box(f"Group_Chair_{ci}_Seat", (cx, cy, 0.44), (0.38, 0.38, 0.04), wood)
-        make_box(f"Group_Chair_{ci}_Back", (1.2 + _m.cos(ang) * 1.17, 2.0 + _m.sin(ang) * 1.17, 0.70),
+        make_box(f"Group_Chair_{ci}_Back", (0.6 + _m.cos(ang) * 1.17, 1.9 + _m.sin(ang) * 1.17, 0.70),
                  (0.38, 0.05, 0.48), wood)
 
 

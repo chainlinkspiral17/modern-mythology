@@ -202,7 +202,10 @@ def build_kitchenette():
     # The mirror cabinet over the sink, W wall — door hinged, ajar
     make_box("Mirror_Cabinet", (-2.90, 1.05, 1.62), (0.10, 0.50, 0.65), COL_WOOD)
     make_box("Mirror_Door", (-2.83, 0.94, 1.62), (0.03, 0.42, 0.58), (0.68, 0.74, 0.78, 1.0))
-    make_box("Vitamin_Bottle", (-2.86, 1.18, 1.38), (0.05, 0.05, 0.10), (0.66, 0.52, 0.24, 1.0))
+    make_cyl("Vitamin_Bottle", (-2.86, 1.18, 1.37), 0.022, 0.08,
+             (0.66, 0.52, 0.24, 1.0), segments=8)
+    make_cyl("Vitamin_Bottle_Cap", (-2.86, 1.18, 1.42), 0.024, 0.02,
+             (0.92, 0.92, 0.90, 1.0), segments=8)
 
 
 def build_bicycle():

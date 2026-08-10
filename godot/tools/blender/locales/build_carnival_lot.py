@@ -10,6 +10,7 @@ if _BT not in sys.path: sys.path.insert(0, _BT)
 import math
 from _props import palette as P
 from _props.geometry import clear_scene, make_box, make_cyl, export_glb
+from _props.objects import make_bottle
 
 COL_DIRT = (0.52, 0.44, 0.32, 1.0); COL_GRASS = (0.46, 0.50, 0.32, 1.0)
 COL_LIMESTONE = (0.78, 0.74, 0.66, 1.0); COL_TENT_RED = (0.62, 0.32, 0.30, 1.0)
@@ -220,11 +221,8 @@ def build_strength_dressing():
                  (0.02, 0.02, 0.46),
                  (0.32, 0.32, 0.32, 1.0))
     # A bottle of something on the ground next to the chair
-    make_cyl("Roy_Bottle_Body",
-             (roy_x + 0.30, roy_y - 0.10, 0.10),
-             0.035, 0.20,
-             (0.32, 0.20, 0.12, 0.85),
-             segments=8, axis='Z')
+    make_bottle("Roy_Bottle", roy_x + 0.30, roy_y - 0.10, 0.0,
+                (0.32, 0.20, 0.12, 0.85), h=0.20, r=0.030)
 
     # Lila's plaque on the wagon side (brass, weathered)
     make_box("Cage_LilaPlaque",

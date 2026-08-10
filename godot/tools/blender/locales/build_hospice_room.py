@@ -92,8 +92,11 @@ def build_iv_stand_and_monitor():
         make_box(f"Monitor_Wave_{li}", (mx - 0.14 + li*0.04, my-0.165, 1.22), (0.02, 0.005, 0.02), (0.62, 0.96, 0.62, 1.0))
 
 def build_visitor_chair_and_decor():
-    # Comfortable visitor armchair (upholstered, w/ arms) south of bed
-    cx, cy = -1.20, 1.80
+    # Comfortable visitor armchair (upholstered, w/ arms) BY THE
+    # WINDOW, back against the north wall, facing the bed — the
+    # script's "the chair by the window", and no chair floats in
+    # the middle of a floor (user note 2026-08-09).
+    cx, cy = -1.90, 5.00
     make_box("VisitorChair_Seat", (cx, cy, 0.46), (0.56, 0.56, 0.14), COL_CHAIR)
     make_box("VisitorChair_Back", (cx, cy+0.26, 0.82), (0.56, 0.12, 0.72), COL_CHAIR)
     for sgn in (-1, +1):

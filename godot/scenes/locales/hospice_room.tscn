@@ -327,6 +327,6 @@ metadata/fov = 38.0
 
 ; insert: the visitor chair by the window - where the presence sits
 [node name="shot_insert_chair" type="Marker3D" parent="." groups=["vn_shot"]]
-position = Vector3(-0.3, 1.2, -3.3)
-rotation = Vector3(-0.399461, 2.45586, 0)
+position = Vector3(-0.9, 1.25, -3.8)
+rotation = Vector3(-0.383362, 0.694738, 0)
 metadata/fov = 42.0

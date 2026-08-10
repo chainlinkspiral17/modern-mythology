@@ -40,7 +40,7 @@ WALLISH = re.compile(
 CONTAINERISH = re.compile(
     r"cage|case|chest|bin\b|bin_|basket|crate|rack|cooler|fridge|"
     r"freezer|cubby|cart|shelf|shelv|island|hutch|drawer|cab\b|"
-    r"cabinet|locker|oven|proofer|tub\b", re.I)
+    r"cabinet|locker|oven|proofer|tub\b|vase|votive", re.I)
 # Objects RESTING on a surface: min-penetration axis is Z and one of
 # the pair is a surface. Books sink 2cm into their shelf, a phone
 # into its desk — seating, not clipping.

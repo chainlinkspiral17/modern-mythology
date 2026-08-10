@@ -10,6 +10,7 @@ from _props import palette as P
 from _props.geometry import clear_scene, make_box, make_cyl, export_glb
 from _props.structure import make_floor, make_wall, make_ceiling
 from _props.safety import make_smoke_detector
+from _props.objects import make_bottle
 
 ROOM_W = 4.0; ROOM_D = 4.0; CEIL = 2.6
 PAL_WALL = {"wall":(0.46,0.40,0.34,1.0),"baseboard":(0.28,0.22,0.16,1.0)}
@@ -49,7 +50,8 @@ def build_vanity():
         make_cyl(f"Vanity_BulbR_{si}", (0.58, 3.78, bz), 0.045, 0.06, COL_BULB, segments=8)
     # Clutter on the vanity
     make_cyl("Vanity_Jar", (-0.30, vy, 0.85), 0.05, 0.14, (0.42,0.62,0.58,0.6))
-    make_cyl("Vanity_Bottle", (0.34, vy, 0.87), 0.04, 0.18, (0.72,0.32,0.24,1.0))
+    make_bottle("Vanity_Bottle", 0.34, vy, 0.78, (0.72, 0.32, 0.24, 1.0),
+                h=0.17, r=0.032)
     make_box("Vanity_Tin", (0.10, vy-0.10, 0.80), (0.14,0.10,0.06), COL_STEEL)
     # Stool
     make_cyl("Vanity_Stool_Seat", (0.0, 3.05, 0.46), 0.16, 0.05, COL_COUCH, segments=12)

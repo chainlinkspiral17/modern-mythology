@@ -11,6 +11,7 @@ from _props.geometry import clear_scene, make_box, make_cyl, export_glb
 from _props.structure import make_floor, make_wall, make_ceiling
 from _props.decor import make_faded_poster
 from _props.safety import make_smoke_detector
+from _props.objects import make_liquor_bottle
 
 ROOM_W = 8.0; ROOM_D = 6.0; CEIL = 3.0
 PAL_WALL = {"wall":(0.36,0.26,0.20,1.0),"baseboard":(0.20,0.14,0.10,1.0)}
@@ -54,7 +55,9 @@ def build_bar():
         for bi in range(14):
             bx = -1.25 + bi * 0.30
             tint = [COL_BOTTLE_AMBER, COL_BOTTLE_CLEAR, COL_BOTTLE_GREEN][(shf + bi) % 3]
-            make_cyl(f"BackBar_Bottle_{shf}_{bi}", (bx, 5.85, sz + 0.17), 0.045, 0.30, tint, segments=6)
+            make_liquor_bottle(f"BackBar_Bottle_{shf}_{bi}", bx, 5.85,
+                               sz + 0.02, tint,
+                               h=0.23 + ((shf + bi) % 3) * 0.03, r=0.031)
     # Long back mirror behind the bottles.
     make_box("BackBar_Mirror", (0.7, 5.87, 2.05), (4.2, 0.02, 1.50), (0.30, 0.32, 0.36, 0.85))
     # Draft-beer tap tower on the bar top.

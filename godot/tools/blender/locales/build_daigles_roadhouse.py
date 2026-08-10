@@ -13,6 +13,7 @@ from _props.structure import make_floor, make_wall, make_ceiling, make_crown_mol
 from _props.decor import make_wall_clock, make_faded_poster
 from _props.safety import (make_smoke_detector, make_sprinkler,
                             make_fluorescent_tube_fixture, make_bug_zapper)
+from _props.objects import make_liquor_bottle
 
 PAL = {"wall": (0.42, 0.36, 0.28, 1.0), "baseboard": (0.22, 0.18, 0.16, 1.0)}
 COL_FLOOR = (0.32, 0.22, 0.16, 1.0); COL_SEAM = (0.18, 0.14, 0.12, 1.0)
@@ -55,7 +56,9 @@ def build_bar():
         for bi in range(20):
             bx = -2.30 + bi * 0.25
             bc = COL_BEER_AMBER if bi % 2 == 0 else COL_BEER_CLEAR
-            make_cyl(f"Bottle_{si}_{bi}", (bx, ROOM_D-0.10, sz + 0.14), 0.035, 0.26, bc, segments=8)
+            make_liquor_bottle(f"Bottle_{si}_{bi}", bx, ROOM_D - 0.10,
+                               sz + 0.01, bc,
+                               h=0.23 + ((si + bi) % 3) * 0.03, r=0.030)
     # Beer tap row at bar front
     for ti in range(4):
         tx = -1.20 + ti * 0.80

@@ -1188,9 +1188,16 @@ def build_west_extension():
                 (0.20, 0.16, 0.34, 1.0),
                 (0.74, 0.20, 0.18, 1.0),
             ]
-            make_cyl(f"WestBar_Bottle_{s}_{b}",
-                     (bx, bb_y + 0.05, sz + 0.16), 0.035, 0.30,
+            bh = 0.17 + ((b + s) % 3) * 0.025
+            make_cyl(f"WestBar_Bottle_{s}_{b}_Body",
+                     (bx, bb_y + 0.05, sz + 0.01 + bh / 2.0), 0.032, bh,
                      tints[(b + s) % 7], segments=6, axis='Z')
+            make_cyl(f"WestBar_Bottle_{s}_{b}_Neck",
+                     (bx, bb_y + 0.05, sz + 0.01 + bh + 0.045), 0.013, 0.09,
+                     tints[(b + s) % 7], segments=6, axis='Z')
+            make_cyl(f"WestBar_Bottle_{s}_{b}_Cap",
+                     (bx, bb_y + 0.05, sz + 0.01 + bh + 0.10), 0.015, 0.02,
+                     (0.18, 0.16, 0.14, 1.0), segments=6, axis='Z')
     # Backbar mirror
     make_box("WestBar_Mirror",
              (bar_cx_int, bb_y + 0.16, 2.40),
@@ -3148,9 +3155,16 @@ def build_north_annex_bar():
                 (0.20, 0.16, 0.34, 1.0),
                 (0.74, 0.20, 0.18, 1.0),
             ][(b + s) % 7]
-            make_cyl(f"Bottle_N_{s}_{b}",
-                     (bx, bb_y + 0.05, sz + 0.16), 0.035, 0.30,
+            bh = 0.17 + ((b + s) % 3) * 0.025
+            make_cyl(f"Bottle_N_{s}_{b}_Body",
+                     (bx, bb_y + 0.05, sz + 0.01 + bh / 2.0), 0.032, bh,
                      bottle_color, segments=6, axis='Z')
+            make_cyl(f"Bottle_N_{s}_{b}_Neck",
+                     (bx, bb_y + 0.05, sz + 0.01 + bh + 0.045), 0.013, 0.09,
+                     bottle_color, segments=6, axis='Z')
+            make_cyl(f"Bottle_N_{s}_{b}_Cap",
+                     (bx, bb_y + 0.05, sz + 0.01 + bh + 0.10), 0.015, 0.02,
+                     (0.18, 0.16, 0.14, 1.0), segments=6, axis='Z')
     # Backbar mirror (the iconic "bar with a mirror behind it")
     make_box("BarBack_Mirror",
              (bar_cx_int, bb_y + 0.16, 2.40),
@@ -5915,9 +5929,14 @@ def build_dambrosios_dressing_2026_08():
     make_box("Damb_ServiceBar_Top", (-9.35, -4.3, 1.12), (0.56, 1.70, 0.05), (0.22, 0.13, 0.08, 1.0))
     make_box("Damb_ServiceBar_Rail", (-9.60, -4.3, 1.16), (0.03, 1.60, 0.03), brass)
     for bi, byo in enumerate([-0.55, -0.18, 0.18, 0.55]):
-        make_cyl(f"Damb_ServiceBar_Bottle_{bi}", (-9.30, -4.3 + byo, 1.28), 0.045, 0.30,
-                 [(0.30, 0.16, 0.12, 1.0), (0.16, 0.26, 0.18, 1.0),
-                  (0.62, 0.50, 0.28, 1.0), (0.24, 0.18, 0.30, 1.0)][bi], segments=6, axis='Z')
+        _sb_col = [(0.30, 0.16, 0.12, 1.0), (0.16, 0.26, 0.18, 1.0),
+                   (0.62, 0.50, 0.28, 1.0), (0.24, 0.18, 0.30, 1.0)][bi]
+        make_cyl(f"Damb_ServiceBar_Bottle_{bi}_Body", (-9.30, -4.3 + byo, 1.22),
+                 0.040, 0.18, _sb_col, segments=6, axis='Z')
+        make_cyl(f"Damb_ServiceBar_Bottle_{bi}_Neck", (-9.30, -4.3 + byo, 1.355),
+                 0.016, 0.09, _sb_col, segments=6, axis='Z')
+        make_cyl(f"Damb_ServiceBar_Bottle_{bi}_Cap", (-9.30, -4.3 + byo, 1.41),
+                 0.018, 0.02, (0.18, 0.16, 0.14, 1.0), segments=6, axis='Z')
     # Nicola's stack of WINE LISTS on the service bar's front corner.
     for wi in range(5):
         make_box(f"Damb_WineList_{wi}", (-9.42, -3.62, 1.15 + wi * 0.012), (0.20, 0.28, 0.010),
