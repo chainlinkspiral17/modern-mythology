@@ -158,6 +158,37 @@ no-op (fallback discipline — a script must never crash the reader).
 
 ## Recent lessons
 
+### 2026-08-09 · the arcana were well-directed all along — the CAMERA was lying
+
+- **User: "major arcana scenes still need a lot of work, outside the
+  first two. just poorly directed, produced and made." The
+  investigation flipped the verdict: the SCRIPTS are good.** Death
+  uses the rose/chair/empty-chair reveal like a short film; the
+  Lovers hits all six roberts_kitchen markers plus memory_warm on
+  the Polaroid; the Emperor holds its bourbon/card/window grammar.
+  What was broken: (1) the Emperor's locale GLB never existed
+  (riverboat builder crash — fixed), and (2) EVERY closeup/insert
+  cue in every chapter whose locale lacks markers rendered through
+  the punch-in fallback, which DOLLIED the camera 1.2-1.8m forward
+  blind — into walls, into shelving, into the dark interior of
+  whatever stood in front of the preset. Dozens of chapters, every
+  emotional beat, a camera inside a prop.
+- **The punch-in is a ZOOM now (fov 30/24, position fixed) and a
+  wide with no marker restores the preset vantage instead of
+  zooming IN.** A lens can never enter geometry. This one change
+  re-renders every [shot:] cue in the corpus correctly.
+- **Judge direction by reading the scene, not by counting cues.**
+  ch13_death: 9 shots/82 nodes looked sparse in the stats and is
+  perfectly placed. The stats flagged the wrong chapters; reading
+  found the real fault in the renderer.
+- **Remaining production lever for the arcana: the SETS + marker
+  vocabulary.** hospice_room, natalie_apartment, houston_office,
+  the new_orleans rooms — draft-1 template boxes with no authored
+  markers. Their cues (insert rose, insert chair) deserve composed
+  framings: run the landmark-extraction marker pipeline on the
+  arcana locales next, and give the weakest sets a detail pass.
+
+
 ### 2026-08-08 · tscn Transform3D is ROW-major · every matrix marker was transposed
 
 - **THE BUG: 49 markers across three sessions serialized the basis

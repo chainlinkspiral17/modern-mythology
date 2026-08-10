@@ -305,6 +305,17 @@ func _try_apply_shot() -> void:
 
 	# closeup / insert (and any future marker-backed type)
 	if marker == null:
+		# A WIDE with no marker must never fall into the punch-in —
+		# the zoom fallback would cut TIGHTER for a cue that asks
+		# for the opposite. The widest framing we always have is the
+		# preset vantage.
+		if shot_type == "wide":
+			if _bg3d.has_method("restore_preset_vantage"):
+				_bg3d.restore_preset_vantage()
+			_set_letterbox(true)
+			_start_drift(drift)
+			print("[VnDirector] CUT wide (preset vantage, no %s)%s" % [marker_name, " ~drift" if drift else ""])
+			return
 		# No authored marker — punch in generically from the preset
 		# vantage so the grammar works in every locale; markers
 		# refine the framing when a locale earns them.
