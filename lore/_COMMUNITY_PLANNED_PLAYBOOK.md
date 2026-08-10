@@ -224,6 +224,28 @@ rules** once they've held across multiple sessions.
 
 ## Recent lessons
 
+### 2026-08-09 · the electronic register reaches the stages + the basement
+
+- **The demon quiets in THE_BASEMENT were still embodied** — walking
+  patrol lines, sitting under dock planks, warming on porch steps.
+  Rewrote all six in the electronic register while keeping every
+  beat and the "X was X / the rest is the rest" cadence: the_vagrant
+  rides the copper and rings a doorbell soft to say evening;
+  sideways-current holds in the depth sounder; the_moth lives in
+  the bulb's circuit and knows the wattage FROM THE DRAW;
+  coat-inside watches the desk camera; fresh-second-suitcase gets
+  Elicia's newsletters scanned to it page by page on the office
+  fax. Frasier's own posts keep their physical idiom — he is human,
+  and "the room" is what anyone calls a board.
+- **Stage bodies are per-class now.** `body_demon` (schema:
+  `body_<class>`, additive, base `body` is always the fallback)
+  overrides the modal body when the dispatched agent's class
+  matches. Twelve stages whose base bodies parked, sat, and walked
+  {agent} now have demon variants that ride cameras, hold in
+  fluorescents and PAs, and — the honest limit — CANNOT lift a
+  staple or carry flowers past the cemetery gate, which the
+  variants say out loud. The class's limits are content, not bugs.
+
 ### 2026-08-04 · the 2025 re-anchor + Faith II + electronic demons + presentation
 
 - **The game's present is 2025; check every new line against the

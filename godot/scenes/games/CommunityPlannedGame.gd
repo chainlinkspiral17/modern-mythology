@@ -3996,7 +3996,16 @@ func _open_stage_modal(d: Dictionary) -> void:
 	sub.add_theme_color_override("font_color", Color(0.62, 0.62, 0.62, 1))
 	col.add_child(sub)
 	col.add_child(_dossier_rule())
-	var body_text: String = String(stage.get("body", "")).replace("{agent}", agent_name)
+	# Per-class stage bodies: a demon works the same mission through
+	# powered infrastructure — "body_demon" (and any future
+	# "body_<class>") overrides "body" when the dispatched agent's
+	# class matches and the author wrote one. Fallback is always the
+	# base body (additive schema; old saves and old JSON unaffected).
+	var agent_class: String = String(_agents.get(agent_id, {}).get("class", ""))
+	var body_key: String = "body"
+	if agent_class != "" and stage.has("body_" + agent_class):
+		body_key = "body_" + agent_class
+	var body_text: String = String(stage.get(body_key, "")).replace("{agent}", agent_name)
 	var body := Label.new()
 	body.text = body_text
 	body.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
