@@ -27,10 +27,11 @@ Vantage wired in Background3D.CAMERA_PRESETS:
   cliffside_circus — inside the gate looking N: main building
   left, mermaid pool + rail right, sea beyond the edge.
 """
-import os, sys
+import os, sys, math
 _BT = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)), ".."))
 if _BT not in sys.path: sys.path.insert(0, _BT)
-from _props.geometry import clear_scene, make_box, make_cyl, export_glb
+from _props.geometry import (clear_scene, make_box, make_cyl,
+                             make_taper_cyl, export_glb)
 
 COL_GRASS = (0.40, 0.44, 0.30, 1.0)      # salt-wind headland grass
 COL_DIRT = (0.46, 0.40, 0.32, 1.0)
@@ -78,8 +79,8 @@ def build_main_building():
     make_box("Porch_Rail", (-4.0, 7.35, 1.10), (5.6, 0.07, 0.08), COL_CREAM)
     make_box("Porch_Roof", (-4.0, 7.8, 2.85), (6.4, 1.8, 0.20), COL_ROOF)
     # Double door + tall warm ground windows
-    make_box("Main_Door", (-4.0, 8.44, 1.35), (1.3, 0.10, 2.30), COL_MAROON_DK)
-    make_box("Main_Door_Glass", (-4.0, 8.40, 1.55), (0.9, 0.06, 1.4), COL_WIN_WARM)
+    make_box("Main_Door", (-4.0, 8.44, 1.55), (1.3, 0.10, 2.30), COL_MAROON_DK)
+    make_box("Main_Door_Glass", (-4.0, 8.40, 1.75), (0.9, 0.06, 1.4), COL_WIN_WARM)
     for i, wx in enumerate((-6.2, -1.8)):
         make_box(f"Main_GWin_{i}", (wx, 8.44, 1.65), (0.95, 0.08, 1.9), COL_WIN_WARM)
         make_box(f"Main_GWin_Frame_{i}", (wx, 8.46, 1.65), (1.1, 0.06, 2.05), COL_CREAM)
@@ -131,40 +132,106 @@ def build_mermaid_pool():
 
 
 def build_entrance():
-    """The gate post with the carved sign — the same 'Twisted Beauty
-    and a Beast' board the barn preserves, new here."""
-    make_box("Gate_Post", (-1.0, 2.0, 1.4), (0.22, 0.22, 2.8), COL_SIGN_WOOD)
-    make_box("Gate_Sign", (-1.0, 1.88, 2.35), (1.5, 0.08, 0.85), COL_SIGN_WOOD)
-    make_box("Gate_Sign_Figure", (-1.15, 1.82, 2.42), (0.28, 0.05, 0.55), (0.62, 0.50, 0.38, 1.0))
-    make_box("Gate_Sign_Script", (-0.85, 1.82, 2.10), (0.9, 0.05, 0.14), COL_CREAM)
-    # Bunting: sagging flag runs between main roof and shack 0
+    """The gate — now a modest ENTRANCE ARCH (user: "a little bit
+    more grand, not much more"): two posts, a painted crossboard,
+    pennants. The carved 'Twisted Beauty and a Beast' sign keeps its
+    post beside it. Plus the ticket kiosk with the striped roof, a
+    plank boardwalk to the porch, and string lights."""
+    # Arch
+    for gx in (-2.2, 0.4):
+        make_box(f"Arch_Post_{gx:+.1f}", (gx, 2.0, 1.7), (0.24, 0.24, 3.4), COL_SIGN_WOOD)
+    make_box("Arch_Board", (-0.9, 2.0, 3.55), (3.2, 0.20, 0.75), COL_MAROON)
+    make_box("Arch_Board_Trim", (-0.9, 1.94, 3.55), (3.3, 0.06, 0.85), COL_CREAM)
+    make_box("Arch_Text", (-0.9, 1.88, 3.55), (2.6, 0.05, 0.34), COL_CREAM)
+    for i in range(5):
+        make_box(f"Arch_Pennant_{i}", (-2.0 + i * 0.55, 1.96, 4.12 - 0.06 * (i % 2)),
+                 (0.20, 0.04, 0.28), COL_BUNTING if i % 2 == 0 else COL_BUNTING_B)
+    # The carved sign on its own post, beside the arch
+    make_box("Gate_Post", (1.6, 2.0, 1.4), (0.22, 0.22, 2.8), COL_SIGN_WOOD)
+    make_box("Gate_Sign", (1.6, 1.88, 2.35), (1.5, 0.08, 0.85), COL_SIGN_WOOD)
+    make_box("Gate_Sign_Figure", (1.45, 1.82, 2.42), (0.28, 0.05, 0.55), (0.62, 0.50, 0.38, 1.0))
+    make_box("Gate_Sign_Script", (1.75, 1.82, 2.10), (0.9, 0.05, 0.14), COL_CREAM)
+    # Ticket kiosk — round body, candy-striped conical roof
+    kx, ky = 4.9, 1.9
+    make_cyl("Kiosk_Body", (kx, ky, 1.05), 0.75, 2.1, COL_CREAM, segments=10)
+    make_box("Kiosk_Window", (kx - 0.05, ky - 0.72, 1.35), (0.9, 0.06, 0.6), COL_WIN_DARK)
+    make_box("Kiosk_Counter", (kx - 0.05, ky - 0.80, 1.02), (1.0, 0.14, 0.06), COL_SIGN_WOOD)
+    make_taper_cyl("Kiosk_Roof", (kx, ky, 2.55), 1.05, 0.06, 0.9, COL_MAROON, segments=10)
+    make_taper_cyl("Kiosk_Roof_Stripe", (kx, ky, 2.42), 1.09, 0.55, 0.28, COL_CREAM, segments=10)
+    make_cyl("Kiosk_Finial", (kx, ky, 3.12), 0.05, 0.28, COL_CREAM, segments=6)
+    # Boardwalk: gate to porch
     for i in range(7):
-        bx = -1.6 + i * 0.55
-        sag = 0.18 * (1.0 - abs(i - 3) / 3.0)
-        col = COL_BUNTING if i % 2 == 0 else COL_BUNTING_B
-        make_box(f"Bunting_{i}", (bx, 9.6, 5.6 - sag), (0.30, 0.04, 0.35), col)
+        make_box(f"Boardwalk_{i}", (-1.6, 2.6 + i * 0.68, 0.06), (1.7, 0.55, 0.05), COL_SIGN_WOOD)
+    # ── BUNTING, attached this time: a catenary LINE from the main
+    # roof corner down to a flagpole on shack 0, flags hanging from
+    # it. (They used to float mid-air with no rope and no second
+    # anchor — "a clothesline hovering in air.")
+    make_cyl("Bunting_Pole", (2.2, 9.8, 3.4), 0.05, 1.9, COL_SIGN_WOOD, segments=6)
+    ax, az = -1.0, 6.05     # main roof corner anchor
+    bx2, bz = 2.2, 4.30     # flagpole top
+    segs = 8
+    for i in range(segs):
+        t0 = i / segs
+        t1 = (i + 1) / segs
+        sag0 = 0.55 * 4.0 * t0 * (1.0 - t0)
+        sag1 = 0.55 * 4.0 * t1 * (1.0 - t1)
+        x0, z0 = ax + (bx2 - ax) * t0, az + (bz - az) * t0 - sag0
+        x1, z1 = ax + (bx2 - ax) * t1, az + (bz - az) * t1 - sag1
+        mx, mz = (x0 + x1) / 2.0, (z0 + z1) / 2.0
+        seg_len = ((x1 - x0) ** 2 + (z1 - z0) ** 2) ** 0.5
+        make_box(f"Bunting_Line_{i}", (mx, 9.7, mz), (seg_len, 0.025, 0.025), COL_SIGN_WOOD)
+        if i < segs - 1:
+            col = COL_BUNTING if i % 2 == 0 else COL_BUNTING_B
+            make_box(f"Bunting_{i}", (x1, 9.7, z1 - 0.20), (0.30, 0.04, 0.35), col)
+    # String lights along the porch eave — warm evening bulbs
+    for i in range(9):
+        lx = -6.7 + i * 0.68
+        make_cyl(f"StringBulb_{i}", (lx, 7.28, 2.62 - 0.10 * (1.0 - abs(i - 4) / 4.0)),
+                 0.045, 0.09, COL_WIN_WARM, segments=6)
+    make_box("StringWire", (-4.0, 7.28, 2.70), (5.6, 0.02, 0.02), (0.20, 0.18, 0.16, 1.0))
+
+
+def build_bandstand():
+    """A small open pavilion east of the pool — the third structure
+    that makes it a tiny COMPLEX and not two shacks. Weathered, but
+    with the striped cone roof of something that once drew crowds."""
+    bx, by = 8.6, 5.4
+    make_cyl("Band_Deck", (bx, by, 0.18), 2.1, 0.36, COL_SIGN_WOOD, segments=10)
+    for i in range(6):
+        a = i * (2 * 3.14159 / 6.0)
+        px = bx + 1.75 * math.cos(a)
+        py = by + 1.75 * math.sin(a)
+        make_cyl(f"Band_Post_{i}", (px, py, 1.45), 0.07, 2.2, COL_CREAM, segments=6)
+    make_taper_cyl("Band_Roof", (bx, by, 3.0), 2.5, 0.10, 1.1, COL_MAROON, segments=10)
+    make_taper_cyl("Band_Roof_Stripe", (bx, by, 2.80), 2.56, 1.5, 0.34, COL_CREAM, segments=10)
+    make_cyl("Band_Finial", (bx, by, 3.75), 0.05, 0.35, COL_CREAM, segments=6)
+    make_box("Band_Rail_S", (bx, by - 1.85, 0.75), (2.6, 0.06, 0.06), COL_RAIL)
 
 
 def build_cliff_and_sea():
-    """The edge at y=12: cliff band dropping away, jagged black
-    outcroppings in the surf, foam lines, cold sea to the horizon."""
-    make_box("Cliff_Band", (0.0, 12.4, -1.4), (30.0, 0.8, 3.2), COL_CLIFF)
-    # Jagged outcroppings — varied dark verticals poking from the surf
-    jags = [(-8.0, 14.0, 1.6), (-3.5, 14.6, 2.2), (0.5, 14.2, 1.2), (4.5, 14.8, 2.6),
-            (8.5, 14.3, 1.4), (11.5, 15.0, 1.9), (-11.0, 14.9, 1.1)]
+    """The TALL edge (canon: 'built up along the edge of a cliff —
+    overlooking jagged rock outcroppings, beaten raw by the harsh
+    surf beneath'). The drop is 14m now — the old band fell 3m,
+    which read as a garden wall, not an Oregon sea cliff."""
+    make_box("Cliff_Face_Upper", (0.0, 12.5, -3.2), (30.0, 1.0, 6.6), COL_CLIFF)
+    make_box("Cliff_Face_Lower", (0.0, 13.3, -10.4), (30.0, 1.8, 7.9),
+             (0.24, 0.23, 0.22, 1.0))
+    make_box("Cliff_Talus", (0.0, 14.3, -13.6), (30.0, 1.6, 1.6), COL_ROCK_JAG)
+    # Jagged black outcroppings rising from the surf, tall enough
+    # to matter against a 14m wall
+    jags = [(-8.0, 15.4, 4.2), (-3.5, 16.2, 5.8), (0.5, 15.6, 3.2), (4.5, 16.6, 6.6),
+            (8.5, 15.8, 3.8), (11.5, 17.0, 5.0), (-11.0, 16.6, 3.0)]
     for i, (jx, jy, jh) in enumerate(jags):
-        make_box(f"Jag_{i}", (jx, jy, -2.9 + jh / 2.0), (1.2 + 0.3 * (i % 3), 1.0, jh),
+        make_box(f"Jag_{i}", (jx, jy, -14.0 + jh / 2.0), (1.5 + 0.4 * (i % 3), 1.3, jh),
                  COL_ROCK_JAG)
-        make_box(f"Jag_{i}_Tip", (jx + 0.2, jy + 0.1, -2.9 + jh + 0.25),
-                 (0.5, 0.5, 0.5), COL_ROCK_JAG)
-    # Surf beaten raw around the rocks
-    make_box("Surf_0", (0.0, 14.5, -2.55), (28.0, 0.5, 0.06), COL_SURF)
-    make_box("Surf_1", (-2.0, 15.6, -2.6), (24.0, 0.35, 0.05), COL_SURF)
-    make_box("Sea_Near", (0.0, 18.0, -2.8), (40.0, 4.5, 0.06), COL_SEA)
-    make_box("Sea_Far", (0.0, 23.0, -1.8), (48.0, 5.0, 0.06), COL_SEA_FAR)
-    # (Sky wall deleted 2026-08-04 — it stood between the camera
-    # and the new far bands, occluding the horizon it faked.
-    # The sky is the .tscn environment's job.)
+        make_box(f"Jag_{i}_Tip", (jx + 0.25, jy + 0.15, -14.0 + jh + 0.3),
+                 (0.6, 0.6, 0.7), COL_ROCK_JAG)
+    # Surf beaten raw around the rocks, far below
+    make_box("Surf_0", (0.0, 15.8, -13.75), (28.0, 0.7, 0.06), COL_SURF)
+    make_box("Surf_1", (-2.0, 17.2, -13.8), (24.0, 0.5, 0.05), COL_SURF)
+    make_box("Surf_2", (3.0, 18.6, -13.85), (20.0, 0.4, 0.05), COL_SURF)
+    make_box("Sea_Near", (0.0, 21.0, -13.9), (44.0, 6.0, 0.06), COL_SEA)
+    make_box("Sea_Far", (0.0, 27.0, -13.5), (52.0, 6.5, 0.06), COL_SEA_FAR)
 
 
 def main():
@@ -174,6 +241,7 @@ def main():
     build_satellites()
     build_mermaid_pool()
     build_entrance()
+    build_bandstand()
     build_cliff_and_sea()
     out = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)),
         "../../../assets/3d/locales/cliffside_circus.glb"))
@@ -187,8 +255,8 @@ def build_horizon_2026_08():
     """STUMP HUNT: view stopped at 36m. Seaward: the water runs to a
     real horizon with two dim headlands. Landward: coastal scrub
     ridges. The old Sea_Far ended 28m out."""
-    make_box("Sea_Mid", (0.0, 60.0, -2.2), (140.0, 34.0, 0.06), COL_SEA)
-    make_box("Sea_Horizon", (0.0, 240.0, -1.6), (420.0, 150.0, 0.06),
+    make_box("Sea_Mid", (0.0, 62.0, -13.0), (140.0, 64.0, 0.06), COL_SEA)
+    make_box("Sea_Horizon", (0.0, 250.0, -11.5), (420.0, 240.0, 0.06),
              (COL_SEA_FAR[0] * 1.15, COL_SEA_FAR[1] * 1.15,
               COL_SEA_FAR[2] * 1.2, 1.0))
     make_box("Headland_W", (-120.0, 150.0, 2.5), (40.0, 18.0, 5.0),

@@ -36,7 +36,7 @@ EMBED_MAX = 0.12
 WALLISH = re.compile(
     r"wall|window|door|sign|brand|partw|partn|part\b|trim|crown|"
     r"baseboard|backsplash|wainscot|frame|sill|floor|ceil|apron|"
-    r"turf|road|grass|rug|mat|plumbing|curb|kerb|lawn|drive|sidewalk|path\b|apron|asphalt|edgeline|shoulder|gravel", re.I)
+    r"turf|road|grass|rug|mat|plumbing|curb|kerb|lawn|drive|sidewalk|path\b|apron|asphalt|edgeline|shoulder|gravel|yard\b|headland|ground", re.I)
 CONTAINERISH = re.compile(
     r"cage|case|chest|bin\b|bin_|basket|crate|rack|cooler|fridge|"
     r"freezer|cubby|cart|shelf|shelv|island|hutch|drawer|cab\b|"
@@ -53,10 +53,13 @@ SEAT_MAX = 0.10
 CROWNISH = re.compile(r"crown|canopy|foliage|lobe|frond", re.I)
 # Non-solid volumetrics: sprinkler spray arcs, light shafts, steam —
 # they interpenetrate everything by design.
-NONSOLID = re.compile(r"spray|mist|steam|smoke|shaft|glow|beam\b|dust|fog", re.I)
+NONSOLID = re.compile(r"spray|mist|steam|smoke|shaft|glow|beam\b|dust|fog|surf|foam|wake", re.I)
 # Infrastructure DESIGNED to be buried — culverts under roads,
 # pipes through creek beds, footings in the ground.
 BURIEDISH = re.compile(r"culvert|drain|conduit|footing|foundation|piling", re.I)
+# Rock against rock — talus piles, jagged outcrops, scree — is
+# geology, not clipping.
+ROCKISH = re.compile(r"jag|talus|rock|outcrop|boulder|scree|crag|cliff", re.I)
 # Vegetation against vegetation (a shrub against a cypress buttress)
 # is undergrowth, not clipping.
 PLANTISH = re.compile(r"shrub|bush|hedge|fern|reed|weed|plant|vine|"
@@ -65,7 +68,7 @@ PLANTISH = re.compile(r"shrub|bush|hedge|fern|reed|weed|plant|vine|"
 ROOFISH = re.compile(r"eave|ridge|roof|gable|chimney|awning\b", re.I)
 STRUCTISH = re.compile(
     r"leg|brace|strut|post|pole|beam|rail|truss|arm\b|_arm|spindle|"
-    r"baluster|joist|stud\b|wire|cable", re.I)
+    r"baluster|joist|stud\b|wire|cable|line|rope|cord|string", re.I)
 
 
 def record_builder(path):
@@ -165,6 +168,8 @@ def overlaps(boxes):
                 continue
             if PLANTISH.search(n1) and PLANTISH.search(n2):
                 continue
+            if ROCKISH.search(n1) and ROCKISH.search(n2):
+                continue
             # Containment: a small object whose center sits inside a
             # container-named object is contents, not clipping
             # (propane tanks in their cage, sixpacks in the fridge).
@@ -201,6 +206,20 @@ def overlaps(boxes):
                     (SURFACEISH.search(n1) or SURFACEISH.search(n2)):
                 continue
             if STRUCTISH.search(n1) and STRUCTISH.search(n2):
+                continue
+            if depth <= 0.40 and (
+                    (STRUCTISH.search(n1) and ROOFISH.search(n2)) or
+                    (STRUCTISH.search(n2) and ROOFISH.search(n1))):
+                continue
+            # A rope/wire/pole ENDPOINT buried a few cm in whatever
+            # anchors it is a fastening, not a clip.
+            if depth <= 0.12 and (STRUCTISH.search(n1) or STRUCTISH.search(n2)):
+                continue
+            # Porches, balconies, awnings TUCK INTO their building's
+            # facade by construction.
+            if depth <= 0.25 and (
+                    re.search(r"porch|veranda|stoop|balcony|marquee", n1, re.I) or
+                    re.search(r"porch|veranda|stoop|balcony|marquee", n2, re.I)):
                 continue
             # A tree crown over a roofline is natural adjacency —
             # canopies hang over eaves everywhere trees stand near

@@ -148,6 +148,38 @@ def build_spectators():
         make_cyl(f"Fan_{si}_Head", (px, py, seat_top + 0.58), 0.10, 0.16, skin, segments=8)
 
 
+def build_players():
+    """A practice scrimmage at the south 35 — human figures are the
+    scale reference that makes 120 yards READ as 120 yards (user:
+    "maybe reads as too big, if those lil things are supposed to be
+    players" — the lil things were drill cones; these are players).
+    Home wine-red vs practice whites, two lines across the ball."""
+    skin = (0.62, 0.48, 0.40, 1.0)
+    wine = (0.55, 0.14, 0.14, 1.0)     # school colors (ben's jersey)
+    whites = (0.86, 0.86, 0.82, 1.0)
+    pants = (0.78, 0.76, 0.70, 1.0)
+    line_y = GL_S + 35.0 * YD
+    xs = (-6.0, -4.0, -2.0, 0.0, 2.0, 4.0, 6.0)
+    for side, (jersey, dy) in enumerate(((wine, -0.8), (whites, +0.8))):
+        for pi, px in enumerate(xs):
+            tag = f"P{side}_{pi}"
+            py = line_y + dy
+            make_box(f"Player_{tag}_Legs", (px, py, 0.42), (0.34, 0.26, 0.84), pants)
+            make_box(f"Player_{tag}_Torso", (px, py, 1.10), (0.46, 0.30, 0.52), jersey)
+            make_cyl(f"Player_{tag}_Head", (px, py, 1.52), 0.11, 0.18, skin, segments=8)
+            make_cyl(f"Player_{tag}_Helmet", (px, py, 1.60), 0.125, 0.10, jersey, segments=8)
+    # QB in the gun + a back, home side
+    for tag, (px, py) in (("QB", (0.0, line_y - 3.2)), ("RB", (1.4, line_y - 4.6))):
+        make_box(f"Player_{tag}_Legs", (px, py, 0.42), (0.34, 0.26, 0.84), pants)
+        make_box(f"Player_{tag}_Torso", (px, py, 1.10), (0.46, 0.30, 0.52), wine)
+        make_cyl(f"Player_{tag}_Head", (px, py, 1.52), 0.11, 0.18, skin, segments=8)
+        make_cyl(f"Player_{tag}_Helmet", (px, py, 1.60), 0.125, 0.10, wine, segments=8)
+    # Coach K on the home sideline at the line of scrimmage
+    make_box("Coach_Legs", (SIDE_X + 1.2, line_y, 0.46), (0.36, 0.28, 0.92), (0.30, 0.30, 0.34, 1.0))
+    make_box("Coach_Torso", (SIDE_X + 1.2, line_y, 1.18), (0.48, 0.32, 0.52), (0.30, 0.36, 0.52, 1.0))
+    make_cyl("Coach_Head", (SIDE_X + 1.2, line_y, 1.62), 0.11, 0.18, skin, segments=8)
+
+
 def build_benches():
     # Team benches: home east, visiting west (canon: "Visiting bench.
     # Move it."), 12m long, flanking the 50, 2m off the sidelines.
@@ -333,6 +365,7 @@ def main():
     build_bleachers()
     build_spectators()
     build_benches()
+    build_players()
     build_scoreboard()
     build_first_down_chain()
     build_floodlights()
