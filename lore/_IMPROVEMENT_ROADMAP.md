@@ -222,16 +222,44 @@ tubs-in-sinks, ruins-as-rubble, scrub-as-vegetation, sinkhole-as-
 geology, stanchions-as-structure, wall-x-wall joins ≤0.30, seat-
 tucked-under-surface ≤0.30. Diner 130→64, graustark 9→2 (benign
 hull/paddlebox residual).
-TRIAGE BACKLOG (full-coverage numbers, now trustworthy):
-riverfront 614 (StripMall/Armory/Old_Church background masses
-interpenetrate by 3-5m + trees inside OppositeBldgs — decide
-backdrop-massing-is-intentional vs real placement bug BEFORE
-grammar-tuning it away), kwik_stop 153 (model chapter — triage with
-screenshots), roadside_chapel 100, parish_cemetery 78, diner 64
-residual (real candidates: ServiceBar x Sideboard 0.48, paddlewheel
-spokes 0.5m under RiverRoad asphalt, Booth_1 x Galley_Expo),
-briar_falls 53, cosmic_comics_interior 52, pit_stop_interior 43,
-carnival_lot 41, bungalow 30. Repo total 1693.
+TRIAGE ROUND 2 SHIPPED (2026-08-11, same day): repo 1693 → 1155.
+Seven locales taken to CLEAN — real finds fixed:
+- roadside_chapel: Ground_Far floated 1m ABOVE local grade slicing
+  all 80 cane stalks (dropped below the cane field at -1.08); cane
+  grew through the asphalt apron (placement skip added).
+- parish_cemetery: THREE prop groups (Beatrice lectern + 22 names,
+  the tonight-list lectern + missal, the parish register) were all
+  buried inside the SOLID mausoleum body — every session furnished
+  a "vestibule" that is solid stone. All three now flank the south
+  door. Lampposts ±2.0 stood inside the mausoleum walls (→ ±3.6);
+  two oaks were 0.35 inside vault caps.
+- briar_falls: the picnic shelter overlapped the restroom building
+  wholesale (loose table + post INSIDE it — shelter moved west);
+  vending machine sunk 0.37 in the wall; brochure rack sunk 0.2
+  into the east end; pine through the shelter roof.
+- pit_stop_interior: the exterior pickup was parked THROUGH the
+  west wall with its bed among the booths (moved 0.7 west).
+- cosmic_comics: longboxes 0.14 inside case fronts; statue tower
+  in the new-arrivals table; bin row grazing it.
+- carnival_lot: the milk truck stood ON Lavelle's sedan at the
+  gate (moved down the highway); carousel/wagon parts renamed into
+  their assemblies.
+- bungalow: bookshelf ran 0.35 THROUGH the mid partition into the
+  bedroom (shrunk to the wall's north segment); walls renamed
+  Wall_* so the grammar sees them; studio desk decluttered (laptop
+  closed at left front, headphones right front — the Priestess CRT
+  pair owns the center).
+Grammar draft 4: rock-roots-in-ground, flexible-lines/drapes ≤0.25,
+offerings ≤0.10, wheels ≤0.30, portico/pediment, steps+caps as
+surfaces, win_/outlet/plate as wall furniture, EMBED_MAX 0.14,
+falls?_ nonsolid, walk as ground.
+REMAINING: riverfront 562 (backdrop-massing decision first),
+kwik_stop 139 (screenshots first), diner 56 (candidates: ServiceBar
+x Sideboard 0.48, paddlewheel spokes 0.5 under the road, Booth_1 x
+Galley_Expo), centro_grocery_aisle 22, skatepark 21,
+riverboat_interior 21, houston_office 18, frog_knows_best 18,
+crumpled_barn 15 (the crumple — leave). NOTE: these builder fixes
+are invisible until each locale is REBUILT on the Deck.
 
 ### Workstream · SLOWSTICK PRODUCTION PASS (user-directed · 2026-08-03)
 

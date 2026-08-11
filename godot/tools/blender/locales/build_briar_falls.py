@@ -110,7 +110,8 @@ def build_building():
         if i == 0:
             make_box(f"Fig_{i}_Skirt", (dx, 7.90, 2.36), (0.10, 0.02, 0.05), COL_DOOR)
     # Vending machine between the doors, glowing selection column
-    make_box("Vending", (-2.75, 8.10, 0.95), (0.85, 0.55, 1.90), COL_VENDING)
+    # Stands AGAINST the south face (base front y=7.9), not in it.
+    make_box("Vending", (-2.75, 7.60, 0.95), (0.85, 0.55, 1.90), COL_VENDING)
     make_box("Vending_Face", (-2.90, 7.80, 1.15), (0.40, 0.05, 1.30), COL_VENDING_FACE)
     make_box("Vending_Slot", (-2.45, 7.80, 0.55), (0.22, 0.04, 0.14), COL_DOOR)
     # Pay phone bracketed to the wall, receiver dangling by the cord
@@ -119,11 +120,11 @@ def build_building():
     make_box("Phone_Cord", (-0.66, 7.86, 1.12), (0.02, 0.02, 0.50), COL_DOOR)
     make_box("Phone_Receiver", (-0.66, 7.84, 0.84), (0.07, 0.06, 0.22), COL_DOOR)
     # Brochure-rack alcove at the building's east end
-    make_box("Alcove_Wall", (-0.55, 8.6, 1.5), (0.10, 1.2, 3.0), COL_BRICK_BROWN)
-    make_box("Rack_Frame", (-0.68, 8.55, 1.30), (0.06, 0.9, 1.20), COL_TIMBER)
+    make_box("Alcove_Wall", (-0.31, 8.6, 1.5), (0.10, 1.2, 3.0), COL_BRICK_BROWN)
+    make_box("Rack_Frame", (-0.46, 8.55, 1.30), (0.06, 0.9, 1.20), COL_TIMBER)
     for r in range(3):
         for cslot in range(3):
-            make_box(f"Brochure_{r}_{cslot}", (-0.72, 8.25 + cslot * 0.30, 1.72 - r * 0.42),
+            make_box(f"Brochure_{r}_{cslot}", (-0.42, 8.25 + cslot * 0.30, 1.72 - r * 0.42),
                      (0.03, 0.22, 0.30),
                      COL_SIGN if (r + cslot) % 2 == 0 else (0.55, 0.62, 0.48, 1.0))
     # The bench beside the building (the mother's)
@@ -197,7 +198,10 @@ def build_picnic():
     """Canon: "a six-by-six post-and-beam square with a corrugated
     metal roof and three picnic tables under it. Two tables are
     bolted to the slab. The third is loose, set off-square." """
-    cx, cy = -6.0, 11.2
+    # West of the restroom building (body x in [-5.0,-0.5], y in
+    # [8.0,11.0]) — at the old cx=-6.0 the slab/posts/loose table
+    # overlapped the building's whole west end.
+    cx, cy = -8.6, 11.2
     make_box("Shelter_Slab", (cx, cy, 0.06), (6.4, 6.4, 0.12), COL_CURB)
     for px, py in ((cx - 3.0, cy - 3.0), (cx + 3.0, cy - 3.0),
                    (cx - 3.0, cy + 3.0), (cx + 3.0, cy + 3.0)):
@@ -245,7 +249,7 @@ def build_minivan():
 
 def build_pines():
     """Scattered pines: trunk + three shrinking canopy tiers."""
-    spots = [(-10.5, 7.5), (-9.0, 13.5), (-6.5, 15.5), (-1.0, 12.0),
+    spots = [(-10.5, 7.5), (-12.2, 16.2), (-6.5, 15.5), (-1.0, 12.0),
              (1.5, 10.5), (3.5, 13.0), (5.0, 16.5), (11.5, 9.0),
              (12.5, 12.5), (-11.5, 3.0), (13.0, 4.5), (10.5, 6.5),
              (2.0, 16.0), (-3.0, 15.8)]
@@ -253,9 +257,9 @@ def build_pines():
         h = 3.2 + 0.9 * ((i * 7) % 4)
         make_cyl(f"Pine_{i}_Trunk", (px, py, h * 0.18), 0.14, h * 0.36, COL_TRUNK, segments=6)
         col = COL_PINE if i % 2 == 0 else COL_PINE_LT
-        make_box(f"Pine_{i}_T0", (px, py, h * 0.42), (1.9, 1.9, h * 0.30), col)
-        make_box(f"Pine_{i}_T1", (px, py, h * 0.66), (1.4, 1.4, h * 0.26), col)
-        make_box(f"Pine_{i}_T2", (px, py, h * 0.88), (0.8, 0.8, h * 0.22), col)
+        make_box(f"Pine_{i}_Canopy_0", (px, py, h * 0.42), (1.9, 1.9, h * 0.30), col)
+        make_box(f"Pine_{i}_Canopy_1", (px, py, h * 0.66), (1.4, 1.4, h * 0.26), col)
+        make_box(f"Pine_{i}_Canopy_2", (px, py, h * 0.88), (0.8, 0.8, h * 0.22), col)
 
 
 def build_valley():

@@ -359,9 +359,9 @@ def build_beyond_glass_2026_08():
     for tag, cy2, col in [("A", 1.9, (0.32, 0.34, 0.40, 1.0)), ("B", 6.6, (0.62, 0.60, 0.56, 1.0))]:
         make_box(f"Lot_Car_{tag}_Body", (-7.6, cy2, 0.55), (4.2, 1.75, 0.55), col)
         make_box(f"Lot_Car_{tag}_Cabin", (-7.9, cy2, 1.02), (2.2, 1.6, 0.45), col)
-    make_box("Lot_LA_Pickup_Body", (-7.4, 4.35, 0.62), (4.8, 1.85, 0.70), (0.30, 0.24, 0.20, 1.0))
-    make_box("Lot_LA_Pickup_Cab", (-8.4, 4.35, 1.25), (1.8, 1.75, 0.55), (0.30, 0.24, 0.20, 1.0))
-    make_box("Lot_LA_Pickup_Bed_Rim", (-6.2, 4.35, 1.02), (2.3, 1.85, 0.08), (0.24, 0.19, 0.16, 1.0))
+    make_box("Lot_LA_Pickup_Body", (-8.1, 4.35, 0.62), (4.8, 1.85, 0.70), (0.30, 0.24, 0.20, 1.0))
+    make_box("Lot_LA_Pickup_Cab", (-9.1, 4.35, 1.25), (1.8, 1.75, 0.55), (0.30, 0.24, 0.20, 1.0))
+    make_box("Lot_LA_Pickup_Bed_Rim", (-6.9, 4.35, 1.02), (2.3, 1.85, 0.08), (0.24, 0.19, 0.16, 1.0))
     # Lot light pole + far treeline wall (edge-of-set).
     make_cyl("Lot_Pole", (-11.5, 4.5, 3.0), 0.09, 6.0, (0.40, 0.40, 0.42, 1.0), segments=8)
     make_box("Lot_Pole_Head", (-11.2, 4.5, 6.0), (0.7, 0.25, 0.18), (0.30, 0.30, 0.32, 1.0))

@@ -67,7 +67,7 @@ def build_shell():
 
 def build_bins():
     # Three long spine-out back-issue bin rows down the floor.
-    for ji, ay in enumerate([2.6, 4.0, 5.4]):
+    for ji, ay in enumerate([2.75, 4.0, 5.4]):
         make_box(f"Bin_{ji}_Base", (0.0, ay, 0.30), (5.0, 0.50, 0.60), (0.30, 0.22, 0.14, 1.0))
         make_box(f"Bin_{ji}_Label", (0.0, ay-0.26, 0.50), (4.6, 0.02, 0.12), (0.86, 0.72, 0.32, 1.0))
         for di in range(11):
@@ -114,7 +114,7 @@ def build_key_wall():
 
 def build_statue_tower():
     # Freestanding glass statue tower near the entrance — three tiers.
-    tx, ty = 0.0, 1.3
+    tx, ty = 0.0, 1.05
     make_chamfer_box("Tower_Base", (tx, ty, 0.30), (0.90, 0.90, 0.60), COL_WOOD)
     make_box("Tower_Glass", (tx, ty, 1.20), (0.86, 0.86, 1.20), (0.70, 0.80, 0.92, 0.30))
     for tier, tz in enumerate([0.66, 1.10, 1.54]):
@@ -131,9 +131,9 @@ def build_back_issues():
         for li in range(n):
             make_box(f"{pfx}_Box_{li}", (bx, by, 0.14 + li*0.24), (0.42, 0.74, 0.22), (0.72, 0.62, 0.44, 1.0))
             make_box(f"{pfx}_Lid_{li}", (bx, by, 0.25 + li*0.24), (0.44, 0.76, 0.03), (0.60, 0.50, 0.34, 1.0))
-    longbox_stack("LB_E0", ROOM_W/2.0-0.5, 5.2, 3)
-    longbox_stack("LB_E1", ROOM_W/2.0-0.5, 6.2, 2)
-    longbox_stack("LB_SW", -ROOM_W/2.0+0.5, 1.6, 3)
+    longbox_stack("LB_E0", ROOM_W/2.0-0.75, 5.2, 3)
+    longbox_stack("LB_E1", ROOM_W/2.0-0.75, 6.2, 2)
+    longbox_stack("LB_SW", -ROOM_W/2.0+0.75, 1.6, 3)
 
 def build_register_counter():
     cx, cy = ROOM_W/4.0, ROOM_D-1.5

@@ -32,11 +32,11 @@ sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 import locale_geometry_audit as A
 
 EPS = 0.015
-EMBED_MAX = 0.12
+EMBED_MAX = 0.14   # wall thickness + proud trim/frame
 WALLISH = re.compile(
     r"wall|window|door|sign|brand|partw|partn|part\b|trim|crown|"
     r"baseboard|backsplash|wainscot|frame|sill|floor|ceil|apron|"
-    r"turf|road|grass|rug|mat|plumbing|curb|kerb|lawn|drive|sidewalk|path\b|apron|asphalt|edgeline|shoulder|gravel|yard\b|headland|ground", re.I)
+    r"turf|road|grass|rug|mat|plumbing|curb|kerb|lawn|drive|sidewalk|path\b|path_|apron|asphalt|edgeline|shoulder|gravel|yard\b|headland|ground|walk\b|walkway|win\b|win_|outlet|socket|plate\b|numeral", re.I)
 CONTAINERISH = re.compile(
     r"cage|case|chest|bin\b|bin_|basket|crate|rack|cooler|fridge|"
     r"freezer|cubby|cart|shelf|shelv|island|hutch|drawer|cab\b|"
@@ -46,7 +46,7 @@ CONTAINERISH = re.compile(
 # into its desk — seating, not clipping.
 SURFACEISH = re.compile(
     r"shelf|shelv|top\b|_top|desk|table|counter|tray|sill|seat|"
-    r"bench|plank|deck\b|worktop|platform|island|expo", re.I)
+    r"bench|plank|deck\b|worktop|platform|island|expo|step|cap\b", re.I)
 SEAT_MAX = 0.10
 # Structure members joining each other (lattice-tower braces meeting
 # legs, railing spindles into rails) — joints, not clipping.
@@ -54,7 +54,7 @@ CROWNISH = re.compile(r"crown|canopy|foliage|lobe|frond", re.I)
 # Non-solid volumetrics: sprinkler spray arcs, light shafts, steam —
 # they interpenetrate everything by design.
 NONSOLID = re.compile(r"spray|mist|steam|smoke|shaft|glow|beam\b|dust|fog|surf|foam|wake|"
-    r"fall_|veil|cascade|plunge", re.I)
+    r"falls?_|veil|cascade|plunge", re.I)
 # Infrastructure DESIGNED to be buried — culverts under roads,
 # pipes through creek beds, footings in the ground.
 BURIEDISH = re.compile(r"culvert|drain|conduit|footing|foundation|piling", re.I)
@@ -81,7 +81,23 @@ STRUCTISH = re.compile(
 # waist-deep in a table still reports.
 SEATISH = re.compile(r"stool|chair|bench|seat", re.I)
 TUCK_MAX = 0.30
-PORCHISH = re.compile(r"porch|veranda|stoop|balcony|marquee", re.I)
+PORCHISH = re.compile(r"porch|veranda|stoop|balcony|marquee|portico|"
+                      r"pediment", re.I)
+PORCH_MAX = 0.30
+# Wheels seat INTO wheel wells (car bodies) and into ground ruts.
+WHEELISH = re.compile(r"wheel|tire|tyre", re.I)
+WHEEL_MAX = 0.30
+# Offerings LEAN on what they honor — a wreath hung on a marker, a
+# posy laid against a vault base. Shallow contact only.
+OFFERINGISH = re.compile(r"wreath|posy|bouquet|garland|flower|petal", re.I)
+OFFERING_MAX = 0.10
+# Flexible lines (cords, ropes, chains) and draped fabric CONFORM to
+# whatever they cross or lie on — shallow interpenetration is the
+# proxy geometry's way of touching.
+FLEXISH = re.compile(r"wire|cable|cord|cord_|rope|chain|towel|rag|"
+                     r"rag_|cloth|blanket|quilt|drape|linen|banner|"
+                     r"pennant|festoon|valance|curtain", re.I)
+FLEX_MAX = 0.25
 # A steamboat funnel passes THROUGH every deck and roof above it by
 # construction (the diner's riverboat superstructure). Only excused
 # when paired with a deck/roof — a soda-stack pyramid never is.
@@ -189,7 +205,8 @@ def overlaps(boxes):
             bool(STRUCTISH.search(n)), bool(ROOFISH.search(n)),
             bool(PORCHISH.search(n)),
             bool(STACKISH.search(n)), bool(DECKISH.search(n)),
-            bool(SEATISH.search(n)),
+            bool(SEATISH.search(n)), bool(WHEELISH.search(n)),
+            bool(OFFERINGISH.search(n)), bool(FLEXISH.search(n)),
         ))
     # Sweep-and-prune on x: sorted by min-x, the inner scan breaks at
     # the first box that starts past this one's max-x — every later
@@ -198,11 +215,11 @@ def overlaps(boxes):
     hits = []
     for i in range(len(ann)):
         (n1, c1, h1, p1l, p1f, ns1, bu1, pl1, rk1, cr1, wa1,
-         co1, su1, st1, rf1, po1, sk1, dk1, se1) = ann[i]
+         co1, su1, st1, rf1, po1, sk1, dk1, se1, wh1, of1, fx1) = ann[i]
         xmax1 = c1[0] + h1[0]
         for j in range(i + 1, len(ann)):
             (n2, c2, h2, p2l, p2f, ns2, bu2, pl2, rk2, cr2, wa2,
-             co2, su2, st2, rf2, po2, sk2, dk2, se2) = ann[j]
+             co2, su2, st2, rf2, po2, sk2, dk2, se2, wh2, of2, fx2) = ann[j]
             if c2[0] - h2[0] > xmax1:
                 break
             if p1l == p2l or p1f == p2f:
@@ -220,6 +237,10 @@ def overlaps(boxes):
             if (pl1 or cr1) and (wa2 or rk2):
                 continue
             if (pl2 or cr2) and (wa1 or rk1):
+                continue
+            # Rock formations root INTO the ground plane; gorge and
+            # cliff walls descend below grade through terrain sheets.
+            if (rk1 and wa2) or (rk2 and wa1):
                 continue
             # Containment: a small object whose center sits inside a
             # container-named object is contents, not clipping
@@ -265,12 +286,22 @@ def overlaps(boxes):
             if depth <= 0.40 and ((st1 and rf2) or (st2 and rf1)):
                 continue
             # A rope/wire/pole ENDPOINT buried a few cm in whatever
-            # anchors it is a fastening, not a clip.
-            if depth <= 0.12 and (st1 or st2):
+            # anchors it is a fastening, not a clip (0.15 = one
+            # gate-pier face; fence balusters land at 0.13).
+            if depth <= 0.15 and (st1 or st2):
                 continue
-            # Porches, balconies, awnings TUCK INTO their building's
+            # Porches, balconies, porticos TUCK INTO their building's
             # facade by construction.
-            if depth <= 0.25 and (po1 or po2):
+            if depth <= PORCH_MAX and (po1 or po2):
+                continue
+            # Wheels seat into wheel wells and ground ruts.
+            if depth <= WHEEL_MAX and (wh1 or wh2):
+                continue
+            # Offerings lean on what they honor.
+            if depth <= OFFERING_MAX and (of1 or of2):
+                continue
+            # Flexible lines + draped fabric conform to what they touch.
+            if depth <= FLEX_MAX and (fx1 or fx2):
                 continue
             # A tree crown over a roofline is natural adjacency —
             # canopies hang over eaves everywhere trees stand near

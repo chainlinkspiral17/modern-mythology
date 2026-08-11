@@ -166,6 +166,10 @@ def build_lovers_exterior():
         # Skip if within the mound footprint
         if abs(sx - mound_cx) <= mound_w / 2.0 + 0.5 and abs(sy - mound_cy) <= mound_d / 2.0 + 0.5:
             continue
+        # Skip the asphalt apron (centered (0,-6.5), 14x10) — cane
+        # was growing up through the parking surface.
+        if abs(sx - 0.0) <= 7.5 and abs(sy - (-6.5)) <= 5.5:
+            continue
         stalk_h = _r.uniform(1.40, 2.20)
         make_cyl("CaneStalk_%d" % placed,
                  (sx, sy, -1.05 + stalk_h / 2.0),
@@ -184,7 +188,7 @@ def build_lovers_exterior():
              (0.60, 0.56, 0.50, 1.0))   # gravel
     # Three stone steps up the mound's south face
     for s in range(3):
-        make_box("MoundStep_%d" % s,
+        make_box("Exterior_MoundStep_%d" % s,
                  (0.0, -0.40 - s * 0.40, -0.25 + s * 0.10),
                  (1.10, 0.36, 0.10),
                  (0.46, 0.40, 0.34, 1.0))   # limestone-darker
@@ -254,7 +258,10 @@ def build_horizon_2026_08():
     # GROUND under everything out past the last band (2026-08-09,
     # user: "no ground on any of the roads — a flat expanse of
     # nothing"). Locale-colored so exteriors stop sharing a void.
-    make_box("Ground_Far", (0.0, 0.0, -0.03), (1080.0, 1080.0, 0.02),
+    # Top must sit BELOW the cane-field ground (top -1.05): this
+    # plane at -0.03 floated a full meter above local grade and
+    # sliced through every cane stalk mid-height.
+    make_box("Ground_Far", (0.0, 0.0, -1.08), (1080.0, 1080.0, 0.02),
              (0.22, 0.28, 0.16, 1.0))
     from _props.detail import make_far_bands
     make_far_bands("FarHedgerow", (0.30, 0.38, 0.26),

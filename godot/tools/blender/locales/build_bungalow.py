@@ -371,36 +371,36 @@ def build_partitions():
     is named so future passes can move/break them."""
     # ── East-west mid-wall at Y=+3 splitting front and back of house
     # Run W-end to start of kitchen-bedroom door opening
-    make_box("Mid_S_W", (-3.0, +3.0, 1.35),
+    make_box("Wall_Mid_S_W", (-3.0, +3.0, 1.35),
              (4.0, 0.10, 2.70), COL_WALL_CREAM)
     # Door opening between living room and bedroom corridor — 0.9m
     # cut at X=-1
-    make_box("Mid_S_Mid", (-0.5, +3.0, 1.35),
+    make_box("Wall_Mid_S_Mid", (-0.5, +3.0, 1.35),
              (0.0, 0.10, 2.70), COL_WALL_CREAM)
     # E section
-    make_box("Mid_S_E", (+2.0, +3.0, 1.35),
+    make_box("Wall_Mid_S_E", (+2.0, +3.0, 1.35),
              (5.0, 0.10, 2.70), COL_WALL_CREAM)
     # Above-door header for symmetry — covers bedroom passage
-    make_box("Mid_S_Above_Bed", (-1.0, +3.0, 2.45),
+    make_box("Wall_Mid_S_Above_Bed", (-1.0, +3.0, 2.45),
              (1.0, 0.10, 0.50), COL_WALL_CREAM)
 
     # ── North-south wall at X=-2.5 splitting bathroom from corridor
-    make_box("NS_Bath", (-2.5, +0.75, 1.35),
+    make_box("Wall_NS_Bath", (-2.5, +0.75, 1.35),
              (0.10, 1.50, 2.70), COL_WALL_CREAM)
     # Bathroom door at Y=+2.0 (0.8m wide gap)
-    make_box("NS_Bath_Above_Door", (-2.5, +1.95, 2.40),
+    make_box("Wall_NS_Bath_Above_Door", (-2.5, +1.95, 2.40),
              (0.10, 0.10, 0.60), COL_WALL_CREAM)
     # Continues up to Y=+3
-    make_box("NS_Bath_Top", (-2.5, +2.40, 1.35),
+    make_box("Wall_NS_Bath_Top", (-2.5, +2.40, 1.35),
              (0.10, 0.10, 2.70), COL_WALL_CREAM)
 
     # ── North-south wall at X=+1.5 splitting living room from studio
     # Door cut at Y=+1.5 (1.0m wide)
-    make_box("NS_Studio_S", (+1.5, +0.5, 1.35),
+    make_box("Wall_NS_Studio_S", (+1.5, +0.5, 1.35),
              (0.10, 1.00, 2.70), COL_WALL_CREAM)
-    make_box("NS_Studio_N", (+1.5, +2.5, 1.35),
+    make_box("Wall_NS_Studio_N", (+1.5, +2.5, 1.35),
              (0.10, 1.00, 2.70), COL_WALL_CREAM)
-    make_box("NS_Studio_AboveDoor", (+1.5, +1.5, 2.45),
+    make_box("Wall_NS_Studio_AboveDoor", (+1.5, +1.5, 2.45),
              (0.10, 1.00, 0.50), COL_WALL_CREAM)
 
     # ── Storage closet wall — splits the back of the studio into a
@@ -635,17 +635,19 @@ def build_studio_and_editing_desk():
             make_cyl(f"Studio_Desk_Leg_{sx}_{sy}",
                      (desk_x + sx * 0.62, desk_y + sy * 0.28, 0.36),
                      0.020, 0.72, (0.24, 0.18, 0.12, 1.0))
-    # Laptop — open
+    # Laptop — CLOSED, pushed to the left front corner. The desk
+    # center now belongs to the Priestess CRT pair + master reel;
+    # the open laptop stood inside Anya's monitor case.
     make_box("Studio_Laptop_Base",
-             (desk_x, desk_y, 0.755),
+             (desk_x - 0.45, desk_y - 0.22, 0.755),
              (0.40, 0.30, 0.02), COL_METAL_STEEL)
-    make_box("Studio_Laptop_Screen",
-             (desk_x, desk_y - 0.16, 0.96),
-             (0.40, 0.02, 0.30), COL_METAL_STEEL)
-    # Screen glow (lit content)
-    make_box("Studio_Laptop_ScreenGlow",
-             (desk_x, desk_y - 0.151, 0.96),
-             (0.36, 0.001, 0.26), (0.42, 0.56, 0.78, 1.0))
+    make_box("Studio_Laptop_Lid",
+             (desk_x - 0.45, desk_y - 0.22, 0.773),
+             (0.40, 0.30, 0.014), COL_METAL_STEEL)
+    # Amber sleep LED on the lid's front edge
+    make_box("Studio_Laptop_SleepLED",
+             (desk_x - 0.45, desk_y - 0.365, 0.769),
+             (0.02, 0.004, 0.006), (0.92, 0.70, 0.28, 1.0))
     # Two external drives — stacked, humming
     make_box("Studio_HD_1",
              (desk_x + 0.48, desk_y, 0.762),
@@ -661,14 +663,16 @@ def build_studio_and_editing_desk():
              (desk_x + 0.55, desk_y + 0.10, 0.808 + 0.020),
              (0.012, 0.012, 0.004), (0.32, 0.98, 0.40, 1.0))
     # Closed-back headphones — drape on the desk corner
+    # (headphones moved to the right front corner — the old left
+    # spot is under Anya's CRT now)
     make_cyl("Studio_HP_CupL",
-             (desk_x - 0.42, desk_y + 0.06, 0.78),
+             (desk_x + 0.50, desk_y - 0.26, 0.78),
              0.07, 0.05, (0.10, 0.10, 0.12, 1.0), segments=8, axis='Z')
     make_cyl("Studio_HP_CupR",
-             (desk_x - 0.28, desk_y + 0.06, 0.78),
+             (desk_x + 0.64, desk_y - 0.26, 0.78),
              0.07, 0.05, (0.10, 0.10, 0.12, 1.0), segments=8, axis='Z')
     make_cyl("Studio_HP_Band",
-             (desk_x - 0.35, desk_y + 0.06, 0.83),
+             (desk_x + 0.57, desk_y - 0.26, 0.83),
              0.08, 0.18, (0.14, 0.14, 0.18, 1.0), segments=8, axis='X')
     # Coffee cup with cold inch
     make_cyl("Studio_CoffeeCup",
@@ -697,21 +701,24 @@ def build_bookshelf():
     # ── Bookshelf — mounted against the studio's west wall (which
     # is the partition between living room and studio)
     sh_x = +1.4   # just west of the studio partition
-    sh_y = +2.6
+    # 0.90m long against the partition's NORTH segment (y 2.0-3.0);
+    # the old 1.50m shelf at y=+2.6 ran 0.35 through the y=+3.0
+    # mid-wall into the bedroom.
+    sh_y = +2.48
     shelf_h = 1.80
     make_box("Bookshelf_Frame",
              (sh_x, sh_y, shelf_h / 2.0),
-             (0.20, 1.50, shelf_h), (0.38, 0.26, 0.18, 1.0))
+             (0.20, 0.90, shelf_h), (0.38, 0.26, 0.18, 1.0))
     # 4 horizontal shelves
     for i in range(4):
         sz = 0.18 + i * 0.45
         make_box(f"Bookshelf_Plate_{i}",
                  (sh_x - 0.02, sh_y, sz),
-                 (0.18, 1.48, 0.025), (0.42, 0.30, 0.20, 1.0))
+                 (0.18, 0.88, 0.025), (0.42, 0.30, 0.20, 1.0))
 
     # Shelf 0 (lowest) — thrift tarot deck boxes (5 colors)
     for i, tint in enumerate(TAROT_TINTS):
-        bx_y = sh_y - 0.60 + i * 0.30
+        bx_y = sh_y - 0.38 + i * 0.19
         make_box(f"Bookshelf_TarotDeck_{i}",
                  (sh_x - 0.02, bx_y, 0.18 + 0.06),
                  (0.10, 0.13, 0.08), tint)
@@ -725,7 +732,7 @@ def build_bookshelf():
     book_colors = [COL_BOOK_BLUE, COL_BOOK_RED, COL_BOOK_GREEN,
                    COL_BOOK_BLACK, COL_BOOK_BLUE, COL_BOOK_RED]
     for i, col in enumerate(book_colors):
-        bx_y = sh_y - 0.65 + i * 0.22
+        bx_y = sh_y - 0.35 + i * 0.14
         make_box(f"Bookshelf_S1_Book_{i}",
                  (sh_x - 0.04, bx_y, shelf_1_z),
                  (0.14, 0.18, 0.26), col)
@@ -735,7 +742,7 @@ def build_bookshelf():
     book_colors_2 = [COL_BOOK_BLACK, COL_BOOK_RED, COL_BOOK_GREEN,
                      COL_BOOK_BLUE, COL_BOOK_BLACK]
     for i, col in enumerate(book_colors_2):
-        bx_y = sh_y - 0.50 + i * 0.20
+        bx_y = sh_y - 0.32 + i * 0.16
         # Tilt every other one slightly using slightly different
         # heights to suggest a lean
         h = 0.24 if i % 2 == 0 else 0.20
@@ -744,17 +751,17 @@ def build_bookshelf():
                  (0.12, 0.16, h), col)
     # A book lying flat across the others (the latest reading)
     make_box("Bookshelf_S2_FlatBook",
-             (sh_x - 0.06, sh_y + 0.55, shelf_2_z),
+             (sh_x - 0.06, sh_y + 0.30, shelf_2_z),
              (0.16, 0.22, 0.04), COL_BOOK_BLUE)
 
     # Shelf 3 (top) — mirror shard + cookie box
     shelf_3_z = 0.18 + 3 * 0.45 + 0.13
     # Mirror shard — angular, slightly off-axis
     make_box("Bookshelf_MirrorShard",
-             (sh_x - 0.06, sh_y - 0.50, shelf_3_z),
+             (sh_x - 0.06, sh_y - 0.28, shelf_3_z),
              (0.10, 0.14, 0.01), (0.92, 0.94, 0.96, 1.0))
     make_box("Bookshelf_MirrorShard_Frame",
-             (sh_x - 0.06, sh_y - 0.50, shelf_3_z + 0.002),
+             (sh_x - 0.06, sh_y - 0.28, shelf_3_z + 0.002),
              (0.04, 0.06, 0.012), COL_METAL_STEEL)
     # Half-eaten cookie box ("nice cookies somebody gave you")
     make_box("Bookshelf_CookieBox",

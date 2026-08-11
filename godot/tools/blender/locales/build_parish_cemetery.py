@@ -114,8 +114,11 @@ def build_central_mausoleum():
 
 
 def build_iron_lampposts():
-    # 6 wrought-iron lampposts along the spine
-    for li, ly in enumerate([-8.0, -5.0, -2.0, +2.0, +5.0, +8.0]):
+    # 6 wrought-iron lampposts along the spine. The ±2.0 pair stood
+    # INSIDE the central mausoleum footprint (body y ∈ [-2.2,+2.2],
+    # x ∈ [-1.4,+1.4] — posts at x ±1.2 were embedded in the walls);
+    # pushed out past the base slab.
+    for li, ly in enumerate([-8.0, -5.0, -3.6, +3.6, +5.0, +8.0]):
         lx = +1.20 if li % 2 == 0 else -1.20
         make_cyl(f"Lamp_Post_{li}", (lx, ly, 1.50), 0.06, 3.00, COL_IRON, segments=8)
         make_box(f"Lamp_Top_Bracket_{li}", (lx, ly, 3.10), (0.40, 0.10, 0.10), COL_IRON)
@@ -160,7 +163,9 @@ def build_perimeter_iron_fence_and_gate():
 
 def build_oaks_and_moss():
     # 3 oaks scattered through the rows
-    for oi, (ox, oy) in enumerate([(-8.5, -8.0), (+8.5, +6.0), (-3.0, +8.0)]):
+    # Oak 0 + 1 nudged off the vault rows (trunks were 0.35m inside
+    # Vault_0 / Vault_46 caps).
+    for oi, (ox, oy) in enumerate([(-9.1, -8.6), (+9.1, +6.6), (-3.0, +8.0)]):
         make_cyl(f"Oak_{oi}_Trunk", (ox, oy, 2.50), 0.40, 5.00, COL_OAK_TRUNK, segments=10)
         # 2026-08-04: foliage was three flat discs. Blob lobes now.
         from _props.geometry import make_blob
@@ -197,11 +202,14 @@ def build_judgement_dressing():
              (0.05, 0.40, 1.80),
              (0.18, 0.16, 0.14, 1.0))
 
-    # Central mausoleum approx at (0, 0); add the lectern at its
-    # south face
+    # Central mausoleum approx at (0, 0); the lectern stands on the
+    # south APPROACH. The body is solid stone spanning y ∈ [-2.2,
+    # +2.2] — the old y-1.50 placement buried this whole group
+    # (pedestal, list, missal) inside the mass. Left of the door;
+    # Beatrice's reading list stands center, the register right.
     mau_y = 0.0
-    lectern_x = 0.0
-    lectern_y = mau_y - 1.50
+    lectern_x = -1.60
+    lectern_y = mau_y - 2.90
     # Stone pedestal
     make_box("Lectern_Pedestal",
              (lectern_x, lectern_y, 0.50),
@@ -378,36 +386,39 @@ def build_judgement_wave2_props():
 
     # ── the_reading_of_the_hard_names ─────────────────────────
 
-    # Sister Beatrice's second-hour lectern at central mausoleum
-    # Central mausoleum approx at (0, 0). Lectern in vestibule
+    # Sister Beatrice's second-hour lectern at central mausoleum.
+    # The mausoleum body is SOLID stone (y in [-2.2,+2.2]) — the old
+    # "vestibule" placement at y=-0.60 buried the lectern and all 22
+    # names a meter inside the mass. It stands on the south approach
+    # in front of the bronze door (door face y=-2.21).
     make_box("Beatrice_Lectern_Post",
-             (0.0, -0.60, 0.60),
+             (0.0, -3.10, 0.60),
              (0.06, 0.06, 1.20),
              (0.62, 0.42, 0.26, 1.0))
     # Angled reading surface
     make_box("Beatrice_Lectern_Surface",
-             (0.0, -0.62, 1.24),
+             (0.0, -3.12, 1.24),
              (0.32, 0.24, 0.03),
              (0.72, 0.56, 0.34, 1.0))
     # Bound reading list open on the surface
     make_box("Beatrice_ReadingList_Cover",
-             (0.0, -0.62, 1.26),
+             (0.0, -3.12, 1.26),
              (0.28, 0.22, 0.014),
              (0.42, 0.20, 0.16, 1.0))    # bookbinder maroon
     # Open page (cream)
     make_box("Beatrice_ReadingList_Page",
-             (0.0, -0.62, 1.27),
+             (0.0, -3.12, 1.27),
              (0.26, 0.20, 0.001),
              (0.94, 0.90, 0.80, 1.0))
     # Twenty-two name lines (small dark stripes)
     for ni in range(11):
         make_box("Beatrice_ReadingList_Name_L_%d" % ni,
-                 (-0.06, -0.62 - 0.06 + ni * 0.013, 1.271),
+                 (-0.06, -3.12 - 0.06 + ni * 0.013, 1.271),
                  (0.09, 0.006, 0.0005),
                  (0.20, 0.16, 0.12, 1.0))
     for ni in range(11):
         make_box("Beatrice_ReadingList_Name_R_%d" % ni,
-                 (+0.06, -0.62 - 0.06 + ni * 0.013, 1.271),
+                 (+0.06, -3.12 - 0.06 + ni * 0.013, 1.271),
                  (0.09, 0.006, 0.0005),
                  (0.20, 0.16, 0.12, 1.0))
 
@@ -452,9 +463,10 @@ def build_judgement_wave2_props():
                  0.024, 0.02,
                  (0.94, 0.72, 0.72, 1.0), segments=6, axis='Z')
 
-    # Louis Landry's stone at vault_row_e slot 22 (behind the family plots)
+    # Louis Landry's stone at vault_row_e slot 22 (behind the family
+    # plots). Pulled 16cm off the vault base it was sunk into.
     louis_x = +4.60
-    louis_y = -5.20
+    louis_y = -5.04
     make_box("Louis_Stone",
              (louis_x, louis_y, 0.28),
              (0.24, 0.08, 0.32),
@@ -508,10 +520,11 @@ def build_judgement_wave2_props():
              (0.14, 0.04, 0.20),
              (0.62, 0.62, 0.60, 1.0))
 
-    # The parish register on a small lectern at the central
-    # mausoleum vestibule (different from Beatrice's reading lectern)
-    reg_x = +0.60
-    reg_y = -0.60
+    # The parish register on a small lectern right of the mausoleum
+    # door (different from Beatrice's reading lectern). The old
+    # (+0.60, -0.60) "vestibule" stood inside the solid body.
+    reg_x = +1.60
+    reg_y = -2.90
     make_box("ParishRegister_Lectern_Post",
              (reg_x, reg_y, 0.60),
              (0.06, 0.06, 1.20),

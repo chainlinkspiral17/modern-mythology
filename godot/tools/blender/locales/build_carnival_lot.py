@@ -101,16 +101,16 @@ def build_merry_go_round():
         hx = cx + math.cos(ang) * 2.60
         hy = cy + math.sin(ang) * 2.60
         # Vertical pole
-        make_cyl(f"Horse_Pole_{hi}", (hx, hy, 1.40), 0.04, 2.80, COL_MERRY_GOLD, segments=8)
+        make_cyl(f"Carousel_HorsePole_{hi}", (hx, hy, 1.40), 0.04, 2.80, COL_MERRY_GOLD, segments=8)
         # Horse body
         hc = COL_HORSE_WHITE if hi % 2 else COL_HORSE_BROWN
-        make_box(f"Horse_Body_{hi}", (hx, hy, 1.60), (0.80, 0.30, 0.50), hc)
+        make_box(f"Carousel_Horse_Body_{hi}", (hx, hy, 1.60), (0.80, 0.30, 0.50), hc)
         # Horse head
-        make_box(f"Horse_Head_{hi}", (hx + math.cos(ang)*0.40, hy + math.sin(ang)*0.40, 1.90),
+        make_box(f"Carousel_Horse_Head_{hi}", (hx + math.cos(ang)*0.40, hy + math.sin(ang)*0.40, 1.90),
                  (0.30, 0.20, 0.30), hc)
         # 4 legs
         for li, (sgn_x, sgn_y) in enumerate([(-1, -1), (+1, -1), (-1, +1), (+1, +1)]):
-            make_box(f"Horse_Leg_{hi}_{li}", (hx + sgn_x*0.30, hy + sgn_y*0.10, 1.20),
+            make_box(f"Carousel_Horse_Leg_{hi}_{li}", (hx + sgn_x*0.30, hy + sgn_y*0.10, 1.20),
                      (0.06, 0.06, 0.50), hc)
 
 
@@ -150,20 +150,20 @@ def build_lion_cage_wagon():
                  COL_WAGON_WOOD, axis='X', segments=10)
     # Cage frame (4 corner posts + bars)
     for sgn_x, sgn_y in [(-1, -1), (+1, -1), (-1, +1), (+1, +1)]:
-        make_box(f"Cage_Post_{sgn_x:+d}_{sgn_y:+d}",
+        make_box(f"Wagon_Cage_Post_{sgn_x:+d}_{sgn_y:+d}",
                  (wx + sgn_x*1.40, wy + sgn_y*0.70, 1.20), (0.10, 0.10, 1.80), COL_CAGE_BARS)
     # 12 vertical bars on each long side
     for sgn_y in (-1, +1):
         for bi in range(11):
             bx = wx - 1.30 + bi * 0.24
-            make_cyl(f"Cage_Bar_S{sgn_y:+d}_{bi}", (bx, wy + sgn_y*0.70, 1.20),
+            make_cyl(f"Wagon_Cage_Bar_S{sgn_y:+d}_{bi}", (bx, wy + sgn_y*0.70, 1.20),
                      0.02, 1.80, COL_CAGE_BARS, segments=6)
     # Cage roof
-    make_box("Cage_Roof", (wx, wy, 2.10), (2.80, 1.50, 0.06), COL_CAGE_BARS)
+    make_box("Wagon_Cage_Roof", (wx, wy, 2.10), (2.80, 1.50, 0.06), COL_CAGE_BARS)
     # Door — swung open at the W end (rotated open ~80°)
-    make_box("Cage_Door_OpenLeaf", (wx-2.10, wy-0.30, 1.20), (0.06, 1.20, 1.80), COL_CAGE_BARS)
+    make_box("Wagon_Cage_Door_OpenLeaf", (wx-2.10, wy-0.30, 1.20), (0.06, 1.20, 1.80), COL_CAGE_BARS)
     # "EMPTY" / faded text plaque on side
-    make_box("Cage_Plaque", (wx, wy+0.80, 0.80), (0.80, 0.005, 0.20), (0.92, 0.86, 0.74, 1.0))
+    make_box("Wagon_Cage_Plaque", (wx, wy+0.80, 0.80), (0.80, 0.005, 0.20), (0.92, 0.86, 0.74, 1.0))
 
 
 def build_strewn_props():
@@ -193,12 +193,12 @@ def build_strength_dressing():
     COL_RUST = (0.42, 0.18, 0.10, 1.0)
     # Two rust-scabbed hinges on the wagon's W door post + the door
     for hz in (0.50, 1.60):
-        make_box("Cage_Hinge_Rust_%.1f" % hz,
+        make_box("Wagon_Cage_Hinge_Rust_%.1f" % hz,
                  (wx - 1.42, wy - 0.30, hz),
                  (0.18, 0.08, 0.14),
                  COL_RUST)
         # Rust drip below each hinge (a thin streak running down)
-        make_box("Cage_Hinge_RustStreak_%.1f" % hz,
+        make_box("Wagon_Cage_Hinge_RustStreak_%.1f" % hz,
                  (wx - 1.42, wy - 0.30, hz - 0.20),
                  (0.05, 0.02, 0.30),
                  (0.32, 0.14, 0.08, 1.0))
@@ -225,12 +225,12 @@ def build_strength_dressing():
                 (0.32, 0.20, 0.12, 0.85), h=0.20, r=0.030)
 
     # Lila's plaque on the wagon side (brass, weathered)
-    make_box("Cage_LilaPlaque",
+    make_box("Wagon_Cage_LilaPlaque",
              (wx, wy + 0.81, 0.95),
              (0.40, 0.005, 0.12),
              (0.74, 0.56, 0.22, 1.0))
     # Engraved name (darker streak across the plaque)
-    make_box("Cage_LilaPlaque_Name",
+    make_box("Wagon_Cage_LilaPlaque_Name",
              (wx, wy + 0.815, 0.95),
              (0.30, 0.003, 0.04),
              (0.20, 0.14, 0.08, 1.0))
@@ -238,13 +238,13 @@ def build_strength_dressing():
     # The feed bucket inside the cage — sitting upright at the back
     # of the cage where it was left when Lila walked out for the
     # last time
-    make_cyl("Cage_FeedBucket_Body",
+    make_cyl("Wagon_Cage_FeedBucket_Body",
              (wx + 0.30, wy + 0.30, 0.42),
              0.12, 0.24,
              (0.42, 0.32, 0.20, 1.0),
              segments=10, axis='Z')
     # Bucket rim (slightly wider)
-    make_cyl("Cage_FeedBucket_Rim",
+    make_cyl("Wagon_Cage_FeedBucket_Rim",
              (wx + 0.30, wy + 0.30, 0.54),
              0.13, 0.012,
              (0.32, 0.22, 0.14, 1.0),
@@ -253,7 +253,7 @@ def build_strength_dressing():
     for pi in range(5):
         pdx = -0.10 + (pi % 3) * 0.08
         pdy = -0.16 + (pi // 3) * 0.06
-        make_box("Cage_Feed_%d" % pi,
+        make_box("Wagon_Cage_Feed_%d" % pi,
                  (wx + 0.20 + pdx, wy + 0.10 + pdy, 0.31),
                  (0.04, 0.04, 0.02),
                  (0.62, 0.46, 0.22, 1.0))
@@ -319,19 +319,19 @@ def build_strength_wave2_props():
 
     # Milk truck approaching on the highway (a distant white rectangle)
     make_box("DawnMilkTruck_Body",
-             (0.0, -11.0, 1.20),
+             (0.0, -17.0, 1.20),
              (1.20, 3.00, 1.40),
              (0.94, 0.94, 0.90, 1.0))
     # Chrome tank on top
     make_cyl("DawnMilkTruck_Tank",
-             (0.0, -11.0, 2.20),
+             (0.0, -17.0, 2.20),
              0.50, 2.60,
              (0.86, 0.86, 0.88, 1.0), segments=12, axis='Y')
     # Wheels
     for wy in (-1.20, +1.20):
         for wx in (-0.50, +0.50):
             make_cyl("DawnMilkTruck_Wheel_%d_%d" % (int(wx*100), int(wy*100)),
-                     (wx, -11.0 + wy, 0.30),
+                     (wx, -17.0 + wy, 0.30),
                      0.28, 0.14,
                      (0.10, 0.08, 0.08, 1.0), segments=10, axis='X')
 
@@ -354,12 +354,12 @@ def build_strength_wave2_props():
     # Wagon door swinging six-inches-and-back
     # Existing wagon has a door; we add a "swung" position box
     # offset from the wagon edge to visualize the moving door
-    make_box("StormWagonDoor_Swung",
+    make_box("Wagon_StormDoor_Swung",
              (wag_x + 0.68, wag_y + 0.10, 0.62),
              (0.03, 0.60, 1.20),
              (0.28, 0.20, 0.14, 1.0))
     # Gouge in the dirt where the door has scraped
-    make_box("StormWagonDoor_GougeInDirt",
+    make_box("Wagon_StormDoor_GougeInDirt",
              (wag_x + 0.68, wag_y + 0.10, 0.02),
              (0.06, 0.20, 0.005),
              (0.32, 0.24, 0.16, 1.0))
