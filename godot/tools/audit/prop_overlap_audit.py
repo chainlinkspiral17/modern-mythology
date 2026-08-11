@@ -36,6 +36,7 @@ EMBED_MAX = 0.14   # wall thickness + proud trim/frame
 WALLISH = re.compile(
     r"wall|window|door|sign|brand|part[nsew]?\b|trim|crown|"
     r"baseboard|backsplash|wainscot|frame|sill|floor|ceil|apron|"
+    r"cornice|facade|"
     r"turf|road|grass|rug|mat|plumbing|curb|kerb|lawn|drive|sidewalk|path\b|path_|apron|asphalt|edgeline|shoulder|gravel|yard\b|headland|ground|walk\b|walkway|win\b|win_|outlet|socket|plate\b|numeral|slab|plaza|endzone|seam|shore|sand|dune", re.I)
 CONTAINERISH = re.compile(
     r"cage|case|chest|bin\b|bin_|basket|crate|rack|cooler|fridge|"
@@ -97,10 +98,10 @@ OFFERING_MAX = 0.10
 # whatever they cross or lie on — shallow interpenetration is the
 # proxy geometry's way of touching.
 FLEXISH = re.compile(r"wire|cable|cord|cord_|rope|chain|towel|rag|"
-                     r"rag_|cloth|blanket|quilt|drape|linen|banner|"
+                     r"rag_|cloth|blanket|quilt|comforter|drape|linen|banner|"
                      r"pennant|festoon|valance|curtain|sock|laundry|shirt|jacket|"
                      r"strap|beanbag|paper\b", re.I)
-FLEX_MAX = 0.25
+FLEX_MAX = 0.30
 # Landscaping features are mounded soft dirt — poles, hydrants,
 # signs and wheels sink into berms and beds by planting/parking.
 BERMISH = re.compile(r"berm|mulch|planter|flower_bed|_bed\b|hill", re.I)

@@ -7,7 +7,7 @@
   "nodes": [
     {
       "t": "bg",
-      "src": "3d:graustark_ruins"
+      "src": "3d:graustark_chalk_wall"
     },
     {
       "t": "hide",

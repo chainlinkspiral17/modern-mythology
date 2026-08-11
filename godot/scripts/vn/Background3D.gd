@@ -263,6 +263,50 @@ const CAMERA_PRESETS := {
 		"fov": 62.0,
 		"suppress_input": true,
 	},
+	# ── VOL 5 — Hermit — Joanna's chalked wall + the crow's perch ─
+	"graustark_chalk_wall": {
+		"scene": "res://scenes/locales/graustark.tscn",
+		"requires_glb": "res://assets/3d/locales/graustark.glb",
+		# West of the wall (blender 44,−374; verses on its −x face)
+		# looking EAST: the rusted I-beam (40.5,−371 — the crow's
+		# perch) crosses frame-left in the near ground, the chalk
+		# verses fill frame-right. Hermit stages chalk 11×, beam 8×.
+		# blender cam (36, −371, 1.9) → godot (36, 1.9, 371);
+		# yaw = atan2(−8, −3).
+		"camera_origin": Vector3(36.0, 1.90, 371.0),
+		"camera_rotation": Vector3(0.0, -1.93, 0.0),
+		"fov": 55.0,
+		"suppress_input": true,
+	},
+	# ── VOL 5 — Star — the cottage (the annual offering) ─────────
+	"graustark_cottage": {
+		"scene": "res://scenes/locales/graustark.tscn",
+		"requires_glb": "res://assets/3d/locales/graustark.glb",
+		# South of the gate (posts blender 49.5-50.5, −387.8)
+		# looking NORTH up the flagstone path: gate foreground,
+		# cottage (50,−380) + herb bed (52.2,−379) mid, the broken
+		# skyline shells 40-70m beyond.
+		# blender cam (50, −394, 1.8) → godot (50, 1.8, 394); yaw 0.
+		"camera_origin": Vector3(50.0, 1.80, 394.0),
+		"camera_rotation": Vector3(-0.02, 0.0, 0.0),
+		"fov": 58.0,
+		"suppress_input": true,
+	},
+	# ── VOL 5 — Judgement — the Minstral's Green wreck ────────────
+	"graustark_wreck": {
+		"scene": "res://scenes/locales/graustark.tscn",
+		"requires_glb": "res://assets/3d/locales/graustark.glb",
+		# SE of the beached steamship (hull blender 38,−120, top
+		# 5.6; stack to 7.9; paddlebox 42.2,−124 — the Frog's seat)
+		# looking NW: paddlebox near-right, listed hull and stack
+		# rising left. Judgement stages the wreck 4×.
+		# blender cam (50, −134, 2.2) → godot (50, 2.2, 134);
+		# yaw = atan2(11, 16), slight up to catch the stack.
+		"camera_origin": Vector3(50.0, 2.20, 134.0),
+		"camera_rotation": Vector3(0.05, 0.602, 0.0),
+		"fov": 60.0,
+		"suppress_input": true,
+	},
 	# ── VOL 5 — Lovers — Roberts house kitchen ───────────────────
 	"roberts_kitchen": {
 		"scene": "res://scenes/locales/roberts_kitchen.tscn",

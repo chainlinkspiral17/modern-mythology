@@ -424,7 +424,7 @@ def build_guest_seating_and_filing():
             make_box("Guest_%d_Leg_%d" % (gi, li), (lx, ly, 0.23),
                      (0.04, 0.04, 0.46), COL_DESK_LEG)
     # Lateral filing cabinet against the west wall
-    fx, fy = -ROOM_W/2.0 + 0.32, 1.60
+    fx, fy = -ROOM_W/2.0 + 0.32, 1.15
     make_box("Filing_Body", (fx, fy, 0.62), (0.50, 1.00, 1.24), (0.46, 0.42, 0.36, 1.0))
     for di in range(3):
         dz = 0.28 + di * 0.42

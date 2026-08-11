@@ -156,8 +156,8 @@ def build_hero_props():
         make_box(f"Blackout_{cx:+.2f}", (cx, ROOM_D-0.16, 1.50), (0.50, 0.04, 1.30), (0.14, 0.14, 0.18, 1.0))
         make_box(f"Regular_Curtain_{cx:+.2f}", (cx, ROOM_D-0.22, 1.50), (0.46, 0.03, 1.26), (0.55, 0.52, 0.60, 1.0))
     # Clock on the DRESSER ("The clock on the dresser says three eleven")
-    make_box("Dresser_Clock", (1.70, 2.78, 1.00), (0.14, 0.09, 0.09), (0.16, 0.16, 0.18, 1.0))
-    make_box("Dresser_Clock_Face", (1.70, 2.73, 1.00), (0.10, 0.01, 0.055), (0.72, 0.24, 0.20, 1.0))
+    make_box("Dresser_Clock", (1.70, 2.94, 1.00), (0.14, 0.09, 0.09), (0.16, 0.16, 0.18, 1.0))
+    make_box("Dresser_Clock_Face", (1.70, 2.89, 1.00), (0.10, 0.01, 0.055), (0.72, 0.24, 0.20, 1.0))
     # The envelope on the desk's SE corner
     make_box("Letter_Envelope", (1.40, 1.24, 0.765), (0.22, 0.11, 0.005), (0.94, 0.93, 0.90, 1.0))
     # The laptop with the schedule open
