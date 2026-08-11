@@ -659,7 +659,7 @@ def build_coffee_station():
 
     # ── Cream + sugar caddy ─────────────────────────────────────
     make_box("Coffee_CSC_Body",
-             (cx + 0.30, cy + 1.40, 0.92),
+             (cx + 0.55, cy + 1.55, 0.92),
              (0.36, 0.40, 0.16), (0.78, 0.68, 0.52, 1.0))
     for i in range(3):
         col = [(0.94, 0.94, 0.94, 1.0),
@@ -736,24 +736,24 @@ def build_snack_aisles():
     for sgn, sx in [(-1, -3.40), (+1, +3.40)]:
         # Body (slightly angled — we fake angle with a thinner base)
         make_box(f"EndCap_{sgn:+d}_Base",
-                 (sx, 1.70, 0.12),
+                 (sx, 2.35, 0.12),
                  (0.60, 0.80, 0.24), COL_COUNTER_DARK)
         # 4 narrow shelves stacked
         for sh in range(4):
             shz = 0.40 + sh * 0.34
             make_box(f"EndCap_{sgn:+d}_Shelf_{sh}",
-                     (sx, 1.70, shz),
+                     (sx, 2.35, shz),
                      (0.62, 0.70, 0.02), COL_METAL_STEEL)
             # 4 products per shelf (smaller than aisle products)
             for p in range(4):
                 px = sx - 0.20 + p * 0.14
                 tint = SNACK_TINTS[(sgn + sh + p) % len(SNACK_TINTS)]
                 make_box(f"EndCap_{sgn:+d}_Product_{sh}_{p}",
-                         (px, 1.70, shz + 0.14),
+                         (px, 2.35, shz + 0.14),
                          (0.10, 0.50, 0.18), tint)
         # Top header
         make_box(f"EndCap_{sgn:+d}_Header",
-                 (sx, 1.70, 1.92),
+                 (sx, 2.35, 1.92),
                  (0.62, 0.78, 0.20), COL_BRAND_RED)
 
 
@@ -793,7 +793,7 @@ def build_newspaper_stack():
 
 def build_magazine_rack():
     # Slanted magazine rack against the west wall, near windows
-    mrx, mry = -5.30, 1.80
+    mrx, mry = -5.30, 2.55
     # Body
     make_box("MagRack_Body", (mrx, mry, 0.92),
              (0.36, 1.10, 1.84), COL_METAL_BLACK)
@@ -1025,7 +1025,7 @@ def build_newspaper_rack_exterior():
 
 def build_trash_can():
     # KWIK-branded trash bin between counter and east window
-    cx, cy = 5.20, 1.40
+    cx, cy = 5.20, 1.72
     make_cyl("Trash_Body", (cx, cy, 0.50), 0.30, 1.00, COL_BRAND_RED)
     # Brand band
     make_cyl("Trash_BrandBand", (cx, cy, 0.70), 0.31, 0.16, COL_PAPER)
@@ -1553,7 +1553,7 @@ def build_stockroom_through_curtain():
     # is implied (no actual closed door geometry, just the strip
     # curtain). Place at Y≈8.8 just behind the curtain.
     box_x = 5.0
-    box_y = 8.95  # slightly past the strip curtain
+    box_y = 8.72  # slightly past the strip curtain
     # Stack of three cardboard cartons
     for ti in range(3):
         make_box(f"Stockroom_Box_{ti}",
@@ -1589,7 +1589,7 @@ def build_more_floor_displays():
                  (bx, by - layer_d / 2 - 0.005, 0.30 + layer_i * 0.32),
                  (layer_w * 0.80, 0.005, 0.08), COL_PAPER)
     # Charcoal-bag pyramid near west window
-    cx, cy = -3.40, 1.80
+    cx, cy = -4.55, 2.30
     for li in range(3):
         lw = 0.96 - li * 0.24
         make_box(f"CharcoalStack_{li}",
@@ -1599,7 +1599,7 @@ def build_more_floor_displays():
                  (cx, cy - 0.255, 0.20 + li * 0.30),
                  (lw * 0.7, 0.005, 0.10), COL_LOTTERY_RED)
     # Cardboard pyramid of red-cup 12-packs near east window
-    cup_x, cup_y = 3.20, 1.80
+    cup_x, cup_y = 3.55, 1.55
     for li in range(2):
         lw = 0.80 - li * 0.24
         make_box(f"CupStack_{li}",
@@ -1920,7 +1920,7 @@ def build_pickup_truck_outside():
     # a small pickup truck. Adds depth to the parking-lot scene
     # visible through the south windows. Position chosen to NOT
     # overlap the existing sedan (which is on the right side).
-    tx, ty = -3.60, -1.40
+    tx, ty = -3.05, -2.30
     # Cab
     make_box("Truck_Cab", (tx, ty, 0.80),
              (1.20, 1.00, 0.70), COL_TRUCK_BODY)
@@ -1971,7 +1971,7 @@ def build_squeegee_bucket():
 def build_ice_chest_outside():
     # Chest-style ICE cooler beside the south door (Visi-Cool style),
     # visible through the window. Outdoor merchandising.
-    cx, cy = +1.40, -0.90
+    cx, cy = +0.85, -0.90
     make_box("IceChest_Body", (cx, cy, 0.40),
              (1.20, 0.80, 0.80), COL_ICE_BLUE)
     make_box("IceChest_Lid", (cx, cy, 0.82),
@@ -2195,7 +2195,7 @@ def build_quarter_machines():
     # Three quarter-machines (gumball / sticker / temporary tattoo)
     # in a row near the south door, west of the entry mat.
     for mi, mx in enumerate([-3.20, -2.70, -2.20]):
-        my = 0.60
+        my = 0.22
         # Body
         make_box(f"Quarter_{mi}_Body", (mx, my, 0.50),
                  (0.36, 0.36, 1.00), COL_GUMBALL_BODY)
@@ -2552,7 +2552,7 @@ def build_drink_fridge_handles():
 def build_floor_plant():
     # Decorative potted plant near the front door — fake green plant
     # in a terracotta pot. Cheap convenience-store dressing.
-    px, py = -3.40, 0.80
+    px, py = -5.00, 0.45
     # Pot
     for r_layer in range(3):
         make_cyl(f"Plant_Pot_{r_layer}",
@@ -2847,7 +2847,7 @@ def build_hero_props_2026_08():
     steel = (0.60, 0.62, 0.63, 1.0)
     # THE THREE TABLES BY THE WINDOW (the Red Peugeot chapter lives
     # here). One aligned to the existing west outlet.
-    for ti, tx in enumerate((-4.4, -3.5, -2.6)):
+    for ti, tx in enumerate((-4.5, -3.65, -2.8)):
         make_box(f"WinTable_{ti}_Top", (tx, 1.05, 0.74), (0.70, 0.70, 0.04), wood)
         make_cyl(f"WinTable_{ti}_Post", (tx, 1.05, 0.37), 0.05, 0.70, steel, segments=8)
         make_cyl(f"WinTable_{ti}_Foot", (tx, 1.05, 0.03), 0.24, 0.03, steel, segments=10)

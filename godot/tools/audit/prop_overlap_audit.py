@@ -56,7 +56,7 @@ CROWNISH = re.compile(r"crown|canopy|foliage|lobe|frond", re.I)
 # Non-solid volumetrics: sprinkler spray arcs, light shafts, steam —
 # they interpenetrate everything by design.
 NONSOLID = re.compile(r"spray|mist|steam|smoke|shaft|glow|beam\b|dust|fog|surf|foam|wake|"
-    r"falls?_|veil|cascade|plunge|water|thread|pool", re.I)
+    r"falls?_|veil|cascade|plunge|water|thread|pool|liquid", re.I)
 # Infrastructure DESIGNED to be buried — culverts under roads,
 # pipes through creek beds, footings in the ground.
 BURIEDISH = re.compile(r"culvert|drain|conduit|footing|foundation|piling", re.I)
@@ -100,7 +100,7 @@ OFFERING_MAX = 0.10
 FLEXISH = re.compile(r"wire|cable|cord|cord_|rope|chain|towel|rag|"
                      r"rag_|cloth|blanket|quilt|comforter|drape|linen|banner|"
                      r"pennant|festoon|valance|curtain|sock|laundry|shirt|jacket|"
-                     r"strap|beanbag|paper\b", re.I)
+                     r"strap|beanbag|paper\b|twine|bag\b|trashbag|pricetag|tag\b", re.I)
 FLEX_MAX = 0.30
 # Landscaping features are mounded soft dirt — poles, hydrants,
 # signs and wheels sink into berms and beds by planting/parking.
@@ -424,6 +424,13 @@ def overlaps(boxes):
                 continue
             # A swing rope hangs THROUGH the canopy from its branch.
             if (cr1 and fx2) or (cr2 and fx1):
+                continue
+            # A tank's collar rings its tank.
+            if depth <= 0.10 and ("collar" in l1 or "collar" in l2):
+                continue
+            # Closet tools lean together and against the bench.
+            if depth <= 0.20 and any(t in l1 or t in l2 for t in
+                                     ("broom", "mop_", "squeegee")):
                 continue
             # Cues lean against whatever is behind them.
             if depth <= 0.10 and ("cue" in n1.lower() or

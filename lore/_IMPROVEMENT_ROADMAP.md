@@ -349,6 +349,23 @@ open on their own staging (chalked wall / cottage gate / Minstral
 wreck / the wide). REPO TOTAL: 1693 this morning → 132 tonight,
 all inside the three model-chapter holdouts. Deck rebuild:
 riverfront (the wheel + silhouettes are geometry).
+2026-08-11 last · THE HUNT IS COMPLETE: kwik_stop 67 → 0 CLEAN and
+diner 48 → 4 (ticket-tuck ≤0.06). REPO TOTAL: 18 — barn's crumple
+(14, by design) + the diner tickets. Kwik finds: the mag rack
+stood inside the ice machine (west wall double-booked → rack
+north), the pickup was parked THROUGH the propane cage (a lane
+out — then its cab hit a canopy column: slid east between them),
+the ice chest in the blue news rack, the quarter-machine row ran
+through window-table 2's chairs (now against the glass), charcoal
+pyramid + floor plant + endcaps + cup stack all rearranged out of
+each other. Diner: its wheel had a THIRD wheel bug (fore-aft
+offset computed and never used — blades stacked in a vertical
+column diving under River Road), and the Damb service bar stood
+inside the WestFormal sideboard (now a true 0.85m stub between
+partition and sideboard). Gate holdouts now: diner 6 +
+crumpled_barn 15 only. VERIFY BY SCREENSHOT next Deck session:
+kwik_stop front-of-store rearrangement and the diner stub bar are
+model-chapter changes made on audit evidence alone.
 
 ### Workstream · SLOWSTICK PRODUCTION PASS (user-directed · 2026-08-03)
 

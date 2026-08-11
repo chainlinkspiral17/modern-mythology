@@ -29,7 +29,6 @@ import sys
 
 # holdout: recorded ceiling (2026-08-11)
 HOLDOUTS = {
-    "kwik_stop": 70,        # model chapter - screenshot-gated
     "diner": 6,             # 4 ticket-tuck contacts <=0.06
     "crumpled_barn": 15,    # the crumple IS the overlap
 }
