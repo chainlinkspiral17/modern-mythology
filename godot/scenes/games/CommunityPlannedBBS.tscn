@@ -30,10 +30,11 @@ theme_override_constants/separation = 8
 
 [node name="StatusBar" type="RichTextLabel" parent="VBox"]
 layout_mode = 2
-custom_minimum_size = Vector2(0, 32)
+custom_minimum_size = Vector2(0, 40)
 bbcode_enabled = true
 fit_content = true
-theme_override_font_sizes/normal_font_size = 13
+theme_override_font_sizes/normal_font_size = 18
+theme_override_font_sizes/bold_font_size = 18
 theme_override_colors/default_color = Color(0.62, 0.96, 0.62, 1)
 
 [node name="MainScroll" type="ScrollContainer" parent="VBox"]
@@ -45,16 +46,16 @@ size_flags_vertical = 3
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
-custom_minimum_size = Vector2(800, 480)
+custom_minimum_size = Vector2(1100, 560)
 bbcode_enabled = true
 fit_content = true
 scroll_following = false
-theme_override_font_sizes/normal_font_size = 13
-theme_override_font_sizes/bold_font_size = 13
+theme_override_font_sizes/normal_font_size = 20
+theme_override_font_sizes/bold_font_size = 20
 theme_override_colors/default_color = Color(0.62, 0.96, 0.62, 1)
 
 [node name="CmdLine" type="Label" parent="VBox"]
 layout_mode = 2
 text = "> _"
-theme_override_font_sizes/font_size = 12
+theme_override_font_sizes/font_size = 18
 theme_override_colors/font_color = Color(0.42, 0.78, 0.42, 1)

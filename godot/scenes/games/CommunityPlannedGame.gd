@@ -465,7 +465,7 @@ func _maybe_fire_endless_milestone() -> void:
 	# The chapter marker as a modal · same shape as the spike events.
 	var dlg := AcceptDialog.new()
 	dlg.title = "Endless week %d" % endless_weeks
-	dlg.min_size = Vector2(600, 420)
+	dlg.min_size = Vector2(880, 520)
 	dlg.get_ok_button().text = "back to the board"
 	var col := VBoxContainer.new()
 	col.add_theme_constant_override("separation", 10)
@@ -473,14 +473,14 @@ func _maybe_fire_endless_milestone() -> void:
 	dlg.add_child(col)
 	var hdr := Label.new()
 	hdr.text = "· %s ·" % String(m.get("title", ""))
-	hdr.add_theme_font_size_override("font_size", 20)
+	hdr.add_theme_font_size_override("font_size", 24)
 	hdr.add_theme_color_override("font_color", Color(0.78, 0.72, 0.91, 1))
 	col.add_child(hdr)
 	var body_lbl := Label.new()
 	body_lbl.text = body
 	body_lbl.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
-	body_lbl.custom_minimum_size = Vector2(560, 0)
-	body_lbl.add_theme_font_size_override("font_size", 16)
+	body_lbl.custom_minimum_size = Vector2(820, 0)
+	body_lbl.add_theme_font_size_override("font_size", 20)
 	col.add_child(body_lbl)
 	dlg.add_to_group("ui")
 	add_child(dlg)
@@ -578,7 +578,7 @@ func _show_endless_end_screen(entry: Dictionary) -> void:
 	var retired: bool = String(entry.get("reason", "")) == "retired"
 	var dlg := AcceptDialog.new()
 	dlg.title = "THE BOARD RETIRES" if retired else "THE TOWER FINISHES"
-	dlg.min_size = Vector2(560, 420)
+	dlg.min_size = Vector2(900, 540)
 	dlg.get_ok_button().text = "back to the slot desk"
 	var col := VBoxContainer.new()
 	col.add_theme_constant_override("separation", 8)
@@ -588,7 +588,7 @@ func _show_endless_end_screen(entry: Dictionary) -> void:
 	hdr.text = "You set the pencil down." if retired \
 			else "The window in Small Wood goes white and stays white. Whatever the tower was for, it is finished being for it."
 	hdr.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
-	hdr.add_theme_font_size_override("font_size", 16)
+	hdr.add_theme_font_size_override("font_size", 20)
 	hdr.add_theme_color_override("font_color", Color(0.96, 0.86, 0.62, 1))
 	col.add_child(hdr)
 	var lines: Array = []
@@ -601,7 +601,7 @@ func _show_endless_end_screen(entry: Dictionary) -> void:
 	lines.append("tower curve · %s" % _brightness_glyphs(entry.get("brightness_log", [])))
 	var body := Label.new()
 	body.text = "\n".join(lines)
-	body.add_theme_font_size_override("font_size", 15)
+	body.add_theme_font_size_override("font_size", 19)
 	body.add_theme_color_override("font_color", Color(0.84, 0.86, 0.84, 1))
 	col.add_child(body)
 	# The run ledger · past runs, so replays have a target.
@@ -609,7 +609,7 @@ func _show_endless_end_screen(entry: Dictionary) -> void:
 	if runs.size() > 1:
 		var prev_hdr := Label.new()
 		prev_hdr.text = "· past septembers ·"
-		prev_hdr.add_theme_font_size_override("font_size", 15)
+		prev_hdr.add_theme_font_size_override("font_size", 19)
 		prev_hdr.add_theme_color_override("font_color", Color(0.62, 0.66, 0.72, 1))
 		col.add_child(prev_hdr)
 		var prev_lines: Array = []
@@ -621,7 +621,7 @@ func _show_endless_end_screen(entry: Dictionary) -> void:
 				String(run.get("reason", ""))])
 		var prev := Label.new()
 		prev.text = "\n".join(prev_lines)
-		prev.add_theme_font_size_override("font_size", 15)
+		prev.add_theme_font_size_override("font_size", 19)
 		prev.add_theme_color_override("font_color", Color(0.62, 0.66, 0.72, 1))
 		col.add_child(prev)
 	dlg.confirmed.connect(func() -> void:
@@ -691,7 +691,7 @@ func _day_label_short(day_n: int) -> String:
 func _show_slot_picker() -> void:
 	var dlg := AcceptDialog.new()
 	dlg.title = "COMMUNITY PLANNED · slot"
-	dlg.min_size = Vector2(560, 420)
+	dlg.min_size = Vector2(900, 540)
 	dlg.get_ok_button().visible = false  # No OK — the picker resolves via a slot.
 	# Soft-lock guard (audit): ESC / window-close used to dismiss the
 	# picker and leave a live board with no slot state behind it. The
@@ -713,7 +713,7 @@ func _show_slot_picker() -> void:
 	dlg.add_child(col)
 	var hdr := Label.new()
 	hdr.text = "Pick a slot. Three summers fit on the desk."
-	hdr.add_theme_font_size_override("font_size", 16)
+	hdr.add_theme_font_size_override("font_size", 20)
 	hdr.add_theme_color_override("font_color", Color(0.96, 0.86, 0.62, 1))
 	col.add_child(hdr)
 	for slot in range(NUM_SAVE_SLOTS):
@@ -725,7 +725,7 @@ func _show_slot_picker() -> void:
 		btn.text = "Slot %d · %s" % [slot + 1, String(summary["season_label"])]
 		btn.alignment = HORIZONTAL_ALIGNMENT_LEFT
 		btn.size_flags_horizontal = Control.SIZE_EXPAND_FILL
-		btn.add_theme_font_size_override("font_size", 15)
+		btn.add_theme_font_size_override("font_size", 19)
 		var slot_capture: int = slot
 		btn.pressed.connect(func() -> void:
 			dlg.set_meta("settled", true)
@@ -737,7 +737,7 @@ func _show_slot_picker() -> void:
 			var wipe_btn := Button.new()
 			wipe_btn.text = "wipe"
 			wipe_btn.focus_mode = Control.FOCUS_NONE
-			wipe_btn.add_theme_font_size_override("font_size", 15)
+			wipe_btn.add_theme_font_size_override("font_size", 19)
 			var slot_w: int = slot
 			wipe_btn.pressed.connect(func() -> void:
 				_confirm_wipe_slot(slot_w, dlg))
@@ -757,7 +757,7 @@ func _show_slot_picker() -> void:
 				e_btn.text = "    ↳ SEPTEMBER AND AFTER · reopen the board, seasonless"
 			e_btn.alignment = HORIZONTAL_ALIGNMENT_LEFT
 			e_btn.size_flags_horizontal = Control.SIZE_EXPAND_FILL
-			e_btn.add_theme_font_size_override("font_size", 15)
+			e_btn.add_theme_font_size_override("font_size", 19)
 			e_btn.add_theme_color_override("font_color", Color(0.72, 0.80, 0.94, 1))
 			var slot_e: int = slot
 			e_btn.pressed.connect(func() -> void:
@@ -769,7 +769,7 @@ func _show_slot_picker() -> void:
 				var retire_btn := Button.new()
 				retire_btn.text = "retire"
 				retire_btn.focus_mode = Control.FOCUS_NONE
-				retire_btn.add_theme_font_size_override("font_size", 15)
+				retire_btn.add_theme_font_size_override("font_size", 19)
 				var slot_r: int = slot
 				retire_btn.pressed.connect(func() -> void:
 					_retire_endless_slot(slot_r)
@@ -1740,27 +1740,27 @@ func _make_region_panel(r_id: String) -> Control:
 	var title := Label.new()
 	title.name = "Title"
 	title.text = r["name"]
-	title.add_theme_font_size_override("font_size", 20)
+	title.add_theme_font_size_override("font_size", 24)
 	title.add_theme_color_override("font_color", Color(0.92, 0.86, 0.62, 1))
 	col.add_child(title)
 	var subtitle := Label.new()
 	subtitle.name = "Subtitle"
 	subtitle.text = r.get("subtitle", "")
-	subtitle.add_theme_font_size_override("font_size", 15)
+	subtitle.add_theme_font_size_override("font_size", 19)
 	subtitle.add_theme_color_override("font_color", Color(0.62, 0.62, 0.62, 1))
 	col.add_child(subtitle)
 	var stats := Label.new()
 	stats.name = "Stats"
-	stats.add_theme_font_size_override("font_size", 15)
+	stats.add_theme_font_size_override("font_size", 19)
 	col.add_child(stats)
 	var nodes_label := Label.new()
 	nodes_label.name = "Nodes"
-	nodes_label.add_theme_font_size_override("font_size", 15)
+	nodes_label.add_theme_font_size_override("font_size", 19)
 	nodes_label.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 	col.add_child(nodes_label)
 	var problems_header := Label.new()
 	problems_header.text = "PROBLEMS"
-	problems_header.add_theme_font_size_override("font_size", 15)
+	problems_header.add_theme_font_size_override("font_size", 19)
 	problems_header.add_theme_color_override("font_color", Color(0.86, 0.34, 0.20, 1))
 	col.add_child(problems_header)
 	var problems_box := VBoxContainer.new()
@@ -1895,14 +1895,14 @@ func _render_tower_strip() -> void:
 		col.move_child(tower_row, 3)
 		var lbl := Label.new()
 		lbl.name = "TowerLine"
-		lbl.add_theme_font_size_override("font_size", 15)
+		lbl.add_theme_font_size_override("font_size", 19)
 		lbl.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 		tower_row.add_child(lbl)
 		var btn := Button.new()
 		btn.name = "TowerBtn"
 		btn.text = "send to tower"
 		btn.focus_mode = Control.FOCUS_NONE
-		btn.add_theme_font_size_override("font_size", 15)
+		btn.add_theme_font_size_override("font_size", 19)
 		_style_flat_btn(btn)
 		btn.pressed.connect(_open_tower_dispatch)
 		tower_row.add_child(btn)
@@ -1974,7 +1974,7 @@ func _render_region(r_id: String) -> void:
 		var none := Label.new()
 		none.text = "(none active)"
 		none.add_theme_color_override("font_color", Color(0.55, 0.55, 0.55, 1))
-		none.add_theme_font_size_override("font_size", 15)
+		none.add_theme_font_size_override("font_size", 19)
 		box.add_child(none)
 	for pi in range(probs.size()):
 		var p: Dictionary = probs[pi]
@@ -2014,7 +2014,7 @@ func _render_region(r_id: String) -> void:
 		lbl.clip_text = true
 		lbl.text_overrun_behavior = TextServer.OVERRUN_TRIM_ELLIPSIS
 		lbl.focus_mode = Control.FOCUS_NONE
-		lbl.add_theme_font_size_override("font_size", 15)
+		lbl.add_theme_font_size_override("font_size", 19)
 		# Severity reads at a glance: calm tan → amber → alarm red.
 		var sev_col := Color(0.78, 0.74, 0.62, 1.0)
 		if sev_int >= 7:
@@ -2032,13 +2032,13 @@ func _render_region(r_id: String) -> void:
 			var ag := Label.new()
 			ag.text = "↳ %s" % p["in_progress_by"]
 			ag.add_theme_color_override("font_color", Color(0.62, 0.86, 0.62, 1))
-			ag.add_theme_font_size_override("font_size", 15)
+			ag.add_theme_font_size_override("font_size", 19)
 			row.add_child(ag)
 		else:
 			var btn := Button.new()
 			btn.text = "dispatch"
 			btn.focus_mode = Control.FOCUS_NONE
-			btn.add_theme_font_size_override("font_size", 15)
+			btn.add_theme_font_size_override("font_size", 19)
 			_style_flat_btn(btn)
 			# Dispatch cap reads as control state, not as a log line
 			# after the click: the button disables at 3/3.
@@ -2059,7 +2059,7 @@ func _render_agent_list() -> void:
 	var header := Label.new()
 	header.text = "AGENT ROSTER"
 	header.add_theme_color_override("font_color", Color(0.92, 0.86, 0.62, 1))
-	header.add_theme_font_size_override("font_size", 15)
+	header.add_theme_font_size_override("font_size", 19)
 	_agent_list_box.add_child(header)
 	# Only show agents the reveal schedule has surfaced.
 	var ids: Array = _visible_agents.duplicate()
@@ -2135,7 +2135,7 @@ func _render_agent_list() -> void:
 		btn.clip_text = true
 		btn.text_overrun_behavior = TextServer.OVERRUN_TRIM_ELLIPSIS
 		btn.focus_mode = Control.FOCUS_NONE
-		btn.add_theme_font_size_override("font_size", 15)
+		btn.add_theme_font_size_override("font_size", 19)
 		btn.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 		var ag_capture: String = String(a_id)
 		btn.pressed.connect(func() -> void: _open_agent_dossier(ag_capture))
@@ -2173,11 +2173,11 @@ func _open_agent_dossier(agent_id: String) -> void:
 	var st: Dictionary = _agent_state[agent_id]
 	var dlg := AcceptDialog.new()
 	dlg.title = "Dossier — %s" % String(a["name"])
-	dlg.min_size = Vector2(560, 480)
+	dlg.min_size = Vector2(900, 620)
 	var scroll := ScrollContainer.new()
 	scroll.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	scroll.size_flags_vertical = Control.SIZE_EXPAND_FILL
-	scroll.custom_minimum_size = Vector2(540, 440)
+	scroll.custom_minimum_size = Vector2(880, 580)
 	dlg.add_child(scroll)
 	var col := VBoxContainer.new()
 	col.add_theme_constant_override("separation", 6)
@@ -2201,7 +2201,7 @@ func _open_agent_dossier(agent_id: String) -> void:
 	hdr_row.add_child(d_bust)
 	var hdr := Label.new()
 	hdr.text = "%s · %s" % [String(a["name"]), "DEMON" if a["class"] == "demon" else "HUMAN"]
-	hdr.add_theme_font_size_override("font_size", 17)
+	hdr.add_theme_font_size_override("font_size", 21)
 	hdr.add_theme_color_override("font_color", Color(0.92, 0.86, 0.62, 1))
 	hdr.vertical_alignment = VERTICAL_ALIGNMENT_CENTER
 	hdr_row.add_child(hdr)
@@ -2212,7 +2212,7 @@ func _open_agent_dossier(agent_id: String) -> void:
 		String(a.get("handle_on_bbs", "—")),
 		_regions.get(String(a.get("home_region", "")), {}).get("name", String(a.get("home_region", "—")))
 	]
-	sub.add_theme_font_size_override("font_size", 15)
+	sub.add_theme_font_size_override("font_size", 19)
 	sub.add_theme_color_override("font_color", Color(0.62, 0.62, 0.62, 1))
 	col.add_child(sub)
 
@@ -2223,7 +2223,7 @@ func _open_agent_dossier(agent_id: String) -> void:
 		var flavor := Label.new()
 		flavor.text = String(a["flavor"])
 		flavor.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
-		flavor.add_theme_font_size_override("font_size", 15)
+		flavor.add_theme_font_size_override("font_size", 19)
 		flavor.add_theme_color_override("font_color", Color(0.86, 0.86, 0.86, 1))
 		col.add_child(flavor)
 		col.add_child(_dossier_rule())
@@ -2231,20 +2231,20 @@ func _open_agent_dossier(agent_id: String) -> void:
 	# Specialty + competence
 	var sp_header := Label.new()
 	sp_header.text = "SPECIALTY"
-	sp_header.add_theme_font_size_override("font_size", 15)
+	sp_header.add_theme_font_size_override("font_size", 19)
 	sp_header.add_theme_color_override("font_color", Color(0.86, 0.34, 0.20, 1))
 	col.add_child(sp_header)
 	var sp := Label.new()
 	var specs: Array = a.get("specialty_problem_types", [])
 	sp.text = (", ".join(specs) if not specs.is_empty() else "—")
 	sp.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
-	sp.add_theme_font_size_override("font_size", 15)
+	sp.add_theme_font_size_override("font_size", 19)
 	col.add_child(sp)
 	var comp := Label.new()
 	comp.text = "competence  %.2fx  ·  speed  %.2fx" % [
 		float(a.get("competence_modifier", 1.0)),
 		float(a.get("dispatch_speed_modifier", 1.0))]
-	comp.add_theme_font_size_override("font_size", 15)
+	comp.add_theme_font_size_override("font_size", 19)
 	comp.add_theme_color_override("font_color", Color(0.62, 0.62, 0.62, 1))
 	col.add_child(comp)
 
@@ -2263,7 +2263,7 @@ func _open_agent_dossier(agent_id: String) -> void:
 	# checkmark; locked traits are dimmed.
 	var ev_header := Label.new()
 	ev_header.text = "EVOLUTION"
-	ev_header.add_theme_font_size_override("font_size", 15)
+	ev_header.add_theme_font_size_override("font_size", 19)
 	ev_header.add_theme_color_override("font_color", Color(0.42, 0.86, 0.62, 1))
 	col.add_child(ev_header)
 	var paths: Array = a.get("evolution_paths", [])
@@ -2277,11 +2277,11 @@ func _open_agent_dossier(agent_id: String) -> void:
 		mark.text = "✓" if is_earned else "○"
 		mark.add_theme_color_override("font_color",
 			Color(0.42, 0.86, 0.62, 1) if is_earned else Color(0.42, 0.42, 0.42, 1))
-		mark.add_theme_font_size_override("font_size", 15)
+		mark.add_theme_font_size_override("font_size", 19)
 		row.add_child(mark)
 		var name_lbl := Label.new()
 		name_lbl.text = trait_str
-		name_lbl.add_theme_font_size_override("font_size", 15)
+		name_lbl.add_theme_font_size_override("font_size", 19)
 		name_lbl.add_theme_color_override("font_color",
 			Color(0.86, 0.86, 0.86, 1) if is_earned else Color(0.55, 0.55, 0.55, 1))
 		name_lbl.size_flags_horizontal = Control.SIZE_EXPAND_FILL
@@ -2298,7 +2298,7 @@ func _open_agent_dossier(agent_id: String) -> void:
 			var desc := Label.new()
 			desc.text = String(catalog[trait_str])
 			desc.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
-			desc.add_theme_font_size_override("font_size", 15)
+			desc.add_theme_font_size_override("font_size", 19)
 			desc.add_theme_color_override("font_color", Color(0.55, 0.55, 0.55, 1))
 			col.add_child(desc)
 
@@ -2319,7 +2319,7 @@ func _open_agent_dossier(agent_id: String) -> void:
 	else:
 		status_text = "available"
 	status_label.text = "STATUS  ·  %s" % status_text
-	status_label.add_theme_font_size_override("font_size", 15)
+	status_label.add_theme_font_size_override("font_size", 19)
 	status_label.add_theme_color_override("font_color", Color(0.86, 0.86, 0.62, 1))
 	col.add_child(status_label)
 
@@ -2331,14 +2331,14 @@ func _open_agent_dossier(agent_id: String) -> void:
 func _render_demon_dossier(col: VBoxContainer, a: Dictionary, st: Dictionary) -> void:
 	var econ_hdr := Label.new()
 	econ_hdr.text = "DEMON ECONOMY"
-	econ_hdr.add_theme_font_size_override("font_size", 15)
+	econ_hdr.add_theme_font_size_override("font_size", 19)
 	econ_hdr.add_theme_color_override("font_color", Color(0.86, 0.34, 0.20, 1))
 	col.add_child(econ_hdr)
 	# Burn line
 	var burn_lbl := Label.new()
 	burn_lbl.text = "burn  %d  ·  +%d per dispatch  ·  dark at 5, gone at 10" % [
 		int(st.get("burn", 0)), int(a.get("burn_per_dispatch", 1))]
-	burn_lbl.add_theme_font_size_override("font_size", 15)
+	burn_lbl.add_theme_font_size_override("font_size", 19)
 	col.add_child(burn_lbl)
 	# Corruption (gated) · tier tag makes the number legible, and
 	# the spillover-chance line tells the player what they're
@@ -2352,20 +2352,20 @@ func _render_demon_dossier(col: VBoxContainer, a: Dictionary, st: Dictionary) ->
 		corr_lbl.text = "%s corruption  %d  ·  %s  ·  resistance: %s" % [
 			d_glyph, corr_val, d_tier.replace("_", " "),
 			String(a.get("corruption_resistance", "—"))]
-		corr_lbl.add_theme_font_size_override("font_size", 15)
+		corr_lbl.add_theme_font_size_override("font_size", 19)
 		corr_lbl.add_theme_color_override("font_color", _demon_tier_color(d_tier))
 		col.add_child(corr_lbl)
 		if d_chance > 0.0:
 			var spill_lbl := Label.new()
 			spill_lbl.text = "  signature-spillover chance on dispatch: %d%%" % int(round(d_chance * 100.0))
-			spill_lbl.add_theme_font_size_override("font_size", 15)
+			spill_lbl.add_theme_font_size_override("font_size", 19)
 			spill_lbl.add_theme_color_override("font_color", Color(0.86, 0.62, 0.42, 1))
 			col.add_child(spill_lbl)
 	# Complexity (gated)
 	if bool(_ui_flags.get("show_complexity_values", false)):
 		var cmplx_lbl := Label.new()
 		cmplx_lbl.text = "complexity  %d  ·  the longer they work, the more they are themselves" % int(st.get("complexity", 0))
-		cmplx_lbl.add_theme_font_size_override("font_size", 15)
+		cmplx_lbl.add_theme_font_size_override("font_size", 19)
 		cmplx_lbl.add_theme_color_override("font_color", Color(0.86, 0.62, 0.96, 1))
 		col.add_child(cmplx_lbl)
 	# Signature failure
@@ -2373,7 +2373,7 @@ func _render_demon_dossier(col: VBoxContainer, a: Dictionary, st: Dictionary) ->
 		var fail := Label.new()
 		fail.text = "signature failure: " + String(a["signature_failure"])
 		fail.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
-		fail.add_theme_font_size_override("font_size", 15)
+		fail.add_theme_font_size_override("font_size", 19)
 		fail.add_theme_color_override("font_color", Color(0.62, 0.42, 0.42, 1))
 		col.add_child(fail)
 	# Region restrictions
@@ -2384,7 +2384,7 @@ func _render_demon_dossier(col: VBoxContainer, a: Dictionary, st: Dictionary) ->
 		for rid in restrictions:
 			names.append(String(_regions.get(rid, {}).get("name", rid)))
 		rest_lbl.text = "region-locked to: " + ", ".join(names)
-		rest_lbl.add_theme_font_size_override("font_size", 15)
+		rest_lbl.add_theme_font_size_override("font_size", 19)
 		rest_lbl.add_theme_color_override("font_color", Color(0.62, 0.62, 0.62, 1))
 		col.add_child(rest_lbl)
 
@@ -2392,7 +2392,7 @@ func _render_demon_dossier(col: VBoxContainer, a: Dictionary, st: Dictionary) ->
 func _render_human_dossier(col: VBoxContainer, a: Dictionary, st: Dictionary) -> void:
 	var econ_hdr := Label.new()
 	econ_hdr.text = "HUMAN COSTS"
-	econ_hdr.add_theme_font_size_override("font_size", 15)
+	econ_hdr.add_theme_font_size_override("font_size", 19)
 	econ_hdr.add_theme_color_override("font_color", Color(0.86, 0.34, 0.20, 1))
 	col.add_child(econ_hdr)
 	if bool(_ui_flags.get("show_obligation_values", false)):
@@ -2401,7 +2401,7 @@ func _render_human_dossier(col: VBoxContainer, a: Dictionary, st: Dictionary) ->
 		var cur: int = int(st.get("obligation", 0))
 		obl_lbl.text = "obligation  %d / %d  ·  +%d per dispatch" % [
 			cur, cap, int(a.get("obligation_per_dispatch", 1))]
-		obl_lbl.add_theme_font_size_override("font_size", 15)
+		obl_lbl.add_theme_font_size_override("font_size", 19)
 		var col_color := Color(0.86, 0.86, 0.62, 1)
 		if cap > 0 and float(cur) / float(cap) >= 0.6:
 			col_color = Color(0.96, 0.62, 0.42, 1)
@@ -2412,7 +2412,7 @@ func _render_human_dossier(col: VBoxContainer, a: Dictionary, st: Dictionary) ->
 	# Time-at-home cost
 	var th_lbl := Label.new()
 	th_lbl.text = "time-at-home cost  %.1f days per dispatch" % float(a.get("time_at_home_cost_days", 1.0))
-	th_lbl.add_theme_font_size_override("font_size", 15)
+	th_lbl.add_theme_font_size_override("font_size", 19)
 	th_lbl.add_theme_color_override("font_color", Color(0.62, 0.62, 0.62, 1))
 	col.add_child(th_lbl)
 	# Life cost thresholds
@@ -2420,7 +2420,7 @@ func _render_human_dossier(col: VBoxContainer, a: Dictionary, st: Dictionary) ->
 	if not life.is_empty():
 		var life_hdr := Label.new()
 		life_hdr.text = "LIFE COSTS"
-		life_hdr.add_theme_font_size_override("font_size", 15)
+		life_hdr.add_theme_font_size_override("font_size", 19)
 		life_hdr.add_theme_color_override("font_color", Color(0.86, 0.62, 0.42, 1))
 		col.add_child(life_hdr)
 		var keys: Array = life.keys()
@@ -2435,7 +2435,7 @@ func _render_human_dossier(col: VBoxContainer, a: Dictionary, st: Dictionary) ->
 				n,
 				String(life[k])]
 			line.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
-			line.add_theme_font_size_override("font_size", 15)
+			line.add_theme_font_size_override("font_size", 19)
 			line.add_theme_color_override("font_color",
 				Color(0.96, 0.62, 0.42, 1) if crossed else Color(0.62, 0.62, 0.62, 1))
 			col.add_child(line)
@@ -2453,11 +2453,11 @@ func _open_problem_dossier(region_id: String, problem_index: int) -> void:
 	var region_name: String = String(_regions.get(region_id, {}).get("name", region_id))
 	var dlg := AcceptDialog.new()
 	dlg.title = "Problem — %s" % String(p["title"])
-	dlg.min_size = Vector2(560, 440)
+	dlg.min_size = Vector2(900, 580)
 	var scroll := ScrollContainer.new()
 	scroll.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	scroll.size_flags_vertical = Control.SIZE_EXPAND_FILL
-	scroll.custom_minimum_size = Vector2(540, 400)
+	scroll.custom_minimum_size = Vector2(880, 540)
 	dlg.add_child(scroll)
 	var col := VBoxContainer.new()
 	col.add_theme_constant_override("separation", 6)
@@ -2477,12 +2477,12 @@ func _open_problem_dossier(region_id: String, problem_index: int) -> void:
 		col.add_child(art_tr)
 	var hdr := Label.new()
 	hdr.text = String(p["title"])
-	hdr.add_theme_font_size_override("font_size", 17)
+	hdr.add_theme_font_size_override("font_size", 21)
 	hdr.add_theme_color_override("font_color", Color(0.92, 0.86, 0.62, 1))
 	col.add_child(hdr)
 	var sub := Label.new()
 	sub.text = "in %s  ·  age %d days" % [region_name, _day - int(p.get("day_spawned", _day))]
-	sub.add_theme_font_size_override("font_size", 15)
+	sub.add_theme_font_size_override("font_size", 19)
 	sub.add_theme_color_override("font_color", Color(0.62, 0.62, 0.62, 1))
 	col.add_child(sub)
 	col.add_child(_dossier_rule())
@@ -2490,7 +2490,7 @@ func _open_problem_dossier(region_id: String, problem_index: int) -> void:
 		var flavor := Label.new()
 		flavor.text = String(template["flavor"])
 		flavor.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
-		flavor.add_theme_font_size_override("font_size", 15)
+		flavor.add_theme_font_size_override("font_size", 19)
 		flavor.add_theme_color_override("font_color", Color(0.86, 0.86, 0.86, 1))
 		col.add_child(flavor)
 		col.add_child(_dossier_rule())
@@ -2499,25 +2499,25 @@ func _open_problem_dossier(region_id: String, problem_index: int) -> void:
 	var tick: float = float(template.get("tick_per_day", 0.0))
 	var econ_header := Label.new()
 	econ_header.text = "STATE"
-	econ_header.add_theme_font_size_override("font_size", 15)
+	econ_header.add_theme_font_size_override("font_size", 19)
 	econ_header.add_theme_color_override("font_color", Color(0.86, 0.34, 0.20, 1))
 	col.add_child(econ_header)
 	var econ := Label.new()
 	econ.text = "severity %.1f  ·  effort %.1f  ·  tick +%.2f/day" % [sev, eff, tick]
-	econ.add_theme_font_size_override("font_size", 15)
+	econ.add_theme_font_size_override("font_size", 19)
 	col.add_child(econ)
 	if String(p.get("in_progress_by", "")) != "":
 		var ip := Label.new()
 		ip.text = "in progress by %s" % String(p["in_progress_by"])
 		ip.add_theme_color_override("font_color", Color(0.62, 0.86, 0.62, 1))
-		ip.add_theme_font_size_override("font_size", 15)
+		ip.add_theme_font_size_override("font_size", 19)
 		col.add_child(ip)
 	col.add_child(_dossier_rule())
 	var thresh: Array = template.get("if_unresolved_at_severity_7", [])
 	if not thresh.is_empty():
 		var th_header := Label.new()
 		th_header.text = "IF IT CROSSES SEVERITY 7"
-		th_header.add_theme_font_size_override("font_size", 15)
+		th_header.add_theme_font_size_override("font_size", 19)
 		th_header.add_theme_color_override("font_color", Color(0.96, 0.62, 0.42, 1))
 		col.add_child(th_header)
 		for ef in thresh:
@@ -2529,7 +2529,7 @@ func _open_problem_dossier(region_id: String, problem_index: int) -> void:
 			else:
 				line.text = "· %s" % String(ed.get("kind", "")).replace("_", " ")
 			line.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
-			line.add_theme_font_size_override("font_size", 15)
+			line.add_theme_font_size_override("font_size", 19)
 			line.add_theme_color_override("font_color", Color(0.86, 0.74, 0.62, 1))
 			col.add_child(line)
 		col.add_child(_dossier_rule())
@@ -2540,13 +2540,13 @@ func _open_problem_dossier(region_id: String, problem_index: int) -> void:
 	if shape_hint != "":
 		var sh_header := Label.new()
 		sh_header.text = "WHAT IT WANTS"
-		sh_header.add_theme_font_size_override("font_size", 15)
+		sh_header.add_theme_font_size_override("font_size", 19)
 		sh_header.add_theme_color_override("font_color", Color(0.42, 0.86, 0.62, 1))
 		col.add_child(sh_header)
 		var sh := Label.new()
 		sh.text = shape_hint
 		sh.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
-		sh.add_theme_font_size_override("font_size", 15)
+		sh.add_theme_font_size_override("font_size", 19)
 		sh.add_theme_color_override("font_color", Color(0.86, 0.86, 0.86, 1))
 		col.add_child(sh)
 	# Primary action (audit): dispatch straight from the dossier —
@@ -2606,7 +2606,7 @@ func _render_todays_dispatches() -> void:
 		var lbl := Label.new()
 		lbl.text = "%s → %s" % [String(a["name"]),
 			String(_regions.get(String(d.get("region_id", "")), {}).get("name", "?"))]
-		lbl.add_theme_font_size_override("font_size", 15)
+		lbl.add_theme_font_size_override("font_size", 19)
 		lbl.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 		row.add_child(lbl)
 		var btn := Button.new()
@@ -2614,7 +2614,7 @@ func _render_todays_dispatches() -> void:
 		btn.tooltip_text = "Revoke this dispatch"
 		btn.focus_mode = Control.FOCUS_NONE
 		btn.custom_minimum_size = Vector2(28, 22)
-		btn.add_theme_font_size_override("font_size", 15)
+		btn.add_theme_font_size_override("font_size", 19)
 		_style_flat_btn(btn)
 		var d_capture: Dictionary = d
 		btn.pressed.connect(func() -> void: _revoke_dispatch(d_capture))
@@ -2813,11 +2813,11 @@ func _open_dispatch_picker(region_id: String, problem_index: int) -> void:
 	var p: Dictionary = (_region_state[region_id]["active_problems"] as Array)[problem_index]
 	var dlg := AcceptDialog.new()
 	dlg.title = "Dispatch — %s" % p["title"]
-	dlg.min_size = Vector2(560, 420)
+	dlg.min_size = Vector2(900, 540)
 	var scroll := ScrollContainer.new()
 	scroll.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	scroll.size_flags_vertical = Control.SIZE_EXPAND_FILL
-	scroll.custom_minimum_size = Vector2(540, 380)
+	scroll.custom_minimum_size = Vector2(880, 500)
 	dlg.add_child(scroll)
 	var vbox := VBoxContainer.new()
 	vbox.add_theme_constant_override("separation", 6)
@@ -2841,7 +2841,7 @@ func _open_dispatch_picker(region_id: String, problem_index: int) -> void:
 		p["title"], _regions[region_id]["name"],
 		float(p["severity"]), float(p["effort_remaining"])]
 	hint.add_theme_color_override("font_color", Color(0.92, 0.86, 0.62, 1))
-	hint.add_theme_font_size_override("font_size", 15)
+	hint.add_theme_font_size_override("font_size", 19)
 	vbox.add_child(hint)
 	# Ideal handlers listed by the template — small caption that
 	# hints which agents the writer expected to land this problem.
@@ -2849,7 +2849,7 @@ func _open_dispatch_picker(region_id: String, problem_index: int) -> void:
 	if not ideal.is_empty():
 		var hint2 := Label.new()
 		hint2.text = "ideal handlers: " + ", ".join(ideal)
-		hint2.add_theme_font_size_override("font_size", 15)
+		hint2.add_theme_font_size_override("font_size", 19)
 		hint2.add_theme_color_override("font_color", Color(0.62, 0.62, 0.62, 1))
 		vbox.add_child(hint2)
 	var any_eligible := false
@@ -2920,7 +2920,7 @@ func _make_dispatch_preview_row(agent_id: String, region_id: String,
 		"D" if a["class"] == "demon" else "H",
 		String(a["name"]),
 		"  ★ specialty" if specialty else ""]
-	name_lbl.add_theme_font_size_override("font_size", 15)
+	name_lbl.add_theme_font_size_override("font_size", 19)
 	if specialty:
 		name_lbl.add_theme_color_override("font_color", Color(0.96, 0.86, 0.42, 1))
 	lcol.add_child(name_lbl)
@@ -2949,7 +2949,7 @@ func _make_dispatch_preview_row(agent_id: String, region_id: String,
 				detail_parts.append("crosses %d: %s" % [n, String(life[k])])
 	var detail_lbl := Label.new()
 	detail_lbl.text = "  " + "  ·  ".join(detail_parts)
-	detail_lbl.add_theme_font_size_override("font_size", 15)
+	detail_lbl.add_theme_font_size_override("font_size", 19)
 	detail_lbl.add_theme_color_override("font_color", Color(0.72, 0.72, 0.72, 1))
 	detail_lbl.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 	lcol.add_child(detail_lbl)
@@ -2982,7 +2982,7 @@ func _make_dispatch_preview_row(agent_id: String, region_id: String,
 			String(pair_hint.get("partner_name", "")),
 			mod_tag,
 			String(pair_hint.get("log", ""))]
-		p_lbl.add_theme_font_size_override("font_size", 15)
+		p_lbl.add_theme_font_size_override("font_size", 19)
 		p_lbl.add_theme_color_override("font_color", p_color)
 		p_lbl.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 		lcol.add_child(p_lbl)
@@ -3008,7 +3008,7 @@ func _make_dispatch_preview_row(agent_id: String, region_id: String,
 	pair_btn.text = "Pair…"
 	pair_btn.focus_mode = Control.FOCUS_NONE
 	pair_btn.custom_minimum_size = Vector2(96, 26)
-	pair_btn.add_theme_font_size_override("font_size", 15)
+	pair_btn.add_theme_font_size_override("font_size", 19)
 	# Why-not tooltip (audit): the disabled state names its actual
 	# reason — slot math vs partner availability — at build time.
 	var pair_no_slot: bool = _dispatches_this_day + 2 > MAX_DISPATCHES_PER_DAY
@@ -3093,13 +3093,13 @@ func _make_ineligible_agent_row(agent_id: String, reason: String) -> Control:
 	var name_lbl := Label.new()
 	name_lbl.text = "[%s]  %s" % [
 		"D" if a["class"] == "demon" else "H", String(a["name"])]
-	name_lbl.add_theme_font_size_override("font_size", 15)
+	name_lbl.add_theme_font_size_override("font_size", 19)
 	name_lbl.add_theme_color_override("font_color", Color(0.48, 0.50, 0.54, 1))
 	lcol.add_child(name_lbl)
 	var why := Label.new()
 	why.text = "  " + reason
 	why.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
-	why.add_theme_font_size_override("font_size", 15)
+	why.add_theme_font_size_override("font_size", 19)
 	why.add_theme_color_override("font_color", Color(0.55, 0.50, 0.42, 1))
 	lcol.add_child(why)
 	return panel
@@ -3137,11 +3137,11 @@ func _open_pair_partner_picker(a1_id: String, region_id: String,
 		problem_index: int, parent_dlg: AcceptDialog) -> void:
 	var dlg := AcceptDialog.new()
 	dlg.title = "Pair dispatch — who rides with %s?" % String(_agents[a1_id].get("name", a1_id))
-	dlg.min_size = Vector2(560, 380)
+	dlg.min_size = Vector2(900, 520)
 	var scroll := ScrollContainer.new()
 	scroll.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	scroll.size_flags_vertical = Control.SIZE_EXPAND_FILL
-	scroll.custom_minimum_size = Vector2(540, 340)
+	scroll.custom_minimum_size = Vector2(880, 460)
 	dlg.add_child(scroll)
 	var vbox := VBoxContainer.new()
 	vbox.add_theme_constant_override("separation", 6)
@@ -3149,7 +3149,7 @@ func _open_pair_partner_picker(a1_id: String, region_id: String,
 	scroll.add_child(vbox)
 	var note := Label.new()
 	note.text = "A pair burns two of today's dispatch slots. Second pair of hands works at 75%."
-	note.add_theme_font_size_override("font_size", 15)
+	note.add_theme_font_size_override("font_size", 19)
 	note.add_theme_color_override("font_color", Color(0.62, 0.62, 0.62, 1))
 	vbox.add_child(note)
 	for b_id in _eligible_pair_partners(a1_id, region_id):
@@ -3167,19 +3167,19 @@ func _open_pair_partner_picker(a1_id: String, region_id: String,
 			String(b.get("name", b_id)),
 			float(b.get("competence_modifier", 1.0)),
 			("  [" + "  ".join(mods) + "]") if not mods.is_empty() else ""]
-		lbl.add_theme_font_size_override("font_size", 15)
+		lbl.add_theme_font_size_override("font_size", 19)
 		lbl.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 		row.add_child(lbl)
 		if _pair_is_ruth_refusal(a1_id, String(b_id)):
 			var no_lbl := Label.new()
 			no_lbl.text = "the archive has a policy"
-			no_lbl.add_theme_font_size_override("font_size", 15)
+			no_lbl.add_theme_font_size_override("font_size", 19)
 			no_lbl.add_theme_color_override("font_color", Color(0.72, 0.58, 0.58, 1))
 			row.add_child(no_lbl)
 			var no_btn := Button.new()
 			no_btn.text = "Ask anyway"
 			no_btn.focus_mode = Control.FOCUS_NONE
-			no_btn.add_theme_font_size_override("font_size", 15)
+			no_btn.add_theme_font_size_override("font_size", 19)
 			no_btn.pressed.connect(func() -> void:
 				_log("[color=#c8a8a8][i]%s[/i][/color]" % String(_pair_lines_def.get("ruth_refusal", "")))
 				_render_log()
@@ -3191,7 +3191,7 @@ func _open_pair_partner_picker(a1_id: String, region_id: String,
 		var go := Button.new()
 		go.text = "Send both"
 		go.focus_mode = Control.FOCUS_NONE
-		go.add_theme_font_size_override("font_size", 15)
+		go.add_theme_font_size_override("font_size", 19)
 		go.pressed.connect(func() -> void:
 			_dispatch_pair(a1_id, b_capture, region_id, problem_index)
 			dlg.hide()
@@ -3887,11 +3887,11 @@ func _all_earned_interludes() -> Array:
 func _open_interlude_shelf() -> void:
 	var dlg := AcceptDialog.new()
 	dlg.title = "Interlude Shelf"
-	dlg.min_size = Vector2(680, 540)
+	dlg.min_size = Vector2(960, 660)
 	var scroll := ScrollContainer.new()
 	scroll.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	scroll.size_flags_vertical = Control.SIZE_EXPAND_FILL
-	scroll.custom_minimum_size = Vector2(660, 500)
+	scroll.custom_minimum_size = Vector2(940, 620)
 	dlg.add_child(scroll)
 	var col := VBoxContainer.new()
 	col.add_theme_constant_override("separation", 14)
@@ -3907,7 +3907,7 @@ func _open_interlude_shelf() -> void:
 		var summary := Label.new()
 		summary.text = "%d entries on the shelf." % entries.size()
 		summary.add_theme_color_override("font_color", Color(0.92, 0.86, 0.62, 1))
-		summary.add_theme_font_size_override("font_size", 15)
+		summary.add_theme_font_size_override("font_size", 19)
 		col.add_child(summary)
 		for entry in entries:
 			var rule := ColorRect.new()
@@ -3916,7 +3916,7 @@ func _open_interlude_shelf() -> void:
 			col.add_child(rule)
 			var title := Label.new()
 			title.text = String(entry["title"])
-			title.add_theme_font_size_override("font_size", 16)
+			title.add_theme_font_size_override("font_size", 20)
 			var section: String = String(entry.get("section", ""))
 			var title_color := Color(0.92, 0.86, 0.62, 1)
 			if section == "dean": title_color = Color(0.78, 0.62, 0.96, 1)
@@ -3930,7 +3930,7 @@ func _open_interlude_shelf() -> void:
 			var body := Label.new()
 			body.text = String(entry["flavor"])
 			body.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
-			body.add_theme_font_size_override("font_size", 15)
+			body.add_theme_font_size_override("font_size", 19)
 			body.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 			col.add_child(body)
 	# BBS artifact section. Folded in below the interludes; the
@@ -3944,7 +3944,7 @@ func _open_interlude_shelf() -> void:
 		col.add_child(spacer)
 		var heading := Label.new()
 		heading.text = "BBS · UNLOCKED ARTIFACTS"
-		heading.add_theme_font_size_override("font_size", 15)
+		heading.add_theme_font_size_override("font_size", 19)
 		heading.add_theme_color_override("font_color", Color(0.86, 0.78, 0.42, 1))
 		col.add_child(heading)
 		for aid in _unlocked_artifacts:
@@ -3954,7 +3954,7 @@ func _open_interlude_shelf() -> void:
 			col.add_child(arule)
 			var atitle := Label.new()
 			atitle.text = String(aid)
-			atitle.add_theme_font_size_override("font_size", 15)
+			atitle.add_theme_font_size_override("font_size", 19)
 			atitle.add_theme_color_override("font_color", Color(0.86, 0.78, 0.42, 1))
 			col.add_child(atitle)
 	dlg.add_to_group("ui")  # F4 sweep catches modals
@@ -3992,12 +3992,12 @@ func _open_stage_modal(d: Dictionary) -> void:
 	var dlg := AcceptDialog.new()
 	dlg.title = "%s · %s · stage %d/%d" % [
 		String(p_ref["title"]), agent_name, stage_index + 1, stages.size()]
-	dlg.min_size = Vector2(640, 480)
+	dlg.min_size = Vector2(920, 600)
 	dlg.get_ok_button().visible = false
 	var scroll := ScrollContainer.new()
 	scroll.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	scroll.size_flags_vertical = Control.SIZE_EXPAND_FILL
-	scroll.custom_minimum_size = Vector2(620, 440)
+	scroll.custom_minimum_size = Vector2(900, 560)
 	dlg.add_child(scroll)
 	var col := VBoxContainer.new()
 	col.add_theme_constant_override("separation", 10)
@@ -4005,13 +4005,13 @@ func _open_stage_modal(d: Dictionary) -> void:
 	scroll.add_child(col)
 	var hdr := Label.new()
 	hdr.text = String(stage.get("title", "stage"))
-	hdr.add_theme_font_size_override("font_size", 17)
+	hdr.add_theme_font_size_override("font_size", 21)
 	hdr.add_theme_color_override("font_color", Color(0.96, 0.86, 0.62, 1))
 	col.add_child(hdr)
 	var sub := Label.new()
 	sub.text = "%s is at %s · day %d" % [agent_name,
 		String(_regions.get(region_id, {}).get("name", region_id)), _day]
-	sub.add_theme_font_size_override("font_size", 15)
+	sub.add_theme_font_size_override("font_size", 19)
 	sub.add_theme_color_override("font_color", Color(0.62, 0.62, 0.62, 1))
 	col.add_child(sub)
 	col.add_child(_dossier_rule())
@@ -4028,7 +4028,7 @@ func _open_stage_modal(d: Dictionary) -> void:
 	var body := Label.new()
 	body.text = body_text
 	body.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
-	body.add_theme_font_size_override("font_size", 15)
+	body.add_theme_font_size_override("font_size", 19)
 	body.add_theme_color_override("font_color", Color(0.86, 0.86, 0.86, 1))
 	col.add_child(body)
 	col.add_child(_dossier_rule())
@@ -4051,7 +4051,7 @@ func _open_stage_modal(d: Dictionary) -> void:
 			btn.text = "  🔒  " + btn.text
 		btn.alignment = HORIZONTAL_ALIGNMENT_LEFT
 		btn.size_flags_horizontal = Control.SIZE_EXPAND_FILL
-		btn.add_theme_font_size_override("font_size", 15)
+		btn.add_theme_font_size_override("font_size", 19)
 		btn.add_theme_color_override("font_color",
 			Color(0.42, 0.48, 0.42, 1) if locked else Color(0.86, 0.96, 0.74, 1))
 		btn.disabled = locked
@@ -4060,7 +4060,7 @@ func _open_stage_modal(d: Dictionary) -> void:
 			var lock_lbl := Label.new()
 			lock_lbl.text = "        locked · needs to have read thread %s on the BBS" % requires_thread
 			lock_lbl.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
-			lock_lbl.add_theme_font_size_override("font_size", 15)
+			lock_lbl.add_theme_font_size_override("font_size", 19)
 			lock_lbl.add_theme_color_override("font_color", Color(0.62, 0.50, 0.32, 1))
 			col.add_child(lock_lbl)
 		var summary: String = String(choice.get("summary", ""))
@@ -4068,7 +4068,7 @@ func _open_stage_modal(d: Dictionary) -> void:
 			var sm := Label.new()
 			sm.text = "        " + summary
 			sm.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
-			sm.add_theme_font_size_override("font_size", 15)
+			sm.add_theme_font_size_override("font_size", 19)
 			sm.add_theme_color_override("font_color", Color(0.62, 0.78, 0.62, 1))
 			col.add_child(sm)
 		var d_capture: Dictionary = d
@@ -4085,13 +4085,13 @@ func _open_stage_modal(d: Dictionary) -> void:
 		hold_btn.text = "Hold position"
 		hold_btn.alignment = HORIZONTAL_ALIGNMENT_LEFT
 		hold_btn.size_flags_horizontal = Control.SIZE_EXPAND_FILL
-		hold_btn.add_theme_font_size_override("font_size", 15)
+		hold_btn.add_theme_font_size_override("font_size", 19)
 		hold_btn.add_theme_color_override("font_color", Color(0.86, 0.96, 0.74, 1))
 		col.add_child(hold_btn)
 		var hold_note := Label.new()
 		hold_note.text = "        wait a day · nothing here is open to %s yet" % agent_name
 		hold_note.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
-		hold_note.add_theme_font_size_override("font_size", 15)
+		hold_note.add_theme_font_size_override("font_size", 19)
 		hold_note.add_theme_color_override("font_color", Color(0.62, 0.78, 0.62, 1))
 		col.add_child(hold_note)
 		var d_hold: Dictionary = d
@@ -4158,12 +4158,12 @@ func _show_summer_intro() -> void:
 	_flags["summer_intro_shown"] = true
 	var dlg := AcceptDialog.new()
 	dlg.title = "Memorial Day · 2025"
-	dlg.min_size = Vector2(640, 520)
+	dlg.min_size = Vector2(920, 640)
 	dlg.get_ok_button().text = "begin the summer"
 	var scroll := ScrollContainer.new()
 	scroll.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	scroll.size_flags_vertical = Control.SIZE_EXPAND_FILL
-	scroll.custom_minimum_size = Vector2(620, 480)
+	scroll.custom_minimum_size = Vector2(900, 600)
 	dlg.add_child(scroll)
 	var col := VBoxContainer.new()
 	col.add_theme_constant_override("separation", 10)
@@ -4172,13 +4172,13 @@ func _show_summer_intro() -> void:
 
 	var hdr := Label.new()
 	hdr.text = "the cathedral office · Monday, May 27"
-	hdr.add_theme_font_size_override("font_size", 15)
+	hdr.add_theme_font_size_override("font_size", 19)
 	hdr.add_theme_color_override("font_color", Color(0.62, 0.62, 0.62, 1))
 	col.add_child(hdr)
 
 	var title := Label.new()
 	title.text = "what's on the desk this summer"
-	title.add_theme_font_size_override("font_size", 20)
+	title.add_theme_font_size_override("font_size", 24)
 	title.add_theme_color_override("font_color", Color(0.96, 0.86, 0.62, 1))
 	col.add_child(title)
 
@@ -4199,7 +4199,7 @@ func _show_summer_intro() -> void:
 		p.bbcode_enabled = true
 		p.fit_content = true
 		p.text = p_text
-		p.add_theme_font_size_override("normal_font_size", 15)
+		p.add_theme_font_size_override("normal_font_size", 19)
 		p.add_theme_color_override("default_color", Color(0.86, 0.86, 0.86, 1))
 		p.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 		col.add_child(p)
@@ -4208,7 +4208,7 @@ func _show_summer_intro() -> void:
 
 	var coda := Label.new()
 	coda.text = "press [begin the summer] to open the office."
-	coda.add_theme_font_size_override("font_size", 15)
+	coda.add_theme_font_size_override("font_size", 19)
 	coda.add_theme_color_override("font_color", Color(0.62, 0.78, 0.62, 1))
 	col.add_child(coda)
 
@@ -4282,11 +4282,11 @@ func _show_labor_day_finale() -> void:
 	_audio_play_bgm_track(_CP_BGM_LABOR_DAY)
 	var dlg := AcceptDialog.new()
 	dlg.title = "Labor Day · September 1, 2025"
-	dlg.min_size = Vector2(820, 720)
+	dlg.min_size = Vector2(1060, 740)
 	var scroll := ScrollContainer.new()
 	scroll.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	scroll.size_flags_vertical = Control.SIZE_EXPAND_FILL
-	scroll.custom_minimum_size = Vector2(800, 680)
+	scroll.custom_minimum_size = Vector2(1040, 700)
 	dlg.add_child(scroll)
 	var col := VBoxContainer.new()
 	col.add_theme_constant_override("separation", 12)
@@ -4295,14 +4295,14 @@ func _show_labor_day_finale() -> void:
 	# Header
 	var title := Label.new()
 	title.text = "The summer's end."
-	title.add_theme_font_size_override("font_size", 22)
+	title.add_theme_font_size_override("font_size", 26)
 	title.add_theme_color_override("font_color", Color(0.96, 0.86, 0.62, 1))
 	col.add_child(title)
 	# The cookout vignette
 	var vignette := Label.new()
 	vignette.text = _labor_day_cookout_vignette()
 	vignette.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
-	vignette.add_theme_font_size_override("font_size", 15)
+	vignette.add_theme_font_size_override("font_size", 19)
 	vignette.add_theme_color_override("font_color", Color(0.86, 0.86, 0.86, 1))
 	col.add_child(vignette)
 	# Rule
@@ -4313,7 +4313,7 @@ func _show_labor_day_finale() -> void:
 	# Closing lines from each canon human
 	var lines_heading := Label.new()
 	lines_heading.text = "Closing lines"
-	lines_heading.add_theme_font_size_override("font_size", 17)
+	lines_heading.add_theme_font_size_override("font_size", 21)
 	lines_heading.add_theme_color_override("font_color", Color(0.86, 0.96, 0.62, 1))
 	col.add_child(lines_heading)
 	for canonical in ["frasier_temple", "the_surviving_son", "john_frank", "mackenzie", "elicia_duchane"]:
@@ -4322,7 +4322,7 @@ func _show_labor_day_finale() -> void:
 		if line.text == "":
 			continue
 		line.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
-		line.add_theme_font_size_override("font_size", 15)
+		line.add_theme_font_size_override("font_size", 19)
 		line.add_theme_color_override("font_color", Color(0.74, 0.84, 0.96, 1))
 		col.add_child(line)
 	# Rule
@@ -4333,26 +4333,26 @@ func _show_labor_day_finale() -> void:
 	# Shelf summary
 	var shelf_heading := Label.new()
 	shelf_heading.text = "On the shelf · %d entries" % (_interlude_shelf.size() + _dean_interludes_earned.size())
-	shelf_heading.add_theme_font_size_override("font_size", 17)
+	shelf_heading.add_theme_font_size_override("font_size", 21)
 	shelf_heading.add_theme_color_override("font_color", Color(0.86, 0.96, 0.62, 1))
 	col.add_child(shelf_heading)
 	for entry in _all_earned_interludes():
 		var ent_lbl := Label.new()
 		ent_lbl.text = "  · %s" % String(entry["title"])
-		ent_lbl.add_theme_font_size_override("font_size", 15)
+		ent_lbl.add_theme_font_size_override("font_size", 19)
 		ent_lbl.add_theme_color_override("font_color", Color(0.92, 0.86, 0.62, 1))
 		col.add_child(ent_lbl)
 	# Artifacts
 	if not _unlocked_artifacts.is_empty():
 		var art_heading := Label.new()
 		art_heading.text = "Artifacts · %d unlocked" % _unlocked_artifacts.size()
-		art_heading.add_theme_font_size_override("font_size", 16)
+		art_heading.add_theme_font_size_override("font_size", 20)
 		art_heading.add_theme_color_override("font_color", Color(0.86, 0.78, 0.42, 1))
 		col.add_child(art_heading)
 		for aid in _unlocked_artifacts:
 			var alabel := Label.new()
 			alabel.text = "  · %s" % String(aid)
-			alabel.add_theme_font_size_override("font_size", 15)
+			alabel.add_theme_font_size_override("font_size", 19)
 			alabel.add_theme_color_override("font_color", Color(0.86, 0.78, 0.42, 1))
 			col.add_child(alabel)
 	# Branch id (small, at the bottom — for the record)
@@ -4362,7 +4362,7 @@ func _show_labor_day_finale() -> void:
 	col.add_child(rule3)
 	var branch_lbl := Label.new()
 	branch_lbl.text = "branch: %s" % _compute_labor_day_branch_id()
-	branch_lbl.add_theme_font_size_override("font_size", 15)
+	branch_lbl.add_theme_font_size_override("font_size", 19)
 	branch_lbl.add_theme_color_override("font_color", Color(0.42, 0.42, 0.42, 1))
 	col.add_child(branch_lbl)
 	# Wire close → show outro
@@ -4375,14 +4375,14 @@ func _show_labor_day_finale() -> void:
 func _show_post_summer_outro() -> void:
 	var dlg := AcceptDialog.new()
 	dlg.title = "After the summer"
-	dlg.min_size = Vector2(620, 420)
+	dlg.min_size = Vector2(900, 540)
 	var col := VBoxContainer.new()
 	col.add_theme_constant_override("separation", 10)
 	col.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	dlg.add_child(col)
 	var heading := Label.new()
 	heading.text = "What you carried out of the summer"
-	heading.add_theme_font_size_override("font_size", 17)
+	heading.add_theme_font_size_override("font_size", 21)
 	heading.add_theme_color_override("font_color", Color(0.96, 0.86, 0.62, 1))
 	col.add_child(heading)
 	var items: Array = []
@@ -4448,7 +4448,7 @@ func _show_post_summer_outro() -> void:
 		var lbl := Label.new()
 		lbl.text = s
 		lbl.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
-		lbl.add_theme_font_size_override("font_size", 15)
+		lbl.add_theme_font_size_override("font_size", 19)
 		lbl.add_theme_color_override("font_color", Color(0.86, 0.86, 0.86, 1))
 		col.add_child(lbl)
 	var spacer := Control.new()
@@ -4457,7 +4457,7 @@ func _show_post_summer_outro() -> void:
 	var coda := Label.new()
 	coda.text = "The cathedral office is locked. The river is the river. The summer was the summer."
 	coda.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
-	coda.add_theme_font_size_override("font_size", 15)
+	coda.add_theme_font_size_override("font_size", 19)
 	coda.add_theme_color_override("font_color", Color(0.62, 0.78, 0.62, 1))
 	col.add_child(coda)
 	dlg.add_to_group("ui")  # F4 sweep catches modals
@@ -5715,7 +5715,7 @@ func _show_spike_event(ev: Dictionary) -> void:
 	if bank: bank.play("menu_open", 0.7)
 	var dlg := AcceptDialog.new()
 	dlg.title = "COMMUNITY PLANNED · an interruption"
-	dlg.min_size = Vector2(560, 320)
+	dlg.min_size = Vector2(880, 440)
 	dlg.get_ok_button().visible = false   # choose · there is no OK
 	var col := VBoxContainer.new()
 	col.add_theme_constant_override("separation", 10)
@@ -5723,14 +5723,14 @@ func _show_spike_event(ev: Dictionary) -> void:
 	dlg.add_child(col)
 	var hdr := Label.new()
 	hdr.text = "· %s ·" % String(ev.get("title", ""))
-	hdr.add_theme_font_size_override("font_size", 17)
+	hdr.add_theme_font_size_override("font_size", 21)
 	hdr.add_theme_color_override("font_color", Color(0.96, 0.86, 0.62, 1))
 	col.add_child(hdr)
 	var body := Label.new()
 	body.text = String(ev.get("body", ""))
 	body.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 	body.custom_minimum_size = Vector2(520, 0)
-	body.add_theme_font_size_override("font_size", 16)
+	body.add_theme_font_size_override("font_size", 20)
 	body.add_theme_color_override("font_color", Color(0.84, 0.86, 0.84, 1))
 	col.add_child(body)
 	for ch_v in ev.get("choices", []):
@@ -5739,7 +5739,7 @@ func _show_spike_event(ev: Dictionary) -> void:
 		btn.text = "  %s  " % String(ch.get("label", ""))
 		btn.alignment = HORIZONTAL_ALIGNMENT_LEFT
 		btn.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
-		btn.add_theme_font_size_override("font_size", 15)
+		btn.add_theme_font_size_override("font_size", 19)
 		var effects: Dictionary = ch.get("effects", {})
 		btn.pressed.connect(func() -> void:
 			dlg.queue_free()

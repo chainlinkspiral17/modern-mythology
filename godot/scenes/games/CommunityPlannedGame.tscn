@@ -35,19 +35,19 @@ theme_override_constants/separation = 16
 layout_mode = 2
 size_flags_horizontal = 3
 text = "COMMUNITY PLANNED · Frasier's Summer"
-theme_override_font_sizes/font_size = 18
+theme_override_font_sizes/font_size = 22
 theme_override_colors/font_color = Color(0.92, 0.86, 0.62, 1)
 
 [node name="DayLabel" type="Label" parent="VBox/HeaderBar"]
 layout_mode = 2
 text = "DAY 1 / 100"
-theme_override_font_sizes/font_size = 14
+theme_override_font_sizes/font_size = 18
 theme_override_colors/font_color = Color(0.86, 0.86, 0.86, 1)
 
 [node name="DispatchesLabel" type="Label" parent="VBox/HeaderBar"]
 layout_mode = 2
 text = "Dispatches today: 0 / 3"
-theme_override_font_sizes/font_size = 12
+theme_override_font_sizes/font_size = 16
 theme_override_colors/font_color = Color(0.62, 0.62, 0.62, 1)
 
 [node name="ShelfButton" type="Button" parent="VBox/HeaderBar"]
@@ -121,14 +121,14 @@ layout_mode = 2
 text = "save: autosaved on Advance"
 custom_minimum_size = Vector2(160, 18)
 autowrap_mode = 3
-theme_override_font_sizes/font_size = 12
+theme_override_font_sizes/font_size = 16
 theme_override_colors/font_color = Color(0.5, 0.5, 0.5, 1)
 
 [node name="TodayHeader" type="Label" parent="VBox/BottomRow/Actions"]
 layout_mode = 2
 text = "TODAY"
 visible = false
-theme_override_font_sizes/font_size = 12
+theme_override_font_sizes/font_size = 16
 theme_override_colors/font_color = Color(0.92, 0.86, 0.62, 0.85)
 
 [node name="TodayBox" type="VBoxContainer" parent="VBox/BottomRow/Actions"]
