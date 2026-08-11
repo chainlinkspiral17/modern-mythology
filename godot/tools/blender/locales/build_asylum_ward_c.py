@@ -92,11 +92,11 @@ def build_nurses_station():
     make_box("Chart_Binder", (-0.40, ny - 0.40, 1.16), (0.30, 0.40, 0.04), COL_CHART)
     make_box("Chart_Stack", (+0.40, ny - 0.40, 1.16), (0.30, 0.40, 0.06), COL_CHART)
     # File cabinet to the N
-    make_box("FileCab", (-1.00, ny + 0.50, 0.70), (0.50, 0.50, 1.40), COL_FILE_CAB)
+    make_box("FileCab", (-1.45, ny + 0.50, 0.70), (0.50, 0.50, 1.40), COL_FILE_CAB)
     for di in range(3):
-        make_box(f"FileCab_Drawer_{di}", (-1.00, ny + 0.26, 0.30 + di*0.46),
+        make_box(f"FileCab_Drawer_{di}", (-1.45, ny + 0.26, 0.30 + di*0.46),
                  (0.50, 0.005, 0.40), (0.42, 0.42, 0.40, 1.0))
-        make_box(f"FileCab_Handle_{di}", (-1.00, ny + 0.25, 0.30 + di*0.46),
+        make_box(f"FileCab_Handle_{di}", (-1.45, ny + 0.25, 0.30 + di*0.46),
                  (0.10, 0.005, 0.04), (0.62, 0.62, 0.58, 1.0))
 
 
@@ -342,7 +342,7 @@ def build_death_wave2_props():
     """
     ns_x = 0.0
     ns_y = +7.00
-    desk_z = 0.90
+    desk_z = 1.11   # counter TOP (body 1.10 tall) — 0.90 buried the letter inside it
 
     # ── The Bishop's letter on the nurse-station desk ──────────
     bl_x = ns_x + 0.30
@@ -448,7 +448,7 @@ def build_death_wave2_props():
              (0.94, 0.16, 0.16, 1.0), segments=8, axis='Z')
 
     # ── Ward 5's unstripped bed · sheets still on ──────────────
-    ward5_x = -2.40
+    ward5_x = -1.85
     ward5_y = +11.00
     # Bed frame
     make_box("Ward5_BedFrame",

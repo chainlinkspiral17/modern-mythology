@@ -287,6 +287,28 @@ slab/plaza/endzone as ground. Repo total 1118. NEXT: riverfront
 544 (decision), kwik_stop 133 (screenshots), diner 54, then
 centro_grocery_aisle 22 / riverboat_interior 21 / houston_office
 18 / frog_knows_best 18. Deck rebuild needed: harmony_terrain.
+2026-08-11 later still · TRIAGE ROUND 3: twelve more locales CLEAN,
+repo 1118 → 843. Real finds: centro's frozen bank stood IN the dry
+aisle + its chest freezer was SPLIT (body at y-3.4, lid+kick at
+y-2.0); asylum's Bishop's-letter hero prop lay INSIDE the nurse
+counter (desk_z 0.90 vs counter top 1.10) and ward 5's bed was
+shoved through door 4's leaf; mixing_glass's U-bar arms ran y 4.4-
+7.6 swallowing booths 2-3's tables (arms shortened, banquette
+packed); cosmic back-office longboxes in the fridge + safe;
+little_switzerland pines inside chalet walls (now behind the row);
+caldwell's headphone cups sunk in the desk slab + monitors on the
+board edges; break-room fridge in the counter run. Grammar draft
+6-7: water is nonsolid (aquarium/swamp), shrink-wrap + pallets +
+counters contain, forks enter pallets, poured skatepark features
+merge (hump/coping/basin), Part[NSEW] walls, stair members through
+uncut slabs ≤0.40, mounted fixtures ≤0.20, mirror collage ≤0.10,
+soft-foliage nestle ≤0.15, boards/consoles are surfaces.
+REMAINING BIG THREE: riverfront 544 (decision), kwik_stop 133
+(screenshots), diner 54 — then a long tail of ≤10s. Deck rebuilds
+this round: cosmic_comics_back_office asylum_ward_c
+centro_grocery_aisle riverboat_interior houston_office
+frog_knows_best mixing_glass little_switzerland centro_break_room
+caldwell_radio_room_night.
 
 ### Workstream · SLOWSTICK PRODUCTION PASS (user-directed · 2026-08-03)
 

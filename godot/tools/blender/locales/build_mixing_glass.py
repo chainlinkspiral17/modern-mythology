@@ -45,17 +45,17 @@ def build_shell():
 def build_u_bar():
     # U-shaped bar — N end of room, opening toward S
     # E side: long arm
-    make_box("Bar_E_Top",  (+1.50, 6.00, 1.06), (0.50, 3.20, 0.04), COL_BAR_COPPER)
-    make_box("Bar_E_Body", (+1.50, 6.00, 0.50), (0.50, 3.20, 1.00), COL_BAR_WOOD)
+    make_box("Bar_E_Top",  (+1.50, 6.75, 1.06), (0.50, 1.70, 0.04), COL_BAR_COPPER)
+    make_box("Bar_E_Body", (+1.50, 6.75, 0.50), (0.50, 1.70, 1.00), COL_BAR_WOOD)
     # W side: long arm
-    make_box("Bar_W_Top",  (-1.50, 6.00, 1.06), (0.50, 3.20, 0.04), COL_BAR_COPPER)
-    make_box("Bar_W_Body", (-1.50, 6.00, 0.50), (0.50, 3.20, 1.00), COL_BAR_WOOD)
+    make_box("Bar_W_Top",  (-1.50, 6.75, 1.06), (0.50, 1.70, 0.04), COL_BAR_COPPER)
+    make_box("Bar_W_Body", (-1.50, 6.75, 0.50), (0.50, 1.70, 1.00), COL_BAR_WOOD)
     # N cap connecting them
     make_box("Bar_N_Top",  (0.0, 7.40, 1.06), (3.50, 0.50, 0.04), COL_BAR_COPPER)
     make_box("Bar_N_Body", (0.0, 7.40, 0.50), (3.50, 0.50, 1.00), COL_BAR_WOOD)
     # 6 bar stools around the perimeter (3 per side, S-facing arms)
-    for si, (sx, sy) in enumerate([(+1.05, 4.60), (+1.05, 5.60), (+1.05, 6.60),
-                                    (-1.05, 4.60), (-1.05, 5.60), (-1.05, 6.60)]):
+    for si, (sx, sy) in enumerate([(+1.05, 6.00), (+1.05, 6.60), (+1.05, 6.92),
+                                    (-1.05, 6.00), (-1.05, 6.60), (-1.05, 6.92)]):
         make_cyl(f"Stool_{si}_Post", (sx, sy, 0.40), 0.04, 0.80, P.METAL_BLACK)
         make_cyl(f"Stool_{si}_Seat", (sx, sy, 0.82), 0.18, 0.05, COL_BOOTH_LEATHER)
         make_cyl(f"Stool_{si}_Base", (sx, sy, 0.05), 0.20, 0.04, P.METAL_BLACK)
@@ -79,7 +79,7 @@ def build_backbar():
 def build_booths():
     # Four leather booths along the W wall, each a banquette + table.
     for bi in range(4):
-        by = 1.20 + bi * 1.80
+        by = 1.20 + bi * 1.42
         # Banquette against W wall
         make_box(f"Booth_{bi}_Bench", (-ROOM_W/2.0 + 0.40, by, 0.46),
                  (0.50, 1.50, 0.10), COL_BOOTH_LEATHER)
@@ -232,16 +232,16 @@ def build_temperance_wave2_props():
 
     # Reggie's produce delivery · two stacked cardboard boxes
     make_box("PreShift_ProduceBox_Lo",
-             (ax_door + 0.40, ay_door, 0.14),
+             (ax_door + 0.65, ay_door, 0.14),
              (0.28, 0.36, 0.28),
              (0.60, 0.48, 0.32, 1.0))
     make_box("PreShift_ProduceBox_Hi",
-             (ax_door + 0.40, ay_door, 0.42),
+             (ax_door + 0.65, ay_door, 0.42),
              (0.28, 0.36, 0.24),
              (0.62, 0.50, 0.34, 1.0))
     # A bright-green stem sticking out of the top box (mint)
     make_cyl("PreShift_MintSprig",
-             (ax_door + 0.40, ay_door + 0.02, 0.56),
+             (ax_door + 0.65, ay_door + 0.02, 0.56),
              0.02, 0.10,
              (0.44, 0.68, 0.36, 1.0), segments=5)
 
@@ -271,8 +271,8 @@ def build_temperance_wave2_props():
 
     # Boombox with Tuesday playlist cassette · east side of back bar
     tape_x = +0.90
-    tape_y = ROOM_D - 0.35
-    tape_z = 1.22
+    tape_y = 7.40
+    tape_z = 1.10
     make_box("PreShift_Boombox_Body",
              (tape_x, tape_y, tape_z + 0.08),
              (0.36, 0.14, 0.16),

@@ -670,8 +670,8 @@ def build_sammys_bar():
     # Back-bar shelving against east wall
     bb_x = HULL_X_E - 0.40
     make_box("Bar_BackBar_Body",
-             (bb_x, bar_y, cz + 1.6),
-             (0.40, 9.0, 2.20), COL_WALL_DARK)
+             (bb_x, bar_y, cz + 1.5),
+             (0.40, 9.0, 2.00), COL_WALL_DARK)
     # Mirror across the back bar
     make_box("Bar_BackBar_Mirror",
              (bb_x - 0.21, bar_y, cz + 1.6),
@@ -1729,12 +1729,12 @@ def build_empress_dressing():
     int_z = MAIN_FLOOR_Z + 1.42
     # Body
     make_box("Sammy_Intercom_Body",
-             (int_x, int_y, int_z),
+             (int_x + 0.10, int_y, int_z),
              (0.18, 0.06, 0.24),
              (0.30, 0.26, 0.20, 1.0))   # bakelite brown
     # Speaker grille (mesh-effect via a slightly lighter inset box)
     make_box("Sammy_Intercom_Speaker",
-             (int_x, int_y - 0.031, int_z + 0.05),
+             (int_x + 0.10, int_y - 0.031, int_z + 0.05),
              (0.14, 0.005, 0.10),
              (0.18, 0.16, 0.14, 1.0))
     # Press-to-talk button (brass)

@@ -87,7 +87,7 @@ def build_backoffice_detail():
     card_dk = (0.48, 0.36, 0.22, 1.0)
     steel = (0.40, 0.42, 0.45, 1.0)
     # ── Long-box stacks of comics down the EAST wall ──
-    for s_i, (bx, by, n) in enumerate([(1.55, 1.1, 3), (1.55, 2.3, 2), (1.6, 4.1, 3)]):
+    for s_i, (bx, by, n) in enumerate([(1.55, 1.45, 3), (1.55, 2.3, 2), (1.6, 3.75, 3)]):
         for k in range(n):
             bz = 0.12 + k * 0.24
             skew = 0.03 * ((s_i + k) % 2)
@@ -185,8 +185,8 @@ def build_hero_props():
     make_box("Desk_Phone", (0.55, 3.72, 0.82), (0.22, 0.16, 0.08), (0.16, 0.16, 0.18, 1.0))
     make_box("Desk_Phone_Handset", (0.55, 3.72, 0.90), (0.20, 0.06, 0.04), (0.12, 0.12, 0.14, 1.0))
     # Overturned milk crate — Sam's seat, opposite the desk
-    make_chamfer_box("Milk_Crate", (0.0, 2.55, 0.16), (0.36, 0.36, 0.32), (0.62, 0.28, 0.24, 1.0))
-    make_box("Milk_Crate_Rim", (0.0, 2.55, 0.315), (0.38, 0.38, 0.03), (0.52, 0.22, 0.20, 1.0))
+    make_chamfer_box("Milk_Crate", (-0.20, 2.40, 0.16), (0.36, 0.36, 0.32), (0.62, 0.28, 0.24, 1.0))
+    make_box("Milk_Crate_Rim", (-0.20, 2.40, 0.315), (0.38, 0.38, 0.03), (0.52, 0.22, 0.20, 1.0))
     # Mini-fridge + floor safe (one of the six keys)
     make_chamfer_box("Mini_Fridge", (1.65, 0.75, 0.42), (0.55, 0.55, 0.84), (0.82, 0.80, 0.76, 1.0))
     make_box("Mini_Fridge_Handle", (1.38, 0.55, 0.55), (0.03, 0.03, 0.30), iron)

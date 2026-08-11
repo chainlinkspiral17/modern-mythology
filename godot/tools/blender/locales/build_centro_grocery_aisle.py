@@ -143,11 +143,11 @@ def build_produce():
 def build_dry_goods():
     # West-wall shelf run of canned goods + boxed dry goods + bread.
     wx = -ROOM_W/2.0 + 0.20
-    make_box("Dry_Back", (wx-0.06, 5.5, 1.4), (0.06, 3.6, 2.6), (0.72, 0.72, 0.68, 1.0))
+    make_box("Dry_Back", (wx-0.06, 4.1, 1.4), (0.06, 3.6, 2.6), (0.72, 0.72, 0.68, 1.0))
     for lv, sz in enumerate([0.45, 0.95, 1.45, 1.95]):
-        make_box(f"Dry_Shelf_{lv}", (wx, 5.5, sz), (0.34, 3.6, 0.04), P.METAL_STEEL)
+        make_box(f"Dry_Shelf_{lv}", (wx, 4.1, sz), (0.34, 3.6, 0.04), P.METAL_STEEL)
         for pi in range(9):
-            py = 5.5 - 1.7 + pi*0.42
+            py = 4.1 - 1.7 + pi*0.42
             tint = P.SNACK_TINTS[(lv+pi) % len(P.SNACK_TINTS)]
             if (lv + pi) % 2 == 0:
                 make_cyl(f"Dry_Can_{lv}_{pi}", (wx+0.10, py, sz+0.10), 0.05, 0.18, tint, segments=8)
@@ -209,9 +209,9 @@ def build_dressing():
         make_cyl(f"Cart_Wheel_{wi}", (cx+wx, cy+wy, 0.06), 0.06, 0.05, P.METAL_BLACK, axis='X', segments=8)
     # Chest freezer, east wall (body + frosty glass lid)
     fx = ROOM_W/2.0 - 0.6
-    make_chamfer_box("Freezer_Body", (fx, ROOM_D-3.4, 0.45), (0.90, 1.80, 0.90), (0.82, 0.86, 0.90, 1.0))
-    make_box("Freezer_Lid", (fx, ROOM_D-2.0, 0.94), (0.86, 1.72, 0.04), (0.80, 0.90, 0.96, 0.5))
-    make_box("Freezer_Kick", (fx, ROOM_D-2.0, 0.06), (0.90, 1.80, 0.12), P.METAL_STEEL)
+    make_chamfer_box("Freezer_Body", (fx, ROOM_D-3.55, 0.45), (0.90, 1.80, 0.90), (0.82, 0.86, 0.90, 1.0))
+    make_box("Freezer_Lid", (fx, ROOM_D-3.55, 0.94), (0.86, 1.72, 0.04), (0.80, 0.90, 0.96, 0.5))
+    make_box("Freezer_Kick", (fx, ROOM_D-3.55, 0.06), (0.90, 1.80, 0.12), P.METAL_STEEL)
     # Hanging aisle-number sign over the aisle mouth
     make_cyl("AisleSign_Wire_L", (-0.6, ROOM_D/2.0, CEIL-0.35), 0.006, 0.60, P.METAL_STEEL)
     make_cyl("AisleSign_Wire_R", (0.6, ROOM_D/2.0, CEIL-0.35), 0.006, 0.60, P.METAL_STEEL)
@@ -245,8 +245,8 @@ def build_departments():
     make_chamfer_box("Pallet_Load", (-1.0, 1.55, 0.46), (0.90, 1.05, 0.60), (0.68, 0.56, 0.38, 1.0))
     make_box("HandTruck_Frame", (-1.9, 1.5, 0.60), (0.08, 0.40, 1.20), (0.62, 0.28, 0.24, 1.0))
     make_box("HandTruck_Toe", (-1.86, 1.5, 0.04), (0.30, 0.44, 0.03), steel)
-    make_box("PalletJack_Forks", (2.9, 1.55, 0.08), (0.56, 1.10, 0.12), (0.86, 0.52, 0.16, 1.0))
-    make_box("PalletJack_Tiller", (2.9, 2.20, 0.55), (0.08, 0.10, 0.90), (0.30, 0.30, 0.32, 1.0))
+    make_box("PalletJack_Forks", (2.3, 1.55, 0.08), (0.56, 1.10, 0.12), (0.86, 0.52, 0.16, 1.0))
+    make_box("PalletJack_Tiller", (2.3, 2.20, 0.55), (0.08, 0.10, 0.90), (0.30, 0.30, 0.32, 1.0))
     # Cooler swing door propped open with the milk crate (sticking
     # lock since July)
     make_box("Cooler_Door_Leaf", (-3.72, 7.35, 1.00), (0.30, 0.05, 1.90), (0.82, 0.84, 0.86, 1.0))

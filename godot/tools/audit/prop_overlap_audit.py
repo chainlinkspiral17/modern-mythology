@@ -34,19 +34,20 @@ import locale_geometry_audit as A
 EPS = 0.015
 EMBED_MAX = 0.14   # wall thickness + proud trim/frame
 WALLISH = re.compile(
-    r"wall|window|door|sign|brand|partw|partn|part\b|trim|crown|"
+    r"wall|window|door|sign|brand|part[nsew]?\b|trim|crown|"
     r"baseboard|backsplash|wainscot|frame|sill|floor|ceil|apron|"
-    r"turf|road|grass|rug|mat|plumbing|curb|kerb|lawn|drive|sidewalk|path\b|path_|apron|asphalt|edgeline|shoulder|gravel|yard\b|headland|ground|walk\b|walkway|win\b|win_|outlet|socket|plate\b|numeral|slab|plaza|endzone", re.I)
+    r"turf|road|grass|rug|mat|plumbing|curb|kerb|lawn|drive|sidewalk|path\b|path_|apron|asphalt|edgeline|shoulder|gravel|yard\b|headland|ground|walk\b|walkway|win\b|win_|outlet|socket|plate\b|numeral|slab|plaza|endzone|seam", re.I)
 CONTAINERISH = re.compile(
     r"cage|case|chest|bin\b|bin_|basket|crate|rack|cooler|fridge|"
     r"freezer|cubby|cart|shelf|shelv|island|hutch|drawer|cab\b|"
-    r"cabinet|locker|oven|proofer|tub\b|vase|votive|sink|basin", re.I)
+    r"cabinet|locker|oven|proofer|tub\b|vase|votive|sink|basin|"
+    r"wrap|pallet\b|counter", re.I)
 # Objects RESTING on a surface: min-penetration axis is Z and one of
 # the pair is a surface. Books sink 2cm into their shelf, a phone
 # into its desk — seating, not clipping.
 SURFACEISH = re.compile(
     r"shelf|shelv|top\b|_top|desk|table|counter|tray|sill|seat|"
-    r"bench|plank|deck\b|worktop|platform|island|expo|step|cap\b", re.I)
+    r"bench|plank|deck\b|worktop|platform|island|expo|step|cap\b|board", re.I)
 SEAT_MAX = 0.10
 # Structure members joining each other (lattice-tower braces meeting
 # legs, railing spindles into rails) — joints, not clipping.
@@ -54,7 +55,7 @@ CROWNISH = re.compile(r"crown|canopy|foliage|lobe|frond", re.I)
 # Non-solid volumetrics: sprinkler spray arcs, light shafts, steam —
 # they interpenetrate everything by design.
 NONSOLID = re.compile(r"spray|mist|steam|smoke|shaft|glow|beam\b|dust|fog|surf|foam|wake|"
-    r"falls?_|veil|cascade|plunge", re.I)
+    r"falls?_|veil|cascade|plunge|water", re.I)
 # Infrastructure DESIGNED to be buried — culverts under roads,
 # pipes through creek beds, footings in the ground.
 BURIEDISH = re.compile(r"culvert|drain|conduit|footing|foundation|piling", re.I)
@@ -64,7 +65,7 @@ ROCKISH = re.compile(r"jag|talus|rock|outcrop|boulder|scree|crag|cliff|rim\b|rim
                      # Collapsed masonry IS rubble — graustark's ruins
                      # interpenetrate each other and their sinkhole by
                      # design, and vegetation grows through them.
-                     r"ruin|sinkhole", re.I)
+                     r"ruin|sinkhole|hump|coping|basin\b", re.I)
 # Vegetation against vegetation (a shrub against a cypress buttress)
 # is undergrowth, not clipping.
 PLANTISH = re.compile(r"shrub|bush|hedge|fern|reed|weed|plant|vine|"
@@ -107,6 +108,12 @@ BERM_MAX = 0.65
 # when paired with a deck/roof — a soda-stack pyramid never is.
 STACKISH = re.compile(r"\bstack|funnel|flue", re.I)
 DECKISH = re.compile(r"deck|slab|ceil", re.I)
+# Stair members rise THROUGH the floor/ceiling plane at the
+# stairwell (the audit sees solid slabs, not the opening).
+STAIRISH = re.compile(r"baluster|newel|handrail|stringer", re.I)
+# Mounted light fixtures hang FROM / clamp ONTO their support.
+LAMPISH = re.compile(r"lamp|shade\b|sconce", re.I)
+LAMP_MAX = 0.20
 
 
 def record_builder(path):
@@ -224,7 +231,8 @@ def overlaps(boxes):
             bool(STACKISH.search(n)), bool(DECKISH.search(n)),
             bool(SEATISH.search(n)), bool(WHEELISH.search(n)),
             bool(OFFERINGISH.search(n)), bool(FLEXISH.search(n)),
-            bool(BERMISH.search(n)),
+            bool(BERMISH.search(n)), bool(STAIRISH.search(n)),
+            bool(LAMPISH.search(n)),
         ))
     # Sweep-and-prune on x: sorted by min-x, the inner scan breaks at
     # the first box that starts past this one's max-x — every later
@@ -233,11 +241,13 @@ def overlaps(boxes):
     hits = []
     for i in range(len(ann)):
         (n1, c1, h1, p1l, p1f, ns1, bu1, pl1, rk1, cr1, wa1,
-         co1, su1, st1, rf1, po1, sk1, dk1, se1, wh1, of1, fx1, bm1) = ann[i]
+         co1, su1, st1, rf1, po1, sk1, dk1, se1, wh1, of1, fx1, bm1,
+         sr1, lp1) = ann[i]
         xmax1 = c1[0] + h1[0]
         for j in range(i + 1, len(ann)):
             (n2, c2, h2, p2l, p2f, ns2, bu2, pl2, rk2, cr2, wa2,
-             co2, su2, st2, rf2, po2, sk2, dk2, se2, wh2, of2, fx2, bm2) = ann[j]
+             co2, su2, st2, rf2, po2, sk2, dk2, se2, wh2, of2, fx2, bm2,
+             sr2, lp2) = ann[j]
             if c2[0] - h2[0] > xmax1:
                 break
             if p1l == p2l or p1f == p2f:
@@ -268,6 +278,11 @@ def overlaps(boxes):
                 continue
             if co2 and all(abs(c1[ax] - c2[ax]) < h2[ax]
                            for ax in range(3)):
+                continue
+            # Pallet-jack forks ENTER pallets — that is their job.
+            l1, l2 = n1.lower(), n2.lower()
+            if ("fork" in l1 and "pallet" in l2) or \
+                    ("fork" in l2 and "pallet" in l1):
                 continue
             pen = []
             ok = True
@@ -336,10 +351,31 @@ def overlaps(boxes):
             # Funnel/stack through the decks and roofs above it.
             if (sk1 and (rf2 or dk2)) or (sk2 and (rf1 or dk1)):
                 continue
+            # Stair balustrade through the floor/ceiling plane at
+            # the (uncut) stairwell opening.
+            if depth <= 0.40 and ((sr1 and (wa2 or dk2)) or
+                                  (sr2 and (wa1 or dk1))):
+                continue
+            # Mounted fixtures clamp onto their support.
+            if depth <= LAMP_MAX and (lp1 or lp2):
+                continue
+            # Tickets/cards/neon tucked into or mounted on a mirror
+            # frame — the classic backbar collage.
+            if depth <= 0.10 and ("mirror" in n1.lower() or
+                                  "mirror" in n2.lower()):
+                continue
+            # Built-ins meet the ceiling.
+            if depth <= 0.25 and ("ceil" in n1.lower() or
+                                  "ceil" in n2.lower()):
+                continue
             # A crown is an amorphous leaf mass — 35cm of foliage
             # against any surface reads as touching, not clipping.
             # Deeper crown burial still reports.
             if depth <= 0.35 and (cr1 or cr2):
+                continue
+            # Soft foliage nestles around whatever sits in it
+            # (aquarium plants against the frog's log).
+            if depth <= 0.15 and (pl1 or pl2):
                 continue
             hits.append((depth, n1, n2, tuple(pen)))
     hits.sort(reverse=True)

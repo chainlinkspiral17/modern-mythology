@@ -92,7 +92,7 @@ def build_console_desk():
                  (0.16, 0.005, 0.10), COL_VU_AMBER)
 
     # ── Monitor (CRT) + keyboard on the desk, W side ──
-    mx, my = -0.80, dy + 0.18
+    mx, my = -1.10, dy + 0.18
     make_box("Monitor_Case", (mx, my, top_z + 0.22), (0.42, 0.40, 0.38), (0.86, 0.82, 0.74, 1.0))
     make_box("Monitor_Screen", (mx, my - 0.20, top_z + 0.24), (0.32, 0.02, 0.26), COL_SCREEN)
     for di, dxo in enumerate([-0.06, 0.0, +0.06]):
@@ -100,7 +100,7 @@ def build_console_desk():
                  (0.02, 0.001, 0.05), COL_PHOSPHOR)
     make_box("Keyboard", (mx, my - 0.34, top_z + 0.03), (0.36, 0.14, 0.03), (0.20, 0.20, 0.22, 1.0))
     # Small second monitor (log/queue), E side
-    make_box("Monitor2_Case", (0.80, dy + 0.20, top_z + 0.18), (0.34, 0.32, 0.30), (0.20, 0.20, 0.22, 1.0))
+    make_box("Monitor2_Case", (1.10, dy + 0.20, top_z + 0.18), (0.34, 0.32, 0.30), (0.20, 0.20, 0.22, 1.0))
     make_box("Monitor2_Screen", (0.80, dy + 0.03, top_z + 0.20), (0.26, 0.02, 0.22), COL_SCREEN)
     make_box("Monitor2_Line", (0.80, dy + 0.02, top_z + 0.22), (0.20, 0.001, 0.02), COL_PHOSPHOR)
 
@@ -130,7 +130,7 @@ def build_mic_and_boom():
     hx, hy = 0.85, dy - 0.42
     make_cyl("Phones_Band", (hx, hy, top_z + 0.06), 0.10, 0.03, COL_BAKELITE, axis='X', segments=12)
     for sgn in (-1, +1):
-        make_cyl(f"Phones_Cup_{sgn:+d}", (hx + sgn*0.09, hy, top_z - 0.04),
+        make_cyl(f"Phones_Cup_{sgn:+d}", (hx + sgn*0.09, hy, top_z + 0.06),
                  0.06, 0.045, COL_BAKELITE, axis='X', segments=10)
 
 
@@ -204,7 +204,7 @@ def build_coffee_and_clutter():
     make_box("FreqCard_Digits", (dx + 0.22, dy - 0.27, top_z + 0.06), (0.10, 0.01, 0.03),
              (0.28, 0.26, 0.24, 1.0))
     # Coffee mug on the desk (going cold), E side near the operator
-    mug_x, mug_y = 0.55, dy - 0.30
+    mug_x, mug_y = 0.55, dy - 0.42
     make_cyl("Mug_Body", (mug_x, mug_y, top_z + 0.05), 0.045, 0.10, (0.72, 0.30, 0.22, 1.0),
              axis='Z', segments=12)
     make_cyl("Mug_Coffee", (mug_x, mug_y, top_z + 0.095), 0.038, 0.006, (0.20, 0.12, 0.08, 1.0),

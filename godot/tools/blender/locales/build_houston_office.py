@@ -121,7 +121,7 @@ def build_exec_furniture():
             make_box(f"Filing_{fi}_Drawer_{di}", (fx+0.22, fy, dz), (0.02, 0.50, 0.36), (0.56,0.58,0.60,1.0))
             make_box(f"Filing_{fi}_Pull_{di}", (fx+0.24, fy, dz), (0.02, 0.18, 0.03), P.METAL_BLACK)
     # Low credenza against the S wall behind the desk
-    crx, cry = -3.5, 0.35
+    crx, cry = -3.35, 0.35
     make_box("Credenza_Body", (crx, cry, 0.42), (2.00, 0.44, 0.84), COL_CREDENZA)
     make_box("Credenza_Top", (crx, cry, 0.86), (2.08, 0.50, 0.04), COL_DESK)
     for pi, px in enumerate([-0.55, +0.05, +0.65]):
@@ -216,7 +216,7 @@ def build_use_states_d4():
     # Banker's box OPEN on the credenza, lid leaning against it
     make_box("Bankers_Box", (-3.2, 0.35, 0.98), (0.40, 0.30, 0.26),
              (0.62, 0.50, 0.36, 1.0))
-    make_box("Bankers_Box_Lid", (-2.82, 0.42, 0.90), (0.03, 0.32, 0.28),
+    make_box("Bankers_Box_Lid", (-2.82, 0.42, 1.02), (0.03, 0.32, 0.28),
              (0.60, 0.48, 0.34, 1.0))
     make_box("Bankers_Box_Tabs", (-3.2, 0.35, 1.13), (0.34, 0.24, 0.04), paper)
     # Mugs: the manager's on the desk, one at the cubicle

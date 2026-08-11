@@ -95,7 +95,7 @@ def build_kitchenette():
 
 def build_fridge():
     # Fridge in the NW corner
-    fx, fy = -ROOM_W/2.0 + 0.42, ROOM_D - 0.55
+    fx, fy = -ROOM_W/2.0 + 0.42, ROOM_D - 0.30
     make_box("Fridge_Body", (fx, fy, 0.95), (0.72, 0.72, 1.90), (0.82, 0.82, 0.80, 1.0))
     make_box("Fridge_DoorUpper", (fx-0.35, fy, 1.35), (0.03, 0.66, 1.02), (0.86, 0.86, 0.84, 1.0))
     make_box("Fridge_DoorLower", (fx-0.35, fy, 0.55), (0.03, 0.66, 0.66), (0.86, 0.86, 0.84, 1.0))
@@ -119,7 +119,7 @@ def build_break_decor():
     # Corner floor plant (make_floor_plant was imported/unused)
     make_floor_plant("Plant", (ROOM_W/2.0-0.55, 0.60, 0.0))
     # Swing-lid trash bin by the counter
-    tx, ty = -ROOM_W/2.0+0.70, 0.70
+    tx, ty = -ROOM_W/2.0+0.95, 0.45
     make_cyl("Trash_Body", (tx, ty, 0.34), 0.20, 0.68, (0.34, 0.36, 0.34, 1.0), segments=12, axis='Z')
     make_cyl("Trash_Rim", (tx, ty, 0.68), 0.21, 0.03, (0.24, 0.26, 0.24, 1.0), segments=12, axis='Z')
     make_box("Trash_SwingLid", (tx, ty, 0.71), (0.30, 0.30, 0.04), (0.28, 0.30, 0.28, 1.0))
@@ -139,8 +139,8 @@ def build_hero_props():
     the card table canon names."""
     wood = (0.46, 0.36, 0.26, 1.0)
     # Doug's chair, E wall, facing west, thermos at its feet
-    make_box("Dougs_Chair_Seat", (2.10, 2.6, 0.44), (0.42, 0.42, 0.04), (0.40, 0.36, 0.30, 1.0))
-    make_box("Dougs_Chair_Back", (2.30, 2.6, 0.74), (0.05, 0.42, 0.54), (0.36, 0.32, 0.27, 1.0))
+    make_box("Dougs_Chair_Seat", (2.10, 2.2, 0.44), (0.42, 0.42, 0.04), (0.40, 0.36, 0.30, 1.0))
+    make_box("Dougs_Chair_Back", (2.30, 2.2, 0.74), (0.05, 0.42, 0.54), (0.36, 0.32, 0.27, 1.0))
     for li, (lx, ly) in enumerate(((-0.16, -0.16), (0.16, -0.16), (-0.16, 0.16), (0.16, 0.16))):
         make_box(f"Dougs_Chair_Leg_{li}", (2.10 + lx, 2.6 + ly, 0.22), (0.045, 0.045, 0.44), wood)
     make_cyl("Dougs_Thermos", (1.90, 2.35, 0.13), 0.05, 0.26, (0.30, 0.42, 0.30, 1.0), segments=10)
@@ -148,7 +148,7 @@ def build_hero_props():
     make_box("Break_Radio", (-2.15, 2.85, 1.62), (0.22, 0.13, 0.13), (0.36, 0.30, 0.26, 1.0))
     make_cyl("Break_Radio_Dial", (-2.06, 2.79, 1.62), 0.028, 0.02, (0.86, 0.82, 0.72, 1.0), axis='Y', segments=8)
     # Jessa's small dishwasher, under-counter
-    make_box("Small_Dishwasher", (-2.22, 1.05, 0.44), (0.52, 0.60, 0.85), (0.78, 0.76, 0.72, 1.0))
+    make_box("Small_Dishwasher", (-2.22, 0.72, 0.44), (0.52, 0.60, 0.85), (0.78, 0.76, 0.72, 1.0))
     make_box("Dishwasher_Handle", (-1.94, 1.05, 0.78), (0.03, 0.42, 0.04), (0.55, 0.57, 0.58, 1.0))
     # Jacket hooks by the doorway
     for hi, hx in enumerate((1.35, 1.6, 1.85)):

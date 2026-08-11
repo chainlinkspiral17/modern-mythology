@@ -423,7 +423,7 @@ def build_world_wave2_props():
 
     # The safe in the back office · behind the framed license
     safe_x = +2.00
-    safe_y = +2.60
+    safe_y = +2.75
     make_box("BackOffice_Safe_Body",
              (safe_x, safe_y, 0.32),
              (0.44, 0.36, 0.60),

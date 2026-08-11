@@ -120,13 +120,13 @@ def build_village():
         make_cyl(f"Fence_Rail_{rz:.2f}", (1.0, 6.2, rz), 0.05, 20.0, COL_FENCE,
                  segments=6, axis='X')
     # Pines between and beyond the buildings
-    spots = [(-10.5, 9.5), (-3.8, 8.8), (2.8, 9.2), (9.5, 8.5), (12.0, 10.5), (-13.5, 8.0)]
+    spots = [(-10.5, 9.5), (-4.2, 13.2), (3.4, 13.2), (9.5, 8.5), (12.0, 10.5), (-13.5, 8.0)]
     for i, (px, py) in enumerate(spots):
         h = 4.5 + 1.2 * ((i * 5) % 3)
         make_cyl(f"Pine_{i}_Trunk", (px, py, h * 0.2), 0.16, h * 0.4, COL_TRUNK, segments=6)
-        make_box(f"Pine_{i}_T0", (px, py, h * 0.45), (2.2, 2.2, h * 0.32), COL_PINE)
-        make_box(f"Pine_{i}_T1", (px, py, h * 0.70), (1.5, 1.5, h * 0.28), COL_PINE)
-        make_box(f"Pine_{i}_T2", (px, py, h * 0.92), (0.8, 0.8, h * 0.22), COL_PINE)
+        make_box(f"Pine_{i}_Canopy_0", (px, py, h * 0.45), (2.2, 2.2, h * 0.32), COL_PINE)
+        make_box(f"Pine_{i}_Canopy_1", (px, py, h * 0.70), (1.5, 1.5, h * 0.28), COL_PINE)
+        make_box(f"Pine_{i}_Canopy_2", (px, py, h * 0.92), (0.8, 0.8, h * 0.22), COL_PINE)
 
 
 def build_mountains():
