@@ -247,11 +247,20 @@ const CAMERA_PRESETS := {
 	"graustark_ruins": {
 		"scene": "res://scenes/locales/graustark.tscn",
 		"requires_glb": "res://assets/3d/locales/graustark.glb",
-		# Establishing vantage looking across the ruins. Texas late-
-		# afternoon, warm bleached light, prairie sky beyond.
-		"camera_origin": Vector3(-5.0, 2.30, +6.0),
-		"camera_rotation": Vector3(-0.06, deg_to_rad(120.0), 0.0),
-		"fov": 60.0,
+		# THE RUIN QUARTER is at blender (−12..66, −300..−390) —
+		# sinkhole (10,−300), chalked wall (44,−374), rubble field
+		# (46,−368), cottage (50,−380), skyline shells + leaning
+		# chimneys ringing it. The old vantage stood at the
+		# riverfront ORIGIN looking west: 350m from every chapter's
+		# staging, i.e. flat brown dirt ("world/judgement/star all
+		# same plain brown"). Now SE of the quarter looking NW:
+		# rubble + chalked wall near-right, fallen arch mid, broken
+		# rooflines and chimneys on the skyline.
+		# blender cam (66, −390, 2.4) → godot (66, 2.4, +390);
+		# aim at shells (18,−335,4): yaw=atan2(48,55), slight down.
+		"camera_origin": Vector3(66.0, 2.40, 390.0),
+		"camera_rotation": Vector3(-0.03, 0.718, 0.0),
+		"fov": 62.0,
 		"suppress_input": true,
 	},
 	# ── VOL 5 — Lovers — Roberts house kitchen ───────────────────
