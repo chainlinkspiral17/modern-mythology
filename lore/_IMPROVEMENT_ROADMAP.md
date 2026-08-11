@@ -262,15 +262,31 @@ crumpled_barn 15 (the crumple — leave). NOTE: these builder fixes
 are invisible until each locale is REBUILT on the Deck.
 2026-08-11 addendum: hooking harmony_terrain's vendored
 _make_box_local/_make_cyl_local made the game's BIGGEST locale
-measurable for the first time — 8,863 objects, 110 clips
-(headliners: CPS canopy poles through the self-storage office roof
-2.3m, a birch-house through the old-town park fountain/lamps,
-KwikShop car 7 through its cart-corral posts, roof HVAC sunk in
-SS_Row_0). That's the next triage target. Also shipped: a one-shot
-preset-vantage check (scratchpad preset_vantage_check.py pattern —
-counts geometry in each Background3D preset's 60° cone); graustark
-was the only aimed-at-nothing vantage; all six highway9 presets
-see 8-104 objects.
+measurable for the first time — 8,863 objects, 110 clips. Also
+shipped: a one-shot preset-vantage check (scratchpad
+preset_vantage_check.py pattern); graustark was the only
+aimed-at-nothing vantage; all six highway9 presets see geometry.
+2026-08-11 later · HARMONY TRIAGE SHIPPED: 110 → 0 CLEAN. Real
+finds: TWO pole signs planted inside buildings (SelfStorage sign
+in the office, BigBox sign in the dept-store shell); ALL rooftop
+mech at wrong absolute z (spec ignored terrain — NexCorpHQ's six
+units were INSIDE the tower at level 1: now mesh+height, and the
+SelfStorage mech line re-aimed onto row 1 clear of the office);
+the pool change room built ACROSS Harmony Blvd overlapping the HS
+bus stop (now west of the pool); Birch house k2/+1 stood inside
+OTPark on the lamp + drinking fountain (skip_slots); the cart
+corral occupied parking stall 9 with car 7 parked through it (lot
+east margin); P2Main mailbox #3 stood in House C's parked car
+(cadence skip); a wild tree through the HSField bleachers; the
+cemetery's col-0 stones in the church east wall; a DUPLICATE
+fluorescent grid (Fluo pass removed in favor of FloLight);
+gum stands in the propane cage line; mag rack in the laundromat
+partition; newsboxes in the ATM. Grammar draft 5: Roof_<Bldg>
+prefix aliasing, BERMISH ≤0.65, hedge-holds-post ≤0.35,
+slab/plaza/endzone as ground. Repo total 1118. NEXT: riverfront
+544 (decision), kwik_stop 133 (screenshots), diner 54, then
+centro_grocery_aisle 22 / riverboat_interior 21 / houston_office
+18 / frog_knows_best 18. Deck rebuild needed: harmony_terrain.
 
 ### Workstream · SLOWSTICK PRODUCTION PASS (user-directed · 2026-08-03)
 

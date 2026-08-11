@@ -36,7 +36,7 @@ EMBED_MAX = 0.14   # wall thickness + proud trim/frame
 WALLISH = re.compile(
     r"wall|window|door|sign|brand|partw|partn|part\b|trim|crown|"
     r"baseboard|backsplash|wainscot|frame|sill|floor|ceil|apron|"
-    r"turf|road|grass|rug|mat|plumbing|curb|kerb|lawn|drive|sidewalk|path\b|path_|apron|asphalt|edgeline|shoulder|gravel|yard\b|headland|ground|walk\b|walkway|win\b|win_|outlet|socket|plate\b|numeral", re.I)
+    r"turf|road|grass|rug|mat|plumbing|curb|kerb|lawn|drive|sidewalk|path\b|path_|apron|asphalt|edgeline|shoulder|gravel|yard\b|headland|ground|walk\b|walkway|win\b|win_|outlet|socket|plate\b|numeral|slab|plaza|endzone", re.I)
 CONTAINERISH = re.compile(
     r"cage|case|chest|bin\b|bin_|basket|crate|rack|cooler|fridge|"
     r"freezer|cubby|cart|shelf|shelv|island|hutch|drawer|cab\b|"
@@ -98,6 +98,10 @@ FLEXISH = re.compile(r"wire|cable|cord|cord_|rope|chain|towel|rag|"
                      r"rag_|cloth|blanket|quilt|drape|linen|banner|"
                      r"pennant|festoon|valance|curtain", re.I)
 FLEX_MAX = 0.25
+# Landscaping features are mounded soft dirt — poles, hydrants,
+# signs and wheels sink into berms and beds by planting/parking.
+BERMISH = re.compile(r"berm|mulch|planter|flower_bed|_bed\b", re.I)
+BERM_MAX = 0.65
 # A steamboat funnel passes THROUGH every deck and roof above it by
 # construction (the diner's riverboat superstructure). Only excused
 # when paired with a deck/roof — a soda-stack pyramid never is.
@@ -202,9 +206,15 @@ def overlaps(boxes):
     # for minutes. Flags are per-object properties; hoist them.
     ann = []
     for n, c, h in boxes:
+        # Rooftop fixtures are named Roof_<Building>_... — strip the
+        # Roof_ prefix for the assembly token so a building's own
+        # HVAC/vents/ducts pair with it as same-assembly.
+        first = n.split("_")[0]
+        if first.lower() == "roof" and n.count("_") >= 2:
+            first = n.split("_")[1]
         ann.append((
             n, c, h,
-            n.rsplit("_", 1)[0], n.split("_")[0],
+            n.rsplit("_", 1)[0], first,
             bool(NONSOLID.search(n)), bool(BURIEDISH.search(n)),
             bool(PLANTISH.search(n)), bool(ROCKISH.search(n)),
             bool(CROWNISH.search(n)), bool(WALLISH.search(n)),
@@ -214,6 +224,7 @@ def overlaps(boxes):
             bool(STACKISH.search(n)), bool(DECKISH.search(n)),
             bool(SEATISH.search(n)), bool(WHEELISH.search(n)),
             bool(OFFERINGISH.search(n)), bool(FLEXISH.search(n)),
+            bool(BERMISH.search(n)),
         ))
     # Sweep-and-prune on x: sorted by min-x, the inner scan breaks at
     # the first box that starts past this one's max-x — every later
@@ -222,11 +233,11 @@ def overlaps(boxes):
     hits = []
     for i in range(len(ann)):
         (n1, c1, h1, p1l, p1f, ns1, bu1, pl1, rk1, cr1, wa1,
-         co1, su1, st1, rf1, po1, sk1, dk1, se1, wh1, of1, fx1) = ann[i]
+         co1, su1, st1, rf1, po1, sk1, dk1, se1, wh1, of1, fx1, bm1) = ann[i]
         xmax1 = c1[0] + h1[0]
         for j in range(i + 1, len(ann)):
             (n2, c2, h2, p2l, p2f, ns2, bu2, pl2, rk2, cr2, wa2,
-             co2, su2, st2, rf2, po2, sk2, dk2, se2, wh2, of2, fx2) = ann[j]
+             co2, su2, st2, rf2, po2, sk2, dk2, se2, wh2, of2, fx2, bm2) = ann[j]
             if c2[0] - h2[0] > xmax1:
                 break
             if p1l == p2l or p1f == p2f:
@@ -309,6 +320,13 @@ def overlaps(boxes):
                 continue
             # Flexible lines + draped fabric conform to what they touch.
             if depth <= FLEX_MAX and (fx1 or fx2):
+                continue
+            # Planted/parked into landscaping mounds.
+            if depth <= BERM_MAX and (bm1 or bm2):
+                continue
+            # A post standing in a hedge/planting is planted, not
+            # clipping (mailboxes in hedges, stakes in beds).
+            if depth <= 0.35 and ((pl1 and st2) or (pl2 and st1)):
                 continue
             # A tree crown over a roofline is natural adjacency —
             # canopies hang over eaves everywhere trees stand near

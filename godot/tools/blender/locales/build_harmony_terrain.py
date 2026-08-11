@@ -5371,15 +5371,9 @@ def _build_kwik_shop_strip(cx, cy, ground_z):
                     (kw_cx, cy - depth / 2 + 0.6,
                      ground_z + 0.06),
                     (2.4, 1.2, 0.02), col_floor_mat)
-    # ── CEILING FLUORESCENT FIXTURES — 4 long boxes hanging
-    # below the roof (visual only, no Light3D — those go in the
-    # scene file)
-    for k in range(4):
-        fx_l = kw_cx - 3.0 + k * 2.0
-        _make_box_local(f"KwikShop_KwikStop_Fluo_{k}",
-                        (fx_l, cy, ground_z + 3.4),
-                        (1.6, 0.20, 0.10),
-                        (0.95, 0.94, 0.90, 1.0))
+    # (Ceiling fluorescents live in the later FloLight pass —
+    # housing + glow tube. The original 4 plain "Fluo" boxes here
+    # were a DUPLICATE light grid overlapping the FloLight tubes.)
 
     # ── SLOPED CANOPY OVER THE STOREFRONT (matches the
     # user-provided Kwik Stop reference photo). A wide canopy
@@ -5555,7 +5549,7 @@ def _build_kwik_shop_strip(cx, cy, ground_z):
     for k, col in enumerate(((0.85, 0.20, 0.18, 1.0),     # red
                               (0.32, 0.55, 0.78, 1.0),     # blue
                               (0.95, 0.85, 0.30, 1.0))):    # yellow
-        gx = kw_cx - 3.5 + k * 0.5
+        gx = kw_cx - 4.8 + k * 0.5
         gz = mesh_z(gx, gum_y)
         # Pedestal
         _make_cyl_local(f"KwikShop_KwikStop_Gum_Stand_{k}",
@@ -5744,7 +5738,7 @@ def _build_kwik_shop_strip(cx, cy, ground_z):
 
     # ── MAGAZINE / TABLOID RACK · 3-tier wire rack on the customer
     # side of the impulse area, between counter and entry door
-    mag_x = counter_x - counter_w / 2 - 0.8
+    mag_x = counter_x - counter_w / 2 - 0.35
     mag_y = counter_y - counter_d / 2 - 0.50
     mag_z = ground_z + 0.50
     # Frame stand (chrome)
@@ -6159,7 +6153,7 @@ def _build_kwik_shop_strip(cx, cy, ground_z):
         ((0.85, 0.20, 0.18, 1.0), "USAToday"),
         ((0.42, 0.42, 0.45, 1.0), "PennySaver"),
     ]):
-        nx = kw_cx + 2.0 + k * 0.50
+        nx = kw_cx + 1.70 + k * 0.50
         nz = mesh_z(nx, news_y)
         # Stand legs
         for sgn in (-1, 1):
@@ -6367,7 +6361,7 @@ def _build_kwik_shop_strip(cx, cy, ground_z):
     # eyes. The eye is somewhere in the decal's adhesive layer,
     # drifting"). Brown burger circle + cream sign + ONE eye on
     # the right (the other is missing).
-    th_x = kw_cx - 1.6
+    th_x = kw_cx - 1.15
     th_y = glass_y
     th_z = ground_z + 1.15
     # Burger body (brown circle)
@@ -7613,7 +7607,10 @@ def build_commercial_cluster():
     # to the road.
     # Cart corral near the EAST end of the Kwik Stop centre bay's
     # parking allocation. Inside the Kwik Shop strip's wider lot.
-    co_x = ks_x + 12.0
+    # East MARGIN of the lot (stalls end at ks_x+13.5, lot edge at
+    # ks_x+15) — at ks_x+12 the corral stood in stall 9, with car 7
+    # parked through its posts and carts.
+    co_x = ks_x + 14.2
     co_y = ks_y - 17.0 + 5.0   # north end of the lot at lot_y + lot_d/2
     co_z = mesh_z(co_x, co_y)
     COL_CORRAL = (0.62, 0.62, 0.64, 1.0)
@@ -7686,7 +7683,7 @@ def build_commercial_cluster():
                         (2.2, 0.16, 0.16), COL_POLE_BAR)
         # Three insulator stubs on top of the bar
         for sgn_off in (-0.9, 0.0, 0.9):
-            _make_cyl_local(f"CommUtilIns_{k}_{int(sgn_off*10):+d}",
+            _make_cyl_local(f"CommUtilPole_{k}_Ins_{int(sgn_off*10):+d}",
                             (ux + sgn_off, pole_y,
                              uz + UTIL_POLE_H - 0.10),
                             0.05, 0.20,
@@ -10401,7 +10398,7 @@ def build_church_cemetery():
             # Path is between cols 2 and 3 — skip
             if col == 2:
                 continue
-            hx = cm_cx - cm_w / 2 + 2.0 + col * 3.5
+            hx = cm_cx - cm_w / 2 + 2.45 + col * 3.5
             hy = cm_cy - cm_d / 2 + 3.0 + row * 6.0
             hz = mesh_z(hx, hy)
             stone_w = 0.50
@@ -12075,11 +12072,17 @@ def build_commercial_rooftop_mech():
         # Halsey film studios — 6 HVAC units (it's a big building)
         ("Halsey",       480, -100, 13.0, 18, 14, 6),
         # Self Storage — 4 (long building)
-        ("SelfStorage",  480, -180,  6.5, 12, 60, 5),
+        # Storage ROWS run E-W at y -192/-184/-176, tops at
+        # mesh(5.0)+3.0=8.0 — the old (6.5, 12x60) spec sank every
+        # unit 1.5m into row bodies. Narrow footprint pins the
+        # mech line onto row 1's roof.
+        ("SelfStorage",  486, -184,  8.0, 48, 0.4, 4),
         # Auto Showroom — 4
         ("AutoShowroom", 480, -260,  7.5, 30, 14, 4),
         # Big Box — 8 (huge box)
-        ("BigBox",       480,   60,  9.5, 60, 24, 8),
+        # Dept store: mesh(5.0) + 7.0 + slab = 12.2 (old 9.5
+        # floated the units inside the hollow shell).
+        ("BigBox",       480,   60, 12.2, 60, 24, 8),
         # ── Chapter 1 frontage
         # Kwik Stop strip (arcade + laundromat + kwik shop, 28m total)
         ("KwikShopStrip", -15, -360,  4.5, 28, 10, 4),
@@ -12104,9 +12107,11 @@ def build_commercial_rooftop_mech():
         # Library
         ("Library",       40,   80,  4.5, 16, 14, 2),
         # NexCorp HQ
-        ("NexCorpHQ",      0,  300, 17.0, 30, 24, 6),
+        # Tower: mesh(14.0) + 10.5 stories + slab = 24.7. The old
+        # 17.0 put all six units INSIDE the tower at level 1.
+        ("NexCorpHQ",      0,  300, 24.7, 30, 24, 6),
         # Horizon Plaza
-        ("HorizonPlaza",-100,   30,  4.5, 24, 12, 3),
+        ("HorizonPlaza",-100,   30,  5.2, 24, 12, 3),
         # Minimart
         ("Minimart",    -260,  -50,  4.5, 15, 12, 2),
     ]
@@ -12258,11 +12263,11 @@ def build_commercial_pole_signs():
         # (name, x, y, panel_w, panel_h, top_z, face_color, accent_color)
         ("Halsey",       452, -110, 4.6, 1.8, 6.5,
          (0.18, 0.18, 0.20, 1.0), (0.95, 0.85, 0.20, 1.0)),
-        ("SelfStorage",  452, -180, 3.8, 1.6, 5.5,
+        ("SelfStorage",  447, -180, 3.8, 1.6, 5.5,
          (0.95, 0.42, 0.18, 1.0), (0.92, 0.90, 0.84, 1.0)),
         ("AutoShowroom", 452, -260, 4.4, 2.0, 7.0,
          (0.18, 0.32, 0.55, 1.0), (0.92, 0.90, 0.84, 1.0)),
-        ("BigBox",       452,   60, 5.6, 2.4, 8.0,
+        ("BigBox",       447,   60, 5.6, 2.4, 8.0,
          (0.78, 0.18, 0.18, 1.0), (0.95, 0.92, 0.84, 1.0)),
     ]
     for tag, sx, sy, pw, ph, top_z, face_col, accent in sign_specs:
@@ -12731,7 +12736,10 @@ def build_residential_mailboxes():
     corridor_xys = {name: [(x, y) for (x, y, _z) in wps]
                     for (name, wps, _hw, _sh) in ROAD_CORRIDORS}
 
-    def _emit_mailboxes(pts, prefix):
+    def _emit_mailboxes(pts, prefix, skip=()):
+        # skip: indices paced over but not emitted — used where the
+        # 22m cadence lands a box inside a driveway (P2Main #3 stood
+        # in House C's parked car).
         accumulated = 0.0
         next_mb = 11.0      # first one at half a spacing in
         side_sgn = 1
@@ -12747,6 +12755,11 @@ def build_residential_mailboxes():
                 dxs = x1 - x0; dys = y1 - y0
                 perp_x = -dys / seg_len
                 perp_y =  dxs / seg_len
+                if idx in skip:
+                    idx += 1
+                    side_sgn = -side_sgn
+                    next_mb += mb_spacing
+                    continue
                 bx = mx + side_sgn * perp_x * mb_offset
                 by = my + side_sgn * perp_y * mb_offset
                 bz = mesh_z(bx, by)
@@ -12798,7 +12811,8 @@ def build_residential_mailboxes():
         if cname in corridor_xys:
             _emit_mailboxes(_catmull_rom_2d(corridor_xys[cname],
                                               samples_per_seg=4),
-                            prefix)
+                            prefix,
+                            skip=(3,) if cname == "P2Main" else ())
 
 
 def build_bus_stops():
@@ -14305,7 +14319,7 @@ def build_wild_zone_trees():
         # E wild east of EastCDS
         (480, 200, 'oak'), (480, 140, 'pine'),
         # SE wild between Phase 2 and EastComm
-        (300, -80, 'oak'), (380, -80, 'pine'),
+        (300, -80, 'oak'), (415, -80, 'pine'),
         (300, -200, 'oak'), (380, -200, 'oak'),
         # S wild between Phase 2 and SouthComm
         (100, -300, 'pine'), (180, -300, 'oak'),
@@ -14504,8 +14518,11 @@ def build_harmony_park():
     _finalize_mesh("HP_PoolDeck", deck_verts, deck_faces,
                     (0.78, 0.74, 0.66, 1.0))
 
-    # CHANGING ROOM building — east of the pool
-    cr_cx = pool_cx + deck_outer + 12.0
+    # CHANGING ROOM building — WEST of the pool, inside the park.
+    # East placement (pool_cx + deck_outer + 12 = x 77) put it
+    # ACROSS Harmony Blvd, overlapping the HS bus-stop shelter on
+    # the east sidewalk.
+    cr_cx = pool_cx - deck_outer - 12.0
     cr_cy = pool_cy
     cr_z = mesh_z(cr_cx, cr_cy)
     cr_w, cr_d, cr_h = 18.0, 10.0, 3.6
@@ -14752,7 +14769,7 @@ def build_harmony_park():
         _path_strip(f"HP_Path_CGSpur_{i}", x0, y0, x1, y1, 1.6)
 
     # ── GAZEBO · hexagonal white-painted pavilion at (-60, 150)
-    gz_cx, gz_cy = -60.0, 150.0
+    gz_cx, gz_cy = -62.0, 156.5
     gz_z = mesh_z(gz_cx, gz_cy)
     gz_r = 4.0           # hexagon radius
     gz_post_h = 3.2
@@ -15973,6 +15990,10 @@ def build_north_ranch_neighborhood():
         ('Cedar', 0, -1),     # straddles NR settlement south
         ('Cedar', 1, -1),
         ('Cedar', 2, -1),
+        ('Birch', 2, +1),     # north side at x≈-250 is INSIDE
+                              # OTPark: house + shed stood on the W
+                              # radial lamp, the drinking fountain
+                              # and the path edge stones
         ('Cedar', 2, +1),     # x=-280 is INSIDE OTPark x range
                               # (-300..-220), house at y=58 straddles
                               # OTPark south boundary (y=60) →
