@@ -158,6 +158,27 @@ no-op (fallback discipline — a script must never crash the reader).
 
 ## Recent lessons
 
+### 2026-08-11 · a preset vantage must be checked against BUILDER COORDINATES, not vibes
+
+- **Four chapters (Hermit/Star/Judgement/World) rendered "the same
+  plain brown background" through two independent failures that
+  masked each other**: the Deck's graustark.glb was a month stale
+  (the batch rebuild silently skipped it — check `ls -l` TIMESTAMPS
+  when a rebuild "didn't take"), AND the `graustark_ruins` camera
+  preset stood at the riverfront origin looking west while the ruin
+  quarter is at blender (−12..66, −300..−390) — 350m from every
+  staging mark. The second failure would have survived the rebuild:
+  fixing only the obvious cause (stale GLB) leaves the scene brown
+  and burns another Deck round-trip.
+- **The rule: when authoring or auditing a CAMERA_PRESETS entry,
+  grep the builder for the hero objects the chapter stages on and
+  put their blender coordinates in the preset comment** (the
+  graustark_ruins entry is the model). A vantage that can't name
+  what it's looking at is a vantage nobody verified.
+- **Diagnosis order for "scene renders flat/empty": (1) GLB
+  timestamp on the Deck, (2) preset origin vs builder coordinates
+  of the staging, (3) only then the shot markers.**
+
 ### 2026-08-09 · the arcana were well-directed all along — the CAMERA was lying
 
 - **User: "major arcana scenes still need a lot of work, outside the

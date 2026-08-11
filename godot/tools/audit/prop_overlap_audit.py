@@ -138,6 +138,13 @@ def record_builder(path):
         g["make_box"] = rec_box
     if "make_cyl" in g:
         g["make_cyl"] = rec_cyl
+    # harmony_terrain vendors same-signature local helpers under
+    # distinct names — without these hooks its 6 highway9 presets
+    # audited against ZERO recorded geometry.
+    if "_make_box_local" in g:
+        g["_make_box_local"] = rec_box
+    if "_make_cyl_local" in g:
+        g["_make_cyl_local"] = rec_cyl
     for noop_name in ("export_glb", "clear_scene"):
         if noop_name in g:
             g[noop_name] = lambda *a, **k: None

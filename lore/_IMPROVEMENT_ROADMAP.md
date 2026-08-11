@@ -260,6 +260,17 @@ Galley_Expo), centro_grocery_aisle 22, skatepark 21,
 riverboat_interior 21, houston_office 18, frog_knows_best 18,
 crumpled_barn 15 (the crumple — leave). NOTE: these builder fixes
 are invisible until each locale is REBUILT on the Deck.
+2026-08-11 addendum: hooking harmony_terrain's vendored
+_make_box_local/_make_cyl_local made the game's BIGGEST locale
+measurable for the first time — 8,863 objects, 110 clips
+(headliners: CPS canopy poles through the self-storage office roof
+2.3m, a birch-house through the old-town park fountain/lamps,
+KwikShop car 7 through its cart-corral posts, roof HVAC sunk in
+SS_Row_0). That's the next triage target. Also shipped: a one-shot
+preset-vantage check (scratchpad preset_vantage_check.py pattern —
+counts geometry in each Background3D preset's 60° cone); graustark
+was the only aimed-at-nothing vantage; all six highway9 presets
+see 8-104 objects.
 
 ### Workstream · SLOWSTICK PRODUCTION PASS (user-directed · 2026-08-03)
 
