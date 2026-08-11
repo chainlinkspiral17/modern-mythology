@@ -205,6 +205,11 @@ Playbooks currently maintained:
   DRAFTING PROGRAM: D2 surface breakup, D3 infrastructure, D4 use
   states, D5 depth bands + edges, D6 coverage + light. Read before
   running ANY detail pass on a locale.
+- `lore/_GEOMETRY_AUDIT_PLAYBOOK.md` — the headless geometry gates
+  (stump hunt, clipping hunt, preset vantages): stub fidelity,
+  natural-contact grammar discipline, the zero-regression
+  ceilings, the wheel/double-booking defect classes. Read before
+  touching godot/tools/audit/ or dismissing an audit report.
 
 When a new domain accumulates ≥ 5 distinct lessons, spin up a
 playbook for it.

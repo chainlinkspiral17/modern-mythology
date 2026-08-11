@@ -14,6 +14,17 @@ echo "── locale_geometry_audit.py ──"
 python3 locale_geometry_audit.py 2>/dev/null | tail -2
 echo ""
 
+# ── Preset-vantage gate (2026-08-11) ───────────────────────────
+# Every Background3D camera preset must SEE its locale's geometry
+# (the graustark_ruins preset stood 350m from all four chapters'
+# staging and every one rendered flat brown). Nonzero exit fails.
+echo "── preset_vantage_audit.py ──"
+# Captured (not piped) so a nonzero exit fails the suite under set -e.
+VOUT="$(python3 preset_vantage_audit.py 2>/dev/null)" || {
+    echo "$VOUT" | grep -v "^\["; exit 1; }
+echo "$VOUT" | grep -v "^\[" | tail -2
+echo ""
+
 # ── Prop-overlap ZERO-REGRESSION gate (2026-08-11) ─────────────
 # Every locale audits clean except four known holdouts. A locale
 # outside the allowlist reporting ANY clips is a regression; a

@@ -399,6 +399,26 @@ Louisville's hurricane-deck proportions"). Don't guess at numbers.
 
 ## Recent lessons
 
+### 2026-08-11 · ROTATING MACHINERY — the circle must be perpendicular to the axle
+
+- **Three distinct paddlewheel bugs shipped in three builders.**
+  Riverfront: axle along X but the blade circle built in the XZ
+  plane (rotating about Y) — a quarter of every revolution swung
+  blades 1.1m through the stern into the dining room. Diner: the
+  fore-aft circle offset (`rx`) was computed and NEVER USED — all
+  8 blades stacked in a vertical column through the hub, diving
+  under River Road. Graustark: the paddlebox named outside the
+  hull's assembly prefix. **Rule: for any wheel/fan/turbine, write
+  the axle axis in a comment, then place every blade at
+  `center + r*cos(ang)` and `r*sin(ang)` on the two axes
+  PERPENDICULAR to it — and check that both offsets are actually
+  used.** The overlap audit catches the failure as blades in
+  walls/roads.
+- Corollary: name every part of a machine into ONE assembly prefix
+  (PW_*, Carousel_*, Wagon_*) — the audit excuses same-assembly
+  contact, and a machine split across prefixes drowns real finds
+  in its own construction.
+
 ### 2026-08-11 · AUDIT STUBS — a recorded object must survive being USED
 
 - **The overlap/geometry audit's recorder returns stood in for real
