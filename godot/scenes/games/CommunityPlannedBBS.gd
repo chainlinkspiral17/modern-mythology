@@ -211,16 +211,68 @@ func _render_dial_directory() -> void:
 		var where: String = String(entry.get("where", ""))
 		var name: String = String(entry.get("name", ""))
 		_main_label.append_text("[color=%s]  [%s]  %s[/color]" % [color, letter, name])
-		_main_label.append_text("  [color=#42a042]· sysop %s · %s[/color]\n" % [sysop, where])
+		_main_label.append_text("  [color=#42a042]· sysop %s · %s[/color]" % [sysop, where])
+		# Unread badge — new content since the last read pass.
+		if _is_bbs_dialable(entry):
+			var unread: int = _bbs_unread_count(entry)
+			if unread > 0:
+				_main_label.append_text("  [color=#e8d060]● %d new[/color]" % unread)
+		_main_label.append_text("\n")
 		# Special render for SNACKS pre-readmission
 		if String(entry["id"]) == "SNACKS" and not _is_bbs_dialable(entry):
 			_main_label.append_text("       [color=#866642]your tombstone is still pinned. (banned until W%d)[/color]\n" %
 				int(entry.get("frasiers_ban", {}).get("in_effect_until_week", 2)))
 	_main_label.append_text("\n[color=#62a862]  [N]  dial a number you've heard about.[/color]\n")
+	var mail_unread: int = _total_dm_unread()
+	if mail_unread > 0:
+		_main_label.append_text("[color=#e8d060]  [M]  mail · %d new[/color]\n" % mail_unread)
+	else:
+		_main_label.append_text("[color=#62a862]  [M]  mail.[/color]\n")
 	_main_label.append_text("[color=#62a862]  [Q]  hang up.  return to the board.[/color]\n")
 	if _glossary_unlocked:
 		_main_label.append_text("[color=#c8a842]  [G]  glossary · the substitutions are now legible.[/color]\n")
 	_cmd_label.text = "press a digit to dial · N to type a number · Q to hang up"
+
+
+func _board_unread_count(board: Dictionary) -> int:
+	# Threads available at the current week whose ids aren't in the
+	# read ledger. Hidden boards count once discovered (caller
+	# filters visibility).
+	var threads_path: String = String(board.get("threads_path", ""))
+	if threads_path == "" or not FileAccess.file_exists(threads_path):
+		return 0
+	var data: Dictionary = _load_json_strict(threads_path)
+	var n: int = 0
+	for t in data.get("threads", []):
+		if int(t.get("available_from_week", 1)) > _current_week:
+			continue
+		if not _read_thread_ids.has(String(t["id"])):
+			n += 1
+	return n
+
+
+func _bbs_unread_count(entry: Dictionary) -> int:
+	var path: String = String(entry.get("board_list_path", ""))
+	if path == "" or not FileAccess.file_exists(path):
+		return 0
+	var board_list: Dictionary = _load_json_strict(path)
+	var n: int = 0
+	for b in board_list.get("boards", []):
+		var vis: String = String(b.get("visibility", "public_from_start"))
+		if vis == "hidden" and not bool(_discovered_hidden_boards.get(String(b["id"]), false)):
+			continue
+		n += _board_unread_count(b)
+	return n
+
+
+func _total_dm_unread() -> int:
+	_load_dm_index()
+	var n: int = 0
+	for entry in _dm_threads_cache:
+		var canonical: String = String(entry["canonical_character_id"])
+		var beats_path: String = DM_ROOT + String(entry.get("file", canonical + ".json"))
+		n += _dm_unread_count(canonical, beats_path)
+	return n
 
 
 func _is_directory_entry_visible(entry: Dictionary) -> bool:
@@ -267,19 +319,23 @@ func _render_board_list() -> void:
 	var board_list: Dictionary = _load_json_strict(path)
 	for b in board_list.get("boards", []):
 		var vis: String = String(b.get("visibility", "public_from_start"))
+		var board_unread: int = _board_unread_count(b)
+		var badge: String = ""
+		if board_unread > 0:
+			badge = "  [color=#e8d060]● %d new[/color]" % board_unread
 		if vis == "hidden":
 			if not bool(_discovered_hidden_boards.get(String(b["id"]), false)):
 				continue
 			# Discovered hidden board — render with a quiet marker.
 			_main_label.append_text("[color=#e0c862]  [%s]  %s[/color]" % [
 				String(b["letter"]), String(b["name"])])
-			_main_label.append_text("  [color=#c8a842]· %s[/color]\n" %
-				String(b.get("subtitle", "")))
+			_main_label.append_text("  [color=#c8a842]· %s[/color]%s\n" %
+				[String(b.get("subtitle", "")), badge])
 			continue
 		_main_label.append_text("[color=#a8e0a8]  [%s]  %s[/color]" % [
 			String(b["letter"]), String(b["name"])])
-		_main_label.append_text("  [color=#42a042]· %s[/color]\n" %
-			String(b.get("subtitle", "")))
+		_main_label.append_text("  [color=#42a042]· %s[/color]%s\n" %
+			[String(b.get("subtitle", "")), badge])
 	_main_label.append_text("\n[color=#62a862]  [D]  redial.  back to directory.[/color]\n")
 	_main_label.append_text("[color=#62a862]  [Q]  hang up.  return to the board.[/color]\n")
 	if _glossary_unlocked:
@@ -311,11 +367,14 @@ func _render_thread_list() -> void:
 			var avail: int = int(t.get("available_from_week", 1))
 			if avail > _current_week:
 				continue
-			var read_marker: String = "  "
 			if _read_thread_ids.has(String(t["id"])):
-				read_marker = "· "
-			_main_label.append_text("[color=#a8e0a8]  %s[%d]  %s[/color]\n" % [
-				read_marker, idx, String(t["subject"])])
+				# Read: dim, quiet dot.
+				_main_label.append_text("[color=#5a9a5a]  · [%d]  %s[/color]\n" % [
+					idx, String(t["subject"])])
+			else:
+				# Unread: amber dot + brighter subject.
+				_main_label.append_text("[color=#e8d060]  ● [/color][color=#c8f0c8][%d]  %s[/color]  [color=#e8d060]new[/color]\n" % [
+					idx, String(t["subject"])])
 			_main_label.append_text("       [color=#42a042]%s · %s[/color]\n" % [
 				String(t["op"].get("handle", "?")),
 				String(t["op"].get("date", ""))])
