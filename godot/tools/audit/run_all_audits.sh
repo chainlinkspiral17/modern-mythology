@@ -29,7 +29,6 @@ import sys
 
 # holdout: recorded ceiling (2026-08-11)
 HOLDOUTS = {
-    "riverfront": 460,      # backdrop-massing decision pending
     "kwik_stop": 90,        # model chapter - screenshot-gated
     "diner": 55,            # model chapter - candidates pending
     "crumpled_barn": 15,    # the crumple IS the overlap

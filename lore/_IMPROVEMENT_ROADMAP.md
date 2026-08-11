@@ -326,6 +326,29 @@ pipes as structure, vending/warmers/domes/nightstands contain.
 NEXT DRAFT: riverfront backdrop decision → kwik_stop screenshots →
 diner candidates; then this gate goes into run_all_audits.sh as a
 zero-regression check.
+2026-08-11 night · RIVERFRONT 450 → 0 CLEAN + the gate is LIVE.
+run_all_audits.sh now ends with the prop-overlap zero-regression
+gate (holdouts: kwik_stop 90 / diner 55 / crumpled_barn 15 — never
+bump a ceiling; fix the builder or extend the grammar). Riverfront
+real finds: BOTH armory/old-church silhouette passes were built
+INSIDE the detailed strip mall (Armory_Tower fully within it, the
+mass crossing River Road) — whole silhouette layer moved 20m west
+behind the frontage, skyline blocks west of that; THE PADDLEWHEEL
+WAS ROTATING ABOUT THE WRONG AXIS (blade circle in XZ instead of
+YZ — every revolution swung blades 1.1m through the stern into the
+dining room; wheel reframed about the X axle + moved 0.6 aft);
+roadside tree ty=-28 slipped an exclusive bound into the gas
+station store; SpeedLimit_S stood inside bridge pier 0; lobster
+trap 2 in a fuel drum. Grammar draft 10: BACKDROP x BACKDROP
+(oppo/far/shore/skyline/masses/billboard/far-bank groups), vessel
+superstructure joins itself, terrain-water-bank interlock,
+grounded-object rule (proud of the ground sheet = standing, not
+clipping), pier abutments, plant-strip berms, stilts as structure.
+Graustark draft 3 also shipped: Hermit/Star/Judgement/World each
+open on their own staging (chalked wall / cottage gate / Minstral
+wreck / the wide). REPO TOTAL: 1693 this morning → 132 tonight,
+all inside the three model-chapter holdouts. Deck rebuild:
+riverfront (the wheel + silhouettes are geometry).
 
 ### Workstream · SLOWSTICK PRODUCTION PASS (user-directed · 2026-08-03)
 

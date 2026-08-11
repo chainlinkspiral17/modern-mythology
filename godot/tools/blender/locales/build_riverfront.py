@@ -1093,7 +1093,7 @@ def build_riverboat():
     # ════════════════════════════════════════════════════════════
     # PADDLE WHEEL — bigger, with proper housing
     # ════════════════════════════════════════════════════════════
-    pw_y = -BOAT_L / 2 - 2.0   # AFT of stern (stern-wheeler)
+    pw_y = -BOAT_L / 2 - 2.6   # AFT of stern (stern-wheeler)
     pw_z = RIVER_LEVEL_Z + 2.4
     pw_radius = 2.4
     pw_blade_n = 12
@@ -1102,13 +1102,13 @@ def build_riverboat():
     house_h_total = 5.4
     house_w = BOAT_W * 0.85
     for ti, (zoff, wfrac) in enumerate([(-2.5, 0.85), (-1.4, 0.95), (0.0, 1.0), (1.4, 0.95), (2.5, 0.85)]):
-        make_box(f"PWHouse_tier_{ti}", (0, pw_y, pw_z + zoff), (house_w * wfrac, 0.50, 1.20), COL_PADDLE_HOUSING)
+        make_box(f"PW_House_tier_{ti}", (0, pw_y, pw_z + zoff), (house_w * wfrac, 0.50, 1.20), COL_PADDLE_HOUSING)
     # back wall of housing
-    make_box("PWHouse_Back", (0, pw_y + 0.35, pw_z), (house_w, 0.10, house_h_total), COL_PADDLE_HOUSING)
+    make_box("PW_House_Back", (0, pw_y + 0.35, pw_z), (house_w, 0.10, house_h_total), COL_PADDLE_HOUSING)
     # housing crown — decorative top ridge
     for i in range(int(house_w / 0.50)):
         cx = -house_w/2 + 0.25 + i * 0.50
-        make_box(f"PWHouse_Crest_{i}", (cx, pw_y, pw_z + 2.85), (0.12, 0.50, 0.20), col_crest)
+        make_box(f"PW_House_Crest_{i}", (cx, pw_y, pw_z + 2.85), (0.12, 0.50, 0.20), col_crest)
 
     # Hub and axle (cylinder along X)
     make_cyl("PW_Axle", (0, pw_y, pw_z), 0.30, BOAT_W * 0.75, COL_BRASS, segments=8, axis='X')
@@ -1117,38 +1117,43 @@ def build_riverboat():
 
     # Outer rims — proper toruses around the hub on each side of the
     # wheel (left + right end-caps of the paddle assembly).
-    rim_y_L = pw_y - BOAT_W * 0.30
-    rim_y_R = pw_y + BOAT_W * 0.30
-    make_torus("PW_Rim_L", (0, rim_y_L, pw_z),
+    # The wheel SPINS ABOUT THE X AXLE, so its circle lives in the
+    # YZ plane and the rims cap the two axle ENDS. The old frame had
+    # the circle in XZ (rotating about Y) — a quarter of every
+    # revolution swung the blades fore through the stern into the
+    # dining-room wall by 1.1m.
+    rim_x_L = -BOAT_W * 0.30
+    rim_x_R = +BOAT_W * 0.30
+    make_torus("PW_Rim_L", (rim_x_L, pw_y, pw_z),
                major_r=pw_radius, minor_r=0.08, base_color=COL_PADDLE_BLADES,
-               major_seg=pw_blade_n, minor_seg=6, axis='Y')
-    make_torus("PW_Rim_R", (0, rim_y_R, pw_z),
+               major_seg=pw_blade_n, minor_seg=6, axis='X')
+    make_torus("PW_Rim_R", (rim_x_R, pw_y, pw_z),
                major_r=pw_radius, minor_r=0.08, base_color=COL_PADDLE_BLADES,
-               major_seg=pw_blade_n, minor_seg=6, axis='Y')
+               major_seg=pw_blade_n, minor_seg=6, axis='X')
     # Spokes (real angled cylinders from hub to rim, not axis-aligned
     # box hacks) + blades at the rim
     blade_len = BOAT_W * 0.75
     for i in range(pw_blade_n):
         ang = 2.0 * math.pi * i / pw_blade_n
-        bx = math.cos(ang) * pw_radius
+        by = pw_y + math.cos(ang) * pw_radius
         bz = math.sin(ang) * pw_radius + pw_z
         # Spoke L (left end of axle to rim L)
         make_tube_segment(f"PW_Spoke_L_{i}",
-                          (0, rim_y_L, pw_z),
-                          (bx, rim_y_L, bz),
+                          (rim_x_L, pw_y, pw_z),
+                          (rim_x_L, by, bz),
                           0.05, COL_PADDLE_BLADES, segments=5)
         # Spoke R
         make_tube_segment(f"PW_Spoke_R_{i}",
-                          (0, rim_y_R, pw_z),
-                          (bx, rim_y_R, bz),
+                          (rim_x_R, pw_y, pw_z),
+                          (rim_x_R, by, bz),
                           0.05, COL_PADDLE_BLADES, segments=5)
         # Blade plank at the rim, running along the axle
-        make_box(f"PW_Blade_{i}", (bx, pw_y, bz),
-                 (0.10, blade_len, 0.55), COL_PADDLE_BLADES)
+        make_box(f"PW_Blade_{i}", (0, by, bz),
+                 (blade_len, 0.10, 0.55), COL_PADDLE_BLADES)
         # Cross-brace between the two rims at this blade position
         make_tube_segment(f"PW_Brace_{i}",
-                          (bx, rim_y_L, bz),
-                          (bx, rim_y_R, bz),
+                          (rim_x_L, by, bz),
+                          (rim_x_R, by, bz),
                           0.04, COL_BRASS, segments=4)
 
     # ════════════════════════════════════════════════════════════
@@ -2231,7 +2236,7 @@ def build_road_network():
     for ti, ty in enumerate(tree_ys):
         # Skip positions where buildings sit (gas station / strip mall /
         # parking-lot driveway zones)
-        if -50 < ty < -28 or 14 < ty < 48 or -20 < ty < 20:
+        if -52 < ty < -26 or 14 < ty < 48 or -20 < ty < 20:
             continue
         is_cypress = (ti % 2 == 0)
         canopy_col = (0.22, 0.32, 0.18, 1.0) if is_cypress else (0.30, 0.36, 0.22, 1.0)
@@ -2345,7 +2350,7 @@ def build_road_network():
     _make_speed_limit("SpeedLimit_N",
                        FRONTAGE_X - road_w/2 - side_w - 0.4, 95.0)
     _make_speed_limit("SpeedLimit_S",
-                       FRONTAGE_X + road_w/2 + side_w + 0.4, -95.0)
+                       FRONTAGE_X + road_w/2 + side_w + 0.4, -78.0)
 
     # ── "D'AMBROSIO'S → " EXIT ARROW SIGN at the road
     # Two-line sign on a tall post — points east toward the lot entry.
@@ -2665,7 +2670,7 @@ def build_dock():
 
     # Lobster trap stack
     trap_col = (0.40, 0.30, 0.18, 1.0)
-    for ti, ox in enumerate([0, 0.85, 1.7]):
+    for ti, ox in enumerate([0, 0.85, -0.85]):
         tx_p = dock_cx - 2.5
         ty_p = dock_cy - 3.5
         make_box(f"LobsterTrap_{ti}", (tx_p + ox, ty_p, dock_z + 0.10 + 0.20), (0.70, 0.90, 0.40), trap_col)
@@ -4302,14 +4307,14 @@ def build_park_draft2_2026_08():
         _mb(f"Park_Fence_Rail_{fi}", (-55.6, fy, 0.85), (0.05, 3.0, 0.06), (0.18, 0.18, 0.20, 1.0))
         _mb(f"Park_Fence_Post_{fi}", (-55.6, fy - 1.4, 0.5), (0.08, 0.08, 1.0), (0.16, 0.16, 0.18, 1.0))
     # ── Skyline band: shape the armory + add rooftops behind ──
-    _mb("Armory_Tower", (-68.5, 30.0, 6.5), (5.0, 5.0, 13.0), (0.42, 0.30, 0.24, 1.0))
-    _mb("Armory_Tower_Cap", (-68.5, 30.0, 13.4), (5.6, 5.6, 0.8), (0.38, 0.27, 0.22, 1.0))
-    _mb("Armory_Arch_Shadow", (-61.0, 28.05, 2.2), (3.2, 0.1, 4.4), (0.16, 0.13, 0.11, 1.0))
-    for ci, cx in enumerate((-66.0, -63.5)):
+    _mb("Armory_Tower", (-88.5, 30.0, 6.5), (5.0, 5.0, 13.0), (0.42, 0.30, 0.24, 1.0))
+    _mb("Armory_Tower_Cap", (-88.5, 30.0, 13.4), (5.6, 5.6, 0.8), (0.38, 0.27, 0.22, 1.0))
+    _mb("Armory_Arch_Shadow", (-81.0, 28.05, 2.2), (3.2, 0.1, 4.4), (0.16, 0.13, 0.11, 1.0))
+    for ci, cx in enumerate((-86.0, -83.5)):
         _mb(f"Armory_Chimney_{ci}", (cx, 36.0, 10.2), (0.9, 0.9, 2.4), (0.38, 0.28, 0.22, 1.0))
     # Rooftop rhythm behind the armory gap — the town continues.
-    for ri, (rx, ry, rh, rw) in enumerate(((-74.0, 20.0, 6.5, 6.0), (-77.0, 30.0, 8.0, 5.0),
-                                           (-73.0, 40.0, 5.5, 7.0))):
+    for ri, (rx, ry, rh, rw) in enumerate(((-96.0, 20.0, 6.5, 6.0), (-99.0, 30.0, 8.0, 5.0),
+                                           (-95.0, 40.0, 5.5, 7.0))):
         _mb(f"Skyline_Block_{ri}", (rx, ry, rh / 2.0), (rw, 6.0, rh), (0.40, 0.33, 0.28, 1.0))
         _mb(f"Skyline_Roof_{ri}", (rx, ry, rh + 0.4), (rw + 0.4, 6.4, 0.8), (0.30, 0.24, 0.20, 1.0))
 
@@ -4345,12 +4350,12 @@ def build_park_2026_08():
     _mc("Bandstand_Roof", (bx, by, 3.9), 3.4, 0.6, (0.38, 0.30, 0.24, 1.0), segments=8)
     _mc("Bandstand_Finial", (bx, by, 4.6), 0.5, 0.8, (0.32, 0.26, 0.20, 1.0), segments=8)
     # The Old Armory silhouette behind the park
-    _mb("Armory_Mass", (-62.0, 34.0, 4.5), (18.0, 12.0, 9.0), (0.44, 0.32, 0.26, 1.0))
+    _mb("Armory_Mass", (-82.0, 34.0, 4.5), (18.0, 12.0, 9.0), (0.44, 0.32, 0.26, 1.0))
     for ci in range(7):
-        _mb(f"Armory_Crenel_{ci}", (-69.5 + ci * 2.5, 28.2, 9.4), (1.2, 0.6, 0.8), (0.40, 0.29, 0.23, 1.0))
+        _mb(f"Armory_Crenel_{ci}", (-89.5 + ci * 2.5, 28.2, 9.4), (1.2, 0.6, 0.8), (0.40, 0.29, 0.23, 1.0))
     # The old church three blocks off
-    _mb("Old_Church_Mass", (-70.0, 12.0, 3.75), (8.0, 12.0, 7.5), (0.72, 0.70, 0.62, 1.0))
-    _mb("Old_Church_Steeple", (-70.0, 8.5, 10.5), (1.6, 1.6, 6.5), (0.66, 0.64, 0.56, 1.0))
+    _mb("Old_Church_Mass", (-90.0, 12.0, 3.75), (8.0, 12.0, 7.5), (0.72, 0.70, 0.62, 1.0))
+    _mb("Old_Church_Steeple", (-90.0, 8.5, 10.5), (1.6, 1.6, 6.5), (0.66, 0.64, 0.56, 1.0))
     # The long black car idling on the River Road shoulder
     _mb("Black_Car_Body", (-54.0, 24.0, 0.55), (1.75, 4.6, 0.55), (0.08, 0.08, 0.10, 1.0))
     _mb("Black_Car_Cabin", (-54.0, 23.7, 1.02), (1.6, 2.4, 0.45), (0.08, 0.08, 0.10, 1.0))

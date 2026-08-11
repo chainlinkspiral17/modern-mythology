@@ -37,7 +37,7 @@ WALLISH = re.compile(
     r"wall|window|door|sign|brand|part[nsew]?\b|trim|crown|"
     r"baseboard|backsplash|wainscot|frame|sill|floor|ceil|apron|"
     r"cornice|facade|"
-    r"turf|road|grass|rug|mat|plumbing|curb|kerb|lawn|drive|sidewalk|path\b|path_|apron|asphalt|edgeline|shoulder|gravel|yard\b|headland|ground|walk\b|walkway|win\b|win_|outlet|socket|plate\b|numeral|slab|plaza|endzone|seam|shore|sand|dune", re.I)
+    r"turf|road|grass|rug|mat|plumbing|curb|kerb|lawn|drive|sidewalk|path\b|path_|apron|asphalt|edgeline|shoulder|gravel|yard\b|headland|ground|walk\b|walkway|win\b|win_|outlet|socket|plate\b|numeral|slab|plaza|endzone|seam|shore|sand|dune|land\b", re.I)
 CONTAINERISH = re.compile(
     r"cage|case|chest|bin\b|bin_|basket|crate|rack|cooler|fridge|"
     r"freezer|cubby|cart|shelf|shelv|island|hutch|drawer|cab\b|"
@@ -62,7 +62,7 @@ NONSOLID = re.compile(r"spray|mist|steam|smoke|shaft|glow|beam\b|dust|fog|surf|f
 BURIEDISH = re.compile(r"culvert|drain|conduit|footing|foundation|piling", re.I)
 # Rock against rock — talus piles, jagged outcrops, scree — is
 # geology, not clipping.
-ROCKISH = re.compile(r"jag|talus|rock|outcrop|boulder|scree|crag|cliff|rim\b|rim_|face\b|face_|gorge|tepui|ledge|"
+ROCKISH = re.compile(r"jag|talus|rock|outcrop|boulder|scree|crag|cliff|rim\b|rim_|face\b|face_|gorge|tepui|ledge|hill|"
                      # Collapsed masonry IS rubble — graustark's ruins
                      # interpenetrate each other and their sinkhole by
                      # design, and vegetation grows through them.
@@ -72,12 +72,12 @@ ROCKISH = re.compile(r"jag|talus|rock|outcrop|boulder|scree|crag|cliff|rim\b|rim
 PLANTISH = re.compile(r"shrub|bush|hedge|fern|reed|weed|plant|vine|"
                       r"cypress|oak|conifer|tree|myrtle|magnolia|alder|sitka|spruce|"
                       r"cedar|fir\b|pine|birch|willow|green\b|green_|growth|ivy|moss|"
-                      r"scrub|bramble", re.I)
+                      r"scrub|bramble|fallenlog|log\b", re.I)
 ROOFISH = re.compile(r"eave|ridge|roof|gable|chimney|awning\b", re.I)
 STRUCTISH = re.compile(
     r"leg|brace|strut|post|pole|beam|rail|truss|arm\b|_arm|spindle|"
     r"baluster|joist|stud\b|stud_|wire|cable|line|rope|cord|string|"
-    r"knee\b|knee_|pipe|"
+    r"knee\b|knee_|pipe|bollard|col\b|col_|stilt|"
     r"stanchion", re.I)
 # Seats TUCK under their work surface by use — a stool under a desk,
 # a booth bench meeting the expo counter. Bounded so a chair buried
@@ -104,13 +104,21 @@ FLEXISH = re.compile(r"wire|cable|cord|cord_|rope|chain|towel|rag|"
 FLEX_MAX = 0.30
 # Landscaping features are mounded soft dirt — poles, hydrants,
 # signs and wheels sink into berms and beds by planting/parking.
-BERMISH = re.compile(r"berm|mulch|planter|flower_bed|_bed\b|hill", re.I)
+BERMISH = re.compile(r"berm|mulch|planter|plantstrip|flower_bed|_bed\b|hill", re.I)
 BERM_MAX = 0.65
 # A steamboat funnel passes THROUGH every deck and roof above it by
 # construction (the diner's riverboat superstructure). Only excused
 # when paired with a deck/roof — a soda-stack pyramid never is.
 STACKISH = re.compile(r"\bstack|funnel|flue", re.I)
 DECKISH = re.compile(r"deck|slab|ceil", re.I)
+# Distant backdrop scenery is COMPOSED, not placed — far-bank
+# buildings absorb their trees, hills overlap each other. Both
+# names must be backdrop-class; a near object in a far one still
+# reports.
+BACKDROPISH = re.compile(r"oppo|far_|far\b|farhill|farpole|skyline|neardeep|_mass\b|"
+                         r"distant|backdrop|horizon|shore|billboard|"
+                         r"ground_(port|starboard|north|south)|north_house|"
+                         r"south_(house|warehouse|tank|crane|refstack)|north_church", re.I)
 # Stair members rise THROUGH the floor/ceiling plane at the
 # stairwell (the audit sees solid slabs, not the opening).
 STAIRISH = re.compile(r"baluster|newel|handrail|stringer", re.I)
@@ -235,7 +243,7 @@ def overlaps(boxes):
             bool(SEATISH.search(n)), bool(WHEELISH.search(n)),
             bool(OFFERINGISH.search(n)), bool(FLEXISH.search(n)),
             bool(BERMISH.search(n)), bool(STAIRISH.search(n)),
-            bool(LAMPISH.search(n)),
+            bool(LAMPISH.search(n)), bool(BACKDROPISH.search(n)),
         ))
     # Sweep-and-prune on x: sorted by min-x, the inner scan breaks at
     # the first box that starts past this one's max-x — every later
@@ -245,12 +253,12 @@ def overlaps(boxes):
     for i in range(len(ann)):
         (n1, c1, h1, p1l, p1f, ns1, bu1, pl1, rk1, cr1, wa1,
          co1, su1, st1, rf1, po1, sk1, dk1, se1, wh1, of1, fx1, bm1,
-         sr1, lp1) = ann[i]
+         sr1, lp1, bd1) = ann[i]
         xmax1 = c1[0] + h1[0]
         for j in range(i + 1, len(ann)):
             (n2, c2, h2, p2l, p2f, ns2, bu2, pl2, rk2, cr2, wa2,
              co2, su2, st2, rf2, po2, sk2, dk2, se2, wh2, of2, fx2, bm2,
-             sr2, lp2) = ann[j]
+             sr2, lp2, bd2) = ann[j]
             if c2[0] - h2[0] > xmax1:
                 break
             if p1l == p2l or p1f == p2f:
@@ -258,6 +266,25 @@ def overlaps(boxes):
             if ns1 or ns2:
                 continue
             if bu1 or bu2:
+                continue
+            if bd1 and bd2:
+                continue
+            # A vessel's own superstructure joins itself — decks on
+            # walls, stacks through cabins, gangways into hulls (the
+            # riverfront sternwheeler is one machine).
+            l1, l2 = n1.lower(), n2.lower()
+            VESSEL = ("dr_", "sc_", "ph_", "pw_", "saloon", "hurricane",
+                      "boiler", "gangway", "paddle", "hull", "boat",
+                      "stack", "pilot")
+            if any(l1.startswith(v) or ("_" + v) in l1 for v in VESSEL) and \
+                    any(l2.startswith(v) or ("_" + v) in l2 for v in VESSEL):
+                continue
+            # Terrain meets water meets bank — grounds, rivers,
+            # bayous, shores and docks all interlock at the edge.
+            WATERY = ("ground", "river", "bayou", "shore", "bank",
+                      "dock", "quay", "boat", "pier")
+            if any(w in l1 for w in WATERY) and \
+                    any(w in l2 for w in WATERY):
                 continue
             if pl1 and pl2:
                 continue
@@ -298,6 +325,27 @@ def overlaps(boxes):
             if not ok:
                 continue
             depth = min(pen)
+            # Things STAND IN the ground: a foundation sinks to any
+            # depth as long as the object rises proud of the ground
+            # sheet's surface (warehouses on the port land, bridge
+            # piers, church towers). Any axis — proud is the test.
+            if True:
+                grounded = False
+                for (na, ca, ha), (nb, cb, hb) in (
+                        ((n1, c1, h1), (n2, c2, h2)),
+                        ((n2, c2, h2), (n1, c1, h1))):
+                    la = na.lower()
+                    if ("ground" in la or la.endswith("land") or
+                            "terrain" in la) and                             cb[2] + hb[2] > ca[2] + ha[2] + 0.5:
+                        grounded = True
+                        break
+                if grounded:
+                    continue
+            # A bridge pier rises through the sidewalk at its
+            # abutment by construction.
+            if depth <= 0.75 and "pier" in (n1 + n2).lower() and \
+                    (wa1 or wa2):
+                continue
             # Report floor: contact artifacts (books against the case
             # back, a jacket draped on a bench, a phone seated on a
             # desk) all land under 4cm. Every confirmed-real clip so
@@ -348,8 +396,9 @@ def overlaps(boxes):
             if depth <= BERM_MAX and (bm1 or bm2):
                 continue
             # A post standing in a hedge/planting is planted, not
-            # clipping (mailboxes in hedges, stakes in beds).
-            if depth <= 0.35 and ((pl1 and st2) or (pl2 and st1)):
+            # clipping (mailboxes in hedges, stakes in beds, shack
+            # stilts among cypress root flares).
+            if depth <= 0.45 and ((pl1 and st2) or (pl2 and st1)):
                 continue
             # A tree crown over a roofline is natural adjacency —
             # canopies hang over eaves everywhere trees stand near
