@@ -34,15 +34,15 @@ import locale_geometry_audit as A
 EPS = 0.015
 EMBED_MAX = 0.14   # wall thickness + proud trim/frame
 WALLISH = re.compile(
-    r"wall|window|door|sign|brand|part[nsew]?\b|trim|crown|"
+    r"wall|window|door|sign|brand|part[nsew]?\b|partition|trim|crown|band\b|band_|"
     r"baseboard|backsplash|wainscot|frame|sill|floor|ceil|apron|"
     r"cornice|facade|"
-    r"turf|road|grass|rug|mat|plumbing|curb|kerb|lawn|drive|sidewalk|path\b|path_|apron|asphalt|edgeline|shoulder|gravel|yard\b|headland|ground|walk\b|walkway|win\b|win_|outlet|socket|plate\b|numeral|slab|plaza|endzone|seam|shore|sand|dune|land\b", re.I)
+    r"turf|road|grass|rug|mat|plumbing|curb|kerb|lawn|drive|sidewalk|path\b|path_|apron|asphalt|edgeline|shoulder|gravel|yard\b|headland|ground|walk\b|walkway|win\b|win_|outlet|socket|plate\b|numeral|slab|plaza|endzone|seam|shore|sand|dune|land\b|grout", re.I)
 CONTAINERISH = re.compile(
     r"cage|case|chest|bin\b|bin_|basket|crate|rack|cooler|fridge|"
     r"freezer|cubby|cart|shelf|shelv|island|hutch|drawer|cab\b|"
     r"cabinet|locker|oven|proofer|tub\b|vase|votive|sink|basin|"
-    r"wrap|pallet\b|counter|vend|warmer|nightstand|dome", re.I)
+    r"wrap|pallet\b|counter|vend|warmer|nightstand|dome|bucket", re.I)
 # Objects RESTING on a surface: min-penetration axis is Z and one of
 # the pair is a surface. Books sink 2cm into their shelf, a phone
 # into its desk — seating, not clipping.
@@ -336,7 +336,9 @@ def overlaps(boxes):
                         ((n2, c2, h2), (n1, c1, h1))):
                     la = na.lower()
                     if ("ground" in la or la.endswith("land") or
-                            "terrain" in la) and                             cb[2] + hb[2] > ca[2] + ha[2] + 0.5:
+                            "terrain" in la or "road" in la or
+                            "asphalt" in la or "sidewalk" in la) and \
+                            cb[2] + hb[2] > ca[2] + ha[2] + 0.5:
                         grounded = True
                         break
                 if grounded:
@@ -369,6 +371,11 @@ def overlaps(boxes):
                 continue
             if depth <= SEAT_MAX and pen.index(depth) == 2 and \
                     (su1 or su2):
+                continue
+            # Furniture KISS: work surfaces stand pressed against
+            # their neighbors (tables against the sideboard, the
+            # expo counter against the booth) up to a trim depth.
+            if depth <= 0.14 and (su1 or su2):
                 continue
             if st1 and st2:
                 continue

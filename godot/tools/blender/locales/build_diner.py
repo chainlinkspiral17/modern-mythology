@@ -3974,7 +3974,7 @@ def build_table_dressings():
         # Base body + darker recessed slot band
         make_box(f"NapkinDispenser_{i}",
                  (ndx, ndy, table_z + 0.075), (w_x, w_y, 0.15), chrome)
-        make_box(f"NapkinDisp_Slot_{i}",
+        make_box(f"NapkinDispenser_Slot_{i}",
                  (ndx, ndy, table_z + 0.09),
                  (w_x - 0.03, w_y - 0.03, 0.11), chrome_dk)
         # Domed chrome caps on the two ends (the retro shoulders)
@@ -5012,20 +5012,25 @@ def build_riverboat_superstructure():
         # we still make all 8 since some are partially submerged)
         for b in range(8):
             ang = math.radians(b * 45)
-            rx = wheel_r * math.cos(ang)
+            ry = wheel_r * math.cos(ang)
             rz = wheel_r * math.sin(ang)
             if rz < -2.5:    # the truly-underwater blades — skip
                 continue
+            # Blade ON the wheel circle (YZ plane about the X axle).
+            # The old code computed the fore-aft offset and never
+            # used it — all 8 blades stacked in a vertical column
+            # through the hub, the bottom diving under the road.
             make_box(f"Wheel_{sgn_x:+d}_Blade_{b}",
-                     (wx, -D_D/2 - 1.5, wheel_cz + rz),
+                     (wx, -D_D/2 - 1.5 + ry, wheel_cz + rz),
                      (0.20, 0.40, 0.10), COL_BOAT_WHEEL)
-            # Spoke from hub to blade
-            spoke_z_center = wheel_cz + rz / 2
-            spoke_len = abs(rz)
+            # Spoke from hub to blade — diagonal proxy plate
+            spoke_len = math.hypot(ry, rz)
             if spoke_len > 0.20:
                 make_box(f"Wheel_{sgn_x:+d}_Spoke_{b}",
-                         (wx, -D_D/2 - 1.5, spoke_z_center),
-                         (0.06, 0.30, spoke_len),
+                         (wx, -D_D/2 - 1.5 + ry / 2,
+                          wheel_cz + rz / 2),
+                         (0.06, 0.10 + abs(ry) * 0.9,
+                          0.10 + abs(rz) * 0.9),
                          COL_BOAT_WHEEL)
     # Cross-bar connecting the two paddle-box hubs (the actual paddle axle)
     make_cyl("Wheel_Axle",
@@ -5925,21 +5930,21 @@ def build_dambrosios_dressing_2026_08():
     make_box("Damb_Rope_R", (-11.40, -1.45, 0.90), (0.50, 0.05, 0.05), burg)
     # SERVICE BAR stub against the room's E wall — where the
     # bartender runs cards up to the helm.
-    make_box("Damb_ServiceBar_Body", (-9.35, -4.3, 0.55), (0.50, 1.60, 1.10), (0.30, 0.18, 0.10, 1.0))
-    make_box("Damb_ServiceBar_Top", (-9.35, -4.3, 1.12), (0.56, 1.70, 0.05), (0.22, 0.13, 0.08, 1.0))
-    make_box("Damb_ServiceBar_Rail", (-9.60, -4.3, 1.16), (0.03, 1.60, 0.03), brass)
-    for bi, byo in enumerate([-0.55, -0.18, 0.18, 0.55]):
+    make_box("Damb_ServiceBar_Body", (-9.35, -1.52, 0.55), (0.50, 0.85, 1.10), (0.30, 0.18, 0.10, 1.0))
+    make_box("Damb_ServiceBar_Top", (-9.35, -1.52, 1.12), (0.56, 0.95, 0.05), (0.22, 0.13, 0.08, 1.0))
+    make_box("Damb_ServiceBar_Rail", (-9.60, -1.52, 1.16), (0.03, 0.85, 0.03), brass)
+    for bi, byo in enumerate([-0.28, -0.10, 0.10, 0.28]):
         _sb_col = [(0.30, 0.16, 0.12, 1.0), (0.16, 0.26, 0.18, 1.0),
                    (0.62, 0.50, 0.28, 1.0), (0.24, 0.18, 0.30, 1.0)][bi]
-        make_cyl(f"Damb_ServiceBar_Bottle_{bi}_Body", (-9.30, -4.3 + byo, 1.22),
+        make_cyl(f"Damb_ServiceBar_Bottle_{bi}_Body", (-9.30, -1.52 + byo, 1.22),
                  0.040, 0.18, _sb_col, segments=6, axis='Z')
-        make_cyl(f"Damb_ServiceBar_Bottle_{bi}_Neck", (-9.30, -4.3 + byo, 1.355),
+        make_cyl(f"Damb_ServiceBar_Bottle_{bi}_Neck", (-9.30, -1.52 + byo, 1.355),
                  0.016, 0.09, _sb_col, segments=6, axis='Z')
-        make_cyl(f"Damb_ServiceBar_Bottle_{bi}_Cap", (-9.30, -4.3 + byo, 1.41),
+        make_cyl(f"Damb_ServiceBar_Bottle_{bi}_Cap", (-9.30, -1.52 + byo, 1.41),
                  0.018, 0.02, (0.18, 0.16, 0.14, 1.0), segments=6, axis='Z')
     # Nicola's stack of WINE LISTS on the service bar's front corner.
     for wi in range(5):
-        make_box(f"Damb_WineList_{wi}", (-9.42, -3.62, 1.15 + wi * 0.012), (0.20, 0.28, 0.010),
+        make_box(f"Damb_WineList_{wi}", (-9.42, -1.80, 1.15 + wi * 0.012), (0.20, 0.28, 0.010),
                  (0.34, 0.10, 0.12, 1.0) if wi % 2 == 0 else (0.30, 0.09, 0.11, 1.0))
 
 
