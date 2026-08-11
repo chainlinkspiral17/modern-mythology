@@ -422,8 +422,8 @@ def build_justice_wave2_props():
 
     # ── Marcellette's clerk desk to the side of the bench ──
     # She's beside the judge's bench · at (-3.20, +4.20)
-    md_x = -3.20
-    md_y = +4.20
+    md_x = -2.45
+    md_y = +4.85
     make_box("Marcellette_ClerkDesk_Top",
              (md_x, md_y, table_top_z),
              (0.70, 0.42, 0.04),

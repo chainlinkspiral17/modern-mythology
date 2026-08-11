@@ -109,9 +109,9 @@ def build_loft():
         make_box(f"Loft_Rail_Bal_{bi}", (bx, 3.66, 2.30), (0.04, 0.04, 0.36), COL_WOOD_DK)
     # Ladder
     for rx in (-0.35, -0.05):
-        make_box(f"Ladder_Rail_{rx:.2f}", (rx, 3.55, 1.10), (0.05, 0.05, 2.20), COL_WOOD)
+        make_box(f"Ladder_Rail_{rx:.2f}", (rx, 3.95, 1.10), (0.05, 0.05, 2.20), COL_WOOD)
     for s in range(6):
-        make_box(f"Ladder_Rung_{s}", (-0.20, 3.55, 0.30 + s * 0.36), (0.34, 0.04, 0.04), COL_WOOD_DK)
+        make_box(f"Ladder_Rung_{s}", (-0.20, 3.95, 0.30 + s * 0.36), (0.34, 0.04, 0.04), COL_WOOD_DK)
 
 
 def build_stove_corner():
@@ -128,9 +128,9 @@ def build_stove_corner():
     make_box("Stove_Legs_hint", (sx, sy, 0.12), (0.5, 0.5, 0.12), COL_IRON)
     make_cyl("Stove_Pipe", (sx, sy, 2.2), 0.09, 2.2, COL_IRON_WM, segments=8)
     # THE COPPER KETTLE with the small dent in its side
-    make_cyl("Copper_Kettle", (sx, sy, 1.20), 0.11, 0.16, COL_COPPER, segments=10)
+    make_cyl("Copper_Kettle", (sx - 0.20, sy + 0.05, 1.20), 0.11, 0.16, COL_COPPER, segments=10)
     make_box("Kettle_Dent", (sx + 0.10, sy, 1.18), (0.03, 0.06, 0.06), (0.58, 0.32, 0.18, 1.0))
-    make_box("Kettle_Spout", (sx - 0.14, sy, 1.22), (0.08, 0.03, 0.03), COL_COPPER)
+    make_box("Kettle_Spout", (sx - 0.34, sy + 0.05, 1.22), (0.08, 0.03, 0.03), COL_COPPER)
     # Firewood: the stack and the cedar BASKET beside the stove
     for r in range(3):
         for c in range(4):
@@ -138,8 +138,8 @@ def build_stove_corner():
             fz = 0.12 + r * 0.16 + (0.0 if c % 2 == 0 else 0.02)
             make_cyl(f"Firewood_{r}_{c}", (2.7, fy, fz), 0.075, 0.5,
                      COL_WOOD if (r + c) % 2 else COL_WOOD_DK, segments=6, axis='X')
-    make_cyl("Wood_Basket", (1.80, 5.85, 0.20), 0.28, 0.40, (0.56, 0.42, 0.26, 1.0), segments=10)
-    make_cyl("Wood_Basket_Cedar", (1.80, 5.85, 0.36), 0.20, 0.14, COL_WOOD_DK, segments=8)
+    make_cyl("Wood_Basket", (1.68, 5.95, 0.20), 0.28, 0.40, (0.56, 0.42, 0.26, 1.0), segments=10)
+    make_cyl("Wood_Basket_Cedar", (1.68, 5.95, 0.36), 0.20, 0.14, COL_WOOD_DK, segments=8)
     # The side table by the wood stove ("She put the stick down on
     # the side table by the wood stove")
     make_box("Stove_SideTable_Top", (1.60, 4.95, 0.54), (0.42, 0.42, 0.05), COL_WOOD)
@@ -194,10 +194,10 @@ def build_daybed():
     # Chair by the SOUTH window, main room ("The chair by the south
     # window" / "Finn on the floor by the south window")
     make_window("South_Window_W", (-2.0, 0.04, 0), width=1.10, height=1.00)
-    make_box("SWChair_Seat", (-1.95, 0.95, 0.44), (0.44, 0.44, 0.05), COL_WOOD)
-    make_box("SWChair_Back", (-1.95, 1.15, 0.72), (0.44, 0.05, 0.52), COL_WOOD)
+    make_box("SWChair_Seat", (-1.70, 0.95, 0.44), (0.44, 0.44, 0.05), COL_WOOD)
+    make_box("SWChair_Back", (-1.70, 1.15, 0.72), (0.44, 0.05, 0.52), COL_WOOD)
     for li, (lx, ly) in enumerate(((-0.16, -0.16), (0.16, -0.16), (-0.16, 0.16), (0.16, 0.16))):
-        make_box(f"SWChair_Leg_{li}", (-1.95 + lx, 0.95 + ly, 0.22), (0.045, 0.045, 0.44), COL_WOOD)
+        make_box(f"SWChair_Leg_{li}", (-1.70 + lx, 0.95 + ly, 0.22), (0.045, 0.045, 0.44), COL_WOOD)
 
 
 def build_east_room():
@@ -207,10 +207,10 @@ def build_east_room():
     was on the shelf where it had been since '46"), the basin with
     the mirror over it."""
     # Bed along the E wall
-    make_box("EBed_Frame", (2.10, 1.45, 0.20), (1.45, 1.90, 0.30), COL_WOOD_DK)
-    make_box("EBed_Mattress", (2.10, 1.45, 0.46), (1.38, 1.82, 0.16), (0.90, 0.86, 0.78, 1.0))
-    make_box("EBed_Blanket", (2.10, 1.15, 0.565), (1.34, 1.10, 0.07), COL_WOOL)
-    make_box("EBed_Pillow", (2.10, 2.20, 0.58), (0.90, 0.38, 0.12), (0.96, 0.92, 0.86, 1.0))
+    make_box("EBed_Frame", (2.10, 1.75, 0.20), (1.45, 1.90, 0.30), COL_WOOD_DK)
+    make_box("EBed_Mattress", (2.10, 1.75, 0.46), (1.38, 1.82, 0.16), (0.90, 0.86, 0.78, 1.0))
+    make_box("EBed_Blanket", (2.10, 1.45, 0.565), (1.34, 1.10, 0.07), COL_WOOL)
+    make_box("EBed_Pillow", (2.10, 2.50, 0.58), (0.90, 0.38, 0.12), (0.96, 0.92, 0.86, 1.0))
     # The window above the bed (E wall) — cedars beyond
     make_box("EBed_Win_Frame", (2.96, 1.45, 1.75), (0.04, 1.20, 0.95), COL_WOOD_DK)
     make_box("EBed_Win_Glass", (2.98, 1.45, 1.75), (0.02, 1.06, 0.82), COL_GLASS)
@@ -228,8 +228,8 @@ def build_east_room():
                  (0.07, 0.16, 0.20), [(0.48, 0.20, 0.16, 1.0), (0.22, 0.30, 0.24, 1.0),
                                       (0.60, 0.52, 0.36, 1.0), (0.30, 0.26, 0.34, 1.0)][bi])
     # Basin + mirror on the partition side
-    make_box("Basin_Stand", (1.30, 2.35, 0.42), (0.44, 0.36, 0.84), COL_WOOD)
-    make_cyl("Basin_Bowl", (1.30, 2.35, 0.88), 0.16, 0.08, (0.86, 0.86, 0.84, 1.0), segments=12)
+    make_box("Basin_Stand", (0.55, 0.35, 0.42), (0.44, 0.36, 0.84), COL_WOOD)
+    make_cyl("Basin_Bowl", (0.55, 0.35, 0.88), 0.16, 0.08, (0.86, 0.86, 0.84, 1.0), segments=12)
     make_box("Basin_Mirror", (1.06, 2.35, 1.50), (0.03, 0.36, 0.50), (0.68, 0.74, 0.78, 1.0))
 
 

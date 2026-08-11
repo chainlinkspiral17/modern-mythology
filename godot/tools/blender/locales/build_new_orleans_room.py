@@ -90,7 +90,7 @@ def build_hero_props():
     (paper, pen, the addressed envelope), the dresser + the small
     mirror above it."""
     wood = (0.38, 0.28, 0.18, 1.0)
-    make_box("Desk_Top", (0.0, 4.55, 0.74), (1.00, 0.55, 0.05), wood)
+    make_box("Desk_Top", (1.10, 4.55, 0.74), (1.00, 0.55, 0.05), wood)
     for lx in (-0.44, 0.44):
         make_box(f"Desk_Leg_{lx:+.2f}", (lx, 4.55, 0.37), (0.06, 0.50, 0.72), wood)
     make_box("Desk_Drawer", (0.0, 4.30, 0.62), (0.60, 0.02, 0.12), (0.30, 0.22, 0.14, 1.0))

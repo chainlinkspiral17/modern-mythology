@@ -360,12 +360,12 @@ def build_devil_wave2_props():
              (0.12, 0.10, 0.10, 1.0))
 
     # ── the_first_meeting ───────────────────────────────────────
-    room_x = -3.00
-    room_y = +6.00
+    room_x = -2.55
+    room_y = +5.20
     ring_r = 1.30
 
     for ci in range(11):
-        ang = ci * (2 * math.pi / 11)
+        ang = (ci + 0.5) * (2 * math.pi / 11)
         cx = room_x + math.cos(ang) * ring_r
         cy = room_y + math.sin(ang) * ring_r
         make_box("MtgChair_%d_Seat" % ci,

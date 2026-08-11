@@ -157,7 +157,7 @@ def build_front_room():
     make_box("WChair_Back", (1.70, 1.94, 0.66), (0.72, 0.20, 0.62), (0.33, 0.38, 0.34, 1.0))
     for ax in (1.36, 2.04):
         make_box(f"WChair_Arm_{ax:.2f}", (ax, 1.60, 0.52), (0.14, 0.70, 0.42), (0.33, 0.38, 0.34, 1.0))
-    make_cyl("Side_Table_Top", (1.70, 0.95, 0.52), 0.28, 0.04, COL_WOOD, segments=12)
+    make_cyl("Side_Table_Top", (1.40, 0.95, 0.52), 0.28, 0.04, COL_WOOD, segments=12)
     make_cyl("Side_Table_Post", (1.70, 0.95, 0.26), 0.04, 0.50, COL_WOOD, segments=8)
     # Radiator pipe in the SE corner (the one that clicks)
     make_cyl("Radiator_Pipe", (2.38, 0.25, 1.30), 0.04, 2.55, (0.60, 0.56, 0.50, 1.0), segments=8)
@@ -184,8 +184,8 @@ def build_bedroom():
     for pi, py in enumerate((3.55, 4.35)):
         make_faded_poster(f"Poster_W_{pi}", (-ROOM_W/2.0+0.05, py, 1.50))
     # Space heater by the bedroom doorway
-    make_box("Space_Heater", (-0.15, 3.30, 0.18), (0.30, 0.16, 0.36), (0.80, 0.78, 0.74, 1.0))
-    make_box("Heater_Grille", (-0.15, 3.22, 0.18), (0.24, 0.02, 0.26), (0.94, 0.60, 0.34, 1.0))
+    make_box("Space_Heater", (1.05, 2.90, 0.18), (0.30, 0.16, 0.36), (0.80, 0.78, 0.74, 1.0))
+    make_box("Heater_Grille", (1.05, 3.00, 0.18), (0.24, 0.02, 0.26), (0.94, 0.60, 0.34, 1.0))
 
 
 def build_dressing():

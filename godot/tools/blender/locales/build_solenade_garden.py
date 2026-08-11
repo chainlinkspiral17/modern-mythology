@@ -54,8 +54,8 @@ def build_perimeter_wall_and_benches():
         make_box(f"Wall_{si}", (mx, my, WALL_H/2.0),
                  (chord*1.05, 0.30, WALL_H), COL_LIMESTONE)
         # Bench seat in front of each wall segment
-        bx = math.cos(ma) * (GARDEN_R - 0.50)
-        by = math.sin(ma) * (GARDEN_R - 0.50)
+        bx = math.cos(ma) * (GARDEN_R - 0.78)
+        by = math.sin(ma) * (GARDEN_R - 0.78)
         make_box(f"Bench_Seat_{si}", (bx, by, 0.46), (chord*0.65, 0.36, 0.06), COL_BENCH_WOOD)
         # Bench legs (2)
         for sgn in (-1, +1):
@@ -408,7 +408,7 @@ def build_sun_wave2_props():
     # The south bench across the path from the oak (Frank's new
     # afternoon home). Approximate at (0, -3.5)
     south_bench_x = 0.0
-    south_bench_y = -3.5
+    south_bench_y = -4.05
     make_box("SouthBench_Seat",
              (south_bench_x, south_bench_y, 0.44),
              (0.80, 0.30, 0.06),
@@ -425,8 +425,8 @@ def build_sun_wave2_props():
                  (0.20, 0.18, 0.18, 1.0), segments=6, axis='Z')
 
     # The east bench (behind the oak trunk · visible but not sat on)
-    east_bench_x = +0.30   # just SE of the oak trunk
-    east_bench_y = -0.70
+    east_bench_x = +0.78   # just SE of the oak trunk
+    east_bench_y = -1.05
     make_box("EastBench_Seat",
              (east_bench_x, east_bench_y, 0.44),
              (0.70, 0.28, 0.06),

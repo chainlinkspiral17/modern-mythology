@@ -262,7 +262,7 @@ def build_draft2_density_2026_08():
         # One mug per cluster, one chair shoved out of true.
         make_cyl(f"Studio_Mug_{ci}", (cx + 0.55, cy - 0.62, z0 + 0.80), 0.04, 0.09,
                  POSTER_TINTS[(ci * 2) % len(POSTER_TINTS)], segments=8)
-    make_box("Studio_Chair_Shoved", (-1.45, 3.05, z0 + 0.44), (0.42, 0.42, 0.06), CEDAR_DK)
+    make_box("Studio_Chair_Shoved", (-1.85, 3.35, z0 + 0.44), (0.42, 0.42, 0.06), CEDAR_DK)
     # Task lamps on the two rack-side desks.
     for ti, tx in enumerate((-2.95, 1.45)):
         make_cyl(f"Studio_TaskLamp_{ti}_Arm", (tx, 4.75, z0 + 0.95), 0.012, 0.40, (0.22, 0.22, 0.24, 1.0), segments=6)
@@ -290,7 +290,7 @@ def build_draft2_density_2026_08():
                      (0.04, 0.22, 0.04), CEDAR)
         make_box(f"Bunk_{bi}_Footlocker", (-4.4, by - 0.85, z0 + 0.22), (0.85, 0.42, 0.40), CEDAR_DK)
     # Folded clothes on one mattress, a guitar leaning at the last bunk.
-    make_box("Q_Folded_Clothes", (-5.1, 1.35, z0 + 0.52), (0.30, 0.40, 0.10), (0.52, 0.46, 0.42, 1.0))
+    make_box("Q_Folded_Clothes", (-5.1, 1.35, z0 + 1.78), (0.30, 0.40, 0.10), (0.52, 0.46, 0.42, 1.0))
     make_box("Q_Guitar_Body", (-4.35, 6.85, z0 + 0.30), (0.32, 0.10, 0.40), (0.55, 0.38, 0.22, 1.0))
     make_box("Q_Guitar_Neck", (-4.35, 6.88, z0 + 0.75), (0.06, 0.05, 0.55), CEDAR_DK)
     # Kitchen life: kettle on the stove, dish rack, mug pegs, pot rail.

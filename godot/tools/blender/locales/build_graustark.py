@@ -4755,9 +4755,9 @@ def build_ruin_quarter_2026_08():
     _mb("Minstral_Hull", (38.0, -120.0, 0.6), (7.0, 20.0, 5.0), (0.30, 0.40, 0.34, 1.0))
     _mb("Minstral_Deckhouse", (38.0, -116.0, 4.2), (4.5, 8.0, 2.2), (0.36, 0.44, 0.38, 1.0))
     _mc("Minstral_Stack", (38.0, -112.0, 6.4), 0.7, 3.0, rust, segments=10)
-    _mb("Paddlewheel_Cover", (42.2, -124.0, 1.4), (2.4, 4.5, 1.6), rust)
-    _mb("Paddlewheel_Cover_Top", (42.2, -124.0, 2.25), (2.6, 4.7, 0.1), (0.38, 0.24, 0.16, 1.0))
-    _mc("Paddlewheel_Hub", (43.6, -124.0, 1.2), 1.4, 0.4, (0.30, 0.20, 0.14, 1.0), segments=12, axis='X')
+    _mb("Minstral_Paddlebox", (42.2, -124.0, 1.4), (2.4, 4.5, 1.6), rust)
+    _mb("Minstral_Paddlebox_Top", (42.2, -124.0, 2.25), (2.6, 4.7, 0.1), (0.38, 0.24, 0.16, 1.0))
+    _mc("Minstral_Paddlebox_Hub", (43.6, -124.0, 1.2), 1.4, 0.4, (0.30, 0.20, 0.14, 1.0), segments=12, axis='X')
 
 
 def main():

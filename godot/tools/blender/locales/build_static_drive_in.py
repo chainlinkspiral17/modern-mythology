@@ -128,7 +128,7 @@ def build_soda_fountain_and_candy():
                  [(0.86, 0.22, 0.20, 1.0), (0.32, 0.20, 0.16, 1.0),
                   (0.96, 0.86, 0.42, 1.0), (0.32, 0.48, 0.34, 1.0)][ni])
     # Ice / cup tower
-    make_box("Cup_Tower", (sx+0.34, sy, 1.40), (0.10, 0.30, 0.40), P.PAPER)
+    make_box("Cup_Tower", (sx+0.52, sy, 1.40), (0.10, 0.30, 0.40), P.PAPER)
     # Candy display case to the right (a 2-tier donut display reskinned)
     make_donut_display("Candy", (+0.20, 3.20, 0.96), tiers=2,
                        palette={"glass": (0.78, 0.84, 0.86, 0.50),

@@ -162,7 +162,7 @@ def build_hero_props():
     driveway's end."""
     steel = (0.55, 0.57, 0.58, 1.0)
     # Jim's truck nose-in ahead of the sedan
-    tx, ty = 3.4, 1.9
+    tx, ty = 3.4, 6.9
     make_box("JimTruck_Bed", (tx, ty+0.8, 0.78), (1.8, 2.0, 0.72), (0.30, 0.34, 0.30, 1.0))
     make_box("JimTruck_Cab", (tx, ty-0.6, 1.05), (1.7, 1.4, 0.62), (0.30, 0.34, 0.30, 1.0))
     make_box("JimTruck_Glass", (tx, ty-0.6, 1.10), (1.5, 1.2, 0.44), (0.14, 0.16, 0.20, 1.0))

@@ -309,6 +309,23 @@ this round: cosmic_comics_back_office asylum_ward_c
 centro_grocery_aisle riverboat_interior houston_office
 frog_knows_best mixing_glass little_switzerland centro_break_room
 caldwell_radio_room_night.
+2026-08-11 final round · THE TAIL IS DONE: every non-gated locale
+in the game audits CLEAN. Repo 843 → 597, and 592 of those sit in
+the four known holdouts (riverfront 450 · kwik_stop 80 · diner 48
+· crumpled_barn 14 — the crumple). Best finds: cedar_tower's
+folded-clothes story prop was INSIDE the solid bunk frame (now on
+top); roberts_house bed 0.35 through the north wall; daigles'
+AA-meeting chair ring stood in the bar (ring moved + rotated);
+henderson's truck parked overlapping the car by 2.4m (moved to the
+curb ahead); the gym's deadlift bar ran under bench 1; montreal's
+bookshelf and kitchen double-booked the same wall stretch. Grammar
+drafts 8-9: contents press into containers ≤0.25, cushions/
+pillows, swing-rope-through-canopy, roof-members-join, cues lean,
+ducts run along bands, sand/shore/hills as terrain, knee braces +
+pipes as structure, vending/warmers/domes/nightstands contain.
+NEXT DRAFT: riverfront backdrop decision → kwik_stop screenshots →
+diner candidates; then this gate goes into run_all_audits.sh as a
+zero-regression check.
 
 ### Workstream · SLOWSTICK PRODUCTION PASS (user-directed · 2026-08-03)
 

@@ -157,7 +157,7 @@ def build_china_cabinet():
             by = cy - 0.72 + bi * 0.22
             h = 0.30 + 0.03 * (bi % 2)
             col = [COL_BINDER_A, COL_BINDER_B, COL_BINDER_C][(si + bi) % 3]
-            make_box(f"Binder_{si}_{bi}", (cx - 0.04, by, sz - 0.20 + h / 2.0 - 0.15),
+            make_box(f"Binder_{si}_{bi}", (cx - 0.04, by, sz - 0.185 + h / 2.0),
                      (0.30, 0.18, h), col)
     # Police scanner on top of the cabinet, one red LED
     make_box("Scanner", (cx, cy - 0.4, 2.30), (0.34, 0.24, 0.14), COL_SCANNER)

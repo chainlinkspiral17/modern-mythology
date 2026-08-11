@@ -74,7 +74,7 @@ def build_bakery():
     a flour-dusted prep table with dough balls + a rolling pin, stacked
     flour sacks, and a wall shelf of mixing bowls."""
     # Speed rack (rolling tray rack) near the centre
-    rx, ry = -2.2, ROOM_D/2.0 - 0.3
+    rx, ry = -2.55, ROOM_D/2.0 - 0.3
     make_box("Rack_Frame", (rx, ry, 0.90), (0.70, 0.60, 1.80), P.METAL_STEEL)
     for ti, tz in enumerate([0.4, 0.7, 1.0, 1.3, 1.6]):
         make_box(f"Rack_Tray_{ti}", (rx, ry, tz), (0.64, 0.54, 0.03), (0.72, 0.72, 0.74, 1.0))
@@ -124,14 +124,14 @@ def build_equipment():
     make_cyl("Mixer_Whisk", (mx-0.10, my, top+0.30), 0.05, 0.20, P.METAL_STEEL, segments=8)
     make_cyl("Mixer_Bowl", (mx-0.10, my, top+0.14), 0.13, 0.18, P.METAL_STEEL, segments=12)
     # Rolling flour ingredient bin in the SW.
-    fx, fy = -ROOM_W/2.0+0.55, ROOM_D/2.0+0.5
+    fx, fy = -ROOM_W/2.0+0.55, ROOM_D/2.0+0.75
     make_chamfer_box("FlourBin_Body", (fx, fy, 0.40), (0.50, 0.60, 0.72), (0.72, 0.60, 0.42, 1.0))
     make_box("FlourBin_Lid", (fx, fy, 0.78), (0.52, 0.62, 0.06), (0.56, 0.46, 0.32, 1.0))
     make_cyl("FlourBin_Scoop", (fx, fy-0.10, 0.86), 0.05, 0.14, P.METAL_STEEL, segments=8)
     for wi, wo in enumerate([-0.20, 0.20]):
         make_cyl(f"FlourBin_Wheel_{wi}", (fx+wo, fy, 0.05), 0.05, 0.05, P.METAL_BLACK, axis='X', segments=8)
     # Platform baker's scale on the prep table's edge.
-    sx, sy = -ROOM_W/4.0+0.5, ROOM_D/2.0-0.9
+    sx, sy = -ROOM_W/4.0+0.5, ROOM_D/2.0-1.15
     make_box("Scale_Base", (sx, sy, 0.98), (0.24, 0.24, 0.06), (0.30, 0.30, 0.32, 1.0))
     make_box("Scale_Platform", (sx, sy, 1.04), (0.20, 0.20, 0.02), P.METAL_STEEL)
     make_box("Scale_Column", (sx+0.09, sy, 1.14), (0.03, 0.03, 0.18), (0.30, 0.30, 0.32, 1.0))
@@ -212,7 +212,7 @@ def build_communal_table():
     for lx, ly in ((-0.50, 0.75), (0.50, 0.75), (-0.50, 3.85), (0.50, 3.85)):
         make_box(f"Communal_Leg_{lx:.1f}_{ly:.2f}", (lx, ly, 0.37), (0.08, 0.08, 0.74), wood_dk)
     # Ten side chairs
-    for si, cy in enumerate((1.0, 1.65, 2.30, 2.95, 3.60)):
+    for si, cy in enumerate((1.0, 1.65, 2.30, 2.95, 3.35)):
         for xi, cx in enumerate((-0.85, 0.85)):
             nm = f"TChair_{si}_{xi}"
             make_box(f"{nm}_Seat", (cx, cy, 0.45), (0.40, 0.40, 0.05), wood)

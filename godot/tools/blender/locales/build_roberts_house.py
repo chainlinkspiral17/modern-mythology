@@ -927,7 +927,7 @@ def build_bedroom_peek():
 
     # Bed (peek through the doorway — just the foot of the bed)
     bed_cx = -3.5
-    bed_cy = +5.4
+    bed_cy = +5.0
     # Mattress
     make_box("Bedroom_Bed_Mattress",
              (bed_cx, bed_cy, 0.40),

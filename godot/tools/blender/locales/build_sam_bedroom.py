@@ -149,7 +149,7 @@ def build_hero_props():
     curtains, dresser + phone, closet doors, bedside lamp."""
     # Box spring under the mattress — "She slides it between the
     # mattress and the box spring."
-    make_chamfer_box("Box_Spring", (-1.0, 2.5, 0.50), (1.12, 1.72, 0.14), (0.86, 0.84, 0.78, 1.0))
+    make_chamfer_box("Bed_BoxSpring", (-1.0, 2.5, 0.50), (1.12, 1.72, 0.14), (0.86, 0.84, 0.78, 1.0))
     make_box("Sams_Notebook", (-0.55, 2.10, 0.58), (0.16, 0.22, 0.012), (0.72, 0.62, 0.30, 1.0))
     # Curtains on the N window
     make_cyl("Curtain_Rod", (0.0, 4.88, 2.14), 0.015, 1.60, (0.20, 0.19, 0.20, 1.0), axis='X', segments=6)
@@ -157,9 +157,9 @@ def build_hero_props():
         make_box(f"Curtain_{cx:+.2f}", (cx, 4.88, 1.50), (0.44, 0.04, 1.20), (0.55, 0.60, 0.70, 1.0))
     # Dresser with the phone on it ("Sam's phone, on her dresser,
     # buzzes")
-    make_chamfer_box("Dresser", (1.62, 2.0, 0.42), (0.50, 1.00, 0.84), (0.46, 0.34, 0.22, 1.0))
+    make_chamfer_box("Dresser", (1.62, 2.45, 0.42), (0.50, 1.00, 0.84), (0.46, 0.34, 0.22, 1.0))
     for di in range(3):
-        make_box(f"Dresser_Drawer_{di}", (1.36, 2.0, 0.20 + di * 0.26), (0.02, 0.86, 0.20), (0.38, 0.28, 0.18, 1.0))
+        make_box(f"Dresser_Drawer_{di}", (1.36, 2.45, 0.20 + di * 0.26), (0.02, 0.86, 0.20), (0.38, 0.28, 0.18, 1.0))
     make_box("Sams_Phone", (1.62, 2.0, 0.855), (0.08, 0.15, 0.012), (0.12, 0.12, 0.14, 1.0))
     # Closet bi-fold in the S wall east segment
     for ci, cx in enumerate((1.10, 1.60)):

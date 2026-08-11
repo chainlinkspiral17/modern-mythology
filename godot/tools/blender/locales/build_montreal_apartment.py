@@ -79,13 +79,13 @@ def build_living():
     sx2 = +2.50
     for shf in range(6):
         sz = 0.20 + shf*0.40
-        make_box(f"BookShelf_{shf}", (sx2, 2.5, sz), (0.40, 1.40, 0.02), COL_WOOD)
+        make_box(f"BookShelf_{shf}", (sx2, 1.55, sz), (0.40, 1.40, 0.02), COL_WOOD)
         for bi in range(7):
-            bx = sx2; by = 2.5 - 0.50 + bi*0.16
+            bx = sx2; by = 1.55 - 0.50 + bi*0.16
             spine = COL_BOOK_SPINES[(shf*3+bi)%len(COL_BOOK_SPINES)]
             make_box(f"Book_{shf}_{bi}", (bx, by, sz+0.16), (0.10, 0.12, 0.30), spine)
-    make_box("BookShelf_Side_S", (sx2+0.02, 1.78, 1.40), (0.44, 0.04, 2.40), COL_WOOD)
-    make_box("BookShelf_Side_N", (sx2+0.02, 3.22, 1.40), (0.44, 0.04, 2.40), COL_WOOD)
+    make_box("BookShelf_Side_S", (sx2+0.02, 0.83, 1.40), (0.44, 0.04, 2.40), COL_WOOD)
+    make_box("BookShelf_Side_N", (sx2+0.02, 2.27, 1.40), (0.44, 0.04, 2.40), COL_WOOD)
 
 def build_dining_nook():
     # Small bistro dining nook east-centre, between bookshelf & kitchen.
@@ -121,7 +121,7 @@ def build_kitchenette():
     # Coffee in press
     make_cyl("FrenchPress_Coffee", (cx-0.20, cy, top_z+0.08), 0.05, 0.10, (0.18, 0.10, 0.06, 1.0))
     # Mug
-    make_cyl("Mug", (cx+0.20, cy, top_z+0.06), 0.05, 0.10, (0.62, 0.32, 0.30, 1.0))
+    make_cyl("Mug", (cx+0.05, cy, top_z+0.06), 0.05, 0.10, (0.62, 0.32, 0.30, 1.0))
 
 def build_radiator_under_window():
     # Cast-iron radiator under the N window

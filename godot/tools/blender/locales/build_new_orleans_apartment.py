@@ -131,7 +131,7 @@ def build_hero_props():
     make_box("TV", (2.80, 2.2, 0.95), (0.10, 0.85, 0.55), (0.12, 0.12, 0.14, 1.0))
     make_box("TV_Screen", (2.74, 2.2, 0.95), (0.02, 0.72, 0.44), (0.30, 0.36, 0.42, 1.0))
     make_box("TV_Stand", (2.80, 2.2, 0.34), (0.55, 0.90, 0.62), (0.36, 0.28, 0.20, 1.0))
-    make_box("Game_Console", (2.72, 1.85, 0.68), (0.28, 0.22, 0.07), (0.22, 0.22, 0.26, 1.0))
+    make_box("Game_Console", (2.72, 1.85, 0.63), (0.28, 0.22, 0.07), (0.22, 0.22, 0.26, 1.0))
     for wi in range(2):
         make_box(f"Controller_Cord_{wi}", (2.5 - wi * 0.4, 2.0 + wi * 0.2, 0.02), (0.5, 0.02, 0.01), (0.14, 0.14, 0.16, 1.0))
     make_box("Bass_Body", (2.65, 4.4, 0.55), (0.14, 0.36, 0.50), (0.52, 0.22, 0.16, 1.0))
@@ -167,7 +167,7 @@ def build_use_states_d4():
     """D4 use states: takeout, cans, the microwave door ajar —
     Jimmy's week is visible on the surfaces."""
     # Takeout on the kitchenette: two containers, one lid off
-    make_box("Takeout_A", (-0.45, 5.55, 0.99), (0.16, 0.16, 0.09),
+    make_box("Takeout_A", (-0.45, 5.72, 0.99), (0.16, 0.16, 0.09),
              (0.92, 0.92, 0.88, 1.0))
     make_box("Takeout_B", (-0.18, 5.52, 0.98), (0.16, 0.16, 0.07),
              (0.92, 0.92, 0.88, 1.0))

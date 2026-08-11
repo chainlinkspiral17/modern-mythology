@@ -91,7 +91,7 @@ def build_monitors():
         make_cyl(f"Monitor_{mi}_Cone", (mx, my+0.17, mz+0.22), 0.10, 0.03, (0.08,0.07,0.07,1.0), axis='Y', segments=12)
 
 def build_pa():
-    for si, sx in enumerate([-3.3, 3.3]):
+    for si, sx in enumerate([-2.75, 2.75]):
         sy = 3.4
         make_box(f"PA_{si}_Sub", (sx, sy-0.35, 0.35), (0.60, 0.60, 0.70), (0.12,0.11,0.10,1.0))
         make_box(f"PA_{si}_Top", (sx, sy, 1.35), (0.52, 0.52, 1.20), (0.14,0.12,0.11,1.0))

@@ -114,7 +114,7 @@ def build_hero_props():
     make_cyl("Bourbon_Bottle", (2.75, 5.15, 0.75), 0.05, 0.28, (0.48, 0.30, 0.12, 0.9), segments=8)
     make_cyl("Chipped_Glass", (0.35, 3.45, 0.83), 0.04, 0.09, (0.72, 0.74, 0.70, 0.6), segments=8)
     # The rolled architectural plans on the desk
-    for ri, (rx, ry) in enumerate(((0.55, 3.60), (0.62, 3.72))):
+    for ri, (rx, ry) in enumerate(((-0.35, 3.60), (-0.28, 3.72))):
         make_cyl(f"Plans_Roll_{ri}", (rx, ry, 0.84), 0.045, 0.75, (0.88, 0.85, 0.76, 1.0), segments=8, axis='X')
     # The pacing carpet, worn path visible
     make_box("Pacing_Carpet", (0.0, 2.2, 0.012), (2.6, 1.4, 0.015), (0.36, 0.26, 0.22, 1.0))

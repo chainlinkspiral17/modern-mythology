@@ -156,7 +156,7 @@ def build_operator_desk_and_mic():
     # Headphones hanging on the desk edge
     make_cyl("Phones_Band", (dx+0.50, dy-0.40, 0.84), 0.10, 0.04, COL_BAKELITE, axis='X', segments=10)
     for sgn in (-1, +1):
-        make_cyl(f"Phones_Cup_{sgn:+d}", (dx + 0.50 + sgn*0.08, dy - 0.40, 0.74),
+        make_cyl(f"Phones_Cup_{sgn:+d}", (dx + 0.50 + sgn*0.08, dy - 0.40, 0.82),
                  0.06, 0.04, COL_BAKELITE, axis='X', segments=8)
     # Single chair S of desk
     cx, cy = dx, dy - 0.80

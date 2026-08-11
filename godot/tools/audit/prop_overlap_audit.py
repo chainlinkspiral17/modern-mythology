@@ -36,18 +36,18 @@ EMBED_MAX = 0.14   # wall thickness + proud trim/frame
 WALLISH = re.compile(
     r"wall|window|door|sign|brand|part[nsew]?\b|trim|crown|"
     r"baseboard|backsplash|wainscot|frame|sill|floor|ceil|apron|"
-    r"turf|road|grass|rug|mat|plumbing|curb|kerb|lawn|drive|sidewalk|path\b|path_|apron|asphalt|edgeline|shoulder|gravel|yard\b|headland|ground|walk\b|walkway|win\b|win_|outlet|socket|plate\b|numeral|slab|plaza|endzone|seam", re.I)
+    r"turf|road|grass|rug|mat|plumbing|curb|kerb|lawn|drive|sidewalk|path\b|path_|apron|asphalt|edgeline|shoulder|gravel|yard\b|headland|ground|walk\b|walkway|win\b|win_|outlet|socket|plate\b|numeral|slab|plaza|endzone|seam|shore|sand|dune", re.I)
 CONTAINERISH = re.compile(
     r"cage|case|chest|bin\b|bin_|basket|crate|rack|cooler|fridge|"
     r"freezer|cubby|cart|shelf|shelv|island|hutch|drawer|cab\b|"
     r"cabinet|locker|oven|proofer|tub\b|vase|votive|sink|basin|"
-    r"wrap|pallet\b|counter", re.I)
+    r"wrap|pallet\b|counter|vend|warmer|nightstand|dome", re.I)
 # Objects RESTING on a surface: min-penetration axis is Z and one of
 # the pair is a surface. Books sink 2cm into their shelf, a phone
 # into its desk — seating, not clipping.
 SURFACEISH = re.compile(
     r"shelf|shelv|top\b|_top|desk|table|counter|tray|sill|seat|"
-    r"bench|plank|deck\b|worktop|platform|island|expo|step|cap\b|board", re.I)
+    r"bench|plank|deck\b|worktop|platform|island|expo|step|cap\b|board|stand\b", re.I)
 SEAT_MAX = 0.10
 # Structure members joining each other (lattice-tower braces meeting
 # legs, railing spindles into rails) — joints, not clipping.
@@ -55,7 +55,7 @@ CROWNISH = re.compile(r"crown|canopy|foliage|lobe|frond", re.I)
 # Non-solid volumetrics: sprinkler spray arcs, light shafts, steam —
 # they interpenetrate everything by design.
 NONSOLID = re.compile(r"spray|mist|steam|smoke|shaft|glow|beam\b|dust|fog|surf|foam|wake|"
-    r"falls?_|veil|cascade|plunge|water", re.I)
+    r"falls?_|veil|cascade|plunge|water|thread|pool", re.I)
 # Infrastructure DESIGNED to be buried — culverts under roads,
 # pipes through creek beds, footings in the ground.
 BURIEDISH = re.compile(r"culvert|drain|conduit|footing|foundation|piling", re.I)
@@ -75,7 +75,8 @@ PLANTISH = re.compile(r"shrub|bush|hedge|fern|reed|weed|plant|vine|"
 ROOFISH = re.compile(r"eave|ridge|roof|gable|chimney|awning\b", re.I)
 STRUCTISH = re.compile(
     r"leg|brace|strut|post|pole|beam|rail|truss|arm\b|_arm|spindle|"
-    r"baluster|joist|stud\b|wire|cable|line|rope|cord|string|"
+    r"baluster|joist|stud\b|stud_|wire|cable|line|rope|cord|string|"
+    r"knee\b|knee_|pipe|"
     r"stanchion", re.I)
 # Seats TUCK under their work surface by use — a stool under a desk,
 # a booth bench meeting the expo counter. Bounded so a chair buried
@@ -97,11 +98,12 @@ OFFERING_MAX = 0.10
 # proxy geometry's way of touching.
 FLEXISH = re.compile(r"wire|cable|cord|cord_|rope|chain|towel|rag|"
                      r"rag_|cloth|blanket|quilt|drape|linen|banner|"
-                     r"pennant|festoon|valance|curtain", re.I)
+                     r"pennant|festoon|valance|curtain|sock|laundry|shirt|jacket|"
+                     r"strap|beanbag|paper\b", re.I)
 FLEX_MAX = 0.25
 # Landscaping features are mounded soft dirt — poles, hydrants,
 # signs and wheels sink into berms and beds by planting/parking.
-BERMISH = re.compile(r"berm|mulch|planter|flower_bed|_bed\b", re.I)
+BERMISH = re.compile(r"berm|mulch|planter|flower_bed|_bed\b|hill", re.I)
 BERM_MAX = 0.65
 # A steamboat funnel passes THROUGH every deck and roof above it by
 # construction (the diner's riverboat superstructure). Only excused
@@ -303,6 +305,11 @@ def overlaps(boxes):
                 continue
             if (wa1 or wa2) and depth <= EMBED_MAX:
                 continue
+            # Contents PRESS into their container's walls even when
+            # their centers sit outside it (ice blocks proud of the
+            # freezer, gum boxes on the checkout rack lip).
+            if depth <= 0.25 and (co1 or co2):
+                continue
             # TWO wall-class surfaces joining (partition into stall
             # wall, floor meeting wall, trim into facade) overlap by
             # a full member thickness at every corner and T-join.
@@ -348,6 +355,27 @@ def overlaps(boxes):
             # buildings. Trunks and buttresses are NOT excused.
             if (cr1 and rf2) or (cr2 and rf1):
                 continue
+            # Roof members JOIN each other — gables rise from roof
+            # planes, eaves meet at hips and valleys.
+            if rf1 and rf2:
+                continue
+            # Pillows and cushions nestle into sleepers and sofas.
+            if depth <= 0.12 and ("pillow" in n1.lower() or
+                                  "pillow" in n2.lower() or
+                                  "cushion" in n1.lower() or
+                                  "cushion" in n2.lower()):
+                continue
+            # A swing rope hangs THROUGH the canopy from its branch.
+            if (cr1 and fx2) or (cr2 and fx1):
+                continue
+            # Cues lean against whatever is behind them.
+            if depth <= 0.10 and ("cue" in n1.lower() or
+                                  "cue" in n2.lower()):
+                continue
+            # Ducts run pressed along bands/soffits.
+            if depth <= 0.15 and ("duct" in n1.lower() or
+                                  "duct" in n2.lower()):
+                continue
             # Funnel/stack through the decks and roofs above it.
             if (sk1 and (rf2 or dk2)) or (sk2 and (rf1 or dk1)):
                 continue
@@ -363,6 +391,16 @@ def overlaps(boxes):
             # frame — the classic backbar collage.
             if depth <= 0.10 and ("mirror" in n1.lower() or
                                   "mirror" in n2.lower()):
+                continue
+            # Objects stored on/against a shelf press into its
+            # boards and neighbors.
+            if depth <= 0.10 and ("shelf" in n1.lower() or
+                                  "shelf" in n2.lower()):
+                continue
+            # A pew's contents (briefs, folders, cups) lean against
+            # its back and seat.
+            if depth <= 0.20 and ("pew" in n1.lower() or
+                                  "pew" in n2.lower()):
                 continue
             # Built-ins meet the ceiling.
             if depth <= 0.25 and ("ceil" in n1.lower() or
