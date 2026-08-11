@@ -64,7 +64,7 @@ def _make_box(name, center, size, color=None, *a, **k):
     # collision checks were double-conservative.
     BOXES.append((str(name), tuple(float(c) for c in center),
                   tuple(abs(float(s)) / 2.0 for s in size)))
-    return types.SimpleNamespace(name=str(name))
+    return _obj_stub(name)
 
 
 def _make_cyl(name, center, radius=1.0, height=1.0, color=None,
@@ -73,7 +73,7 @@ def _make_cyl(name, center, radius=1.0, height=1.0, color=None,
     half = {'Z': (r, r, h / 2), 'Y': (r, h / 2, r),
             'X': (h / 2, r, r)}.get(str(axis).upper(), (r, r, h / 2))
     BOXES.append((str(name), tuple(float(c) for c in center), half))
-    return types.SimpleNamespace(name=str(name))
+    return _obj_stub(name)
 
 
 class _StubVal(float):
@@ -94,12 +94,35 @@ class _StubVal(float):
     def __getitem__(self, _i):
         return _StubVal(0.5)
 
+    def __setitem__(self, _i, _v):
+        pass
+
+    def __index__(self):
+        # Lets builder code use a stub as a list index / range bound
+        # (graustark indexes a palette list with a helper return).
+        return 0
+
     def __iter__(self):
         return iter((_StubVal(0.5), _StubVal(0.5),
                      _StubVal(0.5), _StubVal(1.0)))
 
 
 _noop = _StubVal(0.9)
+
+
+def _obj_stub(name):
+    """Recorded-object stand-in. A bare SimpleNamespace(name=...) dies
+    the moment builder code touches .data / .scale / any bpy-ish attr
+    on a created object (diner did exactly that). _StubVal answers
+    every attribute chain, so returning one — with the real .name
+    pinned on top — keeps main() running while the recorders still
+    capture the geometry."""
+    o = _StubVal(0.9)
+    try:
+        o.name = str(name)
+    except Exception:
+        pass
+    return o
 
 
 def install_stubs():
@@ -167,7 +190,7 @@ def install_stubs():
         r = abs(float(radius))
         BOXES.append((str(name),
                       tuple(float(c) for c in center), (r, r, r)))
-        return types.SimpleNamespace(name=str(name))
+        return _obj_stub(name)
 
     _RECORDERS = {
         "make_box": _make_box, "make_cyl": _make_cyl,

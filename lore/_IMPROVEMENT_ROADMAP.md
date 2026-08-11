@@ -208,6 +208,31 @@ landing inside shelving; cliffside_circus identity; floating bunting
 at the camp main building; ground planes for the REMAINING exteriors;
 the Emperor scene black/empty; arcana scenarios 3+ production pass.
 
+**2026-08-11 · FULL-COVERAGE CLIPPING AUDIT (draft 3 of the gate).**
+The recorder stubs grew object fidelity (`_obj_stub`: recorded
+objects answer .data/.scale/item-assignment/list-indexing) and now
+**all 110 builders run their canonical main() to completion — zero
+partials** for the first time (graustark/riverfront/diner previously
+measured through the crash-fallback path). Cost: riverfront went
+141→4639 recorded objects and the O(n²·regex) pair pass sat for
+minutes — flags are now hoisted per-name + x-axis sweep-and-prune;
+--all completes in ~1 min. Grammar draft 3 (calibrated against the
+diner, the model chapter): funnel/stack through decks+ceilings,
+tubs-in-sinks, ruins-as-rubble, scrub-as-vegetation, sinkhole-as-
+geology, stanchions-as-structure, wall-x-wall joins ≤0.30, seat-
+tucked-under-surface ≤0.30. Diner 130→64, graustark 9→2 (benign
+hull/paddlebox residual).
+TRIAGE BACKLOG (full-coverage numbers, now trustworthy):
+riverfront 614 (StripMall/Armory/Old_Church background masses
+interpenetrate by 3-5m + trees inside OppositeBldgs — decide
+backdrop-massing-is-intentional vs real placement bug BEFORE
+grammar-tuning it away), kwik_stop 153 (model chapter — triage with
+screenshots), roadside_chapel 100, parish_cemetery 78, diner 64
+residual (real candidates: ServiceBar x Sideboard 0.48, paddlewheel
+spokes 0.5m under RiverRoad asphalt, Booth_1 x Galley_Expo),
+briar_falls 53, cosmic_comics_interior 52, pit_stop_interior 43,
+carnival_lot 41, bungalow 30. Repo total 1693.
+
 ### Workstream · SLOWSTICK PRODUCTION PASS (user-directed · 2026-08-03)
 
 *"Visual logic, detail and sophistication."* Per-stick direction +

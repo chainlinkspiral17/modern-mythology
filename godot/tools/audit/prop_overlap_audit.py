@@ -40,13 +40,13 @@ WALLISH = re.compile(
 CONTAINERISH = re.compile(
     r"cage|case|chest|bin\b|bin_|basket|crate|rack|cooler|fridge|"
     r"freezer|cubby|cart|shelf|shelv|island|hutch|drawer|cab\b|"
-    r"cabinet|locker|oven|proofer|tub\b|vase|votive", re.I)
+    r"cabinet|locker|oven|proofer|tub\b|vase|votive|sink|basin", re.I)
 # Objects RESTING on a surface: min-penetration axis is Z and one of
 # the pair is a surface. Books sink 2cm into their shelf, a phone
 # into its desk — seating, not clipping.
 SURFACEISH = re.compile(
     r"shelf|shelv|top\b|_top|desk|table|counter|tray|sill|seat|"
-    r"bench|plank|deck\b|worktop|platform|island", re.I)
+    r"bench|plank|deck\b|worktop|platform|island|expo", re.I)
 SEAT_MAX = 0.10
 # Structure members joining each other (lattice-tower braces meeting
 # legs, railing spindles into rails) — joints, not clipping.
@@ -60,16 +60,33 @@ NONSOLID = re.compile(r"spray|mist|steam|smoke|shaft|glow|beam\b|dust|fog|surf|f
 BURIEDISH = re.compile(r"culvert|drain|conduit|footing|foundation|piling", re.I)
 # Rock against rock — talus piles, jagged outcrops, scree — is
 # geology, not clipping.
-ROCKISH = re.compile(r"jag|talus|rock|outcrop|boulder|scree|crag|cliff|rim\b|rim_|face\b|face_|gorge|tepui|ledge", re.I)
+ROCKISH = re.compile(r"jag|talus|rock|outcrop|boulder|scree|crag|cliff|rim\b|rim_|face\b|face_|gorge|tepui|ledge|"
+                     # Collapsed masonry IS rubble — graustark's ruins
+                     # interpenetrate each other and their sinkhole by
+                     # design, and vegetation grows through them.
+                     r"ruin|sinkhole", re.I)
 # Vegetation against vegetation (a shrub against a cypress buttress)
 # is undergrowth, not clipping.
 PLANTISH = re.compile(r"shrub|bush|hedge|fern|reed|weed|plant|vine|"
                       r"cypress|oak|conifer|tree|myrtle|magnolia|alder|sitka|spruce|"
-                      r"cedar|fir\b|pine|birch|willow|green\b|green_|growth|ivy|moss", re.I)
+                      r"cedar|fir\b|pine|birch|willow|green\b|green_|growth|ivy|moss|"
+                      r"scrub|bramble", re.I)
 ROOFISH = re.compile(r"eave|ridge|roof|gable|chimney|awning\b", re.I)
 STRUCTISH = re.compile(
     r"leg|brace|strut|post|pole|beam|rail|truss|arm\b|_arm|spindle|"
-    r"baluster|joist|stud\b|wire|cable|line|rope|cord|string", re.I)
+    r"baluster|joist|stud\b|wire|cable|line|rope|cord|string|"
+    r"stanchion", re.I)
+# Seats TUCK under their work surface by use — a stool under a desk,
+# a booth bench meeting the expo counter. Bounded so a chair buried
+# waist-deep in a table still reports.
+SEATISH = re.compile(r"stool|chair|bench|seat", re.I)
+TUCK_MAX = 0.30
+PORCHISH = re.compile(r"porch|veranda|stoop|balcony|marquee", re.I)
+# A steamboat funnel passes THROUGH every deck and roof above it by
+# construction (the diner's riverboat superstructure). Only excused
+# when paired with a deck/roof — a soda-stack pyramid never is.
+STACKISH = re.compile(r"\bstack|funnel|flue", re.I)
+DECKISH = re.compile(r"deck|slab|ceil", re.I)
 
 
 def record_builder(path):
@@ -91,7 +108,7 @@ def record_builder(path):
     def rec_box(name, center, size, base_color=None, *a, **k):
         A.BOXES.append((str(name), tuple(float(c) for c in center),
                         tuple(abs(float(s)) / 2.0 for s in size)))
-        return types.SimpleNamespace(name=str(name))
+        return A._obj_stub(name)
 
     def rec_cyl(name, center, radius, height, base_color=None,
                 segments=8, axis='Z', *a, **k):
@@ -99,7 +116,7 @@ def record_builder(path):
         half = {'Z': (r, r, h / 2), 'Y': (r, h / 2, r),
                 'X': (h / 2, r, r)}.get(str(axis).upper(), (r, r, h / 2))
         A.BOXES.append((str(name), tuple(float(c) for c in center), half))
-        return types.SimpleNamespace(name=str(name))
+        return A._obj_stub(name)
 
     if "make_box" in g:
         g["make_box"] = rec_box
@@ -155,41 +172,63 @@ def overlaps(boxes):
             seen.add(b[0])
             unique.append(b)
     boxes = unique
+    # Classify each NAME once. The original pass re-ran the whole
+    # regex battery per PAIR — fine at a few hundred objects, but
+    # once the recorder stubs let riverfront's main() run to
+    # completion it emits 4.6k boxes (~10M pairs) and the audit sat
+    # for minutes. Flags are per-object properties; hoist them.
+    ann = []
+    for n, c, h in boxes:
+        ann.append((
+            n, c, h,
+            n.rsplit("_", 1)[0], n.split("_")[0],
+            bool(NONSOLID.search(n)), bool(BURIEDISH.search(n)),
+            bool(PLANTISH.search(n)), bool(ROCKISH.search(n)),
+            bool(CROWNISH.search(n)), bool(WALLISH.search(n)),
+            bool(CONTAINERISH.search(n)), bool(SURFACEISH.search(n)),
+            bool(STRUCTISH.search(n)), bool(ROOFISH.search(n)),
+            bool(PORCHISH.search(n)),
+            bool(STACKISH.search(n)), bool(DECKISH.search(n)),
+            bool(SEATISH.search(n)),
+        ))
+    # Sweep-and-prune on x: sorted by min-x, the inner scan breaks at
+    # the first box that starts past this one's max-x — every later
+    # box starts even further right, so no x-overlap is possible.
+    ann.sort(key=lambda b: b[1][0] - b[2][0])
     hits = []
-    for i in range(len(boxes)):
-        n1, c1, h1 = boxes[i]
-        for j in range(i + 1, len(boxes)):
-            n2, c2, h2 = boxes[j]
-            if n1.rsplit("_", 1)[0] == n2.rsplit("_", 1)[0] or \
-                    n1.split("_")[0] == n2.split("_")[0]:
+    for i in range(len(ann)):
+        (n1, c1, h1, p1l, p1f, ns1, bu1, pl1, rk1, cr1, wa1,
+         co1, su1, st1, rf1, po1, sk1, dk1, se1) = ann[i]
+        xmax1 = c1[0] + h1[0]
+        for j in range(i + 1, len(ann)):
+            (n2, c2, h2, p2l, p2f, ns2, bu2, pl2, rk2, cr2, wa2,
+             co2, su2, st2, rf2, po2, sk2, dk2, se2) = ann[j]
+            if c2[0] - h2[0] > xmax1:
+                break
+            if p1l == p2l or p1f == p2f:
                 continue
-            if NONSOLID.search(n1) or NONSOLID.search(n2):
+            if ns1 or ns2:
                 continue
-            if BURIEDISH.search(n1) or BURIEDISH.search(n2):
+            if bu1 or bu2:
                 continue
-            if PLANTISH.search(n1) and PLANTISH.search(n2):
+            if pl1 and pl2:
                 continue
-            if ROCKISH.search(n1) and ROCKISH.search(n2):
+            if rk1 and rk2:
                 continue
             # Vegetation rooted in / draped over rock and walls grows
             # THROUGH them by nature — any depth.
-            if (PLANTISH.search(n1) or CROWNISH.search(n1)) and \
-                    (WALLISH.search(n2) or ROCKISH.search(n2)):
+            if (pl1 or cr1) and (wa2 or rk2):
                 continue
-            if (PLANTISH.search(n2) or CROWNISH.search(n2)) and \
-                    (WALLISH.search(n1) or ROCKISH.search(n1)):
+            if (pl2 or cr2) and (wa1 or rk1):
                 continue
             # Containment: a small object whose center sits inside a
             # container-named object is contents, not clipping
             # (propane tanks in their cage, sixpacks in the fridge).
-            contained = False
-            for (na, ca, ha), (nb, cb, hb) in (((n1, c1, h1), (n2, c2, h2)),
-                                               ((n2, c2, h2), (n1, c1, h1))):
-                if CONTAINERISH.search(na) and all(
-                        abs(cb[ax] - ca[ax]) < ha[ax] for ax in range(3)):
-                    contained = True
-                    break
-            if contained:
+            if co1 and all(abs(c2[ax] - c1[ax]) < h1[ax]
+                           for ax in range(3)):
+                continue
+            if co2 and all(abs(c1[ax] - c2[ax]) < h2[ax]
+                           for ax in range(3)):
                 continue
             pen = []
             ok = True
@@ -208,38 +247,43 @@ def overlaps(boxes):
             # far (gas station, faust, foxhole) was 0.05m+.
             if depth <= 0.04:
                 continue
-            if (WALLISH.search(n1) or WALLISH.search(n2)) and \
-                    depth <= EMBED_MAX:
+            if (wa1 or wa2) and depth <= EMBED_MAX:
+                continue
+            # TWO wall-class surfaces joining (partition into stall
+            # wall, floor meeting wall, trim into facade) overlap by
+            # a full member thickness at every corner and T-join.
+            if wa1 and wa2 and depth <= 0.30:
+                continue
+            # Seat tucked under its work surface.
+            if depth <= TUCK_MAX and ((se1 and su2) or (se2 and su1)):
                 continue
             if depth <= SEAT_MAX and pen.index(depth) == 2 and \
-                    (SURFACEISH.search(n1) or SURFACEISH.search(n2)):
+                    (su1 or su2):
                 continue
-            if STRUCTISH.search(n1) and STRUCTISH.search(n2):
+            if st1 and st2:
                 continue
-            if depth <= 0.40 and (
-                    (STRUCTISH.search(n1) and ROOFISH.search(n2)) or
-                    (STRUCTISH.search(n2) and ROOFISH.search(n1))):
+            if depth <= 0.40 and ((st1 and rf2) or (st2 and rf1)):
                 continue
             # A rope/wire/pole ENDPOINT buried a few cm in whatever
             # anchors it is a fastening, not a clip.
-            if depth <= 0.12 and (STRUCTISH.search(n1) or STRUCTISH.search(n2)):
+            if depth <= 0.12 and (st1 or st2):
                 continue
             # Porches, balconies, awnings TUCK INTO their building's
             # facade by construction.
-            if depth <= 0.25 and (
-                    re.search(r"porch|veranda|stoop|balcony|marquee", n1, re.I) or
-                    re.search(r"porch|veranda|stoop|balcony|marquee", n2, re.I)):
+            if depth <= 0.25 and (po1 or po2):
                 continue
             # A tree crown over a roofline is natural adjacency —
             # canopies hang over eaves everywhere trees stand near
             # buildings. Trunks and buttresses are NOT excused.
-            if (CROWNISH.search(n1) and ROOFISH.search(n2)) or \
-                    (CROWNISH.search(n2) and ROOFISH.search(n1)):
+            if (cr1 and rf2) or (cr2 and rf1):
+                continue
+            # Funnel/stack through the decks and roofs above it.
+            if (sk1 and (rf2 or dk2)) or (sk2 and (rf1 or dk1)):
                 continue
             # A crown is an amorphous leaf mass — 35cm of foliage
             # against any surface reads as touching, not clipping.
             # Deeper crown burial still reports.
-            if depth <= 0.35 and (CROWNISH.search(n1) or CROWNISH.search(n2)):
+            if depth <= 0.35 and (cr1 or cr2):
                 continue
             hits.append((depth, n1, n2, tuple(pen)))
     hits.sort(reverse=True)

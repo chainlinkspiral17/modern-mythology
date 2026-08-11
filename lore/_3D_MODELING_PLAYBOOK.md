@@ -399,6 +399,32 @@ Louisville's hurricane-deck proportions"). Don't guess at numbers.
 
 ## Recent lessons
 
+### 2026-08-11 · AUDIT STUBS — a recorded object must survive being USED
+
+- **The overlap/geometry audit's recorder returns stood in for real
+  Blender objects with a bare `SimpleNamespace(name=...)` — and any
+  builder that then TOUCHED the return (`obj.data`, `obj[i] = x`,
+  `palette[helper_return]`) crashed out of main(), silently dropping
+  the rest of that builder's geometry from the audit.** Graustark,
+  riverfront and the DINER all measured through the crash-fallback
+  path for the audit's whole life — riverfront was recording 141 of
+  its 4639 objects. Fix: `_obj_stub()` returns a `_StubVal` (the
+  universal float-subclass stub) with `.name` pinned; `_StubVal`
+  grew `__setitem__` and `__index__`. All 110 builders now complete
+  main() with zero partials — treat any future "partial:" line as a
+  stub-fidelity bug to fix THAT DAY, not noise to read around.
+- **Corollary: coverage jumps cost O(n²).** 4639 objects = ~10M
+  pairs; the per-pair regex battery ran minutes per locale. Classify
+  each NAME once (hoisted flag tuple), then sweep-and-prune on
+  sorted min-x with early break. --all over 110 builders ≈ 1 min.
+- **Calibrate grammar against the model chapter, then trust it
+  elsewhere.** The diner (best-verified space in the game) reporting
+  130 clips meant the grammar was missing construction classes, not
+  that the diner was broken: funnels pass through decks, tubs sit in
+  sinks, partitions join stall walls, seats tuck under counters,
+  ruins are rubble. Each excuse is BOUNDED (tuck ≤0.30, wall-join
+  ≤0.30) so waist-deep burial still reports.
+
 ### 2026-08-09 · RECOGNIZABLE OBJECTS — a bottle is a silhouette, not a tube
 
 - **User: "the bar, all the bottles are cubes. make bottles, make
