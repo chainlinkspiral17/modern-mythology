@@ -227,7 +227,18 @@ def install_stubs():
     # stayed flagged because their bands were never recorded. Execute
     # the real module with its relative geometry import resolving to
     # the recording stub above.
-    for real_mod in ("detail", "trees"):
+    # Every COMPOSITE prop module belongs here for the same reason:
+    # objects.py (bottles/cans/glassware), drones.py (the vol7
+    # Oneironautics units) and creatures.py (the crow) emit their
+    # geometry through the recording helpers, but only if the module
+    # itself RUNS. Stubbed, `make_crow(...)` is a no-op and the audit
+    # cannot see the bird at all — three locales' crows recorded ZERO
+    # objects before this line was widened (2026-08-12), which also
+    # means their clipping went unchecked.
+    for real_mod in ("detail", "trees", "objects", "drones",
+                     "creatures", "structure", "shelving", "decor",
+                     "food_service", "cleaning", "coolers_drinks",
+                     "signage", "store_fixtures", "safety"):
         mpath = os.path.join(BLENDER, "_props", real_mod + ".py")
         if not os.path.exists(mpath):
             continue

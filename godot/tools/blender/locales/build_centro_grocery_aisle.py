@@ -59,7 +59,7 @@ def build_aisles():
                          (6.0, 0.012, 0.035), (0.94, 0.94, 0.92, 1.0))
     # Two more runs so "Aisle Seven … Aisle Nine" reads as a store,
     # not a pair
-    make_snack_aisle("Aisle_2", (0.0, ROOM_D * 0.22, 0.0), length=6.0, shelf_count=5)
+    make_snack_aisle("Aisle_2", (-0.6, ROOM_D * 0.34, 0.0), length=4.4, shelf_count=5)
     make_snack_aisle("Aisle_3", (0.0, ROOM_D * 0.80, 0.0), length=6.0, shelf_count=5)
 
 def build_endcaps():
@@ -93,7 +93,7 @@ def build_aisle_signs():
 def build_checkout():
     # Checkout lane near the SE entrance: conveyor counter + register +
     # card terminal + a queue rail + an impulse candy rack on the lane.
-    cx, cy = 2.6, 1.6
+    cx, cy = 3.55, 1.75
     top_z = make_counter("Checkout", (cx, cy, 0.0), length=2.20, depth=0.80, height=0.90,
                          palette={"formica": (0.62, 0.66, 0.68, 1.0),
                                   "top": (0.24, 0.26, 0.28, 1.0), "kick": (0.24, 0.26, 0.28, 1.0)})
@@ -209,9 +209,9 @@ def build_dressing():
         make_cyl(f"Cart_Wheel_{wi}", (cx+wx, cy+wy, 0.06), 0.06, 0.05, P.METAL_BLACK, axis='X', segments=8)
     # Chest freezer, east wall (body + frosty glass lid)
     fx = ROOM_W/2.0 - 0.6
-    make_chamfer_box("Freezer_Body", (fx, ROOM_D-3.55, 0.45), (0.90, 1.80, 0.90), (0.82, 0.86, 0.90, 1.0))
-    make_box("Freezer_Lid", (fx, ROOM_D-3.55, 0.94), (0.86, 1.72, 0.04), (0.80, 0.90, 0.96, 0.5))
-    make_box("Freezer_Kick", (fx, ROOM_D-3.55, 0.06), (0.90, 1.80, 0.12), P.METAL_STEEL)
+    make_chamfer_box("Freezer_Body", (fx, ROOM_D-1.85, 0.45), (0.90, 1.80, 0.90), (0.82, 0.86, 0.90, 1.0))
+    make_box("Freezer_Lid", (fx, ROOM_D-1.85, 0.94), (0.86, 1.72, 0.04), (0.80, 0.90, 0.96, 0.5))
+    make_box("Freezer_Kick", (fx, ROOM_D-1.85, 0.06), (0.90, 1.80, 0.12), P.METAL_STEEL)
     # Hanging aisle-number sign over the aisle mouth
     make_cyl("AisleSign_Wire_L", (-0.6, ROOM_D/2.0, CEIL-0.35), 0.006, 0.60, P.METAL_STEEL)
     make_cyl("AisleSign_Wire_R", (0.6, ROOM_D/2.0, CEIL-0.35), 0.006, 0.60, P.METAL_STEEL)
@@ -231,8 +231,8 @@ def build_departments():
     steel = (0.60, 0.62, 0.63, 1.0)
     glass = (0.55, 0.62, 0.66, 0.4)
     # Meat counter, E wall north end
-    make_chamfer_box("Meat_Case_Body", (4.15, 6.6, 0.55), (1.10, 2.40, 1.10), (0.86, 0.86, 0.84, 1.0))
-    make_box("Meat_Case_Glass", (3.62, 6.6, 1.25), (0.04, 2.30, 0.55), glass)
+    make_chamfer_box("Meat_Case_Body", (3.05, 1.15, 0.55), (1.10, 2.40, 1.10), (0.86, 0.86, 0.84, 1.0))
+    make_box("Meat_Case_Glass", (2.52, 1.15, 1.25), (0.04, 2.30, 0.55), glass)
     for mi in range(4):
         make_box(f"Meat_Tray_{mi}", (4.05, 5.75 + mi * 0.55, 1.12), (0.60, 0.42, 0.06),
                  [(0.72, 0.32, 0.30, 1.0), (0.80, 0.46, 0.42, 1.0)][mi % 2])
@@ -256,9 +256,9 @@ def build_departments():
     for fi in range(3):
         make_box(f"Frozen_Door_{fi}", (-4.34, 6.25 + fi * 0.56, 1.15), (0.03, 0.50, 1.80), glass)
     # The cardboard bale at the aisle's north mouth
-    make_chamfer_box("Card_Bale", (-3.1, 5.2, 0.70), (0.90, 0.80, 1.40), (0.44, 0.48, 0.52, 1.0))
-    make_box("Card_Bale_Lid", (-3.1, 5.2, 1.42), (0.86, 0.76, 0.05), steel)
-    make_box("Card_Bale_Stack", (-3.1, 5.15, 0.90), (0.70, 0.60, 0.30), (0.66, 0.54, 0.36, 1.0))
+    make_chamfer_box("Card_Bale", (-4.15, 4.35, 0.70), (0.90, 0.80, 1.40), (0.44, 0.48, 0.52, 1.0))
+    make_box("Card_Bale_Lid", (-4.15, 4.35, 1.42), (0.86, 0.76, 0.05), steel)
+    make_box("Card_Bale_Stack", (-4.15, 4.30, 0.90), (0.70, 0.60, 0.30), (0.66, 0.54, 0.36, 1.0))
     # Register cubby (Diego's backpack)
     make_chamfer_box("Register_Cubby", (3.15, 1.6, 0.45), (0.36, 1.20, 0.90), (0.46, 0.42, 0.36, 1.0))
     make_chamfer_box("Cubby_Backpack", (3.15, 1.4, 0.30), (0.28, 0.30, 0.42), (0.30, 0.36, 0.30, 1.0))

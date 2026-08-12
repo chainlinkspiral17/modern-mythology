@@ -148,6 +148,43 @@ closet tools lean ≤0.20 · fork-enters-pallet.
 
 ## Recent lessons
 
+### 2026-08-12 · the audit could not see the SHARED modules (rule 2, at module scope)
+
+- **Core rule 2 said "hook every geometry helper." It was true at
+  FUNCTION scope and false at MODULE scope.** `install_stubs()`
+  executed only `_props.detail` and `_props.trees` for real;
+  everything else in `_props/` was replaced by `_Any`, whose
+  `__getattr__` returns a recorder only for the eight primitive
+  names. So every COMPOSITE helper — `make_wall`, `make_floor`,
+  `make_window`, `make_counter`, `make_bottle`, `make_cooler_row`,
+  and (once written) `make_drone` / `make_crow` — was a silent
+  no-op. **The audit had never seen a single shared-module wall.**
+- Discovered by accident: three crows placed in three locales left
+  the object counts unchanged (76 → 76). Widening the whitelist to
+  every composite module took finn_apartment from 76 to 195
+  recorded objects and the repo from 18 clips to 286.
+- **What that blindness was hiding:** eleven `make_window` calls
+  passed `center_z = 0` — the helper's anchor is a CENTER, so those
+  windows sat half-buried in the floor, spanning ankle to knee, in
+  eleven rooms including three kitchens and the cabin. Also: the
+  whole centro grocery was double-booked (bakery counter inside the
+  chest freezer, aisle 2 through the checkout, meat case inside the
+  cooler run, endcap shelves inside the card bale), and today's own
+  drone sat 1.27m inside a Sitka spruce.
+- **New construction classes the visible walls demanded:** openings
+  installed in walls (window assemblies occupy the full thickness),
+  fitted cabinetry backing into its wall (≤0.40 — a counter run is
+  authored from the wall's centerline), fixture bases/kicks abutting
+  (≤0.22), neon letters through their raceway, tipped furniture
+  below the floor plane, and `floor`/`_slab` added to the
+  grounded-object name list.
+- **The rule: when a tool's coverage changes, RE-BASELINE loudly.**
+  The holdout table in `run_all_audits.sh` now carries a dated,
+  commented triage baseline (24 locales, 111 clips) with the debt
+  written next to each name — not a budget, and never to be raised.
+
+
+
 ### 2026-08-12 · never-built beats stale: enumerate BOTH
 
 - **The first Deck run of `list_stale_builds.sh` found six

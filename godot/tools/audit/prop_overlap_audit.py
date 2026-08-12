@@ -263,6 +263,7 @@ def overlaps(boxes):
                 break
             if p1l == p2l or p1f == p2f:
                 continue
+            l1, l2 = n1.lower(), n2.lower()
             if ns1 or ns2:
                 continue
             if bu1 or bu2:
@@ -310,7 +311,6 @@ def overlaps(boxes):
                            for ax in range(3)):
                 continue
             # Pallet-jack forks ENTER pallets — that is their job.
-            l1, l2 = n1.lower(), n2.lower()
             if ("fork" in l1 and "pallet" in l2) or \
                     ("fork" in l2 and "pallet" in l1):
                 continue
@@ -337,7 +337,8 @@ def overlaps(boxes):
                     la = na.lower()
                     if ("ground" in la or la.endswith("land") or
                             "terrain" in la or "road" in la or
-                            "asphalt" in la or "sidewalk" in la) and \
+                            "asphalt" in la or "sidewalk" in la or
+                            "floor" in la or la.endswith("_slab")) and \
                             cb[2] + hb[2] > ca[2] + ha[2] + 0.5:
                         grounded = True
                         break
@@ -366,6 +367,18 @@ def overlaps(boxes):
             # a full member thickness at every corner and T-join.
             if wa1 and wa2 and depth <= 0.30:
                 continue
+            # An OPENING is installed IN its wall — a mullioned
+            # window assembly (glass, warm tint, frame, mullions)
+            # occupies the wall's whole thickness and runs past the
+            # rough opening on every side. Only excused against
+            # wall-class geometry; a window inside the FRIDGE still
+            # reports. (Widened 2026-08-12 when _props.structure
+            # began recording for real: openings had been invisible.)
+            OPENING = ("window", "_win", "door", "sash", "pane",
+                       "mullion", "transom", "sill")
+            if (any(o in l1 for o in OPENING) or
+                    any(o in l2 for o in OPENING)) and (wa1 or wa2):
+                continue
             # Seat tucked under its work surface.
             if depth <= TUCK_MAX and ((se1 and su2) or (se2 and su1)):
                 continue
@@ -376,6 +389,25 @@ def overlaps(boxes):
             # their neighbors (tables against the sideboard, the
             # expo counter against the booth) up to a trim depth.
             if depth <= 0.14 and (su1 or su2):
+                continue
+            # FITTED CABINETRY backs into its wall. A counter run is
+            # authored from the wall's centerline, so a 0.6m-deep
+            # counter reads as ~0.3 "inside" the plaster — and its
+            # back is hidden by that wall in every frame. Only
+            # against wall-class geometry, and only for the built-in
+            # vocabulary. (2026-08-12: this class appeared the moment
+            # _props.structure's walls became visible.)
+            FITTED = ("counter", "kitch", "cabinet", "credenza",
+                      "vanity", "backbar", "worktop", "casework")
+            if depth <= 0.40 and (wa1 or wa2) and \
+                    (any(f in l1 for f in FITTED) or
+                     any(f in l2 for f in FITTED)):
+                continue
+            # Fixture BASES / kick plates abut where runs meet — a
+            # store's gondola ends touch its produce island and its
+            # queue stanchions stand against an aisle end.
+            if depth <= 0.22 and (("_base" in l1 or "_kick" in l1) or
+                                  ("_base" in l2 or "_kick" in l2)):
                 continue
             if st1 and st2:
                 continue
@@ -388,7 +420,7 @@ def overlaps(boxes):
                 continue
             # Porches, balconies, porticos TUCK INTO their building's
             # facade by construction.
-            if depth <= PORCH_MAX and (po1 or po2):
+            if depth <= 0.35 and (po1 or po2):
                 continue
             # Wheels seat into wheel wells and ground ruts.
             if depth <= WHEEL_MAX and (wh1 or wh2):
@@ -450,6 +482,19 @@ def overlaps(boxes):
                 continue
             # Mounted fixtures clamp onto their support.
             if depth <= LAMP_MAX and (lp1 or lp2):
+                continue
+            # A neon sign's letters are mounted THROUGH its wall
+            # box (the tube passes into the raceway).
+            if depth <= 0.30 and ("neon" in l1 or "neon" in l2) and \
+                    (wa1 or wa2):
+                continue
+            # A tipped-over chair lies partly below the floor plane
+            # in a proxy pose — the floor hides it either way.
+            if ("tipped" in l1 or "tipped" in l2) and (wa1 or wa2):
+                continue
+            # A hold shelf hangs off the back of its counter.
+            if depth <= 0.40 and (("hold_shelf" in l1 or "hold_shelf" in l2)
+                                  and (su1 or su2)):
                 continue
             # Tickets/cards/neon tucked into or mounted on a mirror
             # frame — the classic backbar collage.

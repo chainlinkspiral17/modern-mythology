@@ -184,6 +184,16 @@ def build_dressing():
                  0.03, 0.12, COL_LEAF)
 
 
+def build_crow_2026_08():
+    """THE CROW (shot_marker_audit --props, 2026-08-12): cued 12+
+    times across vol 7 and never modeled anywhere. It waits on the
+    Millers' porch rail — the bird the prose keeps cutting to.
+    Rail_Top runs at z=1.00, y=0.10.
+    """
+    from _props.creatures import make_crow
+    make_crow("Crow", -1.15, 0.10, 1.03, facing=-1.0)
+
+
 def main():
     clear_scene()
     build_shell()
@@ -193,6 +203,7 @@ def main():
     build_yard()
     build_porchlamp()
     build_dressing()
+    build_crow_2026_08()
     out = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)),
         "../../../assets/3d/locales/miller_back_porch.glb"))
     print(f"\n[build_miller_back_porch] exporting to {out}")

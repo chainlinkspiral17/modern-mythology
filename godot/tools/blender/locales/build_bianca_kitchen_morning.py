@@ -96,7 +96,7 @@ def build_hero_props():
     cul-de-sac, the kettle, the toaster under the clock, the
     dishwasher, the back door + green terrycloth robe, the
     grinder."""
-    make_window("Window_N", (-1.5, ROOM_D-0.10, 0), width=1.30, height=1.05)
+    make_window("Window_N", (-1.5, ROOM_D-0.10, 1.52), width=1.30, height=1.05)
     make_cyl("Kettle", (1.34, 3.84, 1.05), 0.09, 0.18, (0.62, 0.64, 0.65, 1.0), segments=10)
     make_box("Toaster", (-0.55, 3.60, 1.04), (0.28, 0.18, 0.16), (0.72, 0.72, 0.70, 1.0))
     make_box("Dishwasher_Face", (-1.85, 3.00, 0.42), (0.03, 0.60, 0.84), (0.80, 0.78, 0.74, 1.0))

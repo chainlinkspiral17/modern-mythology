@@ -116,7 +116,7 @@ def build_hero_props():
     # The under-cabinet light — the only light in the ch19 beat
     make_box("UnderCab_Light", (-1.5, ROOM_D-0.38, 1.46), (1.20, 0.05, 0.04), (0.98, 0.90, 0.70, 1.0))
     # The window over the sink onto the backyard
-    make_window("Sink_Window", (-1.5, ROOM_D-0.05, 0), width=1.50, height=1.00)
+    make_window("Sink_Window", (-1.5, ROOM_D-0.05, 1.52), width=1.50, height=1.00)
     # Couch + Daisy's spot + the muted noon news
     make_chamfer_box("Couch_Base", (-2.35, 2.0, 0.24), (0.85, 2.00, 0.38), (0.44, 0.38, 0.30, 1.0))
     make_chamfer_box("Couch_Back", (-2.72, 2.0, 0.62), (0.18, 2.00, 0.58), (0.40, 0.34, 0.27, 1.0))

@@ -116,7 +116,7 @@ def build_hero_props():
     driveway — with the sill radio (San Antonio news in Spanish),
     the small wooden salt box, the microwave, the yellow chipped
     plate, the exterior screen door, the stair mouth."""
-    make_window("Kitchen_Window", (-ROOM_W/4.0, ROOM_D-0.05, 0), width=1.40, height=1.00)
+    make_window("Kitchen_Window", (-ROOM_W/4.0, ROOM_D-0.05, 1.52), width=1.40, height=1.00)
     make_box("Window_Sill", (-ROOM_W/4.0, ROOM_D-0.20, 1.02), (1.55, 0.22, 0.05), COL_WOOD)
     # The kitchen radio, just a radio
     make_chamfer_box("Kitchen_Radio", (-1.75, ROOM_D-0.20, 1.12), (0.24, 0.14, 0.14), (0.44, 0.30, 0.22, 1.0))

@@ -88,7 +88,7 @@ def build_kitchen():
         make_cyl(f"PotRack_Hook_{i}", (-1.7, py, 1.9), 0.006, 0.16, COL_IRON_WM, segments=4)
         make_cyl(f"PotRack_Pot_{i}", (-1.7, py, 1.72), r, h, col, segments=10)
     # The kitchen window (N wall over the counter's end)…
-    make_window("Kitchen_Window", (-1.6, ROOM_D-0.04, 0), width=1.00, height=0.95)
+    make_window("Kitchen_Window", (-1.6, ROOM_D-0.04, 1.48), width=1.00, height=0.95)
     # …and the black rotary phone on a small table beside it
     make_box("Phone_Table", (-2.60, 5.35, 0.30), (0.45, 0.45, 0.60), COL_WOOD)
     make_box("Phone_Body", (-2.60, 5.35, 0.66), (0.24, 0.20, 0.10), (0.10, 0.10, 0.11, 1.0))
@@ -237,7 +237,7 @@ def build_daybed():
     make_box("Daybed_Blanket", (-2.40, 1.5, 0.545), (0.84, 0.95, 0.06), (0.56, 0.40, 0.30, 1.0))
     # Chair by the SOUTH window, main room ("The chair by the south
     # window" / "Finn on the floor by the south window")
-    make_window("South_Window_W", (-2.0, 0.04, 0), width=1.10, height=1.00)
+    make_window("South_Window_W", (-2.0, 0.04, 1.45), width=1.10, height=1.00)
     make_box("SWChair_Seat", (-1.70, 0.95, 0.44), (0.44, 0.44, 0.05), COL_WOOD)
     make_box("SWChair_Back", (-1.70, 1.15, 0.72), (0.44, 0.05, 0.52), COL_WOOD)
     for li, (lx, ly) in enumerate(((-0.16, -0.16), (0.16, -0.16), (-0.16, 0.16), (0.16, 0.16))):
@@ -259,7 +259,7 @@ def build_east_room():
     make_box("EBed_Win_Frame", (2.96, 1.45, 1.75), (0.04, 1.20, 0.95), COL_WOOD_DK)
     make_box("EBed_Win_Glass", (2.98, 1.45, 1.75), (0.02, 1.06, 0.82), COL_GLASS)
     # Writing desk against the S wall + the south window over it
-    make_window("South_Window_E", (2.0, 0.04, 0), width=0.95, height=0.95)
+    make_window("South_Window_E", (2.0, 0.04, 1.45), width=0.95, height=0.95)
     make_box("Desk_Top", (1.75, 0.55, 0.74), (0.95, 0.60, 0.05), COL_WOOD)
     for lx in (1.35, 2.15):
         make_box(f"Desk_Leg_{lx:.2f}", (lx, 0.55, 0.37), (0.06, 0.55, 0.72), COL_WOOD_DK)
@@ -301,6 +301,16 @@ def build_wall_dressing():
                  (0.05, 0.34, 1.14), (0.60, 0.28, 0.24, 1.0))
 
 
+def build_crow_2026_08():
+    """THE CROW at the cabin's kitchen window (north wall), seen
+    through the glass from inside — the vol 7 motif made physical.
+    Kitchen_Window sits at (-1.6, ROOM_D-0.04); the bird stands on
+    the outside sill, which is where it always is.
+    """
+    from _props.creatures import make_crow
+    make_crow("Crow", -1.6, ROOM_D + 0.16, 1.06, facing=1.0)
+
+
 def main():
     clear_scene()
     build_shell()
@@ -311,6 +321,7 @@ def main():
     build_daybed()
     build_east_room()
     build_wall_dressing()
+    build_crow_2026_08()
     out = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)),
         "../../../assets/3d/locales/cabin_interior.glb"))
     print(f"\n[build_cabin_interior] exporting to {out}")

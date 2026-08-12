@@ -89,7 +89,7 @@ def build_hero_props():
     """2026-08-03 tail pass: the night window Maya pauses at (the
     dogs), the water glass, the stair mouth, burners + oven face on
     the blank stove."""
-    make_window("Window_N", (-1.5, ROOM_D-0.10, 0), width=1.20, height=1.00)
+    make_window("Window_N", (-1.5, ROOM_D-0.10, 1.52), width=1.20, height=1.00)
     make_cyl("Water_Glass", (-1.55, 3.30, 1.02), 0.035, 0.12, (0.55, 0.62, 0.66, 0.5), segments=8)
     make_box("Stair_Newel", (0.92, 0.15, 0.60), (0.10, 0.10, 1.20), (0.46, 0.34, 0.22, 1.0))
     for s in range(3):

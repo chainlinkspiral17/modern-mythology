@@ -154,7 +154,10 @@ def build_drones_2026_08():
                       spread=11.0, climb=2.2)
     # One working low over the shoulder brush, arm deployed — this is
     # the one the player can actually read as a machine.
-    make_drone("Drone_Worker", 5.6, 12.5, 4.2, arm_down=True)
+    # Over the ROAD, not in the Sitka stand (the audit caught it
+    # 1.27m inside SitkaE_3 once composite props began
+    # recording): the shoulder ends at x=3.2, trees start past it.
+    make_drone("Drone_Worker", 1.9, 12.5, 5.1, arm_down=True)
 
     # THE EVIDENCE: fresh-cut salal stubs where the drones pruned the
     # trail edge back. Pale cut faces against the dark leaf mass —

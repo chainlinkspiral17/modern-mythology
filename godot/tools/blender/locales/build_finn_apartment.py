@@ -163,6 +163,15 @@ def build_detail_pass_2026_08():
                      face_sign=-1, aged=True)
 
 
+def build_crow_2026_08():
+    """THE CROW on Finn's south windowsill — it follows him through
+    the volume (5 cues on this locale alone). S_Window_Frame sits
+    at (1.55, 0.05), sill height ~1.05.
+    """
+    from _props.creatures import make_crow
+    make_crow("Crow", 1.55, 0.30, 1.07, facing=1.0)
+
+
 def main():
     clear_scene()
     build_shell()
@@ -174,6 +183,7 @@ def main():
     build_ceiling_infra()
     build_hero_props()
     build_detail_pass_2026_08()
+    build_crow_2026_08()
     out = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)),
         "../../../assets/3d/locales/finn_apartment.glb"))
     print(f"\n[build_finn_apartment] exporting to {out}")

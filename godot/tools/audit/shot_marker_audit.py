@@ -76,8 +76,68 @@ def markers_in(res_rel_path):
     return set(re.findall(r'\[node name="(shot_[\w]+)"', src))
 
 
+# ── Does the cued OBJECT even exist? ───────────────────────────
+# The bowls lesson (2026-08-12): [shot:insert bowls] fired 21x in
+# vol 7 at Olaf's two carved bowls — the volume's central image —
+# which had never been modeled. A missing MARKER is a framing bug;
+# a missing OBJECT is an art bug, and no marker audit can see it.
+# So for each blind cue we also ask whether the locale's BUILDER
+# emits anything whose name resembles the cue id.
+BUILDERS = os.path.join(ROOT, "tools", "blender", "locales")
+BUILDERS_ALT = os.path.join(ROOT, "tools", "blender")
+# Cue ids that name a person, a view, or an abstraction — never a
+# prop the builder could carry.
+NOT_PROPS = {
+    "face", "faces", "hands", "hand", "figure", "eyes", "eye",
+    "mouth", "feet", "shoulder", "silhouette", "reflection",
+    "sky", "light", "dark", "nothing", "everything", "both",
+}
+# Cue id -> extra word stems to accept in geometry names.
+SYNONYMS = {
+    "bowls": ["bowl"], "phone": ["phone", "handset", "landline"],
+    "charred_wood": ["char", "burn", "ember", "ash"],
+    "coffee": ["coffee", "pot", "mug", "carafe", "percolator"],
+    "truck": ["truck", "pickup", "van"],
+    "crow": ["crow", "bird", "corvid"],
+    "notebook": ["notebook", "note", "journal", "ledger"],
+    "window": ["window", "win_", "sash", "pane"],
+    "tide_pool": ["tide", "pool", "anemone"],
+    "cedar": ["cedar"], "stick": ["stick", "cart", "sleeve"],
+    "hexagon": ["hex"], "patch": ["patch", "salal", "moss"],
+    "canvas": ["canvas", "easel", "painting"],
+    "model_city": ["diorama", "model", "city"],
+    "french_toast": ["toast", "skillet", "plate"],
+    "package": ["package", "parcel", "box"],
+    "laptop": ["laptop", "monitor", "screen"],
+    "photograph": ["photo", "frame", "polaroid"],
+}
+
+
+def builder_names(locale_basename):
+    for cand in (os.path.join(BUILDERS, "build_%s.py" % locale_basename),
+                 os.path.join(BUILDERS_ALT, "build_%s.py" % locale_basename)):
+        if os.path.exists(cand):
+            src = open(cand).read()
+            return set(x.lower() for x in re.findall(
+                r'(?:make_\w+|_mb|_mc)\(\s*f?"([^"]+)"', src))
+    return None
+
+
+def object_exists(locale_basename, cue_id):
+    names = builder_names(locale_basename)
+    if names is None:
+        return None
+    stems = SYNONYMS.get(cue_id, []) + [cue_id, cue_id.rstrip("s")]
+    blob = " ".join(names)
+    for s in stems:
+        if len(s) >= 3 and s.replace("_", "") in blob.replace("_", ""):
+            return True
+    return False
+
+
 def main():
     show_all = "--all" in sys.argv
+    props_mode = "--props" in sys.argv
     p2s = preset_to_scene()
     chars = set()
     # First pass: learn the character ids so closeups of PEOPLE are
@@ -148,6 +208,28 @@ def main():
         print("   … %d more presets (--all)" % (len(ranked) - 14))
     print("\n%d blind object cue(s) across %d preset(s)"
           % (total_blind, len(gaps)))
+
+    if props_mode:
+        # The bowls hunt: cued, unmarked, AND absent from the builder.
+        print("\n── cued but apparently NOT MODELED "
+              "(art gaps, ranked) ──")
+        missing = collections.Counter()
+        where = {}
+        for preset, counter in gaps.items():
+            tscn = p2s.get(preset, "")
+            base = os.path.basename(tscn).replace(".tscn", "")
+            for (typ, sid), n in counter.items():
+                if sid in NOT_PROPS:
+                    continue
+                ex = object_exists(base, sid)
+                if ex is False:
+                    missing[(base, sid)] += n
+                    where.setdefault((base, sid), set()).add(preset)
+        for (base, sid), n in missing.most_common(30):
+            print("   %2dx  %-26s %s" % (n, base, sid))
+        print("\n%d cue(s) name an object no builder emits, "
+              "across %d locale/object pair(s)"
+              % (sum(missing.values()), len(missing)))
     return 0
 
 

@@ -109,7 +109,7 @@ def build_hero_props():
     since six forty-five (+ sill + radio), the charging cordless
     landline + green LED, the rosary on the table, the bills
     drawer."""
-    make_window("Window_N", (0.0, ROOM_D-0.10, 0), width=1.20, height=1.00)
+    make_window("Window_N", (0.0, ROOM_D-0.10, 1.52), width=1.20, height=1.00)
     make_box("Window_Sill", (0.0, ROOM_D-0.24, 0.98), (1.30, 0.16, 0.05), (0.52, 0.40, 0.28, 1.0))
     make_box("Sill_Radio", (0.55, ROOM_D-0.24, 1.07), (0.24, 0.14, 0.14), (0.44, 0.30, 0.22, 1.0))
     # The cordless landline, plugged in and charging — face-up
