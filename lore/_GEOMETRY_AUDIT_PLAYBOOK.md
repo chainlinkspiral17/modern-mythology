@@ -148,6 +148,23 @@ closet tools lean ≤0.20 · fork-enters-pallet.
 
 ## Recent lessons
 
+### 2026-08-12 · never-built beats stale: enumerate BOTH
+
+- **The first Deck run of `list_stale_builds.sh` found six
+  builders with NO GLB at all** — ben_bedroom, bindery,
+  centro_stockroom, henderson_garage, miller_garage (five live VN
+  backgrounds across 8 chapters) and ember_ash_office (the
+  Chariot gauntlet board). All had been rendering the 2D fallback
+  indefinitely.
+- **The lesson: a missing artifact and a stale artifact present
+  identically in-game** (fallback / month-old world), but only
+  staleness gets talked about. Any build-freshness tool must
+  report NEVER BUILT as a separate, louder category — and
+  rebuild priority goes to never-built first, since those scenes
+  have no correct version at all.
+
+
+
 ### 2026-08-11 · the founding day
 
 Everything above was learned in one arc: 1,693 trustworthy clips

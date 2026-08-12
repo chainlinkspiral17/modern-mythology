@@ -17,6 +17,21 @@ producer discipline).
 
 ---
 
+**2026-08-12 · SIX LOCALES HAD NEVER BEEN BUILT AT ALL.** The new
+list_stale_builds.sh, first run on the Deck, found six builders
+with no GLB on disk — and five of them are LIVE VN backgrounds
+(ben_bedroom ×2 chapters, henderson_garage ×3, bindery,
+centro_stockroom, miller_garage ×1 each = 8 chapters) plus
+ember_ash_office, the Chariot gauntlet's board locale. Every one
+of them has been rendering the 2D fallback — the same failure
+class as the graustark brown, sitting unnoticed because nothing
+ever compared builders against artifacts. Rebuild priority is
+therefore: (1) the six never-built, (2) graustark + riverfront
+(today's fixes), (3) the 38 stale. Lesson recorded in
+_GEOMETRY_AUDIT_PLAYBOOK: an artifact that was never produced
+looks exactly like an artifact that is merely old — enumerate
+both.
+
 ## NEXT SESSION QUEUE (written 2026-08-11 night, session close)
 
 The audit era is consolidated: run_all_audits.sh is green end to
