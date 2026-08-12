@@ -129,6 +129,17 @@ recurring complaint. The rules:
    the same call. If a PostProcess CanvasLayer ever needs to
    survive F4, add it to a `"world_render"` group and skip in
    the F4 sweep. For now: HUD only.
+5. **A full-screen surface that IS a game is not HUD.** Any
+   root that carries a playable screen — the Slowstock TV wrap,
+   a slowstick host/stub, the planned-community screen and its
+   BBS, the gauntlet board — joins `"game_surface"` as well as
+   `"ui"`, and the F4 sweep skips those. Getting this wrong
+   shipped a real bug (2026-08-12): F4 mid-slowstick hid the
+   whole television while its invisible InputBlocker kept eating
+   keys, so clicks fell through to the menu underneath and
+   randomly opened SCENE EDITOR (two nav rows below SLOWSTOCK
+   LIBRARY). HUD *inside* a game surface still toggles normally,
+   because the sweep visits `"ui"` members directly.
 5. Test by pressing F4 at SCENE START before any dynamic HUD
    members (music player, mood label) have had time to spawn,
    then waiting for them to spawn — they must NOT pop up.

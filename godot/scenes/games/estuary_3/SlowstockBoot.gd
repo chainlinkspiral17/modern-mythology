@@ -64,6 +64,15 @@ func _open_shelf() -> void:
 	if _shelf != null and is_instance_valid(_shelf):
 		_shelf.queue_free()
 	_shelf = null
+	# A boot-sequence overlay left over from the launch we are
+	# returning FROM (quit before its ~3.6s tween finished, or the
+	# tween stalled because the tree was paused) is a full-screen
+	# MOUSE_FILTER_STOP control with nothing to free it: the shelf
+	# renders under an invisible lid and clicking a game does
+	# nothing. Sweep it on every return to the shelf.
+	for stale in get_children():
+		if stale is Control and stale.name == "BootSequence":
+			stale.queue_free()
 	_shelf = load(SHELF_SCENE).instantiate()
 	_shelf.picked.connect(_on_picked)
 	_shelf.closed.connect(_on_closed)
@@ -94,6 +103,7 @@ func _open_stub_screen(stick_id: String) -> void:
 	_stub_screen = Control.new()
 	_stub_screen.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
 	_stub_screen.add_to_group("ui")
+	_stub_screen.add_to_group("game_surface")
 
 	var bg := ColorRect.new()
 	bg.color = Color(0.024, 0.020, 0.014, 0.97)
@@ -228,6 +238,7 @@ func _play_boot_sequence(stick_id: String) -> void:
 	ov.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
 	ov.mouse_filter = Control.MOUSE_FILTER_STOP
 	ov.add_to_group("ui")
+	ov.add_to_group("game_surface")
 	add_child(ov)
 	var bg := ColorRect.new()
 	bg.color = Color(0.008, 0.009, 0.012, 1.0)
@@ -503,6 +514,7 @@ func _open_basilica_absence() -> void:
 	_stub_screen = Control.new()
 	_stub_screen.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
 	_stub_screen.add_to_group("ui")
+	_stub_screen.add_to_group("game_surface")
 
 	var bg := ColorRect.new()
 	bg.color = Color(0, 0, 0, 1)

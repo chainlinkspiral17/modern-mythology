@@ -708,7 +708,12 @@ func _on_slowstock_library() -> void:
 	var wrap: Control = preload("res://scripts/InputBlocker.gd").new()
 	wrap.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
 	wrap.mouse_filter = Control.MOUSE_FILTER_STOP
-	wrap.add_to_group("ui")   # F4 sweep catches this
+	# The TV is the GAME, not HUD: joining "ui" alone made F4 hide
+	# the whole set mid-play (and left this fence invisibly eating
+	# keys). "game_surface" keeps it out of the sweep; debug HUD
+	# inside a stick still toggles.
+	wrap.add_to_group("ui")
+	wrap.add_to_group("game_surface")
 	# The dark room behind the set.
 	var room := ColorRect.new()
 	room.color = Color(0.014, 0.011, 0.009, 1.0)

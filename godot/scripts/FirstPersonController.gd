@@ -164,7 +164,22 @@ func action_toggle_hud() -> void:
 	_apply_hud_visibility(get_tree().root, hud_visible)
 	# Also walk the "ui" group for explicit members (some Control
 	# nodes opt in without being CanvasLayers).
+	#
+	# EXCEPT "game_surface" members (2026-08-12). A full-screen
+	# surface that IS a game — the Slowstock TV, the planned-
+	# community screen, its BBS, the gauntlet board — had joined
+	# "ui" for the F4 sweep, so pressing F4 while playing made the
+	# GAME vanish and left its invisible input fence swallowing
+	# keys: "not able to click on a game after exiting one,
+	# appearing in the scene editor randomly" (the clicks fell
+	# through the vanished TV onto the menu's nav column, where
+	# SCENE EDITOR sits two rows under SLOWSTOCK LIBRARY).
+	# HUD *inside* those surfaces still toggles: this loop visits
+	# group members directly, so a debug label under a game
+	# surface hides while the surface itself stays.
 	for n in get_tree().get_nodes_in_group("ui"):
+		if n.is_in_group("game_surface"):
+			continue
 		if "visible" in n:
 			n.visible = hud_visible
 	print("[FPC] HUD visible = %s" % hud_visible)
@@ -185,7 +200,7 @@ func _apply_hud_visibility(node: Node, vis: bool) -> void:
 			"Debug" in nm or "Menu" in nm or
 			node.is_in_group("ui")
 		)
-		if is_hud:
+		if is_hud and not node.is_in_group("game_surface"):
 			(node as CanvasLayer).visible = vis
 		return  # CanvasLayer children render through their own layer
 	for child in node.get_children():
