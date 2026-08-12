@@ -44,7 +44,7 @@ def build_shell():
             ("Crown_S", 'X', ROOM_W, 0.0, +0.10)]:
         make_crown_molding(nm, wall_x=wx, wall_y=wy, length=length, axis=ax, ceil_z=CEIL, palette={"wood": COL_WOOD})
     make_window("Window_SE", (+2.0, 0.0, 1.40), width=1.40, height=1.20)
-    make_window("Window_W", (-ROOM_W/2.0+0.02, 3.0, 1.40), width=1.60, height=1.40)
+    make_window("Window_W", (-ROOM_W/2.0+0.02, 3.0, 1.40), width=1.60, height=1.40, axis='Y')
     make_door_hinges("FrontDoor_Hinge", edge_x=-1.10, edge_y=0.0, edge_z_centers=[0.30, 1.05, 1.80], axis='X')
 
 def build_living():

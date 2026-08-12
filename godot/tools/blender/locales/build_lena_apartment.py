@@ -80,7 +80,7 @@ def build_kitchen():
     """W wall: counter + sink under the alley window, stove, fridge
     at the SW corner end, dish drainer, kettle, braided rug."""
     # The window over the sink → the alley + the Starfish Nebula mural
-    make_window("Kitchen_Window", (-ROOM_W/2.0+0.02, 1.30, 1.50), width=1.10, height=1.10)
+    make_window("Kitchen_Window", (-ROOM_W/2.0+0.02, 1.30, 1.50), width=1.10, height=1.10, axis='Y')
     # Counter run
     make_box("Counter_Body", (-2.20, 1.40, 0.44), (0.60, 2.00, 0.88), COL_WOOD)
     make_box("Counter_Top", (-2.20, 1.40, 0.90), (0.64, 2.06, 0.05), COL_COUNTER)

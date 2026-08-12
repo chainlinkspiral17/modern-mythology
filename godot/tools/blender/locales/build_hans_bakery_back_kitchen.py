@@ -54,9 +54,14 @@ def build_tile():
     make_box("Wainscot_E", (ROOM_W/2.0-0.11, ROOM_D/2.0, 0.70), (0.02, ROOM_D-0.4, 1.20), tile)
 
 def build_counter():
-    top_z = make_counter("Counter", (-ROOM_W/4.0, ROOM_D-1.0, 0.0), length=2.40, depth=0.70, height=0.92,
+    # make_counter's `depth` is the X extent, `length` the Y —
+    # so length>depth built this counter ROTATED 90 DEGREES:
+    # a narrow face against the wall and the run jutting into
+    # the room. Swapped 2026-08-12 (same bug as the New
+    # Orleans bar and the pit stop's lunch counter).
+    top_z = make_counter("Counter", (-ROOM_W/4.0, ROOM_D-1.0, 0.0), length=0.70, depth=2.40, height=0.92,
                          palette={"formica": (0.78, 0.66, 0.42, 1.0), "top": (0.32, 0.22, 0.14, 1.0), "kick": (0.32, 0.22, 0.14, 1.0)})
-    make_counter_bullnose("Counter", (-ROOM_W/4.0-0.35, ROOM_D-1.0, top_z), length=2.40)
+    make_counter_bullnose("Counter", (-ROOM_W/4.0, ROOM_D-1.0 - 0.35, top_z), length=2.40, axis='X')
 
 def build_stove():
     # Commercial deck oven: stainless body, two glass doors with warm
@@ -237,7 +242,7 @@ def build_communal_table():
     make_cyl("Preserve_Jar", (0.28, 2.45, 0.85), 0.045, 0.12, (0.48, 0.22, 0.30, 0.9), segments=8)
     make_box("Butter_Dish", (-0.28, 2.45, 0.80), (0.16, 0.10, 0.06), (0.90, 0.88, 0.80, 1.0))
     # The Hemlock window + sill + the chair beside it (W wall)
-    make_window("Win_W", (-2.99, 2.6, 1.50), width=1.10, height=1.10)
+    make_window("Win_W", (-2.99, 2.6, 1.50), width=1.10, height=1.10, axis='Y')
     make_box("Win_W_Sill", (-2.86, 2.6, 0.95), (0.26, 1.10, 0.06), wood)
     make_box("WinChair_Seat", (-2.35, 2.6, 0.45), (0.40, 0.40, 0.05), wood)
     make_box("WinChair_Back", (-2.53, 2.6, 0.74), (0.05, 0.40, 0.52), wood)

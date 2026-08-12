@@ -107,36 +107,59 @@ def make_crown_molding(prefix, *, wall_x, wall_y, length, axis,
 
 
 def make_window(prefix, anchor, *, width=2.60, height=1.50,
-                cross_mullion=True, palette=None):
-    """Mullioned multi-pane glass window. anchor=(wall_x_center,
-    wall_face_y, center_z). Caller positions on south or north wall.
+                cross_mullion=True, palette=None, axis='X'):
+    """Mullioned multi-pane glass window.
+
+    axis='X' (default): the window lies in a NORTH or SOUTH wall and
+    spans X — anchor=(wall_x_center, wall_face_y, center_z).
+    axis='Y': it lies in an EAST or WEST wall and spans Y —
+    anchor=(wall_face_x, wall_y_center, center_z).
+
+    The Y form was added 2026-08-12: five locales already placed
+    windows on east/west walls, where the X-spanning build laid the
+    glass ACROSS the room and 0.6m into the wall. `center_z` is a
+    CENTER, not a sill — eleven callers passed 0 and got windows
+    half-buried in the floor (fixed the same day).
     cross_mullion=True draws horizontal + vertical bars."""
     palette = palette or {}
     glass = palette.get("glass", P.GLASS)
     frame = palette.get("frame", P.METAL_STEEL)
     warm = palette.get("warm", P.GLASS_WARM)
     cx, cy, cz = anchor
+    along_y = str(axis).upper() == 'Y'
+
+    def _sz(span, thick, tall):
+        """(x, y, z) extents for a member `span` long across the
+        wall, `thick` through it, `tall` high."""
+        return (thick, span, tall) if along_y else (span, thick, tall)
+
+    def _at(off, inset, dz):
+        """Position `off` along the wall, `inset` into it, dz up."""
+        if along_y:
+            return (cx - inset, cy + off, cz + dz)
+        return (cx + off, cy - inset, cz + dz)
+
     # Glass behind a slight warm tint (sun-through-window canon)
-    make_box(f"{prefix}_Glass", (cx, cy - 0.02, cz),
-             (width, 0.005, height), glass)
-    make_box(f"{prefix}_Warm", (cx, cy - 0.01, cz),
-             (width * 0.96, 0.001, height * 0.96), warm)
+    make_box(f"{prefix}_Glass", _at(0.0, 0.02, 0.0),
+             _sz(width, 0.005, height), glass)
+    make_box(f"{prefix}_Warm", _at(0.0, 0.01, 0.0),
+             _sz(width * 0.96, 0.001, height * 0.96), warm)
     # Frame — top + bottom + sides
-    make_box(f"{prefix}_FrameT", (cx, cy - 0.04, cz + height / 2.0),
-             (width + 0.10, 0.08, 0.10), frame)
-    make_box(f"{prefix}_FrameB", (cx, cy - 0.04, cz - height / 2.0),
-             (width + 0.10, 0.08, 0.10), frame)
+    make_box(f"{prefix}_FrameT", _at(0.0, 0.04, height / 2.0),
+             _sz(width + 0.10, 0.08, 0.10), frame)
+    make_box(f"{prefix}_FrameB", _at(0.0, 0.04, -height / 2.0),
+             _sz(width + 0.10, 0.08, 0.10), frame)
     for sgn in (-1, +1):
         make_box(f"{prefix}_FrameSide_{sgn:+d}",
-                 (cx + sgn * (width / 2.0 + 0.04), cy - 0.04, cz),
-                 (0.10, 0.08, height), frame)
+                 _at(sgn * (width / 2.0 + 0.04), 0.04, 0.0),
+                 _sz(0.10, 0.08, height), frame)
     if cross_mullion:
-        make_box(f"{prefix}_MullH", (cx, cy - 0.04, cz),
-                 (width, 0.06, 0.05), frame)
+        make_box(f"{prefix}_MullH", _at(0.0, 0.04, 0.0),
+                 _sz(width, 0.06, 0.05), frame)
         for vm in (-width / 4.0, +width / 4.0):
             make_box(f"{prefix}_MullV_{vm:+.2f}",
-                     (cx + vm, cy - 0.04, cz),
-                     (0.05, 0.06, height), frame)
+                     _at(vm, 0.04, 0.0),
+                     _sz(0.05, 0.06, height), frame)
 
 
 def make_door_hinges(prefix, *, edge_x, edge_y, edge_z_centers,

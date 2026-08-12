@@ -399,6 +399,36 @@ Louisville's hurricane-deck proportions"). Don't guess at numbers.
 
 ## Recent lessons
 
+### 2026-08-12 · SHARED-HELPER AXIS CONVENTIONS — twelve counters and six windows were built rotated 90°
+
+- **`make_counter(prefix, anchor, length=, depth=)` puts `depth` on
+  X and `length` on Y.** Read casually, "length 2.40, depth 0.70"
+  sounds like a 2.4m run against the wall — it builds the opposite:
+  0.7m along the wall and 2.4m jutting into the room. **Twelve
+  counters across the game were authored that way**, including the
+  New Orleans bar (7m of it running north-south, 1.65m through the
+  wall, all five stools embedded in its flank), the Pit Stop's
+  lunch counter (through the pass-through partition AND the prep
+  table) and the shared kitchen template replicated in eight
+  houses.
+- **`make_window` spans X — it is built for a NORTH or SOUTH wall.**
+  Six locales put windows on east/west walls, where the glass laid
+  itself across the room and 0.6m into the plaster. Both helpers
+  now take `axis=` ('X'/'Y'), defaulting to the old behavior, and
+  `make_counter_bullnose` matches.
+- **How to not repeat it:** when calling a shared helper that takes
+  two horizontal dimensions, work out which is X and which is Y
+  from the SOURCE, then sanity-check against the fixture's own
+  satellites — if the stools/sink/register spread along X, the
+  counter runs along X. The overlap audit catches the collision
+  cases, and a geometric check (a counter against a wall must run
+  PARALLEL to it) catches the rest in one pass.
+- Related, same day: eleven `make_window` calls passed `center_z=0`
+  — the anchor is a CENTER, so those windows sat half-buried in the
+  floor. Helper docstrings now say so explicitly.
+
+
+
 ### 2026-08-11 · ROTATING MACHINERY — the circle must be perpendicular to the axle
 
 - **Three distinct paddlewheel bugs shipped in three builders.**

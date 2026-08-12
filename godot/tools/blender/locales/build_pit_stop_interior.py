@@ -126,12 +126,18 @@ def build_booths():
 def build_counter():
     # Lunch counter parallel to the partition, register at the E end.
     ccy = 4.55
-    top_z = make_counter("Lunch", (1.4, ccy, 0.0), length=6.0, depth=0.75, height=0.95,
+    # make_counter's `depth` is X and `length` is Y. This counter's
+    # stools, register, pie case and cup stack all spread along X,
+    # so it was authored 90 DEGREES ROTATED: a 6m counter running
+    # north-south through the pass-through partition and the prep
+    # table, with the dining chairs inside its flank. Same bug as
+    # the New Orleans bar (2026-08-12).
+    top_z = make_counter("Lunch", (1.4, ccy, 0.0), length=0.75, depth=6.0, height=0.95,
                          palette={"formica": (0.74, 0.68, 0.58, 1.0),
                                   "top": COL_TABLETOP,
                                   "kick": (0.30, 0.26, 0.24, 1.0)})
-    make_counter_bullnose("Lunch", (1.4, ccy-0.42, top_z), length=6.0,
-                          palette={"top": COL_TABLETOP})
+    make_counter_bullnose("Lunch", (1.4, ccy-0.40, top_z), length=6.0,
+                          palette={"top": COL_TABLETOP}, axis='X')
     # Stools bolted along the customer side.
     for si in range(6):
         sx = -1.0 + si * 0.96
@@ -143,7 +149,7 @@ def build_counter():
     make_paper_cup_stack("CupStack", (0.2, ccy+0.10, top_z), count=12)
     make_sugar_creamer_caddy("Caddy", (1.4, ccy-0.15, top_z))
     # Coffee station on the back line between counter and partition.
-    bz = make_counter("BackLine", (0.6, PART_Y-0.45, 0.0), length=3.2, depth=0.60, height=0.90,
+    bz = make_counter("BackLine", (0.6, PART_Y-0.45, 0.0), length=0.60, depth=3.2, height=0.90,
                       palette={"formica": COL_STEEL_DK, "top": COL_STEEL,
                                "kick": (0.26, 0.26, 0.28, 1.0)})
     make_coffee_pots("CoffeePots", (0.0, PART_Y-0.45, bz), pots=2)

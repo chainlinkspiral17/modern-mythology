@@ -191,7 +191,7 @@ def build_dresser_window():
     the visual record of a long life."""
     # Window high on the west wall
     make_window("Window", (-ROOM_W / 2.0 + 0.05, 3.3, 1.55), width=1.10, height=1.10,
-                cross_mullion=True,
+                cross_mullion=True, axis='Y',
                 palette={"glass": COL_GLASS, "warm": (1.0, 0.82, 0.52, 0.7)})
     # Lace curtains (two panels + a valance)
     make_box("Curtain_Valance", (-ROOM_W / 2.0 + 0.10, 3.3, 2.18), (0.03, 1.4, 0.20), COL_LACE)

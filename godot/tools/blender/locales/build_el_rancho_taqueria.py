@@ -36,7 +36,12 @@ def build_shell():
     make_ceiling("Ceil", (0.0, ROOM_D/2.0, CEIL), size_x=ROOM_W+0.4, size_y=ROOM_D+0.4)
 
 def build_register_counter():
-    top_z = make_counter("Register", (ROOM_W/4.0, ROOM_D-1.5, 0.0), length=2.40, depth=1.00, height=0.95,
+    # make_counter's `depth` is the X extent, `length` the Y —
+    # so length>depth built this counter ROTATED 90 DEGREES:
+    # a narrow face against the wall and the run jutting into
+    # the room. Swapped 2026-08-12 (same bug as the New
+    # Orleans bar and the pit stop's lunch counter).
+    top_z = make_counter("Register", (ROOM_W/4.0, ROOM_D-1.5, 0.0), length=1.00, depth=2.40, height=0.95,
                          palette={"formica": COL_WOOD, "top": (0.18, 0.12, 0.20, 1.0), "kick": (0.18, 0.12, 0.20, 1.0)})
     make_register("RegisterMachine", (ROOM_W/4.0, ROOM_D-1.5-0.30, top_z))
     # Chip warmer on the counter — metal case, warm lamp, tortilla chips.
@@ -111,7 +116,7 @@ def build_tables():
         make_box(f"LongBooth_Ch{ci}_Seat", (bx+1.35, 2.4+cyo, 0.45), (0.38, 0.38, 0.05), COL_ACCENT)
         make_box(f"LongBooth_Ch{ci}_Back", (bx+1.52, 2.4+cyo, 0.68), (0.04, 0.38, 0.44), COL_ACCENT)
     # Two square SIX-TOPS mid-floor.
-    for ti,(tx,ty) in enumerate([(0.9, 1.6), (0.9, 3.4)]):
+    for ti,(tx,ty) in enumerate([(0.5, 1.35), (0.5, 3.05)]):
         make_box(f"SixTop_{ti}_Top", (tx, ty, 0.74), (1.60, 0.90, 0.05), COL_WOOD)
         for li2,(lxo,lyo) in enumerate([(-0.70,-0.38),(0.70,-0.38),(-0.70,0.38),(0.70,0.38)]):
             make_box(f"SixTop_{ti}_Leg_{li2}", (tx+lxo, ty+lyo, 0.36), (0.06, 0.06, 0.72), P.METAL_BLACK)

@@ -46,8 +46,13 @@ def build_shell():
 
 def build_bar_counter():
     # Long bar counter along north wall
-    top_z = make_counter("Bar", (0.0, 5.0, 0.0), length=5.0, depth=0.80, height=1.05, palette={"formica": COL_MARBLE, "top": COL_MARBLE_VEIN, "kick": COL_WOOD})
-    make_counter_bullnose("Bar", (-0.40, 5.0, top_z), length=5.0, palette={"top": COL_MARBLE_VEIN})
+    # make_counter's `depth` is the X extent, `length` the Y —
+    # so length>depth built this counter ROTATED 90 DEGREES:
+    # a narrow face against the wall and the run jutting into
+    # the room. Swapped 2026-08-12 (same bug as the New
+    # Orleans bar and the pit stop's lunch counter).
+    top_z = make_counter("Bar", (0.0, 5.0, 0.0), length=0.80, depth=5.0, height=1.05, palette={"formica": COL_MARBLE, "top": COL_MARBLE_VEIN, "kick": COL_WOOD})
+    make_counter_bullnose("Bar", (0.0, 5.0 - 0.40, top_z), length=5.0, palette={"top": COL_MARBLE_VEIN}, axis='X')
     # Espresso machine — classic 2-group La Marzocco-ish chrome
     ex, ey = 0.0, 5.10
     make_box("Espresso_Body", (ex, ey, top_z+0.30), (1.40, 0.50, 0.60), COL_ESPRESSO)

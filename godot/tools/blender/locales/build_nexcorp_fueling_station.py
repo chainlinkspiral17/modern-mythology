@@ -28,7 +28,12 @@ def build_shell():
     make_ceiling("Ceil", (0.0, ROOM_D/2.0, CEIL), size_x=ROOM_W+0.4, size_y=ROOM_D+0.4)
 
 def build_register_counter():
-    top_z = make_counter("Register", (ROOM_W/4.0, ROOM_D-1.5, 0.0), length=2.40, depth=1.00, height=0.95,
+    # make_counter's `depth` is the X extent, `length` the Y —
+    # so length>depth built this counter ROTATED 90 DEGREES:
+    # a narrow face against the wall and the run jutting into
+    # the room. Swapped 2026-08-12 (same bug as the New
+    # Orleans bar and the pit stop's lunch counter).
+    top_z = make_counter("Register", (ROOM_W/4.0, ROOM_D-1.5, 0.0), length=1.00, depth=2.40, height=0.95,
                          palette={"formica": COL_WOOD, "top": (0.18, 0.12, 0.20, 1.0), "kick": (0.18, 0.12, 0.20, 1.0)})
     make_register("RegisterMachine", (ROOM_W/4.0, ROOM_D-1.5-0.30, top_z))
 

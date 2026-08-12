@@ -43,18 +43,32 @@ def make_counter(prefix, anchor, *, length=4.40, depth=1.00,
 
 
 def make_counter_bullnose(prefix, anchor, *, length=4.40,
-                          segments=8, palette=None):
-    """Rounded front-edge bullnose along the counter top's west face.
-    Cuts the boxy AABB silhouette. anchor=(west_edge_x, center_y, top_z)."""
+                          segments=8, palette=None, axis='Y'):
+    """Rounded front-edge bullnose along a counter top's customer
+    face. Cuts the boxy AABB silhouette.
+
+    axis='Y' (default, unchanged): the counter runs north-south and
+    the bullnose lays along its west face — anchor=(west_edge_x,
+    center_y, top_z).
+    axis='X': the counter runs east-west and the bullnose lays along
+    its south face — anchor=(center_x, south_edge_y, top_z). Added
+    2026-08-12 for the New Orleans bar, whose 7m counter runs along
+    X; without it the trim ran across the room and through a wall.
+    """
     palette = palette or {}
     col = palette.get("top", P.COUNTER_TOP)
     cx, cy, top_z = anchor
     seg_len = length / segments
     for s in range(segments):
-        sy = (cy - length / 2.0) + (s + 0.5) * seg_len
-        make_cyl(f"{prefix}_Bullnose_{s}",
-                 (cx, sy, top_z - 0.03),
-                 0.025, seg_len, col, axis='Y', segments=8)
+        off = (-length / 2.0) + (s + 0.5) * seg_len
+        if str(axis).upper() == 'X':
+            make_cyl(f"{prefix}_Bullnose_{s}",
+                     (cx + off, cy, top_z - 0.03),
+                     0.025, seg_len, col, axis='X', segments=8)
+        else:
+            make_cyl(f"{prefix}_Bullnose_{s}",
+                     (cx, cy + off, top_z - 0.03),
+                     0.025, seg_len, col, axis='Y', segments=8)
 
 
 def make_register(prefix, anchor, *, palette=None):

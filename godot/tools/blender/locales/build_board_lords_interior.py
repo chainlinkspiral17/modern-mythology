@@ -83,7 +83,12 @@ def build_deck_wall():
 def build_counter():
     """Sales counter, the stool behind it, the small drawer under
     the register, the kettle + electric burner underneath."""
-    top_z = make_counter("Register", (2.25, 5.5, 0.0), length=2.40, depth=1.00, height=0.95,
+    # make_counter's `depth` is the X extent, `length` the Y —
+    # so length>depth built this counter ROTATED 90 DEGREES:
+    # a narrow face against the wall and the run jutting into
+    # the room. Swapped 2026-08-12 (same bug as the New
+    # Orleans bar and the pit stop's lunch counter).
+    top_z = make_counter("Register", (2.25, 5.5, 0.0), length=1.00, depth=2.40, height=0.95,
                          palette={"formica": (0.52, 0.42, 0.30, 1.0),
                                   "top": (0.30, 0.22, 0.14, 1.0), "kick": (0.24, 0.18, 0.12, 1.0)})
     make_register("Register", (2.6, 5.4, top_z))

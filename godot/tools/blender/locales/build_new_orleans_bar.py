@@ -32,10 +32,16 @@ def build_shell():
     make_window("Window_SE", (+3.0, 0.0, 1.60), width=1.00, height=1.20)
 
 def build_bar():
-    top_z = make_counter("Bar", (0.0, 4.5, 0.0), length=7.0, depth=1.20, height=1.10, palette={"formica": COL_BAR, "top": COL_TOP, "kick": (0.18, 0.10, 0.06, 1.0)})
-    make_counter_bullnose("Bar", (-0.60, 4.5, top_z), length=7.0, palette={"top": COL_TOP})
+# make_counter's `depth` is the X extent and `length` is Y —
+    # so length=7.0/depth=1.20 built this bar ROTATED 90 DEGREES:
+    # a 7m counter running north-south, 1.65m of it through the
+    # north wall, with all five stools embedded in its flank.
+    # (Found 2026-08-12, once shared-module geometry recorded.)
+    top_z = make_counter("Bar", (0.0, 4.15, 0.0), length=1.20, depth=7.0, height=1.10, palette={"formica": COL_BAR, "top": COL_TOP, "kick": (0.18, 0.10, 0.06, 1.0)})
+    make_counter_bullnose("Bar", (0.0, 3.55, top_z), length=7.0,
+                          palette={"top": COL_TOP}, axis='X')
     # Brass foot rail (cylinder along south face)
-    make_cyl("Bar_FootRail", (-0.62, 4.5, 0.18), 0.025, 7.0, COL_BRASS, axis='Y', segments=8)
+    make_cyl("Bar_FootRail", (0.0, 3.52, 0.18), 0.025, 7.0, COL_BRASS, axis='X', segments=8)
     # 5 bar stools (south side)
     for si, sx in enumerate([-2.4, -1.2, 0.0, +1.2, +2.4]):
         make_cyl(f"Stool_{si}_Seat", (sx, 3.20, 0.78), 0.18, 0.06, COL_BAR)
@@ -142,8 +148,8 @@ def build_hero_props():
     make_box("MissileCmd_Marquee", (3.80, 4.5, 1.68), (0.05, 0.62, 0.18), (0.80, 0.30, 0.24, 1.0))
     make_box("MissileCmd_Panel", (3.72, 4.5, 0.90), (0.16, 0.60, 0.06), (0.24, 0.24, 0.28, 1.0))
     # A six-top for the vol1 party
-    make_cyl("Group_Table", (0.6, 1.9, 0.74), 0.65, 0.05, wood, segments=14)
-    make_cyl("Group_Table_Post", (0.6, 1.9, 0.37), 0.07, 0.70, (0.20, 0.19, 0.20, 1.0), segments=8)
+    make_cyl("Group_Table", (0.6, 1.75, 0.74), 0.65, 0.05, wood, segments=14)
+    make_cyl("Group_Table_Post", (0.6, 1.75, 0.37), 0.07, 0.70, (0.20, 0.19, 0.20, 1.0), segments=8)
     import math as _m
     for ci in range(6):
         ang = ci * (2.0 * _m.pi / 6.0) + 0.3

@@ -42,7 +42,7 @@ CONTAINERISH = re.compile(
     r"cage|case|chest|bin\b|bin_|basket|crate|rack|cooler|fridge|"
     r"freezer|cubby|cart|shelf|shelv|island|hutch|drawer|cab\b|"
     r"cabinet|locker|oven|proofer|tub\b|vase|votive|sink|basin|"
-    r"wrap|pallet\b|counter|vend|warmer|nightstand|dome|bucket", re.I)
+    r"wrap|pallet\b|counter|vend|warmer|nightstand|dome|bucket|pan\b|pan_", re.I)
 # Objects RESTING on a surface: min-penetration axis is Z and one of
 # the pair is a surface. Books sink 2cm into their shelf, a phone
 # into its desk — seating, not clipping.
@@ -431,6 +431,10 @@ def overlaps(boxes):
             # Flexible lines + draped fabric conform to what they touch.
             if depth <= FLEX_MAX and (fx1 or fx2):
                 continue
+            # A cord/cable RUNS INTO the wall it disappears behind —
+            # any depth, because the run is hidden from there on.
+            if (fx1 and wa2) or (fx2 and wa1):
+                continue
             # Planted/parked into landscaping mounds.
             if depth <= BERM_MAX and (bm1 or bm2):
                 continue
@@ -479,6 +483,18 @@ def overlaps(boxes):
             # the (uncut) stairwell opening.
             if depth <= 0.40 and ((sr1 and (wa2 or dk2)) or
                                   (sr2 and (wa1 or dk1))):
+                continue
+            # WALL-MOUNTED HARDWARE is fastened THROUGH its
+            # surface: a bug zapper, a clock on a pegboard, a
+            # thermostat, an extinguisher bracket, a vent register.
+            # The mount plate is inside the wall by design.
+            MOUNTED = ("zap", "clock", "thermostat", "extinguish",
+                       "bracket", "register_vent", "vent_", "hook",
+                       "hanger", "dispenser", "alarm", "meter")
+            if depth <= 0.22 and (wa1 or wa2 or
+                                  "pegboard" in l1 or "pegboard" in l2) \
+                    and (any(k in l1 for k in MOUNTED) or
+                         any(k in l2 for k in MOUNTED)):
                 continue
             # Mounted fixtures clamp onto their support.
             if depth <= LAMP_MAX and (lp1 or lp2):

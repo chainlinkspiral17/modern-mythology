@@ -31,9 +31,14 @@ def build_shell():
     make_ceiling("Ceil", (0.0, ROOM_D/2.0, CEIL), size_x=ROOM_W+0.4, size_y=ROOM_D+0.4)
 
 def build_counter():
-    top_z = make_counter("Counter", (-ROOM_W/4.0, ROOM_D-1.35, 0.0), length=2.40, depth=0.70, height=0.92,
+    # make_counter's `depth` is the X extent, `length` the Y —
+    # so length>depth built this counter ROTATED 90 DEGREES:
+    # a narrow face against the wall and the run jutting into
+    # the room. Swapped 2026-08-12 (same bug as the New
+    # Orleans bar and the pit stop's lunch counter).
+    top_z = make_counter("Counter", (-ROOM_W/4.0, ROOM_D-1.35, 0.0), length=0.70, depth=2.40, height=0.92,
                          palette={"formica": (0.78, 0.66, 0.42, 1.0), "top": (0.32, 0.22, 0.14, 1.0), "kick": (0.32, 0.22, 0.14, 1.0)})
-    make_counter_bullnose("Counter", (-ROOM_W/4.0-0.35, ROOM_D-1.35, top_z), length=2.40)
+    make_counter_bullnose("Counter", (-ROOM_W/4.0, ROOM_D-1.35 - 0.35, top_z), length=2.40, axis='X')
     # Sink + faucet (was missing)
     make_box("Sink_Bowl", (-ROOM_W/4.0, ROOM_D-1.0, 0.86), (0.50, 0.40, 0.12), (0.86, 0.86, 0.84, 1.0))
     make_cyl("Sink_Faucet", (-ROOM_W/4.0, ROOM_D-1.10, top_z+0.04), 0.015, 0.30, P.METAL_STEEL)

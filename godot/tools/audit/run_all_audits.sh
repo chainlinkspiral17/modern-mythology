@@ -55,41 +55,34 @@ import sys
 # first time, so the whole repo re-measured from 18 to 286. Triage
 # is in progress; these are the CURRENT numbers, not a budget.
 HOLDOUTS = {
-    # ── TRIAGE BASELINE, 2026-08-12 (not a budget) ─────────
-    # The audit's eyes opened today: widening the real-module
-    # whitelist (objects/structure/shelving/food_service/decor/
-    # drones/creatures) made shared-module geometry visible for
-    # the first time — every make_wall, every bottle, every
-    # cooler. The repo re-measured 18 -> 286, one construction
-    # class at a time came back down to 111, and these are the
-    # locales still reporting. Each number is a DEBT to work
-    # off, recorded so the gate can still catch NEW breakage.
-    # Never raise one to make the suite pass (Core rule 10);
-    # lower them as triage lands.
-    "pit_stop_interior": 13,
-    "new_orleans_bar": 12,
+    # ── TRIAGE BASELINE, 2026-08-12 evening (not a budget) ─
+    # Opening the audit's eyes (shared-module whitelist) took
+    # the repo 18 -> 286; triage brought it to 58. What that
+    # exposed, beyond ordinary clipping: TWELVE counters and
+    # SIX windows were built 90 DEGREES ROTATED, because
+    # make_counter takes `depth` as X / `length` as Y and
+    # make_window spans X for a north-south wall. Lower these
+    # as triage lands; never raise one to pass (Core rule 10).
     "crumpled_barn": 11,
-    "el_rancho_taqueria": 8,
-    "frog_knows_best": 8,
-    "board_lords_interior": 6,
-    "daigles_roadhouse": 6,
-    "nexcorp_fueling_station": 6,
-    "hans_bakery_back_kitchen": 5,
+    "nexcorp_fueling_station": 8,
     "bindery": 4,
     "diner": 4,
-    "lena_apartment": 4,
     "miller_back_porch": 4,
-    "cafe_olimpico": 3,
+    "board_lords_interior": 3,
     "elicia_apartment": 3,
     "foxhole_bar": 3,
+    "lena_apartment": 3,
     "cabin_interior": 2,
     "cosmic_comics_interior": 2,
+    "daigles_roadhouse": 2,
     "new_orleans_apartment": 2,
     "bayou_lighthouse": 1,
     "caldwell_porch_night": 1,
     "centro_grocery_aisle": 1,
+    "el_rancho_taqueria": 1,
     "gym_weight_room": 1,
     "natalie_apartment": 1,
+    "pit_stop_interior": 1,
 }
 out = subprocess.run(
     [sys.executable, "prop_overlap_audit.py", "--all"],
