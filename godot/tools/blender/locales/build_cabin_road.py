@@ -134,12 +134,51 @@ def build_atmosphere():
     # The sky is the .tscn environment's job.)
 
 
+def build_drones_2026_08():
+    """ONEIRONAUTICS WORK-DRONES (user 2026-08-12: "the drones in
+    land of milk and honey factor in heavily").
+
+    Canon this stages: "The drones came in off the bluff in the last
+    hour before dawn" (ch2) and "The salal had been pruned back from
+    the trail edges; the cuts were fresh. The foundation's drones
+    had been..." (ch12). So the road shows BOTH — the machines
+    themselves in the air over the stand, and the evidence of their
+    work along the shoulder, which is the part a walker notices.
+    """
+    from _props.drones import make_drone_flight, make_drone
+
+    # A skein coming in over the stand, off the bluff (west), holding
+    # north up the climb. High and small: three amber eyes above the
+    # treeline, the way Lena registers them — always somewhere.
+    make_drone_flight("Drone_Skein", -6.0, 26.0, 13.5, n=3,
+                      spread=11.0, climb=2.2)
+    # One working low over the shoulder brush, arm deployed — this is
+    # the one the player can actually read as a machine.
+    make_drone("Drone_Worker", 5.6, 12.5, 4.2, arm_down=True)
+
+    # THE EVIDENCE: fresh-cut salal stubs where the drones pruned the
+    # trail edge back. Pale cut faces against the dark leaf mass —
+    # tiny, but it is the detail the prose actually describes.
+    for i, (sx, sy) in enumerate(((3.05, 6.0), (3.15, 8.4), (3.0, 10.9),
+                                  (-3.05, 7.2), (-3.15, 12.9),
+                                  (-3.0, 15.4))):
+        make_box(f"SalalCut_{i}_Mass", (sx, sy, 0.34),
+                 (0.55, 0.85, 0.68), COL_FERN)
+        # the sheared plane, lighter — a fresh cut reads as a highlight
+        make_box(f"SalalCut_{i}_Face", (sx, sy, 0.685),
+                 (0.52, 0.80, 0.02), (0.52, 0.60, 0.38, 1.0))
+        make_box(f"SalalCut_{i}_Trim", (sx + (0.30 if sx > 0 else -0.30),
+                                        sy - 0.25, 0.09),
+                 (0.34, 0.40, 0.14), (0.34, 0.42, 0.26, 1.0))
+
+
 def main():
     clear_scene()
     build_road()
     build_creek()
     build_forest()
     build_atmosphere()
+    build_drones_2026_08()
     out = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)),
         "../../../assets/3d/locales/cabin_road.glb"))
     print(f"\n[build_cabin_road] exporting to {out}")

@@ -72,7 +72,7 @@ ROCKISH = re.compile(r"jag|talus|rock|outcrop|boulder|scree|crag|cliff|rim\b|rim
 PLANTISH = re.compile(r"shrub|bush|hedge|fern|reed|weed|plant|vine|"
                       r"cypress|oak|conifer|tree|myrtle|magnolia|alder|sitka|spruce|"
                       r"cedar|fir\b|pine|birch|willow|green\b|green_|growth|ivy|moss|"
-                      r"scrub|bramble|fallenlog|log\b", re.I)
+                      r"scrub|bramble|salal|huckleberry|fallenlog|log\b", re.I)
 ROOFISH = re.compile(r"eave|ridge|roof|gable|chimney|awning\b", re.I)
 STRUCTISH = re.compile(
     r"leg|brace|strut|post|pole|beam|rail|truss|arm\b|_arm|spindle|"

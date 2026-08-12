@@ -397,6 +397,28 @@ def build_exterior():
     # The sky is the .tscn environment's job.)
 
 
+def build_drone_dock_2026_08():
+    """THE FOUNDATION'S DRONE DOCK (user 2026-08-12). Oneironautics
+    owns the drones; this is where they come home. Canon: "by
+    six-thirty they were all docked and the sky over Smolvud was
+    empty" — so the rack sits in the tower clearing, cedar-framed
+    like everything else Oneironautics builds, with one cradle
+    empty because that unit is still out over the town.
+    """
+    from _props.drones import make_drone_dock, make_drone
+    X = 45.0
+    # Rack on the clearing's north edge, beside the tower's base.
+    make_drone_dock("DroneDock", X - 11.5, 7.0, 0.06, n=3,
+                    occupied=(True, False, True))
+    # The late unit on approach — low over the gravel, arm stowed,
+    # nose toward the empty cradle.
+    make_drone("Drone_Inbound", X - 6.4, 1.2, 3.9)
+    # A second working the tower's fourth-floor glass band (they
+    # repair the buildings they belong to).
+    make_drone("Drone_Glazier", X + 5.2, 7.6, 12.4, arm_down=True,
+               yaw_flip=True)
+
+
 def main():
     clear_scene()
     build_lobby()
@@ -405,6 +427,7 @@ def main():
     build_portal_floor()
     build_draft2_density_2026_08()
     build_exterior()
+    build_drone_dock_2026_08()
     out = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)),
         "../../../assets/3d/locales/cedar_tower.glb"))
     print(f"\n[build_cedar_tower] exporting to {out}")

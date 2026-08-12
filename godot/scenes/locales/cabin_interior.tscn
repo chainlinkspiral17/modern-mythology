@@ -300,6 +300,38 @@ position = Vector3(1.6, 1, -2.7)
 rotation = Vector3(-0.393564, -0.844154, 0)
 metadata/fov = 38.0
 
+; ── (2026-08-12) markers the SCRIPTS ALREADY CUE ───────────────
+; Census of the 46 vol7 chapters on this bg: [shot:insert bowls]
+; fires 13x and [shot:insert bowl] 8x — the volume's central image —
+; with no marker to land on, so every one of them zoom-punched into
+; a blank wall ("mostly just solid color scenes"). Olaf's two bowls
+; now exist in the builder at blender (±0.22, 2.84, table top 0.785)
+; → godot (±0.22, 0.785, -2.84).
+[node name="shot_insert_bowls" type="Marker3D" parent="." groups=["vn_shot"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0, 1.06, -2.06)
+rotation = Vector3(-0.52, 0.0, 0.0)
+
+; The single bowl — closer, off-axis, so "insert bowl" is not the
+; same frame as "insert bowls".
+[node name="shot_insert_bowl" type="Marker3D" parent="." groups=["vn_shot"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.30, 1.00, -2.30)
+rotation = Vector3(-0.60, -0.30, 0.0)
+
+; [shot:insert coffee] (3x) — the stove-side table where the pot sits
+[node name="shot_insert_coffee" type="Marker3D" parent="." groups=["vn_shot"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.60, 0.94, -4.30)
+rotation = Vector3(-0.45, 0.0, 0.0)
+
+; [shot:insert door] (4x) — the south door + its iron latch
+[node name="shot_insert_door" type="Marker3D" parent="." groups=["vn_shot"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.10, 1.20, -1.10)
+rotation = Vector3(-0.10, 0.0, 0.0)
+
+; [shot:insert window] — the kitchen window over the basin (north)
+[node name="shot_insert_window" type="Marker3D" parent="." groups=["vn_shot"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.60, 1.45, -4.40)
+rotation = Vector3(0.06, 0.0, 0.0)
+
 [node name="HUD" type="CanvasLayer" parent="." groups=["ui"]]
 layer = 100
 

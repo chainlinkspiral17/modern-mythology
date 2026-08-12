@@ -25,7 +25,7 @@ import math as _m
 _BT = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)), ".."))
 if _BT not in sys.path: sys.path.insert(0, _BT)
 from _props import palette as P
-from _props.geometry import clear_scene, make_box, make_cyl, export_glb
+from _props.geometry import make_taper_cyl, clear_scene, make_box, make_cyl, export_glb
 from _props.structure import make_floor, make_wall, make_ceiling, make_window
 from _props.food_service import make_coffee_pots  # noqa: F401 (unused, kept for parity)
 
@@ -173,6 +173,50 @@ def build_table():
         make_box(f"Chair_{ci}_Back", (bx, by, 0.75), (0.40, 0.06, 0.55), COL_WOOD)
         for li, (lx, ly) in enumerate(((-0.15, -0.15), (0.15, -0.15), (-0.15, 0.15), (0.15, 0.15))):
             make_box(f"Chair_{ci}_Leg_{li}", (cx + lx, cy + ly, 0.22), (0.045, 0.045, 0.44), COL_WOOD)
+    # ── OLAF'S TWO BOWLS · the hero prop of vol 7 ──────────────
+    # (2026-08-12) The volume's central image — cued 21 times as
+    # [shot:insert bowls] / [shot:insert bowl] across 46 chapters —
+    # and it had never been modeled: every one of those inserts
+    # zoomed into an empty table. "The two bowls had been carved by
+    # one hand… the grain on the cedar was the same grain on both.
+    # The depth of the spiral on the outside was the same depth.
+    # The flame-mark pressed into the base with a heated iron was
+    # on both — Olaf's mark for the family." Marit's bowl and the
+    # substrate's bowl, side by side under the lamp.
+    cedar_lt = (0.72, 0.52, 0.32, 1.0)   # planed cedar heartwood
+    cedar_md = (0.62, 0.43, 0.26, 1.0)   # the turned outside
+    cedar_dk = (0.44, 0.29, 0.18, 1.0)   # shadowed inside
+    char = (0.20, 0.13, 0.09, 1.0)       # the heated-iron flame-mark
+    top_z = 0.785
+    for bi, bx_off in enumerate((-0.22, +0.22)):
+        bx, by = tx + bx_off, ty - 0.06
+        pfx = "Bowl_%s" % ("Marit" if bi == 0 else "Substrate")
+        # Foot ring — a turned bowl sits on a small ring, not flat
+        make_cyl(f"{pfx}_Foot", (bx, by, top_z + 0.012),
+                 0.052, 0.024, cedar_dk, segments=14)
+        # The flame-mark, pressed into the base beside the foot
+        make_cyl(f"{pfx}_FlameMark", (bx, by, top_z + 0.003),
+                 0.026, 0.004, char, segments=8)
+        # Body: flares from foot to rim (the bowl silhouette)
+        make_taper_cyl(f"{pfx}_Body", (bx, by, top_z + 0.072),
+                       0.058, 0.115, 0.096, cedar_md, segments=16)
+        # THE SPIRAL, cut into the outside — three shallow relief
+        # bands at rising radius read as one turned spiral at
+        # insert distance ("the depth of the spiral was the same").
+        for si, (sz, sr) in enumerate(((0.040, 0.079), (0.072, 0.098),
+                                       (0.104, 0.114))):
+            make_cyl(f"{pfx}_Spiral_{si}", (bx, by, top_z + sz),
+                     sr, 0.007, cedar_dk, segments=16)
+        # Rim lip + the hollow (darker disc sunk below the rim)
+        make_cyl(f"{pfx}_Rim", (bx, by, top_z + 0.122),
+                 0.122, 0.014, cedar_lt, segments=16)
+        make_cyl(f"{pfx}_Hollow", (bx, by, top_z + 0.108),
+                 0.104, 0.010, cedar_dk, segments=16)
+    # One bowl holds a little water from the wash; the other is dry —
+    # the difference the chapter turns on, stated in one highlight.
+    make_cyl("Bowl_Substrate_Water", (tx + 0.22, ty - 0.06, top_z + 0.104),
+             0.094, 0.004, (0.58, 0.62, 0.60, 0.85), segments=14)
+
     # Braided oval rug under the table
     for i, (rr, col) in enumerate([(1.6, (0.46, 0.30, 0.24, 1.0)),
                                    (1.2, (0.54, 0.40, 0.28, 1.0)),
