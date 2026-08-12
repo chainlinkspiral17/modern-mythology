@@ -17,6 +17,30 @@ producer discipline).
 
 ---
 
+## NEXT SESSION QUEUE (written 2026-08-11 night, session close)
+
+The audit era is consolidated: run_all_audits.sh is green end to
+end (0 geometry flags · 0 blind vantages · 18 clips = barn crumple
++ diner ticket tucks) and everything is pushed. The user-side step
+is the big Deck rebuild — `godot/tools/blender/list_stale_builds.sh`
+prints the exact list — then a lookthrough. In-repo, next session
+picks from:
+
+1. **Gauntlet FP wiring gaps** (found by audit_gauntlet_locales,
+   2026-08-11): ember_ash_office 7/12 spaces, roberts_house 9/12,
+   the_hierophant_circuit 11/11 on top-down fallback. Read
+   _GAUNTLET_DESIGN_PLAYBOOK first; decide per-location whether
+   top-down is the intended look or the FP sources were never
+   authored.
+2. **Wear PERSONALITY passes** (tail-wave ledger row): whose feet,
+   whose spills — anchor each locale's wear in its chapter prose.
+   Read _SET_DETAIL_PLAYBOOK first; one locale deep per visit
+   beats five shallow.
+3. **Post-lookthrough taste work** (blocked on user screenshots):
+   VN framing draft 5, kwik_stop/diner model-chapter verification,
+   CP stamp legibility, the four graustark chapter opens, the
+   lamplit jog path.
+
 ## THE DRAFTING PROGRAM (standing · 2026-08-03 · read first)
 
 The user's verdict on the whole 2026-08 wave: **"first pass of all
