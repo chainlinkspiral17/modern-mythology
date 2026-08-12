@@ -158,6 +158,39 @@ no-op (fallback discipline — a script must never crash the reader).
 
 ## Recent lessons
 
+### 2026-08-12 · a missing marker was manufacturing "solid color scenes"
+
+- **User: "the cabin scenes in land of milk and honey need much
+  better direction and background art passes. mostly just solid
+  color scenes."** The direction was NOT the problem — those 46
+  chapters carry dozens of closeup/insert cues each. The problem
+  was the FALLBACK: a cue with no matching Marker3D punched the fov
+  to 35 on the same establishing vantage, filling the frame with
+  whatever flat vertex-colored surface sat in the middle of the
+  wide. A new audit (`godot/tools/audit/shot_marker_audit.py`)
+  measured it repo-wide: **453 blind object cues across 79 camera
+  presets.**
+- **Worse, the most-cued insert in vol 7 pointed at nothing.**
+  `[shot:insert bowls]` fires 13× (plus `insert bowl` 8×) on the
+  cabin interior — Olaf's two carved cedar bowls, the volume's
+  central image — and they had never been modeled. Twenty-one
+  inserts zooming an empty table. **Rule: before authoring a cue
+  for an object, confirm the object EXISTS in the builder.** The
+  audit now catches the inverse (marker missing); only reading the
+  builder catches this one.
+- **The fallback is now what a director would do**: borrow a
+  same-type marker from the same locale (chosen deterministically
+  from the cue id, so a given line always frames the same object),
+  and if the locale has no pool at all, HOLD THE WIDE. An honest
+  establishing frame beats a zoom into a wall. `_punch_in()` is
+  retired as a fallback but kept for a future explicit `[shot:push]`.
+- Authoring a **marker pool** (3-4 real inserts) is now the cheapest
+  possible win for any locale: it upgrades every unauthored cue in
+  every chapter that uses it. Coverage went 453 → 64 cues holding
+  the wide by adding pools to five locales.
+
+
+
 ### 2026-08-11 · a preset vantage must be checked against BUILDER COORDINATES, not vibes
 
 - **Four chapters (Hermit/Star/Judgement/World) rendered "the same

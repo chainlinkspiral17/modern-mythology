@@ -14,6 +14,15 @@ echo "── locale_geometry_audit.py ──"
 python3 locale_geometry_audit.py 2>/dev/null | tail -2
 echo ""
 
+# ── Shot-cue coverage (2026-08-12) · informational ──────────────
+# Object cues with no marker no longer zoom into a wall (the
+# director substitutes a same-type marker from the locale, or holds
+# the wide), but a high count still means chapters are asking for
+# framings nobody authored. Track it; drive it down.
+echo "── shot_marker_audit.py ──"
+python3 shot_marker_audit.py 2>/dev/null | tail -2
+echo ""
+
 # ── Preset-vantage gate (2026-08-11) ───────────────────────────
 # Every Background3D camera preset must SEE its locale's geometry
 # (the graustark_ruins preset stood 350m from all four chapters'

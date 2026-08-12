@@ -1974,6 +1974,24 @@ func find_shot_marker(marker_name: String) -> Node3D:
 	return _location_instance.find_child(marker_name, true, false) as Node3D
 
 
+# Every authored vn_shot marker in the CURRENT locale whose name
+# starts with shot_<type>_ — the pool a missing-marker cue can
+# borrow from (see VnDirector's substitute path). Sorted so the
+# choice is deterministic across runs.
+func shot_markers_of_type(shot_type: String) -> Array:
+	var out: Array = []
+	if not has_locale_loaded():
+		return out
+	var want := "shot_%s_" % shot_type
+	for n in _location_instance.find_children("*", "Marker3D", true, false):
+		var nm: String = String(n.name)
+		if nm.begins_with(want):
+			out.append(n)
+	out.sort_custom(func(a: Node, b: Node) -> bool:
+		return String(a.name) < String(b.name))
+	return out
+
+
 # ── VN cast staging ──────────────────────────────────────────────
 # [stage:<char> <spot>] places a character's hero GLB at the locale
 # Marker3D named cast_<spot>; [stage:<char> off] removes them. The

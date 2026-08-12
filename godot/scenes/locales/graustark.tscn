@@ -214,6 +214,51 @@ light_energy = 1.2
 omni_range = 9
 
 ; ── GLB ───────────────────────────────────────────────────────
+; ── vn_shot coverage (2026-08-12) ──────────────────────────────
+; The four ruin-quarter presets carried NO insert markers, so the
+; 22 object cues in Hermit/Star/Judgement/World fell to the blind
+; zoom (shot_marker_audit). Markers at the quarter's real hero
+; geometry — blender (bx,by,bz) → godot (bx, bz, -by).
+;   sinkhole rings   (10, -300)          chalked wall (44, -374)
+;   I-beam / perch   (40.5, -371)        rubble + block (46..47, -368)
+;   cottage + gate   (50, -380 / -387.8) herb bed (52.2, -379)
+;   Minstral wreck   (38, -120)          paddlebox (42.2, -124)
+[node name="shot_insert_sinkhole" type="Marker3D" parent="." groups=["vn_shot"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 44.0, 6.0, 300.0)
+rotation = Vector3(-0.34, 1.24, 0.0)
+
+[node name="shot_insert_chalk" type="Marker3D" parent="." groups=["vn_shot"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 41.5, 2.30, 374.5)
+rotation = Vector3(-0.04, -1.57, 0.0)
+
+[node name="shot_insert_beam" type="Marker3D" parent="." groups=["vn_shot"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 38.2, 1.60, 371.0)
+rotation = Vector3(-0.08, -1.57, 0.0)
+
+[node name="shot_insert_rubble" type="Marker3D" parent="." groups=["vn_shot"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 48.6, 1.20, 370.6)
+rotation = Vector3(-0.36, 2.10, 0.0)
+
+[node name="shot_insert_cottage" type="Marker3D" parent="." groups=["vn_shot"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 50.0, 1.55, 385.0)
+rotation = Vector3(-0.05, 0.0, 0.0)
+
+[node name="shot_insert_gate" type="Marker3D" parent="." groups=["vn_shot"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 50.0, 1.15, 389.6)
+rotation = Vector3(-0.12, 0.0, 0.0)
+
+[node name="shot_insert_herbs" type="Marker3D" parent="." groups=["vn_shot"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 52.2, 0.95, 381.4)
+rotation = Vector3(-0.42, 0.0, 0.0)
+
+[node name="shot_insert_wreck" type="Marker3D" parent="." groups=["vn_shot"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 46.5, 3.20, 128.0)
+rotation = Vector3(-0.06, 0.72, 0.0)
+
+[node name="shot_insert_paddlebox" type="Marker3D" parent="." groups=["vn_shot"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 45.6, 2.60, 126.4)
+rotation = Vector3(-0.14, 0.62, 0.0)
+
 [node name="Interior" parent="." instance=ExtResource("1_glb")]
 
 ; ── PostProcess shader stack ───────────────────────────────────

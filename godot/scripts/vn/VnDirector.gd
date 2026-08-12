@@ -316,13 +316,42 @@ func _try_apply_shot() -> void:
 			_start_drift(drift)
 			print("[VnDirector] CUT wide (preset vantage, no %s)%s" % [marker_name, " ~drift" if drift else ""])
 			return
-		# No authored marker — punch in generically from the preset
-		# vantage so the grammar works in every locale; markers
-		# refine the framing when a locale earns them.
-		if _punch_in(shot_type, drift):
-			print("[VnDirector] CUT %s (punch-in fallback, no %s)%s" % [shot_type, marker_name, " ~drift" if drift else ""])
-		else:
-			print("[VnDirector] shot '%s' → no marker, no vantage · holding frame" % spec)
+		# ── No authored marker for this cue ────────────────────
+		# The blind punch-in used to fire here, and it is the reason
+		# whole chapters read as "mostly just solid color scenes"
+		# (user, 2026-08-12): zooming fov 35 into the middle of the
+		# establishing wide fills the frame with whatever flat
+		# surface happens to be there. A repo-wide audit found 453
+		# such cues across 79 presets.
+		#
+		# A director without the exact insert shoots a DIFFERENT
+		# real detail rather than pushing the lens into a wall. So:
+		# borrow a same-type marker from this locale, chosen
+		# deterministically from the cue id so the same line always
+		# frames the same object (consistency beats variety here).
+		var subs: Array = []
+		if _bg3d.has_method("shot_markers_of_type"):
+			subs = _bg3d.call("shot_markers_of_type", shot_type)
+		if subs.is_empty() and shot_type == "closeup" \
+				and _bg3d.has_method("shot_markers_of_type"):
+			# A closeup of an unstaged THING can borrow an insert.
+			subs = _bg3d.call("shot_markers_of_type", "insert")
+		if not subs.is_empty():
+			var pick: Node3D = subs[abs(shot_id.hash()) % subs.size()] as Node3D
+			if pick != null:
+				_set_letterbox(true)
+				_cut_to_marker(pick, shot_type, drift)
+				print("[VnDirector] CUT %s → %s (substitute for %s)%s"
+					% [shot_type, pick.name, marker_name,
+					   " ~drift" if drift else ""])
+				return
+		# Nothing authored in this locale at all: hold the wide. An
+		# honest establishing frame beats a zoom into a flat wall.
+		if _bg3d.has_method("restore_preset_vantage"):
+			_bg3d.restore_preset_vantage()
+		_start_drift(drift)
+		print("[VnDirector] %s has no marker pool → holding the wide (was %s)"
+			% [shot_type, marker_name])
 		return
 	_set_letterbox(true)
 	_cut_to_marker(marker, shot_type, drift)
@@ -335,9 +364,15 @@ func _locale_ready() -> bool:
 	return true
 
 
-# Marker-free comic punch-in: forward along the establish vantage's
-# look axis + a tighter FOV. Always derived from the PRESET (not the
-# live camera) so repeated shots never compound into a wall.
+# Marker-free comic punch-in: a tighter FOV on the establish
+# vantage's axis, derived from the PRESET (not the live camera) so
+# repeated shots never compound.
+#
+# RETIRED as a fallback 2026-08-12 — kept because it is the correct
+# behavior for a locale that WANTS a lens-only push (a future
+# `[shot:push]` cue), but a missing marker no longer routes here:
+# zooming into the middle of a wide was manufacturing the flat
+# single-color frames the user reported. See apply_shot().
 func _punch_in(shot_type: String, drift: bool) -> bool:
 	if not _bg3d.has_method("get_preset_vantage") or not _bg3d.has_method("get_camera"):
 		return false

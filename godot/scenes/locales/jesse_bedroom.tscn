@@ -180,6 +180,22 @@ light_color = Color(0.42, 0.52, 0.74, 1)
 light_energy = 0.2
 shadow_enabled = false
 
+; ── vn_shot pool (2026-08-12, shot_marker_audit) ───────────────
+; This locale had NO insert markers, so its object cues fell to
+; the blind zoom. A small honest pool: the director now borrows
+; from these for any unauthored insert id in this room.
+[node name="shot_insert_desk" type="Marker3D" parent="." groups=["vn_shot"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00, 1.05, -1.10)
+rotation = Vector3(-0.42, 0.00, 0.0)   ; the desk top + what's on it
+
+[node name="shot_insert_window" type="Marker3D" parent="." groups=["vn_shot"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00, 1.55, -2.60)
+rotation = Vector3(0.02, 0.00, 0.0)   ; the north window
+
+[node name="shot_insert_bed" type="Marker3D" parent="." groups=["vn_shot"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.10, 1.00, -2.10)
+rotation = Vector3(-0.48, 0.70, 0.0)   ; the bed
+
 [node name="Interior" parent="." instance=ExtResource("1_glb")]
 
 [node name="PostProcess" type="CanvasLayer" parent="."]
