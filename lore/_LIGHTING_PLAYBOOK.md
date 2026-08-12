@@ -151,6 +151,22 @@ Position note: lamp omnis are placed AT the lamp-head mesh position
 
 ## Recent lessons
 
+### 2026-08-11 · park jog-path practicals (riverfront.tscn)
+
+- **Three ParkLamp omnis added at the real Park_Lamp_0..2 heads**
+  (blender (-52.5,18) (-47.5,30) (-44.5,24), head z 3.95 → godot
+  (bx, 3.95, -by)). Warm lantern (1.0, 0.85, 0.58), energy 2.2,
+  range 9 (3.8m posts × the 2x-height heuristic). The Hierophant
+  §IV and the vol1 jog stage on this arc and had no practicals —
+  the path read flat against the sodium lot glow behind it.
+- Budget note: riverfront.tscn now carries 18 lights (3 foundation
+  + 15 practicals) against the ~12 guideline — accepted because
+  the scene serves five presets spread across dock/lot/park zones
+  and each practical is at a fixture visible from at least one
+  preset. If a future pass needs headroom, the bollards are the
+  first candidates to consolidate.
+
+
 ### 2026-08-04 · rig pass x13 · practicals from the builder's coordinates
 
 - **Lighting is the love that lands on pull.** Lights live in the
