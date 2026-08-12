@@ -239,7 +239,7 @@ def build_kitchen():
 
 def build_decor():
     make_wall_clock("Clock", (-2.0, PART_Y-0.12, CEIL-0.55), frozen_hour=9, frozen_min=18)
-    make_calendar("Calendar_Kitchen", (2.4, ROOM_D-0.13, 1.70))
+    make_calendar("Calendar_Kitchen", (2.4, ROOM_D-0.13, 1.70), axis='X')
     make_faded_poster("Poster_E", (ROOM_W/2.0-0.05, 2.6, 1.60))
     make_trash_can("Trash", (4.9, 0.9, 0.0), branded=False,
                    palette={"body": (0.30, 0.30, 0.32, 1.0)})
@@ -306,7 +306,7 @@ def build_detail_pass_2026_08():
     make_wall_outlet("Outlet_Kitchen", (ROOM_W/2.0, 8.3), axis='Y', face_sign=-1, aged=True)
     make_thermostat("Thermostat", (2.2, PART_Y), axis='X', face_sign=-1)
     # Cords: register + coffee station reach real outlets.
-    make_cord_run("Cord_Register", (4.0, 4.85, 0.90), (5.39, 8.3, 0.30))
+    make_cord_run("Cord_Register", (4.0, 4.85, 0.90), (4.55, 5.45, 0.12))
     make_cord_run("Cord_Coffee", (0.0, PART_Y-0.45, 0.85), (0.6, PART_Y-0.11, 0.30))
     make_corner_guard("CornerGuard_Swing", (2.9, PART_Y-0.12))
 

@@ -180,6 +180,19 @@ light_color = Color(0.62, 0.74, 0.86, 1)
 light_energy = 0.3
 shadow_enabled = false
 
+; ── vn_shot (2026-08-12) ───────────────────────────────────────
+; [shot:insert pot_roast] fires 3x here and had no marker AND no
+; object — the chapter's hero image framed bare table. The pot now
+; sits at the table head, blender (0.0, ROOM_D/2+0.22, ~0.9) with
+; ROOM_D=5.0 → godot (0.0, 0.90, -2.72).
+[node name="shot_insert_pot_roast" type="Marker3D" parent="." groups=["vn_shot"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0, 1.28, -1.96)
+rotation = Vector3(-0.55, 0.0, 0.0)
+
+[node name="shot_insert_table" type="Marker3D" parent="." groups=["vn_shot"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.55, 1.35, -1.70)
+rotation = Vector3(-0.48, 0.36, 0.0)
+
 [node name="Interior" parent="." instance=ExtResource("1_glb")]
 
 [node name="PostProcess" type="CanvasLayer" parent="."]

@@ -32,6 +32,32 @@ _GEOMETRY_AUDIT_PLAYBOOK: an artifact that was never produced
 looks exactly like an artifact that is merely old — enumerate
 both.
 
+**2026-08-12 · THE AUDIT'S EYES OPENED — and what it found.**
+Widening the real-module whitelist (composite `_props` helpers had
+been stubbed to no-ops) took the repo 18 → 286 clips, then triage
+brought it to 39. The systemic finds, all invisible before:
+- ELEVEN windows centered at floor level (`make_window`'s anchor is
+  a CENTER; callers passed 0) — half-buried, ankle to knee.
+- TWELVE counters and SIX windows built 90° ROTATED, because
+  `make_counter` takes `depth` as X / `length` as Y and
+  `make_window` spans X. Includes the New Orleans bar (7m through
+  the north wall, stools in its flank), the Pit Stop lunch counter,
+  and the kitchen template replicated in eight houses. Both helpers
+  (and the bullnose, poster, calendar) now take `axis=`.
+- The centro grocery double-booked store-wide (69 → 1).
+Detection that generalizes: **a fixture against a wall must run
+PARALLEL to it** — one geometric pass found all twelve rotations
+without waiting for a collision.
+ALSO: the shot-cue work. 453 blind object cues across 79 presets
+(a cue with no marker used to ZOOM INTO A WALL); VnDirector now
+substitutes a same-type marker or holds the wide, 374 cues covered.
+Two never-modeled hero props built: Olaf's two bowls (21 cues) and
+the Henderson pot roast (3 cues, a MODEL CHAPTER). The crow (12+
+cues across four locales) now exists as `_props/creatures.py`.
+NEXT: the 39-clip tail (crumpled_barn's 11 are the crumple),
+26 locales still wanting marker pools, and the remaining --props
+art gaps (tide_pool, Lena's canvas, the eviction notice).
+
 ## NEXT SESSION QUEUE (written 2026-08-11 night, session close)
 
 The audit era is consolidated: run_all_audits.sh is green end to

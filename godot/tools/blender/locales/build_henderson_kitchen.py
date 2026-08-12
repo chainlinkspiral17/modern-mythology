@@ -3,7 +3,7 @@ import os, sys
 _BT = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)), ".."))
 if _BT not in sys.path: sys.path.insert(0, _BT)
 from _props import palette as P
-from _props.geometry import clear_scene, make_box, make_chamfer_box, make_cyl, export_glb
+from _props.geometry import make_blob, clear_scene, make_box, make_chamfer_box, make_cyl, export_glb
 from _props.structure import make_floor, make_wall, make_ceiling, make_crown_molding, make_window
 from _props.store_fixtures import make_counter, make_counter_bullnose, make_register
 from _props.shelving import make_snack_aisle, make_endcap
@@ -127,6 +127,55 @@ def build_hero_props():
     make_box("Oven_Handle", (sx, sy-0.39, 0.80), (0.50, 0.03, 0.04), (0.55, 0.57, 0.58, 1.0))
     # Microwave, counter east end
     make_chamfer_box("Microwave", (-0.25, ROOM_D-1.0, 1.14), (0.50, 0.38, 0.30), (0.30, 0.30, 0.32, 1.0))
+    # ── THE POT ROAST · the chapter's hero object ──────────────
+    # (2026-08-12, shot_marker_audit --props) [shot:insert pot_roast]
+    # fires 3x in a MODEL CHAPTER — "Eileen has made a pot roast…
+    # the pot roast Eileen has been making on Sunday nights since he
+    # was three. She has not made it since April." It was never
+    # modeled; the insert framed bare table.
+    # It sits at the table's head, still in the enameled dutch oven
+    # it was cooked in, lid off and leaning against its own base —
+    # which is what "she made it tonight" looks like from the door.
+    tx0, ty0 = 0.0, ROOM_D/2.0
+    enamel = (0.62, 0.16, 0.14, 1.0)      # the old red enamel
+    enamel_dk = (0.46, 0.11, 0.10, 1.0)
+    cream = (0.90, 0.88, 0.82, 1.0)       # the chipped interior
+    roast = (0.42, 0.24, 0.16, 1.0)
+    gravy = (0.34, 0.20, 0.12, 1.0)
+    carrot = (0.78, 0.42, 0.16, 1.0)
+    tater = (0.80, 0.72, 0.52, 1.0)
+    # Dutch oven: body, a proud rolled rim, two lug handles
+    make_cyl("PotRoast_Pot", (tx0, ty0 + 0.22, 0.855),
+             0.155, 0.19, enamel, segments=16)
+    make_cyl("PotRoast_Pot_Rim", (tx0, ty0 + 0.22, 0.948),
+             0.166, 0.022, enamel_dk, segments=16)
+    make_cyl("PotRoast_Pot_Inner", (tx0, ty0 + 0.22, 0.944),
+             0.140, 0.010, cream, segments=16)
+    for sgn in (-1, 1):
+        make_box("PotRoast_Lug_%d" % sgn,
+                 (tx0 + sgn * 0.175, ty0 + 0.22, 0.930),
+                 (0.055, 0.085, 0.030), enamel_dk)
+    # The roast itself, proud of the rim, with vegetables around it
+    make_blob("PotRoast_Meat", (tx0, ty0 + 0.22, 0.975), 0.105,
+              roast, noise=0.16, seed=5, squash=0.62)
+    make_cyl("PotRoast_Gravy", (tx0, ty0 + 0.22, 0.950),
+             0.132, 0.012, gravy, segments=14)
+    for vi, (vx, vy) in enumerate(((-0.085, 0.055), (0.080, 0.040),
+                                   (-0.050, -0.075), (0.065, -0.065))):
+        col = carrot if vi % 2 == 0 else tater
+        make_blob("PotRoast_Veg_%d" % vi,
+                  (tx0 + vx, ty0 + 0.22 + vy, 0.962), 0.036,
+                  col, noise=0.20, seed=11 + vi, squash=0.80)
+    # The lid, OFF — leaning against the pot, which is the detail
+    # that says it was served just now.
+    make_cyl("PotRoast_Lid", (tx0 + 0.245, ty0 + 0.30, 0.815),
+             0.150, 0.030, enamel, segments=16)
+    make_cyl("PotRoast_Lid_Knob", (tx0 + 0.245, ty0 + 0.30, 0.845),
+             0.024, 0.030, enamel_dk, segments=8)
+    # A trivet under the pot — nobody puts a hot dutch oven on oak
+    make_box("PotRoast_Trivet", (tx0, ty0 + 0.22, 0.768),
+             (0.36, 0.36, 0.016), (0.36, 0.28, 0.20, 1.0))
+
     # Four place settings — the head setting is the shot
     tx, ty = 0.0, ROOM_D/2.0
     for si, (dx, dy) in enumerate(((-0.45, 0.0), (0.0, -0.32), (0.0, 0.32), (0.45, 0.0))):

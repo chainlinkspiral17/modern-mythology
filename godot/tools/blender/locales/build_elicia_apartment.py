@@ -91,7 +91,8 @@ def build_studio_nook():
 
 def build_decor():
     make_wall_clock("Clock", (-3.45, 3.0, 2.10), frozen_hour=4, frozen_min=22)
-    make_faded_poster("Poster_N", (0.0, ROOM_D-0.02, 1.70), palette={"body": (0.62, 0.42, 0.52, 1.0)})
+    make_faded_poster("Poster_N", (0.0, ROOM_D-0.02, 1.70), axis='X',
+                      palette={"body": (0.62, 0.42, 0.52, 1.0)})
     make_floor_plant("Plant_S1", (-3.0, 0.80, 0.0))
     make_floor_plant("Plant_S2", (+3.0, 0.80, 0.0), palette={"leaf": (0.62, 0.74, 0.56, 1.0)})
 

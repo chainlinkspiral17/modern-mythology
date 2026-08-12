@@ -86,23 +86,50 @@ def make_payphone(prefix, anchor, *, palette=None):
                      (0.005, 0.04, 0.034), P.PAPER_AGED)
 
 
-def make_calendar(prefix, anchor, *, palette=None):
-    """Wall calendar with a faded photograph + month grid."""
+def make_calendar(prefix, anchor, *, palette=None, axis='Y'):
+    """Wall calendar with a faded photograph + month grid.
+
+    axis='Y' (default): on an EAST/WEST wall (thin in X).
+    axis='X': on a NORTH/SOUTH wall (thin in Y).
+    """
     palette = palette or {}
     paper = palette.get("paper", (0.78, 0.62, 0.46, 1.0))
     cx, cy, cz = anchor
+    if str(axis).upper() == 'X':
+        make_box(f"{prefix}_Body", (cx, cy, cz),
+                 (0.40, 0.005, 0.50), paper)
+        make_box(f"{prefix}_Grid", (cx, cy - 0.002, cz - 0.15),
+                 (0.34, 0.001, 0.20), P.PAPER)
+        return
     make_box(f"{prefix}_Body", (cx, cy, cz),
              (0.005, 0.40, 0.50), paper)
     make_box(f"{prefix}_Grid", (cx + 0.002, cy, cz - 0.15),
              (0.001, 0.34, 0.20), P.PAPER)
 
 
-def make_faded_poster(prefix, anchor, *, palette=None):
-    """Sun-faded vintage poster on a wall. anchor=(wall_x, wall_y, center_z)."""
+def make_faded_poster(prefix, anchor, *, palette=None, axis='Y'):
+    """Sun-faded vintage poster on a wall. anchor=(wall_x, wall_y,
+    center_z).
+
+    axis='Y' (default, unchanged): hangs on an EAST/WEST wall — the
+    sheet is thin in X and spans Y.
+    axis='X': hangs on a NORTH/SOUTH wall — thin in Y, spans X.
+    Added 2026-08-12: elicia's north-wall poster and the foxhole's
+    south-wall flyer were hanging PERPENDICULAR to their walls,
+    0.30m out into the room and 0.30 into the plaster.
+    """
     palette = palette or {}
     body = palette.get("body", (0.78, 0.62, 0.46, 1.0))
     ink = palette.get("ink", (0.32, 0.24, 0.20, 1.0))
     cx, cy, cz = anchor
+    if str(axis).upper() == 'X':
+        off = 0.005 * (1 if cy >= 0 else -1)
+        make_box(f"{prefix}_Body", (cx, cy, cz), (0.60, 0.005, 0.80), body)
+        make_box(f"{prefix}_Title", (cx, cy - off, cz - 0.30),
+                 (0.50, 0.002, 0.10), ink)
+        make_box(f"{prefix}_Figure", (cx, cy - off, cz + 0.20),
+                 (0.36, 0.002, 0.40), ink)
+        return
     make_box(f"{prefix}_Body", (cx, cy, cz),
              (0.005, 0.60, 0.80), body)
     make_box(f"{prefix}_Title", (cx + 0.005 * (1 if cx >= 0 else -1),

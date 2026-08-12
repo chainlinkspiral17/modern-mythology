@@ -418,6 +418,12 @@ def overlaps(boxes):
             # gate-pier face; fence balusters land at 0.13).
             if depth <= 0.15 and (st1 or st2):
                 continue
+            # A framing MEMBER BEARS INTO the wall it lands on — a
+            # storefront header spanning wall to wall, a porch knee
+            # brace against the house, a post pocketed in plaster.
+            # One wall thickness (0.20) plus a little.
+            if depth <= 0.24 and ((st1 and wa2) or (st2 and wa1)):
+                continue
             # Porches, balconies, porticos TUCK INTO their building's
             # facade by construction.
             if depth <= 0.35 and (po1 or po2):

@@ -39,7 +39,10 @@ def build_register_counter():
 
 def build_endcaps():
     for ei, ex in enumerate([-3.0, +3.0]):
-        make_endcap(f"EndCap_{ei}", (ex, ROOM_D/2.0+1.0, 0.0))
+        # y+1.0 put endcap 1 inside the register counter (which
+        # spans x 0.8-3.2 at y 4.0-5.0). Endcaps flank the aisle
+        # mouth, forward of the register.
+        make_endcap(f"EndCap_{ei}", (ex, ROOM_D/2.0 - 0.9, 0.0))
 
 def build_ceiling_infra():
     for j in range(2):

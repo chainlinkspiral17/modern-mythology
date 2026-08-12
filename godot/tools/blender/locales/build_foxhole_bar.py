@@ -123,7 +123,7 @@ def build_flyers():
         make_faded_poster(f"Flyer_W_{pi}", (-ROOM_W/2.0 + 0.05, 1.2 + pi * 1.6, 1.70),
                           palette={"body": (0.82,0.78,0.70,1.0), "ink": flyer_inks[pi]})
     # A couple more taped to the wall by the door.
-    make_faded_poster("Flyer_S", (-(ROOM_W/4.0+0.5), 0.05, 1.60),
+    make_faded_poster("Flyer_S", (-(ROOM_W/4.0+0.5), 0.05, 1.60), axis='X',
                       palette={"body": (0.80,0.76,0.68,1.0), "ink": (0.30,0.52,0.30,1.0)})
 
 def build_ceiling_infra():

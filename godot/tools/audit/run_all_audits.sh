@@ -57,24 +57,21 @@ import sys
 HOLDOUTS = {
     # ── TRIAGE BASELINE, 2026-08-12 evening (not a budget) ─
     # Opening the audit's eyes (shared-module whitelist) took
-    # the repo 18 -> 286; triage brought it to 58. What that
+    # the repo 18 -> 286; triage brought it to 39. What that
     # exposed, beyond ordinary clipping: TWELVE counters and
     # SIX windows were built 90 DEGREES ROTATED, because
     # make_counter takes `depth` as X / `length` as Y and
     # make_window spans X for a north-south wall. Lower these
     # as triage lands; never raise one to pass (Core rule 10).
     "crumpled_barn": 11,
-    "nexcorp_fueling_station": 8,
-    "bindery": 4,
     "diner": 4,
-    "miller_back_porch": 4,
     "board_lords_interior": 3,
-    "elicia_apartment": 3,
-    "foxhole_bar": 3,
     "lena_apartment": 3,
+    "bindery": 2,
     "cabin_interior": 2,
     "cosmic_comics_interior": 2,
     "daigles_roadhouse": 2,
+    "miller_back_porch": 2,
     "new_orleans_apartment": 2,
     "bayou_lighthouse": 1,
     "caldwell_porch_night": 1,
@@ -82,7 +79,6 @@ HOLDOUTS = {
     "el_rancho_taqueria": 1,
     "gym_weight_room": 1,
     "natalie_apartment": 1,
-    "pit_stop_interior": 1,
 }
 out = subprocess.run(
     [sys.executable, "prop_overlap_audit.py", "--all"],
