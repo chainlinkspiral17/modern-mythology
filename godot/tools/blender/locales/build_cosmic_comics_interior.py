@@ -68,12 +68,16 @@ def build_shell():
 def build_bins():
     # Three long spine-out back-issue bin rows down the floor.
     for ji, ay in enumerate([2.75, 4.0, 5.4]):
-        make_box(f"Bin_{ji}_Base", (0.0, ay, 0.30), (5.0, 0.50, 0.60), (0.30, 0.22, 0.14, 1.0))
-        make_box(f"Bin_{ji}_Label", (0.0, ay-0.26, 0.50), (4.6, 0.02, 0.12), (0.86, 0.72, 0.32, 1.0))
+        # Row 2 stops short of the register counter's footprint
+        # (x 1.3-3.7 at y 6.0-7.0) — it used to run under it.
+        row_w = 5.0 if ji < 2 else 3.6
+        row_x = 0.0 if ji < 2 else -0.7
+        make_box(f"Bin_{ji}_Base", (row_x, ay, 0.30), (row_w, 0.50, 0.60), (0.30, 0.22, 0.14, 1.0))
+        make_box(f"Bin_{ji}_Label", (row_x, ay-0.26, 0.50), (row_w - 0.4, 0.02, 0.12), (0.86, 0.72, 0.32, 1.0))
         for di in range(11):
-            make_box(f"Bin_{ji}_Div_{di}", (-2.5+di*0.5, ay, 0.66), (0.02, 0.50, 0.12), P.METAL_STEEL)
+            make_box(f"Bin_{ji}_Div_{di}", (row_x - row_w/2.0 + di*(row_w/11.0), ay, 0.66), (0.02, 0.50, 0.12), P.METAL_STEEL)
         for ci in range(20):
-            cx_pos = -2.4 + (ci % 10) * 0.45
+            cx_pos = row_x - row_w/2.0 + 0.1 + (ci % 10) * (row_w - 0.2) / 10.0
             cy_off = -0.20 + (ci // 10) * 0.40
             tint = P.SNACK_TINTS[(ji + ci) % len(P.SNACK_TINTS)]
             make_box(f"Bin_{ji}_Comic_{ci}", (cx_pos, ay + cy_off, 0.70), (0.40, 0.04, 0.20), tint)

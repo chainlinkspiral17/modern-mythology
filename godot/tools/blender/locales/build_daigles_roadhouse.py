@@ -115,10 +115,10 @@ def build_jukebox():
 def build_neon_schlitz():
     # Iconic neon over the bar centerline
     make_box("Neon_Schlitz_BG", (0.0, ROOM_D-0.06, 2.20), (1.40, 0.04, 0.40), COL_NEON_SCHLITZ)
-    make_box("Neon_Schlitz_Letters", (0.0, ROOM_D-0.08, 2.20), (0.005, 1.20, 0.24), P.PAPER)
+    make_box("Neon_Schlitz_Letters", (0.0, ROOM_D-0.08, 2.20), (1.20, 0.005, 0.24), P.PAPER)
     # Smaller "BEER" neon next to it
     make_box("Neon_Beer_BG", (-2.20, ROOM_D-0.06, 2.20), (0.80, 0.04, 0.30), (0.96, 0.72, 0.20, 1.0))
-    make_box("Neon_Beer_Letters", (-2.20, ROOM_D-0.08, 2.20), (0.005, 0.64, 0.18), P.PAPER)
+    make_box("Neon_Beer_Letters", (-2.20, ROOM_D-0.08, 2.20), (0.64, 0.005, 0.18), P.PAPER)
 
 
 def build_gator_head():

@@ -166,7 +166,10 @@ def build_front_room():
 def build_bedroom():
     """Behind the partition: the bed (kept from the old build), the
     nightstand, the thermostat that reads 61, two posters."""
-    bx, by = -1.0, ROOM_D - 1.15
+    # The bed is 1.94 long and the bedroom is 1.95 deep behind
+    # the y=3.05 partition — at ROOM_D-1.15 its footboard
+    # crossed into the partition. Pushed to the north wall.
+    bx, by = -1.0, ROOM_D - 0.99
     make_box("Bed_Frame", (bx, by, 0.20), (1.50, 1.94, 0.22), (0.42, 0.30, 0.20, 1.0))
     make_box("Bed_Mattress", (bx, by, 0.42), (1.40, 1.84, 0.16), (0.92, 0.86, 0.78, 1.0))
     make_box("Bed_Headboard", (bx, by+1.00, 0.66), (1.54, 0.08, 0.66), (0.40, 0.28, 0.18, 1.0))

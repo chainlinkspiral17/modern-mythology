@@ -47,38 +47,17 @@ import re
 import subprocess
 import sys
 
-# holdout: recorded ceiling (2026-08-11)
-# Ceilings raised 2026-08-12 ONLY because the audit's eyes opened:
-# widening the real-module whitelist (objects/structure/shelving/
-# food_service/decor/drones/creatures) made shared-module geometry
-# — every make_wall, every bottle, every cooler — visible for the
-# first time, so the whole repo re-measured from 18 to 286. Triage
-# is in progress; these are the CURRENT numbers, not a budget.
 HOLDOUTS = {
-    # ── TRIAGE BASELINE, 2026-08-12 evening (not a budget) ─
-    # Opening the audit's eyes (shared-module whitelist) took
-    # the repo 18 -> 286; triage brought it to 39. What that
-    # exposed, beyond ordinary clipping: TWELVE counters and
-    # SIX windows were built 90 DEGREES ROTATED, because
-    # make_counter takes `depth` as X / `length` as Y and
-    # make_window spans X for a north-south wall. Lower these
-    # as triage lands; never raise one to pass (Core rule 10).
-    "crumpled_barn": 11,
-    "diner": 4,
-    "board_lords_interior": 3,
-    "lena_apartment": 3,
-    "bindery": 2,
-    "cabin_interior": 2,
-    "cosmic_comics_interior": 2,
-    "daigles_roadhouse": 2,
-    "miller_back_porch": 2,
-    "new_orleans_apartment": 2,
-    "bayou_lighthouse": 1,
-    "caldwell_porch_night": 1,
-    "centro_grocery_aisle": 1,
-    "el_rancho_taqueria": 1,
-    "gym_weight_room": 1,
-    "natalie_apartment": 1,
+    # ── TRIAGE COMPLETE, 2026-08-12 (2 holdouts, both intentional)
+    # The day's arc: opening the audit's eyes (the composite _props
+    # modules had been stubbed to no-ops) took the repo 18 -> 286,
+    # and triage took it to 15. What that exposed, beyond ordinary
+    # clipping: ELEVEN windows centered at floor level, TWELVE
+    # counters and SIX windows built 90 DEGREES ROTATED (helper
+    # axis conventions), and the centro grocery double-booked
+    # store-wide. Both remaining entries are BY DESIGN.
+    "crumpled_barn": 11,    # the crumple IS the overlap
+    "diner": 4,             # ticket tucks at <=0.06
 }
 out = subprocess.run(
     [sys.executable, "prop_overlap_audit.py", "--all"],

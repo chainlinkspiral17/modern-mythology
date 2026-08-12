@@ -79,7 +79,9 @@ def build_dressing():
                  (0.86,0.88,0.86,0.9), segments=6)
     make_box("Paper", (tx+0.12, ty+0.12, 0.55), (0.20, 0.14, 0.03), P.NEWSPRINT)
     # Maya's bike, leaned at the porch's east end past the railing
-    bx, by = 2.6, 0.35
+    # Leaned AGAINST the east rail, not through it (the rear
+    # wheel at bx+0.50 reached the wall plane).
+    bx, by = 2.35, 0.35
     for wx in (bx-0.50, bx+0.50):
         make_cyl(f"MayaBike_Wheel_{wx:.1f}", (wx, by, 0.33), 0.32, 0.04,
                  P.METAL_BLACK, segments=14, axis='Y')

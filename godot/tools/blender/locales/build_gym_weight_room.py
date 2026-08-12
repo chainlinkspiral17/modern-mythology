@@ -173,7 +173,7 @@ def build_vol6_hero_props_2026_08():
     BOLT (empty hole + the bolt lying in the dust below), and the
     80s — the heaviest pair on the rack, oversized and worn."""
     # Deadlift platform mid-east floor.
-    px, py = 3.1, 1.9
+    px, py = 2.45, 1.9
     make_box("DL_Platform", (px, py, 0.025), (2.0, 2.0, 0.05), (0.42, 0.30, 0.20, 1.0))
     for si, syo in enumerate([-0.72, 0.72]):
         make_box(f"DL_Rubber_{si}", (px, py + syo, 0.055), (2.02, 0.52, 0.012), (0.12, 0.12, 0.13, 1.0))

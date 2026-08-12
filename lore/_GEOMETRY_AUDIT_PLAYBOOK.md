@@ -125,7 +125,7 @@ the builder, or — for genuinely natural contact — extend the
 grammar with a BOUNDED, commented class. The grammar is the place
 generosity lives; the ceilings are not.
 
-## Natural-contact grammar index (draft 11)
+## Natural-contact grammar index (draft 14)
 
 Same-assembly prefixes (+ `Roof_<Bldg>` aliasing) · wall embeds
 ≤0.14 · wall-join ≤0.30 · container contents (center-inside, or
@@ -145,6 +145,16 @@ offerings ≤0.10 · mirror collage ≤0.10 · pillows/cushions ≤0.12 ·
 mounted fixtures ≤0.20 · shelf-stored ≤0.10 · pew contents ≤0.20
 · cues lean ≤0.10 · ducts along bands ≤0.15 · collars ≤0.10 ·
 closet tools lean ≤0.20 · fork-enters-pallet.
+
+Added 2026-08-12 when the shared modules became visible:
+openings installed in walls (a window assembly occupies the
+full thickness) · fitted cabinetry backs into its wall ≤0.40 ·
+framing members BEAR into the wall they land on ≤0.24 ·
+fixture bases/kicks abut ≤0.22 · mounted hardware through
+walls and pegboards ≤0.22 · cords run into walls (any depth) ·
+neon letters through their raceway ≤0.30 · tipped furniture
+below the floor plane · knee walls are wall-class · blinds and
+banisters classed · pans as containers.
 
 ## Recent lessons
 

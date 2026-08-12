@@ -86,7 +86,9 @@ def build_salsa_station():
         make_box(f"SalsaPan_{i}", (px, sy-0.05, 0.51), (0.26,0.32,0.10), P.METAL_STEEL)
         make_box(f"Salsa_{i}", (px, sy-0.05, 0.56), (0.22,0.28,0.03), salsa_cols[i])
     for i,col in enumerate([(0.86,0.22,0.16,1.0),(0.86,0.72,0.20,1.0),(0.36,0.46,0.24,1.0)]):
-        make_bottle(f"Bottle_{i}", sx + 0.40, sy - 0.20 + i * 0.18, 0.50,
+        # Hot-sauce bottles line the table's FRONT edge, clear of
+        # the salsa pans (bottle 1 stood in salsa 2).
+        make_bottle(f"Bottle_{i}", sx + 0.40, sy + 0.22 + i * 0.06, 0.50,
                     col, h=0.16, r=0.026)
     make_box("Napkins", (sx-0.40, sy+0.22, 0.54), (0.16,0.10,0.12), P.METAL_STEEL)
 

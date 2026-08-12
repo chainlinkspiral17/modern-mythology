@@ -138,8 +138,8 @@ def build_stove_corner():
             fz = 0.12 + r * 0.16 + (0.0 if c % 2 == 0 else 0.02)
             make_cyl(f"Firewood_{r}_{c}", (2.7, fy, fz), 0.075, 0.5,
                      COL_WOOD if (r + c) % 2 else COL_WOOD_DK, segments=6, axis='X')
-    make_cyl("Wood_Basket", (1.68, 5.95, 0.20), 0.28, 0.40, (0.56, 0.42, 0.26, 1.0), segments=10)
-    make_cyl("Wood_Basket_Cedar", (1.68, 5.95, 0.36), 0.20, 0.14, COL_WOOD_DK, segments=8)
+    make_cyl("Wood_Basket", (1.68, 5.70, 0.20), 0.28, 0.40, (0.56, 0.42, 0.26, 1.0), segments=10)
+    make_cyl("Wood_Basket_Cedar", (1.68, 5.70, 0.36), 0.20, 0.14, COL_WOOD_DK, segments=8)
     # The side table by the wood stove ("She put the stick down on
     # the side table by the wood stove")
     make_box("Stove_SideTable_Top", (1.60, 4.95, 0.54), (0.42, 0.42, 0.05), COL_WOOD)
@@ -308,7 +308,7 @@ def build_crow_2026_08():
     the outside sill, which is where it always is.
     """
     from _props.creatures import make_crow
-    make_crow("Crow", -1.6, ROOM_D + 0.16, 1.06, facing=1.0)
+    make_crow("Crow", -1.6, ROOM_D + 0.30, 1.06, facing=1.0)
 
 
 def main():

@@ -36,7 +36,7 @@ EMBED_MAX = 0.14   # wall thickness + proud trim/frame
 WALLISH = re.compile(
     r"wall|window|door|sign|brand|part[nsew]?\b|partition|trim|crown|band\b|band_|"
     r"baseboard|backsplash|wainscot|frame|sill|floor|ceil|apron|"
-    r"cornice|facade|"
+    r"cornice|facade|knee|"
     r"turf|road|grass|rug|mat|plumbing|curb|kerb|lawn|drive|sidewalk|path\b|path_|apron|asphalt|edgeline|shoulder|gravel|yard\b|headland|ground|walk\b|walkway|win\b|win_|outlet|socket|plate\b|numeral|slab|plaza|endzone|seam|shore|sand|dune|land\b|grout", re.I)
 CONTAINERISH = re.compile(
     r"cage|case|chest|bin\b|bin_|basket|crate|rack|cooler|fridge|"
@@ -77,7 +77,7 @@ ROOFISH = re.compile(r"eave|ridge|roof|gable|chimney|awning\b", re.I)
 STRUCTISH = re.compile(
     r"leg|brace|strut|post|pole|beam|rail|truss|arm\b|_arm|spindle|"
     r"baluster|joist|stud\b|stud_|wire|cable|line|rope|cord|string|"
-    r"knee\b|knee_|pipe|bollard|col\b|col_|stilt|"
+    r"knee\b|knee_|pipe|bollard|col\b|col_|stilt|header|lintel|"
     r"stanchion", re.I)
 # Seats TUCK under their work surface by use — a stool under a desk,
 # a booth bench meeting the expo counter. Bounded so a chair buried
@@ -99,7 +99,7 @@ OFFERING_MAX = 0.10
 # proxy geometry's way of touching.
 FLEXISH = re.compile(r"wire|cable|cord|cord_|rope|chain|towel|rag|"
                      r"rag_|cloth|blanket|quilt|comforter|drape|linen|banner|"
-                     r"pennant|festoon|valance|curtain|sock|laundry|shirt|jacket|"
+                     r"pennant|festoon|valance|curtain|blind|slat|sock|laundry|shirt|jacket|"
                      r"strap|beanbag|paper\b|twine|bag\b|trashbag|pricetag|tag\b", re.I)
 FLEX_MAX = 0.30
 # Landscaping features are mounded soft dirt — poles, hydrants,
@@ -121,7 +121,7 @@ BACKDROPISH = re.compile(r"oppo|far_|far\b|farhill|farpole|skyline|neardeep|_mas
                          r"south_(house|warehouse|tank|crane|refstack)|north_church", re.I)
 # Stair members rise THROUGH the floor/ceiling plane at the
 # stairwell (the audit sees solid slabs, not the opening).
-STAIRISH = re.compile(r"baluster|newel|handrail|stringer", re.I)
+STAIRISH = re.compile(r"baluster|newel|handrail|stringer|banister", re.I)
 # Mounted light fixtures hang FROM / clamp ONTO their support.
 LAMPISH = re.compile(r"lamp|shade\b|sconce", re.I)
 LAMP_MAX = 0.20

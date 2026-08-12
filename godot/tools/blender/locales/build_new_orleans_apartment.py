@@ -178,7 +178,7 @@ def build_use_states_d4():
              (0.24, 0.24, 0.26, 1.0))
     # Cans: two standing on the TV stand, one on its side by the bin
     make_can("Can_TV_0", 2.62, 2.02, 0.66, (0.72, 0.20, 0.18, 1.0))
-    make_can("Can_TV_1", 2.74, 2.30, 0.66, (0.72, 0.20, 0.18, 1.0))
+    make_can("Can_TV_1", 2.62, 2.30, 0.66, (0.72, 0.20, 0.18, 1.0))
     make_cyl("Can_Floor", (2.45, 1.15, 0.033), 0.033, 0.12,
              (0.66, 0.18, 0.16, 1.0), segments=8, axis='Y')
     make_cyl("Trash_Bin", (2.85, 0.75, 0.18), 0.14, 0.36,

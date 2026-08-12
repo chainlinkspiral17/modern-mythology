@@ -103,9 +103,9 @@ def build_counter():
         make_cyl(f"Counter_Stool_Leg_{li}", (2.25 + 0.12 * _m.cos(ang), 6.15 + 0.12 * _m.sin(ang), 0.16),
                  0.015, 0.32, COL_STEEL, segments=5)
     # Kettle on its small electric burner, under-counter shelf
-    make_box("Under_Shelf", (1.55, 5.9, 0.28), (0.60, 0.60, 0.03), COL_WOOD)
-    make_box("Electric_Burner", (1.55, 5.9, 0.325), (0.26, 0.26, 0.06), (0.22, 0.22, 0.24, 1.0))
-    make_cyl("Kettle", (1.55, 5.9, 0.44), 0.09, 0.20, COL_STEEL, segments=10)
+    make_box("Under_Shelf", (0.75, 5.5, 0.28), (0.60, 0.60, 0.03), COL_WOOD)
+    make_box("Electric_Burner", (0.75, 5.5, 0.325), (0.26, 0.26, 0.06), (0.22, 0.22, 0.24, 1.0))
+    make_cyl("Kettle", (0.75, 5.5, 0.44), 0.09, 0.20, COL_STEEL, segments=10)
 
 
 def build_repair_back():

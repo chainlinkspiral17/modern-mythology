@@ -102,7 +102,7 @@ def build_checkout():
     for gi in range(6):
         make_box(f"Checkout_BeltRib_{gi}", (cx-0.05, cy-0.8+gi*0.32, top_z+0.035), (0.44, 0.02, 0.01), (0.24, 0.24, 0.26, 1.0))
     make_register("RegisterMachine", (cx+0.10, cy+0.70, top_z))
-    make_credit_card_terminal("CardTerm", (cx-0.28, cy-0.55, top_z))
+    make_credit_card_terminal("CardTerm", (cx-0.44, cy-0.72, top_z))
     # Order divider bar on the belt
     make_box("Checkout_Divider", (cx-0.05, cy+0.20, top_z+0.06), (0.40, 0.03, 0.05), (0.72, 0.20, 0.18, 1.0))
     # Queue guide rail (customer side, west)
