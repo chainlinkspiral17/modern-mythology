@@ -140,7 +140,7 @@ recurring complaint. The rules:
    randomly opened SCENE EDITOR (two nav rows below SLOWSTOCK
    LIBRARY). HUD *inside* a game surface still toggles normally,
    because the sweep visits `"ui"` members directly.
-5. Test by pressing F4 at SCENE START before any dynamic HUD
+6. Test by pressing F4 at SCENE START before any dynamic HUD
    members (music player, mood label) have had time to spawn,
    then waiting for them to spawn — they must NOT pop up.
 
