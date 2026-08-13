@@ -188,6 +188,14 @@ light_energy = 0.85
 shadow_enabled = false
 omni_range = 3.5
 
+; ── vn_shot (2026-08-12) · the eviction notice ─────────────────
+; Taped to the front door at blender (-0.42, 0.075, 1.44) → godot
+; (-0.42, 1.44, -0.075). The insert wants the envelope AND the pale
+; ghost of the lease renewal beside it.
+[node name="shot_insert_eviction_notice" type="Marker3D" parent="." groups=["vn_shot"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.42, 1.44, 0.52)
+rotation = Vector3(0.0, 3.1416, 0.0)
+
 [node name="Interior" parent="." instance=ExtResource("1_glb")]
 
 [node name="PostProcess" type="CanvasLayer" parent="."]

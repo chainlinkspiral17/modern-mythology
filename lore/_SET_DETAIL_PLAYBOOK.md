@@ -84,6 +84,36 @@ henderson) got there by accumulating exactly these layers.
 
 ## Recent lessons
 
+### 2026-08-12 · HERO PROPS: build the thing the prose points at
+
+- **`shot_marker_audit.py --props` measures the gap nothing else
+  could see**: a chapter cues `[shot:insert x]`, and no builder in
+  that locale emits anything named like `x`. 242 such cues across
+  191 locale/object pairs on the first run.
+- **Not every one is an art gap** — read the prose before modeling.
+  vol7's `insert tide_pool` fires on cabin_road because Finn is
+  playing a GAME with a tide pool in it; "douglas" and "coach_dale"
+  are people; "prints" and "smear" are marks, not objects. The
+  director's substitute/hold-wide fallback is the right answer for
+  those. Model the ones that belong in the SET.
+- **Built this pass, all from what the prose actually says:**
+  Olaf's two carved bowls (21 cues — the volume's central image,
+  same grain, same spiral, the flame-mark on the base); the
+  Henderson pot roast (a MODEL CHAPTER — the dutch oven with its
+  lid OFF, leaning, because that is what "she made it tonight"
+  looks like); Lena's easel and half-finished board (she is the
+  volume's artist and her apartment held none of her work — paint
+  tubes stacked on the floor where a working painter keeps them,
+  not in a tidy box); the eviction notice taped to Elicia's door
+  (the detail that carries it is the SECOND strip of tape and the
+  pale ghost where the lease renewal used to hang).
+- **The test for a hero prop: name the one detail that proves the
+  sentence.** Lid off, not lid on. Two strips of tape, not one.
+  Paint on the floor, not in a box. Without that detail it is set
+  dressing; with it, it is the shot the chapter asked for.
+
+
+
 ### 2026-08-03 · founding · first D2+D3 passes
 Applied to pit_stop_interior + chillwave_interior (the freshest
 re-themes) as proof of method, alongside Highway 9 draft 2 (action

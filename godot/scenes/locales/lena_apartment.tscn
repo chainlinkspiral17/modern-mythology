@@ -181,6 +181,18 @@ light_energy = 1.8
 omni_range = 3.0
 shadow_enabled = false
 
+; ── vn_shot (2026-08-12) · Lena's working canvas ───────────────
+; [shot:insert canvas] had neither marker nor object. The easel now
+; stands in the west window's light at blender (-1.72, 2.35), board
+; centre z 1.20 → godot (-1.72, 1.20, -2.35).
+[node name="shot_insert_canvas" type="Marker3D" parent="." groups=["vn_shot"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.05, 1.28, -1.62)
+rotation = Vector3(-0.06, -0.82, 0.0)
+
+[node name="shot_insert_easel" type="Marker3D" parent="." groups=["vn_shot"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.55, 1.45, -1.30)
+rotation = Vector3(-0.16, -0.86, 0.0)
+
 [node name="Interior" parent="." instance=ExtResource("1_glb")]
 
 [node name="PostProcess" type="CanvasLayer" parent="."]

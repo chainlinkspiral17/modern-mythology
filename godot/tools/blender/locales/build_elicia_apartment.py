@@ -188,11 +188,59 @@ def build_use_states_d4():
     make_cyl("Desk_Teacup", (2.35, 4.62, 0.425), 0.032, 0.055,
              (0.86, 0.84, 0.80, 1.0), segments=8)
 
+def build_eviction_notice_2026_08():
+    """THE EVICTION NOTICE (shot_marker_audit --props, 2026-08-12).
+    [shot:insert eviction_notice] fires in vol5 ch16 and the object
+    did not exist: "The landlord had left it taped to the door in
+    the small Quebecois white envelope landlords used here, with the
+    tape applied in the exact location that had previously held the
+    lease renewal."
+
+    So it is ON THE DOOR, not on a table — and the detail that
+    carries the chapter is the SECOND piece of tape: the pale
+    rectangle where the last notice hung, still there under the new
+    one. The envelope hangs slightly askew, because tape does.
+    """
+    # Front door is the south wall's opening; leaf face at y≈0.06,
+    # hinge edge x=-1.10, so the latch half is around x=-0.35.
+    dx, dz = -0.42, 1.44
+    env = (0.94, 0.93, 0.90, 1.0)
+    env_shadow = (0.82, 0.81, 0.78, 1.0)
+    tape = (0.88, 0.86, 0.80, 0.55)
+    ghost = (0.86, 0.85, 0.83, 1.0)     # the old adhesive rectangle
+    ink = (0.30, 0.28, 0.26, 1.0)
+    stamp = (0.42, 0.20, 0.18, 1.0)
+    # The GHOST of the lease renewal — same spot, sun-bleached edge
+    make_box("EvictionGhost_Patch", (dx, 0.072, dz + 0.015),
+             (0.175, 0.002, 0.115), ghost)
+    # The envelope, hung a few degrees off true (staggered boxes)
+    make_box("EvictionNotice_Envelope", (dx, 0.075, dz),
+             (0.165, 0.004, 0.105), env)
+    make_box("EvictionNotice_Flap", (dx, 0.077, dz + 0.028),
+             (0.165, 0.003, 0.048), env_shadow)
+    make_box("EvictionNotice_Window", (dx - 0.028, 0.078, dz - 0.018),
+             (0.075, 0.002, 0.030), (0.86, 0.88, 0.90, 1.0))
+    # The address showing through the window + the landlord's stamp
+    for li, lz in enumerate((-0.012, -0.024)):
+        make_box("EvictionNotice_Line_%d" % li,
+                 (dx - 0.030, 0.0795, dz + lz),
+                 (0.058, 0.001, 0.005), ink)
+    make_box("EvictionNotice_Stamp", (dx + 0.052, 0.0795, dz + 0.026),
+             (0.030, 0.001, 0.022), stamp)
+    # Two strips of tape — the new one, and the older strip beside
+    # it that never came off.
+    make_box("EvictionNotice_Tape_New", (dx, 0.079, dz + 0.062),
+             (0.052, 0.002, 0.030), tape)
+    make_box("EvictionNotice_Tape_Old", (dx + 0.058, 0.074, dz + 0.070),
+             (0.044, 0.002, 0.026), tape)
+
+
 def main():
     clear_scene(); build_shell(); build_living(); build_studio_nook(); build_decor(); build_ceiling_infra()
     build_hero_props()
     build_detail_pass_2026_08()
     build_use_states_d4()
+    build_eviction_notice_2026_08()
     out = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)), "../../../assets/3d/locales/elicia_apartment.glb"))
     print(f"\n[build_elicia_apartment] exporting to {out}")
     export_glb(out)

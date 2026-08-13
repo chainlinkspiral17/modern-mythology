@@ -213,6 +213,72 @@ def build_dressing():
     make_smoke_detector("Smoke", (0.9, ROOM_D/2.0, CEIL))
 
 
+def build_canvas_2026_08():
+    """LENA'S WORKING CANVAS (shot_marker_audit --props, 2026-08-12):
+    [shot:insert canvas] fires on this locale and there was no canvas
+    — she is the volume's zine artist and her apartment had nothing
+    of her work in it.
+
+    An A-frame easel in the light of the west window with a
+    half-finished board on it: gessoed ground, a blocked-in shape,
+    and the edge she has not decided about yet. Paint is stacked
+    where a working painter stacks it — on the floor beside the
+    easel, not in a tidy box.
+    """
+    pine = (0.68, 0.56, 0.38, 1.0)
+    pine_dk = (0.52, 0.42, 0.28, 1.0)
+    gesso = (0.90, 0.88, 0.82, 1.0)
+    block = (0.36, 0.46, 0.52, 1.0)      # the blocked-in shape
+    block_dk = (0.24, 0.32, 0.40, 1.0)
+    ex, ey = -1.72, 2.35                 # in the west window's light
+    # Easel: two front legs splayed, one back leg, a mast, a tray
+    for sgn in (-1, 1):
+        make_box("Easel_Leg_%d" % sgn, (ex + sgn * 0.30, ey - 0.10, 0.72),
+                 (0.045, 0.045, 1.44), pine)
+    make_box("Easel_BackLeg", (ex, ey + 0.34, 0.70),
+             (0.045, 0.045, 1.40), pine_dk)
+    make_box("Easel_Mast", (ex, ey - 0.10, 1.05), (0.05, 0.05, 0.90), pine)
+    make_box("Easel_Tray", (ex, ey - 0.16, 0.86), (0.72, 0.09, 0.035), pine_dk)
+    make_box("Easel_TrayLip", (ex, ey - 0.20, 0.885), (0.72, 0.018, 0.030), pine)
+    # The board on the tray, leaning back with the mast
+    make_box("Canvas_Board", (ex, ey - 0.09, 1.20), (0.60, 0.022, 0.72), gesso)
+    make_box("Canvas_Edge_T", (ex, ey - 0.10, 1.555), (0.62, 0.030, 0.028), pine_dk)
+    make_box("Canvas_Edge_B", (ex, ey - 0.10, 0.845), (0.62, 0.030, 0.028), pine_dk)
+    # What is ON it: a blocked-in headland shape, unfinished at the
+    # right edge — the painting is in progress, which is the point.
+    make_box("Canvas_Block", (ex - 0.09, ey - 0.102, 1.13),
+             (0.34, 0.004, 0.40), block)
+    make_box("Canvas_Block_Dk", (ex - 0.14, ey - 0.104, 1.01),
+             (0.22, 0.004, 0.16), block_dk)
+    make_box("Canvas_Horizon", (ex, ey - 0.104, 1.28),
+             (0.56, 0.004, 0.012), block_dk)
+    # Brushes in a jar on the tray + a rag over the tray lip
+    make_cyl("Canvas_Jar", (ex + 0.24, ey - 0.15, 0.945),
+             0.045, 0.13, (0.72, 0.76, 0.74, 0.65), segments=10)
+    for bi, bo in enumerate((-0.012, 0.0, 0.014)):
+        make_cyl("Canvas_Brush_%d" % bi, (ex + 0.24 + bo, ey - 0.15, 1.055),
+                 0.006, 0.20, (0.62, 0.50, 0.32, 1.0), segments=6)
+    make_box("Canvas_Rag", (ex - 0.26, ey - 0.20, 0.865),
+             (0.16, 0.05, 0.10), (0.74, 0.70, 0.62, 1.0))
+    # Paint tubes stacked on the floor where a working painter keeps
+    # them — squeezed flat, capped, not in a box.
+    for ti, (tx2, ty2, col) in enumerate((
+            (ex - 0.34, ey - 0.30, (0.72, 0.24, 0.20, 1.0)),
+            (ex - 0.28, ey - 0.36, (0.24, 0.34, 0.52, 1.0)),
+            (ex - 0.38, ey - 0.40, (0.86, 0.80, 0.42, 1.0)),
+            (ex - 0.24, ey - 0.28, (0.30, 0.36, 0.28, 1.0)))):
+        make_cyl("Canvas_Tube_%d" % ti, (tx2, ty2, 0.022),
+                 0.018, 0.11, col, segments=6, axis='Y')
+        make_cyl("Canvas_TubeCap_%d" % ti, (tx2, ty2 - 0.062, 0.022),
+                 0.012, 0.02, (0.30, 0.30, 0.32, 1.0), segments=6, axis='Y')
+    # A finished board leaning face-in against the wall — the ones
+    # she is not looking at today.
+    make_box("Canvas_Stack_A", (ex - 0.40, ey + 0.05, 0.42),
+             (0.52, 0.030, 0.68), pine_dk)
+    make_box("Canvas_Stack_B", (ex - 0.44, ey + 0.02, 0.38),
+             (0.44, 0.026, 0.60), gesso)
+
+
 def main():
     clear_scene()
     build_shell()
@@ -221,6 +287,7 @@ def main():
     build_front_room()
     build_bedroom()
     build_dressing()
+    build_canvas_2026_08()
     out = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)),
         "../../../assets/3d/locales/lena_apartment.glb"))
     print(f"\n[build_lena_apartment] exporting to {out}")
