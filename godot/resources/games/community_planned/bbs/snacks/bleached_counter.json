@@ -190,6 +190,39 @@
           "body": "Batteries by the case at the co-op. Send the invoice to the board.\n\n— W.M."
         }
       ]
+    },
+    {
+      "id": "SN_007",
+      "subject": "the high score on the corner table",
+      "available_from_week": 13,
+      "sysop_tagged": true,
+      "op": {
+        "handle": "SNACKS",
+        "canonical_character_id": null,
+        "date": "Wed Aug 19, 2026  02:18 PM",
+        "body": "The Galaga table in the corner has had the same high score since before I bought the place. Nobody has beaten it. I have watched three people get close on purpose and pull back on purpose. I asked one of them why. He said it seemed like the man might need it more than he did, wherever he is.\n\nThe initials on the score are D.N.D. The kids assume it's a joke about the dice game. It is not a joke. The man was real. He used to come in before my time, played standing up, never sat down, tipped in exact change.\n\nThe table stays. — S."
+      },
+      "replies": [
+        {
+          "handle": "Frasier",
+          "canonical_character_id": "frasier_temple",
+          "date": "Wed Aug 19, 2026  11:52 PM",
+          "body": "Leave the score. — F."
+        }
+      ]
+    },
+    {
+      "id": "SN_008",
+      "subject": "thursday · the window seat",
+      "available_from_week": 14,
+      "sysop_tagged": true,
+      "op": {
+        "handle": "SNACKS",
+        "canonical_character_id": null,
+        "date": "Thu Aug 27, 2026  02:48 PM",
+        "body": "Nicola came through Thursday with Aria, ahead of the weather. Aria took the window seat and the peach pie. She counted the trucks that passed while they ate. Fourteen. She told me the number on the way out like it was change she owed me.\n\nNicola looks tired. I gave her coffee for the road and did not charge her, and she let me not charge her, which is how you know how tired.\n\nStorm's south of us. Counter's wiped. We're open. — S."
+      },
+      "replies": []
     }
   ]
 }

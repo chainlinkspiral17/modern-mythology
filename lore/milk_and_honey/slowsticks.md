@@ -3,10 +3,8 @@
 
 > **Source of truth: the vol 7 scene JSONs**
 > (`godot/resources/scenes/vol7/`). Every claim in the main body
-> below is from that prose. The previous revision of this file
-> described a 2010s cartridge scene anchored to a mistaken 2025
-> present; what survives of it is quarantined at the bottom as
-> **unratified pre-history**.
+> below is from that prose. The 2010s–20s cartridge scene at the
+> bottom is RATIFIED deep pre-history (master timeline, Knot 9).
 
 ## the object
 
@@ -73,7 +71,7 @@ needs the work... The clear is the work. Live in it."*
 
 | Stick | Designer | Date | Notes |
 |---|---|---|---|
-| **Kestrel Mountain** | Diego — *"Diego only, no last name, the way the early designers did"* | designed 2034 (ch11_stick; a studio poster says 2021 — prose conflict, reserved) | 412 logged players. The alpine climb: stations, the wise-man hut, the stream and plank, the red-berried hedge that opens on substrate-accreted corridors, the NO ENTRY basement with six server racks and the imprint of sixteen-year-old Nate, the Major Arcana fountain at the exit ("a kind of bibliography") |
+| **Kestrel Mountain** | Diego — *"Diego only, no last name, the way the early designers did"* | designed 2034 (poster corrected to match, per the ratified timeline) | 412 logged players. The alpine climb: stations, the wise-man hut, the stream and plank, the red-berried hedge that opens on substrate-accreted corridors, the NO ENTRY basement with six server racks and the imprint of sixteen-year-old Nate, the Major Arcana fountain at the exit ("a kind of bibliography") |
 | **Estuary 1–7** | series template begun by **D. Dean, 1997**; *Estuary 7* by **Ines Rocha** with the Oneironautics team | 2018 / 2020 / 2022 / 2025 / 2030 / 2038 / **2046** | planner's-view settlement sim: coastal template, drone-palette, labor-crew palette, construction primitives, a clock. Hosts the epilogue's gallery of nine builds and Tem's submission. *"The substrate had been in Estuary for fifty-five years."* |
 | **Tideline Survey** | Hjarvard Ulrich, 2018; template submitted by **Brandon T., 2046**; commercialized 2048 | | the basalt headland, two pools; the second pool is where a player sits with their dead; the substrate *"first came alive in the experience"* here, '23, per the old man at the pool |
 | **Cape Perpetua** | uncredited | 2023 | poster only (ch22_floors) |
@@ -83,9 +81,11 @@ needs the work... The clear is the work. Live in it."*
 **Origin of the form: not stated in prose.** The anchors spread:
 sleeves "since the '30s"; the Estuary template 1997; *Tideline*
 2018; "the kind of first teaching every experience like this had
-given a player since 2034"; and Nate playing Kestrel Mountain in
-1993, which contradicts its own 2034 design date. Reserved for
-the author — do not pick a founding year in derived lore.
+given a player since 2034." Nate playing Kestrel Mountain in
+1993 stands under the ratified porous-substrate reading (master
+timeline, Knot 3): the substrate is porous in time as well as
+between sticks. The medium's commercial form dates from the
+2030s, its pre-history from the ratified bayou layer below.
 
 ## the substrate relationship
 
