@@ -102,6 +102,17 @@ to the other. This was not contempt. It was fence-keeping. The
 public scene was documenting the region's strangeness for
 whoever came; the circle was working it, for nobody.
 
+The network's one door game dates from this era: **THE TALLY**,
+RUST_CODE's weekend build of winter 1993, running continuously
+since. One line per caller per call — a thing counted that day,
+and its number. No score, no ending. The annual reading (twelve
+lines, selection method unpublished) prints the last Sunday of
+July; Elicia posts it to THE_LIBRARY, where the archive of every
+reading lives in the files section. The TALLY is the network's
+own answer to the notebook games the bayou studios were making
+in the same years, arrived at independently, which the circle
+would say is not a coincidence and also not worth remarking on.
+
 Two survivals from that era matter to the deck: **CYPRESS-LINE**,
 E. Aday's one-board successor to HARMONY-NET, still online in
 2026 with its seven monthly callers — and the circle. The two

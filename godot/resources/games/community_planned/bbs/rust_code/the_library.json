@@ -99,6 +99,32 @@
           "body": "If the reader's the Bell+Howell 980 I have spares from the parish library decommission. Bring it to the shop Saturday and I'll match the board."
         }
       ]
+    },
+    {
+      "id": "TL_006",
+      "subject": "THE TALLY · year thirty-three · the annual reading",
+      "available_from_week": 10,
+      "sysop_tagged": false,
+      "op": {
+        "handle": "elicia.archive",
+        "canonical_character_id": null,
+        "date": "Sun Jul 26, 2026  07:42 PM",
+        "body": "For the new caller (we have exactly one): THE TALLY is the board's door game. RUST_CODE wrote it over a weekend in the winter of '93. It does one thing. Once per call, you may enter one line — a thing you counted that day, and its number. The game keeps every line. It has never lost one. It does not score. It does not end. On the last Sunday of July it prints the year's reading: twelve lines the game selects by a method R. has never published.\n\nYear thirty-three's reading, as printed:\n\n  · 4 — herons on the south pier piling, at once (STEEPLE, October)\n  · 61 — checks written at the kitchen table before the pen died (thelma_kitchen, October)\n  · 17 — fence staples straightened and reused, south run (chainlinkspiral, January)\n  · 1 — vacancy at the end of the bar, first Friday in months (chainlinkspiral, March)\n  · 12 — dawns before the cotton opened (PALOMINO, June)\n  · 22 — minutes the arroyo ran (PALOMINO, April)\n  · 9 — capacitors in the drawer that still test good (WIRE_MOTHER, February)\n  · 3 — times the phone rang with nobody there, all on a Tuesday (SNACKS, May)\n  · 88 — steps, gate to porch, same as every year since '98 (hasslein, December)\n  · 2 — suitcases, still (uzhekwurm, November)\n  · 30 — years since the theater on Sandy changed its marquee font (jlowe, April)\n  · 1 — line held (R., no month given)\n\nThe archive of all thirty-three readings is in the files section. The game is the board's memory of what the board noticed. Add your line. — e."
+      },
+      "replies": [
+        {
+          "handle": "jlowe",
+          "canonical_character_id": null,
+          "date": "Sun Jul 26, 2026  09:14 PM",
+          "body": "88 steps, hasslein? Every year since '98? — j."
+        },
+        {
+          "handle": "hasslein",
+          "canonical_character_id": null,
+          "date": "Sun Jul 26, 2026  11:03 PM",
+          "body": "Every year. That's the POINT, kid. — h."
+        }
+      ]
     }
   ]
 }

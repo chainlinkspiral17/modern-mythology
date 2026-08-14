@@ -164,6 +164,32 @@
           "body": "Pliny was a good sign. Carry on. — P."
         }
       ]
+    },
+    {
+      "id": "SN_006",
+      "subject": "there is a toy synthesizer on the counter now",
+      "available_from_week": 8,
+      "sysop_tagged": true,
+      "op": {
+        "handle": "SNACKS",
+        "canonical_character_id": null,
+        "date": "Wed Jul 15, 2026  02:18 PM",
+        "body": "There is a toy synthesizer on the counter now. Plastic, beige, eight big buttons and a shift key. A trucker ate the special, asked if kids ever come in, and left it by the register on his way out. Said the label he orders his games from mails you one free if your letter asks. I didn't ask what that means.\n\nThe Hall kid figured out the first eight notes of something on it Tuesday and now every kid that comes in has to have a turn. The batteries are on their third set. Eight notes is apparently enough.\n\nOne thing. When the walk-in compressor kicks on, the toy hums along for a second at the tail end of a note. Low. I mentioned it to the repair guy and he said toys do that. The counter has always hummed a little anyway. The toy fits right in. — S."
+      },
+      "replies": [
+        {
+          "handle": "jlowe",
+          "canonical_character_id": null,
+          "date": "Wed Jul 15, 2026  07:31 PM",
+          "body": "SNACKS that is a PDP Riffmaster and the beige ones go for stupid money to synth people. Do not sell it. Do not let anybody 'borrow' it. The one tone is three oscillators pretending to be one — whoever engineered it was showing off in secret. Keep it exactly where it is. — j."
+        },
+        {
+          "handle": "WIRE_MOTHER",
+          "canonical_character_id": null,
+          "date": "Thu Jul 16, 2026  06:08 AM",
+          "body": "Batteries by the case at the co-op. Send the invoice to the board.\n\n— W.M."
+        }
+      ]
     }
   ]
 }

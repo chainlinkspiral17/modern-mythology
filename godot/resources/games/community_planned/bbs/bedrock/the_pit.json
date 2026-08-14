@@ -4,7 +4,7 @@
   "notes": "Queries only. Every post is a question. Replies are also questions when possible. Introduces uzhekwurm as a recurring voice — answers (questions) come at odd hours, formal English, a thinker.",
   "threads": [
     {
-      "id": "BP_001",
+      "id": "BT_001",
       "subject": "what is the right week to ask the question?",
       "available_from_week": 1,
       "sysop_tagged": true,
@@ -30,7 +30,7 @@
       ]
     },
     {
-      "id": "BP_002",
+      "id": "BT_002",
       "subject": "did the fence at the south fuel pier hold in '93?",
       "available_from_week": 6,
       "sysop_tagged": false,
@@ -56,7 +56,7 @@
       ]
     },
     {
-      "id": "BP_004",
+      "id": "BT_004",
       "subject": "is the wind backed yet?",
       "available_from_week": 14,
       "sysop_tagged": true,
@@ -82,7 +82,7 @@
       ]
     },
     {
-      "id": "BP_003",
+      "id": "BT_003",
       "subject": "is the cottonwood early or are we late?",
       "available_from_week": 11,
       "sysop_tagged": false,
@@ -102,7 +102,7 @@
       ]
     },
     {
-      "id": "BP_004",
+      "id": "BT_006",
       "subject": "is the reader who reads the same as the reader who signed up?",
       "available_from_week": 12,
       "sysop_tagged": false,
@@ -122,7 +122,7 @@
       ]
     },
     {
-      "id": "BP_005",
+      "id": "BT_005",
       "subject": "who is the door for?",
       "available_from_week": 6,
       "sysop_tagged": false,

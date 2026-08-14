@@ -211,6 +211,29 @@ TA_005 on the art wall).
   existing moved. Surfaced in-game as BP_019 (the origin-stories
   thread), where each regular's first-call story doubles as
   their bio.
+- **Second-wave threads let the session's two halves meet.** With
+  the 2026 frame settled, the slowstick ecosystem exists *during*
+  CP: hasslein orders THE PERIMETER · COLLECTED from Bayou
+  Receivers and the interpreter writes him an unasked walk that
+  ends in a request (CP_007 — rhyming with Frasier's read of the
+  substrate instability); the PDP Riffmaster lands on SNACKS's
+  counter via a trucker's freebie (SN_006). New original game
+  fiction to balance the crossovers: THE TALLY (TL_006), the
+  board's own door game since winter '93 — one counted thing per
+  call, annual reading the last Sunday of July — now also in the
+  history doc. Rule of thumb held: half cross-canon, half new.
+- **The BP_ prefix collision was a live bug, caught by writing
+  fiction.** the_pit (BEDROCK) used BP_* ids while the_back_porch
+  (RUST_CODE) uses BP_001–019, and
+  `_has_read_thread_on_bbs("BEDROCK")` credits any BP_-prefixed
+  read — so one back-porch read silently satisfied BEDROCK's leg
+  of the BACKCHANNEL breadth unlock. Fixed: pit renamed to BT_*
+  (storm thread keeps the _004 slot parallel to OH_004/CP_004),
+  engine map updated, backchannel cross-ref updated. Also fixed
+  two duplicate thread ids (CP_004 sage → CP_006, pit BP_004 →
+  BT_006). Lesson: content sessions should run the id-uniqueness
+  check alongside the JSON validity gate — duplicates and prefix
+  collisions are invisible until an unlock misfires.
 - **Real-calendar dating discipline.** Check new thread dates
   against the actual 2026 calendar (Jul 5 / Aug 16 / Aug 23 are
   Sundays). Cheap to verify, ugly to get wrong on a board whose

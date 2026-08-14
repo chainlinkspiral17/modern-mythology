@@ -1039,7 +1039,7 @@ func _has_read_thread_on_bbs(bbs_id: String) -> bool:
 		"OVERPASS": ["OH_", "OT_", "OOB_"],
 		"CALICHE": ["CP_", "CB_", "CK_"],
 		"DRY_BLOOM": ["DA_", "DK_"],
-		"BEDROCK": ["BP_", "BL_"],
+		"BEDROCK": ["BT_", "BL_"],
 		"SNACKS": ["SN_"],
 	}
 	var pfxs: Array = prefixes.get(bbs_id, [])

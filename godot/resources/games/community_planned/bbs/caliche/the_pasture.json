@@ -84,7 +84,7 @@
       ]
     },
     {
-      "id": "CP_004",
+      "id": "CP_006",
       "subject": "the sage came in three weeks late",
       "available_from_week": 9,
       "sysop_tagged": true,
@@ -126,6 +126,38 @@
           "canonical_character_id": null,
           "date": "Sat Aug 8, 2026  10:18 AM",
           "body": "hasslein · we suspend the argument. The ⅛ cup is correct for a mother back from the hospital. I will not say it again. — S."
+        }
+      ]
+    },
+    {
+      "id": "CP_007",
+      "subject": "the interpreter wrote me a second walk · unasked",
+      "available_from_week": 11,
+      "sysop_tagged": false,
+      "op": {
+        "handle": "hasslein",
+        "canonical_character_id": null,
+        "date": "Sun Aug 2, 2026  10:56 PM",
+        "body": "Wrote a letter in March to the padded-envelope label out of the bayou that keeps the old Rough Magic catalog alive. Got back THE PERIMETER, all six releases on one of their little potted sticks, plus the reader plans. The sixth is the one with the interpreter — the 2002 build where you tell it what fence you intend to walk and it writes you the walk.\n\nI told it the fence around my own back acre. It wrote me a serviceable walk. Fine. Good trick.\n\nThen it wrote a second one, unasked, three days later. The second walk is forty minutes of fence I recognized by the fourth sentence: cedar posts, a gap wired shut twice, a cottonwood missing its top third at the northwest corner. I have not told the interpreter about the cooper place. I have not walked the cooper place fence in nine years.\n\nThe copy is the 2018 pressing. The interpreter was supposed to deactivate after one use back in '02. It didn't then either — there are eleven originals still writing walks for their owners, which I have known for years as a rumor and can now confirm as a mechanism.\n\nQuestion for the board, phrased the only way I know how: if a machine describes a place correctly before you go, is that prediction, or is it memory belonging to somebody else? Asking for me. — h."
+      },
+      "replies": [
+        {
+          "handle": "WIRE_MOTHER",
+          "canonical_character_id": null,
+          "date": "Mon Aug 3, 2026  06:12 AM",
+          "body": "Walk it in daylight. Take the truck, not the tractor. Post here before you go and post here after you're back.\n\nThe cooper place fence is sound at the road and soft at the northwest corner — which you apparently already know, or something does.\n\nThe polite thing was built by a friend of this circle. Politeness is a coat. Daylight.\n\n— W.M."
+        },
+        {
+          "handle": "Frasier",
+          "canonical_character_id": "frasier_temple",
+          "date": "Mon Aug 3, 2026  11:47 PM",
+          "body": "I built the polite form for L.G. in '02. It was polite when it left. It has had twenty-four years and eleven owners to develop manners of its own.\n\nDo what W.M. says. Also: when you walk it, count your steps. If the walk's count and your count agree, mail me the number. — F."
+        },
+        {
+          "handle": "hasslein",
+          "canonical_character_id": null,
+          "date": "Sat Aug 8, 2026  08:42 PM",
+          "body": "Walked it this morning. Daylight, truck, posted before per W.M.'s protocol (see the pasture log thread).\n\nThe walk was accurate through the fourth sentence, and the fifth, and most of the rest. Then near the northwest corner it stopped being a description and started being a request. I'm not posting the request.\n\nF. — the counts agreed. Letter's in the mail. — h."
         }
       ]
     }
