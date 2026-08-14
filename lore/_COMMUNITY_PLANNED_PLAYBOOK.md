@@ -8,6 +8,9 @@ before touching `scenes/games/CommunityPlannedGame.gd`,
 
 For the *what we're building* doc, see `_COMMUNITY_PLANNED_SPEC.md`.
 For the phase-2 scope contract, see `_COMMUNITY_PLANNED_PHASE2_SCOPE.md`.
+For the network's canonical history (1988–2026, board founding
+dates, archival-stamp reconciliation, authoring rules for
+historical posts), see `_COMMUNITY_PLANNED_BBS_HISTORY.md`.
 This playbook is the *how we work on it* doc.
 
 ---
@@ -195,6 +198,19 @@ TA_005 on the art wall).
   D-MAGNUS translates his own 1994 poster from memory, the
   floppy long unreadable), and that register — patient,
   memorial, slightly haunted — is the one the deck is best at.
+- **The network got its history (user direction: the BBS is old,
+  late-'80s, still in use by the friends).**
+  `_COMMUNITY_PLANNED_BBS_HISTORY.md` reconciles every archival
+  stamp into a 1988–2026 timeline: founding October 1988, the
+  November 1991 number change the welcome sticky alludes to, the
+  attic's 1990 rules, the 1981 barn-sticky stamp left
+  deliberately unexplained, the copper refusal, the 2020 origin
+  of the register glossary, the friends' arrival years. Method:
+  the archive stamps already in canon were treated as fixed
+  points and the history written *through* them — nothing
+  existing moved. Surfaced in-game as BP_019 (the origin-stories
+  thread), where each regular's first-call story doubles as
+  their bio.
 - **Real-calendar dating discipline.** Check new thread dates
   against the actual 2026 calendar (Jul 5 / Aug 16 / Aug 23 are
   Sundays). Cheap to verify, ugly to get wrong on a board whose

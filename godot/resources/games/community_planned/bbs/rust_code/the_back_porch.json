@@ -524,6 +524,44 @@
           "body": "The upstairs room is the shape of its previous occupant for two weeks after they leave. This is a physical fact. Any new occupant must be willing to sit in the room for one afternoon before deciding, so the room can begin to re-shape itself. Do not skip this step. Small Wood remembers. — u."
         }
       ]
+    },
+    {
+      "id": "BP_019",
+      "subject": "the board turns thirty-eight in October · how did you first dial in",
+      "available_from_week": 10,
+      "sysop_tagged": false,
+      "op": {
+        "handle": "jlowe",
+        "canonical_character_id": null,
+        "date": "Sun Jul 26, 2026  09:42 PM",
+        "body": "Did the math tonight: the board turns THIRTY-EIGHT in October. Older than me. I've been calling for seven years, which apparently still makes me the new guy, and in seven years I have never once heard anybody tell the story of their first call.\n\nTell it. I'll start.\n\n2019. hasslein spent A FULL YEAR deciding whether to vouch for me, which I only found out afterward, and then one night at the end of a long email argument about the Hindenburg he just sent a phone number and the words 'evenings. patience. manners.' No context. I dialed it on a modem I'd bought at an estate sale for a different project entirely. The handshake sound took twenty seconds and I have not heard a better twenty seconds of audio since.\n\nYour turn. — j."
+      },
+      "replies": [
+        {
+          "handle": "chainlinkspiral",
+          "canonical_character_id": null,
+          "date": "Mon Jul 27, 2026  06:48 AM",
+          "body": "'91. The harbormaster who hired me wrote the number on the back of my first paycheck stub and said: when the wire takes somebody, this is where we put the name. I thought that was a strange thing to say to a new hire.\n\nHe's been on my list in the room upstairs since '95. The stub is in my toolbox. Thirty-five years on the same number. — c."
+        },
+        {
+          "handle": "uzhekwurm",
+          "canonical_character_id": null,
+          "date": "Mon Jul 27, 2026  09:14 PM",
+          "body": "1994. I arrived from Bytom with two suitcases and a letter I was instructed to show to one person only. The person read the letter, gave me coffee, and wrote a number on the back of the envelope.\n\nThe board was the first room in America where nobody asked me to repeat myself. A modem does not hear an accent. I have considered this a feature of the architecture ever since.\n\nIs the handshake sound not the same sound as a door being unlocked slowly, by somebody who knows the lock? — u."
+        },
+        {
+          "handle": "hasslein",
+          "canonical_character_id": null,
+          "date": "Tue Jul 28, 2026  01:56 AM",
+          "body": "'94. Or '96, if you believe WIRE_MOTHER, and the logs that would settle it are on the imaged drive, and neither of us is going to check, because the argument is better than the answer at this point.\n\nWhat I remember: 2400 baud, a borrowed Hayes, and MAINSTREET scrolling up a green screen at reading speed. That's the part nobody tells you the internet took. The board came to you at the speed you could think about it.\n\nAlso, for the record, re: the vouching year — I read a man's Hindenburg opinions for twelve months before I hand him this number. That is not excessive. That is the MINIMUM. — h."
+        },
+        {
+          "handle": "RUST_CODE",
+          "canonical_character_id": null,
+          "date": "Tue Jul 28, 2026  05:18 AM",
+          "body": "The first night there were two callers.\n\nThe first caller asked if the line would hold.\n\nThe line has held. — R."
+        }
+      ]
     }
   ]
 }
