@@ -1,5 +1,19 @@
 # THE ALSEA BAY CANNERY
-## Smolvud, OR · abandoned 1989 · servers still drawing power
+## Smolvud, OR · abandoned 1989 · vol 7
+
+> **⚠ STATUS · DRIFT-FLAGGED · 2026-08-14.** This file was
+> drafted against a mistaken "vol 7 = 2025" present and is
+> almost entirely unratified invention. The vol 7 scene JSONs
+> (`godot/resources/scenes/vol7/`) are the authority: the
+> volume's present is **2052**, and no present-day cannery interior, basement, or servers
+> appear anywhere in the volume — only the seven-stair behind
+> it, the tide pools nearby, and the interlude's hook that
+> Maya's November route "goes through a cannery he has been
+> avoiding his whole life."
+> Treat everything below as draft material pending the author's
+> ratification; see `_VOL7_WIKI.md` for the prose-grounded
+> synthesis.
+
 
 A long single-story wooden structure at the river-mouth where the
 Alsea Bay meets the Pacific, downriver from the town of Smolvud

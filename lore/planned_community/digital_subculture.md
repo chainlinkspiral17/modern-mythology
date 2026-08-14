@@ -998,18 +998,12 @@ larger deck:
   music of a small specific kind of patient attention that
   somebody had to keep, in 1992, by hand, on a 2400-baud
   modem in their bedroom."*
-- **WARDEN AVENUE on Kai's shelf** — Kai's father gave him the
-  NES cartridge in 2008. Kai has played it through sixteen
-  times. The cartridge has, by Kai's quiet acknowledgment in
-  vol7's chapter four, *"never once given me the same notebook
-  observation twice on the same lot."* This is, by every
-  reasonable reading of the NES's deterministic code, impossible.
-  The cartridge, Kai has subsequently confirmed with a
-  cartridge-dumping rig, contains code that does not appear in
-  any other extant copy of the same game. Kai's cartridge is,
-  by Frasier's quiet read, *"a substrate-touched copy. somebody
-  modified the ROM. I do not know who. the modification was
-  good."*
+- **WARDEN AVENUE, forward** — approximately 2,000 copies
+  survive. Whether one of them reaches the Oregon coast of the
+  later volumes is reserved. *(A prior revision placed a
+  substrate-touched copy with vol7's Kai, with dates that
+  contradict the vol7 scene prose — unratified; see
+  `milk_and_honey/slowsticks.md`.)*
 - **THE PERIMETER VI's procedural interpreter** — Frasier
   built it for L.G. The interpreter is, by every player who
   used it post-2003, *still running locally on their copy* —

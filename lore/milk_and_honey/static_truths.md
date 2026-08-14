@@ -1,5 +1,17 @@
 # STATIC TRUTHS
-## Lena Vargas's zine · Smolvud, OR · vol7 · started August 2025
+## Lena Vargas's zine · Smolvud, OR · vol7 · interlude canon
+
+> **⚠ STATUS · DRIFT-FLAGGED · 2026-08-14.** This file was
+> drafted against a mistaken "vol 7 = 2025" present and is
+> almost entirely unratified invention. The vol 7 scene JSONs
+> (`godot/resources/scenes/vol7/`) are the authority: the
+> volume's present is **2052**, and the zine exists only in `vol7_interlude_ii.json` (the SUN
+> charcoal, three days, the octopus on the back cover — no
+> date given); the main 96 scenes never mention it.
+> Treat everything below as draft material pending the author's
+> ratification; see `_VOL7_WIKI.md` for the prose-grounded
+> synthesis.
+
 
 A photocopied zine Lena starts the morning she wakes with charcoal
 on her thigh in the shape of three letters: **S U N.** The
