@@ -31,8 +31,16 @@ touching code:
 6. `lore/_COMMUNITY_PLANNED_PLAYBOOK.md` — mission stages, BBS
    thread gating, pressure curve, three-slot save. Read before
    editing problems.json, agents.json, or CommunityPlannedGame.gd.
-7. The latest commit message on the working branch — recent context.
-8. If working on a specific volume, the relevant `lore/_VOL{N}_WIKI.md`.
+7. `lore/_MASTER_TIMELINE.md` — the RATIFIED chronology spine for
+   all volumes (vol5 ~2019 · vol6 2025–26 · vol7 Aug–Sep 2052).
+   Read before dating ANYTHING. When prose and the timeline
+   disagree, flag it there as a knot — never silently fix either
+   side, and never re-derive a volume's present from stray dates
+   in older lore files.
+8. The latest commit message on the working branch — recent context.
+9. If working on a specific volume, the relevant `lore/_VOL{N}_WIKI.md`
+   and, for vol 7, the scene JSONs at `godot/resources/scenes/vol7/`
+   (the prose is the authority; the wiki is downstream).
 
 ## DEBUG HUD — F4 IS THE MASTER TOGGLE (hard rule)
 
