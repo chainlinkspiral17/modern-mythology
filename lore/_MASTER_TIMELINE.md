@@ -301,6 +301,13 @@ shifted resolution**; the author decides.
    Oneironautics' sticks, which either makes the machine a
    Dean-adjacent prototype (he was building toward the medium
    then) or moves the arrival later. [RESERVED].
+11. **Dean's portrait age** — the tower-lobby portrait is read as
+   "Dean at 48" in 2013 (ch22_floors), but the b. ~1978
+   arithmetic (14 in Oct '92; 28 at SFO 2006 — two attestations)
+   makes him 35 in 2013. The portrait's "48" is the odd one out.
+   Options: fix the portrait line to 35, or keep it and let
+   Tem's read of the portrait be wrong. [RESERVED — found
+   2026-08-14 during enemy-arc work.]
 
 ---
 
