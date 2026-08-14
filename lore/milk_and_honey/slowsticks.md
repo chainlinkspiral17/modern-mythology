@@ -163,7 +163,7 @@ volume's Thursday.
 
 ---
 
-## unratified pre-history (previous draft · not vol 7 canon)
+## pre-history (RATIFIED 2026-08-14 · deep background)
 
 The earlier revision of this file described a gulf-coast
 cartridge lineage: the bayou studios (1985–2004 — this much *is*
@@ -174,12 +174,11 @@ Boudreaux finishing Bois d'Arc games, the PDP Riffmaster toy,
 ESTUARY ONE as the scene's landscape tool, and delivery of the
 scene's releases to the Pizza Pirate drawer.
 
-None of that is in the vol 7 prose, and its dating collides
-with the real slow-stick facts above. It is retained (in git
-history and in this summary) only as **possible deep
-pre-history** — a 2010s–20s cottage precursor whose name the
-2030s+ experience medium could have inherited — pending the
-author's ratification or veto. The 2026 COMMUNITY PLANNED
+None of that is in the vol 7 prose; it is canon as **deep
+pre-history** (ratified with the master timeline): the 2010s–20s
+cottage cartridge scene is the form-factor precursor whose name
+the Oneironautics experience medium of the 2030s inherited
+(master timeline, Knot 9). The 2026 COMMUNITY PLANNED
 threads that reference mail-order potted sticks and a
 plans-built reader (CP_007, TW_009, SN_006, DA_006) are written
 without the word "slowstick" and stand or fall with that

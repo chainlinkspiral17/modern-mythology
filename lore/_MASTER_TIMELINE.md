@@ -1,5 +1,12 @@
 # MODERN MYTHOLOGY · MASTER TIMELINE
-## the reconciled spine · all volumes · working draft 2026-08-14
+## the reconciled spine · all volumes · RATIFIED 2026-08-14
+
+> Author approved the recommended resolutions 2026-08-14
+> ("sounds good"). Knot 1 (shifted resolution), Knot 3 (porous
+> reading + poster fix), Knot 5 (Oct 8, 2050), and Knot 9 (bayou
+> pre-history) are executed — the Knot 1/3/5 scene edits are in
+> the same commit as this ratification. Knots 6, 7, 8, 10 remain
+> RESERVED.
 
 The single chronology the deck's volumes, games, and lore hang
 on. Built from: the vol 7 scene JSONs (highest authority for

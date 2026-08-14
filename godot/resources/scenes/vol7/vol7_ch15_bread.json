@@ -72,7 +72,7 @@
     },
     {
       "char": "hans",
-      "text": "I have been holding a thing since 1989. I am going to put it down at this table. I am going to put it down because today is the day for it, and the right people are here. Greta knows what I am going to say. She has known for forty years. She has not \u2014 by her own reading of how I should put it down \u2014 said it for me. I am going to say it.",
+      "text": "I have been holding a thing since 2021. I am going to put it down at this table. I am going to put it down because today is the day for it, and the right people are here. Greta knows what I am going to say. She has known for forty years. She has not \u2014 by her own reading of how I should put it down \u2014 said it for me. I am going to say it.",
       "expr": "serious",
       "t": "say"
     },
@@ -142,7 +142,7 @@
     },
     {
       "char": "hans",
-      "text": "I called Werner the third week of November. I asked him: brother. The Aria poem. What is the poem. Werner said: Hans. It is what it is. I have been writing about her since the early seventies. I have been writing because I have been seeing her. Three times. The first in '73, in the print shop at three in the morning. The second in '78, at the house at two in the afternoon. The third in '81, at the cemetery where our mother is buried. She has been visiting me. She has not said anything any of the times. She stands at a distance. She looks at me. The poem is what I have been making of it. The work I have to do for her. I am printing it.",
+      "text": "I called Werner the third week of November. I asked him: brother. The Aria poem. What is the poem. Werner said: Hans. It is what it is. I have been writing about her since the early seventies. I have been writing because I have been seeing her. Three times. The first in '05, in the print shop at three in the morning. The second in '10, at the house at two in the afternoon. The third in '13, at the cemetery where our mother is buried. She has been visiting me. She has not said anything any of the times. She stands at a distance. She looks at me. The poem is what I have been making of it. The work I have to do for her. I am printing it.",
       "expr": "serious",
       "t": "say"
     },
@@ -232,7 +232,7 @@
     },
     {
       "char": "marit",
-      "text": "Werner saw Aria in 1973.",
+      "text": "Werner saw Aria in 2005.",
       "expr": "serious",
       "t": "say"
     },
@@ -256,13 +256,13 @@
     },
     {
       "char": "marit",
-      "text": "Olaf went to Bern in the summer of '73 with the cutter base on the deployment to NATO exercises. He was off the cutter for six weeks in Europe. He came home with three notebooks of writing he had done while he was over there. The notebooks were in the desk in his office. I read them after he died. Per read them too. Per burned them with the rest of the papers in '86.",
+      "text": "Olaf went to Bern in the summer of '05 with the cutter base on the deployment to NATO exercises. He was off the cutter for six weeks in Europe. He came home with three notebooks of writing he had done while he was over there. The notebooks were in the desk in his office. I read them after he died. Per read them too. Per burned them with the rest of the papers in '86.",
       "expr": "serious",
       "t": "say"
     },
     {
       "char": "marit",
-      "text": "There was a passage in them from late July of '73 where Olaf wrote about a visit he had made to a Werner Schenck Junior in Bern. The visit had been arranged by the foundation. The visit was \u2014 Olaf wrote \u2014 a meeting of an Oregon carver who had been working alone for some years and a Swiss printer who had just lost his father and was about to take over the press. The visit was in late July of '73.",
+      "text": "There was a passage in them from late July of '05 where Olaf wrote about a visit he had made to a Werner Schenck Junior in Bern. The visit had been arranged by the foundation. The visit was \u2014 Olaf wrote \u2014 a meeting of an Oregon carver who had been working alone for some years and a Swiss printer who had just lost his father and was about to take over the press. The visit was in late July of '05.",
       "expr": "serious",
       "t": "say"
     },
@@ -352,7 +352,7 @@
     },
     {
       "char": "marina",
-      "text": "Olaf has been carving her face since 1976.",
+      "text": "Olaf has been carving her face since 2008.",
       "expr": "serious",
       "t": "say"
     },
@@ -534,7 +534,7 @@
     },
     {
       "char": "tem",
-      "text": "Hans. We have been \u2014 I have been talking with Cale about Roy on the porch of the cabin Thursday night. We think Roy has the fourth bowl. The bowl Olaf gave Olaus in '76 or '77. The bowl that went missing in '31. We think Roy came to this town in '31 with that bowl.",
+      "text": "Hans. We have been \u2014 I have been talking with Cale about Roy on the porch of the cabin Thursday night. We think Roy has the fourth bowl. The bowl Olaf gave Olaus in '08 or '09. The bowl that went missing in '31. We think Roy came to this town in '31 with that bowl.",
       "expr": "serious",
       "t": "say"
     },

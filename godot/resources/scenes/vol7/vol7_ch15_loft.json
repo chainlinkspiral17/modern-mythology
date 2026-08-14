@@ -31,7 +31,7 @@
       "t": "narrate"
     },
     {
-      "text": "She had been on the cabin's loft mattress for two nights. The mattress was Eddvard's \u2014 he had slept on it from '79 until '42. Tem had told her this at eleven on Thursday when Tem had pulled the wool blankets out of the cedar chest and made the bed for her. The mattress, by the wear and the smell and the slight depression Eddvard's body had made over forty-three years, was a mattress that had held a man Marina had not met and whose granddaughter had made her a bed on it.",
+      "text": "She had been on the cabin's loft mattress for two nights. The mattress was Eddvard's \u2014 he had slept on it from '11 until '42. Tem had told her this at eleven on Thursday when Tem had pulled the wool blankets out of the cedar chest and made the bed for her. The mattress, by the wear and the smell and the slight depression Eddvard's body had made over forty-three years, was a mattress that had held a man Marina had not met and whose granddaughter had made her a bed on it.",
       "t": "narrate"
     },
     {
@@ -208,13 +208,13 @@
     },
     {
       "char": "tem",
-      "text": "I am going to introduce you when we get there. I am going to introduce you as the foundation's coast operative since 2046 and as the granddaughter of the man Olaf gave the second bowl to in 1976. I am going to introduce you in that order because I want Hans to register the foundation piece first.",
+      "text": "I am going to introduce you when we get there. I am going to introduce you as the foundation's coast operative since 2046 and as the granddaughter of the man Olaf gave the second bowl to in 2008. I am going to introduce you in that order because I want Hans to register the foundation piece first.",
       "expr": "serious",
       "t": "say"
     },
     {
       "char": "tem",
-      "text": "The foundation is \u2014 Hans has been at a distance from the foundation for fifty years. Hans has known about the foundation since his brother in Bern told him in 1969 that there was a foundation. Hans has not, in any of the years since, contacted them. He has been waiting for the foundation to come to him on a day the foundation would know was the day to come.",
+      "text": "The foundation is \u2014 Hans has been at a distance from the foundation for fifty years. Hans has known about the foundation since his brother in Bern told him in 2001 that there was a foundation. Hans has not, in any of the years since, contacted them. He has been waiting for the foundation to come to him on a day the foundation would know was the day to come.",
       "expr": "serious",
       "t": "say"
     },
@@ -390,7 +390,7 @@
     },
     {
       "char": "tem",
-      "text": "Hans. This is Marina Lindholm. Foundation operative on this coast since 2046. Granddaughter of Henrik Lindholm in San Francisco, who got the second bowl from Olaf in 1976. She is \u2014 she came up to the cabin Thursday night. She has been with us at the cabin for two days. She is \u2014 Hans, she is the foundation come to see us.",
+      "text": "Hans. This is Marina Lindholm. Foundation operative on this coast since 2046. Granddaughter of Henrik Lindholm in San Francisco, who got the second bowl from Olaf in 2008. She is \u2014 she came up to the cabin Thursday night. She has been with us at the cabin for two days. She is \u2014 Hans, she is the foundation come to see us.",
       "expr": "serious",
       "t": "say"
     },
@@ -418,7 +418,7 @@
     },
     {
       "char": "hans",
-      "text": "Werner \u2014 my brother \u2014 told me in 1969 in a letter that the foundation had a man in San Francisco named Lindholm. He spelled the name three times in the letter to make sure I had it. He had written the name down for me so I would know who to contact if I ever decided to come in.",
+      "text": "Werner \u2014 my brother \u2014 told me in 2001 in a letter that the foundation had a man in San Francisco named Lindholm. He spelled the name three times in the letter to make sure I had it. He had written the name down for me so I would know who to contact if I ever decided to come in.",
       "expr": "serious",
       "t": "say"
     },

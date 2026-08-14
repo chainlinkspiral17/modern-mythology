@@ -327,7 +327,7 @@
     },
     {
       "char": "finn",
-      "text": "Olaf has been dead since '78.",
+      "text": "Olaf has been dead since '10.",
       "t": "say"
     },
     {
@@ -342,12 +342,12 @@
     },
     {
       "char": "old_man",
-      "text": "Olaf carved this in 1976. He meant it for the foundation. A symbol piece, by his intention. Not a bowl. A piece that was a symbol of the work. He meant it for the foundation's office in Eugene, in the case where they keep the artifacts.",
+      "text": "Olaf carved this in 2008. He meant it for the foundation. A symbol piece, by his intention. Not a bowl. A piece that was a symbol of the work. He meant it for the foundation's office in Eugene, in the case where they keep the artifacts.",
       "t": "say"
     },
     {
       "char": "old_man",
-      "text": "He gave it to a man on the cutter named Eddvard Lindgren — your friend Tem's grandfather — to take down to the foundation when he had a chance. Eddvard never took it down. He kept it in a drawer of the desk in the cabin from 1976 until he died in 2042.",
+      "text": "He gave it to a man on the cutter named Eddvard Lindgren — your friend Tem's grandfather — to take down to the foundation when he had a chance. Eddvard never took it down. He kept it in a drawer of the desk in the cabin from 2008 until he died in 2042.",
       "t": "say"
     },
     {
@@ -382,7 +382,7 @@
     },
     {
       "char": "old_man",
-      "text": "Werner Junior's poem. The bell-pull at the door of the family's house in Bern. The bell that had been at that door since the house was built. Werner wrote the poem in '89 about the daughter at the door with her hand on the pull. What you are holding is what Olaf carved on the cedar in '76. The substrate's way of making the poem real.",
+      "text": "Werner Junior's poem. The bell-pull at the door of the family's house in Bern. The bell that had been at that door since the house was built. Werner wrote the poem in '89 about the daughter at the door with her hand on the pull. What you are holding is what Olaf carved on the cedar in '08. The substrate's way of making the poem real.",
       "t": "say"
     },
     {
@@ -449,7 +449,7 @@
     },
     {
       "char": "old_man",
-      "text": "They will be in the position Olaf carved in '74 and '76 and '77, and what the substrate has been adjusting in 2052 — the position of a daughter at the door with her hand on the bell. The bowls will be at that position. You will have a count of seconds. Use the count to be where you need to be. Use it to get there if you are not. The bowls will give you the count.",
+      "text": "They will be in the position Olaf carved in '06 and '08 and '09, and what the substrate has been adjusting in 2052 — the position of a daughter at the door with her hand on the bell. The bowls will be at that position. You will have a count of seconds. Use the count to be where you need to be. Use it to get there if you are not. The bowls will give you the count.",
       "t": "say"
     },
     {
@@ -459,7 +459,7 @@
     },
     {
       "char": "old_man",
-      "text": "The cabin has been waiting for her since Eddvard carved his bowl at the cabin's first bench in '79. The cabin is where she is going to ring under, and walk into.",
+      "text": "The cabin has been waiting for her since Eddvard carved his bowl at the cabin's first bench in '11. The cabin is where she is going to ring under, and walk into.",
       "t": "say"
     },
     {

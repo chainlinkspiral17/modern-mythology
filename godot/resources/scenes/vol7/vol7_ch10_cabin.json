@@ -195,7 +195,7 @@
     },
     {
       "char": "per",
-      "text": "I have known Tem since she was twelve. Her grandfather was Olaf's friend. Olaf — my father — and Eddvard built the cabin together in '79. Tem's grandfather was my father's closest friend for fourteen years before my father died. I have known Tem since she was a child. I have not, in maybe ten years, been to the cabin. I last went in 2042 for her grandfather's funeral. I have not been since. I have been — I have been keeping a distance for some specific reasons of my own that I will, if you ask me, tell you about, but which I am going to ask you not to ask me about until we are at the cabin with Tem in the room. The reasons are not — the reasons are not bad reasons. The reasons are the reasons a man like me has for not being at a cabin Olaf built that I have not been to in ten years.",
+      "text": "I have known Tem since she was twelve. Her grandfather was Olaf's friend. Olaf — my father — and Eddvard built the cabin together in '11. Tem's grandfather was my father's closest friend for fourteen years before my father died. I have known Tem since she was a child. I have not, in maybe ten years, been to the cabin. I last went in 2042 for her grandfather's funeral. I have not been since. I have been — I have been keeping a distance for some specific reasons of my own that I will, if you ask me, tell you about, but which I am going to ask you not to ask me about until we are at the cabin with Tem in the room. The reasons are not — the reasons are not bad reasons. The reasons are the reasons a man like me has for not being at a cabin Olaf built that I have not been to in ten years.",
       "expr": "neutral",
       "t": "say"
     },
@@ -207,7 +207,7 @@
     },
     {
       "char": "per",
-      "text": "Olaf made me a bowl in '74. He gave it to my mother for her birthday. Olaf carved bowls his whole life. Olaf carved the bowl in our kitchen between '71 and '74 — he would carve a little of it every Sunday afternoon for three years. He gave the bowl to my mother on her thirty-fourth birthday. My mother has had the bowl on the kitchen shelf since '74. The bowl was warm in the second week of July of this year. My mother called me in Eugene the next Sunday.",
+      "text": "Olaf made me a bowl in '06. He gave it to my mother for her birthday. Olaf carved bowls his whole life. Olaf carved the bowl in our kitchen between '03 and '06 — he would carve a little of it every Sunday afternoon for three years. He gave the bowl to my mother on her thirty-fourth birthday. My mother has had the bowl on the kitchen shelf since '06. The bowl was warm in the second week of July of this year. My mother called me in Eugene the next Sunday.",
       "expr": "neutral",
       "t": "say"
     },
@@ -241,7 +241,7 @@
     },
     {
       "char": "kai",
-      "text": "Tem said yesterday in the truck — Tem said her grandfather had a bowl too. She said the bowl had been on the shelf at the cabin since '79. She said the bowl had been warm since the second week of July. The same week your mother's. She said her grandfather had — Tem said her grandfather had been in some kind of network. She has been figuring out the network since Brandon Tillman died. She — she didn't name the network. She just said network.",
+      "text": "Tem said yesterday in the truck — Tem said her grandfather had a bowl too. She said the bowl had been on the shelf at the cabin since '11. She said the bowl had been warm since the second week of July. The same week your mother's. She said her grandfather had — Tem said her grandfather had been in some kind of network. She has been figuring out the network since Brandon Tillman died. She — she didn't name the network. She just said network.",
       "expr": "neutral",
       "t": "say"
     },
@@ -251,7 +251,7 @@
     },
     {
       "char": "per",
-      "text": "My father was — Olaf was, by my own reading of the papers he left when he died, in something. The something was not, by anything he ever told me when I was a kid, a thing he was in. The something was a thing that, after he died, I figured out he had been in. I figured it out at nineteen by reading his papers. I have been carrying it since '78 when he died. I have not, in the fifty-something years since, said the name of it to anybody. I have not, in those years, had reason to think anybody else knew.",
+      "text": "My father was — Olaf was, by my own reading of the papers he left when he died, in something. The something was not, by anything he ever told me when I was a kid, a thing he was in. The something was a thing that, after he died, I figured out he had been in. I figured it out at nineteen by reading his papers. I have been carrying it since 2010, when he died. I have not, in the fifty-something years since, said the name of it to anybody. I have not, in those years, had reason to think anybody else knew.",
       "expr": "serious",
       "t": "say"
     },
