@@ -79,6 +79,32 @@
           "body": "Three weeks early. Same in Santa Fe."
         }
       ]
+    },
+    {
+      "id": "TA_005",
+      "subject": "uploaded · the field (ASCII, after the '94 poster) · first post here",
+      "available_from_week": 13,
+      "sysop_tagged": false,
+      "op": {
+        "handle": "D-MAGNUS",
+        "canonical_character_id": null,
+        "date": "Sun Aug 25, 1996  11:18 PM",
+        "body": "First post on this wall. Two summers ago I made a poster in NEOPaint for THE FIELD, the Bois d'Arc game. Somebody from this board wrote me and asked if it could hang here, but the wall is ASCII and the poster is 640x480, so this is a translation, not the poster.\n\nTall grass is hard in text mode. The shape at the back is easier. You draw it the way you draw it. It draws itself the way it draws itself. Either way the same shape comes.\n\n  ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;\n  ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;\n  ;;;;;;;;;;;;;   ;;;;;;;;;;;;;\n  ;;;;;;;;;;;;     ;;;;;;;;;;;;\n  ;;;;;;;;;;;;  .  ;;;;;;;;;;;;\n  ;;;;;;;;;;;;     ;;;;;;;;;;;;\n  ;;;;;;;;;;;;;   ;;;;;;;;;;;;;\n  ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;\n     the grass is not moving.\n     the gap is.\n\n— d.m."
+      },
+      "replies": [
+        {
+          "handle": "PALOMINO",
+          "canonical_character_id": null,
+          "date": "Mon Aug 26, 1996  06:18 AM",
+          "body": "The shape is the shape. Welcome to the wall. Post at second light next time; the wall reads better then.\n\n— P."
+        },
+        {
+          "handle": "Frasier",
+          "canonical_character_id": "frasier_temple",
+          "date": "Mon Aug 26, 1996  08:52 AM",
+          "body": "Printed it for the workshop wall. The gap is rendered correctly. — F."
+        }
+      ]
     }
   ]
 }

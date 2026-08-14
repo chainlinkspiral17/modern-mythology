@@ -114,6 +114,46 @@ rules** once they've held across multiple sessions.
 
 ## Recent lessons
 
+### 2026-08-14 · game-fiction pass · slowstick canon + digital-subculture threads
+
+The session that gave the slowsticks their canon
+(`lore/milk_and_honey/slowsticks.md`) and threaded the fictional-
+games substrate into four thin CP boards (OH_005, CB_004, BL_006,
+TA_005 on the art wall).
+
+- **Reconcile new canon against established numbers before
+  writing a word.** The slowstick doc works because the SCUMM
+  machine's drawer arithmetic already existed in two places
+  (scumm_machine.md: 42 original sticks + ~50 added since 2007;
+  digital_subculture.md: ~40 canonical + ~30 studio titles + ~20
+  unknown). Designing the slowsticks as *the source of the ~30
+  studio sticks* made the new doc land exactly on both existing
+  inventories instead of adding a third count to keep in sync.
+  Rule: grep the numbers first; author into them.
+- **Game-fiction threads read best when the sysop's trade grounds
+  the game.** WIRE_MOTHER reviewing SUBSTATION as an electrician
+  (the lockout sequence is correct; that is not public
+  information) and chainlinkspiral reviewing NIGHT WALK as a
+  man who walks fence for a living carry more world-weight than
+  any enthusiast post could. Pick the reviewer whose day job the
+  game is about; the register does the rest.
+- **The 1996 setting is a gift for the digital-subculture
+  canon.** Everything in the bayou-scene timeline through 1996
+  (NIGHT WALK ships 1996, THE FIELD poster is '94, SUBSTATION
+  '93, WARDEN AVENUE '89) is fair game for CP threads;
+  everything after (SARA-PIX's PERIMETER .LBM is 1999, the
+  slowsticks are 2012+) is off-limits. Check the release year
+  against the board date before referencing.
+- **Real-calendar dating discipline.** Thread dates were checked
+  against the actual 1996 calendar (Jul 7 / Aug 18 / Aug 25 are
+  Sundays; the existing files' w10=Aug 4, w11=Aug 11 anchors
+  confirm Sunday(w) ≈ Jun 2 + 7·(w−1)). Cheap to verify, ugly
+  to get wrong on a board whose sysops post tide tables.
+- **The Kiva stays sparse on purpose.** Its notes say two posts
+  a season is the cadence — a thin board is not automatically an
+  under-populated board. Read the board notes for the intended
+  cadence before applying the "thinnest boards first" rule.
+
 ### 2026-07-02 · BBS + locale polish arc · 33 new threads + 14 Wave-2 locale detail-passes
 
 The long BBS-and-locales pass. Went from 118 threads → 151 across

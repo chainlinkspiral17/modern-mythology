@@ -159,6 +159,21 @@ states the codex respects without explaining. *Many of Kai's best
 friends live in there.* The drawer under the cabinet holds ~90
 sticks, the working library, free for any player.
 
+### The Slowsticks · the slow game ecosystem
+
+`slowsticks.md`. The small plastic cartridges — same form factor
+as the SCUMM sticks, copied dimension for dimension from the 2007
+box — made by the third form of the gulf's regional game scene
+(the bayou studios → the padded envelopes → the sticks, 2012–).
+Carl Boudreaux finishing his father's Bois d'Arc games; Bayou
+Receivers pressing and mailing; the PDP Riffmaster kids' synth
+toy; ESTUARY ONE, the landscape tool that designs the worlds the
+characters live inside. The scene's releases are hand-carried to
+Pizza Pirate and added to the drawer, which the scene privately
+calls **the national library**. Since June 2025, two sticks have
+arrived that no maker claims. The substrate has started
+publishing.
+
 ### The Alsea Bay Cannery · the basement servers
 
 `cannery.md`. Long single-story wooden building at the river-

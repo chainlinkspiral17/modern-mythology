@@ -13,6 +13,7 @@ conditions the meta-game gates on.
 | **Static Truths** | Lena Vargas's zine series, vol7                | `static_truths.md`    |
 | **SCUMM Machine** | Pizza Pirate's custom arcade cabinet           | `scumm_machine.md`    |
 | **The Cannery**   | Abandoned Alsea Bay Cannery, basement servers  | `cannery.md`          |
+| **The Slowsticks**| The slow game ecosystem · cartridges, makers, the drawer | `slowsticks.md` |
 
 ## the substrate
 

@@ -1058,4 +1058,10 @@ The substrate is, in 2025, content.
 
 The substrate is, in 2025, *waiting.*
 
+The scene's third form — the slow games did not stop; they
+changed containers again — is documented in the vol7 files:
+`milk_and_honey/slowsticks.md`. The envelopes became sticks. The
+sticks travel to a drawer in Oregon. The practice continues at
+the speed the practice has always preferred.
+
 — *the editors, late summer 2025.*
