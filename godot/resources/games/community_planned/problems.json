@@ -187,7 +187,7 @@
           "id": "the_memorial_fund",
           "title": "the boat's memorial fund",
           "fires_after_days": 2,
-          "body": "The memorial fund's check ledger is on the kitchen table at 4:42 PM. Mom has been writing checks from the fund since 1994 to the families of the boat's crew. The balance is $11,840.62. The annual contribution this October would bring it under $10,000 for the first time since the fund opened.\n\nT. wants to honor October. Mom wants the fund to stay above $10K through Aria's eighteenth birthday in 2000. {agent} is at the table between them.",
+          "body": "The memorial fund's check ledger is on the kitchen table at 4:42 PM. Mom has been writing checks from the fund since 2020 to the families of the boat's crew. The balance is $11,840.62. The annual contribution this October would bring it under $10,000 for the first time since the fund opened.\n\nT. wants to honor October. Mom wants the fund to stay above $10K through Aria's eighteenth birthday in 2030. {agent} is at the table between them.",
           "choices": [
             {
               "label": "honor October at full · the families will read the envelope.",
@@ -642,7 +642,7 @@
           "id": "the_survey",
           "title": "walking the gate · counting the lenses",
           "fires_after_days": 1,
-          "body": "{agent} walked the south gate at 7:48 AM. Six cameras visible · three are recent (matte-black, new bracket mounts) and three were already here (cream-colored, sun-faded). The plate reader is a 1996 Genetec model · the same one Mobile installed last fall.\n\nThe survey takes the form the survey takes.",
+          "body": "{agent} walked the south gate at 7:48 AM. Six cameras visible · three are recent (matte-black, new bracket mounts) and three were already here (cream-colored, sun-faded). The plate reader is a 2025 Genetec model · the same one Mobile installed last fall.\n\nThe survey takes the form the survey takes.",
           "choices": [
             {
               "label": "count + map · build the kit-list.",

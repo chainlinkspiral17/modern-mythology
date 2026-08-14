@@ -66,16 +66,28 @@ This playbook is the *how we work on it* doc.
 
 ### Content discipline
 
-0. **COMMUNITY PLANNED takes place in 2026. Full stop.** This is
-   a standing user correction, made repeatedly across sessions —
-   do not re-derive a 1990s setting from older-dated posts in the
-   JSON, the spec's "vagrant of 1996" line, or period references
-   in existing threads; those are residue awaiting cleanup, not
-   evidence. All NEW dates are 2026 dates (verify day-of-week
-   against the real 2026 calendar). The bayou-scene games and
-   BBS-era artifacts (1985–2004, see
+0. **COMMUNITY PLANNED takes place in 2026. Full stop.** Per the
+   spec ("a grand-strategy gallery game inset into vol 6's
+   summer"; "the canon roster, aged forward into vol 6's
+   timeline") and standing user correction, made repeatedly
+   across sessions. The 2026-08-14 sweep converted the game's
+   entire current-summer grid (337 date stamps, the engine's
+   Memorial Day / Labor Day dialogs) from the erroneous 1996 to
+   2026 — so any pre-2026 date stamp you find now is
+   *deliberate archive texture* (the attic's memorial threads,
+   the MAINSTREET '96 welcome sticky, the barn's 1981 binding
+   sticky) and must be left alone. The calendar: Day 1 =
+   Memorial Day = **Monday, May 25, 2026**; the Labor Day
+   cookout finale = **Sunday, September 6, 2026**; a 1996
+   summer weekday lands two calendar days earlier in 2026
+   (Sun Jun 4 '96 → Tue Jun 2 '26, etc. — verify against the
+   real 2026 calendar). The bayou-scene games and BBS-era
+   culture (1985–2004, see
    `planned_community/digital_subculture.md`) appear as
-   decades-old retro objects, never as new releases.
+   decades-old retro objects — anniversary threads, flea-market
+   finds, period iron kept alive — never as new releases. The
+   circle running a dial-up BBS in 2026 is the point, not an
+   error.
 1. **Every thread / DM / reveal carries `available_from_week`.**
    Authoring is staggered. The BBS engine filters on `<= _current_week`.
 2. **Canon humans use canonical_character_id everywhere.** Posts,
@@ -148,16 +160,41 @@ TA_005 on the art wall).
   any enthusiast post could. Pick the reviewer whose day job the
   game is about; the register does the rest.
 - **The setting is 2026 — corrected mid-session by the user,
-  now Core rule #0.** The first draft of these four threads was
-  dated 1996, inferred from older-dated posts already in the
-  JSON. The user has made this correction repeatedly across
-  sessions; the lesson graduated straight to Core. The rework
-  was a net gain: in 2026 the bayou-scene games are thirty-year-
-  old objects (chainlinkspiral buys NIGHT WALK plus a working
-  Game Boy at a flea market; D-MAGNUS translates his own 1994
-  poster from memory, the floppy long unreadable), and retro
-  distance is a register the deck is better at than
-  contemporaneity anyway.
+  now Core rule #0, then enforced by a full sweep.** The first
+  draft of these four threads was dated 1996, inferred from
+  older-dated posts already in the JSON — and the audit the user
+  ordered ("check the actual in game text and code") showed why:
+  the drift was in the shipped game itself. 375 of 381 date
+  stamps said 1996; the engine hardcoded "Memorial Day · 1996"
+  and "Labor Day · September 1, 1996"; whole back-porch threads
+  discussed Quake and the N64 as new releases. The spec said
+  vol 6's summer all along, and one reply (hasslein calling The
+  Frighteners "Peter Jackson before the Rings") was already
+  written from the retrospective frame. Self-reinforcing wrong
+  dates recruit every future session into the error — audit by
+  tallying date fields, not by sampling threads.
+- **The 2026 sweep, for the record.** 337 current-summer stamps
+  shifted 1996 → 2026 (minus two days keeps the weekday for
+  Mar–Dec dates; Memorial Day Mon May 27 '96 lands exactly on
+  Memorial Day Mon May 25 '26). Deliberately-archival posts
+  kept their dates: the attic's memorial threads (1990–2004),
+  the MAINSTREET Jan '96 welcome sticky, the barn's 1981
+  binding sticky — the archive is *supposed* to be old; only
+  the present moved. Period-culture threads (BP_001 Quake,
+  BP_002 Fargo, BP_007 Mario 64, BP_008 movies-of-'96)
+  converted to 30th-anniversary retro framing in the same
+  voices; arithmetic casualties fixed (Aria's eighteenth
+  birthday 2000 → 2030, memorial-fund checks since 1994 →
+  2020, the Genetec plate reader, the '94 → '24 wooden box).
+  A 2026 circle keeping period iron alive on a dial-up BBS
+  needed no invention — it was already the spec's
+  characterization of the aged-forward roster.
+- **Retro distance beats contemporaneity anyway.** In 2026 the
+  bayou-scene games are thirty-year-old objects (chainlinkspiral
+  buys NIGHT WALK plus a working Game Boy at a flea market;
+  D-MAGNUS translates his own 1994 poster from memory, the
+  floppy long unreadable), and that register — patient,
+  memorial, slightly haunted — is the one the deck is best at.
 - **Real-calendar dating discipline.** Check new thread dates
   against the actual 2026 calendar (Jul 5 / Aug 16 / Aug 23 are
   Sundays). Cheap to verify, ugly to get wrong on a board whose
