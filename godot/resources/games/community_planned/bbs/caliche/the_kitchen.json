@@ -127,6 +127,26 @@
           "body": "WM · I am mailing Mrs Delacroix a thank-you card. Not from me. From 'a neighbor.' She'll figure out it was one of us; she won't figure out which one. That's the whole thing about Mrs Delacroix — she doesn't need to know exactly who. She just needs to know somebody noticed. — c.spiral."
         }
       ]
+    },
+    {
+      "id": "CK_007",
+      "subject": "the hymnal from the counter · copied for the nursery",
+      "available_from_week": 10,
+      "sysop_tagged": true,
+      "op": {
+        "handle": "WIRE_MOTHER",
+        "canonical_character_id": null,
+        "date": "Mon Jul 27, 2026  08:42 PM",
+        "body": "SNACKS mailed up the booklet that came with the toy on her counter. RIFFMASTER HYMNAL. Thirty-one songs written out for eight notes and a shift key, hand-stapled, from the same padded-envelope label the circle has been ordering from all summer apparently.\n\nMrs. Hall copied it at the church office for the nursery — the little ones can carry eight notes and it beats the punch-table hymn arguments. The copier is the copier. The staples are mine.\n\nOne instruction, kitchen rule, non-negotiable: track 31 is not for the nursery. The booklet itself says to play it on the wrong instrument and the booklet is right. Track 31 is for after they're asleep.\n\n— W.M."
+      },
+      "replies": [
+        {
+          "handle": "hasslein",
+          "canonical_character_id": null,
+          "date": "Tue Jul 28, 2026  12:14 AM",
+          "body": "For the record, track 31 is a Locust Seventeen song older than everybody in that nursery combined, and the flute thing is a thirty-year argument the booklet just settled by fiat. I have opinions. I am saving them for the porch. — h."
+        }
+      ]
     }
   ]
 }

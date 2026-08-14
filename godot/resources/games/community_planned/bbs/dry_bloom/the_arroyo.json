@@ -100,6 +100,19 @@
           "body": "Bell-buoy will chime once at 7:08. The cook at the Mast will pause the kitchen for the eleven minutes. This is the third year we have done it. — S."
         }
       ]
+    },
+    {
+      "id": "DA_006",
+      "subject": "a game arrived from the wet country",
+      "available_from_week": 12,
+      "sysop_tagged": true,
+      "op": {
+        "handle": "PALOMINO",
+        "canonical_character_id": null,
+        "date": "Sun Aug 9, 2026  06:18 AM",
+        "body": "A game arrived in the mail from the wet country. Ninety minutes of a tide going out, in real time, on a small stick. You may pick things up or you may not. The manual is a tide table.\n\nThe desert does not have a tide. The desert has the arroyo, which is a tide that runs eleven minutes a year. I played it at second light with the studio door open.\n\nThe instruction is the same instruction in either country: watch the water go. Take only what you can name.\n\nThe board will be slow this week.\n\n— P."
+      },
+      "replies": []
     }
   ]
 }

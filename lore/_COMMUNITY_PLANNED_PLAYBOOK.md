@@ -234,6 +234,17 @@ TA_005 on the art wall).
   BT_006). Lesson: content sessions should run the id-uniqueness
   check alongside the JSON validity gate — duplicates and prefix
   collisions are invisible until an unlock misfires.
+- **Wave three closed the thin-board pass and paid off a planted
+  thread.** CK_007 (the hymnal copied for the nursery — "track 31
+  is not for the nursery"), DA_006 (LOW TIDE TABLE on the desert
+  board: "watch the water go; take only what you can name"),
+  OOB_006 (the watching-the-door stranger from OOB_002 wins the
+  claw-machine lobster in one drop and doesn't watch the door on
+  his way out). Paying off an existing minor-mystery thread beats
+  starting a new one — the board reads as a place where things
+  continue. The scumm repo's Lore Hub (scumm11.html) was synced
+  the same session: slowsticks + network-history concepts,
+  documents, and timeline events, JS syntax-checked via node.
 - **Real-calendar dating discipline.** Check new thread dates
   against the actual 2026 calendar (Jul 5 / Aug 16 / Aug 23 are
   Sundays). Cheap to verify, ugly to get wrong on a board whose
