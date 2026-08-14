@@ -66,6 +66,16 @@ This playbook is the *how we work on it* doc.
 
 ### Content discipline
 
+0. **COMMUNITY PLANNED takes place in 2026. Full stop.** This is
+   a standing user correction, made repeatedly across sessions —
+   do not re-derive a 1990s setting from older-dated posts in the
+   JSON, the spec's "vagrant of 1996" line, or period references
+   in existing threads; those are residue awaiting cleanup, not
+   evidence. All NEW dates are 2026 dates (verify day-of-week
+   against the real 2026 calendar). The bayou-scene games and
+   BBS-era artifacts (1985–2004, see
+   `planned_community/digital_subculture.md`) appear as
+   decades-old retro objects, never as new releases.
 1. **Every thread / DM / reveal carries `available_from_week`.**
    Authoring is staggered. The BBS engine filters on `<= _current_week`.
 2. **Canon humans use canonical_character_id everywhere.** Posts,
@@ -137,18 +147,21 @@ TA_005 on the art wall).
   man who walks fence for a living carry more world-weight than
   any enthusiast post could. Pick the reviewer whose day job the
   game is about; the register does the rest.
-- **The 1996 setting is a gift for the digital-subculture
-  canon.** Everything in the bayou-scene timeline through 1996
-  (NIGHT WALK ships 1996, THE FIELD poster is '94, SUBSTATION
-  '93, WARDEN AVENUE '89) is fair game for CP threads;
-  everything after (SARA-PIX's PERIMETER .LBM is 1999, the
-  slowsticks are 2012+) is off-limits. Check the release year
-  against the board date before referencing.
-- **Real-calendar dating discipline.** Thread dates were checked
-  against the actual 1996 calendar (Jul 7 / Aug 18 / Aug 25 are
-  Sundays; the existing files' w10=Aug 4, w11=Aug 11 anchors
-  confirm Sunday(w) ≈ Jun 2 + 7·(w−1)). Cheap to verify, ugly
-  to get wrong on a board whose sysops post tide tables.
+- **The setting is 2026 — corrected mid-session by the user,
+  now Core rule #0.** The first draft of these four threads was
+  dated 1996, inferred from older-dated posts already in the
+  JSON. The user has made this correction repeatedly across
+  sessions; the lesson graduated straight to Core. The rework
+  was a net gain: in 2026 the bayou-scene games are thirty-year-
+  old objects (chainlinkspiral buys NIGHT WALK plus a working
+  Game Boy at a flea market; D-MAGNUS translates his own 1994
+  poster from memory, the floppy long unreadable), and retro
+  distance is a register the deck is better at than
+  contemporaneity anyway.
+- **Real-calendar dating discipline.** Check new thread dates
+  against the actual 2026 calendar (Jul 5 / Aug 16 / Aug 23 are
+  Sundays). Cheap to verify, ugly to get wrong on a board whose
+  sysops post tide tables.
 - **The Kiva stays sparse on purpose.** Its notes say two posts
   a season is the cadence — a thin board is not automatically an
   under-populated board. Read the board notes for the intended
