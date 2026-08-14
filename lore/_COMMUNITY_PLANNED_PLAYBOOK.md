@@ -192,6 +192,25 @@ TA_005 on the art wall).
   A 2026 circle keeping period iron alive on a dial-up BBS
   needed no invention — it was already the spec's
   characterization of the aged-forward roster.
+- **The enemy-arc convergence was assembled, not invented.** Every
+  element the hidden boards had seeded (the ratchet moved to Aug
+  4, the unlogged seventh camera, Filly's closed docket, the
+  Mast watch) now aims at the W14 storm — the week the strategic
+  game already made its hard branch. RH_006/TG_006/TG_007 carry
+  the turn; MS_015/MS_016 echo it on the public layer in
+  double-voiced civic prose (the enemy reads mainstreet — write
+  both readings on purpose); TB_007 finally uses Table 14 for
+  the glossary's built purpose; TB_BAS_015/016 ready the demon
+  roster (the cicada goes on record disagreeing, which the spec
+  promised). Rule of thumb that held all session: before
+  inventing a new arc beat, inventory what the boards already
+  planted — convergence written from existing seeds reads as
+  inevitability; invented beats read as plot.
+- **One rare voice beats five regular ones.** Sammy's single post
+  (TB_008, the box scores at the two stones) does more for the
+  bar than any number of thelma threads because the board spent
+  eight threads establishing his silence first. Spend silence
+  like a currency.
 - **Retro distance beats contemporaneity anyway.** In 2026 the
   bayou-scene games are thirty-year-old objects (chainlinkspiral
   buys NIGHT WALK plus a working Game Boy at a flea market;
