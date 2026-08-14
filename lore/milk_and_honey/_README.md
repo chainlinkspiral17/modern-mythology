@@ -14,6 +14,7 @@ conditions the meta-game gates on.
 | **SCUMM Machine** | Pizza Pirate's custom arcade cabinet           | `scumm_machine.md`    |
 | **The Cannery**   | Abandoned Alsea Bay Cannery, basement servers  | `cannery.md`          |
 | **The Slowsticks**| The slow game ecosystem · cartridges, makers, the drawer | `slowsticks.md` |
+| **Board Lords**   | Kai's skate shop · the shoebox · WARDEN AVENUE | `board_lords.md` |
 
 ## the substrate
 
@@ -63,9 +64,10 @@ under consideration:
 - **The Salty Tome** — independent bookstore, Lena's apartment is
   above it, Petra runs it, sells everything from tide charts to
   local zines, holds the John Frank book Wren receives
-- **Board Lords** — Kai's skate shop, the building's century-long
-  retail history (hardware store 1962–2011, general store 2014–
-  2031, nothing 2031–2034, skate shop 2034–present)
+- ~~**Board Lords**~~ — drafted → `board_lords.md`. (Building
+  history reconciled to the volume's 2025 present: Wagner's
+  Hardware 1962–2011 · nothing 2011–2014 · the Pedersens'
+  general store 2014–2021 · Board Lords 2021–present.)
 - **Club # / Sharp** — run-down coastal bar with the hidden back
   room containing Frasier-tech
 - **Netarts Bay Lumber Mill** — abandoned, Kai's secondary skate
