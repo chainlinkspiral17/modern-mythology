@@ -4034,9 +4034,19 @@ func _fire_w14_storm_watch() -> void:
 		_log("[color=#ff9090][b]STORM WATCH · W14.[/b]  Bertha turned north of the keys. The cathedral basement is the inland relay this weekend.  STEEPLE on the bell-buoy.  WIRE_MOTHER on the panhandle line.  JF is on the boiler.  T. is at the storefront alone.  The line stays up if you keep it up.[/color]")
 		if _region_state.has("graustark"):
 			_seed_problem("graustark", "cathedral_basement_relay")
+		if _region_state.has("small_wood"):
+			_seed_problem("small_wood", "the_august_event")
+			_log("[color=#ff9090][b]AND:[/b]  Filly's truck crossed the county line at dusk.  The relay needs hands. Small Wood needs eyes. The night is long enough for neither.[/color]")
 	else:
 		_flags["w14_storm_soft_branch"] = true
 		_log("[color=#a8c0a8][b]STORM WATCH · W14.[/b]  The system south of the keys turned east.  The bell-buoy in Mobile held its winter rope.  The keel-keeper called it right.  The inland circle gets a quiet weekend.[/color]")
+		# The enemy's schedule does not care which way the storm went.
+		# The August event proceeds on its date either way — a circle
+		# that skipped the backchannel has more free hands tonight and
+		# less idea what to do with them.
+		if _region_state.has("small_wood"):
+			_seed_problem("small_wood", "the_august_event")
+			_log("[color=#c89a42][b]AND:[/b]  A covered truck crossed the county line into Small Wood at dusk, ahead of weather that never came.  Nobody scheduled anything for tonight.  Somebody scheduled something for tonight.[/color]")
 
 
 # Daily vignettes: small flavor beats from daily_vignettes.json that

@@ -6,14 +6,23 @@
       "id": "memorial_grief",
       "title": "Memorial Grief",
       "problem_type": "memorial_grief",
-      "regions_eligible": ["graustark"],
+      "regions_eligible": [
+        "graustark"
+      ],
       "base_severity": 2,
       "tick_per_day": 0.5,
       "effort_to_resolve": 3,
       "flavor": "The Sinkhole anniversary is in mid-July; the riverboat anniversary is in late August. The grief in Graustark is a thing the nodes carry. Untreated, it bleeds into family_succession problems.",
       "if_unresolved_at_severity_6": [
-        {"kind": "spawn_problem_in_region", "region": "graustark", "template": "family_succession"},
-        {"kind": "log", "text": "Grief metastasised into the storefront's succession. The son's posts grow shorter."}
+        {
+          "kind": "spawn_problem_in_region",
+          "region": "graustark",
+          "template": "family_succession"
+        },
+        {
+          "kind": "log",
+          "text": "Grief metastasised into the storefront's succession. The son's posts grow shorter."
+        }
       ],
       "dispatch_shape_hint": "Someone the family already trusts — or someone who's earned the right to be there without asking. A demon sent to a grief problem will resolve it faster but the grief will be heavier on them when they return.\n\nThis is a multi-stage mission — your agent will check in across three afternoons. Each check-in is a choice.",
       "stages": [
@@ -40,8 +49,17 @@
               "summary": "+0.8 effort · brings the family in · −1 cover (billed line)",
               "effort_applied": 0.8,
               "effects": [
-                {"kind": "spend_cover", "amount": 1, "region": "graustark", "reason": "the car phone call to Mom went on a billed line"},
-                {"kind": "set_flag", "flag": "mom_at_cemetery_w1", "value": true}
+                {
+                  "kind": "spend_cover",
+                  "amount": 1,
+                  "region": "graustark",
+                  "reason": "the car phone call to Mom went on a billed line"
+                },
+                {
+                  "kind": "set_flag",
+                  "flag": "mom_at_cemetery_w1",
+                  "value": true
+                }
               ]
             },
             {
@@ -50,8 +68,16 @@
               "requires_bbs_thread": "BP_016",
               "effort_applied": 1.4,
               "effects": [
-                {"kind": "set_canon_var", "key": "grief_visit_by_protocol", "value": true},
-                {"kind": "set_flag", "flag": "sammy_visit_protocolled", "value": true}
+                {
+                  "kind": "set_canon_var",
+                  "key": "grief_visit_by_protocol",
+                  "value": true
+                },
+                {
+                  "kind": "set_flag",
+                  "flag": "sammy_visit_protocolled",
+                  "value": true
+                }
               ]
             }
           ]
@@ -67,7 +93,11 @@
               "summary": "+1.5 effort · stays late · canon var locks (third Sunday held)",
               "effort_applied": 1.5,
               "effects": [
-                {"kind": "set_canon_var", "key": "sammy_third_sunday_held", "value": "yes"}
+                {
+                  "kind": "set_canon_var",
+                  "key": "sammy_third_sunday_held",
+                  "value": "yes"
+                }
               ]
             },
             {
@@ -75,7 +105,11 @@
               "summary": "+1.2 effort · the boat story · Sammy carries it home heavier (W3 burn)",
               "effort_applied": 1.2,
               "effects": [
-                {"kind": "queue_burn", "weeks_from_now": 2, "reason": "the boat story landed harder than the agent expected"}
+                {
+                  "kind": "queue_burn",
+                  "weeks_from_now": 2,
+                  "reason": "the boat story landed harder than the agent expected"
+                }
               ]
             },
             {
@@ -83,7 +117,11 @@
               "summary": "+0.8 effort · practical · opens a thread about the marker's care",
               "effort_applied": 0.8,
               "effects": [
-                {"kind": "set_flag", "flag": "marker_chip_noted", "value": true}
+                {
+                  "kind": "set_flag",
+                  "flag": "marker_chip_noted",
+                  "value": true
+                }
               ]
             }
           ]
@@ -99,7 +137,11 @@
               "summary": "+0.8 effort · directly to Mom · the family closes the loop",
               "effort_applied": 0.8,
               "effects": [
-                {"kind": "increment_counter", "counter": "family_third_sundays_closed", "amount": 1}
+                {
+                  "kind": "increment_counter",
+                  "counter": "family_third_sundays_closed",
+                  "amount": 1
+                }
               ]
             },
             {
@@ -107,7 +149,11 @@
               "summary": "+0.6 effort · slow road · Sammy carries the day home in his own time",
               "effort_applied": 0.6,
               "effects": [
-                {"kind": "set_flag", "flag": "sammy_river_road_w1", "value": true}
+                {
+                  "kind": "set_flag",
+                  "flag": "sammy_river_road_w1",
+                  "value": true
+                }
               ]
             },
             {
@@ -115,13 +161,21 @@
               "summary": "+1.0 effort · gives him the choice · what he says becomes a canon fact",
               "effort_applied": 1.0,
               "effects": [
-                {"kind": "set_canon_var", "key": "sammy_first_third_sunday_choice", "value": "asked"}
+                {
+                  "kind": "set_canon_var",
+                  "key": "sammy_first_third_sunday_choice",
+                  "value": "asked"
+                }
               ]
             }
           ]
         }
       ],
-      "ideal_handlers": ["nicola", "the_surviving_son", "john_frank"],
+      "ideal_handlers": [
+        "nicola",
+        "the_surviving_son",
+        "john_frank"
+      ],
       "resolution_flavor_success": [
         "{agent} sat the third Sunday with Sammy. Pop's marker got fresh flowers. Mom waved from the gate at five.",
         "The candles at the riverboat memorial were lit by hands that knew the order. The wax pooled correctly. The grief did not metastasise this week.",
@@ -138,14 +192,24 @@
       "id": "family_succession",
       "title": "Family Succession",
       "problem_type": "family_succession",
-      "regions_eligible": ["graustark"],
+      "regions_eligible": [
+        "graustark"
+      ],
       "base_severity": 3,
       "tick_per_day": 0.4,
       "effort_to_resolve": 4,
       "flavor": "Who runs what after Dante. The storefront's articles of incorporation. The boat's memorial fund. The cathedral's lease. Untreated, the storefront loses its insurance renewal.",
       "if_unresolved_at_severity_8": [
-        {"kind": "lose_node", "region": "graustark", "node": "dambrosios_storefront", "days": 21},
-        {"kind": "log", "text": "Insurance lapsed at the storefront. Closed for three weeks while it sorts out."}
+        {
+          "kind": "lose_node",
+          "region": "graustark",
+          "node": "dambrosios_storefront",
+          "days": 21
+        },
+        {
+          "kind": "log",
+          "text": "Insurance lapsed at the storefront. Closed for three weeks while it sorts out."
+        }
       ],
       "dispatch_shape_hint": "Whoever has standing at the D'Ambrosio table. Sending the wrong person is not a failure — it's a different choice. The family will absorb it.\n\nThis is a multi-stage mission — three afternoons at the kitchen table.",
       "stages": [
@@ -160,8 +224,16 @@
               "summary": "+1.5 effort · canon: the storefront passes to T. · Mom may carry it heavy",
               "effort_applied": 1.5,
               "effects": [
-                {"kind": "set_canon_var", "key": "storefront_heir", "value": "the_surviving_son"},
-                {"kind": "queue_burn", "weeks_from_now": 2, "reason": "Mom carried the signing home heavier than the signing was"}
+                {
+                  "kind": "set_canon_var",
+                  "key": "storefront_heir",
+                  "value": "the_surviving_son"
+                },
+                {
+                  "kind": "queue_burn",
+                  "weeks_from_now": 2,
+                  "reason": "Mom carried the signing home heavier than the signing was"
+                }
               ]
             },
             {
@@ -169,7 +241,11 @@
               "summary": "+0.8 effort · postpones the canon · no immediate cost",
               "effort_applied": 0.8,
               "effects": [
-                {"kind": "set_flag", "flag": "storefront_articles_open", "value": true}
+                {
+                  "kind": "set_flag",
+                  "flag": "storefront_articles_open",
+                  "value": true
+                }
               ]
             },
             {
@@ -177,8 +253,17 @@
               "summary": "+1.2 effort · the matriarch advises · costs 1 cover (long-distance call routed through the storefront line)",
               "effort_applied": 1.2,
               "effects": [
-                {"kind": "spend_cover", "amount": 1, "region": "graustark", "reason": "long-distance call to Lubbock on the storefront's billed line"},
-                {"kind": "set_flag", "flag": "wire_mother_consulted_articles", "value": true}
+                {
+                  "kind": "spend_cover",
+                  "amount": 1,
+                  "region": "graustark",
+                  "reason": "long-distance call to Lubbock on the storefront's billed line"
+                },
+                {
+                  "kind": "set_flag",
+                  "flag": "wire_mother_consulted_articles",
+                  "value": true
+                }
               ]
             }
           ]
@@ -194,8 +279,16 @@
               "summary": "+1.0 effort · the families get the canonical contribution · the fund dips under $10K",
               "effort_applied": 1.0,
               "effects": [
-                {"kind": "set_canon_var", "key": "memorial_fund_october", "value": "full_honor"},
-                {"kind": "increment_counter", "counter": "fund_below_10k", "amount": 1}
+                {
+                  "kind": "set_canon_var",
+                  "key": "memorial_fund_october",
+                  "value": "full_honor"
+                },
+                {
+                  "kind": "increment_counter",
+                  "counter": "fund_below_10k",
+                  "amount": 1
+                }
               ]
             },
             {
@@ -203,8 +296,16 @@
               "summary": "+1.2 effort · fund preserved · families get less but get more later",
               "effort_applied": 1.2,
               "effects": [
-                {"kind": "set_canon_var", "key": "memorial_fund_october", "value": "half_now_half_spring"},
-                {"kind": "set_flag", "flag": "fund_paced", "value": true}
+                {
+                  "kind": "set_canon_var",
+                  "key": "memorial_fund_october",
+                  "value": "half_now_half_spring"
+                },
+                {
+                  "kind": "set_flag",
+                  "flag": "fund_paced",
+                  "value": true
+                }
               ]
             },
             {
@@ -213,8 +314,16 @@
               "requires_bbs_thread": "TB_004",
               "effort_applied": 1.4,
               "effects": [
-                {"kind": "set_canon_var", "key": "memorial_fund_october", "value": "informed_by_T"},
-                {"kind": "set_flag", "flag": "read_T_on_fund", "value": true}
+                {
+                  "kind": "set_canon_var",
+                  "key": "memorial_fund_october",
+                  "value": "informed_by_T"
+                },
+                {
+                  "kind": "set_flag",
+                  "flag": "read_T_on_fund",
+                  "value": true
+                }
               ]
             }
           ]
@@ -230,8 +339,16 @@
               "summary": "+1.2 effort · the canonical good outcome · the family + parish + cathedral all hold",
               "effort_applied": 1.2,
               "effects": [
-                {"kind": "set_canon_var", "key": "cathedral_lease", "value": "renewed"},
-                {"kind": "increment_counter", "counter": "family_anchored_to_cathedral", "amount": 1}
+                {
+                  "kind": "set_canon_var",
+                  "key": "cathedral_lease",
+                  "value": "renewed"
+                },
+                {
+                  "kind": "increment_counter",
+                  "counter": "family_anchored_to_cathedral",
+                  "amount": 1
+                }
               ]
             },
             {
@@ -239,14 +356,25 @@
               "summary": "+0.6 effort · postponement · the parish board notes the delay",
               "effort_applied": 0.6,
               "effects": [
-                {"kind": "set_flag", "flag": "cathedral_lease_tabled", "value": true},
-                {"kind": "queue_burn", "weeks_from_now": 4, "reason": "the parish board reads the delay as ambivalence"}
+                {
+                  "kind": "set_flag",
+                  "flag": "cathedral_lease_tabled",
+                  "value": true
+                },
+                {
+                  "kind": "queue_burn",
+                  "weeks_from_now": 4,
+                  "reason": "the parish board reads the delay as ambivalence"
+                }
               ]
             }
           ]
         }
       ],
-      "ideal_handlers": ["the_surviving_son", "nicola"],
+      "ideal_handlers": [
+        "the_surviving_son",
+        "nicola"
+      ],
       "resolution_flavor_success": [
         "The articles got signed at the right kitchen table. {agent} brought the right pen. The pen was Pop's.",
         "The succession plan landed in the file cabinet. Hector's boy's name is on the second line in pencil. The pencil will be in pen by Labor Day."
@@ -259,13 +387,21 @@
       "id": "lease_and_licensing",
       "title": "Lease and Licensing",
       "problem_type": "lease_and_licensing",
-      "regions_eligible": ["graustark", "harmony_creek"],
+      "regions_eligible": [
+        "graustark",
+        "harmony_creek"
+      ],
       "base_severity": 1,
       "tick_per_day": 0.3,
       "effort_to_resolve": 2,
       "flavor": "The cathedral's variance. The storefront's beer-and-wine renewal. The model home's certificate of occupancy. The Harmony Creek HOA is doing exactly what the HOA is supposed to do.",
       "if_unresolved_at_severity_5": [
-        {"kind": "decrement_region_state", "region": "current", "key": "cover", "amount": 1}
+        {
+          "kind": "decrement_region_state",
+          "region": "current",
+          "key": "cover",
+          "amount": 1
+        }
       ],
       "dispatch_shape_hint": "Paperwork wants paperwork hands. A demon can do it but the demon walks home heavier. A human can do it but the human is the one whose name goes on the form. Pick the cost.\n\nThis is a multi-stage mission — clerk visit, paperwork, signatures.",
       "stages": [
@@ -286,7 +422,11 @@
               "summary": "+1.0 effort · the clerk sets the form aside for tomorrow · no cost",
               "effort_applied": 1.0,
               "effects": [
-                {"kind": "set_flag", "flag": "clerk_warmed", "value": true}
+                {
+                  "kind": "set_flag",
+                  "flag": "clerk_warmed",
+                  "value": true
+                }
               ]
             },
             {
@@ -294,7 +434,12 @@
               "summary": "+1.2 effort · she opens the drawer faster · -1 cover (the name moves through the office gossip-by-noon)",
               "effort_applied": 1.2,
               "effects": [
-                {"kind": "spend_cover", "amount": 1, "region": "current", "reason": "name dropped at the records desk; the office gossip carries it"}
+                {
+                  "kind": "spend_cover",
+                  "amount": 1,
+                  "region": "current",
+                  "reason": "name dropped at the records desk; the office gossip carries it"
+                }
               ]
             }
           ]
@@ -310,7 +455,11 @@
               "summary": "+1.0 effort · stays in the building · the variance is filed by 5 PM",
               "effort_applied": 1.0,
               "effects": [
-                {"kind": "set_canon_var", "key": "lease_witness", "value": "clerk"}
+                {
+                  "kind": "set_canon_var",
+                  "key": "lease_witness",
+                  "value": "clerk"
+                }
               ]
             },
             {
@@ -318,7 +467,11 @@
               "summary": "+0.6 effort · slower · the office gossip stays out",
               "effort_applied": 0.6,
               "effects": [
-                {"kind": "set_canon_var", "key": "lease_witness", "value": "private"}
+                {
+                  "kind": "set_canon_var",
+                  "key": "lease_witness",
+                  "value": "private"
+                }
               ]
             },
             {
@@ -327,14 +480,26 @@
               "requires_bbs_thread": "TR_003",
               "effort_applied": 1.4,
               "effects": [
-                {"kind": "set_canon_var", "key": "lease_witness", "value": "rectory_aide"},
-                {"kind": "set_flag", "flag": "aide_favor_owed", "value": true}
+                {
+                  "kind": "set_canon_var",
+                  "key": "lease_witness",
+                  "value": "rectory_aide"
+                },
+                {
+                  "kind": "set_flag",
+                  "flag": "aide_favor_owed",
+                  "value": true
+                }
               ]
             }
           ]
         }
       ],
-      "ideal_handlers": ["moth", "the_surviving_son", "mackenzie"],
+      "ideal_handlers": [
+        "moth",
+        "the_surviving_son",
+        "mackenzie"
+      ],
       "resolution_flavor_success": [
         "The variance got stamped. The clerk was the right clerk. The form went in the right pile, which is the pile the clerk does on Tuesday.",
         "{agent} pulled the file at lunch. The file was there. The renewal was 90 seconds of signatures and the seal had ink."
@@ -347,14 +512,25 @@
       "id": "infrastructure_failing",
       "title": "Infrastructure Failing",
       "problem_type": "infrastructure_failing",
-      "regions_eligible": ["graustark", "harmony_creek"],
+      "regions_eligible": [
+        "graustark",
+        "harmony_creek"
+      ],
       "base_severity": 2,
       "tick_per_day": 0.6,
       "effort_to_resolve": 3,
       "flavor": "The diner's walk-in. The cathedral's HVAC. The storefront's grease trap. The model home's foundation crack. Things break in old buildings and in new ones.",
       "if_unresolved_at_severity_7": [
-        {"kind": "lose_node", "region": "current", "node": "any_with_problem", "days": 5},
-        {"kind": "log", "text": "The infrastructure failed in a way that's now visible. The node is dark for the week."}
+        {
+          "kind": "lose_node",
+          "region": "current",
+          "node": "any_with_problem",
+          "days": 5
+        },
+        {
+          "kind": "log",
+          "text": "The infrastructure failed in a way that's now visible. The node is dark for the week."
+        }
       ],
       "dispatch_shape_hint": "Hands. Someone who's worked the building or worked one like it. Send a fast hand and the fix is sloppy; send a careful hand and the fix is slow.\n\nThis is a multi-stage mission — the diagnosis, the fix, the follow-up.",
       "stages": [
@@ -369,7 +545,11 @@
               "summary": "+0.8 effort · careful · finds the real cause · takes the day",
               "effort_applied": 0.8,
               "effects": [
-                {"kind": "set_flag", "flag": "infra_diagnosis_traced", "value": true}
+                {
+                  "kind": "set_flag",
+                  "flag": "infra_diagnosis_traced",
+                  "value": true
+                }
               ]
             },
             {
@@ -377,8 +557,16 @@
               "summary": "+1.2 effort · fast · may have fixed the symptom not the cause · queues a 4-week burn",
               "effort_applied": 1.2,
               "effects": [
-                {"kind": "set_flag", "flag": "infra_diagnosis_quick", "value": true},
-                {"kind": "queue_burn", "weeks_from_now": 4, "reason": "the obvious thing was the symptom, not the cause"}
+                {
+                  "kind": "set_flag",
+                  "flag": "infra_diagnosis_quick",
+                  "value": true
+                },
+                {
+                  "kind": "queue_burn",
+                  "weeks_from_now": 4,
+                  "reason": "the obvious thing was the symptom, not the cause"
+                }
               ]
             },
             {
@@ -387,8 +575,16 @@
               "requires_bbs_thread": "TW_002",
               "effort_applied": 1.4,
               "effects": [
-                {"kind": "set_flag", "flag": "infra_diagnosis_by_canon", "value": true},
-                {"kind": "increment_counter", "counter": "bbs_research_paid_off", "amount": 1}
+                {
+                  "kind": "set_flag",
+                  "flag": "infra_diagnosis_by_canon",
+                  "value": true
+                },
+                {
+                  "kind": "increment_counter",
+                  "counter": "bbs_research_paid_off",
+                  "amount": 1
+                }
               ]
             }
           ]
@@ -410,7 +606,11 @@
               "summary": "+0.6 effort · postponed fix · the problem ages a week",
               "effort_applied": 0.6,
               "effects": [
-                {"kind": "set_flag", "flag": "infra_waiting_for_part", "value": true}
+                {
+                  "kind": "set_flag",
+                  "flag": "infra_waiting_for_part",
+                  "value": true
+                }
               ]
             },
             {
@@ -419,14 +619,26 @@
               "requires_bbs_thread": "CB_STICKY",
               "effort_applied": 1.8,
               "effects": [
-                {"kind": "set_canon_var", "key": "infra_fix_pattern", "value": "binding_code_improvised"},
-                {"kind": "increment_counter", "counter": "matriarch_wisdom_applied", "amount": 1}
+                {
+                  "kind": "set_canon_var",
+                  "key": "infra_fix_pattern",
+                  "value": "binding_code_improvised"
+                },
+                {
+                  "kind": "increment_counter",
+                  "counter": "matriarch_wisdom_applied",
+                  "amount": 1
+                }
               ]
             }
           ]
         }
       ],
-      "ideal_handlers": ["steamboat", "weir", "john_frank"],
+      "ideal_handlers": [
+        "steamboat",
+        "weir",
+        "john_frank"
+      ],
       "resolution_flavor_success": [
         "{agent} found the loose connection at 4:18 PM. The fix took 22 minutes. The boiler is humming the right semitone again.",
         "The conduit work {agent} did in '91 was the conduit work that needed checking. They checked it. It held."
@@ -439,13 +651,19 @@
       "id": "cathedral_visitor",
       "title": "Cathedral Visitor",
       "problem_type": "cathedral_visitor",
-      "regions_eligible": ["graustark"],
+      "regions_eligible": [
+        "graustark"
+      ],
       "base_severity": 1,
       "tick_per_day": 0.2,
       "effort_to_resolve": 1,
       "flavor": "Someone is in the warehouse-cathedral who shouldn't be. Most of the time it's a kid who walked in through the back; sometimes it's somebody worse.",
       "if_unresolved_at_severity_4": [
-        {"kind": "spawn_problem_in_region", "region": "graustark", "template": "press_exposure"}
+        {
+          "kind": "spawn_problem_in_region",
+          "region": "graustark",
+          "template": "press_exposure"
+        }
       ],
       "dispatch_shape_hint": "Quiet eyes. Someone who can read a room without being read. A demon assigned to a watch can read it deeper but if they're spotted the cover damage is real.\n\nThis is a multi-stage mission — the watch, the read, the decision.",
       "stages": [
@@ -460,7 +678,11 @@
               "summary": "+1.0 effort · careful surveillance · low risk of being read",
               "effort_applied": 1.0,
               "effects": [
-                {"kind": "set_flag", "flag": "cathedral_visitor_watched", "value": true}
+                {
+                  "kind": "set_flag",
+                  "flag": "cathedral_visitor_watched",
+                  "value": true
+                }
               ]
             },
             {
@@ -468,8 +690,17 @@
               "summary": "+1.4 effort · gets the canon read · slight cover risk",
               "effort_applied": 1.4,
               "effects": [
-                {"kind": "spend_cover", "amount": 1, "region": "graustark", "reason": "agent's close-read pass past the visitor"},
-                {"kind": "set_flag", "flag": "cathedral_visitor_close_read", "value": true}
+                {
+                  "kind": "spend_cover",
+                  "amount": 1,
+                  "region": "graustark",
+                  "reason": "agent's close-read pass past the visitor"
+                },
+                {
+                  "kind": "set_flag",
+                  "flag": "cathedral_visitor_close_read",
+                  "value": true
+                }
               ]
             }
           ]
@@ -485,9 +716,22 @@
               "summary": "+1.2 effort · clean resolution · sets a flag the cathedral notes · unlocks Magician · blow_out_the_candles",
               "effort_applied": 1.2,
               "effects": [
-                {"kind": "set_canon_var", "key": "cathedral_visitor_kind", "value": "kid"},
-                {"kind": "increment_counter", "counter": "cathedral_visitors_kids", "amount": 1},
-                {"kind": "unlock_gauntlet_scenario", "arcana": "magician", "scenario_id": "blow_out_the_candles", "display_name": "Magician · blow_out_the_candles"}
+                {
+                  "kind": "set_canon_var",
+                  "key": "cathedral_visitor_kind",
+                  "value": "kid"
+                },
+                {
+                  "kind": "increment_counter",
+                  "counter": "cathedral_visitors_kids",
+                  "amount": 1
+                },
+                {
+                  "kind": "unlock_gauntlet_scenario",
+                  "arcana": "magician",
+                  "scenario_id": "blow_out_the_candles",
+                  "display_name": "Magician · blow_out_the_candles"
+                }
               ]
             },
             {
@@ -495,8 +739,17 @@
               "summary": "+1.0 effort · resolution + cover cost · they won't be back tonight",
               "effort_applied": 1.0,
               "effects": [
-                {"kind": "set_canon_var", "key": "cathedral_visitor_kind", "value": "journalist"},
-                {"kind": "spend_cover", "amount": 1, "region": "graustark", "reason": "the journalist will write down how they were asked to leave"}
+                {
+                  "kind": "set_canon_var",
+                  "key": "cathedral_visitor_kind",
+                  "value": "journalist"
+                },
+                {
+                  "kind": "spend_cover",
+                  "amount": 1,
+                  "region": "graustark",
+                  "reason": "the journalist will write down how they were asked to leave"
+                }
               ]
             },
             {
@@ -504,9 +757,21 @@
               "summary": "+1.6 effort · this is the worst read · queues a follow-up · sets a watch flag",
               "effort_applied": 1.6,
               "effects": [
-                {"kind": "set_canon_var", "key": "cathedral_visitor_kind", "value": "agent"},
-                {"kind": "set_flag", "flag": "enemy_agent_at_cathedral", "value": true},
-                {"kind": "queue_burn", "weeks_from_now": 2, "reason": "the agent reports back; the enemy now knows what time the chapel is empty"}
+                {
+                  "kind": "set_canon_var",
+                  "key": "cathedral_visitor_kind",
+                  "value": "agent"
+                },
+                {
+                  "kind": "set_flag",
+                  "flag": "enemy_agent_at_cathedral",
+                  "value": true
+                },
+                {
+                  "kind": "queue_burn",
+                  "weeks_from_now": 2,
+                  "reason": "the agent reports back; the enemy now knows what time the chapel is empty"
+                }
               ]
             },
             {
@@ -515,14 +780,25 @@
               "requires_bbs_thread": "RH_002",
               "effort_applied": 1.8,
               "effects": [
-                {"kind": "set_canon_var", "key": "cathedral_visitor_kind", "value": "river_house_forewarned"},
-                {"kind": "set_flag", "flag": "river_house_intel_used", "value": true}
+                {
+                  "kind": "set_canon_var",
+                  "key": "cathedral_visitor_kind",
+                  "value": "river_house_forewarned"
+                },
+                {
+                  "kind": "set_flag",
+                  "flag": "river_house_intel_used",
+                  "value": true
+                }
               ]
             }
           ]
         }
       ],
-      "ideal_handlers": ["vagrant", "cicada"],
+      "ideal_handlers": [
+        "vagrant",
+        "cicada"
+      ],
       "resolution_flavor_success": [
         "{agent} sat in the last pew from 8 to 11. The visitor came at 9:42. {agent} knew the visitor's father. The visitor left with a cup of coffee and a name to call.",
         "It was a kid. It is always a kid. {agent} gave the kid a sandwich and the bus number that goes back to the kid's grandmother."
@@ -535,13 +811,18 @@
       "id": "diner_threshold",
       "title": "Diner Threshold",
       "problem_type": "diner_threshold",
-      "regions_eligible": ["graustark"],
+      "regions_eligible": [
+        "graustark"
+      ],
       "base_severity": 1,
       "tick_per_day": 0.2,
       "effort_to_resolve": 2,
       "flavor": "Someone is sitting at booth six who shouldn't be. The threshold the diner maintains has had a soft spot all summer.",
       "if_unresolved_at_severity_3": [
-        {"kind": "advance_visitor_drift", "target": "the_booth_six_stranger"}
+        {
+          "kind": "advance_visitor_drift",
+          "target": "the_booth_six_stranger"
+        }
       ],
       "dispatch_shape_hint": "Booth 6 is not negotiated · it's noticed. The first pass is reading the room from the wear-spot · the second is whether you sit across from him or send the right server. This is a two-stage mission.",
       "stages": [
@@ -556,7 +837,11 @@
               "summary": "+0.6 effort · clean read · he won't notice you noticed",
               "effort_applied": 0.6,
               "effects": [
-                {"kind": "set_flag", "flag": "booth_6_logged", "value": true}
+                {
+                  "kind": "set_flag",
+                  "flag": "booth_6_logged",
+                  "value": true
+                }
               ]
             },
             {
@@ -564,8 +849,16 @@
               "summary": "+1.0 effort · Faith works the booth · diner's own threshold tightens",
               "effort_applied": 1.0,
               "effects": [
-                {"kind": "set_canon_var", "key": "diner_threshold_tightened_by", "value": "faith"},
-                {"kind": "increment_counter", "counter": "faith_threshold_work", "amount": 1}
+                {
+                  "kind": "set_canon_var",
+                  "key": "diner_threshold_tightened_by",
+                  "value": "faith"
+                },
+                {
+                  "kind": "increment_counter",
+                  "counter": "faith_threshold_work",
+                  "amount": 1
+                }
               ]
             },
             {
@@ -574,8 +867,16 @@
               "requires_bbs_thread": "BP_015",
               "effort_applied": 1.4,
               "effects": [
-                {"kind": "set_flag", "flag": "booth_6_pattern_matched", "value": true},
-                {"kind": "set_canon_var", "key": "booth_6_kind", "value": "parish_match"}
+                {
+                  "kind": "set_flag",
+                  "flag": "booth_6_pattern_matched",
+                  "value": true
+                },
+                {
+                  "kind": "set_canon_var",
+                  "key": "booth_6_kind",
+                  "value": "parish_match"
+                }
               ]
             }
           ]
@@ -591,7 +892,11 @@
               "summary": "+1.0 effort · the booth's own threshold closes · clean exit",
               "effort_applied": 1.0,
               "effects": [
-                {"kind": "set_canon_var", "key": "booth_6_outcome", "value": "soft_close"}
+                {
+                  "kind": "set_canon_var",
+                  "key": "booth_6_outcome",
+                  "value": "soft_close"
+                }
               ]
             },
             {
@@ -599,8 +904,17 @@
               "summary": "+1.6 effort · he leaves · the booth holds · -1 cover (the next table heard the question)",
               "effort_applied": 1.6,
               "effects": [
-                {"kind": "spend_cover", "amount": 1, "region": "graustark", "reason": "the question carried to the next table"},
-                {"kind": "set_canon_var", "key": "booth_6_outcome", "value": "questioned_out"}
+                {
+                  "kind": "spend_cover",
+                  "amount": 1,
+                  "region": "graustark",
+                  "reason": "the question carried to the next table"
+                },
+                {
+                  "kind": "set_canon_var",
+                  "key": "booth_6_outcome",
+                  "value": "questioned_out"
+                }
               ]
             },
             {
@@ -608,13 +922,20 @@
               "summary": "+0.8 effort · slowest · safest · costs nothing now",
               "effort_applied": 0.8,
               "effects": [
-                {"kind": "set_canon_var", "key": "booth_6_outcome", "value": "waited_out"}
+                {
+                  "kind": "set_canon_var",
+                  "key": "booth_6_outcome",
+                  "value": "waited_out"
+                }
               ]
             }
           ]
         }
       ],
-      "ideal_handlers": ["john_frank", "elicia"],
+      "ideal_handlers": [
+        "john_frank",
+        "elicia"
+      ],
       "resolution_flavor_success": [
         "Booth 6 was empty by close. The wear-spot was the wear-spot again.",
         "He left at 3:48 PM · cup half-drunk · ticket wheel turned once on its own. The diner held."
@@ -627,14 +948,23 @@
       "id": "surveillance",
       "title": "Surveillance Posture",
       "problem_type": "surveillance",
-      "regions_eligible": ["harmony_creek"],
+      "regions_eligible": [
+        "harmony_creek"
+      ],
       "base_severity": 2,
       "tick_per_day": 0.4,
       "effort_to_resolve": 3,
       "flavor": "Cameras at the gate. License plate readers at the entrance. The HOA's new security committee is meeting every Tuesday. The posture is the thing — the cameras are the symptom.",
       "if_unresolved_at_severity_6": [
-        {"kind": "lose_contested_node", "region": "harmony_creek", "node": "the_cul_de_sac"},
-        {"kind": "log", "text": "The cul-de-sac is now a surveilled space. Future operations there cost +50%."}
+        {
+          "kind": "lose_contested_node",
+          "region": "harmony_creek",
+          "node": "the_cul_de_sac"
+        },
+        {
+          "kind": "log",
+          "text": "The cul-de-sac is now a surveilled space. Future operations there cost +50%."
+        }
       ],
       "dispatch_shape_hint": "Eyes that already know the road. Someone who can read camera angles without being read by them. This is a multi-stage mission — the survey, the committee meeting, the posture move.",
       "stages": [
@@ -649,7 +979,11 @@
               "summary": "+0.8 effort · clean info · no flags raised",
               "effort_applied": 0.8,
               "effects": [
-                {"kind": "set_flag", "flag": "hc_camera_map_built", "value": true}
+                {
+                  "kind": "set_flag",
+                  "flag": "hc_camera_map_built",
+                  "value": true
+                }
               ]
             },
             {
@@ -657,8 +991,17 @@
               "summary": "+1.2 effort · finds the head-end · 1 cover (you were on someone's tape for that walk)",
               "effort_applied": 1.2,
               "effects": [
-                {"kind": "spend_cover", "amount": 1, "region": "harmony_creek", "reason": "agent on tape walking the cable run"},
-                {"kind": "set_flag", "flag": "hc_camera_head_end_found", "value": true}
+                {
+                  "kind": "spend_cover",
+                  "amount": 1,
+                  "region": "harmony_creek",
+                  "reason": "agent on tape walking the cable run"
+                },
+                {
+                  "kind": "set_flag",
+                  "flag": "hc_camera_head_end_found",
+                  "value": true
+                }
               ]
             }
           ]
@@ -680,9 +1023,25 @@
               "summary": "+1.4 effort · plants doubt in the committee · costs 1 cover · marker: hc_surveillance_escalated for 10 days",
               "effort_applied": 1.4,
               "effects": [
-                {"kind": "spend_cover", "amount": 1, "region": "harmony_creek", "reason": "agent on the HOA security-committee meeting roster"},
-                {"kind": "set_flag", "flag": "hc_committee_doubt_planted", "value": true},
-                {"kind": "set_regional_marker", "region": "harmony_creek", "marker_id": "hc_surveillance_escalated", "days": 10, "log_line": "[color=#c8a8ff]Marker set:[/color] surveillance-escalated (10 days). The committee is watching harder · quiet-week events in HC won't fire until the heat drops.", "expiry_line": "[color=#a8c0a8]The HC security committee's heat has dropped. The neighborhood breathes again.[/color]"}
+                {
+                  "kind": "spend_cover",
+                  "amount": 1,
+                  "region": "harmony_creek",
+                  "reason": "agent on the HOA security-committee meeting roster"
+                },
+                {
+                  "kind": "set_flag",
+                  "flag": "hc_committee_doubt_planted",
+                  "value": true
+                },
+                {
+                  "kind": "set_regional_marker",
+                  "region": "harmony_creek",
+                  "marker_id": "hc_surveillance_escalated",
+                  "days": 10,
+                  "log_line": "[color=#c8a8ff]Marker set:[/color] surveillance-escalated (10 days). The committee is watching harder · quiet-week events in HC won't fire until the heat drops.",
+                  "expiry_line": "[color=#a8c0a8]The HC security committee's heat has dropped. The neighborhood breathes again.[/color]"
+                }
               ]
             },
             {
@@ -691,26 +1050,44 @@
               "requires_bbs_thread": "CK_001",
               "effort_applied": 1.6,
               "effects": [
-                {"kind": "set_canon_var", "key": "hc_minutes_softened", "value": true},
-                {"kind": "increment_counter", "counter": "mrs_salinas_favors", "amount": 1}
+                {
+                  "kind": "set_canon_var",
+                  "key": "hc_minutes_softened",
+                  "value": true
+                },
+                {
+                  "kind": "increment_counter",
+                  "counter": "mrs_salinas_favors",
+                  "amount": 1
+                }
               ]
             }
           ]
         }
       ],
-      "ideal_handlers": ["cicada", "starling", "vagrant"]
+      "ideal_handlers": [
+        "cicada",
+        "starling",
+        "vagrant"
+      ]
     },
     {
       "id": "hoa_action",
       "title": "HOA Action",
       "problem_type": "hoa_action",
-      "regions_eligible": ["harmony_creek"],
+      "regions_eligible": [
+        "harmony_creek"
+      ],
       "base_severity": 2,
       "tick_per_day": 0.5,
       "effort_to_resolve": 3,
       "flavor": "A specific ordinance, a specific fine, a specific notice nailed to a specific door. The HOA does this in writing and the writing is legible later.",
       "if_unresolved_at_severity_5": [
-        {"kind": "spawn_problem_in_region", "region": "harmony_creek", "template": "newsletter_item"}
+        {
+          "kind": "spawn_problem_in_region",
+          "region": "harmony_creek",
+          "template": "newsletter_item"
+        }
       ],
       "dispatch_shape_hint": "Someone who reads ordinances for fun. The HOA's writing is the kind of writing that wins on its own terms — match it. This is a multi-stage mission — read the notice, find the precedent, file the response.",
       "stages": [
@@ -725,7 +1102,11 @@
               "summary": "+0.8 effort · finds the technical defect · no cost",
               "effort_applied": 0.8,
               "effects": [
-                {"kind": "set_flag", "flag": "hoa_bylaws_read", "value": true}
+                {
+                  "kind": "set_flag",
+                  "flag": "hoa_bylaws_read",
+                  "value": true
+                }
               ]
             },
             {
@@ -733,7 +1114,12 @@
               "summary": "+1.2 effort · resolves with conversation · 1 cover (your name is on their list now)",
               "effort_applied": 1.2,
               "effects": [
-                {"kind": "spend_cover", "amount": 1, "region": "harmony_creek", "reason": "phone call to the HOA notice signer"}
+                {
+                  "kind": "spend_cover",
+                  "amount": 1,
+                  "region": "harmony_creek",
+                  "reason": "phone call to the HOA notice signer"
+                }
               ]
             }
           ]
@@ -749,7 +1135,11 @@
               "summary": "+1.0 effort · clean response in their language",
               "effort_applied": 1.0,
               "effects": [
-                {"kind": "set_canon_var", "key": "hoa_response_format", "value": "matched"}
+                {
+                  "kind": "set_canon_var",
+                  "key": "hoa_response_format",
+                  "value": "matched"
+                }
               ]
             },
             {
@@ -757,9 +1147,24 @@
               "summary": "+1.4 effort · sets up a longer fight · the file goes on the chairman's desk · marker: hc_paperwork_pending for 5 days",
               "effort_applied": 1.4,
               "effects": [
-                {"kind": "set_flag", "flag": "hoa_pushback_filed", "value": true},
-                {"kind": "queue_burn", "weeks_from_now": 2, "reason": "the chairman reads pushback as defiance; the next notice will be specific"},
-                {"kind": "set_regional_marker", "region": "harmony_creek", "marker_id": "hc_paperwork_pending", "days": 5, "log_line": "[color=#c8a8ff]Marker set:[/color] HC paperwork pending (5 days). The HOA is compiling a response · the neighborhood's rhythm is on hold until Tuesday's meeting.", "expiry_line": "[color=#a8c0a8]The HOA closed the pushback file on Tuesday. The chairman moved on to the sprinkler-heads agenda.[/color]"}
+                {
+                  "kind": "set_flag",
+                  "flag": "hoa_pushback_filed",
+                  "value": true
+                },
+                {
+                  "kind": "queue_burn",
+                  "weeks_from_now": 2,
+                  "reason": "the chairman reads pushback as defiance; the next notice will be specific"
+                },
+                {
+                  "kind": "set_regional_marker",
+                  "region": "harmony_creek",
+                  "marker_id": "hc_paperwork_pending",
+                  "days": 5,
+                  "log_line": "[color=#c8a8ff]Marker set:[/color] HC paperwork pending (5 days). The HOA is compiling a response · the neighborhood's rhythm is on hold until Tuesday's meeting.",
+                  "expiry_line": "[color=#a8c0a8]The HOA closed the pushback file on Tuesday. The chairman moved on to the sprinkler-heads agenda.[/color]"
+                }
               ]
             },
             {
@@ -768,27 +1173,48 @@
               "requires_bbs_thread": "TL_003",
               "effort_applied": 1.6,
               "effects": [
-                {"kind": "set_canon_var", "key": "hoa_response_format", "value": "mackenzie_voice"},
-                {"kind": "increment_counter", "counter": "mackenzie_trust", "amount": 1}
+                {
+                  "kind": "set_canon_var",
+                  "key": "hoa_response_format",
+                  "value": "mackenzie_voice"
+                },
+                {
+                  "kind": "increment_counter",
+                  "counter": "mackenzie_trust",
+                  "amount": 1
+                }
               ]
             }
           ]
         }
       ],
-      "ideal_handlers": ["mackenzie", "moth"]
+      "ideal_handlers": [
+        "mackenzie",
+        "moth"
+      ]
     },
     {
       "id": "missing_kid",
       "title": "Missing Kid",
       "problem_type": "missing_kid",
-      "regions_eligible": ["harmony_creek", "small_wood"],
+      "regions_eligible": [
+        "harmony_creek",
+        "small_wood"
+      ],
       "base_severity": 3,
       "tick_per_day": 0.7,
       "effort_to_resolve": 4,
       "flavor": "Not yet a national story. Yet. The flier is at the community pool. The mother is in the HOA office at 9 AM Monday and at 9 AM Tuesday and at 9 AM Wednesday.",
       "if_unresolved_at_severity_7": [
-        {"kind": "set_global_state", "key": "national_press_attention", "value": true},
-        {"kind": "log", "text": "It went national. Local coverage is now national coverage. Cover in the region is gone."}
+        {
+          "kind": "set_global_state",
+          "key": "national_press_attention",
+          "value": true
+        },
+        {
+          "kind": "log",
+          "text": "It went national. Local coverage is now national coverage. Cover in the region is gone."
+        }
       ],
       "dispatch_shape_hint": "The first 48 hours is a canvass. The second 48 is whether a lead lands. This is a two-stage mission and the clock is the clock.",
       "stages": [
@@ -803,7 +1229,11 @@
               "summary": "+1.4 effort · clean intel · slow · no flags raised",
               "effort_applied": 1.4,
               "effects": [
-                {"kind": "set_flag", "flag": "canvass_thorough", "value": true}
+                {
+                  "kind": "set_flag",
+                  "flag": "canvass_thorough",
+                  "value": true
+                }
               ]
             },
             {
@@ -811,8 +1241,17 @@
               "summary": "+1.0 effort · she tells you the thing the deputy didn't write down · -1 cover (you are now in her phone)",
               "effort_applied": 1.0,
               "effects": [
-                {"kind": "spend_cover", "amount": 1, "region": "current", "reason": "agent now in the mother's contact list"},
-                {"kind": "set_canon_var", "key": "kid_mother_intel", "value": true}
+                {
+                  "kind": "spend_cover",
+                  "amount": 1,
+                  "region": "current",
+                  "reason": "agent now in the mother's contact list"
+                },
+                {
+                  "kind": "set_canon_var",
+                  "key": "kid_mother_intel",
+                  "value": true
+                }
               ]
             },
             {
@@ -821,8 +1260,16 @@
               "requires_bbs_thread": "MS_006",
               "effort_applied": 1.6,
               "effects": [
-                {"kind": "set_flag", "flag": "south_parish_wire_pulled", "value": true},
-                {"kind": "set_canon_var", "key": "kid_wire_response", "value": "pending"}
+                {
+                  "kind": "set_flag",
+                  "flag": "south_parish_wire_pulled",
+                  "value": true
+                },
+                {
+                  "kind": "set_canon_var",
+                  "key": "kid_wire_response",
+                  "value": "pending"
+                }
               ]
             }
           ]
@@ -838,8 +1285,17 @@
               "summary": "+1.4 effort · the deputy moves · public · -1 cover · risks press if it doesn't land",
               "effort_applied": 1.4,
               "effects": [
-                {"kind": "spend_cover", "amount": 1, "region": "current", "reason": "agent on record handing off to the deputy"},
-                {"kind": "set_canon_var", "key": "kid_lead_runner", "value": "deputy"}
+                {
+                  "kind": "spend_cover",
+                  "amount": 1,
+                  "region": "current",
+                  "reason": "agent on record handing off to the deputy"
+                },
+                {
+                  "kind": "set_canon_var",
+                  "key": "kid_lead_runner",
+                  "value": "deputy"
+                }
               ]
             },
             {
@@ -847,8 +1303,16 @@
               "summary": "+2.0 effort · costs the agent's day · the mother gets the kid back · no press · -2 sanity",
               "effort_applied": 2.0,
               "effects": [
-                {"kind": "set_canon_var", "key": "kid_lead_runner", "value": "agent"},
-                {"kind": "increment_counter", "counter": "agent_sanity_cost", "amount": 2}
+                {
+                  "kind": "set_canon_var",
+                  "key": "kid_lead_runner",
+                  "value": "agent"
+                },
+                {
+                  "kind": "increment_counter",
+                  "counter": "agent_sanity_cost",
+                  "amount": 2
+                }
               ]
             },
             {
@@ -856,14 +1320,26 @@
               "summary": "+1.2 effort · cleanest · she has the contacts · she will owe nothing back",
               "effort_applied": 1.2,
               "effects": [
-                {"kind": "set_canon_var", "key": "kid_lead_runner", "value": "filly"},
-                {"kind": "increment_counter", "counter": "filly_owed_favors", "amount": 1}
+                {
+                  "kind": "set_canon_var",
+                  "key": "kid_lead_runner",
+                  "value": "filly"
+                },
+                {
+                  "kind": "increment_counter",
+                  "counter": "filly_owed_favors",
+                  "amount": 1
+                }
               ]
             }
           ]
         }
       ],
-      "ideal_handlers": ["filly", "starling", "mackenzie"],
+      "ideal_handlers": [
+        "filly",
+        "starling",
+        "mackenzie"
+      ],
       "resolution_flavor_success": [
         "He came home Thursday afternoon. The deputy filed the report and the report stayed local.",
         "The flier came off the pool bulletin Friday morning. Faith pinned a thank-you card up in its place."
@@ -876,13 +1352,20 @@
       "id": "community_meeting",
       "title": "Community Meeting Goes Wrong",
       "problem_type": "community_meeting",
-      "regions_eligible": ["harmony_creek", "small_wood"],
+      "regions_eligible": [
+        "harmony_creek",
+        "small_wood"
+      ],
       "base_severity": 2,
       "tick_per_day": 0.4,
       "effort_to_resolve": 2,
       "flavor": "The Thursday-night HOA meeting. Or the Wednesday-night town hall in Small Wood. The motion was supposed to be the motion. The motion is now something else.",
       "if_unresolved_at_severity_5": [
-        {"kind": "spawn_problem_in_region", "region": "current", "template": "hoa_action"}
+        {
+          "kind": "spawn_problem_in_region",
+          "region": "current",
+          "template": "hoa_action"
+        }
       ],
       "dispatch_shape_hint": "A meeting is a room. The room is rigged the day before. This is a two-stage mission · prep the room · then read it.",
       "stages": [
@@ -897,7 +1380,11 @@
               "summary": "+1.0 effort · accurate count · no debt incurred",
               "effort_applied": 1.0,
               "effects": [
-                {"kind": "set_flag", "flag": "meeting_count_known", "value": true}
+                {
+                  "kind": "set_flag",
+                  "flag": "meeting_count_known",
+                  "value": true
+                }
               ]
             },
             {
@@ -905,8 +1392,16 @@
               "summary": "+1.2 effort · the chair moves · costs a favor",
               "effort_applied": 1.2,
               "effects": [
-                {"kind": "set_canon_var", "key": "meeting_chair_steered", "value": true},
-                {"kind": "increment_counter", "counter": "agent_favors_owed", "amount": 1}
+                {
+                  "kind": "set_canon_var",
+                  "key": "meeting_chair_steered",
+                  "value": true
+                },
+                {
+                  "kind": "increment_counter",
+                  "counter": "agent_favors_owed",
+                  "amount": 1
+                }
               ]
             },
             {
@@ -914,8 +1409,17 @@
               "summary": "+1.6 effort · changes item 6 to your item 6 · -1 cover (your name is on the filing)",
               "effort_applied": 1.6,
               "effects": [
-                {"kind": "spend_cover", "amount": 1, "region": "current", "reason": "agent on record as motion filer"},
-                {"kind": "set_canon_var", "key": "meeting_motion_owner", "value": "agent"}
+                {
+                  "kind": "spend_cover",
+                  "amount": 1,
+                  "region": "current",
+                  "reason": "agent on record as motion filer"
+                },
+                {
+                  "kind": "set_canon_var",
+                  "key": "meeting_motion_owner",
+                  "value": "agent"
+                }
               ]
             }
           ]
@@ -938,9 +1442,22 @@
               "requires_bbs_thread": "TL_003",
               "effort_applied": 1.4,
               "effects": [
-                {"kind": "spend_cover", "amount": 1, "region": "current", "reason": "agent on the public record at open comment"},
-                {"kind": "set_canon_var", "key": "meeting_room_shifted", "value": true},
-                {"kind": "set_flag", "flag": "ninety_four_roster_aired", "value": true}
+                {
+                  "kind": "spend_cover",
+                  "amount": 1,
+                  "region": "current",
+                  "reason": "agent on the public record at open comment"
+                },
+                {
+                  "kind": "set_canon_var",
+                  "key": "meeting_room_shifted",
+                  "value": true
+                },
+                {
+                  "kind": "set_flag",
+                  "flag": "ninety_four_roster_aired",
+                  "value": true
+                }
               ]
             },
             {
@@ -948,13 +1465,21 @@
               "summary": "+1.0 effort · the vote stands · the writeup is yours",
               "effort_applied": 1.0,
               "effects": [
-                {"kind": "set_canon_var", "key": "meeting_press_steered", "value": true}
+                {
+                  "kind": "set_canon_var",
+                  "key": "meeting_press_steered",
+                  "value": true
+                }
               ]
             }
           ]
         }
       ],
-      "ideal_handlers": ["mackenzie", "moth", "jules.timberyard"],
+      "ideal_handlers": [
+        "mackenzie",
+        "moth",
+        "jules.timberyard"
+      ],
       "resolution_flavor_success": [
         "The meeting adjourned at 9:34 PM. The motion that needed to die did. Mrs Salinas's minutes are the agent's minutes.",
         "The chair gavelled it down on a 4-3 vote. Two reporters left without a story."
@@ -967,13 +1492,20 @@
       "id": "newsletter_item",
       "title": "Newsletter Item",
       "problem_type": "newsletter_item",
-      "regions_eligible": ["harmony_creek"],
+      "regions_eligible": [
+        "harmony_creek"
+      ],
       "base_severity": 1,
       "tick_per_day": 0.2,
       "effort_to_resolve": 1,
       "flavor": "Page three of the HOA newsletter, the column the residents read first. The item is named in a way that lets adjacent residents know who it's about.",
       "if_unresolved_at_severity_3": [
-        {"kind": "decrement_region_state", "region": "harmony_creek", "key": "cover", "amount": 1}
+        {
+          "kind": "decrement_region_state",
+          "region": "harmony_creek",
+          "key": "cover",
+          "amount": 1
+        }
       ],
       "dispatch_shape_hint": "The newsletter is words on paper. Match them with words on paper, or get the words off the paper before it prints. Pick the angle. This is a short two-stage mission · the print deadline is Thursday.",
       "stages": [
@@ -988,7 +1520,11 @@
               "summary": "+0.6 effort · clean editorial fix · the item still runs but unnamed",
               "effort_applied": 0.6,
               "effects": [
-                {"kind": "set_canon_var", "key": "newsletter_outcome", "value": "edited"}
+                {
+                  "kind": "set_canon_var",
+                  "key": "newsletter_outcome",
+                  "value": "edited"
+                }
               ]
             },
             {
@@ -996,8 +1532,16 @@
               "summary": "+1.0 effort · the column gets bumped · costs no cover",
               "effort_applied": 1.0,
               "effects": [
-                {"kind": "set_canon_var", "key": "newsletter_outcome", "value": "bumped"},
-                {"kind": "set_flag", "flag": "hc_newsletter_bumped", "value": true}
+                {
+                  "kind": "set_canon_var",
+                  "key": "newsletter_outcome",
+                  "value": "bumped"
+                },
+                {
+                  "kind": "set_flag",
+                  "flag": "hc_newsletter_bumped",
+                  "value": true
+                }
               ]
             },
             {
@@ -1006,26 +1550,44 @@
               "requires_bbs_thread": "TL_003",
               "effort_applied": 1.2,
               "effects": [
-                {"kind": "set_canon_var", "key": "newsletter_outcome", "value": "patricia_taught"},
-                {"kind": "increment_counter", "counter": "hc_newsletter_safe_weeks", "amount": 6}
+                {
+                  "kind": "set_canon_var",
+                  "key": "newsletter_outcome",
+                  "value": "patricia_taught"
+                },
+                {
+                  "kind": "increment_counter",
+                  "counter": "hc_newsletter_safe_weeks",
+                  "amount": 6
+                }
               ]
             }
           ]
         }
       ],
-      "ideal_handlers": ["elicia", "cicada"]
+      "ideal_handlers": [
+        "elicia",
+        "cicada"
+      ]
     },
     {
       "id": "model_home_feel",
       "title": "Model Home Has The Wrong Feel",
       "problem_type": "model_home_feel",
-      "regions_eligible": ["harmony_creek"],
+      "regions_eligible": [
+        "harmony_creek"
+      ],
       "base_severity": 1,
       "tick_per_day": 0.3,
       "effort_to_resolve": 2,
       "flavor": "The model home is, this Tuesday, slightly cold around the kitchen island. The realtor walking the next family through notices and doesn't, on her way out, say what she noticed.",
       "if_unresolved_at_severity_4": [
-        {"kind": "lose_node", "region": "harmony_creek", "node": "the_model_home", "days": 7}
+        {
+          "kind": "lose_node",
+          "region": "harmony_creek",
+          "node": "the_model_home",
+          "days": 7
+        }
       ],
       "dispatch_shape_hint": "The model home is a stage set · the cold around the kitchen island is the audience leaving. Walk the room · find what's wrong · close it. Two stages.",
       "stages": [
@@ -1040,7 +1602,11 @@
               "summary": "+0.8 effort · sees what the realtor sees · the cold registers",
               "effort_applied": 0.8,
               "effects": [
-                {"kind": "set_flag", "flag": "model_home_realtor_path_walked", "value": true}
+                {
+                  "kind": "set_flag",
+                  "flag": "model_home_realtor_path_walked",
+                  "value": true
+                }
               ]
             },
             {
@@ -1048,7 +1614,11 @@
               "summary": "+1.0 effort · finds the source · the cold tracks back to the kitchen island",
               "effort_applied": 1.0,
               "effects": [
-                {"kind": "set_canon_var", "key": "model_home_source_found", "value": "kitchen_island"}
+                {
+                  "kind": "set_canon_var",
+                  "key": "model_home_source_found",
+                  "value": "kitchen_island"
+                }
               ]
             },
             {
@@ -1056,8 +1626,16 @@
               "summary": "+1.4 effort · finds what the silence is · -1 sanity (it talks to you)",
               "effort_applied": 1.4,
               "effects": [
-                {"kind": "set_canon_var", "key": "model_home_source_found", "value": "the_listening"},
-                {"kind": "increment_counter", "counter": "agent_sanity_cost", "amount": 1}
+                {
+                  "kind": "set_canon_var",
+                  "key": "model_home_source_found",
+                  "value": "the_listening"
+                },
+                {
+                  "kind": "increment_counter",
+                  "counter": "agent_sanity_cost",
+                  "amount": 1
+                }
               ]
             }
           ]
@@ -1073,7 +1651,11 @@
               "summary": "+1.0 effort · the realtor's eye reads the room as new · the cold is hidden, not gone",
               "effort_applied": 1.0,
               "effects": [
-                {"kind": "set_canon_var", "key": "model_home_close", "value": "restaged"}
+                {
+                  "kind": "set_canon_var",
+                  "key": "model_home_close",
+                  "value": "restaged"
+                }
               ]
             },
             {
@@ -1081,8 +1663,16 @@
               "summary": "+1.4 effort · costs nothing visible · clears the kitchen island for ~14 days",
               "effort_applied": 1.4,
               "effects": [
-                {"kind": "set_canon_var", "key": "model_home_close", "value": "smudged"},
-                {"kind": "increment_counter", "counter": "hc_model_home_safe_days", "amount": 14}
+                {
+                  "kind": "set_canon_var",
+                  "key": "model_home_close",
+                  "value": "smudged"
+                },
+                {
+                  "kind": "increment_counter",
+                  "counter": "hc_model_home_safe_days",
+                  "amount": 14
+                }
               ]
             },
             {
@@ -1090,14 +1680,25 @@
               "summary": "+1.6 effort · cicada softens the room itself · the family signs Friday",
               "effort_applied": 1.6,
               "effects": [
-                {"kind": "set_canon_var", "key": "model_home_close", "value": "cicada"},
-                {"kind": "set_flag", "flag": "walsh_family_signed", "value": true}
+                {
+                  "kind": "set_canon_var",
+                  "key": "model_home_close",
+                  "value": "cicada"
+                },
+                {
+                  "kind": "set_flag",
+                  "flag": "walsh_family_signed",
+                  "value": true
+                }
               ]
             }
           ]
         }
       ],
-      "ideal_handlers": ["cicada", "moth"],
+      "ideal_handlers": [
+        "cicada",
+        "moth"
+      ],
       "resolution_flavor_success": [
         "The Walsh family signed on Friday at 2:14 PM. The realtor wrote a thank-you note that mentioned 'a warm kitchen.'",
         "The realtor walked through Friday and didn't notice the kitchen island. Which is what was supposed to happen."
@@ -1110,13 +1711,21 @@
       "id": "local_press_exposure",
       "title": "Local Press Exposure",
       "problem_type": "local_press_exposure",
-      "regions_eligible": ["small_wood", "graustark"],
+      "regions_eligible": [
+        "small_wood",
+        "graustark"
+      ],
       "base_severity": 2,
       "tick_per_day": 0.5,
       "effort_to_resolve": 2,
       "flavor": "Page B6 of the Small Wood Gazette. Five paragraphs, three of them about Frasier's contact's brother. The fourth is about the room above the timber yard.",
       "if_unresolved_at_severity_5": [
-        {"kind": "lose_node", "region": "current", "node": "any_press_adjacent", "days": 14}
+        {
+          "kind": "lose_node",
+          "region": "current",
+          "node": "any_press_adjacent",
+          "days": 14
+        }
       ],
       "dispatch_shape_hint": "Press is paper · paper has a deadline. Read the piece · decide whether to kill it, redirect it, or own the next one. Two stages.",
       "stages": [
@@ -1131,7 +1740,11 @@
               "summary": "+0.6 effort · pure intel · the piece runs its course",
               "effort_applied": 0.6,
               "effects": [
-                {"kind": "set_flag", "flag": "press_filed_not_engaged", "value": true}
+                {
+                  "kind": "set_flag",
+                  "flag": "press_filed_not_engaged",
+                  "value": true
+                }
               ]
             },
             {
@@ -1139,8 +1752,17 @@
               "summary": "+1.2 effort · Roy now knows someone's reading · -1 cover (he writes it down in his notebook)",
               "effort_applied": 1.2,
               "effects": [
-                {"kind": "spend_cover", "amount": 1, "region": "current", "reason": "agent now in Roy's reporter notebook"},
-                {"kind": "set_flag", "flag": "roy_pressured", "value": true}
+                {
+                  "kind": "spend_cover",
+                  "amount": 1,
+                  "region": "current",
+                  "reason": "agent now in Roy's reporter notebook"
+                },
+                {
+                  "kind": "set_flag",
+                  "flag": "roy_pressured",
+                  "value": true
+                }
               ]
             },
             {
@@ -1148,9 +1770,24 @@
               "summary": "+1.4 effort · the next B6 is a softer story · elicia owes a future favor back",
               "effort_applied": 1.4,
               "effects": [
-                {"kind": "set_canon_var", "key": "press_next_b6", "value": "fundraiser"},
-                {"kind": "increment_counter", "counter": "elicia_owed_favors", "amount": 1},
-                {"kind": "set_regional_marker", "region": "current", "marker_id": "b6_fundraiser_pending", "days": 7, "log_line": "[color=#c8a8ff]Marker set:[/color] softer B6 pending (7 days). Elicia has the fundraiser piece · Roy's copy-desk gets it Monday morning.", "expiry_line": "[color=#a8c0a8]Wednesday's B6 ran the fundraiser piece. Roy's file on the timber yard went into the maybe-drawer.[/color]"}
+                {
+                  "kind": "set_canon_var",
+                  "key": "press_next_b6",
+                  "value": "fundraiser"
+                },
+                {
+                  "kind": "increment_counter",
+                  "counter": "elicia_owed_favors",
+                  "amount": 1
+                },
+                {
+                  "kind": "set_regional_marker",
+                  "region": "current",
+                  "marker_id": "b6_fundraiser_pending",
+                  "days": 7,
+                  "log_line": "[color=#c8a8ff]Marker set:[/color] softer B6 pending (7 days). Elicia has the fundraiser piece · Roy's copy-desk gets it Monday morning.",
+                  "expiry_line": "[color=#a8c0a8]Wednesday's B6 ran the fundraiser piece. Roy's file on the timber yard went into the maybe-drawer.[/color]"
+                }
               ]
             }
           ]
@@ -1166,7 +1803,11 @@
               "summary": "+1.0 effort · Jules names them or doesn't · clean",
               "effort_applied": 1.0,
               "effects": [
-                {"kind": "set_canon_var", "key": "press_source_named", "value": true}
+                {
+                  "kind": "set_canon_var",
+                  "key": "press_source_named",
+                  "value": true
+                }
               ]
             },
             {
@@ -1174,8 +1815,16 @@
               "summary": "+1.6 effort · physical move · -1 sanity · the next piece has nothing to point at",
               "effort_applied": 1.6,
               "effects": [
-                {"kind": "set_canon_var", "key": "press_source_named", "value": "room_moved"},
-                {"kind": "increment_counter", "counter": "agent_sanity_cost", "amount": 1}
+                {
+                  "kind": "set_canon_var",
+                  "key": "press_source_named",
+                  "value": "room_moved"
+                },
+                {
+                  "kind": "increment_counter",
+                  "counter": "agent_sanity_cost",
+                  "amount": 1
+                }
               ]
             },
             {
@@ -1184,14 +1833,25 @@
               "requires_bbs_thread": "MS_006",
               "effort_applied": 1.2,
               "effects": [
-                {"kind": "set_canon_var", "key": "press_source_named", "value": "wire_traced"},
-                {"kind": "set_flag", "flag": "press_leak_identified", "value": true}
+                {
+                  "kind": "set_canon_var",
+                  "key": "press_source_named",
+                  "value": "wire_traced"
+                },
+                {
+                  "kind": "set_flag",
+                  "flag": "press_leak_identified",
+                  "value": true
+                }
               ]
             }
           ]
         }
       ],
-      "ideal_handlers": ["vagrant", "elicia"],
+      "ideal_handlers": [
+        "vagrant",
+        "elicia"
+      ],
       "resolution_flavor_success": [
         "Next Wednesday's B6 is the cathedral fundraiser. Roy's notebook stayed in his desk.",
         "The leak was an HOA receptionist who'd been to the yard once in May. She didn't know what she was repeating."
@@ -1204,13 +1864,20 @@
       "id": "contact_going_dark",
       "title": "Contact Going Dark",
       "problem_type": "contact_going_dark",
-      "regions_eligible": ["small_wood", "graustark"],
+      "regions_eligible": [
+        "small_wood",
+        "graustark"
+      ],
       "base_severity": 2,
       "tick_per_day": 0.6,
       "effort_to_resolve": 2,
       "flavor": "The call back hasn't come. It's Tuesday. By Friday it's a thing.",
       "if_unresolved_at_severity_5": [
-        {"kind": "lose_contact", "agent_pool": "human", "region": "current"}
+        {
+          "kind": "lose_contact",
+          "agent_pool": "human",
+          "region": "current"
+        }
       ],
       "dispatch_shape_hint": "A contact gone dark is a person who decided. Find the why before the door · two stages, the second one only if the first one says go.",
       "stages": [
@@ -1231,8 +1898,16 @@
               "summary": "+1.0 effort · the contact knows you're asking · -1 sanity (you waited by the phone)",
               "effort_applied": 1.0,
               "effects": [
-                {"kind": "set_flag", "flag": "contact_signal_sent", "value": true},
-                {"kind": "increment_counter", "counter": "agent_sanity_cost", "amount": 1}
+                {
+                  "kind": "set_flag",
+                  "flag": "contact_signal_sent",
+                  "value": true
+                },
+                {
+                  "kind": "increment_counter",
+                  "counter": "agent_sanity_cost",
+                  "amount": 1
+                }
               ]
             },
             {
@@ -1241,7 +1916,11 @@
               "requires_bbs_thread": "MS_004",
               "effort_applied": 1.2,
               "effects": [
-                {"kind": "set_flag", "flag": "contact_network_asked", "value": true}
+                {
+                  "kind": "set_flag",
+                  "flag": "contact_network_asked",
+                  "value": true
+                }
               ]
             }
           ]
@@ -1257,7 +1936,11 @@
               "summary": "+1.0 effort · the contact recognizes the knock or doesn't · safe · slow",
               "effort_applied": 1.0,
               "effects": [
-                {"kind": "set_canon_var", "key": "contact_door", "value": "knocked"}
+                {
+                  "kind": "set_canon_var",
+                  "key": "contact_door",
+                  "value": "knocked"
+                }
               ]
             },
             {
@@ -1265,8 +1948,17 @@
               "summary": "+1.4 effort · find out if it's an absence or a decision · -1 cover (the neighbor watched)",
               "effort_applied": 1.4,
               "effects": [
-                {"kind": "spend_cover", "amount": 1, "region": "current", "reason": "neighbor watched the agent in the alley"},
-                {"kind": "set_canon_var", "key": "contact_door", "value": "back_walked"}
+                {
+                  "kind": "spend_cover",
+                  "amount": 1,
+                  "region": "current",
+                  "reason": "neighbor watched the agent in the alley"
+                },
+                {
+                  "kind": "set_canon_var",
+                  "key": "contact_door",
+                  "value": "back_walked"
+                }
               ]
             },
             {
@@ -1274,15 +1966,34 @@
               "summary": "+1.6 effort · the door opens · costs john_frank a day · marker: jf_on_a_night_call for 2 days · cleanest",
               "effort_applied": 1.6,
               "effects": [
-                {"kind": "set_canon_var", "key": "contact_door", "value": "john_frank"},
-                {"kind": "increment_counter", "counter": "john_frank_day_spent", "amount": 1},
-                {"kind": "set_regional_marker", "region": "graustark", "marker_id": "jf_on_a_night_call", "days": 2, "log_line": "[color=#c8a8ff]Marker set:[/color] JF on a night call (2 days). He's not sleeping in his own bed for two days.", "expiry_line": "[color=#a8c0a8]JF is back at the cathedral basement. Coffee at 4 AM went back to normal.[/color]"}
+                {
+                  "kind": "set_canon_var",
+                  "key": "contact_door",
+                  "value": "john_frank"
+                },
+                {
+                  "kind": "increment_counter",
+                  "counter": "john_frank_day_spent",
+                  "amount": 1
+                },
+                {
+                  "kind": "set_regional_marker",
+                  "region": "graustark",
+                  "marker_id": "jf_on_a_night_call",
+                  "days": 2,
+                  "log_line": "[color=#c8a8ff]Marker set:[/color] JF on a night call (2 days). He's not sleeping in his own bed for two days.",
+                  "expiry_line": "[color=#a8c0a8]JF is back at the cathedral basement. Coffee at 4 AM went back to normal.[/color]"
+                }
               ]
             }
           ]
         }
       ],
-      "ideal_handlers": ["filly", "vagrant", "john_frank"],
+      "ideal_handlers": [
+        "filly",
+        "vagrant",
+        "john_frank"
+      ],
       "resolution_flavor_success": [
         "She called back Wednesday at 11:18 AM. She'd been at her sister's in Pensacola. The file is back open.",
         "He answered the door for John Frank. The two of them sat on the porch until 4 PM. The contact stays in the file."
@@ -1295,14 +2006,26 @@
       "id": "seed_dying",
       "title": "Seed Dying",
       "problem_type": "seed_dying",
-      "regions_eligible": ["small_wood"],
+      "regions_eligible": [
+        "small_wood"
+      ],
       "base_severity": 3,
       "tick_per_day": 0.8,
       "effort_to_resolve": 4,
       "flavor": "A planting attempt that hasn't taken. The room is rented and quiet but no one is going to it. The contact is on the way out. The next plant is going to cost more.",
       "if_unresolved_at_severity_6": [
-        {"kind": "increment_region_state", "region": "small_wood", "key": "failed_plants", "amount": 1},
-        {"kind": "decrement_region_state", "region": "small_wood", "key": "agent_day_capacity", "amount": 0.5}
+        {
+          "kind": "increment_region_state",
+          "region": "small_wood",
+          "key": "failed_plants",
+          "amount": 1
+        },
+        {
+          "kind": "decrement_region_state",
+          "region": "small_wood",
+          "key": "agent_day_capacity",
+          "amount": 0.5
+        }
       ],
       "dispatch_shape_hint": "A planting that hasn't taken is a planting that has to be reviewed before it gets reburied. Two stages: walk the room, then decide whether to nurse it, abandon it, or replant.",
       "stages": [
@@ -1317,8 +2040,16 @@
               "summary": "+1.2 effort · full diagnostic · the agent now carries the contact's whole shape · -1 sanity",
               "effort_applied": 1.2,
               "effects": [
-                {"kind": "set_flag", "flag": "seed_room_full_walked", "value": true},
-                {"kind": "increment_counter", "counter": "agent_sanity_cost", "amount": 1}
+                {
+                  "kind": "set_flag",
+                  "flag": "seed_room_full_walked",
+                  "value": true
+                },
+                {
+                  "kind": "increment_counter",
+                  "counter": "agent_sanity_cost",
+                  "amount": 1
+                }
               ]
             },
             {
@@ -1326,7 +2057,11 @@
               "summary": "+0.6 effort · soft · gives the contact one more chance · clean",
               "effort_applied": 0.6,
               "effects": [
-                {"kind": "set_flag", "flag": "seed_note_left", "value": true}
+                {
+                  "kind": "set_flag",
+                  "flag": "seed_note_left",
+                  "value": true
+                }
               ]
             },
             {
@@ -1334,8 +2069,16 @@
               "summary": "+1.0 effort · jules sees what the agent misses · costs jules a half-day",
               "effort_applied": 1.0,
               "effects": [
-                {"kind": "set_canon_var", "key": "seed_walked_with", "value": "jules"},
-                {"kind": "increment_counter", "counter": "jules_day_spent", "amount": 1}
+                {
+                  "kind": "set_canon_var",
+                  "key": "seed_walked_with",
+                  "value": "jules"
+                },
+                {
+                  "kind": "increment_counter",
+                  "counter": "jules_day_spent",
+                  "amount": 1
+                }
               ]
             },
             {
@@ -1344,9 +2087,21 @@
               "requires_bbs_thread": "BP_018",
               "effort_applied": 1.6,
               "effects": [
-                {"kind": "set_canon_var", "key": "seed_walked_with", "value": "surviving_son_ninety_four_protocol"},
-                {"kind": "set_flag", "flag": "seed_room_re_shaped_clean", "value": true},
-                {"kind": "increment_counter", "counter": "surviving_son_days_spent", "amount": 1}
+                {
+                  "kind": "set_canon_var",
+                  "key": "seed_walked_with",
+                  "value": "surviving_son_ninety_four_protocol"
+                },
+                {
+                  "kind": "set_flag",
+                  "flag": "seed_room_re_shaped_clean",
+                  "value": true
+                },
+                {
+                  "kind": "increment_counter",
+                  "counter": "surviving_son_days_spent",
+                  "amount": 1
+                }
               ]
             }
           ]
@@ -1362,8 +2117,16 @@
               "summary": "+2.0 effort · costs the_surviving_son 4 days · the planting takes",
               "effort_applied": 2.0,
               "effects": [
-                {"kind": "set_canon_var", "key": "seed_decision", "value": "nursed"},
-                {"kind": "increment_counter", "counter": "surviving_son_days_spent", "amount": 4}
+                {
+                  "kind": "set_canon_var",
+                  "key": "seed_decision",
+                  "value": "nursed"
+                },
+                {
+                  "kind": "increment_counter",
+                  "counter": "surviving_son_days_spent",
+                  "amount": 4
+                }
               ]
             },
             {
@@ -1371,8 +2134,17 @@
               "summary": "+1.0 effort · cheap now · expensive later · -1 future plant difficulty",
               "effort_applied": 1.0,
               "effects": [
-                {"kind": "set_canon_var", "key": "seed_decision", "value": "abandoned"},
-                {"kind": "increment_region_state", "region": "small_wood", "key": "next_plant_cost", "amount": 1}
+                {
+                  "kind": "set_canon_var",
+                  "key": "seed_decision",
+                  "value": "abandoned"
+                },
+                {
+                  "kind": "increment_region_state",
+                  "region": "small_wood",
+                  "key": "next_plant_cost",
+                  "amount": 1
+                }
               ]
             },
             {
@@ -1380,14 +2152,26 @@
               "summary": "+1.6 effort · the contact gets a different door · -1 cover (the move is on someone's tape)",
               "effort_applied": 1.6,
               "effects": [
-                {"kind": "set_canon_var", "key": "seed_decision", "value": "replanted"},
-                {"kind": "spend_cover", "amount": 1, "region": "small_wood", "reason": "the move was on a neighbor's eye"}
+                {
+                  "kind": "set_canon_var",
+                  "key": "seed_decision",
+                  "value": "replanted"
+                },
+                {
+                  "kind": "spend_cover",
+                  "amount": 1,
+                  "region": "small_wood",
+                  "reason": "the move was on a neighbor's eye"
+                }
               ]
             }
           ]
         }
       ],
-      "ideal_handlers": ["jules.timberyard", "the_surviving_son"],
+      "ideal_handlers": [
+        "jules.timberyard",
+        "the_surviving_son"
+      ],
       "resolution_flavor_success": [
         "The contact made the sign-on Thursday at 7:14 AM. The lamp was off when {agent} walked past Friday.",
         "The_surviving_son sat across from him every morning for four days. By the fifth morning the contact made his own coffee."
@@ -1400,14 +2184,23 @@
       "id": "demon_corruption_event",
       "title": "Demon Corruption Event",
       "problem_type": "demon_corruption_event",
-      "regions_eligible": ["small_wood"],
+      "regions_eligible": [
+        "small_wood"
+      ],
       "base_severity": 4,
       "tick_per_day": 1.0,
       "effort_to_resolve": 5,
       "flavor": "A demon currently in Small Wood is teetering. The corruption rating is at threshold. The next dispatch decides whether you pull her or push her.",
       "if_unresolved_at_severity_5": [
-        {"kind": "turn_demon", "demon_id": "current_in_small_wood"},
-        {"kind": "spawn_problem_in_region", "region": "small_wood", "template": "turned_demon_active"}
+        {
+          "kind": "turn_demon",
+          "demon_id": "current_in_small_wood"
+        },
+        {
+          "kind": "spawn_problem_in_region",
+          "region": "small_wood",
+          "template": "turned_demon_active"
+        }
       ],
       "dispatch_shape_hint": "A demon teetering is a choice the agent will not make twice in a year. Two stages: the read (what kind of corruption), the call (pull her, push her, or hold the door). Filly is the only handler who can do this clean.",
       "stages": [
@@ -1422,7 +2215,11 @@
               "summary": "+1.0 effort · diagnostic · safe · clean read",
               "effort_applied": 1.0,
               "effects": [
-                {"kind": "set_flag", "flag": "corruption_diagnostic_run", "value": true}
+                {
+                  "kind": "set_flag",
+                  "flag": "corruption_diagnostic_run",
+                  "value": true
+                }
               ]
             },
             {
@@ -1430,7 +2227,11 @@
               "summary": "+1.4 effort · she breaks toward the photo or away from it · either is a read",
               "effort_applied": 1.4,
               "effects": [
-                {"kind": "set_canon_var", "key": "corruption_polarity_read", "value": true}
+                {
+                  "kind": "set_canon_var",
+                  "key": "corruption_polarity_read",
+                  "value": true
+                }
               ]
             },
             {
@@ -1438,8 +2239,16 @@
               "summary": "+1.2 effort · filly carries the read · clean · filly is on the road within the hour",
               "effort_applied": 1.2,
               "effects": [
-                {"kind": "set_canon_var", "key": "corruption_read_runner", "value": "filly"},
-                {"kind": "increment_counter", "counter": "filly_called_in", "amount": 1}
+                {
+                  "kind": "set_canon_var",
+                  "key": "corruption_read_runner",
+                  "value": "filly"
+                },
+                {
+                  "kind": "increment_counter",
+                  "counter": "filly_called_in",
+                  "amount": 1
+                }
               ]
             }
           ]
@@ -1455,10 +2264,31 @@
               "summary": "+2.0 effort · clean · filly is offline for the week · costs 6 days of filly capacity · marker: filly_at_safehouse for 6 days · unlocks Death · the_quiet_committal",
               "effort_applied": 2.0,
               "effects": [
-                {"kind": "set_canon_var", "key": "corruption_call", "value": "pulled"},
-                {"kind": "decrement_region_state", "region": "small_wood", "key": "agent_day_capacity", "amount": 1.0},
-                {"kind": "set_regional_marker", "region": "small_wood", "marker_id": "filly_at_safehouse", "days": 6, "log_line": "[color=#c8a8ff]Marker set:[/color] filly at the safehouse (6 days). No corruption-adjacent events in Small Wood while she's off the road.", "expiry_line": "[color=#a8c0a8]Filly's un-binding closed at day %d. She's back on the road tomorrow.[/color]"},
-                {"kind": "unlock_gauntlet_scenario", "arcana": "death", "scenario_id": "the_quiet_committal", "display_name": "Death · the_quiet_committal"}
+                {
+                  "kind": "set_canon_var",
+                  "key": "corruption_call",
+                  "value": "pulled"
+                },
+                {
+                  "kind": "decrement_region_state",
+                  "region": "small_wood",
+                  "key": "agent_day_capacity",
+                  "amount": 1.0
+                },
+                {
+                  "kind": "set_regional_marker",
+                  "region": "small_wood",
+                  "marker_id": "filly_at_safehouse",
+                  "days": 6,
+                  "log_line": "[color=#c8a8ff]Marker set:[/color] filly at the safehouse (6 days). No corruption-adjacent events in Small Wood while she's off the road.",
+                  "expiry_line": "[color=#a8c0a8]Filly's un-binding closed at day %d. She's back on the road tomorrow.[/color]"
+                },
+                {
+                  "kind": "unlock_gauntlet_scenario",
+                  "arcana": "death",
+                  "scenario_id": "the_quiet_committal",
+                  "display_name": "Death · the_quiet_committal"
+                }
               ]
             },
             {
@@ -1466,8 +2296,16 @@
               "summary": "+1.6 effort · she returns · -1 contact (the contact who was running her support drops you) · she is now ours",
               "effort_applied": 1.6,
               "effects": [
-                {"kind": "set_canon_var", "key": "corruption_call", "value": "pushed"},
-                {"kind": "lose_contact", "agent_pool": "human", "region": "small_wood"}
+                {
+                  "kind": "set_canon_var",
+                  "key": "corruption_call",
+                  "value": "pushed"
+                },
+                {
+                  "kind": "lose_contact",
+                  "agent_pool": "human",
+                  "region": "small_wood"
+                }
               ]
             },
             {
@@ -1475,13 +2313,19 @@
               "summary": "+0.8 effort · the lowest effort and the highest cost · the outcome is the outcome",
               "effort_applied": 0.8,
               "effects": [
-                {"kind": "set_canon_var", "key": "corruption_call", "value": "held"}
+                {
+                  "kind": "set_canon_var",
+                  "key": "corruption_call",
+                  "value": "held"
+                }
               ]
             }
           ]
         }
       ],
-      "ideal_handlers": ["filly"],
+      "ideal_handlers": [
+        "filly"
+      ],
       "resolution_flavor_success": [
         "She's at the safehouse. Filly closed the door at 11 PM and the un-binding starts Monday.",
         "She chose. The road was empty by 6 AM. Filly drove back to town in the rain."
@@ -1494,13 +2338,19 @@
       "id": "ground_refuses_plant",
       "title": "The Ground Refuses",
       "problem_type": "ground_refuses_plant",
-      "regions_eligible": ["small_wood"],
+      "regions_eligible": [
+        "small_wood"
+      ],
       "base_severity": 2,
       "tick_per_day": 0.3,
       "effort_to_resolve": 3,
       "flavor": "Sometimes Small Wood does not want what Frasier is sending. The dirt road that was supposed to be a node says — through the locals who walk it — no.",
       "if_unresolved_at_severity_5": [
-        {"kind": "remove_target_node", "region": "small_wood", "node": "any_unmade_target"}
+        {
+          "kind": "remove_target_node",
+          "region": "small_wood",
+          "node": "any_unmade_target"
+        }
       ],
       "dispatch_shape_hint": "The ground says no through people · listen to which people. Single stage · the choice is how you negotiate with the refusal.",
       "stages": [
@@ -1515,7 +2365,11 @@
               "summary": "+1.2 effort · the ground was right · the new site takes · clean",
               "effort_applied": 1.2,
               "effects": [
-                {"kind": "set_canon_var", "key": "ground_response", "value": "moved"}
+                {
+                  "kind": "set_canon_var",
+                  "key": "ground_response",
+                  "value": "moved"
+                }
               ]
             },
             {
@@ -1523,8 +2377,16 @@
               "summary": "+1.6 effort · they tell {agent} what the ground is holding · -1 sanity (they take a piece of you back)",
               "effort_applied": 1.6,
               "effects": [
-                {"kind": "set_canon_var", "key": "ground_response", "value": "negotiated"},
-                {"kind": "increment_counter", "counter": "agent_sanity_cost", "amount": 1}
+                {
+                  "kind": "set_canon_var",
+                  "key": "ground_response",
+                  "value": "negotiated"
+                },
+                {
+                  "kind": "increment_counter",
+                  "counter": "agent_sanity_cost",
+                  "amount": 1
+                }
               ]
             },
             {
@@ -1532,14 +2394,26 @@
               "summary": "+1.8 effort · the node opens but the road's locals stop walking it · -2 cover (the absence is noticed)",
               "effort_applied": 1.8,
               "effects": [
-                {"kind": "set_canon_var", "key": "ground_response", "value": "forced"},
-                {"kind": "spend_cover", "amount": 2, "region": "small_wood", "reason": "the road went quiet; absence is its own signal"}
+                {
+                  "kind": "set_canon_var",
+                  "key": "ground_response",
+                  "value": "forced"
+                },
+                {
+                  "kind": "spend_cover",
+                  "amount": 2,
+                  "region": "small_wood",
+                  "reason": "the road went quiet; absence is its own signal"
+                }
               ]
             }
           ]
         }
       ],
-      "ideal_handlers": ["jules.timberyard", "vagrant"],
+      "ideal_handlers": [
+        "jules.timberyard",
+        "vagrant"
+      ],
       "resolution_flavor_success": [
         "The new site is the new site. The Lacombe sisters walked the same decade on both legs the next morning.",
         "Mr Beauchamp went back to his normal pace at 5:30. The road accepted what got planted."
@@ -1552,13 +2426,19 @@
       "id": "town_meeting_pushback",
       "title": "Town Meeting Pushback",
       "problem_type": "town_meeting_pushback",
-      "regions_eligible": ["small_wood"],
+      "regions_eligible": [
+        "small_wood"
+      ],
       "base_severity": 2,
       "tick_per_day": 0.4,
       "effort_to_resolve": 2,
       "flavor": "The Wednesday town hall in Small Wood. The room knows who's new. The room has been the room for fifty years.",
       "if_unresolved_at_severity_4": [
-        {"kind": "spawn_problem_in_region", "region": "small_wood", "template": "local_press_exposure"}
+        {
+          "kind": "spawn_problem_in_region",
+          "region": "small_wood",
+          "template": "local_press_exposure"
+        }
       ],
       "dispatch_shape_hint": "The Small Wood room has been the room for fifty years. The room does not respect lobbying · the room respects history. Single stage · the choice is who speaks for you.",
       "stages": [
@@ -1573,8 +2453,16 @@
               "summary": "+1.4 effort · clean · the room nods · jules carries the day · costs jules a day of capacity",
               "effort_applied": 1.4,
               "effects": [
-                {"kind": "set_canon_var", "key": "small_wood_voice", "value": "jules"},
-                {"kind": "increment_counter", "counter": "jules_day_spent", "amount": 1}
+                {
+                  "kind": "set_canon_var",
+                  "key": "small_wood_voice",
+                  "value": "jules"
+                },
+                {
+                  "kind": "increment_counter",
+                  "counter": "jules_day_spent",
+                  "amount": 1
+                }
               ]
             },
             {
@@ -1582,8 +2470,17 @@
               "summary": "+1.8 effort · the room hears a new voice · -1 cover · could go either way",
               "effort_applied": 1.8,
               "effects": [
-                {"kind": "spend_cover", "amount": 1, "region": "small_wood", "reason": "agent on the open-comment record in Small Wood"},
-                {"kind": "set_canon_var", "key": "small_wood_voice", "value": "agent"}
+                {
+                  "kind": "spend_cover",
+                  "amount": 1,
+                  "region": "small_wood",
+                  "reason": "agent on the open-comment record in Small Wood"
+                },
+                {
+                  "kind": "set_canon_var",
+                  "key": "small_wood_voice",
+                  "value": "agent"
+                }
               ]
             },
             {
@@ -1591,14 +2488,24 @@
               "summary": "+1.2 effort · private · Earl is the room · costs an inflexible favor he'll cash one day",
               "effort_applied": 1.2,
               "effects": [
-                {"kind": "set_canon_var", "key": "small_wood_voice", "value": "earl_private"},
-                {"kind": "increment_counter", "counter": "earl_owed_favors", "amount": 1}
+                {
+                  "kind": "set_canon_var",
+                  "key": "small_wood_voice",
+                  "value": "earl_private"
+                },
+                {
+                  "kind": "increment_counter",
+                  "counter": "earl_owed_favors",
+                  "amount": 1
+                }
               ]
             }
           ]
         }
       ],
-      "ideal_handlers": ["jules.timberyard"],
+      "ideal_handlers": [
+        "jules.timberyard"
+      ],
       "resolution_flavor_success": [
         "The motion passed 5-2. The back row left without saying anything to each other on the way out.",
         "Earl shook Jules's hand at the door. They didn't speak of the meeting again."
@@ -1611,7 +2518,9 @@
       "id": "turned_demon_active",
       "title": "Turned Demon Active",
       "problem_type": "turned_demon_active",
-      "regions_eligible": ["small_wood"],
+      "regions_eligible": [
+        "small_wood"
+      ],
       "base_severity": 4,
       "tick_per_day": 0.5,
       "effort_to_resolve": 5,
@@ -1630,8 +2539,17 @@
               "summary": "+2.0 effort · husk offline 14 days · clean integration · cleanest outcome",
               "effort_applied": 2.0,
               "effects": [
-                {"kind": "set_canon_var", "key": "turned_integration", "value": "husk_solo"},
-                {"kind": "decrement_region_state", "region": "small_wood", "key": "agent_day_capacity", "amount": 2.0}
+                {
+                  "kind": "set_canon_var",
+                  "key": "turned_integration",
+                  "value": "husk_solo"
+                },
+                {
+                  "kind": "decrement_region_state",
+                  "region": "small_wood",
+                  "key": "agent_day_capacity",
+                  "amount": 2.0
+                }
               ]
             },
             {
@@ -1639,9 +2557,21 @@
               "summary": "+1.8 effort · 8 days · filly learns the method · -1 sanity for filly",
               "effort_applied": 1.8,
               "effects": [
-                {"kind": "set_canon_var", "key": "turned_integration", "value": "husk_filly"},
-                {"kind": "set_flag", "flag": "filly_learned_integration", "value": true},
-                {"kind": "increment_counter", "counter": "filly_sanity_cost", "amount": 1}
+                {
+                  "kind": "set_canon_var",
+                  "key": "turned_integration",
+                  "value": "husk_filly"
+                },
+                {
+                  "kind": "set_flag",
+                  "flag": "filly_learned_integration",
+                  "value": true
+                },
+                {
+                  "kind": "increment_counter",
+                  "counter": "filly_sanity_cost",
+                  "amount": 1
+                }
               ]
             },
             {
@@ -1649,8 +2579,16 @@
               "summary": "+1.2 effort · risky · she keeps some of Frasier's reflexes · -2 future stability",
               "effort_applied": 1.2,
               "effects": [
-                {"kind": "set_canon_var", "key": "turned_integration", "value": "shortcut"},
-                {"kind": "set_flag", "flag": "turned_demon_unstable", "value": true}
+                {
+                  "kind": "set_canon_var",
+                  "key": "turned_integration",
+                  "value": "shortcut"
+                },
+                {
+                  "kind": "set_flag",
+                  "flag": "turned_demon_unstable",
+                  "value": true
+                }
               ]
             }
           ]
@@ -1666,9 +2604,25 @@
               "summary": "+1.4 effort · slow build · she becomes part of the region · +1 small_wood agent capacity over time",
               "effort_applied": 1.4,
               "effects": [
-                {"kind": "set_canon_var", "key": "turned_assignment", "value": "embedded"},
-                {"kind": "increment_region_state", "region": "small_wood", "key": "agent_day_capacity", "amount": 0.5},
-                {"kind": "set_regional_marker", "region": "small_wood", "marker_id": "sw_turned_demon_embedded", "days": 21, "log_line": "[color=#c8a8ff]Marker set:[/color] turned demon embedded in Small Wood (21 days). She's part of the region's daily texture now.", "expiry_line": "[color=#a8c0a8]The embedding took. She is Small-Wood-adjacent for the rest of the summer.[/color]"}
+                {
+                  "kind": "set_canon_var",
+                  "key": "turned_assignment",
+                  "value": "embedded"
+                },
+                {
+                  "kind": "increment_region_state",
+                  "region": "small_wood",
+                  "key": "agent_day_capacity",
+                  "amount": 0.5
+                },
+                {
+                  "kind": "set_regional_marker",
+                  "region": "small_wood",
+                  "marker_id": "sw_turned_demon_embedded",
+                  "days": 21,
+                  "log_line": "[color=#c8a8ff]Marker set:[/color] turned demon embedded in Small Wood (21 days). She's part of the region's daily texture now.",
+                  "expiry_line": "[color=#a8c0a8]The embedding took. She is Small-Wood-adjacent for the rest of the summer.[/color]"
+                }
               ]
             },
             {
@@ -1676,9 +2630,22 @@
               "summary": "+2.0 effort · high-value intel · -2 cover · -1 sanity for husk (he watches her go)",
               "effort_applied": 2.0,
               "effects": [
-                {"kind": "set_canon_var", "key": "turned_assignment", "value": "infiltration"},
-                {"kind": "spend_cover", "amount": 2, "region": "small_wood", "reason": "she's back on Frasier's side · this time as ours"},
-                {"kind": "increment_counter", "counter": "husk_sanity_cost", "amount": 1}
+                {
+                  "kind": "set_canon_var",
+                  "key": "turned_assignment",
+                  "value": "infiltration"
+                },
+                {
+                  "kind": "spend_cover",
+                  "amount": 2,
+                  "region": "small_wood",
+                  "reason": "she's back on Frasier's side · this time as ours"
+                },
+                {
+                  "kind": "increment_counter",
+                  "counter": "husk_sanity_cost",
+                  "amount": 1
+                }
               ]
             },
             {
@@ -1686,13 +2653,19 @@
               "summary": "+0.8 effort · no immediate value · clean · she may surface later in some form we don't know yet",
               "effort_applied": 0.8,
               "effects": [
-                {"kind": "set_canon_var", "key": "turned_assignment", "value": "rest"}
+                {
+                  "kind": "set_canon_var",
+                  "key": "turned_assignment",
+                  "value": "rest"
+                }
               ]
             }
           ]
         }
       ],
-      "ideal_handlers": ["husk"],
+      "ideal_handlers": [
+        "husk"
+      ],
       "resolution_flavor_success": [
         "She walked the dirt road north of the plant Wednesday morning. Mr Beauchamp passed her and tipped his hat.",
         "Husk closed the safehouse door at sundown. She was inside · she was ours · the work would hold."
@@ -1705,7 +2678,11 @@
       "id": "wake_problem",
       "title": "Wake Problem",
       "problem_type": "wake_problem",
-      "regions_eligible": ["graustark", "harmony_creek", "small_wood"],
+      "regions_eligible": [
+        "graustark",
+        "harmony_creek",
+        "small_wood"
+      ],
       "base_severity": 2,
       "tick_per_day": 0.3,
       "effort_to_resolve": 2,
@@ -1724,7 +2701,11 @@
               "summary": "+0.8 effort · clean source data · Steamboat does not know",
               "effort_applied": 0.8,
               "effects": [
-                {"kind": "set_flag", "flag": "wake_gauge_data_logged", "value": true}
+                {
+                  "kind": "set_flag",
+                  "flag": "wake_gauge_data_logged",
+                  "value": true
+                }
               ]
             },
             {
@@ -1732,8 +2713,16 @@
               "summary": "+1.0 effort · he tightens his own behavior · -1 sanity (he carries it)",
               "effort_applied": 1.0,
               "effects": [
-                {"kind": "set_flag", "flag": "steamboat_self_corrected", "value": true},
-                {"kind": "increment_counter", "counter": "steamboat_sanity_burden", "amount": 1}
+                {
+                  "kind": "set_flag",
+                  "flag": "steamboat_self_corrected",
+                  "value": true
+                },
+                {
+                  "kind": "increment_counter",
+                  "counter": "steamboat_sanity_burden",
+                  "amount": 1
+                }
               ]
             },
             {
@@ -1742,8 +2731,16 @@
               "requires_bbs_thread": "MS_00B_LEVEE",
               "effort_applied": 1.2,
               "effects": [
-                {"kind": "set_canon_var", "key": "wake_extra_gauges", "value": 2},
-                {"kind": "set_flag", "flag": "levee_thread_cross_referenced", "value": true}
+                {
+                  "kind": "set_canon_var",
+                  "key": "wake_extra_gauges",
+                  "value": 2
+                },
+                {
+                  "kind": "set_flag",
+                  "flag": "levee_thread_cross_referenced",
+                  "value": true
+                }
               ]
             }
           ]
@@ -1759,9 +2756,24 @@
               "summary": "+1.4 effort · the wake closes · weir is offline for one day · marker: weir_on_the_dock for 1 day",
               "effort_applied": 1.4,
               "effects": [
-                {"kind": "set_canon_var", "key": "wake_dampener", "value": "weir"},
-                {"kind": "increment_counter", "counter": "weir_day_spent", "amount": 1},
-                {"kind": "set_regional_marker", "region": "graustark", "marker_id": "weir_on_the_dock", "days": 1, "log_line": "[color=#c8a8ff]Marker set:[/color] Weir on the dock (1 day). Steamboat runs are on hold; the river is Weir's for the day.", "expiry_line": "[color=#a8c0a8]Weir came off the dock at 5 AM. The river returned to its normal Sunday self.[/color]"}
+                {
+                  "kind": "set_canon_var",
+                  "key": "wake_dampener",
+                  "value": "weir"
+                },
+                {
+                  "kind": "increment_counter",
+                  "counter": "weir_day_spent",
+                  "amount": 1
+                },
+                {
+                  "kind": "set_regional_marker",
+                  "region": "graustark",
+                  "marker_id": "weir_on_the_dock",
+                  "days": 1,
+                  "log_line": "[color=#c8a8ff]Marker set:[/color] Weir on the dock (1 day). Steamboat runs are on hold; the river is Weir's for the day.",
+                  "expiry_line": "[color=#a8c0a8]Weir came off the dock at 5 AM. The river returned to its normal Sunday self.[/color]"
+                }
               ]
             },
             {
@@ -1769,8 +2781,16 @@
               "summary": "+1.6 effort · the wake closes in the wrong direction · -1 sanity for moth · slow burn",
               "effort_applied": 1.6,
               "effects": [
-                {"kind": "set_canon_var", "key": "wake_dampener", "value": "moth"},
-                {"kind": "increment_counter", "counter": "moth_sanity_cost", "amount": 1}
+                {
+                  "kind": "set_canon_var",
+                  "key": "wake_dampener",
+                  "value": "moth"
+                },
+                {
+                  "kind": "increment_counter",
+                  "counter": "moth_sanity_cost",
+                  "amount": 1
+                }
               ]
             },
             {
@@ -1778,14 +2798,26 @@
               "summary": "+1.0 effort · the wake closes officially · -1 cover · -1 future cover-recovery",
               "effort_applied": 1.0,
               "effects": [
-                {"kind": "spend_cover", "amount": 1, "region": "current", "reason": "the wake is on the harbor-master's paper trail"},
-                {"kind": "set_canon_var", "key": "wake_dampener", "value": "official"}
+                {
+                  "kind": "spend_cover",
+                  "amount": 1,
+                  "region": "current",
+                  "reason": "the wake is on the harbor-master's paper trail"
+                },
+                {
+                  "kind": "set_canon_var",
+                  "key": "wake_dampener",
+                  "value": "official"
+                }
               ]
             }
           ]
         }
       ],
-      "ideal_handlers": ["weir", "moth"],
+      "ideal_handlers": [
+        "weir",
+        "moth"
+      ],
       "resolution_flavor_success": [
         "The river dropped four inches by Saturday morning. The harbor-master did not call back.",
         "Weir stood on the dock until the wake closed. He did not speak to Steamboat about it."
@@ -1798,15 +2830,24 @@
       "id": "cathedral_basement_relay",
       "title": "Cathedral Basement Relay",
       "problem_type": "infrastructure_failing",
-      "regions_eligible": ["graustark"],
+      "regions_eligible": [
+        "graustark"
+      ],
       "base_severity": 5,
       "tick_per_day": 1.2,
       "effort_to_resolve": 6,
       "flavor": "The W14 storm came north of the keys. The cathedral basement is the inland relay for the gulf-coast circle. JF is on the boiler; the line stays up only as long as someone's at the desk. Cross-BBS coordination through the storm window.",
       "spawn_only_by": "w14_storm_hard_branch",
       "if_unresolved_at_severity_7": [
-        {"kind": "log", "text": "[color=#ff9090]The relay dropped at 11:48 PM. STEEPLE tried to call back from Mobile and got no carrier.[/color]"},
-        {"kind": "queue_burn", "weeks_from_now": 1, "reason": "the relay dropped; the gulf-coast circle holds it against you"}
+        {
+          "kind": "log",
+          "text": "[color=#ff9090]The relay dropped at 11:48 PM. STEEPLE tried to call back from Mobile and got no carrier.[/color]"
+        },
+        {
+          "kind": "queue_burn",
+          "weeks_from_now": 1,
+          "reason": "the relay dropped; the gulf-coast circle holds it against you"
+        }
       ],
       "dispatch_shape_hint": "The storm window is the storm window. JF holds the boiler · someone holds the desk · someone holds the line up the coast. Three stages, one per role · this is the W14 hard branch and it stays in the file.",
       "stages": [
@@ -1821,8 +2862,17 @@
               "summary": "+1.4 effort · JF carries it · costs JF 2 days of capacity post-storm",
               "effort_applied": 1.4,
               "effects": [
-                {"kind": "set_canon_var", "key": "relay_boiler_runner", "value": "jf"},
-                {"kind": "decrement_region_state", "region": "graustark", "key": "agent_day_capacity", "amount": 0.5}
+                {
+                  "kind": "set_canon_var",
+                  "key": "relay_boiler_runner",
+                  "value": "jf"
+                },
+                {
+                  "kind": "decrement_region_state",
+                  "region": "graustark",
+                  "key": "agent_day_capacity",
+                  "amount": 0.5
+                }
               ]
             },
             {
@@ -1830,9 +2880,21 @@
               "summary": "+1.8 effort · the agent picks up the boiler skill for future storms · -1 sanity",
               "effort_applied": 1.8,
               "effects": [
-                {"kind": "set_canon_var", "key": "relay_boiler_runner", "value": "shared"},
-                {"kind": "set_flag", "flag": "agent_learned_boiler", "value": true},
-                {"kind": "increment_counter", "counter": "agent_sanity_cost", "amount": 1}
+                {
+                  "kind": "set_canon_var",
+                  "key": "relay_boiler_runner",
+                  "value": "shared"
+                },
+                {
+                  "kind": "set_flag",
+                  "flag": "agent_learned_boiler",
+                  "value": true
+                },
+                {
+                  "kind": "increment_counter",
+                  "counter": "agent_sanity_cost",
+                  "amount": 1
+                }
               ]
             },
             {
@@ -1840,8 +2902,17 @@
               "summary": "+1.6 effort · steamboat on boiler · cleanest under pressure · -1 cover (steamboat is now on the basement schedule)",
               "effort_applied": 1.6,
               "effects": [
-                {"kind": "set_canon_var", "key": "relay_boiler_runner", "value": "steamboat"},
-                {"kind": "spend_cover", "amount": 1, "region": "graustark", "reason": "steamboat on the cathedral basement schedule"}
+                {
+                  "kind": "set_canon_var",
+                  "key": "relay_boiler_runner",
+                  "value": "steamboat"
+                },
+                {
+                  "kind": "spend_cover",
+                  "amount": 1,
+                  "region": "graustark",
+                  "reason": "steamboat on the cathedral basement schedule"
+                }
               ]
             }
           ]
@@ -1857,9 +2928,24 @@
               "summary": "+2.0 effort · clean · -2 sanity · the cleanest log · marker: cathedral_relay_active for 3 days",
               "effort_applied": 2.0,
               "effects": [
-                {"kind": "set_canon_var", "key": "relay_desk_holder", "value": "agent"},
-                {"kind": "increment_counter", "counter": "agent_sanity_cost", "amount": 2},
-                {"kind": "set_regional_marker", "region": "graustark", "marker_id": "cathedral_relay_active", "days": 3, "log_line": "[color=#c8a8ff]Marker set:[/color] cathedral relay active (3 days). The basement is the gulf-coast circle's inland hub through the W14 storm window.", "expiry_line": "[color=#a8c0a8]The cathedral relay stood down at 6:14 AM Saturday. STEEPLE logged the all-clear.[/color]"}
+                {
+                  "kind": "set_canon_var",
+                  "key": "relay_desk_holder",
+                  "value": "agent"
+                },
+                {
+                  "kind": "increment_counter",
+                  "counter": "agent_sanity_cost",
+                  "amount": 2
+                },
+                {
+                  "kind": "set_regional_marker",
+                  "region": "graustark",
+                  "marker_id": "cathedral_relay_active",
+                  "days": 3,
+                  "log_line": "[color=#c8a8ff]Marker set:[/color] cathedral relay active (3 days). The basement is the gulf-coast circle's inland hub through the W14 storm window.",
+                  "expiry_line": "[color=#a8c0a8]The cathedral relay stood down at 6:14 AM Saturday. STEEPLE logged the all-clear.[/color]"
+                }
               ]
             },
             {
@@ -1867,8 +2953,16 @@
               "summary": "+1.6 effort · clean enough · weir spent one night · agent stays functional Saturday",
               "effort_applied": 1.6,
               "effects": [
-                {"kind": "set_canon_var", "key": "relay_desk_holder", "value": "rotation"},
-                {"kind": "increment_counter", "counter": "weir_day_spent", "amount": 1}
+                {
+                  "kind": "set_canon_var",
+                  "key": "relay_desk_holder",
+                  "value": "rotation"
+                },
+                {
+                  "kind": "increment_counter",
+                  "counter": "weir_day_spent",
+                  "amount": 1
+                }
               ]
             },
             {
@@ -1877,9 +2971,22 @@
               "requires_bbs_thread": "MS_010",
               "effort_applied": 1.4,
               "effects": [
-                {"kind": "set_canon_var", "key": "relay_desk_holder", "value": "civilian"},
-                {"kind": "spend_cover", "amount": 2, "region": "graustark", "reason": "civilian pulled into the basement relay"},
-                {"kind": "set_flag", "flag": "ms_010_reader_pulled_in", "value": true}
+                {
+                  "kind": "set_canon_var",
+                  "key": "relay_desk_holder",
+                  "value": "civilian"
+                },
+                {
+                  "kind": "spend_cover",
+                  "amount": 2,
+                  "region": "graustark",
+                  "reason": "civilian pulled into the basement relay"
+                },
+                {
+                  "kind": "set_flag",
+                  "flag": "ms_010_reader_pulled_in",
+                  "value": true
+                }
               ]
             }
           ]
@@ -1895,7 +3002,11 @@
               "summary": "+1.4 effort · clean exit · the circle is intact",
               "effort_applied": 1.4,
               "effects": [
-                {"kind": "set_canon_var", "key": "relay_coast_call", "value": "all_clear"}
+                {
+                  "kind": "set_canon_var",
+                  "key": "relay_coast_call",
+                  "value": "all_clear"
+                }
               ]
             },
             {
@@ -1903,8 +3014,16 @@
               "summary": "+1.0 effort · safer · costs 3 days of gulf-coast inbound traffic",
               "effort_applied": 1.0,
               "effects": [
-                {"kind": "set_canon_var", "key": "relay_coast_call", "value": "hold_72"},
-                {"kind": "set_flag", "flag": "gulf_quiet_window", "value": true}
+                {
+                  "kind": "set_canon_var",
+                  "key": "relay_coast_call",
+                  "value": "hold_72"
+                },
+                {
+                  "kind": "set_flag",
+                  "flag": "gulf_quiet_window",
+                  "value": true
+                }
               ]
             },
             {
@@ -1912,21 +3031,212 @@
               "summary": "+1.8 effort · the circle reshuffles · -1 cover (you're on the circle's notes now) · the cathedral isn't the relay next W14",
               "effort_applied": 1.8,
               "effects": [
-                {"kind": "set_canon_var", "key": "relay_coast_call", "value": "reroute"},
-                {"kind": "spend_cover", "amount": 1, "region": "graustark", "reason": "agent named on the gulf-coast routing notes"},
-                {"kind": "set_flag", "flag": "cathedral_relay_decommissioned", "value": true}
+                {
+                  "kind": "set_canon_var",
+                  "key": "relay_coast_call",
+                  "value": "reroute"
+                },
+                {
+                  "kind": "spend_cover",
+                  "amount": 1,
+                  "region": "graustark",
+                  "reason": "agent named on the gulf-coast routing notes"
+                },
+                {
+                  "kind": "set_flag",
+                  "flag": "cathedral_relay_decommissioned",
+                  "value": true
+                }
               ]
             }
           ]
         }
       ],
-      "ideal_handlers": ["john_frank", "steamboat", "weir"],
+      "ideal_handlers": [
+        "john_frank",
+        "steamboat",
+        "weir"
+      ],
       "resolution_flavor_success": [
         "The relay held. STEEPLE logged the carrier through at 5:48 AM. The boiler cooled by Sunday morning.",
         "JF sat on the cathedral steps Saturday at 6:30 AM smoking a cigarette he hadn't smoked in three years. The line had stayed up."
       ],
       "resolution_flavor_failure": [
         "The relay dropped at 11:48 PM. STEEPLE tried to call back from Mobile and got no carrier. The gulf-coast circle holds it against you for the rest of the year."
+      ]
+    },
+    {
+      "id": "the_august_event",
+      "title": "The August Event",
+      "problem_type": "hoa_action",
+      "regions_eligible": [
+        "small_wood"
+      ],
+      "base_severity": 5,
+      "tick_per_day": 1.3,
+      "effort_to_resolve": 5,
+      "flavor": "The office's whiteboard held a place in July and a date in August, and the date is tonight. Filly's truck crossed the county line at dusk, ahead of the rain. Whatever the enemy scheduled for the storm window is happening in Small Wood while every lineman, deputy, and neighbor in three parishes is looking at the sky.",
+      "spawn_only_by": "w14_storm_watch",
+      "if_unresolved_at_severity_7": [
+        {
+          "kind": "log",
+          "text": "[color=#ff9090]The lintel at the old barn site stood open by morning. Nobody in Small Wood heard anything over the wind. Filly's truck was back across the county line before the rain stopped.[/color]"
+        },
+        {
+          "kind": "set_flag",
+          "flag": "august_event_completed",
+          "value": true
+        },
+        {
+          "kind": "decrement_region_state",
+          "region": "small_wood",
+          "key": "trust",
+          "amount": 1.0
+        },
+        {
+          "kind": "queue_burn",
+          "weeks_from_now": 1,
+          "reason": "whatever was held behind the binding is no longer held; Small Wood knows without knowing"
+        }
+      ],
+      "dispatch_shape_hint": "Two stages · the county line, then the lintel. The choices widen sharply for a player who read the river house and the grove. On the W14 hard branch this lands the same night as the relay — the collision is the design, not an accident.",
+      "stages": [
+        {
+          "id": "the_county_line",
+          "title": "the county line · dusk · ahead of the rain",
+          "fires_after_days": 1,
+          "body": "{agent} is in Small Wood as the feeder bands come in. An F-350 with a covered bed crossed the county line at dusk and parked off the north road, lights off. A woman in a rain shell sits in the cab with the dome light on, reading what looks like a hand-copied page. The seventh camera — the unlogged one — has been turned to face the barn site since Thursday.\n\nThe storm has maybe three hours of build left. What happens before the wind decides what's possible after it.",
+          "choices": [
+            {
+              "label": "you knew the date · meet the truck at the line, openly, before she unpacks.",
+              "summary": "+2.0 effort · foreknowledge spent · Filly recalculates in front of you · -1 cover (you showed the circle reads the whiteboard)",
+              "requires_bbs_thread": "RH_006",
+              "effort_applied": 2.0,
+              "effects": [
+                {
+                  "kind": "set_canon_var",
+                  "key": "august_event_opening",
+                  "value": "met_at_the_line"
+                },
+                {
+                  "kind": "spend_cover",
+                  "amount": 1,
+                  "region": "small_wood",
+                  "reason": "the enemy now knows the whiteboard has been read"
+                }
+              ]
+            },
+            {
+              "label": "the groundskeeper's note · go to the cypress corner first and be seen tending it.",
+              "summary": "+1.6 effort · the dissent becomes a door · the groundskeeper does not report you · marker: groundskeeper_contact",
+              "requires_bbs_thread": "TG_007",
+              "effort_applied": 1.6,
+              "effects": [
+                {
+                  "kind": "set_canon_var",
+                  "key": "august_event_opening",
+                  "value": "cypress_corner"
+                },
+                {
+                  "kind": "set_flag",
+                  "flag": "groundskeeper_contact",
+                  "value": true
+                }
+              ]
+            },
+            {
+              "label": "watch from the tree line and log everything · intervene only if the barn site opens.",
+              "summary": "+1.0 effort · safest · the notebook fills · you will be reacting, not choosing",
+              "effort_applied": 1.0,
+              "effects": [
+                {
+                  "kind": "set_canon_var",
+                  "key": "august_event_opening",
+                  "value": "watched"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "the_lintel",
+          "title": "the lintel · the copper is not decoration",
+          "fires_after_days": 1,
+          "body": "The barn site. The 1981 binding is a copper line at the lintel and salt in the sill — the sticky in CALICHE's barn has read like horseshoe advice for forty-five years because that was the polite form of it. Filly works un-bindings the way WIRE_MOTHER works panels: correct order, correct tools, correct wait. She has done thirty-four. She has never once been interrupted at the lintel.\n\nThe wind is at gale force. The relay — if it is running tonight — is running without you. What stands at the lintel decides what Small Wood holds by morning.",
+          "choices": [
+            {
+              "label": "send the 17-year-hum · it asked to move the nest before the rain · let it be right.",
+              "summary": "+2.2 effort · the cicada meets Filly at the lintel · the count gains its third entry · marker: cicada_was_right",
+              "effort_applied": 2.2,
+              "effects": [
+                {
+                  "kind": "set_canon_var",
+                  "key": "august_event_lintel",
+                  "value": "the_cicada"
+                },
+                {
+                  "kind": "set_flag",
+                  "flag": "cicada_was_right",
+                  "value": true
+                }
+              ]
+            },
+            {
+              "label": "{agent} stands at the lintel in the open · a person, present, with a name.",
+              "summary": "+1.8 effort · thirty-four un-bindings, never once interrupted · -1 cover · -1 sanity · she will remember your face",
+              "effort_applied": 1.8,
+              "effects": [
+                {
+                  "kind": "set_canon_var",
+                  "key": "august_event_lintel",
+                  "value": "the_agent"
+                },
+                {
+                  "kind": "spend_cover",
+                  "amount": 1,
+                  "region": "small_wood",
+                  "reason": "a face at the lintel"
+                },
+                {
+                  "kind": "increment_counter",
+                  "counter": "agent_sanity_cost",
+                  "amount": 1
+                }
+              ]
+            },
+            {
+              "label": "let the un-binding complete · document every step of the correct order.",
+              "summary": "+0.8 effort · the binding falls · the circle gains the full un-binding procedure · Small Wood pays for it",
+              "effort_applied": 0.8,
+              "effects": [
+                {
+                  "kind": "set_canon_var",
+                  "key": "august_event_lintel",
+                  "value": "documented"
+                },
+                {
+                  "kind": "set_flag",
+                  "flag": "unbinding_procedure_known",
+                  "value": true
+                },
+                {
+                  "kind": "decrement_region_state",
+                  "region": "small_wood",
+                  "key": "trust",
+                  "amount": 0.5
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "resolution_flavor_success": [
+        "Filly packed the truck in the rain without hurrying. At the county line she stopped, rolled the window down into the weather, and said to nobody visible: 'Tell the office the date was known.' Then she drove. The lintel held. The copper is the copper.",
+        "By 6 AM Saturday the barn site looked like nothing had ever wanted to happen there — which took, as Small Wood could tell you, all night. The seventh camera faced the barn site until Tuesday, then was gone; the bracket stays. F. posted one line to the basement: 'Put it in the count. — F.'"
+      ],
+      "resolution_flavor_failure": [
+        "The copper at the lintel is in four pieces on the sill, cut in the correct order. The salt is swept — swept, not scattered; she tidied. Whatever the binding held, the wood holds now, loose. The cypress at the southwest corner dropped every leaf overnight, out of season, all at once.",
+        "The groundskeeper's Monday filing reads, in full: 'The event completed on schedule. Noting for the room that the ground has been refusing plantings for a reason. The room may log that however the room logs things.'"
       ]
     }
   ]
