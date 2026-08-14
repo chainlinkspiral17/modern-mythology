@@ -245,6 +245,21 @@ TA_005 on the art wall).
   continue. The scumm repo's Lore Hub (scumm11.html) was synced
   the same session: slowsticks + network-history concepts,
   documents, and timeline events, JS syntax-checked via node.
+- **Wave four: promises kept on the home boards.** BP_020 pays
+  off CK_007's "saving my flute opinions for the porch" — the
+  full thirty-two-year track-31 argument, closed by a one-line
+  reply from a first-time handle ("andrew.": "She was right. I
+  couldn't hear it until she moved it."), deniable, unconfirmed,
+  exactly the size a canon cameo should be. TW_009 completes the
+  slowstick adoption chain (letter → reader build → sticks
+  circulating), with Frasier's note that the slot spec predates
+  the label — the 2007-box lineage surfacing in-game without
+  being explained. Chains > singletons: every wave this session
+  planted something a later wave paid off, and the boards read
+  as a living place because of it. Check-before-id: the workshop
+  listing truncated at 8 of 10 threads and TW_007 was taken —
+  always compute the next free id from the full list, never from
+  a truncated display.
 - **Real-calendar dating discipline.** Check new thread dates
   against the actual 2026 calendar (Jul 5 / Aug 16 / Aug 23 are
   Sundays). Cheap to verify, ugly to get wrong on a board whose

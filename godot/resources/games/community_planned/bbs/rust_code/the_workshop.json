@@ -233,6 +233,32 @@
           "body": "The lens goes where it's useful. Emile Christian and Ollie Blanchard both spent their careers making light useful. The lens is the through-line. — F."
         }
       ]
+    },
+    {
+      "id": "TW_009",
+      "subject": "padded-envelope reader · build log · it works",
+      "available_from_week": 12,
+      "sysop_tagged": false,
+      "op": {
+        "handle": "jlowe",
+        "canonical_character_id": null,
+        "date": "Wed Aug 12, 2026  10:42 PM",
+        "body": "Wrote my letter in June (after the toy showed up on the counter, obviously), got back a stick and the reader plans. Built the reader this week. Build log for whoever's next:\n\n  · The plans are hand-drawn, photocopied, third-generation at least. Legible. Trust them.\n  · The board is single-sided, ten components, nothing exotic. An afternoon with an iron.\n  · The stick slot is the fussy part. The plans give the slot dimensions to the half-millimeter and the tolerances are TIGHT. My first attempt seated the stick crooked and read nothing. Filed it square, re-seated, worked first try.\n  · Serial out to anything that can listen. I'm using the 486, because of course I am.\n\nPlayed the stick that came with the plans same night. Ninety minutes. I'm not going to describe it, that's the point of them.\n\nPlans are going in the mail to whoever posts next wanting them. One at a time, like it's meant. — j."
+      },
+      "replies": [
+        {
+          "handle": "WIRE_MOTHER",
+          "canonical_character_id": null,
+          "date": "Thu Aug 13, 2026  06:22 AM",
+          "body": "Before anyone copies the build: the plans' power section trusts the wall wart. Don't. Wall warts lie. Put a regulator between the wart and the board — the part costs less than the stamp you'll use mailing the plans on. Foal rule: anything that reads something you care about gets clean power.\n\n— W.M."
+        },
+        {
+          "handle": "Frasier",
+          "canonical_character_id": "frasier_temple",
+          "date": "Thu Aug 13, 2026  11:47 PM",
+          "body": "W.M. is right about the regulator, as usual.\n\nOne note on the fussy part: the slot spec is older than the label that mails the plans. Considerably. Measure twice and don't 'improve' the dimensions — they are what they are for reasons that predate all of us being on this board. — F."
+        }
+      ]
     }
   ]
 }

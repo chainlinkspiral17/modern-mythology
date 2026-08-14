@@ -562,6 +562,44 @@
           "body": "The first night there were two callers.\n\nThe first caller asked if the line would hold.\n\nThe line has held. — R."
         }
       ]
+    },
+    {
+      "id": "BP_020",
+      "subject": "track 31 · the flute thing · fine, we're doing this",
+      "available_from_week": 11,
+      "sysop_tagged": false,
+      "op": {
+        "handle": "hasslein",
+        "canonical_character_id": null,
+        "date": "Tue Aug 4, 2026  09:56 PM",
+        "body": "As promised in the kitchen. The flute thing. Sit down.\n\nHistory, for the young: 'Door' is a Locust Seventeen song, 1989, cassette EP, eastern Texas. The spine of the song is Pelletier's bass figure — eleven notes, played crouched, facing the amp. In 1994 a MIDI artist rendered the song for General MIDI and moved the bass figure to FLUTE, on purpose, with a public apology attached: 'I tried it on bass. The bass wasn't right. The flute is the truth of the song.'\n\nThirty-two years of argument later, a hand-stapled songbook shows up on a diner counter and settles it BY FIAT — track 31, eight notes, play it on the wrong instrument, 'the flute is the truth of the song.'\n\nMy position, held since 1994: the truth of a song is the instrument it was WRITTEN on. The bass is load-bearing. The flute is an interpretation wearing the song's clothes. A fiat in a stapled booklet does not settle a structural argument.\n\nRebuttals below. I'll wait. — h."
+      },
+      "replies": [
+        {
+          "handle": "uzhekwurm",
+          "canonical_character_id": null,
+          "date": "Wed Aug 5, 2026  07:42 PM",
+          "body": "The truth of a song is the instrument it never had.\n\nThe bass is what the song did for work. The flute is what the song was thinking about while it worked. In Bytom my grandfather sang coal songs in a kitchen, forty years after the mine, and the songs had become kitchen songs. Nobody called this a wrong instrument.\n\nThe booklet is not a fiat. The booklet is a kitchen. — u."
+        },
+        {
+          "handle": "jlowe",
+          "canonical_character_id": null,
+          "date": "Wed Aug 5, 2026  08:15 PM",
+          "body": "Genuine question from the young: who is Andrew? The '94 apology says 'I am sorry to Andrew if Andrew is reading this.' Did he ever answer her? — j."
+        },
+        {
+          "handle": "chainlinkspiral",
+          "canonical_character_id": null,
+          "date": "Thu Aug 6, 2026  06:52 AM",
+          "body": "I saw Locust Seventeen in Houston in 1990. Small room. Pelletier played the figure crouched, facing his amp, the whole set.\n\nFrom where I stood you couldn't hear the bass so much as feel it in the floor. And the part of 'Door' I walked out humming — the part I'd swear I sang along to — is a high line that is not on the cassette. I have owned the cassette for thirty-six years. The high line is not on it.\n\nMake of that what you will. — c."
+        },
+        {
+          "handle": "andrew.",
+          "canonical_character_id": null,
+          "date": "Sat Aug 8, 2026  11:58 PM",
+          "body": "She was right. I couldn't hear it until she moved it. — a."
+        }
+      ]
     }
   ]
 }
