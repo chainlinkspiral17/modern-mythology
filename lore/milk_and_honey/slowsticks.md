@@ -1,6 +1,24 @@
 # THE SLOWSTICKS
 ## the slow game ecosystem · gulf lineage, Oregon endpoint · vol 7 era
 
+> **⚠ STATUS · DRIFT-FLAGGED · 2026-08-14.** This file was
+> drafted against a mistaken "vol 7 = 2025" present inherited
+> from earlier lore files. The vol 7 **scene JSONs**
+> (`godot/resources/scenes/vol7/`) are the actual prose and
+> establish a different reality: the volume's present is the
+> **early 2050s**, and the slow-sticks there are **experiences**
+> — designed works with readers and sleeves, the substrate
+> inside them — dating from **2034** ("designed in 2034 by a man
+> named Diego — Diego only, no last name, the way the early
+> designers did"), with **Ines Rocha's ESTUARY 7 (2046)** the
+> first stick to carry a designer's full name, and **Cale
+> (ChillWave)** the local source. Nothing below that claims a
+> vol-7-present connection (the drawer arithmetic, sticks
+> #91/#92 "since June 2025," "the studios, 2025") is reconciled
+> with that prose; do **not** treat it as vol 7 canon. The
+> 1985–2020s bayou-scene material may survive as pre-history of
+> the 2034 form, pending the author's direction.
+
 The small plastic cartridges, and the people who make them, and
 the games that are on them, and the drawer they are all — by the
 scene's own quiet consensus — eventually trying to reach.

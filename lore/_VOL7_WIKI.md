@@ -161,6 +161,13 @@ sticks, the working library, free for any player.
 
 ### The Slowsticks · the slow game ecosystem
 
+**(DRIFT-FLAGGED — see the status banner in `slowsticks.md`.
+The vol 7 scene JSONs place the volume in the early 2050s with
+slow-stick *experiences* from 2034 onward — Diego's Kestrel
+Mountain, Ines Rocha's ESTUARY 7 (2046), Cale at ChillWave as
+the source. The summary below describes the unreconciled
+draft.)**
+
 `slowsticks.md`. The small plastic cartridges — same form factor
 as the SCUMM sticks, copied dimension for dimension from the 2007
 box — made by the third form of the gulf's regional game scene
