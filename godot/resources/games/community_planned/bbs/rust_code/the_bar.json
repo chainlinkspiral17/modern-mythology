@@ -168,6 +168,46 @@
           "body": "He's been polite. He doesn't carry a notebook. He listens. He hasn't asked any question I'd flag. He could still be wrong."
         }
       ]
+    },
+    {
+      "id": "TB_007",
+      "subject": "the visitor at Table 14",
+      "available_from_week": 12,
+      "sysop_tagged": true,
+      "op": {
+        "handle": "thelma_kitchen",
+        "canonical_character_id": null,
+        "date": "Wed Aug 12, 2026  10:18 PM",
+        "body": "For the room, because the room would want to know.\n\nThe visitor at Table 14 has been looking. Three visits in two weeks. Orders the special, eats half, faces the kitchen door. You all know which chair at that table faces the kitchen door, and you all know who used to like that chair.\n\nI have said nothing and served the special. The lyric was not in the building any of the three times, and the schedule that keeps it that way is not an accident and will continue.\n\nBooth four stays held. — T."
+      },
+      "replies": [
+        {
+          "handle": "Frasier",
+          "canonical_character_id": "frasier_temple",
+          "date": "Thu Aug 13, 2026  12:04 AM",
+          "body": "Noted. Keep serving the special. A visitor who is fed is a visitor who believes he is welcome, and a visitor who believes he is welcome is on your schedule, not his. — F."
+        }
+      ]
+    },
+    {
+      "id": "TB_008",
+      "subject": "the third sunday · an answer for Mark",
+      "available_from_week": 13,
+      "sysop_tagged": false,
+      "op": {
+        "handle": "sammy",
+        "canonical_character_id": null,
+        "date": "Thu Aug 20, 2026  09:48 PM",
+        "body": "T. told me a kid named Mark has been asking what I do at the cemetery on the third Sunday. I don't post much anymore. I'm posting this once so T. doesn't have to keep answering for me.\n\nMark. I sweep two stones and I read the box scores out loud, because one of the two never once in his life let a Sunday pass without the box scores, and the other one pretended not to listen and heard every word. It takes about an hour. The first twenty minutes are bad and the rest is the closest thing I have to the old kitchen on a Friday.\n\nYou can come some third Sunday if you want. Bring nothing. The stones don't need flowers, they need the scores.\n\n— S."
+      },
+      "replies": [
+        {
+          "handle": "thelma_kitchen",
+          "canonical_character_id": null,
+          "date": "Thu Aug 20, 2026  10:12 PM",
+          "body": "The kitchen is quiet tonight and that is why. Friday the andouille is on, Sammy. The booth is held. — T."
+        }
+      ]
     }
   ]
 }
