@@ -206,6 +206,15 @@ TA_005 on the art wall).
   inventing a new arc beat, inventory what the boards already
   planted — convergence written from existing seeds reads as
   inevitability; invented beats read as plot.
+- **Universal DM beats must be checked against branch geography.**
+  A storm-night beat written for "the kitchen" collided with the
+  send_her_away branch, where Aria is at the bungalow — caught
+  only because the append script printed the existing week
+  numbers. Rule: before adding an untagged beat to a branched DM
+  spine, list where every branch physically puts the characters
+  that week. The fix was better than the draft: the bungalow
+  variant ("there is no distance that keeps her from the
+  schedule") is the sharpest of the three.
 - **One rare voice beats five regular ones.** Sammy's single post
   (TB_008, the box scores at the two stones) does more for the
   bar than any number of thelma threads because the board spent
