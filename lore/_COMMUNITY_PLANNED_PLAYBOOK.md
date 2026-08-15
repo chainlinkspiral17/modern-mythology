@@ -226,10 +226,18 @@ TA_005 on the art wall).
   off the problem's effort_remaining (progress persists across
   dispatches); 11 templates retuned to the ungated-max
   principle; the stage modal now shows "effort X of ~Y needed"
-  so failure is legible. Filly naming collision (roster courier
-  vs the grove's un-binding specialist, pre-existing in TG_005)
-  remains flagged for the author. Rule graduated to Content
-  discipline 4a.
+  so failure is legible. Rule graduated to Content discipline 4a.
+- **The Filly ruling (author): one Filly, both envelopes.** The
+  roster courier and the grove's un-binding specialist are the
+  same demon — a freelancer who "goes where the contract is,"
+  the office included, and the circle has always known.
+  Mechanics: she leaves the roster for the W14 storm window on
+  both branches (return_day extended, never shortened). Canon
+  surfaces: agents.json flavor, the lintel stage body, and
+  TB_BAS_017 — her after-the-week basement quiet ("I billed for
+  the night either way") with Frasier's reply: "The drawer is
+  still yours. It always was." A mercenary the player relies on
+  and the enemy hires is more interesting than two names.
 - **Universal DM beats must be checked against branch geography.**
   A storm-night beat written for "the kitchen" collided with the
   send_her_away branch, where Aria is at the bungalow — caught
