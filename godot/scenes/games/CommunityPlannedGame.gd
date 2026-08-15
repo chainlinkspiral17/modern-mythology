@@ -4041,6 +4041,13 @@ func _pick_regional_event(r_id: String, week: int, rng: RandomNumberGenerator) -
 # everyone goes home dry.
 func _fire_w14_storm_watch() -> void:
 	_flags["w14_storm_watch_fired"] = true
+	# Filly goes where the contract is — and this week the contract
+	# is the office's. She is off the roster for the storm window on
+	# both branches (extends, never shortens, any current job).
+	if _agent_state.has("filly"):
+		var _f_st: Dictionary = _agent_state["filly"]
+		_f_st["return_day"] = max(int(_f_st.get("return_day", 0)), _day + 7)
+		_log("[color=#c89a42]Filly isn't picking up. Her October docket is closed and her August is, by her own out-of-office, spoken for. She goes where the contract is.[/color]")
 	var backchannel_reads := 0
 	for tid in _bbs_read_thread_ids:
 		if String(tid).begins_with("TC_"):

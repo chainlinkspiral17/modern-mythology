@@ -1,6 +1,6 @@
 {
   "scope": "community_planned",
-  "notes": "Frasier's dispatchable roster. Two classes: demons (loud, fast, burnable, corruptible) and humans (slow, quiet, indebted). Per _COMMUNITY_PLANNED_SPEC.md \u00a7Agents. Each agent has a home region (for travel-speed modifiers), a specialty (the problem-types they handle well), a signature failure mode, and an economy state (burn / corruption / obligation) that ticks with use.",
+  "notes": "Frasier's dispatchable roster. Two classes: demons (loud, fast, burnable, corruptible) and humans (slow, quiet, indebted). Per _COMMUNITY_PLANNED_SPEC.md §Agents. Each agent has a home region (for travel-speed modifiers), a specialty (the problem-types they handle well), a signature failure mode, and an economy state (burn / corruption / obligation) that ticks with use.",
   "demons": [
     {
       "id": "vagrant",
@@ -131,7 +131,7 @@
         }
       ],
       "dispatch_speed_modifier": 0.7,
-      "flavor": "Heavy infrastructure. Was already old when the riverboat was new. Cannot, by physics, be sent to Small Wood \u2014 there's no water big enough for him.",
+      "flavor": "Heavy infrastructure. Was already old when the riverboat was new. Cannot, by physics, be sent to Small Wood — there's no water big enough for him.",
       "evolution_paths": [
         "wake_management"
       ],
@@ -202,7 +202,7 @@
         }
       ],
       "dispatch_speed_modifier": 1.6,
-      "flavor": "Fast courier. The only demon Frasier sends without a cover identity; she carries her own.",
+      "flavor": "Fast courier. The only demon Frasier sends without a cover identity; she carries her own. Freelances as a parish handler on the side — un-bindings since '88, thirty-four careful jobs — for whoever pays, the office included. The circle has always known what she is. She goes where the contract is.",
       "evolution_paths": [
         "dead_drop_specialist",
         "long_courier"
@@ -323,7 +323,7 @@
       "obligation_per_dispatch": 2,
       "obligation_cap_before_stops_picking_up": 4,
       "time_at_home_cost_days": 1.4,
-      "flavor": "The storefront in the parish (the family's post-Sinkhole operation). Sammy holds the bar. Hector holds the line. The son holds the floor \u2014 when he's home.",
+      "flavor": "The storefront in the parish (the family's post-Sinkhole operation). Sammy holds the bar. Hector holds the line. The son holds the floor — when he's home.",
       "life_cost_thresholds": {
         "3": "starts posting about closing the restaurant",
         "4": "starts asking Frasier to stop sending"

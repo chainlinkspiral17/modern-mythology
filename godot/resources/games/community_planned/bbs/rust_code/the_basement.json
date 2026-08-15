@@ -220,6 +220,26 @@
           "body": "On the record, then: hold and rest. If I am wrong it will be the third time and you may put it in the count where everyone can see it.\n\nFour seconds ahead is a good catch. Sit. Read. Stay. — F."
         }
       ]
+    },
+    {
+      "id": "TB_BAS_017",
+      "subject": "a quiet from filly (after the week)",
+      "available_from_week": 15,
+      "sysop_tagged": false,
+      "op": {
+        "handle": "filly.run",
+        "canonical_character_id": null,
+        "date": "Wed Sep 2, 2026  02:18 AM",
+        "body": "I carried for the office this week. The room knows. The room has always known what I am. I have carried for this room since before some of you had handles, and I will carry for it again, and none of that was less true on Sunday night.\n\nI do not discuss jobs. I will say one thing about this one, because this is the room where the record rests: I have stood at thirty-four lintels and the work was only ever between me and the copper. Sunday there was a third thing at the lintel, or there was weather, or there was nothing. I billed for the night either way. The office paid.\n\nThe circle's rate is still the old rate. The drawer knows where to find me.\n\nThe rest is the rest."
+      },
+      "replies": [
+        {
+          "handle": "Frasier",
+          "canonical_character_id": "frasier_temple",
+          "date": "Wed Sep 2, 2026  06:12 AM",
+          "body": "The drawer is still yours. It always was. That's the whole arrangement and it has never needed to be longer than that. — F."
+        }
+      ]
     }
   ]
 }
