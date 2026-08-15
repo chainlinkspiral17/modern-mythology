@@ -175,6 +175,13 @@
       "shelf_section": "cross_cutting",
       "earn_condition": "any_agent_sent_to_tower",
       "flavor": "Frasier sent an agent at the tower on a date he later refused to write down. The agent did not return. Frasier removed the agent's name from the dispatch rotation on the Monday after, and from the BBS handle list on the Tuesday, and from the dossier wall in the office on the Wednesday. The wall has, since 1997, a small unfilled rectangle where the dossier used to be. None of the other agents asked. None of them ever did."
+    },
+    {
+      "id": "the_thirty_fifth",
+      "title": "The Thirty-Fifth",
+      "shelf_section": "cross_cutting",
+      "earn_condition": "august_event_faced",
+      "flavor": "Sunday morning, the rain moving off east. A gas-station diner two counties from Small Wood, the kind with the coffee that is only ever one age. Filly has both hands around the cup. Thirty-four un-bindings, and at every one of them the lintel was hers alone — that was the office's promise and the office had always kept it. The thirty-fifth had something at the lintel. She is not going to report in until Tuesday, and when she does, the report will be four words long: the date was known. What she will not report is the part she keeps turning with the coffee — that she had stood in the correct order, at the correct wait, and had felt, for the first time in a working life, that the correctness was being answered. Not opposed. Answered. She leaves two dollars under the cup. She drives the speed limit all the way home."
     }
   ],
   "aria_summer_w11_interludes": [

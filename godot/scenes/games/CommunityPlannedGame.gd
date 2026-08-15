@@ -2463,6 +2463,12 @@ func _interlude_earn_predicate(cond: String, entry: Dictionary) -> bool:
 	match cond:
 		"always":
 			return true
+		"august_event_faced":
+			# Earned by standing something at the lintel (W14 August
+			# event, either interrupt path). The documented path earns
+			# the procedure instead, not the book.
+			return _canon_vars.has("august_event_lintel") \
+				and String(_canon_vars.get("august_event_lintel", "")) != "documented"
 		"reached_day_7":
 			return _day >= 7
 		"reached_day_100":

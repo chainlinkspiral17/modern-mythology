@@ -176,6 +176,38 @@
       "branch_key": "aria_w11_choice",
       "date": "Sun Aug 23, 2026  09:18 PM",
       "body": "The storm came east. The cathedral basement ran the relay. Elicia called in from the bungalow on the line that came back up Thursday. Aria was at the bungalow's kitchen table with a notebook and a list of names.\n\nElicia said Aria was making her own list. Of the third's friends. The ones who were going to come looking.\n\nAria asked Elicia to tell me she was sorry she hadn't said goodbye to Mom. She said she would say it Labor Day.\n\nWe'll see.\n\n— N."
+    },
+    {
+      "week": 13,
+      "from": "them",
+      "if_branch": "rebind",
+      "branch_key": "aria_w11_choice",
+      "date": "Sun Aug 16, 2026  10:42 PM",
+      "body": "T. told me about the visitor before she posted it, so I'd hear it from family first. I know about the schedule. I keep the schedule. It has cost me three Fridays at the storefront and I would pay thirty.\n\nHere is what I need you to know. Aria asked me tonight why we don't do Fridays anymore. I said the summer got busy. She looked at me the way she looks now and said: 'He only comes when I'm not there. That's polite of him.'\n\nNobody told her, Frasier. Nobody told her anything.\n\n— N."
+    },
+    {
+      "week": 13,
+      "from": "them",
+      "if_branch": "let_her_hold_it",
+      "branch_key": "aria_w11_choice",
+      "date": "Sun Aug 16, 2026  10:42 PM",
+      "body": "T. told me about the visitor before she posted it, so I'd hear it from family first. I know about the schedule. I keep the schedule. It has cost me three Fridays at the storefront and I would pay thirty.\n\nHere is what I need you to know. Aria asked me tonight why we don't do Fridays anymore. I said the summer got busy. She looked at me the way she looks now and said: 'He only comes when I'm not there. That's polite of him.'\n\nNobody told her, Frasier. Nobody told her anything.\n\n— N."
+    },
+    {
+      "week": 13,
+      "from": "them",
+      "if_branch": "send_her_away",
+      "branch_key": "aria_w11_choice",
+      "date": "Sun Aug 16, 2026  10:42 PM",
+      "body": "T. told me about the visitor before she posted it, so I'd hear it from family first. I know about the schedule. I keep the schedule, even with her at the bungalow — habits are the fence now.\n\nElicia called tonight. Aria asked her — at the bungalow, two hundred miles from Table 14 — why nobody does Fridays at the storefront anymore. Elicia said the summer got busy. Aria said: 'He only comes when I'm not there. That's polite of him.'\n\nElicia has never mentioned the visitor. I have never mentioned the visitor. There is no distance that keeps her from the schedule, Frasier. There is only the schedule.\n\n— N."
+    },
+    {
+      "week": 14,
+      "from": "them",
+      "if_branch": "let_her_hold_it",
+      "branch_key": "aria_w11_choice",
+      "date": "Mon Aug 24, 2026  06:14 AM",
+      "body": "The wind dropped an hour ago. Writing this before I sleep so I write it true.\n\nShe woke at 11:48. Came to the kitchen, sat with me, both hands around the cocoa, calm as church. She said someone far off was doing something correct. Correct was her word. She said the storm was just the loud part.\n\nWe sat until almost two. Then she stood up like a meeting had ended, said 'it's decided now,' and went back to bed. She was asleep in five minutes. I was not.\n\nShe is holding it, Frasier. That was the choice and she is keeping it better than I am. Whatever your night was — and I know your night was something — mine was watching her listen to it.\n\n— N."
     }
   ]
 }
