@@ -103,6 +103,18 @@ This playbook is the *how we work on it* doc.
    `aria_glossary.json`. Posts on a sysop's board match the
    sysop's register. The W11 glossary unlock surfaces the cross-
    register translations; don't undermine it by mixing voices.
+4a. **Staged templates must pass the effort audit.** Sum of each
+   stage's maximum ungated effort_applied must be ≥ 0.95 ×
+   effort_to_resolve, or the template is unwinnable for a blind
+   player (and if even the gated max falls short, unwinnable for
+   everyone). The 2026-08-14 audit found 10 of 22 staged
+   templates impossible — including the relay, by 0.1. Audit
+   one-liner: sum stage maxes vs the threshold before commit.
+   Sanctioned exception: the_august_event, where ungated max
+   deliberately fails a single attempt (the enemy beats the
+   unprepared) but gated max passes and staged progress now
+   persists across dispatches, so blind players can brute-force
+   a second dispatch at double agent-cost.
 4. **Dial-up clue numbers must appear in a post body.** If the
    hidden board has `"dial_number": "5550107"`, then somewhere in
    a public-board thread the string `5550107` must appear, planted
@@ -206,6 +218,18 @@ TA_005 on the art wall).
   inventing a new arc beat, inventory what the boards already
   planted — convergence written from existing seeds reads as
   inevitability; invented beats read as plot.
+- **The first-run difficulty audit: verify the math, not the
+  vibe.** The user's playthrough feel ("nothing sticks") was
+  confirmed by arithmetic: staged resolution summed only stage
+  effort vs 0.95×target with no persistence, making 10 of 22
+  staged templates unwinnable. Fixes: staged success now keys
+  off the problem's effort_remaining (progress persists across
+  dispatches); 11 templates retuned to the ungated-max
+  principle; the stage modal now shows "effort X of ~Y needed"
+  so failure is legible. Filly naming collision (roster courier
+  vs the grove's un-binding specialist, pre-existing in TG_005)
+  remains flagged for the author. Rule graduated to Content
+  discipline 4a.
 - **Universal DM beats must be checked against branch geography.**
   A storm-night beat written for "the kitchen" collided with the
   send_her_away branch, where Aria is at the bungalow — caught

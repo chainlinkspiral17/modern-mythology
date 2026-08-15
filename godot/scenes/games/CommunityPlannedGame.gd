@@ -2726,8 +2726,11 @@ func _open_stage_modal(d: Dictionary) -> void:
 	hdr.add_theme_color_override("font_color", Color(0.96, 0.86, 0.62, 1))
 	col.add_child(hdr)
 	var sub := Label.new()
-	sub.text = "%s is at %s · day %d" % [agent_name,
-		String(_regions.get(region_id, {}).get("name", region_id)), _day]
+	var _t_eff: float = float(template.get("effort_to_resolve", 3.0))
+	var _rem_eff: float = float(p_ref.get("effort_remaining", _t_eff))
+	sub.text = "%s is at %s · day %d  ·  effort %.1f of ~%.1f needed" % [agent_name,
+		String(_regions.get(region_id, {}).get("name", region_id)), _day,
+		_t_eff - _rem_eff, _t_eff * 0.95]
 	sub.add_theme_font_size_override("font_size", 10)
 	sub.add_theme_color_override("font_color", Color(0.62, 0.62, 0.62, 1))
 	col.add_child(sub)
@@ -3206,8 +3209,15 @@ func _resolve_dispatch(d: Dictionary) -> void:
 	if bool(d.get("is_staged", false)):
 		var template_for_staged: Dictionary = _problem_templates.get(String(p_ref.get("template_id", "")), {})
 		var target_effort: float = float(template_for_staged.get("effort_to_resolve", 3.0))
-		var effort_accum: float = float(d.get("effort_accumulated", 0.0))
-		if effort_accum >= target_effort * 0.95:
+		# Progress persists across dispatches: effort_remaining on the
+		# problem is decremented by every stage choice (this dispatch
+		# AND earlier partly-handled ones), so success keys off what's
+		# left rather than this dispatch's accumulator alone. A partly
+		# handled problem can be finished by a second dispatch instead
+		# of restarting from zero (first-run difficulty audit fix).
+		var remaining_effort: float = float(p_ref.get("effort_remaining", target_effort))
+		var effort_accum: float = target_effort - remaining_effort
+		if remaining_effort <= target_effort * 0.05:
 			_log("[color=#7cffb0]Day %d · [b]%s[/b] resolved [b]%s[/b] in %s.[/color]" %
 				[_day, a["name"], p_ref["title"], _regions[r_id]["name"]])
 			var sf: String = _pick_resolution_flavor(template_for_staged, "resolution_flavor_success", a_id)

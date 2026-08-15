@@ -518,7 +518,7 @@
       ],
       "base_severity": 2,
       "tick_per_day": 0.6,
-      "effort_to_resolve": 3,
+      "effort_to_resolve": 2.8,
       "flavor": "The diner's walk-in. The cathedral's HVAC. The storefront's grease trap. The model home's foundation crack. Things break in old buildings and in new ones.",
       "if_unresolved_at_severity_7": [
         {
@@ -953,7 +953,7 @@
       ],
       "base_severity": 2,
       "tick_per_day": 0.4,
-      "effort_to_resolve": 3,
+      "effort_to_resolve": 2.7,
       "flavor": "Cameras at the gate. License plate readers at the entrance. The HOA's new security committee is meeting every Tuesday. The posture is the thing — the cameras are the symptom.",
       "if_unresolved_at_severity_6": [
         {
@@ -1080,7 +1080,7 @@
       ],
       "base_severity": 2,
       "tick_per_day": 0.5,
-      "effort_to_resolve": 3,
+      "effort_to_resolve": 2.7,
       "flavor": "A specific ordinance, a specific fine, a specific notice nailed to a specific door. The HOA does this in writing and the writing is legible later.",
       "if_unresolved_at_severity_5": [
         {
@@ -1203,7 +1203,7 @@
       ],
       "base_severity": 3,
       "tick_per_day": 0.7,
-      "effort_to_resolve": 4,
+      "effort_to_resolve": 3.5,
       "flavor": "Not yet a national story. Yet. The flier is at the community pool. The mother is in the HOA office at 9 AM Monday and at 9 AM Tuesday and at 9 AM Wednesday.",
       "if_unresolved_at_severity_7": [
         {
@@ -2011,7 +2011,7 @@
       ],
       "base_severity": 3,
       "tick_per_day": 0.8,
-      "effort_to_resolve": 4,
+      "effort_to_resolve": 3.3,
       "flavor": "A planting attempt that hasn't taken. The room is rented and quiet but no one is going to it. The contact is on the way out. The next plant is going to cost more.",
       "if_unresolved_at_severity_6": [
         {
@@ -2189,7 +2189,7 @@
       ],
       "base_severity": 4,
       "tick_per_day": 1.0,
-      "effort_to_resolve": 5,
+      "effort_to_resolve": 3.5,
       "flavor": "A demon currently in Small Wood is teetering. The corruption rating is at threshold. The next dispatch decides whether you pull her or push her.",
       "if_unresolved_at_severity_5": [
         {
@@ -2343,7 +2343,7 @@
       ],
       "base_severity": 2,
       "tick_per_day": 0.3,
-      "effort_to_resolve": 3,
+      "effort_to_resolve": 1.8,
       "flavor": "Sometimes Small Wood does not want what Frasier is sending. The dirt road that was supposed to be a node says — through the locals who walk it — no.",
       "if_unresolved_at_severity_5": [
         {
@@ -2431,7 +2431,7 @@
       ],
       "base_severity": 2,
       "tick_per_day": 0.4,
-      "effort_to_resolve": 2,
+      "effort_to_resolve": 1.8,
       "flavor": "The Wednesday town hall in Small Wood. The room knows who's new. The room has been the room for fifty years.",
       "if_unresolved_at_severity_4": [
         {
@@ -2523,7 +2523,7 @@
       ],
       "base_severity": 4,
       "tick_per_day": 0.5,
-      "effort_to_resolve": 5,
+      "effort_to_resolve": 4.2,
       "flavor": "A demon Frasier trained is now on the resistance's side. The problems originate from a name on the map that used to be one of his.",
       "spawn_only_by": "demon_corruption_event_unresolved",
       "dispatch_shape_hint": "A turned demon is an asset and a liability at once. Husk is the only one who can keep her functional. Two stages: integrate her into the network, then decide her assignment.",
@@ -2835,7 +2835,7 @@
       ],
       "base_severity": 5,
       "tick_per_day": 1.2,
-      "effort_to_resolve": 6,
+      "effort_to_resolve": 5.8,
       "flavor": "The W14 storm came north of the keys. The cathedral basement is the inland relay for the gulf-coast circle. JF is on the boiler; the line stays up only as long as someone's at the desk. Cross-BBS coordination through the storm window.",
       "spawn_only_by": "w14_storm_hard_branch",
       "if_unresolved_at_severity_7": [
@@ -3074,7 +3074,7 @@
       ],
       "base_severity": 5,
       "tick_per_day": 1.3,
-      "effort_to_resolve": 5,
+      "effort_to_resolve": 4.4,
       "flavor": "The office's whiteboard held a place in July and a date in August, and the date is tonight. Filly's truck crossed the county line at dusk, ahead of the rain. Whatever the enemy scheduled for the storm window is happening in Small Wood while every lineman, deputy, and neighbor in three parishes is looking at the sky.",
       "spawn_only_by": "w14_storm_watch",
       "if_unresolved_at_severity_7": [
