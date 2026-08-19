@@ -260,6 +260,17 @@ rules** once they've held across multiple sessions.
   remembers the shape of the game." Grep for it: commit, TODO,
   authored, playable, placeholder, implemented — none of these
   words belong in any player-facing string, ever.
+- **The day loop must never go silent.** All 65 daily vignettes
+  were one_shot — the pool drained around day 80 and NOTHING fired
+  after, which is exactly late summer (peak pressure) and all of
+  endless. The fix is canon: the Memorial Day preamble says "Read
+  the quiet too. The boiler hums two semitones flat." A RHYTHM
+  POOL (vg_rhythm_*, one_shot:false) now carries the pulse — the
+  same bell, the same rounds, the same boiler — because a rhythm
+  is the thing that repeats. Events outrank the pulse 3-in-4 while
+  they last; the _last_vignette_id guard stops back-to-back
+  repeats. Rule: any flavor pool that fires on a clock needs a
+  never-exhausted floor under its one-shots.
 - NEXT voice draft: the stage-choice `summary` strings (still
   "+1.0 effort · slow, attentive · no cost" — the numbers should
   stay but the framing can breathe), region-panel chrome, the

@@ -5663,6 +5663,14 @@ func _fire_daily_vignette() -> void:
 		return
 	var rng := RandomNumberGenerator.new()
 	rng.randomize()
+	# One-shots are events; the vg_rhythm_* lines are the pulse.
+	# While unfired events remain they usually take the day (3 in
+	# 4), with the pulse breathing through now and then — and the
+	# pulse alone carries late summer and all of endless, so the
+	# town never goes silent.
+	var events: Array = eligible.filter(func(v: Dictionary) -> bool: return bool(v.get("one_shot", false)))
+	if not events.is_empty() and rng.randf() < 0.75:
+		eligible = events
 	var pick: Dictionary = eligible[rng.randi() % eligible.size()]
 	var pick_id: String = String(pick["id"])
 	_last_vignette_id = pick_id
