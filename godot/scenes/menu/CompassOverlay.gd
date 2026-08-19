@@ -336,7 +336,7 @@ func _on_node_pressed(scene_id: String) -> void:
 	if scene_id.begins_with("_cluster_vol"):
 		# placeholder — future: zoom into the volume sub-compass
 		var vol = int(scene_id.replace("_cluster_vol", ""))
-		_title_label.text = "VOL %d — sub-compass TODO" % vol
+		_title_label.text = "VOL %d — the needle has not learned this ring yet" % vol
 		return
 	scene_selected.emit(scene_id)
 

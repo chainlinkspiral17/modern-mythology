@@ -120,14 +120,14 @@ func _open_stub_screen(stick_id: String) -> void:
 	_stub_screen.add_child(v)
 
 	var title := Label.new()
-	title.text = "%s · AUTHORED · NOT YET PLAYABLE" % stick_id.to_upper().replace("_", " ")
+	title.text = "%s · CASE ON THE SHELF · CART OUT ON LOAN" % stick_id.to_upper().replace("_", " ")
 	title.add_theme_font_size_override("font_size", 16)
 	title.add_theme_color_override("font_color", Color(0.78, 0.66, 0.29, 1))
 	title.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 	v.add_child(title)
 
 	var body := Label.new()
-	body.text = "This stick is on the shelf. Its manifest is authored — cover blurb, back-of-case, prior-owner note. Playable acts are a follow-up commit.\n\nUnlock it, know it exists, come back when it's live."
+	body.text = "The case is here — cover, back-of-case blurb, the previous owner's note folded inside. The cart itself is out on loan, the way half of Olaf's best carts always were.\n\nHe keeps the case facing the room so the shelf remembers the shape of the game. When the cart comes home, it goes in the slot."
 	body.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 	body.add_theme_font_size_override("font_size", 14)
 	body.add_theme_color_override("font_color", Color(0.83, 0.79, 0.69, 1))

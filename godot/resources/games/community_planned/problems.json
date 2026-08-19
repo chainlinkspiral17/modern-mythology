@@ -1076,6 +1076,17 @@
     "cicada",
     "starling",
     "vagrant"
+   ],
+   "resolution_flavor_success": [
+    "{agent} counted the cameras and then counted the blind spots and wrote both numbers on a diner napkin. The second number matters more, and now it is written down.",
+    "The security committee met Tuesday. {agent} attended as a resident, which they technically are for the purposes of the sign-in sheet. The minutes now contain a question nobody on the committee wants in the minutes.",
+    "The license plate reader at the entrance photographed {agent}'s plate eleven times in one afternoon. By the eighth pass the guard had stopped logging. That was the point. Boredom is a solvent.",
+    "The posture broke the way postures do — not with a confrontation but with a Tuesday where nobody showed up to be watched."
+   ],
+   "resolution_flavor_failure": [
+    "The camera got {agent}'s good side and the committee got a still print of it. There is a folder now. The folder has a label. The label is spelled correctly, which is somehow the worst part.",
+    "{agent} tried the direct approach on the guard, who turned out to be a Deforest kid working his second job. Now the kid is scared and the committee has a name for the incident report.",
+    "The cameras did not blink. {agent} did first. The posture won the week and the gate got a second reader."
    ]
   },
   {
@@ -1198,6 +1209,16 @@
    "ideal_handlers": [
     "mackenzie",
     "moth"
+   ],
+   "resolution_flavor_success": [
+    "{agent} read the ordinance the fine cites, and then the ordinance the ordinance cites, and found the hole two citations deep — the kind of hole a volunteer board leaves and a lawyer finds. The notice came off the door.",
+    "The fine was withdrawn at the Thursday meeting under agenda item seven, moved and seconded quickly, in the voice people use when they hope the room isn't listening. The room was listening. The room took notes.",
+    "{agent} paid a visit, not to argue the notice but to ask, pleasantly, who had drafted it. The question sat in the office like a wet dog. The notice was rescinded by mail, no letterhead."
+   ],
+   "resolution_flavor_failure": [
+    "The appeal missed the response window by a day — the window was in the fine print and the fine print was in the footer and the footer was gray on gray. The fine doubled the way the fine print said it would.",
+    "{agent} argued the merits. The HOA does not have merits, it has procedures, and procedurally the argument was noise. The notice stands, and now there is a second notice about conduct at meetings.",
+    "The specific door got a second specific notice, nailed lower, where a child would see it coming home. The writing is legible later. That is what the writing is for."
    ]
   },
   {
@@ -1575,6 +1596,16 @@
    "ideal_handlers": [
     "elicia",
     "cicada"
+   ],
+   "resolution_flavor_success": [
+    "Page three carried a correction this month — small, boxed, phrased as regret. Nobody reads corrections, except the town reads everything, and the box was exactly the size of the original item. {agent} negotiated the size.",
+    "{agent} found the newsletter's editor at her actual job, the pharmacy counter, and talked about her mother for ten minutes before the item came up on its own. The item will not run again. The mother is doing better, too.",
+    "The adjacent residents got a different story first — over fences, at the mailbox cluster, in the school pickup line. By the time page three landed, the town had already decided what was true. The item read like a lie because it was one."
+   ],
+   "resolution_flavor_failure": [
+    "The item ran. The name was in it, spelled with the middle initial, the way you spell a name when you want it found. Three neighbors have stopped waving. Waving comes back slower than it goes.",
+    "{agent}'s visit to the editor became, itself, next month's item. Page three has a photograph now. The photograph is unflattering in the deliberate way.",
+    "The correction ran in the spring roundup, four months out, six point type, under the pool schedule. The original ran in October at the top of the page. Arithmetic like that is the whole newspaper business."
    ]
   },
   {
@@ -4450,6 +4481,16 @@
       }
      ]
     }
+   ],
+   "resolution_flavor_success": [
+    "The clerk pulled the eleventh box herself, after closing, with the lights half off. Inside: the index cards, 'temporarily unavailable' for six years, rubber-banded and waiting. {agent} said thank you twice. The clerk said 'you didn't get these Tuesday' and {agent} agreed, because it was Wednesday.",
+    "Forty-one instruments, photocopied at fifteen cents a page, paid in cash from the co-op envelope. The paper weighs four pounds. It reads like a plot, because it is one — recorded, stamped, and public the whole time. Nobody had ever asked.",
+    "{agent} sat the reading room to closing three days running, pleasant as weather. On the third day the clerk started pulling boxes before being asked. That is the whole art of public records: be the person the clerk is glad to see."
+   ],
+   "resolution_flavor_failure": [
+    "The request came back 'overly broad, please narrow' — the phrase that means the county attorney called the recorder's office first. The cards are more unavailable now. There is a difference between hidden and defended, and the request just taught them which one to be.",
+    "{agent} lost the clerk on day one, a small rudeness at the counter about the fee schedule, and the reading room ran on rules after that. Every box took its full statutory five days. The summer does not have that many five-days.",
+    "The certified stamps sat on {agent} like wet wool, exactly as advertised. Eleven boxes read, nothing retained, and the notes taken in the wrong order. The paper won."
    ]
   },
   {
@@ -4506,6 +4547,16 @@
       }
      ]
     }
+   ],
+   "resolution_flavor_success": [
+    "The response went in Thursday at 3:40 PM — an hour and eighteen minutes of margin, which in this jurisdiction is swagger. The clerk's date stamp came down like a period at the end of a good sentence.",
+    "{agent} drove the response to the window through the holiday-weekend traffic with the signature pages riding shotgun. The motion is answered. Their 4:58 trick bought them nothing but the knowledge that the co-op has somebody who drives.",
+    "Fourteen days minus a weekend minus a holiday is a clock built to be lost against, and {agent} beat it by reading the local rules footnote nobody reads: service by the electronic system adds three days. The three days were the whole fight."
+   ],
+   "resolution_flavor_failure": [
+    "The response was ready Friday. The signature was not — the officer whose name the caption needed was at her sister's in Baton Rouge, and the rules do not accept a scan. Default judgment set for the following Tuesday. The clock was the whole weapon and it worked.",
+    "{agent} filed on time in the wrong court. Right building, wrong window, a distinction the clerk explained at 4:51 PM with real sympathy. Sympathy is not jurisdiction.",
+    "The deadline passed at 5:00 PM on a day {agent} spent doing the work well instead of filing it done enough. The perfect response, unfiled, is a blank page with extra steps."
    ]
   },
   {
@@ -4567,6 +4618,16 @@
       }
      ]
     }
+   ],
+   "resolution_flavor_success": [
+    "The motion to dismiss survived its hearing. The judge read 'unknown associates John and Jane Doe' aloud, slowly, and asked opposing counsel whom exactly they intended to frighten. Counsel's answer is in the transcript. The transcript is public. Three kitchen tables have read this one aloud too.",
+    "{agent} found the co-op an attorney who works for gumbo and spite — retired from the AG's office, allergic to golf. Her appearance on the docket changed the tone of the LLC's letters within one billing cycle.",
+    "Tortious interference requires a tort. {agent} sat with the officers and rebuilt the timeline from receipts, and the timeline shows the co-op doing, at every point, the one thing you cannot sue: showing up to public meetings on time."
+   ],
+   "resolution_flavor_failure": [
+    "The Does got named. Two of them. The paragraph at the kitchen tables has surnames in it now, and one of the surnames belongs to a man with a mortgage and a kid at Deforest. The suit is doing its work, which was never winning.",
+    "The co-op's insurance carrier read the complaint and sent the letter carriers send — coverage reserved, rights reserved, everything reserved. The defense fund is a coffee can now. The can is not empty, but it is a can.",
+    "{agent} spoke to the wrong reporter with the right intentions, and a line from that conversation is now Exhibit C. Everything is discoverable. Everything was always discoverable."
    ]
   },
   {
@@ -4623,6 +4684,16 @@
       }
      ]
     }
+   ],
+   "resolution_flavor_success": [
+    "Two hundred and six comments entered the record — typed, handwritten, one in the careful cursive of a woman who learned it in 1949 and saved it for occasions. The record is four inches thick. The appeal will read every page, because {agent} numbered them.",
+    "{agent} ran the sign-up table at the storefront like a potluck: you came for the coffee, you left having commented. The county's own portal counted the surge and flagged it 'unusual activity.' It was not unusual. It was the town.",
+    "The hearing ran to 11 PM because everyone who signed the sheet got their three minutes and took them. The commissioners stopped looking at the applicant's table around 9:30. Rooms decide things before votes do."
+   ],
+   "resolution_flavor_failure": [
+    "Thirty days closed with nine comments on the record, four of them from the same man, one of them supportive by accident — a resident who misread the parcel number. The appeal will read a thin folder and rule accordingly.",
+    "The comments were passionate, unsigned, and unentered — a stack of them, left at the storefront, waiting for somebody to drive them to the county. They are still in the truck. The period closed Monday.",
+    "{agent} got the town angry, which was easy, instead of on the record, which was the assignment. Anger is not evidence. The record knows only what it holds."
    ]
   },
   {
@@ -4680,6 +4751,16 @@
      ],
      "body_demon": "{agent} rode the chain in an afternoon: three LLCs, two states, one mail drop — all of it indexed, all of it wire. At the bottom, the original formation filing from 1981 — typed, PRE-COMPUTER, the true name line filled in and then AMENDED, the amendment stapled over it. The staple is old. Nobody has lifted it in forty years.\n\nThe staple is paper and steel. It is the one thing on the chain {agent} cannot touch. Lifting it is legal. Lifting it needs a hand."
     }
+   ],
+   "resolution_flavor_success": [
+    "Three LLCs deep, the matryoshka bottomed out at a name. {agent} found it not in the registry but in a 2019 annual report filed late — a $50 penalty, paid by a personal check, scanned into the file by a clerk who did not care. The check has a signature. The signature has a country club.",
+    "The mail drop in the strip mall two counties over shares a suite number with fourteen other LLCs. {agent} photographed the directory board in the lobby. The photograph is a family tree.",
+    "Somebody built this to be boring and {agent} declined to be bored. Registered agents, dates of formation, one shared notary stamp on documents four years apart — the pattern is a fingerprint, and now it is a diagram taped inside the storefront's back office, string and all."
+   ],
+   "resolution_flavor_failure": [
+    "The third LLC's registered agent resigned the week after the first pull — a coincidence in the way that thunder is a coincidence with lightning. The trail re-papers itself faster than {agent} can read it. Somebody watches the registry watch them.",
+    "{agent} pulled the records under their own name, which is now itself a record. The next morning a lawyer {agent} has never met knew it. The matryoshka has eyes on the outside doll.",
+    "Two counties over is a real drive, the registry closes at four, and the strip mall's mail drop is exactly as boring as designed. The boredom won this week. Boredom is their best material."
    ]
   }
  ]

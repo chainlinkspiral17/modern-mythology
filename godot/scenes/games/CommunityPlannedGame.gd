@@ -364,7 +364,7 @@ func _begin_session_with_slot(slot: int) -> void:
 	_current_slot = slot
 	_write_active_slot(slot)
 	if _try_load_save():
-		_log("[color=#a8c0a8]Loaded slot %d — day %d.[/color]" % [slot + 1, _day])
+		_log("[color=#a8c0a8]The ledger opens where you left it — slot %d, day %d.[/color]" % [slot + 1, _day])
 	else:
 		_init_state()
 		_log("Slot %d · Day %d · Memorial Day. The summer begins." % [slot + 1, _day])
@@ -1850,7 +1850,7 @@ func _render() -> void:
 		_day_label.text = "DAY %d / %d  ·  %s" % [_day, TURNS_TOTAL, dow]
 	else:
 		_day_label.text = "DAY %d / %d" % [_day, TURNS_TOTAL]
-	_dispatches_label.text = "Dispatches today: %d / %d" % [_dispatches_this_day, MAX_DISPATCHES_PER_DAY]
+	_dispatches_label.text = "Roads taken today · %d of %d" % [_dispatches_this_day, MAX_DISPATCHES_PER_DAY]
 	# Shelf button is hidden until the dean_interludes_visible reveal
 	# fires at day 60 — the interlude shelf is part of the late-summer
 	# legibility, not an ever-present UI element.
@@ -2078,7 +2078,7 @@ func _render_agent_list() -> void:
 		var st: Dictionary = _agent_state[a_id]
 		var status := ""
 		if bool(st["on_dispatch"]):
-			status = "  · ON DISPATCH (returns day %d)" % int(st["return_day"])
+			status = "  · OUT (back day %d)" % int(st["return_day"])
 		elif _agent_is_resting(a_id):
 			status = "  · AT REST (%d/%d)" % [
 				int(st.get("home_days_used", 0)),
@@ -2307,13 +2307,13 @@ func _open_agent_dossier(agent_id: String) -> void:
 	var status_label := Label.new()
 	var status_text: String
 	if bool(st.get("on_dispatch", false)):
-		status_text = "ON DISPATCH · returns day %d" % int(st.get("return_day", 0))
+		status_text = "OUT · the road has them till day %d" % int(st.get("return_day", 0))
 	elif bool(st.get("locked_for_saga", false)):
 		status_text = "LOCKED FOR THE SAGA"
 	elif bool(st.get("turned", false)):
 		status_text = "TURNED · on the resistance's side"
 	elif _agent_is_resting(agent_id):
-		status_text = "AT REST · %d/%d days" % [
+		status_text = "ON THE PORCH · day %d of %d" % [
 			int(st.get("home_days_used", 0)),
 			int(st.get("home_days_needed", 0))]
 	else:
@@ -2671,7 +2671,7 @@ func _revoke_dispatch(d: Dictionary) -> void:
 	_active_dispatches.erase(d)
 	_dispatches_this_day = max(0, _dispatches_this_day - 1)
 	_agent_dispatch_counts[a_id] = max(0, int(_agent_dispatch_counts.get(a_id, 1)) - 1)
-	_log("[i]Revoked.[/i] %s came back from the road. The problem is unhandled again." % String(a["name"]))
+	_log("[i]Called back.[/i] %s turned around mid-road. The problem kept its shape." % String(a["name"]))
 	_render()
 
 
@@ -2690,7 +2690,7 @@ func _render_log() -> void:
 # But it always costs the agent for the rest of the summer.
 func _open_tower_dispatch() -> void:
 	if _dispatches_this_day >= MAX_DISPATCHES_PER_DAY:
-		_log("[color=#ff9090]Already dispatched %d agents today.[/color]" % MAX_DISPATCHES_PER_DAY)
+		_log("[color=#ff9090]The day carries %d roads and they are all taken. Tomorrow is a day too.[/color]" % MAX_DISPATCHES_PER_DAY)
 		return
 	var dlg := ConfirmationDialog.new()
 	dlg.title = "Send to the tower"
@@ -2719,7 +2719,7 @@ func _open_tower_dispatch() -> void:
 		has_any = true
 	if not has_any:
 		var none := Label.new()
-		none.text = "No agents available to send."
+		none.text = "Nobody to send. The porch is empty until somebody comes home."
 		picker.add_child(none)
 	dlg.add_to_group("ui")  # F4 sweep catches modals
 	add_child(dlg)
@@ -2807,7 +2807,7 @@ func _is_trait_earned(trait_id: String, st: Dictionary, a: Dictionary) -> bool:
 
 func _open_dispatch_picker(region_id: String, problem_index: int) -> void:
 	if _dispatches_this_day >= MAX_DISPATCHES_PER_DAY:
-		_log("[color=#ff9090]Already dispatched %d agents today.[/color]" % MAX_DISPATCHES_PER_DAY)
+		_log("[color=#ff9090]The day carries %d roads and they are all taken. Tomorrow is a day too.[/color]" % MAX_DISPATCHES_PER_DAY)
 		_render_log()
 		return
 	var p: Dictionary = (_region_state[region_id]["active_problems"] as Array)[problem_index]
@@ -2869,7 +2869,7 @@ func _open_dispatch_picker(region_id: String, problem_index: int) -> void:
 			vbox.add_child(_make_ineligible_agent_row(String(a_id), block_reason))
 	if not any_eligible:
 		var none := Label.new()
-		none.text = "No agents available."
+		none.text = "Nobody is home to send."
 		none.add_theme_color_override("font_color", Color(0.62, 0.62, 0.62, 1))
 		vbox.add_child(none)
 	dlg.add_to_group("ui")  # F4 sweep catches modals
@@ -3053,7 +3053,7 @@ func _agent_dispatch_block_reason(a_id: String, region_id: String) -> String:
 	var a: Dictionary = _agents[a_id]
 	var st: Dictionary = _agent_state[a_id]
 	if bool(st.get("on_dispatch", false)):
-		return "on dispatch · returns day %d" % int(st.get("return_day", 0))
+		return "out · back day %d" % int(st.get("return_day", 0))
 	if _agent_is_resting(a_id):
 		var needed: int = int(st.get("home_days_needed", 0))
 		var used: int = int(st.get("home_days_used", 0))
@@ -4537,7 +4537,7 @@ func _resolve_dispatch(d: Dictionary) -> void:
 		var target_effort: float = float(template_for_staged.get("effort_to_resolve", 3.0))
 		var effort_accum: float = float(d.get("effort_accumulated", 0.0))
 		if effort_accum >= target_effort * 0.95:
-			_log("[color=#7cffb0]Day %d · [b]%s[/b] resolved [b]%s[/b] in %s.[/color]" %
+			_log("[color=#7cffb0]Day %d · [b]%s[/b] came home. [b]%s[/b] in %s is settled — a line through it in the ledger.[/color]" %
 				[_day, a["name"], p_ref["title"], _regions[r_id]["name"]])
 			var sf: String = _pick_resolution_flavor(template_for_staged, "resolution_flavor_success", a_id)
 			if sf != "":
@@ -4548,7 +4548,7 @@ func _resolve_dispatch(d: Dictionary) -> void:
 			if template_id != "":
 				_problem_resolved_counts[template_id] = int(_problem_resolved_counts.get(template_id, 0)) + 1
 		else:
-			_log("[color=#c8a842]Day %d · [b]%s[/b] left [b]%s[/b] partly handled (effort %.1f/%.1f).[/color]" %
+			_log("[color=#c8a842]Day %d · [b]%s[/b] came home early. [b]%s[/b] is half-carried — %.1f of the %.1f it wants. It will keep.[/color]" %
 				[_day, a["name"], p_ref["title"], effort_accum, target_effort])
 			p_ref["in_progress_by"] = ""
 		_finish_dispatch_and_set_breather(a_id)
@@ -4566,7 +4566,7 @@ func _resolve_dispatch(d: Dictionary) -> void:
 	var roll: float = rng.randf()
 	var template: Dictionary = _problem_templates.get(String(p_ref.get("template_id", "")), {})
 	if roll < base_chance:
-		_log("[color=#7cffb0]Day %d · [b]%s[/b] resolved [b]%s[/b] in %s.[/color]" %
+		_log("[color=#7cffb0]Day %d · [b]%s[/b] came home. [b]%s[/b] in %s is settled — a line through it in the ledger.[/color]" %
 			[_day, a["name"], p_ref["title"], _regions[r_id]["name"]])
 		var sf: String = _pick_resolution_flavor(template, "resolution_flavor_success", a_id)
 		if sf != "":
@@ -4611,7 +4611,7 @@ func _resolve_dispatch(d: Dictionary) -> void:
 			_problem_resolved_counts[template_id] = int(_problem_resolved_counts.get(template_id, 0)) + 1
 		_problem_resolved_by_region[r_id] = int(_problem_resolved_by_region.get(r_id, 0)) + 1
 	else:
-		_log("[color=#ff9090]Day %d · [b]%s[/b] failed at [b]%s[/b]. %s[/color]" %
+		_log("[color=#ff9090]Day %d · [b]%s[/b] came back without it. [b]%s[/b] stands. %s[/color]" %
 			[_day, a["name"], p_ref["title"], String(a.get("signature_failure", ""))])
 		var ff: String = _pick_resolution_flavor(template, "resolution_flavor_failure", a_id)
 		if ff != "":

@@ -82,6 +82,24 @@ picks from:
    CP stamp legibility, the four graustark chapter opens, the
    lamplit jog path.
 
+**2026-08-19 · THE VOICE PROGRAM opens (user play-test verdict).**
+"The game fiction is still rough and disjointed and doesn't feel
+cohesive. The voice of community planned is robotic and sterile
+and kinda off putting. Game texts need to be well written,
+evocative and suggest a living breathing world. literary and
+playful and dark and exciting. slowsticks, too." Draft 1 shipped:
+CP's engine frame-lines rewritten into Frasier's ledger register
+(dispatch/success/partial/failure/status/caps — numbers kept,
+telemetry removed), all 40 problem templates now carry resolution
+flavor (the County Seat legal cluster was silent), and two
+developer-speak leaks re-fictioned (slowstock stub screen's
+"follow-up commit", compass "TODO"). Draft 2 targets: stage-choice
+summaries, region-panel chrome, gauntlet system strings, per-stick
+slowstick text sweeps (each stick's system text in ITS studio's
+register per the aesthetic bible), BBS system prompts. The
+leakage grep (commit/TODO/authored/playable/placeholder) should
+run in every voice pass.
+
 ## THE DRAFTING PROGRAM (standing · 2026-08-03 · read first)
 
 The user's verdict on the whole 2026-08 wave: **"first pass of all

@@ -224,6 +224,50 @@ rules** once they've held across multiple sessions.
 
 ## Recent lessons
 
+### 2026-08-19 · the FRAME LINES are the voice (user: "robotic and sterile")
+
+- **User verdict from play testing: the voice of Community Planned
+  is "robotic and sterile and kinda off putting."** The diagnosis:
+  the flavor pools were literary but the FRAME lines around them —
+  the strings the player reads every single turn — spoke strategy-
+  game telemetry. "Day 34 · Ruth resolved Well Contamination in
+  Harmony Creek." "ON DISPATCH · returns day 41." "Dispatches
+  today: 2/3." A hundred good flavor paragraphs cannot outweigh a
+  thousand telemetry lines; the frame IS the voice.
+- **The register is Frasier's pencil.** He is an old man keeping a
+  summer in a ledger. Rules that held: declarative sentences;
+  concrete objects over abstractions (roads, the porch, the
+  pencil, a line through it); the numbers STAY (they are gameplay
+  information) but they arrive inside a sentence a person would
+  write; dry-dark understatement over exclamation ("It will
+  keep."). Examples now in the engine: dispatch = "takes the road
+  out to X. The pencil says back by day N." · success = "came
+  home. X is settled — a line through it in the ledger." ·
+  failure = "came back without it. X stands." · resting = "ON THE
+  PORCH · day 2 of 3" · cap = "The day carries 3 roads and they
+  are all taken. Tomorrow is a day too."
+- **All 40 problem templates now carry resolution_flavor_success /
+  _failure.** The eight that were silent were the County Seat
+  legal cluster — the paperwork problems, which turn out to be the
+  best register in the game (clerks, stamps, footnotes, the
+  matryoshka LLC). Legal process is a VOICE, not a spreadsheet:
+  "Sympathy is not jurisdiction." "Everything is discoverable.
+  Everything was always discoverable."
+- **Developer-speak inside the fiction is a defect class.** The
+  slowstock stub screen said "Playable acts are a follow-up
+  commit" — repo vocabulary inside Olaf's television. Now the
+  cart is "out on loan" and the case faces the room "so the shelf
+  remembers the shape of the game." Grep for it: commit, TODO,
+  authored, playable, placeholder, implemented — none of these
+  words belong in any player-facing string, ever.
+- NEXT voice draft: the stage-choice `summary` strings (still
+  "+1.0 effort · slow, attentive · no cost" — the numbers should
+  stay but the framing can breathe), region-panel chrome, the
+  gauntlet's system strings, and a per-stick sweep of slowstick
+  system text against the same leakage grep.
+
+
+
 ### 2026-08-09 · the electronic register reaches the stages + the basement
 
 - **The demon quiets in THE_BASEMENT were still embodied** — walking
