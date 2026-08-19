@@ -1524,7 +1524,7 @@ func _build_ui() -> void:
 	# the art is misaligned or competing for attention.
 	_board_bg_btn = Button.new()
 	_board_bg_btn.text = "BG OFF" if not _board_bg_visible else "BG ON"
-	_board_bg_btn.tooltip_text = "Toggle the painted board background. Default OFF — turn on if you want the atmospheric texture behind the markers."
+	_board_bg_btn.tooltip_text = "Show the painted board beneath the markers. Bare wood by default; the paint is there when you want it."
 	_board_bg_btn.toggle_mode = true
 	_board_bg_btn.button_pressed = _board_bg_visible
 	_board_bg_btn.add_theme_font_size_override("font_size", 12)
@@ -1984,7 +1984,7 @@ func _show_next_visitor_arrival() -> void:
 		art_panel.add_child(img)
 	else:
 		var ph := Label.new()
-		ph.text = "(no portrait art yet)"
+		ph.text = "(this card is still unpainted)"
 		ph.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 		ph.vertical_alignment = VERTICAL_ALIGNMENT_CENTER
 		ph.add_theme_color_override("font_color", Color(C_TEXT.r, C_TEXT.g, C_TEXT.b, 0.40))
@@ -2131,7 +2131,7 @@ func _show_drawn_card_popup(art_path: String, title: String, flavor: String, bod
 		art_panel.add_child(img)
 	else:
 		var ph := Label.new()
-		ph.text = "(no art yet)"
+		ph.text = "(unpainted)"
 		ph.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 		ph.vertical_alignment = VERTICAL_ALIGNMENT_CENTER
 		ph.add_theme_color_override("font_color", Color(C_TEXT.r, C_TEXT.g, C_TEXT.b, 0.40))
@@ -2243,7 +2243,7 @@ func _open_visitor_view(vid: String) -> void:
 		if not arrived:
 			ph.text = "(not yet arrived)"
 		else:
-			ph.text = "(no portrait art yet)"
+			ph.text = "(this card is still unpainted)"
 		ph.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 		ph.vertical_alignment = VERTICAL_ALIGNMENT_CENTER
 		ph.add_theme_color_override("font_color", Color(C_TEXT.r, C_TEXT.g, C_TEXT.b, 0.4))
@@ -2456,7 +2456,7 @@ func _open_card_view(cid: String, mode: String) -> void:
 		art_panel.add_child(img)
 	else:
 		var ph := Label.new()
-		ph.text = "(no art yet — use the studio to generate)"
+		ph.text = "(the painter has not gotten to this one)"
 		ph.add_theme_color_override("font_color", Color(C_TEXT.r, C_TEXT.g, C_TEXT.b, 0.4))
 		ph.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 		ph.vertical_alignment = VERTICAL_ALIGNMENT_CENTER
@@ -7165,7 +7165,7 @@ func _prompt_contents_pick(pile_id: String) -> void:
 		art_panel.add_child(img)
 	else:
 		var ph := Label.new()
-		ph.text = "(no art yet)"
+		ph.text = "(unpainted)"
 		ph.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 		ph.vertical_alignment = VERTICAL_ALIGNMENT_CENTER
 		ph.add_theme_color_override("font_color", Color(C_TEXT.r, C_TEXT.g, C_TEXT.b, 0.4))

@@ -93,12 +93,21 @@ CP's engine frame-lines rewritten into Frasier's ledger register
 telemetry removed), all 40 problem templates now carry resolution
 flavor (the County Seat legal cluster was silent), and two
 developer-speak leaks re-fictioned (slowstock stub screen's
-"follow-up commit", compass "TODO"). Draft 2 targets: stage-choice
-summaries, region-panel chrome, gauntlet system strings, per-stick
-slowstick text sweeps (each stick's system text in ITS studio's
-register per the aesthetic bible), BBS system prompts. The
-leakage grep (commit/TODO/authored/playable/placeholder) should
-run in every voice pass.
+"follow-up commit", compass "TODO"). Draft 2 shipped same day:
+gauntlet art placeholders re-fictioned ("this card is still
+unpainted" — the gauntlet is a physical board, an empty slot is an
+unpainted card), Earthman ch2's literal scaffold beats replaced
+with AUTHORED BRANCHED aftermath (the beat renderer learned
+`text_by` — a beat can branch its text on any _run_state key; the
+Murg duel now has three written outcomes in the uncanny-translation
+register, and the fire scene stops printing its own stage
+direction), Estuary 3's resume screen re-fictioned as the cart's
+SERVICE CARD. Draft 3 targets: stage-choice summaries, region-panel
+chrome, per-stick slowstick text sweeps (each stick's system text
+in ITS studio's register per the aesthetic bible), BBS system
+prompts. The leakage grep (commit/TODO/authored/playable/
+placeholder/scaffold — minus diegetic scaffolding) runs in every
+voice pass.
 
 ## THE DRAFTING PROGRAM (standing · 2026-08-03 · read first)
 

@@ -124,12 +124,24 @@ var _beats: Array = [
 		"text": "The tribal circle reacts."
 	},
 	{
-		"speaker": "· BEAT ·",
-		"text": "· specific beat · what happens next depends on your specific choice · full scene authoring is a follow-up commit · scaffold advances toward the reconciled path for narrative continuity ·"
+		"speaker": "· THE CIRCLE ·",
+		"text_by": "duel_choice",
+		"texts": {
+			"traditional": "The spear is taller than you.  Murg fights you honestly, which you will only later understand was the compliment.  When it ends, the circle stamps twice · once for him, once for you.  Blood, where it was drawn, was drawn in the correct places.\n\nThe salt is passed to you.  You do not touch it with your left hand.  Fifteen Delvanni pretend not to watch you remember this.",
+			"briefcase": "You open the briefcase on the sand: the Caltech papers, the slide rule, the sealed vial you have not told anyone about.  Murg looks at the equations for a specific long moment.  Then he laughs · a sound like a landslide reconsidering · and sits down in the dueling ring, which no Delvanni has done in nine hundred years.\n\n'The outworlder duels with THIS,' he announces, delighted.  'I cannot beat THIS.'\n\nThe circle decides, collectively and permanently, that you are funny.",
+			"pistol_drawn": "The pistol changes the temperature of the fire.  Murg's face does a thing you have no muscles for.  Hel Velli's face does the same thing in the other direction.\n\nNobody moves for the length of a slow breath.  Then Murg turns his back on you · which is not mercy, it is grammar: you have been reclassified from guest to weather.  The circle closes.  The salt is not passed to you at all.",
+			"_": "The circle watches you the way a tide watches a rock · to see what kind you are."
+		}
 	},
 	{
 		"speaker": "HEL VELLI",
-		"text": "Later, at the fire, Murg has returned to his own tribe with (specific outcome dependent on your choice above).  Hel Velli sits next to you and passes you a specific piece of dried meat.\n\n'You will need transportation.  I have a specific mount.  I have a specific reason to travel west to Talikan.  If you would like to travel with me · I will not object.  Your presence is · specifically interesting to me.'"
+		"text_by": "duel_choice",
+		"texts": {
+			"traditional": "Later, at the fire, Murg has returned to his own tribe carrying your name like a trophy he is pleased to share.  Hel Velli sits next to you and passes you a specific piece of dried meat.\n\n'You will need transportation.  I have a specific mount.  I have a specific reason to travel west to Talikan.  If you would like to travel with me · I will not object.  Your presence is · specifically interesting to me.'",
+			"briefcase": "Later, at the fire, Murg has returned to his own tribe with the story of the outworlder's leather weapon full of mathematics.  It will be a song by spring.  Hel Velli sits next to you and passes you a specific piece of dried meat.\n\n'You will need transportation.  I have a specific mount.  I have a specific reason to travel west to Talikan.  If you would like to travel with me · I will not object.  Your presence is · specifically interesting to me.'",
+			"pistol_drawn": "Later, at the fire, Murg is gone, and his going has left a shape in the circle that everyone can see except you.  Hel Velli sits next to you anyway.  He does not pass you the dried meat so much as set it down within your reach · which is a different verb.\n\n'You will need transportation.  I have a specific mount.  I have a specific reason to travel west to Talikan.  If you would like to travel with me · I will not object.  My reasons are · specifically my own.'",
+			"_": "Later, at the fire, Hel Velli sits next to you and passes you a specific piece of dried meat.\n\n'You will need transportation.  I have a specific mount.  I have a specific reason to travel west to Talikan.  If you would like to travel with me · I will not object.'"
+		}
 	},
 	{
 		"speaker": "· BEAT ·",
@@ -327,7 +339,16 @@ func _render_current_beat() -> void:
 	_content_lbl.offset_right = 380
 	_content_lbl.offset_top = -170
 	_content_lbl.offset_bottom = 100
-	_content_lbl.text = String(beat.get("text", ""))
+	var beat_text: String = String(beat.get("text", ""))
+	var by_key: String = String(beat.get("text_by", ""))
+	if by_key != "":
+		var cases: Dictionary = beat.get("texts", {})
+		var cur_v: String = String(_run_state.get(by_key, ""))
+		if cases.has(cur_v):
+			beat_text = String(cases[cur_v])
+		elif cases.has("_"):
+			beat_text = String(cases["_"])
+	_content_lbl.text = beat_text
 	_content_lbl.add_theme_font_size_override("normal_font_size", 22)
 	_content_lbl.add_theme_color_override("default_color", C_WHITE)
 	add_child(_content_lbl)
