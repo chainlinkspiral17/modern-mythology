@@ -172,6 +172,35 @@ light_color = Color(0.32, 0.42, 0.62, 1)
 light_energy = 0.25
 shadow_enabled = false
 
+; ── vn_shot wave 2 (2026-08) · cued objects that exist ─────────
+; Crow outside the kitchen window: blender (-1.6, 6.30, 1.06) →
+; godot (-1.6, 1.06, -6.30). Camera inside, looking out through
+; the glass — the pane is part of the shot.
+[node name="shot_insert_crow" type="Marker3D" parent="." groups=["vn_shot"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.6, 1.18, -5.10)
+rotation = Vector3(-0.06, 3.1416, 0.0)
+
+; Desk notebook: blender (1.72, 0.52, 0.775) → godot (1.72, 0.775, -0.52).
+[node name="shot_insert_notebook" type="Marker3D" parent="." groups=["vn_shot"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.72, 1.22, -1.08)
+rotation = Vector3(-0.68, 0.0, 0.0)
+
+; The stove door's ember glow: blender (2.3-0.35, 5.4, 0.5) →
+; godot (1.95, 0.5, -5.4). Low camera, level with the door.
+[node name="shot_insert_charred_wood" type="Marker3D" parent="." groups=["vn_shot"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.35, 0.56, -5.32)
+rotation = Vector3(0.02, -1.42, 0.0)
+
+; The big table: blender (0.0, 2.9, 0.76) → godot (0, 0.76, -2.9).
+[node name="shot_insert_table" type="Marker3D" parent="." groups=["vn_shot"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.55, 1.35, -2.05)
+rotation = Vector3(-0.50, 0.42, 0.0)
+
+; The cedar chest: blender (2.55, 3.55, 0.26) → godot (2.55, 0.26, -3.55).
+[node name="shot_insert_cedar" type="Marker3D" parent="." groups=["vn_shot"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.85, 0.82, -2.95)
+rotation = Vector3(-0.30, 0.72, 0.0)
+
 [node name="Interior" parent="." instance=ExtResource("1_glb")]
 
 [node name="PostProcess" type="CanvasLayer" parent="."]

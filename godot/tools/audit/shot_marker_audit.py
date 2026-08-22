@@ -178,6 +178,14 @@ def main():
                         continue
                     if typ in CAST_TYPES and sid in chars:
                         continue
+                    # A closeup id that is one word of a canon char
+                    # id is still a cast cue — "closeup miller" for
+                    # chief_miller / mrs_miller. 16 phantom-blind
+                    # cues read this way before the alias check.
+                    if typ in CAST_TYPES and any(
+                            sid == part for c in chars
+                            for part in c.split("_")):
+                        continue
                     seen_cues[(cur, typ, sid)] += 1
 
     for (preset, typ, sid), n in seen_cues.items():

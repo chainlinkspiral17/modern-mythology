@@ -159,6 +159,62 @@ def build_dressing():
     # Wall calendar on the west wall
     make_calendar("Calendar", (-ROOM_W/2.0+0.05, 2.0, 1.6))
 
+def build_phone_and_toast_2026_08():
+    """THE LANDLINE AND THE FRENCH TOAST (--props hunt, 2026-08).
+
+    [shot:insert phone] fires 5x against this kitchen and there was
+    no phone: "At seven oh-three the phone in the kitchen rings. It
+    is the landline. The landline never rings." — a wall-mount
+    landline Sam's father kept active since 2014. And [shot:insert
+    french_toast] (vol6 ch11): "She slices the challah, two slices
+    thick, the way Mike had always cut his French toast."
+    """
+    # ── The landline, wall-mounted by the doorway end of the north
+    # wall — where a kitchen phone lives, cord long enough to reach
+    # the table, because those cords always were.
+    px, pz = -2.85, 1.42
+    beige = (0.82, 0.78, 0.68, 1.0)
+    beige_dk = (0.68, 0.63, 0.53, 1.0)
+    make_box("Phone_Wall_Base", (px, ROOM_D - 0.10, pz), (0.095, 0.055, 0.22), beige)
+    make_box("Phone_Wall_Handset", (px, ROOM_D - 0.145, pz + 0.02), (0.062, 0.045, 0.19), beige_dk)
+    make_box("Phone_Wall_Cradle", (px, ROOM_D - 0.125, pz + 0.115), (0.075, 0.03, 0.02), beige_dk)
+    make_box("Phone_Wall_Dial", (px, ROOM_D - 0.132, pz - 0.055), (0.05, 0.006, 0.06), (0.30, 0.28, 0.26, 1.0))
+    # The coiled cord, sagging to its low point and back up — three
+    # segments stand in for the coil.
+    for ci, (dx, dz) in enumerate(((0.05, -0.16), (0.11, -0.26), (0.16, -0.18))):
+        make_cyl("Phone_Wall_Cord_%d" % ci, (px + dx, ROOM_D - 0.13, pz + dz),
+                 0.011, 0.14, beige_dk, segments=6)
+    # Eileen's cell, flat on the counter by the bullnose edge.
+    make_box("Phone_Cell", (-2.20, ROOM_D - 1.28, 0.955), (0.075, 0.15, 0.012),
+             (0.12, 0.12, 0.14, 1.0))
+
+    # ── The french toast, mid-making: skillet with two thick slices,
+    # the challah with its cut end showing, the bowl of whisked egg,
+    # the cinnamon. It is being MADE, not plated — that is the shot.
+    sx, sy = ROOM_W/4.0, ROOM_D - 1.0
+    bread = (0.83, 0.68, 0.44, 1.0)
+    crust = (0.62, 0.44, 0.24, 1.0)
+    make_cyl("FrenchToast_Skillet", (sx - 0.16, sy + 0.10, 0.965), 0.14, 0.035,
+             (0.16, 0.15, 0.14, 1.0), segments=14)
+    make_box("FrenchToast_Skillet_Handle", (sx - 0.36, sy + 0.10, 0.975),
+             (0.16, 0.032, 0.022), (0.16, 0.15, 0.14, 1.0))
+    for si, (ox, oy) in enumerate(((-0.055, 0.03), (0.055, -0.035))):
+        make_box("FrenchToast_Slice_%d" % si, (sx - 0.16 + ox, sy + 0.10 + oy, 0.995),
+                 (0.105, 0.085, 0.028), bread)
+        make_box("FrenchToast_Slice_%d_Crust" % si, (sx - 0.16 + ox, sy + 0.10 + oy, 1.012),
+                 (0.109, 0.089, 0.006), crust)
+    # The challah on the counter beside the stove, cut end toward
+    # the skillet; two slices' worth already gone.
+    make_box("FrenchToast_Challah", (-1.65, ROOM_D - 1.05, 0.99), (0.30, 0.13, 0.11), crust)
+    make_box("FrenchToast_Challah_Cut", (-1.49, ROOM_D - 1.05, 0.99), (0.012, 0.125, 0.105), bread)
+    make_cyl("FrenchToast_EggBowl", (-1.95, ROOM_D - 1.10, 0.975), 0.095, 0.055,
+             (0.90, 0.88, 0.84, 1.0), segments=12)
+    make_cyl("FrenchToast_Egg", (-1.95, ROOM_D - 1.10, 1.015), 0.078, 0.008,
+             (0.94, 0.80, 0.42, 1.0), segments=12)
+    make_cyl("FrenchToast_Cinnamon", (-1.78, ROOM_D - 1.22, 0.985), 0.028, 0.075,
+             (0.55, 0.34, 0.18, 1.0), segments=8)
+
+
 def main():
     clear_scene()
     build_shell()
@@ -169,6 +225,7 @@ def main():
     build_window()
     build_ceiling_infra()
     build_dressing()
+    build_phone_and_toast_2026_08()
     out = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)),
         "../../../assets/3d/locales/miller_kitchen.glb"))
     print(f"\n[build_miller_kitchen] exporting to {out}")
