@@ -82,12 +82,17 @@ is the big Deck rebuild — `godot/tools/blender/list_stale_builds.sh`
 prints the exact list — then a lookthrough. In-repo, next session
 picks from:
 
-1. **Gauntlet FP wiring gaps** (found by audit_gauntlet_locales,
-   2026-08-11): ember_ash_office 7/12 spaces, roberts_house 9/12,
-   the_hierophant_circuit 11/11 on top-down fallback. Read
-   _GAUNTLET_DESIGN_PLAYBOOK first; decide per-location whether
-   top-down is the intended look or the FP sources were never
-   authored.
+1. ~~**Gauntlet FP wiring gaps**~~ — draft 1 SHIPPED 2026-08-19:
+   the gaps were mostly a scene-MAPPING bug (roberts_house pointed
+   at roberts_kitchen.tscn; ember_ash_office at houston_office.tscn
+   — both remapped to their real locales), 21 computed vantages
+   authored across the three locations, and the Wheel's loom +
+   tapestry built (they existed only as prose). Draft 2 targets:
+   build ember's warehouse floor / alley / salvage stations, the
+   circuit's D'Ambrosio's + armory + riverfront stations, and the
+   church interior — those spaces keep the top-down fallback
+   deliberately until their sets exist. Then a Deck FP walkthrough
+   of all three boards.
 2. **Wear PERSONALITY passes** (tail-wave ledger row): whose feet,
    whose spills — anchor each locale's wear in its chapter prose.
    Read _SET_DETAIL_PLAYBOOK first; one locale deep per visit
