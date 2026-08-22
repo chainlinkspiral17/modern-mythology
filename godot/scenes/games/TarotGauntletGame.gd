@@ -2776,6 +2776,17 @@ const _STANDALONE_SPACE_VANTAGES := {
 		"church_steps": [-0.25, -2.01, 0.0, -85.2],
 		"the_black_car": [-2.18, -7.22, 0.0, -96.5],
 		"park_bandstand": [-0.22, 14.51, 0.0, 86.5],
+		# Draft-2 stations (2026-08-19): nave, armory, riverfront,
+		# and D'Ambrosio's riverboat. Boat-deck entries use
+		# floor_z=0.67 (main deck at z~1.42 minus the 0.75 trim).
+		"church_interior": [0.0, -1.5, -0.75, 90.0],
+		"old_armory": [-10.28, 9.48, 0.0, -171.9],
+		"riverfront": [1.97, 29.91, 0.0, 85.2],
+		"dambrosios_curb": [-1.03, 31.93, 0.0, 93.8],
+		"dambrosios_dining_room": [2.65, 34.60, 0.67, 84.5],
+		"table_17": [10.0, 35.0, 0.67, -2.0],
+		"dambrosios_kitchen": [7.5, 36.3, 0.67, 51.0],
+		"back_corridor": [10.98, 36.71, 0.67, 67.6],
 	},
 	"dambrosios": {
 		"parking_lot":    [+12.0,  +0.0, 180.0],

@@ -557,6 +557,150 @@ def build_trees():
                       seed=ti * 13 + sj, squash=0.85)
 
 
+def build_circuit_stations_2026_08():
+    """THE CIRCUIT'S OTHER STATIONS (gauntlet FP draft 2).
+
+    Seven of the Hierophant board's eleven stations had no
+    geometry. The flavor text is the spec: St Jude's INTERIOR
+    ("old incense, wet wood, something older than either"),
+    D'Ambrosio's RIVERBOAT with its brunch floor and table 17
+    "overlooking the muddy divide," the kitchen and the staff
+    corridor with the time clock, the old armory ("brick and tin
+    and the kind of plaque nobody cleans"), and the riverfront —
+    "the place where texas becomes louisiana under your shoes."
+
+    Layout: nave behind the facade (south), armory at the park's
+    west edge, riverfront + moored boat at the far north.
+    """
+    plaster = (0.82, 0.78, 0.70, 1.0)
+    wood_dk = (0.36, 0.26, 0.18, 1.0)
+    pew = (0.46, 0.34, 0.24, 1.0)
+    brick = (0.48, 0.34, 0.28, 1.0)
+    tin = (0.55, 0.56, 0.58, 1.0)
+    hull_w = (0.92, 0.90, 0.86, 1.0)
+    hull_r = (0.62, 0.18, 0.16, 1.0)
+    water = (0.42, 0.36, 0.28, 0.9)   # the muddy divide is MUD-colored
+    deck = (0.58, 0.46, 0.32, 1.0)
+    # ── ST JUDE'S NAVE · behind the facade (y -7), going north ──
+    make_box("Nave_Floor", (0.0, -1.5, 0.02), (13.0, 10.6, 0.06), wood_dk)
+    make_box("Nave_Wall_W", (-6.5, -1.5, 3.6), (0.30, 10.6, 7.2), plaster)
+    make_box("Nave_Wall_E", (6.5, -1.5, 3.6), (0.30, 10.6, 7.2), plaster)
+    make_box("Nave_Wall_N", (0.0, 3.8, 3.6), (13.3, 0.30, 7.2), plaster)
+    make_box("Nave_Ceil", (0.0, -1.5, 7.2), (13.3, 10.6, 0.20), (0.30, 0.26, 0.22, 1.0))
+    # Pews · two banks with a center aisle, wet-wood dark
+    for ri in range(5):
+        py = -5.0 + ri * 1.35
+        for sgn in (-1, 1):
+            make_box("Nave_Pew_%d_%+d" % (ri, sgn), (sgn * 3.1, py, 0.48),
+                     (4.6, 0.34, 0.16), pew)
+            make_box("Nave_PewBack_%d_%+d" % (ri, sgn), (sgn * 3.1, py + 0.16, 0.85),
+                     (4.6, 0.06, 0.60), pew)
+    # Altar + the office that owns him
+    make_box("Nave_AltarStep", (0.0, 2.9, 0.12), (5.2, 1.6, 0.24), (0.62, 0.58, 0.52, 1.0))
+    make_box("Nave_Altar", (0.0, 3.1, 0.85), (2.2, 0.9, 1.00), plaster)
+    make_box("Nave_AltarCloth", (0.0, 3.1, 1.38), (2.3, 0.95, 0.06), (0.86, 0.82, 0.72, 1.0))
+    for ci in (-1, 1):
+        make_cyl("Nave_Candle_%+d" % ci, (ci * 0.8, 3.1, 1.55), 0.035, 0.28,
+                 (0.90, 0.88, 0.80, 1.0), segments=6)
+    # Incense haze · one thin warm sheet in the crossing light
+    make_box("Nave_IncenseHaze", (0.0, -0.5, 3.4), (5.5, 0.02, 3.4),
+             (0.85, 0.80, 0.66, 0.16))
+    # ── OLD ARMORY · park's west edge ──
+    ax, ay = -17.0, 12.0
+    make_box("Armory_Body", (ax, ay, 2.6), (7.0, 10.0, 5.2), brick)
+    make_box("Armory_Roof", (ax, ay, 5.55), (7.6, 10.6, 0.7), tin)
+    make_box("Armory_RoofRidge", (ax, ay, 6.05), (0.5, 10.6, 0.35), tin)
+    make_box("Armory_Door", (ax + 3.52, ay - 2.0, 1.5), (0.08, 1.8, 3.0), wood_dk)
+    for wi in range(3):
+        make_box("Armory_WinBoard_%d" % wi, (ax + 3.52, ay + 1.2 + wi * 2.2, 3.4),
+                 (0.06, 1.0, 1.5), (0.42, 0.34, 0.26, 1.0))
+    # The plaque nobody cleans · low, by the door
+    make_box("Armory_Plaque", (ax + 3.56, ay - 3.4, 1.3), (0.03, 0.55, 0.40),
+             (0.42, 0.44, 0.38, 1.0))
+    make_box("Armory_Plaque_Grime", (ax + 3.575, ay - 3.5, 1.18), (0.02, 0.35, 0.10),
+             (0.30, 0.32, 0.28, 1.0))
+    # ── RIVERFRONT · far north · the muddy divide ──
+    make_box("River_Bank", (0.0, 30.0, -0.05), (40.0, 4.0, 0.14), (0.52, 0.44, 0.34, 1.0))
+    make_box("River_Water", (0.0, 40.0, -0.30), (40.0, 16.0, 0.10), water)
+    make_box("River_Wharf", (2.0, 32.6, 0.10), (22.0, 2.4, 0.24), deck)
+    for bi in range(5):
+        make_cyl("River_Bollard_%d" % bi, (-7.0 + bi * 4.5, 33.5, 0.42), 0.14, 0.65,
+                 (0.30, 0.28, 0.26, 1.0), segments=8)
+    # The state line under your shoes · a worn painted stripe on
+    # the wharf and a stamped plate: TX | LA.
+    make_box("River_StateLine", (2.0, 32.6, 0.235), (0.14, 2.4, 0.012),
+             (0.86, 0.82, 0.66, 1.0))
+    make_box("River_StatePlate", (2.35, 32.0, 0.235), (0.35, 0.25, 0.014),
+             (0.58, 0.56, 0.52, 1.0))
+    # ── D'AMBROSIO'S RIVERBOAT · moored along the wharf ──
+    bx, by = 6.0, 37.0
+    make_box("Boat_Hull", (bx, by, 0.55), (16.0, 5.6, 1.5), hull_w)
+    make_box("Boat_HullStripe", (bx, by, 1.05), (16.1, 5.65, 0.18), hull_r)
+    make_box("Boat_MainDeck", (bx, by, 1.35), (15.4, 5.2, 0.14), deck)
+    make_box("Boat_UpperDeck", (bx, by, 3.95), (13.0, 4.4, 0.14), deck)
+    for pi in range(6):
+        make_box("Boat_DeckPost_%d" % pi, (bx - 6.0 + pi * 2.4, by - 2.35, 2.65),
+                 (0.10, 0.10, 2.6), hull_w)
+    make_box("Boat_Rail", (bx, by - 2.4, 2.15), (15.0, 0.05, 0.06), hull_w)
+    # Twin stacks + THE PADDLEWHEEL at the stern (playbook rule 6:
+    # wheel circle PERPENDICULAR to the axle; axle runs Y; one
+    # assembly prefix).
+    for si in (-1, 1):
+        make_cyl("Boat_Stack_%+d" % si, (bx - 2.0 * si, by + 1.2, 5.6), 0.30, 3.2,
+                 (0.22, 0.20, 0.20, 1.0), segments=8)
+    wx = bx + 8.6
+    make_cyl("Boat_Paddle_Axle", (wx, by, 1.3), 0.10, 4.2, (0.30, 0.28, 0.26, 1.0),
+             segments=8, axis='Y')
+    import math as _m
+    for pb in range(8):
+        ang = 2 * _m.pi * pb / 8
+        # blade centers on a circle in the XZ plane (perpendicular
+        # to the Y axle), riding the axle
+        bxo = _m.cos(ang) * 1.05
+        bzo = _m.sin(ang) * 1.05
+        make_box("Boat_Paddle_Blade_%d" % pb, (wx + bxo, by, 1.3 + bzo),
+                 (0.55, 3.9, 0.16), hull_r)
+    make_box("Boat_Paddle_Box", (wx, by + 2.35, 2.1), (2.9, 0.7, 2.2), hull_r)
+    # ── THE BRUNCH FLOOR · main-deck dining slice ──
+    # Twelve tables in canon; six modeled forward + TABLE 17, the
+    # corner booth at the stern rail overlooking the divide.
+    for ti in range(6):
+        tx2 = bx - 5.5 + (ti % 3) * 2.4
+        ty2 = by - 0.9 + (ti // 3) * 1.9
+        make_cyl("Boat_Table_%d" % ti, (tx2, ty2, 1.75), 0.45, 0.05, hull_w, segments=10)
+        make_cyl("Boat_Table_%d_Post" % ti, (tx2, ty2, 1.55), 0.05, 0.40,
+                 (0.30, 0.28, 0.26, 1.0), segments=6)
+    make_box("Table17_Booth_Seat", (bx + 5.6, by - 1.6, 1.62), (1.6, 0.5, 0.14), hull_r)
+    make_box("Table17_Booth_Back", (bx + 5.6, by - 1.32, 1.98), (1.6, 0.10, 0.62), hull_r)
+    make_box("Table17_Top", (bx + 5.6, by - 2.05, 1.80), (1.4, 0.7, 0.05), hull_w)
+    make_box("Table17_Card", (bx + 5.3, by - 2.05, 1.84), (0.10, 0.14, 0.015),
+             (0.88, 0.86, 0.80, 1.0))
+    # ── KITCHEN + BACK CORRIDOR · aft deckhouse ──
+    make_box("BoatKitchen_House", (bx + 2.8, by + 1.5, 2.45), (5.0, 2.0, 2.1), hull_w)
+    make_box("BoatKitchen_SwingDoor", (bx + 0.28, by + 1.0, 2.25), (0.06, 0.8, 1.7), wood_dk)
+    make_box("BoatKitchen_Line", (bx + 3.6, by + 1.9, 1.85), (2.8, 0.5, 0.9),
+             (0.66, 0.68, 0.70, 1.0))
+    make_box("BoatKitchen_Pass", (bx + 1.6, by + 1.55, 2.35), (1.2, 0.08, 0.5),
+             (0.66, 0.68, 0.70, 1.0))
+    # Corridor between kitchen house and stern: time clock + coats.
+    make_box("Corridor_TimeClock", (bx + 5.55, by + 1.1, 2.6), (0.24, 0.10, 0.34),
+             (0.72, 0.70, 0.66, 1.0))
+    make_box("Corridor_CardRack", (bx + 5.55, by + 1.5, 2.5), (0.30, 0.06, 0.4), wood_dk)
+    for ci2 in range(3):
+        make_box("Corridor_Coat_%d" % ci2, (bx + 5.0 - ci2 * 0.35, by + 2.62, 2.2),
+                 (0.22, 0.10, 0.75), (0.30 + ci2 * 0.08, 0.28, 0.30, 1.0))
+    # ── THE CURB · gangway + bell above the front door ──
+    make_box("Curb_Gangway", (bx - 7.2, by - 3.6, 0.75), (1.2, 2.6, 0.10), deck)
+    make_box("Curb_Strip", (bx - 7.2, by - 5.2, 0.06), (6.0, 0.9, 0.12), (0.62, 0.60, 0.56, 1.0))
+    make_box("Curb_DoorFrame", (bx - 7.2, by - 2.45, 2.3), (1.4, 0.12, 1.9), wood_dk)
+    make_cyl("Curb_Bell", (bx - 7.2, by - 2.5, 3.35), 0.10, 0.14, (0.72, 0.60, 0.30, 1.0),
+             segments=8)
+    # The long black car's SPOT at the curb is empty — the car
+    # itself is parked at the church (it drives the circuit).
+    make_box("Curb_NoParking_Stencil", (bx - 7.2, by - 5.15, 0.125), (1.8, 0.35, 0.012),
+             (0.82, 0.78, 0.55, 1.0))
+
+
 def main():
     clear_scene()
     build_ground()
@@ -564,6 +708,7 @@ def main():
     build_long_black_car()
     build_bandstand()
     build_trees()
+    build_circuit_stations_2026_08()
     out = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)),
                                          "../../../assets/3d/locales/hierophant_circuit.glb"))
     print(f"\n[build_hierophant_circuit] exporting to {out}")

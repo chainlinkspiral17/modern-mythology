@@ -87,12 +87,17 @@ picks from:
    at roberts_kitchen.tscn; ember_ash_office at houston_office.tscn
    — both remapped to their real locales), 21 computed vantages
    authored across the three locations, and the Wheel's loom +
-   tapestry built (they existed only as prose). Draft 2 targets:
-   build ember's warehouse floor / alley / salvage stations, the
-   circuit's D'Ambrosio's + armory + riverfront stations, and the
-   church interior — those spaces keep the top-down fallback
-   deliberately until their sets exist. Then a Deck FP walkthrough
-   of all three boards.
+   tapestry built (they existed only as prose). Draft 2 SHIPPED same
+   day: the Ember & Ash warehouse level (graffiti brick, salvage,
+   kitchen rough-in, front stair, alley, Marigny sidewalk, the
+   corner across) and the circuit's seven stations (St Jude's
+   nave, the old armory with its plaque nobody cleans, the
+   riverfront state line, and D'Ambrosio's RIVERBOAT — brunch
+   floor, table 17 at the stern rail, kitchen pass, staff
+   corridor with the time clock). All 35 spaces across the three
+   boards now carry FP vantages. Draft 3 is Deck-gated: FP
+   walkthrough of all three boards, then wear passes on the new
+   sets.
 2. **Wear PERSONALITY passes** (tail-wave ledger row): whose feet,
    whose spills — anchor each locale's wear in its chapter prose.
    Read _SET_DETAIL_PLAYBOOK first; one locale deep per visit
