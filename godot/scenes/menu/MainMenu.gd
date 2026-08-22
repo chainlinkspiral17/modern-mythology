@@ -369,7 +369,7 @@ func _populate_chapters(vol: int) -> void:
 	var chapters := SceneDataDB.get_volume_chapters(vol)
 	if chapters.is_empty():
 		var lbl := Label.new()
-		lbl.text = "No scenes loaded.\nRun tools/import_scenes.py first."
+		lbl.text = "The book is empty — no chapters found.\n(dev: run tools/import_scenes.py)"
 		lbl.add_theme_font_size_override("font_size", 14)
 		lbl.add_theme_color_override("font_color", C_DIM)
 		lbl.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART

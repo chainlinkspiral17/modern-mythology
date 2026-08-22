@@ -375,7 +375,7 @@ func _build() -> void:
 	for m in _manifests.values():
 		if (m as Dictionary).get("status", "").begins_with("authored_stub") or (m as Dictionary).has("acts"):
 			total_authored += 1
-	progress.text = "  %d of %d sticks finished · %d authored on the shelf%s" % [
+	progress.text = "  %d of %d sticks finished · %d cases on the shelf%s" % [
 		_finished.size(), total_authored, total_authored, _collector_standing()]
 	progress.add_theme_font_size_override("font_size", 14)
 	progress.add_theme_color_override("font_color", C_TXT_DIM)
@@ -746,7 +746,7 @@ func _on_cart_hover(stick_id: String) -> void:
 		_card_boot_btn.disabled = true
 		_card_boot_btn.text = "  LOCKED  "
 	elif finished:
-		_card_status.text = "  FINISHED · replay available"
+		_card_status.text = "  FINISHED · yours to replay"
 		_card_status.add_theme_color_override("font_color", C_ACCENT)
 		_card_boot_btn.disabled = false
 		_card_boot_btn.text = "  REPLAY  "
@@ -774,10 +774,10 @@ func _on_cart_hover(stick_id: String) -> void:
 		if _scrapbook_path_for(stick_id) != "":
 			_card_scrapbook_btn.visible = true
 	elif not _is_fully_playable(stick_id):
-		_card_status.text = "  UNLOCKED · not yet fully implemented"
+		_card_status.text = "  UNLOCKED · the cart is out on loan"
 		_card_status.add_theme_color_override("font_color", C_TXT_DIM)
 		_card_boot_btn.disabled = false
-		_card_boot_btn.text = "  PEEK  "
+		_card_boot_btn.text = "  OPEN CASE  "
 	else:
 		_card_status.text = "  UNLOCKED · ready to boot"
 		_card_status.add_theme_color_override("font_color", C_LABEL)

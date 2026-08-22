@@ -102,7 +102,16 @@ with AUTHORED BRANCHED aftermath (the beat renderer learned
 Murg duel now has three written outcomes in the uncanny-translation
 register, and the fire scene stops printing its own stage
 direction), Estuary 3's resume screen re-fictioned as the cart's
-SERVICE CARD. Draft 3 targets: stage-choice summaries, region-panel
+SERVICE CARD. Draft 3 shipped: the
+shelf chrome re-fictioned ("authored on the shelf" → "cases on the
+shelf"; "UNLOCKED · not yet fully implemented" → "the cart is out
+on loan"; PEEK → OPEN CASE; "FINISHED · yours to replay"), the
+main menu's empty-state error re-voiced, and the sweep VERDICT
+recorded: KwikStopRoom's register-tape voice, Mrs Wu's, Tideline,
+and Spiderdrops all read healthy ("The chest holds five. It holds
+five."), the BBS command bars are period-correct modem terseness
+(diegetic — do not "fix"), and the 177 stage-choice summaries are
+info lines under literary labels (leave them). Remaining targets: stage-choice summaries, region-panel
 chrome, per-stick slowstick text sweeps (each stick's system text
 in ITS studio's register per the aesthetic bible), BBS system
 prompts. The leakage grep (commit/TODO/authored/playable/
