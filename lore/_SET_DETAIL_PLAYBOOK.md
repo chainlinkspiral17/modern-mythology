@@ -101,6 +101,17 @@ henderson) got there by accumulating exactly these layers.
   ring. New wear is narrower and closer to the floor's own tone;
   old wear is wide, dark, or scraped pale. A visitor should be
   able to date the household from the floor alone.
+- The triptych completed same day (Lena's three-years-alone, the
+  Millers' family kitchen): a family walks WIDE where one person
+  walks narrow; crowding too new to mark a floor shows in OBJECTS
+  (a flattened cushion, a folded floor bed); and the strongest
+  single wear mark so far is Mike's chair at the Miller table —
+  his years worn PALE, and inside that patch one small NEW dark
+  crescent, because "since June she has been sitting in Mike's
+  chair." Both ages, one spot, no words. ALSO: read the builder's
+  own docstrings before placing — the first draft of the chair
+  stains used tx=0.0 against a table at tx=0.5 and missed every
+  chair by half a meter.
 - Vocabulary that carried the pass: worn-PALE for chair-scrape
   (wear lightens wood), worn-DARK for foot traffic (grime
   darkens), scorch rings as habit (one kettle ring from decades,

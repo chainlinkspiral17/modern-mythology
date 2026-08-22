@@ -215,6 +215,72 @@ def build_phone_and_toast_2026_08():
              (0.55, 0.34, 0.18, 1.0), segments=8)
 
 
+def build_wear_personality_2026_08():
+    """WHOSE FEET, WHOSE SPILLS (wear-personality pass 3 — a FAMILY).
+
+    Third pass in the set, completing the triptych: Olaf's decades
+    alone, Lena's three years alone, and here a HOUSEHOLD. A family
+    walks wide where one person walks narrow; and one chair at this
+    table is named Chair_Short_Mike, and the prose about Mike runs
+    in the past tense ("Mike had insisted on it," "the way Mike had
+    always cut his French toast"). His place gets the cabin
+    vocabulary: long wear, stopped.
+    """
+    from _props.detail import make_traffic_wear, make_floor_stain, make_scuff_band
+    floor_dk = (0.34, 0.28, 0.21, 1.0)
+    floor_pale = (0.48, 0.40, 0.30, 1.0)
+    tx, ty = 0.5, 3.0
+    # ── The family's WIDE path · door → table → counter ──
+    make_traffic_wear("Wear_Family_Path",
+                      [(0.4, 0.8), (0.2, 2.2), (-0.6, 3.4), (-1.5, 4.4)],
+                      width=0.70, tint=floor_dk)
+    # ── The 4:32 spot · her feet at the sink, years of one hour
+    # nobody else is awake for. Narrow, worn dark, right where the
+    # under-cabinet light falls.
+    make_floor_stain("Wear_Sink_Stand", (-1.75, 4.55), radius=0.24,
+                     tint=(0.30, 0.24, 0.18, 1.0), segments=9)
+    # Coffee-measure dust arc at the counter corner by the sink.
+    make_floor_stain("Wear_Coffee_Dust", (-2.15, 4.35), radius=0.10,
+                     tint=(0.40, 0.30, 0.20, 1.0), segments=7)
+    # ── The landline's wear · a hand patch on the wall where the
+    # handset is grabbed, and the cord's drag-trace toward the
+    # table (the cord reaches; the wall shows the reaching).
+    make_box("Wear_Phone_HandPatch", (-2.85, 5.87, 1.28), (0.16, 0.01, 0.14),
+             (0.74, 0.70, 0.62, 1.0))
+    make_scuff_band("Wear_Phone_CordArc", (-2.45, 5.82), 0.7, axis='X',
+                    height=0.06, band_z=1.02, tint=(0.70, 0.66, 0.58, 1.0))
+    # ── Sixteen years of French toast · the cutting board lives by
+    # the stove; its center is worn pale with knife lines.
+    make_box("Wear_Board", (-1.65, 4.72, 0.955), (0.38, 0.26, 0.018),
+             (0.62, 0.50, 0.34, 1.0))
+    make_box("Wear_Board_Center", (-1.65, 4.72, 0.966), (0.24, 0.15, 0.004), floor_pale)
+    for ki in range(3):
+        make_box("Wear_Board_Knifeline_%d" % ki, (-1.70 + ki * 0.05, 4.72, 0.968),
+                 (0.005, 0.13, 0.002), (0.44, 0.34, 0.22, 1.0))
+    # ── The chairs tell the household ──
+    # (Table sits at tx=0.5 — the first draft of this pass put the
+    # stains at tx=0.0 and missed every chair by half a meter.)
+    # Sammy's and Bianca's places: dark crescents where feet tuck
+    # daily. Mike's place carries BOTH ages stacked: the pale patch
+    # of his years, and a small new dark crescent inside it —
+    # because "since June she has been sitting in Mike's chair."
+    # The guest chair: nothing.
+    make_floor_stain("Wear_Chair_Sammy", (tx - 1.45, ty), radius=0.20,
+                     tint=floor_dk, segments=8)
+    make_floor_stain("Wear_Chair_Bianca", (tx, ty - 1.25), radius=0.20,
+                     tint=floor_dk, segments=8)
+    make_floor_stain("Wear_Chair_Mike_Years", (tx + 1.45, ty), radius=0.22,
+                     tint=floor_pale, segments=8)
+    make_floor_stain("Wear_Chair_Mike_June", (tx + 1.38, ty + 0.05), radius=0.11,
+                     tint=(0.37, 0.30, 0.225, 1.0), segments=8)
+    # The Sentinel on the table, folded, at Mike's end — "they
+    # still get the Sentinel, Mike had insisted on it."
+    make_box("Sentinel_Folded", (tx + 0.55, ty + 0.18, 0.775), (0.30, 0.20, 0.015),
+             (0.86, 0.84, 0.78, 1.0))
+    make_box("Sentinel_Headline", (tx + 0.55, ty + 0.18, 0.784), (0.22, 0.03, 0.002),
+             (0.28, 0.26, 0.24, 1.0))
+
+
 def main():
     clear_scene()
     build_shell()
@@ -226,6 +292,7 @@ def main():
     build_ceiling_infra()
     build_dressing()
     build_phone_and_toast_2026_08()
+    build_wear_personality_2026_08()
     out = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)),
         "../../../assets/3d/locales/miller_kitchen.glb"))
     print(f"\n[build_miller_kitchen] exporting to {out}")

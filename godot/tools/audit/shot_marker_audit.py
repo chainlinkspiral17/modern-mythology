@@ -115,6 +115,7 @@ SYNONYMS = {
     "marquee": ["marquee"],
     "pot_roast": ["potroast"],
     "eviction_notice": ["evictionnotice", "evictionghost"],
+    "sink_light": ["undercab", "sink"],
 }
 
 
