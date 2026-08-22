@@ -324,6 +324,77 @@ def build_starfish_nebula_2026_08():
                  (0.006, w, h), col)
 
 
+def build_wear_personality_2026_08():
+    """WHOSE FEET, WHOSE SPILLS (wear-personality pass 2, 2026-08-19).
+
+    Lena's wear against Olaf's: the cabin remembers one man's
+    decades; this apartment remembers three years of ONE woman who
+    makes things, keeps the heat at sixty-one, and suddenly hosts
+    three guests. Her wear is pigment and coffee; the crowding is
+    too new to mark the floor, so it shows in the OBJECTS instead
+    (a flattened cushion, a folded floor blanket).
+    """
+    from _props.detail import make_traffic_wear, make_floor_stain, make_scuff_band
+    floor_dk = (0.33, 0.29, 0.24, 1.0)
+    coffee = (0.36, 0.25, 0.15, 1.0)
+    # ── HER THREE YEARS ────────────────────────────────────────
+    # One narrow path: door → kitchen → the easel light → bedroom.
+    # A person alone walks a thinner line than a family.
+    make_traffic_wear("Wear_Lena_Path",
+                      [(0.6, 0.8), (-0.8, 1.2), (-1.6, 1.6), (-1.7, 2.3)],
+                      width=0.38, tint=floor_dk)
+    make_traffic_wear("Wear_Lena_Path_Bed",
+                      [(-1.0, 1.9), (-0.62, 2.9)],
+                      width=0.34, tint=floor_dk)
+    # THE CONE AND THE KETTLE · she "worked the cone and the
+    # kettle" — the cone lives at one spot on the counter: a ring
+    # of rings, and a drip line down the counter face.
+    for ri, (rx, ry, rr) in enumerate(((-2.14, 1.02, 0.055), (-2.24, 1.10, 0.045),
+                                       (-2.18, 0.94, 0.038))):
+        make_cyl("Wear_ConeRing_%d" % ri, (rx, ry, 0.928), rr, 0.003, coffee, segments=8)
+    make_scuff_band("Wear_Counter_Drip", (-1.86, 1.05), 0.5, axis='Y',
+                    height=0.14, band_z=0.62, tint=(0.30, 0.22, 0.14, 1.0))
+    # ── THE ARTIST'S FLOOR · around the easel (-1.72, 2.35) ──
+    # Paint lands where work happens: a constellation of small
+    # hard-edged drips in HER palette (the nebula's colors — she
+    # mixes what she paints with), plus one solvent bloom.
+    for di, (dx, dy, dr, col) in enumerate((
+            (-1.45, 2.05, 0.030, (0.34, 0.20, 0.46, 1.0)),
+            (-1.95, 2.10, 0.024, (0.16, 0.38, 0.44, 1.0)),
+            (-1.60, 2.62, 0.036, (0.62, 0.32, 0.42, 1.0)),
+            (-2.05, 2.50, 0.020, (0.88, 0.84, 0.66, 1.0)),
+            (-1.30, 2.40, 0.026, (0.13, 0.10, 0.26, 1.0)))):
+        make_cyl("Wear_PaintDrip_%d" % di, (dx, dy, 0.007), dr, 0.004, col, segments=6)
+    make_floor_stain("Wear_SolventBloom", (-1.80, 2.75), radius=0.14,
+                     tint=(0.38, 0.35, 0.30, 1.0), segments=9)
+    # Charcoal smudge on the west wall at hand height, where she
+    # steadies herself leaning in to the board.
+    make_box("Wear_CharcoalSmudge", (-2.46, 2.15, 1.32), (0.012, 0.16, 0.10),
+             (0.24, 0.23, 0.22, 1.0))
+    # ── SIXTY-ONE DEGREES ──────────────────────────────────────
+    # The thermostat reads what it reads; the draft towel at the
+    # door base is how a cold apartment answers its own door.
+    make_box("Thermostat_Body", (2.46, 2.2, 1.45), (0.035, 0.14, 0.10),
+             (0.86, 0.84, 0.78, 1.0))
+    make_box("Thermostat_Needle", (2.44, 2.19, 1.45), (0.008, 0.05, 0.012),
+             (0.72, 0.24, 0.18, 1.0))
+    make_box("Wear_DraftTowel", (0.60, 0.14, 0.035), (0.85, 0.14, 0.07),
+             (0.55, 0.50, 0.42, 1.0))
+    # ── THE CROWDING (weeks, so: objects, not floor) ───────────
+    # Finn's end of the couch: one cushion sits lower and prouder
+    # at the front edge than its twin.
+    # (couch sits at (0.70, 3.60); first placement floated in front
+    # of it and hit the partition — the flat sits ON Finn's cushion)
+    make_box("Wear_Cushion_Flat", (0.25, 3.51, 0.545), (0.74, 0.58, 0.030),
+             (0.45, 0.41, 0.35, 1.0))
+    # Kai's floor bed, folded and stacked by the couch arm each
+    # morning — a guest who folds is a guest who knows he's one.
+    make_box("Wear_FloorBed_Folded", (1.55, 2.55, 0.09), (0.55, 0.42, 0.18),
+             (0.50, 0.44, 0.36, 1.0))
+    make_box("Wear_FloorBed_Pillow", (1.55, 2.55, 0.225), (0.42, 0.30, 0.09),
+             (0.82, 0.78, 0.70, 1.0))
+
+
 def main():
     clear_scene()
     build_shell()
@@ -334,6 +405,7 @@ def main():
     build_dressing()
     build_canvas_2026_08()
     build_starfish_nebula_2026_08()
+    build_wear_personality_2026_08()
     out = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)),
         "../../../assets/3d/locales/lena_apartment.glb"))
     print(f"\n[build_lena_apartment] exporting to {out}")
