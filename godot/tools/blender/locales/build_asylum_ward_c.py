@@ -485,6 +485,49 @@ def build_death_wave2_props():
              (0.94, 0.72, 0.62, 0.50))
 
 
+def build_wheelchair_2026_08():
+    """THE WHEELCHAIR (gauntlet board station, kind "threshold").
+
+    The board names a station WHEELCHAIR and keeps it
+    always_visible; the builder had no wheelchair. An empty one,
+    parked against the east wall a little off true, chrome dulled,
+    with ONE footrest flipped up — the detail that says somebody
+    left it, one way or the other. Wheels per playbook rule 6:
+    circles perpendicular to the X axle, one assembly prefix.
+    """
+    chrome = (0.62, 0.64, 0.66, 1.0)
+    chrome_dk = (0.46, 0.48, 0.50, 1.0)
+    vinyl = (0.24, 0.28, 0.34, 1.0)
+    wx, wy = 2.02, 8.2         # against the east wall, mid-ward
+    # Big rear wheels · axle along X → circle in the YZ plane
+    for sgn in (-1, 1):
+        make_cyl("Wheelchair_Wheel_%+d" % sgn, (wx + sgn * 0.30, wy - 0.05, 0.30),
+                 0.30, 0.03, chrome_dk, segments=14, axis='X')
+        make_cyl("Wheelchair_Hub_%+d" % sgn, (wx + sgn * 0.30, wy - 0.05, 0.30),
+                 0.05, 0.06, chrome, segments=8, axis='X')
+        make_cyl("Wheelchair_HandRim_%+d" % sgn, (wx + sgn * 0.345, wy - 0.05, 0.30),
+                 0.25, 0.015, chrome, segments=14, axis='X')
+    # Front casters
+    for sgn in (-1, 1):
+        make_cyl("Wheelchair_Caster_%+d" % sgn, (wx + sgn * 0.24, wy + 0.32, 0.09),
+                 0.09, 0.025, chrome_dk, segments=10, axis='X')
+    # Seat, back, arms — parked a few degrees off true (the frame
+    # sits square; the off-true reads in the pose of the parts)
+    make_box("Wheelchair_Seat", (wx, wy + 0.06, 0.52), (0.46, 0.42, 0.05), vinyl)
+    make_box("Wheelchair_Back", (wx + 0.02, wy - 0.18, 0.86), (0.44, 0.05, 0.52), vinyl)
+    for sgn in (-1, 1):
+        make_box("Wheelchair_Arm_%+d" % sgn, (wx + sgn * 0.25, wy + 0.04, 0.70),
+                 (0.04, 0.38, 0.04), chrome)
+        make_box("Wheelchair_ArmPost_%+d" % sgn, (wx + sgn * 0.25, wy + 0.18, 0.61),
+                 (0.035, 0.035, 0.16), chrome)
+    make_box("Wheelchair_PushBar", (wx + 0.01, wy - 0.22, 1.14), (0.42, 0.04, 0.035), chrome)
+    # Footrests: one DOWN, one FLIPPED UP.
+    make_box("Wheelchair_Footrest_Down", (wx - 0.15, wy + 0.44, 0.14),
+             (0.16, 0.14, 0.02), chrome_dk)
+    make_box("Wheelchair_Footrest_Up", (wx + 0.15, wy + 0.40, 0.34),
+             (0.16, 0.02, 0.14), chrome_dk)
+
+
 def main():
     clear_scene()
     build_shell()
@@ -496,6 +539,7 @@ def main():
     build_decor()
     build_death_dressing()
     build_death_wave2_props()
+    build_wheelchair_2026_08()
     out = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)),
                                          "../../../assets/3d/locales/asylum_ward_c.glb"))
     print(f"\n[build_asylum_ward_c] exporting to {out}")
