@@ -2701,7 +2701,10 @@ func _render_board() -> void:
 # shared resource.
 const _LOCATION_SCENE_PATHS := {
 	"dambrosios":          "res://scenes/locales/diner.tscn",
-	"cathedral":           "res://scenes/locales/cathedral.tscn",       # Magician
+	# The Magician board loaded the LEGACY SHELL (locales/cathedral,
+	# 30 nodes, no markers, dead GLB path) while the model-chapter
+	# set lived at scenes/cathedral.tscn — the roberts/ember class.
+	"cathedral":           "res://scenes/cathedral.tscn",       # Magician
 	"elicia_bungalow":     "res://scenes/locales/bungalow.tscn",        # Priestess
 	"riverboat_interior":  "res://scenes/locales/riverboat_interior.tscn", # Empress / Emperor / Hierophant
 	# roberts_kitchen.tscn is a commercial kitchen — the Wheel's
