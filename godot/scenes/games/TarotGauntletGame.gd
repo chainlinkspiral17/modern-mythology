@@ -2756,12 +2756,21 @@ const _STANDALONE_SPACE_VANTAGES := {
 		"garden": [0.16, 5.00, -0.75, 92.3],
 	},
 	"ember_ash_office": {
+		# Office level (mezzanine floor z=0; -0.75 trims the eye)
 		"leaded_window": [-0.28, 1.82, -0.75, -81.1],
 		"desk": [-0.22, 1.52, -0.75, 99.3],
 		"office_door": [0.69, 1.41, -0.75, -46.5],
 		"back_stair": [-1.07, 1.86, -0.75, -134.4],
 		"cypress_beam": [-1.98, 2.35, -0.75, 7.2],
-		"corner_across": [1.07, 2.48, -0.75, -2.6],
+		# Warehouse + street level (floor z=-4.5; draft 2 build) —
+		# interior stands eye ~1.55, street stands eye 2.30.
+		"warehouse_floor": [0.0, 8.5, -5.25, -90.0],
+		"salvage_piles": [-3.65, 8.23, -5.25, 141.0],
+		"kitchen_rough_in": [4.33, 10.35, -5.25, 48.0],
+		"front_stair": [1.72, 5.64, -5.25, 7.7],
+		"back_alley": [0.5, 15.8, -5.25, -43.0],
+		"sidewalk": [2.5, -3.4, -4.50, 152.0],
+		"corner_across": [-8.24, -3.76, -4.50, -131.6],
 	},
 	"the_hierophant_circuit": {
 		"church_steps": [-0.25, -2.01, 0.0, -85.2],
