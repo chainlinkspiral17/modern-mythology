@@ -180,6 +180,17 @@ light_energy = 1.1
 omni_range = 2.8
 shadow_enabled = false
 
+; ── vn_shot (2026-08) · the crow and the charred wood ──────────
+; Crow on the sill: blender (1.55, 0.30, 1.07) → godot (1.55,
+; 1.07, -0.30). Charred wood row: blender (~0.0, 1.60, 0.79).
+[node name="shot_insert_crow" type="Marker3D" parent="." groups=["vn_shot"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.55, 1.16, -1.05)
+rotation = Vector3(-0.10, 0.0, 0.0)
+
+[node name="shot_insert_charred_wood" type="Marker3D" parent="." groups=["vn_shot"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0, 1.15, -1.02)
+rotation = Vector3(-0.72, 0.0, 0.0)
+
 [node name="Interior" parent="." instance=ExtResource("1_glb")]
 
 [node name="PostProcess" type="CanvasLayer" parent="."]

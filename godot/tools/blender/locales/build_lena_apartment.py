@@ -279,6 +279,51 @@ def build_canvas_2026_08():
              (0.44, 0.026, 0.60), gesso)
 
 
+def build_starfish_nebula_2026_08():
+    """THE STARFISH NEBULA AND THE FOUR PATCHES (--props, 2026-08).
+
+    Canon: "She sat at the kitchen table with the cup and looked
+    through the window at the alley and at the Starfish Nebula and
+    at the four patches and did not, this evening, do anything
+    about any of it." The mural is on the alley wall OUTSIDE her
+    kitchen window (west, x = -2.5); somebody painted over parts of
+    it in four rectangles of almost-but-not-the-mural's color, and
+    the patches are the wound the chapter keeps touching.
+    """
+    wx = -ROOM_W/2.0 - 2.6           # the alley wall, 2.6m across
+    brick = (0.44, 0.30, 0.24, 1.0)
+    deep = (0.13, 0.10, 0.26, 1.0)   # nebula ground
+    violet = (0.34, 0.20, 0.46, 1.0)
+    teal = (0.16, 0.38, 0.44, 1.0)
+    rose = (0.62, 0.32, 0.42, 1.0)
+    star = (0.88, 0.84, 0.66, 1.0)
+    patch = (0.41, 0.33, 0.28, 1.0)  # almost the brick, not quite
+    # The wall itself, running past the window frame both ways.
+    make_box("Nebula_AlleyWall", (wx, 1.30, 1.60), (0.15, 6.5, 3.2), brick)
+    # The mural ground and its bands, proud of the wall by paint.
+    make_box("Nebula_Ground", (wx + 0.083, 1.30, 1.70), (0.012, 3.6, 2.2), deep)
+    make_box("Nebula_Band_Violet", (wx + 0.090, 0.75, 1.95), (0.010, 1.9, 0.85), violet)
+    make_box("Nebula_Band_Teal", (wx + 0.090, 1.95, 1.45), (0.010, 1.7, 0.95), teal)
+    make_box("Nebula_Band_Rose", (wx + 0.095, 1.35, 2.25), (0.008, 1.2, 0.55), rose)
+    # The starfish: a center and five arms, staggered boxes.
+    make_box("Nebula_Star_Core", (wx + 0.100, 1.30, 1.75), (0.007, 0.34, 0.34), star)
+    for ai, (dy, dz, w, h) in enumerate((
+            (0.0, 0.42, 0.16, 0.55), (0.40, 0.16, 0.48, 0.16),
+            (-0.40, 0.16, 0.48, 0.16), (0.26, -0.34, 0.20, 0.48),
+            (-0.26, -0.34, 0.20, 0.48))):
+        make_box("Nebula_Star_Arm_%d" % ai,
+                 (wx + 0.100, 1.30 + dy, 1.75 + dz), (0.007, w, h), star)
+    # THE FOUR PATCHES · rectangles of almost-right paint, each a
+    # little differently wrong, one visibly newer than the rest.
+    for pi, (py, pz, w, h, col) in enumerate((
+            (0.55, 2.30, 0.55, 0.40, patch),
+            (2.30, 1.15, 0.48, 0.55, (0.38, 0.31, 0.27, 1.0)),
+            (1.85, 2.35, 0.40, 0.35, (0.44, 0.35, 0.29, 1.0)),
+            (0.85, 0.95, 0.50, 0.45, (0.48, 0.38, 0.31, 1.0)))):
+        make_box("Nebula_Patch_%d" % (pi + 1), (wx + 0.105, py, pz),
+                 (0.006, w, h), col)
+
+
 def main():
     clear_scene()
     build_shell()
@@ -288,6 +333,7 @@ def main():
     build_bedroom()
     build_dressing()
     build_canvas_2026_08()
+    build_starfish_nebula_2026_08()
     out = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)),
         "../../../assets/3d/locales/lena_apartment.glb"))
     print(f"\n[build_lena_apartment] exporting to {out}")

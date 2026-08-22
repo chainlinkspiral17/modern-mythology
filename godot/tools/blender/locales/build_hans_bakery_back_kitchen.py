@@ -252,6 +252,34 @@ def build_communal_table():
     make_box("Chapbook_Drawer", (-1.9, 3.62, 0.56), (0.44, 0.02, 0.16), wood_dk)
 
 
+def build_pers_box_2026_08():
+    """PER'S WOODEN BOX (--props, 2026-08 · [shot:insert box] x4).
+
+    Canon: "He picked up a wooden box from the bench by the door.
+    The box was about a foot long and six inches deep, with a
+    hinged lid." The bench did not exist either. Both do now, by
+    the south door where Per hangs the canvas coat.
+    """
+    wood = (0.52, 0.40, 0.28, 1.0)
+    wood_dk = (0.40, 0.30, 0.20, 1.0)
+    brass = (0.62, 0.52, 0.30, 1.0)
+    bx, by = 1.35, 0.42
+    make_box("DoorBench_Seat", (bx, by, 0.44), (1.10, 0.34, 0.05), wood)
+    for li, lx in enumerate((bx - 0.46, bx + 0.46)):
+        make_box("DoorBench_Leg_%d" % li, (lx, by, 0.21), (0.05, 0.30, 0.42), wood_dk)
+    # The box: ~0.30 x 0.15, hinged lid sitting a hair proud.
+    make_box("PersBox_Body", (bx - 0.22, by, 0.525), (0.305, 0.155, 0.115), wood)
+    make_box("PersBox_Lid", (bx - 0.22, by, 0.590), (0.315, 0.165, 0.022), wood_dk)
+    for hi, hy in enumerate((by - 0.05, by + 0.05)):
+        make_box("PersBox_Hinge_%d" % hi, (bx - 0.065, hy, 0.578),
+                 (0.014, 0.030, 0.020), brass)
+    make_box("PersBox_Clasp", (bx - 0.375, by, 0.560), (0.010, 0.035, 0.030), brass)
+    # The coat peg row above the bench (the canvas coat's home).
+    for pi2, py2 in enumerate((by - 0.10, by + 0.14)):
+        make_cyl("DoorPeg_%d" % pi2, (bx + 0.30, py2, 1.52), 0.016, 0.09,
+                 wood_dk, segments=6, axis='X')
+
+
 def main():
     clear_scene()
     build_shell()
@@ -268,6 +296,7 @@ def main():
     build_clock()
     build_communal_table()
     build_ceiling_infra()
+    build_pers_box_2026_08()
     out = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)),
         "../../../assets/3d/locales/hans_bakery_back_kitchen.glb"))
     print(f"\n[build_hans_bakery_back_kitchen] exporting to {out}")

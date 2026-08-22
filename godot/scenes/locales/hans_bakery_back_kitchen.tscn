@@ -181,6 +181,17 @@ light_energy = 1.8
 omni_range = 3.2
 shadow_enabled = false
 
+; ── vn_shot (2026-08) · Per's box + the chapbook drawer ────────
+; Box on the bench by the south door: blender (1.13, 0.42, 0.55)
+; → godot (1.13, 0.55, -0.42).
+[node name="shot_insert_box" type="Marker3D" parent="." groups=["vn_shot"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.13, 0.95, -1.05)
+rotation = Vector3(-0.55, 0.0, 0.0)
+
+[node name="shot_insert_chapbook" type="Marker3D" parent="." groups=["vn_shot"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0, 1.10, -1.60)
+rotation = Vector3(-0.30, 0.0, 0.0)
+
 [node name="Interior" parent="." instance=ExtResource("1_glb")]
 
 [node name="PostProcess" type="CanvasLayer" parent="."]

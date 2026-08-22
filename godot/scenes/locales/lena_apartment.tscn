@@ -193,6 +193,25 @@ rotation = Vector3(-0.06, -0.82, 0.0)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.55, 1.45, -1.30)
 rotation = Vector3(-0.16, -0.86, 0.0)
 
+; ── vn_shot wave 2 (2026-08) · nebula + window ─────────────────
+; Kitchen window at blender (-2.48, 1.30, 1.50) → godot (-2.48,
+; 1.50, -1.30); the nebula wall is 2.6m past it at x=-5.1. The
+; window shot LOOKS THROUGH at the mural — the pane, the alley,
+; the patches, in that order.
+[node name="shot_insert_window" type="Marker3D" parent="." groups=["vn_shot"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.35, 1.48, -1.30)
+rotation = Vector3(0.0, 1.5708, 0.0)
+
+[node name="shot_insert_mural" type="Marker3D" parent="." groups=["vn_shot"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.35, 1.70, -1.30)
+rotation = Vector3(0.0, 1.5708, 0.0)
+
+; The patch shot favors patch 1 (blender y 0.55, z 2.30): high on
+; the wall, the newest wrongness.
+[node name="shot_insert_patch" type="Marker3D" parent="." groups=["vn_shot"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.42, 2.05, -0.72)
+rotation = Vector3(0.12, 1.42, 0.0)
+
 [node name="Interior" parent="." instance=ExtResource("1_glb")]
 
 [node name="PostProcess" type="CanvasLayer" parent="."]
