@@ -84,6 +84,35 @@ henderson) got there by accumulating exactly these layers.
 
 ## Recent lessons
 
+### 2026-08-19 · WEAR HAS AN AGE — the cabin's two inhabitants
+
+- First full wear-personality pass (cabin_interior, the "land of
+  milk and honey" heart). The finding that generalizes: **wear is
+  not one layer, it is a TIMELINE, and the difference between two
+  ages of wear is itself story.** Olaf lived here from '79: his
+  wear is decades — the door→table→kitchen→stove path cut dark
+  and wide, the Sunday carving spot scraped PALE by chair legs
+  with a shaving crescent no broom ever fully got, the kettle's
+  ring on the stove top, the flame-mark iron's scorch where it
+  was always set down, the latch-hand patch, three ladder rungs
+  worn at the grab line, the reader's un-faded rectangle on a
+  shelf otherwise darkened since '46. Tem's vigil is WEEKS: a
+  faint NARROW path to the chair beside the daybed and one mug
+  ring. New wear is narrower and closer to the floor's own tone;
+  old wear is wide, dark, or scraped pale. A visitor should be
+  able to date the household from the floor alone.
+- Vocabulary that carried the pass: worn-PALE for chair-scrape
+  (wear lightens wood), worn-DARK for foot traffic (grime
+  darkens), scorch rings as habit (one kettle ring from decades,
+  one mug ring from weeks), and the negative-space wear of an
+  object that never moves (the reader's shadow).
+- Mechanical: the detail helpers import at FUNCTION scope in this
+  file — a module-scope replace landed a column-0 import inside
+  another function's body and broke the build until parsed. Match
+  the file's import style before inserting.
+
+
+
 ### 2026-08-12 · HERO PROPS: build the thing the prose points at
 
 - **`shot_marker_audit.py --props` measures the gap nothing else

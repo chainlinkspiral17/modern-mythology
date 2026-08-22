@@ -311,6 +311,100 @@ def build_crow_2026_08():
     make_crow("Crow", -1.6, ROOM_D + 0.30, 1.06, facing=1.0)
 
 
+def build_wear_personality_2026_08():
+    """WHOSE FEET, WHOSE SPILLS (wear-personality pass, 2026-08-19).
+
+    The cabin's wear is TWO AGES deep and the difference is the
+    story. Olaf lived here from '79 until he died: his wear is
+    DECADES — the Sunday carving spot, the kettle ring, the path
+    his feet cut. Tem's vigil is WEEKS — a faint new patch beside
+    the daybed. New wear is narrower and shallower-toned than old
+    wear; the floor remembers them differently.
+    """
+    from _props.detail import make_traffic_wear, make_floor_stain, make_scuff_band
+    floor_dk = (0.36, 0.25, 0.16, 1.0)     # old traffic (12% dark)
+    floor_pale = (0.50, 0.38, 0.27, 1.0)   # decades of chair scrape
+    floor_new = (0.39, 0.275, 0.185, 1.0)  # weeks-old wear · faint
+    ash = (0.30, 0.28, 0.26, 1.0)
+    scorch = (0.20, 0.15, 0.11, 1.0)
+    shaving = (0.60, 0.48, 0.30, 1.0)
+    handworn = (0.62, 0.48, 0.30, 1.0)
+
+    # ── OLAF'S DECADES ─────────────────────────────────────────
+    # The path: door → table → kitchen → stove. Forty-five years
+    # of the same three destinations.
+    make_traffic_wear("Wear_Olaf_Path",
+                      [(0.0, 0.6), (0.0, 2.0), (-0.6, 3.4), (-1.3, 4.6)],
+                      width=0.55, tint=floor_dk)
+    make_traffic_wear("Wear_Olaf_Path_Stove",
+                      [(0.4, 3.3), (1.5, 4.6), (2.0, 5.0)],
+                      width=0.5, tint=floor_dk)
+    # THE SUNDAY SPOT · Olaf carved "a little of it every Sunday
+    # afternoon" for decades, in the chair nearest the east light
+    # at the table. The floor there is scraped PALE (chair legs),
+    # with a shaving-dust crescent no broom ever fully got.
+    make_floor_stain("Wear_SundaySpot_Scrape", (0.85, 2.55), radius=0.34,
+                     tint=floor_pale, segments=10)
+    make_floor_stain("Wear_SundaySpot_Shavings", (1.05, 2.35), radius=0.16,
+                     tint=shaving, segments=8)
+    # The table edge at that seat, worn lighter by forearms; a
+    # knife-nick strip just inside the rim.
+    make_box("Wear_Table_Forearm", (0.62, 2.62, 0.788), (0.34, 0.10, 0.006), handworn)
+    make_box("Wear_Table_Nicks", (0.55, 2.70, 0.787), (0.22, 0.05, 0.004),
+             (0.30, 0.21, 0.14, 1.0))
+    # THE KETTLE RING · "He put the kettle on" — the same spot on
+    # the stove top since '79. A darker ring, then the iron's own
+    # color inside it (ring stains: two calls).
+    make_cyl("Wear_KettleRing", (2.18, 5.32, 1.125), 0.115, 0.004, scorch, segments=10)
+    make_cyl("Wear_KettleRing_In", (2.18, 5.32, 1.126), 0.085, 0.004,
+             (0.24, 0.23, 0.22, 1.0), segments=10)
+    # Ash fan on the floor in front of the stove door, and the
+    # scorch where the flame-mark iron was always set down.
+    make_floor_stain("Wear_AshFan", (1.75, 5.15), radius=0.30, tint=ash, segments=9)
+    make_floor_stain("Wear_IronScorch", (1.95, 4.78), radius=0.07, tint=scorch, segments=6)
+    # The marking iron itself, hanging by the stove — Olaf's mark
+    # for the family, within reach of the fire that heats it.
+    make_box("MarkIron_Hook", (2.72, 5.72, 1.45), (0.04, 0.04, 0.06), COL_IRON)
+    make_box("MarkIron_Shaft", (2.72, 5.70, 1.18), (0.025, 0.025, 0.50), COL_IRON)
+    make_box("MarkIron_Head", (2.72, 5.70, 0.90), (0.06, 0.03, 0.06), COL_IRON_WM)
+    # Door wear: the latch-hand patch and boot scuff at the base.
+    make_box("Wear_Door_Hand", (0.30, 0.078, 1.04), (0.16, 0.008, 0.20), handworn)
+    make_scuff_band("Wear_Door_Boot", (0.0, 0.085), 0.80, axis='X',
+                    height=0.12, band_z=0.08, tint=(0.28, 0.20, 0.14, 1.0))
+    # Ladder rungs worn pale at the grab line (the loft, decades).
+    for s in (2, 3, 4):
+        make_box("Wear_Rung_%d" % s, (-0.20, 3.93, 0.305 + s * 0.36),
+                 (0.20, 0.045, 0.012), handworn)
+    # The reader's shelf shadow: "on the shelf where it had been
+    # since '46" — the shelf around it darkened, the rectangle
+    # under it the shelf's young color.
+    make_box("Wear_Shelf_Dust", (1.75, 0.16, 1.572), (1.06, 0.22, 0.004),
+             (0.48, 0.34, 0.20, 1.0))
+    make_box("Wear_Shelf_ReaderShadow", (1.55, 0.16, 1.574), (0.26, 0.18, 0.004),
+             (0.58, 0.42, 0.26, 1.0))
+    # Counter drip-line below the kettle's pour path.
+    make_scuff_band("Wear_Counter_Drip", (-1.52, 4.60), 0.9, axis='Y',
+                    height=0.10, band_z=0.55, tint=(0.26, 0.18, 0.11, 1.0))
+
+    # ── TEM'S WEEKS ────────────────────────────────────────────
+    # The chair beside the daybed and the short path to it — worn
+    # FAINT and NARROW. Six weeks against forty-five years.
+    make_box("Vigil_Chair_Seat", (-1.70, 1.9, 0.42), (0.42, 0.42, 0.05), COL_WOOD)
+    for li, (ox, oy) in enumerate(((-0.17, -0.17), (0.17, -0.17), (-0.17, 0.17), (0.17, 0.17))):
+        make_box("Vigil_Chair_Leg_%d" % li, (-1.70 + ox, 1.9 + oy, 0.20),
+                 (0.045, 0.045, 0.40), COL_WOOD_DK)
+    make_box("Vigil_Chair_Back", (-1.51, 1.9, 0.80), (0.05, 0.42, 0.72), COL_WOOD)
+    make_traffic_wear("Wear_Tem_Path",
+                      [(0.0, 1.0), (-1.0, 1.5), (-1.55, 1.9)],
+                      width=0.30, tint=floor_new)
+    make_floor_stain("Wear_Tem_ChairSpot", (-1.70, 1.95), radius=0.20,
+                     tint=floor_new, segments=8)
+    # Her mug's ring on the daybed-side floor, one ring only —
+    # weeks make one ring; decades make the kettle's.
+    make_cyl("Wear_Tem_MugRing", (-2.02, 1.55, 0.008), 0.045, 0.003,
+             (0.32, 0.22, 0.14, 1.0), segments=8)
+
+
 def main():
     clear_scene()
     build_shell()
@@ -322,6 +416,7 @@ def main():
     build_east_room()
     build_wall_dressing()
     build_crow_2026_08()
+    build_wear_personality_2026_08()
     out = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)),
         "../../../assets/3d/locales/cabin_interior.glb"))
     print(f"\n[build_cabin_interior] exporting to {out}")
