@@ -164,6 +164,7 @@ Current ledger (draft counts are honest, not aspirational):
 | Pit Stop diner / ChillWave (re-themes) | 4 (D2-D6 + strata) | Deck reframe loops (strata retuned to the model diner's vocabulary: lunch/kitchen_practical/dawn_warm) |
 | Salty Tome back + alley | 4 (D2-D6 authored) | Deck reframe of three presets + six vn_shot setups; then wear deepening vs the model chapters |
 | **Highway 9 (planned community)** | **3** | draft 4: Deck screenshot loops on all six framings + the five vn_shot markers |
+| Vol 7 cabin set (cabin_interior + cabin_road) | 3 (hero props 08-12: bowls/crow/drones; wear-personality pass 08-19: Olaf's decades vs Tem's weeks — the two-age wear vocabulary) | draft 4: Deck screenshots of the wear at establish + insert framings; D5 through-windows (the crow's sill view outward); then cabin_road D2 |
 | Cedar tower (vol7 ch22) | 3 (coverage authored) | draft 4: D2 wear pass, Deck reframe of the five presets + seven vn_shot setups |
 | Graustark ruin quarter / riverfront park | 3 (per-chapter vantages 08-11: chalk wall / cottage / wreck / wide; ~~ruin cameras untuned~~; ~~park lamp practicals~~ shipped in riverfront.tscn) | draft 4: Deck screenshots of the four chapter opens + the lamplit jog path; then ruin-quarter D2 wear |
 | CP region banners + agent busts | 2 (plan SHIPPED — verified in code 2026-08-03: banners incl. county_seat, tower variants, roster + dossier busts) | banner art iteration vs the SVGA bar; authored face overrides for marquee agents |
