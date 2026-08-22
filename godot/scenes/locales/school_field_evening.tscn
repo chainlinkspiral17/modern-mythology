@@ -223,6 +223,20 @@ light_color = Color(0.96, 0.97, 1.0, 1)
 light_energy = 3.2
 omni_range = 46.0
 shadow_enabled = false
+; ── vn_shot wave (2026-08-19) · positions authored, aim
+; computed by marker_reaim.py (the post-aim-gate discipline)
+[node name="shot_insert_truck" type="Marker3D" parent="." groups=["vn_shot"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -29.73, 1.64, -118.76)
+rotation = Vector3(0.0, 0.0, 0.0)
+
+[node name="shot_insert_corkboard" type="Marker3D" parent="." groups=["vn_shot"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.22, 2.10, 6.23)
+rotation = Vector3(-0.4636, 2.0426, 0.0)
+
+[node name="shot_insert_ball" type="Marker3D" parent="." groups=["vn_shot"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00, 0.69, -53.76)
+rotation = Vector3(0.0, 0.0, 0.0)
+
 [node name="Interior" parent="." instance=ExtResource("1_glb")]
 
 [node name="PostProcess" type="CanvasLayer" parent="."]

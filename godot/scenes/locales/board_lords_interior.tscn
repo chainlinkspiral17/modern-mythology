@@ -180,6 +180,16 @@ light_color = Color(0.78, 0.42, 0.96, 1)
 light_energy = 0.35
 shadow_enabled = false
 
+; ── vn_shot wave (2026-08-19) · positions authored, aim
+; computed by marker_reaim.py (the post-aim-gate discipline)
+[node name="shot_insert_deck" type="Marker3D" parent="." groups=["vn_shot"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.95, 1.95, -1.64)
+rotation = Vector3(-0.2475, 1.1023, 0.0)
+
+[node name="shot_insert_door" type="Marker3D" parent="." groups=["vn_shot"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00, 1.55, -1.40)
+rotation = Vector3(-0.0954, -3.1416, 0.0)
+
 [node name="Interior" parent="." instance=ExtResource("1_glb")]
 
 [node name="PostProcess" type="CanvasLayer" parent="."]
