@@ -2704,8 +2704,13 @@ const _LOCATION_SCENE_PATHS := {
 	"cathedral":           "res://scenes/locales/cathedral.tscn",       # Magician
 	"elicia_bungalow":     "res://scenes/locales/bungalow.tscn",        # Priestess
 	"riverboat_interior":  "res://scenes/locales/riverboat_interior.tscn", # Empress / Emperor / Hierophant
-	"roberts_house":       "res://scenes/locales/roberts_kitchen.tscn",
-	"ember_ash_office":    "res://scenes/locales/houston_office.tscn",
+	# roberts_kitchen.tscn is a commercial kitchen — the Wheel's
+	# board walks the whole HOUSE (loom, tapestry, garden).
+	"roberts_house":       "res://scenes/locales/roberts_house.tscn",
+	# houston_office.tscn is John's Houston cubicle office; the
+	# Chariot's board is the EMBER & ASH renovation (back stair,
+	# cypress beam, corner window) — its own locale.
+	"ember_ash_office":    "res://scenes/locales/ember_ash_office.tscn",
 	"the_hierophant_circuit": "res://scenes/locales/hierophant_circuit.tscn", # V Hierophant · id carries the "the_"
 	# 2026-06-21 Major-Arcana sweep — every reversed-card scenario
 	# now lands in its own interior.
@@ -2728,6 +2733,41 @@ const _LOCATION_SCENE_PATHS := {
 }
 
 const _STANDALONE_SPACE_VANTAGES := {
+	# ── 2026-08-19 · the three top-down-only locations get FP ──
+	# Computed from recorded builder geometry (stand backed off
+	# toward the room's mass center, yaw facing the station).
+	# floor_z = -0.75 trims the +2.30 eye constant to ~1.55m for
+	# house-scale rooms. Spaces with NO geometry (ember's warehouse
+	# floor / alley / salvage, the circuit's D'Ambrosio's + armory
+	# + riverfront, robertses' driveway oil spot aside) keep the
+	# top-down fallback DELIBERATELY until their sets are built.
+	"roberts_house": {
+		"kitchen_faucet": [2.11, 4.88, -0.75, 42.1],
+		"kitchen_window": [1.95, 4.93, -0.75, 45.6],
+		"kitchen_table": [1.03, 2.84, -0.75, -23.5],
+		"front_hallway": [0.30, 2.20, -0.75, -86.4],
+		"front_door": [0.84, 1.65, -0.75, -68.5],
+		"driveway": [-0.68, -4.27, -0.75, -97.0],
+		"living_room": [-0.38, 3.01, -0.75, -164.0],
+		"the_loom": [0.25, 3.63, -0.75, 88.3],
+		"back_hallway": [-1.45, 3.61, -0.75, 165.8],
+		"the_tapestry": [-3.33, 4.46, -0.75, 160.3],
+		"back_door": [-0.95, 4.69, -0.75, 128.3],
+		"garden": [0.16, 5.00, -0.75, 92.3],
+	},
+	"ember_ash_office": {
+		"leaded_window": [-0.28, 1.82, -0.75, -81.1],
+		"desk": [-0.22, 1.52, -0.75, 99.3],
+		"office_door": [0.69, 1.41, -0.75, -46.5],
+		"back_stair": [-1.07, 1.86, -0.75, -134.4],
+		"cypress_beam": [-1.98, 2.35, -0.75, 7.2],
+		"corner_across": [1.07, 2.48, -0.75, -2.6],
+	},
+	"the_hierophant_circuit": {
+		"church_steps": [-0.25, -2.01, 0.0, -85.2],
+		"the_black_car": [-2.18, -7.22, 0.0, -96.5],
+		"park_bandstand": [-0.22, 14.51, 0.0, 86.5],
+	},
 	"dambrosios": {
 		"parking_lot":    [+12.0,  +0.0, 180.0],
 		"hostess_stand":  [+7.6,   -0.5, 180.0],

@@ -971,6 +971,64 @@ def export_glb():
     print("[build_roberts_house] exported %s" % out_path)
 
 
+def build_loom_and_tapestry_2026_08():
+    """THE LOOM AND THE TAPESTRY (gauntlet FP pass, 2026-08-19).
+
+    roberts_house's board has twelve spaces and two of them — the
+    Wheel's hero stations — had no geometry: "the loom is in the
+    corner. the work in progress is at three inches" and "the
+    wordless tapestry · woven in the months after the sinkhole ·
+    depicting nothing recognizable · the imperfection that
+    distinguishes a piece made by a person."
+
+    Both live in the spare room (the NW bedroom). The loom stands
+    in the free NE corner with three inches of work on it; the
+    tapestry hangs at eye level on the west wall, and one thread
+    deliberately breaks its own pattern.
+    """
+    frame = (0.52, 0.40, 0.26, 1.0)
+    frame_dk = (0.42, 0.32, 0.20, 1.0)
+    thread = (0.72, 0.64, 0.50, 1.0)
+    warp = (0.82, 0.78, 0.68, 1.0)
+    # ── The loom · NE corner of the bedroom (x ~0.4, y ~5.4) ──
+    lx, ly = 0.30, 5.35
+    for sgn in (-1, 1):
+        make_box("Loom_Upright_%d" % sgn, (lx + sgn * 0.55, ly, 0.75),
+                 (0.07, 0.07, 1.50), frame)
+        make_box("Loom_Foot_%d" % sgn, (lx + sgn * 0.55, ly - 0.18, 0.035),
+                 (0.07, 0.50, 0.07), frame_dk)
+    make_box("Loom_TopBeam", (lx, ly, 1.46), (1.18, 0.09, 0.09), frame_dk)
+    make_box("Loom_ClothBeam", (lx, ly - 0.06, 0.46), (1.10, 0.10, 0.10), frame_dk)
+    make_box("Loom_HeddleBar", (lx, ly + 0.02, 1.02), (1.06, 0.04, 0.06), frame)
+    # The warp: a plane of vertical threads (one thin sheet reads
+    # as threads at this scale), and THE WORK — three inches of
+    # woven cloth at the bottom, no more.
+    make_box("Loom_Warp", (lx, ly - 0.02, 0.96), (0.96, 0.012, 0.92), warp)
+    make_box("Loom_Work", (lx, ly - 0.035, 0.545), (0.96, 0.020, 0.075), (0.46, 0.34, 0.40, 1.0))
+    make_box("Loom_Bench", (lx, ly - 0.65, 0.23), (0.80, 0.30, 0.05), frame)
+    for sgn in (-1, 1):
+        make_box("Loom_BenchLeg_%d" % sgn, (lx + sgn * 0.32, ly - 0.65, 0.105),
+                 (0.06, 0.26, 0.21), frame_dk)
+    make_box("Loom_Shuttle", (lx + 0.22, ly - 0.63, 0.27), (0.22, 0.06, 0.035), frame_dk)
+    # ── The tapestry · west wall of the bedroom, eye level ──
+    tx, ty = -4.90, 5.0
+    make_box("Tapestry_Rod", (tx + 0.04, ty, 2.06), (0.04, 1.30, 0.04), frame_dk)
+    make_box("Tapestry_Cloth", (tx + 0.06, ty, 1.45), (0.025, 1.20, 1.15),
+             (0.38, 0.33, 0.30, 1.0))
+    # Woven bands — depicting nothing recognizable
+    for bi, (bz, bh, col) in enumerate((
+            (1.80, 0.16, (0.55, 0.42, 0.30, 1.0)),
+            (1.58, 0.22, (0.30, 0.34, 0.42, 1.0)),
+            (1.30, 0.18, (0.62, 0.54, 0.38, 1.0)),
+            (1.06, 0.20, (0.42, 0.28, 0.30, 1.0)))):
+        make_box("Tapestry_Band_%d" % bi, (tx + 0.075, ty, bz),
+                 (0.012, 1.14, bh), col)
+    # THE IMPERFECTION · one thread runs against its band, low and
+    # off-center — the mark of a piece made by a person.
+    make_box("Tapestry_Flaw", (tx + 0.082, ty - 0.38, 1.18),
+             (0.010, 0.025, 0.34), thread)
+
+
 def main():
     clear_scene()
     build_shell()
@@ -983,6 +1041,7 @@ def main():
     build_back_yard()
     build_back_porch()
     build_bedroom_peek()
+    build_loom_and_tapestry_2026_08()
     export_glb()
 
 

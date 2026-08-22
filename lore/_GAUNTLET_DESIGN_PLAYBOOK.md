@@ -461,6 +461,36 @@ Each of these is not yet 5 lessons deep. Watch them.
   dossiers, any future VN bust — draws the dog. When a visitor is
   not a person, say so in the portrait layer, not just the prose.
 
+### 2026-08-19 · FP wiring: the scene must carry the board's stations
+
+- **Three locations ran every space on the top-down fallback**, and
+  two of them were wired to the WRONG SCENE: roberts_house pointed
+  at roberts_kitchen.tscn (a commercial kitchen — the Wheel's board
+  walks the whole house) and ember_ash_office pointed at
+  houston_office.tscn (John's Houston cubicle office — the
+  Chariot's board is the Ember & Ash renovation, whose own locale
+  carries the back stair, the cypress beam, the corner window).
+  Check the scene mapping BEFORE concluding FP sources were never
+  authored.
+- **Vantages are computed, not hand-derived**: stand backed off
+  from the station toward the room's mass center, yaw facing the
+  station — same discipline as the VN marker re-aim tool. The
+  +2.30 eye constant was tuned for the diner's scale; 4-element
+  entries use floor_z as an eye trim (-0.75 → ~1.55m) for
+  house-scale rooms.
+- **A space with no geometry keeps the top-down fallback ON
+  PURPOSE.** Ember's warehouse floor / alley / salvage piles, the
+  circuit's D'Ambrosio's + armory + riverfront stations, and the
+  church INTERIOR (the circuit builder is exterior-only) have no
+  sets — authoring a vantage there would frame a void. Their
+  next-draft builds are queued; until then the map view is the
+  honest render.
+- **The Wheel's hero stations had no geometry at all**: the loom
+  ("the work in progress is at three inches" — and it is, one
+  0.075m strip of cloth) and the wordless tapestry, whose one
+  deliberate flaw thread is the point of the whole station, now
+  exist in the spare room.
+
 ### 2026-07-11 · direction pass · insert cuts on the FP camera
 
 - **The gauntlet's comic grammar is the insert cut, not the marker.**
