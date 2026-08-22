@@ -195,6 +195,28 @@ light_color = Color(0.78, 0.42, 0.96, 1)
 light_energy = 0.35
 shadow_enabled = false
 
+; ── vn_shot wave (2026-08-19) · positions authored, aim by
+; marker_reaim.py
+[node name="shot_insert_landline" type="Marker3D" parent="." groups=["vn_shot"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.98, 1.49, -5.63)
+rotation = Vector3(-0.4593, -0.8571, 0.0)
+
+[node name="shot_insert_till" type="Marker3D" parent="." groups=["vn_shot"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.35, 1.30, -5.96)
+rotation = Vector3(-0.4818, -0.9264, 0.0)
+
+[node name="shot_insert_twenty" type="Marker3D" parent="." groups=["vn_shot"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.80, 1.49, -5.60)
+rotation = Vector3(-0.4635, -1.0714, 0.0)
+
+[node name="shot_insert_keys" type="Marker3D" parent="." groups=["vn_shot"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.42, 2.10, -6.95)
+rotation = Vector3(0.0, 0.0, 0.0)
+
+[node name="shot_insert_door" type="Marker3D" parent="." groups=["vn_shot"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.17, 1.70, -1.02)
+rotation = Vector3(-0.4601, -2.9349, 0.0)
+
 [node name="Interior" parent="." instance=ExtResource("1_glb")]
 
 [node name="PostProcess" type="CanvasLayer" parent="."]

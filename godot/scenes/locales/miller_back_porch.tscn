@@ -181,6 +181,16 @@ light_energy = 2.2
 omni_range = 3.8
 shadow_enabled = false
 
+; ── vn_shot wave (2026-08-19) · positions authored, aim by
+; marker_reaim.py
+[node name="shot_insert_crow" type="Marker3D" parent="." groups=["vn_shot"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.35, 1.62, -0.71)
+rotation = Vector3(-0.4622, 2.2099, 0.0)
+
+[node name="shot_insert_cedar" type="Marker3D" parent="." groups=["vn_shot"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.48, 1.56, -0.67)
+rotation = Vector3(-0.4642, -2.1782, 0.0)
+
 [node name="Interior" parent="." instance=ExtResource("1_glb")]
 
 [node name="PostProcess" type="CanvasLayer" parent="."]

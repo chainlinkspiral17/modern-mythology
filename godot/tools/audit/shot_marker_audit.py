@@ -116,6 +116,12 @@ SYNONYMS = {
     "pot_roast": ["potroast"],
     "eviction_notice": ["evictionnotice", "evictionghost"],
     "sink_light": ["undercab", "sink"],
+    "till": ["register"],
+    "speak_spell": ["speakspell"],
+    "speak_and_spell": ["speakspell"],
+    "landline": ["landline", "phone"],
+    "iced_tea": ["icedtea"],
+    "cigarette": ["cig", "ashtray"],
 }
 
 

@@ -305,6 +305,28 @@ def build_hero_props():
                                       (0.86, 0.72, 0.28, 1.0)][ci % 3])
 
 
+def build_landline_and_twenty_2026_08():
+    """[shot:insert landline/phone] + [shot:insert twenty] fired
+    against a shop with no phone and no bill. The landline is a
+    counter phone by the register (a comics shop in this world
+    keeps its landline); the twenty lies ON the till, mid-
+    transaction — the shot is about the money changing hands."""
+    cx, cy = ROOM_W/4.0, ROOM_D-1.5
+    beige = (0.80, 0.76, 0.66, 1.0)
+    make_box("Landline_Base", (cx - 0.85, cy - 0.25, 0.985), (0.20, 0.15, 0.06), beige)
+    make_box("Landline_Handset", (cx - 0.85, cy - 0.25, 1.035), (0.19, 0.055, 0.045),
+             (0.66, 0.62, 0.52, 1.0))
+    make_box("Landline_Keypad", (cx - 0.82, cy - 0.21, 1.018), (0.08, 0.06, 0.008),
+             (0.32, 0.30, 0.28, 1.0))
+    for ci, (dx2, dy2) in enumerate(((0.10, 0.02), (0.16, 0.10), (0.24, 0.06))):
+        make_cyl("Landline_Cord_%d" % ci, (cx - 0.85 + dx2, cy - 0.25 + dy2, 0.975),
+                 0.008, 0.09, beige, segments=6)
+    make_box("Twenty_Bill", (cx + 0.18, cy - 0.42, 0.988), (0.16, 0.068, 0.003),
+             (0.55, 0.62, 0.52, 1.0))
+    make_box("Twenty_Band", (cx + 0.18, cy - 0.42, 0.990), (0.05, 0.068, 0.002),
+             (0.42, 0.50, 0.42, 1.0))
+
+
 def main():
     clear_scene()
     build_shell()
@@ -322,6 +344,7 @@ def main():
     build_drop()
     build_ceiling_infra()
     build_dressing()
+    build_landline_and_twenty_2026_08()
     out = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)),
         "../../../assets/3d/locales/cosmic_comics_interior.glb"))
     print(f"\n[build_cosmic_comics_interior] exporting to {out}")

@@ -1940,7 +1940,7 @@ func _render_region(r_id: String) -> void:
 	var st: Dictionary = _region_state[r_id]
 	var stats_label: Label = panel.get_node("Col/Stats") as Label
 	if bool(_ui_flags.get("show_resource_economy_numbers", false)):
-		stats_label.text = "insight %d  ·  cover %d  ·  courier %d  ·  esc %.0f%%" % [
+		stats_label.text = "insight %d  ·  cover %d  ·  courier %d  ·  escalation %.0f%%" % [
 			st["insight"], st["cover"], st["courier_capacity"],
 			clamp(st["escalation_progress"] * 100.0, 0.0, 100.0)
 		]
@@ -1948,7 +1948,7 @@ func _render_region(r_id: String) -> void:
 		# Pre-reveal: just hint at the rhythm without naming the
 		# resource columns. Once the numbers reveal fires at day 5
 		# they read in numbers.
-		stats_label.text = "running steady  ·  esc %.0f%%" % clamp(st["escalation_progress"] * 100.0, 0.0, 100.0)
+		stats_label.text = "running steady  ·  escalation %.0f%%" % clamp(st["escalation_progress"] * 100.0, 0.0, 100.0)
 	var nodes_label: Label = panel.get_node("Col/Nodes") as Label
 	var held: Array = st["held_nodes"]
 	var contested: Array = st["contested_nodes"]
@@ -1972,7 +1972,7 @@ func _render_region(r_id: String) -> void:
 	var probs: Array = st["active_problems"]
 	if probs.is_empty():
 		var none := Label.new()
-		none.text = "(none active)"
+		none.text = "(quiet. read the quiet too.)"
 		none.add_theme_color_override("font_color", Color(0.55, 0.55, 0.55, 1))
 		none.add_theme_font_size_override("font_size", 19)
 		box.add_child(none)

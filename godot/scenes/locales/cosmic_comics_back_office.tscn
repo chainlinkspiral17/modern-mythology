@@ -172,6 +172,24 @@ light_color = Color(0.42, 0.32, 0.22, 1)
 light_energy = 0.15
 shadow_enabled = false
 
+; ── vn_shot wave (2026-08-19) · positions authored, aim by
+; marker_reaim.py
+[node name="shot_insert_speak_spell" type="Marker3D" parent="." groups=["vn_shot"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.81, 2.10, -1.74)
+rotation = Vector3(-0.4098, 2.4286, 0.0)
+
+[node name="shot_insert_phone" type="Marker3D" parent="." groups=["vn_shot"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.09, 1.36, -2.83)
+rotation = Vector3(0.0, 0.0, 0.0)
+
+[node name="shot_insert_coffee" type="Marker3D" parent="." groups=["vn_shot"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.09, 1.36, -2.59)
+rotation = Vector3(-0.4644, -0.9133, 0.0)
+
+[node name="shot_insert_mirror" type="Marker3D" parent="." groups=["vn_shot"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.92, 2.10, -0.97)
+rotation = Vector3(-0.3797, -2.6422, 0.0)
+
 [node name="Interior" parent="." instance=ExtResource("1_glb")]
 
 [node name="PostProcess" type="CanvasLayer" parent="."]

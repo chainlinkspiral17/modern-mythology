@@ -122,6 +122,34 @@ def build_ceiling_infra():
                  (0.72 if dy==0.0 else 0.20, 0.20 if dy==0.0 else 0.72, 0.025),
                  (0.40,0.30,0.22,1.0))
 
+def build_porch_props_2026_08():
+    """The night-porch cues that had no objects: the radio (a
+    porch evening runs on one), the blanket, the cake, the photo.
+    All at the side table + rail — a porch gathering's props."""
+    tx, ty = 0.0, ROOM_D/2.0
+    # Transistor radio on the rail, antenna up at an angle (two
+    # segments), dial face lit-warm.
+    make_box("Radio_Body", (1.45, 0.30, 1.06), (0.24, 0.09, 0.14), (0.32, 0.26, 0.22, 1.0))
+    make_box("Radio_Dial", (1.40, 0.252, 1.07), (0.09, 0.006, 0.07), (0.90, 0.80, 0.55, 1.0))
+    make_cyl("Radio_Antenna_A", (1.55, 0.32, 1.22), 0.006, 0.18, (0.62, 0.64, 0.66, 1.0), segments=6)
+    make_cyl("Radio_Antenna_B", (1.585, 0.335, 1.36), 0.005, 0.14, (0.62, 0.64, 0.66, 1.0), segments=6)
+    # The blanket over a chair back, one corner hanging lower.
+    make_box("Blanket_Fold", (-1.15, 1.35, 0.78), (0.55, 0.16, 0.10), (0.52, 0.36, 0.30, 1.0))
+    make_box("Blanket_Drop", (-1.15, 1.44, 0.52), (0.50, 0.05, 0.42), (0.49, 0.34, 0.28, 1.0))
+    make_box("Blanket_Corner", (-0.95, 1.46, 0.30), (0.16, 0.04, 0.16), (0.46, 0.32, 0.27, 1.0))
+    # The cake on its plate at the side table, two slices gone —
+    # a porch cake is a cake being eaten.
+    make_cyl("Cake_Plate", (tx + 0.10, ty + 0.10, 0.545), 0.13, 0.012, (0.90, 0.88, 0.84, 1.0), segments=12)
+    make_cyl("Cake_Body", (tx + 0.10, ty + 0.10, 0.585), 0.095, 0.07, (0.82, 0.72, 0.52, 1.0), segments=12)
+    make_box("Cake_CutGap", (tx + 0.175, ty + 0.155, 0.585), (0.075, 0.075, 0.072), (0.70, 0.58, 0.40, 1.0))
+    make_cyl("Cake_Frosting", (tx + 0.10, ty + 0.10, 0.625), 0.098, 0.012, (0.92, 0.90, 0.86, 1.0), segments=12)
+    # The photo: a small framed print leaning against the tea
+    # pitcher's side of the table — brought out to be shown.
+    make_box("Photo_Frame", (tx - 0.14, ty + 0.12, 0.60), (0.10, 0.014, 0.13), (0.40, 0.30, 0.22, 1.0))
+    make_box("Photo_Print", (tx - 0.14, ty + 0.128, 0.60), (0.084, 0.004, 0.112), (0.78, 0.74, 0.66, 1.0))
+    make_box("Photo_Figures", (tx - 0.145, ty + 0.131, 0.585), (0.05, 0.002, 0.05), (0.40, 0.38, 0.34, 1.0))
+
+
 def main():
     clear_scene()
     build_shell()
@@ -131,6 +159,7 @@ def main():
     build_porchlamp()
     build_dressing()
     build_ceiling_infra()
+    build_porch_props_2026_08()
     out = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)),
         "../../../assets/3d/locales/caldwell_porch_night.glb"))
     print(f"\n[build_caldwell_porch_night] exporting to {out}")
