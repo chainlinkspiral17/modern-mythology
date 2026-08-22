@@ -58,6 +58,21 @@ NEXT: the 39-clip tail (crumpled_barn's 11 are the crumple),
 26 locales still wanting marker pools, and the remaining --props
 art gaps (tide_pool, Lena's canvas, the eviction notice).
 
+**2026-08-19 · THE HERO-OBJECT HUNT, continued.** After the voice
+drafts, four more art waves off the --props/marker rankings: the
+Miller landline ("the landline never rings") + french toast
+mid-making, the Starfish Nebula on Lena's alley wall WITH its four
+patches (each differently wrong, one newer), Per's wooden box and
+the bench that holds it, the Foxhole strip mall (the tracked
+unit's papered window, the chalk marquee — Jesse's whole vol6
+surveillance thread finally has geometry). The audit learned char
+aliasing (closeup miller = chief_miller). Blind cues 435 → 366.
+NEXT in the ranking: board_lords_interior (14 · bread/patch),
+sam_bedroom (10), school_field_evening (9), maya_bedroom (8);
+cabin_road's remaining 43 are mostly games-Finn-plays and
+substitute-fallback territory — verify on Deck before adding more
+there.
+
 ## NEXT SESSION QUEUE (written 2026-08-11 night, session close)
 
 The audit era is consolidated: run_all_audits.sh is green end to
