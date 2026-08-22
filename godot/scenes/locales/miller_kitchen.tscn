@@ -187,17 +187,17 @@ shadow_enabled = false
 ; -5.90). Camera pulls back into the room, level with the base.
 [node name="shot_insert_phone" type="Marker3D" parent="." groups=["vn_shot"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.85, 1.44, -5.05)
-rotation = Vector3(0.0, 3.1416, 0.0)
+rotation = Vector3(-0.2047, -0.1768, 0.0)
 
 ; The skillet: blender (1.59, 5.10, 0.97) → godot (1.59, 0.97, -5.10).
 [node name="shot_insert_french_toast" type="Marker3D" parent="." groups=["vn_shot"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.59, 1.42, -4.42)
-rotation = Vector3(-0.62, 3.1416, 0.0)
+rotation = Vector3(-0.5620, 0.0491, 0.0)
 
 ; Window_E, sink-side light.
 [node name="shot_insert_window" type="Marker3D" parent="." groups=["vn_shot"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.10, 1.55, -3.30)
-rotation = Vector3(0.10, 1.10, 0.0)
+rotation = Vector3(0.0000, -1.4219, 0.0)
 
 [node name="Interior" parent="." instance=ExtResource("1_glb")]
 

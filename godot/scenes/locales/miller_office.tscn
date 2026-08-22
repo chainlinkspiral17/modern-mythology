@@ -205,7 +205,7 @@ rotation = Vector3(0.02, 0.00, 0.0)   ; the north window
 
 [node name="shot_insert_cabinet" type="Marker3D" parent="." groups=["vn_shot"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.45, 1.15, -6.20)
-rotation = Vector3(-0.10, -0.90, 0.0)   ; the file cabinet
+rotation = Vector3(-0.0109, -2.5135, 0.0)   ; the file cabinet
 
 [node name="Interior" parent="." instance=ExtResource("1_glb")]
 

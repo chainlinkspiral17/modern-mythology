@@ -187,11 +187,11 @@ shadow_enabled = false
 ; centre z 1.20 → godot (-1.72, 1.20, -2.35).
 [node name="shot_insert_canvas" type="Marker3D" parent="." groups=["vn_shot"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.05, 1.28, -1.62)
-rotation = Vector3(-0.06, -0.82, 0.0)
+rotation = Vector3(-0.5726, 0.9450, 0.0)
 
 [node name="shot_insert_easel" type="Marker3D" parent="." groups=["vn_shot"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.55, 1.45, -1.30)
-rotation = Vector3(-0.16, -0.86, 0.0)
+rotation = Vector3(-0.3876, 0.8652, 0.0)
 
 ; ── vn_shot wave 2 (2026-08) · nebula + window ─────────────────
 ; Kitchen window at blender (-2.48, 1.30, 1.50) → godot (-2.48,

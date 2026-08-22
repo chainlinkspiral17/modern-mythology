@@ -158,6 +158,43 @@ banisters classed · pans as containers.
 
 ## Recent lessons
 
+### 2026-08-19 · a marker IS a camera; three blindness bugs in one day
+
+- **A vn_shot marker's transform IS the camera pose** (VnDirector
+  assigns `marker.global_transform` to the camera; Godot cameras
+  look down −Z; yaw 0 faces −Z, yaw π faces +Z). A whole wave of
+  hand-authored insert markers shipped with INVERTED YAW — the
+  miller phone marker faced 180° from the phone, the eviction
+  notice 179°, both crows ~170° — framing the opposite wall on
+  every cue. Hand-deriving yaw from coordinates was the failure;
+  `marker_aim_audit.py` (now a suite gate) computes each marker's
+  forward cone against the recorded geometry and found 22 real
+  misaims across 11 locales. A re-aim pass recomputed every bad
+  rotation from the subject's actual position. Never hand-derive
+  a camera angle again — author the position, let the tool aim.
+- **The audit's own first verdicts were wrong twice.** (1) BOXES
+  rows are `(name, CENTER, half_sizes)` — reading them as
+  `(lo, hi)` and averaging halved every coordinate, so the first
+  run measured a world at 50% scale and called well-aimed markers
+  190m off. (2) Substring matching let "crow" match "Crown" and
+  picked wrong subjects. Exact-part matching + center fix took the
+  misaim list from 44 (half phantom) to 22 (all real).
+- **record_builder never patched IMPORTED build_* modules.**
+  graustark does `import build_harmony_terrain as ht` and runs
+  most geometry through `ht._make_box_local` — the g-rebinds only
+  touch the exec'd builder's own globals, so graustark recorded
+  114 of its 8,641 objects for its whole audited life. Patching
+  every `sys.modules` build_* entry opened the eyes a THIRD time:
+  graustark 114 → 8,641 objects, 0 → 89 clips → triaged to 0
+  (a power pole inside the Lacombe garage, the rectory ON SR12,
+  the garage parcel ON the SR12 centerline, two ruin shells in
+  the truss-bridge corridor, a palm through the courthouse, the
+  statue on its own lamp ring, the cane plot swallowing the
+  Lovers chapel, herbs through the lighthouse deck). Rule 2 now
+  has three known scopes: function, module, AND import.
+
+
+
 ### 2026-08-12 · the audit could not see the SHARED modules (rule 2, at module scope)
 
 - **Core rule 2 said "hook every geometry helper." It was true at

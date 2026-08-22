@@ -110,6 +110,11 @@ SYNONYMS = {
     "package": ["package", "parcel", "box"],
     "laptop": ["laptop", "monitor", "screen"],
     "photograph": ["photo", "frame", "polaroid"],
+    "mural": ["nebula", "mural"],
+    "unit": ["unit"],
+    "marquee": ["marquee"],
+    "pot_roast": ["potroast"],
+    "eviction_notice": ["evictionnotice", "evictionghost"],
 }
 
 

@@ -186,7 +186,7 @@ shadow_enabled = false
 ; from these for any unauthored insert id in this room.
 [node name="shot_insert_desk" type="Marker3D" parent="." groups=["vn_shot"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00, 1.05, -1.10)
-rotation = Vector3(-0.42, 0.00, 0.0)   ; the desk top + what's on it
+rotation = Vector3(-0.5181, -1.1903, 0.0)   ; the desk top + what's on it
 
 [node name="shot_insert_window" type="Marker3D" parent="." groups=["vn_shot"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00, 1.55, -2.60)

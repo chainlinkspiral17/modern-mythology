@@ -523,7 +523,7 @@ ARCANA_LOCALES = {
     'Hierophant_Bandstand': ((-150.0, +120.0), 'placed'),
     'Hierophant_Armory':  ((+200.0, -340.0), 'placed'),
     'Lovers_Chapel':      ((-560.0, -120.0), 'placed'),
-    'Chariot_Garage':     ((-180.0, -160.0), 'placed'),
+    'Chariot_Garage':     ((-196.0, -160.0), 'placed'),  # was -180: ON the SR12 centerline
     'Strength_Carnival':  ((-460.0, +400.0), 'placed'),
     'Hermit_Lighthouse':  (( +50.0, -380.0), 'placed'),
     'Wheel_Casino':       ((-200.0, +300.0), 'placed'),
@@ -1401,7 +1401,8 @@ def _build_hierophant_church():
                 (bx, by_, gz + 4.5),
                 (0.80, 1.4, 8.0), COL_STUCCO_CREAM)
     # Rectory — small adjacent residence
-    rcx, rcy = cx + W / 2 + 5.0, cy - 4.0
+    # east-side placement put it on SR12 (x=-180) — west side now
+    rcx, rcy = cx - W / 2 - 9.0, cy - 4.0
     ht._make_box_local("Hier_Rectory_Body",
                        (rcx, rcy, gz + 3.5 / 2),
                        (8.0, 8.0, 3.5), COL_STUCCO_CREAM)
@@ -2914,7 +2915,8 @@ def _build_town_square_statue():
     print("[graustark]   town square statue")
     cx, cy = ARCANA_LOCALES['Justice_Courthouse'][0]
     # Place between the courthouse front steps and the bandstand
-    sx, sy = cx, cy - 22.0
+    # (cy-22 put it exactly ON the lamppost ring, radius 22)
+    sx, sy = cx, cy - 30.0
     gz = graustark_elevation(sx, sy)
     # Granite plinth (3-tier)
     for i, (h, w) in enumerate([(1.0, 2.4), (0.30, 2.0), (0.20, 1.8)]):
@@ -3456,7 +3458,7 @@ def _build_fire_hydrants():
         spots.append((i * 100.0, -354.0))
     # Downtown corners (4)
     spots += [(-300, +60), (-300, +100),
-              (-185, +260), (-130, +220)]
+              (-185, +260), (-146, +220)]  # 4th was (-130,+220): in the rectory
     # Plus 2 near the lighthouse + Daigle's
     spots += [(+44, -370), (+250, -370)]
     for i, (cx, cy) in enumerate(spots):
@@ -3749,6 +3751,9 @@ def _build_power_poles():
     for j in range(-9, 10):
         if abs(j) < 3:
             continue   # skip the middle (riverfront zone)
+        if j == -4:
+            continue   # the Lacombe garage parcel (-180, -160) —
+                       # the pole stood inside the service bay
         px = -178.0          # 2m east of the road centerline
         py = j * 40.0
         _emit_power_pole(f"Graustark_PowerPole_SR12_{j}", px, py)
@@ -3853,7 +3858,7 @@ def _build_cane_fields():
     print("[graustark]   cane fields (W + E edges)")
     PLOT_W, PLOT_D = 50.0, 80.0
     # West side (X ≈ -570)
-    west = [(-570, +280), (-570, +120), (-570, -100), (-570, -260)]
+    west = [(-570, +280), (-570, +120), (-570, -20), (-570, -260)]  # 3rd was (-570,-100): the 50x80 plot swallowed the Lovers chapel
     # East side (across HWY 90)
     east = [(+575, +280), (+575, +120), (+575, -120), (+575, -260)]
     count = 0
@@ -3993,7 +3998,7 @@ def _build_street_trees():
     palm_positions = [
         (-330, +60), (-330, +84), (-330, +108), (-330, +132),
         (-180, +20), (-180, +80), (-180, +140),
-        (-130, +210), (-130, +240),
+        (-130, +210), (-158, +240),   # was (-130,+240): inside the courthouse
     ]
     for i, (px, py) in enumerate(palm_positions):
         pz = graustark_elevation(px, py)
@@ -4284,19 +4289,21 @@ def _build_street_furniture():
     # Mardi Gras banner across the Bourbon Quarter street
     # (a horizontal strip between two posts at -325 and -315)
     bq_y = +75.0
+    # Posts at -328/-312 straddled the ROW (buildings at x≈-320)
+    # instead of the street west of it (palm line at -330).
     ht._make_box_local("FQ_Banner_PostL",
-                       (-328.0, bq_y, graustark_elevation(-328, bq_y) + 3.0),
+                       (-344.0, bq_y, graustark_elevation(-344, bq_y) + 3.0),
                        (0.20, 0.20, 6.0), COL_BLACK_IRON)
     ht._make_box_local("FQ_Banner_PostR",
-                       (-312.0, bq_y, graustark_elevation(-312, bq_y) + 3.0),
+                       (-328.0, bq_y, graustark_elevation(-328, bq_y) + 3.0),
                        (0.20, 0.20, 6.0), COL_BLACK_IRON)
     # Banner (cycling colors — 3 segments)
-    banner_z = graustark_elevation(-320, bq_y) + 5.5
+    banner_z = graustark_elevation(-336, bq_y) + 5.5
     for i, col in enumerate([(0.85, 0.78, 0.20, 1.0),   # gold
                               (0.62, 0.20, 0.50, 1.0),   # purple
                               (0.32, 0.62, 0.32, 1.0)]):  # green
         seg_w = 5.0
-        seg_cx = -328.0 + (i + 0.5) * seg_w + 0.5
+        seg_cx = -344.0 + (i + 0.5) * seg_w + 0.5
         ht._make_box_local(f"FQ_Banner_{i}",
                            (seg_cx, bq_y, banner_z),
                            (seg_w, 0.05, 0.8), col)
@@ -4324,7 +4331,7 @@ def _build_street_furniture():
     for i in range(4):
         ang = 2 * math.pi * i / 4
         ox = +180.0 + math.cos(ang) * 8.0
-        oy = -310.0 + math.sin(ang) * 8.0
+        oy = -320.0 + math.sin(ang) * 8.0
         oz = graustark_elevation(ox, oy)
         ht._make_box_local(
             f"Oyster_Pile_{i}",
@@ -4664,8 +4671,10 @@ def build_ruin_draft2_2026_08():
     scrub = (0.30, 0.34, 0.22, 1.0)
     # ── Skyline band: broken rooflines ringing the quarter ──
     # Shells with stepped, collapsed tops — ruins read by SILHOUETTE.
-    shells = [(-12.0, -338.0, 7.0, 9.0, 6.5), (2.0, -352.0, 6.0, 7.0, 8.5),
-              (26.0, -344.0, 8.0, 10.0, 5.0), (60.0, -350.0, 7.0, 8.0, 7.5),
+    # Shells 1 and 3 sat inside the truss bridge's deck corridor
+    # (deck y -369..-351) — pulled north, still in the band.
+    shells = [(-12.0, -338.0, 7.0, 9.0, 6.5), (2.0, -344.0, 6.0, 7.0, 8.5),
+              (26.0, -344.0, 8.0, 10.0, 5.0), (60.0, -341.0, 7.0, 8.0, 7.5),
               (66.0, -320.0, 6.0, 9.0, 9.5)]
     for si, (sx2, sy2, w, d, h) in enumerate(shells):
         _mb(f"RuinShell_{si}_Body", (sx2, sy2, h / 2.0), (w, d, h), brick)
@@ -4739,16 +4748,17 @@ def build_ruin_quarter_2026_08():
     # Rubble field with one flat-topped sitting block
     for i, (dx, dy, s) in enumerate(((2, -3, 1.2), (-4, 1, 0.9), (5, 4, 1.6), (-2, 6, 1.1),
                                      (7, -1, 0.8), (0, -6, 1.4), (-6, -4, 1.0), (3, 8, 0.9))):
-        _mb(f"Ruin_Rubble_{i}", (46.0 + dx, -368.0 + dy, s * 0.25), (s, s * 0.8, s * 0.5), conc)
+        _mb(f"Ruin_Rubble_{i}", (38.0 + dx, -364.0 + dy, s * 0.25), (s, s * 0.8, s * 0.5), conc)
     _mb("Sitting_Block", (47.5, -370.0, 0.225), (0.9, 0.7, 0.45), conc_dk)
     # Cottage path + gate + herbs (cottage at +50, -380)
     for fi in range(6):
         _mb(f"Flagstone_{fi}", (50.0, -381.5 - fi * 1.0, 0.03), (0.9, 0.8, 0.05), (0.58, 0.56, 0.50, 1.0))
     for gx in (49.5, 50.5):
         _mb(f"Gate_Post_{gx:.1f}", (gx, -387.8, 0.6), (0.12, 0.12, 1.2), (0.42, 0.30, 0.20, 1.0))
-    _mb("Herb_Bed", (52.2, -379.0, 0.10), (2.0, 3.0, 0.20), (0.36, 0.28, 0.20, 1.0))
+    # was (52.2,-379): inside the 9x9 concrete deck. Beside it now.
+    _mb("Herb_Bed", (58.5, -379.0, 0.10), (2.0, 3.0, 0.20), (0.36, 0.28, 0.20, 1.0))
     for hi in range(6):
-        _mb(f"Herb_{hi}", (51.6 + (hi % 3) * 0.6, -380.0 + (hi // 3) * 1.2, 0.32),
+        _mb(f"Herb_{hi}", (57.9 + (hi % 3) * 0.6, -380.0 + (hi // 3) * 1.2, 0.32),
             (0.35, 0.35, 0.25), (0.34, 0.48, 0.28, 1.0))
     # The Minstral's Green: beached steamship, listed, paddlewheel
     # cover top = the Frog's seat

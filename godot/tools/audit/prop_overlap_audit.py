@@ -37,7 +37,7 @@ WALLISH = re.compile(
     r"wall|window|door|sign|brand|part[nsew]?\b|partition|trim|crown|band\b|band_|"
     r"baseboard|backsplash|wainscot|frame|sill|floor|ceil|apron|"
     r"cornice|facade|knee|"
-    r"turf|road|grass|rug|mat|plumbing|curb|kerb|lawn|drive|sidewalk|path\b|path_|apron|asphalt|edgeline|shoulder|gravel|yard\b|headland|ground|walk\b|walkway|win\b|win_|outlet|socket|plate\b|numeral|slab|plaza|endzone|seam|shore|sand|dune|land\b|grout", re.I)
+    r"turf|road|grass|rug|mat|plumbing|curb|kerb|lawn|drive|sidewalk|path|apron|asphalt|edgeline|stripe|shoulder|gravel|yard\b|headland|ground|walk\b|walkway|win\b|win_|outlet|socket|plate\b|numeral|slab|flagstone|plaza|endzone|seam|shore|sand|dune|land\b|grout", re.I)
 CONTAINERISH = re.compile(
     r"cage|case|chest|bin\b|bin_|basket|crate|rack|cooler|fridge|"
     r"freezer|cubby|cart|shelf|shelv|island|hutch|drawer|cab\b|"
@@ -48,7 +48,7 @@ CONTAINERISH = re.compile(
 # into its desk — seating, not clipping.
 SURFACEISH = re.compile(
     r"shelf|shelv|top\b|_top|desk|table|counter|tray|sill|seat|"
-    r"bench|plank|deck\b|worktop|platform|island|expo|step|cap\b|board|stand\b", re.I)
+    r"bench|plank|deck\b|deck_|worktop|platform|island|expo|step|cap\b|board|stand\b", re.I)
 SEAT_MAX = 0.10
 # Structure members joining each other (lattice-tower braces meeting
 # legs, railing spindles into rails) — joints, not clipping.
@@ -72,7 +72,7 @@ ROCKISH = re.compile(r"jag|talus|rock|outcrop|boulder|scree|crag|cliff|rim\b|rim
 PLANTISH = re.compile(r"shrub|bush|hedge|fern|reed|weed|plant|vine|"
                       r"cypress|oak|conifer|tree|myrtle|magnolia|alder|sitka|spruce|"
                       r"cedar|fir\b|pine|birch|willow|green\b|green_|growth|ivy|moss|"
-                      r"scrub|bramble|salal|huckleberry|fallenlog|log\b", re.I)
+                      r"scrub|bramble|salal|huckleberry|fallenlog|log\b|cane\b|cane_|canefield", re.I)
 ROOFISH = re.compile(r"eave|ridge|roof|gable|chimney|awning\b", re.I)
 STRUCTISH = re.compile(
     r"leg|brace|strut|post|pole|beam|rail|truss|arm\b|_arm|spindle|"
@@ -92,8 +92,8 @@ WHEELISH = re.compile(r"wheel|tire|tyre", re.I)
 WHEEL_MAX = 0.30
 # Offerings LEAN on what they honor — a wreath hung on a marker, a
 # posy laid against a vault base. Shallow contact only.
-OFFERINGISH = re.compile(r"wreath|posy|bouquet|garland|flower|petal", re.I)
-OFFERING_MAX = 0.10
+OFFERINGISH = re.compile(r"wreath|posy|bouquet|garland|flower|petal|stem", re.I)
+OFFERING_MAX = 0.20   # stems stand IN their vases
 # Flexible lines (cords, ropes, chains) and draped fabric CONFORM to
 # whatever they cross or lie on — shallow interpenetration is the
 # proxy geometry's way of touching.
@@ -170,6 +170,24 @@ def record_builder(path):
     for noop_name in ("export_glb", "clear_scene"):
         if noop_name in g:
             g[noop_name] = lambda *a, **k: None
+
+    # Builders that IMPORT other build_* modules (graustark pulls
+    # build_harmony_terrain and build_riverfront) run most of their
+    # geometry inside the imported module's namespace, which the
+    # g-rebinds above never touch — graustark recorded 114 of its
+    # thousands of objects this way for its whole audited life.
+    # Patch every imported build_* module's helpers too.
+    for mod_name, mod in list(sys.modules.items()):
+        if not mod_name.startswith("build_") or mod is None:
+            continue
+        for attr, repl in (("make_box", rec_box), ("make_cyl", rec_cyl),
+                           ("_make_box_local", rec_box),
+                           ("_make_cyl_local", rec_cyl)):
+            if hasattr(mod, attr):
+                setattr(mod, attr, repl)
+        for nn in ("export_glb", "clear_scene"):
+            if hasattr(mod, nn):
+                setattr(mod, nn, lambda *a, **k: None)
 
     def _rebound(fn):
         return types.FunctionType(fn.__code__, g, fn.__name__,
@@ -338,12 +356,17 @@ def overlaps(boxes):
                     if ("ground" in la or la.endswith("land") or
                             "terrain" in la or "road" in la or
                             "asphalt" in la or "sidewalk" in la or
+                            "path" in la or "deck" in la or
                             "floor" in la or la.endswith("_slab")) and \
                             cb[2] + hb[2] > ca[2] + ha[2] + 0.5:
                         grounded = True
                         break
                 if grounded:
                     continue
+            # Two decks MEET (the lighthouse pier lands on the
+            # keeper's platform) — a construction join.
+            if depth <= 0.30 and DECKISH.search(n1) and DECKISH.search(n2):
+                continue
             # A bridge pier rises through the sidewalk at its
             # abutment by construction.
             if depth <= 0.75 and "pier" in (n1 + n2).lower() and \

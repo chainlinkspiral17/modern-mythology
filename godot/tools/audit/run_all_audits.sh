@@ -34,6 +34,16 @@ VOUT="$(python3 preset_vantage_audit.py 2>/dev/null)" || {
 echo "$VOUT" | grep -v "^\[" | tail -2
 echo ""
 
+# ── Marker-aim gate (2026-08-19) ───────────────────────────────
+# Every vn_shot marker is a CAMERA POSE (VnDirector assigns its
+# global_transform to the camera; forward is −Z). A wave of markers
+# shipped facing 180° from their subjects. Nonzero exit fails.
+echo "── marker_aim_audit.py ──"
+AOUT="$(python3 marker_aim_audit.py 2>/dev/null | grep -v "^\[")" || {
+    echo "$AOUT" | grep -E "MISAIM|misaim"; exit 1; }
+echo "$AOUT" | tail -2
+echo ""
+
 # ── Prop-overlap ZERO-REGRESSION gate (2026-08-11) ─────────────
 # Every locale audits clean except four known holdouts. A locale
 # outside the allowlist reporting ANY clips is a regression; a
