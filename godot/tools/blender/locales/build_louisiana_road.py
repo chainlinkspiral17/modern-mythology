@@ -450,6 +450,85 @@ def build_vol6_landmarks():
     make_box("NAPD_Text", (-4.26, 12.0, 1.05), (0.02, 1.4, 0.30), (0.86, 0.86, 0.82, 1.0))
 
 
+def build_foxhole_strip_mall_2026_08():
+    """THE FOXHOLE STRIP MALL (--props hunt, 2026-08).
+
+    Jesse's whole vol6 surveillance thread runs through geometry
+    that did not exist: "The unit at the back of the Foxhole's
+    section of the strip mall is the unit Jesse has been tracking"
+    · "the papered-over front window" · "His own band's name, in
+    chalk, on the front of a venue, in his town." Five cues across
+    three chapters looked at nothing.
+
+    Sited east of the road, north of the gas station, with the
+    BACK of the mall toward the road — because that is the view
+    the chapters use: Jesse in a parked Civic, looking across the
+    lot at a dark unit. The white panel van and the dark sedan are
+    NOT modeled; the prose keeps noting their absence.
+    """
+    stucco = (0.72, 0.68, 0.60, 1.0)
+    stucco_dk = (0.62, 0.58, 0.50, 1.0)
+    roofline = (0.38, 0.35, 0.30, 1.0)
+    door_steel = (0.45, 0.46, 0.48, 1.0)
+    paper = (0.86, 0.83, 0.76, 1.0)
+    chalk = (0.92, 0.92, 0.88, 1.0)
+    board = (0.14, 0.14, 0.15, 1.0)
+    # y=33 stood inside HouseE_2 (14.5, 29.5) and clipped the
+    # gas store — the east side is full through y~35. North of
+    # all of it: the mall anchors the road's far end.
+    mx, my = 17.0, 47.0            # mall center
+    # The mall block: one long bar, back face toward the road (west).
+    make_box("StripMall_Block", (mx, my, 2.1), (10.0, 22.0, 4.2), stucco)
+    make_box("StripMall_Parapet", (mx, my, 4.35), (10.4, 22.4, 0.35), roofline)
+    # Service lot between road and mall back.
+    make_box("StripMall_Lot", (10.0, my, 0.015), (7.6, 22.0, 0.03), (0.24, 0.24, 0.25, 1.0))
+    for si, sy in enumerate(range(-8, 9, 4)):
+        make_box("StripMall_LotStripe_%d" % si, (8.2, my + sy, 0.032),
+                 (2.6, 0.10, 0.004), (0.55, 0.54, 0.50, 1.0))
+    # Back doors of the row: four plain units...
+    for di, dy in enumerate((-8.0, -3.5, 5.5, 9.0)):
+        make_box("StripMall_BackDoor_%d" % di, (mx - 5.02, my + dy, 1.05),
+                 (0.06, 0.95, 2.10), door_steel)
+    # ...the Foxhole's section (rear door + one caged bulb + kegs).
+    make_box("Foxhole_BackDoor", (mx - 5.02, my + 1.5, 1.05), (0.06, 0.95, 2.10),
+             (0.30, 0.24, 0.20, 1.0))
+    make_box("Foxhole_DoorLamp", (mx - 5.10, my + 1.5, 2.45), (0.10, 0.16, 0.16),
+             (0.90, 0.78, 0.50, 1.0))
+    for ki, ky in enumerate((2.6, 3.1)):
+        make_cyl("Foxhole_Keg_%d" % ki, (mx - 5.55, my + ky, 0.30), 0.20, 0.60,
+                 (0.60, 0.62, 0.64, 1.0), segments=10)
+    # THE UNIT · the tracked one, between the Foxhole and the rest:
+    # a rear window PAPERED OVER (paper sheets slightly askew), the
+    # door repainted darker than its neighbors, no lamp.
+    ux = mx - 5.02
+    make_box("Unit_BackDoor", (ux, my - 1.0, 1.05), (0.06, 0.95, 2.10),
+             (0.24, 0.23, 0.24, 1.0))
+    make_box("Unit_Window_Frame", (ux, my - 2.3, 1.60), (0.05, 1.30, 1.00), stucco_dk)
+    for pi2, (poy, poz, w, h) in enumerate((
+            (-0.30, 0.18, 0.62, 0.55), (0.28, -0.12, 0.66, 0.60),
+            (0.02, 0.30, 0.55, 0.38))):
+        make_box("Unit_Window_Paper_%d" % pi2,
+                 (ux - 0.035, my - 2.3 + poy, 1.60 + poz), (0.012, w, h), paper)
+    # The lot's one working floodlight aims at the OTHER end — the
+    # unit sits in the dark on purpose.
+    make_cyl("StripMall_FloodPole", (10.5, my + 9.5, 2.6), 0.09, 5.2, door_steel, segments=8)
+    make_box("StripMall_FloodHead", (10.7, my + 9.2, 5.1), (0.35, 0.30, 0.22),
+             (0.92, 0.88, 0.72, 1.0))
+    # THE MARQUEE · front corner, visible from the road past the
+    # mall's south end: a black reader board on two posts, chalk
+    # lines where the band name is (the name itself is one long
+    # chalk stroke and two short ones — legible as writing, not as
+    # letters, which is how chalk reads at distance).
+    qx, qy = 11.5, 35.5
+    for pi3, py3 in enumerate((qy - 0.8, qy + 0.8)):
+        make_cyl("Marquee_Post_%d" % pi3, (qx, py3, 1.4), 0.07, 2.8, door_steel, segments=8)
+    make_box("Marquee_Board", (qx, qy, 3.1), (0.14, 2.4, 1.30), board)
+    make_box("Marquee_Trim", (qx, qy, 3.80), (0.18, 2.5, 0.10), (0.70, 0.20, 0.16, 1.0))
+    make_box("Marquee_Chalk_Line1", (qx - 0.08, qy, 3.38), (0.01, 1.9, 0.16), chalk)
+    make_box("Marquee_Chalk_Line2", (qx - 0.08, qy - 0.35, 3.05), (0.01, 1.2, 0.12), chalk)
+    make_box("Marquee_Chalk_Line3", (qx - 0.08, qy + 0.42, 3.02), (0.01, 0.9, 0.10), chalk)
+
+
 def main():
     clear_scene()
     build_sky_backdrop()
@@ -460,6 +539,7 @@ def main():
     build_roadside_detail()
     build_suburban_street()
     build_vol6_landmarks()
+    build_foxhole_strip_mall_2026_08()
     out = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)), "../../../assets/3d/locales/louisiana_road.glb"))
     print(f"\n[build_louisiana_road] exporting to {out}")
     export_glb(out)

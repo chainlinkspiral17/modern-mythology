@@ -239,6 +239,21 @@ light_energy = 0.9
 omni_range = 4.0
 shadow_enabled = false
 
+; ── vn_shot (2026-08) · the unit + the marquee ─────────────────
+; The tracked unit's papered rear window: blender (11.98, 44.7,
+; 1.6) → godot (11.98, 1.6, -44.7). Camera across the service lot,
+; the Foxhole's lit door at frame edge, the unit dark.
+[node name="shot_insert_unit" type="Marker3D" parent="." groups=["vn_shot"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.20, 1.55, -44.7)
+rotation = Vector3(0.0, -1.5708, 0.0)
+
+; The chalk marquee: blender (11.5, 35.5, 3.1) → godot (11.5, 3.1,
+; -35.5). Camera low on the road shoulder, board against the sky —
+; "His own band's name, in chalk, on the front of a venue."
+[node name="shot_insert_marquee" type="Marker3D" parent="." groups=["vn_shot"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.6, 2.30, -35.5)
+rotation = Vector3(0.20, -1.5708, 0.0)
+
 [node name="Interior" parent="." instance=ExtResource("1_glb")]
 
 [node name="PostProcess" type="CanvasLayer" parent="."]
