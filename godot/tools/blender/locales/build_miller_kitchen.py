@@ -281,6 +281,50 @@ def build_wear_personality_2026_08():
              (0.28, 0.26, 0.24, 1.0))
 
 
+def build_infrastructure_2026_08():
+    """D3 INFRASTRUCTURE — rooms are plugged in (one pass deep,
+    per the set-detail playbook). A 2010s family kitchen runs on
+    outlets and cords, and every electric thing in the room now
+    has both. The landline keeps its own 2014 story: its jack is
+    the old four-pin kind, lower on the wall than code would put
+    it today, because the wire predates the remodel.
+    """
+    from _props.detail import (make_wall_outlet, make_light_switch,
+                               make_cord_run)
+    # Door wall (south): the light switch where a hand finds it in
+    # the dark, at the door's latch side.
+    make_light_switch("Switch_Door", (1.15, 0.10), axis='X', face_sign=1, z=1.20)
+    # Counter-run outlets on the north wall at backsplash height —
+    # the code pair, one per work zone.
+    make_wall_outlet("Outlet_Counter_W", (-2.35, 5.92), axis='X', face_sign=-1, z=1.05)
+    make_wall_outlet("Outlet_Counter_E", (0.65, 5.92), axis='X', face_sign=-1, z=1.05)
+    # Floor-level outlet on the east wall behind the table (the
+    # vacuum outlet every dining room has).
+    make_wall_outlet("Outlet_East", (2.92, 2.4), axis='Y', face_sign=-1, z=0.30)
+    # The under-cabinet light's cord drops behind the counter lip
+    # to the west counter outlet.
+    make_cord_run("Cord_UnderCab", (-1.20, 5.90, 1.54), (-2.30, 5.90, 1.08),
+                  sag=0.06)
+    # Microwave cord to the same duplex — two plugs, one plate,
+    # the quiet crowding of a real counter.
+    make_cord_run("Cord_Microwave", (-2.35, 5.62, 1.10), (-2.36, 5.90, 1.05),
+                  sag=0.04)
+    # The LANDLINE's jack: old four-pin plate at 0.42 on the north
+    # wall below the phone, wire predating the remodel, and the
+    # flat line cord up to the base.
+    make_box("PhoneJack_Plate", (-2.85, 5.925, 0.42), (0.07, 0.012, 0.11),
+             (0.82, 0.79, 0.72, 1.0))
+    make_cord_run("Cord_PhoneLine", (-2.85, 5.90, 0.46), (-2.85, 5.89, 1.30),
+                  sag=0.03)
+    # HVAC: a floor register under the east window — the vent every
+    # kitchen argument gets carried through.
+    make_box("Vent_Register", (2.55, 3.30, 0.045), (0.36, 0.14, 0.09),
+             (0.72, 0.70, 0.66, 1.0))
+    for vi in range(5):
+        make_box("Vent_Register_Slat_%d" % vi, (2.45 + vi * 0.05, 3.30, 0.095),
+                 (0.012, 0.11, 0.008), (0.55, 0.53, 0.50, 1.0))
+
+
 def main():
     clear_scene()
     build_shell()
@@ -293,6 +337,7 @@ def main():
     build_dressing()
     build_phone_and_toast_2026_08()
     build_wear_personality_2026_08()
+    build_infrastructure_2026_08()
     out = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)),
         "../../../assets/3d/locales/miller_kitchen.glb"))
     print(f"\n[build_miller_kitchen] exporting to {out}")
