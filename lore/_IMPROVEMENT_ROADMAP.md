@@ -73,6 +73,19 @@ cabin_road's remaining 43 are mostly games-Finn-plays and
 substitute-fallback territory — verify on Deck before adding more
 there.
 
+**2026-08-19 · PER-STICK VOICE SWEEP VERDICT (voice draft 4).**
+Ran the leakage grep (TODO/WIP/placeholder/implemented/deferred/
+stub) and a string survey across EVERY stick directory: estuary_4,
+northwind_harbor, salmonberry, fey_faire, mrs_wus, tideline,
+spiderdrops, earthman, pirate_summer, kwik_stop_manager, estuary
+1-3. Verdict: the sticks are ALREADY IN REGISTER ("bosun is not
+the limit here" · "you are slightly otherwise" · "the estuary does
+not grade on effort") — the only remaining "stub" hits are ticket
+stubs, which are diegetic. One touch shipped: Estuary 4's season
+status line now speaks its own delta dialect ("the crew %d/5 in
+good heart"). Do NOT re-sweep; future voice work should come from
+playtest complaints, not grep.
+
 ## NEXT SESSION QUEUE (written 2026-08-11 night, session close)
 
 The audit era is consolidated: run_all_audits.sh is green end to
@@ -167,7 +180,7 @@ Current ledger (draft counts are honest, not aspirational):
 | Vol 7 cabin set (cabin_interior + cabin_road) | 3 (hero props 08-12: bowls/crow/drones; wear-personality pass 08-19: Olaf's decades vs Tem's weeks — the two-age wear vocabulary) | draft 4: Deck screenshots of the wear at establish + insert framings; D5 through-windows (the crow's sill view outward); then cabin_road D2 |
 | Lena's apartment (vol7) | 3 (hero props 08-12/19: easel+canvas, nebula+patches; wear pass 08-19: three-years-alone vocabulary — narrow single path, cone rings, paint constellation in HER palette, 61° props, crowding shown in objects not floor) | draft 4: Deck check of easel/mural/window inserts; D3 cords (easel lamp? none yet — she works in window light, verify that reads); bedroom wear |
 | Miller kitchen (vol6) | 3 (landline+toast 08-19 AM; family wear pass 08-19 PM: wide path, the 4:32 sink spot, cord drag, board knife-lines, and Mike's chair carrying BOTH ages — his pale years + her dark June crescent) | draft 4: Deck check ch6/ch11 opens; sink_light insert at 4:32 mood; garage view through window (D5) |
-| Cedar tower (vol7 ch22) | 3 (coverage authored) | draft 4: D2 wear pass, Deck reframe of the five presets + seven vn_shot setups |
+| Cedar tower (vol7 ch22) | 4 (D2 wear 08-19: lobby's single line + chairless desk dust, studio chair spots + one desk's coffee rings, quarters' five-of-twelve seats, and the portal landing where wear STOPS at the door) | draft 5: Deck reframe of the five presets + seven vn_shot setups; D3 cords (rack power, desk cables) |
 | Graustark ruin quarter / riverfront park | 3 (per-chapter vantages 08-11: chalk wall / cottage / wreck / wide; ~~ruin cameras untuned~~; ~~park lamp practicals~~ shipped in riverfront.tscn) | draft 4: Deck screenshots of the four chapter opens + the lamplit jog path; then ruin-quarter D2 wear |
 | CP region banners + agent busts | 2 (plan SHIPPED — verified in code 2026-08-03: banners incl. county_seat, tower variants, roster + dossier busts) | banner art iteration vs the SVGA bar; authored face overrides for marquee agents |
 | CP coherency + presentation (2026-08-04) | 1 (timeline→2025, Faith II dog, demons electronic, type 15px, 25 problem stamps, demon sigils, 4 BGM) | Deck check: stamp legibility at row size + clipped rows at new type scale; ~~THE_BASEMENT threads in the electronic register~~ (shipped 08-09); ~~per-class {agent} stage phrasing~~ (shipped 08-09: body_demon on 12 stages + engine dispatch); ~~mission-text vagueness sweep~~ (ran 08-09: the corpus has grown specific since this was written — all 40 flavors carry named places, times, and objects; nothing to fix, verdict recorded); ~~stamp severity tinting~~ (shipped 08-09: parchment→amber→orange→red-heat modulate at all three stamp sites, thresholds 3/5/7); ~~more BBS 2025-era threads~~ (3 shipped 08-09: the gumbo accounted for · the bench by the gate · late August, the boat — the third-plank fix from memorial_dock_rot echoes into the board with no name attached); NEXT CP visit: Deck-check gates only |

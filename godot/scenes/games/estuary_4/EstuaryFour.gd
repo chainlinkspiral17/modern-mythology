@@ -286,7 +286,7 @@ func _show_season_week() -> void:
 		_add_body("the glass is dropping hard. cade would say: whatever you love out there, lash it down this week.", 13, C_GOLD)
 	var prog: Dictionary = se.get("progress", {})
 	var damaged: Array = se.get("damaged", [])
-	var status := "budget $%d · crew morale %d/5" % [int(se.get("budget", 0)), int(se.get("morale", 3))]
+	var status := "budget $%d · the crew %d/5 in good heart" % [int(se.get("budget", 0)), int(se.get("morale", 3))]
 	_add_body(status, 13, C_REED)
 	for pid in ["gate", "channel", "plantings"]:
 		var pd: Dictionary = PROJ[pid]

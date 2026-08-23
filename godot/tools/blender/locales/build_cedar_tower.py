@@ -419,6 +419,75 @@ def build_drone_dock_2026_08():
                yaw_flip=True)
 
 
+def build_wear_personality_2026_08():
+    """D2 WEAR — draft 4 (queued in the ledger). Whose feet: a
+    small crew that CROSSES the lobby, WORKS the studio, LIVES in
+    the quarters, and WAITS at the portal door.
+
+    The building's personality is kept-but-lived-in: the lobby is
+    polished cedar with exactly one line of traffic through it
+    (nobody lingers — the reception desk has no chair); the studio
+    wears at the chairs and along the rack wall; the quarters seat
+    twelve and wear at five; and on the portal landing the wear
+    STOPS at the unmarked door — a polished waiting crescent in
+    front of it, and a hand-smudge under the little window, and
+    nothing past that.
+    """
+    from _props.detail import make_traffic_wear, make_floor_stain
+    cedar_dk = (0.44, 0.31, 0.20, 1.0)   # traffic on cedar
+    cedar_pale = (0.62, 0.48, 0.33, 1.0) # polish/scrape
+    # ── LOBBY (z 0) · one line, door to stairs ──
+    make_traffic_wear("Wear_Lobby_Line",
+                      [(0.0, 0.8), (1.2, 3.0), (2.5, 5.2)],
+                      width=0.5, floor_z=0.02, tint=cedar_dk)
+    # Dust band on the empty reception desk — no chair, no hands.
+    make_box("Wear_Reception_Dust", (0.0, 5.2, 1.155), (2.6, 0.7, 0.004),
+             (0.58, 0.45, 0.32, 1.0))
+    # The brass handrail worn BRIGHT at the grab points (bottom +
+    # top), duller mid-run.
+    for gz, gy in ((1.15, 4.9), (2.35, 6.7)):
+        make_cyl("Wear_Handrail_Bright_%d" % int(gz * 10), (2.85, gy, gz),
+                 0.032, 0.30, (0.85, 0.72, 0.42, 1.0), segments=8, axis='Y')
+    # ── STUDIO (z 5) · chairs and the rack line ──
+    for ci, (cx2, cy2) in enumerate(((-2.2, 4.2), (2.2, 4.2))):
+        for di, (dx2, dy2) in enumerate(((-0.75, -0.5), (0.75, -0.5),
+                                         (-0.75, 0.5), (0.75, 0.5))):
+            make_floor_stain("Wear_Studio_Chair_%d_%d" % (ci, di),
+                             (cx2 + dx2, cy2 + dy2 - 0.65), radius=0.24,
+                             floor_z=5.02, tint=cedar_dk, segments=8)
+    # One desk carries coffee rings; the others don't — one person
+    # on the crew drinks at their desk, and everyone knows who.
+    for ri2, (rx2, ry2) in enumerate(((-2.95, 3.55), (-2.88, 3.75), (-3.05, 3.68))):
+        make_cyl("Wear_Desk_Ring_%d" % ri2, (rx2, ry2, 5.775), 0.042, 0.003,
+                 (0.38, 0.26, 0.16, 1.0), segments=8)
+    # The service line along the racks — feet that tend machines.
+    make_traffic_wear("Wear_Rack_Line",
+                      [(-4.6, 7.9), (0.0, 7.9), (4.6, 7.9)],
+                      width=0.4, floor_z=5.02, tint=cedar_dk)
+    # ── QUARTERS (z 10) · a table for twelve, a crew of five ──
+    # Five seats worn, seven clean: the table was built for the
+    # company they hoped for.
+    for si2, (sx2, sy2) in enumerate(((-1.4, 3.2), (-0.7, 3.2), (0.0, 3.2),
+                                      (0.7, 3.2), (-1.4, 4.4))):
+        make_floor_stain("Wear_Seat_%d" % si2, (sx2, sy2), radius=0.17,
+                         floor_z=10.02, tint=cedar_dk, segments=8)
+    # Kettle ring on the wood-stove top (a different household's
+    # kettle than the cabin's, same physics).
+    make_cyl("Wear_QStove_Ring", (5.0, 6.6, 10.845), 0.095, 0.004,
+             (0.10, 0.10, 0.11, 1.0), segments=10)
+    # ── PORTAL LANDING (z 15) · the wear STOPS at the door ──
+    make_traffic_wear("Wear_Landing_Line",
+                      [(0.0, 0.4), (0.0, 1.6)],
+                      width=0.42, floor_z=15.04, tint=cedar_dk)
+    # The waiting crescent: feet polish a half-round in front of
+    # the unmarked door. Nothing continues past it.
+    make_floor_stain("Wear_Portal_Wait", (0.0, 2.45), radius=0.34,
+                     floor_z=15.045, tint=cedar_pale, segments=10)
+    # The hand-smudge below the six-inch window (chest height).
+    make_box("Wear_Portal_Smudge", (0.0, 2.955, 16.05), (0.20, 0.008, 0.10),
+             (0.40, 0.28, 0.18, 1.0))
+
+
 def main():
     clear_scene()
     build_lobby()
@@ -428,6 +497,7 @@ def main():
     build_draft2_density_2026_08()
     build_exterior()
     build_drone_dock_2026_08()
+    build_wear_personality_2026_08()
     out = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)),
         "../../../assets/3d/locales/cedar_tower.glb"))
     print(f"\n[build_cedar_tower] exporting to {out}")
