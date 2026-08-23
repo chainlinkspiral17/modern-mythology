@@ -101,6 +101,16 @@ henderson) got there by accumulating exactly these layers.
   ring. New wear is narrower and closer to the floor's own tone;
   old wear is wide, dark, or scraped pale. A visitor should be
   able to date the household from the floor alone.
+- **A renovation floor wears BACKWARDS** (ember warehouse D2):
+  concrete dust settles everywhere, so the traffic lanes are the
+  PALE-CLEAN part — boots clear the dust where the work moves,
+  and the corners nobody works go gray. Plus the vocabulary that
+  came with it: sawdust halo around the lumber, mortar dust
+  around the brick pallet, the roll gate's rain band with two
+  finger stains reaching in, damp-rise on old brick bases, and
+  the GHOST WALL — a pale stripe across the slab where a
+  demolished partition stood for decades. Ask what the surface
+  was DOING before the story arrived.
 - The triptych completed same day (Lena's three-years-alone, the
   Millers' family kitchen): a family walks WIDE where one person
   walks narrow; crowding too new to mark a floor shows in OBJECTS

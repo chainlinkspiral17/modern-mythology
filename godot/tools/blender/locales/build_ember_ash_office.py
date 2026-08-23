@@ -582,6 +582,67 @@ def build_warehouse_2026_08():
     make_box("Corner_Curb", (-9.0, -4.1, WF - 0.02), (3.6, 0.5, 0.18), (0.58, 0.56, 0.52, 1.0))
 
 
+def build_warehouse_d2_2026_08():
+    """D2 SURFACE BREAKUP for the warehouse (draft 2 of the set).
+
+    A renovation floor wears BACKWARDS: concrete dust settles
+    everywhere, so the traffic lines are the PALE-CLEAN part —
+    boots clear the dust where work actually moves (gate → stair,
+    stair → salvage, door → alley). Standing zones go the other
+    way: sawdust builds up around the lumber, mortar dust around
+    the brick pallet, and the roll gate's threshold carries the
+    water stain of every rain that blew under it.
+    """
+    WF = -4.5
+    dust = (0.52, 0.50, 0.47, 1.0)       # settled concrete dust
+    cleared = (0.42, 0.41, 0.39, 1.0)    # slab where boots cleared it
+    sawdust = (0.62, 0.52, 0.36, 1.0)
+    mortar = (0.56, 0.50, 0.44, 1.0)
+    rain = (0.30, 0.29, 0.28, 1.0)
+    # The dust field: big soft patches of settle, heaviest in the
+    # corners nobody works.
+    for di2, (dx3, dy3, dr3) in enumerate((
+            (-6.4, 12.6, 1.6), (6.6, 3.2, 1.4), (-6.2, 2.8, 1.3),
+            (2.0, 12.6, 1.2), (-3.0, 12.0, 1.0))):
+        make_cyl("WH_Dust_%d" % di2, (dx3, dy3, WF + 0.006), dr3, 0.004,
+                 dust, segments=10)
+    # The cleared lanes — where the work walks.
+    from _props.detail import make_traffic_wear, make_floor_stain
+    make_traffic_wear("WH_Lane_GateStair",
+                      [(0.0, 1.0), (2.0, 3.5), (3.8, 6.0)],
+                      width=0.9, floor_z=WF + 0.01, tint=cleared)
+    make_traffic_wear("WH_Lane_Salvage",
+                      [(2.5, 5.5), (-1.5, 7.0), (-4.8, 8.8)],
+                      width=0.8, floor_z=WF + 0.01, tint=cleared)
+    make_traffic_wear("WH_Lane_Alley",
+                      [(1.5, 9.0), (2.3, 12.0), (2.4, 13.8)],
+                      width=0.7, floor_z=WF + 0.01, tint=cleared)
+    # Sawdust around the lumber; mortar dust around the pallet.
+    make_floor_stain("WH_Sawdust", (-5.6, 10.6), radius=0.9,
+                     floor_z=WF + 0.012, tint=sawdust, segments=10)
+    make_floor_stain("WH_MortarDust", (-5.5, 8.1), radius=0.55,
+                     floor_z=WF + 0.012, tint=mortar, segments=9)
+    # The roll gate's rain line — a dark threshold band and two
+    # finger stains reaching in where water found the slope.
+    make_box("WH_RainBand", (0.0, 0.35, WF + 0.008), (4.6, 0.5, 0.005), rain)
+    make_floor_stain("WH_RainFinger_A", (-1.2, 1.0), radius=0.35,
+                     floor_z=WF + 0.007, tint=rain, segments=8)
+    make_floor_stain("WH_RainFinger_B", (0.9, 1.2), radius=0.28,
+                     floor_z=WF + 0.007, tint=rain, segments=8)
+    # Wall tint: a damp-rise band at the brick base (old warehouse
+    # walls wick), and the ghost line of a demolished partition —
+    # a pale stripe across the slab where a wall stood for decades.
+    for wname, wx3, wl in (("W", -7.82, 13.6), ("E", 7.82, 13.6)):
+        make_box("WH_DampRise_%s" % wname, (wx3, 7.0, WF + 0.5),
+                 (0.03, wl, 1.0), (0.40, 0.29, 0.24, 1.0))
+    make_box("WH_GhostWall", (1.5, 8.6, WF + 0.005), (0.24, 6.8, 0.004),
+             (0.58, 0.56, 0.52, 1.0))
+    # Mezzanine kick scuffs where ladders and shoulders hit the
+    # office box's underside edge.
+    make_box("WH_Mezz_Scuff", (0.0, 0.55, -0.28), (5.6, 0.03, 0.14),
+             (0.30, 0.27, 0.25, 1.0))
+
+
 def main():
     clear_scene()
     build_shell()
@@ -595,6 +656,7 @@ def main():
     build_wall_photo_and_clock()
     build_ceiling_infra()
     build_warehouse_2026_08()
+    build_warehouse_d2_2026_08()
     out = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)),
                                          "../../../assets/3d/locales/ember_ash_office.glb"))
     print(f"\n[build_ember_ash_office] exporting to {out}")
