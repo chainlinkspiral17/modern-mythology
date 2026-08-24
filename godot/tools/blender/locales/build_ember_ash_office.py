@@ -580,6 +580,19 @@ def build_warehouse_2026_08():
     make_box("Corner_Dumpster", (-10.6, -5.6, WF + 0.65), (1.9, 1.1, 1.30), (0.24, 0.34, 0.30, 1.0))
     make_box("Corner_Dumpster_Lid", (-10.6, -5.6, WF + 1.34), (1.95, 1.15, 0.08), (0.20, 0.28, 0.26, 1.0))
     make_box("Corner_Curb", (-9.0, -4.1, WF - 0.02), (3.6, 0.5, 0.18), (0.58, 0.56, 0.52, 1.0))
+    # The tripod work light by the salvage — a renovation's one
+    # honest interior fixture, and the practical the scene needs.
+    make_cyl("WorkLight_Leg_A", (-4.15, 6.65, WF + 0.55), 0.025, 1.10,
+             (0.80, 0.62, 0.16, 1.0), segments=6)
+    make_cyl("WorkLight_Leg_B", (-3.85, 6.70, WF + 0.55), 0.025, 1.10,
+             (0.80, 0.62, 0.16, 1.0), segments=6)
+    make_cyl("WorkLight_Leg_C", (-4.00, 6.95, WF + 0.55), 0.025, 1.10,
+             (0.80, 0.62, 0.16, 1.0), segments=6)
+    make_box("WorkLight_Head", (-4.0, 6.75, WF + 1.22), (0.34, 0.20, 0.24),
+             (0.90, 0.86, 0.72, 1.0))
+    make_box("WorkLight_Cage", (-4.0, 6.63, WF + 1.22), (0.30, 0.02, 0.20),
+             (0.30, 0.28, 0.26, 1.0))
+
 
 
 def build_warehouse_d2_2026_08():

@@ -254,6 +254,28 @@ rotation = Vector3(0.0, -1.5708, 0.0)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.6, 2.30, -35.5)
 rotation = Vector3(0.20, -1.5708, 0.0)
 
+; ── Strip-mall practicals (2026-08-19 · fixtures from the
+; Foxhole build): the lit caged bulb over the Foxhole's door, the
+; lot flood aimed at the OTHER end (the unit stays dark — that is
+; the point), and a warm wash on the chalk marquee.
+[node name="Prac_Foxhole_DoorLamp" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.9, 2.45, -48.5)
+light_color = Color(0.94, 0.84, 0.66, 1)
+light_energy = 1.5
+omni_range = 5.0
+
+[node name="Prac_StripMall_FloodHead" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.7, 5.1, -56.2)
+light_color = Color(0.85, 0.92, 1.0, 1)
+light_energy = 2.4
+omni_range = 12.0
+
+[node name="Prac_Marquee_Wash" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.8, 3.0, -35.5)
+light_color = Color(0.95, 0.88, 0.70, 1)
+light_energy = 1.1
+omni_range = 4.5
+
 [node name="Interior" parent="." instance=ExtResource("1_glb")]
 
 [node name="PostProcess" type="CanvasLayer" parent="."]

@@ -189,6 +189,14 @@ light_color = Color(0.88, 0.91, 0.95, 1)
 light_energy = 0.30
 shadow_enabled = false
 
+; ── Loom-room practical (2026-08-19 · the spare room now holds
+; the Wheel's hero stations; the bedside lamp lights them) ──
+[node name="Prac_Bedroom_Lamp" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.45, 0.78, -5.5)
+light_color = Color(0.95, 0.78, 0.50, 1)
+light_energy = 1.0
+omni_range = 3.5
+
 [node name="Interior" parent="." instance=ExtResource("1_glb")]
 
 [node name="PostProcess" type="CanvasLayer" parent="."]
