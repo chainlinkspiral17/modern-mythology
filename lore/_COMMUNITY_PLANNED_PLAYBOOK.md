@@ -271,6 +271,19 @@ rules** once they've held across multiple sessions.
   they last; the _last_vignette_id guard stops back-to-back
   repeats. Rule: any flavor pool that fires on a clock needs a
   never-exhausted floor under its one-shots.
+- **The exhaustion audit generalized (2026-08-19).** Applying the
+  vignette lesson to every clock-fired pool found two more holes:
+  the weekly regional flavor exhausted into ONE static line
+  ("the region held its shape this week") repeated verbatim every
+  remaining Sunday — harmony_creek's 11 one-shots die before
+  Labor Day, and endless mode got the same sentence forever. And
+  COUNTY_SEAT had ZERO regional events: every Sunday since the
+  region opens, the fallback. Fixed with per-region RHYTHM pools
+  in regional_events.json (the engine avoids repeating last
+  week's line) and eight county_seat one-shots in the legal
+  register ("Clerks are the last neutral country"). The rule,
+  now firm: EVERY pool that fires on a clock gets a
+  never-exhausted floor, checked at authoring time.
 - NEXT voice draft: the stage-choice `summary` strings (still
   "+1.0 effort · slow, attentive · no cost" — the numbers should
   stay but the framing can breathe), region-panel chrome, the

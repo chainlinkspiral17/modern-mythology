@@ -221,6 +221,7 @@ var _interludes_def: Dictionary = {}      # full interludes.json
 var _pair_lines_def: Dictionary = {}      # full pair_dispatch_lines.json (B2)
 var _vignettes_def: Dictionary = {}       # full daily_vignettes.json
 var _regional_events_pool: Array = []     # regional_events.json events[]
+var _regional_rhythm: Dictionary = {}     # regional_events.json rhythm{} — the never-exhausted floor
 var _fired_regional_events: Array = []    # event_ids that have fired (never repeat)
 var _active_regional_markers: Array = []  # [{marker_id, region_id, expires_on_day, log_line, expiry_line}]
 var _ever_set_markers: Array = []         # marker_ids that were EVER set this summer (superset of _active_regional_markers)
@@ -829,6 +830,7 @@ func _load_data() -> void:
 	# Replaces the earlier 5-week cycle of hardcoded flavor lines.
 	var regional_events_json: Dictionary = _load_json(DATA_ROOT + "regional_events.json")
 	_regional_events_pool = regional_events_json.get("events", [])
+	_regional_rhythm = regional_events_json.get("rhythm", {})
 	_validate_canonical_character_links()
 
 
@@ -5525,10 +5527,24 @@ func _fire_weekly_region_flavor() -> void:
 	for r_id in _visible_regions:
 		var picked: Dictionary = _pick_regional_event(r_id, week, rng)
 		if picked.is_empty():
-			# Every event in this region's pool has fired. Emit a
-			# minimal fallback so the week's log has a beat.
-			_log("[color=#a8c0a8][i]%s:[/i] the region held its shape this week.[/color]" %
-				_regions.get(r_id, {}).get("name", r_id))
+			# Every one-shot in this region's pool has fired. The
+			# old fallback was ONE static line repeated verbatim
+			# every remaining Sunday (and all of endless). The
+			# rhythm pools carry the pulse instead — same lesson as
+			# the daily vignettes: a pool that fires on a clock
+			# needs a never-exhausted floor.
+			var r_lines: Array = _regional_rhythm.get(r_id, [])
+			if not r_lines.is_empty():
+				var r_idx: int = rng.randi() % r_lines.size()
+				# Avoid repeating last week's line when there's a choice.
+				var last_key: String = "rhythm_last_" + r_id
+				if r_lines.size() > 1 and int(_flags.get(last_key, -1)) == r_idx:
+					r_idx = (r_idx + 1) % r_lines.size()
+				_flags[last_key] = r_idx
+				_log(String(r_lines[r_idx]))
+			else:
+				_log("[color=#a8c0a8][i]%s:[/i] the region held its shape this week.[/color]" %
+					_regions.get(r_id, {}).get("name", r_id))
 			continue
 		var event_id: String = String(picked.get("id", ""))
 		_fired_regional_events.append(event_id)
