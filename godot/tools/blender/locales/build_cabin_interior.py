@@ -405,6 +405,37 @@ def build_wear_personality_2026_08():
              (0.32, 0.22, 0.14, 1.0), segments=8)
 
 
+def build_through_windows_2026_08():
+    """D5 · the cabin's windows open on the stand. South pair: the
+    Sitka band and fern floor the road builder renders at scale,
+    here as a near band a few meters out (trunks + dark canopy +
+    fern line). North kitchen window: the crow is already on the
+    sill; past it, the woodpile lean-to and one pale trunk — and
+    the strip of creek the prose keeps hearing.
+    """
+    trunk = (0.36, 0.28, 0.22, 1.0)
+    canopy = (0.16, 0.24, 0.16, 1.0)
+    fern = (0.24, 0.36, 0.20, 1.0)
+    # SOUTH · the stand, 5-8m past the wall
+    for ti, (tx3, ty3, tr3, th3) in enumerate((
+            (-3.2, -5.5, 0.28, 7.0), (-0.8, -7.0, 0.35, 8.5),
+            (1.6, -5.8, 0.26, 6.5), (3.4, -7.5, 0.32, 8.0))):
+        make_cyl("Thru_S_Sitka_%d" % ti, (tx3, ty3, th3 / 2.0), tr3, th3,
+                 trunk, segments=7)
+    make_box("Thru_S_Canopy", (0.0, -7.0, 6.4), (12.0, 4.5, 3.2), canopy)
+    make_box("Thru_S_FernLine", (0.0, -4.8, 0.35), (11.0, 1.4, 0.7), fern)
+    # NORTH · woodpile lean-to, a pale trunk, the creek strip
+    make_box("Thru_N_Leanto_Roof", (-2.6, 8.0, 1.7), (2.2, 1.4, 0.10),
+             (0.40, 0.32, 0.24, 1.0))
+    for pi3, pz3 in enumerate((0.35, 0.65, 0.95)):
+        make_box("Thru_N_Woodrow_%d" % pi3, (-2.6, 8.0, pz3), (2.0, 1.1, 0.28),
+                 (0.48, 0.38, 0.26, 1.0))
+    make_cyl("Thru_N_PaleTrunk", (0.6, 9.5, 3.0), 0.30, 6.0,
+             (0.55, 0.50, 0.42, 1.0), segments=7)
+    make_box("Thru_N_CreekStrip", (0.0, 11.5, 0.02), (10.0, 1.2, 0.04),
+             (0.35, 0.42, 0.44, 0.9))
+
+
 def main():
     clear_scene()
     build_shell()
@@ -417,6 +448,7 @@ def main():
     build_wall_dressing()
     build_crow_2026_08()
     build_wear_personality_2026_08()
+    build_through_windows_2026_08()
     out = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)),
         "../../../assets/3d/locales/cabin_interior.glb"))
     print(f"\n[build_cabin_interior] exporting to {out}")

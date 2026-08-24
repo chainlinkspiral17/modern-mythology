@@ -325,6 +325,42 @@ def build_infrastructure_2026_08():
                  (0.012, 0.11, 0.008), (0.55, 0.53, 0.50, 1.0))
 
 
+def build_through_windows_2026_08():
+    """D5 · something THROUGH every window. The east window's view
+    is the ledger's queued shot: the garage — "Sam's father is in
+    the garage. He is on the phone" — its side wall a car-length
+    past the glass, one lit window in it, the driveway strip
+    between. The north window over the sink gets the cul-de-sac's
+    front-yard band: lawn, the sidewalk, a facing house shape, the
+    sprinkler arcs that come on at 6:12.
+    """
+    gray = (0.72, 0.70, 0.66, 1.0)
+    dusk = (0.30, 0.30, 0.34, 1.0)
+    # EAST · the garage, 4m past the glass
+    make_box("Thru_E_Driveway", (5.4, 3.5, -0.03), (4.0, 3.2, 0.05),
+             (0.48, 0.47, 0.45, 1.0))
+    make_box("Thru_E_Garage_Wall", (7.4, 3.5, 1.5), (0.25, 6.0, 3.0), gray)
+    make_box("Thru_E_Garage_Roofline", (7.4, 3.5, 3.2), (0.6, 6.4, 0.4),
+             (0.40, 0.38, 0.35, 1.0))
+    # The garage's one window — lit, because he is in there.
+    make_box("Thru_E_Garage_Window", (7.26, 3.4, 1.6), (0.03, 0.9, 0.7),
+             (0.95, 0.85, 0.55, 1.0))
+    make_box("Thru_E_Garage_Mullion", (7.25, 3.4, 1.6), (0.02, 0.06, 0.72), dusk)
+    # NORTH · the cul-de-sac band past the sink window
+    make_box("Thru_N_Lawn", (-1.0, 8.2, -0.04), (7.0, 3.6, 0.05),
+             (0.34, 0.44, 0.28, 1.0))
+    make_box("Thru_N_Sidewalk", (-1.0, 10.2, -0.02), (7.0, 0.8, 0.05),
+             (0.60, 0.58, 0.55, 1.0))
+    make_box("Thru_N_House_Facing", (-1.5, 12.5, 1.8), (5.0, 0.4, 3.6),
+             (0.66, 0.60, 0.52, 1.0))
+    make_box("Thru_N_House_Roof", (-1.5, 12.5, 3.9), (5.5, 0.9, 0.5),
+             (0.36, 0.32, 0.28, 1.0))
+    # Two sprinkler heads waiting for 6:12
+    for si, sx in enumerate((-2.6, 0.4)):
+        make_cyl("Thru_N_Sprinkler_%d" % si, (sx, 8.6, 0.03), 0.03, 0.07,
+                 (0.30, 0.32, 0.30, 1.0), segments=6)
+
+
 def main():
     clear_scene()
     build_shell()
@@ -338,6 +374,7 @@ def main():
     build_phone_and_toast_2026_08()
     build_wear_personality_2026_08()
     build_infrastructure_2026_08()
+    build_through_windows_2026_08()
     out = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)),
         "../../../assets/3d/locales/miller_kitchen.glb"))
     print(f"\n[build_miller_kitchen] exporting to {out}")
