@@ -101,6 +101,16 @@ henderson) got there by accumulating exactly these layers.
   ring. New wear is narrower and closer to the floor's own tone;
   old wear is wide, dark, or scraped pale. A visitor should be
   able to date the household from the floor alone.
+- **Waxed floors dull, they don't darken** (asylum ward, wear
+  pass 4): institutional linoleum's traffic lane reads PALER and
+  flatter than the sheen around it — the third material inversion
+  (wood darkens underfoot, dust clears pale, wax dulls pale). The
+  ward also carried the game's deepest single lane — nurses walk
+  miles, station to every bay — with the gurney's two rubber
+  wheel-lines over it and one swerve where it always misses the
+  radiator. Vigil wear is OBJECT-anchored: four chair-foot marks
+  that stay when the chair is carried back each morning, the
+  hand patch on the bed rail near the head.
 - **A renovation floor wears BACKWARDS** (ember warehouse D2):
   concrete dust settles everywhere, so the traffic lanes are the
   PALE-CLEAN part — boots clear the dust where the work moves,

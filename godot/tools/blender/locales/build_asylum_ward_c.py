@@ -528,6 +528,64 @@ def build_wheelchair_2026_08():
              (0.16, 0.02, 0.14), chrome_dk)
 
 
+def build_wear_personality_2026_08():
+    """WHOSE FEET, WHOSE SPILLS — the ward (wear pass 4).
+
+    Institutional linoleum inverts like the warehouse dust did:
+    the floor is WAXED, so traffic dulls it — the nurses' lane
+    reads paler and flatter than the sheen around it. The lane is
+    the deepest wear in the game because nurses walk miles:
+    station to every bay, thousands of rounds. Over it, the
+    gurney's two rubber wheel-lines run the corridor's center.
+    The VIGIL is the new wear: a family chair's four-foot marks
+    beside Ward 5's unstripped bed, a hand-worn patch on the bed
+    rail near the head, and the votive's wax history below the
+    binder shelf. The wheelchair against the east wall has stood
+    long enough to leave its four tire shadows.
+    """
+    from _props.detail import make_traffic_wear, make_floor_stain
+    lane = (0.66, 0.67, 0.64, 1.0)     # de-waxed linoleum, duller-pale
+    rubber = (0.20, 0.20, 0.21, 1.0)
+    hand = (0.60, 0.55, 0.44, 1.0)
+    wax = (0.88, 0.84, 0.72, 1.0)
+    # The nurses' lane: station (y 7) sweeping both directions,
+    # widening at the station itself.
+    make_traffic_wear("Wear_Nurse_Lane_N",
+                      [(0.0, 7.2), (-0.4, 9.5), (-0.9, 11.0), (-0.4, 13.0)],
+                      width=0.62, tint=lane)
+    make_traffic_wear("Wear_Nurse_Lane_S",
+                      [(0.0, 6.8), (-0.4, 4.5), (-0.9, 2.5), (-0.3, 1.0)],
+                      width=0.62, tint=lane)
+    make_floor_stain("Wear_Station_Apron", (0.0, 6.6), radius=0.85,
+                     tint=lane, segments=12)
+    # Gurney wheel-lines down the corridor center: two rubber
+    # traces with one swerve where it always misses the radiator.
+    for sgn in (-1, 1):
+        make_box("Wear_GurneyLine_%+d" % sgn, (0.35 + sgn * 0.28, 6.0, 0.012),
+                 (0.05, 11.0, 0.004), rubber)
+    make_box("Wear_GurneyLine_Swerve", (0.55, 12.0, 0.012), (0.35, 1.6, 0.004),
+             rubber)
+    # THE VIGIL · beside Ward 5's unstripped bed (-1.85, 11.0):
+    # four chair-foot marks (the chair gets carried back to the
+    # station each morning; the marks stay), and the hand patch on
+    # the rail near the head of the bed.
+    for fi2, (fx2, fy2) in enumerate(((-2.55, 10.75), (-2.25, 10.75),
+                                      (-2.55, 11.15), (-2.25, 11.15))):
+        make_cyl("Wear_VigilFoot_%d" % fi2, (fx2, fy2, 0.008), 0.035, 0.004,
+                 (0.58, 0.58, 0.56, 1.0), segments=6)
+    make_box("Wear_BedRail_Hand", (-1.42, 11.65, 0.62), (0.035, 0.22, 0.03), hand)
+    # Wax history below the votive: two old drips down the shelf
+    # face and one dried pool.
+    make_box("Wear_Votive_Drip_A", (-0.28, -0.055, 1.18), (0.015, 0.008, 0.10), wax)
+    make_box("Wear_Votive_Drip_B", (-0.22, -0.055, 1.22), (0.012, 0.008, 0.06), wax)
+    make_cyl("Wear_Votive_Pool", (-0.25, -0.02, 1.128), 0.045, 0.005, wax, segments=8)
+    # The wheelchair's four tire shadows — it has stood a while.
+    for si3, (sx3, sy3) in enumerate(((1.72, 8.15), (2.32, 8.15),
+                                      (1.78, 8.52), (2.26, 8.52))):
+        make_cyl("Wear_WheelShadow_%d" % si3, (sx3, sy3, 0.006), 0.05, 0.003,
+                 (0.60, 0.60, 0.58, 1.0), segments=6)
+
+
 def main():
     clear_scene()
     build_shell()
@@ -540,6 +598,7 @@ def main():
     build_death_dressing()
     build_death_wave2_props()
     build_wheelchair_2026_08()
+    build_wear_personality_2026_08()
     out = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)),
                                          "../../../assets/3d/locales/asylum_ward_c.glb"))
     print(f"\n[build_asylum_ward_c] exporting to {out}")
