@@ -1,6 +1,6 @@
 {
  "scope": "community_planned",
- "notes": "B3 · SEPTEMBER STRUCTURES. Endless mode milestones, one every 8 endless weeks, so long runs have chapters instead of pure ratchet. Fired as a modal + log entry; {agent} substitutes the run's most-dispatched agent. Cycles after the last.",
+ "notes": "B3 · SEPTEMBER STRUCTURES. Endless mode milestones, one every 8 endless weeks, so long runs have chapters instead of pure ratchet. Fired as a modal + log entry; {agent} substitutes the run's most-dispatched agent. Cycles after the last. Expanded 6->12 (2026-08-19): the pool cycles (due-1)%size, so six entries repeated verbatim from endless week 56; twelve pushes first verbatim repeat past week 100.",
  "milestones": [
   {
    "id": "m1_the_letter",
@@ -31,6 +31,36 @@
    "id": "m6_the_relay",
    "title": "THE RELAY",
    "body": "A letter arrives addressed not to the board but to 'WHOEVER KEEPS THE BOARD NOW' — from a town two counties over, describing their own summer: their own estate, their own timber yard, their own tower they are not sure they are allowed to mention.\n\n'We heard how you organized. We copied the parts we understood. What did we miss?'\n\nRuth drafts the reply the way she does everything: completely. The package goes out Tuesday — templates, phone-tree diagrams, the courier math, and one sentence of cover letter: 'You missed nothing. It is exactly as much work as it looks like. Start anyway.'\n\nThe board is a seed now. Endless was the point."
+  },
+  {
+   "id": "m7_the_apprentice",
+   "title": "SOMEBODY ASKS TO LEARN THE BOARD",
+   "body": "A kid from the Estates — one of the ones who grew up on the other side of the problems you routed — asks, through {agent}, whether the board takes an apprentice.\n\nYou say what Pop said, because it is the only thing there is to say: 'It takes a person who keeps showing up. Come Sunday.'\n\nThey come Sunday. They are terrible at it. They come the Sunday after that, which is the whole qualification."
+  },
+  {
+   "id": "m8_the_modem",
+   "title": "THE MODEM IS REPLACED (THE OLD ONE STAYS)",
+   "body": "The modem finally dies on a Tuesday, mid-handshake, after decades of duty. {agent} drives the replacement down from the county seat the same afternoon, which tells you what the network has become to everyone who says they only check it sometimes.\n\nThe old modem does not leave the shelf. It sits beside its successor like a retired dog next to the working one. Nobody suggests otherwise."
+  },
+  {
+   "id": "m9_the_audit",
+   "title": "A LEDGER AUDIT, VOLUNTARY",
+   "body": "You go back through the whole ledger one evening, every line since Memorial Day of the first summer. {agent} sits across the desk and reads the lines you slide over.\n\nThe finding of the audit is this: the handwriting changes in the hard weeks. It presses deeper. You can date every crisis in the county by the depth of the pencil.\n\nYou file the audit under: known."
+  },
+  {
+   "id": "m10_the_offer",
+   "title": "THE COUNTY OFFERS TO MAKE IT OFFICIAL",
+   "body": "A letter on county letterhead proposes to recognize 'the coordination network' as a volunteer emergency-preparedness entity, with a small stipend and a reporting requirement.\n\nYou read it twice. {agent} reads it once and laughs at the same sentence both of you knew was the problem: REPORTING REQUIREMENT.\n\nThe reply is polite and handwritten and declines. Some things work because nobody has to certify that they do."
+  },
+  {
+   "id": "m11_the_successor_question",
+   "title": "THE QUESTION, ASKED OUT LOUD AGAIN",
+   "body": "It has been long enough that the W11 question — the one that took fifteen years to ask the first time — is due again, and this time it is {agent} who asks it, over the desk, not unkindly:\n\n'Who takes the board after you?'\n\nYou look at the roster. The roster looks back. It is a better answer than it was the first time somebody asked, and you say so, and that is as far as the evening gets. Far enough."
+  },
+  {
+   "id": "m12_the_quiet_year",
+   "title": "THE QUIETEST STRETCH THE LEDGER HAS EVER HELD",
+   "body": "You notice it only because the ledger measures it: the longest run of ordinary weeks since the board began. No spikes. No burns. The gumbo accounted for.\n\n{agent} says the dangerous thing out loud: 'Maybe it's done.'\n\nThe board is not done — the board is a river, and this is a wide slow reach of it. But you let the sentence sit on the desk a full minute before you file it, because it earned the minute."
   }
  ]
 }

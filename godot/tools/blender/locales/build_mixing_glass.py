@@ -448,6 +448,59 @@ def build_bar_tools_and_glassware():
                      COL_BOTTLE_CLEAR, segments=12)
 
 
+def build_wear_personality_2026_08():
+    """WHOSE FEET, WHOSE SPILLS — Temperance (wear pass 5).
+
+    The Mixing Glass wears the way its arcana keeps: in MEASURE.
+    The well inside the U carries one bartender's shift-miles in a
+    2.5m runway — the tightest deep lane in the game. The copper
+    top doesn't stain; it POLISHES — bright wipe-arcs on the
+    working stretches, duller at the service end. Three of the six
+    stools are the regulars' (heel scuffs at the base ring; elbow
+    wear on the rail edge); three are anybody's. The backbar's
+    shelf edge is worn pale in front of the five reached-for
+    bottles and untouched under the dusty top shelf. And the
+    signature: a bar this kept has NO spill rings — exactly one
+    water-glass ring at the south end of the west arm, hers,
+    because the one glass she doesn't measure is her own.
+    """
+    from _props.detail import make_traffic_wear, make_floor_stain
+    lane = (0.30, 0.24, 0.19, 1.0)
+    copper_bright = (0.86, 0.55, 0.32, 1.0)
+    heel = (0.24, 0.20, 0.17, 1.0)
+    elbow = (0.60, 0.42, 0.26, 1.0)
+    shelf_pale = (0.58, 0.44, 0.28, 1.0)
+    # The well: her oval, tight.
+    make_traffic_wear("Wear_Well_Lane",
+                      [(-0.7, 6.4), (0.0, 6.9), (0.7, 6.4), (0.0, 6.2), (-0.7, 6.4)],
+                      width=0.45, tint=lane)
+    # Drip-mat shadow by the N cap (where the mat always sits).
+    make_box("Wear_MatShadow", (0.0, 7.02, 0.008), (0.9, 0.35, 0.004),
+             (0.26, 0.22, 0.18, 1.0))
+    # Copper wipe-arcs: bright stretches where the rag runs nightly.
+    make_box("Wear_Copper_Arc_E", (1.50, 6.55, 1.082), (0.42, 1.1, 0.004), copper_bright)
+    make_box("Wear_Copper_Arc_N", (0.0, 7.38, 1.082), (2.6, 0.40, 0.004), copper_bright)
+    make_box("Wear_Copper_Arc_W", (-1.50, 6.75, 1.082), (0.42, 0.9, 0.004), copper_bright)
+    # The regulars' three stools: heel scuffs at the base rings and
+    # elbow wear on the copper edge above each.
+    for si4, (sx4, sy4) in enumerate(((1.05, 6.00), (-1.05, 6.60), (-1.05, 6.00))):
+        make_floor_stain("Wear_Stool_Heels_%d" % si4, (sx4, sy4 - 0.1),
+                         radius=0.16, tint=heel, segments=8)
+    make_box("Wear_Elbow_E", (1.28, 6.00, 1.084), (0.06, 0.34, 0.004), elbow)
+    make_box("Wear_Elbow_W_A", (-1.28, 6.60, 1.084), (0.06, 0.34, 0.004), elbow)
+    make_box("Wear_Elbow_W_B", (-1.28, 6.00, 1.084), (0.06, 0.30, 0.004), elbow)
+    # Backbar reach-wear: pale front-edge patches under the five
+    # working bottles (shelf 1); the top shelf keeps its dust.
+    for bi4, bx4 in enumerate((-1.1, -0.55, 0.0, 0.55, 1.1)):
+        make_box("Wear_Shelf_Reach_%d" % bi4, (bx4, 8.05, 1.416),
+                 (0.28, 0.03, 0.005), shelf_pale)
+    make_box("Wear_TopShelf_Dust", (0.0, 8.20, 2.222), (2.9, 0.28, 0.004),
+             (0.42, 0.34, 0.24, 1.0))
+    # THE ONE RING · hers, S end of the west arm.
+    make_cyl("Wear_HerRing", (-1.52, 5.98, 1.083), 0.042, 0.003,
+             (0.55, 0.47, 0.40, 1.0), segments=10)
+
+
 def main():
     clear_scene()
     build_shell()
@@ -460,6 +513,7 @@ def main():
     build_bar_tools_and_glassware()
     build_temperance_dressing()
     build_temperance_wave2_props()
+    build_wear_personality_2026_08()
     out = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)),
                                          "../../../assets/3d/locales/mixing_glass.glb"))
     print(f"\n[build_mixing_glass] exporting to {out}")

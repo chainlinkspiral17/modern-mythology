@@ -101,6 +101,14 @@ henderson) got there by accumulating exactly these layers.
   ring. New wear is narrower and closer to the floor's own tone;
   old wear is wide, dark, or scraped pale. A visitor should be
   able to date the household from the floor alone.
+- **Sometimes the absence is the wear** (Mixing Glass, pass 5):
+  a bar kept in Temperance's measure has NO spill rings — copper
+  that polishes bright in the nightly wipe-arcs, pale reach-wear
+  under only the five working bottles, dust intact on the top
+  shelf — and exactly ONE water-glass ring at the south end of
+  the west arm, hers, because the one glass she doesn't measure
+  is her own. Wear passes should ask what the keeper REFUSES to
+  let happen, then break the refusal exactly once, meaningfully.
 - **Waxed floors dull, they don't darken** (asylum ward, wear
   pass 4): institutional linoleum's traffic lane reads PALER and
   flatter than the sheen around it — the third material inversion
