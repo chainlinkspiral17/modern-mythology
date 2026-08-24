@@ -175,6 +175,52 @@ def build_drones_2026_08():
                  (0.34, 0.40, 0.14), (0.34, 0.42, 0.26, 1.0))
 
 
+def build_road_history_2026_08():
+    """D2 · the road's history (queued in the cabin ledger row).
+
+    A dead-end forest road to one cabin wears in a specific way:
+    almost nobody drives it, so the asphalt keeps its centerline
+    only in FRAGMENTS (the county painted it once, in the
+    eighties, and never came back); the two tire lines are
+    darker where the same one truck has run for decades; the
+    gravel turn gets a compacted fan and one old oil shadow where
+    Tem parks; and the forest works constantly at the margins —
+    needle drift over the shoulder edges, moss in the asphalt
+    seam, the culvert's rust fan below its mouth.
+    """
+    line_paint = (0.72, 0.68, 0.52, 1.0)   # decades-old yellow
+    tire = (0.155, 0.155, 0.165, 1.0)      # lane lines, darker
+    needle = (0.30, 0.22, 0.14, 1.0)
+    moss = (0.26, 0.34, 0.20, 1.0)
+    oil = (0.10, 0.10, 0.11, 1.0)
+    rust = (0.42, 0.26, 0.16, 1.0)
+    # Centerline fragments — five short pieces of what was a line.
+    for fi, (fy, fl) in enumerate(((-22.0, 1.8), (-14.5, 1.1), (-6.0, 2.2),
+                                   (0.5, 0.8), (4.2, 1.4))):
+        make_box("Road_LineFrag_%d" % fi, (0.02, fy, 0.033), (0.10, fl, 0.004),
+                 line_paint)
+    # The two tire lines: one truck, decades. They swing with the
+    # road toward the gravel bend.
+    for sgn in (-1, 1):
+        make_box("Road_TireLine_%+d_A" % sgn, (sgn * 0.80, -12.0, 0.032),
+                 (0.34, 34.0, 0.004), tire)
+        make_box("Road_TireLine_%+d_B" % sgn, (sgn * 0.80 + 0.25, 6.5, 0.033),
+                 (0.34, 4.5, 0.004), tire)
+    # The parking fan at the gravel turn + the one oil shadow.
+    make_cyl("Gravel_ParkFan", (0.3, 11.5, 0.345), 1.5, 0.012,
+             (0.44, 0.40, 0.36, 1.0), segments=10)
+    make_cyl("Gravel_OilShadow", (0.45, 11.8, 0.352), 0.28, 0.006, oil, segments=8)
+    # Needle drift over the shoulder edges — the forest reclaiming.
+    for ni, (nx, ny, nl) in enumerate(((2.9, -2.0, 7.0), (-2.9, 2.5, 6.0),
+                                       (2.85, -16.0, 8.0), (-2.85, -12.0, 5.0))):
+        make_box("Road_NeedleDrift_%d" % ni, (nx, ny, 0.035), (0.55, nl, 0.012),
+                 needle)
+    # Moss in the asphalt's center seam on the darkest stretch.
+    make_box("Road_MossSeam", (0.0, -18.0, 0.034), (0.06, 6.0, 0.006), moss)
+    # The culvert's rust fan below its west mouth.
+    make_box("Culvert_RustFan", (-2.5, 10.0, 0.055), (0.5, 0.65, 0.01), rust)
+
+
 def main():
     clear_scene()
     build_road()
@@ -182,6 +228,7 @@ def main():
     build_forest()
     build_atmosphere()
     build_drones_2026_08()
+    build_road_history_2026_08()
     out = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)),
         "../../../assets/3d/locales/cabin_road.glb"))
     print(f"\n[build_cabin_road] exporting to {out}")
