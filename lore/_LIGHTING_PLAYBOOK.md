@@ -151,6 +151,27 @@ Position note: lamp omnis are placed AT the lamp-head mesh position
 
 ## Recent lessons
 
+### 2026-08-19 · practicals ship WITH the fixture, not after
+
+- The gauntlet-FP builds shipped a week of new fixtures (work
+  light, door lamps, streetlight, candles, kitchen pass, flood)
+  with zero practicals — every one got its Light3D in a follow-up
+  pass. Cheaper rule going forward: **when a builder adds a
+  fixture with a lit face (a _Head, _Lamp, _Glow, _Flame name),
+  the same commit adds the practical** to the locale tscn. The
+  aim-audit pattern applies: name the light Prac_<FixtureName> so
+  the pair greps together.
+- The warehouse taught the interior-dark rule: a "towering
+  ceilings lost in shadow" look still needs two low-energy cool
+  seams (clerestory spill) — unlit dark reads as VOID; lit dark
+  reads as SHAPED dark.
+- The flood-aimed-away pattern (louisiana strip mall): lighting
+  the WRONG end of a set is a storytelling practical — the
+  tracked unit stays dark because the flood points elsewhere,
+  and the player reads intent in the aim.
+
+
+
 ### 2026-08-11 · park jog-path practicals (riverfront.tscn)
 
 - **Three ParkLamp omnis added at the real Park_Lamp_0..2 heads**
