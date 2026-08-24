@@ -517,6 +517,53 @@ def build_wheel_wave2_props():
              (0.82, 0.86, 0.90, 0.50), segments=12, axis='Z')
 
 
+def build_wear_personality_2026_08():
+    """WHOSE FEET, WHOSE SPILLS — the Wheel (wear pass 7).
+
+    A casino's wear is DESIGNED: the house routes you, so the
+    carpet lanes run door → roulette → slots → cage in a loop
+    that was planned before any foot took it — the one locale
+    where the traffic pattern is the ARCHITECT'S wear, not the
+    users'. On top of the plan, the users add their tells: the
+    roulette rail rubbed bright where the bettors lean at the
+    wheel end (nobody leans at the payout end), the third slot's
+    floor worn double (every room has a lucky machine and it is
+    never lucky), and the cage counter's brass sill worn pale in
+    the middle where forty years of chips slide UNDER the bars.
+    """
+    from _props.detail import make_traffic_wear, make_floor_stain
+    lane = (0.34, 0.16, 0.16, 1.0)     # crushed casino-red carpet
+    brass_bright = (0.92, 0.80, 0.48, 1.0)
+    worn_pale = (0.72, 0.62, 0.44, 1.0)
+    # THE HOUSE'S LOOP · door (S) → roulette → slots → cage → door
+    make_traffic_wear("Wear_House_Loop_A",
+                      [(0.0, 0.8), (0.0, 3.2)],
+                      width=0.9, tint=lane)
+    make_traffic_wear("Wear_House_Loop_B",
+                      [(-0.8, 4.6), (-3.0, 4.2), (-4.4, 3.4)],
+                      width=0.7, tint=lane)
+    make_traffic_wear("Wear_House_Loop_C",
+                      [(-4.4, 5.0), (-1.5, 7.2), (3.4, 8.2)],
+                      width=0.7, tint=lane)
+    make_traffic_wear("Wear_House_Loop_D",
+                      [(3.5, 7.8), (2.0, 4.5), (0.5, 1.2)],
+                      width=0.6, tint=lane)
+    # The bettors' lean: rail bright at the WHEEL end only.
+    make_box("Wear_Rail_Lean", (-0.85, 4.50, 0.865), (0.6, 1.28, 0.006),
+             brass_bright)
+    # The lucky third slot: floor worn double, and its lever-side
+    # edge rubbed pale.
+    make_floor_stain("Wear_Slot2_Floor", (-4.35, 3.90), radius=0.30,
+                     tint=(0.28, 0.13, 0.13, 1.0), segments=9)
+    make_floor_stain("Wear_Slot2_Floor_Deep", (-4.35, 3.90), radius=0.16,
+                     tint=(0.24, 0.11, 0.11, 1.0), segments=8)
+    make_box("Wear_Slot2_Edge", (-4.62, 3.90, 1.30), (0.006, 0.30, 0.25),
+             worn_pale)
+    # The cage sill: brass worn pale mid-span where the chips slide.
+    make_box("Wear_Cage_Sill", (3.50, 8.62, 1.083), (0.7, 0.44, 0.005),
+             worn_pale)
+
+
 def main():
     clear_scene()
     build_shell()
@@ -529,6 +576,7 @@ def main():
     build_decor()
     build_wheel_dressing()
     build_wheel_wave2_props()
+    build_wear_personality_2026_08()
     out = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)),
                                          "../../../assets/3d/locales/le_roulant_casino.glb"))
     print(f"\n[build_le_roulant_casino] exporting to {out}")

@@ -101,6 +101,18 @@ henderson) got there by accumulating exactly these layers.
   ring. New wear is narrower and closer to the floor's own tone;
   old wear is wide, dark, or scraped pale. A visitor should be
   able to date the household from the floor alone.
+- **Appetite vs. measure, and the architect's wear** (passes 6-7):
+  Daigle's is the anti-Mixing-Glass — RINGS ON RINGS on the bar
+  top, cigarette scallops, the dance patch worn to pale wood with
+  a dark watchers' rim, and the belly lane running the bar's WHOLE
+  length because at the Devil's everybody bellies up. The casino
+  inverted the question a different way: its carpet lanes are the
+  ARCHITECT'S wear — the house routes you, door → wheel → slots →
+  cage, planned before any foot took it — with the users' tells on
+  top (the rail bright only at the wheel end; the lucky third
+  slot's floor worn double, and it is never lucky; the cage sill
+  pale mid-span where forty years of chips slide under the bars).
+  Ask WHO designed the traffic before asking whose feet took it.
 - **Sometimes the absence is the wear** (Mixing Glass, pass 5):
   a bar kept in Temperance's measure has NO spill rings — copper
   that polishes bright in the nightly wipe-arcs, pale reach-wear

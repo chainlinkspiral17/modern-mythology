@@ -457,6 +457,62 @@ def build_devil_wave2_props():
              (0.72, 0.72, 0.74, 1.0), segments=6, axis='X')
 
 
+def build_wear_personality_2026_08():
+    """WHOSE FEET, WHOSE SPILLS — the Devil (wear pass 6).
+
+    Daigle's is the anti-Mixing-Glass: appetite doesn't measure.
+    Where Temperance's bar has ONE ring, this bar top is RINGS ON
+    RINGS — overlapping, decades deep, plus cigarette scallops
+    burned into the south edge from ashtrays that overflowed
+    before the smoker noticed. The dance patch in front of the
+    jukebox is worn through the finish to pale wood in a rough
+    ring (couples turn), scuffed dark at its rim where the
+    watchers stand. The bar's whole length wears evenly — at
+    Daigle's EVERYBODY bellies up — and the pool table's floor
+    shows the shooter's lane around all four sides plus a chalk
+    haze at the west rail where the talkers chalk and lean.
+    """
+    from _props.detail import make_traffic_wear, make_floor_stain
+    rings = (0.30, 0.22, 0.14, 1.0)
+    burn = (0.16, 0.12, 0.09, 1.0)
+    pale = (0.55, 0.42, 0.28, 1.0)
+    rim = (0.24, 0.18, 0.13, 1.0)
+    chalk = (0.55, 0.62, 0.72, 1.0)
+    lane = (0.28, 0.21, 0.15, 1.0)
+    # RINGS ON RINGS · eleven, overlapping, along the whole top.
+    ring_spots = ((-2.3, 6.95), (-1.9, 7.1), (-1.2, 6.9), (-0.6, 7.05),
+                  (-0.1, 6.92), (0.4, 7.08), (0.9, 6.95), (1.5, 7.02),
+                  (2.0, 6.9), (2.35, 7.06), (1.7, 6.88))
+    for ri5, (rx5, ry5) in enumerate(ring_spots):
+        make_cyl("Wear_BarRing_%d" % ri5, (rx5, ry5, 1.133), 0.045, 0.003,
+                 rings, segments=8)
+    # Cigarette scallops on the south edge, clustered near the taps.
+    for ci5, cx5 in enumerate((-1.6, -1.45, 0.2, 1.1, 1.22)):
+        make_box("Wear_CigBurn_%d" % ci5, (cx5, 6.72, 1.132), (0.045, 0.02, 0.003),
+                 burn)
+    # THE DANCE PATCH · in front of the jukebox: pale ring worn
+    # through the finish, dark scuff rim where the watchers stand.
+    make_floor_stain("Wear_Dance_Pale", (-2.2, 3.0), radius=0.85,
+                     tint=pale, segments=14)
+    make_floor_stain("Wear_Dance_Center", (-2.2, 3.0), radius=0.35,
+                     tint=(0.46, 0.35, 0.24, 1.0), segments=10)
+    make_cyl("Wear_Dance_Rim", (-2.2, 3.0, 0.004), 1.05, 0.003, rim, segments=14)
+    # The bar's full-length belly lane — everybody's boots.
+    make_traffic_wear("Wear_Bar_Belly",
+                      [(-2.6, 6.3), (0.0, 6.35), (2.6, 6.3)],
+                      width=0.7, tint=lane)
+    # Door to bar: the widest lane in the room.
+    make_traffic_wear("Wear_Door_Bar",
+                      [(0.0, 0.6), (-0.4, 3.4), (0.0, 6.1)],
+                      width=0.85, tint=lane)
+    # The shooter's lane around the pool table + chalk haze west.
+    make_traffic_wear("Wear_Pool_Lane",
+                      [(0.5, 2.2), (0.5, 4.2), (2.5, 4.2), (2.5, 2.2), (0.7, 2.1)],
+                      width=0.5, tint=lane)
+    make_floor_stain("Wear_Chalk_Haze", (0.55, 3.2), radius=0.28,
+                     tint=chalk, segments=8)
+
+
 def main():
     clear_scene()
     build_shell()
@@ -469,6 +525,7 @@ def main():
     build_decor()
     build_devil_dressing()
     build_devil_wave2_props()
+    build_wear_personality_2026_08()
     out = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)),
                                          "../../../assets/3d/locales/daigles_roadhouse.glb"))
     print(f"\n[build_daigles_roadhouse] exporting to {out}")
