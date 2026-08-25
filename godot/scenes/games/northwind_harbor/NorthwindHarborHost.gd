@@ -141,6 +141,16 @@ func _build_title_screen() -> void:
 	bg.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
 	_title_root.add_child(bg)
 
+	# SVGA-era painted title art, PNG-first (fallbacks kept below).
+	if ResourceLoader.exists("res://assets/art/northwind_harbor/morning.png"):
+		var era_tr := TextureRect.new()
+		era_tr.texture = load("res://assets/art/northwind_harbor/morning.png")
+		era_tr.texture_filter = CanvasItem.TEXTURE_FILTER_NEAREST
+		era_tr.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
+		era_tr.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_COVERED
+		era_tr.modulate = Color(1, 1, 1, 0.9)
+		_title_root.add_child(era_tr)
+
 	var hero := HeroImage.new()
 	if hero.load_from(HERO_DIR + "title_breakwater.json"):
 		var tex_rect := TextureRect.new()

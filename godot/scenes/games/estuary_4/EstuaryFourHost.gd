@@ -95,6 +95,16 @@ func _build_title_screen() -> void:
 	bg.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
 	_title_root.add_child(bg)
 
+	# SVGA-era painted title art, PNG-first (fallbacks kept below).
+	if ResourceLoader.exists("res://assets/art/estuary_4/watershed.png"):
+		var era_tr := TextureRect.new()
+		era_tr.texture = load("res://assets/art/estuary_4/watershed.png")
+		era_tr.texture_filter = CanvasItem.TEXTURE_FILTER_NEAREST
+		era_tr.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
+		era_tr.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_COVERED
+		era_tr.modulate = Color(1, 1, 1, 0.9)
+		_title_root.add_child(era_tr)
+
 	preload("res://scenes/games/TitleMotion.gd").attach(_title_root, "oneironautics")
 
 	var title := Label.new()

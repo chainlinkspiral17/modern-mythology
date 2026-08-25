@@ -47,6 +47,17 @@ func _render() -> void:
 	bg.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
 	add_child(bg)
 
+	# SVGA-era painted gate art, PNG-first (the dusk arch with its
+	# bulbs); the flat bg + stripes stay underneath as the fallback.
+	if ResourceLoader.exists("res://assets/art/fey_faire/gate.png"):
+		var era_tr := TextureRect.new()
+		era_tr.texture = load("res://assets/art/fey_faire/gate.png")
+		era_tr.texture_filter = CanvasItem.TEXTURE_FILTER_NEAREST
+		era_tr.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
+		era_tr.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_COVERED
+		era_tr.modulate = Color(1, 1, 1, 0.85)
+		add_child(era_tr)
+
 	# Mauve tent-stripe hint at top (evocative · not first-person)
 	for x in range(60, 1280, 90):
 		var stripe := ColorRect.new()
