@@ -434,9 +434,12 @@ def salmonberry_winter(H, W):
     arr[:] = arr * (1 - seam) + sea * seam
     tex(arr, seam[:, :, 0], 34, seed=17, scale=5)
     # three surf bands driving in
+    rngb = np.random.default_rng(27)
     for i in range(3):
         by = hz + 14 + i * int(H * 0.09)
-        fill_poly(arr, [(0, by), (W, by - 6), (W, by + 8 + i * 3), (0, by + 12 + i * 4)], C["foam"], blur=2.5, opacity=0.55 - i * 0.1)
+        pts_top = [(W * t / 8.0, by + rngb.integers(-8, 9) - 4) for t in range(9)]
+        pts_bot = [(W * t / 8.0, by + 10 + i * 4 + rngb.integers(-6, 7)) for t in range(8, -1, -1)]
+        fill_poly(arr, pts_top + pts_bot, C["foam"], blur=3.5, opacity=0.5 - i * 0.09)
     # the stacks in spray
     for (cx, sh, sw) in [(W * 0.42, H * 0.28, W * 0.05), (W * 0.52, H * 0.18, W * 0.033)]:
         base = hz + 10
@@ -447,11 +450,27 @@ def salmonberry_winter(H, W):
     rng = np.random.default_rng(19)
     x = int(W * 0.02)
     while x < W * 0.3:
-        h = rng.integers(int(H * 0.08), int(H * 0.16))
-        base = int(H * 0.44) + rng.integers(-8, 9)
-        lean = int(h * 0.35)
-        fill_poly(arr, [(x + lean, base - h), (x + 16, base), (x - 10, base)], (38, 50, 42), blur=0.8)
-        x += rng.integers(20, 42)
+        h = int(rng.integers(int(H * 0.08), int(H * 0.16)))
+        base = int(H * 0.46) + int(rng.integers(-8, 9))
+        lean = int(h * 0.30)
+        # a leaning spruce: stepped tiers like spruce(), sheared
+        steps = 4
+        pts = [(x + lean, base - h)]
+        for s2 in range(steps):
+            yy = base - h + h * (s2 + 1) / steps
+            wid = 6 + 10 * (s2 + 1) / steps
+            sh = lean * (1 - (s2 + 1) / steps)
+            pts.append((x + sh + wid, yy))
+            pts.append((x + sh + wid * 0.45, yy + 2))
+        pts.append((x, base))
+        for s2 in range(steps - 1, -1, -1):
+            yy = base - h + h * (s2 + 1) / steps
+            wid = 6 + 10 * (s2 + 1) / steps
+            sh = lean * (1 - (s2 + 1) / steps)
+            pts.append((x + sh - wid * 0.45, yy + 2))
+            pts.append((x + sh - wid, yy))
+        fill_poly(arr, pts, (38, 50, 42), blur=0.8)
+        x += int(rng.integers(22, 44))
     # rain streaks
     streak = noise(H, W, scale=2, seed=23, blur=0)
     arr[:] = arr + ((streak[:, :, None] - 0.5) * 6)
@@ -472,10 +491,13 @@ def estuary4_watershed(H, W):
     fill_poly(arr, [(0, hz + H * 0.06), (W, hz + H * 0.02), (W, hz + H * 0.10), (0, hz + H * 0.16)], (150, 160, 108), blur=3, opacity=0.7)
     fill_poly(arr, [(0, H * 0.86), (W, H * 0.8), (W, H), (0, H)], (108, 124, 88), blur=3, opacity=0.8)
     # the channel: a winding pale-blue band, mud edges
-    ch = [(W * 0.5, hz + 4), (W * 0.42, H * 0.52), (W * 0.55, H * 0.62), (W * 0.44, H * 0.76), (W * 0.58, H * 0.9), (W * 0.5, H)]
+    ch = [(W * 0.5, hz + 4), (W * 0.46, H * 0.47), (W * 0.42, H * 0.52),
+          (W * 0.48, H * 0.575), (W * 0.55, H * 0.62), (W * 0.50, H * 0.69),
+          (W * 0.44, H * 0.76), (W * 0.50, H * 0.83), (W * 0.58, H * 0.9),
+          (W * 0.54, H * 0.95), (W * 0.5, H)]
     for i in range(len(ch) - 1):
         (x0, y0), (x1, y1) = ch[i], ch[i + 1]
-        wd0 = 10 + i * 7; wd1 = 10 + (i + 1) * 7
+        wd0 = 8 + i * 3; wd1 = 8 + (i + 1) * 3
         fill_poly(arr, [(x0 - wd0 - 6, y0), (x1 - wd1 - 6, y1), (x1 + wd1 + 6, y1), (x0 + wd0 + 6, y0)], (146, 128, 96), blur=2, opacity=0.8)
         fill_poly(arr, [(x0 - wd0, y0), (x1 - wd1, y1), (x1 + wd1, y1), (x0 + wd0, y0)], (140, 168, 176), blur=1.5)
     # the tide gate at the channel head: timber frame + wing walls
