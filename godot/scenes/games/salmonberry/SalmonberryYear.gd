@@ -248,6 +248,27 @@ func _clear_ui() -> void:
 
 
 func _paint_backdrop() -> void:
+	# The season picks its painted backdrop: winter months get the
+	# storm coast, the rest the fog coast. ColorRects stay as the
+	# fallback under a missing PNG (never remove the fallback).
+	# month is a 0-based index: Sep 1963 = 0 … Jun 1964 = 9, so
+	# winter (Nov–Feb) is indexes 2..5.
+	var month: int = int(_s.get("month", 0))
+	var art: String = "res://assets/art/salmonberry/winter.png" if (month >= 2 and month <= 5) \
+			else "res://assets/art/salmonberry/coast.png"
+	if ResourceLoader.exists(art):
+		var tr := TextureRect.new()
+		tr.texture = load(art)
+		tr.texture_filter = CanvasItem.TEXTURE_FILTER_NEAREST
+		tr.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
+		tr.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_COVERED
+		tr.modulate = Color(1, 1, 1, 0.92)
+		add_child(tr)
+		var scrim := ColorRect.new()
+		scrim.color = Color(0.06, 0.08, 0.10, 0.30)
+		scrim.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
+		add_child(scrim)
+		return
 	var sky := ColorRect.new()
 	sky.color = C_FOG
 	sky.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)

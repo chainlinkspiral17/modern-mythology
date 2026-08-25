@@ -31,6 +31,22 @@ What this changes:
   are now the GOAL, not banned. (The bans still apply to the 3D VN
   locales and the `demoscene_post` shader stack — those are a separate
   system.) Font floor 12 still holds for UI text drawn over scenes.
+- **First shipped wave (2026-08-19):** the painter's registry grew
+  3 → 10 scenes and the first PNGs LANDED IN ASSETS (era-filtered
+  320×200/256c): Salmonberry's full set (title · song · coast ·
+  town · house · store · winter) + first-wave scenes for three more
+  studios (estuary_4/watershed, northwind_harbor/morning — Bosun at
+  the end of the dock — and fey_faire/gate). The painter gained
+  `grad_poly` (vertical-gradient fill: every large surface carries
+  light) and `drop_shadow` (what glues shapes to ground) — the two
+  primitives that moved the output from flat-vector toward painted;
+  reworks proved composition rules: nearest = tallest (the town's
+  first render read inverted), break vertical bands with cross
+  shadows, ground every object. SalmonberryHost + SalmonberryYear
+  now load PNG-FIRST with the HeroImage/ColorRect fallbacks kept.
+  High-res sources live in godot/tools/art/sources/ for
+  re-filtering. Still PLACEHOLDER register — AI-painted sources via
+  art_studio.html remain the fidelity end-state.
 - **Rollout:** sign off the style on Salmonberry, build `art_studio.html`
   (generate/replace every asset, by studio), then retrofit the whole
   catalog studio by studio.

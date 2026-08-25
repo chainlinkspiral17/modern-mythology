@@ -155,8 +155,20 @@ func _build_title_screen() -> void:
 	sand.offset_top = -150
 	_title_root.add_child(sand)
 
+	# SVGA-era painted art FIRST (the 2026-07 direction change:
+	# painted source pressed through the 256-color era filter);
+	# the flat-vector HeroImage stays as the fallback, per the
+	# sprite playbook's never-remove-the-fallback rule.
+	var era_tex: Texture2D = load("res://assets/art/salmonberry/title.png") if ResourceLoader.exists("res://assets/art/salmonberry/title.png") else null
+	if era_tex != null:
+		var etr := TextureRect.new()
+		etr.texture = era_tex
+		etr.texture_filter = CanvasItem.TEXTURE_FILTER_NEAREST
+		etr.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
+		etr.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_COVERED
+		_title_root.add_child(etr)
 	var hero := HeroImage.new()
-	if hero.load_from(HERO_DIR + "title.json"):
+	if era_tex == null and hero.load_from(HERO_DIR + "title.json"):
 		var tr := TextureRect.new()
 		tr.texture = hero.texture(Vector2i(1120, 630))
 		tr.set_anchors_and_offsets_preset(Control.PRESET_CENTER)
