@@ -31,6 +31,23 @@ What this changes:
   are now the GOAL, not banned. (The bans still apply to the 3D VN
   locales and the `demoscene_post` shader stack — those are a separate
   system.) Font floor 12 still holds for UI text drawn over scenes.
+- **Procedural draft 2 (same day, after "art still needs work"):**
+  the painter gained a global PAINTERLY PASS (multi-octave canvas
+  grain · EDGE-HOLD ink that darkens along the image's own
+  luminance gradients, giving every shape a drawn edge · low-freq
+  independent RGB wobble = mixed-on-the-brush color) plus
+  per-scene atmosphere (clouds(), water_pull() horizontal brush
+  strokes, vertical rain pull) — and the composition fixes the
+  renders demanded: sprucerow() takes a RIDGE so trees plant on
+  the slope under them (a fixed baseline left the title's trees
+  hanging in air past the cliff edge — user-caught live),
+  headland edges SLOPE into the sea (no vertical razor cuts),
+  hulls got sheer lines/cabins/booms/furled sails/forestays, sea
+  stacks went organic six-point. Sources at 960×540 (3× the
+  filter target; 1280×720 timed batches out). NOTE: the AI-source
+  path via the ElevenLabs image tools needs an interactive MCP
+  approval the autonomous session cannot grant — run it from the
+  keyboard (or art_studio.html) when signing off.
 - **First shipped wave (2026-08-19):** the painter's registry grew
   3 → 10 scenes and the first PNGs LANDED IN ASSETS (era-filtered
   320×200/256c): Salmonberry's full set (title · song · coast ·

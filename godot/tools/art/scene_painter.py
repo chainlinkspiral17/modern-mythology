@@ -132,13 +132,108 @@ def spruce(arr, x, base, h, color, blur=0.6):
     fill_poly(arr, pts, color, blur=blur)
 
 
-def sprucerow(arr, x0, x1, base, color, seed=1, blur=0.6):
+def sprucerow(arr, x0, x1, base, color, seed=1, blur=0.6, ridge=None):
+    """A row of spruces. `base` plants them on a flat line; `ridge`
+    — a list of (x, y) points — plants each tree ON the slope
+    beneath it (a fixed base left trees hanging in the air past
+    the cliff edge on salmonberry's title, user-caught 2026-08)."""
     rng = np.random.default_rng(seed)
+
+    def base_at(xq):
+        if not ridge:
+            return base
+        if xq <= ridge[0][0]:
+            return ridge[0][1]
+        for i in range(len(ridge) - 1):
+            (ax, ay), (bx2, by2) = ridge[i], ridge[i + 1]
+            if ax <= xq <= bx2:
+                f = (xq - ax) / max(1e-5, bx2 - ax)
+                return ay + (by2 - ay) * f
+        return ridge[-1][1]
+
     x = x0
     while x < x1:
         h = rng.integers(int((x1 - x0) * 0.06), int((x1 - x0) * 0.16) + 6)
-        spruce(arr, x, base + rng.integers(-4, 5), h, color, blur)
+        spruce(arr, x, base_at(x) + rng.integers(-2, 5), h, color, blur)
         x += rng.integers(int(h * 0.35), int(h * 0.7) + 3)
+
+
+def octave_noise(H, W, seed=1, octaves=3, base_scale=6):
+    """Multi-octave value noise — paper/canvas grain with structure
+    at several sizes, not the single-frequency shimmer of noise()."""
+    out = np.zeros((H, W), np.float32)
+    amp, total = 1.0, 0.0
+    for o in range(octaves):
+        out += noise(H, W, scale=max(2, base_scale * (2 ** o)), seed=seed + o * 17,
+                     blur=1.0 + o) * amp
+        total += amp
+        amp *= 0.55
+    return out / total
+
+
+def streaks(H, W, seed=1, axis='H', scale=5):
+    """Anisotropic noise — directional brush pull. axis='H' stretches
+    horizontally (water, sky), 'V' vertically (walls, rain)."""
+    if axis == 'H':
+        n = noise(H, max(2, W // 10), scale=scale, seed=seed, blur=0.8)
+        im = Image.fromarray((n * 255).astype(np.uint8)).resize((W, H), Image.BICUBIC)
+    else:
+        n = noise(max(2, H // 10), W, scale=scale, seed=seed, blur=0.8)
+        im = Image.fromarray((n * 255).astype(np.uint8)).resize((W, H), Image.BICUBIC)
+    return np.asarray(im, np.float32) / 255.0
+
+
+def water_pull(arr, y0f, y1f, seed=6, amount=14.0):
+    """Horizontal brush pull across a water band — the strokes the
+    sea is painted with."""
+    H, W, _ = arr.shape
+    s = streaks(H, W, seed=seed, axis='H', scale=4)
+    prof = np.zeros(H, np.float32)
+    prof[int(H * y0f):int(H * y1f)] = 1.0
+    k = np.ones(9, np.float32) / 9.0
+    prof = np.convolve(prof, k, mode="same")
+    arr[:] = arr + ((s - 0.5) * amount * prof[:, None])[:, :, None]
+
+
+def clouds(arr, seed=8, top=0.0, bottom=0.45, tint=(255, 255, 255), amount=0.35):
+    """Soft cloud masses in the sky band: thresholded, blurred
+    octave noise, brighter toward their tops."""
+    H, W, _ = arr.shape
+    n = octave_noise(H, W, seed=seed, octaves=3, base_scale=4)
+    band = np.zeros((H, 1), np.float32)
+    y0, y1 = int(H * top), int(H * bottom)
+    if y1 > y0:
+        ys = np.linspace(0, 1, y1 - y0)
+        band[y0:y1, 0] = np.sin(ys * math.pi) ** 0.8
+    m = np.clip((n - 0.55) * 3.2, 0, 1) * band
+    m = np.asarray(Image.fromarray((m * 255).astype(np.uint8)).filter(
+        ImageFilter.GaussianBlur(6)), np.float32) / 255.0
+    arr[:] = arr * (1 - (m * amount)[:, :, None]) + \
+        np.array(tint, np.float32) * (m * amount)[:, :, None]
+
+
+def painterly(arr, seed=5, grain=9.0, edge_hold=0.35, hue_wobble=4.0):
+    """The global finish pass — what moves a poly-fill toward a
+    painting. Three effects:
+      1. multi-octave canvas grain over everything;
+      2. EDGE-HOLD: darken where the image's own luminance gradient
+         is strong — every shape gets a drawn, held edge (the
+         adventure-background ink);
+      3. low-frequency independent RGB wobble — mixed-on-the-brush
+         color variance instead of flat fills."""
+    H, W, _ = arr.shape
+    g = octave_noise(H, W, seed=seed, octaves=3, base_scale=5)
+    arr[:] = arr + ((g - 0.5) * grain)[:, :, None]
+    lum = arr.mean(axis=2)
+    gy, gx = np.gradient(lum)
+    mag = np.sqrt(gx * gx + gy * gy)
+    mag = np.clip(mag / 24.0, 0, 1)
+    mag = np.asarray(Image.fromarray((mag * 255).astype(np.uint8)).filter(
+        ImageFilter.GaussianBlur(0.8)), np.float32) / 255.0
+    arr[:] = arr * (1 - (mag * edge_hold)[:, :, None])
+    for c in range(3):
+        w = noise(H, W, scale=22, seed=seed + 31 + c * 7, blur=3.0)
+        arr[:, :, c] += (w - 0.5) * hue_wobble * 2.0
 
 
 def clamp(arr):
@@ -168,7 +263,8 @@ def salmonberry_title(H, W):
     fill_poly(arr, [(W * 0.55, hz), (W * 0.7, hz - H * 0.16), (W * 0.9, hz - H * 0.10), (W, hz - H * 0.13), (W, hz), ], C["fir_far"], blur=5)
     # mid headland
     fill_poly(arr, [(W * 0.62, hz), (W * 0.78, hz - H * 0.24), (W * 0.92, hz - H * 0.15), (W, hz - H * 0.19), (W, hz), ], C["fir_mid"], blur=2.5)
-    sprucerow(arr, int(W * 0.72), int(W * 0.99), hz - 4, C["fir_mid"], seed=7, blur=1.5)
+    sprucerow(arr, int(W * 0.72), int(W * 0.99), hz - 4, C["fir_mid"], seed=7, blur=1.5,
+              ridge=[(W * 0.62, hz), (W * 0.78, hz - H * 0.23), (W * 0.92, hz - H * 0.14), (W, hz - H * 0.18)])
     # sea
     sea = sky(H, W, [(0.0, C["sea_hi"]), (1.0, C["sea_lo"])])
     seam = np.zeros((H, W, 1), np.float32); seam[hz:, :, 0] = 1.0
@@ -191,7 +287,8 @@ def salmonberry_title(H, W):
     tex(arr, _mask(H, W, head_pts), 22, seed=14, scale=7)
     # sun-side rim on the headland's sea edge
     fill_poly(arr, [(W * 0.14, H * 0.36), (W * 0.26, H * 0.52), (W * 0.245, H * 0.545), (W * 0.132, H * 0.375)], (120, 140, 104), blur=1.5, opacity=0.7)
-    sprucerow(arr, int(W * 0.02), int(W * 0.28), int(H * 0.40), C["fir"], seed=3, blur=1.0)
+    sprucerow(arr, int(W * 0.02), int(W * 0.23), int(H * 0.40), C["fir"], seed=3, blur=1.0,
+              ridge=[(0, H * 0.31), (W * 0.14, H * 0.37), (W * 0.26, H * 0.53)])
     # the cannery on pilings + the house, small, at the base of the headland
     dcx = int(W * 0.30)
     fill_poly(arr, [(dcx, hz + 4), (dcx + W * 0.14, hz + 4), (dcx + W * 0.14, hz + 22), (dcx, hz + 22)], C["rust"], blur=0.5)
@@ -218,6 +315,8 @@ def salmonberry_title(H, W):
     veil = np.asarray(Image.fromarray((veil[:, :, 0] * 255).astype(np.uint8)).filter(ImageFilter.GaussianBlur(20)), np.float32)[:, :, None] / 255.0
     arr[:] = arr * (1 - veil * 0.35) + np.array(C["fog_lo"], np.float32) * (veil * 0.35)
     # gulls
+    clouds(arr, seed=8, top=0.02, bottom=0.42, tint=(240, 238, 230), amount=0.30)
+    water_pull(arr, 0.62, 1.0, seed=6)
     _gulls(arr, [(W * 0.6, H * 0.22), (W * 0.66, H * 0.27), (W * 0.52, H * 0.18)])
     vignette(arr, 0.30)
     return arr
@@ -248,17 +347,28 @@ def salmonberry_coast(H, W):
     arr = sky(H, W, [(0.0, C["fog_hi"]), (0.6, (200, 198, 188)), (1.0, C["fog_lo"])])
     hz = int(H * 0.58)
     glow(arr, W * 0.7, hz - 20, W * 0.4, (255, 228, 188), 0.4)
-    fill_poly(arr, [(W * 0.6, hz), (W * 0.78, hz - H * 0.3), (W, hz - H * 0.22), (W, hz)], C["fir_mid"], blur=3)
-    fill_poly(arr, [(W * 0.72, H), (W * 0.72, hz - H * 0.34), (W * 0.9, hz - H * 0.2), (W, hz - H * 0.1), (W, H)], C["fir"], blur=1)
-    sprucerow(arr, int(W * 0.74), int(W * 0.99), hz - H * 0.30, C["fir"], seed=5, blur=1.2)
+    fill_poly(arr, [(W * 0.6, hz), (W * 0.78, hz - H * 0.3), (W, hz - H * 0.22), (W, hz)], C["fir_far"], blur=4)
+    head_pts2 = [(W * 0.86, H), (W * 0.80, hz + H * 0.08), (W * 0.745, hz - H * 0.18),
+                 (W * 0.76, hz - H * 0.34), (W * 0.9, hz - H * 0.2), (W, hz - H * 0.1), (W, H)]
+    grad_poly(arr, head_pts2, (86, 112, 88), (34, 50, 40), blur=1)
+    tex(arr, _mask(H, W, head_pts2), 20, seed=6, scale=8)
+    sprucerow(arr, int(W * 0.74), int(W * 0.99), hz - H * 0.30, C["fir"], seed=5, blur=1.2,
+              ridge=[(W * 0.76, hz - H * 0.33), (W * 0.9, hz - H * 0.19), (W, hz - H * 0.09)])
     sea = sky(H, W, [(0.0, C["sea_hi"]), (1.0, C["sea_lo"])])
     seam = np.zeros((H, W, 1), np.float32); seam[hz:, :, 0] = 1.0
     arr[:] = arr * (1 - seam) + sea * seam
     tex(arr, seam[:, :, 0], 24, seed=4, scale=6)
+    # horizon haze so the seam isn't a razor line
+    fill_poly(arr, [(0, hz - H * 0.02), (W, hz - H * 0.02), (W, hz + H * 0.03), (0, hz + H * 0.03)], C["fog_lo"], blur=8, opacity=0.45)
     for (cx, sh, sw) in [(W * 0.18, H * 0.26, W * 0.045), (W * 0.26, H * 0.16, W * 0.03)]:
         base = hz + 8
-        fill_poly(arr, [(cx - sw, base), (cx - sw * 0.4, base - sh), (cx + sw * 0.4, base - sh), (cx + sw, base)], C["basalt"], blur=1)
+        pts = [(cx - sw, base), (cx - sw * 0.75, base - sh * 0.65), (cx - sw * 0.3, base - sh),
+               (cx + sw * 0.25, base - sh * 0.96), (cx + sw * 0.7, base - sh * 0.7), (cx + sw, base)]
+        fill_poly(arr, pts, C["basalt"], blur=1.1)
+        fill_poly(arr, [(cx + sw * 0.05, base), (cx + sw * 0.18, base - sh * 0.9), (cx + sw * 0.55, base - sh * 0.65), (cx + sw, base)], C["basalt_lit"], blur=1.2, opacity=0.55)
     fill_poly(arr, [(0, hz + 6), (W, hz + 2), (W, hz + 16), (0, hz + 22)], C["foam"], blur=3, opacity=0.5)
+    clouds(arr, seed=12, top=0.02, bottom=0.40, tint=(238, 236, 228), amount=0.28)
+    water_pull(arr, 0.58, 1.0, seed=9)
     _gulls(arr, [(W * 0.4, H * 0.2), (W * 0.46, H * 0.24)])
     vignette(arr, 0.3)
     return arr
@@ -342,6 +452,7 @@ def salmonberry_town(H, W):
     fill_poly(arr, [(W * 0.335, H * 0.765), (W * 0.395, H * 0.765), (W * 0.39, H * 0.79), (W * 0.34, H * 0.79)], (188, 198, 204), blur=0.5, opacity=0.85)
     for wxi in (0.315, 0.40):
         fill_poly(arr, [(W * wxi, H * 0.87), (W * (wxi + 0.012), H * 0.87), (W * (wxi + 0.012), H * 0.885), (W * wxi, H * 0.885)], (30, 28, 28), blur=0.4)
+    clouds(arr, seed=29, top=0.0, bottom=0.30, tint=(228, 228, 222), amount=0.24)
     _gulls(arr, [(W * 0.5, H * 0.3), (W * 0.55, H * 0.34)])
     vignette(arr, 0.32)
     return arr
@@ -381,7 +492,10 @@ def salmonberry_house(H, W):
         fill_poly(arr, [(sx0, ly - H * 0.028), (sx0 + W * 0.035, ly - H * 0.024), (sx0 + W * 0.045, ly + H * 0.035), (sx0 + W * 0.008, ly + H * 0.04)], C["foam"], blur=1.0, opacity=0.92)
     # the path down, pale, switchbacked
     fill_poly(arr, [(hx + W * 0.07, hy + H * 0.16), (hx + W * 0.09, hy + H * 0.16), (W * 0.5, H * 0.9), (W * 0.42, H)], (150, 138, 112), blur=2, opacity=0.7)
-    sprucerow(arr, int(W * 0.8), W, int(H * 0.6), C["fir"], seed=8, blur=1.0)
+    sprucerow(arr, int(W * 0.8), W, int(H * 0.6), C["fir"], seed=8, blur=1.0,
+              ridge=[(W * 0.78, H * 0.62), (W, H * 0.58)])
+    clouds(arr, seed=15, top=0.02, bottom=0.38, tint=(244, 234, 220), amount=0.26)
+    water_pull(arr, 0.66, 1.0, seed=11)
     _gulls(arr, [(W * 0.62, H * 0.25)])
     vignette(arr, 0.3)
     return arr
@@ -471,9 +585,11 @@ def salmonberry_winter(H, W):
             pts.append((x + sh - wid, yy))
         fill_poly(arr, pts, (38, 50, 42), blur=0.8)
         x += int(rng.integers(22, 44))
-    # rain streaks
-    streak = noise(H, W, scale=2, seed=23, blur=0)
-    arr[:] = arr + ((streak[:, :, None] - 0.5) * 6)
+    clouds(arr, seed=19, top=0.0, bottom=0.5, tint=(150, 156, 164), amount=0.5)
+    water_pull(arr, 0.55, 1.0, seed=21, amount=22.0)
+    # rain: vertical pull over everything
+    rs = streaks(H, W, seed=23, axis='V', scale=3)
+    arr[:] = arr + ((rs - 0.5) * 7)[:, :, None]
     vignette(arr, 0.4)
     return arr
 
@@ -512,6 +628,7 @@ def estuary4_watershed(H, W):
     fill_poly(arr, [(bx - 2, by), (bx + 2, by), (bx + 1, by + 22), (bx - 1, by + 22)], (90, 98, 104), blur=0.4)
     fill_poly(arr, [(bx - 7, by - 10), (bx + 5, by - 14), (bx + 8, by - 2), (bx - 2, by + 2)], (120, 128, 134), blur=0.6)
     fill_poly(arr, [(bx + 4, by - 14), (bx + 14, by - 18), (bx + 15, by - 16), (bx + 6, by - 11)], (90, 98, 104), blur=0.4)
+    clouds(arr, seed=35, top=0.0, bottom=0.32, tint=(230, 234, 230), amount=0.25)
     vignette(arr, 0.25)
     return arr
 
@@ -528,15 +645,24 @@ def northwind_morning(H, W):
     tex(arr, seam[:, :, 0], 20, seed=41, scale=7)
     glow(arr, W * 0.62, hz + 26, W * 0.3, (255, 224, 168), 0.35)
     # moored fleet: hulls + mast lines against the light
+    # far breakwater band so the fleet doesn't sit on a razor horizon
+    fill_poly(arr, [(0, hz - 4), (W, hz - 8), (W, hz + 2), (0, hz + 4)], (54, 58, 66), blur=2, opacity=0.8)
     rng = np.random.default_rng(43)
     for i in range(6):
-        bx = W * (0.14 + i * 0.13) + rng.integers(-10, 10)
-        bw = W * rng.uniform(0.05, 0.08)
-        by = hz + 6 + i % 3 * 4
-        fill_poly(arr, [(bx - bw / 2, by), (bx + bw / 2, by), (bx + bw / 2 - 4, by + 12), (bx - bw / 2 + 4, by + 12)], C["ink"], blur=0.7)
-        mh = H * rng.uniform(0.16, 0.3)
-        fill_poly(arr, [(bx - 1, by), (bx + 1, by), (bx + 1, by - mh), (bx - 1, by - mh)], C["ink"], blur=0.3)
-        fill_poly(arr, [(bx, by - mh), (bx + bw * 0.4, by - mh * 0.55), (bx + bw * 0.4 + 1, by - mh * 0.55 + 2), (bx + 1, by - mh + 2)], C["ink"], blur=0.3, opacity=0.8)
+        bx = W * (0.12 + i * 0.145) + rng.integers(-14, 14)
+        bw = W * rng.uniform(0.06, 0.11)
+        by = hz + 8 + (i % 3) * 5
+        # hull: sheer line up at the bow, small cabin block
+        fill_poly(arr, [(bx - bw / 2, by - 3), (bx - bw * 0.2, by - 5), (bx + bw / 2, by - 2), (bx + bw / 2 - 5, by + 13), (bx - bw / 2 + 5, by + 13)], C["ink"], blur=0.7)
+        fill_poly(arr, [(bx - bw * 0.15, by - 10), (bx + bw * 0.2, by - 10), (bx + bw * 0.2, by - 3), (bx - bw * 0.15, by - 3)], C["ink"], blur=0.5)
+        mh = H * rng.uniform(0.17, 0.30)
+        tilt = rng.uniform(-0.03, 0.03) * mh
+        fill_poly(arr, [(bx - 1, by - 8), (bx + 1, by - 8), (bx + 1 + tilt, by - mh), (bx - 1 + tilt, by - mh)], C["ink"], blur=0.3)
+        # boom + furled sail bundle along it
+        fill_poly(arr, [(bx, by - 14), (bx + bw * 0.42, by - 12), (bx + bw * 0.42, by - 10), (bx, by - 11)], C["ink"], blur=0.35)
+        fill_poly(arr, [(bx + 2, by - 17), (bx + bw * 0.36, by - 14), (bx + bw * 0.36, by - 12), (bx + 2, by - 14)], (52, 50, 52), blur=0.5, opacity=0.9)
+        # forestay line, bow to masthead
+        fill_poly(arr, [(bx + tilt, by - mh), (bx - bw / 2, by - 4), (bx - bw / 2 + 1.5, by - 3), (bx + tilt + 1.5, by - mh + 1.5)], C["ink"], blur=0.25, opacity=0.7)
     # the dock: dark planks running right, pilings
     fill_poly(arr, [(W * 0.05, H * 0.78), (W, H * 0.70), (W, H * 0.78), (W * 0.05, H * 0.9)], (56, 44, 36), blur=0.7)
     for i in range(6):
@@ -549,6 +675,8 @@ def northwind_morning(H, W):
     fill_poly(arr, [(dx + 6, dy - 12), (dx + 14, dy - 18), (dx + 15, dy - 8), (dx + 8, dy - 8)], C["ink"], blur=0.4)
     fill_poly(arr, [(dx + 9, dy - 18), (dx + 11, dy - 22), (dx + 13, dy - 18)], C["ink"], blur=0.3)
     fill_poly(arr, [(dx - 10, dy - 9), (dx - 16, dy - 14), (dx - 15, dy - 6), (dx - 10, dy - 4)], C["ink"], blur=0.4)
+    clouds(arr, seed=25, top=0.0, bottom=0.35, tint=(255, 214, 160), amount=0.30)
+    water_pull(arr, 0.60, 0.78, seed=27)
     _gulls(arr, [(W * 0.4, H * 0.26), (W * 0.47, H * 0.3), (W * 0.7, H * 0.2)])
     vignette(arr, 0.3)
     return arr
@@ -608,10 +736,11 @@ SCENES = {
 }
 
 
-def paint(scene_id, out_png, source_png=None, W=1280, H=720, colors=256, preview=0):
+def paint(scene_id, out_png, source_png=None, W=960, H=540, colors=256, preview=0):
     if scene_id not in SCENES:
         raise SystemExit("unknown scene '%s' (see --list)" % scene_id)
     arr = SCENES[scene_id](H, W)
+    painterly(arr)
     src = Image.fromarray(clamp(arr))
     sp = source_png or (out_png.rsplit(".", 1)[0] + ".src.png")
     os.makedirs(os.path.dirname(os.path.abspath(sp)), exist_ok=True)
