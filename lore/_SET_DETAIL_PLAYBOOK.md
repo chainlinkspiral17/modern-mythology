@@ -101,6 +101,19 @@ henderson) got there by accumulating exactly these layers.
   ring. New wear is narrower and closer to the floor's own tone;
   old wear is wide, dark, or scraped pale. A visitor should be
   able to date the household from the floor alone.
+- **The Lovers wear IN PAIRS** (pass 8, closing the arcana set):
+  two knee-dents close together on the front kneeler, a narrow
+  aisle walked slow and in step, rice ground into the threshold
+  seams that no broom ever beats the next wedding to, the bell
+  rope hand-dark at one height (rung once after each vow), the
+  statue's foot rubbed bright by thumbs, and TWO wax colors at
+  the altar's candle stations — two households' candles, burned
+  down together. The eight-personality wear vocabulary is now:
+  age (decades/weeks on one floor), width (family/alone), the
+  material inversions (wood darkens, dust clears, wax dulls),
+  both-ages-one-spot, the absence, appetite, the architect, and
+  the pair. New locales should pick their personality FIRST and
+  let it choose the marks.
 - **Appetite vs. measure, and the architect's wear** (passes 6-7):
   Daigle's is the anti-Mixing-Glass — RINGS ON RINGS on the bar
   top, cigarette scallops, the dance patch worn to pale wood with

@@ -232,6 +232,51 @@ def build_facade_2026_08():
     make_cyl("Trash_Can", (1.8, -2.2, 0.45), 0.28, 0.90, (0.30, 0.34, 0.30, 1.0), segments=10)
 
 
+def build_wear_personality_2026_08():
+    """WHOSE FEET, WHOSE SPILLS — the Lovers (wear pass 8, the
+    last arcana personality).
+
+    A roadside wedding chapel wears IN PAIRS. Two knee-dents on
+    the front kneeler, close together, worn pale — couples kneel
+    side by side and always at the center. The aisle lane is
+    narrow and perfectly centered, because processions walk slow
+    and in step. Rice sits ground into the threshold seams — no
+    broom has ever beaten the next wedding to it. The bell rope
+    is hand-dark at one height (rung once after each vow), the
+    statue's foot is rubbed bright the way petitioners' thumbs
+    do, and the altar top carries wax in TWO colors at the two
+    candle stations — two households' candles, brought and burned
+    down together.
+    """
+    from _props.detail import make_traffic_wear, make_floor_stain
+    knee = (0.58, 0.46, 0.32, 1.0)
+    aisle = (0.34, 0.27, 0.20, 1.0)
+    rice = (0.90, 0.88, 0.80, 1.0)
+    hand = (0.34, 0.24, 0.14, 1.0)
+    bright = (0.88, 0.72, 0.38, 1.0)
+    # THE PAIR OF KNEE-DENTS · front kneeler (pew 0 at y=2.0,
+    # kneeler at y=2.32), centered, 0.34m apart.
+    for sgn in (-1, 1):
+        make_box("Wear_Knee_%+d" % sgn, (sgn * 0.17, 2.32, 0.155),
+                 (0.14, 0.13, 0.004), knee)
+    # The aisle: narrow, centered, door to altar. Walked in step.
+    make_traffic_wear("Wear_Aisle",
+                      [(0.0, 0.4), (0.0, 2.9), (0.0, 5.2)],
+                      width=0.4, tint=aisle)
+    # Rice in the threshold seams — three grains-drifts at the door.
+    for ri6, (rx6, ry6) in enumerate(((-0.28, 0.16), (0.10, 0.12), (0.34, 0.18))):
+        make_box("Wear_Rice_%d" % ri6, (rx6, ry6, 0.012), (0.14, 0.05, 0.006), rice)
+    # The bell rope's hand-height: one dark grip band on the rope.
+    make_box("Wear_BellRope_Grip", (-2.10, 0.60, 1.32), (0.045, 0.045, 0.18), hand)
+    # The statue's rubbed foot — bright where the thumbs go.
+    make_box("Wear_Statue_Foot", (2.20, 3.31, 1.385), (0.08, 0.05, 0.015), bright)
+    # Two wax colors at the altar's two candle stations.
+    make_cyl("Wear_Wax_West", (-0.40, 5.80, 1.062), 0.06, 0.004,
+             (0.88, 0.84, 0.72, 1.0), segments=8)
+    make_cyl("Wear_Wax_East", (0.40, 5.80, 1.062), 0.06, 0.004,
+             (0.80, 0.68, 0.62, 1.0), segments=8)
+
+
 def main():
     clear_scene()
     build_shell()
@@ -244,6 +289,7 @@ def main():
     build_decor()
     build_lovers_exterior()
     build_facade_2026_08()
+    build_wear_personality_2026_08()
     out = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)),
                                          "../../../assets/3d/locales/roadside_chapel.glb"))
     print(f"\n[build_roadside_chapel] exporting to {out}")
