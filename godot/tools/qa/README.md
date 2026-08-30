@@ -41,6 +41,17 @@ cd <repo>/godot && $GODOT --headless --import     # once, ~5 min
   dumps the UI tree at a dead screen. Copy the pattern when a
   monkey run needs explaining.
 
+- `$GODOT --headless res://tools/qa/CPEndlessSim.tscn` — runs
+  SEPTEMBER AND AFTER seeded from the campaign save CPSimSweep
+  leaves in slot 3: ratcheting spawns, rhythm pools, milestones,
+  tower brightness, and the run's ending. Its first three runs
+  found three real bugs (see the commit log for 2026-08).
+- `EndlessProbe` — the diagnostic twin with per-decade state
+  prints. NOTE: deleting user:// files needs
+  `ProjectSettings.globalize_path` first — the bare
+  `DirAccess.remove_absolute(user://…)` fails SILENTLY and the
+  probe once resumed a stale save because of it.
+
 ## Rules
 
 1. Missing-GLB errors are expected here (GLBs build on the Deck).

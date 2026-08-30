@@ -410,6 +410,14 @@ func _begin_endless_with_slot(slot: int) -> void:
 		_flags["endless_mode"] = true
 		_flags["endless_start_day"] = _day
 		_flags["endless_brightness_log"] = []
+		# The campaign's Labor Day tower state carries over — and a
+		# campaign that ended WHITE would end the endless run on
+		# its first day (the QA chain hit exactly that: a
+		# zero-length run, stopped at day 101). September opens
+		# with the tower banked: whatever the summer ended on, the
+		# season's turn dims it, and the ratchet re-earns it.
+		_tower_brightness = "dim"
+		_last_brightness_change_day = _day
 		_log("[color=#a8a8c0][b]SEPTEMBER AND AFTER.[/b] The summer resolved. The board did not. Days keep counting, the Sunday spawns only ratchet up, and if the tower ever goes white the run is over. Retire from the slot desk whenever the board is done with you.[/color]")
 		# SEPTEMBER includes the courthouse · endless force-opens the
 		# County Seat and its offense palette even if the campaign
@@ -3379,6 +3387,17 @@ func _dispatch_agent(agent_id: String, region_id: String, problem_index: int) ->
 
 # ── Day advance ──────────────────────────────────────────────────
 func _on_advance_day() -> void:
+	# HARD STOP once the run is over. Two states qualify: the
+	# campaign past Labor Day outside endless mode (the finale
+	# already played at day 100), and an endless run that _end_
+	# endless_run has closed (tower white / retirement). The QA
+	# endless sim caught the leak: after tower-white, advances kept
+	# working with _endless=false, and each day's autosave WROTE
+	# THE CAMPAIGN PATH — day 240 of junk over the player's
+	# finished summer. The end screen is not a wall; this is.
+	if not _endless and _day >= TURNS_TOTAL and \
+			bool(_flags.get("labor_day_finale_shown", false)):
+		return
 	_day += 1
 	_dispatches_this_day = 0
 	# Fire any reveals scheduled for this day BEFORE other ticks, so
