@@ -48,13 +48,25 @@ func _sweep_volume(vol: int) -> void:
 	# get_volume_scenes returns full scene DICTS (id inside), not ids.
 	var reversed_scenes: Array = scene_ids.duplicate()
 	reversed_scenes.reverse()
+	# Targeted runs: VN_SWEEP_ONLY="sid1,sid2" plays just those scenes
+	# (any volume). For verifying a fix without the hour-long full run.
+	var only_raw := OS.get_environment("VN_SWEEP_ONLY")
+	var only: PackedStringArray = only_raw.split(",", false) if only_raw != "" else PackedStringArray()
 	var played: int = 0
 	for sc_v in reversed_scenes:
 		var sid: String = String((sc_v as Dictionary).get("id", ""))
 		if sid == "":
 			continue
+		if only.size() > 0 and not (sid in only):
+			continue
 		await _play_scene(engine, vol, sid)
 		played += 1
+	if only.size() > 0:
+		if played > 0:
+			print("VN-VOL %d filtered · %d scene(s) played" % [vol, played])
+		engine.queue_free()
+		await get_tree().process_frame
+		return
 	# PROGRESS assertion (QA README rule): a volume that played zero
 	# scenes means the sweep itself broke — never report that as clean.
 	if played == 0:
