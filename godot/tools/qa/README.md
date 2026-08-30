@@ -41,6 +41,19 @@ cd <repo>/godot && $GODOT --headless --import     # once, ~5 min
   dumps the UI tree at a dead screen. Copy the pattern when a
   monkey run needs explaining.
 
+- `$GODOT --headless res://tools/qa/VnSweep.tscn` — PLAYS the whole
+  visual novel: every indexed scene of every volume, BACK TO FRONT
+  (per the 2026-08-30 direction: volume tails carry the least
+  iteration). Advances lines, resolves choice option 0 via
+  `_on_chosen`, dismisses CGs/interludes/chapter cards with an
+  "advance" InputEventAction (the input map binds PHYSICAL
+  keycodes — a bare InputEventKey never matches), treats
+  game_ended as flow end. A scene that stops progressing is a
+  STALL and stalls are real: the first honest run found three
+  unwinnable choices (goto aimed at the choice's own index) and
+  led to three malformed skill checks. Slow (~real playthrough
+  speed); run in background. Static twin:
+  `python3 godot/tools/audit/vn_story_audit.py` (suite gate).
 - `$GODOT --headless res://tools/qa/CPEndlessSim.tscn` — runs
   SEPTEMBER AND AFTER seeded from the campaign save CPSimSweep
   leaves in slot 3: ratcheting spawns, rhythm pools, milestones,
