@@ -666,7 +666,7 @@
     {
      "kind": "spawn_problem_in_region",
      "region": "graustark",
-     "template": "press_exposure"
+     "template": "local_press_exposure"
     }
    ],
    "dispatch_shape_hint": "Quiet eyes. Someone who can read a room without being read. A demon assigned to a watch can read it deeper but if they're spotted the cover damage is real.\n\nThis is a multi-stage mission — the watch, the read, the decision.",

@@ -30,7 +30,7 @@
    "region": "small_wood",
    "available_from_week": 9,
    "weight": 1.0,
-   "log_line": "[color=#a8c0a8][i]Small Wood:[/i] The_surviving_son walked jules through the upstairs-room transition on Tuesday · same eleven-day protocol as '94, this time in six.[/color]"
+   "log_line": "[color=#a8c0a8][i]Small Wood:[/i] The surviving D'Ambrosio son walked Jules through the upstairs-room transition on Tuesday · same eleven-day protocol as '94, this time in six.[/color]"
   },
   {
    "id": "sw_dirt_road_quiet",
@@ -60,7 +60,7 @@
    "region": "small_wood",
    "available_from_week": 12,
    "weight": 1.0,
-   "log_line": "[color=#a8c0a8][i]Small Wood:[/i] The planting west of the timber yard took. Jules and the_surviving_son opened the room at 5:30 AM Sunday · the new occupant slept through until noon.[/color]",
+   "log_line": "[color=#a8c0a8][i]Small Wood:[/i] The planting west of the timber yard took. Jules and the surviving D'Ambrosio son opened the room at 5:30 AM Sunday · the new occupant slept through until noon.[/color]",
    "effects": [
     {
      "kind": "increment_region_state",
@@ -173,7 +173,7 @@
    "region": "harmony_creek",
    "available_from_week": 11,
    "weight": 0.7,
-   "log_line": "[color=#a8c0a8][i]Harmony Creek:[/i] the_river_house's count of a seventh unlogged camera on the south fence reached Mrs Salinas via Mrs Delacroix's Tuesday breakfast. The committee's Tuesday agenda has a new item.[/color]"
+   "log_line": "[color=#a8c0a8][i]Harmony Creek:[/i] The river house's count of a seventh unlogged camera on the south fence reached Mrs Salinas via Mrs Delacroix's Tuesday breakfast. The committee's Tuesday agenda has a new item.[/color]"
   },
   {
    "id": "gr_cathedral_bell_chord",
@@ -252,7 +252,7 @@
    "region": "graustark",
    "available_from_week": 8,
    "weight": 0.6,
-   "log_line": "[color=#a8c0a8][i]Graustark:[/i] the_river_house's dial answered on the second ring this Sunday. His coffee-at-6-PM offer stands.[/color]"
+   "log_line": "[color=#a8c0a8][i]Graustark:[/i] The river house's dial answered on the second ring this Sunday. His coffee-at-6-PM offer stands.[/color]"
   },
   {
    "id": "gr_relay_held_clean",

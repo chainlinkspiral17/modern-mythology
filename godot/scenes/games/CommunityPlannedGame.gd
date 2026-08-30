@@ -1232,7 +1232,7 @@ func _exec_effect(eff: Dictionary, ctx: Dictionary) -> void:
 			var template: String = String(eff.get("template", eff.get("problem_template", "")))
 			if r_id3 != "" and template != "":
 				_seed_problem(r_id3, template)
-				_log("[i]Cascade:[/i] %s spawned in %s." %
+				_log("[i]Cascade ·[/i] untreated, it spread: [b]%s[/b] opens in %s." %
 					[_problem_templates.get(template, {}).get("title", template),
 					 _regions.get(r_id3, {}).get("name", r_id3)])
 		"spawn_problem_in_neighbor":
@@ -1246,7 +1246,7 @@ func _exec_effect(eff: Dictionary, ctx: Dictionary) -> void:
 			var tpl: String = String(eff.get("problem_template", eff.get("template", "")))
 			if tpl != "":
 				_seed_problem(pick, tpl)
-				_log("[i]Spillover:[/i] %s in %s." %
+				_log("[i]Spillover ·[/i] trouble travels: [b]%s[/b] crosses into %s." %
 					[_problem_templates.get(tpl, {}).get("title", tpl),
 					 _regions.get(pick, {}).get("name", pick)])
 		"spawn_problem_in_all_regions":
@@ -1254,7 +1254,7 @@ func _exec_effect(eff: Dictionary, ctx: Dictionary) -> void:
 			if tpl2 == "": return
 			for k in _regions.keys():
 				_seed_problem(k, tpl2)
-			_log("[i]Wide spillover:[/i] %s landed in all three regions." %
+			_log("[i]Wide spillover ·[/i] [b]%s[/b] landed in all three regions the same week. That is not weather; that is a campaign." %
 				_problem_templates.get(tpl2, {}).get("title", tpl2))
 		"lose_node":
 			var r_id4 := _resolve_region(String(eff.get("region", "current")), ctx)
@@ -1271,7 +1271,7 @@ func _exec_effect(eff: Dictionary, ctx: Dictionary) -> void:
 						st["dark_nodes"] = []
 					(st["dark_nodes"] as Array).append({"node": node, "until_day": _day + days})
 					_log("[color=#ff9090]%s went dark in %s for %d days.[/color]" %
-						[node, _regions[r_id4]["name"], days])
+						[_node_display(node), _regions[r_id4]["name"], days])
 		"temporarily_lose_node":
 			# Like lose_node but picks from a pool when node isn't named.
 			var r_id5 := _resolve_region(String(eff.get("region", "current")), ctx)
@@ -1286,8 +1286,8 @@ func _exec_effect(eff: Dictionary, ctx: Dictionary) -> void:
 					if not st2.has("dark_nodes"):
 						st2["dark_nodes"] = []
 					(st2["dark_nodes"] as Array).append({"node": pick_node, "until_day": _day + days2})
-					_log("[color=#ff9090]%s (%s pool) dark in %s for %d days.[/color]" %
-						[pick_node, pool, _regions[r_id5]["name"], days2])
+					_log("[color=#ff9090]%s went dark in %s for %d days.[/color]" %
+						[_node_display(pick_node), _regions[r_id5]["name"], days2])
 		"lose_contested_node":
 			var r_id6 := _resolve_region(String(eff.get("region", "current")), ctx)
 			var node2: String = String(eff.get("node", ""))
@@ -1299,7 +1299,7 @@ func _exec_effect(eff: Dictionary, ctx: Dictionary) -> void:
 					_region_state[r_id6]["dean_held_nodes"] = []
 				(_region_state[r_id6]["dean_held_nodes"] as Array).append(node2)
 				_log("[color=#ff9090]%s in %s lost to the resistance.[/color]" %
-					[node2, _regions[r_id6]["name"]])
+					[_node_display(node2), _regions[r_id6]["name"]])
 		"remove_target_node":
 			var r_id7 := _resolve_region(String(eff.get("region", "current")), ctx)
 			var targets: Array = _region_state[r_id7].get("target_nodes", [])
@@ -3582,20 +3582,28 @@ func _maybe_fire_anomaly() -> void:
 			String(chosen.get("fingerprint_text", "")))
 
 
+func _node_display(node_id: String) -> String:
+	# "the_model_home" → "The Model Home". Node ids are authored
+	# snake_case; the ledger never prints them raw.
+	return node_id.capitalize()
+
+
 func _apply_anomaly(a: Dictionary) -> void:
 	var eff: Dictionary = a.get("engine_effect", {})
 	var kind: String = String(eff.get("kind", ""))
 	var rng := RandomNumberGenerator.new()
 	rng.randomize()
-	# All anomaly effects log their flavor.
+	# The anomaly's authored `log` IS the ledger line (it carries its
+	# own "Anomaly ·" prefix). The `title` is design-facing — gluing
+	# it on shipped mashed lines like "Harmony Creek problem resolves
+	# overnight Anomaly · the problem…" into the summer transcript.
 	var log_str: String = String(eff.get("log", String(a.get("description", ""))))
 	match kind:
 		"freeze_problem_severity":
 			var r_id: String = String(eff.get("region", "small_wood"))
 			var st: Dictionary = _region_state.get(r_id, {})
 			st["substrate_freeze_until_day"] = _day + int(eff.get("duration_days", 7))
-			_log("[color=#a8a8c0][b]%s[/b] [i]Anomaly: severities in %s frozen for the week.[/i][/color]" %
-				[String(a["title"]), _regions[r_id]["name"]])
+			_log("[color=#a8a8c0]%s[/color]" % log_str)
 		"resolve_random_problem":
 			var r_id2: String = String(eff.get("region", "harmony_creek"))
 			var probs: Array = _region_state[r_id2]["active_problems"]
@@ -3611,7 +3619,7 @@ func _apply_anomaly(a: Dictionary) -> void:
 					free_indices.append(i)
 			if not free_indices.is_empty():
 				var idx: int = int(free_indices[rng.randi() % free_indices.size()])
-				_log("[color=#a8a8c0][b]%s[/b] [i]%s[/i][/color]" % [String(a["title"]), log_str])
+				_log("[color=#a8a8c0]%s[/color]" % log_str)
 				probs.remove_at(idx)
 				# Shift each later-than-idx dispatch's problem_index down 1.
 				for ad in _active_dispatches:
@@ -3633,8 +3641,8 @@ func _apply_anomaly(a: Dictionary) -> void:
 					continue
 				if int(_agent_state[ag_id]["corruption"]) > 0:
 					_agent_state[ag_id]["corruption"] = max(0, int(_agent_state[ag_id]["corruption"]) - amount)
-					_log("[color=#a8a8c0][b]%s[/b] [i]%s[/i] (%s, −%d corruption)[/color]" %
-						[String(a["title"]), log_str, String(_agents[ag_id]["name"]), amount])
+					_log("[color=#a8a8c0]%s (%s, −%d corruption)[/color]" %
+						[log_str, String(_agents[ag_id]["name"]), amount])
 					break
 		"downgrade_random_held_node_to_contested":
 			var r_id3: String = String(eff.get("region", "graustark"))
@@ -3644,13 +3652,13 @@ func _apply_anomaly(a: Dictionary) -> void:
 				var node: String = String(held[idx2])
 				held.remove_at(idx2)
 				_region_state[r_id3]["contested_nodes"].append(node)
-				_log("[color=#a8a8c0][b]%s[/b] [i]%s (%s)[/i][/color]" %
-					[String(a["title"]), log_str, node])
+				_log("[color=#a8a8c0]%s (%s)[/color]" %
+					[log_str, _node_display(node)])
 		"redirect_dispatch", "set_region_escalation_modifier":
 			# Logged but not mechanically wired in phase 1.
-			_log("[color=#a8a8c0][b]%s[/b] [i]%s[/i][/color]" % [String(a["title"]), log_str])
+			_log("[color=#a8a8c0]%s[/color]" % log_str)
 		_:
-			_log("[color=#a8a8c0][b]%s[/b] [i]%s[/i][/color]" % [String(a["title"]), log_str])
+			_log("[color=#a8a8c0]%s[/color]" % log_str)
 
 
 # ── Interlude shelf ─────────────────────────────────────────────
@@ -4697,7 +4705,8 @@ func _tick_region_problems(r_id: String) -> void:
 		for entry in dark:
 			if int(entry.get("until_day", 0)) <= _day:
 				st["held_nodes"].append(entry["node"])
-				_log("%s came back online in %s." % [entry["node"], _regions[r_id]["name"]])
+				_log("%s came back online in %s. Nobody says who did the fixing." %
+					[_node_display(String(entry["node"])), _regions[r_id]["name"]])
 			else:
 				still_dark.append(entry)
 		st["dark_nodes"] = still_dark
@@ -4723,8 +4732,8 @@ func _tick_region_problems(r_id: String) -> void:
 			if n <= last_fired:
 				continue
 			if p["severity"] >= float(n):
-				_log("[color=#ff9090][b]%s[/b] crossed severity %d in %s.[/color]" %
-					[p["title"], n, _regions[r_id]["name"]])
+				_log("[color=#ff9090][b]%s[/b] deepens in %s — severity %d and climbing.[/color]" %
+					[p["title"], _regions[r_id]["name"], n])
 				var ctx: Dictionary = {"region_id": r_id, "problem": p, "problem_template": t["id"]}
 				_exec_effects(t[key], ctx)
 				p["last_threshold_fired"] = n
@@ -6114,7 +6123,19 @@ func _spawn_weekly_problems_for_region(r_id: String) -> void:
 		var chosen_id: String = String(pool[chosen_idx][0])
 		_seed_problem(r_id, chosen_id)
 		var t_chosen: Dictionary = _problem_templates[chosen_id]
-		_log("Sunday · [b]%s[/b] in %s." % [t_chosen["title"], r["name"]])
+		# Rotate the framing so three spawns in one Sunday don't read
+		# as three identical form letters. All templates take
+		# (title, region) in that order.
+		var frames: Array = [
+			"Sunday · [b]%s[/b] surfaces in %s.",
+			"Sunday · the ledger opens a page for [b]%s[/b] in %s.",
+			"Sunday · [b]%s[/b] starts its week in %s.",
+			"Sunday · a new entry, written small: [b]%s[/b], %s.",
+		]
+		var frame_idx: int = int(_flags.get("sunday_spawn_frame_idx", 0))
+		var frame: String = String(frames[frame_idx % frames.size()])
+		_flags["sunday_spawn_frame_idx"] = frame_idx + 1
+		_log(frame % [t_chosen["title"], r["name"]])
 		pool.remove_at(chosen_idx)
 		spawned += 1
 

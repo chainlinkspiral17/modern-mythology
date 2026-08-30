@@ -52,6 +52,16 @@ func _ready() -> void:
 				print("CPSIM-STALL · day stuck at %d (iteration %d)" % [day_before, i])
 				break
 		_days_run += 1
+		# Transcript dump: everything the ledger showed this day
+		# (the store caps at 200 lines, so drain it daily).
+		var lines: Array = _game.get("_log_lines")
+		for ln in lines:
+			var clean: String = str(ln)
+			var rx := RegEx.new()
+			rx.compile("\\[/?[a-z_]+[^\\]]*\\]")
+			clean = rx.sub(clean, "", true)
+			print("LEDGER| " + clean)
+		lines.clear()
 	print("CPSIM · finished · reached day %s after %d advances" % [str(_game.get("_day")), _days_run])
 	get_tree().quit(0)
 

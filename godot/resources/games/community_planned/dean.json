@@ -29,7 +29,8 @@
       "engine_effect": {
         "kind": "freeze_problem_severity",
         "region": "small_wood",
-        "duration_days": 7
+        "duration_days": 7,
+        "log": "[i]Anomaly[/i] \u00b7 a planting that should have been swatted is, this week, still planted. Small Wood's problems held at their Tuesday numbers all week, and no dispatch of Frasier's accounts for the stillness."
       },
       "fingerprint_chance": 0.6,
       "fingerprint_text": "A plain-faced man was seen Sunday at the diner that doesn't know it's a node yet. He ordered coffee and toast. He paid in cash. He left a hundred-dollar bill at the next booth on his way out."
