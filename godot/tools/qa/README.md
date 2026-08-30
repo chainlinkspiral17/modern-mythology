@@ -28,6 +28,19 @@ cd <repo>/godot && $GODOT --headless --import     # once, ~5 min
   set_global effect onward — County-Seat-era bug invisible to every
   static check).
 
+- `$GODOT --headless res://tools/qa/GauntletSimSweep.tscn` — PLAYS
+  gauntlet scenarios with a pass-only player through all five
+  phases to their endings (a pass-only player loses by stagnation,
+  which exercises the loss finales). Covers the remapped boards.
+- `$GODOT --headless res://tools/qa/MonkeySweep.tscn` — UI monkey:
+  presses real visible buttons (skipping quit/erase words), ESC on
+  buttonless screens. Its reach ends at keyboard-driven gameplay
+  (salmonberry's town walkabout, where the crisis night locks ESC
+  by design) — that is a monkey limitation, not a game bug.
+- `SalmonberryProbe` — diagnostic variant that logs every press and
+  dumps the UI tree at a dead screen. Copy the pattern when a
+  monkey run needs explaining.
+
 ## Rules
 
 1. Missing-GLB errors are expected here (GLBs build on the Deck).
