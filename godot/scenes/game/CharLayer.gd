@@ -1431,7 +1431,14 @@ func _layout_portrait_texture(tr: TextureRect, tex: Texture2D) -> void:
 func _load_texture_with_fallback(path: String) -> Texture2D:
 	if ResourceLoader.exists(path):
 		return ResourceLoader.load(path) as Texture2D
-	var img := Image.load_from_file(ProjectSettings.globalize_path(path))
+	# Pre-check disk presence: Image.load_from_file ERRORS on a missing
+	# file, and the portrait resolver probes ~40 candidate paths per
+	# character — one VN sweep logged 56k "Failed to load image" errors
+	# from this line alone. Same fix as GameEngine._do_bg's loader.
+	var disk_path := ProjectSettings.globalize_path(path)
+	if not FileAccess.file_exists(disk_path):
+		return null
+	var img := Image.load_from_file(disk_path)
 	if img:
 		return ImageTexture.create_from_image(img)
 	return null

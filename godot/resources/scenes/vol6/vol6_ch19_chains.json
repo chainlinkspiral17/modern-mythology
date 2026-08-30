@@ -29,7 +29,7 @@
   },
   {
    "t": "narrate",
-   "text": "[mood:night]He drives home."
+   "text": "[mood:day_bright]He drives home."
   },
   {
    "t": "narrate",
@@ -789,7 +789,7 @@
   },
   {
    "t": "narrate",
-   "text": "[shot:establish]The three of them sit on the porch in the dusk."
+   "text": "[mood:dusk][shot:establish]The three of them sit on the porch in the dusk."
   },
   {
    "t": "say",
@@ -1023,7 +1023,7 @@
   },
   {
    "t": "narrate",
-   "text": "He showers."
+   "text": "[mood:night]He showers."
   },
   {
    "t": "narrate",

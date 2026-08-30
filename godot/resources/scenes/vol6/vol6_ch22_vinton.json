@@ -29,7 +29,7 @@
   },
   {
    "t": "narrate",
-   "text": "[mood:dusk][shot:insert bus]The Vinton bus pulls into the lot at four oh-three."
+   "text": "[mood:day_bright][shot:insert bus]The Vinton bus pulls into the lot at four oh-three."
   },
   {
    "t": "narrate",
@@ -295,7 +295,7 @@
   },
   {
    "t": "narrate",
-   "text": "[shot:establish]The game starts at six."
+   "text": "[mood:dusk][shot:establish]The game starts at six."
   },
   {
    "t": "narrate",
@@ -725,7 +725,7 @@
   },
   {
    "t": "narrate",
-   "text": "[shot:establish]The second half is the second half."
+   "text": "[mood:night][shot:establish]The second half is the second half."
   },
   {
    "t": "narrate",
