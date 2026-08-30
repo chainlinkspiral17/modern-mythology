@@ -40,6 +40,15 @@ What this changes:
   before shipping any scene with water, check every treeline AT
   THE WATERLINE — it is the first place the eye tests a painted
   landscape and the first place procedural composition lies.
+  THIRD catch, same class: the title's cannery dock hovered over
+  the house's roof, pilings ending mid-air. Generalized into the
+  GROUNDING CHECKLIST for every scene render: (1) every treeline
+  checked at the waterline; (2) every structure's legs reach the
+  surface that carries them, with contact marks (foam lap,
+  shadow) at the feet; (3) nothing shares a screen column with
+  something it isn't physically touching. The 2D twin of the 3D
+  stump hunt — a shape not connected to its support is the first
+  thing every eye finds.
 - **Procedural draft 2 (same day, after "art still needs work"):**
   the painter gained a global PAINTERLY PASS (multi-octave canvas
   grain · EDGE-HOLD ink that darkens along the image's own
