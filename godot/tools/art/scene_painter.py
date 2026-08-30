@@ -289,22 +289,35 @@ def salmonberry_title(H, W):
     fill_poly(arr, [(W * 0.14, H * 0.36), (W * 0.26, H * 0.52), (W * 0.245, H * 0.545), (W * 0.132, H * 0.375)], (120, 140, 104), blur=1.5, opacity=0.7)
     sprucerow(arr, int(W * 0.02), int(W * 0.23), int(H * 0.40), C["fir"], seed=3, blur=1.0,
               ridge=[(0, H * 0.31), (W * 0.14, H * 0.37), (W * 0.26, H * 0.53)])
-    # the cannery on pilings — LEFT of the house's column, deck low
-    # over the water, pilings reaching INTO it with a lap of foam
-    # at each foot. (Earlier drafts floated it over the house roof
-    # with legs ending mid-air — the dock must stand in the sea it
-    # serves, clear of the buildings behind it.)
-    dcx = int(W * 0.10)
-    dck_w = int(W * 0.13)
-    grad_poly(arr, [(dcx, hz + 6), (dcx + dck_w, hz + 6), (dcx + dck_w, hz + 20), (dcx, hz + 20)],
-              (170, 100, 66), (120, 66, 44), blur=0.5)
-    fill_poly(arr, [(dcx - 3, hz + 4), (dcx + dck_w + 3, hz + 4), (dcx + dck_w + 3, hz + 8), (dcx - 3, hz + 8)], (92, 56, 38), blur=0.4)
-    for i in range(6):
-        px = dcx + 6 + i * (dck_w // 6)
-        fill_poly(arr, [(px, hz + 20), (px + 4, hz + 20), (px + 4, hz + 44), (px, hz + 44)], C["ink"], blur=0.3)
-        fill_poly(arr, [(px - 3, hz + 41), (px + 7, hz + 41), (px + 8, hz + 46), (px - 4, hz + 46)], C["foam"], blur=0.9, opacity=0.65)
-    # the ramp from the deck's shore end up to the headland's base
-    fill_poly(arr, [(dcx + dck_w - 4, hz + 10), (dcx + dck_w + int(W * 0.05), hz - 6), (dcx + dck_w + int(W * 0.05) + 6, hz - 3), (dcx + dck_w + 2, hz + 14)], (120, 78, 50), blur=0.5)
+    # THE PIER · it belongs to the HOUSE: it leaves the house's
+    # grass bank and recedes into open water, narrowing, pilings
+    # stepping down into the sea with a foam lap at each. (Two
+    # failed placements first: over the house's column with legs
+    # in mid-air, then buried in the headland's face at 0.10W —
+    # open water in this frame is x 0.30-0.70W, and a dock must
+    # both stand IN water and come FROM a shore.)
+    px0, py0 = W * 0.455, H * 0.795   # at the bank, beside the house
+    px1, py1 = W * 0.585, H * 0.665   # out in the bay
+    wd_near, wd_far = W * 0.016, W * 0.006
+    grad_poly(arr, [(px0 - wd_near, py0), (px1 - wd_far, py1),
+                    (px1 + wd_far, py1), (px0 + wd_near, py0)],
+              (150, 96, 62), (110, 68, 44), blur=0.5)
+    for t in (0.22, 0.52, 0.82):
+        qx = px0 + (px1 - px0) * t
+        qy = py0 + (py1 - py0) * t
+        wq = (wd_near + (wd_far - wd_near) * t) * 0.55   # tucked UNDER the deck
+        drop = 12 * (1 - t * 0.55)
+        for sgn in (-1, 1):
+            fill_poly(arr, [(qx + sgn * wq - 1, qy + 1), (qx + sgn * wq + 1, qy + 1),
+                            (qx + sgn * wq + 1, qy + drop), (qx + sgn * wq - 1, qy + drop)],
+                      C["ink"], blur=0.25)
+        # one shared foam lap across the pair, at the water
+        fill_poly(arr, [(qx - wq - 3, qy + drop - 1.5), (qx + wq + 3, qy + drop - 1.5),
+                        (qx + wq + 4, qy + drop + 1.5), (qx - wq - 4, qy + drop + 1.5)],
+                  C["foam"], blur=0.8, opacity=0.55)
+    # end post + tiny lantern block at the tip
+    fill_poly(arr, [(px1 - 1.5, py1 - 8), (px1 + 1.5, py1 - 8), (px1 + 1.5, py1 + 2), (px1 - 1.5, py1 + 2)], C["ink"], blur=0.25)
+    glow(arr, px1, py1 - 8, 6, C["lamp"], 0.5)
     hx = int(W * 0.33)
     # ground the house: a grass shelf and its shadow first
     fill_poly(arr, [(hx - W * 0.03, H * 0.9), (hx + W * 0.13, H * 0.9), (hx + W * 0.15, H), (hx - W * 0.05, H)], (52, 68, 50), blur=2)
