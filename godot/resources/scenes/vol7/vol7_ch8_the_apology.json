@@ -78,20 +78,20 @@
    "opts": [
     {
      "text": "Listen. Say nothing.",
-     "goto": 13
+     "goto": 15
     },
     {
      "text": "\"All right.\"",
-     "goto": 13
+     "goto": 14
     },
     {
      "text": "[EMPATHY] She already knew. She's been waiting for someone to say it.",
      "check": {
       "skill": "empathy",
-      "diff": 6
-     },
-     "pass": 14,
-     "fail": 13
+      "diff": 6,
+      "pass": 16,
+      "fail": 14
+     }
     }
    ]
   },

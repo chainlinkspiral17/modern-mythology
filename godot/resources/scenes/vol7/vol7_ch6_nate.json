@@ -78,10 +78,10 @@
      "text": "[EMPATHY] His thumb. The held breath. He has been carrying this a long time.",
      "check": {
       "skill": "empathy",
-      "diff": 5
-     },
-     "pass": 12,
-     "fail": 12
+      "diff": 5,
+      "pass": 12,
+      "fail": 12
+     }
     }
    ]
   },

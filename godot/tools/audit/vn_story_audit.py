@@ -202,15 +202,39 @@ def main():
                     elif tgt and sid in indexed and tgt not in indexed:
                         problems.append((where, "opt %d scene '%s' UNINDEXED "
                                          "(unreachable)" % (oi, tgt)))
-                    if "goto" in opt and not (0 <= int(opt["goto"]) < n_count):
-                        problems.append((where, "opt %d goto %s out of range "
-                                         "(%d nodes)" % (oi, opt["goto"], n_count)))
+                    if "goto" in opt:
+                        if not (0 <= int(opt["goto"]) < n_count):
+                            problems.append((where, "opt %d goto %s out of "
+                                             "range (%d nodes)" % (oi, opt["goto"], n_count)))
+                        elif int(opt["goto"]) == i:
+                            # _run_next reads THEN increments, so a goto
+                            # aimed at the choice's own index re-presents
+                            # the choice forever. Three shipped (vol7
+                            # ch6/ch8) — the traversal sweep caught them
+                            # as stalls, this catches them statically.
+                            problems.append((where, "opt %d goto %d is the "
+                                             "choice itself — infinite loop"
+                                             % (oi, i)))
                     chk = opt.get("check")
                     if isinstance(chk, dict):
+                        # The engine reads pass/fail from INSIDE the check
+                        # dict; authored as siblings they're silently
+                        # ignored and both branches fall through.
                         for k in ("pass", "fail"):
-                            if k in chk and not (0 <= int(chk[k]) < n_count):
+                            if k in opt and k not in chk:
+                                problems.append((where, "opt %d has '%s' "
+                                                 "beside check — must be "
+                                                 "inside it" % (oi, k)))
+                            if k not in chk:
+                                problems.append((where, "opt %d check missing "
+                                                 "'%s'" % (oi, k)))
+                            elif not (0 <= int(chk[k]) < n_count):
                                 problems.append((where, "opt %d check %s=%s "
                                                  "out of range" % (oi, k, chk[k])))
+                            elif int(chk[k]) == i:
+                                problems.append((where, "opt %d check %s=%d "
+                                                 "is the choice itself — "
+                                                 "infinite loop" % (oi, k, i)))
             if t in ("say", "think", "show"):
                 cn = str(n.get("char", "")).strip()
                 if cn:

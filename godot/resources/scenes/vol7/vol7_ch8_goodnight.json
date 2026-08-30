@@ -116,16 +116,16 @@
    "opts": [
     {
      "text": "\"Yeah. Stay.\"",
-     "goto": 20
+     "goto": 21
     },
     {
      "text": "[EMPATHY] You feel the ask in it — not just for a place to sleep.",
      "check": {
       "skill": "empathy",
-      "diff": 5
-     },
-     "pass": 20,
-     "fail": 20
+      "diff": 5,
+      "pass": 21,
+      "fail": 21
+     }
     }
    ]
   },

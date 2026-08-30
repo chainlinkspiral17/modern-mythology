@@ -18,11 +18,11 @@
    "opts": [
     {
      "text": "\"Why me and not her, Cale.\"",
-     "goto": 2
+     "goto": 3
     },
     {
      "text": "[Say nothing. Wait for him to continue.]",
-     "goto": 2
+     "goto": 4
     }
    ]
   },
