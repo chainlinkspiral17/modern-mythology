@@ -158,6 +158,39 @@ no-op (fallback discipline — a script must never crash the reader).
 
 ## Recent lessons
 
+### 2026-08-30 · the back-to-front pass · direction density is newest-last
+
+- **User direction: "start from the back and work to the front, as
+  the start of each volume has the most work done already."** The
+  density scan proved it precisely: vol5 ch0 carries stage/panel/
+  beat grammar; the vol6/7 tails had 0-1 beats per 150-260-node
+  chapter and ONE mood held across whole night sequences; vols 1-4
+  had ZERO direction grammar of any kind (they predate it).
+- **A mood is a claim about time and light — audit it against the
+  fiction.** ch23_sleep (five bedrooms, cicadas, midnight) ran
+  under dawn_warm end to end; the 1:15 AM porch vigil too. When
+  one mood serves a whole chapter, check what the chapter's clock
+  says before accepting it.
+- **Seeding beats = find the line the chapter turns on**, not the
+  loudest line: "He dreams of the kitchen." · "I think about her
+  on Saturdays too." · "The face said one word." One or two per
+  chapter; the vocabulary note in the beats section holds.
+- **Two static-audit classes this pass created tools for:** every
+  directive must RESOLVE (vn_story_audit.py, now a suite gate —
+  ten chapters had opened in silence on bgm files that never
+  existed), and index.json is RUNTIME TRUTH (a scene on disk but
+  unindexed is unreachable; a TEST scene indexed is a shipping
+  debug screen — vol5 shipped one after The World for months).
+- **VnSweep.gd traverses the whole book headless** (back to
+  front). Driver gotchas that cost a run each: the input map binds
+  "advance" by PHYSICAL keycode so InputEventKey with only
+  `keycode` never matches (use InputEventAction); a scene ending
+  the flow emits game_ended and must not read as a stall; and
+  never `pkill -f` a pattern contained in your own launch command.
+- **"— End of Demo —" shipped in four volume closers** long after
+  the volumes stopped being demos. Grep for dev-language in
+  player-facing closers when a volume graduates.
+
 ### 2026-08-12 · a missing marker was manufacturing "solid color scenes"
 
 - **User: "the cabin scenes in land of milk and honey need much

@@ -98,13 +98,32 @@ def main():
     presets = camera_presets()
     moods = mood_names()
 
+    # The index is RUNTIME TRUTH: SceneDataDB only loads scene ids
+    # listed in index.json — a file on disk but unindexed is
+    # unreachable, and a jump to it fails in-game even though the
+    # file exists. Audit jump targets against the index, and report
+    # orphan files as info (retired stubs live there deliberately).
+    indexed = set()
+    try:
+        idx = json.load(open(os.path.join(SCENES, "index.json")))
+        for _vol, ids in idx.items():
+            if isinstance(ids, list):
+                indexed.update(str(i) for i in ids)
+    except Exception as e:
+        print("PROBLEM  index.json unreadable: %s" % e)
+        sys.exit(1)
+
+    # ALWAYS load every scene file — jump targets cross volumes and
+    # the index spans the whole book, so the reference sets must be
+    # complete even when `only` limits which files get node checks.
     files = []
+    checked_vols = set()
     for vol in sorted(os.listdir(SCENES)):
-        if only and vol not in only:
-            continue
         vd = os.path.join(SCENES, vol)
         if not os.path.isdir(vd):
             continue
+        if not only or vol in only:
+            checked_vols.add(vol)
         for fn in sorted(os.listdir(vd)):
             if fn.endswith(".json"):
                 files.append(os.path.join(vd, fn))
@@ -130,6 +149,8 @@ def main():
 
     # id → node count for goto range checks
     for sid, (rel, data) in scenes.items():
+        if rel.split(os.sep)[-2] not in checked_vols:
+            continue
         nodes = data.get("nodes", [])
         n_count = len(nodes)
         for i, n in enumerate(nodes):
@@ -169,12 +190,18 @@ def main():
                 tgt = str(n.get("scene", ""))
                 if tgt and tgt not in scenes:
                     problems.append((where, "jump target '%s' not found" % tgt))
+                elif tgt and sid in indexed and tgt not in indexed:
+                    problems.append((where, "jump target '%s' exists on disk "
+                                     "but is UNINDEXED (unreachable)" % tgt))
             elif t == "choice":
                 for oi, opt in enumerate(n.get("opts", [])):
                     tgt = str(opt.get("scene", ""))
                     if tgt and tgt not in scenes:
                         problems.append((where, "opt %d scene '%s' not found"
                                          % (oi, tgt)))
+                    elif tgt and sid in indexed and tgt not in indexed:
+                        problems.append((where, "opt %d scene '%s' UNINDEXED "
+                                         "(unreachable)" % (oi, tgt)))
                     if "goto" in opt and not (0 <= int(opt["goto"]) < n_count):
                         problems.append((where, "opt %d goto %s out of range "
                                          "(%d nodes)" % (oi, opt["goto"], n_count)))
@@ -210,8 +237,15 @@ def main():
             print("%5d  %s" % (ct, cn))
         return
 
+    for iid in sorted(indexed):
+        if iid not in scenes:
+            problems.append(("index.json", "indexed id '%s' has no file" % iid))
+    orphans = sorted(set(scenes) - indexed - {""})
     print("vn_story_audit · %d scene file(s) · %d preset(s) · %d mood(s)"
           % (len(files), len(presets), len(moods)))
+    if orphans:
+        print("unindexed files (unreachable at runtime · info only): %d "
+              "(stubs + retired drafts)" % len(orphans))
     if voice_total:
         print("voice lines: %d referenced · %d missing on disk (info only)"
               % (voice_total, voice_missing))

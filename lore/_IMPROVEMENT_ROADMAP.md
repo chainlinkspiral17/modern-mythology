@@ -675,6 +675,22 @@ staged like that, using still camera set-ups and camera motion."*
 
 ### Visual novel (vols 5–7) — top priority
 
+- **THE PROFESSIONAL PASS (2026-08-30, active) · back-to-front per
+  the user's direction** ("the start of each volume has the most
+  work done already"). Draft 1 shipped: (a) vn_story_audit.py suite
+  gate — every directive resolves; ten never-existing bgm files
+  found and authored as beds; index.json treated as runtime truth
+  (vol5's shipping TEST scene de-indexed; "End of Demo" re-fictioned
+  in four closers); (b) VnSweep.gd — headless traversal of all ~270
+  indexed scenes, back to front; (c) beat/mood seeding through the
+  vol7 epilogues + ch20-22, vol6 ch19-23 (night chapters were graded
+  dawn_warm), vol1 ch4 dream suite + vol2 close. Draft 2 targets:
+  seed the remaining vol6/7 mid-book chapters (ch2-ch18 tails-first),
+  vols 1-2 full direction pass (zero grammar today), stage grammar
+  beyond vol5 ch0, panel authoring for vols 6-7 documents, CG art
+  full-res repaint (fool_* set is 320×180), Deck feel pass on the
+  new beats.
+
 - **P0 · Character models wire-in + lighting tune** — as GLBs land
   from gate 2, tune `Portrait3D.CHARACTER_LIGHTING` per model.
   (Claude, same-day per model.)
