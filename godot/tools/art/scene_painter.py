@@ -289,12 +289,22 @@ def salmonberry_title(H, W):
     fill_poly(arr, [(W * 0.14, H * 0.36), (W * 0.26, H * 0.52), (W * 0.245, H * 0.545), (W * 0.132, H * 0.375)], (120, 140, 104), blur=1.5, opacity=0.7)
     sprucerow(arr, int(W * 0.02), int(W * 0.23), int(H * 0.40), C["fir"], seed=3, blur=1.0,
               ridge=[(0, H * 0.31), (W * 0.14, H * 0.37), (W * 0.26, H * 0.53)])
-    # the cannery on pilings + the house, small, at the base of the headland
-    dcx = int(W * 0.30)
-    fill_poly(arr, [(dcx, hz + 4), (dcx + W * 0.14, hz + 4), (dcx + W * 0.14, hz + 22), (dcx, hz + 22)], C["rust"], blur=0.5)
+    # the cannery on pilings — LEFT of the house's column, deck low
+    # over the water, pilings reaching INTO it with a lap of foam
+    # at each foot. (Earlier drafts floated it over the house roof
+    # with legs ending mid-air — the dock must stand in the sea it
+    # serves, clear of the buildings behind it.)
+    dcx = int(W * 0.10)
+    dck_w = int(W * 0.13)
+    grad_poly(arr, [(dcx, hz + 6), (dcx + dck_w, hz + 6), (dcx + dck_w, hz + 20), (dcx, hz + 20)],
+              (170, 100, 66), (120, 66, 44), blur=0.5)
+    fill_poly(arr, [(dcx - 3, hz + 4), (dcx + dck_w + 3, hz + 4), (dcx + dck_w + 3, hz + 8), (dcx - 3, hz + 8)], (92, 56, 38), blur=0.4)
     for i in range(6):
-        px = dcx + int(W * 0.02) + i * int(W * 0.02)
-        fill_poly(arr, [(px, hz + 22), (px + 3, hz + 22), (px + 3, hz + 48), (px, hz + 48)], C["ink"], blur=0)
+        px = dcx + 6 + i * (dck_w // 6)
+        fill_poly(arr, [(px, hz + 20), (px + 4, hz + 20), (px + 4, hz + 44), (px, hz + 44)], C["ink"], blur=0.3)
+        fill_poly(arr, [(px - 3, hz + 41), (px + 7, hz + 41), (px + 8, hz + 46), (px - 4, hz + 46)], C["foam"], blur=0.9, opacity=0.65)
+    # the ramp from the deck's shore end up to the headland's base
+    fill_poly(arr, [(dcx + dck_w - 4, hz + 10), (dcx + dck_w + int(W * 0.05), hz - 6), (dcx + dck_w + int(W * 0.05) + 6, hz - 3), (dcx + dck_w + 2, hz + 14)], (120, 78, 50), blur=0.5)
     hx = int(W * 0.33)
     # ground the house: a grass shelf and its shadow first
     fill_poly(arr, [(hx - W * 0.03, H * 0.9), (hx + W * 0.13, H * 0.9), (hx + W * 0.15, H), (hx - W * 0.05, H)], (52, 68, 50), blur=2)
