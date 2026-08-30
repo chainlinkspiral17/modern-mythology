@@ -492,8 +492,14 @@ def salmonberry_house(H, W):
         fill_poly(arr, [(sx0, ly - H * 0.028), (sx0 + W * 0.035, ly - H * 0.024), (sx0 + W * 0.045, ly + H * 0.035), (sx0 + W * 0.008, ly + H * 0.04)], C["foam"], blur=1.0, opacity=0.92)
     # the path down, pale, switchbacked
     fill_poly(arr, [(hx + W * 0.07, hy + H * 0.16), (hx + W * 0.09, hy + H * 0.16), (W * 0.5, H * 0.9), (W * 0.42, H)], (150, 138, 112), blur=2, opacity=0.7)
-    sprucerow(arr, int(W * 0.8), W, int(H * 0.6), C["fir"], seed=8, blur=1.0,
-              ridge=[(W * 0.78, H * 0.62), (W, H * 0.58)])
+    # The far shore ACROSS the water: a treeline whose bases sit
+    # exactly ON the horizon (hz), in atmospheric far color — the
+    # first two drafts planted near-dark trees 0.04-0.08H above
+    # the waterline and they hovered in the sky (user-caught,
+    # twice; the render must be checked at the WATERLINE).
+    fill_poly(arr, [(W * 0.74, hz), (W * 0.74, hz - H * 0.045), (W, hz - H * 0.06), (W, hz)], C["fir_far"], blur=2.5)
+    sprucerow(arr, int(W * 0.76), W, hz, C["fir_far"], seed=8, blur=2.0,
+              ridge=[(W * 0.74, hz - H * 0.005), (W, hz - H * 0.015)])
     clouds(arr, seed=15, top=0.02, bottom=0.38, tint=(244, 234, 220), amount=0.26)
     water_pull(arr, 0.66, 1.0, seed=11)
     _gulls(arr, [(W * 0.62, H * 0.25)])

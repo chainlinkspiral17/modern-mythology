@@ -31,6 +31,15 @@ What this changes:
   are now the GOAL, not banned. (The bans still apply to the 3D VN
   locales and the `demoscene_post` shader stack — those are a separate
   system.) Font floor 12 still holds for UI text drawn over scenes.
+- **The waterline rule (user-caught twice, same day):** trees
+  hovered over water in two consecutive drafts — first a spruce
+  row on a fixed baseline running past its cliff edge, then a
+  "far shore" treeline planted 0.04–0.08H ABOVE the horizon. A
+  treeline across water plants its bases exactly ON hz, in far
+  atmospheric color, over a low silhouette band. Review rule:
+  before shipping any scene with water, check every treeline AT
+  THE WATERLINE — it is the first place the eye tests a painted
+  landscape and the first place procedural composition lies.
 - **Procedural draft 2 (same day, after "art still needs work"):**
   the painter gained a global PAINTERLY PASS (multi-octave canvas
   grain · EDGE-HOLD ink that darkens along the image's own
