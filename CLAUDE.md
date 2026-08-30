@@ -70,8 +70,9 @@ touching code:
    - `lore/_SALMONBERRY_DESIGN.md` — stick #21, Oneironautics 1992
      (Amelie Rocha) · part-RPG part-adventure, a year in a 1960s
      coastal Oregon town · v1 = the month/aptitude/bond loop; town
-     overworld + arc waved (built 2026-07). ART: targeting early-90s
-     256-color Sierra/LucasArts SVGA, replacing flat HeroImage vector.
+     overworld + arc waved (built 2026-07). ART: full-res modern
+     painted illustration (see THE CORRECTION in the aesthetic
+     bible — no SVGA/era-filter retro cosplay).
    These carry the multi-hour authoring context that
    won't fit in a commit-message header.
 

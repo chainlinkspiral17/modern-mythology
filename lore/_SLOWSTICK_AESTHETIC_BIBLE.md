@@ -8,7 +8,51 @@ this file wins and the doc gets fixed.
 
 ---
 
-## ⚑ DIRECTION CHANGE (2026-07-22) · this supersedes everything below for 2D scene art
+## ⚑⚑ THE CORRECTION (2026-08-30) · read this before anything else
+
+User, verbatim: *"the thing Claude has fundamentally gotten wrong
+from the beginning and what I keep trying to correct is the
+slowstick games are alternate reality games, they are sophisticated
+modern games but made in an alternate timeline."*
+
+**The 2026-07-22 "era filter" reading below was the mistake.** It
+took "much better graphics" and interpreted it as *paint well, then
+press through a period 320×200/256-color SVGA filter* — i.e., it
+reintroduced OUR timeline's early-90s PC hardware limits as an
+aesthetic goal, which is exactly the retro cosplay the premise
+section of this file has always banned. Sierra and LucasArts are
+our-timeline reference points; naming them as the bar was the tell.
+
+What is true, restated plainly:
+
+1. **Slowsticks are sophisticated MODERN games.** Their timeline's
+   studios ship rich, full-resolution painted art. "Much better
+   graphics" means genuinely better — never better-then-degraded.
+2. **The era filter is retired for shipped assets.**
+   `svga_quantize.py` stays on disk as a tool-shed curiosity only;
+   nothing in `godot/assets/art/` passes through it. The painter
+   (`scene_painter.py`) ships the full painterly image at the
+   project's native 1280×720.
+3. **The banned list below is fully restored — no 2D-scene
+   exception.** Fake low-res render targets, forced 256-color
+   quantize, decorative dither, nearest-neighbor "pixel art"
+   filtering on scene art: all banned again, everywhere.
+4. **Per-studio look = `SlowstickLook` presets, period.** The house
+   material (gouache, halftone, ink bleed…) is applied at runtime by
+   the shared shader, subtle, as ever. The source art stays clean.
+5. **What survives from the 2026-07/08 art work:** the painted-
+   source pipeline itself, the GROUNDING CHECKLIST, the painterly
+   pass, grad_poly/drop_shadow, the composition rules, and the
+   PNG-first-with-fallback loader pattern. Only the crunch step and
+   its framing die.
+
+The AI-painted end-state target is likewise **modern painted
+illustration** — think a contemporary game's key art discipline —
+not "AI does Sierra."
+
+---
+
+## ⚑ DIRECTION CHANGE (2026-07-22) · ⚠ SUPERSEDED by THE CORRECTION above — kept as the record of the wrong turn
 
 User verdict: the flat-vector HeroImage look is not good enough. "I keep
 asking for much better graphics." The bar, stated plainly:

@@ -2,8 +2,11 @@
 
 **Stick #21 · Oneironautics Inc. · Portland, OR · 1992**
 **Made by:** Amelie Rocha, her most personal game, right after Fey
-Faire (1990) — the SVGA-adventure era; the look bar is early-90s
-256-color Sierra/LucasArts, NOT flat vector (see the art note below).
+Faire (1990). The look bar is rich full-res painted illustration in
+Oneironautics' field-guide-gouache house style, NOT flat vector —
+and NOT our-timeline retro (per THE CORRECTION in the aesthetic
+bible: slowsticks are sophisticated modern games from an alternate
+timeline; no era-filter degradation).
 **Genre stamp:** RPG / ADVENTURE · **Subtitle:** a year on the coast
 **Preset:** `oneironautics` (field-guide gouache, `look_mode` 1)
 **Status:** BUILT · playable_v1 (2026-07-22) — host + the year loop.
@@ -148,8 +151,8 @@ Tokens: `salmonberry_finished` always; `salmonberry_hands` /
 - **Studio/year:** Oneironautics, 1992 — right after Fey Faire
   (1990). **Amélie Rocha's most personal game**, made while grieving
   the loss she never named: her grandmother's town, admitted once.
-  (Retconned from 2006 on 2026-07-22 — the alt-reality premise and
-  the SVGA look both demand the early-90s date.)
+  (Retconned from 2006 on 2026-07-22 — the studio chronology and
+  Rocha's arc demand the early-90s date.)
 - **Setting era:** 1963–64 — earlier than any studio; this is a period
   piece, a memory reconstructed, not a contemporary game.
 - **Coast geography:** the same fictional mid/south Oregon coast as

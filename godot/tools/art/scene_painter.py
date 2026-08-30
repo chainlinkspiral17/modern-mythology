@@ -2,15 +2,19 @@
 """
 scene_painter.py — best-effort PROCEDURAL painted sources.
 
-The placeholder half of the hybrid art pipeline: paints a high-res,
-atmospheric, painterly source (gradient skies, layered atmospheric-
-perspective silhouettes, soft-blurred edges, value-noise texture, glow,
-fog, vignette) — far richer than the old flat-vector HeroImage look —
-then presses it through svga_quantize.py (the era-filter) to land the
-early-90s 256-color Sierra/LucasArts SVGA register.
+The placeholder half of the hybrid art pipeline: paints a full-res
+(1280×720, the project viewport), atmospheric, painterly image
+(gradient skies, layered atmospheric-perspective silhouettes,
+soft-blurred edges, value-noise texture, glow, fog, vignette) and
+ships it AS-IS. Slowsticks are alternate-reality games — sophisticated
+MODERN games made in an alternate timeline — so their art is modern
+painted work; the per-studio material look comes from SlowstickLook's
+demoscene_post presets at runtime, never from degrading the image.
+(The old svga_quantize 320×200/256-color "era filter" step was
+our-timeline retro cosplay and is retired for shipped assets.)
 
 These are PLACEHOLDERS, dropped in until AI-painted sources (scene_
-render.py) replace them through the same era-filter. The HTML studio
+render.py) replace them at the same resolution. The HTML studio
 (art_studio.html) is the front end for generating and replacing them.
 
 Usage:
@@ -798,17 +802,22 @@ SCENES = {
 }
 
 
-def paint(scene_id, out_png, source_png=None, W=960, H=540, colors=256, preview=0):
+def paint(scene_id, out_png, source_png=None, W=1280, H=720, colors=256, preview=0):
+    # Ships the FULL painterly image at the project's native 1280×720.
+    # The 320×200/256-color "era filter" (svga_quantize) is retired for
+    # shipped assets — slowsticks are sophisticated modern games from an
+    # alternate timeline, and crunching art to our timeline's early-90s
+    # PC limits was retro cosplay (the exact thing the aesthetic bible
+    # bans). Per-studio material comes from SlowstickLook presets.
     if scene_id not in SCENES:
         raise SystemExit("unknown scene '%s' (see --list)" % scene_id)
     arr = SCENES[scene_id](H, W)
     painterly(arr)
-    src = Image.fromarray(clamp(arr))
-    sp = source_png or (out_png.rsplit(".", 1)[0] + ".src.png")
-    os.makedirs(os.path.dirname(os.path.abspath(sp)), exist_ok=True)
-    src.save(sp)
-    svga_quantize.quantize(sp, out_png, width=320, height=200, colors=colors,
-                           dither="fs", preview=preview)
+    img = Image.fromarray(clamp(arr))
+    os.makedirs(os.path.dirname(os.path.abspath(out_png)), exist_ok=True)
+    img.save(out_png)
+    if source_png:
+        img.save(source_png)
     return out_png
 
 

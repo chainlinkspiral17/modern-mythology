@@ -10,10 +10,12 @@ CLAUDE.md's playbook list.
 ## North star
 
 Every pillar reads as a finished, art-directed work: the VN as a
-cinematic literary book, the slowsticks as "modern games through an
-alt-reality prism" at a minimum early-90s 256-color SVGA bar
-(Sierra/LucasArts), and all departments delivering in sync (the
-producer discipline).
+cinematic literary book, the slowsticks as **alternate reality games
+— sophisticated modern games made in an alternate timeline** (user
+correction 2026-08-30; see THE CORRECTION in the aesthetic bible —
+the old "SVGA bar" framing was our-timeline retro cosplay and is
+dead), and all departments delivering in sync (the producer
+discipline).
 
 ---
 
@@ -180,7 +182,7 @@ Current ledger (draft counts are honest, not aspirational):
 | Vol 7 cabin set (cabin_interior + cabin_road) | 3 (hero props 08-12: bowls/crow/drones; wear-personality pass 08-19: Olaf's decades vs Tem's weeks — the two-age wear vocabulary) | draft 5: Deck screenshots of wear + through-window reads (Sitka band S, lean-to/creek strip N — D5 shipped 08-19; cabin_road D2 shipped 08-19: centerline fragments, one truck's tire lines, the parking fan + oil shadow, needle drift, moss seam) | next: Deck screenshot loop, then cabin_road D5 horizon check |
 | Lena's apartment (vol7) | 3 (hero props 08-12/19: easel+canvas, nebula+patches; wear pass 08-19: three-years-alone vocabulary — narrow single path, cone rings, paint constellation in HER palette, 61° props, crowding shown in objects not floor) | draft 4: Deck check of easel/mural/window inserts; D3 cords (easel lamp? none yet — she works in window light, verify that reads); bedroom wear |
 | Miller kitchen (vol6) | 4 (wear 08-19; D3 infra 08-19: door switch, counter duplexes, under-cab + microwave cords, the landline's OLD four-pin jack low on the wall — the wire predates the remodel — floor vent) | draft 5: Deck check ch6/ch11 opens + through-window reads (garage lit window E, cul-de-sac N — D5 shipped 08-19); sink_light insert at 4:32 mood |
-| Slowstick SVGA art (2026-07 direction) | 1 SHIPPED (painter registry 3→10; ten era-filtered PNGs live in assets/art; Salmonberry title+seasonal backdrop, E4/Northwind titles, FeyFaire gate all wired PNG-first with fallbacks kept; grad_poly + drop_shadow primitives; sources kept for re-filtering) | draft 2: Deck sign-off on Salmonberry's register; then AI-painted sources through art_studio.html replace the procedural ones scene by scene; town/store interiors need the most; remaining studios (pirate_summer, tideline, spiderdrops, earthman, basilica, hane_no_niwa) |
+| Slowstick painted art (CORRECTED 2026-08-30) | 3 SHIPPED (THE CORRECTION: slowsticks are sophisticated modern games from an alternate timeline — the 320×200/256c era filter was our-timeline retro cosplay and is retired; all ten scenes repainted at native 1280×720 painterly, loaders drop TEXTURE_FILTER_NEAREST, bible/pipeline/design docs corrected) | draft 4: Deck sign-off on the full-res register; AI-painted sources (modern illustration discipline, NOT 'AI does Sierra') through art_studio.html scene by scene; town/store interiors need the most; remaining studios (pirate_summer, tideline, spiderdrops, earthman, basilica, hane_no_niwa) |
 | Cedar tower (vol7 ch22) | 4 (D2 wear 08-19: lobby's single line + chairless desk dust, studio chair spots + one desk's coffee rings, quarters' five-of-twelve seats, and the portal landing where wear STOPS at the door) | draft 5: Deck reframe of the five presets + seven vn_shot setups; D3 cords (rack power, desk cables) |
 | Graustark ruin quarter / riverfront park | 3 (per-chapter vantages 08-11: chalk wall / cottage / wreck / wide; ~~ruin cameras untuned~~; ~~park lamp practicals~~ shipped in riverfront.tscn) | draft 4: Deck screenshots of the four chapter opens + the lamplit jog path; then ruin-quarter D2 wear |
 | CP region banners + agent busts | 2 (plan SHIPPED — verified in code 2026-08-03: banners incl. county_seat, tower variants, roster + dossier busts) | banner art iteration vs the SVGA bar; authored face overrides for marquee agents |
@@ -791,11 +793,12 @@ staged like that, using still camera set-ups and camera motion."*
   eyes") — neon green/pure red/hot amber/stark white desaturated to
   sage/brick/soft amber/warm paper across all 10 scenes; ch2 rust
   glare dimmed.
-- **P0 · SVGA retrofit pilot** (gate 1) — the approved direction:
-  painted source → `svga_quantize` era filter → per-studio slots via
-  `art_studio.html`. Pilot on Salmonberry (title + 5 endings), then
-  sweep the catalog studio by studio. The old flat-vector HeroImage
-  scenes remain only as fallbacks.
+- **P0 · Painted-art retrofit pilot** (gate 1) — CORRECTED direction
+  (2026-08-30): full-res modern painted illustration at 1280×720, NO
+  era filter (`svga_quantize` retired — it was our-timeline retro
+  cosplay). Pilot on Salmonberry (title + 5 endings), then sweep the
+  catalog studio by studio. The old flat-vector HeroImage scenes
+  remain only as fallbacks.
 - **P1 · Estuary 4 thinness pass** — the last thinness-cluster stick
   still bare (art through the new pipeline + a BGM pass).
 - **SHIPPED 2026-07 · Salmonberry Wave A: the town overworld (v1)**

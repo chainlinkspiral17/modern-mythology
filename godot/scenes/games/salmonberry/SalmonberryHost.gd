@@ -155,15 +155,14 @@ func _build_title_screen() -> void:
 	sand.offset_top = -150
 	_title_root.add_child(sand)
 
-	# SVGA-era painted art FIRST (the 2026-07 direction change:
-	# painted source pressed through the 256-color era filter);
+	# Full-res painted art FIRST (slowsticks are modern games from
+	# an alternate timeline; no era-filter degradation);
 	# the flat-vector HeroImage stays as the fallback, per the
 	# sprite playbook's never-remove-the-fallback rule.
 	var era_tex: Texture2D = load("res://assets/art/salmonberry/title.png") if ResourceLoader.exists("res://assets/art/salmonberry/title.png") else null
 	if era_tex != null:
 		var etr := TextureRect.new()
 		etr.texture = era_tex
-		etr.texture_filter = CanvasItem.TEXTURE_FILTER_NEAREST
 		etr.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
 		etr.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_COVERED
 		_title_root.add_child(etr)
@@ -337,7 +336,6 @@ func _on_year_over(result: Dictionary) -> void:
 		tr.texture = hero.texture(Vector2i(1120, 630))
 		tr.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
 		tr.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_COVERED
-		tr.texture_filter = CanvasItem.TEXTURE_FILTER_NEAREST
 		tr.mouse_filter = Control.MOUSE_FILTER_IGNORE
 		tr.modulate.a = 0.4
 		_ending_root.add_child(tr)

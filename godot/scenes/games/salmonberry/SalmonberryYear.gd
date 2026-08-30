@@ -259,7 +259,6 @@ func _paint_backdrop() -> void:
 	if ResourceLoader.exists(art):
 		var tr := TextureRect.new()
 		tr.texture = load(art)
-		tr.texture_filter = CanvasItem.TEXTURE_FILTER_NEAREST
 		tr.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
 		tr.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_COVERED
 		tr.modulate = Color(1, 1, 1, 0.92)

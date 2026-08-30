@@ -1,6 +1,11 @@
 #!/usr/bin/env python3
 """
-svga_quantize.py — the ERA FILTER.
+svga_quantize.py — the ERA FILTER. ⚠ RETIRED for shipped assets
+(2026-08-30, THE CORRECTION in _SLOWSTICK_AESTHETIC_BIBLE.md):
+slowsticks are sophisticated modern games from an alternate timeline;
+crunching art to our timeline's early-90s PC limits was retro cosplay.
+Nothing in godot/assets/art/ passes through this anymore. Kept on disk
+as the record of the wrong turn.
 
 The alt-reality prism, made literal: take a modern painted source image
 (an AI-generated background, or any high-res painting) and press it
