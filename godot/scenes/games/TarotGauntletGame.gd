@@ -592,6 +592,11 @@ const _SFX_BANK_KEYS := {
 	"lore_token":      "lore_token_reveal",
 	"bundle":          "hand_deal",
 	"visitor_connect": "visitor_arrive",
+	# dice_roll and bell_tone had NO bank mapping and their .ogg
+	# fallbacks never existed — "ring the BELL" (a player verb)
+	# played silence. Mapped to authored presets.
+	"dice_roll":       "hand_deal",
+	"bell_tone":       "harbor_bell",
 }
 
 

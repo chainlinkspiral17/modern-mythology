@@ -3418,6 +3418,13 @@ func _on_advance_day() -> void:
 	# weekly spawn pass fires only on Sunday nights (day 7, 14, 21,
 	# ...) per spec §Problems.
 	for r_id in _region_state:
+		# "_globals" is the effect interpreter's pseudo-region
+		# (set_global stores into _region_state["_globals"]). The
+		# QA summer sim caught the tick loops treating it as a real
+		# region: 108 script errors over the back half of a summer,
+		# one pair per day from the first set_global onward.
+		if String(r_id).begins_with("_"):
+			continue
 		_tick_region_problems(r_id)
 		_tick_region_escalation(r_id)
 	if _is_sunday(_day):
@@ -4708,6 +4715,8 @@ func _tick_region_escalation(r_id: String) -> void:
 	# Per-day escalation accumulator. The weekly spawn pass on
 	# Sunday reads escalation_progress + active problem load to
 	# decide how many problems to spawn for this region (0-2).
+	if not _regions.has(r_id):
+		return
 	var r: Dictionary = _regions[r_id]
 	var st: Dictionary = _region_state[r_id]
 	var clock: float = float(r.get("escalation_clock_days", 6))
@@ -5965,6 +5974,8 @@ func _run_weekly_spawn() -> void:
 		_spawn_weekly_problems_for_region(r_id)
 	# Reset all escalation accumulators after the weekly pass.
 	for r_id in _region_state:
+		if String(r_id).begins_with("_"):
+			continue
 		_region_state[r_id]["escalation_progress"] = 0.0
 	# Resume strategic-day BGM after Sunday BBS night. Safe to call
 	# every week — if the BGM's already this track, it's a no-op.

@@ -25,3 +25,9 @@ godot/assets/3d/meshy/**/*.glb
 godot/tools/art/.image_key
 godot/tools/art/*.config.json
 **/*.src.png
+# Godot 4.6 UID sidecars + textures extracted by GLB import — both
+# regenerate on any machine's import; never commit them.
+*.uid
+godot/assets/3d/characters/heroes/*_[0-9].jpg
+godot/assets/3d/characters/heroes/*_Image_[0-9].jpg
+godot/assets/3d/characters/heroes/*_normal.png

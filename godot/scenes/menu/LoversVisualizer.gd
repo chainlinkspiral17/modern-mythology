@@ -87,7 +87,7 @@ const MIRROR_STAGES := [
 
 
 func _init() -> void:
-	_card_path  = "res://assets/gallery/lovers_back.png"
+	_card_path  = "res://assets/gallery/lovers.png"
 	_composition_path = ""
 	_hooks_path = "res://resources/puzzle_hooks/lovers.json"
 	_ambient_audio_path = "res://assets/audio/bgm/vol5_riverboat_drone.ogg"
