@@ -25,7 +25,6 @@ Usage:
 import argparse, sys, os, math
 import numpy as np
 from PIL import Image, ImageDraw, ImageFilter
-import svga_quantize
 
 RGB = tuple
 
