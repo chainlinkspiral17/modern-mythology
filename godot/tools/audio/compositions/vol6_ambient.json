@@ -1,0 +1,193 @@
+{
+ "meta": {
+  "title": "harmony creek, monday",
+  "composer": "the Estates at street level",
+  "for": "vol6 ch2/ch3 \u00b7 gas oracles + circle k \u00b7 suburb morning bed",
+  "notes": "Major chords with the volume of a lawn: the Estates dressed up as themselves. Cooler hum from the store, twice a glint of arpeggio like sprinkler water catching the light. The brightest bed in the set and still a whisper."
+ },
+ "tempo_bpm": 80,
+ "time_sig": [
+  4,
+  4
+ ],
+ "sample_rate": 44100,
+ "tracks": [
+  {
+   "instrument": "ambient_drone",
+   "gain": 0.13,
+   "notes": [
+    {
+     "pitch": "C2",
+     "bar": 1,
+     "beat": 1,
+     "dur": 64.0,
+     "vel": 0.34
+    }
+   ]
+  },
+  {
+   "instrument": "fluorescent_hum",
+   "gain": 0.06,
+   "notes": [
+    {
+     "pitch": "C3",
+     "bar": 1,
+     "beat": 1,
+     "dur": 64.0,
+     "vel": 0.4
+    }
+   ]
+  },
+  {
+   "instrument": "slowstick_pad",
+   "gain": 0.16,
+   "notes": [
+    {
+     "pitch": "C3",
+     "bar": 1,
+     "beat": 1,
+     "dur": 16.0,
+     "vel": 0.3
+    },
+    {
+     "pitch": "E3",
+     "bar": 1,
+     "beat": 1,
+     "dur": 16.0,
+     "vel": 0.24
+    },
+    {
+     "pitch": "G3",
+     "bar": 1,
+     "beat": 1,
+     "dur": 16.0,
+     "vel": 0.2
+    },
+    {
+     "pitch": "F3",
+     "bar": 5,
+     "beat": 1,
+     "dur": 16.0,
+     "vel": 0.3
+    },
+    {
+     "pitch": "A3",
+     "bar": 5,
+     "beat": 1,
+     "dur": 16.0,
+     "vel": 0.24
+    },
+    {
+     "pitch": "C4",
+     "bar": 5,
+     "beat": 1,
+     "dur": 16.0,
+     "vel": 0.18
+    },
+    {
+     "pitch": "C3",
+     "bar": 9,
+     "beat": 1,
+     "dur": 16.0,
+     "vel": 0.3
+    },
+    {
+     "pitch": "E3",
+     "bar": 9,
+     "beat": 1,
+     "dur": 16.0,
+     "vel": 0.24
+    },
+    {
+     "pitch": "G3",
+     "bar": 9,
+     "beat": 1,
+     "dur": 16.0,
+     "vel": 0.2
+    },
+    {
+     "pitch": "G3",
+     "bar": 13,
+     "beat": 1,
+     "dur": 16.0,
+     "vel": 0.28
+    },
+    {
+     "pitch": "B3",
+     "bar": 13,
+     "beat": 1,
+     "dur": 16.0,
+     "vel": 0.22
+    },
+    {
+     "pitch": "D4",
+     "bar": 13,
+     "beat": 1,
+     "dur": 16.0,
+     "vel": 0.16
+    }
+   ]
+  },
+  {
+   "instrument": "chiptune_arp",
+   "gain": 0.05,
+   "notes": [
+    {
+     "pitch": "C5",
+     "bar": 4,
+     "beat": 1,
+     "dur": 0.5,
+     "vel": 0.4
+    },
+    {
+     "pitch": "E5",
+     "bar": 4,
+     "beat": 2,
+     "dur": 0.5,
+     "vel": 0.36
+    },
+    {
+     "pitch": "G5",
+     "bar": 4,
+     "beat": 3,
+     "dur": 0.5,
+     "vel": 0.4
+    },
+    {
+     "pitch": "C5",
+     "bar": 12,
+     "beat": 1,
+     "dur": 0.5,
+     "vel": 0.4
+    },
+    {
+     "pitch": "G5",
+     "bar": 12,
+     "beat": 2,
+     "dur": 0.5,
+     "vel": 0.36
+    },
+    {
+     "pitch": "E5",
+     "bar": 12,
+     "beat": 3,
+     "dur": 0.5,
+     "vel": 0.34
+    }
+   ]
+  },
+  {
+   "instrument": "soft_sine",
+   "gain": 0.09,
+   "notes": [
+    {
+     "pitch": "E5",
+     "bar": 8,
+     "beat": 1,
+     "dur": 2.0,
+     "vel": 0.24
+    }
+   ]
+  }
+ ]
+}

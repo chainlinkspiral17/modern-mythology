@@ -1,0 +1,110 @@
+{
+ "meta": {
+  "title": "the missing link, open late",
+  "composer": "the diner itself",
+  "for": "vol1 interlude \u00b7 The Missing Link \u00b7 warm-yellow-light diner bed",
+  "notes": "A rectangle of warm light on wet asphalt: enamel-sign hum, warm sevenths, and one door-bell tone at bar 11 for a customer who may not exist. The retired gas pump contributes silence."
+ },
+ "tempo_bpm": 68,
+ "time_sig": [
+  4,
+  4
+ ],
+ "sample_rate": 44100,
+ "tracks": [
+  {
+   "instrument": "fluorescent_hum",
+   "gain": 0.1,
+   "notes": [
+    {
+     "pitch": "G2",
+     "bar": 1,
+     "beat": 1,
+     "dur": 64.0,
+     "vel": 0.5
+    }
+   ]
+  },
+  {
+   "instrument": "ambient_drone",
+   "gain": 0.19,
+   "notes": [
+    {
+     "pitch": "G2",
+     "bar": 1,
+     "beat": 1,
+     "dur": 64.0,
+     "vel": 0.4
+    }
+   ]
+  },
+  {
+   "instrument": "slowstick_pad",
+   "gain": 0.14,
+   "notes": [
+    {
+     "pitch": "G3",
+     "bar": 1,
+     "beat": 1,
+     "dur": 32.0,
+     "vel": 0.28
+    },
+    {
+     "pitch": "B3",
+     "bar": 1,
+     "beat": 1,
+     "dur": 32.0,
+     "vel": 0.22
+    },
+    {
+     "pitch": "D4",
+     "bar": 1,
+     "beat": 1,
+     "dur": 32.0,
+     "vel": 0.2
+    },
+    {
+     "pitch": "F#4",
+     "bar": 1,
+     "beat": 1,
+     "dur": 32.0,
+     "vel": 0.14
+    },
+    {
+     "pitch": "C4",
+     "bar": 9,
+     "beat": 1,
+     "dur": 32.0,
+     "vel": 0.24
+    },
+    {
+     "pitch": "E4",
+     "bar": 9,
+     "beat": 1,
+     "dur": 32.0,
+     "vel": 0.2
+    },
+    {
+     "pitch": "G4",
+     "bar": 9,
+     "beat": 1,
+     "dur": 32.0,
+     "vel": 0.14
+    }
+   ]
+  },
+  {
+   "instrument": "soft_sine",
+   "gain": 0.12,
+   "notes": [
+    {
+     "pitch": "D5",
+     "bar": 11,
+     "beat": 2,
+     "dur": 2.0,
+     "vel": 0.3
+    }
+   ]
+  }
+ ]
+}

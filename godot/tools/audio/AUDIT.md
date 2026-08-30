@@ -148,6 +148,24 @@ locale loops. Follow-up audio the current systems need:
 
 ---
 
+## VN CHAPTER BEDS · vols 1-7 (2026-08-30 wave)
+
+The vn_story_audit's first run found ten chapter-opening `bgm`
+directives pointing at files that never existed — those chapters
+had opened in silence since authoring. All ten authored as quiet
+under-the-text compositions and rendered:
+
+- [rendered] `bgm/vol1_club_thump.wav` — the Underworld club through the wall (4-on-floor bass, corridor register). Authored: `vol1_club_thump.json`.
+- [rendered] `bgm/vol1_drive_night.wav` — Judgement Day night drive (road drone, tire hiss, passing-light sines).
+- [rendered] `bgm/vol1_dream_drone.wav` — Dream States (semitone drone beat, images that don't explain themselves).
+- [rendered] `bgm/vol1_diner_ambient.wav` — the Missing Link (enamel-sign hum, warm sevenths, one door-bell).
+- [rendered] `bgm/vol2_rest_stop_wind.wav` — Briar Falls rest area (two wind swells, almost absent).
+- [rendered] `bgm/vol2_ambient.wav` — the memoir bed (plain F chords, a fragment almost started twice; serves title + ch1).
+- [rendered] `bgm/vol2_seagash_drone.wav` — the Siren of Seagash (surf swells, half-step siren dyad at distance).
+- [rendered] `bgm/vol6_ambient.wav` — Harmony Creek Monday (major chords at lawn volume, cooler hum, sprinkler arp).
+- [rendered] `bgm/vol7_apartment_rain.wav` — Lena's apartment (rain carried warm; serves ch6/ch7/ch8).
+- [rendered] `bgm/vol7_rain_on_roof.wav` — The Dark (the same rain, heavier and above you).
+
 ## SHARED · engine + menu
 
 - [preset]  `sfx/ui/menu_open.wav` — Any modal open.

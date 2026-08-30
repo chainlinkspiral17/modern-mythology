@@ -44,6 +44,18 @@ AOUT="$(python3 marker_aim_audit.py 2>/dev/null | grep -v "^\[")" || {
 echo "$AOUT" | tail -2
 echo ""
 
+# ── VN story gate (2026-08-30) ─────────────────────────────────
+# Every directive in every chapter must RESOLVE: bg presets, CG
+# paths, jump targets, moods, beats, panels, bgm/sfx files. The
+# engine degrades gracefully on all of these, which is exactly why
+# they rot unnoticed (ten chapters opened in silence for months —
+# their bgm files never existed). Nonzero exit fails.
+echo "── vn_story_audit.py ──"
+SOUT="$(python3 vn_story_audit.py 2>/dev/null)" || {
+    echo "$SOUT" | grep "PROBLEM"; exit 1; }
+echo "$SOUT" | tail -2
+echo ""
+
 # ── Prop-overlap ZERO-REGRESSION gate (2026-08-11) ─────────────
 # Every locale audits clean except four known holdouts. A locale
 # outside the allowlist reporting ANY clips is a regression; a
