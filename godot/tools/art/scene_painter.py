@@ -323,21 +323,43 @@ def salmonberry_title(H, W):
 
 
 def salmonberry_song(H, W):
-    arr = sky(H, W, [(0.0, C["night"]), (1.0, (16, 20, 28))])
-    # warm room glow
-    glow(arr, W * 0.32, H * 0.55, W * 0.5, C["lamp"], 0.45)
-    # the window frame + warm pane
-    fill_poly(arr, [(W * 0.14, H * 0.28), (W * 0.5, H * 0.28), (W * 0.5, H * 0.9), (W * 0.14, H * 0.9)], C["wood"], blur=1)
-    fill_poly(arr, [(W * 0.17, H * 0.33), (W * 0.47, H * 0.33), (W * 0.47, H * 0.86), (W * 0.17, H * 0.86)], C["window"], blur=2)
-    tex(arr, _mask(H, W, [(W * 0.17, H * 0.33), (W * 0.47, H * 0.33), (W * 0.47, H * 0.86), (W * 0.17, H * 0.86)]), 24, seed=5, scale=8)
-    # the grandmother, a soft silhouette at the window
-    fill_poly(arr, [(W * 0.27, H * 0.5), (W * 0.37, H * 0.5), (W * 0.37, H * 0.86), (W * 0.27, H * 0.86)], (60, 44, 40), blur=2)
-    glow(arr, W * 0.32, H * 0.47, W * 0.05, (40, 30, 28), 0.9)
-    # the melody, notes rising out into the dark
-    rng = np.random.default_rng(2)
+    """Night, from the yard: the dark gable of the house against
+    the spruce line, ONE lit window with the grandmother's head-
+    and-shoulders silhouette in it, warm light spilling onto the
+    sill and the grass below, the melody rising into the dark.
+    (Draft 1 rendered the window floating in void with no house —
+    the light must belong to a building.)"""
+    arr = sky(H, W, [(0.0, C["night"]), (0.7, (20, 26, 36)), (1.0, (14, 18, 26))])
+    glow(arr, W * 0.82, H * 0.14, W * 0.18, (180, 190, 210), 0.25)   # moon haze
+    # spruce line behind the roof
+    sprucerow(arr, 0, W, int(H * 0.42), (16, 22, 20), seed=13, blur=1.5)
+    # the house: gable mass filling the left, roofline against night
+    grad_poly(arr, [(0, H), (0, H * 0.30), (W * 0.30, H * 0.18), (W * 0.60, H * 0.30), (W * 0.60, H)],
+              (44, 34, 30), (26, 20, 18), blur=0.8)
+    fill_poly(arr, [(0, H * 0.305), (W * 0.30, H * 0.185), (W * 0.60, H * 0.305), (W * 0.60, H * 0.32), (W * 0.30, H * 0.20), (0, H * 0.32)], (60, 48, 40), blur=0.8)
+    # eave shadow under the roofline
+    fill_poly(arr, [(0, H * 0.32), (W * 0.60, H * 0.32), (W * 0.60, H * 0.36), (0, H * 0.36)], (14, 12, 12), blur=2, opacity=0.6)
+    # THE WINDOW · framed, mullioned, warm
+    wx0, wy0, ww2, wh2 = W * 0.30, H * 0.44, W * 0.115, H * 0.24
+    fill_poly(arr, [(wx0 - 6, wy0 - 6), (wx0 + ww2 + 6, wy0 - 6), (wx0 + ww2 + 6, wy0 + wh2 + 6), (wx0 - 6, wy0 + wh2 + 6)], (66, 52, 40), blur=0.5)
+    grad_poly(arr, [(wx0, wy0), (wx0 + ww2, wy0), (wx0 + ww2, wy0 + wh2), (wx0, wy0 + wh2)], (255, 224, 150), (216, 168, 96), blur=0.6)
+    # the grandmother: head + shoulders, low in the pane
+    fill_poly(arr, [(wx0 + ww2 * 0.30, wy0 + wh2), (wx0 + ww2 * 0.30, wy0 + wh2 * 0.62),
+                    (wx0 + ww2 * 0.38, wy0 + wh2 * 0.50), (wx0 + ww2 * 0.44, wy0 + wh2 * 0.40),
+                    (wx0 + ww2 * 0.56, wy0 + wh2 * 0.40), (wx0 + ww2 * 0.62, wy0 + wh2 * 0.50),
+                    (wx0 + ww2 * 0.72, wy0 + wh2 * 0.62), (wx0 + ww2 * 0.72, wy0 + wh2)],
+              (56, 40, 34), blur=1.0)
+    # mullion cross OVER pane + figure
+    fill_poly(arr, [(wx0 + ww2 * 0.48, wy0), (wx0 + ww2 * 0.52, wy0), (wx0 + ww2 * 0.52, wy0 + wh2), (wx0 + ww2 * 0.48, wy0 + wh2)], (66, 52, 40), blur=0.3)
+    fill_poly(arr, [(wx0, wy0 + wh2 * 0.46), (wx0 + ww2, wy0 + wh2 * 0.46), (wx0 + ww2, wy0 + wh2 * 0.52), (wx0, wy0 + wh2 * 0.52)], (66, 52, 40), blur=0.3)
+    # light spill: sill ledge, then a soft pool on the grass
+    fill_poly(arr, [(wx0 - 8, wy0 + wh2 + 6), (wx0 + ww2 + 8, wy0 + wh2 + 6), (wx0 + ww2 + 10, wy0 + wh2 + 12), (wx0 - 10, wy0 + wh2 + 12)], (120, 96, 64), blur=0.6)
+    glow(arr, wx0 + ww2 / 2, wy0 + wh2 / 2, W * 0.13, C["lamp"], 0.5)
+    fill_poly(arr, [(wx0 - ww2 * 0.3, H), (wx0 + ww2 * 0.35, wy0 + wh2 + 12), (wx0 + ww2 * 0.65, wy0 + wh2 + 12), (wx0 + ww2 * 1.3, H)], (96, 74, 46), blur=6, opacity=0.4)
+    # the melody, rising past the eave into the night
     for i in range(7):
-        nx = W * (0.52 + i * 0.06); ny = H * (0.55 - i * 0.05)
-        glow(arr, nx, ny, W * 0.02, C["gold"], 0.7)
+        nx = wx0 + ww2 + W * (0.04 + i * 0.055); ny = wy0 - H * (0.02 + i * 0.05)
+        glow(arr, nx, ny, W * 0.016, C["gold"], 0.75)
     vignette(arr, 0.5)
     return arr
 
@@ -619,16 +641,27 @@ def estuary4_watershed(H, W):
           (W * 0.54, H * 0.95), (W * 0.5, H)]
     for i in range(len(ch) - 1):
         (x0, y0), (x1, y1) = ch[i], ch[i + 1]
-        wd0 = 8 + i * 3; wd1 = 8 + (i + 1) * 3
+        wd0 = 13 + i * 3; wd1 = 13 + (i + 1) * 3
         fill_poly(arr, [(x0 - wd0 - 6, y0), (x1 - wd1 - 6, y1), (x1 + wd1 + 6, y1), (x0 + wd0 + 6, y0)], (146, 128, 96), blur=2, opacity=0.8)
         fill_poly(arr, [(x0 - wd0, y0), (x1 - wd1, y1), (x1 + wd1, y1), (x0 + wd0, y0)], (140, 168, 176), blur=1.5)
     # the tide gate at the channel head: timber frame + wing walls
-    gx, gy = W * 0.5, hz + 6
-    fill_poly(arr, [(gx - 26, gy - 22), (gx + 26, gy - 22), (gx + 26, gy - 16), (gx - 26, gy - 16)], (108, 84, 56), blur=0.6)
-    for px in (gx - 22, gx, gx + 22):
-        fill_poly(arr, [(px - 3, gy - 20), (px + 3, gy - 20), (px + 3, gy + 10), (px - 3, gy + 10)], (96, 74, 50), blur=0.5)
-    fill_poly(arr, [(gx - 46, gy - 4), (gx - 22, gy - 10), (gx - 22, gy + 6), (gx - 46, gy + 8)], (120, 96, 64), blur=0.8)
-    fill_poly(arr, [(gx + 22, gy - 10), (gx + 46, gy - 4), (gx + 46, gy + 8), (gx + 22, gy + 6)], (120, 96, 64), blur=0.8)
+    # The impounded reach BEYOND the gate — a tide gate holds
+    # water on both sides, at two levels; without the far water
+    # the structure reads beached on grass.
+    fill_poly(arr, [(W * 0.5 - 34, hz - 16), (W * 0.5 + 34, hz - 16), (W * 0.5 + 26, hz + 6), (W * 0.5 - 26, hz + 6)], (150, 176, 182), blur=1.5)
+    # The gate stands IN the channel mouth: mud berms first, then
+    # posts whose feet enter the water, then the cap beam. (The
+    # first draft's beam+posts floated over the grass.)
+    gx, gy = W * 0.5, hz + 10
+    fill_poly(arr, [(gx - 52, gy + 12), (gx - 20, gy + 2), (gx - 20, gy + 16), (gx - 48, gy + 22)], (132, 112, 84), blur=1.5)
+    fill_poly(arr, [(gx + 20, gy + 2), (gx + 52, gy + 12), (gx + 48, gy + 22), (gx + 20, gy + 16)], (132, 112, 84), blur=1.5)
+    for px in (gx - 16, gx, gx + 16):
+        fill_poly(arr, [(px - 3, gy - 26), (px + 3, gy - 26), (px + 3, gy + 14), (px - 3, gy + 14)], (86, 66, 44), blur=0.5)
+        # waterline lap at each post foot
+        fill_poly(arr, [(px - 5, gy + 12), (px + 5, gy + 12), (px + 6, gy + 15), (px - 6, gy + 15)], (170, 190, 194), blur=0.8, opacity=0.7)
+    fill_poly(arr, [(gx - 22, gy - 28), (gx + 22, gy - 28), (gx + 22, gy - 21), (gx - 22, gy - 21)], (108, 84, 56), blur=0.5)
+    # the raised gate leaf, half-lifted between the mid posts
+    fill_poly(arr, [(gx - 13, gy - 20), (gx + 13, gy - 20), (gx + 13, gy - 2), (gx - 13, gy - 2)], (74, 58, 40), blur=0.5)
     # THE HERON · one, standing in the channel's second bend
     bx, by = W * 0.44, H * 0.55
     fill_poly(arr, [(bx - 2, by), (bx + 2, by), (bx + 1, by + 22), (bx - 1, by + 22)], (90, 98, 104), blur=0.4)
