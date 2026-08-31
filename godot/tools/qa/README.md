@@ -61,6 +61,17 @@ cd <repo>/godot && $GODOT --headless --import     # once, ~5 min
   first honest run found the JSON-float Array.has(int) class that
   had hidden every month-gated activity since v2 (see the
   authoring playbook). Asserts ≥3 errands, ≥1 event, bonds grew.
+- `$GODOT --headless res://tools/qa/EstuaryFourSim.tscn` — PLAYS the
+  full Estuary 4 campaign (all four chapters) with a rational-player
+  season policy: repair damage, lash down when the glass drops, take
+  the grant, rest a worn crew, else careful work. First run PASSED
+  clean — the working season's first verification since it shipped.
+- `$GODOT --headless res://tools/qa/ResumeIntSanity.tscn` — the
+  regression net for the JSON-float resume class: writes a save the
+  way a real round-trip leaves it (numbers → floats), boots the
+  host, asserts the saved int arrays are ints again and .has(int)
+  matches. Covers Fey Faire shows_attended + Riffrocker
+  meetings_attended; add a block per new saved number array.
 - `$GODOT --headless res://tools/qa/CPEndlessSim.tscn` — runs
   SEPTEMBER AND AFTER seeded from the campaign save CPSimSweep
   leaves in slot 3: ratcheting spawns, rhythm pools, milestones,
