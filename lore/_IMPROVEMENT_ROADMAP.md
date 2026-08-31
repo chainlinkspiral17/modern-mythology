@@ -856,6 +856,16 @@ staged like that, using still camera set-ups and camera motion."*
 
 ### Tarot Gauntlet (vol 5 inset)
 
+- **THE ENDING-CG PROGRAM (2026-08-31, active · board-per-wave)** —
+  _win_cg_path/_loss_cg_path are data-driven now: art drops in at
+  assets/cg/gauntlet_<arcana>_<id>.png, zero code. Scope: 64 win
+  thresholds + 97 loss finales across 22 boards. SHIPPED: Fool (8,
+  original filenames), Magician (10), Priestess (7), Empress (7) —
+  the vol5 opening trio complete. Method: compose from each
+  ending's own prose; visually REVIEW every render before shipping
+  (three pareidolia strikes and two floating-object catches so far
+  — symmetric circles + a vertical WILL become a face; a tabletop
+  needs its cloth drop). NEXT: Emperor, then down the arcana order.
 - **P2 · Painted visitor/card plates** (gate 1) — the procedural
   bust fallback works; painted marquee-visitor plates would lift the
   most-seen screens. Low urgency after the recent look-table pass.
