@@ -154,6 +154,7 @@ func boot(state: Dictionary) -> void:
 		_s["bond_touch"] = seeded
 	if not _s.has("events_taken"): _s["events_taken"] = []
 	if not _s.has("errands_done"): _s["errands_done"] = []
+	if not _s.has("counters"): _s["counters"] = {}
 	if not _s.has("board_month"): _s["board_month"] = -1
 	if not _s.has("seed"): _s["seed"] = randi() % 100000
 	_render()
@@ -735,6 +736,13 @@ func _on_activity(act: Dictionary, is_event: bool) -> void:
 			lines.append_array(_grant_clue(String(act["clue"])))
 		if act.has("flag"):
 			_s[String(act["flag"])] = true
+		if act.has("counter"):
+			# Counted threads (letters home, etc.) — small numbers the
+			# year reads back at the end.
+			var counters: Dictionary = _s.get("counters", {})
+			var ck := String(act["counter"])
+			counters[ck] = int(counters.get(ck, 0)) + 1
+			_s["counters"] = counters
 		if act.has("journal") and tier >= 1:
 			var j: Array = _s["journal"]
 			var entry: String = String(act["journal"])
@@ -1180,6 +1188,14 @@ func _resolve_crisis(results: Dictionary) -> void:
 			parts.append("Estelle would not leave the window that faces the bar, and then, for you, she did.")
 		_s["helped_wave"] = true
 
+	# June, if she ran the night with you (bond ≥ 3 · WAVE D+1)
+	if bool(results.get("june_ran", false)):
+		lines.append_array(_raise_bond("june", 2))
+		if saved.has("cannery"):
+			parts.append("June was on the pier before you tied off, calling her father's crew by name up out of the dark. Some of them tell it later as the night Manny's girl ran the water. She always corrects them: we.")
+		else:
+			parts.append("June ran the whole night beside you and never once asked whose plan it was.")
+
 	# Vovo, always — the night ends on the hill either way
 	lines.append_array(_raise_bond("gran", 1))
 	apts["grit"] = int(apts.get("grit", 0)) + 1
@@ -1246,6 +1262,13 @@ func _end_year() -> void:
 		coda += " You know a little of what the town will not say aloud about the boat that did not come back."
 	if int(_s.get("strain", 0)) >= 3:
 		coda += " The flour tin was empty more months than it was not, and that is in the ledger of the year too."
+	# The letters-home thread reads back: homesickness that either
+	# resolved into belonging or almost did.
+	var letters: int = int((_s.get("counters", {}) as Dictionary).get("letters", 0))
+	if letters >= 6 and register == "leaver":
+		coda += " You wrote home every week at Opal's counter. The last letter said more about the town than about coming home; you mailed it anyway."
+	elif letters >= 6:
+		coda += " Somewhere in the spring the letters home got shorter — not because there was less to say, but because more of it could wait until summer."
 	year_over.emit({"state": _s, "register": register, "coda": coda})
 
 

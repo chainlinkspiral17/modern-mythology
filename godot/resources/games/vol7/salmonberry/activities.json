@@ -544,7 +544,8 @@
    "outcome_by_season": {
     "autumn": "The first letters are short because you don't know what to say to people who can't see the fog. You are learning to describe it.",
     "spring": "The letters run long now. You have to pay the two-cent difference. Opal calls it the tax on having things to say."
-   }
+   },
+   "counter": "letters"
   }
  ]
 }

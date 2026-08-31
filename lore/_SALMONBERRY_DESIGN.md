@@ -236,10 +236,20 @@ Tokens: `salmonberry_finished` always; `salmonberry_hands` /
     bonds grew. First honest run: 4 errands, 10 events, register
     KEEPER (the deeper year changed the ending — the system does
     what it is for).
-  - Wave D+1 targets: errand lines for ruth/iris/boyd/estelle windows
-    the sim's playstyle missed (verify reachable on Deck); June-bond
-    consequences at the wave night; letters-home as a homesickness
-    meter feeding the leaver/keeper registers.
+  - **Wave D+1 (SHIPPED same day) · June at the wave night +
+    letters-home:** at june ≥ 3 she runs Good Friday with you — at
+    the gate before you reach the road, +25 crisis speed, rescues
+    at 0.8 work (four hands), and she OPENS the cannery route (her
+    father's crew is on that pier; previously helped_boat-only).
+    The resolution knows: "the night Manny's girl ran the water.
+    She always corrects them: we." Letters-home is a counted
+    thread now (activity `counter` vocab → state.counters); six or
+    more letters shapes the coda — the leaver who almost stayed
+    ("the last letter said more about the town than about coming
+    home") vs. homesickness resolving into belonging ("more of it
+    could wait until summer").
+  - Deck-verify: errand pacing and window reachability for
+    ruth/iris/boyd/estelle under normal play; June's crisis feel.
 - **Wave E · audio + art (DONE 2026-07-22, core):** the year bed
   `coast.wav` IS the Rocha melody quoted from `hnn_one_melody` at its
   source; `harbor_bell` SFX for Good Friday; ambient one-shots wired

@@ -132,6 +132,7 @@ var _flood_y: float = 580.0
 var _rescues: Array = []        # completed target ids
 var _rescue_busy: String = ""   # target mid-rescue
 var _rescue_left: float = 0.0
+var _june_with_you: bool = false  # june bond ≥ 3 · runs the night with you
 var _crisis_speed: float = 190.0
 var _crisis_done: bool = false
 
@@ -176,9 +177,17 @@ func boot_crisis(state: Dictionary) -> void:
 	_rescue_busy = ""
 	_crisis_done = false
 	_crisis_speed = 240.0 if (state.get("gear", []) as Array).has("bicycle") else 190.0
+	# WAVE D+1 · June runs the night with you. A real friendship is
+	# worth legs and hands when the water is coming: she knows every
+	# shortcut, and her father's crew is on that pier.
+	_june_with_you = int(_bonds.get("june", 0)) >= 3
+	if _june_with_you:
+		_crisis_speed += 25.0
 	_hdr_lbl.text = "SALMONBERRY · MARCH 1964 · GOOD FRIDAY"
 	_hint_lbl.text = "arrows run · E where it matters"
 	_msg("The bell. The water has gone out — too far out. It is coming back. Vovo is at the house; E there ends the night, up the hill.")
+	if _june_with_you:
+		_msg("June is at the gate before you reach the road. She doesn't ask. She just falls in beside you.")
 	_sfx("harbor_bell", 1.0)
 	queue_redraw()
 
@@ -191,7 +200,9 @@ func _crisis_available(tid: String) -> bool:
 		"dock":
 			return int(apts.get("sea", 0)) >= 3 or int(_bonds.get("del", 0)) >= 2
 		"cannery":
-			return bool(_crisis_state.get("helped_boat", false))
+			# The night off the bar taught you the skiff — or June did,
+			# whose father's crew is standing on that pier.
+			return bool(_crisis_state.get("helped_boat", false)) or _june_with_you
 		"estelle":
 			return int(_bonds.get("estelle", 0)) >= 2 or int(apts.get("heart", 0)) >= 3 				or _crisis_thread_ready()
 	return false
@@ -265,6 +276,9 @@ func _crisis_interact() -> void:
 		return
 	_rescue_busy = pid
 	_rescue_left = float((RESCUES[pid] as Dictionary)["work"])
+	if _june_with_you:
+		# four hands are faster than two
+		_rescue_left *= 0.8
 	_msg("(" + String((RESCUES[pid] as Dictionary)["label"]) + " — hold on. This takes what it takes.)")
 
 
@@ -276,6 +290,7 @@ func _end_crisis(forced: bool) -> void:
 		"saved": _rescues.duplicate(),
 		"told_estelle": _rescues.has("estelle") and _crisis_thread_ready(),
 		"forced": forced,
+		"june_ran": _june_with_you,
 	})
 
 
