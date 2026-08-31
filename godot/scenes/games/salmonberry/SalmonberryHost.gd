@@ -394,7 +394,10 @@ func _finish_run(register: String) -> void:
 		tokens.append(reg_token)
 	if bool(_run_state.get("helped_wave", false)) and not tokens.has("salmonberry_the_wave"):
 		tokens.append("salmonberry_the_wave")
-	if not tokens.has("salmonberry_faire_seen"):
+	# WAVE D fix: the '76 seed is EARNED, not automatic — you only
+	# carry the Faire forward if you actually stood on that lot
+	# (the travelling-show event, or June's show-day errand).
+	if bool(_run_state.get("faire_seen", false)) and not tokens.has("salmonberry_faire_seen"):
 		tokens.append("salmonberry_faire_seen")
 	_run_state["lore_tokens_pending"] = tokens
 	OneironauticsTokens.add_many(tokens)

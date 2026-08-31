@@ -288,6 +288,28 @@ zoom. Run this checklist over every zone of every stick.
 
 ## Recent lessons
 
+### 2026-08-31 · Array.has(int) is FALSE against JSON numbers (shipped-bug class)
+
+- **JSON numbers parse as FLOATS, and Godot 4's Array.has() compares
+  typed: `[0.0, 1.0].has(1)` is false.** Salmonberry's Year gated
+  activities on `months.has(month)` — so clamming, the fall cannery
+  line, berry picking, row the bay, and storm watch NEVER appeared
+  in the week menu from the v2 depth pass until Wave D's sim caught
+  it. A whole seasonal layer, silently absent, and nothing errored.
+- **The fix is int-compare in the loop** (`if int(m_v) == month`),
+  or the double-check SalmonberryTown already used
+  (`months.has(float(m)) or months.has(m)`). When gating on a
+  JSON-loaded number array, NEVER bare `.has(int_var)`.
+- **The detection that generalizes:** a day-one sim driver playing
+  through the real UI. The static checkers can't see this class —
+  the code is syntactically and type-inference clean. The sim's
+  empty `errands=[]` was one probe away from the root cause.
+- Wave D's errand system itself: one-shot bond-gated jobs are just
+  activities plus `errand:true` + `require {bond,min}` + a months
+  window, resolved through the same check pipeline and tracked in
+  `errands_done`. Reuse the pipeline; don't fork it.
+
+
 ### 2026-08-04 · PS production pass 2 · the audit is the deliverable
 
 - **Write the audit, then fix what it finds.** The user reported

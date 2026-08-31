@@ -274,7 +274,9 @@
    "outcome_alt": [
     "A whale goes past the windows mid-arithmetic and the teacher surrenders instantly and entirely.",
     "You get mail in the class post-office game from someone who signs only 'a friend', and spend the day being a detective."
-   ]
+   ],
+   "bond": "miss_alder",
+   "bond_amt": 1
   },
   {
    "id": "row_the_bay",
@@ -501,6 +503,48 @@
     "A name is inked out in the 1919 book. Under the lamp, at an angle, you can almost read it. Almost.",
     "Iris leaves you alone with the drawer this time. The trust is the finding."
    ]
+  },
+  {
+   "id": "fort_by_the_creek",
+   "label": "the fort by the creek, with June",
+   "blurb": "It is a real fort in that it exists and June says so.",
+   "energy": 2,
+   "outdoor": true,
+   "apts": {
+    "wild": 1,
+    "heart": 1
+   },
+   "bond": "june",
+   "bond_amt": 1,
+   "check": {
+    "apt": "wild",
+    "diff": 1
+   },
+   "outcome": "You and June work on the fort, which mostly means moving the good log to a better place and arguing about the roof. The creek keeps its own counsel.",
+   "outcome_strong": "The roof holds. It actually holds. June stands under it in the drizzle with her arms crossed like an architect, and you both know this is the finest structure on the coast.",
+   "outcome_rough": "The good log gets away from you both and rides the creek down to the culvert. June watches it go and pronounces it a burial at sea.",
+   "outcome_by_season": {
+    "winter": "Too wet to build, so the fort becomes a place to sit under the cedar and eat what Vovo packed and say almost nothing, which is a thing friends can do.",
+    "summer": "The creek is low and warm and the fort gets a dock, which is a plank. June christens it with a bottle of cream soda."
+   },
+   "journal": "A creek will take whatever you are not holding onto."
+  },
+  {
+   "id": "letters_home",
+   "label": "write letters home, at Opal's counter",
+   "blurb": "Opal keeps a pen on a chain that writes better than any pen you have ever owned.",
+   "energy": 1,
+   "apts": {
+    "word": 1,
+    "heart": 1
+   },
+   "bond": "opal",
+   "bond_amt": 1,
+   "outcome": "You write what happened this week, and leave out what you are saving to tell in person, and Opal weighs the letter and says it's a good one. She can tell by the ounces.",
+   "outcome_by_season": {
+    "autumn": "The first letters are short because you don't know what to say to people who can't see the fog. You are learning to describe it.",
+    "spring": "The letters run long now. You have to pay the two-cent difference. Opal calls it the tax on having things to say."
+   }
   }
  ]
 }

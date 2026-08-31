@@ -202,8 +202,44 @@ Tokens: `salmonberry_finished` always; `salmonberry_hands` /
   what you know.
 - **Wave C · the wave** — the March '64 tsunami as a real, playable
   crisis: what you saved is what you'd built.
-- **Wave D · deepen the roster** — the full townsfolk cast, seasonal
-  errands, the summer show ('76 seed).
+- **Wave D · deepen the roster (SHIPPED 2026-08-31):**
+  - **Three new townsfolk** fill the cast's missing registers: JUNE
+    (Manny's daughter, your own age — the peer bond an all-adult web
+    lacked; the fort by the creek), MISS ALDER (the schoolteacher,
+    first year, bonded via school_day), OPAL (the post office —
+    letters home, the two-cent tax on having things to say).
+  - **THE ERRAND SYSTEM** (errands.json + engine): 14 one-shot,
+    bond-gated, season-windowed jobs — what deepening a friendship
+    UNLOCKS. Same check/outcome vocabulary as activities plus
+    errand:true (tracked in state.errands_done), require {bond,min},
+    months = the window. At most two offered per week,
+    soonest-closing first; a closing window says so. Caulking Del's
+    skiff, the jetty light in the storm season, the Thanksgiving pie
+    run, Boyd's smoke shed overnight, Estelle's attic, the pastéis
+    with Vovo, the pageant, June's bluff dare, Opal's unclaimed
+    parcel, the show with June, properly.
+  - **The show is a three-beat June arc** ('76 seed): the posters go
+    up (9,1) → the show (9,2) → the lot after (9,3, the ring of
+    yellow grass). And the seed is EARNED now — salmonberry_faire_seen
+    was granted unconditionally at year end (a bug); it now requires
+    actually standing on that lot (travelling_show or june_show_day
+    sets flag faire_seen; the host gates the token on it).
+  - **A shipped bug the sim exposed:** JSON numbers parse as floats
+    and Array.has(int) compares typed — [0.0,1.0].has(1) is FALSE —
+    so every month-gated activity (clamming, the fall cannery line,
+    berry picking, row the bay, storm watch) had NEVER appeared in
+    the week menu since v2 shipped. SalmonberryTown already guarded
+    both types; the Year now compares as ints.
+  - **Day-one sim driver** (SalmonberryYearSim): plays the whole year
+    through the real UI, errands-first, resting when worn, crisis
+    skipped via the no-rescue path; asserts ≥3 errands, ≥1 event,
+    bonds grew. First honest run: 4 errands, 10 events, register
+    KEEPER (the deeper year changed the ending — the system does
+    what it is for).
+  - Wave D+1 targets: errand lines for ruth/iris/boyd/estelle windows
+    the sim's playstyle missed (verify reachable on Deck); June-bond
+    consequences at the wave night; letters-home as a homesickness
+    meter feeding the leaver/keeper registers.
 - **Wave E · audio + art (DONE 2026-07-22, core):** the year bed
   `coast.wav` IS the Rocha melody quoted from `hnn_one_melody` at its
   source; `harbor_bell` SFX for Good Friday; ambient one-shots wired

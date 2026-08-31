@@ -33,6 +33,7 @@ signal month_complete(state: Dictionary)
 signal year_over(result: Dictionary)
 
 const ACTS_PATH := "res://resources/games/vol7/salmonberry/activities.json"
+const ERRANDS_PATH := "res://resources/games/vol7/salmonberry/errands.json"
 const NPCS_PATH := "res://resources/games/vol7/salmonberry/npcs.json"
 const EVENTS_PATH := "res://resources/games/vol7/salmonberry/events.json"
 
@@ -118,6 +119,7 @@ const GEAR := [
 
 var _s: Dictionary = {}
 var _acts: Array = []
+var _errands: Array = []       # errands.json entries · WAVE D
 var _journal_total: int = 12
 var _npcs: Dictionary = {}     # id -> npc dict
 var _events: Array = []        # events.json entries
@@ -151,6 +153,7 @@ func boot(state: Dictionary) -> void:
 			seeded[String(id_v)] = now_week
 		_s["bond_touch"] = seeded
 	if not _s.has("events_taken"): _s["events_taken"] = []
+	if not _s.has("errands_done"): _s["errands_done"] = []
 	if not _s.has("board_month"): _s["board_month"] = -1
 	if not _s.has("seed"): _s["seed"] = randi() % 100000
 	_render()
@@ -166,6 +169,8 @@ func _load_data() -> void:
 		_npcs[String(npc.get("id", ""))] = npc
 	var e: Dictionary = _read_json(EVENTS_PATH)
 	_events = e.get("events", [])
+	var er: Dictionary = _read_json(ERRANDS_PATH)
+	_errands = er.get("errands", [])
 
 
 func _read_json(path: String) -> Dictionary:
@@ -418,6 +423,38 @@ func _render_week() -> void:
 		ebl.add_theme_color_override("font_color", C_DIM)
 		v.add_child(ebl)
 
+	# ── errands · WAVE D · what bonds unlock ─────────────────────
+	# One-shot, season-windowed jobs that only exist because somebody
+	# trusts you now. At most two offered per week (soonest-closing
+	# window first) so the menu stays a menu, not a job board.
+	var offered: Array = _errands_for(month)
+	for err_v in offered:
+		var err: Dictionary = err_v
+		var b := Button.new()
+		var blocked: String = _blocked_reason(err, wx)
+		b.text = "  ✚  %s   %s%s" % [String(err.get("label", "")),
+			_cost_tag(int(err.get("energy", 2)), wx, err), _effect_hint(err)]
+		b.add_theme_font_size_override("font_size", 14)
+		b.add_theme_color_override("font_color", C_SEA_TXT)
+		b.alignment = HORIZONTAL_ALIGNMENT_LEFT
+		var wm: Array = err.get("months", [])
+		var closing: bool = wm.is_empty() or int(wm[wm.size() - 1]) == month
+		b.tooltip_text = String(err.get("blurb", "")) + \
+			("\n\n(This is the last month for it.)" if closing else "")
+		if blocked != "":
+			b.disabled = true
+			b.text += "   — " + blocked
+		else:
+			b.pressed.connect(_on_activity.bind(err, false))
+		v.add_child(b)
+		var bl := Label.new()
+		bl.text = "      " + String(err.get("blurb", "")) + \
+			("  · the window is closing ·" if closing else "")
+		bl.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+		bl.add_theme_font_size_override("font_size", 12)
+		bl.add_theme_color_override("font_color", C_DIM)
+		v.add_child(bl)
+
 	var town_btn := Button.new()
 	town_btn.text = "  ·  WALK INTO TOWN  ·  "
 	town_btn.add_theme_font_size_override("font_size", 15)
@@ -498,6 +535,27 @@ func _forecast_line(month: int, week: int) -> String:
 		_:       return "The glass holds steady — fair week coming."
 
 
+func _errands_for(month: int) -> Array:
+	# Eligible = bond earned + inside the window + not yet done.
+	# Sorted so the soonest-to-vanish errand is offered first.
+	var done: Array = _s.get("errands_done", [])
+	var out: Array = []
+	for err_v in _errands:
+		var err: Dictionary = err_v
+		if done.has(String(err.get("id", ""))):
+			continue
+		if not _eligible(err, month):
+			continue
+		out.append(err)
+	out.sort_custom(func(a, b) -> bool:
+		var am: Array = (a as Dictionary).get("months", [])
+		var bm: Array = (b as Dictionary).get("months", [])
+		var ae: int = int(am[am.size() - 1]) if not am.is_empty() else 99
+		var be: int = int(bm[bm.size() - 1]) if not bm.is_empty() else 99
+		return ae < be)
+	return out.slice(0, 2)
+
+
 func _event_for(month: int, week: int) -> Dictionary:
 	var taken: Array = _s.get("events_taken", [])
 	for ev_v in _events:
@@ -512,8 +570,18 @@ func _event_for(month: int, week: int) -> Dictionary:
 
 func _eligible(act: Dictionary, month: int) -> bool:
 	if act.has("months"):
+		# JSON numbers parse as FLOATS and Array.has(int) compares
+		# typed — [0.0, 1.0].has(1) is false. This silently hid every
+		# month-gated activity (clamming, the fall cannery line, berry
+		# picking, row the bay, storm watch) from the menu since v2
+		# shipped; the errand system's sim exposed it. Compare as ints.
 		var ms: Array = act["months"]
-		if not ms.has(month):
+		var in_window: bool = false
+		for m_v in ms:
+			if int(m_v) == month:
+				in_window = true
+				break
+		if not in_window:
 			return false
 	if act.has("require") and not _req_met(act["require"]):
 		return false
@@ -684,6 +752,10 @@ func _on_activity(act: Dictionary, is_event: bool) -> void:
 		var taken: Array = _s.get("events_taken", [])
 		taken.append(String(act.get("id", "")))
 		_s["events_taken"] = taken
+	if bool(act.get("errand", false)):
+		var done_e: Array = _s.get("errands_done", [])
+		done_e.append(String(act.get("id", "")))
+		_s["errands_done"] = done_e
 
 	if breakdown != "":
 		lines.push_front("· " + breakdown)

@@ -1,114 +1,194 @@
 {
-  "comment": "SALMONBERRY weekly opportunities. Each fires in exactly one (month, week) slot and is gone if not taken that week. month 0 = September 1963. Fields mirror activities.json so the Year controller resolves them through the same path; extras: blurb (the pitch line), flag (set on state when taken), check_stakes (events with a real fail branch).",
-  "events": [
-    {
-      "id": "fall_run_first_day",
-      "month": 0, "week": 2,
-      "label": "The first big day of the fall run — Manny needs every pair of hands",
-      "blurb": "The seiners came in so heavy the cannery whistle blew twice. Double shift, real wages, and the whole town on the line together.",
-      "energy": 5,
-      "apts": {"hands": 1, "grit": 1},
-      "bond": "manny", "bond_amt": 2,
-      "money": 6,
-      "outcome": "Fourteen hours. Your hands stop being your hands somewhere around the tenth. Manny puts an extra dollar in your envelope and doesn't mention it.",
-      "journal": "On the biggest day of the run the whole town smells like silver."
-    },
-    {
-      "id": "grange_dance",
-      "month": 1, "week": 3,
-      "label": "The harvest dance at the grange hall",
-      "blurb": "Somebody strung lights. Somebody's uncle has a fiddle. Everybody under twenty is nervous about it.",
-      "energy": 2,
-      "apts": {"heart": 2},
-      "bond": "tuck", "bond_amt": 2,
-      "outcome": "You dance badly, which turns out to be the same as dancing well if you commit. Tuck laughs so hard he has to sit down.",
-      "song": true
-    },
-    {
-      "id": "november_vigil",
-      "month": 2, "week": 4,
-      "label": "The church holds a vigil. The whole town goes.",
-      "blurb": "Nobody knows what to do with their hands, so they fold them.",
-      "energy": 1,
-      "apts": {"heart": 2},
-      "bond": "gran", "bond_amt": 1,
-      "outcome": "You stand between Vovo and Ruth and hold the hymnal. Nobody sings loudly. Everybody sings.",
-      "journal": "Grief you share is not smaller, but it is carryable."
-    },
-    {
-      "id": "christmas_eve",
-      "month": 3, "week": 4,
-      "label": "Christmas Eve at the gray house",
-      "blurb": "Vovo has been baking for three days. The table is set for more people than live in the house.",
-      "energy": 1,
-      "apts": {"heart": 1},
-      "bond": "gran", "bond_amt": 2,
-      "song": true,
-      "outcome": "Half the street comes through the door before midnight. Vovo sings the song from the old country and this year you know the second verse."
-    },
-    {
-      "id": "lowest_tide",
-      "month": 4, "week": 1,
-      "label": "The lowest tide of the year, at first light",
-      "blurb": "Del says the flats will show ground no one has walked on since last January. Cold as sin. Worth it.",
-      "energy": 4,
-      "check": {"apt": "sea", "diff": 2},
-      "apts": {"sea": 1, "grit": 1},
-      "money": 4,
-      "outcome": "You limit out before the sun clears the firs, and find a green glass float from across the ocean sitting in a tide pool like it was left for you.",
-      "journal": "The sea keeps a floor it only shows you twice a year. Get up.",
-      "flag": "green_float"
-    },
-    {
-      "id": "boat_off_the_bar",
-      "month": 5, "week": 2,
-      "label": "A boat is in trouble off the bar — Del is going out",
-      "blurb": "The Coast Guard is forty minutes away. The Ida Rose is taking water NOW. Del is already running and he looks at you exactly once.",
-      "energy": 5,
-      "check_stakes": {"apt": "sea", "diff": 4},
-      "bond": "del", "bond_amt": 3,
-      "apts": {"sea": 2, "grit": 1},
-      "outcome": "You keep the searchlight on the Ida Rose while Del quarters the swell, and you get a line across on the second throw. Three men come home because the two of you went. The town will never say much about it. The town will never forget it.",
-      "fail_outcome": "You go. That matters. But your line falls short twice and Del has to do it all himself, and on the bar that costs minutes that nearly cost everything. The men come home. You learn what the sea thinks of almost.",
-      "flag": "helped_boat",
-      "journal": "The bar does not care how brave you are. It cares whether the line reaches."
-    },
-    {
-      "id": "rebuild_week",
-      "month": 7, "week": 1,
-      "label": "Rebuilding week — the town raises what the water took",
-      "blurb": "Lumber on every corner. Every able back is spoken for. Nobody is paid and nobody asks.",
-      "energy": 4,
-      "check": {"apt": "hands", "diff": 3},
-      "apts": {"hands": 2},
-      "bond": "manny", "bond_amt": 1,
-      "bond2": "ruth", "bond2_amt": 1,
-      "outcome": "You frame a wall with men who framed the last one in 1950. By Friday the Hendersons have a roof again and your hammer arm knows things it didn't.",
-      "journal": "A town is the thing that puts each other's roofs back on."
-    },
-    {
-      "id": "berry_festival",
-      "month": 8, "week": 3,
-      "label": "Salmonberry Sunday — the whole town picks the draws",
-      "blurb": "The berries came in early and heavy. Vovo has claimed a draw. Ruth has claimed the kitchen. There will be pie.",
-      "energy": 2,
-      "apts": {"wild": 1, "heart": 1},
-      "bond": "gran", "bond_amt": 1,
-      "bond2": "ruth", "bond2_amt": 1,
-      "outcome": "Everyone's hands are stained pink to the wrist, so nobody can tell whose pail you topped up.",
-      "journal": "The berry the town is named for is too soft to ship. You have to be here."
-    },
-    {
-      "id": "travelling_show",
-      "month": 9, "week": 2,
-      "label": "The travelling show — the Ferris wheel and the fortune tent",
-      "blurb": "Tuck has been saving quarters for a month and swears the fortune teller is the real thing.",
-      "energy": 2,
-      "apts": {"wild": 2},
-      "bond": "tuck", "bond_amt": 2,
-      "money": -1,
-      "outcome": "From the top of the wheel you can see the whole year at once — the flats, the bar, the gray house, the roof you helped raise. The fortune teller looks at your palm a long time and says only: you came here a visitor. That's over.",
-      "journal": "From high enough up, a year looks like a town."
-    }
-  ]
+ "comment": "SALMONBERRY weekly opportunities. Each fires in exactly one (month, week) slot and is gone if not taken that week. month 0 = September 1963. Fields mirror activities.json so the Year controller resolves them through the same path; extras: blurb (the pitch line), flag (set on state when taken), check_stakes (events with a real fail branch).",
+ "events": [
+  {
+   "id": "fall_run_first_day",
+   "month": 0,
+   "week": 2,
+   "label": "The first big day of the fall run — Manny needs every pair of hands",
+   "blurb": "The seiners came in so heavy the cannery whistle blew twice. Double shift, real wages, and the whole town on the line together.",
+   "energy": 5,
+   "apts": {
+    "hands": 1,
+    "grit": 1
+   },
+   "bond": "manny",
+   "bond_amt": 2,
+   "money": 6,
+   "outcome": "Fourteen hours. Your hands stop being your hands somewhere around the tenth. Manny puts an extra dollar in your envelope and doesn't mention it.",
+   "journal": "On the biggest day of the run the whole town smells like silver."
+  },
+  {
+   "id": "grange_dance",
+   "month": 1,
+   "week": 3,
+   "label": "The harvest dance at the grange hall",
+   "blurb": "Somebody strung lights. Somebody's uncle has a fiddle. Everybody under twenty is nervous about it.",
+   "energy": 2,
+   "apts": {
+    "heart": 2
+   },
+   "bond": "tuck",
+   "bond_amt": 2,
+   "outcome": "You dance badly, which turns out to be the same as dancing well if you commit. Tuck laughs so hard he has to sit down.",
+   "song": true
+  },
+  {
+   "id": "november_vigil",
+   "month": 2,
+   "week": 4,
+   "label": "The church holds a vigil. The whole town goes.",
+   "blurb": "Nobody knows what to do with their hands, so they fold them.",
+   "energy": 1,
+   "apts": {
+    "heart": 2
+   },
+   "bond": "gran",
+   "bond_amt": 1,
+   "outcome": "You stand between Vovo and Ruth and hold the hymnal. Nobody sings loudly. Everybody sings.",
+   "journal": "Grief you share is not smaller, but it is carryable."
+  },
+  {
+   "id": "christmas_eve",
+   "month": 3,
+   "week": 4,
+   "label": "Christmas Eve at the gray house",
+   "blurb": "Vovo has been baking for three days. The table is set for more people than live in the house.",
+   "energy": 1,
+   "apts": {
+    "heart": 1
+   },
+   "bond": "gran",
+   "bond_amt": 2,
+   "song": true,
+   "outcome": "Half the street comes through the door before midnight. Vovo sings the song from the old country and this year you know the second verse."
+  },
+  {
+   "id": "lowest_tide",
+   "month": 4,
+   "week": 1,
+   "label": "The lowest tide of the year, at first light",
+   "blurb": "Del says the flats will show ground no one has walked on since last January. Cold as sin. Worth it.",
+   "energy": 4,
+   "check": {
+    "apt": "sea",
+    "diff": 2
+   },
+   "apts": {
+    "sea": 1,
+    "grit": 1
+   },
+   "money": 4,
+   "outcome": "You limit out before the sun clears the firs, and find a green glass float from across the ocean sitting in a tide pool like it was left for you.",
+   "journal": "The sea keeps a floor it only shows you twice a year. Get up.",
+   "flag": "green_float"
+  },
+  {
+   "id": "boat_off_the_bar",
+   "month": 5,
+   "week": 2,
+   "label": "A boat is in trouble off the bar — Del is going out",
+   "blurb": "The Coast Guard is forty minutes away. The Ida Rose is taking water NOW. Del is already running and he looks at you exactly once.",
+   "energy": 5,
+   "check_stakes": {
+    "apt": "sea",
+    "diff": 4
+   },
+   "bond": "del",
+   "bond_amt": 3,
+   "apts": {
+    "sea": 2,
+    "grit": 1
+   },
+   "outcome": "You keep the searchlight on the Ida Rose while Del quarters the swell, and you get a line across on the second throw. Three men come home because the two of you went. The town will never say much about it. The town will never forget it.",
+   "fail_outcome": "You go. That matters. But your line falls short twice and Del has to do it all himself, and on the bar that costs minutes that nearly cost everything. The men come home. You learn what the sea thinks of almost.",
+   "flag": "helped_boat",
+   "journal": "The bar does not care how brave you are. It cares whether the line reaches."
+  },
+  {
+   "id": "rebuild_week",
+   "month": 7,
+   "week": 1,
+   "label": "Rebuilding week — the town raises what the water took",
+   "blurb": "Lumber on every corner. Every able back is spoken for. Nobody is paid and nobody asks.",
+   "energy": 4,
+   "check": {
+    "apt": "hands",
+    "diff": 3
+   },
+   "apts": {
+    "hands": 2
+   },
+   "bond": "manny",
+   "bond_amt": 1,
+   "bond2": "ruth",
+   "bond2_amt": 1,
+   "outcome": "You frame a wall with men who framed the last one in 1950. By Friday the Hendersons have a roof again and your hammer arm knows things it didn't.",
+   "journal": "A town is the thing that puts each other's roofs back on."
+  },
+  {
+   "id": "berry_festival",
+   "month": 8,
+   "week": 3,
+   "label": "Salmonberry Sunday — the whole town picks the draws",
+   "blurb": "The berries came in early and heavy. Vovo has claimed a draw. Ruth has claimed the kitchen. There will be pie.",
+   "energy": 2,
+   "apts": {
+    "wild": 1,
+    "heart": 1
+   },
+   "bond": "gran",
+   "bond_amt": 1,
+   "bond2": "ruth",
+   "bond2_amt": 1,
+   "outcome": "Everyone's hands are stained pink to the wrist, so nobody can tell whose pail you topped up.",
+   "journal": "The berry the town is named for is too soft to ship. You have to be here."
+  },
+  {
+   "id": "travelling_show",
+   "month": 9,
+   "week": 2,
+   "label": "The travelling show — the Ferris wheel and the fortune tent",
+   "blurb": "Tuck has been saving quarters for a month and swears the fortune teller is the real thing.",
+   "energy": 2,
+   "apts": {
+    "wild": 2
+   },
+   "bond": "tuck",
+   "bond_amt": 2,
+   "money": -1,
+   "outcome": "From the top of the wheel you can see the whole year at once — the flats, the bar, the gray house, the roof you helped raise. The fortune teller looks at your palm a long time and says only: you came here a visitor. That's over.",
+   "journal": "From high enough up, a year looks like a town.",
+   "flag": "faire_seen"
+  },
+  {
+   "id": "show_posters",
+   "month": 9,
+   "week": 1,
+   "label": "the posters go up on the cannery lot",
+   "blurb": "A man in a good hat staples the future to every pole in town: COMING — ONE WEEK ONLY.",
+   "energy": 1,
+   "apts": {
+    "wild": 1
+   },
+   "bond": "june",
+   "bond_amt": 1,
+   "outcome": "You and half the school watch the man in the hat work his staple gun pole to pole. The poster has a Ferris wheel on it drawn better than the real one will be, June predicts. She has seen shows before. She is vibrating anyway.",
+   "journal": "A poster is a promise with a date on it."
+  },
+  {
+   "id": "show_gone",
+   "month": 9,
+   "week": 3,
+   "label": "the lot, after",
+   "blurb": "The show left in the night, the way shows do.",
+   "energy": 1,
+   "outdoor": true,
+   "apts": {
+    "wild": 1
+   },
+   "outcome": "The cannery lot is just the lot again: a ring of yellow grass where the wheel stood, tent-peg holes, one long ticket snake of red stubs in the weeds. You stand where the middle was. Somewhere down the coast the man in the good hat is stapling the same promise to different poles, and will be for years, and years.",
+   "journal": "What a show leaves is a circle in the grass."
+  }
+ ]
 }

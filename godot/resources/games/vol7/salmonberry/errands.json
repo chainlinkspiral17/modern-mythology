@@ -1,0 +1,404 @@
+{
+ "comment": "WAVE D · seasonal errands. One-shot jobs that bonds UNLOCK — the design's 'deepening a bond opens their stories, their help, and season-gated errands.' Same vocabulary as activities plus: errand:true (once-only, tracked in state.errands_done), for (whose errand), require {bond,min}, months = the window it can happen in. Miss the window, miss the errand — like events, but earned.",
+ "errands": [
+  {
+   "id": "del_caulk_the_skiff",
+   "for": "del",
+   "errand": true,
+   "label": "help Del caulk the skiff before the rains",
+   "blurb": "Del says the skiff has one more winter in her, said the same last year, will say it again.",
+   "months": [
+    0,
+    1
+   ],
+   "require": {
+    "bond": "del",
+    "min": 2
+   },
+   "energy": 3,
+   "outdoor": true,
+   "apts": {
+    "hands": 2
+   },
+   "bond": "del",
+   "bond_amt": 2,
+   "money": 1,
+   "check": {
+    "apt": "hands",
+    "diff": 2
+   },
+   "outcome": "A day of oakum and cussing. Del does the cussing; you do the learning. The skiff drinks the caulk like she's been thirsty since August.",
+   "outcome_strong": "Del runs his thumb down your seam and doesn't say anything, which from Del is a certificate.",
+   "outcome_rough": "Your seams weep. Del does them over without a word and hands you the iron to try again, which is worse than shouting and better teaching.",
+   "journal": "A boat is a hole in the water you keep promising things to."
+  },
+  {
+   "id": "del_run_the_lights",
+   "for": "del",
+   "errand": true,
+   "label": "carry the lamp out the jetty with Del",
+   "blurb": "When it blows like this somebody walks the jetty light out to the end, and somebody is Del, and Del is asking you.",
+   "months": [
+    4,
+    5
+   ],
+   "require": {
+    "bond": "del",
+    "min": 3
+   },
+   "energy": 3,
+   "outdoor": true,
+   "bay": false,
+   "apts": {
+    "grit": 2,
+    "sea": 1
+   },
+   "bond": "del",
+   "bond_amt": 2,
+   "check": {
+    "apt": "grit",
+    "diff": 3
+   },
+   "outcome": "Out and back along the jetty in weather with opinions. The lamp stays lit. Del walks on the windward side of you the whole way and never mentions it.",
+   "outcome_strong": "At the end, in the spray, Del shouts the names of the boats that will see the light tonight. You hold the lamp up. It is the most important job you have ever had.",
+   "outcome_rough": "You go down hard on the third crossing and the lamp gutters. Del gets you both home. Some errands you finish; some finish you.",
+   "journal": "A light at the end of a jetty is a sentence: not here."
+  },
+  {
+   "id": "iris_mend_the_atlas",
+   "for": "iris",
+   "errand": true,
+   "label": "mend the big atlas with Iris",
+   "blurb": "The 1911 atlas is coming apart at Oregon. Iris has the paste, the linen tape, and standards.",
+   "months": [
+    2,
+    3
+   ],
+   "require": {
+    "bond": "iris",
+    "min": 2
+   },
+   "energy": 1,
+   "apts": {
+    "word": 1,
+    "hands": 1
+   },
+   "bond": "iris",
+   "bond_amt": 2,
+   "check": {
+    "apt": "hands",
+    "diff": 1
+   },
+   "outcome": "You tape the coast back to the country while the rain works the windows. Iris says a library is just a town's memory with a roof on it.",
+   "outcome_strong": "Your hinge is cleaner than the one the bindery in Portland did in '48. Iris shows it to nobody all afternoon, meaning everybody.",
+   "journal": "The coast on the map is one line. The coast is not one line."
+  },
+  {
+   "id": "iris_read_to_the_kids",
+   "for": "iris",
+   "errand": true,
+   "label": "take the Saturday story hour",
+   "blurb": "Iris has lost her voice and eleven children are coming at ten.",
+   "months": [
+    4,
+    5
+   ],
+   "require": {
+    "bond": "iris",
+    "min": 3
+   },
+   "energy": 2,
+   "apts": {
+    "word": 1,
+    "heart": 2
+   },
+   "bond": "iris",
+   "bond_amt": 1,
+   "bond2": "june",
+   "bond2_amt": 1,
+   "check": {
+    "apt": "word",
+    "diff": 2
+   },
+   "outcome": "You read the storm chapter with the lights off because June says atmosphere. Eleven children hold their breath in a room that smells of paste and rain.",
+   "outcome_strong": "You do the voices. You didn't plan to. The smallest one falls off her chair at the whale and has to be put back on it.",
+   "outcome_rough": "You lose them by page four and finish to an audience of two, one of whom is June, who stays out of loyalty and says so.",
+   "journal": "A story read aloud belongs to the room."
+  },
+  {
+   "id": "manny_inventory_night",
+   "for": "manny",
+   "errand": true,
+   "label": "count the cannery stores with Manny",
+   "blurb": "The season's books are due to the owners and Manny counts better with company.",
+   "months": [
+    1,
+    2
+   ],
+   "require": {
+    "bond": "manny",
+    "min": 2
+   },
+   "energy": 3,
+   "apts": {
+    "hands": 1,
+    "grit": 1
+   },
+   "bond": "manny",
+   "bond_amt": 2,
+   "money": 2,
+   "check": {
+    "apt": "grit",
+    "diff": 2
+   },
+   "outcome": "Cases and cases and cases, by lantern, till the numbers agree. Manny talks the whole time — the runs of '49, of '55, the year the bar took the Adelina. The count is also a history.",
+   "outcome_strong": "Your tallies balance to the can on the first pass. Manny looks at the page, then at you, and revises his opinion of schooling upward one notch.",
+   "journal": "Everything the sea gives gets counted twice."
+  },
+  {
+   "id": "ruth_thanksgiving_pies",
+   "for": "ruth",
+   "errand": true,
+   "label": "the Thanksgiving pie run for Ruth",
+   "blurb": "Nine pies, six houses, one bicycle if you have it, rain likely.",
+   "months": [
+    2
+   ],
+   "require": {
+    "bond": "ruth",
+    "min": 2
+   },
+   "energy": 2,
+   "outdoor": true,
+   "apts": {
+    "heart": 2
+   },
+   "bond": "ruth",
+   "bond_amt": 2,
+   "money": 1,
+   "check": {
+    "apt": "heart",
+    "diff": 1
+   },
+   "outcome": "You deliver pie to houses that were expecting pie and to two that weren't, which is the point. At every door you get looked at, named, and thanked. The town is learning you.",
+   "outcome_strong": "Old Mrs. Anselmo makes you come in and eat a slice of the pie you just delivered, so it takes an hour, and Ruth counts that as the errand done best.",
+   "journal": "Pie travels at the speed of talk."
+  },
+  {
+   "id": "boyd_smoke_shed",
+   "for": "boyd",
+   "errand": true,
+   "label": "tend Boyd's smoke shed through the night",
+   "blurb": "The fall catch is in the shed and the alder has to stay low and even till morning.",
+   "months": [
+    1
+   ],
+   "require": {
+    "bond": "boyd",
+    "min": 2
+   },
+   "energy": 4,
+   "apts": {
+    "wild": 2,
+    "grit": 1
+   },
+   "bond": "boyd",
+   "bond_amt": 2,
+   "check": {
+    "apt": "wild",
+    "diff": 2
+   },
+   "outcome": "All night feeding alder chips to a fire that must not become a fire. Boyd checks on you twice and the smoke once, in that order.",
+   "outcome_strong": "At dawn Boyd splits a piece of the first side with you, standing in the shed door. It tastes like the whole valley. He gives you a side to carry home to Vovo.",
+   "outcome_rough": "You sleep an hour you shouldn't and the fire runs hot. One rack scorches. Boyd says the fish forgive faster than the smoker, whatever that means.",
+   "journal": "Smoke is patience you can taste."
+  },
+  {
+   "id": "estelle_the_attic",
+   "for": "estelle",
+   "errand": true,
+   "label": "help Estelle bring the attic down",
+   "blurb": "Estelle wants the sea chest brought down before spring. She does not say why. You know why.",
+   "months": [
+    4,
+    5
+   ],
+   "require": {
+    "bond": "estelle",
+    "min": 3
+   },
+   "energy": 2,
+   "apts": {
+    "heart": 2
+   },
+   "bond": "estelle",
+   "bond_amt": 2,
+   "outcome": "The chest comes down the ladder an inch at a time. She opens it with you there, which is the errand — the lifting was never the errand. Oilskins. A pipe. A photograph of a crew squinting into sun.",
+   "journal": "Some rooms hold their breath for years."
+  },
+  {
+   "id": "tuck_delivery_route",
+   "for": "tuck",
+   "errand": true,
+   "label": "run Tuck's December orders",
+   "blurb": "The Christmas orders are boxed and the truck won't start and Tuck is looking at you and the hand cart.",
+   "months": [
+    3
+   ],
+   "require": {
+    "bond": "tuck",
+    "min": 2
+   },
+   "energy": 3,
+   "outdoor": true,
+   "apts": {
+    "grit": 2
+   },
+   "bond": "tuck",
+   "bond_amt": 2,
+   "money": 2,
+   "check": {
+    "apt": "grit",
+    "diff": 2
+   },
+   "outcome": "Up the hill and down the hill and up the hill with the cart, in weather. Every box is somebody's Christmas and every porch is glad to see you.",
+   "outcome_strong": "You finish before dark with dry boxes, and Tuck pays a strong-week bonus and a bottle of cream soda, which he opens on the stove bolt like it's a ceremony.",
+   "journal": "A town in December is a list of doors."
+  },
+  {
+   "id": "gran_the_recipe",
+   "for": "gran",
+   "errand": true,
+   "label": "the pastéis, with Vovo, start to finish",
+   "blurb": "Every Christmas she makes them alone. This year she wants hands in the kitchen — yours.",
+   "months": [
+    3
+   ],
+   "require": {
+    "bond": "gran",
+    "min": 3
+   },
+   "energy": 2,
+   "apts": {
+    "hands": 1,
+    "heart": 2
+   },
+   "bond": "gran",
+   "bond_amt": 2,
+   "song": true,
+   "outcome": "Flour to the elbows all afternoon. She works and talks and half the talk is in Portuguese and half the Portuguese is a song, and you understand the whole kitchen anyway. You know the recipe now. That was the errand.",
+   "journal": "Some recipes are songs with food in them."
+  },
+  {
+   "id": "alder_the_pageant",
+   "for": "miss_alder",
+   "errand": true,
+   "label": "stage-manage the Christmas pageant",
+   "blurb": "Miss Alder has one night, three shepherds, a donkey costume with a torn ear, and no help. Had no help.",
+   "months": [
+    3
+   ],
+   "require": {
+    "bond": "miss_alder",
+    "min": 2
+   },
+   "energy": 2,
+   "apts": {
+    "word": 1,
+    "heart": 1
+   },
+   "bond": "miss_alder",
+   "bond_amt": 2,
+   "bond2": "june",
+   "bond2_amt": 1,
+   "check": {
+    "apt": "word",
+    "diff": 2
+   },
+   "outcome": "You run the curtain, the prompt book, and the donkey's morale. The pageant happens. In a town this size that is reviewed as a triumph.",
+   "outcome_strong": "When the littlest shepherd freezes you feed him the line from the wings so smooth the grange thinks he remembered it. Miss Alder catches your eye across the hall.",
+   "outcome_rough": "The donkey goes over in act two, taking the manger. The town talks about it for a month — fondly, but it talks.",
+   "journal": "Every show is held up by somebody the audience never sees."
+  },
+  {
+   "id": "june_the_dare",
+   "for": "june",
+   "errand": true,
+   "label": "the bluff, because June dared you",
+   "blurb": "There is a way up the north bluff nobody's supposed to take. June knows it. June is waiting.",
+   "months": [
+    7,
+    8
+   ],
+   "require": {
+    "bond": "june",
+    "min": 2
+   },
+   "energy": 3,
+   "outdoor": true,
+   "apts": {
+    "wild": 2,
+    "grit": 1
+   },
+   "bond": "june",
+   "bond_amt": 2,
+   "check": {
+    "apt": "wild",
+    "diff": 3
+   },
+   "outcome": "Up the goat path with your heart in your ears. From the top the town is a toy and the bar is a white seam and June says, generously, that you only looked like dying twice.",
+   "outcome_strong": "You lead the last pitch. June, who has never followed anyone anywhere, follows. At the top she names the route after you both.",
+   "outcome_rough": "You freeze at the chimney and come down slow, June talking you through every hold. She never tells anyone. That is how you know it's a real friendship.",
+   "journal": "From the bluff the whole coast fits in one look, and doesn't fit at all."
+  },
+  {
+   "id": "opal_the_parcel",
+   "for": "opal",
+   "errand": true,
+   "label": "deliver the parcel nobody claimed",
+   "blurb": "A parcel has sat behind Opal's counter since before you came. The address is a house up the river road. Opal thinks it should arrive before the year does.",
+   "months": [
+    8,
+    9
+   ],
+   "require": {
+    "bond": "opal",
+    "min": 2
+   },
+   "energy": 2,
+   "outdoor": true,
+   "apts": {
+    "heart": 1,
+    "wild": 1
+   },
+   "bond": "opal",
+   "bond_amt": 2,
+   "outcome": "The river road, the last house, a man who looks at the parcel a long time before he takes it. He doesn't open it while you're there. Walking back you understand that delivering a thing and knowing what it is are different jobs, and yours is done.",
+   "journal": "Some parcels wait for the person to be ready, not the address."
+  },
+  {
+   "id": "june_show_day",
+   "for": "june",
+   "errand": true,
+   "label": "the show, with June, properly",
+   "blurb": "June has a system for the travelling show: wheel first, then the tent, then the wheel again at dusk when the lights come on. She requires an accomplice.",
+   "months": [
+    9
+   ],
+   "require": {
+    "bond": "june",
+    "min": 2
+   },
+   "energy": 2,
+   "apts": {
+    "heart": 1
+   },
+   "bond": "june",
+   "bond_amt": 2,
+   "money": -1,
+   "flag": "faire_seen",
+   "outcome": "You do the whole system. At dusk, at the top of the wheel, the lights come on below you all at once and June goes quiet for the only time all year. Twelve years from now there will be another Faire, and somebody you don't know yet will remember one exactly like this.",
+   "journal": "Some machines exist to lift people into the dark on purpose."
+  }
+ ]
+}

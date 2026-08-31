@@ -856,7 +856,17 @@ staged like that, using still camera set-ups and camera motion."*
 
 ### Tarot Gauntlet (vol 5 inset)
 
-- **THE ENDING-CG PROGRAM (2026-08-31, active · board-per-wave)** —
+- **THE ENDING-CG PROGRAM — HALTED BY USER VERDICT (2026-08-31):
+  "don't waste time doing art. you aren't good at it. game design
+  and coding."** This closes ALL Claude-side procedural art
+  authoring (scene_painter compositions, CG sets, painted
+  backdrops). The four shipped boards stay as placeholders; the
+  data-driven cg-path mechanism stays (any art source drops in
+  with zero code). Future art comes from the user's tools (gate 1:
+  ArtCraft / image-gen) or not at all. Claude's lane: game design,
+  systems, engine code, QA, writing. (Original program row kept
+  below for the record.)
+- **the ending-CG program (2026-08-31, halted · record)** —
   _win_cg_path/_loss_cg_path are data-driven now: art drops in at
   assets/cg/gauntlet_<arcana>_<id>.png, zero code. Scope: 64 win
   thresholds + 97 loss finales across 22 boards. SHIPPED: Fool (8,

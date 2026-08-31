@@ -54,6 +54,13 @@ cd <repo>/godot && $GODOT --headless --import     # once, ~5 min
   led to three malformed skill checks. Slow (~real playthrough
   speed); run in background. Static twin:
   `python3 godot/tools/audit/vn_story_audit.py` (suite gate).
+- `$GODOT --headless res://tools/qa/SalmonberryYearSim.tscn` — PLAYS
+  a full Salmonberry year through the real UI (errand-first, event
+  next, rest when worn; March's realtime crisis skipped via the
+  no-rescue path). Day-one driver for WAVE D's errand system; its
+  first honest run found the JSON-float Array.has(int) class that
+  had hidden every month-gated activity since v2 (see the
+  authoring playbook). Asserts ≥3 errands, ≥1 event, bonds grew.
 - `$GODOT --headless res://tools/qa/CPEndlessSim.tscn` — runs
   SEPTEMBER AND AFTER seeded from the campaign save CPSimSweep
   leaves in slot 3: ratcheting spawns, rhythm pools, milestones,
