@@ -1020,7 +1020,324 @@ def fool_finale_three_forty_seven(H, W):
     return arr
 
 
+
+
+# ── MAGICIAN arcana CGs (cathedral of rust · 2026-08-31) ────────────
+# Board two of the CG program. Frasier's warehouse-cathedral: brick,
+# workbench, the tape wall, the river window. Same discipline as the
+# Fool's set: composed from each ending's prose, unpeopled or
+# near-silhouette, visually checked before shipping (pareidolia rule).
+
+def _brick_wall(arr, H, W, y0f, y1f, base=(56, 40, 34)):
+    grad_poly(arr, [(0, H * y0f), (W, H * y0f), (W, H * y1f), (0, H * y1f)],
+              (base[0] + 14, base[1] + 10, base[2] + 8), base, blur=0.4)
+    tex(arr, _mask(H, W, [(0, H * y0f), (W, H * y0f), (W, H * y1f), (0, H * y1f)]), 12, seed=13, scale=7)
+
+
+def _workbench(arr, H, W, y_f=0.62, tone=(96, 74, 52)):
+    grad_poly(arr, [(0, H * y_f), (W, H * y_f), (W, H), (0, H)],
+              tone, (tone[0] - 34, tone[1] - 28, tone[2] - 20), blur=0.5)
+    fill_poly(arr, [(0, H * (y_f - 0.008)), (W, H * (y_f - 0.008)), (W, H * (y_f + 0.01)), (0, H * (y_f + 0.01))], (tone[0] + 30, tone[1] + 24, tone[2] + 16), blur=0.6)
+    tex(arr, _mask(H, W, [(0, H * y_f), (W, H * y_f), (W, H), (0, H)]), 9, seed=17, scale=9)
+
+
+def _steamboat(arr, H, W, cx, cy, scale=1.0, red=(168, 44, 36), done=True):
+    sw, sh = W * 0.11 * scale, H * 0.06 * scale
+    fill_poly(arr, [(cx - sw, cy), (cx + sw, cy), (cx + sw * 0.8, cy + sh * 0.7), (cx - sw * 0.8, cy + sh * 0.7)], red, blur=0.6)
+    fill_poly(arr, [(cx - sw * 0.55, cy), (cx + sw * 0.35, cy), (cx + sw * 0.35, cy - sh * 0.9), (cx - sw * 0.55, cy - sh * 0.9)], (232, 224, 208), blur=0.5)
+    fill_poly(arr, [(cx + sw * 0.45, cy - sh * 1.5), (cx + sw * 0.62, cy - sh * 1.5), (cx + sw * 0.62, cy), (cx + sw * 0.45, cy)], (70, 58, 50), blur=0.4)
+    if done:
+        fill_poly(arr, _ellipse_pts(cx - sw * 0.92, cy + sh * 0.35, sw * 0.13, sh * 0.42), (120, 30, 26), blur=0.6)
+        fill_poly(arr, [(cx - sw * 0.99, cy + sh * 0.1), (cx - sw * 0.85, cy + sh * 0.1), (cx - sw * 0.85, cy + sh * 0.6), (cx - sw * 0.99, cy + sh * 0.6)], (100, 26, 22), blur=0.5, opacity=0.5)
+    drop_shadow(arr, [(cx - sw, cy + sh * 0.7), (cx + sw, cy + sh * 0.7), (cx + sw * 0.9, cy + sh), (cx - sw * 0.9, cy + sh)], blur=4.0, opacity=0.4)
+
+
+def gauntlet_magician_warehouse_bay(H, W):
+    """Win · the bay door rolled open on the after-midnight street."""
+    arr = sky(H, W, [(0.0, (14, 14, 22)), (1.0, (20, 18, 24))])
+    _brick_wall(arr, H, W, 0.0, 1.0)
+    # the bay opening: a huge rolled door, night beyond
+    bx0, bx1 = W * 0.22, W * 0.78
+    grad_poly(arr, [(bx0, H * 0.12), (bx1, H * 0.12), (bx1, H * 0.86), (bx0, H * 0.86)], (24, 28, 44), (14, 16, 28), blur=0.6)
+    # rolled-up door slats at the top of the opening
+    for i in range(4):
+        yy = H * (0.12 + 0.018 * i)
+        fill_poly(arr, [(bx0, yy), (bx1, yy), (bx1, yy + H * 0.012), (bx0, yy + H * 0.012)], (64, 58, 54), blur=0.4)
+    # the street: one lamp, wet asphalt, a far facade
+    fill_poly(arr, [(bx0, H * 0.60), (bx1, H * 0.60), (bx1, H * 0.86), (bx0, H * 0.86)], (26, 26, 34), blur=0.6)
+    fill_poly(arr, [(bx0 + W * 0.06, H * 0.34), (bx0 + W * 0.20, H * 0.34), (bx0 + W * 0.20, H * 0.60), (bx0 + W * 0.06, H * 0.60)], (20, 22, 32), blur=0.8)
+    lx = bx1 - W * 0.10
+    fill_poly(arr, [(lx - 3, H * 0.30), (lx + 3, H * 0.30), (lx + 3, H * 0.60), (lx - 3, H * 0.60)], (18, 18, 20), blur=0.5)
+    glow(arr, lx, H * 0.30, 36, (255, 214, 150), 0.8)
+    glow(arr, lx, H * 0.64, W * 0.10, (230, 186, 120), 0.35)
+    water_pull(arr, 0.60, 0.86, seed=23, amount=8.0)
+    # interior floor catching the night
+    grad_poly(arr, [(0, H * 0.86), (W, H * 0.86), (W, H), (0, H)], (34, 30, 30), (20, 18, 20), blur=0.5)
+    grad_poly(arr, [(bx0 + W * 0.04, H * 0.86), (bx1 - W * 0.04, H * 0.86), (bx1 + W * 0.06, H), (bx0 - W * 0.06, H)], (60, 66, 92), (28, 30, 44), blur=2.0, opacity=0.5)
+    vignette(arr, 0.42)
+    return arr
+
+
+def gauntlet_magician_river_window(H, W):
+    """Win · the full-moon river: the leap the Fool's window only
+    hinted at, moonlit this time."""
+    arr = sky(H, W, [(0.0, (16, 20, 34)), (1.0, (22, 26, 40))])
+    # moon high right + its halo
+    fill_poly(arr, _ellipse_pts(W * 0.68, H * 0.20, W * 0.030, W * 0.030, n=48), (240, 238, 224), blur=1.2)
+    glow(arr, W * 0.68, H * 0.20, W * 0.10, (220, 222, 210), 0.5)
+    # far bank ON the waterline
+    fill_poly(arr, [(0, H * 0.44), (W, H * 0.47), (W, H * 0.41), (0, H * 0.38)], (10, 12, 16), blur=2.0)
+    # river with a moon path
+    grad_poly(arr, [(0, H * 0.44), (W, H * 0.47), (W, H), (0, H)], (30, 40, 56), (14, 18, 28), blur=0.5)
+    tex(arr, _mask(H, W, [(0, H * 0.44), (W, H * 0.47), (W, H), (0, H)]), 16, seed=43, scale=5)
+    grad_poly(arr, [(W * 0.62, H * 0.46), (W * 0.74, H * 0.46), (W * 0.86, H), (W * 0.50, H)], (200, 204, 190), (90, 96, 96), blur=3.0, opacity=0.45)
+    water_pull(arr, 0.46, 1.0, seed=29, amount=14.0)
+    # the window frame: tall cathedral-warehouse sash, thrown open
+    fill_poly(arr, [(0, 0), (W, 0), (W, H * 0.10), (0, H * 0.10)], (44, 34, 30), blur=0.4)
+    fill_poly(arr, [(0, H * 0.92), (W, H * 0.92), (W, H), (0, H)], (48, 38, 32), blur=0.4)
+    fill_poly(arr, [(0, 0), (W * 0.12, 0), (W * 0.12, H), (0, H)], (40, 30, 28), blur=0.4)
+    fill_poly(arr, [(W * 0.88, 0), (W, 0), (W, H), (W * 0.88, H)], (40, 30, 28), blur=0.4)
+    # the sash swung out into the night, right, catching moon
+    fill_poly(arr, [(W * 0.88, H * 0.10), (W * 0.98, H * 0.16), (W * 0.98, H * 0.72), (W * 0.88, H * 0.80)], (60, 54, 48), blur=1.0, opacity=0.9)
+    fill_poly(arr, [(W * 0.895, H * 0.14), (W * 0.965, H * 0.19), (W * 0.965, H * 0.68), (W * 0.895, H * 0.75)], (100, 108, 124), blur=1.2, opacity=0.5)
+    vignette(arr, 0.38)
+    return arr
+
+
+def gauntlet_magician_roof_hatch(H, W):
+    """Win · straight up the ladder into the open sky."""
+    arr = sky(H, W, [(0.0, (20, 16, 18)), (1.0, (30, 24, 22))])
+    _brick_wall(arr, H, W, 0.0, 1.0)
+    # the hatch: a rectangle of star-scattered night, up and centered
+    hx0, hy0, hx1, hy1 = W * 0.34, H * 0.14, W * 0.66, H * 0.50
+    fill_poly(arr, [(hx0 - 12, hy0 - 12), (hx1 + 12, hy0 - 12), (hx1 + 12, hy1 + 12), (hx0 - 12, hy1 + 12)], (58, 48, 42), blur=0.6)
+    grad_poly(arr, [(hx0, hy0), (hx1, hy0), (hx1, hy1), (hx0, hy1)], (12, 16, 34), (20, 24, 44), blur=0.5)
+    import random as _r
+    _r.seed(7)
+    for i in range(28):
+        sxx = hx0 + (hx1 - hx0) * _r.random()
+        syy = hy0 + (hy1 - hy0) * _r.random()
+        glow(arr, sxx, syy, 2 + _r.random() * 3, (230, 232, 240), 0.5)
+    # the hatch lid thrown back past the opening's top edge
+    fill_poly(arr, [(hx0 + 8, hy0 - 14), (hx1 - 8, hy0 - 14), (hx1 - 26, hy0 - H * 0.070), (hx0 + 26, hy0 - H * 0.070)], (70, 58, 50), blur=0.8)
+    # the ladder rising to it, slightly off-axis
+    for lxf in (0.455, 0.545):
+        fill_poly(arr, [(W * lxf - 5, hy1 + 8), (W * lxf + 5, hy1 + 8), (W * (lxf + 0.012) + 5, H), (W * (lxf + 0.012) - 5, H)], (110, 88, 62), blur=0.5)
+    for i in range(6):
+        ry = hy1 + 14 + (H - hy1 - 30) * i / 5.0
+        t = (ry - hy1) / (H - hy1)
+        fill_poly(arr, [(W * (0.452 + 0.012 * t), ry), (W * (0.548 + 0.012 * t), ry), (W * (0.548 + 0.012 * t), ry + 7), (W * (0.452 + 0.012 * t), ry + 7)], (120, 96, 68), blur=0.5)
+    # night falling down the ladder
+    grad_poly(arr, [(hx0, hy1), (hx1, hy1), (hx1 + W * 0.05, H), (hx0 - W * 0.05, H)], (36, 40, 62), (24, 22, 26), blur=2.5, opacity=0.4)
+    vignette(arr, 0.44)
+    return arr
+
+
+def gauntlet_magician_the_maker_forgets_the_make(H, W):
+    """Loss · asleep on the workbench; the leader-tape spools; the
+    drafts have arranged themselves."""
+    arr = sky(H, W, [(0.0, (26, 22, 24)), (1.0, (34, 28, 26))])
+    _brick_wall(arr, H, W, 0.0, 0.62)
+    # drafts pinned in a pattern that is TOO regular
+    for i in range(6):
+        px = W * (0.14 + 0.12 * i)
+        py = H * (0.18 + 0.08 * (i % 2))
+        fill_poly(arr, [(px, py), (px + W * 0.055, py + 4), (px + W * 0.05, py + H * 0.09), (px - 4, py + H * 0.085)], (216, 206, 186), blur=0.7)
+        fill_poly(arr, _ellipse_pts(px + W * 0.026, py + 2, 3, 3), (150, 60, 40), blur=0.3)
+    _workbench(arr, H, W, 0.62)
+    # the sleeper: rim-lit against his own lamp — shoulders rising
+    # from frame right, head down on the folded forearm on the bench
+    glow(arr, W * 0.64, H * 0.50, W * 0.13, (235, 190, 130), 0.35)
+    fill_poly(arr, [(W * 0.78, H * 0.62), (W * 1.0, H * 0.62), (W * 1.0, H * 0.40), (W * 0.86, H * 0.44), (W * 0.79, H * 0.53)], (34, 27, 26), blur=1.8)
+    fill_poly(arr, _ellipse_pts(W * 0.755, H * 0.545, W * 0.040, H * 0.052), (38, 30, 28), blur=1.4)
+    fill_poly(arr, [(W * 0.62, H * 0.585), (W * 0.80, H * 0.575), (W * 0.80, H * 0.62), (W * 0.62, H * 0.62)], (42, 33, 30), blur=1.2)
+    fill_poly(arr, _ellipse_pts(W * 0.736, H * 0.515, W * 0.034, H * 0.012), (150, 116, 82), blur=2.0, opacity=0.5)
+    # the cassette deck, lamp side, leader tape spooling off
+    fill_poly(arr, [(W * 0.20, H * 0.565), (W * 0.32, H * 0.565), (W * 0.32, H * 0.62), (W * 0.20, H * 0.62)], (48, 44, 46), blur=0.5)
+    for rdx in (0.235, 0.285):
+        fill_poly(arr, _ellipse_pts(W * rdx, H * 0.588, W * 0.010, W * 0.010), (30, 28, 30), blur=0.3)
+    fill_poly(arr, [(W * 0.32, H * 0.60), (W * 0.40, H * 0.615), (W * 0.46, H * 0.66), (W * 0.40, H * 0.655), (W * 0.335, H * 0.615)], (188, 178, 158), blur=0.8, opacity=0.8)
+    # one desk lamp keeps the vigil
+    glow(arr, W * 0.26, H * 0.50, W * 0.14, (255, 208, 140), 0.45)
+    vignette(arr, 0.5)
+    return arr
+
+
+def gauntlet_magician_the_maker_breaks(H, W):
+    """Loss · hands flat either side of the steamboat; the symmetry
+    is the wrongness."""
+    arr = sky(H, W, [(0.0, (24, 20, 22)), (1.0, (30, 24, 24))])
+    _brick_wall(arr, H, W, 0.0, 0.58)
+    _workbench(arr, H, W, 0.58)
+    cx = W * 0.5
+    _steamboat(arr, H, W, cx, H * 0.66, 1.15)
+    # the two hands: pale flats, EXACTLY mirrored — the unsettling part
+    for sgn in (-1, 1):
+        hx = cx + sgn * W * 0.21
+        # back of the hand: a low mound on the bench
+        fill_poly(arr, _ellipse_pts(hx, H * 0.745, W * 0.040, H * 0.028), (204, 178, 152), blur=1.2)
+        drop_shadow(arr, _ellipse_pts(hx, H * 0.762, W * 0.042, H * 0.016), blur=3.0, opacity=0.35)
+        # fingers: flat on the wood, pointing IN toward the boat
+        for fi in range(4):
+            fy = H * (0.728 + 0.011 * fi)
+            fx0 = hx - sgn * W * 0.030
+            fill_poly(arr, [(fx0, fy), (fx0 - sgn * W * 0.042, fy + 1), (fx0 - sgn * W * 0.042, fy + 5), (fx0, fy + 6)], (204, 178, 152), blur=0.8)
+    # a single overhead work light, dead-centred like a verdict
+    glow(arr, cx, H * 0.30, W * 0.16, (240, 214, 170), 0.5)
+    fill_poly(arr, [(cx - 3, 0), (cx + 3, 0), (cx + 3, H * 0.22), (cx - 3, H * 0.22)], (20, 18, 18), blur=0.4)
+    fill_poly(arr, [(cx - W * 0.03, H * 0.22), (cx + W * 0.03, H * 0.22), (cx + W * 0.02, H * 0.26), (cx - W * 0.02, H * 0.26)], (52, 46, 42), blur=0.5)
+    vignette(arr, 0.48)
+    return arr
+
+
+def gauntlet_magician_the_steamboat_sails(H, W):
+    """Loss · the boat is perfect; the wheel turns untouched; the
+    bank is going through the window."""
+    arr = sky(H, W, [(0.0, (26, 22, 24)), (1.0, (32, 26, 26))])
+    _brick_wall(arr, H, W, 0.0, 0.60)
+    # the river window behind, bank mid-slump (brown wedge into water)
+    wx0, wx1 = W * 0.58, W * 0.88
+    fill_poly(arr, [(wx0 - 10, H * 0.12), (wx1 + 10, H * 0.12), (wx1 + 10, H * 0.52), (wx0 - 10, H * 0.52)], (58, 48, 42), blur=0.5)
+    grad_poly(arr, [(wx0, H * 0.14), (wx1, H * 0.14), (wx1, H * 0.50), (wx0, H * 0.50)], (40, 50, 62), (24, 30, 40), blur=0.5)
+    fill_poly(arr, [(wx0, H * 0.30), (wx1, H * 0.33), (wx1, H * 0.50), (wx0, H * 0.50)], (30, 38, 48), blur=0.8)
+    fill_poly(arr, [(wx0 + W * 0.02, H * 0.24), (wx0 + W * 0.14, H * 0.30), (wx0 + W * 0.10, H * 0.42), (wx0, H * 0.36)], (96, 72, 50), blur=1.6)
+    tex(arr, _mask(H, W, [(wx0 + W * 0.02, H * 0.24), (wx0 + W * 0.14, H * 0.30), (wx0 + W * 0.10, H * 0.42), (wx0, H * 0.36)]), 14, seed=53, scale=5)
+    _workbench(arr, H, W, 0.60)
+    _steamboat(arr, H, W, W * 0.34, H * 0.70, 1.35)
+    # the paddle wheel's motion: a faint arc of blur behind it
+    fill_poly(arr, _ellipse_pts(W * 0.245, H * 0.712, W * 0.034, H * 0.052), (150, 60, 46), blur=3.5, opacity=0.4)
+    glow(arr, W * 0.34, H * 0.62, W * 0.13, (240, 210, 170), 0.35)
+    vignette(arr, 0.46)
+    return arr
+
+
+def gauntlet_magician_the_river_takes_the_bank(H, W):
+    """Loss · the whole frame tilts a half-degree; the window stops
+    being a window."""
+    arr = sky(H, W, [(0.0, (24, 20, 22)), (1.0, (30, 24, 24))])
+    # everything drawn on a 2.5-degree slope — the tilt IS the image
+    import math as _m
+    tilt = _m.radians(2.5)
+    def T(x, y):
+        cxx, cyy = W * 0.5, H * 0.5
+        dx, dy = x - cxx, y - cyy
+        return (cxx + dx * _m.cos(tilt) - dy * _m.sin(tilt),
+                cyy + dx * _m.sin(tilt) + dy * _m.cos(tilt))
+    fill_poly(arr, [T(0, 0), T(W, 0), T(W, H * 0.60), T(0, H * 0.60)], (52, 38, 32), blur=0.5)
+    tex(arr, _mask(H, W, [T(0, 0), T(W, 0), T(W, H * 0.60), T(0, H * 0.60)]), 12, seed=61, scale=7)
+    fill_poly(arr, [T(0, H * 0.60), T(W, H * 0.60), T(W, H), T(0, H)], (66, 52, 40), blur=0.5)
+    # the window: FULL of moving brown water, no sky left in it
+    wx0, wx1 = W * 0.36, W * 0.66
+    fill_poly(arr, [T(wx0 - 10, H * 0.16), T(wx1 + 10, H * 0.16), T(wx1 + 10, H * 0.54), T(wx0 - 10, H * 0.54)], (58, 48, 42), blur=0.5)
+    grad_poly(arr, [T(wx0, H * 0.18), T(wx1, H * 0.18), T(wx1, H * 0.52), T(wx0, H * 0.52)], (156, 116, 72), (96, 72, 48), blur=0.8)
+    tex(arr, _mask(H, W, [T(wx0, H * 0.18), T(wx1, H * 0.18), T(wx1, H * 0.52), T(wx0, H * 0.52)]), 30, seed=67, scale=4)
+    # churn: pale foam streaks dragged across the glass, tilted with it
+    for i, yy in enumerate((0.24, 0.31, 0.38, 0.46)):
+        fill_poly(arr, [T(wx0 + W * 0.01, H * yy), T(wx1 - W * 0.01, H * (yy + 0.015)), T(wx1 - W * 0.01, H * (yy + 0.028)), T(wx0 + W * 0.01, H * (yy + 0.013))], (208, 182, 142), blur=2.2, opacity=0.5 - i * 0.06)
+    glow(arr, W * 0.51, H * 0.35, W * 0.14, (170, 130, 84), 0.30)
+    # candles never reached: three unlit stubs on a shelf, level with
+    # the OLD horizontal — they alone are untilted, which reads wrong
+    for i, cxf in enumerate((0.16, 0.20, 0.24)):
+        fill_poly(arr, [(W * cxf - 5, H * 0.42), (W * cxf + 5, H * 0.42), (W * cxf + 5, H * 0.36 - i * 4), (W * cxf - 5, H * 0.36 - i * 4)], (216, 204, 180), blur=0.5)
+    fill_poly(arr, [(W * 0.13, H * 0.42), (W * 0.28, H * 0.42), (W * 0.28, H * 0.435), (W * 0.13, H * 0.435)], (70, 56, 44), blur=0.5)
+    water_pull(arr, 0.20, 0.52, seed=71, amount=10.0)
+    vignette(arr, 0.5)
+    return arr
+
+
+def gauntlet_magician_the_room_walked_out(H, W):
+    """Loss · empty chairs, a gap on the tape wall, two figures left
+    in one lamp pool."""
+    arr = sky(H, W, [(0.0, (22, 18, 20)), (1.0, (28, 22, 22))])
+    _brick_wall(arr, H, W, 0.0, 0.64)
+    # the tape wall: a grid of cassettes with ONE empty slot
+    for r in range(3):
+        for c in range(7):
+            if r == 1 and c == 4:
+                continue  # Nicola took one
+            tx = W * (0.30 + 0.062 * c)
+            ty = H * (0.16 + 0.075 * r)
+            fill_poly(arr, [(tx, ty), (tx + W * 0.045, ty), (tx + W * 0.045, ty + H * 0.05), (tx, ty + H * 0.05)], (58, 52, 50), blur=0.4)
+            fill_poly(arr, [(tx + 3, ty + 3), (tx + W * 0.045 - 3, ty + 3), (tx + W * 0.045 - 3, ty + H * 0.022), (tx + 3, ty + H * 0.022)], (198, 188, 168), blur=0.3)
+    grad_poly(arr, [(0, H * 0.64), (W, H * 0.64), (W, H), (0, H)], (40, 34, 32), (24, 20, 22), blur=0.5)
+    # four empty chairs scattered at honest angles
+    for cxf, cyf, wf in ((0.14, 0.74, 0.05), (0.30, 0.80, 0.055), (0.82, 0.76, 0.05), (0.68, 0.86, 0.06)):
+        fill_poly(arr, [(W * cxf, H * cyf), (W * (cxf + wf), H * cyf), (W * (cxf + wf * 0.9), H * (cyf + 0.10)), (W * (cxf + wf * 0.1), H * (cyf + 0.10))], (54, 44, 40), blur=0.8)
+        fill_poly(arr, [(W * cxf, H * cyf), (W * (cxf + wf * 0.14), H * cyf), (W * (cxf + wf * 0.14), H * (cyf - 0.09)), (W * cxf, H * (cyf - 0.09))], (54, 44, 40), blur=0.8)
+    # the lamp pool with the two who stayed: shoulder-shapes, offset,
+    # facing the wall not us
+    glow(arr, W * 0.50, H * 0.72, W * 0.15, (240, 202, 140), 0.5)
+    fill_poly(arr, [(W * 0.455, H * 0.78), (W * 0.505, H * 0.78), (W * 0.50, H * 0.64), (W * 0.462, H * 0.645)], (44, 36, 34), blur=1.6)
+    fill_poly(arr, [(W * 0.535, H * 0.78), (W * 0.595, H * 0.78), (W * 0.585, H * 0.60), (W * 0.545, H * 0.60)], (38, 30, 30), blur=1.6)
+    vignette(arr, 0.52)
+    return arr
+
+
+def gauntlet_magician_shift_ends_behind(H, W):
+    """Loss · midnight and behind: the fridge light, the unfinished
+    cake, the empty chairs of the ones he never sat with."""
+    arr = sky(H, W, [(0.0, (18, 16, 20)), (1.0, (24, 20, 22))])
+    _brick_wall(arr, H, W, 0.0, 0.66)
+    grad_poly(arr, [(0, H * 0.66), (W, H * 0.66), (W, H), (0, H)], (36, 30, 30), (22, 18, 20), blur=0.5)
+    # the fridge, door ajar: the only light in the room
+    fx = W * 0.24
+    fill_poly(arr, [(fx - W * 0.07, H * 0.26), (fx + W * 0.07, H * 0.26), (fx + W * 0.07, H * 0.74), (fx - W * 0.07, H * 0.74)], (78, 80, 84), blur=0.6)
+    fill_poly(arr, [(fx + W * 0.07, H * 0.26), (fx + W * 0.13, H * 0.30), (fx + W * 0.13, H * 0.70), (fx + W * 0.07, H * 0.74)], (60, 62, 66), blur=0.8)
+    grad_poly(arr, [(fx + W * 0.068, H * 0.30), (fx + W * 0.095, H * 0.32), (fx + W * 0.095, H * 0.68), (fx + W * 0.068, H * 0.70)], (255, 244, 210), (200, 190, 160), blur=1.2)
+    glow(arr, fx + W * 0.09, H * 0.50, W * 0.11, (255, 240, 200), 0.5)
+    # the cake on a small table in the fridge's spill, candles unlit
+    tx = fx + W * 0.22
+    fill_poly(arr, [(tx - W * 0.055, H * 0.62), (tx + W * 0.055, H * 0.62), (tx + W * 0.048, H * 0.645), (tx - W * 0.048, H * 0.645)], (86, 70, 54), blur=0.6)
+    for lxo in (-0.042, 0.042):
+        fill_poly(arr, [(tx + W * lxo - 3, H * 0.645), (tx + W * lxo + 3, H * 0.645), (tx + W * lxo + 3, H * 0.74), (tx + W * lxo - 3, H * 0.74)], (60, 48, 40), blur=0.5)
+    fill_poly(arr, _ellipse_pts(tx, H * 0.607, W * 0.038, H * 0.016), (238, 226, 206), blur=0.8)
+    fill_poly(arr, [(tx - W * 0.038, H * 0.607), (tx + W * 0.038, H * 0.607), (tx + W * 0.036, H * 0.585), (tx - W * 0.036, H * 0.585)], (238, 226, 206), blur=0.8)
+    for i in range(3):
+        cxx = tx - W * 0.016 + i * W * 0.016
+        fill_poly(arr, [(cxx - 2, H * 0.585), (cxx + 2, H * 0.585), (cxx + 2, H * 0.558), (cxx - 2, H * 0.558)], (200, 120, 110), blur=0.4)
+    drop_shadow(arr, _ellipse_pts(tx + W * 0.01, H * 0.75, W * 0.05, H * 0.014), blur=4.0, opacity=0.35)
+    # two chairs he never got to, right, in the dark
+    for cxf in (0.62, 0.78):
+        fill_poly(arr, [(W * cxf, H * 0.72), (W * (cxf + 0.055), H * 0.72), (W * (cxf + 0.05), H * 0.84), (W * (cxf + 0.006), H * 0.84)], (42, 34, 32), blur=1.0)
+        fill_poly(arr, [(W * cxf, H * 0.72), (W * (cxf + 0.008), H * 0.72), (W * (cxf + 0.008), H * 0.60), (W * cxf, H * 0.60)], (42, 34, 32), blur=1.0)
+    # the clock at midnight, high and small
+    fill_poly(arr, _ellipse_pts(W * 0.70, H * 0.22, W * 0.024, W * 0.024, n=40), (196, 186, 166), blur=0.6)
+    fill_poly(arr, [(W * 0.699, H * 0.22), (W * 0.701, H * 0.22), (W * 0.701, H * 0.187), (W * 0.699, H * 0.187)], (50, 44, 40), blur=0.3)
+    fill_poly(arr, [(W * 0.699, H * 0.22), (W * 0.701, H * 0.22), (W * 0.701, H * 0.192), (W * 0.699, H * 0.192)], (50, 44, 40), blur=0.3)
+    vignette(arr, 0.52)
+    return arr
+
+
+def gauntlet_magician_inertia_max(H, W):
+    """Loss (fallback) · the room sat on him: the ceiling has most of
+    the frame; the bench and its small light have what's left."""
+    arr = sky(H, W, [(0.0, (16, 14, 16)), (1.0, (24, 20, 20))])
+    # the ceiling mass: dark joists taking the top two thirds
+    grad_poly(arr, [(0, 0), (W, 0), (W, H * 0.62), (0, H * 0.62)], (20, 17, 18), (34, 27, 25), blur=0.5)
+    for i in range(5):
+        jy = H * (0.08 + 0.115 * i)
+        fill_poly(arr, [(0, jy), (W, jy + H * 0.012), (W, jy + H * 0.05), (0, jy + H * 0.038)], (14, 12, 13), blur=0.8)
+    _workbench(arr, H, W, 0.80, tone=(70, 56, 44))
+    # the small lamp and the smaller figure, low in the frame
+    glow(arr, W * 0.42, H * 0.76, W * 0.09, (240, 202, 140), 0.45)
+    fill_poly(arr, [(W * 0.52, H * 0.80), (W * 0.58, H * 0.80), (W * 0.572, H * 0.70), (W * 0.528, H * 0.705)], (40, 32, 30), blur=1.4)
+    fill_poly(arr, _ellipse_pts(W * 0.55, H * 0.695, W * 0.016, H * 0.020), (44, 36, 32), blur=1.2)
+    vignette(arr, 0.55)
+    return arr
+
+
 SCENES = {
+    "gauntlet_magician_warehouse_bay": gauntlet_magician_warehouse_bay,
+    "gauntlet_magician_river_window": gauntlet_magician_river_window,
+    "gauntlet_magician_roof_hatch": gauntlet_magician_roof_hatch,
+    "gauntlet_magician_the_maker_forgets_the_make": gauntlet_magician_the_maker_forgets_the_make,
+    "gauntlet_magician_the_maker_breaks": gauntlet_magician_the_maker_breaks,
+    "gauntlet_magician_the_steamboat_sails": gauntlet_magician_the_steamboat_sails,
+    "gauntlet_magician_the_river_takes_the_bank": gauntlet_magician_the_river_takes_the_bank,
+    "gauntlet_magician_the_room_walked_out": gauntlet_magician_the_room_walked_out,
+    "gauntlet_magician_shift_ends_behind": gauntlet_magician_shift_ends_behind,
+    "gauntlet_magician_inertia_max": gauntlet_magician_inertia_max,
+
     "fool_leap_parking_lot": fool_leap_parking_lot,
     "fool_leap_river_window": fool_leap_river_window,
     "fool_leap_precipice_door": fool_leap_precipice_door,

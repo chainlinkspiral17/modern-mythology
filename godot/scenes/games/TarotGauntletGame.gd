@@ -9104,6 +9104,13 @@ func _trigger_win(threshold: String) -> void:
 
 
 func _win_cg_path(threshold: String) -> String:
+	# Data-driven first: any board's ending art drops in at
+	# assets/cg/gauntlet_<arcana>_<id>.png with zero code (the CG
+	# program is painting boards one at a time). The Fool's original
+	# five keep their pre-program filenames as the fallback map.
+	var p := "res://assets/cg/gauntlet_%s_%s.png" % [_arcana_id, threshold]
+	if ResourceLoader.exists(p) or FileAccess.file_exists(p):
+		return p
 	match threshold:
 		"parking_lot":   return "res://assets/cg/fool_leap_parking_lot.png"
 		"river_window":  return "res://assets/cg/fool_leap_river_window.png"
@@ -9236,6 +9243,9 @@ func _trigger_loss(reason: String) -> void:
 
 
 func _loss_cg_path(finale_id: String) -> String:
+	var p := "res://assets/cg/gauntlet_%s_%s.png" % [_arcana_id, finale_id]
+	if ResourceLoader.exists(p) or FileAccess.file_exists(p):
+		return p
 	match finale_id:
 		"wipe_the_same_spot_forever":         return "res://assets/cg/fool_finale_wipe_forever.png"
 		"twenty_four_hour_diner_of_the_soul": return "res://assets/cg/fool_finale_24_hour_diner.png"
