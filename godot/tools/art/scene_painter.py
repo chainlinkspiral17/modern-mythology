@@ -1560,7 +1560,224 @@ def gauntlet_priestess_the_night_ran_out(H, W):
     return arr
 
 
+
+
+# ── EMPRESS arcana CGs (D'Ambrosio's riverboat · 2026-08-31) ────────
+# Board four. Friday dinner service on the riverboat: brass and
+# burgundy, portholes of night river, the gangway down to shore.
+
+def _riverboat_wall(arr, H, W, y0f, y1f):
+    grad_poly(arr, [(0, H * y0f), (W, H * y0f), (W, H * y1f), (0, H * y1f)], (74, 46, 44), (56, 36, 36), blur=0.4)
+    fill_poly(arr, [(0, H * (y0f + 0.30 * (y1f - y0f))), (W, H * (y0f + 0.30 * (y1f - y0f))), (W, H * (y0f + 0.32 * (y1f - y0f))), (0, H * (y0f + 0.32 * (y1f - y0f)))], (150, 118, 62), blur=0.6)
+
+
+def _porthole(arr, H, W, cx, cy, r):
+    fill_poly(arr, _ellipse_pts(cx, cy, r * 1.18, r * 1.18, n=40), (140, 110, 58), blur=0.8)
+    grad_poly(arr, _ellipse_pts(cx, cy, r, r, n=40), (16, 20, 32), (24, 28, 40), blur=0.6)
+    fill_poly(arr, [(cx - r, cy + r * 0.35), (cx + r, cy + r * 0.42), (cx + r, cy + r * 0.55), (cx - r, cy + r * 0.48)], (60, 68, 84), blur=1.2, opacity=0.5)
+
+
+def _service_table(arr, H, W, cx, cy, wr, state="set"):
+    # the cloth falls from the tabletop to the floor — a tabletop
+    # with no drop floated in the first render (grounding checklist)
+    drop_shadow(arr, _ellipse_pts(cx, cy + wr * 0.52, wr * 1.02, wr * 0.14), blur=4.0, opacity=0.4)
+    fill_poly(arr, [(cx - wr * 0.96, cy), (cx + wr * 0.96, cy), (cx + wr * 0.80, cy + wr * 0.50), (cx - wr * 0.80, cy + wr * 0.50)], (206, 198, 184), blur=0.8)
+    fill_poly(arr, _ellipse_pts(cx, cy, wr, wr * 0.30), (232, 226, 212), blur=0.8)
+    if state == "set":
+        fill_poly(arr, _ellipse_pts(cx, cy - wr * 0.10, wr * 0.13, wr * 0.05), (170, 60, 50), blur=0.6)
+    elif state == "left":
+        fill_poly(arr, [(cx - wr * 0.5, cy - wr * 0.06), (cx - wr * 0.1, cy - wr * 0.12), (cx - wr * 0.05, cy + wr * 0.02), (cx - wr * 0.45, cy + wr * 0.08)], (208, 200, 186), blur=0.8)
+        fill_poly(arr, [(cx + wr * 0.2, cy), (cx + wr * 0.5, cy - wr * 0.05), (cx + wr * 0.52, cy + wr * 0.06), (cx + wr * 0.22, cy + wr * 0.10)], (208, 200, 186), blur=0.8)
+
+
+def gauntlet_empress_gangway(H, W):
+    """Win · down the gangway into the Friday night shore lights."""
+    arr = sky(H, W, [(0.0, (14, 16, 28)), (1.0, (24, 22, 32))])
+    # the shore: a string of lights and their doubles in the water
+    for i in range(7):
+        fx = 0.08 + 0.13 * i
+        glow(arr, W * fx, H * 0.30, 10, (250, 210, 150), 0.85)
+        fill_poly(arr, [(W * fx - 2, H * 0.30), (W * fx + 2, H * 0.30), (W * fx + 2, H * 0.335), (W * fx - 2, H * 0.335)], (30, 28, 30), blur=0.4)
+    fill_poly(arr, [(0, H * 0.335), (W, H * 0.335), (W, H * 0.32), (0, H * 0.32)], (10, 12, 16), blur=1.5)
+    grad_poly(arr, [(0, H * 0.335), (W, H * 0.335), (W, H * 0.62), (0, H * 0.62)], (28, 34, 48), (16, 20, 30), blur=0.6)
+    for i in range(7):
+        fx = 0.08 + 0.13 * i
+        glow(arr, W * fx, H * 0.40, 10, (200, 168, 120), 0.25)
+    water_pull(arr, 0.34, 0.62, seed=83, amount=12.0)
+    # the gangway running down-frame toward the shore, rails + cleats
+    # the dock landing the gangway reaches, at the shore line
+    fill_poly(arr, [(W * 0.36, H * 0.345), (W * 0.64, H * 0.345), (W * 0.62, H * 0.375), (W * 0.38, H * 0.375)], (70, 56, 44), blur=0.8)
+    grad_poly(arr, [(W * 0.30, H), (W * 0.70, H), (W * 0.56, H * 0.36), (W * 0.44, H * 0.36)], (96, 74, 52), (60, 48, 38), blur=0.6)
+    for i in range(7):
+        t = i / 6.0
+        yy = H * (0.98 - 0.60 * t)
+        xw = W * (0.19 - 0.125 * t)
+        fill_poly(arr, [(W * 0.5 - xw, yy), (W * 0.5 + xw, yy), (W * 0.5 + xw, yy + 3), (W * 0.5 - xw, yy + 3)], (44, 36, 30), blur=0.5, opacity=0.8)
+    for sgn in (-1, 1):
+        fill_poly(arr, [(W * (0.5 + sgn * 0.20), H), (W * (0.5 + sgn * 0.215), H), (W * (0.5 + sgn * 0.066), H * 0.36), (W * (0.5 + sgn * 0.06), H * 0.36)], (120, 96, 56), blur=0.7)
+    # the boat's own light warm behind us
+    grad_poly(arr, [(0, H * 0.86), (W, H * 0.86), (W, H), (0, H)], (150, 100, 60), (90, 62, 44), blur=3.0, opacity=0.35)
+    vignette(arr, 0.4)
+    return arr
+
+
+def gauntlet_empress_side_door(H, W):
+    """Win · the door Dean used: a plain service door ajar onto the
+    river dark, brass sconce above it."""
+    arr = sky(H, W, [(0.0, (30, 20, 22)), (1.0, (40, 26, 26))])
+    _riverboat_wall(arr, H, W, 0.0, 1.0)
+    grad_poly(arr, [(0, H * 0.78), (W, H * 0.78), (W, H), (0, H)], (66, 44, 38), (44, 32, 30), blur=0.5)
+    # the plain door, ajar — the river's dark in the gap
+    dx0, dx1 = W * 0.42, W * 0.60
+    fill_poly(arr, [(dx0 - 10, H * 0.16), (dx1 + 10, H * 0.16), (dx1 + 10, H * 0.80), (dx0 - 10, H * 0.80)], (96, 68, 48), blur=0.5)
+    fill_poly(arr, [(dx0, H * 0.18), (dx1 - W * 0.02, H * 0.185), (dx1 - W * 0.05, H * 0.79), (dx0, H * 0.78)], (74, 52, 40), blur=0.6)
+    grad_poly(arr, [(dx1 - W * 0.05, H * 0.19), (dx1, H * 0.18), (dx1, H * 0.80), (dx1 - W * 0.05, H * 0.79)], (12, 16, 26), (20, 24, 34), blur=0.8)
+    fill_poly(arr, _ellipse_pts(dx0 + W * 0.135, H * 0.485, 5, 5), (190, 158, 90), blur=0.5)
+    # the sconce above, lit
+    fill_poly(arr, [(W * 0.495, H * 0.115), (W * 0.505, H * 0.115), (W * 0.505, H * 0.14), (W * 0.495, H * 0.14)], (140, 110, 58), blur=0.4)
+    glow(arr, W * 0.5, H * 0.10, W * 0.09, (255, 214, 150), 0.6)
+    # the night air pulling through the gap onto the boards
+    grad_poly(arr, [(dx1 - W * 0.05, H * 0.80), (dx1 + W * 0.01, H * 0.80), (dx1 + W * 0.08, H), (dx1 - W * 0.10, H)], (30, 36, 50), (20, 22, 30), blur=2.2, opacity=0.5)
+    vignette(arr, 0.44)
+    return arr
+
+
+def gauntlet_empress_staff_exit(H, W):
+    """Win · off the back walkway: the stern rail, the wake below,
+    the kitchen's steam venting behind."""
+    arr = sky(H, W, [(0.0, (12, 14, 24)), (1.0, (20, 20, 30))])
+    # the river running away behind the stern, the wake's pale V
+    grad_poly(arr, [(0, H * 0.40), (W, H * 0.40), (W, H), (0, H)], (26, 32, 44), (14, 18, 26), blur=0.6)
+    fill_poly(arr, [(W * 0.46, H * 0.44), (W * 0.54, H * 0.44), (W * 0.78, H), (W * 0.22, H)], (70, 84, 98), blur=3.0, opacity=0.4)
+    water_pull(arr, 0.42, 1.0, seed=89, amount=12.0)
+    fill_poly(arr, [(0, H * 0.415), (W, H * 0.415), (W, H * 0.40), (0, H * 0.40)], (8, 10, 14), blur=1.5)
+    # the walkway plane and stern rail we stand at
+    grad_poly(arr, [(0, H * 0.78), (W, H * 0.78), (W, H), (0, H)], (66, 50, 40), (44, 34, 30), blur=0.5)
+    fill_poly(arr, [(0, H * 0.545), (W, H * 0.545), (W, H * 0.565), (0, H * 0.565)], (130, 104, 58), blur=0.6)
+    for i in range(9):
+        px = W * (0.06 + 0.11 * i)
+        fill_poly(arr, [(px, H * 0.565), (px + 5, H * 0.565), (px + 5, H * 0.78), (px, H * 0.78)], (96, 76, 46), blur=0.5)
+    # the kitchen vent's steam ghosting off frame left
+    for i in range(4):
+        glow(arr, W * (0.10 + 0.03 * i), H * (0.30 - 0.06 * i), 22 + i * 8, (210, 210, 214), 0.10)
+    glow(arr, W * 0.10, H * 0.46, W * 0.08, (255, 214, 150), 0.3)
+    vignette(arr, 0.42)
+    return arr
+
+
+def gauntlet_empress_static_bloomed_over(H, W):
+    """Loss · the maitre d' stand at 9:14 — and the stand casts two
+    shadows, because the second voice makes statements now."""
+    arr = sky(H, W, [(0.0, (34, 22, 24)), (1.0, (44, 28, 26))])
+    _riverboat_wall(arr, H, W, 0.0, 0.66)
+    _porthole(arr, H, W, W * 0.16, H * 0.26, W * 0.05)
+    grad_poly(arr, [(0, H * 0.66), (W, H * 0.66), (W, H), (0, H)], (70, 46, 40), (46, 32, 30), blur=0.5)
+    # the dining room's far glow, left, where the tables still murmur
+    glow(arr, W * 0.13, H * 0.55, W * 0.14, (240, 196, 130), 0.25)
+    # the stand: lectern shape, its book open, its little lamp
+    sx = W * 0.62
+    fill_poly(arr, [(sx - W * 0.070, H * 0.72), (sx + W * 0.070, H * 0.72), (sx + W * 0.052, H * 0.40), (sx - W * 0.052, H * 0.40)], (86, 58, 44), blur=0.7)
+    fill_poly(arr, [(sx - W * 0.085, H * 0.395), (sx + W * 0.085, H * 0.395), (sx + W * 0.075, H * 0.36), (sx - W * 0.075, H * 0.365)], (100, 68, 50), blur=0.6)
+    fill_poly(arr, [(sx - W * 0.065, H * 0.375), (sx - W * 0.004, H * 0.368), (sx - W * 0.004, H * 0.393), (sx - W * 0.062, H * 0.40)], (226, 218, 200), blur=0.5)
+    fill_poly(arr, [(sx + W * 0.004, H * 0.368), (sx + W * 0.065, H * 0.375), (sx + W * 0.062, H * 0.40), (sx + W * 0.004, H * 0.393)], (226, 218, 200), blur=0.5)
+    glow(arr, sx, H * 0.33, W * 0.075, (255, 210, 145), 0.5)
+    # THE TELL: two shadows from one stand, splayed at honest angles
+    drop_shadow(arr, [(sx - W * 0.07, H * 0.72), (sx + W * 0.01, H * 0.72), (sx - W * 0.10, H * 0.95), (sx - W * 0.20, H * 0.95)], blur=5.0, opacity=0.45)
+    drop_shadow(arr, [(sx - W * 0.01, H * 0.72), (sx + W * 0.07, H * 0.72), (sx + W * 0.21, H * 0.93), (sx + W * 0.11, H * 0.93)], blur=5.0, opacity=0.30)
+    vignette(arr, 0.46)
+    return arr
+
+
+def gauntlet_empress_the_garden_rotted_in_a_night(H, W):
+    """Loss · the dining room gone wrong: the wilted centerpiece,
+    a chair pushed back, the check nobody paid."""
+    arr = sky(H, W, [(0.0, (36, 24, 26)), (1.0, (46, 30, 28))])
+    _riverboat_wall(arr, H, W, 0.0, 0.60)
+    _porthole(arr, H, W, W * 0.76, H * 0.26, W * 0.05)
+    grad_poly(arr, [(0, H * 0.60), (W, H * 0.60), (W, H), (0, H)], (74, 48, 42), (48, 34, 32), blur=0.5)
+    # the table, abandoned mid-service
+    _service_table(arr, H, W, W * 0.44, H * 0.70, W * 0.17, state="left")
+    # the centerpiece: stems gone over the vase lip, heads down
+    vx = W * 0.44
+    fill_poly(arr, [(vx - W * 0.012, H * 0.635), (vx + W * 0.012, H * 0.635), (vx + W * 0.009, H * 0.685), (vx - W * 0.009, H * 0.685)], (150, 150, 158), blur=0.5)
+    import math as _m
+    for ang in (-1.1, -0.5, 0.3, 0.9):
+        tipx = vx + W * 0.045 * _m.sin(ang)
+        tipy = H * 0.655 + H * 0.028 * abs(_m.cos(ang))
+        fill_poly(arr, [(vx - 1, H * 0.635), (vx + 1, H * 0.635), (tipx + 1, tipy), (tipx - 1, tipy)], (74, 78, 52), blur=0.6)
+        fill_poly(arr, _ellipse_pts(tipx, tipy + 2, 4, 3), (120, 84, 76), blur=0.6)
+    # the check tray with the check, untouched
+    fill_poly(arr, [(vx + W * 0.09, H * 0.695), (vx + W * 0.135, H * 0.69), (vx + W * 0.138, H * 0.71), (vx + W * 0.093, H * 0.715)], (60, 44, 38), blur=0.5)
+    fill_poly(arr, [(vx + W * 0.098, H * 0.694), (vx + W * 0.128, H * 0.691), (vx + W * 0.130, H * 0.703), (vx + W * 0.100, H * 0.706)], (226, 220, 204), blur=0.4)
+    # the chair pushed back and angled from the table
+    chx = W * 0.66
+    fill_poly(arr, [(chx, H * 0.66), (chx + W * 0.052, H * 0.672), (chx + W * 0.042, H * 0.80), (chx - W * 0.008, H * 0.79)], (58, 40, 36), blur=0.8)
+    fill_poly(arr, [(chx + W * 0.036, H * 0.672), (chx + W * 0.052, H * 0.672), (chx + W * 0.062, H * 0.56), (chx + W * 0.046, H * 0.558)], (58, 40, 36), blur=0.8)
+    # the room's chandelier glow, still on, wrong now
+    glow(arr, W * 0.5, H * 0.12, W * 0.2, (240, 196, 130), 0.35)
+    vignette(arr, 0.48)
+    return arr
+
+
+def gauntlet_empress_three_walked_out_of_three_tables(H, W):
+    """Loss · three tables, three dropped napkins, the door still
+    swinging."""
+    arr = sky(H, W, [(0.0, (34, 22, 24)), (1.0, (44, 28, 26))])
+    _riverboat_wall(arr, H, W, 0.0, 0.58)
+    grad_poly(arr, [(0, H * 0.58), (W, H * 0.58), (W, H), (0, H)], (72, 46, 40), (46, 32, 30), blur=0.5)
+    # three abandoned tables receding
+    _service_table(arr, H, W, W * 0.24, H * 0.78, W * 0.15, state="left")
+    _service_table(arr, H, W, W * 0.52, H * 0.70, W * 0.12, state="left")
+    _service_table(arr, H, W, W * 0.72, H * 0.64, W * 0.095, state="left")
+    # dropped napkins on the floor between them
+    for nx, ny in ((0.36, 0.88), (0.60, 0.80), (0.78, 0.72)):
+        fill_poly(arr, [(W * nx, H * ny), (W * (nx + 0.035), H * (ny - 0.008)), (W * (nx + 0.042), H * (ny + 0.014)), (W * (nx + 0.006), H * (ny + 0.02))], (214, 206, 190), blur=0.8)
+    # the exit door at the far end, caught mid-swing
+    dx = W * 0.88
+    fill_poly(arr, [(dx - 8, H * 0.24), (dx + W * 0.06, H * 0.24), (dx + W * 0.06, H * 0.60), (dx - 8, H * 0.60)], (86, 58, 44), blur=0.5)
+    fill_poly(arr, [(dx, H * 0.25), (dx + W * 0.075, H * 0.28), (dx + W * 0.075, H * 0.575), (dx, H * 0.59)], (104, 72, 50), blur=0.8, opacity=0.9)
+    grad_poly(arr, [(dx - 6, H * 0.25), (dx, H * 0.25), (dx, H * 0.59), (dx - 6, H * 0.59)], (14, 16, 24), (22, 24, 32), blur=0.6)
+    glow(arr, W * 0.5, H * 0.10, W * 0.18, (240, 196, 130), 0.3)
+    vignette(arr, 0.46)
+    return arr
+
+
+def gauntlet_empress_service_ended(H, W):
+    """Loss · 11:33 PM: the dining room dark, chairs up, one light
+    over the bar and the sweep of the bus kid's broom."""
+    arr = sky(H, W, [(0.0, (22, 16, 18)), (1.0, (30, 20, 20))])
+    _riverboat_wall(arr, H, W, 0.0, 0.62)
+    _porthole(arr, H, W, W * 0.14, H * 0.28, W * 0.04)
+    grad_poly(arr, [(0, H * 0.62), (W, H * 0.62), (W, H), (0, H)], (52, 36, 32), (34, 26, 26), blur=0.5)
+    # tables with chairs UP, dark silhouettes
+    for txf, tyf, twf in ((0.26, 0.74, 0.13), (0.52, 0.68, 0.10)):
+        fill_poly(arr, _ellipse_pts(W * txf, H * tyf, W * twf, W * twf * 0.32), (40, 30, 28), blur=0.8)
+        for cxo in (-0.5, 0.4):
+            bx = W * (txf + twf * cxo * 0.9)
+            fill_poly(arr, [(bx - 4, H * (tyf - 0.005)), (bx + 4, H * (tyf - 0.005)), (bx + 4, H * (tyf - 0.085)), (bx - 4, H * (tyf - 0.085))], (34, 26, 24), blur=0.6)
+            fill_poly(arr, [(bx - 14, H * (tyf - 0.085)), (bx + 14, H * (tyf - 0.085)), (bx + 10, H * (tyf - 0.105)), (bx - 10, H * (tyf - 0.105))], (34, 26, 24), blur=0.6)
+    # the bar at right under its one pendant
+    fill_poly(arr, [(W * 0.70, H * 0.50), (W, H * 0.48), (W, H * 0.70), (W * 0.70, H * 0.72)], (64, 42, 36), blur=0.5)
+    fill_poly(arr, [(W * 0.70, H * 0.495), (W, H * 0.475), (W, H * 0.492), (W * 0.70, H * 0.512)], (140, 108, 60), blur=0.6)
+    fill_poly(arr, [(W * 0.848, H * 0.12), (W * 0.852, H * 0.12), (W * 0.852, H * 0.30), (W * 0.848, H * 0.30)], (24, 20, 20), blur=0.4)
+    glow(arr, W * 0.85, H * 0.33, W * 0.10, (255, 210, 145), 0.55)
+    # the bar rag mid-wipe, and the broom leaning by the far door
+    fill_poly(arr, [(W * 0.80, H * 0.505), (W * 0.845, H * 0.50), (W * 0.85, H * 0.515), (W * 0.805, H * 0.52)], (200, 192, 176), blur=0.6)
+    fill_poly(arr, [(W * 0.055, H * 0.62), (W * 0.062, H * 0.62), (W * 0.085, H * 0.36), (W * 0.078, H * 0.36)], (96, 76, 46), blur=0.5)
+    fill_poly(arr, [(W * 0.045, H * 0.62), (W * 0.085, H * 0.62), (W * 0.078, H * 0.66), (W * 0.038, H * 0.66)], (120, 104, 70), blur=0.6)
+    vignette(arr, 0.5)
+    return arr
+
+
 SCENES = {
+    "gauntlet_empress_gangway": gauntlet_empress_gangway,
+    "gauntlet_empress_side_door": gauntlet_empress_side_door,
+    "gauntlet_empress_staff_exit": gauntlet_empress_staff_exit,
+    "gauntlet_empress_static_bloomed_over": gauntlet_empress_static_bloomed_over,
+    "gauntlet_empress_the_garden_rotted_in_a_night": gauntlet_empress_the_garden_rotted_in_a_night,
+    "gauntlet_empress_three_walked_out_of_three_tables": gauntlet_empress_three_walked_out_of_three_tables,
+    "gauntlet_empress_service_ended": gauntlet_empress_service_ended,
+
     "gauntlet_priestess_front_door": gauntlet_priestess_front_door,
     "gauntlet_priestess_back_gate": gauntlet_priestess_back_gate,
     "gauntlet_priestess_roof": gauntlet_priestess_roof,
