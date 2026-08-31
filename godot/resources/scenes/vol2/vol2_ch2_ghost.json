@@ -43,7 +43,7 @@
   },
   {
    "t": "narrate",
-   "text": "A week after the disaster at Cliffside, while David holed up in rented lodgings on the physical mend, he wandered out onto the beach to watch the sunset and break the silence of his self-imposed exile. He related the tale of what happened next with irregular flourishes and inventions — and my own interpretation is as such."
+   "text": "[mood:night][shot:establish~]A week after the disaster at Cliffside, while David holed up in rented lodgings on the physical mend, he wandered out onto the beach to watch the sunset and break the silence of his self-imposed exile. He related the tale of what happened next with irregular flourishes and inventions — and my own interpretation is as such."
   },
   {
    "t": "say",
@@ -97,7 +97,7 @@
    "t": "say",
    "char": "David Jarvis",
    "expr": "neutral",
-   "text": "I hate to say it — but a real chill crept over me. My body was telling me that this was no good, and every small hair on my body went tight."
+   "text": "[beat:chill]I hate to say it — but a real chill crept over me. My body was telling me that this was no good, and every small hair on my body went tight."
   },
   {
    "t": "say",

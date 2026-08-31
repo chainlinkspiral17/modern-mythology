@@ -5,7 +5,7 @@
    "t": "say",
    "char": "Stranger",
    "expr": "neutral",
-   "text": "Here is the myth of you: you were born in a world that had already decided what you were. You have been arguing with that decision ever since."
+   "text": "[beat:still]Here is the myth of you: you were born in a world that had already decided what you were. You have been arguing with that decision ever since."
   },
   {
    "t": "say",
@@ -86,7 +86,7 @@
   {
    "t": "think",
    "char": null,
-   "text": "The coffee. The empty booth. The way he knew your face."
+   "text": "[beat:chill]The coffee. The empty booth. The way he knew your face."
   },
   {
    "t": "think",

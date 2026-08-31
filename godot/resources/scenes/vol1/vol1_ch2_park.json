@@ -154,7 +154,7 @@
    "t": "say",
    "char": "Faust",
    "expr": "neutral",
-   "text": "Lafayette — as I'll call L. Ron — always wanted to be a sailor boy. Dreamed big dreams. And boy, how he schemed."
+   "text": "[mood:memory_warm]Lafayette — as I'll call L. Ron — always wanted to be a sailor boy. Dreamed big dreams. And boy, how he schemed."
   },
   {
    "t": "say",
@@ -196,7 +196,7 @@
    "t": "say",
    "char": "Faust",
    "expr": "neutral",
-   "text": "They shared a woman. Her name was Betty. She was my grandmother. And here I am, five decades later."
+   "text": "[beat:still]They shared a woman. Her name was Betty. She was my grandmother. And here I am, five decades later."
   },
   {
    "t": "bg",
@@ -222,7 +222,7 @@
    "t": "say",
    "char": "Jacob",
    "expr": "neutral",
-   "text": "I'll have to read up on that."
+   "text": "[mood:day_bright]I'll have to read up on that."
   },
   {
    "t": "say",

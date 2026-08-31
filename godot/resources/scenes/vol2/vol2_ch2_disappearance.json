@@ -49,7 +49,7 @@
   },
   {
    "t": "narrate",
-   "text": "He was wrong."
+   "text": "[beat:hit]He was wrong."
   },
   {
    "t": "narrate",
@@ -99,7 +99,7 @@
   },
   {
    "t": "narrate",
-   "text": "If it was more than that —"
+   "text": "[beat:chill]If it was more than that —"
   },
   {
    "t": "flag",

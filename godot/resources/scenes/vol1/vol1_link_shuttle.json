@@ -51,7 +51,7 @@
    "t": "say",
    "char": "Stranger",
    "expr": "neutral",
-   "text": "\"We have a seat for you. We always do. You don't have to take it tonight.\""
+   "text": "[beat:chill]\"We have a seat for you. We always do. You don't have to take it tonight.\""
   },
   {
    "t": "hide",

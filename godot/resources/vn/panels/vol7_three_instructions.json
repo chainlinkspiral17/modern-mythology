@@ -1,0 +1,296 @@
+{
+ "id": "vol7_three_instructions",
+ "w": 120,
+ "h": 104,
+ "palette": [
+  "#3a3430",
+  "#ece6d4",
+  "#dcd6c4",
+  "#b0b8c8",
+  "#3c4048",
+  "#5c6068",
+  "#8a4c34",
+  "#c8c2b0"
+ ],
+ "layers": [
+  {
+   "op": "fill",
+   "color": 0
+  },
+  {
+   "op": "rect",
+   "xywh": [
+    12,
+    6,
+    98,
+    92
+   ],
+   "color": 2
+  },
+  {
+   "op": "rect",
+   "xywh": [
+    10,
+    4,
+    98,
+    92
+   ],
+   "color": 1
+  },
+  {
+   "op": "noise",
+   "xywh": [
+    10,
+    4,
+    98,
+    92
+   ],
+   "density": 0.04,
+   "seed": 7,
+   "color": 7
+  },
+  {
+   "op": "vline",
+   "x": 22,
+   "y_range": [
+    4,
+    96
+   ],
+   "color": 6
+  },
+  {
+   "op": "hline",
+   "y": 20,
+   "x_range": [
+    10,
+    108
+   ],
+   "color": 3
+  },
+  {
+   "op": "hline",
+   "y": 34,
+   "x_range": [
+    10,
+    108
+   ],
+   "color": 3
+  },
+  {
+   "op": "hline",
+   "y": 48,
+   "x_range": [
+    10,
+    108
+   ],
+   "color": 3
+  },
+  {
+   "op": "hline",
+   "y": 62,
+   "x_range": [
+    10,
+    108
+   ],
+   "color": 3
+  },
+  {
+   "op": "hline",
+   "y": 76,
+   "x_range": [
+    10,
+    108
+   ],
+   "color": 3
+  },
+  {
+   "op": "hline",
+   "y": 90,
+   "x_range": [
+    10,
+    108
+   ],
+   "color": 3
+  },
+  {
+   "op": "text",
+   "xy": [
+    26,
+    12
+   ],
+   "s": "OCT",
+   "color": 5
+  },
+  {
+   "op": "text",
+   "xy": [
+    44,
+    12
+   ],
+   "s": "4",
+   "color": 5
+  },
+  {
+   "op": "text",
+   "xy": [
+    52,
+    12
+   ],
+   "s": "2050",
+   "color": 5
+  },
+  {
+   "op": "text",
+   "xy": [
+    26,
+    26
+   ],
+   "s": "1.",
+   "color": 4
+  },
+  {
+   "op": "text",
+   "xy": [
+    38,
+    26
+   ],
+   "s": "THE",
+   "color": 4
+  },
+  {
+   "op": "text",
+   "xy": [
+    56,
+    26
+   ],
+   "s": "CROW",
+   "color": 4
+  },
+  {
+   "op": "text",
+   "xy": [
+    80,
+    26
+   ],
+   "s": "IS",
+   "color": 4
+  },
+  {
+   "op": "text",
+   "xy": [
+    26,
+    40
+   ],
+   "s": "THE",
+   "color": 4
+  },
+  {
+   "op": "text",
+   "xy": [
+    44,
+    40
+   ],
+   "s": "BELL",
+   "color": 4
+  },
+  {
+   "op": "text",
+   "xy": [
+    26,
+    54
+   ],
+   "s": "2.",
+   "color": 4
+  },
+  {
+   "op": "text",
+   "xy": [
+    38,
+    54
+   ],
+   "s": "THE",
+   "color": 4
+  },
+  {
+   "op": "text",
+   "xy": [
+    56,
+    54
+   ],
+   "s": "BOWLS",
+   "color": 4
+  },
+  {
+   "op": "text",
+   "xy": [
+    86,
+    54
+   ],
+   "s": "WILL",
+   "color": 4
+  },
+  {
+   "op": "text",
+   "xy": [
+    26,
+    68
+   ],
+   "s": "COUNT",
+   "color": 4
+  },
+  {
+   "op": "text",
+   "xy": [
+    26,
+    82
+   ],
+   "s": "3.",
+   "color": 4
+  },
+  {
+   "op": "text",
+   "xy": [
+    38,
+    82
+   ],
+   "s": "SHE",
+   "color": 4
+  },
+  {
+   "op": "text",
+   "xy": [
+    56,
+    82
+   ],
+   "s": "COMES",
+   "color": 4
+  },
+  {
+   "op": "text",
+   "xy": [
+    26,
+    94
+   ],
+   "s": "TO",
+   "color": 4
+  },
+  {
+   "op": "text",
+   "xy": [
+    38,
+    94
+   ],
+   "s": "THE",
+   "color": 4
+  },
+  {
+   "op": "text",
+   "xy": [
+    56,
+    94
+   ],
+   "s": "DOOR",
+   "color": 4
+  }
+ ]
+}

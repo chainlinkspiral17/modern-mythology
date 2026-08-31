@@ -37,7 +37,7 @@
    "t": "say",
    "char": "Fire",
    "expr": "neutral",
-   "text": "You are flesh. You are decay."
+   "text": "[beat:still]You are flesh. You are decay."
   },
   {
    "t": "say",

@@ -97,7 +97,7 @@
    "t": "say",
    "char": "Wagner",
    "expr": "neutral",
-   "text": "Living in this land of milk and honey."
+   "text": "[beat:lift]Living in this land of milk and honey."
   },
   {
    "t": "flag",

@@ -18,7 +18,7 @@
    "t": "say",
    "char": "Stranger",
    "expr": "neutral",
-   "text": "[mood:night]\"I'm not exactly named yet. It's being kept for me. Somewhere I haven't been. By someone who will, when she meets me, decide it on the spot and not be wrong.\""
+   "text": "[beat:chill][mood:night]\"I'm not exactly named yet. It's being kept for me. Somewhere I haven't been. By someone who will, when she meets me, decide it on the spot and not be wrong.\""
   },
   {
    "t": "say",

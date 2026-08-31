@@ -29,7 +29,7 @@
   },
   {
    "t": "narrate",
-   "text": "[mood:morning_bright]Bianca wakes at four eleven."
+   "text": "[mood:night]Bianca wakes at four eleven."
   },
   {
    "t": "narrate",
@@ -97,7 +97,7 @@
   },
   {
    "t": "narrate",
-   "text": "Carlos calls at nine seventeen."
+   "text": "[mood:morning_bright]Carlos calls at nine seventeen."
   },
   {
    "t": "narrate",

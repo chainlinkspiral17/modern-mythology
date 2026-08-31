@@ -386,7 +386,7 @@
   },
   {
    "char": "tem",
-   "text": "The three instructions.",
+   "text": "[panel:vol7_three_instructions]The three instructions.",
    "t": "say"
   },
   {
@@ -411,7 +411,7 @@
   },
   {
    "char": "roy",
-   "text": "Finn.",
+   "text": "[panel:off]Finn.",
    "t": "say"
   },
   {

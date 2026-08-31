@@ -37,7 +37,7 @@
    "t": "say",
    "char": "Faust",
    "expr": "neutral",
-   "text": "If it is 4am, then I am awake."
+   "text": "[beat:still]If it is 4am, then I am awake."
   },
   {
    "t": "narrate",
