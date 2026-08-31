@@ -120,6 +120,14 @@ func _load_save_if_present() -> void:
 		var saved: Dictionary = parsed
 		for k in saved.keys():
 			_run_state[String(k)] = saved[k]
+	# JSON floats vs Array.has(int): shows_attended gates REST
+	# advancement via attended.has(n) — after a resume the array
+	# holds floats and every gate reads false. Normalize to ints.
+	var att: Array = _run_state.get("shows_attended", [])
+	var att_int: Array = []
+	for v in att:
+		att_int.append(int(v))
+	_run_state["shows_attended"] = att_int
 
 
 func _save_state() -> void:

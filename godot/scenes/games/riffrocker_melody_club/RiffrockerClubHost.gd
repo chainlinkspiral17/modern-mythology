@@ -86,6 +86,15 @@ func _load_save_if_present() -> void:
 		var saved: Dictionary = parsed
 		for k in saved.keys():
 			_run_state[String(k)] = saved[k]
+	# JSON.parse_string returns every number as a FLOAT, and
+	# Array.has(int) compares typed — a resumed meetings_attended of
+	# [1.0, 2.0] fails has(3)'s dedupe and any int gate downstream.
+	# Normalize the saved int array back to ints on load.
+	var att: Array = _run_state.get("meetings_attended", [])
+	var att_int: Array = []
+	for v in att:
+		att_int.append(int(v))
+	_run_state["meetings_attended"] = att_int
 
 
 func _save_state() -> void:
