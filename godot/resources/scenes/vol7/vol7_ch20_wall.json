@@ -308,7 +308,7 @@
    "t": "narrate"
   },
   {
-   "text": "[beat:chill]The face said one word.",
+   "text": "[beat:chill]The face said [wave amp=6 freq=2]one word[/wave].",
    "t": "narrate"
   },
   {

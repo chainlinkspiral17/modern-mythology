@@ -282,7 +282,7 @@
   },
   {
    "char": "nate",
-   "text": "[beat:chill]I am not Nate.",
+   "text": "[beat:chill]I am [shake rate=10 level=3]not Nate[/shake].",
    "expr": "serious",
    "t": "say"
   },

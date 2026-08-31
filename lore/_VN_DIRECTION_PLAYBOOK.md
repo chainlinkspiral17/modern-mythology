@@ -158,6 +158,39 @@ no-op (fallback discipline — a script must never crash the reader).
 
 ## Recent lessons
 
+### 2026-08-31 · the full direction pass · vols 1-2, panels, CGs
+
+- **Vols 1-2 are directed end to end now** (they had zero grammar).
+  Working method that held: read the whole scene, seed ONE beat at
+  the line it turns on, mood only where the fiction's clock is
+  unambiguous, and leave comic/texture scenes bare. Vol1's banter
+  suite took three beats across six scenes; that restraint IS the
+  direction.
+- **Vols 3-4 cannot take direction yet**: their scenes have no bg
+  nodes, and every directive parks until a locale loads — seeding
+  them would be silent no-ops. When those volumes grow up they
+  need a locale first, grammar second.
+- **Mood-clock audits generalize.** Sweep every single-mood chapter
+  and read its fiction's own clock: found lunch-at-dusk, a 2 PM
+  dusk, a night warehouse under day_bright, a 4:11 AM wake under
+  morning_bright. The scan is cheap; the misgrade is exactly the
+  kind of wrongness a player feels without naming.
+- **Panels want documents the prose already stares at**: the bill's
+  pencil note, Brandon's three instructions, Diego's letter. On
+  when the text starts reading the document, [panel:off] when a
+  character moves on or the page folds. Content comes from the
+  scene's own words, never invented.
+- **Procedural CG discipline (the Fool's eight):** compose from the
+  ending's prose; check the render VISUALLY before shipping — the
+  precipice door's first draft put two reels and a figure on the
+  door's centerline and produced a perfect accidental cartoon
+  face (pareidolia is the 2D twin of the stump hunt: symmetric
+  circles + a vertical + a horizontal WILL become a face). Offset,
+  rescale to machine-scale, depth-stack.
+- **Stage grammar stays gated**: cast_<spot> markers exist only in
+  the diner, and casting needs character GLBs (gate 2). Don't
+  seed [stage:] outside vol5 ch0 until models land.
+
 ### 2026-08-30 · the back-to-front pass · direction density is newest-last
 
 - **User direction: "start from the back and work to the front, as

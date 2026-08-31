@@ -684,12 +684,21 @@ staged like that, using still camera set-ups and camera motion."*
   in four closers); (b) VnSweep.gd — headless traversal of all ~270
   indexed scenes, back to front; (c) beat/mood seeding through the
   vol7 epilogues + ch20-22, vol6 ch19-23 (night chapters were graded
-  dawn_warm), vol1 ch4 dream suite + vol2 close. Draft 2 targets:
-  seed the remaining vol6/7 mid-book chapters (ch2-ch18 tails-first),
-  vols 1-2 full direction pass (zero grammar today), stage grammar
-  beyond vol5 ch0, panel authoring for vols 6-7 documents, CG art
-  full-res repaint (fool_* set is 320×180), Deck feel pass on the
-  new beats.
+  dawn_warm), vol1 ch4 dream suite + vol2 close. Draft 2 SHIPPED
+  (2026-08-31): the whole vol6/7 zero-beat list seeded; vols 1-2
+  directed end to end (63 scenes, beats + moods + first panels);
+  mood-clock audits across vols 6-7 (lunch-at-dusk class, 8 fixed);
+  three unwinnable choices + three dead skill checks found by
+  VnSweep and fixed; ten silent chapters got authored beds; the
+  Fool's eight ending CGs repainted 320x200-era → 1280×720; four
+  kinetic-text seeds; panels for the bill note / three
+  instructions / Diego's letter; 56k-error portrait-loader guard.
+  Draft 3 targets: Deck feel pass on ALL of it (beats, ice /
+  lithograph / chillwave grades, the dark river-window CG); other
+  arcana boards' end screens are text-only — a CG program like the
+  Fool's if wanted; vols 3-4 need locales before direction; stage
+  grammar still gated on character GLBs (gate 2); kinetic seeds
+  expand only after Deck sign-off.
 
 - **P0 · Character models wire-in + lighting tune** — as GLBs land
   from gate 2, tune `Portrait3D.CHARACTER_LIGHTING` per model.
