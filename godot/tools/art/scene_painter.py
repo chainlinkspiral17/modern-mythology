@@ -787,7 +787,249 @@ def feyfaire_gate(H, W):
     return arr
 
 
+
+
+# ── FOOL arcana CGs (gauntlet ending screens · 2026-08-31) ──────────
+# The eight ending images shipped as 320x180 flat-vector placeholders
+# (1-7KB) since the Fool board was built. Repainted at native 1280x720
+# through the painterly pipeline. Unpeopled on purpose: every one of
+# these screens is the player's own moment.
+
+def _ellipse_pts(cx, cy, rx, ry, n=40):
+    return [(cx + rx * math.cos(2 * math.pi * i / n),
+             cy + ry * math.sin(2 * math.pi * i / n)) for i in range(n)]
+
+
+def fool_leap_parking_lot(H, W):
+    """Win · stepping off the curb: sodium light ahead, fluorescents
+    dimming behind, wet asphalt carrying both."""
+    arr = sky(H, W, [(0.0, (16, 18, 30)), (0.55, (30, 30, 46)), (1.0, (44, 40, 52))])
+    hz = int(H * 0.52)
+    # far town lights on the horizon line
+    for i, fx in enumerate([0.12, 0.2, 0.31, 0.44, 0.58, 0.71, 0.83, 0.9]):
+        glow(arr, W * fx, hz - 4, 8 + (i % 3) * 5, (216, 190, 140), 0.16)
+    # asphalt
+    grad_poly(arr, [(0, hz), (W, hz), (W, H), (0, H)], (38, 38, 46), (22, 22, 28), blur=0.5)
+    tex(arr, _mask(H, W, [(0, hz), (W, hz), (W, H), (0, H)]), 14, seed=21, scale=7)
+    # the diner's fluorescent spill from behind-left (cool, dimming)
+    glow(arr, W * 0.02, H * 0.86, W * 0.30, (150, 190, 200), 0.28)
+    # the sodium lamp ahead-right: pole, head, warm pool
+    px = W * 0.72
+    fill_poly(arr, [(px - 4, hz - H * 0.30), (px + 4, hz - H * 0.30), (px + 4, hz + H * 0.16), (px - 4, hz + H * 0.16)], (26, 24, 26), blur=0.6)
+    fill_poly(arr, [(px - 26, hz - H * 0.31), (px + 30, hz - H * 0.31), (px + 22, hz - H * 0.27), (px - 18, hz - H * 0.27)], (40, 36, 34), blur=0.6)
+    glow(arr, px + 2, hz - H * 0.28, 46, (255, 214, 140), 0.85)
+    glow(arr, px + 2, hz + H * 0.22, W * 0.20, (240, 190, 110), 0.40)
+    # parking stall lines, worn
+    for sx in (0.18, 0.36, 0.54):
+        fill_poly(arr, [(W * sx, H * 0.98), (W * sx + 10, H * 0.98), (W * (sx + 0.10), H * 0.70), (W * (sx + 0.10) - 8, H * 0.70)], (150, 146, 132), blur=1.2, opacity=0.30)
+    # wet sheen pulls the lights down the asphalt
+    water_pull(arr, 0.54, 1.0, seed=31, amount=10.0)
+    vignette(arr, 0.42)
+    return arr
+
+
+def fool_leap_river_window(H, W):
+    """Win · the window unlatches; the dark water knows your name."""
+    arr = sky(H, W, [(0.0, (10, 12, 20)), (1.0, (14, 16, 26))])
+    # the river through the frame: deep water with a moving seam of shine
+    grad_poly(arr, [(W * 0.16, H * 0.14), (W * 0.86, H * 0.14), (W * 0.86, H * 0.88), (W * 0.16, H * 0.88)], (22, 32, 44), (10, 16, 26), blur=0.5)
+    riv = _mask(H, W, [(W * 0.16, H * 0.40), (W * 0.86, H * 0.44), (W * 0.86, H * 0.88), (W * 0.16, H * 0.88)])
+    tex(arr, riv, 18, seed=41, scale=5)
+    # the far bank: a low black treeline planted ON its waterline
+    fill_poly(arr, [(W * 0.16, H * 0.44), (W * 0.86, H * 0.47), (W * 0.86, H * 0.40), (W * 0.16, H * 0.36)], (8, 10, 14), blur=2.0)
+    # the current's answer: a pale winding shine that reads as a name
+    for i in range(5):
+        t = i / 4.0
+        glow(arr, W * (0.36 + 0.28 * t), H * (0.60 + 0.16 * math.sin(t * 5.2)), 26 - i * 3, (170, 200, 210), 0.22)
+    water_pull(arr, 0.46, 0.88, seed=17, amount=16.0)
+    # window frame OVER everything: sill, jambs, a lifted sash
+    fill_poly(arr, [(0, 0), (W, 0), (W, H * 0.14), (0, H * 0.14)], (30, 26, 24), blur=0.4)
+    fill_poly(arr, [(0, H * 0.86), (W, H * 0.86), (W, H), (0, H)], (34, 30, 26), blur=0.4)
+    fill_poly(arr, [(0, 0), (W * 0.16, 0), (W * 0.16, H), (0, H)], (28, 24, 22), blur=0.4)
+    fill_poly(arr, [(W * 0.86, 0), (W, 0), (W, H), (W * 0.86, H)], (28, 24, 22), blur=0.4)
+    # the sash bar, raised to the top third — it was always going to open
+    fill_poly(arr, [(W * 0.16, H * 0.30), (W * 0.86, H * 0.30), (W * 0.86, H * 0.335), (W * 0.16, H * 0.335)], (36, 32, 28), blur=0.5)
+    # curtain edge breathing in, left
+    fill_poly(arr, [(W * 0.16, H * 0.14), (W * 0.30, H * 0.14), (W * 0.22, H * 0.5), (W * 0.16, H * 0.62)], (52, 48, 54), blur=2.5, opacity=0.65)
+    vignette(arr, 0.4)
+    return arr
+
+
+def fool_leap_precipice_door(H, W):
+    """Win · the door that wasn't there is open; tape reels turning,
+    warm light, someone has been recording you all along."""
+    arr = sky(H, W, [(0.0, (12, 10, 14)), (1.0, (20, 16, 18))])
+    # hallway floor
+    grad_poly(arr, [(0, H * 0.7), (W, H * 0.7), (W, H), (0, H)], (30, 24, 24), (16, 12, 14), blur=0.5)
+    # the doorway, ajar-to-open, right of center
+    dx0, dx1 = W * 0.56, W * 0.74
+    fill_poly(arr, [(dx0 - 14, H * 0.18), (dx1 + 14, H * 0.18), (dx1 + 14, H * 0.86), (dx0 - 14, H * 0.86)], (40, 32, 26), blur=0.5)
+    grad_poly(arr, [(dx0, H * 0.20), (dx1, H * 0.20), (dx1, H * 0.84), (dx0, H * 0.84)], (255, 214, 150), (210, 150, 90), blur=0.8)
+    # the room beyond: a table across the lower third, the tape
+    # machine ON it (machine-scale, left), the figure at the far
+    # right edge — everything offset so nothing reads as a face
+    fill_poly(arr, [(dx0 + 4, H * 0.60), (dx1 - 4, H * 0.60), (dx1 - 4, H * 0.64), (dx0 + 4, H * 0.64)], (150, 100, 60), blur=0.8)
+    mx = dx0 + (dx1 - dx0) * 0.32
+    fill_poly(arr, [(mx - W * 0.030, H * 0.545), (mx + W * 0.030, H * 0.545), (mx + W * 0.030, H * 0.60), (mx - W * 0.030, H * 0.60)], (70, 52, 40), blur=0.6)
+    for rdx in (-0.013, 0.013):
+        fill_poly(arr, _ellipse_pts(mx + W * rdx, H * 0.556, W * 0.009, W * 0.009), (130, 92, 58), blur=0.5)
+        fill_poly(arr, _ellipse_pts(mx + W * rdx, H * 0.556, W * 0.003, W * 0.003), (240, 210, 160), blur=0.3)
+    # the woman at the far end, right of the table, mostly shadow
+    fgx = dx1 - (dx1 - dx0) * 0.20
+    fill_poly(arr, _ellipse_pts(fgx, H * 0.415, W * 0.011, W * 0.013), (96, 62, 44), blur=1.2)
+    fill_poly(arr, [(fgx - W * 0.020, H * 0.60), (fgx + W * 0.020, H * 0.60), (fgx + W * 0.014, H * 0.435), (fgx - W * 0.014, H * 0.435)], (96, 62, 44), blur=1.4)
+    # light spilling across the hall floor in a long wedge
+    grad_poly(arr, [(dx0 - 10, H * 0.84), (dx1 + 10, H * 0.84), (W * 0.94, H), (W * 0.30, H)], (232, 180, 116), (120, 80, 50), blur=2.0, opacity=0.75)
+    glow(arr, (dx0 + dx1) / 2, H * 0.5, W * 0.16, (255, 210, 150), 0.5)
+    vignette(arr, 0.45)
+    return arr
+
+
+def _diner_fluoro_band(arr, H, W, y_f, strength=0.5):
+    grad_poly(arr, [(0, H * (y_f - 0.02)), (W, H * (y_f - 0.02)), (W, H * (y_f + 0.02)), (0, H * (y_f + 0.02))], (210, 226, 224), (170, 186, 188), blur=1.6, opacity=0.9)
+    glow(arr, W * 0.5, H * y_f, W * 0.5, (190, 212, 210), strength)
+
+
+def fool_finale_wipe_forever(H, W):
+    """Loss · the counter, the rag, the one spot that never comes
+    clean — and never will, and that is the whole shift now."""
+    arr = sky(H, W, [(0.0, (34, 32, 36)), (1.0, (26, 24, 28))])
+    _diner_fluoro_band(arr, H, W, 0.10, 0.35)
+    # the counter, a long diagonal formica plane
+    grad_poly(arr, [(0, H * 0.46), (W, H * 0.60), (W, H), (0, H)], (108, 96, 84), (66, 58, 52), blur=0.6)
+    tex(arr, _mask(H, W, [(0, H * 0.46), (W, H * 0.60), (W, H), (0, H)]), 10, seed=51, scale=8)
+    # counter edge chrome
+    fill_poly(arr, [(0, H * 0.455), (W, H * 0.595), (W, H * 0.615), (0, H * 0.475)], (150, 152, 156), blur=0.8)
+    # the spot: a worn bright ellipse, polished past the formica
+    fill_poly(arr, _ellipse_pts(W * 0.46, H * 0.76, W * 0.09, H * 0.05), (170, 158, 140), blur=3.0, opacity=0.8)
+    glow(arr, W * 0.46, H * 0.76, W * 0.10, (220, 208, 184), 0.30)
+    # the rag, mid-wipe, resting
+    fill_poly(arr, [(W * 0.56, H * 0.70), (W * 0.66, H * 0.68), (W * 0.70, H * 0.74), (W * 0.62, H * 0.78), (W * 0.55, H * 0.75)], (196, 190, 178), blur=1.2)
+    drop_shadow(arr, [(W * 0.56, H * 0.78), (W * 0.70, H * 0.76), (W * 0.66, H * 0.80), (W * 0.57, H * 0.80)], blur=3.0, opacity=0.4)
+    # a mug, abandoned at frame left, long cold
+    fill_poly(arr, [(W * 0.16, H * 0.60), (W * 0.22, H * 0.60), (W * 0.215, H * 0.68), (W * 0.165, H * 0.68)], (222, 214, 198), blur=0.8)
+    drop_shadow(arr, [(W * 0.155, H * 0.685), (W * 0.225, H * 0.685), (W * 0.22, H * 0.70), (W * 0.16, H * 0.70)], blur=2.5, opacity=0.4)
+    vignette(arr, 0.4)
+    return arr
+
+
+def fool_finale_24_hour_diner(H, W):
+    """Loss · the diner of the soul: one rectangle of light pinned to
+    a dark that has no highway in it anymore."""
+    arr = sky(H, W, [(0.0, (8, 8, 14)), (1.0, (14, 12, 18))])
+    hz = int(H * 0.68)
+    grad_poly(arr, [(0, hz), (W, hz), (W, H), (0, H)], (20, 18, 22), (10, 10, 14), blur=0.6)
+    # the building: long low box, windows a single warm band
+    bx0, bx1 = W * 0.26, W * 0.74
+    fill_poly(arr, [(bx0, hz), (bx1, hz), (bx1, hz - H * 0.20), (bx0, hz - H * 0.20)], (26, 24, 26), blur=0.5)
+    grad_poly(arr, [(bx0 + W * 0.015, hz - H * 0.155), (bx1 - W * 0.015, hz - H * 0.155), (bx1 - W * 0.015, hz - H * 0.045), (bx0 + W * 0.015, hz - H * 0.045)], (255, 224, 160), (230, 176, 110), blur=0.8)
+    # mullions cutting the band into panes
+    for i in range(1, 8):
+        mx = bx0 + (bx1 - bx0) * i / 8.0
+        fill_poly(arr, [(mx - 2, hz - H * 0.155), (mx + 2, hz - H * 0.155), (mx + 2, hz - H * 0.045), (mx - 2, hz - H * 0.045)], (26, 24, 26), blur=0.3)
+    # roof sign: OPEN 24 HOURS, red, sputtering
+    fill_poly(arr, [(W * 0.42, hz - H * 0.30), (W * 0.58, hz - H * 0.30), (W * 0.58, hz - H * 0.23), (W * 0.42, hz - H * 0.23)], (30, 14, 16), blur=0.5)
+    glow(arr, W * 0.5, hz - H * 0.265, W * 0.075, (255, 90, 70), 0.75)
+    glow(arr, W * 0.5, hz - H * 0.265, W * 0.16, (200, 60, 50), 0.30)
+    # the light pinned to its apron — and nothing else anywhere
+    glow(arr, W * 0.5, hz + H * 0.06, W * 0.30, (240, 200, 140), 0.30)
+    water_pull(arr, 0.70, 1.0, seed=61, amount=8.0)
+    vignette(arr, 0.5)
+    return arr
+
+
+def fool_finale_empty_room(H, W):
+    """Loss · the empty room: wall, floor, one grey window, nothing
+    that was ever going to answer."""
+    arr = sky(H, W, [(0.0, (52, 54, 58)), (1.0, (44, 44, 50))])
+    # floor plane
+    grad_poly(arr, [(0, H * 0.72), (W, H * 0.72), (W, H), (0, H)], (58, 54, 52), (38, 36, 38), blur=0.6)
+    fill_poly(arr, [(0, H * 0.715), (W, H * 0.715), (W, H * 0.73), (0, H * 0.73)], (30, 30, 34), blur=0.8, opacity=0.6)
+    # the window: one tall grey rectangle of daylight that warms nothing
+    wx0, wx1 = W * 0.40, W * 0.60
+    fill_poly(arr, [(wx0 - 8, H * 0.16), (wx1 + 8, H * 0.16), (wx1 + 8, H * 0.60), (wx0 - 8, H * 0.60)], (38, 40, 44), blur=0.5)
+    grad_poly(arr, [(wx0, H * 0.18), (wx1, H * 0.18), (wx1, H * 0.58), (wx0, H * 0.58)], (150, 156, 160), (110, 116, 124), blur=0.8)
+    fill_poly(arr, [(W * 0.497, H * 0.18), (W * 0.503, H * 0.18), (W * 0.503, H * 0.58), (W * 0.497, H * 0.58)], (38, 40, 44), blur=0.3)
+    # its cold light laid on the floor, slightly askew
+    grad_poly(arr, [(wx0 + W * 0.02, H * 0.73), (wx1 + W * 0.04, H * 0.73), (wx1 + W * 0.10, H * 0.94), (wx0 - W * 0.02, H * 0.94)], (96, 100, 106), (58, 60, 64), blur=2.0, opacity=0.6)
+    # a single nail hole where something hung once
+    fill_poly(arr, _ellipse_pts(W * 0.24, H * 0.34, 3, 3), (30, 30, 34), blur=0.4)
+    tex(arr, _mask(H, W, [(0, 0), (W, 0), (W, H), (0, H)]), 6, seed=71, scale=12)
+    vignette(arr, 0.36)
+    return arr
+
+
+def fool_finale_room_listens(H, W):
+    """Loss · the room listens back: the same room, the lamp on, and
+    the air itself leaning in."""
+    arr = sky(H, W, [(0.0, (30, 28, 34)), (1.0, (22, 20, 26))])
+    grad_poly(arr, [(0, H * 0.72), (W, H * 0.72), (W, H), (0, H)], (40, 34, 34), (24, 22, 24), blur=0.6)
+    # the lamp: small table, shade, one warm pool
+    lx = W * 0.30
+    fill_poly(arr, [(lx - W * 0.05, H * 0.72), (lx + W * 0.05, H * 0.72), (lx + W * 0.045, H * 0.60), (lx - W * 0.045, H * 0.60)], (46, 36, 30), blur=0.6)
+    fill_poly(arr, [(lx - 4, H * 0.60), (lx + 4, H * 0.60), (lx + 4, H * 0.50), (lx - 4, H * 0.50)], (30, 26, 24), blur=0.4)
+    fill_poly(arr, [(lx - W * 0.035, H * 0.50), (lx + W * 0.035, H * 0.50), (lx + W * 0.022, H * 0.43), (lx - W * 0.022, H * 0.43)], (214, 168, 110), blur=0.8)
+    glow(arr, lx, H * 0.50, W * 0.13, (255, 206, 140), 0.55)
+    # the listening: the room's air ringed faintly around the lamp,
+    # pressure more than light
+    for r_i, rr in enumerate([0.20, 0.28, 0.37]):
+        fill_poly(arr, _ellipse_pts(lx, H * 0.52, W * rr, W * rr * 0.62, n=60), (60, 52, 56), blur=6.0, opacity=0.10)
+    # the far wall leaning in, barely
+    fill_poly(arr, [(W * 0.70, H * 0.10), (W, H * 0.16), (W, H * 0.72), (W * 0.72, H * 0.72)], (26, 24, 30), blur=2.0, opacity=0.8)
+    tex(arr, _mask(H, W, [(0, 0), (W, 0), (W, H), (0, H)]), 7, seed=81, scale=10)
+    vignette(arr, 0.5)
+    return arr
+
+
+def fool_finale_three_forty_seven(H, W):
+    """Loss · the 3:47 minute: the kitchen clock on its bent nail,
+    hands swimming, the minute that does not pass."""
+    arr = sky(H, W, [(0.0, (44, 40, 38)), (1.0, (34, 30, 30))])
+    _diner_fluoro_band(arr, H, W, 0.06, 0.3)
+    # grease-shadowed wall texture
+    tex(arr, _mask(H, W, [(0, 0), (W, 0), (W, H), (0, H)]), 12, seed=91, scale=9)
+    glow(arr, W * 0.5, H * 0.95, W * 0.5, (60, 48, 40), 0.4)
+    cx, cy, cr = W * 0.5, H * 0.5, H * 0.30
+    # the bent nail + the sag: the clock hangs slightly off-true
+    fill_poly(arr, [(cx - 3, cy - cr - 26), (cx + 5, cy - cr - 30), (cx + 7, cy - cr - 22), (cx - 1, cy - cr - 18)], (120, 112, 104), blur=0.6)
+    drop_shadow(arr, _ellipse_pts(cx + 10, cy + 12, cr, cr), blur=8.0, opacity=0.45)
+    # the beast itself: ring, face, grime
+    fill_poly(arr, _ellipse_pts(cx, cy, cr + 12, cr + 12, n=60), (72, 62, 52), blur=0.8)
+    fill_poly(arr, _ellipse_pts(cx, cy, cr, cr, n=60), (216, 204, 178), blur=0.8)
+    tex(arr, _mask(H, W, _ellipse_pts(cx, cy, cr, cr, n=60)), 10, seed=97, scale=6)
+    # hour ticks
+    for i in range(12):
+        a = 2 * math.pi * i / 12.0
+        x0, y0 = cx + (cr - 22) * math.sin(a), cy - (cr - 22) * math.cos(a)
+        x1, y1 = cx + (cr - 8) * math.sin(a), cy - (cr - 8) * math.cos(a)
+        fill_poly(arr, [(x0 - 3, y0 - 3), (x0 + 3, y0 - 3), (x1 + 3, y1 + 3), (x1 - 3, y1 + 3)], (94, 84, 72), blur=0.4)
+    # hands at 3:47 — and a second, fainter pair a few minutes off:
+    # the hands swim; the clock mocks linearity
+    def hand(angle, length, wid, color, opacity=1.0):
+        dx, dy = math.sin(angle), -math.cos(angle)
+        px, py = -dy, dx
+        fill_poly(arr, [(cx + px * wid, cy + py * wid), (cx - px * wid, cy - py * wid), (cx + dx * length - px * wid * 0.4, cy + dy * length - py * wid * 0.4), (cx + dx * length + px * wid * 0.4, cy + dy * length + py * wid * 0.4)], color, blur=0.5, opacity=opacity)
+    a_hr = 2 * math.pi * ((3 + 47 / 60.0) / 12.0)
+    a_mn = 2 * math.pi * (47 / 60.0)
+    hand(a_hr + 0.16, cr * 0.5, 7, (110, 98, 84), 0.35)
+    hand(a_mn - 0.12, cr * 0.8, 5, (110, 98, 84), 0.35)
+    hand(a_hr, cr * 0.5, 7, (52, 46, 40))
+    hand(a_mn, cr * 0.8, 5, (52, 46, 40))
+    fill_poly(arr, _ellipse_pts(cx, cy, 9, 9), (52, 46, 40), blur=0.4)
+    vignette(arr, 0.42)
+    return arr
+
+
 SCENES = {
+    "fool_leap_parking_lot": fool_leap_parking_lot,
+    "fool_leap_river_window": fool_leap_river_window,
+    "fool_leap_precipice_door": fool_leap_precipice_door,
+    "fool_finale_wipe_forever": fool_finale_wipe_forever,
+    "fool_finale_24_hour_diner": fool_finale_24_hour_diner,
+    "fool_finale_empty_room": fool_finale_empty_room,
+    "fool_finale_room_listens": fool_finale_room_listens,
+    "fool_finale_three_forty_seven": fool_finale_three_forty_seven,
+
     "salmonberry_title": salmonberry_title,
     "salmonberry_song": salmonberry_song,
     "salmonberry_coast": salmonberry_coast,

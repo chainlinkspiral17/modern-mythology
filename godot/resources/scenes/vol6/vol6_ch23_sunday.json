@@ -151,7 +151,7 @@
   },
   {
    "t": "narrate",
-   "text": "Papá."
+   "text": "[panel:vol6_diego_letter]Papá."
   },
   {
    "t": "narrate",
@@ -179,7 +179,7 @@
   },
   {
    "t": "narrate",
-   "text": "He folds the letter. He puts it in an envelope. He addresses the envelope. He puts the envelope on the corner of the desk where he will find it Wednesday morning when he leaves for the post office before school."
+   "text": "[panel:off]He folds the letter. He puts it in an envelope. He addresses the envelope. He puts the envelope on the corner of the desk where he will find it Wednesday morning when he leaves for the post office before school."
   },
   {
    "t": "narrate",
