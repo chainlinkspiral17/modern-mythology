@@ -1326,7 +1326,249 @@ def gauntlet_magician_inertia_max(H, W):
     return arr
 
 
+
+
+# ── PRIESTESS arcana CGs (Elicia's bungalow · 2026-08-31) ───────────
+# Board three. A bungalow evening: porch light, tape closet, screens
+# in the dark, the kitchen at midnight. Domestic scale — the whole
+# board is one small house and its night.
+
+def _bungalow_siding(arr, H, W, y0f, y1f, base=(64, 72, 70)):
+    grad_poly(arr, [(0, H * y0f), (W, H * y0f), (W, H * y1f), (0, H * y1f)],
+              (base[0] + 12, base[1] + 12, base[2] + 10), base, blur=0.4)
+    n = int((y1f - y0f) * 14)
+    for i in range(max(n, 1)):
+        yy = H * (y0f + (y1f - y0f) * i / max(n, 1))
+        fill_poly(arr, [(0, yy), (W, yy), (W, yy + 2), (0, yy + 2)], (base[0] - 14, base[1] - 14, base[2] - 12), blur=0.5, opacity=0.7)
+
+
+def gauntlet_priestess_front_door(H, W):
+    """Win · out the front door into the night: the porch light
+    behind, the walk ahead."""
+    arr = sky(H, W, [(0.0, (14, 16, 26)), (0.6, (22, 22, 34)), (1.0, (28, 26, 34))])
+    # the yard and walk, seen from the open doorway
+    grad_poly(arr, [(0, H * 0.55), (W, H * 0.55), (W, H), (0, H)], (34, 36, 38), (20, 20, 24), blur=0.6)
+    fill_poly(arr, [(W * 0.42, H), (W * 0.58, H), (W * 0.53, H * 0.58), (W * 0.47, H * 0.58)], (140, 132, 116), blur=1.4, opacity=0.55)
+    # a low hedge line either side
+    fill_poly(arr, [(0, H * 0.62), (W * 0.40, H * 0.60), (W * 0.40, H * 0.68), (0, H * 0.72)], (20, 28, 22), blur=2.0)
+    fill_poly(arr, [(W * 0.60, H * 0.60), (W, H * 0.62), (W, H * 0.72), (W * 0.60, H * 0.68)], (20, 28, 22), blur=2.0)
+    # the street's one far lamp
+    glow(arr, W * 0.50, H * 0.50, 18, (235, 205, 150), 0.5)
+    # door frame around us, porch light spilling past our shoulder
+    fill_poly(arr, [(0, 0), (W * 0.16, 0), (W * 0.13, H), (0, H)], (52, 44, 38), blur=0.5)
+    fill_poly(arr, [(W * 0.84, 0), (W, 0), (W, H), (W * 0.87, H)], (52, 44, 38), blur=0.5)
+    fill_poly(arr, [(0, 0), (W, 0), (W, H * 0.10), (0, H * 0.10)], (48, 40, 34), blur=0.5)
+    glow(arr, W * 0.10, H * 0.16, W * 0.13, (255, 214, 150), 0.55)
+    grad_poly(arr, [(W * 0.13, H * 0.86), (W * 0.60, H * 0.86), (W * 0.52, H), (W * 0.05, H)], (220, 180, 120), (110, 90, 62), blur=2.4, opacity=0.5)
+    vignette(arr, 0.4)
+    return arr
+
+
+def gauntlet_priestess_back_gate(H, W):
+    """Win · the back gate ajar; the dark garden goes on past it."""
+    arr = sky(H, W, [(0.0, (12, 14, 22)), (1.0, (20, 22, 28))])
+    # garden ground
+    grad_poly(arr, [(0, H * 0.58), (W, H * 0.58), (W, H), (0, H)], (26, 32, 26), (16, 18, 16), blur=0.6)
+    tex(arr, _mask(H, W, [(0, H * 0.58), (W, H * 0.58), (W, H), (0, H)]), 12, seed=33, scale=8)
+    # the fence line with its gate ajar, right of center
+    fy0, fy1 = H * 0.34, H * 0.62
+    for i in range(11):
+        px = W * (0.04 + 0.085 * i)
+        if 5 <= i <= 6:
+            continue  # the gate's gap
+    for i in range(11):
+        if 5 <= i <= 6:
+            continue
+        px = W * (0.04 + 0.085 * i)
+        fill_poly(arr, [(px, fy0), (px + W * 0.058, fy0), (px + W * 0.058, fy1), (px, fy1)], (44, 40, 36), blur=0.5)
+    # the gate itself, swung inward, catching what light there is
+    fill_poly(arr, [(W * 0.475, fy0 + 6), (W * 0.60, fy0 - H * 0.02), (W * 0.60, fy1 + H * 0.015), (W * 0.475, fy1)], (58, 52, 46), blur=0.8)
+    fill_poly(arr, [(W * 0.487, fy0 + 12), (W * 0.588, fy0), (W * 0.588, fy1), (W * 0.487, fy1 - 4)], (74, 68, 58), blur=1.0, opacity=0.6)
+    # beyond the gap: deeper dark and two far trees
+    grad_poly(arr, [(W * 0.455, fy0), (W * 0.475, fy0), (W * 0.475, fy1), (W * 0.455, fy1)], (8, 10, 14), (12, 14, 16), blur=0.8)
+    spruce(arr, W * 0.30, H * 0.34, H * 0.16, (14, 20, 16), blur=1.5)
+    spruce(arr, W * 0.80, H * 0.34, H * 0.20, (14, 20, 16), blur=1.5)
+    # the bungalow's kitchen window glow, far left behind us
+    glow(arr, W * 0.04, H * 0.20, W * 0.10, (240, 200, 140), 0.35)
+    # stepping stones to the gate
+    for i, (sxf, syf) in enumerate(((0.30, 0.92), (0.38, 0.82), (0.44, 0.73), (0.49, 0.66))):
+        fill_poly(arr, _ellipse_pts(W * sxf, H * syf, W * (0.045 - i * 0.006), H * (0.020 - i * 0.002)), (110, 106, 96), blur=1.2, opacity=0.7)
+    vignette(arr, 0.44)
+    return arr
+
+
+def gauntlet_priestess_roof(H, W):
+    """Win · off the roof at night: shingles underfoot, the town's
+    few lights below, the sky taking most of it."""
+    arr = sky(H, W, [(0.0, (10, 12, 24)), (0.7, (18, 20, 32)), (1.0, (24, 24, 34))])
+    import random as _r
+    _r.seed(11)
+    for i in range(40):
+        glow(arr, W * _r.random(), H * 0.62 * _r.random(), 1.5 + _r.random() * 2.5, (228, 230, 240), 0.45)
+    # the town below the eave line: a few window lights
+    for fx, fy in ((0.12, 0.70), (0.22, 0.73), (0.55, 0.71), (0.70, 0.74), (0.86, 0.72)):
+        fill_poly(arr, [(W * fx, H * fy), (W * fx + 8, H * fy), (W * fx + 8, H * fy + 6), (W * fx, H * fy + 6)], (235, 205, 150), blur=1.0)
+        glow(arr, W * fx + 4, H * fy + 3, 10, (235, 205, 150), 0.3)
+    fill_poly(arr, [(0, H * 0.66), (W, H * 0.66), (W, H * 0.80), (0, H * 0.80)], (14, 15, 20), blur=2.0, opacity=0.85)
+    # the roof plane we stand on: shingle courses raking down-left
+    grad_poly(arr, [(0, H * 0.80), (W, H * 0.72), (W, H), (0, H)], (52, 44, 44), (32, 28, 30), blur=0.5)
+    for i in range(5):
+        yy0 = H * (0.80 + 0.045 * i)
+        yy1 = H * (0.72 + 0.05 * i)
+        fill_poly(arr, [(0, yy0), (W, yy1), (W, yy1 + 3), (0, yy0 + 3)], (24, 20, 22), blur=0.6, opacity=0.8)
+    # the chimney, right, and the TV aerial against the sky
+    fill_poly(arr, [(W * 0.80, H * 0.78), (W * 0.90, H * 0.74), (W * 0.90, H * 0.58), (W * 0.80, H * 0.60)], (46, 38, 36), blur=0.6)
+    fill_poly(arr, [(W * 0.845, H * 0.58), (W * 0.855, H * 0.58), (W * 0.855, H * 0.40), (W * 0.845, H * 0.40)], (30, 30, 34), blur=0.4)
+    for i in range(3):
+        ay = H * (0.42 + 0.03 * i)
+        aw = W * (0.035 - 0.008 * i)
+        fill_poly(arr, [(W * 0.85 - aw, ay), (W * 0.85 + aw, ay), (W * 0.85 + aw, ay + 2), (W * 0.85 - aw, ay + 2)], (30, 30, 34), blur=0.4)
+    vignette(arr, 0.4)
+    return arr
+
+
+def gauntlet_priestess_the_choose_your_own_didnt_render(H, W):
+    """Loss · 11 PM on the porch: the laptop closed, the wicker
+    chair, the one small ember."""
+    arr = sky(H, W, [(0.0, (12, 14, 22)), (1.0, (20, 20, 28))])
+    # porch floorboards
+    grad_poly(arr, [(0, H * 0.62), (W, H * 0.62), (W, H), (0, H)], (58, 46, 38), (36, 30, 26), blur=0.5)
+    for i in range(6):
+        yy = H * (0.66 + 0.058 * i)
+        fill_poly(arr, [(0, yy), (W, yy), (W, yy + 2), (0, yy + 2)], (30, 24, 22), blur=0.5, opacity=0.7)
+    # porch rail against the yard dark
+    for i in range(9):
+        px = W * (0.05 + 0.11 * i)
+        fill_poly(arr, [(px, H * 0.40), (px + 7, H * 0.40), (px + 7, H * 0.62), (px, H * 0.62)], (48, 40, 34), blur=0.5)
+    fill_poly(arr, [(0, H * 0.385), (W, H * 0.385), (W, H * 0.41), (0, H * 0.41)], (56, 46, 38), blur=0.5)
+    # the wicker chair, left of center: a chair-shaped dark, not a
+    # glow — high rounded back, two arms, legs to the boards
+    chx = W * 0.38
+    fill_poly(arr, _ellipse_pts(chx, H * 0.50, W * 0.085, H * 0.13, n=48), (56, 46, 36), blur=1.0)
+    fill_poly(arr, [(chx - W * 0.085, H * 0.50), (chx + W * 0.085, H * 0.50), (chx + W * 0.08, H * 0.68), (chx - W * 0.08, H * 0.68)], (56, 46, 36), blur=0.8)
+    tex(arr, _mask(H, W, [(chx - W * 0.085, H * 0.42), (chx + W * 0.085, H * 0.42), (chx + W * 0.08, H * 0.68), (chx - W * 0.08, H * 0.68)]), 10, seed=39, scale=3)
+    # seat cushion edge + the two arms curling forward
+    fill_poly(arr, [(chx - W * 0.08, H * 0.655), (chx + W * 0.08, H * 0.655), (chx + W * 0.085, H * 0.685), (chx - W * 0.085, H * 0.685)], (72, 58, 44), blur=0.8)
+    for sgn in (-1, 1):
+        ax = chx + sgn * W * 0.093
+        fill_poly(arr, [(ax - 6, H * 0.575), (ax + 6, H * 0.575), (ax + 6, H * 0.70), (ax - 6, H * 0.70)], (64, 52, 40), blur=0.8)
+        fill_poly(arr, _ellipse_pts(ax, H * 0.575, 9, 7), (70, 57, 44), blur=0.8)
+    # legs meeting the boards, with the honest shadow under them
+    for lxo in (-0.062, 0.062):
+        fill_poly(arr, [(chx + W * lxo - 4, H * 0.685), (chx + W * lxo + 4, H * 0.685), (chx + W * lxo + 4, H * 0.775), (chx + W * lxo - 4, H * 0.775)], (48, 40, 32), blur=0.6)
+    drop_shadow(arr, _ellipse_pts(chx, H * 0.785, W * 0.095, H * 0.018), blur=5.0, opacity=0.45)
+    # the closed laptop on the boards beside it
+    fill_poly(arr, [(chx + W * 0.14, H * 0.80), (chx + W * 0.26, H * 0.79), (chx + W * 0.265, H * 0.815), (chx + W * 0.145, H * 0.825)], (70, 72, 76), blur=0.7)
+    drop_shadow(arr, [(chx + W * 0.14, H * 0.825), (chx + W * 0.265, H * 0.815), (chx + W * 0.26, H * 0.84), (chx + W * 0.145, H * 0.85)], blur=3.0, opacity=0.4)
+    # the ember: one warm point above the chair's arm
+    glow(arr, chx - W * 0.10, H * 0.565, 5, (255, 120, 60), 0.9)
+    glow(arr, chx - W * 0.10, H * 0.565, 16, (200, 90, 50), 0.3)
+    vignette(arr, 0.5)
+    return arr
+
+
+def gauntlet_priestess_the_pomegranate_hour_returned(H, W):
+    """Loss · the storage closet floor, three tape boxes open, the
+    hour gone."""
+    arr = sky(H, W, [(0.0, (36, 30, 28)), (1.0, (44, 36, 30))])
+    # close walls: shelves of tapes rising either side
+    for side, x0f in ((0, 0.0), (1, 0.78)):
+        fill_poly(arr, [(W * x0f, 0), (W * (x0f + 0.22), 0), (W * (x0f + 0.22), H), (W * x0f, H)], (40, 32, 28), blur=0.5)
+        for r in range(5):
+            sy = H * (0.06 + 0.19 * r)
+            fill_poly(arr, [(W * x0f + 6, sy), (W * (x0f + 0.22) - 6, sy), (W * (x0f + 0.22) - 6, sy + 4), (W * x0f + 6, sy + 4)], (66, 54, 44), blur=0.4)
+            for c in range(3):
+                tx = W * (x0f + 0.025 + 0.062 * c)
+                fill_poly(arr, [(tx, sy - H * 0.055), (tx + W * 0.048, sy - H * 0.055), (tx + W * 0.048, sy - 2), (tx, sy - 2)], (54, 46, 42), blur=0.3)
+    # the bulb overhead, warm and bare
+    glow(arr, W * 0.5, H * 0.10, W * 0.14, (255, 214, 150), 0.6)
+    fill_poly(arr, [(W * 0.497, 0), (W * 0.503, 0), (W * 0.503, H * 0.08), (W * 0.497, H * 0.08)], (30, 26, 24), blur=0.4)
+    fill_poly(arr, _ellipse_pts(W * 0.5, H * 0.095, 9, 12), (255, 232, 190), blur=1.0)
+    # the floor and the three open tape boxes around an absence
+    grad_poly(arr, [(0, H * 0.70), (W, H * 0.70), (W, H), (0, H)], (58, 46, 38), (40, 32, 28), blur=0.6)
+    for bxf, byf, rot in ((0.34, 0.80, -1), (0.52, 0.87, 0), (0.64, 0.78, 1)):
+        bx, by = W * bxf, H * byf
+        fill_poly(arr, [(bx - W * 0.05, by), (bx + W * 0.05, by), (bx + W * 0.045, by + H * 0.045), (bx - W * 0.045, by + H * 0.045)], (74, 60, 48), blur=0.6)
+        fill_poly(arr, [(bx - W * 0.05, by), (bx + W * 0.05, by), (bx + W * 0.05 + rot * 14, by - H * 0.05), (bx - W * 0.05 + rot * 14, by - H * 0.05)], (88, 72, 56), blur=0.7)
+        fill_poly(arr, [(bx - W * 0.035, by + 4), (bx + W * 0.035, by + 4), (bx + W * 0.033, by + H * 0.03), (bx - W * 0.033, by + H * 0.03)], (46, 40, 38), blur=0.4)
+    vignette(arr, 0.52)
+    return arr
+
+
+def gauntlet_priestess_the_audience_stopped_waiting(H, W):
+    """Loss · two screens lit in a dark room: the empty reply box,
+    the phone face-up, nobody answered."""
+    arr = sky(H, W, [(0.0, (10, 10, 16)), (1.0, (16, 14, 20))])
+    # desk plane
+    grad_poly(arr, [(0, H * 0.66), (W, H * 0.66), (W, H), (0, H)], (34, 28, 28), (20, 17, 18), blur=0.6)
+    # the laptop: lit email window, cursor in an empty reply
+    lx = W * 0.42
+    fill_poly(arr, [(lx - W * 0.15, H * 0.30), (lx + W * 0.15, H * 0.30), (lx + W * 0.155, H * 0.64), (lx - W * 0.155, H * 0.64)], (30, 32, 38), blur=0.6)
+    grad_poly(arr, [(lx - W * 0.135, H * 0.32), (lx + W * 0.135, H * 0.32), (lx + W * 0.14, H * 0.62), (lx - W * 0.14, H * 0.62)], (190, 198, 206), (150, 158, 170), blur=0.6)
+    fill_poly(arr, [(lx - W * 0.135, H * 0.32), (lx + W * 0.135, H * 0.32), (lx + W * 0.135, H * 0.36), (lx - W * 0.135, H * 0.36)], (120, 130, 146), blur=0.4)
+    for i in range(3):
+        yy = H * (0.39 + 0.030 * i)
+        fill_poly(arr, [(lx - W * 0.12, yy), (lx - W * 0.12 + W * (0.16 - 0.03 * i), yy), (lx - W * 0.12 + W * (0.16 - 0.03 * i), yy + 3), (lx - W * 0.12, yy + 3)], (140, 148, 160), blur=0.3)
+    # the empty reply area with one thin cursor bar
+    fill_poly(arr, [(lx - W * 0.12, H * 0.50), (lx + W * 0.12, H * 0.50), (lx + W * 0.12, H * 0.60), (lx - W * 0.12, H * 0.60)], (214, 220, 226), blur=0.4)
+    fill_poly(arr, [(lx - W * 0.115, H * 0.515), (lx - W * 0.112, H * 0.515), (lx - W * 0.112, H * 0.545), (lx - W * 0.115, H * 0.545)], (60, 66, 76), blur=0.3)
+    glow(arr, lx, H * 0.47, W * 0.19, (160, 172, 190), 0.35)
+    # the phone face-up on the desk, its own small cold light
+    px = W * 0.72
+    fill_poly(arr, [(px - W * 0.030, H * 0.73), (px + W * 0.030, H * 0.72), (px + W * 0.036, H * 0.80), (px - W * 0.024, H * 0.81)], (26, 28, 34), blur=0.5)
+    fill_poly(arr, [(px - W * 0.024, H * 0.735), (px + W * 0.024, H * 0.727), (px + W * 0.029, H * 0.793), (px - W * 0.019, H * 0.80)], (120, 136, 158), blur=0.6)
+    glow(arr, px, H * 0.765, W * 0.05, (120, 140, 165), 0.4)
+    # the teacup, gone cold at frame left
+    fill_poly(arr, [(W * 0.14, H * 0.72), (W * 0.19, H * 0.72), (W * 0.185, H * 0.78), (W * 0.145, H * 0.78)], (88, 80, 74), blur=0.7)
+    vignette(arr, 0.5)
+    return arr
+
+
+def gauntlet_priestess_the_night_ran_out(H, W):
+    """Loss · midnight kitchen: the teacup on the counter, the basil
+    dying on the sill, the shard on whichever shelf."""
+    arr = sky(H, W, [(0.0, (22, 22, 28)), (1.0, (30, 28, 32))])
+    _bungalow_siding(arr, H, W, 0.0, 0.55, base=(52, 54, 56))
+    # the window over the sink: night outside, the basil on the sill
+    wx0, wx1 = W * 0.38, W * 0.62
+    fill_poly(arr, [(wx0 - 8, H * 0.10), (wx1 + 8, H * 0.10), (wx1 + 8, H * 0.46), (wx0 - 8, H * 0.46)], (66, 60, 54), blur=0.5)
+    grad_poly(arr, [(wx0, H * 0.12), (wx1, H * 0.12), (wx1, H * 0.44), (wx0, H * 0.44)], (14, 16, 26), (20, 22, 30), blur=0.5)
+    fill_poly(arr, [(W * 0.497, H * 0.12), (W * 0.503, H * 0.12), (W * 0.503, H * 0.44), (W * 0.497, H * 0.44)], (66, 60, 54), blur=0.3)
+    # the basil: a small pot, leaves gone slack
+    bx = W * 0.545
+    fill_poly(arr, [(bx - W * 0.018, H * 0.40), (bx + W * 0.018, H * 0.40), (bx + W * 0.014, H * 0.445), (bx - W * 0.014, H * 0.445)], (110, 74, 52), blur=0.5)
+    for ang in (-0.5, -0.15, 0.25, 0.55):
+        import math as _m
+        tipx = bx + W * 0.030 * _m.sin(ang)
+        fill_poly(arr, [(bx - 2, H * 0.40), (bx + 2, H * 0.40), (tipx + 2, H * 0.425), (tipx - 2, H * 0.428)], (56, 74, 48), blur=0.7)
+    # counter with the one teacup
+    grad_poly(arr, [(0, H * 0.55), (W, H * 0.55), (W, H * 0.62), (0, H * 0.62)], (96, 88, 78), (74, 68, 60), blur=0.5)
+    grad_poly(arr, [(0, H * 0.62), (W, H * 0.62), (W, H), (0, H)], (46, 40, 36), (30, 26, 26), blur=0.5)
+    cup = W * 0.30
+    fill_poly(arr, [(cup - W * 0.020, H * 0.505), (cup + W * 0.020, H * 0.505), (cup + W * 0.017, H * 0.55), (cup - W * 0.017, H * 0.55)], (216, 206, 190), blur=0.6)
+    fill_poly(arr, _ellipse_pts(cup + W * 0.026, H * 0.525, W * 0.009, H * 0.010, n=24), (216, 206, 190), blur=0.7, opacity=0.0)
+    drop_shadow(arr, _ellipse_pts(cup, H * 0.553, W * 0.022, H * 0.006), blur=2.5, opacity=0.4)
+    # the shelf with the shard — two shelves, and the pale sliver is
+    # on one of them; the picture is not sure which either
+    for syf in (0.20, 0.30):
+        fill_poly(arr, [(W * 0.74, H * syf), (W * 0.95, H * syf), (W * 0.95, H * (syf + 0.012)), (W * 0.74, H * (syf + 0.012))], (70, 62, 54), blur=0.4)
+    fill_poly(arr, [(W * 0.81, H * 0.185), (W * 0.835, H * 0.175), (W * 0.845, H * 0.198), (W * 0.815, H * 0.20)], (200, 208, 214), blur=0.8, opacity=0.65)
+    fill_poly(arr, [(W * 0.86, H * 0.288), (W * 0.885, H * 0.278), (W * 0.895, H * 0.298), (W * 0.865, H * 0.30)], (200, 208, 214), blur=0.8, opacity=0.35)
+    # one small under-cabinet light keeps the kitchen honest
+    glow(arr, W * 0.30, H * 0.50, W * 0.10, (240, 206, 150), 0.4)
+    vignette(arr, 0.48)
+    return arr
+
+
 SCENES = {
+    "gauntlet_priestess_front_door": gauntlet_priestess_front_door,
+    "gauntlet_priestess_back_gate": gauntlet_priestess_back_gate,
+    "gauntlet_priestess_roof": gauntlet_priestess_roof,
+    "gauntlet_priestess_the_choose_your_own_didnt_render": gauntlet_priestess_the_choose_your_own_didnt_render,
+    "gauntlet_priestess_the_pomegranate_hour_returned": gauntlet_priestess_the_pomegranate_hour_returned,
+    "gauntlet_priestess_the_audience_stopped_waiting": gauntlet_priestess_the_audience_stopped_waiting,
+    "gauntlet_priestess_the_night_ran_out": gauntlet_priestess_the_night_ran_out,
+
     "gauntlet_magician_warehouse_bay": gauntlet_magician_warehouse_bay,
     "gauntlet_magician_river_window": gauntlet_magician_river_window,
     "gauntlet_magician_roof_hatch": gauntlet_magician_roof_hatch,
