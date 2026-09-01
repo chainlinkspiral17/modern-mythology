@@ -101,9 +101,9 @@ def build_doors():
     make_box("ScreenDoor_Frame", (0.0, 0.0, 1.05), (1.00, 0.04, 2.10), COL_WOOD)
     make_box("ScreenDoor_Mesh", (0.0, 0.0, 1.05), (0.96, 0.005, 2.00), COL_SCREEN)
     # The door to the HOUSE (north) — Sam knocks on this frame
-    make_box("HouseDoor_Frame", (-0.9, ROOM_D-0.06, 1.08), (1.04, 0.10, 2.16), COL_WOOD)
-    make_box("HouseDoor", (-0.9, ROOM_D-0.04, 1.05), (0.90, 0.05, 2.05), (0.50, 0.38, 0.26, 1.0))
-    make_cyl("HouseDoor_Knob", (-0.55, ROOM_D-0.10, 1.02), 0.03, 0.04, (0.66, 0.52, 0.24, 1.0), axis='Y', segments=8)
+    make_box("House_Door_Frame", (-0.9, ROOM_D-0.06, 1.08), (1.04, 0.10, 2.16), COL_WOOD)
+    make_box("House_Door", (-0.9, ROOM_D-0.04, 1.05), (0.90, 0.05, 2.05), (0.50, 0.38, 0.26, 1.0))
+    make_cyl("House_Door_Knob", (-0.55, ROOM_D-0.10, 1.02), 0.03, 0.04, (0.66, 0.52, 0.24, 1.0), axis='Y', segments=8)
     # The house's lit window onto the porch (vol7: "The porch was lit
     # by the cabin's south window")
     make_box("HouseWin_Frame", (1.60, ROOM_D-0.05, 1.60), (1.10, 0.08, 1.10), COL_WOOD)
@@ -194,6 +194,57 @@ def build_crow_2026_08():
     make_crow("Crow", -1.15, 0.10, 1.03, facing=-1.0)
 
 
+def build_hero_props_2026_09():
+    """HERO PROPS FOR THE BLIND CUES (shot_marker_audit, 2026-09-01).
+
+    Four distinct cues from the vol7 cabin chapters this porch
+    doubles for. The house door existed but as "HouseDoor" — one
+    unsplit token the cue matcher cannot see; renamed House_Door.
+    Built:
+
+    - THE CIGARETTE ("He put the cigarette out in the small tin
+      Tem kept on the porch"): a spent butt resting across the
+      Smokers_Tin's rim.
+    - THE BOWLS (ch20-21: the four at the milk crate): a milk
+      crate on the porch's east side with four spiral-rim cedar
+      bowls — the same bowl grammar as the bakery's.
+    - THE TRUCK ("an older Toyota that had belonged to Finn's
+      grandfather"): on a gravel turnaround in the yard, nose
+      toward the porch, headlights faced where the prose aims
+      them.
+    """
+    cedar = (0.55, 0.38, 0.26, 1.0)
+    cedar_dk = (0.44, 0.30, 0.20, 1.0)
+    # ── THE CIGARETTE · across the tin's rim (rim z 1.065) ──
+    make_cyl("Cigarette_Butt", (-2.20, 0.10, 1.072), 0.006, 0.050,
+             (0.90, 0.88, 0.82, 1.0), axis='X', segments=6)
+    # ── THE BOWLS · milk crate, porch east ──
+    make_box("Milk_Crate", (2.0, 1.3, 0.14), (0.38, 0.38, 0.28),
+             (0.72, 0.30, 0.24, 1.0))
+    for bi2, (bx3, by3) in enumerate(((1.912, 1.212), (2.088, 1.212),
+                                      (1.912, 1.388), (2.088, 1.388))):
+        make_cyl(f"Cedar_Bowl_{bi2}", (bx3, by3, 0.3075), 0.085, 0.055,
+                 cedar, segments=12)
+        make_cyl(f"Cedar_Bowl_Rim_{bi2}", (bx3, by3, 0.3375), 0.068, 0.005,
+                 cedar_dk, segments=12)
+    # ── THE TRUCK · gravel turnaround, yard (grade -0.44) ──
+    make_box("Gravel_Turnaround", (-2.2, -5.0, -0.415), (4.20, 3.20, 0.05),
+             (0.55, 0.52, 0.47, 1.0))
+    make_box("Finn_Truck_Body", (-2.2, -5.0, 0.21), (1.70, 3.90, 0.70),
+             (0.44, 0.48, 0.42, 1.0))
+    make_box("Finn_Truck_Cab", (-2.2, -4.0, 0.835), (1.60, 1.30, 0.55),
+             (0.40, 0.44, 0.38, 1.0))
+    make_box("Finn_Truck_Windshield", (-2.2, -3.34, 0.90), (1.30, 0.020, 0.35),
+             (0.26, 0.30, 0.34, 1.0))
+    for hi2, hx3 in enumerate((-2.75, -1.65)):
+        make_cyl(f"Finn_Truck_Headlight_{hi2}", (hx3, -3.04, 0.35), 0.070, 0.020,
+                 (0.96, 0.90, 0.70, 1.0), axis='Y', segments=8)
+    for wi2, (wx3, wy3) in enumerate(((-3.175, -4.1), (-1.225, -4.1),
+                                      (-3.175, -6.1), (-1.225, -6.1))):
+        make_cyl(f"Finn_Truck_Wheel_{wi2}", (wx3, wy3, -0.06), 0.33, 0.25,
+                 (0.14, 0.14, 0.15, 1.0), axis='X', segments=10)
+
+
 def main():
     clear_scene()
     build_shell()
@@ -204,6 +255,7 @@ def main():
     build_porchlamp()
     build_dressing()
     build_crow_2026_08()
+    build_hero_props_2026_09()
     out = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)),
         "../../../assets/3d/locales/miller_back_porch.glb"))
     print(f"\n[build_miller_back_porch] exporting to {out}")
