@@ -157,6 +157,50 @@ def build_detail_pass_2026_08():
                      face_sign=-1, aged=True)
 
 
+def build_hero_props_2026_09():
+    """HERO PROPS FOR THE BLIND CUES (shot_marker_audit, 2026-09-01).
+
+    Five distinct insert cues fire on Graciela's kitchen; three had
+    no geometry (phone aims at the Cordless_Handset already on the
+    table, window at Window_N):
+
+    - THE HANDS (x2 — "Graciela puts her hand over Sam's" / "She
+      puts her hand, briefly, on the top of his head"): the worn-
+      patch grammar again — two hand-polished patches in the table
+      finish where the same touches have landed since he was four.
+    - THE EGGS ("scrambled with a small amount of chorizo she has
+      crumbled into the pan"): iron skillet on the front burner,
+      eggs in it, three chorizo crumbles.
+    - THE SOUP ("She brings the soup."): bowl + surface + spoon at
+      Sam's place.
+
+    Draft note: draft N+1 could steam the soup (a mood, not a
+    mesh) and put the green charge light on the cordless base as
+    an emissive dot.
+    """
+    # ── THE HANDS · worn patches (table top 0.76) ──
+    for nm, hx2, hy2 in (("A", -0.28, 2.42), ("B", 0.0, 2.85)):
+        make_box(f"Hands_Worn_Patch_{nm}", (hx2, hy2, 0.761), (0.14, 0.12, 0.002),
+                 (0.52, 0.40, 0.27, 1.0))
+    # ── THE EGGS · skillet on burner 0 (1.2, 3.84), top 0.96 ──
+    make_cyl("Iron_Skillet", (1.2, 3.84, 0.9775), 0.14, 0.035,
+             (0.16, 0.16, 0.17, 1.0), segments=12)
+    make_box("Skillet_Handle", (0.98, 3.84, 0.975), (0.16, 0.03, 0.012),
+             (0.14, 0.14, 0.15, 1.0))
+    make_cyl("Scrambled_Eggs", (1.2, 3.84, 1.005), 0.10, 0.020,
+             (0.94, 0.82, 0.45, 1.0), segments=10)
+    for ci2, (cx2, cy2) in enumerate(((1.15, 3.80), (1.26, 3.86), (1.19, 3.90))):
+        make_cyl(f"Chorizo_Crumble_{ci2}", (cx2, cy2, 1.019), 0.018, 0.008,
+                 (0.58, 0.22, 0.16, 1.0), segments=6)
+    # ── THE SOUP · bowl + spoon at Sam's place ──
+    make_cyl("Soup_Bowl", (0.30, 2.20, 0.785), 0.075, 0.050,
+             (0.86, 0.82, 0.74, 1.0), segments=12)
+    make_cyl("Soup_Surface", (0.30, 2.20, 0.8125), 0.058, 0.005,
+             (0.66, 0.30, 0.20, 1.0), segments=10)
+    make_box("Soup_Spoon", (0.10, 2.14, 0.7635), (0.14, 0.022, 0.008),
+             (0.62, 0.63, 0.64, 1.0))
+
+
 def main():
     clear_scene()
     build_shell()
@@ -169,6 +213,7 @@ def main():
     build_ceiling_infra()
     build_hero_props()
     build_detail_pass_2026_08()
+    build_hero_props_2026_09()
     out = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)),
         "../../../assets/3d/locales/ramos_kitchen_morning.glb"))
     print(f"\n[build_ramos_kitchen_morning] exporting to {out}")

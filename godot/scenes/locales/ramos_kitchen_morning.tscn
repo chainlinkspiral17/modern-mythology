@@ -299,3 +299,33 @@ offset_top = 360.0
 offset_right = 520.0
 offset_bottom = 980.0
 script = ExtResource("14_dbgm")
+
+; insert: the hands — over Sam's, on the top of his head (ch1/ch10)
+[node name="shot_insert_hands" type="Marker3D" parent="." groups=["vn_shot"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.55, 1.1, -1.95)
+rotation = Vector3(-0.4016, -0.5393, 0.0)
+metadata/fov = 42.0
+
+; insert: eggs scrambled with chorizo, in the pan (ch10)
+[node name="shot_insert_eggs" type="Marker3D" parent="." groups=["vn_shot"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.75, 1.35, -3.35)
+rotation = Vector3(-0.4784, -0.7429, 0.0)
+metadata/fov = 42.0
+
+; insert: the cordless phone, its green charge light (ch1)
+[node name="shot_insert_phone" type="Marker3D" parent="." groups=["vn_shot"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.55, 1.1, -2.05)
+rotation = Vector3(-0.5558, 0.7854, 0.0)
+metadata/fov = 42.0
+
+; insert: the north window, late-summer light (ch10)
+[node name="shot_insert_window" type="Marker3D" parent="." groups=["vn_shot"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0, 1.45, -4.0)
+rotation = Vector3(0, 0, 0)
+metadata/fov = 42.0
+
+; insert: the soup she brings (ch10)
+[node name="shot_insert_soup" type="Marker3D" parent="." groups=["vn_shot"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.62, 1.1, -1.85)
+rotation = Vector3(-0.5519, 0.8643, 0.0)
+metadata/fov = 42.0
