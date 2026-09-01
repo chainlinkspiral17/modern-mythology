@@ -357,3 +357,21 @@ metadata/fov = 40.0
 position = Vector3(-3.3, 1.25, -1)
 rotation = Vector3(-0.569444, 0.876058, 0)
 metadata/fov = 42.0
+
+; insert: the desk phone — it rang; she set it down (ch11)
+[node name="shot_insert_phone" type="Marker3D" parent="." groups=["vn_shot"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.7, 1.15, -1.05)
+rotation = Vector3(-0.6184, 0.8194, 0.0)
+metadata/fov = 42.0
+
+; insert: the eleven-page D'Ambrosio draft (ch11)
+[node name="shot_insert_contract" type="Marker3D" parent="." groups=["vn_shot"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.55, 1.25, -0.9)
+rotation = Vector3(-0.5259, 2.6422, 0.0)
+metadata/fov = 42.0
+
+; insert: her mother, Galveston, 1996 (ch11)
+[node name="shot_insert_photograph" type="Marker3D" parent="." groups=["vn_shot"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.6, 1.1, -0.95)
+rotation = Vector3(-0.5769, 0.8622, 0.0)
+metadata/fov = 42.0

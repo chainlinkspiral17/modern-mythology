@@ -232,11 +232,30 @@ def build_use_states_d4():
     make_cyl("Cooler_LoneCup", (4.35, 1.35, 0.045), 0.03, 0.09,
              (0.92, 0.92, 0.90, 1.0), segments=8)
 
+def build_hero_props_2026_09():
+    """HERO PROPS FOR THE BLIND CUES (shot_marker_audit, 2026-09-01).
+
+    Three distinct cues; the desk phone (Manager_Phone) and the
+    Galveston photograph (Mother_Photo_Galveston) exist — markers
+    only. Built: THE CONTRACT ("The draft contract for Antonio
+    D'Ambrosio, in its current form, ran to eleven pages, and
+    Erica was not happy with any of them") — the printed draft
+    squared on the credenza behind the desk, top sheet showing
+    (the desk top is fully claimed by blotter, papers, monitor foot
+    and phone — the print lives where a printout waits).
+    """
+    make_box("DAmbrosio_Contract", (-3.85, 0.35, 0.884), (0.216, 0.279, 0.008),
+             (0.85, 0.83, 0.78, 1.0))
+    make_box("Contract_Top_Sheet", (-3.85, 0.35, 0.8887), (0.200, 0.260, 0.0012),
+             (0.94, 0.93, 0.89, 1.0))
+
+
 def main():
     clear_scene(); build_shell(); build_cubicles(); build_glass_office(); build_exec_furniture(); build_window_blinds(); build_decor(); build_ceiling_infra()
     build_hero_props()
     build_detail_pass_2026_08()
     build_use_states_d4()
+    build_hero_props_2026_09()
     out = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)), "../../../assets/3d/locales/houston_office.glb"))
     print(f"\n[build_houston_office] exporting to {out}")
     export_glb(out)
