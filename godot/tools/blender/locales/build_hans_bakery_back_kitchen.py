@@ -344,6 +344,22 @@ def build_hero_props_2026_09():
              (0.30, 0.32, 0.30, 1.0), axis='Y', segments=10)
     make_cyl("Bakery_Light_Bulb", (0.0, 0.245, 2.32), 0.035, 0.05,
              (1.0, 0.85, 0.55, 1.0), axis='Y', segments=8)
+    # ── 2026-09-01 second pass: the three cues the first wave's
+    # truncated listing hid (brioche / coffee / bag; coffee aims
+    # at the existing press) ──
+    # THE BRIOCHE ("The brioche on the table held the room."):
+    # plate + three braided lobes, table south-east
+    make_cyl("Brioche_Plate", (0.32, 1.95, 0.786), 0.110, 0.012,
+             (0.92, 0.90, 0.86, 1.0), segments=12)
+    for li2, lx2 in enumerate((0.26, 0.32, 0.38)):
+        make_cyl(f"Brioche_Lobe_{li2}", (lx2, 1.95, 0.817), 0.038, 0.050,
+                 (0.78, 0.56, 0.28, 1.0), segments=8)
+    # THE BAG ("She handed him the bag."): the canvas stick bag on
+    # the door bench beside Per's box
+    make_box("Canvas_Bag", (1.62, 0.42, 0.555), (0.28, 0.20, 0.18),
+             (0.62, 0.58, 0.48, 1.0))
+    make_box("Canvas_Bag_Strap", (1.62, 0.42, 0.657), (0.24, 0.05, 0.024),
+             (0.48, 0.44, 0.36, 1.0))
 
 
 def main():

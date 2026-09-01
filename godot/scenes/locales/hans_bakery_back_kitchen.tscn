@@ -372,3 +372,21 @@ metadata/fov = 42.0
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.8, 1.15, -1.25)
 rotation = Vector3(-0.5385, -0.8417, 0.0)
 metadata/fov = 42.0
+
+; insert: the brioche on the table held the room (vol7)
+[node name="shot_insert_brioche" type="Marker3D" parent="." groups=["vn_shot"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.65, 1.15, -1.6)
+rotation = Vector3(-0.6163, 0.7560, 0.0)
+metadata/fov = 42.0
+
+; insert: the coffee cup Greta set in front of Roy (vol7)
+[node name="shot_insert_coffee" type="Marker3D" parent="." groups=["vn_shot"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.35, 1.25, -2.35)
+rotation = Vector3(-0.6155, 0.7854, 0.0)
+metadata/fov = 42.0
+
+; insert: she handed him the bag (vol7)
+[node name="shot_insert_bag" type="Marker3D" parent="." groups=["vn_shot"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.25, 0.95, -0.95)
+rotation = Vector3(-0.4891, -2.5321, 0.0)
+metadata/fov = 42.0
