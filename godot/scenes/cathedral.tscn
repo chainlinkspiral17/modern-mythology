@@ -668,3 +668,15 @@ light_color = Color(0.95, 0.82, 0.60, 1)
 light_energy = 1.8
 omni_range = 5.5
 shadow_enabled = false
+
+; insert: the Speak & Spell, transmitting without being asked
+[node name="shot_insert_speak_and_spell" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(-1.25, 1.55, 2.15)
+rotation = Vector3(-0.745, 3.1416, 0)
+metadata/fov = 42.0
+
+; insert: the crow on the fence post by the dock — it has been waiting
+[node name="shot_insert_crow" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(13.8, 1.5, -2.2)
+rotation = Vector3(-0.221, -0.876, 0)
+metadata/fov = 42.0

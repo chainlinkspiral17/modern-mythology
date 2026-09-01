@@ -2348,6 +2348,40 @@ def build_magician_props_2026_08():
             make_box(f"Seraphim_Housing_{r}_{c}", (tx, ry, 6.28), (1.40, 0.20, 0.06), (0.40, 0.40, 0.42, 1.0))
 
 
+def build_hero_props_2026_09():
+    """HERO PROPS FOR THE BLIND CUES (shot_marker_audit, 2026-09-01).
+
+    Three cues fire on the model chapter:
+
+    - THE SPEAK & SPELL ("has not been the same since the night it
+      sang Old MacDonald in the voice of early Einstuerzende
+      Neubauten attempting Cumbia"): the orange toy flat on the
+      workbench's west end — body, key grid, green display slot.
+      NOTE for the Deck look: workbench_props.glb loads separately;
+      if the terminal lands on the west end, slide this east.
+    - THE CROW ("lands on the fence post beside him. The crow has
+      been waiting."): a fence post beside the dock with the crow
+      perched on it (the _props/creatures crow).
+    - The charcoal cue (~, the S U N letters on Sun's thigh) is a
+      bedroom beat from another life of this preset — no honest
+      anchor here; deliberately blind, VnDirector holds the wide.
+
+    Markers are HAND-AIMED in cathedral.tscn: this builder lives in
+    tools/blender (BUILDERS_ALT), which geometry_godot does not
+    execute, so marker_reaim cannot see its objects.
+    """
+    from _props.creatures import make_crow
+    make_box("SpeakSpell_Body", (-1.25, -2.80, 0.9575), (0.25, 0.19, 0.035),
+             (0.85, 0.30, 0.16, 1.0))
+    make_box("SpeakSpell_Keys", (-1.25, -2.83, 0.9761), (0.18, 0.08, 0.002),
+             (0.90, 0.82, 0.62, 1.0))
+    make_box("SpeakSpell_Display", (-1.25, -2.735, 0.9761), (0.16, 0.045, 0.002),
+             (0.16, 0.30, 0.18, 1.0))
+    make_box("Dock_Fence_Post", (15.0, 3.2, 0.55), (0.12, 0.12, 1.10),
+             (0.40, 0.32, 0.24, 1.0))
+    make_crow("Cathedral_Crow", 15.0, 3.2, 1.11, facing=-1.0)
+
+
 def main():
     clear_scene()
     build_floor()
@@ -2360,6 +2394,7 @@ def main():
     build_entry_door()
     build_plinth_markers()
     build_workbench()
+    build_hero_props_2026_09()
     build_workbench_chair()
     build_pegboard()
     build_shelves_and_figurines()
