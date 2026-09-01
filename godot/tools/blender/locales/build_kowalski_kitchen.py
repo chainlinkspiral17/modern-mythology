@@ -135,6 +135,41 @@ def build_hero_props():
         make_box(f"Stair_Tread_{s}", (1.4, 0.20, 0.16 + s * 0.18), (0.80, 0.28, 0.05), wood)
 
 
+def build_hero_props_2026_09():
+    """HERO PROPS FOR THE BLIND CUES (shot_marker_audit, 2026-09-01).
+
+    Three distinct cues, all at the table (top 0.76):
+
+    - ANITA'S PHONE ("Anita slides her phone across the table"):
+      face-up mid-slide, off-square.
+    - THE CROSSWORD ("He looks down at the crossword"): the folded
+      page with its grid inlay, pencil beside.
+    - THE EGGS ("Two eggs over-easy, two pieces of toast, a strip
+      of bacon. He sets it in front of Maya without comment."):
+      the plate as served.
+    """
+    make_box("Anitas_Phone", (0.30, 2.30, 0.7715), (0.070, 0.140, 0.011),
+             (0.13, 0.13, 0.15, 1.0))
+    make_box("Crossword_Page", (-0.30, 2.60, 0.761), (0.200, 0.280, 0.002),
+             (0.90, 0.88, 0.83, 1.0))
+    make_box("Crossword_Grid", (-0.30, 2.54, 0.7625), (0.100, 0.100, 0.001),
+             (0.30, 0.30, 0.33, 1.0))
+    make_cyl("Crossword_Pencil", (-0.13, 2.70, 0.766), 0.005, 0.130,
+             (0.86, 0.72, 0.28, 1.0), axis='Y', segments=6)
+    make_cyl("Breakfast_Plate", (0.28, 2.66, 0.771), 0.120, 0.012,
+             (0.92, 0.90, 0.86, 1.0), segments=14)
+    for ei, (ex2, ey2) in enumerate(((0.235, 2.63), (0.30, 2.70))):
+        make_cyl(f"Egg_White_{ei}", (ex2, ey2, 0.783), 0.028, 0.012,
+                 (0.96, 0.94, 0.90, 1.0), segments=10)
+        make_cyl(f"Egg_Yolk_{ei}", (ex2, ey2, 0.792), 0.012, 0.006,
+                 (0.94, 0.72, 0.20, 1.0), segments=8)
+    for ti2, (tx3, ty3) in enumerate(((0.35, 2.585), (0.375, 2.66))):
+        make_box(f"Toast_{ti2}", (tx3, ty3, 0.781), (0.055, 0.040, 0.008),
+                 (0.80, 0.62, 0.36, 1.0))
+    make_box("Bacon_Strip", (0.21, 2.72, 0.7795), (0.020, 0.090, 0.005),
+             (0.62, 0.30, 0.22, 1.0))
+
+
 def main():
     clear_scene()
     build_shell()
@@ -146,6 +181,7 @@ def main():
     build_ceiling_infra()
     build_dressing()
     build_hero_props()
+    build_hero_props_2026_09()
     out = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)),
         "../../../assets/3d/locales/kowalski_kitchen.glb"))
     print(f"\n[build_kowalski_kitchen] exporting to {out}")

@@ -324,3 +324,21 @@ metadata/fov = 42.0
 position = Vector3(1.7, 1.25, -2)
 rotation = Vector3(-0.0867383, -1.5708, 0)
 metadata/fov = 40.0
+
+; insert: Anita slides her phone across the table
+[node name="shot_insert_phone" type="Marker3D" parent="." groups=["vn_shot"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.65, 1.1, -1.95)
+rotation = Vector3(-0.5859, 0.7854, 0.0)
+metadata/fov = 42.0
+
+; insert: the crossword
+[node name="shot_insert_crossword" type="Marker3D" parent="." groups=["vn_shot"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.65, 1.1, -2.25)
+rotation = Vector3(-0.5533, -0.8416, 0.0)
+metadata/fov = 42.0
+
+; insert: two eggs over-easy, set in front of Maya without comment
+[node name="shot_insert_eggs" type="Marker3D" parent="." groups=["vn_shot"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.62, 1.1, -2.35)
+rotation = Vector3(-0.5841, 0.8415, 0.0)
+metadata/fov = 42.0
