@@ -333,3 +333,39 @@ metadata/fov = 42.0
 position = Vector3(2.7, 1.45, -6.6)
 rotation = Vector3(-0.35877, -1.5708, 0)
 metadata/fov = 40.0
+
+; insert: the pallet packed wrong by the day side (ch10)
+[node name="shot_insert_pallet" type="Marker3D" parent="." groups=["vn_shot"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.45, 1.1, -1.05)
+rotation = Vector3(-0.8404, 0.8330, 0.0)
+metadata/fov = 42.0
+
+; insert: Diego's phone (ch10)
+[node name="shot_insert_phone" type="Marker3D" parent="." groups=["vn_shot"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.35, 1.1, -1.35)
+rotation = Vector3(-0.5943, 0.7854, 0.0)
+metadata/fov = 42.0
+
+; insert: the five pushed across (ch16 el rancho, staged here)
+[node name="shot_insert_five" type="Marker3D" parent="." groups=["vn_shot"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.15, 1.25, -1.05)
+rotation = Vector3(-0.5528, -0.7576, 0.0)
+metadata/fov = 42.0
+
+; insert: the cooler thermometer, thirty-six for nine years (ch18)
+[node name="shot_insert_thermometer" type="Marker3D" parent="." groups=["vn_shot"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.35, 1.55, -6.75)
+rotation = Vector3(0, 0, 0)
+metadata/fov = 42.0
+
+; insert: the chain-issued scanner, inventory night (ch22)
+[node name="shot_insert_scanner" type="Marker3D" parent="." groups=["vn_shot"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.2, 1.15, -2.05)
+rotation = Vector3(-0.6066, -0.7219, 0.0)
+metadata/fov = 42.0
+
+; insert: Russell's clipboard — BT written next to cereal (ch22)
+[node name="shot_insert_clipboard" type="Marker3D" parent="." groups=["vn_shot"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.45, 1.15, -0.95)
+rotation = Vector3(-0.5560, -0.8380, 0.0)
+metadata/fov = 42.0

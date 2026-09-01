@@ -267,6 +267,53 @@ def build_departments():
     make_cyl("Can_Puddle", (1.28, 2.20, 0.006), 0.09, 0.005, (0.72, 0.68, 0.56, 1.0), segments=10)
 
 
+def build_hero_props_2026_09():
+    """HERO PROPS FOR THE BLIND CUES (shot_marker_audit, 2026-09-01).
+
+    Six distinct cues fire on Centro; the pallet existed (marker
+    only). Built here, each at its prose station:
+
+    - THE COOLER THERMOMETER ("the thermometer Russell mounted
+      inside the cooler door ... has been at thirty-six"): small
+      body + red needle on the ajar Cooler_Door_Leaf's inner face.
+    - THE FIVE ("He pushes a five across the table"): flat on the
+      checkout belt between two ribs — the closest thing this
+      locale has to a table across which money slides.
+    - THE CHAIN-ISSUED SCANNER (inventory night, canned soup):
+      resting on the second shelf at the aisle's east head where
+      Diego set it between passes.
+    - RUSSELL'S CLIPBOARD ("taps his pen on the clipboard twice"):
+      flat on the pallet load, clip and pen with it.
+    - DIEGO'S PHONE ("He takes his phone out of his back pocket"):
+      face-up beside the clipboard on the pallet load.
+    """
+    steel = (0.62, 0.63, 0.64, 1.0)
+    # ── THE COOLER THERMOMETER · inner face of the door leaf ──
+    make_box("Cooler_Thermometer", (-3.70, 7.319, 1.45), (0.050, 0.012, 0.140),
+             (0.90, 0.89, 0.86, 1.0))
+    make_box("Thermometer_Needle", (-3.70, 7.311, 1.43), (0.008, 0.004, 0.030),
+             (0.80, 0.22, 0.18, 1.0))
+    # ── THE FIVE · on the checkout belt, between ribs ──
+    make_box("Five_Dollar_Bill", (3.50, 1.42, 0.9358), (0.156, 0.066, 0.0015),
+             (0.62, 0.68, 0.56, 1.0))
+    # ── THE CHAIN-ISSUED SCANNER · shelf 1, east aisle head ──
+    make_box("Chain_Scanner", (2.55, 2.48, 0.7825), (0.060, 0.150, 0.045),
+             (0.22, 0.22, 0.25, 1.0))
+    make_box("Scanner_Window", (2.55, 2.415, 0.7825), (0.036, 0.006, 0.020),
+             (0.70, 0.24, 0.20, 1.0))
+    # ── RUSSELL'S CLIPBOARD + PEN · flat on the pallet load ──
+    make_box("Russell_Clipboard", (-1.0, 1.40, 0.766), (0.240, 0.320, 0.012),
+             (0.55, 0.42, 0.28, 1.0))
+    make_box("Clipboard_Sheet", (-1.0, 1.41, 0.7735), (0.210, 0.280, 0.002),
+             (0.94, 0.93, 0.88, 1.0))
+    make_box("Clipboard_Clip", (-1.0, 1.255, 0.782), (0.060, 0.030, 0.020), steel)
+    make_cyl("Russell_Pen", (-0.94, 1.47, 0.7795), 0.005, 0.130,
+             (0.24, 0.28, 0.52, 1.0), axis='Y', segments=6)
+    # ── DIEGO'S PHONE · beside the clipboard ──
+    make_box("Diegos_Phone", (-0.70, 1.70, 0.7655), (0.070, 0.140, 0.011),
+             (0.13, 0.13, 0.15, 1.0))
+
+
 def main():
     clear_scene()
     build_shell()
@@ -285,6 +332,7 @@ def main():
     build_dressing()
     build_more_decor()
     build_departments()
+    build_hero_props_2026_09()
     out = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)),
         "../../../assets/3d/locales/centro_grocery_aisle.glb"))
     print(f"\n[build_centro_grocery_aisle] exporting to {out}")
