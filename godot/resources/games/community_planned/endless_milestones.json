@@ -62,5 +62,43 @@
    "title": "THE QUIETEST STRETCH THE LEDGER HAS EVER HELD",
    "body": "You notice it only because the ledger measures it: the longest run of ordinary weeks since the board began. No spikes. No burns. The gumbo accounted for.\n\n{agent} says the dangerous thing out loud: 'Maybe it's done.'\n\nThe board is not done — the board is a river, and this is a wide slow reach of it. But you let the sentence sit on the desk a full minute before you file it, because it earned the minute."
   }
- ]
+ ],
+ "apprentice": {
+  "comment": "ENDLESS V2 · THE APPRENTICE. m7/m11 narrated succession; this mechanizes it. Aria is the canon candidate — the summer vignette where Nicola brings her to the office and she asks what the modem sounds like when it dials is the foreshadow.",
+  "offer_week": 10,
+  "reoffer_every": 8,
+  "training_weeks": 4,
+  "handoff_weeks": 16,
+  "offer_title": "SOMEBODY AT THE DOOR ON A SUNDAY",
+  "offer_body": "Aria is at the office door at seven — Nicola's kid, the one who asked what the dial-up sounds like and then nodded once, like the sound had settled something.\n\nShe does not ask to watch. She asks for the board's smallest problem and a pencil.\n\nPop's rule sits on the desk between you: it takes a person who keeps showing up. She has been showing up for weeks. You just hadn't written it down yet.",
+  "accept_btn": "hand her the pencil",
+  "decline_btn": "not yet",
+  "accept_line": "Aria takes the corner of the desk that catches the lamp. The ledger gains a second handwriting, small and very careful.",
+  "decline_line": "She nods like a person filing a decision rather than accepting one, and leaves. The knock will come again. Some questions keep Sunday hours.",
+  "training_lines": [
+   "Aria spends Sunday tracing last month's dispatches backwards, asking why at every junction. Twice you don't have an answer, and she writes THAT down.",
+   "Aria alphabetizes the stamp drawer. It was alphabetized. Now it is more so. The board tolerates the audit.",
+   "Aria reads the region files cover to cover with her feet hooked on the chair rung. At the Graustark file she goes quiet for a long time and does not ask anything at all.",
+   "Aria drills the dial-up handshake until she can hum it. She says every machine says its name if you wait for the end of the sentence."
+  ],
+  "misroute_lines": [
+   "Aria routes the Verbena Way letters to the wrong week and the problem grows a ring. She finds the error herself, which is the whole lesson, and it costs the board a little to teach it.",
+   "Aria dispatches by the map instead of by the people and the map, as usual, lies. You unpick it together on Monday. The ledger notes the tuition.",
+   "Aria answers the office line in her own voice. Whoever it was hangs up, and calls back Thursday asking for her."
+  ],
+  "small_ones_lines": [
+   "Aria takes the week's smallest problem off the board before you reach the desk. Her resolution note is one sentence. It is the correct sentence.",
+   "The little trouble at the edge of the map is gone by Sunday supper. Aria's pencil mark where it stood is so faint you check it twice.",
+   "Aria handles the small one the way Pop handled small ones — by making it never have been a problem in anyone's memory but the ledger's.",
+   "One of the week's minor aches resolves without a dispatch. In the margin, in the second handwriting: 'talked to them. it was about the fence. it is not about the fence now.'",
+   "Aria clears the smallest line item and leaves the pencil exactly where you leave it, which is its own message.",
+   "The board's littlest fire goes out quietly midweek. Aria doesn't mention it. The ledger does."
+  ],
+  "graduate_line": "Four Sundays in, Aria stops asking why at the junctions. She has started asking why not, which is a different apprenticeship entirely. The small ones are hers now.",
+  "handoff_header": "You set the pencil down. She picks it up before it stops rolling.",
+  "handoff_lines": [
+   "The board does not retire. The board changes hands the way the bowls do — while everyone is looking somewhere else.",
+   "Nicola cries once, at the door, and denies it at the bottom of the stairs."
+  ]
+ }
 }

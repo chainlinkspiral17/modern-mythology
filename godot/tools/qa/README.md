@@ -92,6 +92,12 @@ cd <repo>/godot && $GODOT --headless --import     # once, ~5 min
   leaves in slot 3: ratcheting spawns, rhythm pools, milestones,
   tower brightness, and the run's ending. Its first three runs
   found three real bugs (see the commit log for 2026-08).
+- `$GODOT --headless res://tools/qa/ApprenticeProbe.tscn` — endless
+  v2's succession mechanic, deterministically: pre-accepts Aria,
+  pins the tower dim, seeds one small problem on the full board,
+  and asserts training lines + a small-one pickup. Its first runs
+  found severity was UNCAPPED (a neglected board hit severity 190)
+  and calibrated her ≤3 pickup ceiling. Run after CPSimSweep.
 - `EndlessProbe` — the diagnostic twin with per-decade state
   prints. NOTE: deleting user:// files needs
   `ProjectSettings.globalize_path` first — the bare

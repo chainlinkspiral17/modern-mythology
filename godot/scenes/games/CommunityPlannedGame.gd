@@ -497,6 +497,151 @@ func _maybe_fire_endless_milestone() -> void:
 	GamepadMgr.focus_first.call_deferred(dlg)
 
 
+# ── ENDLESS V2 · THE APPRENTICE ──────────────────────────────────
+# m7 and m11 narrate succession; this plays it. Offer → training
+# (mis-routes cost real severity) → the small ones are hers →
+# at 16 apprentice-weeks, retiring becomes THE HANDOFF.
+
+func _apprentice_def() -> Dictionary:
+	if _endless_milestones_def.is_empty():
+		_endless_milestones_def = _load_json(DATA_ROOT + "endless_milestones.json")
+	return _endless_milestones_def.get("apprentice", {})
+
+
+func _apprentice_weeks() -> int:
+	var since: int = int(_flags.get("apprentice_since_week", -1))
+	if since < 0:
+		return 0
+	var week: int = int(ceil(float(_day) / 7.0)) - 15
+	return maxi(0, week - since)
+
+
+func _apprentice_sunday() -> void:
+	var ad: Dictionary = _apprentice_def()
+	if ad.is_empty():
+		return
+	var endless_week: int = int(ceil(float(_day) / 7.0)) - 15
+	var since: int = int(_flags.get("apprentice_since_week", -1))
+	if since < 0:
+		# Not taken on yet · offer at week 10, re-offer on a cadence.
+		var next_offer: int = int(_flags.get("apprentice_next_offer", int(ad.get("offer_week", 10))))
+		if endless_week >= next_offer:
+			_offer_apprentice(ad, endless_week)
+		return
+	var aw: int = _apprentice_weeks()
+	var rng := RandomNumberGenerator.new()
+	rng.seed = int(_flags.get("endless_start_day", 100)) * 131 + endless_week * 17
+	var training: int = int(ad.get("training_weeks", 4))
+	if aw <= training:
+		# Training · a lesson line, and a real chance the lesson costs.
+		var tl: Array = ad.get("training_lines", [])
+		if not tl.is_empty():
+			_log("[color=#c8b8e8][i]%s[/i][/color]" % String(tl[(aw - 1) % tl.size()]))
+		if rng.randf() < 0.25:
+			_apprentice_misroute(ad, rng)
+		if aw == training:
+			_log("[color=#c8b8e8][i]%s[/i][/color]" % String(ad.get("graduate_line", "")))
+		return
+	# Graduated · she takes the board's smallest problem, if any
+	# qualifies (severity ≤ 2, nobody already on it).
+	_apprentice_take_small_one(ad, rng)
+
+
+func _offer_apprentice(ad: Dictionary, endless_week: int) -> void:
+	var dlg := ConfirmationDialog.new()
+	dlg.title = "Endless week %d" % endless_week
+	dlg.min_size = Vector2(880, 480)
+	dlg.get_ok_button().text = String(ad.get("accept_btn", "yes"))
+	dlg.get_cancel_button().text = String(ad.get("decline_btn", "not yet"))
+	var col := VBoxContainer.new()
+	col.add_theme_constant_override("separation", 10)
+	col.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	dlg.add_child(col)
+	var hdr := Label.new()
+	hdr.text = "· %s ·" % String(ad.get("offer_title", ""))
+	hdr.add_theme_font_size_override("font_size", 24)
+	hdr.add_theme_color_override("font_color", Color(0.78, 0.72, 0.91, 1))
+	col.add_child(hdr)
+	var body := Label.new()
+	body.text = String(ad.get("offer_body", ""))
+	body.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+	body.custom_minimum_size = Vector2(820, 0)
+	body.add_theme_font_size_override("font_size", 18)
+	col.add_child(body)
+	dlg.confirmed.connect(func() -> void:
+		_flags["apprentice_since_week"] = int(ceil(float(_day) / 7.0)) - 15
+		_log("[color=#c8b8e8][b]· THE APPRENTICE ·[/b] [i]%s[/i][/color]" % String(ad.get("accept_line", ""))))
+	dlg.canceled.connect(func() -> void:
+		_flags["apprentice_next_offer"] = (int(ceil(float(_day) / 7.0)) - 15) + int(ad.get("reoffer_every", 8))
+		_log("[color=#b0a8c8][i]%s[/i][/color]" % String(ad.get("decline_line", ""))))
+	dlg.add_to_group("ui")
+	add_child(dlg)
+	dlg.popup_centered()
+	GamepadMgr.focus_first.call_deferred(dlg)
+
+
+func _apprentice_misroute(ad: Dictionary, rng: RandomNumberGenerator) -> void:
+	# One random active problem grows a ring · the tuition.
+	var picks: Array = []
+	for r_id in _region_state:
+		if String(r_id).begins_with("_") or not _regions.has(r_id):
+			continue
+		var probs: Array = (_region_state[r_id] as Dictionary).get("active_problems", [])
+		for p_v in probs:
+			picks.append(p_v)
+	if picks.is_empty():
+		return
+	var p: Dictionary = picks[rng.randi() % picks.size()]
+	p["severity"] = float(p.get("severity", 1.0)) + 1.0
+	var ml: Array = ad.get("misroute_lines", [])
+	if not ml.is_empty():
+		_log("[color=#c8a842][i]%s[/i][/color]" % String(ml[rng.randi() % ml.size()]))
+
+
+func _apprentice_take_small_one(ad: Dictionary, rng: RandomNumberGenerator) -> void:
+	var best_r: String = ""
+	var best_i: int = -1
+	# "Small" is relative to a ratcheted board: by any Sunday even a
+	# fresh spawn has ticked past 2, so her ceiling is 3 — the probe
+	# proved a 2.0 bar meant she never found work at all.
+	var best_sev: float = 3.01
+	for r_id in _region_state:
+		if String(r_id).begins_with("_") or not _regions.has(r_id):
+			continue
+		var probs: Array = (_region_state[r_id] as Dictionary).get("active_problems", [])
+		for i in range(probs.size()):
+			var p: Dictionary = probs[i]
+			if String(p.get("in_progress_by", "")) != "":
+				continue
+			var sev: float = float(p.get("severity", 1.0))
+			if sev <= 3.0 and sev < best_sev:
+				best_sev = sev
+				best_r = String(r_id)
+				best_i = i
+	if best_r == "":
+		return
+	# Don't yank a problem a dispatch is bound to (same index-shift
+	# hazard the anomaly resolver guards).
+	for ad_v in _active_dispatches:
+		if String((ad_v as Dictionary).get("region_id", "")) == best_r \
+				and int((ad_v as Dictionary).get("problem_index", -1)) == best_i:
+			return
+	var probs_r: Array = (_region_state[best_r] as Dictionary)["active_problems"]
+	var p_ref: Dictionary = probs_r[best_i]
+	var template_id: String = String(p_ref.get("template_id", ""))
+	probs_r.remove_at(best_i)
+	for ad_v in _active_dispatches:
+		var d_d: Dictionary = ad_v
+		if String(d_d.get("region_id", "")) == best_r and int(d_d.get("problem_index", -1)) > best_i:
+			d_d["problem_index"] = int(d_d["problem_index"]) - 1
+	_problem_resolved_by_region[best_r] = int(_problem_resolved_by_region.get(best_r, 0)) + 1
+	if template_id != "":
+		_problem_resolved_counts[template_id] = int(_problem_resolved_counts.get(template_id, 0)) + 1
+	var sl: Array = ad.get("small_ones_lines", [])
+	if not sl.is_empty():
+		_log("[color=#a8d8b8][i]%s[/i][/color]" % String(sl[rng.randi() % sl.size()]))
+
+
 func _end_endless_run(reason: String) -> void:
 	var start_day: int = int(_flags.get("endless_start_day", TURNS_TOTAL))
 	var resolved_total: int = 0
@@ -511,6 +656,7 @@ func _end_endless_run(reason: String) -> void:
 		"resolved_by_region": _problem_resolved_by_region.duplicate(),
 		"anomalies_observed": _anomalies_observed,
 		"brightness_log": _flags.get("endless_brightness_log", []),
+		"apprentice_weeks": _apprentice_weeks(),
 	}
 	_append_endless_ledger(entry)
 	var path: String = _endless_path_for_slot(_current_slot)
@@ -539,15 +685,22 @@ func _retire_endless_slot(slot: int) -> void:
 		for k in prc:
 			resolved_total += int(prc[k])
 		var final_day: int = int(d.get("day", TURNS_TOTAL))
+		# THE HANDOFF · retiring with a long-standing apprentice is a
+		# different ending — the board changes hands, it doesn't stop.
+		var since_w: int = int(flags.get("apprentice_since_week", -1))
+		var final_w: int = int(ceil(float(final_day) / 7.0)) - 15
+		var app_weeks: int = maxi(0, final_w - since_w) if since_w >= 0 else 0
+		var reason: String = "handoff" if app_weeks >= 16 else "retired"
 		_append_endless_ledger({
 			"slot": slot,
-			"reason": "retired",
+			"reason": reason,
 			"final_day": final_day,
 			"endless_days": final_day - int(flags.get("endless_start_day", TURNS_TOTAL)),
 			"problems_resolved_total": resolved_total,
 			"resolved_by_region": d.get("problem_resolved_by_region", {}),
 			"anomalies_observed": int(d.get("anomalies_observed", 0)),
 			"brightness_log": flags.get("endless_brightness_log", []),
+			"apprentice_weeks": app_weeks,
 		})
 	DirAccess.remove_absolute(ProjectSettings.globalize_path(path))
 
@@ -584,9 +737,11 @@ func _brightness_glyphs(log_arr: Array) -> String:
 
 
 func _show_endless_end_screen(entry: Dictionary) -> void:
-	var retired: bool = String(entry.get("reason", "")) == "retired"
+	var reason := String(entry.get("reason", ""))
+	var retired: bool = reason == "retired"
+	var handoff: bool = reason == "handoff"
 	var dlg := AcceptDialog.new()
-	dlg.title = "THE BOARD RETIRES" if retired else "THE TOWER FINISHES"
+	dlg.title = "THE HANDOFF" if handoff else ("THE BOARD RETIRES" if retired else "THE TOWER FINISHES")
 	dlg.min_size = Vector2(900, 540)
 	dlg.get_ok_button().text = "back to the slot desk"
 	var col := VBoxContainer.new()
@@ -594,8 +749,13 @@ func _show_endless_end_screen(entry: Dictionary) -> void:
 	col.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	dlg.add_child(col)
 	var hdr := Label.new()
-	hdr.text = "You set the pencil down." if retired \
-			else "The window in Small Wood goes white and stays white. Whatever the tower was for, it is finished being for it."
+	if handoff:
+		hdr.text = String(_apprentice_def().get("handoff_header",
+			"You set the pencil down. She picks it up before it stops rolling."))
+	elif retired:
+		hdr.text = "You set the pencil down."
+	else:
+		hdr.text = "The window in Small Wood goes white and stays white. Whatever the tower was for, it is finished being for it."
 	hdr.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 	hdr.add_theme_font_size_override("font_size", 20)
 	hdr.add_theme_color_override("font_color", Color(0.96, 0.86, 0.62, 1))
@@ -607,6 +767,11 @@ func _show_endless_end_screen(entry: Dictionary) -> void:
 	for r_id in by_region:
 		lines.append("    %s · %d" % [String(r_id), int(by_region[r_id])])
 	lines.append("anomalies observed · %d" % int(entry.get("anomalies_observed", 0)))
+	if int(entry.get("apprentice_weeks", 0)) > 0:
+		lines.append("apprentice weeks · %d" % int(entry.get("apprentice_weeks", 0)))
+	if handoff:
+		for hl_v in _apprentice_def().get("handoff_lines", []):
+			lines.append(String(hl_v))
 	lines.append("tower curve · %s" % _brightness_glyphs(entry.get("brightness_log", [])))
 	var body := Label.new()
 	body.text = "\n".join(lines)
@@ -3481,6 +3646,11 @@ func _on_advance_day() -> void:
 		# SEPTEMBER STRUCTURES (B3) · a milestone every 8 endless
 		# weeks, so long runs have chapters instead of pure ratchet.
 		_maybe_fire_endless_milestone()
+		# ENDLESS V2 · THE APPRENTICE — Sundays only. The succession
+		# the milestones narrate, mechanized: Aria offers at week 10,
+		# trains at a cost, then takes the small ones off the board.
+		if _is_sunday(_day):
+			_apprentice_sunday()
 	# Check Dean interlude unlock conditions.
 	_check_dean_interludes()
 	# Check the (non-Dean) interlude shelf earn conditions.
@@ -4719,7 +4889,11 @@ func _tick_region_problems(r_id: String) -> void:
 		var t: Dictionary = _problem_templates.get(p["template_id"], {})
 		var tick: float = float(t.get("tick_per_day", 0.3)) * pressure
 		var prev_sev: float = float(p["severity"])
-		p["severity"] = prev_sev + tick
+		# Severity caps at 9: the highest authored threshold is 6, and
+		# an uncapped tick turned neglected endless boards into
+		# "severity 190" absurdities (probe-caught, 2026-08-31). Nine
+		# reads as "as bad as this gets" without breaking the scale.
+		p["severity"] = minf(9.0, prev_sev + tick)
 		# Fire any if_unresolved_at_severity_N effects whose threshold
 		# was crossed this tick. Keys look like "if_unresolved_at_severity_5".
 		# We track the highest threshold fired per-problem so each one

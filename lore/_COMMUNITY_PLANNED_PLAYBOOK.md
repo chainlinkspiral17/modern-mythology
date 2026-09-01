@@ -121,6 +121,43 @@ This playbook is the *how we work on it* doc.
 
 ---
 
+## Design note · ENDLESS V2 · THE APPRENTICE — 2026-08-31, BUILT same day
+
+m7 ("somebody asks to learn the board") and m11 ("the successor
+question") narrated succession; this mechanizes it. Aria — Nicola's
+kid, the one who asked what the dial-up sounds like (the summer
+vignette was the foreshadow) — knocks at endless week 10:
+
+- **The offer** (ConfirmationDialog, Sunday): hand her the pencil,
+  or "not yet" — declining re-offers every 8 weeks. Some questions
+  keep Sunday hours.
+- **Training (4 weeks):** lesson lines in register, and a 25% weekly
+  chance of a MIS-ROUTE — one random problem +1 severity. Teaching
+  costs the board something; that is the mechanic saying so.
+- **Graduated:** every Sunday she takes the board's smallest
+  problem (severity ≤ 3, nobody dispatched on it) — resolved with
+  her own resolution lines, counted in the ledger like any other.
+  The ≤3 ceiling is calibrated: the probe proved a 2.0 bar meant
+  she never found work (everything ticks past 2 by Sunday).
+- **THE HANDOFF:** retire with ≥16 apprentice-weeks and the ending
+  changes — "You set the pencil down. She picks it up before it
+  stops rolling." Third ending alongside THE BOARD RETIRES and THE
+  TOWER FINISHES; ledger reason "handoff", apprentice-weeks lined.
+
+Data in endless_milestones.json under "apprentice". Probe:
+tools/qa/ApprenticeProbe.tscn (pins the tower dim to watch the
+mechanic; seeds one honest small problem on the full board).
+
+**Two balance findings the probe forced:** (1) severity was
+UNCAPPED — a neglected endless board carried problems at severity
+65-190, since regions cap at 4 actives, spawns stop, and the
+ancient four tick forever. Severity now caps at 9 (highest
+authored threshold is 6; nine reads as "as bad as it gets").
+(2) A full board starves the apprentice honestly — she needs
+fresh spawns to have small ones to take, which rewards the player
+keeping regions unclogged. That's the mechanic teaching the mode's
+own lesson.
+
 ## Design note · POST-CAMPAIGN ENDLESS MODE — 2026-07-19, BUILT same day
 
 Implementation deviations from the note below: entry lives on the
