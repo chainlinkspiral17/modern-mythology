@@ -509,6 +509,31 @@ def build_beyond_glass_2026_08():
     make_box("Hemlock_Across_Door", (-0.6, -7.25, 1.15), (0.95, 0.06, 2.3), (0.24, 0.20, 0.18, 1.0))
 
 
+def build_hero_props_2026_09():
+    """HERO PROPS FOR THE BLIND CUES (shot_marker_audit, 2026-09-01).
+
+    Three distinct cues on the interior preset; the office phone
+    exists (marker only). Built:
+
+    - THE BELL OVER THE DOOR ("She looked at the bell over the
+      door for a long count."): brass bell + clapper on a bracket
+      at the front entry's transom, inside — the pit stop's
+      door-bell grammar.
+    - THE BRASS BELL ("She picked up the small brass bell on the
+      counter and turned it over in her hand and set it back
+      down."): on the counter south of the register.
+    """
+    brass = (0.72, 0.58, 0.28, 1.0)
+    make_box("Door_Bell_Bracket", (0.30, 0.14, 2.45), (0.030, 0.080, 0.030),
+             (0.40, 0.34, 0.26, 1.0))
+    make_cyl("Door_Bell", (0.30, 0.18, 2.41), 0.035, 0.050, brass, segments=8)
+    make_cyl("Door_Bell_Clapper", (0.30, 0.18, 2.375), 0.008, 0.020,
+             (0.30, 0.26, 0.20, 1.0), segments=6)
+    make_cyl("Brass_Bell", (2.82, 2.35, 1.028), 0.030, 0.045, brass, segments=8)
+    make_cyl("Brass_Bell_Handle", (2.82, 2.35, 1.065), 0.008, 0.030,
+             (0.55, 0.44, 0.22, 1.0), segments=6)
+
+
 def main():
     clear_scene()
     build_shell()
@@ -524,6 +549,7 @@ def main():
     build_detail_pass_2026_08()
     build_use_states_2026_08()
     build_beyond_glass_2026_08()
+    build_hero_props_2026_09()
     out = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)),
         "../../../assets/3d/locales/salty_tome_interior.glb"))
     print(f"\n[build_salty_tome_interior] exporting to {out}")
