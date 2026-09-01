@@ -313,3 +313,33 @@ offset_top = 360.0
 offset_right = 520.0
 offset_bottom = 980.0
 script = ExtResource("14_dbgm")
+
+; insert: the pictures of the patch on Kai's phone (ch2)
+[node name="shot_insert_phone" type="Marker3D" parent="." groups=["vn_shot"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.85, 1.15, -1.8)
+rotation = Vector3(-0.6592, 0.7854, 0.0)
+metadata/fov = 42.0
+
+; insert: The Frequency Beneath, John Frank (ch2)
+[node name="shot_insert_book" type="Marker3D" parent="." groups=["vn_shot"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0, 1.15, -1.4)
+rotation = Vector3(-0.6694, -0.5586, 0.0)
+metadata/fov = 42.0
+
+; insert: Wren's spiral schoolwork notebook (ch2)
+[node name="shot_insert_notebook" type="Marker3D" parent="." groups=["vn_shot"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.9, 1.1, -1.65)
+rotation = Vector3(-0.6333, 0.6911, 0.0)
+metadata/fov = 42.0
+
+; insert: the duffel on the floor beside the chair (ch7)
+[node name="shot_insert_duffel" type="Marker3D" parent="." groups=["vn_shot"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.6, 0.85, -1.95)
+rotation = Vector3(-0.7191, -0.7854, 0.0)
+metadata/fov = 42.0
+
+; insert: the tower on the hill, through the SW glass (ch7)
+[node name="shot_insert_tower" type="Marker3D" parent="." groups=["vn_shot"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.4, 1.6, -1.0)
+rotation = Vector3(0.2089, 2.9950, 0.0)
+metadata/fov = 42.0

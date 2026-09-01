@@ -161,6 +161,58 @@ def build_decor():
 def build_ceiling_infra():
     make_smoke_detector("Smoke", (0.0, ROOM_D/2.0, CEIL))
 
+def build_hero_props_2026_09():
+    """HERO PROPS FOR THE BLIND CUES (shot_marker_audit, 2026-09-01).
+
+    Five distinct cues fire on the Daily Grind and none had
+    geometry:
+
+    - KAI'S PHONE ("Kai showed her the pictures of the patch on
+      his phone" — the corner table): face-up on Table_0 by the
+      SW window.
+    - THE FREQUENCY BENEATH ("a hand-drawn radio dial in graphite
+      on what looked like brown paper"): the John Frank paperback
+      flat on Table_1, graphite dial on the cover.
+    - WREN'S NOTEBOOK ("the small spiral notebook she carried for
+      her schoolwork"): beside the book.
+    - THE DUFFEL ("He set the duffel down on the floor beside the
+      chair"): canvas duffel on the floor by the four-top's north
+      chair.
+    - THE TOWER (~ "There is a tower on the hill that has been
+      there longer than the town"): a hill band + dark tower
+      silhouette past the SW window — distant, unlabeled, the way
+      the town treats it.
+
+    Draft note: draft N+1 could give the tower its one lit floor
+    after dusk (mood strata) and the duffel a zipper line.
+    """
+    # ── KAI'S PHONE · corner table (top 0.76) ──
+    make_box("Kais_Phone", (-2.20, 2.15, 0.7665), (0.070, 0.140, 0.011),
+             (0.13, 0.13, 0.15, 1.0))
+    # ── THE FREQUENCY BENEATH · Table_1 ──
+    make_box("Frequency_Book", (0.25, 1.80, 0.771), (0.130, 0.200, 0.020),
+             (0.62, 0.50, 0.36, 1.0))
+    make_cyl("Frequency_Book_Dial", (0.25, 1.80, 0.7825), 0.035, 0.002,
+             (0.28, 0.28, 0.30, 1.0), segments=10)
+    # ── WREN'S NOTEBOOK · beside it ──
+    make_box("Wrens_Notebook", (0.58, 2.00, 0.766), (0.110, 0.150, 0.010),
+             (0.30, 0.44, 0.58, 1.0))
+    make_box("Wrens_Notebook_Wire", (0.641, 2.00, 0.767), (0.010, 0.150, 0.012),
+             (0.55, 0.56, 0.58, 1.0))
+    # ── THE DUFFEL · floor beside the four-top's north chair ──
+    make_box("Kai_Duffel", (3.10, 2.45, 0.15), (0.55, 0.28, 0.30),
+             (0.36, 0.40, 0.34, 1.0))
+    make_box("Kai_Duffel_Strap", (3.10, 2.45, 0.312), (0.42, 0.06, 0.024),
+             (0.26, 0.28, 0.24, 1.0))
+    # ── THE TOWER ON THE HILL · past the SW window ──
+    make_box("Hill_Beyond", (-5.0, -18.0, 1.8), (18.0, 10.0, 3.6),
+             (0.30, 0.36, 0.28, 1.0))
+    make_cyl("Watch_Tower", (-5.5, -20.0, 6.1), 0.9, 5.0,
+             (0.26, 0.24, 0.28, 1.0), segments=10)
+    make_cyl("Watch_Tower_Cap", (-5.5, -20.0, 8.85), 1.1, 0.5,
+             (0.22, 0.20, 0.24, 1.0), segments=10)
+
+
 def main():
     clear_scene()
     build_shell()
@@ -171,6 +223,7 @@ def main():
     build_pendants()
     build_decor()
     build_ceiling_infra()
+    build_hero_props_2026_09()
     out = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)),
         "../../../assets/3d/locales/daily_grind_interior.glb"))
     print(f"\n[build_daily_grind_interior] exporting to {out}")
