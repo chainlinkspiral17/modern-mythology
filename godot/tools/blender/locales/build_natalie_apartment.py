@@ -334,6 +334,54 @@ def build_use_states_d4():
     make_box("Sofa_Blanket_Drape", (-1.05, 0.95, 0.22), (0.25, 0.30, 0.30),
              (0.44, 0.34, 0.28, 1.0))
 
+def build_hero_props_2026_09():
+    """HERO PROPS FOR THE BLIND CUES (shot_marker_audit, 2026-09-01).
+
+    Four distinct cues; the Tarot_Deck exists (marker only). Built:
+
+    - THE DOOR: FrontDoor_Hinges existed WITHOUT A DOOR — the
+      apartment door Nicola knocks at now hangs on them, with its
+      knob and chain plate.
+    - THE DESK ("She sat at her desk and opened, for the first
+      time in three years, the little spiral notebook she had
+      used for dream-journaling"): a small writing desk under the
+      SE window with the dream journal open on it, a pen, and a
+      chair facing it.
+    - NATALIE'S PHONE ("Her phone, on the kitchen counter, rang"):
+      face-up on the north counter, clear of the mug.
+    """
+    wood = (0.46, 0.34, 0.24, 1.0)
+    wood_dk = (0.38, 0.28, 0.19, 1.0)
+    # ── THE DOOR · hung on the existing hinges (x -1.10) ──
+    make_box("Front_Door", (-0.65, 0.06, 1.05), (0.90, 0.05, 2.10),
+             (0.52, 0.40, 0.28, 1.0))
+    make_cyl("Front_Door_Knob", (-0.30, 0.105, 1.02), 0.030, 0.040,
+             (0.66, 0.56, 0.34, 1.0), axis='Y', segments=8)
+    make_box("Front_Door_Chain_Plate", (-0.36, 0.09, 1.45), (0.060, 0.010, 0.030),
+             (0.62, 0.62, 0.60, 1.0))
+    # ── THE DESK · under the SE window ──
+    make_box("Writing_Desk_Top", (2.5, 0.70, 0.74), (0.90, 0.50, 0.04), wood)
+    for li2, (lx2, ly2) in enumerate(((2.10, 0.50), (2.90, 0.50),
+                                      (2.10, 0.90), (2.90, 0.90))):
+        make_box(f"Writing_Desk_Leg_{li2}", (lx2, ly2, 0.36), (0.05, 0.05, 0.72),
+                 wood_dk)
+    make_box("Dream_Journal", (2.35, 0.70, 0.766), (0.150, 0.200, 0.012),
+             (0.62, 0.54, 0.38, 1.0))
+    make_box("Dream_Journal_Wire", (2.266, 0.70, 0.767), (0.010, 0.200, 0.014),
+             (0.55, 0.56, 0.58, 1.0))
+    make_cyl("Journal_Pen", (2.62, 0.62, 0.7655), 0.005, 0.130,
+             (0.24, 0.24, 0.28, 1.0), axis='Y', segments=6)
+    make_box("Desk_Chair_Seat", (2.5, 1.25, 0.45), (0.40, 0.40, 0.04), wood)
+    make_box("Desk_Chair_Back", (2.5, 1.43, 0.72), (0.40, 0.04, 0.44), wood)
+    for li3, (lx3, ly3) in enumerate(((2.34, 1.09), (2.66, 1.09),
+                                      (2.34, 1.41), (2.66, 1.41))):
+        make_box(f"Desk_Chair_Leg_{li3}", (lx3, ly3, 0.215), (0.045, 0.045, 0.43),
+                 wood_dk)
+    # ── NATALIE'S PHONE · kitchen counter north (top 0.98) ──
+    make_box("Natalies_Phone", (-1.85, 5.05, 0.9855), (0.070, 0.140, 0.011),
+             (0.13, 0.13, 0.15, 1.0))
+
+
 def main():
     clear_scene()
     build_shell()
@@ -347,6 +395,7 @@ def main():
         "../../../assets/3d/locales/natalie_apartment.glb"))
     print(f"\n[build_natalie_apartment] exporting to {out_path}")
     build_hero_props()
+    build_hero_props_2026_09()
     build_detail_pass_2026_08()
     build_use_states_d4()
     export_glb(out_path)

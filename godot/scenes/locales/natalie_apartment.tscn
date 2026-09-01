@@ -344,3 +344,27 @@ metadata/fov = 40.0
 position = Vector3(-0.6, 1.2, -2.9)
 rotation = Vector3(-0.522002, -3.06482, 0)
 metadata/fov = 42.0
+
+; insert: the worn deck, shuffled (vol5)
+[node name="shot_insert_deck" type="Marker3D" parent="." groups=["vn_shot"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.6, 0.55, -1.15)
+rotation = Vector3(-0.7632, 0.7184, 0.0)
+metadata/fov = 42.0
+
+; insert: her phone on the kitchen counter, ringing (vol5)
+[node name="shot_insert_phone" type="Marker3D" parent="." groups=["vn_shot"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.55, 1.35, -4.6)
+rotation = Vector3(-0.5930, 0.5880, 0.0)
+metadata/fov = 42.0
+
+; insert: the apartment door — the bell, the stairs, the second set of feet (vol5)
+[node name="shot_insert_door" type="Marker3D" parent="." groups=["vn_shot"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.25, 1.35, -1.0)
+rotation = Vector3(-0.1870, 2.9403, 0.0)
+metadata/fov = 42.0
+
+; insert: the desk, the dream journal open after three years (vol5)
+[node name="shot_insert_desk" type="Marker3D" parent="." groups=["vn_shot"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.35, 1.1, -0.35)
+rotation = Vector3(-0.8098, -0.2214, 0.0)
+metadata/fov = 42.0
