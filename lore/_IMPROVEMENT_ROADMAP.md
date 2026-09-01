@@ -895,9 +895,10 @@ staged like that, using still camera set-ups and camera motion."*
   first seeds in vol5_ch0 (the bell · "the walls are thin"). Next:
   seed beats across vols 5-7's emphatic reveals as chapters are
   reread.
-- **P2 · Screenshot mode** — F4 already hides HUD; a deliberate
-  photo mode (letterbox + pause + no cursor) is ~30 lines and serves
-  the user's clean-pictures habit.
+- **SHIPPED · Screenshot mode** — verified built 2026-08-31
+  (GameEngine._toggle_photo_mode: letterbox bars, dialogue/HUD/
+  choices/auto-chip dropped with restore, cursor hidden, backlog
+  closed, timed-advance fenced). This row was stale.
 - **Discipline reminders** — lesson-capture cadence per playbook;
   emit-and-consume tokens in the same commit; gdparse + JSON sweep
   before every push; scope commits (revert normalize_bank's unrelated
