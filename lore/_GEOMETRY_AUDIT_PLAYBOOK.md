@@ -230,6 +230,31 @@ henderson_garage. New lessons:
   footprints/stick/crawdad hole) or the marker has nothing to aim
   at in-container.
 
+### 2026-09-01 (third stretch) · the tail waves; four more tool truths
+
+Eleven more presets cleared (natalie, bianca kitchen, montreal,
+maya bedroom, new orleans bar, centro break room, kowalski, jesse
+bedroom, both salty tome presets, the bakery's hidden three, the
+cathedral) — blind 213 → 171. New tool truths:
+
+- **The default cue listing truncates at SIX per locale.** The
+  bakery "cleared" wave left three cues standing (brioche /
+  coffee / bag) that only `--all` shows. Always open a locale
+  with `--all`.
+- **"tv" is under the matcher's 3-char stem floor** — the bar's
+  existing Bar_TV was invisible to its own cue; a duplicate TV
+  got drafted before the cause surfaced. Short cue ids need a
+  SYNONYMS entry (tv → bar_tv), not new geometry.
+- **Existing props answer more cues than expected** — the
+  Telecaster was Guitar_*, the folding chair was Eileen_Chair,
+  the floorboard station was already built in maya_bedroom, the
+  salty tome cat was Cat_Loaf. Grep the geometry before building;
+  five synonyms shipped today instead of five duplicate props.
+- **The model chapter's builder (tools/blender/, BUILDERS_ALT) is
+  invisible to geometry_godot** — cathedral markers must be
+  hand-aimed and cannot be aim-audited. Teaching the recorder
+  that path is queued.
+
 ### 2026-08-19 · a marker IS a camera; three blindness bugs in one day
 
 - **A vn_shot marker's transform IS the camera pose** (VnDirector

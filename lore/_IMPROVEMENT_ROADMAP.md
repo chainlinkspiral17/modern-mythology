@@ -103,8 +103,13 @@ miller back porch (+ Finn's truck), henderson garage (+ Ben's
 map and truck) → blind 277 → 213, marker_aim 168/168, overlap 0
 regressions. Two deliberate blinds stand as precedent
 (closeup_douglas; the cell window — explicit "no windows" canon).
-NEXT in the ranking: natalie_apartment (4) ·
-bianca_kitchen_morning (4) · the 3-and-under tail;
+THIRD STRETCH same day: natalie, bianca kitchen,
+montreal (the dust motes), maya bedroom (the dock photograph),
+new orleans bar, centro break room (the Karamazov), kowalski,
+jesse bedroom, both salty tome presets (two bells), the bakery's
+hidden three (--all lesson), the cathedral (the Speak & Spell +
+the waiting crow) -> blind 171. NEXT: riverboat_interior (3) and
+the rest of the 3-and-under tail (~25 presets);
 cabin_road's 43 and louisiana_road's 18
 are fallback-staging aggregates — a re-homing decision (real
 locales for those scenes), not a prop wave; verify on Deck first.
