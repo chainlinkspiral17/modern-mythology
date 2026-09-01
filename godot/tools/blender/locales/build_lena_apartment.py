@@ -395,6 +395,103 @@ def build_wear_personality_2026_08():
              (0.82, 0.78, 0.70, 1.0))
 
 
+def build_hero_props_2026_09():
+    """HERO PROPS FOR THE BLIND CUES (shot_marker_audit, 2026-09-01).
+
+    Nine distinct insert cues fire on this locale with no marker and
+    (for most) no geometry. The apartment is where vol7 keeps its
+    smallest, heaviest objects, and none of them were in the room:
+
+    - THE ESTUARY 7 STICK (ch7/ch8 six-oclock): "she had pulled the
+      Estuary 7 stick out of her inside coat pocket and set it on
+      the small wooden side table by the chair" — the waxed-paper
+      sleeve, the stick's end proud of it, Ines Rocha's white label.
+    - THE HEXAGON (ch12_lena): "He laid the eight pieces on her
+      kitchen table in the configuration he had assembled them in:
+      six in the ring, the cedar face in the center, the AR I A
+      piece beside." Cloth, ring, face, ARIA piece — and THE EIGHTH
+      PIECE ("She picked up the eighth piece. She held it in her
+      palm") as its own palm-sized cedar block on the cloth.
+    - THE LETTER TO JORGEN (ch6 sunday/cale_opening): "a sheet of
+      paper and a pen the ink in which had dried. She got up and
+      found another. She came back and wrote Jorgen at the top of
+      the page" — sheet, the dead pen, the second pen, the cup.
+      One prop serves both the paper and letter cues.
+    - LENA'S PHONE (ch6): Tem's twelve-fourteen message.
+    - THE BREAD (ch7 six-oclock): "the sound in the apartment was
+      Kai cutting bread on the small wooden board" — board, loaf,
+      cut slice, knife, at the counter.
+    - THE BOWL (ch8 the_table): "She pushed the bowl an inch away
+      from her" — one bowl at the east place, an inch off true.
+    (The deadbolt cue aims at the Deadbolt the 2026-08 pass built.)
+
+    Draft note: this is co-staging — ch6, ch7, ch8 and ch12 objects
+    share one tabletop, separated so nothing clips. Draft N+1 could
+    key hero props to chapter flags the way the mural patch states
+    would want, once locales know which scene is looking at them.
+    """
+    waxpaper = (0.88, 0.84, 0.72, 1.0)
+    cedar = (0.55, 0.38, 0.26, 1.0)
+    cedar_dk = (0.44, 0.30, 0.20, 1.0)
+    cloth_col = (0.78, 0.74, 0.64, 1.0)
+    paper_col = (0.94, 0.92, 0.86, 1.0)
+
+    # ── THE ESTUARY 7 STICK · side table (1.40, 0.95), top 0.54 ──
+    make_box("Estuary_Stick_Sleeve", (1.44, 0.95, 0.551), (0.26, 0.09, 0.020), waxpaper)
+    make_box("Estuary_Stick", (1.258, 0.95, 0.549), (0.10, 0.05, 0.016), (0.30, 0.26, 0.22, 1.0))
+    make_box("Stick_Label", (1.44, 0.95, 0.563), (0.10, 0.05, 0.002), (0.96, 0.95, 0.92, 1.0))
+
+    # ── THE HEXAGON · kitchen table north half, tabletop 0.7675 ──
+    hx, hy = -0.80, 1.78
+    make_box("Hexagon_Cloth", (hx, hy, 0.770), (0.40, 0.36, 0.004), cloth_col)
+    import math as _m
+    for hi in range(6):
+        ang = _m.pi / 3.0 * hi + _m.pi / 6.0
+        make_box(f"Hexagon_Ring_{hi}",
+                 (hx + 0.13 * _m.cos(ang), hy + 0.13 * _m.sin(ang), 0.781),
+                 (0.085, 0.085, 0.018), cedar)
+    make_cyl("Hexagon_Center_Face", (hx, hy, 0.780), 0.055, 0.016, cedar_dk, segments=12)
+    make_cyl("Hexagon_Face_Inlay", (hx, hy, 0.7895), 0.030, 0.003,
+             (0.62, 0.46, 0.32, 1.0), segments=10)
+    # The ARIA piece beside the ring, still on the cloth
+    make_box("Hexagon_Aria_Piece", (-0.645, 1.635, 0.782), (0.070, 0.050, 0.020), cedar)
+    # The eighth piece — the one she holds in her palm — on the
+    # cloth's far corner, apart from the configuration
+    make_box("Eighth_Piece", (-0.955, 1.920, 0.782), (0.070, 0.050, 0.020), cedar_dk)
+
+    # ── THE LETTER TO JORGEN · table south-east, one sheet ──
+    make_box("Letter_Paper", (-0.55, 1.35, 0.769), (0.21, 0.28, 0.003), paper_col)
+    make_box("Letter_Name_Line", (-0.55, 1.46, 0.771), (0.12, 0.010, 0.001),
+             (0.30, 0.30, 0.34, 1.0))
+    make_cyl("Letter_Pen_Dry", (-0.42, 1.28, 0.7735), 0.005, 0.13,
+             (0.24, 0.24, 0.28, 1.0), axis='Y', segments=6)
+    make_cyl("Letter_Pen_Second", (-0.46, 1.44, 0.7735), 0.005, 0.13,
+             (0.52, 0.30, 0.24, 1.0), axis='Y', segments=6)
+    make_cyl("Letter_Coffee_Cup", (-0.76, 1.30, 0.813), 0.040, 0.088,
+             (0.86, 0.82, 0.76, 1.0), segments=10)
+
+    # ── LENA'S PHONE · by her place at the table ──
+    make_box("Lena_Phone", (-0.95, 1.30, 0.774), (0.070, 0.140, 0.012),
+             (0.16, 0.16, 0.18, 1.0))
+    make_box("Lena_Phone_Screen", (-0.95, 1.30, 0.781), (0.058, 0.124, 0.002),
+             (0.30, 0.36, 0.44, 1.0))
+
+    # ── THE BREAD · counter between drainer and grinder ──
+    make_box("Bread_Board", (-2.14, 2.08, 0.935), (0.30, 0.20, 0.018), COL_WOOD)
+    make_box("Bread_Loaf", (-2.18, 2.10, 0.979), (0.150, 0.095, 0.070),
+             (0.76, 0.58, 0.34, 1.0))
+    make_box("Bread_Slice", (-2.03, 2.04, 0.951), (0.020, 0.090, 0.014),
+             (0.88, 0.78, 0.58, 1.0))
+    make_box("Bread_Knife", (-2.10, 1.99, 0.947), (0.190, 0.024, 0.006), COL_STEEL)
+    make_box("Bread_Knife_Handle", (-1.985, 1.99, 0.947), (0.040, 0.028, 0.014), COL_WOOD)
+
+    # ── THE BOWL · the east place setting, an inch off true ──
+    make_cyl("Table_Place_Bowl", (-0.40, 1.60, 0.790), 0.075, 0.044,
+             (0.58, 0.52, 0.46, 1.0), segments=12)
+    make_cyl("Table_Place_Bowl_Inner", (-0.40, 1.60, 0.8145), 0.058, 0.005,
+             (0.42, 0.36, 0.30, 1.0), segments=12)
+
+
 def main():
     clear_scene()
     build_shell()
@@ -406,6 +503,7 @@ def main():
     build_canvas_2026_08()
     build_starfish_nebula_2026_08()
     build_wear_personality_2026_08()
+    build_hero_props_2026_09()
     out = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)),
         "../../../assets/3d/locales/lena_apartment.glb"))
     print(f"\n[build_lena_apartment] exporting to {out}")

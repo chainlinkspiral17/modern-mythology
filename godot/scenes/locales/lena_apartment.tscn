@@ -340,6 +340,60 @@ position = Vector3(0.6, 1.1, -4)
 rotation = Vector3(-0.56886, 0.950547, 0)
 metadata/fov = 36.0
 
+; insert: the Estuary 7 stick on the side table (ch7/ch8 six-oclock)
+[node name="shot_insert_stick" type="Marker3D" parent="." groups=["vn_shot"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.95, 1.05, -0.55)
+rotation = Vector3(-0.7014, -0.8208, 0.0)
+metadata/fov = 42.0
+
+; insert: the hexagon laid out on the kitchen table (ch12_lena)
+[node name="shot_insert_hexagon" type="Marker3D" parent="." groups=["vn_shot"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.8, 1.45, -1.15)
+rotation = Vector3(-0.8271, -0.0252, 0.0)
+metadata/fov = 42.0
+
+; insert: the eighth piece on the cloth's far corner (ch12_lena)
+[node name="shot_insert_eighth_piece" type="Marker3D" parent="." groups=["vn_shot"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.75, 1.15, -1.6)
+rotation = Vector3(-0.7693, 0.5698, 0.0)
+metadata/fov = 42.0
+
+; insert: the sheet of paper, "Jorgen" at the top (ch6)
+[node name="shot_insert_paper" type="Marker3D" parent="." groups=["vn_shot"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.35, 1.2, -0.95)
+rotation = Vector3(-0.7669, 0.4636, 0.0)
+metadata/fov = 42.0
+
+; insert: the letter attempt from over her shoulder (ch6)
+[node name="shot_insert_letter" type="Marker3D" parent="." groups=["vn_shot"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.85, 1.25, -0.85)
+rotation = Vector3(-0.6662, -0.5295, 0.0)
+metadata/fov = 42.0
+
+; insert: Lena's phone, Tem's twelve-fourteen message (ch6)
+[node name="shot_insert_phone" type="Marker3D" parent="." groups=["vn_shot"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.25, 1.15, -0.9)
+rotation = Vector3(-0.6403, -0.6435, 0.0)
+metadata/fov = 42.0
+
+; insert: the deadbolt, locked for the first time in three years (ch7)
+[node name="shot_insert_deadbolt" type="Marker3D" parent="." groups=["vn_shot"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.34, 1.35, -0.72)
+rotation = Vector3(-0.2067, -3.1416, 0.0)
+metadata/fov = 42.0
+
+; insert: Kai cutting bread on the small wooden board (ch7)
+[node name="shot_insert_bread" type="Marker3D" parent="." groups=["vn_shot"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.55, 1.35, -1.65)
+rotation = Vector3(-0.5404, 0.9427, 0.0)
+metadata/fov = 42.0
+
+; insert: the bowl pushed an inch away from her (ch8 the_table)
+[node name="shot_insert_bowl" type="Marker3D" parent="." groups=["vn_shot"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.1, 1.15, -1.25)
+rotation = Vector3(-0.6463, 0.7086, 0.0)
+metadata/fov = 42.0
+
 [node name="HUD" type="CanvasLayer" parent="." groups=["ui"]]
 layer = 100
 
