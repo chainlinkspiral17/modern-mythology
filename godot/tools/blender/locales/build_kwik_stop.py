@@ -2897,6 +2897,62 @@ def build_hero_props_2026_08():
     make_cyl("Tip_Cup", (4.55, 3.6, 1.12), 0.05, 0.14, (0.80, 0.82, 0.72, 0.7), segments=8)
 
 
+def build_hero_props_2026_09():
+    """HERO PROPS FOR THE BLIND CUES (shot_marker_audit, 2026-09-01).
+
+    The kwik_stop_interior preset fires five distinct cues; the
+    window cue aims at the existing south glass. Built here:
+
+    - SAM'S PHONE (x2 — "Sam's phone buzzes" / "At 12:31, her
+      phone buzzes"): face-up on the counter west of the impulse
+      row. The payphone by the door is NOT her phone; the marker
+      sits close so this one wins the nearest-match race.
+    - THE SLUSHIE ("Sam drinks the slushie at one of the three
+      tables by the window"): cup + lid + straw on WinTable_1,
+      with the day-old paper Jen folded there beside it.
+    - THE CARD ("MARTINEZ RE-ROOFING & SIDING with a phone
+      number"): on the counter by the register where she set it
+      before it went into the apron pocket.
+    - THE NEXCORP VAN ("The van's engine is running. The van is
+      facing her direction."): parked on a Linden street strip
+      south of the forecourt, teal livery stripe toward the
+      store, visible through the south glass past the pumps.
+
+    Draft note: draft N+1 could idle the van (exhaust as a mood,
+    not a mesh) and give the card its phone-number line.
+    """
+    white = (0.88, 0.88, 0.86, 1.0)
+    # ── SAM'S PHONE · counter top (Z=1.07) ──
+    make_box("Sams_Phone", (4.90, 4.05, 1.0755), (0.070, 0.140, 0.011),
+             (0.13, 0.13, 0.15, 1.0))
+    make_box("Sams_Phone_Screen", (4.90, 4.05, 1.0820), (0.058, 0.124, 0.002),
+             (0.32, 0.40, 0.48, 1.0))
+    # ── THE CARD · by the register ──
+    make_box("Roofing_Card", (5.00, 3.75, 1.0705), (0.089, 0.051, 0.001),
+             (0.93, 0.91, 0.84, 1.0))
+    # ── THE SLUSHIE · WinTable_1 (top 0.76) ──
+    make_cyl("Slushie_Cup", (-3.55, 0.98, 0.832), 0.045, 0.140,
+             (0.20, 0.35, 0.75, 0.9), segments=10)
+    make_cyl("Slushie_Lid", (-3.55, 0.98, 0.912), 0.047, 0.020,
+             (0.90, 0.89, 0.86, 1.0), segments=10)
+    make_cyl("Slushie_Straw", (-3.54, 0.97, 0.972), 0.006, 0.100,
+             (0.86, 0.24, 0.20, 1.0), segments=6)
+    make_box("Folded_Paper", (-3.78, 1.12, 0.766), (0.200, 0.140, 0.008),
+             (0.86, 0.84, 0.78, 1.0))
+    # ── THE NEXCORP VAN · Linden strip past the forecourt ──
+    make_box("Street_Linden", (2.0, -7.2, -0.03), (8.0, 3.0, 0.05),
+             (0.30, 0.30, 0.31, 1.0))
+    make_box("NexCorp_Van_Body", (2.9, -7.2, 1.02), (4.60, 1.90, 1.50), white)
+    make_box("NexCorp_Van_Windows", (2.9, -6.235, 1.35), (1.40, 0.030, 0.50),
+             (0.28, 0.32, 0.38, 1.0))
+    make_box("NexCorp_Van_Stripe", (2.9, -6.235, 0.85), (3.80, 0.030, 0.25),
+             (0.20, 0.45, 0.48, 1.0))
+    for wi, (wx2, wy2) in enumerate(((1.6, -6.375), (4.2, -6.375),
+                                     (1.6, -8.025), (4.2, -8.025))):
+        make_cyl(f"NexCorp_Van_Wheel_{wi}", (wx2, wy2, 0.35), 0.35, 0.25,
+                 (0.14, 0.14, 0.15, 1.0), axis='Y', segments=10)
+
+
 def main():
     clear_scene()
     build_shell()
@@ -2915,6 +2971,7 @@ def main():
     build_polish_pass_4()
     build_polish_pass_5()
     build_hero_props_2026_08()
+    build_hero_props_2026_09()
     export_glb()
 
 
