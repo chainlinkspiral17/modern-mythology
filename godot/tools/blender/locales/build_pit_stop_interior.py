@@ -383,6 +383,53 @@ def build_beyond_glass_2026_08():
     make_box("Strip_Across_Sign", (-2.0, -5.9, 3.0), (1.6, 0.12, 0.7), (0.66, 0.58, 0.42, 1.0))
 
 
+def build_hero_props_2026_09():
+    """HERO PROPS FOR THE BLIND CUES (shot_marker_audit, 2026-09-01).
+
+    The pit_stop_kitchen preset fires five distinct cues; grill and
+    the kitchen window existed (markers only). Built here:
+
+    - THE DINER DOOR + BELL ("the bell over the diner door
+      chimes"): the centred entry gap had NO DOOR — a glass diner
+      door now fills it (stiles, rails, glass, push bar) with the
+      brass bell on a bracket at the transom, inside.
+    - THE TEN ("Ben ... picks up the ten-dollar bill. On the back
+      of it, in pencil: The red light lies. I am sorry. I will
+      come back when I can."): flat on the lunch counter where the
+      stranger left it, one faint pencil line showing.
+    - BEN'S PHONE ("The phone, at 09:18, buzzes."): face-up on the
+      prep line.
+
+    Draft note: draft N+1 could swing the door ajar the day the
+    pipeline gets rotation, and give the bell its leather strap.
+    """
+    steel = COL_STEEL
+    door_al = (0.55, 0.57, 0.60, 1.0)
+    glass = (0.62, 0.72, 0.76, 0.45)
+    brass = (0.72, 0.58, 0.28, 1.0)
+    # ── THE DINER DOOR · centred gap, south wall ──
+    for sgn in (-1, 1):
+        make_box(f"Diner_Door_Stile_{'L' if sgn < 0 else 'R'}",
+                 (0.42 * sgn, 0.06, 1.02), (0.05, 0.05, 2.04), door_al)
+    make_box("Diner_Door_Rail_T", (0.0, 0.06, 2.01), (0.79, 0.05, 0.06), door_al)
+    make_box("Diner_Door_Rail_B", (0.0, 0.06, 0.14), (0.79, 0.05, 0.20), door_al)
+    make_box("Diner_Door_Glass", (0.0, 0.06, 1.11), (0.79, 0.02, 1.74), glass)
+    make_box("Diner_Door_PushBar", (0.0, 0.085, 1.05), (0.70, 0.030, 0.050), steel)
+    # The bell over the door, on its bracket at the transom
+    make_box("Door_Bell_Bracket", (0.30, 0.14, 2.45), (0.030, 0.080, 0.030), door_al)
+    make_cyl("Door_Bell", (0.30, 0.18, 2.41), 0.035, 0.050, brass, segments=8)
+    make_cyl("Door_Bell_Clapper", (0.30, 0.18, 2.375), 0.008, 0.020,
+             (0.30, 0.26, 0.20, 1.0), segments=6)
+    # ── THE TEN · flat on the lunch counter (top 1.005) ──
+    make_box("Ten_Dollar_Bill", (1.7, 4.45, 1.0058), (0.156, 0.066, 0.0015),
+             (0.66, 0.66, 0.58, 1.0))
+    make_box("Bill_Pencil_Line", (1.7, 4.45, 1.0069), (0.100, 0.008, 0.0005),
+             (0.38, 0.37, 0.36, 1.0))
+    # ── BEN'S PHONE · on the prep line (top 0.95) ──
+    make_box("Bens_Phone", (1.55, 7.05, 0.9555), (0.070, 0.140, 0.011),
+             (0.13, 0.13, 0.15, 1.0))
+
+
 def main():
     clear_scene()
     build_shell()
@@ -397,6 +444,7 @@ def main():
     build_detail_pass_2026_08()
     build_use_states_2026_08()
     build_beyond_glass_2026_08()
+    build_hero_props_2026_09()
     out = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)),
         "../../../assets/3d/locales/pit_stop_interior.glb"))
     print(f"\n[build_pit_stop_interior] exporting to {out}")
