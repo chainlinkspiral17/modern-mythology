@@ -138,6 +138,43 @@ def build_detail_pass_2026_08():
                      face_sign=-1, aged=True)
 
 
+def build_hero_props_2026_09():
+    """HERO PROPS FOR THE BLIND CUES (shot_marker_audit, 2026-09-01).
+
+    Four distinct cues; the Green_Robe exists on its hook (marker
+    only). Built:
+
+    - DON'S PORCH LIGHT ("At five oh-two Don's light comes on"):
+      the neighbor's house edge past the north window, one warm
+      lamp on its face, a pre-dawn yard strip under it.
+    - THE CORDLESS ("She sits with the cordless in her hand"):
+      the handset on the kitchen table.
+    - THE STATIONERY ("a clean piece of stationery from the small
+      drawer ... she has not used since 2018"): the sheet + pen on
+      the table, and the small drawer under the tabletop's south
+      edge that it came from.
+    """
+    # ── DON'S PORCH LIGHT · past the north window ──
+    make_box("Thru_N_Yard", (-1.5, 7.5, -0.03), (7.00, 4.50, 0.05),
+             (0.16, 0.20, 0.14, 1.0))
+    make_box("Don_House_Edge", (-1.5, 9.5, 1.60), (4.00, 0.25, 3.20),
+             (0.38, 0.36, 0.34, 1.0))
+    make_box("Don_Porch_Bracket", (-0.7, 9.355, 2.22), (0.030, 0.040, 0.060),
+             (0.24, 0.24, 0.26, 1.0))
+    make_cyl("Don_Porch_Light", (-0.7, 9.345, 2.10), 0.050, 0.060,
+             (1.0, 0.86, 0.58, 1.0), axis='Y', segments=8)
+    # ── THE CORDLESS · on the table (top 0.765) ──
+    make_box("Cordless_Handset", (0.42, 2.20, 0.780), (0.050, 0.180, 0.030),
+             (0.20, 0.20, 0.22, 1.0))
+    # ── THE STATIONERY · sheet + pen + its drawer ──
+    make_box("Stationery_Sheet", (-0.32, 2.72, 0.766), (0.160, 0.210, 0.002),
+             (0.94, 0.92, 0.86, 1.0))
+    make_cyl("Stationery_Pen", (-0.10, 2.72, 0.7705), 0.005, 0.130,
+             (0.30, 0.26, 0.40, 1.0), axis='Y', segments=6)
+    make_box("Stationery_Drawer", (0.0, 2.13, 0.671), (0.40, 0.10, 0.088),
+             (0.40, 0.30, 0.20, 1.0))
+
+
 def main():
     clear_scene()
     build_shell()
@@ -149,6 +186,7 @@ def main():
     build_ceiling_infra()
     build_hero_props()
     build_detail_pass_2026_08()
+    build_hero_props_2026_09()
     out = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)),
         "../../../assets/3d/locales/bianca_kitchen_morning.glb"))
     print(f"\n[build_bianca_kitchen_morning] exporting to {out}")

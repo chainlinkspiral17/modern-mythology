@@ -299,3 +299,27 @@ offset_top = 360.0
 offset_right = 520.0
 offset_bottom = 980.0
 script = ExtResource("14_dbgm")
+
+; insert: the terrycloth robe on its hook — the Saturday one
+[node name="shot_insert_robe" type="Marker3D" parent="." groups=["vn_shot"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.35, 1.35, -2.55)
+rotation = Vector3(0.1127, -0.7854, 0.0)
+metadata/fov = 42.0
+
+; insert: Don's light comes on at five oh-two
+[node name="shot_insert_porch_light" type="Marker3D" parent="." groups=["vn_shot"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.4, 1.5, -4.3)
+rotation = Vector3(0, 0, 0)
+metadata/fov = 42.0
+
+; insert: the cordless in her hand
+[node name="shot_insert_cordless" type="Marker3D" parent="." groups=["vn_shot"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.75, 1.1, -1.8)
+rotation = Vector3(-0.5529, 0.6898, 0.0)
+metadata/fov = 42.0
+
+; insert: the stationery not used since 2018
+[node name="shot_insert_stationery" type="Marker3D" parent="." groups=["vn_shot"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.65, 1.1, -2.3)
+rotation = Vector3(-0.5792, -1.1580, 0.0)
+metadata/fov = 42.0
