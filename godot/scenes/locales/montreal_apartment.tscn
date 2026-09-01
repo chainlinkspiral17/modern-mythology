@@ -325,3 +325,21 @@ metadata/fov = 40.0
 position = Vector3(0.2, 1, -1.9)
 rotation = Vector3(-0.496932, 2.43297, 0)
 metadata/fov = 38.0
+
+; insert: the phone on the desk, face-up, the four-word thread
+[node name="shot_insert_phone" type="Marker3D" parent="." groups=["vn_shot"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.65, 1.15, -2.8)
+rotation = Vector3(-0.5854, 0.7854, 0.0)
+metadata/fov = 42.0
+
+; insert: the dust motes in the late-morning shaft
+[node name="shot_insert_dust" type="Marker3D" parent="." groups=["vn_shot"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0, 1.35, -3.5)
+rotation = Vector3(0, 0, 0)
+metadata/fov = 42.0
+
+; insert: the graffiti-scarred drainpipe, when the light hits it
+[node name="shot_insert_drainpipe" type="Marker3D" parent="." groups=["vn_shot"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.6, 1.6, -4.2)
+rotation = Vector3(0, 0, 0)
+metadata/fov = 42.0

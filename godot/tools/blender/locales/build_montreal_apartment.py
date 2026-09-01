@@ -245,11 +245,31 @@ def build_use_states_d4():
     make_box("Laundry_Sock", (-1.25, 0.78, 0.44), (0.08, 0.14, 0.03),
              (0.50, 0.54, 0.60, 1.0))
 
+def build_hero_props_2026_09():
+    """HERO PROPS FOR THE BLIND CUES (shot_marker_audit, 2026-09-01).
+
+    Three distinct cues; Desk_Phone and the graffiti-scarred
+    Alley_Drainpipe exist (markers only). Built: THE DUST ("dust
+    motes performing their intricate silent ballet in the shaft of
+    late-morning Montreal sunlight") — seven pale specks hanging
+    in front of the north window. The shaft itself is the post
+    stack's job (screen-space only, per the visuals playbook);
+    the motes give the insert something real to find.
+    """
+    for mi, (mx2, my2, mz2) in enumerate((
+            (0.15, 4.40, 1.55), (-0.20, 4.20, 1.35), (0.05, 4.00, 1.70),
+            (0.30, 4.30, 1.20), (-0.10, 4.50, 1.05), (0.20, 4.10, 0.90),
+            (-0.30, 4.35, 1.50))):
+        make_cyl(f"Dust_Mote_{mi}", (mx2, my2, mz2), 0.006, 0.006,
+                 (0.96, 0.92, 0.80, 0.75), segments=6)
+
+
 def main():
     clear_scene(); build_shell(); build_living(); build_dining_nook(); build_floor_lamp(); build_kitchenette(); build_radiator_under_window(); build_decor(); build_ceiling_infra()
     build_hero_props()
     build_detail_pass_2026_08()
     build_use_states_d4()
+    build_hero_props_2026_09()
     out = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)), "../../../assets/3d/locales/montreal_apartment.glb"))
     print(f"\n[build_montreal_apartment] exporting to {out}")
     export_glb(out)
