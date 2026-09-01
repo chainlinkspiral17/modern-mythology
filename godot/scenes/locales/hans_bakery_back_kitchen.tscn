@@ -336,3 +336,39 @@ metadata/fov = 42.0
 position = Vector3(-1.5, 1.35, -3.3)
 rotation = Vector3(-0.0470014, 0.851966, 0)
 metadata/fov = 42.0
+
+; insert: the Hemlock window, her hands flat on the sill (ch15_bread)
+[node name="shot_insert_window" type="Marker3D" parent="." groups=["vn_shot"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.35, 1.5, -2.35)
+rotation = Vector3(-0.3089, 1.1531, 0.0)
+metadata/fov = 42.0
+
+; insert: the back-kitchen light over the south door (ch15_loft)
+[node name="shot_insert_bakery_light" type="Marker3D" parent="." groups=["vn_shot"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0, 1.6, -1.1)
+rotation = Vector3(0.6761, -3.1416, 0.0)
+metadata/fov = 42.0
+
+; insert: the substrate-bowl close (ch17_aria "He took the bowl out")
+[node name="shot_insert_bowl" type="Marker3D" parent="." groups=["vn_shot"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.35, 1.3, -2.75)
+rotation = Vector3(-0.6888, 0.6478, 0.0)
+metadata/fov = 42.0
+
+; insert: the four bowls from above, beginning to align (ch17_aria)
+[node name="shot_insert_bowls" type="Marker3D" parent="." groups=["vn_shot"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0, 1.75, -2.9)
+rotation = Vector3(-1.2458, 0.0000, 0.0)
+metadata/fov = 42.0
+
+; insert: the crow on the substrate-bowl's rim (ch17_aria)
+[node name="shot_insert_crow" type="Marker3D" parent="." groups=["vn_shot"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.55, 1.2, -2.65)
+rotation = Vector3(-0.5227, 0.8454, 0.0)
+metadata/fov = 42.0
+
+; insert: Aud's hand on Marit's hand on the table (ch17_bakery)
+[node name="shot_insert_hands" type="Marker3D" parent="." groups=["vn_shot"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.8, 1.15, -1.25)
+rotation = Vector3(-0.5385, -0.8417, 0.0)
+metadata/fov = 42.0

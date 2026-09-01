@@ -280,6 +280,72 @@ def build_pers_box_2026_08():
                  wood_dk, segments=6, axis='X')
 
 
+def build_hero_props_2026_09():
+    """HERO PROPS FOR THE BLIND CUES (shot_marker_audit, 2026-09-01).
+
+    Six cues fire here with no marker; four had no geometry at all.
+    The bakery chapters (ch15/ch17) put vol7's heaviest objects on
+    THE TABLE, and the table only had breakfast on it:
+
+    - THE FOUR CEDAR BOWLS (ch17_aria): "The figures on the four
+      bowls — Tem registered, watching from above as she stood at
+      the table — began to align." Four palm-and-two-hands cedar
+      bowls in a loose cluster at the table's north half, each with
+      the spiral rim. The second one is the substrate-bowl.
+    - THE CROW (ch17_aria): "The crow stood on the rim of the
+      substrate-bowl and looked down at the young woman inside it."
+      Perched on the rim, head over the interior, beak down-table.
+    - THE HANDS (ch17_bakery): "Aud put her hand briefly on Marit's
+      hand on the table." Rendered as residue, not figures: two
+      floured handprints at the west seat, Aud's lapped flush
+      against Marit's — a baker's table remembers hands in flour.
+    - THE BACK-KITCHEN LIGHT (ch15_loft): "Hans's back-kitchen
+      light at four AM had been listed as one of the reliable
+      markers" — a wall shade + warm bulb over the south door,
+      the light Marina stands under at five forty-seven.
+    (window aims at Win_W — the Hemlock window already built.)
+
+    Draft note: bowls are static cedar here; the figures-that-move
+    live in prose and mood, not geometry. Draft N+1 could give the
+    substrate-bowl its own inner figure blocks once a close-up
+    camera proves the 42° insert actually resolves them.
+    """
+    cedar = (0.55, 0.38, 0.26, 1.0)
+    cedar_dk = (0.44, 0.30, 0.20, 1.0)
+    flour = (0.92, 0.90, 0.84, 1.0)
+    crow_black = (0.10, 0.10, 0.12, 1.0)
+
+    # ── THE FOUR CEDAR BOWLS · table north half, top z 0.78 ──
+    bowl_xy = ((-0.30, 3.10), (0.10, 3.05), (0.30, 3.30), (-0.10, 3.40))
+    for bi, (bx, by) in enumerate(bowl_xy):
+        make_cyl(f"Cedar_Bowl_{bi}", (bx, by, 0.8075), 0.085, 0.055, cedar, segments=12)
+        make_cyl(f"Cedar_Bowl_Rim_{bi}", (bx, by, 0.8375), 0.068, 0.005,
+                 cedar_dk, segments=12)
+
+    # ── THE CROW · on the substrate-bowl's rim (bowl 1) ──
+    make_cyl("Crow_Leg_0", (0.136, 3.014, 0.8425), 0.004, 0.005, crow_black, segments=6)
+    make_cyl("Crow_Leg_1", (0.146, 3.002, 0.8425), 0.004, 0.005, crow_black, segments=6)
+    make_box("Crow_Body", (0.141, 3.008, 0.876), (0.055, 0.095, 0.062), crow_black)
+    make_box("Crow_Head", (0.113, 3.036, 0.924), (0.036, 0.036, 0.034),
+             (0.12, 0.12, 0.14, 1.0))
+    make_box("Crow_Beak", (0.080, 3.036, 0.916), (0.030, 0.024, 0.012),
+             (0.16, 0.15, 0.14, 1.0))
+    make_box("Crow_Tail", (0.1985, 3.008, 0.885), (0.060, 0.040, 0.014), crow_black)
+
+    # ── THE HANDS · floured prints at the west seat (y 1.65) ──
+    for who, py, fy0 in (("Marit", 1.620, 1.585), ("Aud", 1.705, 1.670)):
+        make_box(f"Hands_Print_{who}", (-0.400, py, 0.7815), (0.070, 0.085, 0.0015), flour)
+        for fi in range(4):
+            make_box(f"Hands_Print_{who}_F{fi}", (-0.325, fy0 + fi * 0.022, 0.7815),
+                     (0.055, 0.014, 0.0015), flour)
+
+    # ── THE BACK-KITCHEN LIGHT · wall shade over the south door ──
+    make_cyl("Bakery_Light_Shade", (0.0, 0.16, 2.32), 0.10, 0.12,
+             (0.30, 0.32, 0.30, 1.0), axis='Y', segments=10)
+    make_cyl("Bakery_Light_Bulb", (0.0, 0.245, 2.32), 0.035, 0.05,
+             (1.0, 0.85, 0.55, 1.0), axis='Y', segments=8)
+
+
 def main():
     clear_scene()
     build_shell()
@@ -297,6 +363,7 @@ def main():
     build_communal_table()
     build_ceiling_infra()
     build_pers_box_2026_08()
+    build_hero_props_2026_09()
     out = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)),
         "../../../assets/3d/locales/hans_bakery_back_kitchen.glb"))
     print(f"\n[build_hans_bakery_back_kitchen] exporting to {out}")
