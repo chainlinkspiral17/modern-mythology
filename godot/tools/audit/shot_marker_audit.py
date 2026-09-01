@@ -127,6 +127,7 @@ SYNONYMS = {
     "drum_kit": ["drumkit", "kick", "snare", "hihat"],
     "floorboards": ["floorboard", "board", "cavity"],
     "tv": ["bar_tv", "television", "tv_screen"],
+    "telecaster": ["tele", "guitar"],
     "doohickey": ["doohickey", "onyx"],
 }
 
