@@ -4770,6 +4770,58 @@ def build_ruin_quarter_2026_08():
     _mc("Minstral_Paddlebox_Hub", (43.6, -124.0, 1.2), 1.4, 0.4, (0.30, 0.20, 0.14, 1.0), segments=12, axis='X')
 
 
+def build_star_night_2026_09():
+    """STAR-CHAPTER HERO PROPS (shot_marker_audit, 2026-09-01).
+
+    vol5_ch17_star stages seven insert cues on the graustark_cottage
+    preset and four had nothing to aim at: the crow ("The crow was
+    on the I-beam. The crow was, tonight, a witness."), and the
+    closing vignette — "Lit the candle. Sat at the desk-that-was-a-
+    door-on-bricks. Took out a single piece of paper." … "She wrote,
+    in the body, three words: I am ready." … "She blew out the
+    candle." (wall aims at Chalked_Wall, already built.)
+
+    The cottage is a solid box, so the desk lives on the deck
+    south of it, east of the flagstone path — a door
+    blade on two brick stacks, the letter and envelope on it, the
+    candle in its holder. The crow perches mid-beam, head turned
+    toward the chalked wall.
+
+    Draft note: draft N+1 could patch the shotgun house's siding
+    ("the patched shotgun house at the edge of the void") and give
+    the desk a chair — tonight it has only what the inserts need.
+    """
+    from _props.geometry import make_box as _mb, make_cyl as _mc
+    crow_black = (0.10, 0.10, 0.12, 1.0)
+    brick_dk = (0.36, 0.26, 0.21, 1.0)
+    door_wood = (0.44, 0.34, 0.24, 1.0)
+    paper = (0.93, 0.91, 0.85, 1.0)
+    # ── THE CROW · on the I-beam (top z 1.20), the witness ──
+    _mc("Star_Crow_Leg_0", (40.49, -370.01, 1.2025), 0.004, 0.005, crow_black, segments=6)
+    _mc("Star_Crow_Leg_1", (40.51, -369.99, 1.2025), 0.004, 0.005, crow_black, segments=6)
+    _mb("Star_Crow_Body", (40.5, -370.0, 1.236), (0.055, 0.095, 0.062), crow_black)
+    _mb("Star_Crow_Head", (40.5, -370.047, 1.284), (0.036, 0.036, 0.034),
+        (0.12, 0.12, 0.14, 1.0))
+    _mb("Star_Crow_Beak", (40.5, -370.08, 1.276), (0.024, 0.030, 0.012),
+        (0.16, 0.15, 0.14, 1.0))
+    _mb("Star_Crow_Tail", (40.5, -369.9225, 1.245), (0.040, 0.060, 0.014), crow_black)
+    # ── THE DESK-THAT-WAS-A-DOOR-ON-BRICKS · deck, S of cottage ──
+    for bi, bx2 in enumerate((52.0, 53.2)):
+        _mb(f"Desk_Bricks_{bi}", (bx2, -382.4, 0.88), (0.25, 0.35, 0.36), brick_dk)
+    _mb("Desk_Door_Blade", (52.6, -382.4, 1.0825), (1.90, 0.75, 0.045), door_wood)
+    # ── THE LETTER · "I am ready." — J. LeMoine ──
+    _mb("Offering_Letter", (52.45, -382.3, 1.1065), (0.21, 0.28, 0.003), paper)
+    _mb("Letter_Envelope", (52.95, -382.52, 1.108), (0.22, 0.11, 0.006),
+        (0.88, 0.85, 0.78, 1.0))
+    # ── THE CANDLE · lit at the desk, blown out at the end ──
+    _mc("Writing_Candle_Holder", (52.15, -382.65, 1.115), 0.050, 0.020,
+        (0.50, 0.44, 0.30, 1.0), segments=10)
+    _mc("Writing_Candle", (52.15, -382.65, 1.195), 0.022, 0.140,
+        (0.90, 0.87, 0.78, 1.0), segments=8)
+    _mc("Writing_Candle_Flame", (52.15, -382.65, 1.285), 0.010, 0.040,
+        (1.0, 0.82, 0.42, 1.0), segments=6)
+
+
 def main():
     # Phase 0 — riverfront. Each rf.build_* writes into the scene.
     # We mirror riverfront's main() build order verbatim so the
@@ -4799,6 +4851,7 @@ def main():
 
     build_ruin_quarter_2026_08()
     build_ruin_draft2_2026_08()
+    build_star_night_2026_09()
     export_glb()
 
 

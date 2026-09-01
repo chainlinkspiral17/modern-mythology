@@ -379,3 +379,27 @@ offset_top = 360.0
 offset_right = 520.0
 offset_bottom = 980.0
 script = ExtResource("14_dbgm")
+
+; insert: the chalked wall, charcoal against pale concrete (ch17_star)
+[node name="shot_insert_wall" type="Marker3D" parent="." groups=["vn_shot"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 42.6, 1.9, 374.8)
+rotation = Vector3(0.0619, -1.0517, 0.0)
+metadata/fov = 42.0
+
+; insert: the crow on the I-beam, a witness (ch17_star)
+[node name="shot_insert_crow" type="Marker3D" parent="." groups=["vn_shot"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 41.2, 1.5, 369.3)
+rotation = Vector3(-0.2545, 2.3621, 0.0)
+metadata/fov = 42.0
+
+; insert: the letter on the door-desk — "I am ready." (ch17_star)
+[node name="shot_insert_letter" type="Marker3D" parent="." groups=["vn_shot"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 52.45, 1.55, 381.6)
+rotation = Vector3(-0.4813, -2.8422, 0.0)
+metadata/fov = 42.0
+
+; insert: the candle, lit then blown out (ch17_star)
+[node name="shot_insert_candle" type="Marker3D" parent="." groups=["vn_shot"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 51.7, 1.45, 382.0)
+rotation = Vector3(-0.3082, -2.5360, 0.0)
+metadata/fov = 42.0
