@@ -239,12 +239,47 @@ def build_wall_dressing():
     make_cyl("Bulb", (0.0, 2.6, CEIL - 0.14), 0.045, 0.09, COL_BULB, segments=10)
 
 
+def build_hero_props_2026_09():
+    """HERO PROPS FOR THE BLIND CUES (shot_marker_audit, 2026-09-01).
+
+    Four distinct cues. The flyer and the whole band rig exist —
+    the drum kit answers via a new SYNONYMS entry (drum_kit ->
+    kick/snare/hihat; nothing in the kit was NAMED "drum"). Built:
+
+    - THE MAP (Ben's Rand McNally corridor print, annotations in
+      three colors of ballpoint): folded flat on the workbench,
+      three ink strokes showing — black, red, blue.
+    - BEN'S TRUCK ("Bench seat. Four people. It is tight."): at
+      the curb past the driveway on a new street strip — faded
+      red body, cab, four wheels.
+    """
+    # ── THE MAP · workbench top (z 0.92) ──
+    make_box("Corridor_Map", (1.0, 5.30, 0.9225), (0.28, 0.216, 0.003),
+             (0.92, 0.90, 0.85, 1.0))
+    for ai, (ax2, ay2, ac) in enumerate(((0.94, 5.26, (0.15, 0.15, 0.16, 1.0)),
+                                         (1.05, 5.33, (0.72, 0.20, 0.16, 1.0)),
+                                         (0.99, 5.37, (0.22, 0.30, 0.62, 1.0)))):
+        make_box(f"Map_Ink_{ai}", (ax2, ay2, 0.9245), (0.060, 0.008, 0.001), ac)
+    # ── BEN'S TRUCK · at the curb, past the driveway ──
+    make_box("Street_Curbline", (0.0, -6.5, -0.035), (8.00, 2.60, 0.05),
+             (0.32, 0.32, 0.33, 1.0))
+    make_box("Ben_Truck_Body", (0.6, -6.4, 0.62), (4.40, 1.80, 0.65),
+             (0.55, 0.28, 0.22, 1.0))
+    make_box("Ben_Truck_Cab", (-0.1, -6.4, 1.22), (1.60, 1.70, 0.55),
+             (0.48, 0.24, 0.19, 1.0))
+    for wi, (wx2, wy2) in enumerate(((-0.9, -5.375), (2.1, -5.375),
+                                     (-0.9, -7.425), (2.1, -7.425))):
+        make_cyl(f"Ben_Truck_Wheel_{wi}", (wx2, wy2, 0.32), 0.32, 0.25,
+                 (0.14, 0.14, 0.15, 1.0), axis='Y', segments=10)
+
+
 def main():
     clear_scene()
     build_shell()
     build_driveway()
     build_band_gear()
     build_wall_dressing()
+    build_hero_props_2026_09()
     out = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)),
         "../../../assets/3d/locales/henderson_garage.glb"))
     print(f"\n[build_henderson_garage] exporting to {out}")

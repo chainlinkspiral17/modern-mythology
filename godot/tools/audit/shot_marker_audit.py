@@ -124,6 +124,7 @@ SYNONYMS = {
     "cigarette": ["cig", "ashtray"],
     "steamship": ["minstral", "steamship", "hull"],
     "folding_chair": ["eileen_chair", "foldingchair"],
+    "drum_kit": ["drumkit", "kick", "snare", "hihat"],
     "doohickey": ["doohickey", "onyx"],
 }
 
