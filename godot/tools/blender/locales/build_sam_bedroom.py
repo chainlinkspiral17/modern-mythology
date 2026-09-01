@@ -170,6 +170,35 @@ def build_hero_props():
     make_cyl("Bedside_Lamp_Shade", (-0.05, 3.2, 0.88), 0.11, 0.16, (0.86, 0.78, 0.62, 1.0), segments=10)
 
 
+def build_hero_props_2026_09():
+    """HERO PROPS FOR THE BLIND CUES (shot_marker_audit, 2026-09-01).
+
+    Four cues, three distinct; Sams_Phone exists on the dresser
+    (marker only). Built:
+
+    - THE DOOR: the south-wall door gap had no door — a painted
+      slab now fills it (the door she hears her father's phone
+      through, two walls away), with knob and frame sides.
+    - THE WEDNESDAY LIST ("a small header at the top in block
+      capitals: WEDNESDAY LIST"): sheet + header bar + pen on the
+      dresser top beside the phone — the desk is fully claimed by
+      the monitor, console, and sketch spread.
+    """
+    white_door = (0.88, 0.86, 0.80, 1.0)
+    make_box("Sams_Door", (0.0, 0.06, 1.02), (0.90, 0.05, 2.04), white_door)
+    make_cyl("Sams_Door_Knob", (0.34, 0.105, 1.00), 0.03, 0.04,
+             (0.66, 0.60, 0.42, 1.0), axis='Y', segments=8)
+    for sgn in (-1, 1):
+        make_box(f"Sams_Door_Frame_{'W' if sgn < 0 else 'E'}",
+                 (0.49 * sgn, 0.06, 1.06), (0.07, 0.09, 2.12), (0.72, 0.68, 0.60, 1.0))
+    make_box("Wednesday_List", (1.62, 2.45, 0.8425), (0.21, 0.28, 0.003),
+             (0.94, 0.93, 0.88, 1.0))
+    make_box("List_Header_Bar", (1.62, 2.56, 0.8445), (0.13, 0.012, 0.001),
+             (0.28, 0.28, 0.32, 1.0))
+    make_cyl("List_Pen", (1.50, 2.32, 0.845), 0.005, 0.13,
+             (0.24, 0.28, 0.52, 1.0), axis='Y', segments=6)
+
+
 def main():
     clear_scene()
     build_shell()
@@ -181,6 +210,7 @@ def main():
     build_ceiling_infra()
     build_dressing()
     build_hero_props()
+    build_hero_props_2026_09()
     out = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)),
         "../../../assets/3d/locales/sam_bedroom.glb"))
     print(f"\n[build_sam_bedroom] exporting to {out}")
