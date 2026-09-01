@@ -178,6 +178,86 @@ def build_decor():
         make_fluorescent_tube_fixture(f"Fluor_{j}", (0.0, ypos, CEIL), length=1.40, width=0.34)
 
 
+def build_hero_props():
+    """The prose-anchored objects (2026-08-31 wave · 5 blind cue ids):
+
+    · THE SANDERLING MURAL + THE PATCH — Janet Halfmoon's thirty-foot
+      sanderling on the brick wall ACROSS Main, seen through Win_S.
+      Built at the ch10 state: the center patch has taken most of the
+      body and, this week, the head ("mostly a flat black shape with
+      a beak and one foot"). The street ground plane rides along so
+      the far facade doesn't float (ground-plane rule).
+    · THE HEXAGON — Olaf's eight cedar pieces on a cloth on the
+      counter: six in the ring, the face in the center, the AR I A
+      piece beside (ch12: Kai sits on the bearings box and looks).
+    · THE BREAD — Hans's Wednesday rye on its board, one cut slice
+      (ch10: "The bread was good. The bread was always good.")
+    · THE PHONE — Kai's phone face-up on the counter (the patch
+      photos, Tem's midnight message).
+    """
+    # ── Main street + the far facade (through the front window) ──
+    make_box("Main_Street", (0.0, -4.45, -0.03), (ROOM_W + 8.0, 8.5, 0.06),
+             (0.30, 0.30, 0.32, 1.0))
+    make_box("Main_Curb_Near", (0.0, -0.35, 0.03), (ROOM_W + 8.0, 0.30, 0.12),
+             (0.52, 0.52, 0.50, 1.0))
+    make_box("Main_Sidewalk_Far", (0.0, -8.45, 0.02), (ROOM_W + 8.0, 0.90, 0.10),
+             (0.55, 0.54, 0.50, 1.0))
+    make_box("Across_Facade", (0.0, -9.05, 2.20), (14.0, 0.25, 4.40),
+             (0.46, 0.32, 0.26, 1.0))
+    # the mural panel: beach bands, then the bird, then the substrate's patch
+    make_box("Sanderling_Mural_Sky", (-2.75, -8.90, 2.55), (6.0, 0.06, 1.30),
+             (0.72, 0.76, 0.78, 1.0))
+    make_box("Sanderling_Mural_Wet", (-2.75, -8.90, 1.62), (6.0, 0.06, 0.60),
+             (0.56, 0.62, 0.64, 1.0))
+    make_box("Sanderling_Mural_Sand", (-2.75, -8.90, 1.02), (6.0, 0.06, 0.65),
+             (0.74, 0.68, 0.56, 1.0))
+    make_chamfer_box("Sanderling_Body", (-3.30, -8.83, 1.80), (1.60, 0.05, 0.78),
+                     (0.88, 0.87, 0.84, 1.0))
+    make_chamfer_box("Sanderling_Head", (-2.32, -8.83, 2.24), (0.46, 0.05, 0.42),
+                     (0.88, 0.87, 0.84, 1.0))
+    make_box("Sanderling_Beak", (-1.98, -8.83, 2.22), (0.30, 0.04, 0.07),
+             (0.28, 0.26, 0.24, 1.0))
+    make_box("Sanderling_Leg", (-3.05, -8.83, 1.22), (0.06, 0.04, 0.44),
+             (0.30, 0.28, 0.26, 1.0))
+    # the patch · flat, black, wrong · body first, the head this week
+    make_box("Mural_Patch", (-3.30, -8.76, 1.80), (1.15, 0.03, 1.02),
+             (0.06, 0.06, 0.07, 1.0))
+    make_box("Mural_Patch_Head", (-2.32, -8.76, 2.24), (0.52, 0.03, 0.46),
+             (0.06, 0.06, 0.07, 1.0))
+
+    # ── the counter still life ──
+    top = 0.95
+    make_box("Bread_Board", (1.45, 5.35, top + 0.015), (0.46, 0.32, 0.03),
+             (0.56, 0.42, 0.26, 1.0))
+    make_chamfer_box("Bread_Loaf", (1.42, 5.38, top + 0.10), (0.32, 0.17, 0.13),
+                     (0.46, 0.32, 0.18, 1.0))
+    make_box("Bread_Slice", (1.66, 5.26, top + 0.05), (0.03, 0.15, 0.11),
+             (0.62, 0.50, 0.34, 1.0))
+    make_box("Bread_Knife", (1.45, 5.18, top + 0.035), (0.34, 0.035, 0.012),
+             COL_STEEL)
+
+    make_box("Hexagon_Cloth", (2.95, 5.50, top + 0.006), (0.64, 0.64, 0.012),
+             (0.82, 0.78, 0.70, 1.0))
+    import math as _m
+    for hi in range(6):
+        a = _m.pi / 3.0 * hi + _m.pi / 6.0
+        hx = 2.95 + 0.19 * _m.cos(a)
+        hy = 5.50 + 0.19 * _m.sin(a)
+        make_box(f"Hexagon_Ring_{hi}", (hx, hy, top + 0.03), (0.085, 0.07, 0.036),
+                 (0.60, 0.44, 0.28, 1.0))
+    make_box("Hexagon_Center_Face", (2.95, 5.50, top + 0.038), (0.10, 0.10, 0.05),
+             (0.66, 0.48, 0.30, 1.0))
+    make_box("Hexagon_Face_Inlay", (2.95, 5.52, top + 0.066), (0.06, 0.05, 0.008),
+             (0.38, 0.26, 0.16, 1.0))
+    make_box("Hexagon_Aria_Piece", (2.95, 5.86, top + 0.03), (0.16, 0.06, 0.036),
+             (0.60, 0.44, 0.28, 1.0))
+
+    make_box("Shop_Phone", (1.90, 5.78, top + 0.008), (0.16, 0.075, 0.014),
+             (0.10, 0.10, 0.12, 1.0))
+    make_box("Shop_Phone_Screen", (1.90, 5.78, top + 0.017), (0.14, 0.062, 0.004),
+             (0.42, 0.50, 0.58, 1.0))
+
+
 def main():
     clear_scene()
     build_shell()
@@ -186,6 +266,7 @@ def main():
     build_repair_back()
     build_office()
     build_retail()
+    build_hero_props()
     build_decor()
     out = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)),
         "../../../assets/3d/locales/board_lords_interior.glb"))
