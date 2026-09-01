@@ -123,6 +123,7 @@ SYNONYMS = {
     "iced_tea": ["icedtea"],
     "cigarette": ["cig", "ashtray"],
     "steamship": ["minstral", "steamship", "hull"],
+    "folding_chair": ["eileen_chair", "foldingchair"],
     "doohickey": ["doohickey", "onyx"],
 }
 

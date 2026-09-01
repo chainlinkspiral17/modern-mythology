@@ -383,3 +383,27 @@ metadata/fov = 44.0
 position = Vector3(-20.5, 1.5, -47)
 rotation = Vector3(0.0803829, 0.785398, 0)
 metadata/fov = 46.0
+
+; insert: the Vinton bus pulls into the lot at four oh-three
+[node name="shot_insert_bus" type="Marker3D" parent="." groups=["vn_shot"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.5, 1.7, 9.0)
+rotation = Vector3(-0.6386, -2.8474, 0.0)
+metadata/fov = 42.0
+
+; insert: Coach K's stopwatch — partly theater
+[node name="shot_insert_stopwatch" type="Marker3D" parent="." groups=["vn_shot"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 26.0, 0.95, -43.5)
+rotation = Vector3(-0.5951, -0.6597, 0.0)
+metadata/fov = 42.0
+
+; insert: Ben's phone — Maya texts at three forty-six
+[node name="shot_insert_phone" type="Marker3D" parent="." groups=["vn_shot"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 26.0, 0.95, -48.0)
+rotation = Vector3(-0.6068, -0.6747, 0.0)
+metadata/fov = 42.0
+
+; insert: the only folding chair in the third row
+[node name="shot_insert_folding_chair" type="Marker3D" parent="." groups=["vn_shot"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -26.9, 1.9, -38.6)
+rotation = Vector3(-0.2640, 2.0913, 0.0)
+metadata/fov = 42.0

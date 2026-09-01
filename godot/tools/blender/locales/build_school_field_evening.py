@@ -346,6 +346,46 @@ def build_hero_props():
         make_box(f"Spigot_{pi}_Tap", (SIDE_X + 2.92, py, 0.88), (0.10, 0.04, 0.04), (0.66, 0.52, 0.24, 1.0))
 
 
+def build_hero_props_2026_09():
+    """HERO PROPS FOR THE BLIND CUES (shot_marker_audit, 2026-09-01).
+
+    Four distinct cues. Eileen's folding chair already exists
+    (SYNONYMS folding_chair -> eileen_chair). Built:
+
+    - THE VINTON BUS ("pulls into the lot at four oh-three"):
+      flat-front school bus on the lot's east half — body, window
+      band, black rub stripe, bumper, four wheels.
+    - COACH K'S STOPWATCH ("partly theater ... the prop that gives
+      the team the data point"): on the home bench with its strap,
+      where ritual props rest between drills.
+    - BEN'S PHONE (Maya's three forty-six text): face-up further
+      down the same bench.
+    """
+    bus_yellow = (0.85, 0.62, 0.16, 1.0)
+    # ── THE VINTON BUS · lot east half ──
+    make_box("Vinton_Bus_Body", (10.0, -12.0, 1.45), (8.50, 2.40, 1.90), bus_yellow)
+    make_box("Vinton_Bus_Windows", (10.0, -10.785, 1.95), (7.00, 0.030, 0.50),
+             (0.26, 0.30, 0.36, 1.0))
+    make_box("Vinton_Bus_Stripe", (10.0, -10.785, 1.30), (7.80, 0.030, 0.12),
+             (0.12, 0.12, 0.13, 1.0))
+    make_box("Vinton_Bus_Bumper", (14.30, -12.0, 0.75), (0.10, 2.30, 0.25),
+             (0.30, 0.30, 0.32, 1.0))
+    for wi, (wx2, wy2) in enumerate(((7.0, -10.65), (13.0, -10.65),
+                                     (7.0, -13.35), (13.0, -13.35))):
+        make_cyl(f"Vinton_Bus_Wheel_{wi}", (wx2, wy2, 0.42), 0.42, 0.30,
+                 (0.13, 0.13, 0.14, 1.0), axis='Y', segments=10)
+    # ── THE STOPWATCH · home bench (top 0.50) ──
+    make_cyl("Coach_Stopwatch", (26.4, 44.0, 0.506), 0.030, 0.012,
+             (0.82, 0.82, 0.84, 1.0), segments=10)
+    make_cyl("Stopwatch_Crown", (26.4, 43.972, 0.517), 0.006, 0.010,
+             (0.55, 0.55, 0.58, 1.0), segments=6)
+    make_box("Stopwatch_Strap", (26.4, 44.075, 0.5015), (0.012, 0.090, 0.003),
+             (0.16, 0.16, 0.18, 1.0))
+    # ── BEN'S PHONE · same bench, further north ──
+    make_box("Bens_Phone", (26.4, 48.5, 0.5055), (0.070, 0.140, 0.011),
+             (0.13, 0.13, 0.15, 1.0))
+
+
 def build_horizon_2026_08():
     """STUMP HUNT: evening treelines past the fences, centered on the
     FIELD (cy=55) so the first band clears the 110m gridiron + the
@@ -381,6 +421,7 @@ def main():
         "../../../assets/3d/locales/school_field_evening.glb"))
     print(f"\n[build_school_field_evening] exporting to {out}")
     build_horizon_2026_08()
+    build_hero_props_2026_09()
     export_glb(out)
 
 
