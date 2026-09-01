@@ -122,6 +122,8 @@ SYNONYMS = {
     "landline": ["landline", "phone"],
     "iced_tea": ["icedtea"],
     "cigarette": ["cig", "ashtray"],
+    "steamship": ["minstral", "steamship", "hull"],
+    "doohickey": ["doohickey", "onyx"],
 }
 
 

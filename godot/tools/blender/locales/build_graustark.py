@@ -4822,6 +4822,81 @@ def build_star_night_2026_09():
         (1.0, 0.82, 0.42, 1.0), segments=6)
 
 
+def build_world_shore_2026_09():
+    """THE WORLD'S SHORE (shot_marker_audit, 2026-09-01).
+
+    The Wheel/World chapters stage on the Minstral's Green and the
+    audit flags five cues there. Douglas's closeups happen in New
+    Orleans and at the Roberts house — no honest anchor exists in
+    this locale, so that cue stays blind (VnDirector holds the
+    wide). The rest:
+
+    - THE CHILD ("Down here by the river ... the Child squats.
+      Poking a stick at a crawdad hole. Mud squishes between bare
+      toes."): a small figure in the world's own primitive-figure
+      grammar (the 53 extras' language), barefoot, patched
+      trousers, at the river's edge east of the hull — with the
+      stick, the crawdad hole, and two mud footprints.
+    - THE DOOHICKEY ("That black egg doohickey hangs quiet 'round
+      the neck"): the onyx egg as a pendant at the Child's chest.
+    - THE FROG ("Perched on the ship's broken paddlewheel cover
+      ... Four feet tall if he's an inch. Cork hat."): primitive
+      frog — body, head, two big eyes, cork hat, a rolled
+      cigarette — seated on Minstral_Paddlebox_Top.
+    - THE SMOKE RING (~): a pale translucent ring drifting off
+      toward the pink wildflower at the water's edge, which also
+      now exists ("where no wildflower had grown a week ago").
+    - steamship aims at the Minstral (SYNONYMS entry, no new
+      geometry).
+    """
+    from _props.geometry import make_box as _mb, make_cyl as _mc
+    from human_sculpt import human_figure
+    skin = (0.72, 0.54, 0.40, 1.0)
+    # ── THE CHILD · river's edge, east of the hull ──
+    cx2, cy2 = 43.5, -117.0
+    base = max(graustark_elevation(cx2, cy2), 0.05)
+    human_figure("Ruins_Child", base_x=cx2, base_y=cy2, base_z=base,
+                 scale=0.62, facing='-Y', body_type='male_avg',
+                 skin_color=skin,
+                 hair_color=(0.14, 0.11, 0.09, 1.0),
+                 jacket_color=(0.55, 0.48, 0.36, 1.0),
+                 pants_color=(0.46, 0.36, 0.26, 1.0),
+                 shoe_color=skin)
+    _mc("Doohickey_Egg", (cx2, cy2 - 0.20, base + 0.80), 0.035, 0.055,
+        (0.06, 0.06, 0.08, 1.0), segments=8)
+    _mc("Child_Crawdad_Hole", (cx2 + 0.5, cy2 - 0.7, base + 0.005), 0.05, 0.010,
+        (0.16, 0.12, 0.09, 1.0), segments=8)
+    _mc("Child_Stick", (cx2 + 0.35, cy2 - 0.45, base + 0.02), 0.008, 0.50,
+        (0.40, 0.30, 0.20, 1.0), axis='Y', segments=6)
+    for fi2, (fx3, fy3) in enumerate(((cx2 - 0.15, cy2 - 0.35),
+                                      (cx2 + 0.12, cy2 - 0.42))):
+        _mb(f"Child_Footprint_{fi2}", (fx3, fy3, base + 0.002),
+            (0.055, 0.095, 0.003), (0.22, 0.17, 0.12, 1.0))
+    # ── THE FROG · on the paddlebox top (z 2.30) ──
+    frog_green = (0.30, 0.42, 0.28, 1.0)
+    _mc("Frog_King_Body", (42.2, -124.0, 2.575), 0.30, 0.55, frog_green, segments=12)
+    _mc("Frog_King_Head", (42.2, -124.0, 2.980), 0.22, 0.25,
+        (0.34, 0.46, 0.30, 1.0), segments=12)
+    for si2 in (-1, 1):
+        _mc(f"Frog_King_Eye_{'L' if si2 < 0 else 'R'}",
+            (42.2 + 0.10 * si2, -124.14, 3.135), 0.050, 0.060,
+            (0.88, 0.86, 0.70, 1.0), segments=8)
+    _mc("Frog_King_Hat_Brim", (42.2, -124.0, 3.200), 0.19, 0.030,
+        (0.58, 0.46, 0.30, 1.0), segments=10)
+    _mc("Frog_King_Hat_Crown", (42.2, -124.0, 3.275), 0.13, 0.120,
+        (0.52, 0.40, 0.26, 1.0), segments=10)
+    _mc("Frog_King_Cigarette", (41.93, -124.0, 2.95), 0.010, 0.080,
+        (0.92, 0.90, 0.84, 1.0), axis='X', segments=6)
+    # ── THE SMOKE RING + THE WILDFLOWER ──
+    _mc("Smoke_Ring", (41.2, -121.5, 2.60), 0.14, 0.015,
+        (0.85, 0.85, 0.88, 0.35), segments=12)
+    wfz = max(graustark_elevation(42.5, -116.5), 0.05)
+    _mc("Wildflower_Stem", (42.5, -116.5, wfz + 0.09), 0.008, 0.18,
+        (0.30, 0.44, 0.26, 1.0), segments=6)
+    _mc("Wildflower_Pink", (42.5, -116.5, wfz + 0.19), 0.035, 0.012,
+        (0.88, 0.52, 0.62, 1.0), segments=8)
+
+
 def main():
     # Phase 0 — riverfront. Each rf.build_* writes into the scene.
     # We mirror riverfront's main() build order verbatim so the
@@ -4852,6 +4927,7 @@ def main():
     build_ruin_quarter_2026_08()
     build_ruin_draft2_2026_08()
     build_star_night_2026_09()
+    build_world_shore_2026_09()
     export_glb()
 
 
