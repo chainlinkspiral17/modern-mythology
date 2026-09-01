@@ -220,5 +220,16 @@
    "line": "the till comes up seventeen cents over three nights running. you stop trying to find it. some stores round up on their own.",
    "cash": 1
   }
- ]
+ ],
+ "insolvency": {
+  "notes": "Two-stage mid-summer consequence for running the account underwater (sim-caught design gap 2026-08-31: cash hit -860 with no reaction). Stage 1 at first negative week: Dot's call, a warning. Stage 2 at < bounce_at: THE BOUNCED CHECK — wages bounce, the lowest-paid of that week's crew quits (the one who could least afford it), morale and the landlord both take it. Once each per summer. Deep water after the bounce keeps a cold recurring line.",
+  "warn_at": 0,
+  "bounce_at": -150,
+  "deep_at": -400,
+  "warning": "· dot from first gulf calls at closing. she doesn't say overdrawn. she says 'the account's light, hon,' which is worse, because dot has seen every store on this road go.",
+  "bounce_head": "[color=#c8442c][b]· THE BOUNCED CHECK ·[/b] friday's paychecks come back thursday. the bank's stamp is small and gray and says everything.[/color]",
+  "bounce_quit": "[color=#c8442c]· %s doesn't shout. %s counts out the register float, takes exactly what the check was for, and leaves the apron folded on the counter. you don't call after. what would the sentence be.[/color]",
+  "bounce_stats": "· morale −2 · mr. aldous hears about it by saturday · −1",
+  "deep_line": "· the drawer opens on IOUs. the distributor's driver waits while you look for it. everyone is very polite, which is how a road watches a store drown."
+ }
 }

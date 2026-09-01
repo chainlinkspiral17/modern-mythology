@@ -69,9 +69,11 @@ cd <repo>/godot && $GODOT --headless --import     # once, ~5 min
 - `$GODOT --headless res://tools/qa/KsmSummerSim.tscn` — PLAYS the
   Kwik Stop Manager twelve-week summer through the real UI: three
   crew checkboxes, RUN THE WEEK, events/robbery by first-choice.
-  Re-boots the same KsmWeek on week_over (the host contract). First
-  run PASSED; the naive never-restock policy ends at cash -860,
-  which is the economy working, not a bug.
+  Re-boots the same KsmWeek on week_over (the host contract). Its
+  first run showed cash -860 with NO mid-summer reaction — that
+  gap became the insolvency system (Dot's warning, then THE
+  BOUNCED CHECK: the lowest-paid of the week's crew walks, morale
+  and the landlord take it, deep water keeps a cold line).
 - `$GODOT --headless res://tools/qa/ResumeIntSanity.tscn` — the
   regression net for the JSON-float resume class: writes a save the
   way a real round-trip leaves it (numbers → floats), boots the

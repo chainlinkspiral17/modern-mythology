@@ -311,6 +311,40 @@ func _run_week() -> void:
 	elif int(_state.get("landlord", 5)) <= 2:
 		lines.append("[color=#f0c040]· mr. aldous is short with you at the register. the lot is a relationship, and it is cooling.[/color]")
 
+	# ── INSOLVENCY · running underwater has a mid-summer cost ────
+	# (Sim-caught gap: cash reached -860 with no reaction.) Stage 1:
+	# Dot's warning call, once. Stage 2: THE BOUNCED CHECK — wages
+	# bounce, the lowest-paid of this week's crew walks, morale and
+	# the landlord both take it. Deep water after that keeps a cold
+	# recurring line. All thresholds + lines in weeks.json.
+	var ins: Dictionary = _weeks.get("insolvency", {})
+	if not ins.is_empty():
+		if cash < int(ins.get("warn_at", 0)) and not bool(_state.get("overdraft_warned", false)):
+			_state["overdraft_warned"] = true
+			lines.append("[color=#f0c040]%s[/color]" % String(ins.get("warning", "")))
+		elif cash < int(ins.get("bounce_at", -150)) and not bool(_state.get("check_bounced", false)):
+			_state["check_bounced"] = true
+			var quit_sid := ""
+			var quit_wage := 99999
+			for sid3 in _picked:
+				var s3 := _find_staff(String(sid3))
+				if int(s3.get("wage", 50)) < quit_wage:
+					quit_wage = int(s3.get("wage", 50))
+					quit_sid = String(sid3)
+			lines.append(String(ins.get("bounce_head", "")))
+			if quit_sid != "":
+				var gone: Array = _state.get("staff_gone", [])
+				if not gone.has(quit_sid):
+					gone.append(quit_sid)
+				_state["staff_gone"] = gone
+				var qname := String(_find_staff(quit_sid).get("name", quit_sid))
+				lines.append(String(ins.get("bounce_quit", "%s leaves. %s.")) % [qname, qname])
+			_state["morale"] = maxi(0, int(_state.get("morale", 5)) - 2)
+			_state["landlord"] = clampi(int(_state.get("landlord", 5)) - 1, 0, 9)
+			lines.append(String(ins.get("bounce_stats", "")))
+		elif cash < int(ins.get("deep_at", -400)) and bool(_state.get("check_bounced", false)):
+			lines.append("[color=#c8442c]%s[/color]" % String(ins.get("deep_line", "")))
+
 	# a staff life crosses the counter
 	var event_text := ""
 	for sid in _picked:
