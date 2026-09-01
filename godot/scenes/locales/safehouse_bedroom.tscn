@@ -324,3 +324,27 @@ offset_top = 360.0
 offset_right = 520.0
 offset_bottom = 980.0
 script = ExtResource("14_dbgm")
+
+; insert: the small spiral-bound notebook from the Kwik Stop (ch7/ch9)
+[node name="shot_insert_notebook" type="Marker3D" parent="." groups=["vn_shot"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.55, 0.95, -3.25)
+rotation = Vector3(-0.6565, -0.7037, 0.0)
+metadata/fov = 42.0
+
+; insert: Diego's phone — "bored. u alive?" (ch6)
+[node name="shot_insert_phone" type="Marker3D" parent="." groups=["vn_shot"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.3, 0.95, -3.25)
+rotation = Vector3(-0.6078, 0.7066, 0.0)
+metadata/fov = 42.0
+
+; insert: the blue raspberry slushie, lid taped, red spoon in (ch7)
+[node name="shot_insert_slushie" type="Marker3D" parent="." groups=["vn_shot"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.1, 0.95, -3.15)
+rotation = Vector3(-0.5040, 0.6747, 0.0)
+metadata/fov = 42.0
+
+; insert: she takes his hand — the duvet creases (ch9)
+[node name="shot_insert_hands" type="Marker3D" parent="." groups=["vn_shot"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.3, 1.0, -2.2)
+rotation = Vector3(-0.7400, 0.7682, 0.0)
+metadata/fov = 42.0

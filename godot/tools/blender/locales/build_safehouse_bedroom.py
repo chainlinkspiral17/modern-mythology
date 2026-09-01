@@ -261,6 +261,35 @@ def build_detail_pass_2026_08():
                      face_sign=-1, aged=True)
 
 
+def build_hero_props_2026_09():
+    """HERO PROPS FOR THE BLIND CUES (shot_marker_audit, 2026-09-01).
+
+    Four distinct cues; phone (Diegos_Phone) and slushie
+    (Slushie_Cup) were built in the earlier hero pass and need
+    only markers. Built here:
+
+    - THE SPIRAL NOTEBOOK ("the small spiral-bound one Sam brought
+      to the safehouse" — 2x): on the bedside table's far corner,
+      Kwik Stop red, wire on its outer edge. The notebook cue's
+      "note" synonym also matches the corkboard's Cork_Note pins,
+      so the marker sits close enough that the notebook wins the
+      nearest-match race by meters, not centimeters.
+    - THE HANDS ("She takes his hand." at the bed): residue
+      grammar — the duvet creased at the open side where his hand
+      lies and hers closed around it.
+    """
+    # ── THE SPIRAL NOTEBOOK · bedside table corner (top 0.56) ──
+    make_box("Spiral_Notebook", (-0.26, 3.70, 0.566), (0.130, 0.160, 0.012),
+             (0.78, 0.30, 0.22, 1.0))
+    make_box("Spiral_Notebook_Wire", (-0.331, 3.70, 0.567), (0.012, 0.160, 0.014),
+             (0.55, 0.56, 0.58, 1.0))
+    # ── THE HANDS · duvet creases at the open side (top 0.62) ──
+    make_box("Hands_Duvet_Crease_A", (-0.60, 2.55, 0.626), (0.16, 0.05, 0.012),
+             (0.62, 0.58, 0.52, 1.0))
+    make_box("Hands_Duvet_Crease_B", (-0.57, 2.44, 0.625), (0.05, 0.13, 0.010),
+             (0.60, 0.56, 0.50, 1.0))
+
+
 def main():
     clear_scene()
     build_shell()
@@ -280,6 +309,7 @@ def main():
     build_ceiling_infra()
     build_hero_props()
     build_detail_pass_2026_08()
+    build_hero_props_2026_09()
     out = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)),
         "../../../assets/3d/locales/safehouse_bedroom.glb"))
     print(f"\n[build_safehouse_bedroom] exporting to {out}")
