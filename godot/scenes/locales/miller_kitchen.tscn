@@ -348,3 +348,33 @@ metadata/fov = 42.0
 position = Vector3(1.7, 1.45, -3.9)
 rotation = Vector3(-0.235286, -0.717541, 0)
 metadata/fov = 42.0
+
+; insert: the hands at the two worn places on the table (ch4/ch11)
+[node name="shot_insert_hands" type="Marker3D" parent="." groups=["vn_shot"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 1.15, -2.15)
+rotation = Vector3(-0.4923, -0.4324, 0.0)
+metadata/fov = 42.0
+
+; insert: the cinnamon roll on the small plate, not yet eaten (ch11)
+[node name="shot_insert_cinnamon_roll" type="Marker3D" parent="." groups=["vn_shot"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.55, 1.15, -2.85)
+rotation = Vector3(-0.5589, -0.5880, 0.0)
+metadata/fov = 42.0
+
+; insert: the jar Bianca takes (ch11)
+[node name="shot_insert_jar" type="Marker3D" parent="." groups=["vn_shot"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.35, 1.15, -2.35)
+rotation = Vector3(-0.5083, -0.7576, 0.0)
+metadata/fov = 42.0
+
+; insert: the three kolaches from the place on Alamosa (ch11)
+[node name="shot_insert_kolaches" type="Marker3D" parent="." groups=["vn_shot"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.3, 1.2, -2.85)
+rotation = Vector3(-0.7248, 0.0429, 0.0)
+metadata/fov = 42.0
+
+; insert: the white sedan at the curb, from the sink window (ch15)
+[node name="shot_insert_sedan" type="Marker3D" parent="." groups=["vn_shot"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.75, 1.55, -5.2)
+rotation = Vector3(0, 0, 0)
+metadata/fov = 42.0

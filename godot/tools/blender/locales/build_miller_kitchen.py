@@ -361,6 +361,74 @@ def build_through_windows_2026_08():
                  (0.30, 0.32, 0.30, 1.0), segments=6)
 
 
+def build_hero_props_2026_09():
+    """HERO PROPS FOR THE BLIND CUES (shot_marker_audit, 2026-09-01).
+
+    Five distinct insert cues fire on this kitchen with no marker
+    and no geometry:
+
+    - THE HANDS (x2 — "She puts her hand, briefly, on the top of
+      his head" / "Eileen reaches across the table and squeezes
+      Bianca's hand"): rendered as use-state, not figures — two
+      hand-worn patches in the table finish at the two places
+      hands keep meeting: Bianca's old long-side seat and Mike's
+      short-side seat by the window.
+    - THE CINNAMON ROLL (ch11: "She puts it on the small plate
+      Bianca had set in front of her. She does not yet eat it."):
+      on its small plate at the guest side, untouched.
+    - THE KOLACHES ("Inside are three kolaches from the place on
+      Alamosa"): the bakery bag standing open + three on a plate —
+      apricot, cream cheese, sausage read as three glaze tints.
+    - THE JAR ("Bianca takes the jar"): a mason jar with a brass
+      lid at the table's south edge.
+    - THE WHITE SEDAN ("parked at the curb" / "parked in the lot
+      when Sam comes out"): on a new street strip past the
+      Thru_N sidewalk band — body, cabin, four wheels, white,
+      visible from the sink window. The vigil, seen from inside.
+
+    Draft note: draft N+1 could give the sedan its two silhouettes
+    and a thermos on the dash if the through-window haze ever
+    resolves that small, and swap the kolache plate for the bag
+    lying open once cloth/paper deformation exists.
+    """
+    white = (0.90, 0.90, 0.88, 1.0)
+    plate_col = (0.92, 0.90, 0.86, 1.0)
+    # ── THE HANDS · worn patches at the two places (table top 0.765) ──
+    make_box("Hands_Worn_Patch_A", (0.50, 2.60, 0.766), (0.16, 0.12, 0.002),
+             (0.52, 0.40, 0.27, 1.0))
+    make_box("Hands_Worn_Patch_B", (1.10, 3.00, 0.766), (0.12, 0.16, 0.002),
+             (0.52, 0.40, 0.27, 1.0))
+    # ── THE CINNAMON ROLL · small plate, guest side, untouched ──
+    make_cyl("Small_Plate", (0.85, 3.30, 0.771), 0.090, 0.012, plate_col, segments=12)
+    make_cyl("Cinnamon_Roll", (0.85, 3.30, 0.7995), 0.055, 0.045,
+             (0.72, 0.50, 0.28, 1.0), segments=10)
+    make_cyl("Cinnamon_Roll_Swirl", (0.85, 3.30, 0.824), 0.030, 0.004,
+             (0.90, 0.84, 0.72, 1.0), segments=8)
+    # ── THE KOLACHES · bag + three on a plate (apricot/cream/sausage) ──
+    make_box("Bakery_Bag", (-0.05, 3.30, 0.855), (0.22, 0.14, 0.18),
+             (0.76, 0.62, 0.42, 1.0))
+    make_cyl("Kolache_Plate", (0.28, 3.32, 0.771), 0.100, 0.012, plate_col, segments=12)
+    for ki, (kx, ky, kc) in enumerate(((0.235, 3.290, (0.86, 0.62, 0.30, 1.0)),
+                                       (0.325, 3.290, (0.90, 0.84, 0.66, 1.0)),
+                                       (0.280, 3.365, (0.66, 0.44, 0.28, 1.0)))):
+        make_cyl(f"Kolache_{ki}", (kx, ky, 0.792), 0.045, 0.030, kc, segments=8)
+    # ── THE JAR · mason jar, table south edge ──
+    make_cyl("Mason_Jar", (0.0, 2.72, 0.830), 0.045, 0.130,
+             (0.72, 0.76, 0.70, 0.75), segments=10)
+    make_cyl("Mason_Jar_Lid", (0.0, 2.72, 0.9025), 0.047, 0.015,
+             (0.62, 0.52, 0.30, 1.0), segments=10)
+    # ── THE WHITE SEDAN · at the curb past the Thru_N sidewalk ──
+    make_box("Thru_N_Street", (-1.0, 11.45, -0.03), (7.0, 1.7, 0.05),
+             (0.42, 0.41, 0.40, 1.0))
+    make_box("White_Sedan_Body", (-1.6, 11.3, 0.62), (4.20, 1.70, 0.60), white)
+    make_box("White_Sedan_Cabin", (-1.9, 11.3, 1.13), (2.20, 1.50, 0.42),
+             (0.82, 0.83, 0.82, 1.0))
+    for wi, (wx2, wy2) in enumerate(((-3.0, 10.325), (-0.2, 10.325),
+                                     (-3.0, 12.275), (-0.2, 12.275))):
+        make_cyl(f"White_Sedan_Wheel_{wi}", (wx2, wy2, 0.33), 0.33, 0.25,
+                 (0.14, 0.14, 0.15, 1.0), axis='Y', segments=10)
+
+
 def main():
     clear_scene()
     build_shell()
@@ -375,6 +443,7 @@ def main():
     build_wear_personality_2026_08()
     build_infrastructure_2026_08()
     build_through_windows_2026_08()
+    build_hero_props_2026_09()
     out = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)),
         "../../../assets/3d/locales/miller_kitchen.glb"))
     print(f"\n[build_miller_kitchen] exporting to {out}")
