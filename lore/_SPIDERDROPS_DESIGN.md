@@ -165,8 +165,13 @@ two-to-a-clamshell. Olaf's note:
   register's hero.
 - DONE (2026-07-22): Sequel PLAN — `_SPIDERDROPS_2_DESIGN.md`
   (THE LONG WIND, post-game, carries the register in).
-- Two-player pass-the-stick mode (the box promised it) — a Manager/
-  Counselor-style flag on the host, alternating storms, best-of.
+- DONE (2026-08-31): Two-player pass-the-stick — the box's promise
+  kept. TWO SPIDERS on the title: alternating storms (same storm,
+  no excuses), handoff cards between turns, a versus screen ranked
+  by register with score breaking ties, rematch swaps who starts.
+  Session-only; both storms still count toward the cartridge's
+  runs/best/tokens (someone wove them). Probe-verified: handoff →
+  alternation → correct verdict.
 - Deck-verify: physics stability at 60fps on the Deck, verb feel,
   telegraph readability, break-ratio + rain-rate tuning; audio mix +
   rumble feel; hero legibility over the ending text.

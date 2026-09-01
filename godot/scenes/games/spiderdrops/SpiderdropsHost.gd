@@ -89,8 +89,118 @@ func _save_state() -> void:
 	f.close()
 
 
+# ── TWO SPIDERS · pass-the-stick (the box promised it) ───────────
+# Session-only versus: alternating storms, one each, best register
+# wins (score breaks ties). Rematch swaps who takes the stick first.
+var _two_player: bool = false
+var _p_turn: int = 1
+var _p_start: int = 1
+var _p_results: Array = []
+
+
 func start_new_run(_manager_mode: bool = false) -> void:
+	_two_player = false
 	_open_storm()
+
+
+func _start_two_player() -> void:
+	_two_player = true
+	_p_results = []
+	_p_turn = _p_start
+	_show_handoff(_p_turn, true)
+
+
+func _show_handoff(p: int, first: bool) -> void:
+	_clear_current_scene()
+	_sfx("page_turn")
+	_ending_root = Control.new()
+	_ending_root.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
+	add_child(_ending_root)
+	var v := VBoxContainer.new()
+	v.set_anchors_and_offsets_preset(Control.PRESET_CENTER)
+	v.custom_minimum_size = Vector2(640, 0)
+	v.add_theme_constant_override("separation", 14)
+	_ending_root.add_child(v)
+	var hdr := Label.new()
+	hdr.text = "· PLAYER %s TAKES THE STICK ·" % ("ONE" if p == 1 else "TWO")
+	hdr.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+	hdr.add_theme_font_size_override("font_size", 26)
+	v.add_child(hdr)
+	var body := Label.new()
+	body.text = ("Same storm for both of you — that is the whole rule. Web up." if first
+		else "Hand it over warm. The second spider gets the same storm and no excuses.")
+	body.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+	body.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+	body.add_theme_font_size_override("font_size", 15)
+	v.add_child(body)
+	var go := Button.new()
+	go.text = "  the storm is waiting  "
+	go.add_theme_font_size_override("font_size", 15)
+	go.pressed.connect(_open_storm)
+	v.add_child(go)
+	GamepadMgr.focus_first.call_deferred(v)
+
+
+func _show_versus() -> void:
+	_clear_current_scene()
+	_sfx("page_turn")
+	var r1: Dictionary = _p_results[0]
+	var r2: Dictionary = _p_results[1]
+	var p1: int = _p_start
+	var p2: int = 3 - _p_start
+	var reg1 := String(r1.get("register", "storm"))
+	var reg2 := String(r2.get("register", "storm"))
+	var rank1: int = _register_rank(reg1)
+	var rank2: int = _register_rank(reg2)
+	var s1: int = int(r1.get("score", 0))
+	var s2: int = int(r2.get("score", 0))
+	var verdict: String
+	if rank1 > rank2 or (rank1 == rank2 and s1 > s2):
+		verdict = "PLAYER %s'S WEB OUTLASTED THE WEATHER" % ("ONE" if p1 == 1 else "TWO")
+	elif rank2 > rank1 or (rank1 == rank2 and s2 > s1):
+		verdict = "PLAYER %s'S WEB OUTLASTED THE WEATHER" % ("ONE" if p2 == 1 else "TWO")
+	else:
+		verdict = "THE STORM CALLS IT A DRAW"
+	_ending_root = Control.new()
+	_ending_root.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
+	add_child(_ending_root)
+	var v := VBoxContainer.new()
+	v.set_anchors_and_offsets_preset(Control.PRESET_CENTER)
+	v.custom_minimum_size = Vector2(760, 0)
+	v.add_theme_constant_override("separation", 12)
+	_ending_root.add_child(v)
+	var hdr := Label.new()
+	hdr.text = "· %s ·" % verdict
+	hdr.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+	hdr.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+	hdr.add_theme_font_size_override("font_size", 24)
+	v.add_child(hdr)
+	for pair in [[p1, r1], [p2, r2]]:
+		var pn: int = pair[0]
+		var rr: Dictionary = pair[1]
+		var line := Label.new()
+		line.text = "PLAYER %s · %s · %d waves · score %d" % [
+			("ONE" if pn == 1 else "TWO"),
+			String(REGISTER_TITLE.get(String(rr.get("register", "storm")), "")),
+			int(rr.get("waves_survived", 0)), int(rr.get("score", 0))]
+		line.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+		line.add_theme_font_size_override("font_size", 15)
+		v.add_child(line)
+	var again := Button.new()
+	again.text = "  pass it back · rematch (other spider starts)  "
+	again.add_theme_font_size_override("font_size", 14)
+	again.pressed.connect(func() -> void:
+		_p_start = 3 - _p_start
+		_start_two_player())
+	v.add_child(again)
+	var done := Button.new()
+	done.text = "  put the cart back  "
+	done.add_theme_font_size_override("font_size", 13)
+	done.pressed.connect(func() -> void:
+		_two_player = false
+		_build_title_screen())
+	v.add_child(done)
+	GamepadMgr.focus_first.call_deferred(v)
 
 
 func _clear_current_scene() -> void:
@@ -194,6 +304,13 @@ func _build_title_screen() -> void:
 	play_btn.pressed.connect(func() -> void: start_new_run(false))
 	v.add_child(play_btn)
 
+	var two_btn := Button.new()
+	two_btn.text = "  TWO SPIDERS · pass the stick  "
+	two_btn.add_theme_font_size_override("font_size", 13)
+	two_btn.tooltip_text = "The box promised it. Same storm for both of you; best web wins."
+	two_btn.pressed.connect(_start_two_player)
+	v.add_child(two_btn)
+
 	var back_btn := Button.new()
 	back_btn.text = "  ← back to shelf  "
 	back_btn.add_theme_font_size_override("font_size", 13)
@@ -255,6 +372,14 @@ func _on_run_over(result: Dictionary) -> void:
 	# not the player ends the session (puts the cart back) after it.
 	_award_run_tokens(register)
 	_save_state()
+	if _two_player:
+		_p_results.append(result)
+		if _p_results.size() == 1:
+			_p_turn = 3 - _p_turn
+			_show_handoff(_p_turn, false)
+		else:
+			_show_versus()
+		return
 	_show_ending(result)
 
 
