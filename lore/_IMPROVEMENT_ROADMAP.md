@@ -75,6 +75,30 @@ cabin_road's remaining 43 are mostly games-Finn-plays and
 substitute-fallback territory — verify on Deck before adding more
 there.
 
+**2026-09-01 · THE BLIND-CUE HERO-PROP PROGRAM, six waves.** One
+method down the ranking: prose anchor → props named for the
+matcher → transform-format markers, rotation zero → marker_reaim
+→ suite. Shipped: board_lords_interior (sanderling mural + patch,
+hexagon + ARIA piece, bread, shop phone), lena_apartment (Estuary
+7 stick on the side table, the hexagon + eighth piece, the letter
+to Jorgen, phone, bread, bowl, deadbolt), hans_bakery_back_kitchen
+(four cedar bowls + the crow on the substrate-bowl's rim, floured
+handprints for the Aud/Marit beat, the four-AM back-kitchen
+light), graustark star night (crow on the I-beam, the desk-that-
+was-a-door-on-bricks, "I am ready.", the candle), miller_kitchen
+(worn-patch hands, cinnamon roll, kolaches, jar, the white sedan
+at the curb through the sink window), ramos_kitchen_morning
+(hands, chorizo eggs in the skillet, the soup). Blind cues 324 →
+277; marker_aim 113/113; overlap 0 regressions throughout. Deck
+rebuilds queued for all six builders. LESSONS in the geometry
+playbook (position-format markers are invisible to the tools —
+conversion queued; residue grammar for human-contact cues; shared-
+tscn presets clear in batches). NEXT in the ranking: safehouse
+_bedroom (5) · centro_grocery_aisle (6) · sam_bedroom (4) ·
+school_field_evening (4); cabin_road's 43 and louisiana_road's 18
+are fallback-staging aggregates — a re-homing decision (real
+locales for those scenes), not a prop wave; verify on Deck first.
+
 **2026-08-19 · PER-STICK VOICE SWEEP VERDICT (voice draft 4).**
 Ran the leakage grep (TODO/WIP/placeholder/implemented/deferred/
 stub) and a string survey across EVERY stick directory: estuary_4,

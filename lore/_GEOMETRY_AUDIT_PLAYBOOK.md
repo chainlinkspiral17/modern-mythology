@@ -158,6 +158,44 @@ banisters classed · pans as containers.
 
 ## Recent lessons
 
+### 2026-09-01 · the blind-cue hero-prop program (six locales, 324 → 277)
+
+Board Lords, lena_apartment, hans_bakery_back_kitchen, graustark
+(star night), miller_kitchen, ramos_kitchen_morning — one method:
+grep the cue's prose anchor, build the prop with names the matcher
+hits, append transform-format markers with rotation zero, run
+marker_reaim, run the suite. Lessons:
+
+- **position-format markers are INVISIBLE to the marker tools.**
+  `parse_markers` requires a `transform = Transform3D(...)` line;
+  a `position = Vector3(...)` node is skipped silently — no aim
+  audit, no reaim. lena_apartment carried five legacy markers the
+  audit had never once checked (bakery has brotchen/mixer/establish
+  in the same state). Author new markers transform-format ALWAYS;
+  a repo-wide conversion of the legacy position markers is queued.
+- **Synonym ties need decisive placement.** "window" accepts the
+  stem `win_`, which matches `WinChair_*`; the bakery window
+  marker's nearest-match race came down to 0.84 m vs 0.85 m and
+  aimed at the chair. When a cue's synonyms are broad, place the
+  marker so the intended subject wins by half a meter, not a
+  centimeter.
+- **Human contact renders as residue, not figures.** "hands"
+  cues (five of them across three locales) became floured
+  handprints on the baker's table and hand-worn patches in two
+  family tables' finish — use-state grammar (D4), zero figure
+  geometry, and the marker aims at the exact spot the beat
+  happens. Name the residue with the cue's token (`Hands_*`).
+- **A shared-world tscn clears sibling presets at once.** The
+  four graustark star-night markers took the repo count down 11,
+  not 7 — wall/crow markers also unblinded the chalk-wall and
+  ruins presets that stage the same objects.
+- **Check tower footprints before dressing a deck.** The
+  lighthouse's ground segment owns a 3.6 m square of the deck the
+  dump's center coordinates don't advertise; the desk vignette's
+  first placement put both brick stacks inside it (7 clips).
+  When placing near any tall structure, read its BASE extents
+  from the builder, not the audit's center-point dump.
+
 ### 2026-08-19 · a marker IS a camera; three blindness bugs in one day
 
 - **A vn_shot marker's transform IS the camera pose** (VnDirector
