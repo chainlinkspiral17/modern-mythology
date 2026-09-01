@@ -64,41 +64,41 @@
   }
  ],
  "apprentice": {
-  "comment": "ENDLESS V2 · THE APPRENTICE. m7/m11 narrated succession; this mechanizes it. Aria is the canon candidate — the summer vignette where Nicola brings her to the office and she asks what the modem sounds like when it dials is the foreshadow.",
+  "comment": "ENDLESS V2 · THE APPRENTICE = MAYA DAIGLE (user casting, 2026-08-31). Vol6's Maya — Linda Caldwell's granddaughter, the Cosmic Comics kid F.T. brought in directly during the summer of the four, the one who asked Rick 'can we help him. sometime. after this.' Now it's after this. (NOT Aria — Aria is fourteen, messiah-like, trans-dimensional; she is the thing the board orbits, never its staff. THE ARIA RULE in the CP playbook.)",
   "offer_week": 10,
   "reoffer_every": 8,
   "training_weeks": 4,
   "handoff_weeks": 16,
   "offer_title": "SOMEBODY AT THE DOOR ON A SUNDAY",
-  "offer_body": "Aria is at the office door at seven — Nicola's kid, the one who asked what the dial-up sounds like and then nodded once, like the sound had settled something.\n\nShe does not ask to watch. She asks for the board's smallest problem and a pencil.\n\nPop's rule sits on the desk between you: it takes a person who keeps showing up. She has been showing up for weeks. You just hadn't written it down yet.",
+  "offer_body": "Maya Daigle is at the office door at seven. The comic-shop kid from the Estates — the one F.T. brought in directly, the summer everything ran through four teenagers and a corkboard.\n\nShe doesn't explain the drive down. She puts a page from Rick's stockroom notebook on the desk, in her handwriting: the question she asked him the day the Speak & Spell talked to her. Can we help him. Sometime. After this.\n\nShe looks at the board the way she looked at the back-room map once. 'It's after this,' she says.",
   "accept_btn": "hand her the pencil",
   "decline_btn": "not yet",
-  "accept_line": "Aria takes the corner of the desk that catches the lamp. The ledger gains a second handwriting, small and very careful.",
+  "accept_line": "Maya takes the corner of the desk that catches the lamp. The ledger gains a second handwriting, small and very level.",
   "decline_line": "She nods like a person filing a decision rather than accepting one, and leaves. The knock will come again. Some questions keep Sunday hours.",
   "training_lines": [
-   "Aria spends Sunday tracing last month's dispatches backwards, asking why at every junction. Twice you don't have an answer, and she writes THAT down.",
-   "Aria alphabetizes the stamp drawer. It was alphabetized. Now it is more so. The board tolerates the audit.",
-   "Aria reads the region files cover to cover with her feet hooked on the chair rung. At the Graustark file she goes quiet for a long time and does not ask anything at all.",
-   "Aria drills the dial-up handshake until she can hum it. She says every machine says its name if you wait for the end of the sentence."
+   "Maya spends Sunday tracing last month's dispatches backwards, asking why at every junction. Twice you don't have an answer, and she writes THAT down.",
+   "Maya cross-indexes the ledger against the summer she lived through from the other side. Four of that August's mysteries resolve on the spot. She sits with the fifth a long time.",
+   "Maya reads the region files cover to cover with her feet hooked on the chair rung. At the Graustark file she goes quiet for a long time and does not ask anything at all.",
+   "Maya maps the courier routes the way she used to map the shop's pull-list customers — by who talks to whom. Her map is better than yours in two places. You do not tell her that yet."
   ],
   "misroute_lines": [
-   "Aria routes the Verbena Way letters to the wrong week and the problem grows a ring. She finds the error herself, which is the whole lesson, and it costs the board a little to teach it.",
-   "Aria dispatches by the map instead of by the people and the map, as usual, lies. You unpick it together on Monday. The ledger notes the tuition.",
-   "Aria answers the office line in her own voice. Whoever it was hangs up, and calls back Thursday asking for her."
+   "Maya routes the Verbena Way letters to the wrong week and the problem grows a ring. She finds the error herself, which is the whole lesson, and it costs the board a little to teach it.",
+   "Maya dispatches by the map instead of by the people and the map, as usual, lies. You unpick it together on Monday. The ledger notes the tuition.",
+   "Maya answers the office line in her own voice. Whoever it was hangs up, and calls back Thursday asking for her."
   ],
   "small_ones_lines": [
-   "Aria takes the week's smallest problem off the board before you reach the desk. Her resolution note is one sentence. It is the correct sentence.",
-   "The little trouble at the edge of the map is gone by Sunday supper. Aria's pencil mark where it stood is so faint you check it twice.",
-   "Aria handles the small one the way Pop handled small ones — by making it never have been a problem in anyone's memory but the ledger's.",
+   "Maya takes the week's smallest problem off the board before you reach the desk. Her resolution note is one sentence. It is the correct sentence.",
+   "The little trouble at the edge of the map is gone by Sunday supper. Maya's pencil mark where it stood is so faint you check it twice.",
+   "Maya handles the small one the way the four of them handled that summer — by making it never have been a problem in anyone's memory but the ledger's.",
    "One of the week's minor aches resolves without a dispatch. In the margin, in the second handwriting: 'talked to them. it was about the fence. it is not about the fence now.'",
-   "Aria clears the smallest line item and leaves the pencil exactly where you leave it, which is its own message.",
-   "The board's littlest fire goes out quietly midweek. Aria doesn't mention it. The ledger does."
+   "Maya clears the smallest line item and leaves the pencil exactly where you leave it, which is its own message.",
+   "The board's littlest fire goes out quietly midweek. Maya doesn't mention it. The ledger does. Somewhere north, Linda Caldwell would recognize the style."
   ],
-  "graduate_line": "Four Sundays in, Aria stops asking why at the junctions. She has started asking why not, which is a different apprenticeship entirely. The small ones are hers now.",
+  "graduate_line": "Four Sundays in, Maya stops asking why at the junctions. She has started asking why not, which is a different apprenticeship entirely. The small ones are hers now.",
   "handoff_header": "You set the pencil down. She picks it up before it stops rolling.",
   "handoff_lines": [
-   "The board does not retire. The board changes hands the way the bowls do — while everyone is looking somewhere else.",
-   "Nicola cries once, at the door, and denies it at the bottom of the stairs."
+   "The board does not retire. The board changes hands the way it came to you — a kid who kept showing up until the showing up had a name.",
+   "That night she texts three people. The texts say the same thing hers once received: you're in. All three write back within the minute."
   ]
  }
 }

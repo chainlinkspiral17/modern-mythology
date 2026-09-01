@@ -35,13 +35,16 @@ func _ready() -> void:
 	for i in range(70):
 		# after graduation, keep one honest small problem available so
 		# the pickup path is testable even on a full, ancient board
-		if i > 40 and not seeded_small:
-			var rs0: Dictionary = _game.get("_region_state")
-			var hc: Dictionary = rs0.get("harmony_creek", {})
+		if i > 40 and not seeded_small and int(_game.get("_day")) % 7 == 6:
+			# Saturday: place one honest small problem directly (the
+			# _seed_problem helper no-ops on full regions) so Sunday's
+			# pickup path is deterministic on an ancient board.
+			var hc: Dictionary = (_game.get("_region_state") as Dictionary).get("harmony_creek", {})
 			var probs0: Array = hc.get("active_problems", [])
 			if probs0.size() >= 4:
 				probs0.remove_at(0)
-			_game.call("_seed_problem", "harmony_creek", "newsletter_item")
+			probs0.append({"template_id": "newsletter_item", "title": "Newsletter Item",
+				"severity": 1.0, "in_progress_by": ""})
 			seeded_small = true
 		# the probe holds the tower still to watch the apprentice
 		_game.set("_tower_brightness", "dim")
@@ -74,8 +77,8 @@ func _ready() -> void:
 	var small_seen: bool = false
 	for ln_v in log_lines:
 		var ln := String(ln_v)
-		if ln.contains("Aria") and (ln.contains("dispatches") or ln.contains("alphabetizes") \
-				or ln.contains("traces") or ln.contains("drills") or ln.contains("region files")):
+		if ln.contains("Maya") and (ln.contains("dispatches") or ln.contains("cross-indexes") \
+				or ln.contains("traces") or ln.contains("courier routes") or ln.contains("region files")):
 			training_seen = true
 		if ln.contains("smallest problem off the board") or ln.contains("littlest fire") \
 				or ln.contains("about the fence") or ln.contains("pencil mark where it stood") \

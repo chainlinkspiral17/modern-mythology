@@ -124,9 +124,25 @@ This playbook is the *how we work on it* doc.
 ## Design note · ENDLESS V2 · THE APPRENTICE — 2026-08-31, BUILT same day
 
 m7 ("somebody asks to learn the board") and m11 ("the successor
-question") narrated succession; this mechanizes it. Aria — Nicola's
-kid, the one who asked what the dial-up sounds like (the summer
-vignette was the foreshadow) — knocks at endless week 10:
+question") narrated succession; this mechanizes it.
+
+**THE ARIA RULE (user correction, 2026-08-31 · canon-wide):** Aria
+is a messiah-like, trans-dimensional figure — fourteen in CP's
+2025, Nicola's daughter, the wooden box, the W11 thread, the crow
+in vol 7. She is the thing the board orbits, never its staff.
+NEVER cast Aria in a mundane role (apprentice, employee, errand
+runner) anywhere in the catalog; her cameos stay uncanny (the
+dial-up vignette is her LISTENING to the substrate, not a career
+interest). The first draft of this mechanic miscast her; recast
+same day.
+
+The apprentice is **MAYA DAIGLE** (user casting) — vol6's
+comic-shop kid from the Estates, Linda Caldwell's granddaughter,
+the one F.T. brought in directly the summer everything ran
+through four teenagers and a corkboard, who asked Rick the
+question that was always going to become this mechanic: "can we
+help him. sometime. after this." It's after this. She knocks at
+endless week 10:
 
 - **The offer** (ConfirmationDialog, Sunday): hand her the pencil,
   or "not yet" — declining re-offers every 8 weeks. Some questions

@@ -3647,8 +3647,10 @@ func _on_advance_day() -> void:
 		# weeks, so long runs have chapters instead of pure ratchet.
 		_maybe_fire_endless_milestone()
 		# ENDLESS V2 · THE APPRENTICE — Sundays only. The succession
-		# the milestones narrate, mechanized: Aria offers at week 10,
-		# trains at a cost, then takes the small ones off the board.
+		# the milestones narrate, mechanized: Maya Daigle (vol6's
+		# comic-shop kid, "can we help him. sometime. after this")
+		# knocks at week 10, trains at a cost, takes the small ones.
+		# (Not Aria — Aria belongs to the braid. THE ARIA RULE.)
 		if _is_sunday(_day):
 			_apprentice_sunday()
 	# Check Dean interlude unlock conditions.
