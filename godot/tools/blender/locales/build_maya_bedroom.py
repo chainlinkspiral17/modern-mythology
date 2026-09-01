@@ -184,6 +184,30 @@ def build_hero_props():
     make_box("Phone", (0.95, 4.55, 0.585), (0.08, 0.15, 0.012), (0.12, 0.12, 0.14, 1.0))
 
 
+def build_hero_props_2026_09():
+    """HERO PROPS FOR THE BLIND CUES (shot_marker_audit, 2026-09-01).
+
+    Four distinct cues. The floorboard station exists (Loose_Board
+    + Cavity_Void + Manila_Envelope + Rug_Fold — a new SYNONYMS
+    entry floorboards -> board lets the tools see it). Built:
+
+    - THE PHOTOGRAPH (the dock at dusk, 1978, the charcoal suit):
+      a small print lying on the rug beside the pulled-back fold,
+      where it came out of the envelope.
+    - THE HANDS ("Her grandmother's hand on her hand", in the
+      dark): the duvet-crease residue grammar, two creases where
+      they sat.
+    """
+    make_box("Dock_Photograph", (0.30, 3.15, 0.0165), (0.110, 0.160, 0.001),
+             (0.82, 0.80, 0.74, 1.0))
+    make_box("Photograph_Border", (0.30, 3.15, 0.0175), (0.094, 0.144, 0.0005),
+             (0.35, 0.33, 0.30, 1.0))
+    make_box("Hands_Duvet_Crease_A", (0.30, 3.60, 0.566), (0.16, 0.05, 0.012),
+             (0.44, 0.34, 0.52, 1.0))
+    make_box("Hands_Duvet_Crease_B", (0.33, 3.72, 0.565), (0.05, 0.13, 0.010),
+             (0.42, 0.32, 0.50, 1.0))
+
+
 def main():
     clear_scene()
     build_shell()
@@ -195,6 +219,7 @@ def main():
     build_ceiling_infra()
     build_dressing()
     build_hero_props()
+    build_hero_props_2026_09()
     out = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)),
         "../../../assets/3d/locales/maya_bedroom.glb"))
     print(f"\n[build_maya_bedroom] exporting to {out}")
