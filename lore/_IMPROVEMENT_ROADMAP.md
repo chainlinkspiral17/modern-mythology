@@ -93,9 +93,19 @@ at the curb through the sink window), ramos_kitchen_morning
 rebuilds queued for all six builders. LESSONS in the geometry
 playbook (position-format markers are invisible to the tools —
 conversion queued; residue grammar for human-contact cues; shared-
-tscn presets clear in batches). NEXT in the ranking: safehouse
-_bedroom (5) · centro_grocery_aisle (6) · sam_bedroom (4) ·
-school_field_evening (4); cabin_road's 43 and louisiana_road's 18
+tscn presets clear in batches). CONTINUED same day, eleven more
+waves: safehouse, centro, pit stop (+ the diner door and bell),
+kwik stop (+ the NexCorp van), daily grind (+ the tower on the
+hill), houston office, graustark world-shore (the Child / the
+Frog / doohickey / smoke ring), nightmare cell, gas & go (+ the
+Louisiana pickup), sam_bedroom, school field (+ the Vinton bus),
+miller back porch (+ Finn's truck), henderson garage (+ Ben's
+map and truck) → blind 277 → 213, marker_aim 168/168, overlap 0
+regressions. Two deliberate blinds stand as precedent
+(closeup_douglas; the cell window — explicit "no windows" canon).
+NEXT in the ranking: natalie_apartment (4) ·
+bianca_kitchen_morning (4) · the 3-and-under tail;
+cabin_road's 43 and louisiana_road's 18
 are fallback-staging aggregates — a re-homing decision (real
 locales for those scenes), not a prop wave; verify on Deck first.
 

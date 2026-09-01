@@ -196,6 +196,40 @@ marker_reaim, run the suite. Lessons:
   When placing near any tall structure, read its BASE extents
   from the builder, not the audit's center-point dump.
 
+### 2026-09-01 (later) · eleven more waves; the matcher's exact-part rule
+
+The program continued to 213 blind (from 324 at start of day):
+pit_stop_interior, kwik_stop, daily_grind, houston_office,
+graustark world-shore, nightmare_cell, nexcorp_gas_go,
+sam_bedroom, school_field_evening, miller_back_porch,
+henderson_garage. New lessons:
+
+- **matches_for compares name PARTS exactly** (split on `_`);
+  multi-word stems substring the flattened name. `HouseDoor` is
+  ONE part and invisible to the "door" cue (renamed House_Door);
+  `Finn_Toyota_Body` had no "truck" part (renamed Finn_Truck_*).
+  Name every prop so the cue's word is its own `_`-separated
+  token — or add a SYNONYMS entry (steamship→minstral,
+  folding_chair→eileen_chair, drum_kit→kick/snare/hihat shipped
+  today).
+- **reaim's 1.6m cluster centroid can drag an aim sideways.**
+  The kwik stop window marker's cluster swallowed the WinChair
+  backs ("win_" synonym) and yawed the camera 90°. When synonyms
+  are broad and furniture crowds the subject, park the marker
+  close (0.3-0.5m) and, if reaim still fights, hand-set the
+  rotation — the aim audit only checks the NEAREST hit's cone.
+- **Respect explicit negative canon.** The nightmare cell's
+  window cue tempted a dream-window; the builder docstring says
+  "The room has no windows." A cue whose beat happens ELSEWHERE
+  (a memory, another city) stays deliberately blind — VnDirector
+  holds the wide. closeup_douglas and the cell window are the
+  precedents.
+- **human_figure geometry is invisible to the audit stubs** (all
+  53 graustark NPCs record zero objects). A figure placed for a
+  closeup needs audit-visible RESIDUE beside it (the Child's
+  footprints/stick/crawdad hole) or the marker has nothing to aim
+  at in-container.
+
 ### 2026-08-19 · a marker IS a camera; three blindness bugs in one day
 
 - **A vn_shot marker's transform IS the camera pose** (VnDirector
