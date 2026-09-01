@@ -126,6 +126,7 @@ SYNONYMS = {
     "folding_chair": ["eileen_chair", "foldingchair"],
     "drum_kit": ["drumkit", "kick", "snare", "hihat"],
     "floorboards": ["floorboard", "board", "cavity"],
+    "tv": ["bar_tv", "television", "tv_screen"],
     "doohickey": ["doohickey", "onyx"],
 }
 

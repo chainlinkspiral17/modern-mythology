@@ -353,3 +353,15 @@ metadata/fov = 36.0
 position = Vector3(0, 1.55, -4.5)
 rotation = Vector3(0.146012, 0, 0)
 metadata/fov = 44.0
+
+; insert: the game on the bar TV, muted, neon ghosts (Strength)
+[node name="shot_insert_tv" type="Marker3D" parent="." groups=["vn_shot"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.6, 1.7, -4.6)
+rotation = Vector3(0, 0, 0)
+metadata/fov = 42.0
+
+; insert: his hands on the sticky tabletop (Strength)
+[node name="shot_insert_hands" type="Marker3D" parent="." groups=["vn_shot"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.9, 1.15, -0.9)
+rotation = Vector3(-0.5253, 0.8646, 0.0)
+metadata/fov = 42.0

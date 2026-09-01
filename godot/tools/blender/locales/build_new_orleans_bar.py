@@ -159,9 +159,34 @@ def build_hero_props():
                  (0.38, 0.05, 0.48), wood)
 
 
+def build_hero_props_2026_09():
+    """HERO PROPS FOR THE BLIND CUES (shot_marker_audit, 2026-09-01).
+
+    Three distinct cues. Built:
+
+    - THE BAR TV already existed in the 2026-08 hero pass — the
+      cue missed it because "tv" is under the matcher's 3-char
+      stem floor. Fixed with a SYNONYMS entry (tv -> bar_tv,
+      television), no new geometry.
+    - THE HANDS ("His hands rested on the sticky tabletop"):
+      residue grammar — two faint sticky sheen patches on the
+      corner booth's table where hands keep resting.
+
+    The tattoo cue (the ouroboros on Douglas's forearm) is ON A
+    PERSON — no honest anchor exists in the room; it stays
+    deliberately blind and VnDirector holds the wide (the
+    closeup_douglas precedent).
+    """
+    make_box("Hands_Sticky_Patch_A", (-3.30, 1.25, 0.7615), (0.14, 0.11, 0.0015),
+             (0.38, 0.30, 0.22, 1.0))
+    make_box("Hands_Sticky_Patch_B", (-3.52, 1.42, 0.7615), (0.11, 0.13, 0.0015),
+             (0.36, 0.28, 0.21, 1.0))
+
+
 def main():
     clear_scene(); build_shell(); build_bar(); build_jukebox(); build_decor(); build_ceiling_fan(); build_ceiling_infra()
     build_hero_props()
+    build_hero_props_2026_09()
     out = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)), "../../../assets/3d/locales/new_orleans_bar.glb"))
     print(f"\n[build_new_orleans_bar] exporting to {out}")
     export_glb(out)
