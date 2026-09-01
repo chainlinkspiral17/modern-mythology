@@ -312,3 +312,21 @@ offset_top = 360.0
 offset_right = 520.0
 offset_bottom = 980.0
 script = ExtResource("14_dbgm")
+
+; insert: the Karamazov on the floor beside Doug's chair
+[node name="shot_insert_paperback" type="Marker3D" parent="." groups=["vn_shot"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.0, 0.5, -1.55)
+rotation = Vector3(-0.7535, -0.6732, 0.0)
+metadata/fov = 42.0
+
+; insert: the medium horchata, set in front of Doug
+[node name="shot_insert_horchata" type="Marker3D" parent="." groups=["vn_shot"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.7, 1.15, -1.85)
+rotation = Vector3(-0.4807, 0.8564, 0.0)
+metadata/fov = 42.0
+
+; insert: the last of the coffee
+[node name="shot_insert_coffee" type="Marker3D" parent="." groups=["vn_shot"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.6, 1.1, -1.5)
+rotation = Vector3(-0.5930, 0.7854, 0.0)
+metadata/fov = 42.0

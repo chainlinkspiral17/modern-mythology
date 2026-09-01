@@ -165,6 +165,36 @@ def build_hero_props():
         make_box(f"Card_Table_Leg_{li}", (lx, 2.0 + ly, 0.36), (0.03, 0.03, 0.72), (0.40, 0.42, 0.44, 1.0))
 
 
+def build_hero_props_2026_09():
+    """HERO PROPS FOR THE BLIND CUES (shot_marker_audit, 2026-09-01).
+
+    Three distinct cues; Dougs_Chair and his floor thermos exist.
+    Built:
+
+    - THE KARAMAZOV ("Doug closes the Karamazov. He sets it on the
+      floor beside his chair."): the brick of a paperback on the
+      floor by the chair's east side, spine band showing.
+    - THE HORCHATA ("Diego sets the medium horchata on the table
+      in front of Doug"): cream cup + lid + straw at the table's
+      Doug-facing edge.
+    - DOUG'S COFFEE ("He drinks the last of it. He puts the cup
+      down."): the cup on the table — the marker sits close so it
+      wins the coffee cue over the kitchenette pots.
+    """
+    make_box("Karamazov_Paperback", (2.35, 1.95, 0.020), (0.130, 0.190, 0.040),
+             (0.36, 0.28, 0.22, 1.0))
+    make_box("Paperback_Spine_Band", (2.288, 1.95, 0.020), (0.006, 0.190, 0.034),
+             (0.74, 0.62, 0.30, 1.0))
+    make_cyl("Horchata_Cup", (0.32, 2.18, 0.820), 0.042, 0.130,
+             (0.90, 0.86, 0.76, 0.95), segments=10)
+    make_cyl("Horchata_Lid", (0.32, 2.18, 0.895), 0.044, 0.020,
+             (0.86, 0.84, 0.80, 1.0), segments=10)
+    make_cyl("Horchata_Straw", (0.33, 2.17, 0.955), 0.005, 0.100,
+             (0.86, 0.36, 0.30, 1.0), segments=6)
+    make_cyl("Dougs_Coffee_Cup", (0.28, 1.82, 0.795), 0.040, 0.080,
+             (0.82, 0.80, 0.76, 1.0), segments=10)
+
+
 def main():
     clear_scene()
     build_shell()
@@ -176,6 +206,7 @@ def main():
     build_break_decor()
     build_ceiling_infra()
     build_hero_props()
+    build_hero_props_2026_09()
     out = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)),
         "../../../assets/3d/locales/centro_break_room.glb"))
     print(f"\n[build_centro_break_room] exporting to {out}")
