@@ -78,6 +78,15 @@ cd <repo>/godot && $GODOT --headless --import     # once, ~5 min
   host, asserts the saved int arrays are ints again and .has(int)
   matches. Covers Fey Faire shows_attended + Riffrocker
   meetings_attended; add a block per new saved number array.
+- `$GODOT --headless res://tools/qa/EveningLoopSim.tscn` — one
+  driver for the three boot→buttons→over→re-boot sticks: Mrs Wu's
+  evenings, Hane no Niwa's visits, Mister Glass's kitchen. Driver
+  lessons earned here: spawn a FRESH child per loop (re-booting one
+  instance stacks duplicate UI); a GDScript lambda captures locals
+  BY VALUE so the child lives in a member var; press actions
+  LAST-first because modal overlays (Hane's bring menu) are added
+  after the base UI and block it; and mimic host-owned counter
+  steps (glass's evening_n) or progress never registers.
 - `$GODOT --headless res://tools/qa/CPEndlessSim.tscn` — runs
   SEPTEMBER AND AFTER seeded from the campaign save CPSimSweep
   leaves in slot 3: ratcheting spawns, rhythm pools, milestones,
