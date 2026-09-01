@@ -312,3 +312,33 @@ offset_top = 360.0
 offset_right = 520.0
 offset_bottom = 980.0
 script = ExtResource("14_dbgm")
+
+; insert: the black pickup, Louisiana plates, back lot (ch2)
+[node name="shot_insert_pickup" type="Marker3D" parent="." groups=["vn_shot"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.0, 1.6, -0.5)
+rotation = Vector3(-0.6329, -2.2541, 0.0)
+metadata/fov = 42.0
+
+; insert: the manila envelope, not sealed (ch2)
+[node name="shot_insert_envelope" type="Marker3D" parent="." groups=["vn_shot"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.8, 1.5, 0.5)
+rotation = Vector3(-0.3964, -0.9273, 0.0)
+metadata/fov = 42.0
+
+; insert: the phone (ch1/ch2 — Skip's dispatch line stands in)
+[node name="shot_insert_phone" type="Marker3D" parent="." groups=["vn_shot"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.4, 1.2, -6.9)
+rotation = Vector3(-0.4308, -0.7854, 0.0)
+metadata/fov = 42.0
+
+; insert: the thermometer, stuck at 97 (ch1)
+[node name="shot_insert_thermometer" type="Marker3D" parent="." groups=["vn_shot"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.0, 1.6, 0.9)
+rotation = Vector3(0.1084, 2.6071, 0.0)
+metadata/fov = 42.0
+
+; insert: PENDING — R (ch1)
+[node name="shot_insert_folder" type="Marker3D" parent="." groups=["vn_shot"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.6, 1.15, -6.8)
+rotation = Vector3(-0.4691, -0.5381, 0.0)
+metadata/fov = 42.0

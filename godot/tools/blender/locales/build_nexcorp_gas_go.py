@@ -466,6 +466,53 @@ def export_glb():
         print(f"[build_nexcorp_gas_go] ✓ wrote {out_path} ({os.path.getsize(out_path)} bytes)")
 
 
+def build_hero_props_2026_09():
+    """HERO PROPS FOR THE BLIND CUES (shot_marker_audit, 2026-09-01).
+
+    Five distinct cues; the phone cue aims at the existing
+    Office_Phone (Skip's dispatch line). Built:
+
+    - THE BLACK PICKUP ("a black pickup truck with Louisiana
+      plates ... pulls around to the lot behind the car wash,
+      which is ... not visible from the street or from the
+      counter window"): on a back-lot pad north-east of the
+      building — body, cab, tailgate, Louisiana plate, four
+      wheels.
+    - THE ENVELOPE ("a small manila envelope ... not sealed"):
+      flat in the pickup's bed — the hand-off's residue.
+    - THE THERMOMETER (stuck at 97 for three summers): a round
+      dial + needle on the nearest canopy post.
+    - THE FOLDER ("a folder on his workstation labeled
+      PENDING — R"): manila folder + tab on the office desk.
+    """
+    black = (0.10, 0.10, 0.11, 1.0)
+    manila = (0.82, 0.72, 0.50, 1.0)
+    # ── THE BLACK PICKUP · back lot, NE of the building ──
+    make_box("Backlot_Pad", (8.6, 1.5, -0.03), (4.5, 7.0, 0.05),
+             (0.40, 0.40, 0.41, 1.0))
+    make_box("Pickup_Body", (8.6, 1.6, 0.78), (1.90, 4.60, 0.60), black)
+    make_box("Pickup_Cab", (8.6, 2.35, 1.38), (1.75, 1.55, 0.60),
+             (0.13, 0.13, 0.15, 1.0))
+    make_box("Pickup_Tailgate", (8.6, -0.73, 0.83), (1.80, 0.06, 0.55), black)
+    make_box("Louisiana_Plate", (8.6, -0.767, 0.62), (0.30, 0.008, 0.15),
+             (0.86, 0.84, 0.76, 1.0))
+    for wi, (wx2, wy2) in enumerate(((7.525, 2.6), (9.675, 2.6),
+                                     (7.525, 0.0), (9.675, 0.0))):
+        make_cyl(f"Pickup_Wheel_{wi}", (wx2, wy2, 0.36), 0.36, 0.25,
+                 (0.16, 0.16, 0.17, 1.0), axis='X', segments=10)
+    # ── THE ENVELOPE · flat in the bed ──
+    make_box("Manila_Envelope", (8.6, 0.10, 1.0815), (0.24, 0.16, 0.003), manila)
+    # ── THE THERMOMETER · on the SW canopy post ──
+    make_cyl("Lot_Thermometer", (-3.5, -1.78, 1.70), 0.09, 0.030,
+             (0.92, 0.90, 0.85, 1.0), axis='Y', segments=10)
+    make_box("Thermometer_Needle_97", (-3.53, -1.760, 1.72), (0.050, 0.006, 0.008),
+             (0.80, 0.22, 0.18, 1.0))
+    # ── THE FOLDER · PENDING — R, on the office desk (top 0.76) ──
+    make_box("Pending_Folder", (4.05, 7.35, 0.766), (0.24, 0.32, 0.010), manila)
+    make_box("Pending_Folder_Tab", (3.92, 7.54, 0.7725), (0.060, 0.090, 0.003),
+             (0.76, 0.64, 0.42, 1.0))
+
+
 def main():
     clear_scene()
     build_shell()
@@ -474,6 +521,7 @@ def main():
     build_office()
     build_floor_props()
     build_pump_canopy()
+    build_hero_props_2026_09()
     export_glb()
 
 
