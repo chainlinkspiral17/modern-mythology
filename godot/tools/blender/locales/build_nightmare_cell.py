@@ -167,6 +167,25 @@ def build_hero_props():
     make_box("Sandwich", (0.35, 0.32, 0.035), (0.12, 0.09, 0.04), (0.80, 0.68, 0.46, 1.0))
 
 
+def build_hero_props_2026_09():
+    """HERO PROPS FOR THE BLIND CUES (shot_marker_audit, 2026-09-01).
+
+    Four distinct cues; the wall device and May calendar exist —
+    markers only. Built:
+
+    - THE BULB ("The bulb hums."): the cell's light is the caged
+      fluorescent, so the bulb cue anchors on an honest glow
+      element — a warm translucent strip under the tubes, inside
+      the cage. No second lamp; the hum has a face now.
+    The window cue ("heard a knock at his window") is a MEMORY of
+    Diego's bedroom, and the canon is explicit — "The room has no
+    windows." — so that cue stays deliberately blind and
+    VnDirector holds the wide.
+    """
+    make_box("Bulb_Glow", (0.0, ROOM_D / 2.0, CEIL - 0.185), (0.16, 1.00, 0.010),
+             (0.96, 0.92, 0.78, 0.7))
+
+
 def main():
     clear_scene()
     build_shell()
@@ -175,6 +194,7 @@ def main():
     build_cot()
     build_red_dots()
     build_hero_props()
+    build_hero_props_2026_09()
     out = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)),
         "../../../assets/3d/locales/nightmare_cell.glb"))
     print(f"\n[build_nightmare_cell] exporting to {out}")

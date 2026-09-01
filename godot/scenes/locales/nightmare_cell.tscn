@@ -299,3 +299,21 @@ offset_top = 360.0
 offset_right = 520.0
 offset_bottom = 980.0
 script = ExtResource("14_dbgm")
+
+; insert: the thing in the wall — it pulses once (ch9)
+[node name="shot_insert_device" type="Marker3D" parent="." groups=["vn_shot"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.85, 2.2, -0.85)
+rotation = Vector3(0.3767, -2.5411, 0.0)
+metadata/fov = 42.0
+
+; insert: the bulb hums (ch9)
+[node name="shot_insert_bulb" type="Marker3D" parent="." groups=["vn_shot"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0, 2.4, -1.4)
+rotation = Vector3(0.8612, -0.0000, 0.0)
+metadata/fov = 42.0
+
+; insert: Boyd's calendar — May, eleven red dots (ch9)
+[node name="shot_insert_calendar" type="Marker3D" parent="." groups=["vn_shot"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.35, 1.15, -1.55)
+rotation = Vector3(-0.5859, 0.6107, 0.0)
+metadata/fov = 42.0
