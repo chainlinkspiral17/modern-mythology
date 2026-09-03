@@ -187,6 +187,56 @@ def build_hero_props():
                  [(0.72, 0.30, 0.22, 1.0), (0.30, 0.40, 0.52, 1.0), (0.86, 0.82, 0.74, 1.0)][mi], segments=10)
 
 
+def build_hero_props_2026_09():
+    """HERO PROPS FOR THE BLIND CUES (shot_marker_audit, 2026-09-01).
+
+    Seven distinct cues; pot (the pot roast), coffee (the pots on
+    the counter) and door (the basement door) already have
+    geometry — markers only. Built, on a table that is already
+    set for four:
+
+    - THE CONTACT PRINTS ("a small set of black-and-white
+      photographs — the contact prints from this week's
+      photography class"): a strip of six frames at the
+      north-west corner.
+    - THE LYRIC SHEET ("Jim has, on the table in front of him, a
+      sheet of paper. Jesse ... recognizes the sheet of paper."):
+      at the north-east corner beside the pot-roast lid.
+    - THE NOTEBOOK (the bridge lyrics, in Jesse's kid's-hand):
+      the small spiral at the south-west corner.
+    - THE GUITAR: the Telecaster on its stand by the stairs — he
+      carries it down to the kitchen doorway in the bridge
+      chapters.
+    """
+    T = 0.76
+    # ── THE CONTACT PRINTS · table NW corner ──
+    make_box("Contact_Prints_Sheet", (-0.42, 3.05, T + 0.001), (0.20, 0.13, 0.002),
+             (0.90, 0.88, 0.84, 1.0))
+    for fi2 in range(6):
+        make_box(f"Contact_Print_{fi2}", (-0.49 + (fi2 % 3) * 0.062, 3.02 + (fi2 // 3) * 0.06, T + 0.0025),
+                 (0.050, 0.045, 0.001), (0.22, 0.22, 0.24, 1.0))
+    # ── THE LYRIC SHEET · table NE corner ──
+    make_box("Lyric_Sheet", (0.47, 3.05, T + 0.001), (0.15, 0.20, 0.002),
+             (0.94, 0.93, 0.88, 1.0))
+    make_box("Lyric_Sheet_Lines", (0.47, 3.08, T + 0.0025), (0.10, 0.10, 0.001),
+             (0.40, 0.40, 0.44, 1.0))
+    # ── THE NOTEBOOK · table SW corner ──
+    make_box("Bridge_Notebook", (-0.45, 2.45, T + 0.006), (0.110, 0.150, 0.012),
+             (0.30, 0.44, 0.58, 1.0))
+    make_box("Bridge_Notebook_Wire", (-0.511, 2.45, T + 0.007), (0.010, 0.150, 0.014),
+             (0.55, 0.56, 0.58, 1.0))
+    # ── THE GUITAR · Telecaster on its stand by the stairs ──
+    gx, gy = 2.45, 0.45
+    make_box("Guitar_Body", (gx, gy, 0.42), (0.32, 0.06, 0.40), (0.72, 0.60, 0.34, 1.0))
+    make_box("Guitar_Guard", (gx - 0.05, gy - 0.032, 0.40), (0.16, 0.004, 0.22), (0.12, 0.12, 0.12, 1.0))
+    make_box("Guitar_Neck", (gx + 0.02, gy, 0.895), (0.05, 0.04, 0.55), (0.62, 0.50, 0.32, 1.0))
+    make_box("Guitar_Head", (gx + 0.02, gy, 1.25), (0.07, 0.04, 0.16), (0.72, 0.60, 0.34, 1.0))
+    for sgn in (-1, 1):
+        make_box(f"Guitar_Stand_Leg_{'W' if sgn < 0 else 'E'}", (gx + sgn * 0.12, gy - 0.10, 0.15),
+                 (0.03, 0.03, 0.30), (0.20, 0.20, 0.22, 1.0))
+    make_box("Guitar_Stand_Foot", (gx, gy - 0.10, 0.015), (0.30, 0.06, 0.03), (0.20, 0.20, 0.22, 1.0))
+
+
 def main():
     clear_scene()
     build_shell()
@@ -197,6 +247,7 @@ def main():
     build_clock()
     build_fridge()
     build_ceiling_infra()
+    build_hero_props_2026_09()
     out = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)),
         "../../../assets/3d/locales/henderson_kitchen.glb"))
     print(f"\n[build_henderson_kitchen] exporting to {out}")

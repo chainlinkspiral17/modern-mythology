@@ -337,3 +337,45 @@ metadata/fov = 42.0
 position = Vector3(0, 1.35, -1.5)
 rotation = Vector3(-0.411631, 0.345556, 0)
 metadata/fov = 42.0
+
+; insert: the Telecaster on its stand by the stairs
+[node name="shot_insert_guitar" type="Marker3D" parent="." groups=["vn_shot"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.95, 0.9, -1.0)
+rotation = Vector3(-0.5062, -2.4461, 0.0)
+metadata/fov = 42.0
+
+; insert: the small spiral notebook, the bridge lyrics
+[node name="shot_insert_notebook" type="Marker3D" parent="." groups=["vn_shot"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.85, 1.1, -2.05)
+rotation = Vector3(-0.5495, -0.7458, 0.0)
+metadata/fov = 42.0
+
+; insert: the contact prints from this week's class
+[node name="shot_insert_prints" type="Marker3D" parent="." groups=["vn_shot"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.8, 1.1, -2.65)
+rotation = Vector3(-0.5531, -0.7507, 0.0)
+metadata/fov = 42.0
+
+; insert: the pot (Eileen's pot roast)
+[node name="shot_insert_pot" type="Marker3D" parent="." groups=["vn_shot"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.3, 1.25, -2.55)
+rotation = Vector3(-0.5748, 0.6202, 0.0)
+metadata/fov = 42.0
+
+; insert: the sheet of paper Jesse recognizes
+[node name="shot_insert_lyric_sheet" type="Marker3D" parent="." groups=["vn_shot"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.8, 1.1, -2.65)
+rotation = Vector3(-0.5679, 0.6718, 0.0)
+metadata/fov = 42.0
+
+; insert: the coffee on the counter
+[node name="shot_insert_coffee" type="Marker3D" parent="." groups=["vn_shot"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.2, 1.4, -3.55)
+rotation = Vector3(-0.5009, 0.4213, 0.0)
+metadata/fov = 42.0
+
+; insert: the door (the basement door, cracked the small specific way)
+[node name="shot_insert_door" type="Marker3D" parent="." groups=["vn_shot"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.6, 1.3, -1.95)
+rotation = Vector3(-0.3535, -2.1137, 0.0)
+metadata/fov = 42.0

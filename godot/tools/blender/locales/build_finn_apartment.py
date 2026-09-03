@@ -1,5 +1,5 @@
 """finn_apartment — vol5-7 locale (auto-generated placement script)."""
-import os, sys
+import os, sys, math
 _BT = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)), ".."))
 if _BT not in sys.path: sys.path.insert(0, _BT)
 from _props import palette as P
@@ -172,6 +172,51 @@ def build_crow_2026_08():
     make_crow("Crow", 1.55, 0.30, 1.07, facing=1.0)
 
 
+def build_hero_props_2026_09():
+    """HERO PROPS FOR THE BLIND CUES (shot_marker_audit, 2026-09-01).
+
+    Six distinct cues, none with geometry. Built:
+
+    - THE HEXAGON (ch12_morning: "He laid the eighth piece into the
+      hole. It fit." / the crow on the cloth between the ARIA piece
+      and the hole): a smaller cloth + ring + face + ARIA piece at
+      the kitchen table's west end, beside the charred-wood cloth.
+    - THE STICK in its waxed-paper sleeve at the table's east end —
+      where the crow stood on the sleeve.
+    - THE READER ("the compact one he had bought from Cale in '49")
+      + its headset on the bedroom nightstand.
+    - FINN'S PHONE and FINN'S NOTEBOOK on the desk, and the thumb-
+      sized CARVED CEDAR beside the lamp.
+    """
+    cedar = (0.55, 0.38, 0.26, 1.0)
+    cedar_dk = (0.44, 0.30, 0.20, 1.0)
+    T = 0.765
+    # ── THE HEXAGON · kitchen table west end ──
+    hx, hy = -0.40, 1.60
+    make_box("Hexagon_Cloth", (hx, hy, T + 0.002), (0.30, 0.28, 0.004), (0.78, 0.74, 0.64, 1.0))
+    for hi in range(6):
+        ang = math.pi / 3.0 * hi + math.pi / 6.0
+        make_box(f"Hexagon_Ring_{hi}", (hx + 0.095 * math.cos(ang), hy + 0.095 * math.sin(ang), T + 0.013),
+                 (0.065, 0.065, 0.018), cedar)
+    make_cyl("Hexagon_Center_Face", (hx, hy, T + 0.012), 0.040, 0.016, cedar_dk, segments=12)
+    make_cyl("Hexagon_Face_Inlay", (hx, hy, T + 0.0215), 0.022, 0.003, (0.62, 0.46, 0.32, 1.0), segments=10)
+    make_box("Hexagon_Aria_Piece", (-0.285, 1.49, T + 0.014), (0.060, 0.045, 0.020), cedar)
+    # ── THE STICK · table east end ──
+    make_box("Stick_Sleeve", (0.40, 1.60, T + 0.010), (0.26, 0.09, 0.020), (0.88, 0.84, 0.72, 1.0))
+    make_box("Stick_Label", (0.40, 1.60, T + 0.021), (0.10, 0.05, 0.002), (0.96, 0.95, 0.92, 1.0))
+    # ── THE READER + HEADSET · nightstand (top 0.56) ──
+    make_box("Reader", (0.575, 3.775, 0.571), (0.100, 0.150, 0.020), (0.22, 0.22, 0.25, 1.0))
+    make_box("Reader_Screen", (0.575, 3.775, 0.5825), (0.080, 0.110, 0.002), (0.30, 0.38, 0.46, 1.0))
+    for ci2, cx2 in enumerate((0.545, 0.615)):
+        make_cyl(f"Headset_Cup_{ci2}", (cx2, 3.50, 0.575), 0.030, 0.030, (0.18, 0.18, 0.20, 1.0), segments=8)
+    make_box("Headset_Band", (0.58, 3.50, 0.596), (0.10, 0.012, 0.012), (0.24, 0.24, 0.26, 1.0))
+    # ── FINN'S PHONE + NOTEBOOK + THE CARVED CEDAR · desk (top 0.76) ──
+    make_box("Finns_Phone", (1.05, 1.32, 0.7655), (0.070, 0.140, 0.011), (0.13, 0.13, 0.15, 1.0))
+    make_box("Finns_Notebook", (0.95, 1.55, 0.766), (0.150, 0.200, 0.012), (0.36, 0.30, 0.24, 1.0))
+    make_box("Finns_Notebook_Wire", (0.869, 1.55, 0.767), (0.010, 0.200, 0.014), (0.55, 0.56, 0.58, 1.0))
+    make_box("Carved_Cedar", (1.15, 1.70, 0.785), (0.030, 0.020, 0.050), (0.52, 0.34, 0.22, 1.0))
+
+
 def main():
     clear_scene()
     build_shell()
@@ -184,6 +229,7 @@ def main():
     build_hero_props()
     build_detail_pass_2026_08()
     build_crow_2026_08()
+    build_hero_props_2026_09()
     out = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)),
         "../../../assets/3d/locales/finn_apartment.glb"))
     print(f"\n[build_finn_apartment] exporting to {out}")
