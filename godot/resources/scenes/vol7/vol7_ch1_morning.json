@@ -7,7 +7,7 @@
   "nodes": [
     {
       "t": "bg",
-      "src": "3d:cabin_interior"
+      "src": "3d:cabin_interior_bed"
     },
     {
       "t": "hide",
@@ -50,6 +50,10 @@
     {
       "t": "narrate",
       "text": "She lay on her side and watched the cedars and let the cold of the room arrive at her face by degrees. The wood stove in the main room had banked for the night. The cabin held maybe fifty-five degrees by the thermometer that had been on the wall above the door since Tem's grandfather had nailed it there in 1979. The wool blanket was Pendleton, a pattern she had come to associate with the cabin, woven by a mill in Washougal that had closed in 2046 and that the cabin had three blankets from. The blanket smelled like the cabin. The cabin smelled like cedar smoke and kerosene and the rosemary Tem had been burning in a clay dish on the windowsill since Saturday for reasons Tem had not explained."
+    },
+    {
+      "t": "bg",
+      "src": "3d:cabin_interior"
     },
     {
       "t": "narrate",

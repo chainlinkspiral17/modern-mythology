@@ -1,0 +1,497 @@
+[gd_scene load_steps=24 format=3 uid="uid://bed_cabin_interior_locale"]
+
+[ext_resource type="PackedScene" path="res://assets/3d/locales/cabin_interior.glb" id="1_glb"]
+[ext_resource type="Script" path="res://scripts/DebugHUD.gd" id="3_hud"]
+[ext_resource type="Shader" path="res://assets/shaders/demoscene_post.gdshader" id="4_post"]
+[ext_resource type="Script" path="res://scripts/MoodCycler.gd" id="5_mood"]
+[ext_resource type="Shader" path="res://assets/shaders/ascii_render.gdshader" id="6_ascii"]
+[ext_resource type="Shader" path="res://assets/shaders/neon_edge.gdshader" id="7_neon"]
+[ext_resource type="Shader" path="res://assets/shaders/ascii_directional.gdshader" id="8_dir"]
+[ext_resource type="Shader" path="res://assets/shaders/starscape.gdshader" id="9_star"]
+[ext_resource type="Shader" path="res://assets/shaders/motion_ascii.gdshader" id="10_motion"]
+[ext_resource type="Shader" path="res://assets/shaders/gauss_blur.gdshader" id="11_blur"]
+[ext_resource type="Shader" path="res://assets/shaders/old_film.gdshader" id="12_oldfilm"]
+[ext_resource type="Script" path="res://scripts/PDRiffrocker.gd" id="13_riff"]
+[ext_resource type="Script" path="res://scripts/DebugMenu.gd" id="14_dbgm"]
+[ext_resource type="Shader" path="res://assets/shaders/liminal_proximity.gdshader" id="15_lim"]
+[ext_resource type="Script" path="res://scripts/LiminalProximityController.gd" id="16_limc"]
+
+[sub_resource type="ShaderMaterial" id="Mat_Post"]
+shader = ExtResource("4_post")
+shader_parameter/palette_size = 14.0
+shader_parameter/dither_strength = 0.10
+shader_parameter/scanline_strength = 0.18
+shader_parameter/chromatic_aberration = 0.0008
+shader_parameter/ascii_strength = 0.0
+shader_parameter/ascii_color = Color(0.96, 0.62, 0.28, 1)
+shader_parameter/ascii_bg = Color(0.10, 0.06, 0.04, 1)
+
+[sub_resource type="ShaderMaterial" id="Mat_Ascii"]
+shader = ExtResource("6_ascii")
+shader_parameter/cell_size = 10.0
+shader_parameter/strength = 0.0
+shader_parameter/fg_color = Color(0.96, 0.62, 0.28, 1)
+shader_parameter/bg_color = Color(0.10, 0.06, 0.04, 1)
+shader_parameter/tint_from_scene = true
+shader_parameter/gamma = 0.85
+
+[sub_resource type="ShaderMaterial" id="Mat_Neon"]
+shader = ExtResource("7_neon")
+shader_parameter/strength = 0.0
+shader_parameter/edge_threshold = 0.10
+shader_parameter/edge_thickness = 1.6
+shader_parameter/edge_color = Color(0.96, 0.42, 0.20, 1)
+shader_parameter/fill_low = Color(0.42, 0.20, 0.12, 1)
+shader_parameter/fill_high = Color(0.10, 0.06, 0.04, 1)
+shader_parameter/fill_gradient = 1.0
+shader_parameter/edge_glow = 0.4
+shader_parameter/scene_blend = 0.0
+shader_parameter/bleed_lo = 0.78
+shader_parameter/bleed_hi = 0.96
+shader_parameter/sat_bleed = false
+shader_parameter/sat_lo = 0.40
+shader_parameter/sat_hi = 0.60
+shader_parameter/red_only = false
+shader_parameter/accent_r = 1.0
+shader_parameter/accent_g = 0.0
+shader_parameter/accent_b = 0.0
+shader_parameter/blend_mode = 0
+
+[sub_resource type="ShaderMaterial" id="Mat_DirAscii"]
+shader = ExtResource("8_dir")
+shader_parameter/strength = 0.0
+shader_parameter/cell_size = 10.0
+shader_parameter/edge_threshold = 0.10
+shader_parameter/line_color = Color(0.96, 0.42, 0.20, 1)
+shader_parameter/fill_color = Color(0.02, 0.02, 0.03, 1)
+shader_parameter/tint_from_scene = false
+shader_parameter/input_scale = 1.0
+shader_parameter/mono_with_red = false
+shader_parameter/mono_white = Color(0.96, 0.62, 0.28, 1)
+shader_parameter/mono_red = Color(0.96, 0.42, 0.20, 1)
+shader_parameter/red_threshold = 0.20
+
+[sub_resource type="ShaderMaterial" id="Mat_Starscape"]
+shader = ExtResource("9_star")
+shader_parameter/strength = 0.0
+shader_parameter/cell_size = 10.0
+shader_parameter/time_scale = 0.40
+shader_parameter/sky_thresh = 0.10
+shader_parameter/star_white = Color(0.96, 0.62, 0.28, 1)
+shader_parameter/galaxy_col = Color(0.78, 0.82, 0.95, 1)
+shader_parameter/chip_col = Color(0.62, 0.78, 0.88, 1)
+shader_parameter/galaxy_strength = 0.6
+shader_parameter/star_strength = 0.85
+shader_parameter/chip_strength = 0.45
+shader_parameter/cloud_edge_col = Color(0.62, 0.70, 0.82, 1)
+shader_parameter/cloud_core_col = Color(0.85, 0.88, 0.95, 1)
+shader_parameter/cloud_strength = 0.0
+shader_parameter/cloud_scale = 0.012
+shader_parameter/cloud_floor = 0.55
+shader_parameter/force_full = false
+
+[sub_resource type="ShaderMaterial" id="Mat_Motion"]
+shader = ExtResource("10_motion")
+shader_parameter/strength = 0.0
+shader_parameter/motion_speed = 0.0
+shader_parameter/motion_dir = Vector2(1, 0)
+shader_parameter/cell_size = 9.0
+shader_parameter/line_color = Color(0.96, 0.62, 0.28, 1)
+shader_parameter/trail_strength = 0.6
+shader_parameter/line_density = 0.85
+
+[sub_resource type="ShaderMaterial" id="Mat_Blur"]
+shader = ExtResource("11_blur")
+shader_parameter/strength = 0.0
+shader_parameter/blur_mode = 0
+shader_parameter/radius = 4.0
+shader_parameter/motion_dir = Vector2(1, 0)
+
+[sub_resource type="ShaderMaterial" id="Mat_OldFilm"]
+shader = ExtResource("12_oldfilm")
+shader_parameter/strength = 0.0
+shader_parameter/sim_fps = 18.0
+shader_parameter/tint_color = Color(0.96, 0.62, 0.28, 1)
+shader_parameter/tint_amount = 0.55
+shader_parameter/grain_strength = 0.18
+shader_parameter/flicker_strength = 0.20
+shader_parameter/vignette_strength = 0.55
+shader_parameter/scratch_strength = 0.10
+shader_parameter/judder_strength = 0.0
+
+[sub_resource type="ShaderMaterial" id="Mat_Liminal"]
+shader = ExtResource("15_lim")
+shader_parameter/strength = 0.0
+shader_parameter/edge_ca = 0.012
+shader_parameter/wobble_amp = 0.0018
+shader_parameter/wobble_freq = 0.85
+shader_parameter/tint_amount = 0.18
+shader_parameter/tint_color = Color(0.96, 0.62, 0.28, 1)
+
+[sub_resource type="Environment" id="Env_Locale"]
+background_mode = 1
+background_color = Color(0.10, 0.06, 0.04, 1)
+ambient_light_source = 2
+ambient_light_color = Color(0.62, 0.42, 0.28, 1)
+ambient_light_energy = 0.55
+fog_enabled = true
+fog_light_color = Color(0.42, 0.28, 0.20, 1)
+fog_light_energy = 0.5
+fog_density = 0.007
+adjustment_enabled = true
+adjustment_brightness = 1.0
+adjustment_contrast = 1.1
+adjustment_saturation = 0.94
+glow_enabled = true
+glow_intensity = 0.75
+glow_bloom = 0.16
+glow_blend_mode = 1
+glow_hdr_threshold = 0.95
+glow_hdr_scale = 2.4
+
+[node name="CabinInterior" type="Node3D"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Env_Locale")
+
+[node name="Key" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6, 0)
+light_color = Color(0.96, 0.62, 0.28, 1)
+light_energy = 0.5
+shadow_enabled = false
+
+[node name="Fill" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.707, -0.354, -0.612, 0, 0.866, -0.5, 0.707, -0.354, -0.612, -3, 4, 0)
+light_color = Color(0.96, 0.62, 0.28, 1)
+light_energy = 0.35
+shadow_enabled = false
+
+[node name="Back" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.707, -0.5, 0.5, 0, 0.707, 0.707, -0.707, -0.5, 0.5, 0, 4, 5)
+light_color = Color(0.32, 0.42, 0.62, 1)
+light_energy = 0.25
+shadow_enabled = false
+
+; ── vn_shot wave 2 (2026-08) · cued objects that exist ─────────
+; Crow outside the kitchen window: blender (-1.6, 6.30, 1.06) →
+; godot (-1.6, 1.06, -6.30). Camera inside, looking out through
+; the glass — the pane is part of the shot.
+[node name="shot_insert_crow" type="Marker3D" parent="." groups=["vn_shot"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.6, 1.18, -5.10)
+rotation = Vector3(-0.0224, -0.0000, 0.0)
+
+; Desk notebook: blender (1.72, 0.52, 0.775) → godot (1.72, 0.775, -0.52).
+[node name="shot_insert_notebook" type="Marker3D" parent="." groups=["vn_shot"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.72, 1.22, -1.08)
+rotation = Vector3(-0.6715, -3.1416, 0.0)
+
+; The stove door's ember glow: blender (2.3-0.35, 5.4, 0.5) →
+; godot (1.95, 0.5, -5.4). Low camera, level with the door.
+[node name="shot_insert_charred_wood" type="Marker3D" parent="." groups=["vn_shot"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.35, 0.56, -5.32)
+rotation = Vector3(0.02, -1.42, 0.0)
+
+; The big table: blender (0.0, 2.9, 0.76) → godot (0, 0.76, -2.9).
+[node name="shot_insert_table" type="Marker3D" parent="." groups=["vn_shot"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.55, 1.35, -2.05)
+rotation = Vector3(-0.50, 0.42, 0.0)
+
+; The cedar chest: blender (2.55, 3.55, 0.26) → godot (2.55, 0.26, -3.55).
+[node name="shot_insert_cedar" type="Marker3D" parent="." groups=["vn_shot"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.85, 0.82, -2.95)
+rotation = Vector3(-0.4252, -0.8622, 0.0)
+
+[node name="Interior" parent="." instance=ExtResource("1_glb")]
+
+[node name="PostProcess" type="CanvasLayer" parent="."]
+layer = 50
+script = ExtResource("5_mood")
+mood_strata = Array[String](["raw", "noir", "ink_blue", "sodium_streetlamp", "candlelight", "memory_warm"])
+default_style_pack = "kitchen_clean"
+
+[node name="NeonQuad" type="ColorRect" parent="PostProcess"]
+material = SubResource("Mat_Neon")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+
+[node name="BB_Before_DirAsciiQuad" type="BackBufferCopy" parent="PostProcess"]
+copy_mode = 2
+
+[node name="DirAsciiQuad" type="ColorRect" parent="PostProcess"]
+material = SubResource("Mat_DirAscii")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+
+[node name="BB_Before_AsciiQuad" type="BackBufferCopy" parent="PostProcess"]
+copy_mode = 2
+
+[node name="AsciiQuad" type="ColorRect" parent="PostProcess"]
+material = SubResource("Mat_Ascii")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+
+[node name="BB_Before_StarscapeQuad" type="BackBufferCopy" parent="PostProcess"]
+copy_mode = 2
+
+[node name="StarscapeQuad" type="ColorRect" parent="PostProcess"]
+material = SubResource("Mat_Starscape")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+
+[node name="BB_Before_MotionQuad" type="BackBufferCopy" parent="PostProcess"]
+copy_mode = 2
+
+[node name="MotionQuad" type="ColorRect" parent="PostProcess"]
+material = SubResource("Mat_Motion")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+
+[node name="BB_Before_BlurQuad" type="BackBufferCopy" parent="PostProcess"]
+copy_mode = 2
+
+[node name="BlurQuad" type="ColorRect" parent="PostProcess"]
+material = SubResource("Mat_Blur")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+
+[node name="BB_Before_Quad" type="BackBufferCopy" parent="PostProcess"]
+copy_mode = 2
+
+[node name="Quad" type="ColorRect" parent="PostProcess"]
+material = SubResource("Mat_Post")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+
+[node name="BB_Before_OldFilmQuad" type="BackBufferCopy" parent="PostProcess"]
+copy_mode = 2
+
+[node name="OldFilmQuad" type="ColorRect" parent="PostProcess"]
+material = SubResource("Mat_OldFilm")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+
+[node name="BB_Before_LiminalQuad" type="BackBufferCopy" parent="PostProcess"]
+copy_mode = 2
+
+[node name="LiminalQuad" type="ColorRect" parent="PostProcess"]
+material = SubResource("Mat_Liminal")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+
+[node name="LiminalProximityController" type="Node3D" parent="."]
+script = ExtResource("16_limc")
+post_process_path = NodePath("../PostProcess")
+location_json = ""
+
+[node name="PDRiffrocker" type="Node" parent="."]
+script = ExtResource("13_riff")
+
+; ── vn_shot coverage (2026-08-04 directing pass) ────────
+; rotation B: from the kitchen corner looking back at the door and daybed — the reverse for doorway beats
+[node name="shot_establish_b" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(-2.2, 1.55, -4.9)
+rotation = Vector3(-0.0850194, -2.71183, 0)
+metadata/fov = 56.0
+
+; rotation C: low past the daybed, across at the bed and basin — the morning axis
+[node name="shot_establish_c" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(-2.5, 1.1, -2.4)
+rotation = Vector3(-0.0645797, -1.7005, 0)
+metadata/fov = 52.0
+
+; insert: the phone table
+[node name="shot_insert_phone" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(-1.8, 1.2, -4.7)
+rotation = Vector3(-0.422854, 0.927295, 0)
+metadata/fov = 36.0
+
+; insert: the cedar chest
+[node name="shot_insert_chest" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(1.6, 1, -2.7)
+rotation = Vector3(-0.393564, -0.844154, 0)
+metadata/fov = 38.0
+
+; ── (2026-08-12) markers the SCRIPTS ALREADY CUE ───────────────
+; Census of the 46 vol7 chapters on this bg: [shot:insert bowls]
+; fires 13x and [shot:insert bowl] 8x — the volume's central image —
+; with no marker to land on, so every one of them zoom-punched into
+; a blank wall ("mostly just solid color scenes"). Olaf's two bowls
+; now exist in the builder at blender (±0.22, 2.84, table top 0.785)
+; → godot (±0.22, 0.785, -2.84).
+[node name="shot_insert_bowls" type="Marker3D" parent="." groups=["vn_shot"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0, 1.06, -2.06)
+rotation = Vector3(-0.52, 0.0, 0.0)
+
+; The single bowl — closer, off-axis, so "insert bowl" is not the
+; same frame as "insert bowls".
+[node name="shot_insert_bowl" type="Marker3D" parent="." groups=["vn_shot"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.30, 1.00, -2.30)
+rotation = Vector3(-0.60, -0.30, 0.0)
+
+; [shot:insert coffee] (3x) — the stove-side table where the pot sits
+[node name="shot_insert_coffee" type="Marker3D" parent="." groups=["vn_shot"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.60, 0.94, -4.30)
+rotation = Vector3(-0.0374, 2.3463, 0.0)
+
+; [shot:insert door] (4x) — the south door + its iron latch
+[node name="shot_insert_door" type="Marker3D" parent="." groups=["vn_shot"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.10, 1.20, -1.10)
+rotation = Vector3(-0.1599, -3.0633, 0.0)
+
+; [shot:insert window] — the kitchen window over the basin (north)
+[node name="shot_insert_window" type="Marker3D" parent="." groups=["vn_shot"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.90, 1.30, -1.45)
+rotation = Vector3(0.40, -1.5708, 0.0)
+metadata/fov = 42.0
+
+[node name="HUD" type="CanvasLayer" parent="." groups=["ui"]]
+layer = 100
+
+[node name="DebugLabel" type="Label" parent="HUD"]
+offset_left = 16.0
+offset_top = 16.0
+offset_right = 600.0
+offset_bottom = 200.0
+script = ExtResource("3_hud")
+
+[node name="DebugMenu" type="VBoxContainer" parent="HUD"]
+offset_left = 16.0
+offset_top = 360.0
+offset_right = 520.0
+offset_bottom = 980.0
+script = ExtResource("14_dbgm")
+
+[node name="Fluor0_Practical" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0, 2.6, -1.8)
+light_color = Color(0.86, 0.92, 0.88, 1)
+light_energy = 1.2
+shadow_enabled = false
+omni_range = 4.5
+
+[node name="Fluor1_Practical" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0, 2.6, -4.2)
+light_color = Color(0.86, 0.92, 0.88, 1)
+light_energy = 1.2
+shadow_enabled = false
+omni_range = 4.5
+
+; ── 2026-09-01 hero-prop wave · fifteen blind cues ──────────────
+; insert: Finn's grandfather's Toyota at the turnaround (west south window)
+[node name="shot_insert_truck" type="Marker3D" parent="." groups=["vn_shot"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.0, 1.5, -1.0)
+rotation = Vector3(-0.2467, 3.0552, 0.0)
+metadata/fov = 42.0
+
+; insert: the wagon came up the road at nine fifty-two (east south window)
+[node name="shot_insert_wagon" type="Marker3D" parent="." groups=["vn_shot"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.0, 1.5, -1.0)
+rotation = Vector3(-0.4543, -3.1416, 0.0)
+metadata/fov = 42.0
+
+; insert: the package on the table
+[node name="shot_insert_package" type="Marker3D" parent="." groups=["vn_shot"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.85, 1.2, -1.95)
+rotation = Vector3(-0.5595, -0.7854, 0.0)
+metadata/fov = 42.0
+
+; insert: the desk, the notebook, three pieces of cedar
+[node name="shot_insert_desk" type="Marker3D" parent="." groups=["vn_shot"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.75, 1.25, -1.25)
+rotation = Vector3(-0.7701, 3.1310, 0.0)
+metadata/fov = 42.0
+
+; insert: the face inside Marit's bowl, tilted into the lamp
+[node name="shot_insert_face" type="Marker3D" parent="." groups=["vn_shot"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.45, 1.25, -2.45)
+rotation = Vector3(-0.4492, -0.4584, 0.0)
+metadata/fov = 42.0
+
+; insert: the three sticks in waxed-paper sleeves, the middle one
+[node name="shot_insert_stick" type="Marker3D" parent="." groups=["vn_shot"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.85, 1.15, -2.5)
+rotation = Vector3(-0.5817, -0.7188, 0.0)
+metadata/fov = 42.0
+
+; insert: the cap — the warm fabric band, on the daybed
+[node name="shot_insert_cap" type="Marker3D" parent="." groups=["vn_shot"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.35, 1.1, -1.15)
+rotation = Vector3(-0.5468, 0.8215, 0.0)
+metadata/fov = 42.0
+
+; insert: her hand on his hand — the worn place at the table
+[node name="shot_insert_hand" type="Marker3D" parent="." groups=["vn_shot"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.1, 1.15, -2.5)
+rotation = Vector3(-0.6005, -0.7188, 0.0)
+metadata/fov = 42.0
+
+; insert: the hexagon laid out on the table
+[node name="shot_insert_hexagon" type="Marker3D" parent="." groups=["vn_shot"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0, 1.4, -2.85)
+rotation = Vector3(-0.8438, -0.0289, 0.0)
+metadata/fov = 42.0
+
+; insert: Tem's hand from under the blanket — the daybed creases
+[node name="shot_insert_hands" type="Marker3D" parent="." groups=["vn_shot"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.85, 1.0, -1.0)
+rotation = Vector3(-0.7276, 0.9209, 0.0)
+metadata/fov = 42.0
+
+; insert: the heavy ceramic cup
+[node name="shot_insert_cup" type="Marker3D" parent="." groups=["vn_shot"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.9, 1.15, -2.95)
+rotation = Vector3(-0.5477, 0.7407, 0.0)
+metadata/fov = 42.0
+
+; insert: four eggs, yolks intact, in the skillet on the folded towel
+[node name="shot_insert_eggs" type="Marker3D" parent="." groups=["vn_shot"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.8, 1.2, -3.0)
+rotation = Vector3(-0.6169, -0.6868, 0.0)
+metadata/fov = 42.0
+
+; insert: she reached the door — the latch
+[node name="shot_insert_doorknob" type="Marker3D" parent="." groups=["vn_shot"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.36, 1.3, -0.75)
+rotation = Vector3(-0.4067, -3.1416, 0.0)
+metadata/fov = 42.0
+
+; insert: the disc-case on the kitchen table
+[node name="shot_insert_disc_case" type="Marker3D" parent="." groups=["vn_shot"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.05, 1.1, -2.55)
+rotation = Vector3(-0.5626, 0.7560, 0.0)
+metadata/fov = 42.0
+
+; insert: the player, taken down from the shelf
+; insert: the headset, set down on the kitchen table beside the disc-case (vol7 epilogue)
+[node name="shot_insert_headset" type="Marker3D" parent="." groups=["vn_shot"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.95, 1.15, -2.75)
+rotation = Vector3(-0.4945, 0.8394, 0.0)
+metadata/fov = 42.0
+
+; insert: "the disc" — vol7 ch21_tower cues the disc-case by its short name
+[node name="shot_insert_disc" type="Marker3D" parent="." groups=["vn_shot"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.05, 1.1, -2.55)
+rotation = Vector3(-0.5626, 0.7560, 0.0)
+metadata/fov = 42.0
+
+[node name="shot_insert_player" type="Marker3D" parent="." groups=["vn_shot"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.45, 1.55, -0.85)
+rotation = Vector3(0.1154, -3.1416, 0.0)
+metadata/fov = 42.0

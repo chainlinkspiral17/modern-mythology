@@ -3951,6 +3951,10 @@ func _show_day_intro_modal() -> void:
 	close.text = "  →  begin the day  (esc / space)  "
 	close.pressed.connect(_close_day_modal)
 	actions.add_child(close)
+	# Pad: A rides ui_accept on the focused button (2026-09-03) — the
+	# modal had no focus owner, so A did nothing and only B (ESC
+	# synth) could begin the day.
+	GamepadMgr.focus_first.call_deferred(panel)
 
 
 func _close_day_modal() -> void:

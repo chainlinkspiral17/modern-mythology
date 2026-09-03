@@ -1568,12 +1568,30 @@ const CAMERA_PRESETS := {
 		"scene": "res://scenes/locales/cabin_interior.tscn",
 		"requires_glb": "res://assets/3d/locales/cabin_interior.glb",
 		# SURVEYED 2026-07-12: old vantage sat blender y=-0.5 OUTSIDE
-		# the south door, 0.4m from the lintel. Now just inside the
-		# door looking N across the table + rockers to the kitchenette
-		# counter (west) and the wood stove. Eye 1.70 (ceiling 2.8).
-		"camera_origin": Vector3(2.0, 1.62, -0.7),
-		"camera_rotation": Vector3(-0.05, deg_to_rad(54.5), 0.0),
+		# the south door. RE-SURVEYED 2026-09-03 (user: "first view of
+		# the cabin, 90 percent obstructed/wall"): x=2.0 stood INSIDE
+		# the bed alcove east of the East_Part partition (x 1.0,
+		# y 0..2.6), so the partition filled the left of frame. Now just
+		# inside the door WEST of the partition (blender 0.3, 0.9),
+		# looking NNW across the table + rockers to the kitchenette
+		# counter and the wood stove. Eye 1.62 (ceiling 3.4).
+		"camera_origin": Vector3(0.3, 1.62, -0.9),
+		"camera_rotation": Vector3(-0.04, 0.35, 0.0),
 		"fov": 62.0,
+		"suppress_input": true,
+	},
+	"cabin_interior_bed": {
+		"scene": "res://scenes/locales/cabin_interior_bed.tscn",
+		"requires_glb": "res://assets/3d/locales/cabin_interior.glb",
+		# vol7 ch1 (The Cabin, Morning): Lena waking in the east bed
+		# alcove — "the window above the bed gave her the gray-green of
+		# cedars." Camera at the pillow end, low (eye 1.0), looking
+		# ESE along the bed at the window in the east wall; its own
+		# scene so [shot:insert window] frames THAT window, not the
+		# kitchen's.
+		"camera_origin": Vector3(1.55, 1.0, -2.65),
+		"camera_rotation": Vector3(0.36, -2.10, 0.0),
+		"fov": 58.0,
 		"suppress_input": true,
 	},
 	"finn_apartment": {
