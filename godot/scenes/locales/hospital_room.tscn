@@ -314,3 +314,15 @@ offset_top = 360.0
 offset_right = 520.0
 offset_bottom = 980.0
 script = ExtResource("14_dbgm")
+
+; insert: the paper cup of coffee she has not drunk
+[node name="shot_insert_coffee" type="Marker3D" parent="." groups=["vn_shot"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.45, 0.95, -3.95)
+rotation = Vector3(-0.6300, 0.7051, 0.0)
+metadata/fov = 42.0
+
+; insert: she takes Linda's free hand in both of hers
+[node name="shot_insert_hands" type="Marker3D" parent="." groups=["vn_shot"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.55, 1.05, -1.6)
+rotation = Vector3(-0.6083, 0.9074, 0.0)
+metadata/fov = 42.0

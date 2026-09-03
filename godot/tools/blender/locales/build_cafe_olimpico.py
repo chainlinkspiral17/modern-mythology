@@ -131,8 +131,20 @@ def build_ceiling_infra():
     make_smoke_detector("Smoke", (0.0, 3.0, CEIL))
     make_ceiling_speaker("Speaker", (-1.0, 3.0, CEIL))
 
+def build_hero_props_2026_09():
+    """HERO PROPS FOR THE BLIND CUES (shot_marker_audit, 2026-09-01).
+
+    THE HANDS ("She reached across the small metal table and took
+    his hand. Briefly. Like a handshake at the end of a
+    contract."): residue grammar — a hand-worn patch and a cup
+    ring where hands keep landing on Table_0."""
+    make_box("Hands_Table_Patch", (-1.85, 0.95, 0.761), (0.14, 0.12, 0.002), (0.62, 0.60, 0.58, 1.0))
+    make_cyl("Hands_Cup_Ring", (-2.15, 1.02, 0.7615), 0.045, 0.003, (0.42, 0.34, 0.26, 1.0), segments=10)
+
+
 def main():
     clear_scene(); build_shell(); build_bar_counter(); build_seating(); build_pennants_and_decor(); build_ceiling_infra()
+    build_hero_props_2026_09()
     out = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)), "../../../assets/3d/locales/cafe_olimpico.glb"))
     print(f"\n[build_cafe_olimpico] exporting to {out}")
     export_glb(out)

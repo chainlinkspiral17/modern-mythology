@@ -338,3 +338,9 @@ metadata/fov = 38.0
 position = Vector3(-0.8, 1.4, -2.6)
 rotation = Vector3(-0.113797, -2.83189, 0)
 metadata/fov = 44.0
+
+; insert: she took his hand, briefly, like a handshake
+[node name="shot_insert_hands" type="Marker3D" parent="." groups=["vn_shot"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5, 1.15, -1.35)
+rotation = Vector3(-0.5607, 2.2014, 0.0)
+metadata/fov = 42.0

@@ -5948,6 +5948,12 @@ def build_dambrosios_dressing_2026_08():
                  (0.34, 0.10, 0.12, 1.0) if wi % 2 == 0 else (0.30, 0.09, 0.11, 1.0))
 
 
+def build_formal_note_2026_09():
+    """THE NOTE ("The folded paper sat on the table.") — the folded
+    paper on the formal room's table runner (dambrosios_formal)."""
+    make_box("Folded_Note", (-11.6, -3.35, 0.794), (0.10, 0.07, 0.006), (0.92, 0.90, 0.84, 1.0))
+
+
 def main():
     clear_scene()
     build_shell()
@@ -6006,6 +6012,7 @@ def main():
     build_enhanced_river_view()
     build_exterior_hints()
     build_riverboat_superstructure()
+    build_formal_note_2026_09()
     # Camera markers intentionally NOT added — same issue as the
     # Cathedral build had with FrasierEye hijacking the active
     # camera. Will re-introduce as named cinematic markers once

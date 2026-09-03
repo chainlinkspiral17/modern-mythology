@@ -224,6 +224,20 @@ def build_exterior():
         make_box(f"DepotBench_Leg_{lx:+.0f}", (+3.0 + lx, -1.6, 0.20), (0.06, 0.30, 0.40), COL_BLACK)
 
 
+def build_hero_props_2026_09():
+    """HERO PROPS FOR THE BLIND CUES (shot_marker_audit, 2026-09-01).
+
+    THE FOOD ("The food came. ... Finn ate. He ate slowly and then
+    he ate faster"): the plate at the fourth stool — hash, two
+    eggs, toast."""
+    make_cyl("Food_Plate", (1.0, 4.15, 1.096), 0.13, 0.012, (0.92, 0.90, 0.86, 1.0), segments=14)
+    make_cyl("Food_Hash", (0.95, 4.12, 1.114), 0.060, 0.024, (0.66, 0.50, 0.30, 1.0), segments=10)
+    for ei, (ex, ey) in enumerate(((1.06, 4.10), (1.07, 4.19))):
+        make_cyl(f"Food_Egg_{ei}", (ex, ey, 1.108), 0.028, 0.012, (0.96, 0.94, 0.90, 1.0), segments=8)
+        make_cyl(f"Food_Yolk_{ei}", (ex, ey, 1.117), 0.012, 0.006, (0.94, 0.72, 0.20, 1.0), segments=8)
+    make_box("Food_Toast", (0.93, 4.22, 1.106), (0.07, 0.045, 0.008), (0.80, 0.62, 0.36, 1.0))
+
+
 def main():
     clear_scene()
     build_shell()
@@ -234,6 +248,7 @@ def main():
     build_ceiling_infra()
     build_decor()
     build_exterior()
+    build_hero_props_2026_09()
     out = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)),
         "../../../assets/3d/locales/missing_link_interior.glb"))
     print(f"\n[build_missing_link_interior] exporting to {out}")

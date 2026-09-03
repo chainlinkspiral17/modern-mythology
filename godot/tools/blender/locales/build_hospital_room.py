@@ -147,6 +147,16 @@ def build_detail_pass_2026_08():
                      face_sign=-1, aged=True)
 
 
+def build_hero_props_2026_09():
+    """HERO PROPS FOR THE BLIND CUES (shot_marker_audit, 2026-09-01).
+
+    THE HANDS ("she takes Linda's free hand in both of hers and
+    holds it"): residue grammar — two creases in the bed blanket
+    at the free-hand side."""
+    make_box("Hands_Blanket_Crease_A", (0.10, 2.00, 0.666), (0.14, 0.05, 0.012), (0.52, 0.58, 0.62, 1.0))
+    make_box("Hands_Blanket_Crease_B", (0.13, 1.88, 0.665), (0.05, 0.12, 0.010), (0.50, 0.56, 0.60, 1.0))
+
+
 def main():
     clear_scene()
     build_shell()
@@ -160,6 +170,7 @@ def main():
     build_ceiling_infra()
     build_waiting_corner()
     build_detail_pass_2026_08()
+    build_hero_props_2026_09()
     out = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)),
         "../../../assets/3d/locales/hospital_room.glb"))
     print(f"\n[build_hospital_room] exporting to {out}")

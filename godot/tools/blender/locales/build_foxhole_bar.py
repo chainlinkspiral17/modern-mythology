@@ -173,6 +173,19 @@ def build_venue_side():
         make_box(f"PA_{si}_Top", (-2.9, sy, 1.60), (0.52, 0.52, 1.10), (0.14, 0.12, 0.11, 1.0))
 
 
+def build_hero_props_2026_09():
+    """HERO PROPS FOR THE BLIND CUES (shot_marker_audit, 2026-09-01).
+
+    THE LYRICS ("He kneels beside the amp. He pulls the bridge
+    lyrics out of his back pocket — written ... on the back of the
+    flyer"): a small amp on the stage deck and the flyer flat
+    beside it, lyric side up."""
+    make_box("Stage_Amp", (-2.9, 2.2, 0.55), (0.50, 0.40, 0.50), (0.10, 0.10, 0.11, 1.0))
+    make_box("Stage_Amp_Grille", (-2.64, 2.2, 0.50), (0.02, 0.34, 0.34), (0.52, 0.46, 0.34, 1.0))
+    make_box("Bridge_Lyrics", (-2.6, 2.75, 0.302), (0.14, 0.21, 0.003), (0.92, 0.90, 0.84, 1.0))
+    make_box("Bridge_Lyrics_Lines", (-2.6, 2.77, 0.3045), (0.09, 0.12, 0.001), (0.32, 0.32, 0.36, 1.0))
+
+
 def main():
     clear_scene()
     build_shell()
@@ -184,6 +197,7 @@ def main():
     build_flyers()
     build_ceiling_infra()
     build_venue_side()
+    build_hero_props_2026_09()
     out = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)),
         "../../../assets/3d/locales/foxhole_bar.glb"))
     print(f"\n[build_foxhole_bar] exporting to {out}")

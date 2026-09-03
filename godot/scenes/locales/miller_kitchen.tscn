@@ -378,3 +378,9 @@ metadata/fov = 42.0
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.75, 1.55, -5.2)
 rotation = Vector3(0, 0, 0)
 metadata/fov = 42.0
+
+; insert: he looks at the photographs
+[node name="shot_insert_photographs" type="Marker3D" parent="." groups=["vn_shot"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.8, 1.35, -4.5)
+rotation = Vector3(-0.5668, 0.6401, 0.0)
+metadata/fov = 42.0

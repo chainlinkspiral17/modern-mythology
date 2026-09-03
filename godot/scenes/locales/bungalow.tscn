@@ -523,3 +523,9 @@ light_color = Color(0.96, 0.84, 0.52, 1)
 light_energy = 0.8
 omni_range = 3.0
 shadow_enabled = false
+
+; insert: the mirror shard — the fractal Elicias
+[node name="shot_insert_mirror" type="Marker3D" parent="." groups=["vn_shot"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.9, 1.6, -1.7)
+rotation = Vector3(0.0913, -0.7217, 0.0)
+metadata/fov = 42.0

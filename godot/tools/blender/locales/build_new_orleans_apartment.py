@@ -191,11 +191,22 @@ def build_use_states_d4():
     make_box("Sofa_Jacket", (-2.72, 2.15, 0.62), (0.16, 0.60, 0.30),
              (0.26, 0.28, 0.34, 1.0))
 
+def build_hero_props_2026_09():
+    """HERO PROPS FOR THE BLIND CUES (shot_marker_audit, 2026-09-01).
+
+    THE PHONE ("The screen, when it came on, was not Antonio. The
+    screen said Q. PAUL."): face-up on the rented sofa's far
+    cushion, screen lit."""
+    make_box("Antonios_Phone", (-2.32, 2.75, 0.5655), (0.070, 0.140, 0.011), (0.13, 0.13, 0.15, 1.0))
+    make_box("Antonios_Phone_Screen", (-2.32, 2.75, 0.5720), (0.058, 0.124, 0.002), (0.42, 0.50, 0.60, 1.0))
+
+
 def main():
     clear_scene(); build_shell(); build_shuttered_windows(); build_bed(); build_armoire(); build_decor(); build_ceiling_infra()
     build_hero_props()
     build_detail_pass_2026_08()
     build_use_states_d4()
+    build_hero_props_2026_09()
     out = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)), "../../../assets/3d/locales/new_orleans_apartment.glb"))
     print(f"\n[build_new_orleans_apartment] exporting to {out}")
     export_glb(out)

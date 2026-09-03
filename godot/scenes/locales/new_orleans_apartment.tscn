@@ -324,3 +324,9 @@ metadata/fov = 40.0
 position = Vector3(0.6, 1.3, -2.6)
 rotation = Vector3(1.06435, 0.982794, 0)
 metadata/fov = 44.0
+
+; insert: the screen said Q. PAUL
+[node name="shot_insert_phone" type="Marker3D" parent="." groups=["vn_shot"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.75, 1.0, -2.4)
+rotation = Vector3(-0.5727, 1.0201, 0.0)
+metadata/fov = 42.0

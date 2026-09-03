@@ -310,3 +310,9 @@ offset_top = 360.0
 offset_right = 520.0
 offset_bottom = 980.0
 script = ExtResource("14_dbgm")
+
+; insert: Mister, the half-Kowalski cat, curls up at his feet
+[node name="shot_insert_cat" type="Marker3D" parent="." groups=["vn_shot"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.45, 1.0, -2.55)
+rotation = Vector3(-0.5782, 0.5860, 0.0)
+metadata/fov = 42.0

@@ -340,3 +340,9 @@ metadata/fov = 40.0
 position = Vector3(0.5, 0.95, -1.7)
 rotation = Vector3(-0.490637, 2.63449, 0)
 metadata/fov = 40.0
+
+; insert: the little red light, a baleful eye
+[node name="shot_insert_camera" type="Marker3D" parent="." groups=["vn_shot"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.6, 1.2, -0.75)
+rotation = Vector3(-0.1664, -2.5679, 0.0)
+metadata/fov = 42.0

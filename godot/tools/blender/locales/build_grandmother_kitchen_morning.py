@@ -143,6 +143,16 @@ def build_hero_props():
         make_box(f"Stair_Tread_{s}", (1.35, 0.20 - s * 0.0, 0.16 + s * 0.18), (0.75, 0.28, 0.05), COL_WOOD)
 
 
+def build_hero_props_2026_09():
+    """HERO PROPS FOR THE BLIND CUES (shot_marker_audit, 2026-09-01).
+
+    THE LETTER ("He writes the second letter."): the sheet and the
+    pen on the kitchen table."""
+    make_box("Second_Letter", (0.25, 2.35, 0.761), (0.21, 0.28, 0.002), (0.94, 0.92, 0.86, 1.0))
+    make_box("Second_Letter_Lines", (0.25, 2.40, 0.7625), (0.14, 0.14, 0.001), (0.34, 0.34, 0.38, 1.0))
+    make_cyl("Letter_Pen", (0.02, 2.30, 0.7655), 0.005, 0.13, (0.24, 0.24, 0.28, 1.0), axis='Y', segments=6)
+
+
 def main():
     clear_scene()
     build_shell()
@@ -153,6 +163,7 @@ def main():
     build_hero_props()
     build_clock()
     build_ceiling_infra()
+    build_hero_props_2026_09()
     out = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)),
         "../../../assets/3d/locales/grandmother_kitchen_morning.glb"))
     print(f"\n[build_grandmother_kitchen_morning] exporting to {out}")

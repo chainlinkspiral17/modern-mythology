@@ -408,3 +408,15 @@ metadata/fov = 42.0
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0, 16.42, -2.45)
 rotation = Vector3(0, 0, 0)
 metadata/fov = 42.0
+
+; insert: the same book she had on the cedar shelf at the cabin
+[node name="shot_insert_book" type="Marker3D" parent="." groups=["vn_shot"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.0, 11.2, -3.6)
+rotation = Vector3(-0.6114, -0.5028, 0.0)
+metadata/fov = 42.0
+
+; insert: the seventh floor's smart-glass running the garden
+[node name="shot_insert_tower" type="Marker3D" parent="." groups=["vn_shot"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 41.5, 1.7, 5.0)
+rotation = Vector3(0, 0, 0)
+metadata/fov = 42.0

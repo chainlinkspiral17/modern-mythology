@@ -187,6 +187,16 @@ def build_hero_props():
     make_box("Garage_Handle", (3.4, 0.09, 0.55), (0.24, 0.03, 0.05), steel)
 
 
+def build_hero_props_2026_09():
+    """HERO PROPS FOR THE BLIND CUES (shot_marker_audit, 2026-09-01).
+
+    THE PHONE ("In the truck, before he starts it, his phone
+    buzzes."): face-up on the hood of the car in the drive — the
+    truck's cabin is solid, so the phone rides where the insert can
+    see it."""
+    make_box("Jesses_Phone", (3.6, 1.9, 0.8255), (0.070, 0.140, 0.011), (0.13, 0.13, 0.15, 1.0))
+
+
 def main():
     clear_scene()
     build_ground()
@@ -194,6 +204,7 @@ def main():
     build_porch()
     build_car_and_curb()
     build_hero_props()
+    build_hero_props_2026_09()
     out = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)),
         "../../../assets/3d/locales/henderson_porch_front.glb"))
     print(f"\n[build_henderson_porch_front] exporting to {out}")

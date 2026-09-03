@@ -429,6 +429,14 @@ def build_hero_props_2026_09():
                  (0.14, 0.14, 0.15, 1.0), axis='Y', segments=10)
 
 
+def build_photographs_2026_09():
+    """THE PHOTOGRAPHS ("He sits at the counter. He eats. He looks
+    at the photographs."): three prints fanned on the counter east
+    of the sink."""
+    for pi, (dx, dy) in enumerate(((0.0, 0.0), (0.03, 0.02), (0.06, 0.04))):
+        make_box(f"Photographs_{pi}", (-1.18 + dx, 4.95 + dy, 0.9758 + pi * 0.0012), (0.10, 0.15, 0.001), (0.78, 0.76, 0.70, 1.0))
+
+
 def main():
     clear_scene()
     build_shell()
@@ -444,6 +452,7 @@ def main():
     build_infrastructure_2026_08()
     build_through_windows_2026_08()
     build_hero_props_2026_09()
+    build_photographs_2026_09()
     out = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)),
         "../../../assets/3d/locales/miller_kitchen.glb"))
     print(f"\n[build_miller_kitchen] exporting to {out}")

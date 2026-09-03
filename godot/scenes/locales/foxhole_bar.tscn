@@ -327,3 +327,9 @@ offset_top = 360.0
 offset_right = 520.0
 offset_bottom = 980.0
 script = ExtResource("14_dbgm")
+
+; insert: the bridge lyrics on the back of the flyer, beside the amp
+[node name="shot_insert_lyrics" type="Marker3D" parent="." groups=["vn_shot"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.1, 0.75, -2.3)
+rotation = Vector3(-0.5817, 0.8270, 0.0)
+metadata/fov = 42.0
