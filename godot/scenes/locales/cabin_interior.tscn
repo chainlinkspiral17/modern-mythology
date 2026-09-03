@@ -349,7 +349,7 @@ rotation = Vector3(-0.60, -0.30, 0.0)
 ; [shot:insert coffee] (3x) — the stove-side table where the pot sits
 [node name="shot_insert_coffee" type="Marker3D" parent="." groups=["vn_shot"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.60, 0.94, -4.30)
-rotation = Vector3(0.1820, 1.5184, 0.0)
+rotation = Vector3(-0.0374, 2.3463, 0.0)
 
 ; [shot:insert door] (4x) — the south door + its iron latch
 [node name="shot_insert_door" type="Marker3D" parent="." groups=["vn_shot"]]
@@ -391,3 +391,94 @@ light_color = Color(0.86, 0.92, 0.88, 1)
 light_energy = 1.2
 shadow_enabled = false
 omni_range = 4.5
+
+; ── 2026-09-01 hero-prop wave · fifteen blind cues ──────────────
+; insert: Finn's grandfather's Toyota at the turnaround (west south window)
+[node name="shot_insert_truck" type="Marker3D" parent="." groups=["vn_shot"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.0, 1.5, -1.0)
+rotation = Vector3(-0.2467, 3.0552, 0.0)
+metadata/fov = 42.0
+
+; insert: the wagon came up the road at nine fifty-two (east south window)
+[node name="shot_insert_wagon" type="Marker3D" parent="." groups=["vn_shot"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.0, 1.5, -1.0)
+rotation = Vector3(-0.4543, -3.1416, 0.0)
+metadata/fov = 42.0
+
+; insert: the package on the table
+[node name="shot_insert_package" type="Marker3D" parent="." groups=["vn_shot"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.85, 1.2, -1.95)
+rotation = Vector3(-0.5595, -0.7854, 0.0)
+metadata/fov = 42.0
+
+; insert: the desk, the notebook, three pieces of cedar
+[node name="shot_insert_desk" type="Marker3D" parent="." groups=["vn_shot"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.75, 1.25, -1.25)
+rotation = Vector3(-0.7701, 3.1310, 0.0)
+metadata/fov = 42.0
+
+; insert: the face inside Marit's bowl, tilted into the lamp
+[node name="shot_insert_face" type="Marker3D" parent="." groups=["vn_shot"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.45, 1.25, -2.45)
+rotation = Vector3(-0.4492, -0.4584, 0.0)
+metadata/fov = 42.0
+
+; insert: the three sticks in waxed-paper sleeves, the middle one
+[node name="shot_insert_stick" type="Marker3D" parent="." groups=["vn_shot"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.85, 1.15, -2.5)
+rotation = Vector3(-0.5817, -0.7188, 0.0)
+metadata/fov = 42.0
+
+; insert: the cap — the warm fabric band, on the daybed
+[node name="shot_insert_cap" type="Marker3D" parent="." groups=["vn_shot"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.35, 1.1, -1.15)
+rotation = Vector3(-0.5468, 0.8215, 0.0)
+metadata/fov = 42.0
+
+; insert: her hand on his hand — the worn place at the table
+[node name="shot_insert_hand" type="Marker3D" parent="." groups=["vn_shot"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.1, 1.15, -2.5)
+rotation = Vector3(-0.6005, -0.7188, 0.0)
+metadata/fov = 42.0
+
+; insert: the hexagon laid out on the table
+[node name="shot_insert_hexagon" type="Marker3D" parent="." groups=["vn_shot"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0, 1.4, -2.85)
+rotation = Vector3(-0.8438, -0.0289, 0.0)
+metadata/fov = 42.0
+
+; insert: Tem's hand from under the blanket — the daybed creases
+[node name="shot_insert_hands" type="Marker3D" parent="." groups=["vn_shot"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.85, 1.0, -1.0)
+rotation = Vector3(-0.7276, 0.9209, 0.0)
+metadata/fov = 42.0
+
+; insert: the heavy ceramic cup
+[node name="shot_insert_cup" type="Marker3D" parent="." groups=["vn_shot"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.9, 1.15, -2.95)
+rotation = Vector3(-0.5477, 0.7407, 0.0)
+metadata/fov = 42.0
+
+; insert: four eggs, yolks intact, in the skillet on the folded towel
+[node name="shot_insert_eggs" type="Marker3D" parent="." groups=["vn_shot"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.8, 1.2, -3.0)
+rotation = Vector3(-0.6169, -0.6868, 0.0)
+metadata/fov = 42.0
+
+; insert: she reached the door — the latch
+[node name="shot_insert_doorknob" type="Marker3D" parent="." groups=["vn_shot"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.36, 1.3, -0.75)
+rotation = Vector3(-0.4067, -3.1416, 0.0)
+metadata/fov = 42.0
+
+; insert: the disc-case on the kitchen table
+[node name="shot_insert_disc_case" type="Marker3D" parent="." groups=["vn_shot"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.05, 1.1, -2.55)
+rotation = Vector3(-0.5626, 0.7560, 0.0)
+metadata/fov = 42.0
+
+; insert: the player, taken down from the shelf
+[node name="shot_insert_player" type="Marker3D" parent="." groups=["vn_shot"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.45, 1.55, -0.85)
+rotation = Vector3(0.1154, -3.1416, 0.0)
+metadata/fov = 42.0

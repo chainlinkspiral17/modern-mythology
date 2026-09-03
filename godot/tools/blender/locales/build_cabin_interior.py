@@ -436,6 +436,100 @@ def build_through_windows_2026_08():
              (0.35, 0.42, 0.44, 0.9))
 
 
+def build_hero_props_2026_09():
+    """HERO PROPS FOR THE BLIND CUES (shot_marker_audit, 2026-09-01).
+
+    Fifteen distinct cues fire on Tem's cabin — the vol7 heart —
+    and most had nothing to aim at. Existing anchors: the desk
+    (+notebook), Shelf_Player, Door_Latch (SYNONYMS doorknob ->
+    latch). Built here, each at its prose station:
+
+    TABLE (top 0.785; the two bowls + lantern already hold the
+    south-centre):
+    - THE HEXAGON laid out north ("six in the ring, the cedar face
+      in the center, the AR I A piece beside").
+    - THE THREE STICKS in waxed-paper sleeves, west ("one of the
+      three sticks in the waxed-paper sleeves ... the middle of
+      the three").
+    - THE PACKAGE (the charred-wood parcel), south-west.
+    - THE CUP (the heavy ceramic cup from the cheese-factory-town
+      pottery), north-east.
+    - THE DISC-CASE ("The disc-case was on the kitchen table"),
+      east.
+    - THE EGGS: the skillet with four yolks intact on the folded
+      towel Tem uses as a trivet, north-west.
+    - THE HAND (residue): a hand-worn patch at the west chair
+      place, where her hand went on his.
+    - THE FACE: the shallow relief inside Marit's bowl, flush on
+      the rim disc ("visible only when Per tilted the bowl into
+      the kerosene-lamp light").
+    DAYBED:
+    - THE CAP (Tem's warm fabric band) folded on the bolster.
+    - THE HANDS (residue): two blanket creases where Tem's hand
+      came up from under it to the back of Lena's neck.
+    OUTSIDE, on a gravel turnaround north of the fern line:
+    - THE TRUCK: Finn's grandfather's Toyota, seen from the west
+      south window.
+    - THE WAGON: the station wagon that came up the road at nine
+      fifty-two, seen from the east south window.
+    """
+    cedar = (0.55, 0.38, 0.26, 1.0)
+    cedar_dk = (0.44, 0.30, 0.20, 1.0)
+    waxpaper = (0.88, 0.84, 0.72, 1.0)
+    T = 0.785   # table top
+    # ── THE HEXAGON · table north ──
+    hx, hy = 0.0, 3.40
+    make_box("Hexagon_Cloth", (hx, hy, T + 0.002), (0.40, 0.36, 0.004), (0.78, 0.74, 0.64, 1.0))
+    for hi in range(6):
+        ang = _m.pi / 3.0 * hi + _m.pi / 6.0
+        make_box(f"Hexagon_Ring_{hi}", (hx + 0.13 * _m.cos(ang), hy + 0.13 * _m.sin(ang), T + 0.013),
+                 (0.085, 0.085, 0.018), cedar)
+    make_cyl("Hexagon_Center_Face", (hx, hy, T + 0.012), 0.055, 0.016, cedar_dk, segments=12)
+    make_cyl("Hexagon_Face_Inlay", (hx, hy, T + 0.0215), 0.030, 0.003, (0.62, 0.46, 0.32, 1.0), segments=10)
+    make_box("Hexagon_Aria_Piece", (0.155, 3.255, T + 0.014), (0.070, 0.050, 0.020), cedar)
+    # ── THE THREE STICKS · table west ──
+    for si2, sy2 in enumerate((2.75, 2.90, 3.05)):
+        make_box(f"Stick_Sleeve_{si2}", (-0.50, sy2, T + 0.010), (0.26, 0.09, 0.020), waxpaper)
+        make_box(f"Stick_Label_{si2}", (-0.50, sy2, T + 0.021), (0.10, 0.05, 0.002), (0.96, 0.95, 0.92, 1.0))
+    # ── THE PACKAGE · table south-west ──
+    make_box("Charred_Package", (-0.45, 2.35, T + 0.040), (0.22, 0.16, 0.080), (0.66, 0.56, 0.42, 1.0))
+    make_box("Package_Twine", (-0.45, 2.35, T + 0.0815), (0.24, 0.012, 0.003), (0.42, 0.36, 0.26, 1.0))
+    # ── THE CUP · table north-east ──
+    make_cyl("Ceramic_Cup", (0.58, 3.30, T + 0.050), 0.045, 0.100, (0.52, 0.44, 0.36, 1.0), segments=10)
+    make_cyl("Ceramic_Cup_Coffee", (0.58, 3.30, T + 0.1015), 0.036, 0.003, (0.24, 0.16, 0.10, 1.0), segments=10)
+    # ── THE DISC-CASE · table east ──
+    make_box("Disc_Case", (0.72, 2.90, T + 0.0075), (0.14, 0.125, 0.015), (0.18, 0.18, 0.20, 1.0))
+    make_box("Disc_Case_Label", (0.72, 2.90, T + 0.0158), (0.10, 0.06, 0.001), (0.82, 0.80, 0.74, 1.0))
+    # ── THE EGGS · skillet on the folded towel, table north-west ──
+    make_box("Trivet_Towel", (-0.45, 3.40, T + 0.004), (0.30, 0.30, 0.008), (0.70, 0.62, 0.50, 1.0))
+    make_cyl("Egg_Skillet", (-0.45, 3.40, T + 0.0255), 0.140, 0.035, (0.16, 0.16, 0.17, 1.0), segments=12)
+    make_box("Egg_Skillet_Handle", (-0.67, 3.40, T + 0.028), (0.16, 0.03, 0.012), (0.14, 0.14, 0.15, 1.0))
+    for ei, (ex2, ey2) in enumerate(((-0.50, 3.35), (-0.40, 3.35), (-0.50, 3.45), (-0.40, 3.45))):
+        make_cyl(f"Egg_White_{ei}", (ex2, ey2, T + 0.049), 0.030, 0.012, (0.96, 0.94, 0.90, 1.0), segments=8)
+        make_cyl(f"Egg_Yolk_{ei}", (ex2, ey2, T + 0.058), 0.013, 0.006, (0.94, 0.72, 0.20, 1.0), segments=8)
+    # ── THE HAND · worn patch at the west chair place ──
+    make_box("Hand_Table_Patch", (-0.75, 2.90, T + 0.001), (0.12, 0.14, 0.002), (0.50, 0.40, 0.28, 1.0))
+    # ── THE FACE · relief inside Marit's bowl, flush on the rim disc ──
+    make_cyl("Bowl_Face_Inlay", (-0.22, 2.84, 0.9155), 0.040, 0.003, (0.60, 0.44, 0.30, 1.0), segments=10)
+    # ── THE CAP · folded on the daybed bolster (top 0.73) ──
+    make_box("Fabric_Cap", (-2.78, 1.55, 0.7425), (0.14, 0.18, 0.025), (0.62, 0.30, 0.28, 1.0))
+    # ── THE HANDS · blanket creases (blanket top 0.575) ──
+    make_box("Hands_Blanket_Crease_A", (-2.25, 1.35, 0.581), (0.16, 0.05, 0.012), (0.50, 0.36, 0.27, 1.0))
+    make_box("Hands_Blanket_Crease_B", (-2.20, 1.22, 0.580), (0.05, 0.13, 0.010), (0.48, 0.34, 0.26, 1.0))
+    # ── OUTSIDE · gravel turnaround north of the fern line ──
+    make_box("Gravel_Turnaround", (1.2, -2.4, -0.03), (10.0, 2.6, 0.05), (0.55, 0.52, 0.47, 1.0))
+    make_box("Finn_Truck_Body", (-1.15, -2.4, 0.62), (4.40, 1.80, 0.65), (0.44, 0.48, 0.42, 1.0))
+    make_box("Finn_Truck_Cab", (-1.85, -2.4, 1.22), (1.60, 1.70, 0.55), (0.40, 0.44, 0.38, 1.0))
+    for wi, (wx2, wy2) in enumerate(((-2.65, -1.375), (0.35, -1.375), (-2.65, -3.425), (0.35, -3.425))):
+        make_cyl(f"Finn_Truck_Wheel_{wi}", (wx2, wy2, 0.32), 0.32, 0.25, (0.14, 0.14, 0.15, 1.0), axis='Y', segments=10)
+    make_box("Station_Wagon_Body", (3.5, -2.4, 0.80), (4.60, 1.80, 0.70), (0.48, 0.36, 0.26, 1.0))
+    make_box("Station_Wagon_Cabin", (3.7, -2.4, 1.40), (3.00, 1.70, 0.50), (0.42, 0.32, 0.24, 1.0))
+    make_box("Station_Wagon_Windows", (3.7, -1.535, 1.40), (2.60, 0.030, 0.36), (0.26, 0.30, 0.36, 1.0))
+    make_box("Station_Wagon_Rack", (3.7, -2.4, 1.68), (2.40, 1.20, 0.06), (0.30, 0.30, 0.32, 1.0))
+    for wi2, (wx3, wy3) in enumerate(((2.0, -1.375), (5.0, -1.375), (2.0, -3.425), (5.0, -3.425))):
+        make_cyl(f"Station_Wagon_Wheel_{wi2}", (wx3, wy3, 0.34), 0.34, 0.25, (0.14, 0.14, 0.15, 1.0), axis='Y', segments=10)
+
+
 def main():
     clear_scene()
     build_shell()
@@ -449,6 +543,7 @@ def main():
     build_crow_2026_08()
     build_wear_personality_2026_08()
     build_through_windows_2026_08()
+    build_hero_props_2026_09()
     out = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)),
         "../../../assets/3d/locales/cabin_interior.glb"))
     print(f"\n[build_cabin_interior] exporting to {out}")

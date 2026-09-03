@@ -128,6 +128,7 @@ SYNONYMS = {
     "floorboards": ["floorboard", "board", "cavity"],
     "tv": ["bar_tv", "television", "tv_screen"],
     "telecaster": ["tele", "guitar"],
+    "doorknob": ["doorknob", "latch", "knob"],
     "doohickey": ["doohickey", "onyx"],
 }
 
