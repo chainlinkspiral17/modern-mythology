@@ -363,3 +363,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.5, 1.5, 6.5)
 rotation = Vector3(-0.1811, 0.6947, 0.0)
 metadata/fov = 42.0
 
+; insert: the piece of charred wood unwrapped on Finn's duffel (vol7 ch2_morning)
+[node name="shot_insert_charred_wood" type="Marker3D" parent="." groups=["vn_shot"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.15, 1.35, -0.55)
+rotation = Vector3(-0.3286, -2.4228, 0.0)
+metadata/fov = 42.0
+

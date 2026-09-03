@@ -484,6 +484,12 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.95, 1.15, -2.75)
 rotation = Vector3(-0.4945, 0.8394, 0.0)
 metadata/fov = 42.0
 
+; insert: "the disc" — vol7 ch21_tower cues the disc-case by its short name
+[node name="shot_insert_disc" type="Marker3D" parent="." groups=["vn_shot"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.05, 1.1, -2.55)
+rotation = Vector3(-0.5626, 0.7560, 0.0)
+metadata/fov = 42.0
+
 [node name="shot_insert_player" type="Marker3D" parent="." groups=["vn_shot"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.45, 1.55, -0.85)
 rotation = Vector3(0.1154, -3.1416, 0.0)

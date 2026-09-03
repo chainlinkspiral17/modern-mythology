@@ -572,6 +572,10 @@
       "t": "narrate"
     },
     {
+      "src": "3d:vehicle_cab",
+      "t": "bg"
+    },
+    {
       "text": "He went out to his truck at eleven oh-six. The crow was on the dashboard. The crow had not, since Wednesday afternoon when Finn had driven up, left the dashboard.",
       "t": "narrate"
     },

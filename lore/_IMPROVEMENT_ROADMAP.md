@@ -129,15 +129,41 @@ Board Lords set (awning, sign, CLOSED, laundromat + shoe-repair
 across, streetlamp, Finn's truck at the curb with the crow on the
 cab); and re-points to bakery / cabin / cedar tower exterior /
 henderson porch / cosmic front door. cabin_road 43 -> 18 blind.
-DRAFT 2 TARGETS (queued, by yield): meadowlark_circle (the Harmony
-Creek cul-de-sac: prelude, codas, ch23 night — 6 segments),
-vehicle_cab (truck/sedan interior: ch5_truck's 86 nodes, ch5_radio,
-ch4_storm, ch6_interstate, el_rancho, vol5 moon — 7 segments),
-lake_palestine (ch8, 97 nodes), estuary_7_template (the epilogue's
-planner's view: river, sand bar, tower, mill, grove, diner). The
-strip-mall scenes stay on louisiana_road — that IS the strip mall
-(its marquee/unit markers live there). What remains on cabin_road
-is honest driving. THE PROGRAM'S END STATE: every remaining
+RE-HOMING DRAFT 2 (2026-09-03, user: "if it will benefit the scene
+and emotion of the storytelling, I want it. keep going"): four NEW
+locales built from the prose, 32 re-points, blind 45 → 26.
+(A) meadowlark_circle — the Harmony Creek cul-de-sac: eight ranch
+houses (1402..1428 + the south three), the Miller cracked head and
+its etched stripe, the sprinkler fans, Geller's house at the bulb
+with Don's lit window, the vigil sedan + thermos, the water tower +
+NexCorp fence + van, the black cat; day + night presets; prelude
+and the three codas. (B) vehicle_cab — one hollow crew cab stands
+for every parked-car conversation (Ben's truck, the El Rancho
+lay-by with the flauta box on the console and the leaking El
+Diablito, the Civic, Miriam's car, Miller's highway) with Claire's
+white sedan + the picnic table at the turnout; cab + side presets;
+11 re-points. (C) lake_palestine — the north boat ramp, Miller's
+truck with the cooler, sixteen meters of dock to "the same metal
+cleat," the cove, the eastern-shore pines the sun comes up over;
+dawn key from the EAST. (D) estuary_7_template — the planner's-view
+as a museum diorama in a dark room: sea, river, bar, flats, bluff +
+Dean's seven-floor tower, Smolvud, the cabin hub with four
+substrate-lines as circuit traces, mill + wheel, grove, diner, the
+pools, palettes + clocks, Tem's one drone; plus the headset on the
+cabin table beside the disc-case (a cabin_interior bg inserted
+before Tem takes it off). The strip-mall scenes stay on
+louisiana_road — that IS the strip mall. What remains on cabin_road
+(8) is honest driving plus the Cape Perpetua tide-pool beat.
+DRAFT 3 TARGETS (queued): meadowlark_circle_night's three new
+blinds (Rick's hand-drawn map, the 1974 Polaroid, the envelope —
+ch3_coda 9-18, on the sedan's dash through the windshield); a
+rear-bench cab preset for ch5's four-up + rain on the windshield
+for ch4_storm; a dock-end preset for the lake's closeups; the
+gallery's ghosted earlier layers on the diorama; the Miller garage
+interior (vol6 ch5_garage still on henderson_porch_front). Check
+the exterior template's Sun: its −Z basis points UP (+y) in
+kowalski/meadowlark/cape/vehicle_cab — the Sky_Fill does the
+modeling; lake_palestine's Sun was authored downward on purpose. THE PROGRAM'S END STATE: every remaining
 blind cue is deliberate — the two road aggregates (re-homing
 decision), four cast closeups without char ids, three beats that
 happen elsewhere or on a person. NEXT:

@@ -279,6 +279,13 @@ def build_el_rancho():
     make_box("Packet_Diablito_Seat", (-0.36, 0.30, 0.9335), (0.05, 0.032, 0.005), SAUCE_RED)
     # the paper bag, folded, on the passenger floor
     make_box("El_Rancho_Bag", (0.52, 0.85, 0.53), (0.22, 0.14, 0.13), (0.72, 0.60, 0.42, 1.0))
+    # Finn's duffel on the passenger seat (vol7 ch2_morning): the cloth
+    # unwrapped, the piece of charred wood on it — "three inches long"
+    make_box("Duffel", (0.50, 0.15, 1.035), (0.34, 0.26, 0.21), (0.32, 0.36, 0.30, 1.0))
+    make_box("Duffel_Strap", (0.50, 0.15, 1.1425), (0.36, 0.05, 0.005), (0.24, 0.26, 0.22, 1.0))
+    make_box("Duffel_Cloth", (0.50, 0.15, 1.147), (0.22, 0.18, 0.004), (0.78, 0.74, 0.66, 1.0))
+    make_box("Charred_Wood", (0.50, 0.15, 1.162), (0.076, 0.028, 0.026), (0.10, 0.08, 0.07, 1.0))
+    make_box("Charred_Wood_Ember_Line", (0.50, 0.15, 1.1755), (0.05, 0.004, 0.001), (0.36, 0.20, 0.10, 1.0))
 
 
 def build_turnout_furniture():

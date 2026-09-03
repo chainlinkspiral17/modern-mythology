@@ -158,6 +158,57 @@ banisters classed · pans as containers.
 
 ## Recent lessons
 
+### 2026-09-03 · re-homing draft 2: four locales from prose, zero-clip first pass
+
+meadowlark_circle, vehicle_cab, lake_palestine, estuary_7_template —
+each authored in one sitting against the zero-regression ceiling.
+Lessons:
+
+- **Hollow bodies are a stacking exercise: every plate TOUCHES its
+  neighbor, nothing intersects.** The cab was designed on paper as
+  z-bands first (pan 0.30..0.40, floor 0.40..0.46, belt line 1.20,
+  roof 1.72) and x-bands second (shell ±0.90, skins ±0.90..0.925,
+  glass ±0.905..0.925, wheels ±0.94..1.20). Write the bands down
+  before the first make_box; the audit is EPS 1.5 cm and a 5 mm
+  overlap is a clip. The lake's truck, dock and cleat were checked
+  the same way on review and four latent clips (headlight inside
+  the grille, stringers through the abutment, rust decal under the
+  cleat base, rope through the plank) came out before the build.
+- **Water is a slab; ground goes UNDER it, shores go BESIDE it.**
+  A lake at z −0.10..−0.02 over a Ground_Far at −0.09..−0.07 is a
+  full-plate clip. Stack them: Ground_Far below the water bottom,
+  the two shores as separate plates at water height on either side
+  of the cove, pilings and boat hulls standing ON the water top.
+  Trees on the shore plates, not over the water.
+- **make_gable's `center` is the bounding-box center, not the base.**
+  The diorama's ridge at center z = land top sank half its height
+  into the land and the plinth (2 clips). Roofs on named bodies are
+  forgiven by the natural-contact grammar, which is why the same
+  mistake on Cabin_Roof / Marit_House_Roof never showed — lift them
+  anyway.
+- **Never re-serialize a scene JSON to re-point it.** json.dumps
+  with the file's apparent indent rewrote four vol6 scenes wholesale
+  (3,800-line diffs). Splice the literal `"3d:<preset>"` at the nth
+  occurrence in the raw text; verify with json.loads and a bg-node
+  read-back. Inserting a node the same way (the submission's cabin
+  bg) means copying node 0's raw block, not dumping.
+- **The godot z sign flips on the way back from a builder.** The
+  meadowlark van marker was authored at godot z −22.5 for a van at
+  blender y −26 (godot z +26): 46.8 m away, aimed at nothing. Convert
+  every marker from blender coordinates on paper — godot z = −by —
+  and read the reaim distance line: anything over ~10 m on an insert
+  is a sign error, not a long lens.
+- **Off-frame subjects get a glyph, not a blind.** Eugene and Bandon
+  are "off the template's frame"; the substrate-lines run to the
+  frame edge / the ridge foot and end in a glyph named for the cue
+  (Foundation_Glyph, Cove_Glyph), so the insert has a thing to
+  frame. Bern (the press) has no line in the prose — deliberate
+  blind.
+- **A re-point can land a cue in the wrong room.** ch22_foxhole 168
+  looked like a Civic beat ("he gets in the Civic") but its cue is
+  the strip-mall unit across the lot — read to the next bg before
+  re-pointing, not just the first line.
+
 ### 2026-09-01 · the blind-cue hero-prop program (six locales, 324 → 277)
 
 Board Lords, lena_apartment, hans_bakery_back_kitchen, graustark
