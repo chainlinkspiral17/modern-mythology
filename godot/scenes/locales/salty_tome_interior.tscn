@@ -401,3 +401,63 @@ metadata/fov = 42.0
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.5, 1.35, -2.0)
 rotation = Vector3(-0.5693, -0.7407, 0.0)
 metadata/fov = 42.0
+
+; insert: the face on the wall — a young woman in a moment of waiting (vol7 alley)
+[node name="shot_insert_face" type="Marker3D" parent="." groups=["vn_shot"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.8, 1.75, -10.6)
+rotation = Vector3(0, 0, 0)
+metadata/fov = 42.0
+
+; insert: her hand on the wall over the patch; the bricks under it
+[node name="shot_insert_wall" type="Marker3D" parent="." groups=["vn_shot"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.35, 1.5, -10.7)
+rotation = Vector3(0, 0, 0)
+metadata/fov = 42.0
+
+; insert: the milk crate at the foot of the wall
+[node name="shot_insert_crate" type="Marker3D" parent="." groups=["vn_shot"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.2, 0.8, -10.9)
+rotation = Vector3(-0.6978, 0.5517, 0.0)
+metadata/fov = 42.0
+
+; insert: the eighth piece in the alley light
+[node name="shot_insert_cedar" type="Marker3D" parent="." groups=["vn_shot"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.3, 0.75, -11.1)
+rotation = Vector3(-0.603, 0.311, 0.0)
+metadata/fov = 42.0
+
+; insert: the brush in the jar of medium
+[node name="shot_insert_brush" type="Marker3D" parent="." groups=["vn_shot"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.1, 0.8, -11.15)
+rotation = Vector3(-0.4981, -0.6651, 0.0)
+metadata/fov = 42.0
+
+; insert: his hand on her face / her hand on the wall
+[node name="shot_insert_hands" type="Marker3D" parent="." groups=["vn_shot"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.1, 1.55, -11.15)
+rotation = Vector3(0, 0, 0)
+metadata/fov = 42.0
+
+; insert: her hand on the wall over the patch
+[node name="shot_insert_hand" type="Marker3D" parent="." groups=["vn_shot"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.4, 1.55, -11.2)
+rotation = Vector3(0, 0, 0)
+metadata/fov = 42.0
+
+; insert: the four bowls at the wall
+[node name="shot_insert_bowls" type="Marker3D" parent="." groups=["vn_shot"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.4, 0.7, -10.9)
+rotation = Vector3(-0.5887, 0.7908, 0.0)
+metadata/fov = 42.0
+
+; insert: Kai's notebook on the crate
+[node name="shot_insert_notebook" type="Marker3D" parent="." groups=["vn_shot"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.65, 0.85, -10.85)
+rotation = Vector3(-0.7001, -0.0805, 0.0)
+metadata/fov = 42.0
+
+; insert: the crow on the dumpster lid
+[node name="shot_insert_crow" type="Marker3D" parent="." groups=["vn_shot"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.4, 1.5, -9.9)
+rotation = Vector3(-0.1522, -0.8150, 0.0)
+metadata/fov = 42.0

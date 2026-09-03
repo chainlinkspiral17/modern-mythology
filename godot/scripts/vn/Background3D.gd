@@ -1175,6 +1175,38 @@ const CAMERA_PRESETS := {
 		"fov": 66.0,
 		"suppress_input": true,
 	},
+	# ── VOL 7 — Cape Perpetua, the unmarked overlook (re-homed off
+	# cabin_road 2026-09-01; vol7_ch12_morning) ───────────────────────
+	"cape_perpetua_overlook": {
+		"scene": "res://scenes/locales/cape_perpetua_overlook.tscn",
+		"requires_glb": "res://assets/3d/locales/cape_perpetua_overlook.glb",
+		# The platform (blender -4,12; earthen disc r1.55), the rail on
+		# its seaward edge (x -5.35), the bench at the inner edge (x
+		# -2.85), the hexagon on the earth at (-4.75,12.15), the fog bank
+		# west below the bluff. Camera at the spur trail's last bend
+		# (blender -1.5, 9.5) looking north-west: bench near-right, rail
+		# + crow mid, the fog in the trees beyond.
+		"camera_origin": Vector3(-1.5, 1.65, -9.5),
+		"camera_rotation": Vector3(-0.06, 0.785, 0.0),
+		"fov": 58.0,
+		"suppress_input": true,
+	},
+	# ── VOL 7 — Main Street, Smolvud (re-homed off cabin_road
+	# 2026-09-01): the sidewalk in front of Board Lords, the sanderling
+	# mural + patch on the laundromat wall across Main ────────────────
+	"main_street": {
+		"scene": "res://scenes/locales/board_lords_interior.tscn",
+		"requires_glb": "res://assets/3d/locales/board_lords_interior.glb",
+		# board_lords_interior's street: near sidewalk blender y -0.2..-2.0,
+		# Main to -8.65, far sidewalk, Across_Facade at y -9.05 with the
+		# mural at (-2.75, -8.9). Camera on the near sidewalk (blender
+		# -1.0, -1.2) looking across the street at the mural, Board Lords'
+		# awning just out of frame above-left.
+		"camera_origin": Vector3(-1.0, 1.60, 1.2),
+		"camera_rotation": Vector3(0.03, 2.918, 0.0),
+		"fov": 62.0,
+		"suppress_input": true,
+	},
 	"board_lords_interior": {
 		"scene": "res://scenes/locales/board_lords_interior.tscn",
 		"requires_glb": "res://assets/3d/locales/board_lords_interior.glb",

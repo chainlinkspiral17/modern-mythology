@@ -230,6 +230,26 @@ henderson_garage. New lessons:
   footprints/stick/crawdad hole) or the marker has nothing to aim
   at in-container.
 
+### 2026-09-01 (sixth) · re-homing: the road aggregates were hiding real rooms
+
+- **Survey by bg segment, not by cue.** Splitting each scene at its
+  `bg` nodes and reading the first two prose lines of every
+  road-staged segment sorted 61 segments into: real rooms that
+  already existed (bakery, cabin, cedar tower, henderson porch,
+  cosmic front door), one preset that already existed and nobody
+  was using (salty_tome_alley — vol7's climax wall), two places
+  worth building (Cape Perpetua, Main Street), and honest drives.
+- **Presets are cheaper than locales.** Main Street is a camera on
+  the Board Lords set's existing street plates plus one dressing
+  pass; the alley was a preset with no scenes pointed at it. Check
+  Background3D for a usable preset before opening a new builder.
+- **A re-point moves its cues.** salty_tome_alley went 0 → 16 blind
+  the moment nine scenes landed on it; budget the prop pass with
+  the re-point, not after.
+- **make_blob radii lie by ~30%.** Salal mounds placed at nominal r
+  clipped the trail and the platform edge (five clips); keep blobs
+  a full radius clear of anything you care about.
+
 ### 2026-09-01 (fifth stretch) · the 1-cue tail; the program's end state
 
 Seventeen single-cue presets cleared (blind 85 → 68). Every

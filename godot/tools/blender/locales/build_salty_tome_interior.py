@@ -534,6 +534,57 @@ def build_hero_props_2026_09():
              (0.55, 0.44, 0.22, 1.0), segments=6)
 
 
+def build_alley_2026_09():
+    """THE ALLEY, RE-HOMED (2026-09-01). Nine vol7 segments — the
+    painting of the face (ch14), the crowd at the wall (ch20/21), the
+    leaving — sat on the cabin_road backdrop; they now stage here, and
+    the alley needed what those chapters hold:
+
+    - THE STARFISH NEBULA on this wall (Lena's kitchen window looks
+      down at it) and THE SUBSTRATE PATCH the face is painted INTO
+      ("paint the face into the patch. Where the substrate has been
+      eating"). The face bands already stand proud of the brick; the
+      patch sits just behind them, the nebula behind that.
+    - THE MILK CRATE at the foot of the wall ("She set the crate down
+      beside the wall") with the brush in its jar of medium, the
+      eighth-piece cedar, Kai's notebook; the canvas bag beside it.
+    - THE FOUR BOWLS on the asphalt at the wall (ch21).
+    - LENA'S HAND on the wall over the patch — a faint print, the
+      residue grammar for hands.
+    - THE CROW on the dumpster lid.
+    - The laundromat's brick closing the far (east) end: "The alley
+      has only the one entrance."
+    """
+    from _props.creatures import make_crow
+    cedar = (0.55, 0.38, 0.26, 1.0); cedar_dk = (0.44, 0.30, 0.20, 1.0)
+    AL_Y1 = 12.0
+    # nebula ground + bands (inside the wall's paint depth), the patch in front
+    make_box("Nebula_Ground", (-0.8, AL_Y1 - 0.105, 1.85), (7.0, 0.010, 2.60), (0.13, 0.10, 0.26, 1.0))
+    make_box("Nebula_Band_Violet", (-3.2, AL_Y1 - 0.100, 2.30), (2.6, 0.008, 0.9), (0.34, 0.20, 0.46, 1.0))
+    make_box("Nebula_Band_Teal", (1.6, AL_Y1 - 0.100, 1.55), (2.4, 0.008, 1.0), (0.16, 0.38, 0.44, 1.0))
+    make_box("Nebula_Band_Rose", (-2.4, AL_Y1 - 0.098, 1.10), (1.8, 0.006, 0.55), (0.62, 0.32, 0.42, 1.0))
+    make_box("Nebula_Star_Core", (2.2, AL_Y1 - 0.097, 2.45), (0.34, 0.005, 0.34), (0.88, 0.84, 0.66, 1.0))
+    make_box("Substrate_Patch", (-0.8, AL_Y1 - 0.116, 1.85), (2.2, 0.006, 2.2), (0.06, 0.06, 0.07, 1.0))
+    # Lena's hand on the wall over the patch
+    make_box("Hand_Wall_Print", (-0.15, AL_Y1 - 0.121, 1.50), (0.09, 0.004, 0.11), (0.30, 0.28, 0.30, 1.0))
+    # the milk crate at the foot of the wall + what is on it
+    make_box("Wall_Crate", (-1.6, 11.55, 0.16), (0.35, 0.35, 0.32), (0.55, 0.45, 0.30, 1.0))
+    make_cyl("Brush_Jar", (-1.70, 11.66, 0.375), 0.040, 0.11, (0.72, 0.76, 0.74, 0.6), segments=10)
+    make_cyl("Paint_Brush", (-1.70, 11.66, 0.52), 0.007, 0.18, (0.62, 0.50, 0.32, 1.0), segments=6)
+    make_box("Carved_Cedar", (-1.48, 11.66, 0.345), (0.07, 0.05, 0.05), cedar_dk)
+    make_box("Kai_Notebook", (-1.60, 11.47, 0.326), (0.11, 0.15, 0.012), (0.30, 0.44, 0.58, 1.0))
+    make_box("Canvas_Bag", (-2.15, 11.55, 0.09), (0.28, 0.20, 0.18), (0.62, 0.58, 0.48, 1.0))
+    # the four bowls on the asphalt at the wall
+    for bi, (bx, by) in enumerate(((-2.9, 11.5), (-3.25, 11.45), (-2.75, 11.72), (-3.5, 11.7))):
+        make_cyl(f"Cedar_Bowl_{bi}", (bx, by, 0.0275), 0.085, 0.055, cedar, segments=12)
+        make_cyl(f"Cedar_Bowl_Rim_{bi}", (bx, by, 0.0575), 0.068, 0.005, cedar_dk, segments=12)
+    # the crow on the dumpster lid
+    make_crow("Alley_Crow", 2.0, 10.45, 1.28, facing=-1.0)
+    # the laundromat's brick closes the far end
+    make_box("Laundromat_Brick_End", (5.65, 10.5, 1.80), (0.30, 3.40, 3.60), (0.40, 0.28, 0.22, 1.0))
+    make_box("Alley_Entrance_Curb", (-5.6, 10.5, 0.03), (0.30, 3.40, 0.10), (0.52, 0.52, 0.50, 1.0))
+
+
 def main():
     clear_scene()
     build_shell()
@@ -550,6 +601,7 @@ def main():
     build_use_states_2026_08()
     build_beyond_glass_2026_08()
     build_hero_props_2026_09()
+    build_alley_2026_09()
     out = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)),
         "../../../assets/3d/locales/salty_tome_interior.glb"))
     print(f"\n[build_salty_tome_interior] exporting to {out}")

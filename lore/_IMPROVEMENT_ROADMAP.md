@@ -115,7 +115,29 @@ the green Subaru + quilt seat, the Speak & Spell under the
 register, Rick's notebook), then the whole 2-cue tail in one wave
 -> blind 85 across 25 presets, 276 aim-verified markers. FIFTH
 STRETCH: all seventeen 1-cue presets -> blind 68 across 9 presets,
-293 aim-verified markers. THE PROGRAM'S END STATE: every remaining
+293 aim-verified markers. RE-HOMING DRAFT 1 (2026-09-01, user: "let's get real locales"):
+25 road-staged segments moved onto real places — the nine alley
+scenes (vol7's climax: the painting, the crowd at the wall, the
+leaving) onto salty_tome_alley, now dressed with the nebula, the
+substrate patch the face is painted into, the crate + brush + cedar
++ notebook, the four bowls, Lena's hand print, the crow, the
+laundromat brick closing the far end; NEW cape_perpetua_overlook
+(the earthen platform, rail, wet bench, salal, spur trail, the lot
+with the Vestergaard truck and the old Subaru, fog in the trees
+below, the hexagon on the earth); NEW main_street preset on the
+Board Lords set (awning, sign, CLOSED, laundromat + shoe-repair
+across, streetlamp, Finn's truck at the curb with the crow on the
+cab); and re-points to bakery / cabin / cedar tower exterior /
+henderson porch / cosmic front door. cabin_road 43 -> 18 blind.
+DRAFT 2 TARGETS (queued, by yield): meadowlark_circle (the Harmony
+Creek cul-de-sac: prelude, codas, ch23 night — 6 segments),
+vehicle_cab (truck/sedan interior: ch5_truck's 86 nodes, ch5_radio,
+ch4_storm, ch6_interstate, el_rancho, vol5 moon — 7 segments),
+lake_palestine (ch8, 97 nodes), estuary_7_template (the epilogue's
+planner's view: river, sand bar, tower, mill, grove, diner). The
+strip-mall scenes stay on louisiana_road — that IS the strip mall
+(its marquee/unit markers live there). What remains on cabin_road
+is honest driving. THE PROGRAM'S END STATE: every remaining
 blind cue is deliberate — the two road aggregates (re-homing
 decision), four cast closeups without char ids, three beats that
 happen elsewhere or on a person. NEXT:

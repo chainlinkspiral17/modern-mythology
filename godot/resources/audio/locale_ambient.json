@@ -1,5 +1,5 @@
 {
-  "_doc": "Per-locale ambient beds. Key = Background3D CAMERA_PRESETS preset_id (the locale's bg3d id). On locale enter, AudioMgr ducks the dominant Music Player track to AMBIENT_DUCK (14%) and crossfades this bed up on the Ambient bus; on exit it reverses. bed = un-prefixed res path; gain = ambient bus target as a fraction of Settings.bgm_vol. Omit a locale (or point at a missing file) to leave the Music Player untouched there — a silent no-op. Character-portrait presets (alberto/antonio/dante/elicia/frasier/john/nicola/sam) are NOT locales and are intentionally absent. Beds reuse the shipped drones + four bespoke room-tones (diner, cathedral, domestic, and the two vol5 drones); any locale can get a bespoke bed later without touching code.",
+  "_doc": "Per-locale ambient beds. Key = Background3D CAMERA_PRESETS preset_id (the locale's bg3d id). On locale enter, AudioMgr ducks the dominant Music Player track to AMBIENT_DUCK (14%) and crossfades this bed up on the Ambient bus; on exit it reverses. bed = un-prefixed res path; gain = ambient bus target as a fraction of Settings.bgm_vol. Omit a locale (or point at a missing file) to leave the Music Player untouched there \u2014 a silent no-op. Character-portrait presets (alberto/antonio/dante/elicia/frasier/john/nicola/sam) are NOT locales and are intentionally absent. Beds reuse the shipped drones + four bespoke room-tones (diner, cathedral, domestic, and the two vol5 drones); any locale can get a bespoke bed later without touching code.",
   "locales": {
     "diner_interior": {
       "bed": "assets/audio/bgm/vol5_diner_roomtone.wav",
@@ -315,6 +315,14 @@
     },
     "nightmare_cell": {
       "bed": "assets/audio/bgm/vol5_warehouse_drone.ogg",
+      "gain": 0.82
+    },
+    "cape_perpetua_overlook": {
+      "bed": "assets/audio/bgm/vol5_domestic_roomtone.wav",
+      "gain": 0.9
+    },
+    "main_street": {
+      "bed": "assets/audio/bgm/vol5_store_ambient.wav",
       "gain": 0.82
     }
   }

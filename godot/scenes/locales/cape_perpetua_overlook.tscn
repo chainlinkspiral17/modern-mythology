@@ -1,6 +1,6 @@
-[gd_scene load_steps=24 format=3 uid="uid://cedar_tower_v7"]
+[gd_scene load_steps=24 format=3 uid="uid://cape_perpetua_overlook_vol7"]
 
-[ext_resource type="PackedScene" path="res://assets/3d/locales/cedar_tower.glb" id="1_glb"]
+[ext_resource type="PackedScene" path="res://assets/3d/locales/cape_perpetua_overlook.glb" id="1_glb"]
 [ext_resource type="Script" path="res://scripts/DebugHUD.gd" id="3_hud"]
 [ext_resource type="Shader" path="res://assets/shaders/demoscene_post.gdshader" id="4_post"]
 [ext_resource type="Script" path="res://scripts/MoodCycler.gd" id="5_mood"]
@@ -23,15 +23,15 @@ shader_parameter/dither_strength = 0.10
 shader_parameter/scanline_strength = 0.18
 shader_parameter/chromatic_aberration = 0.0008
 shader_parameter/ascii_strength = 0.0
-shader_parameter/ascii_color = Color(0.92, 0.82, 0.62, 1)
-shader_parameter/ascii_bg = Color(0.16, 0.13, 0.10, 1)
+shader_parameter/ascii_color = Color(0.96, 0.62, 0.28, 1)
+shader_parameter/ascii_bg = Color(0.10, 0.06, 0.04, 1)
 
 [sub_resource type="ShaderMaterial" id="Mat_Ascii"]
 shader = ExtResource("6_ascii")
 shader_parameter/cell_size = 10.0
 shader_parameter/strength = 0.0
-shader_parameter/fg_color = Color(0.92, 0.82, 0.62, 1)
-shader_parameter/bg_color = Color(0.16, 0.13, 0.10, 1)
+shader_parameter/fg_color = Color(0.96, 0.62, 0.28, 1)
+shader_parameter/bg_color = Color(0.10, 0.06, 0.04, 1)
 shader_parameter/tint_from_scene = true
 shader_parameter/gamma = 0.85
 
@@ -40,9 +40,9 @@ shader = ExtResource("7_neon")
 shader_parameter/strength = 0.0
 shader_parameter/edge_threshold = 0.10
 shader_parameter/edge_thickness = 1.6
-shader_parameter/edge_color = Color(0.80, 0.66, 0.44, 1)
-shader_parameter/fill_low = Color(0.34, 0.28, 0.20, 1)
-shader_parameter/fill_high = Color(0.12, 0.10, 0.08, 1)
+shader_parameter/edge_color = Color(0.96, 0.42, 0.20, 1)
+shader_parameter/fill_low = Color(0.42, 0.20, 0.12, 1)
+shader_parameter/fill_high = Color(0.10, 0.06, 0.04, 1)
 shader_parameter/fill_gradient = 1.0
 shader_parameter/edge_glow = 0.4
 shader_parameter/scene_blend = 0.0
@@ -62,13 +62,13 @@ shader = ExtResource("8_dir")
 shader_parameter/strength = 0.0
 shader_parameter/cell_size = 10.0
 shader_parameter/edge_threshold = 0.10
-shader_parameter/line_color = Color(0.80, 0.66, 0.44, 1)
+shader_parameter/line_color = Color(0.96, 0.42, 0.20, 1)
 shader_parameter/fill_color = Color(0.02, 0.02, 0.03, 1)
 shader_parameter/tint_from_scene = false
 shader_parameter/input_scale = 1.0
 shader_parameter/mono_with_red = false
-shader_parameter/mono_white = Color(0.92, 0.82, 0.62, 1)
-shader_parameter/mono_red = Color(0.80, 0.66, 0.44, 1)
+shader_parameter/mono_white = Color(0.96, 0.62, 0.28, 1)
+shader_parameter/mono_red = Color(0.96, 0.42, 0.20, 1)
 shader_parameter/red_threshold = 0.20
 
 [sub_resource type="ShaderMaterial" id="Mat_Starscape"]
@@ -77,7 +77,7 @@ shader_parameter/strength = 0.0
 shader_parameter/cell_size = 10.0
 shader_parameter/time_scale = 0.40
 shader_parameter/sky_thresh = 0.10
-shader_parameter/star_white = Color(0.92, 0.82, 0.62, 1)
+shader_parameter/star_white = Color(0.96, 0.62, 0.28, 1)
 shader_parameter/galaxy_col = Color(0.78, 0.82, 0.95, 1)
 shader_parameter/chip_col = Color(0.62, 0.78, 0.88, 1)
 shader_parameter/galaxy_strength = 0.6
@@ -96,7 +96,7 @@ shader_parameter/strength = 0.0
 shader_parameter/motion_speed = 0.0
 shader_parameter/motion_dir = Vector2(1, 0)
 shader_parameter/cell_size = 9.0
-shader_parameter/line_color = Color(0.92, 0.82, 0.62, 1)
+shader_parameter/line_color = Color(0.96, 0.62, 0.28, 1)
 shader_parameter/trail_strength = 0.6
 shader_parameter/line_density = 0.85
 
@@ -111,7 +111,7 @@ shader_parameter/motion_dir = Vector2(1, 0)
 shader = ExtResource("12_oldfilm")
 shader_parameter/strength = 0.0
 shader_parameter/sim_fps = 18.0
-shader_parameter/tint_color = Color(0.92, 0.82, 0.62, 1)
+shader_parameter/tint_color = Color(0.96, 0.62, 0.28, 1)
 shader_parameter/tint_amount = 0.55
 shader_parameter/grain_strength = 0.18
 shader_parameter/flicker_strength = 0.20
@@ -126,100 +126,55 @@ shader_parameter/edge_ca = 0.012
 shader_parameter/wobble_amp = 0.0018
 shader_parameter/wobble_freq = 0.85
 shader_parameter/tint_amount = 0.18
-shader_parameter/tint_color = Color(0.70, 0.62, 0.46, 1)
+shader_parameter/tint_color = Color(0.96, 0.62, 0.28, 1)
 
 [sub_resource type="Environment" id="Env_Locale"]
 background_mode = 1
-background_color = Color(0.20, 0.18, 0.15, 1)
+background_color = Color(0.62, 0.74, 0.88, 1)
 ambient_light_source = 2
-ambient_light_color = Color(0.62, 0.52, 0.40, 1)
-ambient_light_energy = 0.65
+ambient_light_color = Color(0.72, 0.74, 0.70, 1)
+ambient_light_energy = 0.9
 fog_enabled = true
-fog_light_color = Color(0.36, 0.30, 0.24, 1)
-fog_light_energy = 0.35
-; STUMP HUNT (2026-08-04): this exterior's geometry now runs
-; past 120m. Fog retuned so the new distance reads as air —
-; density capped so bands 200-800m out survive to the eye,
-; aerial perspective + sky-affect so the horizon is haze,
-; not a cut edge.
-fog_density = 0.004
-fog_sky_affect = 1.0
-fog_aerial_perspective = 1.0
+fog_light_color = Color(0.70, 0.74, 0.72, 1)
+fog_light_energy = 0.15
+fog_density = 0.001
 adjustment_enabled = true
 adjustment_brightness = 1.0
-adjustment_contrast = 1.04
-adjustment_saturation = 0.96
+adjustment_contrast = 1.05
+adjustment_saturation = 1.08
 glow_enabled = true
-glow_intensity = 0.75
-glow_bloom = 0.14
+glow_intensity = 0.55
+glow_bloom = 0.08
 glow_blend_mode = 1
 glow_hdr_threshold = 0.95
 glow_hdr_scale = 2.4
 
-[node name="CedarTower" type="Node3D"]
+[node name="CapePerpetuaOverlook" type="Node3D"]
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Env_Locale")
 
-[node name="Key_Warm" type="DirectionalLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.707, -0.707, 0, 0.707, 0.707, 0, 8, 0)
-light_color = Color(0.95, 0.86, 0.7, 1)
-light_energy = 0.85
+; Overcast coast at eight-thirty in the morning: a soft cool key
+; from the south-east, a big sky fill, no practicals — fog does the
+; rest as a mood.
+[node name="Sun" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.707, -0.354, -0.612, 0, 0.866, -0.5, 0.707, -0.354, -0.612, 0, 4, 0)
+light_color = Color(0.90, 0.92, 0.96, 1)
+light_energy = 0.75
 shadow_enabled = false
 
-[node name="Fill" type="DirectionalLight3D" parent="."]
-transform = Transform3D(-0.707, -0.354, -0.612, 0, 0.866, -0.5, 0.707, -0.354, -0.612, -3, 5, 0)
-light_color = Color(0.72, 0.64, 0.52, 1)
-light_energy = 0.35
+[node name="Sky_Fill" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.707, -0.5, 0.5, 0, 0.707, 0.707, -0.707, -0.5, 0.5, 0, 4, 5)
+light_color = Color(0.70, 0.78, 0.88, 1)
+light_energy = 0.55
 shadow_enabled = false
-
-[node name="Back" type="DirectionalLight3D" parent="."]
-transform = Transform3D(0.707, -0.5, 0.5, 0, 0.707, 0.707, -0.707, -0.5, 0.5, 0, 5, 5)
-light_color = Color(0.55, 0.5, 0.44, 1)
-light_energy = 0.25
-shadow_enabled = false
-
-[node name="Portrait_Wash" type="OmniLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.4, -7.4)
-light_color = Color(0.98, 0.88, 0.68, 1)
-light_energy = 1.0
-shadow_enabled = false
-omni_range = 3.5
-
-[node name="Rack_Green" type="OmniLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6.6, -8.4)
-light_color = Color(0.4, 0.8, 0.48, 1)
-light_energy = 0.7
-shadow_enabled = false
-omni_range = 5.0
-
-[node name="Q_Stove_Ember" type="OmniLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.0, 10.6, -6.6)
-light_color = Color(0.96, 0.52, 0.24, 1)
-light_energy = 0.8
-shadow_enabled = false
-omni_range = 3.5
-
-[node name="Substrate_Glow" type="OmniLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 16.6, -20.4)
-light_color = Color(0.6, 0.82, 0.88, 1)
-light_energy = 1.6
-shadow_enabled = false
-omni_range = 12.0
-
-[node name="Garden_Glass" type="OmniLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 45.0, 25.0, -7.6)
-light_color = Color(0.55, 0.8, 0.58, 1)
-light_energy = 1.2
-shadow_enabled = false
-omni_range = 8.0
 
 [node name="Interior" parent="." instance=ExtResource("1_glb")]
 
 [node name="PostProcess" type="CanvasLayer" parent="."]
 layer = 50
 script = ExtResource("5_mood")
-mood_strata = Array[String](["raw", "noir", "lithograph", "macro_haze", "liminal_interior", "memory_warm"])
+mood_strata = Array[String](["raw", "noir", "ink_blue", "sodium_streetlamp", "candlelight", "memory_warm"])
 default_style_pack = ""
 
 [node name="NeonQuad" type="ColorRect" parent="PostProcess"]
@@ -334,95 +289,28 @@ offset_right = 520.0
 offset_bottom = 980.0
 script = ExtResource("14_dbgm")
 
-; ── CEDAR TOWER vn_shot coverage (draft 3, 2026-08-03) ──
-; Per-floor setups for VnDirector; Deck-tune pending.
 
-; in the doors: runner, desk, Dean's portrait
-[node name="shot_establish_lobby" type="Marker3D" parent="." groups=["vn_shot"]]
-position = Vector3(0.9, 1.7, -1.2)
-rotation = Vector3(-0.0300005, 0.22, 0)
-metadata/fov = 55.0
-
-; Dean at forty-eight, sconce-lit
-[node name="shot_closeup_portrait" type="Marker3D" parent="." groups=["vn_shot"]]
-position = Vector3(0, 1.75, -6.2)
-rotation = Vector3(0.0200003, 0, 0)
-metadata/fov = 40.0
-
-; across the desk clusters to the racks
-[node name="shot_wide_studio" type="Marker3D" parent="." groups=["vn_shot"]]
-position = Vector3(-4.5, 6.6, -1.4)
-rotation = Vector3(-0.0300005, -0.779999, 0)
-metadata/fov = 62.0
-
-; the half-sized Estuary 7 poster on the archive wall
-[node name="shot_closeup_estuary7" type="Marker3D" parent="." groups=["vn_shot"]]
-position = Vector3(0.55, 6.55, -1.6)
-rotation = Vector3(0, 3.14159, 0)
-metadata/fov = 35.0
-
-; the communal table + bunks, mid-card-game
-[node name="shot_wide_quarters" type="Marker3D" parent="." groups=["vn_shot"]]
-position = Vector3(2.8, 11.55, -1)
-rotation = Vector3(-0.0300005, 0.82, 0)
-metadata/fov = 60.0
-
-; through the door: the sixty-foot walk to the substrate
-[node name="shot_walk_portal" type="Marker3D" parent="." groups=["vn_shot"]]
-position = Vector3(0, 16.6, -3.4)
-rotation = Vector3(-0.0100002, 0, 0)
-metadata/fov = 55.0
-
-; the far door, handle-side, the exit Aria takes
-[node name="shot_closeup_fardoor" type="Marker3D" parent="." groups=["vn_shot"]]
-position = Vector3(0, 16.55, -18.5)
-rotation = Vector3(0, 0, 0)
-metadata/fov = 45.0
-
-; insert: the photograph of Dean at forty-eight
-[node name="shot_insert_photograph" type="Marker3D" parent="." groups=["vn_shot"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0, 1.7, -7.1)
-rotation = Vector3(0, 0, 0)
+; ── vn_shot · cape_perpetua_overlook (2026-09-01) ─────────────────
+; insert: the hexagon on the platform's earthen floor, between the boots and the rail
+[node name="shot_insert_hexagon" type="Marker3D" parent="." groups=["vn_shot"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.2, 0.9, -11.55)
+rotation = Vector3(-0.7819, 0.7399, 0.0)
 metadata/fov = 42.0
 
-; insert: Estuary 7 — the poster, sixty-three times since July
-[node name="shot_insert_estuary_7" type="Marker3D" parent="." groups=["vn_shot"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.55, 6.3, -1.0)
-rotation = Vector3(0.2606, -3.1416, 0.0)
+; insert: the crow lands on the rail beside him
+[node name="shot_insert_crow" type="Marker3D" parent="." groups=["vn_shot"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.6, 1.45, -10.9)
+rotation = Vector3(-0.2102, 0.9516, 0.0)
 metadata/fov = 42.0
 
-; insert: the Tideline Survey poster's lower-right credit
-[node name="shot_insert_credit" type="Marker3D" parent="." groups=["vn_shot"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.95, 5.3, -0.55)
-rotation = Vector3(0.2634, -3.1416, 0.0)
+; insert: the bench at the inner edge, wet, the canvas bag on it
+[node name="shot_insert_bench" type="Marker3D" parent="." groups=["vn_shot"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.4, 1.1, -11.2)
+rotation = Vector3(-0.5920, -0.6338, 0.0)
 metadata/fov = 42.0
 
-; insert: the unmarked cedar door
-[node name="shot_insert_door" type="Marker3D" parent="." groups=["vn_shot"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0, 16.3, -2.2)
-rotation = Vector3(0, 0, 0)
-metadata/fov = 42.0
-
-; insert: the six-by-six window above the handle
-[node name="shot_insert_window" type="Marker3D" parent="." groups=["vn_shot"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0, 16.42, -2.45)
-rotation = Vector3(0, 0, 0)
-metadata/fov = 42.0
-
-; insert: the same book she had on the cedar shelf at the cabin
-[node name="shot_insert_book" type="Marker3D" parent="." groups=["vn_shot"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.0, 11.2, -3.6)
-rotation = Vector3(-0.6114, -0.5028, 0.0)
-metadata/fov = 42.0
-
-; insert: the seventh floor's smart-glass running the garden
-[node name="shot_insert_tower" type="Marker3D" parent="." groups=["vn_shot"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 41.5, 1.7, 5.0)
-rotation = Vector3(0, 0, 0)
-metadata/fov = 42.0
-
-; insert: the tower's doors from the clearing
-[node name="shot_insert_doors" type="Marker3D" parent="." groups=["vn_shot"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0, 1.5, 1.2)
+; insert: the foundation truck, the Vestergaard plaque on its tailgate
+[node name="shot_insert_truck" type="Marker3D" parent="." groups=["vn_shot"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.6, 1.2, 9.6)
 rotation = Vector3(0, 0, 0)
 metadata/fov = 42.0
