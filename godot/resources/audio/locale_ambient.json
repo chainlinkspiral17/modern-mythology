@@ -376,6 +376,14 @@
     "kestrel_mountain_square": {
       "bed": "assets/audio/bgm/vol5_cathedral_drone.wav",
       "gain": 0.40
+    },
+    "accretion_corridor": {
+      "bed": "assets/audio/bgm/vol5_warehouse_drone.ogg",
+      "gain": 0.50
+    },
+    "accretion_basement": {
+      "bed": "assets/audio/bgm/vol5_warehouse_drone.ogg",
+      "gain": 0.62
     }
   }
 }

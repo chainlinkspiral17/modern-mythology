@@ -185,7 +185,7 @@
    "t": "narrate"
   },
   {
-   "src": "3d:cabin_interior",
+   "src": "3d:accretion_corridor",
    "t": "bg"
   },
   {
@@ -207,6 +207,10 @@
   {
    "text": "[shot:insert door~]The stairs ended at a door. The door said, in stenciled letters: NO ENTRY EXCEPT BY AUTHORIZED PERSONNEL.",
    "t": "narrate"
+  },
+  {
+   "src": "3d:accretion_basement",
+   "t": "bg"
   },
   {
    "text": "He pushed the door open. He went in.",

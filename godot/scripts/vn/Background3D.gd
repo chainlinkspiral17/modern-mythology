@@ -1384,6 +1384,32 @@ const CAMERA_PRESETS := {
 		"fov": 55.0,
 		"suppress_input": true,
 	},
+	# ── VOL 7 — the corridor behind the hedge (re-homed off cabin_interior
+	# 2026-09-03): ch11 nodes 41-128, the substrate's accretion — a
+	# 1990s institutional hallway, the stairs, the basement, the boy.
+	"accretion_corridor": {
+		"scene": "res://scenes/locales/accretion_basement.tscn",
+		"requires_glb": "res://assets/3d/locales/accretion_basement.glb",
+		# First leg runs blender +y from 0 to 24 at x 0. Camera at the
+		# start, eye 1.55, looking straight down the hallway: doors both
+		# sides, wire-glass at face height, the right turn at the end.
+		"camera_origin": Vector3(0.0, 1.55, -1.5),
+		"camera_rotation": Vector3(0.0, 0.0, 0.0),
+		"fov": 62.0,
+		"suppress_input": true,
+	},
+	"accretion_basement": {
+		"scene": "res://scenes/locales/accretion_basement.tscn",
+		"requires_glb": "res://assets/3d/locales/accretion_basement.glb",
+		# Just inside the stenciled door (blender 12, 14, floor -3),
+		# looking SOUTH down the long room: the six racks on the left,
+		# the desk and the wooden chair on the right, the flickering
+		# fixture at the far end.
+		"camera_origin": Vector3(12.0, -1.45, -14.0),
+		"camera_rotation": Vector3(-0.03, 3.1416, 0.0),
+		"fov": 64.0,
+		"suppress_input": true,
+	},
 	"board_lords_interior": {
 		"scene": "res://scenes/locales/board_lords_interior.tscn",
 		"requires_glb": "res://assets/3d/locales/board_lords_interior.glb",
