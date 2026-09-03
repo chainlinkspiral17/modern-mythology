@@ -36,9 +36,11 @@ road with Aud's diner, the cabin with the drone hovering on its beam,
 the four substrate-lines as circuit traces, the mill with its water
 wheel on the bend, the grove, the basalt headland with the pools, the
 ridge; the three palettes and the two clocks; a void floor.
-Draft 2 targets: the gallery's dimmed earlier layers (a second,
-ghosted tower), the cursor blinking at the template center, Tideline
-Survey's stakes, the far-off-frame glyphs labeled.
+DRAFT 2 (2026-09-03): the gallery's layers as four glass sheets over
+the table with name tabs, labels on the off-frame glyphs, the cursor
+at the template center. Draft 3 targets: a tight preset on the cabin
+hub, wake lines on the sea, the drone-palette's greyed-out state as
+a second variant.
 """
 import os, sys, math
 _BT = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)), ".."))
@@ -263,6 +265,34 @@ def build_palettes_and_clocks():
     make_box("Submission_Label_Text", (-6.5, 3.35, 0.325), (0.62, 0.06, 0.01), (0.86, 0.84, 0.78, 1.0))
 
 
+def build_gallery_2026_09():
+    """DRAFT 2 (2026-09-03): the gallery's layers. "The build faded to
+    dimness — still visible, tower and town held as the gallery's
+    first layer — and the next build began to render over it." Four
+    glass sheets hover over the table, one per submission in the
+    order the substrate walked them (Dean 2013, Egilsson 1971,
+    Halvorsen 1968, the rest), each with a name tab at its south-west
+    corner. Labels beside the two off-frame glyphs. The cursor
+    blinking at the center of the template, where The Submission
+    starts."""
+    sheet = (0.62, 0.78, 0.92, 0.10)
+    for li, (z, shade) in enumerate(((1.90, 0.10), (2.15, 0.08), (2.40, 0.06), (2.65, 0.05))):
+        make_box(f"Gallery_Layer_{li}", (1.4, 0.0, z), (9.2, 9.0, 0.004), (sheet[0], sheet[1], sheet[2], shade))
+        make_box(f"Gallery_Layer_{li}_Edge", (1.4, -4.51, z), (9.2, 0.02, 0.012), (0.62, 0.86, 0.96, 0.6))
+        make_box(f"Gallery_Layer_{li}_Tab", (-2.9, -4.62, z), (0.70, 0.20, 0.010), PALETTE)
+        make_box(f"Gallery_Layer_{li}_Tab_Text", (-2.9, -4.62, z + 0.0075), (0.56, 0.06, 0.004), PALETTE_GLYPH if li == 0 else PALETTE_GREY)
+    # the off-frame glyphs get their labels
+    make_box("Foundation_Label", (5.94, -1.16, Z_TRACE + 0.001), (0.30, 0.08, 0.004), PALETTE)
+    make_box("Foundation_Label_Text", (5.94, -1.16, Z_TRACE + 0.0045), (0.24, 0.03, 0.002), PALETTE_GLYPH)
+    make_box("Cove_Label", (2.25, -3.25, Z_TRACE + 0.001), (0.30, 0.08, 0.004), PALETTE)
+    make_box("Cove_Label_Text", (2.25, -3.25, Z_TRACE + 0.0045), (0.24, 0.03, 0.002), PALETTE_GLYPH)
+    # the cursor at the center of the template, waiting for her to place something
+    make_cyl("Cursor_Ring", (0.0, -0.06, Z_TRACE + 0.001), 0.06, 0.002, PALETTE_GLYPH, segments=16)
+    make_cyl("Cursor_Ring_Inner", (0.0, -0.06, Z_TRACE + 0.0025), 0.045, 0.001, LAND, segments=16)
+    make_box("Cursor_Cross_H", (0.0, -0.06, Z_TRACE + 0.0035), (0.05, 0.004, 0.001), PALETTE_GLYPH)
+    make_box("Cursor_Cross_V", (0.0, -0.06, Z_TRACE + 0.0035), (0.004, 0.05, 0.001), PALETTE_GLYPH)
+
+
 def main():
     clear_scene()
     build_plinth()
@@ -273,6 +303,7 @@ def main():
     build_mill_and_grove()
     build_headland_and_pools()
     build_palettes_and_clocks()
+    build_gallery_2026_09()
     out = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)),
         "../../../assets/3d/locales/estuary_7_template.glb"))
     print(f"\n[build_estuary_7_template] exporting to {out}")
