@@ -1265,6 +1265,21 @@ const CAMERA_PRESETS := {
 		"fov": 55.0,
 		"suppress_input": true,
 	},
+	# ── VOL 6 — Lake Palestine, the north boat ramp (re-homed off
+	# louisiana_road 2026-09-03): ch8's accounting on the dock.
+	"lake_palestine": {
+		"scene": "res://scenes/locales/lake_palestine.tscn",
+		"requires_glb": "res://assets/3d/locales/lake_palestine.glb",
+		# Shore line at blender y=0, lake south. Camera on the shore
+		# gravel beside the dock's near end (blender 1.6, 2.2), eye
+		# 1.55, looking SOUTH straight down the sixteen meters of
+		# planks to the cleat and the far shore, the truck behind
+		# the camera in the lot, the eastern-shore pines off left.
+		"camera_origin": Vector3(1.6, 1.55, -2.2),
+		"camera_rotation": Vector3(-0.0525, 3.053, 0.0),
+		"fov": 58.0,
+		"suppress_input": true,
+	},
 	"board_lords_interior": {
 		"scene": "res://scenes/locales/board_lords_interior.tscn",
 		"requires_glb": "res://assets/3d/locales/board_lords_interior.glb",

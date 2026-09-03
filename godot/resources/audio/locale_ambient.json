@@ -340,6 +340,10 @@
     "vehicle_cab_side": {
       "bed": "assets/audio/bgm/vol5_ambient.ogg",
       "gain": 0.72
+    },
+    "lake_palestine": {
+      "bed": "assets/audio/bgm/vol5_ambient.ogg",
+      "gain": 0.64
     }
   }
 }
