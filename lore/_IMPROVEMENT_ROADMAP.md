@@ -108,8 +108,13 @@ montreal (the dust motes), maya bedroom (the dock photograph),
 new orleans bar, centro break room (the Karamazov), kowalski,
 jesse bedroom, both salty tome presets (two bells), the bakery's
 hidden three (--all lesson), the cathedral (the Speak & Spell +
-the waiting crow) -> blind 171. NEXT: riverboat_interior (3) and
-the rest of the 3-and-under tail (~25 presets);
+the waiting crow) -> blind 171. FOURTH STRETCH: cabin_interior (15 cues — the
+vol7 heart), henderson kitchen, finn apartment, six 3-cue presets
+(riverboat card, Doyle's sedan + badge + cash, the August bills,
+the green Subaru + quilt seat, the Speak & Spell under the
+register, Rick's notebook), then the whole 2-cue tail in one wave
+-> blind 85 across 25 presets, 276 aim-verified markers. NEXT: the
+1-cue presets (~12);
 cabin_road's 43 and louisiana_road's 18
 are fallback-staging aggregates — a re-homing decision (real
 locales for those scenes), not a prop wave; verify on Deck first.

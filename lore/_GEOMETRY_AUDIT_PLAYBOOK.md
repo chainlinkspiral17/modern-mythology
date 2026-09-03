@@ -230,6 +230,33 @@ henderson_garage. New lessons:
   footprints/stick/crawdad hole) or the marker has nothing to aim
   at in-container.
 
+### 2026-09-01 (fourth stretch) · cabin, the 3-cue and 2-cue tails
+
+cabin_interior (15 cues), henderson kitchen, finn apartment, six
+3-cue presets, twenty 2-cue presets — blind 171 → 85. Lessons:
+
+- **Adding a far prop can flip a view into an EXTERIOR.** The
+  stockroom's dock preset passed the stump hunt for a month; one
+  translucent smear band 60m out made the audit class it exterior
+  and demand a horizon ("view stops at 76m"). Any distant-band
+  prop needs the full exterior kit with it: Ground_Far + receding
+  make_far_bands on the open side.
+- **NEAR_MAX is 40m for inserts.** A "far horizon" subject must
+  still sit inside 40m of its marker or the aim audit calls it a
+  miss (the smear went from 60m to 34m).
+- **Hollow bodies for vehicles with visible interiors.** A seat or
+  a dash inside a solid car box is a clip; build pan + sides +
+  hood + roof as separate boxes and the interior props sit in
+  real air (Doyle's sedan dash, the Subaru's quilt seat).
+- **Half the tail was already built.** Fifteen of the thirty-eight
+  2-cue cues had their prop standing under a name the matcher
+  couldn't see (Guitar_ for telecaster, Bench_ for workbench,
+  MorseKey_ for radio, Helm_CallingCard_ for card). Survey
+  matches BEFORE writing geometry; a synonym line is the fix.
+- **The stub can't see human_figure, so a figure's closeup needs
+  residue** — and a cast closeup of a character with no char id
+  (coach_dale) stays blind on purpose, like douglas.
+
 ### 2026-09-01 (third stretch) · the tail waves; four more tool truths
 
 Eleven more presets cleared (natalie, bianca kitchen, montreal,
