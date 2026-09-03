@@ -165,12 +165,32 @@ meadowlark_circle_henderson (lot 1414 dressed: Ben's truck at the
 curb, the Corolla, the light post + Maya's bike, the patrol vehicle,
 the lit garage vent). vehicle_cab_rear for the four-up;
 lake_palestine_dock for the accounting at the end of the dock.
-Blind 24 → 21 (all deliberate). DRAFT 3 TARGETS (still queued): rain
-on the windshield for ch4_storm (a mood/shader beat, not geometry);
-the gallery's ghosted earlier layers on the diorama + labels on the
-off-frame glyphs; a night pass on meadowlark_circle_henderson's
-practicals (streetlamp 1 is unlit in the tscn); the Cape Perpetua
-tide-pool beat still on cabin_road. Check
+Blind 24 → 21 (all deliberate). RE-HOMING DRAFT 3B-3D (2026-09-03,
+same session): the three vol7 SUBSTRATE chapters that were still
+"driving": (B) tideline_survey — ch18's basalt headland, the pools
+as HOLES in a cell grid with their creatures under a thin water
+skin, the cedar at the bottom of the second, the worn path, the
+knee-hollows; two scenes over one glb so the tide_pool marker
+frames the right pool (marker_aim now resolves a builder through
+the tscn's glb reference). (C) kestrel_mountain — ch11's path as
+ramps between flat station segments with a stepped cliff west and
+drop wedges east, the hut, the stream + plank + bowl, the bench,
+the hedge with berries, the cloud, and the square at the foot with
+the three-basin fountain and twenty-two rim figures; two presets.
+(D) accretion_basement — ch11 nodes 41-128, the 1990s hallway with
+wire-glass doors, the stairs with the green handrail, the stenciled
+door, the basement with six racks and the boy's desk; two presets.
+Also the diorama's draft 2 (gallery layer sheets, off-frame labels,
+the cursor) and Meadowlark's night practicals. Blind 21 → 14, every
+one deliberate (hands ×2, cast closeups without ids ×4, the
+strip-mall door/phone and the Cypress drive-by on louisiana_road,
+the Bern press, the cell window, the tattoo, the charcoal, the
+wooden box). DRAFT 4 TARGETS: the strip-mall back door open two
+inches + Jesse's phone on louisiana_road (ch14_live_oak); the
+Cypress motel as a drive-by band on louisiana_road or its own
+twelve-room L (ch15_home, six nodes — low yield); rain on the
+windshield (mood); scree + switchbacks on Kestrel; the boot-wear
+channel on the headland; promote make_car() into _props. Check
 the exterior template's Sun: its −Z basis points UP (+y) in
 kowalski/meadowlark/cape/vehicle_cab — the Sky_Fill does the
 modeling; lake_palestine's Sun was authored downward on purpose. THE PROGRAM'S END STATE: every remaining

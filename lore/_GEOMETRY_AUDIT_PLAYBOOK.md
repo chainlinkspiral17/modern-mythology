@@ -222,6 +222,33 @@ Lessons:
   third hand-built car in two days; the cab, the lake truck and the
   vigil sedan each re-derived the same non-intersecting bands. Next
   car goes through the helper or promotes it into _props.
+- **A hole is a grid with a cell left out.** There is no subtraction
+  in the builder; the tide pools are a 5x5 cell grid with two cells
+  missing, each hole floored below and skinned with a 12 mm water
+  plate at the top, the creatures standing on the floor UNDER the
+  skin. Nothing sits inside a water box, so nothing clips, and the
+  camera reads a pool through a translucent surface.
+- **A wedge is its bounding box to the audit.** Anything resting on
+  a slope — a rock on the drop wedge, a groove on the ramp slab — is
+  inside the wedge's bbox and reports as a clip. Dress slopes with
+  decals ON the flat neighbor, or don't dress them.
+- **Two scenes over one glb need the tools to know it.** A second
+  tscn (tideline_survey_second) over a shared glb was invisible to
+  marker_aim + reaim because they resolved the builder from the
+  scene's basename; geometry_godot now falls back to the tscn's glb
+  reference. Use the pattern whenever one cue id must frame two
+  different objects in one locale.
+- **Name the cue's neighbors away from it.** The basement door's
+  jambs were Basement_Door_Frame_L/R, so the "door" cue's NEAREST
+  hit was a jamb 43° from where the door was; renaming them
+  Basement_Jamb_* made the door itself the nearest hit. When a cue
+  id is a common noun, keep it out of the names of the parts around
+  the hero.
+- **The exterior threshold is a bbox, not a sky.** locale_geometry
+  calls a locale outdoor when its bbox exceeds 40 m on a side and
+  then wants a 120 m horizon; a 40.6 m hallway-plus-basement got
+  the "exterior view stops" flag. Keep interiors under 40 m or give
+  the audit a ceiling test (queued).
 
 ### 2026-09-01 · the blind-cue hero-prop program (six locales, 324 → 277)
 
