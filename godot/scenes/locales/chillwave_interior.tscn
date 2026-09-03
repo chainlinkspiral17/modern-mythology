@@ -360,3 +360,15 @@ light_color = Color(0.88, 0.78, 0.52, 1)
 light_energy = 0.8
 shadow_enabled = false
 omni_range = 4.5
+
+; insert: the wooden box held three sticks — the third was Estuary 7
+[node name="shot_insert_stick" type="Marker3D" parent="." groups=["vn_shot"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.2, 1.0, -1.1)
+rotation = Vector3(-0.6502, 3.0509, 0.0)
+metadata/fov = 42.0
+
+; insert: he was at the workbench
+[node name="shot_insert_workbench" type="Marker3D" parent="." groups=["vn_shot"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.3, 1.4, -5.7)
+rotation = Vector3(-0.6712, -0.5220, 0.0)
+metadata/fov = 42.0

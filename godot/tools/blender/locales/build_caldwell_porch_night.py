@@ -150,6 +150,25 @@ def build_porch_props_2026_08():
     make_box("Photo_Figures", (tx - 0.145, ty + 0.131, 0.585), (0.05, 0.002, 0.05), (0.40, 0.38, 0.34, 1.0))
 
 
+def build_hero_props_2026_09():
+    """HERO PROPS FOR THE BLIND CUES (shot_marker_audit, 2026-09-01).
+
+    THE CAR ("A car comes down the street at nine fifty-three ...
+    going slow"): the porch had no street — a front yard strip, a
+    street strip, and the slow car on it, headlights toward the
+    house. MAYA'S PHONE (the stoplight buzz, remembered on the
+    porch) on the rail top."""
+    make_box("Front_Yard", (0.0, -2.2, -0.03), (12.0, 3.6, 0.05), (0.14, 0.20, 0.13, 1.0))
+    make_box("Street_Strip", (0.0, -6.0, -0.03), (12.0, 4.0, 0.05), (0.26, 0.26, 0.28, 1.0))
+    make_box("Slow_Car_Body", (1.5, -6.0, 0.60), (4.30, 1.80, 0.60), (0.24, 0.26, 0.30, 1.0))
+    make_box("Slow_Car_Cabin", (1.3, -6.0, 1.10), (2.00, 1.70, 0.40), (0.20, 0.22, 0.26, 1.0))
+    for hi, hx in enumerate((0.9, 2.1)):
+        make_cyl(f"Slow_Car_Headlight_{hi}", (hx, -5.09, 0.62), 0.07, 0.02, (0.98, 0.94, 0.72, 1.0), axis='Y', segments=8)
+    for wi, (wx, wy) in enumerate(((0.1, -4.975), (2.9, -4.975), (0.1, -7.025), (2.9, -7.025))):
+        make_cyl(f"Slow_Car_Wheel_{wi}", (wx, wy, 0.30), 0.30, 0.25, (0.12, 0.12, 0.13, 1.0), axis='Y', segments=10)
+    make_box("Mayas_Phone", (1.9, 0.10, 1.0355), (0.14, 0.07, 0.011), (0.13, 0.13, 0.15, 1.0))
+
+
 def main():
     clear_scene()
     build_shell()
@@ -160,6 +179,7 @@ def main():
     build_dressing()
     build_ceiling_infra()
     build_porch_props_2026_08()
+    build_hero_props_2026_09()
     out = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)),
         "../../../assets/3d/locales/caldwell_porch_night.glb"))
     print(f"\n[build_caldwell_porch_night] exporting to {out}")

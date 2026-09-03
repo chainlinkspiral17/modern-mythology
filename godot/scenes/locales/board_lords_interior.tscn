@@ -367,3 +367,15 @@ metadata/fov = 42.0
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.4, 1.65, -1.0)
 rotation = Vector3(0.0379, 3.0996, 0.0)
 metadata/fov = 42.0
+
+; insert: the Tuesday note taped above the OPEN sign
+[node name="shot_insert_note" type="Marker3D" parent="." groups=["vn_shot"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.35, 1.6, -0.8)
+rotation = Vector3(0.1870, -3.1416, 0.0)
+metadata/fov = 42.0
+
+; insert: Roy passes the front window at three-twelve
+[node name="shot_insert_window" type="Marker3D" parent="." groups=["vn_shot"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.75, 1.5, -0.9)
+rotation = Vector3(0.0598, -3.1416, 0.0)
+metadata/fov = 42.0

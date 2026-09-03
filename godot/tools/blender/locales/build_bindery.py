@@ -246,6 +246,19 @@ def build_pendants():
                  segments=8)
 
 
+def build_hero_props_2026_09():
+    """HERO PROPS FOR THE BLIND CUES (shot_marker_audit, 2026-09-01).
+
+    THE ENVELOPE ("An envelope falls out. Plain. Sealed. Nothing
+    written on the outside.") on the floor in front of the book
+    table; THE CROW ("Overhead, a crow flies. ... simply a crow")
+    perched on a ledge over the storefront, outside."""
+    from _props.creatures import make_crow
+    make_box("Plain_Envelope", (0.75, 2.95, 0.0015), (0.22, 0.11, 0.003), (0.90, 0.88, 0.82, 1.0))
+    make_box("Storefront_Ledge", (0.0, -0.14, 2.60), (1.20, 0.15, 0.08), (0.34, 0.30, 0.26, 1.0))
+    make_crow("Bindery_Crow", 0.0, -0.14, 2.64, facing=-1.0)
+
+
 def main():
     clear_scene()
     build_shell()
@@ -254,6 +267,7 @@ def main():
     build_counter()
     build_center_tables()
     build_pendants()
+    build_hero_props_2026_09()
     out = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)),
         "../../../assets/3d/locales/bindery.glb"))
     print(f"\n[build_bindery] exporting to {out}")

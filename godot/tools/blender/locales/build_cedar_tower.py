@@ -488,6 +488,17 @@ def build_wear_personality_2026_08():
              (0.40, 0.28, 0.18, 1.0))
 
 
+def build_hero_props_2026_09():
+    """HERO PROPS FOR THE BLIND CUES (shot_marker_audit, 2026-09-01).
+
+    THE CREDIT ("Kai pointed at the Tideline Survey poster's
+    lower-right corner. The credit read:") — a credit line on the
+    lower-right of the studio's Poster_S_9. Photograph (Dean's
+    portrait), estuary_7, the portal door and window exist —
+    markers only."""
+    make_box("Tideline_Credit", (1.95, 0.105, 5.42), (0.14, 0.002, 0.02), (0.30, 0.30, 0.34, 1.0))
+
+
 def main():
     clear_scene()
     build_lobby()
@@ -502,6 +513,7 @@ def main():
         "../../../assets/3d/locales/cedar_tower.glb"))
     print(f"\n[build_cedar_tower] exporting to {out}")
     build_horizon_2026_08()
+    build_hero_props_2026_09()
     export_glb(out)
 
 

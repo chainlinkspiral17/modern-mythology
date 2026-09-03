@@ -230,6 +230,35 @@ def build_fluorescents():
                      (0.04, 0.04, 0.07), COL_STEEL_DK)
 
 
+def build_hero_props_2026_09():
+    """HERO PROPS FOR THE BLIND CUES (shot_marker_audit, 2026-09-01).
+
+    THE BALE ("He is at the bale at the eighth pallet's lid when
+    his hands stop."): a cardboard baler against the east wall by
+    the swing door and the strapped bale on the floor beside it;
+    THE HANDS as two grip-worn patches on the bale's top; and for
+    the dock preset THE SMEAR ("the rust-colored thermal smear is
+    visible" above the cedar on the far horizon) — a dark cedar
+    band and a translucent rust band far north of the dock."""
+    make_box("Baler_Body", (2.95, 1.5, 0.95), (0.90, 0.80, 1.90), (0.30, 0.34, 0.40, 1.0))
+    make_box("Baler_Mouth", (2.50, 1.5, 1.20), (0.02, 0.70, 0.50), (0.12, 0.12, 0.14, 1.0))
+    make_box("Cardboard_Bale", (2.90, 0.40, 0.35), (0.90, 0.70, 0.70), (0.66, 0.54, 0.38, 1.0))
+    for si, sy in enumerate((0.22, 0.58)):
+        make_box(f"Bale_Strap_{si}", (2.90, sy, 0.35), (0.92, 0.02, 0.72), (0.20, 0.20, 0.22, 1.0))
+    make_box("Hands_Bale_Grip_A", (2.75, 0.40, 0.7015), (0.12, 0.08, 0.003), (0.56, 0.46, 0.32, 1.0))
+    make_box("Hands_Bale_Grip_B", (3.05, 0.40, 0.7015), (0.12, 0.08, 0.003), (0.56, 0.46, 0.32, 1.0))
+    make_box("Far_Cedar_Band", (0.0, 30.0, 3.0), (24.0, 2.0, 6.0), (0.14, 0.18, 0.14, 1.0))
+    make_box("Thermal_Smear", (0.0, 34.0, 7.0), (30.0, 0.4, 1.6), (0.62, 0.30, 0.16, 0.45))
+    # The dock view is an EXTERIOR now (stump-hunt horizon rule):
+    # ground past the apron and receding treeline bands north.
+    from _props.detail import make_far_bands
+    make_box("Ground_Far_N", (0.0, 120.0, -0.03), (400.0, 220.0, 0.02), (0.15, 0.20, 0.13, 1.0))
+    make_far_bands("FarTrees", (0.13, 0.20, 0.11),
+                   [(60.0, 90.0, 8.0, 0.90), (120.0, 150.0, 11.0, 0.70),
+                    (220.0, 240.0, 14.0, 0.52), (400.0, 380.0, 17.0, 0.40)],
+                   sides="N", cy=8.0, profile="treeline")
+
+
 def main():
     clear_scene()
     build_shell()
@@ -238,6 +267,7 @@ def main():
     build_floor_stock()
     build_store_door()
     build_fluorescents()
+    build_hero_props_2026_09()
     out = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)),
         "../../../assets/3d/locales/centro_stockroom.glb"))
     print(f"\n[build_centro_stockroom] exporting to {out}")

@@ -4897,6 +4897,20 @@ def build_world_shore_2026_09():
         (0.88, 0.52, 0.62, 1.0), segments=8)
 
 
+def build_chalk_wall_2026_09():
+    """HERO PROPS FOR THE BLIND CUES (shot_marker_audit, 2026-09-01).
+
+    THE RECEIPT ("Behind the chip, embedded in the wall, was a
+    folded piece of paper. Old. Yellowed.") — a chip in the
+    chalked wall's verse face with the folded 1987 receipt proud
+    of it; and JOANNA'S NOTEBOOK on the door-desk at the cottage
+    ("She sat at her small desk ... and opened the notebook")."""
+    from _props.geometry import make_box as _mb
+    _mb("Wall_Chip", (43.84, -375.2, 1.30), (0.02, 0.09, 0.11), (0.42, 0.40, 0.38, 1.0))
+    _mb("Folded_Receipt", (43.826, -375.2, 1.30), (0.006, 0.06, 0.09), (0.86, 0.80, 0.62, 1.0))
+    _mb("Joanna_Notebook", (53.2, -382.2, 1.111), (0.15, 0.20, 0.012), (0.30, 0.26, 0.24, 1.0))
+
+
 def main():
     # Phase 0 — riverfront. Each rf.build_* writes into the scene.
     # We mirror riverfront's main() build order verbatim so the
@@ -4928,6 +4942,7 @@ def main():
     build_ruin_draft2_2026_08()
     build_star_night_2026_09()
     build_world_shore_2026_09()
+    build_chalk_wall_2026_09()
     export_glb()
 
 

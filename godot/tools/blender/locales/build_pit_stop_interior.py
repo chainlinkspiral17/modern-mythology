@@ -430,6 +430,15 @@ def build_hero_props_2026_09():
              (0.13, 0.13, 0.15, 1.0))
 
 
+def build_prints_2026_09():
+    """THE PRINTS ("Jesse opens the paper bag. He takes out three
+    eight-by-tens. He hands them to Ben.") — the bag and the three
+    prints fanned on the lunch counter west of the card terminal."""
+    for pi, (dx, dy) in enumerate(((0.0, 0.0), (0.035, 0.02), (0.07, 0.04))):
+        make_box(f"Print_8x10_{pi}", (2.80 + dx, 4.52 + dy, 1.0058 + pi * 0.0015), (0.20, 0.25, 0.0015), (0.30, 0.30, 0.32, 1.0))
+    make_box("Prints_Paper_Bag", (2.95, 4.82, 1.115), (0.16, 0.10, 0.22), (0.72, 0.60, 0.42, 1.0))
+
+
 def main():
     clear_scene()
     build_shell()
@@ -445,6 +454,7 @@ def main():
     build_use_states_2026_08()
     build_beyond_glass_2026_08()
     build_hero_props_2026_09()
+    build_prints_2026_09()
     out = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)),
         "../../../assets/3d/locales/pit_stop_interior.glb"))
     print(f"\n[build_pit_stop_interior] exporting to {out}")

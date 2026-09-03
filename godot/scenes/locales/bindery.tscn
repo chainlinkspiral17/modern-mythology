@@ -311,3 +311,15 @@ offset_top = 360.0
 offset_right = 520.0
 offset_bottom = 980.0
 script = ExtResource("14_dbgm")
+
+; insert: an envelope falls out — plain, sealed
+[node name="shot_insert_envelope" type="Marker3D" parent="." groups=["vn_shot"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.75, 0.6, -2.35)
+rotation = Vector3(-0.7841, -0.0000, 0.0)
+metadata/fov = 42.0
+
+; insert: overhead, a crow — simply a crow
+[node name="shot_insert_crow" type="Marker3D" parent="." groups=["vn_shot"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0, 1.6, 1.4)
+rotation = Vector3(0.7265, -0.0000, 0.0)
+metadata/fov = 42.0

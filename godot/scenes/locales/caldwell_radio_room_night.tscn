@@ -324,3 +324,9 @@ offset_top = 360.0
 offset_right = 520.0
 offset_bottom = 980.0
 script = ExtResource("14_dbgm")
+
+; insert: 1776 kHz, Morse she has not used since 1989
+[node name="shot_insert_radio" type="Marker3D" parent="." groups=["vn_shot"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.3, 1.15, -3.05)
+rotation = Vector3(0, 0, 0)
+metadata/fov = 42.0

@@ -129,10 +129,21 @@ def build_detail_pass_2026_08():
                      face_sign=-1, aged=True)
 
 
+def build_hero_props_2026_09():
+    """HERO PROPS FOR THE BLIND CUES (shot_marker_audit, 2026-09-01).
+
+    THE TV (the bar's muted game, cut to from this room): a hotel
+    set on the dresser under the small mirror. Mirror exists
+    (marker only)."""
+    make_box("Room_TV", (-1.72, 2.6, 1.08), (0.36, 0.55, 0.40), (0.12, 0.12, 0.13, 1.0))
+    make_box("Room_TV_Screen", (-1.535, 2.6, 1.08), (0.010, 0.48, 0.32), (0.35, 0.55, 0.80, 1.0))
+
+
 def main():
     clear_scene(); build_shell(); build_bed(); build_washbasin(); build_decor(); build_ceiling_infra()
     build_hero_props()
     build_detail_pass_2026_08()
+    build_hero_props_2026_09()
     out = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)), "../../../assets/3d/locales/new_orleans_room.glb"))
     print(f"\n[build_new_orleans_room] exporting to {out}")
     export_glb(out)

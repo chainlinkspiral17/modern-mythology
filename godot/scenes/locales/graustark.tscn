@@ -383,7 +383,7 @@ script = ExtResource("14_dbgm")
 ; insert: the chalked wall, charcoal against pale concrete (ch17_star)
 [node name="shot_insert_wall" type="Marker3D" parent="." groups=["vn_shot"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 42.6, 1.9, 374.8)
-rotation = Vector3(0.0619, -1.0517, 0.0)
+rotation = Vector3(-0.1851, -1.4204, 0.0)
 metadata/fov = 42.0
 
 ; insert: the crow on the I-beam, a witness (ch17_star)
@@ -426,4 +426,16 @@ metadata/fov = 42.0
 [node name="shot_insert_smoke_ring" type="Marker3D" parent="." groups=["vn_shot"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 42.3, 2.5, 122.6)
 rotation = Vector3(0.0642, 0.7854, 0.0)
+metadata/fov = 42.0
+
+; insert: the folded 1987 receipt behind the chip
+[node name="shot_insert_receipt" type="Marker3D" parent="." groups=["vn_shot"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 43.2, 1.45, 375.2)
+rotation = Vector3(-0.2352, -1.5708, 0.0)
+metadata/fov = 42.0
+
+; insert: Joanna's notebook on the door-desk
+[node name="shot_insert_notebook" type="Marker3D" parent="." groups=["vn_shot"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 53.2, 1.55, 381.5)
+rotation = Vector3(-0.5601, -3.1416, 0.0)
 metadata/fov = 42.0

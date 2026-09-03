@@ -130,6 +130,8 @@ SYNONYMS = {
     "telecaster": ["tele", "guitar"],
     "doorknob": ["doorknob", "latch", "knob"],
     "card": ["callingcard", "card"],
+    "workbench": ["workbench", "bench"],
+    "radio": ["radio", "morsekey", "transmitter"],
     "doohickey": ["doohickey", "onyx"],
 }
 

@@ -311,3 +311,21 @@ offset_top = 360.0
 offset_right = 520.0
 offset_bottom = 980.0
 script = ExtResource("14_dbgm")
+
+; insert: the rust-colored thermal smear on the far horizon
+[node name="shot_insert_smear" type="Marker3D" parent="." groups=["vn_shot"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.0, 1.6, -8.6)
+rotation = Vector3(0.1047, -0.0195, 0.0)
+metadata/fov = 42.0
+
+; insert: the bale at the eighth pallet
+[node name="shot_insert_bale" type="Marker3D" parent="." groups=["vn_shot"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.2, 0.9, -1.1)
+rotation = Vector3(-0.3921, -2.3562, 0.0)
+metadata/fov = 42.0
+
+; insert: his hands stop
+[node name="shot_insert_hands" type="Marker3D" parent="." groups=["vn_shot"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.5, 1.1, -0.95)
+rotation = Vector3(-0.5300, -2.5128, 0.0)
+metadata/fov = 42.0

@@ -346,3 +346,15 @@ metadata/fov = 42.0
 position = Vector3(2, 1.1, -1.4)
 rotation = Vector3(-0.375806, -2.33294, 0)
 metadata/fov = 44.0
+
+; insert: her phone buzzes at the stoplight
+[node name="shot_insert_phone" type="Marker3D" parent="." groups=["vn_shot"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.9, 1.35, -0.75)
+rotation = Vector3(-0.4506, -3.1416, 0.0)
+metadata/fov = 42.0
+
+; insert: a car comes down the street, slow
+[node name="shot_insert_car" type="Marker3D" parent="." groups=["vn_shot"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, 1.4, -0.6)
+rotation = Vector3(-0.1239, 3.0886, 0.0)
+metadata/fov = 42.0

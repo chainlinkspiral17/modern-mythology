@@ -114,6 +114,15 @@ def build_ceiling_infra():
         make_fluorescent_tube_fixture(f"Fluor_{j}", (0.0, ypos, CEIL), length=1.40, width=0.34)
     make_smoke_detector("Smoke", (0.0, ROOM_D/2.0, CEIL))
 
+def build_hero_props_2026_09():
+    """HERO PROPS FOR THE BLIND CUES (shot_marker_audit, 2026-09-01).
+
+    THE LIST ("The list, at 15:48, reads —"): the block-letter list
+    as ink lines on the legal pad (which exists — marker only for
+    legal_pad)."""
+    make_box("Legal_Pad_List", (0.34, 3.40, 0.7785), (0.10, 0.14, 0.0005), (0.26, 0.26, 0.30, 1.0))
+
+
 def main():
     clear_scene()
     build_shell()
@@ -121,6 +130,7 @@ def main():
     build_filing()
     build_office_dressing()
     build_ceiling_infra()
+    build_hero_props_2026_09()
     out = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)),
         "../../../assets/3d/locales/pit_stop_office.glb"))
     print(f"\n[build_pit_stop_office] exporting to {out}")

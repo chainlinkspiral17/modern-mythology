@@ -174,12 +174,23 @@ def build_scene_props():
     make_cyl("Water", (-1.6, 0.5, 0.085), 0.11, 0.02, (0.35, 0.45, 0.55, 1.0), segments=12)
 
 
+def build_hero_props_2026_09():
+    """HERO PROPS FOR THE BLIND CUES (shot_marker_audit, 2026-09-01).
+
+    THE BUTTERFLY ("The butterfly leaves.") — in the air by the
+    lawn chair Daisy hides behind. Daisy exists (marker only)."""
+    make_cyl("Butterfly_Body", (1.35, 4.2, 0.55), 0.006, 0.030, (0.16, 0.14, 0.12, 1.0), axis='Y', segments=6)
+    make_box("Butterfly_Wing_L", (1.330, 4.2, 0.552), (0.028, 0.020, 0.002), (0.90, 0.62, 0.20, 1.0))
+    make_box("Butterfly_Wing_R", (1.372, 4.2, 0.558), (0.028, 0.020, 0.002), (0.90, 0.62, 0.20, 1.0))
+
+
 def main():
     clear_scene()
     build_ground()
     build_house_back()
     build_fence_and_tree()
     build_scene_props()
+    build_hero_props_2026_09()
     out = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)),
         "../../../assets/3d/locales/kowalski_backyard.glb"))
     print(f"\n[build_kowalski_backyard] exporting to {out}")

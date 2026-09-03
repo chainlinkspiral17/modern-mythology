@@ -488,3 +488,9 @@ theme_override_font_sizes/font_size = 24
 theme_override_colors/font_color = Color(1.0, 0.78, 0.36, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 4
+
+; insert: John scribbled in his notebook: Hierophant
+[node name="shot_insert_notebook" type="Marker3D" parent="." groups=["vn_shot"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -50.0, 0.9, -21.5)
+rotation = Vector3(-0.5907, 0.6107, 0.0)
+metadata/fov = 42.0

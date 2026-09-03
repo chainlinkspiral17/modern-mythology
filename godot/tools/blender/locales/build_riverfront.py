@@ -4361,6 +4361,16 @@ def build_park_2026_08():
     _mb("Black_Car_Cabin", (-54.0, 23.7, 1.02), (1.6, 2.4, 0.45), (0.08, 0.08, 0.10, 1.0))
 
 
+def build_park_notebook_2026_09():
+    """HERO PROPS FOR THE BLIND CUES (shot_marker_audit, 2026-09-01).
+
+    JOHN'S NOTEBOOK ("John scribbled in his notebook: Hierophant.
+    Tradition. Institution.") on the park bench the riverfront_park
+    preset already frames."""
+    make_box("Johns_Notebook", (-50.35, 22.0, 0.487), (0.15, 0.20, 0.012), (0.24, 0.22, 0.20, 1.0))
+    make_box("Johns_Notebook_Page", (-50.35, 22.0, 0.4945), (0.13, 0.18, 0.003), (0.92, 0.90, 0.84, 1.0))
+
+
 def main():
     clear_scene()
     # Build order matters: ground & roads first so features sit ON
@@ -4383,6 +4393,7 @@ def main():
     build_park_2026_08()
     build_park_draft2_2026_08()
     build_park_horizon_2026_08()
+    build_park_notebook_2026_09()
     export_glb()
 
 

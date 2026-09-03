@@ -354,3 +354,9 @@ metadata/fov = 42.0
 position = Vector3(0, 1.35, -1.9)
 rotation = Vector3(0, 3.1416, 0)
 metadata/fov = 36.0
+
+; insert: the Polaroid, June 2009 in pencil on the border
+[node name="shot_insert_polaroid" type="Marker3D" parent="." groups=["vn_shot"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.65, 1.15, -1.05)
+rotation = Vector3(-0.5717, 2.4311, 0.0)
+metadata/fov = 42.0

@@ -378,3 +378,33 @@ metadata/fov = 55.0
 position = Vector3(0, 16.55, -18.5)
 rotation = Vector3(0, 0, 0)
 metadata/fov = 45.0
+
+; insert: the photograph of Dean at forty-eight
+[node name="shot_insert_photograph" type="Marker3D" parent="." groups=["vn_shot"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0, 1.7, -7.1)
+rotation = Vector3(0, 0, 0)
+metadata/fov = 42.0
+
+; insert: Estuary 7 — the poster, sixty-three times since July
+[node name="shot_insert_estuary_7" type="Marker3D" parent="." groups=["vn_shot"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.55, 6.3, -1.0)
+rotation = Vector3(0.2606, -3.1416, 0.0)
+metadata/fov = 42.0
+
+; insert: the Tideline Survey poster's lower-right credit
+[node name="shot_insert_credit" type="Marker3D" parent="." groups=["vn_shot"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.95, 5.3, -0.55)
+rotation = Vector3(0.2634, -3.1416, 0.0)
+metadata/fov = 42.0
+
+; insert: the unmarked cedar door
+[node name="shot_insert_door" type="Marker3D" parent="." groups=["vn_shot"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0, 16.3, -2.2)
+rotation = Vector3(0, 0, 0)
+metadata/fov = 42.0
+
+; insert: the six-by-six window above the handle
+[node name="shot_insert_window" type="Marker3D" parent="." groups=["vn_shot"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0, 16.42, -2.45)
+rotation = Vector3(0, 0, 0)
+metadata/fov = 42.0

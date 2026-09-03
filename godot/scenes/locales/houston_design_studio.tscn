@@ -319,3 +319,9 @@ offset_top = 360.0
 offset_right = 520.0
 offset_bottom = 980.0
 script = ExtResource("14_dbgm")
+
+; insert: D'AMBROSIO'S: EMBER & ASH on the third monitor
+[node name="shot_insert_monitor" type="Marker3D" parent="." groups=["vn_shot"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.45, 1.25, -1.7)
+rotation = Vector3(-0.2365, 1.5887, 0.0)
+metadata/fov = 42.0

@@ -318,3 +318,15 @@ metadata/fov = 36.0
 position = Vector3(0, 1.1, -3.7)
 rotation = Vector3(-0.360059, 0, 0)
 metadata/fov = 38.0
+
+; insert: the small mirror above the dresser
+[node name="shot_insert_mirror" type="Marker3D" parent="." groups=["vn_shot"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.3, 1.5, -2.6)
+rotation = Vector3(-0.0768, 1.5708, 0.0)
+metadata/fov = 42.0
+
+; insert: the game on the TV, muted
+[node name="shot_insert_tv" type="Marker3D" parent="." groups=["vn_shot"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.9, 1.25, -2.6)
+rotation = Vector3(-0.2616, 1.5708, 0.0)
+metadata/fov = 42.0
