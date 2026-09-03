@@ -159,8 +159,11 @@ def frame_stats(origin_b, pitch, yaw, fov, boxes):
     dists = sorted(t for t, _ in hits)
     med = dists[len(dists) // 2]
     distinct = len({who.split("_")[0] for _, who in hits if who})
+    hit = [t for t, _ in hits if t < 199.0]
     return dict(near=near, wall=wall_name, wall_frac=wall_frac, wall_med=wall_med,
-                median=med, distinct=distinct, mean_depth=sum(min(t, 12.0) for t, _ in hits) / n)
+                median=med, distinct=distinct, mean_depth=sum(min(t, 12.0) for t, _ in hits) / n,
+                escape=1.0 - len(hit) / n,
+                depth_hit=(sum(min(t, 9.0) for t in hit) / (9.0 * len(hit))) if hit else 0.0)
 
 
 def verdict(st):
@@ -175,8 +178,12 @@ def verdict(st):
 def score(st, origin_b, yaw, o0, yaw0):
     dpos = math.hypot(origin_b[0] - o0[0], origin_b[1] - o0[1])
     dyaw = abs((yaw - yaw0 + math.pi) % (2 * math.pi) - math.pi)
-    return (st["mean_depth"] / 12.0) * 0.5 + min(st["distinct"], 16) / 16.0 * 0.35 \
-        - st["near"] * 1.5 - (0.4 if st["wall"] and st["wall_frac"] >= WALL_FRAC and st["wall_med"] < WALL_M else 0.0) \
+    # depth counts only where the frame lands on SOMETHING: an escaped
+    # ray (open sky, a doorway into the void) is not a view of the set.
+    # 20 proposals in the first run picked "median 200 m, 0 distinct".
+    return st["depth_hit"] * 0.45 + min(st["distinct"], 16) / 16.0 * 0.40 \
+        - st["near"] * 1.5 - st["escape"] * 0.6 \
+        - (0.4 if st["wall"] and st["wall_frac"] >= WALL_FRAC and st["wall_med"] < WALL_M else 0.0) \
         - 0.02 * dpos - 0.06 * dyaw
 
 

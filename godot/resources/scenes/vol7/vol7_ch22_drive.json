@@ -5,7 +5,7 @@
   "type": "scene",
   "nodes": [
     {
-      "src": "3d:cabin_road",
+      "src": "3d:highway_101",
       "t": "bg"
     },
     {
@@ -176,6 +176,10 @@
     {
       "text": "[shot:establish]They drove past Yachats at three-forty. The road north of Yachats was a two-lane state highway running close to the coast. The cedars on the inland side were the cedars Tem had been at the cabin in for thirty-one years. The ocean on the seaward side was the September ocean she had been at her whole life. The drive was — Tem registered — the kind of drive a person could be on without registering that it was a drive into a specific place. It was a coastal road on a September Monday afternoon.",
       "t": "narrate"
+    },
+    {
+      "src": "3d:highway_101_turn",
+      "t": "bg"
     },
     {
       "text": "The turn for the old-Yachats bluff was not signed. The road had been bypassed thirty years ago. A green metal road-marker reading Old Yachats Road sat at the turn with a chain across it the way roads get when they have been county-decommissioned. The chain hung loose on one side. Tem turned off 101 onto the road. The wagon went around the chain. The road climbed.",

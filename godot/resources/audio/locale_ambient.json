@@ -389,6 +389,46 @@
       "bed": "assets/audio/bgm/vol5_cicadas_dusk.ogg",
       "gain": 0.62
     },
+    "new_auburn_strip_mall": {
+      "bed": "assets/audio/bgm/vol5_cicadas_dusk.ogg",
+      "gain": 0.62
+    },
+    "new_auburn_lot": {
+      "bed": "assets/audio/bgm/vol5_ambient.ogg",
+      "gain": 0.66
+    },
+    "new_auburn_two_lane": {
+      "bed": "assets/audio/bgm/vol5_ambient.ogg",
+      "gain": 0.55
+    },
+    "new_auburn_bypass": {
+      "bed": "assets/audio/bgm/vol5_ambient.ogg",
+      "gain": 0.6
+    },
+    "new_auburn_cedar_route": {
+      "bed": "assets/audio/bgm/vol5_cicadas_dusk.ogg",
+      "gain": 0.72
+    },
+    "small_wood_road": {
+      "bed": "assets/audio/bgm/vol5_ambient.ogg",
+      "gain": 0.6
+    },
+    "small_wood_road_night": {
+      "bed": "assets/audio/bgm/vol5_ambient.ogg",
+      "gain": 0.5
+    },
+    "small_wood_roadside": {
+      "bed": "assets/audio/bgm/vol5_ambient.ogg",
+      "gain": 0.55
+    },
+    "highway_101": {
+      "bed": "assets/audio/bgm/vol5_riverboat_drone.ogg",
+      "gain": 0.55
+    },
+    "highway_101_turn": {
+      "bed": "assets/audio/bgm/vol5_riverboat_drone.ogg",
+      "gain": 0.5
+    },
     "cabin_interior_bed": {
       "bed": "assets/audio/bgm/vol5_domestic_roomtone.wav",
       "gain": 0.9

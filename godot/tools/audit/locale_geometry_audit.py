@@ -236,7 +236,7 @@ def install_stubs():
     # objects before this line was widened (2026-08-12), which also
     # means their clipping went unchecked.
     for real_mod in ("detail", "trees", "objects", "drones",
-                     "creatures", "structure", "shelving", "decor",
+                     "creatures", "vehicles", "structure", "shelving", "decor",
                      "food_service", "cleaning", "coolers_drinks",
                      "signage", "store_fixtures", "safety"):
         mpath = os.path.join(BLENDER, "_props", real_mod + ".py")

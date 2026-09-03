@@ -1,6 +1,6 @@
-[gd_scene load_steps=24 format=3 uid="uid://louisiana_road_cameo"]
+[gd_scene load_steps=24 format=3 uid="uid://new_auburn_louisiana_road_cameo"]
 
-[ext_resource type="PackedScene" path="res://assets/3d/locales/louisiana_road.glb" id="1_glb"]
+[ext_resource type="PackedScene" path="res://assets/3d/locales/new_auburn_road.glb" id="1_glb"]
 [ext_resource type="Script" path="res://scripts/DebugHUD.gd" id="3_hud"]
 [ext_resource type="Shader" path="res://assets/shaders/demoscene_post.gdshader" id="4_post"]
 [ext_resource type="Script" path="res://scripts/MoodCycler.gd" id="5_mood"]
@@ -162,7 +162,7 @@ glow_blend_mode = 1
 glow_hdr_threshold = 0.80
 glow_hdr_scale = 2.4
 
-[node name="LouisianaRoad" type="Node3D"]
+[node name="NewAuburnRoad" type="Node3D"]
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Env_Locale")
@@ -223,6 +223,58 @@ light_color = Color(1.0, 0.62, 0.26, 1)
 light_energy = 3.5
 omni_range = 11.0
 shadow_enabled = false
+
+; ── Warm/cool window-spill practicals at the nearest lit windows ──
+[node name="WindowSpill_W" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.4, 1.6, -6.5)
+light_color = Color(1.0, 0.82, 0.5, 1)
+light_energy = 1.1
+omni_range = 4.5
+shadow_enabled = false
+
+[node name="WindowSpill_E" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.6, 1.6, -9.0)
+light_color = Color(0.6, 0.7, 0.95, 1)
+light_energy = 0.9
+omni_range = 4.0
+shadow_enabled = false
+
+; ── vn_shot (2026-08) · the unit + the marquee ─────────────────
+; The tracked unit's papered rear window: blender (11.98, 44.7,
+; 1.6) → godot (11.98, 1.6, -44.7). Camera across the service lot,
+; the Foxhole's lit door at frame edge, the unit dark.
+[node name="shot_insert_unit" type="Marker3D" parent="." groups=["vn_shot"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.20, 1.55, -44.7)
+rotation = Vector3(0.0, -1.5708, 0.0)
+
+; The chalk marquee: blender (11.5, 35.5, 3.1) → godot (11.5, 3.1,
+; -35.5). Camera low on the road shoulder, board against the sky —
+; "His own band's name, in chalk, on the front of a venue."
+[node name="shot_insert_marquee" type="Marker3D" parent="." groups=["vn_shot"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.6, 2.30, -35.5)
+rotation = Vector3(0.20, -1.5708, 0.0)
+
+; ── Strip-mall practicals (2026-08-19 · fixtures from the
+; Foxhole build): the lit caged bulb over the Foxhole's door, the
+; lot flood aimed at the OTHER end (the unit stays dark — that is
+; the point), and a warm wash on the chalk marquee.
+[node name="Prac_Foxhole_DoorLamp" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.9, 2.45, -48.5)
+light_color = Color(0.94, 0.84, 0.66, 1)
+light_energy = 1.5
+omni_range = 5.0
+
+[node name="Prac_StripMall_FloodHead" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.7, 5.1, -56.2)
+light_color = Color(0.85, 0.92, 1.0, 1)
+light_energy = 2.4
+omni_range = 12.0
+
+[node name="Prac_Marquee_Wash" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.8, 3.0, -35.5)
+light_color = Color(0.95, 0.88, 0.70, 1)
+light_energy = 1.1
+omni_range = 4.5
 
 [node name="Interior" parent="." instance=ExtResource("1_glb")]
 
@@ -328,32 +380,6 @@ location_json = ""
 script = ExtResource("13_riff")
 
 ; ── vn_shot coverage (2026-08-04) · the road appears in 37
-; scenes through ONE angle; these give the director real
-; setups. establish_b/_c join the coverage rotation.
-; coverage rotation B: east verge under the pole line, looking across at the stalled sedan
-[node name="shot_establish_b" type="Marker3D" parent="." groups=["vn_shot"]]
-position = Vector3(3.2, 1.7, 6)
-rotation = Vector3(-0.0462181, 0.389709, 0)
-metadata/fov = 58.0
-
-; coverage rotation C: long lens south down the centerline — compression, someone approaching
-[node name="shot_establish_c" type="Marker3D" parent="." groups=["vn_shot"]]
-position = Vector3(-1.5, 3.6, -24)
-rotation = Vector3(-0.0285591, -3.12374, 0)
-metadata/fov = 34.0
-
-; insert: the stalled sedan on the west shoulder
-[node name="shot_insert_sedan" type="Marker3D" parent="." groups=["vn_shot"]]
-position = Vector3(-4.3, 1.3, -5.6)
-rotation = Vector3(-0.133862, -0.630034, 0)
-metadata/fov = 40.0
-
-; wide: across the road into the swamp and cypress
-[node name="shot_wide_swamp" type="Marker3D" parent="." groups=["vn_shot"]]
-position = Vector3(2, 2.2, -10)
-rotation = Vector3(-0.04, 1.5708, 0)
-metadata/fov = 66.0
-
 [node name="HUD" type="CanvasLayer" parent="." groups=["ui"]]
 layer = 100
 
@@ -371,3 +397,89 @@ offset_right = 520.0
 offset_bottom = 980.0
 script = ExtResource("14_dbgm")
 
+; ── Live Oak + the Cypress (2026-09-03) ───────────────────────────
+[node name="Unit_Door_Gap" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.6, 1.2, -46.4)
+light_color = Color(1, 0.88, 0.62, 1)
+light_energy = 0.6
+omni_range = 2.5
+shadow_enabled = false
+
+[node name="Civic_Phone" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.85, 1.2, -38.9)
+light_color = Color(0.66, 0.80, 0.96, 1)
+light_energy = 0.3
+omni_range = 1.2
+shadow_enabled = false
+
+[node name="Cypress_Sign" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.0, 7.6, -58.0)
+light_color = Color(0.70, 0.96, 0.86, 1)
+light_energy = 1.6
+omni_range = 14.0
+shadow_enabled = false
+
+[node name="Room_7" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -21.0, 1.7, -82.85)
+light_color = Color(1, 0.84, 0.54, 1)
+light_energy = 1.0
+omni_range = 6.0
+shadow_enabled = false
+
+; insert: the unit's back door open two inches, a faint light through the gap
+[node name="shot_insert_door" type="Marker3D" parent="." groups=["vn_shot"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.5, 1.4, -44.0)
+rotation = Vector3(-0.2074, -0.9267, 0.0)
+metadata/fov = 42.0
+
+; insert: Jesse's phone, lit, on the Civic's dash at ten twenty-three
+[node name="shot_insert_phone" type="Marker3D" parent="." groups=["vn_shot"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.5, 1.3, -39.5)
+rotation = Vector3(-0.1286, -1.9774, 0.0)
+metadata/fov = 42.0
+
+; insert: the Cypress — twelve rooms in a long L, three cars, Room 7 lit
+[node name="shot_insert_cypress" type="Marker3D" parent="." groups=["vn_shot"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.0, 1.5, -60.0)
+rotation = Vector3(0.5584, -2.2455, 0.0)
+metadata/fov = 42.0
+
+; ── new_auburn_road presets' inserts (2026-09-03) ──
+; insert: the white sedan in the front lot, the Chronicle lanyard on the dash
+[node name="shot_insert_sedan" type="Marker3D" parent="." groups=["vn_shot"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 24.0, 1.6, -44.0)
+rotation = Vector3(-0.1572, -1.6186, 0.0)
+metadata/fov = 42.0
+
+; insert: the white unmarked van three cars ahead through the easing storm
+[node name="shot_insert_van" type="Marker3D" parent="." groups=["vn_shot"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0, 1.2, -296.0)
+rotation = Vector3(0, 0, 0)
+metadata/fov = 42.0
+
+; insert: Miller's truck in the substation lot, end space, three from the door
+[node name="shot_insert_truck" type="Marker3D" parent="." groups=["vn_shot"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.0, 1.5, -108.0)
+rotation = Vector3(-0.1685, 2.1953, 0.0)
+metadata/fov = 42.0
+
+[node name="Substation_Side" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.8, 2.4, -115.5)
+light_color = Color(0.96, 0.90, 0.70, 1)
+light_energy = 1.0
+omni_range = 6.0
+shadow_enabled = false
+
+[node name="Payday_Sign" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.5, 3.0, -124.0)
+light_color = Color(1, 0.80, 0.30, 1)
+light_energy = 1.2
+omni_range = 8.0
+shadow_enabled = false
+
+[node name="Sedan_Taillights" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.0, 0.8, -297.6)
+light_color = Color(0.90, 0.16, 0.10, 1)
+light_energy = 0.8
+omni_range = 5.0
+shadow_enabled = false

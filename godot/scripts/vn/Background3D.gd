@@ -1411,8 +1411,8 @@ const CAMERA_PRESETS := {
 		"suppress_input": true,
 	},
 	"cypress_motel": {
-		"scene": "res://scenes/locales/louisiana_road.tscn",
-		"requires_glb": "res://assets/3d/locales/louisiana_road.glb",
+		"scene": "res://scenes/locales/new_auburn_road.tscn",
+		"requires_glb": "res://assets/3d/locales/new_auburn_road.glb",
 		# vol6 ch15 (Room 7): Sam, slowing the Corolla on the back route,
 		# looks across at the Cypress — the long wing at blender x -26
 		# north of the houses, the lot in the crook of the L, the pole
@@ -1421,6 +1421,120 @@ const CAMERA_PRESETS := {
 		"camera_origin": Vector3(-1.0, 1.3, -52.0),
 		"camera_rotation": Vector3(-0.01, 0.611, 0.0),
 		"fov": 56.0,
+		"suppress_input": true,
+	},
+	# ── THE ROADS (2026-09-03, user: "the stretches of highway across
+	# all the volumes look identical, same geometry, same camera") ──
+	# One set per region, and every preset a different place, height
+	# and lens on that set. louisiana_road is vol5's swamp road only.
+	# vol6 · New Auburn, Texas
+	"new_auburn_strip_mall": {
+		"scene": "res://scenes/locales/new_auburn_road.tscn",
+		"requires_glb": "res://assets/3d/locales/new_auburn_road.glb",
+		# Night. Jesse's vantage from the Civic's nose at the south-west
+		# corner of the back lot (blender 6.6, 41.5), eye 1.35 — seated —
+		# NNE at the unit's back door in the dark, the flood at the far
+		# end, the mall's parapet over it. (ch14, ch20, ch22)
+		"camera_origin": Vector3(6.6, 1.35, -41.5),
+		"camera_rotation": Vector3(-0.02, -0.876, 0.0),
+		"fov": 58.0,
+		"suppress_input": true,
+	},
+	"new_auburn_lot": {
+		"scene": "res://scenes/locales/new_auburn_road.tscn",
+		"requires_glb": "res://assets/3d/locales/new_auburn_road.glb",
+		# Day. The front lot east of the strip mall, from the shop doors,
+		# the white sedan four spaces out, the road beyond. (ch3)
+		"camera_origin": Vector3(23.0, 1.6, -44.0),
+		"camera_rotation": Vector3(-0.04, -0.896, 0.0),
+		"fov": 56.0,
+		"suppress_input": true,
+	},
+	"new_auburn_two_lane": {
+		"scene": "res://scenes/locales/new_auburn_road.tscn",
+		"requires_glb": "res://assets/3d/locales/new_auburn_road.glb",
+		# Night, the storm easing, eighty miles west: LOW behind the
+		# Chronicle sedan (eye 1.1 on the road), the van's taillights
+		# three cars up, the power lines converging. (ch4_kitchen 83)
+		"camera_origin": Vector3(-0.6, 1.1, -290.0),
+		"camera_rotation": Vector3(0.0, 0.0, 0.0),
+		"fov": 50.0,
+		"suppress_input": true,
+	},
+	"new_auburn_bypass": {
+		"scene": "res://scenes/locales/new_auburn_road.tscn",
+		"requires_glb": "res://assets/3d/locales/new_auburn_road.glb",
+		# Dawn. The substation lot off the bypass from its entrance,
+		# eye 1.7, looking WNW at the side door where Ramirez waits with
+		# two coffees, the payday loan beside it. (ch6_miller_truck)
+		"camera_origin": Vector3(-3.0, 1.7, -104.0),
+		"camera_rotation": Vector3(-0.03, 0.95, 0.0),
+		"fov": 60.0,
+		"suppress_input": true,
+	},
+	"new_auburn_cedar_route": {
+		"scene": "res://scenes/locales/new_auburn_road.tscn",
+		"requires_glb": "res://assets/3d/locales/new_auburn_road.glb",
+		# Dusk. Handlebar height (1.1) on the east shoulder of the cedar
+		# route south of town, looking south into the scrub, the cattle
+		# guard ahead. (ch21 the ride home, ch18 the drive home)
+		"camera_origin": Vector3(1.6, 1.1, 46.0),
+		"camera_rotation": Vector3(-0.02, 3.1416, 0.0),
+		"fov": 66.0,
+		"suppress_input": true,
+	},
+	# vol1 + vol2 · Small Wood, Oregon
+	"small_wood_road": {
+		"scene": "res://scenes/locales/small_wood_road.tscn",
+		"requires_glb": "res://assets/3d/locales/small_wood_road.glb",
+		# Day. On the west shoulder at the property gate, eye 1.7, NNE
+		# up the road: the fence, the drive, the pole barn, the firs.
+		"camera_origin": Vector3(-2.4, 1.7, 8.0),
+		"camera_rotation": Vector3(-0.03, -0.20, 0.0),
+		"fov": 60.0,
+		"suppress_input": true,
+	},
+	"small_wood_road_night": {
+		"scene": "res://scenes/locales/small_wood_road.tscn",
+		"requires_glb": "res://assets/3d/locales/small_wood_road.glb",
+		# Night, driving around. The car's hood (eye 1.0) on the
+		# centerline, the dashes running into the firs, the town's
+		# lights far up. (vol1 ch3)
+		"camera_origin": Vector3(0.9, 1.0, 18.8),
+		"camera_rotation": Vector3(0.02, 0.0, 0.0),
+		"fov": 70.0,
+		"suppress_input": true,
+	},
+	"small_wood_roadside": {
+		"scene": "res://scenes/locales/small_wood_road.tscn",
+		"requires_glb": "res://assets/3d/locales/small_wood_road.glb",
+		# Dawn. In the east ditch, eye 0.7, looking north-west along the
+		# gravel toward the culvert where the minister stopped. (vol2 ch2)
+		"camera_origin": Vector3(2.9, 0.7, -6.0),
+		"camera_rotation": Vector3(0.06, 0.42, 0.0),
+		"fov": 50.0,
+		"suppress_input": true,
+	},
+	# vol7 · Highway 101 north of Yachats
+	"highway_101": {
+		"scene": "res://scenes/locales/highway_101.tscn",
+		"requires_glb": "res://assets/3d/locales/highway_101.glb",
+		# Dusk. The truck's hood (eye 1.15) on the northbound lane, the
+		# guardrail and the ocean left, the cedar wall right, the
+		# headland rising ahead. (ch22_drive)
+		"camera_origin": Vector3(1.8, 1.15, -12.0),
+		"camera_rotation": Vector3(0.0, 0.0, 0.0),
+		"fov": 62.0,
+		"suppress_input": true,
+	},
+	"highway_101_turn": {
+		"scene": "res://scenes/locales/highway_101.tscn",
+		"requires_glb": "res://assets/3d/locales/highway_101.glb",
+		# The unsigned turn: eye 1.6 on the shoulder at y 152, WNW at the
+		# chain, the green marker, the spur going off toward the bluff.
+		"camera_origin": Vector3(-1.5, 1.6, -152.0),
+		"camera_rotation": Vector3(-0.04, 0.80, 0.0),
+		"fov": 52.0,
 		"suppress_input": true,
 	},
 	"board_lords_interior": {
