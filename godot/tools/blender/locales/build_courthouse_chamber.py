@@ -509,6 +509,43 @@ def build_arraignment_props():
     make_box("Deans_Folder", (-1.90, 2.70, 0.50), (0.30, 0.22, 0.02), (0.82, 0.72, 0.50, 1.0))
 
 
+def build_hero_props_2026_09():
+    """HERO PROPS FOR THE BLIND CUES (shot_marker_audit, 2026-09-01).
+
+    Three cues; the folder handed to the judge exists
+    (SupplementalDisclosure_Folder — marker only). Built at the
+    curb past the south door gap:
+    - THE SUBARU ("a 2009 Subaru wagon, dark green, immaculate"):
+      hollow-bodied — pan, sides, hood, tailgate, roof — with the
+      passenger door swung open toward the courthouse steps.
+    - THE QUILT ("the seat itself bears, on the upholstery, a
+      single faint outline"): the seat inside the open door, the
+      quilt's outline a paler patch on it. The insert frames it
+      through the open door from the gap.
+    """
+    green = (0.16, 0.30, 0.20, 1.0)
+    green_dk = (0.12, 0.24, 0.16, 1.0)
+    cy = -6.0
+    make_box("Curb_Street", (0.0, cy, -0.03), (9.0, 3.4, 0.05), (0.34, 0.34, 0.35, 1.0))
+    make_box("Curb_Kerb", (0.0, -4.2, 0.06), (9.0, 0.20, 0.12), (0.62, 0.60, 0.56, 1.0))
+    make_box("Green_Subaru_Pan", (0.0, cy, 0.40), (4.60, 1.80, 0.10), green_dk)
+    make_box("Green_Subaru_Side_S", (0.0, cy - 0.87, 0.72), (4.60, 0.06, 0.55), green)
+    make_box("Green_Subaru_Side_N_Rear", (-1.2, cy + 0.87, 0.72), (2.20, 0.06, 0.55), green)
+    make_box("Green_Subaru_Hood", (1.75, cy, 0.75), (1.10, 1.70, 0.60), green)
+    make_box("Green_Subaru_Tailgate", (-2.05, cy, 0.85), (0.50, 1.70, 0.80), green)
+    make_box("Green_Subaru_Roof", (-0.4, cy, 1.43), (3.20, 1.80, 0.06), green)
+    make_box("Green_Subaru_Pillar", (1.15, cy - 0.85, 1.15), (0.06, 0.06, 0.50), green_dk)
+    make_box("Green_Subaru_Windshield", (1.15, cy, 1.22), (0.04, 1.60, 0.36), (0.60, 0.70, 0.76, 0.35))
+    # passenger door swung open toward the steps (north side)
+    make_box("Green_Subaru_Door_Open", (0.85, cy + 1.35, 0.72), (0.06, 0.90, 0.55), green)
+    for wi, (wx, wy) in enumerate(((-1.5, cy - 0.995), (1.5, cy - 0.995), (-1.5, cy + 0.995), (1.5, cy + 0.995))):
+        make_cyl(f"Green_Subaru_Wheel_{wi}", (wx, wy, 0.32), 0.32, 0.25, (0.12, 0.12, 0.13, 1.0), axis='Y', segments=10)
+    # the seat inside the open door, the quilt's faint outline on it
+    make_box("Subaru_Seat", (0.35, cy + 0.42, 0.675), (0.50, 0.50, 0.45), (0.34, 0.32, 0.30, 1.0))
+    make_box("Subaru_Seat_Back", (0.05, cy + 0.42, 1.10), (0.10, 0.50, 0.40), (0.34, 0.32, 0.30, 1.0))
+    make_box("Quilt_Outline", (0.38, cy + 0.42, 0.9015), (0.30, 0.30, 0.003), (0.46, 0.44, 0.40, 1.0))
+
+
 def main():
     clear_scene()
     build_shell()
@@ -524,6 +561,7 @@ def main():
     build_justice_dressing()
     build_justice_wave2_props()
     build_arraignment_props()
+    build_hero_props_2026_09()
     out = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)),
                                          "../../../assets/3d/locales/courthouse_chamber.glb"))
     print(f"\n[build_courthouse_chamber] exporting to {out}")

@@ -129,6 +129,7 @@ SYNONYMS = {
     "tv": ["bar_tv", "television", "tv_screen"],
     "telecaster": ["tele", "guitar"],
     "doorknob": ["doorknob", "latch", "knob"],
+    "card": ["callingcard", "card"],
     "doohickey": ["doohickey", "onyx"],
 }
 

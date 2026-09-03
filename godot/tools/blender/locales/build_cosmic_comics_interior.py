@@ -327,6 +327,21 @@ def build_landline_and_twenty_2026_08():
              (0.42, 0.50, 0.42, 1.0))
 
 
+def build_hero_props_2026_09():
+    """HERO PROPS FOR THE BLIND CUES (shot_marker_audit, 2026-09-01).
+
+    Three cues; the landline exists (phone marker). Built: THE
+    SPEAK & SPELL under the register ("She picks up the Speak &
+    Spell from under the register") — body, key grid, display —
+    tucked at the carcass's foot on the staff side (the
+    under-shelf lives inside the solid counter body). Serves both cue spellings via the existing speakspell
+    synonym.
+    """
+    make_box("SpeakSpell_Body", (3.2, 6.4, 0.0175), (0.25, 0.19, 0.035), (0.85, 0.30, 0.16, 1.0))
+    make_box("SpeakSpell_Keys", (3.2, 6.37, 0.0361), (0.18, 0.08, 0.002), (0.90, 0.82, 0.62, 1.0))
+    make_box("SpeakSpell_Display", (3.2, 6.465, 0.0361), (0.16, 0.045, 0.002), (0.16, 0.30, 0.18, 1.0))
+
+
 def main():
     clear_scene()
     build_shell()
@@ -349,6 +364,7 @@ def main():
         "../../../assets/3d/locales/cosmic_comics_interior.glb"))
     print(f"\n[build_cosmic_comics_interior] exporting to {out}")
     build_hero_props()
+    build_hero_props_2026_09()
     export_glb(out)
 
 if __name__ == "__main__":

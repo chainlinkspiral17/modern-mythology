@@ -150,6 +150,41 @@ def build_hero_props():
         make_box(f"Price_Digits_{di}", (-8.91, 1.0, 5.75 - di * 0.40), (0.02, 1.2, 0.26), (0.94, 0.94, 0.90, 1.0))
 
 
+def build_hero_props_2026_09():
+    """HERO PROPS FOR THE BLIND CUES (shot_marker_audit, 2026-09-01).
+
+    Three cues, none with geometry:
+    - BOYD'S PHONE ("He calls his handler. The handler does not
+      pick up."): face-up on the register counter.
+    - THE BADGE + THE CASH: Doyle's NAPD courtesy badge ("a small
+      leather wallet with a New Auburn shield") and the three
+      hundred-dollar bills she hands him — both on the dash of
+      Doyle's dark sedan, parked on a new forecourt pad south of
+      the canopy, hollow-bodied so the dash reads through the
+      windshield.
+    """
+    dark = (0.16, 0.17, 0.20, 1.0)
+    make_box("Boyds_Phone", (1.5, 4.55, 1.0055), (0.070, 0.140, 0.011), (0.13, 0.13, 0.15, 1.0))
+    # ── Doyle's sedan · forecourt pad south of the canopy ──
+    make_box("Forecourt_Pad", (-6.25, 0.2, -0.03), (6.0, 3.0, 0.05), (0.40, 0.40, 0.41, 1.0))
+    make_box("Doyle_Sedan_Pan", (-6.25, 0.2, 0.40), (4.40, 1.80, 0.10), dark)
+    make_box("Doyle_Sedan_Side_S", (-6.25, -0.67, 0.72), (4.40, 0.06, 0.55), dark)
+    make_box("Doyle_Sedan_Side_N", (-6.25, 1.07, 0.72), (4.40, 0.06, 0.55), dark)
+    make_box("Doyle_Sedan_Hood", (-4.6, 0.2, 0.75), (1.10, 1.68, 0.60), dark)
+    make_box("Doyle_Sedan_Trunk", (-7.9, 0.2, 0.75), (1.10, 1.68, 0.60), dark)
+    make_box("Doyle_Sedan_Roof", (-6.25, 0.2, 1.43), (2.20, 1.80, 0.06), dark)
+    make_box("Doyle_Sedan_Windshield", (-5.13, 0.2, 1.22), (0.04, 1.60, 0.36), (0.60, 0.70, 0.76, 0.35))
+    make_box("Doyle_Sedan_Dash", (-5.3, 0.2, 0.98), (0.30, 1.60, 0.06), (0.12, 0.12, 0.13, 1.0))
+    for wi, (wx, wy) in enumerate(((-7.45, -0.795), (-5.05, -0.795), (-7.45, 1.195), (-5.05, 1.195))):
+        make_cyl(f"Doyle_Sedan_Wheel_{wi}", (wx, wy, 0.32), 0.32, 0.25, (0.12, 0.12, 0.13, 1.0), axis='Y', segments=10)
+    # THE BADGE · open leather wallet on the dash, shield inside
+    make_box("Courtesy_Badge_Wallet", (-5.3, 0.55, 1.014), (0.11, 0.08, 0.008), (0.30, 0.20, 0.14, 1.0))
+    make_box("Courtesy_Badge_Shield", (-5.3, 0.57, 1.0195), (0.035, 0.035, 0.003), (0.72, 0.60, 0.30, 1.0))
+    # THE CASH · three hundreds, fanned on the dash
+    for bi, (dx, dy) in enumerate(((0.0, 0.0), (0.012, -0.014), (0.024, -0.028))):
+        make_box(f"Cash_Bill_{bi}", (-5.30 + dx, -0.30 + dy, 1.0115 + bi * 0.0012), (0.156, 0.066, 0.001), (0.62, 0.68, 0.56, 1.0))
+
+
 def main():
     clear_scene()
     build_shell()
@@ -162,6 +197,7 @@ def main():
     build_brand_and_register()
     build_ceiling_infra()
     build_hero_props()
+    build_hero_props_2026_09()
     out = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)),
         "../../../assets/3d/locales/nexcorp_fueling_station.glb"))
     print(f"\n[build_nexcorp_fueling_station] exporting to {out}")

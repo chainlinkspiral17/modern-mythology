@@ -326,3 +326,21 @@ offset_top = 360.0
 offset_right = 520.0
 offset_bottom = 980.0
 script = ExtResource("14_dbgm")
+
+; insert: paying the August bills
+[node name="shot_insert_bills" type="Marker3D" parent="." groups=["vn_shot"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.4, 1.15, -3.45)
+rotation = Vector3(-0.6598, 0.8254, 0.0)
+metadata/fov = 42.0
+
+; insert: she closes the laptop
+[node name="shot_insert_laptop" type="Marker3D" parent="." groups=["vn_shot"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.35, 1.3, -3.05)
+rotation = Vector3(-0.5096, -0.0000, 0.0)
+metadata/fov = 42.0
+
+; insert: the phone on the desk buzzes — Movement Wednesday 23:00
+[node name="shot_insert_phone" type="Marker3D" parent="." groups=["vn_shot"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.9, 1.1, -3.5)
+rotation = Vector3(-0.3090, 1.2978, 0.0)
+metadata/fov = 42.0

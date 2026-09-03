@@ -516,3 +516,9 @@ metadata/fov = 30.0
 position = Vector3(0, 6.5, 1.4)
 rotation = Vector3(-0.12, 3.1416, 0)
 metadata/fov = 44.0
+
+; insert: the calling card on the helm desk, square to the corner
+[node name="shot_insert_card" type="Marker3D" parent="." groups=["vn_shot"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.2, 6.25, 1.9)
+rotation = Vector3(-0.6491, -2.4228, 0.0)
+metadata/fov = 42.0

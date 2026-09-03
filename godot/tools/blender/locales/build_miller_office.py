@@ -245,6 +245,19 @@ def build_detail_pass_2026_08():
                      face_sign=-1, aged=True)
 
 
+def build_hero_props_2026_09():
+    """HERO PROPS FOR THE BLIND CUES (shot_marker_audit, 2026-09-01).
+
+    Three cues; the laptop and both phones exist (markers only).
+    Built: THE BILLS ("paying the August bills that have come in
+    this week") — the envelope stack + the open checkbook at the
+    desk's west end, past the laptop.
+    """
+    make_box("August_Bills_Stack", (-0.75, 3.85, 0.782), (0.16, 0.20, 0.024), (0.90, 0.88, 0.82, 1.0))
+    make_box("Bills_Top_Envelope", (-0.74, 3.86, 0.7955), (0.15, 0.19, 0.003), (0.84, 0.86, 0.90, 1.0))
+    make_box("Bills_Checkbook", (-0.75, 3.60, 0.7745), (0.16, 0.08, 0.009), (0.24, 0.30, 0.44, 1.0))
+
+
 def main():
     clear_scene()
     build_shell()
@@ -253,6 +266,7 @@ def main():
     build_chandelier()
     build_wall_dressing()
     build_detail_pass_2026_08()
+    build_hero_props_2026_09()
     out = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)),
         "../../../assets/3d/locales/miller_office.glb"))
     print(f"\n[build_miller_office] exporting to {out}")

@@ -201,6 +201,21 @@ def build_hero_props():
     make_box("Service_Deadbolt", (1.55, ROOM_D-0.09, 1.05), (0.06, 0.03, 0.10), (0.74, 0.60, 0.30, 1.0))
 
 
+def build_hero_props_2026_09():
+    """HERO PROPS FOR THE BLIND CUES (shot_marker_audit, 2026-09-01).
+
+    Three cues; the Speak & Spell on its shelf exists (marker
+    only). Built: RICK'S NOTEBOOK ("the spiral notebook he had been
+    keeping for her since Sunday. The notebook is open.") — open on
+    the desk, its note page showing (the page carries the "note"
+    cue: the list on its standard page).
+    """
+    make_box("Ricks_Notebook", (-0.25, 3.35, 0.766), (0.18, 0.24, 0.012), (0.30, 0.44, 0.58, 1.0))
+    make_box("Ricks_Notebook_Wire", (-0.25, 3.476, 0.767), (0.18, 0.010, 0.014), (0.55, 0.56, 0.58, 1.0))
+    make_box("Notebook_Note_Page", (-0.25, 3.34, 0.7735), (0.16, 0.21, 0.003), (0.94, 0.93, 0.88, 1.0))
+    make_box("Note_Page_List_Lines", (-0.25, 3.36, 0.7755), (0.10, 0.12, 0.001), (0.36, 0.36, 0.40, 1.0))
+
+
 def main():
     clear_scene()
     build_shell()
@@ -214,6 +229,7 @@ def main():
     print(f"\n[build_cosmic_comics_back_office] exporting to {out}")
     build_backoffice_detail()
     build_hero_props()
+    build_hero_props_2026_09()
     export_glb(out)
 
 if __name__ == "__main__":
