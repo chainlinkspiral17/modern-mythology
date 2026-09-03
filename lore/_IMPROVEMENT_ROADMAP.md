@@ -185,12 +185,33 @@ the cursor) and Meadowlark's night practicals. Blind 21 → 14, every
 one deliberate (hands ×2, cast closeups without ids ×4, the
 strip-mall door/phone and the Cypress drive-by on louisiana_road,
 the Bern press, the cell window, the tattoo, the charcoal, the
-wooden box). DRAFT 4 TARGETS: the strip-mall back door open two
-inches + Jesse's phone on louisiana_road (ch14_live_oak); the
-Cypress motel as a drive-by band on louisiana_road or its own
-twelve-room L (ch15_home, six nodes — low yield); rain on the
-windshield (mood); scree + switchbacks on Kestrel; the boot-wear
-channel on the headland; promote make_car() into _props. Check
+wooden box). RE-HOMING DRAFT 4A-4B (2026-09-03, same session):
+the strip-mall back door open two inches with its blade of light
+and spill, Jesse's Civic at the lot corner with the phone lit on
+its dash (ch14 stays on louisiana_road — it IS the strip mall); the
+Cypress motel built onto the same set (twelve rooms in an L, the
+office, ice + soda machines, the walkway on posts, three cars, the
+pole sign, Room 7 lit with its AC dripping) with preset
+cypress_motel for ch15's drive-by; make_car() promoted into
+_props/vehicles.py (along X/Y, hatch, pickup, light bar, a dash
+gap for a phone); Per's wooden box was a MATCHER MISS (PersBox_*
+had stood on the bakery bench since August — synonym + marker);
+the interlude-ii LENA slug re-homed to her apartment with the
+charcoal S U N as residue on the duvet. Blind 14 → 9. THE BLIND
+PROGRAM'S END STATE (9): hands ×2 (kestrel, cab), closeup
+coach_dale ×2 and closeup douglas ×2 (cast without char ids), the
+Bern press (off the template's frame), the cell window (canon: no
+windows), the tattoo (on skin). Nothing left to model for a cue.
+NEXT (draft 2 of the nine new locales, per THE DRAFTING PROGRAM):
+SCALE + EDGES + COVERAGE on meadowlark, the cab, the lake, the
+diorama, the headland, Kestrel, the basement, the motel — second
+presets where the chapter moves (the dock end and the square
+already have theirs), edge-of-set treatment where the Deck shows
+a world edge, Deck-verified framing before any more props. Then:
+scree + switchbacks on Kestrel; the boot-wear channel on the
+headland; the geometry audit's interior test (a ceiling over the
+camera should exempt a locale from the 40 m exterior rule); the
+exterior template's upward Sun basis. Check
 the exterior template's Sun: its −Z basis points UP (+y) in
 kowalski/meadowlark/cape/vehicle_cab — the Sky_Fill does the
 modeling; lake_palestine's Sun was authored downward on purpose. THE PROGRAM'S END STATE: every remaining

@@ -244,6 +244,16 @@ Lessons:
   Basement_Jamb_* made the door itself the nearest hit. When a cue
   id is a common noun, keep it out of the names of the parts around
   the hero.
+- **A blind cue over an existing prop is a matcher miss, not an art
+  gap.** [shot:insert wooden_box] sat blind for a month while
+  PersBox_* stood on the bakery bench: "wooden_box" is a multi-word
+  stem, so it substring-matches "woodenbox" and nothing else. Run
+  `shot_marker_audit.py --props` and READ the builder for the noun
+  before modeling; a synonym line and a marker is the whole fix.
+- **A slug line is a bg node that hasn't been written yet.** The
+  interlude's "[ LENA — apartment above The Salty Tome ... ]" was the
+  cue that the location changed; the scene never carried the bg. When
+  a chapter uses bracketed slugs, every slug wants a bg after it.
 - **The exterior threshold is a bbox, not a sky.** locale_geometry
   calls a locale outdoor when its bbox exceeds 40 m on a side and
   then wants a 120 m horizon; a 40.6 m hallway-plus-basement got
