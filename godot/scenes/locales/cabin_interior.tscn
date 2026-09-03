@@ -478,6 +478,12 @@ rotation = Vector3(-0.5626, 0.7560, 0.0)
 metadata/fov = 42.0
 
 ; insert: the player, taken down from the shelf
+; insert: the headset, set down on the kitchen table beside the disc-case (vol7 epilogue)
+[node name="shot_insert_headset" type="Marker3D" parent="." groups=["vn_shot"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.95, 1.15, -2.75)
+rotation = Vector3(-0.4945, 0.8394, 0.0)
+metadata/fov = 42.0
+
 [node name="shot_insert_player" type="Marker3D" parent="." groups=["vn_shot"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.45, 1.55, -0.85)
 rotation = Vector3(0.1154, -3.1416, 0.0)

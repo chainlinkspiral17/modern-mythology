@@ -500,6 +500,16 @@ def build_hero_props_2026_09():
     # ── THE DISC-CASE · table east ──
     make_box("Disc_Case", (0.72, 2.90, T + 0.0075), (0.14, 0.125, 0.015), (0.18, 0.18, 0.20, 1.0))
     make_box("Disc_Case_Label", (0.72, 2.90, T + 0.0158), (0.10, 0.06, 0.001), (0.82, 0.80, 0.74, 1.0))
+    # ── THE HEADSET · beside the disc-case (vol7 epilogue, The Submission:
+    # "Tem took off the headset. She set it on the kitchen table beside
+    # the disc-case.") Visor down, strap arms back, the lens plate dark.
+    make_box("Headset_Visor", (0.50, 3.05, T + 0.045), (0.18, 0.10, 0.09), (0.16, 0.16, 0.18, 1.0))
+    make_box("Headset_Front_Plate", (0.50, 2.999, T + 0.045), (0.16, 0.002, 0.07), (0.08, 0.09, 0.11, 1.0))
+    make_box("Headset_Foam", (0.50, 3.1005, T + 0.045), (0.17, 0.001, 0.08), (0.30, 0.28, 0.26, 1.0))
+    for sgn, nm in ((1, "R"), (-1, "L")):
+        make_box(f"Headset_Strap_{nm}", (0.50 + sgn * 0.0975, 3.17, T + 0.045), (0.015, 0.14, 0.03), (0.20, 0.20, 0.22, 1.0))
+    make_box("Headset_Strap_Back", (0.50, 3.2475, T + 0.045), (0.21, 0.015, 0.03), (0.20, 0.20, 0.22, 1.0))
+    make_box("Headset_Cable", (0.50, 3.34, T + 0.003), (0.008, 0.17, 0.006), (0.12, 0.12, 0.13, 1.0))
     # ── THE EGGS · skillet on the folded towel, table north-west ──
     make_box("Trivet_Towel", (-0.45, 3.40, T + 0.004), (0.30, 0.30, 0.008), (0.70, 0.62, 0.50, 1.0))
     make_cyl("Egg_Skillet", (-0.45, 3.40, T + 0.0255), 0.140, 0.035, (0.16, 0.16, 0.17, 1.0), segments=12)

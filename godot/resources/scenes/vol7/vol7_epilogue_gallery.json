@@ -5,7 +5,7 @@
  "type": "scene",
  "nodes": [
   {
-   "src": "3d:cabin_road",
+   "src": "3d:estuary_7_template",
    "t": "bg"
   },
   {

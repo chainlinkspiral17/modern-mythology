@@ -344,6 +344,10 @@
     "lake_palestine": {
       "bed": "assets/audio/bgm/vol5_ambient.ogg",
       "gain": 0.64
+    },
+    "estuary_7_template": {
+      "bed": "assets/audio/bgm/vol5_warehouse_drone.ogg",
+      "gain": 0.30
     }
   }
 }

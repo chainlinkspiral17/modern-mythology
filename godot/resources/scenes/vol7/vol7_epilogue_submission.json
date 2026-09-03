@@ -5,7 +5,7 @@
  "type": "scene",
  "nodes": [
   {
-   "src": "3d:cabin_road",
+   "src": "3d:estuary_7_template",
    "t": "bg"
   },
   {
@@ -58,6 +58,10 @@
   {
    "text": "The clock counted. 0:01.",
    "t": "narrate"
+  },
+  {
+   "src": "3d:cabin_interior",
+   "t": "bg"
   },
   {
    "text": "[mood:dawn_warm][shot:establish]Tem took off the headset. She set it on the kitchen table beside the disc-case.",

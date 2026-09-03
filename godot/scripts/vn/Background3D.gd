@@ -1280,6 +1280,21 @@ const CAMERA_PRESETS := {
 		"fov": 58.0,
 		"suppress_input": true,
 	},
+	# ── VOL 7 — Estuary 7, the planner's-view (re-homed off cabin_road
+	# 2026-09-03): the epilogue's gallery and submission. The stick's
+	# opening configuration built as a tabletop DIORAMA in a dark room.
+	"estuary_7_template": {
+		"scene": "res://scenes/locales/estuary_7_template.tscn",
+		"requires_glb": "res://assets/3d/locales/estuary_7_template.glb",
+		# Table 14x9.6 at the origin: sea west, cedars + river east,
+		# flats north, bluff + ridge south, the palettes docked off the
+		# east edge. Camera high over the south-west corner (blender
+		# -7, -7, 6.5) looking down at the mouth of the river.
+		"camera_origin": Vector3(-7.0, 6.5, 7.0),
+		"camera_rotation": Vector3(-0.536, -0.820, 0.0),
+		"fov": 50.0,
+		"suppress_input": true,
+	},
 	"board_lords_interior": {
 		"scene": "res://scenes/locales/board_lords_interior.tscn",
 		"requires_glb": "res://assets/3d/locales/board_lords_interior.glb",
