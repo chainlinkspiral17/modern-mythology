@@ -390,3 +390,10 @@ metadata/fov = 42.0
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.25, 0.95, -0.95)
 rotation = Vector3(-0.4891, -2.5321, 0.0)
 metadata/fov = 42.0
+
+; insert: Per's wooden box from the bench by the door, the spiral carved in the lid (vol7 ch10)
+[node name="shot_insert_wooden_box" type="Marker3D" parent="." groups=["vn_shot"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, 1.1, -1.2)
+rotation = Vector3(-0.5605, 2.7316, 0.0)
+metadata/fov = 42.0
+

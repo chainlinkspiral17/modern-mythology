@@ -134,6 +134,7 @@ SYNONYMS = {
     "workbench": ["workbench", "bench"],
     "radio": ["radio", "morsekey", "transmitter"],
     "doohickey": ["doohickey", "onyx"],
+    "wooden_box": ["persbox", "box"],
 }
 
 

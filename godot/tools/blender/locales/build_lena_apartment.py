@@ -177,6 +177,12 @@ def build_bedroom():
     make_box("Bed_Pillow_L", (bx-0.36, by+0.68, 0.54), (0.62, 0.36, 0.12), (0.98, 0.94, 0.90, 1.0))
     make_box("Bed_Pillow_R", (bx+0.36, by+0.68, 0.54), (0.62, 0.36, 0.12), (0.98, 0.94, 0.90, 1.0))
     make_box("Bed_Duvet", (bx, by-0.24, 0.52), (1.44, 1.18, 0.10), (0.72, 0.46, 0.52, 1.0))
+    # vol7 interlude ii (2026-09-03): "Her thigh has charcoal on it in the
+    # shape of three letters: S U N ... There is no charcoal in the
+    # apartment." The residue it left on the duvet where she slept.
+    for ci, (dx, w) in enumerate(((-0.16, 0.06), (0.0, 0.05), (0.16, 0.06))):
+        make_box("Charcoal_Letter_%d" % ci, (bx - 0.10 + dx, by - 0.36, 0.5715), (w, 0.07, 0.003), (0.16, 0.15, 0.15, 1.0))
+    make_box("Charcoal_Smudge", (bx - 0.10, by - 0.30, 0.5705), (0.40, 0.06, 0.001), (0.36, 0.34, 0.34, 1.0))
     make_box("Nightstand", (bx+0.95, by+0.7, 0.30), (0.42, 0.42, 0.60), COL_WOOD)
     make_box("Clock", (bx+0.95, by+0.7, 0.66), (0.16, 0.10, 0.10), P.METAL_BLACK)
     # Thermostat above the bed (reads 61)
