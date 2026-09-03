@@ -384,6 +384,10 @@
     "accretion_basement": {
       "bed": "assets/audio/bgm/vol5_warehouse_drone.ogg",
       "gain": 0.62
+    },
+    "cypress_motel": {
+      "bed": "assets/audio/bgm/vol5_cicadas_dusk.ogg",
+      "gain": 0.62
     }
   }
 }

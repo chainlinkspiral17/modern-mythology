@@ -529,6 +529,113 @@ def build_foxhole_strip_mall_2026_08():
     make_box("Marquee_Chalk_Line3", (qx - 0.08, qy + 0.42, 3.02), (0.01, 0.9, 0.10), chalk)
 
 
+def build_live_oak_2026_09():
+    """LIVE OAK (vol6 ch14, re-homed 2026-09-03 — the beat that stays on
+    this set because this set IS the strip mall). "Tonight the door is
+    open. Two inches. A faint light is visible through the gap." Jesse
+    "stops the car at the corner of the lot, in the small position
+    where the sodium lamp does not directly illuminate the Civic's
+    silhouette." "At ten twenty-three, Jesse takes out his phone."
+    """
+    from _props.vehicles import make_car
+    mx, my = 17.0, 47.0
+    ux = mx - 5.02
+    # the two-inch gap: a blade of light on the latch side of the unit's back door, and its spill on the lot
+    make_box("Unit_Door_Gap_Light", (ux - 0.035, my - 1.0 + 0.45, 1.05), (0.01, 0.05, 2.02), (0.98, 0.90, 0.66, 1.0))
+    make_box("Unit_Door_Light_Spill", (ux - 0.40, my - 0.55, 0.033), (0.70, 0.60, 0.002), (0.46, 0.40, 0.28, 1.0))
+    # Jesse's Civic at the south-west corner of the lot, nose north, lights off
+    make_car("Civic", 7.2, 38.0, 4.3, (0.34, 0.36, 0.40, 1.0), hatch=True, along="Y", z0=0.03)
+    # the phone, lit, in the gap between the dash and the windshield, driver's side
+    make_box("Phone", (6.85, 38.0 - 0.40 + 1.30 + 0.015, 0.03 + 1.08), (0.07, 0.012, 0.14), (0.08, 0.08, 0.09, 1.0))
+    make_box("Phone_Screen", (6.85, 38.0 - 0.40 + 1.30 + 0.0225, 0.03 + 1.08), (0.062, 0.001, 0.126), (0.66, 0.80, 0.96, 1.0))
+
+
+def build_cypress_motel_2026_09():
+    """THE CYPRESS (vol6 ch15, Room 7 — re-homed 2026-09-03). "A motel
+    from the 1970s, single-story, twelve rooms in a long L around a
+    small empty parking lot. There are three cars in the lot." Sam
+    drives past it slowly on the way home; she does not stop. West of
+    the road, north of the houses: the long wing runs N-S at x -26
+    with its doors toward the lot, the short wing closes the north end,
+    the office and the pole sign at the south end nearest the road.
+    Room 7 has its light on and its AC running.
+    """
+    from _props.vehicles import make_car
+    wall = (0.74, 0.66, 0.52, 1.0)
+    wall_dk = (0.62, 0.54, 0.42, 1.0)
+    trim = (0.40, 0.24, 0.18, 1.0)
+    roof = (0.30, 0.28, 0.26, 1.0)
+    door = (0.36, 0.26, 0.18, 1.0)
+    glass = (0.22, 0.26, 0.32, 1.0)
+    glass_lit = (0.96, 0.84, 0.54, 1.0)
+    lot = (0.26, 0.26, 0.27, 1.0)
+    walk = (0.58, 0.56, 0.52, 1.0)
+    rw = 3.4
+    y0 = 60.0
+    # long wing: rooms 1-8, x -30..-22, doors on the east face
+    make_box("Cypress_Motel_Long_Wing", (-26.0, y0 + 4 * rw, 1.45), (8.0, 8 * rw, 2.90), wall)
+    make_box("Cypress_Motel_Long_Roof", (-26.0, y0 + 4 * rw, 3.02), (8.4, 8 * rw + 0.4, 0.24), roof)
+    make_box("Cypress_Motel_Long_Fascia", (-21.85, y0 + 4 * rw, 3.02), (0.10, 8 * rw + 0.4, 0.30), trim)
+    # short wing: rooms 9-12 along the north end, x -22..-8.4, doors on the south face
+    make_box("Cypress_Motel_Short_Wing", (-15.2, y0 + 8 * rw + 4.0, 1.45), (13.6, 8.0, 2.90), wall)
+    make_box("Cypress_Motel_Short_Roof", (-15.2, y0 + 8 * rw + 4.0, 3.02), (14.0, 8.4, 0.24), roof)
+    make_box("Cypress_Motel_Short_Fascia", (-15.2, y0 + 8 * rw - 0.15, 3.02), (14.0, 0.10, 0.30), trim)
+    # the office at the south end, its window lit, the ice machine and the soda machine beside it
+    make_box("Cypress_Motel_Office", (-26.0, y0 - 2.5, 1.45), (8.0, 5.0, 2.90), wall_dk)
+    make_box("Cypress_Motel_Office_Roof", (-26.0, y0 - 2.5, 3.02), (8.4, 5.4, 0.24), roof)
+    make_box("Cypress_Motel_Office_Window", (-21.98, y0 - 2.5, 1.55), (0.04, 2.60, 1.20), glass_lit)
+    make_box("Cypress_Motel_Office_Door", (-21.98, y0 - 0.2, 1.05), (0.04, 0.90, 2.10), glass)
+    make_box("Motel_Ice_Machine", (-21.5, y0 + 0.6, 0.85), (0.80, 0.70, 1.70), (0.80, 0.80, 0.78, 1.0))
+    make_box("Motel_Soda_Machine", (-21.5, y0 + 1.5, 0.90), (0.80, 0.80, 1.80), (0.72, 0.16, 0.14, 1.0))
+    make_box("Motel_Soda_Machine_Face", (-21.09, y0 + 1.5, 1.10), (0.01, 0.60, 1.10), (0.96, 0.92, 0.80, 1.0))
+    # the walkway under the overhang, the posts
+    make_box("Cypress_Motel_Walk_Long", (-21.2, y0 + 4 * rw, 0.05), (1.6, 8 * rw, 0.10), walk)
+    make_box("Cypress_Motel_Walk_Short", (-15.2, y0 + 8 * rw - 0.8, 0.05), (13.6, 1.6, 0.10), walk)
+    make_box("Cypress_Motel_Overhang_Long", (-20.9, y0 + 4 * rw, 2.86), (2.2, 8 * rw, 0.08), roof)
+    make_box("Cypress_Motel_Overhang_Short", (-15.2, y0 + 8 * rw - 1.1, 2.86), (13.6, 2.2, 0.08), roof)
+    for pi in range(9):
+        make_box("Motel_Post_%d" % pi, (-19.85, y0 + pi * rw, 1.41), (0.10, 0.10, 2.82), trim)
+    for pi in range(5):
+        make_box("Motel_Post_N_%d" % pi, (-21.5 + pi * rw, y0 + 8 * rw - 2.15, 1.41), (0.10, 0.10, 2.82), trim)
+    # rooms 1-8: door, window, AC unit under the window, room number, one wall lamp each
+    for ri in range(8):
+        ry = y0 + ri * rw + rw / 2.0
+        lit = (ri == 6)      # Room 7
+        make_box("Motel_Room_%d_Door" % (ri + 1), (-21.98, ry - 0.9, 1.05), (0.04, 0.90, 2.10), door)
+        make_box("Motel_Room_%d_Number" % (ri + 1), (-21.955, ry - 0.9, 1.75), (0.01, 0.12, 0.14), (0.86, 0.80, 0.60, 1.0))
+        make_box("Motel_Room_%d_Window" % (ri + 1), (-21.98, ry + 0.75, 1.60), (0.04, 1.30, 1.00), glass_lit if lit else glass)
+        make_box("Motel_Room_%d_Curtain" % (ri + 1), (-21.955, ry + 0.75, 1.60), (0.01, 1.20, 0.90), (0.76, 0.68, 0.50, 1.0) if not lit else (0.92, 0.82, 0.58, 1.0))
+        make_box("Motel_Room_%d_AC" % (ri + 1), (-21.65, ry + 0.75, 0.62), (0.70, 0.70, 0.50), (0.68, 0.66, 0.62, 1.0))
+        make_box("Motel_Room_%d_Lamp" % (ri + 1), (-21.93, ry - 0.2, 2.30), (0.06, 0.14, 0.14), (0.92, 0.82, 0.50, 1.0))
+    make_box("Motel_Room_7_AC_Drip", (-21.65, y0 + 6 * rw + rw / 2.0 + 0.75, 0.101), (0.30, 0.24, 0.002), (0.30, 0.30, 0.32, 1.0))
+    # rooms 9-12 on the short wing, plainer
+    for ri in range(4):
+        rx = -21.5 + ri * rw + rw / 2.0
+        make_box("Motel_Room_%d_Door" % (ri + 9), (rx - 0.9, y0 + 8 * rw + 0.02, 1.05), (0.90, 0.04, 2.10), door)
+        make_box("Motel_Room_%d_Window" % (ri + 9), (rx + 0.75, y0 + 8 * rw + 0.02, 1.60), (1.30, 0.04, 1.00), glass)
+        make_box("Motel_Room_%d_AC" % (ri + 9), (rx + 0.75, y0 + 8 * rw - 0.35, 0.62), (0.70, 0.70, 0.50), (0.68, 0.66, 0.62, 1.0))
+    # the small empty parking lot, three cars in it
+    make_box("Cypress_Motel_Lot", (-13.0, y0 + 4 * rw - 1.0, 0.015), (14.0, 8 * rw + 4.0, 0.03), lot)
+    for si in range(7):
+        make_box("Motel_Lot_Stripe_%d" % si, (-17.0, y0 + 2.0 + si * rw, 0.032), (4.6, 0.10, 0.004), (0.50, 0.50, 0.46, 1.0))
+    make_car("Motel_Car_0", -15.5, y0 + 2 * rw + 0.4, 4.4, (0.62, 0.62, 0.60, 1.0), along="Y", z0=0.03)
+    make_car("Motel_Car_1", -15.5, y0 + 6 * rw + 0.4, 4.2, (0.40, 0.26, 0.20, 1.0), along="Y", z0=0.03)
+    make_car("Motel_Car_2", -9.0, y0 + 7 * rw - 1.6, 4.6, (0.20, 0.22, 0.30, 1.0), along="X", z0=0.03)
+    # the pole sign by the road: CYPRESS · MOTEL · VACANCY
+    make_cyl("Cypress_Motel_Sign_Pole", (-5.5, y0 - 2.0, 3.5), 0.14, 7.0, (0.36, 0.36, 0.38, 1.0), segments=8)
+    make_box("Cypress_Motel_Sign", (-5.5, y0 - 2.0, 7.8), (0.30, 3.2, 1.60), (0.18, 0.40, 0.36, 1.0))
+    make_box("Cypress_Motel_Sign_Text", (-5.34, y0 - 2.0, 8.1), (0.02, 2.6, 0.50), (0.96, 0.92, 0.72, 1.0))
+    make_box("Cypress_Motel_Sign_Motel", (-5.34, y0 - 2.0, 7.5), (0.02, 1.6, 0.26), (0.92, 0.60, 0.30, 1.0))
+    make_box("Cypress_Motel_Vacancy", (-5.5, y0 - 2.0, 6.7), (0.26, 2.0, 0.44), (0.16, 0.16, 0.18, 1.0))
+    make_box("Cypress_Motel_Vacancy_Neon", (-5.35, y0 - 2.0, 6.7), (0.02, 1.6, 0.18), (0.94, 0.30, 0.30, 1.0))
+    # the access road from the highway into the lot
+    make_box("Cypress_Motel_Access", (-4.3, y0 + 4.0, 0.012), (3.0, 6.0, 0.024), lot)
+    # a cypress or two behind the wings, for the name
+    from _props.trees import make_cypress
+    make_cypress("Cypress_Motel_Tree_0", -33.5, y0 + 10.0, 7.5, COL_CYPRESS_FOLIAGE, COL_CYPRESS_TRUNK, COL_SPANISH_MOSS)
+    make_cypress("Cypress_Motel_Tree_1", -34.0, y0 + 26.0, 6.8, COL_CYPRESS_FOLIAGE, COL_CYPRESS_TRUNK, COL_SPANISH_MOSS)
+
+
 def main():
     clear_scene()
     build_sky_backdrop()
@@ -540,6 +647,8 @@ def main():
     build_suburban_street()
     build_vol6_landmarks()
     build_foxhole_strip_mall_2026_08()
+    build_live_oak_2026_09()
+    build_cypress_motel_2026_09()
     out = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)), "../../../assets/3d/locales/louisiana_road.glb"))
     print(f"\n[build_louisiana_road] exporting to {out}")
     export_glb(out)

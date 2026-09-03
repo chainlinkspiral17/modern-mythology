@@ -1410,6 +1410,19 @@ const CAMERA_PRESETS := {
 		"fov": 64.0,
 		"suppress_input": true,
 	},
+	"cypress_motel": {
+		"scene": "res://scenes/locales/louisiana_road.tscn",
+		"requires_glb": "res://assets/3d/locales/louisiana_road.glb",
+		# vol6 ch15 (Room 7): Sam, slowing the Corolla on the back route,
+		# looks across at the Cypress — the long wing at blender x -26
+		# north of the houses, the lot in the crook of the L, the pole
+		# sign by the road, Room 7's window lit. Camera on the road at
+		# y 52 looking north-west.
+		"camera_origin": Vector3(-1.0, 1.3, -52.0),
+		"camera_rotation": Vector3(-0.01, 0.611, 0.0),
+		"fov": 56.0,
+		"suppress_input": true,
+	},
 	"board_lords_interior": {
 		"scene": "res://scenes/locales/board_lords_interior.tscn",
 		"requires_glb": "res://assets/3d/locales/board_lords_interior.glb",

@@ -42,6 +42,7 @@ if _BT not in sys.path: sys.path.insert(0, _BT)
 from _props import palette as P
 from _props.geometry import clear_scene, make_box, make_cyl, make_blob, export_glb
 from _props.detail import make_far_bands
+from _props.vehicles import make_car
 
 ASPHALT = (0.30, 0.30, 0.32, 1.0)
 CONCRETE = (0.62, 0.61, 0.58, 1.0)
@@ -196,34 +197,6 @@ def build_horizon():
                    [(90.0, 120.0, 6.0, 0.90), (170.0, 180.0, 8.0, 0.72),
                     (300.0, 280.0, 10.0, 0.55), (500.0, 420.0, 12.0, 0.42)],
                    cx=0.0, cy=0.0, profile="roofline")
-
-
-def make_car(prefix, cx, cy, length, col, pickup=False, light_bar=False):
-    """A car parked along the street (length along x). Body block,
-    cabin block, side/front glass plates OUTSIDE the cabin, wheels
-    outside the body — nothing intersects."""
-    hw = 0.90
-    make_box(f"{prefix}_Body", (cx, cy, 0.62), (length, 2 * hw, 0.60), col)
-    if pickup:
-        make_box(f"{prefix}_Cab", (cx + 0.55, cy, 1.27), (2.0, 2 * hw, 0.70), col)
-        make_box(f"{prefix}_Windshield", (cx + 1.56, cy, 1.30), (0.02, 1.60, 0.50), (0.26, 0.30, 0.36, 1.0))
-        for sgn, nm in ((1, "N"), (-1, "S")):
-            make_box(f"{prefix}_Side_Glass_{nm}", (cx + 0.55, cy + sgn * 0.91, 1.30), (1.70, 0.02, 0.50), (0.26, 0.30, 0.36, 1.0))
-            make_box(f"{prefix}_Bed_Side_{nm}", (cx - 1.35, cy + sgn * (hw - 0.02), 1.12), (1.8, 0.04, 0.40), col)
-        make_box(f"{prefix}_Tailgate", (cx - length / 2.0 + 0.03, cy, 1.12), (0.06, 2 * hw - 0.10, 0.40), col)
-    else:
-        make_box(f"{prefix}_Cabin", (cx - 0.20, cy, 1.13), (2.20, 2 * hw - 0.30, 0.42), col)
-        make_box(f"{prefix}_Windshield", (cx + 0.91, cy, 1.15), (0.02, 1.40, 0.30), (0.26, 0.30, 0.36, 1.0))
-        make_box(f"{prefix}_Rear_Glass", (cx - 1.31, cy, 1.15), (0.02, 1.40, 0.30), (0.26, 0.30, 0.36, 1.0))
-        for sgn, nm in ((1, "N"), (-1, "S")):
-            make_box(f"{prefix}_Side_Glass_{nm}", (cx - 0.20, cy + sgn * 0.76, 1.15), (1.90, 0.02, 0.30), (0.26, 0.30, 0.36, 1.0))
-    if light_bar:
-        make_box(f"{prefix}_Light_Bar", (cx - 0.20, cy, 1.40), (0.30, 1.10, 0.12), (0.16, 0.16, 0.18, 1.0))
-        make_box(f"{prefix}_Light_Bar_Red", (cx - 0.20, cy + 0.30, 1.40), (0.32, 0.30, 0.13), (0.70, 0.12, 0.10, 1.0))
-        make_box(f"{prefix}_Light_Bar_Blue", (cx - 0.20, cy - 0.30, 1.40), (0.32, 0.30, 0.13), (0.14, 0.24, 0.72, 1.0))
-    for wi, (wx, wy) in enumerate(((cx - length * 0.32, cy - 1.03), (cx + length * 0.32, cy - 1.03),
-                                   (cx - length * 0.32, cy + 1.03), (cx + length * 0.32, cy + 1.03))):
-        make_cyl(f"{prefix}_Wheel_{wi}", (wx, wy, 0.33), 0.33, 0.25, (0.14, 0.14, 0.15, 1.0), axis="Y", segments=10)
 
 
 def build_henderson_2026_09():

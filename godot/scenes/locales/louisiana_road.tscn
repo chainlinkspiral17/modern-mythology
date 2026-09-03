@@ -422,3 +422,51 @@ offset_top = 360.0
 offset_right = 520.0
 offset_bottom = 980.0
 script = ExtResource("14_dbgm")
+
+; ── Live Oak + the Cypress (2026-09-03) ───────────────────────────
+[node name="Unit_Door_Gap" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.6, 1.2, -46.4)
+light_color = Color(1, 0.88, 0.62, 1)
+light_energy = 0.6
+omni_range = 2.5
+shadow_enabled = false
+
+[node name="Civic_Phone" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.85, 1.2, -38.9)
+light_color = Color(0.66, 0.80, 0.96, 1)
+light_energy = 0.3
+omni_range = 1.2
+shadow_enabled = false
+
+[node name="Cypress_Sign" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.0, 7.6, -58.0)
+light_color = Color(0.70, 0.96, 0.86, 1)
+light_energy = 1.6
+omni_range = 14.0
+shadow_enabled = false
+
+[node name="Room_7" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -21.0, 1.7, -82.85)
+light_color = Color(1, 0.84, 0.54, 1)
+light_energy = 1.0
+omni_range = 6.0
+shadow_enabled = false
+
+; insert: the unit's back door open two inches, a faint light through the gap
+[node name="shot_insert_door" type="Marker3D" parent="." groups=["vn_shot"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.5, 1.4, -44.0)
+rotation = Vector3(-0.2074, -0.9267, 0.0)
+metadata/fov = 42.0
+
+; insert: Jesse's phone, lit, on the Civic's dash at ten twenty-three
+[node name="shot_insert_phone" type="Marker3D" parent="." groups=["vn_shot"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.5, 1.3, -39.5)
+rotation = Vector3(-0.1286, -1.9774, 0.0)
+metadata/fov = 42.0
+
+; insert: the Cypress — twelve rooms in a long L, three cars, Room 7 lit
+[node name="shot_insert_cypress" type="Marker3D" parent="." groups=["vn_shot"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.0, 1.5, -60.0)
+rotation = Vector3(0.5584, -2.2455, 0.0)
+metadata/fov = 42.0
+
