@@ -131,7 +131,7 @@ cab); and re-points to bakery / cabin / cedar tower exterior /
 henderson porch / cosmic front door. cabin_road 43 -> 18 blind.
 RE-HOMING DRAFT 2 (2026-09-03, user: "if it will benefit the scene
 and emotion of the storytelling, I want it. keep going"): four NEW
-locales built from the prose, 32 re-points, blind 45 → 26.
+locales built from the prose, 34 re-points, blind 45 → 24.
 (A) meadowlark_circle — the Harmony Creek cul-de-sac: eight ranch
 houses (1402..1428 + the south three), the Miller cracked head and
 its etched stripe, the sprinkler fans, Geller's house at the bulb
