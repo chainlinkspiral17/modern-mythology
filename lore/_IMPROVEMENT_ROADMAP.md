@@ -154,13 +154,23 @@ cabin table beside the disc-case (a cabin_interior bg inserted
 before Tem takes it off). The strip-mall scenes stay on
 louisiana_road — that IS the strip mall. What remains on cabin_road
 (8) is honest driving plus the Cape Perpetua tide-pool beat.
-DRAFT 3 TARGETS (queued): meadowlark_circle_night's three new
-blinds (Rick's hand-drawn map, the 1974 Polaroid, the envelope —
-ch3_coda 9-18, on the sedan's dash through the windshield); a
-rear-bench cab preset for ch5's four-up + rain on the windshield
-for ch4_storm; a dock-end preset for the lake's closeups; the
-gallery's ghosted earlier layers on the diorama; the Miller garage
-interior (vol6 ch5_garage still on henderson_porch_front). Check
+RE-HOMING DRAFT 3A (2026-09-03, later): the ch3_coda "three
+blinds" were not on the street at all — nodes 7-21 are Rick in the
+back office of Cosmic Comics (the interlude line "Outside, the
+subdivision hums" was the only street beat). A back-office bg
+inserted; the folder with the map / Polaroid / envelope + the
+fireproof box under the desk built and marked. "Two Houses Down"
+(ch5_garage 14, ch5_miller_drive 0) → NEW preset
+meadowlark_circle_henderson (lot 1414 dressed: Ben's truck at the
+curb, the Corolla, the light post + Maya's bike, the patrol vehicle,
+the lit garage vent). vehicle_cab_rear for the four-up;
+lake_palestine_dock for the accounting at the end of the dock.
+Blind 24 → 21 (all deliberate). DRAFT 3 TARGETS (still queued): rain
+on the windshield for ch4_storm (a mood/shader beat, not geometry);
+the gallery's ghosted earlier layers on the diorama + labels on the
+off-frame glyphs; a night pass on meadowlark_circle_henderson's
+practicals (streetlamp 1 is unlit in the tscn); the Cape Perpetua
+tide-pool beat still on cabin_road. Check
 the exterior template's Sun: its −Z basis points UP (+y) in
 kowalski/meadowlark/cape/vehicle_cab — the Sky_Fill does the
 modeling; lake_palestine's Sun was authored downward on purpose. THE PROGRAM'S END STATE: every remaining

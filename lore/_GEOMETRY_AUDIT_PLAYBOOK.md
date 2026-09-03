@@ -208,6 +208,20 @@ Lessons:
   looked like a Civic beat ("he gets in the Civic") but its cue is
   the strip-mall unit across the lot — read to the next bg before
   re-pointing, not just the first line.
+- **A blind cue on a fresh preset may be the scene's fault, not the
+  set's.** meadowlark_circle_night showed three new blinds (map,
+  Polaroid, envelope) the moment the codas landed on it; the fix was
+  not three props on a sedan dash but a bg node — ch3_coda's
+  interlude line is the street, and everything after it is Rick at
+  the Cosmic Comics desk. When a new blind cue names something that
+  does not belong outdoors, grep the segment for a room before
+  modeling.
+- **Parked vehicles want a helper, not a copy.** meadowlark's
+  make_car() (body / cabin / glass plates outside the cabin /
+  wheels outside the body, pickup + light-bar variants) is the
+  third hand-built car in two days; the cab, the lake truck and the
+  vigil sedan each re-derived the same non-intersecting bands. Next
+  car goes through the helper or promotes it into _props.
 
 ### 2026-09-01 · the blind-cue hero-prop program (six locales, 324 → 277)
 
