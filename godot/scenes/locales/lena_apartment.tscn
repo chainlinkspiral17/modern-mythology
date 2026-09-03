@@ -414,6 +414,6 @@ script = ExtResource("14_dbgm")
 ; insert: the charcoal — S U N — left on the duvet where her thigh was (vol7 interlude ii)
 [node name="shot_insert_charcoal" type="Marker3D" parent="." groups=["vn_shot"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.1, 1.1, -2.91)
-rotation = Vector3(0, 0, 0)
+rotation = Vector3(-0.4027, 0.9337, 0.0)
 metadata/fov = 42.0
 
