@@ -1295,6 +1295,44 @@ const CAMERA_PRESETS := {
 		"fov": 50.0,
 		"suppress_input": true,
 	},
+	"vehicle_cab_rear": {
+		"scene": "res://scenes/locales/vehicle_cab.tscn",
+		"requires_glb": "res://assets/3d/locales/vehicle_cab.glb",
+		# ch5 Eight Minutes: four of them in the truck. Camera on the
+		# rear bench, center, eye 1.20, looking forward between the two
+		# headrests at the dash and the windshield — Ben and Maya's
+		# seat backs frame the shot, Sam and Jesse are where we sit.
+		"camera_origin": Vector3(0.0, 1.20, 0.95),
+		"camera_rotation": Vector3(-0.06, 0.0, 0.0),
+		"fov": 76.0,
+		"suppress_input": true,
+	},
+	"lake_palestine_dock": {
+		"scene": "res://scenes/locales/lake_palestine.tscn",
+		"requires_glb": "res://assets/3d/locales/lake_palestine.glb",
+		# Sitting at the end of the dock, feet over the water: eye 1.0
+		# a meter short of the cleat, looking SOUTH across the cove at
+		# the far shore, the eastern-shore pines and the coming sun off
+		# frame-left. The accounting is told from here.
+		"camera_origin": Vector3(-0.3, 1.0, 15.0),
+		"camera_rotation": Vector3(-0.10, 3.1416, 0.0),
+		"fov": 60.0,
+		"suppress_input": true,
+	},
+	"meadowlark_circle_henderson": {
+		"scene": "res://scenes/locales/meadowlark_circle.tscn",
+		"requires_glb": "res://assets/3d/locales/meadowlark_circle.glb",
+		# "Two Houses Down" (ch5_garage, ch5_miller_drive): the Henderson
+		# house is lot 1414 (blender hx -2, driveway at x -6.4). Camera
+		# at the foot of the driveway in the street, looking north up
+		# the drive at the closed garage door with its lit vent, Ben's
+		# truck at the curb frame-right, the Corolla behind it, Maya's
+		# bike chained to the light post frame-left.
+		"camera_origin": Vector3(-7.5, 1.5, -1.5),
+		"camera_rotation": Vector3(0.02, -0.156, 0.0),
+		"fov": 58.0,
+		"suppress_input": true,
+	},
 	"board_lords_interior": {
 		"scene": "res://scenes/locales/board_lords_interior.tscn",
 		"requires_glb": "res://assets/3d/locales/board_lords_interior.glb",

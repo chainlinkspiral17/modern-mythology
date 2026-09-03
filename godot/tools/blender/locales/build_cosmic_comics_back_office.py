@@ -214,6 +214,29 @@ def build_hero_props_2026_09():
     make_box("Ricks_Notebook_Wire", (-0.25, 3.476, 0.767), (0.18, 0.010, 0.014), (0.55, 0.56, 0.58, 1.0))
     make_box("Notebook_Note_Page", (-0.25, 3.34, 0.7735), (0.16, 0.21, 0.003), (0.94, 0.93, 0.88, 1.0))
     make_box("Note_Page_List_Lines", (-0.25, 3.36, 0.7755), (0.10, 0.12, 0.001), (0.36, 0.36, 0.40, 1.0))
+    # ── 2026-09-03 · vol6 ch3_coda (re-homed off the street): "a small
+    # folder in front of him. The folder contains three things." The
+    # hand-drawn map with a single building circled in red ink; the 1974
+    # Polaroid of Thomas in front of the Graustark storefront; F.T.'s
+    # note, which goes back in its envelope, which goes in "the small
+    # fireproof box under the desk — the one the store was sold with
+    # in 1984". Open on the desk edge in front of the chair.
+    make_box("Folder", (0.0, 3.21, 0.763), (0.30, 0.18, 0.006), (0.62, 0.56, 0.42, 1.0))
+    make_box("Folder_Tab", (0.13, 3.305, 0.7635), (0.06, 0.012, 0.005), (0.58, 0.52, 0.38, 1.0))
+    make_box("Map", (-0.02, 3.21, 0.767), (0.20, 0.14, 0.002), (0.94, 0.92, 0.84, 1.0))
+    for mi, (mx, my, mw, md) in enumerate(((-0.09, 3.21, 0.004, 0.11), (-0.04, 3.24, 0.09, 0.003),
+                                           (0.01, 3.19, 0.004, 0.09), (0.03, 3.16, 0.10, 0.003))):
+        make_box(f"Map_Street_{mi}", (mx, my, 0.7685), (mw, md, 0.001), (0.30, 0.30, 0.34, 1.0))
+    make_cyl("Map_Red_Circle", (0.045, 3.235, 0.7685), 0.016, 0.001, (0.82, 0.14, 0.10, 1.0), segments=12)
+    make_box("Polaroid", (0.06, 3.17, 0.769), (0.088, 0.107, 0.002), (0.96, 0.95, 0.92, 1.0))
+    make_box("Polaroid_Image", (0.06, 3.178, 0.7705), (0.076, 0.076, 0.001), (0.52, 0.48, 0.40, 1.0))
+    make_box("Polaroid_Figure", (0.058, 3.170, 0.7715), (0.016, 0.040, 0.0005), (0.30, 0.34, 0.46, 1.0))
+    make_box("Envelope", (-0.06, 3.265, 0.769), (0.16, 0.09, 0.003), (0.90, 0.86, 0.76, 1.0))
+    make_box("Envelope_Flap_Line", (-0.06, 3.28, 0.7708), (0.14, 0.001, 0.0005), (0.60, 0.54, 0.44, 1.0))
+    make_box("Fireproof_Box", (-0.45, 3.55, 0.12), (0.36, 0.28, 0.24), (0.28, 0.28, 0.30, 1.0))
+    make_box("Fireproof_Box_Lid_Seam", (-0.45, 3.409, 0.19), (0.34, 0.002, 0.004), (0.14, 0.14, 0.15, 1.0))
+    make_box("Fireproof_Box_Latch", (-0.45, 3.405, 0.14), (0.05, 0.008, 0.06), (0.64, 0.62, 0.56, 1.0))
+    make_box("Fireproof_Box_Handle", (-0.45, 3.55, 0.255), (0.14, 0.02, 0.03), (0.20, 0.20, 0.22, 1.0))
 
 
 def main():

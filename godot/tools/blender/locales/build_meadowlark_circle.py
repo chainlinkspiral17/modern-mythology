@@ -198,6 +198,69 @@ def build_horizon():
                    cx=0.0, cy=0.0, profile="roofline")
 
 
+def make_car(prefix, cx, cy, length, col, pickup=False, light_bar=False):
+    """A car parked along the street (length along x). Body block,
+    cabin block, side/front glass plates OUTSIDE the cabin, wheels
+    outside the body — nothing intersects."""
+    hw = 0.90
+    make_box(f"{prefix}_Body", (cx, cy, 0.62), (length, 2 * hw, 0.60), col)
+    if pickup:
+        make_box(f"{prefix}_Cab", (cx + 0.55, cy, 1.27), (2.0, 2 * hw, 0.70), col)
+        make_box(f"{prefix}_Windshield", (cx + 1.56, cy, 1.30), (0.02, 1.60, 0.50), (0.26, 0.30, 0.36, 1.0))
+        for sgn, nm in ((1, "N"), (-1, "S")):
+            make_box(f"{prefix}_Side_Glass_{nm}", (cx + 0.55, cy + sgn * 0.91, 1.30), (1.70, 0.02, 0.50), (0.26, 0.30, 0.36, 1.0))
+            make_box(f"{prefix}_Bed_Side_{nm}", (cx - 1.35, cy + sgn * (hw - 0.02), 1.12), (1.8, 0.04, 0.40), col)
+        make_box(f"{prefix}_Tailgate", (cx - length / 2.0 + 0.03, cy, 1.12), (0.06, 2 * hw - 0.10, 0.40), col)
+    else:
+        make_box(f"{prefix}_Cabin", (cx - 0.20, cy, 1.13), (2.20, 2 * hw - 0.30, 0.42), col)
+        make_box(f"{prefix}_Windshield", (cx + 0.91, cy, 1.15), (0.02, 1.40, 0.30), (0.26, 0.30, 0.36, 1.0))
+        make_box(f"{prefix}_Rear_Glass", (cx - 1.31, cy, 1.15), (0.02, 1.40, 0.30), (0.26, 0.30, 0.36, 1.0))
+        for sgn, nm in ((1, "N"), (-1, "S")):
+            make_box(f"{prefix}_Side_Glass_{nm}", (cx - 0.20, cy + sgn * 0.76, 1.15), (1.90, 0.02, 0.30), (0.26, 0.30, 0.36, 1.0))
+    if light_bar:
+        make_box(f"{prefix}_Light_Bar", (cx - 0.20, cy, 1.40), (0.30, 1.10, 0.12), (0.16, 0.16, 0.18, 1.0))
+        make_box(f"{prefix}_Light_Bar_Red", (cx - 0.20, cy + 0.30, 1.40), (0.32, 0.30, 0.13), (0.70, 0.12, 0.10, 1.0))
+        make_box(f"{prefix}_Light_Bar_Blue", (cx - 0.20, cy - 0.30, 1.40), (0.32, 0.30, 0.13), (0.14, 0.24, 0.72, 1.0))
+    for wi, (wx, wy) in enumerate(((cx - length * 0.32, cy - 1.03), (cx + length * 0.32, cy - 1.03),
+                                   (cx - length * 0.32, cy + 1.03), (cx + length * 0.32, cy + 1.03))):
+        make_cyl(f"{prefix}_Wheel_{wi}", (wx, wy, 0.33), 0.33, 0.25, (0.14, 0.14, 0.15, 1.0), axis="Y", segments=10)
+
+
+def build_henderson_2026_09():
+    """TWO HOUSES DOWN (vol6 ch5_garage 14+, ch5_miller_drive; re-homed
+    off henderson_porch_front 2026-09-03). The Henderson house is lot
+    1414. "Ben arrives first. He is in his truck. He parks at the curb.
+    He does not pull into the driveway ... Sam arrives second. She is
+    in the Corolla. She parks behind Ben's truck. Maya arrives third.
+    She is on her bike ... She chains the bike to the light post at
+    the end of the driveway." Then Miller: "He stops. He puts the
+    patrol vehicle in park. He does not get out." — and from the
+    garage, "its single open vent at the top of the door," the
+    distorted Telecaster.
+    """
+    make_car("Ben_Truck", -2.6, 2.4, 5.6, (0.22, 0.34, 0.24, 1.0), pickup=True)
+    make_car("Corolla", -11.5, 2.4, 4.3, (0.72, 0.70, 0.64, 1.0))
+    make_car("Patrol_Vehicle", -1.0, -1.8, 4.9, (0.92, 0.92, 0.90, 1.0), light_bar=True)
+    make_box("Patrol_Door_Stripe", (-1.0, -2.705, 0.62), (2.4, 0.01, 0.30), (0.16, 0.22, 0.40, 1.0))
+    # the light post at the end of the Henderson driveway, on the sidewalk edge
+    make_cyl("Henderson_Light_Post", (-8.6, 5.3, 1.64), 0.06, 3.14, (0.30, 0.30, 0.32, 1.0), segments=8)
+    make_box("Henderson_Light_Post_Head", (-8.6, 5.3, 3.31), (0.30, 0.30, 0.20), (0.96, 0.92, 0.78, 1.0))
+    # Maya's bike, chained to the post, wet
+    for wi, wy in enumerate((5.0, 6.05)):
+        make_cyl(f"Maya_Bike_Wheel_{wi}", (-9.0, wy, 0.40), 0.33, 0.04, (0.14, 0.14, 0.15, 1.0), axis="X", segments=12)
+    make_box("Maya_Bike_Frame_Top", (-9.0, 5.52, 0.86), (0.03, 0.62, 0.03), (0.62, 0.22, 0.24, 1.0))
+    make_box("Maya_Bike_Frame_Down", (-9.0, 5.52, 0.62), (0.03, 0.46, 0.03), (0.62, 0.22, 0.24, 1.0))
+    make_box("Maya_Bike_Seat", (-9.0, 5.25, 0.94), (0.10, 0.20, 0.05), (0.14, 0.14, 0.15, 1.0))
+    make_box("Maya_Bike_Bars", (-9.0, 5.90, 0.98), (0.44, 0.03, 0.03), (0.30, 0.30, 0.32, 1.0))
+    make_box("Bike_Chain", (-8.80, 5.30, 0.75), (0.34, 0.02, 0.02), (0.36, 0.36, 0.38, 1.0))
+    # the garage door's single open vent at the top, the Telecaster light in it
+    make_box("Henderson_Garage_Vent", (-6.4, 8.42, 2.12), (0.60, 0.01, 0.10), (0.98, 0.86, 0.58, 1.0))
+    make_box("Henderson_Vent_Slats", (-6.4, 8.412, 2.12), (0.56, 0.002, 0.08), (0.72, 0.62, 0.42, 1.0))
+    # rain has mostly stopped: a puddle at the foot of the drive, the wet sheen on the truck's hood
+    make_box("Driveway_Puddle", (-6.0, 4.6, 0.0705), (1.6, 0.9, 0.001), (0.34, 0.36, 0.40, 1.0))
+    make_box("Truck_Hood_Sheen", (-0.5, 2.4, 0.9205), (1.6, 1.2, 0.001), (0.30, 0.42, 0.34, 1.0))
+
+
 def main():
     clear_scene()
     build_street()
@@ -205,6 +268,7 @@ def main():
     build_sprinklers()
     build_vigil()
     build_water_tower()
+    build_henderson_2026_09()
     build_horizon()
     out = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)),
         "../../../assets/3d/locales/meadowlark_circle.glb"))

@@ -38,6 +38,10 @@
       "pos": "center"
     },
     {
+      "t": "bg",
+      "src": "3d:cosmic_comics_back_office"
+    },
+    {
       "t": "narrate",
       "text": "[shot:closeup rick]In the back office of Cosmic Comics, Rick — who does not sleep much and does not, on Tuesday nights, sleep at all until midnight — is sitting at the desk with the lamp on and a small folder in front of him. The folder contains the contents of the envelope Maya delivered on Monday."
     },

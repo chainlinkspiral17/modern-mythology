@@ -367,3 +367,23 @@ metadata/fov = 42.0
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.95, 1.6, -1.5)
 rotation = Vector3(0.0921, 2.3581, 0.0)
 metadata/fov = 42.0
+
+; ── vn_shot · vol6 ch3_coda re-homed 2026-09-03: the folder's three things ──
+; insert: the hand-drawn map of the east side, one building circled in red ink
+[node name="shot_insert_map" type="Marker3D" parent="." groups=["vn_shot"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0, 1.25, -2.75)
+rotation = Vector3(-0.8111, 0.0237, 0.0)
+metadata/fov = 42.0
+
+; insert: the 1974 Polaroid of Thomas in front of the Graustark storefront
+[node name="shot_insert_polaroid" type="Marker3D" parent="." groups=["vn_shot"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.15, 1.2, -2.8)
+rotation = Vector3(-0.8421, 0.2387, 0.0)
+metadata/fov = 42.0
+
+; insert: F.T.'s note folded back into its envelope, bound for the fireproof box
+[node name="shot_insert_envelope" type="Marker3D" parent="." groups=["vn_shot"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.2, 1.2, -2.8)
+rotation = Vector3(-0.7176, -0.2881, 0.0)
+metadata/fov = 42.0
+

@@ -114,6 +114,10 @@
       "text": "[shot:insert dock]They walk to the dock — the same dock, she registers, that he is talking about, which is, twelve years on, the same wood, very slightly more weathered, with the same metal cleat at the far end where she had, at six, decided cleats were boring and had returned to the Cheez-It box. They walk to the end of the dock. They sit on the edge with their feet over the water, the way you sit on docks when you do not, on this particular morning, plan to fish."
     },
     {
+      "t": "bg",
+      "src": "3d:lake_palestine_dock"
+    },
+    {
       "t": "narrate",
       "text": "He hands her the thermos."
     },

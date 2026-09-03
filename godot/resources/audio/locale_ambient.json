@@ -348,6 +348,18 @@
     "estuary_7_template": {
       "bed": "assets/audio/bgm/vol5_warehouse_drone.ogg",
       "gain": 0.30
+    },
+    "vehicle_cab_rear": {
+      "bed": "assets/audio/bgm/vol5_ambient.ogg",
+      "gain": 0.40
+    },
+    "lake_palestine_dock": {
+      "bed": "assets/audio/bgm/vol5_ambient.ogg",
+      "gain": 0.64
+    },
+    "meadowlark_circle_henderson": {
+      "bed": "assets/audio/bgm/vol5_cicadas_dusk.ogg",
+      "gain": 0.66
     }
   }
 }
