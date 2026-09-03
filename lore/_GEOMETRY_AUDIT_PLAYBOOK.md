@@ -230,6 +230,30 @@ henderson_garage. New lessons:
   footprints/stick/crawdad hole) or the marker has nothing to aim
   at in-container.
 
+### 2026-09-01 (fifth stretch) · the 1-cue tail; the program's end state
+
+Seventeen single-cue presets cleared (blind 85 → 68). Every
+remaining blind cue is now one of three deliberate kinds:
+(a) the two fallback-staging aggregates — cabin_road 43 and
+louisiana_road 18 — which are a RE-HOMING decision, not a prop
+wave; (b) cast closeups of characters with no char id
+(coach_dale x2, douglas x2); (c) beats that happen in another
+locale or on a person (the cathedral charcoal, the bar tattoo,
+the cell window). The shot_marker count will not go to zero by
+building props, and should not.
+
+- **Seven of seventeen were already built** (the open book, the
+  tower, the camera, the mirror shard, the set list, Mister the
+  cat, the paper coffee cup) — three needed only a synonym
+  (mirror → mirrorshard, photograph → print). Survey first.
+- **A solid vehicle cabin puts the phone on the hood.** When the
+  prop's true seat is inside a solid body and the body is not
+  worth hollowing for one insert, put the prop where the insert
+  can see it and say so in the docstring.
+- **Shared-builder locales (diner = dambrosios_formal) map through
+  Background3D, not by preset name** — the mapping regex in the
+  survey script is the only reliable way to find the tscn.
+
 ### 2026-09-01 (fourth stretch) · cabin, the 3-cue and 2-cue tails
 
 cabin_interior (15 cues), henderson kitchen, finn apartment, six

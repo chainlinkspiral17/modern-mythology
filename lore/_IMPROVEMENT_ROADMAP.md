@@ -113,8 +113,12 @@ vol7 heart), henderson kitchen, finn apartment, six 3-cue presets
 (riverboat card, Doyle's sedan + badge + cash, the August bills,
 the green Subaru + quilt seat, the Speak & Spell under the
 register, Rick's notebook), then the whole 2-cue tail in one wave
--> blind 85 across 25 presets, 276 aim-verified markers. NEXT: the
-1-cue presets (~12);
+-> blind 85 across 25 presets, 276 aim-verified markers. FIFTH
+STRETCH: all seventeen 1-cue presets -> blind 68 across 9 presets,
+293 aim-verified markers. THE PROGRAM'S END STATE: every remaining
+blind cue is deliberate — the two road aggregates (re-homing
+decision), four cast closeups without char ids, three beats that
+happen elsewhere or on a person. NEXT:
 cabin_road's 43 and louisiana_road's 18
 are fallback-staging aggregates — a re-homing decision (real
 locales for those scenes), not a prop wave; verify on Deck first.
