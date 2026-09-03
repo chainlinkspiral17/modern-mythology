@@ -360,6 +360,14 @@
     "meadowlark_circle_henderson": {
       "bed": "assets/audio/bgm/vol5_cicadas_dusk.ogg",
       "gain": 0.66
+    },
+    "tideline_survey": {
+      "bed": "assets/audio/bgm/vol5_riverboat_drone.ogg",
+      "gain": 0.55
+    },
+    "tideline_survey_second": {
+      "bed": "assets/audio/bgm/vol5_riverboat_drone.ogg",
+      "gain": 0.55
     }
   }
 }

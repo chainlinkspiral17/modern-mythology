@@ -1333,6 +1333,32 @@ const CAMERA_PRESETS := {
 		"fov": 58.0,
 		"suppress_input": true,
 	},
+	# ── VOL 7 — Tideline Survey, inside the stick (re-homed off cabin_road
+	# 2026-09-03): ch18's basalt headland, two pools, one glb, two scenes.
+	"tideline_survey": {
+		"scene": "res://scenes/locales/tideline_survey.tscn",
+		"requires_glb": "res://assets/3d/locales/tideline_survey.glb",
+		# Shelf top z 1.2; first pool (kitchen-table size) at blender
+		# (-2, -3). Camera on the basalt south of it, eye 1.6 over the
+		# shelf, looking north-north-west across the pool at the worn
+		# path, the stakes, and the fog bank inland.
+		"camera_origin": Vector3(0.5, 2.8, 8.5),
+		"camera_rotation": Vector3(-0.259, 0.427, 0.0),
+		"fov": 55.0,
+		"suppress_input": true,
+	},
+	"tideline_survey_second": {
+		"scene": "res://scenes/locales/tideline_survey_second.tscn",
+		"requires_glb": "res://assets/3d/locales/tideline_survey.glb",
+		# The second pool (dining-table size) at blender (9, 6); camera
+		# south of it looking north at the old man's edge (west rim,
+		# cast) with the fog behind. Its own scene so the tide_pool
+		# marker frames THIS pool.
+		"camera_origin": Vector3(9.5, 2.8, -1.5),
+		"camera_rotation": Vector3(-0.342, 0.111, 0.0),
+		"fov": 55.0,
+		"suppress_input": true,
+	},
 	"board_lords_interior": {
 		"scene": "res://scenes/locales/board_lords_interior.tscn",
 		"requires_glb": "res://assets/3d/locales/board_lords_interior.glb",

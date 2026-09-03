@@ -5,7 +5,7 @@
   "type": "scene",
   "nodes": [
     {
-      "src": "3d:cabin_road",
+      "src": "3d:tideline_survey",
       "t": "bg"
     },
     {
@@ -109,6 +109,10 @@
     {
       "text": "He walked. The path to the second pool visible in the basalt — a slight wear in the rock from the boots of people who had walked it. Worn into the substrate by the players. He followed it. He came to the second pool at maybe ten minutes of walking.",
       "t": "narrate"
+    },
+    {
+      "src": "3d:tideline_survey_second",
+      "t": "bg"
     },
     {
       "text": "The second pool. Bigger than the first. The size of a dining table. Clear water. No creatures he could read at the angle. At the edge: an old man. In waders to the waist. Kneeling at the edge. White hair under a wool cap. Looking at the water.",

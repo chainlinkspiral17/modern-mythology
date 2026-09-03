@@ -100,6 +100,16 @@ def geometry_godot(locale):
         _STUBS_READY = True
     path = os.path.join(BUILDERS, "build_%s.py" % locale)
     if not os.path.exists(path):
+        # A second scene over the same glb (tideline_survey_second →
+        # tideline_survey.glb, 2026-09-03): resolve the builder through
+        # the tscn's glb reference instead of the scene's basename, or
+        # the scene's markers are invisible to aim + reaim.
+        tscn = os.path.join(ROOT, "scenes", "locales", "%s.tscn" % locale)
+        if os.path.exists(tscn):
+            gm = re.search(r'path="res://assets/3d/locales/(\w+)\.glb"', open(tscn).read())
+            if gm:
+                path = os.path.join(BUILDERS, "build_%s.py" % gm.group(1))
+    if not os.path.exists(path):
         return None
     boxes, err = P.record_builder(path)
     if boxes is None:
