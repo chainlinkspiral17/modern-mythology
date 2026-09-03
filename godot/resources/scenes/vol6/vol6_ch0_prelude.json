@@ -7,7 +7,7 @@
   "nodes": [
     {
       "t": "bg",
-      "src": "3d:louisiana_road"
+      "src": "3d:meadowlark_circle"
     },
     {
       "t": "narrate",
@@ -25,7 +25,7 @@
     },
     {
       "t": "bg",
-      "src": "3d:louisiana_road"
+      "src": "3d:meadowlark_circle"
     },
     {
       "t": "narrate",
@@ -312,7 +312,7 @@
     },
     {
       "t": "bg",
-      "src": "3d:louisiana_road"
+      "src": "3d:meadowlark_circle"
     },
     {
       "t": "narrate",
@@ -411,7 +411,7 @@
     },
     {
       "t": "bg",
-      "src": "3d:louisiana_road"
+      "src": "3d:meadowlark_circle"
     },
     {
       "t": "narrate",

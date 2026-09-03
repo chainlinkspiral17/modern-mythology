@@ -324,6 +324,14 @@
     "main_street": {
       "bed": "assets/audio/bgm/vol5_store_ambient.wav",
       "gain": 0.82
+    },
+    "meadowlark_circle": {
+      "bed": "assets/audio/bgm/vol5_ambient.ogg",
+      "gain": 0.72
+    },
+    "meadowlark_circle_night": {
+      "bed": "assets/audio/bgm/vol5_ambient.ogg",
+      "gain": 0.72
     }
   }
 }

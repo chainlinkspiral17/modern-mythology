@@ -1207,6 +1207,35 @@ const CAMERA_PRESETS := {
 		"fov": 62.0,
 		"suppress_input": true,
 	},
+	# ── VOL 6 — Meadowlark Circle, Harmony Creek Estates (re-homed off
+	# louisiana_road 2026-09-01): the prelude's 6:12 sprinklers and the
+	# closing night's porch lights ────────────────────────────────────
+	"meadowlark_circle": {
+		"scene": "res://scenes/locales/meadowlark_circle.tscn",
+		"requires_glb": "res://assets/3d/locales/meadowlark_circle.glb",
+		# The street runs E-W along blender y=0 from x=-30 to the bulb at
+		# x=22; lots 1402..1428 on the north side (houses at y 12.5), the
+		# Miller house at x=20 with the cracked head at (16.4, 5.6). Dawn:
+		# camera in the street at the west end (blender -22, -1.5) looking
+		# EAST down the block — sprinkler fans lot by lot, the bulb and
+		# the Geller house closing the view, the water tower off right.
+		"camera_origin": Vector3(-22.0, 1.6, 1.5),
+		"camera_rotation": Vector3(-0.02, -1.5708, 0.0),
+		"fov": 60.0,
+		"suppress_input": true,
+	},
+	"meadowlark_circle_night": {
+		"scene": "res://scenes/locales/meadowlark_circle.tscn",
+		"requires_glb": "res://assets/3d/locales/meadowlark_circle.glb",
+		# Midnight in mid-August, from the bulb (blender 24, 4) looking
+		# WEST back down the block: porch lights, the lit Salinas kitchen
+		# window south, the white sedan at the curb near-left, streetlamps
+		# receding. Scenes carry [mood:night]; the practicals do the rest.
+		"camera_origin": Vector3(24.0, 1.6, -4.0),
+		"camera_rotation": Vector3(-0.02, 1.5708, 0.0),
+		"fov": 62.0,
+		"suppress_input": true,
+	},
 	"board_lords_interior": {
 		"scene": "res://scenes/locales/board_lords_interior.tscn",
 		"requires_glb": "res://assets/3d/locales/board_lords_interior.glb",
