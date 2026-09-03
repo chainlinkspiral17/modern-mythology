@@ -332,6 +332,14 @@
     "meadowlark_circle_night": {
       "bed": "assets/audio/bgm/vol5_ambient.ogg",
       "gain": 0.72
+    },
+    "vehicle_cab": {
+      "bed": "assets/audio/bgm/vol5_ambient.ogg",
+      "gain": 0.40
+    },
+    "vehicle_cab_side": {
+      "bed": "assets/audio/bgm/vol5_ambient.ogg",
+      "gain": 0.72
     }
   }
 }

@@ -1236,6 +1236,35 @@ const CAMERA_PRESETS := {
 		"fov": 62.0,
 		"suppress_input": true,
 	},
+	# ── VOL 6 — the cab (re-homed off louisiana_road 2026-09-03): every
+	# parked-car conversation — Ben's truck (ch5), the El Rancho lay-by
+	# (ch16), the Civic (ch19/20/22), Miriam's car (vol5 ch18), Miller's
+	# truck on the highway (ch8). One crew cab stands for all of them.
+	"vehicle_cab": {
+		"scene": "res://scenes/locales/vehicle_cab.tscn",
+		"requires_glb": "res://assets/3d/locales/vehicle_cab.glb",
+		# Truck at the origin facing blender +Y; camera at the center
+		# console between the front buckets, eye 1.28 under a 1.72
+		# roof, looking forward over the dash through the windshield
+		# at the two-lane road and the scrub beyond. Wide lens: a cab
+		# is a small room.
+		"camera_origin": Vector3(0.0, 1.28, -0.10),
+		"camera_rotation": Vector3(-0.14, 0.0, 0.0),
+		"fov": 72.0,
+		"suppress_input": true,
+	},
+	"vehicle_cab_side": {
+		"scene": "res://scenes/locales/vehicle_cab.tscn",
+		"requires_glb": "res://assets/3d/locales/vehicle_cab.glb",
+		# Claire's vantage: outside, at the east end of the gravel
+		# turnout, looking west-north-west past the picnic table at the
+		# pickup with the white sedan parked beyond it and the road
+		# running off behind (ch4_storm, ch6_interstate).
+		"camera_origin": Vector3(9.0, 1.6, 5.5),
+		"camera_rotation": Vector3(-0.04, 1.022, 0.0),
+		"fov": 55.0,
+		"suppress_input": true,
+	},
 	"board_lords_interior": {
 		"scene": "res://scenes/locales/board_lords_interior.tscn",
 		"requires_glb": "res://assets/3d/locales/board_lords_interior.glb",
