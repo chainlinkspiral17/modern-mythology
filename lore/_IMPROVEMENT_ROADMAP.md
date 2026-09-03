@@ -214,7 +214,42 @@ camera should exempt a locale from the 40 m exterior rule); the
 exterior template's upward Sun basis. Check
 the exterior template's Sun: its −Z basis points UP (+y) in
 kowalski/meadowlark/cape/vehicle_cab — the Sky_Fill does the
-modeling; lake_palestine's Sun was authored downward on purpose. THE PROGRAM'S END STATE: every remaining
+modeling; lake_palestine's Sun was authored downward on purpose.
+
+**2026-09-03 (evening) · THREE USER VERDICTS, THREE PROGRAMS.**
+(1) "the stretches of highway across all the volumes look identical,
+same geometry, same camera. fix this shit." — vol1, vol2 and vol6
+had all been playing on the vol5 Louisiana swamp road from one
+breakdown-lane vantage, with vol6's whole New Auburn dressing built
+among the cypress. Split into one set per region: louisiana_road
+(vol5, swamp), NEW new_auburn_road (vol6, Texas: the moved
+subdivision / water tower / gas station / strip mall / Live Oak /
+Cypress plus the front lot, the cedar route, the open two-lane with
+the van and the Chronicle sedan, the NAPD substation off the bypass;
+five presets), NEW small_wood_road (vol1-2, Oregon county road: the
+property gate, pole barn, tool shed, chicken coop, the crick and
+culvert, the fallen-in house, firs; three presets), NEW highway_101
+(vol7 ch22: guardrail, the drop to the sea, the cedar wall, the
+headland, the chained Old Yachats Road turn; two presets). Every
+road preset is a different place, height and lens. 14 re-points.
+(2) "another establishing shot that is 90 percent wall/obstructed.
+frame scenes to maximize the set/the props/the drama." — NEW
+vantage_obstruction_audit.py (ray fan per preset; near-fill, single-
+surface fill, camera-inside-a-box; --propose grid-searches a better
+camera) found 21 of 153; all re-placed (the cabin wide stood inside
+the bed alcove, three kitchens stood inside the fridge, the Foxhole
+inside a PA cabinet, Kestrel's square inside a building, the
+bungalow behind a closet ...); it is a suite gate now. (3) "movement
+in pirate summer is completely broken." — the slowstick input fence
+swallowed joypad buttons before the GamepadMgr autoload could
+translate them, so the day-intro modal could never be dismissed on
+pad; fixed in InputBlocker; the modal's button gets focus for A;
+Cabin Beaver's doorway was walled in by a pine (a zone-reachability
+BFS over all 17 zones is clean). NEXT: the Deck has not yet seen any
+of the nine new locales or the four road sets — build_scenes.sh
+then look, before any more props; the exterior template's Sun; a
+ceiling test for the geometry audit's exterior rule; the road sets'
+draft 2 (a bend or a crest each — every road is still straight). THE PROGRAM'S END STATE: every remaining
 blind cue is deliberate — the two road aggregates (re-homing
 decision), four cast closeups without char ids, three beats that
 happen elsewhere or on a person. NEXT:

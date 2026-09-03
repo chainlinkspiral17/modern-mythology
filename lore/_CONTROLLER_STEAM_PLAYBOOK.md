@@ -166,6 +166,35 @@ that nobody needs it.
 
 ## Recent lessons
 
+### 2026-09-03 · the fence ate the pad; Cabin Beaver's door had a pine in it
+
+"movement in pirate summer is completely broken" (Deck).
+
+- **Autoloads get unhandled input LAST.** Godot walks the
+  unhandled-input group from the deepest node back to the root's
+  first child. The InputBlocker fence under every slowstick called
+  set_input_as_handled() on EVERY event, so it ran before the
+  GamepadMgr autoload and swallowed the raw JoypadButton events —
+  B/X/Y/LB/RB never became ESC/E/J/Tab/I inside the television. The
+  d-pad walk is polled in _process and was fine; but Pirate Summer's
+  day-intro modal needs ESC or SPACE to begin the day, so on pad Sam
+  stood behind a modal forever. The fence now lets joypad events
+  through; the synthesized KEY event comes back through it and is
+  fenced from the menu underneath as before. The 07-19 pad audit
+  predated the TV wrap (07-10 fence, TV wrap later) — RE-AUDIT THE
+  PAD after any change to the wrap, the fence, or the autoload
+  order.
+- **Give every modal's button focus.** The day-intro modal had no
+  focus owner, so A (ui_accept, on the real input map) did nothing.
+  GamepadMgr.focus_first.call_deferred(panel) on open; the panel is
+  freed on close so focus releases itself.
+- **A zone's exits are testable without Godot.** A BFS from each
+  zone's start spawn over `walkable` tiles to every exit tile and
+  spawn found the doorway of Cabin Beaver walled in by a "smaller
+  pine" at (18,12) — unreachable from the path, and a dead spawn
+  from inside. Run it after any zone edit:
+  see the commit 89a7a724 script (17 zones, 0 problems).
+
 ### 2026-08-03 · the TV was eating the bottom of every stick
 
 **User report:** "still can't play" + a screenshot of Northwind

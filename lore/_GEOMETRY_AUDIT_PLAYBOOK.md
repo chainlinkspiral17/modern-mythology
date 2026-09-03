@@ -158,6 +158,43 @@ banisters classed · pans as containers.
 
 ## Recent lessons
 
+### 2026-09-03 (evening) · the obstruction audit; the roads; cars were invisible
+
+- **"Sees its locale" is not "sees the set."** preset_vantage_audit
+  counts geometry inside the cone; a wall IS geometry, so the cabin's
+  opening wide (camera inside the bed alcove, the partition across
+  75% of frame) and Elicia's bungalow (a closet across 60%) both
+  passed. vantage_obstruction_audit.py casts a 9x3 ray fan and fails
+  a vantage on near-fill (a third of the frame within 1 m), a single
+  surface owning the middle row within 2.6 m, or a camera INSIDE a
+  box. 21 of 153 presets failed on its first run. It is a suite gate.
+- **The "just inside the door" template put three kitchens inside
+  the fridge.** kowalski / caldwell / ramos share a plan (fridge on
+  the E wall at x 2.1..2.8) and all three presets copied the same
+  "SE quadrant" origin at x 2.1. When a vantage is copied between
+  sibling sets, cast it — a copied comment is not a survey.
+- **The proposer needs an escape penalty.** The first --propose pass
+  maximized depth and picked "median 200 m, 0 distinct" for half the
+  flagged presets — views through a doorway into the void. Depth
+  counts only where a ray lands on something; escaped rays cost.
+  Even so, read every proposal against the preset's comment: three
+  presets (the cab's dash, the rear bench, the dock end) are near-fill
+  on purpose and live in the audit's DELIBERATE set.
+- **A new _props module is invisible until it is whitelisted.**
+  make_car() lived in _props/vehicles.py for a day without being on
+  locale_geometry_audit's recorder whitelist: no car clipped, no
+  marker could aim at one, and the substation truck marker found a
+  van 200 m away. Add the module name the moment a helper is
+  promoted.
+- **One road per region, and a different camera per stretch.** vol1,
+  vol2 and vol6 all rendered the vol5 Louisiana swamp road from one
+  breakdown-lane vantage. The split (louisiana / new_auburn /
+  small_wood / highway_101) is only half the fix; the other half is
+  that every preset on a road set is a different place, height and
+  lens — hood-low behind a car, seated in a lot, handlebar height on
+  a verge, the ditch, the gate. A road preset at eye 2.3 looking
+  north is the default that made them all the same.
+
 ### 2026-09-03 · re-homing draft 2: four locales from prose, zero-clip first pass
 
 meadowlark_circle, vehicle_cab, lake_palestine, estuary_7_template —
