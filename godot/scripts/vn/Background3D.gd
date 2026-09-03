@@ -1359,6 +1359,31 @@ const CAMERA_PRESETS := {
 		"fov": 55.0,
 		"suppress_input": true,
 	},
+	# ── VOL 7 — Kestrel Mountain, inside the 2034 stick (re-homed off
+	# cabin_road 2026-09-03): ch11's climb and the square at the end.
+	"kestrel_mountain": {
+		"scene": "res://scenes/locales/kestrel_mountain.tscn",
+		"requires_glb": "res://assets/3d/locales/kestrel_mountain.glb",
+		# Path start at blender (0, -10, 0) running north and up; the
+		# mountain rises on the left, falls away on the right. Camera at
+		# the foot of the path looking up it: the hut's ledge at the
+		# first station frame-left, the cloud on the top.
+		"camera_origin": Vector3(0.2, 1.6, 9.0),
+		"camera_rotation": Vector3(0.05, 0.0, 0.0),
+		"fov": 60.0,
+		"suppress_input": true,
+	},
+	"kestrel_mountain_square": {
+		"scene": "res://scenes/locales/kestrel_mountain.tscn",
+		"requires_glb": "res://assets/3d/locales/kestrel_mountain.glb",
+		# Walked out: the square at the foot, the fountain at its center
+		# (blender 0, -22), the alpine fronts around it, the path going
+		# up the mountain behind. Camera south-east of the fountain.
+		"camera_origin": Vector3(6.0, 1.6, 32.0),
+		"camera_rotation": Vector3(-0.02, 0.540, 0.0),
+		"fov": 55.0,
+		"suppress_input": true,
+	},
 	"board_lords_interior": {
 		"scene": "res://scenes/locales/board_lords_interior.tscn",
 		"requires_glb": "res://assets/3d/locales/board_lords_interior.glb",

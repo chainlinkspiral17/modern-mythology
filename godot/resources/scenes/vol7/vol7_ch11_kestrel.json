@@ -5,7 +5,7 @@
  "type": "scene",
  "nodes": [
   {
-   "src": "3d:cabin_road",
+   "src": "3d:kestrel_mountain",
    "t": "bg"
   },
   {
@@ -675,7 +675,7 @@
    "t": "narrate"
   },
   {
-   "src": "3d:cabin_road",
+   "src": "3d:kestrel_mountain",
    "t": "bg"
   },
   {
@@ -705,6 +705,10 @@
   {
    "text": "He registered, as he walked, that the experience was walking him out. Kestrel Mountain was not making him do the climb in reverse. The path was carrying him at the pace the experience was finished with him. He let the pace be what it was. The town in the valley got closer. The square got closer.",
    "t": "narrate"
+  },
+  {
+   "src": "3d:kestrel_mountain_square",
+   "t": "bg"
   },
   {
    "text": "He was at the foot of the mountain at maybe ten minutes of descent. The path opened onto a square paved in old stone the substrate had rendered with the wear of centuries of feet. At the square's center was a fountain — three stone basins stacked, the water falling from the upper basin to the middle to the lower in a continuous quiet sound.",

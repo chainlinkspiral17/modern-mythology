@@ -368,6 +368,14 @@
     "tideline_survey_second": {
       "bed": "assets/audio/bgm/vol5_riverboat_drone.ogg",
       "gain": 0.55
+    },
+    "kestrel_mountain": {
+      "bed": "assets/audio/bgm/vol5_cathedral_drone.wav",
+      "gain": 0.40
+    },
+    "kestrel_mountain_square": {
+      "bed": "assets/audio/bgm/vol5_cathedral_drone.wav",
+      "gain": 0.40
     }
   }
 }
