@@ -45,6 +45,10 @@ ROOT = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)),
 BLENDER_ALT = os.path.join(ROOT, "tools", "blender")
 
 COLS, ROWS = 9, 3
+# Vantages where the near geometry IS the shot: the cab presets frame
+# the dash / the seat backs on purpose; the dock-end preset sits with
+# its feet over the water and the planks fill the bottom of frame.
+DELIBERATE = {"vehicle_cab", "vehicle_cab_rear", "lake_palestine_dock"}
 NEAR_M, NEAR_FRAC = 1.0, 0.30
 WALL_M, WALL_FRAC = 2.6, 0.45
 ASPECT = 16.0 / 9.0
@@ -253,6 +257,8 @@ def main():
         inside = inside_any(o_b, boxes)
         st = frame_stats(o_b, rot[0], rot[1], fov, boxes)
         why = verdict(st)
+        if pid in DELIBERATE and not inside:
+            why = []
         if inside:
             why.insert(0, "camera INSIDE %s" % inside)
         if why or show_all:

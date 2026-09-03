@@ -174,8 +174,9 @@ const CAMERA_PRESETS := {
 		# ropes to the banquet + Table 14.
 		"scene": "res://scenes/locales/diner.tscn",
 		"requires_glb": "res://assets/3d/locales/diner.glb",
-		"camera_origin": Vector3(-10.4, 1.90, 0.3),
-		"camera_rotation": Vector3(-0.08, 2.67, 0.0),
+		# RE-VANTAGED 2026-09-03: vantage_obstruction_audit --propose (the partition filled 78% of frame at 0.8 m)
+		"camera_origin": Vector3(-15.40, 1.90, 0.05),
+		"camera_rotation": Vector3(-0.08, 2.618, 0.0),
 		"fov": 62.0,
 		"suppress_input": true,
 	},
@@ -202,8 +203,10 @@ const CAMERA_PRESETS := {
 		# west strip (x -2.4..-1, chair + side table); boxes hide in
 		# the pocket north of the closet. Establish from just inside
 		# the front door looking NW up the living strip.
-		"camera_origin": Vector3(-0.35, 1.85, -0.45),
-		"camera_rotation": Vector3(-0.06, 0.69, 0.0),
+		# RE-VANTAGED 2026-09-03 by vantage_obstruction_audit --propose
+		# (user: "another establishing shot that is 90 percent wall").
+		"camera_origin": Vector3(1.50, 1.85, -3.50),
+		"camera_rotation": Vector3(-0.06, 0.916, 0.0),
 		"fov": 66.0,
 		"suppress_input": true,
 	},
@@ -561,7 +564,8 @@ const CAMERA_PRESETS := {
 		# E window. Camera in the SE quadrant just inside the door looking
 		# NW across the table toward the sink corner — a 3/4 wide of the
 		# whole kitchen.
-		"camera_origin": Vector3(2.1, 1.58, -0.8),
+		# RE-VANTAGED 2026-09-03: the SE vantage at x 2.1 stood inside the fridge (E wall, x 2.1..2.8); moved west of it, same NW look across the table
+		"camera_origin": Vector3(1.20, 1.58, -0.80),
 		"camera_rotation": Vector3(-0.05, deg_to_rad(51.3), 0.0),
 		"fov": 60.0,
 		"suppress_input": true,
@@ -590,8 +594,10 @@ const CAMERA_PRESETS := {
 		# spinner rack NW corner, action-figure pegwall E wall. Camera in
 		# the SE quadrant just inside the door looking NW across the bins
 		# toward the spinner: bins mid-frame, register at right, wide FOV.
-		"camera_origin": Vector3(3.5, 1.68, -0.9),
-		"camera_rotation": Vector3(-0.05, deg_to_rad(40.9), 0.0),
+		# RE-VANTAGED 2026-09-03 by vantage_obstruction_audit --propose
+		# (user: "another establishing shot that is 90 percent wall").
+		"camera_origin": Vector3(4.50, 1.68, -0.55),
+		"camera_rotation": Vector3(-0.05, 0.785, 0.0),
 		"fov": 64.0,
 		"suppress_input": true,
 	},
@@ -645,8 +651,10 @@ const CAMERA_PRESETS := {
 		# the grass, Gracie's sketch table on the patio, cedar fence,
 		# shade tree + tire swing NE. Camera from the yard looking SW
 		# back at the house: chair+Daisy mid-frame, patio left.
-		"camera_origin": Vector3(3.2, 1.6, -7.2),
-		"camera_rotation": Vector3(-0.097, 2.484, 0.0),
+		# RE-VANTAGED 2026-09-03 by vantage_obstruction_audit --propose
+		# (user: "another establishing shot that is 90 percent wall").
+		"camera_origin": Vector3(0.45, 1.60, -8.20),
+		"camera_rotation": Vector3(-0.097, 3.011, 0.0),
 		"fov": 60.0,
 		"suppress_input": true,
 	},
@@ -659,8 +667,10 @@ const CAMERA_PRESETS := {
 		# the emotional center; everything else is dark siding, the
 		# parked sedan, the live oak over the curb, one streetlamp.
 		# Camera at the curb looking at the house across the lawn.
-		"camera_origin": Vector3(-2.0, 1.6, -7.6),
-		"camera_rotation": Vector3(-0.013, -2.695, 0.0),
+		# RE-VANTAGED 2026-09-03 by vantage_obstruction_audit --propose
+		# (user: "another establishing shot that is 90 percent wall").
+		"camera_origin": Vector3(-1.25, 1.60, -7.10),
+		"camera_rotation": Vector3(-0.013, 3.403, 0.0),
 		"fov": 55.0,
 		"suppress_input": true,
 	},
@@ -938,7 +948,8 @@ const CAMERA_PRESETS := {
 		# 2.45,-1). Camera in the SE quadrant just inside the door looking
 		# NW across the table toward the sink corner — the whole kitchen
 		# in one 3/4 wide.
-		"camera_origin": Vector3(2.1, 1.58, -0.8),
+		# RE-VANTAGED 2026-09-03: the SE vantage at x 2.1 stood inside the fridge (E wall, x 2.1..2.8); moved west of it, same NW look across the table
+		"camera_origin": Vector3(1.20, 1.58, -0.80),
 		"camera_rotation": Vector3(-0.05, deg_to_rad(51.3), 0.0),
 		"fov": 60.0,
 		"suppress_input": true,
@@ -969,7 +980,8 @@ const CAMERA_PRESETS := {
 		# quadrant just inside the door looking NE along the bar: counter
 		# runs diagonally across frame, bottles + neon centre-back. Eye
 		# lifted to 1.90 and wide FOV for the big moody venue.
-		"camera_origin": Vector3(-2.8, 1.90, -0.9),
+		# RE-VANTAGED 2026-09-03: the SW vantage stood inside the PA cabinet by the door; a metre in and off the wall, same NE look along the bar
+		"camera_origin": Vector3(-1.90, 1.75, -1.50),
 		"camera_rotation": Vector3(-0.06, deg_to_rad(-42.8), 0.0),
 		"fov": 64.0,
 		"suppress_input": true,
@@ -1104,7 +1116,8 @@ const CAMERA_PRESETS := {
 		# pedestal table centre (godot 0,-2.5), stove NE (1.375,-4.0),
 		# fridge E wall (2.25,-1.0). Camera SE just inside the door looking
 		# NW across the table to the sink corner; stove + fridge at right.
-		"camera_origin": Vector3(2.2, 1.58, -0.8),
+		# RE-VANTAGED 2026-09-03: the SE vantage at x 2.2 stood inside the fridge (E wall, x 1.9..2.6); moved west of it, same NW look across the table
+		"camera_origin": Vector3(1.20, 1.58, -0.80),
 		"camera_rotation": Vector3(-0.05, deg_to_rad(48.2), 0.0),
 		"fov": 60.0,
 		"suppress_input": true,
@@ -1144,8 +1157,10 @@ const CAMERA_PRESETS := {
 		# vending machine (-1.9,-4.55), paper coffee cup on the end
 		# seat. Camera south of the row looking N so the bed stays out
 		# of frame — waiting, not visiting.
-		"camera_origin": Vector3(0.7, 1.5, -1.0),
-		"camera_rotation": Vector3(-0.05, 0.42, 0.0),
+		# RE-VANTAGED 2026-09-03 by vantage_obstruction_audit --propose
+		# (user: "another establishing shot that is 90 percent wall").
+		"camera_origin": Vector3(1.05, 1.50, -2.05),
+		"camera_rotation": Vector3(-0.05, 0.262, 0.0),
 		"fov": 58.0,
 		"suppress_input": true,
 	},
@@ -1379,8 +1394,10 @@ const CAMERA_PRESETS := {
 		# Walked out: the square at the foot, the fountain at its center
 		# (blender 0, -22), the alpine fronts around it, the path going
 		# up the mountain behind. Camera south-east of the fountain.
-		"camera_origin": Vector3(6.0, 1.6, 32.0),
-		"camera_rotation": Vector3(-0.02, 0.540, 0.0),
+		# RE-VANTAGED 2026-09-03 by vantage_obstruction_audit --propose
+		# (user: "another establishing shot that is 90 percent wall").
+		"camera_origin": Vector3(6.25, 1.60, 31.00),
+		"camera_rotation": Vector3(-0.02, 0.262, 0.0),
 		"fov": 55.0,
 		"suppress_input": true,
 	},
@@ -1703,8 +1720,10 @@ const CAMERA_PRESETS := {
 		# ESE along the bed at the window in the east wall; its own
 		# scene so [shot:insert window] frames THAT window, not the
 		# kitchen's.
-		"camera_origin": Vector3(1.55, 1.0, -2.65),
-		"camera_rotation": Vector3(0.36, -2.10, 0.0),
+		# RE-VANTAGED 2026-09-03 by vantage_obstruction_audit --propose
+		# (user: "another establishing shot that is 90 percent wall").
+		"camera_origin": Vector3(-1.50, 1.00, -2.15),
+		"camera_rotation": Vector3(0.36, 4.320, 0.0),
 		"fov": 58.0,
 		"suppress_input": true,
 	},
@@ -1762,8 +1781,9 @@ const CAMERA_PRESETS := {
 		# The diner_interior preset uses -π/2 because its "front
 		# door" actually faces +X-out; the kwik_stop east wall is a
 		# solid backing for Sam, so the camera looks the OTHER way.)
-		"camera_origin": Vector3(5.78, 2.05, -5.0),
-		"camera_rotation": Vector3(0.04, deg_to_rad(90.0), 0.0),
+		# RE-VANTAGED 2026-09-03: vantage_obstruction_audit --propose (the register edge filled a third of frame within 1 m)
+		"camera_origin": Vector3(5.28, 2.05, -3.00),
+		"camera_rotation": Vector3(0.04, 1.178, 0.0),
 		"fov": 64.0,
 		"suppress_input": true,
 	},
@@ -1821,8 +1841,10 @@ const CAMERA_PRESETS := {
 		# Three-quarter on the CCC stone building from the walk's
 		# east side: door + lintel center, flanking windows, stepped
 		# timber roof, info board frame left.
-		"camera_origin": Vector3(-0.3, 1.65, -6.2),
-		"camera_rotation": Vector3(-0.03, deg_to_rad(54.0), 0.0),
+		# RE-VANTAGED 2026-09-03 by vantage_obstruction_audit --propose
+		# (user: "another establishing shot that is 90 percent wall").
+		"camera_origin": Vector3(6.70, 1.65, -2.70),
+		"camera_rotation": Vector3(-0.03, 0.654, 0.0),
 		"fov": 55.0,
 		"suppress_input": true,
 	},
@@ -1854,8 +1876,10 @@ const CAMERA_PRESETS := {
 		# At the shelter's SE corner looking NW under the corrugated
 		# roof: all three tables (the loose third shoved off-square),
 		# the carved-initials tabletop nearest, pines beyond.
-		"camera_origin": Vector3(-3.6, 1.60, -8.6),
-		"camera_rotation": Vector3(-0.03, deg_to_rad(42.0), 0.0),
+		# RE-VANTAGED 2026-09-03 by vantage_obstruction_audit --propose
+		# (user: "another establishing shot that is 90 percent wall").
+		"camera_origin": Vector3(3.40, 1.60, -1.35),
+		"camera_rotation": Vector3(-0.03, 0.262, 0.0),
 		"fov": 60.0,
 		"suppress_input": true,
 	},
@@ -1919,8 +1943,10 @@ const CAMERA_PRESETS := {
 		# Same set, the annex — NE corner behind the partition: desk
 		# against the N wall (3.2,-5.6) with lamp + ledger, file
 		# cabinet left, the partition window back onto the floor.
-		"camera_origin": Vector3(2.5, 1.55, -4.6),
-		"camera_rotation": Vector3(-0.05, deg_to_rad(-35.0), 0.0),
+		# RE-VANTAGED 2026-09-03 by vantage_obstruction_audit --propose
+		# (user: "another establishing shot that is 90 percent wall").
+		"camera_origin": Vector3(0.30, 1.55, -0.55),
+		"camera_rotation": Vector3(-0.05, 5.760, 0.0),
 		"fov": 56.0,
 		"suppress_input": true,
 	},
@@ -2033,7 +2059,8 @@ const CAMERA_PRESETS := {
 		# fence + gate at the S edge (z=+9). Camera just inside the
 		# gate looking N up the central path to the mausoleum door,
 		# vault rows flanking.
-		"camera_origin": Vector3(1.4, 1.65, 8.2),
+		# RE-VANTAGED 2026-09-03: the east gate leaf was 0.4 m from the lens; a metre and a half up the path, same look at the mausoleum
+		"camera_origin": Vector3(0.60, 1.65, 6.80),
 		"camera_rotation": Vector3(-0.02, deg_to_rad(13.0), 0.0),
 		"fov": 62.0,
 		"suppress_input": true,
@@ -2165,8 +2192,10 @@ const CAMERA_PRESETS := {
 		# (z=-8.5), Delores's pool + rail + island center-right
 		# (3, z=-5.6), satellite shacks, bunting, the cold sea beyond
 		# the edge.
-		"camera_origin": Vector3(2.0, 1.70, -1.6),
-		"camera_rotation": Vector3(-0.02, deg_to_rad(18.0), 0.0),
+		# RE-VANTAGED 2026-09-03 by vantage_obstruction_audit --propose
+		# (user: "another establishing shot that is 90 percent wall").
+		"camera_origin": Vector3(2.25, 1.70, 0.00),
+		"camera_rotation": Vector3(-0.02, 0.000, 0.0),
 		"fov": 68.0,
 		"suppress_input": true,
 	},

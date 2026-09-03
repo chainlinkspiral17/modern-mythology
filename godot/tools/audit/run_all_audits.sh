@@ -97,3 +97,14 @@ if bad:
     sys.exit(1)
 print("0 regressions: every non-holdout locale is clean")
 PYGATE
+
+# ── Vantage-obstruction gate (2026-09-03) ──────────────────────
+# A wall in the camera's face: the cabin's opening wide stood inside
+# the bed alcove, Elicia's bungalow behind a closet. Every preset
+# casts a ray fan; near-fills and single-surface fills fail. Nonzero
+# exit fails the suite.
+echo "── vantage_obstruction_audit.py ──"
+OOUT="$(python3 vantage_obstruction_audit.py 2>/dev/null)" || {
+    echo "$OOUT" | grep -v "^\["; exit 1; }
+echo "$OOUT" | grep -v "^\[" | tail -2
+echo ""
