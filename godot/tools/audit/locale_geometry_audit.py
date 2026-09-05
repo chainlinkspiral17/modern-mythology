@@ -192,11 +192,78 @@ def install_stubs():
                       tuple(float(c) for c in center), (r, r, r)))
         return _obj_stub(name)
 
+    def _rec_lathe(name, center, profile, color=None, segments=12, yaw=0.0, *a, **k):
+        r = max(abs(float(p[0])) for p in profile)
+        zs = [float(p[1]) for p in profile]
+        cx, cy, cz = (float(c) for c in center)
+        BOXES.append((str(name), (cx, cy, cz + (max(zs) + min(zs)) / 2.0),
+                      (r, r, (max(zs) - min(zs)) / 2.0)))
+        return _obj_stub(name)
+
+    def _rec_prism_poly(name, center, polygon, length, color=None, axis="Z", yaw=0.0, *a, **k):
+        import math as _m
+        us = [float(p[0]) for p in polygon]; vs = [float(p[1]) for p in polygon]
+        if yaw:
+            c_, s_ = _m.cos(float(yaw)), _m.sin(float(yaw))
+            pts = [(u * c_ - v * s_, u * s_ + v * c_) for u, v in zip(us, vs)]
+            us = [p[0] for p in pts]; vs = [p[1] for p in pts]
+        hu = (max(us) - min(us)) / 2.0; hv = (max(vs) - min(vs)) / 2.0
+        mu = (max(us) + min(us)) / 2.0; mv = (max(vs) + min(vs)) / 2.0
+        hl = abs(float(length)) / 2.0
+        cx, cy, cz = (float(c) for c in center)
+        ax = str(axis).upper()
+        if ax == "Z":
+            BOXES.append((str(name), (cx + mu, cy + mv, cz), (hu, hv, hl)))
+        elif ax == "X":
+            BOXES.append((str(name), (cx, cy + mu, cz + mv), (hl, hu, hv)))
+        else:
+            BOXES.append((str(name), (cx + mu, cy, cz + mv), (hu, hl, hv)))
+        return _obj_stub(name)
+
+    def _rec_tube(name, path, radius, color=None, *a, **k):
+        r = abs(float(radius))
+        xs = [float(p[0]) for p in path]; ys = [float(p[1]) for p in path]; zs = [float(p[2]) for p in path]
+        BOXES.append((str(name), ((max(xs) + min(xs)) / 2.0, (max(ys) + min(ys)) / 2.0, (max(zs) + min(zs)) / 2.0),
+                      ((max(xs) - min(xs)) / 2.0 + r, (max(ys) - min(ys)) / 2.0 + r, (max(zs) - min(zs)) / 2.0 + r)))
+        return _obj_stub(name)
+
+    def _rec_rot_box(name, center, size, color=None, yaw=0.0, pitch=0.0, roll=0.0, *a, **k):
+        import math as _m
+        cx, cy, cz = (float(c) for c in center)
+        hx, hy, hz = (abs(float(s)) / 2.0 for s in size)
+        cy_, sy_ = _m.cos(float(yaw)), _m.sin(float(yaw)); cp, sp = _m.cos(float(pitch)), _m.sin(float(pitch))
+        cr, sr = _m.cos(float(roll)), _m.sin(float(roll))
+        ex = ey = ez = 0.0
+        for i in (-1, 1):
+            for j in (-1, 1):
+                for kk in (-1, 1):
+                    dx, dy, dz = i * hx, j * hy, kk * hz
+                    dy, dz = dy * cr - dz * sr, dy * sr + dz * cr
+                    dx, dz = dx * cp + dz * sp, -dx * sp + dz * cp
+                    dx, dy = dx * cy_ - dy * sy_, dx * sy_ + dy * cy_
+                    ex, ey, ez = max(ex, abs(dx)), max(ey, abs(dy)), max(ez, abs(dz))
+        BOXES.append((str(name), (cx, cy, cz), (ex, ey, ez)))
+        return _obj_stub(name)
+
+    def _rec_heightfield(name, origin, cell, heights, color=None, skirt=0.3, *a, **k):
+        rows, cols = len(heights), len(heights[0])
+        zs = [float(h) for row in heights for h in row]
+        lo, hi = min(zs), max(zs) 
+        ox, oy, oz = (float(c) for c in origin)
+        cell = float(cell); skirt = float(skirt)
+        BOXES.append((str(name), (ox + (cols - 1) * cell / 2.0, oy + (rows - 1) * cell / 2.0, oz + (hi + lo - skirt) / 2.0),
+                      ((cols - 1) * cell / 2.0, (rows - 1) * cell / 2.0, (hi - lo + skirt) / 2.0)))
+        return _obj_stub(name)
+
     _RECORDERS = {
         "make_box": _make_box, "make_cyl": _make_cyl,
         "make_chamfer_box": _rec_prism, "make_wedge": _rec_prism,
         "make_gable": _rec_prism, "make_taper_cyl": _rec_taper,
         "make_dome": _rec_round, "make_blob": _rec_round,
+        # DETAIL DRAFT 1 primitives (2026-09-05)
+        "make_lathe": _rec_lathe, "make_prism": _rec_prism_poly,
+        "make_tube": _rec_tube, "make_rot_box": _rec_rot_box,
+        "make_heightfield": _rec_heightfield,
     }
 
     class _Any(types.ModuleType):
@@ -236,7 +303,7 @@ def install_stubs():
     # objects before this line was widened (2026-08-12), which also
     # means their clipping went unchecked.
     for real_mod in ("detail", "trees", "objects", "drones",
-                     "creatures", "vehicles", "structure", "shelving", "decor",
+                     "creatures", "vehicles", "buildings", "structure", "shelving", "decor",
                      "food_service", "cleaning", "coolers_drinks",
                      "signage", "store_fixtures", "safety"):
         mpath = os.path.join(BLENDER, "_props", real_mod + ".py")

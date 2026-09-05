@@ -48,7 +48,7 @@ import os, sys, math
 _BT = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)), ".."))
 if _BT not in sys.path: sys.path.insert(0, _BT)
 from _props import palette as P
-from _props.geometry import clear_scene, make_box, make_cyl, make_blob, make_wedge, make_gable, make_taper_cyl, export_glb
+from _props.geometry import clear_scene, make_box, make_cyl, make_blob, make_wedge, make_gable, make_taper_cyl, make_lathe, export_glb
 from _props.detail import make_far_bands
 
 DIRT = (0.42, 0.36, 0.28, 1.0)
@@ -183,16 +183,17 @@ def build_square():
     for i in range(7):
         make_box(f"Paving_Line_Y_{i}", (sx, sy - 9.0 + i * 3.0, 0.001), (30.0, 0.05, 0.002), (0.42, 0.40, 0.36, 1.0))
     # the fountain
-    make_cyl("Fountain_Base", (sx, sy, 0.10), 3.3, 0.20, STONE_DK, segments=24)
-    make_cyl("Fountain_Lower_Basin", (sx, sy, 0.45), 3.0, 0.50, STONE, segments=24)
-    make_cyl("Fountain_Lower_Water", (sx, sy, 0.71), 2.8, 0.02, WATER, segments=24)
-    make_cyl("Fountain_Mid_Pedestal", (sx, sy, 1.17), 0.50, 0.90, STONE_DK, segments=12)
-    make_cyl("Fountain_Mid_Basin", (sx, sy, 1.795), 1.7, 0.35, STONE, segments=20)
-    make_cyl("Fountain_Mid_Water", (sx, sy, 1.98), 1.55, 0.02, WATER, segments=20)
-    make_cyl("Fountain_Upper_Pedestal", (sx, sy, 2.39), 0.35, 0.80, STONE_DK, segments=10)
-    make_cyl("Fountain_Upper_Basin", (sx, sy, 2.94), 0.9, 0.30, STONE, segments=16)
-    make_cyl("Fountain_Upper_Water", (sx, sy, 3.10), 0.8, 0.02, WATER, segments=16)
-    make_taper_cyl("Fountain_Finial", (sx, sy, 3.36), 0.18, 0.04, 0.50, STONE_DK, segments=8)
+    # lathed: a stepped base, three basins with lips, two balusters, a finial
+    make_lathe("Fountain_Base", (sx, sy, 0.0), [(3.4, 0.0), (3.4, 0.12), (3.25, 0.16), (3.25, 0.20), (0.0, 0.20)], STONE_DK, segments=24)
+    make_lathe("Fountain_Lower_Basin", (sx, sy, 0.20), [(0.0, 0.0), (2.6, 0.0), (2.95, 0.10), (3.05, 0.30), (3.02, 0.44), (2.90, 0.50), (2.70, 0.50), (0.0, 0.50)], STONE, segments=24)
+    make_cyl("Fountain_Lower_Water", (sx, sy, 0.71), 2.66, 0.02, WATER, segments=24)
+    make_lathe("Fountain_Mid_Pedestal", (sx, sy, 0.72), [(0.0, 0.0), (0.62, 0.0), (0.50, 0.10), (0.36, 0.30), (0.34, 0.55), (0.44, 0.75), (0.56, 0.86), (0.60, 0.90), (0.0, 0.90)], STONE_DK, segments=12)
+    make_lathe("Fountain_Mid_Basin", (sx, sy, 1.62), [(0.0, 0.0), (1.45, 0.0), (1.66, 0.10), (1.74, 0.24), (1.70, 0.33), (1.55, 0.35), (0.0, 0.35)], STONE, segments=20)
+    make_cyl("Fountain_Mid_Water", (sx, sy, 1.98), 1.50, 0.02, WATER, segments=20)
+    make_lathe("Fountain_Upper_Pedestal", (sx, sy, 1.99), [(0.0, 0.0), (0.44, 0.0), (0.34, 0.08), (0.26, 0.28), (0.24, 0.50), (0.32, 0.68), (0.42, 0.78), (0.44, 0.80), (0.0, 0.80)], STONE_DK, segments=10)
+    make_lathe("Fountain_Upper_Basin", (sx, sy, 2.79), [(0.0, 0.0), (0.72, 0.0), (0.88, 0.10), (0.94, 0.22), (0.88, 0.30), (0.78, 0.30), (0.0, 0.30)], STONE, segments=16)
+    make_cyl("Fountain_Upper_Water", (sx, sy, 3.10), 0.74, 0.02, WATER, segments=16)
+    make_lathe("Fountain_Finial", (sx, sy, 3.11), [(0.0, 0.0), (0.20, 0.0), (0.14, 0.10), (0.10, 0.30), (0.16, 0.42), (0.06, 0.52), (0.0, 0.56)], STONE_DK, segments=8)
     # water falling from the upper rims: streaks outside the pedestals
     for fi in range(4):
         a = fi * math.pi / 2.0 + math.pi / 4.0

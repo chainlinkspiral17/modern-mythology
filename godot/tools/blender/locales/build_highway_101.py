@@ -34,6 +34,7 @@ from _props.geometry import clear_scene, make_box, make_cyl, make_blob, make_wed
 from _props.detail import make_far_bands
 from _props.trees import make_conifer
 from _props.vehicles import make_car
+from _props.detail import make_guardrail
 
 ASPHALT = (0.24, 0.24, 0.25, 1.0)
 SHOULDER = (0.44, 0.42, 0.36, 1.0)
@@ -69,12 +70,8 @@ def build_road():
         make_box(f"Shoulder_{sgn:+d}", (sgn * 4.3, mid, 0.01), (1.4, span, 0.02), SHOULDER)
     # the seaward guardrail: W-beam on posts, the whole run
     # (a gap at the old-Yachats spur, y 155..165)
-    make_box("Guardrail_Beam_S", (-5.4, (ROAD_NEAR + 154.75) / 2.0, 0.72), (0.08, 154.75 - ROAD_NEAR, 0.32), STEEL)
-    make_box("Guardrail_Beam_N", (-5.4, (165.25 + ROAD_FAR) / 2.0, 0.72), (0.08, ROAD_FAR - 165.25, 0.32), STEEL)
-    for i in range(-300, 301):
-        if 154.0 < i * 4.0 < 166.0:
-            continue
-        make_box(f"Guardrail_Post_{i + 300}", (-5.5, i * 4.0, 0.40), (0.14, 0.14, 0.80), (0.42, 0.42, 0.44, 1.0))
+    make_guardrail("Guardrail_S", -5.4, ROAD_NEAR, 154.75, side=1, steel=STEEL)
+    make_guardrail("Guardrail_N", -5.4, 165.25, ROAD_FAR, side=1, steel=STEEL)
     # the drop to the sea: a long wedge falling west from the shelf
     make_wedge("Sea_Bluff", (-15.0 - 12.0, mid, (SEA_Z + -0.95) / 2.0), (24.0, span, -0.95 - SEA_Z), ROCK, high_end="+X")
     make_box("Sea", (-160.0, 0.0, SEA_Z - 0.05), (260.0, 2600.0, 0.10), SEA)

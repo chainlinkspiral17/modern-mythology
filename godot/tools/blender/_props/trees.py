@@ -78,3 +78,44 @@ def make_cypress(prefix, px, py, h, foliage_col, trunk_col,
                       h + 0.4 - mi * 0.1),
                      (0.05, 0.05, 1.1 + (s >> (mi + 2)) % 3 * 0.2),
                      moss_col)
+
+
+# ════════════════════════════════════════════════════════════════
+# DETAIL DRAFT 1 (2026-09-05): trees that are not a cone on a stick.
+# ════════════════════════════════════════════════════════════════
+
+def make_bare_tree(prefix, px, py, h, bark=(0.34, 0.28, 0.22, 1.0), seed=0, limbs=5):
+    """A leafless tree: a lathed trunk with a root flare, tube limbs
+    that fork once — the winter tree, the dead snag by the fallen
+    house, the alder by the crick."""
+    import math
+    from .geometry import make_lathe, make_tube
+    def hsh(a, b):
+        n = (a * 374761393 + b * 668265263 + seed * 1442695041) & 0xFFFFFFFF
+        n = ((n ^ (n >> 13)) * 1274126177) & 0xFFFFFFFF
+        return ((n ^ (n >> 16)) & 0xFFFF) / 65536.0
+    r0 = 0.05 * h ** 0.55
+    make_lathe(f"{prefix}_Trunk", (px, py, 0.0),
+               [(r0 * 1.6, 0.0), (r0 * 1.1, 0.25), (r0, h * 0.15), (r0 * 0.75, h * 0.5), (r0 * 0.45, h * 0.78), (r0 * 0.2, h), (0.0, h * 1.02)],
+               bark, segments=8)
+    for li in range(limbs):
+        a = 2.0 * math.pi * (li / limbs + 0.13 * hsh(li, 1))
+        z0 = h * (0.42 + 0.42 * hsh(li, 2))
+        reach = h * (0.28 + 0.22 * hsh(li, 3))
+        rise = h * (0.18 + 0.20 * hsh(li, 4))
+        base = (px, py, z0)
+        mid = (px + math.cos(a) * reach * 0.55, py + math.sin(a) * reach * 0.55, z0 + rise * 0.5)
+        tip = (px + math.cos(a) * reach, py + math.sin(a) * reach, z0 + rise)
+        make_tube(f"{prefix}_Limb_{li}", [base, mid, tip], r0 * 0.35, bark, segments=5)
+        a2 = a + (0.6 if hsh(li, 5) > 0.5 else -0.6)
+        tip2 = (mid[0] + math.cos(a2) * reach * 0.45, mid[1] + math.sin(a2) * reach * 0.45, mid[2] + rise * 0.55)
+        make_tube(f"{prefix}_Twig_{li}", [mid, tip2], r0 * 0.18, bark, segments=4)
+
+
+def make_shrub(prefix, px, py, h=0.9, r=0.55, col=(0.26, 0.40, 0.24, 1.0), segments=8):
+    """A lathed shrub silhouette (waist, belly, crown) — reads as a
+    clipped bush, not a ball."""
+    from .geometry import make_lathe
+    make_lathe(prefix, (px, py, 0.0),
+               [(0.0, 0.0), (r * 0.55, h * 0.08), (r, h * 0.42), (r * 0.82, h * 0.78), (r * 0.35, h * 0.96), (0.0, h)],
+               col, segments=segments)

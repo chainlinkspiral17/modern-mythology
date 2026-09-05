@@ -43,6 +43,7 @@ from _props import palette as P
 from _props.geometry import clear_scene, make_box, make_cyl, make_blob, export_glb
 from _props.detail import make_far_bands
 from _props.vehicles import make_car
+from _props.buildings import make_ranch_house
 
 ASPHALT = (0.30, 0.30, 0.32, 1.0)
 CONCRETE = (0.62, 0.61, 0.58, 1.0)
@@ -83,35 +84,25 @@ def build_street():
 
 
 def build_house(tag, hx, hy, facing, col, lit_window=False, porch_on=False, garage=True, lot_num=None):
-    """A 1987-vintage single-story ranch: slab, body, hipped roof, a door
-    with a step, two windows, a porch light, a garage door, a driveway
-    to the curb, an HOA mailbox at the curb. `facing` is +1 for a house
-    that faces south (north lots) and -1 for one that faces north."""
+    """A 1987-vintage single-story ranch (DETAIL DRAFT 1, 2026-09-05:
+    through _props.buildings.make_ranch_house — gable with eaves and
+    shingle courses, siding, trimmed windows with sills and shutters,
+    a paneled door under a porch on turned posts, chimney, gutters,
+    the garage with its paneled door). `facing` +1 = the front toward
+    -Y (north lots face the street); -1 = toward +Y. The driveway runs
+    from the garage to the curb, the lawn fills the setback, the HOA
+    mailbox stands at the curb."""
     f = facing
-    front_y = hy - f * 4.0
-    make_box(f"{tag}_Slab", (hx, hy, 0.06), (10.4, 8.4, 0.12), CONCRETE)
-    make_box(f"{tag}_Body", (hx, hy, 1.50), (10.0, 8.0, 2.80), col)
-    make_box(f"{tag}_Roof_Low", (hx, hy, 3.05), (10.8, 8.8, 0.30), ROOF)
-    make_box(f"{tag}_Roof_Mid", (hx, hy, 3.45), (8.6, 6.4, 0.50), ROOF)
-    make_box(f"{tag}_Roof_Cap", (hx, hy, 3.90), (6.0, 3.6, 0.40), ROOF)
-    # front door + step + porch light beside it
-    make_box(f"{tag}_Door", (hx - 2.0, front_y - f * 0.03, 1.05), (0.95, 0.06, 2.10), (0.42, 0.30, 0.22, 1.0))
-    make_box(f"{tag}_Step", (hx - 2.0, front_y - f * 0.55, 0.16), (1.40, 1.00, 0.32), CONCRETE)
-    make_box(f"{tag}_Porch_Fixture", (hx - 1.25, front_y - f * 0.09, 2.25), (0.14, 0.12, 0.22),
-             BULB_LIGHT if porch_on else (0.86, 0.84, 0.78, 1.0))
-    # two windows; one may be lit
-    for wi, wx in enumerate((hx + 0.6, hx + 3.6)):
-        make_box(f"{tag}_Win_{wi}_Frame", (wx, front_y - f * 0.02, 1.55), (1.60, 0.04, 1.30), TRIM)
-        make_box(f"{tag}_Win_{wi}_Glass", (wx, front_y - f * 0.045, 1.55), (1.44, 0.01, 1.14),
-                 GLASS_LIT if (lit_window and wi == 1) else GLASS)
+    front = "-Y" if f > 0 else "+Y"
+    W, D = 10.0, 8.0
+    front_y = hy - f * D / 2.0
+    make_ranch_house(tag, hx, hy, front, col, ROOF, w=W, d=D, h=2.8, garage=garage,
+                     lit=(False, True, False) if lit_window else (False, False, False), porch=True, shrubs=True)
     if garage:
-        make_box(f"{tag}_Garage_Door", (hx - 4.4, front_y - f * 0.03, 1.15), (2.60, 0.06, 2.20), (0.88, 0.86, 0.82, 1.0))
-        for gi in range(3):
-            make_box(f"{tag}_Garage_Panel_{gi}", (hx - 4.4, front_y - f * 0.065, 0.55 + gi * 0.62), (2.40, 0.01, 0.10), (0.78, 0.76, 0.72, 1.0))
-        drive_len = abs(front_y - f * 4.0) - 0.4
-        make_box(f"{tag}_Driveway", (hx - 4.4, (front_y + f * 0.0 - f * (drive_len / 2.0 + 0.2)), 0.015), (3.20, drive_len, 0.03), CONCRETE)
-    # lawn + the HOA mailbox at the curb
-    make_box(f"{tag}_Lawn", (hx + 1.5, (front_y - f * 4.6 + front_y) / 2.0, 0.006), (8.5, abs(front_y - (front_y - f * 4.6)), 0.012), LAWN)
+        gx = hx + (W / 2.0 - 1.9) * (1 if f > 0 else -1)   # make_ranch_house puts the garage at u = -W/2 + 1.9
+        drive_len = abs(front_y - f * 4.0) - 1.9
+        make_box(f"{tag}_Driveway", (gx, front_y - f * (drive_len / 2.0 + 1.6), 0.015), (3.20, drive_len, 0.03), CONCRETE)
+    make_box(f"{tag}_Lawn", (hx + 1.5 * (1 if f > 0 else -1), (front_y - f * 4.6 + front_y) / 2.0, 0.006), (7.0, abs(front_y - (front_y - f * 4.6)), 0.012), LAWN)
     make_cyl(f"{tag}_Mailbox_Post", (hx + 5.2, f * 5.1, 0.55), 0.05, 1.10, (0.30, 0.30, 0.32, 1.0), segments=6)
     make_box(f"{tag}_Mailbox", (hx + 5.2, f * 5.1, 1.20), (0.22, 0.48, 0.24), (0.22, 0.26, 0.34, 1.0))
     if lot_num is not None:
@@ -211,27 +202,27 @@ def build_henderson_2026_09():
     garage, "its single open vent at the top of the door," the
     distorted Telecaster.
     """
-    make_car("Ben_Truck", -2.6, 2.4, 5.6, (0.22, 0.34, 0.24, 1.0), pickup=True)
-    make_car("Corolla", -11.5, 2.4, 4.3, (0.72, 0.70, 0.64, 1.0))
+    make_car("Ben_Truck", -4.2, 2.4, 5.6, (0.22, 0.34, 0.24, 1.0), pickup=True)
+    make_car("Corolla", -13.0, 2.4, 4.3, (0.72, 0.70, 0.64, 1.0))
     make_car("Patrol_Vehicle", -1.0, -1.8, 4.9, (0.92, 0.92, 0.90, 1.0), light_bar=True)
     make_box("Patrol_Door_Stripe", (-1.0, -2.705, 0.62), (2.4, 0.01, 0.30), (0.16, 0.22, 0.40, 1.0))
     # the light post at the end of the Henderson driveway, on the sidewalk edge
-    make_cyl("Henderson_Light_Post", (-8.6, 5.3, 1.64), 0.06, 3.14, (0.30, 0.30, 0.32, 1.0), segments=8)
-    make_box("Henderson_Light_Post_Head", (-8.6, 5.3, 3.31), (0.30, 0.30, 0.20), (0.96, 0.92, 0.78, 1.0))
+    make_cyl("Henderson_Light_Post", (3.4, 5.3, 1.64), 0.06, 3.14, (0.30, 0.30, 0.32, 1.0), segments=8)
+    make_box("Henderson_Light_Post_Head", (3.4, 5.3, 3.31), (0.30, 0.30, 0.20), (0.96, 0.92, 0.78, 1.0))
     # Maya's bike, chained to the post, wet
     for wi, wy in enumerate((5.0, 6.05)):
-        make_cyl(f"Maya_Bike_Wheel_{wi}", (-9.0, wy, 0.40), 0.33, 0.04, (0.14, 0.14, 0.15, 1.0), axis="X", segments=12)
-    make_box("Maya_Bike_Frame_Top", (-9.0, 5.52, 0.86), (0.03, 0.62, 0.03), (0.62, 0.22, 0.24, 1.0))
-    make_box("Maya_Bike_Frame_Down", (-9.0, 5.52, 0.62), (0.03, 0.46, 0.03), (0.62, 0.22, 0.24, 1.0))
-    make_box("Maya_Bike_Seat", (-9.0, 5.25, 0.94), (0.10, 0.20, 0.05), (0.14, 0.14, 0.15, 1.0))
-    make_box("Maya_Bike_Bars", (-9.0, 5.90, 0.98), (0.44, 0.03, 0.03), (0.30, 0.30, 0.32, 1.0))
-    make_box("Bike_Chain", (-8.80, 5.30, 0.75), (0.34, 0.02, 0.02), (0.36, 0.36, 0.38, 1.0))
+        make_cyl(f"Maya_Bike_Wheel_{wi}", (3.8, wy, 0.40), 0.33, 0.04, (0.14, 0.14, 0.15, 1.0), axis="X", segments=12)
+    make_box("Maya_Bike_Frame_Top", (3.8, 5.52, 0.86), (0.03, 0.62, 0.03), (0.62, 0.22, 0.24, 1.0))
+    make_box("Maya_Bike_Frame_Down", (3.8, 5.52, 0.62), (0.03, 0.46, 0.03), (0.62, 0.22, 0.24, 1.0))
+    make_box("Maya_Bike_Seat", (3.8, 5.25, 0.94), (0.10, 0.20, 0.05), (0.14, 0.14, 0.15, 1.0))
+    make_box("Maya_Bike_Bars", (3.8, 5.90, 0.98), (0.44, 0.03, 0.03), (0.30, 0.30, 0.32, 1.0))
+    make_box("Bike_Chain", (3.6, 5.30, 0.75), (0.34, 0.02, 0.02), (0.36, 0.36, 0.38, 1.0))
     # the garage door's single open vent at the top, the Telecaster light in it
-    make_box("Henderson_Garage_Vent", (-6.4, 8.42, 2.12), (0.60, 0.01, 0.10), (0.98, 0.86, 0.58, 1.0))
-    make_box("Henderson_Vent_Slats", (-6.4, 8.412, 2.12), (0.56, 0.002, 0.08), (0.72, 0.62, 0.42, 1.0))
+    make_box("Henderson_Garage_Vent", (1.1, 8.40, 2.30), (0.60, 0.01, 0.10), (0.98, 0.86, 0.58, 1.0))
+    make_box("Henderson_Vent_Slats", (1.1, 8.392, 2.30), (0.56, 0.002, 0.08), (0.72, 0.62, 0.42, 1.0))
     # rain has mostly stopped: a puddle at the foot of the drive, the wet sheen on the truck's hood
-    make_box("Driveway_Puddle", (-6.0, 4.6, 0.0705), (1.6, 0.9, 0.001), (0.34, 0.36, 0.40, 1.0))
-    make_box("Truck_Hood_Sheen", (-0.5, 2.4, 0.9205), (1.6, 1.2, 0.001), (0.30, 0.42, 0.34, 1.0))
+    make_box("Driveway_Puddle", (1.5, 4.6, 0.0705), (1.6, 0.9, 0.001), (0.34, 0.36, 0.40, 1.0))
+    make_box("Ben_Truck_Hood_Sheen", (-2.6, 2.4, 0.9805), (1.2, 1.2, 0.001), (0.30, 0.42, 0.34, 1.0))
 
 
 def main():

@@ -39,7 +39,7 @@ import os, sys, math
 _BT = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)), ".."))
 if _BT not in sys.path: sys.path.insert(0, _BT)
 from _props import palette as P
-from _props.geometry import clear_scene, make_box, make_cyl, make_blob, make_wedge, make_taper_cyl, export_glb
+from _props.geometry import clear_scene, make_box, make_cyl, make_blob, make_wedge, make_taper_cyl, make_lathe, export_glb
 from _props.detail import make_far_bands
 
 ASPHALT = (0.32, 0.32, 0.33, 1.0)
@@ -133,7 +133,7 @@ def build_dock():
         make_box(f"Dock_Stringer_{nm}", (sgn * 0.85, -7.925, 0.42), (0.10, 15.85, 0.16), DOCK_WOOD_DK)
         for pi in range(6):
             py = -0.5 - pi * 3.0
-            make_cyl(f"Dock_Piling_{nm}_{pi}", (sgn * 1.05, py, 0.24), 0.12, 0.52, PILING, segments=8)
+            make_lathe(f"Dock_Piling_{nm}_{pi}", (sgn * 1.05, py, -0.02), [(0.13, 0.0), (0.12, 0.30), (0.11, 0.46), (0.09, 0.52), (0.0, 0.52)], PILING, segments=8)
         make_box(f"Dock_Rub_Rail_{nm}", (sgn * 1.03, -7.925, 0.59), (0.06, 15.85, 0.06), DOCK_WOOD_DK)
     make_box("Dock_End_Plank", (0.0, DOCK_END_Y - 0.15, 0.53), (2.0, 0.30, 0.06), DOCK_WOOD_DK)
     # the same metal cleat at the far end, twelve years on

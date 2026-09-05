@@ -222,3 +222,96 @@ def make_far_bands(prefix, base_color, bands, sides="NSEW",
                 make_box("%s_%s%d_l%d" % (prefix, side, i, j),
                          (lc[0], lc[1], height + lh * 0.5),
                          (lhalf[0], lhalf[1], lh * 0.5), c)
+
+
+# ════════════════════════════════════════════════════════════════
+# DETAIL DRAFT 1 (2026-09-05) — the roadside kit. Poles with
+# crossarms, insulators and wires that SAG; a W-beam guardrail on
+# posts with bolt heads; a wire fence; a ditch that is a surface.
+# ════════════════════════════════════════════════════════════════
+
+def make_utility_pole(prefix, x, y, h=9.0, crossarm=True, transformer=False, wood=(0.36, 0.28, 0.20, 1.0)):
+    from .geometry import make_lathe, make_box, make_cyl
+    make_lathe(f"{prefix}_Pole", (x, y, 0.0), [(0.16, 0.0), (0.15, h * 0.4), (0.12, h - 0.3), (0.11, h)], wood, segments=8)
+    if crossarm:
+        make_box(f"{prefix}_Crossarm", (x, y, h - 0.45), (1.9, 0.09, 0.11), wood)
+        make_box(f"{prefix}_Brace_L", (x - 0.55, y + 0.06, h - 0.85), (0.05, 0.03, 0.6), (0.50, 0.50, 0.52, 1.0))
+        make_box(f"{prefix}_Brace_R", (x + 0.55, y + 0.06, h - 0.85), (0.05, 0.03, 0.6), (0.50, 0.50, 0.52, 1.0))
+        for ii, dx in enumerate((-0.8, -0.3, 0.3, 0.8)):
+            make_lathe(f"{prefix}_Insulator_{ii}", (x + dx, y, h - 0.395),
+                       [(0.03, 0.0), (0.055, 0.05), (0.04, 0.09), (0.06, 0.13), (0.045, 0.17), (0.0, 0.19)],
+                       (0.30, 0.44, 0.42, 1.0), segments=8)
+    if transformer:
+        make_cyl(f"{prefix}_Transformer", (x + 0.32, y, h - 1.6), 0.24, 0.9, (0.42, 0.44, 0.44, 1.0), segments=10)
+        make_box(f"{prefix}_Transformer_Bracket", (x + 0.14, y, h - 1.2), (0.30, 0.06, 0.05), (0.50, 0.50, 0.52, 1.0))
+
+
+def make_wire_run(prefix, poles, h=9.0, sag=0.9, offsets=(-0.8, -0.3, 0.3, 0.8), color=(0.16, 0.16, 0.18, 1.0)):
+    """Wires between consecutive poles [(x, y), ...] — one tube per
+    span per insulator offset (offsets along the crossarm, which
+    runs along X). Named *_Wire_* so the overlap audit's flexible-
+    line rule forgives the pole-top contact."""
+    from .geometry import make_tube, catenary
+    for i, ((x0, y0), (x1, y1)) in enumerate(zip(poles, poles[1:])):
+        for wi, dx in enumerate(offsets):
+            path = catenary((x0 + dx, y0, h - 0.20), (x1 + dx, y1, h - 0.20), sag, n=8)
+            make_tube(f"{prefix}_Wire_{i}_{wi}", path, 0.018, color, segments=5)
+
+
+def make_guardrail(prefix, x, y0, y1, side=1, post_every=3.8, steel=(0.62, 0.64, 0.66, 1.0)):
+    """A W-beam guardrail along Y at x: the beam is a prism with the
+    W profile (extruded along Y), posts are lathed, bolt heads every
+    post. `side` +1 puts the posts on +X of the beam."""
+    from .geometry import make_prism, make_lathe, make_cyl
+    L = y1 - y0
+    ym = (y0 + y1) / 2.0
+    # W profile in (u=x, v=z), 8 mm plate, ~31 cm tall
+    w = [(0.0, 0.0), (0.04, 0.04), (0.04, 0.10), (0.0, 0.14), (0.04, 0.18), (0.04, 0.26), (0.0, 0.30),
+         (-0.012, 0.30), (0.028, 0.26), (0.028, 0.18), (-0.012, 0.14), (0.028, 0.10), (0.028, 0.04), (-0.012, 0.0)]
+    make_prism(f"{prefix}_Beam", (x, ym, 0.56), w, L, steel, axis="Y")
+    n = int(L / post_every)
+    for i in range(n + 1):
+        py = y0 + i * post_every + 0.4
+        if py > y1 - 0.2:
+            break
+        make_lathe(f"{prefix}_Post_{i}", (x + side * 0.10, py, 0.0),
+                   [(0.07, 0.0), (0.07, 0.72), (0.06, 0.80), (0.0, 0.80)], (0.40, 0.40, 0.42, 1.0), segments=6)
+        make_cyl(f"{prefix}_Bolt_{i}", (x - side * 0.016, py, 0.70), 0.02, 0.012, (0.50, 0.50, 0.52, 1.0), axis="X", segments=6)
+
+
+def make_wire_fence(prefix, x, y0, y1, h=1.1, post_every=3.0, wires=3, wood=(0.50, 0.46, 0.40, 1.0), gap=None):
+    """Field fence along Y at x: lathed posts with a chamfered top,
+    strands as tubes with a little sag. `gap` = (ya, yb) leaves an
+    opening (a gate)."""
+    from .geometry import make_lathe, make_tube, catenary
+    ys = []
+    y = y0
+    while y <= y1 + 1e-6:
+        if not (gap and gap[0] < y < gap[1]):
+            ys.append(y)
+        y += post_every
+    for i, py in enumerate(ys):
+        make_lathe(f"{prefix}_Post_{i}", (x, py, 0.0), [(0.06, 0.0), (0.06, h - 0.05), (0.04, h), (0.0, h)], wood, segments=6)
+    for i, (a, b) in enumerate(zip(ys, ys[1:])):
+        if gap and a < gap[0] < b:
+            continue
+        for wi in range(wires):
+            z = h - 0.10 - wi * ((h - 0.35) / max(wires - 1, 1))
+            make_tube(f"{prefix}_Wire_{i}_{wi}", catenary((x, a, z), (x, b, z), 0.025, n=4), 0.006, (0.50, 0.50, 0.48, 1.0), segments=4)
+
+
+def make_ditch_field(prefix, x0, x1, y0, y1, cell, ditch_x, ditch_depth=0.45, ditch_half=1.2, amp=0.08, seed=0, color=(0.36, 0.44, 0.24, 1.0), base_z=0.0):
+    """A rolling ground patch with a bar ditch running along Y at
+    ditch_x — the shoulder that falls away instead of a wedge."""
+    from .geometry import make_heightfield, rolling_heights
+    cols = int((x1 - x0) / cell) + 1
+    rows = int((y1 - y0) / cell) + 1
+    hs = rolling_heights(rows, cols, amp, seed=seed)
+    for r in range(rows):
+        for c in range(cols):
+            xx = x0 + c * cell
+            d = abs(xx - ditch_x)
+            if d < ditch_half:
+                t = 1.0 - d / ditch_half
+                hs[r][c] -= ditch_depth * (t * t * (3 - 2 * t))
+    make_heightfield(prefix, (x0, y0, base_z), cell, hs, color, skirt=0.4)

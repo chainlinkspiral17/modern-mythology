@@ -395,3 +395,276 @@ def make_blob(name, center, radius, base_color, noise=0.22, seed=0,
                               squash, noise, seed)
     return _finalize_mesh(name, verts, _fix_winding(verts, faces, center),
                           base_color)
+
+
+# ════════════════════════════════════════════════════════════════
+# DETAIL DRAFT 1 primitives (2026-09-05, user: "3d scenes are still
+# feeling real primitive. basic cubes and rectangles when the objects
+# and environments need far more detail and complexity.")
+#
+# Every set was assembled from boxes, cylinders and blobs. These five
+# give a builder curved silhouettes, arbitrary footprints, swept
+# lines, tilted members and rolling ground:
+#   · make_lathe      a revolved profile — bottles, basins, posts with
+#                     caps, hydrants, tires, lamp shades, bollards
+#   · make_prism      an extruded polygon on any axis — L-plans,
+#                     hexagons, car side-profiles, W-beam guardrails,
+#                     stair stringers, road segments at a yaw
+#   · make_tube       a polyline swept with a ring — wires with sag,
+#                     pipes, handrails, hoses, branches, chains
+#   · make_rot_box    a box with yaw + pitch + roll — leaning posts,
+#                     slumped roofs, open doors, planks on the ground
+#   · make_heightfield a grid of heights — lawns that roll, ditches,
+#                     dunes, the ground under everything
+# Each one is registered in the audit recorder (locale_geometry_audit
+# _RECORDERS) with its bounding box; an unregistered primitive is
+# invisible to every gate.
+# ════════════════════════════════════════════════════════════════
+
+def _gen_lathe(center, profile, segments):
+    """profile: [(radius, z_offset), ...] bottom→top, z relative to
+    center z. A zero radius at an end closes it to a point."""
+    cx, cy, cz = center
+    rings = []
+    verts = []
+    for (r, dz) in profile:
+        if r <= 1e-6:
+            rings.append([len(verts)])
+            verts.append((cx, cy, cz + dz))
+        else:
+            ring = []
+            for s in range(segments):
+                th = 2.0 * math.pi * s / segments
+                ring.append(len(verts))
+                verts.append((cx + r * math.cos(th), cy + r * math.sin(th), cz + dz))
+            rings.append(ring)
+    faces = []
+    for a, b in zip(rings, rings[1:]):
+        if len(a) == 1 and len(b) == 1:
+            continue
+        if len(a) == 1:
+            for s in range(segments):
+                faces.append([a[0], b[(s + 1) % segments], b[s]])
+        elif len(b) == 1:
+            for s in range(segments):
+                faces.append([a[s], a[(s + 1) % segments], b[0]])
+        else:
+            for s in range(segments):
+                ns = (s + 1) % segments
+                faces.append([a[s], a[ns], b[ns], b[s]])
+    # caps where the profile starts / ends open
+    if len(rings[0]) > 1:
+        faces.append(list(reversed(rings[0])))
+    if len(rings[-1]) > 1:
+        faces.append(list(rings[-1]))
+    return verts, faces
+
+
+def make_lathe(name, center, profile, base_color, segments=12, yaw=0.0):
+    """Revolve `profile` ([(radius, z_off), ...] bottom→top, z_off
+    relative to center) about the vertical through `center`. The
+    bottle, the basin, the post with a cap, the tire, the shade."""
+    verts, faces = _gen_lathe(center, profile, segments)
+    verts = _yaw_rot(verts, center, yaw)
+    return _finalize_mesh(name, verts, _fix_winding(verts, faces, center), base_color)
+
+
+def _gen_prism(center, polygon, length, axis):
+    """polygon: [(u, v), ...] in the plane perpendicular to `axis`
+    (counter-clockwise), relative to center; the prism runs
+    ±length/2 along the axis. Plane mapping:
+      axis Z: (u, v) → (x, y)      axis X: (u, v) → (y, z)
+      axis Y: (u, v) → (x, z)"""
+    cx, cy, cz = center
+    n = len(polygon)
+    h = length / 2.0
+    def pt(u, v, w):
+        if axis == "Z":
+            return (cx + u, cy + v, cz + w)
+        if axis == "X":
+            return (cx + w, cy + u, cz + v)
+        return (cx + u, cy + w, cz + v)
+    verts = [pt(u, v, -h) for (u, v) in polygon] + [pt(u, v, h) for (u, v) in polygon]
+    faces = [list(range(n)), list(range(n, 2 * n))]
+    for i in range(n):
+        j = (i + 1) % n
+        faces.append([i, j, n + j, n + i])
+    return verts, faces
+
+
+def make_prism(name, center, polygon, length, base_color, axis="Z", yaw=0.0):
+    """Extrude a polygon along `axis`. Any footprint (L-plans, bays,
+    hexagons), any side profile (a car body, a W-beam, a stair
+    stringer, a roof with eaves) becomes one solid. Concave polygons
+    render fine in Godot's importer (Blender triangulates n-gons);
+    keep them simple (< 24 points) and counter-clockwise."""
+    verts, faces = _gen_prism(center, polygon, length, axis.upper())
+    verts = _yaw_rot(verts, center, yaw)
+    return _finalize_mesh(name, verts, _fix_winding(verts, faces, center), base_color)
+
+
+def _gen_tube(path, radius, segments):
+    """Sweep a `segments`-gon ring along the polyline `path`."""
+    def sub(a, b): return (a[0] - b[0], a[1] - b[1], a[2] - b[2])
+    def add(a, b): return (a[0] + b[0], a[1] + b[1], a[2] + b[2])
+    def mul(a, k): return (a[0] * k, a[1] * k, a[2] * k)
+    def norm(a):
+        l = math.sqrt(a[0] ** 2 + a[1] ** 2 + a[2] ** 2) or 1.0
+        return (a[0] / l, a[1] / l, a[2] / l)
+    def cross(a, b):
+        return (a[1] * b[2] - a[2] * b[1], a[2] * b[0] - a[0] * b[2], a[0] * b[1] - a[1] * b[0])
+    verts, rings = [], []
+    n = len(path)
+    for i, p in enumerate(path):
+        t = norm(sub(path[min(i + 1, n - 1)], path[max(i - 1, 0)]))
+        up = (0.0, 0.0, 1.0) if abs(t[2]) < 0.9 else (1.0, 0.0, 0.0)
+        u = norm(cross(t, up))
+        v = cross(u, t)
+        ring = []
+        for s in range(segments):
+            th = 2.0 * math.pi * s / segments
+            off = add(mul(u, radius * math.cos(th)), mul(v, radius * math.sin(th)))
+            ring.append(len(verts))
+            verts.append(add(p, off))
+        rings.append(ring)
+    faces = []
+    for a, b in zip(rings, rings[1:]):
+        for s in range(segments):
+            ns = (s + 1) % segments
+            faces.append([a[s], a[ns], b[ns], b[s]])
+    faces.append(list(reversed(rings[0])))
+    faces.append(list(rings[-1]))
+    return verts, faces
+
+
+def make_tube(name, path, radius, base_color, segments=6):
+    """A polyline swept with a ring. Wires (build the sag into the
+    path with `catenary`), pipes, conduit, handrails, hoses, branches,
+    chains, cables — anything that is a LINE with thickness."""
+    verts, faces = _gen_tube(path, radius, segments)
+    c = (sum(p[0] for p in path) / len(path), sum(p[1] for p in path) / len(path),
+         sum(p[2] for p in path) / len(path))
+    return _finalize_mesh(name, verts, _fix_winding(verts, faces, c), base_color)
+
+
+def catenary(a, b, sag, n=8):
+    """A path from point a to point b that hangs by `sag` at the
+    middle — wires between poles, a chain across a road, a clothesline."""
+    out = []
+    for i in range(n + 1):
+        t = i / n
+        x = a[0] + (b[0] - a[0]) * t
+        y = a[1] + (b[1] - a[1]) * t
+        z = a[2] + (b[2] - a[2]) * t - sag * (1.0 - (2.0 * t - 1.0) ** 2)
+        out.append((x, y, z))
+    return out
+
+
+def _rot3(verts, center, yaw, pitch, roll):
+    cx, cy, cz = center
+    cy_, sy_ = math.cos(yaw), math.sin(yaw)
+    cp, sp = math.cos(pitch), math.sin(pitch)
+    cr, sr = math.cos(roll), math.sin(roll)
+    out = []
+    for (x, y, z) in verts:
+        dx, dy, dz = x - cx, y - cy, z - cz
+        # roll about local X, pitch about local Y, yaw about Z
+        dy, dz = dy * cr - dz * sr, dy * sr + dz * cr
+        dx, dz = dx * cp + dz * sp, -dx * sp + dz * cp
+        dx, dy = dx * cy_ - dy * sy_, dx * sy_ + dy * cy_
+        out.append((cx + dx, cy + dy, cz + dz))
+    return out
+
+
+def make_rot_box(name, center, size, base_color, yaw=0.0, pitch=0.0, roll=0.0):
+    """A box turned on any axis. The leaning fence post, the plank on
+    the ground, the roof slab slumped into the ruin, the door standing
+    open at forty degrees, the ladder against the wall."""
+    cx, cy, cz = center
+    hx, hy, hz = size[0] / 2.0, size[1] / 2.0, size[2] / 2.0
+    verts = [(cx - hx, cy - hy, cz - hz), (cx + hx, cy - hy, cz - hz),
+             (cx + hx, cy + hy, cz - hz), (cx - hx, cy + hy, cz - hz),
+             (cx - hx, cy - hy, cz + hz), (cx + hx, cy - hy, cz + hz),
+             (cx + hx, cy + hy, cz + hz), (cx - hx, cy + hy, cz + hz)]
+    faces = [[0, 1, 2, 3], [4, 5, 6, 7], [0, 1, 5, 4], [1, 2, 6, 5], [2, 3, 7, 6], [3, 0, 4, 7]]
+    verts = _rot3(verts, center, yaw, pitch, roll)
+    return _finalize_mesh(name, verts, _fix_winding(verts, faces, center), base_color)
+
+
+def rot_box_bbox(center, size, yaw=0.0, pitch=0.0, roll=0.0):
+    """Axis-aligned half-extents of a rotated box (for the audits)."""
+    cx, cy, cz = center
+    hx, hy, hz = size[0] / 2.0, size[1] / 2.0, size[2] / 2.0
+    corners = [(cx + i * hx, cy + j * hy, cz + k * hz) for i in (-1, 1) for j in (-1, 1) for k in (-1, 1)]
+    r = _rot3(corners, center, yaw, pitch, roll)
+    return (max(abs(v[0] - cx) for v in r), max(abs(v[1] - cy) for v in r), max(abs(v[2] - cz) for v in r))
+
+
+def _gen_heightfield(origin, cell, heights, skirt):
+    """heights[row][col] = z at (origin.x + col*cell, origin.y +
+    row*cell). A skirt drops the rim to origin.z - skirt so the
+    patch has no visible knife edge."""
+    ox, oy, oz = origin
+    rows, cols = len(heights), len(heights[0])
+    verts = []
+    for r in range(rows):
+        for c in range(cols):
+            verts.append((ox + c * cell, oy + r * cell, oz + heights[r][c]))
+    faces = []
+    for r in range(rows - 1):
+        for c in range(cols - 1):
+            a = r * cols + c
+            faces.append([a, a + 1, a + cols + 1, a + cols])
+    if skirt > 0.0:
+        base = len(verts)
+        rim = []
+        for c in range(cols): rim.append((0, c))
+        for r in range(1, rows): rim.append((r, cols - 1))
+        for c in range(cols - 2, -1, -1): rim.append((rows - 1, c))
+        for r in range(rows - 2, 0, -1): rim.append((r, 0))
+        for (r, c) in rim:
+            verts.append((ox + c * cell, oy + r * cell, oz - skirt))
+        m = len(rim)
+        for i in range(m):
+            (r0, c0), (r1, c1) = rim[i], rim[(i + 1) % m]
+            faces.append([r0 * cols + c0, r1 * cols + c1, base + (i + 1) % m, base + i])
+        faces.append([base + i for i in range(m - 1, -1, -1)])
+    return verts, faces
+
+
+def make_heightfield(name, origin, cell, heights, base_color, skirt=0.3):
+    """A rolling surface from a grid of heights. `origin` is the SW
+    corner (x, y, base z); `heights` is rows (y) of cols (x). Lawns
+    that are not planes, bar ditches, dunes, the shoulder that falls
+    away, the ground under a whole set."""
+    verts, faces = _gen_heightfield(origin, cell, heights, skirt)
+    rows, cols = len(heights), len(heights[0])
+    c = (origin[0] + (cols - 1) * cell / 2.0, origin[1] + (rows - 1) * cell / 2.0, origin[2])
+    return _finalize_mesh(name, verts, faces, base_color)
+
+
+def heightfield_bbox(origin, cell, heights, skirt=0.3):
+    rows, cols = len(heights), len(heights[0])
+    zs = [h for row in heights for h in row]
+    lo, hi = min(zs), max(zs)
+    cx = origin[0] + (cols - 1) * cell / 2.0
+    cy = origin[1] + (rows - 1) * cell / 2.0
+    cz = origin[2] + (hi + (lo - skirt)) / 2.0
+    return ((cx, cy, cz), ((cols - 1) * cell / 2.0, (rows - 1) * cell / 2.0, (hi - (lo - skirt)) / 2.0))
+
+
+def rolling_heights(rows, cols, amp, seed=0, base=0.0, bumps=3):
+    """A deterministic gently-rolling height grid (sum of a few
+    cosines + hashed noise) for make_heightfield."""
+    out = []
+    for r in range(rows):
+        row = []
+        for c in range(cols):
+            z = base
+            for k in range(1, bumps + 1):
+                z += amp / k * (math.cos(0.9 * k * c / max(cols - 1, 1) * math.pi * 2 + seed + k) *
+                                math.sin(0.7 * k * r / max(rows - 1, 1) * math.pi * 2 + seed * 0.7))
+            z += (_h01g(r, c, seed) - 0.5) * amp * 0.25
+            row.append(z)
+        out.append(row)
+    return out

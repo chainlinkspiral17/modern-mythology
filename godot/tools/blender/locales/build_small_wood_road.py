@@ -39,6 +39,9 @@ from _props.geometry import clear_scene, make_box, make_cyl, make_blob, make_wed
 from _props.detail import make_far_bands
 from _props.trees import make_conifer, make_broadleaf
 from _props.vehicles import make_car
+from _props.buildings import make_ranch_house, make_shed
+from _props.detail import make_wire_fence
+from _props.trees import make_bare_tree, make_shrub
 
 ASPHALT = (0.22, 0.22, 0.23, 1.0)
 GRAVEL = (0.58, 0.54, 0.46, 1.0)
@@ -92,14 +95,7 @@ def build_road():
 def build_property():
     """The fence, the gate, the drive, the pole barn, the tool shed, the
     small house with the chicken coop out back — the west side."""
-    for i in range(0, 48):
-        y = -40.0 + i * 3.0
-        if 1.5 < y < 4.5:
-            continue          # the gate gap
-        make_cyl(f"Fence_Post_{i}", (-4.8, y, 0.55), 0.06, 1.10, WOOD_GRAY, segments=6)
-    for seg, (y0, y1) in enumerate(((-40.0, 1.5), (4.5, 101.0))):
-        make_box(f"Fence_Wire_Top_{seg}", (-4.8, (y0 + y1) / 2.0, 1.02), (0.01, y1 - y0, 0.01), (0.50, 0.50, 0.48, 1.0))
-        make_box(f"Fence_Wire_Mid_{seg}", (-4.8, (y0 + y1) / 2.0, 0.62), (0.01, y1 - y0, 0.01), (0.50, 0.50, 0.48, 1.0))
+    make_wire_fence("Fence", -4.8, -40.0, 101.0, h=1.1, post_every=3.0, wires=3, wood=WOOD_GRAY, gap=(1.0, 5.0))
     make_cyl("Gate_Post_S", (-4.8, 1.2, 0.8), 0.10, 1.6, WOOD_GRAY, segments=6)
     make_cyl("Gate_Post_N", (-4.8, 4.8, 0.8), 0.10, 1.6, WOOD_GRAY, segments=6)
     make_box("Gate_Bar_Top", (-4.8, 3.0, 1.15), (0.06, 3.4, 0.08), (0.44, 0.40, 0.34, 1.0))
@@ -122,17 +118,11 @@ def build_property():
     make_box("Pole_Barn_Tractor", (bx - 2.5, by + 1.0, 1.0), (2.2, 3.6, 1.8), (0.60, 0.26, 0.12, 1.0))
     make_box("Pole_Barn_Hay", (bx + 3.5, by + 2.0, 0.85), (3.0, 3.0, 1.5), (0.72, 0.60, 0.32, 1.0))
     # the tool shed, the small house, the chicken coop out back
-    make_box("Tool_Shed", (-12.0, -12.0, 1.2), (3.0, 2.4, 2.4), WOOD_GRAY)
-    make_gable("Tool_Shed_Roof", (-12.0, -12.0, 2.4 + 0.4), (3.4, 2.8, 0.8), TIN, ridge_axis="Y")
-    make_box("Tool_Shed_Door", (-10.48, -12.0, 1.0), (0.04, 0.9, 2.0), (0.34, 0.30, 0.26, 1.0))
+    make_shed("Tool_Shed", -12.0, -12.0, front="+X", w=3.0, d=2.4, h=2.3, wall_col=WOOD_GRAY, roof_col=TIN)
     make_box("Tool_Shed_Wheelbarrow", (-10.0, -14.2, 0.35), (0.7, 1.3, 0.5), (0.50, 0.30, 0.22, 1.0))
     hx, hy = -18.0, -22.0
-    make_box("Small_House", (hx, hy, 1.5), (8.0, 7.0, 3.0), (0.80, 0.78, 0.70, 1.0))
-    make_gable("Small_House_Roof", (hx, hy, 3.0 + 1.0), (8.6, 7.6, 2.0), (0.36, 0.30, 0.26, 1.0), ridge_axis="X")
-    make_box("Small_House_Porch", (hx + 4.6, hy, 0.15), (1.2, 4.0, 0.30), WOOD_GRAY)
-    make_box("Small_House_Door", (hx + 4.02, hy, 1.05), (0.04, 0.9, 2.1), (0.40, 0.28, 0.22, 1.0))
-    for wi, wy in enumerate((-2.2, 2.2)):
-        make_box(f"Small_House_Win_{wi}", (hx + 4.02, hy + wy, 1.6), (0.04, 1.1, 1.0), (0.96, 0.86, 0.56, 1.0) if wi else (0.16, 0.18, 0.22, 1.0))
+    make_ranch_house("Small_House", hx, hy, "+X", (0.80, 0.78, 0.70, 1.0), (0.36, 0.30, 0.26, 1.0), w=8.0, d=7.0, h=3.0,
+                     garage=False, lit=(False, True, False), porch=True, shrubs=False)
     make_box("Chicken_Coop", (hx - 1.0, hy - 6.0, 0.7), (2.4, 1.8, 1.4), WOOD_RED)
     make_wedge("Chicken_Coop_Roof", (hx - 1.0, hy - 6.0, 1.4 + 0.25), (2.6, 2.0, 0.5), TIN, high_end="+Y")
     make_box("Chicken_Run_Floor", (hx + 1.5, hy - 6.0, 0.005), (2.6, 2.4, 0.01), DIRT)
@@ -160,6 +150,10 @@ def build_fallen_house():
         make_box(f"Fallen_Debris_{di}", (fx - 3.0 + di * 1.3, fy - 4.2 + (di % 2) * 0.8, 0.12), (1.2, 0.3, 0.24), WOOD_GRAY)
     make_blob("Fallen_House_Bramble", (fx - 3.0, fy - 2.6, 1.0), 1.0, (0.30, 0.38, 0.22, 1.0), noise=0.28, seed=91, squash=0.6)
     make_box("Fallen_House_Path", (9.0, fy + 1.0, 0.004), (10.0, 0.8, 0.008), DIRT)
+    # the dead snag beside the ruin, the brush that has taken the yard
+    make_bare_tree("Snag", fx + 7.5, fy + 5.5, 9.0, seed=3, limbs=6)
+    for si, (sx, sy, sh) in enumerate(((fx - 6.5, fy + 4.5, 1.1), (fx + 5.5, fy - 5.0, 0.9), (fx - 6.0, fy - 5.5, 1.3))):
+        make_shrub(f"Yard_Shrub_{si}", sx, sy, h=sh, r=sh * 0.6, col=(0.30, 0.38, 0.22, 1.0))
 
 
 def build_trees_and_fields():

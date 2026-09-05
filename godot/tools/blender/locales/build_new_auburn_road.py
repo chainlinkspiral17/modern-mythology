@@ -39,6 +39,8 @@ from _props.geometry import clear_scene, make_box, make_cyl, make_blob, make_wed
 from _props.detail import make_far_bands
 from _props.trees import make_broadleaf, make_cypress
 from _props.vehicles import make_car
+from _props.buildings import make_ranch_house
+from _props.detail import make_utility_pole, make_wire_run
 
 COL_ASPHALT = (0.30, 0.29, 0.28, 1.0); COL_LANE_LINE = (0.92, 0.86, 0.52, 1.0)
 COL_GRASS = (0.50, 0.48, 0.30, 1.0); COL_DIRT_SHOULDER = (0.58, 0.50, 0.38, 1.0)
@@ -170,11 +172,13 @@ def build_suburban_street():
     west_houses = [(-1.5, 'ranch', COL_HOUSE_TAN), (6.5, 'two_story', COL_HOUSE_GRY),
                    (14.0, 'ranch', COL_HOUSE_BRK)]
     for i, (hy, style, col) in enumerate(west_houses):
-        _make_house(f"HouseW_{i}", -12.5, hy, +1, style, col)
+        make_ranch_house(f"HouseW_{i}", -12.5, hy, "+X", col, COL_ROOF, w=7.2 if style == 'ranch' else 6.0, d=5.2 if style == 'ranch' else 5.0,
+                         garage=(style == 'ranch'), two_story=(style == 'two_story'), lit=(True, False, True) if i % 2 else (False, True, False))
     east_houses = [(1.0, 'two_story', COL_HOUSE_BRK), (9.0, 'ranch', COL_HOUSE_TAN),
                    (29.5, 'two_story', COL_HOUSE_GRY)]  # north of the gas station — at 16.5 it stood inside the store
     for i, (hy, style, col) in enumerate(east_houses):
-        _make_house(f"HouseE_{i}", 14.5, hy, -1, style, col)
+        make_ranch_house(f"HouseE_{i}", 14.5, hy, "-X", col, COL_ROOF, w=7.2 if style == 'ranch' else 6.0, d=5.2 if style == 'ranch' else 5.0,
+                         garage=(style == 'ranch'), two_story=(style == 'two_story'), lit=(False, True, True) if i % 2 else (True, False, False))
     # ── Driveways (curb-cut apron to each west house) + one parked car ──
     for i, (hy, _s, _c) in enumerate(west_houses):
         make_box(f"DriveW_{i}", (-6.8, hy, 0.032), (6.0, 2.6, 0.05), COL_DRIVEWAY)
@@ -353,8 +357,8 @@ def build_live_oak_2026_09():
     # Jesse's Civic at the south-west corner of the lot, nose north, lights off
     make_car("Civic", 7.2, 38.0, 4.3, (0.34, 0.36, 0.40, 1.0), hatch=True, along="Y", z0=0.03)
     # the phone, lit, in the gap between the dash and the windshield, driver's side
-    make_box("Phone", (6.85, 38.0 - 0.40 + 1.30 + 0.015, 0.03 + 1.08), (0.07, 0.012, 0.14), (0.08, 0.08, 0.09, 1.0))
-    make_box("Phone_Screen", (6.85, 38.0 - 0.40 + 1.30 + 0.0225, 0.03 + 1.08), (0.062, 0.001, 0.126), (0.66, 0.80, 0.96, 1.0))
+    make_box("Civic_Phone", (6.85, 38.0 - 0.40 + 1.30 + 0.015, 0.03 + 1.08), (0.07, 0.012, 0.14), (0.08, 0.08, 0.09, 1.0))
+    make_box("Civic_Phone_Screen", (6.85, 38.0 - 0.40 + 1.30 + 0.0225, 0.03 + 1.08), (0.062, 0.001, 0.126), (0.66, 0.80, 0.96, 1.0))
 
 def build_cypress_motel_2026_09():
     """THE CYPRESS (vol6 ch15, Room 7 — re-homed 2026-09-03). "A motel
@@ -462,13 +466,12 @@ def build_road():
         make_wedge(f"Ditch_{sgn:+d}", (sgn * 4.6, mid, -0.20), (1.8, span, 0.40), COL_GRASS, high_end=("+X" if sgn < 0 else "-X"))
     for ci in range(40):
         make_box(f"Crack_Seam_{ci}", (0.0 + (ci % 3 - 1) * 0.6, -600.0 + ci * 30.0 + 7.0, 0.021), (0.03, 4.0, 0.002), (0.20, 0.20, 0.20, 1.0))
-    # power lines down the east verge, the whole run
-    for i in range(-16, 17):
-        py = i * 75.0
-        make_cyl(f"Power_Pole_{i + 16}", (6.4, py, 4.5), 0.14, 9.0, (0.36, 0.28, 0.20, 1.0), segments=6)
-        make_box(f"Power_Cross_{i + 16}", (6.4, py, 8.6), (1.8, 0.10, 0.10), (0.36, 0.28, 0.20, 1.0))
-    make_box("Power_Wire_0", (5.6, 0.0, 8.55), (0.02, 2400.0, 0.02), (0.20, 0.20, 0.22, 1.0))
-    make_box("Power_Wire_1", (7.2, 0.0, 8.55), (0.02, 2400.0, 0.02), (0.20, 0.20, 0.22, 1.0))
+    # power lines down the east verge, the whole run: real poles with
+    # crossarms and insulators, wires that sag between them
+    poles = [(6.4, i * 75.0) for i in range(-16, 17)]
+    for i, (px, py) in enumerate(poles):
+        make_utility_pole(f"Power_Pole_{i}", px, py, h=9.0, transformer=(i % 5 == 2))
+    make_wire_run("Power", poles, h=9.0, sag=0.9)
 
 
 def build_texas_trees():
@@ -554,8 +557,8 @@ def build_substation():
     make_box("Payday_Loan_Sign", (bx + 5.02, by + 12.0, 3.0), (0.04, 4.0, 0.70), (0.92, 0.72, 0.20, 1.0))
     make_box("Payday_Loan_Sign_Text", (bx + 5.05, by + 12.0, 3.0), (0.01, 3.2, 0.24), (0.16, 0.16, 0.18, 1.0))
     make_box("Payday_Loan_Glass", (bx + 5.02, by + 12.0, 1.5), (0.04, 6.0, 1.6), (0.22, 0.26, 0.32, 1.0))
-    make_car("Ramirez_Car", -14.0, by + 1.0, 4.6, (0.24, 0.26, 0.30, 1.0), along="Y", z0=0.03)
-    make_car("Miller_Truck", -14.0, by - 7.0, 5.6, (0.20, 0.26, 0.38, 1.0), pickup=True, along="Y", z0=0.03)
+    make_car("Ramirez_Car", -13.5, by + 1.0, 4.6, (0.24, 0.26, 0.30, 1.0), along="Y", z0=0.03)
+    make_car("Miller_Truck", -13.5, by - 7.0, 5.6, (0.20, 0.26, 0.38, 1.0), pickup=True, along="Y", z0=0.03)
     make_cyl("Coffee_Cup_0", (bx + 5.4, by + 2.9, 0.26), 0.04, 0.12, (0.94, 0.92, 0.88, 1.0), segments=8)
     make_cyl("Coffee_Cup_1", (bx + 5.4, by + 4.1, 0.26), 0.04, 0.12, (0.94, 0.92, 0.88, 1.0), segments=8)
     make_cyl("Bypass_Signal_Pole", (5.4, 100.0, 3.2), 0.12, 6.4, (0.30, 0.30, 0.32, 1.0), segments=8)

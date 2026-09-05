@@ -1343,8 +1343,8 @@ const CAMERA_PRESETS := {
 		# the drive at the closed garage door with its lit vent, Ben's
 		# truck at the curb frame-right, the Corolla behind it, Maya's
 		# bike chained to the light post frame-left.
-		"camera_origin": Vector3(-7.5, 1.5, -1.5),
-		"camera_rotation": Vector3(0.02, -0.156, 0.0),
+		"camera_origin": Vector3(0.0, 1.5, -1.5),
+		"camera_rotation": Vector3(0.02, -0.11, 0.0),
 		"fov": 58.0,
 		"suppress_input": true,
 	},
