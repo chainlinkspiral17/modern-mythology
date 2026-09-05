@@ -192,7 +192,7 @@ def install_stubs():
                       tuple(float(c) for c in center), (r, r, r)))
         return _obj_stub(name)
 
-    def _rec_lathe(name, center, profile, color=None, segments=12, yaw=0.0, *a, **k):
+    def _rec_lathe(name, center, profile, color=None, segments=12, yaw=0.0, loop=False, *a, **k):
         r = max(abs(float(p[0])) for p in profile)
         zs = [float(p[1]) for p in profile]
         cx, cy, cz = (float(c) for c in center)
@@ -303,7 +303,7 @@ def install_stubs():
     # objects before this line was widened (2026-08-12), which also
     # means their clipping went unchecked.
     for real_mod in ("detail", "trees", "objects", "drones",
-                     "creatures", "vehicles", "buildings", "structure", "shelving", "decor",
+                     "creatures", "vehicles", "buildings", "furniture", "structure", "shelving", "decor",
                      "food_service", "cleaning", "coolers_drinks",
                      "signage", "store_fixtures", "safety"):
         mpath = os.path.join(BLENDER, "_props", real_mod + ".py")

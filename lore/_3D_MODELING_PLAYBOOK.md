@@ -399,6 +399,58 @@ Louisville's hurricane-deck proportions"). Don't guess at numbers.
 
 ## Recent lessons
 
+### 2026-09-05 · DETAIL DRAFT 1 — the primitive layer was the ceiling
+
+User: "3d scenes are still feeling real primitive. basic cubes and
+rectangles when the objects and environments need far more detail
+and complexity." Diagnosis: `_props/geometry.py` offered a box, a
+cylinder, a chamfer box, a wedge, a gable, a taper and a blob. Every
+locale — model chapters included — is a pile of those. The diner is
+910 calls of the same two shapes; it reads because of DENSITY, not
+because anything in it has a silhouette.
+
+- **Five primitives now exist. Use them before reaching for a box.**
+  `make_lathe(name, center, [(r, z)...])` for anything round in
+  plan (bottles, basins, posts with caps, insulators, balusters,
+  shrubs, tires); `make_prism(name, center, polygon, length, axis=)`
+  for anything with a PROFILE (a car body from the side, a W-beam,
+  a roof with eaves, an L-plan, a stair stringer) — the profile
+  plane is perpendicular to the axis (Z→xy, X→yz, Y→xz);
+  `make_tube(name, path, r)` + `catenary(a, b, sag)` for lines with
+  thickness (wires that sag, pipes, rails, limbs, chains, hoses);
+  `make_rot_box(..., yaw, pitch, roll)` for anything not square to
+  the world (leaning posts, slumped planks, a door standing open);
+  `make_heightfield(name, origin, cell, heights)` + `rolling_heights`
+  for ground that is not a plane.
+- **A primitive that is not in `_RECORDERS` does not exist.** The
+  audit recorder maps helper names to bbox recorders; an
+  unregistered `make_*` resolves to a no-op stub and the object is
+  invisible to overlap, aim, vantage and obstruction. Same for a new
+  `_props` module: it must be on the recorder's composite whitelist
+  (vehicles and buildings were added this pass). Register first,
+  model second.
+- **Composites are where the detail multiplies.** One car helper
+  rebuilt (`vehicles.make_car`: profile body, lathed wheels, seams,
+  handles, mirrors, lights, grille, wipers) upgraded eleven vehicles
+  across five sets in one commit. `buildings.make_ranch_house`
+  (gable prism with eaves and shingle courses, siding courses,
+  trimmed windows with sills and shutters, paneled door, turned
+  porch posts, chimney, gutters, downspouts, garage) upgraded
+  fourteen houses. When a class of object appears in three locales,
+  it belongs in `_props`, and the pass is made there.
+- **Same-assembly parts are exempt from the overlap gate; name them
+  so.** A prism body's bbox is the whole car, so a phone "on the
+  dash" clips unless it shares the car's prefix (`Civic_Phone`).
+  The grammar forgives parts that share a name prefix; a detail that
+  lives inside an assembly's bbox takes the assembly's prefix.
+- **Detail draft 2 targets** (recorded in the roadmap): the cab's
+  interior (lathe the wheel as a loop, the cup, the knobs; chamfer
+  the seats and dash), a furniture kit (chair with turned legs,
+  table with apron, lamp with shade) for the nine new interiors, the
+  Meadowlark water tower and streetlamps lathed, road bends as
+  yawed prisms, ground as heightfields under the road sets, and a
+  chamfer pass on every interior's furniture boxes.
+
 ### 2026-08-12 · SHARED-HELPER AXIS CONVENTIONS — twelve counters and six windows were built rotated 90°
 
 - **`make_counter(prefix, anchor, length=, depth=)` puts `depth` on

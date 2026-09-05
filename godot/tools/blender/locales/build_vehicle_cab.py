@@ -50,7 +50,7 @@ import os, sys, math
 _BT = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)), ".."))
 if _BT not in sys.path: sys.path.insert(0, _BT)
 from _props import palette as P
-from _props.geometry import clear_scene, make_box, make_cyl, make_blob, make_wedge, export_glb
+from _props.geometry import clear_scene, make_box, make_cyl, make_blob, make_wedge, make_lathe, make_chamfer_box, export_glb
 from _props.detail import make_far_bands
 
 GRAVEL = (0.56, 0.52, 0.44, 1.0)
@@ -180,7 +180,7 @@ def build_dash():
     """Dash face + top, the cluster, the radio head, the vents, the
     phone in its dashboard cradle (BT presses play), the wheel."""
     make_box("Dash_Face", (0.0, 1.00, 0.77), (1.80, 0.10, 0.62), DASH)
-    make_box("Dash_Top", (0.0, 1.25, 1.13), (1.80, 0.60, 0.10), DASH_LT)
+    make_chamfer_box("Dash_Top", (0.0, 1.25, 1.13), (1.80, 0.60, 0.10), DASH_LT, chamfer=0.04)
     make_box("Dash_Defrost_Slot", (0.0, 1.45, 1.181), (1.30, 0.06, 0.002), RUBBER)
     # cluster behind the wheel
     make_box("Gauge_Cluster", (-0.46, 0.94, 0.98), (0.36, 0.02, 0.16), (0.10, 0.10, 0.11, 1.0))
@@ -204,10 +204,21 @@ def build_dash():
     make_box("Phone_Play_Bar", (0.22, 1.0508, 1.21), (0.05, 0.0005, 0.012), (0.20, 0.24, 0.30, 1.0))
     # steering wheel, column, ignition key
     make_cyl("Steering_Column", (-0.46, 0.875, 0.98), 0.03, 0.15, DASH, axis="Y", segments=8)
-    make_cyl("Steering_Wheel", (-0.46, 0.78, 0.98), 0.19, 0.03, (0.16, 0.15, 0.14, 1.0), axis="Y", segments=18)
-    make_cyl("Steering_Hub", (-0.46, 0.79, 0.98), 0.07, 0.05, DASH, axis="Y", segments=10)
+    # the wheel is a torus (a lathe loop) — it lies in the XZ plane, so it
+    # is built as a stack of thin rings around Y: a ring section revolved
+    # about the column axis would need a Y-axis lathe; the loop lathe
+    # revolves about Z, so we build the rim as a loop and tip it by
+    # building it in the vertical: a Y-axis torus = a loop lathe rotated.
+    # Simplest faithful stand-in: the rim as sixteen short chamfered
+    # segments on the circle, which reads as a round grip in the hand.
+    import math as _m
+    for si in range(16):
+        a = si * 2.0 * _m.pi / 16.0
+        make_chamfer_box(f"Steering_Rim_{si}", (-0.46 + 0.19 * _m.cos(a), 0.78, 0.98 + 0.19 * _m.sin(a)), (0.075, 0.032, 0.032), (0.16, 0.15, 0.14, 1.0), chamfer=0.01)
+    make_lathe("Steering_Hub", (-0.46, 0.78, 0.98), [(0.0, 0.0), (0.07, 0.0), (0.075, 0.02), (0.06, 0.05), (0.0, 0.055)], DASH, segments=12)
     make_box("Steering_Spoke_L", (-0.56, 0.78, 0.98), (0.10, 0.02, 0.03), DASH)
     make_box("Steering_Spoke_R", (-0.36, 0.78, 0.98), (0.10, 0.02, 0.03), DASH)
+    make_box("Steering_Spoke_D", (-0.46, 0.78, 0.885), (0.03, 0.02, 0.10), DASH)
     make_box("Ignition_Key", (-0.34, 0.86, 0.94), (0.01, 0.05, 0.02), CHROME)
     make_box("Ignition_Fob", (-0.34, 0.83, 0.92), (0.02, 0.01, 0.03), (0.30, 0.28, 0.26, 1.0))
     # pedals, floor mats
@@ -224,22 +235,22 @@ def build_seats():
     fronts — the console is where the El Rancho box opens."""
     for sgn, nm in ((-1, "Driver"), (1, "Passenger")):
         x = sgn * 0.46
-        make_box(f"Seat_{nm}_Base", (x, 0.15, 0.67), (0.62, 0.55, 0.42), SEAT)
-        make_box(f"Seat_{nm}_Back", (x, -0.18, 1.23), (0.62, 0.12, 0.70), SEAT)
+        make_chamfer_box(f"Seat_{nm}_Base", (x, 0.15, 0.67), (0.62, 0.55, 0.42), SEAT, chamfer=0.05)
+        make_chamfer_box(f"Seat_{nm}_Back", (x, -0.18, 1.23), (0.62, 0.12, 0.70), SEAT, chamfer=0.04)
         make_box(f"Seat_{nm}_Bolster", (x, 0.15, 0.905), (0.62, 0.55, 0.05), SEAT_DK)
         make_box(f"Seat_{nm}_Headrest", (x, -0.18, 1.645), (0.28, 0.10, 0.13), SEAT_DK)
         make_cyl(f"Seat_{nm}_Headrest_Post", (x, -0.18, 1.585), 0.008, 0.01, CHROME, segments=6)
         make_box(f"Seatbelt_Buckle_{nm}", (x - sgn * 0.26, 0.05, 0.955), (0.04, 0.10, 0.05), (0.14, 0.14, 0.15, 1.0))
-    make_box("Rear_Bench_Base", (0.0, -0.90, 0.66), (1.70, 0.50, 0.40), SEAT)
-    make_box("Rear_Bench_Back", (0.0, -1.21, 1.21), (1.70, 0.12, 0.70), SEAT)
+    make_chamfer_box("Rear_Bench_Base", (0.0, -0.90, 0.66), (1.70, 0.50, 0.40), SEAT, chamfer=0.05)
+    make_chamfer_box("Rear_Bench_Back", (0.0, -1.21, 1.21), (1.70, 0.12, 0.70), SEAT, chamfer=0.04)
     make_box("Rear_Bench_Bolster", (0.0, -0.90, 0.885), (1.70, 0.50, 0.05), SEAT_DK)
     # console
-    make_box("Console", (0.0, 0.15, 0.61), (0.28, 0.70, 0.30), DASH)
+    make_chamfer_box("Console", (0.0, 0.15, 0.61), (0.28, 0.70, 0.30), DASH, chamfer=0.03)
     make_box("Console_Lid", (0.0, -0.10, 0.775), (0.26, 0.20, 0.03), DASH_LT)
     make_cyl("Cupholder_Ring", (0.0, 0.42, 0.765), 0.05, 0.01, DASH_LT, segments=12)
     make_cyl("Shifter_Boot", (0.0, 0.05, 0.775), 0.035, 0.03, RUBBER, segments=8)
     make_cyl("Shifter_Stalk", (0.0, 0.05, 0.86), 0.012, 0.14, CHROME, segments=6)
-    make_cyl("Shifter_Knob", (0.0, 0.05, 0.945), 0.03, 0.03, (0.16, 0.15, 0.14, 1.0), segments=10)
+    make_lathe("Shifter_Knob", (0.0, 0.05, 0.93), [(0.0, 0.0), (0.02, 0.0), (0.032, 0.02), (0.03, 0.045), (0.0, 0.055)], (0.16, 0.15, 0.14, 1.0), segments=10)
 
 
 def build_el_rancho():
@@ -266,8 +277,8 @@ def build_el_rancho():
     make_cyl("Guac_Cup", (bx + 0.075, by + 0.04, bz + 0.023), 0.02, 0.03, (0.94, 0.94, 0.92, 1.0), segments=10)
     make_cyl("Guac_Cup_Fill", (bx + 0.075, by + 0.04, bz + 0.0395), 0.018, 0.003, (0.46, 0.60, 0.26, 1.0), segments=10)
     # the fountain cup in the holder
-    make_cyl("Cup", (0.0, 0.42, 0.855), 0.042, 0.17, (0.90, 0.30, 0.22, 1.0), segments=12)
-    make_cyl("Cup_Lid", (0.0, 0.42, 0.945), 0.045, 0.012, (0.92, 0.92, 0.90, 1.0), segments=12)
+    make_lathe("Cup", (0.0, 0.42, 0.77), [(0.0, 0.0), (0.034, 0.0), (0.036, 0.01), (0.044, 0.16), (0.045, 0.17), (0.0, 0.17)], (0.90, 0.30, 0.22, 1.0), segments=14)
+    make_lathe("Cup_Lid", (0.0, 0.42, 0.94), [(0.0, 0.0), (0.047, 0.0), (0.047, 0.006), (0.036, 0.012), (0.014, 0.02), (0.0, 0.02)], (0.92, 0.92, 0.90, 1.0), segments=14)
     make_cyl("Cup_Straw", (0.012, 0.415, 1.02), 0.003, 0.14, (0.86, 0.86, 0.84, 1.0), segments=6)
     # the dash accumulates: foil, three packets
     make_blob("Foil_Ball", (-0.20, 1.20, 1.21), 0.03, FOIL, noise=0.3, seed=3, squash=0.9)

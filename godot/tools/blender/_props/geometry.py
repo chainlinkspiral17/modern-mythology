@@ -421,9 +421,12 @@ def make_blob(name, center, radius, base_color, noise=0.22, seed=0,
 # invisible to every gate.
 # ════════════════════════════════════════════════════════════════
 
-def _gen_lathe(center, profile, segments):
+def _gen_lathe(center, profile, segments, loop=False):
     """profile: [(radius, z_offset), ...] bottom→top, z relative to
-    center z. A zero radius at an end closes it to a point."""
+    center z. A zero radius at an end closes it to a point. loop=True
+    joins the last ring back to the first (a torus — a steering
+    wheel, a footring, a tire from a section profile) and skips the
+    caps."""
     cx, cy, cz = center
     rings = []
     verts = []
@@ -452,6 +455,12 @@ def _gen_lathe(center, profile, segments):
             for s in range(segments):
                 ns = (s + 1) % segments
                 faces.append([a[s], a[ns], b[ns], b[s]])
+    if loop and len(rings[0]) > 1 and len(rings[-1]) > 1:
+        a, b = rings[-1], rings[0]
+        for s in range(segments):
+            ns = (s + 1) % segments
+            faces.append([a[s], a[ns], b[ns], b[s]])
+        return verts, faces
     # caps where the profile starts / ends open
     if len(rings[0]) > 1:
         faces.append(list(reversed(rings[0])))
@@ -460,11 +469,12 @@ def _gen_lathe(center, profile, segments):
     return verts, faces
 
 
-def make_lathe(name, center, profile, base_color, segments=12, yaw=0.0):
+def make_lathe(name, center, profile, base_color, segments=12, yaw=0.0, loop=False):
     """Revolve `profile` ([(radius, z_off), ...] bottom→top, z_off
     relative to center) about the vertical through `center`. The
-    bottle, the basin, the post with a cap, the tire, the shade."""
-    verts, faces = _gen_lathe(center, profile, segments)
+    bottle, the basin, the post with a cap, the tire, the shade.
+    loop=True makes a torus from a closed section profile."""
+    verts, faces = _gen_lathe(center, profile, segments, loop)
     verts = _yaw_rot(verts, center, yaw)
     return _finalize_mesh(name, verts, _fix_winding(verts, faces, center), base_color)
 

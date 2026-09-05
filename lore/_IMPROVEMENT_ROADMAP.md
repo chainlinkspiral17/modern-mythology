@@ -249,7 +249,30 @@ BFS over all 17 zones is clean). NEXT: the Deck has not yet seen any
 of the nine new locales or the four road sets — build_scenes.sh
 then look, before any more props; the exterior template's Sun; a
 ceiling test for the geometry audit's exterior rule; the road sets'
-draft 2 (a bend or a crest each — every road is still straight). THE PROGRAM'S END STATE: every remaining
+draft 2 (a bend or a crest each — every road is still straight).
+
+**2026-09-05 · DETAIL DRAFT 1 — "basic cubes and rectangles."** The
+primitive layer was the ceiling: box, cylinder, blob. Five real
+primitives (lathe, prism, tube + catenary, rotated box,
+heightfield), each registered in the audit recorder; the shared
+composites rebuilt on them — make_car draft 2 (profile body, lathed
+wheels, seams, lights, mirrors, wipers), NEW buildings.make_ranch_
+house / make_shed (gable prism with eaves and shingle courses,
+siding, trimmed windows with shutters, paneled door, turned porch
+posts, chimney, gutters, downspouts, garage), the roadside kit
+(utility poles with insulators and sagging wires, W-beam guardrail,
+wire fence with a gate gap, ditch heightfield), bare trees and
+shrubs. Applied to new_auburn_road, small_wood_road, highway_101,
+meadowlark_circle (all fourteen houses), the Kestrel fountain, the
+lake pilings. DETAIL DRAFT 2 TARGETS: the cab interior (wheel as a
+lathe loop, cup, knobs, chamfered seats and dash); a furniture kit
+(chair with turned legs, table with apron and stretchers, lamp with
+shade, stool) for the nine new interiors; Meadowlark's water tower
+and streetlamps lathed; road bends as yawed prisms and ground as
+heightfields under the road sets; a chamfer pass over every
+interior's furniture boxes; then the model chapters themselves (the
+diner's 910 boxes) through the same kit. The Deck has still seen
+NONE of it — build, look, then continue. THE PROGRAM'S END STATE: every remaining
 blind cue is deliberate — the two road aggregates (re-homing
 decision), four cast closeups without char ids, three beats that
 happen elsewhere or on a person. NEXT:

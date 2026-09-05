@@ -49,6 +49,7 @@ _BT = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)), 
 if _BT not in sys.path: sys.path.insert(0, _BT)
 from _props import palette as P
 from _props.geometry import clear_scene, make_box, make_cyl, export_glb
+from _props.furniture import make_chair, make_table, make_lamp
 
 OFFWHITE = (0.82, 0.80, 0.74, 1.0)
 OFFWHITE_DK = (0.72, 0.70, 0.64, 1.0)
@@ -218,10 +219,8 @@ def build_basement():
         make_cyl(f"Cable_Drop_{ci}", (14.2 + (ci - 1) * 0.08, 12.0 - ci * 4.4, B_FLOOR + 2.035), 0.012, 0.07, (0.20, 0.30, 0.60, 1.0), segments=6)
     # the desk on the right (west) wall, the wooden chair with its back to the door
     dx, dy = 9.5, -0.5
-    make_box("Desk_Top", (dx, dy, B_FLOOR + 0.74), (0.80, 1.60, 0.04), WOOD)
-    for li, (lx, ly) in enumerate(((dx - 0.36, dy - 0.76), (dx + 0.36, dy - 0.76), (dx - 0.36, dy + 0.76), (dx + 0.36, dy + 0.76))):
-        make_box(f"Desk_Leg_{li}", (lx, ly, B_FLOOR + 0.36), (0.05, 0.05, 0.72), WOOD_DK)
-    make_box("Desk_Apron", (dx, dy, B_FLOOR + 0.66), (0.66, 1.44, 0.10), WOOD_DK)
+    make_table("Desk", dx, dy, w=0.80, d=1.60, h=0.74, wood=WOOD, z0=B_FLOOR)
+    make_lamp("Desk_Lamp", dx - 0.25, dy + 0.62, base_z=B_FLOOR + 0.74, h=0.5)
     make_box("Notebook", (dx + 0.05, dy + 0.20, B_FLOOR + 0.766), (0.24, 0.18, 0.012), (0.30, 0.44, 0.58, 1.0))
     make_box("Notebook_Page", (dx + 0.05, dy + 0.20, B_FLOOR + 0.7735), (0.22, 0.16, 0.003), PAPER)
     make_box("Notebook_Handwriting", (dx + 0.05, dy + 0.21, B_FLOOR + 0.7755), (0.14, 0.10, 0.001), (0.36, 0.36, 0.42, 1.0))
@@ -232,12 +231,9 @@ def build_basement():
     make_box("Desk_Cup", (dx - 0.25, dy - 0.55, B_FLOOR + 0.80), (0.08, 0.08, 0.08), (0.80, 0.78, 0.72, 1.0))
     # the wooden chair, east of the desk, its back to the room
     chx, chy = dx + 0.85, dy
-    make_box("Chair_Seat", (chx, chy, B_FLOOR + 0.45), (0.42, 0.42, 0.04), WOOD)
-    make_box("Chair_Back", (chx + 0.19, chy, B_FLOOR + 0.80), (0.04, 0.42, 0.66), WOOD)
-    for li, (lx, ly) in enumerate(((chx - 0.18, chy - 0.18), (chx + 0.18, chy - 0.18), (chx - 0.18, chy + 0.18), (chx + 0.18, chy + 0.18))):
-        make_box(f"Chair_Leg_{li}", (lx, ly, B_FLOOR + 0.215), (0.04, 0.04, 0.43), WOOD_DK)
+    make_chair("Chair", chx, chy, yaw=1.5708, wood=WOOD, z0=B_FLOOR)   # back to the room, facing the desk
     # a boy has been here a number of hours: a second cup, a jacket over the chair back
-    make_box("Jacket_On_Chair", (chx + 0.24, chy, B_FLOOR + 0.95), (0.06, 0.40, 0.30), (0.30, 0.34, 0.44, 1.0))
+    make_box("Chair_Jacket", (chx + 0.26, chy, B_FLOOR + 0.95), (0.06, 0.40, 0.30), (0.30, 0.34, 0.44, 1.0))
 
 
 def main():
