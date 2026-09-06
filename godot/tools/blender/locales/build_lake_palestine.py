@@ -41,6 +41,7 @@ if _BT not in sys.path: sys.path.insert(0, _BT)
 from _props import palette as P
 from _props.geometry import clear_scene, make_box, make_cyl, make_blob, make_wedge, make_taper_cyl, make_lathe, export_glb
 from _props.detail import make_far_bands
+from _props.vehicles import make_car
 
 ASPHALT = (0.32, 0.32, 0.33, 1.0)
 CONCRETE = (0.62, 0.61, 0.58, 1.0)
@@ -95,27 +96,16 @@ def build_ground_and_lot():
 def build_truck():
     """Chief Miller's truck, nose to the water, the cooler in the bed."""
     tx, ty = -3.5, 10.0
-    make_box("Truck_Body", (tx, ty, 0.70), (1.86, 5.60, 0.60), TRUCK_BLUE)
-    make_box("Truck_Cab", (tx, ty + 0.2, 1.35), (1.86, 1.90, 0.70), TRUCK_BLUE)
-    make_box("Truck_Windshield", (tx, ty - 0.76, 1.35), (1.70, 0.02, 0.50), GLASS)
-    make_box("Truck_Rear_Glass", (tx, ty + 1.16, 1.35), (1.70, 0.02, 0.50), GLASS)
-    for sgn, nm in ((1, "R"), (-1, "L")):
-        make_box(f"Truck_Side_Glass_{nm}", (tx + sgn * 0.94, ty + 0.2, 1.35), (0.02, 1.60, 0.50), GLASS)
-        make_box(f"Truck_Bed_Side_{nm}", (tx + sgn * 0.9175, ty + 2.0, 1.225), (0.035, 1.60, 0.45), TRUCK_BLUE)
-        make_box(f"Truck_Mirror_{nm}", (tx + sgn * 1.10, ty - 0.5, 1.30), (0.22, 0.12, 0.16), TRUCK_BLUE_DK)
-    make_box("Truck_Tailgate", (tx, ty + 2.775, 1.225), (1.80, 0.05, 0.45), TRUCK_BLUE)
-    make_box("Truck_Front_Bumper", (tx, ty - 2.87, 0.50), (2.00, 0.14, 0.18), STEEL)
-    make_box("Truck_Grille", (tx, ty - 2.83, 0.85), (1.60, 0.06, 0.30), (0.22, 0.22, 0.24, 1.0))
-    for sgn, nm in ((1, "R"), (-1, "L")):
-        make_box(f"Truck_Headlight_{nm}", (tx + sgn * 0.62, ty - 2.875, 0.85), (0.30, 0.03, 0.18), (0.88, 0.88, 0.80, 1.0))
-    make_box("Truck_Rear_Bumper", (tx, ty + 2.87, 0.50), (2.00, 0.14, 0.18), STEEL)
-    make_box("Truck_Light_Bar", (tx, ty + 0.2, 1.75), (1.20, 0.30, 0.10), (0.20, 0.20, 0.22, 1.0))
-    for wi, (wx, wy) in enumerate(((tx - 1.07, ty - 1.8), (tx + 1.07, ty - 1.8), (tx - 1.07, ty + 2.0), (tx + 1.07, ty + 2.0))):
-        make_cyl(f"Truck_Wheel_{wi}", (wx, wy, 0.40), 0.40, 0.26, RUBBER, axis="X", segments=12)
+    # nose to the water (-Y): make_car's nose is +axis, so the truck is
+    # laid along Y and the frame flipped by placing it as a -Y facer:
+    # we build it along "Y" and let the cooler sit in the bed at the
+    # +Y (tail) end, which is the end away from the water.
+    make_car("Truck", tx, ty, 5.6, TRUCK_BLUE, pickup=True, along="Y", z0=0.0)
+    make_box("Truck_Light_Bar", (tx, ty - 0.6, 1.76), (1.20, 0.30, 0.10), (0.20, 0.20, 0.22, 1.0))
     # the cooler in the bed, a tackle box beside it, the sandwiches inside
-    make_box("Cooler_Body", (tx + 0.30, ty + 2.0, 1.20), (0.55, 0.38, 0.40), (0.86, 0.86, 0.84, 1.0))
-    make_box("Cooler_Lid", (tx + 0.30, ty + 2.0, 1.425), (0.57, 0.40, 0.05), (0.70, 0.20, 0.16, 1.0))
-    make_box("Tackle_Box", (tx - 0.40, ty + 2.2, 1.12), (0.40, 0.22, 0.24), (0.30, 0.34, 0.30, 1.0))
+    make_box("Truck_Cooler_Body", (tx + 0.30, ty - 1.9, 1.20), (0.55, 0.38, 0.40), (0.86, 0.86, 0.84, 1.0))
+    make_box("Truck_Cooler_Lid", (tx + 0.30, ty - 1.9, 1.425), (0.57, 0.40, 0.05), (0.70, 0.20, 0.16, 1.0))
+    make_box("Truck_Tackle_Box", (tx - 0.40, ty - 2.1, 1.12), (0.40, 0.22, 0.24), (0.30, 0.34, 0.30, 1.0))
 
 
 def build_dock():

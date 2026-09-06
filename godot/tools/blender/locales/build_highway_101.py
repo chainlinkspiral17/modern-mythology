@@ -30,7 +30,7 @@ import os, sys, math
 _BT = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)), ".."))
 if _BT not in sys.path: sys.path.insert(0, _BT)
 from _props import palette as P
-from _props.geometry import clear_scene, make_box, make_cyl, make_blob, make_wedge, export_glb
+from _props.geometry import clear_scene, make_box, make_cyl, make_blob, make_wedge, make_tube, make_lathe, catenary, export_glb
 from _props.detail import make_far_bands
 from _props.trees import make_conifer
 from _props.vehicles import make_car
@@ -115,10 +115,10 @@ def build_headland_and_turn():
     # the turn: a gravel spur west off the shoulder at y 160, chained
     make_box("Old_Yachats_Spur", (-9.0, 160.0, 0.006), (9.0, 4.0, 0.012), GRAVEL)
     make_box("Old_Yachats_Spur_Far", (-20.0, 163.0, 0.006), (14.0, 4.0, 0.012), GRAVEL)
-    make_cyl("Chain_Post_S", (-6.6, 157.6, 0.5), 0.06, 1.0, (0.36, 0.36, 0.38, 1.0), segments=6)
-    make_cyl("Chain_Post_N", (-6.6, 162.4, 0.5), 0.06, 1.0, (0.36, 0.36, 0.38, 1.0), segments=6)
-    make_box("Chain", (-6.6, 160.0, 0.62), (0.03, 4.6, 0.03), (0.30, 0.30, 0.32, 1.0))
-    make_box("Chain_Sag", (-6.6, 160.0, 0.50), (0.03, 2.0, 0.03), (0.30, 0.30, 0.32, 1.0))
+    for nm, py in (("S", 157.6), ("N", 162.4)):
+        make_lathe(f"Chain_Post_{nm}", (-6.6, py, 0.0), [(0.07, 0.0), (0.06, 0.9), (0.08, 0.94), (0.08, 1.0), (0.0, 1.02)], (0.36, 0.36, 0.38, 1.0), segments=8)
+    make_tube("Chain", catenary((-6.6, 157.6, 0.92), (-6.6, 162.4, 0.92), 0.38, n=10), 0.022, (0.30, 0.30, 0.32, 1.0), segments=6)
+    make_box("Chain_Sign", (-6.6, 160.0, 0.66), (0.02, 0.40, 0.26), (0.92, 0.88, 0.30, 1.0))
     make_cyl("Road_Marker_Post", (-5.0, 156.5, 1.0), 0.04, 2.0, (0.40, 0.42, 0.40, 1.0), segments=6)
     make_box("Road_Marker", (-5.0, 156.5, 2.2), (0.04, 0.90, 0.30), (0.16, 0.42, 0.24, 1.0))
     make_box("Road_Marker_Text", (-4.97, 156.5, 2.2), (0.005, 0.76, 0.10), (0.94, 0.94, 0.90, 1.0))

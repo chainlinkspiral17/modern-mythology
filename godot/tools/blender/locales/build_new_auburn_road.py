@@ -35,7 +35,7 @@ _BT = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)), 
 if _BT not in sys.path: sys.path.insert(0, _BT)
 import math
 from _props import palette as P
-from _props.geometry import clear_scene, make_box, make_cyl, make_blob, make_wedge, export_glb
+from _props.geometry import clear_scene, make_box, make_cyl, make_blob, make_wedge, make_tube, make_lathe, export_glb
 from _props.detail import make_far_bands
 from _props.trees import make_broadleaf, make_cypress
 from _props.vehicles import make_car
@@ -292,6 +292,12 @@ def build_foxhole_strip_mall_2026_08():
     # The mall block: one long bar, back face toward the road (west).
     make_box("StripMall_Block", (mx, my, 2.1), (10.0, 22.0, 4.2), stucco)
     make_box("StripMall_Parapet", (mx, my, 4.35), (10.4, 22.4, 0.35), roofline)
+    make_box("StripMall_Parapet_Cap", (mx, my, 4.56), (10.6, 22.6, 0.06), (0.30, 0.28, 0.24, 1.0))
+    make_box("StripMall_Cornice", (mx - 5.08, my, 4.05), (0.12, 22.0, 0.20), (0.62, 0.58, 0.50, 1.0))
+    for di, dy in enumerate((-10.5, 10.5)):
+        make_tube(f"StripMall_Downspout_{di}", [(mx - 5.06, my + dy, 4.2), (mx - 5.20, my + dy, 4.0), (mx - 5.20, my + dy, 0.25)], 0.05, (0.66, 0.64, 0.58, 1.0), segments=6)
+    for vi in range(4):
+        make_lathe(f"StripMall_Vent_{vi}", (mx - 3.0 + vi * 2.0, my - 8.0 + vi * 5.0, 4.2), [(0.0, 0.0), (0.30, 0.0), (0.30, 0.5), (0.36, 0.55), (0.36, 0.62), (0.0, 0.62)], (0.60, 0.60, 0.58, 1.0), segments=8)
     # Service lot between road and mall back.
     make_box("StripMall_Lot", (10.0, my, 0.015), (7.6, 22.0, 0.03), (0.24, 0.24, 0.25, 1.0))
     for si, sy in enumerate(range(-8, 9, 4)):

@@ -47,11 +47,34 @@ def _finalize_mesh(name, verts, faces, base_color):
     return obj
 
 
-def make_box(name, center, size, base_color, open_faces=None):
+# DETAIL DRAFT 3 (2026-09-06): the de-blocking policy. A zero-radius
+# edge reads as CAD; a cut edge catches a highlight and reads as a made
+# thing. Every PROP-SIZED box — all three dimensions between
+# AUTO_CHAMFER_MIN and AUTO_CHAMFER_MAX, no dimension thinner than
+# AUTO_CHAMFER_PLATE (decals, glass, trim stay sharp), no open faces —
+# is built as a chamfer box with a cut of 2% of its smallest side.
+# Walls, floors, roads, slabs (> MAX) and plates (< PLATE) are
+# untouched, so the model chapters' rooms keep their planes. The audit
+# recorder sees the same bounding box either way. Set AUTO_CHAMFER =
+# False in a builder to opt out; pass chamfer=0.0 to opt out per box.
+AUTO_CHAMFER = True
+AUTO_CHAMFER_MIN = 0.05
+AUTO_CHAMFER_MAX = 3.0
+AUTO_CHAMFER_PLATE = 0.025
+
+
+def make_box(name, center, size, base_color, open_faces=None, chamfer=None):
     """6-face axis-aligned box centered at `center` with `size`
     (full XYZ dimensions). open_faces is an optional set of face
-    tags ('+X','-X','+Y','-Y','+Z','-Z') to omit for inset hollows."""
+    tags ('+X','-X','+Y','-Y','+Z','-Z') to omit for inset hollows.
+    Prop-sized boxes are auto-chamfered (see AUTO_CHAMFER above)."""
     open_faces = open_faces or set()
+    if not open_faces and chamfer != 0.0:
+        sx_, sy_, sz_ = (abs(float(v)) for v in size)
+        lo, hi = min(sx_, sy_, sz_), max(sx_, sy_, sz_)
+        if chamfer is not None or (AUTO_CHAMFER and lo >= AUTO_CHAMFER_PLATE and hi <= AUTO_CHAMFER_MAX and lo >= AUTO_CHAMFER_MIN * 0.5):
+            c = chamfer if chamfer is not None else max(0.004, min(0.03, lo * 0.02 + 0.002))
+            return make_chamfer_box(name, center, size, base_color, chamfer=c)
     cx, cy, cz = center
     sx, sy, sz = size
     hx, hy, hz = sx / 2.0, sy / 2.0, sz / 2.0

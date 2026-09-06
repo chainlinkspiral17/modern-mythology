@@ -48,7 +48,7 @@ import os, sys, math
 _BT = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)), ".."))
 if _BT not in sys.path: sys.path.insert(0, _BT)
 from _props import palette as P
-from _props.geometry import clear_scene, make_box, make_cyl, make_blob, make_wedge, make_gable, make_taper_cyl, make_lathe, export_glb
+from _props.geometry import clear_scene, make_box, make_cyl, make_blob, make_wedge, make_gable, make_taper_cyl, make_lathe, make_rot_box, export_glb
 from _props.detail import make_far_bands
 
 DIRT = (0.42, 0.36, 0.28, 1.0)
@@ -133,6 +133,12 @@ def build_stations(levels):
     make_box("Hut_Door_Lintel", (hx + 1.45, hy, z + 1.95), (0.30, 0.60, 0.50), STONE_DK)
     make_box("Hut_Door_Open", (hx + 1.75, hy + 0.55, z + 0.85), (0.06, 0.70, 1.70), WOOD)
     make_gable("Hut_Roof", (hx, hy, z + 2.2 + 0.45), (3.4, 3.6, 0.9), STONE_DK, ridge_axis="Y")
+    # slate slabs laid up both slopes (the roof reads as stone, not a tent)
+    for sgn in (-1, 1):
+        for ci in range(3):
+            t = 0.2 + ci * 0.3
+            make_rot_box(f"Hut_Slate_{sgn:+d}_{ci}", (hx + sgn * (1.7 - t * 1.7), hy + (ci % 2) * 0.3 - 0.15, z + 2.2 + t * 0.9 + 0.05),
+                         (0.55, 1.1, 0.05), (0.42, 0.42, 0.44, 1.0) if ci % 2 else (0.38, 0.38, 0.40, 1.0), roll=0.0, pitch=sgn * 0.49)
     make_box("Hut_Bench", (hx - 0.6, hy, z + 0.45), (0.50, 1.80, 0.06), WOOD)
     for li, dy in enumerate((-0.7, 0.7)):
         make_box(f"Hut_Bench_Leg_{li}", (hx - 0.6, hy + dy, z + 0.21), (0.40, 0.08, 0.42), WOOD)
