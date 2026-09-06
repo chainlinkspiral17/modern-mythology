@@ -158,6 +158,31 @@ banisters classed · pans as containers.
 
 ## Recent lessons
 
+### 2026-09-06 · a builder that raises under the recorder is dropped without a flag
+
+- **"0 flagged" can mean "not measured."** locale_geometry_audit runs
+  each builder under the stubs; if run_path raises, the builder goes
+  to an `errs` list and is skipped — it never appears in the table,
+  and nothing in the summary says so. The DINER, the quality bar, had
+  been in that state for its whole life: its vendored helpers raised
+  under the stubs. The make_box delegation shim (detail draft 3C)
+  happened to make it runnable, and the FIRST measurement flagged it
+  ("exterior view stops at 69m" — the storefronts across River Road
+  and then nothing). A river-town horizon fixed it in one call. Two
+  builders still record zero boxes (harmony_district, harmony_terrain
+  — heightfield terrain through bpy directly); they are unmeasured,
+  not clean. Print the errs. Treat an absent row as a failure.
+- **The chamfer policy lives in ONE make_box; vendored copies must
+  delegate.** Fourteen builders carried their own make_box. Until
+  they routed through _props.geometry, the de-blocking policy could
+  not reach the model chapters — the sets players see most. A
+  vendored helper is a fork of the pipeline; keep the fork as a
+  fallback and the shared function as the path.
+- **Kit swaps must keep the marker names.** The furniture kit names
+  its parts <prefix>_Top / <prefix>_Leg_N; calling it with the old
+  prefix ("Table", "Chair_2") keeps Table_Top and Chair_2_Seat, so
+  every existing marker and synonym still lands after the swap.
+
 ### 2026-09-03 (evening) · the obstruction audit; the roads; cars were invisible
 
 - **"Sees its locale" is not "sees the set."** preset_vantage_audit

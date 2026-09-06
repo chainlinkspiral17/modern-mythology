@@ -287,7 +287,26 @@ road BENDS — a shared make_road_bend (arc + run of prisms, "Road"-
 prefixed so the segments are one assembly) on small_wood, 101 and
 new_auburn so no road runs straight to the horizon; a heightfield
 ditch beside the Small Wood road. Every GLB changes under the chamfer
-policy: the Deck rebuild is build_scenes.sh, not a list. THE PROGRAM'S END STATE: every remaining
+policy: the Deck rebuild is build_scenes.sh, not a list.
+DRAFT 3B shipped: make_road_bend (arc + run of "Road_"-prefixed
+prisms) — Small Wood bends 20° east into the firs at y 150, 101 bends
+28° inland at y 250, New Auburn curves 18° west at y 420 past the van;
+a heightfield bar ditch beside the Small Wood gate. DRAFT 3C shipped:
+the fourteen vendored make_box copies (the diner, the kwik stop, the
+cathedral, the bungalow, the riverboat, the riverfront, Roberts,
+Harmony commercial, the gas station, five prop builders) delegate to
+the shared one, so the MODEL CHAPTERS take the chamfer policy; the
+three family kitchens' tables and chairs through the furniture kit
+(Ramos's pedestal turned). Side effect: the diner became measurable
+by the geometry audit for the first time and failed ("view stops at
+69m") — a river-town horizon fixed it. DRAFT 4 TARGETS: the two
+unmeasured builders (harmony_district, harmony_terrain record zero
+boxes); the remaining hand-built chairs and tables (grep
+"Chair_.*_Seat" across locales) through the kit; the kwik stop and
+diner counters/stools through lathe + prism; conifers with more
+tiers and a crown blob; make_broadleaf with a multi-blob crown;
+heightfield ground under the road sets (needs a ground exemption in
+the overlap grammar); Deck verification of everything above. THE PROGRAM'S END STATE: every remaining
 blind cue is deliberate — the two road aggregates (re-homing
 decision), four cast closeups without char ids, three beats that
 happen elsewhere or on a person. NEXT:
