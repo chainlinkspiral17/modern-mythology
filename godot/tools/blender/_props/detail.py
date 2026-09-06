@@ -1,3 +1,4 @@
+import math
 """detail.py — shared helpers for THE DRAFTING PROGRAM's detail
 passes (see lore/_SET_DETAIL_PLAYBOOK.md).
 
@@ -315,3 +316,70 @@ def make_ditch_field(prefix, x0, x1, y0, y1, cell, ditch_x, ditch_depth=0.45, di
                 t = 1.0 - d / ditch_half
                 hs[r][c] -= ditch_depth * (t * t * (3 - 2 * t))
     make_heightfield(prefix, (x0, y0, base_z), cell, hs, color, skirt=0.4)
+
+
+def make_road_bend(prefix, x0, y0, heading0, turn_deg, arc_len, run_len, width,
+                   asphalt=(0.24, 0.24, 0.25, 1.0), line=(0.92, 0.86, 0.50, 1.0), edge=(0.92, 0.92, 0.88, 1.0),
+                   shoulder_w=1.0, shoulder=(0.50, 0.47, 0.40, 1.0), seg_len=8.0, z=0.0, dash=True,
+                   edge_lines=True):
+    """A road that BENDS: from (x0, y0) heading `heading0` (radians,
+    0 = +Y, positive = toward +X), an arc turning `turn_deg` over
+    `arc_len`, then a straight `run_len`. Built as flat prisms
+    (asphalt, shoulders, edge lines, center dashes) named
+    <prefix>_* so the overlap gate treats the chain as one assembly.
+    DETAIL DRAFT 3B (2026-09-06): "every road is still straight."
+    Returns the end point and heading so the caller can continue."""
+    from .geometry import make_prism
+    hw = width / 2.0
+    pts = []
+    x, y, h = x0, y0, heading0
+    n_arc = max(1, int(arc_len / seg_len))
+    dh = math.radians(turn_deg) / n_arc
+    pts.append((x, y, h))
+    for i in range(n_arc):
+        h += dh
+        x += math.sin(h) * seg_len
+        y += math.cos(h) * seg_len
+        pts.append((x, y, h))
+    n_run = max(1, int(run_len / seg_len))
+    for i in range(n_run):
+        x += math.sin(h) * seg_len
+        y += math.cos(h) * seg_len
+        pts.append((x, y, h))
+    def left(px, py, ph, d):
+        return (px - math.cos(ph) * d, py + math.sin(ph) * d)
+    for i, ((ax, ay, ah), (bx, by, bh)) in enumerate(zip(pts, pts[1:])):
+        cx, cy = (ax + bx) / 2.0, (ay + by) / 2.0
+        def quad(dl, dr):
+            a_l = left(ax, ay, ah, dl); a_r = left(ax, ay, ah, -dr)
+            b_l = left(bx, by, bh, dl); b_r = left(bx, by, bh, -dr)
+            return [(a_r[0] - cx, a_r[1] - cy), (b_r[0] - cx, b_r[1] - cy), (b_l[0] - cx, b_l[1] - cy), (a_l[0] - cx, a_l[1] - cy)]
+        make_prism(f"{prefix}_Asphalt_{i}", (cx, cy, z), quad(hw, hw), 0.04, asphalt, axis="Z")
+        if shoulder_w > 0.0:
+            make_prism(f"{prefix}_Shoulder_L_{i}", (cx, cy, z - 0.005), [(u, v) for (u, v) in
+                       [(left(ax, ay, ah, hw + shoulder_w)[0] - cx, left(ax, ay, ah, hw + shoulder_w)[1] - cy),
+                        (left(bx, by, bh, hw + shoulder_w)[0] - cx, left(bx, by, bh, hw + shoulder_w)[1] - cy),
+                        (left(bx, by, bh, hw)[0] - cx, left(bx, by, bh, hw)[1] - cy),
+                        (left(ax, ay, ah, hw)[0] - cx, left(ax, ay, ah, hw)[1] - cy)]], 0.03, shoulder, axis="Z")
+            make_prism(f"{prefix}_Shoulder_R_{i}", (cx, cy, z - 0.005), [(u, v) for (u, v) in
+                       [(left(ax, ay, ah, -hw)[0] - cx, left(ax, ay, ah, -hw)[1] - cy),
+                        (left(bx, by, bh, -hw)[0] - cx, left(bx, by, bh, -hw)[1] - cy),
+                        (left(bx, by, bh, -hw - shoulder_w)[0] - cx, left(bx, by, bh, -hw - shoulder_w)[1] - cy),
+                        (left(ax, ay, ah, -hw - shoulder_w)[0] - cx, left(ax, ay, ah, -hw - shoulder_w)[1] - cy)]], 0.03, shoulder, axis="Z")
+        if edge_lines:
+            for sgn, nm in ((1, "L"), (-1, "R")):
+                d0, d1 = sgn * (hw - 0.14), sgn * (hw - 0.06)
+                q = [(left(ax, ay, ah, d1)[0] - cx, left(ax, ay, ah, d1)[1] - cy), (left(bx, by, bh, d1)[0] - cx, left(bx, by, bh, d1)[1] - cy),
+                     (left(bx, by, bh, d0)[0] - cx, left(bx, by, bh, d0)[1] - cy), (left(ax, ay, ah, d0)[0] - cx, left(ax, ay, ah, d0)[1] - cy)]
+                if sgn < 0:
+                    q = list(reversed(q))
+                make_prism(f"{prefix}_Edge_{nm}_{i}", (cx, cy, z + 0.022), q, 0.005, edge, axis="Z")
+        if dash and i % 2 == 0:
+            mx, my, mh = (ax + bx) / 2.0, (ay + by) / 2.0, (ah + bh) / 2.0
+            L = 1.5
+            a2 = (mx - math.sin(mh) * L / 2.0, my - math.cos(mh) * L / 2.0)
+            b2 = (mx + math.sin(mh) * L / 2.0, my + math.cos(mh) * L / 2.0)
+            q = [(left(a2[0], a2[1], mh, -0.05)[0] - cx, left(a2[0], a2[1], mh, -0.05)[1] - cy), (left(b2[0], b2[1], mh, -0.05)[0] - cx, left(b2[0], b2[1], mh, -0.05)[1] - cy),
+                 (left(b2[0], b2[1], mh, 0.05)[0] - cx, left(b2[0], b2[1], mh, 0.05)[1] - cy), (left(a2[0], a2[1], mh, 0.05)[0] - cx, left(a2[0], a2[1], mh, 0.05)[1] - cy)]
+            make_prism(f"{prefix}_Dash_{i}", (cx, cy, z + 0.022), q, 0.005, line, axis="Z")
+    return pts[-1]

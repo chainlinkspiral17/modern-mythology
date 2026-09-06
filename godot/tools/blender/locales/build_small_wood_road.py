@@ -40,7 +40,7 @@ from _props.detail import make_far_bands
 from _props.trees import make_conifer, make_broadleaf
 from _props.vehicles import make_car
 from _props.buildings import make_ranch_house, make_shed
-from _props.detail import make_wire_fence
+from _props.detail import make_wire_fence, make_road_bend, make_ditch_field
 from _props.trees import make_bare_tree, make_shrub
 
 ASPHALT = (0.22, 0.22, 0.23, 1.0)
@@ -60,22 +60,30 @@ ROAD_FAR, ROAD_NEAR = 1200.0, -1200.0
 
 
 def build_road():
-    span = (ROAD_FAR - ROAD_NEAR) / 2.0
-    mid = (ROAD_FAR + ROAD_NEAR) / 2.0
+    BEND_Y = 150.0
+    span = (BEND_Y - ROAD_NEAR)
+    mid = (BEND_Y + ROAD_NEAR) / 2.0
     make_box("Ground_Far", (0.0, 0.0, -0.06), (2600.0, 2600.0, 0.02), (0.34, 0.40, 0.24, 1.0))
-    make_box("Asphalt", (0.0, mid, 0.0), (3.6, span, 0.04), ASPHALT)
+    make_box("Road_Asphalt", (0.0, mid, 0.0), (3.6, span, 0.04), ASPHALT)
     di = 0
     dy = ROAD_NEAR
-    while dy < ROAD_FAR:
-        make_box(f"CenterLine_{di}", (0.0, dy, 0.022), (0.08, 1.20, 0.005), (0.90, 0.84, 0.50, 1.0))
+    while dy < BEND_Y - 1.0:
+        make_box(f"Road_CenterLine_{di}", (0.0, dy, 0.022), (0.08, 1.20, 0.005), (0.90, 0.84, 0.50, 1.0))
         dy += 10.0
         di += 1
     for sgn in (-1, +1):
-        make_box(f"Gravel_Shoulder_{sgn:+d}", (sgn * 2.35, mid, 0.01), (1.1, span, 0.02), GRAVEL)
-        make_wedge(f"Ditch_{sgn:+d}", (sgn * 3.7, mid, -0.18), (1.6, span, 0.36), GRASS, high_end=("+X" if sgn < 0 else "-X"))
+        make_box(f"Road_Gravel_Shoulder_{sgn:+d}", (sgn * 2.35, mid, 0.01), (1.1, span, 0.02), GRAVEL)
+    # the ditches: a heightfield surface beside the gate (east), wedges beyond
+    make_wedge("Ditch_-1", (-3.7, mid, -0.18), (1.6, span, 0.36), GRASS, high_end="+X")
+    make_wedge("Ditch_+1_S", (3.7, (ROAD_NEAR + -62.0) / 2.0, -0.18), (1.6, -62.0 - ROAD_NEAR, 0.36), GRASS, high_end="-X")
+    make_wedge("Ditch_+1_N", (3.7, (62.0 + BEND_Y) / 2.0, -0.18), (1.6, BEND_Y - 62.0, 0.36), GRASS, high_end="-X")
+    make_ditch_field("Ditch_Field_E", 2.9, 8.9, -62.0, 62.0, 1.0, ditch_x=4.2, ditch_depth=0.42, ditch_half=1.3, amp=0.06, seed=4, color=GRASS, base_z=0.0)
+    # the bend: twenty degrees east into the firs, then the run to the horizon
+    make_road_bend("Road_Bend", 0.0, BEND_Y, 0.0, 20.0, 100.0, 1000.0, 3.6, asphalt=ASPHALT, line=(0.90, 0.84, 0.50, 1.0),
+                   edge=(0.92, 0.92, 0.88, 1.0), shoulder_w=1.1, shoulder=GRAVEL, seg_len=10.0, edge_lines=False)
     # frost heaves and patches: a road that has been fixed by the county
-    for i in range(30):
-        make_box(f"Patch_{i}", ((i % 3 - 1) * 0.9, -300.0 + i * 21.0, 0.021), (1.1, 1.6, 0.002), (0.18, 0.18, 0.19, 1.0))
+    for i in range(21):
+        make_box(f"Road_Patch_{i}", ((i % 3 - 1) * 0.9, -300.0 + i * 21.0, 0.021), (1.1, 1.6, 0.002), (0.18, 0.18, 0.19, 1.0))
     # the crick: runs beside the road from the east, crosses under at y 30
     make_box("Crick_Bed", (0.0, 30.0, -0.30), (60.0, 2.4, 0.20), (0.30, 0.28, 0.22, 1.0))
     make_box("Crick_Water_E", (16.0, 30.0, -0.17), (28.0, 1.6, 0.06), WATER)
@@ -86,9 +94,9 @@ def build_road():
         for pi in range(3):
             make_cyl(f"Crick_Rock_{sgn:+d}_{pi}", (sgn * (6.0 + pi * 2.5), 30.6 - (pi % 2) * 1.0, -0.05), 0.30, 0.30, (0.40, 0.40, 0.38, 1.0), segments=7)
     # county sign, mile post
-    make_cyl("County_Sign_Post", (3.2, -60.0, 1.2), 0.05, 2.4, (0.40, 0.42, 0.40, 1.0), segments=6)
-    make_box("County_Sign", (3.2, -60.0, 2.6), (0.04, 1.2, 0.50), (0.16, 0.42, 0.24, 1.0))
-    make_box("County_Sign_Text", (3.17, -60.0, 2.6), (0.005, 1.0, 0.16), (0.94, 0.94, 0.90, 1.0))
+    make_cyl("County_Sign_Post", (3.2, -72.0, 1.2), 0.05, 2.4, (0.40, 0.42, 0.40, 1.0), segments=6)
+    make_box("County_Sign", (3.2, -72.0, 2.6), (0.04, 1.2, 0.50), (0.16, 0.42, 0.24, 1.0))
+    make_box("County_Sign_Text", (3.17, -72.0, 2.6), (0.005, 1.0, 0.16), (0.94, 0.94, 0.90, 1.0))
     make_cyl("Mile_Post", (-3.0, 90.0, 0.8), 0.04, 1.6, (0.80, 0.84, 0.62, 1.0), segments=6)
 
 

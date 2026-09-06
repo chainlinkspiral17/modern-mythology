@@ -272,7 +272,22 @@ and streetlamps lathed; road bends as yawed prisms and ground as
 heightfields under the road sets; a chamfer pass over every
 interior's furniture boxes; then the model chapters themselves (the
 diner's 910 boxes) through the same kit. The Deck has still seen
-NONE of it — build, look, then continue. THE PROGRAM'S END STATE: every remaining
+NONE of it — build, look, then continue.
+
+**2026-09-06 · DETAIL DRAFT 3.** The de-blocking POLICY: make_box
+auto-chamfers every prop-sized box (≤ 3 m a side, ≥ 2.5 cm thick,
+no open faces) with a 2% cut — every builder's furniture, doors,
+crates and fixtures get cut edges without a line changed; walls,
+floors, roads, decals and glass stay as they were. Plus: Meadowlark's
+water tower and streetlamps lathed (catwalk, rails, cobra heads), the
+chained turn on 101 hangs a real catenary chain, slate slabs on the
+Kestrel hut, the strip mall's parapet cap / cornice / downspouts /
+vents, Miller's lake truck through make_car. DRAFT 3B (in progress):
+road BENDS — a shared make_road_bend (arc + run of prisms, "Road"-
+prefixed so the segments are one assembly) on small_wood, 101 and
+new_auburn so no road runs straight to the horizon; a heightfield
+ditch beside the Small Wood road. Every GLB changes under the chamfer
+policy: the Deck rebuild is build_scenes.sh, not a list. THE PROGRAM'S END STATE: every remaining
 blind cue is deliberate — the two road aggregates (re-homing
 decision), four cast closeups without char ids, three beats that
 happen elsewhere or on a person. NEXT:

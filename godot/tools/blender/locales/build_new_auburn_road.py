@@ -40,7 +40,7 @@ from _props.detail import make_far_bands
 from _props.trees import make_broadleaf, make_cypress
 from _props.vehicles import make_car
 from _props.buildings import make_ranch_house
-from _props.detail import make_utility_pole, make_wire_run
+from _props.detail import make_utility_pole, make_wire_run, make_road_bend
 
 COL_ASPHALT = (0.30, 0.29, 0.28, 1.0); COL_LANE_LINE = (0.92, 0.86, 0.52, 1.0)
 COL_GRASS = (0.50, 0.48, 0.30, 1.0); COL_DIRT_SHOULDER = (0.58, 0.50, 0.38, 1.0)
@@ -456,25 +456,29 @@ def build_road():
     """Texas two-lane: paler asphalt than the Louisiana blacktop, a
     crack seam, gravel shoulders, bar ditches, no swamp. Runs the
     full ±1200 so the lines still converge."""
-    span = (ROAD_FAR - ROAD_NEAR) / 2.0
-    mid = (ROAD_FAR + ROAD_NEAR) / 2.0
+    BEND_Y = 420.0
+    span = (BEND_Y - ROAD_NEAR)
+    mid = (BEND_Y + ROAD_NEAR) / 2.0
     make_box("Ground_Far", (0.0, 0.0, -0.06), (2600.0, 2600.0, 0.02), (0.46, 0.44, 0.28, 1.0))
-    make_box("Asphalt", (0.0, mid, 0.0), (4.4, span, 0.04), COL_ASPHALT)
+    make_box("Road_Asphalt", (0.0, mid, 0.0), (4.4, span, 0.04), COL_ASPHALT)
     di = 0
     dy = ROAD_NEAR
-    while dy < ROAD_FAR:
-        make_box(f"CenterLine_{di}", (0.0, dy, 0.022), (0.10, 1.50, 0.005), COL_LANE_LINE)
+    while dy < BEND_Y - 1.0:
+        make_box(f"Road_CenterLine_{di}", (0.0, dy, 0.022), (0.10, 1.50, 0.005), COL_LANE_LINE)
         dy += 12.0
         di += 1
     for sgn in (-1, +1):
-        make_box(f"EdgeLine_{sgn:+d}", (sgn * 2.05, mid, 0.022), (0.06, span, 0.005), (0.92, 0.92, 0.86, 1.0))
-        make_box(f"Shoulder_{sgn:+d}", (sgn * 2.95, mid, 0.02), (1.50, span, 0.04), COL_DIRT_SHOULDER)
+        make_box(f"Road_EdgeLine_{sgn:+d}", (sgn * 2.05, mid, 0.022), (0.06, span, 0.005), (0.92, 0.92, 0.86, 1.0))
+        make_box(f"Road_Shoulder_{sgn:+d}", (sgn * 2.95, mid, 0.02), (1.50, span, 0.04), COL_DIRT_SHOULDER)
         make_wedge(f"Ditch_{sgn:+d}", (sgn * 4.6, mid, -0.20), (1.8, span, 0.40), COL_GRASS, high_end=("+X" if sgn < 0 else "-X"))
+    # the road bends west past the van (a long Texas curve, 18 degrees), then runs on
+    make_road_bend("Road_Bend", 0.0, BEND_Y, 0.0, -18.0, 160.0, 700.0, 4.4, asphalt=COL_ASPHALT, line=COL_LANE_LINE,
+                   edge=(0.92, 0.92, 0.86, 1.0), shoulder_w=1.5, shoulder=COL_DIRT_SHOULDER, seg_len=10.0)
     for ci in range(40):
         make_box(f"Crack_Seam_{ci}", (0.0 + (ci % 3 - 1) * 0.6, -600.0 + ci * 30.0 + 7.0, 0.021), (0.03, 4.0, 0.002), (0.20, 0.20, 0.20, 1.0))
     # power lines down the east verge, the whole run: real poles with
     # crossarms and insulators, wires that sag between them
-    poles = [(6.4, i * 75.0) for i in range(-16, 17)]
+    poles = [(6.4, i * 75.0) for i in range(-16, 6)]   # the line ends where the road bends (y 420)
     for i, (px, py) in enumerate(poles):
         make_utility_pole(f"Power_Pole_{i}", px, py, h=9.0, transformer=(i % 5 == 2))
     make_wire_run("Power", poles, h=9.0, sag=0.9)

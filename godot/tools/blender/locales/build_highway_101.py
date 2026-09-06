@@ -34,7 +34,7 @@ from _props.geometry import clear_scene, make_box, make_cyl, make_blob, make_wed
 from _props.detail import make_far_bands
 from _props.trees import make_conifer
 from _props.vehicles import make_car
-from _props.detail import make_guardrail
+from _props.detail import make_guardrail, make_road_bend
 
 ASPHALT = (0.24, 0.24, 0.25, 1.0)
 SHOULDER = (0.44, 0.42, 0.36, 1.0)
@@ -53,25 +53,28 @@ ROAD_FAR, ROAD_NEAR = 1200.0, -1200.0
 
 
 def build_road():
-    span = (ROAD_FAR - ROAD_NEAR) / 2.0
-    mid = (ROAD_FAR + ROAD_NEAR) / 2.0
+    BEND_Y = 250.0
+    span = (BEND_Y - ROAD_NEAR)
+    mid = (BEND_Y + ROAD_NEAR) / 2.0
     # the land the road sits on: a shelf, rock below it to the sea
     make_box("Ground_Far", (60.0, 0.0, -0.06), (2400.0, 2600.0, 0.02), (0.20, 0.28, 0.20, 1.0))
     make_box("Roadbed", (2.0, mid, -0.5), (16.0, span, 0.9), ROCK_DK)
-    make_box("Asphalt", (0.0, mid, 0.0), (7.2, span, 0.04), ASPHALT)
+    make_box("Road_Asphalt", (0.0, mid, 0.0), (7.2, span, 0.04), ASPHALT)
     di = 0
     dy = ROAD_NEAR
-    while dy < ROAD_FAR:
-        make_box(f"CenterLine_{di}", (0.0, dy, 0.022), (0.10, 1.50, 0.005), (0.92, 0.86, 0.50, 1.0))
+    while dy < BEND_Y - 1.0:
+        make_box(f"Road_CenterLine_{di}", (0.0, dy, 0.022), (0.10, 1.50, 0.005), (0.92, 0.86, 0.50, 1.0))
         dy += 12.0
         di += 1
     for sgn in (-1, +1):
-        make_box(f"EdgeLine_{sgn:+d}", (sgn * 3.4, mid, 0.022), (0.08, span, 0.005), (0.92, 0.92, 0.88, 1.0))
-        make_box(f"Shoulder_{sgn:+d}", (sgn * 4.3, mid, 0.01), (1.4, span, 0.02), SHOULDER)
-    # the seaward guardrail: W-beam on posts, the whole run
-    # (a gap at the old-Yachats spur, y 155..165)
+        make_box(f"Road_EdgeLine_{sgn:+d}", (sgn * 3.4, mid, 0.022), (0.08, span, 0.005), (0.92, 0.92, 0.88, 1.0))
+        make_box(f"Road_Shoulder_{sgn:+d}", (sgn * 4.3, mid, 0.01), (1.4, span, 0.02), SHOULDER)
+    # the seaward guardrail: W-beam on posts (a gap at the old-Yachats spur, y 155..165)
     make_guardrail("Guardrail_S", -5.4, ROAD_NEAR, 154.75, side=1, steel=STEEL)
-    make_guardrail("Guardrail_N", -5.4, 165.25, ROAD_FAR, side=1, steel=STEEL)
+    make_guardrail("Guardrail_N", -5.4, 165.25, BEND_Y, side=1, steel=STEEL)
+    # the highway bends inland around the headland: 28 degrees east, then the run
+    make_road_bend("Road_Bend", 0.0, BEND_Y, 0.0, 28.0, 140.0, 900.0, 7.2, asphalt=ASPHALT, line=(0.92, 0.86, 0.50, 1.0),
+                   edge=(0.92, 0.92, 0.88, 1.0), shoulder_w=1.4, shoulder=SHOULDER, seg_len=10.0)
     # the drop to the sea: a long wedge falling west from the shelf
     make_wedge("Sea_Bluff", (-15.0 - 12.0, mid, (SEA_Z + -0.95) / 2.0), (24.0, span, -0.95 - SEA_Z), ROCK, high_end="+X")
     make_box("Sea", (-160.0, 0.0, SEA_Z - 0.05), (260.0, 2600.0, 0.10), SEA)
