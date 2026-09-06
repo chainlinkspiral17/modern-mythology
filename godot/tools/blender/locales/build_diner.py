@@ -5972,6 +5972,22 @@ def build_formal_note_2026_09():
     make_box("Folded_Note", (-11.6, -3.35, 0.794), (0.10, 0.07, 0.006), (0.92, 0.90, 0.84, 1.0))
 
 
+def build_far_town_2026_09():
+    """DETAIL DRAFT 3 (2026-09-06): the view through the diner's windows
+    ended at the storefronts across River Road (69 m) and then nothing —
+    the geometry audit's exterior rule ("view stops at 69m") caught it
+    the first time the diner was measurable. A river-town roofline in
+    three receding bands closes the horizon on every side."""
+    import sys as _sys, os as _os
+    _bt = _os.path.dirname(_os.path.dirname(_os.path.abspath(__file__)))
+    if _bt not in _sys.path:
+        _sys.path.insert(0, _bt)
+    from _props.detail import make_far_bands
+    make_far_bands("FarTown", (0.30, 0.28, 0.26),
+                   [(140.0, 200.0, 9.0, 0.92), (280.0, 320.0, 12.0, 0.74), (520.0, 480.0, 16.0, 0.56)],
+                   sides="NSEW", cx=-28.0, cy=-2.0, profile="roofline")
+
+
 def main():
     clear_scene()
     build_shell()
@@ -6038,6 +6054,7 @@ def main():
     # markers instead of camera nodes.
     # add_camera_markers()  # DISABLED
     build_back_door_bell()
+    build_far_town_2026_09()
     export_glb()
 
 
