@@ -26,15 +26,23 @@ def make_conifer(prefix, px, py, h, foliage_col, trunk_col,
     make_taper_cyl(f"{prefix}_Trunk", (px, py, h * 0.22),
                    0.10 * h * 0.14 + 0.10, 0.05, h * 0.44,
                    trunk_col, segments=7)
-    tiers = ((0.34, 1.00, 0.42), (0.58, 0.72, 0.36), (0.80, 0.45, 0.34))
+    # DETAIL DRAFT 4 (2026-09-06): five tiers, each a touch off-axis,
+    # the radii jittered per tree so a stand is not seven copies; a
+    # leader spike above the top tier. Tiers touch, never overlap
+    # (the recorder sees each as its own cone).
+    dark = (foliage_col[0] * 0.86, foliage_col[1] * 0.88, foliage_col[2] * 0.86, 1.0)
+    tiers = ((0.30, 1.00, 0.26), (0.48, 0.86, 0.24), (0.64, 0.70, 0.22), (0.78, 0.52, 0.20), (0.90, 0.32, 0.14))
     for ti, (base_f, r_f, h_f) in enumerate(tiers):
-        jx = ((s >> (ti * 3)) % 5 - 2) * 0.04
-        jy = ((s >> (ti * 3 + 7)) % 5 - 2) * 0.04
+        jx = ((s >> (ti * 3)) % 5 - 2) * 0.035
+        jy = ((s >> (ti * 3 + 7)) % 5 - 2) * 0.035
+        rj = 1.0 + ((s >> (ti * 2 + 1)) % 3 - 1) * 0.07
         make_taper_cyl(f"{prefix}_C{ti}",
                        (px + jx, py + jy,
                         h * base_f + h * h_f * 0.5),
-                       h * skirt * r_f, 0.0, h * h_f,
-                       foliage_col, segments=8 + (ti == 0) * 2)
+                       h * skirt * r_f * rj, 0.0, h * h_f,
+                       foliage_col if ti % 2 == 0 else dark, segments=8 + (ti == 0) * 2)
+    make_taper_cyl(f"{prefix}_Leader", (px, py, h * 1.04 + 0.02), 0.05, 0.0, h * 0.08,
+                   dark, segments=5)
 
 
 def make_broadleaf(prefix, px, py, h, foliage_col, trunk_col,
@@ -45,17 +53,31 @@ def make_broadleaf(prefix, px, py, h, foliage_col, trunk_col,
     make_taper_cyl(f"{prefix}_Trunk", (px, py, h * 0.28),
                    h * 0.035 + 0.08, h * 0.02 + 0.04, h * 0.56,
                    trunk_col, segments=7)
+    # DETAIL DRAFT 4 (2026-09-06): three to five lobes in two greens,
+    # and two limbs (tubes) climbing from the trunk into the crown so
+    # the tree has a structure under the foliage, not a ball on a pole.
+    from .geometry import make_tube
     lobes = [(0.0, 0.0, 0.72, 1.00)]
     if s % 3:
         lobes.append((0.55, 0.15, 0.60, 0.62))
     if (s >> 4) % 3:
         lobes.append((-0.5, -0.2, 0.62, 0.58))
+    lobes.append((0.15, -0.5, 0.86, 0.48))
+    if (s >> 6) % 2:
+        lobes.append((-0.2, 0.55, 0.82, 0.44))
+    light = (min(1.0, foliage_col[0] * 1.14), min(1.0, foliage_col[1] * 1.12), min(1.0, foliage_col[2] * 1.10), 1.0)
     for li, (ox, oy, oz, r_f) in enumerate(lobes):
         r = h * crown * r_f
         make_blob(f"{prefix}_L{li}",
                   (px + ox * r, py + oy * r, h * oz),
-                  r, foliage_col, noise=0.20,
+                  r, foliage_col if li % 2 == 0 else light, noise=0.20,
                   seed=s + li * 17, squash=0.85)
+    r0 = h * 0.02 + 0.04
+    for bi, (ax, ay) in enumerate(((0.42, 0.12), (-0.36, -0.20))):
+        base = (px, py, h * 0.50)
+        mid = (px + ax * h * 0.10, py + ay * h * 0.10, h * 0.60)
+        tip = (px + ax * h * 0.22, py + ay * h * 0.22, h * 0.68)
+        make_tube(f"{prefix}_Limb{bi}", [base, mid, tip], r0 * 0.55, trunk_col, segments=5)
 
 
 def make_cypress(prefix, px, py, h, foliage_col, trunk_col,
