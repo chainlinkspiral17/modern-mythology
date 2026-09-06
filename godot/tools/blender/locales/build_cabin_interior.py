@@ -167,8 +167,9 @@ def build_table():
     # DETAIL DRAFT 4 (2026-09-06): a turned pedestal on its foot, seven kit chairs
     make_lathe("Table_Pedestal", (tx, ty, 0.10), [(0.16, 0.0), (0.10, 0.06), (0.08, 0.20), (0.11, 0.36), (0.07, 0.50), (0.09, 0.62), (0.13, 0.635)], COL_WOOD, segments=12)
     make_lathe("Table_Foot", (tx, ty, 0.0), [(0.42, 0.0), (0.40, 0.06), (0.22, 0.09), (0.16, 0.10)], COL_WOOD_DK, segments=14)
-    for ci in range(7):
-        ang = ci * (2.0 * _m.pi / 7.0) + 0.45
+    # seven chairs, the ring open toward the east partition (nobody sits
+    # with their back in the wall)
+    for ci, ang in enumerate((0.30, 1.05, 1.80, 2.55, 3.30, 4.05, 4.80)):
         cx, cy = tx + _m.cos(ang) * 1.22, ty + _m.sin(ang) * 1.22
         make_chair(f"Chair_{ci}", cx, cy, yaw=ang + 1.5708, wood=COL_WOOD, w=0.40)
     # ── OLAF'S TWO BOWLS · the hero prop of vol 7 ──────────────
