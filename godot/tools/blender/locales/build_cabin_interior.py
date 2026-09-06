@@ -24,8 +24,9 @@ import os, sys
 import math as _m
 _BT = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)), ".."))
 if _BT not in sys.path: sys.path.insert(0, _BT)
+from _props.furniture import make_chair
 from _props import palette as P
-from _props.geometry import make_taper_cyl, clear_scene, make_box, make_cyl, export_glb
+from _props.geometry import make_taper_cyl, clear_scene, make_box, make_cyl, make_lathe, export_glb
 from _props.structure import make_floor, make_wall, make_ceiling, make_window
 from _props.food_service import make_coffee_pots  # noqa: F401 (unused, kept for parity)
 
@@ -163,16 +164,13 @@ def build_table():
     hurricane lantern on it, the braided rug beneath."""
     tx, ty = 0.0, 2.9
     make_cyl("Table_Top", (tx, ty, 0.76), 0.85, 0.05, COL_WOOD, segments=18)
-    make_cyl("Table_Pedestal", (tx, ty, 0.38), 0.09, 0.72, COL_WOOD, segments=10)
-    make_cyl("Table_Foot", (tx, ty, 0.05), 0.40, 0.05, COL_WOOD_DK, segments=12)
+    # DETAIL DRAFT 4 (2026-09-06): a turned pedestal on its foot, seven kit chairs
+    make_lathe("Table_Pedestal", (tx, ty, 0.10), [(0.16, 0.0), (0.10, 0.06), (0.08, 0.20), (0.11, 0.36), (0.07, 0.50), (0.09, 0.62), (0.13, 0.635)], COL_WOOD, segments=12)
+    make_lathe("Table_Foot", (tx, ty, 0.0), [(0.42, 0.0), (0.40, 0.06), (0.22, 0.09), (0.16, 0.10)], COL_WOOD_DK, segments=14)
     for ci in range(7):
         ang = ci * (2.0 * _m.pi / 7.0) + 0.45
-        cx, cy = tx + _m.cos(ang) * 1.30, ty + _m.sin(ang) * 1.30
-        make_box(f"Chair_{ci}_Seat", (cx, cy, 0.45), (0.40, 0.40, 0.05), COL_WOOD)
-        bx, by = tx + _m.cos(ang) * 1.48, ty + _m.sin(ang) * 1.48
-        make_box(f"Chair_{ci}_Back", (bx, by, 0.75), (0.40, 0.06, 0.55), COL_WOOD)
-        for li, (lx, ly) in enumerate(((-0.15, -0.15), (0.15, -0.15), (-0.15, 0.15), (0.15, 0.15))):
-            make_box(f"Chair_{ci}_Leg_{li}", (cx + lx, cy + ly, 0.22), (0.045, 0.045, 0.44), COL_WOOD)
+        cx, cy = tx + _m.cos(ang) * 1.22, ty + _m.sin(ang) * 1.22
+        make_chair(f"Chair_{ci}", cx, cy, yaw=ang + 1.5708, wood=COL_WOOD, w=0.40)
     # ── OLAF'S TWO BOWLS · the hero prop of vol 7 ──────────────
     # (2026-08-12) The volume's central image — cued 21 times as
     # [shot:insert bowls] / [shot:insert bowl] across 46 chapters —
@@ -238,10 +236,7 @@ def build_daybed():
     # Chair by the SOUTH window, main room ("The chair by the south
     # window" / "Finn on the floor by the south window")
     make_window("South_Window_W", (-2.0, 0.04, 1.45), width=1.10, height=1.00)
-    make_box("SWChair_Seat", (-1.70, 0.95, 0.44), (0.44, 0.44, 0.05), COL_WOOD)
-    make_box("SWChair_Back", (-1.70, 1.15, 0.72), (0.44, 0.05, 0.52), COL_WOOD)
-    for li, (lx, ly) in enumerate(((-0.16, -0.16), (0.16, -0.16), (-0.16, 0.16), (0.16, 0.16))):
-        make_box(f"SWChair_Leg_{li}", (-1.70 + lx, 0.95 + ly, 0.22), (0.045, 0.045, 0.44), COL_WOOD)
+    make_chair("SWChair", -1.70, 0.95, yaw=3.1416, wood=COL_WOOD, w=0.44)
 
 
 def build_east_room():

@@ -25,6 +25,7 @@ godot -Z. Footprint 11.0 x 9.0, ceiling 3.0.
 import os, sys
 _BT = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)), ".."))
 if _BT not in sys.path: sys.path.insert(0, _BT)
+from _props.furniture import make_table, make_chair
 from _props import palette as P
 from _props.geometry import clear_scene, make_box, make_cyl, export_glb
 from _props.structure import make_floor, make_wall, make_ceiling, make_crown_molding, make_window
@@ -159,13 +160,9 @@ def build_tables():
     # Two square freestanding 4-tops mid-floor (square, not pedestal
     # rounds — seating is staged here in ch7's lunch crowd).
     for tag, tx, ty in [("A", 1.6, 1.6), ("B", 3.6, 2.9)]:
-        make_box(f"Table_{tag}_Top", (tx, ty, 0.74), (0.90, 0.90, 0.05), COL_TABLETOP)
-        for li, (lxo, lyo) in enumerate([(-0.38, -0.38), (0.38, -0.38), (-0.38, 0.38), (0.38, 0.38)]):
-            make_box(f"Table_{tag}_Leg_{li}", (tx+lxo, ty+lyo, 0.36), (0.06, 0.06, 0.72), COL_WOOD)
+        make_table(f"Table_{tag}", tx, ty, w=0.90, d=0.90, h=0.765, wood=COL_WOOD, top_col=COL_TABLETOP)
         for ci, (cxo, cyo) in enumerate([(0.0, -0.75), (0.0, 0.75)]):
-            make_box(f"Chair_{tag}_{ci}_Seat", (tx+cxo, ty+cyo, 0.45), (0.42, 0.42, 0.05), COL_WOOD)
-            make_box(f"Chair_{tag}_{ci}_Back", (tx+cxo, ty+cyo+(0.20 if cyo > 0 else -0.20), 0.72),
-                     (0.42, 0.05, 0.50), COL_WOOD)
+            make_chair(f"Chair_{tag}_{ci}", tx+cxo, ty+cyo, yaw=(3.1416 if cyo > 0 else 0.0), wood=COL_WOOD, w=0.42)
 
 
 def build_partition():

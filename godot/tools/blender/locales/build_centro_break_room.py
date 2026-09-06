@@ -2,8 +2,9 @@
 import os, sys
 _BT = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)), ".."))
 if _BT not in sys.path: sys.path.insert(0, _BT)
+from _props.furniture import make_chair
 from _props import palette as P
-from _props.geometry import clear_scene, make_box, make_cyl, export_glb
+from _props.geometry import clear_scene, make_box, make_cyl, make_lathe, export_glb
 from _props.structure import make_floor, make_wall, make_ceiling, make_crown_molding, make_window
 from _props.store_fixtures import make_counter, make_counter_bullnose, make_register
 from _props.shelving import make_snack_aisle, make_endcap
@@ -38,16 +39,12 @@ def build_shell():
 def build_table():
     tx, ty = 0.0, ROOM_D/2.0
     make_cyl("Table_Top", (tx, ty, 0.74), 0.40, 0.04, COL_WOOD)
-    make_cyl("Table_Pedestal", (tx, ty, 0.37), 0.06, 0.70, COL_WOOD)
+    make_lathe("Table_Pedestal", (tx, ty, 0.0), [(0.22, 0.0), (0.20, 0.03), (0.07, 0.06), (0.05, 0.40), (0.06, 0.62), (0.10, 0.70), (0.12, 0.72)], P.METAL_BLACK, segments=12)
+    import math
     for ci in range(4):
-        import math
         ang = ci * 1.57
         cx, cy = tx + math.cos(ang)*0.85, ty + math.sin(ang)*0.85
-        make_box(f"Chair_{ci}_Seat", (cx, cy, 0.44), (0.38, 0.38, 0.04), COL_WOOD)
-        make_box(f"Chair_{ci}_Back", (cx + math.cos(ang)*0.16, cy + math.sin(ang)*0.16, 0.72), (0.38, 0.04, 0.56), COL_WOOD)
-        for lx in (-0.15, 0.15):
-            for ly in (-0.15, 0.15):
-                make_box(f"Chair_{ci}_Leg_{lx}_{ly}", (cx+lx, cy+ly, 0.22), (0.03, 0.03, 0.44), P.METAL_BLACK)
+        make_chair(f"Chair_{ci}", cx, cy, yaw=ang + 1.5708, wood=P.METAL_BLACK, seat_col=COL_WOOD, w=0.38)
 
 def build_vending():
     vx, vy = +ROOM_W/2.0-0.30, ROOM_D-1.0
@@ -139,10 +136,7 @@ def build_hero_props():
     the card table canon names."""
     wood = (0.46, 0.36, 0.26, 1.0)
     # Doug's chair, E wall, facing west, thermos at its feet
-    make_box("Dougs_Chair_Seat", (2.10, 2.2, 0.44), (0.42, 0.42, 0.04), (0.40, 0.36, 0.30, 1.0))
-    make_box("Dougs_Chair_Back", (2.30, 2.2, 0.74), (0.05, 0.42, 0.54), (0.36, 0.32, 0.27, 1.0))
-    for li, (lx, ly) in enumerate(((-0.16, -0.16), (0.16, -0.16), (-0.16, 0.16), (0.16, 0.16))):
-        make_box(f"Dougs_Chair_Leg_{li}", (2.10 + lx, 2.6 + ly, 0.22), (0.045, 0.045, 0.44), wood)
+    make_chair("Dougs_Chair", 2.10, 2.2, yaw=1.5708, wood=wood, seat_col=(0.40, 0.36, 0.30, 1.0), w=0.42)
     make_cyl("Dougs_Thermos", (1.90, 2.35, 0.13), 0.05, 0.26, (0.30, 0.42, 0.30, 1.0), segments=10)
     # Radio above the microwave (the Tejano station since 2019)
     make_box("Break_Radio", (-2.15, 2.85, 1.62), (0.22, 0.13, 0.13), (0.36, 0.30, 0.26, 1.0))

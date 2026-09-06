@@ -21,6 +21,7 @@ y=3.05; front room center/east. glTF export remaps to Godot
 import os, sys
 _BT = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)), ".."))
 if _BT not in sys.path: sys.path.insert(0, _BT)
+from _props.furniture import make_chair
 from _props import palette as P
 from _props.geometry import clear_scene, make_box, make_cyl, export_glb
 from _props.structure import make_floor, make_wall, make_ceiling, make_window
@@ -128,11 +129,8 @@ def build_kitchen_table():
         wood = CHAIR_WOODS[ci]
         back_dx = -0.20 if cx < tx else (0.20 if cx > tx else 0.0)
         back_dy = -0.20 if cy < ty else (0.20 if cy > ty else 0.0)
-        make_box(f"KChair_{ci}_Seat", (cx, cy, 0.45), (0.42, 0.42, 0.05), wood)
-        make_box(f"KChair_{ci}_Back", (cx+back_dx, cy+back_dy, 0.74),
-                 (0.05 if back_dx else 0.42, 0.42 if back_dx else 0.05, 0.52), wood)
-        for li, (lx, ly) in enumerate(((-0.16, -0.16), (0.16, -0.16), (-0.16, 0.16), (0.16, 0.16))):
-            make_box(f"KChair_{ci}_Leg_{li}", (cx+lx, cy+ly, 0.22), (0.045, 0.045, 0.44), wood)
+        import math as _mm
+        make_chair(f"KChair_{ci}", cx, cy, yaw=_mm.atan2(back_dx, -back_dy) if (back_dx or back_dy) else 0.0, wood=wood, w=0.42)
 
 
 def build_front_room():

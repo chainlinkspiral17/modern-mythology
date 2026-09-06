@@ -28,6 +28,7 @@ _BLENDER_TOOLS = os.path.normpath(
 if _BLENDER_TOOLS not in sys.path:
     sys.path.insert(0, _BLENDER_TOOLS)
 
+from _props.furniture import make_table, make_chair
 from _props import palette as P
 from _props.geometry import clear_scene, make_box, make_cyl, export_glb
 from _props.structure import (
@@ -192,25 +193,10 @@ def build_north_appliances():
 def build_kitchen_table_chairs():
     # Small breakfast table near east wall
     tx, ty = +2.5, 1.5
-    make_box("Table_Top", (tx, ty, 0.72),
-             (0.80, 0.80, 0.04), COL_WOOD_TRIM)
-    for li, (lx, ly) in enumerate([
-            (tx - 0.34, ty - 0.34), (tx + 0.34, ty - 0.34),
-            (tx - 0.34, ty + 0.34), (tx + 0.34, ty + 0.34)]):
-        make_box(f"Table_Leg_{li}", (lx, ly, 0.36),
-                 (0.04, 0.04, 0.72), COL_WOOD_TRIM)
-    # Two chairs
-    for ci, (cx, cy) in enumerate([
-            (tx - 0.50, ty - 0.50), (tx + 0.50, ty + 0.50)]):
-        make_box(f"Chair_{ci}_Seat", (cx, cy, 0.46),
-                 (0.42, 0.42, 0.04), COL_WOOD_TRIM)
-        make_box(f"Chair_{ci}_Back", (cx, cy + (0.22 if ci == 0 else -0.22), 0.74),
-                 (0.42, 0.04, 0.56), COL_WOOD_TRIM)
-        for li in range(4):
-            lxc = cx - 0.18 + (li % 2) * 0.36
-            lyc = cy - 0.18 + (li // 2) * 0.36
-            make_box(f"Chair_{ci}_Leg_{li}", (lxc, lyc, 0.23),
-                     (0.03, 0.03, 0.46), COL_WOOD_TRIM)
+    make_table("Table", tx, ty, w=0.80, d=0.80, h=0.74, wood=COL_WOOD_TRIM)
+    # Two chairs (DETAIL DRAFT 4: through the furniture kit)
+    for ci, (cx, cy, yaw) in enumerate([(tx - 0.50, ty - 0.50, 3.1416), (tx + 0.50, ty + 0.50, 0.0)]):
+        make_chair(f"Chair_{ci}", cx, cy, yaw=yaw, wood=COL_WOOD_TRIM, w=0.42)
 
 
 def build_living_room_tv_corner():
