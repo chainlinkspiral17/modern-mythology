@@ -306,7 +306,19 @@ boxes); the remaining hand-built chairs and tables (grep
 diner counters/stools through lathe + prism; conifers with more
 tiers and a crown blob; make_broadleaf with a multi-blob crown;
 heightfield ground under the road sets (needs a ground exemption in
-the overlap grammar); Deck verification of everything above. THE PROGRAM'S END STATE: every remaining
+the overlap grammar); Deck verification of everything above.
+DRAFT 4A shipped: six more rooms' tables and chairs through the
+furniture kit (henderson, cabin — turned pedestal, seven chairs with
+the ring opened toward the partition — centro, roberts, lena, pit
+stop), every swap keeping the original prefix. DRAFT 4B shipped:
+conifers with five jittered tiers and a leader, broadleaves with
+three to five two-green lobes and two tube limbs (seven builders).
+STILL QUEUED: the diner's and kwik stop's stools and counters through
+lathe + prism (model chapters — Deck-verify the chamfer policy on
+them FIRST); riverboat_interior and daily_grind chairs (cylinder
+seats — a stool-style variant of make_chair); hospital_room's
+metal-armed chair; salty_tome's wing chair (a shaped prism back);
+the two unmeasured Harmony builders; heightfield ground. THE PROGRAM'S END STATE: every remaining
 blind cue is deliberate — the two road aggregates (re-homing
 decision), four cast closeups without char ids, three beats that
 happen elsewhere or on a person. NEXT:
