@@ -2,8 +2,9 @@
 import os, sys
 _BT = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)), ".."))
 if _BT not in sys.path: sys.path.insert(0, _BT)
+from _props.furniture import make_chair
 from _props import palette as P
-from _props.geometry import clear_scene, make_box, make_cyl, export_glb
+from _props.geometry import make_lathe, clear_scene, make_box, make_cyl, export_glb
 from _props.structure import make_floor, make_wall, make_ceiling, make_crown_molding, make_window
 from _props.store_fixtures import make_counter, make_counter_bullnose, make_register
 from _props.shelving import make_snack_aisle, make_endcap
@@ -50,25 +51,13 @@ def build_table():
     import math
     tx, ty = 0.0, ROOM_D/2.0
     make_cyl("Table_Top", (tx, ty, 0.74), 0.55, 0.04, COL_WOOD)
-    make_cyl("Table_Pedestal", (tx, ty, 0.37), 0.06, 0.70, COL_WOOD)
-    # Splayed pedestal feet
-    for fi in range(4):
-        fang = fi * 1.57 + 0.785
-        fx, fy = tx + math.cos(fang)*0.24, ty + math.sin(fang)*0.24
-        make_box(f"Table_Foot_{fi}", (fx, fy, 0.04), (0.10, 0.10, 0.06), COL_WOOD)
+    # a turned pedestal (DETAIL DRAFT 3) with a foot disc
+    make_lathe("Table_Pedestal", (tx, ty, 0.0), [(0.26, 0.0), (0.24, 0.04), (0.10, 0.08), (0.06, 0.20), (0.07, 0.40), (0.05, 0.55), (0.09, 0.66), (0.12, 0.72)], COL_WOOD, segments=12)
     # Chairs gained backs + legs (were seat-only)
     for ci in range(4):
         ang = ci * 1.57
         cx, cy = tx + math.cos(ang)*1.10, ty + math.sin(ang)*1.10
-        make_box(f"Chair_{ci}_Seat", (cx, cy, 0.44), (0.42, 0.42, 0.04), COL_WOOD)
-        # Back faces the table (opposite the outward radial direction)
-        bx, by = tx + math.cos(ang)*1.30, ty + math.sin(ang)*1.30
-        if abs(math.cos(ang)) >= abs(math.sin(ang)):
-            make_box(f"Chair_{ci}_Back", (bx, cy, 0.70), (0.04, 0.42, 0.48), COL_WOOD)
-        else:
-            make_box(f"Chair_{ci}_Back", (cx, by, 0.70), (0.42, 0.04, 0.48), COL_WOOD)
-        for k, (ox, oy) in enumerate([(-0.16, -0.16), (0.16, -0.16), (-0.16, 0.16), (0.16, 0.16)]):
-            make_box(f"Chair_{ci}_Leg_{k}", (cx+ox, cy+oy, 0.22), (0.05, 0.05, 0.42), COL_WOOD)
+        make_chair(f"Chair_{ci}", cx, cy, yaw=ang + 1.5708, wood=COL_WOOD, w=0.42)
     # Breakfast centerpiece: napkin holder + salt/pepper + fruit bowl
     make_box("NapkinHolder", (tx-0.18, ty, 0.82), (0.14, 0.06, 0.12), (0.86, 0.84, 0.80, 1.0))
     make_cyl("Salt", (tx+0.02, ty, 0.80), 0.025, 0.10, (0.92, 0.92, 0.90, 1.0), segments=8)

@@ -138,7 +138,7 @@ def _vc_material(name, rgba):
     return mat
 
 
-def make_box(name, center, size, rgba, open_faces=None):
+def _make_box_vendored(name, center, size, rgba, open_faces=None):
     bpy.ops.mesh.primitive_cube_add(size=1.0, location=center)
     o = bpy.context.active_object
     o.name = name
@@ -146,6 +146,24 @@ def make_box(name, center, size, rgba, open_faces=None):
     bpy.ops.object.transform_apply(scale=True)
     o.data.materials.append(_vc_material(name + "_mat", rgba))
     return o
+
+
+def make_box(name, center, size, base_color, open_faces=None):
+    """DETAIL DRAFT 3 (2026-09-06): delegates to the shared
+    _props.geometry.make_box so this set gets the auto-chamfer policy
+    (prop-sized boxes get cut edges; walls, floors, plates stay as
+    they were). The vendored flat-color box remains as the fallback
+    when _props is not importable."""
+    try:
+        import sys as _sys, os as _os
+        _bt = _os.path.dirname(_os.path.abspath(__file__))
+        for _c in (_bt, _os.path.dirname(_bt)):
+            if _os.path.isdir(_os.path.join(_c, "_props")) and _c not in _sys.path:
+                _sys.path.insert(0, _c)
+        from _props.geometry import make_box as _shared
+    except Exception:
+        return _make_box_vendored(name, center, size, base_color, open_faces)
+    return _shared(name, center, size, base_color, open_faces)
 
 
 def make_cyl(name, center, radius, height, rgba, segments=10, axis='Z'):

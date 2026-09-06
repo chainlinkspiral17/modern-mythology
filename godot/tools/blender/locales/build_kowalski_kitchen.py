@@ -2,6 +2,7 @@
 import os, sys
 _BT = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)), ".."))
 if _BT not in sys.path: sys.path.insert(0, _BT)
+from _props.furniture import make_table, make_chair
 from _props import palette as P
 from _props.geometry import clear_scene, make_box, make_chamfer_box, make_cyl, export_glb
 from _props.structure import make_floor, make_wall, make_ceiling, make_crown_molding, make_window
@@ -53,21 +54,12 @@ def build_counter():
 
 def build_table():
     tx, ty = 0.0, ROOM_D/2.0
-    make_chamfer_box("Table_Top", (tx, ty, 0.74), (1.20, 0.80, 0.04), COL_WOOD)
-    for li in range(4):
-        lx = tx + (-0.54, +0.54, -0.54, +0.54)[li]
-        ly = ty + (-0.34, -0.34, +0.34, +0.34)[li]
-        make_box(f"Table_Leg_{li}", (lx, ly, 0.36), (0.04, 0.04, 0.72), COL_WOOD)
-    for ci, (cx, cy) in enumerate([(tx-0.80, ty), (tx+0.80, ty), (tx, ty-0.62), (tx, ty+0.62)]):
-        make_box(f"Chair_{ci}_Seat", (cx, cy, 0.44), (0.40, 0.40, 0.04), COL_WOOD)
-        # Backrest on the side away from the table centre + four legs
-        ddx, ddy = cx - tx, cy - ty
-        if abs(ddx) >= abs(ddy):
-            make_box(f"Chair_{ci}_Back", (cx + (0.18 if ddx > 0 else -0.18), cy, 0.70), (0.04, 0.40, 0.48), COL_WOOD)
-        else:
-            make_box(f"Chair_{ci}_Back", (cx, cy + (0.18 if ddy > 0 else -0.18), 0.70), (0.40, 0.04, 0.48), COL_WOOD)
-        for k, (ox, oy) in enumerate([(-0.16, -0.16), (0.16, -0.16), (-0.16, 0.16), (0.16, 0.16)]):
-            make_box(f"Chair_{ci}_Leg_{k}", (cx+ox, cy+oy, 0.22), (0.05, 0.05, 0.42), COL_WOOD)
+    # DETAIL DRAFT 3 (2026-09-06): the table and its four chairs through the
+    # furniture kit — turned legs, aprons, a stretcher; spindled chair backs
+    # turned away from the table. Names keep Table_Top / Chair_N_Seat.
+    make_table("Table", tx, ty, w=1.20, d=0.80, h=0.76, wood=COL_WOOD)
+    for ci, (cx, cy, yaw) in enumerate([(tx-0.80, ty, -1.5708), (tx+0.80, ty, 1.5708), (tx, ty-0.62, 0.0), (tx, ty+0.62, 3.1416)]):
+        make_chair(f"Chair_{ci}", cx, cy, yaw=yaw, wood=COL_WOOD)
 
 def build_clock():
     make_wall_clock("Clock", (0.0, ROOM_D-0.05, CEIL-0.50), frozen_hour=8, frozen_min=15)
