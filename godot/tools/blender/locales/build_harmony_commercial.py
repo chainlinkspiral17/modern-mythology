@@ -92,7 +92,7 @@ KWIK_W = 16.0     # building width
 KWIK_L = 11.0     # building depth (along Y)
 KWIK_H = 7.0
 KWIK_CX = -22.0   # building center east-west — pulled in toward intersection
-KWIK_CY =  11.0   # set back 11 m north of intersection center
+KWIK_CY =  19.0   # face at y 13.5 — ON its lot (the lot starts at 11.2); at 11.0 the store's front half stood in the North Belt's asphalt (2026-09-07)
 
 # NexCorp Gas & Go (NE corner)
 GAS_KIOSK_W = 10.0   # the kiosk behind the pumps
@@ -964,7 +964,7 @@ def _make_car(name, cx, cy, body_color, facing='+Y'):
 def build_parked_cars():
     # One car parked in front of Kwik Stop
     _make_car("Car_Kwik", KWIK_CX + 4.0,
-              KWIK_CY - KWIK_L / 2 - 3.5, COL_CAR_GREY, facing='+Y')
+              KWIK_CY - KWIK_L / 2 - 1.2, COL_CAR_GREY, facing='+Y')   # '+Y' = long axis along X in this helper   # along the storefront, inside the frontage strip (2026-09-07: nose-in at 3.5 m it stood 6 m into the lanes)
     # One car at a Gas & Go pump
     _make_car("Car_Pump", GAS_CANOPY_CX - GAS_PUMP_SPACING + 2.8,
               GAS_CANOPY_CY - 1.4, COL_CAR_RED, facing='+X')

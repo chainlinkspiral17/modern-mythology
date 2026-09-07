@@ -635,7 +635,7 @@ def build_studio_and_editing_desk():
              (ay_x, ay_y, 0.50),
              (0.46, 0.46, 0.06), (0.36, 0.20, 0.14, 1.0))
     make_box("Studio_AnyaChair_Back",
-             (ay_x, ay_y + 0.20, 0.85),
+             (ay_x, ay_y + 0.20, 0.740),
              (0.46, 0.05, 0.40), (0.36, 0.20, 0.14, 1.0))
     for sx in (-1, +1):
         for sy in (-1, +1):

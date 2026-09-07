@@ -377,7 +377,7 @@ def build_devil_wave2_props():
         back_dx = math.cos(ang) * 0.14
         back_dy = math.sin(ang) * 0.14
         make_box("MtgChair_%d_Back" % ci,
-                 (cx + back_dx, cy + back_dy, 0.72),
+                 (cx + back_dx, cy + back_dy, 0.65),
                  (0.32, 0.06, 0.36),
                  (0.62, 0.62, 0.64, 1.0))
         for (lx, ly) in [(-0.14, -0.14), (+0.14, -0.14),

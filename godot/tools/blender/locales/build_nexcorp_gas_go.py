@@ -328,7 +328,7 @@ def build_office():
     # Office chair
     make_box("OfficeChair_Seat", (dx, dy - 0.40, 0.46),
              (0.46, 0.46, 0.08), (0.18, 0.16, 0.16, 1.0))
-    make_box("OfficeChair_Back", (dx, dy - 0.62, 1.00),
+    make_box("OfficeChair_Back", (dx, dy - 0.62, 0.840),
              (0.46, 0.06, 0.66), (0.18, 0.16, 0.16, 1.0))
     # 4-drawer file cabinet (Skip's dispatch records)
     make_box("FileCab", (+5.30, 8.50, 0.80),

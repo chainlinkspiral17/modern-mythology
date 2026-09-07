@@ -318,7 +318,7 @@ def build_moon_wave2_props():
                  (0.32, 0.32, 0.04),
                  (0.62, 0.62, 0.64, 1.0))
         make_box("PorchChair_%d_Back" % ci,
-                 (porch_x + dx, porch_y - 0.14, 0.72),
+                 (porch_x + dx, porch_y - 0.14, 0.65),
                  (0.32, 0.06, 0.36),
                  (0.62, 0.62, 0.64, 1.0))
         for (lx, ly) in [(-0.14, -0.14), (+0.14, -0.14),

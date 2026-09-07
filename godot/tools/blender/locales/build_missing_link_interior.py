@@ -145,7 +145,7 @@ def build_window_booths():
             benchx = bx + sgn * 0.36
             make_box(f"Booth_{bi}_Seat_{tag}", (benchx, 0.95, 0.44),
                      (0.30, 1.10, 0.10), COL_VINYL_RED)
-            make_box(f"Booth_{bi}_Back_{tag}", (bx + sgn * 0.52, 0.95, 0.86),
+            make_box(f"Booth_{bi}_Back_{tag}", (bx + sgn * 0.52, 0.95, 0.83),
                      (0.10, 1.10, 0.66), COL_VINYL_DK)
         make_cyl(f"Booth_{bi}_Table_Post", (bx, 0.95, 0.36), 0.03, 0.72, COL_CHROME)
         make_box(f"Booth_{bi}_Table", (bx, 0.95, 0.74), (0.48, 0.62, 0.05), COL_LAMINATE)

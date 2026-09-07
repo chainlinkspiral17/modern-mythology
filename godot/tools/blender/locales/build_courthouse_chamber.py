@@ -291,7 +291,7 @@ def build_justice_dressing():
                      (0.42, 0.30, 0.22, 1.0))
             # The seat back stub
             make_box("JurySeatBack_%d_%d" % (ri, ci),
-                     (sx, sy + 0.12, 0.78),
+                     (sx, sy + 0.12, 0.74),
                      (0.26, 0.04, 0.50),
                      (0.42, 0.30, 0.22, 1.0))
 
@@ -366,7 +366,7 @@ def build_justice_wave2_props():
              (0.28, 0.60, 0.05),
              (0.42, 0.30, 0.22, 1.0))
     make_box("Chambers_CorridorBench_Back",
-             (corridor_x + 0.13, corridor_y, 0.78),
+             (corridor_x + 0.13, corridor_y, 0.650),
              (0.05, 0.60, 0.36),
              (0.42, 0.30, 0.22, 1.0))
     # The Boutte-Street bakery bag on the bench (paper bag)

@@ -323,7 +323,7 @@ def build_hero_props():
     # Eileen's folding chair — third row, south of the crowd
     bx = -(SIDE_X + 2.6)
     make_box("Eileen_Chair_Seat", (bx - 2 * 0.55, MID_Y - 17.0, 1.35), (0.42, 0.42, 0.03), (0.36, 0.42, 0.55, 1.0))
-    make_box("Eileen_Chair_Back", (bx - 2 * 0.55 - 0.2, MID_Y - 17.0, 1.65), (0.03, 0.42, 0.36), (0.32, 0.38, 0.50, 1.0))
+    make_box("Eileen_Chair_Back", (bx - 2 * 0.55 - 0.2, MID_Y - 17.0, 1.560), (0.03, 0.42, 0.36), (0.32, 0.38, 0.50, 1.0))
     # Equipment shed + Coach Dale's truck, beyond the NW corner
     make_box("Equip_Shed", (-30.0, FIELD_LEN + 6.0, 1.3), (4.0, 3.0, 2.6), (0.48, 0.42, 0.34, 1.0))
     make_box("Equip_Shed_Roof", (-30.0, FIELD_LEN + 6.0, 2.75), (4.4, 3.4, 0.3), (0.34, 0.30, 0.26, 1.0))

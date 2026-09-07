@@ -78,6 +78,12 @@ ROADISH = re.compile(r"(road|asphalt|street|lane|highway|hwy|drive$|_drive_|blvd
 # Places a car is SUPPOSED to stand: lots, aprons, driveways, garages,
 # frontage strips in front of stores. Not travel lanes.
 PARKINGISH = re.compile(r"(lot|parking|apron|driveway|garage|frontage|carport|pad|bay|stall|pump)", re.I)
+# Cars that are DRIVING (highway traffic, the delivery truck in its lane,
+# Tem's northbound truck under the hood preset) — not parked anywhere.
+MOVING = re.compile(r"(hwy9_car|traffic|deliverytruck|tem_truck|_moving|northbound|southbound)", re.I)
+# Designed tucks between parts of one assembly: a bullnose into a
+# counter top, liquid in a pot, a book in a shelf, a bulb in a shade.
+TUCK = re.compile(r"^(bullnose|liquid|fill|water|coffee|foam|sixpack|interior|stock|marker|riser|laundry|shade|bulb|plate|book|manga|cushion|label|decal|band|stripe|trim|edge|lip|rim|cap|glass|screen)$", re.I)
 CARISH = re.compile(r"(car|truck|sedan|van|pickup|cruiser|patrol|corolla|civic|wagon|jeep|suv|ambulance)", re.I)
 CAR_PART = re.compile(r"(body|cab|cabin|hood|bed|roof)$", re.I)
 DESKISH = re.compile(r"(desk|table|counter|bar_top|workbench|vanity|dining|fourtop|twotop|sixtop)", re.I)
@@ -168,6 +174,8 @@ def check_intra(boxes):
                     continue      # joints: wall corners, crown mitres, roof/chimney, frame members
                 if VO.PASSABLE.search(a[0]) or VO.PASSABLE.search(b[0]):
                     continue      # foliage tiers / lobes / fronds — cones and blobs as boxes
+                if TUCK.search(part_class(a[0])) or TUCK.search(part_class(b[0])):
+                    continue      # designed tucks: bullnose in a top, liquid in a pot, a book in its shelf
                 if VEHICLE_PART.search(part_class(a[0])) and VEHICLE_PART.search(part_class(b[0])):
                     continue      # one rigid vehicle
                 if ROAD_SEG.search(pre):
@@ -183,6 +191,8 @@ def check_float(boxes):
         n, c, h = b
         if VO.IGNORE.search(n) or MOUNTED.search(n) or VO.PASSABLE.search(n):
             continue      # foliage leaders / lobes are not props that "float"
+        if VEHICLE_PART.search(part_class(n)) and CARISH.search(n):
+            continue      # a hub inside a tire, a cab on a chassis — the assembly holds it
         if max(h) * 2 > FLOAT_MAX_SIDE or min(h) * 2 < 0.01:
             continue
         bottom = c[2] - h[2]
@@ -293,9 +303,13 @@ def check_desks(boxes):
 
 def check_lanes(boxes):
     roads = [b for b in boxes if ROADISH.search(b[0]) and not PARKINGISH.search(b[0])
-             and not re.search(r"(line|stripe|mark|edge|shoulder|curb|sign|bend|post)", b[0], re.I)
-             and max(b[2][0], b[2][1]) * 2 > 12.0 and b[2][2] * 2 < 0.6]
-    cars = [b for b in boxes if CARISH.search(b[0]) and CAR_PART.search(b[0]) and max(b[2]) * 2 > 1.5]
+             and not re.search(r"(line|stripe|mark|edge|shoulder|curb|sign|bend|post|median|ramp)", b[0], re.I)
+             and max(b[2][0], b[2][1]) * 2 > 12.0 and b[2][2] * 2 < 0.6
+             # a diagonal road recorded as one bounding box is wide in BOTH
+             # dims — nothing can be measured against it
+             and min(b[2][0], b[2][1]) * 2 < 30.0]
+    cars = [b for b in boxes if CARISH.search(b[0]) and CAR_PART.search(b[0]) and max(b[2]) * 2 > 1.5
+            and not MOVING.search(b[0])]
     out = []
     seen = set()
     for car in cars:

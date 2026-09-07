@@ -82,7 +82,7 @@ def build_plotter_and_mood_board():
 
 def _task_chair(name, cx, cy, seat_col=(0.20, 0.22, 0.26, 1.0)):
     make_box(f"{name}_Seat", (cx, cy, 0.50), (0.44, 0.44, 0.06), seat_col)
-    make_box(f"{name}_Back", (cx, cy+0.20, 0.86), (0.44, 0.05, 0.60), seat_col)
+    make_box(f"{name}_Back", (cx, cy-0.20, 0.86), (0.44, 0.05, 0.60), seat_col)   # chairs sit S of their desks; the back is S (2026-09-07)
     make_cyl(f"{name}_Post", (cx, cy, 0.26), 0.03, 0.48, P.METAL_BLACK, segments=6, axis='Z')
     import math
     for s in range(5):

@@ -688,3 +688,20 @@ failure paths separately before concluding anything.
   on the surface, not in the box). Raw-mesh boxes stay in the ray
   audits (ribbons themselves as fill) and are excluded from the
   overlap check. Do not "fix" this with a ceiling.
+
+### 2026-09-07 (night) · the chair-back class; a helper's "facing" is a lie until checked
+
+- **Classify before fixing, then fix the CLASS.** 1737 FLOAT findings
+  were noise until grouped by part class: `back` above `seat` was 29
+  real chairs — the user's "chairs not fully assembled" — and one
+  patcher lowered them all. The rest of the class list (hub, cab,
+  body) was vehicles, excluded as assembly.
+- **A helper's facing argument means what its code does, not what
+  its name says.** harmony_commercial's `_make_car(..., facing='+X')`
+  lays the car's LONG axis along Y. Read the helper's size swap before
+  trusting the word; the recorder's dump (`Car_Kwik_Body h=(0.9, 2.1)`)
+  told the truth in one line.
+- **A building can stand in the street too.** The Kwik Stop's front
+  half sat inside the arterial's 16 m plane because its centre was
+  authored before the lot edge was. When a car keeps ending up "in the
+  road", check whether the road is where the building is.

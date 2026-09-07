@@ -715,6 +715,25 @@ mesh builders. The two "unmeasured Harmony builders" from the detail
 queue (harmony_district 393, harmony_commercial 193 objects) measure
 too. harmony_terrain's five markers pass the ray gate; the marker ceiling stays at 17.
 
+**2026-09-07 · the grammar review, worked.** The repo-wide furniture-
+grammar run (INTRA 5051 · FLOAT 1737 · CHAIR 5 · DESK 1 · LANE 13 after
+the mesh hook) classified by part: (1) CHAIR BACKS FLOATING ABOVE THEIR
+SEATS — 29 across 14 builders (the roadhouse ring 8 cm, the drive-in
+porch chairs, the courthouse jury seats, the Missing Link booths, Anya's
+studio chair 12 cm, NexCorp's office chair 17 cm …) — every back
+lowered onto its seat with a 1 cm tuck; (2) three more chairs facing
+away (the Houston studio's five task chairs via their helper, the
+pharmacy office chair) flipped; (3) NexCorp's office desk to its N wall;
+(4) the Kwik Stop in harmony_commercial stood with its front half IN
+the North Belt's asphalt (KWIK_CY 11 with the lot starting at 11.2) —
+moved onto its lot (CY 19), its car parked along the storefront;
+(5) rules: DRIVING cars (highway traffic, the delivery truck, Tem's
+northbound truck) are not parking; medians, ramps and bbox-inflated
+diagonal roads are not lanes; designed TUCKS (bullnose in a counter
+top, liquid in a pot, book in a shelf, bulb in a shade) are not intra
+clips; vehicle parts never float. Every touched builder: 0 clips,
+0 misaims, 0 obstructed. Repo-wide counts after: see the next run.
+
 **2026-08-19 · PER-STICK VOICE SWEEP VERDICT (voice draft 4).**
 Ran the leakage grep (TODO/WIP/placeholder/implemented/deferred/
 stub) and a string survey across EVERY stick directory: estuary_4,

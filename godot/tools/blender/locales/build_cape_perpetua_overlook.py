@@ -111,7 +111,7 @@ def build_platform():
     make_box("Overlook_Rail_Mid", (-5.35, py, 0.72), (0.06, 2.70, 0.06), WOOD_WET)
     # the bench at the inner edge, set against the salal
     make_box("Overlook_Bench_Seat", (-2.85, py, 0.46), (0.40, 1.50, 0.06), WOOD_WET)
-    make_box("Overlook_Bench_Back", (-2.66, py, 0.78), (0.06, 1.50, 0.40), WOOD_WET)
+    make_box("Overlook_Bench_Back", (-2.66, py, 0.700), (0.06, 1.50, 0.40), WOOD_WET)
     for li, ly in enumerate((py - 0.6, py + 0.6)):
         make_box(f"Overlook_Bench_Leg_{li}", (-2.85, ly, 0.215), (0.34, 0.08, 0.43), WOOD_WET)
     make_box("Bench_Wet_Sheen", (-2.85, py, 0.4915), (0.30, 1.30, 0.003), (0.42, 0.36, 0.28, 1.0))

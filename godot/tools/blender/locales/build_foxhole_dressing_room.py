@@ -139,7 +139,7 @@ def build_hero_props():
     steel = (0.55, 0.57, 0.58, 1.0)
     for fi, (fx, fy) in enumerate(((-0.55, 1.55), (0.45, 1.35))):
         make_box(f"Folding_Chair_{fi}_Seat", (fx, fy, 0.45), (0.40, 0.40, 0.03), (0.48, 0.42, 0.36, 1.0))
-        make_box(f"Folding_Chair_{fi}_Back", (fx, fy+0.19, 0.72), (0.40, 0.03, 0.34), (0.48, 0.42, 0.36, 1.0))
+        make_box(f"Folding_Chair_{fi}_Back", (fx, fy+0.19, 0.580), (0.40, 0.03, 0.34), (0.48, 0.42, 0.36, 1.0))
         for lx in (fx-0.17, fx+0.17):
             make_box(f"Folding_Chair_{fi}_LegF_{lx:.2f}", (lx, fy-0.15, 0.22), (0.025, 0.025, 0.44), steel)
             make_box(f"Folding_Chair_{fi}_LegB_{lx:.2f}", (lx, fy+0.15, 0.22), (0.025, 0.025, 0.44), steel)

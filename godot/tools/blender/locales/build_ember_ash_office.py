@@ -329,7 +329,7 @@ def build_office_chair():
     # Seat
     make_box("OfficeChair_Seat", (cx, cy, 0.48), (0.50, 0.50, 0.08), COL_LEATHER_OX)
     # Back
-    make_box("OfficeChair_Back", (cx, cy + 0.22, 0.86), (0.50, 0.06, 0.60), COL_LEATHER_OX)
+    make_box("OfficeChair_Back", (cx, cy + 0.22, 0.830), (0.50, 0.06, 0.60), COL_LEATHER_OX)
     # Central post
     make_cyl("OfficeChair_Post", (cx, cy, 0.24), 0.030, 0.44, COL_DESK_LEG, segments=6, axis='Z')
     # 5-star base

@@ -414,7 +414,7 @@ def build_sun_wave2_props():
              (0.80, 0.30, 0.06),
              COL_BENCH_WOOD)
     make_box("SouthBench_Back",
-             (south_bench_x, south_bench_y - 0.14, 0.72),
+             (south_bench_x, south_bench_y - 0.14, 0.660),
              (0.80, 0.06, 0.36),
              COL_BENCH_WOOD)
     # Two iron legs
@@ -432,7 +432,7 @@ def build_sun_wave2_props():
              (0.70, 0.28, 0.06),
              COL_BENCH_WOOD)
     make_box("EastBench_Back",
-             (east_bench_x, east_bench_y - 0.13, 0.72),
+             (east_bench_x, east_bench_y - 0.13, 0.660),
              (0.70, 0.06, 0.36),
              COL_BENCH_WOOD)
 
