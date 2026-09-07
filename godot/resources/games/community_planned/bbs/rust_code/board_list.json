@@ -67,6 +67,15 @@
       "flavor": "Where hasslein / uzhekwurm / jlowe / chainlinkspiral and the rest of the regulars talk about everything that is not the work. Movies, video games, sports, karaoke, history, Lynch. The sysops read and rarely post."
     },
     {
+      "id": "THE_LETTERS",
+      "letter": "N",
+      "name": "the_letters",
+      "subtitle": "NEWS FROM HARMONY CREEK · letters to the editor · by m.d.",
+      "visibility": "public_from_start",
+      "threads_path": "res://resources/games/community_planned/bbs/rust_code/the_letters.json",
+      "flavor": "The zine's letters column, typed in on Sunday nights before the Cosmic Comics copier warms up. Readers write in; the editor answers in lowercase and never signs a name. The paper copies ride the Kwik Stop envelope; the board is where the letters live between issues."
+    },
+    {
       "id": "THE_GROVE",
       "letter": "G",
       "name": "THE_GROVE",

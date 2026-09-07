@@ -144,6 +144,19 @@ sludge hangs).
   cycle); THE TRIP pushes to 1.3. Any key, button or real mouse move
   wakes it and everything returns. Next: score bursts on chained
   rounds; tempo as the difficulty axis; a per-arcana high-score card.
+- **community · THE LETTERS COLUMN (draft 1, 2026-09-07).** RUST_CODE
+  gains a public board, THE_LETTERS (`N`): NEWS FROM HARMONY CREEK's
+  letters to the editor, nine threads W2–W16 in the zine register —
+  lot 14's cookies, Sam's correction to the back-cooler strip, Carla's
+  47 Hz, PHASE III's "a zine with a letters column is a newspaper",
+  the NexCorp Voice's courteous note, F.T.'s "the pause" at the
+  book's seam (issue #20: eight blank pages, one dollar), the storm-
+  window letter in three lines, 892's grey sedan again, "for the
+  fund". The pressure curve is the tempo: letters lengthen to W6, go
+  terse at W13–14, ease by W16. Data only — no engine change; the
+  phosphor-green rule holds. Next: the BBS masthead for that board
+  set in the zine's hand (Cosmic Comics paper stock as the board's
+  colour), a reader letter that answers a `[trip:]` beat.
 - **direction · [trip:] cues (draft 1).** 190 interlude beats across
   vols 5–7 carry `[trip:1.2]` (the structural turn pushes the layer,
   the way `[mood:]` cues were placed on interludes), plus three

@@ -672,6 +672,14 @@ wakes it. NEXT: Deck-check the attract banner does not fight a modal;
 score bursts on chained rounds; the BBS-as-letters-column row for
 Planned Community; a verb coin on the cabin chapter.
 
+**2026-09-07 · game grammar row 2 · the letters column.** RUST_CODE
+gets THE_LETTERS (letter N, public from W1): nine NEWS FROM HARMONY
+CREEK letters-to-the-editor threads, W2–W16, in Maya's zine voice with
+F.T. in the sysop's chair — JSON only, per the CP playbook (board_list
++ the_letters.json; every CP JSON validates). NEXT: the verb coin on
+the cabin chapter (row 3); Minter inside one stick (row 4); Deck-read
+the letters at 14400 baud for length.
+
 **2026-08-19 · PER-STICK VOICE SWEEP VERDICT (voice draft 4).**
 Ran the leakage grep (TODO/WIP/placeholder/implemented/deferred/
 stub) and a string survey across EVERY stick directory: estuary_4,

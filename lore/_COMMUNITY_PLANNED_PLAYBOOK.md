@@ -953,3 +953,16 @@ fixes shipped this commit:
   stakes.** buyout_letters (sev 4, six households, the 4%% detail)
   is the escalation shape W12+ wants: not bigger numbers, more
   people at one kitchen table.
+
+### 2026-09-07 · the letters column (game grammar row 2)
+
+- **A zine's letters column IS a board.** THE_LETTERS on RUST_CODE:
+  the reader's letter is the OP, the editor's lowercase reply is the
+  first reply, the sysop drops in when the board's history is the
+  point. Nine threads authored to the pressure curve — long by W6,
+  three lines in the W13–14 storm window, easing by W16 — so the
+  summer's tempo is legible in the letters' LENGTH before it is
+  legible in their content.
+- **Prefix `RN_`.** RUST_CODE threads are not in the breadth-check
+  prefix map (breadth counts the OTHER five BBSes), so a new local
+  board needs no engine change. Any new EXTERNAL board does.
