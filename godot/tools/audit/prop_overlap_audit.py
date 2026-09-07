@@ -156,10 +156,27 @@ def record_builder(path):
         A.BOXES.append((str(name), tuple(float(c) for c in center), half))
         return A._obj_stub(name)
 
+    def rec_mesh(name, verts, faces=None, base_color=None, *a, **k):
+        # raw-mesh helpers (harmony_terrain's _finalize_mesh: the Highway 9
+        # ribbons, guardrails, gantries — 2026-09-07, the "highway9 recorder
+        # gap": six presets audited against nothing) → the verts' bbox
+        try:
+            xs = [float(v[0]) for v in verts]; ys = [float(v[1]) for v in verts]; zs = [float(v[2]) for v in verts]
+        except Exception:
+            return A._obj_stub(name)
+        if not xs:
+            return A._obj_stub(name)
+        c = ((max(xs) + min(xs)) / 2.0, (max(ys) + min(ys)) / 2.0, (max(zs) + min(zs)) / 2.0)
+        h = (max(0.005, (max(xs) - min(xs)) / 2.0), max(0.005, (max(ys) - min(ys)) / 2.0), max(0.005, (max(zs) - min(zs)) / 2.0))
+        A.BOXES.append((str(name), c, h))
+        return A._obj_stub(name)
+
     if "make_box" in g:
         g["make_box"] = rec_box
     if "make_cyl" in g:
         g["make_cyl"] = rec_cyl
+    if "_finalize_mesh" in g:
+        g["_finalize_mesh"] = rec_mesh
     # harmony_terrain vendors same-signature local helpers under
     # distinct names — without these hooks its 6 highway9 presets
     # audited against ZERO recorded geometry.
@@ -182,7 +199,8 @@ def record_builder(path):
             continue
         for attr, repl in (("make_box", rec_box), ("make_cyl", rec_cyl),
                            ("_make_box_local", rec_box),
-                           ("_make_cyl_local", rec_cyl)):
+                           ("_make_cyl_local", rec_cyl),
+                           ("_finalize_mesh", rec_mesh)):
             if hasattr(mod, attr):
                 setattr(mod, attr, repl)
         for nn in ("export_glb", "clear_scene"):

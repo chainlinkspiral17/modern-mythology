@@ -62,7 +62,7 @@ DELIBERATE_MARKERS = set()
 # (harmony_terrain drapes its props over a heightfield the recorder
 # cannot follow: every highway9 preset read EMPTY at 100% while the
 # Deck shows the stage). Skipped until the recorder learns the drape.
-UNMEASURED = {"harmony_terrain"}
+UNMEASURED = set()   # harmony_terrain measured since the _finalize_mesh hook (2026-09-07)
 # Locales whose ground is a heightfield MESH the recorder does not see
 # (graustark's 200×140 elevation grid): rays past a prop hit nothing,
 # so "sees only sky" is an artifact there, not a verdict.
