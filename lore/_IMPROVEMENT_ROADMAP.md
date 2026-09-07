@@ -699,6 +699,22 @@ All four game-grammar rows now have a draft 1 (attract mode · the
 letters column · the verb coin · Minter-in-the-stick). NEXT: Deck
 taste on all four; Spiderdrops' storm finale as a light-synth bonus.
 
+**2026-09-07 · the highway9 recorder gap, closed.** Highway 9's
+ribbons, guardrails and gantries are built through harmony_terrain's
+raw-mesh helper `_finalize_mesh`, which the audit recorder never saw
+— six Deck-verified presets audited against nothing. The recorder now
+records every `_finalize_mesh` call (eight builders define it) as the
+verts' bounding box. Two consequences handled the same hour: (1) a
+sloped 50 m ribbon's bbox is a wall to a ray and a clip to every box
+under it, so the terrain-following ribbons (asphalt / shoulder /
+median / berm / embankment) count as FILL in the ray audits and raw-
+mesh boxes are excluded from box-vs-box overlap entirely; (2) with
+that, all six highway9 presets pass, harmony_terrain leaves the
+UNMEASURED set, and the overlap gate stays clean on all eight raw-
+mesh builders. The two "unmeasured Harmony builders" from the detail
+queue (harmony_district 393, harmony_commercial 193 objects) measure
+too. Marker ceiling re-read once harmony_terrain's five markers are in.
+
 **2026-08-19 · PER-STICK VOICE SWEEP VERDICT (voice draft 4).**
 Ran the leakage grep (TODO/WIP/placeholder/implemented/deferred/
 stub) and a string survey across EVERY stick directory: estuary_4,

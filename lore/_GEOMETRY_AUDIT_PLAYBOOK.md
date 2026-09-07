@@ -672,3 +672,19 @@ failure paths separately before concluding anything.
 - **Regex-anchored doc edits fail silently.** Two playbook lessons
   were "written" against an anchor this file never had and vanished.
   Assert the anchor, or append.
+
+### 2026-09-07 (late) · raw meshes and what a bounding box is good for
+
+- **Hook every geometry entry point, including raw meshes.** The
+  recorder rebinds make_box / make_cyl / the vendored locals — and
+  missed `_finalize_mesh`, the verts-and-faces helper eight builders
+  use for terrain-following ribbons, ponds, ramps. Six presets on a
+  Deck-verified stage audited against nothing for weeks. Rule: grep a
+  builder for every function that ends in `bpy.data.meshes.new` and
+  make sure the recorder answers to each name.
+- **A mesh's bbox is a RAY fact, not an OVERLAP fact.** A 50 m sloped
+  ribbon's box is a wall to a ray fan (right: it blocks the view) and
+  a clip to every prop standing on the slope (wrong: the prop stands
+  on the surface, not in the box). Raw-mesh boxes stay in the ray
+  audits (ribbons themselves as fill) and are excluded from the
+  overlap check. Do not "fix" this with a ceiling.

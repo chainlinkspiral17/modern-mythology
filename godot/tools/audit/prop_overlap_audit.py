@@ -127,11 +127,19 @@ LAMPISH = re.compile(r"lamp|shade\b|sconce", re.I)
 LAMP_MAX = 0.20
 
 
+# Names recorded from raw-mesh helpers (bounding boxes of arbitrary
+# meshes — terrain-following paths, ponds, ramps). Fine for the ray
+# audits, meaningless for box-vs-box overlap: a sloped 50 m ribbon's
+# bbox "clips" everything under it. The overlap check skips them.
+MESH_NAMES = set()
+
+
 def record_builder(path):
     """Record geometry from a builder, catching BOTH the shared
     _props helpers (via the audit stubs) and vendored local
     make_box/make_cyl definitions (by rebinding build_* globals)."""
     A.BOXES.clear()
+    MESH_NAMES.clear()
     src = open(path).read()
     src = re.sub(r"^if __name__.*$[\s\S]*", "", src, flags=re.M)
     g = {"__name__": "_overlap_probe", "__file__": path}
@@ -169,6 +177,7 @@ def record_builder(path):
         c = ((max(xs) + min(xs)) / 2.0, (max(ys) + min(ys)) / 2.0, (max(zs) + min(zs)) / 2.0)
         h = (max(0.005, (max(xs) - min(xs)) / 2.0), max(0.005, (max(ys) - min(ys)) / 2.0), max(0.005, (max(zs) - min(zs)) / 2.0))
         A.BOXES.append((str(name), c, h))
+        MESH_NAMES.add(str(name))
         return A._obj_stub(name)
 
     if "make_box" in g:
@@ -615,7 +624,7 @@ def main():
             continue
         if err:
             print("%-32s (partial: %s)" % (name, err))
-        hits = overlaps(boxes)
+        hits = overlaps([b for b in boxes if b[0] not in MESH_NAMES])
         if hits:
             print("== %s · %d objects · %d clips" % (name, len(boxes), len(hits)))
             for depth, n1, n2, pen in hits[:20]:
