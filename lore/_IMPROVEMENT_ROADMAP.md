@@ -470,8 +470,16 @@ ROOT CAUSES FOUND (the tooling had holes, not just the content):
    partition, 12 sky. NEW TOOL marker_reframe.py searches rings
    around the subject (5 distances × 24 yaws × 5 elevations, not
    inside anything, occlusion-free, nearest to the author's original
-   position) and rewrites position + aim: 96 reframed, 22 stuck (no
-   clear position — those need the prop or the room to move).
+   position) and rewrites position + aim: 110 reframed over two
+   passes, 19 STUCK (no clear position — the prop is behind a wall
+   from every side; those need the prop or the cue to move): cabin_road
+   drone · cape_perpetua hexagon · cedar_tower credit · centro_stockroom
+   smear · cosmic_comics_interior oneway · daily_grind tower ·
+   graustark wreck + smoke_ring · henderson basement · jesse phone ·
+   lena window · maya board + floorboards + envelope · new_auburn
+   cypress · new_orleans_office window · new_orleans_room mirror ·
+   riverboat window · school_field scoreboard. Marker gate: 128 → 41
+   (a zero-regression ceiling in run_all_audits); aim gate: 0 misaims.
 5. prop_overlap_audit exempts same-prefix parts as one assembly, so
    a pillow through its own bed, a chair back floating off its seat,
    and stacked desk papers were never reported. NEW TOOL

@@ -453,8 +453,8 @@ metadata/fov = 42.0
 
 ; insert: the south glass, the lot beyond (ch4)
 [node name="shot_insert_window" type="Marker3D" parent="." groups=["vn_shot"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.5, 1.55, -0.35)
-rotation = Vector3(0.0, 3.1416, 0.0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.833, 2.275, -2.572)
+rotation = Vector3(-0.9767, 2.9670, 0.0)
 metadata/fov = 42.0
 
 ; insert: the NexCorp van, engine running, facing her (ch15)

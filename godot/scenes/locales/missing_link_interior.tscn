@@ -343,8 +343,8 @@ metadata/fov = 56.0
 
 ; insert: the pie case on the back counter
 [node name="shot_insert_pie" type="Marker3D" parent="." groups=["vn_shot"]]
-position = Vector3(1.5, 1.7, -3.5)
-rotation = Vector3(-0.248419, 0, 0)
+position = Vector3(0.234, 1.678, -2.914)
+rotation = Vector3(-0.2127, -0.6080, 0.0)
 metadata/fov = 40.0
 
 ; insert: the jukebox

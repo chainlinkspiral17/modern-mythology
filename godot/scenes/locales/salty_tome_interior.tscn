@@ -410,8 +410,8 @@ metadata/fov = 42.0
 
 ; insert: her hand on the wall over the patch; the bricks under it
 [node name="shot_insert_wall" type="Marker3D" parent="." groups=["vn_shot"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.35, 1.5, -10.7)
-rotation = Vector3(0, 0, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.775, 2.275, -9.327)
+rotation = Vector3(-0.6413, -1.8537, 0.0)
 metadata/fov = 42.0
 
 ; insert: the milk crate at the foot of the wall
