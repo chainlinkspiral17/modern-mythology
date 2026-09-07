@@ -413,6 +413,10 @@ static func _normalize_arcana_id(raw: String) -> String:
 
 func _ready() -> void:
 	add_to_group("ui")   # F4 master-toggle sweep (CLAUDE.md hard rule)
+	# THE TRIP register for this pillar; pops when the game leaves the tree.
+	var trip_reg: Node = get_node_or_null("/root/TripSync")
+	if trip_reg != null and trip_reg.has_method("push_register"):
+		trip_reg.call("push_register", "arcana", self)
 	AlmanacState.evaluate_unlocks()   # cross-pillar unlocks fire on entry
 	set_process_unhandled_key_input(true)
 	_load_data()

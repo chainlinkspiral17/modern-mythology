@@ -18,6 +18,14 @@ touching code:
 2. `lore/_SHADER_VISUALS_PLAYBOOK.md` — screen-space shaders, mood
    presets, post-process stack order, Label3D vs procedural text,
    active shader + mood inventory. Read before touching any visuals.
+2b. `lore/_PSYCHEDELIC_DESIGN_BIBLE.md` — THE TRIP: the project-
+   wide music-synced psychedelic layer (TripSync autoload +
+   trip_sync.gdshader) and the four pillar REGISTERS (arcana ·
+   community · milk_honey · slowstick/Minter) with each pillar's
+   sound, visual register and GAME grammar. Read before touching
+   TripSync, the trip shader, or any pillar's look-and-feel or
+   game-design direction. Current hardware only — no retro cosplay
+   anywhere in the game.
 3. `lore/_LIGHTING_PLAYBOOK.md` — cinematography rules: three-light
    foundation, practicals tied to visible fixtures, color gels by
    Kelvin, when Spot vs Omni. Read before touching any `Light3D`

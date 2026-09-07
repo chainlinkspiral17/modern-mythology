@@ -130,6 +130,13 @@ static func apply(host: Node, preset_name: String) -> CanvasLayer:
 			break
 		anc = anc.get_parent()
 
+	# THE TRIP runs its Minter register (neon vector lines, spark
+	# storms, the screen thump) for as long as this look layer lives —
+	# the layer dies with the host, so the register pops on quit.
+	var trip_reg: Node = host.get_node_or_null("/root/TripSync")
+	if trip_reg != null and trip_reg.has_method("push_register"):
+		trip_reg.call("push_register", "slowstick", layer)
+
 	var rect := ColorRect.new()
 	rect.name = "LookRect"
 	rect.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)

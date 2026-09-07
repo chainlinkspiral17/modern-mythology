@@ -52,7 +52,7 @@ const BEAT_FLOOR: float = 0.07          # ... plus this absolute margin (normali
 const INTERVAL_LO: float = 0.28         # s · accepted inter-beat range (215..46 bpm)
 const INTERVAL_HI: float = 1.30
 const INTERVALS_KEPT: int = 8
-const PULSE_DECAY: float = 5.0          # exp decay rate of the beat envelope
+const PULSE_DECAY: float = 5.0          # base exp decay rate of the beat envelope (registers override)
 const SILENCE_RAW: float = 0.0035       # raw analyzer sum below this = no music
 const SILENCE_HOLD: float = 1.5         # s of quiet before the idle breath takes over
 
@@ -86,6 +86,69 @@ var mood_scale: float = 1.0
 var surface_scale: float = 1.0
 const SOFT_SURFACE_SCALE: float = 0.45
 
+# ── REGISTERS · the per-pillar look (2026-09-07, user direction) ──
+# "Major Arcana is swampy and arcade inspired; Planned Community is
+# retro video games and zines and stoner sludge meta punk rock; Land
+# of Milk and Honey is SCUMM-game inspired, psychedelic wall-of-sound
+# classic rock but sci-fi. Slowsticks: Jeff Minter design and
+# visuals, only using current hardware." Each register is a set of
+# shader dials; hosts push one with themselves as owner and it pops
+# when the owner leaves the tree (the VN's volume, a gauntlet run, a
+# slowstick under the shelf). Float dials lerp over REGISTER_FADE;
+# the palette snaps at the midpoint. See lore/_PSYCHEDELIC_DESIGN_BIBLE.md.
+const REGISTERS: Dictionary = {
+	# the base look · rainbow aura, moderate everything (menus, vols 1-4)
+	"base": {
+		"palette_mode": 0, "line_amount": 1.0, "flow_amount": 1.0, "hue_amount": 1.0,
+		"ripple_amount": 1.0, "spark_amount": 0.0, "grain_amount": 0.0,
+		"flicker_amount": 0.0, "thump_amount": 0.0, "pulse_decay": 5.0,
+	},
+	# vol 5 · MAJOR ARCANA · swampy + arcade: bayou-water flow (slow,
+	# wide), phosphor-green lines with sodium amber on the kick, the
+	# cabinet dips its power on the beat, little hue drift (the noir
+	# stays noir)
+	"arcana": {
+		"palette_mode": 1, "line_amount": 1.25, "flow_amount": 1.35, "hue_amount": 0.55,
+		"ripple_amount": 0.9, "spark_amount": 0.0, "grain_amount": 0.0,
+		"flicker_amount": 1.0, "thump_amount": 0.0, "pulse_decay": 4.0,
+	},
+	# vol 6 · PLANNED COMMUNITY · zines + sludge: two risograph inks
+	# on the lines (no rainbow), photocopy grain, the flow is slow and
+	# heavy (sludge tempo — the pulse hangs), hue drift almost off
+	"community": {
+		"palette_mode": 2, "line_amount": 1.15, "flow_amount": 0.75, "hue_amount": 0.35,
+		"ripple_amount": 0.7, "spark_amount": 0.0, "grain_amount": 1.0,
+		"flicker_amount": 0.0, "thump_amount": 0.0, "pulse_decay": 2.6,
+	},
+	# vol 7 · LAND OF MILK AND HONEY · liquid light show + sci-fi:
+	# oil-projector palette, dense flow and hue drift (the wall of
+	# sound), a sparse starfield of sparks in the dark, big soft ripples
+	"milk_honey": {
+		"palette_mode": 3, "line_amount": 0.95, "flow_amount": 1.45, "hue_amount": 1.35,
+		"ripple_amount": 1.2, "spark_amount": 0.45, "grain_amount": 0.0,
+		"flicker_amount": 0.0, "thump_amount": 0.0, "pulse_decay": 3.4,
+	},
+	# slowsticks · MINTER · pure additive neon on the lines, spark
+	# storms on the kick, the whole screen thumps; flats stay STILL
+	# (the game must stay readable — no warp, no hue drift)
+	"slowstick": {
+		"palette_mode": 4, "line_amount": 1.5, "flow_amount": 0.0, "hue_amount": 0.25,
+		"ripple_amount": 0.6, "spark_amount": 1.3, "grain_amount": 0.0,
+		"flicker_amount": 0.0, "thump_amount": 1.0, "pulse_decay": 6.0,
+	},
+}
+const REGISTER_FADE: float = 0.9          # s · float dials cross-fade
+const REGISTER_FLOATS: Array[String] = [
+	"line_amount", "flow_amount", "hue_amount", "ripple_amount",
+	"spark_amount", "grain_amount", "flicker_amount", "thump_amount",
+]
+var _register_stack: Array[Dictionary] = []   # [{"name": String, "owner": Node}]
+var register_name: String = "base"
+var _reg_from: Dictionary = {}
+var _reg_to: Dictionary = {}
+var _reg_t: float = 1.0
+var _pulse_decay: float = 5.0
+
 var _bands: PackedFloat32Array = PackedFloat32Array()
 var _band_lo: PackedFloat32Array = PackedFloat32Array()
 var _band_hi: PackedFloat32Array = PackedFloat32Array()
@@ -117,6 +180,8 @@ func _ready() -> void:
 		push_warning("[TripSync] shader missing at %s — layer disabled" % SHADER_PATH)
 		return
 	amount = clampf(Settings.trip_amount, 0.0, 1.0)
+	_reg_from = REGISTERS["base"]
+	_reg_to = REGISTERS["base"]
 	Settings.settings_changed.connect(_on_setting)
 	_spawn_global_layer()
 	print("[TripSync] on · amount %.2f · layer %d · PSYCHEDELIA slider in settings" % [amount, LAYER_ORDER])
@@ -267,13 +332,19 @@ func _process(delta: float) -> void:
 		_ring_target = Vector2(0.5 + _rng.randf_range(-0.22, 0.22), 0.5 + _rng.randf_range(-0.16, 0.16))
 
 	# ── clocks
-	pulse *= exp(-dt * PULSE_DECAY)
+	pulse *= exp(-dt * _pulse_decay)
 	ring_t += dt
 	beat_phase = fposmod(beat_phase + dt / _beat_interval, 1.0)
 	bar_phase = fposmod(bar_phase + dt / (_beat_interval * 4.0), 1.0)
 	hue_base = fposmod(hue_base + dt * (0.008 + 0.045 * energy), 1.0)
 	t_flow += dt * (0.30 + 0.90 * energy + 0.60 * pulse)
 	_ring_c = _ring_c.lerp(_ring_target, clampf(dt * 2.5, 0.0, 1.0))
+
+	# ── register fade + owner pruning (a freed host pops itself)
+	if _reg_t < 1.0:
+		_reg_t = minf(1.0, _reg_t + dt / REGISTER_FADE)
+	if not _register_stack.is_empty():
+		_resolve_register()
 
 	# ── paint · the global layer steps aside for trip_local surfaces
 	var local_active: bool = not get_tree().get_nodes_in_group("trip_local").is_empty()
@@ -301,6 +372,7 @@ func _push_to(mat: ShaderMaterial) -> void:
 	mat.set_shader_parameter("t_flow", t_flow)
 	mat.set_shader_parameter("ring_cx", _ring_c.x)
 	mat.set_shader_parameter("ring_cy", _ring_c.y)
+	_push_register_to(mat)
 
 
 # ── Public helpers ────────────────────────────────────────────────
@@ -317,7 +389,90 @@ func set_mood_scale(v: float) -> void:
 	mood_scale = clampf(v, 0.0, 1.0)
 
 
+# ── Registers ─────────────────────────────────────────────────────
+static func register_for_volume(vol: int) -> String:
+	match vol:
+		5: return "arcana"
+		6: return "community"
+		7: return "milk_honey"
+	return "base"
+
+
+# Push a register for as long as `owner` is in the tree. Hosts call
+# this from _ready with themselves; the VN calls it with its volume.
+func push_register(reg: String, owner: Node) -> void:
+	if not REGISTERS.has(reg) or owner == null:
+		return
+	for i in range(_register_stack.size()):
+		if _register_stack[i]["owner"] == owner:
+			_register_stack.remove_at(i)
+			break
+	# "seen" flips once the owner has been inside the tree; a host that
+	# pushes from a static builder before add_child (SlowstickLook)
+	# must not be pruned on the very next resolve.
+	_register_stack.append({"name": reg, "owner": owner, "seen": owner.is_inside_tree()})
+	_resolve_register()
+
+
+func pop_register(owner: Node) -> void:
+	for i in range(_register_stack.size()):
+		if _register_stack[i]["owner"] == owner:
+			_register_stack.remove_at(i)
+			break
+	_resolve_register()
+
+
+func _resolve_register() -> void:
+	var i: int = _register_stack.size() - 1
+	while i >= 0:
+		var entry: Dictionary = _register_stack[i]
+		var owner_v: Variant = entry["owner"]
+		if not is_instance_valid(owner_v):
+			_register_stack.remove_at(i)
+		else:
+			var owner: Node = owner_v as Node
+			if owner.is_inside_tree():
+				entry["seen"] = true
+			elif bool(entry.get("seen", false)):
+				_register_stack.remove_at(i)
+		i -= 1
+	var target: String = "base"
+	if not _register_stack.is_empty():
+		target = String(_register_stack[_register_stack.size() - 1]["name"])
+	if target == register_name:
+		return
+	_reg_from = _current_register_floats()
+	_reg_to = REGISTERS[target]
+	_reg_t = 0.0
+	register_name = target
+	_pulse_decay = float(_reg_to.get("pulse_decay", 5.0))
+	print("[TripSync] register → %s" % target)
+
+
+func _current_register_floats() -> Dictionary:
+	var out: Dictionary = {}
+	var k: float = smoothstep(0.0, 1.0, _reg_t)
+	var base: Dictionary = REGISTERS[register_name]
+	for key in REGISTER_FLOATS:
+		var a: float = float(_reg_from.get(key, base.get(key, 0.0)))
+		var b: float = float(_reg_to.get(key, base.get(key, 0.0)))
+		out[key] = lerpf(a, b, k)
+	return out
+
+
+func _push_register_to(mat: ShaderMaterial) -> void:
+	var k: float = smoothstep(0.0, 1.0, _reg_t)
+	var cur: Dictionary = REGISTERS[register_name]
+	for key in REGISTER_FLOATS:
+		var a: float = float(_reg_from.get(key, cur.get(key, 0.0)))
+		var b: float = float(_reg_to.get(key, cur.get(key, 0.0)))
+		mat.set_shader_parameter(key, lerpf(a, b, k))
+	# the palette snaps at the midpoint of the fade
+	var pal_src: Dictionary = _reg_to if k >= 0.5 else _reg_from
+	mat.set_shader_parameter("palette_mode", int(pal_src.get("palette_mode", cur.get("palette_mode", 0))))
+
+
 func status_line() -> String:
-	return "TRIP %d%% (dial %d%% · mood ×%.2f · surface ×%.2f) · %s · %.0f bpm · e%.2f b%.2f p%.2f" % [
+	return "TRIP %d%% (dial %d%% · mood ×%.2f · surface ×%.2f) · %s · %s · %.0f bpm · e%.2f b%.2f p%.2f" % [
 		int(effective_amount() * 100.0), int(amount * 100.0), mood_scale, surface_scale,
-		"music" if music_present else "idle", bpm, energy, bass, pulse]
+		register_name, "music" if music_present else "idle", bpm, energy, bass, pulse]

@@ -343,6 +343,11 @@ func load_save(save_data: Dictionary) -> void:
 
 func _apply_skin(vol: int) -> void:
 	_skin = SkinDB.get_for_vol(vol)
+	# THE TRIP register follows the volume (arcana / community /
+	# milk_honey); pops by itself when this engine leaves the tree.
+	var trip_reg: Node = get_node_or_null("/root/TripSync")
+	if trip_reg != null and trip_reg.has_method("push_register"):
+		trip_reg.call("push_register", String(trip_reg.call("register_for_volume", vol)), self)
 	_bg_solid.color = _skin.get("scene_bg", Color(0.05, 0.04, 0.03))
 	_dlg.offset_top = -_skin.get("dlg_min_h", 210.0)
 	_dlg.call("setup", _skin)

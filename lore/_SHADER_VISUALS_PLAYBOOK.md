@@ -780,6 +780,15 @@ copperplate), Sacramento (modern handwritten).
 - **Draft-1 caveat.** Not one frame has been seen on the Deck; every
   threshold above was set blind. Draft 2 is a taste pass with the
   PSYCHEDELIA slider, then per-mood and per-surface scaling.
+- **Registers, same day.** The user gave each pillar a SOUND
+  (arcade / sludge / wall of sound / Minter) and the look followed:
+  `TripSync.REGISTERS` holds five dial sets with a per-register
+  palette function in the shader (`aura_color`), sparks, photocopy
+  grain, a cabinet power dip, the Minter thump, and a per-register
+  `pulse_decay` — the single number that most changes how a pillar
+  feels on the beat. Hosts push a register with themselves as owner
+  and it pops when they leave the tree. Doctrine + game-grammar
+  queue: `lore/_PSYCHEDELIC_DESIGN_BIBLE.md`.
 
 ### TEMPLATE for next session
 

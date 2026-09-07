@@ -365,6 +365,26 @@ pushes 0.35 under neon-1.0 / ascii-≥0.5 moods (or the preset's own
 the DebugHUD prints TripSync.status_line() (dial · mood × · surface ×
 · bpm · energy · bass · pulse) so the beat detector can be read
 against a known track. Still blind until the Deck sees it.
+DRAFT 1C shipped (same day, user direction: "slowstick games too ·
+Jeff Minter design and visuals · only current hardware · and game
+design · Major Arcana swampy + arcade · Planned Community retro
+games, zines, stoner sludge meta punk · Milk and Honey SCUMM,
+psychedelic wall-of-sound classic rock but sci-fi"): the REGISTER
+system — five named dial sets in TripSync.REGISTERS (base · arcana ·
+community · milk_honey · slowstick) with per-register palette
+(rainbow / swamp phosphor / riso duotone / liquid light / neon
+vector), sparks, photocopy grain, cabinet flicker, the Minter thump
+and a per-register pulse decay; an owner stack so a host's register
+pops when the host leaves the tree; pushes from GameEngine (by
+volume), TarotGauntletGame, CommunityPlannedGame and SlowstickLook.
+lore/_PSYCHEDELIC_DESIGN_BIBLE.md holds the doctrine and each
+pillar's GAME GRAMMAR queue. GAME DESIGN HAS NOT SHIPPED — the
+bible's grammar column is the queue: gauntlet attract mode + chain
+multipliers + tempo-as-difficulty; CP's BBS as the zine's letters
+column + pressure curve as tempo drops; a verb coin on the cabin
+chapter; a Minter bonus round in one stick; a feedback-trail
+SubViewport for the slowstick register; TripSync raising its layer
+above Pirate Summer's layer-90 console.
 
 **2026-08-19 · PER-STICK VOICE SWEEP VERDICT (voice draft 4).**
 Ran the leakage grep (TODO/WIP/placeholder/implemented/deferred/
@@ -482,7 +502,7 @@ Current ledger (draft counts are honest, not aspirational):
 | Slowstick manuals + packaging (NH = model) | 1 | era-voice + walkthrough sweep across ~20 sticks; box art after experiences are good (task #234) |
 | VN portrait busts (de-blocking · 2026-08-04) | 2 (EPX×2 + soft finish; hide-ghosts made ephemeral) | screenshot check vs the SVGA bar; if still chunky: raise the 60x64 base canvas itself (more shading ramps, finer features); dialogue-box busts + CP roster inherit automatically |
 | Scene direction · coverage rotation (2026-08-04) | 5 (28 locales carry decks — 111 authored setups, 176 markers repo-wide; draft 5 gave TEN ARCANA SETS the exact markers their scripts already cue (round 2: cafe_olimpico, both new_orleans rooms + the office — 42 arcana markers total; graustark deferred to the richer stub) — Alice's rose/chair/closeup, Natalie's turntable/card, Jimmy's sofa, Elicia's desk/laptop/teacup, Erica's office, the Montreal notebook — plus establish_b rotations, ALL euler-form now: the 81 matrix markers were converted after draft 3 found the transpose bug. Draft 4 covered the whole 7-9-use tier incl. kwik_stop B/C and the shared missing_link_exterior/shuttle_bench deck) | Deck screenshots — every framing is math-verified to <0.5° but ZERO have been seen through a lens; taste notes ("finn B too low") drive draft 5. Next tier (5-6 uses: foxhole_bar, henderson_garage, faust_bedroom, jesse_bedroom, centro_break_room, bianca_kitchen_morning, diner_interior variants) only after a taste pass confirms the grammar reads |
-| **THE TRIP (music-synced psychedelic layer · 2026-09-07)** | **1** (TripSync autoload + trip_sync.gdshader; global layer 60 + VN texture mode; PSYCHEDELIA slider) | draft 2: Deck look at 0.6 on the diner / a VN chapter / a slowstick; per-mood + per-surface scaling; beat detector vs the real catalog; ripple centre on the shot subject |
+| **THE TRIP (music-synced psychedelic layer · 2026-09-07)** | **1C** (TripSync autoload + trip_sync.gdshader; global layer 60 + VN texture mode; PSYCHEDELIA slider; per-mood/per-surface scaling; FIVE REGISTERS arcana/community/milk_honey/slowstick/base pushed by the hosts — see _PSYCHEDELIC_DESIGN_BIBLE.md) | draft 2: Deck look at 0.6 per register (gauntlet, CP screen, a vol 7 chapter, a stick); beat detector vs the real catalog; then the GAME GRAMMAR column one row per pillar |
 | Model chapters (diner, kwik stop, cathedral, henderson) | many | the BAR — mine them for what a finished space has |
 
 ### Workstream · THE STUMP HUNT (2026-08-04)
