@@ -277,8 +277,8 @@ def markers_pass(only, show_all):
             continue
         fovs = M.parse_marker_fovs(path)
         real = sum(1 for b in boxes if not IGNORE.search(b[0]))
-        if real < 20:
-            continue      # unmeasured builder
+        if real < 20 or glb in UNMEASURED:
+            continue      # unmeasured builder (harmony_terrain's drape — see UNMEASURED)
         name_geo = [(b[0], (b[1][0], b[1][2], -b[1][1])) for b in boxes]
         for name, pos, rot in markers:
             n += 1

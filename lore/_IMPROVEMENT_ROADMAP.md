@@ -524,8 +524,8 @@ tscn-only and need no rebuild).
 work that needs to get done").**
 · MARKERS: an EMBED_TOL (18 cm) in the occlusion test — a window's
   glass sits inside its wall slab, a board on its floor — freed 8 of
-  the 19 stuck; the marker gate ceiling is now 32 (128 → 41 → 32), 11
-  stuck remain (cabin_road drone in the Sitka canopy · cape_perpetua
+  the 19 stuck; the marker gate ceiling is now 26 (128 → 41 → 32 → 26 with
+  harmony_terrain's five markers skipped as unmeasured), 11 stuck remain (cabin_road drone in the Sitka canopy · cape_perpetua
   hexagon in the fog bank · cedar_tower credit · centro_stockroom
   smear · cosmic_comics_interior oneway · daily_grind tower · graustark
   wreck + smoke_ring · henderson basement door · lena window · maya

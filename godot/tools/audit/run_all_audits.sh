@@ -113,12 +113,12 @@ echo ""
 # The same ray fan over every vn_shot marker (the diner's clock
 # insert faced the upper south wall: a yellow field with a door
 # sliver). NEAR / WALL / EMPTY verdicts; nonzero exit fails.
-# ZERO-REGRESSION CEILING: 32 after the 2026-09-07 reframe passes (128
-# before them): 11 STUCK subjects behind walls from every side, 12 sky
+# ZERO-REGRESSION CEILING: 26 after the 2026-09-07 reframe passes (128
+# before them; harmony_terrain's five markers skipped as unmeasured): 11 STUCK subjects behind walls from every side, 12 sky
 # frames, the rest non-subject markers with a surface in the lens.
 # Drive it down; never raise it.
 echo "── vantage_obstruction_audit.py --markers ──"
-MARKER_CEILING=32
+MARKER_CEILING=26
 MOUT="$(python3 vantage_obstruction_audit.py --markers 2>/dev/null | grep -v "^\[")" || true
 MCOUNT="$(echo "$MOUT" | grep -oE "^[0-9]+ obstructed marker" | grep -oE "^[0-9]+")"
 echo "$MOUT" | tail -1
