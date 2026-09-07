@@ -713,7 +713,7 @@ that, all six highway9 presets pass, harmony_terrain leaves the
 UNMEASURED set, and the overlap gate stays clean on all eight raw-
 mesh builders. The two "unmeasured Harmony builders" from the detail
 queue (harmony_district 393, harmony_commercial 193 objects) measure
-too. Marker ceiling re-read once harmony_terrain's five markers are in.
+too. harmony_terrain's five markers pass the ray gate; the marker ceiling stays at 17.
 
 **2026-08-19 · PER-STICK VOICE SWEEP VERDICT (voice draft 4).**
 Ran the leakage grep (TODO/WIP/placeholder/implemented/deferred/
