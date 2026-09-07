@@ -20,7 +20,7 @@ var _haptics:        float  = 1.0
 var _music_skin:     String = "diner_booth"
 var _music_viz:      String = "peak_meter"
 var _music_jukebox:  bool   = true
-var _trip_amount:    float  = 0.45   # THE TRIP · psychedelic layer strength (TripSync)
+var _trip_amount:    float  = 0.25   # THE TRIP · psychedelic layer strength (TripSync)
 
 
 var txt_scale: float:
@@ -197,7 +197,7 @@ func _load() -> void:
 	_music_skin      = str(cfg.get_value("settings",   "music_skin",     "diner_booth"))
 	_music_viz       = str(cfg.get_value("settings",   "music_viz",      "peak_meter"))
 	_music_jukebox   = bool(cfg.get_value("settings",  "music_jukebox",  true))
-	_trip_amount     = clampf(float(cfg.get_value("settings", "trip_amount", 0.45)), 0.0, 1.0)
+	_trip_amount     = clampf(float(cfg.get_value("settings", "trip_amount", 0.25)), 0.0, 1.0)
 	_apply_window_mode(_window_mode)
 
 

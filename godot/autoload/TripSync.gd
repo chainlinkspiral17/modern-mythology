@@ -63,7 +63,7 @@ var _materials: Array[ShaderMaterial] = []
 var _analyzer: AudioEffectSpectrumAnalyzerInstance = null
 
 # Music state (public read for anything else that wants to dance)
-var amount: float = 0.45
+var amount: float = 0.25
 var energy: float = 0.0
 var bass: float = 0.0
 var mid: float = 0.0
@@ -102,35 +102,39 @@ const REGISTERS: Dictionary = {
 	# the base look · rainbow aura, moderate everything (menus, vols 1-4)
 	"base": {
 		"palette_mode": 0, "line_amount": 1.0, "flow_amount": 1.0, "hue_amount": 1.0,
-		"ripple_amount": 1.0, "spark_amount": 0.0, "grain_amount": 0.0, "pulse_decay": 5.0,
+		"ripple_amount": 1.0, "spark_amount": 0.0, "grain_amount": 0.0, "pulse_decay": 4.0,
 	},
 	# vol 5 · MAJOR ARCANA · swampy + arcade: a bayou-water colour
 	# wash, phosphor-green lines with sodium amber on the kick, little
 	# hue drift (the noir stays noir)
 	"arcana": {
-		"palette_mode": 1, "line_amount": 1.25, "flow_amount": 1.35, "hue_amount": 0.55,
-		"ripple_amount": 0.9, "spark_amount": 0.0, "grain_amount": 0.0, "pulse_decay": 4.0,
+		"palette_mode": 1, "line_amount": 1.1, "flow_amount": 1.2, "hue_amount": 0.5,
+		"ripple_amount": 0.8, "spark_amount": 0.0, "grain_amount": 0.0, "pulse_decay": 3.5,
 	},
 	# vol 6 · PLANNED COMMUNITY · zines + sludge: two risograph inks
 	# on the lines (no rainbow), photocopy grain, the flow is slow and
 	# heavy (sludge tempo — the pulse hangs), hue drift almost off
 	"community": {
-		"palette_mode": 2, "line_amount": 1.15, "flow_amount": 0.75, "hue_amount": 0.35,
-		"ripple_amount": 0.7, "spark_amount": 0.0, "grain_amount": 1.0, "pulse_decay": 2.6,
+		"palette_mode": 2, "line_amount": 1.0, "flow_amount": 0.7, "hue_amount": 0.3,
+		"ripple_amount": 0.6, "spark_amount": 0.0, "grain_amount": 0.8, "pulse_decay": 2.4,
 	},
 	# vol 7 · LAND OF MILK AND HONEY · liquid light show + sci-fi:
-	# oil-projector palette, dense flow and hue drift (the wall of
-	# sound), a sparse starfield of sparks in the dark, big soft ripples
+	# oil-projector palette, the densest colour wash and drift (the
+	# wall of sound), a sparse slow starfield in the dark
 	"milk_honey": {
-		"palette_mode": 3, "line_amount": 0.95, "flow_amount": 1.45, "hue_amount": 1.35,
-		"ripple_amount": 1.2, "spark_amount": 0.45, "grain_amount": 0.0, "pulse_decay": 3.4,
+		"palette_mode": 3, "line_amount": 0.9, "flow_amount": 1.3, "hue_amount": 1.2,
+		"ripple_amount": 1.0, "spark_amount": 0.3, "grain_amount": 0.0, "pulse_decay": 3.0,
 	},
-	# slowsticks · MINTER · pure additive neon on the lines, spark
-	# storms on the kick; the flats carry no wash and almost no drift
-	# (the game must stay readable)
+	# slowsticks · the SUBTLEST register (draft 2B · Deck verdict on the
+	# neon overlay: "ugly and strobey"). A 2D game screen is not a
+	# lit set: it has no soft flats for a wash and its UI edges are
+	# everywhere, so a strong aura reads as a smeared rainbow on the
+	# type. A faint neon breath on the lines, nothing on the flats, no
+	# sparks. The Minter register belongs INSIDE the sticks (their own
+	# particles and glow — a render task in each game), not on top.
 	"slowstick": {
-		"palette_mode": 4, "line_amount": 1.5, "flow_amount": 0.0, "hue_amount": 0.25,
-		"ripple_amount": 0.6, "spark_amount": 1.1, "grain_amount": 0.0, "pulse_decay": 6.0,
+		"palette_mode": 4, "line_amount": 0.30, "flow_amount": 0.0, "hue_amount": 0.10,
+		"ripple_amount": 0.25, "spark_amount": 0.0, "grain_amount": 0.0, "pulse_decay": 3.0,
 	},
 }
 const REGISTER_FADE: float = 0.9          # s · float dials cross-fade

@@ -26,8 +26,8 @@
 //                as rendered.
 //   THE BEAT     a ring of LIGHT expands from a drifting centre and
 //                lights the lines as it passes. Nothing is displaced.
-//   SPARKS       (registers that ask) fixed points that flash on the
-//                beat. They never travel.
+//   SPARKS       (registers that ask) fixed points that fade in and
+//                out slowly. They never travel and never flash.
 //
 // Two mounting modes, one shader:
 //   use_screen = true   full-screen ColorRect in the global layer-60
@@ -49,7 +49,7 @@ uniform sampler2D SCREEN_TEXTURE : hint_screen_texture, filter_linear;
 uniform bool use_screen = true;
 
 // ── dials (Settings.trip_amount → amount; the rest are the mix) ──
-uniform float amount : hint_range(0.0, 1.0) = 0.45;
+uniform float amount : hint_range(0.0, 1.0) = 0.25;
 uniform float line_amount : hint_range(0.0, 2.0) = 1.0;    // aura on the edges
 uniform float flow_amount : hint_range(0.0, 2.0) = 1.0;    // colour wash in the flats
 uniform float hue_amount : hint_range(0.0, 2.0) = 1.0;     // hue drift + saturation lift
@@ -221,10 +221,10 @@ void fragment() {
         float y = dot(col, vec3(0.299, 0.587, 0.114));
         float i = dot(col, vec3(0.596, -0.274, -0.322));
         float qq = dot(col, vec3(0.211, -0.523, 0.312));
-        float ang = (n2 - 0.5) * 0.70 * (0.45 + 0.55 * energy);
+        float ang = (n2 - 0.5) * 0.50 * (0.45 + 0.55 * energy);
         ang *= hue_amount * amount * (1.0 - density * 0.6);
-        ang = clamp(ang, -0.35, 0.35);
-        float sat = 1.0 + 0.22 * mid * hue_amount * amount;
+        ang = clamp(ang, -0.26, 0.26);
+        float sat = 1.0 + 0.16 * mid * hue_amount * amount;
         float ci = cos(ang);
         float si = sin(ang);
         float i2 = (i * ci - qq * si) * sat;
@@ -238,7 +238,7 @@ void fragment() {
         vec2 c = vec2(ring_cx * aspect, ring_cy);
         float r = length(q - c);
         float ring_r = ring_t * 0.9;
-        float ring = exp(-pow((r - ring_r) * 5.0, 2.0)) * exp(-ring_t * 1.6) * ripple_amount;
+        float ring = exp(-pow((r - ring_r) * 4.0, 2.0)) * exp(-ring_t * 1.2) * ripple_amount * 0.5;
 
         // ── aura on the lines · hue runs along the edge, a slow shimmer.
         //    SCREEN-blended, not added: highlights roll off instead of
@@ -246,13 +246,13 @@ void fragment() {
         float hue = fract(hue_base + q.x * 0.08 + q.y * 0.06 + n1.x * 0.30 + beat_phase * 0.04);
         vec3 rainbow = aura_color(hue, pulse * 0.6);
         float travel = 0.85 + 0.15 * sin(dot(q, vec2(18.0, 13.0)) - tf * 1.1);
-        float aura = line_amount * amount * (0.30 + 0.55 * energy + 0.30 * pulse + 0.9 * ring);
-        vec3 aura_rgb = rainbow * (line * travel * 0.70 + glow * (0.20 + 0.30 * pulse + 0.5 * ring) * 0.40) * aura;
+        float aura = line_amount * amount * (0.22 + 0.45 * energy + 0.10 * pulse + 0.45 * ring);
+        vec3 aura_rgb = rainbow * (line * travel * 0.55 + glow * (0.18 + 0.10 * pulse + 0.30 * ring) * 0.35) * aura;
         col = 1.0 - (1.0 - col) * (1.0 - clamp(aura_rgb, 0.0, 1.0));
 
         // ── a faint wash into the dark flats · the flats breathe in colour, not in place ──
         vec3 wash = aura_color(hue_base + 0.5 + n2 * 0.2, 0.0);
-        vec3 wash_rgb = wash * (1.0 - y) * open * 0.09 * (0.4 + 0.6 * energy) * breath * flow_amount * amount;
+        vec3 wash_rgb = wash * (1.0 - y) * open * 0.06 * (0.4 + 0.6 * energy) * breath * flow_amount * amount;
         col = 1.0 - (1.0 - col) * (1.0 - clamp(wash_rgb, 0.0, 1.0));
 
         // ── sparks · fixed points that flash on the beat (they never travel) ──
@@ -262,12 +262,13 @@ void fragment() {
             vec2 jit = vec2(hash21(cell + vec2(7.0, 3.0)), hash21(cell + vec2(13.0, 5.0))) - vec2(0.5);
             vec2 pt = (cell + vec2(0.5) + jit * 0.8) / 44.0;
             float d = length(q - pt);
-            float gate = 0.92 - 0.06 * energy - 0.18 * pulse;
-            float twinkle = smoothstep(gate, gate + 0.04, fract(h * 7.0 + t_flow * (0.10 + 0.3 * h) + beat_phase * step(0.5, h)));
-            float dot_i = smoothstep(0.0075 + 0.003 * pulse, 0.0, d) * 0.85;
-            float halo = smoothstep(0.035, 0.0, d) * 0.18 * pulse;
+            // a slow sine fade per point — never a flash (draft 2B: "strobey")
+            float fade = 0.5 + 0.5 * sin(t_flow * (1.2 + 2.4 * h) + h * 40.0);
+            float twinkle = fade * fade * fade * step(0.55, hash21(cell + vec2(3.0, 11.0)));
+            float dot_i = smoothstep(0.0075, 0.0, d) * 0.7;
+            float halo = smoothstep(0.035, 0.0, d) * 0.08 * pulse;
             vec3 spark_col = aura_color(h + hue_base, pulse * 0.6);
-            vec3 spark_rgb = spark_col * (dot_i + halo) * twinkle * spark_amount * amount * (0.5 + 0.5 * energy + 0.5 * pulse);
+            vec3 spark_rgb = spark_col * (dot_i + halo) * twinkle * spark_amount * amount * (0.5 + 0.5 * energy + 0.15 * pulse);
             col = 1.0 - (1.0 - col) * (1.0 - clamp(spark_rgb, 0.0, 1.0));
         }
 

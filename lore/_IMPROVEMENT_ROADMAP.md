@@ -398,6 +398,19 @@ DRAFT 3 TARGETS: Deck taste pass per register on the still
 picture; the aura's hue banding width (q·0.08 — wider or narrower);
 whether the zine duotone's hard ink step reads as intent or as
 aliasing; sparks density in milk_honey; then the GAME GRAMMAR rows.
+DRAFT 2B shipped (Deck verdict on 2: "needs to be way more subtle,
+3D backgrounds are on the right path, slowsticks are ugly and
+strobey"): default amount 0.25; the aura is energy-led with the beat
+at a tenth of its weight and the ring of light at half, so a fast
+track cannot strobe; hue drift capped ±0.26; sparks are slow sine
+fades (no gating, no beat flash); the slowstick register is now the
+FAINTEST of the five (lines 0.30, no wash, no sparks) — the Minter
+look belongs inside each stick's own rendering (particles, glow), a
+per-game render task, not a screen overlay. DRAFT 3 TARGETS: the
+3D-background register per volume on the Deck (that is the path
+that works); the slowstick overlay may go to zero if it still reads
+at 0.30; Minter-in-the-game for one stick (its own particle glow,
+its own beat-lit lines) as the first GAME GRAMMAR row.
 
 **2026-08-19 · PER-STICK VOICE SWEEP VERDICT (voice draft 4).**
 Ran the leakage grep (TODO/WIP/placeholder/implemented/deferred/

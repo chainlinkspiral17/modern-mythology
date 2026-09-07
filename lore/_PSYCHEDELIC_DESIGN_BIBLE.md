@@ -79,7 +79,7 @@ which this document extends to the whole game).
 | `arcana` | Vol 5 · MAJOR ARCANA · TAROT GAUNTLET · Graustark bayou | swampy + arcade | bayou-water flow (slow, wide); phosphor-green → cyan lines with sodium amber bleeding in on the kick; the cabinet dips its power on the beat; hue drift low so the operator-noir stays noir | ARCADE: attract mode on the gauntlet board when idle (the deck shuffles itself); score bursts and chain multipliers as rounds link; named loss conditions already read as "insert coin" — make the bookends literal (a credit, a continue); per-arcana high-score table; time-of-day difficulty axis becomes TEMPO (dawn slow, 3 am fast); visitor arrivals land on the beat |
 | `community` | Vol 6 · PLANNED COMMUNITY · COMMUNITY PLANNED · Harmony Creek | retro video games, zines, stoner sludge meta punk rock | two risograph inks on the lines (fluorescent pink + teal, hard-edged, no rainbow); photocopy grain; the pulse HANGS (decay 2.6 — sludge); flow slow and heavy; hue drift near zero | ZINE ISSUE: mission stages as pages, the BBS as the letters column, the summer pressure curve (W6/W12/W18) as tempo drops; META: the game already knows it sits in a book's pause — let it say so in the zine's voice; RETRO GAMES as in-fiction objects (cartridges, cabinet flyers, a review column) not as rendering; STONER pacing: long holds rewarded, nothing punishes patience |
 | `milk_honey` | Vol 7 · LAND OF MILK AND HONEY · Smolvud · the substrate · the slowstock shelf's cabin | SCUMM game, psychedelic wall-of-sound classic rock, sci-fi | liquid light show — the oil-projector palette (amber / rose / violet / one cold blue); the densest flow and hue drift of the four (the wall of sound); a sparse starfield of sparks in the dark; big soft ripples | SCUMM: verb-object interaction in the VN chapters (look at / pick up / talk to / use … on — the cabin, the tower, the Daily Grind), an inventory that matters, dialogue trees with wrong answers that are funny not fatal; SCI-FI: the substrate is the engine under a small-town point-and-click — the strange thing is always one room away; WALL OF SOUND: beds + BGM + practicals all breathing together (practicals pulse with the bar at ~10% of lightshow_extreme) |
-| `slowstick` | every slowstick under the shelf | Jeff Minter | pure additive neon on the lines with white cores on the kick; spark storms; the whole screen thumps in on the beat; flats stay STILL (no warp, no hue drift — the game must be readable) | MINTER: score as spectacle (every point is a particle), escalation by DENSITY not punishment, bonus rounds as pure light synth, the whimsy where a studio's fiction allows it; feedback trails via a SubViewport history buffer (current hardware — Godot does this natively), particles via GPUParticles2D |
+| `slowstick` | every slowstick under the shelf | Jeff Minter | the FAINTEST register (draft 2B · "ugly and strobey" as an overlay): a faint neon breath on the lines, nothing on the flats, no sparks. The Minter look lives INSIDE each stick's own rendering — its particles, its glow, its beat-lit lines — never as a screen overlay on a 2D game's type | MINTER: score as spectacle (every point is a particle), escalation by DENSITY not punishment, bonus rounds as pure light synth, the whimsy where a studio's fiction allows it; feedback trails via a SubViewport history buffer (current hardware — Godot does this natively), particles via GPUParticles2D |
 | `base` | menus, vols 1–4, anything unregistered | — | rainbow aura, moderate everything | — |
 
 The values live in `TripSync.REGISTERS`; float dials cross-fade
@@ -143,8 +143,16 @@ sludge hangs).
 - **A beat needs an attack.** `pulse` snapping to 1.0 on the hit
   read as a strobe even at low amounts. It now follows the
   envelope through a 45 ms attack; band smoothing rises slower too.
-- **Default amount 0.45, not 0.6.** Half the dial is the right
-  starting point for "at all times."
+- **Default amount 0.25, not 0.6 (draft 2B: "way more subtle").**
+  A quarter of the dial is the starting point for "at all times";
+  the 3D backgrounds were "on the right path" at that register.
+- **Screen overlays do not belong on 2D game screens.** The Deck
+  verdict on the slowstick register: "ugly and strobey." A 2D game
+  has UI edges everywhere and no lit flats, so an edge aura smears
+  the type and a beat-lit anything reads as strobe. The slowstick
+  overlay is now the faintest register; the Minter direction is a
+  per-game RENDER task inside the stick (its own particles and
+  glow, its own beat-lit geometry), scheduled under game grammar.
 
 ### 2026-09-07 · draft 1 · registers + the three pillars
 
