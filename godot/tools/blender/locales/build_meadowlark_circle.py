@@ -168,13 +168,13 @@ def build_sprinklers():
 def build_vigil():
     """The white sedan at the curb in the bulb — the reporter and the
     sunburned man, cold coffee from the same thermos."""
-    sx, sy = 18.5, -4.6
-    make_box("White_Sedan_Body", (sx, sy, 0.62), (4.20, 1.70, 0.60), (0.90, 0.90, 0.88, 1.0))
-    make_box("White_Sedan_Cabin", (sx - 0.3, sy, 1.13), (2.20, 1.50, 0.42), (0.82, 0.83, 0.82, 1.0))
-    make_box("White_Sedan_Windows", (sx - 0.3, sy + 0.765, 1.15), (1.80, 0.03, 0.30), (0.26, 0.30, 0.36, 1.0))
-    for wi, (wx, wy) in enumerate(((sx - 1.4, sy - 0.975), (sx + 1.4, sy - 0.975), (sx - 1.4, sy + 0.975), (sx + 1.4, sy + 0.975))):
-        make_cyl(f"White_Sedan_Wheel_{wi}", (wx, wy, 0.33), 0.33, 0.25, (0.14, 0.14, 0.15, 1.0), axis="Y", segments=10)
-    make_cyl("Vigil_Thermos", (sx + 0.4, sy + 0.9, 1.0), 0.04, 0.22, (0.32, 0.34, 0.36, 1.0), segments=8)
+    # At the CURB of the bulb (2026-09-07 · it stood 4.4 m into the
+    # asphalt — "cars don't park in the middle of streets"): the south
+    # side of the bulb, running along X, nose toward the street.
+    from _props.vehicles import bulb_park
+    sx, sy = bulb_park(BULB_X, 0.0, BULB_R, 250.0, "X")
+    make_car("White_Sedan", sx, sy, 4.3, (0.90, 0.90, 0.88, 1.0), along="X")
+    make_cyl("Vigil_Thermos", (sx + 0.4, sy + 0.9, 1.30), 0.04, 0.22, (0.32, 0.34, 0.36, 1.0), segments=8)
 
 
 def build_water_tower():

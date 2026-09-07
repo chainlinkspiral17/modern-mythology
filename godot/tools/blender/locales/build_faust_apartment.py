@@ -29,6 +29,7 @@ _BT = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)), 
 if _BT not in sys.path: sys.path.insert(0, _BT)
 from _props.geometry import clear_scene, make_box, make_cyl, export_glb
 from _props.structure import make_floor, make_wall, make_ceiling
+from _props.furniture import make_bed
 
 ROOM_W = 6.0      # x ∈ [-3, 3]
 ROOM_D = 5.0      # y ∈ [0, 5]
@@ -90,13 +91,11 @@ def build_shell():
 
 def build_bed():
     """NW corner: x ∈ [-2.6, -1.2], y ∈ [3.4, 5.0], headboard on N."""
-    make_box("Bed_Frame", (-1.9, 4.2, 0.22), (1.5, 1.7, 0.28), COL_BEDFRAME)
     make_box("Bed_Headboard", (-1.9, 4.93, 0.75), (1.5, 0.08, 0.9), COL_BEDFRAME)
-    make_box("Bed_Mattress", (-1.9, 4.2, 0.44), (1.4, 1.6, 0.18), COL_MATTRESS)
-    # Blanket over the lower two-thirds, thrown back at one corner
-    make_box("Bed_Blanket", (-1.9, 3.95, 0.55), (1.44, 1.05, 0.08), COL_BLANKET)
-    make_box("Bed_Blanket_Fold", (-1.45, 3.5, 0.60), (0.5, 0.35, 0.06), COL_MATTRESS)
-    make_box("Bed_Pillow", (-1.9, 4.72, 0.58), (1.0, 0.42, 0.12), COL_PILLOW)
+    # the shared bed, blanket thrown back in a heap (2026-09-07)
+    make_bed("Bed", -1.9, 4.10, head="+Y", w=1.5, d=1.6, style="platform",
+             frame_col=COL_BEDFRAME, mattress_col=COL_MATTRESS, sheet_col=COL_MATTRESS,
+             blanket_col=COL_BLANKET, pillow_col=COL_PILLOW, pillows=2, made=False, headboard=False)
     # Nightstand + shaded lamp, east of the bed
     make_box("Nightstand", (-0.85, 4.65, 0.30), (0.5, 0.45, 0.60), COL_WOOD)
     make_cyl("NLamp_Post", (-0.85, 4.65, 0.78), 0.02, 0.32, COL_STEEL, segments=6)

@@ -389,7 +389,7 @@ def build_wear_personality_2026_08():
     for li, (ox, oy) in enumerate(((-0.17, -0.17), (0.17, -0.17), (-0.17, 0.17), (0.17, 0.17))):
         make_box("Vigil_Chair_Leg_%d" % li, (-1.70 + ox, 1.9 + oy, 0.20),
                  (0.045, 0.045, 0.40), COL_WOOD_DK)
-    make_box("Vigil_Chair_Back", (-1.51, 1.9, 0.80), (0.05, 0.42, 0.72), COL_WOOD)
+    make_box("Vigil_Chair_Back", (-1.89, 1.9, 0.80), (0.05, 0.42, 0.72), COL_WOOD)   # back west; he faces the room (2026-09-07)
     make_traffic_wear("Wear_Tem_Path",
                       [(0.0, 1.0), (-1.0, 1.5), (-1.55, 1.9)],
                       width=0.30, tint=floor_new)

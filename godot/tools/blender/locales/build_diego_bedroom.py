@@ -48,22 +48,20 @@ def build_shell():
         make_crown_molding(nm, wall_x=wx, wall_y=wy, length=length, axis=ax, ceil_z=CEIL, palette={"wood": COL_WOOD})
 
 def build_bed():
+    from _props.furniture import make_bed
     # Re-arranged (2026-07-15): bed shoved into the NW corner, headboard
     # against the N wall, long axis E–W (rotated 90° off the shared
     # side-wall twin) — reads distinct from Maya's under-window bed and
     # the apartment beds. Keeps the kit-color dressing.
     bx, by = -0.85, ROOM_D - 0.98
-    make_box("Bed_Frame", (bx, by, 0.20), (1.80, 1.12, 0.20), (0.42, 0.30, 0.20, 1.0))
-    make_box("Bed_Mattress", (bx, by, 0.40), (1.70, 1.02, 0.16), (0.92, 0.86, 0.78, 1.0))
-    make_box("Bed_Headboard", (bx, by+0.60, 0.62), (1.80, 0.08, 0.60), (0.40, 0.28, 0.18, 1.0))
-    make_box("Bed_Pillow", (bx, by+0.38, 0.50), (1.60, 0.32, 0.10), P.PAPER)
-    # Green comforter with a white center stripe (kit colors)
-    make_box("Bed_Comforter", (bx, by-0.06, 0.50), (1.74, 0.86, 0.10), COL_ACCENT)
-    make_box("Bed_Stripe", (bx, by-0.06, 0.52), (0.30, 0.86, 0.11), COL_WHITE)
-    make_box("Bed_Throw", (bx, by-0.34, 0.50), (1.70, 0.34, 0.06), COL_RED)
+    # the shared bed (2026-09-07): wide against the N wall, pillows at
+    # the +Y head, the green comforter as the made blanket
+    make_bed("Bed", bx, by, head="+Y", w=1.80, d=1.12, style="platform",
+             frame_col=(0.42, 0.30, 0.20, 1.0), mattress_col=(0.92, 0.86, 0.78, 1.0),
+             blanket_col=COL_ACCENT, pillow_col=P.PAPER, pillows=2, made=True, headboard=True)
 
 def build_desk_lamp():
-    dx, dy = +ROOM_W/4.0, 1.5
+    dx, dy = +ROOM_W/4.0, ROOM_D - 0.45   # 13 cm off the N wall (2026-09-07: it stood mid-room)
     make_box("Desk_Top", (dx, dy, 0.74), (1.00, 0.60, 0.04), COL_WOOD)
     for li in range(4):
         lx, ly = dx+(-0.44,+0.44,-0.44,+0.44)[li], dy+(-0.24,-0.24,+0.24,+0.24)[li]
@@ -139,7 +137,7 @@ def build_dressing():
     make_cyl("Duffel", (0.9, 0.5, 0.22), 0.24, 0.72, COL_ACCENT, axis='Y', segments=10)
     make_box("Duffel_Handle", (0.9, 0.5, 0.40), (0.30, 0.04, 0.06), P.METAL_BLACK)
     # Desk chair
-    dx, dy = +ROOM_W/4.0, 1.5
+    dx, dy = +ROOM_W/4.0, ROOM_D - 0.45   # 13 cm off the N wall (2026-09-07: it stood mid-room)
     make_box("Chair_Seat", (dx, dy-0.55, 0.46), (0.42, 0.42, 0.05), COL_WOOD)
     make_box("Chair_Back", (dx, dy-0.74, 0.74), (0.42, 0.05, 0.46), COL_ACCENT)
     for i, (lx, ly) in enumerate([(-0.16, -0.16), (0.16, -0.16), (-0.16, 0.16), (0.16, 0.16)]):

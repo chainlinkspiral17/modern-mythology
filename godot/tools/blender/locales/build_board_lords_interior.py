@@ -290,14 +290,16 @@ def build_main_street_2026_09():
     make_box("Streetlamp_Arm", (-3.6, -2.35, 4.35), (0.9, 0.06, 0.06), (0.28, 0.28, 0.30, 1.0))
     make_box("Streetlamp_Head", (-3.2, -2.35, 4.25), (0.40, 0.22, 0.14), (0.92, 0.88, 0.72, 1.0))
     # Finn's truck at the curb, along Main
-    make_box("Finn_Truck_Body", (4.6, -3.35, 0.62), (4.40, 1.80, 0.65), (0.44, 0.48, 0.42, 1.0))
-    make_box("Finn_Truck_Cab", (3.9, -3.35, 1.22), (1.60, 1.70, 0.55), (0.40, 0.44, 0.38, 1.0))
+    # at the store-side curb of Main Street (2026-09-07: it stood 3.1 m
+    # into the lane — "cars don't park in the middle of streets")
+    make_box("Finn_Truck_Body", (4.6, -1.25, 0.62), (4.40, 1.80, 0.65), (0.44, 0.48, 0.42, 1.0))
+    make_box("Finn_Truck_Cab", (3.9, -1.25, 1.22), (1.60, 1.70, 0.55), (0.40, 0.44, 0.38, 1.0))
     for wi, (wx, wy) in enumerate(((3.1, -2.325), (6.1, -2.325), (3.1, -4.375), (6.1, -4.375))):
         make_cyl(f"Finn_Truck_Wheel_{wi}", (wx, wy, 0.32), 0.32, 0.25, (0.14, 0.14, 0.15, 1.0), axis='Y', segments=10)
     # the crow rides the cab roof while they get in (ch5: "The crow
     # stayed on Finn's shoulder" — then the truck)
     from _props.creatures import make_crow
-    make_crow("Crow", 3.9, -3.35, 1.50, facing=1.0)
+    make_crow("Crow", 3.9, -1.25, 1.50, facing=1.0)
 
 
 def main():

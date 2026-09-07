@@ -15,6 +15,7 @@ from _props.shelving import make_snack_aisle, make_endcap
 from _props.food_service import make_coffee_pots
 from _props.decor import make_wall_clock, make_floor_plant, make_faded_poster, make_calendar
 from _props.safety import make_smoke_detector, make_hvac_vent, make_fluorescent_tube_fixture
+from _props.furniture import make_bed
 
 ROOM_W = 4.0; ROOM_D = 5.0; CEIL = 2.6
 # Denim-blue walls, lime-green accent — boyish, distinct from the girls'/others'.
@@ -40,18 +41,14 @@ def build_shell():
 def build_bed():
     # Captain's bed: raised frame with a row of storage drawers underneath.
     bx, by = -ROOM_W/4.0, ROOM_D/2.0
-    make_box("Bed_Base", (bx, by, 0.24), (1.24, 1.84, 0.48), COL_WOOD)
-    for di in range(3):
-        make_box(f"Bed_Drawer_{di}", (bx+0.64, by-0.6+di*0.6, 0.24), (0.02, 0.52, 0.36), (0.30, 0.36, 0.30, 1.0))
-        make_cyl(f"Bed_DrawerPull_{di}", (bx+0.66, by-0.6+di*0.6, 0.24), 0.03, 0.04, P.METAL_STEEL, axis='X', segments=6)
-    make_chamfer_box("Bed_Mattress", (bx, by, 0.56), (1.10, 1.70, 0.16), (0.90, 0.90, 0.86, 1.0))
-    make_box("Bed_Headboard", (bx, by+0.90, 0.86), (1.24, 0.10, 0.68), COL_WOOD)
-    make_chamfer_box("Bed_Pillow", (bx, by+0.58, 0.68), (0.96, 0.36, 0.12), (0.92, 0.92, 0.86, 1.0))
-    make_chamfer_box("Bed_Comforter", (bx, by-0.24, 0.66), (1.14, 1.14, 0.12), COL_BLUE)
-    make_chamfer_box("Bed_ComforterStripe", (bx, by-0.6, 0.68), (1.14, 0.30, 0.13), COL_ACCENT)
+    # the shared captain's bed: drawers on the +X side, cosmic-blue
+    # blanket made up (2026-09-07: the stripe sat inside the comforter)
+    make_bed("Bed", bx, by, head="+Y", w=1.24, d=1.84, style="captain",
+             frame_col=COL_WOOD, mattress_col=(0.90, 0.90, 0.86, 1.0),
+             blanket_col=COL_BLUE, pillow_col=(0.92, 0.92, 0.86, 1.0), pillows=2, made=True, headboard=True)
 
 def build_desk_lamp():
-    dx, dy = +ROOM_W/4.0, 1.5
+    dx, dy = +ROOM_W/4.0, ROOM_D - 0.45   # 13 cm off the N wall (2026-09-07: it stood mid-room)
     make_box("Desk_Top", (dx, dy, 0.74), (1.00, 0.60, 0.04), COL_WOOD)
     for i, (lx, ly) in enumerate([(-0.44, -0.26), (0.44, -0.26), (-0.44, 0.26), (0.44, 0.26)]):
         make_box(f"Desk_Leg_{i}", (dx+lx, dy+ly, 0.37), (0.06, 0.06, 0.72), COL_WOOD)

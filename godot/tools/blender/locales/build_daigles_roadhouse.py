@@ -362,7 +362,7 @@ def build_devil_wave2_props():
     # ── the_first_meeting ───────────────────────────────────────
     room_x = -2.55
     room_y = +5.20
-    ring_r = 1.30
+    ring_r = 1.20   # backs now face OUT; 1.30 put chair 6's back into the jukebox
 
     for ci in range(11):
         ang = (ci + 0.5) * (2 * math.pi / 11)
@@ -372,8 +372,10 @@ def build_devil_wave2_props():
                  (cx, cy, 0.44),
                  (0.32, 0.32, 0.04),
                  (0.62, 0.62, 0.64, 1.0))
-        back_dx = -math.cos(ang) * 0.14
-        back_dy = -math.sin(ang) * 0.14
+        # the back sits on the OUTSIDE of the ring — the chair faces the
+        # coffee table (2026-09-07: it shipped facing away)
+        back_dx = math.cos(ang) * 0.14
+        back_dy = math.sin(ang) * 0.14
         make_box("MtgChair_%d_Back" % ci,
                  (cx + back_dx, cy + back_dy, 0.72),
                  (0.32, 0.06, 0.36),

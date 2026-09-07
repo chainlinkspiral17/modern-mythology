@@ -55,7 +55,7 @@ def build_shell():
 
 def build_console_desk():
     """Broadcast desk + mixing board against the N wall."""
-    dx, dy = 0.0, ROOM_D - 1.10
+    dx, dy = 0.0, ROOM_D - 0.42   # the desk back edge ON the N wall (2026-09-07)
     top_z = 0.74
     # Desk top + modesty panel + side legs
     make_box("Desk_Top", (dx, dy, top_z), (2.20, 0.80, 0.05), COL_WOOD)
@@ -107,7 +107,7 @@ def build_console_desk():
 
 def build_mic_and_boom():
     """On-air mic on a boom arm clamped to the desk, with pop filter."""
-    dx, dy = 0.0, ROOM_D - 1.10
+    dx, dy = 0.0, ROOM_D - 0.42   # the desk back edge ON the N wall (2026-09-07)
     top_z = 0.78
     clamp_x, clamp_y = -0.40, dy - 0.40
     # Clamp base at desk edge
@@ -184,7 +184,7 @@ def build_on_air_sign():
 
 
 def build_coffee_and_clutter():
-    dx, dy = 0.0, ROOM_D - 1.10
+    dx, dy = 0.0, ROOM_D - 0.42   # the desk back edge ON the N wall (2026-09-07)
     top_z = 0.76
     # THE MORSE KEY (vol6 ch5: "sending, on 1776 kHz, a single
     # phrase, over and over, in Morse code she has not used since

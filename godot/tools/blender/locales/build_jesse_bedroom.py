@@ -15,6 +15,7 @@ from _props.shelving import make_snack_aisle, make_endcap
 from _props.food_service import make_coffee_pots, make_donut_display
 from _props.decor import make_wall_clock, make_floor_plant, make_faded_poster, make_calendar
 from _props.safety import make_smoke_detector, make_hvac_vent, make_fluorescent_tube_fixture, make_ceiling_speaker
+from _props.furniture import make_bed
 
 ROOM_W = 4.0; ROOM_D = 4.5; CEIL = 2.6
 # Plum-charcoal walls, amber accent — dark and warm, a practice-space vibe.
@@ -46,14 +47,15 @@ def build_shell():
 def build_bed():
     # Mattress on the floor / futon — low, no tall frame.
     bx, by = -ROOM_W/4.0, ROOM_D/2.0
-    make_box("Futon_Pallet", (bx, by, 0.08), (1.24, 1.84, 0.16), (0.28, 0.22, 0.18, 1.0))
-    make_box("Futon_Mattress", (bx, by, 0.24), (1.16, 1.76, 0.18), (0.72, 0.66, 0.60, 1.0))
-    make_box("Futon_Blanket", (bx, by-0.20, 0.34), (1.16, 1.10, 0.10), COL_BLANKET)
-    make_box("Futon_Pillow", (bx, by+0.66, 0.34), (1.00, 0.34, 0.12), (0.86, 0.78, 0.66, 1.0))
+    # the shared futon (2026-09-07: the pillow and blanket sat inside
+    # the mattress)
+    make_bed("Futon", bx, by, head="+Y", w=1.24, d=1.84, style="futon",
+             frame_col=(0.28, 0.22, 0.18, 1.0), mattress_col=(0.72, 0.66, 0.60, 1.0),
+             blanket_col=COL_BLANKET, pillow_col=(0.86, 0.78, 0.66, 1.0), pillows=1, made=True)
 
 def build_desk_lamp():
     # Desk doubles as the turntable / gear bench.
-    dx, dy = +ROOM_W/4.0, 1.5
+    dx, dy = +ROOM_W/4.0, ROOM_D - 0.45   # 13 cm off the N wall (2026-09-07: it stood mid-room)
     make_box("Desk_Top", (dx, dy, 0.74), (1.00, 0.60, 0.04), COL_WOOD)
     for li in range(4):
         lx, ly = dx+(-0.44,+0.44,-0.44,+0.44)[li], dy+(-0.24,-0.24,+0.24,+0.24)[li]

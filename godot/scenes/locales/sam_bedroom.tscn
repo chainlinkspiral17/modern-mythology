@@ -191,8 +191,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.28, 0.98, -1.01)
 rotation = Vector3(-0.3663, 0.2628, 0.0)
 
 [node name="shot_insert_notebook" type="Marker3D" parent="." groups=["vn_shot"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.550, 0.580, -2.100)
-rotation = Vector3(0.0000, -1.5708, 0.0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.212, 0.761, -2.686)
+rotation = Vector3(-0.2618, 2.6180, 0.0)
 
 [node name="Interior" parent="." instance=ExtResource("1_glb")]
 
@@ -331,7 +331,7 @@ metadata/fov = 54.0
 ; insert: the monitor on the desk
 [node name="shot_insert_monitor" type="Marker3D" parent="." groups=["vn_shot"]]
 position = Vector3(1.05, 1.25, -2.35)
-rotation = Vector3(-0.398895, -3.07129, 0)
+rotation = Vector3(-0.1199, -0.0223, 0.0)
 metadata/fov = 40.0
 
 ; insert: the longboxes on the shelf

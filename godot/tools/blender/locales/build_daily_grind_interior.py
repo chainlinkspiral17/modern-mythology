@@ -103,7 +103,8 @@ def _make_cafe_table(prefix, tx, ty):
     for ci, (ox, oy) in enumerate([(-0.58, 0.0), (0.58, 0.0)]):
         cx, cy = tx + ox, ty + oy
         make_cyl(f"{prefix}_Chair_{ci}_Seat", (cx, cy, 0.46), 0.18, 0.04, COL_WOOD, segments=12)
-        make_box(f"{prefix}_Chair_{ci}_Back", (cx + (0.16 if ox < 0 else -0.16), cy, 0.72), (0.04, 0.36, 0.52), COL_WOOD)
+        # back on the far side from the table (2026-09-07: it faced away)
+        make_box(f"{prefix}_Chair_{ci}_Back", (cx + (-0.16 if ox < 0 else 0.16), cy, 0.72), (0.04, 0.36, 0.52), COL_WOOD)
         for li, (lx, ly) in enumerate([(-0.13,-0.13),(0.13,-0.13),(-0.13,0.13),(0.13,0.13)]):
             make_cyl(f"{prefix}_Chair_{ci}_Leg_{li}", (cx+lx, cy+ly, 0.23), 0.012, 0.46, COL_BLACK)
 

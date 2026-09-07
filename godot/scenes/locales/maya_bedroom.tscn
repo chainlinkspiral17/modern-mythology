@@ -344,14 +344,14 @@ metadata/fov = 42.0
 
 ; insert: three boards in from the window, the third looks no different
 [node name="shot_insert_floorboards" type="Marker3D" parent="." groups=["vn_shot"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.35, 0.6, -2.85)
-rotation = Vector3(-0.8172, 0.6610, 0.0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.350, 0.355, -1.994)
+rotation = Vector3(-0.2618, 0.2618, 0.0)
 metadata/fov = 42.0
 
 ; insert: for whoever is ready — the envelope in the cavity
 [node name="shot_insert_envelope" type="Marker3D" parent="." groups=["vn_shot"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.3, 0.55, -2.9)
-rotation = Vector3(-0.8402, -0.6435, 0.0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.350, 0.354, -1.994)
+rotation = Vector3(-0.2618, -0.2618, 0.0)
 metadata/fov = 42.0
 
 ; insert: the dock at dusk, 1978 — the photograph

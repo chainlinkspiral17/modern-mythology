@@ -52,7 +52,7 @@ INTRA_MIN = 0.03        # m · penetration on every axis to count
 INTRA_THIN = 0.006      # m · sheets/decals thinner than this are tucks
 FLOAT_GAP = 0.04        # m
 FLOAT_MAX_SIDE = 1.6
-CHAIR_REACH = 1.3
+CHAIR_REACH = 1.10     # m · seat centre to the table's nearest edge
 WALL_GAP = 0.35
 LANE_M = 2.2
 
@@ -67,10 +67,24 @@ MOUNTED = re.compile(r"(lamp|pendant|fan|shelf|sign|poster|frame|clock|board|wal
                      r"spray|stream|arc|balloon|kite|tarp|screen|monitor|tv|speaker|cam|ring|halo|glow|beam)", re.I)
 WALLISH = re.compile(r"(^|_)(wall|partition|part_|hull|shell|facade)", re.I)
 ROADISH = re.compile(r"(road|asphalt|street|lane|highway|hwy|drive$|_drive_|blvd|avenue)", re.I)
+# Places a car is SUPPOSED to stand: lots, aprons, driveways, garages,
+# frontage strips in front of stores. Not travel lanes.
+PARKINGISH = re.compile(r"(lot|parking|apron|driveway|garage|frontage|carport|pad|bay|stall|pump)", re.I)
 CARISH = re.compile(r"(car|truck|sedan|van|pickup|cruiser|patrol|corolla|civic|wagon|jeep|suv|ambulance)", re.I)
 CAR_PART = re.compile(r"(body|cab|cabin|hood|bed|roof)$", re.I)
-DESKISH = re.compile(r"(desk|table|counter|bar_top|workbench|vanity)", re.I)
-TOPISH = re.compile(r"(top|surface|slab)$", re.I)
+DESKISH = re.compile(r"(desk|table|counter|bar_top|workbench|vanity|dining|fourtop|twotop|sixtop)", re.I)
+# Tables nobody sits AT: side, end, night, console, hall.
+# (a coffee table stays IN: the roadhouse's meeting ring sits around one)
+NOT_SEATING = re.compile(r"(side|end|night|console|hall|lamp|plant|tv|outline|zone|^z_|plate)", re.I)
+# Desks that are freestanding BY DESIGN: a judge's bench, a clerk's
+# desk in a courtroom, a ship's helm, a newsroom island.
+# Whole locales whose desk is freestanding on purpose: Miller's former
+# dining table set at the N window "so he sits with the rain behind
+# him"; the New Orleans executive desk centred on the door; Antonio's
+# desk turned to watch the AC; the WGUR operator console facing the rack.
+DESK_FREESTANDING_LOCALES = {"miller_office", "new_orleans_office", "ember_ash_office", "wgur_transmitter_shack"}
+DESK_FREESTANDING = re.compile(r"(judge|clerk|helm|newspaper|desk_[0-9]_top|reception|teller|island|kiosk|studio|cat_desk|drafting|drawing)", re.I)
+TOPISH = re.compile(r"(top|surface|slab)(_[0-9]+)?$", re.I)
 
 
 def prefix_of(name):
@@ -185,7 +199,10 @@ def check_chairs(boxes):
     groups = defaultdict(list)
     for b in boxes:
         groups[prefix_of(b[0])].append(b)
-    tops = [b for b in boxes if DESKISH.search(b[0]) and TOPISH.search(b[0])]
+    # a top: named *_Top, or a FLAT slab (h < 0.12, > 0.3 m across) named
+    # for a table — round cafe tables are often just "Group_Table"
+    tops = [b for b in boxes if DESKISH.search(b[0]) and not NOT_SEATING.search(b[0])
+            and (TOPISH.search(b[0]) or (b[2][2] * 2 < 0.12 and max(b[2][0], b[2][1]) * 2 > 0.3 and not re.search(r"(leg|post|pedestal|base|stem|foot|apron|stretcher)", b[0], re.I)))]
     out = []
     for pre, parts in groups.items():
         if not re.search(r"(chair|stool|seat)", pre, re.I):
@@ -196,21 +213,26 @@ def check_chairs(boxes):
             continue
         sc = seat[0][1]
         bc = back[0][1]
-        near = None
+        # the table this chair is AT: the top whose footprint comes
+        # nearest the seat centre (a bar 1.5 m behind a ring of chairs
+        # is not their table; the ring's own small table is)
+        # every table within reach of the seat; the chair is fine if it
+        # faces ANY of them (a meeting ring in front of a bar faces the
+        # ring's table, not the bar)
+        cands = []
         for t in tops:
-            d = ((t[1][0] - sc[0]) ** 2 + (t[1][1] - sc[1]) ** 2) ** 0.5
-            if d <= CHAIR_REACH + max(t[2][0], t[2][1]) and (near is None or d < near[0]):
-                near = (d, t)
-        if near is None:
+            px = min(max(sc[0], t[1][0] - t[2][0]), t[1][0] + t[2][0])
+            py = min(max(sc[1], t[1][1] - t[2][1]), t[1][1] + t[2][1])
+            d = ((px - sc[0]) ** 2 + (py - sc[1]) ** 2) ** 0.5
+            if d <= CHAIR_REACH:
+                cands.append((d, t, (px - sc[0], py - sc[1])))
+        if not cands:
             continue
-        t = near[1]
-        # nearest point on the desk top to the seat centre
-        tx = min(max(sc[0], t[1][0] - t[2][0]), t[1][0] + t[2][0])
-        ty = min(max(sc[1], t[1][1] - t[2][1]), t[1][1] + t[2][1])
-        to_desk = (tx - sc[0], ty - sc[1])
         to_back = (bc[0] - sc[0], bc[1] - sc[1])
-        if to_desk[0] * to_back[0] + to_desk[1] * to_back[1] > 0.02:
-            out.append((pre, t[0]))
+        faces_one = any(td[0] * to_back[0] + td[1] * to_back[1] <= 0.02 for _d, _t, td in cands)
+        if not faces_one:
+            cands.sort(key=lambda c: c[0])
+            out.append((pre, cands[0][1][0]))
     return out
 
 
@@ -218,7 +240,7 @@ def check_desks(boxes):
     walls = [b for b in boxes if WALLISH.search(b[0]) and max(b[2]) * 2 > 1.5 and b[2][2] * 2 > 1.5]
     out = []
     for b in boxes:
-        if not re.search(r"desk", b[0], re.I) or not TOPISH.search(b[0]):
+        if not re.search(r"desk", b[0], re.I) or not TOPISH.search(b[0]) or DESK_FREESTANDING.search(b[0]):
             continue
         n, c, h = b
         if not walls:
@@ -238,7 +260,8 @@ def check_desks(boxes):
 
 
 def check_lanes(boxes):
-    roads = [b for b in boxes if ROADISH.search(b[0]) and not re.search(r"(line|stripe|mark|edge|shoulder|curb|sign|bend|post)", b[0], re.I)
+    roads = [b for b in boxes if ROADISH.search(b[0]) and not PARKINGISH.search(b[0])
+             and not re.search(r"(line|stripe|mark|edge|shoulder|curb|sign|bend|post)", b[0], re.I)
              and max(b[2][0], b[2][1]) * 2 > 12.0 and b[2][2] * 2 < 0.6]
     cars = [b for b in boxes if CARISH.search(b[0]) and CAR_PART.search(b[0]) and max(b[2]) * 2 > 1.5]
     out = []
@@ -252,8 +275,13 @@ def check_lanes(boxes):
             lo, hi = box_lohi(r)
             if not (lo[0] <= cx <= hi[0] and lo[1] <= cy <= hi[1]):
                 continue
-            # distance to the nearest LONG edge
-            if (hi[0] - lo[0]) >= (hi[1] - lo[1]):
+            # distance to the nearest LONG edge; a square-ish road box is
+            # a cul-de-sac bulb (a cylinder's bbox) — measure radially
+            w, d = hi[0] - lo[0], hi[1] - lo[1]
+            if 0.8 <= w / max(d, 1e-6) <= 1.25:
+                rad = min(w, d) / 2.0
+                d_edge = rad - ((cx - r[1][0]) ** 2 + (cy - r[1][1]) ** 2) ** 0.5
+            elif w >= d:
                 d_edge = min(cy - lo[1], hi[1] - cy)
             else:
                 d_edge = min(cx - lo[0], hi[0] - cx)
@@ -278,7 +306,7 @@ def main():
         intra = check_intra(boxes)
         flt = check_float(boxes)
         chairs = check_chairs(boxes)
-        desks = check_desks(boxes)
+        desks = [] if locale in DESK_FREESTANDING_LOCALES else check_desks(boxes)
         lanes = check_lanes(boxes)
         n = len(intra) + len(flt) + len(chairs) + len(desks) + len(lanes)
         if not n:

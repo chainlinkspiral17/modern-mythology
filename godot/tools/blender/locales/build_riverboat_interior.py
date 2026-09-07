@@ -1420,9 +1420,10 @@ def build_card_room():
         make_box(f"Card_Chair_{i}_Seat",
                  (ch_x, ch_y, cz + 0.46),
                  (0.42, 0.42, 0.08), COL_LEATHER_OX)
-        # Back facing away from table
-        bk_dx = -math.cos(ang) * 0.22
-        bk_dy = -math.sin(ang) * 0.22
+        # Back on the OUTSIDE of the ring — the player faces the table
+        # (2026-09-07: the sign was flipped and every chair faced away)
+        bk_dx = math.cos(ang) * 0.22
+        bk_dy = math.sin(ang) * 0.22
         make_box(f"Card_Chair_{i}_Back",
                  (ch_x + bk_dx, ch_y + bk_dy, cz + 0.96),
                  (0.42, 0.06, 0.80), COL_WALL_DARK)

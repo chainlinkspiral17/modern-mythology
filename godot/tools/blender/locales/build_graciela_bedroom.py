@@ -28,6 +28,7 @@ from _props.geometry import clear_scene, make_box, make_cyl, export_glb
 from _props.structure import (make_floor, make_wall, make_ceiling,
                               make_crown_molding, make_window)
 from _props.detail import (make_floor_stain, make_light_switch, make_threshold, make_traffic_wear, make_wall_outlet, make_wall_tint_band)
+from _props.furniture import make_bed
 
 ROOM_W = 4.0      # x ∈ [-2, 2]
 ROOM_D = 4.5      # y ∈ [0, 4.5]  (door/S wall at y=0)
@@ -105,24 +106,13 @@ def build_bed():
     for sgn in (-1, 1):
         make_cyl(f"Bed_Post_{sgn:+d}", (bx + sgn * (bw / 2.0 + 0.02), hb_y, 0.85),
                  0.05, 1.7, COL_WOOD_DK, segments=8)
-    # Frame + mattress + spread
-    make_box("Bed_Frame", (bx, by, 0.28), (bw + 0.08, hb_y - foot_y, 0.30), COL_WOOD)
-    make_box("Bed_Mattress", (bx, by, mattress_z), (bw, hb_y - foot_y - 0.06, 0.18), COL_PILLOW)
-    make_box("Bed_Spread", (bx, by + 0.05, mattress_z + 0.02),
-             (bw + 0.06, hb_y - foot_y - 0.10, 0.14), COL_SPREAD)
-    # spread hangs down the sides
-    for sgn in (-1, 1):
-        make_box(f"Bed_Spread_Drape_{sgn:+d}", (bx + sgn * (bw / 2.0 + 0.02), by + 0.05, 0.34),
-                 (0.04, hb_y - foot_y - 0.10, 0.30), COL_SPREAD_DK)
-    # Folded quilt at the foot
-    make_box("Bed_FootQuilt", (bx, foot_y + 0.16, mattress_z + 0.06),
-             (bw, 0.30, 0.10), COL_AFGHAN_B)
-    # Pillows stacked against the headboard
-    for pi, px in enumerate((-0.42, 0.42)):
-        make_box(f"Bed_Pillow_{pi}", (bx + px, hb_y - 0.34, mattress_z + 0.12),
-                 (0.62, 0.34, 0.16), COL_PILLOW)
-    make_box("Bed_Pillow_Accent", (bx, hb_y - 0.30, mattress_z + 0.20),
-             (0.50, 0.26, 0.12), COL_SPREAD_DK)
+    # Frame, mattress, spread, pillows — the shared bed (2026-09-07:
+    # the hand stack had the spread through the mattress and the
+    # pillows through the spread). Her carved headboard, crest and
+    # posts stay; the kit's own headboard is off.
+    make_bed("Bed", bx, by, head="+Y", w=bw, d=hb_y - foot_y, style="frame",
+             frame_col=COL_WOOD, mattress_col=COL_PILLOW, sheet_col=COL_PILLOW,
+             blanket_col=COL_SPREAD, pillow_col=COL_PILLOW, pillows=2, made=True, headboard=False)
     # A rosary draped over the near bedpost, and one laid on the spread
     make_cyl("Rosary_Drape", (bx - (bw / 2.0 + 0.02), hb_y, 1.35), 0.02, 0.5,
              COL_ROSARY, segments=6)

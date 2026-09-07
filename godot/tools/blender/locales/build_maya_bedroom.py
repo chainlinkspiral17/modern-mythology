@@ -64,7 +64,7 @@ def build_bed():
     make_chamfer_box("Bed_ThrowPillow_B", (bx+0.30, by+0.44, 0.56), (0.34, 0.34, 0.16), COL_ACCENT)
 
 def build_desk_lamp():
-    dx, dy = +ROOM_W/4.0, 1.5
+    dx, dy = ROOM_W/2.0 - 0.54, 1.5   # end against the E wall; the bed owns the N wall (2026-09-07)
     make_box("Desk_Top", (dx, dy, 0.74), (1.00, 0.60, 0.04), COL_WOOD)
     for li in range(4):
         lx, ly = dx+(-0.44,+0.44,-0.44,+0.44)[li], dy+(-0.24,-0.24,+0.24,+0.24)[li]

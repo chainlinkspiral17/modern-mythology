@@ -1,3 +1,4 @@
+import math
 """Parked vehicles for exteriors — non-intersecting by construction.
 
 DRAFT 2 (2026-09-05, user: "basic cubes and rectangles when the
@@ -49,6 +50,34 @@ def _wheel(prefix, P, cx, cy, u, v, z0, along, r=0.33, w=0.24):
     off = (w / 2.0 + 0.004) * (1 if v > 0 else -1)
     make_cyl(f"{prefix}_Rim", P(u, v + off, z0 + r), r * 0.62, 0.008, RIM, axis=axis, segments=10)
     make_cyl(f"{prefix}_Hub", P(u, v + off * 1.06, z0 + r), r * 0.18, 0.012, DARK, axis=axis, segments=8)
+
+
+CAR_HALF_W = 0.88
+
+
+def curb_park(road_c, road_half_w, along, side, u, gap=0.12):
+    """Where a car's centre goes to sit AT THE CURB of a straight road
+    (2026-09-07 · "cars don't park in the middle of streets. this keeps
+    happening"). road_c: the road's centreline coordinate ACROSS the
+    road (y for an along-X road, x for along-Y); road_half_w: half the
+    asphalt width; side: +1 / -1 (which curb); u: position ALONG the
+    road; gap: clearance between the tire and the curb face. Returns
+    (cx, cy) for make_car(..., along=along). Feed the result to
+    make_car so the LANE check in furniture_grammar_audit stays quiet."""
+    across = road_c + side * (road_half_w - gap - CAR_HALF_W)
+    if along == "X":
+        return (u, across)
+    return (across, u)
+
+
+def bulb_park(bulb_cx, bulb_cy, bulb_r, angle_deg, along, gap=0.12):
+    """The curb of a cul-de-sac bulb: the car centre CAR_HALF_W + gap
+    inside the radius at `angle_deg`. The car still runs along X or Y
+    (this pipeline's cars are axis-aligned), so pick an angle near a
+    cardinal direction for a believable parallel park."""
+    a = math.radians(angle_deg)
+    rr = bulb_r - gap - CAR_HALF_W
+    return (bulb_cx + math.cos(a) * rr, bulb_cy + math.sin(a) * rr)
 
 
 def make_car(prefix, cx, cy, length, col, pickup=False, hatch=False, light_bar=False, along="X", z0=0.0, glass_col=None):

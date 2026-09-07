@@ -69,9 +69,9 @@ def build_decor():
     # Single chair
     # Chair at the desk, the jacket over its back (the sealed
     # envelope rides the inside pocket)
-    make_box("Chair_Seat", (0.0, 4.05, 0.46), (0.40, 0.40, 0.04), COL_BED_FRAME)
-    make_box("Chair_Back", (0.0, 4.23, 0.70), (0.40, 0.04, 0.50), COL_BED_FRAME)
-    make_box("Jacket_Draped", (0.0, 4.26, 0.72), (0.44, 0.10, 0.46), (0.30, 0.28, 0.26, 1.0))
+    make_box("Chair_Seat", (1.1, 3.75, 0.46), (0.40, 0.40, 0.04), COL_BED_FRAME)   # at the desk, facing it (2026-09-07)
+    make_box("Chair_Back", (1.1, 3.57, 0.70), (0.40, 0.04, 0.50), COL_BED_FRAME)
+    make_box("Jacket_Draped", (1.1, 3.54, 0.72), (0.44, 0.10, 0.46), (0.30, 0.28, 0.26, 1.0))
     # The Korea duffle, battered enough to look intentional
     make_cyl("Canvas_Duffle", (+1.20, 1.50, 0.16), 0.17, 0.62, (0.42, 0.40, 0.30, 1.0), segments=10, axis='Y')
     make_box("Duffle_Strap", (+1.20, 1.50, 0.34), (0.30, 0.05, 0.02), (0.30, 0.28, 0.22, 1.0))

@@ -186,7 +186,7 @@ shadow_enabled = false
 ; from these for any unauthored insert id in this room.
 [node name="shot_insert_desk" type="Marker3D" parent="." groups=["vn_shot"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00, 1.05, -1.10)
-rotation = Vector3(-0.5181, -1.1903, 0.0)   ; the desk top + what's on it
+rotation = Vector3(-0.1946, -0.3268, 0.0)   ; the desk top + what's on it
 
 [node name="shot_insert_window" type="Marker3D" parent="." groups=["vn_shot"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.586, 1.850, -4.602)
@@ -328,8 +328,8 @@ script = ExtResource("14_dbgm")
 
 ; insert: his phone (pings / buzzes / texts Ben — face-down on the floor)
 [node name="shot_insert_phone" type="Marker3D" parent="." groups=["vn_shot"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.25, 0.55, -1.5)
-rotation = Vector3(-0.8107, 0.6435, 0.0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.802, 0.386, -1.900)
+rotation = Vector3(-0.2618, 1.5708, 0.0)
 metadata/fov = 42.0
 
 ; insert: the Telecaster from its stand, plugged into the practice setting

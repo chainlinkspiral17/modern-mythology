@@ -12,6 +12,7 @@ from _props.decor import make_wall_clock, make_floor_plant, make_faded_poster
 from _props.safety import make_smoke_detector
 from _props.detail import (make_floor_stain, make_light_switch, make_threshold, make_traffic_wear, make_wall_outlet, make_wall_tint_band)
 from _props.objects import make_can
+from _props.furniture import make_bed
 
 PAL = {"wall": (0.92, 0.84, 0.66, 1.0), "baseboard": (0.42, 0.28, 0.18, 1.0)}
 COL_FLOOR = (0.46, 0.32, 0.20, 1.0); COL_SEAM = (0.22, 0.14, 0.10, 1.0)
@@ -53,12 +54,10 @@ def build_bed():
     # 2026-08-09: was (0.0, 4.80) — the bed's head stood INSIDE the
     # kitchenette and its posts inside the counter. East of it now.
     bx, by = 0.9, 4.30
-    # Four-poster bed
-    make_box("Bed_Frame", (bx, by, 0.20), (1.80, 2.00, 0.20), COL_BED_WOOD)
-    make_box("Bed_Mattress", (bx, by, 0.50), (1.60, 1.80, 0.30), COL_LINEN)
-    make_box("Bed_Pillow", (bx, by+0.70, 0.74), (1.40, 0.50, 0.16), P.PAPER)
-    # Throw
-    make_box("Bed_Throw", (bx, by-0.50, 0.70), (1.40, 0.60, 0.08), (0.62, 0.42, 0.36, 1.0))
+    # Four-poster bed — the shared bed under the posts (2026-09-07)
+    make_bed("Bed", bx, by, head="+Y", w=1.80, d=2.00, style="platform",
+             frame_col=COL_BED_WOOD, mattress_col=COL_LINEN, sheet_col=COL_LINEN,
+             blanket_col=(0.62, 0.42, 0.36, 1.0), pillow_col=P.PAPER, pillows=2, made=True, headboard=False)
     # 4 posts
     for sgn_x in (-1, +1):
         for sgn_y in (-1, +1):

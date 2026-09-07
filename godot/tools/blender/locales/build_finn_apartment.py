@@ -54,7 +54,7 @@ def build_bed():
         make_box(f"Bed_Crate_{ci}", (cx, by, 0.18), (0.40, 0.90, 0.28), (0.34, 0.24, 0.16, 1.0))
 
 def build_desk_lamp():
-    dx, dy = +ROOM_W/4.0, 1.5
+    dx, dy = ROOM_W/2.0 - 0.54, 1.5   # end against the E wall; the perch chair owns the N side (2026-09-07)
     make_box("Desk_Top", (dx, dy, 0.74), (1.00, 0.60, 0.04), COL_WOOD)
     for li in range(4):
         lx, ly = dx+(-0.44,+0.44,-0.44,+0.44)[li], dy+(-0.24,-0.24,+0.24,+0.24)[li]
@@ -77,7 +77,7 @@ def build_dressing():
     for di in range(3):
         make_box(f"Dresser_Drawer_{di}", (ROOM_W/2.0-0.52, ROOM_D-1.3, 0.24+di*0.24), (0.02, 0.86, 0.16), (0.34, 0.24, 0.16, 1.0))
     # Desk chair
-    dx, dy = +ROOM_W/4.0, 1.5
+    dx, dy = ROOM_W/2.0 - 0.54, 1.5   # end against the E wall; the perch chair owns the N side (2026-09-07)
     make_box("Chair_Seat", (dx, dy-0.55, 0.46), (0.42, 0.42, 0.05), COL_WOOD)
     make_box("Chair_Back", (dx, dy-0.74, 0.74), (0.42, 0.05, 0.46), COL_ACCENT)
     for i, (lx, ly) in enumerate([(-0.16, -0.16), (0.16, -0.16), (-0.16, 0.16), (0.16, 0.16)]):

@@ -206,8 +206,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.35, 1.30, -5.96)
 rotation = Vector3(-0.4818, -0.9264, 0.0)
 
 [node name="shot_insert_twenty" type="Marker3D" parent="." groups=["vn_shot"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.991, 0.746, -7.274)
-rotation = Vector3(0.1745, -2.6180, 0.0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.197, 1.248, -6.917)
+rotation = Vector3(-0.2618, -2.6180, 0.0)
 
 [node name="shot_insert_keys" type="Marker3D" parent="." groups=["vn_shot"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.42, 2.10, -6.95)

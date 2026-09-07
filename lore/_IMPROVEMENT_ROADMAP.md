@@ -520,6 +520,58 @@ UNMEASURED skip, to be root-caused. Deck rebuild: diner,
 meadowlark_circle, cosmic_comics_back_office (the marker changes are
 tscn-only and need no rebuild).
 
+**2026-09-07 · THE QUEUE, WORKED ("go ahead and get started on all the
+work that needs to get done").**
+· MARKERS: an EMBED_TOL (18 cm) in the occlusion test — a window's
+  glass sits inside its wall slab, a board on its floor — freed 8 of
+  the 19 stuck; the marker gate ceiling is now 32 (128 → 41 → 32), 11
+  stuck remain (cabin_road drone in the Sitka canopy · cape_perpetua
+  hexagon in the fog bank · cedar_tower credit · centro_stockroom
+  smear · cosmic_comics_interior oneway · daily_grind tower · graustark
+  wreck + smoke_ring · henderson basement door · lena window · maya
+  board · new_auburn cypress · new_orleans_office window · new_orleans_
+  room mirror · riverboat window · school_field scoreboard — each a
+  prop behind a wall from every side or a subject that is not built:
+  content fixes, one per pass). Aim gate: 0 misaims.
+· CARS: `curb_park()` and `bulb_park()` in _props/vehicles.py; the
+  white sedan through make_car at the bulb's south curb; Finn's truck
+  to the store-side curb of Main Street. The LANE check now excludes
+  lots / aprons / frontage strips and measures cul-de-sac bulbs
+  radially: LANE 11 → 0 repo-wide (the other nine were cars in
+  parking lots).
+· BEDS: `make_bed()` in _props/furniture.py — frame / platform /
+  captain / futon / hospital, every layer ON the one below, pillows
+  on the sheet, a made blanket with a rolled edge or a heap. Seven
+  beds through it (graciela, diego, new_orleans_apartment, hospital,
+  faust, jesse's futon, sam's captain's bed). Seventeen hand-stacked
+  beds remain (asylum_ward_c, bayou_lighthouse, ben, bungalow, cabin,
+  coach_k, finn, kai, lena, maya, natalie, new_orleans_room,
+  nightmare_cell, roberts, safehouse, simon + hospice) — next pass.
+· CHAIRS: numerically confirmed — the back sat on the TABLE side in
+  daigles' meeting ring (11), the daily grind's cafe pairs (4), the
+  riverboat's card table (5), Tem's vigil chair, the safehouse desk
+  chair. All flipped. The matcher learned: side/end/night/coffee
+  tables are not seating targets, a chair is fine if it faces ANY
+  table within 0.95 m of its seat, `Z_` zone outlines are not tables.
+  CHAIR 36 → 2 (finn's perch, new_orleans_room — to inspect).
+· DESKS: the six template bedroom desks (jesse, sam, diego, kai,
+  maya, finn) to their walls (13 cm off the N wall for the back-edge
+  clutter; Maya's end-on against the E wall because her bed owns the
+  N window); pit_stop_office and the Caldwell broadcast desk to the N
+  wall; the comic-shop desk (earlier). Freestanding BY DESIGN and
+  allow-listed: the judge's bench and clerk's desk, the helm, the
+  newsroom island, Miller's dining-table desk at the rain window, the
+  New Orleans executive desk, Antonio's desk, the WGUR console,
+  Anya's studio table, the riverboat cat desk. DESK 22 → 0.
+· Every changed locale passes the overlap gate at 0 clips.
+DECK REBUILD: everything — the furniture and vehicle kits changed
+under 20+ builders: `cd godot/tools/blender && ./build_scenes.sh`.
+NEXT: the 17 remaining beds; the 11 stuck markers one by one; the
+INTRA/FLOAT counts (3033 / 937 on the changed set — mostly procedural
+exteriors: harmony_terrain 2800, graustark 2032 — need a
+per-class review before any gate); highway9's recorder gap; then the
+GAME GRAMMAR rows.
+
 **2026-08-19 · PER-STICK VOICE SWEEP VERDICT (voice draft 4).**
 Ran the leakage grep (TODO/WIP/placeholder/implemented/deferred/
 stub) and a string survey across EVERY stick directory: estuary_4,

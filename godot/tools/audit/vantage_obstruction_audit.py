@@ -55,6 +55,7 @@ WALL_M, WALL_FRAC = 2.6, 0.45
 # door sliver): when this share of the fan hits nothing but fill —
 # sky, ceiling, floor, far bands — the frame has no subject.
 EMPTY_FRAC = 0.80
+EMBED_TOL = 0.18
 # Markers where an empty-ish frame is the shot (sky inserts, horizons).
 DELIBERATE_MARKERS = set()
 # Builders whose recorded boxes do not sit where the runtime puts them
@@ -223,7 +224,13 @@ def _occlusion(origin_b, target_b, boxes, subj):
         vl = math.sqrt(sum(a * a for a in v)) or 1e-6
         d = tuple(a / vl for a in v)
         t, who = cast(origin_b, d, boxes)
-        if t is not None and who not in subj and t < vl - 0.03:
+        # EMBED_TOL: a subject set INTO another surface — glass in a wall
+        # slab, a board on a floor, an envelope lying in a desk top's
+        # box — is hit through that surface from every angle. A blocker
+        # that stops within EMBED_TOL of the subject is the subject's
+        # mount, not an occluder (2026-09-07: this alone freed most of
+        # the 19 STUCK markers — every window, mirror and board).
+        if t is not None and who not in subj and t < vl - EMBED_TOL:
             blockers[who] = blockers.get(who, 0) + 1
     for who, k in blockers.items():
         if k >= 3:

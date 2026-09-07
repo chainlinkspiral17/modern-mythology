@@ -33,21 +33,16 @@ def build_shell():
 BED_X = -0.2; BED_Y = 2.6
 
 def build_bed():
+    from _props.furniture import make_bed
     bx, by = BED_X, BED_Y
     frame=(0.62,0.60,0.58,1.0); mattress=(0.90,0.90,0.86,1.0); board=(0.82,0.82,0.80,1.0)
-    make_box("Bed_Frame", (bx, by, 0.36), (0.98, 2.00, 0.16), frame)
-    for k,(ox,oy) in enumerate([(-0.44,-0.90),(0.44,-0.90),(-0.44,0.90),(0.44,0.90)]):
-        make_box(f"Bed_Leg_{k}", (bx+ox, by+oy, 0.16), (0.06,0.06,0.32), P.METAL_STEEL)
-    make_box("Bed_Mattress", (bx, by, 0.52), (0.92, 1.94, 0.16), mattress)
-    make_box("Bed_Incline", (bx, by+0.74, 0.58), (0.90, 0.44, 0.14), mattress)
-    make_box("Bed_Pillow", (bx, by+0.72, 0.66), (0.66, 0.36, 0.12), (0.96,0.96,0.92,1.0))
-    make_box("Bed_Blanket", (bx, by-0.45, 0.60), (0.94, 1.00, 0.08), (0.52,0.70,0.72,1.0))
+    # the shared hospital bed: steel posts on casters, deck, thin
+    # mattress, side rails, one pillow (2026-09-07)
+    make_bed("Bed", bx, by, head="+Y", w=0.98, d=2.00, style="hospital",
+             frame_col=frame, mattress_col=mattress, blanket_col=(0.52, 0.70, 0.72, 1.0),
+             pillow_col=(0.96, 0.96, 0.92, 1.0))
     make_box("Bed_Headboard", (bx, by+1.02, 0.62), (1.00, 0.06, 0.60), board)
     make_box("Bed_Footboard", (bx, by-1.02, 0.52), (1.00, 0.06, 0.40), board)
-    for ri, ox in enumerate((-0.50, 0.50)):
-        make_box(f"Bed_Rail_{ri}", (bx+ox, by-0.20, 0.66), (0.03, 0.90, 0.10), P.METAL_STEEL)
-        make_cyl(f"Bed_RailPostA_{ri}", (bx+ox, by-0.62, 0.58), 0.015, 0.20, P.METAL_STEEL)
-        make_cyl(f"Bed_RailPostB_{ri}", (bx+ox, by+0.22, 0.58), 0.015, 0.20, P.METAL_STEEL)
 
 def build_monitor():
     mx, my = 1.1, 3.5

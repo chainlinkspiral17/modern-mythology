@@ -107,7 +107,7 @@ def build_desk():
 def build_chair():
     cx, cy = 0.35, 3.85
     make_box("Chair_Seat", (cx, cy, 0.46), (0.44, 0.44, 0.05), COL_WOOD)
-    make_box("Chair_Back", (cx, cy+0.20, 0.72), (0.44, 0.04, 0.46), COL_WOOD)
+    make_box("Chair_Back", (cx, cy-0.20, 0.72), (0.44, 0.04, 0.46), COL_WOOD)   # back away from the desk (2026-09-07)
     for i, (lx, ly) in enumerate([(-0.18,-0.18),(0.18,-0.18),(-0.18,0.18),(0.18,0.18)]):
         make_box(f"Chair_Leg_{i}", (cx+lx, cy+ly, 0.22), (0.05, 0.05, 0.44), COL_DARK)
 

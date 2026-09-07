@@ -35,7 +35,7 @@ def build_shell():
     make_ceiling("Ceil", (0.0, ROOM_D/2.0, CEIL), size_x=ROOM_W+0.4, size_y=ROOM_D+0.4)
 
 def build_desk():
-    dx, dy = 0.0, ROOM_D-1.5
+    dx, dy = 0.0, ROOM_D-0.42   # against the N wall (2026-09-07: it stood 1 m off it)
     make_box("Desk_Top", (dx, dy, 0.74), (1.80, 0.80, 0.04), COL_WOOD)
     # Legs / modesty panels
     for i, lx in enumerate([-0.82, 0.82]):
