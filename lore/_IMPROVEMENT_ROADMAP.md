@@ -385,6 +385,19 @@ column + pressure curve as tempo drops; a verb coin on the cabin
 chapter; a Minter bonus round in one stick; a feedback-trail
 SubViewport for the slowstick register; TripSync raising its layer
 above Pirate Summer's layer-90 console.
+DRAFT 2 shipped (same day · Deck verdicts "that's mostly nausea
+inducing" then "I like it, but it's rough"): THE MOTION RULE — the
+image never moves. Every UV displacement (flat warp, beat ripple,
+Minter zoom thump, chromatic split) and every whole-frame
+brightness change (cabinet flicker) removed; the beat is a ring of
+LIGHT on the lines; hue drift capped ±0.35 and the colour clocks
+run at a third of draft 1's rates; three-scale soft Sobel so the
+aura stops reading the dither as speckle; screen blend instead of
+add; a 45 ms attack on the beat envelope; default amount 0.45.
+DRAFT 3 TARGETS: Deck taste pass per register on the still
+picture; the aura's hue banding width (q·0.08 — wider or narrower);
+whether the zine duotone's hard ink step reads as intent or as
+aliasing; sparks density in milk_honey; then the GAME GRAMMAR rows.
 
 **2026-08-19 · PER-STICK VOICE SWEEP VERDICT (voice draft 4).**
 Ran the leakage grep (TODO/WIP/placeholder/implemented/deferred/
@@ -502,7 +515,7 @@ Current ledger (draft counts are honest, not aspirational):
 | Slowstick manuals + packaging (NH = model) | 1 | era-voice + walkthrough sweep across ~20 sticks; box art after experiences are good (task #234) |
 | VN portrait busts (de-blocking · 2026-08-04) | 2 (EPX×2 + soft finish; hide-ghosts made ephemeral) | screenshot check vs the SVGA bar; if still chunky: raise the 60x64 base canvas itself (more shading ramps, finer features); dialogue-box busts + CP roster inherit automatically |
 | Scene direction · coverage rotation (2026-08-04) | 5 (28 locales carry decks — 111 authored setups, 176 markers repo-wide; draft 5 gave TEN ARCANA SETS the exact markers their scripts already cue (round 2: cafe_olimpico, both new_orleans rooms + the office — 42 arcana markers total; graustark deferred to the richer stub) — Alice's rose/chair/closeup, Natalie's turntable/card, Jimmy's sofa, Elicia's desk/laptop/teacup, Erica's office, the Montreal notebook — plus establish_b rotations, ALL euler-form now: the 81 matrix markers were converted after draft 3 found the transpose bug. Draft 4 covered the whole 7-9-use tier incl. kwik_stop B/C and the shared missing_link_exterior/shuttle_bench deck) | Deck screenshots — every framing is math-verified to <0.5° but ZERO have been seen through a lens; taste notes ("finn B too low") drive draft 5. Next tier (5-6 uses: foxhole_bar, henderson_garage, faust_bedroom, jesse_bedroom, centro_break_room, bianca_kitchen_morning, diner_interior variants) only after a taste pass confirms the grammar reads |
-| **THE TRIP (music-synced psychedelic layer · 2026-09-07)** | **1C** (TripSync autoload + trip_sync.gdshader; global layer 60 + VN texture mode; PSYCHEDELIA slider; per-mood/per-surface scaling; FIVE REGISTERS arcana/community/milk_honey/slowstick/base pushed by the hosts — see _PSYCHEDELIC_DESIGN_BIBLE.md) | draft 2: Deck look at 0.6 per register (gauntlet, CP screen, a vol 7 chapter, a stick); beat detector vs the real catalog; then the GAME GRAMMAR column one row per pillar |
+| **THE TRIP (music-synced psychedelic layer · 2026-09-07)** | **2** (MOTION RULE: the image never moves — colour + light only;  TripSync autoload + trip_sync.gdshader; global layer 60 + VN texture mode; PSYCHEDELIA slider; per-mood/per-surface scaling; FIVE REGISTERS arcana/community/milk_honey/slowstick/base pushed by the hosts — see _PSYCHEDELIC_DESIGN_BIBLE.md) | draft 2: Deck look at 0.6 per register (gauntlet, CP screen, a vol 7 chapter, a stick); beat detector vs the real catalog; then the GAME GRAMMAR column one row per pillar |
 | Model chapters (diner, kwik stop, cathedral, henderson) | many | the BAR — mine them for what a finished space has |
 
 ### Workstream · THE STUMP HUNT (2026-08-04)

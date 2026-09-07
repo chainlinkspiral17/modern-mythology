@@ -1,4 +1,4 @@
-# THE PSYCHEDELIC DESIGN BIBLE · THE TRIP (2026-09-07 · draft 1)
+# THE PSYCHEDELIC DESIGN BIBLE · THE TRIP (2026-09-07 · draft 2)
 
 The project-wide theme, in the user's words:
 
@@ -24,6 +24,20 @@ which this document extends to the whole game).
 
 ## Core rules
 
+0. **THE IMAGE NEVER MOVES (the motion rule).** The user's verdict on
+   draft 1: *"that's mostly nausea inducing."* Draft 1 warped the
+   flats by up to 29 px, rippled the whole frame on every beat,
+   zoomed the screen on the kick, split the chroma, and dipped the
+   brightness. ALL of it is gone and none of it comes back. THE TRIP
+   is colour and light laid on a still picture: every pixel is
+   sampled exactly where it is; no UV displacement, no zoom, no
+   chromatic split, no whole-frame brightness change, no flicker;
+   hue rotation on large areas is small (±0.35 rad) and SLOW; beat
+   responses live on the lines and in points, never across the
+   frame; the beat envelope has an attack (~45 ms), never a pop.
+   If a future pass wants displacement for a specific story moment,
+   it is a `[mood:]`-gated beat of a few seconds, off by default,
+   and it is never synced to a continuous music signal.
 1. **Realism but trippy.** The picture stays the picture. THE TRIP
    never crushes a palette, never ASCII-fies, never fills. It rides
    on the lines (edge aura) and the backgrounds (flat-region flow,
@@ -100,9 +114,37 @@ sludge hangs).
   faked by spark halos and the thump; the real thing is a
   SubViewport with `render_target_clear_mode = NEVER` and a decay
   quad, driven by the same pulse.
-- Nothing has been seen on the Deck. Every dial was set blind.
+- Draft 1 was seen on the Deck ("mostly nausea inducing", then "I
+  like it, but it's rough"); draft 2 has not. The Minter thump and
+  the cabinet power dip died with the motion rule; the Minter
+  register keeps its neon, sparks and white cores.
 
 ## Recent lessons
+
+### 2026-09-07 · draft 2 · "mostly nausea inducing" → "I like it, but it's rough"
+
+- **Music-synced displacement is motion sickness, full stop.** A
+  few pixels of warp in the flats felt subtle in the maths and was
+  the first thing the eye rejected: continuous, involuntary, audio-
+  driven movement of the whole picture. The fix was not a smaller
+  amplitude — it was zero. Colour and light carry the trip now
+  (rule 0 above). The beat "ripple" became a ring of LIGHT that
+  lights the lines as it passes.
+- **"Rough" was the edge finder reading the dither.** The global
+  layer sits above demoscene_post, so a single-scale Sobel saw the
+  Bayer dither as a thousand tiny edges — speckled rainbow noise
+  on every surface. Three Sobel scales (1.5 / 2.5 / 4 px) averaged,
+  with a higher floor, leave only real silhouettes with an anti-
+  aliased falloff.
+- **Add clips; screen rolls off.** Adding the aura on top of a lit
+  scene blew highlights to white with a hard clamp edge. Screen
+  blend (`1 − (1−a)(1−b)`) for the aura, the wash and the sparks
+  keeps highlights soft.
+- **A beat needs an attack.** `pulse` snapping to 1.0 on the hit
+  read as a strobe even at low amounts. It now follows the
+  envelope through a 45 ms attack; band smoothing rises slower too.
+- **Default amount 0.45, not 0.6.** Half the dial is the right
+  starting point for "at all times."
 
 ### 2026-09-07 · draft 1 · registers + the three pillars
 

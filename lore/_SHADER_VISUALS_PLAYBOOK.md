@@ -790,6 +790,26 @@ copperplate), Sacramento (modern handwritten).
   and it pops when they leave the tree. Doctrine + game-grammar
   queue: `lore/_PSYCHEDELIC_DESIGN_BIBLE.md`.
 
+### 2026-09-07 · THE TRIP draft 2 · the motion rule
+
+- **Never displace the picture to a continuous audio signal.** The
+  Deck verdict on draft 1's few-pixel flat warp + beat ripple +
+  zoom thump was "mostly nausea inducing." Post-process effects
+  that MOVE pixels (warp, ripple, zoom, chroma split, screen shake)
+  are motion-sickness triggers when they are involuntary and
+  continuous; brightness flicker is a photosensitivity trigger.
+  THE TRIP is now colour + light on a still image — see
+  `_PSYCHEDELIC_DESIGN_BIBLE.md` rule 0. Apply the same test to any
+  future screen-space effect: if it moves the frame, it is a
+  gated beat of seconds, not a running layer.
+- **Edge detection above demoscene_post reads the dither.** Any
+  Sobel that runs AFTER the quantize/dither pass sees the Bayer
+  matrix as edges. Average three sample scales and raise the floor
+  (or run the Sobel below the dither, as neon_edge does).
+- **Screen-blend additive light.** `col += glow` clips; `1 − (1−col)
+  (1−glow)` rolls off. Use screen for any aura/bloom laid over a
+  lit scene.
+
 ### TEMPLATE for next session
 
 ```markdown

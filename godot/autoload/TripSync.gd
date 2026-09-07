@@ -63,12 +63,13 @@ var _materials: Array[ShaderMaterial] = []
 var _analyzer: AudioEffectSpectrumAnalyzerInstance = null
 
 # Music state (public read for anything else that wants to dance)
-var amount: float = 0.6
+var amount: float = 0.45
 var energy: float = 0.0
 var bass: float = 0.0
 var mid: float = 0.0
 var high: float = 0.0
 var pulse: float = 0.0
+var _pulse_env: float = 0.0             # the raw envelope; `pulse` follows it with a 45 ms attack
 var ring_t: float = 10.0
 var beat_phase: float = 0.0
 var bar_phase: float = 0.0
@@ -92,7 +93,8 @@ const SOFT_SURFACE_SCALE: float = 0.45
 # of Milk and Honey is SCUMM-game inspired, psychedelic wall-of-sound
 # classic rock but sci-fi. Slowsticks: Jeff Minter design and
 # visuals, only using current hardware." Each register is a set of
-# shader dials; hosts push one with themselves as owner and it pops
+# shader dials (colour and light only — THE IMAGE NEVER MOVES, see
+# the bible's motion rule); hosts push one with themselves as owner and it pops
 # when the owner leaves the tree (the VN's volume, a gauntlet run, a
 # slowstick under the shelf). Float dials lerp over REGISTER_FADE;
 # the palette snaps at the midpoint. See lore/_PSYCHEDELIC_DESIGN_BIBLE.md.
@@ -100,47 +102,41 @@ const REGISTERS: Dictionary = {
 	# the base look · rainbow aura, moderate everything (menus, vols 1-4)
 	"base": {
 		"palette_mode": 0, "line_amount": 1.0, "flow_amount": 1.0, "hue_amount": 1.0,
-		"ripple_amount": 1.0, "spark_amount": 0.0, "grain_amount": 0.0,
-		"flicker_amount": 0.0, "thump_amount": 0.0, "pulse_decay": 5.0,
+		"ripple_amount": 1.0, "spark_amount": 0.0, "grain_amount": 0.0, "pulse_decay": 5.0,
 	},
-	# vol 5 · MAJOR ARCANA · swampy + arcade: bayou-water flow (slow,
-	# wide), phosphor-green lines with sodium amber on the kick, the
-	# cabinet dips its power on the beat, little hue drift (the noir
-	# stays noir)
+	# vol 5 · MAJOR ARCANA · swampy + arcade: a bayou-water colour
+	# wash, phosphor-green lines with sodium amber on the kick, little
+	# hue drift (the noir stays noir)
 	"arcana": {
 		"palette_mode": 1, "line_amount": 1.25, "flow_amount": 1.35, "hue_amount": 0.55,
-		"ripple_amount": 0.9, "spark_amount": 0.0, "grain_amount": 0.0,
-		"flicker_amount": 1.0, "thump_amount": 0.0, "pulse_decay": 4.0,
+		"ripple_amount": 0.9, "spark_amount": 0.0, "grain_amount": 0.0, "pulse_decay": 4.0,
 	},
 	# vol 6 · PLANNED COMMUNITY · zines + sludge: two risograph inks
 	# on the lines (no rainbow), photocopy grain, the flow is slow and
 	# heavy (sludge tempo — the pulse hangs), hue drift almost off
 	"community": {
 		"palette_mode": 2, "line_amount": 1.15, "flow_amount": 0.75, "hue_amount": 0.35,
-		"ripple_amount": 0.7, "spark_amount": 0.0, "grain_amount": 1.0,
-		"flicker_amount": 0.0, "thump_amount": 0.0, "pulse_decay": 2.6,
+		"ripple_amount": 0.7, "spark_amount": 0.0, "grain_amount": 1.0, "pulse_decay": 2.6,
 	},
 	# vol 7 · LAND OF MILK AND HONEY · liquid light show + sci-fi:
 	# oil-projector palette, dense flow and hue drift (the wall of
 	# sound), a sparse starfield of sparks in the dark, big soft ripples
 	"milk_honey": {
 		"palette_mode": 3, "line_amount": 0.95, "flow_amount": 1.45, "hue_amount": 1.35,
-		"ripple_amount": 1.2, "spark_amount": 0.45, "grain_amount": 0.0,
-		"flicker_amount": 0.0, "thump_amount": 0.0, "pulse_decay": 3.4,
+		"ripple_amount": 1.2, "spark_amount": 0.45, "grain_amount": 0.0, "pulse_decay": 3.4,
 	},
 	# slowsticks · MINTER · pure additive neon on the lines, spark
-	# storms on the kick, the whole screen thumps; flats stay STILL
-	# (the game must stay readable — no warp, no hue drift)
+	# storms on the kick; the flats carry no wash and almost no drift
+	# (the game must stay readable)
 	"slowstick": {
 		"palette_mode": 4, "line_amount": 1.5, "flow_amount": 0.0, "hue_amount": 0.25,
-		"ripple_amount": 0.6, "spark_amount": 1.3, "grain_amount": 0.0,
-		"flicker_amount": 0.0, "thump_amount": 1.0, "pulse_decay": 6.0,
+		"ripple_amount": 0.6, "spark_amount": 1.1, "grain_amount": 0.0, "pulse_decay": 6.0,
 	},
 }
 const REGISTER_FADE: float = 0.9          # s · float dials cross-fade
 const REGISTER_FLOATS: Array[String] = [
 	"line_amount", "flow_amount", "hue_amount", "ripple_amount",
-	"spark_amount", "grain_amount", "flicker_amount", "thump_amount",
+	"spark_amount", "grain_amount",
 ]
 var _register_stack: Array[Dictionary] = []   # [{"name": String, "owner": Node}]
 var register_name: String = "base"
@@ -289,7 +285,7 @@ func _process(delta: float) -> void:
 	for i in range(BANDS):
 		var target: float = clampf(raw[i] * gain * 2.6, 0.0, 1.0)
 		var prev: float = _bands[i]
-		var k: float = 0.55 if target > prev else 0.14
+		var k: float = 0.35 if target > prev else 0.12
 		_bands[i] = lerpf(prev, target, k)
 
 	var bass_now: float = clampf((raw[0] + raw[1]) * gain * 1.4, 0.0, 1.5)
@@ -326,18 +322,25 @@ func _process(delta: float) -> void:
 			sorted.sort()
 			_beat_interval = sorted[sorted.size() >> 1]
 			bpm = 60.0 / _beat_interval
-		pulse = 1.0
+		_pulse_env = 1.0
 		ring_t = 0.0
 		beat_phase = 0.0
-		_ring_target = Vector2(0.5 + _rng.randf_range(-0.22, 0.22), 0.5 + _rng.randf_range(-0.16, 0.16))
+		_ring_target = Vector2(0.5 + _rng.randf_range(-0.18, 0.18), 0.5 + _rng.randf_range(-0.12, 0.12))
 
 	# ── clocks
-	pulse *= exp(-dt * _pulse_decay)
+	# The beat envelope decays per register; `pulse` follows it through a
+	# short attack so a hit swells in over ~45 ms instead of popping
+	# (draft 2 · "rough").
+	_pulse_env *= exp(-dt * _pulse_decay)
+	pulse = lerpf(pulse, _pulse_env, clampf(dt * 22.0, 0.0, 1.0))
 	ring_t += dt
 	beat_phase = fposmod(beat_phase + dt / _beat_interval, 1.0)
 	bar_phase = fposmod(bar_phase + dt / (_beat_interval * 4.0), 1.0)
-	hue_base = fposmod(hue_base + dt * (0.008 + 0.045 * energy), 1.0)
-	t_flow += dt * (0.30 + 0.90 * energy + 0.60 * pulse)
+	# Slow clocks (draft 2): the colour field and the hue rotation drift
+	# at a fraction of draft 1's rates — fast hue cycling over large
+	# areas is its own motion-sickness trigger.
+	hue_base = fposmod(hue_base + dt * (0.005 + 0.020 * energy), 1.0)
+	t_flow += dt * (0.15 + 0.35 * energy)
 	_ring_c = _ring_c.lerp(_ring_target, clampf(dt * 2.5, 0.0, 1.0))
 
 	# ── register fade + owner pruning (a freed host pops itself)
