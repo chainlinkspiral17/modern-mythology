@@ -101,6 +101,7 @@ EXCLUDE = {
     "window": ["car", "truck", "van", "cab"],
     "photograph": ["door", "window"],
     "phone": ["booth"],
+    "cooler": ["novelty", "souvenir", "toy"],
 }
 
 SYNONYMS = {

@@ -49,6 +49,50 @@
     },
     {
       "t": "narrate",
+      "text": "[shot:insert cooler]The back cooler hums against the far wall. In its glass, the aisle; in the aisle, him — not looking at it."
+    },
+    {
+      "t": "choice",
+      "style": "verb_coin",
+      "hotspot": "the back cooler",
+      "prompt": "",
+      "opts": [
+        {
+          "text": "look at",
+          "goto": 11,
+          "flag": "ch2_cooler_looked",
+          "hide_if_flag": "ch2_cooler_looked"
+        },
+        {
+          "text": "watch him",
+          "goto": 13,
+          "flag": "ch2_cooler_watched",
+          "hide_if_flag": "ch2_cooler_watched"
+        },
+        {
+          "text": "say nothing",
+          "goto": 15
+        }
+      ]
+    },
+    {
+      "t": "narrate",
+      "text": "The glass gives back the fluorescents, the racks, the door. It gives back the counter and Sam behind it. It does not, on the first pass, give back the man. On the second pass it does."
+    },
+    {
+      "t": "jump",
+      "goto": 10
+    },
+    {
+      "t": "narrate",
+      "text": "He does not look at the cooler. He has stopped looking at the cooler. That is its own kind of looking. Yesterday he stood in front of it for ten minutes and bought nothing out of it."
+    },
+    {
+      "t": "jump",
+      "goto": 10
+    },
+    {
+      "t": "narrate",
       "text": "He brings them to the counter. He sets them down."
     },
     {
