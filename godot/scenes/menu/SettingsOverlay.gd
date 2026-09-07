@@ -123,6 +123,24 @@ func _rebuild() -> void:
 		func(v: float) -> void:
 			Settings.trip_amount = v
 	))
+	# The mix (draft 3): find the balance on the Deck. FLOW is the one
+	# dial that moves pixels — 0 for a perfectly still image.
+	vbox.add_child(_slider_row("  · FLOW (the liquid · 0 = still)", Settings.trip_flow,
+		func(v: float) -> void:
+			Settings.trip_flow = v
+	))
+	vbox.add_child(_slider_row("  · LINES", Settings.trip_lines,
+		func(v: float) -> void:
+			Settings.trip_lines = v
+	))
+	vbox.add_child(_slider_row("  · COLOUR", Settings.trip_colour,
+		func(v: float) -> void:
+			Settings.trip_colour = v
+	))
+	vbox.add_child(_slider_row("  · BEAT", Settings.trip_beat,
+		func(v: float) -> void:
+			Settings.trip_beat = v
+	))
 
 	vbox.add_child(_rule())
 

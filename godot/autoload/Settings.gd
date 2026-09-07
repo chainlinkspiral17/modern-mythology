@@ -20,7 +20,11 @@ var _haptics:        float  = 1.0
 var _music_skin:     String = "diner_booth"
 var _music_viz:      String = "peak_meter"
 var _music_jukebox:  bool   = true
-var _trip_amount:    float  = 0.25   # THE TRIP · psychedelic layer strength (TripSync)
+var _trip_amount:    float  = 0.6    # THE TRIP · psychedelic layer strength (TripSync)
+var _trip_flow:      float  = 1.0    # THE TRIP mix · the liquid drift (the one dial that moves pixels)
+var _trip_lines:     float  = 1.0    # THE TRIP mix · aura on the lines
+var _trip_colour:    float  = 1.0    # THE TRIP mix · hue drift + wash in the flats
+var _trip_beat:      float  = 1.0    # THE TRIP mix · how much the beat shows
 
 
 var txt_scale: float:
@@ -129,6 +133,34 @@ var trip_amount: float:
 		settings_changed.emit("trip_amount", _trip_amount)
 		_save()
 
+var trip_flow: float:
+	get: return _trip_flow
+	set(val):
+		_trip_flow = clampf(val, 0.0, 1.0)
+		settings_changed.emit("trip_flow", _trip_flow)
+		_save()
+
+var trip_lines: float:
+	get: return _trip_lines
+	set(val):
+		_trip_lines = clampf(val, 0.0, 1.0)
+		settings_changed.emit("trip_lines", _trip_lines)
+		_save()
+
+var trip_colour: float:
+	get: return _trip_colour
+	set(val):
+		_trip_colour = clampf(val, 0.0, 1.0)
+		settings_changed.emit("trip_colour", _trip_colour)
+		_save()
+
+var trip_beat: float:
+	get: return _trip_beat
+	set(val):
+		_trip_beat = clampf(val, 0.0, 1.0)
+		settings_changed.emit("trip_beat", _trip_beat)
+		_save()
+
 
 func _ready() -> void:
 	_load()
@@ -197,7 +229,11 @@ func _load() -> void:
 	_music_skin      = str(cfg.get_value("settings",   "music_skin",     "diner_booth"))
 	_music_viz       = str(cfg.get_value("settings",   "music_viz",      "peak_meter"))
 	_music_jukebox   = bool(cfg.get_value("settings",  "music_jukebox",  true))
-	_trip_amount     = clampf(float(cfg.get_value("settings", "trip_amount", 0.25)), 0.0, 1.0)
+	_trip_amount     = clampf(float(cfg.get_value("settings", "trip_amount", 0.6)), 0.0, 1.0)
+	_trip_flow       = clampf(float(cfg.get_value("settings", "trip_flow", 1.0)), 0.0, 1.0)
+	_trip_lines      = clampf(float(cfg.get_value("settings", "trip_lines", 1.0)), 0.0, 1.0)
+	_trip_colour     = clampf(float(cfg.get_value("settings", "trip_colour", 1.0)), 0.0, 1.0)
+	_trip_beat       = clampf(float(cfg.get_value("settings", "trip_beat", 1.0)), 0.0, 1.0)
 	_apply_window_mode(_window_mode)
 
 
@@ -216,4 +252,8 @@ func _save() -> void:
 	cfg.set_value("settings", "music_viz",       _music_viz)
 	cfg.set_value("settings", "music_jukebox",   _music_jukebox)
 	cfg.set_value("settings", "trip_amount",     _trip_amount)
+	cfg.set_value("settings", "trip_flow",       _trip_flow)
+	cfg.set_value("settings", "trip_lines",      _trip_lines)
+	cfg.set_value("settings", "trip_colour",     _trip_colour)
+	cfg.set_value("settings", "trip_beat",       _trip_beat)
 	cfg.save(SAVE_PATH)

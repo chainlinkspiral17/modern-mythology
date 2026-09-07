@@ -1,45 +1,41 @@
 // trip_sync.gdshader
 // ════════════════════════════════════════════════════════════════
-// THE TRIP · the project-wide psychedelic layer (draft 2, 2026-09-07)
+// THE TRIP · the project-wide psychedelic layer (draft 3, 2026-09-07)
 //
 // "Realism but trippy, running through the game at all times, in
 // lines and backgrounds, synced to the music currently playing."
 //
-// THE MOTION RULE (draft 2 · user verdict on draft 1: "mostly nausea
-// inducing"): THE IMAGE NEVER MOVES. No UV displacement of any kind
-// — no warp, no ripple, no zoom thump, no chromatic split — and no
-// whole-frame brightness change (no flicker, no power dip). Every
-// pixel is sampled exactly where it is. The trip is COLOUR and LIGHT
-// laid on a still picture:
+// Deck history in one line each: draft 1 "mostly nausea inducing" ·
+// draft 2 (still image) "I like it, but it's rough" · draft 2B
+// (faint) "lost all the best parts of it." Draft 3 keeps the best
+// parts and removes the specific triggers:
 //
-//   LINES        a luma-Sobel finds the geometry edges and lays an
-//                aura along them. Hue runs along the edge (position
-//                + a slow noise field + beat phase), brightness
-//                follows the track's energy, the beat lifts the glow
-//                a little — never a flash.
-//   BACKGROUNDS  the flat regions BREATHE IN COLOUR, not in place: a
-//                small, slow YIQ hue rotation (capped ±0.35 rad) in
-//                the same noise field, a saturation lift on the mids,
-//                a faint wash of the register's palette into the
-//                dark flats on the bar breath. Suppressed where edge
-//                density is high, so outlines and text stay exactly
-//                as rendered.
-//   THE BEAT     a ring of LIGHT expands from a drifting centre and
-//                lights the lines as it passes. Nothing is displaced.
-//   SPARKS       (registers that ask) fixed points that fade in and
-//                out slowly. They never travel and never flash.
+//   THE LIQUID   the flats drift slowly, like water under glass —
+//                a near-CONSTANT amplitude (6 + 6·energy px, smoothed), a
+//                field that moves at a fraction of draft 1's rate,
+//                NO beat in it (draft 1 pumped it with the bass; that
+//                was the sickness). Edges and text never move.
+//                mix_motion is the player's dial; 0 = a still image.
+//   LINES        a three-scale Sobel finds the silhouettes and lays
+//                the register's aura along them; hue runs along the
+//                edge, brightness follows energy, the beat lifts it.
+//   COLOUR       the flats breathe in hue (a YIQ rotation, capped
+//                cap, ±0.55) and saturation with the mids; a wash of the
+//                register's palette into the dark flats on the bar.
+//   THE BEAT     a ring of light expands from a drifting centre and
+//                lights the lines as it passes; the pulse has a
+//                45 ms attack. Never a zoom, never a chroma split,
+//                never a whole-frame brightness change.
+//   SPARKS       (registers that ask) fixed points that fade slowly.
 //
 // Two mounting modes, one shader:
 //   use_screen = true   full-screen ColorRect in the global layer-60
-//                       CanvasLayer (TripSync's own). Reads the
-//                       screen after every scene PostProcess stack.
+//                       CanvasLayer (TripSync's own).
 //   use_screen = false  material on a TextureRect / SubViewport-
-//                       Container (the VN's backgrounds). Reads
-//                       TEXTURE, so the dialogue box above it is
-//                       never touched.
+//                       Container (the VN's backgrounds); reads
+//                       TEXTURE, so the dialogue box is never touched.
 //
-// Mesa-safe: float uniforms only (no vecN constructor defaults —
-// see neon_edge's accent_r/g/b note). 25 texture taps per fragment.
+// Mesa-safe: float uniforms only. 25 texture taps per fragment.
 // amount = 0 is a true identity (per-fragment passthrough).
 // ════════════════════════════════════════════════════════════════
 
@@ -49,11 +45,20 @@ uniform sampler2D SCREEN_TEXTURE : hint_screen_texture, filter_linear;
 uniform bool use_screen = true;
 
 // ── dials (Settings.trip_amount → amount; the rest are the mix) ──
-uniform float amount : hint_range(0.0, 1.0) = 0.25;
+uniform float amount : hint_range(0.0, 1.0) = 0.6;
 uniform float line_amount : hint_range(0.0, 2.0) = 1.0;    // aura on the edges
 uniform float flow_amount : hint_range(0.0, 2.0) = 1.0;    // colour wash in the flats
 uniform float hue_amount : hint_range(0.0, 2.0) = 1.0;     // hue drift + saturation lift
 uniform float ripple_amount : hint_range(0.0, 2.0) = 1.0;  // the beat's ring of light
+
+// ── the player's MIX (Settings.trip_flow / lines / colour / beat) ──
+// Four dials multiplied into the register so the balance can be
+// found on the Deck. mix_motion is the ONE dial that moves pixels:
+// the slow liquid drift in the flats (draft 3). 0 = a still image.
+uniform float mix_motion : hint_range(0.0, 1.0) = 1.0;
+uniform float mix_lines : hint_range(0.0, 1.0) = 1.0;
+uniform float mix_colour : hint_range(0.0, 1.0) = 1.0;
+uniform float mix_beat : hint_range(0.0, 1.0) = 1.0;
 
 // ── music state · written every frame by TripSync.gd ──
 uniform float energy = 0.0;      // 0..1 smoothed overall loudness (auto-gained)
@@ -214,17 +219,26 @@ void fragment() {
         float n2 = fbm(q * 2.3 + (n1 - vec2(0.5)) * 1.2 + vec2(tf * 0.025, -tf * 0.02));
         float breath = 0.70 + 0.30 * sin(bar_phase * 6.28318);
 
-        // ── the picture, sampled exactly where it is ──
-        vec3 col = tap(SCREEN_TEXTURE, TEXTURE, uv);
+        // ── the liquid · a slow, CONSTANT drift of the flats (draft 3).
+        //    Draft 1 pumped this with the bass (7 + 22·bass px, breathing
+        //    on the bar) and it was the nausea. What stays: an amplitude
+        //    that barely changes (4 + 3·energy px, smoothed), a field
+        //    that drifts at a fraction of the old rate, no beat in it
+        //    at all, and only where the picture is open — edges and
+        //    text never move. mix_motion is the player's dial; 0 = still.
+        float flow_px = (6.0 + 6.0 * energy) * (0.90 + 0.10 * sin(bar_phase * 6.28318))
+                      * flow_amount * mix_motion * amount;
+        vec2 disp = (n1 - vec2(0.5)) * px.y * flow_px * open;
+        vec3 col = tap(SCREEN_TEXTURE, TEXTURE, uv + disp);
 
         // ── chroma drift · a small, slow IQ rotation in the flats, lifted by the mids ──
         float y = dot(col, vec3(0.299, 0.587, 0.114));
         float i = dot(col, vec3(0.596, -0.274, -0.322));
         float qq = dot(col, vec3(0.211, -0.523, 0.312));
-        float ang = (n2 - 0.5) * 0.50 * (0.45 + 0.55 * energy);
-        ang *= hue_amount * amount * (1.0 - density * 0.6);
-        ang = clamp(ang, -0.26, 0.26);
-        float sat = 1.0 + 0.16 * mid * hue_amount * amount;
+        float ang = (n2 - 0.5) * 1.05 * (0.40 + 0.60 * energy);
+        ang *= hue_amount * mix_colour * amount * (1.0 - density * 0.6);
+        ang = clamp(ang, -0.55, 0.55);
+        float sat = 1.0 + 0.36 * mid * hue_amount * mix_colour * amount;
         float ci = cos(ang);
         float si = sin(ang);
         float i2 = (i * ci - qq * si) * sat;
@@ -238,21 +252,22 @@ void fragment() {
         vec2 c = vec2(ring_cx * aspect, ring_cy);
         float r = length(q - c);
         float ring_r = ring_t * 0.9;
-        float ring = exp(-pow((r - ring_r) * 4.0, 2.0)) * exp(-ring_t * 1.2) * ripple_amount * 0.5;
+        float ring = exp(-pow((r - ring_r) * 4.5, 2.0)) * exp(-ring_t * 1.4) * ripple_amount * mix_beat;
+        float kick = pulse * mix_beat;
 
         // ── aura on the lines · hue runs along the edge, a slow shimmer.
         //    SCREEN-blended, not added: highlights roll off instead of
         //    clipping to white (draft 2 · "rough").
         float hue = fract(hue_base + q.x * 0.08 + q.y * 0.06 + n1.x * 0.30 + beat_phase * 0.04);
-        vec3 rainbow = aura_color(hue, pulse * 0.6);
-        float travel = 0.85 + 0.15 * sin(dot(q, vec2(18.0, 13.0)) - tf * 1.1);
-        float aura = line_amount * amount * (0.22 + 0.45 * energy + 0.10 * pulse + 0.45 * ring);
-        vec3 aura_rgb = rainbow * (line * travel * 0.55 + glow * (0.18 + 0.10 * pulse + 0.30 * ring) * 0.35) * aura;
+        vec3 rainbow = aura_color(hue, kick * 0.7);
+        float travel = 0.78 + 0.22 * sin(dot(q, vec2(22.0, 15.0)) - tf * 1.6 + beat_phase * 3.14159 * mix_beat);
+        float aura = line_amount * mix_lines * amount * (0.30 + 0.62 * energy + 0.45 * kick + 0.9 * ring);
+        vec3 aura_rgb = rainbow * (line * travel * 0.80 + glow * (0.24 + 0.40 * kick + 0.5 * ring) * 0.40) * aura;
         col = 1.0 - (1.0 - col) * (1.0 - clamp(aura_rgb, 0.0, 1.0));
 
         // ── a faint wash into the dark flats · the flats breathe in colour, not in place ──
         vec3 wash = aura_color(hue_base + 0.5 + n2 * 0.2, 0.0);
-        vec3 wash_rgb = wash * (1.0 - y) * open * 0.06 * (0.4 + 0.6 * energy) * breath * flow_amount * amount;
+        vec3 wash_rgb = wash * (1.0 - y) * open * 0.11 * (0.4 + 0.6 * energy) * breath * flow_amount * mix_colour * amount;
         col = 1.0 - (1.0 - col) * (1.0 - clamp(wash_rgb, 0.0, 1.0));
 
         // ── sparks · fixed points that flash on the beat (they never travel) ──
@@ -263,12 +278,12 @@ void fragment() {
             vec2 pt = (cell + vec2(0.5) + jit * 0.8) / 44.0;
             float d = length(q - pt);
             // a slow sine fade per point — never a flash (draft 2B: "strobey")
-            float fade = 0.5 + 0.5 * sin(t_flow * (1.2 + 2.4 * h) + h * 40.0);
-            float twinkle = fade * fade * fade * step(0.55, hash21(cell + vec2(3.0, 11.0)));
+            float fade = 0.5 + 0.5 * sin(t_flow * (1.2 + 2.4 * h) + h * 40.0 + beat_phase * 6.28318 * step(0.7, h) * mix_beat);
+            float twinkle = fade * fade * fade * step(0.45, hash21(cell + vec2(3.0, 11.0)));
             float dot_i = smoothstep(0.0075, 0.0, d) * 0.7;
-            float halo = smoothstep(0.035, 0.0, d) * 0.08 * pulse;
-            vec3 spark_col = aura_color(h + hue_base, pulse * 0.6);
-            vec3 spark_rgb = spark_col * (dot_i + halo) * twinkle * spark_amount * amount * (0.5 + 0.5 * energy + 0.15 * pulse);
+            float halo = smoothstep(0.035, 0.0, d) * 0.15 * kick;
+            vec3 spark_col = aura_color(h + hue_base, kick * 0.6);
+            vec3 spark_rgb = spark_col * (dot_i + halo) * twinkle * spark_amount * amount * (0.5 + 0.5 * energy + 0.35 * kick);
             col = 1.0 - (1.0 - col) * (1.0 - clamp(spark_rgb, 0.0, 1.0));
         }
 

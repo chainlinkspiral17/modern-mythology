@@ -63,7 +63,7 @@ var _materials: Array[ShaderMaterial] = []
 var _analyzer: AudioEffectSpectrumAnalyzerInstance = null
 
 # Music state (public read for anything else that wants to dance)
-var amount: float = 0.25
+var amount: float = 0.6
 var energy: float = 0.0
 var bass: float = 0.0
 var mid: float = 0.0
@@ -85,6 +85,12 @@ var music_present: bool = false
 # heavy surfaces the global layer still covers).
 var mood_scale: float = 1.0
 var surface_scale: float = 1.0
+# The player's MIX (draft 3): four Settings dials multiplied into the
+# shader — flow (the one dial that moves pixels), lines, colour, beat.
+var mix_motion: float = 1.0
+var mix_lines: float = 1.0
+var mix_colour: float = 1.0
+var mix_beat: float = 1.0
 const SOFT_SURFACE_SCALE: float = 0.45
 
 # ── REGISTERS · the per-pillar look (2026-09-07, user direction) ──
@@ -108,33 +114,32 @@ const REGISTERS: Dictionary = {
 	# wash, phosphor-green lines with sodium amber on the kick, little
 	# hue drift (the noir stays noir)
 	"arcana": {
-		"palette_mode": 1, "line_amount": 1.1, "flow_amount": 1.2, "hue_amount": 0.5,
-		"ripple_amount": 0.8, "spark_amount": 0.0, "grain_amount": 0.0, "pulse_decay": 3.5,
+		"palette_mode": 1, "line_amount": 1.25, "flow_amount": 1.35, "hue_amount": 0.55,
+		"ripple_amount": 0.9, "spark_amount": 0.0, "grain_amount": 0.0, "pulse_decay": 3.5,
 	},
 	# vol 6 · PLANNED COMMUNITY · zines + sludge: two risograph inks
 	# on the lines (no rainbow), photocopy grain, the flow is slow and
 	# heavy (sludge tempo — the pulse hangs), hue drift almost off
 	"community": {
-		"palette_mode": 2, "line_amount": 1.0, "flow_amount": 0.7, "hue_amount": 0.3,
-		"ripple_amount": 0.6, "spark_amount": 0.0, "grain_amount": 0.8, "pulse_decay": 2.4,
+		"palette_mode": 2, "line_amount": 1.15, "flow_amount": 0.75, "hue_amount": 0.35,
+		"ripple_amount": 0.7, "spark_amount": 0.0, "grain_amount": 1.0, "pulse_decay": 2.4,
 	},
 	# vol 7 · LAND OF MILK AND HONEY · liquid light show + sci-fi:
 	# oil-projector palette, the densest colour wash and drift (the
 	# wall of sound), a sparse slow starfield in the dark
 	"milk_honey": {
-		"palette_mode": 3, "line_amount": 0.9, "flow_amount": 1.3, "hue_amount": 1.2,
-		"ripple_amount": 1.0, "spark_amount": 0.3, "grain_amount": 0.0, "pulse_decay": 3.0,
+		"palette_mode": 3, "line_amount": 0.95, "flow_amount": 1.45, "hue_amount": 1.35,
+		"ripple_amount": 1.2, "spark_amount": 0.6, "grain_amount": 0.0, "pulse_decay": 3.0,
 	},
-	# slowsticks · the SUBTLEST register (draft 2B · Deck verdict on the
-	# neon overlay: "ugly and strobey"). A 2D game screen is not a
-	# lit set: it has no soft flats for a wash and its UI edges are
-	# everywhere, so a strong aura reads as a smeared rainbow on the
-	# type. A faint neon breath on the lines, nothing on the flats, no
-	# sparks. The Minter register belongs INSIDE the sticks (their own
-	# particles and glow — a render task in each game), not on top.
+	# slowsticks · the quietest register (draft 2B Deck verdict on the
+	# full neon overlay: "ugly and strobey"; draft 3: "stripped
+	# completely" — so a middle). A 2D game screen has UI edges
+	# everywhere and no lit flats: a moderate neon breath on the lines,
+	# nothing moving on the flats, no sparks. The full Minter register
+	# belongs INSIDE the sticks (their own particles and glow).
 	"slowstick": {
-		"palette_mode": 4, "line_amount": 0.30, "flow_amount": 0.0, "hue_amount": 0.10,
-		"ripple_amount": 0.25, "spark_amount": 0.0, "grain_amount": 0.0, "pulse_decay": 3.0,
+		"palette_mode": 4, "line_amount": 0.65, "flow_amount": 0.0, "hue_amount": 0.15,
+		"ripple_amount": 0.5, "spark_amount": 0.0, "grain_amount": 0.0, "pulse_decay": 3.0,
 	},
 }
 const REGISTER_FADE: float = 0.9          # s · float dials cross-fade
@@ -180,6 +185,10 @@ func _ready() -> void:
 		push_warning("[TripSync] shader missing at %s — layer disabled" % SHADER_PATH)
 		return
 	amount = clampf(Settings.trip_amount, 0.0, 1.0)
+	mix_motion = clampf(Settings.trip_flow, 0.0, 1.0)
+	mix_lines = clampf(Settings.trip_lines, 0.0, 1.0)
+	mix_colour = clampf(Settings.trip_colour, 0.0, 1.0)
+	mix_beat = clampf(Settings.trip_beat, 0.0, 1.0)
 	_reg_from = REGISTERS["base"]
 	_reg_to = REGISTERS["base"]
 	Settings.settings_changed.connect(_on_setting)
@@ -188,8 +197,12 @@ func _ready() -> void:
 
 
 func _on_setting(key: String, value: Variant) -> void:
-	if key == "trip_amount":
-		amount = clampf(float(value), 0.0, 1.0)
+	match key:
+		"trip_amount": amount = clampf(float(value), 0.0, 1.0)
+		"trip_flow": mix_motion = clampf(float(value), 0.0, 1.0)
+		"trip_lines": mix_lines = clampf(float(value), 0.0, 1.0)
+		"trip_colour": mix_colour = clampf(float(value), 0.0, 1.0)
+		"trip_beat": mix_beat = clampf(float(value), 0.0, 1.0)
 
 
 # ── Layer ─────────────────────────────────────────────────────────
@@ -343,8 +356,8 @@ func _process(delta: float) -> void:
 	# Slow clocks (draft 2): the colour field and the hue rotation drift
 	# at a fraction of draft 1's rates — fast hue cycling over large
 	# areas is its own motion-sickness trigger.
-	hue_base = fposmod(hue_base + dt * (0.005 + 0.020 * energy), 1.0)
-	t_flow += dt * (0.15 + 0.35 * energy)
+	hue_base = fposmod(hue_base + dt * (0.007 + 0.035 * energy), 1.0)
+	t_flow += dt * (0.22 + 0.55 * energy)
 	_ring_c = _ring_c.lerp(_ring_target, clampf(dt * 2.5, 0.0, 1.0))
 
 	# ── register fade + owner pruning (a freed host pops itself)
@@ -367,6 +380,10 @@ func _push_to(mat: ShaderMaterial) -> void:
 	if mat == null:
 		return
 	mat.set_shader_parameter("amount", effective_amount())
+	mat.set_shader_parameter("mix_motion", mix_motion)
+	mat.set_shader_parameter("mix_lines", mix_lines)
+	mat.set_shader_parameter("mix_colour", mix_colour)
+	mat.set_shader_parameter("mix_beat", mix_beat)
 	mat.set_shader_parameter("energy", energy)
 	mat.set_shader_parameter("bass", bass)
 	mat.set_shader_parameter("mid", mid)
@@ -480,6 +497,6 @@ func _push_register_to(mat: ShaderMaterial) -> void:
 
 
 func status_line() -> String:
-	return "TRIP %d%% (dial %d%% · mood ×%.2f · surface ×%.2f) · %s · %s · %.0f bpm · e%.2f b%.2f p%.2f" % [
-		int(effective_amount() * 100.0), int(amount * 100.0), mood_scale, surface_scale,
+	return "TRIP %d%% (dial %d%% · mood ×%.2f · surface ×%.2f · mix f%.1f l%.1f c%.1f b%.1f) · %s · %s · %.0f bpm · e%.2f b%.2f p%.2f" % [
+		int(effective_amount() * 100.0), int(amount * 100.0), mood_scale, surface_scale, mix_motion, mix_lines, mix_colour, mix_beat,
 		register_name, "music" if music_present else "idle", bpm, energy, bass, pulse]

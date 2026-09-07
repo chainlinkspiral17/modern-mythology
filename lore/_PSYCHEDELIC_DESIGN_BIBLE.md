@@ -24,20 +24,21 @@ which this document extends to the whole game).
 
 ## Core rules
 
-0. **THE IMAGE NEVER MOVES (the motion rule).** The user's verdict on
-   draft 1: *"that's mostly nausea inducing."* Draft 1 warped the
-   flats by up to 29 px, rippled the whole frame on every beat,
-   zoomed the screen on the kick, split the chroma, and dipped the
-   brightness. ALL of it is gone and none of it comes back. THE TRIP
-   is colour and light laid on a still picture: every pixel is
-   sampled exactly where it is; no UV displacement, no zoom, no
-   chromatic split, no whole-frame brightness change, no flicker;
-   hue rotation on large areas is small (±0.35 rad) and SLOW; beat
-   responses live on the lines and in points, never across the
-   frame; the beat envelope has an attack (~45 ms), never a pop.
-   If a future pass wants displacement for a specific story moment,
-   it is a `[mood:]`-gated beat of a few seconds, off by default,
-   and it is never synced to a continuous music signal.
+0. **THE MOTION RULE (draft 3).** Draft 1 was "mostly nausea
+   inducing"; draft 2 (a still image) then 2B (faint) "lost all the
+   best parts." The balance: the flats may drift — slowly, like
+   water under glass — but the motion is NEAR-CONSTANT and NEVER
+   SYNCED TO THE BEAT. What made draft 1 sick was pumping: a
+   displacement amplitude that jumped with the bass (7 + 22·bass px,
+   breathing on the bar), a ripple that wobbled the whole frame on
+   every kick, a zoom thump, a chromatic split, a brightness dip.
+   All of those stay gone for good. What lives: a 6 + 6·energy px
+   liquid drift in the OPEN regions only (edges and text never move),
+   a field that moves at a fraction of draft 1's rate; the beat is a
+   ring of LIGHT, never a displacement; the pulse has a 45 ms attack;
+   hue rotation on large areas is capped (±0.55 rad) and slow. The
+   player holds the FLOW dial (Settings.trip_flow) — 0 is a still
+   image — beside LINES, COLOUR and BEAT.
 1. **Realism but trippy.** The picture stays the picture. THE TRIP
    never crushes a palette, never ASCII-fies, never fills. It rides
    on the lines (edge aura) and the backgrounds (flat-region flow,
@@ -143,9 +144,14 @@ sludge hangs).
 - **A beat needs an attack.** `pulse` snapping to 1.0 on the hit
   read as a strobe even at low amounts. It now follows the
   envelope through a 45 ms attack; band smoothing rises slower too.
-- **Default amount 0.25, not 0.6 (draft 2B: "way more subtle").**
-  A quarter of the dial is the starting point for "at all times";
-  the 3D backgrounds were "on the right path" at that register.
+- **The dial is not the fix (draft 3: "find a balance").** 2B cut
+  the coefficients so far that the PSYCHEDELIA slider at full was
+  "still too muted." Subtlety lives in WHAT moves and how it is
+  synced, not in scaling everything down: draft 3 restores draft 1's
+  colour and line weight and a slow, unsynced liquid, defaults the
+  dial to 0.6, and hands the player four mix sliders (FLOW · LINES
+  · COLOUR · BEAT) so the balance is found on the Deck, not guessed
+  in a container.
 - **Screen overlays do not belong on 2D game screens.** The Deck
   verdict on the slowstick register: "ugly and strobey." A 2D game
   has UI edges everywhere and no lit flats, so an edge aura smears

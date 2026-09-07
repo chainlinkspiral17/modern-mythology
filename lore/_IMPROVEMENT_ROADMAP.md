@@ -411,6 +411,20 @@ per-game render task, not a screen overlay. DRAFT 3 TARGETS: the
 that works); the slowstick overlay may go to zero if it still reads
 at 0.30; Minter-in-the-game for one stick (its own particle glow,
 its own beat-lit lines) as the first GAME GRAMMAR row.
+DRAFT 3 shipped (Deck verdicts on 2B: "lost all the best parts" ·
+"didn't tone it down so much as strip it completely" · "still too
+muted, find a balance"): the liquid is back as a near-constant,
+never-beat-synced drift (6 + 6·energy px, open regions only, a slow
+field); draft 1's colour and line weights restored (hue cap ±0.55,
+aura 0.30 + 0.62·energy + 0.45·kick + 0.9·ring, wash 0.11); default
+dial 0.6; the registers back at their 1C weights (slowstick at a
+middle: lines 0.65, no flat motion, no sparks); FOUR MIX SLIDERS in
+settings under PSYCHEDELIA — FLOW (0 = still) · LINES · COLOUR ·
+BEAT — persisted as Settings.trip_flow/lines/colour/beat. DRAFT 4
+TARGETS: read the user's slider positions back from settings.cfg
+after a session and bake them as the defaults; per-register FLOW
+(the sticks at 0, milk_honey highest); the ring's centre on the shot
+subject; Minter-in-the-game for one stick.
 
 **2026-08-19 · PER-STICK VOICE SWEEP VERDICT (voice draft 4).**
 Ran the leakage grep (TODO/WIP/placeholder/implemented/deferred/
@@ -528,7 +542,7 @@ Current ledger (draft counts are honest, not aspirational):
 | Slowstick manuals + packaging (NH = model) | 1 | era-voice + walkthrough sweep across ~20 sticks; box art after experiences are good (task #234) |
 | VN portrait busts (de-blocking · 2026-08-04) | 2 (EPX×2 + soft finish; hide-ghosts made ephemeral) | screenshot check vs the SVGA bar; if still chunky: raise the 60x64 base canvas itself (more shading ramps, finer features); dialogue-box busts + CP roster inherit automatically |
 | Scene direction · coverage rotation (2026-08-04) | 5 (28 locales carry decks — 111 authored setups, 176 markers repo-wide; draft 5 gave TEN ARCANA SETS the exact markers their scripts already cue (round 2: cafe_olimpico, both new_orleans rooms + the office — 42 arcana markers total; graustark deferred to the richer stub) — Alice's rose/chair/closeup, Natalie's turntable/card, Jimmy's sofa, Elicia's desk/laptop/teacup, Erica's office, the Montreal notebook — plus establish_b rotations, ALL euler-form now: the 81 matrix markers were converted after draft 3 found the transpose bug. Draft 4 covered the whole 7-9-use tier incl. kwik_stop B/C and the shared missing_link_exterior/shuttle_bench deck) | Deck screenshots — every framing is math-verified to <0.5° but ZERO have been seen through a lens; taste notes ("finn B too low") drive draft 5. Next tier (5-6 uses: foxhole_bar, henderson_garage, faust_bedroom, jesse_bedroom, centro_break_room, bianca_kitchen_morning, diner_interior variants) only after a taste pass confirms the grammar reads |
-| **THE TRIP (music-synced psychedelic layer · 2026-09-07)** | **2** (MOTION RULE: the image never moves — colour + light only;  TripSync autoload + trip_sync.gdshader; global layer 60 + VN texture mode; PSYCHEDELIA slider; per-mood/per-surface scaling; FIVE REGISTERS arcana/community/milk_honey/slowstick/base pushed by the hosts — see _PSYCHEDELIC_DESIGN_BIBLE.md) | draft 2: Deck look at 0.6 per register (gauntlet, CP screen, a vol 7 chapter, a stick); beat detector vs the real catalog; then the GAME GRAMMAR column one row per pillar |
+| **THE TRIP (music-synced psychedelic layer · 2026-09-07)** | **3** (the liquid drifts slowly and never to the beat; draft-1 colour/line weight; FLOW · LINES · COLOUR · BEAT mix sliders;  TripSync autoload + trip_sync.gdshader; global layer 60 + VN texture mode; PSYCHEDELIA slider; per-mood/per-surface scaling; FIVE REGISTERS arcana/community/milk_honey/slowstick/base pushed by the hosts — see _PSYCHEDELIC_DESIGN_BIBLE.md) | draft 2: Deck look at 0.6 per register (gauntlet, CP screen, a vol 7 chapter, a stick); beat detector vs the real catalog; then the GAME GRAMMAR column one row per pillar |
 | Model chapters (diner, kwik stop, cathedral, henderson) | many | the BAR — mine them for what a finished space has |
 
 ### Workstream · THE STUMP HUNT (2026-08-04)
