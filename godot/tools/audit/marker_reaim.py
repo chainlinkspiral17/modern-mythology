@@ -63,23 +63,33 @@ def main():
             if not hits:
                 continue
             fwd = M.yxz_forward(*rot)
-            nearest = min(hits, key=lambda h: sum(
-                (a - b) ** 2 for a, b in zip(h[1], pos)))
-            ang, dist = M.angle_to(pos, fwd, nearest[1])
+            anchor_name, tgt = M.subject_target(hits, pos)
+            nearest = (anchor_name, tgt)
+            ang, dist = M.angle_to(pos, fwd, tgt)
             if ang <= M.CONE_DEG and dist <= M.NEAR_MAX:
                 continue
-            tgt = cluster_centroid(hits, nearest[1])
             dx, dy, dz = (tgt[i] - pos[i] for i in range(3))
             ry = math.atan2(-dx, -dz)
             rx = math.atan2(dy, math.hypot(dx, dz))
-            block_re = re.compile(
-                r'(\[node name="%s"[^\]]*\].*?rotation = Vector3\()([^)]+)(\))'
-                % re.escape(name), re.S)
-            mm = block_re.search(src)
-            if not mm:
+            # The marker's own block (up to the next node header).
+            blk = re.search(r'\[node name="%s"[^\]]*\](.*?)(?=\n\[|\Z)' % re.escape(name), src, re.S)
+            if not blk:
                 continue
-            src = src[:mm.start(2)] + "%.4f, %.4f, 0.0" % (rx, ry) + \
-                src[mm.end(2):]
+            body = blk.group(1)
+            rot_m = re.search(r'rotation = Vector3\(([^)]+)\)', body)
+            new_rot = "%.4f, %.4f, 0.0" % (rx, ry)
+            if rot_m:
+                a = blk.start(1) + rot_m.start(1)
+                b = blk.start(1) + rot_m.end(1)
+                src = src[:a] + new_rot + src[b:]
+            else:
+                # position-form marker without a rotation line (2026-09-07):
+                # add one after the position line.
+                pos_m = re.search(r'position = Vector3\([^)]+\)', body)
+                if not pos_m:
+                    continue
+                at = blk.start(1) + pos_m.end()
+                src = src[:at] + "\nrotation = Vector3(%s)" % new_rot + src[at:]
             changed = True
             fixed += 1
             print("re-aimed  %-24s %-28s → %s" % (locale, name, nearest[0]))

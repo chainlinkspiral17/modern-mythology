@@ -316,14 +316,14 @@ metadata/fov = 54.0
 
 ; insert: the notebook on the reading chair
 [node name="shot_insert_notebook" type="Marker3D" parent="." groups=["vn_shot"]]
-position = Vector3(-1.5, 1.1, -1.5)
-rotation = Vector3(-0.487616, 0.785398, 0)
+position = Vector3(-1.986, 1.116, -3.461)
+rotation = Vector3(-0.5236, 2.8798, 0.0)
 metadata/fov = 40.0
 
 ; insert: the mug at the sofa arm
 [node name="shot_insert_mug" type="Marker3D" parent="." groups=["vn_shot"]]
 position = Vector3(0.2, 1, -1.9)
-rotation = Vector3(-0.496932, 2.43297, 0)
+rotation = Vector3(-0.5233, 0.7774, 0.0)
 metadata/fov = 38.0
 
 ; insert: the phone on the desk, face-up, the four-word thread
@@ -340,6 +340,6 @@ metadata/fov = 42.0
 
 ; insert: the graffiti-scarred drainpipe, when the light hits it
 [node name="shot_insert_drainpipe" type="Marker3D" parent="." groups=["vn_shot"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.6, 1.6, -4.2)
-rotation = Vector3(0, 0, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.015, 1.912, -5.919)
+rotation = Vector3(-0.2618, -0.2618, 0.0)
 metadata/fov = 42.0

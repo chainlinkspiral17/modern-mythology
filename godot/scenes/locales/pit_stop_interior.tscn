@@ -324,7 +324,7 @@ metadata/fov = 62.0
 ; the back corner booth, seated eye-line (ch7)
 [node name="shot_closeup_booth" type="Marker3D" parent="." groups=["vn_shot"]]
 position = Vector3(-2.6, 1.35, -1.6)
-rotation = Vector3(-0.0300005, 1.89, 0)
+rotation = Vector3(-0.9377, -1.9890, 0.0)
 metadata/fov = 45.0
 
 ; down the counter to the register + pie case

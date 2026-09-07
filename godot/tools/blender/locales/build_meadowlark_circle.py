@@ -140,12 +140,27 @@ def build_sprinklers():
     for i, hx in enumerate((-24.0, -13.0, -2.0, 9.0)):
         make_cyl(f"Sprinkler_Head_{i}", (hx - 3.0, 6.0, 0.03), 0.03, 0.06, (0.24, 0.26, 0.24, 1.0), segments=6)
         make_box(f"Sprinkler_Wet_{i}", (hx - 1.5, 7.2, 0.013), (3.2, 2.2, 0.006), (0.28, 0.40, 0.24, 1.0))
-        make_box(f"Sprinkler_Arc_{i}", (hx - 1.5, 6.4, 0.42), (2.8, 0.03, 0.70), (0.82, 0.88, 0.94, 0.35))
+        # the fan: five thin water arcs from the head across the wet
+        # sheet (2026-09-07: the old "translucent" slab rendered as an
+        # opaque blue rectangle — this pipeline has no alpha)
+        for ai in range(5):
+            a = math.radians(8.0 + ai * 18.5)
+            reach = 2.4 - 0.25 * abs(ai - 2)
+            pts = []
+            for k in range(8):
+                f = k / 7.0
+                pts.append((hx - 3.0 + math.cos(a) * reach * f, 6.0 + math.sin(a) * reach * f, 0.05 + 1.7 * f * (1.0 - f)))
+            make_tube(f"Sprinkler_Spray_{i}_{ai}", pts, 0.012, (0.80, 0.86, 0.92, 1.0), segments=4)
     # the Miller head, left corner, cracked housing
     mx = 20.0 - 3.6
     make_cyl("Miller_Cracked_Head", (mx, 5.6, 0.03), 0.03, 0.06, (0.24, 0.26, 0.24, 1.0), segments=6)
     make_box("Miller_Head_Crack", (mx + 0.02, 5.6, 0.06), (0.012, 0.012, 0.02), (0.10, 0.10, 0.10, 1.0))
-    make_box("Miller_Thin_Arc", (mx - 0.35, 4.85, 0.55), (0.90, 0.02, 1.00), (0.86, 0.92, 0.98, 0.45))
+    # the surgical arc: one thin stream to the sidewalk (was a slab)
+    _pts = []
+    for k in range(8):
+        f = k / 7.0
+        _pts.append((mx - 0.9 * f, 5.6 - 1.35 * f, 0.06 + 1.9 * f * (1.0 - f)))
+    make_tube("Miller_Thin_Arc", _pts, 0.010, (0.86, 0.92, 0.98, 1.0), segments=4)
     make_box("Miller_Arc_Splash", (mx - 0.9, 4.25, 0.075), (0.60, 0.30, 0.004), (0.50, 0.52, 0.56, 1.0))
     make_box("Sidewalk_Etch_Stripe", (mx - 0.9, 4.25, 0.0715), (0.55, 0.10, 0.003), (0.46, 0.46, 0.44, 1.0))
 

@@ -350,8 +350,8 @@ metadata/fov = 36.0
 
 ; insert: the long mirror behind the bar
 [node name="shot_insert_mirror" type="Marker3D" parent="." groups=["vn_shot"]]
-position = Vector3(0, 1.55, -4.5)
-rotation = Vector3(0.146012, 0, 0)
+position = Vector3(0.000, 1.990, -4.870)
+rotation = Vector3(0.0000, 0.0000, 0.0)
 metadata/fov = 44.0
 
 ; insert: the game on the bar TV, muted, neon ghosts (Strength)

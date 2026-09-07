@@ -1255,6 +1255,15 @@ func _spawn_sam(spawn_id: String) -> void:
 	_sam_texture_rect.texture_filter = CanvasItem.TEXTURE_FILTER_NEAREST
 	_sam_texture_rect.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	_place_sam()
+	# Reset the idle-bob anchor to THIS sprite's resting Y (2026-09-07:
+	# "player character jumps and appears in random spots on new maps").
+	# The anchor used to survive zone changes, so _process kept writing
+	# the PREVIOUS zone's resting Y into the freshly spawned sprite —
+	# Sam drew at the old row until his first step, and that first step
+	# then tweened him across the map from the wrong place.
+	_sam_idle_base_y = _sam_texture_rect.position.y
+	_sam_idle_bob_t = 0.0
+	_sam_moving = false
 	_attach_ground_shadow(_sam_texture_rect)
 	_attach_sam_lantern()
 	_world_root.add_child(_sam_texture_rect)

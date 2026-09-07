@@ -327,8 +327,8 @@ script = ExtResource("14_dbgm")
 
 ; insert: the small spiral-bound notebook from the Kwik Stop (ch7/ch9)
 [node name="shot_insert_notebook" type="Marker3D" parent="." groups=["vn_shot"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.55, 0.95, -3.25)
-rotation = Vector3(-0.6565, -0.7037, 0.0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.583, 1.294, -1.284)
+rotation = Vector3(-0.2618, -0.5236, 0.0)
 metadata/fov = 42.0
 
 ; insert: Diego's phone — "bored. u alive?" (ch6)

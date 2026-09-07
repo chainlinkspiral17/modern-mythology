@@ -599,3 +599,45 @@ failure paths separately before concluding anything.
   numbers. Graduate to Core rules once it has held across
   multiple sessions.
 -->
+
+## Recent lessons
+
+### 2026-09-07 · the Deck session · markers were never checked
+
+- **Read every marker form or the gate is a fiction.** 198 of 589
+  vn_shot markers used `position = Vector3` and both marker tools
+  read only `transform = Transform3D`; a third of all shots had never
+  been aimed or seen. Rule: a parser over authored data must count
+  what it SKIPPED and print it; a green audit over a silent skip is
+  worse than no audit.
+- **Name matching must split CamelCase.** `WallClock_Face` never
+  answered to "clock". Parts are now split on "_" AND on case.
+- **A fallback that passes is a hole.** Unresolved insert subjects
+  fell through to "anything in a wide cone" — a blank wall qualifies.
+  Unresolved now fails; a KNOWN_UNRESOLVED table prints WARN with the
+  reason.
+- **Judge a marker by its SUBJECT, not by fill.** The first
+  marker pass flagged 374 of 589 because an insert of a mug at 0.8 m
+  is "near" by construction. The right question is the
+  cinematographer's: can the lens see the thing? Five rays
+  lens→subject; blocked by a non-subject = OCCLUDED. That cut 374 to
+  128 real defects (and the user had been looking at those 128).
+- **Reframe, don't just reaim.** Turning a camera that stands inside
+  a bookshelf does nothing. marker_reframe searches rings around the
+  subject for a position that is not inside anything and sees it
+  unoccluded, nearest the author's original — 96 of 128 fixed
+  mechanically; 22 STUCK are content problems (the prop is behind a
+  wall from every side).
+- **Same-prefix exemption hides intra-assembly clips.** The overlap
+  gate's assembly rule is right for wheels in bodies and wrong for a
+  pillow through a mattress. furniture_grammar_audit reports INTRA
+  separately, skipping structural joints (wall corners, crown mitres,
+  roof/chimney) and contained parts (drawers in pedestals).
+- **Dict literals keep the LAST duplicate key.** SYNONYMS had
+  duplicate keys; the later, weaker entry silently won for
+  speak_and_spell and radio. Lint for duplicate keys in any hand-
+  maintained table.
+- **This pipeline has no alpha.** A (r,g,b,0.35) "translucent" slab
+  renders as an opaque slab. Water, glass, spray: model the THING
+  (thin tubes, frames), never a tinted plane.
+

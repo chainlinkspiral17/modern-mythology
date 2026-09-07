@@ -418,8 +418,8 @@ metadata/fov = 45.0
 
 ; insert: the black egg doohickey (Wheel/World)
 [node name="shot_insert_doohickey" type="Marker3D" parent="." groups=["vn_shot"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 43.0, 1.15, 117.9)
-rotation = Vector3(-0.3356, -0.6202, 0.0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 43.162, 1.031, 117.786)
+rotation = Vector3(-0.2618, -0.5236, 0.0)
 metadata/fov = 42.0
 
 ; insert: the smoke ring over the water, the wildflower (World)

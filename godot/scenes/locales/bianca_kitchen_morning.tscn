@@ -308,8 +308,8 @@ metadata/fov = 42.0
 
 ; insert: Don's light comes on at five oh-two
 [node name="shot_insert_porch_light" type="Marker3D" parent="." groups=["vn_shot"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.4, 1.5, -4.3)
-rotation = Vector3(0, 0, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.950, 2.359, -8.412)
+rotation = Vector3(-0.2618, -0.2618, 0.0)
 metadata/fov = 42.0
 
 ; insert: the cordless in her hand
@@ -320,6 +320,6 @@ metadata/fov = 42.0
 
 ; insert: the stationery not used since 2018
 [node name="shot_insert_stationery" type="Marker3D" parent="." groups=["vn_shot"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.65, 1.1, -2.3)
-rotation = Vector3(-0.5792, -1.1580, 0.0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.446, 1.098, -2.173)
+rotation = Vector3(-0.2618, -1.3090, 0.0)
 metadata/fov = 42.0

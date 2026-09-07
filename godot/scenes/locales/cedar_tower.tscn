@@ -382,7 +382,7 @@ metadata/fov = 45.0
 ; insert: the photograph of Dean at forty-eight
 [node name="shot_insert_photograph" type="Marker3D" parent="." groups=["vn_shot"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0, 1.7, -7.1)
-rotation = Vector3(0, 0, 0)
+rotation = Vector3(0.6849, -1.7807, 0.0)
 metadata/fov = 42.0
 
 ; insert: Estuary 7 — the poster, sixty-three times since July

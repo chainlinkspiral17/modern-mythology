@@ -187,8 +187,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.52, 1.39, -0.73)
 rotation = Vector3(-0.4687, -0.6234, 0.0)
 
 [node name="shot_insert_notebook" type="Marker3D" parent="." groups=["vn_shot"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.24, 1.31, -0.60)
-rotation = Vector3(0.0, 0.0, 0.0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.390, 1.024, -0.687)
+rotation = Vector3(-0.2618, -0.2618, 0.0)
 
 [node name="Interior" parent="." instance=ExtResource("1_glb")]
 
@@ -356,6 +356,6 @@ metadata/fov = 42.0
 
 ; insert: the dock at dusk, 1978 — the photograph
 [node name="shot_insert_photograph" type="Marker3D" parent="." groups=["vn_shot"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.6, 0.5, -2.8)
-rotation = Vector3(-0.5379, 0.6011, 0.0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.976, 0.379, -1.979)
+rotation = Vector3(-0.2618, 0.5236, 0.0)
 metadata/fov = 42.0

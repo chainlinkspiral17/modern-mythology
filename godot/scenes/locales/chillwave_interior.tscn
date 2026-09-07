@@ -330,8 +330,8 @@ metadata/fov = 60.0
 
 ; the service bell + face-down paperback
 [node name="shot_closeup_counter" type="Marker3D" parent="." groups=["vn_shot"]]
-position = Vector3(0.3, 1.3, -1.9)
-rotation = Vector3(-0.0499998, 0.87, 0)
+position = Vector3(1.517, 2.239, -3.533)
+rotation = Vector3(-0.5236, 1.8326, 0.0)
 metadata/fov = 45.0
 
 ; through the doorway: inventory + workbench + stick box
@@ -349,7 +349,7 @@ metadata/fov = 42.0
 ; Cale's bench mid-repair under the task lamp
 [node name="shot_closeup_workbench" type="Marker3D" parent="." groups=["vn_shot"]]
 position = Vector3(1.7, 1.35, -6)
-rotation = Vector3(-0.0499998, -1.26, 0)
+rotation = Vector3(-0.5413, -1.0960, 0.0)
 metadata/fov = 45.0
 
 ; The lit window across the street (D5) — its glow reaches the

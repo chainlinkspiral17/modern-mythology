@@ -36,7 +36,7 @@ import sys
 HERE = os.path.dirname(os.path.abspath(__file__))
 sys.path.insert(0, HERE)
 import prop_overlap_audit as P  # record_builder + audit stubs
-from shot_marker_audit import SYNONYMS
+from shot_marker_audit import SYNONYMS, EXCLUDE
 
 ROOT = os.path.normpath(os.path.join(HERE, "..", ".."))
 LOCALES_TSCN = os.path.join(ROOT, "scenes", "locales")
@@ -46,12 +46,21 @@ CONE_DEG = 38.0        # half-angle · insert lenses are tight but a
                        # named object should be near frame center
 NEAR_MAX = 40.0        # an insert subject more than 40m out is a miss
 ANY_CONE_DEG = 55.0    # abstract markers: anything in a wide cone
+# Insert cues whose subject genuinely does not exist in that locale's
+# geometry (the story object lives in a sibling scene). Reported as
+# WARN, not a failure — build the prop or re-home the cue to clear it.
+KNOWN_UNRESOLVED = {
+    ("cabin_road", "shot_insert_crow"): "the crow is a cabin_interior hero prop; cabin_road's cue reads the sky",
+}
 
 MARKER_RE = re.compile(
     r'\[node name="(shot_[\w]+)"[^\]]*groups=\["vn_shot"\][^\]]*\]'
     r'(.*?)(?=\n\[|\Z)', re.S)
 TR_RE = re.compile(r'transform = Transform3D\(([^)]+)\)')
 ROT_RE = re.compile(r'rotation = Vector3\(([^)]+)\)')
+POS_RE = re.compile(r'position = Vector3\(([^)]+)\)')
+FOV_RE = re.compile(r'metadata/fov = ([\d.]+)')
+CAMEL_RE = re.compile(r'(?<=[a-z])(?=[A-Z])')
 
 
 def yxz_forward(rx, ry, rz):
@@ -72,17 +81,35 @@ def parse_markers(tscn_path):
     out = []
     for m in MARKER_RE.finditer(src):
         name, body = m.group(1), m.group(2)
+        # Both marker forms count (2026-09-07): `transform = Transform3D`
+        # and `position = Vector3` (+ optional `rotation`). 198 of the
+        # repo's 589 vn_shot markers were position-form and INVISIBLE
+        # to this audit and to marker_reaim — the diner's clock insert
+        # faced 180° from the clock for weeks with a green audit.
         tm = TR_RE.search(body)
-        if not tm:
+        pm = POS_RE.search(body)
+        if tm:
+            vals = [float(v) for v in tm.group(1).split(",")]
+            pos = tuple(vals[9:12])
+        elif pm:
+            pos = tuple(float(v) for v in pm.group(1).split(","))
+        else:
             continue
-        vals = [float(v) for v in tm.group(1).split(",")]
-        pos = tuple(vals[9:12])
         rot = (0.0, 0.0, 0.0)
         rm = ROT_RE.search(body)
         if rm:
             rot = tuple(float(v) for v in rm.group(1).split(","))
         out.append((name, pos, rot))
     return out
+
+
+def parse_marker_fovs(tscn_path):
+    fovs = {}
+    src = open(tscn_path).read()
+    for m in MARKER_RE.finditer(src):
+        fm = FOV_RE.search(m.group(2))
+        fovs[m.group(1)] = float(fm.group(1)) if fm else 42.0
+    return fovs
 
 
 _STUBS_READY = False
@@ -132,13 +159,38 @@ def matches_for(cue_id, geo):
     words = {s for s in stems if "_" not in s}
     flats = {s.replace("_", "") for s in stems if "_" in s}
     hits = []
+    excl = [e for e in EXCLUDE.get(cue_id, [])]
     for name, pos in geo:
-        parts = name.lower().split("_")
+        if excl:
+            low_parts = CAMEL_RE.sub("_", name).lower().split("_")
+            if any(p == e for p in low_parts for e in excl):
+                continue
+        # CamelCase parts split too: "WallClock_Face" → wall, clock,
+        # face — "clock" must find the clock (2026-09-07).
+        parts = CAMEL_RE.sub("_", name).lower().split("_")
         flat = name.lower().replace("_", "")
         if any(p == w or p == w + "s" for p in parts for w in words) or \
                 any(f in flat for f in flats):
             hits.append((name, pos))
     return hits
+
+
+def cluster_radius(dist):
+    """How wide a 'subject' is at a given lens distance: a shelf of
+    bowls 0.6 m away is one bowl; a truck 8 m away is the truck."""
+    return max(0.15, min(1.6, 0.6 * dist))
+
+
+def subject_target(hits, pos):
+    """The ONE target every marker tool aims at, tests and judges
+    (2026-09-07): the matching part nearest the lens, widened to the
+    cluster of same-cue parts within cluster_radius(distance) of it.
+    Returns (anchor_name, centroid)."""
+    nearest = min(hits, key=lambda h: sum((a - b) ** 2 for a, b in zip(h[1], pos)))
+    d = sum((a - b) ** 2 for a, b in zip(nearest[1], pos)) ** 0.5
+    r = cluster_radius(d)
+    near = [h[1] for h in hits if sum((a - b) ** 2 for a, b in zip(h[1], nearest[1])) ** 0.5 < r]
+    return nearest[0], tuple(sum(p[i] for p in near) / len(near) for i in range(3))
 
 
 def angle_to(pos, fwd, target):
@@ -177,14 +229,37 @@ def main():
                 cue_id = m.group(2)
                 hits = matches_for(cue_id, geo)
                 if hits:
-                    # The SUBJECT is the nearest matching object —
-                    # min-by-angle once matched a same-named object
-                    # 200m away that happened to sit near the axis
-                    # and made a bad marker look aimed.
-                    best = min(hits, key=lambda h: angle_to(pos, fwd, h[1])[1])
-                    ang, dist = angle_to(pos, fwd, best[1])
+                    # The SUBJECT is the shared subject_target() — the part
+                    # nearest the lens widened to its cluster — unless a
+                    # different same-cue cluster within NEAR_MAX sits
+                    # closer to the axis (two windows in a room: the one
+                    # the camera faces is the subject).
+                    best_name, cen = subject_target(hits, pos)
+                    ang, dist = angle_to(pos, fwd, cen)
+                    for h in hits:
+                        a1, d1 = angle_to(pos, fwd, h[1])
+                        if d1 > NEAR_MAX or a1 >= ang:
+                            continue
+                        r = cluster_radius(d1)
+                        near = [g[1] for g in hits if sum((a - b) ** 2 for a, b in zip(g[1], h[1])) ** 0.5 < r]
+                        c2 = tuple(sum(p[i] for p in near) / len(near) for i in range(3))
+                        a2, d2 = angle_to(pos, fwd, c2)
+                        if a2 < ang:
+                            ang, dist, best_name = a2, d2, h[0]
+                    best = (best_name, None)
                     if ang > CONE_DEG or dist > NEAR_MAX:
                         misaims.append((locale, name, best[0], ang, dist))
+                    continue
+                if m.group(1) == "insert" and (locale, name) in KNOWN_UNRESOLVED:
+                    print("WARN    %-26s %-28s %s" % (locale, name, KNOWN_UNRESOLVED[(locale, name)]))
+                    continue
+                if m.group(1) == "insert":
+                    # An INSERT names an object. If no geometry answers
+                    # to the name, the fallback below ("anything in a
+                    # wide cone") would pass a camera pointed at a blank
+                    # wall — the clock insert did exactly that. Report
+                    # it; fix the SYNONYMS table or the builder's names.
+                    misaims.append((locale, name, "(no geometry named %s)" % cue_id, 998.0, 0.0))
                     continue
             # No nameable object — anything in a wide cone counts.
             in_cone = 0
@@ -200,6 +275,8 @@ def main():
         for locale, name, target, ang, dist in misaims:
             if ang >= 999.0:
                 print("MISAIM  %-26s %-28s sees nothing at all" % (locale, name))
+            elif ang >= 998.0:
+                print("MISAIM  %-26s %-28s %s" % (locale, name, target))
             else:
                 print("MISAIM  %-26s %-28s → %s is %.0f° off axis (%.1fm)" %
                       (locale, name, target, ang, dist))

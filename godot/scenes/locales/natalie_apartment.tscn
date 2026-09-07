@@ -323,8 +323,8 @@ metadata/fov = 54.0
 
 ; closeup: Natalie on the sofa
 [node name="shot_closeup_natalie" type="Marker3D" parent="." groups=["vn_shot"]]
-position = Vector3(0.6, 1.25, -2.6)
-rotation = Vector3(-0.254079, 2.51757, 0)
+position = Vector3(-1.167, 1.244, -4.367)
+rotation = Vector3(-0.2618, 0.7854, 0.0)
 metadata/fov = 36.0
 
 ; closeup: Nicola at the bed's edge
@@ -341,14 +341,14 @@ metadata/fov = 40.0
 
 ; insert: the card laid down by the reading rug
 [node name="shot_insert_card" type="Marker3D" parent="." groups=["vn_shot"]]
-position = Vector3(-0.6, 1.2, -2.9)
-rotation = Vector3(-0.522002, -3.06482, 0)
+position = Vector3(-1.579, 2.183, -3.430)
+rotation = Vector3(-0.6433, 2.1859, 0.0)
 metadata/fov = 42.0
 
 ; insert: the worn deck, shuffled (vol5)
 [node name="shot_insert_deck" type="Marker3D" parent="." groups=["vn_shot"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.6, 0.55, -1.15)
-rotation = Vector3(-0.7632, 0.7184, 0.0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.533, 0.395, -1.391)
+rotation = Vector3(-0.5236, -1.3090, 0.0)
 metadata/fov = 42.0
 
 ; insert: her phone on the kitchen counter, ringing (vol5)
@@ -365,6 +365,6 @@ metadata/fov = 42.0
 
 ; insert: the desk, the dream journal open after three years (vol5)
 [node name="shot_insert_desk" type="Marker3D" parent="." groups=["vn_shot"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.35, 1.1, -0.35)
-rotation = Vector3(-0.8098, -0.2214, 0.0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.643, 1.083, -0.159)
+rotation = Vector3(-0.5236, -0.7854, 0.0)
 metadata/fov = 42.0

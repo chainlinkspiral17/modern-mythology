@@ -433,6 +433,85 @@ detail draft 4, THE TRIP milk_honey at draft 3) is the current
 REFERENCE POINT for the whole program — tune the other registers
 toward how that reads, not toward their own numbers.
 
+**2026-09-07 · THE DECK SESSION · "the world is a huge mess."** One
+evening of Deck screenshots, in order: the diner's first shot a yellow
+field with a door sliver · "what is that weird object in the middle
+of the diner bar?" · "cars don't park in the middle of streets. this
+keeps happening." · "what are these blue rectangles in front of the
+home?" · "lots of clipping on beds and weird pillow designs" · "weird
+broken overlapping geometry all over the place. comic shop." · "an
+exploded office chair facing the wrong direction away from the desk
+… a desk in the center of the room" · "real bad shot direction all
+throughout the latter half of major arcana, just poor." · "movement
+on pirate summer still totally busted."
+
+ROOT CAUSES FOUND (the tooling had holes, not just the content):
+1. 198 of 589 vn_shot markers are written in `position =` form and
+   were INVISIBLE to marker_aim_audit and marker_reaim (both read
+   only `transform =`). The diner's clock insert faced 180° from the
+   clock with a green audit. Both tools now read both forms.
+2. The subject matcher split names on "_" only — "clock" never
+   matched "WallClock_Face". CamelCase now splits; sixteen insert
+   cues had no synonyms at all (deckwall, meatcase, speak_and_spell,
+   oneway, setlist, wreck, bed, hotsauce, record_player, ceiling_fan,
+   bourbon, longboxes, scoreboard, bleachers, radio, boxes) — added;
+   an EXCLUDE table stops "door" landing on a fridge door and
+   "photograph" on a door frame; duplicate SYNONYMS keys silently won
+   (the dict literal kept the LAST) — deduped.
+3. An INSERT whose subject could not be resolved fell through to
+   "anything in a wide cone" and PASSED. Unresolved inserts now fail
+   (KNOWN_UNRESOLVED prints WARN: cabin_road's crow lives in
+   cabin_interior).
+4. No tool ever cast rays from a MARKER. vantage_obstruction_audit
+   --markers now runs the fan over all 589 with SUBJECT-AWARE
+   verdicts: OCCLUDED (five rays lens→subject blocked by a non-
+   subject), camera INSIDE, EMPTY (sky/far only ≥ 80%). First run:
+   128 real defects — 92 occluded, 16 inside a bookshelf / seat back /
+   partition, 12 sky. NEW TOOL marker_reframe.py searches rings
+   around the subject (5 distances × 24 yaws × 5 elevations, not
+   inside anything, occlusion-free, nearest to the author's original
+   position) and rewrites position + aim: 96 reframed, 22 stuck (no
+   clear position — those need the prop or the room to move).
+5. prop_overlap_audit exempts same-prefix parts as one assembly, so
+   a pillow through its own bed, a chair back floating off its seat,
+   and stacked desk papers were never reported. NEW TOOL
+   furniture_grammar_audit.py (informational): INTRA (intra-assembly
+   penetration), FLOAT (prop hangs above its support), CHAIR (back on
+   the desk side), DESK (top touches no wall), LANE (car centre > 2.2 m
+   from the road's edge). Draft 1 confirms the user's eye on every
+   case it can measure: Jesse's desk off the wall, the white sedan
+   4.4 m into the bulb's asphalt, the futon pillow through the
+   mattress.
+
+FIXES SHIPPED: the clock insert moved to the dining floor 3 m off the
+clock and aimed; the diner's coffee maker is a pour-over brewer (base,
+tower, brew head, two warmers with lathed glass pots, coffee in one)
+instead of a 0.5 m steel cube; Meadowlark's sprinkler "translucent"
+slabs (this pipeline has no alpha — they rendered as opaque blue
+rectangles) are five thin water arcs per head and one surgical stream
+for the Miller head; the comic-shop back office desk sits against the
+north wall west of the service door with every desk prop carried
+along (DESK_DX/DY), the chair's back is on the far side from the desk
+on two posts; Pirate Summer's idle-bob anchor resets on spawn (it
+carried the PREVIOUS zone's resting Y into the new sprite — Sam drew
+at the wrong row until his first step, then tweened across the map);
+20 markers re-aimed, 96 reframed.
+
+QUEUE (next passes, in order): (a) the 22 STUCK markers — move the
+prop or the cue; (b) cars in the lane: White_Sedan (meadowlark bulb),
+plus a repo-wide LANE run; then a `curb_park()` helper in vehicles.py
+that snaps a car to the nearest road edge; (c) a shared make_bed()
+in _props/furniture.py (frame, mattress inset, fitted sheet, folded
+blanket prism, two pillows) and the 24 hand-built beds through it;
+(d) the grammar audit repo-wide, then a ceiling per class and a gate;
+(e) SHOT DIRECTION vol 5 ch11–21: every preset and marker those
+chapters cue through the two gates, then a Deck taste pass chapter by
+chapter; (f) highway9's six presets read EMPTY because harmony_terrain
+records its props in a frame the recorder cannot place — an
+UNMEASURED skip, to be root-caused. Deck rebuild: diner,
+meadowlark_circle, cosmic_comics_back_office (the marker changes are
+tscn-only and need no rebuild).
+
 **2026-08-19 · PER-STICK VOICE SWEEP VERDICT (voice draft 4).**
 Ran the leakage grep (TODO/WIP/placeholder/implemented/deferred/
 stub) and a string survey across EVERY stick directory: estuary_4,

@@ -200,8 +200,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.10, 1.55, -3.30)
 rotation = Vector3(0.0000, -1.4219, 0.0)
 
 [node name="shot_insert_sink_light" type="Marker3D" parent="." groups=["vn_shot"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.75, 1.35, -3.60)
-rotation = Vector3(0.0, 0.0, 0.0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.250, 1.329, -4.317)
+rotation = Vector3(-0.7854, 0.7854, 0.0)
 
 [node name="Interior" parent="." instance=ExtResource("1_glb")]
 
@@ -339,8 +339,8 @@ metadata/fov = 54.0
 
 ; insert: the table setting - fruit bowl and four chairs
 [node name="shot_insert_table" type="Marker3D" parent="." groups=["vn_shot"]]
-position = Vector3(0.5, 1.4, -1.7)
-rotation = Vector3(-0.445017, 0, 0)
+position = Vector3(0.500, 1.436, -1.268)
+rotation = Vector3(-0.5236, 0.0000, 0.0)
 metadata/fov = 42.0
 
 ; insert: the fridge door - magnets, notes, the family surface
@@ -375,8 +375,8 @@ metadata/fov = 42.0
 
 ; insert: the white sedan at the curb, from the sink window (ch15)
 [node name="shot_insert_sedan" type="Marker3D" parent="." groups=["vn_shot"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.75, 1.55, -5.2)
-rotation = Vector3(0, 0, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.300, 1.055, -7.713)
+rotation = Vector3(-0.2618, 0.2618, 0.0)
 metadata/fov = 42.0
 
 ; insert: he looks at the photographs

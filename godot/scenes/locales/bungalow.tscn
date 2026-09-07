@@ -489,8 +489,8 @@ rotation = Vector3(-0.75, 0, 0)
 metadata/fov = 32.0
 
 [node name="shot_insert_phone" type="Marker3D" parent="." groups=["vn_shot"]]
-position = Vector3(2.8, 1.5, -4.6)
-rotation = Vector3(-0.4, 0, 0)
+position = Vector3(-1.677, 0.904, -2.358)
+rotation = Vector3(-0.2618, 2.3562, 0.0)
 metadata/fov = 32.0
 
 [node name="shot_insert_basil" type="Marker3D" parent="." groups=["vn_shot"]]
@@ -526,6 +526,6 @@ shadow_enabled = false
 
 ; insert: the mirror shard — the fractal Elicias
 [node name="shot_insert_mirror" type="Marker3D" parent="." groups=["vn_shot"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.9, 1.6, -1.7)
-rotation = Vector3(0.0913, -0.7217, 0.0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.640, 2.386, 0.412)
+rotation = Vector3(-0.2618, -0.2618, 0.0)
 metadata/fov = 42.0

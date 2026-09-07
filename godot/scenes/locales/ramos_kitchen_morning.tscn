@@ -302,8 +302,8 @@ script = ExtResource("14_dbgm")
 
 ; insert: the hands — over Sam's, on the top of his head (ch1/ch10)
 [node name="shot_insert_hands" type="Marker3D" parent="." groups=["vn_shot"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.55, 1.1, -1.95)
-rotation = Vector3(-0.4016, -0.5393, 0.0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.482, 1.486, -1.283)
+rotation = Vector3(-0.2618, -1.0472, 0.0)
 metadata/fov = 42.0
 
 ; insert: eggs scrambled with chorizo, in the pan (ch10)

@@ -183,16 +183,16 @@ shadow_enabled = false
 ; ── vn_shot wave (2026-08-19) · positions authored, aim
 ; computed by marker_reaim.py (the post-aim-gate discipline)
 [node name="shot_insert_window" type="Marker3D" parent="." groups=["vn_shot"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00, 2.05, -3.35)
-rotation = Vector3(0.0, 0.0, 0.0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.586, 1.850, -5.102)
+rotation = Vector3(-1.1169, 2.8198, 0.0)
 
 [node name="shot_insert_bed" type="Marker3D" parent="." groups=["vn_shot"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.28, 0.98, -1.01)
 rotation = Vector3(-0.3663, 0.2628, 0.0)
 
 [node name="shot_insert_notebook" type="Marker3D" parent="." groups=["vn_shot"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.27, 1.13, -1.04)
-rotation = Vector3(0.0, 0.0, 0.0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.550, 0.580, -2.100)
+rotation = Vector3(0.0000, -1.5708, 0.0)
 
 [node name="Interior" parent="." instance=ExtResource("1_glb")]
 
@@ -336,14 +336,14 @@ metadata/fov = 40.0
 
 ; insert: the longboxes on the shelf
 [node name="shot_insert_longboxes" type="Marker3D" parent="." groups=["vn_shot"]]
-position = Vector3(1, 0.95, -3.35)
-rotation = Vector3(-0.594247, -1.38545, 0)
+position = Vector3(0.448, 1.065, -1.118)
+rotation = Vector3(-0.2618, -0.5236, 0.0)
 metadata/fov = 42.0
 
 ; insert: Sam's phone on the dresser (dusk buzz / home texts)
 [node name="shot_insert_phone" type="Marker3D" parent="." groups=["vn_shot"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.25, 1.2, -1.6)
-rotation = Vector3(-0.5644, -0.7465, 0.0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.317, 1.205, -1.475)
+rotation = Vector3(-0.5236, -0.5236, 0.0)
 metadata/fov = 42.0
 
 ; insert: the door — the vibration heard through two walls (~)

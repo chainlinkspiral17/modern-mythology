@@ -325,18 +325,18 @@ script = ExtResource("14_dbgm")
 
 ; insert: Boyd calls his handler — no pickup
 [node name="shot_insert_phone" type="Marker3D" parent="." groups=["vn_shot"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.15, 1.35, -4.15)
-rotation = Vector3(-0.5751, -0.7188, 0.0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.357, 1.995, -4.055)
+rotation = Vector3(-0.7854, 1.0472, 0.0)
 metadata/fov = 42.0
 
 ; insert: the NAPD courtesy badge on the dash
 [node name="shot_insert_badge" type="Marker3D" parent="." groups=["vn_shot"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.3, 1.45, -0.4)
-rotation = Vector3(-0.4042, 1.4121, 0.0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.300, 1.198, 0.116)
+rotation = Vector3(-0.2618, -0.0000, 0.0)
 metadata/fov = 42.0
 
 ; insert: three hundred-dollar bills
 [node name="shot_insert_cash" type="Marker3D" parent="." groups=["vn_shot"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.3, 1.45, 0.45)
-rotation = Vector3(-0.4132, 1.4340, 0.0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.113, 1.194, 0.967)
+rotation = Vector3(-0.2618, 0.2618, 0.0)
 metadata/fov = 42.0

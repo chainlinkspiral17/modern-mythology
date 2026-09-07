@@ -335,14 +335,14 @@ metadata/fov = 42.0
 
 ; insert: the fountain cup in the holder — BT looks at the cup
 [node name="shot_insert_cup" type="Marker3D" parent="." groups=["vn_shot"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.25, 1.25, 0.45)
-rotation = Vector3(0, 0, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.218, 1.140, 0.566)
+rotation = Vector3(-0.2618, -0.2618, 0.0)
 metadata/fov = 42.0
 
 ; insert: the flauta box open on the center console
 [node name="shot_insert_flautas" type="Marker3D" parent="." groups=["vn_shot"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.3, 1.2, 0.2)
-rotation = Vector3(-0.6534, 0.5914, 0.0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.248, 1.045, 0.684)
+rotation = Vector3(-0.2618, 0.2618, 0.0)
 metadata/fov = 42.0
 
 ; insert: Claire's white sedan at the turnout

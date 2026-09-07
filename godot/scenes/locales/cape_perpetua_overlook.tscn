@@ -311,6 +311,6 @@ metadata/fov = 42.0
 
 ; insert: the foundation truck, the Vestergaard plaque on its tailgate
 [node name="shot_insert_truck" type="Marker3D" parent="." groups=["vn_shot"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.6, 1.2, 9.6)
-rotation = Vector3(0, 0, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.600, 1.555, 11.035)
+rotation = Vector3(-0.3081, -0.0000, 0.0)
 metadata/fov = 42.0

@@ -35,8 +35,16 @@ def build_shell():
             ("Crown_S", 'X', ROOM_W, 0.0, +0.10)]:
         make_crown_molding(nm, wall_x=wx, wall_y=wy, length=length, axis=ax, ceil_z=CEIL, palette={"wood": COL_WOOD})
 
+# The desk sits AGAINST the north wall (2026-09-07: "a desk in the
+# center of the room, not against a wall like desks normally are"),
+# shifted west so it clears the service door at x 0.75..1.65. Every
+# desk-anchored prop below is offset by DESK_DX / DESK_DY from its
+# original authoring.
+DESK_DX, DESK_DY = -0.35, 1.05
+
+
 def build_desk():
-    dx, dy = 0.0, ROOM_D-1.5
+    dx, dy = 0.0 + DESK_DX, ROOM_D-1.5 + DESK_DY
     make_box("Desk_Top", (dx, dy, 0.74), (1.80, 0.80, 0.04), COL_WOOD)
     for li in range(4):
         lx, ly = dx+(-0.84,+0.84,-0.84,+0.84)[li], dy+(-0.34,-0.34,+0.34,+0.34)[li]
@@ -108,17 +116,24 @@ def build_backoffice_detail():
         make_box(f"LightTable_Leg_{sgn:+d}", (ltx + sgn * 0.22, lty, 0.38),
                  (0.05, 0.7, 0.76), steel)
     # ── Articulated desk lamp on the desk (base+arm+arm+head) ──
-    lx, ly = -0.65, 3.75
+    lx, ly = -0.65 + DESK_DX, 3.75 + DESK_DY
     make_cyl("DeskLamp_Base", (lx, ly, 0.82), 0.07, 0.03, (0.18, 0.20, 0.24, 1.0), segments=8)
     make_cyl("DeskLamp_Arm1", (lx + 0.06, ly, 0.98), 0.014, 0.34, (0.24, 0.26, 0.30, 1.0), segments=5)
     make_cyl("DeskLamp_Arm2", (lx + 0.20, ly, 1.14), 0.014, 0.30, (0.24, 0.26, 0.30, 1.0), segments=5, axis='X')
     make_cyl("DeskLamp_Head", (lx + 0.33, ly, 1.10), 0.06, 0.10, (0.20, 0.22, 0.26, 1.0), segments=8)
     make_cyl("DeskLamp_Bulb", (lx + 0.35, ly, 1.06), 0.03, 0.03, (0.98, 0.92, 0.72, 1.0), segments=6)
     # ── Rolling office chair south of the desk ──
-    ch_x, ch_y = 0.0, 2.7
+    # The chair faces the desk: its BACK is on the far side from the
+    # desk (2026-09-07: it shipped with the back between seat and
+    # desk, "facing the wrong direction away from the desk", and the
+    # back floated 2 cm above the seat — "exploded"). Two posts now
+    # carry the back off the seat.
+    ch_x, ch_y = 0.0 + DESK_DX, 2.7 + DESK_DY
     make_cyl("Chair_Column", (ch_x, ch_y, 0.28), 0.03, 0.42, (0.12, 0.12, 0.14, 1.0), segments=6)
     make_cyl("Chair_Seat", (ch_x, ch_y, 0.50), 0.24, 0.08, (0.16, 0.16, 0.18, 1.0), segments=10)
-    make_box("Chair_Back", (ch_x, ch_y + 0.22, 0.78), (0.42, 0.06, 0.44), (0.16, 0.16, 0.18, 1.0))
+    make_box("Chair_Back", (ch_x, ch_y - 0.22, 0.80), (0.42, 0.05, 0.40), (0.16, 0.16, 0.18, 1.0))
+    for sgn in (-1, +1):
+        make_box(f"Chair_BackPost_{sgn:+d}", (ch_x + sgn * 0.15, ch_y - 0.21, 0.585), (0.025, 0.03, 0.17), (0.12, 0.12, 0.14, 1.0))
     for k in range(5):
         a = k * (2 * _m.pi / 5)
         make_box(f"Chair_Star_{k}",
@@ -151,12 +166,12 @@ def build_backoffice_detail():
                  [(0.66,0.24,0.22,1),(0.24,0.42,0.52,1),(0.72,0.60,0.28,1),
                   (0.32,0.46,0.34,1)][i % 4])
     # ── Desk clutter: art boards + mug + pen cup ──
-    make_box("Desk_ArtBoard_0", (0.35, 3.5, 0.815), (0.34, 0.44, 0.006), (0.94, 0.93, 0.88, 1.0))
-    make_box("Desk_ArtBoard_1", (0.42, 3.55, 0.822), (0.34, 0.44, 0.006), (0.90, 0.90, 0.84, 1.0))
-    make_cyl("Desk_Mug", (0.7, 3.2, 0.86), 0.04, 0.10, (0.30, 0.44, 0.52, 1.0), segments=8)
-    make_cyl("Desk_PenCup", (-0.75, 3.3, 0.87), 0.045, 0.11, (0.20, 0.20, 0.24, 1.0), segments=8)
+    make_box("Desk_ArtBoard_0", (0.35 + DESK_DX, 3.5 + DESK_DY, 0.815), (0.34, 0.44, 0.006), (0.94, 0.93, 0.88, 1.0))
+    make_box("Desk_ArtBoard_1", (0.42 + DESK_DX, 3.55 + DESK_DY, 0.822), (0.34, 0.44, 0.006), (0.90, 0.90, 0.84, 1.0))
+    make_cyl("Desk_Mug", (0.7 + DESK_DX, 3.2 + DESK_DY, 0.86), 0.04, 0.10, (0.30, 0.44, 0.52, 1.0), segments=8)
+    make_cyl("Desk_PenCup", (-0.75 + DESK_DX, 3.3 + DESK_DY, 0.87), 0.045, 0.11, (0.20, 0.20, 0.24, 1.0), segments=8)
     for k in range(4):
-        make_cyl(f"Desk_Pen_{k}", (-0.75 + (k - 1.5) * 0.012, 3.3, 0.95), 0.006, 0.14,
+        make_cyl(f"Desk_Pen_{k}", (-0.75 + (k - 1.5) * 0.012 + DESK_DX, 3.3 + DESK_DY, 0.95), 0.006, 0.14,
                  [(0.1,0.1,0.1,1),(0.2,0.3,0.7,1),(0.7,0.2,0.2,1),(0.1,0.5,0.3,1)][k], segments=4)
 
 
@@ -177,16 +192,16 @@ def build_hero_props():
     make_box("OneWay_Mirror", (1.4, 0.08, 1.70), (1.10, 0.02, 0.85), (0.46, 0.52, 0.56, 1.0))
     # Desk drawer pedestal (top drawer takes the slip; green folder
     # in the second)
-    make_chamfer_box("Desk_Pedestal", (0.62, 3.5, 0.38), (0.52, 0.72, 0.70), (0.40, 0.30, 0.20, 1.0))
+    make_chamfer_box("Desk_Pedestal", (0.62 + DESK_DX, 3.5 + DESK_DY, 0.38), (0.52, 0.72, 0.70), (0.40, 0.30, 0.20, 1.0))
     for di in range(3):
-        make_box(f"Desk_Drawer_{di}", (0.62, 3.13, 0.62 - di * 0.21), (0.44, 0.02, 0.16), (0.34, 0.24, 0.16, 1.0))
-        make_box(f"Desk_Drawer_{di}_Pull", (0.62, 3.11, 0.62 - di * 0.21), (0.12, 0.015, 0.03), iron)
+        make_box(f"Desk_Drawer_{di}", (0.62 + DESK_DX, 3.13 + DESK_DY, 0.62 - di * 0.21), (0.44, 0.02, 0.16), (0.34, 0.24, 0.16, 1.0))
+        make_box(f"Desk_Drawer_{di}_Pull", (0.62 + DESK_DX, 3.11 + DESK_DY, 0.62 - di * 0.21), (0.12, 0.015, 0.03), iron)
     # Desk phone (Rick's long calls)
-    make_box("Desk_Phone", (0.55, 3.72, 0.82), (0.22, 0.16, 0.08), (0.16, 0.16, 0.18, 1.0))
-    make_box("Desk_Phone_Handset", (0.55, 3.72, 0.90), (0.20, 0.06, 0.04), (0.12, 0.12, 0.14, 1.0))
+    make_box("Desk_Phone", (0.55 + DESK_DX, 3.72 + DESK_DY, 0.82), (0.22, 0.16, 0.08), (0.16, 0.16, 0.18, 1.0))
+    make_box("Desk_Phone_Handset", (0.55 + DESK_DX, 3.72 + DESK_DY, 0.90), (0.20, 0.06, 0.04), (0.12, 0.12, 0.14, 1.0))
     # Overturned milk crate — Sam's seat, opposite the desk
-    make_chamfer_box("Milk_Crate", (-0.20, 2.40, 0.16), (0.36, 0.36, 0.32), (0.62, 0.28, 0.24, 1.0))
-    make_box("Milk_Crate_Rim", (-0.20, 2.40, 0.315), (0.38, 0.38, 0.03), (0.52, 0.22, 0.20, 1.0))
+    make_chamfer_box("Milk_Crate", (-0.20 + DESK_DX, 2.40 + DESK_DY, 0.16), (0.36, 0.36, 0.32), (0.62, 0.28, 0.24, 1.0))
+    make_box("Milk_Crate_Rim", (-0.20 + DESK_DX, 2.40 + DESK_DY, 0.315), (0.38, 0.38, 0.03), (0.52, 0.22, 0.20, 1.0))
     # Mini-fridge + floor safe (one of the six keys)
     make_chamfer_box("Mini_Fridge", (1.65, 0.75, 0.42), (0.55, 0.55, 0.84), (0.82, 0.80, 0.76, 1.0))
     make_box("Mini_Fridge_Handle", (1.38, 0.55, 0.55), (0.03, 0.03, 0.30), iron)
@@ -210,10 +225,10 @@ def build_hero_props_2026_09():
     the desk, its note page showing (the page carries the "note"
     cue: the list on its standard page).
     """
-    make_box("Ricks_Notebook", (-0.25, 3.35, 0.766), (0.18, 0.24, 0.012), (0.30, 0.44, 0.58, 1.0))
-    make_box("Ricks_Notebook_Wire", (-0.25, 3.476, 0.767), (0.18, 0.010, 0.014), (0.55, 0.56, 0.58, 1.0))
-    make_box("Notebook_Note_Page", (-0.25, 3.34, 0.7735), (0.16, 0.21, 0.003), (0.94, 0.93, 0.88, 1.0))
-    make_box("Note_Page_List_Lines", (-0.25, 3.36, 0.7755), (0.10, 0.12, 0.001), (0.36, 0.36, 0.40, 1.0))
+    make_box("Ricks_Notebook", (-0.25 + DESK_DX, 3.35 + DESK_DY, 0.766), (0.18, 0.24, 0.012), (0.30, 0.44, 0.58, 1.0))
+    make_box("Ricks_Notebook_Wire", (-0.25 + DESK_DX, 3.476 + DESK_DY, 0.767), (0.18, 0.010, 0.014), (0.55, 0.56, 0.58, 1.0))
+    make_box("Notebook_Note_Page", (-0.25 + DESK_DX, 3.34 + DESK_DY, 0.7735), (0.16, 0.21, 0.003), (0.94, 0.93, 0.88, 1.0))
+    make_box("Note_Page_List_Lines", (-0.25 + DESK_DX, 3.36 + DESK_DY, 0.7755), (0.10, 0.12, 0.001), (0.36, 0.36, 0.40, 1.0))
     # ── 2026-09-03 · vol6 ch3_coda (re-homed off the street): "a small
     # folder in front of him. The folder contains three things." The
     # hand-drawn map with a single building circled in red ink; the 1974
@@ -221,22 +236,22 @@ def build_hero_props_2026_09():
     # note, which goes back in its envelope, which goes in "the small
     # fireproof box under the desk — the one the store was sold with
     # in 1984". Open on the desk edge in front of the chair.
-    make_box("Folder", (0.0, 3.21, 0.763), (0.30, 0.18, 0.006), (0.62, 0.56, 0.42, 1.0))
-    make_box("Folder_Tab", (0.13, 3.305, 0.7635), (0.06, 0.012, 0.005), (0.58, 0.52, 0.38, 1.0))
-    make_box("Map", (-0.02, 3.21, 0.767), (0.20, 0.14, 0.002), (0.94, 0.92, 0.84, 1.0))
+    make_box("Folder", (0.0 + DESK_DX, 3.21 + DESK_DY, 0.763), (0.30, 0.18, 0.006), (0.62, 0.56, 0.42, 1.0))
+    make_box("Folder_Tab", (0.13 + DESK_DX, 3.305 + DESK_DY, 0.7635), (0.06, 0.012, 0.005), (0.58, 0.52, 0.38, 1.0))
+    make_box("Map", (-0.02 + DESK_DX, 3.21 + DESK_DY, 0.767), (0.20, 0.14, 0.002), (0.94, 0.92, 0.84, 1.0))
     for mi, (mx, my, mw, md) in enumerate(((-0.09, 3.21, 0.004, 0.11), (-0.04, 3.24, 0.09, 0.003),
                                            (0.01, 3.19, 0.004, 0.09), (0.03, 3.16, 0.10, 0.003))):
-        make_box(f"Map_Street_{mi}", (mx, my, 0.7685), (mw, md, 0.001), (0.30, 0.30, 0.34, 1.0))
-    make_cyl("Map_Red_Circle", (0.045, 3.235, 0.7685), 0.016, 0.001, (0.82, 0.14, 0.10, 1.0), segments=12)
-    make_box("Polaroid", (0.06, 3.17, 0.769), (0.088, 0.107, 0.002), (0.96, 0.95, 0.92, 1.0))
-    make_box("Polaroid_Image", (0.06, 3.178, 0.7705), (0.076, 0.076, 0.001), (0.52, 0.48, 0.40, 1.0))
-    make_box("Polaroid_Figure", (0.058, 3.170, 0.7715), (0.016, 0.040, 0.0005), (0.30, 0.34, 0.46, 1.0))
-    make_box("Envelope", (-0.06, 3.265, 0.769), (0.16, 0.09, 0.003), (0.90, 0.86, 0.76, 1.0))
-    make_box("Envelope_Flap_Line", (-0.06, 3.28, 0.7708), (0.14, 0.001, 0.0005), (0.60, 0.54, 0.44, 1.0))
-    make_box("Fireproof_Box", (-0.45, 3.55, 0.12), (0.36, 0.28, 0.24), (0.28, 0.28, 0.30, 1.0))
-    make_box("Fireproof_Box_Lid_Seam", (-0.45, 3.409, 0.19), (0.34, 0.002, 0.004), (0.14, 0.14, 0.15, 1.0))
-    make_box("Fireproof_Box_Latch", (-0.45, 3.405, 0.14), (0.05, 0.008, 0.06), (0.64, 0.62, 0.56, 1.0))
-    make_box("Fireproof_Box_Handle", (-0.45, 3.55, 0.255), (0.14, 0.02, 0.03), (0.20, 0.20, 0.22, 1.0))
+        make_box(f"Map_Street_{mi}", (mx + DESK_DX, my + DESK_DY, 0.7685), (mw, md, 0.001), (0.30, 0.30, 0.34, 1.0))
+    make_cyl("Map_Red_Circle", (0.045 + DESK_DX, 3.235 + DESK_DY, 0.7685), 0.016, 0.001, (0.82, 0.14, 0.10, 1.0), segments=12)
+    make_box("Polaroid", (0.06 + DESK_DX, 3.17 + DESK_DY, 0.769), (0.088, 0.107, 0.002), (0.96, 0.95, 0.92, 1.0))
+    make_box("Polaroid_Image", (0.06 + DESK_DX, 3.178 + DESK_DY, 0.7705), (0.076, 0.076, 0.001), (0.52, 0.48, 0.40, 1.0))
+    make_box("Polaroid_Figure", (0.058 + DESK_DX, 3.170 + DESK_DY, 0.7715), (0.016, 0.040, 0.0005), (0.30, 0.34, 0.46, 1.0))
+    make_box("Envelope", (-0.06 + DESK_DX, 3.265 + DESK_DY, 0.769), (0.16, 0.09, 0.003), (0.90, 0.86, 0.76, 1.0))
+    make_box("Envelope_Flap_Line", (-0.06 + DESK_DX, 3.28 + DESK_DY, 0.7708), (0.14, 0.001, 0.0005), (0.60, 0.54, 0.44, 1.0))
+    make_box("Fireproof_Box", (-0.45 + DESK_DX, 3.55 + DESK_DY, 0.12), (0.36, 0.28, 0.24), (0.28, 0.28, 0.30, 1.0))
+    make_box("Fireproof_Box_Lid_Seam", (-0.45 + DESK_DX, 3.409 + DESK_DY, 0.19), (0.34, 0.002, 0.004), (0.14, 0.14, 0.15, 1.0))
+    make_box("Fireproof_Box_Latch", (-0.45 + DESK_DX, 3.405 + DESK_DY, 0.14), (0.05, 0.008, 0.06), (0.64, 0.62, 0.56, 1.0))
+    make_box("Fireproof_Box_Handle", (-0.45 + DESK_DX, 3.55 + DESK_DY, 0.255), (0.14, 0.02, 0.03), (0.20, 0.20, 0.22, 1.0))
 
 
 def main():

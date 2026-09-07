@@ -190,8 +190,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0, 1.28, -1.96)
 rotation = Vector3(-0.55, 0.0, 0.0)
 
 [node name="shot_insert_table" type="Marker3D" parent="." groups=["vn_shot"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.55, 1.35, -1.70)
-rotation = Vector3(-0.48, 0.36, 0.0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.000, 1.207, -0.045)
+rotation = Vector3(-0.2618, 0.0000, 0.0)
 
 [node name="Interior" parent="." instance=ExtResource("1_glb")]
 
@@ -341,7 +341,7 @@ metadata/fov = 42.0
 ; insert: the Telecaster on its stand by the stairs
 [node name="shot_insert_guitar" type="Marker3D" parent="." groups=["vn_shot"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.95, 0.9, -1.0)
-rotation = Vector3(-0.5062, -2.4461, 0.0)
+rotation = Vector3(0.2241, -2.3842, 0.0)
 metadata/fov = 42.0
 
 ; insert: the small spiral notebook, the bridge lyrics

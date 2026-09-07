@@ -330,7 +330,7 @@ metadata/fov = 36.0
 ; insert: the croissant on the table
 [node name="shot_insert_croissant" type="Marker3D" parent="." groups=["vn_shot"]]
 position = Vector3(-1.6, 1.05, -1.5)
-rotation = Vector3(-0.377931, 2.5128, 0)
+rotation = Vector3(-0.0776, 0.5122, 0.0)
 metadata/fov = 38.0
 
 ; insert: the cafe door to the street

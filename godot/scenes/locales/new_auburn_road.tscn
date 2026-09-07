@@ -429,13 +429,13 @@ shadow_enabled = false
 ; insert: the unit's back door open two inches, a faint light through the gap
 [node name="shot_insert_door" type="Marker3D" parent="." groups=["vn_shot"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.5, 1.4, -44.0)
-rotation = Vector3(-0.2074, -0.9267, 0.0)
+rotation = Vector3(-0.0992, -1.7135, 0.0)
 metadata/fov = 42.0
 
 ; insert: Jesse's phone, lit, on the Civic's dash at ten twenty-three
 [node name="shot_insert_phone" type="Marker3D" parent="." groups=["vn_shot"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.5, 1.3, -39.5)
-rotation = Vector3(-0.1286, -1.9774, 0.0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.062, 1.110, -39.619)
+rotation = Vector3(0.0000, 2.0944, 0.0)
 metadata/fov = 42.0
 
 ; insert: the Cypress — twelve rooms in a long L, three cars, Room 7 lit
@@ -453,8 +453,8 @@ metadata/fov = 42.0
 
 ; insert: the white unmarked van three cars ahead through the easing storm
 [node name="shot_insert_van" type="Marker3D" parent="." groups=["vn_shot"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0, 1.2, -296.0)
-rotation = Vector3(0, 0, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.100, 1.294, -317.141)
+rotation = Vector3(-0.2618, 0.0000, 0.0)
 metadata/fov = 42.0
 
 ; insert: Miller's truck in the substation lot, end space, three from the door

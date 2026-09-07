@@ -321,12 +321,12 @@ metadata/fov = 36.0
 
 ; insert: the white rose in the votive glass on the windowsill
 [node name="shot_insert_rose" type="Marker3D" parent="." groups=["vn_shot"]]
-position = Vector3(0.7, 1.28, -4.35)
-rotation = Vector3(-0.136348, 0.54042, 0)
+position = Vector3(0.433, 1.322, -4.610)
+rotation = Vector3(-0.5236, 0.5236, 0.0)
 metadata/fov = 38.0
 
 ; insert: the visitor chair by the window - where the presence sits
 [node name="shot_insert_chair" type="Marker3D" parent="." groups=["vn_shot"]]
-position = Vector3(-0.9, 1.25, -3.8)
-rotation = Vector3(-0.383362, 0.694738, 0)
+position = Vector3(-0.962, 0.825, -4.055)
+rotation = Vector3(-0.2618, 0.7854, 0.0)
 metadata/fov = 42.0

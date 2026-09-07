@@ -720,13 +720,13 @@ rotation = Vector3(0, 1.5708, 0)
 position = Vector3(4.2, 0, 3.6)
 
 [node name="shot_insert_clock" type="Marker3D" parent="." groups=["vn_shot"]]
-position = Vector3(0, 2.45, -3.5)
-rotation = Vector3(0.03, 0, 0)
+position = Vector3(0, 2.05, 1.4)
+rotation = Vector3(0.172, 3.1416, 0.0)
 metadata/fov = 40.0
 
 [node name="shot_insert_booth6" type="Marker3D" parent="." groups=["vn_shot"]]
 position = Vector3(-6.2, 1.45, -3.75)
-rotation = Vector3(-0.4, 1.5708, 0)
+rotation = Vector3(0.7782, 1.5708, 0.0)
 metadata/fov = 38.0
 
 [node name="shot_insert_coffee" type="Marker3D" parent="." groups=["vn_shot"]]
@@ -735,8 +735,8 @@ rotation = Vector3(-0.5, 1.5708, 0)
 metadata/fov = 32.0
 
 [node name="shot_insert_napkin" type="Marker3D" parent="." groups=["vn_shot"]]
-position = Vector3(-6.9, 1.35, -3.9)
-rotation = Vector3(-0.6, 1.5708, 0)
+position = Vector3(-8.782, 2.257, -5.100)
+rotation = Vector3(-0.5236, -2.6180, 0.0)
 metadata/fov = 28.0
 
 [node name="shot_insert_register" type="Marker3D" parent="." groups=["vn_shot"]]
@@ -745,13 +745,13 @@ rotation = Vector3(-0.35, 3.1416, 0)
 metadata/fov = 36.0
 
 [node name="shot_insert_jukebox" type="Marker3D" parent="." groups=["vn_shot"]]
-position = Vector3(-10.5, 1.15, -3.9)
-rotation = Vector3(-0.05, 0, 0)
+position = Vector3(-10.445, 1.632, -2.950)
+rotation = Vector3(-0.2618, -0.0000, 0.0)
 metadata/fov = 36.0
 
 [node name="shot_insert_notebook" type="Marker3D" parent="." groups=["vn_shot"]]
-position = Vector3(-1.35, 1.7, 2.9)
-rotation = Vector3(-0.75, 3.1416, 0)
+position = Vector3(-10.634, 1.053, 3.350)
+rotation = Vector3(-0.2618, 1.5708, 0.0)
 metadata/fov = 30.0
 
 [node name="shot_insert_phone" type="Marker3D" parent="." groups=["vn_shot"]]

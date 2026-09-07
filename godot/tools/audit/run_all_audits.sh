@@ -108,3 +108,21 @@ OOUT="$(python3 vantage_obstruction_audit.py 2>/dev/null)" || {
     echo "$OOUT" | grep -v "^\["; exit 1; }
 echo "$OOUT" | grep -v "^\[" | tail -2
 echo ""
+
+# ── Marker-obstruction gate (2026-09-07) ───────────────────────
+# The same ray fan over every vn_shot marker (the diner's clock
+# insert faced the upper south wall: a yellow field with a door
+# sliver). NEAR / WALL / EMPTY verdicts; nonzero exit fails.
+echo "── vantage_obstruction_audit.py --markers ──"
+MOUT="$(python3 vantage_obstruction_audit.py --markers 2>/dev/null)" || {
+    echo "$MOUT" | grep -v "^\["; exit 1; }
+echo "$MOUT" | grep -v "^\[" | tail -2
+echo ""
+
+# ── Furniture grammar (2026-09-07) · informational ─────────────
+# Intra-assembly clipping, floating props, chairs facing away from
+# their desks, desks off the wall, cars in the travel lane. A count
+# to drive down; not a gate yet (draft 1 still carries noise).
+echo "── furniture_grammar_audit.py ──"
+python3 furniture_grammar_audit.py 2>/dev/null | tail -1
+echo ""

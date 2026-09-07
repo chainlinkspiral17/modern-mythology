@@ -453,13 +453,27 @@ def build_counter():
     # through the order window — top of counter near west end)
     make_box("PassThrough_Frame", (-5.5, cy - 0.42, 1.85),
              (3.0, 0.04, 0.06), COL_WOOD_TRIM)
-    # Coffee maker on the back bar
-    make_box("CoffeeMaker", (+1.5, cy - 0.55, 1.34),
-             (0.50, 0.40, 0.40), COL_KITCHEN_STEEL)
-    make_box("CoffeeMaker_Pot",
-             (+1.5, cy - 0.55, 1.20),
-             (0.18, 0.18, 0.20),
-             (0.30, 0.18, 0.10, 1.0))
+    # Coffee maker on the back bar — a diner pour-over brewer, not a
+    # cube (2026-09-07: "what is that weird object in the middle of the
+    # diner bar?" — the 0.5 m steel box read as a dark block through
+    # the wide lens). Base plate with two warmers, a slim back tower,
+    # the brew head cantilevered over the front warmer, a glass pot on
+    # each warmer (one full, one empty), a sprayhead nub.
+    from _props.geometry import make_lathe as _lathe
+    _cx, _cy, _z0 = +1.5, cy - 0.55, 1.14           # back-bar shelf top
+    make_box("CoffeeMaker_Base", (_cx, _cy, _z0 + 0.02), (0.50, 0.36, 0.04), COL_KITCHEN_STEEL)
+    make_box("CoffeeMaker_Tower", (_cx, _cy - 0.12, _z0 + 0.26), (0.46, 0.12, 0.44), COL_KITCHEN_STEEL)
+    make_box("CoffeeMaker_Head", (_cx - 0.12, _cy + 0.02, _z0 + 0.45), (0.22, 0.26, 0.09), COL_KITCHEN_STEEL)
+    make_box("CoffeeMaker_Switch", (_cx + 0.16, _cy - 0.055, _z0 + 0.36), (0.05, 0.01, 0.03), (0.86, 0.32, 0.20, 1.0))
+    for _wi, _wx in enumerate((_cx - 0.12, _cx + 0.12)):
+        _lathe(f"CoffeeMaker_Warmer_{_wi}", (_wx, _cy + 0.02, _z0 + 0.04), [(0.0, 0.0), (0.095, 0.0), (0.095, 0.012), (0.0, 0.012)], (0.16, 0.16, 0.17, 1.0), segments=12)
+        # the glass pot: belly, shoulder, neck, lip
+        _lathe(f"CoffeeMaker_Pot_{_wi}", (_wx, _cy + 0.02, _z0 + 0.052),
+               [(0.0, 0.0), (0.075, 0.0), (0.088, 0.05), (0.086, 0.11), (0.062, 0.15), (0.058, 0.17), (0.07, 0.19), (0.066, 0.20), (0.0, 0.20)],
+               (0.62, 0.66, 0.68, 1.0), segments=12)
+        make_box(f"CoffeeMaker_Pot_{_wi}_Handle", (_wx + 0.095, _cy + 0.02, _z0 + 0.16), (0.02, 0.025, 0.11), (0.08, 0.08, 0.09, 1.0))
+    # coffee in the left pot (a dark band inside the glass)
+    _lathe("CoffeeMaker_Pot_0_Coffee", (_cx - 0.12, _cy + 0.02, _z0 + 0.055), [(0.0, 0.0), (0.068, 0.0), (0.078, 0.045), (0.076, 0.085), (0.0, 0.085)], (0.24, 0.14, 0.08, 1.0), segments=12)
     # Toaster on the back bar
     make_box("Toaster", (+2.5, cy - 0.55, 1.30),
              (0.36, 0.22, 0.20), COL_KITCHEN_STEEL)

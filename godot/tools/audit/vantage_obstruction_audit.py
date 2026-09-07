@@ -51,8 +51,24 @@ COLS, ROWS = 9, 3
 DELIBERATE = {"vehicle_cab", "vehicle_cab_rear", "lake_palestine_dock"}
 NEAR_M, NEAR_FRAC = 1.0, 0.30
 WALL_M, WALL_FRAC = 2.6, 0.45
+# EMPTY (2026-09-07 · the diner's first shot was a yellow field with a
+# door sliver): when this share of the fan hits nothing but fill —
+# sky, ceiling, floor, far bands — the frame has no subject.
+EMPTY_FRAC = 0.80
+# Markers where an empty-ish frame is the shot (sky inserts, horizons).
+DELIBERATE_MARKERS = set()
+# Builders whose recorded boxes do not sit where the runtime puts them
+# (harmony_terrain drapes its props over a heightfield the recorder
+# cannot follow: every highway9 preset read EMPTY at 100% while the
+# Deck shows the stage). Skipped until the recorder learns the drape.
+UNMEASURED = {"harmony_terrain"}
 ASPECT = 16.0 / 9.0
 IGNORE = re.compile(r"(ground|sky|horizon|far|band|floor|ceil|void|sea\b|swamp_floor|lake_water|valley_floor|plinth$|template_(land|sea)|road_asphalt|asphalt$)", re.I)
+# What counts as NOTHING for the EMPTY test: sky, haze, far bands. Ground,
+# floor, ceiling and road anchor a frame and are not empty (a highway
+# preset looking down its own road is a picture; the diner's clock
+# insert looking at a lit ceiling is caught by WALL, not EMPTY).
+SKY = re.compile(r"(sky|horizon|far|band|void|haze)", re.I)
 
 
 def presets():
@@ -97,12 +113,14 @@ def ray_dir(pitch, yaw, dh, dv):
     return (fg[0], -fg[2], fg[1])
 
 
-def cast(origin_b, d, boxes):
+def cast(origin_b, d, boxes, ignore=None):
     """Nearest slab hit along d from origin_b. Returns (t, name)."""
     best, who = None, None
     ox, oy, oz = origin_b
+    if ignore is None:
+        ignore = IGNORE
     for name, c, h in boxes:
-        if IGNORE.search(name):
+        if ignore.search(name):
             continue
         tmin, tmax = 0.0, 1e9
         ok = True
@@ -138,12 +156,15 @@ def frame_stats(origin_b, pitch, yaw, fov, boxes):
     vf = math.radians(fov)
     hf = 2.0 * math.atan(math.tan(vf / 2.0) * ASPECT)
     hits = []
+    anchored = []
     for r in range(ROWS):
         dv = (r - (ROWS - 1) / 2.0) * (vf / 2.5)
         for c in range(COLS):
             dh = (c - (COLS - 1) / 2.0) * (hf / (COLS - 1))
-            t, who = cast(origin_b, ray_dir(pitch, yaw, dh, dv), boxes)
+            d = ray_dir(pitch, yaw, dh, dv)
+            t, who = cast(origin_b, d, boxes)
             hits.append((t if t is not None else 200.0, who))
+            anchored.append(cast(origin_b, d, boxes, SKY)[0] is not None)
     n = float(len(hits))
     near = sum(1 for t, _ in hits if t < NEAR_M) / n
     # the WALL test reads the middle row only: floor and ceiling hits
@@ -166,7 +187,8 @@ def frame_stats(origin_b, pitch, yaw, fov, boxes):
     hit = [t for t, _ in hits if t < 199.0]
     return dict(near=near, wall=wall_name, wall_frac=wall_frac, wall_med=wall_med,
                 median=med, distinct=distinct, mean_depth=sum(min(t, 12.0) for t, _ in hits) / n,
-                escape=1.0 - len(hit) / n,
+                escape=1.0 - sum(1 for a in anchored if a) / n,
+                owners=sorted({who for _, who in hits if who}),
                 depth_hit=(sum(min(t, 9.0) for t in hit) / (9.0 * len(hit))) if hit else 0.0)
 
 
@@ -176,7 +198,118 @@ def verdict(st):
         why.append("%.0f%% of frame within %.1fm" % (st["near"] * 100, NEAR_M))
     if st["wall"] and st["wall_frac"] >= WALL_FRAC and st["wall_med"] < WALL_M:
         why.append("%s fills %.0f%% at %.1fm" % (st["wall"], st["wall_frac"] * 100, st["wall_med"]))
+    if st["escape"] >= EMPTY_FRAC:
+        why.append("EMPTY: %.0f%% of the frame sees only fill/sky" % (st["escape"] * 100))
     return why
+
+
+def _occlusion(origin_b, target_b, boxes, subj):
+    """Five rays from the lens toward the subject (centre + 6 cm
+    offsets). Returns the name of the first non-subject object that
+    blocks a majority of them before they reach the subject, or None."""
+    dx, dy, dz = (target_b[i] - origin_b[i] for i in range(3))
+    dist = math.sqrt(dx * dx + dy * dy + dz * dz) or 1e-6
+    d0 = (dx / dist, dy / dist, dz / dist)
+    # a perpendicular pair for the offsets
+    up = (0.0, 0.0, 1.0) if abs(d0[2]) < 0.9 else (1.0, 0.0, 0.0)
+    side = (d0[1] * up[2] - d0[2] * up[1], d0[2] * up[0] - d0[0] * up[2], d0[0] * up[1] - d0[1] * up[0])
+    sl = math.sqrt(sum(v * v for v in side)) or 1e-6
+    side = tuple(v / sl for v in side)
+    up2 = (d0[1] * side[2] - d0[2] * side[1], d0[2] * side[0] - d0[0] * side[2], d0[0] * side[1] - d0[1] * side[0])
+    blockers = {}
+    for ox, oy in ((0, 0), (0.06, 0), (-0.06, 0), (0, 0.06), (0, -0.06)):
+        tgt = tuple(target_b[i] + side[i] * ox + up2[i] * oy for i in range(3))
+        v = tuple(tgt[i] - origin_b[i] for i in range(3))
+        vl = math.sqrt(sum(a * a for a in v)) or 1e-6
+        d = tuple(a / vl for a in v)
+        t, who = cast(origin_b, d, boxes)
+        if t is not None and who not in subj and t < vl - 0.03:
+            blockers[who] = blockers.get(who, 0) + 1
+    for who, k in blockers.items():
+        if k >= 3:
+            return who
+    return None
+
+
+def _near_fraction_owned(origin_b, pitch, yaw, fov, boxes, subj):
+    vf = math.radians(fov)
+    hf = 2.0 * math.atan(math.tan(vf / 2.0) * ASPECT)
+    owned = 0
+    for r in range(ROWS):
+        dv = (r - (ROWS - 1) / 2.0) * (vf / 2.5)
+        for c in range(COLS):
+            dh = (c - (COLS - 1) / 2.0) * (hf / (COLS - 1))
+            t, who = cast(origin_b, ray_dir(pitch, yaw, dh, dv), boxes)
+            if t is not None and t < NEAR_M and who in subj:
+                owned += 1
+    return owned / float(ROWS * COLS)
+
+
+def markers_pass(only, show_all):
+    """Every vn_shot marker through the same fan (2026-09-07). The
+    marker is a camera pose; fov from metadata/fov (default 42)."""
+    import marker_aim_audit as M
+    flagged = []
+    n = 0
+    for fn in sorted(os.listdir(M.LOCALES_TSCN)):
+        if not fn.endswith(".tscn"):
+            continue
+        locale = fn[:-5]
+        if only and locale not in only:
+            continue
+        path = os.path.join(M.LOCALES_TSCN, fn)
+        markers = M.parse_markers(path)
+        if not markers:
+            continue
+        glb = locale
+        gm = re.search(r'path="res://assets/3d/locales/(\w+)\.glb"', open(path).read())
+        if gm:
+            glb = gm.group(1)
+        boxes = boxes_for(glb)
+        if not boxes:
+            continue
+        fovs = M.parse_marker_fovs(path)
+        real = sum(1 for b in boxes if not IGNORE.search(b[0]))
+        if real < 20:
+            continue      # unmeasured builder
+        name_geo = [(b[0], (b[1][0], b[1][2], -b[1][1])) for b in boxes]
+        for name, pos, rot in markers:
+            n += 1
+            o_b = (pos[0], -pos[2], pos[1])
+            fov = fovs.get(name, 42.0)
+            inside = inside_any(o_b, boxes)
+            st = frame_stats(o_b, rot[0], rot[1], fov, boxes)
+            why = []
+            cm = re.match(r"shot_(insert|closeup)_(\w+)$", name)
+            hits = M.matches_for(cm.group(2), name_geo) if cm else []
+            if hits:
+                # A SUBJECT marker is judged by the cinematographer's
+                # question — can the lens see the thing? — not by how
+                # much of the frame the thing (or its table) fills.
+                subj = {h[0] for h in hits}
+                anchor_name, tgt_g = M.subject_target(hits, pos)
+                occl = _occlusion(o_b, (tgt_g[0], -tgt_g[2], tgt_g[1]), boxes, subj)
+                if occl:
+                    why.append("OCCLUDED: %s stands between the lens and %s" % (occl, anchor_name))
+                if st["escape"] >= EMPTY_FRAC:
+                    why.append("EMPTY: %.0f%% of the frame sees only sky" % (st["escape"] * 100))
+            else:
+                why = verdict(st)
+            if (locale, name) in DELIBERATE_MARKERS and not inside:
+                why = []
+            if inside:
+                why.insert(0, "camera INSIDE %s" % inside)
+            if why or show_all:
+                flagged.append((locale, name, why, st))
+    print("vantage_obstruction_audit --markers · %d marker(s) cast" % n)
+    bad = 0
+    for locale, name, why, st in flagged:
+        if why:
+            bad += 1
+        print("%s %-22s %-30s median %.1fm · %2d distinct · %s" % (
+            "OBSTRUCTED" if why else "ok        ", locale, name, st["median"], st["distinct"], "; ".join(why)))
+    print("\n%d obstructed marker(s)" % bad)
+    return 1 if bad else 0
 
 
 def score(st, origin_b, yaw, o0, yaw0):
@@ -244,13 +377,17 @@ def main():
     do_propose = "--propose" in sys.argv
     only = [a for a in sys.argv[1:] if not a.startswith("--")]
     P.A.install_stubs()
+    if "--markers" in sys.argv:
+        return markers_pass(only, show_all)
     flagged = []
     n = 0
     for pid, locale, o_g, rot, fov in presets():
         if only and pid not in only and locale not in only:
             continue
         boxes = boxes_for(locale)
-        if not boxes:
+        if not boxes or sum(1 for b in boxes if not IGNORE.search(b[0])) < 20:
+            continue      # unmeasured builder (records only fill) — not a verdict
+        if locale in UNMEASURED:
             continue
         n += 1
         o_b = (o_g[0], -o_g[2], o_g[1])

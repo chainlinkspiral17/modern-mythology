@@ -336,7 +336,7 @@ metadata/fov = 38.0
 ; insert: the bourbon on the bookcase shelf
 [node name="shot_insert_bourbon" type="Marker3D" parent="." groups=["vn_shot"]]
 position = Vector3(-1.9, 1.15, -2.3)
-rotation = Vector3(-0.202014, 0.96007, 0)
+rotation = Vector3(-0.0732, -1.0209, 0.0)
 metadata/fov = 40.0
 
 ; insert: the east window over the street

@@ -93,7 +93,28 @@ NOT_PROPS = {
     "sky", "light", "dark", "nothing", "everything", "both",
 }
 # Cue id -> extra word stems to accept in geometry names.
+# Parts that must NOT stand in for a cue (2026-09-07): a "door" insert
+# re-aimed onto a fridge door 0.5 m away; a "photograph" onto a door
+# frame. Any hit whose name carries one of these words is dropped.
+EXCLUDE = {
+    "door": ["fridge", "cabinet", "cab", "oven", "microwave", "dishwasher", "stall", "car", "truck", "van", "locker", "safe"],
+    "window": ["car", "truck", "van", "cab"],
+    "photograph": ["door", "window"],
+    "phone": ["booth"],
+}
+
 SYNONYMS = {
+    "door": ["door", "doorway"],
+    # 2026-09-07 · the position-form markers came into the audit and
+    # sixteen insert cues had no geometry answering to their names
+    "deckwall": ["deck_wall", "deckwall"], "boxes": ["box", "crate", "carton"],
+    "meatcase": ["meat_case", "meat"], "speak_and_spell": ["speak_spell"],
+    "oneway": ["one_way", "oneway", "mirror"], "setlist": ["set_list", "setlist"],
+    "wreck": ["abandon_boat", "wreck", "hull"], "bed": ["bed", "mattress", "futon", "pillow"],
+    "hotsauce": ["hot_sauce", "hotsauce"], "record_player": ["turntable", "record", "platter"],
+    "ceiling_fan": ["fan", "blade"], "bourbon": ["bourbon", "bottle", "whiskey"],
+    "longboxes": ["longbox", "long_box"], "scoreboard": ["score_panel", "score", "scoreboard"],
+    "bleachers": ["bleacher", "bench", "stand"], "radio": ["radio", "receiver", "transceiver", "morse_key", "freq_card", "reel"],
     "bowls": ["bowl"], "phone": ["phone", "handset", "landline"],
     "charred_wood": ["char", "burn", "ember", "ash"],
     "coffee": ["coffee", "pot", "mug", "carafe", "percolator"],
@@ -109,7 +130,7 @@ SYNONYMS = {
     "french_toast": ["toast", "skillet", "plate"],
     "package": ["package", "parcel", "box"],
     "laptop": ["laptop", "monitor", "screen"],
-    "photograph": ["photo", "frame", "polaroid", "print"],
+    "photograph": ["photo", "ephoto", "polaroid", "print", "picture"],
     "mirror": ["mirror", "mirrorshard", "shard"],
     "mural": ["nebula", "mural"],
     "unit": ["unit"],
@@ -118,8 +139,7 @@ SYNONYMS = {
     "eviction_notice": ["evictionnotice", "evictionghost"],
     "sink_light": ["undercab", "sink"],
     "till": ["register"],
-    "speak_spell": ["speakspell"],
-    "speak_and_spell": ["speakspell"],
+    "speak_spell": ["speak_spell"],
     "landline": ["landline", "phone"],
     "iced_tea": ["icedtea"],
     "cigarette": ["cig", "ashtray"],
@@ -132,7 +152,6 @@ SYNONYMS = {
     "doorknob": ["doorknob", "latch", "knob"],
     "card": ["callingcard", "card"],
     "workbench": ["workbench", "bench"],
-    "radio": ["radio", "morsekey", "transmitter"],
     "doohickey": ["doohickey", "onyx"],
     "wooden_box": ["persbox", "box"],
 }

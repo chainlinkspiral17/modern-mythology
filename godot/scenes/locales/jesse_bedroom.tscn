@@ -189,18 +189,18 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00, 1.05, -1.10)
 rotation = Vector3(-0.5181, -1.1903, 0.0)   ; the desk top + what's on it
 
 [node name="shot_insert_window" type="Marker3D" parent="." groups=["vn_shot"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00, 1.55, -2.60)
-rotation = Vector3(0.02, 0.00, 0.0)   ; the north window
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.586, 1.850, -4.602)
+rotation = Vector3(-1.1169, 2.8198, 0.0)   ; the north window
 
 [node name="shot_insert_bed" type="Marker3D" parent="." groups=["vn_shot"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.10, 1.00, -2.10)
-rotation = Vector3(-0.48, 0.70, 0.0)   ; the bed
+rotation = Vector3(-1.2097, -0.3608, 0.0)   ; the bed
 
 ; ── vn_shot wave (2026-08-19) · positions authored, aim
 ; computed by marker_reaim.py (the post-aim-gate discipline)
 [node name="shot_insert_notebook" type="Marker3D" parent="." groups=["vn_shot"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.01, 1.05, -1.84)
-rotation = Vector3(0.0, 0.0, 0.0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.010, 0.759, -1.974)
+rotation = Vector3(-0.2618, 0.0000, 0.0)
 
 [node name="shot_insert_guitar" type="Marker3D" parent="." groups=["vn_shot"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.45, 1.23, -0.22)

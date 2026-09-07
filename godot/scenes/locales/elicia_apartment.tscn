@@ -193,8 +193,8 @@ omni_range = 3.5
 ; (-0.42, 1.44, -0.075). The insert wants the envelope AND the pale
 ; ghost of the lease renewal beside it.
 [node name="shot_insert_eviction_notice" type="Marker3D" parent="." groups=["vn_shot"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.42, 1.44, -0.68)
-rotation = Vector3(0.0, 3.1416, 0.0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.417, 1.638, -0.754)
+rotation = Vector3(-0.2618, -3.1416, 0.0)
 
 [node name="Interior" parent="." instance=ExtResource("1_glb")]
 
@@ -337,8 +337,8 @@ metadata/fov = 40.0
 
 ; insert: the teacup on the coffee table
 [node name="shot_insert_teacup" type="Marker3D" parent="." groups=["vn_shot"]]
-position = Vector3(0.5, 0.95, -1.7)
-rotation = Vector3(-0.490637, 2.63449, 0)
+position = Vector3(3.275, 1.797, -3.782)
+rotation = Vector3(-0.5236, 0.7854, 0.0)
 metadata/fov = 40.0
 
 ; insert: the little red light, a baleful eye

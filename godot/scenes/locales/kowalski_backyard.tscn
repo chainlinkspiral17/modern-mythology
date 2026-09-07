@@ -316,5 +316,5 @@ metadata/fov = 42.0
 ; insert: the butterfly leaves
 [node name="shot_insert_butterfly" type="Marker3D" parent="." groups=["vn_shot"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.7, 0.75, -3.7)
-rotation = Vector3(0, 0, 0)
+rotation = Vector3(-0.3119, 0.6098, 0.0)
 metadata/fov = 42.0
