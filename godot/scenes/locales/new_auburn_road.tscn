@@ -440,8 +440,8 @@ metadata/fov = 42.0
 
 ; insert: the Cypress — twelve rooms in a long L, three cars, Room 7 lit
 [node name="shot_insert_cypress" type="Marker3D" parent="." groups=["vn_shot"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.0, 1.5, -60.0)
-rotation = Vector3(0.5584, -2.2455, 0.0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.294, 2.317, -59.794)
+rotation = Vector3(0.4363, -2.3562, 0.0)
 metadata/fov = 42.0
 
 ; ── new_auburn_road presets' inserts (2026-09-03) ──

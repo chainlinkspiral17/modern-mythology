@@ -75,28 +75,45 @@ def to_b(g):
     return (g[0], -g[2], g[1])
 
 
+WHY = None      # set to a dict by --why to tally rejection reasons
+
+
 def candidates(tgt_g, size, orig_g, boxes, subj, lo, hi, hits):
     pref = preferred_dist(size)
     out = []
-    for d in DISTS:
+    # Big subjects (a wreck, a tower, a scoreboard) need bigger rings;
+    # a HIGH subject (a sign on a pole, a drone in the crowns, a poster
+    # near a ceiling, a window on an upper deck) lets the lens climb —
+    # up to 1 m below the subject — and look UP at it (2026-09-07: six
+    # of eleven stuck markers were only the 2.6 m eye clamp).
+    dists = DISTS + ((4.0, 6.0, 9.0, 13.0) if size > 3.0 else ())
+    elevs = ELEVS + ((-25.0, -40.0) if tgt_g[1] > 2.0 else ())
+    max_eye = max(MAX_EYE, tgt_g[1] - 1.0)
+    for d in dists:
         for yi in range(YAWS):
             a = yi * (2.0 * math.pi / YAWS)
-            for el in ELEVS:
+            for el in elevs:
                 e = math.radians(el)
                 pos = (tgt_g[0] + math.cos(a) * d * math.cos(e),
                        tgt_g[1] + d * math.sin(e),
                        tgt_g[2] + math.sin(a) * d * math.cos(e))
-                if pos[1] < MIN_EYE or pos[1] > MAX_EYE:
+                if pos[1] < MIN_EYE or pos[1] > max_eye:
+                    if WHY is not None: WHY["eye"] = WHY.get("eye", 0) + 1
                     continue
                 pb = to_b(pos)
                 if not (lo[0] - 0.2 <= pb[0] <= hi[0] + 0.2 and lo[1] - 0.2 <= pb[1] <= hi[1] + 0.2):
+                    if WHY is not None: WHY["bounds"] = WHY.get("bounds", 0) + 1
                     continue
-                if VO.inside_any(pb, boxes):
+                ins = VO.inside_any(pb, boxes)
+                if ins:
+                    if WHY is not None: WHY["inside " + ins] = WHY.get("inside " + ins, 0) + 1
                     continue
                 # the subject as seen FROM THIS candidate (nearest part,
                 # cluster widened by distance) — the same target the gates use
                 _an, tgt_here = M.subject_target(hits, pos)
-                if VO._occlusion(pb, to_b(tgt_here), boxes, subj):
+                occ = VO._occlusion(pb, to_b(tgt_here), boxes, subj)
+                if occ:
+                    if WHY is not None: WHY["occluded by " + occ] = WHY.get("occluded by " + occ, 0) + 1
                     continue
                 dist_orig = math.sqrt(sum((pos[i] - orig_g[i]) ** 2 for i in range(3)))
                 score = dist_orig + 1.6 * abs(d - pref) + 0.012 * abs(el - 15.0)
@@ -131,7 +148,38 @@ def write_marker(src, name, pos, rx, ry):
     return src[:b0] + body + src[blk.end(1):], True
 
 
+def explain(locale, marker):
+    """--why <locale> <marker>: tally why every candidate was rejected."""
+    global WHY
+    WHY = {}
+    P.A.install_stubs()
+    path = os.path.join(M.LOCALES_TSCN, locale + ".tscn")
+    src_txt = open(path).read()
+    glb = locale
+    gm = re.search(r'path="res://assets/3d/locales/(\w+)\.glb"', src_txt)
+    if gm:
+        glb = gm.group(1)
+    boxes = VO.boxes_for(glb)
+    name_geo = [(b[0], (b[1][0], b[1][2], -b[1][1])) for b in boxes]
+    lo, hi = locale_bounds(boxes)
+    for name, pos, rot in M.parse_markers(path):
+        if name != marker:
+            continue
+        cm = re.match(r"shot_(insert|closeup)_(\w+)$", name)
+        hits = M.matches_for(cm.group(2), name_geo)
+        anchor_name, tgt = M.subject_target(hits, pos)
+        print("subject %s at godot (%.2f, %.2f, %.2f) · %d parts · marker at (%.2f, %.2f, %.2f)" % (anchor_name, tgt[0], tgt[1], tgt[2], len(hits), pos[0], pos[1], pos[2]))
+        print("bounds x %.1f..%.1f  y %.1f..%.1f (blender)" % (lo[0], hi[0], lo[1], hi[1]))
+        cands = candidates(tgt, subject_size(hits), pos, boxes, {h[0] for h in hits}, lo, hi, hits)
+        print("clear candidates:", len(cands))
+        for k, v in sorted(WHY.items(), key=lambda kv: -kv[1])[:12]:
+            print("  %4d  %s" % (v, k))
+
+
 def main():
+    if "--why" in sys.argv:
+        i = sys.argv.index("--why")
+        return explain(sys.argv[i + 1], sys.argv[i + 2])
     dry = "--dry" in sys.argv
     only = [a for a in sys.argv[1:] if not a.startswith("--")]
     P.A.install_stubs()
@@ -173,16 +221,33 @@ def main():
             inside = VO.inside_any(pb, boxes)
             occl = VO._occlusion(pb, to_b(tgt), boxes, subj)
             st = VO.frame_stats(pb, rot[0], rot[1], fovs.get(name, 42.0), boxes)
-            if not inside and not occl and st["escape"] < VO.EMPTY_FRAC:
+            if not inside and not occl and (st["escape"] < VO.EMPTY_FRAC or glb in VO.NO_EMPTY):
                 continue
             size = subject_size(hits)
             cands = candidates(tgt, size, pos, boxes, subj, lo, hi, hits)
             if not cands:
                 stuck.append((locale, name, "no clear position found"))
                 continue
-            score, npos, d, el = cands[0]
-            _an, tgt_new = M.subject_target(hits, npos)
-            rx, ry = aim(npos, tgt_new)
+            # Accept only a candidate the GATE will also accept: aimed at
+            # the subject as seen from there, not occluded, and not an
+            # EMPTY frame (an egg on open ground can be 80% sky from
+            # every ring position — then the marker is STUCK, honestly,
+            # not "reframed" to the same spot every run).
+            chosen = None
+            for score, npos, d, el in cands[:60]:
+                _an, tgt_new = M.subject_target(hits, npos)
+                rx, ry = aim(npos, tgt_new)
+                if VO._occlusion(to_b(npos), to_b(tgt_new), boxes, subj):
+                    continue
+                st2 = VO.frame_stats(to_b(npos), rx, ry, fovs.get(name, 42.0), boxes)
+                if st2["escape"] >= VO.EMPTY_FRAC and glb not in VO.NO_EMPTY:
+                    continue
+                chosen = (npos, d, el, rx, ry)
+                break
+            if chosen is None:
+                stuck.append((locale, name, "every clear position is an empty or occluded frame"))
+                continue
+            npos, d, el, rx, ry = chosen
             print("reframed  %-24s %-28s → %s  from (%.1f, %.1f, %.1f) to (%.1f, %.1f, %.1f)  %.1fm · %+.0f°" % (
                 locale, name, nearest[0], pos[0], pos[1], pos[2], npos[0], npos[1], npos[2], d, el))
             if not dry:

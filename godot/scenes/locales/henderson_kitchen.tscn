@@ -189,10 +189,6 @@ shadow_enabled = false
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0, 1.28, -1.96)
 rotation = Vector3(-0.55, 0.0, 0.0)
 
-[node name="shot_insert_table" type="Marker3D" parent="." groups=["vn_shot"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.000, 1.250, 0.040)
-rotation = Vector3(-0.2686, 0.0000, 0.0)
-
 [node name="Interior" parent="." instance=ExtResource("1_glb")]
 
 [node name="PostProcess" type="CanvasLayer" parent="."]
@@ -334,8 +330,8 @@ metadata/fov = 42.0
 
 ; insert: the place settings
 [node name="shot_insert_table" type="Marker3D" parent="." groups=["vn_shot"]]
-position = Vector3(0, 1.35, -1.5)
-rotation = Vector3(-0.411631, 0.345556, 0)
+position = Vector3(0.000, 1.250, 0.040)
+rotation = Vector3(-0.2686, 0.0000, 0.0)
 metadata/fov = 42.0
 
 ; insert: the Telecaster on its stand by the stairs

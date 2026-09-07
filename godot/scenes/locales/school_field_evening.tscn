@@ -374,8 +374,8 @@ metadata/fov = 54.0
 
 ; insert: the scoreboard beyond the north end zone
 [node name="shot_insert_scoreboard" type="Marker3D" parent="." groups=["vn_shot"]]
-position = Vector3(0, 3.8, -103)
-rotation = Vector3(0.237471, 0, 0)
+position = Vector3(0.000, 4.617, -115.950)
+rotation = Vector3(0.4363, 0.0000, 0.0)
 metadata/fov = 44.0
 
 ; insert: the Friday-night crowd in the stands

@@ -513,8 +513,8 @@ rotation = Vector3(0.0407, -0.7470, 0.0)
 metadata/fov = 30.0
 
 [node name="shot_insert_window" type="Marker3D" parent="." groups=["vn_shot"]]
-position = Vector3(0, 6.5, 1.4)
-rotation = Vector3(-0.12, 3.1416, 0)
+position = Vector3(-0.000, 4.700, 0.855)
+rotation = Vector3(-1.1056, -2.9878, 0.0)
 metadata/fov = 44.0
 
 ; insert: the calling card on the helm desk, square to the corner

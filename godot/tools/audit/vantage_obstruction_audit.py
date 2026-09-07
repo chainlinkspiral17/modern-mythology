@@ -63,6 +63,10 @@ DELIBERATE_MARKERS = set()
 # cannot follow: every highway9 preset read EMPTY at 100% while the
 # Deck shows the stage). Skipped until the recorder learns the drape.
 UNMEASURED = {"harmony_terrain"}
+# Locales whose ground is a heightfield MESH the recorder does not see
+# (graustark's 200×140 elevation grid): rays past a prop hit nothing,
+# so "sees only sky" is an artifact there, not a verdict.
+NO_EMPTY = {"graustark", "harmony_terrain"}
 ASPECT = 16.0 / 9.0
 IGNORE = re.compile(r"(ground|sky|horizon|far|band|floor|ceil|void|sea\b|swamp_floor|lake_water|valley_floor|plinth$|template_(land|sea)|road_asphalt|asphalt$)", re.I)
 # What counts as NOTHING for the EMPTY test: sky, haze, far bands. Ground,
@@ -70,6 +74,24 @@ IGNORE = re.compile(r"(ground|sky|horizon|far|band|floor|ceil|void|sea\b|swamp_f
 # preset looking down its own road is a picture; the diner's clock
 # insert looking at a lit ceiling is caught by WALL, not EMPTY).
 SKY = re.compile(r"(sky|horizon|far|band|void|haze)", re.I)
+# Not solid for a LENS: fog, smoke, foliage tiers and lobes, shrubs,
+# water spray. A camera may stand in a canopy or a fog bank and see
+# through it (2026-09-07 · the drone insert in the Sitka crowns, the
+# hexagon in Cape Perpetua's fog).
+_PASSABLE_RE = re.compile(r"(fog|haze|mist|smoke|steam|cloud|canopy|foliage|_C[0-9]|_L[0-9]|salal|shrub|bush|leaf|leaves|spray|stream|"
+                          r"crown|needles|fern|grass|reed|hedge|vine|ivy|moss|drape|sheer|curtain|frond|palm|leader|"
+                          r"pine|fir|spruce|cedar|cypress|oak|alder|willow|maple|tree)", re.I)
+_SOLID_RE = re.compile(r"(trunk|stump|log|pole|post|butt)", re.I)
+
+
+class _Passable:
+    """regex-like: .search(name) is truthy for foliage / fog / spray
+    parts a lens may stand in and see through — never for a trunk."""
+    def search(self, name):
+        return bool(_PASSABLE_RE.search(name)) and not _SOLID_RE.search(name)
+
+
+PASSABLE = _Passable()
 
 
 def presets():
@@ -121,7 +143,7 @@ def cast(origin_b, d, boxes, ignore=None):
     if ignore is None:
         ignore = IGNORE
     for name, c, h in boxes:
-        if ignore.search(name):
+        if ignore.search(name) or PASSABLE.search(name):
             continue
         tmin, tmax = 0.0, 1e9
         ok = True
@@ -146,7 +168,7 @@ def cast(origin_b, d, boxes, ignore=None):
 
 def inside_any(pt, boxes):
     for name, c, h in boxes:
-        if IGNORE.search(name):
+        if IGNORE.search(name) or PASSABLE.search(name):
             continue
         if all(abs(pt[i] - c[i]) < h[i] for i in range(3)):
             return name
@@ -199,7 +221,7 @@ def verdict(st):
         why.append("%.0f%% of frame within %.1fm" % (st["near"] * 100, NEAR_M))
     if st["wall"] and st["wall_frac"] >= WALL_FRAC and st["wall_med"] < WALL_M:
         why.append("%s fills %.0f%% at %.1fm" % (st["wall"], st["wall_frac"] * 100, st["wall_med"]))
-    if st["escape"] >= EMPTY_FRAC:
+    if st["escape"] >= EMPTY_FRAC and not st.get("no_empty", False):
         why.append("EMPTY: %.0f%% of the frame sees only fill/sky" % (st["escape"] * 100))
     return why
 
@@ -298,7 +320,7 @@ def markers_pass(only, show_all):
                 occl = _occlusion(o_b, (tgt_g[0], -tgt_g[2], tgt_g[1]), boxes, subj)
                 if occl:
                     why.append("OCCLUDED: %s stands between the lens and %s" % (occl, anchor_name))
-                if st["escape"] >= EMPTY_FRAC:
+                if st["escape"] >= EMPTY_FRAC and glb not in NO_EMPTY:
                     why.append("EMPTY: %.0f%% of the frame sees only sky" % (st["escape"] * 100))
             else:
                 why = verdict(st)
@@ -400,6 +422,7 @@ def main():
         o_b = (o_g[0], -o_g[2], o_g[1])
         inside = inside_any(o_b, boxes)
         st = frame_stats(o_b, rot[0], rot[1], fov, boxes)
+        st["no_empty"] = locale in NO_EMPTY
         why = verdict(st)
         if pid in DELIBERATE and not inside:
             why = []

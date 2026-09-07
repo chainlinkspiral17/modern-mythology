@@ -252,8 +252,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 52.2, 0.95, 381.4)
 rotation = Vector3(-0.1021, -1.2636, 0.0)
 
 [node name="shot_insert_wreck" type="Marker3D" parent="." groups=["vn_shot"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 46.5, 3.20, 128.0)
-rotation = Vector3(-0.06, 0.72, 0.0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 41.732, 1.635, 121.000)
+rotation = Vector3(-0.2618, 1.3090, 0.0)
 
 [node name="shot_insert_paddlebox" type="Marker3D" parent="." groups=["vn_shot"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 45.6, 2.60, 126.4)
@@ -425,7 +425,7 @@ metadata/fov = 42.0
 ; insert: the smoke ring over the water, the wildflower (World)
 [node name="shot_insert_smoke_ring" type="Marker3D" parent="." groups=["vn_shot"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 42.3, 2.5, 122.6)
-rotation = Vector3(0.0642, 0.7854, 0.0)
+rotation = Vector3(0.3337, 2.5536, 0.0)
 metadata/fov = 42.0
 
 ; insert: the folded 1987 receipt behind the chip

@@ -56,8 +56,16 @@ CHAIR_REACH = 1.10     # m · seat centre to the table's nearest edge
 WALL_GAP = 0.35
 LANE_M = 2.2
 
+# Pairs whose bounding boxes MUST overlap because the recorder sees cones,
+# cylinders and foliage as boxes: conifer tiers, blob lobes, fronds;
+# the parts of one vehicle (a hub inside a wheel inside a body); the
+# joints of a road bend's prism segments. Skipped in INTRA (2026-09-07
+# classification of highway_101 / diner / riverfront: these three
+# classes were 90% of the count).
+VEHICLE_PART = re.compile(r"^(wheel|hub|spoke|tire|rim|body|cabin|cab|window|windows|windshield|winshld|rearwin|headlight|taillight|bumper|pillar|hood|lid|mirror|lightbar|pan|seat|grille|tailgate|wiper|door|handle|plate|glass|cushion|back|arm|shoulder)$", re.I)
+ROAD_SEG = re.compile(r"^(road|hwy|highway|street|lane|asphalt|curb|shoulder)", re.I)
 STRUCTURAL = re.compile(r"(wall|crown|molding|roof|chimney|eave|gable|ridge|joist|beam|truss|frame|jamb|header|sill|"
-                        r"trim|baseboard|skirt|seam|stud|rafter|hull|deck|pillar|post|leg|rail|spray|stream|tube|wire|cable|rope|chain)", re.I)
+                        r"trim|baseboard|skirt|seam|stud|rafter|hull|deck|pillar|post|leg|rail|spray|stream|tube|wire|cable|rope|chain|port|porthole|strip|band|piling|stringer|girder|brace|lintel|partition|pedestal)", re.I)
 MOUNTED = re.compile(r"(lamp|pendant|fan|shelf|sign|poster|frame|clock|board|wall|ceil|window|win_|curtain|light|fixture|cord|wire|"
                      r"pin|bolt|knob|lyric|page|plate|handle|pull|latch|seam|tab|pillar|mailbox|glass|badge|decal|sticker|label|logo|drawer|door|header|thermostat|"
                      r"number|letter|text|line|stripe|trim|cap|lid|rim|handset|dial|button|switch|outlet|plug|vent|grille|key|"
@@ -85,6 +93,19 @@ NOT_SEATING = re.compile(r"(side|end|night|console|hall|lamp|plant|tv|outline|zo
 DESK_FREESTANDING_LOCALES = {"miller_office", "new_orleans_office", "ember_ash_office", "wgur_transmitter_shack"}
 DESK_FREESTANDING = re.compile(r"(judge|clerk|helm|newspaper|desk_[0-9]_top|reception|teller|island|kiosk|studio|cat_desk|drafting|drawing)", re.I)
 TOPISH = re.compile(r"(top|surface|slab)(_[0-9]+)?$", re.I)
+
+
+def part_class(name):
+    """The last non-numeric word of a part name: Car_0_Wheel_FL → wheel."""
+    parts = re.split(r"_", re.sub(r"(?<=[a-z])(?=[A-Z])", "_", name))
+    parts = [p for p in parts if not re.fullmatch(r"[+\-]?\d+|[+\-]?\d|[A-Z]{1,2}", p)]
+    return parts[-1].lower() if parts else name.lower()
+
+
+def family(name):
+    """The first two words of a name — the ASSEMBLY (Car_0_Wheel_0_Hub → Car_0)."""
+    parts = name.split("_")
+    return "_".join(parts[:2]) if len(parts) > 2 else parts[0]
 
 
 def prefix_of(name):
@@ -145,6 +166,12 @@ def check_intra(boxes):
                     continue
                 if STRUCTURAL.search(a[0]) and STRUCTURAL.search(b[0]):
                     continue      # joints: wall corners, crown mitres, roof/chimney, frame members
+                if VO.PASSABLE.search(a[0]) or VO.PASSABLE.search(b[0]):
+                    continue      # foliage tiers / lobes / fronds — cones and blobs as boxes
+                if VEHICLE_PART.search(part_class(a[0])) and VEHICLE_PART.search(part_class(b[0])):
+                    continue      # one rigid vehicle
+                if ROAD_SEG.search(pre):
+                    continue      # bend segments meet at their joints
                 out.append((pre, a[0], b[0], min(pen)))
     return out
 
@@ -154,8 +181,8 @@ def check_float(boxes):
     out = []
     for b in real:
         n, c, h = b
-        if VO.IGNORE.search(n) or MOUNTED.search(n):
-            continue
+        if VO.IGNORE.search(n) or MOUNTED.search(n) or VO.PASSABLE.search(n):
+            continue      # foliage leaders / lobes are not props that "float"
         if max(h) * 2 > FLOAT_MAX_SIDE or min(h) * 2 < 0.01:
             continue
         bottom = c[2] - h[2]
@@ -178,6 +205,11 @@ def check_float(boxes):
                 continue
             if top > bottom:
                 top = bottom
+            # embedded in a sibling (a hub inside its wheel's box, a leader
+            # in its crown): the sibling spans our underside → supported
+            if family(o[0]) == family(n) and lo[2] - 0.02 <= bottom <= hi[2] + 0.02 and not (hi[0] < blo[0] or lo[0] > bhi[0] or hi[1] < blo[1] or lo[1] > bhi[1]):
+                best = (bottom, o[0])
+                break
             if hi[0] < blo[0] or lo[0] > bhi[0] or hi[1] < blo[1] or lo[1] > bhi[1]:
                 # a sibling part of the same assembly that touches us in
                 # xy but sits beside (a back on posts, a knob on a face)

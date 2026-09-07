@@ -314,8 +314,8 @@ script = ExtResource("14_dbgm")
 
 ; insert: the rust-colored thermal smear on the far horizon
 [node name="shot_insert_smear" type="Marker3D" parent="." groups=["vn_shot"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.0, 1.6, -8.6)
-rotation = Vector3(0.1047, -0.0195, 0.0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.000, 5.714, -32.468)
+rotation = Vector3(0.6981, 0.0000, 0.0)
 metadata/fov = 42.0
 
 ; insert: the bale at the eighth pallet

@@ -4888,7 +4888,9 @@ def build_world_shore_2026_09():
     _mc("Frog_King_Cigarette", (41.93, -124.0, 2.95), 0.010, 0.080,
         (0.92, 0.90, 0.84, 1.0), axis='X', segments=6)
     # ── THE SMOKE RING + THE WILDFLOWER ──
-    _mc("Smoke_Ring", (41.2, -121.5, 2.60), 0.14, 0.015,
+    # at the Frog King's mouth, OUTSIDE the hull's box (2026-09-07: it sat
+    # inside the Minstral hull bbox and no lens could reach it)
+    _mc("Smoke_Ring", (41.9, -123.2, 2.75), 0.14, 0.015,
         (0.85, 0.85, 0.88, 0.35), segments=12)
     wfz = max(graustark_elevation(42.5, -116.5), 0.05)
     _mc("Wildflower_Stem", (42.5, -116.5, wfz + 0.09), 0.008, 0.18,

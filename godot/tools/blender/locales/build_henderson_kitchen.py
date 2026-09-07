@@ -63,7 +63,9 @@ def build_clock():
     make_wall_clock("Clock", (0.0, ROOM_D-0.05, CEIL-0.50), frozen_hour=10, frozen_min=38)
 
 def build_fridge():
-    fx, fy = +ROOM_W/2.0 - 0.50, 1.5
+    # north of the basement door, not in front of it (2026-09-07: the
+    # fridge stood square in the doorway and no lens could see the door)
+    fx, fy = +ROOM_W/2.0 - 0.50, 3.0
     make_chamfer_box("Fridge_Body", (fx, fy, 1.00), (0.70, 0.70, 2.00), (0.86, 0.84, 0.80, 1.0))
     make_chamfer_box("Fridge_DoorTop", (fx-0.34, fy, 1.50), (0.04, 0.66, 0.80), (0.86, 0.84, 0.80, 1.0))
     make_chamfer_box("Fridge_DoorBot", (fx-0.34, fy, 0.40), (0.04, 0.66, 1.00), (0.86, 0.84, 0.80, 1.0))

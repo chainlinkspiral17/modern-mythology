@@ -533,6 +533,27 @@ work that needs to get done").**
   room mirror · riverboat window · school_field scoreboard — each a
   prop behind a wall from every side or a subject that is not built:
   content fixes, one per pass). Aim gate: 0 misaims.
+· THE STUCK ELEVEN, resolved (later the same day): a `--why` mode on
+  marker_reframe tallies why every candidate position fails. Six of
+  the eleven failed ONLY the 2.6 m eye clamp — the drone in the Sitka
+  crowns, the credit poster, the stockroom's thermal smear, the watch
+  tower, the motel sign, the helm window on the upper deck, the
+  scoreboard: the lens may now climb to 1 m below a high subject and
+  look up at it, and rings widen to 13 m for subjects over 3 m. Fog
+  banks, foliage tiers and blob lobes, shrubs and spray are PASSABLE
+  for a lens (the hexagon in Cape Perpetua's fog, the drone in the
+  canopy). Two were CONTENT: the Frog King's smoke ring sat inside
+  the Minstral hull's bounding box (moved to his mouth, outside it)
+  and Henderson's fridge stood square in the basement doorway (moved
+  north along the east wall). One was a DUPLICATE marker name in
+  henderson_kitchen.tscn — two shot_insert_table nodes, the tools
+  editing the first while the gate judged the second; the stale one
+  is gone and duplicate names are now something to scan for. Graustark
+  and harmony_terrain are NO_EMPTY (heightfield meshes the recorder
+  cannot see make "only sky" an artifact). The reframe now accepts a
+  position only if the gate would (occlusion AND sky re-tested from
+  the final spot), so a marker can no longer oscillate between the two
+  tools.
 · CARS: `curb_park()` and `bulb_park()` in _props/vehicles.py; the
   white sedan through make_car at the bulb's south curb; Finn's truck
   to the store-side curb of Main Street. The LANE check now excludes
@@ -576,11 +597,21 @@ work that needs to get done").**
 · Every changed locale passes the overlap gate at 0 clips.
 DECK REBUILD: everything — the furniture and vehicle kits changed
 under 20+ builders: `cd godot/tools/blender && ./build_scenes.sh`.
-NEXT: the 17 remaining beds; the 11 stuck markers one by one; the
-INTRA/FLOAT counts (3033 / 937 on the changed set — mostly procedural
-exteriors: harmony_terrain 2800, graustark 2032 — need a
-per-class review before any gate); highway9's recorder gap; then the
-GAME GRAMMAR rows.
+INTRA/FLOAT REVIEW (same day): classified by part type on highway_101
+/ diner / riverfront. Ninety percent were bounding-box artifacts the
+recorder cannot help — conifer tiers stacked as cones, blob lobes,
+fronds and reeds; a vehicle's hub inside its wheel inside its body;
+road-bend prism segments meeting at joints; dock pilings in their
+stringers. All excluded by class (foliage is PASSABLE, one vehicle is
+one rigid body, Road_ prefixes are joints, dock/partition members are
+structural). highway_101 INTRA 849 → 0; diner 208 → 87 (stool hubs and
+tablecloth-over-pedestal tucks remain — real but sub-4 cm); riverfront
+684 → 294 (dock construction, boat parts). The tool stays
+INFORMATIONAL: a gate needs shape-aware tests (cylinder-in-cylinder,
+cone stacks), not more name lists. NEXT: highway9's recorder gap
+(harmony_terrain's heightfield drape — the recorder sees no ground, so
+the EMPTY test is meaningless there); then the GAME GRAMMAR rows; then
+the Deck taste pass on Major Arcana 11–21.
 
 **2026-08-19 · PER-STICK VOICE SWEEP VERDICT (voice draft 4).**
 Ran the leakage grep (TODO/WIP/placeholder/implemented/deferred/

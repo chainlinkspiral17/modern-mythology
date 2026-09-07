@@ -340,6 +340,6 @@ metadata/fov = 42.0
 
 ; insert: the tower on the hill, through the SW glass (ch7)
 [node name="shot_insert_tower" type="Marker3D" parent="." groups=["vn_shot"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.4, 1.6, -1.0)
-rotation = Vector3(0.2089, 2.9950, 0.0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.843, 4.917, 17.549)
+rotation = Vector3(0.4363, 2.8798, 0.0)
 metadata/fov = 42.0
