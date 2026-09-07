@@ -20,6 +20,7 @@ var _haptics:        float  = 1.0
 var _music_skin:     String = "diner_booth"
 var _music_viz:      String = "peak_meter"
 var _music_jukebox:  bool   = true
+var _trip_amount:    float  = 0.6    # THE TRIP · psychedelic layer strength (TripSync)
 
 
 var txt_scale: float:
@@ -119,6 +120,15 @@ var music_jukebox: bool:
 		settings_changed.emit("music_jukebox", val)
 		_save()
 
+# THE TRIP (2026-09-07): strength of the project-wide music-synced
+# psychedelic layer. 0 turns it off; TripSync reads this live.
+var trip_amount: float:
+	get: return _trip_amount
+	set(val):
+		_trip_amount = clampf(val, 0.0, 1.0)
+		settings_changed.emit("trip_amount", _trip_amount)
+		_save()
+
 
 func _ready() -> void:
 	_load()
@@ -187,6 +197,7 @@ func _load() -> void:
 	_music_skin      = str(cfg.get_value("settings",   "music_skin",     "diner_booth"))
 	_music_viz       = str(cfg.get_value("settings",   "music_viz",      "peak_meter"))
 	_music_jukebox   = bool(cfg.get_value("settings",  "music_jukebox",  true))
+	_trip_amount     = clampf(float(cfg.get_value("settings", "trip_amount", 0.6)), 0.0, 1.0)
 	_apply_window_mode(_window_mode)
 
 
@@ -204,4 +215,5 @@ func _save() -> void:
 	cfg.set_value("settings", "music_skin",      _music_skin)
 	cfg.set_value("settings", "music_viz",       _music_viz)
 	cfg.set_value("settings", "music_jukebox",   _music_jukebox)
+	cfg.set_value("settings", "trip_amount",     _trip_amount)
 	cfg.save(SAVE_PATH)

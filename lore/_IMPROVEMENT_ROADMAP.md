@@ -326,6 +326,40 @@ cabin_road's 43 and louisiana_road's 18
 are fallback-staging aggregates — a re-homing decision (real
 locales for those scenes), not a prop wave; verify on Deck first.
 
+**2026-09-07 · THE TRIP · DRAFT 1 — "realism but trippy, at all
+times, in lines and backgrounds, synced to the music."** A new
+autoload, TripSync, plus one screen-space shader, trip_sync.gdshader.
+The autoload reads the BGM bus spectrum analyzer (eight log bands,
+adaptive gain so a quiet drone drives as hard as a loud track),
+detects beats on the low band, keeps a tempo estimate from the median
+inter-beat interval, and pushes the music state to every attached
+material each frame. The shader keeps the picture real and rides four
+things on it: a rainbow aura along the Sobel edges (hue runs along
+the line, brightness follows energy, the beat flares the glow); a
+domain-warped noise field breathing the FLAT regions by a few pixels
+(suppressed where edge density is high, so outlines and text stay
+sharp); a capped YIQ hue drift plus a mid-band saturation lift; and a
+beat-launched radial ripple with a short chromatic split. Mounted
+two ways: a global layer-60 CanvasLayer ("world_render", F4 leaves
+it) over every locale walk, slowstick and menu; and in texture mode
+on the VN's background TextureRect and 3D SubViewportContainer while
+GameEngine is in "trip_local" (the global layer steps aside so the
+dialogue box is never touched). Dial: Settings.trip_amount, the
+PSYCHEDELIA slider in the settings overlay (default 0.6; 0 = off).
+InGameMusicPlayer moved to the BGM bus so user-dropped tracks feed
+the analyzer. NOTHING HAS BEEN SEEN ON THE DECK. DRAFT 2 TARGETS: the
+mix itself — is 0.6 too loud for the VN, does the ripple read as a
+ripple or a wobble, does the line aura cheapen the model chapters;
+per-mood scaling (a `trip_scale` key in the mood presets so linework
+and lithograph moods dial it down); per-surface scaling for the main
+menu and the slowstick TV (a "trip_soft" group at ×0.45); a beat
+detector check against the real catalog (the bass-onset threshold
+was set blind — log bpm from status_line() on three known tracks);
+a second look for the ripple centre (a vn_shot subject, not a
+random drift); the hue drift into the lighting (practicals breathing
+with the bar like lightshow_extreme does, at 10% of that); a
+kaleidoscope peak state gated to [mood:] cues for the trip chapters.
+
 **2026-08-19 · PER-STICK VOICE SWEEP VERDICT (voice draft 4).**
 Ran the leakage grep (TODO/WIP/placeholder/implemented/deferred/
 stub) and a string survey across EVERY stick directory: estuary_4,
@@ -442,6 +476,7 @@ Current ledger (draft counts are honest, not aspirational):
 | Slowstick manuals + packaging (NH = model) | 1 | era-voice + walkthrough sweep across ~20 sticks; box art after experiences are good (task #234) |
 | VN portrait busts (de-blocking · 2026-08-04) | 2 (EPX×2 + soft finish; hide-ghosts made ephemeral) | screenshot check vs the SVGA bar; if still chunky: raise the 60x64 base canvas itself (more shading ramps, finer features); dialogue-box busts + CP roster inherit automatically |
 | Scene direction · coverage rotation (2026-08-04) | 5 (28 locales carry decks — 111 authored setups, 176 markers repo-wide; draft 5 gave TEN ARCANA SETS the exact markers their scripts already cue (round 2: cafe_olimpico, both new_orleans rooms + the office — 42 arcana markers total; graustark deferred to the richer stub) — Alice's rose/chair/closeup, Natalie's turntable/card, Jimmy's sofa, Elicia's desk/laptop/teacup, Erica's office, the Montreal notebook — plus establish_b rotations, ALL euler-form now: the 81 matrix markers were converted after draft 3 found the transpose bug. Draft 4 covered the whole 7-9-use tier incl. kwik_stop B/C and the shared missing_link_exterior/shuttle_bench deck) | Deck screenshots — every framing is math-verified to <0.5° but ZERO have been seen through a lens; taste notes ("finn B too low") drive draft 5. Next tier (5-6 uses: foxhole_bar, henderson_garage, faust_bedroom, jesse_bedroom, centro_break_room, bianca_kitchen_morning, diner_interior variants) only after a taste pass confirms the grammar reads |
+| **THE TRIP (music-synced psychedelic layer · 2026-09-07)** | **1** (TripSync autoload + trip_sync.gdshader; global layer 60 + VN texture mode; PSYCHEDELIA slider) | draft 2: Deck look at 0.6 on the diner / a VN chapter / a slowstick; per-mood + per-surface scaling; beat detector vs the real catalog; ripple centre on the shot subject |
 | Model chapters (diner, kwik stop, cathedral, henderson) | many | the BAR — mine them for what a finished space has |
 
 ### Workstream · THE STUMP HUNT (2026-08-04)

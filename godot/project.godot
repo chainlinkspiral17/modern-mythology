@@ -40,6 +40,7 @@ ExpertMode="*res://autoload/ExpertModePanel.gd"
 CustomPresets="*res://autoload/CustomPresetStore.gd"
 VnDebugState="*res://autoload/VnDebugState.gd"
 GamepadMgr="*res://autoload/GamepadMgr.gd"
+TripSync="*res://autoload/TripSync.gd"
 
 [display]
 

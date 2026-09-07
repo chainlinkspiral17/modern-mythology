@@ -150,6 +150,13 @@ func _build_layers() -> void:
 	_bg.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
 	_bg.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
 	add_child(_bg)
+	# THE TRIP runs on the VN's backgrounds only (texture mode), never
+	# over the dialogue box: this root joins "trip_local" so TripSync's
+	# global screen layer steps aside while the VN is in the tree.
+	add_to_group("trip_local")
+	var trip: Node = get_node_or_null("/root/TripSync")
+	if trip != null and trip.has_method("attach"):
+		trip.call("attach", _bg)
 
 	# Matte frame above the bg image to cover aspect bars. The live
 	# _substrate sits between _bg_solid and _bg, so without this it
@@ -957,6 +964,9 @@ func _apply_bg_3d(preset_id: String) -> void:
 		_bg.add_sibling(_bg_3d_node)
 		_bg_3d_node.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
 		_bg_3d_node.mouse_filter = Control.MOUSE_FILTER_IGNORE
+		var trip3d: Node = get_node_or_null("/root/TripSync")
+		if trip3d != null and trip3d.has_method("attach"):
+			trip3d.call("attach", _bg_3d_node)   # the 3D bg breathes too
 	# Per-locale ambient bed: duck the Music Player way down and raise
 	# this locale's inverted ambient soundtrack. Independent of whether
 	# the GLB is present (below) — the scene IS this locale either way,

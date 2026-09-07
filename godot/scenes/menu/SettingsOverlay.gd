@@ -117,6 +117,12 @@ func _rebuild() -> void:
 			if bank != null and bank.has_method("rumble"):
 				bank.call("rumble", 0.3, 0.2, 0.12)
 	))
+	# THE TRIP · the music-synced psychedelic layer (TripSync autoload).
+	# 0 = off. Lines and backgrounds only; dialogue text is never touched.
+	vbox.add_child(_slider_row("PSYCHEDELIA", Settings.trip_amount,
+		func(v: float) -> void:
+			Settings.trip_amount = v
+	))
 
 	vbox.add_child(_rule())
 

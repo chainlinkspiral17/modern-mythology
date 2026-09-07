@@ -196,6 +196,7 @@ They're polish; static reads first.
 | `ascii_directional.gdshader`             | Per-cell directional ASCII           | blueprint              |
 | `neon_edge.gdshader`                     | Sobel silhouette outline + gradient fill | chillwave / sunset / lithograph / blueprint_red / noir / ice |
 | `demoscene_post.gdshader`                | Palette quantize / dither / scanlines / chromatic aberration | every mood             |
+| `trip_sync.gdshader`                     | THE TRIP · music-synced rainbow edge aura + flat-region flow warp + capped hue drift + beat ripple; screen mode (global layer 60) or texture mode (VN backgrounds) | TripSync autoload, always on (Settings.trip_amount) |
 | `ascii_edges.gdshader` (legacy)          | Edge detection + ASCII overlay       | not wired (kept for ref) |
 | `glyph_field.gdshader` (legacy)          | Drifting ASCII glyph field           | not wired (kept for ref) |
 | `gouraud_lambert.gdshader`               | Cathedral baked vertex-color shader  | warehouse scene only   |
@@ -737,6 +738,48 @@ copperplate), Sacramento (modern handwritten).
   steps too. **Rule:** when batch-patching, run each step
   independent of the others' asserts, and anchor on the loosest
   unique substring, not on exact line shape.
+
+### 2026-09-07 · THE TRIP · a global music-synced layer (draft 1)
+
+- **A project-wide layer lives in an autoload, not in 124 tscns.**
+  "Running through the game at all times" means every locale walk,
+  every slowstick, the menu, and the VN. The scene PostProcess
+  stacks are per-tscn; the one place that spans them all is an
+  autoload CanvasLayer. TripSync owns a layer-60 CanvasLayer (above
+  PostProcess at 50 — so it sees the quantized/dithered picture and
+  its rainbow lines stay smooth on top — below the slowstick look
+  at 80 and HUD at 100). CanvasLayer boundaries give the screen
+  copy for free (SlowstickLook proved it; no BackBufferCopy needed).
+- **One shader, two mounts.** A screen-reading ColorRect cannot
+  tell dialogue text from geometry. For the VN the same shader runs
+  in texture mode (`use_screen = false`, reads TEXTURE) as the
+  material on the background TextureRect and the 3D
+  SubViewportContainer, and GameEngine joins `"trip_local"` so the
+  global layer hides. Rule: any surface that must keep text clean
+  joins `trip_local` and calls `TripSync.attach(item)` on its
+  backgrounds. In texture mode carry the vertex colour through a
+  varying — fragment `COLOR` already has TEXTURE folded in, so
+  `result * COLOR` applies the texture twice.
+- **"Realism but trippy" = mask by edge density.** The warp and the
+  hue drift are multiplied by `1 − density` (a wide Sobel); the
+  aura by the thin Sobel. Flat stretches breathe and drift, edges
+  (and any text under the global layer) stay pin-sharp. The hue
+  rotation is a YIQ rotation clamped to ±0.62 rad — colours breathe,
+  a wall never turns green.
+- **Analyze the BGM bus, auto-gain it, detect beats on the lows.**
+  AudioMgr already keeps a spectrum analyzer on BGM; TripSync reuses
+  it (attaches one if missing). Eight log bands 40 Hz–9 kHz with a
+  +55%/band tilt (the highs carry a fraction of the amplitude), a
+  slow-sinking loudness ceiling for the gain, asymmetric smoothing
+  (rise 0.55, fall 0.14). Beats: low band over 1.32× its ~1 s
+  running average, 220 ms refractory; median of the last eight
+  inter-beat intervals is the tempo that locks `beat_phase` /
+  `bar_phase`. Silence for 1.5 s → an idle breath (energy ~0.2 LFO)
+  so the layer never reads dead. InGameMusicPlayer moved from Master
+  to the BGM bus so user-dropped tracks feed the same analyzer.
+- **Draft-1 caveat.** Not one frame has been seen on the Deck; every
+  threshold above was set blind. Draft 2 is a taste pass with the
+  PSYCHEDELIA slider, then per-mood and per-surface scaling.
 
 ### TEMPLATE for next session
 
