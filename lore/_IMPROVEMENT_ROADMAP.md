@@ -425,6 +425,13 @@ TARGETS: read the user's slider positions back from settings.cfg
 after a session and bake them as the defaults; per-register FLOW
 (the sticks at 0, milk_honey highest); the ring's centre on the shot
 subject; Minter-in-the-game for one stick.
+DECK VERDICT on draft 3 (2026-09-07): "The cabin in Land of Milk and
+Honey is looking great, seeing good work all over with the background
+geometry. That's the right path, it's coming along better now." So
+the vol 7 register on the cabin set (cabin_interior + cabin_road at
+detail draft 4, THE TRIP milk_honey at draft 3) is the current
+REFERENCE POINT for the whole program — tune the other registers
+toward how that reads, not toward their own numbers.
 
 **2026-08-19 · PER-STICK VOICE SWEEP VERDICT (voice draft 4).**
 Ran the leakage grep (TODO/WIP/placeholder/implemented/deferred/
