@@ -94,7 +94,7 @@ def build_shell():
     make_box("Wall_S_AboveDoor", (0.0, 0.0, CEIL_Z - 0.30),
              (2.20, 0.20, 0.60), PAL_DOMESTIC_WALL["wall"])
     make_ceiling("Ceil", (0.0, ROOM_D / 2.0, CEIL_Z),
-                 size_x=ROOM_W + 0.4, size_y=ROOM_D + 0.4)
+                 size_x=ROOM_W + 0.4, size_y=ROOM_D + 0.4, with_grid=False)
     for nm, ax, length in [
             ("Crown_W", 'Y', ROOM_D),
             ("Crown_E", 'Y', ROOM_D),

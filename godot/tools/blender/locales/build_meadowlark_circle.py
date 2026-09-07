@@ -140,27 +140,14 @@ def build_sprinklers():
     for i, hx in enumerate((-24.0, -13.0, -2.0, 9.0)):
         make_cyl(f"Sprinkler_Head_{i}", (hx - 3.0, 6.0, 0.03), 0.03, 0.06, (0.24, 0.26, 0.24, 1.0), segments=6)
         make_box(f"Sprinkler_Wet_{i}", (hx - 1.5, 7.2, 0.013), (3.2, 2.2, 0.006), (0.28, 0.40, 0.24, 1.0))
-        # the fan: five thin water arcs from the head across the wet
-        # sheet (2026-09-07: the old "translucent" slab rendered as an
-        # opaque blue rectangle — this pipeline has no alpha)
-        for ai in range(5):
-            a = math.radians(8.0 + ai * 18.5)
-            reach = 2.4 - 0.25 * abs(ai - 2)
-            pts = []
-            for k in range(8):
-                f = k / 7.0
-                pts.append((hx - 3.0 + math.cos(a) * reach * f, 6.0 + math.sin(a) * reach * f, 0.05 + 1.7 * f * (1.0 - f)))
-            make_tube(f"Sprinkler_Spray_{i}_{ai}", pts, 0.012, (0.80, 0.86, 0.92, 1.0), segments=4)
+        # the spray itself is PARTICLES, spawned at scene load by
+        # LocaleSetup from every Sprinkler_Head_* (2026-09-07 Deck: tubes
+        # "still look ridiculous, consider particles or transparent images")
     # the Miller head, left corner, cracked housing
     mx = 20.0 - 3.6
     make_cyl("Miller_Cracked_Head", (mx, 5.6, 0.03), 0.03, 0.06, (0.24, 0.26, 0.24, 1.0), segments=6)
     make_box("Miller_Head_Crack", (mx + 0.02, 5.6, 0.06), (0.012, 0.012, 0.02), (0.10, 0.10, 0.10, 1.0))
-    # the surgical arc: one thin stream to the sidewalk (was a slab)
-    _pts = []
-    for k in range(8):
-        f = k / 7.0
-        _pts.append((mx - 0.9 * f, 5.6 - 1.35 * f, 0.06 + 1.9 * f * (1.0 - f)))
-    make_tube("Miller_Thin_Arc", _pts, 0.010, (0.86, 0.92, 0.98, 1.0), segments=4)
+    # the surgical stream is a particle emitter too (Miller_Cracked_Head)
     make_box("Miller_Arc_Splash", (mx - 0.9, 4.25, 0.075), (0.60, 0.30, 0.004), (0.50, 0.52, 0.56, 1.0))
     make_box("Sidewalk_Etch_Stripe", (mx - 0.9, 4.25, 0.0715), (0.55, 0.10, 0.003), (0.46, 0.46, 0.44, 1.0))
 
@@ -227,9 +214,16 @@ def build_henderson_2026_09():
     garage, "its single open vent at the top of the door," the
     distorted Telecaster.
     """
-    make_car("Ben_Truck", -4.2, 2.4, 5.6, (0.22, 0.34, 0.24, 1.0), pickup=True)
-    make_car("Corolla", -13.0, 2.4, 4.3, (0.72, 0.70, 0.64, 1.0))
-    make_car("Patrol_Vehicle", -1.0, -1.8, 4.9, (0.92, 0.92, 0.90, 1.0), light_bar=True)
+    # Every street car at a CURB through curb_park (2026-09-07 Deck,
+    # twice: "cars don't park in the middle of streets"). The road runs
+    # along X at y 0, half-width 3.5; +1 is the north curb.
+    from _props.vehicles import curb_park
+    bt = curb_park(0.0, 3.5, "X", +1, -4.2)
+    make_car("Ben_Truck", bt[0], bt[1], 5.6, (0.22, 0.34, 0.24, 1.0), pickup=True)
+    co = curb_park(0.0, 3.5, "X", +1, -13.0)
+    make_car("Corolla", co[0], co[1], 4.3, (0.72, 0.70, 0.64, 1.0))
+    pv = curb_park(0.0, 3.5, "X", -1, 5.0)
+    make_car("Patrol_Vehicle", pv[0], pv[1], 4.9, (0.92, 0.92, 0.90, 1.0), light_bar=True)
     make_box("Patrol_Door_Stripe", (-1.0, -2.705, 0.62), (2.4, 0.01, 0.30), (0.16, 0.22, 0.40, 1.0))
     # the light post at the end of the Henderson driveway, on the sidewalk edge
     make_cyl("Henderson_Light_Post", (3.4, 5.3, 1.64), 0.06, 3.14, (0.30, 0.30, 0.32, 1.0), segments=8)

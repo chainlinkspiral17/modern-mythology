@@ -43,7 +43,7 @@ def build_cylindrical_shell():
         make_box(f"WallSeg_{si}", (mx, my, CEIL/2.0),
                  (chord*1.05, thickness, CEIL), COL_BRICK_WHITE)
     # Ceiling
-    make_ceiling("Ceil", (0.0, 0.0, CEIL), size_x=RADIUS*2 + 0.4, size_y=RADIUS*2 + 0.4)
+    make_ceiling("Ceil", (0.0, 0.0, CEIL), size_x=RADIUS*2 + 0.4, size_y=RADIUS*2 + 0.4, with_grid=False)
     # Hatch in ceiling (cutout faked with darker square)
     make_box("Ceil_Hatch", (0.0, +0.80, CEIL-0.02), (0.80, 0.80, 0.04), (0.10, 0.08, 0.06, 1.0))
 

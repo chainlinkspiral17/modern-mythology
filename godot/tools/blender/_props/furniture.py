@@ -41,12 +41,16 @@ def make_chair(prefix, x, y, yaw=0.0, wood=WOOD, seat_col=None, seat_h=0.45, w=0
                                  ((-hw + 0.03, -hw + 0.03), (-hw + 0.03, hw - 0.03)), ((hw - 0.03, -hw + 0.03), (hw - 0.03, hw - 0.03)))):
         make_tube(f"{prefix}_Stretcher_{si}", [P(a[0], a[1], 0.18), P(b[0], b[1], 0.18)], 0.012, wood, segments=5)
     make_chamfer_box(f"{prefix}_Seat", P(0.0, 0.0, seat_h - 0.02), (w, w, 0.04), seat_col, chamfer=0.012, yaw=yaw)
-    # the back: two posts, a top rail, spindles
+    # the back: two posts rooted 4 cm INTO the seat, a top rail, a lower
+    # rail just above the seat, spindles between them (2026-09-07 Deck:
+    # "chairs not fully assembled" — the raked posts left the seat edge
+    # visibly; the rake is gentler and the posts start inside the seat)
     for sgn in (-1, 1):
-        make_rot_box(f"{prefix}_Back_Post_{sgn:+d}", P(sgn * (hw - 0.03), -hw + 0.03, seat_h + 0.22), (0.035, 0.035, 0.48), wood, yaw=yaw, roll=-0.10)
-    make_rot_box(f"{prefix}_Back_Rail", P(0.0, -hw + 0.03 - 0.05, seat_h + 0.44), (w, 0.03, 0.07), wood, yaw=yaw, roll=-0.10)
+        make_rot_box(f"{prefix}_Back_Post_{sgn:+d}", P(sgn * (hw - 0.03), -hw + 0.05, seat_h + 0.20), (0.035, 0.035, 0.48), wood, yaw=yaw, roll=-0.05)
+    make_rot_box(f"{prefix}_Back_Rail", P(0.0, -hw + 0.05 - 0.025, seat_h + 0.42), (w, 0.03, 0.07), wood, yaw=yaw, roll=-0.05)
+    make_rot_box(f"{prefix}_Back_LowRail", P(0.0, -hw + 0.05 - 0.005, seat_h + 0.07), (w - 0.07, 0.03, 0.035), wood, yaw=yaw, roll=-0.05)
     for si, u in enumerate((-0.12, -0.04, 0.04, 0.12)):
-        make_rot_box(f"{prefix}_Spindle_{si}", P(u, -hw + 0.03 - 0.03, seat_h + 0.21), (0.016, 0.016, 0.38), wood, yaw=yaw, roll=-0.10)
+        make_rot_box(f"{prefix}_Spindle_{si}", P(u, -hw + 0.05 - 0.012, seat_h + 0.245), (0.016, 0.016, 0.30), wood, yaw=yaw, roll=-0.05)
 
 
 def make_table(prefix, x, y, w=1.2, d=0.8, h=0.75, wood=WOOD, top_col=None, z0=0.0):

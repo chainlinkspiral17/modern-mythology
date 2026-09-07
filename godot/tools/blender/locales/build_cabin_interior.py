@@ -108,11 +108,13 @@ def build_loft():
     make_box("Loft_Rail", (-1.0, 3.66, 2.45), (1.6, 0.05, 0.06), COL_WOOD_DK)
     for bi, bx in enumerate((-1.6, -1.0, -0.4)):
         make_box(f"Loft_Rail_Bal_{bi}", (bx, 3.66, 2.30), (0.04, 0.04, 0.36), COL_WOOD_DK)
-    # Ladder
-    for rx in (-0.35, -0.05):
-        make_box(f"Ladder_Rail_{rx:.2f}", (rx, 3.95, 1.10), (0.05, 0.05, 2.20), COL_WOOD)
+    # Ladder — against the loft's FRONT edge (the beam at y 3.62), rails
+    # reaching the deck (2026-09-07 Deck: it stood UNDER the deck at
+    # y 3.95, climbing into the loft's underside — "turned 90 degrees")
+    for rx in (-1.35, -1.05):
+        make_box(f"Ladder_Rail_{rx:.2f}", (rx, 3.50, 1.10), (0.05, 0.05, 2.20), COL_WOOD)
     for s in range(6):
-        make_box(f"Ladder_Rung_{s}", (-0.20, 3.95, 0.30 + s * 0.36), (0.34, 0.04, 0.04), COL_WOOD_DK)
+        make_box(f"Ladder_Rung_{s}", (-1.20, 3.50, 0.30 + s * 0.36), (0.34, 0.04, 0.04), COL_WOOD_DK)
 
 
 def build_stove_corner():
@@ -369,7 +371,7 @@ def build_wear_personality_2026_08():
                     height=0.12, band_z=0.08, tint=(0.28, 0.20, 0.14, 1.0))
     # Ladder rungs worn pale at the grab line (the loft, decades).
     for s in (2, 3, 4):
-        make_box("Wear_Rung_%d" % s, (-0.20, 3.93, 0.305 + s * 0.36),
+        make_box("Wear_Rung_%d" % s, (-1.20, 3.475, 0.305 + s * 0.36),
                  (0.20, 0.045, 0.012), handworn)
     # The reader's shelf shadow: "on the shelf where it had been
     # since '46" — the shelf around it darkened, the rectangle

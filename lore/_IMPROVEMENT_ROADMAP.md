@@ -616,6 +616,36 @@ cone stacks), not more name lists. NEXT: highway9's recorder gap
 the EMPTY test is meaningless there); then the GAME GRAMMAR rows; then
 the Deck taste pass on Major Arcana 11–21.
 
+**2026-09-07 · SECOND DECK ROUND ("this interior is a complete mess"
+· "ladders turned 90 degrees" · "chairs not fully assembled" · "cars
+still in the middle of streets, looks even worse" · "sprinklers still
+look ridiculous, consider particles").**
+· LENA'S APARTMENT: the bedroom partition's east reach was a 25 cm
+  stub beside the door — a door frame standing in the room. It is now
+  a wall with a door AND a cased opening to the couch nook (header
+  across the opening, mullion, end post, wood casings). The drop-tile
+  ceiling GRID — an office ceiling — is off in 25 residential
+  interiors (kitchens, bedrooms, apartments, the lighthouse, Wagner's
+  home, the Houston studio); `make_ceiling(..., with_grid=False)`.
+· CABIN: the loft ladder stood UNDER the deck at y 3.95 climbing into
+  its underside; it stands at the loft's front edge (y 3.50) west of
+  the round table now. The kit chair's back posts are rooted inside
+  the seat with a gentler rake and a lower rail — "not fully
+  assembled" was the raked posts leaving the seat edge.
+· MEADOWLARK: every street car through curb_park (north curb: Ben's
+  truck, the Corolla; south curb: the patrol car), LANE_M 2.2 → 1.4 so
+  a car in a lane centre can never pass again. The sprinklers are
+  PARTICLES: scripts/SprinklerFX.gd (a Node3D in the tscn) spawns a
+  CPUParticles3D fan at every Sprinkler_Head_* and the thin arc at the
+  Miller head, firing in sequence east down the block — the prelude's
+  own image. No geometry, no tinted slabs, no tubes.
+· NOTE FOR THE DECK: exterior/interior geometry fixes need the Blender
+  rebuild (`build_scenes.sh`); a pull alone shows the old GLBs — which
+  is why the cars "still" stood in the street after the first fix.
+DRAFT-NEXT: Lena's establishing preset re-read with the new wall;
+particle tuning on the Deck (count, alpha, throw); a wet-sheen
+decal under each fan already exists (Sprinkler_Wet_*).
+
 **2026-08-19 · PER-STICK VOICE SWEEP VERDICT (voice draft 4).**
 Ran the leakage grep (TODO/WIP/placeholder/implemented/deferred/
 stub) and a string survey across EVERY stick directory: estuary_4,

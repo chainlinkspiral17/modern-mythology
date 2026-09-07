@@ -54,7 +54,7 @@ FLOAT_GAP = 0.04        # m
 FLOAT_MAX_SIDE = 1.6
 CHAIR_REACH = 1.10     # m · seat centre to the table's nearest edge
 WALL_GAP = 0.35
-LANE_M = 2.2
+LANE_M = 1.4            # m · a parked car's centre sits ~1.0 m off the curb; a lane centre ~1.75
 
 # Pairs whose bounding boxes MUST overlap because the recorder sees cones,
 # cylinders and foliage as boxes: conifer tiers, blob lobes, fronds;

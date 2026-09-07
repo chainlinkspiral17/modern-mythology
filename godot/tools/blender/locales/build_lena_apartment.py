@@ -52,7 +52,7 @@ def build_shell():
     make_wall("Wall_S_W", (-(ROOM_W/4.0+0.5), 0.0, 0), length=ROOM_W/2.0-1.0, height=CEIL, axis='X', palette=PAL_WALL)
     make_wall("Wall_S_E", (+(ROOM_W/4.0+0.5), 0.0, 0), length=ROOM_W/2.0-1.0, height=CEIL, axis='X', palette=PAL_WALL)
     make_box("Wall_S_AboveDoor", (0.0, 0.0, CEIL-0.30), (2.0, 0.20, 0.60), PAL_WALL["wall"])
-    make_ceiling("Ceil", (0.0, ROOM_D/2.0, CEIL), size_x=ROOM_W+0.4, size_y=ROOM_D+0.4)
+    make_ceiling("Ceil", (0.0, ROOM_D/2.0, CEIL), size_x=ROOM_W+0.4, size_y=ROOM_D+0.4, with_grid=False)
     # The front door itself, ajar-closed in the opening, with the
     # deadbolt ("She had not, in three years, locked the deadbolt")
     make_box("Front_Door", (0.0, 0.06, 1.02), (0.90, 0.05, 2.04), COL_WOOD)
@@ -67,8 +67,17 @@ def build_shell():
     # Bedroom partition at y=3.05 (x -2.5..+0.4) with its own door
     make_wall("Bedroom_Part_W", (-1.625, 3.05, 0), length=1.75, height=CEIL,
               axis='X', palette=PAL_WALL)
+    # The partition's east reach is a CASED OPENING to the couch nook,
+    # not a lone door frame standing in the room (2026-09-07 Deck:
+    # "door frames in the middle of rooms"): a mullion post, a header
+    # across the whole opening, and a post at the east wall.
     make_box("Bedroom_Part_E", (0.275, 3.05, CEIL/2.0), (0.25, 0.16, CEIL), PAL_WALL["wall"])
     make_box("Bedroom_Part_Header", (-0.30, 3.05, CEIL-0.25), (0.90, 0.16, 0.50), PAL_WALL["wall"])
+    make_box("Bedroom_Part_Header_E", (1.45, 3.05, CEIL-0.25), (2.10, 0.16, 0.50), PAL_WALL["wall"])
+    make_box("Bedroom_Part_Post_E", (ROOM_W/2.0 - 0.125, 3.05, (CEIL-0.5)/2.0), (0.25, 0.16, CEIL-0.5), PAL_WALL["wall"])
+    make_box("Bedroom_Part_Casing_W", (0.40, 3.05, (CEIL-0.5)/2.0), (0.04, 0.20, CEIL-0.5), COL_WOOD)
+    make_box("Bedroom_Part_Casing_E", (ROOM_W/2.0 - 0.25, 3.05, (CEIL-0.5)/2.0), (0.04, 0.20, CEIL-0.5), COL_WOOD)
+    make_box("Bedroom_Part_Casing_Top", (1.45, 3.05, CEIL-0.52), (2.14, 0.20, 0.06), COL_WOOD)
     make_box("Bedroom_Door", (-0.62, 3.02, 1.02), (0.62, 0.04, 2.04), COL_WOOD)
     # The three ceiling water stains ("proof her upstairs neighbor's
     # bathtub leaked... painting them over would be a lie")
