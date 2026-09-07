@@ -646,6 +646,22 @@ DRAFT-NEXT: Lena's establishing preset re-read with the new wall;
 particle tuning on the Deck (count, alpha, throw); a wet-sheen
 decal under each fan already exists (Sprinkler_Wet_*).
 
+**2026-09-07 · THE TRIP draft 4 · direction.** User: "scenes need
+stronger direction with the psychedelic filter in effect. 75 percent
+seems about right for me right now as default" · "whiter or brighter
+scenes are too plain and humdrum, it really only looks good on darker
+scenes, need a different effect maybe" · "tune per scene and mood as
+per director notes." Shipped: default 0.75; a `[trip:X]` chapter cue
+(GameEngine directive regex, replayed on load, reset per scene) →
+TripSync.scene_scale; `trip_scale` on 26 moods by intent (dark and
+dreaming hot, plain daylight cool — the table is in the bible); and
+the BRIGHT-SCENE PATH in the shader: where the picture is bright the
+aura is coloured ink on the lines and the flats take a multiplied
+tint, cross-faded by per-pixel luminance, hue drift ×1.7 on white.
+NEXT: author `[trip:]` cues into the model chapters' turns (the diner's
+3:47, the cabin's night, the Lena interludes) the way `[mood:]` cues
+were placed on interlude beats; Deck-check the ink path on day_bright.
+
 **2026-08-19 · PER-STICK VOICE SWEEP VERDICT (voice draft 4).**
 Ran the leakage grep (TODO/WIP/placeholder/implemented/deferred/
 stub) and a string survey across EVERY stick directory: estuary_4,

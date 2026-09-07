@@ -45,7 +45,7 @@ uniform sampler2D SCREEN_TEXTURE : hint_screen_texture, filter_linear;
 uniform bool use_screen = true;
 
 // ── dials (Settings.trip_amount → amount; the rest are the mix) ──
-uniform float amount : hint_range(0.0, 1.0) = 0.6;
+uniform float amount : hint_range(0.0, 1.0) = 0.75;
 uniform float line_amount : hint_range(0.0, 2.0) = 1.0;    // aura on the edges
 uniform float flow_amount : hint_range(0.0, 2.0) = 1.0;    // colour wash in the flats
 uniform float hue_amount : hint_range(0.0, 2.0) = 1.0;     // hue drift + saturation lift
@@ -236,7 +236,7 @@ void fragment() {
         float i = dot(col, vec3(0.596, -0.274, -0.322));
         float qq = dot(col, vec3(0.211, -0.523, 0.312));
         float ang = (n2 - 0.5) * 1.05 * (0.40 + 0.60 * energy);
-        ang *= hue_amount * mix_colour * amount * (1.0 - density * 0.6);
+        ang *= hue_amount * mix_colour * amount * (1.0 - density * 0.6) * (1.0 + 0.7 * smoothstep(0.50, 0.85, y));
         ang = clamp(ang, -0.55, 0.55);
         float sat = 1.0 + 0.36 * mid * hue_amount * mix_colour * amount;
         float ci = cos(ang);
@@ -262,13 +262,24 @@ void fragment() {
         vec3 rainbow = aura_color(hue, kick * 0.7);
         float travel = 0.78 + 0.22 * sin(dot(q, vec2(22.0, 15.0)) - tf * 1.6 + beat_phase * 3.14159 * mix_beat);
         float aura = line_amount * mix_lines * amount * (0.30 + 0.62 * energy + 0.45 * kick + 0.9 * ring);
-        vec3 aura_rgb = rainbow * (line * travel * 0.80 + glow * (0.24 + 0.40 * kick + 0.5 * ring) * 0.40) * aura;
-        col = 1.0 - (1.0 - col) * (1.0 - clamp(aura_rgb, 0.0, 1.0));
+        float line_k = clamp((line * travel * 0.80 + glow * (0.24 + 0.40 * kick + 0.5 * ring) * 0.40) * aura, 0.0, 1.0);
+        // BRIGHT SCENES (draft 4 · "whiter or brighter scenes are too plain
+        // and humdrum, it really only looks good on darker scenes"): light
+        // laid on a bright picture adds nothing. Where the picture is
+        // bright the aura becomes coloured INK — the lines darken toward
+        // the register's hue, a colour print — and the flats take a soft
+        // multiplied tint instead of a glow. `bright` cross-fades the two.
+        float bright = smoothstep(0.50, 0.85, y);
+        vec3 lit = 1.0 - (1.0 - col) * (1.0 - rainbow * line_k);
+        vec3 inked = col * mix(vec3(1.0), rainbow * 0.85, line_k * 1.35);
+        col = mix(lit, inked, bright);
 
-        // ── a faint wash into the dark flats · the flats breathe in colour, not in place ──
+        // ── the flats breathe in colour, not in place: a glow in the dark, a tint in the light ──
         vec3 wash = aura_color(hue_base + 0.5 + n2 * 0.2, 0.0);
-        vec3 wash_rgb = wash * (1.0 - y) * open * 0.11 * (0.4 + 0.6 * energy) * breath * flow_amount * mix_colour * amount;
-        col = 1.0 - (1.0 - col) * (1.0 - clamp(wash_rgb, 0.0, 1.0));
+        float wash_k = open * 0.11 * (0.4 + 0.6 * energy) * breath * flow_amount * mix_colour * amount;
+        vec3 washed_dark = 1.0 - (1.0 - col) * (1.0 - clamp(wash * (1.0 - y) * wash_k, 0.0, 1.0));
+        vec3 washed_bright = col * mix(vec3(1.0), wash * 1.10, clamp(wash_k * 2.2, 0.0, 0.8));
+        col = mix(washed_dark, washed_bright, bright);
 
         // ── sparks · fixed points that flash on the beat (they never travel) ──
         if (spark_amount > 0.001) {

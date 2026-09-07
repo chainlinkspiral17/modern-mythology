@@ -73,6 +73,37 @@ which this document extends to the whole game).
    has a GAME grammar below that every design pass should pull
    toward. A pass that only adds shader dials is half a pass.
 
+## Direction: the three dials the director holds (draft 4)
+
+The player's PSYCHEDELIA slider is the ceiling (default **75 %**,
+the user's call 2026-09-07: "75 percent seems about right for me
+right now as default"). Under it, direction sets the level per beat:
+
+1. **Per mood** — every `MoodCycler` preset carries a `trip_scale`.
+   Dark and dreaming moods run hot (dream_blur 1.35, liminal_interior
+   1.35, arcana_neon 1.3, arcana_cool 1.25, macro_haze 1.2, smoky_bar
+   1.2, candlelight_low 1.15, tv_glow_blue 1.15, 3_47_am / precipice
+   1.4); bright, plain daylight runs cool (day_bright 0.7,
+   morning_bright 0.7, fluorescent_corridor 0.7, studio 0.6, lunch
+   0.75, kitchen_practical 0.8, dawn_warm 0.85); night / dusk sit at
+   1.0. Edge and ASCII moods without a key auto-scale to 0.35.
+2. **Per beat** — a `[trip:X]` cue in the chapter JSON, next to
+   `[mood:]` and `[shot:]`: `[trip:1.3]` pushes the layer for the
+   line, `[trip:0.4]` pulls it, `[trip:off]`, `[trip:full]` (1.5),
+   `[trip:reset]`. Every scene opens at reset; the cue is replayed on
+   load like mood and shot.
+3. **Per surface** — the registers (below) and the `trip_soft` group.
+
+**Bright scenes get INK, not light.** The Deck verdict: "whiter or
+brighter scenes are too plain and humdrum, it really only looks good
+on darker scenes." Light laid on a bright picture adds nothing, so
+where the picture is bright the shader cross-fades to a colour-print
+treatment: the aura becomes coloured ink (the lines darken toward the
+register's hue), the flats take a soft multiplied tint instead of a
+glow, and the hue drift runs 1.7× — the one thing that reads on
+white. Dark scenes keep the glow. The cross-fade is by scene
+luminance per pixel, so a lit window in a dark room still glows.
+
 ## The four registers
 
 | Register | Pillar | Sound (the brief) | Visual register (shipped, draft 1) | Game grammar (the queue) |

@@ -20,7 +20,7 @@ var _haptics:        float  = 1.0
 var _music_skin:     String = "diner_booth"
 var _music_viz:      String = "peak_meter"
 var _music_jukebox:  bool   = true
-var _trip_amount:    float  = 0.6    # THE TRIP · psychedelic layer strength (TripSync)
+var _trip_amount:    float  = 0.75   # THE TRIP · psychedelic layer strength (TripSync)
 var _trip_flow:      float  = 1.0    # THE TRIP mix · the liquid drift (the one dial that moves pixels)
 var _trip_lines:     float  = 1.0    # THE TRIP mix · aura on the lines
 var _trip_colour:    float  = 1.0    # THE TRIP mix · hue drift + wash in the flats
@@ -229,7 +229,7 @@ func _load() -> void:
 	_music_skin      = str(cfg.get_value("settings",   "music_skin",     "diner_booth"))
 	_music_viz       = str(cfg.get_value("settings",   "music_viz",      "peak_meter"))
 	_music_jukebox   = bool(cfg.get_value("settings",  "music_jukebox",  true))
-	_trip_amount     = clampf(float(cfg.get_value("settings", "trip_amount", 0.6)), 0.0, 1.0)
+	_trip_amount     = clampf(float(cfg.get_value("settings", "trip_amount", 0.75)), 0.0, 1.0)
 	_trip_flow       = clampf(float(cfg.get_value("settings", "trip_flow", 1.0)), 0.0, 1.0)
 	_trip_lines      = clampf(float(cfg.get_value("settings", "trip_lines", 1.0)), 0.0, 1.0)
 	_trip_colour     = clampf(float(cfg.get_value("settings", "trip_colour", 1.0)), 0.0, 1.0)

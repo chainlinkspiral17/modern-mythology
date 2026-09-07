@@ -63,7 +63,7 @@ var _materials: Array[ShaderMaterial] = []
 var _analyzer: AudioEffectSpectrumAnalyzerInstance = null
 
 # Music state (public read for anything else that wants to dance)
-var amount: float = 0.6
+var amount: float = 0.75
 var energy: float = 0.0
 var bass: float = 0.0
 var mid: float = 0.0
@@ -85,6 +85,10 @@ var music_present: bool = false
 # heavy surfaces the global layer still covers).
 var mood_scale: float = 1.0
 var surface_scale: float = 1.0
+# The DIRECTOR's per-beat dial (draft 4): a `[trip:0.4]` / `[trip:1.3]`
+# cue in a chapter sets it; `[trip:reset]` or a new scene clears it.
+# Multiplied with the mood and surface scales. 0..1.5.
+var scene_scale: float = 1.0
 # The player's MIX (draft 3): four Settings dials multiplied into the
 # shader — flow (the one dial that moves pixels), lines, colour, beat.
 var mix_motion: float = 1.0
@@ -401,7 +405,24 @@ func _push_to(mat: ShaderMaterial) -> void:
 
 # ── Public helpers ────────────────────────────────────────────────
 func effective_amount() -> float:
-	return clampf(amount * mood_scale * surface_scale, 0.0, 1.0)
+	return clampf(amount * mood_scale * surface_scale * scene_scale, 0.0, 1.0)
+
+
+# GameEngine's `[trip:X]` directive (X = 0..1.5, "reset", "off", "full").
+func set_scene_scale(v: float) -> void:
+	scene_scale = clampf(v, 0.0, 1.5)
+
+
+func apply_trip_cue(arg: String) -> void:
+	var a: String = arg.strip_edges().to_lower()
+	if a == "reset" or a == "":
+		set_scene_scale(1.0)
+	elif a == "off":
+		set_scene_scale(0.0)
+	elif a == "full":
+		set_scene_scale(1.5)
+	elif a.is_valid_float():
+		set_scene_scale(float(a))
 
 
 func set_amount(v: float) -> void:
@@ -497,6 +518,6 @@ func _push_register_to(mat: ShaderMaterial) -> void:
 
 
 func status_line() -> String:
-	return "TRIP %d%% (dial %d%% · mood ×%.2f · surface ×%.2f · mix f%.1f l%.1f c%.1f b%.1f) · %s · %s · %.0f bpm · e%.2f b%.2f p%.2f" % [
-		int(effective_amount() * 100.0), int(amount * 100.0), mood_scale, surface_scale, mix_motion, mix_lines, mix_colour, mix_beat,
+	return "TRIP %d%% (dial %d%% · mood ×%.2f · surface ×%.2f · scene ×%.2f · mix f%.1f l%.1f c%.1f b%.1f) · %s · %s · %.0f bpm · e%.2f b%.2f p%.2f" % [
+		int(effective_amount() * 100.0), int(amount * 100.0), mood_scale, surface_scale, scene_scale, mix_motion, mix_lines, mix_colour, mix_beat,
 		register_name, "music" if music_present else "idle", bpm, energy, bass, pulse]

@@ -19,7 +19,7 @@ extends CanvasLayer
 const MOODS: Array = [
 	# ── naturalistic time-of-day ─────────────────────────────────
 	{
-		"name": "lunch",
+		"name": "lunch", "trip_scale": 0.75,
 		"palette": 22.0, "dither": 0.04, "scanline": 0.10, "aberration": 0.0006,
 		"ascii": 0.0, "ascii_cell": 10.0, "ascii_gamma": 0.85, "ascii_tint": true,
 		"ascii_fg": Color(0.92, 0.82, 0.55, 1), "ascii_bg": Color(0.04, 0.03, 0.02, 1),
@@ -28,7 +28,7 @@ const MOODS: Array = [
 		"neon_grad": 1.0, "neon_blend": 0.0, "neon_glow": 0.4,
 	},
 	{
-		"name": "dusk",
+		"name": "dusk", "trip_scale": 1.00,
 		"palette": 14.0, "dither": 0.18, "scanline": 0.40, "aberration": 0.0016,
 		"ascii": 0.0, "ascii_cell": 10.0, "ascii_gamma": 0.85, "ascii_tint": true,
 		"ascii_fg": Color(0.92, 0.78, 0.45, 1), "ascii_bg": Color(0.05, 0.04, 0.02, 1),
@@ -417,7 +417,7 @@ const MOODS: Array = [
 	{
 		# DREAM BLUR — Gaussian, omnidirectional. Soft fall-off. Use
 		# for memory / dream-state scenes.
-		"name": "dream_blur",
+		"name": "dream_blur", "trip_scale": 1.35,
 		"palette": 20.0, "dither": 0.0, "scanline": 0.0, "aberration": 0.0008,
 		"ascii": 0.0, "ascii_cell": 10.0, "ascii_gamma": 0.85, "ascii_tint": true,
 		"ascii_fg": Color(0.92, 0.78, 0.45, 1), "ascii_bg": Color(0.05, 0.04, 0.02, 1),
@@ -429,7 +429,7 @@ const MOODS: Array = [
 	{
 		# MACRO HAZE — radial DOF-mimic. Centre stays crisp; edges
 		# bleed outward. Cinematic "subject in focus" preset.
-		"name": "macro_haze",
+		"name": "macro_haze", "trip_scale": 1.20,
 		"palette": 16.0, "dither": 0.02, "scanline": 0.05, "aberration": 0.0004,
 		"ascii": 0.0, "ascii_cell": 10.0, "ascii_gamma": 0.85, "ascii_tint": true,
 		"ascii_fg": Color(0.92, 0.78, 0.45, 1), "ascii_bg": Color(0.05, 0.04, 0.02, 1),
@@ -442,7 +442,7 @@ const MOODS: Array = [
 		# STUDIO SOFTBOX — even, low-contrast, no edge stylization.
 		# Wide palette, no dither, no scanline. Reads as a controlled
 		# studio shot — useful for portrait-ish camera positions.
-		"name": "studio",
+		"name": "studio", "trip_scale": 0.60,
 		"palette": 32.0, "dither": 0.0, "scanline": 0.0, "aberration": 0.0,
 		"ascii": 0.0, "ascii_cell": 10.0, "ascii_gamma": 0.85, "ascii_tint": true,
 		"ascii_fg": Color(0.92, 0.78, 0.45, 1), "ascii_bg": Color(0.05, 0.04, 0.02, 1),
@@ -453,7 +453,7 @@ const MOODS: Array = [
 	{
 		# DAY BRIGHT — high-key, faint scanline, no stylized edges.
 		# The "this is morning, nothing weird here" baseline.
-		"name": "day_bright",
+		"name": "day_bright", "trip_scale": 0.70,
 		"palette": 24.0, "dither": 0.02, "scanline": 0.04, "aberration": 0.0002,
 		"ascii": 0.0, "ascii_cell": 10.0, "ascii_gamma": 0.85, "ascii_tint": true,
 		"ascii_fg": Color(0.92, 0.78, 0.45, 1), "ascii_bg": Color(0.05, 0.04, 0.02, 1),
@@ -589,7 +589,7 @@ const MOODS: Array = [
 	},
 	# ── deep moods: code substrate states ────────────────────────
 	{
-		"name": "night",
+		"name": "night", "trip_scale": 1.00,
 		"palette": 9.0, "dither": 0.26, "scanline": 0.50, "aberration": 0.0022,
 		"ascii": 0.0, "ascii_cell": 10.0, "ascii_gamma": 0.85, "ascii_tint": true,
 		"ascii_fg": Color(0.92, 0.78, 0.45, 1), "ascii_bg": Color(0.05, 0.04, 0.02, 1),
@@ -598,7 +598,7 @@ const MOODS: Array = [
 		"neon_grad": 1.0, "neon_blend": 0.0, "neon_glow": 0.4,
 	},
 	{
-		"name": "3_47_am",
+		"name": "3_47_am", "trip_scale": 1.40,
 		"palette": 7.0, "dither": 0.36, "scanline": 0.62, "aberration": 0.0030,
 		"ascii": 0.55, "ascii_cell": 9.0, "ascii_gamma": 0.85, "ascii_tint": true,
 		"ascii_fg": Color(0.92, 0.78, 0.45, 1), "ascii_bg": Color(0.05, 0.04, 0.02, 1),
@@ -607,7 +607,7 @@ const MOODS: Array = [
 		"neon_grad": 1.0, "neon_blend": 0.0, "neon_glow": 0.4,
 	},
 	{
-		"name": "precipice",
+		"name": "precipice", "trip_scale": 1.40,
 		"palette": 5.0, "dither": 0.50, "scanline": 0.78, "aberration": 0.0042,
 		"ascii": 0.90, "ascii_cell": 7.0, "ascii_gamma": 0.75, "ascii_tint": true,
 		"ascii_fg": Color(0.95, 0.32, 0.32, 1),    # red shift
@@ -676,7 +676,7 @@ const MOODS: Array = [
 		# Mild Gaussian blur sands surfaces; warm low-key palette; no
 		# edge stylization. Reads like the memory of a room, not the
 		# room itself. Pairs with the liminal_night lighting preset.
-		"name": "liminal_interior",
+		"name": "liminal_interior", "trip_scale": 1.35,
 		"palette": 18.0, "dither": 0.06, "scanline": 0.10, "aberration": 0.0010,
 		"ascii": 0.0, "ascii_cell": 10.0, "ascii_gamma": 0.85, "ascii_tint": true,
 		"ascii_fg": Color(0.95, 0.86, 0.62, 1), "ascii_bg": Color(0.10, 0.08, 0.06, 1),
@@ -686,7 +686,7 @@ const MOODS: Array = [
 		"blur": 0.35, "blur_mode": 0, "blur_radius": 3.0,
 	},
 	{
-		"name": "raw",
+		"name": "raw", "trip_scale": 0.90,
 		"palette": 32.0, "dither": 0.0, "scanline": 0.0, "aberration": 0.0,
 		"ascii": 0.0, "ascii_cell": 10.0, "ascii_gamma": 1.0, "ascii_tint": true,
 		"ascii_fg": Color(0.92, 0.78, 0.45, 1), "ascii_bg": Color(0.05, 0.04, 0.02, 1),
@@ -702,7 +702,7 @@ const MOODS: Array = [
 	{
 		# Diner galley / restaurant kitchen — harsh fluorescent-cool,
 		# slight green-cast, hum-in-the-walls grit
-		"name": "kitchen_practical",
+		"name": "kitchen_practical", "trip_scale": 0.80,
 		"palette": 12.0, "dither": 0.10, "scanline": 0.22, "aberration": 0.0008,
 		"ascii": 0.0, "ascii_cell": 10.0, "ascii_gamma": 0.95, "ascii_tint": true,
 		"ascii_fg": Color(0.86, 0.92, 0.88, 1), "ascii_bg": Color(0.06, 0.08, 0.07, 1),
@@ -739,7 +739,7 @@ const MOODS: Array = [
 	{
 		# Staff corridor / lower-deck back hallway — long fluorescent
 		# tubes, cold even, the hum you stop hearing
-		"name": "fluorescent_corridor",
+		"name": "fluorescent_corridor", "trip_scale": 0.70,
 		"palette": 14.0, "dither": 0.05, "scanline": 0.30, "aberration": 0.0006,
 		"ascii": 0.0, "ascii_cell": 10.0, "ascii_gamma": 0.90, "ascii_tint": true,
 		"ascii_fg": Color(0.86, 0.90, 0.96, 1), "ascii_bg": Color(0.06, 0.07, 0.09, 1),
@@ -750,7 +750,7 @@ const MOODS: Array = [
 	{
 		# Candlelight — warm low, deep darks. Pairs with candlelight
 		# lighting preset for cathedral workbench + private dining
-		"name": "candlelight_low",
+		"name": "candlelight_low", "trip_scale": 1.15,
 		"palette": 6.0, "dither": 0.30, "scanline": 0.48, "aberration": 0.0020,
 		"ascii": 0.0, "ascii_cell": 10.0, "ascii_gamma": 0.80, "ascii_tint": true,
 		"ascii_fg": Color(1.0, 0.78, 0.42, 1), "ascii_bg": Color(0.04, 0.02, 0.01, 1),
@@ -762,7 +762,7 @@ const MOODS: Array = [
 		# TV glow — cool blue from one direction. The screen-watching
 		# look (Elicia at the laptop, John at booth 6 watching the
 		# silent TV behind the counter)
-		"name": "tv_glow_blue",
+		"name": "tv_glow_blue", "trip_scale": 1.15,
 		"palette": 8.0, "dither": 0.20, "scanline": 0.55, "aberration": 0.0016,
 		"ascii": 0.0, "ascii_cell": 10.0, "ascii_gamma": 0.85, "ascii_tint": true,
 		"ascii_fg": Color(0.62, 0.78, 0.96, 1), "ascii_bg": Color(0.02, 0.04, 0.08, 1),
@@ -773,7 +773,7 @@ const MOODS: Array = [
 	{
 		# Pre-dawn warm windows + cool moonlight bleed. The 4 AM
 		# diner with the sodium lot light leaking in
-		"name": "dawn_warm",
+		"name": "dawn_warm", "trip_scale": 0.85,
 		"palette": 16.0, "dither": 0.08, "scanline": 0.22, "aberration": 0.0008,
 		"ascii": 0.0, "ascii_cell": 10.0, "ascii_gamma": 0.85, "ascii_tint": true,
 		"ascii_fg": Color(0.96, 0.82, 0.62, 1), "ascii_bg": Color(0.10, 0.10, 0.14, 1),
@@ -784,7 +784,7 @@ const MOODS: Array = [
 	{
 		# Bright morning interior — slight bloom, clean. The bungalow
 		# at 9 AM, the riverboat after the breakfast rush
-		"name": "morning_bright",
+		"name": "morning_bright", "trip_scale": 0.70,
 		"palette": 24.0, "dither": 0.04, "scanline": 0.12, "aberration": 0.0005,
 		"ascii": 0.0, "ascii_cell": 10.0, "ascii_gamma": 1.0, "ascii_tint": true,
 		"ascii_fg": Color(0.96, 0.92, 0.84, 1), "ascii_bg": Color(0.12, 0.14, 0.16, 1),
@@ -795,7 +795,7 @@ const MOODS: Array = [
 	{
 		# Rain interior — looking out through a wet window, cool light,
 		# gentle blur. The bungalow porch with the storm coming in
-		"name": "rain_interior",
+		"name": "rain_interior", "trip_scale": 1.10,
 		"palette": 12.0, "dither": 0.12, "scanline": 0.32, "aberration": 0.0010,
 		"ascii": 0.0, "ascii_cell": 10.0, "ascii_gamma": 0.90, "ascii_tint": true,
 		"ascii_fg": Color(0.72, 0.82, 0.92, 1), "ascii_bg": Color(0.06, 0.08, 0.10, 1),
@@ -901,7 +901,7 @@ const MOODS: Array = [
 		# not full linework; the mood is carried by the colour grade +
 		# the arcana_magick lighting. High neon_thresh so only the
 		# strongest silhouette edges glow, never every tiny facet.
-		"name": "arcana",
+		"name": "arcana", "trip_scale": 1.20,
 		"palette": 12.0, "dither": 0.05, "scanline": 0.06, "aberration": 0.0008,
 		"ascii": 0.0, "ascii_cell": 10.0, "ascii_gamma": 0.85, "ascii_tint": true,
 		"ascii_fg": Color(0.72, 0.90, 0.62, 1), "ascii_bg": Color(0.06, 0.02, 0.12, 1),
@@ -917,7 +917,7 @@ const MOODS: Array = [
 	{
 		# Subtle light-green grade (the "light green" the brief asked
 		# for) — a lens for the model-city / workbench inserts.
-		"name": "arcana_cool",
+		"name": "arcana_cool", "trip_scale": 1.25,
 		"palette": 12.0, "dither": 0.05, "scanline": 0.06, "aberration": 0.0008,
 		"ascii": 0.0, "ascii_cell": 10.0, "ascii_gamma": 0.85, "ascii_tint": true,
 		"ascii_fg": Color(0.72, 0.90, 0.62, 1), "ascii_bg": Color(0.04, 0.10, 0.08, 1),
@@ -933,7 +933,7 @@ const MOODS: Array = [
 	{
 		# Subtle warm/amber grade (the "flashes of white and red") — a
 		# lens for the phone / riverboat close inserts.
-		"name": "arcana_warm",
+		"name": "arcana_warm", "trip_scale": 1.15,
 		"palette": 12.0, "dither": 0.05, "scanline": 0.06, "aberration": 0.0008,
 		"ascii": 0.0, "ascii_cell": 10.0, "ascii_gamma": 0.85, "ascii_tint": true,
 		"ascii_fg": Color(0.95, 0.82, 0.62, 1), "ascii_bg": Color(0.10, 0.05, 0.05, 1),
@@ -1294,11 +1294,11 @@ const STYLE_PACKS: Array = [
 	"blend_mode": -1, "blend_amt": -1},
 	{"name": "convenience_night",  "mood": "fluorescent_corridor", "lighting": "sodium_streetlamp",
 	"blend_mode": -1, "blend_amt": -1},
-	{"name": "smoky_bar",          "mood": "macro_haze",        "lighting": "bar_pendant_amber",
+	{"name": "smoky_bar", "trip_scale": 1.20,          "mood": "macro_haze",        "lighting": "bar_pendant_amber",
 	"blend_mode": -1, "blend_amt": -1},
 	{"name": "rainy_window",       "mood": "dream_blur",        "lighting": "storm_front",
 	"blend_mode": -1, "blend_amt": -1},
-	{"name": "memory_warm",        "mood": "silent_film_12",    "lighting": "candlelight",
+	{"name": "memory_warm", "trip_scale": 1.10,        "mood": "silent_film_12",    "lighting": "candlelight",
 	"blend_mode": -1, "blend_amt": -1},
 	{"name": "fluorescent_panic",  "mood": "anime_motion",      "lighting": "kitchen_overhead",
 	"blend_mode": -1, "blend_amt": -1},
@@ -1306,7 +1306,7 @@ const STYLE_PACKS: Array = [
 	# playground, a set of fitting lenses so ch1 direction can vary the
 	# filter per described bit. All GPU-safe (neon-edge moods, no ASCII).
 	# arcana_warehouse = the establishing baseline grade.
-	{"name": "arcana_warehouse", "mood": "arcana",       "lighting": "arcana_magick",
+	{"name": "arcana_warehouse", "trip_scale": 1.20, "mood": "arcana",       "lighting": "arcana_magick",
 	"blend_mode": -1, "blend_amt": -1},
 	# green lens — kudzu, phosphor screens, the model-city LEDs.
 	# SUBTLE grade now (arcana_cool), NOT the neon-1.0 ink_green
@@ -1315,11 +1315,11 @@ const STYLE_PACKS: Array = [
 	"blend_mode": -1, "blend_amt": -1},
 	# cool lens — the workbench glow, the model city (shares the subtle
 	# green-cyan grade; the lighting tint carries the difference)
-	{"name": "arcana_neon",      "mood": "arcana_cool",  "lighting": "arcana_magick",
+	{"name": "arcana_neon", "trip_scale": 1.30,      "mood": "arcana_cool",  "lighting": "arcana_magick",
 	"blend_mode": -1, "blend_amt": -1},
 	# warm lens — the phone's wrong glow, the riverboat close; a subtle
 	# amber grade (was neon-1.0 lithograph linework)
-	{"name": "arcana_ink",       "mood": "arcana_warm",  "lighting": "arcana_magick",
+	{"name": "arcana_ink", "trip_scale": 1.10,       "mood": "arcana_warm",  "lighting": "arcana_magick",
 	"blend_mode": -1, "blend_amt": -1},
 ]
 var style_pack_index: int = -1   # -1 = none applied (manual mode)

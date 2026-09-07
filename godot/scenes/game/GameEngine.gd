@@ -103,7 +103,7 @@ var _toast:      Control     = null
 # [shot:...] / [panel:...] directives lead narrate/say/think text;
 # they're stripped before display and dispatched to the director.
 var _director:   Node        = null
-var _direct_rx:  RegEx       = RegEx.create_from_string("^\\[(shot|panel|stage|mood|beat):([^\\]\\r\\n]+)\\]\\s*")
+var _direct_rx:  RegEx       = RegEx.create_from_string("^\\[(shot|panel|stage|mood|beat|trip):([^\\]\\r\\n]+)\\]\\s*")
 
 
 func _ready() -> void:
@@ -302,6 +302,7 @@ func _build_layers() -> void:
 
 func start(vol: int, scene_id: String = "", slot: int = -1, start_node: int = 0) -> void:
 	_vol         = vol
+	_apply_trip_cue("reset")
 	_active_slot = slot
 	_apply_skin(vol)
 	if scene_id == "":
@@ -340,6 +341,15 @@ func load_save(save_data: Dictionary) -> void:
 
 
 # ── Skin ──────────────────────────────────────────────────────────────────────
+
+# THE TRIP's director dial: `[trip:0.4]` dims the psychedelic layer for a
+# beat, `[trip:1.3]` pushes it, `[trip:reset]` returns to the mood's
+# own level. Global (TripSync), so it needs no locale to land on.
+func _apply_trip_cue(arg: String) -> void:
+	var trip: Node = get_node_or_null("/root/TripSync")
+	if trip != null and trip.has_method("apply_trip_cue"):
+		trip.call("apply_trip_cue", arg)
+
 
 func _apply_skin(vol: int) -> void:
 	_skin = SkinDB.get_for_vol(vol)
@@ -416,6 +426,8 @@ func _open_music() -> void:
 # ── Scene loading & node dispatch ─────────────────────────────────────────────
 
 func _load_scene(scene_id: String, start_at: int = 0) -> void:
+	# every scene opens at its mood's own trip level; `[trip:]` cues re-dial it
+	_apply_trip_cue("reset")
 	_scene_id   = scene_id
 	# Coverage rotation: the director assigns each chapter its
 	# establish angle from this key (see VnDirector._rotation_marker).
@@ -487,6 +499,7 @@ func _fast_forward_to(target: int) -> void:
 	var authoritative: Dictionary = _flags.duplicate()
 	var last_env: Dictionary = {}   # node type -> last node index
 	var last_mood: String = ""
+	var last_trip: String = "reset"
 	var last_shot: String = ""
 	var limit: int = mini(target, nodes.size())
 	for i in limit:
@@ -526,6 +539,7 @@ func _fast_forward_to(target: int) -> void:
 						match m.get_string(1):
 							"mood": last_mood = arg
 							"shot": last_shot = arg
+							"trip": last_trip = arg
 						text = text.substr(m.get_end(0))
 			_:
 				pass
@@ -544,6 +558,7 @@ func _fast_forward_to(target: int) -> void:
 			_director.call("apply_shot", last_shot)
 		if last_mood != "":
 			_director.call("apply_mood", last_mood)
+	_apply_trip_cue(last_trip)
 	# Save-file flags win over replayed flag nodes.
 	_flags.merge(authoritative, true)
 
@@ -737,6 +752,7 @@ func _directed(n: Dictionary) -> Dictionary:
 				"stage": _director.call("apply_stage", arg)
 				"mood":  _director.call("apply_mood", arg)
 				"beat":  _director.call("apply_beat", arg)
+				"trip":  _apply_trip_cue(arg)
 				_:
 					_director.call("apply_panel", arg)
 					# Paper-slide moment sound: a page turn on open, a
