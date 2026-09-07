@@ -47,3 +47,8 @@ func _process(_delta: float) -> void:
 		["VISIBLE", "HIDDEN", "CAPTURED", "CONFINED"][Input.mouse_mode],
 		noclip_str
 	]
+	# THE TRIP readout — bpm / energy / pulse so the beat detector can
+	# be checked against a known track without a second screen.
+	var trip: Node = get_node_or_null("/root/TripSync")
+	if trip != null and trip.has_method("status_line"):
+		text += "\n" + String(trip.call("status_line"))

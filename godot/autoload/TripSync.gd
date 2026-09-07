@@ -76,6 +76,15 @@ var hue_base: float = 0.0
 var t_flow: float = 0.0
 var bpm: float = 120.0
 var music_present: bool = false
+# Multipliers on `amount` (draft 1B). mood_scale is pushed by
+# MoodCycler._apply — edge/ascii-heavy moods (neon 1.0, ascii ≥ 0.5)
+# are already a stylization and the trip is dialled to 0.35 under
+# them unless the preset carries its own "trip_scale". surface_scale
+# is 0.45 while any node sits in "trip_soft" (the main menu — text-
+# heavy surfaces the global layer still covers).
+var mood_scale: float = 1.0
+var surface_scale: float = 1.0
+const SOFT_SURFACE_SCALE: float = 0.45
 
 var _bands: PackedFloat32Array = PackedFloat32Array()
 var _band_lo: PackedFloat32Array = PackedFloat32Array()
@@ -268,8 +277,10 @@ func _process(delta: float) -> void:
 
 	# ── paint · the global layer steps aside for trip_local surfaces
 	var local_active: bool = not get_tree().get_nodes_in_group("trip_local").is_empty()
+	var soft_active: bool = not get_tree().get_nodes_in_group("trip_soft").is_empty()
+	surface_scale = SOFT_SURFACE_SCALE if soft_active else 1.0
 	if _global_layer != null:
-		_global_layer.visible = amount > 0.001 and not local_active
+		_global_layer.visible = effective_amount() > 0.001 and not local_active
 	for mat in _materials:
 		_push_to(mat)
 
@@ -277,7 +288,7 @@ func _process(delta: float) -> void:
 func _push_to(mat: ShaderMaterial) -> void:
 	if mat == null:
 		return
-	mat.set_shader_parameter("amount", amount)
+	mat.set_shader_parameter("amount", effective_amount())
 	mat.set_shader_parameter("energy", energy)
 	mat.set_shader_parameter("bass", bass)
 	mat.set_shader_parameter("mid", mid)
@@ -293,10 +304,20 @@ func _push_to(mat: ShaderMaterial) -> void:
 
 
 # ── Public helpers ────────────────────────────────────────────────
+func effective_amount() -> float:
+	return clampf(amount * mood_scale * surface_scale, 0.0, 1.0)
+
+
 func set_amount(v: float) -> void:
 	Settings.trip_amount = clampf(v, 0.0, 1.0)
 
 
+# MoodCycler._apply pushes this on every mood change.
+func set_mood_scale(v: float) -> void:
+	mood_scale = clampf(v, 0.0, 1.0)
+
+
 func status_line() -> String:
-	return "TRIP %d%% · %s · %.0f bpm · e%.2f b%.2f" % [
-		int(amount * 100.0), "music" if music_present else "idle", bpm, energy, bass]
+	return "TRIP %d%% (dial %d%% · mood ×%.2f · surface ×%.2f) · %s · %.0f bpm · e%.2f b%.2f p%.2f" % [
+		int(effective_amount() * 100.0), int(amount * 100.0), mood_scale, surface_scale,
+		"music" if music_present else "idle", bpm, energy, bass, pulse]

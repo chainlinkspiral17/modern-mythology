@@ -43,6 +43,7 @@ var _unlock_overlay:   Control = null
 
 func _ready() -> void:
 	AlmanacState.evaluate_unlocks()   # cross-pillar unlocks light on menu return
+	add_to_group("trip_soft")   # THE TRIP runs at ×0.45 over the text-heavy menu
 	_build_ui()
 	_build_overlays()
 	_select_vol(1)

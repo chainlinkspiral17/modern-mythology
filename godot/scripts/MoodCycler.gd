@@ -2057,6 +2057,16 @@ func _apply(preset: Dictionary) -> void:
 		"scanline_strength":    preset["scanline"]   * vn.call("scanline"),
 		"chromatic_aberration": preset["aberration"] * vn.call("aberration"),
 	})
+	# THE TRIP (2026-09-07): the music-synced layer (TripSync autoload)
+	# rides on top of this stack. Edge / ascii moods are already a
+	# stylization, so the trip drops to 0.35 under them; a preset can
+	# override with its own "trip_scale" key.
+	var trip: Node = get_node_or_null("/root/TripSync")
+	if trip != null and trip.has_method("set_mood_scale"):
+		var auto_scale: float = 1.0
+		if float(preset.get("neon", 0.0)) >= 1.0 or float(preset.get("ascii", 0.0)) >= 0.5:
+			auto_scale = 0.35
+		trip.call("set_mood_scale", float(preset.get("trip_scale", auto_scale)))
 	var label: Node = get_node_or_null(mood_label_path)
 	if label is Label:
 		var prefix: String = ""

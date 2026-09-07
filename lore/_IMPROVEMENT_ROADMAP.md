@@ -359,6 +359,12 @@ a second look for the ripple centre (a vn_shot subject, not a
 random drift); the hue drift into the lighting (practicals breathing
 with the bar like lightshow_extreme does, at 10% of that); a
 kaleidoscope peak state gated to [mood:] cues for the trip chapters.
+DRAFT 1B shipped (same day): per-mood scaling — MoodCycler._apply
+pushes 0.35 under neon-1.0 / ascii-≥0.5 moods (or the preset's own
+`trip_scale`); a "trip_soft" group at ×0.45 (the main menu joins it);
+the DebugHUD prints TripSync.status_line() (dial · mood × · surface ×
+· bpm · energy · bass · pulse) so the beat detector can be read
+against a known track. Still blind until the Deck sees it.
 
 **2026-08-19 · PER-STICK VOICE SWEEP VERDICT (voice draft 4).**
 Ran the leakage grep (TODO/WIP/placeholder/implemented/deferred/
