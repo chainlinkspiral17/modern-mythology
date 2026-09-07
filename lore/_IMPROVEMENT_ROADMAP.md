@@ -690,6 +690,15 @@ ASK PER · LEAVE IT; verbs spend themselves). Story audit green. NEXT:
 coins on the diner jukebox and the kwik stop back cooler; Deck-check
 the caps verbs against the IM Fell face at 19 px.
 
+**2026-09-07 · game grammar row 4 · Minter inside Spiderdrops.**
+SpiderdropsMinterFX.gd (additive child Node2D) fed by SpiderdropsWeb's
+own events: drops → sparks, snaps → white-core bursts, every ten
+points → a mote to the HUD bar; the beat pulse lifts the light. This
+is where the Minter register lives — the screen overlay stays faint.
+All four game-grammar rows now have a draft 1 (attract mode · the
+letters column · the verb coin · Minter-in-the-stick). NEXT: Deck
+taste on all four; Spiderdrops' storm finale as a light-synth bonus.
+
 **2026-08-19 · PER-STICK VOICE SWEEP VERDICT (voice draft 4).**
 Ran the leakage grep (TODO/WIP/placeholder/implemented/deferred/
 stub) and a string survey across EVERY stick directory: estuary_4,

@@ -169,6 +169,17 @@ sludge hangs).
   diner's jukebox, the kwik stop's back cooler), an inventory that
   the coins feed (`only_if_flag` already gates on it), wrong answers
   that are funny not fatal.
+- **slowstick · MINTER INSIDE THE STICK (draft 1, 2026-09-07).**
+  Spiderdrops — the high-score toy — draws its own additive light:
+  a child Node2D (SpiderdropsMinterFX.gd, CanvasItemMaterial ADD) fed
+  by the game's events. A drop lands: nine drop-blue sparks. A thread
+  snaps: twenty-six sparks with white cores at the break. Every ten
+  points: a mote of gold rises from the hub to the HUD bar — every
+  point is a particle. Sparks brighten with TripSync's beat pulse;
+  nothing flashes, nothing moves the frame; 420 live sparks cap.
+  Next: the survival-storm finale as a light-synth bonus; density-
+  driven escalation (more sparks per snap as the storm builds); the
+  same FX class under Spiderdrops 2's balloon glide.
 - **direction · [trip:] cues (draft 1).** 190 interlude beats across
   vols 5–7 carry `[trip:1.2]` (the structural turn pushes the layer,
   the way `[mood:]` cues were placed on interludes), plus three

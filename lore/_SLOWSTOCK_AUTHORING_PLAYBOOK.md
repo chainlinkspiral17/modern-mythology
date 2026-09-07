@@ -1115,3 +1115,14 @@ quotes, promises, the manuscript). Lessons:
   ("one scripted beat per week") did not and got the register.
   The test is whether the stick delivers ITS OWN stated design at
   full depth — not whether every stick is a resource sim.
+
+### 2026-09-07 · in-stick light (the Minter register, game grammar row 4)
+
+- **Spectacle is a child node fed by events, never an overlay.** The
+  Deck rejected the screen-space neon over a 2D game ("ugly and
+  strobey"). Spiderdrops now draws its own additive sparks
+  (SpiderdropsMinterFX.gd — a Node2D with a CanvasItemMaterial ADD
+  blend, z_index 2) from the game's real events: land, snap, score.
+  Reuse the class; call `burst(pos, col, n, speed, core)` and
+  `mote(from, col)`; cap live particles; fade everything, flash
+  nothing.

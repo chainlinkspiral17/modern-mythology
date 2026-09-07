@@ -122,6 +122,12 @@ var _pluck_cd: float = 0.0
 var _spin_cd: float = 0.0
 var _rain_accum: float = 0.0
 var _score: float = 0.0
+# MINTER FX (game grammar row 4 · 2026-09-07): additive light drawn by
+# a child node from the game's own events — drops landing, threads
+# snapping, every ten points a mote rising to the HUD bar.
+const _MinterFX = preload("res://scenes/games/spiderdrops/SpiderdropsMinterFX.gd")
+var _fx: Node2D = null
+var _mote_acc: float = 0.0
 var _falling: Array = []              # {pos,vel,target,kind}
 var _splashes: Array = []             # {pos,t}
 
@@ -138,7 +144,12 @@ func _ready() -> void:
 	set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
 	mouse_filter = Control.MOUSE_FILTER_STOP
 	add_to_group("ui")
+	_fx = _MinterFX.new()
+	_fx.name = "MinterFX"
+	add_child(_fx)
 	_build_hud()
+	if _fx.has_method("set_hud_target"):
+		_fx.call("set_hud_target", Vector2(VW * 0.5, 22.0))
 
 
 func boot(_state: Dictionary) -> void:
@@ -324,6 +335,8 @@ func _land_drop(i: int, kind: String) -> void:
 	n["prev"] = (n["prev"] as Vector2) + Vector2(0.0, -LAND_KICK / _mass(i))
 	n["pulse"] = PULSE_T
 	_splashes.append({"pos": (n["pos"] as Vector2), "t": 0.0})
+	if _fx != null:
+		_fx.call("burst", (n["pos"] as Vector2), C_DEBRIS if kind == "debris" else C_DROP, 9, 95.0, false)
 
 
 # ── gravity pulls water DOWN the strands · it pools at the bottom ──
@@ -450,6 +463,9 @@ func _snap_and_cull() -> void:
 		if dist > float(t["rest"]) * tol:
 			t["alive"] = false
 			_sfx("thread_snap")
+			if _fx != null:
+				var mid: Vector2 = (Vector2(na["pos"]) + Vector2(nb["pos"])) * 0.5
+				_fx.call("burst", mid, C_SILK if String(t["kind"]) == "spoke" else C_SPIRAL, 26, 210.0, true)
 	# cull interior nodes that have lost every thread (they fall away)
 	for i in range(1, _nodes.size()):
 		var n: Dictionary = _nodes[i]
@@ -601,7 +617,13 @@ func _physics_process(delta: float) -> void:
 		_stamina = minf(STAM_MAX, _stamina + STAM_REGEN * regen_mul * delta)
 
 	# score for every strand you keep up, every second
-	_score += SCORE_RATE * float(_alive_spiral() + _spokes_intact() * 3) * delta
+	var gained: float = SCORE_RATE * float(_alive_spiral() + _spokes_intact() * 3) * delta
+	_score += gained
+	_mote_acc += gained
+	while _mote_acc >= 10.0:
+		_mote_acc -= 10.0
+		if _fx != null and bool(_nodes[0]["alive"]):
+			_fx.call("mote", Vector2(_nodes[0]["pos"]), C_SPIDER)
 
 	_update_hud()
 	queue_redraw()
