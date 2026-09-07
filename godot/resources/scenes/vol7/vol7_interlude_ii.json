@@ -106,7 +106,7 @@
   },
   {
    "t": "narrate",
-   "text": "[shot:insert charcoal~]She is awake before her alarm. Her hand is on her thigh. Her thigh has charcoal on it in the shape of three letters: S U N. Her sketchbook is on the bedside table where she left it. The sketchbook has not been opened. The pencils are in the drawer, also where she left them. There is no charcoal in the apartment."
+   "text": "[trip:1.4] [shot:insert charcoal~]She is awake before her alarm. Her hand is on her thigh. Her thigh has charcoal on it in the shape of three letters: S U N. Her sketchbook is on the bedside table where she left it. The sketchbook has not been opened. The pencils are in the drawer, also where she left them. There is no charcoal in the apartment."
   },
   {
    "t": "narrate",

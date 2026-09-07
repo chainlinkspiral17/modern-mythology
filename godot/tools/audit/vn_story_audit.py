@@ -20,6 +20,7 @@ Checks across resources/scenes/vol*/*.json:
   8.  choice goto / check pass+fail indices in node range.
   9.  [mood:x] → a MoodCycler mood name.
  10.  [beat:x] → a VnDirector BEATS key.
+ 11.  [trip:x] → 0..1.5, reset, off or full (TripSync scene scale).
  11.  [panel:x] → resources/vn/panels/<x>.json (x=off ok).
  12.  bgm/sfx src → audio file exists.
  13.  unknown node types (vs the engine's dispatch table).
@@ -246,6 +247,16 @@ def main():
                         problems.append((where, "[mood:%s] unknown" % arg))
                     elif kind == "beat" and arg.lower() not in BEATS:
                         problems.append((where, "[beat:%s] unknown" % arg))
+                    elif kind == "trip":
+                        a = arg.lower()
+                        ok = a in ("reset", "off", "full")
+                        if not ok:
+                            try:
+                                ok = 0.0 <= float(a) <= 1.5
+                            except ValueError:
+                                ok = False
+                        if not ok:
+                            problems.append((where, "[trip:%s] not 0..1.5 / reset / off / full" % arg))
                     elif kind == "panel" and arg.lower() not in ("off", ""):
                         if not os.path.exists(
                                 os.path.join(PANELS, arg.lower() + ".json")):
