@@ -680,6 +680,16 @@ F.T. in the sysop's chair — JSON only, per the CP playbook (board_list
 the cabin chapter (row 3); Minter inside one stick (row 4); Deck-read
 the letters at 14400 baud for length.
 
+**2026-09-07 · game grammar row 3 · the verb coin.** GameEngine:
+`{"t":"jump","goto":N}` hops within a scene; choice options accept
+`hide_if_flag` / `only_if_flag`; a choice's `style: verb_coin` +
+`hotspot` renders as verbs over a named object (ChoiceMenu.present
+grew two optional params — same buttons, same number keys). First
+coin authored in vol7_ch10_cabin (Per's box on the table: LOOK AT ·
+ASK PER · LEAVE IT; verbs spend themselves). Story audit green. NEXT:
+coins on the diner jukebox and the kwik stop back cooler; Deck-check
+the caps verbs against the IM Fell face at 19 px.
+
 **2026-08-19 · PER-STICK VOICE SWEEP VERDICT (voice draft 4).**
 Ran the leakage grep (TODO/WIP/placeholder/implemented/deferred/
 stub) and a string survey across EVERY stick directory: estuary_4,

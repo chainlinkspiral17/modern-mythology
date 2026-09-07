@@ -157,6 +157,18 @@ sludge hangs).
   phosphor-green rule holds. Next: the BBS masthead for that board
   set in the zine's hand (Cosmic Comics paper stock as the board's
   colour), a reader letter that answers a `[trip:]` beat.
+- **milk_honey · THE VERB COIN (draft 1, 2026-09-07).** SCUMM grammar
+  in the VN with no new node type: a `choice` with `"style":
+  "verb_coin"` and a `"hotspot"` renders the hotspot in small caps and
+  its options as short verbs in caps (LOOK AT · ASK PER · LEAVE IT);
+  options carry `hide_if_flag` so a spent verb disappears; each verb's
+  branch ends in `{"t":"jump","goto":<coin>}` and the coin re-presents
+  itself with what is left. First coin: Per's wooden box on the cabin
+  table, vol7 ch10 — look (Olaf's joinery, the carried stripe), ask
+  ("At noon, Kai."), leave it. Next: a coin per model chapter (the
+  diner's jukebox, the kwik stop's back cooler), an inventory that
+  the coins feed (`only_if_flag` already gates on it), wrong answers
+  that are funny not fatal.
 - **direction · [trip:] cues (draft 1).** 190 interlude beats across
   vols 5–7 carry `[trip:1.2]` (the structural turn pushes the layer,
   the way `[mood:]` cues were placed on interludes), plus three

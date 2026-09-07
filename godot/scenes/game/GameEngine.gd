@@ -824,7 +824,23 @@ func _do_choice(n: Dictionary) -> void:
 	_dlg.visible = false
 	AudioMgr.stop_voice()
 	AudioMgr.unduck()
-	var opts: Array = n.get("opts", [])
+	var all_opts: Array = n.get("opts", [])
+	# Flag-gated options (the VERB COIN, 2026-09-07): an option with
+	# "hide_if_flag" disappears once its flag is set — a verb the player
+	# has spent; "only_if_flag" is the inverse. The coin re-presents
+	# itself after each branch via {"t":"jump","goto":coin}.
+	var opts: Array = []
+	for ov in all_opts:
+		var o: Dictionary = ov
+		if o.has("hide_if_flag") and bool(_flags.get(String(o.get("hide_if_flag")), false)):
+			continue
+		if o.has("only_if_flag") and not bool(_flags.get(String(o.get("only_if_flag")), false)):
+			continue
+		opts.append(o)
+	if opts.is_empty():
+		_dlg.visible = true
+		_run_next()
+		return
 	_choices.visible = true
 	_choices.call("present", n.get("prompt", ""), opts,
 		func(idx: int) -> void:
@@ -844,7 +860,7 @@ func _do_choice(n: Dictionary) -> void:
 				_run_next()
 			else:
 				_run_next()
-	)
+	, String(n.get("style", "")), String(n.get("hotspot", "")))
 
 
 func _resolve_check(check: Dictionary) -> void:
@@ -1117,6 +1133,13 @@ func _do_flag(n: Dictionary) -> void:
 
 
 func _do_jump(n: Dictionary) -> void:
+	# {"t":"jump","goto":N} hops WITHIN the scene (the verb coin's
+	# branches return to their coin this way); {"scene": id} changes
+	# scene; neither ends it.
+	if n.has("goto"):
+		_node_idx = int(n.get("goto", _node_idx))
+		_run_next()
+		return
 	var target: String = _s(n, "scene")
 	if target != "":
 		_load_scene(target)

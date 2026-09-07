@@ -794,3 +794,17 @@ or "flat/unreal," plus a full mood-direction sweep of vol5/6/7.
   a later pass doesn't helpfully re-add it. Sound in the VN belongs
   to BEATS (authored, a few per chapter) and to scene `sfx` nodes —
   never to the act of turning a page.
+
+### 2026-09-07 · the verb coin (SCUMM grammar, game grammar row 3)
+
+- **A verb coin is a choice that comes back.** `{"t":"choice",
+  "style":"verb_coin","hotspot":"Per's box","opts":[...]}` — each verb
+  option sets a flag and hides itself with `hide_if_flag`; its branch
+  (a narrate or two) ends in `{"t":"jump","goto":<coin index>}` so the
+  coin re-presents with the verbs left; the last option is the exit.
+  Author the block as a contiguous run right after the beat that
+  places the object, and check the chapter has no other `goto`
+  indices before inserting (index shift).
+- **Verbs are two words, caps, no numbers.** LOOK AT · ASK PER ·
+  LEAVE IT. The hotspot line names the object in small caps. The
+  branch text is the zine-length observation, not a paragraph.

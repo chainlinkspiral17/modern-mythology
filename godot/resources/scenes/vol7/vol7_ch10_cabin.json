@@ -398,6 +398,56 @@
       "t": "narrate"
     },
     {
+      "t": "narrate",
+      "text": "[shot:insert wooden_box]Per set the wooden box on the table, between the bowls, and did not open it. Nobody asked him to. The kettle ticked toward its whistle."
+    },
+    {
+      "t": "choice",
+      "style": "verb_coin",
+      "hotspot": "Per's box",
+      "prompt": "",
+      "opts": [
+        {
+          "text": "look at",
+          "goto": 76,
+          "flag": "ch10_box_looked",
+          "hide_if_flag": "ch10_box_looked"
+        },
+        {
+          "text": "ask Per",
+          "goto": 78,
+          "flag": "ch10_box_asked",
+          "hide_if_flag": "ch10_box_asked"
+        },
+        {
+          "text": "leave it",
+          "goto": 81
+        }
+      ]
+    },
+    {
+      "t": "narrate",
+      "text": "Cedar. Olaf's joinery — the lid sat on the box the way the roof sat on the cabin, by weight and by having been made for it. A pale stripe down one side where a hand had carried it for fifty years. The grain ran the long way, toward the stove."
+    },
+    {
+      "t": "jump",
+      "goto": 75
+    },
+    {
+      "t": "say",
+      "char": "kai",
+      "text": "Per. The box."
+    },
+    {
+      "t": "say",
+      "char": "per",
+      "text": "At noon, Kai. I said noon and I am going to hold to noon. It has waited since '74. It can wait for the kettle."
+    },
+    {
+      "t": "jump",
+      "goto": 75
+    },
+    {
       "text": "The cabin took the four of them. The rain on the cedar roof did not change.",
       "t": "narrate"
     },

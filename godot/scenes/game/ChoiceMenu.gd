@@ -94,10 +94,20 @@ func _rule() -> ColorRect:
 	return r
 
 
-func present(prompt: String, opts: Array, callback: Callable) -> void:
+func present(prompt: String, opts: Array, callback: Callable, style: String = "", hotspot: String = "") -> void:
 	_callback = callback
-	_prompt_label.text    = prompt
-	_prompt_label.visible = prompt != ""
+	# VERB COIN (SCUMM grammar · milk_honey register · 2026-09-07): the
+	# prompt line names the HOTSPOT in small caps and the options are
+	# short verbs in caps — LOOK AT · ASK PER · LEAVE IT — instead of
+	# numbered sentences. Same buttons, same keys; the grammar is the
+	# only difference.
+	var coin: bool = style == "verb_coin"
+	if coin:
+		_prompt_label.text = ("▸  " + hotspot.to_upper()) if hotspot != "" else prompt
+		_prompt_label.visible = _prompt_label.text != ""
+	else:
+		_prompt_label.text    = prompt
+		_prompt_label.visible = prompt != ""
 
 	# Remove stale options from the tree BEFORE building. queue_free
 	# alone leaves the dying buttons as children until end of frame,
@@ -114,6 +124,8 @@ func present(prompt: String, opts: Array, callback: Callable) -> void:
 		# choose (see _unhandled_input).
 		var num_prefix: String = "%d  ·  " % (i + 1) if i < 9 else ""
 		var label: String = num_prefix + str(opt.get("text", "???"))
+		if coin:
+			label = "  " + str(opt.get("text", "???")).to_upper() + "  "
 		if opt.has("check"):
 			var check: Dictionary = opt["check"]
 			label += "    ·  %s %d  ·" % [str(check.get("skill", "?")), int(check.get("diff", 0))]
