@@ -208,18 +208,11 @@ def build_bed_nook():
     # Low partition (visual separator)
     make_box("Partition", (+0.80, 4.20, 0.60),
              (0.04, 0.80, 1.20), COL_WOOD_TRIM)
-    # Mattress
-    make_box("Bed_Mattress", (bx, by, 0.40),
-             (1.40, 1.80, 0.20), COL_BED_LINEN)
-    # Frame
-    make_box("Bed_Frame", (bx, by, 0.18),
-             (1.50, 1.90, 0.16), COL_BED_FRAME)
-    # Pillow
-    make_box("Bed_Pillow", (bx, by + 0.70, 0.56),
-             (1.20, 0.40, 0.12), P.PAPER)
-    # Throw blanket (rose, folded across foot)
-    make_box("Bed_Throw", (bx, by - 0.50, 0.54),
-             (1.20, 0.60, 0.06), COL_ACCENT_ROSE)
+    # the shared bed in the nook, rose throw as the made blanket (2026-09-07)
+    from _props.furniture import make_bed
+    make_bed("Bed", bx, by, head="+Y", w=1.50, d=1.90, style="platform",
+             frame_col=COL_BED_FRAME, mattress_col=COL_BED_LINEN, sheet_col=COL_BED_LINEN,
+             blanket_col=COL_ACCENT_ROSE, pillow_col=P.PAPER, pillows=2, made=True, headboard=False)
     # Nightstand
     make_box("Nightstand", (bx + 0.90, by + 0.20, 0.36),
              (0.40, 0.36, 0.72), COL_WOOD_TRIM)

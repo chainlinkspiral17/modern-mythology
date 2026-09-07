@@ -77,14 +77,17 @@ def build_shell():
 
 
 def build_bed():
+    from _props.furniture import make_bed
     """Queen centered on the NORTH wall — two sleepers' sides, only
     one asleep."""
     by = ROOM_D - 1.15
-    make_box("Bed_Frame", (0.0, by, 0.26), (1.7, 2.1, 0.24), COL_FRAME)
     make_box("Bed_Head", (0.0, ROOM_D - 0.08, 0.68), (1.7, 0.10, 0.95), COL_FRAME_DK)
-    make_box("Bed_Foot", (0.0, by - 1.02, 0.42), (1.7, 0.06, 0.35), COL_FRAME_DK)
-    make_box("Bed_Mattress", (0.0, by, 0.48), (1.62, 2.0, 0.18), COL_SHEET)
-    make_box("Bed_Quilt", (0.0, by - 0.25, 0.585), (1.64, 1.5, 0.06), COL_QUILT)
+    make_box("Bed_Foot", (0.0, by - 1.09, 0.42), (1.7, 0.06, 0.35), COL_FRAME_DK)
+    # the shared bed under the two sleepers (2026-09-07); the quilt is
+    # its made blanket, the pillows below are theirs
+    make_bed("Bed", 0.0, by, head="+Y", w=1.7, d=2.1, style="frame",
+             frame_col=COL_FRAME, mattress_col=COL_SHEET, sheet_col=COL_SHEET,
+             blanket_col=COL_QUILT, pillows=0, made=True, headboard=False)
     # Eileen — asleep, her side (west), a long low mound under the quilt
     make_box("Sleeper_Eileen", (-0.45, by - 0.1, 0.64), (0.5, 1.5, 0.12), COL_SLEEPER)
     make_box("Pillow_Eileen", (-0.45, ROOM_D - 0.35, 0.60), (0.55, 0.4, 0.10), COL_PILLOW)

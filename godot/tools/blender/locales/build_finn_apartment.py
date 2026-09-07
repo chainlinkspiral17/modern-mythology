@@ -48,8 +48,8 @@ def build_bed():
                      (0.08, 0.08, 0.50), COL_WOOD)
     make_box("Bed_Deck", (bx, by, 0.52), (1.92, 1.14, 0.06), COL_WOOD)
     make_chamfer_box("Bed_Mattress", (bx, by, 0.62), (1.80, 1.04, 0.16), (0.92, 0.86, 0.78, 1.0))
-    make_chamfer_box("Bed_Comforter", (bx, by - 0.04, 0.72), (1.82, 1.02, 0.10), COL_ACCENT)
-    make_chamfer_box("Bed_Pillow", (bx, by + 0.40, 0.74), (1.40, 0.30, 0.12), P.PAPER)
+    make_chamfer_box("Bed_Comforter", (bx, by - 0.15, 0.76), (1.82, 0.80, 0.10), COL_ACCENT)   # ON the mattress, clear of the pillow (2026-09-07)
+    make_chamfer_box("Bed_Pillow", (bx, by + 0.42, 0.77), (1.40, 0.30, 0.12), P.PAPER)
     for ci, cx in enumerate((bx - 0.55, bx + 0.1, bx + 0.65)):
         make_box(f"Bed_Crate_{ci}", (cx, by, 0.18), (0.40, 0.90, 0.28), (0.34, 0.24, 0.16, 1.0))
 

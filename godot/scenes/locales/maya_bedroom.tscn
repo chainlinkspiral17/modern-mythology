@@ -326,8 +326,8 @@ metadata/fov = 54.0
 
 ; insert: the loose floorboard at the foot of the bed
 [node name="shot_insert_board" type="Marker3D" parent="." groups=["vn_shot"]]
-position = Vector3(0, 0.95, -2.15)
-rotation = Vector3(-0.664046, 0, 0)
+position = Vector3(0.676, 0.382, -2.129)
+rotation = Vector3(-0.2618, 0.5236, 0.0)
 metadata/fov = 44.0
 
 ; insert: the vanity mirror

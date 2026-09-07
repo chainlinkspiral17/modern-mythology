@@ -79,15 +79,16 @@ def build_shell():
 
 
 def build_bed():
+    from _props.furniture import make_bed
     """Twin-XL, headboard EAST wall (unique footprint), footlocker at
     the foot, Mister curled at the foot of the blanket."""
-    bx = ROOM_W / 2.0 - 1.05     # bed runs E→W, head at east wall
+    bx = ROOM_W / 2.0 - 1.10     # bed runs E→W, head at east wall (platform ends at the headboard)
     by = 2.9
-    make_box("Bed_Frame", (bx, by, 0.24), (2.0, 1.05, 0.22), COL_FRAME)
     make_box("Bed_Head", (ROOM_W / 2.0 - 0.06, by, 0.55), (0.08, 1.05, 0.75), COL_FRAME_DK)
-    make_box("Bed_Mattress", (bx, by, 0.42), (1.95, 1.0, 0.16), COL_SHEET)
-    make_box("Bed_Blanket", (bx - 0.25, by, 0.51), (1.4, 1.02, 0.06), COL_BLANKET)
-    make_box("Bed_Pillow", (ROOM_W / 2.0 - 0.35, by, 0.54), (0.45, 0.6, 0.10), COL_PILLOW)
+    # the shared bed, head to the E wall, navy blanket made (2026-09-07)
+    make_bed("Bed", bx, by, head="+X", w=1.05, d=2.0, style="platform",
+             frame_col=COL_FRAME, mattress_col=COL_SHEET, sheet_col=COL_SHEET,
+             blanket_col=COL_BLANKET, pillow_col=COL_PILLOW, pillows=1, made=True, headboard=False)
     # Mister, curled at the foot — a low mound with a tail sweep
     make_cyl("Cat_Mister", (bx - 0.75, by + 0.15, 0.57), 0.16, 0.10, COL_CAT, segments=10)
     make_box("Cat_Tail", (bx - 0.60, by + 0.28, 0.545), (0.22, 0.05, 0.03), COL_CAT)

@@ -45,31 +45,16 @@ def build_shell():
 
 def build_hospital_bed():
     bx, by = 0.0, 3.20
-    # Adjustable bed — head section raised slightly
-    make_box("Bed_Frame", (bx, by, 0.30), (1.20, 2.20, 0.20), COL_BED_FRAME)
-    # Mattress base (flat)
-    make_box("Bed_Mattress_Lower", (bx, by-0.40, 0.50), (1.10, 1.20, 0.18), COL_LINEN)
-    # Mattress upper (raised at head)
-    make_box("Bed_Mattress_Upper", (bx, by+0.50, 0.62), (1.10, 1.00, 0.20), COL_LINEN)
-    # Pillow
-    make_box("Bed_Pillow", (bx, by+0.92, 0.86), (1.00, 0.30, 0.10), P.PAPER)
-    # Side rails
-    for sgn in (-1, +1):
-        make_box(f"Bed_Rail_{sgn:+d}", (bx + sgn*0.62, by, 0.74), (0.04, 1.80, 0.10), COL_MEDICAL)
-        # Vertical posts of rail
-        for vi in range(4):
-            make_cyl(f"Bed_RailPost_{sgn:+d}_{vi}", (bx + sgn*0.62, by - 0.70 + vi*0.50, 0.60), 0.012, 0.30, COL_MEDICAL)
+    # the shared hospital bed — posts on casters, deck, thin mattress,
+    # side rails, one pillow, a tucked sage blanket (2026-09-07; the
+    # raised head section is a next-pass target for make_bed)
+    from _props.furniture import make_bed
+    make_bed("Bed", bx, by, head="+Y", w=1.20, d=2.20, style="hospital",
+             frame_col=COL_BED_FRAME, mattress_col=COL_LINEN, blanket_col=COL_BLANKET, pillow_col=P.PAPER)
     # Foot panel
     make_box("Bed_Foot", (bx, by-1.10, 0.60), (1.20, 0.04, 0.60), COL_BED_FRAME)
-    # Wheels (4)
-    for sgn_x in (-1, +1):
-        for sgn_y in (-1, +1):
-            make_cyl(f"Bed_Wheel_{sgn_x:+d}_{sgn_y:+d}", (bx+sgn_x*0.54, by+sgn_y*1.04, 0.10), 0.08, 0.04, P.METAL_BLACK, axis='X')
     # Bed controls dangling
     make_box("Bed_Controls", (bx+0.70, by-0.20, 0.40), (0.10, 0.06, 0.20), COL_MEDICAL)
-    # Soft sage blanket folded over the lower half of the bed
-    make_box("Bed_Blanket", (bx, by-0.55, 0.61), (1.14, 1.05, 0.06), COL_BLANKET)
-    make_box("Bed_Blanket_Fold", (bx, by-0.02, 0.66), (1.14, 0.22, 0.05), COL_BLANKET)
 
 def build_iv_stand_and_monitor():
     # IV stand beside bed
@@ -217,9 +202,9 @@ def build_use_states_d4():
     make_box("Chair_Paperback_Pages", (-1.85, 4.92, 0.545), (0.12, 0.18, 0.012),
              (0.90, 0.88, 0.80, 1.0))
     # Spare blanket folded at the bed's foot, one corner off-square
-    make_box("Spare_Blanket", (0.0, 2.35, 0.62), (0.55, 0.34, 0.07),
+    make_box("Spare_Blanket", (0.0, 2.35, 0.705), (0.55, 0.34, 0.07),
              (0.58, 0.62, 0.58, 1.0))
-    make_box("Spare_Blanket_Corner", (0.22, 2.22, 0.665), (0.18, 0.14, 0.02),
+    make_box("Spare_Blanket_Corner", (0.22, 2.22, 0.75), (0.18, 0.14, 0.02),
              (0.54, 0.58, 0.54, 1.0))
     # Slippers under the bed edge, slightly apart, toes uneven
     make_box("Slipper_L", (0.55, 2.6, 0.035), (0.10, 0.26, 0.07), (0.44, 0.38, 0.34, 1.0))

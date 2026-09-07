@@ -59,13 +59,12 @@ def build_door():
 
 def build_bed():
     bx, by = -1.05, 2.60
-    make_box("Bed_Frame", (bx, by, 0.20), (1.20, 1.90, 0.20), COL_WOOD)
-    make_box("Bed_Mattress", (bx, by, 0.40), (1.10, 1.80, 0.16), (0.86, 0.80, 0.72, 1.0))
+    from _props.furniture import make_bed
     make_box("Bed_Headboard", (bx, by+0.98, 0.78), (1.22, 0.10, 0.72), COL_WOOD)
-    make_box("Bed_Pillow", (bx, by+0.68, 0.54), (1.02, 0.42, 0.14), COL_SHEET)
-    make_box("Bed_Sheet", (bx, by-0.10, 0.50), (1.12, 1.20, 0.06), COL_SHEET)
-    make_box("Bed_Duvet", (bx, by-0.35, 0.54), (1.14, 1.10, 0.16), COL_DUVET)
-    make_box("Bed_DuvetFold", (bx, by+0.18, 0.60), (1.14, 0.30, 0.10), COL_ACCENT)
+    # the shared bed, duvet made (2026-09-07)
+    make_bed("Bed", bx, by, head="+Y", w=1.20, d=1.90, style="frame",
+             frame_col=COL_WOOD, mattress_col=(0.86, 0.80, 0.72, 1.0), sheet_col=COL_SHEET,
+             blanket_col=COL_DUVET, pillow_col=COL_SHEET, pillows=1, made=True, headboard=False)
 
 def build_nightstand():
     nx, ny = -1.72, 3.95
@@ -191,7 +190,7 @@ def build_clutter_and_rug():
     # Stack of paperbacks by the bed
     for bi in range(4):
         col = [(0.62,0.32,0.30,1.0),(0.42,0.52,0.62,1.0),(0.56,0.48,0.32,1.0),(0.34,0.44,0.36,1.0)][bi%4]
-        make_box(f"FloorBook_{bi}", (-1.55, 1.7, 0.05+bi*0.05), (0.30, 0.22, 0.05), col)
+        make_box(f"FloorBook_{bi}", (-1.35, 1.95, 0.05+bi*0.05), (0.30, 0.22, 0.05), col)   # under the bed, clear of the leg (2026-09-07)
     # Discarded pizza box + a couple of cans on the floor
     make_box("PizzaBox", (0.85, 2.0, 0.05), (0.50, 0.50, 0.08), (0.82, 0.72, 0.52, 1.0))
     for ci, (cx2, cy2) in enumerate([(1.1, 2.5),(0.6, 2.7)]):
@@ -284,9 +283,9 @@ def build_hero_props_2026_09():
     make_box("Spiral_Notebook_Wire", (-0.331, 3.70, 0.567), (0.012, 0.160, 0.014),
              (0.55, 0.56, 0.58, 1.0))
     # ── THE HANDS · duvet creases at the open side (top 0.62) ──
-    make_box("Hands_Duvet_Crease_A", (-0.60, 2.55, 0.626), (0.16, 0.05, 0.012),
+    make_box("Hands_Duvet_Crease_A", (-0.60, 2.55, 0.596), (0.16, 0.05, 0.012),
              (0.62, 0.58, 0.52, 1.0))
-    make_box("Hands_Duvet_Crease_B", (-0.57, 2.44, 0.625), (0.05, 0.13, 0.010),
+    make_box("Hands_Duvet_Crease_B", (-0.57, 2.44, 0.595), (0.05, 0.13, 0.010),
              (0.60, 0.56, 0.50, 1.0))
 
 

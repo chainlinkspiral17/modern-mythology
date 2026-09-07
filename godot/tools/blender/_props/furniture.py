@@ -169,7 +169,7 @@ def make_bed(prefix, x, y, head="+Y", w=1.4, d=2.0, style="frame",
         deck = 0.52
         steel = (0.72, 0.74, 0.76, 1.0)
         for li, (u, v) in enumerate(((-hw + 0.06, -hd + 0.10), (hw - 0.06, -hd + 0.10), (-hw + 0.06, hd - 0.10), (hw - 0.06, hd - 0.10))):
-            make_cyl(f"{prefix}_Post_{li}", P(u, v, deck / 2.0), 0.02, deck, steel, segments=6)
+            make_cyl(f"{prefix}_Post_{li}", P(u, v, 0.07 + (deck - 0.07) / 2.0), 0.02, deck - 0.07, steel, segments=6)
             make_cyl(f"{prefix}_Caster_{li}", P(u, v, 0.05), 0.05, 0.04, (0.14, 0.14, 0.15, 1.0), axis=ax_across, segments=8)
         make_box(f"{prefix}_Deck", P(0.0, 0.0, deck - 0.02), S(w - 0.06, d - 0.10, 0.04), steel)
         for sgn in (-1, 1):

@@ -59,7 +59,7 @@ LANE_M = 2.2
 STRUCTURAL = re.compile(r"(wall|crown|molding|roof|chimney|eave|gable|ridge|joist|beam|truss|frame|jamb|header|sill|"
                         r"trim|baseboard|skirt|seam|stud|rafter|hull|deck|pillar|post|leg|rail|spray|stream|tube|wire|cable|rope|chain)", re.I)
 MOUNTED = re.compile(r"(lamp|pendant|fan|shelf|sign|poster|frame|clock|board|wall|ceil|window|win_|curtain|light|fixture|cord|wire|"
-                     r"pin|bolt|knob|lyric|page|plate|handle|pull|latch|seam|tab|pillar|mailbox|glass|badge|decal|sticker|label|logo|drawer|door|"
+                     r"pin|bolt|knob|lyric|page|plate|handle|pull|latch|seam|tab|pillar|mailbox|glass|badge|decal|sticker|label|logo|drawer|door|header|thermostat|"
                      r"number|letter|text|line|stripe|trim|cap|lid|rim|handset|dial|button|switch|outlet|plug|vent|grille|key|"
                      r"pipe|vent|duct|hood|cabinet|cab_|upper|hang|rail|awning|banner|flag|bulb|chain|hook|mirror|calendar|"
                      r"crown|molding|beam|joist|truss|roof|eave|gutter|antenna|pole|mast|neon|bracket|sconce|smoke|hvac|"

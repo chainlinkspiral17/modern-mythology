@@ -543,10 +543,20 @@ work that needs to get done").**
   captain / futon / hospital, every layer ON the one below, pillows
   on the sheet, a made blanket with a rolled edge or a heap. Seven
   beds through it (graciela, diego, new_orleans_apartment, hospital,
-  faust, jesse's futon, sam's captain's bed). Seventeen hand-stacked
-  beds remain (asylum_ward_c, bayou_lighthouse, ben, bungalow, cabin,
-  coach_k, finn, kai, lena, maya, natalie, new_orleans_room,
-  nightmare_cell, roberts, safehouse, simon + hospice) — next pass.
+  faust, jesse's futon, sam's captain's bed), then the second wave:
+  ben (head to the E wall), coach_k (under the two sleepers), bungalow
+  (unmade heap), lena, natalie's nook, new_orleans_room, safehouse,
+  maya, hospice (hospital style) — 16 beds through make_bed. Hand-
+  fixed in place because their shape is the point: finn's raised
+  platform on posts (comforter and pillow lifted onto the mattress),
+  kai's floor futon (layers onto the mat), simon's rumpled single,
+  the cabin daybed (blanket off the bolster) and east-room bed, the
+  lighthouse bunk, the asylum gurney, the nightmare cot, the Roberts
+  bedroom peek. LESSON: a bed that hides something UNDER it (Maya's
+  loose floorboard, the safehouse floor books) must be the open
+  "frame" style — the solid platform occluded three inserts at once.
+  make_bed next-pass targets: a raised head section for the hospital
+  style, a tall-post platform style for Finn's, quilt patterns.
 · CHAIRS: numerically confirmed — the back sat on the TABLE side in
   daigles' meeting ring (11), the daily grind's cafe pairs (4), the
   riverboat's card table (5), Tem's vigil chair, the safehouse desk

@@ -600,8 +600,6 @@ failure paths separately before concluding anything.
   multiple sessions.
 -->
 
-## Recent lessons
-
 ### 2026-09-07 · the Deck session · markers were never checked
 
 - **Read every marker form or the gate is a fiction.** 198 of 589
@@ -641,3 +639,36 @@ failure paths separately before concluding anything.
   renders as an opaque slab. Water, glass, spray: model the THING
   (thin tubes, frames), never a tinted plane.
 
+### 2026-09-07 (later) · working the queue · the furniture grammar's first real pass
+
+- **Verify a new heuristic numerically before mass-fixing.** The
+  chair check said 36 chairs faced away. Three were checked by hand
+  (seat / back / table centres) and confirmed; the fix wave was then
+  safe. But the KT chair was flipped on the audit's word alone and had
+  to be reverted — it belonged to the kitchen table, not the desk the
+  matcher picked. Rule: spot-check three, then batch.
+- **"Nearest table" is the nearest EDGE, and a chair may face any of
+  them.** Centre distance let a bar 1.5 m behind a meeting ring claim
+  the ring's chairs; the ring's own coffee table was the real target.
+- **Embedding is not occlusion.** A subject set INTO another surface
+  (glass in a wall, a board on a floor, an envelope in a desk top's
+  box) is hit "through" its mount from every angle. An 18 cm
+  tolerance on the blocker distance freed 8 of 19 stuck markers.
+- **Lots are not lanes.** The first LANE run flagged nine cars parked
+  in parking lots (the diner, Lake Palestine, the strip-mall
+  frontage). Any place-a-car-belongs word (lot, apron, frontage,
+  driveway, garage, pad) excludes the surface; cul-de-sac bulbs are
+  measured radially.
+- **Desks off the wall are sometimes the point.** A judge's bench, a
+  ship's helm, a newsroom island, an executive desk centred on the
+  door. Allow-list by name AND by locale with the reason written down,
+  never by loosening the rule.
+- **A shared builder must keep the story's sightlines.** Swapping
+  Maya's open bed frame for a solid platform occluded the three
+  inserts that look UNDER her bed (the loose floorboard, the envelope,
+  the photograph) — the marker gate caught it within the hour. When a
+  kit replaces bespoke geometry, run the marker gates on that locale
+  before moving on; the kit's default shape is not the author's.
+- **Regex-anchored doc edits fail silently.** Two playbook lessons
+  were "written" against an anchor this file never had and vanished.
+  Assert the anchor, or append.

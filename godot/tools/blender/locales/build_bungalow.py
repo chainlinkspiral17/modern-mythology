@@ -973,24 +973,14 @@ def build_bedroom():
 
     # ── Bed — queen-size, unmade. Headboard against the north wall
     bd_x, bd_y = -3.0, +4.7
-    make_box("Bedroom_Bed_Frame",
-             (bd_x, bd_y, 0.30),
-             (1.50, 2.00, 0.20), (0.36, 0.24, 0.16, 1.0))
-    make_box("Bedroom_Bed_Mattress",
-             (bd_x, bd_y, 0.50),
-             (1.40, 1.95, 0.20), (0.92, 0.86, 0.74, 1.0))
-    # Headboard
+    # the shared bed, unmade — blanket heaped, one pillow (2026-09-07)
+    from _props.furniture import make_bed
+    make_bed("Bedroom_Bed", bd_x, bd_y, head="+Y", w=1.50, d=2.00, style="frame",
+             frame_col=(0.36, 0.24, 0.16, 1.0), mattress_col=(0.92, 0.86, 0.74, 1.0),
+             blanket_col=COL_FABRIC_SHEET, pillow_col=COL_TRIM_WHITE, pillows=1, made=False, headboard=False)
     make_box("Bedroom_Bed_Headboard",
              (bd_x, bd_y + 1.00, 0.95),
              (1.50, 0.10, 1.00), (0.32, 0.22, 0.14, 1.0))
-    # Unmade — duvet bunched, pulled to one side
-    make_box("Bedroom_Bed_Duvet_Bunch",
-             (bd_x + 0.15, bd_y - 0.20, 0.66),
-             (1.20, 1.50, 0.16), COL_FABRIC_SHEET)
-    # Pillow askew
-    make_box("Bedroom_Bed_Pillow",
-             (bd_x - 0.30, bd_y + 0.80, 0.66),
-             (0.50, 0.32, 0.10), COL_TRIM_WHITE)
 
     # ── Dresser — opposite the bed (south part of room)
     dr_x, dr_y = -3.0, +3.4

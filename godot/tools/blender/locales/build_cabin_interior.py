@@ -233,7 +233,7 @@ def build_daybed():
     make_box("Daybed_Frame", (-2.42, 1.9, 0.20), (0.92, 2.00, 0.34), COL_WOOD_DK)
     make_box("Daybed_Mattress", (-2.42, 1.9, 0.44), (0.86, 1.92, 0.16), (0.90, 0.86, 0.78, 1.0))
     make_box("Daybed_Bolster", (-2.78, 1.9, 0.62), (0.18, 1.85, 0.22), COL_WOOL)
-    make_box("Daybed_Blanket", (-2.40, 1.5, 0.545), (0.84, 0.95, 0.06), (0.56, 0.40, 0.30, 1.0))
+    make_box("Daybed_Blanket", (-2.28, 1.5, 0.545), (0.84, 0.95, 0.06), (0.56, 0.40, 0.30, 1.0))   # clear of the bolster (2026-09-07)
     # Chair by the SOUTH window, main room ("The chair by the south
     # window" / "Finn on the floor by the south window")
     make_window("South_Window_W", (-2.0, 0.04, 1.45), width=1.10, height=1.00)
@@ -250,7 +250,7 @@ def build_east_room():
     make_box("EBed_Frame", (2.10, 1.75, 0.20), (1.45, 1.90, 0.30), COL_WOOD_DK)
     make_box("EBed_Mattress", (2.10, 1.75, 0.46), (1.38, 1.82, 0.16), (0.90, 0.86, 0.78, 1.0))
     make_box("EBed_Blanket", (2.10, 1.45, 0.565), (1.34, 1.10, 0.07), COL_WOOL)
-    make_box("EBed_Pillow", (2.10, 2.50, 0.58), (0.90, 0.38, 0.12), (0.96, 0.92, 0.86, 1.0))
+    make_box("EBed_Pillow", (2.10, 2.50, 0.60), (0.90, 0.38, 0.12), (0.96, 0.92, 0.86, 1.0))
     # The window above the bed (E wall) — cedars beyond
     make_box("EBed_Win_Frame", (2.96, 1.45, 1.75), (0.04, 1.20, 0.95), COL_WOOD_DK)
     make_box("EBed_Win_Glass", (2.98, 1.45, 1.75), (0.02, 1.06, 0.82), COL_GLASS)

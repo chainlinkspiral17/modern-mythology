@@ -40,10 +40,11 @@ def build_shell():
 
 def build_bed():
     bx, by = 0.0, 3.5
-    make_box("Bed_Frame_Bot", (bx, by, 0.20), (1.20, 1.80, 0.20), COL_BED_FRAME)
-    make_box("Bed_Mattress", (bx, by, 0.40), (1.10, 1.70, 0.16), COL_LINEN)
-    make_box("Bed_Pillow", (bx, by+0.62, 0.50), (1.00, 0.36, 0.10), P.PAPER)
-    make_box("Bed_Sheet", (bx, by-0.30, 0.50), (1.00, 0.80, 0.04), COL_LINEN)
+    # the shared bed, sheet rumpled in a heap (2026-09-07); boards stay
+    from _props.furniture import make_bed
+    make_bed("Bed", bx, by, head="+Y", w=1.20, d=1.80, style="platform",
+             frame_col=COL_BED_FRAME, mattress_col=COL_LINEN, sheet_col=COL_LINEN,
+             blanket_col=COL_LINEN, pillow_col=P.PAPER, pillows=1, made=False, headboard=False)
     # Head/foot board
     make_box("Bed_HeadBoard", (bx, by+0.92, 0.70), (1.20, 0.04, 0.80), COL_BED_FRAME)
     make_box("Bed_FootBoard", (bx, by-0.92, 0.46), (1.20, 0.04, 0.50), COL_BED_FRAME)

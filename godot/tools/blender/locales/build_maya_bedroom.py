@@ -52,16 +52,16 @@ def build_bed():
     # distinct from the shared -ROOM_W/4 side-wall twin. Keeps her
     # violet/teal duvet + throw pillows.
     bx, by = 0.0, ROOM_D - 1.15
-    make_box("Bed_Frame", (bx, by, 0.20), (1.24, 1.86, 0.20), (0.52, 0.40, 0.50, 1.0))
-    make_chamfer_box("Bed_Mattress", (bx, by, 0.40), (1.14, 1.76, 0.16), (0.92, 0.86, 0.84, 1.0))
-    make_box("Bed_Headboard", (bx, by+0.94, 0.66), (1.28, 0.10, 0.72), (0.50, 0.36, 0.48, 1.0))
-    # Patterned duvet: violet body + a teal cross-band
-    make_chamfer_box("Bed_Duvet", (bx, by-0.10, 0.50), (1.20, 1.10, 0.12), COL_DUVET)
-    make_chamfer_box("Bed_DuvetBand", (bx, by-0.55, 0.52), (1.20, 0.34, 0.13), COL_DUVET2)
+    # the shared bed, violet duvet made (2026-09-07); the headboard stays
+    from _props.furniture import make_bed
+    # "frame" (open underneath): the loose floorboard, the envelope and
+    # the photograph hide UNDER this bed and their inserts look under it
+    make_bed("Bed", bx, by, head="+Y", w=1.24, d=1.86, style="frame",
+             frame_col=(0.52, 0.40, 0.50, 1.0), mattress_col=(0.92, 0.86, 0.84, 1.0),
+             blanket_col=COL_DUVET, pillow_col=P.PAPER, pillows=2, made=True, headboard=True)
     # Throw pillows in front of the sleeping pillow
-    make_chamfer_box("Bed_Pillow", (bx, by+0.66, 0.50), (1.04, 0.34, 0.12), P.PAPER)
-    make_chamfer_box("Bed_ThrowPillow_A", (bx-0.30, by+0.44, 0.56), (0.34, 0.34, 0.16), COL_PILLOW)
-    make_chamfer_box("Bed_ThrowPillow_B", (bx+0.30, by+0.44, 0.56), (0.34, 0.34, 0.16), COL_ACCENT)
+    make_chamfer_box("Bed_ThrowPillow_A", (bx-0.30, by+0.12, 0.67), (0.34, 0.34, 0.16), COL_PILLOW)
+    make_chamfer_box("Bed_ThrowPillow_B", (bx+0.30, by+0.12, 0.67), (0.34, 0.34, 0.16), COL_ACCENT)
 
 def build_desk_lamp():
     dx, dy = ROOM_W/2.0 - 0.54, 1.5   # end against the E wall; the bed owns the N wall (2026-09-07)
@@ -202,9 +202,9 @@ def build_hero_props_2026_09():
              (0.82, 0.80, 0.74, 1.0))
     make_box("Photograph_Border", (0.30, 3.15, 0.0175), (0.094, 0.144, 0.0005),
              (0.35, 0.33, 0.30, 1.0))
-    make_box("Hands_Duvet_Crease_A", (0.30, 3.60, 0.566), (0.16, 0.05, 0.012),
+    make_box("Hands_Duvet_Crease_A", (0.30, 3.60, 0.596), (0.16, 0.05, 0.012),
              (0.44, 0.34, 0.52, 1.0))
-    make_box("Hands_Duvet_Crease_B", (0.33, 3.72, 0.565), (0.05, 0.13, 0.010),
+    make_box("Hands_Duvet_Crease_B", (0.33, 3.72, 0.595), (0.05, 0.13, 0.010),
              (0.42, 0.32, 0.50, 1.0))
 
 

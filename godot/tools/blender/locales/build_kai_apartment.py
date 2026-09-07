@@ -43,10 +43,10 @@ def build_bed():
     # now reads as two different people (was a byte-for-byte clone).
     bx, by = -0.65, 1.25
     make_box("Futon_Mat", (bx, by, 0.09), (1.86, 1.16, 0.14), (0.30, 0.34, 0.40, 1.0))
-    make_box("Futon_Fold", (bx, by - 0.38, 0.16), (1.86, 0.46, 0.10), COL_ACCENT)
-    make_box("Futon_Blanket", (bx, by + 0.10, 0.17), (1.70, 0.86, 0.06), COL_ACCENT)
-    make_box("Futon_Pillow_L", (bx - 0.5, by + 0.40, 0.16), (0.54, 0.30, 0.10), P.PAPER)
-    make_box("Futon_Pillow_R", (bx + 0.5, by + 0.40, 0.16), (0.54, 0.30, 0.10), P.PAPER)
+    make_box("Futon_Fold", (bx, by - 0.38, 0.21), (1.86, 0.46, 0.10), COL_ACCENT)   # layers ON the mat (2026-09-07)
+    make_box("Futon_Blanket", (bx, by + 0.20, 0.19), (1.70, 0.60, 0.06), COL_ACCENT)
+    make_box("Futon_Pillow_L", (bx - 0.5, by + 0.40, 0.21), (0.54, 0.30, 0.10), P.PAPER)
+    make_box("Futon_Pillow_R", (bx + 0.5, by + 0.40, 0.21), (0.54, 0.30, 0.10), P.PAPER)
 
 def build_desk_lamp():
     dx, dy = +ROOM_W/4.0, ROOM_D - 0.45   # 13 cm off the N wall (2026-09-07: it stood mid-room)
