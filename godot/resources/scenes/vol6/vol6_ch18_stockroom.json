@@ -29,7 +29,7 @@
     },
     {
       "t": "narrate",
-      "text": "[mood:fluorescent_corridor]The temperature in the produce cooler is thirty-six degrees."
+      "text": "[trip:1.2][mood:fluorescent_corridor]The temperature in the produce cooler is thirty-six degrees."
     },
     {
       "t": "narrate",

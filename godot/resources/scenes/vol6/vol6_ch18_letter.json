@@ -29,7 +29,7 @@
     },
     {
       "t": "narrate",
-      "text": "[mood:day_bright]He showers."
+      "text": "[trip:1.2][mood:day_bright]He showers."
     },
     {
       "t": "narrate",

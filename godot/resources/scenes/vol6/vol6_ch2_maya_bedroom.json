@@ -35,7 +35,7 @@
     },
     {
       "t": "narrate",
-      "text": "[mood:night]Maya is not asleep."
+      "text": "[trip:1.2][mood:night]Maya is not asleep."
     },
     {
       "t": "narrate",

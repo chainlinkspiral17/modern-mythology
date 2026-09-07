@@ -21,7 +21,7 @@
     },
     {
       "t": "narrate",
-      "text": "Frasier Temple called the warehouse his cathedral — though if any god worshipped here, it was a god of rust. Of solder smoke. Of obsolete frequencies still leaking from machines too old to remember what they had been built to do.",
+      "text": "[trip:1.2]Frasier Temple called the warehouse his cathedral — though if any god worshipped here, it was a god of rust. Of solder smoke. Of obsolete frequencies still leaking from machines too old to remember what they had been built to do.",
       "voice": "assets/audio/voice/vol5_ch1_magician/003.mp3"
     },
     {
@@ -130,7 +130,7 @@
     },
     {
       "t": "narrate",
-      "text": "[mood:arcana_ink][shot:insert phone]His phone chirped.",
+      "text": "[trip:1.2][mood:arcana_ink][shot:insert phone]His phone chirped.",
       "voice": "assets/audio/voice/vol5_ch1_magician/024.mp3"
     },
     {
@@ -258,7 +258,7 @@
     },
     {
       "t": "narrate",
-      "text": "[mood:arcana_neon][stage:frasier workbench][shot:insert workbench]He grabbed a handful of scavenged components from the workbench — chipped RAM sticks like fossilized teeth. Capacitors swollen like toadstools after a hard rain. Raw material for the city. Or perhaps a new Demon host. The warehouse was full of possibility, teeming with the ghosts of dead technology waiting to be reanimated by his strange necromancy.",
+      "text": "[trip:1.2][mood:arcana_neon][stage:frasier workbench][shot:insert workbench]He grabbed a handful of scavenged components from the workbench — chipped RAM sticks like fossilized teeth. Capacitors swollen like toadstools after a hard rain. Raw material for the city. Or perhaps a new Demon host. The warehouse was full of possibility, teeming with the ghosts of dead technology waiting to be reanimated by his strange necromancy.",
       "voice": "assets/audio/voice/vol5_ch1_magician/046.mp3"
     },
     {
@@ -334,7 +334,7 @@
     },
     {
       "t": "narrate",
-      "text": "[mood:arcana_ink][shot:insert riverboat]He wandered to the workbench and picked up something from the corner he had not let himself look at directly all evening — a tiny, perfectly rendered model of D'Ambrosio's riverboat, crafted from tarnished silver spoons and motherboard fragments.",
+      "text": "[trip:1.2][mood:arcana_ink][shot:insert riverboat]He wandered to the workbench and picked up something from the corner he had not let himself look at directly all evening — a tiny, perfectly rendered model of D'Ambrosio's riverboat, crafted from tarnished silver spoons and motherboard fragments.",
       "voice": "assets/audio/voice/vol5_ch1_magician/061.mp3"
     },
     {

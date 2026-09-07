@@ -28,7 +28,7 @@
       "t": "interlude"
     },
     {
-      "text": "[mood:day_bright]Tem drove down at three.",
+      "text": "[trip:1.2][mood:day_bright]Tem drove down at three.",
       "t": "narrate"
     },
     {

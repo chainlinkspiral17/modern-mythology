@@ -29,7 +29,7 @@
   },
   {
    "t": "narrate",
-   "text": "[mood:night]Bianca wakes at four eleven."
+   "text": "[trip:1.2][mood:night]Bianca wakes at four eleven."
   },
   {
    "t": "narrate",

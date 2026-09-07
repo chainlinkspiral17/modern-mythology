@@ -27,7 +27,7 @@
       "t": "interlude"
     },
     {
-      "text": "[mood:dawn_warm]Finn woke at four forty-two.",
+      "text": "[trip:1.2][mood:dawn_warm]Finn woke at four forty-two.",
       "t": "narrate"
     },
     {

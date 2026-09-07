@@ -29,7 +29,7 @@
   },
   {
    "t": "narrate",
-   "text": "[mood:dawn_warm]The drive back to Centro is four minutes."
+   "text": "[trip:1.2][mood:dawn_warm]The drive back to Centro is four minutes."
   },
   {
    "t": "narrate",

@@ -35,7 +35,7 @@
   },
   {
    "t": "narrate",
-   "text": "[mood:dusk]Jesse is in the garage with the door open at five fifteen PM when the kid with the flyer comes up the driveway."
+   "text": "[trip:1.2][mood:dusk]Jesse is in the garage with the door open at five fifteen PM when the kid with the flyer comes up the driveway."
   },
   {
    "t": "narrate",

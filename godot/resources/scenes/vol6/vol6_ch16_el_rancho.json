@@ -29,7 +29,7 @@
     },
     {
       "t": "narrate",
-      "text": "[mood:night]The shift starts at ten the way every shift starts at ten."
+      "text": "[trip:1.2][mood:night]The shift starts at ten the way every shift starts at ten."
     },
     {
       "t": "narrate",

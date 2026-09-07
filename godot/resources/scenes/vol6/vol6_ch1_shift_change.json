@@ -31,7 +31,7 @@
       "t": "say",
       "char": "Jen",
       "expr": "neutral",
-      "text": "[mood:lunch]\"How's it been, Sammy?\""
+      "text": "[trip:1.2][mood:lunch]\"How's it been, Sammy?\""
     },
     {
       "t": "say",

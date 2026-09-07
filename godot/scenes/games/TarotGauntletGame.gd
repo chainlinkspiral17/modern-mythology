@@ -9692,3 +9692,144 @@ func _clear_gauntlet_save() -> void:
 	var path: String = _gauntlet_save_path()
 	if FileAccess.file_exists(path):
 		DirAccess.remove_absolute(path)
+
+
+# ═══════════════════════════════════════════════════════════════════
+# ARCADE ATTRACT MODE · game grammar row 1 (2026-09-07)
+# ═══════════════════════════════════════════════════════════════════
+# The bible's arcana register is "swampy + arcade". An arcade cabinet
+# left alone runs its attract loop: after ATTRACT_AFTER seconds with
+# no input the board keeps playing to itself — a banner cycles the
+# scenario's title, its subtitle, INSERT COIN, the turn count; the
+# locale's mood strata step every ATTRACT_MOOD_SECONDS (the cabinet's
+# colour cycle); THE TRIP pushes to 1.3. Any key, button or real
+# mouse move wakes it: the banner fades, the mood returns to what it
+# was, the trip resets. The banner is HUD inside a game surface
+# ("ui" group, honours F4); nothing here consumes input.
+const ATTRACT_AFTER: float = 45.0
+const ATTRACT_LINE_SECONDS: float = 4.0
+const ATTRACT_MOOD_SECONDS: float = 9.0
+const _FPC_SCRIPT = preload("res://scripts/FirstPersonController.gd")
+var _attract_idle: float = 0.0
+var _attract_on: bool = false
+var _attract_panel: PanelContainer = null
+var _attract_label: Label = null
+var _attract_line_t: float = 0.0
+var _attract_mood_t: float = 0.0
+var _attract_line_i: int = 0
+var _attract_mood_before: String = ""
+
+
+func _process(delta: float) -> void:
+	if _attract_on:
+		_attract_line_t += delta
+		if _attract_line_t >= ATTRACT_LINE_SECONDS:
+			_attract_line_t = 0.0
+			_attract_line_i += 1
+			_attract_show_line()
+		_attract_mood_t += delta
+		if _attract_mood_t >= ATTRACT_MOOD_SECONDS:
+			_attract_mood_t = 0.0
+			var mc: Node = _attract_mood_cycler()
+			if mc != null and mc.has_method("action_cycle_mood"):
+				mc.call("action_cycle_mood", 1)
+		return
+	_attract_idle += delta
+	if _attract_idle >= ATTRACT_AFTER:
+		_attract_begin()
+
+
+func _input(event: InputEvent) -> void:
+	var wake: bool = event is InputEventKey or event is InputEventMouseButton or event is InputEventJoypadButton
+	if not wake and event is InputEventMouseMotion:
+		wake = (event as InputEventMouseMotion).relative.length() > 2.0
+	if not wake:
+		return
+	_attract_idle = 0.0
+	if _attract_on:
+		_attract_end()
+
+
+func _attract_mood_cycler() -> Node:
+	if _gauntlet_bg3d == null or not is_instance_valid(_gauntlet_bg3d):
+		return null
+	if not _gauntlet_bg3d.has_method("get_locale_mood_cycler"):
+		return null
+	var mc: Variant = _gauntlet_bg3d.call("get_locale_mood_cycler")
+	if mc is Node:
+		return mc as Node
+	return null
+
+
+func _attract_lines() -> Array[String]:
+	var title: String = String(_setup.get("title", "THE LEAP"))
+	var subtitle: String = String(_setup.get("subtitle", ""))
+	var out: Array[String] = ["TAROT GAUNTLET   ·   " + title]
+	if subtitle != "":
+		out.append(subtitle)
+	out.append("INSERT COIN   ·   press any key to keep playing")
+	out.append("TURN %d   ·   the room is waiting" % maxi(_turn, 1))
+	return out
+
+
+func _attract_show_line() -> void:
+	if _attract_label == null:
+		return
+	var lines: Array[String] = _attract_lines()
+	_attract_label.text = "  " + lines[_attract_line_i % lines.size()] + "  "
+	if _attract_panel != null:
+		var view: Vector2 = get_viewport_rect().size
+		_attract_panel.reset_size()
+		_attract_panel.position = Vector2((view.x - _attract_panel.size.x) * 0.5, 50.0)
+
+
+func _attract_begin() -> void:
+	_attract_on = true
+	_attract_line_t = 0.0
+	_attract_mood_t = 0.0
+	_attract_line_i = 0
+	_attract_panel = PanelContainer.new()
+	_attract_panel.name = "AttractBanner"
+	_attract_panel.add_theme_stylebox_override("panel", _make_panel_style())
+	_attract_panel.z_index = 90
+	_attract_panel.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	_attract_panel.add_to_group("ui")
+	_attract_panel.visible = bool(_FPC_SCRIPT.hud_visible)
+	add_child(_attract_panel)
+	_attract_label = Label.new()
+	_attract_label.add_theme_color_override("font_color", C_ACCENT)
+	_attract_label.add_theme_font_size_override("font_size", 16)
+	_attract_panel.add_child(_attract_label)
+	_attract_show_line()
+	_attract_panel.modulate = Color(1, 1, 1, 0)
+	var t: Tween = create_tween()
+	t.tween_property(_attract_panel, "modulate:a", 1.0, 0.6).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT)
+	# the cabinet's colour cycle starts from the mood the room was in
+	var mc: Node = _attract_mood_cycler()
+	if mc != null:
+		var moods: Variant = mc.get("MOODS")
+		var idx: int = int(mc.get("current_index"))
+		if moods is Array and idx >= 0 and idx < (moods as Array).size():
+			var entry: Dictionary = (moods as Array)[idx]
+			_attract_mood_before = String(entry.get("name", ""))
+	var trip: Node = get_node_or_null("/root/TripSync")
+	if trip != null and trip.has_method("apply_trip_cue"):
+		trip.call("apply_trip_cue", "1.3")
+	_log_line("[color=#7c8398][i]· the cabinet runs its attract loop.[/i][/color]")
+
+
+func _attract_end() -> void:
+	_attract_on = false
+	if _attract_panel != null and is_instance_valid(_attract_panel):
+		var p: PanelContainer = _attract_panel
+		var t: Tween = create_tween()
+		t.tween_property(p, "modulate:a", 0.0, 0.3).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN)
+		t.tween_callback(p.queue_free)
+	_attract_panel = null
+	_attract_label = null
+	var mc: Node = _attract_mood_cycler()
+	if mc != null and _attract_mood_before != "" and mc.has_method("apply_style_or_mood"):
+		mc.call("apply_style_or_mood", _attract_mood_before)
+	var trip: Node = get_node_or_null("/root/TripSync")
+	if trip != null and trip.has_method("apply_trip_cue"):
+		trip.call("apply_trip_cue", "reset")

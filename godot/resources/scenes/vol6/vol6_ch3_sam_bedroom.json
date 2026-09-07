@@ -35,7 +35,7 @@
     },
     {
       "t": "narrate",
-      "text": "[mood:night][shot:closeup sam]Sam is in bed. Lamp off. She has not showered. She has not, in fact, done anything for the last hour except stare at the ceiling and think, in a measured orderly way, about what she has learned today."
+      "text": "[trip:1.2][mood:night][shot:closeup sam]Sam is in bed. Lamp off. She has not showered. She has not, in fact, done anything for the last hour except stare at the ceiling and think, in a measured orderly way, about what she has learned today."
     },
     {
       "t": "narrate",
@@ -69,7 +69,7 @@
     },
     {
       "t": "narrate",
-      "text": "[mood:macro_haze][shot:insert door~]At 01:17 she is briefly awake, and she hears, from her parents' bedroom down the hall, her father's phone vibrate. She hears it through two walls. She hears him pick it up."
+      "text": "[trip:1.2][mood:macro_haze][shot:insert door~]At 01:17 she is briefly awake, and she hears, from her parents' bedroom down the hall, her father's phone vibrate. She hears it through two walls. She hears him pick it up."
     },
     {
       "t": "say",
@@ -97,7 +97,7 @@
     },
     {
       "t": "narrate",
-      "text": "[beat:chill]At 03:03 she dreams, for the first time in her life, of her father as a young man in a photograph she has never seen — a photograph of him at twenty-something, in a uniform she does not recognize, standing in front of a building she does not recognize, shaking hands with a man in a charcoal suit whose face, in the dream, is only partially visible, but whose eyes, when they meet hers — because [wave amp=6 freq=2]they do meet hers[/wave], because the dream is not just a record but an attention — are exactly the eyes she had felt on her, this morning, from a person who was not, physically, in the Kwik Stop when she looked up from the slushie machine and registered that she had been being watched."
+      "text": "[trip:1.2][beat:chill]At 03:03 she dreams, for the first time in her life, of her father as a young man in a photograph she has never seen — a photograph of him at twenty-something, in a uniform she does not recognize, standing in front of a building she does not recognize, shaking hands with a man in a charcoal suit whose face, in the dream, is only partially visible, but whose eyes, when they meet hers — because [wave amp=6 freq=2]they do meet hers[/wave], because the dream is not just a record but an attention — are exactly the eyes she had felt on her, this morning, from a person who was not, physically, in the Kwik Stop when she looked up from the slushie machine and registered that she had been being watched."
     },
     {
       "t": "narrate",

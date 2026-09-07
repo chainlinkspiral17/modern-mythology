@@ -34,7 +34,7 @@
       "t": "show"
     },
     {
-      "text": "[mood:morning_bright]She woke before Tem.",
+      "text": "[trip:1.2][mood:morning_bright]She woke before Tem.",
       "t": "narrate"
     },
     {

@@ -33,7 +33,7 @@
       "t": "show"
     },
     {
-      "text": "[mood:candlelight_low]Tem woke at three forty-eight.",
+      "text": "[trip:1.2][mood:candlelight_low]Tem woke at three forty-eight.",
       "t": "narrate"
     },
     {

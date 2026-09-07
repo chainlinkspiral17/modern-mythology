@@ -29,7 +29,7 @@
   },
   {
    "t": "narrate",
-   "text": "[mood:day_bright]The drive home is fifteen minutes."
+   "text": "[trip:1.2][mood:day_bright]The drive home is fifteen minutes."
   },
   {
    "t": "narrate",

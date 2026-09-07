@@ -35,7 +35,7 @@
   },
   {
    "t": "narrate",
-   "text": "[mood:fluorescent_corridor][shot:closeup linda]Linda Caldwell is sitting up."
+   "text": "[trip:1.2][mood:fluorescent_corridor][shot:closeup linda]Linda Caldwell is sitting up."
   },
   {
    "t": "narrate",

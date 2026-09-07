@@ -29,7 +29,7 @@
     },
     {
       "t": "narrate",
-      "text": "[mood:morning_bright]Lena woke at the cabin in the gray hour before the rain became visible."
+      "text": "[trip:1.2][mood:morning_bright]Lena woke at the cabin in the gray hour before the rain became visible."
     },
     {
       "t": "narrate",

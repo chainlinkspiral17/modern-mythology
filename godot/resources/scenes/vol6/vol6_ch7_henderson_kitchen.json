@@ -35,7 +35,7 @@
     },
     {
       "t": "narrate",
-      "text": "[mood:kitchen_practical][shot:insert pot_roast]Eileen has made pot roast."
+      "text": "[trip:1.2][mood:kitchen_practical][shot:insert pot_roast]Eileen has made pot roast."
     },
     {
       "t": "narrate",

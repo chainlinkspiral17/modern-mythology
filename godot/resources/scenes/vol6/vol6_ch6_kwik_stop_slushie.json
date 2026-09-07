@@ -35,7 +35,7 @@
     },
     {
       "t": "narrate",
-      "text": "[mood:lunch][shot:insert door]The bell over the door chimes."
+      "text": "[trip:1.2][mood:lunch][shot:insert door]The bell over the door chimes."
     },
     {
       "t": "narrate",

@@ -662,6 +662,16 @@ NEXT: author `[trip:]` cues into the model chapters' turns (the diner's
 3:47, the cabin's night, the Lena interludes) the way `[mood:]` cues
 were placed on interlude beats; Deck-check the ink path on day_bright.
 
+**2026-09-07 · "keep going" · direction seed + game grammar row 1.**
+190 `[trip:1.2]` cues placed on the first line after every interlude
+card in vols 5–7 (163 files; the story audit validates the cue's
+range) — the same structural-turn rule the mood cues followed. The
+gauntlet's ARCADE ATTRACT MODE shipped (TarotGauntletGame.gd tail):
+45 s idle → banner loop + mood strata cycle + trip 1.3; any input
+wakes it. NEXT: Deck-check the attract banner does not fight a modal;
+score bursts on chained rounds; the BBS-as-letters-column row for
+Planned Community; a verb coin on the cabin chapter.
+
 **2026-08-19 · PER-STICK VOICE SWEEP VERDICT (voice draft 4).**
 Ran the leakage grep (TODO/WIP/placeholder/implemented/deferred/
 stub) and a string survey across EVERY stick directory: estuary_4,

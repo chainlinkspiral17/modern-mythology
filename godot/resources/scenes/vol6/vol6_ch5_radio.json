@@ -41,7 +41,7 @@
     },
     {
       "t": "narrate",
-      "text": "[mood:candlelight_low]In Ben's truck, ten minutes later, Maya says, quietly, without looking at him:"
+      "text": "[trip:1.2][mood:candlelight_low]In Ben's truck, ten minutes later, Maya says, quietly, without looking at him:"
     },
     {
       "t": "say",

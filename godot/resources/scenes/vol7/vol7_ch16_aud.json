@@ -33,7 +33,7 @@
       "t": "show"
     },
     {
-      "text": "[mood:lunch]He went to the Missing Link at noon.",
+      "text": "[trip:1.2][mood:lunch]He went to the Missing Link at noon.",
       "t": "narrate"
     },
     {

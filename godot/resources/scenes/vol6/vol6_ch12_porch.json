@@ -29,7 +29,7 @@
   },
   {
    "t": "narrate",
-   "text": "[mood:dusk]The ride home is twenty-three minutes."
+   "text": "[trip:1.2][mood:dusk]The ride home is twenty-three minutes."
   },
   {
    "t": "narrate",

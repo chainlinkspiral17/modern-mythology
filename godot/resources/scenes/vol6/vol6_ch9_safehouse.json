@@ -35,7 +35,7 @@
     },
     {
       "t": "narrate",
-      "text": "[mood:morning_bright]Sam comes in."
+      "text": "[trip:1.2][mood:morning_bright]Sam comes in."
     },
     {
       "t": "narrate",
@@ -287,7 +287,7 @@
     },
     {
       "t": "narrate",
-      "text": "[shot:insert notebook]The notebook is the small spiral-bound one Sam brought to the safehouse."
+      "text": "[trip:1.2][shot:insert notebook]The notebook is the small spiral-bound one Sam brought to the safehouse."
     },
     {
       "t": "narrate",

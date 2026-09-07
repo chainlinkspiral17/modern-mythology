@@ -35,7 +35,7 @@
   },
   {
    "t": "narrate",
-   "text": "[mood:fluorescent_corridor]Maya is in the waiting room when Ben arrives."
+   "text": "[trip:1.2][mood:fluorescent_corridor]Maya is in the waiting room when Ben arrives."
   },
   {
    "t": "narrate",

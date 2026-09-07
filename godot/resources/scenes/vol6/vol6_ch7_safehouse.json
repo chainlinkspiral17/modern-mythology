@@ -29,7 +29,7 @@
     },
     {
       "t": "narrate",
-      "text": "[mood:day_bright]Sam, Maya, and Jesse are not at the safehouse."
+      "text": "[trip:1.2][mood:day_bright]Sam, Maya, and Jesse are not at the safehouse."
     },
     {
       "t": "narrate",

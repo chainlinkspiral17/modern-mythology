@@ -41,7 +41,7 @@
     },
     {
       "t": "narrate",
-      "text": "[mood:night]Ben walks Jesse to the front porch."
+      "text": "[trip:1.2][mood:night]Ben walks Jesse to the front porch."
     },
     {
       "t": "narrate",

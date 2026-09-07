@@ -29,7 +29,7 @@
   },
   {
    "t": "narrate",
-   "text": "[mood:dawn_warm]The truck is in the lot when Ben pulls in at five fifty-three."
+   "text": "[trip:1.2][mood:dawn_warm]The truck is in the lot when Ben pulls in at five fifty-three."
   },
   {
    "t": "narrate",

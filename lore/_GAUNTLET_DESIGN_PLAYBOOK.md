@@ -554,3 +554,12 @@ Each of these is not yet 5 lessons deep. Watch them.
   emperor, hierophant, wheel_of_fortune, hanged_man, death,
   temperance, devil, tower, star, moon, judgement + fool's own
   fourth if wanted). Same method, ~5 per sitting.
+
+### 2026-09-07 · attract mode (arcade register, game grammar row 1)
+
+- **The cabinet plays to itself.** After 45 s without input the
+  board runs an attract loop (title / subtitle / INSERT COIN / turn
+  banner, the locale's mood strata stepping every 9 s, THE TRIP at
+  1.3). It reads no game state and consumes no input, so it can never
+  change a run; any key or button wakes it and restores the mood and
+  the trip. Keep it that way — attract is presentation, never play.

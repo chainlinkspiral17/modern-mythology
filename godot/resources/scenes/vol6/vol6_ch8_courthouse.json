@@ -29,7 +29,7 @@
     },
     {
       "t": "narrate",
-      "text": "[mood:studio]The arraignment is set for two PM."
+      "text": "[trip:1.2][mood:studio]The arraignment is set for two PM."
     },
     {
       "t": "narrate",

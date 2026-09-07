@@ -135,6 +135,21 @@ sludge hangs).
   climbs to enclosing+5 for its own layer; TripSync's global layer
   should do the same when a `"trip_raise"` owner is present.
 
+## Game grammar · shipped rows
+
+- **arcana · ATTRACT MODE (draft 1, 2026-09-07).** The gauntlet board
+  left alone for 45 s runs an arcade attract loop: a banner cycles
+  the scenario's title, subtitle, INSERT COIN and the turn count;
+  the locale's mood strata step every 9 s (the cabinet's colour
+  cycle); THE TRIP pushes to 1.3. Any key, button or real mouse move
+  wakes it and everything returns. Next: score bursts on chained
+  rounds; tempo as the difficulty axis; a per-arcana high-score card.
+- **direction · [trip:] cues (draft 1).** 190 interlude beats across
+  vols 5–7 carry `[trip:1.2]` (the structural turn pushes the layer,
+  the way `[mood:]` cues were placed on interludes), plus three
+  authored beats: the river past the parking lot, Lena's charcoal
+  letters, the tower's substrate line.
+
 ## What draft 1 does NOT do (honest)
 
 - No game-design change has shipped. The GAME GRAMMAR column is the

@@ -35,7 +35,7 @@
     },
     {
       "t": "narrate",
-      "text": "[mood:morning_bright]Maya is at the counter when the bell above the door chimes."
+      "text": "[trip:1.2][mood:morning_bright]Maya is at the counter when the bell above the door chimes."
     },
     {
       "t": "narrate",
@@ -200,7 +200,7 @@
     },
     {
       "t": "narrate",
-      "text": "[shot:closeup rick]At 12:02, Rick finally emerges. He looks older than he had at nine. He crosses to the counter. He says, in the small careful voice he uses for things he means:"
+      "text": "[trip:1.2][shot:closeup rick]At 12:02, Rick finally emerges. He looks older than he had at nine. He crosses to the counter. He says, in the small careful voice he uses for things he means:"
     },
     {
       "t": "say",

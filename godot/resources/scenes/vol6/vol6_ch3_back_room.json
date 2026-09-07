@@ -29,7 +29,7 @@
   },
   {
    "t": "narrate",
-   "text": "[mood:day_bright]The door at the back of the strip mall is unlocked, exactly as promised."
+   "text": "[trip:1.2][mood:day_bright]The door at the back of the strip mall is unlocked, exactly as promised."
   },
   {
    "t": "show",

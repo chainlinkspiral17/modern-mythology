@@ -29,7 +29,7 @@
     },
     {
       "t": "narrate",
-      "text": "[mood:night]Her grandmother is on the porch when she pulls up."
+      "text": "[trip:1.2][mood:night]Her grandmother is on the porch when she pulls up."
     },
     {
       "t": "show",

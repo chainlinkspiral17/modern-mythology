@@ -35,7 +35,7 @@
     },
     {
       "t": "narrate",
-      "text": "[mood:fluorescent_corridor][shot:closeup customer]Sam is behind the counter when the man with the golf-shirt sunburn comes back in."
+      "text": "[trip:1.2][mood:fluorescent_corridor][shot:closeup customer]Sam is behind the counter when the man with the golf-shirt sunburn comes back in."
     },
     {
       "t": "show",

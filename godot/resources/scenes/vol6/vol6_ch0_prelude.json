@@ -29,7 +29,7 @@
     },
     {
       "t": "narrate",
-      "text": "[shot:insert sprinklers]The sprinkler systems on Meadowlark Circle come on at 6:12, as they do every Sunday and Thursday, in accordance with the Stage 2 Water Conservation Schedule maintained by the city of Harmony Creek and the Harmony Creek Homeowners Association jointly, in a spirit of cooperative governance that both parties describe, in their respective newsletters, as a model for the region."
+      "text": "[trip:1.2][shot:insert sprinklers]The sprinkler systems on Meadowlark Circle come on at 6:12, as they do every Sunday and Thursday, in accordance with the Stage 2 Water Conservation Schedule maintained by the city of Harmony Creek and the Harmony Creek Homeowners Association jointly, in a spirit of cooperative governance that both parties describe, in their respective newsletters, as a model for the region."
     },
     {
       "t": "narrate",
@@ -53,7 +53,7 @@
     },
     {
       "t": "narrate",
-      "text": "Sam Miller is not asleep."
+      "text": "[trip:1.2]Sam Miller is not asleep."
     },
     {
       "t": "narrate",
@@ -102,7 +102,7 @@
     },
     {
       "t": "narrate",
-      "text": "Diego Ramos's bedroom at 892 Ashberry Drive is empty."
+      "text": "[trip:1.2]Diego Ramos's bedroom at 892 Ashberry Drive is empty."
     },
     {
       "t": "narrate",
@@ -134,7 +134,7 @@
     },
     {
       "t": "narrate",
-      "text": "[shot:closeup graciela]Down the hall, Graciela Ramos — Diego's grandmother, seventy-one years old, a person who has survived four hurricanes and two husbands and a son who made choices she still has not found words for — is sitting on the edge of her bed in the dark, holding a rosary she is not praying with."
+      "text": "[trip:1.2][shot:closeup graciela]Down the hall, Graciela Ramos — Diego's grandmother, seventy-one years old, a person who has survived four hurricanes and two husbands and a son who made choices she still has not found words for — is sitting on the edge of her bed in the dark, holding a rosary she is not praying with."
     },
     {
       "t": "narrate",
@@ -173,7 +173,7 @@
     },
     {
       "t": "narrate",
-      "text": "At 3017 Verbena Way, in a converted half-bath off the garage that still has the original avocado tile from 1974, Rick Salazar is developing photographs."
+      "text": "[trip:1.2]At 3017 Verbena Way, in a converted half-bath off the garage that still has the original avocado tile from 1974, Rick Salazar is developing photographs."
     },
     {
       "t": "narrate",
@@ -218,7 +218,7 @@
     },
     {
       "t": "narrate",
-      "text": "Maya Daigle is awake because Maya Daigle is always awake at 6:16. Maya Daigle has been waking at 6:16 since she was nine years old and her mother told her that the first hour of the day belongs to you and no one can take it. Her mother was right about very little, but she was right about this."
+      "text": "[trip:1.2]Maya Daigle is awake because Maya Daigle is always awake at 6:16. Maya Daigle has been waking at 6:16 since she was nine years old and her mother told her that the first hour of the day belongs to you and no one can take it. Her mother was right about very little, but she was right about this."
     },
     {
       "t": "narrate",
@@ -268,7 +268,7 @@
     },
     {
       "t": "narrate",
-      "text": "Ben Achterberg is in the back office of the Pit Stop Diner at 06:17 on a Sunday morning because the Pit Stop Diner opens at seven and Ben Achterberg is the kind of person who arrives an hour early, not because he has to, but because the hour before the diner opens is the only hour in the day that belongs entirely to the diner and not to the people in it."
+      "text": "[trip:1.2]Ben Achterberg is in the back office of the Pit Stop Diner at 06:17 on a Sunday morning because the Pit Stop Diner opens at seven and Ben Achterberg is the kind of person who arrives an hour early, not because he has to, but because the hour before the diner opens is the only hour in the day that belongs entirely to the diner and not to the people in it."
     },
     {
       "t": "narrate",
@@ -316,7 +316,7 @@
     },
     {
       "t": "narrate",
-      "text": "[panel:vol6_water_tower]The Harmony Creek water tower stands at the south end of Gallatin Avenue, behind the NexCorp lot, which is currently enclosed in a chain-link fence with green privacy screen. The water tower is sixty-two feet tall. It was painted in 2019 with the words HARMONY CREEK in blue block letters and a small rendering of a creek that does not resemble the actual creek."
+      "text": "[trip:1.2][panel:vol6_water_tower]The Harmony Creek water tower stands at the south end of Gallatin Avenue, behind the NexCorp lot, which is currently enclosed in a chain-link fence with green privacy screen. The water tower is sixty-two feet tall. It was painted in 2019 with the words HARMONY CREEK in blue block letters and a small rendering of a creek that does not resemble the actual creek."
     },
     {
       "t": "narrate",
@@ -366,7 +366,7 @@
     },
     {
       "t": "narrate",
-      "text": "Chief Dale Miller — Police Chief of Harmony Creek, thirteen years in the role, former marine, father of one, a man whose defining characteristic is, according to his daughter, that he is always the last person in any room to say what he actually thinks — is standing at his kitchen counter at 6:24, waiting for his coffee to finish, reading a text message."
+      "text": "[trip:1.2]Chief Dale Miller — Police Chief of Harmony Creek, thirteen years in the role, former marine, father of one, a man whose defining characteristic is, according to his daughter, that he is always the last person in any room to say what he actually thinks — is standing at his kitchen counter at 6:24, waiting for his coffee to finish, reading a text message."
     },
     {
       "t": "narrate",
@@ -415,7 +415,7 @@
     },
     {
       "t": "narrate",
-      "text": "At 6:28, the sprinklers on Meadowlark Circle finish their cycle. The cracked head on the Miller lawn sputters once and goes still, leaving a last thin arc of water that catches the early light for a moment and then falls."
+      "text": "[trip:1.2]At 6:28, the sprinklers on Meadowlark Circle finish their cycle. The cracked head on the Miller lawn sputters once and goes still, leaving a last thin arc of water that catches the early light for a moment and then falls."
     },
     {
       "t": "narrate",

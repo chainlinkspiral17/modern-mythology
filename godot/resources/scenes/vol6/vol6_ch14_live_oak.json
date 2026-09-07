@@ -35,7 +35,7 @@
     },
     {
       "t": "narrate",
-      "text": "[mood:night]He takes the back road. He takes the back road that goes past the strip mall on Live Oak Street, the way he has been taking the back road past the strip mall on Live Oak Street, every Wednesday and every Friday and most Mondays, since late June."
+      "text": "[trip:1.2][mood:night]He takes the back road. He takes the back road that goes past the strip mall on Live Oak Street, the way he has been taking the back road past the strip mall on Live Oak Street, every Wednesday and every Friday and most Mondays, since late June."
     },
     {
       "t": "narrate",

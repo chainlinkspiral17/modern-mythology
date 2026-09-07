@@ -33,7 +33,7 @@
    "t": "show"
   },
   {
-   "text": "[mood:candlelight_low]Hans was at the back door at five fifty-six.",
+   "text": "[trip:1.2][mood:candlelight_low]Hans was at the back door at five fifty-six.",
    "t": "narrate"
   },
   {

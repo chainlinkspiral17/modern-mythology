@@ -29,7 +29,7 @@
     },
     {
       "t": "narrate",
-      "text": "[mood:rain_interior]The thunderstorm arrives early. The weather app on Sam Miller's phone had, as of Tuesday evening, been predicting the first rain at fourteen-oh-eight Wednesday afternoon, with a fifty-three percent chance of hail and a forty-one percent chance of the kind of localized flash flooding that Harmony Creek's engineered drainage system had been designed, in 1997, to render theoretical. The forecast had been wrong by approximately eight hours."
+      "text": "[trip:1.2][mood:rain_interior]The thunderstorm arrives early. The weather app on Sam Miller's phone had, as of Tuesday evening, been predicting the first rain at fourteen-oh-eight Wednesday afternoon, with a fifty-three percent chance of hail and a forty-one percent chance of the kind of localized flash flooding that Harmony Creek's engineered drainage system had been designed, in 1997, to render theoretical. The forecast had been wrong by approximately eight hours."
     },
     {
       "t": "narrate",

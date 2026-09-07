@@ -29,7 +29,7 @@
     },
     {
       "t": "narrate",
-      "text": "[mood:candlelight_low]In the kitchen at 1428 Meadowlark, Sam comes home to a house that is, for the first time in some years, completely dark except for the small under-cabinet light her mother leaves on when her mother is awake upstairs. Sam goes up. Her bedroom door is open. Her mother is sitting on her bed."
+      "text": "[trip:1.2][mood:candlelight_low]In the kitchen at 1428 Meadowlark, Sam comes home to a house that is, for the first time in some years, completely dark except for the small under-cabinet light her mother leaves on when her mother is awake upstairs. Sam goes up. Her bedroom door is open. Her mother is sitting on her bed."
     },
     {
       "t": "show",

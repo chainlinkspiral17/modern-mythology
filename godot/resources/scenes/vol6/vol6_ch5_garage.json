@@ -29,7 +29,7 @@
     },
     {
       "t": "narrate",
-      "text": "[mood:candlelight_low]Jesse has swept the garage. He does not, generally, sweep the garage. His father sweeps the garage, on the first Saturday of each month, with the thoroughness of a man who believes that a floor is a kind of moral statement. Jesse has always, privately, thought of the garage as his father's territory in the same way he has thought of the darkroom as his father's territory. He has not, until this week, swept either one."
+      "text": "[trip:1.2][mood:candlelight_low]Jesse has swept the garage. He does not, generally, sweep the garage. His father sweeps the garage, on the first Saturday of each month, with the thoroughness of a man who believes that a floor is a kind of moral statement. Jesse has always, privately, thought of the garage as his father's territory in the same way he has thought of the darkroom as his father's territory. He has not, until this week, swept either one."
     },
     {
       "t": "narrate",
@@ -73,7 +73,7 @@
     },
     {
       "t": "narrate",
-      "text": "Ben arrives first. He is in his truck. He parks at the curb. He does not pull into the driveway, because the driveway is where Jesse's father parks, and Ben — who has never been inside this house but who has, over the past forty-one hours, begun to build a small careful map of it in his head — does not want to be where Jesse's father would park, on the theory that Jesse's father may come home during practice and that Ben does not want to be the thing Jesse's father sees first."
+      "text": "[trip:1.2]Ben arrives first. He is in his truck. He parks at the curb. He does not pull into the driveway, because the driveway is where Jesse's father parks, and Ben — who has never been inside this house but who has, over the past forty-one hours, begun to build a small careful map of it in his head — does not want to be where Jesse's father would park, on the theory that Jesse's father may come home during practice and that Ben does not want to be the thing Jesse's father sees first."
     },
     {
       "t": "narrate",
@@ -208,7 +208,7 @@
     },
     {
       "t": "narrate",
-      "text": "Jesse, when he sees the three of them coming up the driveway together, makes the small unguarded sound a person makes when a thing he had not, consciously, expected to be given is, in fact, given. He hops off the workbench. He meets them at the door."
+      "text": "[trip:1.2]Jesse, when he sees the three of them coming up the driveway together, makes the small unguarded sound a person makes when a thing he had not, consciously, expected to be given is, in fact, given. He hops off the workbench. He meets them at the door."
     },
     {
       "t": "say",
@@ -284,7 +284,7 @@
     },
     {
       "t": "narrate",
-      "text": "The band is on their third run-through of Grid Failure. Em has started harmonizing above Jesse's lead, a third interval that she had not tried before and that, when it lands on the downbeat of the chorus, makes Nate turn his head — the universal bassist's gesture for that is new and I approve."
+      "text": "[trip:1.2]The band is on their third run-through of Grid Failure. Em has started harmonizing above Jesse's lead, a third interval that she had not tried before and that, when it lands on the downbeat of the chorus, makes Nate turn his head — the universal bassist's gesture for that is new and I approve."
     },
     {
       "t": "say",

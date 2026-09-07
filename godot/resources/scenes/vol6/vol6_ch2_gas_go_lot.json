@@ -29,7 +29,7 @@
     },
     {
       "t": "narrate",
-      "text": "[mood:night]The evening shift at the Gas & Go has started."
+      "text": "[trip:1.2][mood:night]The evening shift at the Gas & Go has started."
     },
     {
       "t": "narrate",
@@ -147,7 +147,7 @@
     },
     {
       "t": "narrate",
-      "text": "[shot:establish]At the kitchen table, her father is eating dinner. Meatloaf. Her mother made it. Her mother is at the stove finishing the green beans. The kitchen smells the way the kitchen always smells on Monday night in Harmony Creek Estates. The small flat screen mounted above the breakfast nook is tuned to local news, volume low."
+      "text": "[trip:1.2][shot:establish]At the kitchen table, her father is eating dinner. Meatloaf. Her mother made it. Her mother is at the stove finishing the green beans. The kitchen smells the way the kitchen always smells on Monday night in Harmony Creek Estates. The small flat screen mounted above the breakfast nook is tuned to local news, volume low."
     },
     {
       "t": "say",

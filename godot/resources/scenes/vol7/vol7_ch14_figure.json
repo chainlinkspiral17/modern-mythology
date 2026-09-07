@@ -34,7 +34,7 @@
     },
     {
       "char": "lena",
-      "text": "[mood:dawn_warm]Cale.",
+      "text": "[trip:1.2][mood:dawn_warm]Cale.",
       "expr": "neutral",
       "t": "say"
     },

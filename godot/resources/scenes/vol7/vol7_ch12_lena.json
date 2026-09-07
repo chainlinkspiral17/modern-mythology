@@ -39,7 +39,7 @@
    "t": "show"
   },
   {
-   "text": "[mood:day_bright]He pulled into Smolvud at nine forty.",
+   "text": "[trip:1.2][mood:day_bright]He pulled into Smolvud at nine forty.",
    "t": "narrate"
   },
   {

@@ -93,7 +93,7 @@
     },
     {
       "t": "narrate",
-      "text": "[stage:elicia desk][shot:closeup elicia_desk]She powered up her editing suite. The glow illuminated her face — sharp cheekbones and shadowed eyes. The polished mask she had built for the camera and then forgotten how to take off in private.",
+      "text": "[trip:1.2][stage:elicia desk][shot:closeup elicia_desk]She powered up her editing suite. The glow illuminated her face — sharp cheekbones and shadowed eyes. The polished mask she had built for the camera and then forgotten how to take off in private.",
       "voice": "assets/audio/voice/vol5_ch2_priestess_b/017.mp3"
     },
     {
