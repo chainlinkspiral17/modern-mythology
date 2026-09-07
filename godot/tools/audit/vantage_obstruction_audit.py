@@ -68,7 +68,7 @@ UNMEASURED = set()   # harmony_terrain measured since the _finalize_mesh hook (2
 # so "sees only sky" is an artifact there, not a verdict.
 NO_EMPTY = {"graustark", "harmony_terrain"}
 ASPECT = 16.0 / 9.0
-IGNORE = re.compile(r"(ground|sky|horizon|far|band|floor|ceil|void|sea\b|swamp_floor|lake_water|valley_floor|plinth$|template_(land|sea)|road_asphalt|asphalt$)", re.I)
+IGNORE = re.compile(r"(ground|sky|horizon|far|band|floor|ceil|void|sea\b|swamp_floor|lake_water|valley_floor|plinth$|template_(land|sea)|road_asphalt|asphalt$|hwy9_(asphalt|shoulder|median|emb|berm|paint|lane|fill)|_ribbon_|terrain)", re.I)
 # What counts as NOTHING for the EMPTY test: sky, haze, far bands. Ground,
 # floor, ceiling and road anchor a frame and are not empty (a highway
 # preset looking down its own road is a picture; the diner's clock
