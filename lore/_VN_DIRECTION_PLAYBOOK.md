@@ -191,6 +191,39 @@ no-op (fallback discipline — a script must never crash the reader).
   the diner, and casting needs character GLBs (gate 2). Don't
   seed [stage:] outside vol5 ch0 until models land.
 
+### 2026-09-09 · the latter-half arcana pass · cut at the prose anchors
+
+- **User: "real bad shot direction all throughout the latter half of
+  major arcana, just poor."** The density scan said what "poor" was:
+  8–12 cues over 100–137 nodes, holds of fifteen and twenty lines on
+  one frame, dialogue runs with no shot/reverse-shot, and the
+  locales' insert markers (teacup, eviction notice, contract, crow,
+  sinkhole, record player…) authored but never cut to.
+- **`godot/tools/audit/shot_seed.py` cuts the comic by the grammar
+  above using ONLY markers the locale has**: a `say` from a
+  character with a closeup marker on a speaker change (≥ 3 nodes
+  since the last cue); a `narrate` that NAMES an insert's object
+  (marker id words + shot_marker_audit SYNONYMS of ≥ 5 letters —
+  "note" is not a notebook); back to a wide after 6 nodes held on a
+  closeup/insert, rotating establish_b/_c when the locale has them;
+  budget nodes/4; the first eight nodes and any authored [shot:] are
+  never touched; a mid-chapter `bg` swaps the vocabulary (ch11 moves
+  office → design studio). Edits are raw text splices — the JSON is
+  never re-serialized. `--dry` first, always; read the anchors it
+  picks (the teacup line, "It felt mostly like eviction.") before
+  writing.
+- **First run: vol5 ch10–21, +109 cues** (ch12 The Hanged Man's phone
+  call became a proper shot/reverse-shot; ch16 The Tower cuts to the
+  teacup, the eviction notice, the camera; ch17 The Star to the wall,
+  the crow, the sinkhole). vn_story_audit 0 problems, blind cues
+  unchanged at 10. NEXT: the same pass on vols 6–7 tails, then the
+  early arcana (ch1–9) which carry authored grammar and need a lighter
+  hand (raise MIN_GAP, or seed inserts only).
+- **A seeded cut is a draft, not direction.** The tool cannot know
+  the line a chapter turns on; it knows where the teacup is named.
+  The Deck read is what decides whether a cut lands; expect to
+  delete a third of them by hand.
+
 ### 2026-08-30 · the back-to-front pass · direction density is newest-last
 
 - **User direction: "start from the back and work to the front, as

@@ -916,6 +916,22 @@ turn to what it does NOT yet see: rotated props (make_rot_box bboxes
 are inflated — the audit should use rot_box_bbox corners), and
 "faces the wall" for desks/TVs/beds (orientation grammar, class 6).
 
+**2026-09-09 (late) · the latter-half arcana shot pass, draft 1.**
+User's "real bad shot direction all throughout the latter half of
+major arcana": the density scan showed 8–12 cues per 100–137-node
+chapter with twenty-line holds. New tool `shot_seed.py` cuts by the
+playbook grammar at prose anchors using only the locale's existing
+markers (closeups on speaker change, inserts where the object is
+named, back to a wide after six nodes, budget nodes/4, authored cues
+untouched, mid-chapter bg swaps honoured). vol5 ch10–21: +109 cues,
+story gate green, blind cues unchanged. Draft 1 — expect to prune a
+third on the Deck. NEXT DRAFT: run it on vol6/vol7 tails (the 0–1
+beat chapters the 2026-08-30 pass found), then ch1–9 with a lighter
+hand; author [mood:] turns by the fiction's clock in the same
+chapters (the tool deliberately does not touch mood); the Deck read
+of ch12 (the phone call) and ch16 (the teacup / eviction notice /
+camera) first.
+
 **2026-08-19 · PER-STICK VOICE SWEEP VERDICT (voice draft 4).**
 Ran the leakage grep (TODO/WIP/placeholder/implemented/deferred/
 stub) and a string survey across EVERY stick directory: estuary_4,

@@ -78,7 +78,7 @@
     {
       "t": "say",
       "c": "john",
-      "text": "Okay. Dry. Noted. How's the coffee.",
+      "text": "[shot:closeup john]Okay. Dry. Noted. How's the coffee.",
       "char": "john"
     },
     {
@@ -102,7 +102,7 @@
     {
       "t": "say",
       "c": "elicia",
-      "text": "Why.",
+      "text": "[shot:closeup elicia]Why.",
       "char": "elicia"
     },
     {
@@ -120,7 +120,7 @@
     {
       "t": "say",
       "c": "john",
-      "text": "It clusters on Tuesdays.",
+      "text": "[shot:closeup john]It clusters on Tuesdays.",
       "char": "john"
     },
     {
@@ -172,7 +172,7 @@
     {
       "t": "say",
       "c": "elicia",
-      "text": "John, my darling, if you have something to say, say it.",
+      "text": "[shot:closeup elicia]John, my darling, if you have something to say, say it.",
       "char": "elicia"
     },
     {
@@ -248,7 +248,7 @@
     {
       "t": "say",
       "c": "elicia",
-      "text": "Increasingly.",
+      "text": "[shot:closeup john]Increasingly.",
       "char": "john"
     },
     {
@@ -280,7 +280,7 @@
     {
       "t": "say",
       "c": "john",
-      "text": "You said, when you're ready, I should tell you first.",
+      "text": "[shot:closeup john]You said, when you're ready, I should tell you first.",
       "char": "john"
     },
     {
@@ -302,7 +302,7 @@
     {
       "t": "say",
       "c": "elicia",
-      "text": "Is it about Graustark.",
+      "text": "[shot:closeup elicia]Is it about Graustark.",
       "char": "elicia"
     },
     {
@@ -342,7 +342,7 @@
     {
       "t": "say",
       "c": "elicia",
-      "text": "When you find out, you tell me. That's the deal.",
+      "text": "[shot:closeup john]When you find out, you tell me. That's the deal.",
       "char": "john"
     },
     {
@@ -376,7 +376,7 @@
     {
       "t": "say",
       "c": "john",
-      "text": "One, Elicia.",
+      "text": "[shot:closeup elicia]One, Elicia.",
       "char": "elicia"
     },
     {
@@ -404,7 +404,7 @@
     {
       "t": "say",
       "c": "elicia",
-      "text": "Yes.",
+      "text": "[shot:closeup john]Yes.",
       "char": "john"
     },
     {
@@ -428,7 +428,7 @@
     {
       "t": "say",
       "c": "elicia",
-      "text": "That woman is looking for someone.",
+      "text": "[shot:closeup elicia]That woman is looking for someone.",
       "char": "elicia"
     },
     {

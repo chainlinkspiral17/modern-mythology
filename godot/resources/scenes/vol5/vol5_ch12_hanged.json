@@ -47,7 +47,7 @@
     },
     {
       "t": "narrate",
-      "text": "She closed the door behind her with her hip. The deadbolt clunked into place with the small definite finality she had come to rely on. The world she had just left did not, in any meaningful sense, follow her in."
+      "text": "[shot:insert door]She closed the door behind her with her hip. The deadbolt clunked into place with the small definite finality she had come to rely on. The world she had just left did not, in any meaningful sense, follow her in."
     },
     {
       "t": "narrate",
@@ -71,7 +71,7 @@
     },
     {
       "t": "narrate",
-      "text": "She would find out. She always did."
+      "text": "[shot:establish]She would find out. She always did."
     },
     {
       "t": "narrate",
@@ -87,7 +87,7 @@
     },
     {
       "t": "narrate",
-      "text": "She had not, for the record, set out to live this way. She had set out, at twenty-two, to be a principal with a regional company in Atlanta. The setting-out had lasted six years. The regional company had lasted nine months past her injury. The injury had lasted, in some form, for the rest of her life. The setting-out had given way, the way most setting-outs gave way, to whatever came after — and what had come after, in Natalie's case, was this: the nest, the herbs, the records, the cards."
+      "text": "[shot:insert card]She had not, for the record, set out to live this way. She had set out, at twenty-two, to be a principal with a regional company in Atlanta. The setting-out had lasted six years. The regional company had lasted nine months past her injury. The injury had lasted, in some form, for the rest of her life. The setting-out had given way, the way most setting-outs gave way, to whatever came after — and what had come after, in Natalie's case, was this: the nest, the herbs, the records, the cards."
     },
     {
       "t": "narrate",
@@ -111,7 +111,7 @@
     },
     {
       "t": "narrate",
-      "text": "Tonight the sound was originating, faintly, just behind her right shoulder. Slightly above. About the height a person standing on the small step-stool by her bookshelf would be, if a person were standing on the small step-stool by her bookshelf."
+      "text": "[shot:establish_b]Tonight the sound was originating, faintly, just behind her right shoulder. Slightly above. About the height a person standing on the small step-stool by her bookshelf would be, if a person were standing on the small step-stool by her bookshelf."
     },
     {
       "t": "narrate",
@@ -155,7 +155,7 @@
     },
     {
       "t": "narrate",
-      "text": "She did not, however, put the card back in the deck."
+      "text": "[shot:insert deck]She did not, however, put the card back in the deck."
     },
     {
       "t": "narrate",
@@ -195,7 +195,7 @@
     },
     {
       "t": "narrate",
-      "text": "She curled up on the futon. Pulled a quilt woven with threads the color of twilight around her. The book she had been reading — a slim volume of Borges, dog-eared and annotated with cryptic symbols only she understood — lay open on the floor. Time forks perpetually toward innumerable futures. Indeed."
+      "text": "[shot:establish]She curled up on the futon. Pulled a quilt woven with threads the color of twilight around her. The book she had been reading — a slim volume of Borges, dog-eared and annotated with cryptic symbols only she understood — lay open on the floor. Time forks perpetually toward innumerable futures. Indeed."
     },
     {
       "t": "narrate",
@@ -231,7 +231,7 @@
     },
     {
       "t": "narrate",
-      "text": "Natalie answered."
+      "text": "[shot:establish_b]Natalie answered."
     },
     {
       "t": "show",
@@ -253,7 +253,7 @@
     {
       "t": "say",
       "char": "nicola",
-      "text": "Did I wake you."
+      "text": "[shot:closeup nicola]Did I wake you."
     },
     {
       "t": "say",
@@ -268,7 +268,7 @@
     {
       "t": "say",
       "char": "natalie",
-      "text": "I'm sure, sweetheart. What's going on."
+      "text": "[shot:closeup natalie]I'm sure, sweetheart. What's going on."
     },
     {
       "t": "narrate",
@@ -295,7 +295,7 @@
     {
       "t": "say",
       "char": "nicola",
-      "text": "Now would be ideal."
+      "text": "[shot:closeup nicola]Now would be ideal."
     },
     {
       "t": "say",
@@ -314,7 +314,7 @@
     {
       "t": "say",
       "char": "natalie",
-      "text": "Nic."
+      "text": "[shot:closeup natalie]Nic."
     },
     {
       "t": "say",
@@ -329,7 +329,7 @@
     {
       "t": "say",
       "char": "nicola",
-      "text": "Define safe."
+      "text": "[shot:closeup nicola]Define safe."
     },
     {
       "t": "say",
@@ -348,7 +348,7 @@
     {
       "t": "say",
       "char": "natalie",
-      "text": "Are you intending to drive responsibly."
+      "text": "[shot:closeup natalie]Are you intending to drive responsibly."
     },
     {
       "t": "say",
@@ -363,7 +363,7 @@
     {
       "t": "say",
       "char": "nicola",
-      "text": "Yes."
+      "text": "[shot:closeup nicola]Yes."
     },
     {
       "t": "say",
@@ -378,7 +378,7 @@
     {
       "t": "say",
       "char": "natalie",
-      "text": "Drive carefully."
+      "text": "[shot:closeup natalie]Drive carefully."
     },
     {
       "t": "narrate",
@@ -422,7 +422,7 @@
     },
     {
       "t": "narrate",
-      "text": "She set the Hanged Man back on the windowsill."
+      "text": "[shot:establish]She set the Hanged Man back on the windowsill."
     },
     {
       "t": "narrate",
@@ -460,7 +460,7 @@
     {
       "t": "say",
       "char": "nicola",
-      "text": "Yes please."
+      "text": "[shot:closeup nicola]Yes please."
     },
     {
       "t": "say",
@@ -482,7 +482,7 @@
     },
     {
       "t": "narrate",
-      "text": "Natalie closed the door."
+      "text": "[shot:insert door]Natalie closed the door."
     },
     {
       "t": "narrate",
@@ -496,7 +496,7 @@
     {
       "t": "say",
       "char": "nicola",
-      "text": "Yes."
+      "text": "[shot:closeup nicola]Yes."
     },
     {
       "t": "say",
@@ -523,7 +523,7 @@
     {
       "t": "say",
       "char": "natalie",
-      "text": "Both. I'll read for both. We'll do it twice."
+      "text": "[shot:closeup natalie]Both. I'll read for both. We'll do it twice."
     },
     {
       "t": "narrate",

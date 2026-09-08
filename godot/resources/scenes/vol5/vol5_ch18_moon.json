@@ -43,7 +43,7 @@
     },
     {
       "t": "narrate",
-      "text": "It began, as these things generally began in Natalie's apartment, with the weather.\n\nThe ozone-and-asphalt taste that had been in the air when she had come home from her shift had not gone away. The air had, in fact, thickened. By four-thirty the room had begun to hum at a frequency that was not, strictly, audible — a sub-frequency Natalie felt in her inner ear the way she sometimes felt the faint ringing after a long train ride. By four-forty the refrigerator had started cycling out of its normal rhythm, on for twelve seconds, off for twenty, on again. By four-fifty the streetlight outside her window had begun to flicker in patterns that were, she had to admit, patterns.\n\nThe patterns were not random. The patterns were somebody's transmission. The patterns had a sender.\n\nShe had not, yet, made any move. She had, instead, stayed where she was — on the rug, the cards around her, the candle she had lit at midnight burning low — and allowed the room to show her what the room had to show."
+      "text": "[shot:insert card]It began, as these things generally began in Natalie's apartment, with the weather.\n\nThe ozone-and-asphalt taste that had been in the air when she had come home from her shift had not gone away. The air had, in fact, thickened. By four-thirty the room had begun to hum at a frequency that was not, strictly, audible — a sub-frequency Natalie felt in her inner ear the way she sometimes felt the faint ringing after a long train ride. By four-forty the refrigerator had started cycling out of its normal rhythm, on for twelve seconds, off for twenty, on again. By four-fifty the streetlight outside her window had begun to flicker in patterns that were, she had to admit, patterns.\n\nThe patterns were not random. The patterns were somebody's transmission. The patterns had a sender.\n\nShe had not, yet, made any move. She had, instead, stayed where she was — on the rug, the cards around her, the candle she had lit at midnight burning low — and allowed the room to show her what the room had to show."
     },
     {
       "t": "narrate",
@@ -94,7 +94,7 @@
     {
       "t": "say",
       "c": "aria",
-      "text": "Visitor. How long.",
+      "text": "[shot:closeup natalie]Visitor. How long.",
       "char": "natalie"
     },
     {
@@ -129,7 +129,7 @@
     },
     {
       "t": "narrate",
-      "text": "Aria closed Nicola's eyes.\n\nFor three breaths, nothing happened. Then Nicola's eyes opened — her own eyes, now, her own gaze, sleepy and confused and nineteen — and she said, hoarsely:"
+      "text": "[shot:establish]Aria closed Nicola's eyes.\n\nFor three breaths, nothing happened. Then Nicola's eyes opened — her own eyes, now, her own gaze, sleepy and confused and nineteen — and she said, hoarsely:"
     },
     {
       "t": "say",
@@ -146,7 +146,7 @@
     {
       "t": "say",
       "c": "natalie",
-      "text": "Someone's coming, Nic. It's okay. Sit up. Put on your shoes.",
+      "text": "[shot:closeup nicola]Someone's coming, Nic. It's okay. Sit up. Put on your shoes.",
       "char": "nicola"
     },
     {
@@ -170,7 +170,7 @@
     {
       "t": "say",
       "c": "natalie",
-      "text": "I was told a visitor was coming.",
+      "text": "[shot:closeup natalie]I was told a visitor was coming.",
       "char": "natalie"
     },
     {
@@ -212,7 +212,7 @@
     {
       "t": "say",
       "c": "nicola",
-      "text": "Joanna —",
+      "text": "[shot:closeup natalie]Joanna —",
       "char": "natalie"
     },
     {
@@ -245,7 +245,7 @@
     },
     {
       "t": "narrate",
-      "text": "Miriam looked directly at Nicola's eyes — but she was, unmistakably, answering Aria."
+      "text": "[shot:establish_b]Miriam looked directly at Nicola's eyes — but she was, unmistakably, answering Aria."
     },
     {
       "t": "say",
@@ -262,7 +262,7 @@
     {
       "t": "say",
       "c": "natalie",
-      "text": "Nic. Aria. Listen to me.",
+      "text": "[shot:closeup nicola]Nic. Aria. Listen to me.",
       "char": "nicola"
     },
     {
@@ -304,7 +304,7 @@
     {
       "t": "say",
       "c": "miriam",
-      "text": "I can take you as far as the county line. From there you'd need to come back. But yes. Come as far as the line, if she wants you there.",
+      "text": "[shot:closeup natalie]I can take you as far as the county line. From there you'd need to come back. But yes. Come as far as the line, if she wants you there.",
       "char": "natalie"
     },
     {
@@ -375,7 +375,7 @@
     {
       "t": "say",
       "c": "miriam",
-      "text": "The bus back to Simons comes through here every two hours. There's one at eight-thirty. I've left you cash in the side pocket. Don't argue.",
+      "text": "[shot:closeup natalie]The bus back to Simons comes through here every two hours. There's one at eight-thirty. I've left you cash in the side pocket. Don't argue.",
       "char": "natalie"
     },
     {

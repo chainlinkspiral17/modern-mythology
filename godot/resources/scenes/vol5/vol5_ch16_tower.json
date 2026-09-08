@@ -43,7 +43,7 @@
     },
     {
       "t": "narrate",
-      "text": "Data slates lay like fallen monoliths on the floor amidst drifts of rejected script pages. Cables snaked across surfaces like dormant metallic ivy. The teacup that had belonged to her mother — the one she had not, in Graustark, packed; the one she had carried separately, in her purse, the entire drive north because she had not been able to bring herself to surrender it to a box — sat on the kitchen counter where it had sat for eleven months, unused, full of dust."
+      "text": "[shot:insert teacup]Data slates lay like fallen monoliths on the floor amidst drifts of rejected script pages. Cables snaked across surfaces like dormant metallic ivy. The teacup that had belonged to her mother — the one she had not, in Graustark, packed; the one she had carried separately, in her purse, the entire drive north because she had not been able to bring herself to surrender it to a box — sat on the kitchen counter where it had sat for eleven months, unused, full of dust."
     },
     {
       "t": "narrate",
@@ -67,7 +67,7 @@
     },
     {
       "t": "narrate",
-      "text": "The structures she had built were crumbling."
+      "text": "[shot:establish]The structures she had built were crumbling."
     },
     {
       "t": "narrate",
@@ -87,7 +87,7 @@
     },
     {
       "t": "narrate",
-      "text": "It felt mostly like eviction."
+      "text": "[shot:insert eviction_notice]It felt mostly like eviction."
     },
     {
       "t": "narrate",
@@ -115,7 +115,7 @@
     },
     {
       "t": "narrate",
-      "text": "A dark chuckle escaped her lips, dry as old parchment."
+      "text": "[shot:establish_b]A dark chuckle escaped her lips, dry as old parchment."
     },
     {
       "t": "narrate",
@@ -250,7 +250,7 @@
     },
     {
       "t": "narrate",
-      "text": "She thought, after a long moment: I have been telling other people's stories for twelve years because I have not known how to tell my own. I have not known how to tell my own because telling it would require admitting that the protagonist of my own story is not, has never been, a director. The protagonist of my own story is a woman who very much would like to be loved and who learned, around the age of fourteen, that she was not going to be — and who decided, instead, to be admired, because admired was the closest she could get."
+      "text": "[shot:establish]She thought, after a long moment: I have been telling other people's stories for twelve years because I have not known how to tell my own. I have not known how to tell my own because telling it would require admitting that the protagonist of my own story is not, has never been, a director. The protagonist of my own story is a woman who very much would like to be loved and who learned, around the age of fourteen, that she was not going to be — and who decided, instead, to be admired, because admired was the closest she could get."
     },
     {
       "t": "narrate",
@@ -286,7 +286,7 @@
     },
     {
       "t": "narrate",
-      "text": "At minute thirteen she reached forward and pressed the small silver button on the camera that ended the recording. The red light went out."
+      "text": "[shot:insert camera]At minute thirteen she reached forward and pressed the small silver button on the camera that ended the recording. The red light went out."
     },
     {
       "t": "narrate",
@@ -306,7 +306,7 @@
     },
     {
       "t": "narrate",
-      "text": "She stood up. Her knees clicked in the way her knees had begun to click in the past year. She crossed the room to the kitchen counter. She picked up her mother's teacup."
+      "text": "[shot:insert teacup]She stood up. Her knees clicked in the way her knees had begun to click in the past year. She crossed the room to the kitchen counter. She picked up her mother's teacup."
     },
     {
       "t": "narrate",
@@ -382,7 +382,7 @@
     },
     {
       "t": "narrate",
-      "text": "[beat:lift]J — Yes. — E."
+      "text": "[shot:establish_b][beat:lift]J — Yes. — E."
     },
     {
       "t": "narrate",
@@ -410,7 +410,7 @@
     },
     {
       "t": "narrate",
-      "text": "She picked up the camera again. She turned it on. She held it at arm's length. She faced the lens."
+      "text": "[shot:insert camera]She picked up the camera again. She turned it on. She held it at arm's length. She faced the lens."
     },
     {
       "t": "narrate",

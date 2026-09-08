@@ -63,7 +63,7 @@
     },
     {
       "t": "narrate",
-      "text": "Lately the bulwark felt like it was built on shifting sand."
+      "text": "[shot:establish]Lately the bulwark felt like it was built on shifting sand."
     },
     {
       "t": "narrate",
@@ -135,7 +135,7 @@
     },
     {
       "t": "narrate",
-      "text": "She still picked up. He knew she still picked up. The picking up was not, anymore, a courtesy. The picking up was a statement she was trying to figure out the meaning of in real time, every time the phone rang."
+      "text": "[shot:insert phone]She still picked up. He knew she still picked up. The picking up was not, anymore, a courtesy. The picking up was a statement she was trying to figure out the meaning of in real time, every time the phone rang."
     },
     {
       "t": "narrate",
@@ -151,7 +151,7 @@
     },
     {
       "t": "narrate",
-      "text": "She turned away from the window. Walked back to the desk. Sat down."
+      "text": "[shot:insert desk]She turned away from the window. Walked back to the desk. Sat down."
     },
     {
       "t": "narrate",
@@ -191,7 +191,7 @@
     },
     {
       "t": "narrate",
-      "text": "Why did life outside these glass walls feel like a roulette wheel spun by a cackling indifferent god. Destiny. Cycles. Turning points. She hated the woolly thinking of it, the lack of defined terms and conditions, the vocabulary borrowed wholesale from a generation of self-help books she had never finished reading and from a mother who had, in her later years, taken up tarot in the small Catholic-guilty way that Erica's mother had taken up most things."
+      "text": "[shot:establish_b]Why did life outside these glass walls feel like a roulette wheel spun by a cackling indifferent god. Destiny. Cycles. Turning points. She hated the woolly thinking of it, the lack of defined terms and conditions, the vocabulary borrowed wholesale from a generation of self-help books she had never finished reading and from a mother who had, in her later years, taken up tarot in the small Catholic-guilty way that Erica's mother had taken up most things."
     },
     {
       "t": "narrate",
@@ -254,7 +254,7 @@
     {
       "t": "say",
       "char": "erica",
-      "text": "Alberto."
+      "text": "[shot:closeup erica]Alberto."
     },
     {
       "t": "show",
@@ -293,7 +293,7 @@
     },
     {
       "t": "narrate",
-      "text": "She paused. The word contract, in Alberto D'Ambrosio's mouth, on a Friday afternoon, not that kind, meant something very specific, and she had a sudden cold clear sense of what it meant."
+      "text": "[shot:insert contract]She paused. The word contract, in Alberto D'Ambrosio's mouth, on a Friday afternoon, not that kind, meant something very specific, and she had a sudden cold clear sense of what it meant."
     },
     {
       "t": "say",
@@ -365,7 +365,7 @@
     },
     {
       "t": "narrate",
-      "text": "Erica was quiet for a moment. The implications were, suddenly, stacked four deep, and she could see the bottom of the stack."
+      "text": "[shot:establish]Erica was quiet for a moment. The implications were, suddenly, stacked four deep, and she could see the bottom of the stack."
     },
     {
       "t": "say",
@@ -380,7 +380,7 @@
     {
       "t": "say",
       "char": "erica",
-      "text": "Alberto."
+      "text": "[shot:closeup erica]Alberto."
     },
     {
       "t": "say",
@@ -428,7 +428,7 @@
     },
     {
       "t": "narrate",
-      "text": "The line went quiet. Then, in the smaller voice he used when he was being, by his own austere standards, sincere:"
+      "text": "[shot:establish_b]The line went quiet. Then, in the smaller voice he used when he was being, by his own austere standards, sincere:"
     },
     {
       "t": "say",
@@ -506,7 +506,7 @@
     },
     {
       "t": "narrate",
-      "text": "The light on the desk made small reflections in the chrome and the glass and the smooth teak. The denied motion sat unresolved on the monitor, awaiting the next morning's reply. The painter's call would come at three AM, as predicted. She would, as predicted, listen."
+      "text": "[shot:insert monitor]The light on the desk made small reflections in the chrome and the glass and the smooth teak. The denied motion sat unresolved on the monitor, awaiting the next morning's reply. The painter's call would come at three AM, as predicted. She would, as predicted, listen."
     },
     {
       "t": "narrate",

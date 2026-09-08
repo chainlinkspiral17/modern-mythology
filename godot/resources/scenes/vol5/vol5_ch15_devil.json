@@ -103,7 +103,7 @@
     },
     {
       "t": "narrate",
-      "text": "Antonio's baby. Jimmy was supposed to be the midwife. The protector. Keep the dream alive, keep the kid on track. But the lines had blurred. Hadn't they."
+      "text": "[shot:establish]Antonio's baby. Jimmy was supposed to be the midwife. The protector. Keep the dream alive, keep the kid on track. But the lines had blurred. Hadn't they."
     },
     {
       "t": "narrate",
@@ -139,7 +139,7 @@
     },
     {
       "t": "narrate",
-      "text": "Forte, with his quiet strength and his haunted eyes, didn't see the grift."
+      "text": "[shot:establish_b]Forte, with his quiet strength and his haunted eyes, didn't see the grift."
     },
     {
       "t": "narrate",
@@ -179,7 +179,7 @@
     },
     {
       "t": "narrate",
-      "text": "His phone buzzed. Rattling against the formica countertop."
+      "text": "[shot:insert phone]His phone buzzed. Rattling against the formica countertop."
     },
     {
       "t": "narrate",
@@ -203,7 +203,7 @@
     },
     {
       "t": "narrate",
-      "text": "His people."
+      "text": "[shot:establish]His people."
     },
     {
       "t": "narrate",
@@ -247,7 +247,7 @@
     },
     {
       "t": "narrate",
-      "text": "What did it all mean. This frantic scramble. This ambition soured into manipulation. This dumpster fire life."
+      "text": "[shot:establish_b]What did it all mean. This frantic scramble. This ambition soured into manipulation. This dumpster fire life."
     },
     {
       "t": "narrate",
@@ -329,7 +329,7 @@
     },
     {
       "t": "narrate",
-      "text": "Jimmy did know it. Jimmy had not, however, told Q. Paul that he knew it. The Iron Crow was a place Jimmy had drunk at, once, on his second week in New Orleans, and had not been back to. He had not told anyone about the visit. The fact that Q. Paul knew about the visit was, itself, a piece of information."
+      "text": "[shot:establish]Jimmy did know it. Jimmy had not, however, told Q. Paul that he knew it. The Iron Crow was a place Jimmy had drunk at, once, on his second week in New Orleans, and had not been back to. He had not told anyone about the visit. The fact that Q. Paul knew about the visit was, itself, a piece of information."
     },
     {
       "t": "say",
@@ -362,7 +362,7 @@
     },
     {
       "t": "narrate",
-      "text": "He poured another finger of the warm bourbon. He drank it. He set the glass down. He looked at his reflection in the microwave door."
+      "text": "[shot:insert microwave]He poured another finger of the warm bourbon. He drank it. He set the glass down. He looked at his reflection in the microwave door."
     },
     {
       "t": "narrate",
@@ -391,7 +391,7 @@
     {
       "t": "say",
       "char": "jimmy",
-      "text": "Hey, kid."
+      "text": "[shot:closeup jimmy]Hey, kid."
     },
     {
       "t": "show",
@@ -426,7 +426,7 @@
     },
     {
       "t": "narrate",
-      "text": "Jimmy was quiet for a moment."
+      "text": "[shot:establish_b]Jimmy was quiet for a moment."
     },
     {
       "t": "say",
@@ -446,7 +446,7 @@
     {
       "t": "say",
       "char": "jimmy",
-      "text": "I'm coming. Stall him. Don't sign anything. Don't agree to anything. If he asks you about permits, you tell him you'll call your lawyer."
+      "text": "[shot:closeup jimmy]I'm coming. Stall him. Don't sign anything. Don't agree to anything. If he asks you about permits, you tell him you'll call your lawyer."
     },
     {
       "t": "say",
@@ -508,7 +508,7 @@
     },
     {
       "t": "narrate",
-      "text": "He set the second phone down. He put the first phone in his pocket. He pulled on his jeans, the same jeans he had been wearing yesterday and that had a small dried smear of something on the left thigh he chose not to investigate. He pulled on his boots. He took one last swallow of the bourbon. He left the bottle uncapped, because uncapping it had always felt like a commitment and recapping it had always felt like a lie, and he had stopped lying to bottles in 2017."
+      "text": "[shot:insert phone]He set the second phone down. He put the first phone in his pocket. He pulled on his jeans, the same jeans he had been wearing yesterday and that had a small dried smear of something on the left thigh he chose not to investigate. He pulled on his boots. He took one last swallow of the bourbon. He left the bottle uncapped, because uncapping it had always felt like a commitment and recapping it had always felt like a lie, and he had stopped lying to bottles in 2017."
     },
     {
       "t": "narrate",
@@ -536,7 +536,7 @@
     },
     {
       "t": "narrate",
-      "text": "[beat:hit][shake rate=10 level=3]I am the operated.[/shake]"
+      "text": "[shot:establish][beat:hit][shake rate=10 level=3]I am the operated.[/shake]"
     },
     {
       "t": "narrate",

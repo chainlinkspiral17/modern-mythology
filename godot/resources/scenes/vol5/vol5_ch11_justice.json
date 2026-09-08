@@ -67,7 +67,7 @@
     },
     {
       "t": "narrate",
-      "text": "She was going to draft the contract first."
+      "text": "[shot:insert contract]She was going to draft the contract first."
     },
     {
       "t": "narrate",
@@ -95,7 +95,7 @@
     },
     {
       "t": "narrate",
-      "text": "Erica, this morning, did not fully recognize the woman who was building it."
+      "text": "[shot:establish]Erica, this morning, did not fully recognize the woman who was building it."
     },
     {
       "t": "narrate",
@@ -158,7 +158,7 @@
     },
     {
       "t": "narrate",
-      "text": "He set the coffee on the desk. He did not, with the specific tact that had made him invaluable, look at her monitor. He stood for a moment in the doorway, considering, then said:"
+      "text": "[shot:insert desk]He set the coffee on the desk. He did not, with the specific tact that had made him invaluable, look at her monitor. He stood for a moment in the doorway, considering, then said:"
     },
     {
       "t": "say",
@@ -178,7 +178,7 @@
     {
       "t": "say",
       "char": "erica",
-      "text": "Without an appointment."
+      "text": "[shot:closeup erica]Without an appointment."
     },
     {
       "t": "say",
@@ -333,7 +333,7 @@
     },
     {
       "t": "narrate",
-      "text": "Slide 7: The Twist. But what is truly real when nothing ever stays the same?"
+      "text": "[shot:establish]Slide 7: The Twist. But what is truly real when nothing ever stays the same?"
     },
     {
       "t": "narrate",
@@ -479,7 +479,7 @@
     },
     {
       "t": "narrate",
-      "text": "When the voicemail notification appeared, she did not, this time, listen to it. She did not listen to it at the office. She did not listen to it in the elevator down. She did not listen to it walking the three blocks to the coffee shop where Ben was waiting, on time, with two flat whites and a small paper bag containing one chocolate croissant that he had bought, knowing she would not order it but would eat half of it."
+      "text": "[shot:establish]When the voicemail notification appeared, she did not, this time, listen to it. She did not listen to it at the office. She did not listen to it in the elevator down. She did not listen to it walking the three blocks to the coffee shop where Ben was waiting, on time, with two flat whites and a small paper bag containing one chocolate croissant that he had bought, knowing she would not order it but would eat half of it."
     },
     {
       "t": "narrate",
