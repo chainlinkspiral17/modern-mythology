@@ -163,7 +163,7 @@ echo ""
 # FLOAT reached 2 on 2026-09-09 (two palmetto trunks on terrain samples)
 # after 1408 → 713 → 353 → 102 → 2 across five class passes. ZERO-
 # REGRESSION CEILING 2: drive it down; never raise it.
-FLOAT_CEILING=2
+FLOAT_CEILING=0
 N="$(echo "$GLINE" | grep -oE "FLOAT [0-9]+" | grep -oE "[0-9]+$")"
 if [ "${N:-999}" -gt "$FLOAT_CEILING" ]; then
     echo "$GOUT" | grep "^   FLOAT"

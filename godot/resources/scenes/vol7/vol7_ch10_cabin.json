@@ -112,7 +112,7 @@
       "t": "say"
     },
     {
-      "text": "[shot:insert wooden_box]Per pulled the canvas coat from where he had hung it on the peg and put it on. He picked up a wooden box from the bench by the door. The box was about a foot long and six inches deep, with a hinged lid. The box was old. The lid had a spiral carved into it in a hand Kai did not, for the moment, recognize as the hand it was.",
+      "text": "[shot:insert chest]Per pulled the canvas coat from where he had hung it on the peg and put it on. He picked up a wooden box from the bench by the door. The box was about a foot long and six inches deep, with a hinged lid. The box was old. The lid had a spiral carved into it in a hand Kai did not, for the moment, recognize as the hand it was.",
       "t": "narrate"
     },
     {
@@ -399,7 +399,7 @@
     },
     {
       "t": "narrate",
-      "text": "[shot:insert wooden_box]Per set the wooden box on the table, between the bowls, and did not open it. Nobody asked him to. The kettle ticked toward its whistle."
+      "text": "[shot:insert chest]Per set the wooden box on the table, between the bowls, and did not open it. Nobody asked him to. The kettle ticked toward its whistle."
     },
     {
       "t": "choice",

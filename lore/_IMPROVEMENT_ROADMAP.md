@@ -1180,6 +1180,18 @@ name says. OUTSIDE joins POKE · CHAIR · DESK · LANE · BED as a
 zero-ceiling gate. Every geometry class the grammar knows is now
 gated except INTRA (massing, informational) and FLOAT (ceiling 2).
 
+**2026-09-10 (xiii) · FLOAT at zero; blind cues worked.** The two
+palmetto trunks are rooted 0.25 m into their sampled ground (a plant
+on a lot apron or lawn box showed daylight under it) — FLOAT 0,
+gated at 0. Every geometry class the grammar knows is now a zero
+gate except INTRA (massing, informational). Blind cues: ch10's
+`insert wooden_box` renamed to the cabin's authored `chest` marker;
+marker_author grew `--cue <locale>:<cue>` and authored the Houston
+design studio's phone and desk inserts and the bakery's chest for
+the box's second scene. What remains blind is honest: closeups of
+Coach Dale and Douglas (cast, substituted at runtime), "hands" ×2
+(a person's), a tattoo, a press and a window no builder has.
+
 **2026-08-19 · PER-STICK VOICE SWEEP VERDICT (voice draft 4).**
 Ran the leakage grep (TODO/WIP/placeholder/implemented/deferred/
 stub) and a string survey across EVERY stick directory: estuary_4,

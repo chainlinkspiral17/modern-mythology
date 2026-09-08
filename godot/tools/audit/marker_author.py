@@ -18,6 +18,7 @@ Markers are appended as position-form Marker3D nodes.
 
     python3 godot/tools/audit/marker_author.py --dry [locale…]
     python3 godot/tools/audit/marker_author.py [locale…]
+    python3 godot/tools/audit/marker_author.py --cue <locale>:<cue>…   # one marker for a blind cue
 """
 import collections
 import json
@@ -162,10 +163,64 @@ def author(locale, tscn_path, glb, cam_g, prose, dry):
     return len(made)
 
 
+def author_cue(locale, cue, dry):
+    """--cue <locale>:<cue>: author ONE shot_insert_<cue> for an authored
+    cue that has an object but no marker (shot_marker_audit's blind list)."""
+    path = os.path.join(M.LOCALES_TSCN, locale + ".tscn")
+    src_txt = open(path).read()
+    if ('name="shot_insert_%s"' % cue) in src_txt:
+        print("== %s: shot_insert_%s exists" % (locale, cue))
+        return 0
+    gm = re.search(r'path="res://assets/3d/locales/(\w+)\.glb"', src_txt)
+    glb = gm.group(1) if gm else locale
+    cams = preset_cameras()
+    cam = next((c for _p, (sc, c) in cams.items() if sc == locale), None)
+    boxes = VO.boxes_for(glb)
+    if cam is None or not boxes:
+        print("== %s: no preset camera or boxes" % locale)
+        return 0
+    lo, hi = R.locale_bounds(boxes)
+    name_geo = [(b[0], (b[1][0], b[1][2], -b[1][1])) for b in boxes]
+    hits = M.matches_for(cue, name_geo)
+    if not hits:
+        print("== %s: cue %s resolves to no geometry" % (locale, cue))
+        return 0
+    subj = {h[0] for h in hits}
+    _an, tgt = M.subject_target(hits, cam)
+    for score, npos, d, el in R.candidates(tgt, R.subject_size(hits), cam, boxes, subj, lo, hi, hits)[:60]:
+        _a2, tgt2 = M.subject_target(hits, npos)
+        rx, ry = R.aim(npos, tgt2)
+        if VO._occlusion(R.to_b(npos), R.to_b(tgt2), boxes, subj):
+            continue
+        st = VO.frame_stats(R.to_b(npos), rx, ry, 35.0, boxes)
+        if st["escape"] >= VO.EMPTY_FRAC and glb not in VO.NO_EMPTY:
+            continue
+        print("== %s: shot_insert_%s at (%.1f, %.1f, %.1f) %.1fm · %+.0f°" % (locale, cue, npos[0], npos[1], npos[2], d, el))
+        if not dry:
+            blk = ["", "; authored by marker_author.py --cue (2026-09-10): the chapter cued it, nothing framed it",
+                   '[node name="shot_insert_%s" type="Marker3D" parent="." groups=["vn_shot"]]' % cue,
+                   "position = Vector3(%.3f, %.3f, %.3f)" % npos,
+                   "rotation = Vector3(%.4f, %.4f, 0.0)" % (rx, ry),
+                   "metadata/fov = 35.0", ""]
+            with open(path, "a") as f:
+                f.write("\n".join(blk))
+        return 1
+    print("== %s: cue %s — every clear position is occluded or empty" % (locale, cue))
+    return 0
+
+
 def main():
     dry = "--dry" in sys.argv
     only = [a for a in sys.argv[1:] if not a.startswith("--")]
     P.A.install_stubs()
+    if "--cue" in sys.argv:
+        n = 0
+        for a in only:
+            if ":" in a:
+                loc, cue = a.split(":", 1)
+                n += author_cue(loc, cue, dry)
+        print("\n%d cue marker(s) %s" % (n, "planned" if dry else "authored"))
+        return
     cams = preset_cameras()
     scene_cam = {}
     for preset, (sc, cam) in cams.items():

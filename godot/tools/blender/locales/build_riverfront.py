@@ -2166,8 +2166,10 @@ def build_road_network():
                          0.04, 0.36 * bs, grass_a, segments=4)
         else:  # palmetto — bigger feature plant, 1.5m tall fan
             # short trunk
-            make_cyl(f"Palmetto_{bi}_trunk", (bx, by, bz_base + 0.25 * bs),
-                     0.10, 0.50 * bs, (0.32, 0.24, 0.16, 1.0), segments=6)
+            # trunk rooted 0.25·bs below the sampled ground so a plant on a
+            # lot apron or lawn box never shows daylight under it (2026-09-10)
+            make_cyl(f"Palmetto_{bi}_trunk", (bx, by, bz_base + 0.125 * bs),
+                     0.10, 0.75 * bs, (0.32, 0.24, 0.16, 1.0), segments=6)
             # fan fronds — three flattened spheres
             crown_z = bz_base + 0.55 * bs
             make_sphere(f"Palmetto_{bi}_frond_a", (bx - 0.35 * bs, by, crown_z),
