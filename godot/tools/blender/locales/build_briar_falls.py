@@ -129,7 +129,7 @@ def build_building():
                      COL_SIGN if (r + cslot) % 2 == 0 else (0.55, 0.62, 0.48, 1.0))
     # The bench beside the building (the mother's)
     make_box("Bldg_Bench_Seat", (-4.6, 7.35, 0.44), (1.5, 0.42, 0.06), COL_TIMBER)
-    make_box("Bldg_Bench_Back", (-4.6, 7.55, 0.75), (1.5, 0.06, 0.40), COL_TIMBER)
+    make_box("Bldg_Bench_Back", (-4.6, 7.55, 0.66), (1.5, 0.06, 0.40), COL_TIMBER)   # on the seat
     for lx in (-5.2, -4.0):
         make_box(f"Bldg_Bench_Leg_{lx:.1f}", (lx, 7.38, 0.21), (0.08, 0.36, 0.42), COL_STONE_DK)
     # Info board beside the walk: two posts + cream map panel

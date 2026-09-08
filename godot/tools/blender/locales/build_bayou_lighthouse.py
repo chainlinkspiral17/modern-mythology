@@ -10,7 +10,7 @@ _BT = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)), 
 if _BT not in sys.path: sys.path.insert(0, _BT)
 import math
 from _props import palette as P
-from _props.geometry import clear_scene, make_box, make_cyl, export_glb
+from _props.geometry import clear_scene, make_box, make_cyl, make_rot_box, export_glb
 from _props.structure import make_floor, make_ceiling
 from _props.decor import make_wall_clock, make_calendar
 from _props.safety import make_smoke_detector, make_sprinkler
@@ -61,8 +61,12 @@ def build_spiral_stair():
         mx = math.cos(ang) * (inner_r + outer_r)/2.0
         my = math.sin(ang) * (inner_r + outer_r)/2.0
         sz = (si + 1) * (center_pole_h / STEPS) - 0.10
-        # Tread
-        make_box(f"Stair_Tread_{si}", (mx, my, sz), (0.50, 0.40, 0.04), COL_STAIR_IRON)
+        # Tread — a RADIAL plank from the centre pole to the outer rail
+        # (2026-09-08: was a 0.5 m square floating mid-radius)
+        tr = (inner_r - 0.15 + outer_r - 0.15) / 2.0      # 0.25 .. 1.95 (wall at 2.10)
+        make_rot_box(f"Stair_Tread_{si}",
+                     (math.cos(ang) * tr, math.sin(ang) * tr, sz),
+                     (outer_r - inner_r, 0.40, 0.04), COL_STAIR_IRON, yaw=ang)
         # Banister post (every other)
         if si % 2 == 0:
             bx = math.cos(ang) * (outer_r - 0.06)
@@ -84,8 +88,8 @@ def build_keepers_quarters():
     for sgn in (-1, +1):
         make_box(f"Desk_Leg_{sgn:+d}", (dx + sgn*0.34, dy, 0.36), (0.06, 0.46, 0.72), COL_DESK)
     # Logbook + oil lamp on the desk
-    make_box("Desk_Logbook", (dx-0.20, dy, 0.78), (0.24, 0.32, 0.04), COL_PAPER)
-    make_box("Desk_Pencil", (dx-0.20, dy+0.18, 0.78), (0.16, 0.02, 0.01), (0.62, 0.42, 0.20, 1.0))
+    # (the open logbook, the mug and the thermos are authored by the
+    # detail passes below, on THIS desk since 2026-09-08)
     # Oil lamp
     make_cyl("Lamp_Base", (dx+0.28, dy, 0.80), 0.06, 0.08, COL_BRASS)
     make_cyl("Lamp_Reservoir", (dx+0.28, dy, 0.92), 0.05, 0.10, COL_LENS_GLASS)
@@ -159,9 +163,13 @@ def build_hermit_dressing():
       · Wall calendar · the last Tuesday of the manned station
         circled in red
     """
-    desk_cx = 0.0
-    desk_cy = +1.10
-    desk_top_z = 0.78
+    # The writing desk (build_ground_floor): E wall, RADIUS-0.80 / -0.20,
+    # top surface 0.76. (2026-09-08: this pass had the desk at (0, 1.1)
+    # — the open floor under the stair — so the logbook, mug and thermos
+    # hung in the air.)
+    desk_cx = RADIUS - 0.80
+    desk_cy = -0.20
+    desk_top_z = 0.76
 
     # Logbook open on the desk
     log_x = desk_cx - 0.10
@@ -234,8 +242,8 @@ def build_hermit_dressing():
                  segments=6, axis='Y')
 
     # Coffee mug + thermos
-    mug_x = desk_cx + 0.45
-    mug_y = desk_cy
+    mug_x = desk_cx + 0.12
+    mug_y = desk_cy + 0.14
     make_cyl("HermitMug_Body",
              (mug_x, mug_y, desk_top_z + 0.06),
              0.040, 0.11,
@@ -310,9 +318,9 @@ def build_hermit_wave2_props():
       · Kerosene reserve heater in the bunk room (glow + flicker)
       · Cypriane's round 7-year-old-hand midnight log entry
     """
-    desk_x = 0.0
-    desk_y = -1.20
-    desk_top_z = 0.78
+    desk_x = RADIUS - 0.80      # the real desk (see above)
+    desk_y = -0.20
+    desk_top_z = 0.76
 
     # ── the_relief_techs_arrival ────────────────────────────────
     lb_x = desk_x - 0.60
@@ -398,7 +406,7 @@ def build_hermit_wave2_props():
     heater_x = -1.00
     heater_y = +2.60
     make_box("KeroseneHeater_Body",
-             (heater_x, heater_y, 0.36),
+             (heater_x, heater_y, 0.21),
              (0.24, 0.28, 0.42),
              (0.42, 0.40, 0.38, 1.0))
     make_cyl("KeroseneHeater_Vent",

@@ -131,7 +131,14 @@ def build_dressing():
         make_box(f"Pin_{pi}", (bbx+0.03, oy, oz), (0.01, 0.24, 0.18), col)
     # Bookshelf of paperbacks against the north wall
     shx = ROOM_W/2.0 - 0.9
-    make_chamfer_box("Bookshelf_Body", (shx, ROOM_D-0.20, 0.90), (0.90, 0.26, 1.80), COL_WOOD)
+    # (2026-09-08: was one solid block with the books INSIDE it —
+    # now a carcass: back, sides, top, three boards the books sit on)
+    make_box("Bookshelf_Back", (shx, ROOM_D-0.08, 0.90), (0.90, 0.02, 1.80), COL_WOOD)
+    for sx_ in (-1, 1):
+        make_box(f"Bookshelf_Side_{sx_:+d}", (shx + sx_ * 0.44, ROOM_D-0.20, 0.90), (0.02, 0.26, 1.80), COL_WOOD)
+    make_box("Bookshelf_Top", (shx, ROOM_D-0.20, 1.79), (0.90, 0.26, 0.02), COL_WOOD)
+    for r_ in range(3):
+        make_box(f"Bookshelf_Board_{r_}", (shx, ROOM_D-0.20, 0.26 + r_*0.52), (0.86, 0.24, 0.02), COL_WOOD)
     for r in range(3):
         for c in range(7):
             make_box(f"Book_{r}_{c}", (shx-0.42+c*0.12, ROOM_D-0.22, 0.42+r*0.52),

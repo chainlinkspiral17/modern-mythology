@@ -100,6 +100,7 @@ def build_concession_counter():
 
 def build_popcorn_machine():
     px, py = +1.00, 3.20
+    make_box("Popcorn_Cart", (px, py, 0.50), (0.54, 0.54, 1.00), COL_POPCORN_RED)   # the cart under the machine (2026-09-08)
     make_box("Popcorn_Base", (px, py, 1.20), (0.50, 0.50, 0.40), COL_POPCORN_RED)
     make_box("Popcorn_Kettle_BG", (px, py, 1.60), (0.50, 0.50, 0.40), COL_POPCORN_RED)
     make_box("Popcorn_Window", (px, py-0.20, 1.60), (0.42, 0.005, 0.36), COL_GLASS)

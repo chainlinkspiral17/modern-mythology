@@ -826,6 +826,38 @@ parts and sign faces — mounted classes the grammar still lacks),
 'manga'/'book'/'deck' (racks whose tier boards are not modelled — add
 the boards, not a rule); then per-class gates as each hits zero.
 
+**2026-09-09 · FLOAT classes two through nine; a second phantom
+desk.** The next FLOAT classes, each fixed as a class: BACK — seven
+bench/chair backs hanging 5–17 cm over their seats (Briar Falls, Roy's
+folding chair, every Harmony park/pond/skatepark bench, the riverboat
+purser's chair, the Roberts kitchen chairs) lowered onto them; BASE —
+the parish cemetery's 48 vaults stood 8 cm off the grass (cap and
+cross followed), armchair/couch bases in the cabin, Lena's, Wagner's
+and the Daily Grind extended to the floor, the drive-in popcorn
+machine given the cart it stood on; BOOK/MANGA — Maya's bookshelf was
+one solid block with the paperbacks INSIDE it, now a carcass with
+three boards; Cosmic Comics' manga wall and YA shelf got boards; BLOCK
+— Christian Ice's freezer was a solid box with the blocks inside it
+and the block grid a metre west of it — a shell now, blocks stacked on
+its floor; TREAD/STAIR — the four kitchen "stair mouths" were three
+slabs at one xy (a ladder of shelves) → solid steps advancing into the
+stair; gym, Cedar Tower lobby and Montreal row steps solid to the
+ground; the lighthouse spiral's treads are RADIAL planks from the
+centre pole (make_rot_box) instead of squares floating mid-radius;
+BODY — kerosene heater, backup ice chest, the Henderson Telecaster
+down onto their floors/stand. The bayou lighthouse had the courthouse
+bug: two detail passes put the desk at (0, 1.1) and (0, -1.2) while it
+stands at (RADIUS-0.8, -0.2) — logbook, mug, thermos, laptop bag moved
+to the real desk, the closed placeholder logbook removed. Grammar: a
+sibling that RUNS PAST a part (post through a sign face, frame side
+beside its mullion, body a leg hangs from) holds it. Marker: "fardoor"
+resolves to Far_Door (cedar closeup was reading the glass behind the
+door as its subject). Deck rebuild: 24 builders. NEXT DRAFT: FLOAT
+residue by class again (brochure racks, antlers/portraits (mounted),
+ropes/bells (hanging — a HANGING class from a sibling ABOVE), crosses
+on spires (cone bbox), carousel horses); the INTRA massing residue
+stays informational.
+
 **2026-08-19 · PER-STICK VOICE SWEEP VERDICT (voice draft 4).**
 Ran the leakage grep (TODO/WIP/placeholder/implemented/deferred/
 stub) and a string survey across EVERY stick directory: estuary_4,

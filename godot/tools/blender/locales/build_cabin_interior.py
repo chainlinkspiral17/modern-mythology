@@ -150,7 +150,7 @@ def build_stove_corner():
     make_cyl("Stove_SideTable_Post", (1.60, 4.95, 0.27), 0.05, 0.52, COL_WOOD, segments=8)
     # The two armchairs, at the stove where the prose puts them
     for ci, (cx, cy, tag) in enumerate(((1.35, 4.35, "A"), (0.85, 5.35, "B"))):
-        make_box(f"Armchair_{tag}_Base", (cx, cy, 0.26), (0.66, 0.66, 0.40), (0.44, 0.36, 0.28, 1.0))
+        make_box(f"Armchair_{tag}_Base", (cx, cy, 0.23), (0.66, 0.66, 0.46), (0.44, 0.36, 0.28, 1.0))   # to the floor
         make_box(f"Armchair_{tag}_Back", (cx + 0.28, cy, 0.66), (0.14, 0.66, 0.60), (0.40, 0.32, 0.25, 1.0))
         for ay in (cy - 0.31, cy + 0.31):
             make_box(f"Armchair_{tag}_Arm_{ay:.2f}", (cx, ay, 0.50), (0.62, 0.12, 0.36), (0.40, 0.32, 0.25, 1.0))

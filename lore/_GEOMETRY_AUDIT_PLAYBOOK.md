@@ -689,6 +689,34 @@ failure paths separately before concluding anything.
   audits (ribbons themselves as fill) and are excluded from the
   overlap check. Do not "fix" this with a ceiling.
 
+### 2026-09-09 · solid things are solid; a phantom desk is a pattern
+
+- **A shelf is a carcass, a freezer is a shell.** Anything the player
+  is meant to see INTO must be built as back + sides + boards. A solid
+  block with the contents authored inside it hides the contents and
+  reads as floating to every audit. Maya's paperbacks and Christian
+  Ice's blocks were both invisible in the GLB.
+- **A stair is a solid, or it has stringers.** Slabs at rising z with
+  air between them are a ladder of shelves. Either extend each step
+  to the floor (kitchens, gym, lobby, Montreal rows) or model the
+  structure that carries it (the spiral's radial planks from the
+  pole). Then move whatever was tucked under the old air (the gym's
+  deadlift platform).
+- **The phantom-desk bug is a PATTERN, not a courthouse quirk.** The
+  lighthouse's detail passes did the same: a hard-coded desk origin
+  that never matched the builder's. Any pass that writes `desk_x =`
+  from a comment must read it from the builder's constant, and the
+  FLOAT audit's "0.79 m above the floor" is the tell.
+- **A sibling that runs past you holds you.** A sign face beside its
+  post, a mullion inside its frame, a leg under a body: support is
+  not only "something topping out just under me". Check the sibling
+  window before the top window.
+- **Fix your own regressions before the class you came for.** Solid
+  steps hit the platform under them; radial treads reached the wall;
+  ziggurat steps nested. Three edits, three new clips, all caught by
+  re-running the touched locales — never commit a class fix on the
+  class audit alone.
+
 ### 2026-09-08 (night) · a class of 82 is a builder habit, not 82 bugs
 
 - **Group floats by part class before reading one.** 1408 FLOAT lines

@@ -71,16 +71,16 @@ def build_vaults():
             sz_y = 0.80
             sz_z = 1.40 if (vi % 4) == 1 else 1.20
             vc = COL_VAULT_WHITE if (vi % 5) != 0 else COL_VAULT_SHADOW
-            make_box(f"Vault_{vi}_Base", (vx, vy, sz_z/2.0 + 0.10),
+            make_box(f"Vault_{vi}_Base", (vx, vy, sz_z/2.0 + 0.02),   # on the grass (2026-09-08)
                      (sz_x, sz_y, sz_z), vc)
             # Cap on top
-            make_box(f"Vault_{vi}_Cap", (vx, vy, sz_z + 0.16),
+            make_box(f"Vault_{vi}_Cap", (vx, vy, sz_z + 0.08),
                      (sz_x + 0.10, sz_y + 0.10, 0.12), COL_VAULT_SHADOW)
             # Cross on top for ~ 1 in 6
             if vi % 6 == 0:
-                make_box(f"Vault_{vi}_Cross_V", (vx, vy, sz_z + 0.50),
+                make_box(f"Vault_{vi}_Cross_V", (vx, vy, sz_z + 0.34),
                          (0.06, 0.06, 0.40), COL_BRASS)
-                make_box(f"Vault_{vi}_Cross_H", (vx, vy, sz_z + 0.56),
+                make_box(f"Vault_{vi}_Cross_H", (vx, vy, sz_z + 0.44),
                          (0.30, 0.06, 0.06), COL_BRASS)
             # Plaque on the S face
             make_box(f"Vault_{vi}_Plaque", (vx, vy - sz_y/2.0 - 0.01, sz_z*0.6 + 0.10),

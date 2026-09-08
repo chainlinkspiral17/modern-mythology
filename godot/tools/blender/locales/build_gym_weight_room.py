@@ -60,8 +60,8 @@ def build_shell():
                  size_y=ROOM_D + 0.4, with_grid=False, with_stains=True)
     # Basement stairs coming down along the east wall from the door
     for s in range(5):
-        make_box(f"Stair_{s}", (2.6, 0.25 + s * 0.30, 1.05 - s * 0.21),
-                 (1.6, 0.32, 0.10), COL_STEP)
+        make_box(f"Stair_{s}", (2.6, 0.25 + s * 0.30, (1.10 - s * 0.21) / 2.0),
+                 (1.6, 0.32, 1.10 - s * 0.21), COL_STEP)   # solid to the floor (2026-09-08)
     make_box("Stair_Rail", (1.85, 0.9, 1.15), (0.06, 1.6, 0.06), COL_RACK)
     # Exposed ceiling pipe run (basement)
     make_cyl("Pipe", (-1.2, ROOM_D / 2.0, CEIL - 0.12), 0.07, ROOM_D, COL_FIXTURE,
@@ -173,14 +173,16 @@ def build_vol6_hero_props_2026_08():
     BOLT (empty hole + the bolt lying in the dust below), and the
     80s — the heaviest pair on the rack, oversized and worn."""
     # Deadlift platform mid-east floor.
-    px, py = 2.45, 1.9
-    make_box("DL_Platform", (px, py, 0.025), (2.0, 2.0, 0.05), (0.42, 0.30, 0.20, 1.0))
-    for si, syo in enumerate([-0.72, 0.72]):
-        make_box(f"DL_Rubber_{si}", (px, py + syo, 0.055), (2.02, 0.52, 0.012), (0.12, 0.12, 0.13, 1.0))
-    make_cyl("DL_Bar", (px, py, 0.28), 0.025, 2.2, COL_IRON, segments=8, axis='X')
+    # (2026-09-08: the platform ran under the basement stairs' foot;
+    # now between the stair foot (y 1.6) and the second bench's upright)
+    px, py = 2.6, 2.55
+    make_box("DL_Platform", (px, py, 0.025), (1.6, 1.5, 0.05), (0.42, 0.30, 0.20, 1.0))
+    for si, syo in enumerate([-0.45, 0.45]):
+        make_box(f"DL_Rubber_{si}", (px, py + syo, 0.055), (1.62, 0.52, 0.012), (0.12, 0.12, 0.13, 1.0))
+    make_cyl("DL_Bar", (px, py, 0.28), 0.025, 2.0, COL_IRON, segments=8, axis='X')
     for sgn in (-1, 1):
         for pi, pr in enumerate((0.22, 0.22)):
-            make_cyl(f"DL_Plate_{sgn:+d}_{pi}", (px + sgn * (0.85 + pi * 0.06), py, 0.28),
+            make_cyl(f"DL_Plate_{sgn:+d}_{pi}", (px + sgn * (0.75 + pi * 0.06), py, 0.28),
                      pr, 0.05, COL_PLATE, segments=14, axis='X')
     make_cyl("DL_Chalk_Hand", (px - 0.6, py - 0.55, 0.06), 0.09, 0.01, COL_CHALK, segments=8)
     # Lat pulldown stack against the N wall, E of the squat rack.

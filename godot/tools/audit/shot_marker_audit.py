@@ -108,6 +108,7 @@ SYNONYMS = {
     "door": ["door", "doorway"],
     # 2026-09-07 · the position-form markers came into the audit and
     # sixteen insert cues had no geometry answering to their names
+    "fardoor": ["far_door"],
     "deckwall": ["deck_wall", "deckwall"], "boxes": ["box", "crate", "carton"],
     "meatcase": ["meat_case", "meat"], "speak_and_spell": ["speak_spell"],
     "oneway": ["one_way", "oneway", "mirror"], "setlist": ["set_list", "setlist"],

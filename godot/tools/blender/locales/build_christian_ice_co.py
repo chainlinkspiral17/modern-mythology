@@ -91,14 +91,21 @@ def build_retail_counter():
 def build_ice_block_freezer():
     # Glass-fronted upright freezer behind the counter
     fx, fy = 0.0, 3.80
-    make_box("BlockFreezer_Body", (fx, fy, 1.20), (3.20, 0.80, 2.40), COL_FREEZER_BODY)
+    # (2026-09-08: the freezer was one solid box with the blocks
+    # INSIDE it — invisible — and the block grid sat 1 m west of it
+    # with 10 cm of air between rows. Now a shell around a stack.)
+    make_box("BlockFreezer_Back", (fx, fy + 0.39, 1.20), (3.20, 0.02, 2.40), COL_FREEZER_BODY)
+    for sx_ in (-1, 1):
+        make_box(f"BlockFreezer_Side_{sx_:+d}", (fx + sx_ * 1.59, fy, 1.20), (0.02, 0.80, 2.40), COL_FREEZER_BODY)
+    make_box("BlockFreezer_Top", (fx, fy, 2.39), (3.20, 0.80, 0.02), COL_FREEZER_BODY)
+    make_box("BlockFreezer_Floor", (fx, fy, 0.05), (3.20, 0.80, 0.10), COL_FREEZER_BODY)
     make_box("BlockFreezer_Glass", (fx, fy-0.40, 1.40), (3.00, 0.005, 2.00), COL_FROST_GLASS)
-    # Stacked ice blocks behind the glass (5x3 grid)
+    # Stacked ice blocks behind the glass (5x3 grid, block on block)
     for col in range(5):
         for row in range(3):
             ix = -1.20 + col * 0.60
-            iz = 0.50 + row * 0.50
-            make_box(f"IceBlock_{col}_{row}", (fx + ix - 1.0, fy, iz),
+            iz = 0.30 + row * 0.40
+            make_box(f"IceBlock_{col}_{row}", (fx + ix, fy, iz),
                      (0.50, 0.40, 0.40), COL_ICE_BLOCK)
     # Frost coil pipe visible at the top
     make_cyl("FrostCoil", (fx, fy-0.30, 2.30), 0.05, 3.00, COL_PIPE, axis='X')

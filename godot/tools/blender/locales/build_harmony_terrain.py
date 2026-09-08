@@ -2378,7 +2378,7 @@ def build_pond_water():
                              (0.035, 0.035, 0.42), (0.30, 0.22, 0.16, 1.0))
             _make_box_local(f"PondBench_{name}_{bi}_Back",
                             (bx + back_off[0], by + back_off[1],
-                             bz + 0.82),
+                             bz + 0.66),
                             back_sz, (0.42, 0.30, 0.20, 1.0))
 
         # Brown park sign on the south-side of the path
@@ -3061,7 +3061,7 @@ def build_oliver_tree_memorial_park():
             back_sz = (1.5, 0.06, 0.45)
         _make_box_local(f"OTPark_Bench_{i}_Back",
                         (bx + back_off_x, by + back_off_y,
-                         bz + 0.85),
+                         bz + 0.68),
                         back_sz, COL_BENCH)
     # Gazebo on the top terrace step · floor matches the REAL
     # terrace_top_z (computed from mesh_z, not the analytic park_z)
@@ -4182,7 +4182,7 @@ def build_oliver_tree_skatepark():
                          (bx + lx_ * (seat_sz[0] / 2 - 0.08), by + ly_ * (seat_sz[1] / 2 - 0.05), pz + 0.21),
                          (0.035, 0.035, 0.42), (0.30, 0.22, 0.16, 1.0))
         _make_box_local(f"Skp_Bench_{i}_Back",
-                        (bx + bx_back, by + by_back, pz + 0.85),
+                        (bx + bx_back, by + by_back, pz + 0.68),
                         back_sz, (0.42, 0.30, 0.20, 1.0))
 
     # ── PERIMETER TREES · 10 old-growth oaks ringing the park ──
@@ -4276,7 +4276,7 @@ def build_oliver_tree_skatepark():
                         (bx, by, pz + 0.43),
                         (1.6, 0.42, 0.06), (0.42, 0.30, 0.20, 1.0))
         _make_box_local(f"Skp_EntryBench_{i}_Back",
-                        (bx, by + 0.18, pz + 0.85),
+                        (bx, by + 0.18, pz + 0.68),
                         (1.6, 0.06, 0.45), (0.42, 0.30, 0.20, 1.0))
 
     # ── ENTRY MARKER · small post with cyan beacon top so the

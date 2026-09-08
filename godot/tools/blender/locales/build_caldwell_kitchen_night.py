@@ -90,7 +90,7 @@ def build_hero_props():
     make_cyl("Water_Glass", (-1.55, 3.30, 1.02), 0.035, 0.12, (0.55, 0.62, 0.66, 0.5), segments=8)
     make_box("Stair_Newel", (0.92, 0.15, 0.60), (0.10, 0.10, 1.20), (0.46, 0.34, 0.22, 1.0))
     for s in range(3):
-        make_box(f"Stair_Tread_{s}", (1.4, 0.20, 0.16 + s * 0.18), (0.80, 0.28, 0.05), (0.46, 0.34, 0.22, 1.0))
+        make_box(f"Stair_Tread_{s}", (1.4, 0.20 + s * 0.28, (0.185 + s * 0.18) / 2.0), (0.80, 0.28, 0.185 + s * 0.18), (0.46, 0.34, 0.22, 1.0))   # solid step (2026-09-08)
     sx, sy = ROOM_W/4.0, ROOM_D-1.0
     for bi, (ox, oy) in enumerate(((-0.16, -0.16), (0.16, -0.16), (-0.16, 0.16), (0.16, 0.16))):
         make_cyl(f"Stove_Burner_{bi}", (sx+ox, sy+oy, 0.95), 0.09, 0.012, (0.16, 0.16, 0.18, 1.0), segments=10)

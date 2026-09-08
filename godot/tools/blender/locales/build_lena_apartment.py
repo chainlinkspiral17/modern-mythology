@@ -160,7 +160,7 @@ def build_front_room():
     make_box("Wool_Blanket", (sx-0.30, sy+0.36, 0.945), (0.70, 0.24, 0.06), (0.56, 0.40, 0.30, 1.0))
     # The chair by the window + the small wooden side table (the
     # Estuary 7 beat happens on this table)
-    make_box("WChair_Base", (1.70, 1.60, 0.26), (0.72, 0.72, 0.40), (0.36, 0.42, 0.38, 1.0))
+    make_box("WChair_Base", (1.70, 1.60, 0.23), (0.72, 0.72, 0.46), (0.36, 0.42, 0.38, 1.0))   # to the floor
     make_box("WChair_Back", (1.70, 1.94, 0.66), (0.72, 0.20, 0.62), (0.33, 0.38, 0.34, 1.0))
     for ax in (1.36, 2.04):
         make_box(f"WChair_Arm_{ax:.2f}", (ax, 1.60, 0.52), (0.14, 0.70, 0.42), (0.33, 0.38, 0.34, 1.0))

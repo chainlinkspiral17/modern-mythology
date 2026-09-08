@@ -120,7 +120,7 @@ echo ""
 # frames, the rest non-subject markers with a surface in the lens.
 # Drive it down; never raise it.
 echo "── vantage_obstruction_audit.py --markers ──"
-MARKER_CEILING=17
+MARKER_CEILING=15
 MOUT="$(python3 vantage_obstruction_audit.py --markers 2>/dev/null | grep -v "^\[")" || true
 MCOUNT="$(echo "$MOUT" | grep -oE "^[0-9]+ obstructed marker" | grep -oE "^[0-9]+")"
 echo "$MOUT" | tail -1

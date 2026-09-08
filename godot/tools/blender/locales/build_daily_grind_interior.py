@@ -136,7 +136,7 @@ def build_tables():
 def build_lounge():
     # Couch + armchair + low table nook in the SW corner.
     cx = -2.9
-    make_box("Couch_Base", (cx, 4.0, 0.24), (0.70, 1.60, 0.22), COL_COUCH)
+    make_box("Couch_Base", (cx, 4.0, 0.175), (0.70, 1.60, 0.35), COL_COUCH)   # to the floor
     make_box("Couch_Back", (cx-0.27, 4.0, 0.56), (0.16, 1.60, 0.52), COL_COUCH)
     for ay in (3.25, 4.75):
         make_box(f"Couch_Arm_{ay:.0f}", (cx, ay, 0.40), (0.66, 0.16, 0.34), COL_COUCH)
@@ -150,7 +150,7 @@ def build_lounge():
     make_box("Lounge_Magazine", (cx+1.0, 4.0, 0.46), (0.24, 0.30, 0.02), (0.72,0.42,0.28,1.0))
     # Armchair facing the couch
     ax = cx + 1.9
-    make_box("Armchair_Base", (ax, 4.0, 0.24), (0.62, 0.62, 0.22), COL_COUCH)
+    make_box("Armchair_Base", (ax, 4.0, 0.175), (0.62, 0.62, 0.35), COL_COUCH)   # to the floor
     make_box("Armchair_Back", (ax+0.25, 4.0, 0.56), (0.14, 0.62, 0.52), COL_COUCH)
     for ay in (3.70, 4.30):
         make_box(f"Armchair_Arm_{ay:.0f}", (ax, ay, 0.40), (0.58, 0.14, 0.34), COL_COUCH)

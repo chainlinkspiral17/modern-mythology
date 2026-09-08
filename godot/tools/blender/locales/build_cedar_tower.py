@@ -84,7 +84,7 @@ def build_lobby():
     make_cyl("Dean_Portrait_Head", (-0.03, D - 0.15, z0 + 2.08), 0.10, 0.02, (0.74, 0.62, 0.52, 1.0), axis='Y', segments=10)
     # Cedar stairs at the back, E side, brass handrail
     for s in range(8):
-        make_box(f"Lobby_Stair_{s}", (3.6, 6.9 - s * 0.32, z0 + 0.18 + s * 0.22), (1.5, 0.32, 0.10), CEDAR)
+        make_box(f"Lobby_Stair_{s}", (3.6, 6.9 - s * 0.32, z0 + (0.23 + s * 0.22) / 2.0), (1.5, 0.32, 0.23 + s * 0.22), CEDAR)   # solid to the floor (2026-09-08)
     make_cyl("Lobby_Handrail", (2.85, 5.8, z0 + 1.55), 0.03, 2.6, BRASS, segments=8, axis='Y')
     for hp in (4.8, 6.6):
         make_box(f"Lobby_Handrail_Post_{hp:.1f}", (2.85, hp, z0 + 0.9 + (6.9 - hp) * 0.6), (0.05, 0.05, 0.9), CEDAR_DK)

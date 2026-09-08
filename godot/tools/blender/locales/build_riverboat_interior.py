@@ -1385,7 +1385,7 @@ def build_catering_office():
              (-4.5, -1.7, cz + 0.46),
              (0.46, 0.46, 0.08), COL_LEATHER_BLACK)
     make_box("Cat_OfficeChair_Back",
-             (-4.5, -1.92, cz + 1.00),
+             (-4.5, -1.92, cz + 0.82),
              (0.46, 0.06, 0.66), COL_LEATHER_BLACK)
     make_cyl("Cat_OfficeChair_Post",
              (-4.5, -1.7, cz + 0.26),

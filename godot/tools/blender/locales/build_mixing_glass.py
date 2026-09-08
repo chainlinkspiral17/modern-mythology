@@ -377,7 +377,7 @@ def build_temperance_wave2_props():
     # Back walk-in second ice chest · 40-pound blue cooler on the
     # floor near the alley door (Frank's job to haul in)
     make_box("LastCall_BackupIceChest_Body",
-             (ax_door + 0.20, ay_door + 0.90, 0.24),
+             (ax_door + 0.20, ay_door + 0.90, 0.12),
              (0.36, 0.30, 0.24),
              (0.30, 0.52, 0.78, 1.0))
     # Chest lid

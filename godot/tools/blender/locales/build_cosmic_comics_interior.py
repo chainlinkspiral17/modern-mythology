@@ -279,12 +279,16 @@ def build_hero_props():
     # The floor census sections: manga wall (E), YA shelf (W),
     # Pokemon endcap, indie rack, new-arrivals table
     make_box("Manga_Wall", (4.72, 5.0, 1.10), (0.30, 2.60, 2.20), wood)
+    for r_ in range(4):      # boards the manga rows stand on (2026-09-08)
+        make_box(f"Manga_Board_{r_}", (4.55, 5.0, 0.17 + r_ * 0.52), (0.28, 2.60, 0.02), wood)
     for r in range(4):
         for c in range(8):
             make_box(f"Manga_{r}_{c}", (4.55, 3.85 + c * 0.30, 0.35 + r * 0.52),
                      (0.16, 0.24, 0.34), [(0.86, 0.80, 0.72, 1.0), (0.74, 0.30, 0.30, 1.0),
                                           (0.30, 0.44, 0.62, 1.0)][(r + c) % 3])
     make_chamfer_box("YA_Shelf", (-4.72, 2.4, 0.90), (0.30, 1.80, 1.80), wood)
+    for r_ in range(3):
+        make_box(f"YA_Board_{r_}", (-4.55, 2.4, 0.18 + r_ * 0.55), (0.28, 1.80, 0.02), wood)
     for r in range(3):
         for c in range(6):
             make_box(f"YA_{r}_{c}", (-4.55, 1.62 + c * 0.28, 0.35 + r * 0.55),

@@ -118,7 +118,7 @@ def build_seating_extras():
     make_cyl("Mug_B", (-0.12, 2.72, 0.49), 0.045, 0.09, (0.30, 0.40, 0.52, 1.0), segments=8)
     make_box("Magazine", (0.35, 2.55, 0.455), (0.30, 0.22, 0.012), (0.70, 0.66, 0.56, 1.0))
     # Armchair, SE corner angled into the group (axis-aligned)
-    make_box("Chair_Base", (1.9, 1.0, 0.28), (0.85, 0.85, 0.42), COL_CHAIR)
+    make_box("Chair_Base", (1.9, 1.0, 0.245), (0.85, 0.85, 0.49), COL_CHAIR)   # to the floor
     make_box("Chair_Back", (1.9, 0.62, 0.65), (0.85, 0.26, 0.72), COL_CHAIR)
     for cx in (1.52, 2.28):
         make_box(f"Chair_Arm_{cx:.2f}", (cx, 1.0, 0.52), (0.16, 0.85, 0.46), COL_CHAIR)

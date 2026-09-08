@@ -140,7 +140,7 @@ def build_hero_props():
     # Stair mouth at the S gap edge (up + the sopa-de-pollo down)
     make_box("Stair_Newel", (0.92, 0.15, 0.60), (0.10, 0.10, 1.20), COL_WOOD)
     for s in range(3):
-        make_box(f"Stair_Tread_{s}", (1.35, 0.20 - s * 0.0, 0.16 + s * 0.18), (0.75, 0.28, 0.05), COL_WOOD)
+        make_box(f"Stair_Tread_{s}", (1.35, 0.20 + s * 0.28, (0.185 + s * 0.18) / 2.0), (0.75, 0.28, 0.185 + s * 0.18), COL_WOOD)   # solid step (2026-09-08)
 
 
 def build_hero_props_2026_09():

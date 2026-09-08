@@ -1115,15 +1115,18 @@ def _build_montreal_rowhouse(name, cx, cy, ground_z, facing, palette):
     # External staircase up to second-floor entrance (Montreal trademark)
     stair_along = -(D / 2 + 0.8)
     for s in range(4):
-        st_z = ground_z + 0.5 + s * 0.5
+        # solid steps (2026-09-08: 0.3 m slabs with air between) — the
+        # first to the ground, each next one riser-high on the last
+        st_h = 0.65 if s == 0 else 0.50
+        st_z = ground_z + 0.65 + s * 0.5 - st_h / 2.0
         if abs(fx) > 0.5:
             sx = cx + stair_along * fx
             sy = cy + (W / 2 - 1.0)
-            ss = (1.2 - s * 0.2, 0.8, 0.30)
+            ss = (1.2 - s * 0.2, 0.8, st_h)
         else:
             sx = cx + (W / 2 - 1.0)
             sy = cy + stair_along * fy
-            ss = (0.8, 1.2 - s * 0.2, 0.30)
+            ss = (0.8, 1.2 - s * 0.2, st_h)
         ht._make_box_local(f"{name}_Stair_{s}",
                            (sx, sy, st_z), ss, palette['trim'])
 

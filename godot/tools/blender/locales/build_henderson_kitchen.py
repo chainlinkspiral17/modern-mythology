@@ -112,7 +112,7 @@ def build_hero_props():
     # Stair mouth (up), S gap edge
     make_box("Stair_Newel", (0.92, 0.15, 0.60), (0.10, 0.10, 1.20), wood)
     for s in range(3):
-        make_box(f"Stair_Tread_{s}", (1.4, 0.20, 0.16 + s * 0.18), (0.80, 0.28, 0.05), wood)
+        make_box(f"Stair_Tread_{s}", (1.4, 0.20 + s * 0.28, (0.185 + s * 0.18) / 2.0), (0.80, 0.28, 0.185 + s * 0.18), wood)   # solid step (2026-09-08)
     # Oven face on the stove front (the pot roast on warm)
     sx, sy = ROOM_W/4.0, ROOM_D-1.0
     make_chamfer_box("Oven_Door", (sx, sy-0.36, 0.50), (0.60, 0.03, 0.55), (0.72, 0.70, 0.66, 1.0))
@@ -220,10 +220,10 @@ def build_hero_props_2026_09():
              (0.55, 0.56, 0.58, 1.0))
     # ── THE GUITAR · Telecaster on its stand by the stairs ──
     gx, gy = 2.45, 0.45
-    make_box("Guitar_Body", (gx, gy, 0.42), (0.32, 0.06, 0.40), (0.72, 0.60, 0.34, 1.0))
-    make_box("Guitar_Guard", (gx - 0.05, gy - 0.032, 0.40), (0.16, 0.004, 0.22), (0.12, 0.12, 0.12, 1.0))
-    make_box("Guitar_Neck", (gx + 0.02, gy, 0.895), (0.05, 0.04, 0.55), (0.62, 0.50, 0.32, 1.0))
-    make_box("Guitar_Head", (gx + 0.02, gy, 1.25), (0.07, 0.04, 0.16), (0.72, 0.60, 0.34, 1.0))
+    make_box("Guitar_Body", (gx, gy, 0.22), (0.32, 0.06, 0.40), (0.72, 0.60, 0.34, 1.0))   # body on the stand's cradle (2026-09-08)
+    make_box("Guitar_Guard", (gx - 0.05, gy - 0.032, 0.20), (0.16, 0.004, 0.22), (0.12, 0.12, 0.12, 1.0))
+    make_box("Guitar_Neck", (gx + 0.02, gy, 0.695), (0.05, 0.04, 0.55), (0.62, 0.50, 0.32, 1.0))
+    make_box("Guitar_Head", (gx + 0.02, gy, 1.05), (0.07, 0.04, 0.16), (0.72, 0.60, 0.34, 1.0))
     for sgn in (-1, 1):
         make_box(f"Guitar_Stand_Leg_{'W' if sgn < 0 else 'E'}", (gx + sgn * 0.12, gy - 0.10, 0.15),
                  (0.03, 0.03, 0.30), (0.20, 0.20, 0.22, 1.0))

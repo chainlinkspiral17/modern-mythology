@@ -780,7 +780,7 @@ def build_kitchen():
                  (0.42, 0.42, 0.04),
                  COL_DOOR)
         make_box("KitchenChair_%s_Back" % name,
-                 (ch_cx, ch_cy + (+0.18 if cy_off > 0 else -0.18), 0.78),
+                 (ch_cx, ch_cy + (+0.18 if cy_off > 0 else -0.18), 0.72),
                  (0.42, 0.04, 0.50),
                  COL_DOOR)
         for sx in (-1, +1):

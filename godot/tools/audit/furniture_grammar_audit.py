@@ -85,7 +85,7 @@ STRUCTURAL = re.compile(r"(wall|crown|molding|roof|chimney|eave|gable|ridge|jois
                         r"trim|baseboard|skirt|seam|stud|rafter|hull|deck|pillar|post|leg|rail|spray|stream|tube|wire|cable|rope|chain|port|porthole|strip|band|piling|stringer|girder|brace|lintel|partition|pedestal)", re.I)
 MOUNTED = re.compile(r"(lamp|pendant|fan|shelf|sign|poster|frame|clock|board|wall|ceil|window|win_|curtain|light|fixture|cord|wire|"
                      r"pin|bolt|knob|lyric|page|plate|handle|pull|latch|seam|tab|pillar|mailbox|glass|badge|decal|sticker|label|logo|drawer|door|header|thermostat|rung|"
-                     r"swing|hammock|shutter|crenel|dormer|chimney|socket|insulator|warn|digit|pennant|roster|paper|ephoto|plaque|tag|led|dish|strap|hose|cable|garment|coat|robe|hinge|border|marker|nozzle|spout|mural|patch|counterslab|weight|ladle|"
+                     r"pushbar|heddle|swing|hammock|shutter|crenel|dormer|chimney|socket|insulator|warn|digit|pennant|roster|paper|ephoto|plaque|tag|led|dish|strap|hose|cable|garment|coat|robe|hinge|border|marker|nozzle|spout|mural|patch|counterslab|weight|ladle|"
                      r"number|letter|text|line|stripe|trim|cap|lid|rim|handset|dial|button|switch|outlet|plug|vent|grille|key|"
                      r"pipe|vent|duct|hood|cabinet|cab_|upper|hang|rail|awning|banner|flag|bulb|chain|hook|mirror|calendar|"
                      r"crown|molding|beam|joist|truss|roof|eave|gutter|antenna|pole|mast|neon|bracket|sconce|smoke|hvac|"
@@ -277,6 +277,13 @@ def check_float(boxes, terrain=False):
                 continue
             lo, hi = box_lohi(o)
             top = hi[2]
+            # a SIBLING that runs past us (a post rising through a sign
+            # face, a frame side beside its mullion, a body a leg hangs
+            # from, a rail a bar hangs off) holds us whatever its top
+            if prefix_of(o[0]) == pre and lo[2] - FLOAT_GAP <= bottom and hi[2] >= bottom - FLOAT_GAP \
+                    and not (hi[0] < blo[0] - FLOAT_GAP or lo[0] > bhi[0] + FLOAT_GAP or hi[1] < blo[1] - FLOAT_GAP or lo[1] > bhi[1] + FLOAT_GAP):
+                best = (bottom, o[0])
+                break
             # a support may penetrate us a little (a column into a seat,
             # a post into a mailbox) — anything topping out within 0.25 m
             # above our underside still holds us up
