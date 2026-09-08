@@ -186,8 +186,10 @@ sludge hangs).
   frame is all the web there is. Density drives the light: a snap in
   gust six throws 56 sparks where gust one threw 26. Nothing moves
   the frame; the web itself is frozen for the finale (a held panel).
-  Next: the same FX class under Spiderdrops 2's balloon glide; the
-  finale's sound (one rising sting per register, SFXBank).
+  Each register fires one house sting as its light begins (lift for
+  the whole web, the uncanny close for held / the star, the thud for
+  the storm — haptics ride along). Next: the same FX class under
+  Spiderdrops 2's balloon glide.
 - **direction · [trip:] cues (draft 1).** 190 interlude beats across
   vols 5–7 carry `[trip:1.2]` (the structural turn pushes the layer,
   the way `[mood:]` cues were placed on interludes), plus three

@@ -732,6 +732,13 @@ func _resolve() -> void:
 func _schedule_finale(reg: String) -> void:
 	_finale.clear()
 	_finale_len = 0.0
+	# one sting per register — the house vocabulary, not new sounds:
+	# lift for the whole web, the uncanny close for held / the star,
+	# the hard thud for the storm (haptics ride along via RUMBLE_MAP)
+	match reg:
+		"whole": _sfx("interlude_earned")
+		"storm": _sfx("loss_thud")
+		_: _sfx("tier_crossing_close")
 	if _fx == null:
 		_finale_t = 0.0
 		return
