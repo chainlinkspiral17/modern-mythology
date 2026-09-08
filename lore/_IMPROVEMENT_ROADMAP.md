@@ -1200,8 +1200,10 @@ line about a face. `marker_author.py --closeup` authored ONE
 `shot_closeup_person` per scene that had no closeup marker — a bust-
 height frame of the room's conversation spot (the preset camera's
 look-point 3 m out), 1.2–2.2 m off it, ≤ 25° down, passing the fill
-verdict: 81 rooms (three stuck: the darkroom, Kestrel, the tideline
-— no clear frame at that distance). The director's substitution now
+verdict: 81 rooms, then the last three (the darkroom is 2.6 m across;
+Kestrel and the tideline are cliffs) under a relaxed band —
+`--relax` widens the house band 1.2–2.2 m / ≤ 25° to 0.9–3.2 m /
+≤ 38°. All 84 rooms carry both frames. The director's substitution now
 prefers it for every cast closeup in those rooms. Named `person`
 because the matcher splits CamelCase and "room" is a word in
 CardRoom / CountRoom / ChangeRoom. The REVERSE SHOT followed the same

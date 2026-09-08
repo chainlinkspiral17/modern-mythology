@@ -263,8 +263,13 @@ def author_closeup(locale, dry, side="a"):
     # the reverse shot is searched from the far side of the spot: the
     # mirrored camera, so the two frames look at each other across it
     origin = cam if side == "a" else (2.0 * tgt[0] - cam[0], cam[1], 2.0 * tgt[2] - cam[2])
+    # the house band first; a room too tight for it (the darkroom is
+    # 2.6 m across) takes the wider one rather than having no face at all
+    band = (1.2, 2.2, 25.0)
+    if "--relax" in sys.argv:
+        band = (0.9, 3.2, 38.0)
     for score, npos, d, el in R.candidates(tgt, 0.6, origin, boxes, set(), lo, hi, hits):
-        if d < 1.2 or d > 2.2 or el > 25.0:
+        if d < band[0] or d > band[1] or el > band[2]:
             continue
         if a_pos is not None and math.hypot(npos[0] - a_pos[0], npos[2] - a_pos[2]) < 1.5:
             continue                  # not the same side as the first frame
