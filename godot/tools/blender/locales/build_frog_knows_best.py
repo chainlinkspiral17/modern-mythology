@@ -204,11 +204,13 @@ def build_world_dressing():
       · A morning customer's coffee mug on the counter (a regular
         who'll be by at 7:42)
     """
-    # Aquarium tanks approx along (0, +2.0) — three tanks side by side
-    tanks_y = +2.0
+    # The tanks (build_tanks): on the shelf at y 6.5, glass fronts at
+    # y 6.2, x -1.7 / 0 / +1.7, glass z 0.8..1.8. (2026-09-10: the
+    # labels were at y 2.0 — on the counter.)
+    tanks_y = +6.5
     tank_top_z = 1.10
     # Tank labels on the front (handwritten name cards)
-    for ti, (lx, label_chars) in enumerate([(-2.4, "MINNOWS"), (0.0, "CATFISH"), (+2.4, "THEROUX")]):
+    for ti, (lx, label_chars) in enumerate([(-1.7, "MINNOWS"), (0.0, "CATFISH"), (+1.7, "THEROUX")]):
         # Cream label backing
         make_box("Tank_Label_%d_Backing" % ti,
                  (lx, tanks_y - 0.32, tank_top_z - 0.10),
@@ -267,25 +269,27 @@ def build_world_dressing():
              (0.62, 0.62, 0.60, 1.0))
 
     # Em's keys on a brass hook by the door
-    # Door approx at (+3.0, -2.5)
-    door_x = +3.0
-    door_y = -2.5
+    # The door is on the SOUTH wall at x 0 (Door, y 0.04); the hook is
+    # on the wall just east of it, pointing into the room. (2026-09-10:
+    # it was at (3, -2.5), outside the building.)
+    door_x = +0.74
+    door_y = +0.105
     # Brass hook
     make_cyl("EmKeys_Hook",
-             (door_x - 0.04, door_y, 1.50),
+             (door_x, door_y, 1.50),
              0.012, 0.05,
              (0.78, 0.62, 0.30, 1.0),
-             segments=6, axis='X')
+             segments=6, axis='Y')
     # Key ring (brass loop)
     make_cyl("EmKeys_Ring",
-             (door_x - 0.06, door_y, 1.42),
+             (door_x, door_y + 0.02, 1.42),
              0.030, 0.005,
              (0.78, 0.62, 0.30, 1.0),
-             segments=10, axis='X')
+             segments=10, axis='Y')
     # Three keys hanging from the ring
     for ki, kx_off in enumerate([-0.020, 0.0, +0.020]):
         make_box("EmKeys_Key_%d" % ki,
-                 (door_x - 0.06 + kx_off, door_y, 1.36),
+                 (door_x + kx_off, door_y + 0.02, 1.36),
                  (0.008, 0.025, 0.08),
                  (0.78, 0.62, 0.30, 1.0))
 

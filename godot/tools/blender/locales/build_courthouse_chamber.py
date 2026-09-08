@@ -291,9 +291,11 @@ def build_justice_dressing():
              segments=10, axis='Z')
 
     # ── Empty jury box · 12 seats with no notepads ──
-    # Jury box approx at (-3.0, +1.0)
-    jb_x = -3.0
-    jb_y = +1.0
+    # The jury box: rails at x -4..-3, y 4.0..7.4 (build_jury_box).
+    # (2026-09-10: the seats were at (-3, 1) — in front of the first
+    # public pew, outside the rails.)
+    jb_x = -5.0
+    jb_y = +4.7
     for ri in range(2):
         for ci in range(6):
             sx = jb_x + ci * 0.30
@@ -310,10 +312,12 @@ def build_justice_dressing():
                      (0.42, 0.30, 0.22, 1.0))
 
     # ── Judge's gavel on the bench ──
-    # Bench approx at (0, +4.5, dais height 1.06)
+    # The bench (build_judge_bench_and_dais): y ROOM_D-2.2, counter top
+    # surface 1.45. (2026-09-10: the gavel sat at (0.4, 4.5, 1.06) —
+    # mid-air over the well.)
     gavel_x = +0.40
-    gavel_y = +4.50
-    bench_top_z = 1.06
+    gavel_y = ROOM_D - 2.20 + 0.18   # on the counter top's north half, behind the front panel
+    bench_top_z = 1.45
     # Head
     make_cyl("Gavel_Head",
              (gavel_x, gavel_y, bench_top_z + 0.04),

@@ -295,9 +295,11 @@ def build_devil_dressing():
                  segments=6, axis='Z')
 
     # "6 STEPS" sign on the front door
-    # Front door approx at (0.0, +5.4, south interior of front wall)
-    door_x = 0.0
-    door_y = +5.40
+    # The front wall is the SOUTH wall (y 0, interior face 0.10) with
+    # its doorway at x -1.5..1.5; the sign hangs on the wall just east
+    # of the opening. (2026-09-10: it stood at (0, 5.4) — mid-room.)
+    door_x = 1.35
+    door_y = 0.122
     make_box("SixSteps_Sign_Backing",
              (door_x, door_y - 0.012, 1.60),
              (0.20, 0.005, 0.10),

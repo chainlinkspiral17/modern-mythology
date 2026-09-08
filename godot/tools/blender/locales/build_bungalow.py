@@ -1635,9 +1635,9 @@ def build_priestess_dressing():
     # yellow-tinted boxes stuck on as the canonical "two yellow leaves."
     # The kitchen window where the basil dies — approximate location
     # from comments.
-    basil_x = +2.6   # kitchen east-side counter
-    basil_y = +1.4   # near the north kitchen window
-    basil_z = 0.92   # on the windowsill
+    basil_x = +2.8                  # THE basil (Kitchen_BasilPot): under the kitchen window
+    basil_y = INTERIOR_Y_N - 0.16   # (2026-09-10: the fallen leaves were at (2.6, 1.4) — mid-kitchen floor)
+    basil_z = 1.04                  # the pot's rim
     for li, (lx_off, ly_off, lz_off) in enumerate([
         (+0.04, +0.02, +0.18),
         (-0.03, -0.02, +0.14),
@@ -1651,8 +1651,8 @@ def build_priestess_dressing():
     # Storage closet has its own builder; this just adds a small
     # masking-tape label on the door so the storage reads as the
     # PH-tape archive.
-    closet_door_x = -3.0   # approximate storage closet door location
-    closet_door_y = -0.8
+    closet_door_x = 1.40   # the storage closet door (Closet_Door, x 1.4, y 1.5)
+    closet_door_y = 1.50   # (2026-09-10: was (-3, -0.8), a label on open air)
     make_box("Priestess_PHTapes_Label",
              (closet_door_x + 0.02, closet_door_y, 1.62),
              (0.005, 0.18, 0.06),

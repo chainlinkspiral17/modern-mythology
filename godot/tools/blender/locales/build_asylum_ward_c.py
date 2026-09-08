@@ -216,11 +216,14 @@ def build_death_dressing():
         five patients transferred Wednesday — names visible
         but the slots empty)
     """
-    # Nurses' station is at roughly (0, 0). Counter top approx z=1.05.
+    # The nurses' station (build_nurse_station): counter at (0, 6.6),
+    # 2.4 × 0.6, top surface 1.15. (2026-09-10: this pass had it "at
+    # roughly (0, 0)" — the corridor's south end — so the binder and
+    # Sister Beatrice's votive hung a metre up in open corridor.)
     # The CHART BINDER closed on the counter.
     binder_x = +0.40
-    binder_y = -0.10
-    binder_z = 1.06
+    binder_y = 6.50
+    binder_z = 1.16
     # Binder body (oxblood leather, three-ring style)
     make_box("ChartBinder_Body",
              (binder_x, binder_y, binder_z + 0.025),
@@ -244,8 +247,8 @@ def build_death_dressing():
              (0.94, 0.90, 0.80, 1.0))
 
     # Sister Beatrice's votive candle on the counter
-    votive_x = -0.10
-    votive_y = -0.08
+    votive_x = -0.60
+    votive_y = 6.55
     # Glass jar
     make_cyl("BeatriceVotive_Jar",
              (votive_x, votive_y, binder_z + 0.05),
@@ -272,28 +275,32 @@ def build_death_dressing():
     # Row of empty patient charts on the wall mount behind the
     # station — five wall pockets, names visible, the actual chart
     # papers missing (the five patients were transferred Wednesday)
-    wall_mount_y = +0.80   # behind the station, against the back wall
+    # (2026-09-10: the station is mid-corridor with no wall behind it;
+    # the pockets hung in the air at y 0.8. They are on the EAST wall
+    # beside the station now — Wall_E_Mid, x 2.40, y 4.6..8.2 — turned
+    # to face west.)
+    wall_mount_x = 2.38
     wall_mount_z = 1.40
     for ci in range(5):
-        cx = -0.80 + ci * 0.30
+        cy = 5.80 + ci * 0.30
         # Pocket frame
         make_box("ChartPocket_%d_Frame" % ci,
-                 (cx, wall_mount_y, wall_mount_z),
-                 (0.22, 0.04, 0.30),
+                 (wall_mount_x, cy, wall_mount_z),
+                 (0.04, 0.22, 0.30),
                  (0.62, 0.62, 0.58, 1.0))
         # Name plate at the top (cream sticker with a dark name line)
         make_box("ChartPocket_%d_NamePlate" % ci,
-                 (cx, wall_mount_y - 0.022, wall_mount_z + 0.12),
-                 (0.18, 0.005, 0.04),
+                 (wall_mount_x - 0.022, cy, wall_mount_z + 0.12),
+                 (0.005, 0.18, 0.04),
                  (0.92, 0.88, 0.78, 1.0))
         make_box("ChartPocket_%d_NameLine" % ci,
-                 (cx, wall_mount_y - 0.024, wall_mount_z + 0.12),
-                 (0.14, 0.001, 0.012),
+                 (wall_mount_x - 0.024, cy, wall_mount_z + 0.12),
+                 (0.001, 0.14, 0.012),
                  (0.20, 0.18, 0.16, 1.0))
         # Empty slot below (a darker recess where the chart used to be)
         make_box("ChartPocket_%d_EmptySlot" % ci,
-                 (cx, wall_mount_y - 0.022, wall_mount_z - 0.06),
-                 (0.18, 0.005, 0.18),
+                 (wall_mount_x - 0.022, cy, wall_mount_z - 0.06),
+                 (0.005, 0.18, 0.18),
                  (0.18, 0.20, 0.18, 1.0))
 
     # The missing cupola pane — find the cupola geometry's center,
@@ -429,11 +436,14 @@ def build_death_wave2_props():
                      (0.10, 0.08, 0.08, 1.0), segments=8, axis='Y')
 
     # ── Mrs Hadley's paper bag of peppermints on ward 4 window ──
-    # Ward 4 approx at (-2.40, +8.60). Windowsill at ~1.20
-    ward4_x = -2.40
-    ward4_y = +8.60
+    # (2026-09-10: "ward 4" at (-2.4, 8.6) is Door_3 on the WEST wall;
+    # the corridor's windows are the two east bays. The bag sits on
+    # the north bay's sill — WindowBay_1 at (2.46, 9.8), frame from
+    # z 0.9.)
+    ward4_x = +2.16
+    ward4_y = +9.96
     make_box("MrsHadley_PaperBag",
-             (ward4_x + 0.20, ward4_y - 0.16, 1.20),
+             (ward4_x + 0.20, ward4_y - 0.16, 0.96),
              (0.14, 0.10, 0.12),
              (0.72, 0.60, 0.34, 1.0))
     # Rolled-top on the bag

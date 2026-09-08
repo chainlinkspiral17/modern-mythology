@@ -689,6 +689,22 @@ failure paths separately before concluding anything.
   audits (ribbons themselves as fill) and are excluded from the
   overlap check. Do not "fix" this with a ceiling.
 
+### 2026-09-10 (ii) · read the claims, not the counts
+
+- **Thin, mounted and legged props hide from every geometry gate.**
+  Six phantom passes survived FLOAT, POKE, OUTSIDE and the overlap
+  gate because a paper label, a chart pocket, a jury seat with legs
+  and a name card are all "held" by something. The only audit that
+  found them was reading the docstring's "approx at (x, y)" and
+  querying the builder's boxes at that point.
+- **One query answers all of them.** `boxes_for(locale)` filtered by
+  the real object's name and by "within 1.2 m of the claim" shows
+  the real surface and what was authored at the phantom in one
+  print. Do this for every location claim before trusting it.
+- **"Ward 4's window" was a door.** A pass can be wrong about what
+  the thing IS, not just where it is; check the name of what stands
+  at the claimed spot.
+
 ### 2026-09-10 · OUTSIDE: legs to the floor hide a prop in the parking lot
 
 - **A phantom surface with legs passes the float audit.** Daigle's

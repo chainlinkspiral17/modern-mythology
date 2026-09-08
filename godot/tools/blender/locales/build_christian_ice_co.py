@@ -180,9 +180,11 @@ def build_star_dressing():
       · The notice that hasn't been published yet · a typed
         announcement on the counter near the till, face down
     """
-    # Block-freezer approx at (-1.5, +2.0); retail counter at (+2.0, 0)
-    bf_x = -1.5
-    bf_y = +2.0
+    # The block freezer (build_freezer): (0, 3.80), 3.2 wide, glass face
+    # at y 3.40, top 2.40. (2026-09-10: this pass had it at (-1.5, 2) —
+    # its fog and wiped streak hung mid-shop.)
+    bf_x = -0.8
+    bf_y = +3.80
     bf_glass_z = 1.30
     # Fog overlay on the freezer glass (a pale frosted rectangle)
     make_box("BlockFreezer_FogOverlay",
@@ -197,7 +199,7 @@ def build_star_dressing():
              (0.62, 0.74, 0.86, 0.5))
     # The wiping cloth on the freezer top (damp blue canvas)
     make_box("BlockFreezer_WipingCloth",
-             (bf_x + 0.20, bf_y, bf_glass_z + 0.32),
+             (bf_x + 0.20, bf_y, 2.41),
              (0.22, 0.14, 0.018),
              (0.42, 0.52, 0.62, 1.0))
 

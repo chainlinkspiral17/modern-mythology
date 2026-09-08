@@ -970,6 +970,36 @@ christian_ice_co. NEXT DRAFT: grep every builder for "approx" in a
 detail-pass and verify each against the builder's own constant —
 the last of this class by reading, not by audit.
 
+**2026-09-10 (ii) · the "approx at" sweep — six more phantom passes,
+by reading.** Every builder grepped for "approx"; the location claims
+checked against the builder's own boxes in one query. Six more were
+wrong, all invisible to every gate because the props were thin,
+mounted, or legged: ASYLUM WARD C's chart binder and Sister
+Beatrice's votive "at roughly (0, 0)" (the station is at (0, 6.6),
+top 1.15), its five chart pockets on a "back wall" the mid-corridor
+station never had (now on the east wall beside it, turned to face
+in), Mrs Hadley's peppermints on "ward 4's window" (ward 4 is a door;
+the corridor's windows are the east bays — on the north bay's sill
+now); the BUNGALOW's Priestess pass: the pH-tape label on a closet
+door at (-3, -0.8) (the door is at (1.4, 1.5)) and the basil's fallen
+yellow leaves at (2.6, 1.4) — mid-kitchen floor — now at the pot's
+rim under the window; CHRISTIAN ICE's freezer fog, wiped streak and
+wiping cloth at (-1.5, 2) (the freezer is at (0, 3.8), glass at 3.4,
+top 2.4); the COURTHOUSE's twelve jury seats at (-3, 1) — in front of
+the first public pew, outside the rails at x -4..-3 / y 4..7.4 — and
+the gavel at (0.4, 4.5, 1.06) over the well (the bench is at y 9.8,
+top 1.45); DAIGLE'S "6 STEPS" sign on a front door "at (0, 5.4)" —
+mid-room; the front wall is the south wall with an open doorway, the
+sign is on the wall beside it; FROG KNOWS BEST's tank name cards along
+y 2.0 — the counter — while the tanks stand at y 6.5, and Em's keys
+"by the door at (3, -2.5)" — outside the building; the door is at
+(0, 0). Fourteen locales have now had the pattern. All gates green.
+Deck rebuild: asylum_ward_c, bungalow, christian_ice_co,
+courthouse_chamber, daigles_roadhouse, frog_knows_best. NEXT DRAFT:
+the same reading pass for detail-pass docstrings that name a surface
+WITHOUT "approx" (grep `_z = 0.7[0-9]|_z = 0.9[0-9]|_z = 1.0[0-9]`
+hard-coded surface heights) — the pattern's last hiding place.
+
 **2026-08-19 · PER-STICK VOICE SWEEP VERDICT (voice draft 4).**
 Ran the leakage grep (TODO/WIP/placeholder/implemented/deferred/
 stub) and a string survey across EVERY stick directory: estuary_4,
