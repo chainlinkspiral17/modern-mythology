@@ -188,8 +188,16 @@ sludge hangs).
   the frame; the web itself is frozen for the finale (a held panel).
   Each register fires one house sting as its light begins (lift for
   the whole web, the uncanny close for held / the star, the thud for
-  the storm — haptics ride along). Next: the same FX class under
-  Spiderdrops 2's balloon glide.
+  the storm — haptics ride along).
+  **Draft 3 (2026-09-11): the same class under SPIDERDROPS 2.** THE
+  LONG WIND's events are the glide's own — the silk cast throws
+  eighteen white sparks with cores off the spinnerets; a drop caught
+  out of the air pops drop-blue where it was; a THERMAL sends six pale
+  motes climbing the column the moment you enter it (light going up is
+  the lift, stated); a leg crossed throws thirty gold with five motes
+  to the score. Every ten points, one mote — the first stick's rule
+  holds. Nothing strobes, nothing moves the frame. Next: a finale for
+  the two endings (the eaves, the new tree) the way the storm has one.
 - **direction · [trip:] cues (draft 1).** 190 interlude beats across
   vols 5–7 carry `[trip:1.2]` (the structural turn pushes the layer,
   the way `[mood:]` cues were placed on interludes), plus three

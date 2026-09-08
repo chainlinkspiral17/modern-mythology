@@ -68,6 +68,15 @@ var _dist: float = 0.0            # progress along the current leg
 var _silk: float = SILK_MAX
 var _carry_star: bool = false
 var _score: float = 0.0
+# THE LONG WIND's light — the same additive class the first stick uses
+# (psychedelic bible, slowstick register: Minter INSIDE the stick, on
+# current hardware, nothing strobing and nothing that moves the frame).
+# Here the events are the glide's own: silk cast, a drop caught out of
+# the air, a thermal taking you up, a leg crossed.
+const _MinterFX = preload("res://scenes/games/spiderdrops/SpiderdropsMinterFX.gd")
+var _fx: Node2D = null
+var _mote_acc: float = 0.0
+var _was_in_thermal: bool = false
 var _legs_crossed: int = 0
 var _t: float = 0.0
 var _gust: float = 0.0
@@ -103,7 +112,12 @@ func _ready() -> void:
 	set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
 	mouse_filter = Control.MOUSE_FILTER_STOP
 	add_to_group("ui")
+	_fx = _MinterFX.new()
+	_fx.name = "MinterFX"
+	add_child(_fx)
 	_build_hud()
+	if _fx.has_method("set_hud_target"):
+		_fx.call("set_hud_target", Vector2(VW * 0.5, 22.0))
 
 
 func boot(state: Dictionary) -> void:
@@ -113,6 +127,8 @@ func boot(state: Dictionary) -> void:
 	_legs_crossed = 0
 	_score = 0.0
 	_start_settle()
+	_mote_acc = 0.0
+	_was_in_thermal = false
 	_running = true
 	_resolved = false
 	queue_redraw()
@@ -138,12 +154,18 @@ func _cast() -> void:
 	_phase = "fly"
 	_phase_t = 0.0
 	_vy = -120.0
+	if _fx != null:
+		_fx.call("burst", Vector2(SPIDER_X, _sy), C_SILK, 18, 150.0, true)
 	_sfx("silk_cast")
 
 
 func _land_leg() -> void:
 	_legs_crossed += 1
 	_score += 250.0
+	if _fx != null:
+		_fx.call("burst", Vector2(SPIDER_X, _sy), C_SPIDER, 30, 190.0, true)
+		for _i in range(5):
+			_fx.call("mote", Vector2(SPIDER_X, _sy), C_SPIDER)
 	if _leg >= LEGS:
 		_resolve("eaves" if _carry_star else "new_tree")
 		return
@@ -179,6 +201,11 @@ func _fly_step(delta: float) -> void:
 	var in_thermal := _in_thermal()
 	if in_thermal:
 		_vy -= THERMAL_UPDRAFT * delta * 0.4
+		# a thermal is LIGHT going up: motes climb the column you are in
+		if not _was_in_thermal and _fx != null:
+			for k in range(6):
+				_fx.call("mote", Vector2(SPIDER_X + randf_range(-24.0, 24.0), _sy + 20.0 + 12.0 * float(k)), C_BAND)
+	_was_in_thermal = in_thermal
 	if Input.is_action_pressed("ui_accept") and _silk > 0.0:
 		_vy -= LIFT * delta
 		if not in_thermal:
@@ -201,7 +228,15 @@ func _fly_step(delta: float) -> void:
 	var band: float = _band_factor(_sy)
 	var wind: float = WIND_BASE + WIND_GUST * _gust
 	_dist += wind * band * delta
-	_score += wind * band * delta * SCORE_RATE
+	var gained: float = wind * band * delta * SCORE_RATE
+	_score += gained
+	# every ten points, one mote of gold to the score bar — the first
+	# stick's rule: every point is a particle
+	_mote_acc += gained
+	while _mote_acc >= 10.0:
+		_mote_acc -= 10.0
+		if _fx != null:
+			_fx.call("mote", Vector2(SPIDER_X, _sy), C_SPIDER)
 
 	_step_debris(delta)
 	_step_air_drops(delta, wind)
@@ -249,6 +284,8 @@ func _step_air_drops(delta: float, wind: float) -> void:
 		if absf(float(d["x"]) - SPIDER_X) < 18.0 and absf(float(d["y"]) - _sy) < 20.0:
 			_silk = minf(SILK_MAX, _silk + DROP_SILK)
 			_drops_caught += 1
+			if _fx != null:
+				_fx.call("burst", Vector2(float(d["x"]), float(d["y"])), C_DROP, 12, 110.0, false)
 			_sfx("pickup")
 			continue
 		keep.append(d)

@@ -1251,6 +1251,14 @@ disagreements are declared deliberate in the tool (Death's 4:06 AM
 under the card's rising sun, the painting cabin's pre-dawn, booth 6 at
 3:47 AM). Gated at 0.
 
+**2026-09-11 (iii) · the Minter light reaches Spiderdrops 2.** The
+bible's next-draft line for the slowstick register — "the same FX
+class under Spiderdrops 2's balloon glide" — shipped: LongWindFlight
+loads SpiderdropsMinterFX and feeds it the glide's own events (silk
+cast, drop caught, thermal entered, leg crossed, every ten points a
+mote). Both GDScript checkers clean. NEXT DRAFT: a finale for the two
+endings (the eaves, the new tree) the way THE STORM has one.
+
 **2026-08-19 · PER-STICK VOICE SWEEP VERDICT (voice draft 4).**
 Ran the leakage grep (TODO/WIP/placeholder/implemented/deferred/
 stub) and a string survey across EVERY stick directory: estuary_4,
