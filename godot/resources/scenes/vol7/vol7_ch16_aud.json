@@ -54,7 +54,7 @@
     },
     {
       "char": "aud",
-      "text": "Kai.",
+      "text": "[shot:closeup person]Kai.",
       "t": "say"
     },
     {
@@ -118,7 +118,7 @@
     },
     {
       "char": "kai",
-      "text": "Aud. The questions.",
+      "text": "[shot:closeup person_b]Aud. The questions.",
       "t": "say"
     },
     {
@@ -148,7 +148,7 @@
     },
     {
       "char": "aud",
-      "text": "I worked for the foundation.",
+      "text": "[shot:closeup person]I worked for the foundation.",
       "t": "say"
     },
     {
@@ -173,7 +173,7 @@
     },
     {
       "char": "kai",
-      "text": "Aud.",
+      "text": "[shot:closeup person_b]Aud.",
       "t": "say"
     },
     {
@@ -207,7 +207,7 @@
     },
     {
       "char": "aud",
-      "text": "Because Marina was the foundation's piece. The foundation's been Marina's to bring. I've been retired twenty-two years. I've been at this diner thirty.",
+      "text": "[shot:closeup person]Because Marina was the foundation's piece. The foundation's been Marina's to bring. I've been retired twenty-two years. I've been at this diner thirty.",
       "t": "say"
     },
     {
@@ -237,7 +237,7 @@
     },
     {
       "char": "kai",
-      "text": "Yeah.",
+      "text": "[shot:closeup person_b]Yeah.",
       "t": "say"
     },
     {
@@ -281,7 +281,7 @@
     },
     {
       "char": "aud",
-      "text": "Kai.",
+      "text": "[shot:closeup person]Kai.",
       "t": "say"
     },
     {
@@ -306,7 +306,7 @@
     },
     {
       "char": "kai",
-      "text": "How do you know.",
+      "text": "[shot:closeup person_b]How do you know.",
       "t": "say"
     },
     {
@@ -361,7 +361,7 @@
     },
     {
       "char": "kai",
-      "text": "Aud.",
+      "text": "[shot:closeup person_b]Aud.",
       "t": "say"
     },
     {
@@ -395,7 +395,7 @@
     },
     {
       "char": "aud",
-      "text": "He told me — by the way the conversation went, by the question I had been carrying when I sat down on the rocks — he told me what I needed to know about my husband, who had died in 2049 in a way I had not, at the time, been able to live with.",
+      "text": "[shot:closeup person]He told me — by the way the conversation went, by the question I had been carrying when I sat down on the rocks — he told me what I needed to know about my husband, who had died in 2049 in a way I had not, at the time, been able to live with.",
       "t": "say"
     },
     {
@@ -424,7 +424,7 @@
     },
     {
       "char": "kai",
-      "text": "The clear.",
+      "text": "[shot:closeup person_b]The clear.",
       "t": "say"
     },
     {
@@ -453,7 +453,7 @@
     },
     {
       "char": "aud",
-      "text": "Eat the pie.",
+      "text": "[shot:closeup person]Eat the pie.",
       "t": "say"
     },
     {

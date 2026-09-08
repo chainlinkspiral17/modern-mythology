@@ -63,7 +63,7 @@
     },
     {
       "char": "kai",
-      "text": "Hans.",
+      "text": "[shot:closeup person]Hans.",
       "expr": "neutral",
       "t": "say"
     },
@@ -93,7 +93,7 @@
     },
     {
       "char": "hans",
-      "text": "You haven't slept properly.",
+      "text": "[shot:closeup person_b]You haven't slept properly.",
       "expr": "neutral",
       "t": "say"
     },
@@ -133,7 +133,7 @@
     },
     {
       "char": "kai",
-      "text": "Yeah.",
+      "text": "[shot:closeup person]Yeah.",
       "expr": "neutral",
       "t": "say"
     },
@@ -163,7 +163,7 @@
     },
     {
       "char": "hans",
-      "text": "He was. He came home Tuesday. He has been at my house since Tuesday afternoon. He has been at the bakery this morning because he could not sleep and the only person up in this house at four was me. He has been at the back kitchen for three hours.",
+      "text": "[shot:closeup person_b]He was. He came home Tuesday. He has been at my house since Tuesday afternoon. He has been at the bakery this morning because he could not sleep and the only person up in this house at four was me. He has been at the back kitchen for three hours.",
       "expr": "neutral",
       "t": "say"
     },

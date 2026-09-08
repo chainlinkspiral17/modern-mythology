@@ -70,7 +70,7 @@
     {
       "t": "say",
       "char": "Jim",
-      "text": "She let you stay?",
+      "text": "[shot:closeup person]She let you stay?",
       "expr": "neutral"
     },
     {
@@ -184,7 +184,7 @@
     {
       "t": "say",
       "char": "Jesse",
-      "text": "We — we got the bridge. The new one. Substation Nine. The bridge is the song. We're playing it second tomorrow.",
+      "text": "[shot:closeup person_b]We — we got the bridge. The new one. Substation Nine. The bridge is the song. We're playing it second tomorrow.",
       "expr": "neutral"
     },
     {

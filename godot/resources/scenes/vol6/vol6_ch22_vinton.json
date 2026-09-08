@@ -92,7 +92,7 @@
   {
    "t": "say",
    "char": "Coach Guidry",
-   "text": "Visiting bench. Move it.",
+   "text": "[shot:closeup person]Visiting bench. Move it.",
    "expr": "neutral"
   },
   {
@@ -255,7 +255,7 @@
   },
   {
    "t": "narrate",
-   "text": "The two teams run through the substitution and timeout procedures with the refs. Coach K and Coach Guidry stand at midfield with the head ref and confer about clock management. The Vinton kids are loud. The Texas kids are quieter. The home bleachers are filling — a hundred and twenty by six, maybe a hundred and fifty, which is what a Texas high school scrimmage on a Saturday in August draws when the schools have been doing this annual game since 1991."
+   "text": "[shot:insert bleachers]The two teams run through the substitution and timeout procedures with the refs. Coach K and Coach Guidry stand at midfield with the head ref and confer about clock management. The Vinton kids are loud. The Texas kids are quieter. The home bleachers are filling — a hundred and twenty by six, maybe a hundred and fifty, which is what a Texas high school scrimmage on a Saturday in August draws when the schools have been doing this annual game since 1991."
   },
   {
    "t": "narrate",
@@ -331,7 +331,7 @@
   },
   {
    "t": "narrate",
-   "text": "Coach K, at the bench during the change of quarters, says to Brent:"
+   "text": "[shot:insert bleachers]Coach K, at the bench during the change of quarters, says to Brent:"
   },
   {
    "t": "say",
@@ -360,7 +360,7 @@
   {
    "t": "say",
    "char": "Coach K",
-   "text": "Tell the line.",
+   "text": "[shot:closeup person]Tell the line.",
    "expr": "neutral"
   },
   {
@@ -479,7 +479,7 @@
   },
   {
    "t": "narrate",
-   "text": "7-7."
+   "text": "[shot:establish]7-7."
   },
   {
    "t": "hide",
@@ -572,7 +572,7 @@
   {
    "t": "say",
    "char": "Eileen",
-   "text": "Eileen.",
+   "text": "[shot:closeup person_b]Eileen.",
    "expr": "neutral"
   },
   {
@@ -620,7 +620,7 @@
   {
    "t": "say",
    "char": "Linda",
-   "text": "How long since.",
+   "text": "[shot:closeup person]How long since.",
    "expr": "neutral"
   },
   {
@@ -650,7 +650,7 @@
   {
    "t": "say",
    "char": "Eileen",
-   "text": "My husband told me yesterday afternoon he wanted to book the Christmas flight.",
+   "text": "[shot:closeup person_b]My husband told me yesterday afternoon he wanted to book the Christmas flight.",
    "expr": "neutral"
   },
   {
@@ -684,7 +684,7 @@
   {
    "t": "say",
    "char": "Linda",
-   "text": "I know.",
+   "text": "[shot:closeup person]I know.",
    "expr": "neutral"
   },
   {
@@ -716,7 +716,7 @@
   {
    "t": "say",
    "char": "Eileen",
-   "text": "Thank you, Linda.",
+   "text": "[shot:closeup person_b]Thank you, Linda.",
    "expr": "neutral"
   },
   {
@@ -769,7 +769,7 @@
   },
   {
    "t": "narrate",
-   "text": "Coach K and Coach Guidry shake hands. The handshake is a long one — eight seconds, Eileen will later realize, watching her husband walk back to the sideline — and during the handshake Coach K says something to Guidry that Eileen does not hear and that Linda also does not hear. Guidry laughs. Coach K does not."
+   "text": "[shot:insert folding_chair]Coach K and Coach Guidry shake hands. The handshake is a long one — eight seconds, Eileen will later realize, watching her husband walk back to the sideline — and during the handshake Coach K says something to Guidry that Eileen does not hear and that Linda also does not hear. Guidry laughs. Coach K does not."
   },
   {
    "t": "hide",
@@ -792,7 +792,7 @@
   {
    "t": "say",
    "char": "Ben",
-   "text": "Yeah.",
+   "text": "[shot:closeup person_b]Yeah.",
    "expr": "neutral"
   },
   {
@@ -826,7 +826,7 @@
   {
    "t": "say",
    "char": "Number 47",
-   "text": "Man. Good luck this year.",
+   "text": "[shot:closeup person]Man. Good luck this year.",
    "expr": "neutral"
   },
   {
@@ -902,7 +902,7 @@
   {
    "t": "say",
    "char": "Eileen",
-   "text": "Yeah.",
+   "text": "[shot:closeup person]Yeah.",
    "expr": "neutral"
   },
   {
@@ -932,7 +932,7 @@
   {
    "t": "say",
    "char": "Linda",
-   "text": "I'm bossy. I know.",
+   "text": "[shot:closeup person_b]I'm bossy. I know.",
    "expr": "neutral"
   },
   {
@@ -984,7 +984,7 @@
   {
    "t": "say",
    "char": "Coach K",
-   "text": "...",
+   "text": "[shot:closeup person]...",
    "expr": "happy"
   },
   {

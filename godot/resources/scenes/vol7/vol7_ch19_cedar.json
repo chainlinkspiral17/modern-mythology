@@ -73,7 +73,7 @@
   },
   {
    "char": "tem",
-   "text": "Come in.",
+   "text": "[shot:closeup person]Come in.",
    "t": "say"
   },
   {
@@ -97,7 +97,7 @@
   },
   {
    "char": "cale",
-   "text": "Roy Hummel.",
+   "text": "[shot:closeup person_b]Roy Hummel.",
    "t": "say"
   },
   {
@@ -157,7 +157,7 @@
   },
   {
    "char": "finn",
-   "text": "The crow is named Aria.",
+   "text": "[shot:closeup person]The crow is named Aria.",
    "t": "say"
   },
   {
@@ -182,7 +182,7 @@
   },
   {
    "char": "per",
-   "text": "What is the cedar.",
+   "text": "[shot:closeup person_b]What is the cedar.",
    "t": "say"
   },
   {
@@ -229,7 +229,7 @@
   },
   {
    "char": "finn",
-   "text": "Yes.",
+   "text": "[shot:closeup person]Yes.",
    "t": "say"
   },
   {
@@ -254,7 +254,7 @@
   },
   {
    "char": "per",
-   "text": "Tem has had it for ten.",
+   "text": "[shot:closeup person_b]Tem has had it for ten.",
    "t": "say"
   },
   {
@@ -279,7 +279,7 @@
   },
   {
    "char": "finn",
-   "text": "Yes.",
+   "text": "[shot:closeup person]Yes.",
    "t": "say"
   },
   {

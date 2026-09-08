@@ -43,7 +43,7 @@
    "t": "narrate"
   },
   {
-   "text": "Per sat at the table.",
+   "text": "[shot:insert table]Per sat at the table.",
    "t": "narrate"
   },
   {
@@ -71,7 +71,7 @@
   },
   {
    "char": "tem",
-   "text": "I saw.",
+   "text": "[shot:closeup person]I saw.",
    "t": "say"
   },
   {
@@ -101,7 +101,7 @@
   },
   {
    "char": "per",
-   "text": "Yes.",
+   "text": "[shot:closeup person_b]Yes.",
    "t": "say"
   },
   {
@@ -194,7 +194,7 @@
   },
   {
    "char": "per",
-   "text": "Yeah.",
+   "text": "[shot:closeup person_b]Yeah.",
    "t": "say"
   },
   {
@@ -220,7 +220,7 @@
   },
   {
    "char": "roy",
-   "text": "Tem.",
+   "text": "[shot:closeup person]Tem.",
    "t": "say"
   },
   {

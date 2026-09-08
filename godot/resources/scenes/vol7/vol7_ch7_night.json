@@ -75,7 +75,7 @@
     },
     {
       "char": "kai",
-      "text": "Roy.",
+      "text": "[shot:closeup person]Roy.",
       "expr": "neutral",
       "t": "say"
     },
@@ -123,7 +123,7 @@
     },
     {
       "char": "tem",
-      "text": "That's not a coincidence.",
+      "text": "[shot:closeup person_b]That's not a coincidence.",
       "expr": "serious",
       "t": "say"
     },
@@ -157,7 +157,7 @@
     },
     {
       "char": "lena",
-      "text": "Tem. Who is he.",
+      "text": "[shot:closeup person]Tem. Who is he.",
       "expr": "serious",
       "t": "say"
     },
@@ -201,7 +201,7 @@
     },
     {
       "char": "kai",
-      "text": "A what.",
+      "text": "[shot:closeup person]A what.",
       "expr": "serious",
       "t": "say"
     },
@@ -229,7 +229,7 @@
     },
     {
       "char": "finn",
-      "text": "And Roy is asking after me.",
+      "text": "[shot:closeup person_b]And Roy is asking after me.",
       "expr": "serious",
       "t": "say"
     },
@@ -257,7 +257,7 @@
     },
     {
       "char": "kai",
-      "text": "Are we in danger.",
+      "text": "[shot:closeup person]Are we in danger.",
       "expr": "serious",
       "t": "say"
     },
@@ -297,7 +297,7 @@
     },
     {
       "char": "finn",
-      "text": "I think I do.",
+      "text": "[shot:closeup person_b]I think I do.",
       "expr": "serious",
       "t": "say"
     },
@@ -371,7 +371,7 @@
     },
     {
       "char": "kai",
-      "text": "That was the most you have said in two days.",
+      "text": "[shot:closeup person]That was the most you have said in two days.",
       "expr": "neutral",
       "t": "say"
     },
@@ -419,7 +419,7 @@
     },
     {
       "char": "finn",
-      "text": "All right.",
+      "text": "[shot:closeup person_b]All right.",
       "expr": "neutral",
       "t": "say"
     },

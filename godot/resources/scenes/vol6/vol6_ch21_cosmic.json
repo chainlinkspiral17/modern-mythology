@@ -100,7 +100,7 @@
     {
       "t": "say",
       "char": "Phil",
-      "text": "The Mantlo retrospective. Did you see it?",
+      "text": "[shot:closeup person]The Mantlo retrospective. Did you see it?",
       "expr": "neutral"
     },
     {
@@ -130,7 +130,7 @@
     {
       "t": "say",
       "char": "Maya",
-      "text": "I will.",
+      "text": "[shot:closeup person_b]I will.",
       "expr": "neutral"
     },
     {
@@ -158,7 +158,7 @@
     {
       "t": "say",
       "char": "Hal",
-      "text": "Kid. How's the day.",
+      "text": "[shot:closeup person]Kid. How's the day.",
       "expr": "neutral"
     },
     {
@@ -188,7 +188,7 @@
     {
       "t": "say",
       "char": "Maya",
-      "text": "Yeah.",
+      "text": "[shot:closeup person_b]Yeah.",
       "expr": "neutral"
     },
     {
@@ -490,7 +490,7 @@
     {
       "t": "say",
       "char": "Hal",
-      "text": "Yeah.",
+      "text": "[shot:closeup person]Yeah.",
       "expr": "neutral"
     },
     {
@@ -524,7 +524,7 @@
     {
       "t": "say",
       "char": "Hal",
-      "text": "You handle it however you think you should. Rick will want to know on Sunday. I'll tell him if you want me to. You can also text him. Either is fine.",
+      "text": "[shot:closeup person]You handle it however you think you should. Rick will want to know on Sunday. I'll tell him if you want me to. You can also text him. Either is fine.",
       "expr": "neutral"
     },
     {

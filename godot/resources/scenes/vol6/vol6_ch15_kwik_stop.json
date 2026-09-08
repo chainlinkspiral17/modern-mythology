@@ -763,7 +763,7 @@
     },
     {
       "t": "narrate",
-      "text": "She finishes wiping the counter."
+      "text": "[shot:establish]She finishes wiping the counter."
     },
     {
       "t": "narrate",
@@ -1479,7 +1479,7 @@
     },
     {
       "t": "narrate",
-      "text": "She turns the AC on full."
+      "text": "[shot:establish_b]She turns the AC on full."
     },
     {
       "t": "narrate",

@@ -96,7 +96,7 @@
     },
     {
       "char": "cale",
-      "text": "That's the same face as the one in the bowl.",
+      "text": "[shot:closeup person]That's the same face as the one in the bowl.",
       "expr": "serious",
       "t": "say"
     },
@@ -126,7 +126,7 @@
     },
     {
       "char": "per",
-      "text": "I don't know. The piece showed up in Finn's duffel overnight. I have been thinking, this afternoon, about whether my father carved it before he died in '78 and the cedar has been somewhere for seventy-four years, or whether the substrate has been doing what the substrate did with my mother's bowl yesterday — taking my father's hand and the cedar and the listening and making a piece out of the three of those.",
+      "text": "[shot:closeup person_b]I don't know. The piece showed up in Finn's duffel overnight. I have been thinking, this afternoon, about whether my father carved it before he died in '78 and the cedar has been somewhere for seventy-four years, or whether the substrate has been doing what the substrate did with my mother's bowl yesterday — taking my father's hand and the cedar and the listening and making a piece out of the three of those.",
       "expr": "serious",
       "t": "say"
     },
@@ -162,7 +162,7 @@
     },
     {
       "char": "tem",
-      "text": "The cedar was probably carved in 1976 by your father and was probably put somewhere by your father for safekeeping and the substrate probably moved the cedar from where your father had put it to Finn's duffel overnight. The substrate did not carve the cedar. The substrate moved it.",
+      "text": "[shot:closeup person]The cedar was probably carved in 1976 by your father and was probably put somewhere by your father for safekeeping and the substrate probably moved the cedar from where your father had put it to Finn's duffel overnight. The substrate did not carve the cedar. The substrate moved it.",
       "expr": "serious",
       "t": "say"
     },
@@ -198,7 +198,7 @@
     },
     {
       "char": "lena",
-      "text": "Tem.",
+      "text": "[shot:closeup person_b]Tem.",
       "expr": "neutral",
       "t": "say"
     },
@@ -228,7 +228,7 @@
     },
     {
       "char": "tem",
-      "text": "Yeah.",
+      "text": "[shot:closeup person]Yeah.",
       "expr": "neutral",
       "t": "say"
     },
@@ -415,7 +415,7 @@
     },
     {
       "char": "tem",
-      "text": "Come inside. Per is at the table. The bowls are on the table. Your bowl is — your grandfather's bowl is going to make three. We have been waiting for the third.",
+      "text": "[shot:closeup person]Come inside. Per is at the table. The bowls are on the table. Your bowl is — your grandfather's bowl is going to make three. We have been waiting for the third.",
       "expr": "serious",
       "t": "say"
     },
@@ -445,7 +445,7 @@
     },
     {
       "char": "marina",
-      "text": "I am — I am sorry. The not-meeting was not mine. The not-meeting was the foundation.",
+      "text": "[shot:closeup person_b]I am — I am sorry. The not-meeting was not mine. The not-meeting was the foundation.",
       "expr": "serious",
       "t": "say"
     },
@@ -520,7 +520,7 @@
     },
     {
       "char": "marina",
-      "text": "I have read about you in Brandon's papers.",
+      "text": "[shot:closeup person]I have read about you in Brandon's papers.",
       "expr": "neutral",
       "t": "say"
     },
@@ -548,7 +548,7 @@
     },
     {
       "char": "cale",
-      "text": "Yeah.",
+      "text": "[shot:closeup person_b]Yeah.",
       "expr": "serious",
       "t": "say"
     },
@@ -592,7 +592,7 @@
     },
     {
       "char": "marina",
-      "text": "Yes.",
+      "text": "[shot:closeup person]Yes.",
       "expr": "neutral",
       "t": "say"
     },
@@ -634,7 +634,7 @@
     },
     {
       "char": "cale",
-      "text": "The man at the base.",
+      "text": "[shot:closeup person_b]The man at the base.",
       "expr": "serious",
       "t": "say"
     },
@@ -664,7 +664,7 @@
     },
     {
       "char": "per",
-      "text": "Marina.",
+      "text": "[shot:closeup person]Marina.",
       "expr": "serious",
       "t": "say"
     },
@@ -705,7 +705,7 @@
       "t": "say"
     },
     {
-      "text": "He sat down. He held Marina's grandfather's bowl in both hands. Marina sat down across the table. The bowl was on the table between them. The three bowls were on the table.",
+      "text": "[shot:insert bowl]He sat down. He held Marina's grandfather's bowl in both hands. Marina sat down across the table. The bowl was on the table between them. The three bowls were on the table.",
       "t": "narrate"
     },
     {
@@ -735,7 +735,7 @@
     },
     {
       "char": "tem",
-      "text": "What did you say.",
+      "text": "[shot:closeup person_b]What did you say.",
       "expr": "neutral",
       "t": "say"
     },
@@ -771,7 +771,7 @@
     },
     {
       "char": "per",
-      "text": "I do not — I have not looked at it since this afternoon.",
+      "text": "[shot:closeup person]I do not — I have not looked at it since this afternoon.",
       "expr": "serious",
       "t": "say"
     },

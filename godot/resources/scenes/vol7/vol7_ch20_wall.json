@@ -94,7 +94,7 @@
     },
     {
       "t": "narrate",
-      "text": "She put a hand flat over Roy's bowl, not on it — the way Roy had held his hand over it the day he had given it — and counted to four, and took the hand back. The rain on the asphalt did not change. Something behind her, at the wagon, had stopped moving for the four."
+      "text": "[shot:insert hand]She put a hand flat over Roy's bowl, not on it — the way Roy had held his hand over it the day he had given it — and counted to four, and took the hand back. The rain on the asphalt did not change. Something behind her, at the wagon, had stopped moving for the four."
     },
     {
       "t": "jump",
@@ -155,7 +155,7 @@
       "t": "narrate"
     },
     {
-      "text": "Margaret came at six fifty-nine with two co-op workers Tem recognized by face. Margaret nodded at Finn and at Tem and went and stood at the wall.",
+      "text": "[shot:insert face]Margaret came at six fifty-nine with two co-op workers Tem recognized by face. Margaret nodded at Finn and at Tem and went and stood at the wall.",
       "t": "narrate"
     },
     {
@@ -217,7 +217,7 @@
       "t": "say"
     },
     {
-      "text": "Marit walked the rest of the way to the milk crate. Per a step behind her. She stopped at the crate. She looked down at the bowls. She looked at her own bowl — the one Olaf had carved her in 1974, the one she had been keeping at her bedside at Hans's since Wednesday. She bent down. She picked up the bowl in both hands. She straightened slowly, the way she straightened anything she had to straighten with a bowl in her hands.",
+      "text": "[shot:insert hand]Marit walked the rest of the way to the milk crate. Per a step behind her. She stopped at the crate. She looked down at the bowls. She looked at her own bowl — the one Olaf had carved her in 1974, the one she had been keeping at her bedside at Hans's since Wednesday. She bent down. She picked up the bowl in both hands. She straightened slowly, the way she straightened anything she had to straighten with a bowl in her hands.",
       "t": "narrate"
     },
     {
@@ -250,7 +250,7 @@
       "t": "say"
     },
     {
-      "text": "Lena did not, at this, say anything. She stood at the crate beside Marit. After a count she reached and put her hand briefly on Marit's elbow. Marit did not look at her. Marit kept looking at the face.",
+      "text": "[shot:insert crate]Lena did not, at this, say anything. She stood at the crate beside Marit. After a count she reached and put her hand briefly on Marit's elbow. Marit did not look at her. Marit kept looking at the face.",
       "t": "narrate"
     },
     {
@@ -332,7 +332,7 @@
       "t": "narrate"
     },
     {
-      "text": "The face on the wall looked at the crowd at the wall.",
+      "text": "[shot:insert face]The face on the wall looked at the crowd at the wall.",
       "t": "narrate"
     },
     {
@@ -368,7 +368,7 @@
       "t": "narrate"
     },
     {
-      "text": "The mouth closed.",
+      "text": "[shot:establish]The mouth closed.",
       "t": "narrate"
     },
     {
@@ -502,7 +502,7 @@
       "t": "narrate"
     },
     {
-      "text": "She watched the perhaps thirty-five people in the alley at the wall. She watched the substrate doing what the substrate had been doing.",
+      "text": "[shot:insert wall]She watched the perhaps thirty-five people in the alley at the wall. She watched the substrate doing what the substrate had been doing.",
       "t": "narrate"
     },
     {
@@ -538,7 +538,7 @@
       "t": "narrate"
     },
     {
-      "text": "She was — at seven forty-six on the first of September of 2052 in the alley behind The Salty Tome with perhaps thirty-five people of her town standing at the face on the wall with the bowls and the bell-piece and the notebook at the milk crate at the foot — she was in it.",
+      "text": "[shot:insert notebook]She was — at seven forty-six on the first of September of 2052 in the alley behind The Salty Tome with perhaps thirty-five people of her town standing at the face on the wall with the bowls and the bell-piece and the notebook at the milk crate at the foot — she was in it.",
       "t": "narrate"
     },
     {

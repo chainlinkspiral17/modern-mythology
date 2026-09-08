@@ -44,7 +44,7 @@
     {
       "t": "say",
       "char": "Dr. Patel",
-      "text": "He's going to be okay. He needs forty-eight hours of fluids and quiet. Then he needs his grandmother, his mother, and a lot of soup.",
+      "text": "[shot:closeup person]He's going to be okay. He needs forty-eight hours of fluids and quiet. Then he needs his grandmother, his mother, and a lot of soup.",
       "expr": "neutral"
     },
     {

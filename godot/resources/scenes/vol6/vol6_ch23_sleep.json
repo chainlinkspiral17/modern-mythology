@@ -51,7 +51,7 @@
     },
     {
       "t": "narrate",
-      "text": "Jim is at his usual chair. Eileen is at hers. Jesse, who had slept until eleven and had spent the afternoon at the small fold-out table in the garage going through the pedalboard he is going to set up for the Tuesday-after-school practice, is at his."
+      "text": "[shot:insert table]Jim is at his usual chair. Eileen is at hers. Jesse, who had slept until eleven and had spent the afternoon at the small fold-out table in the garage going through the pedalboard he is going to set up for the Tuesday-after-school practice, is at his."
     },
     {
       "t": "narrate",
@@ -82,7 +82,7 @@
     {
       "t": "say",
       "char": "Eileen",
-      "text": "I know.",
+      "text": "[shot:closeup person]I know.",
       "expr": "neutral"
     },
     {
@@ -126,7 +126,7 @@
     {
       "t": "say",
       "char": "Jesse",
-      "text": "What piano.",
+      "text": "[shot:closeup person_b]What piano.",
       "expr": "neutral"
     },
     {
@@ -156,7 +156,7 @@
     {
       "t": "say",
       "char": "Eileen",
-      "text": "Yeah.",
+      "text": "[shot:closeup person]Yeah.",
       "expr": "neutral"
     },
     {
@@ -336,7 +336,7 @@
     {
       "t": "say",
       "char": "Bill",
-      "text": "Senior year.",
+      "text": "[shot:closeup person]Senior year.",
       "expr": "neutral"
     },
     {
@@ -366,7 +366,7 @@
     {
       "t": "say",
       "char": "Anita",
-      "text": "I switched two shifts this week. I will be at every game this season. I have already done the schedule with Helen. The schedule is set.",
+      "text": "[shot:closeup person_b]I switched two shifts this week. I will be at every game this season. I have already done the schedule with Helen. The schedule is set.",
       "expr": "neutral"
     },
     {
@@ -396,7 +396,7 @@
     {
       "t": "say",
       "char": "Ben",
-      "text": "Yeah.",
+      "text": "[shot:closeup person]Yeah.",
       "expr": "neutral"
     },
     {
@@ -630,7 +630,7 @@
     {
       "t": "say",
       "char": "Jim",
-      "text": "Yamaha.",
+      "text": "[shot:closeup person]Yamaha.",
       "expr": "neutral"
     },
     {
@@ -695,7 +695,7 @@
     },
     {
       "t": "narrate",
-      "text": "In a different cul-de-sac, the Garcia house — Diego's grandmother's house — is dark. Diego is asleep. His grandmother, who had been on the porch with her rosary as she has been since 1979, is in her bed. The rosary is on her nightstand. The eyes are closed."
+      "text": "[shot:establish]In a different cul-de-sac, the Garcia house — Diego's grandmother's house — is dark. Diego is asleep. His grandmother, who had been on the porch with her rosary as she has been since 1979, is in her bed. The rosary is on her nightstand. The eyes are closed."
     },
     {
       "t": "narrate",

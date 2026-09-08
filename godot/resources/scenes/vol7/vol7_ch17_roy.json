@@ -45,7 +45,7 @@
       "t": "show"
     },
     {
-      "text": "[mood:kitchen_practical]At six twelve the bell rang at the front of the bakery.",
+      "text": "[shot:insert bakery_light][mood:kitchen_practical]At six twelve the bell rang at the front of the bakery.",
       "t": "narrate"
     },
     {
@@ -105,7 +105,7 @@
     },
     {
       "char": "hans",
-      "text": "Roy. Come to the table. The brioche is cut. The coffee is in the press. There is a chair at the head opposite me for you. We have been waiting.",
+      "text": "[shot:closeup person]Roy. Come to the table. The brioche is cut. The coffee is in the press. There is a chair at the head opposite me for you. We have been waiting.",
       "t": "say"
     },
     {
@@ -161,7 +161,7 @@
     },
     {
       "char": "roy",
-      "text": "Tem.",
+      "text": "[shot:closeup person_b]Tem.",
       "t": "say"
     },
     {
@@ -201,7 +201,7 @@
     },
     {
       "char": "cale",
-      "text": "Roy.",
+      "text": "[shot:closeup person]Roy.",
       "t": "say"
     },
     {
@@ -234,7 +234,7 @@
     },
     {
       "char": "roy",
-      "text": "You have been the foundation.",
+      "text": "[shot:closeup person_b]You have been the foundation.",
       "t": "say"
     },
     {
@@ -269,7 +269,7 @@
     },
     {
       "char": "marit",
-      "text": "Roy Hummel.",
+      "text": "[shot:closeup person]Roy Hummel.",
       "t": "say"
     },
     {
@@ -318,7 +318,7 @@
     },
     {
       "char": "roy",
-      "text": "Aud. I have been at your diner three times. The first was in '32 when I was new to town and had not registered who you were and you served me coffee at the counter and said three things to me and one of the three was: Roy. You are carrying.",
+      "text": "[shot:closeup person_b]Aud. I have been at your diner three times. The first was in '32 when I was new to town and had not registered who you were and you served me coffee at the counter and said three things to me and one of the three was: Roy. You are carrying.",
       "t": "say"
     },
     {
@@ -393,7 +393,7 @@
     },
     {
       "char": "hans",
-      "text": "Ja, Roy.",
+      "text": "[shot:closeup person]Ja, Roy.",
       "t": "say"
     },
     {
@@ -566,7 +566,7 @@
     },
     {
       "char": "hans",
-      "text": "Take the count, Roy.",
+      "text": "[shot:closeup person]Take the count, Roy.",
       "t": "say"
     },
     {

@@ -64,7 +64,7 @@
    "t": "say",
    "char": "Jo",
    "expr": "neutral",
-   "text": "You never do."
+   "text": "[shot:closeup person]You never do."
   },
   {
    "t": "narrate",

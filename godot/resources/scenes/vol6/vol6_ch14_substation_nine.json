@@ -51,7 +51,7 @@
   },
   {
    "t": "narrate",
-   "text": "The kid coming up the driveway is — Jesse, looking up from the strings — fourteen, maybe fifteen, on a skateboard, with a stack of paper flyers held against his chest under one elbow. Jesse knows the kid by face but not by name. He is one of the kids who has, in the past few weeks, started skating the cul-de-sacs in the late afternoons, in the small roving way kids on skateboards in Texas suburbs roam in late summer when school is about to start and there is, this week, nothing to do."
+   "text": "[shot:insert flyer]The kid coming up the driveway is — Jesse, looking up from the strings — fourteen, maybe fifteen, on a skateboard, with a stack of paper flyers held against his chest under one elbow. Jesse knows the kid by face but not by name. He is one of the kids who has, in the past few weeks, started skating the cul-de-sacs in the late afternoons, in the small roving way kids on skateboards in Texas suburbs roam in late summer when school is about to start and there is, this week, nothing to do."
   },
   {
    "t": "narrate",
@@ -76,7 +76,7 @@
   {
    "t": "say",
    "char": "Kid",
-   "text": "Saturday at the Foxhole. Owner asked me to drop these. He said you'd want one.",
+   "text": "[shot:closeup person]Saturday at the Foxhole. Owner asked me to drop these. He said you'd want one.",
    "expr": "neutral"
   },
   {
@@ -208,7 +208,7 @@
   {
    "t": "say",
    "char": "Walt",
-   "text": "You guys ready for Saturday?",
+   "text": "[shot:closeup person]You guys ready for Saturday?",
    "expr": "neutral"
   },
   {
@@ -276,7 +276,7 @@
   {
    "t": "say",
    "char": "Em",
-   "text": "Jesse.",
+   "text": "[shot:closeup person_b]Jesse.",
    "expr": "neutral"
   },
   {
@@ -302,7 +302,7 @@
   {
    "t": "say",
    "char": "Jesse",
-   "text": "Okay.",
+   "text": "[shot:closeup person]Okay.",
    "expr": "neutral"
   },
   {
@@ -324,7 +324,7 @@
   {
    "t": "say",
    "char": "Em",
-   "text": "Jess.",
+   "text": "[shot:closeup person_b]Jess.",
    "expr": "neutral"
   },
   {
@@ -368,7 +368,7 @@
   {
    "t": "say",
    "char": "Jesse",
-   "text": "Yeah. I can.",
+   "text": "[shot:closeup person]Yeah. I can.",
    "expr": "neutral"
   },
   {
@@ -406,7 +406,7 @@
   {
    "t": "say",
    "char": "Em",
-   "text": "Because the song is the thing you have been writing all summer. Because the song is — Jess. The song is about the substation. The substation is the thing this town does not, by general agreement, talk about. The Foxhole is in New Auburn, twelve miles from the substation. The Foxhole's audience on Saturday is going to be — it's going to be people who live close enough to the substation that they will, when you sing the chorus, register what you are singing about. I want to play it for them. I want it to be the second song in the set. I want to see what the room does.",
+   "text": "[shot:closeup person_b]Because the song is the thing you have been writing all summer. Because the song is — Jess. The song is about the substation. The substation is the thing this town does not, by general agreement, talk about. The Foxhole is in New Auburn, twelve miles from the substation. The Foxhole's audience on Saturday is going to be — it's going to be people who live close enough to the substation that they will, when you sing the chorus, register what you are singing about. I want to play it for them. I want it to be the second song in the set. I want to see what the room does.",
    "expr": "serious"
   },
   {
@@ -428,7 +428,7 @@
   {
    "t": "say",
    "char": "Jesse",
-   "text": "Okay, Em. Yeah. Second in the set.",
+   "text": "[shot:closeup person]Okay, Em. Yeah. Second in the set.",
    "expr": "neutral"
   },
   {
@@ -503,7 +503,7 @@
   },
   {
    "t": "narrate",
-   "text": "Practice ends at nine forty-six. Carl breaks down the kit. Nate unplugs. Em packs her own mic, which she has, since June, been bringing to every practice in a small soft case her mother had given her at her high school graduation. They load Jesse's Telecaster and amp into Jesse's car. Carl carries his snare to his mother's car at the curb. Nate's bass stays at Nate's."
+   "text": "[shot:insert drum_kit]Practice ends at nine forty-six. Carl breaks down the kit. Nate unplugs. Em packs her own mic, which she has, since June, been bringing to every practice in a small soft case her mother had given her at her high school graduation. They load Jesse's Telecaster and amp into Jesse's car. Carl carries his snare to his mother's car at the curb. Nate's bass stays at Nate's."
   },
   {
    "t": "hide",
@@ -536,7 +536,7 @@
   {
    "t": "say",
    "char": "Em",
-   "text": "Jess.",
+   "text": "[shot:closeup person_b]Jess.",
    "expr": "neutral"
   },
   {

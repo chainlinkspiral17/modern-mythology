@@ -54,7 +54,7 @@
     {
       "t": "say",
       "char": "Marisol",
-      "text": "Day side?",
+      "text": "[shot:closeup person]Day side?",
       "expr": "neutral"
     },
     {
@@ -224,7 +224,7 @@
     {
       "t": "say",
       "char": "Doug",
-      "text": "Stack the yogurt on the empty pallet by receiving. Tag them with a shelf-pending. Jessa will route them in the morning.",
+      "text": "[shot:closeup person]Stack the yogurt on the empty pallet by receiving. Tag them with a shelf-pending. Jessa will route them in the morning.",
       "expr": "neutral"
     },
     {
@@ -370,7 +370,7 @@
     {
       "t": "say",
       "char": "Jessa",
-      "text": "Inventory Friday.",
+      "text": "[shot:closeup person]Inventory Friday.",
       "expr": "neutral"
     },
     {
@@ -448,7 +448,7 @@
     {
       "t": "say",
       "char": "Marisol",
-      "text": "Friday is going to be a thing.",
+      "text": "[shot:closeup person_b]Friday is going to be a thing.",
       "expr": "neutral"
     },
     {
@@ -492,7 +492,7 @@
     {
       "t": "say",
       "char": "BT",
-      "text": "I did one in — I did one a few years back. At a hardware store. It went late.",
+      "text": "[shot:closeup person]I did one in — I did one a few years back. At a hardware store. It went late.",
       "expr": "neutral"
     },
     {
@@ -805,7 +805,7 @@
     {
       "t": "say",
       "char": "Diego",
-      "text": "I don't know. The light does weird stuff out here.",
+      "text": "[shot:closeup person]I don't know. The light does weird stuff out here.",
       "expr": "neutral"
     },
     {
@@ -829,7 +829,7 @@
     {
       "t": "say",
       "char": "BT",
-      "text": "You been doing this long?",
+      "text": "[shot:closeup person_b]You been doing this long?",
       "expr": "neutral"
     },
     {
@@ -977,7 +977,7 @@
     {
       "t": "say",
       "char": "Diego",
-      "text": "Pallet was heavy.",
+      "text": "[shot:closeup person]Pallet was heavy.",
       "expr": "neutral"
     },
     {
@@ -1035,7 +1035,7 @@
     {
       "t": "say",
       "char": "Doug",
-      "text": "Just — Diego. You don't have to be the one who lets him in. The team's going to do what the team's going to do. You don't have to be the one who pushes against it. You don't have to be the one who agrees with it either. You can — you can just let it happen. That's a thing you're allowed to do.",
+      "text": "[shot:closeup person_b]Just — Diego. You don't have to be the one who lets him in. The team's going to do what the team's going to do. You don't have to be the one who pushes against it. You don't have to be the one who agrees with it either. You can — you can just let it happen. That's a thing you're allowed to do.",
       "expr": "neutral"
     },
     {
@@ -1076,7 +1076,7 @@
     },
     {
       "t": "narrate",
-      "text": "He gets in his own truck."
+      "text": "[shot:establish]He gets in his own truck."
     },
     {
       "t": "narrate",

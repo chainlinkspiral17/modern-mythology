@@ -96,7 +96,7 @@
       "t": "say",
       "char": "lena",
       "name": "Lena",
-      "text": "Yeah.",
+      "text": "[shot:closeup person]Yeah.",
       "expr": "neutral"
     },
     {
@@ -163,7 +163,7 @@
       "t": "say",
       "char": "tem",
       "name": "Tem",
-      "text": "Some. Three or four hours. The rain was loud last night. Around two a branch came down up the hill — you can hear them when they hit the ground if you're awake. I was awake. I went back to sleep after.",
+      "text": "[shot:closeup person_b]Some. Three or four hours. The rain was loud last night. Around two a branch came down up the hill — you can hear them when they hit the ground if you're awake. I was awake. I went back to sleep after.",
       "expr": "neutral"
     },
     {
@@ -223,7 +223,7 @@
       "t": "say",
       "char": "lena",
       "name": "Lena",
-      "text": "Of course it did.",
+      "text": "[shot:closeup person]Of course it did.",
       "expr": "neutral"
     },
     {
@@ -253,7 +253,7 @@
       "t": "say",
       "char": "tem",
       "name": "Tem",
-      "text": "Yeah.",
+      "text": "[shot:closeup person_b]Yeah.",
       "expr": "neutral"
     },
     {
@@ -288,7 +288,7 @@
       "t": "say",
       "char": "lena",
       "name": "Lena",
-      "text": "Tem.",
+      "text": "[shot:closeup person]Tem.",
       "expr": "neutral"
     },
     {
@@ -323,7 +323,7 @@
       "t": "say",
       "char": "tem",
       "name": "Tem",
-      "text": "Different word. Different time. Same shape.",
+      "text": "[shot:closeup person_b]Different word. Different time. Same shape.",
       "expr": "neutral"
     },
     {
@@ -399,7 +399,7 @@
       "t": "say",
       "char": "tem",
       "name": "Tem",
-      "text": "Coffee?",
+      "text": "[shot:closeup person_b]Coffee?",
       "expr": "neutral"
     },
     {
@@ -456,7 +456,7 @@
       "t": "say",
       "char": "lena",
       "name": "Lena",
-      "text": "You did not tell me.",
+      "text": "[shot:closeup person]You did not tell me.",
       "expr": "neutral"
     },
     {
@@ -537,7 +537,7 @@
       "t": "say",
       "char": "tem",
       "name": "Tem",
-      "text": "Eggs. There are eggs. I will make the eggs.",
+      "text": "[shot:closeup person_b]Eggs. There are eggs. I will make the eggs.",
       "expr": "neutral"
     },
     {
@@ -573,7 +573,7 @@
       "t": "say",
       "char": "lena",
       "name": "Lena",
-      "text": "The small one. The starfish-and-radio piece. Six hundred. She has it in the apartment in town.",
+      "text": "[shot:closeup person]The small one. The starfish-and-radio piece. Six hundred. She has it in the apartment in town.",
       "expr": "neutral"
     },
     {
@@ -708,7 +708,7 @@
       "t": "say",
       "char": "kai",
       "name": "Kai",
-      "text": "What do you mean by leak.",
+      "text": "[shot:closeup person]What do you mean by leak.",
       "expr": "neutral"
     },
     {

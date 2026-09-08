@@ -73,7 +73,7 @@
     },
     {
       "char": "finn",
-      "text": "Hey.",
+      "text": "[shot:closeup person]Hey.",
       "expr": "neutral",
       "t": "say"
     },
@@ -109,7 +109,7 @@
     },
     {
       "char": "kai",
-      "text": "Yeah.",
+      "text": "[shot:closeup person_b]Yeah.",
       "expr": "neutral",
       "t": "say"
     },
@@ -165,7 +165,7 @@
     },
     {
       "char": "finn",
-      "text": "All right.",
+      "text": "[shot:closeup person]All right.",
       "expr": "neutral",
       "t": "say"
     },
@@ -197,7 +197,7 @@
     },
     {
       "char": "kai",
-      "text": "Yeah.",
+      "text": "[shot:closeup person_b]Yeah.",
       "expr": "neutral",
       "t": "say"
     },
@@ -237,7 +237,7 @@
     },
     {
       "char": "lena",
-      "text": "Hi, Finn.",
+      "text": "[shot:closeup person]Hi, Finn.",
       "expr": "neutral",
       "t": "say"
     },
@@ -295,7 +295,7 @@
     },
     {
       "char": "kai",
-      "text": "Have you been writing it.",
+      "text": "[shot:closeup person_b]Have you been writing it.",
       "expr": "serious",
       "t": "say"
     },
@@ -335,7 +335,7 @@
     },
     {
       "char": "lena",
-      "text": "I'm going to tell Tem. I was telling you.",
+      "text": "[shot:closeup person]I'm going to tell Tem. I was telling you.",
       "expr": "serious",
       "t": "say"
     },
@@ -393,7 +393,7 @@
     },
     {
       "char": "kai",
-      "text": "Tomorrow.",
+      "text": "[shot:closeup person_b]Tomorrow.",
       "expr": "serious",
       "t": "say"
     },
@@ -455,7 +455,7 @@
     },
     {
       "char": "lena",
-      "text": "Tem said the substrate is leaking. Tem said the leak is what's been doing this to us. Playing the stick is — playing the stick is putting yourself further into the substrate. Are you sure that is the right way.",
+      "text": "[shot:closeup person]Tem said the substrate is leaking. Tem said the leak is what's been doing this to us. Playing the stick is — playing the stick is putting yourself further into the substrate. Are you sure that is the right way.",
       "expr": "neutral",
       "t": "say"
     },
@@ -485,7 +485,7 @@
     },
     {
       "char": "kai",
-      "text": "This afternoon. I want to go up to the cabin after the bakery is open. I want Tem to be there with me when I play. The reader is at the cabin. The sticks are at the cabin.",
+      "text": "[shot:closeup person_b]This afternoon. I want to go up to the cabin after the bakery is open. I want Tem to be there with me when I play. The reader is at the cabin. The sticks are at the cabin.",
       "expr": "neutral",
       "t": "say"
     },
@@ -515,7 +515,7 @@
     },
     {
       "char": "lena",
-      "text": "Yeah, Kai.",
+      "text": "[shot:closeup person]Yeah, Kai.",
       "expr": "neutral",
       "t": "say"
     },
@@ -561,7 +561,7 @@
     },
     {
       "char": "kai",
-      "text": "Okay.",
+      "text": "[shot:closeup person_b]Okay.",
       "expr": "neutral",
       "t": "say"
     },

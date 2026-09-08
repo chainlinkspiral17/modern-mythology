@@ -99,7 +99,7 @@
     },
     {
       "char": "lena",
-      "text": "Stop.",
+      "text": "[shot:closeup person]Stop.",
       "expr": "neutral",
       "t": "say"
     },
@@ -171,7 +171,7 @@
     },
     {
       "char": "lena",
-      "text": "Which one.",
+      "text": "[shot:closeup person]Which one.",
       "expr": "neutral",
       "t": "say"
     },
@@ -221,7 +221,7 @@
     },
     {
       "char": "tem",
-      "text": "What's it supposed to be about.",
+      "text": "[shot:closeup person_b]What's it supposed to be about.",
       "expr": "neutral",
       "t": "say"
     },
@@ -251,7 +251,7 @@
     },
     {
       "char": "lena",
-      "text": "I have.",
+      "text": "[shot:closeup person]I have.",
       "expr": "neutral",
       "t": "say"
     },
@@ -285,7 +285,7 @@
     },
     {
       "char": "tem",
-      "text": "Petra. Last winter. Jorgen's gallerist in Portland told her you and he had been corresponding. She mentioned it to me one Sunday. I haven't brought it up since. I've been waiting for you.",
+      "text": "[shot:closeup person_b]Petra. Last winter. Jorgen's gallerist in Portland told her you and he had been corresponding. She mentioned it to me one Sunday. I haven't brought it up since. I've been waiting for you.",
       "expr": "neutral",
       "t": "say"
     },
@@ -315,7 +315,7 @@
     },
     {
       "char": "lena",
-      "text": "Why you?",
+      "text": "[shot:closeup person]Why you?",
       "expr": "neutral",
       "t": "say"
     },
@@ -349,7 +349,7 @@
     },
     {
       "char": "tem",
-      "text": "What does it mean when the window closes.",
+      "text": "[shot:closeup person_b]What does it mean when the window closes.",
       "expr": "neutral",
       "t": "say"
     },
@@ -379,7 +379,7 @@
     },
     {
       "char": "lena",
-      "text": "He stops working. He doesn't talk to anyone. He doesn't eat enough. The ex-wife said she'd find him in the workshop sitting in front of a finished painting for twelve hours, not eating, not drinking, not seeming to know she was in the room.",
+      "text": "[shot:closeup person]He stops working. He doesn't talk to anyone. He doesn't eat enough. The ex-wife said she'd find him in the workshop sitting in front of a finished painting for twelve hours, not eating, not drinking, not seeming to know she was in the room.",
       "expr": "serious",
       "t": "say"
     },
@@ -429,7 +429,7 @@
     },
     {
       "char": "tem",
-      "text": "I want to tell you something. I've been with someone like Jorgen before.",
+      "text": "[shot:closeup person_b]I want to tell you something. I've been with someone like Jorgen before.",
       "expr": "serious",
       "t": "say"
     },
@@ -455,7 +455,7 @@
     },
     {
       "char": "lena",
-      "text": "Tem.",
+      "text": "[shot:closeup person]Tem.",
       "expr": "neutral",
       "t": "say"
     },
@@ -485,7 +485,7 @@
     },
     {
       "char": "tem",
-      "text": "April was the first one.",
+      "text": "[shot:closeup person_b]April was the first one.",
       "expr": "serious",
       "t": "say"
     },
@@ -529,7 +529,7 @@
     },
     {
       "char": "tem",
-      "text": "Yes.",
+      "text": "[shot:closeup person_b]Yes.",
       "expr": "serious",
       "t": "say"
     },
@@ -579,7 +579,7 @@
     },
     {
       "char": "lena",
-      "text": "Tem.",
+      "text": "[shot:closeup person]Tem.",
       "expr": "serious",
       "t": "say"
     },

@@ -288,7 +288,7 @@
     {
       "t": "say",
       "char": "Bianca",
-      "text": "I know.",
+      "text": "[shot:closeup person]I know.",
       "expr": "neutral"
     },
     {
@@ -378,7 +378,7 @@
     {
       "t": "say",
       "char": "Sam",
-      "text": "Mom. Sit with me. The pan can wait two minutes. I'll wait two minutes. Sit.",
+      "text": "[shot:closeup person_b]Mom. Sit with me. The pan can wait two minutes. I'll wait two minutes. Sit.",
       "expr": "neutral"
     },
     {
@@ -482,7 +482,7 @@
     {
       "t": "say",
       "char": "Sam",
-      "text": "Mom. I want to tell you something.",
+      "text": "[shot:closeup person_b]Mom. I want to tell you something.",
       "expr": "thinking"
     },
     {
@@ -532,7 +532,7 @@
     {
       "t": "say",
       "char": "Bianca",
-      "text": "[beat:still]Of course you should leave.",
+      "text": "[shot:closeup person][beat:still]Of course you should leave.",
       "expr": "neutral"
     },
     {
@@ -583,7 +583,7 @@
     },
     {
       "t": "narrate",
-      "text": "She picks up her fork."
+      "text": "[shot:establish]She picks up her fork."
     },
     {
       "t": "narrate",

@@ -55,7 +55,7 @@
    "t": "say",
    "char": "Faust",
    "expr": "neutral",
-   "text": "I welcome what's next."
+   "text": "[shot:closeup person]I welcome what's next."
   },
   {
    "t": "say",

@@ -104,7 +104,7 @@
   {
    "t": "say",
    "char": "Ben",
-   "text": "Okay.",
+   "text": "[shot:closeup person]Okay.",
    "expr": "neutral"
   },
   {
@@ -164,7 +164,7 @@
   {
    "t": "say",
    "char": "Ben",
-   "text": "She is going to be in a rehab facility for three weeks and then she is going to come home and you are going to make her tea every afternoon and she is going to teach you the Morse and you are going to sit with her at the radio and she is going to be okay.",
+   "text": "[shot:closeup person]She is going to be in a rehab facility for three weeks and then she is going to come home and you are going to make her tea every afternoon and she is going to teach you the Morse and you are going to sit with her at the radio and she is going to be okay.",
    "expr": "neutral"
   },
   {
@@ -198,7 +198,7 @@
   {
    "t": "say",
    "char": "Maya",
-   "text": "I — I don't know. I haven't — the social worker came down. I told her I have a friend. I — I do not, technically, have a guardian alternate listed.",
+   "text": "[shot:closeup person_b]I — I don't know. I haven't — the social worker came down. I told her I have a friend. I — I do not, technically, have a guardian alternate listed.",
    "expr": "sad"
   },
   {
@@ -242,7 +242,7 @@
   {
    "t": "say",
    "char": "Maya",
-   "text": "Yeah.",
+   "text": "[shot:closeup person_b]Yeah.",
    "expr": "neutral"
   },
   {
@@ -366,7 +366,7 @@
   {
    "t": "say",
    "char": "Anita Kowalski",
-   "text": "Ben.",
+   "text": "[shot:closeup person]Ben.",
    "expr": "neutral"
   },
   {
@@ -435,7 +435,7 @@
   },
   {
    "t": "narrate",
-   "text": "He hugs her."
+   "text": "[shot:establish]He hugs her."
   },
   {
    "t": "narrate",

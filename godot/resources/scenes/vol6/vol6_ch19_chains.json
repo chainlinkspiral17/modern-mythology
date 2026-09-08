@@ -92,7 +92,7 @@
   {
    "t": "say",
    "char": "Ben",
-   "text": "Yeah, Dad.",
+   "text": "[shot:closeup person]Yeah, Dad.",
    "expr": "neutral"
   },
   {
@@ -206,7 +206,7 @@
   {
    "t": "say",
    "char": "Anita",
-   "text": "Eat. Sleep. Tomorrow is a thing.",
+   "text": "[shot:closeup person]Eat. Sleep. Tomorrow is a thing.",
    "expr": "neutral"
   },
   {
@@ -258,7 +258,7 @@
   {
    "t": "say",
    "char": "Maya",
-   "text": "gracie. she texted me. she's at home. she found out from your dad through the kitchen window when he was yelling about the weeds.",
+   "text": "[shot:closeup person_b]gracie. she texted me. she's at home. she found out from your dad through the kitchen window when he was yelling about the weeds.",
    "expr": "happy"
   },
   {
@@ -288,7 +288,7 @@
   {
    "t": "say",
    "char": "Ben",
-   "text": "thanks.",
+   "text": "[shot:closeup person]thanks.",
    "expr": "neutral"
   },
   {
@@ -318,7 +318,7 @@
   {
    "t": "say",
    "char": "Maya",
-   "text": "i'll be there in spirit.",
+   "text": "[shot:closeup person_b]i'll be there in spirit.",
    "expr": "neutral"
   },
   {
@@ -348,7 +348,7 @@
   {
    "t": "say",
    "char": "Ben",
-   "text": "yeah, maya.",
+   "text": "[shot:closeup person]yeah, maya.",
    "expr": "neutral"
   },
   {
@@ -448,7 +448,7 @@
   {
    "t": "say",
    "char": "Coach K",
-   "text": "The rest of you. Go home. Don't do anything stupid tonight. I love you all.",
+   "text": "[shot:closeup person]The rest of you. Go home. Don't do anything stupid tonight. I love you all.",
    "expr": "neutral"
   },
   {
@@ -556,7 +556,7 @@
   {
    "t": "say",
    "char": "Ben",
-   "text": "I don't know.",
+   "text": "[shot:closeup person]I don't know.",
    "expr": "neutral"
   },
   {
@@ -654,7 +654,7 @@
   {
    "t": "say",
    "char": "Bill",
-   "text": "I worked with her father. In the early nineties. At the warehouse out on Ledbetter. He was a — he was a foreman. Decent guy. I didn't know she'd married Coach K. I just put the name together at dinner.",
+   "text": "[shot:closeup person_b]I worked with her father. In the early nineties. At the warehouse out on Ledbetter. He was a — he was a foreman. Decent guy. I didn't know she'd married Coach K. I just put the name together at dinner.",
    "expr": "neutral"
   },
   {
@@ -694,7 +694,7 @@
   {
    "t": "say",
    "char": "Bill",
-   "text": "Once or twice. She came by to bring Don lunch. I would have met her then. I don't remember her face. I just — the name's not common. There's three Eileens in this town, including Jesse Henderson's mom. Coach K's wife is the third. I just put it together.",
+   "text": "[shot:closeup person_b]Once or twice. She came by to bring Don lunch. I would have met her then. I don't remember her face. I just — the name's not common. There's three Eileens in this town, including Jesse Henderson's mom. Coach K's wife is the third. I just put it together.",
    "expr": "neutral"
   },
   {
@@ -818,7 +818,7 @@
   {
    "t": "say",
    "char": "Linda",
-   "text": "Twenty-four-minute halves. That's not a real game.",
+   "text": "[shot:closeup person]Twenty-four-minute halves. That's not a real game.",
    "expr": "neutral"
   },
   {
@@ -848,7 +848,7 @@
   {
    "t": "say",
    "char": "Maya",
-   "text": "I want to ask you something. You can say no.",
+   "text": "[shot:closeup person_b]I want to ask you something. You can say no.",
    "expr": "neutral"
   },
   {
@@ -882,7 +882,7 @@
   {
    "t": "say",
    "char": "Linda",
-   "text": "Bring soup.",
+   "text": "[shot:closeup person]Bring soup.",
    "expr": "neutral"
   },
   {

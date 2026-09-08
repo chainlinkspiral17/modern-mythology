@@ -130,7 +130,7 @@
     {
       "t": "say",
       "char": "Chief Miller",
-      "text": "You ever think about where you want to be in, say, five years?"
+      "text": "[shot:closeup person]You ever think about where you want to be in, say, five years?"
     },
     {
       "t": "narrate",
@@ -159,7 +159,7 @@
     {
       "t": "say",
       "char": "Sam",
-      "text": "I haven't — I haven't really thought about it."
+      "text": "[shot:closeup person_b]I haven't — I haven't really thought about it."
     },
     {
       "t": "narrate",
@@ -188,7 +188,7 @@
     {
       "t": "say",
       "char": "Chief Miller",
-      "text": "If anything ever happened to me — anything at all — I want you to know that there is a safe deposit box at the Bank of New Auburn on Live Oak Street, box number 287, and the key is in the blue tin in my sock drawer. Inside the box is everything you need to know about me. Not just the household stuff. The other things. The things I have not told you. I put it all there three years ago. Your mother knows. I am telling you tonight because —"
+      "text": "[shot:closeup person]If anything ever happened to me — anything at all — I want you to know that there is a safe deposit box at the Bank of New Auburn on Live Oak Street, box number 287, and the key is in the blue tin in my sock drawer. Inside the box is everything you need to know about me. Not just the household stuff. The other things. The things I have not told you. I put it all there three years ago. Your mother knows. I am telling you tonight because —"
     },
     {
       "t": "narrate",
@@ -310,7 +310,7 @@
     {
       "t": "say",
       "char": "Sam",
-      "text": "Mom, don't."
+      "text": "[shot:closeup person_b]Mom, don't."
     },
     {
       "t": "say",
@@ -334,7 +334,7 @@
     {
       "t": "say",
       "char": "Mrs. Miller",
-      "text": "I love you, Sam."
+      "text": "[shot:closeup person]I love you, Sam."
     },
     {
       "t": "say",

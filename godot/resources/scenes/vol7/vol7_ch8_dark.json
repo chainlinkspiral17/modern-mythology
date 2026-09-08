@@ -59,7 +59,7 @@
       "t": "say",
       "char": "Lena",
       "expr": "warm",
-      "text": "\"Yeah.\""
+      "text": "[shot:closeup person]\"Yeah.\""
     },
     {
       "t": "hide",

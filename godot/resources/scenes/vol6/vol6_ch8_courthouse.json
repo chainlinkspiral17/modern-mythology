@@ -194,7 +194,7 @@
     },
     {
       "t": "narrate",
-      "text": "The prosecution lists the charges. The list is — the list is longer than Sam had let herself imagine. There are eleven counts. They are, in summary: official misconduct. Multiple. Conspiracy to commit kidnapping. Multiple. Conspiracy to defraud the public. Aggravated. Failure to act on multiple federal mandatory reports. The federal counts are, the prosecutor notes, going to be filed separately by a federal prosecutor in a different proceeding."
+      "text": "[shot:establish]The prosecution lists the charges. The list is — the list is longer than Sam had let herself imagine. There are eleven counts. They are, in summary: official misconduct. Multiple. Conspiracy to commit kidnapping. Multiple. Conspiracy to defraud the public. Aggravated. Failure to act on multiple federal mandatory reports. The federal counts are, the prosecutor notes, going to be filed separately by a federal prosecutor in a different proceeding."
     },
     {
       "t": "narrate",
@@ -245,7 +245,7 @@
     {
       "t": "say",
       "char": "D. Dean",
-      "text": "I am, your honor. By the second amended docket filed this morning at ten forty-six, I am listed as an interested party with rights to address the court at the arraignment. I have the documentation.",
+      "text": "[shot:closeup person]I am, your honor. By the second amended docket filed this morning at ten forty-six, I am listed as an interested party with rights to address the court at the arraignment. I have the documentation.",
       "expr": "neutral"
     },
     {
@@ -269,7 +269,7 @@
     {
       "t": "say",
       "char": "Judge",
-      "text": "Approach.",
+      "text": "[shot:closeup person_b]Approach.",
       "expr": "neutral"
     },
     {
@@ -317,7 +317,7 @@
     {
       "t": "say",
       "char": "Sam's Mother",
-      "text": "Hernando.",
+      "text": "[shot:closeup person]Hernando.",
       "expr": "neutral"
     },
     {
@@ -341,7 +341,7 @@
     {
       "t": "say",
       "char": "Ramirez",
-      "text": "Mary. Mike's plea has been — accepted. The charges are not changing. What Dean has filed is — Dean has filed a request with the court that Mike be permitted to enter what's essentially a witness-protection program in lieu of a custodial sentence. Dean is offering — or his organization is offering — to relocate the family, to provide ongoing security, in exchange for Mike's continued cooperation on a federal investigation that is, apparently, larger than this one.",
+      "text": "[shot:closeup person_b]Mary. Mike's plea has been — accepted. The charges are not changing. What Dean has filed is — Dean has filed a request with the court that Mike be permitted to enter what's essentially a witness-protection program in lieu of a custodial sentence. Dean is offering — or his organization is offering — to relocate the family, to provide ongoing security, in exchange for Mike's continued cooperation on a federal investigation that is, apparently, larger than this one.",
       "expr": "neutral"
     },
     {
@@ -420,7 +420,7 @@
     },
     {
       "t": "narrate",
-      "text": "Miriam smiles, small and unworried."
+      "text": "[shot:establish]Miriam smiles, small and unworried."
     },
     {
       "t": "narrate",
@@ -520,7 +520,7 @@
     },
     {
       "t": "narrate",
-      "text": "The man in the charcoal suit, in the second row of the prosecution side, gathers his folders. He stands. He does not, at any point, look at Sam."
+      "text": "[shot:insert folder]The man in the charcoal suit, in the second row of the prosecution side, gathers his folders. He stands. He does not, at any point, look at Sam."
     },
     {
       "t": "narrate",
@@ -571,7 +571,7 @@
     {
       "t": "say",
       "char": "Sam's Mother",
-      "text": "Hernando. We're going to take the green car.",
+      "text": "[shot:closeup person]Hernando. We're going to take the green car.",
       "expr": "neutral"
     },
     {
@@ -643,7 +643,7 @@
     },
     {
       "t": "narrate",
-      "text": "In Room 318 of New Auburn General, Linda Caldwell turns on the small bedside radio that Anita has, before leaving with Gracie at noon, plugged in for her. The radio is not the shortwave at home. It is a hospital radio. It picks up, on its preset stations, the New Auburn AM news loop, the Tejano station out of San Antonio, and — on a frequency that should not, by any FCC allocation, exist — a faint patient hum on what the dial reads as approximately 1776 kHz, between two assigned bands."
+      "text": "[shot:establish]In Room 318 of New Auburn General, Linda Caldwell turns on the small bedside radio that Anita has, before leaving with Gracie at noon, plugged in for her. The radio is not the shortwave at home. It is a hospital radio. It picks up, on its preset stations, the New Auburn AM news loop, the Tejano station out of San Antonio, and — on a frequency that should not, by any FCC allocation, exist — a faint patient hum on what the dial reads as approximately 1776 kHz, between two assigned bands."
     },
     {
       "t": "narrate",

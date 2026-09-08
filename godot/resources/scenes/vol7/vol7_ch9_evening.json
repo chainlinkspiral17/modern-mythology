@@ -63,7 +63,7 @@
     },
     {
       "char": "kai",
-      "text": "Hey.",
+      "text": "[shot:closeup person]Hey.",
       "expr": "neutral",
       "t": "say"
     },
@@ -127,7 +127,7 @@
     },
     {
       "char": "kai",
-      "text": "That's the wood doing it.",
+      "text": "[shot:closeup person]That's the wood doing it.",
       "expr": "neutral",
       "t": "say"
     },
@@ -157,7 +157,7 @@
     },
     {
       "char": "finn",
-      "text": "Kai.",
+      "text": "[shot:closeup person_b]Kai.",
       "expr": "neutral",
       "t": "say"
     },
@@ -227,7 +227,7 @@
     },
     {
       "char": "kai",
-      "text": "You have to eat.",
+      "text": "[shot:closeup person]You have to eat.",
       "expr": "neutral",
       "t": "say"
     },

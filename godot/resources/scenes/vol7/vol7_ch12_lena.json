@@ -122,7 +122,7 @@
   },
   {
    "char": "finn",
-   "text": "Yeah.",
+   "text": "[shot:closeup person]Yeah.",
    "expr": "neutral",
    "t": "say"
   },
@@ -202,7 +202,7 @@
   },
   {
    "char": "finn",
-   "text": "For the first time.",
+   "text": "[shot:closeup person]For the first time.",
    "expr": "serious",
    "t": "say"
   },
@@ -248,7 +248,7 @@
   },
   {
    "char": "lena",
-   "text": "I told her I would be there. I told her I would tell Kai. Kai is at the shop. He said he would come up after he closed at four-thirty.",
+   "text": "[shot:closeup person_b]I told her I would be there. I told her I would tell Kai. Kai is at the shop. He said he would come up after he closed at four-thirty.",
    "expr": "neutral",
    "t": "say"
   },
@@ -278,7 +278,7 @@
   },
   {
    "char": "finn",
-   "text": "The bowl Kai brought out yesterday.",
+   "text": "[shot:closeup person]The bowl Kai brought out yesterday.",
    "expr": "neutral",
    "t": "say"
   },
@@ -374,7 +374,7 @@
   },
   {
    "char": "lena",
-   "text": "The substrate carved the face into a piece of yellow-grained wood somewhere in the Pacific Northwest and brought the piece to my friend's apartment through a crow, and the face on the wood is — the face on the wood is looking at my mural.",
+   "text": "[shot:closeup person_b]The substrate carved the face into a piece of yellow-grained wood somewhere in the Pacific Northwest and brought the piece to my friend's apartment through a crow, and the face on the wood is — the face on the wood is looking at my mural.",
    "expr": "serious",
    "t": "say"
   },

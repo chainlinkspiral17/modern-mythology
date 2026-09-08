@@ -288,7 +288,7 @@
     {
       "t": "say",
       "char": "Maya",
-      "text": "I'm Maya. I'm Rick's — I'm covering for Rick this week.",
+      "text": "[shot:closeup person]I'm Maya. I'm Rick's — I'm covering for Rick this week.",
       "expr": "neutral"
     },
     {
@@ -402,7 +402,7 @@
     {
       "t": "say",
       "char": "Maya",
-      "text": "Yeah.",
+      "text": "[shot:closeup person]Yeah.",
       "expr": "neutral"
     },
     {
@@ -476,7 +476,7 @@
     {
       "t": "say",
       "char": "Wren",
-      "text": "You good, kid? First day solo?",
+      "text": "[shot:closeup person_b]You good, kid? First day solo?",
       "expr": "neutral"
     },
     {
@@ -506,7 +506,7 @@
     {
       "t": "say",
       "char": "Maya",
-      "text": "Okay.",
+      "text": "[shot:closeup person]Okay.",
       "expr": "neutral"
     },
     {
@@ -594,7 +594,7 @@
     {
       "t": "say",
       "char": "Maya",
-      "text": "Okay.",
+      "text": "[shot:closeup person]Okay.",
       "expr": "neutral"
     },
     {
@@ -626,7 +626,7 @@
     {
       "t": "say",
       "char": "Wren",
-      "text": "I'm okay. Liz is okay. The thing is — the thing is in motion. The thing will be in motion for a while. By the time Rick is back I will have a better answer than I do today. I am telling you today because today is the day I needed to tell somebody and you are the person who is here.",
+      "text": "[shot:closeup person_b]I'm okay. Liz is okay. The thing is — the thing is in motion. The thing will be in motion for a while. By the time Rick is back I will have a better answer than I do today. I am telling you today because today is the day I needed to tell somebody and you are the person who is here.",
       "expr": "neutral"
     },
     {

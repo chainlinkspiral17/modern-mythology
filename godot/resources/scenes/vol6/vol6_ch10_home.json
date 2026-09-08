@@ -60,7 +60,7 @@
   {
    "t": "say",
    "char": "Diego",
-   "text": "eggs.",
+   "text": "[shot:closeup person]eggs.",
    "expr": "neutral"
   },
   {
@@ -108,7 +108,7 @@
   {
    "t": "say",
    "char": "Graciela",
-   "text": "And.",
+   "text": "[shot:closeup person_b]And.",
    "expr": "neutral"
   },
   {
@@ -172,7 +172,7 @@
   {
    "t": "say",
    "char": "Diego",
-   "text": "Yeah, abuela.",
+   "text": "[shot:closeup person]Yeah, abuela.",
    "expr": "neutral"
   },
   {

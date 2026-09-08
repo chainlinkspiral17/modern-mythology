@@ -81,7 +81,7 @@
   {
    "t": "say",
    "char": "Frasier",
-   "text": "Yeah, that'll happen."
+   "text": "[shot:closeup person]Yeah, that'll happen."
   },
   {
    "t": "say",
@@ -110,7 +110,7 @@
   {
    "t": "say",
    "char": "Rick",
-   "text": "Jesus, Frasier."
+   "text": "[shot:closeup person_b]Jesus, Frasier."
   },
   {
    "t": "say",
@@ -183,7 +183,7 @@
   {
    "t": "say",
    "char": "Frasier",
-   "text": "Rick. You know why."
+   "text": "[shot:closeup person]Rick. You know why."
   },
   {
    "t": "narrate",
@@ -212,7 +212,7 @@
   {
    "t": "say",
    "char": "Rick",
-   "text": "Is the kid — is the Ramos kid —"
+   "text": "[shot:closeup person_b]Is the kid — is the Ramos kid —"
   },
   {
    "t": "say",
@@ -237,7 +237,7 @@
   {
    "t": "say",
    "char": "Frasier",
-   "text": "Good. I have to go. One of my Demons has decided today is its birthday and is attempting to order a cake. I've got to dissuade it."
+   "text": "[shot:closeup person]Good. I have to go. One of my Demons has decided today is its birthday and is attempting to order a cake. I've got to dissuade it."
   },
   {
    "t": "narrate",
@@ -299,7 +299,7 @@
   {
    "t": "say",
    "char": "Rick",
-   "text": "Not me, no. But a friend of mine. He says hi. He says he's sorry it was weird. He says he was trying to be — quote — affectionate."
+   "text": "[shot:closeup person]Not me, no. But a friend of mine. He says hi. He says he's sorry it was weird. He says he was trying to be — quote — affectionate."
   },
   {
    "t": "say",
@@ -324,7 +324,7 @@
   {
    "t": "say",
    "char": "Maya",
-   "text": "Who is he."
+   "text": "[shot:closeup person_b]Who is he."
   },
   {
    "t": "show",
@@ -370,7 +370,7 @@
   {
    "t": "say",
    "char": "Maya",
-   "text": "Rick. Is Frasier — is he well."
+   "text": "[shot:closeup person_b]Rick. Is Frasier — is he well."
   },
   {
    "t": "show",

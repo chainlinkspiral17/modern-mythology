@@ -49,7 +49,7 @@
    "t": "say",
    "char": "Wagner",
    "expr": "neutral",
-   "text": "All right."
+   "text": "[shot:closeup person]All right."
   },
   {
    "t": "say",
@@ -85,7 +85,7 @@
    "t": "say",
    "char": "Jacob",
    "expr": "neutral",
-   "text": "Easy to just go with it. Recognize and learn from experience."
+   "text": "[shot:closeup person_b]Easy to just go with it. Recognize and learn from experience."
   },
   {
    "t": "say",

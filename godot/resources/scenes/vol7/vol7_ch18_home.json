@@ -59,7 +59,7 @@
   },
   {
    "char": "crow",
-   "text": "Aria.",
+   "text": "[shot:closeup person]Aria.",
    "t": "say"
   },
   {
@@ -98,7 +98,7 @@
   },
   {
    "char": "finn",
-   "text": "I am going to need to call Tem.",
+   "text": "[shot:closeup person_b]I am going to need to call Tem.",
    "t": "say"
   },
   {
@@ -131,7 +131,7 @@
   },
   {
    "char": "tem",
-   "text": "What.",
+   "text": "[shot:closeup person]What.",
    "t": "say"
   },
   {
@@ -161,7 +161,7 @@
   },
   {
    "char": "finn",
-   "text": "Yeah.",
+   "text": "[shot:closeup person_b]Yeah.",
    "t": "say"
   },
   {
@@ -200,7 +200,7 @@
   },
   {
    "char": "tem",
-   "text": "The cedar.",
+   "text": "[shot:closeup person]The cedar.",
    "t": "say"
   },
   {
@@ -224,7 +224,7 @@
   },
   {
    "char": "finn",
-   "text": "Yes.",
+   "text": "[shot:closeup person_b]Yes.",
    "t": "say"
   },
   {
@@ -249,7 +249,7 @@
   },
   {
    "char": "tem",
-   "text": "Finn.",
+   "text": "[shot:closeup person]Finn.",
    "t": "say"
   },
   {

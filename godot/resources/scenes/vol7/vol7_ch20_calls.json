@@ -43,7 +43,7 @@
     },
     {
       "char": "tem",
-      "text": "Yes.",
+      "text": "[shot:closeup person]Yes.",
       "t": "say"
     },
     {
@@ -71,7 +71,7 @@
     },
     {
       "char": "finn",
-      "text": "Brandon.",
+      "text": "[shot:closeup person_b]Brandon.",
       "t": "say"
     },
     {
@@ -177,7 +177,7 @@
     },
     {
       "char": "per",
-      "text": "Tomorrow morning. The wall.",
+      "text": "[shot:closeup person_b]Tomorrow morning. The wall.",
       "t": "say"
     },
     {
@@ -218,7 +218,7 @@
     },
     {
       "char": "roy",
-      "text": "Aud. I am going to call Aud. She has been at the diner since 2030, by her own count. She should hear from me. I would like to ask, also, if she is going to come to the wall.",
+      "text": "[shot:closeup person]Aud. I am going to call Aud. She has been at the diner since 2030, by her own count. She should hear from me. I would like to ask, also, if she is going to come to the wall.",
       "t": "say"
     },
     {
@@ -244,7 +244,7 @@
     },
     {
       "char": "finn",
-      "text": "Margaret. From the co-op.",
+      "text": "[shot:closeup person_b]Margaret. From the co-op.",
       "t": "say"
     },
     {
@@ -278,7 +278,7 @@
     },
     {
       "char": "tem",
-      "text": "Call, Lena.",
+      "text": "[shot:closeup person]Call, Lena.",
       "t": "say"
     },
     {

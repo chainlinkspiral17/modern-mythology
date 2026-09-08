@@ -91,7 +91,7 @@
    "t": "say",
    "char": "Chief Miller",
    "expr": "neutral",
-   "text": "\"Anything good?\""
+   "text": "[shot:closeup person]\"Anything good?\""
   },
   {
    "t": "say",
@@ -136,7 +136,7 @@
    "t": "say",
    "char": "Chief Miller",
    "expr": "neutral",
-   "text": "\"Plans today?\""
+   "text": "[shot:closeup person]\"Plans today?\""
   },
   {
    "t": "say",

@@ -97,7 +97,7 @@
       "t": "say",
       "char": "Maya",
       "expr": "neutral",
-      "text": "\"One second.\""
+      "text": "[shot:closeup person]\"One second.\""
     },
     {
       "t": "narrate",
@@ -233,7 +233,7 @@
       "t": "say",
       "char": "Maya",
       "expr": "neutral",
-      "text": "\"Yeah. Yesterday afternoon.\""
+      "text": "[shot:closeup person]\"Yeah. Yesterday afternoon.\""
     },
     {
       "t": "narrate",
@@ -271,7 +271,7 @@
       "t": "say",
       "char": "Rick",
       "expr": "neutral",
-      "text": "\"Yes. All three. Your dad is — your dad is not in a good place, Maya. But before he wasn't in a good place, he spent a long time making sure that if he ever wasn't in a good place, there would be people around you who could be. I am one of those people. F.T. is another. Your grandmother knew some of this before you came. Not all. Enough.\""
+      "text": "[shot:closeup person_b]\"Yes. All three. Your dad is — your dad is not in a good place, Maya. But before he wasn't in a good place, he spent a long time making sure that if he ever wasn't in a good place, there would be people around you who could be. I am one of those people. F.T. is another. Your grandmother knew some of this before you came. Not all. Enough.\""
     },
     {
       "t": "say",
@@ -317,7 +317,7 @@
       "t": "say",
       "char": "Maya",
       "expr": "neutral",
-      "text": "\"Okay.\""
+      "text": "[shot:closeup person]\"Okay.\""
     },
     {
       "t": "narrate",

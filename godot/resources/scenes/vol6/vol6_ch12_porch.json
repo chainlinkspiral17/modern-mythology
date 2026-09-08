@@ -64,7 +64,7 @@
   {
    "t": "say",
    "char": "Maya",
-   "text": "good. curtis is okay. truck wednesday confirmed late.",
+   "text": "[shot:closeup person]good. curtis is okay. truck wednesday confirmed late.",
    "expr": "neutral"
   },
   {
@@ -118,7 +118,7 @@
   {
    "t": "say",
    "char": "Maya",
-   "text": "It was good, Grandma. It was fine.",
+   "text": "[shot:closeup person]It was good, Grandma. It was fine.",
    "expr": "neutral"
   },
   {
@@ -158,7 +158,7 @@
   {
    "t": "say",
    "char": "Linda",
-   "text": "Curtis is a good man. Most of the men who have worked at small shops for nineteen years are. The ones who aren't, leave. Curtis stayed. You can trust the staying, even when the man is, in a given week, a little raw. The staying is the data.",
+   "text": "[shot:closeup person_b]Curtis is a good man. Most of the men who have worked at small shops for nineteen years are. The ones who aren't, leave. Curtis stayed. You can trust the staying, even when the man is, in a given week, a little raw. The staying is the data.",
    "expr": "neutral"
   },
   {
@@ -216,7 +216,7 @@
   {
    "t": "say",
    "char": "Maya",
-   "text": "I didn't know.",
+   "text": "[shot:closeup person]I didn't know.",
    "expr": "surprised"
   },
   {
@@ -252,7 +252,7 @@
   {
    "t": "say",
    "char": "Linda",
-   "text": "Yes. He is the kind of man who, when something else is hard, holds onto the work harder. The work is the constant. The work is the thing he can do when everything else is harder than he can manage. Let him do the work. Don't try to make him talk about what is hard. He will, when he is ready, talk about it. Until then the work is the kindness you give him by letting him do it.",
+   "text": "[shot:closeup person_b]Yes. He is the kind of man who, when something else is hard, holds onto the work harder. The work is the constant. The work is the thing he can do when everything else is harder than he can manage. Let him do the work. Don't try to make him talk about what is hard. He will, when he is ready, talk about it. Until then the work is the kindness you give him by letting him do it.",
    "expr": "neutral"
   },
   {
@@ -306,7 +306,7 @@
   {
    "t": "say",
    "char": "Linda",
-   "text": "Good girl.",
+   "text": "[shot:closeup person_b]Good girl.",
    "expr": "happy"
   },
   {

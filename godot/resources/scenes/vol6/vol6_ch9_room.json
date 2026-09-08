@@ -139,7 +139,7 @@
     },
     {
       "t": "narrate",
-      "text": "Diego had clocked out."
+      "text": "[shot:establish]Diego had clocked out."
     },
     {
       "t": "narrate",
@@ -188,7 +188,7 @@
     {
       "t": "say",
       "char": "Diego",
-      "text": "I am not on shift.",
+      "text": "[shot:closeup person]I am not on shift.",
       "expr": "neutral"
     },
     {
@@ -232,7 +232,7 @@
     {
       "t": "say",
       "char": "Boyd",
-      "text": "Good kid.",
+      "text": "[shot:closeup person_b]Good kid.",
       "expr": "neutral"
     },
     {
@@ -281,7 +281,7 @@
     },
     {
       "t": "narrate",
-      "text": "Boyd, in the room, asks him questions."
+      "text": "[shot:establish]Boyd, in the room, asks him questions."
     },
     {
       "t": "narrate",
@@ -413,7 +413,7 @@
     },
     {
       "t": "narrate",
-      "text": "The device pulses again."
+      "text": "[shot:insert device]The device pulses again."
     },
     {
       "t": "narrate",
@@ -480,7 +480,7 @@
     {
       "t": "say",
       "char": "Diego",
-      "text": "Who are the others.",
+      "text": "[shot:closeup person]Who are the others.",
       "expr": "neutral"
     },
     {
@@ -575,7 +575,7 @@
     },
     {
       "t": "narrate",
-      "text": "On the fifth day, Boyd comes in twice in the morning."
+      "text": "[shot:establish]On the fifth day, Boyd comes in twice in the morning."
     },
     {
       "t": "narrate",
@@ -638,7 +638,7 @@
     {
       "t": "say",
       "char": "Boyd",
-      "text": "Kid. For what it's worth. Your grandmother loves you. I have been listening to her on the radio in the room above this one for three days. She has been — sending Morse. She has not stopped. The Morse says: he is alive. she is here. [wave amp=5 freq=2]we are coming.[/wave] she has been saying it on a loop for three days. I do not know how she knows. But she knows.",
+      "text": "[shot:closeup person_b]Kid. For what it's worth. Your grandmother loves you. I have been listening to her on the radio in the room above this one for three days. She has been — sending Morse. She has not stopped. The Morse says: he is alive. she is here. [wave amp=5 freq=2]we are coming.[/wave] she has been saying it on a loop for three days. I do not know how she knows. But she knows.",
       "expr": "neutral"
     },
     {
@@ -681,7 +681,7 @@
     },
     {
       "t": "narrate",
-      "text": "The door, when it opens, is opened by a man named Doyle."
+      "text": "[shot:establish]The door, when it opens, is opened by a man named Doyle."
     },
     {
       "t": "hide",

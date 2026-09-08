@@ -52,7 +52,7 @@
   {
    "t": "say",
    "char": "Ben",
-   "text": "Okay. We have eight minutes. Go. What does everyone know that the others don't."
+   "text": "[shot:closeup person]Okay. We have eight minutes. Go. What does everyone know that the others don't."
   },
   {
    "t": "show",
@@ -168,7 +168,7 @@
   {
    "t": "say",
    "char": "Ben",
-   "text": "Jess?"
+   "text": "[shot:closeup person]Jess?"
   },
   {
    "t": "show",
@@ -238,7 +238,7 @@
   {
    "t": "say",
    "char": "Sam",
-   "text": "We are in a thing."
+   "text": "[shot:closeup person_b]We are in a thing."
   },
   {
    "t": "say",
@@ -365,7 +365,7 @@
   {
    "t": "say",
    "char": "Jesse",
-   "text": "Okay."
+   "text": "[shot:closeup person]Okay."
   },
   {
    "t": "say",

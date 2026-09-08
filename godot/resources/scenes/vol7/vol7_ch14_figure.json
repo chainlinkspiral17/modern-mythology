@@ -51,7 +51,7 @@
       "t": "say"
     },
     {
-      "text": "He came over. He stood beside her at the wall.",
+      "text": "[shot:insert wall]He came over. He stood beside her at the wall.",
       "t": "narrate"
     },
     {
@@ -191,7 +191,7 @@
       "t": "say"
     },
     {
-      "text": "The far end of the alley was the brick wall of the laundromat. The brick wall met the alley at a corner that was, by the geometry of the alley, the only place a person could come into the alley other than the entrance she and Cale were standing at. There was no door in the laundromat's brick. There was no fire escape. Past the corner the wall continued straight into the next building. There was nowhere to come from.",
+      "text": "[shot:insert wall]The far end of the alley was the brick wall of the laundromat. The brick wall met the alley at a corner that was, by the geometry of the alley, the only place a person could come into the alley other than the entrance she and Cale were standing at. There was no door in the laundromat's brick. There was no fire escape. Past the corner the wall continued straight into the next building. There was nowhere to come from.",
       "t": "narrate"
     },
     {
@@ -353,7 +353,7 @@
       "t": "narrate"
     },
     {
-      "text": "Kai came at seven-thirty-two. He pulled the truck up to the entrance of the alley and got out with two more coffees and a paper bag from Hans. He stopped at the entrance when he saw them sitting on the asphalt. He came over slowly.",
+      "text": "[shot:insert coffee]Kai came at seven-thirty-two. He pulled the truck up to the entrance of the alley and got out with two more coffees and a paper bag from Hans. He stopped at the entrance when he saw them sitting on the asphalt. He came over slowly.",
       "t": "narrate"
     },
     {
@@ -437,7 +437,7 @@
       "t": "say"
     },
     {
-      "text": "He sat down beside her on the asphalt. He set the two coffees and the paper bag between the three of them. He did not, for a count, drink. He looked at the wall.",
+      "text": "[shot:insert coffee]He sat down beside her on the asphalt. He set the two coffees and the paper bag between the three of them. He did not, for a count, drink. He looked at the wall.",
       "t": "narrate"
     },
     {
@@ -501,7 +501,7 @@
       "t": "say"
     },
     {
-      "text": "He drank from his coffee.",
+      "text": "[shot:establish]He drank from his coffee.",
       "t": "narrate"
     },
     {

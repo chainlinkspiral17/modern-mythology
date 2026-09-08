@@ -109,7 +109,7 @@
     },
     {
       "char": "kai",
-      "text": "What does that mean.",
+      "text": "[shot:closeup person]What does that mean.",
       "expr": "neutral",
       "t": "say"
     },
@@ -139,7 +139,7 @@
     },
     {
       "char": "tem",
-      "text": "Kai. I know. I'm — I'm tired. I have not slept properly in four days. I drove down because we said I would and because I knew the patches were going to be visible by today.",
+      "text": "[shot:closeup person_b]Kai. I know. I'm — I'm tired. I have not slept properly in four days. I drove down because we said I would and because I knew the patches were going to be visible by today.",
       "expr": "serious",
       "t": "say"
     },
@@ -235,7 +235,7 @@
     },
     {
       "char": "tem",
-      "text": "What did the voice say.",
+      "text": "[shot:closeup person_b]What did the voice say.",
       "expr": "neutral",
       "t": "say"
     },
@@ -287,7 +287,7 @@
     },
     {
       "char": "finn",
-      "text": "Will you tell us how.",
+      "text": "[shot:closeup person]Will you tell us how.",
       "expr": "neutral",
       "t": "say"
     },
@@ -317,7 +317,7 @@
     },
     {
       "char": "tem",
-      "text": "I know.",
+      "text": "[shot:closeup person_b]I know.",
       "expr": "serious",
       "t": "say"
     },
@@ -345,7 +345,7 @@
     },
     {
       "char": "finn",
-      "text": "Okay.",
+      "text": "[shot:closeup person]Okay.",
       "expr": "neutral",
       "t": "say"
     },
@@ -381,7 +381,7 @@
     },
     {
       "char": "tem",
-      "text": "Yeah.",
+      "text": "[shot:closeup person_b]Yeah.",
       "expr": "neutral",
       "t": "say"
     },
@@ -423,7 +423,7 @@
     },
     {
       "char": "kai",
-      "text": "Hey.",
+      "text": "[shot:closeup person]Hey.",
       "expr": "neutral",
       "t": "say"
     },
@@ -463,7 +463,7 @@
     },
     {
       "char": "lena",
-      "text": "Yeah, Kai.",
+      "text": "[shot:closeup person_b]Yeah, Kai.",
       "expr": "neutral",
       "t": "say"
     },

@@ -68,7 +68,7 @@
   {
    "t": "say",
    "char": "Ben",
-   "text": "What did you expect.",
+   "text": "[shot:closeup person]What did you expect.",
    "expr": "neutral"
   },
   {
@@ -106,7 +106,7 @@
   {
    "t": "say",
    "char": "Maya",
-   "text": "Gracie's good.",
+   "text": "[shot:closeup person_b]Gracie's good.",
    "expr": "neutral"
   },
   {
@@ -144,7 +144,7 @@
   {
    "t": "say",
    "char": "Ben",
-   "text": "Yeah.",
+   "text": "[shot:closeup person]Yeah.",
    "expr": "neutral"
   },
   {
@@ -224,7 +224,7 @@
   {
    "t": "say",
    "char": "Ben",
-   "text": "Who.",
+   "text": "[shot:closeup person]Who.",
    "expr": "neutral"
   },
   {

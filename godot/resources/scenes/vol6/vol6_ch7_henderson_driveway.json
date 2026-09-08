@@ -50,7 +50,7 @@
     {
       "t": "say",
       "char": "Jesse",
-      "text": "Ben.",
+      "text": "[shot:closeup person]Ben.",
       "expr": "neutral"
     },
     {
@@ -80,7 +80,7 @@
     {
       "t": "say",
       "char": "Ben",
-      "text": "I am, Jess. I am sure.",
+      "text": "[shot:closeup person_b]I am, Jess. I am sure.",
       "expr": "neutral"
     },
     {
@@ -162,7 +162,7 @@
     {
       "t": "say",
       "char": "Ben",
-      "text": "Yeah.",
+      "text": "[shot:closeup person_b]Yeah.",
       "expr": "neutral"
     },
     {
@@ -232,7 +232,7 @@
     {
       "t": "say",
       "char": "Maya",
-      "text": "ok. third floor. waiting room. thank you.",
+      "text": "[shot:closeup person]ok. third floor. waiting room. thank you.",
       "expr": "neutral"
     },
     {

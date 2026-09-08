@@ -70,7 +70,7 @@
   },
   {
    "char": "per",
-   "text": "Marit. You should be at the cabin.",
+   "text": "[shot:closeup person]Marit. You should be at the cabin.",
    "t": "say"
   },
   {
@@ -179,7 +179,7 @@
   },
   {
    "char": "per",
-   "text": "Yes.",
+   "text": "[shot:closeup person]Yes.",
    "t": "say"
   },
   {
@@ -204,7 +204,7 @@
   },
   {
    "char": "tem",
-   "text": "Yes.",
+   "text": "[shot:closeup person_b]Yes.",
    "t": "say"
   },
   {
@@ -234,7 +234,7 @@
   },
   {
    "char": "per",
-   "text": "Roy.",
+   "text": "[shot:closeup person]Roy.",
    "t": "say"
   },
   {

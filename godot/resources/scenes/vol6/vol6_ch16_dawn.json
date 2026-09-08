@@ -118,7 +118,7 @@
   {
    "t": "say",
    "char": "Doug",
-   "text": "Thanks, kid.",
+   "text": "[shot:closeup person]Thanks, kid.",
    "expr": "neutral"
   },
   {
@@ -162,7 +162,7 @@
   {
    "t": "say",
    "char": "Diego",
-   "text": "Yeah.",
+   "text": "[shot:closeup person_b]Yeah.",
    "expr": "neutral"
   },
   {
@@ -220,7 +220,7 @@
   {
    "t": "say",
    "char": "Marisol",
-   "text": "El Rancho?",
+   "text": "[shot:closeup person]El Rancho?",
    "expr": "neutral"
   },
   {
@@ -265,7 +265,7 @@
   },
   {
    "t": "narrate",
-   "text": "Diego had not, until this morning, fully understood that."
+   "text": "[shot:establish]Diego had not, until this morning, fully understood that."
   },
   {
    "t": "narrate",
@@ -386,7 +386,7 @@
   {
    "t": "say",
    "char": "BT",
-   "text": "There's an El Diablito packet under my thigh. It leaked.",
+   "text": "[shot:closeup person]There's an El Diablito packet under my thigh. It leaked.",
    "expr": "serious"
   },
   {
@@ -439,7 +439,7 @@
   },
   {
    "t": "narrate",
-   "text": "BT cleans the seat. BT cleans his pants. The orange sauce has, by Diego's count, also gotten on the lower edge of BT's polo. BT cleans that too."
+   "text": "[shot:establish]BT cleans the seat. BT cleans his pants. The orange sauce has, by Diego's count, also gotten on the lower edge of BT's polo. BT cleans that too."
   },
   {
    "t": "say",
@@ -560,7 +560,7 @@
   {
    "t": "say",
    "char": "Abuela",
-   "text": "Mijo. You look like you have eaten something good already.",
+   "text": "[shot:closeup person]Mijo. You look like you have eaten something good already.",
    "expr": "neutral"
   },
   {
@@ -630,7 +630,7 @@
   {
    "t": "say",
    "char": "Diego",
-   "text": "Yeah, abuela.",
+   "text": "[shot:closeup person_b]Yeah, abuela.",
    "expr": "neutral"
   },
   {

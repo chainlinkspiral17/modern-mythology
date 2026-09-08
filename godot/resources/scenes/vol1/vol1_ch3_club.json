@@ -57,7 +57,7 @@
    "t": "say",
    "char": "Helen",
    "expr": "neutral",
-   "text": "Aye —"
+   "text": "[shot:closeup person]Aye —"
   },
   {
    "t": "say",
@@ -99,7 +99,7 @@
    "t": "say",
    "char": "Faust",
    "expr": "neutral",
-   "text": "I think we're being bullied — into moving in place quickly, to loud music."
+   "text": "[shot:closeup person_b]I think we're being bullied — into moving in place quickly, to loud music."
   },
   {
    "t": "say",

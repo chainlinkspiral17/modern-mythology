@@ -132,7 +132,7 @@
   {
    "t": "say",
    "char": "Bianca",
-   "text": "Today.",
+   "text": "[shot:closeup person]Today.",
    "expr": "neutral"
   },
   {
@@ -166,7 +166,7 @@
   {
    "t": "say",
    "char": "Carlos",
-   "text": "Yeah.",
+   "text": "[shot:closeup person_b]Yeah.",
    "expr": "neutral"
   },
   {
@@ -222,7 +222,7 @@
   {
    "t": "say",
    "char": "Bianca",
-   "text": "I know. I'm not — I'm okay, Carlos. I'm telling you because you asked. I have been, in eight weeks, more okay than I was in June. June was bad. July was bad with structure. August has been — August has been a different shape. I have two women who come over Friday mornings. The four-thirty table. We sit. We do not perform okay for each other. It is the closest thing I have to having other adults in the house.",
+   "text": "[shot:closeup person]I know. I'm not — I'm okay, Carlos. I'm telling you because you asked. I have been, in eight weeks, more okay than I was in June. June was bad. July was bad with structure. August has been — August has been a different shape. I have two women who come over Friday mornings. The four-thirty table. We sit. We do not perform okay for each other. It is the closest thing I have to having other adults in the house.",
    "expr": "neutral"
   },
   {
@@ -252,7 +252,7 @@
   {
    "t": "say",
    "char": "Carlos",
-   "text": "She's going to get in.",
+   "text": "[shot:closeup person_b]She's going to get in.",
    "expr": "neutral"
   },
   {
@@ -298,7 +298,7 @@
   {
    "t": "say",
    "char": "Bianca",
-   "text": "Carlos. Stop. You called Monday. You called back Tuesday. The radio is going out today. We are doing what the seventh and the fifth of six kids do. We are okay.",
+   "text": "[shot:closeup person]Carlos. Stop. You called Monday. You called back Tuesday. The radio is going out today. We are doing what the seventh and the fifth of six kids do. We are okay.",
    "expr": "neutral"
   },
   {
@@ -330,7 +330,7 @@
   {
    "t": "say",
    "char": "Carlos",
-   "text": "I think about Rosa.",
+   "text": "[shot:closeup person_b]I think about Rosa.",
    "expr": "serious"
   },
   {
@@ -358,7 +358,7 @@
   {
    "t": "say",
    "char": "Carlos",
-   "text": "I know.",
+   "text": "[shot:closeup person_b]I know.",
    "expr": "serious"
   },
   {
@@ -388,7 +388,7 @@
   {
    "t": "say",
    "char": "Bianca",
-   "text": "I flew alone.",
+   "text": "[shot:closeup person]I flew alone.",
    "expr": "serious"
   },
   {
@@ -446,7 +446,7 @@
   {
    "t": "say",
    "char": "Carlos",
-   "text": "Yeah.",
+   "text": "[shot:closeup person_b]Yeah.",
    "expr": "serious"
   },
   {

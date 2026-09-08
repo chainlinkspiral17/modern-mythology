@@ -116,7 +116,7 @@
       "t": "say"
     },
     {
-      "text": "A breath on the line.",
+      "text": "[shot:establish]A breath on the line.",
       "t": "narrate"
     },
     {
@@ -228,7 +228,7 @@
       "t": "narrate"
     },
     {
-      "text": "For a while neither of them spoke. The cat in the front window opened one eye and looked at Tem and closed it.",
+      "text": "[shot:insert cat]For a while neither of them spoke. The cat in the front window opened one eye and looked at Tem and closed it.",
       "t": "narrate"
     },
     {
@@ -316,7 +316,7 @@
       "t": "narrate"
     },
     {
-      "text": "The cat slept.",
+      "text": "[shot:insert cat]The cat slept.",
       "t": "narrate"
     },
     {

@@ -45,7 +45,7 @@
    "t": "say",
    "char": "Faust",
    "expr": "neutral",
-   "text": "Every one must have a hobby. Said Aunt Grace, who set me up — who sorta got famous in the wild and crazy seventies."
+   "text": "[shot:closeup person]Every one must have a hobby. Said Aunt Grace, who set me up — who sorta got famous in the wild and crazy seventies."
   },
   {
    "t": "narrate",
@@ -115,7 +115,7 @@
    "t": "say",
    "char": "Fire",
    "expr": "neutral",
-   "text": "[beat:chill]It's cool how we can see ourselves as he paints us — even if it is all just tits and ass."
+   "text": "[shot:closeup person_b][beat:chill]It's cool how we can see ourselves as he paints us — even if it is all just tits and ass."
   },
   {
    "t": "say",
@@ -145,7 +145,7 @@
    "t": "say",
    "char": "Air",
    "expr": "neutral",
-   "text": "At least he reads. The last few have been rather dimwitted. Though I think we should try and warn him."
+   "text": "[shot:closeup person]At least he reads. The last few have been rather dimwitted. Though I think we should try and warn him."
   },
   {
    "t": "say",
@@ -187,7 +187,7 @@
    "t": "say",
    "char": "Water",
    "expr": "neutral",
-   "text": "Called it. Dude is awesome."
+   "text": "[shot:closeup person_b]Called it. Dude is awesome."
   },
   {
    "t": "say",

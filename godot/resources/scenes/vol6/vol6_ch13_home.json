@@ -84,7 +84,7 @@
   {
    "t": "say",
    "char": "Ben",
-   "text": "Yeah.",
+   "text": "[shot:closeup person]Yeah.",
    "expr": "neutral"
   },
   {
@@ -138,7 +138,7 @@
   {
    "t": "say",
    "char": "Ben",
-   "text": "Coach Dale doesn't do that, Dad. Coach K does.",
+   "text": "[shot:closeup person]Coach Dale doesn't do that, Dad. Coach K does.",
    "expr": "neutral"
   },
   {
@@ -194,7 +194,7 @@
   {
    "t": "say",
    "char": "Bill",
-   "text": "I figured.",
+   "text": "[shot:closeup person_b]I figured.",
    "expr": "neutral"
   },
   {
@@ -246,7 +246,7 @@
   {
    "t": "say",
    "char": "Bill",
-   "text": "For what.",
+   "text": "[shot:closeup person_b]For what.",
    "expr": "neutral"
   },
   {

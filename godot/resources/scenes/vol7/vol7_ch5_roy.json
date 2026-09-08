@@ -101,7 +101,7 @@
     },
     {
       "char": "kai",
-      "text": "Yeah.",
+      "text": "[shot:closeup person]Yeah.",
       "expr": "neutral",
       "t": "say"
     },
@@ -129,7 +129,7 @@
     },
     {
       "char": "roy",
-      "text": "Good, good. I'm asking on behalf of someone. They wanted me to ask you something. Hope that's all right.",
+      "text": "[shot:closeup person_b]Good, good. I'm asking on behalf of someone. They wanted me to ask you something. Hope that's all right.",
       "expr": "happy",
       "t": "say"
     },
@@ -197,7 +197,7 @@
     },
     {
       "char": "roy",
-      "text": "That's right.",
+      "text": "[shot:closeup person_b]That's right.",
       "expr": "happy",
       "t": "say"
     },

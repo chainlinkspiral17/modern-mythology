@@ -90,7 +90,7 @@
     {
       "t": "say",
       "char": "Bianca",
-      "text": "Eileen. Yes. Come in. I made coffee already. There's a second pot.",
+      "text": "[shot:closeup person]Eileen. Yes. Come in. I made coffee already. There's a second pot.",
       "expr": "neutral"
     },
     {
@@ -152,7 +152,7 @@
     {
       "t": "say",
       "char": "Eileen",
-      "text": "Jim is — Jim is doing okay. He is in the photography class. He likes it. He is at week four of the six. He has been taking pictures of small things — the back fence, the cat next door, his own coffee cup. He develops them in the basement. The basement, by the way, has been properly vented since July. The smell is gone. I never, until July, knew how much of my last fourteen months had been the smell. The smell is gone and I am sleeping. I sleep most nights now.",
+      "text": "[shot:closeup person_b]Jim is — Jim is doing okay. He is in the photography class. He likes it. He is at week four of the six. He has been taking pictures of small things — the back fence, the cat next door, his own coffee cup. He develops them in the basement. The basement, by the way, has been properly vented since July. The smell is gone. I never, until July, knew how much of my last fourteen months had been the smell. The smell is gone and I am sleeping. I sleep most nights now.",
       "expr": "neutral"
     },
     {
@@ -252,7 +252,7 @@
     {
       "t": "say",
       "char": "Eileen",
-      "text": "Good.",
+      "text": "[shot:closeup person_b]Good.",
       "expr": "happy"
     },
     {
@@ -280,7 +280,7 @@
     {
       "t": "say",
       "char": "Bianca",
-      "text": "Five AM.",
+      "text": "[shot:closeup person]Five AM.",
       "expr": "happy"
     },
     {
@@ -338,7 +338,7 @@
     {
       "t": "say",
       "char": "Eileen",
-      "text": "I have wanted to do this since June. I have been waiting until I thought you would say yes. I am sorry it took me this long. I should have come earlier.",
+      "text": "[shot:closeup person_b]I have wanted to do this since June. I have been waiting until I thought you would say yes. I am sorry it took me this long. I should have come earlier.",
       "expr": "sad"
     },
     {
@@ -420,7 +420,7 @@
     {
       "t": "say",
       "char": "Bianca",
-      "text": "Tomorrow.",
+      "text": "[shot:closeup person]Tomorrow.",
       "expr": "neutral"
     },
     {
@@ -491,7 +491,7 @@
     },
     {
       "t": "narrate",
-      "text": "Then she goes back to the porch."
+      "text": "[shot:establish]Then she goes back to the porch."
     },
     {
       "t": "hide",
@@ -553,7 +553,7 @@
     },
     {
       "t": "narrate",
-      "text": "There is, somewhere in the house, a small wicker chair from her mother's porch in Lubbock and a soft dark green robe from her husband and a daughter's bedroom door at the top of the stairs that has been, all summer, closed during the day."
+      "text": "[shot:insert door]There is, somewhere in the house, a small wicker chair from her mother's porch in Lubbock and a soft dark green robe from her husband and a daughter's bedroom door at the top of the stairs that has been, all summer, closed during the day."
     },
     {
       "t": "narrate",

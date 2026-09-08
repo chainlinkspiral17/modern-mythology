@@ -97,7 +97,7 @@
     {
       "t": "say",
       "char": "Chief Miller",
-      "text": "I always run it too cold.",
+      "text": "[shot:closeup person]I always run it too cold.",
       "expr": "neutral"
     },
     {

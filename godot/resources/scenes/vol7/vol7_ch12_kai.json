@@ -43,7 +43,7 @@
    "t": "narrate"
   },
   {
-   "text": "He drove the three blocks to Board Lords. Kai was at the counter. There was a kid in the back of the shop on the bench by the front window with a board across his lap. Finn waved at Kai from the door and held up the canvas bag and pointed to the back office. Kai held up two fingers. Finn went to the back office.",
+   "text": "[shot:insert door]He drove the three blocks to Board Lords. Kai was at the counter. There was a kid in the back of the shop on the bench by the front window with a board across his lap. Finn waved at Kai from the door and held up the canvas bag and pointed to the back office. Kai held up two fingers. Finn went to the back office.",
    "t": "narrate"
   },
   {
@@ -74,7 +74,7 @@
   },
   {
    "char": "finn",
-   "text": "Yeah. I went to Lena's first. She — she said. She said she's going to paint the face into the alley wall tonight. Where the substrate has been eating.",
+   "text": "[shot:closeup person]Yeah. I went to Lena's first. She — she said. She said she's going to paint the face into the alley wall tonight. Where the substrate has been eating.",
    "expr": "neutral",
    "t": "say"
   },
@@ -132,7 +132,7 @@
   },
   {
    "char": "kai",
-   "text": "And Brandon.",
+   "text": "[shot:closeup person_b]And Brandon.",
    "expr": "serious",
    "t": "say"
   },
@@ -166,7 +166,7 @@
   },
   {
    "char": "finn",
-   "text": "Okay.",
+   "text": "[shot:closeup person]Okay.",
    "expr": "neutral",
    "t": "say"
   },
@@ -208,7 +208,7 @@
   },
   {
    "char": "finn",
-   "text": "The cedar face in the middle of the hexagon.",
+   "text": "[shot:closeup person]The cedar face in the middle of the hexagon.",
    "expr": "serious",
    "t": "say"
   },
@@ -278,7 +278,7 @@
   },
   {
    "char": "finn",
-   "text": "Yeah.",
+   "text": "[shot:closeup person]Yeah.",
    "expr": "neutral",
    "t": "say"
   },
@@ -308,7 +308,7 @@
   },
   {
    "char": "kai",
-   "text": "All right.",
+   "text": "[shot:closeup person_b]All right.",
    "expr": "neutral",
    "t": "say"
   },
@@ -356,7 +356,7 @@
   },
   {
    "char": "kai",
-   "text": "Yeah.",
+   "text": "[shot:closeup person_b]Yeah.",
    "expr": "neutral",
    "t": "say"
   },

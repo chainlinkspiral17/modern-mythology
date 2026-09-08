@@ -61,7 +61,7 @@
     },
     {
       "char": "kai",
-      "text": "Going at eleven. I'm going early. We can leave whenever you're ready.",
+      "text": "[shot:closeup person]Going at eleven. I'm going early. We can leave whenever you're ready.",
       "expr": "neutral",
       "t": "say"
     },
@@ -89,7 +89,7 @@
     },
     {
       "char": "hans",
-      "text": "Greta is staying at the house. She and Marit. They have been at the table since five and they are going to be at the table until Per gets back. The bakery is closed today. The bakery has been closed today since I figured out at four-thirty that Per was at the bakery because he could not be in the house and that the day was a day the bakery was not going to be open. The sign is on the door. Petra knows. Soren knows. The town will know by noon. I am going home in twenty minutes after the trays cool.",
+      "text": "[shot:closeup person_b]Greta is staying at the house. She and Marit. They have been at the table since five and they are going to be at the table until Per gets back. The bakery is closed today. The bakery has been closed today since I figured out at four-thirty that Per was at the bakery because he could not be in the house and that the day was a day the bakery was not going to be open. The sign is on the door. Petra knows. Soren knows. The town will know by noon. I am going home in twenty minutes after the trays cool.",
       "expr": "neutral",
       "t": "say"
     },
@@ -141,7 +141,7 @@
     },
     {
       "char": "per",
-      "text": "Kai.",
+      "text": "[shot:closeup person]Kai.",
       "expr": "neutral",
       "t": "say"
     },
@@ -171,7 +171,7 @@
     },
     {
       "char": "hans",
-      "text": "Go.",
+      "text": "[shot:closeup person_b]Go.",
       "expr": "neutral",
       "t": "say"
     },
@@ -207,7 +207,7 @@
     },
     {
       "char": "per",
-      "text": "Olaf made me a bowl in '74. He gave it to my mother for her birthday. Olaf carved bowls his whole life. Olaf carved the bowl in our kitchen between '71 and '74 — he would carve a little of it every Sunday afternoon for three years. He gave the bowl to my mother on her thirty-fourth birthday. My mother has had the bowl on the kitchen shelf since '74. The bowl was warm in the second week of July of this year. My mother called me in Eugene the next Sunday.",
+      "text": "[shot:closeup person]Olaf made me a bowl in '74. He gave it to my mother for her birthday. Olaf carved bowls his whole life. Olaf carved the bowl in our kitchen between '71 and '74 — he would carve a little of it every Sunday afternoon for three years. He gave the bowl to my mother on her thirty-fourth birthday. My mother has had the bowl on the kitchen shelf since '74. The bowl was warm in the second week of July of this year. My mother called me in Eugene the next Sunday.",
       "expr": "neutral",
       "t": "say"
     },
@@ -441,7 +441,7 @@
     {
       "t": "say",
       "char": "per",
-      "text": "At noon, Kai. I said noon and I am going to hold to noon. It has waited since '74. It can wait for the kettle."
+      "text": "[shot:closeup person]At noon, Kai. I said noon and I am going to hold to noon. It has waited since '74. It can wait for the kettle."
     },
     {
       "t": "jump",

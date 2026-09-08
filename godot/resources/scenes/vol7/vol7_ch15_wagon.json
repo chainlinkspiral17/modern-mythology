@@ -106,7 +106,7 @@
   },
   {
    "char": "tem",
-   "text": "Tomorrow at six.",
+   "text": "[shot:closeup person]Tomorrow at six.",
    "expr": "serious",
    "t": "say"
   },
@@ -136,7 +136,7 @@
   },
   {
    "char": "marina",
-   "text": "I have been at this for six years and the week has — the week has changed what I have been at. I am — I am going to write the foundation tonight. I am going to write the director. I am going to tell him what is happening here. I am going to tell him the foundation has been at this from too great a distance for too many decades.",
+   "text": "[shot:closeup person_b]I have been at this for six years and the week has — the week has changed what I have been at. I am — I am going to write the foundation tonight. I am going to write the director. I am going to tell him what is happening here. I am going to tell him the foundation has been at this from too great a distance for too many decades.",
    "expr": "serious",
    "t": "say"
   },
@@ -206,7 +206,7 @@
   },
   {
    "char": "tem",
-   "text": "Yes, Marina.",
+   "text": "[shot:closeup person]Yes, Marina.",
    "expr": "serious",
    "t": "say"
   },

@@ -96,7 +96,7 @@
     },
     {
       "char": "per",
-      "text": "Tem.",
+      "text": "[shot:closeup person]Tem.",
       "t": "say"
     },
     {
@@ -173,7 +173,7 @@
     },
     {
       "char": "tem",
-      "text": "Come in.",
+      "text": "[shot:closeup person]Come in.",
       "t": "say"
     },
     {
@@ -198,7 +198,7 @@
     },
     {
       "char": "figure",
-      "text": "The six of them have been bringing me into the room for years. I'm here because they brought me. I'm not going to be more here tonight than they can take. I'm going to come to each of them in the form they've been making for me. That's what I can do tonight.",
+      "text": "[shot:closeup person_b]The six of them have been bringing me into the room for years. I'm here because they brought me. I'm not going to be more here tonight than they can take. I'm going to come to each of them in the form they've been making for me. That's what I can do tonight.",
       "t": "say"
     },
     {
@@ -237,7 +237,7 @@
     },
     {
       "char": "tem",
-      "text": "When.",
+      "text": "[shot:closeup person]When.",
       "t": "say"
     },
     {

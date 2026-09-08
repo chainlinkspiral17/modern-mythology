@@ -96,7 +96,7 @@
     {
       "t": "say",
       "char": "BT",
-      "text": "Hey.",
+      "text": "[shot:closeup person]Hey.",
       "expr": "neutral"
     },
     {
@@ -314,7 +314,7 @@
     {
       "t": "say",
       "char": "BT",
-      "text": "Buckle up. Four minutes there, four back. We got time.",
+      "text": "[shot:closeup person]Buckle up. Four minutes there, four back. We got time.",
       "expr": "neutral"
     },
     {
@@ -350,7 +350,7 @@
     {
       "t": "say",
       "char": "Diego",
-      "text": "Go ahead.",
+      "text": "[shot:closeup person_b]Go ahead.",
       "expr": "neutral"
     },
     {
@@ -438,7 +438,7 @@
     {
       "t": "say",
       "char": "Diego",
-      "text": "On purpose?",
+      "text": "[shot:closeup person_b]On purpose?",
       "expr": "neutral"
     },
     {
@@ -480,7 +480,7 @@
     {
       "t": "say",
       "char": "BT",
-      "text": "I don't know, man. The whole album is — the whole album is from the late nineties. Lot of, like, weird stylization. Capitalization, spelling, all of it. He was doing that thing where it's — it's supposed to sound like the way somebody might actually say it. Erf, not earth. I think he — I think he liked the visual. The way erf looks. He uses it three times in the song.",
+      "text": "[shot:closeup person]I don't know, man. The whole album is — the whole album is from the late nineties. Lot of, like, weird stylization. Capitalization, spelling, all of it. He was doing that thing where it's — it's supposed to sound like the way somebody might actually say it. Erf, not earth. I think he — I think he liked the visual. The way erf looks. He uses it three times in the song.",
       "expr": "neutral"
     },
     {
@@ -540,7 +540,7 @@
     {
       "t": "say",
       "char": "Hugo",
-      "text": "Hey. What can I get you.",
+      "text": "[shot:closeup person]Hey. What can I get you.",
       "expr": "neutral"
     },
     {
@@ -572,7 +572,7 @@
     {
       "t": "say",
       "char": "BT",
-      "text": "Flauta box for me. The five-piece. Chicken. Side of guac.",
+      "text": "[shot:closeup person_b]Flauta box for me. The five-piece. Chicken. Side of guac.",
       "expr": "neutral"
     },
     {
@@ -602,7 +602,7 @@
     {
       "t": "say",
       "char": "Hugo",
-      "text": "Two horchatas.",
+      "text": "[shot:closeup person]Two horchatas.",
       "expr": "neutral"
     },
     {
@@ -628,7 +628,7 @@
     {
       "t": "say",
       "char": "BT",
-      "text": "Keep the change.",
+      "text": "[shot:closeup person_b]Keep the change.",
       "expr": "neutral"
     },
     {
@@ -669,7 +669,7 @@
     },
     {
       "t": "narrate",
-      "text": "The fade plays out."
+      "text": "[shot:establish]The fade plays out."
     },
     {
       "t": "narrate",
@@ -696,7 +696,7 @@
     {
       "t": "say",
       "char": "Diego",
-      "text": "Yeah.",
+      "text": "[shot:closeup person]Yeah.",
       "expr": "neutral"
     },
     {
@@ -726,7 +726,7 @@
     {
       "t": "say",
       "char": "BT",
-      "text": "Cool.",
+      "text": "[shot:closeup person_b]Cool.",
       "expr": "neutral"
     },
     {
@@ -758,7 +758,7 @@
     {
       "t": "say",
       "char": "Diego",
-      "text": "It's not — it's not personal. I don't think they have anything personal against you.",
+      "text": "[shot:closeup person]It's not — it's not personal. I don't think they have anything personal against you.",
       "expr": "neutral"
     },
     {
@@ -784,7 +784,7 @@
     {
       "t": "say",
       "char": "BT",
-      "text": "I'm — I'm not gonna ask you to fix it. I just wanted — I wanted to do a normal thing once. With somebody on the team. Just to — just to know I could.",
+      "text": "[shot:closeup person_b]I'm — I'm not gonna ask you to fix it. I just wanted — I wanted to do a normal thing once. With somebody on the team. Just to — just to know I could.",
       "expr": "neutral"
     },
     {
@@ -878,7 +878,7 @@
     {
       "t": "say",
       "char": "BT",
-      "text": "Thanks, man.",
+      "text": "[shot:closeup person_b]Thanks, man.",
       "expr": "neutral"
     },
     {
@@ -916,7 +916,7 @@
     {
       "t": "say",
       "char": "BT",
-      "text": "Yeah.",
+      "text": "[shot:closeup person]Yeah.",
       "expr": "neutral"
     },
     {
@@ -966,7 +966,7 @@
     {
       "t": "say",
       "char": "Diego",
-      "text": "Yeah.",
+      "text": "[shot:closeup person_b]Yeah.",
       "expr": "happy"
     },
     {
@@ -1054,7 +1054,7 @@
     {
       "t": "say",
       "char": "BT",
-      "text": "Doug never says anything.",
+      "text": "[shot:closeup person]Doug never says anything.",
       "expr": "neutral"
     },
     {
@@ -1092,7 +1092,7 @@
     {
       "t": "say",
       "char": "Diego",
-      "text": "He talks to you a little bit.",
+      "text": "[shot:closeup person_b]He talks to you a little bit.",
       "expr": "neutral"
     },
     {
@@ -1130,7 +1130,7 @@
     {
       "t": "say",
       "char": "BT",
-      "text": "Yeah.",
+      "text": "[shot:closeup person]Yeah.",
       "expr": "neutral"
     },
     {
@@ -1162,7 +1162,7 @@
     {
       "t": "say",
       "char": "Diego",
-      "text": "Yeah.",
+      "text": "[shot:closeup person_b]Yeah.",
       "expr": "neutral"
     },
     {
@@ -1192,7 +1192,7 @@
     {
       "t": "say",
       "char": "BT",
-      "text": "Yeah.",
+      "text": "[shot:closeup person]Yeah.",
       "expr": "neutral"
     },
     {

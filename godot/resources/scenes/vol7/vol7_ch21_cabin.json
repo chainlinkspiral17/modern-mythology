@@ -185,7 +185,7 @@
     },
     {
       "char": "tem",
-      "text": "What disc.",
+      "text": "[shot:closeup person]What disc.",
       "t": "say"
     },
     {
@@ -209,7 +209,7 @@
     },
     {
       "char": "cale",
-      "text": "The stick was on the inventory shelf when I closed last night at ten.",
+      "text": "[shot:closeup person_b]The stick was on the inventory shelf when I closed last night at ten.",
       "t": "say"
     },
     {
@@ -258,7 +258,7 @@
     },
     {
       "char": "cale",
-      "text": "Do you want me to bring it up. I can be at the cabin by two.",
+      "text": "[shot:closeup person_b]Do you want me to bring it up. I can be at the cabin by two.",
       "t": "say"
     },
     {
@@ -283,7 +283,7 @@
     },
     {
       "char": "tem",
-      "text": "Thank you.",
+      "text": "[shot:closeup person]Thank you.",
       "t": "say"
     },
     {

@@ -70,7 +70,7 @@
     {
       "t": "say",
       "char": "Linda",
-      "text": "Curtis is going to be a little annoyed when he hears.",
+      "text": "[shot:closeup person]Curtis is going to be a little annoyed when he hears.",
       "expr": "happy"
     },
     {
@@ -120,7 +120,7 @@
     {
       "t": "say",
       "char": "Linda",
-      "text": "Sweetheart. We don't know. We have never known. The Speak & Spell is one of the objects in our network that operates by a logic the network has never figured out. It picks who it picks. It does what it does. We have, over thirty-seven years, learned to handle it by intercepting fast and not making a thing about the picking. The not-making-a-thing is what keeps the picked person whole.",
+      "text": "[shot:closeup person]Sweetheart. We don't know. We have never known. The Speak & Spell is one of the objects in our network that operates by a logic the network has never figured out. It picks who it picks. It does what it does. We have, over thirty-seven years, learned to handle it by intercepting fast and not making a thing about the picking. The not-making-a-thing is what keeps the picked person whole.",
       "expr": "neutral"
     },
     {
@@ -178,7 +178,7 @@
     {
       "t": "say",
       "char": "Maya",
-      "text": "Grandma.",
+      "text": "[shot:closeup person_b]Grandma.",
       "expr": "serious"
     },
     {
@@ -228,7 +228,7 @@
     {
       "t": "say",
       "char": "Linda",
-      "text": "I know.",
+      "text": "[shot:closeup person]I know.",
       "expr": "neutral"
     },
     {
@@ -268,7 +268,7 @@
     {
       "t": "say",
       "char": "Maya",
-      "text": "Yeah.",
+      "text": "[shot:closeup person_b]Yeah.",
       "expr": "neutral"
     },
     {
@@ -305,7 +305,7 @@
     },
     {
       "t": "narrate",
-      "text": "She finishes her iced tea. She gets up. She goes inside."
+      "text": "[shot:insert iced_tea]She finishes her iced tea. She gets up. She goes inside."
     },
     {
       "t": "narrate",

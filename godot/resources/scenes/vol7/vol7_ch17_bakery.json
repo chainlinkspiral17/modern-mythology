@@ -41,7 +41,7 @@
    "t": "narrate"
   },
   {
-   "text": "He had put out three loaves of the morning's bread: the seeded rye, the dark country, and a brioche he had made specifically for today.",
+   "text": "[shot:insert brioche]He had put out three loaves of the morning's bread: the seeded rye, the dark country, and a brioche he had made specifically for today.",
    "t": "narrate"
   },
   {
@@ -63,7 +63,7 @@
   },
   {
    "char": "tem",
-   "text": "Hans.",
+   "text": "[shot:closeup person]Hans.",
    "t": "say"
   },
   {
@@ -93,7 +93,7 @@
   },
   {
    "char": "hans",
-   "text": "Ja. That is the right way.",
+   "text": "[shot:closeup person_b]Ja. That is the right way.",
    "t": "say"
   },
   {
@@ -138,7 +138,7 @@
   },
   {
    "char": "tem",
-   "text": "He said he had been waiting.",
+   "text": "[shot:closeup person]He said he had been waiting.",
    "t": "say"
   },
   {
@@ -163,7 +163,7 @@
   },
   {
    "char": "hans",
-   "text": "We have both been getting Roy. We have been getting him different. Today is the day we are going to get him at his actual resolution.",
+   "text": "[shot:closeup person_b]We have both been getting Roy. We have been getting him different. Today is the day we are going to get him at his actual resolution.",
    "t": "say"
   },
   {
@@ -205,7 +205,7 @@
   },
   {
    "char": "marit",
-   "text": "Today is the day.",
+   "text": "[shot:closeup person]Today is the day.",
    "t": "say"
   },
   {
@@ -249,7 +249,7 @@
    "t": "say"
   },
   {
-   "text": "The others came in over the next four minutes.",
+   "text": "[shot:establish]The others came in over the next four minutes.",
    "t": "narrate"
   },
   {
@@ -278,7 +278,7 @@
   },
   {
    "char": "hans",
-   "text": "Kai.",
+   "text": "[shot:closeup person_b]Kai.",
    "t": "say"
   },
   {
@@ -396,7 +396,7 @@
    "t": "say"
   },
   {
-   "text": "The crow on Kai's shoulder tapped the shoulder once with its beak.",
+   "text": "[shot:insert crow]The crow on Kai's shoulder tapped the shoulder once with its beak.",
    "t": "narrate"
   },
   {
@@ -491,7 +491,7 @@
   },
   {
    "char": "hans",
-   "text": "By what the poem cycle Werner printed in '89 has written on it, also the bread of the listening.",
+   "text": "[shot:closeup person_b]By what the poem cycle Werner printed in '89 has written on it, also the bread of the listening.",
    "t": "say"
   },
   {

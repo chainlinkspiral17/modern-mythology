@@ -56,7 +56,7 @@
    "char": "Dickens Dean",
    "role": "Antagonist",
    "expr": "neutral",
-   "text": "We fled worlds of ruin and decay. Making something new. Because as ideas, Joan and I were strongest."
+   "text": "[shot:closeup person]We fled worlds of ruin and decay. Making something new. Because as ideas, Joan and I were strongest."
   },
   {
    "t": "say",
@@ -88,7 +88,7 @@
    "t": "say",
    "char": "Joan",
    "expr": "neutral",
-   "text": "But understand — this knowledge hides a terrible price."
+   "text": "[shot:closeup person_b]But understand — this knowledge hides a terrible price."
   },
   {
    "t": "say",
@@ -137,7 +137,7 @@
    "t": "say",
    "char": "Faust",
    "expr": "neutral",
-   "text": "What if insanity was a large part of me to begin with?"
+   "text": "[shot:closeup person]What if insanity was a large part of me to begin with?"
   },
   {
    "t": "say",

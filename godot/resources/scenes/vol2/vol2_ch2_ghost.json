@@ -73,7 +73,7 @@
    "t": "say",
    "char": "David Jarvis",
    "expr": "neutral",
-   "text": "The sand at night would seem to go on forever, what with the ebb and pull of the ocean giving and taking away the surface — but eventually I got near enough to call out to her and be heard."
+   "text": "[shot:closeup person]The sand at night would seem to go on forever, what with the ebb and pull of the ocean giving and taking away the surface — but eventually I got near enough to call out to her and be heard."
   },
   {
    "t": "say",
@@ -119,7 +119,7 @@
   },
   {
    "t": "narrate",
-   "text": "Rachel was married at age fifteen to the captain of a San Francisco–based light cargo vessel, and was not seen in Small Wood again until her twenty-eighth year."
+   "text": "[shot:establish]Rachel was married at age fifteen to the captain of a San Francisco–based light cargo vessel, and was not seen in Small Wood again until her twenty-eighth year."
   },
   {
    "t": "narrate",

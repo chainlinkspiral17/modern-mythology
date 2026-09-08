@@ -42,7 +42,7 @@
       "caption": "The form the figure resolves to. Each of them sees something different."
     },
     {
-      "text": "Or rather — she was the figure Tem had spoken to and also other figures. Several people simultaneously, by what Tem registered as she looked — the substrate making the door hold the multiple by some grace of how cedar held what it had to hold.",
+      "text": "[shot:insert cedar]Or rather — she was the figure Tem had spoken to and also other figures. Several people simultaneously, by what Tem registered as she looked — the substrate making the door hold the multiple by some grace of how cedar held what it had to hold.",
       "t": "narrate"
     },
     {
@@ -76,7 +76,7 @@
       "t": "say"
     },
     {
-      "text": "Then he stopped. He did not walk further. He stood at the table with one hand on the table and the other at his side. He looked at the door for a long count.",
+      "text": "[shot:insert table]Then he stopped. He did not walk further. He stood at the table with one hand on the table and the other at his side. He looked at the door for a long count.",
       "t": "narrate"
     },
     {
@@ -305,7 +305,7 @@
     },
     {
       "char": "tem",
-      "text": "Aria.",
+      "text": "[shot:closeup person]Aria.",
       "t": "say"
     },
     {
@@ -330,7 +330,7 @@
     },
     {
       "char": "figure",
-      "text": "You see it now.",
+      "text": "[shot:closeup person_b]You see it now.",
       "t": "say"
     },
     {
@@ -355,7 +355,7 @@
     },
     {
       "char": "tem",
-      "text": "Yes.",
+      "text": "[shot:closeup person]Yes.",
       "t": "say"
     },
     {
@@ -379,7 +379,7 @@
     },
     {
       "char": "figure",
-      "text": "The name.",
+      "text": "[shot:closeup person_b]The name.",
       "t": "say"
     },
     {

@@ -60,7 +60,7 @@
   {
    "t": "say",
    "char": "Linda Caldwell",
-   "text": "Sweetheart.",
+   "text": "[shot:closeup person]Sweetheart.",
    "expr": "happy"
   },
   {
@@ -100,7 +100,7 @@
   {
    "t": "say",
    "char": "Maya",
-   "text": "This is Anita Kowalski. She's Ben's mother. They are taking care of me until you come home. This is Gracie. She is Ben's little sister. She has a dog named Daisy. She would like to tell you about Daisy.",
+   "text": "[shot:closeup person_b]This is Anita Kowalski. She's Ben's mother. They are taking care of me until you come home. This is Gracie. She is Ben's little sister. She has a dog named Daisy. She would like to tell you about Daisy.",
    "expr": "neutral"
   },
   {
@@ -160,7 +160,7 @@
   {
    "t": "say",
    "char": "Anita",
-   "text": "Linda. We're going to step out for a few minutes. Let you and Maya have a moment. We'll be in the cafeteria. Maya, take your time.",
+   "text": "[shot:closeup person]Linda. We're going to step out for a few minutes. Let you and Maya have a moment. We'll be in the cafeteria. Maya, take your time.",
    "expr": "neutral"
   },
   {
@@ -242,7 +242,7 @@
   {
    "t": "say",
    "char": "Linda Caldwell",
-   "text": "He took the photographs. He developed them in his home darkroom in Beaumont. One of the photographs — one — showed something the company had not, in his briefing, told him about. A small structure inside the dump perimeter that was not on the site map. A — a building, Maya. A building roughly the size of a single-wide trailer, with a single door, no windows, and three trucks parked outside it, and a man standing at the door of the building who was looking, in the photograph, directly into Thomas's camera even though Thomas had not — Thomas was certain he had not — been close enough for the man to see him. The man in the photograph was wearing a charcoal suit.",
+   "text": "[shot:closeup person]He took the photographs. He developed them in his home darkroom in Beaumont. One of the photographs — one — showed something the company had not, in his briefing, told him about. A small structure inside the dump perimeter that was not on the site map. A — a building, Maya. A building roughly the size of a single-wide trailer, with a single door, no windows, and three trucks parked outside it, and a man standing at the door of the building who was looking, in the photograph, directly into Thomas's camera even though Thomas had not — Thomas was certain he had not — been close enough for the man to see him. The man in the photograph was wearing a charcoal suit.",
    "expr": "neutral"
   },
   {
@@ -277,7 +277,7 @@
   {
    "t": "say",
    "char": "Maya",
-   "text": "He's still — ",
+   "text": "[shot:closeup person_b]He's still — ",
    "expr": "neutral"
   },
   {
@@ -307,7 +307,7 @@
   {
    "t": "say",
    "char": "Linda Caldwell",
-   "text": "Thomas spent the night looking for the print. He had hidden it so well — he had hidden it inside a copy of Moby-Dick in the back of the closet — that even he, by the morning, was not sure he could find it again. He did, finally, just before noon, find it. He looked at it for a long time. He copied it — three copies, on cheap film, the best he could do with the small Polaroid we had in the apartment. He hid the copies in three different places. Then he gave the original to the man in the suit, when the man came back at three.",
+   "text": "[shot:closeup person]Thomas spent the night looking for the print. He had hidden it so well — he had hidden it inside a copy of Moby-Dick in the back of the closet — that even he, by the morning, was not sure he could find it again. He did, finally, just before noon, find it. He looked at it for a long time. He copied it — three copies, on cheap film, the best he could do with the small Polaroid we had in the apartment. He hid the copies in three different places. Then he gave the original to the man in the suit, when the man came back at three.",
    "expr": "neutral"
   },
   {
@@ -353,7 +353,7 @@
   {
    "t": "say",
    "char": "Linda Caldwell",
-   "text": "I have been waiting for you, sweetheart. Your whole life. I have been waiting for you to be the person you are now. And the past six weeks have been — they have been the happiest six weeks of my life since 1976. I want you to know that. I want you to know that, Maya. The fall on the stairs was not — it was not unhappiness. It was — it was relief. My body finally letting itself rest. Because you are here. Because the person I have been waiting for has come.",
+   "text": "[shot:closeup person]I have been waiting for you, sweetheart. Your whole life. I have been waiting for you to be the person you are now. And the past six weeks have been — they have been the happiest six weeks of my life since 1976. I want you to know that. I want you to know that, Maya. The fall on the stairs was not — it was not unhappiness. It was — it was relief. My body finally letting itself rest. Because you are here. Because the person I have been waiting for has come.",
    "expr": "neutral"
   },
   {
@@ -383,7 +383,7 @@
   {
    "t": "say",
    "char": "Linda Caldwell",
-   "text": "I was — I was waiting until you were ready.",
+   "text": "[shot:closeup person]I was — I was waiting until you were ready.",
    "expr": "neutral"
   },
   {

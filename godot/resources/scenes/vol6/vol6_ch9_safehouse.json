@@ -114,7 +114,7 @@
     {
       "t": "say",
       "char": "Sam",
-      "text": "It's okay. I dreamed your hair was different too. You had longer hair in the dream. You looked like you were in a band.",
+      "text": "[shot:closeup person]It's okay. I dreamed your hair was different too. You had longer hair in the dream. You looked like you were in a band.",
       "expr": "happy"
     },
     {
@@ -152,7 +152,7 @@
     {
       "t": "say",
       "char": "Diego",
-      "text": "It felt like longer.",
+      "text": "[shot:closeup person_b]It felt like longer.",
       "expr": "neutral"
     },
     {
@@ -196,7 +196,7 @@
     {
       "t": "say",
       "char": "Diego",
-      "text": "Yeah.",
+      "text": "[shot:closeup person_b]Yeah.",
       "expr": "neutral"
     },
     {
@@ -226,7 +226,7 @@
     {
       "t": "say",
       "char": "Sam",
-      "text": "Yeah.",
+      "text": "[shot:closeup person]Yeah.",
       "expr": "neutral"
     },
     {
@@ -365,7 +365,7 @@
     },
     {
       "t": "narrate",
-      "text": "He closes the notebook."
+      "text": "[shot:insert notebook]He closes the notebook."
     },
     {
       "t": "say",
@@ -394,7 +394,7 @@
     {
       "t": "say",
       "char": "Diego",
-      "text": "Yours. The blue bedroom. The shelf above the desk. Where the bayou photograph is.",
+      "text": "[shot:closeup person_b]Yours. The blue bedroom. The shelf above the desk. Where the bayou photograph is.",
       "expr": "neutral"
     },
     {
@@ -469,7 +469,7 @@
     },
     {
       "t": "narrate",
-      "text": "The figure with the gentle hand on the open mouth is — the figure is many people. Sam. Maya. Doyle. Dr. Patel. His grandmother. His mother. Frasier Temple, at his workbench in the warehouse, who has — the imps will report to Diego, eventually, in a chat window six months from now — kept, on a small private server in the warehouse, an audio file of the three-pulse acknowledgment the device on the wall made the night Boyd told Diego he was being given the stomach bug."
+      "text": "[shot:insert window]The figure with the gentle hand on the open mouth is — the figure is many people. Sam. Maya. Doyle. Dr. Patel. His grandmother. His mother. Frasier Temple, at his workbench in the warehouse, who has — the imps will report to Diego, eventually, in a chat window six months from now — kept, on a small private server in the warehouse, an audio file of the three-pulse acknowledgment the device on the wall made the night Boyd told Diego he was being given the stomach bug."
     },
     {
       "t": "narrate",
@@ -549,7 +549,7 @@
     },
     {
       "t": "narrate",
-      "text": "The chapter ends."
+      "text": "[shot:establish]The chapter ends."
     },
     {
       "t": "narrate",

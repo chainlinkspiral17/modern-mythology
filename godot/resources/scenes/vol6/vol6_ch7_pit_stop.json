@@ -91,7 +91,7 @@
   },
   {
    "t": "narrate",
-   "text": "A waitress — Lydia, who has been at the Pit Stop nine years, who does not, in any visible way, register that this booth is anything other than a regular Saturday-morning breakfast — comes over. She takes their order. Eileen orders the egg-white scramble and a coffee. Ben orders the short stack and a coffee. Lydia leaves."
+   "text": "[shot:establish]A waitress — Lydia, who has been at the Pit Stop nine years, who does not, in any visible way, register that this booth is anything other than a regular Saturday-morning breakfast — comes over. She takes their order. Eileen orders the egg-white scramble and a coffee. Ben orders the short stack and a coffee. Lydia leaves."
   },
   {
    "t": "hide",
@@ -231,7 +231,7 @@
   },
   {
    "t": "narrate",
-   "text": "Lydia arrives with the coffee. They both pause. Lydia pours. Lydia leaves."
+   "text": "[shot:establish_diner]Lydia arrives with the coffee. They both pause. Lydia pours. Lydia leaves."
   },
   {
    "t": "hide",
@@ -355,7 +355,7 @@
   },
   {
    "t": "narrate",
-   "text": "She is quiet."
+   "text": "[shot:establish]She is quiet."
   },
   {
    "t": "say",
@@ -463,7 +463,7 @@
   },
   {
    "t": "narrate",
-   "text": "Eileen nods."
+   "text": "[shot:establish_diner]Eileen nods."
   },
   {
    "t": "say",

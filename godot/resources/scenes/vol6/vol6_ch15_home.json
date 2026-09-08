@@ -82,7 +82,7 @@
   {
    "t": "say",
    "char": "Bianca",
-   "text": "How was work.",
+   "text": "[shot:closeup person]How was work.",
    "expr": "neutral"
   },
   {

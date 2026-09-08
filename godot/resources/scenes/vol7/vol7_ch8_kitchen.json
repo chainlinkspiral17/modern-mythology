@@ -47,7 +47,7 @@
    "t": "say",
    "char": "Tem",
    "expr": "neutral",
-   "text": "\"You went to ChillWave.\""
+   "text": "[shot:closeup person]\"You went to ChillWave.\""
   },
   {
    "t": "say",
@@ -81,7 +81,7 @@
    "t": "say",
    "char": "Lena",
    "expr": "neutral",
-   "text": "\"I don't know what all of it is. He told me about Nate at sixteen. The basement. Pattern persistence. The conversation in March '94 about a daughter. He told me Brandon came to him in 2049. He told me you came to him in July.\""
+   "text": "[shot:closeup person_b]\"I don't know what all of it is. He told me about Nate at sixteen. The basement. Pattern persistence. The conversation in March '94 about a daughter. He told me Brandon came to him in 2049. He told me you came to him in July.\""
   },
   {
    "t": "say",

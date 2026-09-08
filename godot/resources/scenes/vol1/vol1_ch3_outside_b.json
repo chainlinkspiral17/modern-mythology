@@ -55,7 +55,7 @@
    "t": "say",
    "char": "Faust",
    "expr": "neutral",
-   "text": "I'm the earthbound one — push come to shove."
+   "text": "[shot:closeup person]I'm the earthbound one — push come to shove."
   },
   {
    "t": "say",
@@ -85,7 +85,7 @@
    "t": "say",
    "char": "Wagner",
    "expr": "neutral",
-   "text": "Getting any ideears? Or are you just ruminating?"
+   "text": "[shot:closeup person_b]Getting any ideears? Or are you just ruminating?"
   },
   {
    "t": "say",
@@ -150,7 +150,7 @@
    "t": "say",
    "char": "Faust",
    "expr": "neutral",
-   "text": "Yours are always the best."
+   "text": "[shot:closeup person]Yours are always the best."
   },
   {
    "t": "say",

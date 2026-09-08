@@ -70,7 +70,7 @@
     },
     {
       "char": "kai",
-      "text": "Tem.",
+      "text": "[shot:closeup person]Tem.",
       "t": "say"
     },
     {
@@ -115,7 +115,7 @@
     },
     {
       "char": "finn",
-      "text": "Why didn't you say.",
+      "text": "[shot:closeup person_b]Why didn't you say.",
       "t": "say"
     },
     {
@@ -140,7 +140,7 @@
     },
     {
       "char": "tem",
-      "text": "The tower has been running without him — has been doing what it's been doing because something else is in it. The something else is the substrate. The substrate in the tower is what is in the air there. The portal room on the fourth floor is the entry to wherever the substrate goes.",
+      "text": "[shot:closeup person]The tower has been running without him — has been doing what it's been doing because something else is in it. The something else is the substrate. The substrate in the tower is what is in the air there. The portal room on the fourth floor is the entry to wherever the substrate goes.",
       "t": "say"
     },
     {
@@ -165,7 +165,7 @@
     },
     {
       "char": "finn",
-      "text": "We're going to find out.",
+      "text": "[shot:closeup person_b]We're going to find out.",
       "t": "say"
     },
     {

@@ -91,7 +91,7 @@
    "t": "say",
    "char": "Sam",
    "expr": "neutral",
-   "text": "\"I don't know what I'm doing here.\""
+   "text": "[shot:closeup person]\"I don't know what I'm doing here.\""
   },
   {
    "t": "say",
@@ -125,7 +125,7 @@
    "t": "say",
    "char": "Maya",
    "expr": "neutral",
-   "text": "\"Because somebody told me. Somebody who told me before you knew yourself, actually. I want to tell you three things, and if any of them freak you out, you can leave and I won't follow up. Okay?\""
+   "text": "[shot:closeup person_b]\"Because somebody told me. Somebody who told me before you knew yourself, actually. I want to tell you three things, and if any of them freak you out, you can leave and I won't follow up. Okay?\""
   },
   {
    "t": "say",
@@ -169,7 +169,7 @@
    "t": "say",
    "char": "Maya",
    "expr": "neutral",
-   "text": "\"Thing three: there are other adults in this town who know. I don't mean bad. I mean on your side. My grandmother. Rick. A bookshop guy in New Auburn named Hal. Diego's grandmother. There's a reporter from the Houston Chronicle working on something. There are two people in a white sedan parked at the Kwik Stop for the past two days —\""
+   "text": "[shot:closeup person_b]\"Thing three: there are other adults in this town who know. I don't mean bad. I mean on your side. My grandmother. Rick. A bookshop guy in New Auburn named Hal. Diego's grandmother. There's a reporter from the Houston Chronicle working on something. There are two people in a white sedan parked at the Kwik Stop for the past two days —\""
   },
   {
    "t": "say",
@@ -213,7 +213,7 @@
    "t": "say",
    "char": "Maya",
    "expr": "neutral",
-   "text": "\"Because my dad was in it. Not this specifically. Something like this, somewhere else, a long time ago. He sent me up here to get out of it. My grandmother has been waiting. The people she was waiting to hear from started talking to her last week. They told her I was ready.\""
+   "text": "[shot:closeup person_b]\"Because my dad was in it. Not this specifically. Something like this, somewhere else, a long time ago. He sent me up here to get out of it. My grandmother has been waiting. The people she was waiting to hear from started talking to her last week. They told her I was ready.\""
   },
   {
    "t": "say",
@@ -247,7 +247,7 @@
    "t": "say",
    "char": "Sam",
    "expr": "neutral",
-   "text": "\"Sure.\""
+   "text": "[shot:closeup person]\"Sure.\""
   },
   {
    "t": "narrate",
@@ -291,7 +291,7 @@
    "t": "say",
    "char": "Maya",
    "expr": "neutral",
-   "text": "\"Okay.\""
+   "text": "[shot:closeup person_b]\"Okay.\""
   },
   {
    "t": "say",

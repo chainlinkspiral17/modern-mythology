@@ -79,7 +79,7 @@
       "t": "narrate"
     },
     {
-      "text": "He kept turning pages. The pages went through 2050 entry by entry. Brandon had played the stick maybe twice a week from January through October. Each entry: a careful paragraph about what had happened at the second pool.",
+      "text": "[shot:insert tide_pool]He kept turning pages. The pages went through 2050 entry by entry. Brandon had played the stick maybe twice a week from January through October. Each entry: a careful paragraph about what had happened at the second pool.",
       "t": "narrate"
     },
     {
@@ -152,7 +152,7 @@
       "t": "say"
     },
     {
-      "text": "Finn sat at the pool, facing the old man.",
+      "text": "[shot:insert tide_pool]Finn sat at the pool, facing the old man.",
       "t": "narrate"
     },
     {
@@ -177,7 +177,7 @@
     },
     {
       "char": "old_man",
-      "text": "[beat:hit]Her name is Aria.",
+      "text": "[shot:closeup person][beat:hit]Her name is Aria.",
       "t": "say"
     },
     {
@@ -220,7 +220,7 @@
     },
     {
       "char": "old_man",
-      "text": "The sound has been forming in her for two years. It will come out of her when the gathering is right. Quiet. One note. At a pitch the people present will feel before they hear.",
+      "text": "[shot:closeup person]The sound has been forming in her for two years. It will come out of her when the gathering is right. Quiet. One note. At a pitch the people present will feel before they hear.",
       "t": "say"
     },
     {
@@ -250,7 +250,7 @@
     },
     {
       "char": "finn",
-      "text": "Brandon said this too.",
+      "text": "[shot:closeup person_b]Brandon said this too.",
       "t": "say"
     },
     {
@@ -296,7 +296,7 @@
     },
     {
       "char": "old_man",
-      "text": "Yes.",
+      "text": "[shot:closeup person]Yes.",
       "t": "say"
     },
     {
@@ -321,7 +321,7 @@
     },
     {
       "char": "finn",
-      "text": "The hand is Olaf's.",
+      "text": "[shot:closeup person_b]The hand is Olaf's.",
       "t": "say"
     },
     {
@@ -346,7 +346,7 @@
     },
     {
       "char": "old_man",
-      "text": "Olaf carved this in 1976. He meant it for the foundation. A symbol piece, by his intention. Not a bowl. A piece that was a symbol of the work. He meant it for the foundation's office in Eugene, in the case where they keep the artifacts.",
+      "text": "[shot:closeup person]Olaf carved this in 1976. He meant it for the foundation. A symbol piece, by his intention. Not a bowl. A piece that was a symbol of the work. He meant it for the foundation's office in Eugene, in the case where they keep the artifacts.",
       "t": "say"
     },
     {
@@ -371,7 +371,7 @@
     },
     {
       "char": "finn",
-      "text": "Old man.",
+      "text": "[shot:closeup person_b]Old man.",
       "t": "say"
     },
     {
@@ -396,7 +396,7 @@
     },
     {
       "char": "old_man",
-      "text": "Reach in.",
+      "text": "[shot:closeup person]Reach in.",
       "t": "say"
     },
     {

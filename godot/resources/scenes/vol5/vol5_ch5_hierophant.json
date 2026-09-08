@@ -268,7 +268,7 @@
     },
     {
       "t": "narrate",
-      "text": "Antonio stared at the dead phone for a long moment."
+      "text": "[shot:insert phone]Antonio stared at the dead phone for a long moment."
     },
     {
       "t": "narrate",
@@ -381,7 +381,7 @@
     },
     {
       "t": "narrate",
-      "text": "The empire was just the means."
+      "text": "[shot:establish]The empire was just the means."
     },
     {
       "t": "end"

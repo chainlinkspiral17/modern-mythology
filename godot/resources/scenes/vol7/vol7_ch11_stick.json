@@ -49,7 +49,7 @@
    "t": "narrate"
   },
   {
-   "text": "Tem made eggs. Tem made toast on the wood stove. Lena cut cheese. The four of them ate at the table without saying much. The rain on the roof had thinned to a sound that was almost not a sound. The cabin was at sixty-three.",
+   "text": "[shot:insert table]Tem made eggs. Tem made toast on the wood stove. Lena cut cheese. The four of them ate at the table without saying much. The rain on the roof had thinned to a sound that was almost not a sound. The cabin was at sixty-three.",
    "t": "narrate"
   },
   {
@@ -76,7 +76,7 @@
   },
   {
    "char": "kai",
-   "text": "Yeah.",
+   "text": "[shot:closeup person]Yeah.",
    "expr": "neutral",
    "t": "say"
   },
@@ -108,7 +108,7 @@
   },
   {
    "char": "tem",
-   "text": "Because Kestrel Mountain has, in the back rooms of the experience, a set of corridors and a basement. The corridors are not — by Diego's original design, by what I can tell from the way the corridors render — the corridors are not corridors he designed. The corridors are corridors the substrate has, over the four hundred and twelve players, worn into the experience as a kind of secondary architecture. The corridors are reachable if you know how to reach them. I know how to reach them. I will tell you how to reach them.",
+   "text": "[shot:closeup person_b]Because Kestrel Mountain has, in the back rooms of the experience, a set of corridors and a basement. The corridors are not — by Diego's original design, by what I can tell from the way the corridors render — the corridors are not corridors he designed. The corridors are corridors the substrate has, over the four hundred and twelve players, worn into the experience as a kind of secondary architecture. The corridors are reachable if you know how to reach them. I know how to reach them. I will tell you how to reach them.",
    "expr": "serious",
    "t": "say"
   },
@@ -144,7 +144,7 @@
   },
   {
    "char": "kai",
-   "text": "The basement is in the experience.",
+   "text": "[shot:closeup person]The basement is in the experience.",
    "expr": "neutral",
    "t": "say"
   },
@@ -180,7 +180,7 @@
   },
   {
    "char": "tem",
-   "text": "Yeah.",
+   "text": "[shot:closeup person_b]Yeah.",
    "expr": "neutral",
    "t": "say"
   },
@@ -246,7 +246,7 @@
   },
   {
    "char": "tem",
-   "text": "Yeah.",
+   "text": "[shot:closeup person_b]Yeah.",
    "expr": "neutral",
    "t": "say"
   },

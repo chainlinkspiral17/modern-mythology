@@ -67,7 +67,7 @@
     },
     {
       "char": "finn",
-      "text": "Yeah.",
+      "text": "[shot:closeup person]Yeah.",
       "t": "say"
     },
     {
@@ -105,7 +105,7 @@
     },
     {
       "char": "tem",
-      "text": "Take the stick. Play it today if you can. Play it at the cabin tonight if not. The reader at the cabin is the reader your grandfather used. It is the right reader for this stick.",
+      "text": "[shot:closeup person_b]Take the stick. Play it today if you can. Play it at the cabin tonight if not. The reader at the cabin is the reader your grandfather used. It is the right reader for this stick.",
       "t": "say"
     },
     {
@@ -130,7 +130,7 @@
     },
     {
       "char": "finn",
-      "text": "What is it.",
+      "text": "[shot:closeup person]What is it.",
       "t": "say"
     },
     {
@@ -160,7 +160,7 @@
     },
     {
       "char": "tem",
-      "text": "Yeah.",
+      "text": "[shot:closeup person_b]Yeah.",
       "t": "say"
     },
     {

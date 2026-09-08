@@ -69,7 +69,7 @@
    "t": "say",
    "char": "Faust",
    "expr": "neutral",
-   "text": "Everything going great today."
+   "text": "[shot:closeup person]Everything going great today."
   },
   {
    "t": "say",
@@ -107,7 +107,7 @@
    "t": "say",
    "char": "Old Woman",
    "expr": "warm",
-   "text": "When most the ones my age learn how to be happy, they've already lost so much time. So enjoy it. Be young and happy forever."
+   "text": "[shot:closeup person_b]When most the ones my age learn how to be happy, they've already lost so much time. So enjoy it. Be young and happy forever."
   },
   {
    "t": "narrate",
@@ -135,7 +135,7 @@
    "t": "say",
    "char": "Faust",
    "expr": "neutral",
-   "text": "I feel like Charon ferrying."
+   "text": "[shot:closeup person]I feel like Charon ferrying."
   },
   {
    "t": "say",
@@ -167,7 +167,7 @@
    "t": "say",
    "char": "Deborah",
    "expr": "neutral",
-   "text": "What he got in that grill?"
+   "text": "[shot:closeup person_b]What he got in that grill?"
   },
   {
    "t": "say",
@@ -205,7 +205,7 @@
    "t": "say",
    "char": "Eric",
    "expr": "neutral",
-   "text": "Six eggrolls between the three of us."
+   "text": "[shot:closeup person]Six eggrolls between the three of us."
   },
   {
    "t": "say",

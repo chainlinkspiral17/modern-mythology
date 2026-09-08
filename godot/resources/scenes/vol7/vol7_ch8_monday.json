@@ -46,7 +46,7 @@
       "t": "narrate"
     },
     {
-      "text": "Then she got up the way she got up most mornings, which was without thinking about it. She pulled the door of the bedroom closed behind her so the light from the kitchen would not wake Tem. She put on the wool socks. She put the kettle on. She stood at the kitchen window in her flannel and looked at the alley.",
+      "text": "[shot:insert window]Then she got up the way she got up most mornings, which was without thinking about it. She pulled the door of the bedroom closed behind her so the light from the kitchen would not wake Tem. She put on the wool socks. She put the kettle on. She stood at the kitchen window in her flannel and looked at the alley.",
       "t": "narrate"
     },
     {
@@ -188,7 +188,7 @@
       "t": "say"
     },
     {
-      "text": "Petra set the cup down half-empty, pulled her coat off the hook by the office door, and was out the back through the alley in under ninety seconds. Lena heard the wagon start and pull away.",
+      "text": "[shot:establish]Petra set the cup down half-empty, pulled her coat off the hook by the office door, and was out the back through the alley in under ninety seconds. Lena heard the wagon start and pull away.",
       "t": "narrate"
     },
     {
@@ -288,7 +288,7 @@
       "t": "say"
     },
     {
-      "text": "[beat:chill]He named three. The first was The Architecture of Inland Water by an author whose name he gave as something Norwegian. The second was Pattern Persistence: Selected Essays by an author Lena did not catch because she had stopped breathing for a half-second. The third was The Seven Floors of the Glass House by no author given.",
+      "text": "[shot:establish_shop][beat:chill]He named three. The first was The Architecture of Inland Water by an author whose name he gave as something Norwegian. The second was Pattern Persistence: Selected Essays by an author Lena did not catch because she had stopped breathing for a half-second. The third was The Seven Floors of the Glass House by no author given.",
       "t": "narrate"
     },
     {
@@ -382,7 +382,7 @@
       "t": "say"
     },
     {
-      "text": "There it was.",
+      "text": "[shot:establish]There it was.",
       "t": "narrate"
     },
     {
@@ -434,7 +434,7 @@
       "t": "say"
     },
     {
-      "text": "She kept her hand on the counter.",
+      "text": "[shot:insert hand]She kept her hand on the counter.",
       "t": "narrate"
     },
     {

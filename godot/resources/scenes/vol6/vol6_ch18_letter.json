@@ -117,7 +117,7 @@
     },
     {
       "t": "narrate",
-      "text": "*I am thinking about you. I have been working a job this summer at a grocery store. The night shift. The work is good. The team is good. My grandmother is well. School starts in three weeks. I am — I am getting through the summer.*"
+      "text": "[shot:establish]*I am thinking about you. I have been working a job this summer at a grocery store. The night shift. The work is good. The team is good. My grandmother is well. School starts in three weeks. I am — I am getting through the summer.*"
     },
     {
       "t": "narrate",
@@ -226,7 +226,7 @@
     {
       "t": "say",
       "char": "diego",
-      "text": "*Yes, abuela.*",
+      "text": "[shot:closeup person]*Yes, abuela.*",
       "expr": "neutral"
     },
     {

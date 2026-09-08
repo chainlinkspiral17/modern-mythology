@@ -126,7 +126,7 @@
     {
       "t": "say",
       "char": "Maya",
-      "text": "are you near it.",
+      "text": "[shot:closeup person]are you near it.",
       "expr": "serious"
     },
     {
@@ -156,7 +156,7 @@
     {
       "t": "say",
       "char": "Jesse",
-      "text": "yeah. i'm sure. i'm \u2014 i'm just looking.",
+      "text": "[shot:closeup person_b]yeah. i'm sure. i'm \u2014 i'm just looking.",
       "expr": "neutral"
     },
     {
@@ -186,7 +186,7 @@
     {
       "t": "say",
       "char": "Maya",
-      "text": "i know you're not. i'm telling you anyway. drive home in five minutes.",
+      "text": "[shot:closeup person]i know you're not. i'm telling you anyway. drive home in five minutes.",
       "expr": "neutral"
     },
     {
@@ -248,7 +248,7 @@
     {
       "t": "say",
       "char": "Maya",
-      "text": "ok. text me when you're inside.",
+      "text": "[shot:closeup person]ok. text me when you're inside.",
       "expr": "neutral"
     },
     {
@@ -300,7 +300,7 @@
     {
       "t": "say",
       "char": "Maya",
-      "text": "i want to tell you something. i'm not telling you to lecture you. i'm telling you because you should know.",
+      "text": "[shot:closeup person]i want to tell you something. i'm not telling you to lecture you. i'm telling you because you should know.",
       "expr": "neutral"
     },
     {
@@ -364,7 +364,7 @@
     {
       "t": "say",
       "char": "Maya",
-      "text": "jesse.",
+      "text": "[shot:closeup person]jesse.",
       "expr": "neutral"
     },
     {
@@ -398,7 +398,7 @@
     {
       "t": "say",
       "char": "Jesse",
-      "text": "yeah.",
+      "text": "[shot:closeup person_b]yeah.",
       "expr": "neutral"
     },
     {
@@ -428,7 +428,7 @@
     {
       "t": "say",
       "char": "Maya",
-      "text": "goodnight.",
+      "text": "[shot:closeup person]goodnight.",
       "expr": "neutral"
     },
     {
@@ -467,7 +467,7 @@
     },
     {
       "t": "narrate",
-      "text": "Jesse goes to his own room. He closes the door. He sits on the edge of the bed."
+      "text": "[shot:insert door]Jesse goes to his own room. He closes the door. He sits on the edge of the bed."
     },
     {
       "t": "narrate",
@@ -515,7 +515,7 @@
     },
     {
       "t": "narrate",
-      "text": "He thinks: the unit has lights at hours it should not have lights, and the unit is across the parking lot from the venue we are playing on Saturday, and the convergence is the world, not the conspiracy. The convergence is not something the apparatus arranged. The convergence is two facts that happen to share a parking lot."
+      "text": "[shot:establish]He thinks: the unit has lights at hours it should not have lights, and the unit is across the parking lot from the venue we are playing on Saturday, and the convergence is the world, not the conspiracy. The convergence is not something the apparatus arranged. The convergence is two facts that happen to share a parking lot."
     },
     {
       "t": "narrate",

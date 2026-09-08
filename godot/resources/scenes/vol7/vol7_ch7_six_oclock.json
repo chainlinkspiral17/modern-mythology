@@ -81,7 +81,7 @@
     },
     {
       "char": "lena",
-      "text": "Hi.",
+      "text": "[shot:closeup person]Hi.",
       "expr": "neutral",
       "t": "say"
     },
@@ -107,7 +107,7 @@
     },
     {
       "char": "kai",
-      "text": "Is there anything to eat.",
+      "text": "[shot:closeup person_b]Is there anything to eat.",
       "expr": "neutral",
       "t": "say"
     },
@@ -175,7 +175,7 @@
     },
     {
       "char": "lena",
-      "text": "I don't know what all of it is. He told me about Nate at sixteen. The basement. Pattern persistence. The conversation in March '94 about a daughter. He told me Brandon came to him in 2049. He told me you came to him in July.",
+      "text": "[shot:closeup person]I don't know what all of it is. He told me about Nate at sixteen. The basement. Pattern persistence. The conversation in March '94 about a daughter. He told me Brandon came to him in 2049. He told me you came to him in July.",
       "expr": "neutral",
       "t": "say"
     },
@@ -259,7 +259,7 @@
     },
     {
       "char": "finn",
-      "text": "The crow.",
+      "text": "[shot:closeup person_b]The crow.",
       "expr": "neutral",
       "t": "say"
     },
@@ -297,7 +297,7 @@
     },
     {
       "char": "tem",
-      "text": "Finn.",
+      "text": "[shot:closeup person]Finn.",
       "expr": "serious",
       "t": "say"
     },
@@ -325,7 +325,7 @@
     },
     {
       "char": "kai",
-      "text": "Or the wood is evidence. The wood is what Brandon collected to prove what Nate was doing. The wood is forensic. The crow is bringing you the case file.",
+      "text": "[shot:closeup person_b]Or the wood is evidence. The wood is what Brandon collected to prove what Nate was doing. The wood is forensic. The crow is bringing you the case file.",
       "expr": "neutral",
       "t": "say"
     },
@@ -397,7 +397,7 @@
     },
     {
       "char": "tem",
-      "text": "This table needs a shim.",
+      "text": "[shot:closeup person]This table needs a shim.",
       "expr": "neutral",
       "t": "say"
     },
@@ -431,7 +431,7 @@
     },
     {
       "char": "kai",
-      "text": "Everybody eat.",
+      "text": "[shot:closeup person_b]Everybody eat.",
       "expr": "neutral",
       "t": "say"
     },
@@ -467,7 +467,7 @@
     },
     {
       "char": "tem",
-      "text": "I have to say something.",
+      "text": "[shot:closeup person]I have to say something.",
       "expr": "serious",
       "t": "say"
     },
@@ -493,7 +493,7 @@
     },
     {
       "char": "kai",
-      "text": "Tem.",
+      "text": "[shot:closeup person_b]Tem.",
       "expr": "serious",
       "t": "say"
     },
@@ -549,7 +549,7 @@
     },
     {
       "char": "kai",
-      "text": "Tem.",
+      "text": "[shot:closeup person_b]Tem.",
       "expr": "serious",
       "t": "say"
     },
@@ -607,7 +607,7 @@
     },
     {
       "char": "tem",
-      "text": "All right.",
+      "text": "[shot:closeup person]All right.",
       "expr": "serious",
       "t": "say"
     },

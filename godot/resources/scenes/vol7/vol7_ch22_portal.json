@@ -45,7 +45,7 @@
       "t": "show"
     },
     {
-      "text": "[mood:dream_blur]Fourth floor. The stairs ended at a landing with a single door at the south wall.",
+      "text": "[shot:insert door][mood:dream_blur]Fourth floor. The stairs ended at a landing with a single door at the south wall.",
       "t": "narrate"
     },
     {
@@ -122,7 +122,7 @@
       "t": "narrate"
     },
     {
-      "text": "Her face \u2014 through the translucent window, which rendered her at half-resolution \u2014 was the face Tem had seen at the cabin door at three. The face Tem could not commit to memory. A face she could see and could not, later, recover.",
+      "text": "[shot:insert door]Her face \u2014 through the translucent window, which rendered her at half-resolution \u2014 was the face Tem had seen at the cabin door at three. The face Tem could not commit to memory. A face she could see and could not, later, recover.",
       "t": "narrate"
     },
     {
@@ -206,7 +206,7 @@
       "t": "say"
     },
     {
-      "text": "The three of them turned from the door. They went back down the stairs. They did not visit five, six, or seven. The portal room was the point. They saw her leave. They reached the third-floor landing. They did not stop. They reached the second-floor landing. They did not stop. They reached the lobby.",
+      "text": "[shot:insert door]The three of them turned from the door. They went back down the stairs. They did not visit five, six, or seven. The portal room was the point. They saw her leave. They reached the third-floor landing. They did not stop. They reached the second-floor landing. They did not stop. They reached the lobby.",
       "t": "narrate"
     },
     {
@@ -342,7 +342,7 @@
       "t": "hide"
     },
     {
-      "text": "They got in the wagon. Tem turned the wagon around in the clearing. They drove back down Old Yachats Road. They went around the chain at the bottom. They turned south on 101.",
+      "text": "[shot:establish]They got in the wagon. Tem turned the wagon around in the clearing. They drove back down Old Yachats Road. They went around the chain at the bottom. They turned south on 101.",
       "t": "narrate"
     },
     {
@@ -382,7 +382,7 @@
     },
     {
       "char": "finn",
-      "text": "Yes.",
+      "text": "[shot:closeup person]Yes.",
       "t": "say"
     },
     {

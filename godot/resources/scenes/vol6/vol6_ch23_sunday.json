@@ -92,7 +92,7 @@
   {
    "t": "say",
    "char": "Diego",
-   "text": "Yes.",
+   "text": "[shot:closeup person]Yes.",
    "expr": "neutral"
   },
   {
@@ -122,7 +122,7 @@
   {
    "t": "say",
    "char": "Abuela",
-   "text": "That is the only way to be ready.",
+   "text": "[shot:closeup person_b]That is the only way to be ready.",
    "expr": "neutral"
   },
   {
@@ -183,7 +183,7 @@
   },
   {
    "t": "narrate",
-   "text": "He closes the desk drawer."
+   "text": "[shot:establish]He closes the desk drawer."
   },
   {
    "t": "narrate",
@@ -311,7 +311,7 @@
   },
   {
    "t": "narrate",
-   "text": "Bill, at the cake, taps the side of a paper cup with a plastic fork — the small specific gesture of a man making an announcement at a small backyard ceremony."
+   "text": "[shot:insert cake]Bill, at the cake, taps the side of a paper cup with a plastic fork — the small specific gesture of a man making an announcement at a small backyard ceremony."
   },
   {
    "t": "hide",
@@ -340,7 +340,7 @@
   {
    "t": "say",
    "char": "Bill",
-   "text": "Okay. So. Gracie. Come up here.",
+   "text": "[shot:closeup person]Okay. So. Gracie. Come up here.",
    "expr": "neutral"
   },
   {
@@ -374,7 +374,7 @@
   {
    "t": "say",
    "char": "Anita",
-   "text": "He bought it.",
+   "text": "[shot:closeup person_b]He bought it.",
    "expr": "neutral"
   },
   {
@@ -404,7 +404,7 @@
   {
    "t": "say",
    "char": "Bill",
-   "text": "Three sticker books, one summer. We are, today, eating cake. Then we are taking a picture. Then everybody can go home.",
+   "text": "[shot:closeup person]Three sticker books, one summer. We are, today, eating cake. Then we are taking a picture. Then everybody can go home.",
    "expr": "neutral"
   },
   {
@@ -530,7 +530,7 @@
   {
    "t": "say",
    "char": "Linda",
-   "text": "School tomorrow.",
+   "text": "[shot:closeup person]School tomorrow.",
    "expr": "neutral"
   },
   {
@@ -560,7 +560,7 @@
   {
    "t": "say",
    "char": "Maya",
-   "text": "Yeah.",
+   "text": "[shot:closeup person_b]Yeah.",
    "expr": "neutral"
   },
   {
@@ -636,7 +636,7 @@
   {
    "t": "say",
    "char": "Linda",
-   "text": "Good. Asking is the right move.",
+   "text": "[shot:closeup person]Good. Asking is the right move.",
    "expr": "neutral"
   },
   {
@@ -746,7 +746,7 @@
   {
    "t": "say",
    "char": "Bianca",
-   "text": "I know how early decision works, Sammy.",
+   "text": "[shot:closeup person]I know how early decision works, Sammy.",
    "expr": "neutral"
   },
   {
@@ -792,7 +792,7 @@
   {
    "t": "say",
    "char": "Sammy",
-   "text": "Yeah.",
+   "text": "[shot:closeup person_b]Yeah.",
    "expr": "neutral"
   },
   {
@@ -836,7 +836,7 @@
   {
    "t": "say",
    "char": "Bianca",
-   "text": "Yeah.",
+   "text": "[shot:closeup person]Yeah.",
    "expr": "neutral"
   },
   {
@@ -866,7 +866,7 @@
   {
    "t": "say",
    "char": "Sammy",
-   "text": "I want to be the kind of kid who comes home.",
+   "text": "[shot:closeup person_b]I want to be the kind of kid who comes home.",
    "expr": "neutral"
   },
   {
@@ -917,7 +917,7 @@
   },
   {
    "t": "narrate",
-   "text": "Carlos sent me the radio you used to listen to on the porch in the early years. It will be at the house Wednesday. I do not know what I am going to do with it. I will figure it out."
+   "text": "[shot:insert porch_light]Carlos sent me the radio you used to listen to on the porch in the early years. It will be at the house Wednesday. I do not know what I am going to do with it. I will figure it out."
   },
   {
    "t": "narrate",
@@ -953,7 +953,7 @@
   },
   {
    "t": "narrate",
-   "text": "She puts the bowl in the dishwasher."
+   "text": "[shot:establish]She puts the bowl in the dishwasher."
   },
   {
    "t": "narrate",

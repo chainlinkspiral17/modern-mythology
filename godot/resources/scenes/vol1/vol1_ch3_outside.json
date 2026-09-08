@@ -51,7 +51,7 @@
    "t": "say",
    "char": "Wagner",
    "expr": "neutral",
-   "text": "What sort of superpower would you have?"
+   "text": "[shot:closeup person]What sort of superpower would you have?"
   },
   {
    "t": "choice",
@@ -94,7 +94,7 @@
    "t": "say",
    "char": "Faust",
    "expr": "neutral",
-   "text": "I'd hear what people aren't saying. Which is, probably, half a curse."
+   "text": "[shot:closeup person_b]I'd hear what people aren't saying. Which is, probably, half a curse."
   },
   {
    "t": "jump",

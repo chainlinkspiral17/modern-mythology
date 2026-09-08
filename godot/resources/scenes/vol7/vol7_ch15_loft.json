@@ -114,7 +114,7 @@
   },
   {
    "char": "tem",
-   "text": "Yeah.",
+   "text": "[shot:closeup person]Yeah.",
    "expr": "neutral",
    "t": "say"
   },
@@ -156,7 +156,7 @@
   },
   {
    "char": "marina",
-   "text": "I will ride with you.",
+   "text": "[shot:closeup person_b]I will ride with you.",
    "expr": "neutral",
    "t": "say"
   },
@@ -226,7 +226,7 @@
   },
   {
    "char": "marina",
-   "text": "Tem. What if I am — what if I am also coming in as a person who is forty-one and tired and who has been at the cabin for two nights and is — by my own reading of myself at four-twenty this morning — slightly out of my depth.",
+   "text": "[shot:closeup person_b]Tem. What if I am — what if I am also coming in as a person who is forty-one and tired and who has been at the cabin for two nights and is — by my own reading of myself at four-twenty this morning — slightly out of my depth.",
    "expr": "serious",
    "t": "say"
   },
@@ -262,7 +262,7 @@
   },
   {
    "char": "tem",
-   "text": "Come. We have to leave in twenty minutes.",
+   "text": "[shot:closeup person]Come. We have to leave in twenty minutes.",
    "expr": "neutral",
    "t": "say"
   },
@@ -300,7 +300,7 @@
   },
   {
    "char": "cale",
-   "text": "I have been at this for thirty years from the wrong end. You have been at it from the other end. I am — I am glad you are here.",
+   "text": "[shot:closeup person]I have been at this for thirty years from the wrong end. You have been at it from the other end. I am — I am glad you are here.",
    "expr": "serious",
    "t": "say"
   },
@@ -350,7 +350,7 @@
   },
   {
    "char": "hans",
-   "text": "Tem.",
+   "text": "[shot:closeup person]Tem.",
    "expr": "neutral",
    "t": "say"
   },
@@ -412,7 +412,7 @@
   },
   {
    "char": "marina",
-   "text": "Yeah.",
+   "text": "[shot:closeup person_b]Yeah.",
    "expr": "serious",
    "t": "say"
   },
@@ -448,7 +448,7 @@
   },
   {
    "char": "hans",
-   "text": "Marina. You did not know. The foundation did not, in any of the reports I have read of them, know about me. I have been outside what the foundation knew about. I have been off the map for fifty-three years.",
+   "text": "[shot:closeup person]Marina. You did not know. The foundation did not, in any of the reports I have read of them, know about me. I have been outside what the foundation knew about. I have been off the map for fifty-three years.",
    "expr": "serious",
    "t": "say"
   },
@@ -494,7 +494,7 @@
   },
   {
    "char": "greta",
-   "text": "Marina.",
+   "text": "[shot:closeup person]Marina.",
    "expr": "happy",
    "t": "say"
   },

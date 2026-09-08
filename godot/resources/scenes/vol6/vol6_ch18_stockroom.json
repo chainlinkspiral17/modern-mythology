@@ -128,7 +128,7 @@
     {
       "t": "say",
       "char": "diego",
-      "text": "Senior year.",
+      "text": "[shot:closeup person]Senior year.",
       "expr": "neutral"
     },
     {
@@ -370,7 +370,7 @@
     {
       "t": "say",
       "char": "diego",
-      "text": "Yeah. He asked how long I was here.",
+      "text": "[shot:closeup person]Yeah. He asked how long I was here.",
       "expr": "neutral"
     },
     {
@@ -404,7 +404,7 @@
     {
       "t": "say",
       "char": "doug",
-      "text": "Okay.",
+      "text": "[shot:closeup person_b]Okay.",
       "expr": "neutral"
     },
     {
@@ -446,7 +446,7 @@
     {
       "t": "say",
       "char": "diego",
-      "text": "For me.",
+      "text": "[shot:closeup person]For me.",
       "expr": "neutral"
     },
     {
@@ -728,7 +728,7 @@
     {
       "t": "say",
       "char": "marisol",
-      "text": "Whose aisle.",
+      "text": "[shot:closeup person]Whose aisle.",
       "expr": "neutral"
     },
     {
@@ -758,7 +758,7 @@
     {
       "t": "say",
       "char": "doug",
-      "text": "The last kid was twenty-two and the last kid was already a problem when Jessa hired him. Don't compare them.",
+      "text": "[shot:closeup person_b]The last kid was twenty-two and the last kid was already a problem when Jessa hired him. Don't compare them.",
       "expr": "neutral"
     },
     {
@@ -818,7 +818,7 @@
     {
       "t": "say",
       "char": "marisol",
-      "text": "Drive safe, hon.",
+      "text": "[shot:closeup person]Drive safe, hon.",
       "expr": "neutral"
     },
     {
@@ -850,7 +850,7 @@
     {
       "t": "say",
       "char": "doug",
-      "text": "Yeah, kid.",
+      "text": "[shot:closeup person_b]Yeah, kid.",
       "expr": "neutral"
     },
     {

@@ -108,7 +108,7 @@
     {
       "t": "say",
       "char": "Coach K",
-      "text": "Good. Water. Five minutes. Then technical. Then weights light. Pete — you're on the sideline today. You're charting Vinton tomorrow. We're going to walk you through the chart this afternoon.",
+      "text": "[shot:closeup person]Good. Water. Five minutes. Then technical. Then weights light. Pete — you're on the sideline today. You're charting Vinton tomorrow. We're going to walk you through the chart this afternoon.",
       "expr": "neutral"
     },
     {
@@ -214,7 +214,7 @@
     {
       "t": "say",
       "char": "Ben",
-      "text": "Yeah.",
+      "text": "[shot:closeup person]Yeah.",
       "expr": "neutral"
     },
     {
@@ -252,7 +252,7 @@
     {
       "t": "say",
       "char": "Bill",
-      "text": "Okay.",
+      "text": "[shot:closeup person_b]Okay.",
       "expr": "neutral"
     },
     {
@@ -280,7 +280,7 @@
     {
       "t": "say",
       "char": "Ben",
-      "text": "Yeah. I'll mention it.",
+      "text": "[shot:closeup person]Yeah. I'll mention it.",
       "expr": "neutral"
     },
     {
@@ -424,7 +424,7 @@
     {
       "t": "say",
       "char": "Marcus",
-      "text": "Yeah. He's been planning it. He just didn't want to walk it through with the team till the chart was up. Me and you on first down. Brent's gonna call it himself if he likes the front.",
+      "text": "[shot:closeup person]Yeah. He's been planning it. He just didn't want to walk it through with the team till the chart was up. Me and you on first down. Brent's gonna call it himself if he likes the front.",
       "expr": "happy"
     },
     {
@@ -490,7 +490,7 @@
     {
       "t": "say",
       "char": "Ben",
-      "text": "You had it. You've been good in the weight room since week one. Coach K saw.",
+      "text": "[shot:closeup person_b]You had it. You've been good in the weight room since week one. Coach K saw.",
       "expr": "neutral"
     },
     {
@@ -518,7 +518,7 @@
     {
       "t": "say",
       "char": "Tucker",
-      "text": "Yeah.",
+      "text": "[shot:closeup person]Yeah.",
       "expr": "neutral"
     },
     {
@@ -571,7 +571,7 @@
     },
     {
       "t": "narrate",
-      "text": "The long way passes the equipment shed at the back of the school field, and the long way also passes the back gate that the team uses to get to the field on weekends when the front of the school is locked. Ben pulls past the field. He sees, in the small light of one PM in mid-August in Texas, that the equipment shed door is open and that Coach Dale's truck is parked behind the shed."
+      "text": "[shot:insert truck]The long way passes the equipment shed at the back of the school field, and the long way also passes the back gate that the team uses to get to the field on weekends when the front of the school is locked. Ben pulls past the field. He sees, in the small light of one PM in mid-August in Texas, that the equipment shed door is open and that Coach Dale's truck is parked behind the shed."
     },
     {
       "t": "narrate",
@@ -630,7 +630,7 @@
     {
       "t": "say",
       "char": "Ben",
-      "text": "Yeah.",
+      "text": "[shot:closeup person]Yeah.",
       "expr": "neutral"
     },
     {
@@ -670,7 +670,7 @@
     {
       "t": "say",
       "char": "Coach Dale",
-      "text": "Coach K mentioned something to me yesterday.",
+      "text": "[shot:closeup person_b]Coach K mentioned something to me yesterday.",
       "expr": "neutral"
     },
     {
@@ -718,7 +718,7 @@
     {
       "t": "say",
       "char": "Ben",
-      "text": "Yeah.",
+      "text": "[shot:closeup person]Yeah.",
       "expr": "neutral"
     },
     {
@@ -744,7 +744,7 @@
     {
       "t": "say",
       "char": "Coach Dale",
-      "text": "Okay.",
+      "text": "[shot:closeup person_b]Okay.",
       "expr": "neutral"
     },
     {
@@ -772,7 +772,7 @@
     {
       "t": "say",
       "char": "Ben",
-      "text": "Why are you telling me.",
+      "text": "[shot:closeup person]Why are you telling me.",
       "expr": "neutral"
     },
     {
@@ -834,7 +834,7 @@
     {
       "t": "say",
       "char": "Coach Dale",
-      "text": "I know you're not.",
+      "text": "[shot:closeup person_b]I know you're not.",
       "expr": "neutral"
     },
     {
@@ -860,7 +860,7 @@
     {
       "t": "say",
       "char": "Ben",
-      "text": "Thank you, Coach.",
+      "text": "[shot:closeup person]Thank you, Coach.",
       "expr": "neutral"
     },
     {
@@ -900,7 +900,7 @@
     {
       "t": "say",
       "char": "Coach Dale",
-      "text": "Eileen. She has, this summer, been to one practice — the first one, in early July. She has not been able to come to the others. The doctor told her in June she could come back to ordinary things by August. Tomorrow is the first ordinary thing. She is going to be in the bleachers. Third row, behind the home bench. I am telling you so that, when you see her there, you are not, in your head, thinking who is that. You are knowing. The knowing — the knowing is, again, only for you. You are not going to look up at her. You are not going to acknowledge her. She does not, by her own preference, want to be a thing tomorrow. She wants to sit in the third row and watch her husband do his work for the first time in five months. You are going to play your game. The fact of her being there is — is the chapter that is closing. You having known about it tomorrow is the thing I am giving you because you, on Tuesday, gave Coach K the thing he had not asked for.",
+      "text": "[shot:closeup person_b]Eileen. She has, this summer, been to one practice — the first one, in early July. She has not been able to come to the others. The doctor told her in June she could come back to ordinary things by August. Tomorrow is the first ordinary thing. She is going to be in the bleachers. Third row, behind the home bench. I am telling you so that, when you see her there, you are not, in your head, thinking who is that. You are knowing. The knowing — the knowing is, again, only for you. You are not going to look up at her. You are not going to acknowledge her. She does not, by her own preference, want to be a thing tomorrow. She wants to sit in the third row and watch her husband do his work for the first time in five months. You are going to play your game. The fact of her being there is — is the chapter that is closing. You having known about it tomorrow is the thing I am giving you because you, on Tuesday, gave Coach K the thing he had not asked for.",
       "expr": "neutral"
     },
     {

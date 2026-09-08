@@ -72,7 +72,7 @@
     {
       "t": "say",
       "char": "Sam",
-      "text": "I don't remember that.",
+      "text": "[shot:closeup person]I don't remember that.",
       "expr": "neutral"
     },
     {
@@ -107,7 +107,7 @@
     },
     {
       "t": "narrate",
-      "text": "She gets out of the truck."
+      "text": "[shot:insert truck]She gets out of the truck."
     },
     {
       "t": "narrate",
@@ -156,7 +156,7 @@
     {
       "t": "say",
       "char": "Chief Miller",
-      "text": "Ken died in September of 2016. Heart attack. He was sixty-one. NexCorp came to me — a man in a suit, not the man I have been dealing with this past year, an earlier man — and offered me Chief. He offered me three things. One: a forty percent raise. Two: the same payroll arrangement, with NexCorp covering the PSA's books. Three: he said, very quietly, that there would be — favors — that I would be asked to perform from time to time, and that I would be told what they were when they came up, and that I would be told I had a choice but that the choice would not, practically, be a choice. He said this to me in the parking lot of the substation on Gallatin at eleven PM on a Thursday. I drove home. I sat in the driveway for two hours. I went inside. Your mother asked what was wrong. I told her — I told her about the raise. I did not tell her about the favors. I took the job. The first favor came in March of 2017.",
+      "text": "[shot:closeup person]Ken died in September of 2016. Heart attack. He was sixty-one. NexCorp came to me — a man in a suit, not the man I have been dealing with this past year, an earlier man — and offered me Chief. He offered me three things. One: a forty percent raise. Two: the same payroll arrangement, with NexCorp covering the PSA's books. Three: he said, very quietly, that there would be — favors — that I would be asked to perform from time to time, and that I would be told what they were when they came up, and that I would be told I had a choice but that the choice would not, practically, be a choice. He said this to me in the parking lot of the substation on Gallatin at eleven PM on a Thursday. I drove home. I sat in the driveway for two hours. I went inside. Your mother asked what was wrong. I told her — I told her about the raise. I did not tell her about the favors. I took the job. The first favor came in March of 2017.",
       "expr": "neutral"
     },
     {
@@ -208,7 +208,7 @@
     {
       "t": "say",
       "char": "Chief Miller",
-      "text": "Sammy. How.",
+      "text": "[shot:closeup person]Sammy. How.",
       "expr": "surprised"
     },
     {
@@ -250,7 +250,7 @@
     {
       "t": "say",
       "char": "Sam",
-      "text": "When did you — when did you decide.",
+      "text": "[shot:closeup person_b]When did you — when did you decide.",
       "expr": "thinking"
     },
     {
@@ -276,7 +276,7 @@
     {
       "t": "say",
       "char": "Chief Miller",
-      "text": "Yeah.",
+      "text": "[shot:closeup person]Yeah.",
       "expr": "neutral"
     },
     {
@@ -302,7 +302,7 @@
     {
       "t": "say",
       "char": "Sam",
-      "text": "Okay.",
+      "text": "[shot:closeup person_b]Okay.",
       "expr": "neutral"
     },
     {

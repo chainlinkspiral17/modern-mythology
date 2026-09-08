@@ -82,7 +82,7 @@
     {
       "t": "say",
       "char": "Em",
-      "text": "Bridge?",
+      "text": "[shot:closeup person]Bridge?",
       "expr": "neutral"
     },
     {
@@ -162,7 +162,7 @@
     {
       "t": "say",
       "char": "Nate",
-      "text": "Yeah.",
+      "text": "[shot:closeup person_b]Yeah.",
       "expr": "neutral"
     },
     {
@@ -198,7 +198,7 @@
     {
       "t": "say",
       "char": "Carl",
-      "text": "That's the song.",
+      "text": "[shot:closeup person]That's the song.",
       "expr": "neutral"
     },
     {
@@ -228,7 +228,7 @@
     {
       "t": "say",
       "char": "Jesse",
-      "text": "Yeah.",
+      "text": "[shot:closeup person_b]Yeah.",
       "expr": "neutral"
     },
     {
@@ -340,7 +340,7 @@
     {
       "t": "say",
       "char": "Jesse",
-      "text": "Thanks.",
+      "text": "[shot:closeup person]Thanks.",
       "expr": "neutral"
     },
     {
@@ -494,7 +494,7 @@
     {
       "t": "say",
       "char": "Jesse",
-      "text": "Okay.",
+      "text": "[shot:closeup person]Okay.",
       "expr": "neutral"
     },
     {
@@ -524,7 +524,7 @@
     {
       "t": "say",
       "char": "Chess",
-      "text": "Yeah?",
+      "text": "[shot:closeup person_b]Yeah?",
       "expr": "neutral"
     },
     {
@@ -550,7 +550,7 @@
     {
       "t": "say",
       "char": "Jesse",
-      "text": "Yeah. That's — that's clean now.",
+      "text": "[shot:closeup person]Yeah. That's — that's clean now.",
       "expr": "neutral"
     },
     {
@@ -646,7 +646,7 @@
     {
       "t": "say",
       "char": "Jesse",
-      "text": "I can stay for a while. I can't stay all night — I have an early thing tomorrow morning.",
+      "text": "[shot:closeup person]I can stay for a while. I can't stay all night — I have an early thing tomorrow morning.",
       "expr": "neutral"
     },
     {
@@ -686,7 +686,7 @@
     {
       "t": "say",
       "char": "Chess",
-      "text": "Yeah. He's right. Cut it.",
+      "text": "[shot:closeup person_b]Yeah. He's right. Cut it.",
       "expr": "neutral"
     },
     {
@@ -712,7 +712,7 @@
     {
       "t": "say",
       "char": "Jesse",
-      "text": "I have no idea what to do with that one. I don't know what the song is doing.",
+      "text": "[shot:closeup person]I have no idea what to do with that one. I don't know what the song is doing.",
       "expr": "neutral"
     },
     {
@@ -740,7 +740,7 @@
     {
       "t": "say",
       "char": "Chess",
-      "text": "About forty minutes in. Right before the closing run.",
+      "text": "[shot:closeup person_b]About forty minutes in. Right before the closing run.",
       "expr": "neutral"
     },
     {
@@ -772,7 +772,7 @@
     {
       "t": "say",
       "char": "Jesse",
-      "text": "Yeah. I'm — I'm in a band. We — we've been working on set order this week.",
+      "text": "[shot:closeup person]Yeah. I'm — I'm in a band. We — we've been working on set order this week.",
       "expr": "neutral"
     },
     {
@@ -802,7 +802,7 @@
     {
       "t": "say",
       "char": "Chess",
-      "text": "Why is the new one second.",
+      "text": "[shot:closeup person_b]Why is the new one second.",
       "expr": "neutral"
     },
     {

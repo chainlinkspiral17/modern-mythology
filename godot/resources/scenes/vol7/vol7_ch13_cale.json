@@ -43,7 +43,7 @@
       "t": "narrate"
     },
     {
-      "text": "He came up through the alders into the Sitka stand and came around the last shoulder and the cabin was where it was. Two trucks and a wagon in the clearing. Finn's Toyota with the crow on the dashboard. Kai's truck. Tem's wagon. Per's old Buick at an angle on the porch side. Cale parked behind Tem's wagon.",
+      "text": "[shot:insert crow]He came up through the alders into the Sitka stand and came around the last shoulder and the cabin was where it was. Two trucks and a wagon in the clearing. Finn's Toyota with the crow on the dashboard. Kai's truck. Tem's wagon. Per's old Buick at an angle on the porch side. Cale parked behind Tem's wagon.",
       "t": "narrate"
     },
     {
@@ -78,7 +78,7 @@
     },
     {
       "char": "tem",
-      "text": "Came in this morning. I found it at six on the rail. I have been looking at it on and off all day. I do not know who put it there. I have been at the cabin all day. The crow has been at Finn's and at the headland and at Lena's and at Kai's and is now on Finn's dashboard. The crow did not put it there.",
+      "text": "[shot:closeup person]Came in this morning. I found it at six on the rail. I have been looking at it on and off all day. I do not know who put it there. I have been at the cabin all day. The crow has been at Finn's and at the headland and at Lena's and at Kai's and is now on Finn's dashboard. The crow did not put it there.",
       "expr": "neutral",
       "t": "say"
     },
@@ -110,7 +110,7 @@
     },
     {
       "char": "cale",
-      "text": "Eddvard did not carve this.",
+      "text": "[shot:closeup person_b]Eddvard did not carve this.",
       "t": "say"
     },
     {
@@ -143,7 +143,7 @@
     },
     {
       "char": "tem",
-      "text": "Three. Olaf's hand on the bowl Kai brought out of Kestrel Mountain yesterday. Olaf's hand on a piece of yellow-grained wood the crow brought Finn overnight. And Eddvard's hand on this. The carver was Eddvard. Eddvard died ten years ago. The cedar is, by what I can read, less than a week old. Come inside.",
+      "text": "[shot:closeup person]Three. Olaf's hand on the bowl Kai brought out of Kestrel Mountain yesterday. Olaf's hand on a piece of yellow-grained wood the crow brought Finn overnight. And Eddvard's hand on this. The carver was Eddvard. Eddvard died ten years ago. The cedar is, by what I can read, less than a week old. Come inside.",
       "expr": "serious",
       "t": "say"
     },
@@ -291,7 +291,7 @@
     },
     {
       "char": "tem",
-      "text": "No. You said it when the time was right to say it. You said it now. The saying-sooner would not have helped. The saying-now is what helps.",
+      "text": "[shot:closeup person]No. You said it when the time was right to say it. You said it now. The saying-sooner would not have helped. The saying-now is what helps.",
       "expr": "serious",
       "t": "say"
     },
@@ -319,7 +319,7 @@
     },
     {
       "char": "cale",
-      "text": "Yeah.",
+      "text": "[shot:closeup person_b]Yeah.",
       "expr": "serious",
       "t": "say"
     },
@@ -349,7 +349,7 @@
     },
     {
       "char": "per",
-      "text": "Yes.",
+      "text": "[shot:closeup person]Yes.",
       "expr": "neutral",
       "t": "say"
     },

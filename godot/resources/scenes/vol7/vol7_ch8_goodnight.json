@@ -51,7 +51,7 @@
    "t": "say",
    "char": "Kai",
    "expr": "warm",
-   "text": "\"Finn. You're not. You haven't slept since Friday. You're saying you're fine because you don't know how to say you're not.\""
+   "text": "[shot:closeup person]\"Finn. You're not. You haven't slept since Friday. You're saying you're fine because you don't know how to say you're not.\""
   },
   {
    "t": "narrate",

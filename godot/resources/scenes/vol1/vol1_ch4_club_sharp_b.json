@@ -56,7 +56,7 @@
    "t": "say",
    "char": "Joan",
    "expr": "neutral",
-   "text": "I've got my own hero's journey to complete. So stop making eyes at me — the both of you."
+   "text": "[shot:closeup person]I've got my own hero's journey to complete. So stop making eyes at me — the both of you."
   },
   {
    "t": "narrate",
@@ -95,7 +95,7 @@
    "t": "say",
    "char": "Faust",
    "expr": "neutral",
-   "text": "Can I see you again tomorrow?"
+   "text": "[shot:closeup person_b]Can I see you again tomorrow?"
   },
   {
    "t": "say",
@@ -124,7 +124,7 @@
    "char": "Dickens Dean",
    "role": "Antagonist",
    "expr": "neutral",
-   "text": "A loyal man. We'll see you again. You won't have to find us."
+   "text": "[shot:closeup person]A loyal man. We'll see you again. You won't have to find us."
   },
   {
    "t": "flag",

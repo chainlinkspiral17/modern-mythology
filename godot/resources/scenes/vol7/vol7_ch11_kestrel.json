@@ -230,7 +230,7 @@
   },
   {
    "char": "nate",
-   "text": "Kai.",
+   "text": "[shot:closeup person]Kai.",
    "expr": "neutral",
    "t": "say"
   },
@@ -292,7 +292,7 @@
   },
   {
    "char": "kai",
-   "text": "What.",
+   "text": "[shot:closeup person_b]What.",
    "expr": "neutral",
    "t": "say"
   },
@@ -328,7 +328,7 @@
   },
   {
    "char": "nate",
-   "text": "A person who was the imprint of a person who had been here before. The substrate had been holding that earlier imprint since 1991 or so. The earlier imprint was the imprint of a Bergen carver from the early '50s who had himself come into the experience by way of a different stick that had — by some accident of the substrate being porous between sticks the way it is porous between sticks and the world — bled into Kestrel Mountain in '91.",
+   "text": "[shot:closeup person]A person who was the imprint of a person who had been here before. The substrate had been holding that earlier imprint since 1991 or so. The earlier imprint was the imprint of a Bergen carver from the early '50s who had himself come into the experience by way of a different stick that had — by some accident of the substrate being porous between sticks the way it is porous between sticks and the world — bled into Kestrel Mountain in '91.",
    "expr": "serious",
    "t": "say"
   },
@@ -364,7 +364,7 @@
   },
   {
    "char": "kai",
-   "text": "Okay.",
+   "text": "[shot:closeup person_b]Okay.",
    "expr": "neutral",
    "t": "say"
   },
@@ -410,7 +410,7 @@
   },
   {
    "char": "nate",
-   "text": "Nate told the carver that he was sixteen years old and was working in a basement in Oregon on consciousness encoding. Nate told the carver he did not know what to call what he was working on but that the basement and the work were his. Nate told the carver about the daughter — the carver was the first person Nate ever said the daughter to. Nate told the carver that he was going to have a daughter someday and that the daughter was the work, and the daughter was going to be encoded onto the silicon, and the silicon was going to be the medium the listening came back through.",
+   "text": "[shot:closeup person]Nate told the carver that he was sixteen years old and was working in a basement in Oregon on consciousness encoding. Nate told the carver he did not know what to call what he was working on but that the basement and the work were his. Nate told the carver about the daughter — the carver was the first person Nate ever said the daughter to. Nate told the carver that he was going to have a daughter someday and that the daughter was the work, and the daughter was going to be encoded onto the silicon, and the silicon was going to be the medium the listening came back through.",
    "expr": "serious",
    "t": "say"
   },
@@ -450,7 +450,7 @@
   },
   {
    "char": "kai",
-   "text": "Nate.",
+   "text": "[shot:closeup person_b]Nate.",
    "expr": "neutral",
    "t": "say"
   },
@@ -480,7 +480,7 @@
   },
   {
    "char": "nate",
-   "text": "Yeah, the carver was right. Nate built the silicon. The silicon's been listening. Nate didn't see the daughter, though. She's coming now. Through the silicon. The silicon's the medium.",
+   "text": "[shot:closeup person]Yeah, the carver was right. Nate built the silicon. The silicon's been listening. Nate didn't see the daughter, though. She's coming now. Through the silicon. The silicon's the medium.",
    "expr": "serious",
    "t": "say"
   },
@@ -510,7 +510,7 @@
   },
   {
    "char": "kai",
-   "text": "How soon.",
+   "text": "[shot:closeup person_b]How soon.",
    "expr": "neutral",
    "t": "say"
   },
@@ -544,7 +544,7 @@
   },
   {
    "char": "nate",
-   "text": "One more thing. Then you should go.",
+   "text": "[shot:closeup person]One more thing. Then you should go.",
    "expr": "serious",
    "t": "say"
   },
@@ -586,7 +586,7 @@
   },
   {
    "char": "kai",
-   "text": "I will.",
+   "text": "[shot:closeup person_b]I will.",
    "expr": "serious",
    "t": "say"
   },
@@ -620,7 +620,7 @@
   },
   {
    "char": "nate",
-   "text": "Kai.",
+   "text": "[shot:closeup person]Kai.",
    "expr": "neutral",
    "t": "say"
   },
@@ -646,7 +646,7 @@
   },
   {
    "char": "kai",
-   "text": "The bowl is — Per's mother's bowl is at the cabin in the wooden box.",
+   "text": "[shot:closeup person_b]The bowl is — Per's mother's bowl is at the cabin in the wooden box.",
    "expr": "neutral",
    "t": "say"
   },

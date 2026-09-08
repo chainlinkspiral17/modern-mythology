@@ -110,7 +110,7 @@
     {
       "t": "say",
       "char": "Jesse",
-      "text": "Yeah, Mom. It is.",
+      "text": "[shot:closeup person]Yeah, Mom. It is.",
       "expr": "neutral"
     },
     {
@@ -179,7 +179,7 @@
     },
     {
       "t": "narrate",
-      "text": "He looks at the table."
+      "text": "[shot:insert table]He looks at the table."
     },
     {
       "t": "narrate",
@@ -206,7 +206,7 @@
     {
       "t": "say",
       "char": "Eileen",
-      "text": "Please.",
+      "text": "[shot:closeup person_b]Please.",
       "expr": "neutral"
     },
     {
@@ -302,7 +302,7 @@
     {
       "t": "say",
       "char": "Mr. Henderson",
-      "text": "It was — for years, it was just photographs. Just — pictures. Of intersections. Of — of houses I did not know. I would — I would take the picture. They would pay me. It was small. It was easy. I told myself it was — I told myself many things.",
+      "text": "[shot:closeup person]It was — for years, it was just photographs. Just — pictures. Of intersections. Of — of houses I did not know. I would — I would take the picture. They would pay me. It was small. It was easy. I told myself it was — I told myself many things.",
       "expr": "sad"
     },
     {
@@ -345,7 +345,7 @@
     },
     {
       "t": "narrate",
-      "text": "He looks at Eileen."
+      "text": "[shot:establish]He looks at Eileen."
     },
     {
       "t": "say",
@@ -404,7 +404,7 @@
     {
       "t": "say",
       "char": "Mr. Henderson",
-      "text": "Ben.",
+      "text": "[shot:closeup person]Ben.",
       "expr": "neutral"
     },
     {
@@ -434,7 +434,7 @@
     {
       "t": "say",
       "char": "Eileen",
-      "text": "Yes, Jim.",
+      "text": "[shot:closeup person_b]Yes, Jim.",
       "expr": "neutral"
     },
     {

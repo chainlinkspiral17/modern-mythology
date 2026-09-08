@@ -63,7 +63,7 @@
     },
     {
       "char": "jameson",
-      "text": "Kai. This is Mateo. He's my cousin. He's down from Newport for the week. The other guy is Hannes. He's just here. Hannes, Kai. Mateo, Kai.",
+      "text": "[shot:closeup person]Kai. This is Mateo. He's my cousin. He's down from Newport for the week. The other guy is Hannes. He's just here. Hannes, Kai. Mateo, Kai.",
       "expr": "neutral",
       "t": "say"
     },
@@ -119,7 +119,7 @@
     },
     {
       "char": "kai",
-      "text": "The bus broke it.",
+      "text": "[shot:closeup person_b]The bus broke it.",
       "expr": "neutral",
       "t": "say"
     },
@@ -175,7 +175,7 @@
     },
     {
       "char": "mateo",
-      "text": "I'll tell him.",
+      "text": "[shot:closeup person]I'll tell him.",
       "expr": "neutral",
       "t": "say"
     },
@@ -229,7 +229,7 @@
     },
     {
       "char": "kai",
-      "text": "I'm not in trouble, Hans.",
+      "text": "[shot:closeup person_b]I'm not in trouble, Hans.",
       "expr": "neutral",
       "t": "say"
     },
@@ -398,7 +398,7 @@
       "t": "say"
     },
     {
-      "text": "Hans rubbed his hand on the apron. The flour came off in a small streak.",
+      "text": "[shot:establish]Hans rubbed his hand on the apron. The flour came off in a small streak.",
       "t": "narrate"
     },
     {
@@ -427,7 +427,7 @@
     },
     {
       "char": "kai",
-      "text": "Why doesn't he come?",
+      "text": "[shot:closeup person_b]Why doesn't he come?",
       "expr": "neutral",
       "t": "say"
     },
@@ -503,7 +503,7 @@
     },
     {
       "char": "soren",
-      "text": "Kai. What.",
+      "text": "[shot:closeup person]Kai. What.",
       "expr": "neutral",
       "t": "say"
     },
@@ -533,7 +533,7 @@
     },
     {
       "char": "kai",
-      "text": "You want me to bring you soup from somewhere.",
+      "text": "[shot:closeup person_b]You want me to bring you soup from somewhere.",
       "expr": "neutral",
       "t": "say"
     },
@@ -567,7 +567,7 @@
     },
     {
       "char": "soren",
-      "text": "You don't look it.",
+      "text": "[shot:closeup person]You don't look it.",
       "expr": "neutral",
       "t": "say"
     },

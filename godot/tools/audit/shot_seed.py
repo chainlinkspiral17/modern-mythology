@@ -117,9 +117,13 @@ def plan(path):
         # frames nothing named is not a shot to seed
         inserts = {m[len("shot_insert_"):]: m for m in markers if m.startswith("shot_insert_")
                    and SM.object_exists(loc_name, m[len("shot_insert_"):]) is not False}
-        return establishes, closeups, inserts, {k: words_for(k) for k in inserts}
+        # the room's GENERIC closeup pair (marker_author --closeup / -b):
+        # a bust frame of the conversation spot and its reverse. A room
+        # with no marker for this character still has a face to cut to.
+        generic = [c for c in ("person", "person_b") if c in closeups]
+        return establishes, closeups, inserts, {k: words_for(k) for k in inserts}, generic
 
-    establishes, closeups, inserts, insert_words = vocabulary(markers, locale)
+    establishes, closeups, inserts, insert_words, generic = vocabulary(markers, locale)
 
     edits = []                       # (node index, cue string)
     existing = 0
@@ -128,6 +132,10 @@ def plan(path):
     last_closeup = None
     last_insert_at = {}
     est_i = 0
+    # each speaker OWNS a side of the room for the length of a scene (the
+    # film rule — don't cross the line): the first speaker takes the
+    # generic frame, the second its reverse, and they alternate from there
+    speaker_side = {}
     for i, nd in enumerate(nodes):
         t = nd.get("t")
         text = nd.get("text") if isinstance(nd.get("text"), str) else None
@@ -137,8 +145,9 @@ def plan(path):
             _loc, mk = locale_markers(str(nd.get("src", "")))
             # ALWAYS swap — a locale with no markers has an empty
             # vocabulary (only the preset wide), never the last one's
-            establishes, closeups, inserts, insert_words = vocabulary(mk or [], _loc or "")
+            establishes, closeups, inserts, insert_words, generic = vocabulary(mk or [], _loc or "")
             last_insert_at = {}
+            speaker_side = {}
             est_i = 0
             current = "establish"
             last_cue = i
@@ -166,6 +175,18 @@ def plan(path):
                 current = "closeup"
                 last_closeup = ch
                 continue
+            if generic and ch and ch != last_closeup and i - last_cue >= MIN_GAP_CLOSEUP:
+                side = speaker_side.get(ch)
+                if side is None:
+                    side = generic[len(speaker_side) % len(generic)]
+                    speaker_side[ch] = side
+                # a cut to the frame we are already on is not a cut
+                if side != speaker_side.get(last_closeup, None):
+                    edits.append((i, "[shot:closeup %s]" % side))
+                    last_cue = i
+                    current = "closeup"
+                    last_closeup = ch
+                    continue
         if t == "narrate" and text is not None:
             body = strip_directives(text)
             hit = None

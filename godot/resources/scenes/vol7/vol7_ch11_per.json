@@ -84,7 +84,7 @@
     },
     {
       "char": "per",
-      "text": "They built this cabin together in '79 when my father was forty-one and Eddvard was fifty-two. I came up here with my father seven times in '79 and '80 to help with the build. I was nineteen. I was at Oregon State. I came up on the weekends I was home. I knew the place when it was studs.",
+      "text": "[shot:closeup person]They built this cabin together in '79 when my father was forty-one and Eddvard was fifty-two. I came up here with my father seven times in '79 and '80 to help with the build. I was nineteen. I was at Oregon State. I came up on the weekends I was home. I knew the place when it was studs.",
       "expr": "neutral",
       "t": "say"
     },
@@ -228,7 +228,7 @@
     },
     {
       "char": "tem",
-      "text": "Per.",
+      "text": "[shot:closeup person_b]Per.",
       "expr": "serious",
       "t": "say"
     },
@@ -262,7 +262,7 @@
     },
     {
       "char": "per",
-      "text": "My grandfather did not write them.",
+      "text": "[shot:closeup person]My grandfather did not write them.",
       "expr": "neutral",
       "t": "say"
     },
@@ -308,7 +308,7 @@
     },
     {
       "char": "tem",
-      "text": "Per. The uncle in Switzerland. What was his name.",
+      "text": "[shot:closeup person_b]Per. The uncle in Switzerland. What was his name.",
       "expr": "neutral",
       "t": "say"
     },
@@ -354,7 +354,7 @@
     },
     {
       "char": "per",
-      "text": "Hans's brother — by what Hans told me when I was about twenty-five and Hans had been our family's baker for some years and the conversation had come around to Hans's relatives, by what Hans said in passing on a Saturday morning at the bakery — Hans's brother was the son of the printer who had been sending my father the books.",
+      "text": "[shot:closeup person]Hans's brother — by what Hans told me when I was about twenty-five and Hans had been our family's baker for some years and the conversation had come around to Hans's relatives, by what Hans said in passing on a Saturday morning at the bakery — Hans's brother was the son of the printer who had been sending my father the books.",
       "expr": "serious",
       "t": "say"
     },
@@ -388,7 +388,7 @@
     },
     {
       "char": "tem",
-      "text": "Hans has known you fifty years.",
+      "text": "[shot:closeup person_b]Hans has known you fifty years.",
       "expr": "serious",
       "t": "say"
     },
@@ -428,7 +428,7 @@
     },
     {
       "char": "per",
-      "text": "Yes.",
+      "text": "[shot:closeup person]Yes.",
       "expr": "neutral",
       "t": "say"
     },
@@ -470,7 +470,7 @@
     },
     {
       "char": "tem",
-      "text": "Per.",
+      "text": "[shot:closeup person_b]Per.",
       "expr": "neutral",
       "t": "say"
     },
@@ -500,7 +500,7 @@
     },
     {
       "char": "per",
-      "text": "I know you are.",
+      "text": "[shot:closeup person]I know you are.",
       "expr": "neutral",
       "t": "say"
     },
@@ -564,7 +564,7 @@
     },
     {
       "char": "tem",
-      "text": "Where.",
+      "text": "[shot:closeup person_b]Where.",
       "expr": "neutral",
       "t": "say"
     },
@@ -628,7 +628,7 @@
     },
     {
       "char": "per",
-      "text": "Tem.",
+      "text": "[shot:closeup person]Tem.",
       "expr": "serious",
       "t": "say"
     },
@@ -658,7 +658,7 @@
     },
     {
       "char": "tem",
-      "text": "Yes.",
+      "text": "[shot:closeup person_b]Yes.",
       "expr": "neutral",
       "t": "say"
     },
@@ -688,7 +688,7 @@
     },
     {
       "char": "per",
-      "text": "The foundation has been — by what your figuring out is — sending the granddaughter to this town as the eye on what is happening in this town.",
+      "text": "[shot:closeup person]The foundation has been — by what your figuring out is — sending the granddaughter to this town as the eye on what is happening in this town.",
       "expr": "serious",
       "t": "say"
     },
@@ -718,7 +718,7 @@
     },
     {
       "char": "tem",
-      "text": "The June visit I figured out from a credit-card receipt in a folder my mother in Eugene mailed me last month. The granddaughter has not, on any of those three visits, contacted any of the four of us. The granddaughter has been — by the foundation's standard practice for the kind of watching they do — watching at a distance. She has not approached because she has not, by what I have read in the papers about how the foundation operates, been ordered to approach.",
+      "text": "[shot:closeup person_b]The June visit I figured out from a credit-card receipt in a folder my mother in Eugene mailed me last month. The granddaughter has not, on any of those three visits, contacted any of the four of us. The granddaughter has been — by the foundation's standard practice for the kind of watching they do — watching at a distance. She has not approached because she has not, by what I have read in the papers about how the foundation operates, been ordered to approach.",
       "expr": "serious",
       "t": "say"
     },

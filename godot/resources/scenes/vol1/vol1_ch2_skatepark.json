@@ -57,7 +57,7 @@
    "t": "say",
    "char": "Faust",
    "expr": "neutral",
-   "text": "Fun just to imagine how the world could be."
+   "text": "[shot:closeup person]Fun just to imagine how the world could be."
   },
   {
    "t": "say",
@@ -87,7 +87,7 @@
    "t": "say",
    "char": "Wagner",
    "expr": "neutral",
-   "text": "Not so bad. Giving me hope for the future."
+   "text": "[shot:closeup person_b]Not so bad. Giving me hope for the future."
   },
   {
    "t": "say",
@@ -117,7 +117,7 @@
    "t": "say",
    "char": "Faust",
    "expr": "neutral",
-   "text": "Break tailbone later."
+   "text": "[shot:closeup person]Break tailbone later."
   },
   {
    "t": "say",
@@ -167,7 +167,7 @@
    "t": "say",
    "char": "Wagner",
    "expr": "neutral",
-   "text": "This here is the shit."
+   "text": "[shot:closeup person]This here is the shit."
   },
   {
    "t": "say",
@@ -197,7 +197,7 @@
    "t": "say",
    "char": "Faust",
    "expr": "neutral",
-   "text": "We need to get a good crew. Take the longboat out tonight. Prowl uncertain waters."
+   "text": "[shot:closeup person_b]We need to get a good crew. Take the longboat out tonight. Prowl uncertain waters."
   },
   {
    "t": "say",

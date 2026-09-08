@@ -66,7 +66,7 @@
     {
       "t": "say",
       "char": "Claire",
-      "text": "You too, Frasier.",
+      "text": "[shot:closeup person]You too, Frasier.",
       "expr": "happy"
     },
     {
@@ -152,7 +152,7 @@
     {
       "t": "say",
       "char": "Frasier Temple",
-      "text": "Tomé arrives at zero seven thirty-three. By the time he arrives, the van is yours. He sees the van still there but he sees Vince gone and a different man — your partner — at the wheel. He'll hesitate. Claire, this is the thing I need you to do. You go to Tomé. You get in his car. You ask him to drive you to the truck stop on the next exit. You pay him, in cash, two hundred dollars, for the ride. You tell him there's been a change of plans and his services aren't needed today. You ride with him to the next exit. You get out. You walk away. You tip him another hundred. He is not, in any meaningful sense, your enemy. He just doesn't want to be standing next to a van full of trouble. Pay him to leave. He will leave.",
+      "text": "[shot:closeup person_b]Tomé arrives at zero seven thirty-three. By the time he arrives, the van is yours. He sees the van still there but he sees Vince gone and a different man — your partner — at the wheel. He'll hesitate. Claire, this is the thing I need you to do. You go to Tomé. You get in his car. You ask him to drive you to the truck stop on the next exit. You pay him, in cash, two hundred dollars, for the ride. You tell him there's been a change of plans and his services aren't needed today. You ride with him to the next exit. You get out. You walk away. You tip him another hundred. He is not, in any meaningful sense, your enemy. He just doesn't want to be standing next to a van full of trouble. Pay him to leave. He will leave.",
       "expr": "neutral"
     },
     {
@@ -182,7 +182,7 @@
     {
       "t": "say",
       "char": "Claire",
-      "text": "Where's the safehouse.",
+      "text": "[shot:closeup person]Where's the safehouse.",
       "expr": "neutral"
     },
     {
@@ -236,7 +236,7 @@
     {
       "t": "say",
       "char": "Frasier Temple",
-      "text": "Through the water supply. Yes. We were going to do something more — invasive — but we decided this would be sufficient and ethically cleaner.",
+      "text": "[shot:closeup person_b]Through the water supply. Yes. We were going to do something more — invasive — but we decided this would be sufficient and ethically cleaner.",
       "expr": "neutral"
     },
     {

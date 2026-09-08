@@ -177,7 +177,7 @@
     },
     {
       "char": "tem",
-      "text": "Yes.",
+      "text": "[shot:closeup person]Yes.",
       "t": "say"
     },
     {
@@ -216,7 +216,7 @@
     },
     {
       "char": "roy",
-      "text": "She has not — by what I have known of my bowl in twenty-one years, by what I have known of the carved young woman in my bowl who has been on the cedar facing the doorframe with her hand on the door — she has not, in those twenty-one years, walked through the doorframe.",
+      "text": "[shot:closeup person_b]She has not — by what I have known of my bowl in twenty-one years, by what I have known of the carved young woman in my bowl who has been on the cedar facing the doorframe with her hand on the door — she has not, in those twenty-one years, walked through the doorframe.",
       "t": "say"
     },
     {
@@ -246,7 +246,7 @@
     },
     {
       "char": "hans",
-      "text": "The bowls are arriving at the configuration they have been waiting to arrive at for a hundred and twenty years.",
+      "text": "[shot:closeup person]The bowls are arriving at the configuration they have been waiting to arrive at for a hundred and twenty years.",
       "t": "say"
     },
     {

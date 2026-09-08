@@ -85,7 +85,7 @@
   },
   {
    "char": "kai",
-   "text": "Jameson.",
+   "text": "[shot:closeup person]Jameson.",
    "t": "say"
   },
   {
@@ -110,7 +110,7 @@
   },
   {
    "char": "jameson",
-   "text": "He skated it Tuesday afternoon. He skated it Wednesday. He skated it Thursday morning before he went home to Newport. The board held. The repair held.",
+   "text": "[shot:closeup person_b]He skated it Tuesday afternoon. He skated it Wednesday. He skated it Thursday morning before he went home to Newport. The board held. The repair held.",
    "t": "say"
   },
   {
@@ -179,7 +179,7 @@
   },
   {
    "char": "kai",
-   "text": "Jameson.",
+   "text": "[shot:closeup person]Jameson.",
    "t": "say"
   },
   {
@@ -204,7 +204,7 @@
   },
   {
    "char": "jameson",
-   "text": "I asked Lena at the Grind this morning at seven when I came back through the second time. She was at the counter. She made my mom's coffee. I asked her: Lena. The face.",
+   "text": "[shot:closeup person_b]I asked Lena at the Grind this morning at seven when I came back through the second time. She was at the counter. She made my mom's coffee. I asked her: Lena. The face.",
    "t": "say"
   },
   {
@@ -234,7 +234,7 @@
   },
   {
    "char": "kai",
-   "text": "It is.",
+   "text": "[shot:closeup person]It is.",
    "t": "say"
   },
   {
@@ -269,7 +269,7 @@
   },
   {
    "char": "jameson",
-   "text": "Hannes was at the wall this morning. He came up the alley behind me. We stood at the wall together. He did not say anything for the ten minutes.",
+   "text": "[shot:closeup person_b]Hannes was at the wall this morning. He came up the alley behind me. We stood at the wall together. He did not say anything for the ten minutes.",
    "t": "say"
   },
   {
@@ -304,7 +304,7 @@
   },
   {
    "char": "kai",
-   "text": "Yeah. He can come up. Tell him Christmas. The road is hard in the winter. We will pick a day.",
+   "text": "[shot:closeup person]Yeah. He can come up. Tell him Christmas. The road is hard in the winter. We will pick a day.",
    "t": "say"
   },
   {

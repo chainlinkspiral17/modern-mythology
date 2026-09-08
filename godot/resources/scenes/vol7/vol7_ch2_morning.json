@@ -131,7 +131,7 @@
     },
     {
       "char": "lena",
-      "text": "Hi, Wren. Hot chocolate?",
+      "text": "[shot:closeup person]Hi, Wren. Hot chocolate?",
       "expr": "neutral",
       "t": "say"
     },
@@ -157,7 +157,7 @@
     },
     {
       "char": "wren",
-      "text": "Thanks.",
+      "text": "[shot:closeup person_b]Thanks.",
       "expr": "neutral",
       "t": "say"
     },
@@ -199,7 +199,7 @@
     },
     {
       "char": "lena",
-      "text": "How is it.",
+      "text": "[shot:closeup person]How is it.",
       "expr": "neutral",
       "t": "say"
     },
@@ -233,7 +233,7 @@
     },
     {
       "char": "wren",
-      "text": "Because of the SCUMM machine at Pizza Pirate.",
+      "text": "[shot:closeup person_b]Because of the SCUMM machine at Pizza Pirate.",
       "expr": "neutral",
       "t": "say"
     },
@@ -275,7 +275,7 @@
     },
     {
       "char": "lena",
-      "text": "Wren.",
+      "text": "[shot:closeup person]Wren.",
       "expr": "serious",
       "t": "say"
     },
@@ -311,7 +311,7 @@
     },
     {
       "char": "wren",
-      "text": "I promise.",
+      "text": "[shot:closeup person_b]I promise.",
       "expr": "neutral",
       "t": "say"
     },
@@ -341,7 +341,7 @@
     },
     {
       "char": "lena",
-      "text": "Good.",
+      "text": "[shot:closeup person]Good.",
       "expr": "neutral",
       "t": "say"
     },
@@ -456,7 +456,7 @@
       "t": "say"
     },
     {
-      "text": "Jameson asked if Kai could order him a different one. Kai went to the wall behind the counter where the new decks were. He pulled down a deck from the new Lena run she had finished in March — the Tide Pool Geometries series.",
+      "text": "[shot:insert deck]Jameson asked if Kai could order him a different one. Kai went to the wall behind the counter where the new decks were. He pulled down a deck from the new Lena run she had finished in March — the Tide Pool Geometries series.",
       "t": "narrate"
     },
     {
@@ -489,7 +489,7 @@
     },
     {
       "char": "kai",
-      "text": "Bring me twenty more next week. Take the deck.",
+      "text": "[shot:closeup person]Bring me twenty more next week. Take the deck.",
       "expr": "neutral",
       "t": "say"
     },
@@ -614,7 +614,7 @@
       "t": "narrate"
     },
     {
-      "text": "The voice cut. The static returned briefly. The radio turned itself off.",
+      "text": "[shot:insert radio]The voice cut. The static returned briefly. The radio turned itself off.",
       "t": "narrate"
     },
     {
@@ -709,7 +709,7 @@
     },
     {
       "char": "lena",
-      "text": "I have not heard from Finn since the cabin.",
+      "text": "[shot:closeup person]I have not heard from Finn since the cabin.",
       "expr": "neutral",
       "t": "say"
     },
@@ -749,7 +749,7 @@
     },
     {
       "char": "kai",
-      "text": "The machine told her.",
+      "text": "[shot:closeup person_b]The machine told her.",
       "expr": "serious",
       "t": "say"
     },
@@ -779,7 +779,7 @@
     },
     {
       "char": "lena",
-      "text": "Me either.",
+      "text": "[shot:closeup person]Me either.",
       "expr": "neutral",
       "t": "say"
     },
@@ -847,7 +847,7 @@
     },
     {
       "char": "kai",
-      "text": "Yeah.",
+      "text": "[shot:closeup person_b]Yeah.",
       "expr": "neutral",
       "t": "say"
     },
@@ -877,7 +877,7 @@
     },
     {
       "char": "lena",
-      "text": "Okay.",
+      "text": "[shot:closeup person]Okay.",
       "expr": "neutral",
       "t": "say"
     },

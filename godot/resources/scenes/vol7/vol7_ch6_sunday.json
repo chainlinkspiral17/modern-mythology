@@ -89,7 +89,7 @@
     },
     {
       "char": "lena",
-      "text": "Should I call Cale. He has a truck.",
+      "text": "[shot:closeup person]Should I call Cale. He has a truck.",
       "expr": "neutral",
       "t": "say"
     },

@@ -59,7 +59,7 @@
     {
       "t": "say",
       "char": "Maya",
-      "text": "Stay. Please."
+      "text": "[shot:closeup person]Stay. Please."
     },
     {
       "t": "say",
@@ -138,7 +138,7 @@
     {
       "t": "say",
       "char": "Maya",
-      "text": "Do you know his name."
+      "text": "[shot:closeup person]Do you know his name."
     },
     {
       "t": "say",

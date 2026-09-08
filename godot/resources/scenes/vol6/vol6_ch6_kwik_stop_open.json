@@ -56,7 +56,7 @@
     {
       "t": "say",
       "char": "Sam",
-      "text": "Morning.",
+      "text": "[shot:closeup sam]Morning.",
       "expr": "neutral"
     },
     {

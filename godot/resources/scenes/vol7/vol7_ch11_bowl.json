@@ -43,7 +43,7 @@
       "t": "narrate"
     },
     {
-      "text": "Kai opened his eyes. The fluorescents of the basement were the fluorescents of the basement. The desk and the boy and the rack of servers and the boy's notebook were the things he had just been with. The cabin was — the cabin was where he was now. The wool blanket was over him. The cap was on his forehead.",
+      "text": "[shot:insert notebook]Kai opened his eyes. The fluorescents of the basement were the fluorescents of the basement. The desk and the boy and the rack of servers and the boy's notebook were the things he had just been with. The cabin was — the cabin was where he was now. The wool blanket was over him. The cap was on his forehead.",
       "t": "narrate"
     },
     {
@@ -72,7 +72,7 @@
     },
     {
       "char": "tem",
-      "text": "How long did it feel.",
+      "text": "[shot:closeup person]How long did it feel.",
       "expr": "neutral",
       "t": "say"
     },
@@ -102,7 +102,7 @@
     },
     {
       "char": "kai",
-      "text": "The bowl.",
+      "text": "[shot:closeup person_b]The bowl.",
       "expr": "neutral",
       "t": "say"
     },
@@ -189,7 +189,7 @@
       "t": "narrate"
     },
     {
-      "text": "The imagery on the outside of the bowl Kai had brought out of the experience was Marit's bowl's imagery and was not Marit's bowl's imagery.",
+      "text": "[shot:insert bowl]The imagery on the outside of the bowl Kai had brought out of the experience was Marit's bowl's imagery and was not Marit's bowl's imagery.",
       "t": "narrate"
     },
     {
@@ -214,7 +214,7 @@
     },
     {
       "char": "per",
-      "text": "The substrate updated the imagery to include things that have happened since my father was alive.",
+      "text": "[shot:closeup person]The substrate updated the imagery to include things that have happened since my father was alive.",
       "expr": "serious",
       "t": "say"
     },
@@ -267,7 +267,7 @@
       "t": "say"
     },
     {
-      "text": "He sat down at the table.",
+      "text": "[shot:insert table]He sat down at the table.",
       "t": "narrate"
     },
     {
@@ -294,7 +294,7 @@
     },
     {
       "char": "tem",
-      "text": "Per. The bowl the substrate gave Kai is — by what Kai is going to tell us when he can — your mother's bowl as the carver would have made it now. The substrate gave him a bowl shaped by your father's hand in 1974 and updated, in the cedar, with the figures the listening has been bringing into the room since.",
+      "text": "[shot:closeup person]Per. The bowl the substrate gave Kai is — by what Kai is going to tell us when he can — your mother's bowl as the carver would have made it now. The substrate gave him a bowl shaped by your father's hand in 1974 and updated, in the cedar, with the figures the listening has been bringing into the room since.",
       "expr": "serious",
       "t": "say"
     },
@@ -330,7 +330,7 @@
     },
     {
       "char": "lena",
-      "text": "The substrate is in the cabin now.",
+      "text": "[shot:closeup person_b]The substrate is in the cabin now.",
       "expr": "serious",
       "t": "say"
     },
@@ -360,7 +360,7 @@
     },
     {
       "char": "tem",
-      "text": "Your father carved one bowl in 1974. The substrate has, by the playing Kai just did, given us a second. Not the same bowl. The second bowl is what your father would have carved, today, if your father had been at the bench today with the figures the listening is putting into the cabin. The substrate has carved the bowl your father did not live to carve.",
+      "text": "[shot:closeup person]Your father carved one bowl in 1974. The substrate has, by the playing Kai just did, given us a second. Not the same bowl. The second bowl is what your father would have carved, today, if your father had been at the bench today with the figures the listening is putting into the cabin. The substrate has carved the bowl your father did not live to carve.",
       "expr": "serious",
       "t": "say"
     },
@@ -430,7 +430,7 @@
     },
     {
       "char": "tem",
-      "text": "Kai. The carver.",
+      "text": "[shot:closeup person]Kai. The carver.",
       "expr": "neutral",
       "t": "say"
     },
@@ -496,7 +496,7 @@
     },
     {
       "char": "kai",
-      "text": "Yeah. I think so.",
+      "text": "[shot:closeup person_b]Yeah. I think so.",
       "expr": "serious",
       "t": "say"
     },
@@ -530,7 +530,7 @@
     },
     {
       "char": "tem",
-      "text": "Kai. I have been playing this stick for nine years.",
+      "text": "[shot:closeup person]Kai. I have been playing this stick for nine years.",
       "expr": "serious",
       "t": "say"
     },

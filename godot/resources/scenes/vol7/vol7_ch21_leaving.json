@@ -79,7 +79,7 @@
       "t": "say"
     },
     {
-      "text": "Margaret put her hand on Tem's arm. She held it there for a count. Then she lifted her hand and walked down Hemlock toward Main.",
+      "text": "[shot:insert hand]Margaret put her hand on Tem's arm. She held it there for a count. Then she lifted her hand and walked down Hemlock toward Main.",
       "t": "narrate"
     },
     {
@@ -189,7 +189,7 @@
       "t": "say"
     },
     {
-      "text": "Marina put her hand on Tem's arm — the same hand that had been on her grandfather's bowl at the milk crate twenty minutes ago, the hand that had been opening up across the four days she had been in town from the foundation-administrative grip to something looser, something more like a hand of a woman who had been carrying the work for some time and was, this morning, accepting that she had been carrying it. She held Tem's arm for a count. Then she lifted the hand.",
+      "text": "[shot:insert hand]Marina put her hand on Tem's arm — the same hand that had been on her grandfather's bowl at the milk crate twenty minutes ago, the hand that had been opening up across the four days she had been in town from the foundation-administrative grip to something looser, something more like a hand of a woman who had been carrying the work for some time and was, this morning, accepting that she had been carrying it. She held Tem's arm for a count. Then she lifted the hand.",
       "t": "narrate"
     },
     {
@@ -227,7 +227,7 @@
       "t": "narrate"
     },
     {
-      "text": "Roy had been at Aud's side since the face had closed its eyes. He had Olaus's bowl in the canvas bag at his feet at the wall. He had not, by Tem's read, let his hand off the canvas bag's strap.",
+      "text": "[shot:insert face]Roy had been at Aud's side since the face had closed its eyes. He had Olaus's bowl in the canvas bag at his feet at the wall. He had not, by Tem's read, let his hand off the canvas bag's strap.",
       "t": "narrate"
     },
     {
@@ -276,7 +276,7 @@
       "t": "say"
     },
     {
-      "text": "The two of them walked together down the alley to Aud's car. Roy carried Olaus's bowl in the canvas bag at his side. Aud walked beside him with her hand at his elbow the way she had been walking beside him at the wall. Roy belted the bowl into the passenger seat. He got in the back. Aud drove.",
+      "text": "[shot:insert hand]The two of them walked together down the alley to Aud's car. Roy carried Olaus's bowl in the canvas bag at his side. Aud walked beside him with her hand at his elbow the way she had been walking beside him at the wall. Roy belted the bowl into the passenger seat. He got in the back. Aud drove.",
       "t": "narrate"
     },
     {
@@ -328,7 +328,7 @@
       "t": "say"
     },
     {
-      "text": "Petra walked home up Cedar.",
+      "text": "[shot:insert cedar]Petra walked home up Cedar.",
       "t": "narrate"
     },
     {
@@ -555,7 +555,7 @@
       "t": "say"
     },
     {
-      "text": "She turned to Tem.",
+      "text": "[shot:establish]She turned to Tem.",
       "t": "narrate"
     },
     {

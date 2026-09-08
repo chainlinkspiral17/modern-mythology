@@ -73,7 +73,7 @@
   },
   {
    "t": "narrate",
-   "text": "This is a Coach K thing. Coach K does not, in the morning, perform greetings. He is at five fifty-three doing the work of getting the cart stocked, and his relationship with the cart is the relationship a man has with the physical preparations of his job when he has been doing the job for twenty years and has decided the preparations themselves are, for him, the morning prayer. Ben has, over three weeks, learned not to greet Coach K at the truck. He has learned, instead, to walk past the truck, set his bag down at the end of the player bench by the field gate, and begin his own pre-warmup — the shoulder rolls and the static stretches he has been adding to since the second day without being asked."
+   "text": "[shot:insert bleachers]This is a Coach K thing. Coach K does not, in the morning, perform greetings. He is at five fifty-three doing the work of getting the cart stocked, and his relationship with the cart is the relationship a man has with the physical preparations of his job when he has been doing the job for twenty years and has decided the preparations themselves are, for him, the morning prayer. Ben has, over three weeks, learned not to greet Coach K at the truck. He has learned, instead, to walk past the truck, set his bag down at the end of the player bench by the field gate, and begin his own pre-warmup — the shoulder rolls and the static stretches he has been adding to since the second day without being asked."
   },
   {
    "t": "narrate",
@@ -166,7 +166,7 @@
   {
    "t": "say",
    "char": "Coach K",
-   "text": "Water. Five minutes. Then weights.",
+   "text": "[shot:closeup person]Water. Five minutes. Then weights.",
    "expr": "neutral"
   },
   {
@@ -238,7 +238,7 @@
   {
    "t": "say",
    "char": "Coach K",
-   "text": "Tuck.",
+   "text": "[shot:closeup person]Tuck.",
    "expr": "neutral"
   },
   {
@@ -266,7 +266,7 @@
   {
    "t": "say",
    "char": "Tucker",
-   "text": "My back's tight from the run.",
+   "text": "[shot:closeup person_b]My back's tight from the run.",
    "expr": "neutral"
   },
   {
@@ -290,7 +290,7 @@
   {
    "t": "say",
    "char": "Coach K",
-   "text": "Better. Two more like that. Then you're done with deadlift today.",
+   "text": "[shot:closeup person]Better. Two more like that. Then you're done with deadlift today.",
    "expr": "neutral"
   },
   {
@@ -320,7 +320,7 @@
   {
    "t": "say",
    "char": "Coach K",
-   "text": "Ben. Three more sets at the new weight. Then bench. Eileen made me eggs this morning. I forgot to thank her. You ever forget to thank somebody for a thing they did and have it bother you all morning?",
+   "text": "[shot:closeup person]Ben. Three more sets at the new weight. Then bench. Eileen made me eggs this morning. I forgot to thank her. You ever forget to thank somebody for a thing they did and have it bother you all morning?",
    "expr": "neutral"
   },
   {
@@ -380,7 +380,7 @@
   {
    "t": "say",
    "char": "Pete",
-   "text": "Thanks, man.",
+   "text": "[shot:closeup person]Thanks, man.",
    "expr": "neutral"
   },
   {
@@ -462,7 +462,7 @@
   {
    "t": "say",
    "char": "Coach K",
-   "text": "Okay. You'll have it by Friday. Move out, Marcus is up.",
+   "text": "[shot:closeup person_b]Okay. You'll have it by Friday. Move out, Marcus is up.",
    "expr": "neutral"
   },
   {
@@ -560,7 +560,7 @@
   {
    "t": "say",
    "char": "Ben",
-   "text": "Yeah.",
+   "text": "[shot:closeup person]Yeah.",
    "expr": "neutral"
   },
   {
@@ -599,7 +599,7 @@
   },
   {
    "t": "narrate",
-   "text": "The conditioning at the end is light, a two-lap jog. The team does it in eleven minutes. Coach K, at the infield, does not click the stopwatch this time. Africa is on the cab speakers from the truck across the lot — Coach K had unlocked and opened the truck for the last drill, music as the closing ritual. Ben had registered the song from a hundred yards out."
+   "text": "[shot:insert stopwatch]The conditioning at the end is light, a two-lap jog. The team does it in eleven minutes. Coach K, at the infield, does not click the stopwatch this time. Africa is on the cab speakers from the truck across the lot — Coach K had unlocked and opened the truck for the last drill, music as the closing ritual. Ben had registered the song from a hundred yards out."
   },
   {
    "t": "say",

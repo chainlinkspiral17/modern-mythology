@@ -43,7 +43,7 @@
       "t": "narrate"
     },
     {
-      "text": "She had made coffee in the cabin's cone and had taken a cup to the table where the three bowls were and had sat with them. The cabin had been quiet. Per was asleep in the chair by the wood stove with the wool blanket pulled up to his shoulders. Cale was asleep in the other chair, his head fallen back against the chair's wooden post. Finn was asleep on the floor by the south window. Marina was asleep in the loft above the kitchen. Tem was asleep in the bedroom. Kai was on the daybed with his arm over his eyes.",
+      "text": "[shot:insert bowl]She had made coffee in the cabin's cone and had taken a cup to the table where the three bowls were and had sat with them. The cabin had been quiet. Per was asleep in the chair by the wood stove with the wool blanket pulled up to his shoulders. Cale was asleep in the other chair, his head fallen back against the chair's wooden post. Finn was asleep on the floor by the south window. Marina was asleep in the loft above the kitchen. Tem was asleep in the bedroom. Kai was on the daybed with his arm over his eyes.",
       "t": "narrate"
     },
     {
@@ -96,7 +96,7 @@
     },
     {
       "char": "tem",
-      "text": "What time.",
+      "text": "[shot:closeup person]What time.",
       "expr": "neutral",
       "t": "say"
     },
@@ -126,7 +126,7 @@
     },
     {
       "char": "lena",
-      "text": "Cale's asleep.",
+      "text": "[shot:closeup person_b]Cale's asleep.",
       "expr": "neutral",
       "t": "say"
     },
@@ -180,7 +180,7 @@
     },
     {
       "char": "tem",
-      "text": "You are doing the strokes the count tells you to do. The eyes stay closed.",
+      "text": "[shot:closeup person]You are doing the strokes the count tells you to do. The eyes stay closed.",
       "expr": "serious",
       "t": "say"
     },
@@ -391,7 +391,7 @@
       "t": "say"
     },
     {
-      "text": "She drank from the coffee. She set the cup on a milk crate that had been at the foot of the wall since 2050 — the one she used for setting things down when she had been working on the mural. She opened the canvas bag.",
+      "text": "[shot:insert coffee]She drank from the coffee. She set the cup on a milk crate that had been at the foot of the wall since 2050 — the one she used for setting things down when she had been working on the mural. She opened the canvas bag.",
       "t": "narrate"
     },
     {

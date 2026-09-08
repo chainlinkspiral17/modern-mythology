@@ -138,7 +138,7 @@
     {
       "t": "say",
       "char": "Sam",
-      "text": "Okay."
+      "text": "[shot:closeup person]Okay."
     },
     {
       "t": "say",
@@ -234,7 +234,7 @@
     {
       "t": "say",
       "char": "Jesse",
-      "text": "Come in. Pizza's on the way. Nate and Carl and Em will be here any minute. You guys know them?"
+      "text": "[shot:closeup person]Come in. Pizza's on the way. Nate and Carl and Em will be here any minute. You guys know them?"
     },
     {
       "t": "say",
@@ -270,7 +270,7 @@
     },
     {
       "t": "narrate",
-      "text": "The band launches into the song they had been working on for a month. It is called Grid Failure. It is, as far as Jesse has written the lyrics, about a specific kind of failure of a specific kind of electrical grid, but the lyrics are — Jesse will admit, privately, later — not especially good. The song is mostly riff. The riff is: distorted Telecaster doing a three-chord ascending figure over a driving eighth-note bass and a snare that hits on the and of two and four. Em's backing vocal is a long sustained syllable — ohhhh — that sits under the chord changes like a drone."
+      "text": "[shot:insert drum_kit]The band launches into the song they had been working on for a month. It is called Grid Failure. It is, as far as Jesse has written the lyrics, about a specific kind of failure of a specific kind of electrical grid, but the lyrics are — Jesse will admit, privately, later — not especially good. The song is mostly riff. The riff is: distorted Telecaster doing a three-chord ascending figure over a driving eighth-note bass and a snare that hits on the and of two and four. Em's backing vocal is a long sustained syllable — ohhhh — that sits under the chord changes like a drone."
     },
     {
       "t": "narrate",
@@ -294,7 +294,7 @@
     {
       "t": "say",
       "char": "Maya",
-      "text": "That's a sentence, Sam."
+      "text": "[shot:closeup person_b]That's a sentence, Sam."
     },
     {
       "t": "narrate",
@@ -326,7 +326,7 @@
     {
       "t": "say",
       "char": "Eileen",
-      "text": "Pizza! Pause for pizza!"
+      "text": "[shot:closeup person]Pizza! Pause for pizza!"
     },
     {
       "t": "narrate",
@@ -360,7 +360,7 @@
     {
       "t": "say",
       "char": "Maya",
-      "text": "Hi, ma'am. I'm Maya."
+      "text": "[shot:closeup person_b]Hi, ma'am. I'm Maya."
     },
     {
       "t": "say",
@@ -387,7 +387,7 @@
     {
       "t": "say",
       "char": "Jesse",
-      "text": "So. Sam, Maya, Ben. You have a request? You guys came to hear something."
+      "text": "[shot:closeup person]So. Sam, Maya, Ben. You have a request? You guys came to hear something."
     },
     {
       "t": "narrate",

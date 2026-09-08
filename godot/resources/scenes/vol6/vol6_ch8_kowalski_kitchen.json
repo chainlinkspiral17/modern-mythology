@@ -94,7 +94,7 @@
     {
       "t": "say",
       "char": "Gracie",
-      "text": "You are wearing my mom's shirt and it looks like a dress on you.",
+      "text": "[shot:closeup person]You are wearing my mom's shirt and it looks like a dress on you.",
       "expr": "neutral"
     },
     {
@@ -140,7 +140,7 @@
     {
       "t": "say",
       "char": "Maya",
-      "text": "Anita.",
+      "text": "[shot:closeup person_b]Anita.",
       "expr": "neutral"
     },
     {

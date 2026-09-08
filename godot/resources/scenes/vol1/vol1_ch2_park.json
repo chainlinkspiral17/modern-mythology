@@ -51,7 +51,7 @@
    "t": "say",
    "char": "Faust",
    "expr": "neutral",
-   "text": "What have you been reading, my friend?"
+   "text": "[shot:closeup person]What have you been reading, my friend?"
   },
   {
    "t": "say",
@@ -81,7 +81,7 @@
    "t": "say",
    "char": "Jacob",
    "expr": "neutral",
-   "text": "Lay off the recreational, man — you're wigging me out a bit. Here."
+   "text": "[shot:closeup person_b]Lay off the recreational, man — you're wigging me out a bit. Here."
   },
   {
    "t": "say",
@@ -111,7 +111,7 @@
    "t": "say",
    "char": "Faust",
    "expr": "neutral",
-   "text": "I'm not sure if my grand-dad was Jack Parsons or L. Ron Hubbard."
+   "text": "[shot:closeup person]I'm not sure if my grand-dad was Jack Parsons or L. Ron Hubbard."
   },
   {
    "t": "say",
@@ -172,7 +172,7 @@
    "t": "say",
    "char": "Faust",
    "expr": "neutral",
-   "text": "Medical discharge. Drifting about Los Angeles in with New Age, better-living, better-looking people — drawn to his larger-than-life escapades."
+   "text": "[shot:closeup person]Medical discharge. Drifting about Los Angeles in with New Age, better-living, better-looking people — drawn to his larger-than-life escapades."
   },
   {
    "t": "say",
@@ -228,7 +228,7 @@
    "t": "say",
    "char": "Faust",
    "expr": "neutral",
-   "text": "Me too. There's more cool shit to it."
+   "text": "[shot:closeup person]Me too. There's more cool shit to it."
   },
   {
    "t": "say",

@@ -49,7 +49,7 @@
    "t": "say",
    "char": "Woman",
    "expr": "neutral",
-   "text": "You lose control of dreams, you lose control of reality."
+   "text": "[shot:closeup person]You lose control of dreams, you lose control of reality."
   },
   {
    "t": "say",
@@ -79,7 +79,7 @@
    "t": "say",
    "char": "Faust",
    "expr": "neutral",
-   "text": "I have difficulty satisfying good connections I have already."
+   "text": "[shot:closeup person_b]I have difficulty satisfying good connections I have already."
   },
   {
    "t": "narrate",
@@ -133,7 +133,7 @@
    "t": "say",
    "char": "Woman",
    "expr": "neutral",
-   "text": "You don't mean that. But all right. I'll be where I've been."
+   "text": "[shot:closeup person]You don't mean that. But all right. I'll be where I've been."
   },
   {
    "t": "flag",

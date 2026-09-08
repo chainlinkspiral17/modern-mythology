@@ -72,7 +72,7 @@
   },
   {
    "char": "cale",
-   "text": "I have been waiting to be inside for some number of years. I have been at the edge. I have been at the door. I have been on the porch. I have not been inside.",
+   "text": "[shot:closeup person]I have been waiting to be inside for some number of years. I have been at the edge. I have been at the door. I have been on the porch. I have not been inside.",
    "expr": "serious",
    "t": "say"
   },
@@ -108,7 +108,7 @@
   },
   {
    "char": "tem",
-   "text": "I know.",
+   "text": "[shot:closeup person_b]I know.",
    "expr": "happy",
    "t": "say"
   },
@@ -141,7 +141,7 @@
   },
   {
    "char": "tem",
-   "text": "The fourth is — by what I have been able to figure out — the fourth went to a man in Bandon in 1976 or 1977. I do not know which. The man was — by what is in Brandon's papers — the man was a fisherman named Olaus. Olaus was on the Margery with Olaf the night Olaf died. Olaus drowned that night too.",
+   "text": "[shot:closeup person_b]The fourth is — by what I have been able to figure out — the fourth went to a man in Bandon in 1976 or 1977. I do not know which. The man was — by what is in Brandon's papers — the man was a fisherman named Olaus. Olaus was on the Margery with Olaf the night Olaf died. Olaus drowned that night too.",
    "expr": "serious",
    "t": "say"
   },
@@ -177,7 +177,7 @@
   },
   {
    "char": "cale",
-   "text": "Tem.",
+   "text": "[shot:closeup person]Tem.",
    "expr": "serious",
    "t": "say"
   },

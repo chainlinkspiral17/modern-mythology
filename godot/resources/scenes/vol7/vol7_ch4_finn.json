@@ -71,7 +71,7 @@
     },
     {
       "char": "tem",
-      "text": "Coffee's hot.",
+      "text": "[shot:closeup person]Coffee's hot.",
       "expr": "neutral",
       "t": "say"
     },
@@ -99,7 +99,7 @@
     },
     {
       "char": "finn",
-      "text": "They'll be on it tomorrow.",
+      "text": "[shot:closeup person_b]They'll be on it tomorrow.",
       "expr": "neutral",
       "t": "say"
     },
@@ -165,7 +165,7 @@
     },
     {
       "char": "tem",
-      "text": "I'm telling you now because I should have said something at the table yesterday. I didn't because I'd been awake too long and because saying it in front of all three of you on five hours' sleep felt wrong. The not-saying was a small dishonesty. I am sorry.",
+      "text": "[shot:closeup person]I'm telling you now because I should have said something at the table yesterday. I didn't because I'd been awake too long and because saying it in front of all three of you on five hours' sleep felt wrong. The not-saying was a small dishonesty. I am sorry.",
       "expr": "serious",
       "t": "say"
     },
@@ -193,7 +193,7 @@
     },
     {
       "char": "finn",
-      "text": "What had the bench done.",
+      "text": "[shot:closeup person_b]What had the bench done.",
       "expr": "neutral",
       "t": "say"
     },
@@ -265,7 +265,7 @@
     },
     {
       "char": "finn",
-      "text": "Tem.",
+      "text": "[shot:closeup person_b]Tem.",
       "expr": "serious",
       "t": "say"
     },
@@ -291,7 +291,7 @@
     },
     {
       "char": "tem",
-      "text": "[beat:still]Because Lena is in love with me.",
+      "text": "[shot:closeup person][beat:still]Because Lena is in love with me.",
       "expr": "serious",
       "t": "say"
     },
@@ -323,7 +323,7 @@
     },
     {
       "char": "tem",
-      "text": "I am also afraid that what I want from her and what is happening in the town are about to be the same conversation, and I do not want them to be the same conversation, because she deserves the first one without the second one running underneath it.",
+      "text": "[shot:closeup person]I am also afraid that what I want from her and what is happening in the town are about to be the same conversation, and I do not want them to be the same conversation, because she deserves the first one without the second one running underneath it.",
       "expr": "serious",
       "t": "say"
     },
@@ -361,7 +361,7 @@
     },
     {
       "char": "finn",
-      "text": "You were going to tell her about the bowl eventually.",
+      "text": "[shot:closeup person_b]You were going to tell her about the bowl eventually.",
       "expr": "neutral",
       "t": "say"
     },
@@ -401,7 +401,7 @@
     },
     {
       "char": "tem",
-      "text": "Yes.",
+      "text": "[shot:closeup person]Yes.",
       "expr": "neutral",
       "t": "say"
     },

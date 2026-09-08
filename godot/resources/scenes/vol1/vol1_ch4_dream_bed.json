@@ -45,7 +45,7 @@
    "t": "say",
    "char": "Faust",
    "expr": "neutral",
-   "text": "I'm afraid I'm going to have to kick you out."
+   "text": "[shot:closeup person]I'm afraid I'm going to have to kick you out."
   },
   {
    "t": "say",
@@ -83,7 +83,7 @@
    "t": "say",
    "char": "Woman",
    "expr": "neutral",
-   "text": "I just hope you keep me reasonably near."
+   "text": "[shot:closeup person_b]I just hope you keep me reasonably near."
   },
   {
    "t": "say",

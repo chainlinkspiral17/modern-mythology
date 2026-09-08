@@ -1213,6 +1213,17 @@ could cut cast closeups in rooms that carry only the generic pair (it
 keys closeups by character today); the Deck read of a dialogue chapter
 in Lena's apartment or the Miller kitchen decides.
 
+**2026-09-11 · the generic pair put to work: +862 cast cuts.**
+shot_seed learned the room's generic closeup pair: when a speaker has
+no marker of their own but the room has `shot_closeup_person` and its
+reverse, each speaker OWNS a side for the scene (first speaker takes
+the frame, second the reverse, alternating from there; a cut to the
+frame we are already on is not a cut, so it is skipped). Applied at
+--light across every volume: 175 chapters, +862 cues, budget still
+one per six nodes. The Miller kitchen's Monday breakfast now plays as
+shot/reverse-shot with Bianca at the stove and Sam at the table.
+Story gate green, blind object cues unchanged at 9.
+
 **2026-08-19 · PER-STICK VOICE SWEEP VERDICT (voice draft 4).**
 Ran the leakage grep (TODO/WIP/placeholder/implemented/deferred/
 stub) and a string survey across EVERY stick directory: estuary_4,

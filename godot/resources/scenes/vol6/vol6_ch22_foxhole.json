@@ -100,7 +100,7 @@
   {
    "t": "say",
    "char": "Em",
-   "text": "Jess.",
+   "text": "[shot:closeup person]Jess.",
    "expr": "neutral"
   },
   {
@@ -138,7 +138,7 @@
   {
    "t": "say",
    "char": "Jesse",
-   "text": "Fine.",
+   "text": "[shot:closeup person_b]Fine.",
    "expr": "neutral"
   },
   {
@@ -168,7 +168,7 @@
   {
    "t": "say",
    "char": "Em",
-   "text": "Good.",
+   "text": "[shot:closeup person]Good.",
    "expr": "neutral"
   },
   {
@@ -262,7 +262,7 @@
   {
    "t": "say",
    "char": "Em",
-   "text": "Anyone want to say anything.",
+   "text": "[shot:closeup person]Anyone want to say anything.",
    "expr": "neutral"
   },
   {
@@ -292,7 +292,7 @@
   {
    "t": "say",
    "char": "Jesse",
-   "text": "Yeah.",
+   "text": "[shot:closeup person_b]Yeah.",
    "expr": "neutral"
   },
   {
@@ -424,7 +424,7 @@
   {
    "t": "say",
    "char": "Em",
-   "text": "Hey. We're Suburban Blight. We're from this town. Thanks for coming out. Here's our first one.",
+   "text": "[shot:closeup person]Hey. We're Suburban Blight. We're from this town. Thanks for coming out. Here's our first one.",
    "expr": "neutral"
   },
   {
@@ -574,7 +574,7 @@
   {
    "t": "say",
    "char": "Em",
-   "text": "Thanks, y'all. We're Suburban Blight. We'll be around. Chess is up in fifteen.",
+   "text": "[shot:closeup person]Thanks, y'all. We're Suburban Blight. We'll be around. Chess is up in fifteen.",
    "expr": "neutral"
   },
   {
@@ -616,7 +616,7 @@
   {
    "t": "say",
    "char": "Nate",
-   "text": "Yeah, dude.",
+   "text": "[shot:closeup person_b]Yeah, dude.",
    "expr": "neutral"
   },
   {
@@ -766,7 +766,7 @@
   {
    "t": "say",
    "char": "Jesse",
-   "text": "I'm gonna head.",
+   "text": "[shot:closeup person]I'm gonna head.",
    "expr": "neutral"
   },
   {

@@ -189,7 +189,7 @@
   },
   {
    "t": "narrate",
-   "text": "Ben considers the question."
+   "text": "[shot:establish]Ben considers the question."
   },
   {
    "t": "say",
@@ -311,7 +311,7 @@
   },
   {
    "t": "narrate",
-   "text": "Ben folds the bill. He puts it in the front pocket of his apron. The grill hisses. Jesse wipes his eyes with the back of his wrist."
+   "text": "[shot:insert grill]Ben folds the bill. He puts it in the front pocket of his apron. The grill hisses. Jesse wipes his eyes with the back of his wrist."
   },
   {
    "t": "narrate",

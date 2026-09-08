@@ -150,7 +150,7 @@
       "t": "say",
       "char": "Maya",
       "expr": "neutral",
-      "text": "\"Grandma. It's okay.\""
+      "text": "[shot:closeup person]\"Grandma. It's okay.\""
     },
     {
       "t": "say",
@@ -194,7 +194,7 @@
       "t": "say",
       "char": "Grandmother",
       "expr": "neutral",
-      "text": "\"Because your grandfather put it there, Maya. In 1989. When he got out. He taught me how to listen to it. He said — Linda, one day somebody's going to talk to you on this thing, and you're going to know when they do, and then you're going to know what to do.\""
+      "text": "[shot:closeup person_b]\"Because your grandfather put it there, Maya. In 1989. When he got out. He taught me how to listen to it. He said — Linda, one day somebody's going to talk to you on this thing, and you're going to know when they do, and then you're going to know what to do.\""
     },
     {
       "t": "say",
@@ -250,7 +250,7 @@
       "t": "say",
       "char": "Maya",
       "expr": "neutral",
-      "text": "\"I love you.\""
+      "text": "[shot:closeup person]\"I love you.\""
     },
     {
       "t": "say",

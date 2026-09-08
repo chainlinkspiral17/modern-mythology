@@ -88,7 +88,7 @@
       "char": "Maya",
       "role": "— text —",
       "expr": "neutral",
-      "text": "Yeah. 10-5. Do you want to come by?"
+      "text": "[shot:closeup person]Yeah. 10-5. Do you want to come by?"
     },
     {
       "t": "narrate",
@@ -117,7 +117,7 @@
       "char": "Sam",
       "role": "— text —",
       "expr": "neutral",
-      "text": "ok."
+      "text": "[shot:closeup person_b]ok."
     },
     {
       "t": "narrate",

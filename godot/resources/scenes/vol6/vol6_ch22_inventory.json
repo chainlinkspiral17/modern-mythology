@@ -60,7 +60,7 @@
   {
    "t": "say",
    "char": "Russell",
-   "text": "Right.",
+   "text": "[shot:closeup person]Right.",
    "expr": "neutral"
   },
   {
@@ -131,7 +131,7 @@
   },
   {
    "t": "narrate",
-   "text": "At five fifty he had passed the head of cereal aisle. BT had looked up. BT had nodded. Diego had nodded. Nothing else. They have not spoken since the taqueria run Tuesday morning."
+   "text": "[shot:insert five]At five fifty he had passed the head of cereal aisle. BT had looked up. BT had nodded. Diego had nodded. Nothing else. They have not spoken since the taqueria run Tuesday morning."
   },
   {
    "t": "narrate",
@@ -159,7 +159,7 @@
   },
   {
    "t": "narrate",
-   "text": "The scanner has been beeping like this since two AM and the beep, which had been a sound at hour one, is now mostly inside his ear. His right wrist is starting to hurt the way it has hurt at hour six of every inventory of the summer. He shifts the scanner to the left hand. The left hand is also tired but is, by his count, four hours less tired."
+   "text": "[shot:insert scanner]The scanner has been beeping like this since two AM and the beep, which had been a sound at hour one, is now mostly inside his ear. His right wrist is starting to hurt the way it has hurt at hour six of every inventory of the summer. He shifts the scanner to the left hand. The left hand is also tired but is, by his count, four hours less tired."
   },
   {
    "t": "narrate",
@@ -230,7 +230,7 @@
   {
    "t": "say",
    "char": "Russell",
-   "text": "The whole aisle.",
+   "text": "[shot:closeup person]The whole aisle.",
    "expr": "neutral"
   },
   {
@@ -333,7 +333,7 @@
   },
   {
    "t": "narrate",
-   "text": "Diego gives him the scanner. They start."
+   "text": "[shot:insert scanner]Diego gives him the scanner. They start."
   },
   {
    "t": "narrate",
@@ -372,7 +372,7 @@
   {
    "t": "say",
    "char": "Diego",
-   "text": "He said cans. That was it.",
+   "text": "[shot:closeup person]He said cans. That was it.",
    "expr": "neutral"
   },
   {
@@ -461,7 +461,7 @@
   },
   {
    "t": "narrate",
-   "text": "They work."
+   "text": "[shot:establish]They work."
   },
   {
    "t": "narrate",
@@ -482,7 +482,7 @@
   {
    "t": "say",
    "char": "Russell",
-   "text": "Good. Canned vegetables. Same routine. Forty minutes.",
+   "text": "[shot:closeup person]Good. Canned vegetables. Same routine. Forty minutes.",
    "expr": "neutral"
   },
   {
@@ -592,7 +592,7 @@
   {
    "t": "say",
    "char": "Diego",
-   "text": "Yeah.",
+   "text": "[shot:closeup person]Yeah.",
    "expr": "neutral"
   },
   {
@@ -662,7 +662,7 @@
   {
    "t": "say",
    "char": "Russell",
-   "text": "Straight how.",
+   "text": "[shot:closeup person_b]Straight how.",
    "expr": "neutral"
   },
   {
@@ -690,7 +690,7 @@
   {
    "t": "say",
    "char": "Marisol",
-   "text": "Why did you not tell us.",
+   "text": "[shot:closeup person]Why did you not tell us.",
    "expr": "neutral"
   },
   {
@@ -752,7 +752,7 @@
   {
    "t": "say",
    "char": "Doug",
-   "text": "Yeah.",
+   "text": "[shot:closeup person_b]Yeah.",
    "expr": "neutral"
   },
   {
@@ -782,7 +782,7 @@
   {
    "t": "say",
    "char": "Marisol",
-   "text": "To verify the story of a man we have been holding at arm's length for six weeks.",
+   "text": "[shot:closeup person]To verify the story of a man we have been holding at arm's length for six weeks.",
    "expr": "serious"
   },
   {
@@ -810,7 +810,7 @@
   {
    "t": "say",
    "char": "Russell",
-   "text": "Why are you telling us now and not in June.",
+   "text": "[shot:closeup person_b]Why are you telling us now and not in June.",
    "expr": "neutral"
   },
   {
@@ -881,7 +881,7 @@
   },
   {
    "t": "narrate",
-   "text": "She leaves."
+   "text": "[shot:establish]She leaves."
   },
   {
    "t": "narrate",
@@ -969,7 +969,7 @@
   },
   {
    "t": "narrate",
-   "text": "He nods."
+   "text": "[shot:establish]He nods."
   },
   {
    "t": "say",
@@ -998,7 +998,7 @@
   {
    "t": "say",
    "char": "Diego",
-   "text": "Yeah.",
+   "text": "[shot:closeup person]Yeah.",
    "expr": "neutral"
   },
   {
@@ -1045,7 +1045,7 @@
   },
   {
    "t": "narrate",
-   "text": "She goes."
+   "text": "[shot:establish]She goes."
   },
   {
    "t": "hide",
@@ -1152,7 +1152,7 @@
   {
    "t": "say",
    "char": "Diego",
-   "text": "Sí, abuela. Se fue a casa.",
+   "text": "[shot:closeup person]Sí, abuela. Se fue a casa.",
    "expr": "neutral"
   },
   {
@@ -1190,7 +1190,7 @@
   {
    "t": "say",
    "char": "Abuela",
-   "text": "¿Y tú?",
+   "text": "[shot:closeup person_b]¿Y tú?",
    "expr": "neutral"
   },
   {
@@ -1220,7 +1220,7 @@
   {
    "t": "say",
    "char": "Diego",
-   "text": "Gracias, abuela.",
+   "text": "[shot:closeup person]Gracias, abuela.",
    "expr": "neutral"
   },
   {

@@ -68,7 +68,7 @@
     },
     {
       "char": "finn",
-      "text": "What've you got.",
+      "text": "[shot:closeup person]What've you got.",
       "expr": "neutral",
       "t": "say"
     },
@@ -119,7 +119,7 @@
       "t": "say"
     },
     {
-      "text": "The crow tilted its head.",
+      "text": "[shot:insert crow]The crow tilted its head.",
       "t": "narrate"
     },
     {
@@ -195,7 +195,7 @@
       "t": "say"
     },
     {
-      "text": "The crow shifted its weight from one foot to the other. He drank from the coffee.",
+      "text": "[shot:insert crow]The crow shifted its weight from one foot to the other. He drank from the coffee.",
       "t": "narrate"
     },
     {
@@ -234,7 +234,7 @@
     },
     {
       "char": "finn",
-      "text": "I — I've been wondering. For nine months. I've been wondering what you would say when you said something.",
+      "text": "[shot:closeup person]I — I've been wondering. For nine months. I've been wondering what you would say when you said something.",
       "expr": "neutral",
       "t": "say"
     },
@@ -319,7 +319,7 @@
       "t": "say"
     },
     {
-      "text": "The crow did not respond.",
+      "text": "[shot:insert crow]The crow did not respond.",
       "t": "narrate"
     },
     {
@@ -388,7 +388,7 @@
     },
     {
       "char": "finn",
-      "text": "I'm all right. There's a — there's a family thing.",
+      "text": "[shot:closeup person]I'm all right. There's a — there's a family thing.",
       "expr": "neutral",
       "t": "say"
     },
@@ -426,7 +426,7 @@
     },
     {
       "char": "margaret",
-      "text": "Finn. I have known you four years. You have taken three days off, total, in those four years. You took Sunday off when your dog died in '49. You took two days in '50 when your sister stopped sending mail and you drove down to your mother's.",
+      "text": "[shot:closeup person_b]Finn. I have known you four years. You have taken three days off, total, in those four years. You took Sunday off when your dog died in '49. You took two days in '50 when your sister stopped sending mail and you drove down to your mother's.",
       "expr": "serious",
       "t": "say"
     },
@@ -487,7 +487,7 @@
       "t": "narrate"
     },
     {
-      "text": "He thought, as he drove, about Maya. The voice through the emergency radio had said help me find them. He had marked the GPS coordinate on his phone and the radio had gone back to standard hiss. He had not, in the months since, looked at the notebook for that entry.",
+      "text": "[shot:insert phone]He thought, as he drove, about Maya. The voice through the emergency radio had said help me find them. He had marked the GPS coordinate on his phone and the radio had gone back to standard hiss. He had not, in the months since, looked at the notebook for that entry.",
       "t": "narrate"
     },
     {
@@ -566,7 +566,7 @@
     },
     {
       "char": "crow",
-      "text": "Brandon.",
+      "text": "[shot:closeup person]Brandon.",
       "expr": "serious",
       "t": "say"
     },
@@ -598,7 +598,7 @@
     },
     {
       "char": "finn",
-      "text": "She was looking at the water.",
+      "text": "[shot:closeup person_b]She was looking at the water.",
       "expr": "serious",
       "t": "say"
     },
@@ -644,7 +644,7 @@
     },
     {
       "char": "crow",
-      "text": "Aria.",
+      "text": "[shot:closeup person]Aria.",
       "expr": "serious",
       "t": "say"
     },
