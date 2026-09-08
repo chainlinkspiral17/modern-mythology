@@ -136,6 +136,12 @@ def build_office():
     make_box("Office_Part", (3.55, 6.0, CEIL/2.0), (1.90, 0.10, CEIL), PAL_WALL["wall"])
     make_chamfer_box("Devon_Desk", (3.9, 6.55, 0.37), (1.00, 0.55, 0.74), COL_WOOD)
     make_box("Devon_Chair_Seat", (3.35, 6.35, 0.44), (0.40, 0.40, 0.05), COL_WOOD)
+    # legs (2026-09-08)
+    for lx_ in (-1, 1):
+        for ly_ in (-1, 1):
+            make_box(f"Devon_Chair_Leg_{lx_:+d}_{ly_:+d}",
+                     (3.35 + lx_ * 0.16, 6.35 + ly_ * 0.16, 0.215),
+                     (0.035, 0.035, 0.43), COL_WOOD)
     make_box("Devon_Chair_Back", (3.35, 6.53, 0.72), (0.40, 0.05, 0.50), COL_WOOD)
     for bi, by in enumerate((6.2, 6.5)):
         make_box(f"Bearings_Box_{bi}", (2.95, by, 0.16), (0.34, 0.28, 0.32), (0.60, 0.48, 0.32, 1.0))

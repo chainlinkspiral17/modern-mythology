@@ -119,6 +119,12 @@ def build_tables():
         make_box(f"FourTop_Leg_{li}", (tx+lxo, ty+lyo, 0.36), (0.06, 0.06, 0.72), COL_ESPRESSO_TRIM)
     for ci,(cxo,cyo,along_x) in enumerate([(0.0,-0.78,True),(0.0,0.78,True),(-0.78,0.0,False),(0.78,0.0,False)]):
         make_cyl(f"FourTop_Chair_{ci}_Seat", (tx+cxo, ty+cyo, 0.46), 0.18, 0.04, COL_WOOD, segments=12)
+        # legs (2026-09-08)
+        for lx_ in (-1, 1):
+            for ly_ in (-1, 1):
+                make_box(f"FourTop_Chair_{ci}_Leg_{lx_:+d}_{ly_:+d}",
+                         (tx+cxo + lx_ * 0.11, ty+cyo + ly_ * 0.11, 0.23),
+                         (0.035, 0.035, 0.46), COL_ESPRESSO_TRIM)
         if along_x:
             byo = 0.17 if cyo > 0 else -0.17
             make_box(f"FourTop_Chair_{ci}_Back", (tx+cxo, ty+cyo+byo, 0.72), (0.36, 0.04, 0.52), COL_WOOD)

@@ -155,6 +155,9 @@ def build_office():
     for d in range(3):
         make_box(f"Office_File_D{d}", (2.35, 5.42, 0.28 + d * 0.42), (0.38, 0.03, 0.32), COL_SHELF_DK)
     make_box("Office_Chair_Seat", (3.1, 4.95, 0.46), (0.42, 0.42, 0.06), COL_MIRROR_FR)
+    # pedestal + base (2026-09-08: the seat hung in the air)
+    make_cyl("Office_Chair_Post", (3.1, 4.95, 0.22), 0.03, 0.44, COL_MIRROR_FR, segments=8)
+    make_cyl("Office_Chair_Base", (3.1, 4.95, 0.02), 0.28, 0.04, COL_MIRROR_FR, segments=12)
     make_box("Office_Chair_Back", (3.1, 4.75, 0.80), (0.42, 0.05, 0.55), COL_MIRROR_FR)   # back away from the desk (2026-09-07)
 
 

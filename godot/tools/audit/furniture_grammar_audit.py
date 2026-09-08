@@ -54,6 +54,9 @@ INTRA_JOINT = 0.25      # m · within ONE named assembly, penetration up to this
                         # JOINT (rooted posts, mullions in rails, a head on a body,
                         # a door in its wall) — the rooting grammar says parts
                         # overlap on purpose. Deeper is a clip.
+# locales whose ground is a heightfield MESH (no box the recorder can
+# see): "nothing under it" is unmeasurable there, not a float
+TERRAIN_LOCALES = {"graustark", "harmony_terrain", "small_wood_road"}
 POKE_THIN = 0.12        # m · a member this thin in plan is a post / pole / leg
 POKE_TOL = 0.03         # m · proud of the top AND below the bottom by this each way
 # solids a member may pass through: a post is ROOTED through the slab
@@ -64,7 +67,7 @@ POKE_GROUND = re.compile(r"^(slab|foundation|floor|ground|footing|pad|dais|deck|
 # through a deck, a mast through a hull, a stack through a roof
 POKE_OK = re.compile(r"^(wire|cable|rope|chain|line|string|stem|stalk|straw|antenna|aerial|mast|stack|flue|pipe|conduit|drain|downspout|gutter|vent|chimney|spire|finial|rod|bar|bolt|pin|nail|screw|needle|wick|candle|hi|lo|trans|cord|hose|tube|axle|shaft|spindle|hub|trunk|limb|twig|branch|leader|cane|reed|rebar|stake|wick|pole|pile|piling|column|col|pillar|post)$", re.I)
 PAVING = re.compile(r"^(road|curb|sidewalk|walk|dash|driveway|apron|loop|path|ditch|ballast|tie|lot|strip|shore|quay|fender|mulch|gravel|paint|stripe|line|crosswalk|median|shoulder)$", re.I)
-FLOAT_GAP = 0.04        # m
+FLOAT_GAP = 0.045       # m (a seat 4 cm over its beam is on it)
 FLOAT_MAX_SIDE = 1.6
 CHAIR_REACH = 1.10     # m · seat centre to the table's nearest edge
 WALL_GAP = 0.35
@@ -82,6 +85,7 @@ STRUCTURAL = re.compile(r"(wall|crown|molding|roof|chimney|eave|gable|ridge|jois
                         r"trim|baseboard|skirt|seam|stud|rafter|hull|deck|pillar|post|leg|rail|spray|stream|tube|wire|cable|rope|chain|port|porthole|strip|band|piling|stringer|girder|brace|lintel|partition|pedestal)", re.I)
 MOUNTED = re.compile(r"(lamp|pendant|fan|shelf|sign|poster|frame|clock|board|wall|ceil|window|win_|curtain|light|fixture|cord|wire|"
                      r"pin|bolt|knob|lyric|page|plate|handle|pull|latch|seam|tab|pillar|mailbox|glass|badge|decal|sticker|label|logo|drawer|door|header|thermostat|rung|"
+                     r"swing|hammock|shutter|crenel|dormer|chimney|socket|insulator|warn|digit|pennant|roster|paper|ephoto|plaque|tag|led|dish|strap|hose|cable|garment|coat|robe|hinge|border|marker|nozzle|spout|mural|patch|counterslab|weight|ladle|"
                      r"number|letter|text|line|stripe|trim|cap|lid|rim|handset|dial|button|switch|outlet|plug|vent|grille|key|"
                      r"pipe|vent|duct|hood|cabinet|cab_|upper|hang|rail|awning|banner|flag|bulb|chain|hook|mirror|calendar|"
                      r"crown|molding|beam|joist|truss|roof|eave|gutter|antenna|pole|mast|neon|bracket|sconce|smoke|hvac|"
@@ -136,8 +140,8 @@ def prefix_of(name):
     if len(parts) == 1:
         return name
     # numeric / sign suffixes and generic part words belong to the parent
-    while len(parts) > 1 and re.fullmatch(r"[+\-]?\d+|[+\-]\d", parts[-1]):
-        parts.pop()
+    while len(parts) > 1 and re.fullmatch(r"[+\-]?\d+|[+\-]\d|[A-Z]{1,2}", parts[-1]):
+        parts.pop()      # numbers, signs and L/R/N/S/FL tags belong to the parent
     return parts[0] if len(parts) == 1 else "_".join(parts[:-1]) if len(parts) > 2 else parts[0]
 
 
@@ -249,7 +253,7 @@ def check_poke(boxes):
     return out
 
 
-def check_float(boxes):
+def check_float(boxes, terrain=False):
     real = [b for b in boxes]
     out = []
     for b in real:
@@ -285,6 +289,17 @@ def check_float(boxes):
             if family(o[0]) == family(n) and lo[2] - 0.02 <= bottom <= hi[2] + 0.02 and not (hi[0] < blo[0] or lo[0] > bhi[0] or hi[1] < blo[1] or lo[1] > bhi[1]):
                 best = (bottom, o[0])
                 break
+            # EMBEDDED in a larger solid of another assembly — a book in
+            # a one-box bookshelf body, a comic in a rack, a deck on a
+            # wall board: the solid spans our underside and most of our
+            # footprint → held (whether the embedding is ugly is the
+            # overlap audit's question, not a float)
+            if (lo[2] - 0.02 <= bottom <= hi[2] + 0.02
+                    and o[2][0] * o[2][1] * o[2][2] > h[0] * h[1] * h[2]
+                    and min(hi[0], bhi[0]) - max(lo[0], blo[0]) >= h[0]
+                    and min(hi[1], bhi[1]) - max(lo[1], blo[1]) >= h[1]):
+                best = (bottom, o[0])
+                break
             if hi[0] < blo[0] or lo[0] > bhi[0] or hi[1] < blo[1] or lo[1] > bhi[1]:
                 # a sibling part of the same assembly that touches us in
                 # xy but sits beside (a back on posts, a knob on a face)
@@ -295,7 +310,7 @@ def check_float(boxes):
             if best is None or top > best[0]:
                 best = (top, o[0])
         if best is None:
-            if bottom > FLOAT_GAP:
+            if bottom > FLOAT_GAP and not terrain:
                 out.append((n, bottom, "(nothing under it)", bottom))
         elif bottom - best[0] > FLOAT_GAP:
             out.append((n, bottom, best[1], bottom - best[0]))
@@ -421,7 +436,7 @@ def main():
             continue
         intra = check_intra(boxes)
         poke = check_poke(boxes)
-        flt = check_float(boxes)
+        flt = check_float(boxes, terrain=locale in TERRAIN_LOCALES)
         chairs = check_chairs(boxes)
         desks = [] if locale in DESK_FREESTANDING_LOCALES else check_desks(boxes)
         lanes = check_lanes(boxes)

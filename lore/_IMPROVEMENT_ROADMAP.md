@@ -795,6 +795,37 @@ first — expect the same split between real hangs and mounted things
 the grammar doesn't know yet); the INTRA 174 massing residue is a
 design read, not a defect list — leave it informational.
 
+**2026-09-08 (night) · FLOAT read by class; 82 legless chairs given
+legs; the courthouse's props found their table.** FLOAT 1408 grouped by
+part class: three grammar gaps (a book EMBEDDED in a one-box shelf
+body is held, not floating; terrain locales have no ground box so
+"nothing under it" is unmeasurable there; shutters, crenels, coats,
+hoses, swings and thirty other mounted/hanging classes) took it to
+812 — and the biggest real class was SEAT: 82 chair and bench seats
+0.40–0.46 m above the floor with nothing under them. The Deck's
+"chairs not fully assembled", named. Legs added in place (four posts
+rooted 2 cm into the seat; pedestal + disc base for the two office
+chairs; the judge's chair on its dais) in sixteen builders: Kwik Stop
+window chairs, Board Lords (Devon), Kai's and Finn's kitchen chairs,
+the New Orleans bar's group chairs, Boyd's chair, the witness chair,
+El Rancho's booth + six-top chairs, the riverboat's private-dining
+and back-room chairs, the Salty Tome kitchen, Daily Grind four-tops,
+the New Orleans room, Solenade's east bench, Harmony's skatepark
+benches, pond benches and every patio chair, NexCorp + pharmacy office
+chairs. The courthouse detail passes had put BOTH counsel tables' props
+(caption page, Anna's pen, the folder, the briefcase, the motion, the
+coffees) at y 2.5 — the first pew row — while the tables stand at y
+5.5; moved onto the tables, the folder insert reframed; Lucien Avant
+was seated in mid-air in the centre aisle (0, -1.8) — now on the
+second pew's aisle end; the witness-stand front reaches the floor.
+Deck rebuild: the sixteen chair builders + courthouse_chamber. NEXT
+DRAFT: the FLOAT residue (~700) by class — 'base' (armchair bases 5 cm
+over rugs: FLOAT_GAP vs rug thickness), 'leg'/'body'/'face' (figure
+parts and sign faces — mounted classes the grammar still lacks),
+'tread' (open-riser stairs on stringers the prefix rule now sees),
+'manga'/'book'/'deck' (racks whose tier boards are not modelled — add
+the boards, not a rule); then per-class gates as each hits zero.
+
 **2026-08-19 · PER-STICK VOICE SWEEP VERDICT (voice draft 4).**
 Ran the leakage grep (TODO/WIP/placeholder/implemented/deferred/
 stub) and a string survey across EVERY stick directory: estuary_4,

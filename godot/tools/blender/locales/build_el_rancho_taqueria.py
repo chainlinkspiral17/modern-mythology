@@ -116,6 +116,12 @@ def build_tables():
         make_box(f"LongBooth_TLeg_{li}", (bx+0.62, 2.4+lyo, 0.36), (0.06, 0.06, 0.72), P.METAL_BLACK)
     for ci,cyo in enumerate([-1.1, -0.35, 0.35, 1.1]):
         make_box(f"LongBooth_Ch{ci}_Seat", (bx+1.35, 2.4+cyo, 0.45), (0.38, 0.38, 0.05), COL_ACCENT)
+        # legs (2026-09-08)
+        for lx_ in (-1, 1):
+            for ly_ in (-1, 1):
+                make_box(f"LongBooth_Ch{ci}_Leg_{lx_:+d}_{ly_:+d}",
+                         (bx+1.35 + lx_ * 0.15, 2.4+cyo + ly_ * 0.15, 0.22),
+                         (0.035, 0.035, 0.44), P.METAL_BLACK)
         make_box(f"LongBooth_Ch{ci}_Back", (bx+1.52, 2.4+cyo, 0.68), (0.04, 0.38, 0.44), COL_ACCENT)
     # Two square SIX-TOPS mid-floor.
     for ti,(tx,ty) in enumerate([(0.5, 1.35), (0.5, 3.05)]):
@@ -126,6 +132,12 @@ def build_tables():
                                                 (-0.50,0.75,True),(0.50,0.75,True),
                                                 (-1.05,0.0,False),(1.05,0.0,False)]):
             make_box(f"SixTop_{ti}_Ch{ci2}_Seat", (tx+cxo, ty+cyo, 0.45), (0.38, 0.38, 0.05), COL_ACCENT)
+            # legs (2026-09-08)
+            for lx_ in (-1, 1):
+                for ly_ in (-1, 1):
+                    make_box(f"SixTop_{ti}_Ch{ci2}_Leg_{lx_:+d}_{ly_:+d}",
+                             (tx+cxo + lx_ * 0.15, ty+cyo + ly_ * 0.15, 0.22),
+                             (0.035, 0.035, 0.44), P.METAL_BLACK)
             if along_x:
                 byo = 0.17 if cyo > 0 else -0.17
                 make_box(f"SixTop_{ti}_Ch{ci2}_Back", (tx+cxo, ty+cyo+byo, 0.68), (0.38, 0.04, 0.44), COL_ACCENT)

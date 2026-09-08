@@ -314,6 +314,12 @@ def build_back_annex_2026_08():
         make_box(f"Kitch_Table_Leg_{li3}", (-1.6+lxo, 8.1+lyo, 0.36), (0.05, 0.05, 0.72), COL_WOOD_DK)
     for ci3, (cxo, cyo, bxo) in enumerate([(-0.75, 0.0, -0.20), (0.75, 0.0, 0.20), (0.0, -0.75, 0.0)]):
         make_box(f"Kitch_Chair_{ci3}_Seat", (-1.6+cxo, 8.1+cyo, 0.45), (0.42, 0.42, 0.05), COL_WOOD)
+        # legs (2026-09-08)
+        for lx_ in (-1, 1):
+            for ly_ in (-1, 1):
+                make_box(f"Kitch_Chair_{ci3}_Leg_{lx_:+d}_{ly_:+d}",
+                         (-1.6+cxo + lx_ * 0.17, 8.1+cyo + ly_ * 0.17, 0.22),
+                         (0.035, 0.035, 0.44), COL_WOOD)
         if ci3 < 2:
             make_box(f"Kitch_Chair_{ci3}_Back", (-1.6+cxo+bxo, 8.1+cyo, 0.75), (0.05, 0.42, 0.55), COL_WOOD)
         else:

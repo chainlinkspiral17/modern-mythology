@@ -924,6 +924,12 @@ def build_private_dining():
             make_box(f"PD_Chair_{sgn}_{j}_Seat",
                      (cx_pos, cy_pos, cz + 0.46),
                      (0.42, 0.42, 0.04), COL_VELVET_RED)
+            # legs (2026-09-08)
+            for lx_ in (-1, 1):
+                for ly_ in (-1, 1):
+                    make_box(f"PD_Chair_{sgn}_{j}_Leg_{lx_:+d}_{ly_:+d}",
+                             (cx_pos + lx_ * 0.17, cy_pos + ly_ * 0.17, cz + 0.23),
+                             (0.035, 0.035, 0.46), COL_WALL_DARK)
             make_box(f"PD_Chair_{sgn}_{j}_Back",
                      (cx_pos + sgn * 0.20, cy_pos,
                       cz + 0.82),
@@ -1480,6 +1486,12 @@ def build_back_room():
         make_box(f"Back_Chair_{i}_Seat",
                  (ch_x, ch_y, cz + 0.46),
                  (0.42, 0.42, 0.08), COL_LEATHER_BLACK)
+        # legs (2026-09-08)
+        for lx_ in (-1, 1):
+            for ly_ in (-1, 1):
+                make_box(f"Back_Chair_{i}_Leg_{lx_:+d}_{ly_:+d}",
+                         (ch_x + lx_ * 0.17, ch_y + ly_ * 0.17, cz + 0.22),
+                         (0.035, 0.035, 0.44), COL_LEATHER_BLACK)
         bk_dx = -math.cos(ang) * 0.22
         bk_dy = -math.sin(ang) * 0.22
         make_box(f"Back_Chair_{i}_Back",

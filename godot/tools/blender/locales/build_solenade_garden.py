@@ -431,6 +431,12 @@ def build_sun_wave2_props():
              (east_bench_x, east_bench_y, 0.44),
              (0.70, 0.28, 0.06),
              COL_BENCH_WOOD)
+    # legs (2026-09-08)
+    for lx_ in (-1, 1):
+        for ly_ in (-1, 1):
+            make_box(f"EastBench_Leg_{lx_:+d}_{ly_:+d}",
+                     (east_bench_x + lx_ * 0.30, east_bench_y + ly_ * 0.09, 0.215),
+                     (0.035, 0.035, 0.43), COL_BENCH_WOOD)
     make_box("EastBench_Back",
              (east_bench_x, east_bench_y - 0.13, 0.660),
              (0.70, 0.06, 0.36),

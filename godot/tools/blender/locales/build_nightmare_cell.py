@@ -157,6 +157,12 @@ def build_hero_props():
                  (0.86, 0.16, 0.14, 1.0), segments=5)
     # Boyd's chair, facing the cot
     make_box("Boyd_Chair_Seat", (0.0, 1.35, 0.44), (0.42, 0.42, 0.05), (0.44, 0.46, 0.48, 1.0))
+    # legs (2026-09-08)
+    for lx_ in (-1, 1):
+        for ly_ in (-1, 1):
+            make_box(f"Boyd_Chair_Leg_{lx_:+d}_{ly_:+d}",
+                     (0.0 + lx_ * 0.17, 1.35 + ly_ * 0.17, 0.215),
+                     (0.035, 0.035, 0.43), (0.44, 0.46, 0.48, 1.0))
     make_box("Boyd_Chair_Back", (0.0, 1.16, 0.70), (0.42, 0.05, 0.48), (0.40, 0.42, 0.44, 1.0))
     # The ceiling camera in the opposite corner
     make_box("Ceiling_Cam", (-1.52, 0.20, 3.10), (0.12, 0.14, 0.10), (0.16, 0.16, 0.18, 1.0))

@@ -155,6 +155,12 @@ def build_hero_props():
         ang = ci * (2.0 * _m.pi / 6.0) + 0.3
         cx, cy = 0.6 + _m.cos(ang) * 1.0, 1.9 + _m.sin(ang) * 1.0
         make_box(f"Group_Chair_{ci}_Seat", (cx, cy, 0.44), (0.38, 0.38, 0.04), wood)
+        # legs (2026-09-08)
+        for lx_ in (-1, 1):
+            for ly_ in (-1, 1):
+                make_box(f"Group_Chair_{ci}_Leg_{lx_:+d}_{ly_:+d}",
+                         (cx + lx_ * 0.15, cy + ly_ * 0.15, 0.22),
+                         (0.035, 0.035, 0.44), wood)
         make_box(f"Group_Chair_{ci}_Back", (0.6 + _m.cos(ang) * 1.17, 1.9 + _m.sin(ang) * 1.17, 0.70),
                  (0.38, 0.05, 0.48), wood)
 

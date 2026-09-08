@@ -71,6 +71,12 @@ def build_decor():
     # Chair at the desk, the jacket over its back (the sealed
     # envelope rides the inside pocket)
     make_box("Chair_Seat", (1.1, 3.75, 0.46), (0.40, 0.40, 0.04), COL_BED_FRAME)   # at the desk, facing it (2026-09-07)
+    # legs (2026-09-08)
+    for lx_ in (-1, 1):
+        for ly_ in (-1, 1):
+            make_box(f"Chair_Leg_{lx_:+d}_{ly_:+d}",
+                     (1.1 + lx_ * 0.16, 3.75 + ly_ * 0.16, 0.23),
+                     (0.035, 0.035, 0.46), COL_BED_FRAME)
     make_box("Chair_Back", (1.1, 3.57, 0.70), (0.40, 0.04, 0.50), COL_BED_FRAME)
     make_box("Jacket_Draped", (1.1, 3.54, 0.72), (0.44, 0.10, 0.46), (0.30, 0.28, 0.26, 1.0))
     # The Korea duffle, battered enough to look intentional

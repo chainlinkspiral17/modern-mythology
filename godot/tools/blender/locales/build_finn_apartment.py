@@ -109,6 +109,12 @@ def build_hero_props():
         make_box(f"KT_Leg_{lx:+.2f}_{ly:.2f}", (lx, ly, 0.37), (0.05, 0.05, 0.72), wood)
     for ci, cy in enumerate((0.95, 2.25)):
         make_box(f"KT_Chair_{ci}_Seat", (0.0, cy, 0.44), (0.40, 0.40, 0.05), wood)
+        # legs (2026-09-08)
+        for lx_ in (-1, 1):
+            for ly_ in (-1, 1):
+                make_box(f"KT_Chair_{ci}_Leg_{lx_:+d}_{ly_:+d}",
+                         (0.0 + lx_ * 0.16, cy + ly_ * 0.16, 0.215),
+                         (0.035, 0.035, 0.43), wood)
         make_box(f"KT_Chair_{ci}_Back", (0.0, cy + (0.18 if ci else -0.18), 0.72), (0.40, 0.05, 0.52), wood)
     # The folded cloth + three pieces of charred wood
     make_chamfer_box("Folded_Cloth", (0.0, 1.60, 0.775), (0.40, 0.30, 0.008), (0.82, 0.78, 0.68, 1.0))

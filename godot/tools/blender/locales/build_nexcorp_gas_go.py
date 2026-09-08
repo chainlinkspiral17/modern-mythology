@@ -328,6 +328,9 @@ def build_office():
     # Office chair
     make_box("OfficeChair_Seat", (dx, dy - 0.40, 0.46),
              (0.46, 0.46, 0.08), (0.18, 0.16, 0.16, 1.0))
+    # pedestal + base (2026-09-08: the seat hung in the air)
+    make_cyl("OfficeChair_Post", (dx, dy - 0.40, 0.22), 0.03, 0.44, COL_METAL_BLACK, segments=8)
+    make_cyl("OfficeChair_Base", (dx, dy - 0.40, 0.02), 0.28, 0.04, COL_METAL_BLACK, segments=12)
     make_box("OfficeChair_Back", (dx, dy - 0.62, 0.760),
              (0.46, 0.06, 0.50), (0.18, 0.16, 0.16, 1.0))
     # 4-drawer file cabinet (Skip's dispatch records)

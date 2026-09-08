@@ -78,6 +78,9 @@ def build_judge_bench_and_dais():
     # bench (2026-09-08: it stood in front of the bench on the floor,
     # its back panel running through the seat to the ground)
     make_box("Judge_Chair_Seat", (0.0, by+0.40, 0.75), (0.60, 0.50, 0.06), COL_LEATHER)
+    # pedestal + base (2026-09-08: the seat hung in the air)
+    make_cyl("Judge_Chair_Post", (0.0, by+0.40, 0.30 + (0.74 - 0.30) / 2.0), 0.03, 0.74 - 0.30, COL_WOOD_DARK, segments=8)
+    make_cyl("Judge_Chair_Base", (0.0, by+0.40, 0.30 + 0.02), 0.28, 0.04, COL_WOOD_DARK, segments=12)
     make_box("Judge_Chair_Back", (0.0, by+0.70, 1.38), (0.60, 0.10, 1.20), COL_LEATHER)
     # Gavel + sound block on the bench top
     make_box("Sound_Block", (-0.40, by+0.20, 1.46), (0.20, 0.16, 0.04), COL_BENCH_TOP)
@@ -94,9 +97,15 @@ def build_judge_bench_and_dais():
 def build_witness_stand():
     # Small box on the dais to the judge's right (E side)
     wx, wy = +2.40, ROOM_D - 2.40
-    make_box("Witness_Stand_Front", (wx, wy, 0.70), (0.60, 0.20, 1.00), COL_WOOD_DARK)
+    make_box("Witness_Stand_Front", (wx, wy, 0.60), (0.60, 0.20, 1.20), COL_WOOD_DARK)   # to the floor (2026-09-08)
     make_box("Witness_Stand_Top",   (wx, wy, 1.24), (0.70, 0.30, 0.04), COL_BENCH_TOP)
     make_box("Witness_Chair_Seat", (wx, wy-0.30, 0.46), (0.40, 0.40, 0.04), COL_LEATHER)
+    # legs (2026-09-08)
+    for lx_ in (-1, 1):
+        for ly_ in (-1, 1):
+            make_box(f"Witness_Chair_Leg_{lx_:+d}_{ly_:+d}",
+                     (wx + lx_ * 0.16, wy-0.30 + ly_ * 0.16, 0.23),
+                     (0.035, 0.035, 0.46), COL_WOOD_DARK)
     make_box("Witness_Chair_Back", (wx, wy-0.46, 0.86), (0.40, 0.06, 0.74), COL_LEATHER)
 
 
@@ -195,8 +204,11 @@ def build_justice_dressing():
       · The judge's gavel resting on the bench (it has not yet
         been used this morning)
     """
-    # Approximate plaintiff's table: (-1.6, +2.5); defense: (+1.6, +2.5)
-    table_top_z = 0.78
+    # The counsel tables (build_counsel_tables): plaintiff at x -1.50,
+    # defense at +1.50, both at y ROOM_D/2 - 0.50, top surface 0.76.
+    # (2026-09-08: this pass had them at y 2.5 — the first pew row —
+    # so Anna's pen and the caption page hovered over a pew.)
+    table_top_z = 0.76
 
     # ── DEPT 3 placard on the courtroom door (south wall) ──
     placard_x = -3.40
@@ -211,8 +223,8 @@ def build_justice_dressing():
              (0.20, 0.16, 0.10, 1.0))
 
     # ── Avant v. Tessier · case caption on plaintiff's table ──
-    pt_x = -1.60
-    pt_y = +2.50
+    pt_x = -1.50
+    pt_y = ROOM_D/2.0 - 0.50
     # Caption page (cream paper)
     make_box("AvantCaption_Page",
              (pt_x - 0.20, pt_y, table_top_z + 0.012),
@@ -249,8 +261,8 @@ def build_justice_dressing():
              segments=10, axis='Z')
 
     # ── Tessier's bound motion on defense table ──
-    dt_x = +1.60
-    dt_y = +2.50
+    dt_x = +1.50
+    dt_y = ROOM_D/2.0 - 0.50
     # Bound brief (heavier, oxblood)
     make_box("TessierBrief_Body",
              (dt_x - 0.16, dt_y, table_top_z + 0.020),
@@ -343,7 +355,7 @@ def build_justice_wave2_props():
       · Walter Reynaud's brown leather briefcase on the defense
         table (his silver-hair-tell)
     """
-    table_top_z = 0.78
+    table_top_z = 0.76     # counsel-table top surface (see build_counsel_tables)
 
     # ── chambers_at_nine ────────────────────────────────────────
     # Chambers corridor is off the courtroom's north wall behind the
@@ -448,24 +460,27 @@ def build_justice_wave2_props():
 
     # Lucien Avant alone in the second_pew (the second row from the
     # back). Public pews are behind the counsel-tables area.
-    avant_x = 0.0
-    avant_y = -1.80   # second pew
+    # (2026-09-08: he sat at (0, -1.8) — the centre aisle south of every
+    # pew, 0.76 m in the air. Pew rows are y 1.5 / 2.7 / 3.9 at x ±1.6;
+    # the second row's aisle end, west side, seat top 0.49.)
+    avant_x = -0.80
+    avant_y = 2.70    # second pew, aisle end
     # A single suit-shape approximation on the pew (a small hunched
     # figure). We'll use two boxes: torso + head. Existing pews
     # provide the seat.
     make_box("Avant_Suit_Torso",
-             (avant_x, avant_y, 0.98),
+             (avant_x, avant_y, 0.71),
              (0.30, 0.20, 0.44),
              (0.24, 0.20, 0.18, 1.0))   # dark suit
     make_cyl("Avant_Suit_Head",
-             (avant_x, avant_y, 1.30),
+             (avant_x, avant_y, 1.02),
              0.09, 0.14,
              (0.78, 0.62, 0.52, 1.0),   # skin-tone approx
              segments=10, axis='Z')
 
     # The supplemental disclosure folder on the plaintiff's table
-    pt_x = -1.60
-    pt_y = +2.50
+    pt_x = -1.50
+    pt_y = ROOM_D/2.0 - 0.50
     make_box("SupplementalDisclosure_Folder",
              (pt_x + 0.24, pt_y - 0.04, table_top_z + 0.020),
              (0.24, 0.32, 0.036),
@@ -482,8 +497,8 @@ def build_justice_wave2_props():
              (0.72, 0.72, 0.72, 1.0))
 
     # Walter Reynaud's brown leather briefcase on the defense table
-    dt_x = +1.60
-    dt_y = +2.50
+    dt_x = +1.50
+    dt_y = ROOM_D/2.0 - 0.50
     make_box("Reynaud_Briefcase_Body",
              (dt_x + 0.30, dt_y - 0.06, table_top_z + 0.09),
              (0.30, 0.20, 0.16),

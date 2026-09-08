@@ -689,6 +689,31 @@ failure paths separately before concluding anything.
   audits (ribbons themselves as fill) and are excluded from the
   overlap check. Do not "fix" this with a ceiling.
 
+### 2026-09-08 (night) · a class of 82 is a builder habit, not 82 bugs
+
+- **Group floats by part class before reading one.** 1408 FLOAT lines
+  were unreadable; 82 'seat' lines were one sentence: chairs get built
+  as seat + back and nobody adds legs. Fix the habit with one patcher
+  (seat centre ± offset, four posts rooted 2 cm) across sixteen files,
+  not sixteen hand edits.
+- **A prop "on a table" is on whatever the coordinates say.** Two
+  courthouse detail passes wrote `pt_y = 2.50` for the plaintiff's
+  table from a comment ("approximate") while the table stands at 5.5.
+  Every hero object of that chapter — caption, pen, folder, motion,
+  briefcase, two coffees — sat on a pew. When a detail pass hard-codes
+  a surface, derive it from the builder's own constant.
+- **Embedded is held.** A book inside a one-box bookshelf, a comic in
+  a rack body, a deck on a wall board: the solid spans the underside,
+  so it is not a float. Whether the embedding is ugly is the overlap
+  audit's question.
+- **Heightfield locales cannot say "nothing under it".** The terrain
+  is a raw mesh the recorder never boxes; skip that verdict there and
+  keep the sibling-gap one.
+- **Moving a hero object moves its insert.** The folder's marker was
+  framed at the pew; after the props moved, the pew back stood in the
+  lens. Re-run `--markers` on any locale whose named subjects moved
+  and reframe before commit.
+
 ### 2026-09-08 (later) · overlap inside an assembly is the grammar; POKE-THROUGH is the defect
 
 - **Inside one named assembly, overlap is how parts are joined.**

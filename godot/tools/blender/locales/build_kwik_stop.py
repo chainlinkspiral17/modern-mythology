@@ -2873,6 +2873,12 @@ def build_hero_props_2026_08():
             make_box(f"WinChair_{ti}_{ci}_Seat", (tx, cy, 0.44), (0.38, 0.38, 0.04), (0.62, 0.28, 0.24, 1.0))
             make_box(f"WinChair_{ti}_{ci}_Back", (tx, cy + (0.17 if ci else -0.17), 0.70),
                      (0.38, 0.04, 0.48), (0.55, 0.24, 0.20, 1.0))
+            # four legs (2026-09-08: the seats hung 0.42 m above the floor)
+            for lx in (-1, 1):
+                for ly in (-1, 1):
+                    make_box(f"WinChair_{ti}_{ci}_Leg_{lx:+d}_{ly:+d}",
+                             (tx + lx * 0.16, cy + ly * 0.16, 0.22),
+                             (0.03, 0.03, 0.44), steel)
     # THE MICROWAVE, its clock set nine minutes fast on purpose —
     # green LED face, on the coffee/food counter
     make_box("Microwave", (-4.6, 3.2, 1.22), (0.50, 0.36, 0.30), (0.26, 0.26, 0.28, 1.0))

@@ -2370,6 +2370,12 @@ def build_pond_water():
             _make_box_local(f"PondBench_{name}_{bi}_Seat",
                             (bx, by, bz + 0.43), seat_sz,
                             (0.42, 0.30, 0.20, 1.0))
+            # legs (2026-09-08)
+            for lx_ in (-1, 1):
+                for ly_ in (-1, 1):
+                    _make_box_local(f"PondBench_{name}_{bi}_Leg_{lx_:+d}_{ly_:+d}",
+                             (bx + lx_ * (seat_sz[0] / 2 - 0.08), by + ly_ * (seat_sz[1] / 2 - 0.08), bz + 0.21),
+                             (0.035, 0.035, 0.42), (0.30, 0.22, 0.16, 1.0))
             _make_box_local(f"PondBench_{name}_{bi}_Back",
                             (bx + back_off[0], by + back_off[1],
                              bz + 0.82),
@@ -4169,6 +4175,12 @@ def build_oliver_tree_skatepark():
         _make_box_local(f"Skp_Bench_{i}_Seat",
                         (bx, by, pz + 0.43), seat_sz,
                         (0.42, 0.30, 0.20, 1.0))
+        # legs (2026-09-08)
+        for lx_ in (-1, 1):
+            for ly_ in (-1, 1):
+                _make_box_local(f"Skp_Bench_{i}_Leg_{lx_:+d}_{ly_:+d}",
+                         (bx + lx_ * (seat_sz[0] / 2 - 0.08), by + ly_ * (seat_sz[1] / 2 - 0.05), pz + 0.21),
+                         (0.035, 0.035, 0.42), (0.30, 0.22, 0.16, 1.0))
         _make_box_local(f"Skp_Bench_{i}_Back",
                         (bx + bx_back, by + by_back, pz + 0.85),
                         back_sz, (0.42, 0.30, 0.20, 1.0))
@@ -9381,6 +9393,12 @@ def _build_suburban_house(name, cx, cy, ground_z, facing='-Y',
             _make_box_local(f"{name}_Patio_Chair_{ch_sgn:+d}_Seat",
                             (ch_x, ch_y, p_z + 0.45),
                             (0.45, 0.45, 0.06), col_chair)
+            # legs (2026-09-08)
+            for lx_ in (-1, 1):
+                for ly_ in (-1, 1):
+                    _make_box_local(f"{name}_Patio_Chair_{ch_sgn:+d}_Leg_{lx_:+d}_{ly_:+d}",
+                             (ch_x + lx_ * 0.18, ch_y + ly_ * 0.18, p_z + 0.22),
+                             (0.035, 0.035, 0.44), col_chair)
             _make_box_local(f"{name}_Patio_Chair_{ch_sgn:+d}_Back",
                             (ch_x + perp_x * ch_sgn * 0.20,
                              ch_y + perp_y * ch_sgn * 0.20,

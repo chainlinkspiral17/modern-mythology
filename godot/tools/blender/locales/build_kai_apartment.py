@@ -100,6 +100,12 @@ def build_hero_props():
     for lx, ly in ((0.18, 3.28), (1.02, 3.28), (0.18, 3.92), (1.02, 3.92)):
         make_box(f"KT_Leg_{lx:.2f}_{ly:.2f}", (lx, ly, 0.37), (0.05, 0.05, 0.72), wood)
     make_box("KT_Chair_Seat", (0.6, 2.95, 0.44), (0.40, 0.40, 0.05), wood)
+    # legs (2026-09-08)
+    for lx_ in (-1, 1):
+        for ly_ in (-1, 1):
+            make_box(f"KT_Chair_Leg_{lx_:+d}_{ly_:+d}",
+                     (0.6 + lx_ * 0.16, 2.95 + ly_ * 0.16, 0.215),
+                     (0.035, 0.035, 0.43), wood)
     make_box("KT_Chair_Back", (0.6, 2.77, 0.72), (0.40, 0.05, 0.52), wood)
     make_cyl("Water_Glass", (0.75, 3.55, 0.82), 0.035, 0.11, (0.55, 0.62, 0.66, 0.5), segments=8)
     make_wall_clock("Clock_Kitchen", (0.0, 4.95, 2.05), frozen_hour=7, frozen_min=8)
