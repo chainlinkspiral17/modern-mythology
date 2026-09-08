@@ -1187,10 +1187,27 @@ gated at 0. Every geometry class the grammar knows is now a zero
 gate except INTRA (massing, informational). Blind cues: ch10's
 `insert wooden_box` renamed to the cabin's authored `chest` marker;
 marker_author grew `--cue <locale>:<cue>` and authored the Houston
-design studio's phone and desk inserts and the bakery's chest for
-the box's second scene. What remains blind is honest: closeups of
+design studio's phone and desk inserts (the bakery already had the
+box's marker — the cabin section alone needed `chest`). What remains
+blind is honest (9): closeups of
 Coach Dale and Douglas (cast, substituted at runtime), "hands" ×2
 (a person's), a tattoo, a press and a window no builder has.
+
+**2026-09-10 (xiv) · every room gets its closeup frame.** 561 cued
+closeups of people resolved to no marker across 112 presets, and
+VnDirector's substitution then borrowed an INSERT of a prop for a
+line about a face. `marker_author.py --closeup` authored ONE
+`shot_closeup_person` per scene that had no closeup marker — a bust-
+height frame of the room's conversation spot (the preset camera's
+look-point 3 m out), 1.2–2.2 m off it, ≤ 25° down, passing the fill
+verdict: 81 rooms (three stuck: the darkroom, Kestrel, the tideline
+— no clear frame at that distance). The director's substitution now
+prefers it for every cast closeup in those rooms. Named `person`
+because the matcher splits CamelCase and "room" is a word in
+CardRoom / CountRoom / ChangeRoom. NEXT DRAFT: a second frame per
+room from the opposite side (`shot_closeup_person_b`) so shot/reverse
+shot alternates; the seeder could then cut cast closeups in rooms
+that only carry the generic frames.
 
 **2026-08-19 · PER-STICK VOICE SWEEP VERDICT (voice draft 4).**
 Ran the leakage grep (TODO/WIP/placeholder/implemented/deferred/

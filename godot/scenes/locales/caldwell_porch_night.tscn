@@ -358,3 +358,10 @@ metadata/fov = 42.0
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.180, 1.373, 2.726)
 rotation = Vector3(-0.2618, -3.1416, 0.0)
 metadata/fov = 42.0
+
+; the room's one closeup frame, authored by marker_author.py --closeup (2026-09-10):
+; every closeup of a person cued here cuts to it (the scene had no closeup marker)
+[node name="shot_closeup_person" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(0.848, 1.612, -2.628)
+rotation = Vector3(-0.2618, 2.0944, 0.0)
+metadata/fov = 45.0

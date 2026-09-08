@@ -483,3 +483,10 @@ light_color = Color(0.90, 0.16, 0.10, 1)
 light_energy = 0.8
 omni_range = 5.0
 shadow_enabled = false
+
+; the room's one closeup frame, authored by marker_author.py --closeup (2026-09-10):
+; every closeup of a person cued here cuts to it (the scene had no closeup marker)
+[node name="shot_closeup_person" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(-2.045, 1.612, -53.286)
+rotation = Vector3(-0.2618, 0.5236, 0.0)
+metadata/fov = 45.0

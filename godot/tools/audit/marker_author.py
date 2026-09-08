@@ -19,6 +19,7 @@ Markers are appended as position-form Marker3D nodes.
     python3 godot/tools/audit/marker_author.py --dry [locale…]
     python3 godot/tools/audit/marker_author.py [locale…]
     python3 godot/tools/audit/marker_author.py --cue <locale>:<cue>…   # one marker for a blind cue
+    python3 godot/tools/audit/marker_author.py --closeup [locale…]     # a room's one closeup frame
 """
 import collections
 import json
@@ -209,10 +210,80 @@ def author_cue(locale, cue, dry):
     return 0
 
 
+def author_closeup(locale, dry):
+    """--closeup: a room's ONE generic closeup frame — `shot_closeup_person`
+    — for scenes whose chapters cue closeups of PEOPLE but carry no
+    closeup marker at all (112 presets, 561 cues). VnDirector borrows
+    any closeup marker for a missing one, so this single frame is what
+    every cast closeup in the room cuts to: a bust-height frame of the
+    room's conversation spot (the preset camera's look-point 3 m out),
+    1.2–2.2 m off it, ≤ 25° down, passing the gate's fill verdict."""
+    path = os.path.join(M.LOCALES_TSCN, locale + ".tscn")
+    src_txt = open(path).read()
+    if 'name="shot_closeup_' in src_txt:
+        return 0
+    gm = re.search(r'path="res://assets/3d/locales/(\w+)\.glb"', src_txt)
+    glb = gm.group(1) if gm else locale
+    cams = preset_cameras()
+    cam = None
+    rot = None
+    csrc = open(BG3D).read()
+    for m in re.finditer(r'"(\w+)":\s*\{(.*?)\n\t\}', csrc, re.S):
+        body = m.group(2)
+        if ('"scene": "res://scenes/locales/%s.tscn"' % locale) in body:
+            cm = re.search(r'"camera_origin":\s*Vector3\(([^)]+)\)', body)
+            rm = re.search(r'"camera_rotation":\s*Vector3\(((?:[^()]|\([^()]*\))+)\)', body)
+            if cm and rm:
+                def _num(v):
+                    v = v.strip()
+                    dm = re.match(r"deg_to_rad\(([-0-9.]+)\)", v)
+                    return math.radians(float(dm.group(1))) if dm else float(v)
+                try:
+                    cam = tuple(_num(v) for v in cm.group(1).split(","))
+                    rot = tuple(_num(v) for v in re.split(r",(?![^(]*\))", rm.group(1)))
+                except ValueError:
+                    cam = rot = None
+                break
+    boxes = VO.boxes_for(glb)
+    if cam is None or not boxes or sum(1 for b in boxes if not VO.IGNORE.search(b[0])) < 20:
+        return 0
+    lo, hi = R.locale_bounds(boxes)
+    fwd = (-math.sin(rot[1]) * math.cos(rot[0]), math.sin(rot[0]), -math.cos(rot[1]) * math.cos(rot[0]))
+    tgt = (cam[0] + fwd[0] * 3.0, 1.25, cam[2] + fwd[2] * 3.0)
+    hits = [("_room", tgt)]
+    for score, npos, d, el in R.candidates(tgt, 0.6, cam, boxes, set(), lo, hi, hits):
+        if d < 1.2 or d > 2.2 or el > 25.0:
+            continue
+        rx, ry = R.aim(npos, tgt)
+        st = VO.frame_stats(R.to_b(npos), rx, ry, 45.0, boxes)
+        if VO.verdict(st) or VO.inside_any(R.to_b(npos), boxes):
+            continue
+        print("== %-28s shot_closeup_person at (%.1f, %.1f, %.1f) %.1fm · %+.0f° median %.1f distinct %d" % (locale, npos[0], npos[1], npos[2], d, el, st["median"], st["distinct"]))
+        if not dry:
+            blk = ["", "; the room's one closeup frame, authored by marker_author.py --closeup (2026-09-10):",
+                   "; every closeup of a person cued here cuts to it (the scene had no closeup marker)",
+                   '[node name="shot_closeup_person" type="Marker3D" parent="." groups=["vn_shot"]]',
+                   "position = Vector3(%.3f, %.3f, %.3f)" % npos,
+                   "rotation = Vector3(%.4f, %.4f, 0.0)" % (rx, ry),
+                   "metadata/fov = 45.0", ""]
+            with open(path, "a") as f:
+                f.write("\n".join(blk))
+        return 1
+    print("== %-28s stuck: no clear closeup frame" % locale)
+    return 0
+
+
 def main():
     dry = "--dry" in sys.argv
     only = [a for a in sys.argv[1:] if not a.startswith("--")]
     P.A.install_stubs()
+    if "--closeup" in sys.argv:
+        n = 0
+        for fn in sorted(os.listdir(M.LOCALES_TSCN)):
+            if fn.endswith(".tscn") and (not only or fn[:-5] in only):
+                n += author_closeup(fn[:-5], dry)
+        print("\n%d closeup frame(s) %s" % (n, "planned" if dry else "authored"))
+        return
     if "--cue" in sys.argv:
         n = 0
         for a in only:

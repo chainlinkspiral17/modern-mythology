@@ -327,3 +327,10 @@ script = ExtResource("14_dbgm")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.6, 0.8, -3.15)
 rotation = Vector3(-0.6891, -0.0000, 0.0)
 metadata/fov = 42.0
+
+; the room's one closeup frame, authored by marker_author.py --closeup (2026-09-10):
+; every closeup of a person cued here cuts to it (the scene had no closeup marker)
+[node name="shot_closeup_person" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(-1.568, 1.612, -2.083)
+rotation = Vector3(-0.2618, -0.7854, 0.0)
+metadata/fov = 45.0
