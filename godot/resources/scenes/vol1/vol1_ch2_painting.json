@@ -49,7 +49,7 @@
   },
   {
    "t": "narrate",
-   "text": "Faust paints."
+   "text": "[shot:insert paint_table]Faust paints."
   },
   {
    "t": "say",

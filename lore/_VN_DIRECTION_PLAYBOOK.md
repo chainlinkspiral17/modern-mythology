@@ -224,6 +224,17 @@ no-op (fallback discipline — a script must never crash the reader).
   kept the previous room's inserts cut to phones and packets that
   are not there. The blind-cue audit caught it in the same run —
   run it after every seeding, before commit.
+- **A room with no markers is a room where every cue is silent.**
+  21 scenes had none; the director's substitution needs at least
+  one same-type marker to have anything to cut to. `marker_author.py`
+  gives a marker-less room its first four inserts (prose-anchored
+  hero objects, positioned by the reframe search, resolved by the
+  gates' matcher). Run it on any NEW locale before its first chapter
+  ships; run the seeder after.
+- **Name a marker so the matcher can read it.** `shot_insert_stormheap`
+  resolves to nothing — the matcher splits CamelCase names into
+  words and matches words. `shot_insert_storm_heap` does. Multi-word
+  cues match the flattened name; single words must equal a part.
 - **A seeded cut is a draft, not direction.** The tool cannot know
   the line a chapter turns on; it knows where the teacup is named.
   The Deck read is what decides whether a cut lands; expect to

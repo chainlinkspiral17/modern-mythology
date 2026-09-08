@@ -1052,6 +1052,32 @@ chapter's authored closeups were silent no-ops; shot_closeup_paul (on
 the church steps) and shot_closeup_maya (on the gravel path) are
 authored now, both clear on the marker gates.
 
+**2026-09-10 (v) · marker_author.py — 21 marker-less scenes get their
+first inserts.** Counting closeup cues that resolve to no marker
+found 561 across 83 presets, and 21 scenes with NO vn_shot markers at
+all (Faust's apartment, the pharmacy, the skatepark, Briar Falls, the
+cliffside circus, the school newspaper, Little Switzerland, El Rancho,
+the gym, Kai's, the equipment shed, Coach K's and Graciela's rooms,
+Miller's garage, the Caldwell kitchen, the Foxhole dressing room, the
+cemetery, the crumpled barn, Wagner's, the bar exterior, the carnival
+lot). VnDirector already substitutes a same-type marker for a missing
+one, so a room with ANY insert cuts somewhere real; a room with none
+holds the wide for every cue. New tool `marker_author.py`: for each
+marker-less scene, up to four `shot_insert_<object>` markers on its
+hero assemblies — prose-anchored first (the objects the chapters set
+there actually name), then the largest — positioned by
+marker_reframe's ring search from the preset camera's side, cue names
+CamelCase-split so the gates' matcher resolves them, judged by the
+gates' own occlusion and empty-frame tests. 77 markers; 0 misaims, 0
+obstructed. shot_seed --light then cut the ten vol1/vol2 chapters set
+in those rooms (+10: Faust's mirror and paint table, the pharmacy
+office, the Briar Falls pay phone and trail, Little Switzerland's sign
+and house, the newspaper's driftwood). NEXT DRAFT: the 535 cues the
+seeder would add to the mid-density vol6/vol7 chapters wait on the
+Deck read of the first passes; closeup markers for the cast (the 561)
+need staged cast positions — gate 2 (character GLBs) — or a
+`shot_closeup` generic per room the director prefers over an insert.
+
 **2026-08-19 · PER-STICK VOICE SWEEP VERDICT (voice draft 4).**
 Ran the leakage grep (TODO/WIP/placeholder/implemented/deferred/
 stub) and a string survey across EVERY stick directory: estuary_4,

@@ -306,3 +306,24 @@ offset_top = 360.0
 offset_right = 520.0
 offset_bottom = 980.0
 script = ExtResource("14_dbgm")
+
+; first inserts, authored by marker_author.py (2026-09-10): the locale had no vn_shot markers
+[node name="shot_insert_rack" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(-0.992, 2.345, -0.450)
+rotation = Vector3(-0.3687, -1.1464, 0.0)
+metadata/fov = 35.0
+
+[node name="shot_insert_folding" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(1.450, 1.742, -0.386)
+rotation = Vector3(-0.6734, 0.8986, 0.0)
+metadata/fov = 35.0
+
+[node name="shot_insert_drum" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(0.637, 0.520, -0.706)
+rotation = Vector3(-0.5236, 1.3090, 0.0)
+metadata/fov = 35.0
+
+[node name="shot_insert_setlist" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(1.007, 1.726, -0.648)
+rotation = Vector3(-0.2618, -1.3090, 0.0)
+metadata/fov = 35.0

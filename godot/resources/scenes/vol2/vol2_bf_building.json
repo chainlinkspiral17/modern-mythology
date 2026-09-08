@@ -39,7 +39,7 @@
   },
   {
    "t": "narrate",
-   "text": "You stand in the alcove a moment longer. The pay phone does not ring. You were not expecting it to."
+   "text": "[shot:insert phone]You stand in the alcove a moment longer. The pay phone does not ring. You were not expecting it to."
   },
   {
    "t": "jump",

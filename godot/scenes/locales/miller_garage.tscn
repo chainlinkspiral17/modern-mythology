@@ -310,3 +310,24 @@ offset_top = 360.0
 offset_right = 520.0
 offset_bottom = 980.0
 script = ExtResource("14_dbgm")
+
+; first inserts, authored by marker_author.py (2026-09-10): the locale had no vn_shot markers
+[node name="shot_insert_tool_chest" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(1.115, 1.640, -1.295)
+rotation = Vector3(-0.8406, -2.1027, 0.0)
+metadata/fov = 35.0
+
+[node name="shot_insert_tool" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(-0.128, 2.050, -2.012)
+rotation = Vector3(-0.5445, -2.0428, 0.0)
+metadata/fov = 35.0
+
+[node name="shot_insert_water_heater" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(-0.884, 1.908, -3.734)
+rotation = Vector3(-0.2618, 0.7854, 0.0)
+metadata/fov = 35.0
+
+[node name="shot_insert_furnace" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(-0.594, 1.237, -3.984)
+rotation = Vector3(-0.2618, 0.7854, 0.0)
+metadata/fov = 35.0
