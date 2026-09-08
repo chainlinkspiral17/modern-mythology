@@ -205,7 +205,7 @@ def build_living_room_tv_corner():
     tx, ty = +3.20, 0.80
     make_box("TV_Case", (tx, ty, 0.40),
              (0.60, 0.50, 0.50), COL_TV_CASE)
-    make_box("TV_Screen", (tx, ty - 0.26, 0.46),
+    make_box("TV_Screen", (tx, ty + 0.26, 0.46),      # faces the room (2026-09-10: it faced the S wall)
              (0.40, 0.005, 0.30), COL_TV_SCREEN)
     make_box("TV_Stand", (tx, ty, 0.16),
              (0.60, 0.50, 0.04), COL_WOOD_TRIM)
