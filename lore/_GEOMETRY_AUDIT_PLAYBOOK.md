@@ -689,6 +689,17 @@ failure paths separately before concluding anything.
   audits (ribbons themselves as fill) and are excluded from the
   overlap check. Do not "fix" this with a ceiling.
 
+### 2026-09-10 · OUTSIDE: legs to the floor hide a prop in the parking lot
+
+- **A phantom surface with legs passes the float audit.** Daigle's
+  "your stool" stood at y -3.5 with four chrome legs to z 0 — outside
+  the south wall — and no gate saw it. The class is "touches no floor
+  box" in interior locales, with exterior views (thru-window trees,
+  facades, cars, docks, stairs leaving the slab) excluded.
+- **"approx at (x, y)" in a detail-pass docstring is the bug's
+  signature.** Eight locales now. The fix is always the same line:
+  read the surface from the builder's constant, never from a comment.
+
 ### 2026-09-09 (night) · the residue is the vocabulary
 
 - **When a count stops shrinking by class, the rest is vocabulary.**

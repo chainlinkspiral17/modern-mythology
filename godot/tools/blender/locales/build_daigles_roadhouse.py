@@ -172,9 +172,13 @@ def build_devil_dressing():
       · A door-counter sign on the front door · "6 STEPS" (the
         canonical line: "six steps from your stool")
     """
-    # Bar approx along Y = -3.5; Lou's station at around (-1.5, -3.5)
-    bar_cy = -3.5
-    bar_top_z = 1.05
+    # THE BAR (build_bar): along the N wall at y ROOM_D-0.40, 5.5 × 0.5,
+    # top surface 1.13. Lou works its north side; the customer side is
+    # south. (2026-09-09: this pass had the bar at y -3.5 — outside the
+    # building's south wall — so Lou's glass, the register, the tab
+    # and "your stool" all stood in the parking lot.)
+    bar_cy = ROOM_D - 0.40
+    bar_top_z = 1.13
 
     # Lou's polished glass + bar towel
     lou_x = -1.5
@@ -195,26 +199,26 @@ def build_devil_dressing():
     reg_x = +2.0
     # Wall-mounted clip strip just behind the bar (north side of bar)
     make_box("TabClip_Strip",
-             (reg_x - 0.40, bar_cy + 0.50, bar_top_z + 0.22),
+             (reg_x - 0.40, bar_cy + 0.15, bar_top_z + 0.22),
              (0.40, 0.04, 0.04),
              (0.42, 0.32, 0.20, 1.0))
     # 4 brass clips on the strip
     for ci, cx_off in enumerate([-0.16, -0.05, +0.05, +0.16]):
         make_box("TabClip_%d" % ci,
-                 (reg_x - 0.40 + cx_off, bar_cy + 0.48, bar_top_z + 0.22),
+                 (reg_x - 0.40 + cx_off, bar_cy + 0.13, bar_top_z + 0.22),
                  (0.04, 0.005, 0.04),
                  (0.78, 0.62, 0.30, 1.0))
     # The tab paper hanging from the clip nearest the register (rightmost)
     tab_x = reg_x - 0.40 + 0.16
     make_box("MyTab_Paper",
-             (tab_x, bar_cy + 0.481, bar_top_z + 0.10),
+             (tab_x, bar_cy + 0.131, bar_top_z + 0.10),
              (0.08, 0.001, 0.20),
              (0.94, 0.90, 0.80, 1.0))
     # Tally marks on the tab — 6 darker hashes (one for each round you remember + 1)
     for hi in range(6):
         make_box("MyTab_Hash_%d" % hi,
                  (tab_x - 0.025 + (hi % 3) * 0.025,
-                  bar_cy + 0.4815,
+                  bar_cy + 0.1315,
                   bar_top_z + 0.12 - (hi // 3) * 0.04),
                  (0.005, 0.0005, 0.020),
                  (0.20, 0.16, 0.12, 1.0))
@@ -269,7 +273,7 @@ def build_devil_dressing():
     # "Your stool" with the worn seat ring
     # Stool approx at (0.0, -2.6) — across the bar from Lou
     stool_x = 0.0
-    stool_y = bar_cy + 0.80
+    stool_y = bar_cy - 0.80      # the customer side, six steps from the door
     # Stool seat (round disc, oxblood leather)
     make_cyl("YourStool_Seat",
              (stool_x, stool_y, 0.74),

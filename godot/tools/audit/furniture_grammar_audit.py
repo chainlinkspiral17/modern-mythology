@@ -210,6 +210,37 @@ def check_intra(boxes):
     return out
 
 
+FLOORISH = re.compile(r"(floor|(^|_)(slab|ground|lawn|deck|walk|asphalt|lot|plaza|path|terrace|patio|porch|dais|stage|platform|apron|driveway|road|sidewalk|yard|grass|dirt|gravel|pavement|court|field|carpet|rug|tile))", re.I)
+EXTERIORISH = re.compile(r"(dock|wharf|pier|thru|across|facade|alley|siding|hull|ripple|stair|step|tread|pickup|subaru|sedan|dumpster|niche|recess|armory|island|pump|rootball|easel|shovel|wall|ceil|roof|window|win_|door|frame|sky|horizon|far|band|void|outside|exterior|beyond|distant|hwy|highway|tree|shrub|hedge|bush|cypress|oak|pine|palm|cloud|moon|sun$|star|mountain|hill|ridge|cliff|river|bayou|water|sea|lake|boat|marsh|fog|haze|glow|light|lamp|neon|sign|pole|post|fence|gate|rail|mail|hydrant|car|truck|van|bike|street|curb|terrain|_z_|^z_|zone|outline|plane|backdrop|cyclorama|silhouette|beacon|antenna|chimney|awning|eave|gutter|downspout|planter|bench|wire|cable|smoke|steam|bird|crow|gull|leaf|leaves|branch|trunk|canopy|foliage|shadow|stain|wear|seam|grout|crack|puddle|drip|ember|spark|dust|mote)", re.I)
+
+
+def check_outside(boxes):
+    """OUTSIDE: an interior prop whose footprint touches no floor-class
+    box — a chair authored past the wall, a table at coordinates from
+    another room's frame. Only for locales that HAVE floor boxes and
+    only for props that are not themselves exterior/architecture."""
+    floors = [b for b in boxes if FLOORISH.search(b[0]) and not VO.PASSABLE.search(b[0])
+              and max(b[2][0], b[2][1]) * 2 >= 1.5 and b[2][2] * 2 < 0.6]
+    if not floors or max(max(b[2][0], b[2][1]) * 2 for b in floors) > 40.0:
+        return []          # exteriors and terrains: props stand on ground, not on a floor box
+    out = []
+    for n, c, h in boxes:
+        if VO.IGNORE.search(n) or FLOORISH.search(n) or EXTERIORISH.search(n) or MOUNTED.search(n):
+            continue
+        if min(h) * 2 < 0.02 or c[2] - h[2] > 2.6:
+            continue
+        lo, hi = box_lohi((n, c, h))
+        held = False
+        for f in floors:
+            flo, fhi = box_lohi(f)
+            if not (hi[0] < flo[0] or lo[0] > fhi[0] or hi[1] < flo[1] or lo[1] > fhi[1]):
+                held = True
+                break
+        if not held:
+            out.append((n, c))
+    return out
+
+
 def check_poke(boxes):
     """POKE-THROUGH: a thin member of an assembly (a post, a pole, a leg,
     a spindle — min xy side ≤ POKE_THIN) that passes CLEAN THROUGH a solid
@@ -463,14 +494,17 @@ def main():
             continue
         intra = check_intra(boxes)
         poke = check_poke(boxes)
+        outside = check_outside(boxes)
         flt = check_float(boxes, terrain=locale in TERRAIN_LOCALES)
         chairs = check_chairs(boxes)
         desks = [] if locale in DESK_FREESTANDING_LOCALES else check_desks(boxes)
         lanes = check_lanes(boxes)
-        n = len(intra) + len(poke) + len(flt) + len(chairs) + len(desks) + len(lanes)
+        n = len(intra) + len(poke) + len(flt) + len(chairs) + len(desks) + len(lanes) + len(outside)
         if not n:
             continue
-        print("== %s · INTRA %d · POKE %d · FLOAT %d · CHAIR %d · DESK %d · LANE %d" % (locale, len(intra), len(poke), len(flt), len(chairs), len(desks), len(lanes)))
+        print("== %s · INTRA %d · POKE %d · FLOAT %d · CHAIR %d · DESK %d · LANE %d · OUTSIDE %d" % (locale, len(intra), len(poke), len(flt), len(chairs), len(desks), len(lanes), len(outside)))
+        for nme, c in outside[:12]:
+            print("   OUTSIDE      %-28s at (%.1f, %.1f) touches no floor" % (nme, c[0], c[1]))
         for pre, a, b, pen in sorted(intra, key=lambda r: -r[3])[:12]:
             print("   INTRA %.2fm  %-28s x %-28s" % (pen, a, b))
         for pre, a, b, proud in sorted(poke, key=lambda r: -r[3])[:12]:
@@ -483,10 +517,10 @@ def main():
             print("   DESK         %-28s at (%.1f, %.1f) touches no wall" % (nme, c[0], c[1]))
         for pre, road, d in lanes:
             print("   LANE  %.1fm  %-28s in the travel lane of %s" % (d, pre, road))
-        for k, v in (("INTRA", len(intra)), ("POKE", len(poke)), ("FLOAT", len(flt)), ("CHAIR", len(chairs)), ("DESK", len(desks)), ("LANE", len(lanes))):
+        for k, v in (("INTRA", len(intra)), ("POKE", len(poke)), ("FLOAT", len(flt)), ("CHAIR", len(chairs)), ("DESK", len(desks)), ("LANE", len(lanes)), ("OUTSIDE", len(outside))):
             totals[k] += v
-    print("\nfurniture_grammar_audit · INTRA %d · POKE %d · FLOAT %d · CHAIR %d · DESK %d · LANE %d" % (
-        totals["INTRA"], totals["POKE"], totals["FLOAT"], totals["CHAIR"], totals["DESK"], totals["LANE"]))
+    print("\nfurniture_grammar_audit · INTRA %d · POKE %d · FLOAT %d · CHAIR %d · DESK %d · LANE %d · OUTSIDE %d" % (
+        totals["INTRA"], totals["POKE"], totals["FLOAT"], totals["CHAIR"], totals["DESK"], totals["LANE"], totals["OUTSIDE"]))
 
 
 if __name__ == "__main__":

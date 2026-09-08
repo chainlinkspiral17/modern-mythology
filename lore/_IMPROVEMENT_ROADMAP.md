@@ -947,6 +947,29 @@ when the builder has the object. Story gate green, blind cues 10.
 NEXT DRAFT: Deck read of the Kwik Stop chapter (33 cuts over 312
 nodes is the densest) before the early-arcana pass.
 
+**2026-09-10 · OUTSIDE — the class the phantom passes could still
+hide in.** A prop with legs to the floor never floats, so a stool
+authored outside the building passed every gate. New grammar class
+OUTSIDE: in an interior locale (floor boxes under 40 m), a prop whose
+footprint touches no floor-class box and is not an exterior view
+(thru-window trees, facades, alleys, cars, siding, docks, stairs
+leaving the slab). First run found two more phantom passes: DAIGLE'S
+"your stool", Lou's glass and towel, the register and the tab were
+authored along y -3.5 — the parking lot — while the bar runs along
+the north wall at y 7.1 (moved: Lou north of the bar, the stool on
+the customer side, the register and tab on the 0.5 m bar instead of
+0.48 m past its edge); CHRISTIAN ICE's two counter passes (Couvillon's
+ledger at (2, 0), Marcy's notepad and Mrs Aucoin's étouffée at
+(0, -1.2)) while the counter stands at (0, 2.4) — moved. Repo-wide
+OUTSIDE is now 0 in interiors; informational (exteriors and terrains
+skip it). Six locales have now had the phantom-surface bug
+(courthouse, lighthouse, Frog, Mixing Glass, Bianca, darkroom,
+Daigle's, ice house — eight); every "detail pass" docstring that says
+"approx at" is the tell. Deck rebuild: daigles_roadhouse,
+christian_ice_co. NEXT DRAFT: grep every builder for "approx" in a
+detail-pass and verify each against the builder's own constant —
+the last of this class by reading, not by audit.
+
 **2026-08-19 · PER-STICK VOICE SWEEP VERDICT (voice draft 4).**
 Ran the leakage grep (TODO/WIP/placeholder/implemented/deferred/
 stub) and a string survey across EVERY stick directory: estuary_4,

@@ -202,9 +202,11 @@ def build_star_dressing():
              (0.42, 0.52, 0.62, 1.0))
 
     # Mr Couvillon's customer ledger on the retail counter
-    rc_x = +2.0
-    rc_y = 0.0
-    counter_z = 1.05
+    # The retail counter (build_counter): (0, 2.40), 3.4 × 0.6, top 1.02.
+    # (2026-09-09: this pass had it at (2, 0) — open floor.)
+    rc_x = +0.9
+    rc_y = 2.40
+    counter_z = 1.02
     make_box("CouvillonLedger_Cover",
              (rc_x, rc_y, counter_z + 0.020),
              (0.32, 0.40, 0.040),
@@ -259,8 +261,8 @@ def build_star_wave2_props():
       · The Bunn tab of a hundred paper cups (a tall stack)
     """
     rc_x = 0.0
-    rc_y = -1.20
-    counter_z = 0.90
+    rc_y = 2.40           # the real counter (see above); was (0, -1.2), a metre off the floor's edge
+    counter_z = 1.02
 
     # ── the_notice_in_the_picayune ──────────────────────────────
 
