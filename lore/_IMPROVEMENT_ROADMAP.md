@@ -756,6 +756,45 @@ each class either a builder fix or a grammar rule, never a ceiling
 bump; the same road-clearance rule for `meadowlark_circle`'s and
 `harmony_commercial`'s hand-placed cars (they pass today by hand).
 
+**2026-09-08 (later) · INTRA read as JOINTS; the POKE class; ten real
+clips fixed.** The INTRA 4544 grouped by part-class pair was 95 % the
+rooting grammar itself — curb over road edge, post rooted in slab,
+mullion in rail, door in wall, head on body — so INTRA now treats
+penetration ≤ 0.25 m inside ONE named assembly as a joint and laid
+paving pairs as laid: 4544 → 174 (massing residue: a church tower
+through its nave, quoins in a corner, a beacon top on its pole). What
+the Deck actually saw ("chairs not fully assembled", "exploded office
+chair") was a MEMBER PASSING CLEAN THROUGH a solid — a new class, POKE:
+a post/leg (thin in both plan dims) or a chair BACK whose top stands
+proud of a same-assembly solid AND whose bottom runs out below it.
+Sheets (back panels through shelves, glass, jambs, door frames) and
+ground slabs (a post rooted through a deck) are excluded. First run
+198 → real ones fixed in ten builders: the courthouse judge's chair
+moved ONTO the dais behind the bench (it stood on the floor in front,
+back panel to the ground); the Foxhole folding-chair backs onto the
+seat edge; Simon's tipped chair rebuilt lying on its back (it was an
+upright chair sunk half into the floor); the Bayou/WGUR desk drawers
+between their side panels; the Foxhole hi-hat out of the snare; the
+Roberts faucet rising from the counter; Le Roulant's LE ROULANT
+letters above the cornice with the neon wheel above them; the Centro
+stockroom's door coil ending inside its tracks; the riverboat's spiral
+stair rail post out of tread 1's sweep. Deep INTRA
+residue fixed too: the bungalow fridge at the END of the counter run,
+Cedar Tower footlockers in front of the bunks, the Kwik pylon pole
+ending inside its cabinet, the diner pickup given a hood with the cab
+ahead of the bed (it sat 1.25 m inside it), the Kwik Stop aisles
+shifted east so the endcaps clear the counter (and sit at the aisles'
+ends, not between them). POKE gated at 0 with CHAIR · DESK · LANE.
+Deck rebuild: courthouse_chamber, foxhole_dressing_room,
+foxhole_stage, simon_apartment, bayou_lighthouse,
+wgur_transmitter_shack, roberts_kitchen, graustark, bungalow,
+cedar_tower, harmony_commercial, diner, harmony_terrain,
+centro_stockroom, riverboat_interior. NEXT DRAFT:
+the FLOAT 1408 by class the same way (graustark 230, harmony 354
+first — expect the same split between real hangs and mounted things
+the grammar doesn't know yet); the INTRA 174 massing residue is a
+design read, not a defect list — leave it informational.
+
 **2026-08-19 · PER-STICK VOICE SWEEP VERDICT (voice draft 4).**
 Ran the leakage grep (TODO/WIP/placeholder/implemented/deferred/
 stub) and a string survey across EVERY stick directory: estuary_4,

@@ -1026,8 +1026,8 @@ def build_signage_pylons():
     # Kwik Stop pylon — RED sign cabinet at top (the lithograph
     # red bleed gate fires on this from across the intersection)
     px, py = KWIK_CX + KWIK_W / 2 + 3.0, KWIK_CY - KWIK_L / 2 - 4.5
-    make_cyl("KwikPylon_Pole", (px, py, GROUND_Z + PYLON_H / 2),
-             0.18, PYLON_H, COL_UTIL_POLE, segments=8)
+    make_cyl("KwikPylon_Pole", (px, py, GROUND_Z + (PYLON_H - 1.5) / 2),
+             0.18, PYLON_H - 1.5, COL_UTIL_POLE, segments=8)   # ends mid-cabinet
     make_box("KwikPylon_Cabinet",
              (px, py, GROUND_Z + PYLON_H - 1.5),
              (3.5, 0.40, 2.8), COL_KWIK_SIGN_RED)

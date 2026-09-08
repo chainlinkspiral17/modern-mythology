@@ -150,9 +150,9 @@ def build_north_appliances():
              (1.80, 0.70, 0.84), PAL_DOMESTIC_COUNTER["kick"])
     make_box("Sink_Bowl", (-2.0, 5.50, 0.86),
              (0.80, 0.50, 0.16), COL_APPLIANCE)
-    make_cyl("Sink_Faucet", (-2.0, 5.40, 1.00),
-             0.015, 0.30, P.METAL_STEEL)
-    make_box("Sink_Faucet_Spout", (-2.0, 5.50, 1.14),
+    make_cyl("Sink_Faucet", (-2.0, 5.40, 1.06),
+             0.015, 0.28, P.METAL_STEEL)      # rises from the counter top (0.92)
+    make_box("Sink_Faucet_Spout", (-2.0, 5.50, 1.18),
              (0.04, 0.20, 0.04), P.METAL_STEEL)
     # Stove
     make_box("Stove_Body", (0.0, 5.60, 0.45),

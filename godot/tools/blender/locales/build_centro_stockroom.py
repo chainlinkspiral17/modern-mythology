@@ -94,7 +94,7 @@ def build_dock():
     apron outside — 'The dock is empty. The truck has not come yet.'"""
     dock_w = 3.0
     # Rolled coil above the opening
-    make_cyl("Dock_Coil", (0.0, ROOM_D - 0.10, CEIL - 1.25), 0.22, dock_w + 0.2,
+    make_cyl("Dock_Coil", (0.0, ROOM_D - 0.10, CEIL - 1.25), 0.22, dock_w,   # ends inside the tracks
              COL_DOOR, segments=14, axis='X')
     # Door tracks
     for sgn in (-1, 1):

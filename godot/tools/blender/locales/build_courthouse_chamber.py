@@ -74,9 +74,11 @@ def build_judge_bench_and_dais():
     # Side wings
     make_box("Bench_Wing_W", (-1.80, by-0.10, 1.20), (0.20, 0.60, 1.80), COL_WOOD_DARK)
     make_box("Bench_Wing_E", (+1.80, by-0.10, 1.20), (0.20, 0.60, 1.80), COL_WOOD_DARK)
-    # Judge's high-back chair (S-facing)
-    make_box("Judge_Chair_Seat", (0.0, by-0.40, 0.66), (0.60, 0.50, 0.06), COL_LEATHER)
-    make_box("Judge_Chair_Back", (0.0, by-0.50, 1.20), (0.60, 0.10, 1.20), COL_LEATHER)
+    # Judge's high-back chair (S-facing) — ON THE DAIS behind the
+    # bench (2026-09-08: it stood in front of the bench on the floor,
+    # its back panel running through the seat to the ground)
+    make_box("Judge_Chair_Seat", (0.0, by+0.40, 0.75), (0.60, 0.50, 0.06), COL_LEATHER)
+    make_box("Judge_Chair_Back", (0.0, by+0.70, 1.38), (0.60, 0.10, 1.20), COL_LEATHER)
     # Gavel + sound block on the bench top
     make_box("Sound_Block", (-0.40, by+0.20, 1.46), (0.20, 0.16, 0.04), COL_BENCH_TOP)
     make_cyl("Gavel_Handle", (-0.40, by+0.20, 1.52), 0.018, 0.20, COL_GAVEL, axis='X')

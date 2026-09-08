@@ -80,7 +80,7 @@ def build_keepers_quarters():
     # Writing desk against the E wall
     dx, dy = +RADIUS - 0.80, -0.20
     make_box("Desk_Top", (dx, dy, 0.74), (0.80, 0.50, 0.04), COL_DESK)
-    make_box("Desk_Drawer", (dx, dy, 0.52), (0.78, 0.46, 0.20), COL_DESK)
+    make_box("Desk_Drawer", (dx, dy, 0.52), (0.60, 0.46, 0.20), COL_DESK)   # between the side panels
     for sgn in (-1, +1):
         make_box(f"Desk_Leg_{sgn:+d}", (dx + sgn*0.34, dy, 0.36), (0.06, 0.46, 0.72), COL_DESK)
     # Logbook + oil lamp on the desk

@@ -2404,13 +2404,16 @@ def _build_wheel_casino():
             (W + 0.4 - i * 0.1, D + 0.4 - i * 0.1, h),
             (0.86, 0.82, 0.74, 1.0))
     # Parapet sign back-board
+    # (2026-09-08: the sign stack re-spaced — letters above the cornice,
+    # the neon wheel above the letters; the letters used to sit inside
+    # the cornice plates)
     ht._make_box_local("Wheel_Casino_ParapetBack",
-                       (cx, cy - D / 2 + 0.10, gz + H + 2.0),
-                       (W * 0.85, 0.30, 3.6),
+                       (cx, cy - D / 2 + 0.10, gz + H + 2.2),
+                       (W * 0.85, 0.30, 4.0),
                        (0.32, 0.30, 0.30, 1.0))
     # Neon wheel on the parapet (red disc)
     ht._make_box_local("Wheel_Casino_NeonDisc",
-                       (cx, cy - D / 2 - 0.05, gz + H + 2.2),
+                       (cx, cy - D / 2 - 0.05, gz + H + 2.65),
                        (3.0, 0.20, 3.0), COL_NEON_RED)
     # 8 spokes (small dark slivers)
     for i in range(8):
@@ -2419,16 +2422,16 @@ def _build_wheel_casino():
         soz = math.sin(ang) * 1.3
         ht._make_box_local(
             f"Wheel_Casino_Spoke_{i}",
-            (cx + sox, cy - D / 2 - 0.10, gz + H + 2.2 + soz),
+            (cx + sox, cy - D / 2 - 0.10, gz + H + 2.65 + soz),
             (0.10, 0.05, 0.10), (0.32, 0.30, 0.30, 1.0))
     ht._make_sphere_low_local("Wheel_Casino_NeonHub",
-                              (cx, cy - D / 2 - 0.10, gz + H + 2.2),
+                              (cx, cy - D / 2 - 0.10, gz + H + 2.65),
                               0.40, COL_NEON_PINK, rings=2, segments=6)
     # "LE ROULANT" letters on the parapet (3 dark blocks)
     for i, t in enumerate([-1, 0, 1]):
         ht._make_box_local(
             f"Wheel_Casino_Letter_{i}",
-            (cx + t * 4.0, cy - D / 2 - 0.10, gz + H + 0.6),
+            (cx + t * 4.0, cy - D / 2 - 0.10, gz + H + 1.05),
             (2.6, 0.10, 0.7), (0.18, 0.16, 0.16, 1.0))
     # 4 limestone columns at the front (former bank facade)
     for i in range(4):

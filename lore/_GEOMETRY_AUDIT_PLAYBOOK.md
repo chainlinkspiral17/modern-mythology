@@ -689,6 +689,30 @@ failure paths separately before concluding anything.
   audits (ribbons themselves as fill) and are excluded from the
   overlap check. Do not "fix" this with a ceiling.
 
+### 2026-09-08 (later) · overlap inside an assembly is the grammar; POKE-THROUGH is the defect
+
+- **Inside one named assembly, overlap is how parts are joined.**
+  Rooted posts, mullions in rails, a head on a body, a door in its
+  wall: 4544 INTRA findings were 95 % the rooting rule working. The
+  defect the user sees is a member that comes out the OTHER side —
+  a leg proud of its seat, a back panel to the floor, a hi-hat stand
+  up through the snare. Measure that (top above AND bottom below),
+  not penetration depth.
+- **Thin in ONE plan dim is a sheet; thin in BOTH is a member.** A
+  shelf-unit back panel, window glass, a jamb, a door frame all
+  "pass through" shelves and slabs by design. Only members (and a
+  chair back through its own seat) count.
+- **A post through the slab it stands on is rooted, not poking.**
+  Exclude ground-class solids (slab, deck, dais, platform, porch).
+- **A stack of boxes sharing a plan overlap needs a slot each.** Le
+  Roulant's letters sat inside the cornice because the neon disc
+  owned the only free band above it; re-space the whole stack, don't
+  nudge one element into the next.
+- **When a chair is "on the wrong side", check which side the person
+  sits.** The judge's chair stood in FRONT of the bench on the floor,
+  passed the chair-facing rule (freestanding by name) and only the
+  poke class caught its back running to the ground.
+
 ### 2026-09-08 · park against the ROAD, not along an axis; a bbox cannot see a diagonal
 
 - **A fixed pull-out along the house's axis is a car in the street

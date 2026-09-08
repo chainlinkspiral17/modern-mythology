@@ -134,12 +134,14 @@ echo ""
 # table), DESK (off the wall) and LANE (a parked car in a travel
 # lane) reached ZERO repo-wide on 2026-09-08 after the Deck's
 # "cars in the middle of streets keeps happening" — those three
-# are now gates. Nonzero in any of them fails the suite.
+# are now gates. POKE (a post, leg or chair back passing clean through
+# a solid part of its own assembly — the "exploded chair") joined them
+# the same day at 0. Nonzero in any of them fails the suite.
 echo "── furniture_grammar_audit.py ──"
 GOUT="$(python3 furniture_grammar_audit.py 2>/dev/null | grep -v "^\[")" || true
 GLINE="$(echo "$GOUT" | tail -1)"
 echo "$GLINE"
-for CLS in CHAIR DESK LANE; do
+for CLS in POKE CHAIR DESK LANE; do
     N="$(echo "$GLINE" | grep -oE "$CLS [0-9]+" | grep -oE "[0-9]+$")"
     if [ "${N:-999}" -gt 0 ]; then
         echo "$GOUT" | grep "^   $CLS"

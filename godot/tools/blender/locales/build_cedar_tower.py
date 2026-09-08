@@ -288,7 +288,9 @@ def build_draft2_density_2026_08():
         for ri2 in range(3):
             make_box(f"Bunk_{bi}_Rung_{ri2}", (-4.52, by + 0.90, z0 + 0.45 + ri2 * 0.45),
                      (0.04, 0.22, 0.04), CEDAR)
-        make_box(f"Bunk_{bi}_Footlocker", (-4.4, by - 0.85, z0 + 0.22), (0.85, 0.42, 0.40), CEDAR_DK)
+        # footlocker on the floor in FRONT of the bunk (the frame's east
+        # face is x -4.55; bunks sit 0.2 m apart so nothing fits between)
+        make_box(f"Bunk_{bi}_Footlocker", (-4.10, by - 0.55, z0 + 0.20), (0.85, 0.42, 0.40), CEDAR_DK)
     # Folded clothes on one mattress, a guitar leaning at the last bunk.
     make_box("Q_Folded_Clothes", (-5.1, 1.35, z0 + 1.78), (0.30, 0.40, 0.10), (0.52, 0.46, 0.42, 1.0))
     make_box("Q_Guitar_Body", (-4.35, 6.85, z0 + 0.30), (0.32, 0.10, 0.40), (0.55, 0.38, 0.22, 1.0))

@@ -5293,8 +5293,18 @@ def build_diner_streetscape():
                  (cx, cy, 0.40),
                  (W, L, 0.50), col)
         # Upper body / cabin (greenhouse)
-        cab_len = L * (0.55 if is_truck else 0.62)
-        cab_off = (L - cab_len) / 2 * (-0.2 if is_truck else 0)
+        # (2026-09-08: the pickup's cab sat 1.25 m INSIDE its own bed —
+        # now a hood up front, the cab behind it, the bed behind that)
+        if is_truck:
+            hood_len = L * 0.22
+            cab_len = L * 0.36
+            cab_off = L / 2 - hood_len - cab_len / 2
+            make_box(f"Car_{i}_Hood",
+                     (cx, L / 2 - hood_len / 2 + cy, 0.72),
+                     (W - 0.10, hood_len, 0.14), col)
+        else:
+            cab_len = L * 0.62
+            cab_off = 0.0
         make_box(f"Car_{i}_Cabin",
                  (cx, cy + cab_off, 0.78),
                  (W - 0.10, cab_len, H - 0.55), col)
@@ -5313,7 +5323,7 @@ def build_diner_streetscape():
                      COL_CAR_WINDOW)
         # Truck bed for the pickup
         if is_truck:
-            bed_len = L - cab_len - 0.10
+            bed_len = L - hood_len - cab_len - 0.10
             bed_off = -L/2 + bed_len/2 + 0.05
             make_box(f"Car_{i}_TruckBed",
                      (cx, cy + bed_off, 0.55),

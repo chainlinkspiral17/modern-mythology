@@ -50,6 +50,20 @@ import vantage_obstruction_audit as VO
 
 INTRA_MIN = 0.03        # m · penetration on every axis to count
 INTRA_THIN = 0.006      # m · sheets/decals thinner than this are tucks
+INTRA_JOINT = 0.25      # m · within ONE named assembly, penetration up to this is a
+                        # JOINT (rooted posts, mullions in rails, a head on a body,
+                        # a door in its wall) — the rooting grammar says parts
+                        # overlap on purpose. Deeper is a clip.
+POKE_THIN = 0.12        # m · a member this thin in plan is a post / pole / leg
+POKE_TOL = 0.03         # m · proud of the top AND below the bottom by this each way
+# solids a member may pass through: a post is ROOTED through the slab
+# or deck it stands on into the ground beneath
+POKE_GROUND = re.compile(r"^(slab|foundation|floor|ground|footing|pad|dais|deck|platform|terrain|lot|apron|walk|sidewalk|stoop|porch|landing|boardwalk|pier|dock|wharf)$", re.I)
+# members that pass through solids by design: a pole through a sign
+# cabinet, a wire through a crossarm, a stem through a shade, a rope
+# through a deck, a mast through a hull, a stack through a roof
+POKE_OK = re.compile(r"^(wire|cable|rope|chain|line|string|stem|stalk|straw|antenna|aerial|mast|stack|flue|pipe|conduit|drain|downspout|gutter|vent|chimney|spire|finial|rod|bar|bolt|pin|nail|screw|needle|wick|candle|hi|lo|trans|cord|hose|tube|axle|shaft|spindle|hub|trunk|limb|twig|branch|leader|cane|reed|rebar|stake|wick|pole|pile|piling|column|col|pillar|post)$", re.I)
+PAVING = re.compile(r"^(road|curb|sidewalk|walk|dash|driveway|apron|loop|path|ditch|ballast|tie|lot|strip|shore|quay|fender|mulch|gravel|paint|stripe|line|crosswalk|median|shoulder)$", re.I)
 FLOAT_GAP = 0.04        # m
 FLOAT_MAX_SIDE = 1.6
 CHAIR_REACH = 1.10     # m · seat centre to the table's nearest edge
@@ -173,6 +187,10 @@ def check_intra(boxes):
                     continue
                 if contained(a, b) or contained(b, a):
                     continue
+                if min(pen) <= INTRA_JOINT:
+                    continue      # a joint, not a clip (2026-09-08: 4544 → the deep ones)
+                if PAVING.search(part_class(a[0])) and PAVING.search(part_class(b[0])):
+                    continue      # laid strips: curb over road edge, apron flare over driveway
                 if STRUCTURAL.search(a[0]) and STRUCTURAL.search(b[0]):
                     continue      # joints: wall corners, crown mitres, roof/chimney, frame members
                 if VO.PASSABLE.search(a[0]) or VO.PASSABLE.search(b[0]):
@@ -184,6 +202,50 @@ def check_intra(boxes):
                 if ROAD_SEG.search(pre):
                     continue      # bend segments meet at their joints
                 out.append((pre, a[0], b[0], min(pen)))
+    return out
+
+
+def check_poke(boxes):
+    """POKE-THROUGH: a thin member of an assembly (a post, a pole, a leg,
+    a spindle — min xy side ≤ POKE_THIN) that passes CLEAN THROUGH a solid
+    part of the same assembly — its top above the part's top AND its
+    bottom below the part's bottom, by more than POKE_TOL each way. A
+    post rooted 4 cm into a seat is a joint; a post whose top stands
+    proud of the seat it should stop under is the Deck's "exploded
+    chair" (2026-09-08). Both-thin pairs (mullion × rail, a window grid)
+    are excluded."""
+    groups = defaultdict(list)
+    for b in boxes:
+        if VO.IGNORE.search(b[0]):
+            continue
+        groups[prefix_of(b[0])].append(b)
+    out = []
+    for pre, parts in groups.items():
+        if len(parts) < 2 or len(parts) > 400:
+            continue
+        # a MEMBER is thin in BOTH plan dims (a post, a leg, a stem); a
+        # sheet thin in one (a back panel, glass, a jamb, a door frame)
+        # passes through shelves and slabs by design — except a chair
+        # BACK through its SEAT, which is the exploded chair itself
+        thin = [p for p in parts if p[2][2] * 2 >= 0.10
+                and (max(p[2][0], p[2][1]) * 2 <= POKE_THIN * 1.7
+                     or (part_class(p[0]) == "back" and min(p[2][0], p[2][1]) * 2 <= POKE_THIN))]
+        solid = [p for p in parts if min(p[2][0], p[2][1]) * 2 > POKE_THIN * 2.5 and p[2][2] * 2 >= 0.03]
+        for a in thin:
+            if VO.PASSABLE.search(a[0]) or POKE_OK.search(part_class(a[0])):
+                continue
+            alo, ahi = box_lohi(a)
+            for b in solid:
+                if b is a or VO.PASSABLE.search(b[0]) or POKE_OK.search(part_class(b[0])) or POKE_GROUND.search(part_class(b[0])):
+                    continue
+                blo, bhi = box_lohi(b)
+                # xy: the member's footprint must lie inside the part's
+                if not (blo[0] <= a[1][0] <= bhi[0] and blo[1] <= a[1][1] <= bhi[1]):
+                    continue
+                if part_class(a[0]) == "back" and not re.search(r"(seat|cushion)$", b[0], re.I):
+                    continue
+                if ahi[2] > bhi[2] + POKE_TOL and alo[2] < blo[2] - POKE_TOL:
+                    out.append((pre, a[0], b[0], ahi[2] - bhi[2]))
     return out
 
 
@@ -358,16 +420,19 @@ def main():
         if not boxes or len(boxes) < 20:
             continue
         intra = check_intra(boxes)
+        poke = check_poke(boxes)
         flt = check_float(boxes)
         chairs = check_chairs(boxes)
         desks = [] if locale in DESK_FREESTANDING_LOCALES else check_desks(boxes)
         lanes = check_lanes(boxes)
-        n = len(intra) + len(flt) + len(chairs) + len(desks) + len(lanes)
+        n = len(intra) + len(poke) + len(flt) + len(chairs) + len(desks) + len(lanes)
         if not n:
             continue
-        print("== %s · INTRA %d · FLOAT %d · CHAIR %d · DESK %d · LANE %d" % (locale, len(intra), len(flt), len(chairs), len(desks), len(lanes)))
+        print("== %s · INTRA %d · POKE %d · FLOAT %d · CHAIR %d · DESK %d · LANE %d" % (locale, len(intra), len(poke), len(flt), len(chairs), len(desks), len(lanes)))
         for pre, a, b, pen in sorted(intra, key=lambda r: -r[3])[:12]:
             print("   INTRA %.2fm  %-28s x %-28s" % (pen, a, b))
+        for pre, a, b, proud in sorted(poke, key=lambda r: -r[3])[:12]:
+            print("   POKE  %.2fm  %-28s through %-28s" % (proud, a, b))
         for nme, bottom, under, gap in sorted(flt, key=lambda r: -r[3])[:10]:
             print("   FLOAT %.2fm  %-28s hangs above %s" % (gap, nme, under))
         for pre, top in chairs:
@@ -376,10 +441,10 @@ def main():
             print("   DESK         %-28s at (%.1f, %.1f) touches no wall" % (nme, c[0], c[1]))
         for pre, road, d in lanes:
             print("   LANE  %.1fm  %-28s in the travel lane of %s" % (d, pre, road))
-        for k, v in (("INTRA", len(intra)), ("FLOAT", len(flt)), ("CHAIR", len(chairs)), ("DESK", len(desks)), ("LANE", len(lanes))):
+        for k, v in (("INTRA", len(intra)), ("POKE", len(poke)), ("FLOAT", len(flt)), ("CHAIR", len(chairs)), ("DESK", len(desks)), ("LANE", len(lanes))):
             totals[k] += v
-    print("\nfurniture_grammar_audit · INTRA %d · FLOAT %d · CHAIR %d · DESK %d · LANE %d" % (
-        totals["INTRA"], totals["FLOAT"], totals["CHAIR"], totals["DESK"], totals["LANE"]))
+    print("\nfurniture_grammar_audit · INTRA %d · POKE %d · FLOAT %d · CHAIR %d · DESK %d · LANE %d" % (
+        totals["INTRA"], totals["POKE"], totals["FLOAT"], totals["CHAIR"], totals["DESK"], totals["LANE"]))
 
 
 if __name__ == "__main__":

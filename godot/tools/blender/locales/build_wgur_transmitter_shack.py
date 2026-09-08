@@ -142,7 +142,7 @@ def build_operator_desk_and_mic():
     # Operator desk centered S of the rack
     dx, dy = -0.40, 1.40
     make_box("Desk_Top",  (dx, dy, 0.74), (1.40, 0.80, 0.04), COL_DESK_WOOD)
-    make_box("Desk_Drawer", (dx, dy, 0.52), (1.40, 0.78, 0.20), COL_DESK_WOOD)
+    make_box("Desk_Drawer", (dx, dy, 0.52), (1.14, 0.78, 0.20), COL_DESK_WOOD)   # between the side panels
     for sgn in (-1, +1):
         make_box(f"Desk_Leg_{sgn:+d}", (dx + sgn*0.62, dy, 0.36),
                  (0.06, 0.78, 0.72), COL_DESK_WOOD)

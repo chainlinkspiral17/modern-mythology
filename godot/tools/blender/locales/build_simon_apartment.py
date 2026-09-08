@@ -129,11 +129,14 @@ def build_armchair_and_tv():
 def build_hanged_motifs():
     # Tipped-over chair near the kitchen
     tcx, tcy = -1.20, 3.20
-    make_box("Tipped_Chair_Back", (tcx, tcy, 0.10), (0.40, 0.06, 0.80), (0.42, 0.30, 0.22, 1.0))
-    make_box("Tipped_Chair_Seat", (tcx, tcy+0.30, 0.20), (0.40, 0.40, 0.04), (0.42, 0.30, 0.22, 1.0))
-    for li, (sgn_x, sgn_y) in enumerate([(-1, +0), (+1, +0), (-1, +1), (+1, +1)]):
-        make_box(f"Tipped_Chair_Leg_{li}", (tcx + sgn_x*0.16, tcy+0.10 + sgn_y*0.20, 0.22),
-                 (0.04, 0.04, 0.40), (0.42, 0.30, 0.22, 1.0))
+    # (2026-09-08: it lies on its BACK — the back panel flat on the
+    # floor, the seat standing at its foot, the legs pointing away.
+    # The old one was an upright chair sunk half into the floor.)
+    make_box("Tipped_Chair_Back", (tcx, tcy, 0.03), (0.40, 0.80, 0.06), (0.42, 0.30, 0.22, 1.0))
+    make_box("Tipped_Chair_Seat", (tcx, tcy+0.42, 0.26), (0.40, 0.04, 0.40), (0.42, 0.30, 0.22, 1.0))
+    for li, (sgn_x, lz) in enumerate([(-1, 0.08), (+1, 0.08), (-1, 0.44), (+1, 0.44)]):
+        make_box(f"Tipped_Chair_Leg_{li}", (tcx + sgn_x*0.16, tcy+0.44+0.20, lz),
+                 (0.04, 0.40, 0.04), (0.42, 0.30, 0.22, 1.0))
     # Single boot hanging from a coat peg by its laces (W wall)
     pegx, pegy = -ROOM_W/2.0 + 0.10, 5.50
     make_box("Peg_Board", (pegx, pegy, 1.80), (0.06, 0.40, 0.10), (0.32, 0.22, 0.16, 1.0))

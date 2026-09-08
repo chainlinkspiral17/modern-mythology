@@ -473,8 +473,10 @@ def build_maitre_d():
                  (tx, ty, tz),
                  (0.50, 0.50, 0.04), COL_DECK_PLANK)
     # Iron railing
+    # rail post OUTSIDE the tread sweep (treads reach r ≈ 1.05 at their
+    # corners; the old post at r 0.68 ran up through tread 1)
     make_cyl("MD_StairsUp_Rail",
-             (stair_x + 0.65, stair_y + 0.20, cz + 1.4),
+             (stair_x + 1.12 * math.cos(0.3), stair_y + 1.12 * math.sin(0.3), cz + 1.4),
              0.025, 2.30, COL_BLACK)
 
     # ── Stairs DOWN to lower deck (catering office etc.) ──

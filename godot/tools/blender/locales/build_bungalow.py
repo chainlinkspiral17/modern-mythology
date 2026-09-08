@@ -809,16 +809,18 @@ def build_kitchen():
 
     # ── Counter along the north wall ──
     counter_y = INTERIOR_Y_N - 0.40
+    # (2026-09-08: the run stops at x 4.0 — the fridge stands at the
+    # east end of the counter, not inside it)
     make_box("Kitchen_Counter",
-             (+2.5, counter_y, 0.90),
-             (5.00, 0.60, 0.06), COL_TRIM_WHITE)
+             (+2.0, counter_y, 0.90),
+             (4.00, 0.60, 0.06), COL_TRIM_WHITE)
     # Counter base cabinets
     make_box("Kitchen_BaseCabinet",
-             (+2.5, counter_y, 0.42),
-             (5.00, 0.55, 0.84), (0.62, 0.46, 0.30, 1.0))
+             (+2.0, counter_y, 0.42),
+             (4.00, 0.55, 0.84), (0.62, 0.46, 0.30, 1.0))
     # Cabinet door splits
-    for i in range(-2, 3):
-        x = +2.5 + i * 1.0
+    for i in range(-1, 2):
+        x = +2.0 + i * 1.0
         make_box(f"Kitchen_CabSeam_{i}",
                  (x, counter_y - 0.28, 0.42),
                  (0.012, 0.01, 0.80), (0.20, 0.14, 0.10, 1.0))

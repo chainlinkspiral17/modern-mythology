@@ -5033,17 +5033,23 @@ def _build_kwik_shop_strip(cx, cy, ground_z):
 
     # ── 2 LONG E-W aisles (snack + drinks) running across most
     # of the bay width. Wider now (12m) to fill the new 16m bay.
-    aisle_w = 12.0       # X span (centered on bay)
+    # 2026-09-08: the aisles run 11 m centred 1 m EAST of the bay so
+    # their west endcaps stand 1 m clear of the counter (the old 12 m
+    # aisles' endcaps sat inside the counter's box, and at the wrong
+    # y — between the aisles, not at their ends).
+    aisle_w = 11.0       # X span
+    aisle_cx = kw_cx + 1.0
     aisle_d = 0.40       # shelf thickness (Y axis)
     aisle_h = 1.8
-    for k, aisle_y in enumerate((cy - 1.0, cy + 1.5)):
+    aisle_ys = (cy - 1.0, cy + 1.5)
+    for k, aisle_y in enumerate(aisle_ys):
         # Main shelf body
         _make_box_local(f"KwikShop_KwikStop_Aisle_{k}",
-                        (kw_cx, aisle_y, ground_z + aisle_h / 2),
+                        (aisle_cx, aisle_y, ground_z + aisle_h / 2),
                         (aisle_w, aisle_d, aisle_h), col_shelf)
         # Top horizontal "shelf" panel
         _make_box_local(f"KwikShop_KwikStop_AisleTop_{k}",
-                        (kw_cx, aisle_y, ground_z + aisle_h),
+                        (aisle_cx, aisle_y, ground_z + aisle_h),
                         (aisle_w, aisle_d + 0.08, 0.04),
                         col_shelf_dark)
         # Per-side stacked product boxes — alternating colours
@@ -5056,7 +5062,7 @@ def _build_kwik_shop_strip(cx, cy, ground_z):
             # 14 product bags per side at top (more bags for the
             # wider aisle)
             for j in range(14):
-                px = kw_cx - aisle_w / 2 + 0.4 + j * (aisle_w - 0.8) / 13
+                px = aisle_cx - aisle_w / 2 + 0.4 + j * (aisle_w - 0.8) / 13
                 _make_box_local(
                     f"KwikShop_KwikStop_Goods_{k}_{sgn:+d}_{j}",
                     (px,
@@ -5066,7 +5072,7 @@ def _build_kwik_shop_strip(cx, cy, ground_z):
                     product_palettes[(j + k * 3) % len(product_palettes)])
             # Mid-shelf row of products (smaller boxes)
             for j in range(9):
-                px = kw_cx - aisle_w / 2 + 0.6 + j * (aisle_w - 1.2) / 8
+                px = aisle_cx - aisle_w / 2 + 0.6 + j * (aisle_w - 1.2) / 8
                 _make_box_local(
                     f"KwikShop_KwikStop_GoodsMid_{k}_{sgn:+d}_{j}",
                     (px,
@@ -5854,10 +5860,9 @@ def _build_kwik_shop_strip(cx, cy, ground_z):
         (0.18, 0.32, 0.55, 1.0),   # blue (cereal)
         (0.85, 0.22, 0.20, 1.0),   # red (soup)
     ]
-    aisle_y_positions = (cy - 1.5, cy + 1.0)
-    for ka, ay in enumerate(aisle_y_positions):
+    for ka, ay in enumerate(aisle_ys):
         for kx, sgn in enumerate((-1, 1)):
-            ec_x = kw_cx + sgn * (aisle_w / 2 + 0.4)
+            ec_x = aisle_cx + sgn * (aisle_w / 2 + 0.4)
             # Endcap stack (3 layers of varying products)
             for layer in range(3):
                 _make_box_local(

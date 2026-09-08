@@ -54,8 +54,9 @@ def build_drums():
     make_cyl("Drum_CymL", (dx-0.58, dy+0.15, dz+0.90), 0.22, 0.02, brass, segments=16)
     make_cyl("Drum_CymStandR", (dx+0.60, dy-0.05, dz+0.55), 0.015, 1.10, chrome)
     make_cyl("Drum_CymR", (dx+0.60, dy-0.05, dz+1.10), 0.26, 0.02, brass, segments=16)
-    make_cyl("Drum_HHStand", (dx-0.52, dy-0.36, dz+0.40), 0.015, 0.80, chrome)
-    make_cyl("Drum_HH", (dx-0.52, dy-0.36, dz+0.80), 0.16, 0.03, brass, segments=16)
+    # hi-hat stands beside the snare, not through it (snare r 0.16 at -0.46/-0.30)
+    make_cyl("Drum_HHStand", (dx-0.78, dy-0.44, dz+0.40), 0.015, 0.80, chrome)
+    make_cyl("Drum_HH", (dx-0.78, dy-0.44, dz+0.80), 0.16, 0.03, brass, segments=16)
 
 def _make_amp_stack(prefix, cx, cy):
     cz = STAGE_TOP
