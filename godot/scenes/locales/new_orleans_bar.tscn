@@ -344,8 +344,8 @@ metadata/fov = 56.0
 
 ; closeup: Douglas in the west booth
 [node name="shot_closeup_douglas" type="Marker3D" parent="." groups=["vn_shot"]]
-position = Vector3(-3.1, 1.25, -2.6)
-rotation = Vector3(-0.288994, 2.30361, 0)
+position = Vector3(-3.890, 1.612, -2.880)
+rotation = Vector3(-0.2618, 2.8798, 0.0)
 metadata/fov = 36.0
 
 ; insert: the long mirror behind the bar

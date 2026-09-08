@@ -1114,6 +1114,20 @@ CRT's screen faced the south WALL with the kitchen chairs behind it
 Wagner's TV face their seats. Not worth a gate at four instances;
 re-measure when a locale gains a screen.
 
+**2026-09-10 (viii) · cast closeups out of the walls; marker ceiling
+15 → 8.** The obstructed-marker list read by hand: five were CAST
+closeups no tool could reframe (a person is not an object) — Anna's
+lens 0.1 m inside a cubicle wall, the Chillwave stickbox 0.4 m from
+a partition, Nicola's and Douglas's against a wall and a booth back,
+Philip's on a bare wall; two more (Mackenzie, the boy) in the Roberts
+kitchen looked at open sky. New `cast_reframe.py`: the marker's
+look-point 1.6 m along its forward is the person's spot; the ring
+search around it (1–2.2 m, ≤ 30° elevation) accepts the first pose
+the gate's own fill verdict passes. All seven fixed; the eight that
+remain are four sky inserts (drone, crow, cypress, myrtle — the
+things ARE in the sky), the eviction notice on a window, a porch
+wide into its own screen and two 37 %-near frames. Ceiling 8.
+
 **2026-08-19 · PER-STICK VOICE SWEEP VERDICT (voice draft 4).**
 Ran the leakage grep (TODO/WIP/placeholder/implemented/deferred/
 stub) and a string survey across EVERY stick directory: estuary_4,

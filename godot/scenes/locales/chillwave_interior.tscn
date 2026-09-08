@@ -342,8 +342,8 @@ metadata/fov = 62.0
 
 ; the three-slot box, Estuary 7 label (the_stick)
 [node name="shot_closeup_stickbox" type="Marker3D" parent="." groups=["vn_shot"]]
-position = Vector3(-0.9, 1.3, -4.3)
-rotation = Vector3(-0.06, 1.04, 0)
+position = Vector3(-0.971, 1.612, -4.758)
+rotation = Vector3(-0.2618, 1.3090, 0.0)
 metadata/fov = 42.0
 
 ; Cale's bench mid-repair under the task lamp

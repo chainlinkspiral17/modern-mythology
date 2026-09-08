@@ -332,12 +332,13 @@ rotation = Vector3(-0.25, 0, 0)
 metadata/fov = 30.0
 
 [node name="shot_closeup_philip" type="Marker3D" parent="." groups=["vn_shot"]]
-position = Vector3(-2.0, 1.7, -3.6)
+position = Vector3(-2.000, 1.768, -3.268)
+rotation = Vector3(-0.2618, 0.0000, 0.0)
 metadata/fov = 34.0
 
 [node name="shot_closeup_mackenzie" type="Marker3D" parent="." groups=["vn_shot"]]
-position = Vector3(0, 1.65, -2.6)
-rotation = Vector3(-0.12, 3.1416, 0)
+position = Vector3(1.2, 1.4, -2.6)
+rotation = Vector3(-0.175, -2.273, 0)
 metadata/fov = 34.0
 
 [node name="shot_insert_radio" type="Marker3D" parent="." groups=["vn_shot"]]
@@ -351,8 +352,8 @@ rotation = Vector3(0, 3.1416, 0)
 metadata/fov = 42.0
 
 [node name="shot_closeup_boy" type="Marker3D" parent="." groups=["vn_shot"]]
-position = Vector3(0, 1.35, -1.9)
-rotation = Vector3(0, 3.1416, 0)
+position = Vector3(3.8, 1.2, -0.6)
+rotation = Vector3(-0.125, 0.965, 0)
 metadata/fov = 36.0
 
 ; insert: the Polaroid, June 2009 in pencil on the border
