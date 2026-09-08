@@ -82,8 +82,8 @@ def build_tow_truck():
     for sgn_x in (-1, +1):
         for sgn_y in (-1, +1):
             jsy = ty - 0.80 + (sgn_y+1)*0.80
-            make_box(f"JackStand_{sgn_x:+d}_{sgn_y:+d}", (tx+sgn_x*0.60, jsy, 0.30),
-                     (0.20, 0.20, 0.60), COL_TIRE)
+            make_box(f"JackStand_{sgn_x:+d}_{sgn_y:+d}", (tx+sgn_x*0.60, jsy, 0.51),
+                     (0.20, 0.20, 1.02), COL_TIRE)      # up to the frame (2026-09-09: 0.4 m short)
     # Removed wheel pile next to the truck
     for wi in range(2):
         make_cyl(f"Wheel_Pile_{wi}", (tx-1.50, ty + wi*0.30 - 0.20, 0.30 + wi*0.16),

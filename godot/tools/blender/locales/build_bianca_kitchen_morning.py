@@ -103,12 +103,13 @@ def build_hero_props():
     grinder."""
     make_window("Window_N", (-1.5, ROOM_D-0.10, 1.52), width=1.30, height=1.05)
     make_cyl("Kettle", (1.34, 3.84, 1.05), 0.09, 0.18, (0.62, 0.64, 0.65, 1.0), segments=10)
-    make_box("Toaster", (-0.55, 3.60, 1.04), (0.28, 0.18, 0.16), (0.72, 0.72, 0.70, 1.0))
-    make_box("Dishwasher_Face", (-1.85, 3.00, 0.42), (0.03, 0.60, 0.84), (0.80, 0.78, 0.74, 1.0))
+    make_box("Toaster", (-0.55, 3.60, 1.06), (0.28, 0.18, 0.16), (0.72, 0.72, 0.70, 1.0))
+    # in the counter run's south face (2026-09-09: stood as a loose panel 30 cm off it)
+    make_box("Dishwasher_Face", (-1.85, 3.285, 0.42), (0.60, 0.03, 0.84), (0.80, 0.78, 0.74, 1.0))
     make_box("Back_Door", (ROOM_W/2.0-0.05, 3.4, 1.05), (0.05, 0.90, 2.10), (0.62, 0.50, 0.36, 1.0))
     make_cyl("Robe_Hook", (ROOM_W/2.0-0.12, 3.05, 1.62), 0.015, 0.06, (0.30, 0.28, 0.26, 1.0), axis='X', segments=6)
     make_box("Green_Robe", (ROOM_W/2.0-0.18, 3.05, 1.24), (0.10, 0.20, 0.76), (0.30, 0.52, 0.36, 1.0))
-    make_cyl("Grinder", (-1.55, 3.00, 1.06), 0.05, 0.20, (0.24, 0.24, 0.26, 1.0), segments=8)
+    make_cyl("Grinder", (-1.55, 3.55, 1.08), 0.05, 0.20, (0.24, 0.24, 0.26, 1.0), segments=8)   # on the counter (was 30 cm south of it)
 
 
 

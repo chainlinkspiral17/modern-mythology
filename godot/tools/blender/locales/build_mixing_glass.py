@@ -125,10 +125,15 @@ def build_temperance_dressing():
         cleaned glasses + a clean white pour rail (set against
         the off-pour visually)
     """
-    # U-shaped bar mid-section approx at (0.0, -1.0); back-bar at +Y
-    mid_x = 0.0
-    mid_y = -1.0
-    bar_top_z = 1.05
+    # The U-bar's N-cap (Bar_N: (0, 7.4), 3.5 × 0.5, top 1.08); the
+    # arms run south from it at x ±1.5, the back-bar is at the N wall.
+    # (2026-09-09: this pass had the "mid-section" at (0, -1) — open
+    # floor at the south end of the room — so Frank's notebook, pen
+    # and stool stood a bar's length from any bar. Frank sits inside
+    # the U, south of the cap, a little east of the ice well.)
+    mid_x = 0.60
+    mid_y = 7.40
+    bar_top_z = 1.08
 
     # Frank's stool (middle position)
     make_cyl("FrankStool_Seat",
@@ -323,13 +328,13 @@ def build_temperance_wave2_props():
     c_y = 5.60
     # Tipped highball on the bar top (bar top at z=1.06)
     make_cyl("LastCall_TippedHighball_Body",
-             (+0.75, c_y, 1.09),
+             (+1.50, 6.10, 1.11),      # on the E arm (2026-09-09: was mid-floor at y 5.6)
              0.028, 0.13,
              (0.86, 0.86, 0.88, 0.55),
              segments=10, axis='Y')     # laid on its side
     # A small puddle stain
     make_box("LastCall_HighballPuddle",
-             (+0.65, c_y, 1.062),
+             (+1.40, 6.10, 1.082),
              (0.06, 0.10, 0.002),
              (0.62, 0.36, 0.16, 0.70))
 

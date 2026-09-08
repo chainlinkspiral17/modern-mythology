@@ -858,6 +858,37 @@ ropes/bells (hanging — a HANGING class from a sibling ABOVE), crosses
 on spires (cone bbox), carousel horses); the INTRA massing residue
 stays informational.
 
+**2026-09-09 (later) · the phantom-surface sweep; FLOAT 353 → 102.**
+Searched the FLOAT residue for props hanging at desk/counter height
+over a floor — the signature of a detail pass that hard-coded a
+surface the builder never put there — and found FOUR more: FROG KNOWS
+BEST's three passes ("FOR LILY" cardstock at (0,-1), Aurélie's
+notebook + pencil and Ferdinand's Nikon at y -0.2) while the counter
+stands at y 2.2 top 0.98; THE MIXING GLASS's last-call pass (Frank's
+notebook, pen, stool at a "U-bar mid-section (0,-1)" — open floor at
+the south end; the bar's N-cap is at y 7.4) and its tipped highball
+at y 5.6 between the arms; BIANCA's coffee grinder 30 cm south of the
+counter run and the dishwasher face standing loose off it; the
+DARKROOM's notebook at y 2.05 with the dry bench at 3.1. All moved to
+the real surfaces. Also: the Kwik Stop pumps had no body between base
+and head (a display 5 mm thick held the head up a metre), the propane
+tanks hung in their cage, the truck and the customer cars rode 6–8 cm
+above the asphalt, the soda-pyramid topper hovered over its caps; the
+drive-in's cup tower stood in the gap between the counters; Sam's
+shelf was a solid block with the longboxes and figures inside it (a
+carcass now); the Cypress Motel's pumps 20 cm off the ground; the
+Lacombe jack stands 40 cm short of the truck frame. Grammar: EMBEDDED
+check moved above the top-window filter (it never ran for anything
+inside a tall body — Lacombe's vending bottles, Centro's bale);
+HANGING (a leg from its body, a bar from its rail) and BACKED (a
+poster, a deck on its wall board, an AC in its window, a face on its
+machine) rules; notices, fences, sky objects mounted. Deck rebuild:
+frog_knows_best, mixing_glass, bianca_kitchen_morning, darkroom,
+static_drive_in, sam_bedroom, kwik_stop, lacombe_service_garage,
+new_auburn_road. NEXT DRAFT: the residue by locale (the earlier
+list's brochure racks, ropes, bells, crosses-on-cones), then decide
+whether FLOAT gates at its floor or stays a count.
+
 **2026-08-19 · PER-STICK VOICE SWEEP VERDICT (voice draft 4).**
 Ran the leakage grep (TODO/WIP/placeholder/implemented/deferred/
 stub) and a string survey across EVERY stick directory: estuary_4,

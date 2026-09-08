@@ -85,7 +85,7 @@ STRUCTURAL = re.compile(r"(wall|crown|molding|roof|chimney|eave|gable|ridge|jois
                         r"trim|baseboard|skirt|seam|stud|rafter|hull|deck|pillar|post|leg|rail|spray|stream|tube|wire|cable|rope|chain|port|porthole|strip|band|piling|stringer|girder|brace|lintel|partition|pedestal)", re.I)
 MOUNTED = re.compile(r"(lamp|pendant|fan|shelf|sign|poster|frame|clock|board|wall|ceil|window|win_|curtain|light|fixture|cord|wire|"
                      r"pin|bolt|knob|lyric|page|plate|handle|pull|latch|seam|tab|pillar|mailbox|glass|badge|decal|sticker|label|logo|drawer|door|header|thermostat|rung|"
-                     r"pushbar|heddle|swing|hammock|shutter|crenel|dormer|chimney|socket|insulator|warn|digit|pennant|roster|paper|ephoto|plaque|tag|led|dish|strap|hose|cable|garment|coat|robe|hinge|border|marker|nozzle|spout|mural|patch|counterslab|weight|ladle|"
+                     r"^moon$|^sun$|^star|cloud|notice|fence|_ac$|_ac_|numdisc|pushbar|heddle|swing|hammock|shutter|crenel|dormer|chimney|socket|insulator|warn|digit|pennant|roster|paper|ephoto|plaque|tag|led|dish|strap|hose|cable|garment|coat|robe|hinge|border|marker|nozzle|spout|mural|patch|counterslab|weight|ladle|"
                      r"number|letter|text|line|stripe|trim|cap|lid|rim|handset|dial|button|switch|outlet|plug|vent|grille|key|"
                      r"pipe|vent|duct|hood|cabinet|cab_|upper|hang|rail|awning|banner|flag|bulb|chain|hook|mirror|calendar|"
                      r"crown|molding|beam|joist|truss|roof|eave|gutter|antenna|pole|mast|neon|bracket|sconce|smoke|hvac|"
@@ -284,6 +284,41 @@ def check_float(boxes, terrain=False):
                     and not (hi[0] < blo[0] - FLOAT_GAP or lo[0] > bhi[0] + FLOAT_GAP or hi[1] < blo[1] - FLOAT_GAP or lo[1] > bhi[1] + FLOAT_GAP):
                 best = (bottom, o[0])
                 break
+            # embedded in a sibling (a hub inside its wheel's box, a leader
+            # in its crown): the sibling spans our underside → supported
+            if family(o[0]) == family(n) and lo[2] - 0.02 <= bottom <= hi[2] + 0.02 and not (hi[0] < blo[0] or lo[0] > bhi[0] or hi[1] < blo[1] or lo[1] > bhi[1]):
+                best = (bottom, o[0])
+                break
+            # EMBEDDED in a larger solid of another assembly — a book in
+            # a one-box bookshelf body, a bottle in a vending machine, a
+            # deck on a wall board: the solid spans our underside and most
+            # of our footprint → held (whether the embedding is ugly is
+            # the overlap audit's question, not a float). 2026-09-09:
+            # this used to sit BELOW the top-window filter and never ran
+            # for anything inside a tall body.
+            if (lo[2] - 0.02 <= bottom <= hi[2] + 0.02
+                    and o[2][0] * o[2][1] * o[2][2] > h[0] * h[1] * h[2]
+                    and min(hi[0], bhi[0]) - max(lo[0], blo[0]) >= h[0]
+                    and min(hi[1], bhi[1]) - max(lo[1], blo[1]) >= h[1]):
+                best = (bottom, o[0])
+                break
+            # HANGING from a sibling above (a horse's leg from its body,
+            # a bar from its rail, a chain link from the one above): the
+            # sibling's underside is within the gap of our top
+            if prefix_of(o[0]) == pre and lo[2] - 0.06 <= c[2] + h[2] <= hi[2] + 0.06 \
+                    and not (hi[0] < blo[0] or lo[0] > bhi[0] or hi[1] < blo[1] or lo[1] > bhi[1]):
+                best = (bottom, o[0])
+                break
+            # BACKED by a vertical surface (a poster, a deck on a wall
+            # board, an AC in a window, a face on a machine): a taller
+            # box whose face is within 3 cm of ours and spans our height
+            if o[2][2] >= h[2] and lo[2] <= c[2] <= hi[2]:
+                fx_ = min(abs(lo[0] - bhi[0]), abs(hi[0] - blo[0]))
+                fy_ = min(abs(lo[1] - bhi[1]), abs(hi[1] - blo[1]))
+                if (fx_ <= 0.03 and not (hi[1] < blo[1] or lo[1] > bhi[1]) and h[0] * 2 <= 0.30) \
+                        or (fy_ <= 0.03 and not (hi[0] < blo[0] or lo[0] > bhi[0]) and h[1] * 2 <= 0.30):
+                    best = (bottom, o[0])
+                    break
             # a support may penetrate us a little (a column into a seat,
             # a post into a mailbox) — anything topping out within 0.25 m
             # above our underside still holds us up
@@ -291,22 +326,6 @@ def check_float(boxes, terrain=False):
                 continue
             if top > bottom:
                 top = bottom
-            # embedded in a sibling (a hub inside its wheel's box, a leader
-            # in its crown): the sibling spans our underside → supported
-            if family(o[0]) == family(n) and lo[2] - 0.02 <= bottom <= hi[2] + 0.02 and not (hi[0] < blo[0] or lo[0] > bhi[0] or hi[1] < blo[1] or lo[1] > bhi[1]):
-                best = (bottom, o[0])
-                break
-            # EMBEDDED in a larger solid of another assembly — a book in
-            # a one-box bookshelf body, a comic in a rack, a deck on a
-            # wall board: the solid spans our underside and most of our
-            # footprint → held (whether the embedding is ugly is the
-            # overlap audit's question, not a float)
-            if (lo[2] - 0.02 <= bottom <= hi[2] + 0.02
-                    and o[2][0] * o[2][1] * o[2][2] > h[0] * h[1] * h[2]
-                    and min(hi[0], bhi[0]) - max(lo[0], blo[0]) >= h[0]
-                    and min(hi[1], bhi[1]) - max(lo[1], blo[1]) >= h[1]):
-                best = (bottom, o[0])
-                break
             if hi[0] < blo[0] or lo[0] > bhi[0] or hi[1] < blo[1] or lo[1] > bhi[1]:
                 # a sibling part of the same assembly that touches us in
                 # xy but sits beside (a back on posts, a knob on a face)

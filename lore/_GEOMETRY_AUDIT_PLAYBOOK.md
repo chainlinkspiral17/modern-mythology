@@ -689,6 +689,27 @@ failure paths separately before concluding anything.
   audits (ribbons themselves as fill) and are excluded from the
   overlap check. Do not "fix" this with a ceiling.
 
+### 2026-09-09 (later) · the phantom-surface query; rule ORDER is a rule
+
+- **Query the residue for the pattern, not the count.** "gap between
+  0.55 and 1.2 m over a floor-class support" is the phantom-surface
+  signature; one query found four more locales the class lists had
+  hidden among ropes and antlers. Every detail pass that wrote
+  `desk_x =`, `counter_z =`, `mid_y =`, `bar_top_z =` from a comment
+  is suspect until the builder's own box is under it.
+- **A rule placed after an early `continue` never runs.** The EMBEDDED
+  check sat below the "support tops out within 0.25 m" filter, so a
+  bottle inside a 1.8 m vending body was "floating" for a week.
+  When a rule seems not to fire, read the loop above it before
+  loosening it.
+- **Support is four things.** Under (a top within the gap), sibling
+  running past (post through a face), hanging (body over a leg, rail
+  over a bar) and backed (a wall face within 3 cm). The float audit
+  needed all four before its residue was real.
+- **"Only the display holds the head up" is a class too.** The Kwik
+  pumps had base, display, head — no body. Look for the missing
+  middle whenever a top part floats over its base by a round number.
+
 ### 2026-09-09 · solid things are solid; a phantom desk is a pattern
 
 - **A shelf is a carcass, a freezer is a shell.** Anything the player

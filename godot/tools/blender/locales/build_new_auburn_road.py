@@ -245,7 +245,7 @@ def build_vol6_landmarks():
     for ci, (cx, cy) in enumerate(((4.0, 17.0), (11.0, 17.0), (4.0, 23.0), (11.0, 23.0))):
         make_cyl(f"Gas_Canopy_Post_{ci}", (cx, cy, 2.3), 0.16, 4.6, steel, segments=8)
     for ii, (ix, iy) in enumerate(((5.8, 18.8), (9.2, 18.8), (5.8, 21.2), (9.2, 21.2))):
-        make_box(f"Gas_Pump_{ii}", (ix, iy, 0.85), (0.45, 0.55, 1.40), (0.18, 0.32, 0.50, 1.0))
+        make_box(f"Gas_Pump_{ii}", (ix, iy, 0.70), (0.45, 0.55, 1.40), (0.18, 0.32, 0.50, 1.0))   # on the ground
     make_box("Gas_Store", (13.5, 20.0, 1.8), (6.0, 8.0, 3.6), (0.66, 0.62, 0.55, 1.0))
     make_box("Gas_Store_Glow", (10.55, 20.0, 1.4), (0.06, 5.0, 1.6), (0.98, 0.84, 0.55, 1.0))
     # Traffic light over the gas-station exit (the crow's perch)

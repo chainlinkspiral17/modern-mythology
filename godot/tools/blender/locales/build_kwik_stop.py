@@ -1215,6 +1215,10 @@ def build_exterior_through_windows():
         # Pump screen + buttons
         make_box(f"Pump_{sgn:+d}_Display", (px, canopy_y - 0.31, 1.20),
                  (0.40, 0.005, 0.50), COL_PUMP_FACE)
+        # Pump body between base and head (2026-09-09: the head hung
+        # 1 m above the base with only the display between them)
+        make_box(f"Pump_{sgn:+d}_Body", (px, canopy_y, 1.11),
+                 (0.44, 0.54, 1.02), COL_PUMP_BODY)
         # Pump head (handle housing)
         make_box(f"Pump_{sgn:+d}_Head", (px, canopy_y, 1.80),
                  (0.50, 0.60, 0.36), COL_PUMP_BODY)
@@ -1247,7 +1251,7 @@ def build_exterior_through_windows():
                    (car_x - 0.60, car_y + 0.48),
                    (car_x + 0.60, car_y + 0.48)]:
         make_cyl(f"Car_Wheel_{wx:+.1f}_{wy:+.1f}",
-                 (wx, wy, 0.30), 0.26, 0.20, COL_METAL_BLACK, axis='Y')
+                 (wx, wy, 0.26), 0.26, 0.20, COL_METAL_BLACK, axis='Y')   # on the asphalt
     # Headlights
     for ws in (-1, +1):
         make_box(f"Car_Headlight_{ws:+d}",
@@ -1922,7 +1926,7 @@ def build_propane_cage_outside():
     for ti in range(6):
         tcol = ti % 3
         tx = cx - 0.40 + (ti % 3) * 0.40
-        tz = 0.40 + (ti // 3) * 0.60
+        tz = 0.20 + (ti // 3) * 0.40      # on the cage floor, stacked
         make_cyl(f"PropaneTank_{ti}", (tx, cy, tz),
                  0.14, 0.40, COL_PROPANE_TANK)
         # Blue collar / brand band
@@ -1961,7 +1965,7 @@ def build_pickup_truck_outside():
                    (tx - 1.40, ty - 0.48), (tx - 0.50, ty + 0.48),
                    (tx + 0.50, ty + 0.48), (tx - 1.40, ty + 0.48)]:
         make_cyl(f"Truck_Wheel_{wx:+.1f}_{wy:+.1f}",
-                 (wx, wy, 0.30), 0.24, 0.20, COL_METAL_BLACK, axis='Y')
+                 (wx, wy, 0.24), 0.24, 0.20, COL_METAL_BLACK, axis='Y')   # on the asphalt
     # Headlights
     for ws in (-1, +1):
         make_box(f"Truck_Headlight_{ws:+d}",
@@ -2490,7 +2494,7 @@ def build_soda_bottle_pyramid():
         make_cyl(f"SodaPyr_T2_Cap_{i}", (bx - 0.10 + i * 0.20, by, base_z + 0.64 + 0.145),
                  0.022, 0.025, capcol)
     # Topper SALE banner
-    make_box("SodaPyr_Topper", (bx, by, base_z + 1.04),
+    make_box("SodaPyr_Topper", (bx, by, base_z + 0.88),      # on the top tier's caps
              (0.50, 0.30, 0.16), COL_LOTTERY_YEL)
 
 

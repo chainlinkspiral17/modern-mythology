@@ -226,9 +226,11 @@ def build_world_dressing():
                  (0.62, 0.50, 0.30, 1.0))
 
     # "FOR LILY" cardstock spot on the counter
+    # The counter (build_counter): (0.0, 2.20), 3.0 × 0.6, top 0.98.
+    # (2026-09-09: this pass had it at (0, -1) — open floor.)
     rc_x = 0.0
-    rc_y = -1.0
-    counter_z = 1.00
+    rc_y = 2.20
+    counter_z = 0.98
     make_box("ForLily_Cardstock",
              (rc_x - 0.40, rc_y + 0.20, counter_z + 0.012),
              (0.16, 0.20, 0.001),
@@ -339,11 +341,11 @@ def build_world_wave2_props():
     at 7 AM outside the front door, the OPEN sign flipped on the
     interior door hook).
     """
-    counter_z = 0.90
+    counter_z = 0.98      # the real counter top (see build_counter)
 
     # Aurélie's black composition notebook · open on the counter
     aur_x = +0.60
-    aur_y = -0.20
+    aur_y = 2.20          # (2026-09-09: was -0.20, a metre of open floor)
     make_box("Aurelie_Notebook_Cover",
              (aur_x, aur_y, counter_z + 0.014),
              (0.16, 0.22, 0.014),
@@ -368,7 +370,7 @@ def build_world_wave2_props():
 
     # Ferdinand's 35mm Nikon · body + lens + red badge + strap
     ferd_x = +1.00
-    ferd_y = -0.20
+    ferd_y = 2.20
     make_box("Ferdinand_Nikon_Body",
              (ferd_x, ferd_y, counter_z + 0.06),
              (0.14, 0.10, 0.10),

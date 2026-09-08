@@ -114,7 +114,14 @@ def build_dressing():
     make_box("Clock", (nsx, by+0.7, 0.62), (0.16, 0.10, 0.10), P.METAL_BLACK)
     # Shelf on the east wall: comic longboxes on the bottom, figures on top
     shx = ROOM_W/2.0 - 0.18
-    make_chamfer_box("Shelf_Body", (shx, ROOM_D-1.4, 0.80), (0.34, 1.20, 1.60), COL_WOOD)
+    # (2026-09-09: was one solid block with the longboxes and figures
+    # INSIDE it — now back, sides, top and three boards)
+    make_box("Shelf_Back", (shx + 0.16, ROOM_D-1.4, 0.80), (0.02, 1.20, 1.60), COL_WOOD)
+    for sy_ in (-1, 1):
+        make_box(f"Shelf_Side_{sy_:+d}", (shx, ROOM_D-1.4 + sy_ * 0.59, 0.80), (0.34, 0.02, 1.60), COL_WOOD)
+    make_box("Shelf_Top", (shx, ROOM_D-1.4, 1.59), (0.34, 1.20, 0.02), COL_WOOD)
+    for bz_ in (0.23, 0.64, 1.06):
+        make_box(f"Shelf_Board_{bz_:.2f}", (shx, ROOM_D-1.4, bz_), (0.32, 1.16, 0.02), COL_WOOD)
     # comic longboxes (long white boxes) on the lowest shelf
     for c in range(3):
         make_box(f"Longbox_{c}", (shx-0.02, ROOM_D-1.9+c*0.36, 0.34), (0.28, 0.32, 0.20), (0.88, 0.86, 0.80, 1.0))
@@ -132,7 +139,7 @@ def build_dressing():
         make_cyl(f"Beanbag_{di}", (0.3, 1.1, 0.14+di*0.10), 0.42-di*0.08, 0.12, COL_ACCENT, segments=14)
     # Skateboard leaning against the south wall
     make_chamfer_box("Skateboard", (0.9, 0.15, 0.42), (0.20, 0.06, 0.80), COL_BLUE)
-    for wi, wz in enumerate([0.10, 0.74]):
+    for wi, wz in enumerate([0.05, 0.74]):
         make_cyl(f"Skate_Wheel_{wi}", (0.9, 0.10, wz), 0.05, 0.10, (0.86, 0.82, 0.30, 1.0), axis='X', segments=8)
     # Laundry pile in the corner
     for li, (lc, lz) in enumerate([((0.30, 0.44, 0.62, 1.0), 0.06), ((0.46, 0.60, 0.36, 1.0), 0.14), ((0.24, 0.36, 0.52, 1.0), 0.20)]):
