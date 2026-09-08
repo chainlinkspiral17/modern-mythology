@@ -196,8 +196,13 @@ sludge hangs).
   motes climbing the column the moment you enter it (light going up is
   the lift, stated); a leg crossed throws thirty gold with five motes
   to the score. Every ten points, one mote — the first stick's rule
-  holds. Nothing strobes, nothing moves the frame. Next: a finale for
-  the two endings (the eaves, the new tree) the way the storm has one.
+  holds. Nothing strobes, nothing moves the frame. And a FINALE like
+  the storm's: ARRIVED plays the crossing back as light — sixteen
+  bursts travelling left to right along the wind band, silk and drop
+  alternating, then eight gold motes up from where you landed; STILL
+  FLYING is the wind's own light leaving to the right and not coming
+  back. One house sting each. Next: the Deck read of both sticks' light
+  at 75 % trip, and whether the finale's 0.9 s hold is the right beat.
 - **direction · [trip:] cues (draft 1).** 190 interlude beats across
   vols 5–7 carry `[trip:1.2]` (the structural turn pushes the layer,
   the way `[mood:]` cues were placed on interludes), plus three

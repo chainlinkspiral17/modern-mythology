@@ -1256,8 +1256,12 @@ bible's next-draft line for the slowstick register — "the same FX
 class under Spiderdrops 2's balloon glide" — shipped: LongWindFlight
 loads SpiderdropsMinterFX and feeds it the glide's own events (silk
 cast, drop caught, thermal entered, leg crossed, every ten points a
-mote). Both GDScript checkers clean. NEXT DRAFT: a finale for the two
-endings (the eaves, the new tree) the way THE STORM has one.
+mote). The finale followed the same day: ARRIVED plays the crossing back as
+light travelling the wind band left to right with gold going up at the
+landing, STILL FLYING is the wind's light leaving to the right and not
+coming back, one house sting each, the host reading the register only
+after. Both GDScript checkers clean. NEXT DRAFT: the Deck read of both
+sticks' light at 75 % trip and of the 0.9 s hold after the last spark.
 
 **2026-08-19 · PER-STICK VOICE SWEEP VERDICT (voice draft 4).**
 Ran the leakage grep (TODO/WIP/placeholder/implemented/deferred/

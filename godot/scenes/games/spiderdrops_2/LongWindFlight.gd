@@ -77,6 +77,10 @@ const _MinterFX = preload("res://scenes/games/spiderdrops/SpiderdropsMinterFX.gd
 var _fx: Node2D = null
 var _mote_acc: float = 0.0
 var _was_in_thermal: bool = false
+var _finale: Array[Dictionary] = []      # {t, pos, col, n, speed, core}
+var _finale_t: float = -1.0              # < 0 → no finale running
+var _finale_len: float = 0.0
+var _finale_result: Dictionary = {}
 var _legs_crossed: int = 0
 var _t: float = 0.0
 var _gust: float = 0.0
@@ -129,6 +133,8 @@ func boot(state: Dictionary) -> void:
 	_start_settle()
 	_mote_acc = 0.0
 	_was_in_thermal = false
+	_finale.clear()
+	_finale_t = -1.0
 	_running = true
 	_resolved = false
 	queue_redraw()
@@ -177,6 +183,9 @@ func _land_leg() -> void:
 # ─── main loop ───────────────────────────────────────────────────
 
 func _physics_process(delta: float) -> void:
+	if _finale_t >= 0.0:
+		_tick_finale(delta)
+		return
 	if not _running:
 		return
 	_t += delta
@@ -335,13 +344,68 @@ func _resolve(register: String) -> void:
 		return
 	_resolved = true
 	_running = false
-	run_over.emit({
+	_finale_result = {
 		"register": register,
 		"legs_crossed": _legs_crossed,
 		"legs_total": LEGS,
 		"score": int(_score),
 		"drops_caught": _drops_caught,
-	})
+	}
+	_schedule_finale(register)
+
+
+# ── the finale (2026-09-11, Minter row draft 3) ─────────────────
+# THE STORM's ending plays as light before the host reads the register;
+# so does this one. ARRIVED is light travelling the way you travelled:
+# left to right along the band, the whole crossing in two seconds, and
+# the gold going up at the end. STILL FLYING is the wind's own light
+# going with you — pale motes leaving to the right and not coming back.
+func _schedule_finale(register: String) -> void:
+	_finale.clear()
+	_finale_len = 0.0
+	match register:
+		"eaves": _sfx("interlude_earned")
+		"new_tree": _sfx("thread_spin")
+		_: _sfx("tier_crossing_close")
+	if _fx == null:
+		_finale_t = 0.0
+		return
+	if register == "still_flying":
+		for k in range(14):
+			var tk: float = 0.11 * float(k)
+			var px: float = SPIDER_X + 40.0 * float(k)
+			_finale.append({"t": tk, "pos": Vector2(px, _sy + sin(float(k)) * 26.0),
+				"col": C_BAND, "n": 5, "speed": 130.0, "core": false})
+		_finale_len = 14.0 * 0.11
+	else:
+		var band_y: float = (BAND_HI + BAND_LO) * 0.5
+		for k in range(16):
+			var tk2: float = 0.09 * float(k)
+			var px2: float = 60.0 + (VW - 120.0) * (float(k) / 15.0)
+			_finale.append({"t": tk2, "pos": Vector2(px2, band_y + sin(float(k) * 0.7) * 34.0),
+				"col": C_SILK if k % 2 == 0 else C_DROP, "n": 9, "speed": 120.0, "core": k % 4 == 0})
+		for k in range(8):
+			_finale.append({"t": 1.5 + 0.12 * float(k), "pos": Vector2(SPIDER_X, _sy),
+				"col": C_SPIDER, "n": 0, "speed": 0.0, "core": false})
+		_finale_len = 1.5 + 8.0 * 0.12
+	_finale.sort_custom(func(a: Dictionary, b: Dictionary) -> bool: return float(a["t"]) < float(b["t"]))
+	_finale_t = 0.0
+
+
+func _tick_finale(delta: float) -> void:
+	_finale_t += delta
+	while not _finale.is_empty() and float(_finale[0]["t"]) <= _finale_t:
+		var ev: Dictionary = _finale.pop_front()
+		if _fx == null:
+			continue
+		if int(ev["n"]) <= 0:
+			_fx.call("mote", Vector2(ev["pos"]), Color(ev["col"]))
+		else:
+			_fx.call("burst", Vector2(ev["pos"]), Color(ev["col"]), int(ev["n"]), float(ev["speed"]), bool(ev["core"]))
+	queue_redraw()
+	if _finale.is_empty() and _finale_t >= _finale_len + 0.9:
+		_finale_t = -1.0
+		run_over.emit(_finale_result)
 
 
 # ─── HUD ─────────────────────────────────────────────────────────
