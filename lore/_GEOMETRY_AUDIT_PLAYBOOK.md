@@ -689,6 +689,28 @@ failure paths separately before concluding anything.
   audits (ribbons themselves as fill) and are excluded from the
   overlap check. Do not "fix" this with a ceiling.
 
+### 2026-09-08 · park against the ROAD, not along an axis; a bbox cannot see a diagonal
+
+- **A fixed pull-out along the house's axis is a car in the street
+  whenever the road is diagonal.** harmony_terrain's driveway cars
+  sat 2.7 m past the garage face along ±X/±Y; on Phase II's winding
+  road that axis met the asphalt after 2 m. The fix is a clearance
+  function handed to the house builder (`road_edge(px, py)` → metres
+  outside the road band) and a walk-back loop over the four corners.
+  No driveway long enough → no car. Say so; don't fake it.
+- **A bounding box cannot measure a diagonal road.** P2Road_1 is 7 m
+  wide and its bbox is 15.6 m tall; the lane check read a car 0.5 m
+  clear of the asphalt as 2.2 m inside it. Roads with a short bbox
+  side over 10 m are now skipped — the honest gap is boulevards wider
+  than that, which no locale has yet. When a class hits zero and the
+  last two findings are on diagonal geometry, suspect the box before
+  the builder.
+- **Zero is when a class becomes a gate.** CHAIR · DESK · LANE were
+  informational at 5 · 1 · 13 and gated the moment they reached 0.
+  INTRA and FLOAT stay counts until their classes are worked the same
+  way. Never raise a grammar ceiling; fix the builder or extend the
+  grammar — the same rule as prop_overlap.
+
 ### 2026-09-07 (night) · the chair-back class; a helper's "facing" is a lie until checked
 
 - **Classify before fixing, then fix the CLASS.** 1737 FLOAT findings

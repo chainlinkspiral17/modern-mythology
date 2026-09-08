@@ -128,10 +128,21 @@ if [ "${MCOUNT:-999}" -gt "$MARKER_CEILING" ]; then
     echo "REGRESSION  $MCOUNT obstructed markers (ceiling $MARKER_CEILING)"; exit 1; fi
 echo ""
 
-# ── Furniture grammar (2026-09-07) · informational ─────────────
-# Intra-assembly clipping, floating props, chairs facing away from
-# their desks, desks off the wall, cars in the travel lane. A count
-# to drive down; not a gate yet (draft 1 still carries noise).
+# ── Furniture grammar (2026-09-07 · gated 2026-09-08) ──────────
+# Intra-assembly clipping and floating props stay informational
+# (draft 1 still carries noise). CHAIR (facing away from its
+# table), DESK (off the wall) and LANE (a parked car in a travel
+# lane) reached ZERO repo-wide on 2026-09-08 after the Deck's
+# "cars in the middle of streets keeps happening" — those three
+# are now gates. Nonzero in any of them fails the suite.
 echo "── furniture_grammar_audit.py ──"
-python3 furniture_grammar_audit.py 2>/dev/null | tail -1
+GOUT="$(python3 furniture_grammar_audit.py 2>/dev/null | grep -v "^\[")" || true
+GLINE="$(echo "$GOUT" | tail -1)"
+echo "$GLINE"
+for CLS in CHAIR DESK LANE; do
+    N="$(echo "$GLINE" | grep -oE "$CLS [0-9]+" | grep -oE "[0-9]+$")"
+    if [ "${N:-999}" -gt 0 ]; then
+        echo "$GOUT" | grep "^   $CLS"
+        echo "REGRESSION  $N $CLS grammar break(s) (ceiling 0)"; exit 1; fi
+done
 echo ""

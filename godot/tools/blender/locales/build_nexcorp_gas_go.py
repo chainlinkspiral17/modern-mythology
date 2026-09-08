@@ -309,7 +309,7 @@ def build_office():
     make_box("Office_Door", (+3.04, 6.5, 1.05),
              (0.04, 0.90, 2.10), (0.42, 0.30, 0.18, 1.0))
     # Desk
-    dx, dy = 4.5, 7.5
+    dx, dy = 4.5, 8.5     # against Wall_N (y 9.0, inner face 8.9)
     make_box("Desk_Top", (dx, dy, 0.74),
              (1.40, 0.70, 0.04), (0.36, 0.26, 0.18, 1.0))
     for sx in (-1, +1):
@@ -328,16 +328,16 @@ def build_office():
     # Office chair
     make_box("OfficeChair_Seat", (dx, dy - 0.40, 0.46),
              (0.46, 0.46, 0.08), (0.18, 0.16, 0.16, 1.0))
-    make_box("OfficeChair_Back", (dx, dy - 0.62, 0.840),
-             (0.46, 0.06, 0.66), (0.18, 0.16, 0.16, 1.0))
+    make_box("OfficeChair_Back", (dx, dy - 0.62, 0.760),
+             (0.46, 0.06, 0.50), (0.18, 0.16, 0.16, 1.0))
     # 4-drawer file cabinet (Skip's dispatch records)
-    make_box("FileCab", (+5.30, 8.50, 0.80),
+    make_box("FileCab", (+5.62, 8.50, 0.80),
              (0.50, 0.60, 1.60), COL_METAL_BLACK)
     for i in range(4):
         dz = 0.30 + i * 0.36
-        make_box(f"FileCab_Drawer_{i}", (+5.30, 8.20, dz),
+        make_box(f"FileCab_Drawer_{i}", (+5.62, 8.20, dz),
                  (0.46, 0.02, 0.30), COL_LOCKER_GREY)
-        make_box(f"FileCab_Handle_{i}", (+5.30, 8.18, dz),
+        make_box(f"FileCab_Handle_{i}", (+5.62, 8.18, dz),
                  (0.16, 0.04, 0.04), COL_METAL_BLACK)
 
 

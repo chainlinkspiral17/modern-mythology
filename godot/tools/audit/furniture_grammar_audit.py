@@ -86,7 +86,10 @@ MOVING = re.compile(r"(hwy9_car|traffic|deliverytruck|tem_truck|_moving|northbou
 TUCK = re.compile(r"^(bullnose|liquid|fill|water|coffee|foam|sixpack|interior|stock|marker|riser|laundry|shade|bulb|plate|book|manga|cushion|label|decal|band|stripe|trim|edge|lip|rim|cap|glass|screen)$", re.I)
 CARISH = re.compile(r"(car|truck|sedan|van|pickup|cruiser|patrol|corolla|civic|wagon|jeep|suv|ambulance)", re.I)
 CAR_PART = re.compile(r"(body|cab|cabin|hood|bed|roof)$", re.I)
-DESKISH = re.compile(r"(desk|table|counter|bar_top|workbench|vanity|dining|fourtop|twotop|sixtop)", re.I)
+DESKISH = re.compile(r"(desk|table|counter|bar_top|workbench|vanity|dining|fourtop|twotop|sixtop|draft|drawing)", re.I)
+# seats that are not AT a table by design: wheelchairs, a chair on its
+# side, rockers and porch swings
+NOT_AT_TABLE = re.compile(r"(wheelchair|tipped|rocker|rocking|swing|porch)", re.I)
 # Tables nobody sits AT: side, end, night, console, hall.
 # (a coffee table stays IN: the roadhouse's meeting ring sits around one)
 NOT_SEATING = re.compile(r"(side|end|night|console|hall|lamp|plant|tv|outline|zone|^z_|plate)", re.I)
@@ -247,7 +250,7 @@ def check_chairs(boxes):
             and (TOPISH.search(b[0]) or (b[2][2] * 2 < 0.12 and max(b[2][0], b[2][1]) * 2 > 0.3 and not re.search(r"(leg|post|pedestal|base|stem|foot|apron|stretcher)", b[0], re.I)))]
     out = []
     for pre, parts in groups.items():
-        if not re.search(r"(chair|stool|seat)", pre, re.I):
+        if not re.search(r"(chair|stool|seat)", pre, re.I) or NOT_AT_TABLE.search(pre):
             continue
         seat = [p for p in parts if re.search(r"seat", p[0], re.I) and not re.search(r"back", p[0], re.I)]
         back = [p for p in parts if re.search(r"back", p[0], re.I) and not re.search(r"post|leg", p[0], re.I)]
@@ -306,8 +309,13 @@ def check_lanes(boxes):
              and not re.search(r"(line|stripe|mark|edge|shoulder|curb|sign|bend|post|median|ramp)", b[0], re.I)
              and max(b[2][0], b[2][1]) * 2 > 12.0 and b[2][2] * 2 < 0.6
              # a diagonal road recorded as one bounding box is wide in BOTH
-             # dims — nothing can be measured against it
-             and min(b[2][0], b[2][1]) * 2 < 30.0]
+             # dims — nothing can be measured against it. A two-lane
+             # road with curbs is ≤ 9 m across; anything wider is either
+             # a diagonal segment's inflated bbox or a boulevard, and
+             # both fooled the audit (2026-09-08: two Phase II cars
+             # parked 0.5 m clear of a diagonal road read as "2.2 m in
+             # the lane" because the road's bbox was 15 m tall)
+             and min(b[2][0], b[2][1]) * 2 < 10.0]
     cars = [b for b in boxes if CARISH.search(b[0]) and CAR_PART.search(b[0]) and max(b[2]) * 2 > 1.5
             and not MOVING.search(b[0])]
     out = []

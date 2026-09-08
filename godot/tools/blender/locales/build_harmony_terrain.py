@@ -8544,8 +8544,30 @@ def _make_cyl_local(name, center, radius, height, color, segments=6):
     return _finalize_mesh(name, verts, faces, color)
 
 
+def _seg_road_edge(x0, y0, x1, y1, edge):
+    """Clearance function for a straight road segment: returns how
+    far a point (px, py) lies OUTSIDE the road+curb band of half-width
+    `edge` around the segment (positive = clear of the road)."""
+    dx = x1 - x0
+    dy = y1 - y0
+    L2 = dx * dx + dy * dy or 1.0
+    def fn(px, py):
+        t = max(0.0, min(1.0, ((px - x0) * dx + (py - y0) * dy) / L2))
+        qx = x0 + dx * t
+        qy = y0 + dy * t
+        return math.hypot(px - qx, py - qy) - edge
+    return fn
+
+
+def _circle_road_edge(cx, cy, r):
+    """Clearance function for a cul-de-sac bulb of radius r."""
+    def fn(px, py):
+        return math.hypot(px - cx, py - cy) - r
+    return fn
+
+
 def _build_suburban_house(name, cx, cy, ground_z, facing='-Y',
-                           palette=None):
+                           palette=None, road_edge=None):
     """Mid-sized single-family suburban house — rectangular
     footprint with pitched gable roof, attached garage, front
     door + porch, two front windows and one over the garage.
@@ -8556,6 +8578,14 @@ def _build_suburban_house(name, cx, cy, ground_z, facing='-Y',
     palette: dict with keys 'wall', 'trim', 'roof', 'door',
              'garage_door', 'porch_post'. Defaults to a beige/cream
              palette if not supplied.
+
+    road_edge: optional callable (px, py) -> metres OUTSIDE the road
+             band (positive = clear). When given, the driveway car
+             is pulled back toward the garage until every corner
+             clears the road by CAR_ROAD_CLEAR, and skipped when the
+             driveway is too short for that (2026-09-07: cars stood
+             in the travel lanes of every diagonal Phase II street
+             because the pull-out was a fixed 2.7 m along an axis).
     """
     if palette is None:
         palette = {}
@@ -9080,15 +9110,38 @@ def _build_suburban_house(name, cx, cy, ground_z, facing='-Y',
         ]
         car_color = car_palette[seed_car % len(car_palette)]
         car_pull = 0.5 + 4.4 / 2
-        car_cx = gar_cx + fx * (gar_d / 2 + car_pull)
-        car_cy = gar_cy + fy * (gar_d / 2 + car_pull)
         # Car facing maps from house facing (nose points OUT, away
         # from the garage, which is the same direction the house
         # faces — fx, fy).
         car_face = facing      # '+X' / '-X' / '+Y' / '-Y'
-        _build_parked_car(f"{name}_DwayCar",
-                          car_cx, car_cy, ground_z,
-                          car_color, facing=car_face)
+        car_ok = True
+        if road_edge is not None:
+            # Cars park in DRIVEWAYS: walk the pull-out back toward
+            # the garage door until all four corners clear the road
+            # band. A driveway too short to hold a car gets no car.
+            CAR_ROAD_CLEAR = 0.5
+            MIN_PULL = 0.3 + 4.4 / 2
+            perp_cx = -fy
+            perp_cy = fx
+            car_ok = False
+            pull = car_pull
+            while pull >= MIN_PULL - 1e-6:
+                ccx = gar_cx + fx * (gar_d / 2 + pull)
+                ccy = gar_cy + fy * (gar_d / 2 + pull)
+                corners = [(ccx + fx * sl * 2.2 + perp_cx * sw * 0.9,
+                            ccy + fy * sl * 2.2 + perp_cy * sw * 0.9)
+                           for sl in (-1, 1) for sw in (-1, 1)]
+                if min(road_edge(px, py) for px, py in corners) >= CAR_ROAD_CLEAR:
+                    car_ok = True
+                    car_pull = pull
+                    break
+                pull -= 0.1
+        if car_ok:
+            car_cx = gar_cx + fx * (gar_d / 2 + car_pull)
+            car_cy = gar_cy + fy * (gar_d / 2 + car_pull)
+            _build_parked_car(f"{name}_DwayCar",
+                              car_cx, car_cy, ground_z,
+                              car_color, facing=car_face)
 
     # ── CURBSIDE TRASH BINS · ~40% of houses are on trash day.
     # Black trash + blue recycling, side by side at the end of
@@ -15497,7 +15550,8 @@ def build_east_cds_neighborhood():
             palette = cds_palette[house_idx % len(cds_palette)]
             _build_suburban_house(
                 f"ECDS_Coll_House_{pidx}_{side_sgn:+d}",
-                hcx, hcy, hcz, facing=facing, palette=palette)
+                hcx, hcy, hcz, facing=facing, palette=palette,
+                road_edge=_seg_road_edge(x0, y0, x1, y1, hw + curb_w))
             curb_x = mid_x + side_sgn * perp_x * (hw + curb_w + 0.5)
             curb_y = mid_y + side_sgn * perp_y * (hw + curb_w + 0.5)
             _build_driveway(
@@ -16020,7 +16074,10 @@ def build_north_ranch_neighborhood():
                 _build_suburban_house(
                     f"NR_{street_name}_House_{k}_{side_sgn:+d}",
                     hcx, hcy, hcz,
-                    facing=facing, palette=palette)
+                    facing=facing, palette=palette,
+                    road_edge=_seg_road_edge(street_pts[k][0], y_mid,
+                                             street_pts[k + 1][0], y_mid,
+                                             hw + curb_w))
                 # Driveway to the curb
                 curb_x = x_mid
                 curb_y = y_mid + side_sgn * (hw + curb_w + 0.5)
@@ -16280,7 +16337,8 @@ def build_west_estates_neighborhood():
         hcy = mid_y + side_sgn * perp_y * 18.0
         hcz = mesh_z(hcx, hcy)
         _build_suburban_house(name, hcx, hcy, hcz,
-                              facing=facing, palette=palette)
+                              facing=facing, palette=palette,
+                              road_edge=_seg_road_edge(x0, y0, x1, y1, hw + curb_w))
         curb_x = mid_x + side_sgn * perp_x * (hw + curb_w + 0.5)
         curb_y = mid_y + side_sgn * perp_y * (hw + curb_w + 0.5)
         _build_driveway(f"{name}_Drive", hcx, hcy, hcz, facing,
@@ -16315,7 +16373,8 @@ def build_west_estates_neighborhood():
         hcy = mid_y + side_sgn * perp_y * 18.0
         hcz = mesh_z(hcx, hcy)
         _build_suburban_house(name, hcx, hcy, hcz,
-                              facing=facing, palette=palette)
+                              facing=facing, palette=palette,
+                              road_edge=_seg_road_edge(x0, y0, x1, y1, hw + curb_w))
         curb_x = mid_x + side_sgn * perp_x * (hw + curb_w + 0.5)
         curb_y = mid_y + side_sgn * perp_y * (hw + curb_w + 0.5)
         _build_driveway(f"{name}_Drive", hcx, hcy, hcz, facing,
@@ -16432,7 +16491,8 @@ def build_phase2_neighborhood():
         hcy = cul_y + math.sin(ang_r) * cul_setback
         hcz = mesh_z(hcx, hcy)
         _build_suburban_house(f"P2_Cul_House_{k}", hcx, hcy, hcz,
-                              facing=facing, palette=palette)
+                              facing=facing, palette=palette,
+                              road_edge=_circle_road_edge(cul_x, cul_y, cul_r + 0.5))
         # Driveway to the cul-de-sac edge
         curb_x = cul_x + math.cos(ang_r) * (cul_r + 0.5)
         curb_y = cul_y + math.sin(ang_r) * (cul_r + 0.5)
@@ -16472,7 +16532,8 @@ def build_phase2_neighborhood():
         hcy = mid_y + side_sgn * perp_y * arterial_setback
         hcz = mesh_z(hcx, hcy)
         _build_suburban_house(name, hcx, hcy, hcz,
-                              facing=facing, palette=palette)
+                              facing=facing, palette=palette,
+                              road_edge=_seg_road_edge(x0, y0, x1, y1, hw + curb_w))
         # Driveway from house's garage to a curb point on the road
         curb_x = mid_x + side_sgn * perp_x * (hw + curb_w + 0.5)
         curb_y = mid_y + side_sgn * perp_y * (hw + curb_w + 0.5)

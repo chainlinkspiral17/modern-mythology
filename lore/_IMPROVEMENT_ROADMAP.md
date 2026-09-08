@@ -734,6 +734,28 @@ top, liquid in a pot, book in a shelf, bulb in a shade) are not intra
 clips; vehicle parts never float. Every touched builder: 0 clips,
 0 misaims, 0 obstructed. Repo-wide counts after: see the next run.
 
+**2026-09-08 · the grammar review, closed out; CHAIR · DESK · LANE
+gated at zero.** Repo-wide after the class fixes: CHAIR 0 · DESK 0 ·
+LANE 0 (INTRA 4544 · FLOAT 1420 informational). What closed the last
+seven: (1) HARMONY DRIVEWAY CARS — `_build_suburban_house()` took a
+`road_edge` clearance callable (segment or cul-de-sac bulb) and now
+walks the car back toward the garage door until all four corners clear
+the road by 0.5 m, or skips the car when the driveway can't hold one
+(P2 House C and E lost theirs — 5 m of diagonal driveway is not a
+parking space). Every house family passes its road: WE arterial + loop,
+P2 arterial + bulb, ECDS collector, the NR streets. (2) The audit could
+not measure a DIAGONAL road from its bbox (P2Road_1's box is 15 m tall
+for a 7 m road) — roads wider than 10 m across are skipped, honestly.
+(3) NexCorp's desk against Wall_N (dy 8.5), chair back 0.50 tall on the
+seat, file cabinet moved off the desk's end. (4) Drafting stools face
+drafting tables (`draft|drawing` are DESKISH); wheelchairs, tipped
+chairs, rockers and porch swings are not "at" a table. Deck rebuild:
+harmony_terrain, nexcorp_gas_go. NEXT DRAFT: the INTRA 4544 by part
+class (the shelving/ceiling-grid families first), then FLOAT 1420 —
+each class either a builder fix or a grammar rule, never a ceiling
+bump; the same road-clearance rule for `meadowlark_circle`'s and
+`harmony_commercial`'s hand-placed cars (they pass today by hand).
+
 **2026-08-19 · PER-STICK VOICE SWEEP VERDICT (voice draft 4).**
 Ran the leakage grep (TODO/WIP/placeholder/implemented/deferred/
 stub) and a string survey across EVERY stick directory: estuary_4,
