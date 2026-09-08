@@ -51,6 +51,46 @@
       "t": "narrate"
     },
     {
+      "t": "choice",
+      "style": "verb_coin",
+      "hotspot": "the three bowls",
+      "prompt": "",
+      "opts": [
+        {
+          "text": "look at",
+          "goto": 11,
+          "flag": "ch14_bowls_looked",
+          "hide_if_flag": "ch14_bowls_looked"
+        },
+        {
+          "text": "turn a bowl",
+          "goto": 13,
+          "flag": "ch14_bowls_turned",
+          "hide_if_flag": "ch14_bowls_turned"
+        },
+        {
+          "text": "leave them",
+          "goto": 15
+        }
+      ]
+    },
+    {
+      "t": "narrate",
+      "text": "Marit's bowl: the crow's head had turned toward the door, which was where Kai would come in. The substrate-bowl: the young woman had her back to Lena now and one hand out, the way a person tests a wall in the dark. Marina's grandfather's bowl: the carved man's eyes were above the rim, and the thing they were looking at was the lamp, and the thing behind the lamp was the south window, and the thing past the window was the town."
+    },
+    {
+      "t": "jump",
+      "goto": 10
+    },
+    {
+      "t": "narrate",
+      "text": "She turned Marina's grandfather's bowl a quarter, the way Marina turned it at supper so the man faced the food. The man's eyes stayed on the lamp. They had not turned with the bowl. She set it back the way it had been and put both hands around her cup and did not do that again."
+    },
+    {
+      "t": "jump",
+      "goto": 10
+    },
+    {
       "text": "She had carried the cup back to the bedroom and had sat on the edge of the bed.",
       "t": "narrate"
     },

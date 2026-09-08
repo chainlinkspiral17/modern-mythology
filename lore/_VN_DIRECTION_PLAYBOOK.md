@@ -235,6 +235,11 @@ no-op (fallback discipline — a script must never crash the reader).
   resolves to nothing — the matcher splits CamelCase names into
   words and matches words. `shot_insert_storm_heap` does. Multi-word
   cues match the flattened name; single words must equal a part.
+- **Scene JSON is spliced, never re-serialized — and never opened
+  for write in the serializer's expression.** `open(P, "w").write(
+  json.dumps(d, indent=IND))` with an undefined IND truncated ch14 to
+  zero bytes before the NameError surfaced (2026-09-10; git restored
+  it). Build the text first, validate it with json.loads, then write.
 - **A seeded cut is a draft, not direction.** The tool cannot know
   the line a chapter turns on; it knows where the teacup is named.
   The Deck read is what decides whether a cut lands; expect to

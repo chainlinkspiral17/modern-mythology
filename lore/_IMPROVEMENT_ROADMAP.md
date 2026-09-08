@@ -1152,6 +1152,22 @@ a rising sting per register (SFXBank), a Deck read of the storm
 ending's length (0.9 s hold after the last light), the same class
 under Spiderdrops 2.
 
+**2026-09-10 (xi) · the third verb coin — the three bowls.** vol7
+ch14 (the morning of the painting): after the bowls insert, a coin on
+"the three bowls" — LOOK AT (the crow's head toward the door, the
+young woman with a hand out to the dark, the carved man's eyes on
+the lamp and past it the town), TURN A BOWL (she turns Marina's
+grandfather's bowl a quarter; the man's eyes stay on the lamp; she
+does not do that again), LEAVE THEM. Flags ch14_bowls_looked /
+_turned hide a used verb. Story gate green. TOOL LESSON: the coin
+was spliced as raw text into the chapter JSON — `json.dump` does not
+round-trip these files, and an `open(P, "w").write(json.dumps(...))`
+whose dumps raises TRUNCATES THE FILE before failing (it did; git
+restored it). Never open for write inside the same expression as the
+serializer. NEXT DRAFT: a coin per Milk & Honey model chapter (the
+cabin's wood stove in ch11, the wall in ch20), then the Deck read of
+all three.
+
 **2026-08-19 · PER-STICK VOICE SWEEP VERDICT (voice draft 4).**
 Ran the leakage grep (TODO/WIP/placeholder/implemented/deferred/
 stub) and a string survey across EVERY stick directory: estuary_4,
