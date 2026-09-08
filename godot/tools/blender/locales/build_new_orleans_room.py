@@ -49,9 +49,9 @@ def build_bed():
     make_box("Bed_HeadBoard", (bx, by+0.92, 0.70), (1.20, 0.04, 0.80), COL_BED_FRAME)
     make_box("Bed_FootBoard", (bx, by-0.92, 0.46), (1.20, 0.04, 0.50), COL_BED_FRAME)
     # Nightstand
-    make_box("Nightstand", (-1.60, 4.0, 0.40), (0.40, 0.40, 0.80), COL_BED_FRAME)
+    make_box("Nightstand", (-0.95, 4.35, 0.40), (0.40, 0.40, 0.80), COL_BED_FRAME)   # at the bed's west side by the head (2026-09-10)
     # Glass of water on nightstand
-    make_cyl("Glass_Water", (-1.60, 4.0, 0.84), 0.04, 0.12, (0.78, 0.84, 0.86, 0.50))
+    make_cyl("Glass_Water", (-0.95, 4.35, 0.86), 0.04, 0.12, (0.78, 0.84, 0.86, 0.50))
 
 def build_washbasin():
     # Small porcelain washbasin in corner

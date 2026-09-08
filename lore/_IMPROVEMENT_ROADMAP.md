@@ -1088,7 +1088,12 @@ and hospital beds stood 0.5–1.5 m off their north walls (the
 5 bed in the asylum corridor had its pillow at the FOOT; Finn's
 platform bed had its pillow along the long side. Heads moved to the
 walls, the ward bed's pillow to its head and the frame to the N
-wall, Finn's pillow to the west end. The moves exposed two latent
+wall, Finn's pillow to the west end. The bedside things followed:
+the safehouse's chair beside the head, the New Orleans room's
+nightstand and water glass to the bed's west side, the hospice's bed
+table (prayer book, swab dispenser, bent straw) beside the head and
+its closeup of Alice re-posed on the pillow from the bed's west side.
+The moves exposed two latent
 bugs: the New Orleans room's desk legs and drawer were at absolute
 x 0 while the top had moved to x 1.1 (fixed), and the hospice's
 closeup of Alice was framed on the old bed position (re-posed on

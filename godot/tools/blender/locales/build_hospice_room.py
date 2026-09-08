@@ -92,7 +92,7 @@ def build_visitor_chair_and_decor():
     # A knit throw draped over the armrest
     make_box("VisitorChair_Throw", (cx-0.30, cy+0.02, 0.70), (0.16, 0.44, 0.10), COL_THROW)
     # Small bedside table (warm wood top)
-    tx, ty = +1.50, 2.50
+    tx, ty = +0.95, 4.60      # beside the bed's head (2026-09-10: the bed moved to the N wall)
     make_box("BedTable_Top", (tx, ty, 0.74), (0.52, 0.42, 0.04), COL_DRESSER)
     make_cyl("BedTable_Pole", (tx, ty, 0.37), 0.025, 0.70, COL_MEDICAL)
     make_box("BedTable_Shelf", (tx, ty, 0.40), (0.46, 0.36, 0.03), COL_DRESSER)
@@ -152,11 +152,12 @@ def build_hero_props():
     make_box("Beach_Print_Sky", (0.0, 5.43, 1.95), (0.60, 0.03, 0.24), (0.66, 0.74, 0.78, 1.0))
     make_box("Beach_Print_Sand", (0.0, 5.43, 1.74), (0.60, 0.03, 0.18), (0.78, 0.70, 0.54, 1.0))
     # The Book of Common Prayer, closed, doing its quiet work
-    make_box("Prayer_Book", (1.62, 2.62, 0.785), (0.13, 0.19, 0.04), (0.24, 0.20, 0.28, 1.0))
+    # on the bed table (moved with it, 2026-09-10)
+    make_box("Prayer_Book", (1.07, 4.72, 0.785), (0.13, 0.19, 0.04), (0.24, 0.20, 0.28, 1.0))
     # Mouth-swab dispenser + the bent straw
-    make_box("Swab_Dispenser", (1.40, 2.36, 0.83), (0.10, 0.07, 0.14), (0.86, 0.88, 0.90, 0.8))
-    make_cyl("Bent_Straw_Lower", (1.34, 2.50, 0.90), 0.006, 0.10, (0.90, 0.90, 0.92, 1.0), segments=5)
-    make_box("Bent_Straw_Upper", (1.36, 2.48, 0.965), (0.012, 0.012, 0.06), (0.90, 0.90, 0.92, 1.0))
+    make_box("Swab_Dispenser", (0.85, 4.46, 0.83), (0.10, 0.07, 0.14), (0.86, 0.88, 0.90, 0.8))
+    make_cyl("Bent_Straw_Lower", (0.79, 4.60, 0.90), 0.006, 0.10, (0.90, 0.90, 0.92, 1.0), segments=5)
+    make_box("Bent_Straw_Upper", (0.81, 4.58, 0.965), (0.012, 0.012, 0.06), (0.90, 0.90, 0.92, 1.0))
     # The slippers by the door, three weeks unworn
     make_box("Slipper_L", (-0.75, 0.35, 0.03), (0.10, 0.26, 0.05), (0.66, 0.58, 0.50, 1.0))
     make_box("Slipper_R", (-0.55, 0.32, 0.03), (0.10, 0.26, 0.05), (0.66, 0.58, 0.50, 1.0))

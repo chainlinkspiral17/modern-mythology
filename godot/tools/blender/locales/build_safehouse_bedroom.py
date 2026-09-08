@@ -220,9 +220,10 @@ def build_hero_props():
     make_box("IV_Bag", (-0.35, 3.30, 1.58), (0.10, 0.04, 0.16), (0.86, 0.90, 0.92, 0.8))
     make_box("IV_Line", (-0.55, 3.20, 1.10), (0.008, 0.008, 0.85), (0.80, 0.84, 0.86, 0.9))
     # The chair beside the bed
-    make_box("Bedside_Chair_Seat", (-0.10, 2.75, 0.44), (0.42, 0.42, 0.05), (0.44, 0.34, 0.24, 1.0))
-    make_box("Bedside_Chair_Back", (0.10, 2.75, 0.72), (0.05, 0.42, 0.52), (0.40, 0.30, 0.21, 1.0))
-    for li, (lx, ly) in enumerate(((-0.26, 2.59), (0.06, 2.59), (-0.26, 2.91), (0.06, 2.91))):
+    # (2026-09-10: the bed moved to the N wall; the chair follows, beside the head)
+    make_box("Bedside_Chair_Seat", (-0.10, 4.15, 0.44), (0.42, 0.42, 0.05), (0.44, 0.34, 0.24, 1.0))
+    make_box("Bedside_Chair_Back", (0.10, 4.15, 0.72), (0.05, 0.42, 0.52), (0.40, 0.30, 0.21, 1.0))
+    for li, (lx, ly) in enumerate(((-0.26, 3.99), (0.06, 3.99), (-0.26, 4.31), (0.06, 4.31))):
         make_box(f"Bedside_Chair_Leg_{li}", (lx, ly, 0.22), (0.045, 0.045, 0.44), (0.36, 0.28, 0.20, 1.0))
     # Bedside table on the OPEN side: slushie + spoon + phone + notebook
     make_box("Bedside_Table", (-0.15, 3.60, 0.28), (0.40, 0.36, 0.56), (0.46, 0.34, 0.22, 1.0))
