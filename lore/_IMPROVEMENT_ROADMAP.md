@@ -1106,6 +1106,14 @@ finn_apartment. NEXT DRAFT: nightstands and lamps follow the beds
 classes' eye over each room on the Deck); TV/couch facing (class
 7: a screen faces its seating).
 
+**2026-09-10 (vii) · screens face their seating — measured, one
+fix.** Class 7 measured as a script rather than a grammar class
+(four screens in the whole repo have seating): the Roberts kitchen
+CRT's screen faced the south WALL with the kitchen chairs behind it
+— flipped to face the room. The safehouse CRT, Simon's TV and
+Wagner's TV face their seats. Not worth a gate at four instances;
+re-measure when a locale gains a screen.
+
 **2026-08-19 · PER-STICK VOICE SWEEP VERDICT (voice draft 4).**
 Ran the leakage grep (TODO/WIP/placeholder/implemented/deferred/
 stub) and a string survey across EVERY stick directory: estuary_4,
