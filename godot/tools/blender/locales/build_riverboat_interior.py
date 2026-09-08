@@ -469,9 +469,11 @@ def build_maitre_d():
         tx = stair_x + math.cos(ang) * 0.70
         ty = stair_y + math.sin(ang) * 0.70
         tz = cz + 0.06 + i * 0.26
-        make_box(f"MD_StairsUp_Tread_{i}",
-                 (tx, ty, tz),
-                 (0.50, 0.50, 0.04), COL_DECK_PLANK)
+        # a RADIAL plank from the post (2026-09-09: squares floating at r 0.7)
+        from _props.geometry import make_rot_box
+        make_rot_box(f"MD_StairsUp_Tread_{i}",
+                     (stair_x + math.cos(ang) * 0.55, stair_y + math.sin(ang) * 0.55, tz),
+                     (1.00, 0.50, 0.04), COL_DECK_PLANK, yaw=ang)
     # Iron railing
     # rail post OUTSIDE the tread sweep (treads reach r ≈ 1.05 at their
     # corners; the old post at r 0.68 ran up through tread 1)
@@ -489,10 +491,13 @@ def build_maitre_d():
         # Linear straight stair going north as you descend
         tx = sdx
         ty = sdy + i * 0.30
-        tz = cz - i * 0.30 - 0.05
+        # solid steps down to the lower floor (cz - 2.5) — 2026-09-09:
+        # they were 4 cm slabs with 26 cm of air between them
+        top_i = cz - i * 0.30 - 0.03
+        st_h = top_i - (cz - 2.5)
         make_box(f"MD_StairsDown_Tread_{i}",
-                 (tx, ty, tz),
-                 (1.10, 0.32, 0.04), COL_DECK_PLANK)
+                 (tx, ty, (top_i + cz - 2.5) / 2.0),
+                 (1.10, 0.32, st_h), COL_DECK_PLANK)
     # Railing
     for sgn in (-1, +1):
         make_box(f"MD_StairsDown_Rail_X{sgn:+d}",

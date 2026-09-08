@@ -1356,7 +1356,7 @@ def _build_hierophant_church():
             (2.4 - i*0.6, 2.4 - i*0.6, h), COL_TIN_FRESH)
     # Cross on top
     ht._make_box_local("Hier_Church_Cross_V",
-                       (cx, steeple_cy, gz + 19.0),
+                       (cx, steeple_cy, gz + 18.72),
                        (0.12, 0.12, 1.4), COL_BLACK_IRON)
     ht._make_box_local("Hier_Church_Cross_H",
                        (cx, steeple_cy, gz + 18.6),
@@ -2132,10 +2132,10 @@ def _build_lovers_chapel():
                        (1.4, 1.4, 0.6), (0.32, 0.28, 0.22, 1.0))
     # Cross
     ht._make_box_local("Lovers_Cross_V",
-                       (cx, bcy, gz + 5.0 + 3.5),
+                       (cx, bcy, gz + 5.0 + 3.2),
                        (0.10, 0.10, 1.0), COL_BLACK_IRON)
     ht._make_box_local("Lovers_Cross_H",
-                       (cx, bcy, gz + 5.0 + 3.4),
+                       (cx, bcy, gz + 5.0 + 3.1),
                        (0.50, 0.10, 0.10), COL_BLACK_IRON)
     # Front door (sealed)
     ht._make_box_local("Lovers_Chapel_Door",
@@ -2726,7 +2726,7 @@ def _emit_crab_trap_pile(name, cx, cy):
         ht._make_box_local(
             f"{name}_Trap_{i}",
             (cx + (i % 2) * 0.08, cy + (i % 3) * 0.06,
-             gz + 0.20 + i * 0.45),
+             gz + 0.20 + i * 0.40),      # trap on trap (2026-09-09)
             (0.80, 0.80, 0.40), COL_TRAP_WIRE)
 
 
@@ -2941,7 +2941,7 @@ def _build_town_square_statue():
                        (0.55, 0.36, 0.8),
                        (0.42, 0.30, 0.18, 1.0))
     ht._make_box_local("Graustark_Statue_Head",
-                       (sx, sy, fig_z + 2.0),
+                       (sx, sy, fig_z + 1.94),
                        (0.22, 0.22, 0.28),
                        (0.42, 0.30, 0.18, 1.0))
     # Outstretched arm (pointing forward)

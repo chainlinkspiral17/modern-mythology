@@ -524,7 +524,7 @@ def build_wheelchair_2026_08():
     # Footrests: one DOWN, one FLIPPED UP.
     make_box("Wheelchair_Footrest_Down", (wx - 0.15, wy + 0.44, 0.14),
              (0.16, 0.14, 0.02), chrome_dk)
-    make_box("Wheelchair_Footrest_Up", (wx + 0.15, wy + 0.40, 0.34),
+    make_box("Wheelchair_Footrest_Up", (wx + 0.15, wy + 0.40, 0.25),
              (0.16, 0.02, 0.14), chrome_dk)
 
 

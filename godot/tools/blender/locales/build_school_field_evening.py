@@ -177,7 +177,7 @@ def build_players():
     # Coach K on the home sideline at the line of scrimmage
     make_box("Coach_Legs", (SIDE_X + 1.2, line_y, 0.46), (0.36, 0.28, 0.92), (0.30, 0.30, 0.34, 1.0))
     make_box("Coach_Torso", (SIDE_X + 1.2, line_y, 1.18), (0.48, 0.32, 0.52), (0.30, 0.36, 0.52, 1.0))
-    make_cyl("Coach_Head", (SIDE_X + 1.2, line_y, 1.62), 0.11, 0.18, skin, segments=8)
+    make_cyl("Coach_Head", (SIDE_X + 1.2, line_y, 1.53), 0.11, 0.18, skin, segments=8)
 
 
 def build_benches():

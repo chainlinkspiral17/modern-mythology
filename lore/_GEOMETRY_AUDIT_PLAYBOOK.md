@@ -689,6 +689,23 @@ failure paths separately before concluding anything.
   audits (ribbons themselves as fill) and are excluded from the
   overlap check. Do not "fix" this with a ceiling.
 
+### 2026-09-09 (night) · the residue is the vocabulary
+
+- **When a count stops shrinking by class, the rest is vocabulary.**
+  The last hundred floats were forty kinds of thing the grammar had
+  no word for. Reading them one by one and naming each class
+  (MOUNTED / hanging) is the work; there is no rule that finds a
+  towel. Keep the MOUNTED list honest — every entry is a thing that
+  really hangs.
+- **A cone's bbox ends at its tip.** A cross set 0.30 m above a
+  spire's bbox top is 0.30 m above the spire. Crosses, finials and
+  beacons sit ON the tip; lower them to touch.
+- **Stacks: spacing equals height.** Traps, ice blocks, comics,
+  brochures: the tell is a uniform 5–10 cm gap in every layer.
+- **A stair on a post is radial.** Square treads at a fixed radius
+  can never touch the post; make_rot_box planks from the post out
+  are the honest spiral (bayou lighthouse, riverboat).
+
 ### 2026-09-09 (later) · the phantom-surface query; rule ORDER is a rule
 
 - **Query the residue for the pattern, not the count.** "gap between

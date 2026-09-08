@@ -161,6 +161,8 @@ def build_hero_props():
     make_box("Desk_Paper_Drift_B", (-1.95, 3.55, 0.79), (0.38, 0.30, 0.06), (0.84, 0.82, 0.74, 1.0))
     make_box("Desk_Phone", (-2.05, 3.20, 0.775), (0.08, 0.15, 0.012), (0.12, 0.12, 0.14, 1.0))
     make_box("Task_Chair", (-1.50, 3.40, 0.46), (0.44, 0.44, 0.05), (0.28, 0.28, 0.30, 1.0))
+    make_cyl("Task_Chair_Post", (-1.50, 3.40, 0.22), 0.03, 0.44, (0.20, 0.20, 0.22, 1.0), segments=8)   # pedestal + base (2026-09-09)
+    make_cyl("Task_Chair_Base", (-1.50, 3.40, 0.02), 0.28, 0.04, (0.20, 0.20, 0.22, 1.0), segments=12)
     make_box("Task_Chair_Back", (-1.28, 3.40, 0.80), (0.05, 0.44, 0.55), (0.24, 0.24, 0.26, 1.0))
     # THE NARWHAL MUG on its coaster
     make_cyl("Coaster", (-2.55, 3.55, 0.772), 0.06, 0.008, (0.34, 0.26, 0.20, 1.0), segments=10)

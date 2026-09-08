@@ -61,7 +61,9 @@ def build_workstations():
             make_box(f"Work_{wi}_Leg_{li}", (lx, ly, 0.36), (0.04, 0.04, 0.72), COL_TRIM)
         # Dual monitors
         make_box(f"Work_{wi}_Mon1", (wx-0.30, wy+0.20, 1.08), (0.50, 0.04, 0.36), COL_MONITOR)
+        make_box(f"Work_{wi}_Mon1_Stand", (wx-0.30, wy+0.20, 0.83), (0.16, 0.14, 0.16), COL_MONITOR)   # (2026-09-09: monitors hung 16 cm over the desks)
         make_box(f"Work_{wi}_Mon2", (wx+0.30, wy+0.20, 1.08), (0.50, 0.04, 0.36), COL_MONITOR)
+        make_box(f"Work_{wi}_Mon2_Stand", (wx+0.30, wy+0.20, 0.83), (0.16, 0.14, 0.16), COL_MONITOR)
         # Keyboard + mouse
         make_box(f"Work_{wi}_KB", (wx, wy-0.10, 0.76), (0.45, 0.15, 0.02), (0.32, 0.30, 0.32, 1.0))
 
@@ -140,7 +142,7 @@ def build_hero_props():
     for pi, (px, py) in enumerate(((-3.90, 1.50), (2.6, 4.8))):
         make_cyl(f"Air_Purifier_{pi}", (px, py, 0.30), 0.14, 0.60, (0.90, 0.90, 0.88, 1.0), segments=12)
         make_cyl(f"Air_Purifier_{pi}_Vent", (px, py, 0.58), 0.12, 0.04, (0.70, 0.72, 0.72, 1.0), segments=12)
-    make_cyl("Cold_Brew", (-3.55, 1.45, 0.86), 0.04, 0.14, (0.42, 0.30, 0.20, 0.85), segments=8)
+    make_cyl("Cold_Brew", (-3.55, 1.45, 0.82), 0.04, 0.14, (0.42, 0.30, 0.20, 0.85), segments=8)
     make_box("Anna_Phone", (-3.35, 1.35, 0.775), (0.075, 0.15, 0.009), (0.12, 0.12, 0.14, 1.0))
 
 

@@ -117,7 +117,7 @@ def build_path_and_mountain():
         top = z1
         make_wedge(f"Drop_{i}", (1.5 + 38.5 / 2.0, ym, (VALLEY_Z + top) / 2.0), (38.5, SEG, top - VALLEY_Z), GRASS if i % 3 else (0.38, 0.40, 0.30, 1.0), high_end="-X")
         # rock texture: a few boulders on the cliff face's foot and the drop's shoulder
-        make_blob(f"Cliff_Rock_{i}", (-1.5 - ledge - 0.9, y0 + 2.0 + (i % 3), cliff_h + 0.7), 0.55, BASALT_DK, noise=0.28, seed=60 + i, squash=0.8)
+        make_blob(f"Cliff_Rock_{i}", (-1.5 - ledge - 0.9, y0 + 2.0 + (i % 3), cliff_h + 0.55), 0.55, BASALT_DK, noise=0.28, seed=60 + i, squash=0.8)   # seated on the cliff top
     return levels
 
 

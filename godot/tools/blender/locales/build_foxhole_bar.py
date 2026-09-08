@@ -170,7 +170,7 @@ def build_venue_side():
     # surface (z base 0.30), not embedded through it.
     for si, sy in enumerate((0.9, 5.1)):
         make_box(f"PA_{si}_Sub", (-2.9, sy, 0.65), (0.60, 0.60, 0.70), (0.12, 0.11, 0.10, 1.0))
-        make_box(f"PA_{si}_Top", (-2.9, sy, 1.60), (0.52, 0.52, 1.10), (0.14, 0.12, 0.11, 1.0))
+        make_box(f"PA_{si}_Top", (-2.9, sy, 1.55), (0.52, 0.52, 1.10), (0.14, 0.12, 0.11, 1.0))
 
 
 def build_hero_props_2026_09():

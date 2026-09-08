@@ -230,7 +230,7 @@ def build_henderson_2026_09():
     make_box("Henderson_Light_Post_Head", (3.4, 5.3, 3.31), (0.30, 0.30, 0.20), (0.96, 0.92, 0.78, 1.0))
     # Maya's bike, chained to the post, wet
     for wi, wy in enumerate((5.0, 6.05)):
-        make_cyl(f"Maya_Bike_Wheel_{wi}", (3.8, wy, 0.40), 0.33, 0.04, (0.14, 0.14, 0.15, 1.0), axis="X", segments=12)
+        make_cyl(f"Maya_Bike_Wheel_{wi}", (3.8, wy, 0.33), 0.33, 0.04, (0.14, 0.14, 0.15, 1.0), axis="X", segments=12)
     make_box("Maya_Bike_Frame_Top", (3.8, 5.52, 0.86), (0.03, 0.62, 0.03), (0.62, 0.22, 0.24, 1.0))
     make_box("Maya_Bike_Frame_Down", (3.8, 5.52, 0.62), (0.03, 0.46, 0.03), (0.62, 0.22, 0.24, 1.0))
     make_box("Maya_Bike_Seat", (3.8, 5.25, 0.94), (0.10, 0.20, 0.05), (0.14, 0.14, 0.15, 1.0))

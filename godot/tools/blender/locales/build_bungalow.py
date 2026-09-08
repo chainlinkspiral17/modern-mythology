@@ -1083,8 +1083,8 @@ def build_bathroom():
     # Toilet — south side of bathroom
     tlt_x, tlt_y = -2.95, +0.25
     make_box("Bathroom_Toilet_Tank",
-             (tlt_x, tlt_y, 0.84),
-             (0.40, 0.20, 0.50), COL_TRIM_WHITE)
+             (tlt_x, tlt_y, 0.795),
+             (0.40, 0.20, 0.59), COL_TRIM_WHITE)      # down onto the bowl
     make_box("Bathroom_Toilet_Bowl",
              (tlt_x, tlt_y + 0.30, 0.32),
              (0.40, 0.50, 0.36), COL_TRIM_WHITE)

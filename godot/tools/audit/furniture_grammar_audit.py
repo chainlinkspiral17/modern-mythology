@@ -85,6 +85,7 @@ STRUCTURAL = re.compile(r"(wall|crown|molding|roof|chimney|eave|gable|ridge|jois
                         r"trim|baseboard|skirt|seam|stud|rafter|hull|deck|pillar|post|leg|rail|spray|stream|tube|wire|cable|rope|chain|port|porthole|strip|band|piling|stringer|girder|brace|lintel|partition|pedestal)", re.I)
 MOUNTED = re.compile(r"(lamp|pendant|fan|shelf|sign|poster|frame|clock|board|wall|ceil|window|win_|curtain|light|fixture|cord|wire|"
                      r"pin|bolt|knob|lyric|page|plate|handle|pull|latch|seam|tab|pillar|mailbox|glass|badge|decal|sticker|label|logo|drawer|door|header|thermostat|rung|"
+                     r"towel|blackout|dryer|rope|crane|^tool_|tuft|clump|cardrack|timecard|bell|silhouette|cab$|above|coil|score|shirt|obstr|streak|hint|accent|cue$|spatula|curbstop|"
                      r"^moon$|^sun$|^star|cloud|notice|fence|_ac$|_ac_|numdisc|pushbar|heddle|swing|hammock|shutter|crenel|dormer|chimney|socket|insulator|warn|digit|pennant|roster|paper|ephoto|plaque|tag|led|dish|strap|hose|cable|garment|coat|robe|hinge|border|marker|nozzle|spout|mural|patch|counterslab|weight|ladle|"
                      r"number|letter|text|line|stripe|trim|cap|lid|rim|handset|dial|button|switch|outlet|plug|vent|grille|key|"
                      r"pipe|vent|duct|hood|cabinet|cab_|upper|hang|rail|awning|banner|flag|bulb|chain|hook|mirror|calendar|"

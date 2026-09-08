@@ -84,7 +84,7 @@ def build_retail_counter():
     make_box("Register_Body", (-1.20, ry, 1.20), (0.40, 0.40, 0.30), COL_BRINE_TANK)
     make_box("Register_Drawer", (-1.20, ry, 0.94), (0.40, 0.40, 0.08), COL_BRINE_TANK)
     # Bell + receipt spike + price-card display
-    make_cyl("CounterBell", (+0.80, ry, 1.10), 0.06, 0.04, (0.74, 0.56, 0.28, 1.0))
+    make_cyl("CounterBell", (+0.80, ry, 1.04), 0.06, 0.04, (0.74, 0.56, 0.28, 1.0))
     make_box("PriceCard", (+1.20, ry, 1.20), (0.30, 0.04, 0.20), P.PAPER)
 
 
@@ -130,12 +130,12 @@ def build_machinery():
     # Compressor 1
     cx1, cy1 = +1.80, 6.50
     make_box("Comp1_Base", (cx1, cy1, 0.30), (1.00, 0.80, 0.60), COL_COMPRESSOR)
-    make_cyl("Comp1_Drum", (cx1, cy1, 0.90), 0.30, 0.40, COL_COMPRESSOR, segments=12)
+    make_cyl("Comp1_Drum", (cx1, cy1, 0.80), 0.30, 0.40, COL_COMPRESSOR, segments=12)
     make_cyl("Comp1_Pipe_Top", (cx1, cy1, 1.30), 0.04, 0.40, COL_PIPE)
     # Compressor 2
     cx2, cy2 = +3.00, 6.50
     make_box("Comp2_Base", (cx2, cy2, 0.30), (0.80, 0.80, 0.60), COL_COMPRESSOR)
-    make_cyl("Comp2_Drum", (cx2, cy2, 0.90), 0.24, 0.40, COL_COMPRESSOR, segments=12)
+    make_cyl("Comp2_Drum", (cx2, cy2, 0.80), 0.24, 0.40, COL_COMPRESSOR, segments=12)
     # Brine tank
     bx, by = +1.80, 8.50
     make_cyl("BrineTank", (bx, by, 0.90), 0.70, 1.80, COL_BRINE_TANK, segments=14)

@@ -475,7 +475,7 @@ def build_counter():
     # coffee in the left pot (a dark band inside the glass)
     _lathe("CoffeeMaker_Pot_0_Coffee", (_cx - 0.12, _cy + 0.02, _z0 + 0.055), [(0.0, 0.0), (0.068, 0.0), (0.078, 0.045), (0.076, 0.085), (0.0, 0.085)], (0.24, 0.14, 0.08, 1.0), segments=12)
     # Toaster on the back bar
-    make_box("Toaster", (+2.5, cy - 0.55, 1.30),
+    make_box("Toaster", (+2.5, cy - 0.55, 1.22),
              (0.36, 0.22, 0.20), COL_KITCHEN_STEEL)
     # Two-tier glass dessert / cake stand
     make_box("DessertStand_Base", (-3.5, cy - 0.55, 1.16),
@@ -2892,6 +2892,11 @@ def build_southeast_bathroom():
         make_box(f"BR_Stall_{st}_ToiletTank",
                  (stall_cx, -5.05, 0.65),
                  (0.40, 0.18, 0.50), (0.94, 0.92, 0.86, 1.0))
+        # the trapway joining bowl and tank (2026-09-09: the tank hung
+        # 0.4 m up behind the bowl with nothing under it)
+        make_box(f"BR_Stall_{st}_ToiletBase",
+                 (stall_cx, -4.95, 0.20),
+                 (0.30, 0.30, 0.40), (0.94, 0.92, 0.86, 1.0))
     # Sink + mirror against the east wall
     make_box("BR_Sink_Counter",
              (BR_X_E - 0.30, -4.5, 0.85),
@@ -2900,7 +2905,7 @@ def build_southeast_bathroom():
              (BR_X_E - 0.30, -4.5, 0.84),
              0.18, 0.06, (0.86, 0.86, 0.82, 1.0), segments=10, axis='Z')
     make_cyl("BR_Sink_Faucet",
-             (BR_X_E - 0.30, -4.5 + 0.15, 1.00),
+             (BR_X_E - 0.30, -4.5 + 0.15, 0.96),
              0.025, 0.16, COL_BRASS, segments=6, axis='Z')
     make_box("BR_Mirror",
              (BR_X_E - 0.08, -4.5, 1.40),

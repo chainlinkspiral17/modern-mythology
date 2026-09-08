@@ -232,11 +232,11 @@ def build_church():
              COL_ROOF_SHINGLE)
     # Small cross at the peak
     make_box("Church_Cross_V",
-             (0.0, facade_y, peak_z + 4.20),
+             (0.0, facade_y, peak_z + 3.90),
              (0.04, 0.04, 0.60),
              COL_BRASS)
     make_box("Church_Cross_H",
-             (0.0, facade_y, peak_z + 4.40),
+             (0.0, facade_y, peak_z + 4.10),
              (0.28, 0.04, 0.04),
              COL_BRASS)
     # The bell visible in the belfry

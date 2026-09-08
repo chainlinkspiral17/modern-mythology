@@ -88,7 +88,7 @@ def build_desk():
     for i, (lx, ly) in enumerate([(-0.72,-0.24),(0.72,-0.24),(-0.72,0.24),(0.72,0.24)]):
         make_box(f"Desk_Leg_{i}", (dx+lx, dy+ly, 0.37), (0.06, 0.06, 0.74), COL_DARK)
     # Chunky CRT monitor + keyboard + tower
-    make_box("CRT_Body", (dx-0.15, dy+0.14, 1.05), (0.52, 0.44, 0.42), (0.34, 0.34, 0.30, 1.0))
+    make_box("CRT_Body", (dx-0.15, dy+0.14, 0.975), (0.52, 0.44, 0.42), (0.34, 0.34, 0.30, 1.0))
     make_box("CRT_Screen", (dx-0.15, dy-0.10, 1.06), (0.40, 0.02, 0.32), (0.16, 0.28, 0.30, 1.0))
     make_box("Keyboard", (dx-0.15, dy-0.18, 0.78), (0.44, 0.16, 0.03), (0.30, 0.30, 0.28, 1.0))
     make_box("PC_Tower", (dx+0.62, dy+0.05, 0.98), (0.20, 0.44, 0.46), COL_DARK)

@@ -213,7 +213,7 @@ def build_exterior():
         make_box(f"Pump_{pi}_Body", (px, py, 0.80), (0.50, 0.40, 1.30), col)
         make_box(f"Pump_{pi}_Display", (px, py - 0.21, 1.15), (0.36, 0.02, 0.26),
                  (0.20, 0.24, 0.20, 1.0) if retired else (0.86, 0.92, 0.78, 1.0))
-        make_box(f"Pump_{pi}_Topper", (px, py, 1.60), (0.56, 0.30, 0.20), (0.90, 0.88, 0.80, 1.0))
+        make_box(f"Pump_{pi}_Topper", (px, py, 1.55), (0.56, 0.30, 0.20), (0.90, 0.88, 0.80, 1.0))
         if not retired:
             make_cyl(f"Pump_{pi}_Hose", (px + 0.28, py, 0.90), 0.02, 0.50, COL_BLACK, segments=6)
             make_box(f"Pump_{pi}_Nozzle", (px + 0.28, py, 0.60), (0.06, 0.10, 0.14), COL_STEEL)

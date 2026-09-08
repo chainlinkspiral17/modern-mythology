@@ -151,7 +151,7 @@ def build_quarters():
     make_box("Q_Counter", (5.1, 4.0, z0 + 0.46), (0.9, 3.2, 0.92), CEDAR_DK)
     make_box("Q_Counter_Top", (5.1, 4.0, z0 + 0.94), (0.95, 3.3, 0.05), CEDAR)
     make_box("Q_Cabinets", (5.55, 4.0, z0 + 1.95), (0.35, 3.0, 0.80), CEDAR_PANEL)
-    make_cyl("Q_Stove_Belly", (5.0, 6.6, z0 + 0.50), 0.32, 0.65, (0.14, 0.14, 0.16, 1.0), segments=12)
+    make_cyl("Q_Stove_Belly", (5.0, 6.6, z0 + 0.375), 0.32, 0.75, (0.14, 0.14, 0.16, 1.0), segments=12)   # to the floor
     make_cyl("Q_Stove_Pipe", (5.0, 6.6, z0 + 1.9), 0.08, 2.0, (0.20, 0.19, 0.20, 1.0), segments=8)
     # The communal table that seats twelve
     make_box("Q_Table", (-0.4, 4.0, z0 + 0.76), (4.2, 1.10, 0.07), CEDAR)

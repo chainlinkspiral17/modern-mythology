@@ -10195,7 +10195,7 @@ def build_water_tower_and_lines():
                     tank_r * 0.8, 1.0, col_tank, segments=12)
     # Red beacon on top
     _make_box_local("WT_Beacon",
-                    (wt_x, wt_y, wt_z + leg_h + tank_h + 1.3),
+                    (wt_x, wt_y, wt_z + leg_h + tank_h + 1.2),
                     (0.40, 0.40, 0.40),
                     (0.85, 0.20, 0.18, 1.0))
 
@@ -13959,7 +13959,7 @@ def build_community_landmarks():
                     (0.4, 0.4, 0.4), col_ch_roof)
     # Cross at the top
     _make_box_local("Ch_CrossV",
-                    (st_x, st_y, st_base_z + 6.4),
+                    (st_x, st_y, st_base_z + 6.3),
                     (0.06, 0.06, 0.80), col_ch_cross)
     _make_box_local("Ch_CrossH",
                     (st_x, st_y, st_base_z + 6.7),

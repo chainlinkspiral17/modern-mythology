@@ -100,7 +100,7 @@ def build_benches():
                      COL_IRON)
         # Uprights at the head (north end) + racked bar
         for dx in (-0.42, 0.42):
-            make_box(f"Bench_{bi}_Up_{dx:+.1f}", (bx + dx, by + 0.45, 0.62),
+            make_box(f"Bench_{bi}_Up_{dx:+.1f}", (bx + dx, by + 0.45, 0.575),
                      (0.07, 0.07, 1.15), COL_RACK)
         make_cyl(f"Bench_{bi}_Bar", (bx, by + 0.45, 1.18), 0.022, 1.9, COL_IRON,
                  segments=8, axis='X')

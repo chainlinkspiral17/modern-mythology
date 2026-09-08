@@ -90,7 +90,7 @@ def build_sea_and_shelf():
     # boulders, mussel beds and kelp wrack along the seaward edge
     for i, (x, y, r, s) in enumerate(((-16.0, -12.0, 1.1, 3), (-9.0, -13.5, 0.8, 4), (6.0, -13.0, 1.3, 5), (15.0, -11.5, 0.9, 6),
                                       (17.5, 2.0, 1.0, 7), (-17.0, 6.0, 1.2, 8), (12.0, 12.5, 0.9, 9))):
-        make_blob(f"Boulder_{i}", (x, y, Z_TOP + r * 1.06), r, BASALT_LT, noise=0.26, seed=s, squash=0.7)
+        make_blob(f"Boulder_{i}", (x, y, Z_TOP + r * 0.98), r, BASALT_LT, noise=0.26, seed=s, squash=0.7)
     for i, (x, y) in enumerate(((-13.0, -14.2), (-5.0, -14.4), (2.0, -14.3), (10.0, -14.1), (19.2, -6.0), (19.3, 4.0))):
         make_box(f"Mussel_Bed_{i}", (x, y, Z_TOP + 0.03), (2.6, 0.9, 0.06), (0.10, 0.10, 0.16, 1.0))
     for i, (x, y) in enumerate(((-11.0, -13.2), (1.5, -13.6), (16.5, -10.0))):

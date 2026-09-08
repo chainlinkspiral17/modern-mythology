@@ -889,6 +889,33 @@ new_auburn_road. NEXT DRAFT: the residue by locale (the earlier
 list's brochure racks, ropes, bells, crosses-on-cones), then decide
 whether FLOAT gates at its floor or stays a count.
 
+**2026-09-09 (night) · the FLOAT residue worked to its floor.** The
+last 102 read one by one: half were hanging/mounted things the
+grammar had no word for (towels, blackout curtains, hand dryers, dock
+ropes, crane cabs, wall tools, grass tufts, card racks, bells,
+silhouettes in windows, wall cabinets, window headers, phone coils,
+scoreboard elements, hung shirts, tower obstruction lights, a wind
+streak, hint decals, rack accents, pool cues, curb stops) — named as
+classes; the other half were small real gaps, fixed in 20 builders:
+bungalow and diner toilet tanks down onto their bowls (the diner's
+given a trapway), Cedar Tower's pot-belly stove to the floor, the ice
+house compressors and counter bell, both Foxholes' PA tops on their
+subs, three church crosses onto their spire tips (cone bboxes end at
+the tip), the Harmony water-tower beacon, the Graustark statue's head,
+Houston's four monitors given stands (they hung 16 cm over the desks),
+Kestrel's cliff rocks seated, Maya's bike wheel and the safehouse CRT
+down, Missing Link pump toppers, the Montreal task chair a pedestal,
+the riverboat's DOWN stair solid and its spiral UP stair radial
+planks from the post, the coach's head on his torso, tideline
+boulders, the wheelchair footrest, the gym bench uprights, the
+Graustark crab traps stacked trap-on-trap. Repo-wide FLOAT 102 → 2
+(two palmetto trunks on terrain samples) and GATED at 2. Deck
+rebuild: 21 builders. NEXT DRAFT: the INTRA massing
+residue is the only informational class left, and the grammar can
+turn to what it does NOT yet see: rotated props (make_rot_box bboxes
+are inflated — the audit should use rot_box_bbox corners), and
+"faces the wall" for desks/TVs/beds (orientation grammar, class 6).
+
 **2026-08-19 · PER-STICK VOICE SWEEP VERDICT (voice draft 4).**
 Ran the leakage grep (TODO/WIP/placeholder/implemented/deferred/
 stub) and a string survey across EVERY stick directory: estuary_4,

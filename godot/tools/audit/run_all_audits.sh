@@ -147,4 +147,12 @@ for CLS in POKE CHAIR DESK LANE; do
         echo "$GOUT" | grep "^   $CLS"
         echo "REGRESSION  $N $CLS grammar break(s) (ceiling 0)"; exit 1; fi
 done
+# FLOAT reached 2 on 2026-09-09 (two palmetto trunks on terrain samples)
+# after 1408 → 713 → 353 → 102 → 2 across five class passes. ZERO-
+# REGRESSION CEILING 2: drive it down; never raise it.
+FLOAT_CEILING=2
+N="$(echo "$GLINE" | grep -oE "FLOAT [0-9]+" | grep -oE "[0-9]+$")"
+if [ "${N:-999}" -gt "$FLOAT_CEILING" ]; then
+    echo "$GOUT" | grep "^   FLOAT"
+    echo "REGRESSION  $N floating props (ceiling $FLOAT_CEILING)"; exit 1; fi
 echo ""
