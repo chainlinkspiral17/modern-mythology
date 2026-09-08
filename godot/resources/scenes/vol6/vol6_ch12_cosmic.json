@@ -53,7 +53,7 @@
     },
     {
       "t": "narrate",
-      "text": "She turns the second key."
+      "text": "[shot:establish]She turns the second key."
     },
     {
       "t": "narrate",
@@ -69,7 +69,7 @@
     },
     {
       "t": "narrate",
-      "text": "She locks the door behind her. She flips the CLOSED sign to face inward. She does not, yet, turn it."
+      "text": "[shot:insert door]She locks the door behind her. She flips the CLOSED sign to face inward. She does not, yet, turn it."
     },
     {
       "t": "narrate",
@@ -105,7 +105,7 @@
     },
     {
       "t": "narrate",
-      "text": "— Mrs. Delacroix comes in Wednesday for her Archie. New issue is in the back, came in last week. Top of the new-arrivals box, marked."
+      "text": "[shot:establish]— Mrs. Delacroix comes in Wednesday for her Archie. New issue is in the back, came in last week. Top of the new-arrivals box, marked."
     },
     {
       "t": "narrate",
@@ -121,7 +121,7 @@
     },
     {
       "t": "narrate",
-      "text": "— Speak & Spell does what it does. Let it. Don't mention it to anybody who comes in. If it does something while a customer is in the shop, walk to the back and unplug it. You know which outlet."
+      "text": "[shot:insert speak_spell]— Speak & Spell does what it does. Let it. Don't mention it to anybody who comes in. If it does something while a customer is in the shop, walk to the back and unplug it. You know which outlet."
     },
     {
       "t": "narrate",
@@ -211,7 +211,7 @@
     },
     {
       "t": "narrate",
-      "text": "He goes behind the counter without breaking stride. He sets the thermos under the register. He puts the Sentinel on the small shelf where Rick keeps his when he is in. He checks the register screen — the morning glance every working manager makes at a shop's till — and registers, by what he sees there, that the till is set to where it should be."
+      "text": "[shot:insert till]He goes behind the counter without breaking stride. He sets the thermos under the register. He puts the Sentinel on the small shelf where Rick keeps his when he is in. He checks the register screen — the morning glance every working manager makes at a shop's till — and registers, by what he sees there, that the till is set to where it should be."
     },
     {
       "t": "say",
@@ -233,7 +233,7 @@
     },
     {
       "t": "narrate",
-      "text": "Curtis goes about his morning. He puts up the new shelf-talkers for the Tuesday rotation. He moves three books from the back-issue boxes that he had marked yesterday. He does not speak to Maya for the next forty minutes."
+      "text": "[shot:insert speak_spell]Curtis goes about his morning. He puts up the new shelf-talkers for the Tuesday rotation. He moves three books from the back-issue boxes that he had marked yesterday. He does not speak to Maya for the next forty minutes."
     },
     {
       "t": "narrate",
@@ -249,7 +249,7 @@
     },
     {
       "t": "narrate",
-      "text": "Maya, at the doorway, learns by watching."
+      "text": "[shot:insert door]Maya, at the doorway, learns by watching."
     },
     {
       "t": "bg",
@@ -317,7 +317,7 @@
     },
     {
       "t": "narrate",
-      "text": "Delia hangs up."
+      "text": "[shot:establish]Delia hangs up."
     },
     {
       "t": "narrate",
@@ -333,7 +333,7 @@
     },
     {
       "t": "narrate",
-      "text": "She has, in the past two hours, fielded a delivery call from a thirty-year veteran of comics distribution who treated her like an adult. She has been part of the invisible network of comic-shop logistics that runs underneath every shop in the country. She is inside it now. Not because of Frasier. Not because of any of that. Because Rick is in Dallas, and Delia called the number she was given, and Maya picked up the phone."
+      "text": "[shot:insert phone]She has, in the past two hours, fielded a delivery call from a thirty-year veteran of comics distribution who treated her like an adult. She has been part of the invisible network of comic-shop logistics that runs underneath every shop in the country. She is inside it now. Not because of Frasier. Not because of any of that. Because Rick is in Dallas, and Delia called the number she was given, and Maya picked up the phone."
     },
     {
       "t": "narrate",
@@ -407,7 +407,7 @@
     },
     {
       "t": "narrate",
-      "text": "Wren goes behind the counter. She drops her bag. She looks at the register screen the same way Curtis had at ten fifteen."
+      "text": "[shot:insert till]Wren goes behind the counter. She drops her bag. She looks at the register screen the same way Curtis had at ten fifteen."
     },
     {
       "t": "say",
@@ -439,7 +439,7 @@
     },
     {
       "t": "narrate",
-      "text": "Wren exhales."
+      "text": "[shot:establish]Wren exhales."
     },
     {
       "t": "say",
@@ -547,7 +547,7 @@
     },
     {
       "t": "narrate",
-      "text": "Maya and Wren run the floor together for the half-hour Curtis is gone. The floor is steady — five customers in the half-hour, all regulars, none with anything weird. Wren rings. Maya bags. The two of them work the way they had been working since June, when Wren had been first to learn that Maya was actually competent at the register and had stopped, after week two, doing the rings herself when they overlapped."
+      "text": "[shot:insert till]Maya and Wren run the floor together for the half-hour Curtis is gone. The floor is steady — five customers in the half-hour, all regulars, none with anything weird. Wren rings. Maya bags. The two of them work the way they had been working since June, when Wren had been first to learn that Maya was actually competent at the register and had stopped, after week two, doing the rings herself when they overlapped."
     },
     {
       "t": "narrate",
@@ -599,7 +599,7 @@
     },
     {
       "t": "narrate",
-      "text": "Wren takes a breath."
+      "text": "[shot:establish]Wren takes a breath."
     },
     {
       "t": "narrate",
@@ -755,7 +755,7 @@
     },
     {
       "t": "narrate",
-      "text": "Curtis takes his second break at six twenty-two."
+      "text": "[shot:insert twenty]Curtis takes his second break at six twenty-two."
     },
     {
       "t": "bg",
@@ -821,7 +821,7 @@
     },
     {
       "t": "narrate",
-      "text": "Curtis nods, slowly."
+      "text": "[shot:establish]Curtis nods, slowly."
     },
     {
       "t": "say",
@@ -887,7 +887,7 @@
     },
     {
       "t": "narrate",
-      "text": "Wren laughs. She picks up her bag. She crosses to the door. She turns at the door."
+      "text": "[shot:insert door]Wren laughs. She picks up her bag. She crosses to the door. She turns at the door."
     },
     {
       "t": "say",
@@ -921,7 +921,7 @@
     },
     {
       "t": "narrate",
-      "text": "The customer at the new-arrivals shelf nods. The two in the back issues say yeah, gimme a sec."
+      "text": "[shot:establish_b]The customer at the new-arrivals shelf nods. The two in the back issues say yeah, gimme a sec."
     },
     {
       "t": "narrate",
@@ -957,7 +957,7 @@
     },
     {
       "t": "narrate",
-      "text": "He puts the folder on the counter."
+      "text": "[shot:establish_c]He puts the folder on the counter."
     },
     {
       "t": "say",
@@ -1019,7 +1019,7 @@
     },
     {
       "t": "narrate",
-      "text": "He picks up his stuff."
+      "text": "[shot:establish]He picks up his stuff."
     },
     {
       "t": "narrate",

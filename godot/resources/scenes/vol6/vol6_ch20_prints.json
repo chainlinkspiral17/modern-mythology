@@ -93,7 +93,7 @@
     },
     {
       "t": "narrate",
-      "text": "Jim, at the table, nods slowly."
+      "text": "[shot:insert table]Jim, at the table, nods slowly."
     },
     {
       "t": "say",
@@ -115,7 +115,7 @@
     },
     {
       "t": "narrate",
-      "text": "Jesse, at the counter, pours himself a cup. He sits across from his father at the table. The contact prints are between them."
+      "text": "[shot:insert prints]Jesse, at the counter, pours himself a cup. He sits across from his father at the table. The contact prints are between them."
     },
     {
       "t": "say",
@@ -157,7 +157,7 @@
     },
     {
       "t": "narrate",
-      "text": "Jim, at the table, smiles — the slow specific smile of a man who has, in mid-August, been told by his son that a small piece of the work he has been doing is good and who has, in the way of a man who has not been able to receive his son's praise for some specific months, decided to receive it."
+      "text": "[shot:insert table]Jim, at the table, smiles — the slow specific smile of a man who has, in mid-August, been told by his son that a small piece of the work he has been doing is good and who has, in the way of a man who has not been able to receive his son's praise for some specific months, decided to receive it."
     },
     {
       "t": "say",
@@ -231,7 +231,7 @@
     },
     {
       "t": "narrate",
-      "text": "A long beat."
+      "text": "[shot:establish]A long beat."
     },
     {
       "t": "say",
@@ -287,7 +287,7 @@
     },
     {
       "t": "narrate",
-      "text": "Jesse, at the table, does not, immediately, respond."
+      "text": "[shot:insert table]Jesse, at the table, does not, immediately, respond."
     },
     {
       "t": "say",
@@ -411,7 +411,7 @@
     },
     {
       "t": "narrate",
-      "text": "Jesse, at the table, laughs."
+      "text": "[shot:insert table]Jesse, at the table, laughs."
     },
     {
       "t": "say",
@@ -455,7 +455,7 @@
     },
     {
       "t": "narrate",
-      "text": "She kisses Jesse on the temple. She kisses Jim on the temple. She goes upstairs."
+      "text": "[shot:establish_b]She kisses Jesse on the temple. She kisses Jim on the temple. She goes upstairs."
     },
     {
       "t": "hide",
@@ -519,7 +519,7 @@
     },
     {
       "t": "narrate",
-      "text": "He gets up. He puts his cup in the sink. He goes to the door. He turns."
+      "text": "[shot:insert door]He gets up. He puts his cup in the sink. He goes to the door. He turns."
     },
     {
       "t": "say",
@@ -553,7 +553,7 @@
     },
     {
       "t": "narrate",
-      "text": "He goes upstairs."
+      "text": "[shot:establish_c]He goes upstairs."
     },
     {
       "t": "hide",
@@ -589,7 +589,7 @@
     },
     {
       "t": "narrate",
-      "text": "Through the window, the cicadas are loud."
+      "text": "[shot:insert window]Through the window, the cicadas are loud."
     },
     {
       "t": "narrate",
@@ -613,7 +613,7 @@
     },
     {
       "t": "narrate",
-      "text": "The town, in the small ways towns in mid-August on a Friday night before a Saturday do this work, holds."
+      "text": "[shot:establish]The town, in the small ways towns in mid-August on a Friday night before a Saturday do this work, holds."
     },
     {
       "t": "narrate",
@@ -629,7 +629,7 @@
     },
     {
       "t": "narrate",
-      "text": "Tonight, in the dark, the bridge is on the small spiral notebook page on Jesse's nightstand, in his own handwriting, in the small kid's-handwriting it has been written in, waiting for tomorrow."
+      "text": "[shot:insert notebook]Tonight, in the dark, the bridge is on the small spiral notebook page on Jesse's nightstand, in his own handwriting, in the small kid's-handwriting it has been written in, waiting for tomorrow."
     },
     {
       "t": "narrate",

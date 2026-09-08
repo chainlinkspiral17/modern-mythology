@@ -50,7 +50,7 @@
       "t": "narrate"
     },
     {
-      "text": "Cale had come down from ChillWave at ten to. He was in the wax canvas coat. He had two coffees from the Daily Grind in his hands and was passing them around to Wren and Jameson.",
+      "text": "[shot:insert hand]Cale had come down from ChillWave at ten to. He was in the wax canvas coat. He had two coffees from the Daily Grind in his hands and was passing them around to Wren and Jameson.",
       "t": "narrate"
     },
     {
@@ -85,7 +85,7 @@
       "t": "say"
     },
     {
-      "text": "He looked at her.",
+      "text": "[shot:establish]He looked at her.",
       "t": "narrate"
     },
     {
@@ -351,7 +351,7 @@
       "t": "say"
     },
     {
-      "text": "He took the empty coffee cups from the asphalt where they had been set. He walked Wren to the end of Hemlock toward the apartments by the river. The two of them disappeared into the dim.",
+      "text": "[shot:insert coffee]He took the empty coffee cups from the asphalt where they had been set. He walked Wren to the end of Hemlock toward the apartments by the river. The two of them disappeared into the dim.",
       "t": "narrate"
     },
     {
@@ -571,7 +571,7 @@
       "t": "show"
     },
     {
-      "text": "They got out of the truck. They went up the porch.",
+      "text": "[shot:insert truck]They got out of the truck. They went up the porch.",
       "t": "narrate"
     },
     {

@@ -41,7 +41,7 @@
   },
   {
    "t": "narrate",
-   "text": "She does not, this morning, turn on the lamp. She has been making coffee in the dark on Saturdays since the third Saturday. The kitchen knows where things are. Her hand knows where the kettle is, where the grinder is, where the green terrycloth robe is on the hook by the back door. She puts the kettle on the burner. She measures the beans. The grinder makes the noise it makes. She pours the water."
+   "text": "[shot:insert robe]She does not, this morning, turn on the lamp. She has been making coffee in the dark on Saturdays since the third Saturday. The kitchen knows where things are. Her hand knows where the kettle is, where the grinder is, where the green terrycloth robe is on the hook by the back door. She puts the kettle on the burner. She measures the beans. The grinder makes the noise it makes. She pours the water."
   },
   {
    "t": "narrate",
@@ -65,7 +65,7 @@
   },
   {
    "t": "narrate",
-   "text": "She thinks about him the way she has, for eight Saturdays, been allowed to think about him: not the apparatus, not the courthouse in May, not the decisions in 2017 and 2019 and 2023, but the man as he had been for the sixteen years before any of it. Mike's French toast, which he cut Mike's-thickness. Mike on Sunday afternoons in the early years, watching the Cowboys with his feet on the coffee table. Mike when Sammy was three, doing the little-cup-of-warm-water bath ritual. Mike in 2019 giving her the green terrycloth robe she is wearing."
+   "text": "[shot:establish]She thinks about him the way she has, for eight Saturdays, been allowed to think about him: not the apparatus, not the courthouse in May, not the decisions in 2017 and 2019 and 2023, but the man as he had been for the sixteen years before any of it. Mike's French toast, which he cut Mike's-thickness. Mike on Sunday afternoons in the early years, watching the Cowboys with his feet on the coffee table. Mike when Sammy was three, doing the little-cup-of-warm-water bath ritual. Mike in 2019 giving her the green terrycloth robe she is wearing."
   },
   {
    "t": "narrate",
@@ -101,7 +101,7 @@
   },
   {
    "t": "narrate",
-   "text": "She has been awake five hours by then. She has eaten one piece of toast with peach jam at six forty-something. Sammy has been up since seven, has come downstairs in her Kwik Stop polo and the jeans she has been wearing too many days in a row, has eaten cereal, has kissed her mother on the cheek, has driven to the Kwik Stop. The Corolla is gone. The driveway is empty. Bianca is on the back porch in the wicker chair with the second pot of coffee on the small table beside her and the cordless on the table too. She had been expecting Carlos to call this week. She had not been expecting him at nine seventeen on a Saturday."
+   "text": "[shot:insert cordless]She has been awake five hours by then. She has eaten one piece of toast with peach jam at six forty-something. Sammy has been up since seven, has come downstairs in her Kwik Stop polo and the jeans she has been wearing too many days in a row, has eaten cereal, has kissed her mother on the cheek, has driven to the Kwik Stop. The Corolla is gone. The driveway is empty. Bianca is on the back porch in the wicker chair with the second pot of coffee on the small table beside her and the cordless on the table too. She had been expecting Carlos to call this week. She had not been expecting him at nine seventeen on a Saturday."
   },
   {
    "t": "bg",
@@ -193,7 +193,7 @@
   },
   {
    "t": "narrate",
-   "text": "She thinks for a beat. She wants to give him an honest answer. Carlos has asked her this question many times since May. She has, since May, been giving him a fine in a register that has, between the two of them, stood in for a longer answer they have not had the time or the medium for. The cordless on the back porch in the wicker chair on a Saturday morning at nine seventeen — Sammy out of the house, Don's light long off, the cicadas warming up — is, possibly, the medium."
+   "text": "[shot:insert porch_light]She thinks for a beat. She wants to give him an honest answer. Carlos has asked her this question many times since May. She has, since May, been giving him a fine in a register that has, between the two of them, stood in for a longer answer they have not had the time or the medium for. The cordless on the back porch in the wicker chair on a Saturday morning at nine seventeen — Sammy out of the house, Don's light long off, the cicadas warming up — is, possibly, the medium."
   },
   {
    "t": "say",
@@ -269,7 +269,7 @@
   },
   {
    "t": "narrate",
-   "text": "She is quiet a moment."
+   "text": "[shot:establish]She is quiet a moment."
   },
   {
    "t": "say",
@@ -411,7 +411,7 @@
   },
   {
    "t": "narrate",
-   "text": "She closes her eyes."
+   "text": "[shot:establish]She closes her eyes."
   },
   {
    "t": "say",
@@ -635,7 +635,7 @@
   },
   {
    "t": "narrate",
-   "text": "What is opening, this morning, is not the crying."
+   "text": "[shot:establish]What is opening, this morning, is not the crying."
   },
   {
    "t": "narrate",
@@ -713,7 +713,7 @@
   },
   {
    "t": "narrate",
-   "text": "The morning, with another adult in the house at ten-fourteen, is no longer the morning Bianca was, at nine seventeen, on the line with her brother about. The morning has shifted. The Friday table has come, by Eileen's specific Saturday choice to walk her bakery overage around the cul-de-sac, into Saturday."
+   "text": "[shot:establish]The morning, with another adult in the house at ten-fourteen, is no longer the morning Bianca was, at nine seventeen, on the line with her brother about. The morning has shifted. The Friday table has come, by Eileen's specific Saturday choice to walk her bakery overage around the cul-de-sac, into Saturday."
   },
   {
    "t": "narrate",

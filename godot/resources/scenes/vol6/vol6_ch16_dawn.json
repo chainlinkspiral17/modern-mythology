@@ -57,7 +57,7 @@
   },
   {
    "t": "narrate",
-   "text": "He thinks: I am, for the first time in five weeks, doing something at this job that the team has not pre-agreed to. I am going to find out, this week, what it costs."
+   "text": "[shot:insert five]He thinks: I am, for the first time in five weeks, doing something at this job that the team has not pre-agreed to. I am going to find out, this week, what it costs."
   },
   {
    "t": "narrate",
@@ -123,7 +123,7 @@
   },
   {
    "t": "narrate",
-   "text": "Doug picks up the horchata."
+   "text": "[shot:establish]Doug picks up the horchata."
   },
   {
    "t": "narrate",
@@ -289,7 +289,7 @@
   },
   {
    "t": "narrate",
-   "text": "The eastern horizon, above the cedar, has the rust-colored thermal smear at its standard intensity for a clear morning."
+   "text": "[shot:insert smear]The eastern horizon, above the cedar, has the rust-colored thermal smear at its standard intensity for a clear morning."
   },
   {
    "t": "narrate",
@@ -325,7 +325,7 @@
   },
   {
    "t": "narrate",
-   "text": "He thinks: I am sixteen. I am — by the team's quiet accommodation — being permitted to be at this job. I am also — by the team's quiet accommodation — being permitted to be the kid the team protects, at a small cost that the team is, by their decisions, paying on BT's behalf."
+   "text": "[shot:establish]He thinks: I am sixteen. I am — by the team's quiet accommodation — being permitted to be at this job. I am also — by the team's quiet accommodation — being permitted to be the kid the team protects, at a small cost that the team is, by their decisions, paying on BT's behalf."
   },
   {
    "t": "narrate",
@@ -341,7 +341,7 @@
   },
   {
    "t": "narrate",
-   "text": "He looks at the smear."
+   "text": "[shot:insert smear]He looks at the smear."
   },
   {
    "t": "narrate",
@@ -605,7 +605,7 @@
   },
   {
    "t": "narrate",
-   "text": "He thinks for a long moment."
+   "text": "[shot:establish]He thinks for a long moment."
   },
   {
    "t": "say",
@@ -749,7 +749,7 @@
   },
   {
    "t": "narrate",
-   "text": "Tonight, in the truck, on the way to inventory, the song on the radio — which Diego, by some quiet decision he has made on his own without telling anyone, has cued up on his phone before leaving the house — is Never Gonna Come Back Down, on repeat, with the erf in the chorus playing into the August evening as Diego drives the small parallel side road past El Rancho on his way to the long night ahead."
+   "text": "[shot:insert radio]Tonight, in the truck, on the way to inventory, the song on the radio — which Diego, by some quiet decision he has made on his own without telling anyone, has cued up on his phone before leaving the house — is Never Gonna Come Back Down, on repeat, with the erf in the chorus playing into the August evening as Diego drives the small parallel side road past El Rancho on his way to the long night ahead."
   },
   {
    "t": "end"

@@ -177,7 +177,7 @@
       "t": "say"
     },
     {
-      "text": "She gave him a look.",
+      "text": "[shot:establish]She gave him a look.",
       "t": "narrate"
     },
     {
@@ -365,7 +365,7 @@
       "t": "say"
     },
     {
-      "text": "She glanced at him.",
+      "text": "[shot:establish_b]She glanced at him.",
       "t": "narrate"
     },
     {
@@ -481,7 +481,7 @@
       "t": "narrate"
     },
     {
-      "text": "She came in at the bell. She was in her school clothes. Her hair was the blue of Margit's dye. She was carrying her backpack. She was — by Kai's read of her at the door — nervous.",
+      "text": "[shot:insert door]She came in at the bell. She was in her school clothes. Her hair was the blue of Margit's dye. She was carrying her backpack. She was — by Kai's read of her at the door — nervous.",
       "t": "narrate"
     },
     {
@@ -544,7 +544,7 @@
       "t": "say"
     },
     {
-      "text": "Wren shifted her weight.",
+      "text": "[shot:establish]Wren shifted her weight.",
       "t": "narrate"
     },
     {
@@ -621,7 +621,7 @@
       "t": "say"
     },
     {
-      "text": "Wren looked at the floor.",
+      "text": "[shot:establish_b]Wren looked at the floor.",
       "t": "narrate"
     },
     {
@@ -722,7 +722,7 @@
       "t": "narrate"
     },
     {
-      "text": "He looked at the door. The bell did not ring. The shop was quiet at four-twenty.",
+      "text": "[shot:insert door]He looked at the door. The bell did not ring. The shop was quiet at four-twenty.",
       "t": "narrate"
     },
     {
@@ -754,7 +754,7 @@
       "t": "narrate"
     },
     {
-      "text": "He came to the wall.",
+      "text": "[shot:insert wall]He came to the wall.",
       "t": "narrate"
     },
     {
@@ -789,7 +789,7 @@
       "t": "say"
     },
     {
-      "text": "The face did not, by anything he could see, respond.",
+      "text": "[shot:establish]The face did not, by anything he could see, respond.",
       "t": "narrate"
     },
     {
@@ -823,7 +823,7 @@
       "t": "say"
     },
     {
-      "text": "He stepped back from the wall. He left the alley.",
+      "text": "[shot:insert wall]He stepped back from the wall. He left the alley.",
       "t": "narrate"
     },
     {

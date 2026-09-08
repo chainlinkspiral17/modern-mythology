@@ -65,7 +65,7 @@
     },
     {
       "t": "narrate",
-      "text": "The kitchen is dark."
+      "text": "[shot:establish]The kitchen is dark."
     },
     {
       "t": "show",
@@ -155,7 +155,7 @@
     },
     {
       "t": "narrate",
-      "text": "The four-thirty hour, as it turns out, is the hour in which she watches the cul-de-sac and remembers things from her own life that she has not, in some years, remembered. Things from before she met Mike. Things from college. Things from her childhood in Lubbock. Her father's hands, which had been the hands of a man who fixed radios for a living and who had, every Saturday morning, sat at his workbench in the garage with the small parts laid out in front of him on a square of white cloth. Her mother's voice, on the phone, calling her at college during her freshman year — long-distance, expensive, ten minutes a week, every Sunday, until her mother had died in Bianca's junior year in the spring of 1987."
+      "text": "[shot:insert phone]The four-thirty hour, as it turns out, is the hour in which she watches the cul-de-sac and remembers things from her own life that she has not, in some years, remembered. Things from before she met Mike. Things from college. Things from her childhood in Lubbock. Her father's hands, which had been the hands of a man who fixed radios for a living and who had, every Saturday morning, sat at his workbench in the garage with the small parts laid out in front of him on a square of white cloth. Her mother's voice, on the phone, calling her at college during her freshman year — long-distance, expensive, ten minutes a week, every Sunday, until her mother had died in Bianca's junior year in the spring of 1987."
     },
     {
       "t": "narrate",
@@ -175,7 +175,7 @@
     },
     {
       "t": "narrate",
-      "text": "She does not, generally, drink a second pot. She is, this morning, going to. She is going to because she has, this morning, decided that she is going to make a French toast for Sammy, and Sammy is going to come downstairs in about an hour and a half, and the second pot is going to give her something to do with her hands during the next ninety minutes that is not the not-thinking-about-Mike."
+      "text": "[shot:insert hands]She does not, generally, drink a second pot. She is, this morning, going to. She is going to because she has, this morning, decided that she is going to make a French toast for Sammy, and Sammy is going to come downstairs in about an hour and a half, and the second pot is going to give her something to do with her hands during the next ninety minutes that is not the not-thinking-about-Mike."
     },
     {
       "t": "narrate",
@@ -207,7 +207,7 @@
     },
     {
       "t": "narrate",
-      "text": "The smell — butter and cinnamon and the warm vanilla she had added to the egg mixture — fills the kitchen the way the smell of French toast fills a kitchen when a person has, for sixteen years, made French toast in this same pan with the same butter and the same cinnamon and the same vanilla, and when the smell has, in the small archival way smells do, become the thing the kitchen has been trained to remember as one of its mornings."
+      "text": "[shot:insert cinnamon_roll]The smell — butter and cinnamon and the warm vanilla she had added to the egg mixture — fills the kitchen the way the smell of French toast fills a kitchen when a person has, for sixteen years, made French toast in this same pan with the same butter and the same cinnamon and the same vanilla, and when the smell has, in the small archival way smells do, become the thing the kitchen has been trained to remember as one of its mornings."
     },
     {
       "t": "narrate",
@@ -305,7 +305,7 @@
     },
     {
       "t": "narrate",
-      "text": "Sam picks up the fork. She pours the syrup. She cuts a piece. She puts it in her mouth."
+      "text": "[shot:establish_b]Sam picks up the fork. She pours the syrup. She cuts a piece. She puts it in her mouth."
     },
     {
       "t": "narrate",
@@ -345,7 +345,7 @@
     },
     {
       "t": "narrate",
-      "text": "Sam looks at her."
+      "text": "[shot:establish_c]Sam looks at her."
     },
     {
       "t": "narrate",
@@ -387,7 +387,7 @@
     },
     {
       "t": "narrate",
-      "text": "She slides the third slice onto a plate."
+      "text": "[shot:insert french_toast]She slides the third slice onto a plate."
     },
     {
       "t": "narrate",
@@ -457,7 +457,7 @@
     },
     {
       "t": "narrate",
-      "text": "Sam pours syrup on her own second slice."
+      "text": "[shot:establish]Sam pours syrup on her own second slice."
     },
     {
       "t": "say",
@@ -499,7 +499,7 @@
     },
     {
       "t": "narrate",
-      "text": "Bianca, at the table, sets down her fork."
+      "text": "[shot:insert table]Bianca, at the table, sets down her fork."
     },
     {
       "t": "say",
@@ -537,7 +537,7 @@
     },
     {
       "t": "narrate",
-      "text": "Sam looks at her."
+      "text": "[shot:establish_b]Sam looks at her."
     },
     {
       "t": "say",
@@ -627,7 +627,7 @@
     },
     {
       "t": "narrate",
-      "text": "They eat the French toast."
+      "text": "[shot:insert french_toast]They eat the French toast."
     },
     {
       "t": "narrate",
@@ -643,7 +643,7 @@
     },
     {
       "t": "narrate",
-      "text": "Bianca clears the plates. She rinses them in the sink. She puts them in the dishwasher. She does not, in the rinsing, hum. She has been a hummer, for years, at the sink. She is, this summer, not yet a hummer again. She suspects she will, by some autumn or other, be one again. The hum is, like the sitting in her chair, something she is letting come back at its own pace."
+      "text": "[shot:insert sink_light]Bianca clears the plates. She rinses them in the sink. She puts them in the dishwasher. She does not, in the rinsing, hum. She has been a hummer, for years, at the sink. She is, this summer, not yet a hummer again. She suspects she will, by some autumn or other, be one again. The hum is, like the sitting in her chair, something she is letting come back at its own pace."
     },
     {
       "t": "narrate",
@@ -667,7 +667,7 @@
     },
     {
       "t": "narrate",
-      "text": "She takes it out to the back porch."
+      "text": "[shot:establish_c]She takes it out to the back porch."
     },
     {
       "t": "bg",
@@ -747,7 +747,7 @@
     },
     {
       "t": "narrate",
-      "text": "The cicadas, in the crepe myrtle, are louder now."
+      "text": "[shot:insert myrtle]The cicadas, in the crepe myrtle, are louder now."
     },
     {
       "t": "narrate",
@@ -811,7 +811,7 @@
     },
     {
       "t": "narrate",
-      "text": "Bianca smiles."
+      "text": "[shot:establish]Bianca smiles."
     },
     {
       "t": "say",
@@ -845,7 +845,7 @@
     },
     {
       "t": "narrate",
-      "text": "The door closes."
+      "text": "[shot:insert door]The door closes."
     },
     {
       "t": "narrate",

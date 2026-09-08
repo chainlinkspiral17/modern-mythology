@@ -45,7 +45,7 @@
   },
   {
    "t": "narrate",
-   "text": "He takes the Telecaster out of the trunk. He takes the small amp out of the trunk. He puts the strap of the gig bag over his shoulder and picks up the amp by the handle. He locks the Civic. The Civic clunks the way it has been clunking since the door's locking mechanism started to go in 2024."
+   "text": "[shot:insert door]He takes the Telecaster out of the trunk. He takes the small amp out of the trunk. He puts the strap of the gig bag over his shoulder and picks up the amp by the handle. He locks the Civic. The Civic clunks the way it has been clunking since the door's locking mechanism started to go in 2024."
   },
   {
    "t": "narrate",
@@ -201,7 +201,7 @@
   },
   {
    "t": "narrate",
-   "text": "Ricky says, from the back: Suburban Blight. Drums first. Carl, give me the kick."
+   "text": "[shot:establish]Ricky says, from the back: Suburban Blight. Drums first. Carl, give me the kick."
   },
   {
    "t": "narrate",
@@ -429,7 +429,7 @@
   },
   {
    "t": "narrate",
-   "text": "Carl counts off."
+   "text": "[shot:establish]Carl counts off."
   },
   {
    "t": "narrate",
@@ -515,7 +515,7 @@
   },
   {
    "t": "narrate",
-   "text": "and the small late evening, in mid-august"
+   "text": "[shot:establish]and the small late evening, in mid-august"
   },
   {
    "t": "narrate",
@@ -687,7 +687,7 @@
   },
   {
    "t": "narrate",
-   "text": "She looks at him. She does not, at this hour, hug him or say I'm proud of you or do any of the things she might have done at nineteen or that her mother would have done now. She is eighteen and she is the front of a band that has, tonight, played the song the band had been waiting to play."
+   "text": "[shot:establish]She looks at him. She does not, at this hour, hug him or say I'm proud of you or do any of the things she might have done at nineteen or that her mother would have done now. She is eighteen and she is the front of a band that has, tonight, played the song the band had been waiting to play."
   },
   {
    "t": "say",
@@ -897,7 +897,7 @@
   },
   {
    "t": "narrate",
-   "text": "Jesse stands at the kitchen doorway for a long count. Then he goes to the refrigerator. He gets the leftover enchiladas his mother had made Thursday. He heats them up. He eats them at the table where his father had been reading the lyric sheet."
+   "text": "[shot:insert lyric_sheet]Jesse stands at the kitchen doorway for a long count. Then he goes to the refrigerator. He gets the leftover enchiladas his mother had made Thursday. He heats them up. He eats them at the table where his father had been reading the lyric sheet."
   },
   {
    "t": "hide",

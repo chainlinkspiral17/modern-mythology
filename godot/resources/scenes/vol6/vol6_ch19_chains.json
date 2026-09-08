@@ -121,7 +121,7 @@
   },
   {
    "t": "narrate",
-   "text": "He goes inside."
+   "text": "[shot:establish]He goes inside."
   },
   {
    "t": "bg",
@@ -177,7 +177,7 @@
   },
   {
    "t": "narrate",
-   "text": "Bill, Ben registers, had been wrong about the cry. The cry comes about ninety seconds later, when Ben — at the kitchen counter making himself a second sandwich, with his back to his mother — hears, behind him, the small sniff that means Anita has done the small private thing of letting the wave hit her once and then composing herself."
+   "text": "[shot:establish]Bill, Ben registers, had been wrong about the cry. The cry comes about ninety seconds later, when Ben — at the kitchen counter making himself a second sandwich, with his back to his mother — hears, behind him, the small sniff that means Anita has done the small private thing of letting the wave hit her once and then composing herself."
   },
   {
    "t": "narrate",
@@ -217,7 +217,7 @@
   },
   {
    "t": "narrate",
-   "text": "She kisses the top of his head. She goes back to her coffee."
+   "text": "[shot:establish_b]She kisses the top of his head. She goes back to her coffee."
   },
   {
    "t": "hide",
@@ -361,7 +361,7 @@
   },
   {
    "t": "narrate",
-   "text": "He puts the phone down."
+   "text": "[shot:insert phone]He puts the phone down."
   },
   {
    "t": "narrate",
@@ -421,7 +421,7 @@
   },
   {
    "t": "narrate",
-   "text": "Coach K, at the bench, claps once."
+   "text": "[shot:insert bleachers]Coach K, at the bench, claps once."
   },
   {
    "t": "say",
@@ -453,7 +453,7 @@
   },
   {
    "t": "narrate",
-   "text": "The team breaks."
+   "text": "[shot:establish]The team breaks."
   },
   {
    "t": "narrate",
@@ -567,7 +567,7 @@
   },
   {
    "t": "narrate",
-   "text": "Ben thinks for a beat."
+   "text": "[shot:establish]Ben thinks for a beat."
   },
   {
    "t": "say",
@@ -625,7 +625,7 @@
   },
   {
    "t": "narrate",
-   "text": "He eats. The dinner Anita has made is — Bianca had, by the four-thirty-table arrangement, sent over a cinnamon coffee cake that Eileen had brought yesterday and that the Kowalskis are, this evening, having for dessert. Anita has made enchiladas for the main. The enchiladas are — Anita's enchiladas, the recipe she does it with. Ben eats two. Gracie eats one. Bill, who has come in from the weeds, eats three."
+   "text": "[shot:establish_b]He eats. The dinner Anita has made is — Bianca had, by the four-thirty-table arrangement, sent over a cinnamon coffee cake that Eileen had brought yesterday and that the Kowalskis are, this evening, having for dessert. Anita has made enchiladas for the main. The enchiladas are — Anita's enchiladas, the recipe she does it with. Ben eats two. Gracie eats one. Bill, who has come in from the weeds, eats three."
   },
   {
    "t": "say",
@@ -699,7 +699,7 @@
   },
   {
    "t": "narrate",
-   "text": "Ben, at the table, registers — with the small careful attention his summer has been training — that his father has just, in three sentences, given him a piece of additional context about Eileen Kazantzakis that he had not, until this moment, known. He does not, in the moment, do anything with the context."
+   "text": "[shot:establish_c]Ben, at the table, registers — with the small careful attention his summer has been training — that his father has just, in three sentences, given him a piece of additional context about Eileen Kazantzakis that he had not, until this moment, known. He does not, in the moment, do anything with the context."
   },
   {
    "t": "narrate",
@@ -979,7 +979,7 @@
   },
   {
    "t": "narrate",
-   "text": "Anita laughs."
+   "text": "[shot:establish]Anita laughs."
   },
   {
    "t": "say",
@@ -1043,7 +1043,7 @@
   },
   {
    "t": "narrate",
-   "text": "Through the window, the cicadas are loud. Mister, the cat — the half-Kowalski cat, the one Gracie had named — comes in through the door Ben had, by habit, left cracked, jumps onto the bed, and curls up at Ben's feet."
+   "text": "[shot:insert cat]Through the window, the cicadas are loud. Mister, the cat — the half-Kowalski cat, the one Gracie had named — comes in through the door Ben had, by habit, left cracked, jumps onto the bed, and curls up at Ben's feet."
   },
   {
    "t": "narrate",

@@ -49,7 +49,7 @@
     },
     {
       "t": "narrate",
-      "text": "Marisol is in dairy. Russell is in produce because the day-side produce manager is on vacation and somebody on night side has had to cover. Doug is in dry goods. Diego is helping Russell in produce."
+      "text": "[shot:insert produce]Marisol is in dairy. Russell is in produce because the day-side produce manager is on vacation and somebody on night side has had to cover. Doug is in dry goods. Diego is helping Russell in produce."
     },
     {
       "t": "narrate",
@@ -77,7 +77,7 @@
     },
     {
       "t": "narrate",
-      "text": "Diego, this Friday, follows."
+      "text": "[shot:establish]Diego, this Friday, follows."
     },
     {
       "t": "narrate",
@@ -145,7 +145,7 @@
     },
     {
       "t": "narrate",
-      "text": "Russell drinks from the thermos again. He puts it back on the cart."
+      "text": "[shot:establish_b]Russell drinks from the thermos again. He puts it back on the cart."
     },
     {
       "t": "say",
@@ -181,7 +181,7 @@
     },
     {
       "t": "narrate",
-      "text": "The arugula comes in the smaller cases. Russell, who does the arugula himself, has gone to the back to get the second box from the cooler. Diego is at the cart pulling the case down from the top of the pallet and stacking the small clamshells on the bottom shelf where Russell wants them."
+      "text": "[shot:insert pallet]The arugula comes in the smaller cases. Russell, who does the arugula himself, has gone to the back to get the second box from the cooler. Diego is at the cart pulling the case down from the top of the pallet and stacking the small clamshells on the bottom shelf where Russell wants them."
     },
     {
       "t": "hide",
@@ -213,7 +213,7 @@
     },
     {
       "t": "narrate",
-      "text": "The thing he is carrying — the May thing, the room thing, what Boyd did, what the wall did, what the older system did — is the thing he wants to leave here, in this country, when he goes."
+      "text": "[shot:establish_c]The thing he is carrying — the May thing, the room thing, what Boyd did, what the wall did, what the older system did — is the thing he wants to leave here, in this country, when he goes."
     },
     {
       "t": "narrate",
@@ -239,7 +239,7 @@
     },
     {
       "t": "narrate",
-      "text": "At one-oh-two the produce work is done."
+      "text": "[shot:insert produce]At one-oh-two the produce work is done."
     },
     {
       "t": "narrate",
@@ -271,7 +271,7 @@
     },
     {
       "t": "narrate",
-      "text": "Russell wheels the cart toward the back."
+      "text": "[shot:establish]Russell wheels the cart toward the back."
     },
     {
       "t": "hide",
@@ -343,7 +343,7 @@
     },
     {
       "t": "narrate",
-      "text": "Doug gestures with his chin at the pot Jessa keeps going on the counter."
+      "text": "[shot:establish]Doug gestures with his chin at the pot Jessa keeps going on the counter."
     },
     {
       "t": "narrate",
@@ -413,7 +413,7 @@
     },
     {
       "t": "narrate",
-      "text": "He drinks his coffee."
+      "text": "[shot:insert coffee]He drinks his coffee."
     },
     {
       "t": "say",
@@ -457,7 +457,7 @@
     },
     {
       "t": "narrate",
-      "text": "Doug returns to Karamazov."
+      "text": "[shot:establish]Doug returns to Karamazov."
     },
     {
       "t": "narrate",
@@ -473,7 +473,7 @@
     },
     {
       "t": "narrate",
-      "text": "He drinks his coffee."
+      "text": "[shot:insert coffee]He drinks his coffee."
     },
     {
       "t": "hide",
@@ -503,7 +503,7 @@
     },
     {
       "t": "narrate",
-      "text": "He puts the gloves on. The gloves are the canvas gloves Jessa keeps in the stockroom drawer for this work. They are too large for his hands. They have always been too large for his hands. He has stopped, by week two, asking for smaller ones."
+      "text": "[shot:insert hands]He puts the gloves on. The gloves are the canvas gloves Jessa keeps in the stockroom drawer for this work. They are too large for his hands. They have always been too large for his hands. He has stopped, by week two, asking for smaller ones."
     },
     {
       "t": "narrate",
@@ -531,7 +531,7 @@
     },
     {
       "t": "narrate",
-      "text": "The fourth."
+      "text": "[shot:establish]The fourth."
     },
     {
       "t": "narrate",
@@ -579,7 +579,7 @@
     },
     {
       "t": "narrate",
-      "text": "He stands at the bale."
+      "text": "[shot:insert bale]He stands at the bale."
     },
     {
       "t": "narrate",
@@ -603,7 +603,7 @@
     },
     {
       "t": "narrate",
-      "text": "A beat."
+      "text": "[shot:establish]A beat."
     },
     {
       "t": "narrate",
@@ -643,7 +643,7 @@
     },
     {
       "t": "narrate",
-      "text": "He drags the bale lid down. He ties off the top layer. He takes the gloves off and puts them back in the drawer."
+      "text": "[shot:insert bale]He drags the bale lid down. He ties off the top layer. He takes the gloves off and puts them back in the drawer."
     },
     {
       "t": "narrate",

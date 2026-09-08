@@ -219,6 +219,11 @@ no-op (fallback discipline — a script must never crash the reader).
   unchanged at 10. NEXT: the same pass on vols 6–7 tails, then the
   early arcana (ch1–9) which carry authored grammar and need a lighter
   hand (raise MIN_GAP, or seed inserts only).
+- **A `bg` mid-chapter swaps the vocabulary even to NOTHING.** El
+  Rancho and Kai's apartment carry no shot markers; a seeder that
+  kept the previous room's inserts cut to phones and packets that
+  are not there. The blind-cue audit caught it in the same run —
+  run it after every seeding, before commit.
 - **A seeded cut is a draft, not direction.** The tool cannot know
   the line a chapter turns on; it knows where the teacup is named.
   The Deck read is what decides whether a cut lands; expect to

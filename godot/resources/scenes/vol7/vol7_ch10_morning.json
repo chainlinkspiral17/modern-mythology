@@ -132,7 +132,7 @@
       "t": "say"
     },
     {
-      "text": "Finn sat up. He pulled the blanket off himself and folded it the way of a person who had grown up in a house where the blankets were a shared resource and the folding mattered. He set the folded blanket on the back of the couch.",
+      "text": "[shot:establish]Finn sat up. He pulled the blanket off himself and folded it the way of a person who had grown up in a house where the blankets were a shared resource and the folding mattered. He set the folded blanket on the back of the couch.",
       "t": "narrate"
     },
     {
@@ -170,7 +170,7 @@
       "t": "say"
     },
     {
-      "text": "Finn opened the fridge. There were four eggs in the carton on the second shelf and the small block of cheddar Lena bought from the cheese-factory truck on Wednesdays. He took the eggs. He took the cheese. He took the heel of a loaf that had to be Hans's bread by the way it was wrapped. He put the cast iron on the stove. He turned the burner. The kettle came up at five fifty-eight.",
+      "text": "[shot:insert bread]Finn opened the fridge. There were four eggs in the carton on the second shelf and the small block of cheddar Lena bought from the cheese-factory truck on Wednesdays. He took the eggs. He took the cheese. He took the heel of a loaf that had to be Hans's bread by the way it was wrapped. He put the cast iron on the stove. He turned the burner. The kettle came up at five fifty-eight.",
       "t": "narrate"
     },
     {
@@ -208,7 +208,7 @@
       "t": "show"
     },
     {
-      "text": "She came out at six-oh-three. Lena was in the flannel she had been in last night and the wool socks. Her hair was pulled back. She came into the kitchen, saw the cup outside the bedroom door, picked it up, walked to the chair by the window, sat down, drank.",
+      "text": "[shot:insert window]She came out at six-oh-three. Lena was in the flannel she had been in last night and the wool socks. Her hair was pulled back. She came into the kitchen, saw the cup outside the bedroom door, picked it up, walked to the chair by the window, sat down, drank.",
       "t": "narrate"
     },
     {
@@ -248,7 +248,7 @@
       "t": "say"
     },
     {
-      "text": "The three of them did not, for a while, talk. The rain on the roof had thinned since two-something in the morning. The kitchen window was the same gray-blue as the ceiling stains. Kai could hear the early traffic on Hemlock. Finn served the eggs to the small plates Lena pulled down for him. He cut three pieces of bread from the heel and put them on the plates. He grated some of the cheddar over the eggs. He brought the plates to the table by the window.",
+      "text": "[shot:insert bread]The three of them did not, for a while, talk. The rain on the roof had thinned since two-something in the morning. The kitchen window was the same gray-blue as the ceiling stains. Kai could hear the early traffic on Hemlock. Finn served the eggs to the small plates Lena pulled down for him. He cut three pieces of bread from the heel and put them on the plates. He grated some of the cheddar over the eggs. He brought the plates to the table by the window.",
       "t": "narrate"
     },
     {
@@ -306,7 +306,7 @@
       "t": "say"
     },
     {
-      "text": "She poured. She came back to the table with the second pot.",
+      "text": "[shot:establish_b]She poured. She came back to the table with the second pot.",
       "t": "narrate"
     },
     {
@@ -526,7 +526,7 @@
       "t": "say"
     },
     {
-      "text": "She did not, for a count, respond.",
+      "text": "[shot:establish_c]She did not, for a count, respond.",
       "t": "narrate"
     },
     {
@@ -716,7 +716,7 @@
       "t": "say"
     },
     {
-      "text": "She drank from the cup again. She picked up the piece of bread that was left and ate it without butter.",
+      "text": "[shot:insert bread]She drank from the cup again. She picked up the piece of bread that was left and ate it without butter.",
       "t": "narrate"
     },
     {
@@ -786,7 +786,7 @@
       "t": "say"
     },
     {
-      "text": "Tem held the cup in both hands.",
+      "text": "[shot:establish]Tem held the cup in both hands.",
       "t": "narrate"
     },
     {
@@ -936,7 +936,7 @@
       "t": "say"
     },
     {
-      "text": "He looked at Finn.",
+      "text": "[shot:establish_b]He looked at Finn.",
       "t": "narrate"
     },
     {

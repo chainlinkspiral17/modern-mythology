@@ -105,16 +105,20 @@ def plan(path):
     if not markers:
         return locale, [], nodes, "no markers"
 
-    def vocabulary(markers):
+    def vocabulary(markers, loc_name):
         establishes = [m[len("shot_"):] for m in markers if m.startswith("shot_establish")]
         if "establish" not in establishes:
             establishes.append("establish")      # the preset camera is always a wide
         establishes.sort()
         closeups = {m[len("shot_closeup_"):]: m for m in markers if m.startswith("shot_closeup_")}
-        inserts = {m[len("shot_insert_"):]: m for m in markers if m.startswith("shot_insert_")}
+        # an insert is usable only when the locale's builder HAS the
+        # object (shot_marker_audit's blind-cue test) — a marker that
+        # frames nothing named is not a shot to seed
+        inserts = {m[len("shot_insert_"):]: m for m in markers if m.startswith("shot_insert_")
+                   and SM.object_exists(loc_name, m[len("shot_insert_"):]) is not False}
         return establishes, closeups, inserts, {k: words_for(k) for k in inserts}
 
-    establishes, closeups, inserts, insert_words = vocabulary(markers)
+    establishes, closeups, inserts, insert_words = vocabulary(markers, locale)
 
     edits = []                       # (node index, cue string)
     existing = 0
@@ -130,10 +134,11 @@ def plan(path):
             # a mid-chapter locale change: the vocabulary is the NEW
             # locale's markers from here on (ch11 moves office → studio)
             _loc, mk = locale_markers(str(nd.get("src", "")))
-            if mk:
-                establishes, closeups, inserts, insert_words = vocabulary(mk)
-                last_insert_at = {}
-                est_i = 0
+            # ALWAYS swap — a locale with no markers has an empty
+            # vocabulary (only the preset wide), never the last one's
+            establishes, closeups, inserts, insert_words = vocabulary(mk or [], _loc or "")
+            last_insert_at = {}
+            est_i = 0
             current = "establish"
             last_cue = i
             last_closeup = None
@@ -188,7 +193,7 @@ def plan(path):
     if len(edits) > budget:
         # keep the earliest cuts — the reader meets the grammar first
         edits = edits[:budget]
-    return locale, edits, nodes, "ok"
+    return locale, edits, nodes, "ok:%d" % existing
 
 
 def splice(path, nodes, edits):
@@ -230,10 +235,11 @@ def main():
     for p in paths:
         locale, edits, nodes, why = plan(p)
         name = os.path.basename(p)[:-5]
-        if why != "ok":
+        if not why.startswith("ok"):
             print("%-28s %s (%s)" % (name, why, locale))
             continue
-        print("%-28s %-24s nodes %3d  +%d cues" % (name, locale, len(nodes), len(edits)))
+        existing = int(why.split(":")[1])
+        print("%-28s %-24s nodes %3d  has %2d  +%d cues" % (name, locale, len(nodes), existing, len(edits)))
         for i, cue in edits:
             body = strip_directives(str(nodes[i].get("text", "")))[:56].replace("\n", " ")
             print("    %3d %-26s %s" % (i, cue, body))

@@ -79,7 +79,7 @@
       "t": "narrate"
     },
     {
-      "text": "The four bowls were on the table.",
+      "text": "[shot:insert bowls]The four bowls were on the table.",
       "t": "narrate"
     },
     {
@@ -111,7 +111,7 @@
       "t": "narrate"
     },
     {
-      "text": "The four crows were looking at Roy's chair.",
+      "text": "[shot:insert crow]The four crows were looking at Roy's chair.",
       "t": "narrate"
     },
     {
@@ -131,7 +131,7 @@
       "t": "narrate"
     },
     {
-      "text": "The young woman on each of the bowls — Tem registered — was moving.",
+      "text": "[shot:insert bowl]The young woman on each of the bowls — Tem registered — was moving.",
       "t": "narrate"
     },
     {
@@ -155,7 +155,7 @@
       "t": "narrate"
     },
     {
-      "text": "Marit's bowl's young woman walked away from the cabin door and toward the rim of her bowl.",
+      "text": "[shot:establish]Marit's bowl's young woman walked away from the cabin door and toward the rim of her bowl.",
       "t": "narrate"
     },
     {
@@ -295,7 +295,7 @@
       "t": "say"
     },
     {
-      "text": "The eyes on Marina's grandfather's bowl stayed open. The other three young women continued to walk at the cedar-pace.",
+      "text": "[shot:insert bowl]The eyes on Marina's grandfather's bowl stayed open. The other three young women continued to walk at the cedar-pace.",
       "t": "narrate"
     },
     {
@@ -335,7 +335,7 @@
       "t": "say"
     },
     {
-      "text": "The four of them sat with the looking. The other six at the table watched.",
+      "text": "[shot:establish_b]The four of them sat with the looking. The other six at the table watched.",
       "t": "narrate"
     },
     {
@@ -360,7 +360,7 @@
       "t": "narrate"
     },
     {
-      "text": "The face on the cedar of the substrate-bowl was smiling at the crow. The crow was looking down at the face. The four bowls were on the table. The four young women had their eyes open. The four were looking at four people. Nobody moved.",
+      "text": "[shot:insert bowl]The face on the cedar of the substrate-bowl was smiling at the crow. The crow was looking down at the face. The four bowls were on the table. The four young women had their eyes open. The four were looking at four people. Nobody moved.",
       "t": "narrate"
     },
     {
@@ -376,7 +376,7 @@
       "t": "narrate"
     },
     {
-      "text": "The bowls returned to where they had been.",
+      "text": "[shot:insert bowls]The bowls returned to where they had been.",
       "t": "narrate"
     },
     {
@@ -468,7 +468,7 @@
       "t": "say"
     },
     {
-      "text": "Hans reached across to Roy's bowl. He put his palm on the side. He registered the warmth on his face.",
+      "text": "[shot:insert bowl]Hans reached across to Roy's bowl. He put his palm on the side. He registered the warmth on his face.",
       "t": "narrate"
     },
     {
@@ -515,7 +515,7 @@
       "t": "say"
     },
     {
-      "text": "Roy did not, for a count, do anything.",
+      "text": "[shot:establish_c]Roy did not, for a count, do anything.",
       "t": "narrate"
     },
     {
@@ -578,7 +578,7 @@
       "t": "say"
     },
     {
-      "text": "Roy did not, for a count, do anything.",
+      "text": "[shot:establish]Roy did not, for a count, do anything.",
       "t": "narrate"
     },
     {
@@ -619,7 +619,7 @@
       "t": "narrate"
     },
     {
-      "text": "the day they had become the family",
+      "text": "[shot:establish_b]the day they had become the family",
       "t": "narrate"
     },
     {
@@ -647,7 +647,7 @@
       "t": "narrate"
     },
     {
-      "text": "She closed the chapbook.",
+      "text": "[shot:insert chapbook]She closed the chapbook.",
       "t": "narrate"
     },
     {
@@ -771,7 +771,7 @@
       "t": "narrate"
     },
     {
-      "text": "Kai and Lena took the empty coffee cups to the kitchenette sink. Finn carried the box with the four bowls out to Tem's wagon. Per and Marina followed him out.",
+      "text": "[shot:insert bowl]Kai and Lena took the empty coffee cups to the kitchenette sink. Finn carried the box with the four bowls out to Tem's wagon. Per and Marina followed him out.",
       "t": "narrate"
     },
     {
@@ -804,7 +804,7 @@
       "t": "say"
     },
     {
-      "text": "She nodded.",
+      "text": "[shot:establish_c]She nodded.",
       "t": "narrate"
     },
     {

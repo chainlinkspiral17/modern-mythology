@@ -41,7 +41,7 @@
     },
     {
       "t": "narrate",
-      "text": "The pallets are heavy because day-side packed them for inventory, which means double-stacking, which means the centers of gravity are wrong on most of the loads, which means Diego — in the first hour — takes three corners wider than he would otherwise and watches Russell, three aisles over, take five corners wider than he would otherwise. Marisol, who has been pushing pallets at this store for seven years, takes her corners normal-width by the small knowledge of how to lean against a wrong-stacked load to compensate for the wrong stack. Marisol is the team's center of gravity in more ways than one. Diego registers this without naming it."
+      "text": "[shot:insert pallet]The pallets are heavy because day-side packed them for inventory, which means double-stacking, which means the centers of gravity are wrong on most of the loads, which means Diego — in the first hour — takes three corners wider than he would otherwise and watches Russell, three aisles over, take five corners wider than he would otherwise. Marisol, who has been pushing pallets at this store for seven years, takes her corners normal-width by the small knowledge of how to lean against a wrong-stacked load to compensate for the wrong stack. Marisol is the team's center of gravity in more ways than one. Diego registers this without naming it."
     },
     {
       "t": "narrate",
@@ -65,7 +65,7 @@
     },
     {
       "t": "narrate",
-      "text": "BT, in cereal, is also, by Diego's count, every fifteen minutes or so, looking — peripherally, from the end of his aisle — toward where Diego is working."
+      "text": "[shot:establish]BT, in cereal, is also, by Diego's count, every fifteen minutes or so, looking — peripherally, from the end of his aisle — toward where Diego is working."
     },
     {
       "t": "narrate",
@@ -149,7 +149,7 @@
     },
     {
       "t": "narrate",
-      "text": "He thinks: also I am hungry and El Rancho is good."
+      "text": "[shot:establish_b]He thinks: also I am hungry and El Rancho is good."
     },
     {
       "t": "say",
@@ -221,7 +221,7 @@
     },
     {
       "t": "narrate",
-      "text": "Marisol is at the deli station finishing her wipe-down of the case. Russell is at receiving inspecting the next pallet for the second half of the shift. Jessa is at the manager's desk doing the small spreadsheet check Jessa does at four every shift. Doug is at the break room with his thermos. BT is at the dock door with his keys in his hand."
+      "text": "[shot:insert pallet]Marisol is at the deli station finishing her wipe-down of the case. Russell is at receiving inspecting the next pallet for the second half of the shift. Jessa is at the manager's desk doing the small spreadsheet check Jessa does at four every shift. Doug is at the break room with his thermos. BT is at the dock door with his keys in his hand."
     },
     {
       "t": "narrate",
@@ -249,7 +249,7 @@
     },
     {
       "t": "narrate",
-      "text": "Diego stops at the doorway."
+      "text": "[shot:establish_c]Diego stops at the doorway."
     },
     {
       "t": "say",
@@ -287,7 +287,7 @@
     },
     {
       "t": "narrate",
-      "text": "Diego goes."
+      "text": "[shot:establish]Diego goes."
     },
     {
       "t": "bg",
@@ -379,7 +379,7 @@
     },
     {
       "t": "narrate",
-      "text": "By the chorus, Diego has registered the song's central word, which is — the singer is saying — erf. Not earth. Erf. The singer is doing the thing of intentionally eliding the th into a ff in the way British speakers sometimes do and the way the singer, by the elision, is making a small choice to mark the song with."
+      "text": "[shot:establish]By the chorus, Diego has registered the song's central word, which is — the singer is saying — erf. Not earth. Erf. The singer is doing the thing of intentionally eliding the th into a ff in the way British speakers sometimes do and the way the singer, by the elision, is making a small choice to mark the song with."
     },
     {
       "t": "narrate",
@@ -413,7 +413,7 @@
     },
     {
       "t": "narrate",
-      "text": "He thinks: BT has been listening to the song on his way home from this job for eight months because he is, on his way home from this job for eight months, the only BT in the car."
+      "text": "[shot:establish]He thinks: BT has been listening to the song on his way home from this job for eight months because he is, on his way home from this job for eight months, the only BT in the car."
     },
     {
       "t": "narrate",
@@ -449,7 +449,7 @@
     },
     {
       "t": "narrate",
-      "text": "BT, at the wheel, taps the dash. The phone screen shows the song's metadata. The song title is Never Gonna Come Back Down. The album is Movement in Still Life. The artist is BT. The lyrics — BT taps the lyrics tab — show the chorus on screen. The chorus has erf in it, lowercase, with the th elided into the f, exactly as the singer is singing it."
+      "text": "[shot:insert phone]BT, at the wheel, taps the dash. The phone screen shows the song's metadata. The song title is Never Gonna Come Back Down. The album is Movement in Still Life. The artist is BT. The lyrics — BT taps the lyrics tab — show the chorus on screen. The chorus has erf in it, lowercase, with the th elided into the f, exactly as the singer is singing it."
     },
     {
       "t": "narrate",
@@ -485,7 +485,7 @@
     },
     {
       "t": "narrate",
-      "text": "Diego nods."
+      "text": "[shot:establish]Diego nods."
     },
     {
       "t": "narrate",
@@ -819,7 +819,7 @@
     },
     {
       "t": "narrate",
-      "text": "BT, in the driver's seat, registers — Diego can see, in the way the corners of BT's mouth do the small resigned thing — that Diego has not, this morning, returned the disclosure."
+      "text": "[shot:establish]BT, in the driver's seat, registers — Diego can see, in the way the corners of BT's mouth do the small resigned thing — that Diego has not, this morning, returned the disclosure."
     },
     {
       "t": "narrate",
@@ -921,7 +921,7 @@
     },
     {
       "t": "narrate",
-      "text": "He takes the bag. He opens it. He hands Diego the burrito, which is wrapped in foil and tin and is the weight of a custom burrito that has been wrapped at El Rancho. He pulls out his own flauta box. He opens the box on the center console between them. The flautas are five rolled fried chicken cylinders with a small cup of guacamole in the corner of the box. He pours one of the green-sauce packets over the flautas. He pours one of the red-sauce packets over the flautas. He pulls out an El Diablito packet, considers it for a beat, and puts it back in the bag."
+      "text": "[shot:insert cup]He takes the bag. He opens it. He hands Diego the burrito, which is wrapped in foil and tin and is the weight of a custom burrito that has been wrapped at El Rancho. He pulls out his own flauta box. He opens the box on the center console between them. The flautas are five rolled fried chicken cylinders with a small cup of guacamole in the corner of the box. He pours one of the green-sauce packets over the flautas. He pours one of the red-sauce packets over the flautas. He pulls out an El Diablito packet, considers it for a beat, and puts it back in the bag."
     },
     {
       "t": "say",
@@ -939,7 +939,7 @@
     },
     {
       "t": "narrate",
-      "text": "Diego pours one of the green-sauce packets over the open end of the burrito anyway."
+      "text": "[shot:insert packet]Diego pours one of the green-sauce packets over the open end of the burrito anyway."
     },
     {
       "t": "narrate",
@@ -983,7 +983,7 @@
     },
     {
       "t": "narrate",
-      "text": "They eat."
+      "text": "[shot:establish]They eat."
     },
     {
       "t": "narrate",
@@ -1205,7 +1205,7 @@
     },
     {
       "t": "narrate",
-      "text": "BT has eaten four of the five flautas. The fifth is in the box. BT is going to eat it cold in the parking lot at Centro at six AM when the second-half wind hits him and he needs the extra calories. He does not yet know this. The flauta knows."
+      "text": "[shot:insert flautas]BT has eaten four of the five flautas. The fifth is in the box. BT is going to eat it cold in the parking lot at Centro at six AM when the second-half wind hits him and he needs the extra calories. He does not yet know this. The flauta knows."
     },
     {
       "t": "narrate",
@@ -1251,7 +1251,7 @@
     },
     {
       "t": "narrate",
-      "text": "BT, in the driver's seat, looks at the cup."
+      "text": "[shot:establish]BT, in the driver's seat, looks at the cup."
     },
     {
       "t": "narrate",

@@ -83,7 +83,7 @@
     },
     {
       "t": "narrate",
-      "text": "She returns to her cans."
+      "text": "[shot:establish]She returns to her cans."
     },
     {
       "t": "narrate",
@@ -103,7 +103,7 @@
     },
     {
       "t": "narrate",
-      "text": "Down the aisle, Russell is in dry pasta. Russell does not talk during stocking. Russell talks during the breaks, and Russell talks during the team meeting at ten, and Russell talks at the end of the shift while everyone is collecting their water bottles and their phones from the break room. During the work, Russell is silent in the specific way men of his age are silent — a silence that does not, Diego has learned, contain anger or distance, just the simple fact of a man whose body knows the work and whose mind, during the work, is somewhere else of its own choosing."
+      "text": "[shot:insert phone]Down the aisle, Russell is in dry pasta. Russell does not talk during stocking. Russell talks during the breaks, and Russell talks during the team meeting at ten, and Russell talks at the end of the shift while everyone is collecting their water bottles and their phones from the break room. During the work, Russell is silent in the specific way men of his age are silent — a silence that does not, Diego has learned, contain anger or distance, just the simple fact of a man whose body knows the work and whose mind, during the work, is somewhere else of its own choosing."
     },
     {
       "t": "narrate",
@@ -155,7 +155,7 @@
     },
     {
       "t": "narrate",
-      "text": "She keeps moving."
+      "text": "[shot:establish_b]She keeps moving."
     },
     {
       "t": "narrate",
@@ -287,7 +287,7 @@
     },
     {
       "t": "narrate",
-      "text": "Then BT turns and walks back toward receiving, with the two cases of yogurt, in the slow careful way of a young man who has just been answered with a silence he is choosing, for now, to interpret as a misunderstanding rather than as a refusal."
+      "text": "[shot:establish_c]Then BT turns and walks back toward receiving, with the two cases of yogurt, in the slow careful way of a young man who has just been answered with a silence he is choosing, for now, to interpret as a misunderstanding rather than as a refusal."
     },
     {
       "t": "show",
@@ -347,7 +347,7 @@
     },
     {
       "t": "narrate",
-      "text": "Russell is at the card table eating a banana and reading a folded section of yesterday's San Antonio Express-News he has brought from home. Marisol is at the microwave heating up a tupperware of something her sister-in-law sent down on Sunday. Doug is at the chair against the wall with the Karamazov open on his lap. Diego is at the door to the dock with a paper cup of coffee from the pot Jessa keeps going on the counter. BT is in the corner near the bulletin board, on his phone."
+      "text": "[shot:insert coffee]Russell is at the card table eating a banana and reading a folded section of yesterday's San Antonio Express-News he has brought from home. Marisol is at the microwave heating up a tupperware of something her sister-in-law sent down on Sunday. Doug is at the chair against the wall with the Karamazov open on his lap. Diego is at the door to the dock with a paper cup of coffee from the pot Jessa keeps going on the counter. BT is in the corner near the bulletin board, on his phone."
     },
     {
       "t": "show",
@@ -405,7 +405,7 @@
     },
     {
       "t": "narrate",
-      "text": "BT looks up."
+      "text": "[shot:establish]BT looks up."
     },
     {
       "t": "say",
@@ -465,7 +465,7 @@
     },
     {
       "t": "narrate",
-      "text": "Russell turns the page."
+      "text": "[shot:establish]Russell turns the page."
     },
     {
       "t": "say",
@@ -535,7 +535,7 @@
     },
     {
       "t": "narrate",
-      "text": "The room does not respond."
+      "text": "[shot:establish]The room does not respond."
     },
     {
       "t": "narrate",
@@ -609,7 +609,7 @@
     },
     {
       "t": "narrate",
-      "text": "The reply is, he knows, not entirely true. The shift is part of it. The shift is not all of it. The all-of-it is that he has been, since June, doing a thing that he has not yet found language for, which is the slow careful work of being in the same town as Sam without yet being able to be in the same room as her for more than the small portions of room-time his nervous system is allowing him. He can do twenty minutes. He can do, on a good day, forty-five. He has not, since the safehouse, done two hours."
+      "text": "[shot:insert five]The reply is, he knows, not entirely true. The shift is part of it. The shift is not all of it. The all-of-it is that he has been, since June, doing a thing that he has not yet found language for, which is the slow careful work of being in the same town as Sam without yet being able to be in the same room as her for more than the small portions of room-time his nervous system is allowing him. He can do twenty minutes. He can do, on a good day, forty-five. He has not, since the safehouse, done two hours."
     },
     {
       "t": "narrate",
@@ -646,7 +646,7 @@
     },
     {
       "t": "narrate",
-      "text": "He breaks down the empty case, flat-packs it into the cardboard bale at the end of the aisle, and walks the empty hand truck back toward receiving for the next pallet."
+      "text": "[shot:insert pallet]He breaks down the empty case, flat-packs it into the cardboard bale at the end of the aisle, and walks the empty hand truck back toward receiving for the next pallet."
     },
     {
       "t": "narrate",
@@ -724,7 +724,7 @@
     },
     {
       "t": "narrate",
-      "text": "The smear is a thing he has, this summer, come to think of as his own. A small ugly fact at the edge of his job, visible only at the right hour, visible only from the right position, visible only to a person who has reason to know what it is. He goes out for his second break, every shift, because the second break is when the light is right and the smear is visible and he can, for nine minutes, stand at the edge of the dock and look at the visible aftermath of the thing that had set the spring in motion, and feel — he does not have a word for what he feels — something that is not nothing."
+      "text": "[shot:establish]The smear is a thing he has, this summer, come to think of as his own. A small ugly fact at the edge of his job, visible only at the right hour, visible only from the right position, visible only to a person who has reason to know what it is. He goes out for his second break, every shift, because the second break is when the light is right and the smear is visible and he can, for nine minutes, stand at the edge of the dock and look at the visible aftermath of the thing that had set the spring in motion, and feel — he does not have a word for what he feels — something that is not nothing."
     },
     {
       "t": "narrate",
@@ -780,7 +780,7 @@
     },
     {
       "t": "narrate",
-      "text": "Diego does not, immediately, respond."
+      "text": "[shot:establish]Diego does not, immediately, respond."
     },
     {
       "t": "narrate",
@@ -898,7 +898,7 @@
     },
     {
       "t": "narrate",
-      "text": "Diego had not heard the truck. Diego now, listening, hears the truck — the low diesel approach, half a mile out, on the access road that runs behind the cedar scrub and that the trucks use to come to the back of the store."
+      "text": "[shot:establish]Diego had not heard the truck. Diego now, listening, hears the truck — the low diesel approach, half a mile out, on the access road that runs behind the cedar scrub and that the trucks use to come to the back of the store."
     },
     {
       "t": "hide",
@@ -994,7 +994,7 @@
     },
     {
       "t": "narrate",
-      "text": "A small pause."
+      "text": "[shot:establish]A small pause."
     },
     {
       "t": "say",

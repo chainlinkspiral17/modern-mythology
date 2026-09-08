@@ -59,7 +59,7 @@
     },
     {
       "t": "narrate",
-      "text": "She refills her coffee."
+      "text": "[shot:establish]She refills her coffee."
     },
     {
       "t": "narrate",
@@ -115,7 +115,7 @@
     },
     {
       "t": "narrate",
-      "text": "Bianca does not, immediately, know what to say to this."
+      "text": "[shot:establish_b]Bianca does not, immediately, know what to say to this."
     },
     {
       "t": "say",
@@ -415,7 +415,7 @@
     },
     {
       "t": "narrate",
-      "text": "Bianca sits."
+      "text": "[shot:establish_c]Bianca sits."
     },
     {
       "t": "narrate",
@@ -603,7 +603,7 @@
     },
     {
       "t": "narrate",
-      "text": "Bianca, at the table, registers — with a small private surprise — that she has not, until this minute, known about this."
+      "text": "[shot:insert table]Bianca, at the table, registers — with a small private surprise — that she has not, until this minute, known about this."
     },
     {
       "t": "say",
@@ -927,7 +927,7 @@
     },
     {
       "t": "narrate",
-      "text": "Eileen looks at Bianca."
+      "text": "[shot:establish]Eileen looks at Bianca."
     },
     {
       "t": "say",
@@ -1091,7 +1091,7 @@
     },
     {
       "t": "narrate",
-      "text": "Bianca laughs."
+      "text": "[shot:establish_b]Bianca laughs."
     },
     {
       "t": "narrate",
@@ -1159,7 +1159,7 @@
     },
     {
       "t": "narrate",
-      "text": "Sam, at the doorway, blinks."
+      "text": "[shot:establish_c]Sam, at the doorway, blinks."
     },
     {
       "t": "say",
@@ -1239,7 +1239,7 @@
     },
     {
       "t": "narrate",
-      "text": "The three of them, at the table, listen to it."
+      "text": "[shot:insert table]The three of them, at the table, listen to it."
     },
     {
       "t": "say",
@@ -1317,7 +1317,7 @@
     },
     {
       "t": "narrate",
-      "text": "Bianca laughs."
+      "text": "[shot:establish]Bianca laughs."
     },
     {
       "t": "narrate",
@@ -1359,7 +1359,7 @@
     },
     {
       "t": "narrate",
-      "text": "Anita takes her peach jar and her scrubs and her empty kolache bag and her tote and she leaves out the back door, because that is the way she came in, and because she has, at seven fifty-two in mid-August, the small walk home through the four streets of the subdivision at the hour when the sprinklers are just starting their Friday cycle and the morning light is just beginning to be the morning light."
+      "text": "[shot:insert jar]Anita takes her peach jar and her scrubs and her empty kolache bag and her tote and she leaves out the back door, because that is the way she came in, and because she has, at seven fifty-two in mid-August, the small walk home through the four streets of the subdivision at the hour when the sprinklers are just starting their Friday cycle and the morning light is just beginning to be the morning light."
     },
     {
       "t": "narrate",
@@ -1457,7 +1457,7 @@
     },
     {
       "t": "narrate",
-      "text": "At eight eleven Eileen leaves."
+      "text": "[shot:establish_b]At eight eleven Eileen leaves."
     },
     {
       "t": "narrate",

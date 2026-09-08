@@ -101,7 +101,7 @@
     },
     {
       "t": "narrate",
-      "text": "She crossed the room and sat at the small wooden table beside the kerosene lamp. The lamp was not lit; the gray light through the south-facing window was enough. On the table, beside the John Frank novel and the small clay dish with the rosemary, were three SCUMM sticks in waxed paper sleeves. Lena had registered them last night when they had arrived; she had not, last night, asked."
+      "text": "[shot:insert stick]She crossed the room and sat at the small wooden table beside the kerosene lamp. The lamp was not lit; the gray light through the south-facing window was enough. On the table, beside the John Frank novel and the small clay dish with the rosemary, were three SCUMM sticks in waxed paper sleeves. Lena had registered them last night when they had arrived; she had not, last night, asked."
     },
     {
       "t": "narrate",
@@ -129,7 +129,7 @@
     },
     {
       "t": "narrate",
-      "text": "The rain on the cedar roof was steady. The cabin held them."
+      "text": "[shot:insert cedar]The rain on the cedar roof was steady. The cabin held them."
     },
     {
       "t": "say",
@@ -189,7 +189,7 @@
     },
     {
       "t": "narrate",
-      "text": "She drank the coffee. Tem made coffee on a small camp stove with a metal cone filter that had been the cabin's coffee setup since 2031, when the previous coffee setup had broken and Tem's grandfather had bought the cone at an estate sale in the cheese-factory-town. The coffee was good. The coffee was always good at the cabin in a way it was never quite as good in town. Lena had thought, at various points, about the reasons. She had concluded, over time, that the reasons were the kettle, the cone, the cedar smoke in the air, and Tem."
+      "text": "[shot:insert coffee]She drank the coffee. Tem made coffee on a small camp stove with a metal cone filter that had been the cabin's coffee setup since 2031, when the previous coffee setup had broken and Tem's grandfather had bought the cone at an estate sale in the cheese-factory-town. The coffee was good. The coffee was always good at the cabin in a way it was never quite as good in town. Lena had thought, at various points, about the reasons. She had concluded, over time, that the reasons were the kettle, the cone, the cedar smoke in the air, and Tem."
     },
     {
       "t": "say",
@@ -228,7 +228,7 @@
     },
     {
       "t": "narrate",
-      "text": "Tem smiled a small smile that Lena had come to read, in eighteen months of friendship, as the smile Tem made when she was registering a piece of information Lena had given her without explicitly receiving it. Lena did not know, this morning, what the information was. Lena had said of course it did. Tem had registered something in the way Lena had said it. The way Lena had said it had carried, in a way Lena could not yet name, a feeling about Finn's crow and about Finn that Lena had not, before this morning, fully had."
+      "text": "[shot:insert crow]Tem smiled a small smile that Lena had come to read, in eighteen months of friendship, as the smile Tem made when she was registering a piece of information Lena had given her without explicitly receiving it. Lena did not know, this morning, what the information was. Lena had said of course it did. Tem had registered something in the way Lena had said it. The way Lena had said it had carried, in a way Lena could not yet name, a feeling about Finn's crow and about Finn that Lena had not, before this morning, fully had."
     },
     {
       "t": "narrate",
@@ -328,7 +328,7 @@
     },
     {
       "t": "narrate",
-      "text": "Lena waited."
+      "text": "[shot:establish]Lena waited."
     },
     {
       "t": "say",
@@ -411,7 +411,7 @@
     },
     {
       "t": "narrate",
-      "text": "Tem stood. Tem went to the wood stove and put the kettle back on. Lena watched her cross the room. Tem was in the wool sweater she had been in last night, jeans, and the wool socks the cabin kept on a small shelf by the door for anyone who arrived without their own. The blue of her dreadlocks had faded since Saturday in the way the blue did, toward the soft blue that was almost gray. The small leather thong her grandfather had used for tying firewood was holding the dreads back behind her head. She moved through the cabin the way a person moves through a room that is hers in a way that has been hers since her childhood."
+      "text": "[shot:insert charred_wood]Tem stood. Tem went to the wood stove and put the kettle back on. Lena watched her cross the room. Tem was in the wool sweater she had been in last night, jeans, and the wool socks the cabin kept on a small shelf by the door for anyone who arrived without their own. The blue of her dreadlocks had faded since Saturday in the way the blue did, toward the soft blue that was almost gray. The small leather thong her grandfather had used for tying firewood was holding the dreads back behind her head. She moved through the cabin the way a person moves through a room that is hers in a way that has been hers since her childhood."
     },
     {
       "t": "narrate",
@@ -489,7 +489,7 @@
     },
     {
       "t": "narrate",
-      "text": "She drank her coffee."
+      "text": "[shot:insert coffee]She drank her coffee."
     },
     {
       "t": "say",
@@ -542,7 +542,7 @@
     },
     {
       "t": "narrate",
-      "text": "She got up."
+      "text": "[shot:establish_b]She got up."
     },
     {
       "t": "narrate",
@@ -790,7 +790,7 @@
     },
     {
       "t": "narrate",
-      "text": "The rain continued."
+      "text": "[shot:establish_c]The rain continued."
     },
     {
       "t": "say",
@@ -1048,7 +1048,7 @@
     },
     {
       "t": "narrate",
-      "text": "The two of them waited."
+      "text": "[shot:establish]The two of them waited."
     },
     {
       "t": "say",
@@ -1124,7 +1124,7 @@
     },
     {
       "t": "narrate",
-      "text": "The second eggs were eaten in mostly silence. The rain did not change. Kai, after the eggs, went outside to the porch in his coat and stood at the railing for fifteen minutes looking at the cedars. Lena, at the table, watched him through the south-facing window and did not, for the fifteen minutes, say anything to Tem."
+      "text": "[shot:insert eggs]The second eggs were eaten in mostly silence. The rain did not change. Kai, after the eggs, went outside to the porch in his coat and stood at the railing for fifteen minutes looking at the cedars. Lena, at the table, watched him through the south-facing window and did not, for the fifteen minutes, say anything to Tem."
     },
     {
       "t": "narrate",
@@ -1333,7 +1333,7 @@
     },
     {
       "t": "narrate",
-      "text": "He drank the rest of his coffee."
+      "text": "[shot:insert coffee]He drank the rest of his coffee."
     },
     {
       "t": "say",

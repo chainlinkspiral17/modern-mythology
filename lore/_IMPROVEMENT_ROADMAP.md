@@ -932,6 +932,21 @@ chapters (the tool deliberately does not touch mood); the Deck read
 of ch12 (the phone call) and ch16 (the teacup / eviction notice /
 camera) first.
 
+**2026-09-09 (late, ii) · the vol6/vol7 tails seeded.** The 23
+chapters below one cue per fifteen nodes (Kwik Stop 312 nodes / 12
+cues, El Rancho 296 / 11, the Centro night shift, stockroom and
+inventory, Cosmic Comics ×2, the Miller kitchen ×2, the vehicle cab,
+the cabin's first morning, Lena's mornings and night, the Hans bakery,
+the Salty Tome, the field, Bianca's kitchen, Henderson prints, the
+Board Lords shop) took +251 cues under the same rules. Two tool
+truths from the run: a mid-chapter `bg` must swap the vocabulary
+even when the new locale has NO markers (El Rancho and Kai's
+apartment have none — the stale vocabulary seeded phone/packet
+inserts into rooms without them), and an insert is seedable only
+when the builder has the object. Story gate green, blind cues 10.
+NEXT DRAFT: Deck read of the Kwik Stop chapter (33 cuts over 312
+nodes is the densest) before the early-arcana pass.
+
 **2026-08-19 · PER-STICK VOICE SWEEP VERDICT (voice draft 4).**
 Ran the leakage grep (TODO/WIP/placeholder/implemented/deferred/
 stub) and a string survey across EVERY stick directory: estuary_4,

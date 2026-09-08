@@ -94,7 +94,7 @@
     {
       "t": "say",
       "char": "Sam",
-      "text": "morning. drive safe. love you.",
+      "text": "[shot:closeup sam]morning. drive safe. love you.",
       "expr": "neutral"
     },
     {
@@ -113,7 +113,7 @@
     },
     {
       "t": "narrate",
-      "text": "She does not, after, look at it for a long minute. She wipes the counter. She refills the coffee. She rings up an older man for two scratch-offs and a coffee and, when he has left, allows herself permission of remembering that her boyfriend, the boy who is not, this summer, the boy who can be in her actual physical company for more than the small portions his nervous system permits, is — by his text — alive and on a road and going home to his grandmother and that this, today, is what she has."
+      "text": "[shot:insert coffee]She does not, after, look at it for a long minute. She wipes the counter. She refills the coffee. She rings up an older man for two scratch-offs and a coffee and, when he has left, allows herself permission of remembering that her boyfriend, the boy who is not, this summer, the boy who can be in her actual physical company for more than the small portions his nervous system permits, is — by his text — alive and on a road and going home to his grandmother and that this, today, is what she has."
     },
     {
       "t": "narrate",
@@ -180,7 +180,7 @@
     {
       "t": "say",
       "char": "Sam",
-      "text": "Jen. Two people. Car broke down in the lot. They're going to come in.",
+      "text": "[shot:closeup sam]Jen. Two people. Car broke down in the lot. They're going to come in.",
       "expr": "neutral"
     },
     {
@@ -223,7 +223,7 @@
     },
     {
       "t": "narrate",
-      "text": "Jen leaves."
+      "text": "[shot:establish]Jen leaves."
     },
     {
       "t": "narrate",
@@ -241,7 +241,7 @@
     },
     {
       "t": "narrate",
-      "text": "He is tall. He is thin. He has not shaved in some days. His t-shirt is, up close, the t-shirt of a brewery in Oakland that Sam has not heard of, but the brewery's name on the front of the shirt is in a font that registers, to Sam, as the kind of font Northern Californian breweries use, the small clean sans-serif that has been the visual register of West Coast craft beer for about fifteen years."
+      "text": "[shot:insert register]He is tall. He is thin. He has not shaved in some days. His t-shirt is, up close, the t-shirt of a brewery in Oakland that Sam has not heard of, but the brewery's name on the front of the shirt is in a font that registers, to Sam, as the kind of font Northern Californian breweries use, the small clean sans-serif that has been the visual register of West Coast craft beer for about fifteen years."
     },
     {
       "t": "narrate",
@@ -260,7 +260,7 @@
     {
       "t": "say",
       "char": "Sam",
-      "text": "Sure. The cold ones are in the back cooler. Door on the left.",
+      "text": "[shot:closeup sam]Sure. The cold ones are in the back cooler. Door on the left.",
       "expr": "neutral"
     },
     {
@@ -302,7 +302,7 @@
     {
       "t": "say",
       "char": "Sam",
-      "text": "Where you trying to get to.",
+      "text": "[shot:closeup sam]Where you trying to get to.",
       "expr": "neutral"
     },
     {
@@ -353,7 +353,7 @@
     },
     {
       "t": "narrate",
-      "text": "He takes the change."
+      "text": "[shot:establish_b]He takes the change."
     },
     {
       "t": "narrate",
@@ -380,7 +380,7 @@
     {
       "t": "say",
       "char": "Sam",
-      "text": "Yeah. There's a guy in New Auburn. Bobby's. They tow and they do European cars sometimes — not often, but they have a guy. He's the only one in the area I'd send a Peugeot to. They're not cheap.",
+      "text": "[shot:closeup sam]Yeah. There's a guy in New Auburn. Bobby's. They tow and they do European cars sometimes — not often, but they have a guy. He's the only one in the area I'd send a Peugeot to. They're not cheap.",
       "expr": "neutral"
     },
     {
@@ -403,7 +403,7 @@
     },
     {
       "t": "narrate",
-      "text": "She gets a Post-it from the small pad by the register. She writes Bobby's number on it from memory. She has, this summer, called Bobby's three times — once for a guy whose F-150 had blown a tire in the lot in June, once for a woman whose minivan had lost its alternator in July, once for an elderly man whose Corolla had simply refused to start last week — and she has, by the third call, learned the number by heart."
+      "text": "[shot:insert register]She gets a Post-it from the small pad by the register. She writes Bobby's number on it from memory. She has, this summer, called Bobby's three times — once for a guy whose F-150 had blown a tire in the lot in June, once for a woman whose minivan had lost its alternator in July, once for an elderly man whose Corolla had simply refused to start last week — and she has, by the third call, learned the number by heart."
     },
     {
       "t": "narrate",
@@ -418,7 +418,7 @@
     {
       "t": "say",
       "char": "Sam",
-      "text": "There's an outlet at the table by the window if you and your —",
+      "text": "[shot:closeup sam]There's an outlet at the table by the window if you and your —",
       "expr": "neutral"
     },
     {
@@ -479,7 +479,7 @@
     },
     {
       "t": "narrate",
-      "text": "She thinks, with the small involuntary thing her interior does when she registers the shape of a person's situation: they are not going to make Atlanta on the budget they have."
+      "text": "[shot:insert register]She thinks, with the small involuntary thing her interior does when she registers the shape of a person's situation: they are not going to make Atlanta on the budget they have."
     },
     {
       "t": "narrate",
@@ -501,7 +501,7 @@
     },
     {
       "t": "narrate",
-      "text": "Lucy goes to the table by the window."
+      "text": "[shot:insert window]Lucy goes to the table by the window."
     },
     {
       "t": "narrate",
@@ -519,7 +519,7 @@
     },
     {
       "t": "narrate",
-      "text": "Mark comes in a minute later. He sits across from Lucy. He sets the two water bottles on the table. He has, in his hand, his phone. He is, Sam can see from the counter, dialing Bobby's number from the Post-it."
+      "text": "[shot:insert phone]Mark comes in a minute later. He sits across from Lucy. He sets the two water bottles on the table. He has, in his hand, his phone. He is, Sam can see from the counter, dialing Bobby's number from the Post-it."
     },
     {
       "t": "narrate",
@@ -575,7 +575,7 @@
     },
     {
       "t": "narrate",
-      "text": "Mark is, by Sam's count from the counter, doing the math in his head that men do when their wife has just laid out the actual numbers and there is, in the actual numbers, no math that works."
+      "text": "[shot:establish_c]Mark is, by Sam's count from the counter, doing the math in his head that men do when their wife has just laid out the actual numbers and there is, in the actual numbers, no math that works."
     },
     {
       "t": "say",
@@ -597,7 +597,7 @@
     },
     {
       "t": "narrate",
-      "text": "They sit, the two of them, at the table by the window."
+      "text": "[shot:insert window]They sit, the two of them, at the table by the window."
     },
     {
       "t": "narrate",
@@ -621,7 +621,7 @@
     },
     {
       "t": "narrate",
-      "text": "Lucy looks away."
+      "text": "[shot:establish]Lucy looks away."
     },
     {
       "t": "narrate",
@@ -639,7 +639,7 @@
     },
     {
       "t": "narrate",
-      "text": "Mark and Lucy, at the table, register Stan's comment."
+      "text": "[shot:insert register]Mark and Lucy, at the table, register Stan's comment."
     },
     {
       "t": "say",
@@ -691,7 +691,7 @@
     },
     {
       "t": "narrate",
-      "text": "A long silence at the table."
+      "text": "[shot:establish_b]A long silence at the table."
     },
     {
       "t": "say",
@@ -725,7 +725,7 @@
     },
     {
       "t": "narrate",
-      "text": "She fans herself with the brochure."
+      "text": "[shot:establish_c]She fans herself with the brochure."
     },
     {
       "t": "say",
@@ -792,7 +792,7 @@
     {
       "t": "say",
       "char": "Sam",
-      "text": "Hey.",
+      "text": "[shot:closeup sam]Hey.",
       "expr": "neutral"
     },
     {
@@ -845,7 +845,7 @@
     },
     {
       "t": "narrate",
-      "text": "Lucy looks at him."
+      "text": "[shot:establish]Lucy looks at him."
     },
     {
       "t": "say",
@@ -870,7 +870,7 @@
     {
       "t": "say",
       "char": "Sam",
-      "text": "Because my dad — my dad had a thing happen to him, last year, and the help he needed at the time was the kind of help that does not, generally, come from people you know. It came from people he didn't know. I have been, this whole summer, watching how that worked out for him. I think — I think I have learned, this summer, that sometimes you give the help you can give to the people who happen to be in front of you, and you don't get to know what they do with it, and you don't get to ask. So this is — this is the help I can give. You can take it or not take it. I'm not — I'm not going to remember this conversation in a week. You shouldn't either.",
+      "text": "[shot:closeup sam]Because my dad — my dad had a thing happen to him, last year, and the help he needed at the time was the kind of help that does not, generally, come from people you know. It came from people he didn't know. I have been, this whole summer, watching how that worked out for him. I think — I think I have learned, this summer, that sometimes you give the help you can give to the people who happen to be in front of you, and you don't get to know what they do with it, and you don't get to ask. So this is — this is the help I can give. You can take it or not take it. I'm not — I'm not going to remember this conversation in a week. You shouldn't either.",
       "expr": "neutral"
     },
     {
@@ -1117,7 +1117,7 @@
     },
     {
       "t": "narrate",
-      "text": "Jen looks at the table by the window. The two empty water bottles are on the table. The brochure-fan is on the table. Mark and Lucy are gone."
+      "text": "[shot:insert window]Jen looks at the table by the window. The two empty water bottles are on the table. The brochure-fan is on the table. Mark and Lucy are gone."
     },
     {
       "t": "say",
@@ -1144,7 +1144,7 @@
     {
       "t": "say",
       "char": "Sam",
-      "text": "Yeah.",
+      "text": "[shot:closeup sam]Yeah.",
       "expr": "neutral"
     },
     {
@@ -1189,7 +1189,7 @@
     },
     {
       "t": "narrate",
-      "text": "Jen looks at her for a long beat."
+      "text": "[shot:establish_b]Jen looks at her for a long beat."
     },
     {
       "t": "say",
@@ -1212,7 +1212,7 @@
     {
       "t": "say",
       "char": "Sam",
-      "text": "Okay.",
+      "text": "[shot:closeup sam]Okay.",
       "expr": "neutral"
     },
     {
@@ -1245,7 +1245,7 @@
     },
     {
       "t": "narrate",
-      "text": "Jen goes to the back office."
+      "text": "[shot:establish_c]Jen goes to the back office."
     },
     {
       "t": "narrate",
@@ -1265,7 +1265,7 @@
     },
     {
       "t": "narrate",
-      "text": "At eleven fifty-eight she takes her lunch at the table by the window."
+      "text": "[shot:insert window]At eleven fifty-eight she takes her lunch at the table by the window."
     },
     {
       "t": "narrate",
@@ -1305,7 +1305,7 @@
     },
     {
       "t": "narrate",
-      "text": "She thinks: Lucy was tracking the day's expenses by hand on the back of a national-park brochure, in a 1986 Peugeot, on the third day of a drive from Oakland to Atlanta."
+      "text": "[shot:establish]She thinks: Lucy was tracking the day's expenses by hand on the back of a national-park brochure, in a 1986 Peugeot, on the third day of a drive from Oakland to Atlanta."
     },
     {
       "t": "narrate",
@@ -1368,7 +1368,7 @@
     {
       "t": "say",
       "char": "Sam",
-      "text": "ok. couple from oakland broke down in the lot. helped them out. was a thing.",
+      "text": "[shot:closeup sam]ok. couple from oakland broke down in the lot. helped them out. was a thing.",
       "expr": "neutral"
     },
     {
@@ -1413,7 +1413,7 @@
     },
     {
       "t": "narrate",
-      "text": "She puts the phone down."
+      "text": "[shot:insert phone]She puts the phone down."
     },
     {
       "t": "narrate",
@@ -1439,7 +1439,7 @@
     },
     {
       "t": "narrate",
-      "text": "She clocks out at four oh-six."
+      "text": "[shot:establish_b]She clocks out at four oh-six."
     },
     {
       "t": "say",

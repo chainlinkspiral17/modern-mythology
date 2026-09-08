@@ -43,7 +43,7 @@
    "t": "narrate"
   },
   {
-   "text": "He drove to Lena's apartment first. The hexagon was complete. The crow was speaking. The figure had been on the stack. The leak was — by his read of it on the drive back — no longer leaking only into bodies and counts and dreams. The leak was making things now. The substrate had carved a bowl yesterday in the basement of Kestrel Mountain. The leak was finished with the interior. The leak was working at the scale of objects.",
+   "text": "[shot:insert hexagon]He drove to Lena's apartment first. The hexagon was complete. The crow was speaking. The figure had been on the stack. The leak was — by his read of it on the drive back — no longer leaking only into bodies and counts and dreams. The leak was making things now. The substrate had carved a bowl yesterday in the basement of Kestrel Mountain. The leak was finished with the interior. The leak was working at the scale of objects.",
    "t": "narrate"
   },
   {
@@ -85,7 +85,7 @@
    "t": "say"
   },
   {
-   "text": "He held up the canvas bag.",
+   "text": "[shot:insert canvas]He held up the canvas bag.",
    "t": "narrate"
   },
   {
@@ -139,7 +139,7 @@
    "t": "say"
   },
   {
-   "text": "Lena looked at him.",
+   "text": "[shot:establish]Lena looked at him.",
    "t": "narrate"
   },
   {
@@ -219,7 +219,7 @@
    "t": "say"
   },
   {
-   "text": "She looked at the table. The kettle whistled. She got up and pulled it off and made two cups of coffee. She brought them to the table. She set one in front of Finn. She sat down with hers.",
+   "text": "[shot:establish_b]She looked at the table. The kettle whistled. She got up and pulled it off and made two cups of coffee. She brought them to the table. She set one in front of Finn. She sat down with hers.",
    "t": "narrate"
   },
   {

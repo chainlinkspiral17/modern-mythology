@@ -225,7 +225,7 @@
     },
     {
       "t": "narrate",
-      "text": "By twelve forty-five the shop has had twenty-two customers and the floor is at fifteen people simultaneously — three at the new arrivals shelf, four at the back issues, two at the manga wall, two at the Pokémon section, two at the YA section, one at the small bench by the front window that Rick had put there in 2018 for kids whose parents wanted them out of the way for ten minutes, and one — Maya catches at the back of the floor in her peripheral vision — wandering."
+      "text": "[shot:insert twenty]By twelve forty-five the shop has had twenty-two customers and the floor is at fifteen people simultaneously — three at the new arrivals shelf, four at the back issues, two at the manga wall, two at the Pokémon section, two at the YA section, one at the small bench by the front window that Rick had put there in 2018 for kids whose parents wanted them out of the way for ten minutes, and one — Maya catches at the back of the floor in her peripheral vision — wandering."
     },
     {
       "t": "narrate",
@@ -311,7 +311,7 @@
     },
     {
       "t": "narrate",
-      "text": "The wanderer blinks again. He looks around. He registers — she can see the registration arrive, in his eyes — that he is at the back-issue boxes of a comic shop holding nothing, and that the kid who runs the shop has, in front of him, just taken something out of his hands."
+      "text": "[shot:insert till]The wanderer blinks again. He looks around. He registers — she can see the registration arrive, in his eyes — that he is at the back-issue boxes of a comic shop holding nothing, and that the kid who runs the shop has, in front of him, just taken something out of his hands."
     },
     {
       "t": "say",
@@ -375,7 +375,7 @@
     },
     {
       "t": "narrate",
-      "text": "The wanderer comes back at one fifteen. He is — Maya registers him at the door, on the way in — fully himself again. The not-quite-present look is gone. He is, on entering, doing the thing returning customers do."
+      "text": "[shot:insert door]The wanderer comes back at one fifteen. He is — Maya registers him at the door, on the way in — fully himself again. The not-quite-present look is gone. He is, on entering, doing the thing returning customers do."
     },
     {
       "t": "show",
@@ -413,7 +413,7 @@
     },
     {
       "t": "narrate",
-      "text": "He browses for ten minutes. He brings three issues to the counter. Maya rings them up. He pays. He says, on the way out: \"Thanks for being chill about the weird thing earlier.\""
+      "text": "[shot:establish]He browses for ten minutes. He brings three issues to the counter. Maya rings them up. He pays. He says, on the way out: \"Thanks for being chill about the weird thing earlier.\""
     },
     {
       "t": "say",
@@ -431,7 +431,7 @@
     },
     {
       "t": "narrate",
-      "text": "Maya, at the counter, glances at the Speak & Spell on the shelf under the register. The grille is dim."
+      "text": "[shot:insert speak_spell]Maya, at the counter, glances at the Speak & Spell on the shelf under the register. The grille is dim."
     },
     {
       "t": "narrate",
@@ -461,7 +461,7 @@
     },
     {
       "t": "narrate",
-      "text": "Maya picks up. \"Cosmic. Maya.\""
+      "text": "[shot:establish_b]Maya picks up. \"Cosmic. Maya.\""
     },
     {
       "t": "say",
@@ -583,7 +583,7 @@
     },
     {
       "t": "narrate",
-      "text": "Maya, at the counter, surveys the floor. The total from the register report is fifty-four customers in eleven hours."
+      "text": "[shot:insert till]Maya, at the counter, surveys the floor. The total from the register report is fifty-four customers in eleven hours."
     },
     {
       "t": "narrate",
@@ -599,7 +599,7 @@
     },
     {
       "t": "narrate",
-      "text": "By eight twenty-six the close is done."
+      "text": "[shot:insert twenty]By eight twenty-six the close is done."
     },
     {
       "t": "bg",
@@ -641,7 +641,7 @@
     },
     {
       "t": "narrate",
-      "text": "Maya reads the reply twice. She puts the phone in her bag. She goes out the back door. She locks it. She tests the deadbolt. She tests it again. She walks to her bike at the rack."
+      "text": "[shot:insert phone]Maya reads the reply twice. She puts the phone in her bag. She goes out the back door. She locks it. She tests the deadbolt. She tests it again. She walks to her bike at the rack."
     },
     {
       "t": "bg",

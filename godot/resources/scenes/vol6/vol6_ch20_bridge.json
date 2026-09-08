@@ -49,7 +49,7 @@
     },
     {
       "t": "narrate",
-      "text": "He puts the Telecaster down."
+      "text": "[shot:insert telecaster]He puts the Telecaster down."
     },
     {
       "t": "narrate",
@@ -257,7 +257,7 @@
     },
     {
       "t": "narrate",
-      "text": "Carl, behind the kit, grins."
+      "text": "[shot:insert drum_kit]Carl, behind the kit, grins."
     },
     {
       "t": "narrate",
@@ -351,7 +351,7 @@
     },
     {
       "t": "narrate",
-      "text": "Em gets in her car. She pulls out."
+      "text": "[shot:establish]Em gets in her car. She pulls out."
     },
     {
       "t": "hide",
@@ -375,7 +375,7 @@
     },
     {
       "t": "narrate",
-      "text": "He goes inside. He eats a sandwich his mother had left in the fridge for him. Eileen is, this evening, out — she is at the bakery on Magnolia, picking up the cinnamon coffee cake she had promised to bring to the Sunday afternoon thing at the Kowalskis'. Jim is, by the absence of his truck in the driveway, also out."
+      "text": "[shot:insert truck]He goes inside. He eats a sandwich his mother had left in the fridge for him. Eileen is, this evening, out — she is at the bakery on Magnolia, picking up the cinnamon coffee cake she had promised to bring to the Sunday afternoon thing at the Kowalskis'. Jim is, by the absence of his truck in the driveway, also out."
     },
     {
       "t": "narrate",
@@ -419,7 +419,7 @@
     },
     {
       "t": "narrate",
-      "text": "But then he sees, in the lot in front of The Foxhole's front door, a 2019 Toyota Tacoma he has not seen before, and a smaller cargo van with a logo on the side that says RAMÓN VARGAS LIGHTING — SAN ANTONIO, and the front door of The Foxhole is propped open with a small black road case."
+      "text": "[shot:insert van]But then he sees, in the lot in front of The Foxhole's front door, a 2019 Toyota Tacoma he has not seen before, and a smaller cargo van with a logo on the side that says RAMÓN VARGAS LIGHTING — SAN ANTONIO, and the front door of The Foxhole is propped open with a small black road case."
     },
     {
       "t": "narrate",
@@ -435,7 +435,7 @@
     },
     {
       "t": "narrate",
-      "text": "He gets out of the Civic. He walks across the lot to the propped-open door."
+      "text": "[shot:insert door]He gets out of the Civic. He walks across the lot to the propped-open door."
     },
     {
       "t": "bg",
@@ -599,7 +599,7 @@
     },
     {
       "t": "narrate",
-      "text": "She says it the same way she said her own name. Which means, Jesse parses, two seconds later, that Jesse in her mouth is the soft J — Jyess-ee."
+      "text": "[shot:establish]She says it the same way she said her own name. Which means, Jesse parses, two seconds later, that Jesse in her mouth is the soft J — Jyess-ee."
     },
     {
       "t": "narrate",
