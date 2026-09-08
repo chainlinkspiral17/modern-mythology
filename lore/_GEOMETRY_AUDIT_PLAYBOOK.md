@@ -689,6 +689,23 @@ failure paths separately before concluding anything.
   audits (ribbons themselves as fill) and are excluded from the
   overlap check. Do not "fix" this with a ceiling.
 
+### 2026-09-10 (iv) · orientation is grammar too
+
+- **A swap keeps the old origin.** The make_bed swaps of 2026-09-07
+  reused each room's `bx, by` — mid-room values from the first
+  draft — so eight beds stood a metre off their walls with perfect
+  legs and pillows. Replacing a prop is the moment to re-place it.
+- **Which end is the head is a check.** The ward bed's pillow was at
+  the foot; Finn's lay along the long side. The BED rule reads the
+  pillows' centroid against the mattress's long axis; if the two
+  disagree the pillow is wrong before the wall is.
+- **A moved bed drags its markers.** The hospice closeup framed the
+  old pillow; run `--markers` on any room whose hero object moved.
+- **Absolute-coordinate parts betray a moved top.** The New Orleans
+  desk's legs stayed at x 0 when the top moved to 1.1 — the overlap
+  audit only saw it once the bed slid into them. When moving any
+  assembly, grep its sibling parts for literals.
+
 ### 2026-09-10 (iii) · the claim is in the source; audit the source
 
 - **The phantom-surface bug is findable statically.** Every detail

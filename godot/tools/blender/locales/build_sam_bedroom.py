@@ -40,7 +40,7 @@ def build_shell():
 
 def build_bed():
     # Captain's bed: raised frame with a row of storage drawers underneath.
-    bx, by = -ROOM_W/4.0, ROOM_D/2.0
+    bx, by = -ROOM_W/4.0, ROOM_D - 0.15 - 0.92   # head to the N wall (2026-09-10: mid-room)
     # the shared captain's bed: drawers on the +X side, cosmic-blue
     # blanket made up (2026-09-07: the stripe sat inside the comforter)
     make_bed("Bed", bx, by, head="+Y", w=1.24, d=1.84, style="captain",
@@ -107,7 +107,7 @@ def build_dressing():
     longboxes + action figures, a stack of model kits, a beanbag, a
     skateboard, and a laundry pile. make_floor_plant is imported but this
     kid keeps no plants — wired here as a single small windowsill sprout."""
-    bx, by = -ROOM_W/4.0, ROOM_D/2.0
+    bx, by = -ROOM_W/4.0, ROOM_D - 0.15 - 0.92   # head to the N wall (2026-09-10: mid-room)
     TINTS = P.SNACK_TINTS
     nsx = bx + 0.95
     make_chamfer_box("Nightstand", (nsx, by+0.7, 0.28), (0.40, 0.40, 0.56), COL_WOOD)

@@ -41,15 +41,15 @@ def build_bed():
     # E–W, set toward the N wall with visible under-bed storage crates —
     # a tall silhouette, deliberately NOT the shared W-wall twin so it no
     # longer reads as Kai's room (was a byte-for-byte clone).
-    bx, by = -0.5, ROOM_D - 1.35
+    bx, by = -1.14, ROOM_D - 1.35   # head end at the W wall (2026-09-10: pillow lay along the long side)
     for sx in (-1, 1):
         for sy in (-1, 1):
             make_box(f"Bed_Post_{sx}_{sy}", (bx + sx * 0.9, by + sy * 0.5, 0.25),
                      (0.08, 0.08, 0.50), COL_WOOD)
     make_box("Bed_Deck", (bx, by, 0.52), (1.92, 1.14, 0.06), COL_WOOD)
     make_chamfer_box("Bed_Mattress", (bx, by, 0.62), (1.80, 1.04, 0.16), (0.92, 0.86, 0.78, 1.0))
-    make_chamfer_box("Bed_Comforter", (bx, by - 0.15, 0.76), (1.82, 0.80, 0.10), COL_ACCENT)   # ON the mattress, clear of the pillow (2026-09-07)
-    make_chamfer_box("Bed_Pillow", (bx, by + 0.42, 0.77), (1.40, 0.30, 0.12), P.PAPER)
+    make_chamfer_box("Bed_Comforter", (bx + 0.15, by, 0.76), (1.40, 0.82, 0.10), COL_ACCENT)   # ON the mattress, clear of the pillow (2026-09-07)
+    make_chamfer_box("Bed_Pillow", (bx - 0.72, by, 0.77), (0.30, 0.90, 0.12), P.PAPER)
     for ci, cx in enumerate((bx - 0.55, bx + 0.1, bx + 0.65)):
         make_box(f"Bed_Crate_{ci}", (cx, by, 0.18), (0.40, 0.90, 0.28), (0.34, 0.24, 0.16, 1.0))
 
@@ -69,7 +69,7 @@ def build_rug():
     make_cyl("Rug", (0.0, ROOM_D/2.0, 0.012), 1.20, 0.005, COL_ACCENT)
 
 def build_dressing():
-    bx, by = -0.5, ROOM_D - 1.35
+    bx, by = -1.14, ROOM_D - 1.35   # head end at the W wall (2026-09-10: pillow lay along the long side)
     make_chamfer_box("Nightstand", (bx+1.2, by, 0.28), (0.40, 0.40, 0.56), COL_WOOD)
     make_box("Clock", (bx+1.2, by, 0.62), (0.15, 0.10, 0.10), P.METAL_BLACK)
     # Dresser against the east wall

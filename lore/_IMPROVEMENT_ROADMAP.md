@@ -1078,6 +1078,29 @@ Deck read of the first passes; closeup markers for the cast (the 561)
 need staged cast positions — gate 2 (character GLBs) — or a
 `shot_closeup` generic per room the director prefers over an insert.
 
+**2026-09-10 (vi) · BED — the head of a bed goes to a wall.** New
+grammar class (the "bedroom oddities" complaint): a mattress ≥ 1.6 m
+whose pillow end is more than 0.45 m from any wall, unless a long
+side lies along one (a cot or daybed). Ten beds flagged, all real:
+Sam's, Jesse's, the safehouse's, the New Orleans room's, the hospice
+and hospital beds stood 0.5–1.5 m off their north walls (the
+2026-09-07 make_bed swaps kept the old mid-room origins); the ward
+5 bed in the asylum corridor had its pillow at the FOOT; Finn's
+platform bed had its pillow along the long side. Heads moved to the
+walls, the ward bed's pillow to its head and the frame to the N
+wall, Finn's pillow to the west end. The moves exposed two latent
+bugs: the New Orleans room's desk legs and drawer were at absolute
+x 0 while the top had moved to x 1.1 (fixed), and the hospice's
+closeup of Alice was framed on the old bed position (re-posed on
+the pillow). The Vieux Carré four-poster stands free by design (the
+kitchenette owns its wall) — exempt by name. BED gated at 0. Deck
+rebuild: sam_bedroom, jesse_bedroom, new_orleans_room,
+safehouse_bedroom, hospice_room, hospital_room, asylum_ward_c,
+finn_apartment. NEXT DRAFT: nightstands and lamps follow the beds
+(they were placed for the old positions — run the FLOAT/overlap
+classes' eye over each room on the Deck); TV/couch facing (class
+7: a screen faces its seating).
+
 **2026-08-19 · PER-STICK VOICE SWEEP VERDICT (voice draft 4).**
 Ran the leakage grep (TODO/WIP/placeholder/implemented/deferred/
 stub) and a string survey across EVERY stick directory: estuary_4,

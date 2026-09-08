@@ -30,7 +30,7 @@ def build_shell():
     make_box("Wall_S_AboveDoor", (0.0, 0.0, CEIL-0.30), (2.0, 0.20, 0.60), PAL_WALL["wall"])
     make_ceiling("Ceil", (0.0, ROOM_D/2.0, CEIL), size_x=ROOM_W+0.4, size_y=ROOM_D+0.4)
 
-BED_X = -0.2; BED_Y = 2.6
+BED_X = -0.2; BED_Y = 3.75     # head to the N wall (2026-09-10: 1.4 m off it)
 
 def build_bed():
     from _props.furniture import make_bed

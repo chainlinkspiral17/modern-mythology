@@ -439,6 +439,57 @@ def check_desks(boxes):
     return out
 
 
+BED_WALL_GAP = 0.45
+# beds that stand free by design: the Vieux Carré four-poster (the kitchenette
+# owns the N wall's centre, the armoire and bass amp its east end)
+BED_FREESTANDING_LOCALES = {"new_orleans_apartment"}
+
+
+def check_beds(boxes):
+    """BED: a mattress (≥ 1.6 m long) whose PILLOW end is not against a
+    wall — the head of a bed goes to a wall the way a desk does; a bed
+    floating mid-room with its pillows toward the door is the Deck's
+    "bedroom oddity" (2026-09-10). Beds with no pillows are skipped."""
+    walls = [b for b in boxes if WALLISH.search(b[0]) and max(b[2]) * 2 > 1.5 and b[2][2] * 2 > 1.5]
+    pillows = [b for b in boxes if re.search(r"pillow", b[0], re.I)]
+    out = []
+    for n, c, h in boxes:
+        if not re.search(r"mattress", n, re.I) or max(h[0], h[1]) * 2 < 1.6 or not walls:
+            continue
+        lo, hi = box_lohi((n, c, h))
+        mine = [p for p in pillows if lo[0] - 0.1 <= p[1][0] <= hi[0] + 0.1 and lo[1] - 0.1 <= p[1][1] <= hi[1] + 0.1
+                and abs(p[1][2] - (c[2] + h[2])) < 0.4]
+        if not mine:
+            continue
+        px = sum(p[1][0] for p in mine) / len(mine)
+        py = sum(p[1][1] for p in mine) / len(mine)
+        long_x = h[0] >= h[1]
+        # the head edge: the long-axis end nearest the pillows
+        if long_x:
+            head = ("x", hi[0] if px > c[0] else lo[0])
+        else:
+            head = ("y", hi[1] if py > c[1] else lo[1])
+        ok = False
+        for w in walls:
+            wlo, whi = box_lohi(w)
+            if head[0] == "x":
+                if (abs(head[1] - wlo[0]) <= BED_WALL_GAP or abs(head[1] - whi[0]) <= BED_WALL_GAP) and wlo[1] - 0.3 <= c[1] <= whi[1] + 0.3:
+                    ok = True
+                # a cot or daybed lying ALONG a wall (a long side against it)
+                if wlo[0] - 0.3 <= c[0] <= whi[0] + 0.3 and (abs(lo[1] - whi[1]) <= BED_WALL_GAP or abs(hi[1] - wlo[1]) <= BED_WALL_GAP):
+                    ok = True
+            else:
+                if (abs(head[1] - wlo[1]) <= BED_WALL_GAP or abs(head[1] - whi[1]) <= BED_WALL_GAP) and wlo[0] - 0.3 <= c[0] <= whi[0] + 0.3:
+                    ok = True
+                if wlo[1] - 0.3 <= c[1] <= whi[1] + 0.3 and (abs(lo[0] - whi[0]) <= BED_WALL_GAP or abs(hi[0] - wlo[0]) <= BED_WALL_GAP):
+                    ok = True
+            if ok:
+                break
+        if not ok:
+            out.append((n, c, head))
+    return out
+
+
 def check_lanes(boxes):
     roads = [b for b in boxes if ROADISH.search(b[0]) and not PARKINGISH.search(b[0])
              and not re.search(r"(line|stripe|mark|edge|shoulder|curb|sign|bend|post|median|ramp)", b[0], re.I)
@@ -495,14 +546,17 @@ def main():
         intra = check_intra(boxes)
         poke = check_poke(boxes)
         outside = check_outside(boxes)
+        beds = [] if locale in BED_FREESTANDING_LOCALES else check_beds(boxes)
         flt = check_float(boxes, terrain=locale in TERRAIN_LOCALES)
         chairs = check_chairs(boxes)
         desks = [] if locale in DESK_FREESTANDING_LOCALES else check_desks(boxes)
         lanes = check_lanes(boxes)
-        n = len(intra) + len(poke) + len(flt) + len(chairs) + len(desks) + len(lanes) + len(outside)
+        n = len(intra) + len(poke) + len(flt) + len(chairs) + len(desks) + len(lanes) + len(outside) + len(beds)
         if not n:
             continue
-        print("== %s · INTRA %d · POKE %d · FLOAT %d · CHAIR %d · DESK %d · LANE %d · OUTSIDE %d" % (locale, len(intra), len(poke), len(flt), len(chairs), len(desks), len(lanes), len(outside)))
+        print("== %s · INTRA %d · POKE %d · FLOAT %d · CHAIR %d · DESK %d · LANE %d · OUTSIDE %d · BED %d" % (locale, len(intra), len(poke), len(flt), len(chairs), len(desks), len(lanes), len(outside), len(beds)))
+        for nme, c, head in beds:
+            print("   BED          %-28s at (%.1f, %.1f) head edge %s=%.2f touches no wall" % (nme, c[0], c[1], head[0], head[1]))
         for nme, c in outside[:12]:
             print("   OUTSIDE      %-28s at (%.1f, %.1f) touches no floor" % (nme, c[0], c[1]))
         for pre, a, b, pen in sorted(intra, key=lambda r: -r[3])[:12]:
@@ -517,10 +571,10 @@ def main():
             print("   DESK         %-28s at (%.1f, %.1f) touches no wall" % (nme, c[0], c[1]))
         for pre, road, d in lanes:
             print("   LANE  %.1fm  %-28s in the travel lane of %s" % (d, pre, road))
-        for k, v in (("INTRA", len(intra)), ("POKE", len(poke)), ("FLOAT", len(flt)), ("CHAIR", len(chairs)), ("DESK", len(desks)), ("LANE", len(lanes)), ("OUTSIDE", len(outside))):
+        for k, v in (("INTRA", len(intra)), ("POKE", len(poke)), ("FLOAT", len(flt)), ("CHAIR", len(chairs)), ("DESK", len(desks)), ("LANE", len(lanes)), ("OUTSIDE", len(outside)), ("BED", len(beds))):
             totals[k] += v
-    print("\nfurniture_grammar_audit · INTRA %d · POKE %d · FLOAT %d · CHAIR %d · DESK %d · LANE %d · OUTSIDE %d" % (
-        totals["INTRA"], totals["POKE"], totals["FLOAT"], totals["CHAIR"], totals["DESK"], totals["LANE"], totals["OUTSIDE"]))
+    print("\nfurniture_grammar_audit · INTRA %d · POKE %d · FLOAT %d · CHAIR %d · DESK %d · LANE %d · OUTSIDE %d · BED %d" % (
+        totals["INTRA"], totals["POKE"], totals["FLOAT"], totals["CHAIR"], totals["DESK"], totals["LANE"], totals["OUTSIDE"], totals["BED"]))
 
 
 if __name__ == "__main__":

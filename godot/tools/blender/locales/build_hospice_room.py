@@ -44,7 +44,7 @@ def build_shell():
     make_box("Window_N_Curtain_R", (+1.40, ROOM_D-0.08, 1.55), (0.30, 0.04, 1.80), COL_LINEN)
 
 def build_hospital_bed():
-    bx, by = 0.0, 3.20
+    bx, by = 0.0, 4.15          # head to the N wall (2026-09-10)
     # the shared hospital bed — posts on casters, deck, thin mattress,
     # side rails, one pillow, a tucked sage blanket (2026-09-07; the
     # raised head section is a next-pass target for make_bed)

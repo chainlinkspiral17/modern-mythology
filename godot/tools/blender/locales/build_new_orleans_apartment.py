@@ -53,7 +53,8 @@ def build_shuttered_windows():
 def build_bed():
     # 2026-08-09: was (0.0, 4.80) — the bed's head stood INSIDE the
     # kitchenette and its posts inside the counter. East of it now.
-    bx, by = 0.9, 4.30
+    bx, by = 0.9, 4.30          # the four-poster stands free of the walls by design: the kitchenette
+                                # owns the N wall's centre, the armoire and bass amp its east end (2026-09-10)
     # Four-poster bed — the shared bed under the posts (2026-09-07)
     make_bed("Bed", bx, by, head="+Y", w=1.80, d=2.00, style="platform",
              frame_col=COL_BED_WOOD, mattress_col=COL_LINEN, sheet_col=COL_LINEN,

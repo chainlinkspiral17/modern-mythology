@@ -459,7 +459,7 @@ def build_death_wave2_props():
 
     # ── Ward 5's unstripped bed · sheets still on ──────────────
     ward5_x = -1.85
-    ward5_y = +11.00
+    ward5_y = +12.85          # head frame at the N wall (2026-09-10: mid-corridor, pillow at the foot)
     # Bed frame
     make_box("Ward5_BedFrame",
              (ward5_x, ward5_y, 0.30),
@@ -477,7 +477,7 @@ def build_death_wave2_props():
              (0.94, 0.94, 0.94, 1.0))
     # Pillow at head
     make_box("Ward5_Pillow",
-             (ward5_x, ward5_y - 0.80, 0.52),
+             (ward5_x, ward5_y + 0.80, 0.52),
              (0.60, 0.30, 0.06),
              (0.96, 0.96, 0.96, 1.0))
     # A slight body-shape indent in the mattress (implied absence)

@@ -58,7 +58,7 @@ def build_door():
         make_cyl(f"Door_Hinge_{hi}", (-1.00, 0.05, hz), 0.02, 0.10, P.METAL_BLACK, axis='Z', segments=6)
 
 def build_bed():
-    bx, by = -1.05, 2.60
+    bx, by = -1.05, 3.77        # headboard at the N wall (2026-09-10: 1.4 m off it)
     from _props.furniture import make_bed
     make_box("Bed_Headboard", (bx, by+0.98, 0.78), (1.22, 0.10, 0.72), COL_WOOD)
     # the shared bed, duvet made (2026-09-07)

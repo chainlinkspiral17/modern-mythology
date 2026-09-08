@@ -39,7 +39,7 @@ def build_shell():
         make_box(f"Peel_{pi}", (ROOM_W/2.0-0.06, py, 1.50 + (pi%2)*0.20), (0.005, 0.36, 0.50), COL_WALLPAPER_PEEL)
 
 def build_bed():
-    bx, by = 0.0, 3.5
+    bx, by = -0.1, 3.85         # head to the N wall, clear of the desk at x 0.6..1.6 (2026-09-10)
     # the shared bed, sheet rumpled in a heap (2026-09-07); boards stay
     from _props.furniture import make_bed
     make_bed("Bed", bx, by, head="+Y", w=1.20, d=1.80, style="platform",
@@ -98,9 +98,11 @@ def build_hero_props():
     mirror above it."""
     wood = (0.38, 0.28, 0.18, 1.0)
     make_box("Desk_Top", (1.10, 4.55, 0.74), (1.00, 0.55, 0.05), wood)
+    # legs and drawer follow the top (2026-09-10: the top moved to x 1.1
+    # on 2026-09-07 but the legs and drawer stayed at x 0)
     for lx in (-0.44, 0.44):
-        make_box(f"Desk_Leg_{lx:+.2f}", (lx, 4.55, 0.37), (0.06, 0.50, 0.72), wood)
-    make_box("Desk_Drawer", (0.0, 4.30, 0.62), (0.60, 0.02, 0.12), (0.30, 0.22, 0.14, 1.0))
+        make_box(f"Desk_Leg_{lx:+.2f}", (1.10 + lx, 4.55, 0.37), (0.06, 0.50, 0.72), wood)
+    make_box("Desk_Drawer", (1.10, 4.30, 0.62), (0.60, 0.02, 0.12), (0.30, 0.22, 0.14, 1.0))
     make_box("Letter_Paper", (-0.10, 4.50, 0.775), (0.16, 0.22, 0.005), (0.92, 0.90, 0.84, 1.0))
     make_box("Letter_Pen", (0.14, 4.48, 0.775), (0.02, 0.13, 0.01), (0.14, 0.14, 0.16, 1.0))
     make_box("Addressed_Envelope", (0.24, 4.60, 0.775), (0.20, 0.10, 0.005), (0.90, 0.88, 0.82, 1.0))

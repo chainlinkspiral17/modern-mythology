@@ -46,7 +46,7 @@ def build_shell():
 
 def build_bed():
     # Mattress on the floor / futon — low, no tall frame.
-    bx, by = -ROOM_W/4.0, ROOM_D/2.0
+    bx, by = -ROOM_W/4.0, ROOM_D - 0.15 - 0.92   # head to the N wall (2026-09-10)
     # the shared futon (2026-09-07: the pillow and blanket sat inside
     # the mattress)
     make_bed("Futon", bx, by, head="+Y", w=1.24, d=1.84, style="futon",
@@ -94,7 +94,7 @@ def build_dressing():
     of records, warm string lights along the north wall, egg-crate foam on
     the east wall, lyric sheets pinned to the west wall, a dresser, and a
     corner plant (wires the imported make_floor_plant)."""
-    bx, by = -ROOM_W/4.0, ROOM_D/2.0
+    bx, by = -ROOM_W/4.0, ROOM_D - 0.15 - 0.92   # head to the N wall (2026-09-10)
     make_box("Nightstand", (bx+0.95, by+0.7, 0.24), (0.40, 0.40, 0.48), COL_WOOD)
     make_box("Clock", (bx+0.95, by+0.7, 0.54), (0.15, 0.10, 0.10), P.METAL_BLACK)
     # Guitar on an A-frame stand, SE corner
