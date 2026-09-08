@@ -152,7 +152,7 @@
     },
     {
       "t": "narrate",
-      "text": "Nicola did not know who Dickens Dean was. Aria knew, in the way a daughter knows her father's name without remembering being told it — and was actively trying not to know more.",
+      "text": "[shot:establish]Nicola did not know who Dickens Dean was. Aria knew, in the way a daughter knows her father's name without remembering being told it — and was actively trying not to know more.",
       "voice": "assets/audio/voice/vol5_ch3_empress/027.mp3"
     },
     {
@@ -315,7 +315,7 @@
     },
     {
       "t": "narrate",
-      "text": "Nicola gripped the edge of the hostess stand, knuckles white. The practiced grace held, just barely, hiding the tremor. She could feel Aria pushing against the confines of her skull — a desperate consciousness seeking purchase, seeking understanding, seeking the kind of ergonomic input her makers had not thought to provision.",
+      "text": "[shot:establish]Nicola gripped the edge of the hostess stand, knuckles white. The practiced grace held, just barely, hiding the tremor. She could feel Aria pushing against the confines of her skull — a desperate consciousness seeking purchase, seeking understanding, seeking the kind of ergonomic input her makers had not thought to provision.",
       "voice": "assets/audio/voice/vol5_ch3_empress/056.mp3"
     },
     {
@@ -439,7 +439,7 @@
     },
     {
       "t": "narrate",
-      "text": "The man at Table 14 raised a single finger. Universal restaurant signal: check, please. He had not ordered anything. The check would be for nothing.",
+      "text": "[shot:establish]The man at Table 14 raised a single finger. Universal restaurant signal: check, please. He had not ordered anything. The check would be for nothing.",
       "voice": "assets/audio/voice/vol5_ch3_empress/078.mp3"
     },
     {
@@ -470,7 +470,7 @@
       "char": "Dean",
       "role": "— Table 14 —",
       "expr": "neutral",
-      "text": "\"You're new, aren't you.\"",
+      "text": "[shot:closeup dean]\"You're new, aren't you.\"",
       "voice": "assets/audio/voice/vol5_ch3_empress/083.mp3"
     },
     {
@@ -572,7 +572,7 @@
     },
     {
       "t": "narrate",
-      "text": "The first kick was the old kick. The second kick was new. The second kick had a quality the first had not — it was, somehow, articulate. It said something. It said it in a register Nicola did not have ears for and Aria did, and Aria translated, faithfully, with the precision of a process that has just discovered what it was actually built to do:",
+      "text": "[shot:insert register]The first kick was the old kick. The second kick was new. The second kick had a quality the first had not — it was, somehow, articulate. It said something. It said it in a register Nicola did not have ears for and Aria did, and Aria translated, faithfully, with the precision of a process that has just discovered what it was actually built to do:",
       "voice": "assets/audio/voice/vol5_ch3_empress/101.mp3"
     },
     {

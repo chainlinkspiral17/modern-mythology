@@ -1035,6 +1035,23 @@ re-run it after every detail pass; make it a suite gate at the
 current 21 once the vehicle/stack false positives are excluded by
 name.
 
+**2026-09-10 (iv) · phantom-surface GATED at zero; the early arcana
+seeded with a light hand.** phantom_surface_audit excludes vehicle
+bodies, stacking bases and poles by stem on both sides of the claim;
+repo-wide 0 unbacked claims and a suite gate at 0 — a detail pass
+that writes a surface from a comment now fails the build. shot_seed
+grew `--light` (gaps 5/7, hold 9, budget nodes/6) for chapters that
+already carry authored grammar: vol5 ch1–9 took +22 cues (The
+Chariot's office phone call as shot/reverse-shot, The Empress's
+register insert, The Hermit's chalk and wall). ch1, ch2 and ch2b were
+left as authored (dense enough). vn_story 0 problems, blind cues 10.
+NEXT DRAFT: the Deck read of the seeded chapters; then [mood:] by the
+fiction's clock (the 2026-08-30 lesson) in the same chapters. The
+Hierophant's chapel (roadside_chapel.tscn) had NO shot markers — the
+chapter's authored closeups were silent no-ops; shot_closeup_paul (on
+the church steps) and shot_closeup_maya (on the gravel path) are
+authored now, both clear on the marker gates.
+
 **2026-08-19 · PER-STICK VOICE SWEEP VERDICT (voice draft 4).**
 Ran the leakage grep (TODO/WIP/placeholder/implemented/deferred/
 stub) and a string survey across EVERY stick directory: estuary_4,

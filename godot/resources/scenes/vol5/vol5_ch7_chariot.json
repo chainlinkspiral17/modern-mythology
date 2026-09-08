@@ -55,7 +55,7 @@
     },
     {
       "t": "narrate",
-      "text": "The office was hot. The office was always hot. The office was hot because it was August in New Orleans and because the window air-conditioning unit Jimmy had installed had been installed by Jimmy, which meant it ran, technically, but in the particular way that things installed by Jimmy ran — at half capacity, with a faint smell of melting plastic, and with a personality."
+      "text": "[shot:insert window]The office was hot. The office was always hot. The office was hot because it was August in New Orleans and because the window air-conditioning unit Jimmy had installed had been installed by Jimmy, which meant it ran, technically, but in the particular way that things installed by Jimmy ran — at half capacity, with a faint smell of melting plastic, and with a personality."
     },
     {
       "t": "narrate",
@@ -127,7 +127,7 @@
     },
     {
       "t": "narrate",
-      "text": "Antonio had not, at the time, conceded the point. He was beginning, this morning, to suspect the foreman had been correct."
+      "text": "[shot:establish]Antonio had not, at the time, conceded the point. He was beginning, this morning, to suspect the foreman had been correct."
     },
     {
       "t": "narrate",
@@ -185,7 +185,7 @@
     {
       "t": "say",
       "char": "antonio",
-      "text": "You at the warehouse?"
+      "text": "[shot:closeup antonio]You at the warehouse?"
     },
     {
       "t": "say",
@@ -210,7 +210,7 @@
     {
       "t": "say",
       "char": "jimmy",
-      "text": "On it."
+      "text": "[shot:closeup jimmy]On it."
     },
     {
       "t": "narrate",
@@ -256,7 +256,7 @@
     {
       "t": "say",
       "char": "antonio",
-      "text": "You see a guy on the corner across the street."
+      "text": "[shot:closeup antonio]You see a guy on the corner across the street."
     },
     {
       "t": "say",
@@ -285,7 +285,7 @@
     {
       "t": "say",
       "char": "jimmy",
-      "text": "I know the type. Stay upstairs. I'm coming up the back way."
+      "text": "[shot:closeup jimmy]I know the type. Stay upstairs. I'm coming up the back way."
     },
     {
       "t": "narrate",
@@ -343,7 +343,7 @@
     {
       "t": "say",
       "char": "antonio",
-      "text": "Or somebody in this office."
+      "text": "[shot:closeup antonio]Or somebody in this office."
     },
     {
       "t": "narrate",
@@ -371,7 +371,7 @@
     {
       "t": "say",
       "char": "jimmy",
-      "text": "Yeah, kid. I know."
+      "text": "[shot:closeup jimmy]Yeah, kid. I know."
     },
     {
       "t": "narrate",

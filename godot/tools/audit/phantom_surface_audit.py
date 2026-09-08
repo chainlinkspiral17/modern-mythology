@@ -16,8 +16,10 @@ against the recorded boxes: some box whose footprint contains
     python3 godot/tools/audit/phantom_surface_audit.py            # all
     python3 godot/tools/audit/phantom_surface_audit.py <locale>…  # some
 
-Informational. A hit is a line to READ, not a count to drive down —
-a few claims are legitimately a floor (z 0.0) or a hanging thing.
+A suite GATE at zero since 2026-09-10 (eighteen locales' worth of
+phantom passes were fixed to reach it). A hit is a line to READ: a
+detail pass wrote a surface from a comment; find the builder's own
+box and use its constant.
 """
 import os
 import re
@@ -56,6 +58,10 @@ XY_ASSIGN = re.compile(r"^\s*([A-Za-z_][A-Za-z0-9_]*?)_(x|y|cx|cy)\s*=\s*([+-]?\
 XY_TUPLE = re.compile(r"^\s*([A-Za-z_][A-Za-z0-9_]*?)_?x\s*,\s*([A-Za-z_][A-Za-z0-9_]*?)_?y\s*=\s*([^,#]+),\s*([^#]+?)\s*(#.*)?$")
 Z_ASSIGN = re.compile(r"^\s*([A-Za-z_][A-Za-z0-9_]*?)_(z|top_z)\s*=\s*([+-]?\s*(?:ROOM_[DW]\s*[-+/*]\s*)?[0-9.]+(?:\s*[-+*/]\s*[0-9.]+)?)\s*(#.*)?$")
 WINDOW = 6          # lines: an x/y pair and a z within this many lines are one claim
+# x/y stems that are not surface claims: vehicle bodies (the z is the
+# body centre), stacking bases, poles, piers, bridges, wall phones, an
+# AC in a window, a rack's face
+NOT_A_SURFACE = re.compile(r"(truck|pickup|sedan|ciera|marv|lav|car|van|wheel|base|pole|pier|bridge|phone|^ac$|rack|bunk)", re.I)
 
 
 def claims_in(path):
@@ -98,7 +104,11 @@ def claims_in(path):
     out = []
     seen = set()
     for stem, x, y, ln in pairs:
+        if NOT_A_SURFACE.search(stem):
+            continue                # a vehicle's body centre, a stacking base, a pole
         for zstem, z, zln in zs:
+            if NOT_A_SURFACE.search(zstem):
+                continue            # a stacking base_z, a pole_z
             if abs(zln - ln) <= WINDOW and z >= 0.25:
                 key = (round(x, 2), round(y, 2), round(z, 2))
                 if key in seen:

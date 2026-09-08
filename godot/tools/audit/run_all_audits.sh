@@ -147,6 +147,19 @@ for CLS in POKE CHAIR DESK LANE; do
         echo "$GOUT" | grep "^   $CLS"
         echo "REGRESSION  $N $CLS grammar break(s) (ceiling 0)"; exit 1; fi
 done
+# ── Phantom-surface gate (2026-09-10) ─────────────────────────
+# A detail pass that hard-codes a desk/counter/bar origin the builder
+# never put there (eighteen locales had one). Static: reads the x/y/z
+# claims in every builder and checks a box top exists there. Zero.
+echo "── phantom_surface_audit.py ──"
+PHOUT="$(python3 phantom_surface_audit.py 2>/dev/null | grep -v "^\[")" || true
+echo "$PHOUT" | tail -1
+PHN="$(echo "$PHOUT" | tail -1 | grep -oE "[0-9]+ unbacked" | grep -oE "^[0-9]+")"
+if [ "${PHN:-999}" -gt 0 ]; then
+    echo "$PHOUT" | grep "^   L"
+    echo "REGRESSION  $PHN unbacked surface claim(s) (ceiling 0)"; exit 1; fi
+echo ""
+
 # FLOAT reached 2 on 2026-09-09 (two palmetto trunks on terrain samples)
 # after 1408 → 713 → 353 → 102 → 2 across five class passes. ZERO-
 # REGRESSION CEILING 2: drive it down; never raise it.

@@ -31,6 +31,7 @@ key order and unicode escapes survive.
 Usage:
     python3 godot/tools/audit/shot_seed.py --dry <chapter.json>…
     python3 godot/tools/audit/shot_seed.py <chapter.json>…
+    python3 godot/tools/audit/shot_seed.py --light <chapter.json>…   # authored chapters: fewer, wider cuts
 """
 import json
 import os
@@ -229,7 +230,12 @@ def splice(path, nodes, edits):
 
 
 def main():
+    global MIN_GAP_CLOSEUP, MIN_GAP_INSERT, HOLD_MAX, BUDGET_DIV
     dry = "--dry" in sys.argv
+    if "--light" in sys.argv:
+        # chapters that already carry authored grammar: wider gaps,
+        # longer holds, a smaller budget — seed only the obvious cuts
+        MIN_GAP_CLOSEUP, MIN_GAP_INSERT, HOLD_MAX, BUDGET_DIV = 5, 7, 9, 6
     paths = [a for a in sys.argv[1:] if not a.startswith("--")]
     total = 0
     for p in paths:

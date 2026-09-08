@@ -102,7 +102,7 @@
     {
       "t": "say",
       "char": "mackenzie",
-      "text": "Maybe it's trying to tell us something. About acceptance. Or maybe it's just a metaphor for our bank account."
+      "text": "[shot:closeup mackenzie]Maybe it's trying to tell us something. About acceptance. Or maybe it's just a metaphor for our bank account."
     },
     {
       "t": "narrate",
@@ -129,7 +129,7 @@
     {
       "t": "say",
       "char": "philip",
-      "text": "Nah. Radio silence. Which is probably worse."
+      "text": "[shot:closeup philip]Nah. Radio silence. Which is probably worse."
     },
     {
       "t": "narrate",
@@ -203,7 +203,7 @@
     },
     {
       "t": "narrate",
-      "text": "With the weirdness of the world knocking, ever so politely for now, at the stubbornly latched back door."
+      "text": "[shot:insert door]With the weirdness of the world knocking, ever so politely for now, at the stubbornly latched back door."
     },
     {
       "t": "narrate",
