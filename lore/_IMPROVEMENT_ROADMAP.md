@@ -1000,6 +1000,41 @@ the same reading pass for detail-pass docstrings that name a surface
 WITHOUT "approx" (grep `_z = 0.7[0-9]|_z = 0.9[0-9]|_z = 1.0[0-9]`
 hard-coded surface heights) — the pattern's last hiding place.
 
+**2026-09-10 (iii) · phantom_surface_audit — the pattern gets a tool;
+eight more passes moved.** New `godot/tools/audit/phantom_surface_audit.py`
+reads every builder for a hard-coded `<a>_x` / `<a>_y` pair with a
+`<b>_z` / `<b>_top_z` within six lines (stems need not match: rc_x /
+counter_z was the shape) and checks the claim against the recorded
+boxes — some box under (x, y) must top out within 8 cm of z. Twenty-
+nine claims flagged; the vehicle-body and stacking-base ones are
+noise; eight were real and are moved: DAIGLE'S racked balls and cue
+at a pool table "at (2, 1)" (the felt is at (1.5, 3.2)) and Gil's
+buckle on a bar at the SOUTH wall (the second time the roadhouse's
+bar was authored at the wrong end); LE ROULANT's wheel scuff at
+(2.5, 1.5, 1.06), its cashier slip at (4, -3) and the disassembled-
+wheel cloth at y 1.0 — the table is at (0, 4.5) top 0.86 and the cage
+counter at (3.5, 8.6); SIMON's static-TV overlay drawn as a second
+screen on the south wall (now on the TV's east-facing screen), and
+his six banker's boxes and left boot "by the front door at (0, -1.8)"
+— 1.2–1.6 m outside the building (the doorway is the gap in the
+south wall at y 0); the DRIVE-IN's camcorder, cassettes and flashlight
+on a concession counter "at (0, -1.5)" (the counters are at y 3.2);
+WGUR's two desk passes at (0, -1.2) and (0, 1.5) (the desk is at
+(-0.4, 1.4)) — the terminal case, the tape player and the operator's
+chair, whose back then faced the desk and is flipped; Jules's shirt
+INSIDE the solid rack body, now on its face; the ASYLUM's Bishop's-
+letter pass at y 7.0, the gap between the counter and the desk; the
+MIXING GLASS's off-pour glass, Maddie's three clean glasses and her
+pour rail on a back bar at y 0.2 — the south wall — while the back
+bar is at y 8.2. OUTSIDE grammar: towers, masts, guy wires are
+exterior. Eighteen locales have had the pattern now. Deck rebuild:
+daigles_roadhouse, le_roulant_casino, simon_apartment,
+static_drive_in, wgur_transmitter_shack, asylum_ward_c, mixing_glass.
+NEXT DRAFT: the audit's residue is a read list, not a count —
+re-run it after every detail pass; make it a suite gate at the
+current 21 once the vehicle/stack false positives are excluded by
+name.
+
 **2026-08-19 · PER-STICK VOICE SWEEP VERDICT (voice draft 4).**
 Ran the leakage grep (TODO/WIP/placeholder/implemented/deferred/
 stub) and a string survey across EVERY stick directory: estuary_4,

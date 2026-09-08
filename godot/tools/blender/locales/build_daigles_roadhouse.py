@@ -224,10 +224,12 @@ def build_devil_dressing():
                  (0.20, 0.16, 0.12, 1.0))
 
     # Pool table augmentation — racked balls + a cue on the rail
-    # Pool table approx at (+2.0, +1.0)
-    pt_cx = +2.0
-    pt_cy = +1.0
-    pt_top_z = 0.78
+    # The pool table (Pool_Felt): (1.5, 3.2), felt top 0.82.
+    # (2026-09-10: this pass had it at (2, 1) — the racked balls and
+    # the cue lay on open floor a metre south of the table.)
+    pt_cx = +1.5
+    pt_cy = +3.2
+    pt_top_z = 0.82
     # Triangular rack at the foot end
     rack_x = pt_cx
     rack_y = pt_cy - 0.50
@@ -334,11 +336,14 @@ def build_devil_wave2_props():
       · Back-room door with Lou's rental key in the outside lock
     """
     import math
-    bar_top_z = 1.06
+    bar_top_z = 1.13          # the bar's top surface (Bar_Top at y 7.1)
 
     # ── the_wednesday_call ──────────────────────────────────────
+    # Gil's stool at the bar's customer (south) side; his buckle and
+    # the rest at stool_y + 0.2 land ON the bar (6.85..7.35).
+    # (2026-09-10: this pass had the stool at (1, 0) — the south wall.)
     stool_x = +1.00
-    stool_y = 0.00
+    stool_y = 6.75
     make_box("Gil_BeltBuckle_Silver",
              (stool_x + 0.10, stool_y + 0.20, bar_top_z + 0.008),
              (0.06, 0.05, 0.008),

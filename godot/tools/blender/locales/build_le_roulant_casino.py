@@ -167,9 +167,12 @@ def build_wheel_dressing():
     # Most Le Roulant builds put the wheel at the center of the
     # roulette table; nudging coordinates here so the scuff lands
     # ON the wheel regardless of exact rotation.
-    wheel_cx = +2.50
-    wheel_cy = +1.50
-    wheel_top_z = 1.06
+    # The roulette table (Roulette_Top): (0, 4.5), 2.5 × 1.3, top 0.86;
+    # the wheel end is west of the felt grid. (2026-09-10: the scuff
+    # was at (2.5, 1.5, 1.06) — open carpet.)
+    wheel_cx = -0.85
+    wheel_cy = +4.50
+    wheel_top_z = 0.86
     # Third-quadrant scuff — a darker arc on the wheel surface,
     # SE side of the wheel (the canonical "hesitates here" spot)
     make_box("RouletteWheel_ThirdQuadrantScuff",
@@ -214,9 +217,9 @@ def build_wheel_dressing():
 
     # Cashier-cage slip showing takings light
     # Cashier cage approx at (+4.0, -3.0) per build_cashier_cage
-    cage_x = +4.0
-    cage_y = -3.0
-    counter_z = 1.10
+    cage_x = +3.6             # Cage_Counter_Top: (3.5, 8.6), 1.8 × 0.5, top 1.08
+    cage_y = +8.6             # (2026-09-10: was (4, -3) — open floor)
+    counter_z = 1.08
     # Small cream slip on the counter
     make_box("CashierSlip_Paper",
              (cage_x - 0.20, cage_y - 0.30, counter_z + 0.003),
@@ -391,7 +394,7 @@ def build_wheel_wave2_props():
     # Wheel disassembled on the roulette layout · bearing cage
     # Roulette table at approximately (0, +1.00) · felt height 0.86
     rt_x = 0.0
-    rt_y = +1.00
+    rt_y = +4.50              # the real table (was y 1.0 — carpet)
     felt_z = 0.86
     # A protective cloth (dark blue) on which the parts rest
     make_box("ServiceCloth_OnFelt",

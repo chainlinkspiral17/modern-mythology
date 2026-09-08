@@ -195,9 +195,12 @@ def build_tower_dressing():
         broadcast playing in low quiet (visible as a small reel
         cassette in the desk's tape player)
     """
-    desk_cx = 0.0
-    desk_cy = -1.20
-    desk_top_z = 0.78
+    # The operator desk (Desk_Top): (-0.4, 1.4), 1.4 × 0.8, top 0.76.
+    # (2026-09-10: this pass had it at (0, -1.2) — the terminal case
+    # and the tape player hung in open floor.)
+    desk_cx = -0.4
+    desk_cy = 1.40
+    desk_top_z = 0.76
 
     # Operator chair (empty · she's stepped to the window) — wear
     # on the seat shows it's been the watch chair tonight
@@ -213,7 +216,7 @@ def build_tower_dressing():
              (0.34, 0.34, 0.003),
              (0.22, 0.14, 0.08, 1.0))
     make_box("EvangelineChair_Back",
-             (chair_x, chair_y + 0.22, 0.86),
+             (chair_x, chair_y - 0.22, 0.86),      # back AWAY from the desk (the desk is north)
              (0.50, 0.06, 0.60),
              (0.32, 0.22, 0.14, 1.0))
     # 5-star wheel base
@@ -331,13 +334,16 @@ def build_tower_wave2_props():
       · Rashid's fat black three-ring FCC compliance binder
       · Two crumpled foil taco wrappers in the wastebasket
     """
-    desk_x = 0.0
-    desk_y = +1.50
-    desk_top_z = 0.78
+    desk_x = -0.4
+    desk_y = +1.40
+    desk_top_z = 0.76
 
     # ── pre_dawn_quiet ─────────────────────────────────────────
-    rack_x = -2.20
-    rack_y = +1.00
+    # Jules's shirt hangs on the rack's EAST face (Rack_0_Body is a
+    # solid 0.5 × 0.6 × 2.0 at (-2.2, 1.2); the old (-2.2, 1.0) put the
+    # shirt inside it)
+    rack_x = -2.03
+    rack_y = +1.20
     rack_top_z = 1.30
     make_box("PreDawn_JulesShirt_Body",
              (rack_x + 0.20, rack_y, rack_top_z + 0.12),

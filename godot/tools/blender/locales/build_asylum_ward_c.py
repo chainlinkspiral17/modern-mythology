@@ -348,8 +348,8 @@ def build_death_wave2_props():
         pink stripe on the corridor floor)
     """
     ns_x = 0.0
-    ns_y = +7.00
-    desk_z = 1.11   # counter TOP (body 1.10 tall) — 0.90 buried the letter inside it
+    ns_y = +6.60    # the counter (Nurse_Counter_Top y 6.3..6.9); 7.0 was the gap before the desk
+    desk_z = 1.15   # counter TOP surface
 
     # ── The Bishop's letter on the nurse-station desk ──────────
     bl_x = ns_x + 0.30

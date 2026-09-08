@@ -173,10 +173,12 @@ def build_moon_dressing():
         pair of brake-light pinpricks (a car backing out for
         concessions)
     """
-    # Concession counter approx at (0.0, -1.5)
-    cc_x = 0.0
-    cc_y = -1.5
-    counter_z = 0.96
+    # The concession counters (Counter_W_Top: (-1.6, 3.2), 2.4 × 0.5,
+    # top 0.98). West end, clear of the soda fountain and cup tower.
+    # (2026-09-10: this pass had a counter at (0, -1.5) — open floor.)
+    cc_x = -1.55        # between the register (x -2.4..-2.0) and the cup tower (-1.3)
+    cc_y = 3.2
+    counter_z = 0.98
 
     # Handheld camcorder on the counter (apron-pocket on the side)
     cam_x = cc_x - 0.40
@@ -403,13 +405,15 @@ def build_moon_wave2_props():
 
     # The concession's flashlight under the counter (a stubby
     # cylinder representing the '80s aluminum flashlight)
+    # (2026-09-10: it sat at (-0.3, -0.4, 0.66) — mid-floor, a metre
+    # from any counter; now on Counter_W's top beside the camcorder)
     make_cyl("Concession_Flashlight_Body",
-             (concession_x - 0.30, -0.40, counter_z - 0.30),
+             (-2.55, 3.05, 0.98 + 0.03),
              0.030, 0.20,
              (0.62, 0.62, 0.60, 1.0), segments=8, axis='Y')
     # Lens end
     make_cyl("Concession_Flashlight_Lens",
-             (concession_x - 0.42, -0.40, counter_z - 0.30),
+             (-2.55, 3.05 - 0.11, 0.98 + 0.03),
              0.036, 0.02,
              (0.86, 0.86, 0.62, 1.0), segments=8, axis='Y')
 

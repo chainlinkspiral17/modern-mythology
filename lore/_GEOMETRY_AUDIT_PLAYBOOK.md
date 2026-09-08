@@ -689,6 +689,23 @@ failure paths separately before concluding anything.
   audits (ribbons themselves as fill) and are excluded from the
   overlap check. Do not "fix" this with a ceiling.
 
+### 2026-09-10 (iii) · the claim is in the source; audit the source
+
+- **The phantom-surface bug is findable statically.** Every detail
+  pass writes `foo_x = n`, `foo_y = n`, `bar_z = n` within a few
+  lines; that triple IS the claim. `phantom_surface_audit.py` pairs
+  them (stems need not match) and asks the recorded boxes whether a
+  top exists under (x, y) near z. Eighteen locales, one query each.
+- **The same room gets the same wrong bar twice.** Daigle's bar was
+  authored at the south wall by two different passes months apart;
+  the "approx" comment in the first was copied into the second. When
+  one pass is wrong about a surface, grep the file for every other
+  pass that names it.
+- **A pass that draws a prop's FACE draws it on the prop's face.** The
+  static-TV overlay was a second screen on a wall; the shirt "on the
+  rack" was inside the rack's solid body. Look up the real object's
+  orientation (thin axis) before placing a decal or a hung thing.
+
 ### 2026-09-10 (ii) · read the claims, not the counts
 
 - **Thin, mounted and legged props hide from every geometry gate.**

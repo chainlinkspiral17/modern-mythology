@@ -172,9 +172,11 @@ def build_temperance_dressing():
     # The OFF POUR · a highball with an obvious-wrong liquid level
     # On the back-bar, slightly off to one side from Maddie's
     # canonical station
+    # The back bar (Backbar_Counter): (0, 8.2), 3.2 × 0.4, top 1.13.
+    # (2026-09-10: this pass had it at y 0.2 — the south wall.)
     bb_x = +0.80
-    bb_y = +0.20
-    bb_top_z = 1.20
+    bb_y = ROOM_D - 0.30
+    bb_top_z = 1.13
     # Glass body (taller than usual)
     make_cyl("OffPour_Glass",
              (bb_x, bb_y, bb_top_z + 0.07),
@@ -193,13 +195,13 @@ def build_temperance_dressing():
     for gi in range(3):
         gx = -0.80 + gi * 0.18
         make_cyl("MaddiePour_CleanGlass_%d" % gi,
-                 (gx, +0.20, bb_top_z + 0.055),
+                 (gx, bb_y, bb_top_z + 0.055),
                  0.026, 0.11,
                  (0.92, 0.92, 0.94, 0.55),
                  segments=10, axis='Z')
     # White pour rail along the back-bar edge
     make_box("MaddiePour_Rail",
-             (-0.60, +0.10, bb_top_z + 0.005),
+             (-0.60, bb_y - 0.15, bb_top_z + 0.005),
              (0.60, 0.04, 0.01),
              (0.94, 0.92, 0.88, 1.0))
 

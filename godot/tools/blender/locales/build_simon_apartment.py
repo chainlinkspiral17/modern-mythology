@@ -268,20 +268,24 @@ def build_hanged_man_dressing():
 
     # ── TV at static + the remote with no batteries ──
     # TV approx at (-1.0, -0.5, 0.6) per build_armchair_and_tv
-    tv_x = -1.0
-    tv_y = +0.30
-    tv_screen_z = 1.20
-    # Static-grey screen overlay
+    # The TV (build_armchair_and_tv): body at (-0.5, 2.2), its screen a
+    # plane at x -0.24 facing EAST, 0.40 wide × 0.36 tall at z 0.94.
+    # (2026-09-10: the static overlay was a second screen on the south
+    # wall at (-1, 0.09).)
+    tv_x = -0.232
+    tv_y = +2.20
+    tv_screen_z = 0.94
+    # Static-grey screen overlay (on the screen face)
     make_box("TV_StaticScreen",
-             (tv_x, tv_y - 0.21, tv_screen_z),
-             (0.66, 0.005, 0.40),
+             (tv_x, tv_y, tv_screen_z),
+             (0.005, 0.40, 0.36),
              (0.62, 0.62, 0.60, 1.0))
     # 6 thin noise streaks across the screen (horizontal scan lines)
     for ni in range(6):
         nz = tv_screen_z - 0.15 + ni * 0.06
         make_box("TV_NoiseLine_%d" % ni,
-                 (tv_x, tv_y - 0.211, nz),
-                 (0.62, 0.001, 0.006),
+                 (tv_x + 0.004, tv_y, nz),
+                 (0.001, 0.36, 0.006),
                  (0.86, 0.86, 0.86, 1.0))
     # Remote on the coffee table — flipped over with battery compartment open
     # Coffee table approx at (-0.5, +1.5, 0.42)
@@ -361,8 +365,8 @@ def build_hanged_man_wave2_props():
 
     # Simon's left boot by the front door (front door at approx
     # (0, -1.80) · left boot POINTED opposite the right boot)
-    lb_x = -0.30
-    lb_y = -1.60
+    lb_x = -0.35
+    lb_y = +0.40          # inside the doorway (was 1.6 m outside)
     make_box("Simon_LeftBoot_Sole",
              (lb_x, lb_y, 0.03),
              (0.12, 0.28, 0.02),
@@ -433,9 +437,11 @@ def build_hanged_man_wave2_props():
 
     # ── the_seventh_evening ────────────────────────────────────
 
-    # Six empty banker's boxes stacked by the front door
-    bx_x = -0.60
-    bx_y = -1.20
+    # Six empty banker's boxes stacked by the front door — the doorway
+    # is the gap in the south wall at x -1..1, y 0. (2026-09-10: the
+    # stack stood at (-0.6, -1.2), 1.2 m outside the building.)
+    bx_x = -2.00
+    bx_y = +0.45
     for bi in range(6):
         # First three stack up, next three at ground level next to
         # the first stack for a staggered "moving day" look
