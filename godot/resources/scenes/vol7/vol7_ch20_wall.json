@@ -61,6 +61,46 @@
       "t": "narrate"
     },
     {
+      "t": "choice",
+      "style": "verb_coin",
+      "hotspot": "the four bowls on the crate",
+      "prompt": "",
+      "opts": [
+        {
+          "text": "look at",
+          "goto": 13,
+          "flag": "ch20_bowls_looked",
+          "hide_if_flag": "ch20_bowls_looked"
+        },
+        {
+          "text": "touch Roy's",
+          "goto": 15,
+          "flag": "ch20_bowls_touched",
+          "hide_if_flag": "ch20_bowls_touched"
+        },
+        {
+          "text": "step back",
+          "goto": 17
+        }
+      ]
+    },
+    {
+      "t": "narrate",
+      "text": "Four, in the order of the bakery: Roy's at the right end, the walnut one, its rim worn to a shine where his thumb had been for forty years; Marit's with the crow; the substrate-bowl with the young woman past the doorway; Marina's grandfather's with the man whose eyes were above the rim. In the back-door light they had the color of things that had been carried a long way to be set down here."
+    },
+    {
+      "t": "jump",
+      "goto": 12
+    },
+    {
+      "t": "narrate",
+      "text": "She put a hand flat over Roy's bowl, not on it — the way Roy had held his hand over it the day he had given it — and counted to four, and took the hand back. The rain on the asphalt did not change. Something behind her, at the wagon, had stopped moving for the four."
+    },
+    {
+      "t": "jump",
+      "goto": 12
+    },
+    {
       "char": "finn",
       "expr": "neutral",
       "pos": "left",
