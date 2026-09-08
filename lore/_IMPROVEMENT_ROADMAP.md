@@ -1170,6 +1170,16 @@ restored it). Never open for write inside the same expression as the
 serializer. NEXT DRAFT: the Deck read of all four coins (ch10 box, vol6 cooler,
 ch14 bowls, ch20 crate); ch11 has no stove passage to hang one on.
 
+**2026-09-10 (xii) · OUTSIDE at zero and gated.** The last 89 were
+vocabulary: rock jags, surf and headlands on the cliff, flower beds,
+a Ciera by name, a kiosk, an aisle-number sign, a no-smoking sign, a
+restroom shell — and one bug: the garden's Ground_Grass counted as
+foliage (PASSABLE) and was dropped from the floor list, so Pepper
+the dog stood on nothing. Ground boxes are floors now whatever their
+name says. OUTSIDE joins POKE · CHAIR · DESK · LANE · BED as a
+zero-ceiling gate. Every geometry class the grammar knows is now
+gated except INTRA (massing, informational) and FLOAT (ceiling 2).
+
 **2026-08-19 · PER-STICK VOICE SWEEP VERDICT (voice draft 4).**
 Ran the leakage grep (TODO/WIP/placeholder/implemented/deferred/
 stub) and a string survey across EVERY stick directory: estuary_4,

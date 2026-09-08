@@ -141,7 +141,7 @@ echo "── furniture_grammar_audit.py ──"
 GOUT="$(python3 furniture_grammar_audit.py 2>/dev/null | grep -v "^\[")" || true
 GLINE="$(echo "$GOUT" | tail -1)"
 echo "$GLINE"
-for CLS in POKE CHAIR DESK LANE BED; do
+for CLS in POKE CHAIR DESK LANE BED OUTSIDE; do
     N="$(echo "$GLINE" | grep -oE "$CLS [0-9]+" | grep -oE "[0-9]+$")"
     if [ "${N:-999}" -gt 0 ]; then
         echo "$GOUT" | grep "^   $CLS"

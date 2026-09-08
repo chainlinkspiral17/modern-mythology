@@ -210,8 +210,8 @@ def check_intra(boxes):
     return out
 
 
-FLOORISH = re.compile(r"(floor|(^|_)(slab|ground|lawn|deck|walk|asphalt|lot|plaza|path|terrace|patio|porch|dais|stage|platform|apron|driveway|road|sidewalk|yard|grass|dirt|gravel|pavement|court|field|carpet|rug|tile))", re.I)
-EXTERIORISH = re.compile(r"(tower|mast|antenna|guy_|guywire|dock|wharf|pier|thru|across|facade|alley|siding|hull|ripple|stair|step|tread|pickup|subaru|sedan|dumpster|niche|recess|armory|island|pump|rootball|easel|shovel|wall|ceil|roof|window|win_|door|frame|sky|horizon|far|band|void|outside|exterior|beyond|distant|hwy|highway|tree|shrub|hedge|bush|cypress|oak|pine|palm|cloud|moon|sun$|star|mountain|hill|ridge|cliff|river|bayou|water|sea|lake|boat|marsh|fog|haze|glow|light|lamp|neon|sign|pole|post|fence|gate|rail|mail|hydrant|car|truck|van|bike|street|curb|terrain|_z_|^z_|zone|outline|plane|backdrop|cyclorama|silhouette|beacon|antenna|chimney|awning|eave|gutter|downspout|planter|bench|wire|cable|smoke|steam|bird|crow|gull|leaf|leaves|branch|trunk|canopy|foliage|shadow|stain|wear|seam|grout|crack|puddle|drip|ember|spark|dust|mote)", re.I)
+FLOORISH = re.compile(r"(floor|lawn|grass|dirt|gravel|soil|mulch|sand|(^|_)(slab|ground|deck|walk|asphalt|lot|plaza|path|terrace|patio|porch|dais|stage|platform|apron|driveway|road|sidewalk|yard|pavement|court|field|carpet|rug|tile|pad))", re.I)
+EXTERIORISH = re.compile(r"(nosmoking|surf|headland|ocean|wave|jag|crag|boulder|flower|planter|bed_|ciera|kiosk|aislenum|restroom|tower|mast|antenna|guy_|guywire|dock|wharf|pier|thru|across|facade|alley|siding|hull|ripple|stair|step|tread|pickup|subaru|sedan|dumpster|niche|recess|armory|island|pump|rootball|easel|shovel|wall|ceil|roof|window|win_|door|frame|sky|horizon|far|band|void|outside|exterior|beyond|distant|hwy|highway|tree|shrub|hedge|bush|cypress|oak|pine|palm|cloud|moon|sun$|star|mountain|hill|ridge|cliff|river|bayou|water|sea|lake|boat|marsh|fog|haze|glow|light|lamp|neon|sign|pole|post|fence|gate|rail|mail|hydrant|car|truck|van|bike|street|curb|terrain|_z_|^z_|zone|outline|plane|backdrop|cyclorama|silhouette|beacon|antenna|chimney|awning|eave|gutter|downspout|planter|bench|wire|cable|smoke|steam|bird|crow|gull|leaf|leaves|branch|trunk|canopy|foliage|shadow|stain|wear|seam|grout|crack|puddle|drip|ember|spark|dust|mote)", re.I)
 
 
 def check_outside(boxes):
@@ -219,7 +219,9 @@ def check_outside(boxes):
     box — a chair authored past the wall, a table at coordinates from
     another room's frame. Only for locales that HAVE floor boxes and
     only for props that are not themselves exterior/architecture."""
-    floors = [b for b in boxes if FLOORISH.search(b[0]) and not VO.PASSABLE.search(b[0])
+    # (a Ground_Grass box is a floor even though "grass" reads as foliage
+    # elsewhere — the PASSABLE filter cost Pepper the garden, 2026-09-10)
+    floors = [b for b in boxes if FLOORISH.search(b[0])
               and max(b[2][0], b[2][1]) * 2 >= 1.5 and b[2][2] * 2 < 0.6]
     if not floors or max(max(b[2][0], b[2][1]) * 2 for b in floors) > 40.0:
         return []          # exteriors and terrains: props stand on ground, not on a floor box
