@@ -20,6 +20,7 @@ Markers are appended as position-form Marker3D nodes.
     python3 godot/tools/audit/marker_author.py [locale…]
     python3 godot/tools/audit/marker_author.py --cue <locale>:<cue>…   # one marker for a blind cue
     python3 godot/tools/audit/marker_author.py --closeup [locale…]     # a room's one closeup frame
+    python3 godot/tools/audit/marker_author.py --closeup-b [locale…]   # its reverse shot, from the far side
 """
 import collections
 import json
@@ -210,7 +211,7 @@ def author_cue(locale, cue, dry):
     return 0
 
 
-def author_closeup(locale, dry):
+def author_closeup(locale, dry, side="a"):
     """--closeup: a room's ONE generic closeup frame — `shot_closeup_person`
     — for scenes whose chapters cue closeups of PEOPLE but carry no
     closeup marker at all (112 presets, 561 cues). VnDirector borrows
@@ -220,8 +221,16 @@ def author_closeup(locale, dry):
     1.2–2.2 m off it, ≤ 25° down, passing the gate's fill verdict."""
     path = os.path.join(M.LOCALES_TSCN, locale + ".tscn")
     src_txt = open(path).read()
-    if 'name="shot_closeup_' in src_txt:
+    mname = "shot_closeup_person" if side == "a" else "shot_closeup_person_b"
+    if side == "a" and 'name="shot_closeup_' in src_txt:
         return 0
+    if side == "b" and ('name="shot_closeup_person"' not in src_txt or ('name="%s"' % mname) in src_txt):
+        return 0                      # the reverse shot only pairs with a generic frame
+    a_pos = None
+    if side == "b":
+        am = re.search(r'name="shot_closeup_person"[^\n]*\nposition = Vector3\(([^)]+)\)', src_txt)
+        if am:
+            a_pos = tuple(float(v) for v in am.group(1).split(","))
     gm = re.search(r'path="res://assets/3d/locales/(\w+)\.glb"', src_txt)
     glb = gm.group(1) if gm else locale
     cams = preset_cameras()
@@ -251,18 +260,23 @@ def author_closeup(locale, dry):
     fwd = (-math.sin(rot[1]) * math.cos(rot[0]), math.sin(rot[0]), -math.cos(rot[1]) * math.cos(rot[0]))
     tgt = (cam[0] + fwd[0] * 3.0, 1.25, cam[2] + fwd[2] * 3.0)
     hits = [("_room", tgt)]
-    for score, npos, d, el in R.candidates(tgt, 0.6, cam, boxes, set(), lo, hi, hits):
+    # the reverse shot is searched from the far side of the spot: the
+    # mirrored camera, so the two frames look at each other across it
+    origin = cam if side == "a" else (2.0 * tgt[0] - cam[0], cam[1], 2.0 * tgt[2] - cam[2])
+    for score, npos, d, el in R.candidates(tgt, 0.6, origin, boxes, set(), lo, hi, hits):
         if d < 1.2 or d > 2.2 or el > 25.0:
             continue
+        if a_pos is not None and math.hypot(npos[0] - a_pos[0], npos[2] - a_pos[2]) < 1.5:
+            continue                  # not the same side as the first frame
         rx, ry = R.aim(npos, tgt)
         st = VO.frame_stats(R.to_b(npos), rx, ry, 45.0, boxes)
         if VO.verdict(st) or VO.inside_any(R.to_b(npos), boxes):
             continue
-        print("== %-28s shot_closeup_person at (%.1f, %.1f, %.1f) %.1fm · %+.0f° median %.1f distinct %d" % (locale, npos[0], npos[1], npos[2], d, el, st["median"], st["distinct"]))
+        print("== %-28s %s at (%.1f, %.1f, %.1f) %.1fm · %+.0f° median %.1f distinct %d" % (locale, mname, npos[0], npos[1], npos[2], d, el, st["median"], st["distinct"]))
         if not dry:
-            blk = ["", "; the room's one closeup frame, authored by marker_author.py --closeup (2026-09-10):",
-                   "; every closeup of a person cued here cuts to it (the scene had no closeup marker)",
-                   '[node name="shot_closeup_person" type="Marker3D" parent="." groups=["vn_shot"]]',
+            blk = ["", "; the room's %s closeup frame, authored by marker_author.py --closeup (2026-09-10)" % ("one" if side == "a" else "REVERSE"),
+                   "; " + ("every closeup of a person cued here cuts to it (the scene had no closeup marker)" if side == "a" else "the far side of the same spot, so two speakers alternate sides"),
+                   '[node name="%s" type="Marker3D" parent="." groups=["vn_shot"]]' % mname,
                    "position = Vector3(%.3f, %.3f, %.3f)" % npos,
                    "rotation = Vector3(%.4f, %.4f, 0.0)" % (rx, ry),
                    "metadata/fov = 45.0", ""]
@@ -277,11 +291,12 @@ def main():
     dry = "--dry" in sys.argv
     only = [a for a in sys.argv[1:] if not a.startswith("--")]
     P.A.install_stubs()
-    if "--closeup" in sys.argv:
+    if "--closeup" in sys.argv or "--closeup-b" in sys.argv:
+        side = "b" if "--closeup-b" in sys.argv else "a"
         n = 0
         for fn in sorted(os.listdir(M.LOCALES_TSCN)):
             if fn.endswith(".tscn") and (not only or fn[:-5] in only):
-                n += author_closeup(fn[:-5], dry)
+                n += author_closeup(fn[:-5], dry, side)
         print("\n%d closeup frame(s) %s" % (n, "planned" if dry else "authored"))
         return
     if "--cue" in sys.argv:

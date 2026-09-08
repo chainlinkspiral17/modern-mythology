@@ -1204,10 +1204,14 @@ verdict: 81 rooms (three stuck: the darkroom, Kestrel, the tideline
 — no clear frame at that distance). The director's substitution now
 prefers it for every cast closeup in those rooms. Named `person`
 because the matcher splits CamelCase and "room" is a word in
-CardRoom / CountRoom / ChangeRoom. NEXT DRAFT: a second frame per
-room from the opposite side (`shot_closeup_person_b`) so shot/reverse
-shot alternates; the seeder could then cut cast closeups in rooms
-that only carry the generic frames.
+CardRoom / CountRoom / ChangeRoom. The REVERSE SHOT followed the same
+day: `--closeup-b` searches from the far side of the same spot (the
+mirrored preset camera, ≥ 1.5 m from the first frame) — 78 rooms have
+both, 0 misaims, 0 obstructed, and VnDirector's hash of the character
+id picks one, so two speakers alternate sides. NEXT DRAFT: the seeder
+could cut cast closeups in rooms that carry only the generic pair (it
+keys closeups by character today); the Deck read of a dialogue chapter
+in Lena's apartment or the Miller kitchen decides.
 
 **2026-08-19 · PER-STICK VOICE SWEEP VERDICT (voice draft 4).**
 Ran the leakage grep (TODO/WIP/placeholder/implemented/deferred/

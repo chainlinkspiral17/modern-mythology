@@ -324,3 +324,10 @@ metadata/fov = 42.0
 position = Vector3(-0.243, 1.250, -1.360)
 rotation = Vector3(0.0000, -0.5236, 0.0)
 metadata/fov = 45.0
+
+; the room's REVERSE closeup frame, authored by marker_author.py --closeup (2026-09-10)
+; the far side of the same spot, so two speakers alternate sides
+[node name="shot_closeup_person_b" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(1.457, 1.250, -4.304)
+rotation = Vector3(0.0000, 2.6180, 0.0)
+metadata/fov = 45.0

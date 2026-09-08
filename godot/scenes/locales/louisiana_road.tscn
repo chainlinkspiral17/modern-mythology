@@ -378,3 +378,10 @@ script = ExtResource("14_dbgm")
 position = Vector3(-1.000, 1.612, -1.355)
 rotation = Vector3(-0.2618, -3.1416, 0.0)
 metadata/fov = 45.0
+
+; the room's REVERSE closeup frame, authored by marker_author.py --closeup (2026-09-10)
+; the far side of the same spot, so two speakers alternate sides
+[node name="shot_closeup_person_b" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(-1.000, 1.612, 1.350)
+rotation = Vector3(-0.2618, -0.0000, 0.0)
+metadata/fov = 45.0
