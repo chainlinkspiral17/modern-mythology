@@ -303,8 +303,8 @@ metadata/fov = 56.0
 
 ; rotation C: along the porch boards, wicker in the near frame, the oak beyond
 [node name="shot_establish_c" type="Marker3D" parent="." groups=["vn_shot"]]
-position = Vector3(4.2, 1.5, -2.6)
-rotation = Vector3(-0.0341971, 1.69657, 0)
+position = Vector3(-0.687, 1.925, -0.311)
+rotation = Vector3(-0.2618, -0.7854, 0.0)
 metadata/fov = 50.0
 
 ; insert: the wicker chair

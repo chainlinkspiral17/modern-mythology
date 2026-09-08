@@ -57,7 +57,13 @@ WALL_M, WALL_FRAC = 2.6, 0.45
 EMPTY_FRAC = 0.80
 EMBED_TOL = 0.18
 # Markers where an empty-ish frame is the shot (sky inserts, horizons).
-DELIBERATE_MARKERS = set()
+# Subjects that ARE in the sky: a crow on a wire, a drone, the crown of a
+# cypress, a crepe myrtle in bloom. An insert of them reads EMPTY by the
+# sky rule and is right to (2026-09-10; each read by hand).
+DELIBERATE_MARKERS = {
+    ("cabin_road", "shot_insert_drone"), ("cabin_road", "shot_insert_crow"),
+    ("miller_back_porch", "shot_insert_myrtle"), ("new_auburn_road", "shot_insert_cypress"),
+}
 # Builders whose recorded boxes do not sit where the runtime puts them
 # (harmony_terrain drapes its props over a heightfield the recorder
 # cannot follow: every highway9 preset read EMPTY at 100% while the

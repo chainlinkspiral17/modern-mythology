@@ -102,6 +102,18 @@ var _initial_spiral: int = 0
 var _t: float = 0.0
 var _running: bool = false
 var _resolved: bool = false
+# ── the light-synth FINALE (2026-09-10 · Minter row, draft 2): when the run
+# resolves, the web's light plays out for a couple of seconds BEFORE the
+# host hears run_over — the register's ending as a picture of the web.
+#   whole / held / star : light travels the web from the hub outward,
+#                         ring by ring, sweeping round the spokes; motes
+#                         of gold climb to the score bar
+#   storm               : the storm's own light flickers off every anchor
+#                         until the frame is all the web there is
+var _finale: Array[Dictionary] = []      # {t, pos, col, n, speed, core}
+var _finale_t: float = -1.0              # < 0 → no finale running
+var _finale_len: float = 0.0
+var _finale_result: Dictionary = {}
 
 var _wave: int = 0
 var _phase: String = "lull"           # telegraph | gust | lull
@@ -465,7 +477,8 @@ func _snap_and_cull() -> void:
 			_sfx("thread_snap")
 			if _fx != null:
 				var mid: Vector2 = (Vector2(na["pos"]) + Vector2(nb["pos"])) * 0.5
-				_fx.call("burst", mid, C_SILK if String(t["kind"]) == "spoke" else C_SPIRAL, 26, 210.0, true)
+				# the storm's density drives the light: later gusts snap brighter
+				_fx.call("burst", mid, C_SILK if String(t["kind"]) == "spoke" else C_SPIRAL, 26 + 5 * _wave, 210.0 + 12.0 * float(_wave), true)
 	# cull interior nodes that have lost every thread (they fall away)
 	for i in range(1, _nodes.size()):
 		var n: Dictionary = _nodes[i]
@@ -587,6 +600,9 @@ func _do_spin() -> bool:
 # ─── Main loop ───────────────────────────────────────────────────
 
 func _physics_process(delta: float) -> void:
+	if _finale_t >= 0.0:
+		_tick_finale(delta)
+		return
 	if not _running:
 		return
 	_t += delta
@@ -703,13 +719,67 @@ func _resolve() -> void:
 		reg = "whole"
 	else:
 		reg = "held"
-	run_over.emit({
+	_finale_result = {
 		"register": reg,
 		"waves_survived": _waves_survived,
 		"spokes_alive": spokes,
 		"spiral_frac": frac,
 		"score": int(_score),
-	})
+	}
+	_schedule_finale(reg)
+
+
+func _schedule_finale(reg: String) -> void:
+	_finale.clear()
+	_finale_len = 0.0
+	if _fx == null:
+		_finale_t = 0.0
+		return
+	if reg == "storm":
+		# the storm's light: sparks off every anchor, quickening, gray-blue
+		for k in range(15):
+			var tk: float = 0.12 * float(k)
+			for n_v in _nodes:
+				var n: Dictionary = n_v
+				if not bool(n["pin"]) or not bool(n["alive"]):
+					continue
+				_finale.append({"t": tk, "pos": Vector2(n["pos"]), "col": C_SPIRAL, "n": 4 + k / 3, "speed": 140.0 + 9.0 * float(k), "core": k > 10})
+		_finale_len = 15.0 * 0.12
+	else:
+		# light travels the web: hub first, then outward ring by ring,
+		# sweeping round the spokes; the anchors flare white at the end
+		_finale.append({"t": 0.0, "pos": Vector2(_nodes[0]["pos"]), "col": C_SPIDER, "n": 16, "speed": 120.0, "core": true})
+		var t_max: float = 0.0
+		for n_v in _nodes:
+			var n: Dictionary = n_v
+			if bool(n["hub"]) or not bool(n["alive"]):
+				continue
+			var tn: float = 0.16 + 0.14 * float(int(n["ring"])) + 0.035 * float(int(n["spoke"]))
+			var col: Color = C_SILK if bool(n["pin"]) else C_SPIRAL
+			_finale.append({"t": tn, "pos": Vector2(n["pos"]), "col": col, "n": 8 if bool(n["pin"]) else 6, "speed": 90.0, "core": bool(n["pin"])})
+			t_max = maxf(t_max, tn)
+		for k in range(10):
+			_finale.append({"t": 0.1 + 0.15 * float(k), "pos": Vector2(_nodes[0]["pos"]), "col": C_SPIDER, "n": 0, "speed": 0.0, "core": false})
+		_finale_len = t_max + 0.3
+	_finale.sort_custom(func(a: Dictionary, b: Dictionary) -> bool: return float(a["t"]) < float(b["t"]))
+	_finale_t = 0.0
+
+
+func _tick_finale(delta: float) -> void:
+	_finale_t += delta
+	while not _finale.is_empty() and float(_finale[0]["t"]) <= _finale_t:
+		var ev: Dictionary = _finale.pop_front()
+		if _fx == null:
+			continue
+		if int(ev["n"]) <= 0:
+			_fx.call("mote", Vector2(ev["pos"]), Color(ev["col"]))
+		else:
+			_fx.call("burst", Vector2(ev["pos"]), Color(ev["col"]), int(ev["n"]), float(ev["speed"]), bool(ev["core"]))
+	queue_redraw()
+	# hold the last light for a breath, then let the host read the register
+	if _finale.is_empty() and _finale_t >= _finale_len + 0.9:
+		_finale_t = -1.0
+		run_over.emit(_finale_result)
 
 
 # ─── HUD ─────────────────────────────────────────────────────────

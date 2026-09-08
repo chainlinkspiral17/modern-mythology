@@ -1128,6 +1128,30 @@ remain are four sky inserts (drone, crow, cypress, myrtle — the
 things ARE in the sky), the eviction notice on a window, a porch
 wide into its own screen and two 37 %-near frames. Ceiling 8.
 
+**2026-09-10 (ix) · the marker gate at ZERO.** The last eight: the
+Kwik Stop customer closeup through cast_reframe; the Centro and
+Miller-porch wides re-posed by the same ring search at wide
+distances (2.5 m+, ≤ 20°); the eviction notice by marker_reframe
+(0.7 m on the tape); and the four sky inserts — a crow on a wire, a
+drone, a cypress crown, a crepe myrtle — read by hand and declared
+DELIBERATE in vantage_obstruction_audit (the subject IS the sky).
+MARKER_CEILING 0: every marker in the repo now sees its subject and
+frames a picture. NEXT DRAFT: the audit judges geometry, not taste
+— the Deck read of the reframed closeups (they sit 1.4 m from the
+person's spot at 15–30°) decides whether the cast grammar wants a
+lower, flatter house style; if so, one constant in cast_reframe.
+
+**2026-09-10 (x) · Spiderdrops finale — Minter row draft 2.** The
+run's resolve no longer hands the host its register at once: the
+web's light plays the ending first (~2 s) — WHOLE/HELD/STAR as light
+travelling the web from the hub outward ring by ring with the anchors
+flaring white and gold motes climbing to the score; THE STORM as
+gray-blue sparks quickening off every anchor. Snap bursts scale with
+the gust (26 → 56 sparks). Both GDScript checkers clean. NEXT DRAFT:
+a rising sting per register (SFXBank), a Deck read of the storm
+ending's length (0.9 s hold after the last light), the same class
+under Spiderdrops 2.
+
 **2026-08-19 · PER-STICK VOICE SWEEP VERDICT (voice draft 4).**
 Ran the leakage grep (TODO/WIP/placeholder/implemented/deferred/
 stub) and a string survey across EVERY stick directory: estuary_4,

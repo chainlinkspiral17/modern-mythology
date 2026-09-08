@@ -177,9 +177,17 @@ sludge hangs).
   points: a mote of gold rises from the hub to the HUD bar — every
   point is a particle. Sparks brighten with TripSync's beat pulse;
   nothing flashes, nothing moves the frame; 420 live sparks cap.
-  Next: the survival-storm finale as a light-synth bonus; density-
-  driven escalation (more sparks per snap as the storm builds); the
-  same FX class under Spiderdrops 2's balloon glide.
+  **Draft 2 (2026-09-10):** the FINALE — when the run resolves the
+  web's light plays out for ~2 s before the host reads the register:
+  WHOLE / HELD / STAR send light travelling the web from the hub
+  outward, ring by ring, sweeping round the spokes, anchors flaring
+  white, ten motes of gold climbing to the score bar; THE STORM
+  flickers gray-blue sparks off every anchor, quickening, until the
+  frame is all the web there is. Density drives the light: a snap in
+  gust six throws 56 sparks where gust one threw 26. Nothing moves
+  the frame; the web itself is frozen for the finale (a held panel).
+  Next: the same FX class under Spiderdrops 2's balloon glide; the
+  finale's sound (one rising sting per register, SFXBank).
 - **direction · [trip:] cues (draft 1).** 190 interlude beats across
   vols 5–7 carry `[trip:1.2]` (the structural turn pushes the layer,
   the way `[mood:]` cues were placed on interludes), plus three

@@ -312,8 +312,8 @@ script = ExtResource("14_dbgm")
 ; ── vn_shot coverage (2026-08-08 directing pass 3) ────────
 ; rotation B: from the frozen bank looking down the aisle to the register cubby
 [node name="shot_establish_b" type="Marker3D" parent="." groups=["vn_shot"]]
-position = Vector3(-3.4, 1.7, -6.9)
-rotation = Vector3(-0.10288, -2.2702, 0)
+position = Vector3(-3.459, 1.925, -3.627)
+rotation = Vector3(-0.2618, -1.0472, 0.0)
 metadata/fov = 58.0
 
 ; rotation C: from the produce corner diagonally to the meat case
