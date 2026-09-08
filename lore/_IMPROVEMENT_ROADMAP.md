@@ -1230,6 +1230,25 @@ appear on both sides in one scene. VnDirector now keeps a per-locale
 speaker→side map (first-seen order, cleared on every bg change), so
 authored and seeded cast closeups agree. Both GDScript checkers clean.
 
+**2026-09-11 (ii) · mood_clock_audit — a mood is a claim about time.**
+The 2026-08-30 lesson ("audit the mood against the fiction") became a
+tool: each `[mood:]` cue governs until the next, and the OPENING lines
+of its passage are read for clock readings and hour words. Only
+light-against-dark is reported — morning↔day and dusk↔night are the
+same light an hour apart, and pre-dawn is the hinge. Three tool truths
+cost a pass each: past-tense narration means a night chapter says
+"morning" on every second line (hence opening lines only); a clock
+after "since / until / from" is a span the scene remembers, not the
+hour it is in; and 4 and 5 AM are DARK — morning light starts at six.
+Two real findings out of 321 cues: Diego's Sunday opened `day_bright`
+on a blackout-curtained bedroom at 4:08 PM ("the kind of dark that has
+no relationship to the hour") — now `night`, with `day_bright`
+restored when he goes downstairs; and the Devil walked out into "the
+New Orleans morning" under `night` — now `dawn_warm`. Three
+disagreements are declared deliberate in the tool (Death's 4:06 AM
+under the card's rising sun, the painting cabin's pre-dawn, booth 6 at
+3:47 AM). Gated at 0.
+
 **2026-08-19 · PER-STICK VOICE SWEEP VERDICT (voice draft 4).**
 Ran the leakage grep (TODO/WIP/placeholder/implemented/deferred/
 stub) and a string survey across EVERY stick directory: estuary_4,

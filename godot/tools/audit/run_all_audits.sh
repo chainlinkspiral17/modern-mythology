@@ -147,6 +147,20 @@ for CLS in POKE CHAIR DESK LANE BED OUTSIDE; do
         echo "$GOUT" | grep "^   $CLS"
         echo "REGRESSION  $N $CLS grammar break(s) (ceiling 0)"; exit 1; fi
 done
+# ── Mood-vs-clock gate (2026-09-11) ───────────────────────────
+# A mood is a claim about time and light. ch23_sleep ran five midnight
+# bedrooms under dawn_warm for a month because the mood was placed once
+# and never revisited when the chapter's clock moved. Light-against-dark
+# only; deliberate choices are declared in the tool. Zero.
+echo "── mood_clock_audit.py ──"
+MOUT="$(python3 mood_clock_audit.py 2>/dev/null)" || true
+echo "$MOUT" | tail -1
+MN="$(echo "$MOUT" | tail -1 | grep -oE "[0-9]+ contradicted" | grep -oE "^[0-9]+")"
+if [ "${MN:-999}" -gt 0 ]; then
+    echo "$MOUT" | grep "^MOOD"
+    echo "REGRESSION  $MN mood cue(s) the prose contradicts (ceiling 0)"; exit 1; fi
+echo ""
+
 # ── Phantom-surface gate (2026-09-10) ─────────────────────────
 # A detail pass that hard-codes a desk/counter/bar origin the builder
 # never put there (eighteen locales had one). Static: reads the x/y/z

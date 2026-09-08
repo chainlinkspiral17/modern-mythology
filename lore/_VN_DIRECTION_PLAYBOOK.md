@@ -224,6 +224,12 @@ no-op (fallback discipline — a script must never crash the reader).
   kept the previous room's inserts cut to phones and packets that
   are not there. The blind-cue audit caught it in the same run —
   run it after every seeding, before commit.
+- **A mood is a claim about time and light, and `mood_clock_audit.py`
+  now holds you to it.** Each cue governs until the next; its opening
+  lines are the evidence. Past-tense narration is not the clock (a
+  night chapter says "morning" constantly), a time after "since" is a
+  span, and 4 AM is dark. When a chapter's clock moves, the mood moves
+  with it — the bug is always a mood placed once and never revisited.
 - **A closeup of a PERSON almost never has a marker of its own** —
   561 such cues across 112 presets. Every room now carries a generic
   pair (`shot_closeup_person` + `_b`, a bust frame of the conversation

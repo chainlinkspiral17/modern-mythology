@@ -29,7 +29,7 @@
   },
   {
    "t": "narrate",
-   "text": "[trip:1.2][mood:day_bright]Diego wakes at four-oh-eight PM."
+   "text": "[trip:1.2][mood:night]Diego wakes at four-oh-eight PM."
   },
   {
    "t": "narrate",
@@ -41,7 +41,7 @@
   },
   {
    "t": "narrate",
-   "text": "He goes downstairs."
+   "text": "[mood:day_bright]He goes downstairs."
   },
   {
    "t": "show",
