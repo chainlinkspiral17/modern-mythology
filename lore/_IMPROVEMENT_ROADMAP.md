@@ -1222,7 +1222,13 @@ frame we are already on is not a cut, so it is skipped). Applied at
 --light across every volume: 175 chapters, +862 cues, budget still
 one per six nodes. The Miller kitchen's Monday breakfast now plays as
 shot/reverse-shot with Bianca at the stove and Sam at the table.
-Story gate green, blind object cues unchanged at 9.
+Story gate green, blind object cues unchanged at 9. The pass exposed a
+continuity wobble in the same rooms — an AUTHORED cast cue
+(`[shot:closeup bianca]`, one of the 561 with no marker) still
+resolved by hashing the name onto the pair, so a character could
+appear on both sides in one scene. VnDirector now keeps a per-locale
+speaker→side map (first-seen order, cleared on every bg change), so
+authored and seeded cast closeups agree. Both GDScript checkers clean.
 
 **2026-08-19 · PER-STICK VOICE SWEEP VERDICT (voice draft 4).**
 Ran the leakage grep (TODO/WIP/placeholder/implemented/deferred/

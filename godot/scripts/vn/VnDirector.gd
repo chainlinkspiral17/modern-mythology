@@ -51,6 +51,14 @@ const TYPE_FOV := {"closeup": 45.0, "insert": 35.0}
 var scene_key: String = ""
 
 var _bg3d: Node = null              # Background3D (SubViewportContainer)
+# Which side of the room each speaker owns, for as long as this locale
+# holds (2026-09-11). A closeup of a person almost never has a marker of
+# its own — 561 such cues across 112 presets — so the room's GENERIC pair
+# (shot_closeup_person + _b, authored by marker_author --closeup) is the
+# face vocabulary. Hashing the character id onto that pair put two
+# speakers on the same frame half the time; first-seen order gives them a
+# side each and keeps it, which is the film rule, not a coin toss.
+var _face_side: Dictionary = {}
 var _bar_top: ColorRect = null
 var _bar_bottom: ColorRect = null
 var _panel_card: Control = null
@@ -110,6 +118,7 @@ func on_locale_changed() -> void:
 	_pending_shot = ""
 	_pending_ops.clear()
 	_drifting = false
+	_face_side.clear()
 	_set_letterbox(false)
 	_dismiss_panel()
 
@@ -337,7 +346,20 @@ func _try_apply_shot() -> void:
 			# A closeup of an unstaged THING can borrow an insert.
 			subs = _bg3d.call("shot_markers_of_type", "insert")
 		if not subs.is_empty():
-			var pick: Node3D = subs[abs(shot_id.hash()) % subs.size()] as Node3D
+			var pick: Node3D = null
+			if shot_type == "closeup":
+				var faces: Array[Node3D] = []
+				for s_v in subs:
+					var s_n: Node3D = s_v as Node3D
+					if s_n != null and String(s_n.name).begins_with("shot_closeup_person"):
+						faces.append(s_n)
+				if not faces.is_empty():
+					faces.sort_custom(_by_name)
+					if not _face_side.has(shot_id):
+						_face_side[shot_id] = _face_side.size() % faces.size()
+					pick = faces[int(_face_side[shot_id])]
+			if pick == null:
+				pick = subs[abs(shot_id.hash()) % subs.size()] as Node3D
 			if pick != null:
 				_set_letterbox(true)
 				_cut_to_marker(pick, shot_type, drift)
@@ -356,6 +378,10 @@ func _try_apply_shot() -> void:
 	_set_letterbox(true)
 	_cut_to_marker(marker, shot_type, drift)
 	print("[VnDirector] CUT %s → %s%s" % [shot_type, marker_name, " ~drift" if drift else ""])
+
+
+func _by_name(a: Node3D, b: Node3D) -> bool:
+	return String(a.name) < String(b.name)
 
 
 func _locale_ready() -> bool:

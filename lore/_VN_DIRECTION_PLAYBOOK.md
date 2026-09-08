@@ -224,6 +224,14 @@ no-op (fallback discipline — a script must never crash the reader).
   kept the previous room's inserts cut to phones and packets that
   are not there. The blind-cue audit caught it in the same run —
   run it after every seeding, before commit.
+- **A closeup of a PERSON almost never has a marker of its own** —
+  561 such cues across 112 presets. Every room now carries a generic
+  pair (`shot_closeup_person` + `_b`, a bust frame of the conversation
+  spot and its reverse), and VnDirector gives each speaker a SIDE in
+  first-seen order for as long as the locale holds. Hashing the
+  character id onto the pair put two speakers on the same frame half
+  the time; a side each is the film rule. Author a real
+  `shot_closeup_<char>` when a room's cast matters and it takes over.
 - **A room with no markers is a room where every cue is silent.**
   21 scenes had none; the director's substitution needs at least
   one same-type marker to have anything to cut to. `marker_author.py`
