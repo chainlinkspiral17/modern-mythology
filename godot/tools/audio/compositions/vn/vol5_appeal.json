@@ -1,0 +1,110 @@
+{
+ "meta": {
+  "title": "vol5_appeal",
+  "composer": "authored for the VN score",
+  "for": "music_catalog.json \u00b7 vol5_appeal",
+  "notes": "Emperor \u00b7 hard. Late Tuesday afternoon, six-month appellate hearing, and volumes 9 and 10 of the river code are missing off the shelf."
+ },
+ "tempo_bpm": 50,
+ "time_sig": [
+  4,
+  4
+ ],
+ "sample_rate": 22050,
+ "tracks": [
+  {
+   "instrument": "ambient_drone",
+   "gain": 0.3,
+   "notes": [
+    {
+     "pitch": "A#1",
+     "bar": 1,
+     "beat": 1,
+     "dur": 56,
+     "vel": 0.4
+    }
+   ]
+  },
+  {
+   "instrument": "fluorescent_hum",
+   "gain": 0.14,
+   "notes": [
+    {
+     "pitch": "C3",
+     "bar": 1,
+     "beat": 1,
+     "dur": 56,
+     "vel": 0.28
+    }
+   ]
+  },
+  {
+   "instrument": "slowstick_pad",
+   "gain": 0.18,
+   "notes": [
+    {
+     "pitch": "A#2",
+     "bar": 1,
+     "beat": 1,
+     "dur": 26,
+     "vel": 0.24
+    },
+    {
+     "pitch": "C#3",
+     "bar": 1,
+     "beat": 1,
+     "dur": 26,
+     "vel": 0.24
+    },
+    {
+     "pitch": "F3",
+     "bar": 1,
+     "beat": 1,
+     "dur": 26,
+     "vel": 0.24
+    },
+    {
+     "pitch": "G#2",
+     "bar": 9,
+     "beat": 1,
+     "dur": 24,
+     "vel": 0.22
+    },
+    {
+     "pitch": "C3",
+     "bar": 9,
+     "beat": 1,
+     "dur": 24,
+     "vel": 0.22
+    },
+    {
+     "pitch": "D#3",
+     "bar": 9,
+     "beat": 1,
+     "dur": 24,
+     "vel": 0.22
+    }
+   ]
+  },
+  {
+   "instrument": "soft_sine",
+   "gain": 0.1,
+   "notes": [
+    {
+     "pitch": "F5",
+     "bar": 7,
+     "beat": 1,
+     "dur": 3,
+     "vel": 0.14
+    },
+    {
+     "pitch": "D#5",
+     "bar": 14,
+     "beat": 1,
+     "dur": 5,
+     "vel": 0.12
+    }
+   ]
+  }
+ ]
+}

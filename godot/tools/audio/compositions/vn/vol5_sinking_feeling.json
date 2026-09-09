@@ -1,0 +1,131 @@
+{
+ "meta": {
+  "title": "vol5_sinking_feeling",
+  "composer": "authored for the VN score",
+  "for": "music_catalog.json \u00b7 vol5_sinking_feeling",
+  "notes": "Magician \u00b7 easy. Afternoon sun on the cathedral skylights, low river lap outside, a distant freight horn. The riverside knowing what's coming and taking its time about it."
+ },
+ "tempo_bpm": 52,
+ "time_sig": [
+  4,
+  4
+ ],
+ "sample_rate": 22050,
+ "tracks": [
+  {
+   "instrument": "rain",
+   "gain": 0.14,
+   "notes": [
+    {
+     "pitch": "D#1",
+     "bar": 1,
+     "beat": 1,
+     "dur": 56,
+     "vel": 0.24
+    }
+   ]
+  },
+  {
+   "instrument": "ambient_drone",
+   "gain": 0.26,
+   "notes": [
+    {
+     "pitch": "C2",
+     "bar": 1,
+     "beat": 1,
+     "dur": 56,
+     "vel": 0.36
+    }
+   ]
+  },
+  {
+   "instrument": "slowstick_pad",
+   "gain": 0.2,
+   "notes": [
+    {
+     "pitch": "C3",
+     "bar": 1,
+     "beat": 1,
+     "dur": 24,
+     "vel": 0.24
+    },
+    {
+     "pitch": "E3",
+     "bar": 1,
+     "beat": 1,
+     "dur": 24,
+     "vel": 0.24
+    },
+    {
+     "pitch": "G3",
+     "bar": 1,
+     "beat": 1,
+     "dur": 24,
+     "vel": 0.24
+    },
+    {
+     "pitch": "A2",
+     "bar": 7,
+     "beat": 1,
+     "dur": 24,
+     "vel": 0.22
+    },
+    {
+     "pitch": "C3",
+     "bar": 7,
+     "beat": 1,
+     "dur": 24,
+     "vel": 0.22
+    },
+    {
+     "pitch": "E3",
+     "bar": 7,
+     "beat": 1,
+     "dur": 24,
+     "vel": 0.22
+    },
+    {
+     "pitch": "F2",
+     "bar": 13,
+     "beat": 1,
+     "dur": 12,
+     "vel": 0.22
+    },
+    {
+     "pitch": "A2",
+     "bar": 13,
+     "beat": 1,
+     "dur": 12,
+     "vel": 0.22
+    },
+    {
+     "pitch": "C3",
+     "bar": 13,
+     "beat": 1,
+     "dur": 12,
+     "vel": 0.22
+    }
+   ]
+  },
+  {
+   "instrument": "soft_sine",
+   "gain": 0.12,
+   "notes": [
+    {
+     "pitch": "G3",
+     "bar": 5,
+     "beat": 1,
+     "dur": 6,
+     "vel": 0.18
+    },
+    {
+     "pitch": "G3",
+     "bar": 11,
+     "beat": 3,
+     "dur": 7,
+     "vel": 0.16
+    }
+   ]
+  }
+ ]
+}

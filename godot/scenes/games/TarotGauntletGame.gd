@@ -556,35 +556,56 @@ const _BGM_BY_LOCATION := {
 	"parish_cemetery":            "res://assets/audio/bgm/vol5_cicadas_dusk.ogg",
 	"frog_knows_best":            "res://assets/audio/bgm/vol5_riverboat_drone.ogg",
 }
-const _SFX := {
-	"card_play":    "res://assets/audio/sfx/gauntlet_card_play.ogg",
-	"dice_roll":    "res://assets/audio/sfx/gauntlet_dice_roll.ogg",
-	"bell_tone":    "res://assets/audio/sfx/gauntlet_bell_tone.ogg",
-	"gravity_draw": "res://assets/audio/sfx/gauntlet_gravity_draw.ogg",
-	"visitor_arrive": "res://assets/audio/sfx/gauntlet_visitor_arrive.ogg",
-	"visitor_claimed": "res://assets/audio/sfx/gauntlet_visitor_claimed.ogg",
-	"visitor_connect": "res://assets/audio/sfx/gauntlet_visitor_connect.ogg",
-	"item_pickup":  "res://assets/audio/sfx/gauntlet_item_pickup.ogg",
-	"bundle":       "res://assets/audio/sfx/gauntlet_bundle.ogg",
-	"win":          "res://assets/audio/sfx/gauntlet_win.ogg",
-	"loss":         "res://assets/audio/sfx/gauntlet_loss.ogg",
-	"lore_token":   "res://assets/audio/sfx/gauntlet_lore_token.ogg",
+# The twelve `gauntlet_*.ogg` fallback paths that used to live here
+# were deleted 2026-09-11: not one of them ever existed on disk, and
+# every key below is covered by an SFXBank preset that does, so the
+# table was unreachable code pointing at twelve phantom files. If a
+# key ever loses its bank preset the right fix is to author the
+# preset, not to re-add a path to a file nobody made.
+
+# The scenario's OWN bed, by arcana × difficulty (2026-09-11). The
+# catalog has carried these fifteen since the music-slot pass —
+# "Tarot Gauntlet · Empress · hard-mode B-side. 11:14 PM, late
+# February. The river has ice in it for the first time in a decade" —
+# with no files and no caller, so every board played the location
+# drone instead. Difficulty here is a TIME OF DAY: easy is afternoon
+# light, medium the working evening, hard the small hours. Falls
+# through to _BGM_BY_LOCATION for the other seventeen arcana.
+const _BGM_BY_SCENARIO := {
+	"magician:easy":     "res://assets/audio/bgm/vol5_sinking_feeling.wav",
+	"magician:medium":   "res://assets/audio/bgm/vol5_watch_party.wav",
+	"magician:hard":     "res://assets/audio/bgm/vol5_blow_out_the_candles.wav",
+	"priestess:easy":    "res://assets/audio/bgm/vol5_cicada_session.wav",
+	"priestess:medium":  "res://assets/audio/bgm/vol5_long_quiet.wav",
+	"priestess:hard":    "res://assets/audio/bgm/vol5_tape_witness.wav",
+	"empress:easy":      "res://assets/audio/bgm/vol5_static_bloom.wav",
+	"empress:medium":    "res://assets/audio/bgm/vol5_harvest_dinner.wav",
+	"empress:hard":      "res://assets/audio/bgm/vol5_ice_in_the_river.wav",
+	"emperor:easy":      "res://assets/audio/bgm/vol5_docket.wav",
+	"emperor:medium":    "res://assets/audio/bgm/vol5_first_session.wav",
+	"emperor:hard":      "res://assets/audio/bgm/vol5_appeal.wav",
+	"hierophant:easy":   "res://assets/audio/bgm/vol5_green_phosphor.wav",
+	"hierophant:medium": "res://assets/audio/bgm/vol5_long_signal.wav",
+	"hierophant:hard":   "res://assets/audio/bgm/vol5_broadcast_night.wav",
 }
 
+
 func _audio_play_bgm() -> void:
-	var bgm: String = _BGM_BY_LOCATION.get(_location_id, "")
-	if bgm != "" and Engine.has_singleton("AudioMgr") == false:
-		# AudioMgr is an autoload, accessed by name
-		pass
+	var difficulty: String = String(_setup.get("difficulty", ""))
+	var scen_key: String = _arcana_id + ":" + difficulty
+	var bgm: String = String(_BGM_BY_SCENARIO.get(scen_key, ""))
+	if bgm == "":
+		bgm = String(_BGM_BY_LOCATION.get(_location_id, ""))
 	if bgm != "" and Engine.get_main_loop() != null:
 		AudioMgr.request_scene_bgm(bgm)
 
 # Preferred SFXBank preset for each _audio_sfx key. If the preset
 # is present in SFXBank.PRESET_MAP the bank plays it (overlapping,
-# pooled, respects Settings.sfx_vol). Otherwise falls back to the
-# _SFX file-path table above via AudioMgr. This lets legacy calls
-# like _audio_sfx("card_play") pick up the Wave D authored presets
-# without touching every call site.
+# pooled, respects Settings.sfx_vol). This is now the ONLY path —
+# the twelve-entry file fallback it used to fall through to pointed
+# at twelve .ogg files that were never made. Every key here must
+# name a preset SFXBank actually has; audio_reference_audit.py
+# checks that.
 const _SFX_BANK_KEYS := {
 	"card_play":       "card_place",
 	"visitor_arrive":  "visitor_arrive",
@@ -611,10 +632,8 @@ func _audio_sfx(key: String) -> void:
 		if bank.has_preset(preset):
 			bank.play(preset, 0.75)
 			return
-	var path: String = _SFX.get(key, "")
-	if path == "":
-		return
-	AudioMgr.play_sfx(path)
+	# No file fallback any more — see the note above _SFX_BANK_KEYS.
+	push_warning("[gauntlet] no SFXBank preset for '%s'" % key)
 
 
 # ── Animation + game-feel helpers ────────────────────────────────────

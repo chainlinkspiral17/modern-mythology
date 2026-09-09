@@ -1,0 +1,110 @@
+{
+ "meta": {
+  "title": "vol5_harvest_dinner",
+  "composer": "authored for the VN score",
+  "for": "music_catalog.json \u00b7 vol5_harvest_dinner",
+  "notes": "Empress \u00b7 medium. Late autumn. Frasier on the bank walking slow. The garden deck has cooled and the table is set anyway."
+ },
+ "tempo_bpm": 52,
+ "time_sig": [
+  4,
+  4
+ ],
+ "sample_rate": 22050,
+ "tracks": [
+  {
+   "instrument": "rain",
+   "gain": 0.12,
+   "notes": [
+    {
+     "pitch": "F1",
+     "bar": 1,
+     "beat": 1,
+     "dur": 56,
+     "vel": 0.22
+    }
+   ]
+  },
+  {
+   "instrument": "ambient_drone",
+   "gain": 0.26,
+   "notes": [
+    {
+     "pitch": "G1",
+     "bar": 1,
+     "beat": 1,
+     "dur": 56,
+     "vel": 0.36
+    }
+   ]
+  },
+  {
+   "instrument": "slowstick_pad",
+   "gain": 0.2,
+   "notes": [
+    {
+     "pitch": "G3",
+     "bar": 1,
+     "beat": 1,
+     "dur": 26,
+     "vel": 0.24
+    },
+    {
+     "pitch": "A#3",
+     "bar": 1,
+     "beat": 1,
+     "dur": 26,
+     "vel": 0.24
+    },
+    {
+     "pitch": "D4",
+     "bar": 1,
+     "beat": 1,
+     "dur": 26,
+     "vel": 0.24
+    },
+    {
+     "pitch": "D#3",
+     "bar": 9,
+     "beat": 1,
+     "dur": 24,
+     "vel": 0.22
+    },
+    {
+     "pitch": "G3",
+     "bar": 9,
+     "beat": 1,
+     "dur": 24,
+     "vel": 0.22
+    },
+    {
+     "pitch": "A#3",
+     "bar": 9,
+     "beat": 1,
+     "dur": 24,
+     "vel": 0.22
+    }
+   ]
+  },
+  {
+   "instrument": "soft_sine",
+   "gain": 0.12,
+   "notes": [
+    {
+     "pitch": "D5",
+     "bar": 5,
+     "beat": 1,
+     "dur": 7,
+     "vel": 0.18
+    },
+    {
+     "pitch": "A#4",
+     "bar": 12,
+     "beat": 3,
+     "dur": 6,
+     "vel": 0.16
+    }
+   ]
+  }
+ ]
+}

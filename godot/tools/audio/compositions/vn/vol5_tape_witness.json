@@ -1,0 +1,103 @@
+{
+ "meta": {
+  "title": "vol5_tape_witness",
+  "composer": "authored for the VN score",
+  "for": "music_catalog.json \u00b7 vol5_tape_witness",
+  "notes": "Priestess \u00b7 hard. 2:14 AM, off the books. The truth-teller is already in the booth and the cathedral is dark on the other side of the glass."
+ },
+ "tempo_bpm": 48,
+ "time_sig": [
+  4,
+  4
+ ],
+ "sample_rate": 22050,
+ "tracks": [
+  {
+   "instrument": "ambient_drone",
+   "gain": 0.32,
+   "notes": [
+    {
+     "pitch": "D#1",
+     "bar": 1,
+     "beat": 1,
+     "dur": 56,
+     "vel": 0.44
+    }
+   ]
+  },
+  {
+   "instrument": "rain",
+   "gain": 0.09,
+   "notes": [
+    {
+     "pitch": "A#3",
+     "bar": 1,
+     "beat": 1,
+     "dur": 56,
+     "vel": 0.18
+    }
+   ]
+  },
+  {
+   "instrument": "slowstick_pad",
+   "gain": 0.16,
+   "notes": [
+    {
+     "pitch": "D#3",
+     "bar": 1,
+     "beat": 1,
+     "dur": 28,
+     "vel": 0.22
+    },
+    {
+     "pitch": "F#3",
+     "bar": 1,
+     "beat": 1,
+     "dur": 28,
+     "vel": 0.22
+    },
+    {
+     "pitch": "A#3",
+     "bar": 1,
+     "beat": 1,
+     "dur": 28,
+     "vel": 0.22
+    },
+    {
+     "pitch": "C#3",
+     "bar": 9,
+     "beat": 1,
+     "dur": 24,
+     "vel": 0.2
+    },
+    {
+     "pitch": "F3",
+     "bar": 9,
+     "beat": 1,
+     "dur": 24,
+     "vel": 0.2
+    },
+    {
+     "pitch": "G#3",
+     "bar": 9,
+     "beat": 1,
+     "dur": 24,
+     "vel": 0.2
+    }
+   ]
+  },
+  {
+   "instrument": "soft_sine",
+   "gain": 0.1,
+   "notes": [
+    {
+     "pitch": "A#4",
+     "bar": 7,
+     "beat": 3,
+     "dur": 7,
+     "vel": 0.14
+    }
+   ]
+  }
+ ]
+}

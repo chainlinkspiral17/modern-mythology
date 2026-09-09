@@ -20,7 +20,7 @@ enough in practice (already-normalized files get gain ~1).
 
 Run from repo root: python3 godot/tools/audio/normalize_bank.py
 """
-import wave, struct, glob, os, math
+import wave, struct, glob, os, math, sys
 
 ROOT = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", ".."))
 BGM_TARGET = 0.85
@@ -54,7 +54,36 @@ def apply_gain(vals, gain):
     return [max(-32768, min(32767, int(v * gain))) for v in vals]
 
 
+def normalize_set(paths):
+    """Bring a batch of freshly-rendered files up as ONE set.
+
+    The per-directory pass is right for a whole bank and WRONG for an
+    incremental add: once a directory's peak is already at target, the
+    computed gain is 1.00 and a newly-dropped file stays at the synth's
+    raw level forever (three tracks shipped that way on 2026-09-11
+    before this existed). Use this for the new files, then the
+    directory pass stays a no-op.
+    """
+    loaded, peak = {}, 0.0
+    for f in paths:
+        params, vals = read_wav(f)
+        if vals is None:
+            print("skip (not 16-bit):", f)
+            continue
+        loaded[f] = (params, vals)
+        peak = max(peak, peak_of(vals))
+    if not loaded or peak <= 0.0:
+        return
+    gain = min(BGM_TARGET / peak, MAX_GAIN)
+    for f, (params, vals) in loaded.items():
+        write_wav(f, params, apply_gain(vals, gain))
+    print("set of %d · gain %5.2fx (set peak %.2f)" % (len(loaded), gain, peak))
+
+
 def main():
+    if len(sys.argv) > 1 and sys.argv[1] == "--set":
+        normalize_set(sys.argv[2:])
+        return
     skipped = []
     # ── BGM · per-directory gain ──
     # The VN's own beds live LOOSE at bgm/ (no per-stick subdirectory),

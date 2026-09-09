@@ -1,0 +1,110 @@
+{
+ "meta": {
+  "title": "vol5_long_quiet",
+  "composer": "authored for the VN score",
+  "for": "music_catalog.json \u00b7 vol5_long_quiet",
+  "notes": "Priestess \u00b7 medium. 11:02 PM, confessional hour. The cicadas have gone and what is left is the booth's own noise floor."
+ },
+ "tempo_bpm": 50,
+ "time_sig": [
+  4,
+  4
+ ],
+ "sample_rate": 22050,
+ "tracks": [
+  {
+   "instrument": "rain",
+   "gain": 0.1,
+   "notes": [
+    {
+     "pitch": "C3",
+     "bar": 1,
+     "beat": 1,
+     "dur": 56,
+     "vel": 0.2
+    }
+   ]
+  },
+  {
+   "instrument": "ambient_drone",
+   "gain": 0.28,
+   "notes": [
+    {
+     "pitch": "E1",
+     "bar": 1,
+     "beat": 1,
+     "dur": 56,
+     "vel": 0.38
+    }
+   ]
+  },
+  {
+   "instrument": "slowstick_pad",
+   "gain": 0.16,
+   "notes": [
+    {
+     "pitch": "E3",
+     "bar": 1,
+     "beat": 1,
+     "dur": 28,
+     "vel": 0.22
+    },
+    {
+     "pitch": "G3",
+     "bar": 1,
+     "beat": 1,
+     "dur": 28,
+     "vel": 0.22
+    },
+    {
+     "pitch": "B3",
+     "bar": 1,
+     "beat": 1,
+     "dur": 28,
+     "vel": 0.22
+    },
+    {
+     "pitch": "A2",
+     "bar": 9,
+     "beat": 1,
+     "dur": 24,
+     "vel": 0.2
+    },
+    {
+     "pitch": "C3",
+     "bar": 9,
+     "beat": 1,
+     "dur": 24,
+     "vel": 0.2
+    },
+    {
+     "pitch": "E3",
+     "bar": 9,
+     "beat": 1,
+     "dur": 24,
+     "vel": 0.2
+    }
+   ]
+  },
+  {
+   "instrument": "soft_sine",
+   "gain": 0.12,
+   "notes": [
+    {
+     "pitch": "E4",
+     "bar": 4,
+     "beat": 1,
+     "dur": 9,
+     "vel": 0.16
+    },
+    {
+     "pitch": "B4",
+     "bar": 12,
+     "beat": 1,
+     "dur": 8,
+     "vel": 0.14
+    }
+   ]
+  }
+ ]
+}

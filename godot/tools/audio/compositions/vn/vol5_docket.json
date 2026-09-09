@@ -1,0 +1,138 @@
+{
+ "meta": {
+  "title": "vol5_docket",
+  "composer": "authored for the VN score",
+  "for": "music_catalog.json \u00b7 vol5_docket",
+  "notes": "Emperor \u00b7 easy. Tuesday morning. Brass clock, radiator on too high, a stamp coming down on the blotter every so often."
+ },
+ "tempo_bpm": 58,
+ "time_sig": [
+  4,
+  4
+ ],
+ "sample_rate": 22050,
+ "tracks": [
+  {
+   "instrument": "ambient_drone",
+   "gain": 0.24,
+   "notes": [
+    {
+     "pitch": "D2",
+     "bar": 1,
+     "beat": 1,
+     "dur": 56,
+     "vel": 0.34
+    }
+   ]
+  },
+  {
+   "instrument": "fluorescent_hum",
+   "gain": 0.12,
+   "notes": [
+    {
+     "pitch": "A2",
+     "bar": 1,
+     "beat": 1,
+     "dur": 56,
+     "vel": 0.26
+    }
+   ]
+  },
+  {
+   "instrument": "slowstick_pad",
+   "gain": 0.2,
+   "notes": [
+    {
+     "pitch": "D3",
+     "bar": 1,
+     "beat": 1,
+     "dur": 24,
+     "vel": 0.24
+    },
+    {
+     "pitch": "F#3",
+     "bar": 1,
+     "beat": 1,
+     "dur": 24,
+     "vel": 0.24
+    },
+    {
+     "pitch": "A3",
+     "bar": 1,
+     "beat": 1,
+     "dur": 24,
+     "vel": 0.24
+    },
+    {
+     "pitch": "G3",
+     "bar": 7,
+     "beat": 1,
+     "dur": 24,
+     "vel": 0.22
+    },
+    {
+     "pitch": "B3",
+     "bar": 7,
+     "beat": 1,
+     "dur": 24,
+     "vel": 0.22
+    },
+    {
+     "pitch": "D4",
+     "bar": 7,
+     "beat": 1,
+     "dur": 24,
+     "vel": 0.22
+    },
+    {
+     "pitch": "A2",
+     "bar": 13,
+     "beat": 1,
+     "dur": 12,
+     "vel": 0.22
+    },
+    {
+     "pitch": "C#3",
+     "bar": 13,
+     "beat": 1,
+     "dur": 12,
+     "vel": 0.22
+    },
+    {
+     "pitch": "E3",
+     "bar": 13,
+     "beat": 1,
+     "dur": 12,
+     "vel": 0.22
+    }
+   ]
+  },
+  {
+   "instrument": "chiptune_arp",
+   "gain": 0.07,
+   "notes": [
+    {
+     "pitch": "D4",
+     "bar": 4,
+     "beat": 2,
+     "dur": 0.18,
+     "vel": 0.14
+    },
+    {
+     "pitch": "D4",
+     "bar": 9,
+     "beat": 1,
+     "dur": 0.18,
+     "vel": 0.13
+    },
+    {
+     "pitch": "D4",
+     "bar": 13,
+     "beat": 3,
+     "dur": 0.18,
+     "vel": 0.13
+    }
+   ]
+  }
+ ]
+}

@@ -204,6 +204,20 @@ MUOUT="$(python3 music_coverage_audit.py 2>/dev/null)" || {
 echo "$MUOUT" | tail -1
 echo ""
 
+# ── Audio-reference gate (2026-09-11) ─────────────────────────
+# Everything the catalog does NOT cover: every assets/audio path in a
+# .gd/.json/.tscn/.tres, and every SFXBank preset a *_BANK_KEYS table
+# routes to. First run: 15 paths that had never existed — the
+# gauntlet's twelve dead .ogg fallbacks, the Fool's two jukebox 45s
+# (usable items that played nothing) and the file gating the Music
+# Player's TAPE REEL skin, which was therefore unreachable. Zero.
+echo "── audio_reference_audit.py ──"
+AROUT="$(python3 audio_reference_audit.py 2>/dev/null)" || {
+    echo "$AROUT" | grep "^NOFILE\|^NOPRESET" | head -20
+    echo "$AROUT" | tail -1; exit 1; }
+echo "$AROUT" | tail -1
+echo ""
+
 # ── Phantom-surface gate (2026-09-10) ─────────────────────────
 # A detail pass that hard-codes a desk/counter/bar origin the builder
 # never put there (eighteen locales had one). Static: reads the x/y/z

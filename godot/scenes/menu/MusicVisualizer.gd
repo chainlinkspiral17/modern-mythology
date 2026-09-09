@@ -38,7 +38,7 @@ const VIZ := [
 	{
 		"id": "cassette_reels",
 		"name": "Cassette Reels",
-		"unlock": {"type": "heard", "src": "assets/audio/bgm/vol5_elicia_theme_solo.ogg"},
+		"unlock": {"type": "heard", "src": "assets/audio/bgm/vol5_elicia_theme_solo.wav"},
 	},
 	{
 		"id": "cathedral_drift",

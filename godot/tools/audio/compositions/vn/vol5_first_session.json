@@ -1,0 +1,97 @@
+{
+ "meta": {
+  "title": "vol5_first_session",
+  "composer": "authored for the VN score",
+  "for": "music_catalog.json \u00b7 vol5_first_session",
+  "notes": "Emperor \u00b7 medium. Pre-clerk Monday. The petitioner slept in their car and the radiator is cold."
+ },
+ "tempo_bpm": 54,
+ "time_sig": [
+  4,
+  4
+ ],
+ "sample_rate": 22050,
+ "tracks": [
+  {
+   "instrument": "ambient_drone",
+   "gain": 0.28,
+   "notes": [
+    {
+     "pitch": "D2",
+     "bar": 1,
+     "beat": 1,
+     "dur": 56,
+     "vel": 0.38
+    }
+   ]
+  },
+  {
+   "instrument": "slowstick_pad",
+   "gain": 0.18,
+   "notes": [
+    {
+     "pitch": "D3",
+     "bar": 1,
+     "beat": 1,
+     "dur": 26,
+     "vel": 0.22
+    },
+    {
+     "pitch": "F3",
+     "bar": 1,
+     "beat": 1,
+     "dur": 26,
+     "vel": 0.22
+    },
+    {
+     "pitch": "A3",
+     "bar": 1,
+     "beat": 1,
+     "dur": 26,
+     "vel": 0.22
+    },
+    {
+     "pitch": "A#2",
+     "bar": 9,
+     "beat": 1,
+     "dur": 24,
+     "vel": 0.2
+    },
+    {
+     "pitch": "D3",
+     "bar": 9,
+     "beat": 1,
+     "dur": 24,
+     "vel": 0.2
+    },
+    {
+     "pitch": "F3",
+     "bar": 9,
+     "beat": 1,
+     "dur": 24,
+     "vel": 0.2
+    }
+   ]
+  },
+  {
+   "instrument": "soft_sine",
+   "gain": 0.12,
+   "notes": [
+    {
+     "pitch": "A4",
+     "bar": 6,
+     "beat": 1,
+     "dur": 7,
+     "vel": 0.16
+    },
+    {
+     "pitch": "F4",
+     "bar": 13,
+     "beat": 1,
+     "dur": 6,
+     "vel": 0.14
+    }
+   ]
+  }
+ ]
+}

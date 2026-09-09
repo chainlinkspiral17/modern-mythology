@@ -1,0 +1,137 @@
+{
+ "meta": {
+  "title": "vol5_blow_out_the_candles",
+  "composer": "authored for the VN score",
+  "for": "music_catalog.json \u00b7 vol5_blow_out_the_candles",
+  "notes": "Magician \u00b7 hard. Full moon over the river, the bank making a noise the bank should not be making, candle hiss, a rager house party a long way downstream."
+ },
+ "tempo_bpm": 50,
+ "time_sig": [
+  4,
+  4
+ ],
+ "sample_rate": 22050,
+ "tracks": [
+  {
+   "instrument": "rain",
+   "gain": 0.18,
+   "notes": [
+    {
+     "pitch": "A#1",
+     "bar": 1,
+     "beat": 1,
+     "dur": 56,
+     "vel": 0.28
+    }
+   ]
+  },
+  {
+   "instrument": "ambient_drone",
+   "gain": 0.3,
+   "notes": [
+    {
+     "pitch": "F1",
+     "bar": 1,
+     "beat": 1,
+     "dur": 56,
+     "vel": 0.42
+    }
+   ]
+  },
+  {
+   "instrument": "slowstick_pad",
+   "gain": 0.18,
+   "notes": [
+    {
+     "pitch": "F2",
+     "bar": 1,
+     "beat": 1,
+     "dur": 26,
+     "vel": 0.24
+    },
+    {
+     "pitch": "G#2",
+     "bar": 1,
+     "beat": 1,
+     "dur": 26,
+     "vel": 0.24
+    },
+    {
+     "pitch": "C3",
+     "bar": 1,
+     "beat": 1,
+     "dur": 26,
+     "vel": 0.24
+    },
+    {
+     "pitch": "D#2",
+     "bar": 8,
+     "beat": 1,
+     "dur": 24,
+     "vel": 0.22
+    },
+    {
+     "pitch": "G2",
+     "bar": 8,
+     "beat": 1,
+     "dur": 24,
+     "vel": 0.22
+    },
+    {
+     "pitch": "A#2",
+     "bar": 8,
+     "beat": 1,
+     "dur": 24,
+     "vel": 0.22
+    }
+   ]
+  },
+  {
+   "instrument": "slowstick_bass",
+   "gain": 0.14,
+   "notes": [
+    {
+     "pitch": "F1",
+     "bar": 5,
+     "beat": 1,
+     "dur": 1.2,
+     "vel": 0.24
+    },
+    {
+     "pitch": "F1",
+     "bar": 9,
+     "beat": 1,
+     "dur": 1.2,
+     "vel": 0.24
+    },
+    {
+     "pitch": "F1",
+     "bar": 13,
+     "beat": 1,
+     "dur": 1.2,
+     "vel": 0.24
+    }
+   ]
+  },
+  {
+   "instrument": "soft_sine",
+   "gain": 0.1,
+   "notes": [
+    {
+     "pitch": "C5",
+     "bar": 6,
+     "beat": 3,
+     "dur": 5,
+     "vel": 0.14
+    },
+    {
+     "pitch": "G#4",
+     "bar": 12,
+     "beat": 1,
+     "dur": 6,
+     "vel": 0.12
+    }
+   ]
+  }
+ ]
+}

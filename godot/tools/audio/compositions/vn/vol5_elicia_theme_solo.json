@@ -1,0 +1,110 @@
+{
+ "meta": {
+  "title": "vol5_elicia_theme_solo",
+  "composer": "authored for the VN score",
+  "for": "music_catalog.json \u00b7 vol5_elicia_theme_solo",
+  "notes": "Elicia \u00b7 Tape Reel. Cassette-spool noise and a soft sustained voice-tone with no vocal in it \u2014 the sound of a reel turning with someone's silence on it. This gates the Music Player's TAPE REEL skin, which nobody could reach."
+ },
+ "tempo_bpm": 54,
+ "time_sig": [
+  4,
+  4
+ ],
+ "sample_rate": 22050,
+ "tracks": [
+  {
+   "instrument": "rain",
+   "gain": 0.16,
+   "notes": [
+    {
+     "pitch": "A#3",
+     "bar": 1,
+     "beat": 1,
+     "dur": 34,
+     "vel": 0.24
+    }
+   ]
+  },
+  {
+   "instrument": "ambient_drone",
+   "gain": 0.22,
+   "notes": [
+    {
+     "pitch": "D2",
+     "bar": 1,
+     "beat": 1,
+     "dur": 34,
+     "vel": 0.32
+    }
+   ]
+  },
+  {
+   "instrument": "slowstick_pad",
+   "gain": 0.16,
+   "notes": [
+    {
+     "pitch": "D3",
+     "bar": 1,
+     "beat": 1,
+     "dur": 18,
+     "vel": 0.22
+    },
+    {
+     "pitch": "F3",
+     "bar": 1,
+     "beat": 1,
+     "dur": 18,
+     "vel": 0.22
+    },
+    {
+     "pitch": "A3",
+     "bar": 1,
+     "beat": 1,
+     "dur": 18,
+     "vel": 0.22
+    },
+    {
+     "pitch": "A#2",
+     "bar": 6,
+     "beat": 1,
+     "dur": 14,
+     "vel": 0.2
+    },
+    {
+     "pitch": "D3",
+     "bar": 6,
+     "beat": 1,
+     "dur": 14,
+     "vel": 0.2
+    },
+    {
+     "pitch": "F3",
+     "bar": 6,
+     "beat": 1,
+     "dur": 14,
+     "vel": 0.2
+    }
+   ]
+  },
+  {
+   "instrument": "soft_sine",
+   "gain": 0.24,
+   "notes": [
+    {
+     "pitch": "A4",
+     "bar": 2,
+     "beat": 1,
+     "dur": 9,
+     "vel": 0.26
+    },
+    {
+     "pitch": "F4",
+     "bar": 6,
+     "beat": 3,
+     "dur": 8,
+     "vel": 0.22
+    }
+   ]
+  }
+ ]
+}

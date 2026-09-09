@@ -1,0 +1,252 @@
+{
+ "meta": {
+  "title": "vol5_where_the_bar_used_to_be",
+  "composer": "authored for the VN score",
+  "for": "music_catalog.json \u00b7 vol5_where_the_bar_used_to_be",
+  "notes": "WHERE THE BAR USED TO BE \u2014 the evening-service 45. Solo piano, after hours, recorded in this diner in 1979 when there was still a piano. A minor, no rhythm section, and every phrase comes down instead of up. The piano was sold the year you started."
+ },
+ "tempo_bpm": 62,
+ "time_sig": [
+  4,
+  4
+ ],
+ "sample_rate": 22050,
+ "tracks": [
+  {
+   "instrument": "slowstick_pad",
+   "gain": 0.12,
+   "notes": [
+    {
+     "pitch": "A2",
+     "bar": 1,
+     "beat": 1,
+     "dur": 16,
+     "vel": 0.16
+    },
+    {
+     "pitch": "C3",
+     "bar": 1,
+     "beat": 1,
+     "dur": 16,
+     "vel": 0.16
+    },
+    {
+     "pitch": "E3",
+     "bar": 1,
+     "beat": 1,
+     "dur": 16,
+     "vel": 0.16
+    },
+    {
+     "pitch": "F2",
+     "bar": 5,
+     "beat": 1,
+     "dur": 12,
+     "vel": 0.15
+    },
+    {
+     "pitch": "A2",
+     "bar": 5,
+     "beat": 1,
+     "dur": 12,
+     "vel": 0.15
+    },
+    {
+     "pitch": "C3",
+     "bar": 5,
+     "beat": 1,
+     "dur": 12,
+     "vel": 0.15
+    },
+    {
+     "pitch": "D2",
+     "bar": 8,
+     "beat": 1,
+     "dur": 12,
+     "vel": 0.15
+    },
+    {
+     "pitch": "F2",
+     "bar": 8,
+     "beat": 1,
+     "dur": 12,
+     "vel": 0.15
+    },
+    {
+     "pitch": "A2",
+     "bar": 8,
+     "beat": 1,
+     "dur": 12,
+     "vel": 0.15
+    },
+    {
+     "pitch": "E2",
+     "bar": 11,
+     "beat": 1,
+     "dur": 10,
+     "vel": 0.16
+    },
+    {
+     "pitch": "G#2",
+     "bar": 11,
+     "beat": 1,
+     "dur": 10,
+     "vel": 0.16
+    },
+    {
+     "pitch": "B2",
+     "bar": 11,
+     "beat": 1,
+     "dur": 10,
+     "vel": 0.16
+    }
+   ]
+  },
+  {
+   "instrument": "slowstick_lead",
+   "gain": 0.26,
+   "notes": [
+    {
+     "pitch": "E5",
+     "bar": 1,
+     "beat": 2,
+     "dur": 2,
+     "vel": 0.28
+    },
+    {
+     "pitch": "C5",
+     "bar": 1,
+     "beat": 4,
+     "dur": 1,
+     "vel": 0.24
+    },
+    {
+     "pitch": "A4",
+     "bar": 2,
+     "beat": 1,
+     "dur": 3,
+     "vel": 0.28
+    },
+    {
+     "pitch": "B4",
+     "bar": 3,
+     "beat": 1,
+     "dur": 1,
+     "vel": 0.24
+    },
+    {
+     "pitch": "C5",
+     "bar": 3,
+     "beat": 2,
+     "dur": 1,
+     "vel": 0.26
+    },
+    {
+     "pitch": "B4",
+     "bar": 3,
+     "beat": 3,
+     "dur": 2,
+     "vel": 0.24
+    },
+    {
+     "pitch": "A4",
+     "bar": 4,
+     "beat": 1,
+     "dur": 4,
+     "vel": 0.26
+    },
+    {
+     "pitch": "C5",
+     "bar": 5,
+     "beat": 2,
+     "dur": 2,
+     "vel": 0.26
+    },
+    {
+     "pitch": "A4",
+     "bar": 5,
+     "beat": 4,
+     "dur": 1,
+     "vel": 0.22
+    },
+    {
+     "pitch": "F4",
+     "bar": 6,
+     "beat": 1,
+     "dur": 4,
+     "vel": 0.26
+    },
+    {
+     "pitch": "G4",
+     "bar": 7,
+     "beat": 2,
+     "dur": 1,
+     "vel": 0.24
+    },
+    {
+     "pitch": "F4",
+     "bar": 7,
+     "beat": 3,
+     "dur": 2,
+     "vel": 0.24
+    },
+    {
+     "pitch": "E4",
+     "bar": 8,
+     "beat": 1,
+     "dur": 4,
+     "vel": 0.26
+    },
+    {
+     "pitch": "D5",
+     "bar": 9,
+     "beat": 2,
+     "dur": 2,
+     "vel": 0.26
+    },
+    {
+     "pitch": "C5",
+     "bar": 9,
+     "beat": 4,
+     "dur": 1,
+     "vel": 0.22
+    },
+    {
+     "pitch": "A4",
+     "bar": 10,
+     "beat": 1,
+     "dur": 4,
+     "vel": 0.26
+    },
+    {
+     "pitch": "B4",
+     "bar": 11,
+     "beat": 1,
+     "dur": 1,
+     "vel": 0.24
+    },
+    {
+     "pitch": "G#4",
+     "bar": 11,
+     "beat": 2,
+     "dur": 1,
+     "vel": 0.24
+    },
+    {
+     "pitch": "E4",
+     "bar": 11,
+     "beat": 3,
+     "dur": 2,
+     "vel": 0.26
+    },
+    {
+     "pitch": "A4",
+     "bar": 12,
+     "beat": 1,
+     "dur": 6,
+     "vel": 0.28
+    }
+   ]
+  }
+ ]
+}

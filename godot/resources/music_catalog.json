@@ -618,7 +618,7 @@
   "id": "vol5_elicia_theme_solo",
   "vol": 5,
   "title": "Elicia · Tape Reel",
-  "src": "assets/audio/bgm/vol5_elicia_theme_solo.ogg",
+  "src": "assets/audio/bgm/vol5_elicia_theme_solo.wav",
   "composer": "—",
   "desc": "Cassette-spool noise + a soft sustained voice-tone (no vocal). Elicia's signature.",
   "unlock": {
@@ -738,7 +738,7 @@
   "id": "vol5_noon_room_room",
   "vol": 5,
   "title": "Noon Room Room",
-  "src": "assets/audio/bgm/vol5_noon_room_room.ogg",
+  "src": "assets/audio/bgm/vol5_noon_room_room.wav",
   "composer": "—",
   "desc": "Tarot Gauntlet · Lunch Service jukebox B-side. Lake Charles accordion, brass-mic'd dance-floor sound.",
   "unlock": {
@@ -802,7 +802,7 @@
   "id": "vol5_where_the_bar_used_to_be",
   "vol": 5,
   "title": "Where the Bar Used to Be",
-  "src": "assets/audio/bgm/vol5_where_the_bar_used_to_be.ogg",
+  "src": "assets/audio/bgm/vol5_where_the_bar_used_to_be.wav",
   "composer": "—",
   "desc": "Tarot Gauntlet · Evening Service jukebox B-side. Solo after-hours piano recorded in the diner in 1979.",
   "unlock": {
@@ -829,7 +829,7 @@
   "id": "vol5_blow_out_the_candles",
   "vol": 5,
   "title": "Blow Out the Candles",
-  "src": "assets/audio/bgm/vol5_blow_out_the_candles.ogg",
+  "src": "assets/audio/bgm/vol5_blow_out_the_candles.wav",
   "composer": "—",
   "desc": "Tarot Gauntlet · Magician · hard-mode B-side. Full moon over the river, the bank making a noise the bank should not be making, candle hiss, distant rager house-party low end. 11:47 PM.",
   "unlock": {
@@ -1071,7 +1071,7 @@
   "id": "vol5_sinking_feeling",
   "vol": 5,
   "title": "Sinking Feeling",
-  "src": "assets/audio/bgm/vol5_sinking_feeling.ogg",
+  "src": "assets/audio/bgm/vol5_sinking_feeling.wav",
   "composer": "—",
   "desc": "Tarot Gauntlet · Magician · easy-mode B-side. Afternoon sun on the cathedral skylights, low river lap outside, a distant freight horn. The riverside knowing what's coming and not saying.",
   "unlock": {
@@ -1123,7 +1123,7 @@
   "id": "vol5_watch_party",
   "vol": 5,
   "title": "Watch Party",
-  "src": "assets/audio/bgm/vol5_watch_party.ogg",
+  "src": "assets/audio/bgm/vol5_watch_party.wav",
   "composer": "—",
   "desc": "Tarot Gauntlet · Magician · medium-mode B-side. TV-room hum, the Pomegranate Hour theme bleeding through one wall, a far laugh from someone who isn't supposed to be in the room. 9:30 PM.",
   "unlock": {
@@ -1136,7 +1136,7 @@
   "id": "vol5_cicada_session",
   "vol": 5,
   "title": "Cicada Session",
-  "src": "assets/audio/bgm/vol5_cicada_session.ogg",
+  "src": "assets/audio/bgm/vol5_cicada_session.wav",
   "composer": "—",
   "desc": "Tarot Gauntlet · Priestess · easy-mode B-side. The cicadas outside louder than they should be. The booth's red record-light. Reel turning, fresh. 9:18 PM.",
   "unlock": {
@@ -1149,7 +1149,7 @@
   "id": "vol5_long_quiet",
   "vol": 5,
   "title": "The Long Quiet",
-  "src": "assets/audio/bgm/vol5_long_quiet.ogg",
+  "src": "assets/audio/bgm/vol5_long_quiet.wav",
   "composer": "—",
   "desc": "Tarot Gauntlet · Priestess · medium-mode B-side. Confessional hour. The booth's own noise floor instead of the cicadas now. 11:02 PM.",
   "unlock": {
@@ -1162,7 +1162,7 @@
   "id": "vol5_tape_witness",
   "vol": 5,
   "title": "Tape Witness",
-  "src": "assets/audio/bgm/vol5_tape_witness.ogg",
+  "src": "assets/audio/bgm/vol5_tape_witness.wav",
   "composer": "—",
   "desc": "Tarot Gauntlet · Priestess · hard-mode B-side. 2:14 AM. Off-the-books. The truth-teller is already in the booth. The cathedral is dark on the other side.",
   "unlock": {
@@ -1259,7 +1259,7 @@
   "id": "vol5_static_bloom",
   "vol": 5,
   "title": "Static Bloom",
-  "src": "assets/audio/bgm/vol5_static_bloom.ogg",
+  "src": "assets/audio/bgm/vol5_static_bloom.wav",
   "composer": "—",
   "desc": "Tarot Gauntlet · Empress · easy-mode B-side. Friday dinner on Nicola's riverboat. First arrivals setting the long table; the garden deck still in season.",
   "unlock": {
@@ -1272,7 +1272,7 @@
   "id": "vol5_harvest_dinner",
   "vol": 5,
   "title": "Harvest Dinner",
-  "src": "assets/audio/bgm/vol5_harvest_dinner.ogg",
+  "src": "assets/audio/bgm/vol5_harvest_dinner.wav",
   "composer": "—",
   "desc": "Tarot Gauntlet · Empress · medium-mode B-side. Late autumn. Frasier on the bank walking slow. The garden deck has cooled.",
   "unlock": {
@@ -1285,7 +1285,7 @@
   "id": "vol5_ice_in_the_river",
   "vol": 5,
   "title": "Ice in the River",
-  "src": "assets/audio/bgm/vol5_ice_in_the_river.ogg",
+  "src": "assets/audio/bgm/vol5_ice_in_the_river.wav",
   "composer": "—",
   "desc": "Tarot Gauntlet · Empress · hard-mode B-side. 11:14 PM, late February. The river has ice in it for the first time in a decade.",
   "unlock": {
@@ -1298,7 +1298,7 @@
   "id": "vol5_docket",
   "vol": 5,
   "title": "Docket",
-  "src": "assets/audio/bgm/vol5_docket.ogg",
+  "src": "assets/audio/bgm/vol5_docket.wav",
   "composer": "—",
   "desc": "Tarot Gauntlet · Emperor · easy-mode B-side. Tuesday morning. Brass clock. Radiator on too high. Stamp on the blotter.",
   "unlock": {
@@ -1311,7 +1311,7 @@
   "id": "vol5_first_session",
   "vol": 5,
   "title": "First Session",
-  "src": "assets/audio/bgm/vol5_first_session.ogg",
+  "src": "assets/audio/bgm/vol5_first_session.wav",
   "composer": "—",
   "desc": "Tarot Gauntlet · Emperor · medium-mode B-side. Pre-clerk Monday. The petitioner slept in their car. The radiator is cold.",
   "unlock": {
@@ -1324,7 +1324,7 @@
   "id": "vol5_appeal",
   "vol": 5,
   "title": "Appeal",
-  "src": "assets/audio/bgm/vol5_appeal.ogg",
+  "src": "assets/audio/bgm/vol5_appeal.wav",
   "composer": "—",
   "desc": "Tarot Gauntlet · Emperor · hard-mode B-side. Late Tuesday afternoon. Six-month appellate hearing. Volumes 9 and 10 of the river-code missing.",
   "unlock": {
@@ -1337,7 +1337,7 @@
   "id": "vol5_green_phosphor",
   "vol": 5,
   "title": "Green Phosphor",
-  "src": "assets/audio/bgm/vol5_green_phosphor.ogg",
+  "src": "assets/audio/bgm/vol5_green_phosphor.wav",
   "composer": "—",
   "desc": "Tarot Gauntlet · Hierophant · easy-mode B-side. Tuesday night BBS. Modem rack humming. Printer's banner paper rolling slowly.",
   "unlock": {
@@ -1350,7 +1350,7 @@
   "id": "vol5_long_signal",
   "vol": 5,
   "title": "The Long Signal",
-  "src": "assets/audio/bgm/vol5_long_signal.ogg",
+  "src": "assets/audio/bgm/vol5_long_signal.wav",
   "composer": "—",
   "desc": "Tarot Gauntlet · Hierophant · medium-mode B-side. Late Wednesday. Anya at the floppy wall. The ham band open. 14.301 MHz live.",
   "unlock": {
@@ -1363,7 +1363,7 @@
   "id": "vol5_broadcast_night",
   "vol": 5,
   "title": "Broadcast Night",
-  "src": "assets/audio/bgm/vol5_broadcast_night.ogg",
+  "src": "assets/audio/bgm/vol5_broadcast_night.wav",
   "composer": "—",
   "desc": "Tarot Gauntlet · Hierophant · hard-mode B-side. 3:14 AM. The lurker logged in. The ham band hisses then clears.",
   "unlock": {

@@ -1362,6 +1362,50 @@ now quieter than the wavs `normalize_bank` can reach? Then the 92
 ghosts — character themes, gauntlet B-sides, finale stingers — which
 have entries and no files and are played by their own systems.
 
+**2026-09-11 (ix) · the audio the catalog doesn't cover.** The same
+question asked one layer out — every `assets/audio/...` path written
+into a script or data file — found fifteen that had never existed. The
+twelve `gauntlet_*.ogg` in TarotGauntletGame's `_SFX` were dead (an
+earlier pass had rerouted every key to an SFXBank preset) but read
+exactly like a live bug, so the table is gone and `_audio_sfx` warns
+instead of falling through. The other three were real: the Fool's
+diner carries TWO JUKEBOX 45s AS USABLE ITEMS — NOON ROOM ROOM and
+WHERE THE BAR USED TO BE — that played nothing when used, and the
+Music Player's TAPE REEL skin unlocks on having heard
+`vol5_elicia_theme_solo`, a file that never existed, so the skin was
+unreachable by construction. All three authored (the two 45s are the
+only tracks in this wave with a real tune — a jukebox record is
+diegetic, the player chose to hear it). Also fixed:
+`normalize_bank.py` computes gain per DIRECTORY, so once a directory
+is at target a newly-added file stays at the synth's raw level —
+three tracks shipped that way inside this session before
+`--set <files…>` existed. New gate `audio_reference_audit.py` (588
+paths, 12 bank routes, zero). NEXT: the 89 remaining ghosts —
+character themes (which unlock on `show` and would give every
+principal a signature), the gauntlet's arcana B-sides, and the
+Magician/Priestess finale stingers, which are the ones a player
+actually reaches at the end of a run.
+
+**2026-09-11 (x) · the gauntlet's scenario beds.** Fifteen catalog
+entries described one bed per ARCANA × DIFFICULTY across the first five
+arcana and had neither a file nor a caller — every board played the
+location drone. Authored all fifteen (12-14 bars, 55-65 s: a run is
+minutes, not a page) and wired `_BGM_BY_SCENARIO` keyed
+`"<arcana>:<difficulty>"` ahead of `_BGM_BY_LOCATION`. The
+descriptions themselves say difficulty is a TIME OF DAY — easy is
+afternoon light, medium the working evening, hard the small hours —
+which is the same axis `_GAUNTLET_DESIGN_PLAYBOOK.md` names as the
+primary difficulty knob, so the score now says what the board says.
+The general lesson: a catalog entry with no consumer is invisible to
+BOTH audio gates (coverage sees only the chapter relation, reference
+sees only paths someone wrote down); the only thing that finds it is
+reading the descriptions and asking who would ever hear this. NEXT:
+the fifteen still in that state — the Magician's seven finale stingers
+and the Priestess's six (the code already maps finale-id → milestone
+key at the loss screen; it just never plays anything), plus
+gauntlet_win / gauntlet_loss. Then the 22 character themes, which
+would give every principal a signature on `show`.
+
 **2026-08-19 · PER-STICK VOICE SWEEP VERDICT (voice draft 4).**
 Ran the leakage grep (TODO/WIP/placeholder/implemented/deferred/
 stub) and a string survey across EVERY stick directory: estuary_4,
@@ -1479,7 +1523,8 @@ Current ledger (draft counts are honest, not aspirational):
 | VN portrait busts (de-blocking · 2026-08-04) | 2 (EPX×2 + soft finish; hide-ghosts made ephemeral) | screenshot check vs the SVGA bar; if still chunky: raise the 60x64 base canvas itself (more shading ramps, finer features); dialogue-box busts + CP roster inherit automatically |
 | Scene direction · coverage rotation (2026-08-04) | 5 (28 locales carry decks — 111 authored setups, 176 markers repo-wide; draft 5 gave TEN ARCANA SETS the exact markers their scripts already cue (round 2: cafe_olimpico, both new_orleans rooms + the office — 42 arcana markers total; graustark deferred to the richer stub) — Alice's rose/chair/closeup, Natalie's turntable/card, Jimmy's sofa, Elicia's desk/laptop/teacup, Erica's office, the Montreal notebook — plus establish_b rotations, ALL euler-form now: the 81 matrix markers were converted after draft 3 found the transpose bug. Draft 4 covered the whole 7-9-use tier incl. kwik_stop B/C and the shared missing_link_exterior/shuttle_bench deck) | Deck screenshots — every framing is math-verified to <0.5° but ZERO have been seen through a lens; taste notes ("finn B too low") drive draft 5. Next tier (5-6 uses: foxhole_bar, henderson_garage, faust_bedroom, jesse_bedroom, centro_break_room, bianca_kitchen_morning, diner_interior variants) only after a taste pass confirms the grammar reads |
 | **THE TRIP (music-synced psychedelic layer · 2026-09-07)** | **3** (the liquid drifts slowly and never to the beat; draft-1 colour/line weight; FLOW · LINES · COLOUR · BEAT mix sliders;  TripSync autoload + trip_sync.gdshader; global layer 60 + VN texture mode; PSYCHEDELIA slider; per-mood/per-surface scaling; FIVE REGISTERS arcana/community/milk_honey/slowstick/base pushed by the hosts — see _PSYCHEDELIC_DESIGN_BIBLE.md) | draft 2: Deck look at 0.6 per register (gauntlet, CP screen, a vol 7 chapter, a stick); beat detector vs the real catalog; then the GAME GRAMMAR column one row per pillar |
-| **The VN score (2026-09-11)** | **1** (33 beds authored from the catalog's own descriptions; 6 orphan vol5 room tones adopted; 10 already-rendered beds repointed; `normalize_bank` taught to walk `bgm/` itself; every non-stub scene assigned — 174 by place, 23 on the volume floor; `music_coverage_audit` gates SILENT + NOFILE at zero) | draft 2 is Deck-gated: 22050 Hz on the hiss-forward beds, the ~40 s loop seam, the five `.ogg` tracks normalize can't read. Then the 92 ghosts (character themes, gauntlet B-sides, finale stingers — entries with no files, played by their own systems) |
+| **The VN score (2026-09-11)** | **1** (33 beds authored from the catalog's own descriptions; 6 orphan vol5 room tones adopted; 10 already-rendered beds repointed; `normalize_bank` taught to walk `bgm/` itself; every non-stub scene assigned — 174 by place, 23 on the volume floor; `music_coverage_audit` gates SILENT + NOFILE at zero) | draft 2 is Deck-gated: 22050 Hz on the hiss-forward beds, the ~40 s loop seam, the five `.ogg` tracks normalize can't read. Then the 74 remaining ghosts — the Magician's 7 finale stingers + the Priestess's 6 (the loss screen already picks the finale and unlocks its milestone; it plays nothing), gauntlet_win/loss, and the 22 character themes (a signature per principal on `show`) |
+| **Gauntlet audio (2026-09-11)** | **1** (15 scenario B-sides authored and wired as `_BGM_BY_SCENARIO`, arcana × difficulty, ahead of the location drone; the 12 dead `gauntlet_*.ogg` fallbacks deleted — every key was already on an SFXBank preset) | the finale stingers at the loss screen; a bed for the other seventeen arcana (they still share four vol5 drones by tonal fit); then Deck: does the hard-mode bed read as "the small hours" against the easy one? |
 | Model chapters (diner, kwik stop, cathedral, henderson) | many | the BAR — mine them for what a finished space has |
 
 ### Workstream · THE STUMP HUNT (2026-08-04)

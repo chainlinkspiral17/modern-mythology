@@ -140,9 +140,71 @@ chapter.**
   five remaining `.ogg` tracks, which `normalize_bank` cannot
   read and may now sit under the wavs.
 - New gate: `godot/tools/audit/music_coverage_audit.py` — a scene
-  with no bed and a named bed with no file both fail at zero. 92
+  with no bed and a named bed with no file both fail at zero. 89
   ghosts (character themes, gauntlet B-sides, finale stingers)
   stay informational: their own systems play them.
+
+### 2026-09-11 (ii) · the audio the CATALOG doesn't cover
+
+Same defect one layer out: an `assets/audio/...` path written into a
+script or a data file. Fifteen had never existed.
+
+- **A player VERB that plays nothing is worse than a quiet room.**
+  The Fool's diner carries two jukebox 45s as usable items
+  (`play_jukebox_track` in `resources/games/fool/items.json`) —
+  NOON ROOM ROOM and WHERE THE BAR USED TO BE — and both were a
+  flavor paragraph and a filename. Authored, and they are the two
+  tracks in this whole wave with an actual TUNE in them, because a
+  45 on a jukebox is diegetic: the player chose to hear it.
+- **An unlock can be gated on a file that does not exist.** The
+  Music Player's TAPE REEL skin unlocks on having HEARD
+  `vol5_elicia_theme_solo`. No file, no hearing, no skin — a
+  cosmetic reward unreachable by construction. Check the unlock
+  conditions when you check the tracks.
+- **A dead fallback reads exactly like a live bug.** All twelve
+  `gauntlet_*.ogg` paths in TarotGauntletGame's `_SFX` had never
+  existed, and it took reading the routing to learn they were
+  unreachable — an earlier pass had rerouted every key to an
+  SFXBank preset. Deleted the table; `_audio_sfx` now
+  `push_warning`s instead of falling through to a phantom path.
+- **Per-directory normalization is wrong for an incremental add.**
+  Once a directory is at target, the computed gain is 1.00, so a
+  newly-dropped file keeps the synth's raw level forever. Three
+  tracks shipped that way inside this same session before
+  `normalize_bank.py --set <files…>` existed. **Render → `--set` the
+  new files → then the directory pass stays a no-op.**
+- New gate: `godot/tools/audit/audio_reference_audit.py` — every
+  audio path in a .gd/.json/.tscn/.tres must exist, and every
+  preset a `*_BANK_KEYS` table routes to must be in SFXBank.
+  603 paths, 12 bank routes, zero.
+
+### 2026-09-11 (iii) · the gauntlet's scenario beds
+
+Fifteen catalog entries described one bed per **arcana × difficulty**
+across the first five arcana — "Tarot Gauntlet · Empress · hard-mode
+B-side. 11:14 PM, late February. The river has ice in it for the
+first time in a decade" — with no files AND NO CALLER. Every board
+played `_BGM_BY_LOCATION`'s location drone instead.
+
+- **A catalog entry with no consumer is invisible to both audits.**
+  `music_coverage_audit` only sees the chapter relation;
+  `audio_reference_audit` only sees paths someone wrote down. A
+  described track that nothing plays is caught by neither — the
+  only thing that finds it is reading the descriptions and asking
+  who would ever hear this. Fifteen more are still like that (the
+  Magician's seven finale stingers and the Priestess's six, plus
+  gauntlet_win / gauntlet_loss).
+- **Difficulty is a time of day.** The B-side descriptions make it
+  explicit and the beds follow: easy is afternoon light (major
+  triads, the room open), medium is the working evening, hard is
+  the small hours (drone forward, the pad down to two voices, one
+  high tone that does not resolve). That reading also matches
+  `_GAUNTLET_DESIGN_PLAYBOOK.md`'s "time-of-day as the primary
+  difficulty axis" — the score should say what the board says.
+- Wired as `_BGM_BY_SCENARIO` keyed `"<arcana>:<difficulty>"`, ahead
+  of `_BGM_BY_LOCATION`, which still serves the other seventeen
+  arcana. Scenario beds run 12-14 bars (55-65 s) rather than the
+  chapter beds' ~40: a run is minutes, not a page.
 
 ### 2026-08-04 · CP · four dedicated beds + weekly rotation
 

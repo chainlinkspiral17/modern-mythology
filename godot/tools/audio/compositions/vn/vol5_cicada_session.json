@@ -1,0 +1,124 @@
+{
+ "meta": {
+  "title": "vol5_cicada_session",
+  "composer": "authored for the VN score",
+  "for": "music_catalog.json \u00b7 vol5_cicada_session",
+  "notes": "Priestess \u00b7 easy. 9:18 PM. The cicadas outside louder than they should be, the booth's red record light, the reel fresh."
+ },
+ "tempo_bpm": 54,
+ "time_sig": [
+  4,
+  4
+ ],
+ "sample_rate": 22050,
+ "tracks": [
+  {
+   "instrument": "rain",
+   "gain": 0.24,
+   "notes": [
+    {
+     "pitch": "A4",
+     "bar": 1,
+     "beat": 1,
+     "dur": 56,
+     "vel": 0.28
+    }
+   ]
+  },
+  {
+   "instrument": "ambient_drone",
+   "gain": 0.24,
+   "notes": [
+    {
+     "pitch": "E1",
+     "bar": 1,
+     "beat": 1,
+     "dur": 56,
+     "vel": 0.34
+    }
+   ]
+  },
+  {
+   "instrument": "slowstick_pad",
+   "gain": 0.18,
+   "notes": [
+    {
+     "pitch": "E3",
+     "bar": 1,
+     "beat": 1,
+     "dur": 24,
+     "vel": 0.24
+    },
+    {
+     "pitch": "G3",
+     "bar": 1,
+     "beat": 1,
+     "dur": 24,
+     "vel": 0.24
+    },
+    {
+     "pitch": "B3",
+     "bar": 1,
+     "beat": 1,
+     "dur": 24,
+     "vel": 0.24
+    },
+    {
+     "pitch": "C3",
+     "bar": 7,
+     "beat": 1,
+     "dur": 24,
+     "vel": 0.22
+    },
+    {
+     "pitch": "E3",
+     "bar": 7,
+     "beat": 1,
+     "dur": 24,
+     "vel": 0.22
+    },
+    {
+     "pitch": "G3",
+     "bar": 7,
+     "beat": 1,
+     "dur": 24,
+     "vel": 0.22
+    },
+    {
+     "pitch": "A2",
+     "bar": 13,
+     "beat": 1,
+     "dur": 12,
+     "vel": 0.22
+    },
+    {
+     "pitch": "C3",
+     "bar": 13,
+     "beat": 1,
+     "dur": 12,
+     "vel": 0.22
+    },
+    {
+     "pitch": "E3",
+     "bar": 13,
+     "beat": 1,
+     "dur": 12,
+     "vel": 0.22
+    }
+   ]
+  },
+  {
+   "instrument": "soft_sine",
+   "gain": 0.11,
+   "notes": [
+    {
+     "pitch": "B4",
+     "bar": 6,
+     "beat": 1,
+     "dur": 6,
+     "vel": 0.16
+    }
+   ]
+  }
+ ]
+}

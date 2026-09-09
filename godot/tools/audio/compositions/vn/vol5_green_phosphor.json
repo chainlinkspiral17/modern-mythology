@@ -1,0 +1,159 @@
+{
+ "meta": {
+  "title": "vol5_green_phosphor",
+  "composer": "authored for the VN score",
+  "for": "music_catalog.json \u00b7 vol5_green_phosphor",
+  "notes": "Hierophant \u00b7 easy. Tuesday night BBS: the modem rack humming and the printer's banner paper rolling slowly out onto the floor."
+ },
+ "tempo_bpm": 60,
+ "time_sig": [
+  4,
+  4
+ ],
+ "sample_rate": 22050,
+ "tracks": [
+  {
+   "instrument": "fluorescent_hum",
+   "gain": 0.22,
+   "notes": [
+    {
+     "pitch": "A2",
+     "bar": 1,
+     "beat": 1,
+     "dur": 56,
+     "vel": 0.36
+    }
+   ]
+  },
+  {
+   "instrument": "ambient_drone",
+   "gain": 0.24,
+   "notes": [
+    {
+     "pitch": "A1",
+     "bar": 1,
+     "beat": 1,
+     "dur": 56,
+     "vel": 0.34
+    }
+   ]
+  },
+  {
+   "instrument": "slowstick_pad",
+   "gain": 0.16,
+   "notes": [
+    {
+     "pitch": "A2",
+     "bar": 1,
+     "beat": 1,
+     "dur": 26,
+     "vel": 0.22
+    },
+    {
+     "pitch": "C3",
+     "bar": 1,
+     "beat": 1,
+     "dur": 26,
+     "vel": 0.22
+    },
+    {
+     "pitch": "E3",
+     "bar": 1,
+     "beat": 1,
+     "dur": 26,
+     "vel": 0.22
+    },
+    {
+     "pitch": "F2",
+     "bar": 9,
+     "beat": 1,
+     "dur": 24,
+     "vel": 0.2
+    },
+    {
+     "pitch": "A2",
+     "bar": 9,
+     "beat": 1,
+     "dur": 24,
+     "vel": 0.2
+    },
+    {
+     "pitch": "C3",
+     "bar": 9,
+     "beat": 1,
+     "dur": 24,
+     "vel": 0.2
+    }
+   ]
+  },
+  {
+   "instrument": "chiptune_arp",
+   "gain": 0.09,
+   "notes": [
+    {
+     "pitch": "A5",
+     "bar": 3,
+     "beat": 1,
+     "dur": 0.25,
+     "vel": 0.16
+    },
+    {
+     "pitch": "E5",
+     "bar": 3,
+     "beat": 1.6,
+     "dur": 0.25,
+     "vel": 0.16
+    },
+    {
+     "pitch": "A5",
+     "bar": 3,
+     "beat": 2.2,
+     "dur": 0.25,
+     "vel": 0.16
+    },
+    {
+     "pitch": "A5",
+     "bar": 8,
+     "beat": 1,
+     "dur": 0.25,
+     "vel": 0.16
+    },
+    {
+     "pitch": "E5",
+     "bar": 8,
+     "beat": 1.6,
+     "dur": 0.25,
+     "vel": 0.16
+    },
+    {
+     "pitch": "A5",
+     "bar": 8,
+     "beat": 2.2,
+     "dur": 0.25,
+     "vel": 0.16
+    },
+    {
+     "pitch": "A5",
+     "bar": 13,
+     "beat": 1,
+     "dur": 0.25,
+     "vel": 0.16
+    },
+    {
+     "pitch": "E5",
+     "bar": 13,
+     "beat": 1.6,
+     "dur": 0.25,
+     "vel": 0.16
+    },
+    {
+     "pitch": "A5",
+     "bar": 13,
+     "beat": 2.2,
+     "dur": 0.25,
+     "vel": 0.16
+    }
+   ]
+  }
+ ]
+}

@@ -1,0 +1,103 @@
+{
+ "meta": {
+  "title": "vol5_ice_in_the_river",
+  "composer": "authored for the VN score",
+  "for": "music_catalog.json \u00b7 vol5_ice_in_the_river",
+  "notes": "Empress \u00b7 hard. 11:14 PM, late February. The river has ice in it for the first time in a decade and everyone at the table knows."
+ },
+ "tempo_bpm": 46,
+ "time_sig": [
+  4,
+  4
+ ],
+ "sample_rate": 22050,
+ "tracks": [
+  {
+   "instrument": "rain",
+   "gain": 0.16,
+   "notes": [
+    {
+     "pitch": "C5",
+     "bar": 1,
+     "beat": 1,
+     "dur": 56,
+     "vel": 0.24
+    }
+   ]
+  },
+  {
+   "instrument": "ambient_drone",
+   "gain": 0.3,
+   "notes": [
+    {
+     "pitch": "C2",
+     "bar": 1,
+     "beat": 1,
+     "dur": 56,
+     "vel": 0.4
+    }
+   ]
+  },
+  {
+   "instrument": "slowstick_pad",
+   "gain": 0.16,
+   "notes": [
+    {
+     "pitch": "C3",
+     "bar": 1,
+     "beat": 1,
+     "dur": 28,
+     "vel": 0.22
+    },
+    {
+     "pitch": "D#3",
+     "bar": 1,
+     "beat": 1,
+     "dur": 28,
+     "vel": 0.22
+    },
+    {
+     "pitch": "G3",
+     "bar": 1,
+     "beat": 1,
+     "dur": 28,
+     "vel": 0.22
+    },
+    {
+     "pitch": "G#2",
+     "bar": 9,
+     "beat": 1,
+     "dur": 24,
+     "vel": 0.2
+    },
+    {
+     "pitch": "C3",
+     "bar": 9,
+     "beat": 1,
+     "dur": 24,
+     "vel": 0.2
+    },
+    {
+     "pitch": "D#3",
+     "bar": 9,
+     "beat": 1,
+     "dur": 24,
+     "vel": 0.2
+    }
+   ]
+  },
+  {
+   "instrument": "soft_sine",
+   "gain": 0.1,
+   "notes": [
+    {
+     "pitch": "G5",
+     "bar": 8,
+     "beat": 1,
+     "dur": 4,
+     "vel": 0.14
+    }
+   ]
+  }
+ ]
+}

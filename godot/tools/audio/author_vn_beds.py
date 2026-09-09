@@ -487,6 +487,296 @@ bed("vol7_milestone_bell", 56,
      track("slowstick_pad", 0.22, hold(["D3", "F#3", "A3"], 5, 16, 0.26))])
 
 
+# ── VOLUME 5 · three tracks a PLAYER VERB asks for ─────────────────
+# Not chapter beds. Each of these is reached by something the player
+# does, and each played nothing: the Fool's diner has two jukebox 45s
+# as usable items (`play_jukebox_track` in resources/games/fool/
+# items.json) whose files never existed, and the Music Player's TAPE
+# REEL skin unlocks on having HEARD Elicia's solo theme — a file that
+# has never existed, so the skin could not be reached at all.
+
+bed("vol5_noon_room_room", 104,
+    "NOON ROOM ROOM — the lunch-service jukebox 45. An accordion "
+    "B-side from a Lake Charles wedding band, 1991, and whoever set "
+    "the brass mic by the dance floor heard everything in the room. A "
+    "two-step in G: bass on the one and the three, the chuck between "
+    "them, and a tune that goes around twice because that is how long "
+    "a 45 gives you.",
+    [track("slowstick_bass", 0.24,
+           [n(p, b, be, 0.7, 0.30)
+            for b in range(1, 17)
+            for be, p in ((1, "G1"), (3, "D2"))]),
+     track("chiptune_arp", 0.10,
+           [n(p, b, be, 0.22, 0.16)
+            for b in range(1, 17)
+            for be in (2, 4)
+            for p in ("G4", "B4", "D5")]),
+     track("slowstick_pad", 0.14,
+           hold(["G2", "B2", "D3"], 1, 16, 0.20)
+           + hold(["C3", "E3", "G3"], 9, 8, 0.20)
+           + hold(["D3", "F#3", "A3"], 11, 8, 0.20)
+           + hold(["G2", "B2", "D3"], 13, 16, 0.20)),
+     track("slowstick_lead", 0.24,
+           [n("D5", 1, 1, 1, 0.28), n("G5", 1, 2, 1, 0.26),
+            n("B5", 1, 3, 1, 0.26), n("A5", 1, 4, 1, 0.24),
+            n("G5", 2, 1, 2, 0.28), n("D5", 2, 3, 2, 0.24),
+            n("E5", 3, 1, 1, 0.26), n("D5", 3, 2, 1, 0.24),
+            n("C5", 3, 3, 2, 0.26),
+            n("B4", 4, 1, 2, 0.26), n("D5", 4, 3, 2, 0.24),
+            n("D5", 5, 1, 1, 0.28), n("G5", 5, 2, 1, 0.26),
+            n("B5", 5, 3, 1, 0.26), n("D6", 5, 4, 1, 0.24),
+            n("B5", 6, 1, 2, 0.28), n("G5", 6, 3, 2, 0.24),
+            n("A5", 7, 1, 1, 0.26), n("B5", 7, 2, 1, 0.24),
+            n("A5", 7, 3, 2, 0.26),
+            n("G5", 8, 1, 4, 0.28),
+            n("E5", 9, 1, 1, 0.26), n("G5", 9, 2, 1, 0.26),
+            n("E5", 9, 3, 1, 0.24), n("C5", 9, 4, 1, 0.24),
+            n("E5", 10, 1, 3, 0.26),
+            n("F#5", 11, 1, 1, 0.26), n("A5", 11, 2, 1, 0.26),
+            n("F#5", 11, 3, 2, 0.24),
+            n("D5", 12, 1, 3, 0.26),
+            n("D5", 13, 1, 1, 0.28), n("G5", 13, 2, 1, 0.26),
+            n("B5", 13, 3, 1, 0.26), n("A5", 13, 4, 1, 0.24),
+            n("G5", 14, 1, 2, 0.28), n("D5", 14, 3, 2, 0.24),
+            n("E5", 15, 1, 1, 0.26), n("D5", 15, 2, 1, 0.24),
+            n("C5", 15, 3, 2, 0.26),
+            n("B4", 16, 1, 1, 0.26), n("G4", 16, 2, 4, 0.28)])])
+
+bed("vol5_where_the_bar_used_to_be", 62,
+    "WHERE THE BAR USED TO BE — the evening-service 45. Solo piano, "
+    "after hours, recorded in this diner in 1979 when there was still "
+    "a piano. A minor, no rhythm section, and every phrase comes down "
+    "instead of up. The piano was sold the year you started.",
+    [track("slowstick_pad", 0.12,
+           hold(["A2", "C3", "E3"], 1, 16, 0.16)
+           + hold(["F2", "A2", "C3"], 5, 12, 0.15)
+           + hold(["D2", "F2", "A2"], 8, 12, 0.15)
+           + hold(["E2", "G#2", "B2"], 11, 10, 0.16)),
+     track("slowstick_lead", 0.26,
+           [n("E5", 1, 2, 2, 0.28), n("C5", 1, 4, 1, 0.24),
+            n("A4", 2, 1, 3, 0.28),
+            n("B4", 3, 1, 1, 0.24), n("C5", 3, 2, 1, 0.26),
+            n("B4", 3, 3, 2, 0.24),
+            n("A4", 4, 1, 4, 0.26),
+            n("C5", 5, 2, 2, 0.26), n("A4", 5, 4, 1, 0.22),
+            n("F4", 6, 1, 4, 0.26),
+            n("G4", 7, 2, 1, 0.24), n("F4", 7, 3, 2, 0.24),
+            n("E4", 8, 1, 4, 0.26),
+            n("D5", 9, 2, 2, 0.26), n("C5", 9, 4, 1, 0.22),
+            n("A4", 10, 1, 4, 0.26),
+            n("B4", 11, 1, 1, 0.24), n("G#4", 11, 2, 1, 0.24),
+            n("E4", 11, 3, 2, 0.26),
+            n("A4", 12, 1, 6, 0.28)])])
+
+bed("vol5_elicia_theme_solo", 54,
+    "Elicia · Tape Reel. Cassette-spool noise and a soft sustained "
+    "voice-tone with no vocal in it — the sound of a reel turning "
+    "with someone's silence on it. This gates the Music Player's TAPE "
+    "REEL skin, which nobody could reach.",
+    [track("rain", 0.16, [n("A#3", 1, 1, 34, 0.24)]),
+     track("ambient_drone", 0.22, [n("D2", 1, 1, 34, 0.32)]),
+     track("slowstick_pad", 0.16,
+           hold(["D3", "F3", "A3"], 1, 18, 0.22)
+           + hold(["A#2", "D3", "F3"], 6, 14, 0.20)),
+     track("soft_sine", 0.24, [n("A4", 2, 1, 9, 0.26),
+                               n("F4", 6, 3, 8, 0.22)])])
+
+
+# ── the gauntlet's scenario B-sides ────────────────────────────────
+# Fifteen catalog entries describe one bed per (arcana × difficulty)
+# across the first five arcana — twenty of the 88 scenarios. Each is
+# a TIME OF DAY as much as a difficulty: easy is afternoon light,
+# medium is the working evening, hard is the small hours. None had a
+# file and nothing played them; every board used the location bed.
+# `_BGM_BY_SCENARIO` in TarotGauntletGame now prefers these.
+#
+# These are longer than the chapter beds (12-14 bars) because a
+# scenario run is minutes, not a page.
+
+bed("vol5_sinking_feeling", 52,
+    "Magician · easy. Afternoon sun on the cathedral skylights, low "
+    "river lap outside, a distant freight horn. The riverside knowing "
+    "what's coming and taking its time about it.",
+    [track("rain", 0.14, [n("D#1", 1, 1, 56, 0.24)]),
+     track("ambient_drone", 0.26, [n("C2", 1, 1, 56, 0.36)]),
+     track("slowstick_pad", 0.20,
+           hold(["C3", "E3", "G3"], 1, 24, 0.24)
+           + hold(["A2", "C3", "E3"], 7, 24, 0.22)
+           + hold(["F2", "A2", "C3"], 13, 12, 0.22)),
+     track("soft_sine", 0.12, [n("G3", 5, 1, 6, 0.18),
+                               n("G3", 11, 3, 7, 0.16)])])
+
+bed("vol5_watch_party", 58,
+    "Magician · medium. TV-room hum, the Pomegranate Hour theme "
+    "bleeding through one wall, a far laugh from someone who isn't "
+    "supposed to be in the house.",
+    [track("fluorescent_hum", 0.16, [n("A2", 1, 1, 56, 0.30)]),
+     track("ambient_drone", 0.24, [n("A1", 1, 1, 56, 0.34)]),
+     track("slowstick_pad", 0.18,
+           hold(["A2", "C3", "E3"], 1, 24, 0.24)
+           + hold(["D3", "F3", "A3"], 7, 24, 0.22)
+           + hold(["E3", "G3", "B3"], 13, 12, 0.22)),
+     track("chiptune_arp", 0.08,
+           [n(p, b, be, 0.35, 0.14)
+            for b in (4, 10)
+            for be, p in ((1, "E5"), (2, "A5"), (3, "C6"), (4, "A5"))]),
+     track("soft_sine", 0.10, [n("C6", 8, 3, 0.8, 0.14)])])
+
+bed("vol5_blow_out_the_candles", 50,
+    "Magician · hard. Full moon over the river, the bank making a "
+    "noise the bank should not be making, candle hiss, a rager house "
+    "party a long way downstream.",
+    [track("rain", 0.18, [n("A#1", 1, 1, 56, 0.28)]),
+     track("ambient_drone", 0.30, [n("F1", 1, 1, 56, 0.42)]),
+     track("slowstick_pad", 0.18,
+           hold(["F2", "G#2", "C3"], 1, 26, 0.24)
+           + hold(["D#2", "G2", "A#2"], 8, 24, 0.22)),
+     track("slowstick_bass", 0.14,
+           [n("F1", b, 1, 1.2, 0.24) for b in (5, 9, 13)]),
+     track("soft_sine", 0.10, [n("C5", 6, 3, 5, 0.14),
+                               n("G#4", 12, 1, 6, 0.12)])])
+
+bed("vol5_cicada_session", 54,
+    "Priestess · easy. 9:18 PM. The cicadas outside louder than they "
+    "should be, the booth's red record light, the reel fresh.",
+    [track("rain", 0.24, [n("A4", 1, 1, 56, 0.28)]),
+     track("ambient_drone", 0.24, [n("E1", 1, 1, 56, 0.34)]),
+     track("slowstick_pad", 0.18,
+           hold(["E3", "G3", "B3"], 1, 24, 0.24)
+           + hold(["C3", "E3", "G3"], 7, 24, 0.22)
+           + hold(["A2", "C3", "E3"], 13, 12, 0.22)),
+     track("soft_sine", 0.11, [n("B4", 6, 1, 6, 0.16)])])
+
+bed("vol5_long_quiet", 50,
+    "Priestess · medium. 11:02 PM, confessional hour. The cicadas "
+    "have gone and what is left is the booth's own noise floor.",
+    [track("rain", 0.10, [n("C3", 1, 1, 56, 0.20)]),
+     track("ambient_drone", 0.28, [n("E1", 1, 1, 56, 0.38)]),
+     track("slowstick_pad", 0.16,
+           hold(["E3", "G3", "B3"], 1, 28, 0.22)
+           + hold(["A2", "C3", "E3"], 9, 24, 0.20)),
+     track("soft_sine", 0.12, [n("E4", 4, 1, 9, 0.16),
+                               n("B4", 12, 1, 8, 0.14)])])
+
+bed("vol5_tape_witness", 48,
+    "Priestess · hard. 2:14 AM, off the books. The truth-teller is "
+    "already in the booth and the cathedral is dark on the other side "
+    "of the glass.",
+    [track("ambient_drone", 0.32, [n("D#1", 1, 1, 56, 0.44)]),
+     track("rain", 0.09, [n("A#3", 1, 1, 56, 0.18)]),
+     track("slowstick_pad", 0.16,
+           hold(["D#3", "F#3", "A#3"], 1, 28, 0.22)
+           + hold(["C#3", "F3", "G#3"], 9, 24, 0.20)),
+     track("soft_sine", 0.10, [n("A#4", 7, 3, 7, 0.14)])])
+
+bed("vol5_static_bloom", 56,
+    "Empress · easy. Friday dinner on Nicola's riverboat: first "
+    "arrivals setting the long table, the garden deck still in "
+    "season.",
+    [track("ambient_drone", 0.22, [n("G1", 1, 1, 56, 0.32)]),
+     track("slowstick_pad", 0.24,
+           hold(["G3", "B3", "D4"], 1, 24, 0.26)
+           + hold(["C3", "E3", "G3"], 7, 24, 0.24)
+           + hold(["D3", "F#3", "A3"], 13, 12, 0.24)),
+     track("soft_sine", 0.16, [n("D5", 3, 3, 5, 0.20),
+                               n("B4", 9, 1, 6, 0.18),
+                               n("G4", 14, 1, 6, 0.18)])])
+
+bed("vol5_harvest_dinner", 52,
+    "Empress · medium. Late autumn. Frasier on the bank walking "
+    "slow. The garden deck has cooled and the table is set anyway.",
+    [track("rain", 0.12, [n("F1", 1, 1, 56, 0.22)]),
+     track("ambient_drone", 0.26, [n("G1", 1, 1, 56, 0.36)]),
+     track("slowstick_pad", 0.20,
+           hold(["G3", "A#3", "D4"], 1, 26, 0.24)
+           + hold(["D#3", "G3", "A#3"], 9, 24, 0.22)),
+     track("soft_sine", 0.12, [n("D5", 5, 1, 7, 0.18),
+                               n("A#4", 12, 3, 6, 0.16)])])
+
+bed("vol5_ice_in_the_river", 46,
+    "Empress · hard. 11:14 PM, late February. The river has ice in "
+    "it for the first time in a decade and everyone at the table "
+    "knows.",
+    [track("rain", 0.16, [n("C5", 1, 1, 56, 0.24)]),
+     track("ambient_drone", 0.30, [n("C2", 1, 1, 56, 0.40)]),
+     track("slowstick_pad", 0.16,
+           hold(["C3", "D#3", "G3"], 1, 28, 0.22)
+           + hold(["G#2", "C3", "D#3"], 9, 24, 0.20)),
+     track("soft_sine", 0.10, [n("G5", 8, 1, 4, 0.14)])])
+
+bed("vol5_docket", 58,
+    "Emperor · easy. Tuesday morning. Brass clock, radiator on too "
+    "high, a stamp coming down on the blotter every so often.",
+    [track("ambient_drone", 0.24, [n("D2", 1, 1, 56, 0.34)]),
+     track("fluorescent_hum", 0.12, [n("A2", 1, 1, 56, 0.26)]),
+     track("slowstick_pad", 0.20,
+           hold(["D3", "F#3", "A3"], 1, 24, 0.24)
+           + hold(["G3", "B3", "D4"], 7, 24, 0.22)
+           + hold(["A2", "C#3", "E3"], 13, 12, 0.22)),
+     track("chiptune_arp", 0.07, [n("D4", 4, 2, 0.18, 0.14),
+                                  n("D4", 9, 1, 0.18, 0.13),
+                                  n("D4", 13, 3, 0.18, 0.13)])])
+
+bed("vol5_first_session", 54,
+    "Emperor · medium. Pre-clerk Monday. The petitioner slept in "
+    "their car and the radiator is cold.",
+    [track("ambient_drone", 0.28, [n("D2", 1, 1, 56, 0.38)]),
+     track("slowstick_pad", 0.18,
+           hold(["D3", "F3", "A3"], 1, 26, 0.22)
+           + hold(["A#2", "D3", "F3"], 9, 24, 0.20)),
+     track("soft_sine", 0.12, [n("A4", 6, 1, 7, 0.16),
+                               n("F4", 13, 1, 6, 0.14)])])
+
+bed("vol5_appeal", 50,
+    "Emperor · hard. Late Tuesday afternoon, six-month appellate "
+    "hearing, and volumes 9 and 10 of the river code are missing off "
+    "the shelf.",
+    [track("ambient_drone", 0.30, [n("A#1", 1, 1, 56, 0.40)]),
+     track("fluorescent_hum", 0.14, [n("C3", 1, 1, 56, 0.28)]),
+     track("slowstick_pad", 0.18,
+           hold(["A#2", "C#3", "F3"], 1, 26, 0.24)
+           + hold(["G#2", "C3", "D#3"], 9, 24, 0.22)),
+     track("soft_sine", 0.10, [n("F5", 7, 1, 3, 0.14),
+                               n("D#5", 14, 1, 5, 0.12)])])
+
+bed("vol5_green_phosphor", 60,
+    "Hierophant · easy. Tuesday night BBS: the modem rack humming "
+    "and the printer's banner paper rolling slowly out onto the "
+    "floor.",
+    [track("fluorescent_hum", 0.22, [n("A2", 1, 1, 56, 0.36)]),
+     track("ambient_drone", 0.24, [n("A1", 1, 1, 56, 0.34)]),
+     track("slowstick_pad", 0.16,
+           hold(["A2", "C3", "E3"], 1, 26, 0.22)
+           + hold(["F2", "A2", "C3"], 9, 24, 0.20)),
+     track("chiptune_arp", 0.09,
+           [n(p, b, be, 0.25, 0.16)
+            for b in (3, 8, 13)
+            for be, p in ((1, "A5"), (1.6, "E5"), (2.2, "A5"))])])
+
+bed("vol5_long_signal", 54,
+    "Hierophant · medium. Late Wednesday. Anya at the floppy wall, "
+    "the ham band open, 14.301 MHz live and someone on it.",
+    [track("rain", 0.14, [n("D#4", 1, 1, 56, 0.22)]),
+     track("ambient_drone", 0.26, [n("A1", 1, 1, 56, 0.36)]),
+     track("slowstick_pad", 0.18,
+           hold(["A2", "D3", "E3"], 1, 28, 0.22)
+           + hold(["G2", "C3", "D3"], 9, 24, 0.20)),
+     track("soft_sine", 0.13, [n("E5", 5, 1, 8, 0.18),
+                               n("D5", 12, 3, 6, 0.16)])])
+
+bed("vol5_broadcast_night", 48,
+    "Hierophant · hard. 3:14 AM. The lurker logged in. The ham band "
+    "hisses and then, for no reason anyone can give, clears.",
+    [track("rain", 0.22, [n("C5", 1, 1, 26, 0.28),
+                          n("G2", 8, 1, 30, 0.16)]),
+     track("ambient_drone", 0.30, [n("D#1", 1, 1, 56, 0.42)]),
+     track("fluorescent_hum", 0.14, [n("A2", 1, 1, 56, 0.26)]),
+     track("slowstick_pad", 0.16,
+           hold(["D#3", "G3", "A#3"], 1, 28, 0.22)
+           + hold(["C3", "D#3", "G3"], 9, 24, 0.20)),
+     track("soft_sine", 0.10, [n("A#4", 10, 1, 8, 0.14)])])
+
+
 # ── beds that were already on disk and nothing pointed at ──────────
 # Six vol5 room tones were rendered at some point and never entered the
 # catalog, so the arcana chapters could not use them even though they

@@ -59,7 +59,7 @@ const SKINS := [
 	{
 		"id": "tape_reel",
 		"name": "Tape Reel",
-		"unlock": {"type": "heard", "src": "assets/audio/bgm/vol5_elicia_theme_solo.ogg"},
+		"unlock": {"type": "heard", "src": "assets/audio/bgm/vol5_elicia_theme_solo.wav"},
 		"bg":     Color(0.087, 0.067, 0.043, 0.97),
 		"border": Color(0.65, 0.52, 0.31, 0.40),
 		"accent": Color(0.92, 0.83, 0.55),
