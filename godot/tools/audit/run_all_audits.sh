@@ -14,13 +14,21 @@ echo "── locale_geometry_audit.py ──"
 python3 locale_geometry_audit.py 2>/dev/null | tail -2
 echo ""
 
-# ── Shot-cue coverage (2026-08-12) · informational ──────────────
-# Object cues with no marker no longer zoom into a wall (the
-# director substitutes a same-type marker from the locale, or holds
-# the wide), but a high count still means chapters are asking for
-# framings nobody authored. Track it; drive it down.
+# ── Shot-cue coverage (2026-08-12 · gated 2026-09-11) ──────────
+# A cue that names an object the locale has no marker for used to punch
+# the lens into a wall; since 2026-08-12 the director substitutes, but a
+# blind cue still means the frame is not the one the line asked for.
+# Reached ZERO on 2026-09-11 (1532 object cues across 123 presets) by
+# authoring the missing markers and retargeting the cues whose object
+# does not exist — a knock at a window the cell does not have is a knock
+# on the wall. Nonzero fails.
 echo "── shot_marker_audit.py ──"
-python3 shot_marker_audit.py 2>/dev/null | tail -2
+BOUT="$(python3 shot_marker_audit.py 2>/dev/null)" || true
+echo "$BOUT" | tail -2
+BN="$(echo "$BOUT" | tail -1 | grep -oE "^[0-9]+ blind" | grep -oE "^[0-9]+")"
+if [ "${BN:-999}" -gt 0 ]; then
+    echo "$BOUT" | grep "^==\|x  shot_"
+    echo "REGRESSION  $BN blind object cue(s) (ceiling 0)"; exit 1; fi
 echo ""
 
 # ── Preset-vantage gate (2026-08-11) ───────────────────────────

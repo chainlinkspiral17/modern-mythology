@@ -1263,6 +1263,26 @@ coming back, one house sting each, the host reading the register only
 after. Both GDScript checkers clean. NEXT DRAFT: the Deck read of both
 sticks' light at 75 % trip and of the 0.9 s hold after the last spark.
 
+**2026-09-11 (iv) · blind cues at ZERO — every line gets the frame it
+asked for.** 1532 object cues across 123 presets, all resolving. The
+last nine were three kinds: a cue naming a character by the wrong id
+(`coach_dale` where the scripts say `coachdale`, `douglas` where they
+say `doug` — the cast ones the audit could never skip because the id
+was in no `char` field anywhere); a cue naming a thing the builder
+does not have but a NEIGHBOUR does (the ouroboros tattoo on Douglas's
+forearm → the bar's hands insert; the print shop in Bern → the
+template's mill); and a cue naming a thing that is not there ON
+PURPOSE — Diego's knock "at his window" in a cell that has no window,
+now the WALL, which is the better cut and the chapter's own image.
+Two hand cues with no hands geometry take the room's face frame.
+Gated at 0.
+
+Also measured and closed: the drafting program's "edge-of-set
+treatment (no visible world edges)". Every preset camera under a
+ceiling was cast for escaped rays: five leak 1–2 rays of 27 (doorways),
+and the diner's formal dining room's 40 % is the RIVER through its west
+windows, not a hole. The sets are closed; nobody needs to look again.
+
 **2026-08-19 · PER-STICK VOICE SWEEP VERDICT (voice draft 4).**
 Ran the leakage grep (TODO/WIP/placeholder/implemented/deferred/
 stub) and a string survey across EVERY stick directory: estuary_4,

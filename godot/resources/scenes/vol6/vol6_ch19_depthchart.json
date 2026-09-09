@@ -603,7 +603,7 @@
     },
     {
       "t": "narrate",
-      "text": "[shot:closeup coach_dale]Coach Dale is at the back wall of the shed, sorting through a small bin of kicking tees by size."
+      "text": "[shot:closeup coachdale]Coach Dale is at the back wall of the shed, sorting through a small bin of kicking tees by size."
     },
     {
       "t": "narrate",
@@ -692,7 +692,7 @@
     {
       "t": "say",
       "char": "Coach Dale",
-      "text": "[shot:closeup coach_dale~]He told me — and I'm not telling you this because he asked me to. I'm telling you because I have decided, on my own, that you should know. He told me that a kid said something to him after Tuesday's evening practice that he has, since, been thinking about. He didn't tell me which kid. He didn't have to.",
+      "text": "[shot:closeup coachdale~]He told me — and I'm not telling you this because he asked me to. I'm telling you because I have decided, on my own, that you should know. He told me that a kid said something to him after Tuesday's evening practice that he has, since, been thinking about. He didn't tell me which kid. He didn't have to.",
       "expr": "neutral"
     },
     {

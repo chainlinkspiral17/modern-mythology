@@ -230,6 +230,13 @@ no-op (fallback discipline — a script must never crash the reader).
   night chapter says "morning" constantly), a time after "since" is a
   span, and 4 AM is dark. When a chapter's clock moves, the mood moves
   with it — the bug is always a mood placed once and never revisited.
+- **A cue must name a thing that is there, and a character by the id
+  the scripts use.** `[shot:closeup douglas]` when every `say` node
+  says `doug` is a blind cue forever — the audit can only skip cast
+  cues whose id appears in some `char` field. When the object truly is
+  not in the room, retarget to the one the line is really about: a
+  knock "at the window" of a cell with no window is a knock on the
+  WALL, and that is the better frame anyway.
 - **A closeup of a PERSON almost never has a marker of its own** —
   561 such cues across 112 presets. Every room now carries a generic
   pair (`shot_closeup_person` + `_b`, a bust frame of the conversation
