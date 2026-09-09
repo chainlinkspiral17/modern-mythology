@@ -1,0 +1,208 @@
+{
+ "meta": {
+  "title": "vol6_cosmic_comics_interior",
+  "composer": "authored for the VN score",
+  "for": "music_catalog.json \u00b7 vol6_cosmic_comics_interior",
+  "notes": "Cosmic Comics, Saturday pull. A 60 Hz CRT in the back, mylar shuffle as texture, and the hand-me-down Casio's demo loop running four bars at a time because nobody stops it."
+ },
+ "tempo_bpm": 72,
+ "time_sig": [
+  4,
+  4
+ ],
+ "sample_rate": 22050,
+ "tracks": [
+  {
+   "instrument": "fluorescent_hum",
+   "gain": 0.16,
+   "notes": [
+    {
+     "pitch": "A2",
+     "bar": 1,
+     "beat": 1,
+     "dur": 42,
+     "vel": 0.3
+    }
+   ]
+  },
+  {
+   "instrument": "rain",
+   "gain": 0.1,
+   "notes": [
+    {
+     "pitch": "C4",
+     "bar": 1,
+     "beat": 1,
+     "dur": 42,
+     "vel": 0.18
+    }
+   ]
+  },
+  {
+   "instrument": "slowstick_pad",
+   "gain": 0.18,
+   "notes": [
+    {
+     "pitch": "F3",
+     "bar": 1,
+     "beat": 1,
+     "dur": 20,
+     "vel": 0.24
+    },
+    {
+     "pitch": "A3",
+     "bar": 1,
+     "beat": 1,
+     "dur": 20,
+     "vel": 0.24
+    },
+    {
+     "pitch": "C4",
+     "bar": 1,
+     "beat": 1,
+     "dur": 20,
+     "vel": 0.24
+    },
+    {
+     "pitch": "D3",
+     "bar": 6,
+     "beat": 1,
+     "dur": 20,
+     "vel": 0.22
+    },
+    {
+     "pitch": "F3",
+     "bar": 6,
+     "beat": 1,
+     "dur": 20,
+     "vel": 0.22
+    },
+    {
+     "pitch": "A3",
+     "bar": 6,
+     "beat": 1,
+     "dur": 20,
+     "vel": 0.22
+    }
+   ]
+  },
+  {
+   "instrument": "chiptune_arp",
+   "gain": 0.14,
+   "notes": [
+    {
+     "pitch": "F5",
+     "bar": 2,
+     "beat": 1,
+     "dur": 0.45,
+     "vel": 0.2
+    },
+    {
+     "pitch": "A5",
+     "bar": 2,
+     "beat": 2,
+     "dur": 0.45,
+     "vel": 0.2
+    },
+    {
+     "pitch": "C6",
+     "bar": 2,
+     "beat": 3,
+     "dur": 0.45,
+     "vel": 0.2
+    },
+    {
+     "pitch": "A5",
+     "bar": 2,
+     "beat": 4,
+     "dur": 0.45,
+     "vel": 0.2
+    },
+    {
+     "pitch": "F5",
+     "bar": 3,
+     "beat": 1,
+     "dur": 0.45,
+     "vel": 0.2
+    },
+    {
+     "pitch": "A5",
+     "bar": 3,
+     "beat": 2,
+     "dur": 0.45,
+     "vel": 0.2
+    },
+    {
+     "pitch": "C6",
+     "bar": 3,
+     "beat": 3,
+     "dur": 0.45,
+     "vel": 0.2
+    },
+    {
+     "pitch": "A5",
+     "bar": 3,
+     "beat": 4,
+     "dur": 0.45,
+     "vel": 0.2
+    },
+    {
+     "pitch": "F5",
+     "bar": 7,
+     "beat": 1,
+     "dur": 0.45,
+     "vel": 0.2
+    },
+    {
+     "pitch": "A5",
+     "bar": 7,
+     "beat": 2,
+     "dur": 0.45,
+     "vel": 0.2
+    },
+    {
+     "pitch": "C6",
+     "bar": 7,
+     "beat": 3,
+     "dur": 0.45,
+     "vel": 0.2
+    },
+    {
+     "pitch": "A5",
+     "bar": 7,
+     "beat": 4,
+     "dur": 0.45,
+     "vel": 0.2
+    },
+    {
+     "pitch": "F5",
+     "bar": 8,
+     "beat": 1,
+     "dur": 0.45,
+     "vel": 0.2
+    },
+    {
+     "pitch": "A5",
+     "bar": 8,
+     "beat": 2,
+     "dur": 0.45,
+     "vel": 0.2
+    },
+    {
+     "pitch": "C6",
+     "bar": 8,
+     "beat": 3,
+     "dur": 0.45,
+     "vel": 0.2
+    },
+    {
+     "pitch": "A5",
+     "bar": 8,
+     "beat": 4,
+     "dur": 0.45,
+     "vel": 0.2
+    }
+   ]
+  }
+ ]
+}

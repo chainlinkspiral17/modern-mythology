@@ -1,0 +1,103 @@
+{
+ "meta": {
+  "title": "vol2_briar_falls_night",
+  "composer": "authored for the VN score",
+  "for": "music_catalog.json \u00b7 vol2_briar_falls_night",
+  "notes": "Briar Falls after dark. Water in the middle distance, two chords, nothing arriving."
+ },
+ "tempo_bpm": 54,
+ "time_sig": [
+  4,
+  4
+ ],
+ "sample_rate": 22050,
+ "tracks": [
+  {
+   "instrument": "rain",
+   "gain": 0.22,
+   "notes": [
+    {
+     "pitch": "C3",
+     "bar": 1,
+     "beat": 1,
+     "dur": 38,
+     "vel": 0.28
+    }
+   ]
+  },
+  {
+   "instrument": "ambient_drone",
+   "gain": 0.26,
+   "notes": [
+    {
+     "pitch": "E2",
+     "bar": 1,
+     "beat": 1,
+     "dur": 38,
+     "vel": 0.36
+    }
+   ]
+  },
+  {
+   "instrument": "slowstick_pad",
+   "gain": 0.18,
+   "notes": [
+    {
+     "pitch": "E3",
+     "bar": 1,
+     "beat": 1,
+     "dur": 18,
+     "vel": 0.24
+    },
+    {
+     "pitch": "G3",
+     "bar": 1,
+     "beat": 1,
+     "dur": 18,
+     "vel": 0.24
+    },
+    {
+     "pitch": "B3",
+     "bar": 1,
+     "beat": 1,
+     "dur": 18,
+     "vel": 0.24
+    },
+    {
+     "pitch": "A2",
+     "bar": 6,
+     "beat": 1,
+     "dur": 18,
+     "vel": 0.22
+    },
+    {
+     "pitch": "C3",
+     "bar": 6,
+     "beat": 1,
+     "dur": 18,
+     "vel": 0.22
+    },
+    {
+     "pitch": "E3",
+     "bar": 6,
+     "beat": 1,
+     "dur": 18,
+     "vel": 0.22
+    }
+   ]
+  },
+  {
+   "instrument": "soft_sine",
+   "gain": 0.11,
+   "notes": [
+    {
+     "pitch": "B4",
+     "bar": 8,
+     "beat": 3,
+     "dur": 5,
+     "vel": 0.16
+    }
+   ]
+  }
+ ]
+}

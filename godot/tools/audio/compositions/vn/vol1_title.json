@@ -1,0 +1,180 @@
+{
+ "meta": {
+  "title": "vol1_title",
+  "composer": "authored for the VN score",
+  "for": "music_catalog.json \u00b7 vol1_title",
+  "notes": "Crossroads \u00b7 title. The five-note statement, once plain and once underneath."
+ },
+ "tempo_bpm": 64,
+ "time_sig": [
+  4,
+  4
+ ],
+ "sample_rate": 22050,
+ "tracks": [
+  {
+   "instrument": "ambient_drone",
+   "gain": 0.24,
+   "notes": [
+    {
+     "pitch": "D2",
+     "bar": 1,
+     "beat": 1,
+     "dur": 40,
+     "vel": 0.36
+    }
+   ]
+  },
+  {
+   "instrument": "slowstick_bass",
+   "gain": 0.2,
+   "notes": [
+    {
+     "pitch": "D1",
+     "bar": 1,
+     "beat": 1,
+     "dur": 8,
+     "vel": 0.3
+    },
+    {
+     "pitch": "A#0",
+     "bar": 5,
+     "beat": 1,
+     "dur": 8,
+     "vel": 0.28
+    },
+    {
+     "pitch": "F1",
+     "bar": 9,
+     "beat": 1,
+     "dur": 8,
+     "vel": 0.28
+    }
+   ]
+  },
+  {
+   "instrument": "slowstick_pad",
+   "gain": 0.2,
+   "notes": [
+    {
+     "pitch": "D3",
+     "bar": 1,
+     "beat": 1,
+     "dur": 16,
+     "vel": 0.26
+    },
+    {
+     "pitch": "F3",
+     "bar": 1,
+     "beat": 1,
+     "dur": 16,
+     "vel": 0.26
+    },
+    {
+     "pitch": "A3",
+     "bar": 1,
+     "beat": 1,
+     "dur": 16,
+     "vel": 0.26
+    },
+    {
+     "pitch": "A#2",
+     "bar": 5,
+     "beat": 1,
+     "dur": 16,
+     "vel": 0.24
+    },
+    {
+     "pitch": "D3",
+     "bar": 5,
+     "beat": 1,
+     "dur": 16,
+     "vel": 0.24
+    },
+    {
+     "pitch": "F3",
+     "bar": 5,
+     "beat": 1,
+     "dur": 16,
+     "vel": 0.24
+    },
+    {
+     "pitch": "F3",
+     "bar": 9,
+     "beat": 1,
+     "dur": 14,
+     "vel": 0.24
+    },
+    {
+     "pitch": "A3",
+     "bar": 9,
+     "beat": 1,
+     "dur": 14,
+     "vel": 0.24
+    },
+    {
+     "pitch": "C4",
+     "bar": 9,
+     "beat": 1,
+     "dur": 14,
+     "vel": 0.24
+    }
+   ]
+  },
+  {
+   "instrument": "slowstick_lead",
+   "gain": 0.2,
+   "notes": [
+    {
+     "pitch": "D4",
+     "bar": 2,
+     "beat": 1,
+     "dur": 2,
+     "vel": 0.26
+    },
+    {
+     "pitch": "F4",
+     "bar": 2,
+     "beat": 3,
+     "dur": 2,
+     "vel": 0.24
+    },
+    {
+     "pitch": "A4",
+     "bar": 3,
+     "beat": 1,
+     "dur": 3,
+     "vel": 0.26
+    },
+    {
+     "pitch": "G4",
+     "bar": 3,
+     "beat": 4,
+     "dur": 2,
+     "vel": 0.22
+    },
+    {
+     "pitch": "F4",
+     "bar": 4,
+     "beat": 2,
+     "dur": 5,
+     "vel": 0.24
+    },
+    {
+     "pitch": "D4",
+     "bar": 10,
+     "beat": 1,
+     "dur": 3,
+     "vel": 0.18
+    },
+    {
+     "pitch": "F4",
+     "bar": 10,
+     "beat": 4,
+     "dur": 5,
+     "vel": 0.16
+    }
+   ]
+  }
+ ]
+}

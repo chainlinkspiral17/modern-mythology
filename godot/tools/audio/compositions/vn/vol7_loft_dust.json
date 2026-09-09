@@ -1,0 +1,117 @@
+{
+ "meta": {
+  "title": "vol7_loft_dust",
+  "composer": "authored for the VN score",
+  "for": "music_catalog.json \u00b7 vol7_loft_dust",
+  "notes": "The loft at four. Hayloft settle, a sparrow in the eaves, and the four-o'clock sun on warm wood \u2014 C to G, and the sparrow does not stay."
+ },
+ "tempo_bpm": 56,
+ "time_sig": [
+  4,
+  4
+ ],
+ "sample_rate": 22050,
+ "tracks": [
+  {
+   "instrument": "rain",
+   "gain": 0.1,
+   "notes": [
+    {
+     "pitch": "F#1",
+     "bar": 1,
+     "beat": 1,
+     "dur": 42,
+     "vel": 0.2
+    }
+   ]
+  },
+  {
+   "instrument": "ambient_drone",
+   "gain": 0.22,
+   "notes": [
+    {
+     "pitch": "C2",
+     "bar": 1,
+     "beat": 1,
+     "dur": 42,
+     "vel": 0.32
+    }
+   ]
+  },
+  {
+   "instrument": "slowstick_pad",
+   "gain": 0.24,
+   "notes": [
+    {
+     "pitch": "C3",
+     "bar": 1,
+     "beat": 1,
+     "dur": 20,
+     "vel": 0.26
+    },
+    {
+     "pitch": "E3",
+     "bar": 1,
+     "beat": 1,
+     "dur": 20,
+     "vel": 0.26
+    },
+    {
+     "pitch": "G3",
+     "bar": 1,
+     "beat": 1,
+     "dur": 20,
+     "vel": 0.26
+    },
+    {
+     "pitch": "G2",
+     "bar": 7,
+     "beat": 1,
+     "dur": 20,
+     "vel": 0.24
+    },
+    {
+     "pitch": "B2",
+     "bar": 7,
+     "beat": 1,
+     "dur": 20,
+     "vel": 0.24
+    },
+    {
+     "pitch": "D3",
+     "bar": 7,
+     "beat": 1,
+     "dur": 20,
+     "vel": 0.24
+    }
+   ]
+  },
+  {
+   "instrument": "soft_sine",
+   "gain": 0.11,
+   "notes": [
+    {
+     "pitch": "G5",
+     "bar": 5,
+     "beat": 2,
+     "dur": 0.4,
+     "vel": 0.16
+    },
+    {
+     "pitch": "B5",
+     "bar": 5,
+     "beat": 2.5,
+     "dur": 0.4,
+     "vel": 0.14
+    },
+    {
+     "pitch": "G5",
+     "bar": 5,
+     "beat": 3.1,
+     "dur": 0.6,
+     "vel": 0.14
+    }
+   ]
+  }
+ ]
+}

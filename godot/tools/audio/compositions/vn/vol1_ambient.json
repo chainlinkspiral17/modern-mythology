@@ -1,0 +1,110 @@
+{
+ "meta": {
+  "title": "vol1_ambient",
+  "composer": "authored for the VN score",
+  "for": "music_catalog.json \u00b7 vol1_ambient",
+  "notes": "The diner at the crossroads. D minor, the room's own hum under a pad that turns over twice and a single high note that answers nothing."
+ },
+ "tempo_bpm": 58,
+ "time_sig": [
+  4,
+  4
+ ],
+ "sample_rate": 22050,
+ "tracks": [
+  {
+   "instrument": "ambient_drone",
+   "gain": 0.3,
+   "notes": [
+    {
+     "pitch": "D2",
+     "bar": 1,
+     "beat": 1,
+     "dur": 40,
+     "vel": 0.42
+    }
+   ]
+  },
+  {
+   "instrument": "fluorescent_hum",
+   "gain": 0.1,
+   "notes": [
+    {
+     "pitch": "A2",
+     "bar": 1,
+     "beat": 1,
+     "dur": 40,
+     "vel": 0.3
+    }
+   ]
+  },
+  {
+   "instrument": "slowstick_pad",
+   "gain": 0.2,
+   "notes": [
+    {
+     "pitch": "D3",
+     "bar": 1,
+     "beat": 1,
+     "dur": 20,
+     "vel": 0.28
+    },
+    {
+     "pitch": "F3",
+     "bar": 1,
+     "beat": 1,
+     "dur": 20,
+     "vel": 0.28
+    },
+    {
+     "pitch": "A3",
+     "bar": 1,
+     "beat": 1,
+     "dur": 20,
+     "vel": 0.28
+    },
+    {
+     "pitch": "A#2",
+     "bar": 6,
+     "beat": 1,
+     "dur": 20,
+     "vel": 0.26
+    },
+    {
+     "pitch": "D3",
+     "bar": 6,
+     "beat": 1,
+     "dur": 20,
+     "vel": 0.26
+    },
+    {
+     "pitch": "F3",
+     "bar": 6,
+     "beat": 1,
+     "dur": 20,
+     "vel": 0.26
+    }
+   ]
+  },
+  {
+   "instrument": "soft_sine",
+   "gain": 0.14,
+   "notes": [
+    {
+     "pitch": "A4",
+     "bar": 4,
+     "beat": 3,
+     "dur": 6,
+     "vel": 0.22
+    },
+    {
+     "pitch": "F4",
+     "bar": 9,
+     "beat": 1,
+     "dur": 8,
+     "vel": 0.2
+    }
+   ]
+  }
+ ]
+}

@@ -1,0 +1,103 @@
+{
+ "meta": {
+  "title": "vol6_gas_and_go_interior",
+  "composer": "authored for the VN score",
+  "for": "music_catalog.json \u00b7 vol6_gas_and_go_interior",
+  "notes": "NexCorp Gas & Go, locker four. Canopy fans as the floor, the ice-maker cycling, and the office printer ginning out the daily report in short irregular runs."
+ },
+ "tempo_bpm": 60,
+ "time_sig": [
+  4,
+  4
+ ],
+ "sample_rate": 22050,
+ "tracks": [
+  {
+   "instrument": "rain",
+   "gain": 0.2,
+   "notes": [
+    {
+     "pitch": "A#1",
+     "bar": 1,
+     "beat": 1,
+     "dur": 42,
+     "vel": 0.3
+    }
+   ]
+  },
+  {
+   "instrument": "ambient_drone",
+   "gain": 0.26,
+   "notes": [
+    {
+     "pitch": "D2",
+     "bar": 1,
+     "beat": 1,
+     "dur": 42,
+     "vel": 0.36
+    }
+   ]
+  },
+  {
+   "instrument": "fluorescent_hum",
+   "gain": 0.14,
+   "notes": [
+    {
+     "pitch": "A2",
+     "bar": 1,
+     "beat": 1,
+     "dur": 42,
+     "vel": 0.28
+    }
+   ]
+  },
+  {
+   "instrument": "chiptune_arp",
+   "gain": 0.07,
+   "notes": [
+    {
+     "pitch": "D6",
+     "bar": 4,
+     "beat": 1,
+     "dur": 0.2,
+     "vel": 0.14
+    },
+    {
+     "pitch": "D6",
+     "bar": 4,
+     "beat": 1.6,
+     "dur": 0.2,
+     "vel": 0.12
+    },
+    {
+     "pitch": "D6",
+     "bar": 4,
+     "beat": 2.1,
+     "dur": 0.2,
+     "vel": 0.12
+    },
+    {
+     "pitch": "D6",
+     "bar": 7,
+     "beat": 3,
+     "dur": 0.2,
+     "vel": 0.14
+    },
+    {
+     "pitch": "D6",
+     "bar": 7,
+     "beat": 3.5,
+     "dur": 0.2,
+     "vel": 0.12
+    },
+    {
+     "pitch": "D6",
+     "bar": 10,
+     "beat": 1,
+     "dur": 0.2,
+     "vel": 0.12
+    }
+   ]
+  }
+ ]
+}

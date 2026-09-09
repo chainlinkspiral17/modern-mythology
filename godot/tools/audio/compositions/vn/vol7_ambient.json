@@ -1,0 +1,138 @@
+{
+ "meta": {
+  "title": "vol7_ambient",
+  "composer": "authored for the VN score",
+  "for": "music_catalog.json \u00b7 vol7_ambient",
+  "notes": "Smolvud. Coastal air very low, E minor turning to C major seven \u2014 the town knows you have arrived before you do."
+ },
+ "tempo_bpm": 54,
+ "time_sig": [
+  4,
+  4
+ ],
+ "sample_rate": 22050,
+ "tracks": [
+  {
+   "instrument": "rain",
+   "gain": 0.13,
+   "notes": [
+    {
+     "pitch": "F1",
+     "bar": 1,
+     "beat": 1,
+     "dur": 42,
+     "vel": 0.24
+    }
+   ]
+  },
+  {
+   "instrument": "ambient_drone",
+   "gain": 0.28,
+   "notes": [
+    {
+     "pitch": "E1",
+     "bar": 1,
+     "beat": 1,
+     "dur": 42,
+     "vel": 0.4
+    }
+   ]
+  },
+  {
+   "instrument": "slowstick_pad",
+   "gain": 0.22,
+   "notes": [
+    {
+     "pitch": "E3",
+     "bar": 1,
+     "beat": 1,
+     "dur": 16,
+     "vel": 0.26
+    },
+    {
+     "pitch": "G3",
+     "bar": 1,
+     "beat": 1,
+     "dur": 16,
+     "vel": 0.26
+    },
+    {
+     "pitch": "B3",
+     "bar": 1,
+     "beat": 1,
+     "dur": 16,
+     "vel": 0.26
+    },
+    {
+     "pitch": "C3",
+     "bar": 5,
+     "beat": 1,
+     "dur": 16,
+     "vel": 0.24
+    },
+    {
+     "pitch": "E3",
+     "bar": 5,
+     "beat": 1,
+     "dur": 16,
+     "vel": 0.24
+    },
+    {
+     "pitch": "G3",
+     "bar": 5,
+     "beat": 1,
+     "dur": 16,
+     "vel": 0.24
+    },
+    {
+     "pitch": "B3",
+     "bar": 5,
+     "beat": 1,
+     "dur": 16,
+     "vel": 0.24
+    },
+    {
+     "pitch": "A2",
+     "bar": 9,
+     "beat": 1,
+     "dur": 14,
+     "vel": 0.24
+    },
+    {
+     "pitch": "C3",
+     "bar": 9,
+     "beat": 1,
+     "dur": 14,
+     "vel": 0.24
+    },
+    {
+     "pitch": "E3",
+     "bar": 9,
+     "beat": 1,
+     "dur": 14,
+     "vel": 0.24
+    }
+   ]
+  },
+  {
+   "instrument": "soft_sine",
+   "gain": 0.13,
+   "notes": [
+    {
+     "pitch": "B4",
+     "bar": 4,
+     "beat": 3,
+     "dur": 6,
+     "vel": 0.18
+    },
+    {
+     "pitch": "E5",
+     "bar": 10,
+     "beat": 1,
+     "dur": 6,
+     "vel": 0.16
+    }
+   ]
+  }
+ ]
+}

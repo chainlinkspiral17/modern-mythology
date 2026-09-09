@@ -4,6 +4,15 @@ export_music_catalog.py — Extract MM_MUSIC catalog from vn-music.jsx to JSON.
 
 Writes resources/music_catalog.json (consumed by SceneDataDB.gd).
 
+DO NOT RUN THIS. It is legacy (2026-09-11). `resources/music_catalog.json`
+is the source of truth now and has long since diverged from
+`project/vn-music.jsx`, which holds 19 entries against the JSON's 215:
+the vol99 slowstick tracks (add_stick_tracks_to_catalog.py), the VN
+beds' real `src` paths, and every chapter assignment
+(tools/audio/assign_chapter_beds.py) live only in the JSON. Running
+this overwrites all of it and returns six volumes to being scored by
+whatever the player last heard. Kept for the extraction code only.
+
 Requirements: Node.js in PATH.
 
 Usage:

@@ -1,0 +1,110 @@
+{
+ "meta": {
+  "title": "vol4_ambient",
+  "composer": "authored for the VN score",
+  "for": "music_catalog.json \u00b7 vol4_ambient",
+  "notes": "Five AM, no one around. Street air very dark, an A minor that turns once to F major seven and no one hears it."
+ },
+ "tempo_bpm": 52,
+ "time_sig": [
+  4,
+  4
+ ],
+ "sample_rate": 22050,
+ "tracks": [
+  {
+   "instrument": "rain",
+   "gain": 0.18,
+   "notes": [
+    {
+     "pitch": "D#1",
+     "bar": 1,
+     "beat": 1,
+     "dur": 42,
+     "vel": 0.28
+    }
+   ]
+  },
+  {
+   "instrument": "ambient_drone",
+   "gain": 0.28,
+   "notes": [
+    {
+     "pitch": "A1",
+     "bar": 1,
+     "beat": 1,
+     "dur": 42,
+     "vel": 0.4
+    }
+   ]
+  },
+  {
+   "instrument": "slowstick_pad",
+   "gain": 0.2,
+   "notes": [
+    {
+     "pitch": "A2",
+     "bar": 1,
+     "beat": 1,
+     "dur": 20,
+     "vel": 0.26
+    },
+    {
+     "pitch": "C3",
+     "bar": 1,
+     "beat": 1,
+     "dur": 20,
+     "vel": 0.26
+    },
+    {
+     "pitch": "E3",
+     "bar": 1,
+     "beat": 1,
+     "dur": 20,
+     "vel": 0.26
+    },
+    {
+     "pitch": "F2",
+     "bar": 7,
+     "beat": 1,
+     "dur": 20,
+     "vel": 0.24
+    },
+    {
+     "pitch": "A2",
+     "bar": 7,
+     "beat": 1,
+     "dur": 20,
+     "vel": 0.24
+    },
+    {
+     "pitch": "C3",
+     "bar": 7,
+     "beat": 1,
+     "dur": 20,
+     "vel": 0.24
+    },
+    {
+     "pitch": "E3",
+     "bar": 7,
+     "beat": 1,
+     "dur": 20,
+     "vel": 0.24
+    }
+   ]
+  },
+  {
+   "instrument": "soft_sine",
+   "gain": 0.12,
+   "notes": [
+    {
+     "pitch": "E4",
+     "bar": 5,
+     "beat": 3,
+     "dur": 7,
+     "vel": 0.18
+    }
+   ]
+  }
+ ]
+}

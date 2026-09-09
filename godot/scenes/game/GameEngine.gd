@@ -591,8 +591,16 @@ func _apply_chapter_music_context(scene_id: String) -> void:
 	# Also unlock any tracks tagged to this scene so the Music
 	# Player picks them up as the player progresses, even without
 	# a `show` directive naming a tracked character on this page.
+	#
+	# `scene_id`, NOT `ch_id` (2026-09-11). ch_id carries the
+	# "<scene>::<chapter>" suffix that identifies the rotation;
+	# unlock_tracks_for_chapter matches against the catalog's
+	# `chapters` list, which holds bare scene ids, so the suffixed
+	# form never matched anything and this unlock path has been
+	# dead. Every chapter-tagged bed reached the Music Player only
+	# by volume unlock.
 	if AudioMgr.has_method("unlock_tracks_for_chapter"):
-		AudioMgr.unlock_tracks_for_chapter(ch_id)
+		AudioMgr.unlock_tracks_for_chapter(scene_id)
 
 
 const _SUBSTRATE_INDEX_PATH := "res://resources/substrates/gallery/_index.json"

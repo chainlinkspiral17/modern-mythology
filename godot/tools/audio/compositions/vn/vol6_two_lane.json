@@ -1,0 +1,193 @@
+{
+ "meta": {
+  "title": "vol6_two_lane",
+  "composer": "authored for the VN score",
+  "for": "music_catalog.json \u00b7 vol6_two_lane",
+  "notes": "The New Auburn two-lane from inside the cab. Tire hiss, the engine's note, and a figure that comes around every eight bars the way the mile markers do."
+ },
+ "tempo_bpm": 62,
+ "time_sig": [
+  4,
+  4
+ ],
+ "sample_rate": 22050,
+ "tracks": [
+  {
+   "instrument": "rain",
+   "gain": 0.2,
+   "notes": [
+    {
+     "pitch": "A#1",
+     "bar": 1,
+     "beat": 1,
+     "dur": 42,
+     "vel": 0.3
+    }
+   ]
+  },
+  {
+   "instrument": "ambient_drone",
+   "gain": 0.24,
+   "notes": [
+    {
+     "pitch": "D2",
+     "bar": 1,
+     "beat": 1,
+     "dur": 42,
+     "vel": 0.34
+    }
+   ]
+  },
+  {
+   "instrument": "slowstick_bass",
+   "gain": 0.16,
+   "notes": [
+    {
+     "pitch": "D1",
+     "bar": 1,
+     "beat": 1,
+     "dur": 2.0,
+     "vel": 0.26
+    },
+    {
+     "pitch": "D1",
+     "bar": 2,
+     "beat": 1,
+     "dur": 2.0,
+     "vel": 0.26
+    },
+    {
+     "pitch": "D1",
+     "bar": 3,
+     "beat": 1,
+     "dur": 2.0,
+     "vel": 0.26
+    },
+    {
+     "pitch": "D1",
+     "bar": 4,
+     "beat": 1,
+     "dur": 2.0,
+     "vel": 0.26
+    },
+    {
+     "pitch": "D1",
+     "bar": 5,
+     "beat": 1,
+     "dur": 2.0,
+     "vel": 0.26
+    },
+    {
+     "pitch": "D1",
+     "bar": 6,
+     "beat": 1,
+     "dur": 2.0,
+     "vel": 0.26
+    },
+    {
+     "pitch": "D1",
+     "bar": 7,
+     "beat": 1,
+     "dur": 2.0,
+     "vel": 0.26
+    },
+    {
+     "pitch": "D1",
+     "bar": 8,
+     "beat": 1,
+     "dur": 2.0,
+     "vel": 0.26
+    },
+    {
+     "pitch": "D1",
+     "bar": 9,
+     "beat": 1,
+     "dur": 2.0,
+     "vel": 0.26
+    },
+    {
+     "pitch": "D1",
+     "bar": 10,
+     "beat": 1,
+     "dur": 2.0,
+     "vel": 0.26
+    },
+    {
+     "pitch": "D1",
+     "bar": 11,
+     "beat": 1,
+     "dur": 2.0,
+     "vel": 0.26
+    }
+   ]
+  },
+  {
+   "instrument": "slowstick_pad",
+   "gain": 0.16,
+   "notes": [
+    {
+     "pitch": "D3",
+     "bar": 1,
+     "beat": 1,
+     "dur": 20,
+     "vel": 0.22
+    },
+    {
+     "pitch": "F3",
+     "bar": 1,
+     "beat": 1,
+     "dur": 20,
+     "vel": 0.22
+    },
+    {
+     "pitch": "A3",
+     "bar": 1,
+     "beat": 1,
+     "dur": 20,
+     "vel": 0.22
+    },
+    {
+     "pitch": "A#2",
+     "bar": 6,
+     "beat": 1,
+     "dur": 20,
+     "vel": 0.2
+    },
+    {
+     "pitch": "D3",
+     "bar": 6,
+     "beat": 1,
+     "dur": 20,
+     "vel": 0.2
+    },
+    {
+     "pitch": "F3",
+     "bar": 6,
+     "beat": 1,
+     "dur": 20,
+     "vel": 0.2
+    }
+   ]
+  },
+  {
+   "instrument": "soft_sine",
+   "gain": 0.1,
+   "notes": [
+    {
+     "pitch": "A4",
+     "bar": 5,
+     "beat": 1,
+     "dur": 3,
+     "vel": 0.16
+    },
+    {
+     "pitch": "F4",
+     "bar": 5,
+     "beat": 4,
+     "dur": 4,
+     "vel": 0.14
+    }
+   ]
+  }
+ ]
+}

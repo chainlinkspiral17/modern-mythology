@@ -1,0 +1,82 @@
+{
+ "meta": {
+  "title": "vol3_call_drop",
+  "composer": "authored for the VN score",
+  "for": "music_catalog.json \u00b7 vol3_call_drop",
+  "notes": "The call drops. Everything is here and then the line isn't: the pad and the tone stop mid-bar and the drone keeps going alone."
+ },
+ "tempo_bpm": 56,
+ "time_sig": [
+  4,
+  4
+ ],
+ "sample_rate": 22050,
+ "tracks": [
+  {
+   "instrument": "ambient_drone",
+   "gain": 0.28,
+   "notes": [
+    {
+     "pitch": "C2",
+     "bar": 1,
+     "beat": 1,
+     "dur": 34,
+     "vel": 0.38
+    }
+   ]
+  },
+  {
+   "instrument": "slowstick_pad",
+   "gain": 0.22,
+   "notes": [
+    {
+     "pitch": "C3",
+     "bar": 1,
+     "beat": 1,
+     "dur": 14,
+     "vel": 0.26
+    },
+    {
+     "pitch": "D#3",
+     "bar": 1,
+     "beat": 1,
+     "dur": 14,
+     "vel": 0.26
+    },
+    {
+     "pitch": "G3",
+     "bar": 1,
+     "beat": 1,
+     "dur": 14,
+     "vel": 0.26
+    }
+   ]
+  },
+  {
+   "instrument": "soft_sine",
+   "gain": 0.2,
+   "notes": [
+    {
+     "pitch": "G4",
+     "bar": 2,
+     "beat": 1,
+     "dur": 11,
+     "vel": 0.24
+    }
+   ]
+  },
+  {
+   "instrument": "fluorescent_hum",
+   "gain": 0.12,
+   "notes": [
+    {
+     "pitch": "A2",
+     "bar": 6,
+     "beat": 1,
+     "dur": 20,
+     "vel": 0.26
+    }
+   ]
+  }
+ ]
+}

@@ -1,0 +1,110 @@
+{
+ "meta": {
+  "title": "vol1_pharmacy",
+  "composer": "authored for the VN score",
+  "for": "music_catalog.json \u00b7 vol1_pharmacy",
+  "notes": "The pharmacy mirror. Bright fixtures and a tritone that will not resolve \u2014 the room is fine, the reflection is not."
+ },
+ "tempo_bpm": 54,
+ "time_sig": [
+  4,
+  4
+ ],
+ "sample_rate": 22050,
+ "tracks": [
+  {
+   "instrument": "fluorescent_hum",
+   "gain": 0.2,
+   "notes": [
+    {
+     "pitch": "C3",
+     "bar": 1,
+     "beat": 1,
+     "dur": 38,
+     "vel": 0.38
+    }
+   ]
+  },
+  {
+   "instrument": "ambient_drone",
+   "gain": 0.24,
+   "notes": [
+    {
+     "pitch": "A2",
+     "bar": 1,
+     "beat": 1,
+     "dur": 38,
+     "vel": 0.34
+    }
+   ]
+  },
+  {
+   "instrument": "slowstick_pad",
+   "gain": 0.18,
+   "notes": [
+    {
+     "pitch": "A3",
+     "bar": 1,
+     "beat": 1,
+     "dur": 18,
+     "vel": 0.24
+    },
+    {
+     "pitch": "C4",
+     "bar": 1,
+     "beat": 1,
+     "dur": 18,
+     "vel": 0.24
+    },
+    {
+     "pitch": "E4",
+     "bar": 1,
+     "beat": 1,
+     "dur": 18,
+     "vel": 0.24
+    },
+    {
+     "pitch": "A3",
+     "bar": 6,
+     "beat": 1,
+     "dur": 18,
+     "vel": 0.24
+    },
+    {
+     "pitch": "C4",
+     "bar": 6,
+     "beat": 1,
+     "dur": 18,
+     "vel": 0.24
+    },
+    {
+     "pitch": "D#4",
+     "bar": 6,
+     "beat": 1,
+     "dur": 18,
+     "vel": 0.24
+    }
+   ]
+  },
+  {
+   "instrument": "soft_sine",
+   "gain": 0.13,
+   "notes": [
+    {
+     "pitch": "D#5",
+     "bar": 4,
+     "beat": 1,
+     "dur": 7,
+     "vel": 0.2
+    },
+    {
+     "pitch": "D#5",
+     "bar": 9,
+     "beat": 1,
+     "dur": 6,
+     "vel": 0.18
+    }
+   ]
+  }
+ ]
+}

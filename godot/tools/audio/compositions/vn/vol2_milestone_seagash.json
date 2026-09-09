@@ -1,0 +1,90 @@
+{
+ "meta": {
+  "title": "vol2_milestone_seagash",
+  "composer": "authored for the VN score",
+  "for": "music_catalog.json \u00b7 vol2_milestone_seagash",
+  "notes": "Seagash, closed. B minor lifts to B major and holds; the siren note comes once and stops."
+ },
+ "tempo_bpm": 58,
+ "time_sig": [
+  4,
+  4
+ ],
+ "sample_rate": 22050,
+ "tracks": [
+  {
+   "instrument": "ambient_drone",
+   "gain": 0.24,
+   "notes": [
+    {
+     "pitch": "B1",
+     "bar": 1,
+     "beat": 1,
+     "dur": 26,
+     "vel": 0.34
+    }
+   ]
+  },
+  {
+   "instrument": "slowstick_pad",
+   "gain": 0.26,
+   "notes": [
+    {
+     "pitch": "B2",
+     "bar": 1,
+     "beat": 1,
+     "dur": 10,
+     "vel": 0.26
+    },
+    {
+     "pitch": "D3",
+     "bar": 1,
+     "beat": 1,
+     "dur": 10,
+     "vel": 0.26
+    },
+    {
+     "pitch": "F#3",
+     "bar": 1,
+     "beat": 1,
+     "dur": 10,
+     "vel": 0.26
+    },
+    {
+     "pitch": "B2",
+     "bar": 4,
+     "beat": 1,
+     "dur": 12,
+     "vel": 0.28
+    },
+    {
+     "pitch": "D#3",
+     "bar": 4,
+     "beat": 1,
+     "dur": 12,
+     "vel": 0.28
+    },
+    {
+     "pitch": "F#3",
+     "bar": 4,
+     "beat": 1,
+     "dur": 12,
+     "vel": 0.28
+    }
+   ]
+  },
+  {
+   "instrument": "soft_sine",
+   "gain": 0.22,
+   "notes": [
+    {
+     "pitch": "F#4",
+     "bar": 4,
+     "beat": 2,
+     "dur": 8,
+     "vel": 0.26
+    }
+   ]
+  }
+ ]
+}

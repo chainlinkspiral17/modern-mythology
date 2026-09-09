@@ -85,6 +85,65 @@ the result is intelligible-enough with 30% static overlay.
 
 ## Recent lessons
 
+### 2026-09-11 · the VN score · six volumes were playing vol5's music
+
+The catalog is not the score. `music_catalog.json` carried 207
+entries; **five audio files existed** (title_theme + vol5's four
+oggs) and **thirty-six of the missing tracks were named by a
+chapter.**
+
+- **A chapter's music fails UP, not down.**
+  `GameEngine._apply_chapter_music_context()` collects every entry
+  whose `chapters` names the scene and calls
+  `AudioMgr.set_chapter()`. An empty list is not silence — step 3
+  of `play_next()` falls through to the player's unlocked
+  playlist. So every vol1/2/3/4/6/7 chapter has been scored by
+  whatever the player last heard, which in practice is
+  D'Ambrosio's at dawn and the cicadas. **A missing bed sounds
+  like a bed; that is why it survived.**
+- **234 of 312 scenes had no entry naming them at all** — all of
+  vol6 and vol7 bar a dozen, the whole Louisiana arcana run
+  (ch6-ch21), the vol1 link hub. Fixed with a two-tier rule that
+  is just what the assigned scenes were already doing:
+  PLACE (the scene's dominant `3d:` background → that locale's
+  bed) then the VOLUME FLOOR (`vol<N>_ambient`, which is exactly
+  what those entries have always been). A place may cross volumes
+  when it is the SAME PLACE — the Foxhole in vol1 and vol6, the
+  cathedral in vol5 and vol7's interlude.
+- **Author the locale→bed table; do not learn it.** Learning from
+  the existing assignments smeared Kestrel's wind over the
+  accretion basement, because a scene visits several places and
+  the mapping is many-to-many.
+- **READ `git status` BEFORE RENDERING OVER A NAME.** Ten of the
+  thirty-six had been rendered long ago as `.wav` and sat on disk
+  while their catalog `src` pointed at an `.mp3`/`.ogg` nobody
+  ever made. The first pass overwrote all ten with new
+  compositions and only the tracked-vs-untracked split in `git
+  status` caught it. They are listed in `author_vn_beds.ON_DISK`
+  now and are repointed, never re-authored.
+- **`normalize_bank.py` walked `bgm/*/` and skipped `bgm/`.** The
+  per-directory gain only visited SUBdirectories, so every
+  slowstick sat at 0.85 peak and every VN bed shipped at the
+  synth's raw 0.07-0.25. The top level is one more set now (one
+  gain, 3.37x, relationships preserved).
+- **A description is a usable spec.** Each catalog entry already
+  said what its track was made of ("chain-link buzz + transformer
+  60 Hz drone + a single grackle that won't leave"). The synth's
+  `ambient_drone` / `fluorescent_hum` / `rain` / `slowstick_pad`
+  cover that vocabulary directly; 33 beds came out of the prose in
+  one pass.
+- Draft 1 numbers to revisit on the Deck: **22050 Hz** (halves the
+  WAV, and the hiss-forward beds — rest-stop wind, the cicada
+  field, Kestrel's thermal — are where it will show first);
+  **~40 s with no loop seam** (the chapter refill restarts the
+  track, so the top of the bed is audible as a seam); and the
+  five remaining `.ogg` tracks, which `normalize_bank` cannot
+  read and may now sit under the wavs.
+- New gate: `godot/tools/audit/music_coverage_audit.py` — a scene
+  with no bed and a named bed with no file both fail at zero. 92
+  ghosts (character themes, gauntlet B-sides, finale stingers)
+  stay informational: their own systems play them.
+
 ### 2026-08-04 · CP · four dedicated beds + weekly rotation
 
 - **When the user says "more of that," rotate — don't replace.**

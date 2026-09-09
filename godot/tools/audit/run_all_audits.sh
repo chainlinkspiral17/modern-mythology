@@ -191,6 +191,19 @@ if [ "${MN:-999}" -gt 0 ]; then
     echo "REGRESSION  $MN mood cue(s) the prose contradicts (ceiling 0)"; exit 1; fi
 echo ""
 
+# ── Music-coverage gate (2026-09-11) ──────────────────────────
+# A chapter whose catalog track list comes back EMPTY is scored by
+# AudioMgr's fallback — the unlocked playlist — so it plays whatever
+# came before it. That happened two ways: 234 scenes no entry named,
+# and 36 entries chapters DID name whose file was never rendered. Six
+# volumes played vol5's four beds. Both gate at zero.
+echo "── music_coverage_audit.py ──"
+MUOUT="$(python3 music_coverage_audit.py 2>/dev/null)" || {
+    echo "$MUOUT" | grep "^SILENT\|^NOFILE" | head -20
+    echo "$MUOUT" | tail -1; exit 1; }
+echo "$MUOUT" | tail -1
+echo ""
+
 # ── Phantom-surface gate (2026-09-10) ─────────────────────────
 # A detail pass that hard-codes a desk/counter/bar origin the builder
 # never put there (eighteen locales had one). Static: reads the x/y/z

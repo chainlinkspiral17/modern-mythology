@@ -1,0 +1,111 @@
+{
+ "meta": {
+  "title": "vol7_painting_room",
+  "composer": "authored for the VN score",
+  "for": "music_catalog.json \u00b7 vol7_painting_room",
+  "notes": "The painting room. Turpentine uncorked, a brush tap, the close attentive breath of someone looking \u2014 so three notes and a lot of room."
+ },
+ "tempo_bpm": 50,
+ "time_sig": [
+  4,
+  4
+ ],
+ "sample_rate": 22050,
+ "tracks": [
+  {
+   "instrument": "ambient_drone",
+   "gain": 0.22,
+   "notes": [
+    {
+     "pitch": "A1",
+     "bar": 1,
+     "beat": 1,
+     "dur": 42,
+     "vel": 0.32
+    }
+   ]
+  },
+  {
+   "instrument": "slowstick_pad",
+   "gain": 0.2,
+   "notes": [
+    {
+     "pitch": "A2",
+     "bar": 1,
+     "beat": 1,
+     "dur": 22,
+     "vel": 0.24
+    },
+    {
+     "pitch": "C3",
+     "bar": 1,
+     "beat": 1,
+     "dur": 22,
+     "vel": 0.24
+    },
+    {
+     "pitch": "E3",
+     "bar": 1,
+     "beat": 1,
+     "dur": 22,
+     "vel": 0.24
+    },
+    {
+     "pitch": "F2",
+     "bar": 8,
+     "beat": 1,
+     "dur": 16,
+     "vel": 0.22
+    },
+    {
+     "pitch": "A2",
+     "bar": 8,
+     "beat": 1,
+     "dur": 16,
+     "vel": 0.22
+    },
+    {
+     "pitch": "C3",
+     "bar": 8,
+     "beat": 1,
+     "dur": 16,
+     "vel": 0.22
+    },
+    {
+     "pitch": "E3",
+     "bar": 8,
+     "beat": 1,
+     "dur": 16,
+     "vel": 0.22
+    }
+   ]
+  },
+  {
+   "instrument": "soft_sine",
+   "gain": 0.18,
+   "notes": [
+    {
+     "pitch": "E4",
+     "bar": 3,
+     "beat": 1,
+     "dur": 5,
+     "vel": 0.22
+    },
+    {
+     "pitch": "C5",
+     "bar": 6,
+     "beat": 3,
+     "dur": 4,
+     "vel": 0.2
+    },
+    {
+     "pitch": "A4",
+     "bar": 10,
+     "beat": 1,
+     "dur": 6,
+     "vel": 0.18
+    }
+   ]
+  }
+ ]
+}

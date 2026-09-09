@@ -1,0 +1,104 @@
+{
+ "meta": {
+  "title": "vol1_milestone_choice",
+  "composer": "authored for the VN score",
+  "for": "music_catalog.json \u00b7 vol1_milestone_choice",
+  "notes": "The choice, resolved. Three notes up and the pad opens to major. Twenty-five seconds; it is a release, not a theme."
+ },
+ "tempo_bpm": 60,
+ "time_sig": [
+  4,
+  4
+ ],
+ "sample_rate": 22050,
+ "tracks": [
+  {
+   "instrument": "slowstick_pad",
+   "gain": 0.26,
+   "notes": [
+    {
+     "pitch": "D3",
+     "bar": 1,
+     "beat": 1,
+     "dur": 10,
+     "vel": 0.26
+    },
+    {
+     "pitch": "F3",
+     "bar": 1,
+     "beat": 1,
+     "dur": 10,
+     "vel": 0.26
+    },
+    {
+     "pitch": "A3",
+     "bar": 1,
+     "beat": 1,
+     "dur": 10,
+     "vel": 0.26
+    },
+    {
+     "pitch": "D3",
+     "bar": 4,
+     "beat": 1,
+     "dur": 12,
+     "vel": 0.28
+    },
+    {
+     "pitch": "F#3",
+     "bar": 4,
+     "beat": 1,
+     "dur": 12,
+     "vel": 0.28
+    },
+    {
+     "pitch": "A3",
+     "bar": 4,
+     "beat": 1,
+     "dur": 12,
+     "vel": 0.28
+    }
+   ]
+  },
+  {
+   "instrument": "ambient_drone",
+   "gain": 0.22,
+   "notes": [
+    {
+     "pitch": "D2",
+     "bar": 1,
+     "beat": 1,
+     "dur": 24,
+     "vel": 0.34
+    }
+   ]
+  },
+  {
+   "instrument": "slowstick_lead",
+   "gain": 0.22,
+   "notes": [
+    {
+     "pitch": "A4",
+     "bar": 3,
+     "beat": 3,
+     "dur": 2,
+     "vel": 0.26
+    },
+    {
+     "pitch": "C#5",
+     "bar": 4,
+     "beat": 1,
+     "dur": 2,
+     "vel": 0.26
+    },
+    {
+     "pitch": "D5",
+     "bar": 4,
+     "beat": 3,
+     "dur": 6,
+     "vel": 0.28
+    }
+   ]
+  }
+ ]
+}

@@ -1,0 +1,83 @@
+{
+ "meta": {
+  "title": "vol7_milestone_bell",
+  "composer": "authored for the VN score",
+  "for": "music_catalog.json \u00b7 vol7_milestone_bell",
+  "notes": "Aria rings the bell. Her signature made literal: a strike, three seconds of held silence, again, and the pad arriving only under the third."
+ },
+ "tempo_bpm": 56,
+ "time_sig": [
+  4,
+  4
+ ],
+ "sample_rate": 22050,
+ "tracks": [
+  {
+   "instrument": "soft_sine",
+   "gain": 0.3,
+   "notes": [
+    {
+     "pitch": "D6",
+     "bar": 1,
+     "beat": 1,
+     "dur": 2.5,
+     "vel": 0.3
+    },
+    {
+     "pitch": "D6",
+     "bar": 3,
+     "beat": 1,
+     "dur": 2.5,
+     "vel": 0.28
+    },
+    {
+     "pitch": "D6",
+     "bar": 5,
+     "beat": 1,
+     "dur": 4.0,
+     "vel": 0.3
+    }
+   ]
+  },
+  {
+   "instrument": "ambient_drone",
+   "gain": 0.22,
+   "notes": [
+    {
+     "pitch": "D2",
+     "bar": 5,
+     "beat": 1,
+     "dur": 18,
+     "vel": 0.32
+    }
+   ]
+  },
+  {
+   "instrument": "slowstick_pad",
+   "gain": 0.22,
+   "notes": [
+    {
+     "pitch": "D3",
+     "bar": 5,
+     "beat": 1,
+     "dur": 16,
+     "vel": 0.26
+    },
+    {
+     "pitch": "F#3",
+     "bar": 5,
+     "beat": 1,
+     "dur": 16,
+     "vel": 0.26
+    },
+    {
+     "pitch": "A3",
+     "bar": 5,
+     "beat": 1,
+     "dur": 16,
+     "vel": 0.26
+    }
+   ]
+  }
+ ]
+}

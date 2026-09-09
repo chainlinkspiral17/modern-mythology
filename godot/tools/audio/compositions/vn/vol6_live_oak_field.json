@@ -1,0 +1,117 @@
+{
+ "meta": {
+  "title": "vol6_live_oak_field",
+  "composer": "authored for the VN score",
+  "for": "music_catalog.json \u00b7 vol6_live_oak_field",
+  "notes": "Live Oak field, two-a-days. Cicadas at 6:15 AM bright over the grass; the whistle's three short bursts once, a long way off."
+ },
+ "tempo_bpm": 60,
+ "time_sig": [
+  4,
+  4
+ ],
+ "sample_rate": 22050,
+ "tracks": [
+  {
+   "instrument": "rain",
+   "gain": 0.22,
+   "notes": [
+    {
+     "pitch": "A4",
+     "bar": 1,
+     "beat": 1,
+     "dur": 42,
+     "vel": 0.26
+    }
+   ]
+  },
+  {
+   "instrument": "ambient_drone",
+   "gain": 0.26,
+   "notes": [
+    {
+     "pitch": "G1",
+     "bar": 1,
+     "beat": 1,
+     "dur": 42,
+     "vel": 0.36
+    }
+   ]
+  },
+  {
+   "instrument": "slowstick_pad",
+   "gain": 0.16,
+   "notes": [
+    {
+     "pitch": "G2",
+     "bar": 1,
+     "beat": 1,
+     "dur": 20,
+     "vel": 0.22
+    },
+    {
+     "pitch": "B2",
+     "bar": 1,
+     "beat": 1,
+     "dur": 20,
+     "vel": 0.22
+    },
+    {
+     "pitch": "D3",
+     "bar": 1,
+     "beat": 1,
+     "dur": 20,
+     "vel": 0.22
+    },
+    {
+     "pitch": "C3",
+     "bar": 6,
+     "beat": 1,
+     "dur": 20,
+     "vel": 0.22
+    },
+    {
+     "pitch": "E3",
+     "bar": 6,
+     "beat": 1,
+     "dur": 20,
+     "vel": 0.22
+    },
+    {
+     "pitch": "G3",
+     "bar": 6,
+     "beat": 1,
+     "dur": 20,
+     "vel": 0.22
+    }
+   ]
+  },
+  {
+   "instrument": "soft_sine",
+   "gain": 0.13,
+   "notes": [
+    {
+     "pitch": "D6",
+     "bar": 5,
+     "beat": 1,
+     "dur": 0.6,
+     "vel": 0.18
+    },
+    {
+     "pitch": "D6",
+     "bar": 5,
+     "beat": 2,
+     "dur": 0.6,
+     "vel": 0.18
+    },
+    {
+     "pitch": "D6",
+     "bar": 5,
+     "beat": 3,
+     "dur": 0.9,
+     "vel": 0.16
+    }
+   ]
+  }
+ ]
+}

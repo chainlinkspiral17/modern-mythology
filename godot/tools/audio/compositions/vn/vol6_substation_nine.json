@@ -1,0 +1,62 @@
+{
+ "meta": {
+  "title": "vol6_substation_nine",
+  "composer": "authored for the VN score",
+  "for": "music_catalog.json \u00b7 vol6_substation_nine",
+  "notes": "Substation Nine. The transformer is the whole piece \u2014 60 Hz and the chain-link ringing with it. One grackle, twice, that will not leave."
+ },
+ "tempo_bpm": 56,
+ "time_sig": [
+  4,
+  4
+ ],
+ "sample_rate": 22050,
+ "tracks": [
+  {
+   "instrument": "fluorescent_hum",
+   "gain": 0.34,
+   "notes": [
+    {
+     "pitch": "A2",
+     "bar": 1,
+     "beat": 1,
+     "dur": 40,
+     "vel": 0.46
+    }
+   ]
+  },
+  {
+   "instrument": "ambient_drone",
+   "gain": 0.26,
+   "notes": [
+    {
+     "pitch": "A1",
+     "bar": 1,
+     "beat": 1,
+     "dur": 40,
+     "vel": 0.36
+    }
+   ]
+  },
+  {
+   "instrument": "slowstick_lead",
+   "gain": 0.1,
+   "notes": [
+    {
+     "pitch": "A#5",
+     "bar": 4,
+     "beat": 2,
+     "dur": 0.5,
+     "vel": 0.18
+    },
+    {
+     "pitch": "A#5",
+     "bar": 9,
+     "beat": 1,
+     "dur": 0.4,
+     "vel": 0.16
+    }
+   ]
+  }
+ ]
+}

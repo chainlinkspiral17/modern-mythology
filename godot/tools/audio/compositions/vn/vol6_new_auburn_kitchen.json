@@ -1,0 +1,110 @@
+{
+ "meta": {
+  "title": "vol6_new_auburn_kitchen",
+  "composer": "authored for the VN score",
+  "for": "music_catalog.json \u00b7 vol6_new_auburn_kitchen",
+  "notes": "A New Auburn house at rest \u2014 the Millers, the Hendersons, the Kowalskis. A window unit two rooms over, a refrigerator that cycles, a clock in the hall. Warm where vol6_ambient is not: these houses are inside Harmony Creek and are not of it."
+ },
+ "tempo_bpm": 56,
+ "time_sig": [
+  4,
+  4
+ ],
+ "sample_rate": 22050,
+ "tracks": [
+  {
+   "instrument": "ambient_drone",
+   "gain": 0.26,
+   "notes": [
+    {
+     "pitch": "G1",
+     "bar": 1,
+     "beat": 1,
+     "dur": 40,
+     "vel": 0.36
+    }
+   ]
+  },
+  {
+   "instrument": "rain",
+   "gain": 0.09,
+   "notes": [
+    {
+     "pitch": "D#1",
+     "bar": 1,
+     "beat": 1,
+     "dur": 40,
+     "vel": 0.2
+    }
+   ]
+  },
+  {
+   "instrument": "slowstick_pad",
+   "gain": 0.22,
+   "notes": [
+    {
+     "pitch": "G3",
+     "bar": 1,
+     "beat": 1,
+     "dur": 20,
+     "vel": 0.26
+    },
+    {
+     "pitch": "A#3",
+     "bar": 1,
+     "beat": 1,
+     "dur": 20,
+     "vel": 0.26
+    },
+    {
+     "pitch": "D4",
+     "bar": 1,
+     "beat": 1,
+     "dur": 20,
+     "vel": 0.26
+    },
+    {
+     "pitch": "D#3",
+     "bar": 6,
+     "beat": 1,
+     "dur": 20,
+     "vel": 0.24
+    },
+    {
+     "pitch": "G3",
+     "bar": 6,
+     "beat": 1,
+     "dur": 20,
+     "vel": 0.24
+    },
+    {
+     "pitch": "A#3",
+     "bar": 6,
+     "beat": 1,
+     "dur": 20,
+     "vel": 0.24
+    }
+   ]
+  },
+  {
+   "instrument": "soft_sine",
+   "gain": 0.11,
+   "notes": [
+    {
+     "pitch": "D5",
+     "bar": 4,
+     "beat": 3,
+     "dur": 5,
+     "vel": 0.16
+    },
+    {
+     "pitch": "A#4",
+     "bar": 9,
+     "beat": 1,
+     "dur": 6,
+     "vel": 0.14
+    }
+   ]
+  }
+ ]
+}

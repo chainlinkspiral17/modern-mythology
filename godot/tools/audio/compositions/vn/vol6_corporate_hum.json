@@ -1,0 +1,42 @@
+{
+ "meta": {
+  "title": "vol6_corporate_hum",
+  "composer": "authored for the VN score",
+  "for": "music_catalog.json \u00b7 vol6_corporate_hum",
+  "notes": "Sixty-eight, year-round. The HVAC and one sine near 68 Hz. Clean. Inhuman. Nothing else is allowed in."
+ },
+ "tempo_bpm": 60,
+ "time_sig": [
+  4,
+  4
+ ],
+ "sample_rate": 22050,
+ "tracks": [
+  {
+   "instrument": "rain",
+   "gain": 0.14,
+   "notes": [
+    {
+     "pitch": "G1",
+     "bar": 1,
+     "beat": 1,
+     "dur": 32,
+     "vel": 0.24
+    }
+   ]
+  },
+  {
+   "instrument": "ambient_drone",
+   "gain": 0.34,
+   "notes": [
+    {
+     "pitch": "C#2",
+     "bar": 1,
+     "beat": 1,
+     "dur": 32,
+     "vel": 0.46
+    }
+   ]
+  }
+ ]
+}

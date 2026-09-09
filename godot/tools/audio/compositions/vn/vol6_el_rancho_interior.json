@@ -1,0 +1,117 @@
+{
+ "meta": {
+  "title": "vol6_el_rancho_interior",
+  "composer": "authored for the VN score",
+  "for": "music_catalog.json \u00b7 vol6_el_rancho_interior",
+  "notes": "El Rancho, late plate. One norte\u00f1o chord held a bar longer than it should be, the dishwasher's last cycle under it."
+ },
+ "tempo_bpm": 64,
+ "time_sig": [
+  4,
+  4
+ ],
+ "sample_rate": 22050,
+ "tracks": [
+  {
+   "instrument": "rain",
+   "gain": 0.16,
+   "notes": [
+    {
+     "pitch": "C3",
+     "bar": 1,
+     "beat": 1,
+     "dur": 42,
+     "vel": 0.26
+    }
+   ]
+  },
+  {
+   "instrument": "ambient_drone",
+   "gain": 0.22,
+   "notes": [
+    {
+     "pitch": "A1",
+     "bar": 1,
+     "beat": 1,
+     "dur": 42,
+     "vel": 0.32
+    }
+   ]
+  },
+  {
+   "instrument": "slowstick_pad",
+   "gain": 0.24,
+   "notes": [
+    {
+     "pitch": "A2",
+     "bar": 1,
+     "beat": 1,
+     "dur": 24,
+     "vel": 0.28
+    },
+    {
+     "pitch": "C#3",
+     "bar": 1,
+     "beat": 1,
+     "dur": 24,
+     "vel": 0.28
+    },
+    {
+     "pitch": "E3",
+     "bar": 1,
+     "beat": 1,
+     "dur": 24,
+     "vel": 0.28
+    },
+    {
+     "pitch": "D3",
+     "bar": 8,
+     "beat": 1,
+     "dur": 16,
+     "vel": 0.26
+    },
+    {
+     "pitch": "F#3",
+     "bar": 8,
+     "beat": 1,
+     "dur": 16,
+     "vel": 0.26
+    },
+    {
+     "pitch": "A3",
+     "bar": 8,
+     "beat": 1,
+     "dur": 16,
+     "vel": 0.26
+    }
+   ]
+  },
+  {
+   "instrument": "slowstick_lead",
+   "gain": 0.16,
+   "notes": [
+    {
+     "pitch": "E4",
+     "bar": 5,
+     "beat": 1,
+     "dur": 2,
+     "vel": 0.22
+    },
+    {
+     "pitch": "C#4",
+     "bar": 5,
+     "beat": 3,
+     "dur": 2,
+     "vel": 0.2
+    },
+    {
+     "pitch": "A3",
+     "bar": 6,
+     "beat": 1,
+     "dur": 6,
+     "vel": 0.22
+    }
+   ]
+  }
+ ]
+}

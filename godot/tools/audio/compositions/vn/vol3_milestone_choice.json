@@ -1,0 +1,84 @@
+{
+ "meta": {
+  "title": "vol3_milestone_choice",
+  "composer": "authored for the VN score",
+  "for": "music_catalog.json \u00b7 vol3_milestone_choice",
+  "notes": "Decompression. The drone steps down a whole tone and the pad lets go of it."
+ },
+ "tempo_bpm": 54,
+ "time_sig": [
+  4,
+  4
+ ],
+ "sample_rate": 22050,
+ "tracks": [
+  {
+   "instrument": "ambient_drone",
+   "gain": 0.28,
+   "notes": [
+    {
+     "pitch": "C2",
+     "bar": 1,
+     "beat": 1,
+     "dur": 12,
+     "vel": 0.38
+    },
+    {
+     "pitch": "A#1",
+     "bar": 4,
+     "beat": 1,
+     "dur": 14,
+     "vel": 0.34
+    }
+   ]
+  },
+  {
+   "instrument": "slowstick_pad",
+   "gain": 0.24,
+   "notes": [
+    {
+     "pitch": "C3",
+     "bar": 1,
+     "beat": 1,
+     "dur": 10,
+     "vel": 0.26
+    },
+    {
+     "pitch": "D#3",
+     "bar": 1,
+     "beat": 1,
+     "dur": 10,
+     "vel": 0.26
+    },
+    {
+     "pitch": "G3",
+     "bar": 1,
+     "beat": 1,
+     "dur": 10,
+     "vel": 0.26
+    },
+    {
+     "pitch": "A#2",
+     "bar": 4,
+     "beat": 1,
+     "dur": 12,
+     "vel": 0.26
+    },
+    {
+     "pitch": "D3",
+     "bar": 4,
+     "beat": 1,
+     "dur": 12,
+     "vel": 0.26
+    },
+    {
+     "pitch": "F3",
+     "bar": 4,
+     "beat": 1,
+     "dur": 12,
+     "vel": 0.26
+    }
+   ]
+  }
+ ]
+}

@@ -1336,6 +1336,32 @@ lamps. NEXT DRAFT: the Deck read — the numbers are the playbook's but
 only the screen can say whether any room is now over-lit, and the 47
 fixtures beyond the per-locale budget wait on that verdict.
 
+**2026-09-11 (viii) · six volumes were playing vol5's music.** The
+lighting pass asked what else ships as a description instead of an
+artifact, and the answer was the score. `music_catalog.json` had 207
+entries and FIVE audio files; thirty-six of the missing were named by
+a chapter, and 234 of 312 scenes had no entry naming them at all — all
+of vol6 and vol7 bar a dozen, the whole arcana run ch6-ch21, the vol1
+link hub. None of that is silence: `AudioMgr.play_next()` falls
+through to the player's unlocked playlist when a chapter's track list
+is empty, so every volume has been scored by D'Ambrosio's at dawn and
+the cicadas. Shipped: 33 beds authored from the catalog's own prose
+through the project synth (`author_vn_beds.py`), six orphan vol5 room
+tones adopted into the catalog, ten already-rendered .wav beds
+REPOINTED (their entries pointed at .mp3/.ogg that never existed — the
+first pass overwrote all ten before `git status` was read),
+`normalize_bank` taught to walk `bgm/` itself (it only ever visited
+subdirectories, so every VN bed shipped at 0.07-0.25 against every
+stick's 0.85), and every non-stub scene assigned by
+`assign_chapter_beds.py` — 174 by place, 23 on the volume floor, 0
+unscored. New gate `music_coverage_audit.py` at zero. NEXT DRAFT, all
+Deck-gated: does 22050 Hz read dull on the hiss-forward beds (rest-stop
+wind, the cicada field, Kestrel's thermal)? is the ~40 s loop seam
+audible at the top of each bed? are the five remaining `.ogg` tracks
+now quieter than the wavs `normalize_bank` can reach? Then the 92
+ghosts — character themes, gauntlet B-sides, finale stingers — which
+have entries and no files and are played by their own systems.
+
 **2026-08-19 · PER-STICK VOICE SWEEP VERDICT (voice draft 4).**
 Ran the leakage grep (TODO/WIP/placeholder/implemented/deferred/
 stub) and a string survey across EVERY stick directory: estuary_4,
@@ -1453,6 +1479,7 @@ Current ledger (draft counts are honest, not aspirational):
 | VN portrait busts (de-blocking · 2026-08-04) | 2 (EPX×2 + soft finish; hide-ghosts made ephemeral) | screenshot check vs the SVGA bar; if still chunky: raise the 60x64 base canvas itself (more shading ramps, finer features); dialogue-box busts + CP roster inherit automatically |
 | Scene direction · coverage rotation (2026-08-04) | 5 (28 locales carry decks — 111 authored setups, 176 markers repo-wide; draft 5 gave TEN ARCANA SETS the exact markers their scripts already cue (round 2: cafe_olimpico, both new_orleans rooms + the office — 42 arcana markers total; graustark deferred to the richer stub) — Alice's rose/chair/closeup, Natalie's turntable/card, Jimmy's sofa, Elicia's desk/laptop/teacup, Erica's office, the Montreal notebook — plus establish_b rotations, ALL euler-form now: the 81 matrix markers were converted after draft 3 found the transpose bug. Draft 4 covered the whole 7-9-use tier incl. kwik_stop B/C and the shared missing_link_exterior/shuttle_bench deck) | Deck screenshots — every framing is math-verified to <0.5° but ZERO have been seen through a lens; taste notes ("finn B too low") drive draft 5. Next tier (5-6 uses: foxhole_bar, henderson_garage, faust_bedroom, jesse_bedroom, centro_break_room, bianca_kitchen_morning, diner_interior variants) only after a taste pass confirms the grammar reads |
 | **THE TRIP (music-synced psychedelic layer · 2026-09-07)** | **3** (the liquid drifts slowly and never to the beat; draft-1 colour/line weight; FLOW · LINES · COLOUR · BEAT mix sliders;  TripSync autoload + trip_sync.gdshader; global layer 60 + VN texture mode; PSYCHEDELIA slider; per-mood/per-surface scaling; FIVE REGISTERS arcana/community/milk_honey/slowstick/base pushed by the hosts — see _PSYCHEDELIC_DESIGN_BIBLE.md) | draft 2: Deck look at 0.6 per register (gauntlet, CP screen, a vol 7 chapter, a stick); beat detector vs the real catalog; then the GAME GRAMMAR column one row per pillar |
+| **The VN score (2026-09-11)** | **1** (33 beds authored from the catalog's own descriptions; 6 orphan vol5 room tones adopted; 10 already-rendered beds repointed; `normalize_bank` taught to walk `bgm/` itself; every non-stub scene assigned — 174 by place, 23 on the volume floor; `music_coverage_audit` gates SILENT + NOFILE at zero) | draft 2 is Deck-gated: 22050 Hz on the hiss-forward beds, the ~40 s loop seam, the five `.ogg` tracks normalize can't read. Then the 92 ghosts (character themes, gauntlet B-sides, finale stingers — entries with no files, played by their own systems) |
 | Model chapters (diner, kwik stop, cathedral, henderson) | many | the BAR — mine them for what a finished space has |
 
 ### Workstream · THE STUMP HUNT (2026-08-04)

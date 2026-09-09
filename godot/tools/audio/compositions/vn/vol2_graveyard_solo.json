@@ -1,0 +1,77 @@
+{
+ "meta": {
+  "title": "vol2_graveyard_solo",
+  "composer": "authored for the VN score",
+  "for": "music_catalog.json \u00b7 vol2_graveyard_solo",
+  "notes": "The graveyard. One line, alone, over almost nothing \u2014 the solo is the point."
+ },
+ "tempo_bpm": 50,
+ "time_sig": [
+  4,
+  4
+ ],
+ "sample_rate": 22050,
+ "tracks": [
+  {
+   "instrument": "ambient_drone",
+   "gain": 0.16,
+   "notes": [
+    {
+     "pitch": "A1",
+     "bar": 1,
+     "beat": 1,
+     "dur": 38,
+     "vel": 0.26
+    }
+   ]
+  },
+  {
+   "instrument": "soft_sine",
+   "gain": 0.26,
+   "notes": [
+    {
+     "pitch": "A4",
+     "bar": 1,
+     "beat": 3,
+     "dur": 4,
+     "vel": 0.26
+    },
+    {
+     "pitch": "C5",
+     "bar": 2,
+     "beat": 3,
+     "dur": 3,
+     "vel": 0.24
+    },
+    {
+     "pitch": "B4",
+     "bar": 3,
+     "beat": 2,
+     "dur": 5,
+     "vel": 0.22
+    },
+    {
+     "pitch": "E4",
+     "bar": 5,
+     "beat": 1,
+     "dur": 6,
+     "vel": 0.24
+    },
+    {
+     "pitch": "G4",
+     "bar": 7,
+     "beat": 1,
+     "dur": 4,
+     "vel": 0.22
+    },
+    {
+     "pitch": "A4",
+     "bar": 8,
+     "beat": 2,
+     "dur": 8,
+     "vel": 0.24
+    }
+   ]
+  }
+ ]
+}

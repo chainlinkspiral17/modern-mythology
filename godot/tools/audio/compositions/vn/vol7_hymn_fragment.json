@@ -1,0 +1,153 @@
+{
+ "meta": {
+  "title": "vol7_hymn_fragment",
+  "composer": "authored for the VN score",
+  "for": "music_catalog.json \u00b7 vol7_hymn_fragment",
+  "notes": "A German hymn on a far piano in another room of the house. Six notes, played twice, the second time quieter \u2014 it is not for you and it does not finish."
+ },
+ "tempo_bpm": 60,
+ "time_sig": [
+  4,
+  4
+ ],
+ "sample_rate": 22050,
+ "tracks": [
+  {
+   "instrument": "ambient_drone",
+   "gain": 0.16,
+   "notes": [
+    {
+     "pitch": "G1",
+     "bar": 1,
+     "beat": 1,
+     "dur": 42,
+     "vel": 0.26
+    }
+   ]
+  },
+  {
+   "instrument": "slowstick_pad",
+   "gain": 0.14,
+   "notes": [
+    {
+     "pitch": "G2",
+     "bar": 1,
+     "beat": 1,
+     "dur": 20,
+     "vel": 0.2
+    },
+    {
+     "pitch": "B2",
+     "bar": 1,
+     "beat": 1,
+     "dur": 20,
+     "vel": 0.2
+    },
+    {
+     "pitch": "D3",
+     "bar": 1,
+     "beat": 1,
+     "dur": 20,
+     "vel": 0.2
+    },
+    {
+     "pitch": "C3",
+     "bar": 7,
+     "beat": 1,
+     "dur": 18,
+     "vel": 0.18
+    },
+    {
+     "pitch": "E3",
+     "bar": 7,
+     "beat": 1,
+     "dur": 18,
+     "vel": 0.18
+    },
+    {
+     "pitch": "G3",
+     "bar": 7,
+     "beat": 1,
+     "dur": 18,
+     "vel": 0.18
+    }
+   ]
+  },
+  {
+   "instrument": "slowstick_lead",
+   "gain": 0.18,
+   "notes": [
+    {
+     "pitch": "G4",
+     "bar": 1,
+     "beat": 3,
+     "dur": 2,
+     "vel": 0.24
+    },
+    {
+     "pitch": "A4",
+     "bar": 2,
+     "beat": 1,
+     "dur": 2,
+     "vel": 0.22
+    },
+    {
+     "pitch": "B4",
+     "bar": 2,
+     "beat": 3,
+     "dur": 2,
+     "vel": 0.24
+    },
+    {
+     "pitch": "G4",
+     "bar": 3,
+     "beat": 1,
+     "dur": 2,
+     "vel": 0.22
+    },
+    {
+     "pitch": "D5",
+     "bar": 3,
+     "beat": 3,
+     "dur": 3,
+     "vel": 0.24
+    },
+    {
+     "pitch": "B4",
+     "bar": 4,
+     "beat": 2,
+     "dur": 5,
+     "vel": 0.22
+    },
+    {
+     "pitch": "G4",
+     "bar": 7,
+     "beat": 3,
+     "dur": 2,
+     "vel": 0.16
+    },
+    {
+     "pitch": "A4",
+     "bar": 8,
+     "beat": 1,
+     "dur": 2,
+     "vel": 0.14
+    },
+    {
+     "pitch": "B4",
+     "bar": 8,
+     "beat": 3,
+     "dur": 2,
+     "vel": 0.16
+    },
+    {
+     "pitch": "G4",
+     "bar": 9,
+     "beat": 1,
+     "dur": 6,
+     "vel": 0.14
+    }
+   ]
+  }
+ ]
+}

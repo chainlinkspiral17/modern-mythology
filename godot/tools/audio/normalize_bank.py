@@ -57,9 +57,16 @@ def apply_gain(vals, gain):
 def main():
     skipped = []
     # ── BGM · per-directory gain ──
-    for d in sorted(glob.glob(os.path.join(ROOT, "assets", "audio", "bgm", "*"))):
-        if not os.path.isdir(d):
-            continue
+    # The VN's own beds live LOOSE at bgm/ (no per-stick subdirectory),
+    # so the isdir() walk skipped them for a year — every locale bed and
+    # volume ambient shipped at the synth's raw 0.07-0.22 peak while
+    # every slowstick sat at 0.85. Treat the top level as one more set:
+    # same per-directory gain, so the beds keep their relationships to
+    # each other and arrive at stick level. (2026-09-11)
+    bgm_root = os.path.join(ROOT, "assets", "audio", "bgm")
+    dirs = [bgm_root] + [d for d in sorted(glob.glob(os.path.join(bgm_root, "*")))
+                         if os.path.isdir(d)]
+    for d in dirs:
         files = sorted(glob.glob(os.path.join(d, "*.wav")))
         if not files:
             continue

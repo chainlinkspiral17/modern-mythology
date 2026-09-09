@@ -1,0 +1,124 @@
+{
+ "meta": {
+  "title": "vol6_kwik_stop_interior",
+  "composer": "authored for the VN score",
+  "for": "music_catalog.json \u00b7 vol6_kwik_stop_interior",
+  "notes": "The Kwik Stop at 11:47 PM. Sodium fluorescents forward, the beer-cooler compressor as the drone, the door chime twice."
+ },
+ "tempo_bpm": 58,
+ "time_sig": [
+  4,
+  4
+ ],
+ "sample_rate": 22050,
+ "tracks": [
+  {
+   "instrument": "fluorescent_hum",
+   "gain": 0.26,
+   "notes": [
+    {
+     "pitch": "A2",
+     "bar": 1,
+     "beat": 1,
+     "dur": 40,
+     "vel": 0.4
+    }
+   ]
+  },
+  {
+   "instrument": "ambient_drone",
+   "gain": 0.24,
+   "notes": [
+    {
+     "pitch": "C2",
+     "bar": 1,
+     "beat": 1,
+     "dur": 40,
+     "vel": 0.34
+    }
+   ]
+  },
+  {
+   "instrument": "slowstick_pad",
+   "gain": 0.14,
+   "notes": [
+    {
+     "pitch": "C3",
+     "bar": 1,
+     "beat": 1,
+     "dur": 20,
+     "vel": 0.2
+    },
+    {
+     "pitch": "D#3",
+     "bar": 1,
+     "beat": 1,
+     "dur": 20,
+     "vel": 0.2
+    },
+    {
+     "pitch": "G3",
+     "bar": 1,
+     "beat": 1,
+     "dur": 20,
+     "vel": 0.2
+    },
+    {
+     "pitch": "A#2",
+     "bar": 6,
+     "beat": 1,
+     "dur": 20,
+     "vel": 0.2
+    },
+    {
+     "pitch": "D3",
+     "bar": 6,
+     "beat": 1,
+     "dur": 20,
+     "vel": 0.2
+    },
+    {
+     "pitch": "F3",
+     "bar": 6,
+     "beat": 1,
+     "dur": 20,
+     "vel": 0.2
+    }
+   ]
+  },
+  {
+   "instrument": "soft_sine",
+   "gain": 0.15,
+   "notes": [
+    {
+     "pitch": "G5",
+     "bar": 3,
+     "beat": 1,
+     "dur": 2,
+     "vel": 0.22
+    },
+    {
+     "pitch": "D5",
+     "bar": 3,
+     "beat": 2,
+     "dur": 3,
+     "vel": 0.18
+    },
+    {
+     "pitch": "G5",
+     "bar": 8,
+     "beat": 3,
+     "dur": 2,
+     "vel": 0.2
+    },
+    {
+     "pitch": "D5",
+     "bar": 8,
+     "beat": 4,
+     "dur": 3,
+     "vel": 0.16
+    }
+   ]
+  }
+ ]
+}

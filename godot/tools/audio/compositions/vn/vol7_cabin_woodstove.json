@@ -1,0 +1,124 @@
+{
+ "meta": {
+  "title": "vol7_cabin_woodstove",
+  "composer": "authored for the VN score",
+  "for": "music_catalog.json \u00b7 vol7_cabin_woodstove",
+  "notes": "The cabin's woodstove. A damper tick, a log settling at the back of the firebox, and the plank floor cooling \u2014 F major with the sixth in it so the warmth has an edge."
+ },
+ "tempo_bpm": 54,
+ "time_sig": [
+  4,
+  4
+ ],
+ "sample_rate": 22050,
+ "tracks": [
+  {
+   "instrument": "rain",
+   "gain": 0.11,
+   "notes": [
+    {
+     "pitch": "D#1",
+     "bar": 1,
+     "beat": 1,
+     "dur": 42,
+     "vel": 0.22
+    }
+   ]
+  },
+  {
+   "instrument": "ambient_drone",
+   "gain": 0.26,
+   "notes": [
+    {
+     "pitch": "F1",
+     "bar": 1,
+     "beat": 1,
+     "dur": 42,
+     "vel": 0.36
+    }
+   ]
+  },
+  {
+   "instrument": "slowstick_pad",
+   "gain": 0.22,
+   "notes": [
+    {
+     "pitch": "F3",
+     "bar": 1,
+     "beat": 1,
+     "dur": 22,
+     "vel": 0.26
+    },
+    {
+     "pitch": "A3",
+     "bar": 1,
+     "beat": 1,
+     "dur": 22,
+     "vel": 0.26
+    },
+    {
+     "pitch": "C4",
+     "bar": 1,
+     "beat": 1,
+     "dur": 22,
+     "vel": 0.26
+    },
+    {
+     "pitch": "D4",
+     "bar": 1,
+     "beat": 1,
+     "dur": 22,
+     "vel": 0.26
+    },
+    {
+     "pitch": "D3",
+     "bar": 8,
+     "beat": 1,
+     "dur": 16,
+     "vel": 0.24
+    },
+    {
+     "pitch": "F3",
+     "bar": 8,
+     "beat": 1,
+     "dur": 16,
+     "vel": 0.24
+    },
+    {
+     "pitch": "A3",
+     "bar": 8,
+     "beat": 1,
+     "dur": 16,
+     "vel": 0.24
+    }
+   ]
+  },
+  {
+   "instrument": "chiptune_arp",
+   "gain": 0.06,
+   "notes": [
+    {
+     "pitch": "F5",
+     "bar": 3,
+     "beat": 2,
+     "dur": 0.15,
+     "vel": 0.14
+    },
+    {
+     "pitch": "F5",
+     "bar": 6,
+     "beat": 1,
+     "dur": 0.15,
+     "vel": 0.12
+    },
+    {
+     "pitch": "C5",
+     "bar": 9,
+     "beat": 3,
+     "dur": 0.3,
+     "vel": 0.12
+    }
+   ]
+  }
+ ]
+}

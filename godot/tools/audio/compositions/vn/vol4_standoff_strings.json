@@ -1,0 +1,118 @@
+{
+ "meta": {
+  "title": "vol4_standoff_strings",
+  "composer": "authored for the VN score",
+  "for": "music_catalog.json \u00b7 vol4_standoff_strings",
+  "notes": "Five AM strings. A cluster that will not open \u2014 A, B-flat and E together \u2014 and a repeated note counting."
+ },
+ "tempo_bpm": 56,
+ "time_sig": [
+  4,
+  4
+ ],
+ "sample_rate": 22050,
+ "tracks": [
+  {
+   "instrument": "ambient_drone",
+   "gain": 0.26,
+   "notes": [
+    {
+     "pitch": "A1",
+     "bar": 1,
+     "beat": 1,
+     "dur": 40,
+     "vel": 0.36
+    }
+   ]
+  },
+  {
+   "instrument": "slowstick_pad",
+   "gain": 0.24,
+   "notes": [
+    {
+     "pitch": "A2",
+     "bar": 1,
+     "beat": 1,
+     "dur": 20,
+     "vel": 0.28
+    },
+    {
+     "pitch": "A#2",
+     "bar": 1,
+     "beat": 1,
+     "dur": 20,
+     "vel": 0.28
+    },
+    {
+     "pitch": "E3",
+     "bar": 1,
+     "beat": 1,
+     "dur": 20,
+     "vel": 0.28
+    },
+    {
+     "pitch": "A2",
+     "bar": 7,
+     "beat": 1,
+     "dur": 18,
+     "vel": 0.26
+    },
+    {
+     "pitch": "A#2",
+     "bar": 7,
+     "beat": 1,
+     "dur": 18,
+     "vel": 0.26
+    },
+    {
+     "pitch": "F3",
+     "bar": 7,
+     "beat": 1,
+     "dur": 18,
+     "vel": 0.26
+    }
+   ]
+  },
+  {
+   "instrument": "soft_sine",
+   "gain": 0.16,
+   "notes": [
+    {
+     "pitch": "E5",
+     "bar": 3,
+     "beat": 1,
+     "dur": 1.5,
+     "vel": 0.2
+    },
+    {
+     "pitch": "E5",
+     "bar": 4,
+     "beat": 1,
+     "dur": 1.5,
+     "vel": 0.2
+    },
+    {
+     "pitch": "E5",
+     "bar": 5,
+     "beat": 1,
+     "dur": 1.5,
+     "vel": 0.2
+    },
+    {
+     "pitch": "E5",
+     "bar": 8,
+     "beat": 1,
+     "dur": 1.5,
+     "vel": 0.2
+    },
+    {
+     "pitch": "E5",
+     "bar": 9,
+     "beat": 1,
+     "dur": 1.5,
+     "vel": 0.2
+    }
+   ]
+  }
+ ]
+}
