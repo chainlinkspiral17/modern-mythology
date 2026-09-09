@@ -3,9 +3,9 @@
   "title": "vol5_docket",
   "composer": "authored for the VN score",
   "for": "music_catalog.json \u00b7 vol5_docket",
-  "notes": "Emperor \u00b7 easy. Tuesday morning. Brass clock, radiator on too high, a stamp coming down on the blotter every so often."
+  "notes": "Emperor \u00b7 easy \u2014 THE FRIDAY HELM. D'Ambrosio's, 8:14 PM, a normal Friday. The dining room through the wall, the pass bell, and a service that is running itself. D major, and the pulse is the room's, not the music's."
  },
- "tempo_bpm": 58,
+ "tempo_bpm": 62,
  "time_sig": [
   4,
   4
@@ -26,111 +26,166 @@
    ]
   },
   {
-   "instrument": "fluorescent_hum",
-   "gain": 0.12,
+   "instrument": "rain",
+   "gain": 0.13,
    "notes": [
     {
-     "pitch": "A2",
+     "pitch": "G3",
      "bar": 1,
      "beat": 1,
      "dur": 56,
-     "vel": 0.26
+     "vel": 0.22
+    }
+   ]
+  },
+  {
+   "instrument": "slowstick_bass",
+   "gain": 0.14,
+   "notes": [
+    {
+     "pitch": "D1",
+     "bar": 1,
+     "beat": 1,
+     "dur": 1.4,
+     "vel": 0.24
+    },
+    {
+     "pitch": "D1",
+     "bar": 3,
+     "beat": 1,
+     "dur": 1.4,
+     "vel": 0.24
+    },
+    {
+     "pitch": "D1",
+     "bar": 5,
+     "beat": 1,
+     "dur": 1.4,
+     "vel": 0.24
+    },
+    {
+     "pitch": "D1",
+     "bar": 7,
+     "beat": 1,
+     "dur": 1.4,
+     "vel": 0.24
+    },
+    {
+     "pitch": "D1",
+     "bar": 9,
+     "beat": 1,
+     "dur": 1.4,
+     "vel": 0.24
+    },
+    {
+     "pitch": "D1",
+     "bar": 11,
+     "beat": 1,
+     "dur": 1.4,
+     "vel": 0.24
+    },
+    {
+     "pitch": "D1",
+     "bar": 13,
+     "beat": 1,
+     "dur": 1.4,
+     "vel": 0.24
     }
    ]
   },
   {
    "instrument": "slowstick_pad",
-   "gain": 0.2,
+   "gain": 0.22,
    "notes": [
     {
      "pitch": "D3",
      "bar": 1,
      "beat": 1,
      "dur": 24,
-     "vel": 0.24
+     "vel": 0.26
     },
     {
      "pitch": "F#3",
      "bar": 1,
      "beat": 1,
      "dur": 24,
-     "vel": 0.24
+     "vel": 0.26
     },
     {
      "pitch": "A3",
      "bar": 1,
      "beat": 1,
      "dur": 24,
-     "vel": 0.24
+     "vel": 0.26
     },
     {
      "pitch": "G3",
      "bar": 7,
      "beat": 1,
      "dur": 24,
-     "vel": 0.22
+     "vel": 0.24
     },
     {
      "pitch": "B3",
      "bar": 7,
      "beat": 1,
      "dur": 24,
-     "vel": 0.22
+     "vel": 0.24
     },
     {
      "pitch": "D4",
      "bar": 7,
      "beat": 1,
      "dur": 24,
-     "vel": 0.22
+     "vel": 0.24
     },
     {
      "pitch": "A2",
      "bar": 13,
      "beat": 1,
      "dur": 12,
-     "vel": 0.22
+     "vel": 0.24
     },
     {
      "pitch": "C#3",
      "bar": 13,
      "beat": 1,
      "dur": 12,
-     "vel": 0.22
+     "vel": 0.24
     },
     {
      "pitch": "E3",
      "bar": 13,
      "beat": 1,
      "dur": 12,
-     "vel": 0.22
+     "vel": 0.24
     }
    ]
   },
   {
    "instrument": "chiptune_arp",
-   "gain": 0.07,
+   "gain": 0.06,
    "notes": [
     {
-     "pitch": "D4",
+     "pitch": "A5",
      "bar": 4,
-     "beat": 2,
-     "dur": 0.18,
+     "beat": 2.4,
+     "dur": 0.14,
      "vel": 0.14
     },
     {
-     "pitch": "D4",
+     "pitch": "A5",
      "bar": 9,
-     "beat": 1,
-     "dur": 0.18,
-     "vel": 0.13
+     "beat": 1.7,
+     "dur": 0.14,
+     "vel": 0.12
     },
     {
-     "pitch": "D4",
-     "bar": 13,
-     "beat": 3,
-     "dur": 0.18,
-     "vel": 0.13
+     "pitch": "D6",
+     "bar": 12,
+     "beat": 3.2,
+     "dur": 0.14,
+     "vel": 0.12
     }
    ]
   }

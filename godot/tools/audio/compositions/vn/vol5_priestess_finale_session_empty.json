@@ -1,0 +1,69 @@
+{
+ "meta": {
+  "title": "vol5_priestess_finale_session_empty",
+  "composer": "authored for the VN score",
+  "for": "music_catalog.json \u00b7 vol5_priestess_finale_session_empty",
+  "notes": "THE CHOOSE-YOUR-OWN DIDN'T RENDER (stagnation). The booked time ends with nothing worth keeping in it. The BLANK \u00b7 don't reuse label, again."
+ },
+ "tempo_bpm": 50,
+ "time_sig": [
+  4,
+  4
+ ],
+ "sample_rate": 22050,
+ "tracks": [
+  {
+   "instrument": "rain",
+   "gain": 0.14,
+   "notes": [
+    {
+     "pitch": "A#3",
+     "bar": 1,
+     "beat": 1,
+     "dur": 28,
+     "vel": 0.24
+    }
+   ]
+  },
+  {
+   "instrument": "ambient_drone",
+   "gain": 0.24,
+   "notes": [
+    {
+     "pitch": "E1",
+     "bar": 1,
+     "beat": 1,
+     "dur": 28,
+     "vel": 0.32
+    }
+   ]
+  },
+  {
+   "instrument": "slowstick_pad",
+   "gain": 0.2,
+   "notes": [
+    {
+     "pitch": "E3",
+     "bar": 1,
+     "beat": 1,
+     "dur": 24,
+     "vel": 0.22
+    },
+    {
+     "pitch": "G3",
+     "bar": 1,
+     "beat": 1,
+     "dur": 24,
+     "vel": 0.22
+    },
+    {
+     "pitch": "B3",
+     "bar": 1,
+     "beat": 1,
+     "dur": 24,
+     "vel": 0.22
+    }
+   ]
+  }
+ ]
+}

@@ -206,6 +206,74 @@ played `_BGM_BY_LOCATION`'s location drone instead.
   arcana. Scenario beds run 12-14 bars (55-65 s) rather than the
   chapter beds' ~40: a run is minutes, not a page.
 
+### 2026-09-11 (v) · the endings get their music
+
+Every gauntlet run ends on a win screen or a named Finale, and
+neither played anything but a one-shot SFX — while the catalog had
+carried "THE LEAP (won)", "TWENTY-FOUR HOURS (reversed)" and thirteen
+named finale stingers since the music-slot pass.
+
+- **Two shared stings first, named ones second.** `_audio_ending()`
+  plays the win sting, or the finale's own sting if one is mapped,
+  or the shared loss sting. That way all 22 arcana end on music
+  today, and adding a named sting later is one table entry — no
+  arcana is left in silence waiting for its own.
+- The two shared stings are the **same two chords taken opposite
+  ways**: A minor opening to C major and holding (the only cadence
+  in the gauntlet's music, because winning is the only thing here
+  that resolves), and C major falling to A minor with the third
+  left out.
+- `request_scene_bgm(path, false)` — non-looping, so the sting owns
+  the ending screen and the rotation comes back on its own.
+- **A `match` arm on an id nothing produces is silent dead code.**
+  The Priestess milestone block matched six finale ids from the
+  recording-booth staging; the bungalow board's four have different
+  ids, so `milestone:priestess_finale:*` could never unlock. Rewritten
+  by TRIGGER (stagnation / doubt / three claimed / shift over), which
+  is the part that survives a restaging. New gate
+  `godot/tools/audit/finale_id_audit.py` — 27 id references across 22
+  arcana, zero dead. Scope the arcana guard **to the function**: an
+  arcana-agnostic helper like `_loss_cg_path` otherwise inherits
+  whatever guard precedes it and every id it names reads as dead.
+
+### 2026-09-11 (iv) · the description was not the board
+
+**THE SPEC CAN BE OUT OF DATE. CHECK IT AGAINST THE THING.** The
+previous entry says "a description is a usable spec" and that is
+true right up until the described thing moves. Six of the fifteen
+B-side descriptions named a room the scenario no longer happens in,
+and the first render believed all six:
+
+- The **Emperor's** three describe a courthouse — brass clock,
+  radiator on too high, a six-month appellate hearing. Every Emperor
+  scenario is `location: riverboat_interior`: the Friday helm at
+  8:14 PM, the produce contract at 9:06 AM, Sunday brunch.
+- The **Hierophant's** three describe a BBS night and a ham band at
+  14.301 MHz. The board is a Sunday circuit — St Jude's at 10:42 AM
+  after the service, table 17 at brunch, the bandstand at 3:18 PM.
+- The other nine had drifted only in their CLOCK (the Priestess's
+  "booth" is Elicia's bungalow now; the times moved by hours). A bed
+  survives a clock change if the hour it evokes still fits, so those
+  kept their music and took corrected text.
+
+The rule that comes out of it: **`resources/games/<arcana>/setup_*.json`
+is the board of record.** It carries the location, the time, the
+subtitle and the scene description, and it is maintained because the
+game reads it. The catalog's `desc` is prose nobody's code checks, so
+it rots. Read the setup first, then the description, and when they
+disagree fix the description.
+
+- Corrected in the tool, not by hand: `author_vn_beds.py --retitle`
+  writes twelve titles and descriptions back into the catalog from a
+  `RETITLE` table, so the correction is repeatable and reviewable.
+  Ids stayed put — they are storage keys; the Music Player shows the
+  title.
+- A partial gate now exists: `audio_reference_audit.py` fails on a
+  `_BGM_BY_SCENARIO` key whose `arcana × difficulty` no
+  `setup_*.json` defines. That catches STRUCTURAL drift only —
+  nothing automatic can tell you the prose has moved to another
+  building.
+
 ### 2026-08-04 · CP · four dedicated beds + weekly rotation
 
 - **When the user says "more of that," rotate — don't replace.**

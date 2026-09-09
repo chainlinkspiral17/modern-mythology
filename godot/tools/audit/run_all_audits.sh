@@ -218,6 +218,19 @@ AROUT="$(python3 audio_reference_audit.py 2>/dev/null)" || {
 echo "$AROUT" | tail -1
 echo ""
 
+# ── Finale-id gate (2026-09-11) ───────────────────────────────
+# TarotGauntletGame branches on finale ids in three places (milestone
+# unlocks, achievement triggers, ending stings). An arm naming an id
+# no finale.json produces never runs and looks like working code: the
+# Priestess block matched six ids from a staging where the board was a
+# recording booth, so no priestess finale milestone could ever fire.
+echo "── finale_id_audit.py ──"
+FIOUT="$(python3 finale_id_audit.py 2>/dev/null)" || {
+    echo "$FIOUT" | grep "^DEAD" | head -20
+    echo "$FIOUT" | tail -1; exit 1; }
+echo "$FIOUT" | tail -1
+echo ""
+
 # ── Phantom-surface gate (2026-09-10) ─────────────────────────
 # A detail pass that hard-codes a desk/counter/bar origin the builder
 # never put there (eighteen locales had one). Static: reads the x/y/z

@@ -1,0 +1,49 @@
+{
+ "meta": {
+  "title": "vol5_finale_inertia_fallback",
+  "composer": "authored for the VN score",
+  "for": "music_catalog.json \u00b7 vol5_finale_inertia_fallback",
+  "notes": "THE ROOM SAT ON HIM. The generic stagnation fallback: the room is exhausted, all motion has stopped, and the music is doing as little as music can do and still be there."
+ },
+ "tempo_bpm": 46,
+ "time_sig": [
+  4,
+  4
+ ],
+ "sample_rate": 22050,
+ "tracks": [
+  {
+   "instrument": "ambient_drone",
+   "gain": 0.28,
+   "notes": [
+    {
+     "pitch": "A#1",
+     "bar": 1,
+     "beat": 1,
+     "dur": 28,
+     "vel": 0.38
+    }
+   ]
+  },
+  {
+   "instrument": "slowstick_pad",
+   "gain": 0.18,
+   "notes": [
+    {
+     "pitch": "A#2",
+     "bar": 1,
+     "beat": 1,
+     "dur": 24,
+     "vel": 0.22
+    },
+    {
+     "pitch": "D#3",
+     "bar": 1,
+     "beat": 1,
+     "dur": 24,
+     "vel": 0.22
+    }
+   ]
+  }
+ ]
+}

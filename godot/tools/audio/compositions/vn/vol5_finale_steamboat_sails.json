@@ -1,0 +1,117 @@
+{
+ "meta": {
+  "title": "vol5_finale_steamboat_sails",
+  "composer": "authored for the VN score",
+  "for": "music_catalog.json \u00b7 vol5_finale_steamboat_sails",
+  "notes": "THE STEAMBOAT SAILS. The wheel turns once though no one is touching it; then the bank slumps a long way off; then a held tone that has decided to be fine about it."
+ },
+ "tempo_bpm": 54,
+ "time_sig": [
+  4,
+  4
+ ],
+ "sample_rate": 22050,
+ "tracks": [
+  {
+   "instrument": "ambient_drone",
+   "gain": 0.26,
+   "notes": [
+    {
+     "pitch": "C2",
+     "bar": 1,
+     "beat": 1,
+     "dur": 30,
+     "vel": 0.36
+    }
+   ]
+  },
+  {
+   "instrument": "chiptune_arp",
+   "gain": 0.08,
+   "notes": [
+    {
+     "pitch": "C4",
+     "bar": 2,
+     "beat": 1,
+     "dur": 0.3,
+     "vel": 0.16
+    },
+    {
+     "pitch": "C4",
+     "bar": 2,
+     "beat": 2.2,
+     "dur": 0.3,
+     "vel": 0.14
+    },
+    {
+     "pitch": "C4",
+     "bar": 2,
+     "beat": 3.6,
+     "dur": 0.3,
+     "vel": 0.12
+    }
+   ]
+  },
+  {
+   "instrument": "slowstick_pad",
+   "gain": 0.24,
+   "notes": [
+    {
+     "pitch": "C3",
+     "bar": 1,
+     "beat": 1,
+     "dur": 12,
+     "vel": 0.26
+    },
+    {
+     "pitch": "D#3",
+     "bar": 1,
+     "beat": 1,
+     "dur": 12,
+     "vel": 0.26
+    },
+    {
+     "pitch": "G3",
+     "bar": 1,
+     "beat": 1,
+     "dur": 12,
+     "vel": 0.26
+    },
+    {
+     "pitch": "G#2",
+     "bar": 5,
+     "beat": 1,
+     "dur": 14,
+     "vel": 0.24
+    },
+    {
+     "pitch": "C3",
+     "bar": 5,
+     "beat": 1,
+     "dur": 14,
+     "vel": 0.24
+    },
+    {
+     "pitch": "D#3",
+     "bar": 5,
+     "beat": 1,
+     "dur": 14,
+     "vel": 0.24
+    }
+   ]
+  },
+  {
+   "instrument": "soft_sine",
+   "gain": 0.16,
+   "notes": [
+    {
+     "pitch": "G4",
+     "bar": 6,
+     "beat": 1,
+     "dur": 8,
+     "vel": 0.2
+    }
+   ]
+  }
+ ]
+}

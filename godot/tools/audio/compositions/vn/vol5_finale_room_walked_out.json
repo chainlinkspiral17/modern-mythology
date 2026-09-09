@@ -1,0 +1,49 @@
+{
+ "meta": {
+  "title": "vol5_finale_room_walked_out",
+  "composer": "authored for the VN score",
+  "for": "music_catalog.json \u00b7 vol5_finale_room_walked_out",
+  "notes": "THE ROOM WALKED OUT. Three visitors claimed. Everything has dropped out except the Demon's pad, held alone and a half-step out of tune with the room it is left in."
+ },
+ "tempo_bpm": 52,
+ "time_sig": [
+  4,
+  4
+ ],
+ "sample_rate": 22050,
+ "tracks": [
+  {
+   "instrument": "slowstick_pad",
+   "gain": 0.26,
+   "notes": [
+    {
+     "pitch": "F2",
+     "bar": 1,
+     "beat": 1,
+     "dur": 26,
+     "vel": 0.28
+    },
+    {
+     "pitch": "B2",
+     "bar": 1,
+     "beat": 1,
+     "dur": 26,
+     "vel": 0.28
+    }
+   ]
+  },
+  {
+   "instrument": "ambient_drone",
+   "gain": 0.18,
+   "notes": [
+    {
+     "pitch": "F1",
+     "bar": 1,
+     "beat": 1,
+     "dur": 28,
+     "vel": 0.24
+    }
+   ]
+  }
+ ]
+}

@@ -69,6 +69,34 @@ def sfx_presets():
     return set(re.findall(r'"([a-z0-9_]+)"\s*:', src))
 
 
+SCEN_RX = re.compile(r'_BGM_BY_SCENARIO\s*:?=\s*\{(.*?)\n\}', re.S)
+GAUNTLET = os.path.join(GODOT, "scenes", "games", "TarotGauntletGame.gd")
+GAMES = os.path.join(GODOT, "resources", "games")
+
+
+def scenario_bed_keys():
+    """The "<arcana>:<difficulty>" keys _BGM_BY_SCENARIO routes."""
+    src = open(GAUNTLET, encoding="utf-8").read()
+    m = SCEN_RX.search(src)
+    return set(re.findall(r'"([a-z_]+:[a-z]+)"\s*:', m.group(1))) if m else set()
+
+
+def scenario_combos():
+    """The "<arcana>:<difficulty>" pairs setup_*.json actually defines."""
+    import json
+    out = set()
+    for f in glob.glob(os.path.join(GAMES, "*", "setup_*.json")):
+        try:
+            j = json.load(open(f, encoding="utf-8"))
+        except Exception:
+            continue
+        arc = os.path.basename(os.path.dirname(f))
+        d = str(j.get("difficulty", ""))
+        if d:
+            out.add(arc + ":" + d)
+    return out
+
+
 BANK_RX = re.compile(r'_SFX_BANK_KEYS\s*:?=\s*\{(.*?)\n\}', re.S)
 
 
@@ -118,8 +146,23 @@ def main():
                 print("NOPRESET %-53s %s"
                       % (k, os.path.relpath(f, GODOT)))
 
+    # A scenario bed keyed to an arcana×difficulty no scenario defines
+    # plays for nobody. (The reverse — a combo with no bed — is the
+    # normal state: seventeen arcana still share the location drones.)
+    combos = scenario_combos()
+    keys = scenario_bed_keys()
+    for k in sorted(keys - combos):
+        bad += 1
+        print("NOSCENARIO %-51s no setup_*.json has that "
+              "arcana × difficulty" % k)
+    if show_all:
+        for k in sorted(combos - keys):
+            print("info    %-54s no scenario bed (uses the location drone)"
+                  % k)
+
     print("\naudio_reference_audit · %d path(s) · %d bank route(s) · "
-          "%d problem(s)" % (seen, routed, bad))
+          "%d scenario bed(s) · %d problem(s)"
+          % (seen, routed, len(keys), bad))
     return 1 if bad else 0
 
 

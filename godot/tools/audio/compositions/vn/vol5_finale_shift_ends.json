@@ -1,0 +1,82 @@
+{
+ "meta": {
+  "title": "vol5_finale_shift_ends",
+  "composer": "authored for the VN score",
+  "for": "music_catalog.json \u00b7 vol5_finale_shift_ends",
+  "notes": "MIDNIGHT, AND BEHIND. The workbench lamp clicks off. Then nothing, for longer than is comfortable, which is the point."
+ },
+ "tempo_bpm": 50,
+ "time_sig": [
+  4,
+  4
+ ],
+ "sample_rate": 22050,
+ "tracks": [
+  {
+   "instrument": "fluorescent_hum",
+   "gain": 0.22,
+   "notes": [
+    {
+     "pitch": "A2",
+     "bar": 1,
+     "beat": 1,
+     "dur": 12,
+     "vel": 0.34
+    }
+   ]
+  },
+  {
+   "instrument": "ambient_drone",
+   "gain": 0.24,
+   "notes": [
+    {
+     "pitch": "D2",
+     "bar": 1,
+     "beat": 1,
+     "dur": 14,
+     "vel": 0.32
+    }
+   ]
+  },
+  {
+   "instrument": "slowstick_pad",
+   "gain": 0.2,
+   "notes": [
+    {
+     "pitch": "D3",
+     "bar": 1,
+     "beat": 1,
+     "dur": 12,
+     "vel": 0.24
+    },
+    {
+     "pitch": "F3",
+     "bar": 1,
+     "beat": 1,
+     "dur": 12,
+     "vel": 0.24
+    },
+    {
+     "pitch": "A3",
+     "bar": 1,
+     "beat": 1,
+     "dur": 12,
+     "vel": 0.24
+    }
+   ]
+  },
+  {
+   "instrument": "soft_sine",
+   "gain": 0.14,
+   "notes": [
+    {
+     "pitch": "D4",
+     "bar": 7,
+     "beat": 1,
+     "dur": 6,
+     "vel": 0.16
+    }
+   ]
+  }
+ ]
+}

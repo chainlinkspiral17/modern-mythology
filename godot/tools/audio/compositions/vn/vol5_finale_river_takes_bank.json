@@ -1,0 +1,90 @@
+{
+ "meta": {
+  "title": "vol5_finale_river_takes_bank",
+  "composer": "authored for the VN score",
+  "for": "music_catalog.json \u00b7 vol5_finale_river_takes_bank",
+  "notes": "THE RIVER TAKES THE BANK. A building giving up, rendered as a half-degree slide that does not stop where a slide should."
+ },
+ "tempo_bpm": 50,
+ "time_sig": [
+  4,
+  4
+ ],
+ "sample_rate": 22050,
+ "tracks": [
+  {
+   "instrument": "ambient_drone",
+   "gain": 0.3,
+   "notes": [
+    {
+     "pitch": "C2",
+     "bar": 1,
+     "beat": 1,
+     "dur": 28,
+     "vel": 0.4
+    }
+   ]
+  },
+  {
+   "instrument": "slowstick_pad",
+   "gain": 0.24,
+   "notes": [
+    {
+     "pitch": "C3",
+     "bar": 1,
+     "beat": 1,
+     "dur": 12,
+     "vel": 0.26
+    },
+    {
+     "pitch": "D#3",
+     "bar": 1,
+     "beat": 1,
+     "dur": 12,
+     "vel": 0.26
+    },
+    {
+     "pitch": "G3",
+     "bar": 1,
+     "beat": 1,
+     "dur": 12,
+     "vel": 0.26
+    },
+    {
+     "pitch": "B2",
+     "bar": 5,
+     "beat": 1,
+     "dur": 14,
+     "vel": 0.24
+    },
+    {
+     "pitch": "D3",
+     "bar": 5,
+     "beat": 1,
+     "dur": 14,
+     "vel": 0.24
+    },
+    {
+     "pitch": "F#3",
+     "bar": 5,
+     "beat": 1,
+     "dur": 14,
+     "vel": 0.24
+    }
+   ]
+  },
+  {
+   "instrument": "rain",
+   "gain": 0.18,
+   "notes": [
+    {
+     "pitch": "F1",
+     "bar": 3,
+     "beat": 1,
+     "dur": 22,
+     "vel": 0.28
+    }
+   ]
+  }
+ ]
+}

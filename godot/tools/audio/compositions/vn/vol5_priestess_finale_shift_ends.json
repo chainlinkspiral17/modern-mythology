@@ -1,0 +1,82 @@
+{
+ "meta": {
+  "title": "vol5_priestess_finale_shift_ends",
+  "composer": "authored for the VN score",
+  "for": "music_catalog.json \u00b7 vol5_priestess_finale_shift_ends",
+  "notes": "THE NIGHT RAN OUT (shift over). The lamp shuts itself off on her own timer, with people still in the other room who did not get their turn."
+ },
+ "tempo_bpm": 52,
+ "time_sig": [
+  4,
+  4
+ ],
+ "sample_rate": 22050,
+ "tracks": [
+  {
+   "instrument": "fluorescent_hum",
+   "gain": 0.16,
+   "notes": [
+    {
+     "pitch": "A2",
+     "bar": 1,
+     "beat": 1,
+     "dur": 12,
+     "vel": 0.28
+    }
+   ]
+  },
+  {
+   "instrument": "ambient_drone",
+   "gain": 0.24,
+   "notes": [
+    {
+     "pitch": "E1",
+     "bar": 1,
+     "beat": 1,
+     "dur": 14,
+     "vel": 0.32
+    }
+   ]
+  },
+  {
+   "instrument": "slowstick_pad",
+   "gain": 0.2,
+   "notes": [
+    {
+     "pitch": "E3",
+     "bar": 1,
+     "beat": 1,
+     "dur": 12,
+     "vel": 0.24
+    },
+    {
+     "pitch": "G3",
+     "bar": 1,
+     "beat": 1,
+     "dur": 12,
+     "vel": 0.24
+    },
+    {
+     "pitch": "B3",
+     "bar": 1,
+     "beat": 1,
+     "dur": 12,
+     "vel": 0.24
+    }
+   ]
+  },
+  {
+   "instrument": "soft_sine",
+   "gain": 0.14,
+   "notes": [
+    {
+     "pitch": "E4",
+     "bar": 7,
+     "beat": 1,
+     "dur": 6,
+     "vel": 0.16
+    }
+   ]
+  }
+ ]
+}

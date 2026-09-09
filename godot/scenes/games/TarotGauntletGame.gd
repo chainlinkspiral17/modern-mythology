@@ -590,6 +590,47 @@ const _BGM_BY_SCENARIO := {
 }
 
 
+# The ending stings (2026-09-11). A run ends on a win screen or on a
+# named Finale and neither played anything but a one-shot SFX, even
+# though the catalog had carried "THE LEAP (won)", "TWENTY-FOUR HOURS
+# (reversed)" and thirteen named finale stingers since the music-slot
+# pass. `_FINALE_STING` is keyed by the finale ids that are actually in
+# `<arcana>/finale.json`; anything unmapped falls back to the shared
+# loss sting, so all 22 arcana end on music.
+const _STING_WIN  := "res://assets/audio/bgm/vol5_gauntlet_win.wav"
+const _STING_LOSS := "res://assets/audio/bgm/vol5_gauntlet_loss.wav"
+const _FINALE_STING := {
+	# magician/finale.json
+	"the_steamboat_sails":        "res://assets/audio/bgm/vol5_finale_steamboat_sails.wav",
+	"the_river_takes_the_bank":   "res://assets/audio/bgm/vol5_finale_river_takes_bank.wav",
+	"the_maker_breaks":           "res://assets/audio/bgm/vol5_finale_maker_breaks.wav",
+	"the_maker_forgets_the_make": "res://assets/audio/bgm/vol5_finale_maker_forgets.wav",
+	"the_room_walked_out":        "res://assets/audio/bgm/vol5_finale_room_walked_out.wav",
+	"shift_ends_behind":          "res://assets/audio/bgm/vol5_finale_shift_ends.wav",
+	"inertia_max":                "res://assets/audio/bgm/vol5_finale_inertia_fallback.wav",
+	# priestess/finale.json
+	"the_choose_your_own_didnt_render":
+		"res://assets/audio/bgm/vol5_priestess_finale_session_empty.wav",
+	"the_pomegranate_hour_returned":
+		"res://assets/audio/bgm/vol5_priestess_finale_listener_breaks.wav",
+	"the_audience_stopped_waiting":
+		"res://assets/audio/bgm/vol5_priestess_finale_walked_out.wav",
+	"the_night_ran_out":
+		"res://assets/audio/bgm/vol5_priestess_finale_shift_ends.wav",
+}
+
+
+func _audio_ending(finale_id: String, won: bool) -> void:
+	if Engine.get_main_loop() == null:
+		return
+	var path: String = _STING_WIN if won else _STING_LOSS
+	if not won:
+		path = String(_FINALE_STING.get(finale_id, _STING_LOSS))
+	# Hard, non-looping: the ending screen owns the room, and the
+	# chapter/jukebox rotation picks up again when the sting ends.
+	AudioMgr.request_scene_bgm(path, false)
+
+
 func _audio_play_bgm() -> void:
 	var difficulty: String = String(_setup.get("difficulty", ""))
 	var scen_key: String = _arcana_id + ":" + difficulty
@@ -9094,6 +9135,7 @@ func _achievement_compare(a: int, op: String, b: int) -> bool:
 func _trigger_win(threshold: String) -> void:
 	_game_over = true
 	_audio_sfx("win")
+	_audio_ending("", true)
 	# Find threshold's ending lore token
 	var ending_token := ""
 	for t: Dictionary in _setup.get("thresholds", []):
@@ -9228,6 +9270,7 @@ func _trigger_loss(reason: String) -> void:
 		finale_title = f.get("title", "")
 		finale_flavor = f.get("flavor", "")
 	_last_finale_id = finale_id
+	_audio_ending(finale_id, false)
 	# Evaluate achievements that fire on loss (sinkhole opens etc.).
 	_evaluate_achievements("loss", finale_id)
 	# Milestones — gauntlet_loss unlocks the 24-Hour Diner skin + the
@@ -9252,17 +9295,29 @@ func _trigger_loss(reason: String) -> void:
 		if stinger_key != "":
 			SaveSystem.mark_unlocked(stinger_key)
 	if _arcana_id == "priestess" and finale_id != "":
-		# Priestess finale-id → milestone:priestess_finale:<key>. The
-		# music catalog slots can adopt these keys when the priestess
-		# finale stingers are added in a future music-slot pass.
+		# Priestess finale-id → milestone:priestess_finale:<key>.
+		#
+		# REWRITTEN 2026-09-11. The six ids this matched on
+		# (the_reel_ran_out, the_listener_breaks, …) are not in
+		# priestess/finale.json and never were — they came from an
+		# earlier staging where the board was a recording booth. The
+		# board is Elicia's bungalow now and its four finales are
+		# below, so not one of these milestones could ever fire.
+		# Matched by TRIGGER, which is the part that survived the
+		# restaging: stagnation → the booked time ran out with
+		# nothing worth keeping; doubt → the thing she made comes
+		# back at her; three claimed → the room stopped waiting;
+		# shift over → the night ran out.
 		var p_key: String = ""
 		match finale_id:
-			"the_reel_ran_out":              p_key = "milestone:priestess_finale:reel_ran_out"
-			"the_listener_breaks":           p_key = "milestone:priestess_finale:listener_breaks"
-			"the_session_ends_empty":        p_key = "milestone:priestess_finale:session_empty"
-			"they_walked_out_mid_sentence":  p_key = "milestone:priestess_finale:walked_out"
-			"the_cicadas_stopped":           p_key = "milestone:priestess_finale:cicadas_stopped"
-			"session_over_unfinished":       p_key = "milestone:priestess_finale:shift_ends"
+			"the_choose_your_own_didnt_render":
+				p_key = "milestone:priestess_finale:session_empty"
+			"the_pomegranate_hour_returned":
+				p_key = "milestone:priestess_finale:listener_breaks"
+			"the_audience_stopped_waiting":
+				p_key = "milestone:priestess_finale:walked_out"
+			"the_night_ran_out":
+				p_key = "milestone:priestess_finale:shift_ends"
 		if p_key != "":
 			SaveSystem.mark_unlocked(p_key)
 	GauntletState.record_loss(_arcana_id, _location_id, finale_id, _lore_tokens_collected)

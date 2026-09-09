@@ -646,7 +646,7 @@
   "id": "vol5_gauntlet_loss",
   "vol": 5,
   "title": "Twenty-Four Hours (reversed)",
-  "src": "assets/audio/bgm/vol5_gauntlet_loss.ogg",
+  "src": "assets/audio/bgm/vol5_gauntlet_loss.wav",
   "composer": "—",
   "desc": "Released the first time you lose any Tarot Gauntlet scenario.",
   "unlock": {
@@ -658,7 +658,7 @@
   "id": "vol5_gauntlet_win",
   "vol": 5,
   "title": "The Leap (won)",
-  "src": "assets/audio/bgm/vol5_gauntlet_win.ogg",
+  "src": "assets/audio/bgm/vol5_gauntlet_win.wav",
   "composer": "—",
   "desc": "Released the first time you win any Tarot Gauntlet scenario.",
   "unlock": {
@@ -975,7 +975,7 @@
   "id": "vol5_finale_inertia_fallback",
   "vol": 5,
   "title": "The Room Sat on Him",
-  "src": "assets/audio/bgm/vol5_finale_inertia_fallback.ogg",
+  "src": "assets/audio/bgm/vol5_finale_inertia_fallback.wav",
   "composer": "—",
   "desc": "Magician finale stinger — generic stagnation fallback. The room is exhausted and all motion has stopped.",
   "unlock": {
@@ -987,7 +987,7 @@
   "id": "vol5_finale_maker_breaks",
   "vol": 5,
   "title": "The Maker Breaks",
-  "src": "assets/audio/bgm/vol5_finale_maker_breaks.ogg",
+  "src": "assets/audio/bgm/vol5_finale_maker_breaks.wav",
   "composer": "—",
   "desc": "Magician finale stinger — Doubt at max. Silence under one pad falling a half-step. The last breath before the host closes his eyes for the last time.",
   "unlock": {
@@ -999,7 +999,7 @@
   "id": "vol5_finale_maker_forgets",
   "vol": 5,
   "title": "The Maker Forgets the Make",
-  "src": "assets/audio/bgm/vol5_finale_maker_forgets.ogg",
+  "src": "assets/audio/bgm/vol5_finale_maker_forgets.wav",
   "composer": "—",
   "desc": "Magician finale stinger — Stagnation at max. Cassette-deck end-of-tape spool. Lights at full. The cathedral exhales without him.",
   "unlock": {
@@ -1011,7 +1011,7 @@
   "id": "vol5_finale_river_takes_bank",
   "vol": 5,
   "title": "The River Takes the Bank",
-  "src": "assets/audio/bgm/vol5_finale_river_takes_bank.ogg",
+  "src": "assets/audio/bgm/vol5_finale_river_takes_bank.wav",
   "composer": "—",
   "desc": "Magician finale stinger — the bank goes. A building giving up. Slow wood-and-metal collapse rendered as a half-degree sustained slide.",
   "unlock": {
@@ -1023,7 +1023,7 @@
   "id": "vol5_finale_room_walked_out",
   "vol": 5,
   "title": "The Room Walked Out",
-  "src": "assets/audio/bgm/vol5_finale_room_walked_out.ogg",
+  "src": "assets/audio/bgm/vol5_finale_room_walked_out.wav",
   "composer": "—",
   "desc": "Magician finale stinger — three visitors claimed. Everything has dropped out except the Demon's pad, held alone.",
   "unlock": {
@@ -1035,7 +1035,7 @@
   "id": "vol5_finale_shift_ends",
   "vol": 5,
   "title": "Midnight, and Behind",
-  "src": "assets/audio/bgm/vol5_finale_shift_ends.ogg",
+  "src": "assets/audio/bgm/vol5_finale_shift_ends.wav",
   "composer": "—",
   "desc": "Magician finale stinger — midnight overrun, the work undone. The workbench-lamp click off. Then nothing.",
   "unlock": {
@@ -1047,7 +1047,7 @@
   "id": "vol5_finale_steamboat_sails",
   "vol": 5,
   "title": "The Steamboat Sails",
-  "src": "assets/audio/bgm/vol5_finale_steamboat_sails.ogg",
+  "src": "assets/audio/bgm/vol5_finale_steamboat_sails.wav",
   "composer": "—",
   "desc": "Magician finale stinger — the steamboat finished. Paddle wheel turning once though no one is touching it. Then the river bank slumps, far away. Then a held tone, resigned.",
   "unlock": {
@@ -1073,7 +1073,7 @@
   "title": "Sinking Feeling",
   "src": "assets/audio/bgm/vol5_sinking_feeling.wav",
   "composer": "—",
-  "desc": "Tarot Gauntlet · Magician · easy-mode B-side. Afternoon sun on the cathedral skylights, low river lap outside, a distant freight horn. The riverside knowing what's coming and not saying.",
+  "desc": "Tarot Gauntlet · Magician · easy-mode bed. The cathedral, 7:14 PM, a quiet evening. Low river lap outside and a distant freight horn: the riverside knowing what's coming and taking its time.",
   "unlock": {
    "type": "heard"
   },
@@ -1138,7 +1138,7 @@
   "title": "Cicada Session",
   "src": "assets/audio/bgm/vol5_cicada_session.wav",
   "composer": "—",
-  "desc": "Tarot Gauntlet · Priestess · easy-mode B-side. The cicadas outside louder than they should be. The booth's red record-light. Reel turning, fresh. 9:18 PM.",
+  "desc": "Tarot Gauntlet · Priestess · easy-mode bed. Elicia's bungalow, 6:42 PM, cardboard boxes half-filled. The cicadas outside louder than they should be.",
   "unlock": {
    "type": "heard"
   },
@@ -1151,7 +1151,7 @@
   "title": "The Long Quiet",
   "src": "assets/audio/bgm/vol5_long_quiet.wav",
   "composer": "—",
-  "desc": "Tarot Gauntlet · Priestess · medium-mode B-side. Confessional hour. The booth's own noise floor instead of the cicadas now. 11:02 PM.",
+  "desc": "Tarot Gauntlet · Priestess · medium-mode bed. The bungalow at 8:14 PM, the shard on the third shelf. The cicadas have gone and what is left is the room's own noise floor.",
   "unlock": {
    "type": "heard"
   },
@@ -1164,7 +1164,7 @@
   "title": "Tape Witness",
   "src": "assets/audio/bgm/vol5_tape_witness.wav",
   "composer": "—",
-  "desc": "Tarot Gauntlet · Priestess · hard-mode B-side. 2:14 AM. Off-the-books. The truth-teller is already in the booth. The cathedral is dark on the other side.",
+  "desc": "Tarot Gauntlet · Priestess · hard-mode bed. 11:42 PM, the storage closet door slightly ajar. The house is dark on the other side of the doorway.",
   "unlock": {
    "type": "heard"
   },
@@ -1187,7 +1187,7 @@
   "id": "vol5_priestess_finale_listener_breaks",
   "vol": 5,
   "title": "The Listener Breaks",
-  "src": "assets/audio/bgm/vol5_priestess_finale_listener_breaks.ogg",
+  "src": "assets/audio/bgm/vol5_priestess_finale_listener_breaks.wav",
   "composer": "—",
   "desc": "Priestess finale stinger — Doubt at max. Elicia in the booth chair instead of the engineer's. The mic on, she silent. The reel turns. She is letting the room record her at last.",
   "unlock": {
@@ -1199,7 +1199,7 @@
   "id": "vol5_priestess_finale_session_empty",
   "vol": 5,
   "title": "The Session Ends Empty",
-  "src": "assets/audio/bgm/vol5_priestess_finale_session_empty.ogg",
+  "src": "assets/audio/bgm/vol5_priestess_finale_session_empty.wav",
   "composer": "—",
   "desc": "Priestess finale stinger — Stagnation at max. The end of the booked time. Lounge empty, booth empty, reel with nothing worth keeping. The BLANK · don't reuse label, again.",
   "unlock": {
@@ -1211,7 +1211,7 @@
   "id": "vol5_priestess_finale_walked_out",
   "vol": 5,
   "title": "Walked Out Mid-Sentence",
-  "src": "assets/audio/bgm/vol5_priestess_finale_walked_out.ogg",
+  "src": "assets/audio/bgm/vol5_priestess_finale_walked_out.wav",
   "composer": "—",
   "desc": "Priestess finale stinger — three visitors claimed. The silences they left behind, played back through the console headphones. Not nothing. The wrong thing.",
   "unlock": {
@@ -1235,7 +1235,7 @@
   "id": "vol5_priestess_finale_shift_ends",
   "vol": 5,
   "title": "The Session Is Over · Priestess",
-  "src": "assets/audio/bgm/vol5_priestess_finale_shift_ends.ogg",
+  "src": "assets/audio/bgm/vol5_priestess_finale_shift_ends.wav",
   "composer": "—",
   "desc": "Priestess finale stinger — shift-over (priestess variant). The booth lamp shuts itself off on Elicia's timer. Visitors still in the lounge who didn't get their turn. She files what's done.",
   "unlock": {
@@ -1274,7 +1274,7 @@
   "title": "Harvest Dinner",
   "src": "assets/audio/bgm/vol5_harvest_dinner.wav",
   "composer": "—",
-  "desc": "Tarot Gauntlet · Empress · medium-mode B-side. Late autumn. Frasier on the bank walking slow. The garden deck has cooled.",
+  "desc": "Tarot Gauntlet · Empress · medium-mode bed. The riverboat, 4:44 PM, the staff family meal before service. The deck has cooled and the table is set anyway.",
   "unlock": {
    "type": "heard"
   },
@@ -1287,7 +1287,7 @@
   "title": "Ice in the River",
   "src": "assets/audio/bgm/vol5_ice_in_the_river.wav",
   "composer": "—",
-  "desc": "Tarot Gauntlet · Empress · hard-mode B-side. 11:14 PM, late February. The river has ice in it for the first time in a decade.",
+  "desc": "Tarot Gauntlet · Empress · hard-mode bed. 10:42 PM, and Dante sent you down to the back room. Cold, and everyone at the table knows.",
   "unlock": {
    "type": "heard"
   },
@@ -1297,10 +1297,10 @@
  {
   "id": "vol5_docket",
   "vol": 5,
-  "title": "Docket",
+  "title": "The Friday Helm",
   "src": "assets/audio/bgm/vol5_docket.wav",
   "composer": "—",
-  "desc": "Tarot Gauntlet · Emperor · easy-mode B-side. Tuesday morning. Brass clock. Radiator on too high. Stamp on the blotter.",
+  "desc": "Tarot Gauntlet · Emperor · easy-mode bed. D'Ambrosio's, 8:14 PM, a normal Friday. The dining room through the wall and a service running itself.",
   "unlock": {
    "type": "heard"
   },
@@ -1310,10 +1310,10 @@
  {
   "id": "vol5_first_session",
   "vol": 5,
-  "title": "First Session",
+  "title": "Nine-Oh-Six",
   "src": "assets/audio/bgm/vol5_first_session.wav",
   "composer": "—",
-  "desc": "Tarot Gauntlet · Emperor · medium-mode B-side. Pre-clerk Monday. The petitioner slept in their car. The radiator is cold.",
+  "desc": "Tarot Gauntlet · Emperor · medium-mode bed. The riverboat at 9:06 AM, the produce contract renewed or not. Empty dining room, a cooler cycling, a telephone about to ring.",
   "unlock": {
    "type": "heard"
   },
@@ -1323,10 +1323,10 @@
  {
   "id": "vol5_appeal",
   "vol": 5,
-  "title": "Appeal",
+  "title": "Six Weeks Apart",
   "src": "assets/audio/bgm/vol5_appeal.wav",
   "composer": "—",
-  "desc": "Tarot Gauntlet · Emperor · hard-mode B-side. Late Tuesday afternoon. Six-month appellate hearing. Volumes 9 and 10 of the river-code missing.",
+  "desc": "Tarot Gauntlet · Emperor · hard-mode bed. Sunday brunch, first Sunday of an even month, the room full and everyone able to hear everyone.",
   "unlock": {
    "type": "heard"
   },
@@ -1336,10 +1336,10 @@
  {
   "id": "vol5_green_phosphor",
   "vol": 5,
-  "title": "Green Phosphor",
+  "title": "The Service Has Ended",
   "src": "assets/audio/bgm/vol5_green_phosphor.wav",
   "composer": "—",
-  "desc": "Tarot Gauntlet · Hierophant · easy-mode B-side. Tuesday night BBS. Modem rack humming. Printer's banner paper rolling slowly.",
+  "desc": "Tarot Gauntlet · Hierophant · easy-mode bed. St Jude's, 10:42 AM Sunday. The nave emptying, one organ chord still coming out of the stone.",
   "unlock": {
    "type": "heard"
   },
@@ -1349,10 +1349,10 @@
  {
   "id": "vol5_long_signal",
   "vol": 5,
-  "title": "The Long Signal",
+  "title": "Table Seventeen",
   "src": "assets/audio/bgm/vol5_long_signal.wav",
   "composer": "—",
-  "desc": "Tarot Gauntlet · Hierophant · medium-mode B-side. Late Wednesday. Anya at the floppy wall. The ham band open. 14.301 MHz live.",
+  "desc": "Tarot Gauntlet · Hierophant · medium-mode bed. D'Ambrosio's, 11:47 AM, table 17 at the stern rail. A conversation that has not started yet.",
   "unlock": {
    "type": "heard"
   },
@@ -1362,10 +1362,10 @@
  {
   "id": "vol5_broadcast_night",
   "vol": 5,
-  "title": "Broadcast Night",
+  "title": "The Second Phone Call",
   "src": "assets/audio/bgm/vol5_broadcast_night.wav",
   "composer": "—",
-  "desc": "Tarot Gauntlet · Hierophant · hard-mode B-side. 3:14 AM. The lurker logged in. The ham band hisses then clears.",
+  "desc": "Tarot Gauntlet · Hierophant · hard-mode bed. The park bandstand, 3:18 PM, after brunch. A band shell with nothing in it and a ring that comes back.",
   "unlock": {
    "type": "heard"
   },

@@ -704,77 +704,242 @@ bed("vol5_ice_in_the_river", 46,
            + hold(["G#2", "C3", "D#3"], 9, 24, 0.20)),
      track("soft_sine", 0.10, [n("G5", 8, 1, 4, 0.14)])])
 
-bed("vol5_docket", 58,
-    "Emperor · easy. Tuesday morning. Brass clock, radiator on too "
-    "high, a stamp coming down on the blotter every so often.",
+# ── the six B-sides whose CATALOG TEXT had drifted off the board ───
+# The B-side descriptions were written for an earlier staging. Six of
+# them name a room the scenario no longer happens in: the Emperor's
+# three describe a COURTHOUSE (brass clock, radiator, appellate
+# hearing) and the board is D'Ambrosio's riverboat; the Hierophant's
+# three describe a BBS NIGHT and a ham band, and the board is a Sunday
+# circuit — St Jude's after the service, table 17 at brunch, the park
+# bandstand at 3:18 PM. Authored from setup_*.json, which carries the
+# board as it is; RETITLE below corrects the catalog text to match.
+# (The other nine descriptions had drifted only in their clock, and
+# the beds read the same at any hour of an evening, so those keep
+# their music and take a corrected desc.)
+
+bed("vol5_docket", 62,
+    "Emperor · easy — THE FRIDAY HELM. D'Ambrosio's, 8:14 PM, a "
+    "normal Friday. The dining room through the wall, the pass bell, "
+    "and a service that is running itself. D major, and the pulse is "
+    "the room's, not the music's.",
     [track("ambient_drone", 0.24, [n("D2", 1, 1, 56, 0.34)]),
-     track("fluorescent_hum", 0.12, [n("A2", 1, 1, 56, 0.26)]),
-     track("slowstick_pad", 0.20,
-           hold(["D3", "F#3", "A3"], 1, 24, 0.24)
-           + hold(["G3", "B3", "D4"], 7, 24, 0.22)
-           + hold(["A2", "C#3", "E3"], 13, 12, 0.22)),
-     track("chiptune_arp", 0.07, [n("D4", 4, 2, 0.18, 0.14),
-                                  n("D4", 9, 1, 0.18, 0.13),
-                                  n("D4", 13, 3, 0.18, 0.13)])])
+     track("rain", 0.13, [n("G3", 1, 1, 56, 0.22)]),
+     track("slowstick_bass", 0.14,
+           [n("D1", b, 1, 1.4, 0.24) for b in range(1, 15, 2)]),
+     track("slowstick_pad", 0.22,
+           hold(["D3", "F#3", "A3"], 1, 24, 0.26)
+           + hold(["G3", "B3", "D4"], 7, 24, 0.24)
+           + hold(["A2", "C#3", "E3"], 13, 12, 0.24)),
+     track("chiptune_arp", 0.06, [n("A5", 4, 2.4, 0.14, 0.14),
+                                  n("A5", 9, 1.7, 0.14, 0.12),
+                                  n("D6", 12, 3.2, 0.14, 0.12)])])
 
 bed("vol5_first_session", 54,
-    "Emperor · medium. Pre-clerk Monday. The petitioner slept in "
-    "their car and the radiator is cold.",
-    [track("ambient_drone", 0.28, [n("D2", 1, 1, 56, 0.38)]),
-     track("slowstick_pad", 0.18,
-           hold(["D3", "F3", "A3"], 1, 26, 0.22)
-           + hold(["A#2", "D3", "F3"], 9, 24, 0.20)),
-     track("soft_sine", 0.12, [n("A4", 6, 1, 7, 0.16),
-                               n("F4", 13, 1, 6, 0.14)])])
+    "Emperor · medium — NINE-OH-SIX. The riverboat at 9:06 AM, the "
+    "produce contract renewed or not. An empty dining room, a cooler "
+    "cycling, morning light on water, and a telephone that is going "
+    "to ring.",
+    [track("ambient_drone", 0.26, [n("G1", 1, 1, 56, 0.36)]),
+     track("rain", 0.10, [n("A#3", 1, 1, 56, 0.18)]),
+     track("slowstick_pad", 0.20,
+           hold(["G3", "B3", "D4"], 1, 26, 0.24)
+           + hold(["E3", "G3", "B3"], 9, 24, 0.22)),
+     track("soft_sine", 0.14, [n("D5", 5, 1, 7, 0.18),
+                               n("B4", 12, 3, 6, 0.16)])])
 
-bed("vol5_appeal", 50,
-    "Emperor · hard. Late Tuesday afternoon, six-month appellate "
-    "hearing, and volumes 9 and 10 of the river code are missing off "
-    "the shelf.",
-    [track("ambient_drone", 0.30, [n("A#1", 1, 1, 56, 0.40)]),
-     track("fluorescent_hum", 0.14, [n("C3", 1, 1, 56, 0.28)]),
-     track("slowstick_pad", 0.18,
-           hold(["A#2", "C#3", "F3"], 1, 26, 0.24)
-           + hold(["G#2", "C3", "D#3"], 9, 24, 0.22)),
-     track("soft_sine", 0.10, [n("F5", 7, 1, 3, 0.14),
-                               n("D#5", 14, 1, 5, 0.12)])])
-
-bed("vol5_green_phosphor", 60,
-    "Hierophant · easy. Tuesday night BBS: the modem rack humming "
-    "and the printer's banner paper rolling slowly out onto the "
-    "floor.",
-    [track("fluorescent_hum", 0.22, [n("A2", 1, 1, 56, 0.36)]),
+bed("vol5_appeal", 66,
+    "Emperor · hard — SIX WEEKS APART. Sunday brunch, the first "
+    "Sunday of an even month, and the room is full. Busier than the "
+    "other two: a murmur that never resolves into words, a chord that "
+    "changes more often than it wants to, and a figure that keeps "
+    "almost starting.",
+    [track("rain", 0.20, [n("D#3", 1, 1, 56, 0.28)]),
      track("ambient_drone", 0.24, [n("A1", 1, 1, 56, 0.34)]),
-     track("slowstick_pad", 0.16,
-           hold(["A2", "C3", "E3"], 1, 26, 0.22)
-           + hold(["F2", "A2", "C3"], 9, 24, 0.20)),
-     track("chiptune_arp", 0.09,
-           [n(p, b, be, 0.25, 0.16)
-            for b in (3, 8, 13)
-            for be, p in ((1, "A5"), (1.6, "E5"), (2.2, "A5"))])])
+     track("slowstick_pad", 0.20,
+           hold(["A2", "C3", "E3"], 1, 16, 0.24)
+           + hold(["D3", "F3", "A3"], 5, 16, 0.22)
+           + hold(["A2", "C3", "F3"], 9, 16, 0.22)
+           + hold(["E3", "G#3", "B3"], 13, 12, 0.24)),
+     track("soft_sine", 0.12, [n("E5", 3, 3, 2, 0.16),
+                               n("C5", 7, 1, 2, 0.15),
+                               n("E5", 11, 3, 2, 0.16),
+                               n("A4", 14, 1, 5, 0.14)])])
 
-bed("vol5_long_signal", 54,
-    "Hierophant · medium. Late Wednesday. Anya at the floppy wall, "
-    "the ham band open, 14.301 MHz live and someone on it.",
-    [track("rain", 0.14, [n("D#4", 1, 1, 56, 0.22)]),
-     track("ambient_drone", 0.26, [n("A1", 1, 1, 56, 0.36)]),
+bed("vol5_green_phosphor", 50,
+    "Hierophant · easy — THE SERVICE HAS ENDED. St Jude's, 10:42 AM "
+    "Sunday. The nave emptying: one organ chord still coming out of "
+    "the stone a long time after the hands left it, feet on tile, and "
+    "the light through glass nobody has cleaned this year.",
+    [track("ambient_drone", 0.30, [n("C2", 1, 1, 56, 0.40)]),
+     track("slowstick_pad", 0.26,
+           hold(["C3", "E3", "G3", "C4"], 1, 30, 0.28)
+           + hold(["F3", "A3", "C4"], 10, 24, 0.24)),
+     track("soft_sine", 0.14, [n("G4", 6, 1, 9, 0.18),
+                               n("E4", 13, 1, 8, 0.16)]),
+     track("chiptune_arp", 0.05, [n("C4", 4, 2, 0.2, 0.12),
+                                  n("C4", 4, 2.9, 0.2, 0.10),
+                                  n("C4", 8, 3.4, 0.2, 0.11)])])
+
+bed("vol5_long_signal", 58,
+    "Hierophant · medium — TABLE SEVENTEEN. D'Ambrosio's, 11:47 AM, "
+    "table 17 at the stern rail. The river going past under the "
+    "brunch, cutlery finding itself, and a conversation that has not "
+    "started yet and both people know it.",
+    [track("rain", 0.16, [n("C4", 1, 1, 56, 0.24)]),
+     track("ambient_drone", 0.22, [n("F1", 1, 1, 56, 0.32)]),
+     track("slowstick_pad", 0.24,
+           hold(["F3", "A3", "C4"], 1, 26, 0.26)
+           + hold(["A#2", "D3", "F3"], 9, 24, 0.24)),
+     track("chiptune_arp", 0.06, [n("C6", 3, 1.8, 0.12, 0.13),
+                                  n("F5", 6, 3.3, 0.12, 0.12),
+                                  n("C6", 11, 2.1, 0.12, 0.12)]),
+     track("soft_sine", 0.12, [n("C5", 7, 1, 7, 0.16)])])
+
+bed("vol5_broadcast_night", 56,
+    "Hierophant · hard — THE SECOND PHONE CALL. The park bandstand, "
+    "3:18 PM, after brunch. Open air, a band shell with nothing in "
+    "it, and a two-note ring that comes back once — the first call "
+    "you could let go.",
+    [track("rain", 0.18, [n("G3", 1, 1, 56, 0.26)]),
+     track("ambient_drone", 0.26, [n("D2", 1, 1, 56, 0.36)]),
      track("slowstick_pad", 0.18,
-           hold(["A2", "D3", "E3"], 1, 28, 0.22)
-           + hold(["G2", "C3", "D3"], 9, 24, 0.20)),
-     track("soft_sine", 0.13, [n("E5", 5, 1, 8, 0.18),
-                               n("D5", 12, 3, 6, 0.16)])])
+           hold(["D3", "F3", "A3"], 1, 26, 0.24)
+           + hold(["A#2", "D3", "F3"], 9, 24, 0.22)),
+     track("soft_sine", 0.16, [n("A5", 5, 1, 0.7, 0.20),
+                               n("F5", 5, 1.9, 0.9, 0.18),
+                               n("A5", 12, 1, 0.7, 0.18),
+                               n("F5", 12, 1.9, 1.1, 0.16)])])
 
-bed("vol5_broadcast_night", 48,
-    "Hierophant · hard. 3:14 AM. The lurker logged in. The ham band "
-    "hisses and then, for no reason anyone can give, clears.",
-    [track("rain", 0.22, [n("C5", 1, 1, 26, 0.28),
-                          n("G2", 8, 1, 30, 0.16)]),
-     track("ambient_drone", 0.30, [n("D#1", 1, 1, 56, 0.42)]),
-     track("fluorescent_hum", 0.14, [n("A2", 1, 1, 56, 0.26)]),
-     track("slowstick_pad", 0.16,
-           hold(["D#3", "G3", "A#3"], 1, 28, 0.22)
-           + hold(["C3", "D#3", "G3"], 9, 24, 0.20)),
-     track("soft_sine", 0.10, [n("A#4", 10, 1, 8, 0.14)])])
+
+# ── the endings ────────────────────────────────────────────────────
+# Every gauntlet run ends on a win screen or on a named Finale, and
+# neither played anything but a one-shot SFX. Two shared stings for
+# all 22 arcana, then the eleven named Magician / Priestess finales
+# that can actually fire. Stings are 6-8 bars (25-35 s): they play
+# over a screen the player reads, then the rotation comes back.
+
+bed("vol5_gauntlet_win", 56,
+    "THE LEAP (won). The shared win sting. A minor opens to C major "
+    "and stays there — the only cadence in the gauntlet's music, "
+    "because winning is the only thing here that resolves.",
+    [track("ambient_drone", 0.24, [n("A1", 1, 1, 28, 0.34)]),
+     track("slowstick_pad", 0.28,
+           hold(["A2", "C3", "E3"], 1, 10, 0.26)
+           + hold(["C3", "E3", "G3"], 4, 16, 0.30)),
+     track("slowstick_lead", 0.22,
+           [n("E4", 3, 3, 2, 0.24), n("G4", 4, 1, 2, 0.26),
+            n("C5", 4, 3, 8, 0.28)])])
+
+bed("vol5_gauntlet_loss", 52,
+    "TWENTY-FOUR HOURS (reversed). The shared loss sting. The same "
+    "two chords as the win, taken the other way and left open: C "
+    "major down to A minor and no third note.",
+    [track("ambient_drone", 0.26, [n("A1", 1, 1, 28, 0.36)]),
+     track("slowstick_pad", 0.26,
+           hold(["C3", "E3", "G3"], 1, 10, 0.26)
+           + hold(["A2", "C3", "E3"], 4, 16, 0.26)),
+     track("soft_sine", 0.18, [n("C5", 3, 3, 3, 0.22),
+                               n("A4", 5, 1, 9, 0.20)])])
+
+# Magician · seven finales, seven stings.
+bed("vol5_finale_steamboat_sails", 54,
+    "THE STEAMBOAT SAILS. The wheel turns once though no one is "
+    "touching it; then the bank slumps a long way off; then a held "
+    "tone that has decided to be fine about it.",
+    [track("ambient_drone", 0.26, [n("C2", 1, 1, 30, 0.36)]),
+     track("chiptune_arp", 0.08, [n("C4", 2, 1, 0.3, 0.16),
+                                  n("C4", 2, 2.2, 0.3, 0.14),
+                                  n("C4", 2, 3.6, 0.3, 0.12)]),
+     track("slowstick_pad", 0.24,
+           hold(["C3", "D#3", "G3"], 1, 12, 0.26)
+           + hold(["G#2", "C3", "D#3"], 5, 14, 0.24)),
+     track("soft_sine", 0.16, [n("G4", 6, 1, 8, 0.20)])])
+
+bed("vol5_finale_river_takes_bank", 50,
+    "THE RIVER TAKES THE BANK. A building giving up, rendered as a "
+    "half-degree slide that does not stop where a slide should.",
+    [track("ambient_drone", 0.30, [n("C2", 1, 1, 28, 0.40)]),
+     track("slowstick_pad", 0.24,
+           hold(["C3", "D#3", "G3"], 1, 12, 0.26)
+           + hold(["B2", "D3", "F#3"], 5, 14, 0.24)),
+     track("rain", 0.18, [n("F1", 3, 1, 22, 0.28)])])
+
+bed("vol5_finale_maker_breaks", 48,
+    "THE MAKER BREAKS. Doubt at maximum. One pad falling a half-step "
+    "under a silence, which is the last breath before the host "
+    "closes his eyes for the last time.",
+    [track("ambient_drone", 0.22, [n("A1", 1, 1, 28, 0.30)]),
+     track("slowstick_pad", 0.28,
+           hold(["A2", "C3", "E3"], 1, 12, 0.28)
+           + hold(["G#2", "B2", "D#3"], 5, 14, 0.26))])
+
+bed("vol5_finale_maker_forgets", 50,
+    "THE MAKER FORGETS THE MAKE. Stagnation at maximum. The "
+    "end-of-tape spool, the lights at full, and the cathedral "
+    "exhaling without him.",
+    [track("rain", 0.20, [n("A#3", 1, 1, 28, 0.28)]),
+     track("fluorescent_hum", 0.20, [n("A2", 1, 1, 28, 0.32)]),
+     track("ambient_drone", 0.20, [n("D#2", 1, 1, 28, 0.28)]),
+     track("slowstick_pad", 0.18,
+           hold(["D#3", "G3", "A#3"], 1, 24, 0.22))])
+
+bed("vol5_finale_room_walked_out", 52,
+    "THE ROOM WALKED OUT. Three visitors claimed. Everything has "
+    "dropped out except the Demon's pad, held alone and a half-step "
+    "out of tune with the room it is left in.",
+    [track("slowstick_pad", 0.26, hold(["F2", "B2"], 1, 26, 0.28)),
+     track("ambient_drone", 0.18, [n("F1", 1, 1, 28, 0.24)])])
+
+bed("vol5_finale_shift_ends", 50,
+    "MIDNIGHT, AND BEHIND. The workbench lamp clicks off. Then "
+    "nothing, for longer than is comfortable, which is the point.",
+    [track("fluorescent_hum", 0.22, [n("A2", 1, 1, 12, 0.34)]),
+     track("ambient_drone", 0.24, [n("D2", 1, 1, 14, 0.32)]),
+     track("slowstick_pad", 0.20, hold(["D3", "F3", "A3"], 1, 12, 0.24)),
+     track("soft_sine", 0.14, [n("D4", 7, 1, 6, 0.16)])])
+
+bed("vol5_finale_inertia_fallback", 46,
+    "THE ROOM SAT ON HIM. The generic stagnation fallback: the room "
+    "is exhausted, all motion has stopped, and the music is doing as "
+    "little as music can do and still be there.",
+    [track("ambient_drone", 0.28, [n("A#1", 1, 1, 28, 0.38)]),
+     track("slowstick_pad", 0.18, hold(["A#2", "D#3"], 1, 24, 0.22))])
+
+# Priestess · the four finales the board can actually reach.
+bed("vol5_priestess_finale_session_empty", 50,
+    "THE CHOOSE-YOUR-OWN DIDN'T RENDER (stagnation). The booked time "
+    "ends with nothing worth keeping in it. The BLANK · don't reuse "
+    "label, again.",
+    [track("rain", 0.14, [n("A#3", 1, 1, 28, 0.24)]),
+     track("ambient_drone", 0.24, [n("E1", 1, 1, 28, 0.32)]),
+     track("slowstick_pad", 0.20,
+           hold(["E3", "G3", "B3"], 1, 24, 0.22))])
+
+bed("vol5_priestess_finale_listener_breaks", 48,
+    "POMEGRANATE HOUR RETURNED (doubt). The thing she made comes "
+    "back at her through the room, and she lets it record her "
+    "instead.",
+    [track("ambient_drone", 0.24, [n("E1", 1, 1, 28, 0.32)]),
+     track("slowstick_pad", 0.26,
+           hold(["E3", "G3", "B3"], 1, 12, 0.28)
+           + hold(["D#3", "F#3", "A#3"], 5, 14, 0.26)),
+     track("soft_sine", 0.14, [n("B4", 6, 1, 7, 0.18)])])
+
+bed("vol5_priestess_finale_walked_out", 50,
+    "THE AUDIENCE STOPPED WAITING (three claimed). The silences they "
+    "left behind, played back — not nothing, the wrong thing.",
+    [track("ambient_drone", 0.22, [n("A1", 1, 1, 28, 0.30)]),
+     track("slowstick_pad", 0.24, hold(["A2", "C3", "F3"], 1, 26, 0.26)),
+     track("soft_sine", 0.12, [n("F4", 4, 3, 8, 0.16)])])
+
+bed("vol5_priestess_finale_shift_ends", 52,
+    "THE NIGHT RAN OUT (shift over). The lamp shuts itself off on "
+    "her own timer, with people still in the other room who did not "
+    "get their turn.",
+    [track("fluorescent_hum", 0.16, [n("A2", 1, 1, 12, 0.28)]),
+     track("ambient_drone", 0.24, [n("E1", 1, 1, 14, 0.32)]),
+     track("slowstick_pad", 0.20, hold(["E3", "G3", "B3"], 1, 12, 0.24)),
+     track("soft_sine", 0.14, [n("E4", 7, 1, 6, 0.16)])])
 
 
 # ── beds that were already on disk and nothing pointed at ──────────
@@ -800,6 +965,96 @@ ADOPT = [
      "The warehouse's own note. Longer and lower than the vol5 warehouse "
      "drone, and it does not develop."),
 ]
+
+
+# ── catalog text that had drifted off the board ────────────────────
+# The B-side entries were written for an earlier staging of the five
+# arcana. Reading them and believing them is how this pass first wrote
+# a modem rack under St Jude's Sunday morning. The board of record is
+# `resources/games/<arcana>/setup_*.json`; these titles and
+# descriptions are corrected to it. Ids stay put — they are storage
+# keys, and the Music Player shows the title.
+RETITLE = {
+    "vol5_docket": (
+        "The Friday Helm",
+        "Tarot Gauntlet · Emperor · easy-mode bed. D'Ambrosio's, 8:14 PM, "
+        "a normal Friday. The dining room through the wall and a service "
+        "running itself."),
+    "vol5_first_session": (
+        "Nine-Oh-Six",
+        "Tarot Gauntlet · Emperor · medium-mode bed. The riverboat at "
+        "9:06 AM, the produce contract renewed or not. Empty dining room, "
+        "a cooler cycling, a telephone about to ring."),
+    "vol5_appeal": (
+        "Six Weeks Apart",
+        "Tarot Gauntlet · Emperor · hard-mode bed. Sunday brunch, first "
+        "Sunday of an even month, the room full and everyone able to hear "
+        "everyone."),
+    "vol5_green_phosphor": (
+        "The Service Has Ended",
+        "Tarot Gauntlet · Hierophant · easy-mode bed. St Jude's, 10:42 AM "
+        "Sunday. The nave emptying, one organ chord still coming out of "
+        "the stone."),
+    "vol5_long_signal": (
+        "Table Seventeen",
+        "Tarot Gauntlet · Hierophant · medium-mode bed. D'Ambrosio's, "
+        "11:47 AM, table 17 at the stern rail. A conversation that has "
+        "not started yet."),
+    "vol5_broadcast_night": (
+        "The Second Phone Call",
+        "Tarot Gauntlet · Hierophant · hard-mode bed. The park bandstand, "
+        "3:18 PM, after brunch. A band shell with nothing in it and a ring "
+        "that comes back."),
+    # Right room, wrong clock — music unchanged, text corrected.
+    "vol5_sinking_feeling": (
+        "Sinking Feeling",
+        "Tarot Gauntlet · Magician · easy-mode bed. The cathedral, 7:14 PM, "
+        "a quiet evening. Low river lap outside and a distant freight horn: "
+        "the riverside knowing what's coming and taking its time."),
+    "vol5_cicada_session": (
+        "Cicada Session",
+        "Tarot Gauntlet · Priestess · easy-mode bed. Elicia's bungalow, "
+        "6:42 PM, cardboard boxes half-filled. The cicadas outside louder "
+        "than they should be."),
+    "vol5_long_quiet": (
+        "The Long Quiet",
+        "Tarot Gauntlet · Priestess · medium-mode bed. The bungalow at "
+        "8:14 PM, the shard on the third shelf. The cicadas have gone and "
+        "what is left is the room's own noise floor."),
+    "vol5_tape_witness": (
+        "Tape Witness",
+        "Tarot Gauntlet · Priestess · hard-mode bed. 11:42 PM, the storage "
+        "closet door slightly ajar. The house is dark on the other side of "
+        "the doorway."),
+    "vol5_harvest_dinner": (
+        "Harvest Dinner",
+        "Tarot Gauntlet · Empress · medium-mode bed. The riverboat, 4:44 PM, "
+        "the staff family meal before service. The deck has cooled and the "
+        "table is set anyway."),
+    "vol5_ice_in_the_river": (
+        "Ice in the River",
+        "Tarot Gauntlet · Empress · hard-mode bed. 10:42 PM, and Dante sent "
+        "you down to the back room. Cold, and everyone at the table knows."),
+}
+
+
+def retitle_catalog(cat_path):
+    cat = json.loads(open(cat_path, encoding="utf-8").read())
+    by_id = {e["id"]: e for e in cat}
+    changed = 0
+    for tid, (title, desc) in RETITLE.items():
+        e = by_id.get(tid)
+        if e is None:
+            print("  MISSING  %s" % tid)
+            continue
+        if e.get("title") != title or e.get("desc") != desc:
+            print("  text   %-32s %s" % (tid, title))
+            e["title"] = title
+            e["desc"] = desc
+            changed += 1
+    with open(cat_path, "w", encoding="utf-8") as f:
+        f.write(json.dumps(cat, indent=1, ensure_ascii=False) + "\n")
+    print("\n%d entr(ies) retitled" % changed)
 
 
 def adopt_into_catalog(cat_path):
@@ -875,9 +1130,12 @@ def main():
             print("%-32s %s" % (tid, BEDS[tid]["note"].split(".")[0]))
         print("\n%d bed(s)" % len(BEDS))
         return 0
+    cat_path = os.path.join(ROOT, "godot", "resources", "music_catalog.json")
     if "--catalog" in sys.argv:
-        adopt_into_catalog(os.path.join(
-            ROOT, "godot", "resources", "music_catalog.json"))
+        adopt_into_catalog(cat_path)
+        return 0
+    if "--retitle" in sys.argv:
+        retitle_catalog(cat_path)
         return 0
     only = [a for a in sys.argv[1:] if not a.startswith("--")]
     os.makedirs(COMPS, exist_ok=True)

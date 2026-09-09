@@ -1406,6 +1406,47 @@ key at the loss screen; it just never plays anything), plus
 gauntlet_win / gauntlet_loss. Then the 22 character themes, which
 would give every principal a signature on `show`.
 
+**2026-09-11 (xi) · the description was not the board — a correction
+to (x).** Checking the fifteen new scenario beds against
+`setup_*.json` found that the catalog descriptions they were written
+from had themselves drifted. The EMPEROR's three describe a courthouse
+(brass clock, radiator, appellate hearing) and every Emperor scenario
+is on the riverboat; the HIEROPHANT's three describe a BBS night and a
+ham band and the board is a Sunday circuit — St Jude's after the
+service, table 17 at brunch, the bandstand at 3:18 PM. Six beds
+re-authored to the board as it is and twelve catalog entries retitled
+and re-described through `author_vn_beds.py --retitle` (The Friday
+Helm · Nine-Oh-Six · Six Weeks Apart · The Service Has Ended · Table
+Seventeen · The Second Phone Call, plus clock fixes on the Magician's
+easy, all three Priestess and two Empress). The rule now written into
+the audio playbook: **`resources/games/<arcana>/setup_*.json` is the
+board of record** — the game reads it, so it is maintained; the
+catalog's `desc` is prose nothing checks, so it rots. Read the setup
+first. `audio_reference_audit.py` gained a structural half of the
+check (a `_BGM_BY_SCENARIO` key whose arcana × difficulty no scenario
+defines now fails); nothing automatic can tell you the prose has moved
+to another building.
+
+**2026-09-11 (xii) · the endings get their music.** Every gauntlet run
+ends on a win screen or a named Finale and neither played anything but
+a one-shot SFX. Thirteen stings authored — two shared (THE LEAP (won)
+and TWENTY-FOUR HOURS (reversed): the same two chords taken opposite
+ways, and the win is the only cadence in the gauntlet's music) plus
+the Magician's seven and the four Priestess finales the bungalow board
+can actually reach. `_audio_ending()` prefers the named sting and
+falls back to the shared one, so all 22 arcana end on music now and a
+new named sting is one table entry. Also found and fixed: the
+Priestess milestone block matched SIX finale ids from the
+recording-booth staging, none of which exist in the bungalow board's
+finale.json, so no `milestone:priestess_finale:*` could ever unlock —
+rewritten by trigger. New gate `finale_id_audit.py` (27 id references
+across 22 arcana, 0 dead; the arcana guard is scoped to the FUNCTION,
+or an arcana-agnostic helper like `_loss_cg_path` inherits a guard
+that isn't its own). NEXT: the twenty other arcana have 4-5 finales
+each and no named stings (they take the shared one); `_loss_cg_path`
+names finale CGs that may not exist — an image-reference audit is the
+same shape as the audio one; and the 22 character themes remain.
+
 **2026-08-19 · PER-STICK VOICE SWEEP VERDICT (voice draft 4).**
 Ran the leakage grep (TODO/WIP/placeholder/implemented/deferred/
 stub) and a string survey across EVERY stick directory: estuary_4,
