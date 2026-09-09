@@ -1283,6 +1283,32 @@ ceiling was cast for escaped rays: five leak 1–2 rays of 27 (doorways),
 and the diner's formal dining room's 40 % is the RIVER through its west
 windows, not a hole. The sets are closed; nobody needs to look again.
 
+**2026-09-11 (v) · the gauntlet's three copies of every board.** A
+gauntlet space lives in the location JSON (the board), the host's
+SPACE_MAP (world positions) and TarotGauntletGame's hand-copied
+mirror (used standalone) — and the mirror's own comment, "when you
+update a host's SPACE_MAP, copy the change here too", was the only
+thing holding them together. It had rotted: the Magician's last five
+arcana stations (star, moon, sun, judgement, world) never reached the
+mirror, so a standalone Magician board had no vantage for them;
+D'AMBROSIO'S BOOTH_1 AND BOOTH_6 WERE SWAPPED against build_diner.py's
+south→north numbering (Booth_1 at y −3.75, Booth_6 at +3.75 — the
+builder settled it, the host was right, the mirror walked the player
+to the wrong end of the alcove row); the hostess stand kept its
+pre-playtest position; and precipice_door — a THRESHOLD liminal
+station — was missing from the mirror entirely. All fixed, and
+`space_map_audit.py` now holds the three copies to each other as a
+suite gate (hosts paired to locations by key overlap, since the
+diner's host is DinerGauntletHost and its location id is
+"dambrosios"; symbolic floor constants resolved from the host).
+Three locations are declared KNOWN_DIVERGENT: ember_ash_office,
+roberts_house and the_hierophant_circuit have host tables describing
+an earlier staging, the game falls back to the mirror for them, and
+the audit checks only that the mirror covers the JSON's board.
+
+Also checked and clean: all four liminal-tagged locations bind the
+LiminalProximityController, so no liminal tag is inert.
+
 **2026-08-19 · PER-STICK VOICE SWEEP VERDICT (voice draft 4).**
 Ran the leakage grep (TODO/WIP/placeholder/implemented/deferred/
 stub) and a string survey across EVERY stick directory: estuary_4,

@@ -706,6 +706,21 @@ failure paths separately before concluding anything.
   audit only saw it once the bed slid into them. When moving any
   assembly, grep its sibling parts for literals.
 
+### 2026-09-11 · a comment that says "copy this by hand" is a bug waiting
+
+- **Every hand-synced duplicate rots, and the comment saying to sync
+  it is the tell.** The gauntlet's standalone vantage mirror carried
+  "when you update a host's SPACE_MAP, copy the change here too" and
+  had five missing stations, two swapped booths and a stale podium.
+  When you find that sentence, write the audit instead of trusting it.
+- **Pair tables by CONTENT, not by name.** The diner's host is
+  DinerGauntletHost and its location id is "dambrosios"; matching on
+  key overlap paired all 23 correctly and, better, told the truth
+  about the three whose host serves a different board.
+- **When two tables disagree, ask the builder.** Booth_1 was at +3.75
+  in one and −3.75 in the other; build_diner.py's boxes settled it in
+  one query. The geometry is the source; the tables are copies.
+
 ### 2026-09-10 (iii) · the claim is in the source; audit the source
 
 - **The phantom-surface bug is findable statically.** Every detail

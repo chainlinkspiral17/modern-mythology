@@ -155,6 +155,18 @@ for CLS in POKE CHAIR DESK LANE BED OUTSIDE; do
         echo "$GOUT" | grep "^   $CLS"
         echo "REGRESSION  $N $CLS grammar break(s) (ceiling 0)"; exit 1; fi
 done
+# ── Space-map gate (2026-09-11) ───────────────────────────────
+# A gauntlet space lives in three places: the location JSON (the
+# board), the host's SPACE_MAP (world positions) and the gauntlet's
+# hand-copied mirror (standalone). The mirror's own comment said "copy
+# the change here too", and it had rotted: five Magician stations
+# missing, D'Ambrosio's booth_1/booth_6 swapped against the builder's
+# numbering, precipice_door absent. Zero.
+echo "── space_map_audit.py ──"
+SPOUT="$(python3 space_map_audit.py 2>/dev/null)" || { echo "$SPOUT"; exit 1; }
+echo "$SPOUT" | tail -1
+echo ""
+
 # ── Mood-vs-clock gate (2026-09-11) ───────────────────────────
 # A mood is a claim about time and light. ch23_sleep ran five midnight
 # bedrooms under dawn_warm for a month because the mood was placed once

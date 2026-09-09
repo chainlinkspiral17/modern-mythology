@@ -2707,7 +2707,15 @@ func _render_board() -> void:
 # update a host's SPACE_MAP, copy the change here too — single
 # source of truth would be nicer but the host has scene-tree
 # specifics (player NodePath etc.) that don't make sense in a
-# shared resource.
+# shared resource. tools/audit/space_map_audit.py holds the three
+# copies (this, the host, the location JSON) to each other and is a
+# suite gate — the instruction above is no longer on trust.
+#
+# THREE locations are known-divergent and declared in that audit:
+# ember_ash_office, roberts_house and the_hierophant_circuit have host
+# SPACE_MAPs describing an EARLIER staging of the same place. The game
+# tries the host first and falls back here, so those boards run on this
+# table; do not "sync" them without deciding which staging is live.
 const _LOCATION_SCENE_PATHS := {
 	"dambrosios":          "res://scenes/locales/diner.tscn",
 	# The Magician board loaded the LEGACY SHELL (locales/cathedral,
@@ -2802,16 +2810,20 @@ const _STANDALONE_SPACE_VANTAGES := {
 	},
 	"dambrosios": {
 		"parking_lot":    [+12.0,  +0.0, 180.0],
-		"hostess_stand":  [+7.6,   -0.5, 180.0],
+		"hostess_stand":  [+7.0,   -0.7, 180.0],   # podium centered in the entry post-playtest
 		"back_door":      [-7.5,   -5.5,  90.0],
 		"bar":            [-12.0,  +4.5, 270.0],
-		"booth_1":        [-7.95,  +3.75, 0.0],
+		# 2026-09-11 drift fix: booths are numbered SOUTH→NORTH in
+		# build_diner.py (Booth_1 at by −3.75, Booth_6 at +3.75). This
+		# mirror had 1 and 6 swapped, so a standalone board walked the
+		# player to the wrong end of the alcove row.
+		"booth_1":        [-7.95,  -3.75, 0.0],
 		"kitchen_alcove": [-6.0,   -5.0,  90.0],
 		"grill":          [-4.75,  -5.55, 90.0],
 		"dish_station":   [+4.0,   -5.55, 90.0],
 		"order_window":   [-5.5,   -3.95, 90.0],
 		"booth_4":        [-7.95,  +0.75,  0.0],
-		"booth_6":        [-7.95,  -2.25,  0.0],
+		"booth_6":        [-7.95,  +3.75,  0.0],
 		"counter":        [-0.85,  -4.1, 159.0],   # John behind counter, gaze NE
 		                                            # across the dining floor.
 		                                            # User-captured 2026-06-21.
@@ -2825,6 +2837,7 @@ const _STANDALONE_SPACE_VANTAGES := {
 		"bathroom":       [+7.0,   -4.7,  90.0],
 		"card_wall":      [+0.0,   +8.28, 270.0],
 		"river_window":   [-15.0,  +0.0,   0.0],
+		"precipice_door": [+1.20,  +8.4,  90.0],   # hidden door at the back of the hallway
 	},
 	# Cathedral (Magician) — mirrors CathedralGauntletHost.SPACE_MAP
 	"cathedral": {
@@ -2848,6 +2861,14 @@ const _STANDALONE_SPACE_VANTAGES := {
 		"temperance":     [+5.0,  -3.0, 180.0],
 		"devil":          [+8.0,  -5.0, 180.0],
 		"tower":          [+6.0,  -2.0,  90.0],
+		# 2026-09-11 drift fix: the last five arcana stations existed in
+		# CathedralGauntletHost but never reached this mirror, so a
+		# standalone Magician board had no vantage for them.
+		"star":           [-5.0,  -3.0,  90.0],   # cold LED rig
+		"moon":           [-4.0,  -6.0,  90.0],   # reflecting pool, facing north
+		"sun":            [+2.0,  -7.0,  90.0],   # sodium-vapor lamp + chair
+		"judgement":      [-1.5,  -7.0,  90.0],   # blank stage
+		"world":          [+10.0, +0.0, 180.0],   # wireframe globe armature
 	},
 	# Elicia's bungalow (Priestess) — mirrors BungalowGauntletHost.SPACE_MAP
 	"elicia_bungalow": {
