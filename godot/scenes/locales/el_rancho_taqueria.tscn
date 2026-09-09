@@ -357,3 +357,33 @@ metadata/fov = 45.0
 position = Vector3(0.503, 1.612, -3.716)
 rotation = Vector3(-0.2618, 2.3562, 0.0)
 metadata/fov = 45.0
+
+; practicals authored by practical_author.py (2026-09-11):
+; every visible fixture is also a light (_LIGHTING_PLAYBOOK.md)
+[node name="Festoon_Bulb_0_0_Practical" type="OmniLight3D" parent="."]
+position = Vector3(-3.100, 2.600, -1.920)
+light_color = Color(0.940, 0.840, 0.660, 1)
+light_energy = 1.20
+shadow_enabled = false
+omni_range = 5.20
+
+[node name="Fluor_0_Tube_Practical" type="OmniLight3D" parent="."]
+position = Vector3(0.000, 2.720, -1.800)
+light_color = Color(0.920, 0.920, 0.850, 1)
+light_energy = 1.30
+shadow_enabled = false
+omni_range = 4.35
+
+[node name="Festoon_Bulb_1_0_Practical" type="OmniLight3D" parent="."]
+position = Vector3(-3.100, 2.600, -3.960)
+light_color = Color(0.940, 0.840, 0.660, 1)
+light_energy = 1.20
+shadow_enabled = false
+omni_range = 5.20
+
+[node name="Fluor_1_Tube_Practical" type="OmniLight3D" parent="."]
+position = Vector3(0.000, 2.720, -4.200)
+light_color = Color(0.920, 0.920, 0.850, 1)
+light_energy = 1.30
+shadow_enabled = false
+omni_range = 4.35

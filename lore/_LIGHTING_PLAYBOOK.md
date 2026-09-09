@@ -151,6 +151,28 @@ Position note: lamp omnis are placed AT the lamp-head mesh position
 
 ## Recent lessons
 
+### 2026-09-11 · 158 fixtures that gave no light, and the tool that lights them
+
+- **The 2026-08-19 lesson had not held.** A repo count found 205
+  fixtures standing in rooms and emitting nothing: bulbs in pendants,
+  tubes in fluorescent frames, porch fixtures on twenty houses, the
+  candles on the Mixing Glass booths, the Magician's dock lamps.
+  `tools/audit/practical_author.py` authors the missing ones straight
+  from the tables above — colour by source, `omni_range` ≈ 2× the
+  fixture's height (clamped per source), energy in the published band,
+  `shadow_enabled = false`, named `<Fixture>_Practical` so the .tscn
+  stays grep-able to its geometry.
+- **The budget is what the camera sees.** 8–10 per locale is the rule,
+  so a room with twenty dark fixtures gets ten — the ones NEAREST A
+  PRESET CAMERA, because the rule was always about what is in frame.
+- **The emitter is not the housing.** `FluorFrame`, `Lamp_Canopy`,
+  `Sconce_Back`, the shade and the cord are geometry around a light,
+  not the light; matching them would put an omni inside an opaque box.
+  Same for a fixture the fiction says is broken, burnt or unlit.
+- **First pass: 158 practicals across 48 locales.** Deck read pending —
+  the numbers are the playbook's, but only the screen can say whether
+  the Kwik Stop's three tubes at 1.3 energy are one too many.
+
 ### 2026-08-19 · practicals ship WITH the fixture, not after
 
 - The gauntlet-FP builds shipped a week of new fixtures (work

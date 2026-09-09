@@ -351,3 +351,47 @@ metadata/fov = 45.0
 position = Vector3(0.039, 1.612, -3.183)
 rotation = Vector3(-0.2618, -2.0944, 0.0)
 metadata/fov = 45.0
+
+; practicals authored by practical_author.py (2026-09-11):
+; every visible fixture is also a light (_LIGHTING_PLAYBOOK.md)
+[node name="Fluor_0_1_Tube_Practical" type="OmniLight3D" parent="."]
+position = Vector3(3.000, 3.120, -2.000)
+light_color = Color(0.920, 0.920, 0.850, 1)
+light_energy = 1.30
+shadow_enabled = false
+omni_range = 4.99
+
+[node name="Drafting_2_LampHead_Practical" type="OmniLight3D" parent="."]
+position = Vector3(2.450, 1.300, -3.800)
+light_color = Color(0.950, 0.820, 0.580, 1)
+light_energy = 1.10
+shadow_enabled = false
+omni_range = 2.08
+
+[node name="Fluor_1_1_Tube_Practical" type="OmniLight3D" parent="."]
+position = Vector3(3.000, 3.120, -5.000)
+light_color = Color(0.920, 0.920, 0.850, 1)
+light_energy = 1.30
+shadow_enabled = false
+omni_range = 4.99
+
+[node name="Fluor_0_-1_Tube_Practical" type="OmniLight3D" parent="."]
+position = Vector3(-3.000, 3.120, -2.000)
+light_color = Color(0.920, 0.920, 0.850, 1)
+light_energy = 1.30
+shadow_enabled = false
+omni_range = 4.99
+
+[node name="Drafting_0_LampHead_Practical" type="OmniLight3D" parent="."]
+position = Vector3(-3.150, 1.300, -3.800)
+light_color = Color(0.950, 0.820, 0.580, 1)
+light_energy = 1.10
+shadow_enabled = false
+omni_range = 2.08
+
+[node name="Fluor_1_-1_Tube_Practical" type="OmniLight3D" parent="."]
+position = Vector3(-3.000, 3.120, -5.000)
+light_color = Color(0.920, 0.920, 0.850, 1)
+light_energy = 1.30
+shadow_enabled = false
+omni_range = 4.99

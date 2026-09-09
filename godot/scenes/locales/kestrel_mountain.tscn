@@ -338,3 +338,33 @@ metadata/fov = 45.0
 position = Vector3(0.200, 1.975, 3.299)
 rotation = Vector3(-0.2618, -3.1416, 0.0)
 metadata/fov = 45.0
+
+; practicals authored by practical_author.py (2026-09-11):
+; every visible fixture is also a light (_LIGHTING_PLAYBOOK.md)
+[node name="Square_Lamp_3_Head_Practical" type="OmniLight3D" parent="."]
+position = Vector3(9.000, 3.750, 30.000)
+light_color = Color(0.950, 0.780, 0.500, 1)
+light_energy = 1.30
+shadow_enabled = false
+omni_range = 5.00
+
+[node name="Square_Lamp_1_Head_Practical" type="OmniLight3D" parent="."]
+position = Vector3(9.000, 3.750, 14.000)
+light_color = Color(0.950, 0.780, 0.500, 1)
+light_energy = 1.30
+shadow_enabled = false
+omni_range = 5.00
+
+[node name="Square_Lamp_0_Head_Practical" type="OmniLight3D" parent="."]
+position = Vector3(-9.000, 3.750, 14.000)
+light_color = Color(0.950, 0.780, 0.500, 1)
+light_energy = 1.30
+shadow_enabled = false
+omni_range = 5.00
+
+[node name="Square_Lamp_2_Head_Practical" type="OmniLight3D" parent="."]
+position = Vector3(-9.000, 3.750, 30.000)
+light_color = Color(0.950, 0.780, 0.500, 1)
+light_energy = 1.30
+shadow_enabled = false
+omni_range = 5.00

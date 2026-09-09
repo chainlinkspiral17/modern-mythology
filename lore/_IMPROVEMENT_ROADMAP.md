@@ -1319,6 +1319,23 @@ raster_substrate.py's EXPRESSION_TINTS (6), so the offline baker's
 FLAT — the lookup's default is no tint, which cannot be told from a
 legitimate one. Brought to parity and gated by `expr_tint_audit.py`.
 
+**2026-09-11 (vii) · the lighting pass the drafting program asked for.**
+Model-chapter quality includes "lighting that models the space", and
+nothing had measured it. Every locale has the three-light foundation
+(median 5 lights, none at zero), but 205 VISIBLE FIXTURES emitted
+nothing — the playbook's cardinal rule, broken 205 times. New
+`practical_author.py` authors them from the playbook's own tables
+(colour by source, range ≈ 2× fixture height, energy in band, shadows
+off, `<Fixture>_Practical` naming), capped at the published budget of
+ten per locale and prioritised by distance to a preset camera, since
+the rule is about what is in frame. 158 authored across 48 locales:
+the Mixing Glass's booth candles, the Pit Stop's five pendants, the
+Kwik Stop's tubes and heat lamps, Cedar Tower's lobby pendants and
+sconces, twenty porch fixtures in the suburbs, the Magician's dock
+lamps. NEXT DRAFT: the Deck read — the numbers are the playbook's but
+only the screen can say whether any room is now over-lit, and the 47
+fixtures beyond the per-locale budget wait on that verdict.
+
 **2026-08-19 · PER-STICK VOICE SWEEP VERDICT (voice draft 4).**
 Ran the leakage grep (TODO/WIP/placeholder/implemented/deferred/
 stub) and a string survey across EVERY stick directory: estuary_4,

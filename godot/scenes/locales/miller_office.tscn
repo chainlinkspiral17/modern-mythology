@@ -358,3 +358,12 @@ metadata/fov = 45.0
 position = Vector3(-0.518, 1.612, -4.550)
 rotation = Vector3(-0.2618, -2.6180, 0.0)
 metadata/fov = 45.0
+
+; practicals authored by practical_author.py (2026-09-11):
+; every visible fixture is also a light (_LIGHTING_PLAYBOOK.md)
+[node name="Chand_Candle_0_Practical" type="OmniLight3D" parent="."]
+position = Vector3(0.340, 2.260, -3.700)
+light_color = Color(1.000, 0.720, 0.420, 1)
+light_energy = 0.55
+shadow_enabled = false
+omni_range = 2.00

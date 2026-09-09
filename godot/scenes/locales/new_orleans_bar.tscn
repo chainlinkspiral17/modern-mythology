@@ -365,3 +365,19 @@ metadata/fov = 42.0
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.9, 1.15, -0.9)
 rotation = Vector3(-0.5253, 0.8646, 0.0)
 metadata/fov = 42.0
+
+; practicals authored by practical_author.py (2026-09-11):
+; every visible fixture is also a light (_LIGHTING_PLAYBOOK.md)
+[node name="Pendant_0_Bulb_Practical" type="OmniLight3D" parent="."]
+position = Vector3(-2.000, 2.700, -2.200)
+light_color = Color(0.950, 0.780, 0.500, 1)
+light_energy = 1.30
+shadow_enabled = false
+omni_range = 5.00
+
+[node name="Pendant_1_Bulb_Practical" type="OmniLight3D" parent="."]
+position = Vector3(2.000, 2.700, -2.200)
+light_color = Color(0.950, 0.780, 0.500, 1)
+light_energy = 1.30
+shadow_enabled = false
+omni_range = 5.00

@@ -383,3 +383,61 @@ metadata/fov = 45.0
 position = Vector3(-17.648, 1.612, 1.500)
 rotation = Vector3(-0.2618, 1.5708, 0.0)
 metadata/fov = 45.0
+
+; practicals authored by practical_author.py (2026-09-11):
+; every visible fixture is also a light (_LIGHTING_PLAYBOOK.md)
+[node name="Miller_Porch_Fixture_Practical" type="OmniLight3D" parent="."]
+position = Vector3(21.250, 2.250, -8.400)
+light_color = Color(0.940, 0.840, 0.660, 1)
+light_energy = 1.20
+shadow_enabled = false
+omni_range = 4.50
+
+[node name="Lot1414_Porch_Fixture_Practical" type="OmniLight3D" parent="."]
+position = Vector3(-0.750, 2.250, -8.400)
+light_color = Color(0.940, 0.840, 0.660, 1)
+light_energy = 1.20
+shadow_enabled = false
+omni_range = 4.50
+
+[node name="Caldwell_Porch_Fixture_Practical" type="OmniLight3D" parent="."]
+position = Vector3(-19.250, 2.250, 8.400)
+light_color = Color(0.940, 0.840, 0.660, 1)
+light_energy = 1.20
+shadow_enabled = false
+omni_range = 4.50
+
+[node name="Lot1402_Porch_Fixture_Practical" type="OmniLight3D" parent="."]
+position = Vector3(-22.750, 2.250, -8.400)
+light_color = Color(0.940, 0.840, 0.660, 1)
+light_energy = 1.20
+shadow_enabled = false
+omni_range = 4.50
+
+[node name="Kowalski_Porch_Fixture_Practical" type="OmniLight3D" parent="."]
+position = Vector3(4.750, 2.250, 8.400)
+light_color = Color(0.940, 0.840, 0.660, 1)
+light_energy = 1.20
+shadow_enabled = false
+omni_range = 4.50
+
+[node name="Salinas_Porch_Fixture_Practical" type="OmniLight3D" parent="."]
+position = Vector3(-7.250, 2.250, 8.400)
+light_color = Color(0.940, 0.840, 0.660, 1)
+light_energy = 1.20
+shadow_enabled = false
+omni_range = 4.50
+
+[node name="Lot1420_Porch_Fixture_Practical" type="OmniLight3D" parent="."]
+position = Vector3(10.250, 2.250, -8.400)
+light_color = Color(0.940, 0.840, 0.660, 1)
+light_energy = 1.20
+shadow_enabled = false
+omni_range = 4.50
+
+[node name="Lot1408_Porch_Fixture_Practical" type="OmniLight3D" parent="."]
+position = Vector3(-11.750, 2.250, -8.400)
+light_color = Color(0.940, 0.840, 0.660, 1)
+light_energy = 1.20
+shadow_enabled = false
+omni_range = 4.50

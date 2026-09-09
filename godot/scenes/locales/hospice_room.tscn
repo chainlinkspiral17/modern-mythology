@@ -330,3 +330,12 @@ metadata/fov = 38.0
 position = Vector3(-0.962, 0.825, -4.055)
 rotation = Vector3(-0.2618, 0.7854, 0.0)
 metadata/fov = 42.0
+
+; practicals authored by practical_author.py (2026-09-11):
+; every visible fixture is also a light (_LIGHTING_PLAYBOOK.md)
+[node name="BedLamp_Column_Practical" type="OmniLight3D" parent="."]
+position = Vector3(0.970, 0.920, -4.700)
+light_color = Color(0.950, 0.780, 0.500, 1)
+light_energy = 1.30
+shadow_enabled = false
+omni_range = 2.00

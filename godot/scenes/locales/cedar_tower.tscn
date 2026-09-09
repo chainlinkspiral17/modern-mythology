@@ -426,3 +426,75 @@ metadata/fov = 42.0
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0, 1.5, 1.2)
 rotation = Vector3(0, 0, 0)
 metadata/fov = 42.0
+
+; practicals authored by practical_author.py (2026-09-11):
+; every visible fixture is also a light (_LIGHTING_PLAYBOOK.md)
+[node name="Studio_TaskLamp_0_Head_Practical" type="OmniLight3D" parent="."]
+position = Vector3(-2.830, 6.120, -4.700)
+light_color = Color(0.950, 0.820, 0.580, 1)
+light_energy = 1.10
+shadow_enabled = false
+omni_range = 3.50
+
+[node name="Lobby_Pendant_0_Bulb_Practical" type="OmniLight3D" parent="."]
+position = Vector3(-2.400, 2.780, -4.000)
+light_color = Color(0.950, 0.780, 0.500, 1)
+light_energy = 1.30
+shadow_enabled = false
+omni_range = 5.00
+
+[node name="Lobby_Pendant_1_Bulb_Practical" type="OmniLight3D" parent="."]
+position = Vector3(2.400, 2.780, -4.000)
+light_color = Color(0.950, 0.780, 0.500, 1)
+light_energy = 1.30
+shadow_enabled = false
+omni_range = 5.00
+
+[node name="Studio_TaskLamp_1_Head_Practical" type="OmniLight3D" parent="."]
+position = Vector3(1.570, 6.120, -4.700)
+light_color = Color(0.950, 0.820, 0.580, 1)
+light_energy = 1.10
+shadow_enabled = false
+omni_range = 3.50
+
+[node name="Lobby_Sconce_-1.4_Back_Practical" type="OmniLight3D" parent="."]
+position = Vector3(-1.400, 2.100, -7.860)
+light_color = Color(0.950, 0.780, 0.500, 1)
+light_energy = 1.30
+shadow_enabled = false
+omni_range = 4.20
+
+[node name="Lobby_Sconce_+1.4_Back_Practical" type="OmniLight3D" parent="."]
+position = Vector3(1.400, 2.100, -7.860)
+light_color = Color(0.950, 0.780, 0.500, 1)
+light_energy = 1.30
+shadow_enabled = false
+omni_range = 4.20
+
+[node name="Portal_Sconce_0_-9_Back_Practical" type="OmniLight3D" parent="."]
+position = Vector3(-8.980, 16.900, -6.000)
+light_color = Color(0.950, 0.780, 0.500, 1)
+light_energy = 1.30
+shadow_enabled = false
+omni_range = 5.00
+
+[node name="Portal_Sconce_0_+9_Back_Practical" type="OmniLight3D" parent="."]
+position = Vector3(8.980, 16.900, -6.000)
+light_color = Color(0.950, 0.780, 0.500, 1)
+light_energy = 1.30
+shadow_enabled = false
+omni_range = 5.00
+
+[node name="Portal_Sconce_1_-9_Back_Practical" type="OmniLight3D" parent="."]
+position = Vector3(-8.980, 16.900, -10.500)
+light_color = Color(0.950, 0.780, 0.500, 1)
+light_energy = 1.30
+shadow_enabled = false
+omni_range = 5.00
+
+[node name="Portal_Sconce_1_+9_Back_Practical" type="OmniLight3D" parent="."]
+position = Vector3(8.980, 16.900, -10.500)
+light_color = Color(0.950, 0.780, 0.500, 1)
+light_energy = 1.30
+shadow_enabled = false
+omni_range = 5.00

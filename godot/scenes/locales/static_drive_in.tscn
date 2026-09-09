@@ -320,3 +320,33 @@ offset_top = 360.0
 offset_right = 520.0
 offset_bottom = 980.0
 script = ExtResource("14_dbgm")
+
+; practicals authored by practical_author.py (2026-09-11):
+; every visible fixture is also a light (_LIGHTING_PLAYBOOK.md)
+[node name="Fluor_0_Tube_Practical" type="OmniLight3D" parent="."]
+position = Vector3(-1.500, 2.820, -2.000)
+light_color = Color(0.920, 0.920, 0.850, 1)
+light_energy = 1.30
+shadow_enabled = false
+omni_range = 4.51
+
+[node name="Fluor_1_Tube_Practical" type="OmniLight3D" parent="."]
+position = Vector3(1.500, 2.820, -2.000)
+light_color = Color(0.920, 0.920, 0.850, 1)
+light_energy = 1.30
+shadow_enabled = false
+omni_range = 4.51
+
+[node name="Fluor_2_Tube_Practical" type="OmniLight3D" parent="."]
+position = Vector3(-1.500, 2.820, -4.000)
+light_color = Color(0.920, 0.920, 0.850, 1)
+light_energy = 1.30
+shadow_enabled = false
+omni_range = 4.51
+
+[node name="Fluor_3_Tube_Practical" type="OmniLight3D" parent="."]
+position = Vector3(1.500, 2.820, -4.000)
+light_color = Color(0.920, 0.920, 0.850, 1)
+light_energy = 1.30
+shadow_enabled = false
+omni_range = 4.51

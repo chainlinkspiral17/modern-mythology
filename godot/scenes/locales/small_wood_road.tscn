@@ -335,3 +335,12 @@ metadata/fov = 45.0
 position = Vector3(-1.454, 1.612, 3.755)
 rotation = Vector3(-0.2618, 2.8798, 0.0)
 metadata/fov = 45.0
+
+; practicals authored by practical_author.py (2026-09-11):
+; every visible fixture is also a light (_LIGHTING_PLAYBOOK.md)
+[node name="Small_House_Porch_Fixture_Practical" type="OmniLight3D" parent="."]
+position = Vector3(-14.400, 2.250, 22.750)
+light_color = Color(0.940, 0.840, 0.660, 1)
+light_energy = 1.20
+shadow_enabled = false
+omni_range = 4.50

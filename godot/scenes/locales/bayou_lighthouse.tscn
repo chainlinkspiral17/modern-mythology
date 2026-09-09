@@ -305,3 +305,19 @@ offset_top = 360.0
 offset_right = 520.0
 offset_bottom = 980.0
 script = ExtResource("14_dbgm")
+
+; practicals authored by practical_author.py (2026-09-11):
+; every visible fixture is also a light (_LIGHTING_PLAYBOOK.md)
+[node name="Lamp_Reservoir_Practical" type="OmniLight3D" parent="."]
+position = Vector3(1.880, 0.920, 0.200)
+light_color = Color(0.950, 0.780, 0.500, 1)
+light_energy = 1.30
+shadow_enabled = false
+omni_range = 2.00
+
+[node name="TheriotSkiff_BowLamp_Practical" type="OmniLight3D" parent="."]
+position = Vector3(2.000, 0.600, 3.200)
+light_color = Color(0.950, 0.780, 0.500, 1)
+light_energy = 1.30
+shadow_enabled = false
+omni_range = 2.00

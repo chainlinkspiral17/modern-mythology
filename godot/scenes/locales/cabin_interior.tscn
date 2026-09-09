@@ -508,3 +508,19 @@ metadata/fov = 45.0
 position = Vector3(-1.078, 1.612, -5.022)
 rotation = Vector3(-0.2618, -2.8798, 0.0)
 metadata/fov = 45.0
+
+; practicals authored by practical_author.py (2026-09-11):
+; every visible fixture is also a light (_LIGHTING_PLAYBOOK.md)
+[node name="Lantern_Glass_Practical" type="OmniLight3D" parent="."]
+position = Vector3(0.350, 0.960, -2.600)
+light_color = Color(0.950, 0.780, 0.500, 1)
+light_energy = 1.30
+shadow_enabled = false
+omni_range = 2.00
+
+[node name="OilLamp_Font_Practical" type="OmniLight3D" parent="."]
+position = Vector3(0.000, 2.780, -2.900)
+light_color = Color(0.950, 0.780, 0.500, 1)
+light_energy = 1.30
+shadow_enabled = false
+omni_range = 5.00

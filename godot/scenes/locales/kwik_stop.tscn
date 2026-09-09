@@ -467,3 +467,54 @@ metadata/fov = 42.0
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.900, 1.798, 3.852)
 rotation = Vector3(-0.2618, -3.1416, 0.0)
 metadata/fov = 42.0
+
+; practicals authored by practical_author.py (2026-09-11):
+; every visible fixture is also a light (_LIGHTING_PLAYBOOK.md)
+[node name="HotCase_Lamp_Practical" type="OmniLight3D" parent="."]
+position = Vector3(5.000, 1.550, -4.400)
+light_color = Color(0.950, 0.780, 0.500, 1)
+light_energy = 1.30
+shadow_enabled = false
+omni_range = 3.10
+
+[node name="Pizza_HeatLamp_Practical" type="OmniLight3D" parent="."]
+position = Vector3(5.000, 1.450, -5.200)
+light_color = Color(0.950, 0.780, 0.500, 1)
+light_energy = 1.30
+shadow_enabled = false
+omni_range = 2.90
+
+[node name="FluorTube_1_-1_Practical" type="OmniLight3D" parent="."]
+position = Vector3(-2.400, 2.920, -5.000)
+light_color = Color(0.920, 0.920, 0.850, 1)
+light_energy = 1.30
+shadow_enabled = false
+omni_range = 4.67
+
+[node name="FluorTube_0_-1_Practical" type="OmniLight3D" parent="."]
+position = Vector3(-2.400, 2.920, -2.500)
+light_color = Color(0.920, 0.920, 0.850, 1)
+light_energy = 1.30
+shadow_enabled = false
+omni_range = 4.67
+
+[node name="FluorTube_2_-1_Practical" type="OmniLight3D" parent="."]
+position = Vector3(-2.400, 2.920, -7.500)
+light_color = Color(0.920, 0.920, 0.850, 1)
+light_energy = 1.30
+shadow_enabled = false
+omni_range = 4.67
+
+[node name="Therm_Bulb_Practical" type="OmniLight3D" parent="."]
+position = Vector3(-5.200, 1.300, 0.130)
+light_color = Color(0.950, 0.780, 0.500, 1)
+light_energy = 1.30
+shadow_enabled = false
+omni_range = 2.60
+
+[node name="Streetlamp_Head_Practical" type="OmniLight3D" parent="."]
+position = Vector3(-4.100, 4.500, 2.800)
+light_color = Color(1.000, 0.620, 0.260, 1)
+light_energy = 3.00
+shadow_enabled = false
+omni_range = 9.00

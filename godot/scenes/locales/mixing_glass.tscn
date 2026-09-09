@@ -315,3 +315,26 @@ offset_top = 360.0
 offset_right = 520.0
 offset_bottom = 980.0
 script = ExtResource("14_dbgm")
+
+; practicals authored by practical_author.py (2026-09-11):
+; every visible fixture is also a light (_LIGHTING_PLAYBOOK.md)
+[node name="Booth_0_Candle_Practical" type="OmniLight3D" parent="."]
+position = Vector3(-1.500, 0.800, -1.200)
+light_color = Color(1.000, 0.720, 0.420, 1)
+light_energy = 0.55
+shadow_enabled = false
+omni_range = 0.96
+
+[node name="Booth_1_Candle_Practical" type="OmniLight3D" parent="."]
+position = Vector3(-1.500, 0.800, -2.620)
+light_color = Color(1.000, 0.720, 0.420, 1)
+light_energy = 0.55
+shadow_enabled = false
+omni_range = 0.96
+
+[node name="Booth_3_Candle_Practical" type="OmniLight3D" parent="."]
+position = Vector3(-1.500, 0.800, -5.460)
+light_color = Color(1.000, 0.720, 0.420, 1)
+light_energy = 0.55
+shadow_enabled = false
+omni_range = 0.96

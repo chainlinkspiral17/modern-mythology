@@ -812,3 +812,47 @@ metadata/fov = 36.0
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.3, 1.2, 2.9)
 rotation = Vector3(-0.6439, 2.5536, 0.0)
 metadata/fov = 42.0
+
+; practicals authored by practical_author.py (2026-09-11):
+; every visible fixture is also a light (_LIGHTING_PLAYBOOK.md)
+[node name="Booth6_Fluor_Cap_-1_Practical" type="OmniLight3D" parent="."]
+position = Vector3(-8.470, 3.160, -3.750)
+light_color = Color(0.920, 0.920, 0.850, 1)
+light_energy = 1.30
+shadow_enabled = false
+omni_range = 5.06
+
+[node name="Booth6_Fluor_Housing_Practical" type="OmniLight3D" parent="."]
+position = Vector3(-7.950, 3.220, -3.750)
+light_color = Color(0.920, 0.920, 0.850, 1)
+light_energy = 1.30
+shadow_enabled = false
+omni_range = 5.15
+
+[node name="Galley_HeatLamp_3_Housing_Practical" type="OmniLight3D" parent="."]
+position = Vector3(1.225, 1.800, 4.100)
+light_color = Color(0.950, 0.780, 0.500, 1)
+light_energy = 1.30
+shadow_enabled = false
+omni_range = 3.60
+
+[node name="Galley_HeatLamp_4_Housing_Practical" type="OmniLight3D" parent="."]
+position = Vector3(4.450, 1.800, 4.100)
+light_color = Color(0.950, 0.780, 0.500, 1)
+light_energy = 1.30
+shadow_enabled = false
+omni_range = 3.60
+
+[node name="Galley_HeatLamp_2_Housing_Practical" type="OmniLight3D" parent="."]
+position = Vector3(-2.000, 1.800, 4.100)
+light_color = Color(0.950, 0.780, 0.500, 1)
+light_energy = 1.30
+shadow_enabled = false
+omni_range = 3.60
+
+[node name="Galley_HeatLamp_1_Housing_Practical" type="OmniLight3D" parent="."]
+position = Vector3(-5.225, 1.800, 4.100)
+light_color = Color(0.950, 0.780, 0.500, 1)
+light_energy = 1.30
+shadow_enabled = false
+omni_range = 3.60

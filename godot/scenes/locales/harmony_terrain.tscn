@@ -395,3 +395,75 @@ metadata/fov = 55.0
 position = Vector3(-519, -0.5, 350)
 rotation = Vector3(-0.0200003, 0.67, 0)
 metadata/fov = 58.0
+
+; practicals authored by practical_author.py (2026-09-11):
+; every visible fixture is also a light (_LIGHTING_PLAYBOOK.md)
+[node name="NRAspen_LP_Lamp_15_Practical" type="OmniLight3D" parent="."]
+position = Vector3(-425.000, 14.000, -203.500)
+light_color = Color(0.950, 0.780, 0.500, 1)
+light_energy = 1.30
+shadow_enabled = false
+omni_range = 5.00
+
+[node name="NRAspen_LP_Lamp_Head_15_Practical" type="OmniLight3D" parent="."]
+position = Vector3(-425.000, 15.950, -203.500)
+light_color = Color(0.950, 0.780, 0.500, 1)
+light_energy = 1.30
+shadow_enabled = false
+omni_range = 5.00
+
+[node name="NRCedar_LP_Lamp_15_Practical" type="OmniLight3D" parent="."]
+position = Vector3(-425.000, 13.915, -43.500)
+light_color = Color(0.950, 0.780, 0.500, 1)
+light_energy = 1.30
+shadow_enabled = false
+omni_range = 5.00
+
+[node name="NRCedar_LP_Lamp_Head_15_Practical" type="OmniLight3D" parent="."]
+position = Vector3(-425.000, 15.865, -43.500)
+light_color = Color(0.950, 0.780, 0.500, 1)
+light_energy = 1.30
+shadow_enabled = false
+omni_range = 5.00
+
+[node name="NRBirch_LP_Lamp_15_Practical" type="OmniLight3D" parent="."]
+position = Vector3(-425.000, 13.930, -103.500)
+light_color = Color(0.950, 0.780, 0.500, 1)
+light_energy = 1.30
+shadow_enabled = false
+omni_range = 5.00
+
+[node name="NRBirch_LP_Lamp_Head_15_Practical" type="OmniLight3D" parent="."]
+position = Vector3(-425.000, 15.880, -103.500)
+light_color = Color(0.950, 0.780, 0.500, 1)
+light_energy = 1.30
+shadow_enabled = false
+omni_range = 5.00
+
+[node name="WEMag_LP_Lamp_Head_15_Practical" type="OmniLight3D" parent="."]
+position = Vector3(-424.761, 1.001, 177.758)
+light_color = Color(0.950, 0.780, 0.500, 1)
+light_energy = 1.30
+shadow_enabled = false
+omni_range = 2.00
+
+[node name="OTPark_Lamp_W_95_Globe_Practical" type="OmniLight3D" parent="."]
+position = Vector3(-298.750, 8.392, -120.000)
+light_color = Color(0.950, 0.780, 0.500, 1)
+light_energy = 1.30
+shadow_enabled = false
+omni_range = 5.00
+
+[node name="OTPark_Lamp_W_45_Globe_Practical" type="OmniLight3D" parent="."]
+position = Vector3(-286.250, 6.669, -120.000)
+light_color = Color(0.950, 0.780, 0.500, 1)
+light_energy = 1.30
+shadow_enabled = false
+omni_range = 5.00
+
+[node name="OTPark_Lamp_N_95_Globe_Practical" type="OmniLight3D" parent="."]
+position = Vector3(-260.000, 6.349, -163.500)
+light_color = Color(0.950, 0.780, 0.500, 1)
+light_energy = 1.30
+shadow_enabled = false
+omni_range = 5.00

@@ -341,3 +341,12 @@ metadata/fov = 45.0
 position = Vector3(-1.491, 1.612, -3.653)
 rotation = Vector3(-0.2618, -1.8326, 0.0)
 metadata/fov = 45.0
+
+; practicals authored by practical_author.py (2026-09-11):
+; every visible fixture is also a light (_LIGHTING_PLAYBOOK.md)
+[node name="Fluor_Housing_Practical" type="OmniLight3D" parent="."]
+position = Vector3(0.000, 2.560, -2.000)
+light_color = Color(0.920, 0.920, 0.850, 1)
+light_energy = 1.30
+shadow_enabled = false
+omni_range = 4.10

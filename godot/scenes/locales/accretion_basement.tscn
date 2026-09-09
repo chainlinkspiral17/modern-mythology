@@ -355,3 +355,26 @@ metadata/fov = 45.0
 position = Vector3(-0.000, 1.612, -5.852)
 rotation = Vector3(-0.2618, -3.1416, 0.0)
 metadata/fov = 45.0
+
+; practicals authored by practical_author.py (2026-09-11):
+; every visible fixture is also a light (_LIGHTING_PLAYBOOK.md)
+[node name="Hall_A_Fluor_1_Practical" type="OmniLight3D" parent="."]
+position = Vector3(0.000, 2.670, -6.000)
+light_color = Color(0.920, 0.920, 0.850, 1)
+light_energy = 1.30
+shadow_enabled = false
+omni_range = 4.27
+
+[node name="Hall_B_Fluor_0_Practical" type="OmniLight3D" parent="."]
+position = Vector3(3.300, 2.670, -24.000)
+light_color = Color(0.920, 0.920, 0.850, 1)
+light_energy = 1.30
+shadow_enabled = false
+omni_range = 4.27
+
+[node name="Hall_Corner_Fluor_Practical" type="OmniLight3D" parent="."]
+position = Vector3(0.000, 2.670, -24.000)
+light_color = Color(0.920, 0.920, 0.850, 1)
+light_energy = 1.30
+shadow_enabled = false
+omni_range = 4.27
