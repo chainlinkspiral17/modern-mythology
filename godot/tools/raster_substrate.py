@@ -86,13 +86,45 @@ def rasterize(piece_path, out_path, font_px, font_path, tint):
 
 # Expression tints — multipliers applied to fg color.
 # Mono substrates (fg=#ffffff) take the tint full strength.
+#
+# THE SOURCE IS CharLayer.gd's EXPR_TINTS (scenes/game/CharLayer.gd),
+# which the running game applies as modulate. This table only has to
+# match it — and for a long time it held six of its thirty-one, so
+# --all-expressions baked six PNGs and any other expression baked
+# FLAT (the .get() default is no tint at all). Kept in step 2026-09-11;
+# tools/audit/expr_tint_audit.py holds the two to each other.
 EXPRESSION_TINTS = {
-    "neutral":   (1.00, 1.00, 1.00),
-    "happy":     (1.00, 0.96, 0.80),  # warm
-    "sad":       (0.72, 0.82, 1.00),  # cool blue
-    "surprised": (1.00, 1.00, 0.78),  # bright warm
-    "angry":     (1.00, 0.55, 0.50),  # red shift
-    "tired":     (0.78, 0.82, 0.92),  # cool grey
+    "neutral":     (1.00, 1.00, 1.00),
+    "happy":       (1.00, 0.96, 0.80),
+    "excited":     (1.00, 0.96, 0.80),
+    "pleased":     (1.00, 0.96, 0.80),
+    "warm":        (1.00, 0.96, 0.80),
+    "sad":         (0.72, 0.82, 1.00),
+    "melancholy":  (0.72, 0.82, 1.00),
+    "upset":       (0.72, 0.82, 1.00),
+    "surprised":   (1.00, 1.00, 0.78),
+    "shocked":     (1.00, 1.00, 0.78),
+    "wide":        (1.00, 1.00, 0.78),
+    "angry":       (1.00, 0.55, 0.50),
+    "furious":     (1.00, 0.55, 0.50),
+    "frustrated":  (1.00, 0.55, 0.50),
+    "tired":       (0.78, 0.82, 0.92),
+    "nervous":     (0.92, 0.95, 1.00),  # Orphan tokens (2026-08 audit) · 13 words the scripts already
+    "serious":     (0.88, 0.92, 0.98),
+    "focused":     (0.88, 0.92, 0.98),
+    "calculating": (0.88, 0.92, 0.98),
+    "cold":        (0.82, 0.90, 1.00),
+    "thinking":    (0.97, 0.95, 0.88),
+    "considering": (0.97, 0.95, 0.88),
+    "thoughtful":  (0.97, 0.95, 0.88),
+    "patient":     (0.97, 0.95, 0.88),
+    "impressed":   (1.00, 0.97, 0.86),
+    "worried":     (0.92, 0.95, 1.00),
+    "amused":      (1.00, 0.96, 0.80),
+    "softening":   (1.00, 0.97, 0.88),
+    "hurt":        (0.72, 0.82, 1.00),
+    "scared":      (0.92, 0.95, 1.00),
+    "uneasy":      (0.92, 0.95, 1.00),
 }
 
 

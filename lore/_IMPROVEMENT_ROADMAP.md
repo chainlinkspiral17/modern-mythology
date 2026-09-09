@@ -1309,6 +1309,16 @@ the audit checks only that the mirror covers the JSON's board.
 Also checked and clean: all four liminal-tagged locations bind the
 LiminalProximityController, so no liminal tag is inert.
 
+**2026-09-11 (vi) · the sweep for hand-synced duplicates.** After the
+space-map find, every comment in the repo admitting a manual copy was
+read. Most were shape-mirrors (the stick hosts' studio chrome) with
+nothing to check. One was real: CharLayer's EXPR_TINTS (31
+expressions, applied as modulate at runtime) against
+raster_substrate.py's EXPRESSION_TINTS (6), so the offline baker's
+`--all-expressions` emitted six PNGs and every other expression baked
+FLAT — the lookup's default is no tint, which cannot be told from a
+legitimate one. Brought to parity and gated by `expr_tint_audit.py`.
+
 **2026-08-19 · PER-STICK VOICE SWEEP VERDICT (voice draft 4).**
 Ran the leakage grep (TODO/WIP/placeholder/implemented/deferred/
 stub) and a string survey across EVERY stick directory: estuary_4,

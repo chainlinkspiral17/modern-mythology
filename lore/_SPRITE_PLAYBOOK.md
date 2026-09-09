@@ -103,6 +103,21 @@ chunky, era-appropriate.
 
 ## Recent lessons
 
+### 2026-09-11 · the tint table exists twice, and the baker had six of thirty-one
+
+- **CharLayer.gd's EXPR_TINTS is the source; raster_substrate.py's
+  EXPRESSION_TINTS is a copy.** The game multiplies a mono substrate
+  by the tint at runtime; the rasterizer bakes it into a PNG. The
+  baker held six of the game's thirty-one expressions, so
+  `--all-expressions` emitted six files and any other expression baked
+  FLAT — `.get(expr, (1,1,1))` fails silently and reads as a portrait
+  that simply didn't come out. Brought to parity; `expr_tint_audit.py`
+  is a suite gate.
+- **A `.get()` with a neutral default hides a missing key.** When the
+  default is indistinguishable from a legitimate value (no tint IS a
+  tint), the lookup can never tell you it failed. Audit the table, not
+  the call site.
+
 ### 2026-07-20 · visitor portraits · the five-tier resolution chain
 
 Built the arcana-visitor face system out to a full priority stack.

@@ -155,6 +155,16 @@ for CLS in POKE CHAIR DESK LANE BED OUTSIDE; do
         echo "$GOUT" | grep "^   $CLS"
         echo "REGRESSION  $N $CLS grammar break(s) (ceiling 0)"; exit 1; fi
 done
+# ── Expression-tint gate (2026-09-11) ─────────────────────────
+# CharLayer's EXPR_TINTS (what the game multiplies a portrait by) and
+# raster_substrate's EXPRESSION_TINTS (what the offline baker writes
+# into a PNG) are the same table twice. The baker held six of the
+# game's thirty-one, so every other expression baked FLAT. Zero.
+echo "── expr_tint_audit.py ──"
+TOUT="$(python3 expr_tint_audit.py 2>/dev/null)" || { echo "$TOUT"; exit 1; }
+echo "$TOUT" | tail -1
+echo ""
+
 # ── Space-map gate (2026-09-11) ───────────────────────────────
 # A gauntlet space lives in three places: the location JSON (the
 # board), the host's SPACE_MAP (world positions) and the gauntlet's
