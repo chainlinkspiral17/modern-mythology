@@ -197,6 +197,8 @@ They're polish; static reads first.
 | `neon_edge.gdshader`                     | Sobel silhouette outline + gradient fill | chillwave / sunset / lithograph / blueprint_red / noir / ice |
 | `demoscene_post.gdshader`                | Palette quantize / dither / scanlines / chromatic aberration | every mood             |
 | `trip_sync.gdshader`                     | THE TRIP · music-synced rainbow edge aura + flat-region flow warp + capped hue drift + beat ripple; screen mode (global layer 60) or texture mode (VN backgrounds) | TripSync autoload, always on (Settings.trip_amount) |
+| `trip_feedback.gdshader`                 | THE TRIP · the feedback ACCUMULATE pass — re-projects the previous buffer (slow zoom/spin/drift), decays it, screens in the picture's highlights + the register's aura; runs inside two half-res ping-pong SubViewports | TripSync autoload (Settings.trip_trails) |
+| `trip_feedback_show.gdshader`            | THE TRIP · the feedback DISPLAY pass — soft-rolls the buffer (1 − e^−x) and adds it back over the surface, stepping back where the picture is already bright | TripSync, mounted by GameEngine above the VN background |
 | `ascii_edges.gdshader` (legacy)          | Edge detection + ASCII overlay       | not wired (kept for ref) |
 | `glyph_field.gdshader` (legacy)          | Drifting ASCII glyph field           | not wired (kept for ref) |
 | `gouraud_lambert.gdshader`               | Cathedral baked vertex-color shader  | warehouse scene only   |
@@ -225,6 +227,48 @@ through them in order.
 | raw           | Unfiltered debug                              | none          |
 
 ## Recent lessons
+
+### 2026-09-11 · THE FEEDBACK · Minter trails without moving the picture
+
+User direction: "the psychedelic visual layer to the visual novel
+should include a feedback element ... ala Jeff Minter visualizers and
+games." The bible had listed it as the missing half of the Minter
+register since draft 1.
+
+- **Feed back the LAYER'S LIGHT, not the picture.** Minter's feedback
+  trails everything because in his work everything is emissive; here
+  the picture is a photograph that rule 1 says must stay a photograph.
+  So the buffer catches exactly two things — the bright part of the
+  source, and the aura recomputed from its silhouettes in the
+  register's hue — and the scene composites over it, sharp. A face
+  never smears because a face was never in the buffer.
+- **The source must be a TEXTURE, not the screen, or type smears.**
+  A screen-space feedback layer in the VN would trail the dialogue
+  box. Reading the background texture makes that impossible by
+  construction, and it is the same reasoning that put the trip shader
+  in texture mode there. The catch: the VN's `3d:` path sets
+  `_bg.texture = null` and renders through a SubViewportContainer, so
+  a rig bound to the TextureRect alone goes dark on most of the game.
+  Register BOTH surfaces and take whichever is live.
+- **Every feedback rate must be per-second × delta.** `decay` is
+  `exp(-dt · rate)`, `zoom` and `spin` are rates × dt. A per-frame
+  constant makes the wake four times longer on a 30 fps Deck than in
+  a 120 fps editor, and you tune the wrong number for weeks.
+- **Screen to accumulate, soft-roll to display.** Screen blend
+  (`1 − (1−a)(1−b)`) inside the buffer is bounded, so a static
+  highlight settles instead of running away to white. The display
+  pass is `blend_add` — a trail is light — but tone-maps with
+  `1 − e^(−b·soft)` FIRST, so the add can never contribute more than
+  1 and there is no clipped edge (the draft-2 "add clips; screen
+  rolls off" lesson, applied to a buffer).
+- **Clamp the re-projection, do not wrap it.** A wrapped sample draws
+  the top of the frame back in at the bottom, which reads as a glitch
+  rather than as light.
+- **An idle rig must cost nothing.** Both SubViewports sit at
+  `UPDATE_DISABLED` until a surface is registered AND the dials are
+  above zero; the write buffer takes `UPDATE_ONCE` per frame. Half
+  resolution throughout — a wake wants to be soft anyway.
+
 
 ### 2026-07-20 · VN direction audit + the mood-shift-at-interludes pass
 

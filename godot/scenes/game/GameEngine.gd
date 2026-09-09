@@ -157,6 +157,27 @@ func _build_layers() -> void:
 	var trip: Node = get_node_or_null("/root/TripSync")
 	if trip != null and trip.has_method("attach"):
 		trip.call("attach", _bg)
+	# THE FEEDBACK (2026-09-11) · the Minter half of the layer. The
+	# buffer catches the bright part of the BACKGROUND TEXTURE, re-
+	# projects it a hair larger each frame and screens it back, so
+	# lamps, windows and the aura leave a slow bloom behind them. It
+	# is mounted HERE — one sibling above _bg — so it draws over the
+	# picture and under the matte frame, the portraits, the letterbox
+	# bars and the dialogue box. Type is outside the buffer entirely,
+	# which is the whole reason the source is a texture and not the
+	# screen.
+	if trip != null and trip.has_method("attach_feedback"):
+		var fb_v: Variant = trip.call("attach_feedback", _bg)
+		if fb_v is Control:
+			_trip_fb = fb_v as Control
+			# Above every background layer (z 0 — the PNG, the
+			# substrate, the 3D viewport, which the 3D path also
+			# moves to the end of the child list) and below the
+			# portraits at UI_Z − 40, so the trail is light IN the
+			# room and the cast stands in front of it. Well below
+			# UI_Z, so no glyph is ever inside the buffer's output.
+			_trip_fb.z_index = 10
+			add_child(_trip_fb)
 
 	# Matte frame above the bg image to cover aspect bars. The live
 	# _substrate sits between _bg_solid and _bg, so without this it
@@ -928,6 +949,8 @@ func _set_bg_debug_label(src: String) -> void:
 
 const BACKGROUND_3D_SCENE := preload("res://scenes/vn/Background3D.tscn")
 var _bg_3d_node: SubViewportContainer = null
+# THE TRIP's feedback rect (2026-09-11) — see the mount site in _ready.
+var _trip_fb: Control = null
 
 
 func _do_bg(n: Dictionary) -> void:
@@ -1012,6 +1035,14 @@ func _apply_bg_3d(preset_id: String) -> void:
 		var trip3d: Node = get_node_or_null("/root/TripSync")
 		if trip3d != null and trip3d.has_method("attach"):
 			trip3d.call("attach", _bg_3d_node)   # the 3D bg breathes too
+		# ... and it TRAILS too. The 3D path sets `_bg.texture = null`,
+		# so a feedback rig bound to the TextureRect alone would go
+		# dark on every locale scene — which is most of the VN and all
+		# of the light worth trailing. Register the viewport as a
+		# second source; the rig takes whichever is live.
+		if trip3d != null and _trip_fb != null \
+				and trip3d.has_method("add_feedback_source"):
+			trip3d.call("add_feedback_source", _trip_fb, _bg_3d_node)
 	# Per-locale ambient bed: duck the Music Player way down and raise
 	# this locale's inverted ambient soundtrack. Independent of whether
 	# the GLB is present (below) — the scene IS this locale either way,

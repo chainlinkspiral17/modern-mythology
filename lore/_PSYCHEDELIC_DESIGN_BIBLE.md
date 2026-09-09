@@ -216,14 +216,76 @@ sludge hangs).
   pass should land one row of it (attract mode on the gauntlet
   board · the BBS as letters column · a verb coin on the cabin
   chapter · a Minter bonus round in one stick).
-- No feedback-trail buffer yet. The Minter register's trails are
-  faked by spark halos and the thump; the real thing is a
-  SubViewport with `render_target_clear_mode = NEVER` and a decay
-  quad, driven by the same pulse.
+- ~~No feedback-trail buffer yet~~ — SHIPPED 2026-09-11, draft 1, in
+  the VN. See THE FEEDBACK below.
 - Draft 1 was seen on the Deck ("mostly nausea inducing", then "I
   like it, but it's rough"); draft 2 has not. The Minter thump and
   the cabinet power dip died with the motion rule; the Minter
   register keeps its neon, sparks and white cores.
+
+## THE FEEDBACK (draft 1 · 2026-09-11)
+
+User direction: *"the psychedelic visual layer to the visual novel
+should include a feedback element that deepens the visual experience
+ala Jeff Minter visualizers and games."*
+
+Feedback is the technique the Minter register was named for and the
+one thing it did not have. Two half-resolution SubViewports ping-pong
+(`TripSync._update_feedback`): each frame the write buffer re-projects
+the read buffer a hair larger — or smaller — with a slow spin and
+drift, decays it, and screens in new light. A show rect draws the
+result back over the surface with `blend_add`. Light leaves a wake.
+
+**What feeds the buffer is THE LAYER'S OWN LIGHT, not the picture.**
+This is the whole design, and it is what keeps the feedback inside
+rule 1. The buffer catches two things and nothing else: the bright
+part of the source (a lamp, a window, a sky) and the register's AURA,
+recomputed from the source's silhouettes in the register's hue. The
+photograph does not trail. A face does not smear. What trails is the
+light THE TRIP is already laying down — which is exactly what Minter's
+feedback does, because in his work everything on screen is emissive.
+
+**The motion rule holds, and this is the pass most likely to break
+it.** The re-projection moves the TRAIL, never the picture, and it is
+a constant rate: `fb_zoom` and `fb_spin` are screens- and radians-
+per-second multiplied by delta, identical whether the music is loud,
+quiet or absent. `fb_decay` is `exp(-dt · rate)` so the wake is the
+same length at 30 fps and at 90. **The beat's only job here is the one
+it has everywhere else — it makes light brighter (`pulse` lifts the
+gain), never bigger, never faster, never displaced.** A zoom that
+pumps with the bass is draft 1's nausea wearing a new hat.
+
+**The source is a TEXTURE, never the screen.** In the VN the buffer
+reads the background — the PNG for image scenes, the 3D locale's
+SubViewport for `3d:` ones (the 3D path nulls the TextureRect, so
+both are registered and the rig takes whichever is live). The dialogue
+box, the portraits and every glyph of type are outside the buffer by
+construction and *cannot* smear. The show rect sits at `z_index 10` —
+above every background layer, below the cast at UI_Z−40, far below
+the type at UI_Z. A screen-sourced feedback layer for the locale walk
+and the gauntlet is draft 2 and needs a UI-free source first.
+
+Per register (the same reading as the pulse decay — this is the second
+number that most changes how a pillar FEELS):
+
+| Register | amount | decay | zoom | the read |
+|---|---|---|---|---|
+| `arcana` | 0.55 | 6.0 | **−0.09** | light SINKS into the screen, a slow clockwise crawl, a short wake — an arcade monitor, not a lava lamp |
+| `community` | 0.45 | **2.6** | 0.02 | the wake HANGS and barely travels: a smear in place, the photocopier's ghost |
+| `milk_honey` | **0.90** | 3.8 | **+0.17** | the oil projector — light blooms outward and turns; the densest of the five |
+| `slowstick` | 0.22 | 5.5 | 0.11 | the register feedback belongs to and shows least in: the overlay stays faint because Minter lives inside each stick |
+| `base` | 0.50 | 6.5 | 0.10 | moderate |
+
+Player dial: **TRAILS**, a fifth mix slider beside FLOW · LINES ·
+COLOUR · BEAT (`Settings.trip_trails`). 0 is no wake. Where the
+picture under the trail is already bright the show pass steps back
+(`dark_bias`), because light on light is invisible — the same verdict
+that gave bright scenes ink instead of glow.
+
+Draft 2, when the Deck has seen it: the wake's length and the zoom
+sign per register are guesses made in a container; a screen-sourced
+rig for the locale walk and the gauntlet board; and the question of
+whether `milk_honey` at 0.90 is a light show or a fog.
 
 ## Recent lessons
 

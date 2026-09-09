@@ -25,6 +25,7 @@ var _trip_flow:      float  = 1.0    # THE TRIP mix · the liquid drift (the one
 var _trip_lines:     float  = 1.0    # THE TRIP mix · aura on the lines
 var _trip_colour:    float  = 1.0    # THE TRIP mix · hue drift + wash in the flats
 var _trip_beat:      float  = 1.0    # THE TRIP mix · how much the beat shows
+var _trip_trails:    float  = 1.0    # THE TRIP mix · the feedback buffer (Minter light trails)
 
 
 var txt_scale: float:
@@ -161,6 +162,13 @@ var trip_beat: float:
 		settings_changed.emit("trip_beat", _trip_beat)
 		_save()
 
+var trip_trails: float:
+	get: return _trip_trails
+	set(val):
+		_trip_trails = clampf(val, 0.0, 1.0)
+		settings_changed.emit("trip_trails", _trip_trails)
+		_save()
+
 
 func _ready() -> void:
 	_load()
@@ -234,6 +242,7 @@ func _load() -> void:
 	_trip_lines      = clampf(float(cfg.get_value("settings", "trip_lines", 1.0)), 0.0, 1.0)
 	_trip_colour     = clampf(float(cfg.get_value("settings", "trip_colour", 1.0)), 0.0, 1.0)
 	_trip_beat       = clampf(float(cfg.get_value("settings", "trip_beat", 1.0)), 0.0, 1.0)
+	_trip_trails     = clampf(float(cfg.get_value("settings", "trip_trails", 1.0)), 0.0, 1.0)
 	_apply_window_mode(_window_mode)
 
 
@@ -256,4 +265,5 @@ func _save() -> void:
 	cfg.set_value("settings", "trip_lines",      _trip_lines)
 	cfg.set_value("settings", "trip_colour",     _trip_colour)
 	cfg.set_value("settings", "trip_beat",       _trip_beat)
+	cfg.set_value("settings", "trip_trails",     _trip_trails)
 	cfg.save(SAVE_PATH)

@@ -141,6 +141,15 @@ func _rebuild() -> void:
 		func(v: float) -> void:
 			Settings.trip_beat = v
 	))
+	# TRAILS · the feedback buffer (2026-09-11). The light the layer
+	# lays down is re-sampled a hair larger each frame and screened
+	# back in, so highlights and the aura leave a slow bloom behind
+	# them — the Minter light-synth feedback. It trails LIGHT ONLY;
+	# the picture itself never moves. 0 = no trail.
+	vbox.add_child(_slider_row("  · TRAILS (the feedback)", Settings.trip_trails,
+		func(v: float) -> void:
+			Settings.trip_trails = v
+	))
 
 	vbox.add_child(_rule())
 

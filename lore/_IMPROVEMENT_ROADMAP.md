@@ -1447,6 +1447,32 @@ each and no named stings (they take the shared one); `_loss_cg_path`
 names finale CGs that may not exist — an image-reference audit is the
 same shape as the audio one; and the 22 character themes remain.
 
+**2026-09-11 (xiii) · THE FEEDBACK — the Minter half of the trip.**
+User direction: "the psychedelic visual layer to the visual novel
+should include a feedback element that deepens the visual experience
+ala Jeff Minter visualizers and games." The bible had carried this as
+the one honest gap since draft 1 ("no feedback-trail buffer yet ...
+the real thing is a SubViewport with a decay quad"). Shipped for the
+VN: two half-resolution ping-pong SubViewports re-project the previous
+buffer with a slow zoom/spin/drift, decay it, and screen in new light;
+a show rect adds it back over the background. THE DESIGN CALL that
+keeps it inside rule 1: **the buffer catches the LAYER'S OWN LIGHT,
+not the picture** — the source's highlights plus the register's aura
+recomputed from its silhouettes — so the photograph never trails and
+a face never smears. The motion rule holds: zoom/spin/decay are
+per-second rates × delta, unchanged by the music, and the beat's only
+job is to brighten what enters. The source is a TEXTURE (the PNG bg,
+or the 3D locale's SubViewport — both registered, the rig takes
+whichever is live), never the screen, so type cannot smear by
+construction; the rect sits at z_index 10, above the backgrounds and
+under the cast. Per-register character: the arcade SINKS (zoom −0.09),
+sludge HANGS (decay 2.6, barely travels), the oil projector BLOOMS
+(0.90 / +0.17), the slowstick overlay stays faint. Fifth player dial:
+TRAILS. NEXT DRAFT, Deck-gated: the wake length and the zoom sign per
+register are container guesses; is milk_honey at 0.90 a light show or
+a fog; then a screen-sourced rig for the locale walk and the gauntlet
+board, which needs a UI-free source first.
+
 **2026-08-19 · PER-STICK VOICE SWEEP VERDICT (voice draft 4).**
 Ran the leakage grep (TODO/WIP/placeholder/implemented/deferred/
 stub) and a string survey across EVERY stick directory: estuary_4,
@@ -1563,7 +1589,7 @@ Current ledger (draft counts are honest, not aspirational):
 | Slowstick manuals + packaging (NH = model) | 1 | era-voice + walkthrough sweep across ~20 sticks; box art after experiences are good (task #234) |
 | VN portrait busts (de-blocking · 2026-08-04) | 2 (EPX×2 + soft finish; hide-ghosts made ephemeral) | screenshot check vs the SVGA bar; if still chunky: raise the 60x64 base canvas itself (more shading ramps, finer features); dialogue-box busts + CP roster inherit automatically |
 | Scene direction · coverage rotation (2026-08-04) | 5 (28 locales carry decks — 111 authored setups, 176 markers repo-wide; draft 5 gave TEN ARCANA SETS the exact markers their scripts already cue (round 2: cafe_olimpico, both new_orleans rooms + the office — 42 arcana markers total; graustark deferred to the richer stub) — Alice's rose/chair/closeup, Natalie's turntable/card, Jimmy's sofa, Elicia's desk/laptop/teacup, Erica's office, the Montreal notebook — plus establish_b rotations, ALL euler-form now: the 81 matrix markers were converted after draft 3 found the transpose bug. Draft 4 covered the whole 7-9-use tier incl. kwik_stop B/C and the shared missing_link_exterior/shuttle_bench deck) | Deck screenshots — every framing is math-verified to <0.5° but ZERO have been seen through a lens; taste notes ("finn B too low") drive draft 5. Next tier (5-6 uses: foxhole_bar, henderson_garage, faust_bedroom, jesse_bedroom, centro_break_room, bianca_kitchen_morning, diner_interior variants) only after a taste pass confirms the grammar reads |
-| **THE TRIP (music-synced psychedelic layer · 2026-09-07)** | **3** (the liquid drifts slowly and never to the beat; draft-1 colour/line weight; FLOW · LINES · COLOUR · BEAT mix sliders;  TripSync autoload + trip_sync.gdshader; global layer 60 + VN texture mode; PSYCHEDELIA slider; per-mood/per-surface scaling; FIVE REGISTERS arcana/community/milk_honey/slowstick/base pushed by the hosts — see _PSYCHEDELIC_DESIGN_BIBLE.md) | draft 2: Deck look at 0.6 per register (gauntlet, CP screen, a vol 7 chapter, a stick); beat detector vs the real catalog; then the GAME GRAMMAR column one row per pillar |
+| **THE TRIP (music-synced psychedelic layer · 2026-09-07 · FEEDBACK 2026-09-11)** | **4** (the liquid drifts slowly and never to the beat; draft-1 colour/line weight; FLOW · LINES · COLOUR · BEAT mix sliders;  TripSync autoload + trip_sync.gdshader; global layer 60 + VN texture mode; PSYCHEDELIA slider; per-mood/per-surface scaling; FIVE REGISTERS arcana/community/milk_honey/slowstick/base pushed by the hosts; **THE FEEDBACK 2026-09-11** — ping-pong half-res SubViewports trailing the LAYER'S light (highlights + the aura), never the picture, sourced from a texture so type cannot smear, per-register zoom sign and wake length, fifth TRAILS dial — see _PSYCHEDELIC_DESIGN_BIBLE.md) | draft 2: the feedback's wake length and zoom sign per register are container guesses (is milk_honey at 0.90 a light show or a fog?); a screen-sourced feedback rig for the locale walk and the gauntlet; Deck look at 0.6 per register (gauntlet, CP screen, a vol 7 chapter, a stick); beat detector vs the real catalog; then the GAME GRAMMAR column one row per pillar |
 | **The VN score (2026-09-11)** | **1** (33 beds authored from the catalog's own descriptions; 6 orphan vol5 room tones adopted; 10 already-rendered beds repointed; `normalize_bank` taught to walk `bgm/` itself; every non-stub scene assigned — 174 by place, 23 on the volume floor; `music_coverage_audit` gates SILENT + NOFILE at zero) | draft 2 is Deck-gated: 22050 Hz on the hiss-forward beds, the ~40 s loop seam, the five `.ogg` tracks normalize can't read. Then the 74 remaining ghosts — the Magician's 7 finale stingers + the Priestess's 6 (the loss screen already picks the finale and unlocks its milestone; it plays nothing), gauntlet_win/loss, and the 22 character themes (a signature per principal on `show`) |
 | **Gauntlet audio (2026-09-11)** | **1** (15 scenario B-sides authored and wired as `_BGM_BY_SCENARIO`, arcana × difficulty, ahead of the location drone; the 12 dead `gauntlet_*.ogg` fallbacks deleted — every key was already on an SFXBank preset) | the finale stingers at the loss screen; a bed for the other seventeen arcana (they still share four vol5 drones by tonal fit); then Deck: does the hard-mode bed read as "the small hours" against the easy one? |
 | Model chapters (diner, kwik stop, cathedral, henderson) | many | the BAR — mine them for what a finished space has |

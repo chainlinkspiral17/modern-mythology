@@ -6,7 +6,7 @@
 # game at all times, in lines and backgrounds, synced to the music
 # currently playing."  (2026-09-07)
 #
-# One node does three jobs:
+# One node does four jobs:
 #
 #   1. LISTEN   · reads the BGM bus spectrum analyzer (AudioMgr owns
 #                 one on the BGM bus; we attach one if it is missing)
@@ -28,6 +28,15 @@
 #                 their background CanvasItems; the same shader runs
 #                 in texture mode on those and the global layer hides
 #                 while any trip_local node is in the tree.
+#   4. TRAIL    · the FEEDBACK buffer (2026-09-11), the Minter half.
+#                 Two half-res SubViewports ping-pong: each frame the
+#                 write buffer re-projects the read buffer slightly
+#                 larger (or smaller) with a slow spin, decays it, and
+#                 screens in the new light — the picture's highlights
+#                 plus the register's aura. A show rect draws that
+#                 back over the surface, additively. Light leaves a
+#                 wake; the picture itself still never moves, and the
+#                 beat only ever makes the wake BRIGHTER.
 #
 # Every attached material — global and local — receives the same
 # music state each frame, so a VN background and a locale walk
@@ -39,6 +48,9 @@
 extends Node
 
 const SHADER_PATH: String = "res://assets/shaders/trip_sync.gdshader"
+const FEEDBACK_SHADER_PATH: String = "res://assets/shaders/trip_feedback.gdshader"
+const FEEDBACK_SHOW_PATH: String = "res://assets/shaders/trip_feedback_show.gdshader"
+const FEEDBACK_DIV: int = 2               # the buffer runs at half resolution
 const LAYER_ORDER: int = 60
 const BUS_NAME: String = "BGM"
 const BANDS: int = 8
@@ -95,7 +107,31 @@ var mix_motion: float = 1.0
 var mix_lines: float = 1.0
 var mix_colour: float = 1.0
 var mix_beat: float = 1.0
+var mix_trails: float = 1.0
 const SOFT_SURFACE_SCALE: float = 0.45
+
+# ── THE FEEDBACK (2026-09-11) ─────────────────────────────────────
+# The bible listed this as the missing half of the Minter register:
+# "No feedback-trail buffer yet ... the real thing is a SubViewport
+# with a decay quad, driven by the same pulse." Two half-resolution
+# SubViewports ping-pong: each frame the write buffer re-projects the
+# read buffer a hair larger (or smaller) with a slow spin, decays it,
+# and screens in the bright part of a SOURCE TEXTURE. A show rect
+# draws the result back over that surface, additively.
+#
+# The source is a texture, never the screen. In the VN that texture
+# is the background image, so the dialogue box and every glyph of
+# type are outside the buffer by construction and cannot smear —
+# which is the same reason the trip shader runs in texture mode
+# there. A screen-sourced feedback layer is draft 2 and needs a
+# UI-free source first.
+var _fb_shader: Shader = null
+var _fb_show_shader: Shader = null
+var _fb_vp: Array[SubViewport] = []
+var _fb_mat: Array[ShaderMaterial] = []
+var _fb_shows: Array[Dictionary] = []      # [{rect, mat, srcs}]
+var _fb_write: int = 0
+var _fb_size: Vector2i = Vector2i.ZERO
 
 # ── REGISTERS · the per-pillar look (2026-09-07, user direction) ──
 # "Major Arcana is swampy and arcade inspired; Planned Community is
@@ -110,9 +146,16 @@ const SOFT_SURFACE_SCALE: float = 0.45
 # the palette snaps at the midpoint. See lore/_PSYCHEDELIC_DESIGN_BIBLE.md.
 const REGISTERS: Dictionary = {
 	# the base look · rainbow aura, moderate everything (menus, vols 1-4)
+	# fb_* · THE FEEDBACK (2026-09-11). fb_amount is how much light
+	# enters the buffer; fb_decay is the wake's length in e-folds per
+	# second (LOW = it hangs); fb_zoom is the re-projection rate in
+	# screens/second — POSITIVE blooms outward, NEGATIVE falls inward;
+	# fb_spin is radians/second. All three are rates, never beat-
+	# driven: the beat only brightens what enters (bible rule 0).
 	"base": {
 		"palette_mode": 0, "line_amount": 1.0, "flow_amount": 1.0, "hue_amount": 1.0,
 		"ripple_amount": 1.0, "spark_amount": 0.0, "grain_amount": 0.0, "pulse_decay": 4.0,
+		"fb_amount": 0.50, "fb_decay": 6.5, "fb_zoom": 0.10, "fb_spin": 0.00,
 	},
 	# vol 5 · MAJOR ARCANA · swampy + arcade: a bayou-water colour
 	# wash, phosphor-green lines with sodium amber on the kick, little
@@ -120,6 +163,9 @@ const REGISTERS: Dictionary = {
 	"arcana": {
 		"palette_mode": 1, "line_amount": 1.25, "flow_amount": 1.35, "hue_amount": 0.55,
 		"ripple_amount": 0.9, "spark_amount": 0.0, "grain_amount": 0.0, "pulse_decay": 3.5,
+		# the cabinet: light SINKS into the screen (negative zoom), a slow
+		# clockwise crawl, a short wake — an arcade monitor, not a lava lamp
+		"fb_amount": 0.55, "fb_decay": 6.0, "fb_zoom": -0.09, "fb_spin": 0.05,
 	},
 	# vol 6 · PLANNED COMMUNITY · zines + sludge: two risograph inks
 	# on the lines (no rainbow), photocopy grain, the flow is slow and
@@ -127,6 +173,9 @@ const REGISTERS: Dictionary = {
 	"community": {
 		"palette_mode": 2, "line_amount": 1.15, "flow_amount": 0.75, "hue_amount": 0.35,
 		"ripple_amount": 0.7, "spark_amount": 0.0, "grain_amount": 1.0, "pulse_decay": 2.4,
+		# sludge: the wake HANGS (the longest decay of the five) and barely
+		# travels — a smear in place, the photocopier's ghost, not a bloom
+		"fb_amount": 0.45, "fb_decay": 2.6, "fb_zoom": 0.02, "fb_spin": 0.00,
 	},
 	# vol 7 · LAND OF MILK AND HONEY · liquid light show + sci-fi:
 	# oil-projector palette, the densest colour wash and drift (the
@@ -134,6 +183,9 @@ const REGISTERS: Dictionary = {
 	"milk_honey": {
 		"palette_mode": 3, "line_amount": 0.95, "flow_amount": 1.45, "hue_amount": 1.35,
 		"ripple_amount": 1.2, "spark_amount": 0.6, "grain_amount": 0.0, "pulse_decay": 3.0,
+		# the oil projector: the densest feedback of the five — light BLOOMS
+		# outward and turns slowly, which is what a liquid light show is
+		"fb_amount": 0.90, "fb_decay": 3.8, "fb_zoom": 0.17, "fb_spin": 0.10,
 	},
 	# slowsticks · the quietest register (draft 2B Deck verdict on the
 	# full neon overlay: "ugly and strobey"; draft 3: "stripped
@@ -144,12 +196,21 @@ const REGISTERS: Dictionary = {
 	"slowstick": {
 		"palette_mode": 4, "line_amount": 0.65, "flow_amount": 0.0, "hue_amount": 0.15,
 		"ripple_amount": 0.5, "spark_amount": 0.0, "grain_amount": 0.0, "pulse_decay": 3.0,
+		# the register where feedback belongs MOST and shows LEAST: the
+		# overlay stays faint ("ugly and strobey" was the verdict on a loud
+		# one) because Minter lives inside each stick's own rendering
+		"fb_amount": 0.22, "fb_decay": 5.5, "fb_zoom": 0.11, "fb_spin": 0.00,
 	},
 }
 const REGISTER_FADE: float = 0.9          # s · float dials cross-fade
 const REGISTER_FLOATS: Array[String] = [
 	"line_amount", "flow_amount", "hue_amount", "ripple_amount",
 	"spark_amount", "grain_amount",
+]
+# The feedback dials cross-fade with the rest but are read by the
+# buffer rig rather than pushed to the trip material.
+const FEEDBACK_FLOATS: Array[String] = [
+	"fb_amount", "fb_decay", "fb_zoom", "fb_spin",
 ]
 var _register_stack: Array[Dictionary] = []   # [{"name": String, "owner": Node}]
 var register_name: String = "base"
@@ -193,10 +254,12 @@ func _ready() -> void:
 	mix_lines = clampf(Settings.trip_lines, 0.0, 1.0)
 	mix_colour = clampf(Settings.trip_colour, 0.0, 1.0)
 	mix_beat = clampf(Settings.trip_beat, 0.0, 1.0)
+	mix_trails = clampf(Settings.trip_trails, 0.0, 1.0)
 	_reg_from = REGISTERS["base"]
 	_reg_to = REGISTERS["base"]
 	Settings.settings_changed.connect(_on_setting)
 	_spawn_global_layer()
+	_spawn_feedback()
 	print("[TripSync] on · amount %.2f · layer %d · PSYCHEDELIA slider in settings" % [amount, LAYER_ORDER])
 
 
@@ -207,6 +270,7 @@ func _on_setting(key: String, value: Variant) -> void:
 		"trip_lines": mix_lines = clampf(float(value), 0.0, 1.0)
 		"trip_colour": mix_colour = clampf(float(value), 0.0, 1.0)
 		"trip_beat": mix_beat = clampf(float(value), 0.0, 1.0)
+		"trip_trails": mix_trails = clampf(float(value), 0.0, 1.0)
 
 
 # ── Layer ─────────────────────────────────────────────────────────
@@ -254,6 +318,218 @@ func detach(item: CanvasItem) -> void:
 	if existing is ShaderMaterial and (existing as ShaderMaterial).shader == _shader:
 		_materials.erase(existing as ShaderMaterial)
 		item.material = null
+
+
+# ── The feedback buffer ───────────────────────────────────────────
+func _spawn_feedback() -> void:
+	_fb_shader = load(FEEDBACK_SHADER_PATH) as Shader
+	_fb_show_shader = load(FEEDBACK_SHOW_PATH) as Shader
+	if _fb_shader == null or _fb_show_shader == null:
+		push_warning("[TripSync] feedback shaders missing — trails disabled")
+		return
+	for i in range(2):
+		var vp: SubViewport = SubViewport.new()
+		vp.name = "TripFeedback%d" % i
+		vp.disable_3d = true
+		vp.transparent_bg = false
+		vp.gui_disable_input = true
+		vp.size = Vector2i(4, 4)
+		# UPDATE_DISABLED until something asks for trails: an idle rig
+		# must cost nothing on the Deck.
+		vp.render_target_update_mode = SubViewport.UPDATE_DISABLED
+		vp.render_target_clear_mode = SubViewport.CLEAR_MODE_ALWAYS
+		var rect: ColorRect = ColorRect.new()
+		rect.name = "Accumulate"
+		rect.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
+		rect.mouse_filter = Control.MOUSE_FILTER_IGNORE
+		var m: ShaderMaterial = ShaderMaterial.new()
+		m.shader = _fb_shader
+		rect.material = m
+		vp.add_child(rect)
+		add_child(vp)
+		_fb_vp.append(vp)
+		_fb_mat.append(m)
+	_resize_feedback()
+	var vport: Viewport = get_viewport()
+	if vport != null and not vport.size_changed.is_connected(_resize_feedback):
+		vport.size_changed.connect(_resize_feedback)
+
+
+func _resize_feedback() -> void:
+	var vport: Viewport = get_viewport()
+	if vport == null or _fb_vp.size() < 2:
+		return
+	var vis: Vector2 = vport.get_visible_rect().size
+	var want: Vector2i = Vector2i(
+		maxi(8, int(vis.x) / FEEDBACK_DIV),
+		maxi(8, int(vis.y) / FEEDBACK_DIV))
+	if want == _fb_size:
+		return
+	_fb_size = want
+	for vp in _fb_vp:
+		vp.size = want
+
+
+# Mount the feedback over a surface. `src_item` is the CanvasItem the
+# buffer catches light from — it must carry a `texture` (a TextureRect
+# in practice). Returns a full-rect Control the CALLER inserts into
+# its own tree directly above that surface and below its type, so the
+# trail lands on the picture and nowhere near the dialogue box.
+func attach_feedback(src_item: CanvasItem) -> Control:
+	if _fb_show_shader == null or src_item == null or _fb_vp.size() < 2:
+		return null
+	var rect: ColorRect = ColorRect.new()
+	rect.name = "TripFeedbackRect"
+	rect.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
+	rect.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	rect.color = Color(0.0, 0.0, 0.0, 0.0)
+	# The picture, not HUD — F4 must not take the trail out of a
+	# screenshot any more than it takes the aura out (the global layer
+	# carries the same group for the same reason).
+	rect.add_to_group("world_render")
+	var m: ShaderMaterial = ShaderMaterial.new()
+	m.shader = _fb_show_shader
+	rect.material = m
+	rect.visible = false
+	var srcs: Array = [src_item]
+	_fb_shows.append({"rect": rect, "mat": m, "srcs": srcs})
+	rect.tree_exiting.connect(func() -> void: detach_feedback(rect))
+	return rect
+
+
+# A surface may be painted by more than one node over a scene's life.
+# The VN's background is a TextureRect for PNG scenes and a
+# SubViewportContainer for `3d:` ones — and the 3D path sets
+# `_bg.texture = null`, so a rig bound to the TextureRect alone goes
+# dark on exactly the scenes that carry the most light. Register every
+# candidate; the rig takes the last one that is visible and has a
+# texture to give.
+func add_feedback_source(rect: Control, item: CanvasItem) -> void:
+	if rect == null or item == null:
+		return
+	for e in _fb_shows:
+		if e["rect"] == rect:
+			var srcs: Array = e["srcs"]
+			if not srcs.has(item):
+				srcs.append(item)
+			return
+
+
+# TextureRect → its texture. SubViewportContainer → the viewport it
+# shows. Anything else → nothing, and the rig sleeps.
+func _feedback_tex_of(item: CanvasItem) -> Texture2D:
+	if item == null or not item.is_inside_tree() or not item.is_visible_in_tree():
+		return null
+	if item is SubViewportContainer:
+		for child in item.get_children():
+			if child is SubViewport:
+				return (child as SubViewport).get_texture()
+		return null
+	var tex_v: Variant = item.get("texture")
+	if tex_v is Texture2D:
+		return tex_v as Texture2D
+	return null
+
+
+func detach_feedback(rect: Control) -> void:
+	for i in range(_fb_shows.size() - 1, -1, -1):
+		if _fb_shows[i]["rect"] == rect:
+			_fb_shows.remove_at(i)
+
+
+func _feedback_floats() -> Dictionary:
+	var out: Dictionary = {}
+	var k: float = smoothstep(0.0, 1.0, _reg_t)
+	var cur: Dictionary = REGISTERS[register_name]
+	for key in FEEDBACK_FLOATS:
+		var a: float = float(_reg_from.get(key, cur.get(key, 0.0)))
+		var b: float = float(_reg_to.get(key, cur.get(key, 0.0)))
+		out[key] = lerpf(a, b, k)
+	return out
+
+
+# The hue the trail leans toward, per register — the same palettes the
+# aura uses, as a single colour (the buffer is light, not a gradient).
+func _feedback_tint() -> Vector3:
+	var pal: int = int(REGISTERS[register_name].get("palette_mode", 0))
+	match pal:
+		1: return Vector3(0.55, 1.00, 0.78)   # swamp phosphor
+		2: return Vector3(1.00, 0.45, 0.75)   # riso pink
+		3: return Vector3(1.00, 0.62, 0.35)   # oil projector amber
+		4: return Vector3(0.75, 0.95, 1.00)   # neon vector
+	return Vector3(1.0, 1.0, 1.0)
+
+
+func _update_feedback(dt: float) -> void:
+	if _fb_vp.size() < 2 or _fb_shows.is_empty():
+		return
+	var reg: Dictionary = _feedback_floats()
+	var fb_amount: float = float(reg.get("fb_amount", 0.0))
+	var gain: float = effective_amount() * mix_trails * fb_amount
+	# The source must be a texture that is actually on screen.
+	var src_tex: Texture2D = null
+	for e in _fb_shows:
+		var srcs: Array = e["srcs"]
+		for i in range(srcs.size() - 1, -1, -1):
+			# Read as Variant: a source can be freed between frames (the
+			# 3D container is torn down whenever a scene goes back to a
+			# PNG background) and typing the element first would throw
+			# on the freed instance instead of skipping it.
+			var item_v: Variant = srcs[i]
+			if not (item_v is CanvasItem) or not is_instance_valid(item_v):
+				continue
+			var t: Texture2D = _feedback_tex_of(item_v as CanvasItem)
+			if t != null:
+				src_tex = t
+				break
+	var live: bool = gain > 0.002 and src_tex != null
+	for e in _fb_shows:
+		var r: Control = e["rect"] as Control
+		if r != null:
+			r.visible = live
+	if not live:
+		for vp in _fb_vp:
+			vp.render_target_update_mode = SubViewport.UPDATE_DISABLED
+		return
+	_resize_feedback()
+	var read_i: int = 1 - _fb_write
+	var wm: ShaderMaterial = _fb_mat[_fb_write]
+	wm.set_shader_parameter("prev", _fb_vp[read_i].get_texture())
+	wm.set_shader_parameter("src", src_tex)
+	# Rates × delta, so the wake is the same length at any frame rate —
+	# and so none of the three is touched by the music (bible rule 0:
+	# the beat is light, never motion).
+	wm.set_shader_parameter("decay", exp(-dt * float(reg.get("fb_decay", 6.0))))
+	wm.set_shader_parameter("zoom", float(reg.get("fb_zoom", 0.1)) * dt)
+	wm.set_shader_parameter("spin", float(reg.get("fb_spin", 0.0)) * dt)
+	wm.set_shader_parameter("drift_x", sin(t_flow * 0.11) * 0.0009)
+	wm.set_shader_parameter("drift_y", cos(t_flow * 0.083) * 0.0007)
+	wm.set_shader_parameter("aspect",
+		float(_fb_size.x) / maxf(1.0, float(_fb_size.y)))
+	wm.set_shader_parameter("thresh", 0.60)
+	wm.set_shader_parameter("gain", gain)
+	wm.set_shader_parameter("pulse", pulse * mix_beat)
+	wm.set_shader_parameter("tint", _feedback_tint())
+	wm.set_shader_parameter("tint_mix", 0.35)
+	# The aura is fed back at the register's line weight × the player's
+	# LINES dial, so TRAILS and LINES agree about how much line there is.
+	wm.set_shader_parameter("edge_amount",
+		float(reg.get("fb_amount", 0.5)) * mix_lines * 1.2)
+	var stex_size: Vector2 = src_tex.get_size()
+	wm.set_shader_parameter("src_px", Vector2(
+		1.0 / maxf(1.0, stex_size.x), 1.0 / maxf(1.0, stex_size.y)))
+	_fb_vp[_fb_write].render_target_update_mode = SubViewport.UPDATE_ONCE
+	_fb_vp[read_i].render_target_update_mode = SubViewport.UPDATE_DISABLED
+	var buf: ViewportTexture = _fb_vp[_fb_write].get_texture()
+	for e in _fb_shows:
+		var sm: ShaderMaterial = e["mat"] as ShaderMaterial
+		if sm == null:
+			continue
+		sm.set_shader_parameter("buf", buf)
+		sm.set_shader_parameter("gain", 1.0)
+		sm.set_shader_parameter("soft", 1.35)
+		sm.set_shader_parameter("dark_bias", 0.55)
+	_fb_write = read_i
 
 
 # ── Listen ────────────────────────────────────────────────────────
@@ -378,6 +654,7 @@ func _process(delta: float) -> void:
 		_global_layer.visible = effective_amount() > 0.001 and not local_active
 	for mat in _materials:
 		_push_to(mat)
+	_update_feedback(dt)
 
 
 func _push_to(mat: ShaderMaterial) -> void:
@@ -498,7 +775,7 @@ func _current_register_floats() -> Dictionary:
 	var out: Dictionary = {}
 	var k: float = smoothstep(0.0, 1.0, _reg_t)
 	var base: Dictionary = REGISTERS[register_name]
-	for key in REGISTER_FLOATS:
+	for key in REGISTER_FLOATS + FEEDBACK_FLOATS:
 		var a: float = float(_reg_from.get(key, base.get(key, 0.0)))
 		var b: float = float(_reg_to.get(key, base.get(key, 0.0)))
 		out[key] = lerpf(a, b, k)
@@ -518,6 +795,13 @@ func _push_register_to(mat: ShaderMaterial) -> void:
 
 
 func status_line() -> String:
-	return "TRIP %d%% (dial %d%% · mood ×%.2f · surface ×%.2f · scene ×%.2f · mix f%.1f l%.1f c%.1f b%.1f) · %s · %s · %.0f bpm · e%.2f b%.2f p%.2f" % [
-		int(effective_amount() * 100.0), int(amount * 100.0), mood_scale, surface_scale, scene_scale, mix_motion, mix_lines, mix_colour, mix_beat,
-		register_name, "music" if music_present else "idle", bpm, energy, bass, pulse]
+	var fb: Dictionary = _feedback_floats()
+	var fb_live: String = "off"
+	if not _fb_shows.is_empty():
+		var r0: Control = _fb_shows[0]["rect"] as Control
+		if r0 != null and r0.visible:
+			fb_live = "%dx%d" % [_fb_size.x, _fb_size.y]
+	return "TRIP %d%% (dial %d%% · mood ×%.2f · surface ×%.2f · scene ×%.2f · mix f%.1f l%.1f c%.1f b%.1f t%.1f) · %s · %s · %.0f bpm · e%.2f b%.2f p%.2f · trail %s a%.2f d%.1f z%+.2f" % [
+		int(effective_amount() * 100.0), int(amount * 100.0), mood_scale, surface_scale, scene_scale, mix_motion, mix_lines, mix_colour, mix_beat, mix_trails,
+		register_name, "music" if music_present else "idle", bpm, energy, bass, pulse,
+		fb_live, float(fb.get("fb_amount", 0.0)), float(fb.get("fb_decay", 0.0)), float(fb.get("fb_zoom", 0.0))]
