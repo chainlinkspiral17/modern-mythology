@@ -247,6 +247,33 @@ const CAMERA_PRESETS := {
 		"suppress_input": true,
 	},
 	# ── VOL 5 — Lovers + various cameos — Graustark ruins ────────
+	# ── VOL 5 — Magician — the warehouse FROM OUTSIDE ─────────────
+	# Added 2026-09-11 on a Deck read: ch1 opens "The warehouse did
+	# not stand. The warehouse slumped — a great rusting beast at the
+	# industrial edge of Graustark ... sighing petrochemical breath
+	# into the humid twilight", and then "Outside, kudzu vines thick
+	# as wrists throttled the chain-link fence" — two paragraphs of
+	# building seen from the road, played over an INTERIOR. The prose
+	# turns inside on its own, one line later ("Inside, the air was
+	# thick and still"), so the fix is a cut, not a reframe.
+	#
+	# Cathedral of Rust and Code sits at blender (300, 380): body
+	# 22 × 42 × 11 on ground z 1.4, long axis +y, the office annex and
+	# its door on the WEST face (285, 386 / 382.9), buttresses down
+	# both flanks, antennas and the satellite dish to z 22.9. Stand
+	# off the south-west corner at eye height and look north-east:
+	# the west face with the office, the south gable end, and the
+	# whole roofline of masts against the sky.
+	# blender cam (262, 338, 3.1) → godot (262, 3.1, −338);
+	# aim (292, 372, 7): yaw = atan2(−30, 34), a little up.
+	"cathedral_exterior": {
+		"scene": "res://scenes/locales/graustark.tscn",
+		"requires_glb": "res://assets/3d/locales/graustark.glb",
+		"camera_origin": Vector3(262.0, 3.10, -338.0),
+		"camera_rotation": Vector3(0.086, -0.7226, 0.0),
+		"fov": 62.0,
+		"suppress_input": true,
+	},
 	"graustark_ruins": {
 		"scene": "res://scenes/locales/graustark.tscn",
 		"requires_glb": "res://assets/3d/locales/graustark.glb",

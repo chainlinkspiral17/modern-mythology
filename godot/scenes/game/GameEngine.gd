@@ -103,7 +103,7 @@ var _toast:      Control     = null
 # [shot:...] / [panel:...] directives lead narrate/say/think text;
 # they're stripped before display and dispatched to the director.
 var _director:   Node        = null
-var _direct_rx:  RegEx       = RegEx.create_from_string("^\\[(shot|panel|stage|mood|beat|trip):([^\\]\\r\\n]+)\\]\\s*")
+var _direct_rx:  RegEx       = RegEx.create_from_string("^\\[(shot|panel|stage|mood|beat|trip|register):([^\\]\\r\\n]+)\\]\\s*")
 
 
 func _ready() -> void:
@@ -324,6 +324,7 @@ func _build_layers() -> void:
 func start(vol: int, scene_id: String = "", slot: int = -1, start_node: int = 0) -> void:
 	_vol         = vol
 	_apply_trip_cue("reset")
+	_apply_register_cue("reset")
 	_active_slot = slot
 	_apply_skin(vol)
 	if scene_id == "":
@@ -370,6 +371,18 @@ func _apply_trip_cue(arg: String) -> void:
 	var trip: Node = get_node_or_null("/root/TripSync")
 	if trip != null and trip.has_method("apply_trip_cue"):
 		trip.call("apply_trip_cue", arg)
+
+
+# `[register:domestic]` / `[register:reset]` (2026-09-11). The volume
+# picks a register for the whole pillar, which is right until a chapter
+# inside it is a different KIND of room — the Lovers is a kitchen at
+# nine in the morning inside a volume whose look is swamp phosphor and
+# arcade amber ("warm and cozy and domestic, not garish and weird").
+# Cleared on every scene load, like `[trip:]`.
+func _apply_register_cue(arg: String) -> void:
+	var trip: Node = get_node_or_null("/root/TripSync")
+	if trip != null and trip.has_method("set_scene_register"):
+		trip.call("set_scene_register", arg)
 
 
 func _apply_skin(vol: int) -> void:
@@ -449,6 +462,7 @@ func _open_music() -> void:
 func _load_scene(scene_id: String, start_at: int = 0) -> void:
 	# every scene opens at its mood's own trip level; `[trip:]` cues re-dial it
 	_apply_trip_cue("reset")
+	_apply_register_cue("reset")
 	_scene_id   = scene_id
 	# Coverage rotation: the director assigns each chapter its
 	# establish angle from this key (see VnDirector._rotation_marker).
@@ -521,6 +535,7 @@ func _fast_forward_to(target: int) -> void:
 	var last_env: Dictionary = {}   # node type -> last node index
 	var last_mood: String = ""
 	var last_trip: String = "reset"
+	var last_register: String = "reset"
 	var last_shot: String = ""
 	var limit: int = mini(target, nodes.size())
 	for i in limit:
@@ -548,8 +563,11 @@ func _fast_forward_to(target: int) -> void:
 			"flag": _do_flag(n)
 			"bg", "substrate", "composition", "bgm":
 				last_env[String(n.get("t", ""))] = i
-			"narrate", "say", "think":
+			"narrate", "say", "think", "interlude":
 				# Remember only the last mood/shot direction seen.
+				# "interlude" is in this list because its title text
+				# carries directives too (see _dispatch) — a resume
+				# past a title card must not lose its mood.
 				var text: String = _s(n, "text")
 				if text.begins_with("["):
 					while true:
@@ -561,6 +579,7 @@ func _fast_forward_to(target: int) -> void:
 							"mood": last_mood = arg
 							"shot": last_shot = arg
 							"trip": last_trip = arg
+							"register": last_register = arg
 						text = text.substr(m.get_end(0))
 			_:
 				pass
@@ -580,6 +599,7 @@ func _fast_forward_to(target: int) -> void:
 		if last_mood != "":
 			_director.call("apply_mood", last_mood)
 	_apply_trip_cue(last_trip)
+	_apply_register_cue(last_register)
 	# Save-file flags win over replayed flag nodes.
 	_flags.merge(authoritative, true)
 
@@ -741,7 +761,13 @@ func _dispatch(n: Dictionary) -> void:
 		"flag":       _do_flag(n); _run_next()
 		"jump":       _do_jump(n)
 		"end":        _end_scene()
-		"interlude":  _do_interlude(n)
+		# _directed() here too (2026-09-11): an interlude's `text` is a
+		# TITLE, and a `[mood:]` on it renders literally as part of the
+		# card — "[mood:arcana_warehouse]Chapter I — The Magician" shipped
+		# that way. Placing a directive on the title card is the right
+		# authorial instinct (the mood should land WITH the card, not on
+		# the line after it), so the fix is to consume it, not to move it.
+		"interlude":  _do_interlude(_directed(n))
 		"cg":         _do_cg(n)
 		"videoscene": _do_videoscene(n)
 		"gallery":    _run_next()
@@ -782,6 +808,7 @@ func _directed(n: Dictionary) -> Dictionary:
 				"mood":  _director.call("apply_mood", arg)
 				"beat":  _director.call("apply_beat", arg)
 				"trip":  _apply_trip_cue(arg)
+				"register": _apply_register_cue(arg)
 				_:
 					_director.call("apply_panel", arg)
 					# Paper-slide moment sound: a page turn on open, a

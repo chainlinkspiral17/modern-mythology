@@ -7,7 +7,7 @@
   "nodes": [
     {
       "t": "bg",
-      "src": "3d:cathedral_interior"
+      "src": "3d:cathedral_exterior"
     },
     {
       "t": "bgm",
@@ -35,8 +35,12 @@
       "voice": "assets/audio/voice/vol5_ch1_magician/005.mp3"
     },
     {
+      "t": "bg",
+      "src": "3d:cathedral_interior"
+    },
+    {
       "t": "narrate",
-      "text": "Inside, the air was thick and still — tasting of ozone from stressed circuits. Of damp concrete. Of something vaguely like burnt chicory — the ghost of Adelphia's Deli clinging to him perhaps, or maybe just the smell of old capacitors finally giving up.",
+      "text": "[shot:establish]Inside, the air was thick and still — tasting of ozone from stressed circuits. Of damp concrete. Of something vaguely like burnt chicory — the ghost of Adelphia's Deli clinging to him perhaps, or maybe just the smell of old capacitors finally giving up.",
       "voice": "assets/audio/voice/vol5_ch1_magician/006.mp3"
     },
     {

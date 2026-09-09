@@ -1473,6 +1473,50 @@ register are container guesses; is milk_honey at 0.90 a light show or
 a fog; then a screen-sourced rig for the locale walk and the gauntlet
 board, which needs a UI-free source first.
 
+**2026-09-11 (xiv) · THREE DECK NOTES.** (1) **"I like the look of the
+psychedelic warehouse, it fits."** — the Magician's cathedral interior
+under `arcana` plus the new feedback is a KEEP, and the first verdict
+THE TRIP has had that was not a complaint. That frame is the reference
+now. (2) **A directive rendered on screen**: the title card read
+"[mood:arcana_warehouse]Chapter I — The Magician", because
+`_directed()` ran on narrate/say/think and not on `interlude`. Putting
+the mood on the card is the right instinct, so `interlude` became a
+consumer (and joined the resume replay); `vn_story_audit` now fails on
+a leading directive in any field the engine does not consume — `sub`
+and `caption` are the same trap. (3) **The camera was inside a
+building the prose was describing from the road**: ch1 narrated "the
+warehouse slumped ... at the industrial edge of Graustark" and
+"Outside, kudzu vines throttled the chain-link fence" over an
+interior, then turned inside itself one line later. New
+`cathedral_exterior` vantage into the graustark megabuild (SW corner
+looking NE: the office annex, the south gable, the roof masts; ray
+tested clean at 41 m), a `bg` cut back to the interior on the word
+"Inside", and an `[shot:establish]` to open the room. THE RULE: when
+narration names a place the current locale cannot show, the answer is
+a second locale, not a different marker inside the first.
+
+**2026-09-11 (xv) · THE DOMESTIC REGISTER.** "Other chapters aren't as
+successful, the lovers should be warm and cozy and domestic, not
+garish and weird." The cause was the REGISTER, not the amount: vol 5
+pushes `arcana` for the whole volume and phosphor-green lines with
+sodium amber are exactly wrong over a kitchen in the morning. A
+pillar-wide register is right for a pillar and wrong for a room, so:
+a new `domestic` register (palette 5 HEARTH — amber → rose → cream and
+nothing on the cold side of the wheel; a low aura, almost no wash or
+hue drift, a pulse that never snaps, a wake like afternoon sun on a
+wall) and a fourth director dial, `[register:X]`, with the same
+lifecycle as `[trip:]`. Applied to THE LOVERS (whose opening also had
+a mechanical `[trip:1.2]` fighting a mood that had deliberately dialled
+itself to 0.70 — removed) and TEMPERANCE (dust motes in a shaft of
+light, a coffee maker, "a cluttered archive of selves"). NOT applied
+to the other eight vol 5 chapters with domestic locales: **locale is
+not register.** THE STAR is in a cottage and reads "like having your
+skin peeled back layer by sensitive layer" — a lookup would have made
+it cozy. The remaining candidates, needing an authorial call each:
+ch2_priestess + _b (the bungalow), ch8_strength, ch12_hanged,
+ch13_death (the hospice vigil — the strongest of the eight),
+ch15_devil, ch16_tower, ch18_moon.
+
 **2026-08-19 · PER-STICK VOICE SWEEP VERDICT (voice draft 4).**
 Ran the leakage grep (TODO/WIP/placeholder/implemented/deferred/
 stub) and a string survey across EVERY stick directory: estuary_4,

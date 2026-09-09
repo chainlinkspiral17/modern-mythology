@@ -158,6 +158,37 @@ no-op (fallback discipline — a script must never crash the reader).
 
 ## Recent lessons
 
+### 2026-09-11 · two Deck reads: a directive on screen, and a room the prose had left
+
+- **A directive only fires on a node type the engine hands to
+  `_directed()`.** On any other node it RENDERS. The Magician's title
+  card read "[mood:arcana_warehouse]Chapter I — The Magician" on
+  screen, because `interlude` was not in that list — and putting the
+  mood on the title card is the RIGHT authorial instinct (the grade
+  should land with the card, not on the line after it), so the fix was
+  to make `interlude` a consumer, not to move the cue. `vn_story_audit`
+  now fails on a leading directive in any field the engine does not
+  consume — `sub` and `caption` are the same trap.
+- **The prose says where the camera is. Read it before choosing a
+  vantage.** Chapter I opened on the cathedral INTERIOR and narrated
+  two paragraphs of the building seen from the road: "The warehouse did
+  not stand. The warehouse slumped — a great rusting beast at the
+  industrial edge of Graustark ... Outside, kudzu vines thick as wrists
+  throttled the chain-link fence." The prose then turns inside on its
+  own, one line later ("Inside, the air was thick and still"), which
+  means the fix is A CUT, not a reframe: a new `cathedral_exterior`
+  vantage into the graustark megabuild for the two exterior beats, a
+  `bg` node back to the interior on the word "Inside", and an
+  `[shot:establish]` to open the room. **When narration names a place
+  the current locale cannot show, the answer is usually a second
+  locale, not a different marker inside the first.**
+- **A register is a kind of ROOM as much as a kind of pillar.** See
+  `_PSYCHEDELIC_DESIGN_BIBLE.md` — `[register:domestic]` exists now for
+  a warm chapter inside a cold volume, and locale name is NOT a
+  reliable signal for which chapters want it (the Star is a cottage and
+  is not remotely cozy). Read the chapter.
+
+
 ### 2026-08-31 · the full direction pass · vols 1-2, panels, CGs
 
 - **Vols 1-2 are directed end to end now** (they had zero grammar).

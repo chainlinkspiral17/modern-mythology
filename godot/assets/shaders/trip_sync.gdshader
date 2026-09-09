@@ -82,7 +82,9 @@ uniform float ring_cy = 0.5;
 //                 (vol 7, LAND OF MILK AND HONEY: oil-projector amber /
 //                 violet / rose, wall-of-sound dense) · 4 neon vector
 //                 (slowsticks: Minter — pure additive rainbow, white
-//                 cores, spark storms)
+//                 cores, spark storms) · 5 hearth (a warm room inside
+//                 a cold pillar: amber → rose → cream, nothing cold,
+//                 low saturation — see `domestic` in TripSync)
 //   spark_amount  additive beat-flashing point field (Minter storms /
 //                 the sci-fi starfield) — fixed points, never travelling
 //   grain_amount  photocopy grain (zine), static per eighth-second
@@ -157,6 +159,17 @@ vec3 aura_color(float hue, float kick) {
     } else if (palette_mode == 4) {
         // neon vector: saturated rainbow with a white core when the kick lands
         return mix(hsv2rgb(vec3(hue, 1.0, 1.0)), vec3(1.0), kick * 0.35);
+    } else if (palette_mode == 5) {
+        // HEARTH (2026-09-11): a warm room. Amber through rose to a
+        // cream, and NOTHING on the cold side of the wheel — the whole
+        // point of this register is that a kitchen at nine in the
+        // morning must not go green. Narrow band, low saturation: the
+        // colour of light through a curtain, not a colour of its own.
+        float w = fract(hue);
+        vec3 c = mix(vec3(1.00, 0.78, 0.52), vec3(1.00, 0.66, 0.58),
+                     smoothstep(0.0, 0.5, w));
+        c = mix(c, vec3(1.00, 0.88, 0.72), smoothstep(0.5, 1.0, w));
+        return mix(c, vec3(1.0, 0.94, 0.86), kick * 0.25);
     }
     return hsv2rgb(vec3(hue, 0.88, 1.0));
 }

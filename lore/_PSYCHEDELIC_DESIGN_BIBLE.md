@@ -93,6 +93,18 @@ right now as default"). Under it, direction sets the level per beat:
    `[trip:reset]`. Every scene opens at reset; the cue is replayed on
    load like mood and shot.
 3. **Per surface** — the registers (below) and the `trip_soft` group.
+4. **Per scene — the REGISTER itself** (2026-09-11). `[register:X]`
+   beside `[mood:]` and `[trip:]`. The volume picks a register for the
+   whole pillar, which is right until a chapter inside it is a
+   different KIND of room: the Lovers is a kitchen at nine in the
+   morning inside a volume whose look is swamp phosphor and arcade
+   amber, and the Deck verdict was "**the lovers should be warm and
+   cozy and domestic, not garish and weird**". Same lifecycle as
+   `[trip:]` — set by a cue, cleared on every scene load, sits above
+   the owner stack without disturbing it, `[register:reset]` returns
+   to the pillar. **Reach for this before reaching for the dial**: the
+   2026-09-07 lesson still holds, subtlety lives in WHAT the look is,
+   not in scaling a wrong look down.
 
 **Bright scenes get INK, not light.** The Deck verdict: "whiter or
 brighter scenes are too plain and humdrum, it really only looks good
@@ -112,6 +124,7 @@ luminance per pixel, so a lit window in a dark room still glows.
 | `community` | Vol 6 · PLANNED COMMUNITY · COMMUNITY PLANNED · Harmony Creek | retro video games, zines, stoner sludge meta punk rock | two risograph inks on the lines (fluorescent pink + teal, hard-edged, no rainbow); photocopy grain; the pulse HANGS (decay 2.6 — sludge); flow slow and heavy; hue drift near zero | ZINE ISSUE: mission stages as pages, the BBS as the letters column, the summer pressure curve (W6/W12/W18) as tempo drops; META: the game already knows it sits in a book's pause — let it say so in the zine's voice; RETRO GAMES as in-fiction objects (cartridges, cabinet flyers, a review column) not as rendering; STONER pacing: long holds rewarded, nothing punishes patience |
 | `milk_honey` | Vol 7 · LAND OF MILK AND HONEY · Smolvud · the substrate · the slowstock shelf's cabin | SCUMM game, psychedelic wall-of-sound classic rock, sci-fi | liquid light show — the oil-projector palette (amber / rose / violet / one cold blue); the densest flow and hue drift of the four (the wall of sound); a sparse starfield of sparks in the dark; big soft ripples | SCUMM: verb-object interaction in the VN chapters (look at / pick up / talk to / use … on — the cabin, the tower, the Daily Grind), an inventory that matters, dialogue trees with wrong answers that are funny not fatal; SCI-FI: the substrate is the engine under a small-town point-and-click — the strange thing is always one room away; WALL OF SOUND: beds + BGM + practicals all breathing together (practicals pulse with the bar at ~10% of lightshow_extreme) |
 | `slowstick` | every slowstick under the shelf | Jeff Minter | the FAINTEST register (draft 2B · "ugly and strobey" as an overlay): a faint neon breath on the lines, nothing on the flats, no sparks. The Minter look lives INSIDE each stick's own rendering — its particles, its glow, its beat-lit lines — never as a screen overlay on a 2D game's type | MINTER: score as spectacle (every point is a particle), escalation by DENSITY not punishment, bonus rounds as pure light synth, the whimsy where a studio's fiction allows it; feedback trails via a SubViewport history buffer (current hardware — Godot does this natively), particles via GPUParticles2D |
+| `domestic` | a WARM ROOM inside a cold pillar — named per scene with `[register:domestic]`, not per pillar | a fridge cycling, a radio two rooms over, people who know each other well enough not to talk | palette 5 HEARTH: amber → rose → cream and nothing on the cold side of the wheel; a LOW aura the colour of light through a curtain; almost no wash and almost no hue drift (a kitchen should stay the colour it is); the pulse never snaps (decay 2.8); the wake is afternoon sun on a wall — faint, slow, going nowhere | — (the chapter's own grammar) |
 | `base` | menus, vols 1–4, anything unregistered | — | rainbow aura, moderate everything | — |
 
 The values live in `TripSync.REGISTERS`; float dials cross-fade
@@ -288,6 +301,39 @@ rig for the locale walk and the gauntlet board; and the question of
 whether `milk_honey` at 0.90 is a light show or a fog.
 
 ## Recent lessons
+
+### 2026-09-11 · first Deck sighting of the feedback — and the Lovers
+
+- **"I like the look of the psychedelic warehouse, it fits."** The
+  Magician's cathedral interior under `arcana` + the new feedback is
+  a KEEP. That is the first verdict THE TRIP has had that isn't a
+  complaint, and it is the reference frame now: swamp phosphor over a
+  dark, lamp-lit, machine-filled interior, with the wake sinking into
+  the screen. When a register is questioned, compare against this
+  frame before changing a number.
+- **"Other chapters aren't as successful — the lovers should be warm
+  and cozy and domestic, not garish and weird."** The cause was not
+  the amount, it was the REGISTER: vol 5 pushes `arcana` for the whole
+  volume, and phosphor-green lines with sodium amber on the kick are
+  exactly wrong over a kitchen in the morning. A pillar-wide register
+  is right for a pillar and wrong for a room. Hence `domestic` and
+  `[register:]` (above) — and hence the rule: **a register is a kind
+  of ROOM as much as a kind of pillar.**
+- **The chapter was also fighting itself.** The Lovers opened
+  `[trip:1.2][mood:morning_bright]` — the mechanical structural-turn
+  push from the 190-interlude pass, multiplying a mood that had
+  deliberately dialled itself down to 0.70. Where a register change is
+  the fix, take the dial cue OUT rather than adding a second one.
+- **Locale is not register — read the prose.** Ten more vol 5 chapters
+  play in domestic interiors and most of them must NOT be warm: THE
+  STAR is in a cottage and reads "the moon a shard of broken mirror
+  stuck in the bruised velvet throat of the Graustark sky ... like
+  having your skin peeled back layer by sensitive layer." A locale
+  name would have marked it cozy. Only TEMPERANCE joined the Lovers
+  (dust motes in a shaft of light, a coffee maker gurgling, middle
+  age, "a cluttered archive of selves"). The other eight are an
+  authorial call, not a lookup.
+
 
 ### 2026-09-07 · draft 2 · "mostly nausea inducing" → "I like it, but it's rough"
 

@@ -187,6 +187,24 @@ const REGISTERS: Dictionary = {
 		# outward and turns slowly, which is what a liquid light show is
 		"fb_amount": 0.90, "fb_decay": 3.8, "fb_zoom": 0.17, "fb_spin": 0.10,
 	},
+	# DOMESTIC · a warm room in a volume that is otherwise swamp and
+	# arcade (2026-09-11, Deck read: "the lovers should be warm and
+	# cozy and domestic, not garish and weird"). Vol 5 pushes `arcana`
+	# for the whole volume, and phosphor-green lines with sodium amber
+	# on the kick are exactly wrong over a kitchen at nine in the
+	# morning. Derived from the SOUND, the way every other register
+	# was: a fridge cycling, a radio two rooms over, people who know
+	# each other well enough not to talk. So — no rainbow and no
+	# phosphor; a LOW warm aura the colour of light through a curtain,
+	# almost no wash on the flats and almost no hue drift (a kitchen
+	# should stay the colour it is), and a pulse that never snaps.
+	# A scene asks for it with `[register:domestic]`.
+	"domestic": {
+		"palette_mode": 5, "line_amount": 0.55, "flow_amount": 0.50, "hue_amount": 0.25,
+		"ripple_amount": 0.45, "spark_amount": 0.0, "grain_amount": 0.0, "pulse_decay": 2.8,
+		# the wake of afternoon sun on a wall: faint, slow, going nowhere
+		"fb_amount": 0.35, "fb_decay": 3.2, "fb_zoom": 0.05, "fb_spin": 0.00,
+	},
 	# slowsticks · the quietest register (draft 2B Deck verdict on the
 	# full neon overlay: "ugly and strobey"; draft 3: "stripped
 	# completely" — so a middle). A 2D game screen has UI edges
@@ -213,6 +231,8 @@ const FEEDBACK_FLOATS: Array[String] = [
 	"fb_amount", "fb_decay", "fb_zoom", "fb_spin",
 ]
 var _register_stack: Array[Dictionary] = []   # [{"name": String, "owner": Node}]
+# A chapter's own register, above the owner stack. "" = the pillar's.
+var scene_register: String = ""
 var register_name: String = "base"
 var _reg_from: Dictionary = {}
 var _reg_to: Dictionary = {}
@@ -457,6 +477,7 @@ func _feedback_tint() -> Vector3:
 		2: return Vector3(1.00, 0.45, 0.75)   # riso pink
 		3: return Vector3(1.00, 0.62, 0.35)   # oil projector amber
 		4: return Vector3(0.75, 0.95, 1.00)   # neon vector
+		5: return Vector3(1.00, 0.80, 0.62)   # hearth
 	return Vector3(1.0, 1.0, 1.0)
 
 
@@ -643,7 +664,7 @@ func _process(delta: float) -> void:
 	# ── register fade + owner pruning (a freed host pops itself)
 	if _reg_t < 1.0:
 		_reg_t = minf(1.0, _reg_t + dt / REGISTER_FADE)
-	if not _register_stack.is_empty():
+	if not _register_stack.is_empty() or scene_register != "":
 		_resolve_register()
 
 	# ── paint · the global layer steps aside for trip_local surfaces
@@ -688,6 +709,28 @@ func effective_amount() -> float:
 # GameEngine's `[trip:X]` directive (X = 0..1.5, "reset", "off", "full").
 func set_scene_scale(v: float) -> void:
 	scene_scale = clampf(v, 0.0, 1.5)
+
+
+# GameEngine's `[register:X]` directive (2026-09-11). The volume
+# pushes a register for the whole pillar, which is right until a
+# chapter inside it is a different KIND of room — the Lovers is a
+# kitchen at nine in the morning inside a volume whose register is
+# swamp phosphor and arcade amber. This is a per-SCENE override with
+# the same lifecycle as `scene_scale`: set by a cue, cleared on every
+# scene load, and it sits ABOVE the owner stack without disturbing it,
+# so the volume's register is still there underneath when the chapter
+# ends. `[register:reset]` returns to the pillar.
+func set_scene_register(reg: String) -> void:
+	var want: String = reg.strip_edges().to_lower()
+	if want == "reset" or want == "":
+		want = ""
+	elif not REGISTERS.has(want):
+		push_warning("[TripSync] unknown register '%s'" % want)
+		return
+	if want == scene_register:
+		return
+	scene_register = want
+	_resolve_register()
 
 
 func apply_trip_cue(arg: String) -> void:
@@ -761,6 +804,10 @@ func _resolve_register() -> void:
 	var target: String = "base"
 	if not _register_stack.is_empty():
 		target = String(_register_stack[_register_stack.size() - 1]["name"])
+	# The chapter's own register wins over the pillar's, and only for
+	# as long as the chapter is loaded.
+	if scene_register != "" and REGISTERS.has(scene_register):
+		target = scene_register
 	if target == register_name:
 		return
 	_reg_from = _current_register_floats()
@@ -803,5 +850,5 @@ func status_line() -> String:
 			fb_live = "%dx%d" % [_fb_size.x, _fb_size.y]
 	return "TRIP %d%% (dial %d%% · mood ×%.2f · surface ×%.2f · scene ×%.2f · mix f%.1f l%.1f c%.1f b%.1f t%.1f) · %s · %s · %.0f bpm · e%.2f b%.2f p%.2f · trail %s a%.2f d%.1f z%+.2f" % [
 		int(effective_amount() * 100.0), int(amount * 100.0), mood_scale, surface_scale, scene_scale, mix_motion, mix_lines, mix_colour, mix_beat, mix_trails,
-		register_name, "music" if music_present else "idle", bpm, energy, bass, pulse,
+		register_name + ("*" if scene_register != "" else ""), "music" if music_present else "idle", bpm, energy, bass, pulse,
 		fb_live, float(fb.get("fb_amount", 0.0)), float(fb.get("fb_decay", 0.0)), float(fb.get("fb_zoom", 0.0))]

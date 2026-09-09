@@ -21,6 +21,7 @@ Checks across resources/scenes/vol*/*.json:
   9.  [mood:x] → a MoodCycler mood name.
  10.  [beat:x] → a VnDirector BEATS key.
  11.  [trip:x] → 0..1.5, reset, off or full (TripSync scene scale).
+ 12.  [register:x] → a TripSync.REGISTERS name, or reset.
  11.  [panel:x] → resources/vn/panels/<x>.json (x=off ok).
  12.  bgm/sfx src → audio file exists.
  13.  unknown node types (vs the engine's dispatch table).
@@ -52,6 +53,9 @@ NODE_TYPES = {
 }
 BEATS = {"still", "hit", "chill", "lift"}
 DIRECT_RX = re.compile(r"^\[(\w+):([^\]]*)\]")
+# Node types GameEngine._dispatch runs through _directed(), i.e. the
+# only ones whose `text` may carry a leading directive.
+DIRECTED_TYPES = ("narrate", "say", "think", "interlude")
 
 
 def camera_presets():
@@ -69,6 +73,17 @@ def camera_presets():
         if depth <= 0 and keys:
             break
     return keys
+
+
+def registers():
+    """The register names TripSync.REGISTERS defines."""
+    src = open(os.path.join(GODOT, "autoload", "TripSync.gd"),
+               encoding="utf-8").read()
+    i = src.find("const REGISTERS")
+    if i < 0:
+        return set()
+    body = src[i:src.find("\n}", i)]
+    return set(re.findall(r'\n\t"(\w+)":\s*\{', body))
 
 
 def mood_names():
@@ -257,10 +272,36 @@ def main():
                                 ok = False
                         if not ok:
                             problems.append((where, "[trip:%s] not 0..1.5 / reset / off / full" % arg))
+                    elif kind == "register":
+                        # `[register:X]` (2026-09-11) — a chapter that
+                        # is a different KIND of room from its pillar
+                        # names its own register. Must be one TripSync
+                        # actually defines, or the cue is a no-op with
+                        # a warning nobody reads.
+                        if arg.lower() not in registers() | {"reset", ""}:
+                            problems.append(
+                                (where, "[register:%s] unknown" % arg))
                     elif kind == "panel" and arg.lower() not in ("off", ""):
                         if not os.path.exists(
                                 os.path.join(PANELS, arg.lower() + ".json")):
                             problems.append((where, "[panel:%s] missing" % arg))
+            # A directive only fires on a node type the engine hands
+            # to _directed(). On any other node it RENDERS — the
+            # Magician's title card read "[mood:arcana_warehouse]
+            # Chapter I — The Magician" on screen for months, because
+            # `interlude` was not in that list (it is now). Any other
+            # field is the same trap: a directive in `sub` or
+            # `caption` is text.
+            for fld in ("text", "sub", "caption", "title"):
+                fv = n.get(fld, "")
+                if not isinstance(fv, str) or not fv.startswith("["):
+                    continue
+                if DIRECT_RX.match(fv) is None:
+                    continue
+                if not (fld == "text" and t in DIRECTED_TYPES):
+                    problems.append((where,
+                        "directive in %s.%s renders as text: %s"
+                        % (t, fld, fv[:40])))
             v = n.get("voice", "")
             if isinstance(v, str) and v:
                 voice_total += 1
