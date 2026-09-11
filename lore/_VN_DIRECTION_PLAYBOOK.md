@@ -181,7 +181,12 @@ no-op (fallback discipline — a script must never crash the reader).
   `bg` node back to the interior on the word "Inside", and an
   `[shot:establish]` to open the room. **When narration names a place
   the current locale cannot show, the answer is usually a second
-  locale, not a different marker inside the first.**
+  locale, not a different marker inside the first.** Gated:
+  `godot/tools/audit/inside_out_audit.py` reads every narrate line for
+  a strong place opener and compares it with the background's kind;
+  a window in the two lines before makes an exterior opener a VIEW.
+  It found the second one the same hour (the Harmony Creek prelude
+  walking into the Miller kitchen with the street still on screen).
 - **A register is a kind of ROOM as much as a kind of pillar.** See
   `_PSYCHEDELIC_DESIGN_BIBLE.md` — `[register:domestic]` exists now for
   a warm chapter inside a cold volume, and locale name is NOT a

@@ -430,6 +430,10 @@
       "text": "The creek behind the Albertsons moves at the pace it always moves. The water tower stands at the south end of Gallatin. The green privacy screen on the NexCorp fence moves slightly in the early wind and settles."
     },
     {
+      "t": "bg",
+      "src": "3d:miller_kitchen"
+    },
+    {
       "t": "narrate",
       "text": "[shot:establish]In the kitchen on Meadowlark Circle, a voice calls up the stairs."
     },

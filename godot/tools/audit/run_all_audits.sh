@@ -231,6 +231,19 @@ FIOUT="$(python3 finale_id_audit.py 2>/dev/null)" || {
 echo "$FIOUT" | tail -1
 echo ""
 
+# ── Inside/out gate (2026-09-11) ──────────────────────────────
+# The prose says where the camera is. The Magician opened on the
+# cathedral interior under two paragraphs of the warehouse seen from
+# the road; the Harmony Creek prelude walked into the Miller kitchen
+# with the street still on screen. Strong place openers only; a
+# window in the two lines before makes an exterior line a view.
+echo "── inside_out_audit.py ──"
+IOOUT="$(python3 inside_out_audit.py 2>/dev/null)" || {
+    echo "$IOOUT" | grep -A1 "^PLACE" | head -30
+    echo "$IOOUT" | tail -1; exit 1; }
+echo "$IOOUT" | tail -1
+echo ""
+
 # ── Phantom-surface gate (2026-09-10) ─────────────────────────
 # A detail pass that hard-codes a desk/counter/bar origin the builder
 # never put there (eighteen locales had one). Static: reads the x/y/z

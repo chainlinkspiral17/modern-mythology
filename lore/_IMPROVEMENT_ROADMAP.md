@@ -1517,6 +1517,24 @@ ch2_priestess + _b (the bungalow), ch8_strength, ch12_hanged,
 ch13_death (the hospice vigil — the strongest of the eight),
 ch15_devil, ch16_tower, ch18_moon.
 
+**2026-09-11 (xvi) · inside_out_audit — the Magician's class, gated.**
+The camera-inside-a-building-the-prose-describes-from-the-road defect
+was one instance of a class, so the class got a tool: every narrate
+line is read for a STRONG place opener ("From the road", "Across the
+street", "The house stood/slumped", "Inside,", "In the kitchen") and
+compared with the active background's kind — presets classified by
+name first, geometry (a roof-sized box over the camera) as the tie-
+break. A window in the two lines before makes an exterior opener a
+VIEW, not a camera claim (the Chariot's "Across the street, an older
+man ... was leaning against a streetlight" is Antonio at the leaded
+window, and the director's `[shot:insert window~]` is right). 7962
+narrated lines under a known vantage; ONE more real: the Harmony Creek
+prelude walked into the Miller kitchen ("In the kitchen on Meadowlark
+Circle, a voice calls up the stairs. / Sam. You up?") with the street
+still on screen — cut to `3d:miller_kitchen` on that line. Gated at
+zero. NEXT: the openers list is narrow on purpose; widen it only from
+Deck reads, never from a thesaurus.
+
 **2026-08-19 · PER-STICK VOICE SWEEP VERDICT (voice draft 4).**
 Ran the leakage grep (TODO/WIP/placeholder/implemented/deferred/
 stub) and a string survey across EVERY stick directory: estuary_4,
