@@ -1535,6 +1535,17 @@ still on screen — cut to `3d:miller_kitchen` on that line. Gated at
 zero. NEXT: the openers list is narrow on purpose; widen it only from
 Deck reads, never from a thesaurus.
 
+**2026-09-12 · trip_fight_audit — 85 pushes on cool moods.** The
+Lovers' "garish" opening had a second cause beside the register: a
+mechanical `[trip:1.2]` (the 190-interlude structural-turn pass) on a
+mood that had dialled itself to 0.70. Measured across the corpus: 85
+such lines, all on moods the bible names as cool (day_bright,
+morning_bright, lunch, fluorescent_corridor, kitchen_practical,
+studio). All 85 pushes removed so the mood governs; gate at zero. The
+dark-mood pushes stay — pushing a dark scene is the bible's own
+direction. NEXT: the same product check for `[register:]` once more
+chapters carry it.
+
 **2026-08-19 · PER-STICK VOICE SWEEP VERDICT (voice draft 4).**
 Ran the leakage grep (TODO/WIP/placeholder/implemented/deferred/
 stub) and a string survey across EVERY stick directory: estuary_4,

@@ -29,7 +29,7 @@
     },
     {
       "t": "narrate",
-      "text": "[trip:1.2][mood:day_bright][shot:insert sedan~]The white sedan is parked in the lot when Sam comes out."
+      "text": "[mood:day_bright][shot:insert sedan~]The white sedan is parked in the lot when Sam comes out."
     },
     {
       "t": "narrate",

@@ -244,6 +244,17 @@ IOOUT="$(python3 inside_out_audit.py 2>/dev/null)" || {
 echo "$IOOUT" | tail -1
 echo ""
 
+# ── Trip-fight gate (2026-09-12) ──────────────────────────────
+# A [trip:>1] push on a mood that dialled itself under 0.85 is a scene
+# arguing with itself — 85 of them from one mechanical pass, and the
+# Lovers' "garish and weird" opening was one. Zero.
+echo "── trip_fight_audit.py ──"
+TFOUT="$(python3 trip_fight_audit.py 2>/dev/null)" || {
+    echo "$TFOUT" | grep "^FIGHT" | head -20
+    echo "$TFOUT" | tail -1; exit 1; }
+echo "$TFOUT" | tail -1
+echo ""
+
 # ── Phantom-surface gate (2026-09-10) ─────────────────────────
 # A detail pass that hard-codes a desk/counter/bar origin the builder
 # never put there (eighteen locales had one). Static: reads the x/y/z

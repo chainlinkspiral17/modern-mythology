@@ -35,7 +35,7 @@
     },
     {
       "t": "narrate",
-      "text": "[trip:1.2][mood:day_bright][shot:closeup ben]Ben is at the small desk in the back office. His shift ended at two. He is not, technically, supposed to be in the office. He is here because he is writing."
+      "text": "[mood:day_bright][shot:closeup ben]Ben is at the small desk in the back office. His shift ended at two. He is not, technically, supposed to be in the office. He is here because he is writing."
     },
     {
       "t": "narrate",

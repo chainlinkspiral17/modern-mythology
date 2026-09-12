@@ -302,6 +302,24 @@ whether `milk_honey` at 0.90 is a light show or a fog.
 
 ## Recent lessons
 
+### 2026-09-12 · the dials multiply — a push on a cool mood is a fight
+
+- **The three levels multiply, so they can disagree.** The 190-
+  interlude pass gave every structural turn `[trip:1.2]` without
+  reading the mood under it; 85 of those sat on moods that had
+  deliberately dialled themselves under 0.85 (day_bright 39,
+  morning_bright 23, lunch 8, fluorescent_corridor 6,
+  kitchen_practical 6, studio 3). Each is a scene saying "daylight,
+  keep it low" and "push it" in one breath, against the standing Deck
+  verdict that light on a bright picture adds nothing. The Lovers'
+  opening was one; the Deck caught it as "garish." All 85 pushes
+  removed — the mood governs — and `trip_fight_audit.py` gates it.
+- **A mechanical pass over cues must read the cue it is stacking
+  on.** The rule for any future sweep that places `[trip:]`,
+  `[mood:]` or `[register:]`: compute the effective product per line,
+  not the cue in isolation.
+
+
 ### 2026-09-11 · first Deck sighting of the feedback — and the Lovers
 
 - **"I like the look of the psychedelic warehouse, it fits."** The

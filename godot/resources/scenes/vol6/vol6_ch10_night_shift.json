@@ -29,7 +29,7 @@
     },
     {
       "t": "narrate",
-      "text": "[trip:1.2][mood:fluorescent_corridor][shot:insert pallet]The pallet is heavier than it should be because somebody on the day side packed it wrong."
+      "text": "[mood:fluorescent_corridor][shot:insert pallet]The pallet is heavier than it should be because somebody on the day side packed it wrong."
     },
     {
       "t": "narrate",
