@@ -1574,11 +1574,18 @@ expressions evaluated, next preset tried); and `shot_seed`'s budget
 trim kept the EARLIEST cuts, spending the allowance on act one (a
 candidate that breaks a run ≥ 2 × HOLD_MAX is kept regardless, and a
 hold on the wide rotates to the next establish at 2 × HOLD_MAX).
-Kwik stop pair authored (aim clean), 80 light-mode cues across vols
-5–7, all resolving. Chapters with a run > 20: 15 → 5; the kwik stop 43
-→ 10. NEXT: the five that remain are narration in one-wide rooms
-(ch16_eight, ch16_dawn, courthouse, dumpster, painting) — they need a
-`shot_establish_b` each, a marker task, before the seeder can help.
+Kwik stop pair authored (aim clean), then — once a `bg` change was
+counted as the cut it is — the courthouse got a SECOND WIDE from the
+new `marker_author --establish-b` (far side of the look-point, ≥ 90°
+round, fill verdict; `candidates()` only opens its wide rings above
+subject size 3.0) and the Pit Stop got its person/person_b pair (it
+had three named closeups, all objects). 97 light-mode cues across vols
+5–7, all resolving, 839 markers aim-clean. Chapters with a run > 20:
+15 → 1; the kwik stop 43 → 10. NEXT: the one left is the painting in
+`salty_tome_alley` — three presets share one tscn and a generic pair
+lands at the first preset's look-point (the shop), so the alley needs a
+per-preset pair (`--preset` on the planner) before the seeder can cut
+it.
 
 **2026-08-19 · PER-STICK VOICE SWEEP VERDICT (voice draft 4).**
 Ran the leakage grep (TODO/WIP/placeholder/implemented/deferred/

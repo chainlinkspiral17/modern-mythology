@@ -75,7 +75,7 @@
   {
    "t": "say",
    "char": "Jesse",
-   "text": "My dad was here."
+   "text": "[shot:closeup person]My dad was here."
   },
   {
    "t": "say",
@@ -100,7 +100,7 @@
   {
    "t": "say",
    "char": "Ben",
-   "text": "Through the pass-through, maybe. He was sitting at an angle that could see the grill. I don't know if he looked."
+   "text": "[shot:closeup person_b]Through the pass-through, maybe. He was sitting at an angle that could see the grill. I don't know if he looked."
   },
   {
    "t": "narrate",

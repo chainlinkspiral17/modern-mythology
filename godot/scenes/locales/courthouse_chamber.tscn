@@ -369,3 +369,10 @@ light_color = Color(0.920, 0.920, 0.850, 1)
 light_energy = 1.30
 shadow_enabled = false
 omni_range = 6.00
+
+; the room's SECOND wide, authored by marker_author.py --establish-b (2026-09-12)
+; from the far side of the room's look-point, so a long hold has a frame to rotate to
+[node name="shot_establish_b" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(-3.392, 2.335, -9.444)
+rotation = Vector3(-0.2618, -1.8326, 0.0)
+metadata/fov = 60.0

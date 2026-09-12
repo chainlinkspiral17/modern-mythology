@@ -184,13 +184,32 @@ Three separate causes, each its own lesson:
   the room's next establish at 2 × HOLD_MAX when the room has one.
   Result: 15 chapters with a run over 20 lines → 5; the kwik stop 43
   → 10; 80 cues across vols 5–7, every one resolving.
-- **What is left needs geometry, not cues.** The five remaining (ch16
-  "eight" 27, ch16 "dawn" 25, the courthouse 24, the dumpster 24, the
-  painting 23) are narration in rooms with ONE wide and no anchors —
-  nothing to cut to. They want a second establish each
-  (`shot_establish_b`), which is a marker task. `vol1_introduction`
-  has no background at all (a monologue over black) and is not a
-  direction gap.
+- **A `bg` change IS a cut — measure it as one.** The first run table
+  counted only `[shot:]` cues, so "dawn" read as a 25-line run that
+  was really three short holds across three locale changes. The
+  seeder already treats a `bg` as a fresh wide; the measurement now
+  does too. (`SHOT_SEED_TRACE=1` prints every candidate before the
+  budget trim — use it before theorising.)
+- **What was left needed geometry, not cues — and got it.** The
+  courthouse (24 lines of narration on one wide) got a second wide
+  from `marker_author --establish-b`: searched from the far side of
+  the room's look-point, ≥ 90° round it, 3.5–9 m, ≤ 22° down, fill
+  verdict, ≥ 4 distinct surfaces. (`candidates()` only opens its wide
+  rings for a subject size ABOVE 3.0 — at 3.0 exactly the search never
+  left 2.8 m and every room was "stuck".) The dumpster night (Ben ×12
+  / Jesse ×11) and the Pit Stop's four other chapters got the
+  person / person_b pair — the room had three NAMED closeups, all of
+  objects. Chapters with a run over 20 lines: 15 → 1.
+- **The one that remains is a per-preset problem.** The painting
+  (lena ×12 / cale ×9, 23 lines) plays in `salty_tome_alley`, whose
+  markers live in `salty_tome_interior.tscn` beside the shop's and the
+  kitchenette's. A generic pair is placed at the FIRST preset's
+  look-point — the shop — and VnDirector borrows by name from the
+  tscn regardless of preset, so a pair authored there would cut a
+  scene in the alley to a face in the shop. That wants a per-preset
+  pair (`shot_closeup_person@alley`, or a `--preset` on the planner)
+  before the seeder can help. `vol1_introduction` has no background at
+  all (a monologue over black) and is not a direction gap.
 
 
 ### 2026-09-11 · two Deck reads: a directive on screen, and a room the prose had left

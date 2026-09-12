@@ -21,6 +21,7 @@ Markers are appended as position-form Marker3D nodes.
     python3 godot/tools/audit/marker_author.py --cue <locale>:<cue>…   # one marker for a blind cue
     python3 godot/tools/audit/marker_author.py --closeup [locale…]     # a room's one closeup frame
     python3 godot/tools/audit/marker_author.py --closeup-b [locale…]   # its reverse shot, from the far side
+    python3 godot/tools/audit/marker_author.py --establish-b [locale…] # a room's second wide, ≥ 90° round
 """
 import collections
 import json
@@ -303,10 +304,87 @@ def author_closeup(locale, dry, side="a"):
     return 0
 
 
+def author_establish_b(locale, dry):
+    """--establish-b: a room's SECOND wide — `shot_establish_b` — for
+    rooms that have only the preset camera to hold on. Three chapters
+    ran 23-24 lines of narration on one frame (the courthouse, the Pit
+    Stop's dumpster night, the alley's painting) because the seeder's
+    hold rotation had nothing to rotate to (2026-09-12). The frame is
+    searched from the FAR side of the room's look-point — the mirrored
+    camera — at wide distances, low elevation, passing the fill
+    verdict, and at least 90° round the spot from the first wide."""
+    path = os.path.join(M.LOCALES_TSCN, locale + ".tscn")
+    src_txt = open(path).read()
+    if 'name="shot_establish_b"' in src_txt:
+        return 0
+    gm = re.search(r'path="res://assets/3d/locales/(\w+)\.glb"', src_txt)
+    glb = gm.group(1) if gm else locale
+    cam = rot = None
+    csrc = open(BG3D).read()
+    for m in re.finditer(r'"(\w+)":\s*\{(.*?)\n\t\}', csrc, re.S):
+        pid, body = m.group(1), m.group(2)
+        if re.search(r"godseye|diag|debug", pid):
+            continue
+        if ('"scene": "res://scenes/locales/%s.tscn"' % locale) in body:
+            cm = re.search(r'"camera_origin":\s*Vector3\(([^)]+)\)', body)
+            rm = re.search(r'"camera_rotation":\s*Vector3\(((?:[^()]|\([^()]*\))+)\)', body)
+            if cm and rm:
+                try:
+                    cam = tuple(PV._ev(v) for v in cm.group(1).split(","))
+                    rot = tuple(PV._ev(v) for v in re.split(r",(?![^(]*\))", rm.group(1)))
+                except Exception:
+                    cam = rot = None
+                    continue
+                break
+    boxes = VO.boxes_for(glb)
+    if cam is None or not boxes or sum(1 for b in boxes if not VO.IGNORE.search(b[0])) < 20:
+        return 0
+    lo, hi = R.locale_bounds(boxes)
+    fwd = (-math.sin(rot[1]) * math.cos(rot[0]), math.sin(rot[0]), -math.cos(rot[1]) * math.cos(rot[0]))
+    tgt = (cam[0] + fwd[0] * 4.0, 1.3, cam[2] + fwd[2] * 4.0)
+    hits = [("_room", tgt)]
+    origin = (2.0 * tgt[0] - cam[0], cam[1], 2.0 * tgt[2] - cam[2])
+    a_ang = math.atan2(cam[2] - tgt[2], cam[0] - tgt[0])
+    # subject size > 3.0 is what unlocks candidates()' wide rings
+    # (4 / 6 / 9 / 13 m); at 3.0 exactly the search never left 2.8 m
+    for score, npos, d, el in R.candidates(tgt, 3.5, origin, boxes, set(), lo, hi, hits):
+        if d < 3.5 or d > 9.0 or el > 22.0:
+            continue
+        b_ang = math.atan2(npos[2] - tgt[2], npos[0] - tgt[0])
+        sep = abs(math.atan2(math.sin(b_ang - a_ang), math.cos(b_ang - a_ang)))
+        if sep < math.radians(90.0):
+            continue                  # the same side as the first wide is not coverage
+        rx, ry = R.aim(npos, tgt)
+        st = VO.frame_stats(R.to_b(npos), rx, ry, 60.0, boxes)
+        if VO.verdict(st) or VO.inside_any(R.to_b(npos), boxes) or st["distinct"] < 4:
+            continue
+        print("== %-28s shot_establish_b at (%.1f, %.1f, %.1f) %.1fm · %+.0f° · %.0f° round · median %.1f distinct %d"
+              % (locale, npos[0], npos[1], npos[2], d, el, math.degrees(sep), st["median"], st["distinct"]))
+        if not dry:
+            blk = ["", "; the room's SECOND wide, authored by marker_author.py --establish-b (2026-09-12)",
+                   "; from the far side of the room's look-point, so a long hold has a frame to rotate to",
+                   '[node name="shot_establish_b" type="Marker3D" parent="." groups=["vn_shot"]]',
+                   "position = Vector3(%.3f, %.3f, %.3f)" % npos,
+                   "rotation = Vector3(%.4f, %.4f, 0.0)" % (rx, ry),
+                   "metadata/fov = 60.0", ""]
+            with open(path, "a") as f:
+                f.write("\n".join(blk))
+        return 1
+    print("== %-28s stuck: no clear second wide" % locale)
+    return 0
+
+
 def main():
     dry = "--dry" in sys.argv
     only = [a for a in sys.argv[1:] if not a.startswith("--")]
     P.A.install_stubs()
+    if "--establish-b" in sys.argv:
+        n = 0
+        for fn in sorted(os.listdir(M.LOCALES_TSCN)):
+            if fn.endswith(".tscn") and (not only or fn[:-5] in only):
+                n += author_establish_b(fn[:-5], dry)
+        print("\n%d second wide(s) %s" % (n, "planned" if dry else "authored"))
+        return
     if "--closeup" in sys.argv or "--closeup-b" in sys.argv:
         side = "b" if "--closeup-b" in sys.argv else "a"
         n = 0

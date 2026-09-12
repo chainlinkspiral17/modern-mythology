@@ -122,7 +122,7 @@
   {
    "t": "say",
    "char": "Ben",
-   "text": "Eileen. Yes.",
+   "text": "[shot:closeup person]Eileen. Yes.",
    "expr": "neutral"
   },
   {
@@ -146,7 +146,7 @@
   {
    "t": "say",
    "char": "Eileen",
-   "text": "Okay.",
+   "text": "[shot:closeup person_b]Okay.",
    "expr": "neutral"
   },
   {
@@ -208,7 +208,7 @@
   {
    "t": "say",
    "char": "Ben",
-   "text": "Jesse and I have, between us, identified two of the people. One of them is a man in a charcoal suit who, in the photograph, is looking directly at the camera. Neither of us knows him. The other is a small figure — four feet tall, in a wide hat, holding a hand-rolled cigarette — that I cannot, in good conscience, ask you to take seriously, and which I am asking you to take seriously anyway.",
+   "text": "[shot:closeup person]Jesse and I have, between us, identified two of the people. One of them is a man in a charcoal suit who, in the photograph, is looking directly at the camera. Neither of us knows him. The other is a small figure — four feet tall, in a wide hat, holding a hand-rolled cigarette — that I cannot, in good conscience, ask you to take seriously, and which I am asking you to take seriously anyway.",
    "expr": "neutral"
   },
   {
@@ -274,7 +274,7 @@
   {
    "t": "say",
    "char": "Ben",
-   "text": "Since Monday afternoon.",
+   "text": "[shot:closeup person]Since Monday afternoon.",
    "expr": "neutral"
   },
   {
@@ -322,7 +322,7 @@
   {
    "t": "say",
    "char": "Ben",
-   "text": "Yes.",
+   "text": "[shot:closeup person]Yes.",
    "expr": "neutral"
   },
   {

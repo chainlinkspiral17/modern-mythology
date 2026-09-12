@@ -223,6 +223,13 @@ def plan(path):
                 last_cue = i
                 last_closeup = None
                 continue
+    if os.environ.get("SHOT_SEED_TRACE"):
+        # `SHOT_SEED_TRACE=1` — every candidate before the budget trim,
+        # the way marker_reframe's WHY explains a stuck marker.
+        print("   trace · %d candidate(s) before trim · budget %d · existing %d"
+              % (len(edits), max(0, len(nodes) // BUDGET_DIV - existing), existing))
+        for i, cue in edits:
+            print("   trace · %4d %s" % (i, cue))
     budget = max(0, len(nodes) // BUDGET_DIV - existing)
     if len(edits) > budget:
         # The budget goes where the chapter is UNCUT, not to the front

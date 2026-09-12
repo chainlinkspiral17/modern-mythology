@@ -91,7 +91,7 @@
       "t": "say",
       "char": "Ben",
       "expr": "neutral",
-      "text": "\"I know.\""
+      "text": "[shot:closeup person]\"I know.\""
     },
     {
       "t": "say",
@@ -127,7 +127,7 @@
       "t": "say",
       "char": "Jesse",
       "expr": "neutral",
-      "text": "\"You didn't mention this.\""
+      "text": "[shot:closeup person_b]\"You didn't mention this.\""
     },
     {
       "t": "say",
@@ -157,7 +157,7 @@
       "t": "say",
       "char": "Ben",
       "expr": "neutral",
-      "text": "\"A legal pad.\""
+      "text": "[shot:closeup person]\"A legal pad.\""
     },
     {
       "t": "say",
@@ -187,7 +187,7 @@
       "t": "say",
       "char": "Jesse",
       "expr": "neutral",
-      "text": "\"Jesus, Ben.\""
+      "text": "[shot:closeup person_b]\"Jesus, Ben.\""
     },
     {
       "t": "say",
@@ -245,7 +245,7 @@
       "t": "say",
       "char": "Ben",
       "expr": "neutral",
-      "text": "\"I don't. I'm guessing. Based on what I know about Sam and what I know about her dad.\""
+      "text": "[shot:closeup person]\"I don't. I'm guessing. Based on what I know about Sam and what I know about her dad.\""
     },
     {
       "t": "say",
@@ -279,7 +279,7 @@
       "t": "say",
       "char": "Jesse",
       "expr": "neutral",
-      "text": "\"I brought the prints.\""
+      "text": "[shot:closeup person_b]\"I brought the prints.\""
     },
     {
       "t": "say",
@@ -347,7 +347,7 @@
       "t": "say",
       "char": "Ben",
       "expr": "neutral",
-      "text": "\"Just looking at it.\""
+      "text": "[shot:closeup person]\"Just looking at it.\""
     },
     {
       "t": "say",

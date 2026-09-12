@@ -64,7 +64,7 @@
     {
       "t": "say",
       "char": "Ben",
-      "text": "Brenda. I need to take a forty-five at lunch. Walk over to the Kwik Stop. Personal.",
+      "text": "[shot:closeup person]Brenda. I need to take a forty-five at lunch. Walk over to the Kwik Stop. Personal.",
       "expr": "neutral"
     },
     {
@@ -94,7 +94,7 @@
     {
       "t": "say",
       "char": "Brenda",
-      "text": "You good?",
+      "text": "[shot:closeup person_b]You good?",
       "expr": "neutral"
     },
     {
