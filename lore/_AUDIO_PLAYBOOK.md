@@ -206,6 +206,54 @@ played `_BGM_BY_LOCATION`'s location drone instead.
   arcana. Scenario beds run 12-14 bars (55-65 s) rather than the
   chapter beds' ~40: a run is minutes, not a page.
 
+### 2026-09-12 (iv) · THE SEAM · every bed dipped to silence at the loop point
+
+- **A bed rendered as a one-shot cannot loop.** Every hum bed on disk
+  ended in 0.5-1.5 s of digital silence (the renderer's release
+  padding) and opened on its attacks, a few dB down. The world hum
+  loops the whole file, so every 3D room went silent for a second
+  every 40-70 s — the most audible defect in the layer, and the
+  "~40 s loop seam" the 2026-09-11 notes deferred to the Deck. The
+  synth's own schema promised `loop_bars` and never read it.
+- **The fix is in the render, and a plain fold is not it.** The first
+  attempt cut the bed at the loop bar and folded the tails past it
+  onto the head; it still dipped 11 dB, because the voices release
+  INSIDE the note (ADSR gate = dur − rel). What works: with
+  `"loop": true`, every note that ends at the loop point is HELD
+  `loop_fade` (2.0 s) past it, and that overrun is equal-power
+  crossfaded into the head. Two details that the first re-render
+  got wrong: the loop length is the LAST NOTE'S END exactly, not
+  rounded up to a bar (vol1_painting's pads end at beat 46; a loop
+  at 48 was two beats of silence), and every note ending within the
+  last bar is held to the loop point (a drone that stopped six beats
+  before the pads dropped out of every pass). The file opens at
+  sustain, ends at sustain; 45 of 50 beds measure within 3 dB across
+  the seam (vol1_ambient: last quarter-second −26.3 dB, first −26.9),
+  the five above it are the composition's own dynamics at the two
+  ends (vol3_call_drop 7 dB, both quiet). The loop region at runtime
+  is the whole file.
+- **A re-render must not move a bed's level.** normalize_bank is a
+  set operation; re-running it on a mixed set of old and new files
+  would shift everything. `author_vn_beds.py --keep-level` reads the
+  existing file's peak before rendering and scales the new render to
+  it. All 50 looping beds (chapter, player-verb, scenario B-sides)
+  were re-rendered that way; the 33 one-shots (stings, signatures)
+  keep their tails on purpose — `is_oneshot()` decides.
+- **The 16 beds not authored here get the runtime half.** The ten
+  legacy renders and the six adopted vol 5 room tones are not
+  re-rendered (the render-over-a-name rule). For a WAV that still
+  ends in silence, `AudioMgr._last_audible_frame` sets `loop_end` at
+  the last frame above the floor instead of the file's end (a scan of
+  at most the last four seconds, 16-bit only), so the silent gap is
+  gone even where the attack dip remains. The two `.ogg` beds
+  (vol5_ambient, vol5_cicadas_dusk) loop at the codec.
+- **NEXT (Deck):** the drones' phase mismatch at the wrap (a 0.2%
+  sample step — inaudible on paper); whether 2.0 s is the right
+  crossfade on the sparse beds (a soft_sine that enters in the first
+  two seconds is softened on every pass); the 16 legacy beds, whose
+  compositions exist under `compositions/` — a `loop: true` and a
+  `--keep-level` re-render each once the Deck has heard the originals.
+
 ### 2026-09-12 (iii) · SIGNATURES · a principal's theme is a one-shot, and it outranks the hum
 
 - **The catalog promised 46 character themes and shipped one.** Every
@@ -262,8 +310,7 @@ played `_BGM_BY_LOCATION`'s location drone instead.
 - **NEXT (Deck):** is once-per-scene the right rate (a vol 6 scene
   with Sam, Maya and Diego plays three stingers in its first
   minute); does 0.35 leave enough room under the signature; the
-  translations that miss (Rick's shuffle, Carl's pour); whether the
-  2026-09-11 beds want the enveloped `rain` (one re-render); then
+  translations that miss (Rick's shuffle, Carl's pour); then
   the 27 unreachable themes as their scenes are
   written, and whether the gauntlet visitors' themes should fire
   from the board (the visitor cast is data, not `show` nodes).

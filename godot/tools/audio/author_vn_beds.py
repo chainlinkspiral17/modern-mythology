@@ -29,10 +29,12 @@ DRAFT 1 CHOICES, and what draft 2 should revisit:
     wind, the cicada field, the thermal above Kestrel) are the ones to
     listen to first: if they read dull on the Deck, re-render those at
     44100 by dropping `sample_rate` from the spec.
-  · ~40 s at 52-64 BPM, no fade. AudioMgr's chapter refill restarts
-    the track when it ends, so a bed is heard as a loop with a seam at
-    the top. Draft 2: author the last bar to land on the first bar's
-    voicing, or give each chapter two beds so the seam is a change.
+  · ~40 s at 52-64 BPM. SEAMLESS since 2026-09-12: every bed that is
+    not a sting or a signature (`is_oneshot`) renders with the synth's
+    `loop: true` — the boundary notes are held 2 s past the loop bar
+    and the overrun is crossfaded into the head, so the world hum
+    (which loops the whole file) never dips at the top. Re-render a
+    bed with `--keep-level` so its normalized peak does not move.
   · Room tone, not melody. Only the hymn fragment, the Casio in the
     comic shop, the El Rancho guitar and the four stings carry a line;
     everything else is texture, because that is what the catalog's own
@@ -40,6 +42,9 @@ DRAFT 1 CHOICES, and what draft 2 should revisit:
 
     python3 godot/tools/audio/author_vn_beds.py --list
     python3 godot/tools/audio/author_vn_beds.py [track_id …]
+    python3 godot/tools/audio/author_vn_beds.py --keep-level [track_id …]
+        (re-render at the peak the previous file had — a spec or synth
+         fix that must not move a bed's normalized level)
 
 Writes `godot/tools/audio/compositions/vn/<id>.json` (editable, the
 authoring artifact) and `godot/assets/audio/bgm/<id>.wav`.
@@ -1351,6 +1356,49 @@ def adopt_into_catalog(cat_path):
     print("\n%d catalog change(s)" % changed)
 
 
+def is_oneshot(tid):
+    """Stings and signatures play once; everything else is a bed that
+    loops under a room (the world hum) or a chapter."""
+    return (tid.startswith("vol5_gauntlet_") or tid.startswith("vol5_finale_")
+            or tid.startswith("vol5_priestess_finale_") or "_theme" in tid)
+
+
+def peak_of_wav(path):
+    import struct
+    import wave
+    try:
+        w = wave.open(path)
+    except Exception:
+        return None
+    if w.getsampwidth() != 2:
+        return None
+    d = w.readframes(w.getnframes())
+    vals = struct.unpack("<%dh" % (len(d) // 2), d)
+    return max(abs(v) for v in vals) / 32768.0 if vals else None
+
+
+def match_peak(path, target):
+    """Scale a fresh render so its peak equals `target` — a re-render
+    that keeps the level normalize_bank gave the previous one."""
+    import struct
+    import wave
+    w = wave.open(path)
+    params = w.getparams()
+    d = w.readframes(w.getnframes())
+    w.close()
+    vals = struct.unpack("<%dh" % (len(d) // 2), d)
+    peak = max(abs(v) for v in vals) / 32768.0
+    if peak <= 0.0 or target is None:
+        return
+    g = target / peak
+    out = struct.pack("<%dh" % len(vals),
+                      *[max(-32768, min(32767, int(round(v * g)))) for v in vals])
+    w = wave.open(path, "wb")
+    w.setparams(params)
+    w.writeframes(out)
+    w.close()
+
+
 def compose(tid):
     spec = BEDS[tid]
     return {
@@ -1363,6 +1411,9 @@ def compose(tid):
         "tempo_bpm": spec["tempo"],
         "time_sig": [4, 4],
         "sample_rate": SR,
+        # Beds loop (the synth folds the release tails onto the start);
+        # stings and signatures play once and keep their tails.
+        "loop": not is_oneshot(tid),
         "tracks": [dict(t, gain=round(t["gain"] * spec.get("trim", 1.0), 4))
                    for t in spec["layers"]],
     }
@@ -1382,6 +1433,7 @@ def main():
         retitle_catalog(cat_path)
         return 0
     only = [a for a in sys.argv[1:] if not a.startswith("--")]
+    keep_level = "--keep-level" in sys.argv
     os.makedirs(COMPS, exist_ok=True)
     os.makedirs(OUT, exist_ok=True)
     total = 0
@@ -1393,11 +1445,14 @@ def main():
             json.dump(compose(tid), f, indent=1)
             f.write("\n")
         wav = os.path.join(OUT, tid + ".wav")
+        old_peak = peak_of_wav(wav) if (keep_level and os.path.exists(wav)) else None
         r = subprocess.run([sys.executable, SYNTH, "compose", cj, wav],
                            capture_output=True, text=True)
         if r.returncode != 0:
             print("FAIL %-32s %s" % (tid, r.stderr.strip()[:120]))
             continue
+        if old_peak is not None:
+            match_peak(wav, old_peak)
         print("%-32s %s" % (tid, r.stdout.strip()))
         total += 1
     print("\n%d bed(s) rendered" % total)

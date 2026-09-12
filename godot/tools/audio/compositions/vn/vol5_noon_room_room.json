@@ -11,6 +11,7 @@
   4
  ],
  "sample_rate": 22050,
+ "loop": true,
  "tracks": [
   {
    "instrument": "slowstick_bass",

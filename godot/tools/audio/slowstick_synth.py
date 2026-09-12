@@ -43,6 +43,10 @@ Composition JSON schema:
       "tempo_bpm": float,
       "time_sig":  [int, int],
       "sample_rate": int?,              // default 44100
+      "loop": bool?,                    // default false: cut to loop_bars, hold the
+                                        // boundary notes past it and crossfade the
+                                        // overrun into the head (a seamless bed)
+      "loop_fade": float?,              // seconds of that crossfade, default 2.0
       "loop_bars": int?,                // default = total bars in tracks
       "tracks": [
         {
@@ -380,6 +384,28 @@ def render_composition(comp, sample_rate=None):
     # Add a small tail for envelope releases.
     total_seconds = (total_beats + 1.0) * beat_seconds
     total_samples = int(total_seconds * sr) + int(0.5 * sr)
+    # A SEAMLESS LOOP (2026-09-12): with "loop": true the composition
+    # is cut to loop_bars (default: the bars the notes span, rounded
+    # up). Every note that ends AT the loop point is held `loop_fade`
+    # seconds past it, and that overrun is equal-power crossfaded
+    # into the head of the file, where the attacks are rising. A bed
+    # rendered this way opens at sustain, has no silent second at the
+    # end and no dip at the top; the runtime loop region is the whole
+    # file. (A plain fold of the release tails was tried first and
+    # still dipped 11 dB: the voices release INSIDE the note.)
+    loop_on = bool(comp.get('loop', False))
+    loop_samples = 0
+    loop_beats = 0.0
+    loop_fade = max(0.05, float(comp.get('loop_fade', 2.0)))
+    if loop_on:
+        loop_bars = int(comp.get('loop_bars', 0) or 0)
+        # Default loop length is the last note's end EXACTLY — rounding
+        # up to a bar left a hole of silence in beds whose notes end
+        # mid-bar (vol1_painting: pads to beat 46, loop at 48).
+        loop_beats = loop_bars * bar_beats if loop_bars > 0 else total_beats
+        loop_samples = max(1, int(loop_beats * beat_seconds * sr))
+        loop_fade = min(loop_fade, loop_samples / sr * 0.5)
+        total_samples = max(total_samples, loop_samples + int((loop_fade + 3.0) * sr))
     mix = [0.0] * total_samples
 
     for t in tracks:
@@ -395,6 +421,14 @@ def render_composition(comp, sample_rate=None):
                        + (float(n['beat']) - 1)
             start_s = start_beat * beat_seconds
             dur_s = float(n['dur']) * beat_seconds
+            end_beat = start_beat + float(n['dur'])
+            if loop_on and end_beat >= loop_beats - bar_beats - 1e-6 and end_beat <= loop_beats + 1e-6:
+                # Any note that ends within the last bar is held to the
+                # loop point and `loop_fade` past it; the crossfade
+                # takes it down under the head. A drone that stops six
+                # beats before the pads would otherwise drop out of
+                # every pass (vol1_painting's F2).
+                dur_s = (loop_beats - start_beat) * beat_seconds + loop_fade
             vel = float(n.get('vel', 0.8))
             freq = freq_of_midi(midi_of(n['pitch']))
             buf = instr(freq, dur_s, sr)
@@ -403,6 +437,16 @@ def render_composition(comp, sample_rate=None):
                 idx = start_i + j
                 if 0 <= idx < total_samples:
                     mix[idx] += sample * gain * vel
+
+    if loop_on and loop_samples < total_samples:
+        fade_n = max(1, int(loop_fade * sr))
+        for i in range(fade_n):
+            t = (i + 0.5) / fade_n
+            f_in = math.sin(0.5 * math.pi * t)
+            f_out = math.cos(0.5 * math.pi * t)
+            mix[i] = mix[i] * f_in + mix[loop_samples + i] * f_out
+        mix = mix[:loop_samples]
+        total_samples = loop_samples
 
     # Normalize/soft-clip
     peak = max(1e-9, max(abs(s) for s in mix))

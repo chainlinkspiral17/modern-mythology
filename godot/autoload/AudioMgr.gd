@@ -469,7 +469,40 @@ func _set_stream_loop(stream: AudioStream, on: bool) -> void:
 		# world-hum beds are WAVs now (2026-09-12) and must loop.
 		if on and w.loop_end <= w.loop_begin:
 			w.loop_begin = 0
-			w.loop_end = int(w.get_length() * float(w.mix_rate))
+			w.loop_end = _last_audible_frame(w)
+
+
+# The loop end for a WAV that was rendered as a one-shot: the last
+# frame above the noise floor, not the file's end. Every legacy bed
+# ends in a second of digital silence — the release tail's padding —
+# and looping the whole file put that silence in every room every
+# 40-70 s. Beds rendered with the synth's `loop` fold have no such
+# tail and come back unchanged. Scans at most the last four seconds.
+func _last_audible_frame(w: AudioStreamWAV) -> int:
+	var frames: int = int(w.get_length() * float(w.mix_rate))
+	if w.format != AudioStreamWAV.FORMAT_16_BITS:
+		return frames
+	var channels: int = 2 if w.stereo else 1
+	var bytes_per_frame: int = 2 * channels
+	var data: PackedByteArray = w.data
+	var total: int = data.size() / bytes_per_frame
+	if total <= 0:
+		return frames
+	var floor_frame: int = maxi(0, total - int(4.0 * float(w.mix_rate)))
+	var f: int = total - 1
+	while f > floor_frame:
+		var off: int = f * bytes_per_frame
+		var loud := false
+		for c in channels:
+			if absi(data.decode_s16(off + 2 * c)) > 16:
+				loud = true
+				break
+		if loud:
+			break
+		f -= 1
+	if f <= floor_frame:
+		return frames
+	return f + 1
 
 
 func _ensure_ambient_cfg() -> void:
