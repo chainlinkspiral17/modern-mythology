@@ -1290,7 +1290,7 @@
     {
       "t": "say",
       "char": "BT",
-      "text": "We have to go back. We have to get him another one. Hugo is still open. Pull around, get the medium, bring it back. Doug doesn't know.",
+      "text": "[shot:closeup person]We have to go back. We have to get him another one. Hugo is still open. Pull around, get the medium, bring it back. Doug doesn't know.",
       "expr": "neutral"
     },
     {
@@ -1338,7 +1338,7 @@
     {
       "t": "say",
       "char": "Hugo",
-      "text": "You guys forget something.",
+      "text": "[shot:closeup person]You guys forget something.",
       "expr": "neutral"
     },
     {
@@ -1364,7 +1364,7 @@
     {
       "t": "say",
       "char": "Diego",
-      "text": "Medium horchata. And Hugo — sorry, man. I owe you the second trip.",
+      "text": "[shot:closeup person_b]Medium horchata. And Hugo — sorry, man. I owe you the second trip.",
       "expr": "neutral"
     },
     {
@@ -1410,7 +1410,7 @@
     {
       "t": "say",
       "char": "Hugo",
-      "text": "You guys take care.",
+      "text": "[shot:closeup person]You guys take care.",
       "expr": "neutral"
     },
     {

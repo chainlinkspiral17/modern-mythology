@@ -93,7 +93,7 @@
     },
     {
       "char": "lena",
-      "text": "I know.",
+      "text": "[shot:closeup person]I know.",
       "t": "say"
     },
     {
@@ -118,7 +118,7 @@
     },
     {
       "char": "roy",
-      "text": "I would like to come.",
+      "text": "[shot:closeup person_b]I would like to come.",
       "t": "say"
     },
     {
@@ -143,7 +143,7 @@
     },
     {
       "char": "lena",
-      "text": "Yeah.",
+      "text": "[shot:closeup person]Yeah.",
       "t": "say"
     },
     {

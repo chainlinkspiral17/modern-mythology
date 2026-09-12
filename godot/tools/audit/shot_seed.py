@@ -211,10 +211,48 @@ def plan(path):
                 current = "establish"
                 last_closeup = None
                 continue
+            # A hold ON the wide never re-cut, so twenty-five lines of
+            # narration under one establish stayed on it (five chapters
+            # after the run-priority trim, 2026-09-12). Twice the hold
+            # rotates to the room's next establish — the coverage
+            # rotation the roadmap describes — when the room has one.
+            if current == "establish" and len(establishes) > 1 and i - last_cue >= 2 * HOLD_MAX:
+                est = establishes[est_i % len(establishes)]
+                est_i += 1
+                edits.append((i, "[shot:%s]" % est))
+                last_cue = i
+                last_closeup = None
+                continue
     budget = max(0, len(nodes) // BUDGET_DIV - existing)
     if len(edits) > budget:
-        # keep the earliest cuts — the reader meets the grammar first
-        edits = edits[:budget]
+        # The budget goes where the chapter is UNCUT, not to the front
+        # of the file. "Keep the earliest" left the kwik stop — a model
+        # chapter — with a 43-line dialogue and no cut, because the
+        # budget was spent on the first act (2026-09-12). A candidate
+        # that breaks a run of 2 × HOLD_MAX text lines is kept
+        # regardless; the rest fill by order.
+        text_idx = [i for i, n in enumerate(nodes)
+                    if isinstance(n, dict) and n.get("t") in ("narrate", "say", "think")]
+        cued = set(i for i in text_idx
+                   if "[shot:" in str(nodes[i].get("text", "")))
+        pos = {i: k for k, i in enumerate(text_idx)}
+        def run_len(i):
+            k = pos.get(i)
+            if k is None:
+                return 0
+            lo = k
+            while lo > 0 and text_idx[lo - 1] not in cued:
+                lo -= 1
+            hi = k
+            while hi + 1 < len(text_idx) and text_idx[hi + 1] not in cued:
+                hi += 1
+            return hi - lo + 1
+        # twice the hold is overdue by the seeder's own definition
+        must = [e for e in edits if run_len(e[0]) >= 2 * HOLD_MAX]
+        rest = [e for e in edits if e not in must]
+        keep = must[:max(budget, len(must))]
+        keep += rest[:max(0, budget - len(keep))]
+        edits = sorted(keep)
     return locale, edits, nodes, "ok:%d" % existing
 
 

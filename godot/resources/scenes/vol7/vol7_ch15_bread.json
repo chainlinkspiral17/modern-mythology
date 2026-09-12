@@ -306,7 +306,7 @@
     },
     {
       "char": "marit",
-      "text": "Yes.",
+      "text": "[shot:closeup person]Yes.",
       "expr": "serious",
       "t": "say"
     },
@@ -370,7 +370,7 @@
     },
     {
       "char": "marit",
-      "text": "Yeah.",
+      "text": "[shot:closeup person]Yeah.",
       "expr": "serious",
       "t": "say"
     },
@@ -500,7 +500,7 @@
     },
     {
       "char": "hans",
-      "text": "I do too. I — I have been thinking it since Tem called me this morning at four-fifteen to tell me Marit was coming to the bakery at six. I had been planning to give the poem at the bakery anyway. The four-fifteen call was — the four-fifteen call was the signal.",
+      "text": "[shot:closeup person_b]I do too. I — I have been thinking it since Tem called me this morning at four-fifteen to tell me Marit was coming to the bakery at six. I had been planning to give the poem at the bakery anyway. The four-fifteen call was — the four-fifteen call was the signal.",
       "expr": "serious",
       "t": "say"
     },

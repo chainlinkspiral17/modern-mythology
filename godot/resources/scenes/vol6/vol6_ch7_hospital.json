@@ -396,7 +396,7 @@
   {
    "t": "say",
    "char": "Ben",
-   "text": "Yeah.",
+   "text": "[shot:closeup person]Yeah.",
    "expr": "neutral"
   },
   {
@@ -424,13 +424,13 @@
   {
    "t": "say",
    "char": "Ben",
-   "text": "She is, Ma. She's okay. They both are.",
+   "text": "[shot:closeup person]She is, Ma. She's okay. They both are.",
    "expr": "neutral"
   },
   {
    "t": "say",
    "char": "Anita Kowalski",
-   "text": "Good.",
+   "text": "[shot:closeup person_b]Good.",
    "expr": "neutral"
   },
   {

@@ -186,7 +186,7 @@
     {
       "t": "say",
       "char": "Jim",
-      "text": "And I am going to be glad about it.",
+      "text": "[shot:closeup person]And I am going to be glad about it.",
       "expr": "neutral"
     },
     {

@@ -656,7 +656,7 @@
     {
       "t": "say",
       "char": "Maya",
-      "text": "Yeah.",
+      "text": "[shot:closeup person]Yeah.",
       "expr": "neutral"
     },
     {
@@ -699,7 +699,7 @@
     },
     {
       "t": "narrate",
-      "text": "She goes back to the floor."
+      "text": "[shot:establish]She goes back to the floor."
     },
     {
       "t": "bg",

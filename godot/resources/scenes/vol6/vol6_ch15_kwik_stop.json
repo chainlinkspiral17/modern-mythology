@@ -214,7 +214,7 @@
     {
       "t": "say",
       "char": "Jen",
-      "text": "I know. I'm saying.",
+      "text": "[shot:closeup person]I know. I'm saying.",
       "expr": "neutral"
     },
     {
@@ -336,7 +336,7 @@
     {
       "t": "say",
       "char": "Mark",
-      "text": "Yeah. About halfway.",
+      "text": "[shot:closeup person_b]Yeah. About halfway.",
       "expr": "neutral"
     },
     {
@@ -444,7 +444,7 @@
     {
       "t": "say",
       "char": "Mark",
-      "text": "Thank you. We'll — we'll come in.",
+      "text": "[shot:closeup person_b]Thank you. We'll — we'll come in.",
       "expr": "neutral"
     },
     {
@@ -546,7 +546,7 @@
     {
       "t": "say",
       "char": "Lucy",
-      "text": "Did you tell him to come.",
+      "text": "[shot:closeup person]Did you tell him to come.",
       "expr": "neutral"
     },
     {
@@ -674,7 +674,7 @@
     {
       "t": "say",
       "char": "Mark",
-      "text": "I know.",
+      "text": "[shot:closeup person_b]I know.",
       "expr": "serious"
     },
     {
@@ -926,7 +926,7 @@
     {
       "t": "say",
       "char": "Mark",
-      "text": "Okay.",
+      "text": "[shot:closeup person]Okay.",
       "expr": "neutral"
     },
     {
@@ -962,7 +962,7 @@
     {
       "t": "say",
       "char": "Sam",
-      "text": "Yeah.",
+      "text": "[shot:closeup sam]Yeah.",
       "expr": "neutral"
     },
     {
@@ -996,7 +996,7 @@
     {
       "t": "say",
       "char": "Mark",
-      "text": "Sam.",
+      "text": "[shot:closeup person]Sam.",
       "expr": "neutral"
     },
     {
@@ -1034,7 +1034,7 @@
     {
       "t": "say",
       "char": "Sam",
-      "text": "Okay. Thanks for saying.",
+      "text": "[shot:closeup sam]Okay. Thanks for saying.",
       "expr": "neutral"
     },
     {
@@ -1075,7 +1075,7 @@
     },
     {
       "t": "narrate",
-      "text": "Then they pick up the duffel bag they have pulled from the back seat — the only luggage they have decided to take with them on the walk, which means the rest is in the car going to Bobby's lot to sit indefinitely — and they walk, slowly, in the eleven-thirty heat, east on the access road toward the Linden exit and the Cypress motel two miles beyond."
+      "text": "[shot:establish]Then they pick up the duffel bag they have pulled from the back seat — the only luggage they have decided to take with them on the walk, which means the rest is in the car going to Bobby's lot to sit indefinitely — and they walk, slowly, in the eleven-thirty heat, east on the access road toward the Linden exit and the Cypress motel two miles beyond."
     },
     {
       "t": "narrate",

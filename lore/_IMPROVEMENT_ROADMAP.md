@@ -1562,6 +1562,24 @@ holds the global layer aside; 2D screens have no camera, so the sticks
 stay untouched. NEXT: the mirror's cost in graustark on the Deck; the
 same Deck reads as draft 1.
 
+**2026-09-12 (iii) · the uncut runs.** Measured the longest stretch of
+text lines between two `[shot:]` cues per chapter. The kwik stop — a
+model chapter — had a 43-line three-speaker dialogue with no cut.
+Three causes fixed in the tools: `marker_author --closeup` treated a
+NAMED closeup (shot_closeup_sam) as satisfying a twelve-speaker room
+(it now skips only when the generic person/person_b pair exists); it
+took the room's FIRST preset, which for the kwik stop is the god's-eye
+diagnostic at `-PI/2` and failed silently (diagnostic presets skipped,
+expressions evaluated, next preset tried); and `shot_seed`'s budget
+trim kept the EARLIEST cuts, spending the allowance on act one (a
+candidate that breaks a run ≥ 2 × HOLD_MAX is kept regardless, and a
+hold on the wide rotates to the next establish at 2 × HOLD_MAX).
+Kwik stop pair authored (aim clean), 80 light-mode cues across vols
+5–7, all resolving. Chapters with a run > 20: 15 → 5; the kwik stop 43
+→ 10. NEXT: the five that remain are narration in one-wide rooms
+(ch16_eight, ch16_dawn, courthouse, dumpster, painting) — they need a
+`shot_establish_b` each, a marker task, before the seeder can help.
+
 **2026-08-19 · PER-STICK VOICE SWEEP VERDICT (voice draft 4).**
 Ran the leakage grep (TODO/WIP/placeholder/implemented/deferred/
 stub) and a string survey across EVERY stick directory: estuary_4,

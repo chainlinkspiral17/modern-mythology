@@ -303,7 +303,7 @@
     {
       "t": "say",
       "char": "Judge",
-      "text": "Mr. Dean. I am — I am going to take a brief recess to confer with counsel. Bailiff — please ask the gallery to remain seated. We will reconvene in twenty minutes.",
+      "text": "[shot:closeup person]Mr. Dean. I am — I am going to take a brief recess to confer with counsel. Bailiff — please ask the gallery to remain seated. We will reconvene in twenty minutes.",
       "expr": "neutral"
     },
     {
@@ -373,7 +373,7 @@
     {
       "t": "say",
       "char": "Ramirez",
-      "text": "Mary. I think — I think Dean might also be the man who is, inside the federal apparatus, the one running this investigation. I think — I think he is on multiple sides of this at once. I think he has been, for some time.",
+      "text": "[shot:closeup person_b]Mary. I think — I think Dean might also be the man who is, inside the federal apparatus, the one running this investigation. I think — I think he is on multiple sides of this at once. I think he has been, for some time.",
       "expr": "thinking"
     },
     {

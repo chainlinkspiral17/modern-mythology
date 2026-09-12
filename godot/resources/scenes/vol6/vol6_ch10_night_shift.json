@@ -250,7 +250,7 @@
     {
       "t": "say",
       "char": "BT",
-      "text": "Yeah.",
+      "text": "[shot:closeup person]Yeah.",
       "expr": "neutral"
     },
     {

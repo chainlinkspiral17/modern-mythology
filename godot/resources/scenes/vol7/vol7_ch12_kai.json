@@ -390,7 +390,7 @@
   },
   {
    "char": "kai",
-   "text": "Thank you for driving down to Lena's first.",
+   "text": "[shot:closeup person]Thank you for driving down to Lena's first.",
    "expr": "neutral",
    "t": "say"
   },
@@ -456,7 +456,7 @@
   },
   {
    "char": "finn",
-   "text": "All right. We have until five.",
+   "text": "[shot:closeup person]All right. We have until five.",
    "expr": "neutral",
    "t": "say"
   },

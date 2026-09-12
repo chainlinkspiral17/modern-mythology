@@ -128,7 +128,7 @@
   {
    "t": "say",
    "char": "Em",
-   "text": "How are your hands.",
+   "text": "[shot:closeup person]How are your hands.",
    "expr": "neutral"
   },
   {
@@ -458,7 +458,7 @@
   {
    "t": "say",
    "char": "Em",
-   "text": "Thank you. This next one — this next one is new. It's called Substation Nine.",
+   "text": "[shot:closeup person]Thank you. This next one — this next one is new. It's called Substation Nine.",
    "expr": "neutral"
   },
   {
@@ -670,7 +670,7 @@
   {
    "t": "say",
    "char": "Jesse",
-   "text": "Yeah.",
+   "text": "[shot:closeup person_b]Yeah.",
    "expr": "neutral"
   },
   {

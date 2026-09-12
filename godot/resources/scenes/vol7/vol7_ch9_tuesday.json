@@ -259,7 +259,7 @@
     },
     {
       "char": "hans",
-      "text": "Is it police.",
+      "text": "[shot:closeup person]Is it police.",
       "expr": "neutral",
       "t": "say"
     },

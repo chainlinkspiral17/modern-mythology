@@ -414,7 +414,7 @@
     {
       "t": "say",
       "char": "Eileen",
-      "text": "Tomorrow. Five AM.",
+      "text": "[shot:closeup person]Tomorrow. Five AM.",
       "expr": "happy"
     },
     {

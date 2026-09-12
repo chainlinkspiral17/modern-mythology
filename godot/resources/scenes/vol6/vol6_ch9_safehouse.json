@@ -142,7 +142,7 @@
     {
       "t": "say",
       "char": "Sam",
-      "text": "Five days, Diego. We got you out Friday morning. It's Tuesday.",
+      "text": "[shot:closeup person]Five days, Diego. We got you out Friday morning. It's Tuesday.",
       "expr": "neutral"
     },
     {
@@ -320,7 +320,7 @@
     {
       "t": "say",
       "char": "Maya",
-      "text": "Diego. I want you to write down the dream. I want you to write down the device on the wall. I want you to write down what Boyd told you. I want you to write all of it down before you forget it. We are going to need it. Not today. But eventually. The notebook is going to be one of the things we have, when we have to explain to people, later, what it was like.",
+      "text": "[shot:closeup person_b]Diego. I want you to write down the dream. I want you to write down the device on the wall. I want you to write down what Boyd told you. I want you to write all of it down before you forget it. We are going to need it. Not today. But eventually. The notebook is going to be one of the things we have, when we have to explain to people, later, what it was like.",
       "expr": "neutral"
     },
     {

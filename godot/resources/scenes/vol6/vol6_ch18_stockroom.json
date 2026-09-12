@@ -906,7 +906,7 @@
     {
       "t": "say",
       "char": "abuela",
-      "text": "*Eggs.*",
+      "text": "[shot:closeup person]*Eggs.*",
       "expr": "neutral"
     },
     {
@@ -938,7 +938,7 @@
     {
       "t": "say",
       "char": "diego",
-      "text": "*The shift was good.*",
+      "text": "[shot:closeup person_b]*The shift was good.*",
       "expr": "neutral"
     },
     {
@@ -983,7 +983,7 @@
     },
     {
       "t": "narrate",
-      "text": "He goes upstairs."
+      "text": "[shot:establish]He goes upstairs."
     },
     {
       "t": "hide",

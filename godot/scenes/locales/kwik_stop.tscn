@@ -518,3 +518,17 @@ light_color = Color(1.000, 0.620, 0.260, 1)
 light_energy = 3.00
 shadow_enabled = false
 omni_range = 9.00
+
+; the room's one closeup frame, authored by marker_author.py --closeup (2026-09-10)
+; every closeup of a person cued here cuts to it (the scene had no closeup marker)
+[node name="shot_closeup_person" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(3.682, 1.612, -3.471)
+rotation = Vector3(-0.2618, 1.0472, 0.0)
+metadata/fov = 45.0
+
+; the room's REVERSE closeup frame, authored by marker_author.py --closeup (2026-09-10)
+; the far side of the same spot, so two speakers alternate sides
+[node name="shot_closeup_person_b" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(1.340, 1.612, -4.824)
+rotation = Vector3(-0.2618, -2.0944, 0.0)
+metadata/fov = 45.0

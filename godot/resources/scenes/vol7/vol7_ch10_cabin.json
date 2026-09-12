@@ -235,7 +235,7 @@
     },
     {
       "char": "per",
-      "text": "What lineage.",
+      "text": "[shot:closeup person]What lineage.",
       "expr": "neutral",
       "t": "say"
     },

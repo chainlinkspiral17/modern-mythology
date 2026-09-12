@@ -1103,7 +1103,7 @@
   },
   {
    "t": "narrate",
-   "text": "Maya, in her bed at her grandmother's, is asleep."
+   "text": "[shot:insert bed]Maya, in her bed at her grandmother's, is asleep."
   },
   {
    "t": "narrate",
@@ -1139,7 +1139,7 @@
   },
   {
    "t": "narrate",
-   "text": "Tonight is, for everybody in the volume, the small calm before."
+   "text": "[shot:establish]Tonight is, for everybody in the volume, the small calm before."
   },
   {
    "t": "narrate",

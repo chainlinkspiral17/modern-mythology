@@ -420,7 +420,7 @@
   },
   {
    "char": "lena",
-   "text": "I have been watching the eating. I have been registering the message. The message is — the message is that something is supposed to be where the eating is. The substrate has been clearing the wall. The substrate has been clearing the wall for something.",
+   "text": "[shot:closeup person_b]I have been watching the eating. I have been registering the message. The message is — the message is that something is supposed to be where the eating is. The substrate has been clearing the wall. The substrate has been clearing the wall for something.",
    "expr": "serious",
    "t": "say"
   },
@@ -456,7 +456,7 @@
   },
   {
    "char": "finn",
-   "text": "It's at my place.",
+   "text": "[shot:closeup person]It's at my place.",
    "expr": "neutral",
    "t": "say"
   },
@@ -486,7 +486,7 @@
   },
   {
    "char": "lena",
-   "text": "Thank you for driving down here first.",
+   "text": "[shot:closeup person_b]Thank you for driving down here first.",
    "expr": "neutral",
    "t": "say"
   },

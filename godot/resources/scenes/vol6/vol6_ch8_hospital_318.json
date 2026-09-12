@@ -453,7 +453,7 @@
   {
    "t": "say",
    "char": "Linda Caldwell",
-   "text": "Sweetheart. He is one of the friends. He is, in fact, by your description, the most active of the friends in some time. You are going to meet him. Not soon. But you are going to meet him. And when you do, you are going to tell him your grandfather knew his name in 1999, and that we have been, in our small way, watching for him.",
+   "text": "[shot:closeup person]Sweetheart. He is one of the friends. He is, in fact, by your description, the most active of the friends in some time. You are going to meet him. Not soon. But you are going to meet him. And when you do, you are going to tell him your grandfather knew his name in 1999, and that we have been, in our small way, watching for him.",
    "expr": "neutral"
   },
   {
@@ -479,7 +479,7 @@
   {
    "t": "say",
    "char": "Maya",
-   "text": "Grandma. I love you.",
+   "text": "[shot:closeup person_b]Grandma. I love you.",
    "expr": "neutral"
   },
   {
@@ -522,7 +522,7 @@
   },
   {
    "t": "narrate",
-   "text": "Maya stands beside her grandmother's bed."
+   "text": "[shot:establish]Maya stands beside her grandmother's bed."
   },
   {
    "t": "narrate",

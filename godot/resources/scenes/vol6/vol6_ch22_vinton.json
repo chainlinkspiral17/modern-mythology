@@ -120,7 +120,7 @@
   {
    "t": "say",
    "char": "Coach Guidry",
-   "text": "Tell the bus driver he's a good man.",
+   "text": "[shot:closeup person]Tell the bus driver he's a good man.",
    "expr": "neutral"
   },
   {
@@ -678,7 +678,7 @@
   {
    "t": "say",
    "char": "Eileen",
-   "text": "This is the first time I have been at a game since February.",
+   "text": "[shot:closeup person]This is the first time I have been at a game since February.",
    "expr": "neutral"
   },
   {

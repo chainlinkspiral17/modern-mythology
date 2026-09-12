@@ -886,7 +886,7 @@
     {
       "t": "say",
       "char": "Jesse",
-      "text": "Thanks for letting me stay. Good to meet you. See you tomorrow.",
+      "text": "[shot:closeup person]Thanks for letting me stay. Good to meet you. See you tomorrow.",
       "expr": "neutral"
     },
     {
@@ -928,7 +928,7 @@
     {
       "t": "say",
       "char": "Chess",
-      "text": "Eleven.",
+      "text": "[shot:closeup person_b]Eleven.",
       "expr": "neutral"
     },
     {

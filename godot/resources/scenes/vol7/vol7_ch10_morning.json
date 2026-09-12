@@ -603,7 +603,7 @@
     },
     {
       "char": "tem",
-      "text": "I'll have it.",
+      "text": "[shot:closeup person_b]I'll have it.",
       "expr": "neutral",
       "t": "say"
     },
@@ -694,7 +694,7 @@
       "t": "say"
     },
     {
-      "text": "She looked at Lena.",
+      "text": "[shot:establish]She looked at Lena.",
       "t": "narrate"
     },
     {

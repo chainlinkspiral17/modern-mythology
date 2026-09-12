@@ -33,6 +33,7 @@ HERE = os.path.dirname(os.path.abspath(__file__))
 sys.path.insert(0, HERE)
 import prop_overlap_audit as P
 import vantage_obstruction_audit as VO
+import preset_vantage_audit as PV
 import marker_aim_audit as M
 import marker_reframe as R
 import shot_marker_audit as SM
@@ -222,7 +223,13 @@ def author_closeup(locale, dry, side="a"):
     path = os.path.join(M.LOCALES_TSCN, locale + ".tscn")
     src_txt = open(path).read()
     mname = "shot_closeup_person" if side == "a" else "shot_closeup_person_b"
-    if side == "a" and 'name="shot_closeup_' in src_txt:
+    # Skip only when the GENERIC frame exists. A named closeup
+    # (shot_closeup_sam) is one face; a room with twelve speakers
+    # needs the person / person_b PAIR so the director can alternate
+    # sides — the kwik stop, a model chapter, ran a 43-line dialogue
+    # with no cut because its one named frame satisfied this test
+    # (2026-09-12).
+    if side == "a" and 'name="shot_closeup_person"' in src_txt:
         return 0
     if side == "b" and ('name="shot_closeup_person"' not in src_txt or ('name="%s"' % mname) in src_txt):
         return 0                      # the reverse shot only pairs with a generic frame
@@ -238,20 +245,24 @@ def author_closeup(locale, dry, side="a"):
     rot = None
     csrc = open(BG3D).read()
     for m in re.finditer(r'"(\w+)":\s*\{(.*?)\n\t\}', csrc, re.S):
-        body = m.group(2)
+        pid, body = m.group(1), m.group(2)
+        # A diagnostic vantage is not the room's conversation spot.
+        # The kwik stop's FIRST preset is `kwik_stop_godseye` — a
+        # straight-down camera at -PI/2 — and the old loop took it,
+        # failed to parse PI, and returned 0 without a word, which is
+        # why the model chapter never got its closeup pair (2026-09-12).
+        if re.search(r"godseye|diag|debug", pid):
+            continue
         if ('"scene": "res://scenes/locales/%s.tscn"' % locale) in body:
             cm = re.search(r'"camera_origin":\s*Vector3\(([^)]+)\)', body)
             rm = re.search(r'"camera_rotation":\s*Vector3\(((?:[^()]|\([^()]*\))+)\)', body)
             if cm and rm:
-                def _num(v):
-                    v = v.strip()
-                    dm = re.match(r"deg_to_rad\(([-0-9.]+)\)", v)
-                    return math.radians(float(dm.group(1))) if dm else float(v)
                 try:
-                    cam = tuple(_num(v) for v in cm.group(1).split(","))
-                    rot = tuple(_num(v) for v in re.split(r",(?![^(]*\))", rm.group(1)))
-                except ValueError:
+                    cam = tuple(PV._ev(v) for v in cm.group(1).split(","))
+                    rot = tuple(PV._ev(v) for v in re.split(r",(?![^(]*\))", rm.group(1)))
+                except Exception:
                     cam = rot = None
+                    continue          # try the next preset for this room
                 break
     boxes = VO.boxes_for(glb)
     if cam is None or not boxes or sum(1 for b in boxes if not VO.IGNORE.search(b[0])) < 20:

@@ -158,6 +158,41 @@ no-op (fallback discipline — a script must never crash the reader).
 
 ## Recent lessons
 
+### 2026-09-12 · the model chapter with a 43-line uncut dialogue
+
+Measured the longest uncut run per chapter (text lines between two
+`[shot:]` cues). The kwik stop — a MODEL chapter, 291 lines, 47 cuts —
+had a 43-line dialogue between Lucy, Mark and Jen with no cut at all.
+Three separate causes, each its own lesson:
+
+- **A named closeup is not a pair.** `marker_author --closeup` skipped
+  any room that already had *a* closeup marker, because VnDirector
+  borrows one for a missing one. The kwik stop had `shot_closeup_sam`
+  — one face — and twelve speakers. The person / person_b PAIR is what
+  lets the director alternate sides; a named frame does not. Skip only
+  when the generic frame exists.
+- **A diagnostic vantage is not the room.** The planner took the FIRST
+  preset that referenced the room's scene; the kwik stop's first is
+  `kwik_stop_godseye`, a straight-down camera at `-PI / 2.0`, which
+  failed to parse and returned 0 without a word. Skip `godseye|diag|
+  debug` presets, evaluate expressions with `preset_vantage_audit._ev`,
+  and on a bad preset try the next one rather than giving up.
+- **The seeder's budget went to the front of the file.** "Keep the
+  earliest cuts" spent the whole allowance on act one and never reached
+  the run. Now a candidate that breaks a run of 2 × HOLD_MAX is kept
+  regardless, the rest fill by order; and a hold ON the wide re-cuts to
+  the room's next establish at 2 × HOLD_MAX when the room has one.
+  Result: 15 chapters with a run over 20 lines → 5; the kwik stop 43
+  → 10; 80 cues across vols 5–7, every one resolving.
+- **What is left needs geometry, not cues.** The five remaining (ch16
+  "eight" 27, ch16 "dawn" 25, the courthouse 24, the dumpster 24, the
+  painting 23) are narration in rooms with ONE wide and no anchors —
+  nothing to cut to. They want a second establish each
+  (`shot_establish_b`), which is a marker task. `vol1_introduction`
+  has no background at all (a monologue over black) and is not a
+  direction gap.
+
+
 ### 2026-09-11 · two Deck reads: a directive on screen, and a room the prose had left
 
 - **A directive only fires on a node type the engine hands to

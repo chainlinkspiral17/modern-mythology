@@ -516,7 +516,7 @@
   },
   {
    "char": "cale",
-   "text": "I am going to need to ask you to tell me what the brioche is for.",
+   "text": "[shot:closeup person]I am going to need to ask you to tell me what the brioche is for.",
    "t": "say"
   },
   {
@@ -555,7 +555,7 @@
    "t": "say"
   },
   {
-   "text": "Cale stood up. He went to the brioche. He cut ten pieces — careful slices, the way Hans had taught Kai to cut bread on the night of Kai's grandmother Margit's funeral in '49 when Hans had come over and had cut the bread for the small wake.",
+   "text": "[shot:insert brioche]Cale stood up. He went to the brioche. He cut ten pieces — careful slices, the way Hans had taught Kai to cut bread on the night of Kai's grandmother Margit's funeral in '49 when Hans had come over and had cut the bread for the small wake.",
    "t": "narrate"
   },
   {

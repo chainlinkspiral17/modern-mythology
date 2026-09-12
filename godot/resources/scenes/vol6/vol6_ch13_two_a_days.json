@@ -512,7 +512,7 @@
   {
    "t": "say",
    "char": "Coach K",
-   "text": "Water. Two minutes.",
+   "text": "[shot:closeup person]Water. Two minutes.",
    "expr": "neutral"
   },
   {

@@ -90,7 +90,7 @@
   {
    "t": "say",
    "char": "Diego",
-   "text": "Yeah.",
+   "text": "[shot:closeup person]Yeah.",
    "expr": "neutral"
   },
   {
@@ -258,7 +258,7 @@
   {
    "t": "say",
    "char": "Russell",
-   "text": "You went back to the receiving log.",
+   "text": "[shot:closeup person]You went back to the receiving log.",
    "expr": "neutral"
   },
   {
@@ -400,7 +400,7 @@
   {
    "t": "say",
    "char": "Diego",
-   "text": "Yeah?",
+   "text": "[shot:closeup person]Yeah?",
    "expr": "neutral"
   },
   {
@@ -856,7 +856,7 @@
   {
    "t": "say",
    "char": "Jessa",
-   "text": "Manifest's clean. We came in three cans over and two cans under. Net one over. Discrepancy sheet matches. We are done at eight thirty. Drive safe. Sleep good.",
+   "text": "[shot:closeup person]Manifest's clean. We came in three cans over and two cans under. Net one over. Discrepancy sheet matches. We are done at eight thirty. Drive safe. Sleep good.",
    "expr": "neutral"
   },
   {

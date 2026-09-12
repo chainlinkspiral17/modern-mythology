@@ -770,7 +770,7 @@
     },
     {
       "char": "tem",
-      "text": "I have not.",
+      "text": "[shot:closeup person_b]I have not.",
       "expr": "neutral",
       "t": "say"
     },
@@ -806,7 +806,7 @@
     },
     {
       "char": "per",
-      "text": "Get her here.",
+      "text": "[shot:closeup person]Get her here.",
       "expr": "serious",
       "t": "say"
     },
@@ -836,7 +836,7 @@
     },
     {
       "char": "tem",
-      "text": "Per.",
+      "text": "[shot:closeup person_b]Per.",
       "expr": "neutral",
       "t": "say"
     },

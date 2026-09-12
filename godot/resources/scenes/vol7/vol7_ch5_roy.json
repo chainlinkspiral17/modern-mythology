@@ -225,7 +225,7 @@
     },
     {
       "char": "roy",
-      "text": "I figured. I'll tell them you asked.",
+      "text": "[shot:closeup person]I figured. I'll tell them you asked.",
       "expr": "happy",
       "t": "say"
     },
@@ -251,7 +251,7 @@
     },
     {
       "char": "kai",
-      "text": "I don't know what you're asking. I don't know who's asking it through you. I don't know what materials you're talking about. I'm not going to know any of those things in the next ten seconds, so the question is what you want from me right now.",
+      "text": "[shot:closeup person_b]I don't know what you're asking. I don't know who's asking it through you. I don't know what materials you're talking about. I'm not going to know any of those things in the next ten seconds, so the question is what you want from me right now.",
       "expr": "neutral",
       "t": "say"
     },
@@ -281,7 +281,7 @@
     },
     {
       "char": "roy",
-      "text": "You're his friend.",
+      "text": "[shot:closeup person]You're his friend.",
       "expr": "happy",
       "t": "say"
     },

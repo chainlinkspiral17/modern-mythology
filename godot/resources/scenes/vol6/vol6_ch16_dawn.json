@@ -156,7 +156,7 @@
   {
    "t": "say",
    "char": "Doug",
-   "text": "Diego.",
+   "text": "[shot:closeup person]Diego.",
    "expr": "neutral"
   },
   {
@@ -414,7 +414,7 @@
   {
    "t": "say",
    "char": "BT",
-   "text": "There is no — there is no arrangement for this. There is no rag.",
+   "text": "[shot:closeup person]There is no — there is no arrangement for this. There is no rag.",
    "expr": "serious"
   },
   {

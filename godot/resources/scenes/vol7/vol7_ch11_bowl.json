@@ -618,7 +618,7 @@
     },
     {
       "char": "tem",
-      "text": "I am — I am not going to make this go faster than it needs to. The substrate is going to give us what the substrate is going to give us at the pace the substrate gives. I am going to honor the pace.",
+      "text": "[shot:closeup person_b]I am — I am not going to make this go faster than it needs to. The substrate is going to give us what the substrate is going to give us at the pace the substrate gives. I am going to honor the pace.",
       "expr": "serious",
       "t": "say"
     },
@@ -654,7 +654,7 @@
     },
     {
       "char": "kai",
-      "text": "He did.",
+      "text": "[shot:closeup person]He did.",
       "expr": "neutral",
       "t": "say"
     },
@@ -690,7 +690,7 @@
     },
     {
       "char": "tem",
-      "text": "Yeah.",
+      "text": "[shot:closeup person_b]Yeah.",
       "expr": "neutral",
       "t": "say"
     },
