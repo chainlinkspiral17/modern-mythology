@@ -310,10 +310,21 @@ def instr_rain(freq, seconds, sr):
     rc = 1.0 / (2.0 * math.pi * cutoff)
     a = dt / (rc + dt)
     y = 0.0
+    # A short linear attack and release (2026-09-12). Noise that starts
+    # and stops at full amplitude is a click at both ends — audible on
+    # the signatures' 100-300 ms bursts (pen scratch, sneaker squeak,
+    # knife strop) and at the tail of every bed's long rain note.
+    atk_n = max(1, int(0.008 * sr))
+    rel_n = max(1, int(0.030 * sr))
     for i in range(n):
         x = osc_noise(rng) * 0.7
         y = y + a * (x - y)
-        out[i] = y
+        env = 1.0
+        if i < atk_n:
+            env = i / atk_n
+        if n - i <= rel_n:
+            env = min(env, (n - i) / rel_n)
+        out[i] = y * env
     return out
 
 

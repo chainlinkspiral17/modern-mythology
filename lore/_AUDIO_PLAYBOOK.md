@@ -250,14 +250,21 @@ played `_BGM_BY_LOCATION`'s location drone instead.
   pen scratch = bright noise bursts (`rain` at A5, 0.2-0.4 beats);
   a cello = the pad on one note; a bell or a tin clasp = the square
   wave for 60-150 ms; a heartbeat = two bass thumps a beat apart;
-  a humming voice = a sine in the low alto. The `rain` voice has no
-  envelope, so its short bursts have hard edges — listen for clicks
-  on Frasier, Diego and Per first.
+  a humming voice = a sine in the low alto.
+- **`rain` was the one voice with no envelope.** Every other
+  instrument gates through ADSR; filtered noise started and stopped
+  at full amplitude — a click at both ends of a 150 ms sneaker
+  squeak, and at the tail of every bed's 40 s rain note. The voice
+  now carries an 8 ms attack and 30 ms release in the synth itself.
+  Only the signatures were re-rendered; the 2026-09-11 beds keep
+  their renders until the Deck has heard them once (re-render is one
+  command; render-over-a-name is the lesson above).
 - **NEXT (Deck):** is once-per-scene the right rate (a vol 6 scene
   with Sam, Maya and Diego plays three stingers in its first
   minute); does 0.35 leave enough room under the signature; the
-  `rain` burst edges; the translations that miss (Rick's shuffle,
-  Carl's pour); then the 27 unreachable themes as their scenes are
+  translations that miss (Rick's shuffle, Carl's pour); whether the
+  2026-09-11 beds want the enveloped `rain` (one re-render); then
+  the 27 unreachable themes as their scenes are
   written, and whether the gauntlet visitors' themes should fire
   from the board (the visitor cast is data, not `show` nodes).
 
