@@ -57,11 +57,39 @@
       "t": "narrate"
     },
     {
-      "text": "[shot:insert bowl]The bowl was cedar, the wood the warm red-brown that western red cedar goes when it has been carried by hand for fifty years and oiled with the small oil a person uses on a thing he intends to keep. The bowl was about the size of two cupped hands. A spiral was cut into the outside that ran from the rim down to the base in a single continuous curve, and inside the spiral, by some patience of the carver's wrist that Kai had not in his life seen carving like, were figures. Not pressed in. Risen, the way a thing rises in wood when the carver has cut around it for long enough that what is left is what was always there.",
+      "text": "[shot:insert bowl]The bowl was cedar, the wood the warm red-brown that western red cedar goes when it has been carried by hand for fifty years and oiled with the small oil a person uses on a thing he intends to keep.",
       "t": "narrate"
     },
     {
-      "text": "A crow on a fencepost at the level of the rim, head turned three-quarters to the viewer. An octopus a quarter of the way around, eight arms in the careful uncoiled arrangement of an octopus moving over a tide-pool floor. A ferret on a stair-rail another quarter around, two legs down and two legs braced. Between the totems other figures, smaller, that Kai could not at this angle resolve — a tower with too many windows, a young woman in a long coat with the hood up, a hanged man hanging from a tree by one foot. The cut was deep enough that the grain showed in everything. The cut was old. The cut was the hand Kai had seen in the lid of the box and had not, in the truck, named. The cut was, by Per's hand setting the bowl on the table without ceremony and without explanation, his father's.",
+      "text": "The bowl was about the size of two cupped hands.",
+      "t": "narrate"
+    },
+    {
+      "text": "A spiral was cut into the outside that ran from the rim down to the base in a single continuous curve, and inside the spiral, by some patience of the carver's wrist that Kai had not in his life seen carving like, were figures.",
+      "t": "narrate"
+    },
+    {
+      "text": "Not pressed in. Risen, the way a thing rises in wood when the carver has cut around it for long enough that what is left is what was always there.",
+      "t": "narrate"
+    },
+    {
+      "text": "A crow on a fencepost at the level of the rim, head turned three-quarters to the viewer. An octopus a quarter of the way around, eight arms in the careful uncoiled arrangement of an octopus moving over a tide-pool floor.",
+      "t": "narrate"
+    },
+    {
+      "text": "A ferret on a stair-rail another quarter around, two legs down and two legs braced.",
+      "t": "narrate"
+    },
+    {
+      "text": "Between the totems other figures, smaller, that Kai could not at this angle resolve — a tower with too many windows, a young woman in a long coat with the hood up, a hanged man hanging from a tree by one foot.",
+      "t": "narrate"
+    },
+    {
+      "text": "The cut was deep enough that the grain showed in everything. The cut was old. The cut was the hand Kai had seen in the lid of the box and had not, in the truck, named.",
+      "t": "narrate"
+    },
+    {
+      "text": "The cut was, by Per's hand setting the bowl on the table without ceremony and without explanation, his father's.",
       "t": "narrate"
     },
     {
@@ -84,7 +112,13 @@
     },
     {
       "char": "per",
-      "text": "[shot:closeup person]They built this cabin together in '79 when my father was forty-one and Eddvard was fifty-two. I came up here with my father seven times in '79 and '80 to help with the build. I was nineteen. I was at Oregon State. I came up on the weekends I was home. I knew the place when it was studs.",
+      "text": "[shot:closeup person]They built this cabin together in '79 when my father was forty-one and Eddvard was fifty-two. I came up here with my father seven times in '79 and '80 to help with the build. I was nineteen. I was at Oregon State.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "per",
+      "text": "I came up on the weekends I was home. I knew the place when it was studs.",
       "expr": "neutral",
       "t": "say"
     },
@@ -124,13 +158,25 @@
     },
     {
       "char": "per",
-      "text": "[shot:closeup per]My father went into the water in November of '78. He was on the Margery off Yaquina Head, a commercial boat he had been crewing on weekends since he left the cutter. The boat went over in a squall. Two men on the boat with him drowned. My father drowned. The bodies came up at Newport over the next four days.",
+      "text": "[shot:closeup per]My father went into the water in November of '78. He was on the Margery off Yaquina Head, a commercial boat he had been crewing on weekends since he left the cutter. The boat went over in a squall.",
       "expr": "serious",
       "t": "say"
     },
     {
       "char": "per",
-      "text": "My mother — Marit — went down to identify him on a Thursday. She came home that night and she did not speak to me for a week. I was eighteen. I was at Oregon State for my second semester. I came home on the Friday after the Thursday. I stayed for the funeral. I went back to school the next Monday because my mother said I had to. I went back.",
+      "text": "Two men on the boat with him drowned. My father drowned. The bodies came up at Newport over the next four days.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "per",
+      "text": "My mother — Marit — went down to identify him on a Thursday. She came home that night and she did not speak to me for a week. I was eighteen. I was at Oregon State for my second semester.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "per",
+      "text": "I came home on the Friday after the Thursday. I stayed for the funeral. I went back to school the next Monday because my mother said I had to. I went back.",
       "expr": "serious",
       "t": "say"
     },
@@ -160,25 +206,55 @@
     },
     {
       "char": "per",
-      "text": "I broke the lock. I went in. I went through his papers. I sat in his chair at his desk and I read the things he had been writing in the year before he died. I read for three days. I did not, in those three days, eat. My mother brought me a sandwich on the second day and left it on the desk and went out without speaking. I ate the sandwich. I kept reading.",
+      "text": "I broke the lock. I went in. I went through his papers. I sat in his chair at his desk and I read the things he had been writing in the year before he died. I read for three days. I did not, in those three days, eat.",
       "expr": "serious",
       "t": "say"
     },
     {
       "char": "per",
-      "text": "He had been writing about the bowls. He had been writing in a notebook he had kept in the bottom drawer of the desk, in the back, behind a folder of insurance papers. The notebook was the kind of spiral notebook a man uses when he wants to write a thing nobody is going to find. He had been writing in it since 1971.",
+      "text": "My mother brought me a sandwich on the second day and left it on the desk and went out without speaking. I ate the sandwich. I kept reading.",
       "expr": "serious",
       "t": "say"
     },
     {
       "char": "per",
-      "text": "He had written about the bowls. He had written about the people he knew who had bowls. He had written about a Norwegian carver in Bergen who had taught a man named Halvorsen-not-our-Halvorsen the carving in the late '40s. He had written about Eddvard's bowl. He had written about my mother's bowl that he had carved her in '74.",
+      "text": "He had been writing about the bowls. He had been writing in a notebook he had kept in the bottom drawer of the desk, in the back, behind a folder of insurance papers.",
       "expr": "serious",
       "t": "say"
     },
     {
       "char": "per",
-      "text": "He had written about a network. He had written about who in the network had a bowl and who did not. He had written about how the bowls listened. He had written about the listening as a thing the bowls had been doing — by what his father had taught him of the Bergen tradition, by what he had read of the carvers in Bern before Bergen, by the printed materials his uncle in Switzerland had been sending him for some years — for one hundred and twenty years.",
+      "text": "The notebook was the kind of spiral notebook a man uses when he wants to write a thing nobody is going to find. He had been writing in it since 1971.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "per",
+      "text": "He had written about the bowls. He had written about the people he knew who had bowls. He had written about a Norwegian carver in Bergen who had taught a man named Halvorsen-not-our-Halvorsen the carving in the late '40s.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "per",
+      "text": "He had written about Eddvard's bowl. He had written about my mother's bowl that he had carved her in '74.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "per",
+      "text": "He had written about a network. He had written about who in the network had a bowl and who did not. He had written about how the bowls listened.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "per",
+      "text": "He had written about the listening as a thing the bowls had been doing — by what his father had taught him of the Bergen tradition,",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "per",
+      "text": "by what he had read of the carvers in Bern before Bergen, by the printed materials his uncle in Switzerland had been sending him for some years — for one hundred and twenty years.",
       "expr": "serious",
       "t": "say"
     },
@@ -188,7 +264,13 @@
     },
     {
       "char": "per",
-      "text": "[beat:still]My father called the network the Order of the Bowl. He had been writing the words in the notebook with the capitals. He had not been writing the words anywhere else. The words were in the notebook and only in the notebook. He had not told me the words. He had not told my mother the words.",
+      "text": "[beat:still]My father called the network the Order of the Bowl. He had been writing the words in the notebook with the capitals. He had not been writing the words anywhere else. The words were in the notebook and only in the notebook.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "per",
+      "text": "He had not told me the words. He had not told my mother the words.",
       "expr": "serious",
       "t": "say"
     },
@@ -204,7 +286,13 @@
     },
     {
       "char": "per",
-      "text": "I have been carrying those words for fifty years. I have not said them to a person. I have not written them. I burned the notebook in 1986 after I had decided I was not going to be the kind of son who kept his father's secret papers in a drawer the way his father had kept them in a drawer.",
+      "text": "I have been carrying those words for fifty years. I have not said them to a person. I have not written them.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "per",
+      "text": "I burned the notebook in 1986 after I had decided I was not going to be the kind of son who kept his father's secret papers in a drawer the way his father had kept them in a drawer.",
       "expr": "serious",
       "t": "say"
     },
@@ -216,7 +304,13 @@
     },
     {
       "char": "per",
-      "text": "The burning did not — the burning did not take the words. The words have been in my head the whole time. The words have been there at twenty-six and thirty-four and forty and fifty and sixty. The words have been there this past July when my mother called me about the bowl going warm.",
+      "text": "The burning did not — the burning did not take the words. The words have been in my head the whole time. The words have been there at twenty-six and thirty-four and forty and fifty and sixty.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "per",
+      "text": "The words have been there this past July when my mother called me about the bowl going warm.",
       "expr": "serious",
       "t": "say"
     },
@@ -274,7 +368,13 @@
     },
     {
       "char": "tem",
-      "text": "My father was a man who put names on things because my father was — by training, by temperament — a man who needed to know what he was a part of in order to be part of it. He named things. He named the network because the network had not, by his coming into it, been named.",
+      "text": "My father was a man who put names on things because my father was — by training, by temperament — a man who needed to know what he was a part of in order to be part of it. He named things.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "He named the network because the network had not, by his coming into it, been named.",
       "expr": "neutral",
       "t": "say"
     },
@@ -290,7 +390,13 @@
     },
     {
       "char": "per",
-      "text": "My father wrote that he had taken the words from the printed materials his uncle in Switzerland had been sending him. The uncle in Switzerland — Olaf's father's brother, my grandfather's brother, who had stayed in Bern — had been sending him things since the early '60s. The uncle was a printer.",
+      "text": "My father wrote that he had taken the words from the printed materials his uncle in Switzerland had been sending him.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "per",
+      "text": "The uncle in Switzerland — Olaf's father's brother, my grandfather's brother, who had stayed in Bern — had been sending him things since the early '60s. The uncle was a printer.",
       "expr": "neutral",
       "t": "say"
     },
@@ -302,7 +408,13 @@
     },
     {
       "char": "per",
-      "text": "The capitals on Order of the Bowl came from the German term in the books. My father had translated it. He had been the first person in this hemisphere — by his own reading — to translate it. He had been pleased with himself for the translating. The pleasure had been one of the things he wrote about in the notebook the way a man writes about a pleasure that has been his alone.",
+      "text": "The capitals on Order of the Bowl came from the German term in the books. My father had translated it. He had been the first person in this hemisphere — by his own reading — to translate it.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "per",
+      "text": "He had been pleased with himself for the translating. The pleasure had been one of the things he wrote about in the notebook the way a man writes about a pleasure that has been his alone.",
       "expr": "neutral",
       "t": "say"
     },
@@ -354,7 +466,13 @@
     },
     {
       "char": "per",
-      "text": "[shot:closeup person]Hans's brother — by what Hans told me when I was about twenty-five and Hans had been our family's baker for some years and the conversation had come around to Hans's relatives, by what Hans said in passing on a Saturday morning at the bakery — Hans's brother was the son of the printer who had been sending my father the books.",
+      "text": "[shot:closeup person]Hans's brother — by what Hans told me when I was about twenty-five and Hans had been our family's baker for some years and the conversation had come around to Hans's relatives,",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "per",
+      "text": "by what Hans said in passing on a Saturday morning at the bakery — Hans's brother was the son of the printer who had been sending my father the books.",
       "expr": "serious",
       "t": "say"
     },
@@ -412,7 +530,13 @@
     },
     {
       "char": "per",
-      "text": "Hans has been waiting for me to bring it up. I have not, in fifty years, brought it up. Hans has been at our family table once a month for fifty years. He has — he has been holding the conversation. I have been holding the other half. We have been holding it together by not saying it.",
+      "text": "Hans has been waiting for me to bring it up. I have not, in fifty years, brought it up. Hans has been at our family table once a month for fifty years. He has — he has been holding the conversation.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "per",
+      "text": "I have been holding the other half. We have been holding it together by not saying it.",
       "expr": "serious",
       "t": "say"
     },
@@ -452,7 +576,13 @@
     },
     {
       "char": "per",
-      "text": "Hans did not send me up here. Hans asked Kai to bring me up. Hans asked Kai because Hans has been waiting fifty years for the day this would be a thing the four of us — Hans, me, Eddvard's granddaughter, and a person who would be willing to put a hand on it — could be in a room about.",
+      "text": "Hans did not send me up here. Hans asked Kai to bring me up.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "per",
+      "text": "Hans asked Kai because Hans has been waiting fifty years for the day this would be a thing the four of us — Hans, me, Eddvard's granddaughter, and a person who would be willing to put a hand on it — could be in a room about.",
       "expr": "neutral",
       "t": "say"
     },
@@ -531,11 +661,27 @@
       "t": "narrate"
     },
     {
-      "text": "[shot:insert face~]The work on the inside was different work from the work on the outside, and it was visible only when Per tilted the bowl into the kerosene-lamp light so the shallowness of the cutting caught. What was on the inside was, by what Kai could see at the angle Per held it: a single face. A young woman's face. The face filled the bowl's interior in the way a face fills a coin. The hair on the face was carved as if curling. The eyes were closed. The mouth was closed.",
+      "text": "[shot:insert face~]The work on the inside was different work from the work on the outside, and it was visible only when Per tilted the bowl into the kerosene-lamp light so the shallowness of the cutting caught.",
       "t": "narrate"
     },
     {
-      "text": "The face was the face of a person Kai had not seen, but the face was — by some quality the carver had given it that Kai could not name, by the way the curls of the hair fell against the brow — the face was the face Aria was going to have. Or the face was the face the carver had carved when he had thought, in 1974, about what face he was waiting for, and Kai was reading the carver's expectation in the cedar. The base had, when Per turned it over, a mark — a flame-shape pressed into the wood with a heated iron.",
+      "text": "What was on the inside was, by what Kai could see at the angle Per held it: a single face. A young woman's face. The face filled the bowl's interior in the way a face fills a coin. The hair on the face was carved as if curling.",
+      "t": "narrate"
+    },
+    {
+      "text": "The eyes were closed. The mouth was closed.",
+      "t": "narrate"
+    },
+    {
+      "text": "The face was the face of a person Kai had not seen, but the face was — by some quality the carver had given it that Kai could not name, by the way the curls of the hair fell against the brow — the face was the face Aria was going to have.",
+      "t": "narrate"
+    },
+    {
+      "text": "Or the face was the face the carver had carved when he had thought, in 1974, about what face he was waiting for, and Kai was reading the carver's expectation in the cedar.",
+      "t": "narrate"
+    },
+    {
+      "text": "The base had, when Per turned it over, a mark — a flame-shape pressed into the wood with a heated iron.",
       "t": "narrate"
     },
     {
@@ -570,13 +716,25 @@
     },
     {
       "char": "per",
-      "text": "By the notebook — and the notebook was burned in '86 so this is fifty-year-old memory — the second went to a man in San Francisco in 1976. The man's name was Lindholm. Lindholm was the foundation man for the West Coast. The foundation was the foundation. Inga's foundation.",
+      "text": "By the notebook — and the notebook was burned in '86 so this is fifty-year-old memory — the second went to a man in San Francisco in 1976. The man's name was Lindholm. Lindholm was the foundation man for the West Coast.",
       "expr": "neutral",
       "t": "say"
     },
     {
       "char": "per",
-      "text": "The foundation has had three field people on this coast at various times since the '60s. Lindholm was one of them. Lindholm had the bowl from '76 until he died. After he died the bowl went to the foundation. I have not — I have not, since my father died, known where the bowl is now. The foundation knows. The foundation is — the foundation has been keeping the bowls that have come back to it.",
+      "text": "The foundation was the foundation. Inga's foundation.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "per",
+      "text": "The foundation has had three field people on this coast at various times since the '60s. Lindholm was one of them. Lindholm had the bowl from '76 until he died. After he died the bowl went to the foundation.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "per",
+      "text": "I have not — I have not, since my father died, known where the bowl is now. The foundation knows. The foundation is — the foundation has been keeping the bowls that have come back to it.",
       "expr": "neutral",
       "t": "say"
     },
@@ -718,7 +876,19 @@
     },
     {
       "char": "tem",
-      "text": "[shot:closeup person_b]The June visit I figured out from a credit-card receipt in a folder my mother in Eugene mailed me last month. The granddaughter has not, on any of those three visits, contacted any of the four of us. The granddaughter has been — by the foundation's standard practice for the kind of watching they do — watching at a distance. She has not approached because she has not, by what I have read in the papers about how the foundation operates, been ordered to approach.",
+      "text": "[shot:closeup person_b]The June visit I figured out from a credit-card receipt in a folder my mother in Eugene mailed me last month. The granddaughter has not, on any of those three visits, contacted any of the four of us.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "The granddaughter has been — by the foundation's standard practice for the kind of watching they do — watching at a distance.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "She has not approached because she has not, by what I have read in the papers about how the foundation operates, been ordered to approach.",
       "expr": "serious",
       "t": "say"
     },
@@ -782,7 +952,13 @@
     },
     {
       "char": "tem",
-      "text": "Because — Per. Because I did not have a name to say to her. I have been pulling the threads since Brandon died and I have been pulling them at the speed I have been able to pull them, and I have been waiting for the day I had something to bring to her that was the kind of thing she could not, without being ordered by the foundation to do so, hand back to me.",
+      "text": "Because — Per. Because I did not have a name to say to her.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "I have been pulling the threads since Brandon died and I have been pulling them at the speed I have been able to pull them, and I have been waiting for the day I had something to bring to her that was the kind of thing she could not, without being ordered by the foundation to do so, hand back to me.",
       "expr": "serious",
       "t": "say"
     },

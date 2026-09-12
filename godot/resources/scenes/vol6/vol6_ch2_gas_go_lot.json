@@ -47,11 +47,19 @@
     },
     {
       "t": "narrate",
-      "text": "She is not, in the end, going over there. She has just had the conversation with herself about whether to go over there. She has lost the conversation. Or — she has won it, depending on which version of herself she has decided, for this afternoon, to be on the side of."
+      "text": "She is not, in the end, going over there. She has just had the conversation with herself about whether to go over there. She has lost the conversation."
     },
     {
       "t": "narrate",
-      "text": "Graciela had said — Do not go looking for the truck. Sam is not, technically, going looking for the truck. Sam is looking at the place where the truck might have been, the day before it stopped being. There is a difference. There is also, she is aware, not a difference."
+      "text": "Or — she has won it, depending on which version of herself she has decided, for this afternoon, to be on the side of."
+    },
+    {
+      "t": "narrate",
+      "text": "Graciela had said — Do not go looking for the truck. Sam is not, technically, going looking for the truck. Sam is looking at the place where the truck might have been, the day before it stopped being. There is a difference."
+    },
+    {
+      "t": "narrate",
+      "text": "There is also, she is aware, not a difference."
     },
     {
       "t": "narrate",
@@ -147,7 +155,11 @@
     },
     {
       "t": "narrate",
-      "text": "[trip:1.2][shot:establish]At the kitchen table, her father is eating dinner. Meatloaf. Her mother made it. Her mother is at the stove finishing the green beans. The kitchen smells the way the kitchen always smells on Monday night in Harmony Creek Estates. The small flat screen mounted above the breakfast nook is tuned to local news, volume low."
+      "text": "[trip:1.2][shot:establish]At the kitchen table, her father is eating dinner. Meatloaf. Her mother made it. Her mother is at the stove finishing the green beans. The kitchen smells the way the kitchen always smells on Monday night in Harmony Creek Estates."
+    },
+    {
+      "t": "narrate",
+      "text": "The small flat screen mounted above the breakfast nook is tuned to local news, volume low."
     },
     {
       "t": "say",

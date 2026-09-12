@@ -26,8 +26,12 @@
     },
     {
       "t": "narrate",
-      "text": "He wrote down what Frasier had said about the patterns and the walls. He wrote down what the man in booth six had said about the walls, almost the same words, hours apart, between two people who had no reason to know each other. He wrote down the colors he had seen on Frasier's phone, even though one of them did not have a name. He wrote down Architect of Decay and underlined it twice.",
+      "text": "He wrote down what Frasier had said about the patterns and the walls. He wrote down what the man in booth six had said about the walls, almost the same words, hours apart, between two people who had no reason to know each other.",
       "voice": "assets/audio/voice/vol5_ch0_closing/003.mp3"
+    },
+    {
+      "t": "narrate",
+      "text": "He wrote down the colors he had seen on Frasier's phone, even though one of them did not have a name. He wrote down Architect of Decay and underlined it twice."
     },
     {
       "t": "think",
@@ -53,8 +57,12 @@
     },
     {
       "t": "narrate",
-      "text": "A patron entered, sat in booth four, ordered coffee without looking at the menu. John brought the coffee. The patron drank the coffee. The patron paid in cash, exactly correct, including tip. On the way out, the patron did not say anything. The patron did not need to.",
+      "text": "A patron entered, sat in booth four, ordered coffee without looking at the menu. John brought the coffee. The patron drank the coffee. The patron paid in cash, exactly correct, including tip.",
       "voice": "assets/audio/voice/vol5_ch0_closing/008.mp3"
+    },
+    {
+      "t": "narrate",
+      "text": "On the way out, the patron did not say anything. The patron did not need to."
     },
     {
       "t": "narrate",

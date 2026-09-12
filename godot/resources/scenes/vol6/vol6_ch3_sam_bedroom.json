@@ -47,11 +47,19 @@
     },
     {
       "t": "narrate",
-      "text": "F.T. is running at least part of the network and is either in New Orleans or Graustark and has some connection to Jimmy Daigle that predates Jimmy Daigle's current condition. Rick, Hal, the reporter in the sedan, the partner in the sedan, Miriam (whose name Sam has not yet been given but whose existence she has inferred from context), and at least one other adult Sam cannot yet place — these are nodes."
+      "text": "F.T. is running at least part of the network and is either in New Orleans or Graustark and has some connection to Jimmy Daigle that predates Jimmy Daigle's current condition."
     },
     {
       "t": "narrate",
-      "text": "Ben has been doing the same work from a different entry point for three months, without knowing there was a network, and is about to discover that there is one. Jesse's father is somehow involved but is probably, Sam now suspects, a victim of the apparatus rather than its agent."
+      "text": "Rick, Hal, the reporter in the sedan, the partner in the sedan, Miriam (whose name Sam has not yet been given but whose existence she has inferred from context), and at least one other adult Sam cannot yet place — these are nodes."
+    },
+    {
+      "t": "narrate",
+      "text": "Ben has been doing the same work from a different entry point for three months, without knowing there was a network, and is about to discover that there is one."
+    },
+    {
+      "t": "narrate",
+      "text": "Jesse's father is somehow involved but is probably, Sam now suspects, a victim of the apparatus rather than its agent."
     },
     {
       "t": "narrate",
@@ -97,7 +105,19 @@
     },
     {
       "t": "narrate",
-      "text": "[trip:1.2][beat:chill]At 03:03 she dreams, for the first time in her life, of her father as a young man in a photograph she has never seen — a photograph of him at twenty-something, in a uniform she does not recognize, standing in front of a building she does not recognize, shaking hands with a man in a charcoal suit whose face, in the dream, is only partially visible, but whose eyes, when they meet hers — because [wave amp=6 freq=2]they do meet hers[/wave], because the dream is not just a record but an attention — are exactly the eyes she had felt on her, this morning, from a person who was not, physically, in the Kwik Stop when she looked up from the slushie machine and registered that she had been being watched."
+      "text": "[trip:1.2][beat:chill]At 03:03 she dreams, for the first time in her life, of her father as a young man in a photograph she has never seen — a photograph of him at twenty-something,"
+    },
+    {
+      "t": "narrate",
+      "text": "in a uniform she does not recognize, standing in front of a building she does not recognize, shaking hands with a man in a charcoal suit whose face, in the dream, is only partially visible,"
+    },
+    {
+      "t": "narrate",
+      "text": "but whose eyes, when they meet hers — because [wave amp=6 freq=2]they do meet hers[/wave], because the dream is not just a record but an attention — are exactly the eyes she had felt on her,"
+    },
+    {
+      "t": "narrate",
+      "text": "this morning, from a person who was not, physically, in the Kwik Stop when she looked up from the slushie machine and registered that she had been being watched."
     },
     {
       "t": "narrate",

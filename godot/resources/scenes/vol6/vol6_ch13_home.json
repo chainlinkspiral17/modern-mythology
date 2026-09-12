@@ -55,7 +55,15 @@
   },
   {
    "t": "narrate",
-   "text": "Bill is, by Bill tradition, doing the Friday crossword in pen. His mother is, by the angle of the bedroom door from the hallway, in the bedroom — the night-shift sleep, the eight-AM-to-three-PM sleep she does on days she works a ten-hour straight night. Daisy, the family's twelve-year-old golden, is at Bill's feet."
+   "text": "Bill is, by Bill tradition, doing the Friday crossword in pen."
+  },
+  {
+   "t": "narrate",
+   "text": "His mother is, by the angle of the bedroom door from the hallway, in the bedroom — the night-shift sleep, the eight-AM-to-three-PM sleep she does on days she works a ten-hour straight night."
+  },
+  {
+   "t": "narrate",
+   "text": "Daisy, the family's twelve-year-old golden, is at Bill's feet."
   },
   {
    "t": "show",
@@ -175,7 +183,11 @@
   },
   {
    "t": "narrate",
-   "text": "He eats the sandwich. He drinks two glasses of water. He sits with Daisy on the couch for twenty minutes. He watches, with the sound off, the noon news, which has — at twelve oh-five — a story about the heat that has been in every noon broadcast for three weeks and that says, today, the heat is going to break by Tuesday."
+   "text": "He eats the sandwich. He drinks two glasses of water. He sits with Daisy on the couch for twenty minutes."
+  },
+  {
+   "t": "narrate",
+   "text": "He watches, with the sound off, the noon news, which has — at twelve oh-five — a story about the heat that has been in every noon broadcast for three weeks and that says, today, the heat is going to break by Tuesday."
   },
   {
    "t": "narrate",

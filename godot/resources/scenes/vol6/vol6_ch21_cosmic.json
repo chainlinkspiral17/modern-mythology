@@ -33,7 +33,11 @@
     },
     {
       "t": "narrate",
-      "text": "Maya registers this at nine forty-six at the front door of Cosmic Comics, with the ring in her hand, and registers that it is the first Saturday in five weeks the keys have not been heavy. The keys are the same keys. Her hand is the same hand. The shop has, by some Saturday-morning shift she did not feel happen, become a building she is coming to and not a building she is being entrusted with."
+      "text": "Maya registers this at nine forty-six at the front door of Cosmic Comics, with the ring in her hand, and registers that it is the first Saturday in five weeks the keys have not been heavy. The keys are the same keys."
+    },
+    {
+      "t": "narrate",
+      "text": "Her hand is the same hand. The shop has, by some Saturday-morning shift she did not feel happen, become a building she is coming to and not a building she is being entrusted with."
     },
     {
       "t": "narrate",
@@ -45,7 +49,15 @@
     },
     {
       "t": "narrate",
-      "text": "The brass bell above the door — the one from the 1994 estate sale that the previous owner had heard something in — chimes its small dry chime. The light in the shop at nine forty-seven on a Saturday in mid-August is the slanting morning light coming through the painted Galactus on the front window and laying the painted Galactus across the floor in the long purple bars that have been the shop's morning for as long as the painted Galactus has been on the window."
+      "text": "The brass bell above the door — the one from the 1994 estate sale that the previous owner had heard something in — chimes its small dry chime."
+    },
+    {
+      "t": "narrate",
+      "text": "The light in the shop at nine forty-seven on a Saturday in mid-August is the slanting morning light coming through the painted Galactus on the front window"
+    },
+    {
+      "t": "narrate",
+      "text": "and laying the painted Galactus across the floor in the long purple bars that have been the shop's morning for as long as the painted Galactus has been on the window."
     },
     {
       "t": "narrate",
@@ -61,7 +73,11 @@
     },
     {
       "t": "narrate",
-      "text": "[shot:insert speak_spell]Rick's spiral notebook is on the desk where it has been since Sunday. The list is on its standard page. The Speak & Spell, on the shelf above the file cabinet, is in the yellow morning light. The red speaker grille is dim. The crack in the lower-left corner of the housing is the same crack it has been since 2014."
+      "text": "[shot:insert speak_spell]Rick's spiral notebook is on the desk where it has been since Sunday. The list is on its standard page. The Speak & Spell, on the shelf above the file cabinet, is in the yellow morning light. The red speaker grille is dim."
+    },
+    {
+      "t": "narrate",
+      "text": "The crack in the lower-left corner of the housing is the same crack it has been since 2014."
     },
     {
       "t": "narrate",
@@ -89,7 +105,15 @@
     },
     {
       "t": "narrate",
-      "text": "The customers in the first hour are mostly the regulars. Phil — who had asked about the Saga hardcover on Tuesday and who has, since, come back twice — comes in at ten forty-three to look at the new arrivals. He stays for forty minutes. He buys two single issues and a back-issue Hellboy he had been thinking about for six months. He talks, at the counter while Maya rings him up, about a panel he had streamed from Comicpalooza on Friday night."
+      "text": "The customers in the first hour are mostly the regulars. Phil — who had asked about the Saga hardcover on Tuesday and who has, since, come back twice — comes in at ten forty-three to look at the new arrivals."
+    },
+    {
+      "t": "narrate",
+      "text": "He stays for forty minutes. He buys two single issues and a back-issue Hellboy he had been thinking about for six months."
+    },
+    {
+      "t": "narrate",
+      "text": "He talks, at the counter while Maya rings him up, about a panel he had streamed from Comicpalooza on Friday night."
     },
     {
       "t": "show",
@@ -225,11 +249,19 @@
     },
     {
       "t": "narrate",
-      "text": "[shot:insert twenty]By twelve forty-five the shop has had twenty-two customers and the floor is at fifteen people simultaneously — three at the new arrivals shelf, four at the back issues, two at the manga wall, two at the Pokémon section, two at the YA section, one at the small bench by the front window that Rick had put there in 2018 for kids whose parents wanted them out of the way for ten minutes, and one — Maya catches at the back of the floor in her peripheral vision — wandering."
+      "text": "[shot:insert twenty]By twelve forty-five the shop has had twenty-two customers and the floor is at fifteen people simultaneously — three at the new arrivals shelf, four at the back issues, two at the manga wall, two at the Pokémon section, two at the YA section,"
     },
     {
       "t": "narrate",
-      "text": "The wanderer is a man in his forties in a faded STAR WARS t-shirt with the Empire logo in the late-seventies print. Maya does not place him by name. She has seen him. He is a once-a-month regular. Two weeks ago he had bought a single issue of Saga and a small gum-pack of bag-and-board."
+      "text": "one at the small bench by the front window that Rick had put there in 2018 for kids whose parents wanted them out of the way for ten minutes, and one — Maya catches at the back of the floor in her peripheral vision — wandering."
+    },
+    {
+      "t": "narrate",
+      "text": "The wanderer is a man in his forties in a faded STAR WARS t-shirt with the Empire logo in the late-seventies print. Maya does not place him by name. She has seen him. He is a once-a-month regular."
+    },
+    {
+      "t": "narrate",
+      "text": "Two weeks ago he had bought a single issue of Saga and a small gum-pack of bag-and-board."
     },
     {
       "t": "narrate",
@@ -245,7 +277,11 @@
     },
     {
       "t": "narrate",
-      "text": "[beat:chill][mood:arcana_cool][shot:insert speak_spell~]Maya, at the counter, with the customer's change in her hand, has about one second to decide what to do. She looks at the shelf above the file cabinet. The Speak & Spell is slightly visible from her angle. The Speak & Spell, from her angle, has — for the first time since June — a red glow at the speaker grille."
+      "text": "[beat:chill][mood:arcana_cool][shot:insert speak_spell~]Maya, at the counter, with the customer's change in her hand, has about one second to decide what to do. She looks at the shelf above the file cabinet. The Speak & Spell is slightly visible from her angle."
+    },
+    {
+      "t": "narrate",
+      "text": "The Speak & Spell, from her angle, has — for the first time since June — a red glow at the speaker grille."
     },
     {
       "t": "show",
@@ -255,7 +291,11 @@
     },
     {
       "t": "narrate",
-      "text": "The wanderer reaches into the back office. He picks up the Speak & Spell. He turns. He walks out of the back office. He walks, with the Speak & Spell in his hands, into the back of the shop. He is not quite present. His attention has [wave amp=6 freq=2]slipped one room sideways[/wave] and he is, in the slip, doing a thing his body has decided to do without consulting his head."
+      "text": "The wanderer reaches into the back office. He picks up the Speak & Spell. He turns. He walks out of the back office. He walks, with the Speak & Spell in his hands, into the back of the shop. He is not quite present."
+    },
+    {
+      "t": "narrate",
+      "text": "His attention has [wave amp=6 freq=2]slipped one room sideways[/wave] and he is, in the slip, doing a thing his body has decided to do without consulting his head."
     },
     {
       "t": "narrate",
@@ -279,7 +319,11 @@
     },
     {
       "t": "narrate",
-      "text": "The wanderer is near the back-issue boxes. The Speak & Spell is in his right hand. He is, at twelve feet, moving the Speak & Spell slowly back and forth in front of his face — the way somebody moves an instrument that is telling them something and they are trying to figure out what."
+      "text": "The wanderer is near the back-issue boxes. The Speak & Spell is in his right hand."
+    },
+    {
+      "t": "narrate",
+      "text": "He is, at twelve feet, moving the Speak & Spell slowly back and forth in front of his face — the way somebody moves an instrument that is telling them something and they are trying to figure out what."
     },
     {
       "t": "narrate",
@@ -307,11 +351,19 @@
     },
     {
       "t": "narrate",
-      "text": "The wanderer blinks. She reaches out. She takes the Speak & Spell from his hand — gently, the way you take a thing from a child who has wandered off with it. The Speak & Spell, the moment it leaves his hand, goes dim. The red speaker grille fades. By the time the Speak & Spell is fully in her hand the grille is dark."
+      "text": "The wanderer blinks. She reaches out. She takes the Speak & Spell from his hand — gently, the way you take a thing from a child who has wandered off with it. The Speak & Spell, the moment it leaves his hand, goes dim."
     },
     {
       "t": "narrate",
-      "text": "[shot:insert till]The wanderer blinks again. He looks around. He registers — she can see the registration arrive, in his eyes — that he is at the back-issue boxes of a comic shop holding nothing, and that the kid who runs the shop has, in front of him, just taken something out of his hands."
+      "text": "The red speaker grille fades. By the time the Speak & Spell is fully in her hand the grille is dark."
+    },
+    {
+      "t": "narrate",
+      "text": "[shot:insert till]The wanderer blinks again. He looks around."
+    },
+    {
+      "t": "narrate",
+      "text": "He registers — she can see the registration arrive, in his eyes — that he is at the back-issue boxes of a comic shop holding nothing, and that the kid who runs the shop has, in front of him, just taken something out of his hands."
     },
     {
       "t": "say",
@@ -359,7 +411,11 @@
     },
     {
       "t": "narrate",
-      "text": "She continues to the counter. She steps behind it. She sets the Speak & Spell on the shelf under the register where she has been keeping her wallet during the shift. She does not put the Speak & Spell back in the office. The office is, for the rest of the day, a back room she does not want the Speak & Spell to be in."
+      "text": "She continues to the counter. She steps behind it. She sets the Speak & Spell on the shelf under the register where she has been keeping her wallet during the shift. She does not put the Speak & Spell back in the office."
+    },
+    {
+      "t": "narrate",
+      "text": "The office is, for the rest of the day, a back room she does not want the Speak & Spell to be in."
     },
     {
       "t": "narrate",
@@ -443,7 +499,15 @@
     },
     {
       "t": "narrate",
-      "text": "A woman in her thirties comes in at three oh-four asking about a graphic novel her therapist had recommended for her seventeen-year-old daughter who is going through some specific small thing this summer. Maya, who has been reading more YA this past month because Wren has been pushing her on it, walks the woman to the YA shelf and recommends three. The woman picks two. She buys them. She thanks Maya in the voice of a parent who has just been helped through a thing."
+      "text": "A woman in her thirties comes in at three oh-four asking about a graphic novel her therapist had recommended for her seventeen-year-old daughter who is going through some specific small thing this summer."
+    },
+    {
+      "t": "narrate",
+      "text": "Maya, who has been reading more YA this past month because Wren has been pushing her on it, walks the woman to the YA shelf and recommends three. The woman picks two. She buys them."
+    },
+    {
+      "t": "narrate",
+      "text": "She thanks Maya in the voice of a parent who has just been helped through a thing."
     },
     {
       "t": "narrate",
@@ -575,7 +639,11 @@
     },
     {
       "t": "narrate",
-      "text": "By five the floor count has dropped to about ten. By six it is at six. By seven it is at three. By seven thirty it is at one — a regular she knows by face who has come in for a single issue and who is, at the back-issue boxes, making the Saturday-night decision of do I buy three more or do I save it for next week."
+      "text": "By five the floor count has dropped to about ten. By six it is at six. By seven it is at three."
+    },
+    {
+      "t": "narrate",
+      "text": "By seven thirty it is at one — a regular she knows by face who has come in for a single issue and who is, at the back-issue boxes, making the Saturday-night decision of do I buy three more or do I save it for next week."
     },
     {
       "t": "narrate",
@@ -587,7 +655,11 @@
     },
     {
       "t": "narrate",
-      "text": "Fifty-four is, by Curtis's standards as Curtis had once mentioned in a passing conversation with Wren in late June, a good Saturday. A good Saturday at Cosmic, by Curtis's standards, is forty-five. Fifty-four is the count of a kid who has, alone on her first solo Saturday, beat Curtis's good-Saturday number."
+      "text": "Fifty-four is, by Curtis's standards as Curtis had once mentioned in a passing conversation with Wren in late June, a good Saturday. A good Saturday at Cosmic, by Curtis's standards, is forty-five."
+    },
+    {
+      "t": "narrate",
+      "text": "Fifty-four is the count of a kid who has, alone on her first solo Saturday, beat Curtis's good-Saturday number."
     },
     {
       "t": "narrate",
@@ -595,7 +667,11 @@
     },
     {
       "t": "narrate",
-      "text": "She does the close. She counts the till. She separates the cash from the card receipts. She runs the register report. She pulls the bag-and-board waste from the small bin under the register. She wipes the counter. She turns off the back fluorescents in sections. She does the walk-through of the aisles to make sure the shelves are face-front."
+      "text": "She does the close. She counts the till. She separates the cash from the card receipts. She runs the register report. She pulls the bag-and-board waste from the small bin under the register. She wipes the counter."
+    },
+    {
+      "t": "narrate",
+      "text": "She turns off the back fluorescents in sections. She does the walk-through of the aisles to make sure the shelves are face-front."
     },
     {
       "t": "narrate",
@@ -607,7 +683,15 @@
     },
     {
       "t": "narrate",
-      "text": "[shot:insert note]She picks up the Speak & Spell from under the register. She carries it back to the office. She does not put it back on the shelf above the file cabinet. She sets it instead on Rick's desk, next to the spiral notebook, with a small folded sticky-note on which she writes, in her own handwriting: Saturday — went red for a customer named Tom Bell, recovered fast. Held under register all day. Texting you now."
+      "text": "[shot:insert note]She picks up the Speak & Spell from under the register. She carries it back to the office. She does not put it back on the shelf above the file cabinet."
+    },
+    {
+      "t": "narrate",
+      "text": "She sets it instead on Rick's desk, next to the spiral notebook, with a small folded sticky-note on which she writes, in her own handwriting: Saturday — went red for a customer named Tom Bell, recovered fast."
+    },
+    {
+      "t": "narrate",
+      "text": "Held under register all day. Texting you now."
     },
     {
       "t": "narrate",
@@ -616,7 +700,13 @@
     {
       "t": "say",
       "char": "Maya",
-      "text": "hey rick. quick one. the s&s went red today for a customer. one named tom bell, comes in monthly. he picked it up and walked it. i intercepted. he recovered fast. came back after, fine. bought three issues. no harm. it stayed dim under the register the rest of the day. note on your desk. see you tomorrow.",
+      "text": "hey rick. quick one. the s&s went red today for a customer. one named tom bell, comes in monthly. he picked it up and walked it. i intercepted. he recovered fast. came back after,",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Maya",
+      "text": "fine. bought three issues. no harm. it stayed dim under the register the rest of the day. note on your desk. see you tomorrow.",
       "expr": "neutral"
     },
     {
@@ -677,7 +767,15 @@
     },
     {
       "t": "narrate",
-      "text": "I have been, in the past four months, being trained for a thing I do not have a name for. I do not know whether the thing is going to be a job. I do not know whether it is going to be a part-time thing through senior year. I do not know whether the paid part comes later or never. I just know I have, in this past four months, been doing a thing that has been turning me into a person who can be alone in a shop on a busy Saturday and not, by the alone-ness, lose the competence."
+      "text": "I have been, in the past four months, being trained for a thing I do not have a name for. I do not know whether the thing is going to be a job. I do not know whether it is going to be a part-time thing through senior year."
+    },
+    {
+      "t": "narrate",
+      "text": "I do not know whether the paid part comes later or never."
+    },
+    {
+      "t": "narrate",
+      "text": "I just know I have, in this past four months, been doing a thing that has been turning me into a person who can be alone in a shop on a busy Saturday and not, by the alone-ness, lose the competence."
     },
     {
       "t": "narrate",

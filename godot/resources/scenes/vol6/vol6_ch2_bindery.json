@@ -29,7 +29,15 @@
   },
   {
    "t": "narrate",
-   "text": "[mood:day_bright]The Bindery occupies a narrow storefront on Live Oak Street, four blocks off the interstate exit for New Auburn. Its front window has books arranged in the lazy attractive chaos of a bookshop that has stopped trying to sell its books and has achieved, instead, a kind of stable ecology with them. Its interior smells of old paper, coffee grounds, and the particular dust unique to shops where ceiling fans turn slowly all summer on a single wooden beam."
+   "text": "[mood:day_bright]The Bindery occupies a narrow storefront on Live Oak Street, four blocks off the interstate exit for New Auburn."
+  },
+  {
+   "t": "narrate",
+   "text": "Its front window has books arranged in the lazy attractive chaos of a bookshop that has stopped trying to sell its books and has achieved, instead, a kind of stable ecology with them."
+  },
+  {
+   "t": "narrate",
+   "text": "Its interior smells of old paper, coffee grounds, and the particular dust unique to shops where ceiling fans turn slowly all summer on a single wooden beam."
   },
   {
    "t": "show",
@@ -182,7 +190,15 @@
   },
   {
    "t": "narrate",
-   "text": "The man inside has not moved. He is still reading the Portuguese book. But the shop's other customer, a woman in a floral dress who had been in the periodicals section when Maya had come in, is now, Maya can see through the glass, at the counter, saying something to the man. The man is nodding. The man is not looking at the woman's face. The man is looking at the window — at Maya."
+   "text": "The man inside has not moved. He is still reading the Portuguese book."
+  },
+  {
+   "t": "narrate",
+   "text": "But the shop's other customer, a woman in a floral dress who had been in the periodicals section when Maya had come in, is now, Maya can see through the glass, at the counter, saying something to the man. The man is nodding."
+  },
+  {
+   "t": "narrate",
+   "text": "The man is not looking at the woman's face. The man is looking at the window — at Maya."
   },
   {
    "t": "narrate",
@@ -202,7 +218,11 @@
   },
   {
    "t": "narrate",
-   "text": "The photograph will be the contents of the envelope. The photograph will be a map. The map will show the east side of Harmony Creek Estates. On the map, a small inked circle will surround a particular building that is, as F.T. had said, not currently on any map."
+   "text": "The photograph will be the contents of the envelope. The photograph will be a map. The map will show the east side of Harmony Creek Estates."
+  },
+  {
+   "t": "narrate",
+   "text": "On the map, a small inked circle will surround a particular building that is, as F.T. had said, not currently on any map."
   },
   {
    "t": "narrate",
@@ -210,7 +230,11 @@
   },
   {
    "t": "narrate",
-   "text": "But that is six days away, and tonight is only Monday, and the summer is only three days old, and Maya is on her bike riding the long slow arterial back into her subdivision under the flat Texas afternoon light with an envelope under her jacket that she has not, will not, has promised not to, open. She pedals."
+   "text": "But that is six days away, and tonight is only Monday, and the summer is only three days old, and Maya is on her bike riding the long slow arterial back into her subdivision under the flat Texas afternoon light with an envelope under her jacket that she has not, will not, has promised not to, open."
+  },
+  {
+   "t": "narrate",
+   "text": "She pedals."
   },
   {
    "t": "narrate",

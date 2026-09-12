@@ -35,7 +35,11 @@
   },
   {
    "t": "narrate",
-   "text": "[mood:morning_bright][shot:closeup graciela]His grandmother is at the kitchen window when he pulls into the driveway. She has been at the window since six forty-five, the same as every morning since June. She has a cup of espresso. She has, on the small radio on the windowsill — the kitchen radio, which has nothing to do with the upstairs shortwave at Linda Caldwell's, and is just a radio — the morning Spanish-language news from San Antonio playing low."
+   "text": "[mood:morning_bright][shot:closeup graciela]His grandmother is at the kitchen window when he pulls into the driveway. She has been at the window since six forty-five, the same as every morning since June. She has a cup of espresso."
+  },
+  {
+   "t": "narrate",
+   "text": "She has, on the small radio on the windowsill — the kitchen radio, which has nothing to do with the upstairs shortwave at Linda Caldwell's, and is just a radio — the morning Spanish-language news from San Antonio playing low."
   },
   {
    "t": "narrate",
@@ -81,7 +85,15 @@
   },
   {
    "t": "narrate",
-   "text": "She does not, while he eats, sit. She stands at the counter with her own coffee. She has, in the past two months, learned not to sit during his breakfast, because his breakfast is at the wrong end of his day, and the politeness of two-people-at-a-table is the politeness of two people who are about to do something together, and they are not, this morning, about to do something together. He is about to sleep. She is about to do her morning. The standing is her small respect for the asymmetry."
+   "text": "She does not, while he eats, sit. She stands at the counter with her own coffee. She has, in the past two months, learned not to sit during his breakfast, because his breakfast is at the wrong end of his day,"
+  },
+  {
+   "t": "narrate",
+   "text": "and the politeness of two-people-at-a-table is the politeness of two people who are about to do something together, and they are not, this morning, about to do something together. He is about to sleep."
+  },
+  {
+   "t": "narrate",
+   "text": "She is about to do her morning. The standing is her small respect for the asymmetry."
   },
   {
    "t": "say",
@@ -130,7 +142,13 @@
   {
    "t": "say",
    "char": "Diego",
-   "text": "I don't know, abuela. I don't know if he's lying. I don't know if he isn't. The team has — the team has moved around me and not him. And he came out on the dock with me on second break tonight and tried to — tried to get me to be on his side about something. And I did the thing the team would have done. I — I closed the conversation.",
+   "text": "I don't know, abuela. I don't know if he's lying. I don't know if he isn't. The team has — the team has moved around me and not him.",
+   "expr": "neutral"
+  },
+  {
+   "t": "say",
+   "char": "Diego",
+   "text": "And he came out on the dock with me on second break tonight and tried to — tried to get me to be on his side about something. And I did the thing the team would have done. I — I closed the conversation.",
    "expr": "neutral"
   },
   {
@@ -195,11 +213,31 @@
   },
   {
    "t": "narrate",
-   "text": "The radio plays the morning weather. The weather, as it has been for nine days, is heat. The forecast for Friday — the day of inventory — is one hundred and three degrees. The store is, by Texas grocery-store standard, well air-conditioned. The store will, on Friday night, be cool. The day-side three will arrive at midnight in shorts and complain anyway. Diego will, by then, have slept his Friday day. He will be ready."
+   "text": "The radio plays the morning weather. The weather, as it has been for nine days, is heat. The forecast for Friday — the day of inventory — is one hundred and three degrees."
   },
   {
    "t": "narrate",
-   "text": "He finishes the eggs. He kisses his grandmother on the cheek. He goes upstairs. He showers in the small upstairs bathroom that is, from June onward, the only bathroom in the house except for the half-bath downstairs that his grandmother uses during the day. He pulls the blackout curtains in his bedroom — the ones he had installed in mid-July, after his mother had driven up from San Antonio and helped him put them in on a Saturday afternoon while his grandmother had made lunch and had, occasionally, brought up cold lemonade. He gets into bed in his shorts and a t-shirt. The room, behind the blackout curtains, is the dark of any room at any hour."
+   "text": "The store is, by Texas grocery-store standard, well air-conditioned. The store will, on Friday night, be cool. The day-side three will arrive at midnight in shorts and complain anyway."
+  },
+  {
+   "t": "narrate",
+   "text": "Diego will, by then, have slept his Friday day. He will be ready."
+  },
+  {
+   "t": "narrate",
+   "text": "He finishes the eggs. He kisses his grandmother on the cheek. He goes upstairs."
+  },
+  {
+   "t": "narrate",
+   "text": "He showers in the small upstairs bathroom that is, from June onward, the only bathroom in the house except for the half-bath downstairs that his grandmother uses during the day."
+  },
+  {
+   "t": "narrate",
+   "text": "He pulls the blackout curtains in his bedroom — the ones he had installed in mid-July, after his mother had driven up from San Antonio and helped him put them in on a Saturday afternoon while his grandmother had made lunch and had, occasionally, brought up cold lemonade."
+  },
+  {
+   "t": "narrate",
+   "text": "He gets into bed in his shorts and a t-shirt. The room, behind the blackout curtains, is the dark of any room at any hour."
   },
   {
    "t": "hide",
@@ -223,7 +261,11 @@
   },
   {
    "t": "narrate",
-   "text": "In the dream the dock is the dock, and the cedar scrub is the cedar scrub, and the eastern horizon is the eastern horizon. But the rust-colored haze, in the dream, is closer than it is in life. The haze is, in the dream, only a few miles out. The haze is, in the dream, also moving — slowly, the way weather moves on a still day, but visibly, in the dream, moving toward him."
+   "text": "In the dream the dock is the dock, and the cedar scrub is the cedar scrub, and the eastern horizon is the eastern horizon. But the rust-colored haze, in the dream, is closer than it is in life."
+  },
+  {
+   "t": "narrate",
+   "text": "The haze is, in the dream, only a few miles out. The haze is, in the dream, also moving — slowly, the way weather moves on a still day, but visibly, in the dream, moving toward him."
   },
   {
    "t": "narrate",
@@ -314,7 +356,15 @@
   },
   {
    "t": "narrate",
-   "text": "His grandmother, downstairs, is making early dinner. He can smell it. Sopa de pollo. She has been telling him for two days she was going to make sopa de pollo before his Tuesday shift this week, because she has decided that sopa de pollo is a soup that sits well in a stomach for a ten-hour shift, and because she has, this summer, taken the question of what sits well in his stomach as one of the small daily questions her own attention is good for."
+   "text": "His grandmother, downstairs, is making early dinner. He can smell it. Sopa de pollo."
+  },
+  {
+   "t": "narrate",
+   "text": "She has been telling him for two days she was going to make sopa de pollo before his Tuesday shift this week, because she has decided that sopa de pollo is a soup that sits well in a stomach for a ten-hour shift,"
+  },
+  {
+   "t": "narrate",
+   "text": "and because she has, this summer, taken the question of what sits well in his stomach as one of the small daily questions her own attention is good for."
   },
   {
    "t": "hide",

@@ -71,13 +71,31 @@
    "t": "say",
    "char": "Finn",
    "expr": "neutral",
-   "text": "\"You did not have to be ready by yourself. You decided you did. The deciding was not — Tem, the deciding was the loneliness. You have been lonely with this for two years and you didn't have to be. We were all here. You could have walked into Board Lords any day in 2050 and said Kai, something is happening with the patches, and he would have said all right, what do you need. You could have come into the Daily Grind and said the same thing to Lena. You didn't. You decided not to. The deciding was the thing.\""
+   "text": "\"You did not have to be ready by yourself. You decided you did. The deciding was not — Tem, the deciding was the loneliness. You have been lonely with this for two years and you didn't have to be. We were all here."
   },
   {
    "t": "say",
    "char": "Finn",
    "expr": "neutral",
-   "text": "\"I am not — I am not blaming you for the deciding. I have been quiet about my own things for years and I am not in any position to blame you. I am saying that the wait was lonely and the loneliness was a thing you chose, and I am sorry it took until this weekend for any of us to be in a room with you about it.\""
+   "text": "You could have walked into Board Lords any day in 2050 and said Kai, something is happening with the patches, and he would have said all right, what do you need."
+  },
+  {
+   "t": "say",
+   "char": "Finn",
+   "expr": "neutral",
+   "text": "You could have come into the Daily Grind and said the same thing to Lena. You didn't. You decided not to. The deciding was the thing.\""
+  },
+  {
+   "t": "say",
+   "char": "Finn",
+   "expr": "neutral",
+   "text": "\"I am not — I am not blaming you for the deciding. I have been quiet about my own things for years and I am not in any position to blame you."
+  },
+  {
+   "t": "say",
+   "char": "Finn",
+   "expr": "neutral",
+   "text": "I am saying that the wait was lonely and the loneliness was a thing you chose, and I am sorry it took until this weekend for any of us to be in a room with you about it.\""
   },
   {
    "t": "narrate",

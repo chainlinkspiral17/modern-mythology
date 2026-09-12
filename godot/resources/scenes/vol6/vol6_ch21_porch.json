@@ -109,7 +109,15 @@
     },
     {
       "t": "narrate",
-      "text": "When Maya is done Linda says: \"You handled it the way Rick said. Rick is right. You read it right. The Speak & Spell does what it does. Most days it does not do anything. On days it does, the doing is — by what we have learned about it over thirty-seven years — almost always small. It picks a person. It picks a thing it wants to tell them. The person almost always recovers within an hour. The telling almost always lands somewhere the person will, in the months after, register without knowing they are registering it. The harm is almost always nothing.\""
+      "text": "When Maya is done Linda says: \"You handled it the way Rick said. Rick is right. You read it right. The Speak & Spell does what it does. Most days it does not do anything."
+    },
+    {
+      "t": "narrate",
+      "text": "On days it does, the doing is — by what we have learned about it over thirty-seven years — almost always small. It picks a person. It picks a thing it wants to tell them. The person almost always recovers within an hour."
+    },
+    {
+      "t": "narrate",
+      "text": "The telling almost always lands somewhere the person will, in the months after, register without knowing they are registering it. The harm is almost always nothing.\""
     },
     {
       "t": "say",
@@ -120,7 +128,13 @@
     {
       "t": "say",
       "char": "Linda",
-      "text": "[shot:closeup person]Sweetheart. We don't know. We have never known. The Speak & Spell is one of the objects in our network that operates by a logic the network has never figured out. It picks who it picks. It does what it does. We have, over thirty-seven years, learned to handle it by intercepting fast and not making a thing about the picking. The not-making-a-thing is what keeps the picked person whole.",
+      "text": "[shot:closeup person]Sweetheart. We don't know. We have never known. The Speak & Spell is one of the objects in our network that operates by a logic the network has never figured out. It picks who it picks. It does what it does.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Linda",
+      "text": "We have, over thirty-seven years, learned to handle it by intercepting fast and not making a thing about the picking. The not-making-a-thing is what keeps the picked person whole.",
       "expr": "neutral"
     },
     {
@@ -160,7 +174,13 @@
     {
       "t": "say",
       "char": "Linda",
-      "text": "Your grandfather repaired the first one. He was alive in 1991. He sat with the person who had been picked for three weeks. The picking was un-done. The person did not, after the un-doing, know they had ever been picked. The picking was, by the end of three weeks, gone.",
+      "text": "Your grandfather repaired the first one. He was alive in 1991. He sat with the person who had been picked for three weeks. The picking was un-done. The person did not, after the un-doing, know they had ever been picked.",
+      "expr": "serious"
+    },
+    {
+      "t": "say",
+      "char": "Linda",
+      "text": "The picking was, by the end of three weeks, gone.",
       "expr": "serious"
     },
     {
@@ -172,7 +192,13 @@
     {
       "t": "say",
       "char": "Linda",
-      "text": "I repaired the 2003 one. By then your grandfather had been gone for three years. I had to learn how to do it. I learned. I sat with the person who had been picked for five weeks because I was slower than your grandfather had been. The picking was un-done. The person did not, after the un-doing, know.",
+      "text": "I repaired the 2003 one. By then your grandfather had been gone for three years. I had to learn how to do it. I learned. I sat with the person who had been picked for five weeks because I was slower than your grandfather had been.",
+      "expr": "serious"
+    },
+    {
+      "t": "say",
+      "char": "Linda",
+      "text": "The picking was un-done. The person did not, after the un-doing, know.",
       "expr": "serious"
     },
     {
@@ -205,7 +231,11 @@
     },
     {
       "t": "narrate",
-      "text": "The porch light is on. The cicadas are loud. The cul-de-sac is quiet. Don Geller's porch light, three doors down — although Maya does not know this is the same Don Geller whose five-oh-two porch light Bianca Marin two miles away has been watching every morning since June — is also on."
+      "text": "The porch light is on. The cicadas are loud. The cul-de-sac is quiet."
+    },
+    {
+      "t": "narrate",
+      "text": "Don Geller's porch light, three doors down — although Maya does not know this is the same Don Geller whose five-oh-two porch light Bianca Marin two miles away has been watching every morning since June — is also on."
     },
     {
       "t": "say",
@@ -297,7 +327,15 @@
     },
     {
       "t": "narrate",
-      "text": "She thinks, on the porch, that she might. She has been keeping a small notebook of the days the Speak & Spell does the thing — a notebook Rick gave her in week three, a notebook with three entries in it for three different small things that have, in the past three months, happened in the shop, none of them as large as today. She has the notebook in her bag."
+      "text": "She thinks, on the porch, that she might."
+    },
+    {
+      "t": "narrate",
+      "text": "She has been keeping a small notebook of the days the Speak & Spell does the thing — a notebook Rick gave her in week three, a notebook with three entries in it for three different small things that have, in the past three months, happened in the shop, none of them as large as today."
+    },
+    {
+      "t": "narrate",
+      "text": "She has the notebook in her bag."
     },
     {
       "t": "narrate",
@@ -317,7 +355,11 @@
     },
     {
       "t": "narrate",
-      "text": "Maya stands in the doorway watching her grandmother breathe — the small steady rhythm of a woman who has, this summer, finally been allowed to rest. Linda's hip had healed in June. The healing had been the first full healing in two years. Linda had, since the healing, slept more deeply on the porch than she had in her bed."
+      "text": "Maya stands in the doorway watching her grandmother breathe — the small steady rhythm of a woman who has, this summer, finally been allowed to rest. Linda's hip had healed in June."
+    },
+    {
+      "t": "narrate",
+      "text": "The healing had been the first full healing in two years. Linda had, since the healing, slept more deeply on the porch than she had in her bed."
     },
     {
       "t": "narrate",
@@ -333,7 +375,11 @@
     },
     {
       "t": "narrate",
-      "text": "[shot:insert car]A car comes down the street at nine fifty-three. The car is not a car Maya recognizes. The car is going slow — the way cars go slow on a residential street when the driver is looking for an address. At the corner, the car turns left, and the left turn takes it away from her grandmother's house."
+      "text": "[shot:insert car]A car comes down the street at nine fifty-three. The car is not a car Maya recognizes. The car is going slow — the way cars go slow on a residential street when the driver is looking for an address."
+    },
+    {
+      "t": "narrate",
+      "text": "At the corner, the car turns left, and the left turn takes it away from her grandmother's house."
     },
     {
       "t": "narrate",
@@ -365,7 +411,11 @@
     },
     {
       "t": "narrate",
-      "text": "She passes her grandmother's bedroom door, which is open because her grandmother is on the porch. She goes inside and turns back the covers on her grandmother's bed so that when her grandmother comes inside in twenty minutes — which her grandmother will, having been woken by the cooler air or the cicadas or her own internal clock — the bed will be ready."
+      "text": "She passes her grandmother's bedroom door, which is open because her grandmother is on the porch."
+    },
+    {
+      "t": "narrate",
+      "text": "She goes inside and turns back the covers on her grandmother's bed so that when her grandmother comes inside in twenty minutes — which her grandmother will, having been woken by the cooler air or the cicadas or her own internal clock — the bed will be ready."
     },
     {
       "t": "narrate",

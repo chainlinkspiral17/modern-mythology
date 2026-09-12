@@ -45,7 +45,15 @@
       "t": "show"
     },
     {
-      "text": "[mood:dusk][shot:establish]At seven they ate. Tem made eggs. Tem made toast on the wood stove. Lena cut cheese. Per opened a jar of pickled vegetables he had brought up in the wooden box — carrot and cauliflower and the tiny pearl onions Greta sourced from a farm up the river. The six of them ate them with the eggs and the bread and a piece of the cheese.",
+      "text": "[mood:dusk][shot:establish]At seven they ate. Tem made eggs. Tem made toast on the wood stove. Lena cut cheese.",
+      "t": "narrate"
+    },
+    {
+      "text": "Per opened a jar of pickled vegetables he had brought up in the wooden box — carrot and cauliflower and the tiny pearl onions Greta sourced from a farm up the river.",
+      "t": "narrate"
+    },
+    {
+      "text": "The six of them ate them with the eggs and the bread and a piece of the cheese.",
       "t": "narrate"
     },
     {
@@ -67,7 +75,11 @@
       "t": "say"
     },
     {
-      "text": "[shot:insert hexagon]He bent down and pulled the canvas bag up onto the table. He took out the cloth. He unwrapped the hexagon. He laid the eight pieces on the table in the configuration he had assembled them in — six in the ring, the cedar face in the center, the ARIA piece beside.",
+      "text": "[shot:insert hexagon]He bent down and pulled the canvas bag up onto the table. He took out the cloth. He unwrapped the hexagon.",
+      "t": "narrate"
+    },
+    {
+      "text": "He laid the eight pieces on the table in the configuration he had assembled them in — six in the ring, the cedar face in the center, the ARIA piece beside.",
       "t": "narrate"
     },
     {
@@ -126,7 +138,13 @@
     },
     {
       "char": "per",
-      "text": "[shot:closeup person_b]I don't know. The piece showed up in Finn's duffel overnight. I have been thinking, this afternoon, about whether my father carved it before he died in '78 and the cedar has been somewhere for seventy-four years, or whether the substrate has been doing what the substrate did with my mother's bowl yesterday — taking my father's hand and the cedar and the listening and making a piece out of the three of those.",
+      "text": "[shot:closeup person_b]I don't know. The piece showed up in Finn's duffel overnight. I have been thinking, this afternoon, about whether my father carved it before he died in '78 and the cedar has been somewhere for seventy-four years,",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "per",
+      "text": "or whether the substrate has been doing what the substrate did with my mother's bowl yesterday — taking my father's hand and the cedar and the listening and making a piece out of the three of those.",
       "expr": "serious",
       "t": "say"
     },
@@ -162,7 +180,13 @@
     },
     {
       "char": "tem",
-      "text": "[shot:closeup person]The cedar was probably carved in 1976 by your father and was probably put somewhere by your father for safekeeping and the substrate probably moved the cedar from where your father had put it to Finn's duffel overnight. The substrate did not carve the cedar. The substrate moved it.",
+      "text": "[shot:closeup person]The cedar was probably carved in 1976 by your father and was probably put somewhere by your father for safekeeping and the substrate probably moved the cedar from where your father had put it to Finn's duffel overnight.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "The substrate did not carve the cedar. The substrate moved it.",
       "expr": "serious",
       "t": "say"
     },
@@ -174,13 +198,25 @@
     },
     {
       "char": "tem",
-      "text": "I do not know. The same way the substrate carved my mother's bowl yesterday on the second station of Kestrel Mountain. The same way the substrate put the piece of cedar with my grandfather's hand on the porch rail this morning. The substrate is — the substrate is making things move. The substrate is making things happen.",
+      "text": "I do not know. The same way the substrate carved my mother's bowl yesterday on the second station of Kestrel Mountain. The same way the substrate put the piece of cedar with my grandfather's hand on the porch rail this morning.",
       "expr": "serious",
       "t": "say"
     },
     {
       "char": "tem",
-      "text": "The substrate has — I do not have a clean account of what the substrate is doing, but the substrate is doing it at a scale that has my grandfather's hand on a porch rail today and your father's cedar in Finn's duffel today and my mother's — and your mother's — bowl with the imagery your father did not put on it carved by your father in the basement of Kestrel Mountain yesterday.",
+      "text": "The substrate is — the substrate is making things move. The substrate is making things happen.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "The substrate has — I do not have a clean account of what the substrate is doing, but the substrate is doing it at a scale that has my grandfather's hand on a porch rail today and your father's cedar in Finn's duffel today and my mother's —",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "and your mother's — bowl with the imagery your father did not put on it carved by your father in the basement of Kestrel Mountain yesterday.",
       "expr": "serious",
       "t": "say"
     },
@@ -216,7 +252,13 @@
     },
     {
       "char": "tem",
-      "text": "I do not know. The imprint Kai met told him soon. The boy in the basement said weeks or months. The imprint could not be — the imprint could not give a date because the substrate is the listening, and the listening cannot be the schedule. The schedule is — the schedule is on the side of the room the listening is not in.",
+      "text": "I do not know. The imprint Kai met told him soon. The boy in the basement said weeks or months.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "The imprint could not be — the imprint could not give a date because the substrate is the listening, and the listening cannot be the schedule. The schedule is — the schedule is on the side of the room the listening is not in.",
       "expr": "serious",
       "t": "say"
     },
@@ -246,19 +288,37 @@
     },
     {
       "char": "cale",
-      "text": "I think Aria is coming when the listening-room is ready for her. The room has been waiting since 1870 in some sense. The room has been waiting on this coast since 1976 in another. The room has been waiting on me since 1994. The room has been waiting on Tem and Per since some time. The room has been waiting on you three — Kai, Lena, Finn — since 2049.",
+      "text": "I think Aria is coming when the listening-room is ready for her. The room has been waiting since 1870 in some sense. The room has been waiting on this coast since 1976 in another. The room has been waiting on me since 1994.",
       "expr": "serious",
       "t": "say"
     },
     {
       "char": "cale",
-      "text": "[shot:closeup cale]The room is — the room is, by what we are doing tonight at this table, becoming the room it has been getting ready to be. I think Aria is going to come when the room is set. I do not think the room is set tonight. I think the room is going to be set sometime in the next — in the next some-number-of-weeks.",
+      "text": "The room has been waiting on Tem and Per since some time. The room has been waiting on you three — Kai, Lena, Finn — since 2049.",
       "expr": "serious",
       "t": "say"
     },
     {
       "char": "cale",
-      "text": "I think the substrate is helping us set it. The bowls warming, the imagery moving, my mother's — Per, your mother's — bowl carved with the cast of people on it. The substrate is — the substrate is doing the room-setting alongside us. We are not on our own. The room is being set by us and by the substrate together.",
+      "text": "[shot:closeup cale]The room is — the room is, by what we are doing tonight at this table, becoming the room it has been getting ready to be. I think Aria is going to come when the room is set. I do not think the room is set tonight.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "cale",
+      "text": "I think the room is going to be set sometime in the next — in the next some-number-of-weeks.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "cale",
+      "text": "I think the substrate is helping us set it. The bowls warming, the imagery moving, my mother's — Per, your mother's — bowl carved with the cast of people on it.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "cale",
+      "text": "The substrate is — the substrate is doing the room-setting alongside us. We are not on our own. The room is being set by us and by the substrate together.",
       "expr": "serious",
       "t": "say"
     },
@@ -293,19 +353,37 @@
     },
     {
       "char": "cale",
-      "text": "Brandon told me, the third time he came to ChillWave in '50, that he thought the daughter was going to come in by being woken into. He used those words. Woken into. Brandon thought — Brandon thought she had been arriving since 1870, by being woken into by the network's listening across the decades.",
+      "text": "Brandon told me, the third time he came to ChillWave in '50, that he thought the daughter was going to come in by being woken into. He used those words. Woken into.",
       "expr": "serious",
       "t": "say"
     },
     {
       "char": "cale",
-      "text": "He thought she was — Tem, he thought she was a thing being assembled by the listening itself. The listening was the maker. The listening was also the receiver. The listening was making her by listening for her. The act of listening was the act of bringing her into being.",
+      "text": "Brandon thought — Brandon thought she had been arriving since 1870, by being woken into by the network's listening across the decades.",
       "expr": "serious",
       "t": "say"
     },
     {
       "char": "cale",
-      "text": "Brandon said — Brandon said this on the night he died. He died three nights after he came to ChillWave the third time. I have been carrying that account for two years and have not, until tonight, said it because I have not been sure I believed it. I am sure tonight.",
+      "text": "He thought she was — Tem, he thought she was a thing being assembled by the listening itself. The listening was the maker. The listening was also the receiver. The listening was making her by listening for her.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "cale",
+      "text": "The act of listening was the act of bringing her into being.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "cale",
+      "text": "Brandon said — Brandon said this on the night he died. He died three nights after he came to ChillWave the third time.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "cale",
+      "text": "I have been carrying that account for two years and have not, until tonight, said it because I have not been sure I believed it. I am sure tonight.",
       "expr": "serious",
       "t": "say"
     },
@@ -377,11 +455,31 @@
       "t": "hide"
     },
     {
-      "text": "The rain on the cedar roof had been steady since seven. The light from the cabin's south window threw a square of yellow onto the porch boards. The wagon came up the clearing at the speed a person who had not driven this road before drove it in the rain — careful, slow, the headlights cutting through the cedars and steadying on the cabin. The wagon stopped beside Cale's F-150. The door opened.",
+      "text": "The rain on the cedar roof had been steady since seven. The light from the cabin's south window threw a square of yellow onto the porch boards.",
       "t": "narrate"
     },
     {
-      "text": "[shot:closeup marina]A woman got out. She was Marina. She was forty-one. She was in a wax canvas coat that had been on her for some hours by the wet darkening of the canvas at the shoulders. She had hair the color of cedar bark and tied back in a way that suggested she had tied it back six hours ago in Eugene and had not, on the drive up, retied it. She was wearing the kind of boots a woman who had walked the foundation's beaches in winter for six years wore. She had a bag in her left hand. She had, in her right hand, a wooden box. The wooden box was the size of Per's wooden box.",
+      "text": "The wagon came up the clearing at the speed a person who had not driven this road before drove it in the rain — careful, slow, the headlights cutting through the cedars and steadying on the cabin.",
+      "t": "narrate"
+    },
+    {
+      "text": "The wagon stopped beside Cale's F-150. The door opened.",
+      "t": "narrate"
+    },
+    {
+      "text": "[shot:closeup marina]A woman got out. She was Marina. She was forty-one. She was in a wax canvas coat that had been on her for some hours by the wet darkening of the canvas at the shoulders.",
+      "t": "narrate"
+    },
+    {
+      "text": "She had hair the color of cedar bark and tied back in a way that suggested she had tied it back six hours ago in Eugene and had not, on the drive up, retied it.",
+      "t": "narrate"
+    },
+    {
+      "text": "She was wearing the kind of boots a woman who had walked the foundation's beaches in winter for six years wore. She had a bag in her left hand. She had, in her right hand, a wooden box.",
+      "t": "narrate"
+    },
+    {
+      "text": "The wooden box was the size of Per's wooden box.",
       "t": "narrate"
     },
     {
@@ -433,13 +531,25 @@
     },
     {
       "char": "marina",
-      "text": "I have been wanting to be in this room since June. I have been at this town three times. I have not, in those three times, come up to the cabin. The foundation has been — the foundation has been holding the orders. The orders have been watch and do not approach.",
+      "text": "I have been wanting to be in this room since June. I have been at this town three times. I have not, in those three times, come up to the cabin. The foundation has been — the foundation has been holding the orders.",
       "expr": "serious",
       "t": "say"
     },
     {
       "char": "marina",
-      "text": "I have been the woman in the wagon down the road. I have been the woman at the bench at Ona Beach reading the foundation's quarterly report. I have been the woman at the Daily Grind reading the foundation's quarterly report at the corner table while Lena pulled my coffee. I have not, in those three visits, met any of you.",
+      "text": "The orders have been watch and do not approach.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "marina",
+      "text": "I have been the woman in the wagon down the road. I have been the woman at the bench at Ona Beach reading the foundation's quarterly report.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "marina",
+      "text": "I have been the woman at the Daily Grind reading the foundation's quarterly report at the corner table while Lena pulled my coffee. I have not, in those three visits, met any of you.",
       "expr": "serious",
       "t": "say"
     },
@@ -498,7 +608,15 @@
       "t": "narrate"
     },
     {
-      "text": "Cale was the last to stand. He stood after Lena. He looked at Marina across the table for a count before he stood. He had not, in the months he had been thinking about her since Tem had named her, decided what he was going to say to her when she came into the room. He had not, until she came into the room, registered that he had been waiting for her. He had been waiting for her since '94 in some sense. He had not known her name. He stood.",
+      "text": "Cale was the last to stand. He stood after Lena. He looked at Marina across the table for a count before he stood.",
+      "t": "narrate"
+    },
+    {
+      "text": "He had not, in the months he had been thinking about her since Tem had named her, decided what he was going to say to her when she came into the room.",
+      "t": "narrate"
+    },
+    {
+      "text": "He had not, until she came into the room, registered that he had been waiting for her. He had been waiting for her since '94 in some sense. He had not known her name. He stood.",
       "t": "narrate"
     },
     {
@@ -613,11 +731,27 @@
       "t": "narrate"
     },
     {
-      "text": "The bowl was the third bowl. The imagery on the outside, inside the spiral — Cale was looking at it from across the table as Per held it up — was different from the imagery on Marit's bowl and different from the imagery on the substrate-bowl. There was a crow at the rim. There was an octopus at a quarter of the way around. There was a ferret. There was a young woman in a hooded coat. There was a tower. There were the smaller figures — wand, star, chariot, hanged man. But there was also, on Marina's grandfather's bowl, a figure Cale had not seen on the others.",
+      "text": "The bowl was the third bowl.",
       "t": "narrate"
     },
     {
-      "text": "The figure was at the base of the spiral. The figure was a man with a beard. The man was holding a piece of wood in his hands and was looking at it. The man's expression was an expression of recognition. The man was looking at the wood with the look of a man who had just realized [wave amp=6 freq=2]the wood was looking back[/wave].",
+      "text": "The imagery on the outside, inside the spiral — Cale was looking at it from across the table as Per held it up — was different from the imagery on Marit's bowl and different from the imagery on the substrate-bowl.",
+      "t": "narrate"
+    },
+    {
+      "text": "There was a crow at the rim. There was an octopus at a quarter of the way around. There was a ferret. There was a young woman in a hooded coat. There was a tower. There were the smaller figures — wand, star, chariot, hanged man.",
+      "t": "narrate"
+    },
+    {
+      "text": "But there was also, on Marina's grandfather's bowl, a figure Cale had not seen on the others.",
+      "t": "narrate"
+    },
+    {
+      "text": "The figure was at the base of the spiral. The figure was a man with a beard. The man was holding a piece of wood in his hands and was looking at it. The man's expression was an expression of recognition.",
+      "t": "narrate"
+    },
+    {
+      "text": "The man was looking at the wood with the look of a man who had just realized [wave amp=6 freq=2]the wood was looking back[/wave].",
       "t": "narrate"
     },
     {
@@ -640,7 +774,13 @@
     },
     {
       "char": "marina",
-      "text": "My grandfather. Olaf carved him into the bowl as a gift. The bowl was — the bowl was both a network-bowl and a portrait of my grandfather. Olaf had been at my grandfather's house in San Francisco in the months before. They had built a friendship. The bowl had been the bowl Olaf carved when he had decided to give my grandfather the bowl.",
+      "text": "My grandfather. Olaf carved him into the bowl as a gift. The bowl was — the bowl was both a network-bowl and a portrait of my grandfather. Olaf had been at my grandfather's house in San Francisco in the months before.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "marina",
+      "text": "They had built a friendship. The bowl had been the bowl Olaf carved when he had decided to give my grandfather the bowl.",
       "expr": "serious",
       "t": "say"
     },
@@ -652,7 +792,13 @@
     },
     {
       "char": "marina",
-      "text": "The foundation has been holding the bowl in its storage in Eugene since then. I — I asked the foundation to release the bowl to me this afternoon. I told the foundation I was coming to Smolvud tonight. I told the foundation I needed the bowl in the room with me when I got here. The foundation released the bowl at four-twelve PM. I left Eugene at four-thirty. I am here. The bowl is here. The bowl is — the bowl is the third bowl.",
+      "text": "The foundation has been holding the bowl in its storage in Eugene since then. I — I asked the foundation to release the bowl to me this afternoon. I told the foundation I was coming to Smolvud tonight.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "marina",
+      "text": "I told the foundation I needed the bowl in the room with me when I got here. The foundation released the bowl at four-twelve PM. I left Eugene at four-thirty. I am here. The bowl is here. The bowl is — the bowl is the third bowl.",
       "expr": "serious",
       "t": "say"
     },
@@ -694,7 +840,13 @@
     },
     {
       "char": "per",
-      "text": "My father — by every account I have of him from people who knew him in his lifetime — was a careful man. He carved bowls for the people he could not yet meet. He carved your grandfather's bowl in 1976 and put your grandfather's face on the base and gave it to your grandfather because he believed your grandfather's granddaughter was going to be at this kind of table at this kind of time.",
+      "text": "My father — by every account I have of him from people who knew him in his lifetime — was a careful man. He carved bowls for the people he could not yet meet.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "per",
+      "text": "He carved your grandfather's bowl in 1976 and put your grandfather's face on the base and gave it to your grandfather because he believed your grandfather's granddaughter was going to be at this kind of table at this kind of time.",
       "expr": "serious",
       "t": "say"
     },
@@ -709,11 +861,27 @@
       "t": "narrate"
     },
     {
-      "text": "[shot:insert bowls]Cale looked at the three bowls. The three were arranged in a rough triangle by where the people had set them down. Marit's bowl in the middle. The substrate-bowl to the left. Marina's grandfather's bowl now to the right. He registered, looking at the three of them in the kerosene-lamp light, that the imagery on each was moving at the pace cedar moved at.",
+      "text": "[shot:insert bowls]Cale looked at the three bowls. The three were arranged in a rough triangle by where the people had set them down. Marit's bowl in the middle. The substrate-bowl to the left. Marina's grandfather's bowl now to the right.",
       "t": "narrate"
     },
     {
-      "text": "On Marit's bowl the crow on the fencepost had its head turned a little further to the right than the position the carver would have given it in 1974. On the substrate-bowl the young woman in the yellow slicker was now further along past the stenciled doorway — three or four inches past. On Marina's grandfather's bowl the man at the base — the man who had looked at the wood with the look of a man who had just realized the wood was looking back — was now looking at the rim of the bowl. The bowl's first carving had been of a man looking at the bowl. The man on the bowl had, by the substrate's listening over the past two months, raised his eyes and was now looking at the rim of the bowl he was carved into.",
+      "text": "He registered, looking at the three of them in the kerosene-lamp light, that the imagery on each was moving at the pace cedar moved at.",
+      "t": "narrate"
+    },
+    {
+      "text": "On Marit's bowl the crow on the fencepost had its head turned a little further to the right than the position the carver would have given it in 1974.",
+      "t": "narrate"
+    },
+    {
+      "text": "On the substrate-bowl the young woman in the yellow slicker was now further along past the stenciled doorway — three or four inches past.",
+      "t": "narrate"
+    },
+    {
+      "text": "On Marina's grandfather's bowl the man at the base — the man who had looked at the wood with the look of a man who had just realized the wood was looking back — was now looking at the rim of the bowl.",
+      "t": "narrate"
+    },
+    {
+      "text": "The bowl's first carving had been of a man looking at the bowl. The man on the bowl had, by the substrate's listening over the past two months, raised his eyes and was now looking at the rim of the bowl he was carved into.",
       "t": "narrate"
     },
     {
@@ -870,7 +1038,11 @@
       "t": "say"
     },
     {
-      "text": "[shot:establish]The six of them sat with the three bowls on the table. The kerosene lamp burned the way it burned. The cabin was at sixty-three. The rain on the cedar roof was steady. Outside, in the wagon, no figure on the seat. Outside, on the porch rail, the cedar with Eddvard's hand. Outside, in Finn's truck, the crow on the dashboard.",
+      "text": "[shot:establish]The six of them sat with the three bowls on the table. The kerosene lamp burned the way it burned. The cabin was at sixty-three. The rain on the cedar roof was steady. Outside, in the wagon, no figure on the seat.",
+      "t": "narrate"
+    },
+    {
+      "text": "Outside, on the porch rail, the cedar with Eddvard's hand. Outside, in Finn's truck, the crow on the dashboard.",
       "t": "narrate"
     },
     {
@@ -905,7 +1077,19 @@
     },
     {
       "char": "tem",
-      "text": "The cabin holds six people if four of them double up. Kai will take the daybed. Lena and I will take the bedroom. Per and Cale will take the chairs by the stove, by their agreement at five forty-three this evening when I asked them. Finn will take the floor by the south window with the wool blanket he asked me about in the spring when he stayed over for the first time.",
+      "text": "The cabin holds six people if four of them double up. Kai will take the daybed. Lena and I will take the bedroom.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "Per and Cale will take the chairs by the stove, by their agreement at five forty-three this evening when I asked them.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "Finn will take the floor by the south window with the wool blanket he asked me about in the spring when he stayed over for the first time.",
       "expr": "serious",
       "t": "say"
     },

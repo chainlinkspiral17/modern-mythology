@@ -33,11 +33,19 @@
    "t": "show"
   },
   {
-   "text": "[mood:day_bright]The morning broke up at eight-twenty. Hans had to open the bakery at nine. Greta had to set up the front. The dining table had to be cleared and the worktable wiped down and the bread for the morning's customers brought from the back to the front cases. The ten of them at the table got up and helped with the clearing.",
+   "text": "[mood:day_bright]The morning broke up at eight-twenty. Hans had to open the bakery at nine. Greta had to set up the front.",
    "t": "narrate"
   },
   {
-   "text": "[shot:closeup greta]Marina, at the worktable with Greta, learned how Greta wiped the table with a particular cloth Greta had been using since '88 and which Greta kept washed and folded in a particular drawer because the cloth — by Greta's account — was the only cloth that did the wipe properly. Marina folded the cloth back into the drawer where Greta had said it lived.",
+   "text": "The dining table had to be cleared and the worktable wiped down and the bread for the morning's customers brought from the back to the front cases. The ten of them at the table got up and helped with the clearing.",
+   "t": "narrate"
+  },
+  {
+   "text": "[shot:closeup greta]Marina, at the worktable with Greta, learned how Greta wiped the table with a particular cloth Greta had been using since '88 and which Greta kept washed and folded in a particular drawer because the cloth — by Greta's account — was the only cloth that did the wipe properly.",
+   "t": "narrate"
+  },
+  {
+   "text": "Marina folded the cloth back into the drawer where Greta had said it lived.",
    "t": "narrate"
   },
   {
@@ -136,7 +144,13 @@
   },
   {
    "char": "marina",
-   "text": "[shot:closeup person_b]I have been at this for six years and the week has — the week has changed what I have been at. I am — I am going to write the foundation tonight. I am going to write the director. I am going to tell him what is happening here. I am going to tell him the foundation has been at this from too great a distance for too many decades.",
+   "text": "[shot:closeup person_b]I have been at this for six years and the week has — the week has changed what I have been at. I am — I am going to write the foundation tonight. I am going to write the director. I am going to tell him what is happening here.",
+   "expr": "serious",
+   "t": "say"
+  },
+  {
+   "char": "marina",
+   "text": "I am going to tell him the foundation has been at this from too great a distance for too many decades.",
    "expr": "serious",
    "t": "say"
   },
@@ -231,7 +245,15 @@
    "t": "hide"
   },
   {
-   "text": "[shot:insert bowls]They got out of the wagon. They went up the porch. Tem put the kettle on. The three bowls were on the table where Tem had left them at four-fifty. The crow was on the porch railing — the crow had ridden back up with them in the wagon on Tem's instruction; Finn had taken Kai's truck back to town and the crow had stayed for the cabin afternoon — and the crow was, by what Marina could see at this angle, looking at the cedar Eddvard had carved that was still on the porch railing where Tem had found it Thursday morning.",
+   "text": "[shot:insert bowls]They got out of the wagon. They went up the porch. Tem put the kettle on. The three bowls were on the table where Tem had left them at four-fifty.",
+   "t": "narrate"
+  },
+  {
+   "text": "The crow was on the porch railing — the crow had ridden back up with them in the wagon on Tem's instruction; Finn had taken Kai's truck back to town and the crow had stayed for the cabin afternoon —",
+   "t": "narrate"
+  },
+  {
+   "text": "and the crow was, by what Marina could see at this angle, looking at the cedar Eddvard had carved that was still on the porch railing where Tem had found it Thursday morning.",
    "t": "narrate"
   },
   {

@@ -81,7 +81,13 @@
    "t": "say",
    "char": "Faust",
    "expr": "neutral",
-   "text": "I'm going to win you to me. Not as an enemy — but as a friend who knows how to make this world so frigging awesome. I welcome your intrusion upon my life. And any attacks against my own happiness will be taken as a threat — implied, because one of us is the intruder, though I'm still not sure which."
+   "text": "I'm going to win you to me. Not as an enemy — but as a friend who knows how to make this world so frigging awesome. I welcome your intrusion upon my life."
+  },
+  {
+   "t": "say",
+   "char": "Faust",
+   "expr": "neutral",
+   "text": "And any attacks against my own happiness will be taken as a threat — implied, because one of us is the intruder, though I'm still not sure which."
   },
   {
    "t": "say",
@@ -111,7 +117,14 @@
    "char": "Dickens Dean",
    "role": "Antagonist",
    "expr": "neutral",
-   "text": "Been so many places. Done so many things. And I'm sorry if my presence here is an intrusion. Usually, my presence generates excitement and intrigue. I mostly just observe. Watch. Enjoy. Sometimes I get involved with awesome amazing people. You, sir — and your friends — may be awesome amazing people."
+   "text": "Been so many places. Done so many things. And I'm sorry if my presence here is an intrusion. Usually, my presence generates excitement and intrigue. I mostly just observe. Watch. Enjoy."
+  },
+  {
+   "t": "say",
+   "char": "Dickens Dean",
+   "role": "Antagonist",
+   "expr": "neutral",
+   "text": "Sometimes I get involved with awesome amazing people. You, sir — and your friends — may be awesome amazing people."
   },
   {
    "t": "flag",

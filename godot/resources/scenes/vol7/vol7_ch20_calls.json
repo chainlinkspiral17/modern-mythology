@@ -340,7 +340,12 @@
     },
     {
       "char": "marina",
-      "text": "I felt it. I'm awake. I've been awake since three. I felt the sound. The crow. I don't have a clean account. I'll explain when I get there. I'm leaving now. I'll be at the cabin by ten if I drive hard. I'll be at the wall by the time you set up. Tell Lena I'm coming.",
+      "text": "I felt it. I'm awake. I've been awake since three. I felt the sound. The crow. I don't have a clean account. I'll explain when I get there. I'm leaving now. I'll be at the cabin by ten if I drive hard.",
+      "t": "say"
+    },
+    {
+      "char": "marina",
+      "text": "I'll be at the wall by the time you set up. Tell Lena I'm coming.",
       "t": "say"
     },
     {
@@ -358,7 +363,15 @@
       "t": "narrate"
     },
     {
-      "text": "By five-thirty: Hans had called Tem back — he was driving up with Greta and Marit. Aud had called Roy — she was opening the diner at six for people who would want a place before they came to the alley. Petra had called Cale — she was opening the bookstore early and would be at the wall by seven. Margaret had called Finn — the co-op would close for the morning, she was coming with whatever workers wanted to come. Wren's mother Yvonne had called Lena — Wren was up and dressed, the two of them were coming.",
+      "text": "By five-thirty: Hans had called Tem back — he was driving up with Greta and Marit. Aud had called Roy — she was opening the diner at six for people who would want a place before they came to the alley.",
+      "t": "narrate"
+    },
+    {
+      "text": "Petra had called Cale — she was opening the bookstore early and would be at the wall by seven. Margaret had called Finn — the co-op would close for the morning, she was coming with whatever workers wanted to come.",
+      "t": "narrate"
+    },
+    {
+      "text": "Wren's mother Yvonne had called Lena — Wren was up and dressed, the two of them were coming.",
       "t": "narrate"
     },
     {
@@ -421,7 +434,11 @@
       "t": "bg"
     },
     {
-      "text": "[shot:establish]At six the cast was at the trucks. Tem had loaded the four bowls into the wooden box in the back of the wagon. Finn had wrapped the cedar bell-piece in the handkerchief and put it in the pocket of his wax canvas coat. The notebook was in the inside pocket of Cale's coat. The crow was on Finn's shoulder. The seven in their layers and boots and coats were at the trucks the way the seven had been at the trucks Sunday morning at five thirty-five.",
+      "text": "[shot:establish]At six the cast was at the trucks. Tem had loaded the four bowls into the wooden box in the back of the wagon. Finn had wrapped the cedar bell-piece in the handkerchief and put it in the pocket of his wax canvas coat.",
+      "t": "narrate"
+    },
+    {
+      "text": "The notebook was in the inside pocket of Cale's coat. The crow was on Finn's shoulder. The seven in their layers and boots and coats were at the trucks the way the seven had been at the trucks Sunday morning at five thirty-five.",
       "t": "narrate"
     },
     {
@@ -445,11 +462,19 @@
       "t": "hide"
     },
     {
-      "text": "[shot:establish~]The road down at six on a Monday morning — the first of September of 2052 — was a road Tem had driven a hundred times. The first creek crossing at six-twelve. The second at six-twenty. The Sitka stand opened into the alders. The alders opened onto the coast highway. The coast highway took them into Smolvud at six thirty-six.",
+      "text": "[shot:establish~]The road down at six on a Monday morning — the first of September of 2052 — was a road Tem had driven a hundred times. The first creek crossing at six-twelve. The second at six-twenty. The Sitka stand opened into the alders.",
       "t": "narrate"
     },
     {
-      "text": "The town at six thirty-six was awake. The lights at the Daily Grind were on — Soren at the counter, visible through the window as she drove past. Aud's Missing Link with its sign out. The bakery with Greta at the front and Hans at the back loading bread into his old van to drive up with Marit and Greta.",
+      "text": "The alders opened onto the coast highway. The coast highway took them into Smolvud at six thirty-six.",
+      "t": "narrate"
+    },
+    {
+      "text": "The town at six thirty-six was awake. The lights at the Daily Grind were on — Soren at the counter, visible through the window as she drove past. Aud's Missing Link with its sign out.",
+      "t": "narrate"
+    },
+    {
+      "text": "The bakery with Greta at the front and Hans at the back loading bread into his old van to drive up with Marit and Greta.",
       "t": "narrate"
     },
     {

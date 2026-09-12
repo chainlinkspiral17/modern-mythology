@@ -101,7 +101,11 @@
       "t": "narrate"
     },
     {
-      "text": "[shot:insert bowls]The four bowls at the milk crate were now two. Roy had taken Olaus's. Marit had Marit's at Hans's. Lindholm-Marina's was wrapped in the cloth Marina had left it in at the milk crate. Eddvard's — Tem's-by-inheritance — had been at the milk crate since six-thirty.",
+      "text": "[shot:insert bowls]The four bowls at the milk crate were now two. Roy had taken Olaus's. Marit had Marit's at Hans's. Lindholm-Marina's was wrapped in the cloth Marina had left it in at the milk crate.",
+      "t": "narrate"
+    },
+    {
+      "text": "Eddvard's — Tem's-by-inheritance — had been at the milk crate since six-thirty.",
       "t": "narrate"
     },
     {
@@ -120,11 +124,19 @@
       "t": "say"
     },
     {
-      "text": "The three of them packed the two bowls into the wagon's wooden box. Tem wrapped them in the cloths Marit had brought down for the transit. Kai lifted the box into the wagon's back. The cedar bell-piece, in Finn's coat pocket since Sunday afternoon, stayed where it was.",
+      "text": "The three of them packed the two bowls into the wagon's wooden box. Tem wrapped them in the cloths Marit had brought down for the transit. Kai lifted the box into the wagon's back.",
       "t": "narrate"
     },
     {
-      "text": "The remaining twelve townspeople at the wall watched the three of them pack up without saying anything. There was no announcement that the gathering was ending. The substrate at the wall had stopped doing what it had been doing. The face had closed its eyes. The bowls were being taken back to the cabin. By each of these small movements the morning was returning to a morning.",
+      "text": "The cedar bell-piece, in Finn's coat pocket since Sunday afternoon, stayed where it was.",
+      "t": "narrate"
+    },
+    {
+      "text": "The remaining twelve townspeople at the wall watched the three of them pack up without saying anything. There was no announcement that the gathering was ending. The substrate at the wall had stopped doing what it had been doing.",
+      "t": "narrate"
+    },
+    {
+      "text": "The face had closed its eyes. The bowls were being taken back to the cabin. By each of these small movements the morning was returning to a morning.",
       "t": "narrate"
     },
     {
@@ -140,7 +152,11 @@
       "t": "bg"
     },
     {
-      "text": "At the cabin Tem put the bowls back on the dining table where they had been Sunday night. Marit's place at the table was empty. Roy's place at the table was empty. The two remaining bowls — Lindholm-Marina's and Eddvard's-by-Tem — looked, on the dining table, the way two of four bowls look when two are gone. The table was half-empty.",
+      "text": "At the cabin Tem put the bowls back on the dining table where they had been Sunday night. Marit's place at the table was empty. Roy's place at the table was empty.",
+      "t": "narrate"
+    },
+    {
+      "text": "The two remaining bowls — Lindholm-Marina's and Eddvard's-by-Tem — looked, on the dining table, the way two of four bowls look when two are gone. The table was half-empty.",
       "t": "narrate"
     },
     {
@@ -152,15 +168,27 @@
       "t": "narrate"
     },
     {
-      "text": "Kai made a fire in the stove. The cabin had been cold since the seven of them had left it at six in the morning. The stove had gone out by perhaps eight. The cabin's interior had dropped to maybe fifty-five by noon. Kai built the fire back up to the morning-burn. The cabin warmed slowly.",
+      "text": "Kai made a fire in the stove. The cabin had been cold since the seven of them had left it at six in the morning. The stove had gone out by perhaps eight. The cabin's interior had dropped to maybe fifty-five by noon.",
       "t": "narrate"
     },
     {
-      "text": "Tem made coffee at the kitchen. The three of them sat at the dining table. They did not, for a count, talk. Tem brought the coffee to the table. She poured three cups. They drank. The cabin was quiet. The rain on the cedar roof — which had been falling since Wednesday — had dropped to a mist. Kai ate some of Hans's rye. Finn ate one slice. Tem ate half of one. The cabin held them.",
+      "text": "Kai built the fire back up to the morning-burn. The cabin warmed slowly.",
       "t": "narrate"
     },
     {
-      "text": "[shot:insert phone]At one-fifteen the cabin's landline rang. The cabin had a landline because Eddvard had run a copper line up from town in 1981 and Tem had kept it active. The phone was a black rotary phone on a small table by the kitchen window. It was the only phone at the cabin. The cabin had no cell service. Tem walked to the phone. She picked it up on the third ring.",
+      "text": "Tem made coffee at the kitchen. The three of them sat at the dining table. They did not, for a count, talk. Tem brought the coffee to the table. She poured three cups. They drank. The cabin was quiet.",
+      "t": "narrate"
+    },
+    {
+      "text": "The rain on the cedar roof — which had been falling since Wednesday — had dropped to a mist. Kai ate some of Hans's rye. Finn ate one slice. Tem ate half of one. The cabin held them.",
+      "t": "narrate"
+    },
+    {
+      "text": "[shot:insert phone]At one-fifteen the cabin's landline rang. The cabin had a landline because Eddvard had run a copper line up from town in 1981 and Tem had kept it active. The phone was a black rotary phone on a small table by the kitchen window.",
+      "t": "narrate"
+    },
+    {
+      "text": "It was the only phone at the cabin. The cabin had no cell service. Tem walked to the phone. She picked it up on the third ring.",
       "t": "narrate"
     },
     {

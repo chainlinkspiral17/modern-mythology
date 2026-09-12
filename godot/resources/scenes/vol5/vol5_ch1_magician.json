@@ -65,13 +65,21 @@
     },
     {
       "t": "narrate",
-      "text": "[shot:insert model_city]Salvaged motherboards formed the plazas. Heat sinks rose like Brutalist monuments at the corners of intersections that did not exist on any city map. Capacitors stood in for water towers — leaking electrolytic fluid in patterns that traced, if you were willing to see it, the watershed of the actual river outside.",
+      "text": "[shot:insert model_city]Salvaged motherboards formed the plazas. Heat sinks rose like Brutalist monuments at the corners of intersections that did not exist on any city map.",
       "voice": "assets/audio/voice/vol5_ch1_magician/011.mp3"
     },
     {
       "t": "narrate",
-      "text": "[shot:insert model_city]Tiny LEDs pulsed erratically within tenement blocks crafted from rusted HVAC ducting and discarded server racks. Fiber optic cables snaked through streets paved with shattered smartphone screens. Rivers of tangled ethernet flowed through canyons of stacked server carcasses.",
+      "text": "Capacitors stood in for water towers — leaking electrolytic fluid in patterns that traced, if you were willing to see it, the watershed of the actual river outside."
+    },
+    {
+      "t": "narrate",
+      "text": "[shot:insert model_city]Tiny LEDs pulsed erratically within tenement blocks crafted from rusted HVAC ducting and discarded server racks. Fiber optic cables snaked through streets paved with shattered smartphone screens.",
       "voice": "assets/audio/voice/vol5_ch1_magician/012.mp3"
+    },
+    {
+      "t": "narrate",
+      "text": "Rivers of tangled ethernet flowed through canyons of stacked server carcasses."
     },
     {
       "t": "narrate",
@@ -101,13 +109,21 @@
     },
     {
       "t": "narrate",
-      "text": "He had escaped the structured inferno of D'Ambrosio's kitchen — its clatter, its grease, Dante's barked corrections in two languages — for this sprawling solitude. Traded simmering sauces for soldering fumes. Haute cuisine for hot-wired realities. He told himself, on bad nights, that this had been a good trade.",
+      "text": "He had escaped the structured inferno of D'Ambrosio's kitchen — its clatter, its grease, Dante's barked corrections in two languages — for this sprawling solitude. Traded simmering sauces for soldering fumes.",
       "voice": "assets/audio/voice/vol5_ch1_magician/018.mp3"
     },
     {
       "t": "narrate",
-      "text": "[mood:arcana_neon][shot:insert model_city]He knelt beside a section of the city representing the old cannery district near where Adelphia's used to be — a place he knew held more ghosts than fish guts these days. His fingers, nimble as a surgeon's and stained with solder and iridescent paint, hovered over a particularly troublesome node, then teased apart corroded wires that had been arguing with each other for three days.",
+      "text": "Haute cuisine for hot-wired realities. He told himself, on bad nights, that this had been a good trade."
+    },
+    {
+      "t": "narrate",
+      "text": "[mood:arcana_neon][shot:insert model_city]He knelt beside a section of the city representing the old cannery district near where Adelphia's used to be — a place he knew held more ghosts than fish guts these days.",
       "voice": "assets/audio/voice/vol5_ch1_magician/019.mp3"
+    },
+    {
+      "t": "narrate",
+      "text": "His fingers, nimble as a surgeon's and stained with solder and iridescent paint, hovered over a particularly troublesome node, then teased apart corroded wires that had been arguing with each other for three days."
     },
     {
       "t": "say",
@@ -139,8 +155,12 @@
     },
     {
       "t": "narrate",
-      "text": "[shot:insert phone]It was not, strictly, a phone. It was a Frankensteinian assemblage of cracked screen and exposed circuitry held together with electrical tape and a kind of desperate optimism. It served the function of a phone the way a séance served the function of a long-distance call. He held it aloft — a digital familiar perched on his wrist.",
+      "text": "[shot:insert phone]It was not, strictly, a phone. It was a Frankensteinian assemblage of cracked screen and exposed circuitry held together with electrical tape and a kind of desperate optimism.",
       "voice": "assets/audio/voice/vol5_ch1_magician/025.mp3"
+    },
+    {
+      "t": "narrate",
+      "text": "It served the function of a phone the way a séance served the function of a long-distance call. He held it aloft — a digital familiar perched on his wrist."
     },
     {
       "t": "narrate",
@@ -221,8 +241,16 @@
     },
     {
       "t": "narrate",
-      "text": "Not just code. Not really. Parasitic info-constructs feeding on the ambient psychic static of Graustark. Designed, originally, as humorous electronic imps — to whisper inconvenient truths and inappropriate suggestions into a user's immediate vicinity. The kind of thing you released into a friend's apartment as a prank and then went home and felt vaguely guilty about.",
+      "text": "Not just code. Not really. Parasitic info-constructs feeding on the ambient psychic static of Graustark.",
       "voice": "assets/audio/voice/vol5_ch1_magician/038.mp3"
+    },
+    {
+      "t": "narrate",
+      "text": "Designed, originally, as humorous electronic imps — to whisper inconvenient truths and inappropriate suggestions into a user's immediate vicinity."
+    },
+    {
+      "t": "narrate",
+      "text": "The kind of thing you released into a friend's apartment as a prank and then went home and felt vaguely guilty about."
     },
     {
       "t": "narrate",
@@ -262,8 +290,12 @@
     },
     {
       "t": "narrate",
-      "text": "[trip:1.2][mood:arcana_neon][stage:frasier workbench][shot:insert workbench]He grabbed a handful of scavenged components from the workbench — chipped RAM sticks like fossilized teeth. Capacitors swollen like toadstools after a hard rain. Raw material for the city. Or perhaps a new Demon host. The warehouse was full of possibility, teeming with the ghosts of dead technology waiting to be reanimated by his strange necromancy.",
+      "text": "[trip:1.2][mood:arcana_neon][stage:frasier workbench][shot:insert workbench]He grabbed a handful of scavenged components from the workbench — chipped RAM sticks like fossilized teeth. Capacitors swollen like toadstools after a hard rain. Raw material for the city. Or perhaps a new Demon host.",
       "voice": "assets/audio/voice/vol5_ch1_magician/046.mp3"
+    },
+    {
+      "t": "narrate",
+      "text": "The warehouse was full of possibility, teeming with the ghosts of dead technology waiting to be reanimated by his strange necromancy."
     },
     {
       "t": "narrate",
@@ -282,8 +314,12 @@
     },
     {
       "t": "narrate",
-      "text": "Traffic patterns like panicked fireflies. Economic despair pooling in the low-lying digital swamps near the river. The faint righteous buzz of Quentin Paul's late-night phone calls emanating from the simulated city hall like a transmission from a station that broadcast only in the key of warning.",
+      "text": "Traffic patterns like panicked fireflies. Economic despair pooling in the low-lying digital swamps near the river.",
       "voice": "assets/audio/voice/vol5_ch1_magician/050.mp3"
+    },
+    {
+      "t": "narrate",
+      "text": "The faint righteous buzz of Quentin Paul's late-night phone calls emanating from the simulated city hall like a transmission from a station that broadcast only in the key of warning."
     },
     {
       "t": "narrate",
@@ -292,8 +328,12 @@
     },
     {
       "t": "narrate",
-      "text": "He could see the warehouse he was standing in, also, from above, in the same overlay. And he could see himself standing in it — a small bright figure. And he could see, though he tried not to, that the figure had a faint corona of noise around it that the model city did not.",
+      "text": "He could see the warehouse he was standing in, also, from above, in the same overlay. And he could see himself standing in it — a small bright figure.",
       "voice": "assets/audio/voice/vol5_ch1_magician/052.mp3"
+    },
+    {
+      "t": "narrate",
+      "text": "And he could see, though he tried not to, that the figure had a faint corona of noise around it that the model city did not."
     },
     {
       "t": "narrate",
@@ -307,8 +347,12 @@
     },
     {
       "t": "narrate",
-      "text": "He remembered the easy camaraderie of the kitchen. The shouting. The heat. The shared purpose. He remembered the Neo-Renaissance Men crowded around a table at Adelphia's, arguing about whether code that was good enough to scare you should be considered an aesthetic achievement or a moral failure.",
+      "text": "He remembered the easy camaraderie of the kitchen. The shouting. The heat. The shared purpose.",
       "voice": "assets/audio/voice/vol5_ch1_magician/055.mp3"
+    },
+    {
+      "t": "narrate",
+      "text": "He remembered the Neo-Renaissance Men crowded around a table at Adelphia's, arguing about whether code that was good enough to scare you should be considered an aesthetic achievement or a moral failure."
     },
     {
       "t": "narrate",
@@ -358,8 +402,12 @@
     },
     {
       "t": "narrate",
-      "text": "[shot:insert riverboat]But every time he set the riverboat down on the river, something in the room hummed wrong. The fluorescents would flicker out of pattern. The phone would chirp without prompting. Once, the temperature in the warehouse had dropped four degrees in the time it took him to step back and look at his work, and stayed there for an hour.",
+      "text": "[shot:insert riverboat]But every time he set the riverboat down on the river, something in the room hummed wrong. The fluorescents would flicker out of pattern. The phone would chirp without prompting.",
       "voice": "assets/audio/voice/vol5_ch1_magician/065.mp3"
+    },
+    {
+      "t": "narrate",
+      "text": "Once, the temperature in the warehouse had dropped four degrees in the time it took him to step back and look at his work, and stayed there for an hour."
     },
     {
       "t": "narrate",
@@ -434,8 +482,12 @@
     },
     {
       "t": "narrate",
-      "text": "Or maybe — he thought, watching the Demon-light pulse on the phone screen, watching the model city breathe its low electric sigh in the gloom around him, watching the riverboat refuse to be placed — maybe just the first casualty of the beautifully doomed world he was so meticulously bringing into existence.",
+      "text": "Or maybe — he thought, watching the Demon-light pulse on the phone screen, watching the model city breathe its low electric sigh in the gloom around him,",
       "voice": "assets/audio/voice/vol5_ch1_magician/078.mp3"
+    },
+    {
+      "t": "narrate",
+      "text": "watching the riverboat refuse to be placed — maybe just the first casualty of the beautifully doomed world he was so meticulously bringing into existence."
     },
     {
       "t": "narrate",

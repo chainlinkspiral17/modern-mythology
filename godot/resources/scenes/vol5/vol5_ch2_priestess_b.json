@@ -17,8 +17,12 @@
     },
     {
       "t": "narrate",
-      "text": "[mood:bungalow_packing][stage:elicia living]She had always preferred Option C herself — though it didn't test well with focus groups. Too much of a downer. Apparently, people liked their comforting illusions. They wanted to be told the choice mattered. They wanted, after the choice, to be told they had chosen well.",
+      "text": "[mood:bungalow_packing][stage:elicia living]She had always preferred Option C herself — though it didn't test well with focus groups. Too much of a downer. Apparently, people liked their comforting illusions. They wanted to be told the choice mattered.",
       "voice": "assets/audio/voice/vol5_ch2_priestess_b/002.mp3"
+    },
+    {
+      "t": "narrate",
+      "text": "They wanted, after the choice, to be told they had chosen well."
     },
     {
       "t": "narrate",
@@ -27,8 +31,12 @@
     },
     {
       "t": "narrate",
-      "text": "[shot:insert phone]Her phone, on the kitchen counter, buzzed. She did not look at it. It would be Philip, or Mackenzie, or both — Philip and Mackenzie Roberts, her designated stabilizers. Those two well-meaning, aggressively grounded people who had absorbed her into their orbit after the MrMyst debacle without so much as asking her permission.",
+      "text": "[shot:insert phone]Her phone, on the kitchen counter, buzzed. She did not look at it. It would be Philip, or Mackenzie, or both — Philip and Mackenzie Roberts, her designated stabilizers.",
       "voice": "assets/audio/voice/vol5_ch2_priestess_b/004.mp3"
+    },
+    {
+      "t": "narrate",
+      "text": "Those two well-meaning, aggressively grounded people who had absorbed her into their orbit after the MrMyst debacle without so much as asking her permission."
     },
     {
       "t": "narrate",
@@ -37,8 +45,12 @@
     },
     {
       "t": "narrate",
-      "text": "The Roberts were sweet. Like offering a Band-Aid for an amputation — but sweet. Their earnestness was almost funny, if it wasn't so painfully sane. They did not understand the intricate beauty of a well-executed spiral into darkness. The aesthetic appeal of doom. They thought she should eat something.",
+      "text": "The Roberts were sweet. Like offering a Band-Aid for an amputation — but sweet. Their earnestness was almost funny, if it wasn't so painfully sane.",
       "voice": "assets/audio/voice/vol5_ch2_priestess_b/006.mp3"
+    },
+    {
+      "t": "narrate",
+      "text": "They did not understand the intricate beauty of a well-executed spiral into darkness. The aesthetic appeal of doom. They thought she should eat something."
     },
     {
       "t": "narrate",
@@ -67,8 +79,12 @@
     },
     {
       "t": "narrate",
-      "text": "She had been at D'Ambrosio's two nights ago — research, she had told herself, ambient texture for the next episode, also there had been wine — and she had watched John Frank from across the dining room with the carefully dispassionate eye of someone evaluating a shot she had already framed and was no longer sure she wanted.",
+      "text": "She had been at D'Ambrosio's two nights ago — research, she had told herself, ambient texture for the next episode, also there had been wine —",
       "voice": "assets/audio/voice/vol5_ch2_priestess_b/012.mp3"
+    },
+    {
+      "t": "narrate",
+      "text": "and she had watched John Frank from across the dining room with the carefully dispassionate eye of someone evaluating a shot she had already framed and was no longer sure she wanted."
     },
     {
       "t": "narrate",
@@ -113,8 +129,12 @@
     },
     {
       "t": "narrate",
-      "text": "Anya was staring with wide, distant eyes at something just off-frame. Elicia had directed the look herself. She had told the actress: imagine you have just realized the map you have been following is also reading you. The actress, who was a working professional and good at her job, had nailed it on the first take.",
+      "text": "Anya was staring with wide, distant eyes at something just off-frame. Elicia had directed the look herself. She had told the actress: imagine you have just realized the map you have been following is also reading you.",
       "voice": "assets/audio/voice/vol5_ch2_priestess_b/021.mp3"
+    },
+    {
+      "t": "narrate",
+      "text": "The actress, who was a working professional and good at her job, had nailed it on the first take."
     },
     {
       "t": "say",
@@ -155,8 +175,12 @@
     },
     {
       "t": "narrate",
-      "text": "[mood:bungalow_late]The void she had flirted with in her scripts. The comforting darkness she had offered as an artistic choice. Was starting to feel less like an aesthetic and more like — well. Home. A home she desperately needed to avoid moving into permanently, because she had a show to finish, and a contract to honor, and a basil plant to either save or have a mature conversation with about the nature of mortality.",
+      "text": "[mood:bungalow_late]The void she had flirted with in her scripts. The comforting darkness she had offered as an artistic choice. Was starting to feel less like an aesthetic and more like — well. Home.",
       "voice": "assets/audio/voice/vol5_ch2_priestess_b/028.mp3"
+    },
+    {
+      "t": "narrate",
+      "text": "A home she desperately needed to avoid moving into permanently, because she had a show to finish, and a contract to honor, and a basil plant to either save or have a mature conversation with about the nature of mortality."
     },
     {
       "t": "narrate",
@@ -196,8 +220,12 @@
     },
     {
       "t": "narrate",
-      "text": "[shot:establish]She crossed to the windowsill and looked at the basil plant. The basil plant looked back at her with the steady incurious patience of all things that have decided, on the inside, that they are dying, and no longer need to participate in the social fictions of survival.",
+      "text": "[shot:establish]She crossed to the windowsill and looked at the basil plant.",
       "voice": "assets/audio/voice/vol5_ch2_priestess_b/036.mp3"
+    },
+    {
+      "t": "narrate",
+      "text": "The basil plant looked back at her with the steady incurious patience of all things that have decided, on the inside, that they are dying, and no longer need to participate in the social fictions of survival."
     },
     {
       "t": "think",
@@ -284,8 +312,12 @@
     },
     {
       "t": "narrate",
-      "text": "[shot:establish]She put the phone face-down on the kitchen counter. The basil plant, having been watered, continued the slow important work of dying. The mirror shard, on the table, caught the failing light and threw it back in twelve different directions — none of which led out of the room.",
+      "text": "[shot:establish]She put the phone face-down on the kitchen counter. The basil plant, having been watered, continued the slow important work of dying.",
       "voice": "assets/audio/voice/vol5_ch2_priestess_b/050.mp3"
+    },
+    {
+      "t": "narrate",
+      "text": "The mirror shard, on the table, caught the failing light and threw it back in twelve different directions — none of which led out of the room."
     },
     {
       "t": "narrate",
@@ -299,8 +331,12 @@
     },
     {
       "t": "narrate",
-      "text": "[shot:closeup elicia]Elicia Duchane, the High Priestess of her own collapsing sanctum, sat down in the middle of her half-packed life, and laughed once — dry and short. The way a person laughs when they have at last understood the joke and are not, on balance, sure they enjoy the punchline.",
+      "text": "[shot:closeup elicia]Elicia Duchane, the High Priestess of her own collapsing sanctum, sat down in the middle of her half-packed life, and laughed once — dry and short.",
       "voice": "assets/audio/voice/vol5_ch2_priestess_b/053.mp3"
+    },
+    {
+      "t": "narrate",
+      "text": "The way a person laughs when they have at last understood the joke and are not, on balance, sure they enjoy the punchline."
     },
     {
       "t": "narrate",

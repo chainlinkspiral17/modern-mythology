@@ -177,7 +177,11 @@
   },
   {
    "t": "narrate",
-   "text": "[shot:establish]Bill, Ben registers, had been wrong about the cry. The cry comes about ninety seconds later, when Ben — at the kitchen counter making himself a second sandwich, with his back to his mother — hears, behind him, the small sniff that means Anita has done the small private thing of letting the wave hit her once and then composing herself."
+   "text": "[shot:establish]Bill, Ben registers, had been wrong about the cry."
+  },
+  {
+   "t": "narrate",
+   "text": "The cry comes about ninety seconds later, when Ben — at the kitchen counter making himself a second sandwich, with his back to his mother — hears, behind him, the small sniff that means Anita has done the small private thing of letting the wave hit her once and then composing herself."
   },
   {
    "t": "narrate",
@@ -189,7 +193,15 @@
   },
   {
    "t": "narrate",
-   "text": "He hears Anita drink her coffee. He hears her, after a beat, get up. He hears her come to the counter. He hears her, behind him, put her hand on the back of his neck — the small Anita-hand-on-the-back-of-Ben's-neck that she has been doing since he was three, the touch that has been her small physical signature on the small private moments of his childhood that have, over the years, accumulated into the relationship he has with her."
+   "text": "He hears Anita drink her coffee. He hears her, after a beat, get up. He hears her come to the counter."
+  },
+  {
+   "t": "narrate",
+   "text": "He hears her, behind him, put her hand on the back of his neck — the small Anita-hand-on-the-back-of-Ben's-neck that she has been doing since he was three,"
+  },
+  {
+   "t": "narrate",
+   "text": "the touch that has been her small physical signature on the small private moments of his childhood that have, over the years, accumulated into the relationship he has with her."
   },
   {
    "t": "say",
@@ -365,7 +377,11 @@
   },
   {
    "t": "narrate",
-   "text": "Maya is at the shop alone tomorrow. Diego is at the inventory tonight. Sam is at the Kwik Stop. Jesse has the gig at the Foxhole. Everybody, this Saturday, has their own thing. He is going to play a football game. The football game is his. He is, by mid-August, a person whose Saturday is going to be a thing. That is new."
+   "text": "Maya is at the shop alone tomorrow. Diego is at the inventory tonight. Sam is at the Kwik Stop. Jesse has the gig at the Foxhole. Everybody, this Saturday, has their own thing. He is going to play a football game."
+  },
+  {
+   "t": "narrate",
+   "text": "The football game is his. He is, by mid-August, a person whose Saturday is going to be a thing. That is new."
   },
   {
    "t": "bg",
@@ -377,7 +393,11 @@
   },
   {
    "t": "narrate",
-   "text": "The team is at the field in pads but not full contact. Coach K has them run through the offensive sets they are going to use against Vinton. Brent calls the cadence. Marcus runs the slot routes. Ben does the small seal-and-release work at TE-1, with Diaz alternating in for the second-team reps."
+   "text": "The team is at the field in pads but not full contact. Coach K has them run through the offensive sets they are going to use against Vinton. Brent calls the cadence. Marcus runs the slot routes."
+  },
+  {
+   "t": "narrate",
+   "text": "Ben does the small seal-and-release work at TE-1, with Diaz alternating in for the second-team reps."
   },
   {
    "t": "show",
@@ -409,7 +429,11 @@
   },
   {
    "t": "narrate",
-   "text": "Coach Dale, in the shed, told him. Coach Dale told him because Coach K, on Tuesday, had been thinking about what Ben said. The chain is Coach K to Coach Dale to Ben and back, and it is, by tomorrow, going to be in the same parking lot Coach K's wife is going to walk through to get to the third row of the bleachers."
+   "text": "Coach Dale, in the shed, told him. Coach Dale told him because Coach K, on Tuesday, had been thinking about what Ben said."
+  },
+  {
+   "t": "narrate",
+   "text": "The chain is Coach K to Coach Dale to Ben and back, and it is, by tomorrow, going to be in the same parking lot Coach K's wife is going to walk through to get to the third row of the bleachers."
   },
   {
    "t": "narrate",
@@ -625,7 +649,11 @@
   },
   {
    "t": "narrate",
-   "text": "[shot:establish_b]He eats. The dinner Anita has made is — Bianca had, by the four-thirty-table arrangement, sent over a cinnamon coffee cake that Eileen had brought yesterday and that the Kowalskis are, this evening, having for dessert. Anita has made enchiladas for the main. The enchiladas are — Anita's enchiladas, the recipe she does it with. Ben eats two. Gracie eats one. Bill, who has come in from the weeds, eats three."
+   "text": "[shot:establish_b]He eats. The dinner Anita has made is — Bianca had, by the four-thirty-table arrangement, sent over a cinnamon coffee cake that Eileen had brought yesterday and that the Kowalskis are, this evening, having for dessert."
+  },
+  {
+   "t": "narrate",
+   "text": "Anita has made enchiladas for the main. The enchiladas are — Anita's enchiladas, the recipe she does it with. Ben eats two. Gracie eats one. Bill, who has come in from the weeds, eats three."
   },
   {
    "t": "say",
@@ -682,7 +710,13 @@
   {
    "t": "say",
    "char": "Bill",
-   "text": "I worked with a man named Don Murchison who had a daughter named Eileen. Don was at the warehouse for, I don't know, fifteen years. We worked the same shift in maybe ninety-three, ninety-four. I left in ninety-five. We didn't keep in touch. Don was — Don was one of those men, the kind who you work with and you like and then your shifts change and that's it. He died in maybe two thousand and four, I think. I read the obituary in the paper.",
+   "text": "I worked with a man named Don Murchison who had a daughter named Eileen. Don was at the warehouse for, I don't know, fifteen years. We worked the same shift in maybe ninety-three, ninety-four. I left in ninety-five.",
+   "expr": "neutral"
+  },
+  {
+   "t": "say",
+   "char": "Bill",
+   "text": "We didn't keep in touch. Don was — Don was one of those men, the kind who you work with and you like and then your shifts change and that's it. He died in maybe two thousand and four, I think. I read the obituary in the paper.",
    "expr": "neutral"
   },
   {
@@ -699,7 +733,11 @@
   },
   {
    "t": "narrate",
-   "text": "[shot:establish_c]Ben, at the table, registers — with the small careful attention his summer has been training — that his father has just, in three sentences, given him a piece of additional context about Eileen Kazantzakis that he had not, until this moment, known. He does not, in the moment, do anything with the context."
+   "text": "[shot:establish_c]Ben, at the table, registers — with the small careful attention his summer has been training — that his father has just, in three sentences, given him a piece of additional context about Eileen Kazantzakis that he had not, until this moment, known."
+  },
+  {
+   "t": "narrate",
+   "text": "He does not, in the moment, do anything with the context."
   },
   {
    "t": "narrate",
@@ -759,7 +797,11 @@
   },
   {
    "t": "narrate",
-   "text": "[shot:closeup maya]Maya is on the porch. Linda is on the porch. The two of them are, this Friday evening, in the arrangement they have been in every evening for the past three weeks — Linda in the wicker, Maya in the second porch chair, two iced teas on the small table, the third pulled out and waiting."
+   "text": "[shot:closeup maya]Maya is on the porch. Linda is on the porch."
+  },
+  {
+   "t": "narrate",
+   "text": "The two of them are, this Friday evening, in the arrangement they have been in every evening for the past three weeks — Linda in the wicker, Maya in the second porch chair, two iced teas on the small table, the third pulled out and waiting."
   },
   {
    "t": "narrate",
@@ -1051,7 +1093,15 @@
   },
   {
    "t": "narrate",
-   "text": "In the dark, the inventory runs through him: TE-1. Eileen in the third row tomorrow. Coach K calling the plays. The chain. Marcus and the two-tight wrinkle on first down. Tucker at LT-1. Brent. The team — what he has been, all summer, becoming part of. Tomorrow he is going to play a game. He is going to play it as well as he can. He is not going to look up at the bleachers. He is not going to mention to anybody, ever, what Coach Dale told him in the shed. The chain is going to stay in his chest. The right foot is going to be the right foot."
+   "text": "In the dark, the inventory runs through him: TE-1. Eileen in the third row tomorrow. Coach K calling the plays. The chain. Marcus and the two-tight wrinkle on first down. Tucker at LT-1. Brent."
+  },
+  {
+   "t": "narrate",
+   "text": "The team — what he has been, all summer, becoming part of. Tomorrow he is going to play a game. He is going to play it as well as he can. He is not going to look up at the bleachers."
+  },
+  {
+   "t": "narrate",
+   "text": "He is not going to mention to anybody, ever, what Coach Dale told him in the shed. The chain is going to stay in his chest. The right foot is going to be the right foot."
   },
   {
    "t": "narrate",
@@ -1083,7 +1133,15 @@
   },
   {
    "t": "narrate",
-   "text": "On TE-1: the kid said the right thing on Tuesday. He could not have known. He said it anyway. The kid is the kind of seventeen-year-old you do not see twice in twenty years. Dale told him. He had told Dale on the field yesterday, and Dale, who had been his friend for seventeen years, had made the Dale-decision to tell the kid. He had known Dale would. He had told Dale because he had known Dale would. The kid will, by tomorrow, know. The kid will not, by tomorrow or ever, mention it. That is the kind of kid."
+   "text": "On TE-1: the kid said the right thing on Tuesday. He could not have known. He said it anyway. The kid is the kind of seventeen-year-old you do not see twice in twenty years. Dale told him."
+  },
+  {
+   "t": "narrate",
+   "text": "He had told Dale on the field yesterday, and Dale, who had been his friend for seventeen years, had made the Dale-decision to tell the kid. He had known Dale would. He had told Dale because he had known Dale would."
+  },
+  {
+   "t": "narrate",
+   "text": "The kid will, by tomorrow, know. The kid will not, by tomorrow or ever, mention it. That is the kind of kid."
   },
   {
    "t": "narrate",

@@ -29,7 +29,11 @@
     },
     {
       "t": "narrate",
-      "text": "[trip:1.2][mood:candlelight_low]STRENGTH. The woman in white opens the lion's jaw — not with force but with grace. The lemniscate floats above her head. Infinite patience. The beast is not conquered. The beast is known. Reversed: self-doubt wearing the mask of calm. The chain you've placed on yourself that you've begun to call a choice."
+      "text": "[trip:1.2][mood:candlelight_low]STRENGTH. The woman in white opens the lion's jaw — not with force but with grace. The lemniscate floats above her head. Infinite patience. The beast is not conquered. The beast is known."
+    },
+    {
+      "t": "narrate",
+      "text": "Reversed: self-doubt wearing the mask of calm. The chain you've placed on yourself that you've begun to call a choice."
     },
     {
       "t": "narrate",
@@ -37,11 +41,27 @@
     },
     {
       "t": "narrate",
-      "text": "[mood:tv_glow_blue][shot:insert tv]The game flickered on the bar TV. Muted. Ghosts in pads chasing an electronic pigskin under the buzzing neon of three different beer signs, two of which had been advertising brands the bar no longer carried. Another meaningless third down. Douglas Forte watched. He nursed a flat domestic beer. The condensation traced clean paths through the grime on the glass, and Douglas, who had been raised by a mother who washed glasses for a living, registered the grime without making a thing of it. Some bars wanted the grime. The grime was part of the offer."
+      "text": "[mood:tv_glow_blue][shot:insert tv]The game flickered on the bar TV. Muted. Ghosts in pads chasing an electronic pigskin under the buzzing neon of three different beer signs, two of which had been advertising brands the bar no longer carried."
     },
     {
       "t": "narrate",
-      "text": "His corner booth smelled faintly of stale smoke and something else — something metallic and sad, maybe just him. He didn't flinch when the Saints inevitably failed to convert. He just watched. Stillness was a kind of armor. He had been wearing it for a long time, and like all armor it had been shaped, over the years, to fit only him."
+      "text": "Another meaningless third down. Douglas Forte watched. He nursed a flat domestic beer."
+    },
+    {
+      "t": "narrate",
+      "text": "The condensation traced clean paths through the grime on the glass, and Douglas, who had been raised by a mother who washed glasses for a living, registered the grime without making a thing of it. Some bars wanted the grime."
+    },
+    {
+      "t": "narrate",
+      "text": "The grime was part of the offer."
+    },
+    {
+      "t": "narrate",
+      "text": "His corner booth smelled faintly of stale smoke and something else — something metallic and sad, maybe just him. He didn't flinch when the Saints inevitably failed to convert. He just watched. Stillness was a kind of armor."
+    },
+    {
+      "t": "narrate",
+      "text": "He had been wearing it for a long time, and like all armor it had been shaped, over the years, to fit only him."
     },
     {
       "t": "narrate",
@@ -53,11 +73,27 @@
     },
     {
       "t": "narrate",
-      "text": "Scarred knuckles mapped with the ghosts of busted fences and kitchen brawls from back when Dante's word was law and Douglas's word, to the people who needed it, was Dante's. Calloused cartography of a life spent holding things together. Or maybe just holding on."
+      "text": "Scarred knuckles mapped with the ghosts of busted fences and kitchen brawls from back when Dante's word was law and Douglas's word, to the people who needed it, was Dante's."
     },
     {
       "t": "narrate",
-      "text": "He remembered the feel of wood grain under his plane in the Roberts's back yard, the morning Philip had asked him to come over and help rebuild the cedar gate the storm had taken. The satisfying thunk of a post driven true into Graustark soil. He remembered the impossible softness of her skin. The way her fingers — stained with ink or paint or charcoal, often all three at once — would trace the faded lines on his forearm where the snake tattoo ate its own tail. She had loved the tattoo. She had said it was the only honest piece of him. He had not, at the time, understood what she meant. He had laughed and asked her what made it honest. She had said, Because it's a picture of itself eating itself, and that's true."
+      "text": "Calloused cartography of a life spent holding things together. Or maybe just holding on."
+    },
+    {
+      "t": "narrate",
+      "text": "He remembered the feel of wood grain under his plane in the Roberts's back yard, the morning Philip had asked him to come over and help rebuild the cedar gate the storm had taken."
+    },
+    {
+      "t": "narrate",
+      "text": "The satisfying thunk of a post driven true into Graustark soil. He remembered the impossible softness of her skin."
+    },
+    {
+      "t": "narrate",
+      "text": "The way her fingers — stained with ink or paint or charcoal, often all three at once — would trace the faded lines on his forearm where the snake tattoo ate its own tail. She had loved the tattoo."
+    },
+    {
+      "t": "narrate",
+      "text": "She had said it was the only honest piece of him. He had not, at the time, understood what she meant. He had laughed and asked her what made it honest. She had said, Because it's a picture of itself eating itself, and that's true."
     },
     {
       "t": "narrate",
@@ -81,7 +117,15 @@
     },
     {
       "t": "narrate",
-      "text": "[shot:establish]The bartender — a tired-looking woman with eyes that had seen too many midnights and was, Douglas suspected, the owner's daughter — caught his eye from behind the bar and raised her eyebrows in the universal restaurant-worker shorthand for another? He held up two fingers. She nodded. She was not, by demeanor or training, the kind of bartender who came over to chat. He appreciated this about her. He had tipped her, on his first visit, the way you tipped people you intended to come back to, and she had accepted the tip without comment, which was the contract."
+      "text": "[shot:establish]The bartender — a tired-looking woman with eyes that had seen too many midnights and was, Douglas suspected, the owner's daughter — caught his eye from behind the bar and raised her eyebrows in the universal restaurant-worker shorthand for another?"
+    },
+    {
+      "t": "narrate",
+      "text": "He held up two fingers. She nodded. She was not, by demeanor or training, the kind of bartender who came over to chat. He appreciated this about her."
+    },
+    {
+      "t": "narrate",
+      "text": "He had tipped her, on his first visit, the way you tipped people you intended to come back to, and she had accepted the tip without comment, which was the contract."
     },
     {
       "t": "narrate",
@@ -101,7 +145,15 @@
     },
     {
       "t": "narrate",
-      "text": "Still, he had come. Loyalty was an anchor, wasn't it? Or maybe just a chain. He had packed a bag — the same canvas duffle his father had carried back from Korea, which was now battered enough to look intentional — and left the gray monochrome paintings of Graustark's ruins leaning against the wall of his apartment, the ones he had been working on the year after Joanna left, the ones he had never quite finished and would, he suspected, never quite finish, because finishing them would require him to either show them to somebody or accept that he was the only audience."
+      "text": "Still, he had come. Loyalty was an anchor, wasn't it? Or maybe just a chain."
+    },
+    {
+      "t": "narrate",
+      "text": "He had packed a bag — the same canvas duffle his father had carried back from Korea, which was now battered enough to look intentional — and left the gray monochrome paintings of Graustark's ruins leaning against the wall of his apartment,"
+    },
+    {
+      "t": "narrate",
+      "text": "the ones he had been working on the year after Joanna left, the ones he had never quite finished and would, he suspected, never quite finish, because finishing them would require him to either show them to somebody or accept that he was the only audience."
     },
     {
       "t": "narrate",
@@ -121,7 +173,11 @@
     },
     {
       "t": "narrate",
-      "text": "[shot:insert hands]Intercepted. Shit. The neon ghosts on the screen threw up their hands in digital despair. Douglas took another slow sip. Didn't matter. Just pixels burning bright before fading out. Like memory. Like her laughter echoing off the crumbling walls where she used to write her poems."
+      "text": "[shot:insert hands]Intercepted. Shit. The neon ghosts on the screen threw up their hands in digital despair. Douglas took another slow sip. Didn't matter. Just pixels burning bright before fading out. Like memory."
+    },
+    {
+      "t": "narrate",
+      "text": "Like her laughter echoing off the crumbling walls where she used to write her poems."
     },
     {
       "t": "narrate",
@@ -141,7 +197,15 @@
     },
     {
       "t": "narrate",
-      "text": "He saw her sometimes, in the reflections distorted by cheap bar glass — a flash of unruly dark hair, eyes that held the wisdom of ruins. Saw her scrawling words on walls with charcoal fingers, surrounded by her court of stray dogs and one-eyed cats. Saw her fading, the chemicals burning brighter than her fierce fragile light, the way the cheap candles she liked burned brighter than the expensive ones because the wax was wrong and the wick was too thick and the heat ate the wax faster than it should have."
+      "text": "He saw her sometimes, in the reflections distorted by cheap bar glass — a flash of unruly dark hair, eyes that held the wisdom of ruins."
+    },
+    {
+      "t": "narrate",
+      "text": "Saw her scrawling words on walls with charcoal fingers, surrounded by her court of stray dogs and one-eyed cats."
+    },
+    {
+      "t": "narrate",
+      "text": "Saw her fading, the chemicals burning brighter than her fierce fragile light, the way the cheap candles she liked burned brighter than the expensive ones because the wax was wrong and the wick was too thick and the heat ate the wax faster than it should have."
     },
     {
       "t": "narrate",
@@ -149,11 +213,23 @@
     },
     {
       "t": "narrate",
-      "text": "But some beasts couldn't be tamed. Not even by Strength itself. Some grief couldn't be carried, only endured. Her absence was a physical weight, heavier than any beam he had ever hoisted in the long winter he had spent helping Philip Roberts rebuild what the storm had not, in the end, completely taken."
+      "text": "But some beasts couldn't be tamed. Not even by Strength itself. Some grief couldn't be carried, only endured."
     },
     {
       "t": "narrate",
-      "text": "He had painted the ruins gray after she was gone. He had been trying to capture the color of her leaving. The paintings had failed. The paintings had also not failed, because the paintings now leaned against the wall of his apartment in Graustark and continued, in his absence, to be the most accurate record of the period he had ever made. Failure was a category for art that had set out to do something else. The paintings had set out to be gray. The paintings were gray. By their own terms they were a success."
+      "text": "Her absence was a physical weight, heavier than any beam he had ever hoisted in the long winter he had spent helping Philip Roberts rebuild what the storm had not, in the end, completely taken."
+    },
+    {
+      "t": "narrate",
+      "text": "He had painted the ruins gray after she was gone. He had been trying to capture the color of her leaving. The paintings had failed."
+    },
+    {
+      "t": "narrate",
+      "text": "The paintings had also not failed, because the paintings now leaned against the wall of his apartment in Graustark and continued, in his absence, to be the most accurate record of the period he had ever made."
+    },
+    {
+      "t": "narrate",
+      "text": "Failure was a category for art that had set out to do something else. The paintings had set out to be gray. The paintings were gray. By their own terms they were a success."
     },
     {
       "t": "narrate",
@@ -169,7 +245,15 @@
     },
     {
       "t": "narrate",
-      "text": "[shot:establish]Jimmy running point. Edgy. Talking fast. Eyes darting in the way Jimmy's eyes had been darting since approximately 2011, when whatever switch in Jimmy that had once been able to be turned off had been, by some person or event Jimmy did not name, permanently broken. Douglas stood in the back, mostly. Watching the controlled chaos. Watching the deliveries coming through the back door. Watching the hushed conversations that stopped when he drew near."
+      "text": "[shot:establish]Jimmy running point. Edgy. Talking fast."
+    },
+    {
+      "t": "narrate",
+      "text": "Eyes darting in the way Jimmy's eyes had been darting since approximately 2011, when whatever switch in Jimmy that had once been able to be turned off had been, by some person or event Jimmy did not name, permanently broken."
+    },
+    {
+      "t": "narrate",
+      "text": "Douglas stood in the back, mostly. Watching the controlled chaos. Watching the deliveries coming through the back door. Watching the hushed conversations that stopped when he drew near."
     },
     {
       "t": "narrate",
@@ -177,7 +261,19 @@
     },
     {
       "t": "narrate",
-      "text": "Except nothing involving Jimmy — or the D'Ambrosio legacy, or for that matter the entire blood-and-money geography of the Texas-Louisiana coast — was ever simple. He could feel the ground shifting. Same as Erica Campbell probably felt it, back in her sterile Houston office, where Douglas had been once, on a job, fifteen years ago, and where he had not understood, at the time, that he was being audited, by Erica's predecessor, for the position of the kind of man Dante D'Ambrosio could call when a man was needed. Erica's predecessor had decided yes. The yes had cost Douglas, over the next decade, several decisions that he had never quite been able to recategorize as his own."
+      "text": "Except nothing involving Jimmy — or the D'Ambrosio legacy, or for that matter the entire blood-and-money geography of the Texas-Louisiana coast — was ever simple. He could feel the ground shifting."
+    },
+    {
+      "t": "narrate",
+      "text": "Same as Erica Campbell probably felt it, back in her sterile Houston office, where Douglas had been once, on a job, fifteen years ago, and where he had not understood,"
+    },
+    {
+      "t": "narrate",
+      "text": "at the time, that he was being audited, by Erica's predecessor, for the position of the kind of man Dante D'Ambrosio could call when a man was needed. Erica's predecessor had decided yes."
+    },
+    {
+      "t": "narrate",
+      "text": "The yes had cost Douglas, over the next decade, several decisions that he had never quite been able to recategorize as his own."
     },
     {
       "t": "narrate",
@@ -213,7 +309,15 @@
     },
     {
       "t": "narrate",
-      "text": "A vibration in the air. A shift in the shadows. Some piece of information arriving in the room without anyone having said anything. Jimmy needed a fall guy. Antonio — bless his artistic, naïve, young heart — had stepped over a line, or was about to, or had been arranged to. Deals made in Dante's shadow were coming due, the way they always came due eventually, on a calendar that had never been published and that nobody could read, but which never, in Douglas's experience, ran late."
+      "text": "A vibration in the air. A shift in the shadows. Some piece of information arriving in the room without anyone having said anything. Jimmy needed a fall guy."
+    },
+    {
+      "t": "narrate",
+      "text": "Antonio — bless his artistic, naïve, young heart — had stepped over a line, or was about to, or had been arranged to."
+    },
+    {
+      "t": "narrate",
+      "text": "Deals made in Dante's shadow were coming due, the way they always came due eventually, on a calendar that had never been published and that nobody could read, but which never, in Douglas's experience, ran late."
     },
     {
       "t": "narrate",
@@ -225,7 +329,15 @@
     },
     {
       "t": "narrate",
-      "text": "He saw the look in Jimmy's eyes one last time — earlier this evening, across the warehouse floor, when Jimmy had walked Antonio out the back stair after the older man in the charcoal suit had finally driven away. Not malice, exactly. Just the cold calculation of survival. The look of a man who had already, at some point in the previous month, run the numbers on every person in his life and had assigned each of them a value, and who was, this evening, beginning the slow respectful process of cashing in the lower-value chips."
+      "text": "He saw the look in Jimmy's eyes one last time — earlier this evening, across the warehouse floor, when Jimmy had walked Antonio out the back stair after the older man in the charcoal suit had finally driven away."
+    },
+    {
+      "t": "narrate",
+      "text": "Not malice, exactly. Just the cold calculation of survival."
+    },
+    {
+      "t": "narrate",
+      "text": "The look of a man who had already, at some point in the previous month, run the numbers on every person in his life and had assigned each of them a value, and who was, this evening, beginning the slow respectful process of cashing in the lower-value chips."
     },
     {
       "t": "narrate",
@@ -249,7 +361,11 @@
     },
     {
       "t": "narrate",
-      "text": "[shot:establish]He stood up from the booth. The cheap vinyl sighed beneath him in the way old vinyl sighed, releasing whatever heat his body had pressed into it during the hour he had spent there. He left the empty bottles on the table. He left a folded twenty under the saltshaker for the tired-looking woman behind the bar, because she had earned it without asking, which was, in his experience, the only kind of earning that mattered."
+      "text": "[shot:establish]He stood up from the booth. The cheap vinyl sighed beneath him in the way old vinyl sighed, releasing whatever heat his body had pressed into it during the hour he had spent there. He left the empty bottles on the table."
+    },
+    {
+      "t": "narrate",
+      "text": "He left a folded twenty under the saltshaker for the tired-looking woman behind the bar, because she had earned it without asking, which was, in his experience, the only kind of earning that mattered."
     },
     {
       "t": "narrate",
@@ -277,7 +393,15 @@
     },
     {
       "t": "narrate",
-      "text": "[mood:night]He walked the eight blocks back to the room above the laundromat that Jimmy had rented for him, on a month-to-month, paid in cash. The streets were Saturday-night busy in the specific Marigny way: sax from a window two stories up, somebody's grandmother shouting in patois at somebody's grandson, the distant brass of a second line that had been, a few hours ago, a wedding and was now just a parade looking for a reason to keep going. He walked through it without engaging it. The city, sensing this, returned the favor."
+      "text": "[mood:night]He walked the eight blocks back to the room above the laundromat that Jimmy had rented for him, on a month-to-month, paid in cash."
+    },
+    {
+      "t": "narrate",
+      "text": "The streets were Saturday-night busy in the specific Marigny way: sax from a window two stories up, somebody's grandmother shouting in patois at somebody's grandson,"
+    },
+    {
+      "t": "narrate",
+      "text": "the distant brass of a second line that had been, a few hours ago, a wedding and was now just a parade looking for a reason to keep going. He walked through it without engaging it. The city, sensing this, returned the favor."
     },
     {
       "t": "narrate",
@@ -321,7 +445,15 @@
     },
     {
       "t": "narrate",
-      "text": "He read the letter back. He read it back again. He folded it in thirds. He put it in an envelope. He addressed the envelope to Jimmy, sealed it, and put it in the inside pocket of his jacket, which was hanging on the back of the chair, which was where he always hung the jacket, which was where Jimmy — who had a key to this room and who came by, occasionally, on the pretext of dropping off cash or checking in — would find it, if and when."
+      "text": "He read the letter back. He read it back again. He folded it in thirds. He put it in an envelope."
+    },
+    {
+      "t": "narrate",
+      "text": "He addressed the envelope to Jimmy, sealed it, and put it in the inside pocket of his jacket, which was hanging on the back of the chair, which was where he always hung the jacket,"
+    },
+    {
+      "t": "narrate",
+      "text": "which was where Jimmy — who had a key to this room and who came by, occasionally, on the pretext of dropping off cash or checking in — would find it, if and when."
     },
     {
       "t": "narrate",
@@ -349,7 +481,11 @@
     },
     {
       "t": "narrate",
-      "text": "[mood:tv_glow_blue][shot:insert tv~]In the bar he had left, the TV had moved on to the next game. The neon ghosts had reset, again. New uniforms. New score. The same bartender wiping the same bar with the same rag. The booth Douglas had occupied was already taken by two younger men who would not, all evening, leave a tip."
+      "text": "[mood:tv_glow_blue][shot:insert tv~]In the bar he had left, the TV had moved on to the next game. The neon ghosts had reset, again. New uniforms. New score. The same bartender wiping the same bar with the same rag."
+    },
+    {
+      "t": "narrate",
+      "text": "The booth Douglas had occupied was already taken by two younger men who would not, all evening, leave a tip."
     },
     {
       "t": "narrate",

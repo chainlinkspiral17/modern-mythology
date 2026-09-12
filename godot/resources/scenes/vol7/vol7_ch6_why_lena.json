@@ -36,7 +36,19 @@
    "t": "say",
    "char": "Cale",
    "expr": "neutral",
-   "text": "\"Because she's been carrying this alone for two years and she doesn't need to carry the next part alone. I'm telling you so when she has the conversation with me tomorrow you're in the room. I'm telling you so the four of you have what I have to say and what she's been holding at the same time. The carrying alone is what kills people in this. I knew that as soon as Brandon walked in here in 2049. I've been doing my own version for thirty years and I'm tired.\""
+   "text": "\"Because she's been carrying this alone for two years and she doesn't need to carry the next part alone. I'm telling you so when she has the conversation with me tomorrow you're in the room."
+  },
+  {
+   "t": "say",
+   "char": "Cale",
+   "expr": "neutral",
+   "text": "I'm telling you so the four of you have what I have to say and what she's been holding at the same time. The carrying alone is what kills people in this. I knew that as soon as Brandon walked in here in 2049."
+  },
+  {
+   "t": "say",
+   "char": "Cale",
+   "expr": "neutral",
+   "text": "I've been doing my own version for thirty years and I'm tired.\""
   },
   {
    "t": "narrate",

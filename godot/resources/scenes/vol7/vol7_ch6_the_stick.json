@@ -62,7 +62,13 @@
    "t": "say",
    "char": "Cale",
    "expr": "neutral",
-   "text": "\"I ran into him at SFO in '06. We had a layover. We had a beer. He was twenty-eight and excited the way people are excited when they're about to start the project they've been planning their whole life. He told me he was building a tower on the bluff above old-Yachats. He drew it for me on a napkin. He told me which floor would do what. I've thought about that napkin for sixteen years.\""
+   "text": "\"I ran into him at SFO in '06. We had a layover. We had a beer. He was twenty-eight and excited the way people are excited when they're about to start the project they've been planning their whole life."
+  },
+  {
+   "t": "say",
+   "char": "Cale",
+   "expr": "neutral",
+   "text": "He told me he was building a tower on the bluff above old-Yachats. He drew it for me on a napkin. He told me which floor would do what. I've thought about that napkin for sixteen years.\""
   },
   {
    "t": "say",
@@ -74,7 +80,13 @@
    "t": "say",
    "char": "Cale",
    "expr": "neutral",
-   "text": "\"The gallery was where the unfinished work was going to go. The pieces he started and didn't solve. He knew at twenty-eight he was going to die before some of them were finished. He told me he wanted somewhere to put them. They're up there now. Or what he made of them is. Or what they've made of themselves in ten years of being alone in a room is. Be careful.\""
+   "text": "\"The gallery was where the unfinished work was going to go. The pieces he started and didn't solve. He knew at twenty-eight he was going to die before some of them were finished. He told me he wanted somewhere to put them."
+  },
+  {
+   "t": "say",
+   "char": "Cale",
+   "expr": "neutral",
+   "text": "They're up there now. Or what he made of them is. Or what they've made of themselves in ten years of being alone in a room is. Be careful.\""
   },
   {
    "t": "say",

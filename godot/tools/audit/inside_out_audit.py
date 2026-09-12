@@ -84,8 +84,8 @@ INT_ASSERT = re.compile(
     r"corridor|dark of the|quiet of the)\b"
     r"|Back inside\b|Once inside\b)", re.I)
 
-# A line like "He stood at the window and looked out" within the two
-# narrate lines before an exterior opener makes it a VIEW — the camera
+# A line like "He stood at the window and looked out" within the four
+# narrate pages before an exterior opener makes it a VIEW — the camera
 # stays in the room and the director's `[shot:insert window~]` is the
 # right call. The Chariot's "Across the street, an older man ... was
 # leaning against a streetlight" is exactly that.
@@ -180,7 +180,10 @@ def main():
             if claim == "interior":
                 gone_inside = True
             viewed = claim == "exterior" and any(VIEW.search(r) for r in recent + [text])
-            recent = (recent + [text])[-2:]
+            # four pages, not two: the page split turned "He stood at the
+            # window" into a page of its own, three pages before the
+            # "Across the street" it explains (2026-09-12)
+            recent = (recent + [text])[-4:]
             if not claim or claim == kind or viewed:
                 continue
             if (sid, i) in DELIBERATE:

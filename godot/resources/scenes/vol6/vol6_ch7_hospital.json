@@ -220,7 +220,13 @@
   {
    "t": "say",
    "char": "Ben",
-   "text": "Maya. My mom is a nurse. She works nights. My dad will say yes. Gracie will lose her mind. The dog likes you. I have a basement. There's a real bedroom down there with a real door. It's three weeks. We're inside the same school district. We have the room. Stay at my house.",
+   "text": "Maya. My mom is a nurse. She works nights. My dad will say yes. Gracie will lose her mind. The dog likes you. I have a basement. There's a real bedroom down there with a real door. It's three weeks.",
+   "expr": "neutral"
+  },
+  {
+   "t": "say",
+   "char": "Ben",
+   "text": "We're inside the same school district. We have the room. Stay at my house.",
    "expr": "neutral"
   },
   {
@@ -293,11 +299,19 @@
   },
   {
    "t": "narrate",
-   "text": "The Kowalski house, when they arrive, is dark except for the kitchen light. Ben's mother is at the table. Ben's mother is in her scrubs. Ben's mother had been called by Ben's father at eleven, and Ben's father had said Linda Caldwell broke her hip and our boy is at the hospital with her granddaughter and I think we are going to need to have a conversation."
+   "text": "The Kowalski house, when they arrive, is dark except for the kitchen light. Ben's mother is at the table. Ben's mother is in her scrubs."
   },
   {
    "t": "narrate",
-   "text": "Ben's mother has, in the time since, made up the bed in the basement. Ben's mother has, in the time since, set out a clean towel and a toothbrush still in its package. Ben's mother has, in the time since, decided what she is going to say to Maya when Maya comes through the door."
+   "text": "Ben's mother had been called by Ben's father at eleven, and Ben's father had said Linda Caldwell broke her hip and our boy is at the hospital with her granddaughter and I think we are going to need to have a conversation."
+  },
+  {
+   "t": "narrate",
+   "text": "Ben's mother has, in the time since, made up the bed in the basement. Ben's mother has, in the time since, set out a clean towel and a toothbrush still in its package."
+  },
+  {
+   "t": "narrate",
+   "text": "Ben's mother has, in the time since, decided what she is going to say to Maya when Maya comes through the door."
   },
   {
    "t": "narrate",
@@ -451,7 +465,11 @@
   },
   {
    "t": "narrate",
-   "text": "His mother sits at the table for another hour, in her scrubs, until her husband comes home from the late shift at the water plant smelling of chlorine, and they sit together at the kitchen table, and they talk quietly, and they decide, between the two of them, that whatever Ben tells them this week, they are going to believe him."
+   "text": "His mother sits at the table for another hour, in her scrubs, until her husband comes home from the late shift at the water plant smelling of chlorine,"
+  },
+  {
+   "t": "narrate",
+   "text": "and they sit together at the kitchen table, and they talk quietly, and they decide, between the two of them, that whatever Ben tells them this week, they are going to believe him."
   },
   {
    "t": "narrate",
@@ -467,11 +485,19 @@
   },
   {
    "t": "narrate",
-   "text": "In the Henderson house, Mr. Henderson is on the couch in the living room with his wife, who has not, this evening, been able to bring herself to leave him alone in their bed and who, instead, has decided they are sleeping out here, together, with the lamp on, until the new arrangement settles."
+   "text": "In the Henderson house, Mr."
   },
   {
    "t": "narrate",
-   "text": "In a warehouse in Graustark, Frasier Temple — alerted by his Demons at twelve fourteen AM Central — stands at the door of his cathedral for the first time in some months, looks out at the dark of the parking lot, considers, briefly, walking to his car, and decides — after a long minute — to go back inside."
+   "text": "Henderson is on the couch in the living room with his wife, who has not, this evening, been able to bring herself to leave him alone in their bed and who, instead, has decided they are sleeping out here, together, with the lamp on, until the new arrangement settles."
+  },
+  {
+   "t": "narrate",
+   "text": "In a warehouse in Graustark, Frasier Temple — alerted by his Demons at twelve fourteen AM Central — stands at the door of his cathedral for the first time in some months,"
+  },
+  {
+   "t": "narrate",
+   "text": "looks out at the dark of the parking lot, considers, briefly, walking to his car, and decides — after a long minute — to go back inside."
   },
   {
    "t": "narrate",
@@ -483,7 +509,11 @@
   },
   {
    "t": "narrate",
-   "text": "The Lovers card, in some other deck on some other table, would tonight have been showing — for the first time in many printings — both figures clothed, which is how the card sometimes prints when its meaning is not, this week, about romance, but about the deeper choice the Lovers also represent: the choice to remain in the same room as the other person, and to keep being two, on purpose, against pressure."
+   "text": "The Lovers card, in some other deck on some other table, would tonight have been showing — for the first time in many printings — both figures clothed, which is how the card sometimes prints when its meaning is not,"
+  },
+  {
+   "t": "narrate",
+   "text": "this week, about romance, but about the deeper choice the Lovers also represent: the choice to remain in the same room as the other person, and to keep being two, on purpose, against pressure."
   },
   {
    "t": "narrate",

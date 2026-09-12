@@ -43,7 +43,11 @@
    "t": "narrate"
   },
   {
-   "text": "[shot:insert door]He drove the three blocks to Board Lords. Kai was at the counter. There was a kid in the back of the shop on the bench by the front window with a board across his lap. Finn waved at Kai from the door and held up the canvas bag and pointed to the back office. Kai held up two fingers. Finn went to the back office.",
+   "text": "[shot:insert door]He drove the three blocks to Board Lords. Kai was at the counter. There was a kid in the back of the shop on the bench by the front window with a board across his lap.",
+   "t": "narrate"
+  },
+  {
+   "text": "Finn waved at Kai from the door and held up the canvas bag and pointed to the back office. Kai held up two fingers. Finn went to the back office.",
    "t": "narrate"
   },
   {
@@ -266,7 +270,13 @@
   },
   {
    "char": "kai",
-   "text": "The substrate is — the substrate is operating on objects in the room. The substrate is in the room with us. The substrate has been in the room with us since the bowl on Tem's shelf went warm in July, and we have been figuring out at what speed the substrate is making things happen.",
+   "text": "The substrate is — the substrate is operating on objects in the room. The substrate is in the room with us.",
+   "expr": "serious",
+   "t": "say"
+  },
+  {
+   "char": "kai",
+   "text": "The substrate has been in the room with us since the bowl on Tem's shelf went warm in July, and we have been figuring out at what speed the substrate is making things happen.",
    "expr": "serious",
    "t": "say"
   },
@@ -443,7 +453,11 @@
    "t": "narrate"
   },
   {
-   "text": "Finn took the canvas bag to the kitchen table. He took the hexagon out. He laid it on the cloth. The cedar face in the center was — by his read at this angle, in the light of the kitchen at noon — facing the kitchen window. The eyes were closed. The orientation of the curls was the orientation a face would have if the face were looking out the kitchen window.",
+   "text": "Finn took the canvas bag to the kitchen table. He took the hexagon out. He laid it on the cloth. The cedar face in the center was — by his read at this angle, in the light of the kitchen at noon — facing the kitchen window.",
+   "t": "narrate"
+  },
+  {
+   "text": "The eyes were closed. The orientation of the curls was the orientation a face would have if the face were looking out the kitchen window.",
    "t": "narrate"
   },
   {

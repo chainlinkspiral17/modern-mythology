@@ -11,11 +11,27 @@
     },
     {
       "t": "narrate",
-      "text": "[mood:lunch]Kai brought the soup to the small kitchen table at six-twenty-something. He had warmed the soup, cut the bread into slices thick enough to dip, found four bowls and four spoons in the second drawer down, and set the table the way somebody sets a table who has been doing it for somebody else his whole life. Lena watched him do it. She had not seen Kai cook for a group in maybe two years. He had come up through his mother's kitchen and his grandmother's kitchen and his cousin Devon's kitchen and was, in a way that did not surface most weeks, very good at the ordinary work of feeding people."
+      "text": "[mood:lunch]Kai brought the soup to the small kitchen table at six-twenty-something."
     },
     {
       "t": "narrate",
-      "text": "They moved to the table. The four chairs were not a matched set. Lena had bought three of them at Margit's at three different points and had inherited the fourth from the previous tenant when she had moved in. The table was a small round oak from the seventies that had a wobble in one leg she had been meaning to shim for a year."
+      "text": "He had warmed the soup, cut the bread into slices thick enough to dip, found four bowls and four spoons in the second drawer down, and set the table the way somebody sets a table who has been doing it for somebody else his whole life."
+    },
+    {
+      "t": "narrate",
+      "text": "Lena watched him do it. She had not seen Kai cook for a group in maybe two years."
+    },
+    {
+      "t": "narrate",
+      "text": "He had come up through his mother's kitchen and his grandmother's kitchen and his cousin Devon's kitchen and was, in a way that did not surface most weeks, very good at the ordinary work of feeding people."
+    },
+    {
+      "t": "narrate",
+      "text": "They moved to the table. The four chairs were not a matched set. Lena had bought three of them at Margit's at three different points and had inherited the fourth from the previous tenant when she had moved in."
+    },
+    {
+      "t": "narrate",
+      "text": "The table was a small round oak from the seventies that had a wobble in one leg she had been meaning to shim for a year."
     },
     {
       "t": "narrate",
@@ -69,7 +85,11 @@
     },
     {
       "t": "narrate",
-      "text": "They ate in the way four people who had not eaten in a day eat — without talking, without slowing, with the small mechanical attention that hunger pulls out of a body. Lena finished a bowl and got up and got herself a second. Kai finished two slices of bread and reached for a third. Finn ate one bowl slowly. Tem ate half of one and stopped and held the spoon over the bowl for a count and set the spoon down."
+      "text": "They ate in the way four people who had not eaten in a day eat — without talking, without slowing, with the small mechanical attention that hunger pulls out of a body. Lena finished a bowl and got up and got herself a second."
+    },
+    {
+      "t": "narrate",
+      "text": "Kai finished two slices of bread and reached for a third. Finn ate one bowl slowly. Tem ate half of one and stopped and held the spoon over the bowl for a count and set the spoon down."
     },
     {
       "t": "say",

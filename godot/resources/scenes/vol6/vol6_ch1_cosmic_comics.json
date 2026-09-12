@@ -81,7 +81,11 @@
     },
     {
       "t": "narrate",
-      "text": "Rick sets the phone down. He reverses the OPEN sign. He checks the deadbolt on the service door, which is locked, and has been locked since he got in this morning, but which he checks anyway — because Rick has been doing what the voice on the phone tells him for twenty-four years, since the voice got him out of a situation in Beaumont in 2002 that Rick has, otherwise, not thought about in some time."
+      "text": "Rick sets the phone down. He reverses the OPEN sign. He checks the deadbolt on the service door, which is locked, and has been locked since he got in this morning, but which he checks anyway —"
+    },
+    {
+      "t": "narrate",
+      "text": "because Rick has been doing what the voice on the phone tells him for twenty-four years, since the voice got him out of a situation in Beaumont in 2002 that Rick has, otherwise, not thought about in some time."
     },
     {
       "t": "jump",

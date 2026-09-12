@@ -81,7 +81,13 @@
       "t": "say",
       "char": "Jen",
       "expr": "neutral",
-      "text": "[shot:insert door~]\"His grandma came by. Around two. Before you got here. She was — Sammy, she was in her church clothes. On a Sunday afternoon. She was looking for him. She didn't come in. I saw her through the window. She walked around the store once. She looked at the Gas & Go across the intersection for maybe two minutes. Then she got in her car and she left. She was alone.\""
+      "text": "[shot:insert door~]\"His grandma came by. Around two. Before you got here. She was — Sammy, she was in her church clothes. On a Sunday afternoon. She was looking for him. She didn't come in. I saw her through the window."
+    },
+    {
+      "t": "say",
+      "char": "Jen",
+      "expr": "neutral",
+      "text": "She walked around the store once. She looked at the Gas & Go across the intersection for maybe two minutes. Then she got in her car and she left. She was alone.\""
     },
     {
       "t": "say",
@@ -94,13 +100,13 @@
       "opts": [
         {
           "text": "\"Why.\"",
-          "goto": 16,
+          "goto": 17,
           "flag": "shift_change_answer",
           "val": "asked_why"
         },
         {
           "text": "[Listen. Wait for the rest of it.]",
-          "goto": 16,
+          "goto": 17,
           "flag": "shift_change_answer",
           "val": "waited"
         }

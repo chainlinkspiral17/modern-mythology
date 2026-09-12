@@ -15,7 +15,15 @@
   },
   {
    "t": "narrate",
-   "text": "Briar Falls drop in two stages, then a third you cannot see. The first stage is the long shallow one — the water spreading and slowing along a tilted shelf, white at the lip, then the second stage takes the volume and concentrates it and the water remembers what it is and lets go. The third stage is where the canyon turns and the falls go into the woods proper. The mist comes back up from the third stage as a slow soft column, and the column does not move with the wind."
+   "text": "Briar Falls drop in two stages, then a third you cannot see."
+  },
+  {
+   "t": "narrate",
+   "text": "The first stage is the long shallow one — the water spreading and slowing along a tilted shelf, white at the lip, then the second stage takes the volume and concentrates it and the water remembers what it is and lets go."
+  },
+  {
+   "t": "narrate",
+   "text": "The third stage is where the canyon turns and the falls go into the woods proper. The mist comes back up from the third stage as a slow soft column, and the column does not move with the wind."
   },
   {
    "t": "narrate",
@@ -23,7 +31,11 @@
   },
   {
    "t": "narrate",
-   "text": "Tied to the railing, with three half-hitches and a finish that means whoever tied it tied a lot of knots in their life: a faded piece of red ribbon and, attached to the ribbon by a brass loop, a key. Brass-color, but stamped on the side, in the kind of stamp that only counts: 707. It is not for any lock that is here."
+   "text": "Tied to the railing, with three half-hitches and a finish that means whoever tied it tied a lot of knots in their life: a faded piece of red ribbon and, attached to the ribbon by a brass loop, a key."
+  },
+  {
+   "t": "narrate",
+   "text": "Brass-color, but stamped on the side, in the kind of stamp that only counts: 707. It is not for any lock that is here."
   },
   {
    "t": "narrate",

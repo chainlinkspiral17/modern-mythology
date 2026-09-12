@@ -93,7 +93,22 @@
   {
    "t": "say",
    "char": "Maya",
-   "text": "[shot:closeup maya]Rick told me yesterday. F.T. is Frasier Temple. He lives in a warehouse in Graustark. He is a friend of my father's. He has been running what he calls imps — some kind of software — through the electronic systems of this subdivision for some period of time. His imps are how he knows what he knows. He told Rick they are fond of me, which is an unusual sentence. He told Rick they are moving Diego tomorrow morning from the east-side building to Zone-G, whatever Zone-G is, and that the intercept happens Friday morning, and that the sedan people are handling the mechanics."
+   "text": "[shot:closeup maya]Rick told me yesterday. F.T. is Frasier Temple. He lives in a warehouse in Graustark. He is a friend of my father's."
+  },
+  {
+   "t": "say",
+   "char": "Maya",
+   "text": "He has been running what he calls imps — some kind of software — through the electronic systems of this subdivision for some period of time. His imps are how he knows what he knows."
+  },
+  {
+   "t": "say",
+   "char": "Maya",
+   "text": "He told Rick they are fond of me, which is an unusual sentence."
+  },
+  {
+   "t": "say",
+   "char": "Maya",
+   "text": "He told Rick they are moving Diego tomorrow morning from the east-side building to Zone-G, whatever Zone-G is, and that the intercept happens Friday morning, and that the sedan people are handling the mechanics."
   },
   {
    "t": "say",
@@ -144,7 +159,17 @@
   {
    "t": "say",
    "char": "Sam",
-   "text": "[shot:closeup sam]Detective Hernando Ramirez, NAPD. Came into the Kwik Stop Wednesday. Told me the PSA deleted my missing-persons report. Gave me a fake-name card. Told me to save him as Dr. Patel. Told me my dad is — and I am quoting — doing what he is told, and he is good at keeping the town quiet while he does it. He is not, as far as I can tell, the bad guy in this. He is realizing that he may have to decide which side of the road he is standing on. Ramirez is — he's a good guy. He's off the books on this. He's outside the subdivision's PSA jurisdiction."
+   "text": "[shot:closeup sam]Detective Hernando Ramirez, NAPD. Came into the Kwik Stop Wednesday. Told me the PSA deleted my missing-persons report. Gave me a fake-name card. Told me to save him as Dr. Patel."
+  },
+  {
+   "t": "say",
+   "char": "Sam",
+   "text": "Told me my dad is — and I am quoting — doing what he is told, and he is good at keeping the town quiet while he does it. He is not, as far as I can tell, the bad guy in this."
+  },
+  {
+   "t": "say",
+   "char": "Sam",
+   "text": "He is realizing that he may have to decide which side of the road he is standing on. Ramirez is — he's a good guy. He's off the books on this. He's outside the subdivision's PSA jurisdiction."
   },
   {
    "t": "narrate",
@@ -153,7 +178,17 @@
   {
    "t": "say",
    "char": "Sam",
-   "text": "And. Last night at dinner my dad — my dad told me about a safe deposit box at the Bank of New Auburn on Live Oak. Box number 287. The key is in his sock drawer. He said if anything happens to him, what I need to know is in that box. He said he is choosing the accounting. He is not dying. He said I love you. He left at seven-thirty to handle something. He came home at midnight and talked to my mom in the kitchen for four hours. I am going to be told in the morning — this morning, today — what he decided. I have not been told yet."
+   "text": "And. Last night at dinner my dad — my dad told me about a safe deposit box at the Bank of New Auburn on Live Oak. Box number 287. The key is in his sock drawer."
+  },
+  {
+   "t": "say",
+   "char": "Sam",
+   "text": "He said if anything happens to him, what I need to know is in that box. He said he is choosing the accounting. He is not dying. He said I love you. He left at seven-thirty to handle something."
+  },
+  {
+   "t": "say",
+   "char": "Sam",
+   "text": "He came home at midnight and talked to my mom in the kitchen for four hours. I am going to be told in the morning — this morning, today — what he decided. I have not been told yet."
   },
   {
    "t": "say",
@@ -179,7 +214,17 @@
   {
    "t": "say",
    "char": "Jesse",
-   "text": "[shot:closeup jesse]My dad came to the Pit Stop Wednesday afternoon. He sat in the back booth for forty-one minutes without ordering. He left a ten-dollar bill on the table on the way out with a pencil note on the back. The note said: The red light lies. I am sorry. I will come back when I can. Ben has the bill. My dad is — something is using his camera. Something is using his eyes. He is fighting it. He came to the diner to be near me. He could not come inside. He sat as close as he could. That's — that's where we are."
+   "text": "[shot:closeup jesse]My dad came to the Pit Stop Wednesday afternoon. He sat in the back booth for forty-one minutes without ordering. He left a ten-dollar bill on the table on the way out with a pencil note on the back."
+  },
+  {
+   "t": "say",
+   "char": "Jesse",
+   "text": "The note said: The red light lies. I am sorry. I will come back when I can. Ben has the bill. My dad is — something is using his camera. Something is using his eyes. He is fighting it. He came to the diner to be near me."
+  },
+  {
+   "t": "say",
+   "char": "Jesse",
+   "text": "He could not come inside. He sat as close as he could. That's — that's where we are."
   },
   {
    "t": "say",
@@ -210,7 +255,22 @@
   {
    "t": "say",
    "char": "Ben",
-   "text": "[mood:macro_haze][shot:closeup ben]Okay. Me. I have been keeping a legal pad for three months. You can read it whenever you want. Short version: McClary backyard wrestling is an informal recruitment filter. Certain off-duty officers show up, certain parents encourage it, certain kids get evaluated. They evaluated me Saturday. My wrist brace is fake — I engineered the injury to sit out the next match. Jesse is next. Diego, I now believe, was already evaluated earlier this spring and — flagged. The red dots on his phone, Jess — they mapped specific shifts at the Gas & Go when NexCorp handoffs were happening. He saw something. He was seen seeing it. That's what got him taken. The McClary thing is — I think the McClary thing is how they've been quietly identifying kids who can be — and I hate the word — processed."
+   "text": "[mood:macro_haze][shot:closeup ben]Okay. Me. I have been keeping a legal pad for three months. You can read it whenever you want. Short version: McClary backyard wrestling is an informal recruitment filter."
+  },
+  {
+   "t": "say",
+   "char": "Ben",
+   "text": "Certain off-duty officers show up, certain parents encourage it, certain kids get evaluated. They evaluated me Saturday. My wrist brace is fake — I engineered the injury to sit out the next match. Jesse is next."
+  },
+  {
+   "t": "say",
+   "char": "Ben",
+   "text": "Diego, I now believe, was already evaluated earlier this spring and — flagged. The red dots on his phone, Jess — they mapped specific shifts at the Gas & Go when NexCorp handoffs were happening. He saw something."
+  },
+  {
+   "t": "say",
+   "char": "Ben",
+   "text": "He was seen seeing it. That's what got him taken. The McClary thing is — I think the McClary thing is how they've been quietly identifying kids who can be — and I hate the word — processed."
   },
   {
    "t": "narrate",
@@ -219,7 +279,12 @@
   {
    "t": "say",
    "char": "Ben",
-   "text": "I think the building on the east side that is not on any map is either a holding location or a processing location. I do not know which. I suspect both. Frasier's imps — through Rick — are running surveillance. The reporter is working on the piece that would, if published, destroy NexCorp's cover in this town. The piece cannot go public until we have Diego out, because if it goes public before, Diego does not get out. That is the timing."
+   "text": "I think the building on the east side that is not on any map is either a holding location or a processing location. I do not know which. I suspect both. Frasier's imps — through Rick — are running surveillance."
+  },
+  {
+   "t": "say",
+   "char": "Ben",
+   "text": "The reporter is working on the piece that would, if published, destroy NexCorp's cover in this town. The piece cannot go public until we have Diego out, because if it goes public before, Diego does not get out. That is the timing."
   },
   {
    "t": "say",
@@ -253,7 +318,12 @@
   {
    "t": "say",
    "char": "Ben",
-   "text": "[shot:closeup ben]Tomorrow is the rescue. Tomorrow is the adults. Tomorrow is not us. Tomorrow, we stay visible and normal in our usual places and we do not go near anything out of pattern. If the rescue works, Diego is in a safe house by Friday afternoon. If it does not work, we go to Plan B. Plan B is the map and the five of us and one hell of a Saturday."
+   "text": "[shot:closeup ben]Tomorrow is the rescue. Tomorrow is the adults. Tomorrow is not us. Tomorrow, we stay visible and normal in our usual places and we do not go near anything out of pattern."
+  },
+  {
+   "t": "say",
+   "char": "Ben",
+   "text": "If the rescue works, Diego is in a safe house by Friday afternoon. If it does not work, we go to Plan B. Plan B is the map and the five of us and one hell of a Saturday."
   },
   {
    "t": "say",
@@ -273,7 +343,12 @@
   {
    "t": "say",
    "char": "Ben",
-   "text": "Yeah. Saturday, separately: my breakfast with Jesse's mom. She needs to know. She is going to need to be told about the bill. She is going to need to help with Mr. Henderson, because what's using his camera is — I do not know what it is, but it is not something Mr. Henderson is going to get clear of without his wife. We have to make sure Eileen is a node before the thing using him escalates."
+   "text": "Yeah. Saturday, separately: my breakfast with Jesse's mom. She needs to know. She is going to need to be told about the bill. She is going to need to help with Mr."
+  },
+  {
+   "t": "say",
+   "char": "Ben",
+   "text": "Henderson, because what's using his camera is — I do not know what it is, but it is not something Mr. Henderson is going to get clear of without his wife. We have to make sure Eileen is a node before the thing using him escalates."
   },
   {
    "t": "narrate",
@@ -370,7 +445,12 @@
   {
    "t": "say",
    "char": "Ben",
-   "text": "Home. Sleep. Text each other by midnight that you made it in. We regroup Saturday morning — I'll text Maya the meet time. Jesse, I'll see you Saturday at breakfast with your mom. Sam — text me Friday morning when you're on shift. If I don't hear from you by seven-thirty, I'm calling Ramirez."
+   "text": "Home. Sleep. Text each other by midnight that you made it in. We regroup Saturday morning — I'll text Maya the meet time. Jesse, I'll see you Saturday at breakfast with your mom. Sam — text me Friday morning when you're on shift."
+  },
+  {
+   "t": "say",
+   "char": "Ben",
+   "text": "If I don't hear from you by seven-thirty, I'm calling Ramirez."
   },
   {
    "t": "say",

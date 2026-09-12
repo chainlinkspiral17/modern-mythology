@@ -43,7 +43,15 @@
     },
     {
       "t": "narrate",
-      "text": "[shot:insert prints]His father is at the kitchen table. His father has, on the table, a small set of black-and-white photographs — the contact prints from this week's photography class assignment, the assignment of which Jesse knows only that it has been about small things at the back of the house. His father is examining the prints with the small careful attention his father has, since June, been applying to most of his tasks."
+      "text": "[shot:insert prints]His father is at the kitchen table."
+    },
+    {
+      "t": "narrate",
+      "text": "His father has, on the table, a small set of black-and-white photographs — the contact prints from this week's photography class assignment, the assignment of which Jesse knows only that it has been about small things at the back of the house."
+    },
+    {
+      "t": "narrate",
+      "text": "His father is examining the prints with the small careful attention his father has, since June, been applying to most of his tasks."
     },
     {
       "t": "show",
@@ -131,7 +139,15 @@
     },
     {
       "t": "narrate",
-      "text": "[shot:insert pot]He turns one of the contact prints toward Jesse. The print is of the small space behind the garden shed at the back of the Henderson yard, which has, since June, been the small patch of gravel and the small empty terra-cotta pot Eileen had put there in 2019 and had never planted. The print captures, in the way black and white captures these things, the small ambient layer of dust on the pot and the small shadow the pot casts at — Jesse can see, by the angle — about six PM on a clear afternoon."
+      "text": "[shot:insert pot]He turns one of the contact prints toward Jesse."
+    },
+    {
+      "t": "narrate",
+      "text": "The print is of the small space behind the garden shed at the back of the Henderson yard, which has, since June, been the small patch of gravel and the small empty terra-cotta pot Eileen had put there in 2019 and had never planted."
+    },
+    {
+      "t": "narrate",
+      "text": "The print captures, in the way black and white captures these things, the small ambient layer of dust on the pot and the small shadow the pot casts at — Jesse can see, by the angle — about six PM on a clear afternoon."
     },
     {
       "t": "narrate",
@@ -195,7 +211,15 @@
     },
     {
       "t": "narrate",
-      "text": "[shot:closeup jesse]Jesse, at the table, thinks for a beat. He has, until this evening, not told his father what the song is about. He has not told him because he has, since April, not been telling his father anything that touched the substation — the substation has been the thing his father has been recovering from in the basement. The recovery, by mid-August, is, by Eileen's report and by his own observation, substantial. His father is, this evening, sitting at the kitchen table with contact prints of the back of the shed."
+      "text": "[shot:closeup jesse]Jesse, at the table, thinks for a beat. He has, until this evening, not told his father what the song is about."
+    },
+    {
+      "t": "narrate",
+      "text": "He has not told him because he has, since April, not been telling his father anything that touched the substation — the substation has been the thing his father has been recovering from in the basement."
+    },
+    {
+      "t": "narrate",
+      "text": "The recovery, by mid-August, is, by Eileen's report and by his own observation, substantial. His father is, this evening, sitting at the kitchen table with contact prints of the back of the shed."
     },
     {
       "t": "narrate",
@@ -258,7 +282,25 @@
     {
       "t": "say",
       "char": "Jim",
-      "text": "The song is going to land tomorrow, son. The room is going to know what you are saying. The people who are in The Foxhole on a Saturday night in mid-August in this town are going to know what the substation is. They are going to register what you are saying. Some of them are going to register what you are saying and they are going to be uncomfortable. Some of them are going to register what you are saying and they are going to be — they are going to be glad somebody finally said it. The mix in the room is going to be — is going to be both of those things. You are going to feel it from the stage. You are going to have to play through it.",
+      "text": "The song is going to land tomorrow, son. The room is going to know what you are saying. The people who are in The Foxhole on a Saturday night in mid-August in this town are going to know what the substation is.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Jim",
+      "text": "They are going to register what you are saying. Some of them are going to register what you are saying and they are going to be uncomfortable.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Jim",
+      "text": "Some of them are going to register what you are saying and they are going to be — they are going to be glad somebody finally said it. The mix in the room is going to be — is going to be both of those things.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Jim",
+      "text": "You are going to feel it from the stage. You are going to have to play through it.",
       "expr": "neutral"
     },
     {
@@ -282,7 +324,13 @@
     {
       "t": "say",
       "char": "Jim",
-      "text": "I'm — I'm going to be glad about it, Jesse. I am going to be glad about it for the rest of my life. The song you wrote is — the song you wrote is the song this town did not know it needed to be written about it. You wrote it. You are twenty. The work you did this summer is going to — is going to be the thing that people in this town remember as the moment somebody finally said something out loud.",
+      "text": "I'm — I'm going to be glad about it, Jesse. I am going to be glad about it for the rest of my life. The song you wrote is — the song you wrote is the song this town did not know it needed to be written about it. You wrote it.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Jim",
+      "text": "You are twenty. The work you did this summer is going to — is going to be the thing that people in this town remember as the moment somebody finally said something out loud.",
       "expr": "neutral"
     },
     {
@@ -326,7 +374,13 @@
     {
       "t": "say",
       "char": "Jim",
-      "text": "I am — I am going to come. I am going to come for the first three songs. I am going to leave before the fourth. The Foxhole is — The Foxhole is across the parking lot from the strip mall I have not been on the property of since March. I can do — I can do an hour. I cannot do longer than that. I want to tell you the truth about it.",
+      "text": "I am — I am going to come. I am going to come for the first three songs. I am going to leave before the fourth.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Jim",
+      "text": "The Foxhole is — The Foxhole is across the parking lot from the strip mall I have not been on the property of since March. I can do — I can do an hour. I cannot do longer than that. I want to tell you the truth about it.",
       "expr": "neutral"
     },
     {
@@ -338,7 +392,19 @@
     {
       "t": "say",
       "char": "Jim",
-      "text": "I am coming. I am coming for the song. I am coming because the song is — the song is the song. I want to be there for it. I am going to be in the back. You are not going to — you are not going to perform for me. You are going to play. I am going to be there. After the third song I am going to leave. Your mother will be at home. She will be — she will be there when I get back. The driving back is what I do. I want you to know what I am going to do so that, when you see me leave, you don't — you don't think it is about the song. It is about the parking lot.",
+      "text": "I am coming. I am coming for the song. I am coming because the song is — the song is the song. I want to be there for it. I am going to be in the back. You are not going to — you are not going to perform for me.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Jim",
+      "text": "You are going to play. I am going to be there. After the third song I am going to leave. Your mother will be at home. She will be — she will be there when I get back. The driving back is what I do.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Jim",
+      "text": "I want you to know what I am going to do so that, when you see me leave, you don't — you don't think it is about the song. It is about the parking lot.",
       "expr": "neutral"
     },
     {
@@ -406,7 +472,13 @@
     {
       "t": "say",
       "char": "Eileen",
-      "text": "Don't Mom me. I am coming. I am coming for the whole set. I will be in the back with your father for the first three songs and then I will sit at the bar by myself for the last two. I am not going to embarrass you. I am going to — I am going to be a person at a bar at the back of a venue while my son plays his band's set. That is what I am going to do.",
+      "text": "Don't Mom me. I am coming. I am coming for the whole set. I will be in the back with your father for the first three songs and then I will sit at the bar by myself for the last two. I am not going to embarrass you.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Eileen",
+      "text": "I am going to — I am going to be a person at a bar at the back of a venue while my son plays his band's set. That is what I am going to do.",
       "expr": "neutral"
     },
     {
@@ -422,7 +494,13 @@
     {
       "t": "say",
       "char": "Eileen",
-      "text": "I have, this morning, told Bianca and Anita at the four-thirty table that I am going to take up the piano again. I am, by some specific coincidence, in the mood to do other small things I have been thinking about for a while. Watching my son play a paying gig at The Foxhole on a Saturday night is one of them. Decided this afternoon.",
+      "text": "I have, this morning, told Bianca and Anita at the four-thirty table that I am going to take up the piano again. I am, by some specific coincidence, in the mood to do other small things I have been thinking about for a while.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Eileen",
+      "text": "Watching my son play a paying gig at The Foxhole on a Saturday night is one of them. Decided this afternoon.",
       "expr": "neutral"
     },
     {
@@ -569,11 +647,27 @@
     },
     {
       "t": "narrate",
-      "text": "[shot:insert notebook]In his bedroom he sits on the edge of the bed for a beat. He picks up the small spiral notebook with the bridge lyrics on the page he has been using. He looks at the page. The bridge, in his handwriting, is on the page. He puts the notebook on the nightstand. He gets undressed. He gets in bed. He lies on his back."
+      "text": "[shot:insert notebook]In his bedroom he sits on the edge of the bed for a beat. He picks up the small spiral notebook with the bridge lyrics on the page he has been using. He looks at the page. The bridge, in his handwriting, is on the page."
     },
     {
       "t": "narrate",
-      "text": "The bridge is the song. Chess at the back of the room saying I'll listen. Dad coming for the first three songs. Mom at the bar at the back for the last two. Walt at his kitchen counter on Wednesday saying kid, that's a thing. The song is going to land tomorrow. It is going to land in a room that includes people who do not know what the substation is, and people who know exactly what the substation is, and people who used to work at the substation, and people whose families used to work at the substation, and people who, by some summer-of-2026 reading, would prefer not to be reminded of the substation. The song is going to do something to that room. He does not, this Friday at eleven-thirty PM, fully know what."
+      "text": "He puts the notebook on the nightstand. He gets undressed. He gets in bed. He lies on his back."
+    },
+    {
+      "t": "narrate",
+      "text": "The bridge is the song. Chess at the back of the room saying I'll listen. Dad coming for the first three songs. Mom at the bar at the back for the last two. Walt at his kitchen counter on Wednesday saying kid, that's a thing."
+    },
+    {
+      "t": "narrate",
+      "text": "The song is going to land tomorrow. It is going to land in a room that includes people who do not know what the substation is, and people who know exactly what the substation is, and people who used to work at the substation,"
+    },
+    {
+      "t": "narrate",
+      "text": "and people whose families used to work at the substation, and people who, by some summer-of-2026 reading, would prefer not to be reminded of the substation. The song is going to do something to that room."
+    },
+    {
+      "t": "narrate",
+      "text": "He does not, this Friday at eleven-thirty PM, fully know what."
     },
     {
       "t": "narrate",

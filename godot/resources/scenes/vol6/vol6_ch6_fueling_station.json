@@ -29,7 +29,15 @@
     },
     {
       "t": "narrate",
-      "text": "[mood:morning_bright]The unmarked van is at pump six. The driver — Vince Kane, late forties, big-shouldered, gray-stubble, the kind of man whose face had been used for trouble for so long that trouble had begun to use his face back — is leaning against the driver's door, smoking. He is, technically, on a no-smoking lot. He does not, professionally, care."
+      "text": "[mood:morning_bright]The unmarked van is at pump six."
+    },
+    {
+      "t": "narrate",
+      "text": "The driver — Vince Kane, late forties, big-shouldered, gray-stubble, the kind of man whose face had been used for trouble for so long that trouble had begun to use his face back — is leaning against the driver's door, smoking."
+    },
+    {
+      "t": "narrate",
+      "text": "He is, technically, on a no-smoking lot. He does not, professionally, care."
     },
     {
       "t": "narrate",
@@ -94,12 +102,26 @@
     {
       "t": "say",
       "char": "Doyle",
-      "text": "Vince. I don't have time to negotiate. Your partner Boyd has nine minutes in that bathroom because somebody made sure of it. Your relief Tomé arrives in two. The van's keys are in the ignition. I'm getting in. I'm driving. The kid in the back stays alive. You stay alive too if you walk now. Sixty seconds.",
+      "text": "Vince. I don't have time to negotiate. Your partner Boyd has nine minutes in that bathroom because somebody made sure of it. Your relief Tomé arrives in two. The van's keys are in the ignition. I'm getting in. I'm driving.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Doyle",
+      "text": "The kid in the back stays alive. You stay alive too if you walk now. Sixty seconds.",
       "expr": "neutral"
     },
     {
       "t": "narrate",
-      "text": "[shot:closeup vince]Vince looks at Doyle for a long second. Then Vince — who has, in fact, done this before, in an Arkansas truck stop in 2019 under a different employer, and who has learned over the years to recognize the difference between the kind of intervention that ends with him in a body bag and the kind that ends with him at a Whataburger by lunch — drops the cigarette. Steps on it. Drops his keys to the van's contents on the asphalt. Doyle does not look down."
+      "text": "[shot:closeup vince]Vince looks at Doyle for a long second. Then Vince — who has, in fact, done this before, in an Arkansas truck stop in 2019 under a different employer,"
+    },
+    {
+      "t": "narrate",
+      "text": "and who has learned over the years to recognize the difference between the kind of intervention that ends with him in a body bag and the kind that ends with him at a Whataburger by lunch — drops the cigarette. Steps on it."
+    },
+    {
+      "t": "narrate",
+      "text": "Drops his keys to the van's contents on the asphalt. Doyle does not look down."
     },
     {
       "t": "say",

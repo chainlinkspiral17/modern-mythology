@@ -29,11 +29,23 @@
   },
   {
    "t": "narrate",
-   "text": "He got up and went into the kitchen, and as he passed her he put his hand briefly on her shoulder, which was not a thing Kai did, and she registered it as Kai registering that the apartment was hers and that the four of them had walked into it without asking and that he was telling her, with the hand, that he knew."
+   "text": "He got up and went into the kitchen, and as he passed her he put his hand briefly on her shoulder, which was not a thing Kai did,"
   },
   {
    "t": "narrate",
-   "text": "He took the wool sweater off and hung it over the back of the kitchen chair. He was in a long-sleeve under it that had the thrift-store wear at the elbows that Lena recognized as the wear-pattern Margit's stuff had after it had been through a dryer too many times. He found the soup pot. He set it on the stove. He found the bread. He found the cheese. He started cutting."
+   "text": "and she registered it as Kai registering that the apartment was hers and that the four of them had walked into it without asking and that he was telling her, with the hand, that he knew."
+  },
+  {
+   "t": "narrate",
+   "text": "He took the wool sweater off and hung it over the back of the kitchen chair."
+  },
+  {
+   "t": "narrate",
+   "text": "He was in a long-sleeve under it that had the thrift-store wear at the elbows that Lena recognized as the wear-pattern Margit's stuff had after it had been through a dryer too many times. He found the soup pot."
+  },
+  {
+   "t": "narrate",
+   "text": "He set it on the stove. He found the bread. He found the cheese. He started cutting."
   },
   {
    "t": "narrate",
@@ -103,7 +115,13 @@
    "t": "say",
    "char": "Tem",
    "expr": "softening",
-   "text": "\"He's been waiting since July,\" Tem said. \"I knew on the day I went in that he had something to say. I did not ask him to say it. I was not ready, and I was not sure I was ever going to be ready, and I had decided to make him hold it until I figured out whether I was. He has been holding it for two months. I'm sorry, Cale.\""
+   "text": "\"He's been waiting since July,\" Tem said. \"I knew on the day I went in that he had something to say. I did not ask him to say it."
+  },
+  {
+   "t": "say",
+   "char": "Tem",
+   "expr": "softening",
+   "text": "I was not ready, and I was not sure I was ever going to be ready, and I had decided to make him hold it until I figured out whether I was. He has been holding it for two months. I'm sorry, Cale.\""
   },
   {
    "t": "say",

@@ -33,7 +33,11 @@
   },
   {
    "t": "narrate",
-   "text": "The song is, by BT's selection on the way back, the same song again. BT plays Never Gonna Come Back Down on repeat. The chorus, the second time through, has — in Diego's ear, which is now familiar with the song in the way a person becomes familiar with a song after the first listen — the small sense of being a song a person is, on purpose, building a relationship with."
+   "text": "The song is, by BT's selection on the way back, the same song again. BT plays Never Gonna Come Back Down on repeat."
+  },
+  {
+   "t": "narrate",
+   "text": "The chorus, the second time through, has — in Diego's ear, which is now familiar with the song in the way a person becomes familiar with a song after the first listen — the small sense of being a song a person is, on purpose, building a relationship with."
   },
   {
    "t": "narrate",
@@ -205,7 +209,15 @@
   },
   {
    "t": "narrate",
-   "text": "By six AM the team is on the floor finishing the prep for tomorrow night. Marisol is at the deli case. Russell is at receiving, breaking down the empty pallets from the first half. Jessa is at the dock, signing for the morning truck which has come in early. BT is in cereal. Doug is in dairy. Diego is in canned vegetables, working the second pallet of stewed tomatoes the day side has packed for inventory and that has, like the first pallet, been double-stacked."
+   "text": "By six AM the team is on the floor finishing the prep for tomorrow night. Marisol is at the deli case. Russell is at receiving, breaking down the empty pallets from the first half."
+  },
+  {
+   "t": "narrate",
+   "text": "Jessa is at the dock, signing for the morning truck which has come in early. BT is in cereal. Doug is in dairy."
+  },
+  {
+   "t": "narrate",
+   "text": "Diego is in canned vegetables, working the second pallet of stewed tomatoes the day side has packed for inventory and that has, like the first pallet, been double-stacked."
   },
   {
    "t": "show",
@@ -257,7 +269,11 @@
   },
   {
    "t": "narrate",
-   "text": "Diego, in the aisle, registers — with the attention his summer has been training — that Marisol has just said the only thing Marisol is going to say to Diego about the taqueria run, and that Marisol's thing was a single sentence about a burrito recipe, and that the single sentence was Marisol's small careful way of acknowledging that she had registered that Diego had gone to El Rancho with BT and that she was, in registering it, not going to make it a thing."
+   "text": "Diego, in the aisle, registers — with the attention his summer has been training — that Marisol has just said the only thing Marisol is going to say to Diego about the taqueria run, and that Marisol's thing was a single sentence about a burrito recipe,"
+  },
+  {
+   "t": "narrate",
+   "text": "and that the single sentence was Marisol's small careful way of acknowledging that she had registered that Diego had gone to El Rancho with BT and that she was, in registering it, not going to make it a thing."
   },
   {
    "t": "narrate",
@@ -317,7 +333,11 @@
   },
   {
    "t": "narrate",
-   "text": "He thinks: BT is — BT is, by his honest disclosure about the song, the kind of person I could tell. BT might also be, by his cop story which I do not know whether to believe, the kind of person I should not tell. The one thing does not, by itself, settle the other."
+   "text": "He thinks: BT is — BT is, by his honest disclosure about the song, the kind of person I could tell. BT might also be, by his cop story which I do not know whether to believe, the kind of person I should not tell."
+  },
+  {
+   "t": "narrate",
+   "text": "The one thing does not, by itself, settle the other."
   },
   {
    "t": "narrate",
@@ -325,7 +345,11 @@
   },
   {
    "t": "narrate",
-   "text": "[shot:establish]He thinks: I am sixteen. I am — by the team's quiet accommodation — being permitted to be at this job. I am also — by the team's quiet accommodation — being permitted to be the kid the team protects, at a small cost that the team is, by their decisions, paying on BT's behalf."
+   "text": "[shot:establish]He thinks: I am sixteen. I am — by the team's quiet accommodation — being permitted to be at this job."
+  },
+  {
+   "t": "narrate",
+   "text": "I am also — by the team's quiet accommodation — being permitted to be the kid the team protects, at a small cost that the team is, by their decisions, paying on BT's behalf."
   },
   {
    "t": "narrate",
@@ -547,7 +571,11 @@
   },
   {
    "t": "narrate",
-   "text": "She brings them. She sits, today, with him — it is Friday morning, and Friday mornings she has, this summer, decided are sitting mornings, because Friday is the small end of the week and she has decided that the small end of the week deserves the small intimacy of the table."
+   "text": "She brings them."
+  },
+  {
+   "t": "narrate",
+   "text": "She sits, today, with him — it is Friday morning, and Friday mornings she has, this summer, decided are sitting mornings, because Friday is the small end of the week and she has decided that the small end of the week deserves the small intimacy of the table."
   },
   {
    "t": "narrate",
@@ -572,7 +600,13 @@
   {
    "t": "say",
    "char": "Abuela",
-   "text": "[shot:closeup abuela]The eggs. You are eating them slow. When you have eaten badly before you got home, you eat the eggs fast to get the bad food taste out of your mouth. When you have eaten well before you got home, you eat them slow because you are no longer hungry. You are eating them slow.",
+   "text": "[shot:closeup abuela]The eggs. You are eating them slow. When you have eaten badly before you got home, you eat the eggs fast to get the bad food taste out of your mouth.",
+   "expr": "neutral"
+  },
+  {
+   "t": "say",
+   "char": "Abuela",
+   "text": "When you have eaten well before you got home, you eat them slow because you are no longer hungry. You are eating them slow.",
    "expr": "neutral"
   },
   {
@@ -620,7 +654,19 @@
   {
    "t": "say",
    "char": "Abuela",
-   "text": "Mijo. The team has been good to you. The team has also, in being good to you, been not-good to him. You have, this morning, had a meal that interrupted that arrangement. The arrangement was not yours. The arrangement was the team's. You have always been allowed to interrupt other people's arrangements. You do not, by interrupting, have to defend the arrangement to the team. You have to do, only, the thing your interrupting requires of you next.",
+   "text": "Mijo. The team has been good to you. The team has also, in being good to you, been not-good to him. You have, this morning, had a meal that interrupted that arrangement. The arrangement was not yours.",
+   "expr": "neutral"
+  },
+  {
+   "t": "say",
+   "char": "Abuela",
+   "text": "The arrangement was the team's. You have always been allowed to interrupt other people's arrangements. You do not, by interrupting, have to defend the arrangement to the team.",
+   "expr": "neutral"
+  },
+  {
+   "t": "say",
+   "char": "Abuela",
+   "text": "You have to do, only, the thing your interrupting requires of you next.",
    "expr": "neutral"
   },
   {
@@ -713,7 +759,11 @@
   },
   {
    "t": "narrate",
-   "text": "He thinks: I am going to be at Centro at ten tonight. I am going to do inventory. I am going to be there with BT and Doug and Marisol and Russell and Jessa. I am going to get through the night. After the night I am going to see what I do about the thing I have started."
+   "text": "He thinks: I am going to be at Centro at ten tonight. I am going to do inventory. I am going to be there with BT and Doug and Marisol and Russell and Jessa. I am going to get through the night."
+  },
+  {
+   "t": "narrate",
+   "text": "After the night I am going to see what I do about the thing I have started."
   },
   {
    "t": "narrate",
@@ -749,7 +799,11 @@
   },
   {
    "t": "narrate",
-   "text": "[shot:insert radio]Tonight, in the truck, on the way to inventory, the song on the radio — which Diego, by some quiet decision he has made on his own without telling anyone, has cued up on his phone before leaving the house — is Never Gonna Come Back Down, on repeat, with the erf in the chorus playing into the August evening as Diego drives the small parallel side road past El Rancho on his way to the long night ahead."
+   "text": "[shot:insert radio]Tonight, in the truck, on the way to inventory, the song on the radio — which Diego, by some quiet decision he has made on his own without telling anyone, has cued up on his phone before leaving the house —"
+  },
+  {
+   "t": "narrate",
+   "text": "is Never Gonna Come Back Down, on repeat, with the erf in the chorus playing into the August evening as Diego drives the small parallel side road past El Rancho on his way to the long night ahead."
   },
   {
    "t": "end"

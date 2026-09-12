@@ -57,7 +57,11 @@
     },
     {
       "t": "narrate",
-      "text": "Jesse hands Ben the second Powerade. He leans against the dumpster, which he has never leaned against before, because Jesse has a fastidious relationship to surfaces that have been touched by grease. His leaning against it now, Ben registers, is its own kind of tell."
+      "text": "Jesse hands Ben the second Powerade. He leans against the dumpster, which he has never leaned against before, because Jesse has a fastidious relationship to surfaces that have been touched by grease."
+    },
+    {
+      "t": "narrate",
+      "text": "His leaning against it now, Ben registers, is its own kind of tell."
     },
     {
       "t": "say",
@@ -75,7 +79,13 @@
       "t": "say",
       "char": "Jesse",
       "expr": "neutral",
-      "text": "\"Of the town. He does this. He's had the camera forever. But he's — the prints, Ben. The prints. I was in the garage this morning and I saw them on the line. They have — people in them. People that aren't in the actual pictures. He had the raw film still in a holder. I looked at the negatives. The negatives don't have the people. [shake rate=8 level=2]The prints do.[/shake]\""
+      "text": "\"Of the town. He does this. He's had the camera forever. But he's — the prints, Ben. The prints. I was in the garage this morning and I saw them on the line. They have — people in them. People that aren't in the actual pictures."
+    },
+    {
+      "t": "say",
+      "char": "Jesse",
+      "expr": "neutral",
+      "text": "He had the raw film still in a holder. I looked at the negatives. The negatives don't have the people. [shake rate=8 level=2]The prints do.[/shake]\""
     },
     {
       "t": "narrate",
@@ -115,7 +125,13 @@
       "t": "say",
       "char": "Ben",
       "expr": "neutral",
-      "text": "\"Because Saturday night at the McClary place, when I was waiting for my ride after the match, I was standing by the fence at the back of the yard, and there was a kid — maybe eight, maybe nine — sitting on the curb across the street in a spot I know for a fact wasn't lit by the streetlight. I could see him. I shouldn't have been able to. He waved at me. I waved back. When I looked again, two seconds later, he was gone.\""
+      "text": "\"Because Saturday night at the McClary place, when I was waiting for my ride after the match, I was standing by the fence at the back of the yard, and there was a kid — maybe eight, maybe nine — sitting on the curb across the street in a spot I know for a fact wasn't lit by the streetlight."
+    },
+    {
+      "t": "say",
+      "char": "Ben",
+      "expr": "neutral",
+      "text": "I could see him. I shouldn't have been able to. He waved at me. I waved back. When I looked again, two seconds later, he was gone.\""
     },
     {
       "t": "say",
@@ -305,11 +321,19 @@
     },
     {
       "t": "narrate",
-      "text": "In the first — the NexCorp Gas & Go. Under the overhang, in the shadow, a tall woman with blue dreadlocks, yellow slicker, holding a cardboard tube. Ben has never seen her. He immediately feels, looking at her, that she is not from here, and that she is not hostile, and that she has been, in some sense, waiting."
+      "text": "In the first — the NexCorp Gas & Go. Under the overhang, in the shadow, a tall woman with blue dreadlocks, yellow slicker, holding a cardboard tube. Ben has never seen her."
     },
     {
       "t": "narrate",
-      "text": "In the second — the cul-de-sac at the end of Meadowlark. Across the far lawn, a small figure four feet tall in a wide hat, smoking. Ben looks at the figure for a long time. The figure does not, in the print, look threatening. The figure looks, if anything, bored in the patient way adults get bored at school pageants. Waiting out the program."
+      "text": "He immediately feels, looking at her, that she is not from here, and that she is not hostile, and that she has been, in some sense, waiting."
+    },
+    {
+      "t": "narrate",
+      "text": "In the second — the cul-de-sac at the end of Meadowlark. Across the far lawn, a small figure four feet tall in a wide hat, smoking. Ben looks at the figure for a long time. The figure does not, in the print, look threatening."
+    },
+    {
+      "t": "narrate",
+      "text": "The figure looks, if anything, bored in the patient way adults get bored at school pageants. Waiting out the program."
     },
     {
       "t": "narrate",
@@ -341,7 +365,13 @@
       "t": "say",
       "char": "Jesse",
       "expr": "neutral",
-      "text": "\"Ben. I don't know. He hasn't said anything. He's been — since Saturday night, he's been really weird. Quieter than usual. Mom asked him at dinner if he felt okay. He said yes. He did not, Ben. He did not feel okay. I saw him in the kitchen at two in the morning just standing there looking at the microwave.\""
+      "text": "\"Ben. I don't know. He hasn't said anything. He's been — since Saturday night, he's been really weird. Quieter than usual. Mom asked him at dinner if he felt okay. He said yes. He did not, Ben. He did not feel okay."
+    },
+    {
+      "t": "say",
+      "char": "Jesse",
+      "expr": "neutral",
+      "text": "I saw him in the kitchen at two in the morning just standing there looking at the microwave.\""
     },
     {
       "t": "say",
@@ -501,7 +531,11 @@
     },
     {
       "t": "narrate",
-      "text": "Ben looks at him. Ben had not, until this moment, told Jesse he had been watching the wrestling thing because he had been expecting Jesse, or someone like Jesse, to be invited in next. The fact that Jesse had, in retrospect, intuited this was its own small data point."
+      "text": "Ben looks at him. Ben had not, until this moment, told Jesse he had been watching the wrestling thing because he had been expecting Jesse, or someone like Jesse, to be invited in next."
+    },
+    {
+      "t": "narrate",
+      "text": "The fact that Jesse had, in retrospect, intuited this was its own small data point."
     },
     {
       "t": "say",
@@ -533,7 +567,11 @@
     },
     {
       "t": "narrate",
-      "text": "[shot:establish]Jesse went inside. The screen door slapped shut behind him. Ben stood at the dumpster for another minute. He thought about the photograph of the man in the charcoal suit. He thought about the fact that the photograph was, in a way Ben did not fully understand but had begun to accept, looking back."
+      "text": "[shot:establish]Jesse went inside. The screen door slapped shut behind him. Ben stood at the dumpster for another minute. He thought about the photograph of the man in the charcoal suit."
+    },
+    {
+      "t": "narrate",
+      "text": "He thought about the fact that the photograph was, in a way Ben did not fully understand but had begun to accept, looking back."
     },
     {
       "t": "narrate",

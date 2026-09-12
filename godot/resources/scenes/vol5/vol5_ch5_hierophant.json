@@ -35,7 +35,11 @@
     },
     {
       "t": "narrate",
-      "text": "[mood:lunch]THE HIEROPHANT. He holds the keys to what is sacred, and to what is not. Tradition. Institution. The interpretation of knowledge too dangerous to leave in the hands of those who have not been authorized to hold it. Reversed: rigidity. Dogma as weapon. The man who mistakes his office for the divine."
+      "text": "[mood:lunch]THE HIEROPHANT. He holds the keys to what is sacred, and to what is not. Tradition. Institution. The interpretation of knowledge too dangerous to leave in the hands of those who have not been authorized to hold it."
+    },
+    {
+      "t": "narrate",
+      "text": "Reversed: rigidity. Dogma as weapon. The man who mistakes his office for the divine."
     },
     {
       "t": "narrate",
@@ -47,15 +51,35 @@
     },
     {
       "t": "narrate",
-      "text": "Maya's itchy Sunday dress stuck to her back. The dress was new. The dress was stiff. The dress had a tag that bit her between the shoulder blades every time she breathed in, and she had been breathing in all morning because the church inside had smelled wrong — like old incense and wet wood and something older than either of those, something Daddy said was just the building settling but Maya knew better, because buildings did not settle in a smell."
+      "text": "Maya's itchy Sunday dress stuck to her back. The dress was new. The dress was stiff."
     },
     {
       "t": "narrate",
-      "text": "Daddy was talking to some men near the church steps. His voice was the low rumble he used when he was talking to other grown-ups — not the bright voice he used when he talked to her. Daddy looked tired. Not regular tired. Strings-cut tired. Like a puppet whose puppet-man had walked away from the show."
+      "text": "The dress had a tag that bit her between the shoulder blades every time she breathed in, and she had been breathing in all morning because the church inside had smelled wrong —"
     },
     {
       "t": "narrate",
-      "text": "Maya traced patterns in the condensation on her sweating cup of lemonade-flavored water. The ladies with tight smiles and too much hairspray had patted her on the head and said aren't you a precious little thing in voices that meant something other than what the words said. The smile had reset, the way a clock resets when you push the little button on the back."
+      "text": "like old incense and wet wood and something older than either of those, something Daddy said was just the building settling but Maya knew better, because buildings did not settle in a smell."
+    },
+    {
+      "t": "narrate",
+      "text": "Daddy was talking to some men near the church steps. His voice was the low rumble he used when he was talking to other grown-ups — not the bright voice he used when he talked to her. Daddy looked tired. Not regular tired."
+    },
+    {
+      "t": "narrate",
+      "text": "Strings-cut tired. Like a puppet whose puppet-man had walked away from the show."
+    },
+    {
+      "t": "narrate",
+      "text": "Maya traced patterns in the condensation on her sweating cup of lemonade-flavored water."
+    },
+    {
+      "t": "narrate",
+      "text": "The ladies with tight smiles and too much hairspray had patted her on the head and said aren't you a precious little thing in voices that meant something other than what the words said."
+    },
+    {
+      "t": "narrate",
+      "text": "The smile had reset, the way a clock resets when you push the little button on the back."
     },
     {
       "t": "narrate",
@@ -67,23 +91,43 @@
     },
     {
       "t": "narrate",
-      "text": "He wasn't smiling. He wore a suit, even though it felt like the inside of a dog's mouth outside. His eyes swept over the small crowd leaving the service, pausing on folks here and there, like he was counting sins. Or maybe just deciding who wasn't worth saving."
+      "text": "He wasn't smiling. He wore a suit, even though it felt like the inside of a dog's mouth outside. His eyes swept over the small crowd leaving the service, pausing on folks here and there, like he was counting sins."
     },
     {
       "t": "narrate",
-      "text": "He radiated something. Hot and cold at the same time. Like the metal slide at the playground after it had been in the sun all day, where the top burned your hands but the bottom, where the slide curved into the wood-chips, was still cold from the rain the night before."
+      "text": "Or maybe just deciding who wasn't worth saving."
     },
     {
       "t": "narrate",
-      "text": "Mr. Paul stopped near Daddy. Clapped one of the other men on the shoulder — a hard, deliberate sound, the sound of two pieces of wood being put together in a way that meant something. His voice wasn't loud like the preachers inside, but it felt louder somehow. Like it pushed the air out of the way."
+      "text": "He radiated something. Hot and cold at the same time."
     },
     {
       "t": "narrate",
-      "text": "Mr. Paul's gaze flickered toward Maya for just a second. It felt like being caught doing something wrong, even though she wasn't doing anything wrong. He looked right through her. Like she was just scenery. The kind of person who appears in a photograph without being one of the subjects."
+      "text": "Like the metal slide at the playground after it had been in the sun all day, where the top burned your hands but the bottom, where the slide curved into the wood-chips, was still cold from the rain the night before."
     },
     {
       "t": "narrate",
-      "text": "[shot:closeup maya~]Then his gaze flickered back, and stayed for the second second, and that second second was longer than the first, and during it Maya understood, in the way children understand things they have no words for, that Mr. Quentin Paul had decided something about her, had made some small entry in some private ledger she could not see, and that the entry was not, on balance, a good one."
+      "text": "Mr. Paul stopped near Daddy. Clapped one of the other men on the shoulder — a hard, deliberate sound, the sound of two pieces of wood being put together in a way that meant something."
+    },
+    {
+      "t": "narrate",
+      "text": "His voice wasn't loud like the preachers inside, but it felt louder somehow. Like it pushed the air out of the way."
+    },
+    {
+      "t": "narrate",
+      "text": "Mr. Paul's gaze flickered toward Maya for just a second. It felt like being caught doing something wrong, even though she wasn't doing anything wrong. He looked right through her. Like she was just scenery."
+    },
+    {
+      "t": "narrate",
+      "text": "The kind of person who appears in a photograph without being one of the subjects."
+    },
+    {
+      "t": "narrate",
+      "text": "[shot:closeup maya~]Then his gaze flickered back, and stayed for the second second, and that second second was longer than the first, and during it Maya understood, in the way children understand things they have no words for, that Mr."
+    },
+    {
+      "t": "narrate",
+      "text": "Quentin Paul had decided something about her, had made some small entry in some private ledger she could not see, and that the entry was not, on balance, a good one."
     },
     {
       "t": "narrate",
@@ -115,7 +159,11 @@
     },
     {
       "t": "narrate",
-      "text": "Sunday brunch at D'Ambrosio's was its own special circle of hell. The mimosas were too sweet. The eggs Florentine had a hollandaise that broke if you looked at it wrong. The clientele dressed for church even when they had not gone, on the theory that dressing for church covered your bases. Gloria had been working Sunday brunch since 1996."
+      "text": "Sunday brunch at D'Ambrosio's was its own special circle of hell. The mimosas were too sweet. The eggs Florentine had a hollandaise that broke if you looked at it wrong."
+    },
+    {
+      "t": "narrate",
+      "text": "The clientele dressed for church even when they had not gone, on the theory that dressing for church covered your bases. Gloria had been working Sunday brunch since 1996."
     },
     {
       "t": "narrate",
@@ -123,11 +171,19 @@
     },
     {
       "t": "narrate",
-      "text": "[shot:closeup paul]Quentin Paul, ensconced at his usual corner booth overlooking the muddy divide between Texas and Louisiana, pontificating to a captive audience of city council hopefuls and nervous-looking business types. His voice cut through the clatter of silverware and forced laughter. Each word wielded like a freshly sharpened knife. He wasn't eating. He was delivering pronouncements between sips of black coffee."
+      "text": "[shot:closeup paul]Quentin Paul, ensconced at his usual corner booth overlooking the muddy divide between Texas and Louisiana, pontificating to a captive audience of city council hopefuls and nervous-looking business types."
     },
     {
       "t": "narrate",
-      "text": "She remembered him from before the sinkhole. Back when he was just another ambitious climber with sweat stains under his arms and hands that lingered a second too long when he handed back the check presenter. Seminary school dropout, they said. Yeah. She could see it."
+      "text": "His voice cut through the clatter of silverware and forced laughter. Each word wielded like a freshly sharpened knife. He wasn't eating. He was delivering pronouncements between sips of black coffee."
+    },
+    {
+      "t": "narrate",
+      "text": "She remembered him from before the sinkhole. Back when he was just another ambitious climber with sweat stains under his arms and hands that lingered a second too long when he handed back the check presenter."
+    },
+    {
+      "t": "narrate",
+      "text": "Seminary school dropout, they said. Yeah. She could see it."
     },
     {
       "t": "narrate",
@@ -143,7 +199,15 @@
     },
     {
       "t": "narrate",
-      "text": "She saw the tension in his jaw. The slight tic near his eye. The way the cuff of his right sleeve was a millimeter shorter than the left, as if at some point that morning his hand had gripped it and twisted it down without his noticing. Righteousness masking something else. Something brittle. Maybe something afraid."
+      "text": "She saw the tension in his jaw. The slight tic near his eye."
+    },
+    {
+      "t": "narrate",
+      "text": "The way the cuff of his right sleeve was a millimeter shorter than the left, as if at some point that morning his hand had gripped it and twisted it down without his noticing. Righteousness masking something else."
+    },
+    {
+      "t": "narrate",
+      "text": "Something brittle. Maybe something afraid."
     },
     {
       "t": "narrate",
@@ -205,11 +269,23 @@
     },
     {
       "t": "narrate",
-      "text": "[shot:closeup antonio]Antonio pinched the bridge of his nose. The phone hot against his ear. Even miles away in New Orleans — even with the Mississippi between them and several hundred miles of bad highway and the entire fucking idea of distance as a category — Paul's voice had the power to fray his nerves like a frayed extension cord finding a damp puddle."
+      "text": "[shot:closeup antonio]Antonio pinched the bridge of his nose. The phone hot against his ear."
     },
     {
       "t": "narrate",
-      "text": "[shot:establish]He paced the cramped office above his still-unfinished restaurant, Ember & Ash. The air was thick with sawdust and ambition and the particular smell of a building under renovation that had not yet decided whether the renovation would be completed. Below, the sounds of the construction crew on their thirty-minute lunch — Spanish on the radio, a hammer doing the slow bored work of hanging a thing the hanger had no opinion about."
+      "text": "Even miles away in New Orleans — even with the Mississippi between them and several hundred miles of bad highway and the entire fucking idea of distance as a category — Paul's voice had the power to fray his nerves like a frayed extension cord finding a damp puddle."
+    },
+    {
+      "t": "narrate",
+      "text": "[shot:establish]He paced the cramped office above his still-unfinished restaurant, Ember & Ash."
+    },
+    {
+      "t": "narrate",
+      "text": "The air was thick with sawdust and ambition and the particular smell of a building under renovation that had not yet decided whether the renovation would be completed."
+    },
+    {
+      "t": "narrate",
+      "text": "Below, the sounds of the construction crew on their thirty-minute lunch — Spanish on the radio, a hammer doing the slow bored work of hanging a thing the hanger had no opinion about."
     },
     {
       "t": "show",
@@ -272,7 +348,11 @@
     },
     {
       "t": "narrate",
-      "text": "Hierophant. Yeah, right. More like the damn Pope of his own petty kingdom, demanding fealty, handing down judgments from his pulpit. He ran a hand through his hair. The weight of his father's legacy, of Paul's expectations, pressing down. He needed to create something real, something honest, before the ghosts of Graustark swallowed him whole."
+      "text": "Hierophant. Yeah, right. More like the damn Pope of his own petty kingdom, demanding fealty, handing down judgments from his pulpit. He ran a hand through his hair."
+    },
+    {
+      "t": "narrate",
+      "text": "The weight of his father's legacy, of Paul's expectations, pressing down. He needed to create something real, something honest, before the ghosts of Graustark swallowed him whole."
     },
     {
       "t": "narrate",
@@ -313,7 +393,11 @@
     },
     {
       "t": "narrate",
-      "text": "[mood:dusk]John sat on a chipped park bench. The Sunday heat was finally breaking, easing toward a humid Graustark dusk that would make the cicadas come out in force. The kind of air a city exhales when it has been holding its breath all day and does not, even in the relief of dusk, fully remember how to let go."
+      "text": "[mood:dusk]John sat on a chipped park bench. The Sunday heat was finally breaking, easing toward a humid Graustark dusk that would make the cicadas come out in force."
+    },
+    {
+      "t": "narrate",
+      "text": "The kind of air a city exhales when it has been holding its breath all day and does not, even in the relief of dusk, fully remember how to let go."
     },
     {
       "t": "narrate",
@@ -329,7 +413,11 @@
     },
     {
       "t": "narrate",
-      "text": "[shot:establish]Paul stopped near the abandoned bandstand. Surveyed the empty park like a king surveying barren lands. John felt like an anthropologist observing a dominant, potentially dangerous primate from behind a screen the primate was not aware of and would, if he became aware of it, immediately tear down."
+      "text": "[shot:establish]Paul stopped near the abandoned bandstand. Surveyed the empty park like a king surveying barren lands."
+    },
+    {
+      "t": "narrate",
+      "text": "John felt like an anthropologist observing a dominant, potentially dangerous primate from behind a screen the primate was not aware of and would, if he became aware of it, immediately tear down."
     },
     {
       "t": "narrate",
@@ -337,7 +425,11 @@
     },
     {
       "t": "narrate",
-      "text": "Here was a man wielding belief like a cudgel. Utterly convinced of his own righteousness. Yet visibly vibrating with an internal conflict carved into his very posture. The war between spirit and ambition played out in the tense line of his shoulders, the tight clench of his jaw."
+      "text": "Here was a man wielding belief like a cudgel. Utterly convinced of his own righteousness. Yet visibly vibrating with an internal conflict carved into his very posture."
+    },
+    {
+      "t": "narrate",
+      "text": "The war between spirit and ambition played out in the tense line of his shoulders, the tight clench of his jaw."
     },
     {
       "t": "narrate",
@@ -361,7 +453,11 @@
     },
     {
       "t": "narrate",
-      "text": "In John's coat pocket, against his ribs, the folded napkin from booth six pressed faintly through the lining. He had forgotten he was carrying it. He noticed it now, distantly, the way you notice a wedding ring on a finger you have not yet started to think of as yours."
+      "text": "In John's coat pocket, against his ribs, the folded napkin from booth six pressed faintly through the lining. He had forgotten he was carrying it."
+    },
+    {
+      "t": "narrate",
+      "text": "He noticed it now, distantly, the way you notice a wedding ring on a finger you have not yet started to think of as yours."
     },
     {
       "t": "narrate",

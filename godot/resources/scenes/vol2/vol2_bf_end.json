@@ -11,7 +11,11 @@
   },
   {
    "t": "narrate",
-   "text": "[mood:lithograph]You walk back across the lot. The mother grinds her cigarette out on the underside of the bench, the way smokers do when they are about to get back into a vehicle they are not going to smoke in. The Walkman goes into the pocket of the sweatshirt. The Diet Pepsi is half gone and the father is going to finish it in the next mile."
+   "text": "[mood:lithograph]You walk back across the lot. The mother grinds her cigarette out on the underside of the bench, the way smokers do when they are about to get back into a vehicle they are not going to smoke in."
+  },
+  {
+   "t": "narrate",
+   "text": "The Walkman goes into the pocket of the sweatshirt. The Diet Pepsi is half gone and the father is going to finish it in the next mile."
   },
   {
    "t": "narrate",

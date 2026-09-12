@@ -49,7 +49,15 @@
       "t": "narrate"
     },
     {
-      "text": "[shot:insert door]The door was unmarked. It was cedar. Above the door's handle was a window, six inches by six, set into the cedar at chest height. The window had been ordinary glass when the tower was built. In the years since, the glass had gone translucent \u2014 a related kind of translucency to what Tem had seen at the alley wall, but denser. The cedar around the window was unchanged. The window itself was milky, as if its glass had been replaced by a single thick layer of frosted substrate.",
+      "text": "[shot:insert door]The door was unmarked. It was cedar. Above the door's handle was a window, six inches by six, set into the cedar at chest height. The window had been ordinary glass when the tower was built.",
+      "t": "narrate"
+    },
+    {
+      "text": "In the years since, the glass had gone translucent \u2014 a related kind of translucency to what Tem had seen at the alley wall, but denser. The cedar around the window was unchanged.",
+      "t": "narrate"
+    },
+    {
+      "text": "The window itself was milky, as if its glass had been replaced by a single thick layer of frosted substrate.",
       "t": "narrate"
     },
     {
@@ -62,7 +70,11 @@
       "t": "narrate"
     },
     {
-      "text": "The substrate was running on the other side of the door. Tem could feel it through the cedar \u2014 the air pressure on the cedar's far side was different from the air pressure in the landing. The cedar was warm at the handle. Warm in the way the doorknob at the cabin had been warm at three this morning.",
+      "text": "The substrate was running on the other side of the door. Tem could feel it through the cedar \u2014 the air pressure on the cedar's far side was different from the air pressure in the landing. The cedar was warm at the handle.",
+      "t": "narrate"
+    },
+    {
+      "text": "Warm in the way the doorknob at the cabin had been warm at three this morning.",
       "t": "narrate"
     },
     {
@@ -74,7 +86,15 @@
       "t": "narrate"
     },
     {
-      "text": "The smart-glass on the far wall was rendering \u2014 not the setting, but the substrate itself, its own movement made visible at high resolution against the wall. The room's air was full of it. The substrate moved through that air the way water moves through a creek that has not been dammed for the season. Slowly. It made the room, by Tem's read through the translucent window, a place where the air was thicker than ordinary air.",
+      "text": "The smart-glass on the far wall was rendering \u2014 not the setting, but the substrate itself, its own movement made visible at high resolution against the wall. The room's air was full of it.",
+      "t": "narrate"
+    },
+    {
+      "text": "The substrate moved through that air the way water moves through a creek that has not been dammed for the season. Slowly.",
+      "t": "narrate"
+    },
+    {
+      "text": "It made the room, by Tem's read through the translucent window, a place where the air was thicker than ordinary air.",
       "t": "narrate"
     },
     {
@@ -138,7 +158,11 @@
       "t": "narrate"
     },
     {
-      "text": "Then she raised her own hand against the translucent window and waved back. The wave Tem made was the wave an aunt makes to a niece she has been at the front porch of her own house with, who is leaving in a car for somewhere the aunt has helped pack for, who is going to be all right.",
+      "text": "Then she raised her own hand against the translucent window and waved back.",
+      "t": "narrate"
+    },
+    {
+      "text": "The wave Tem made was the wave an aunt makes to a niece she has been at the front porch of her own house with, who is leaving in a car for somewhere the aunt has helped pack for, who is going to be all right.",
       "t": "narrate"
     },
     {
@@ -206,7 +230,11 @@
       "t": "say"
     },
     {
-      "text": "[shot:insert door]The three of them turned from the door. They went back down the stairs. They did not visit five, six, or seven. The portal room was the point. They saw her leave. They reached the third-floor landing. They did not stop. They reached the second-floor landing. They did not stop. They reached the lobby.",
+      "text": "[shot:insert door]The three of them turned from the door. They went back down the stairs. They did not visit five, six, or seven. The portal room was the point. They saw her leave. They reached the third-floor landing. They did not stop.",
+      "t": "narrate"
+    },
+    {
+      "text": "They reached the second-floor landing. They did not stop. They reached the lobby.",
       "t": "narrate"
     },
     {
@@ -386,7 +414,11 @@
       "t": "say"
     },
     {
-      "text": "The three of them ate the rye at six fifty-five. The two bowls were on the dining table. The cedar bell-piece was beside them. The disc-case was on the kitchen table. At nine they went to bed. Kai in the chair by the stove. Finn on the floor by the south window. Tem in the bedroom. The cabin held them. The mist on the cedars outside was the same mist that had been there since dawn.",
+      "text": "The three of them ate the rye at six fifty-five. The two bowls were on the dining table. The cedar bell-piece was beside them. The disc-case was on the kitchen table. At nine they went to bed. Kai in the chair by the stove.",
+      "t": "narrate"
+    },
+    {
+      "text": "Finn on the floor by the south window. Tem in the bedroom. The cabin held them. The mist on the cedars outside was the same mist that had been there since dawn.",
       "t": "narrate"
     },
     {

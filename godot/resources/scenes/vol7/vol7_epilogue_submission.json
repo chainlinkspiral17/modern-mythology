@@ -80,7 +80,11 @@
    "t": "show"
   },
   {
-   "text": "[shot:closeup kai]Kai was across the table. He had finished his coffee. He had been watching her for the length of the playthrough — perhaps twenty minutes by the wall clock. Finn was beside Kai. He had brought his chair over from the kitchen window at some point during the playthrough.",
+   "text": "[shot:closeup kai]Kai was across the table. He had finished his coffee. He had been watching her for the length of the playthrough — perhaps twenty minutes by the wall clock. Finn was beside Kai.",
+   "t": "narrate"
+  },
+  {
+   "text": "He had brought his chair over from the kitchen window at some point during the playthrough.",
    "t": "narrate"
   },
   {
@@ -95,7 +99,12 @@
   },
   {
    "char": "tem",
-   "text": "Dean built the tower and the town. Olaf built the cabin and the four bowls. Eddvard built the mill. Marit built a cedar grove east of Smolvud, fifty-one years old and still growing. Aud built the diner. Brandon built Tideline Survey and the pools. The Schencks built the press in Bern. Lindholm built the foundation in Eugene. Olaus built a small cove south of Bandon that held for three generations and then didn't.",
+   "text": "Dean built the tower and the town. Olaf built the cabin and the four bowls. Eddvard built the mill. Marit built a cedar grove east of Smolvud, fifty-one years old and still growing. Aud built the diner.",
+   "t": "say"
+  },
+  {
+   "char": "tem",
+   "text": "Brandon built Tideline Survey and the pools. The Schencks built the press in Bern. Lindholm built the foundation in Eugene. Olaus built a small cove south of Bandon that held for three generations and then didn't.",
    "t": "say"
   },
   {

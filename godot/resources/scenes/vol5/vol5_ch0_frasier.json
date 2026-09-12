@@ -22,8 +22,16 @@
     },
     {
       "t": "narrate",
-      "text": "[stage:frasier stool][shot:closeup frasier]Frasier Temple did not so much walk in as coalesce from the shadows of the kitchen alcove. Leather bomber jacket stained with substances that might have been solder flux, might have been hot sauce, might have been transmission fluid, certainly were not, at this point, identifiable. Hair a chaotic sculpture defying gravity and three of the laws of thermodynamics. Notebook tucked under his arm like a holy text or a bomb schematic, and possibly both.",
+      "text": "[stage:frasier stool][shot:closeup frasier]Frasier Temple did not so much walk in as coalesce from the shadows of the kitchen alcove.",
       "voice": "assets/audio/voice/vol5_ch0_frasier/002.mp3"
+    },
+    {
+      "t": "narrate",
+      "text": "Leather bomber jacket stained with substances that might have been solder flux, might have been hot sauce, might have been transmission fluid, certainly were not, at this point, identifiable."
+    },
+    {
+      "t": "narrate",
+      "text": "Hair a chaotic sculpture defying gravity and three of the laws of thermodynamics. Notebook tucked under his arm like a holy text or a bomb schematic, and possibly both."
     },
     {
       "t": "narrate",

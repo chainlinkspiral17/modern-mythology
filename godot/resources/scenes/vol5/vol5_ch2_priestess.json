@@ -36,8 +36,12 @@
   },
   {
    "t": "narrate",
-   "text": "Thrift-store tarot decks sticky with spilled wine. Camera lenses like detached insect eyes. Hard drives humming with the ghosts of projects past, present, and perpetually pending. A teacup that had belonged to her mother and that she had, three times in the last week, picked up and put down without packing.",
+   "text": "Thrift-store tarot decks sticky with spilled wine. Camera lenses like detached insect eyes. Hard drives humming with the ghosts of projects past, present, and perpetually pending.",
    "voice": "assets/audio/voice/vol5_ch2_priestess/006.mp3"
+  },
+  {
+   "t": "narrate",
+   "text": "A teacup that had belonged to her mother and that she had, three times in the last week, picked up and put down without packing."
   },
   {
    "t": "narrate",
@@ -84,8 +88,12 @@
   },
   {
    "t": "narrate",
-   "text": "[trip:1.2][mood:liminal_interior]Her web series — Whispers from the Liminal — had drunk deep from this town's poisoned well. Oh, the material. She had framed Graustark's rust as existential patina. The sinkhole's lingering psychic miasma as compelling thematic resonance. The way the locals occasionally lost an hour and recovered it with the wrong shoes on as Lynchian quotidian.",
+   "text": "[trip:1.2][mood:liminal_interior]Her web series — Whispers from the Liminal — had drunk deep from this town's poisoned well. Oh, the material. She had framed Graustark's rust as existential patina.",
    "voice": "assets/audio/voice/vol5_ch2_priestess/015.mp3"
+  },
+  {
+   "t": "narrate",
+   "text": "The sinkhole's lingering psychic miasma as compelling thematic resonance. The way the locals occasionally lost an hour and recovered it with the wrong shoes on as Lynchian quotidian."
   },
   {
    "t": "narrate",
@@ -104,8 +112,12 @@
   },
   {
    "t": "narrate",
-   "text": "They wrote essays — actual essays, with citations — posted to forums Elicia could not bring herself to read, because reading them constituted, in some metaphysical accounting she could not articulate but profoundly believed in, cheating. They searched for gnosis in what was, often, just bad wiring or Elicia forgetting to pay the electric bill.",
+   "text": "They wrote essays — actual essays, with citations — posted to forums Elicia could not bring herself to read, because reading them constituted, in some metaphysical accounting she could not articulate but profoundly believed in, cheating.",
    "voice": "assets/audio/voice/vol5_ch2_priestess/019.mp3"
+  },
+  {
+   "t": "narrate",
+   "text": "They searched for gnosis in what was, often, just bad wiring or Elicia forgetting to pay the electric bill."
   },
   {
    "t": "narrate",
@@ -114,8 +126,12 @@
   },
   {
    "t": "narrate",
-   "text": "[shot:closeup elicia]She knew about the cliff. She had drawn it herself, several times. In storyboards. On napkins. And once, memorably, on the back of a parking ticket she had then handed to a meter maid in lieu of payment. The cliff was a recurring motif. The cliff was, perhaps, her best one.",
+   "text": "[shot:closeup elicia]She knew about the cliff. She had drawn it herself, several times. In storyboards. On napkins. And once, memorably, on the back of a parking ticket she had then handed to a meter maid in lieu of payment.",
    "voice": "assets/audio/voice/vol5_ch2_priestess/021.mp3"
+  },
+  {
+   "t": "narrate",
+   "text": "The cliff was a recurring motif. The cliff was, perhaps, her best one."
   },
   {
    "t": "narrate",
@@ -124,8 +140,12 @@
   },
   {
    "t": "narrate",
-   "text": "[stage:elicia bookshelf][shot:insert mirror_shard~]She crossed the room to the bookshelf and pulled down a cracked mirror shard she kept there as a paperweight — found near the sinkhole's edge during her first week of pre-production. Picked up because it had caught the light just so. Kept because it had refused, in two years of attempted disposal, to leave the apartment by any normal route.",
+   "text": "[stage:elicia bookshelf][shot:insert mirror_shard~]She crossed the room to the bookshelf and pulled down a cracked mirror shard she kept there as a paperweight — found near the sinkhole's edge during her first week of pre-production.",
    "voice": "assets/audio/voice/vol5_ch2_priestess/023.mp3"
+  },
+  {
+   "t": "narrate",
+   "text": "Picked up because it had caught the light just so. Kept because it had refused, in two years of attempted disposal, to leave the apartment by any normal route."
   },
   {
    "t": "narrate",
@@ -215,15 +235,15 @@
    "opts": [
     {
      "text": "[A — the slaughterhouse]",
-     "goto": 41
+     "goto": 46
     },
     {
      "text": "[B — the mannequins]",
-     "goto": 43
+     "goto": 48
     },
     {
      "text": "[C — the comforting void]",
-     "goto": 45
+     "goto": 50
     }
    ]
   },

@@ -38,11 +38,19 @@
       "t": "narrate"
     },
     {
-      "text": "[shot:insert sanderling]The patch on the sanderling mural across from Board Lords was bigger than it had been yesterday morning. He stopped on the sidewalk in front of it and looked. The sanderling's body was now most of the way gone. The patch had taken the head this week. The bird had been a sanderling on a wet beach at low tide and was now, by the substrate's quiet expansion, mostly a flat black shape with a beak and one foot.",
+      "text": "[shot:insert sanderling]The patch on the sanderling mural across from Board Lords was bigger than it had been yesterday morning. He stopped on the sidewalk in front of it and looked. The sanderling's body was now most of the way gone.",
       "t": "narrate"
     },
     {
-      "text": "He did not, this morning, do anything about it. He went into the shop. He flipped the CLOSED to OPEN. He turned on the back light. He put the kettle out. He stood at the front window for a count and drank coffee out of the chipped Tidewater mug Devon had left when he moved.",
+      "text": "The patch had taken the head this week. The bird had been a sanderling on a wet beach at low tide and was now, by the substrate's quiet expansion, mostly a flat black shape with a beak and one foot.",
+      "t": "narrate"
+    },
+    {
+      "text": "He did not, this morning, do anything about it. He went into the shop. He flipped the CLOSED to OPEN. He turned on the back light. He put the kettle out.",
+      "t": "narrate"
+    },
+    {
+      "text": "He stood at the front window for a count and drank coffee out of the chipped Tidewater mug Devon had left when he moved.",
       "t": "narrate"
     },
     {
@@ -191,7 +199,19 @@
     },
     {
       "char": "hans",
-      "text": "Marit's bowl. My wife's. She has had a bowl from her own mother since 1971. The bowl has been warm since the second week of July. She called Per in Eugene three weeks ago and she has been calling him every Sunday since. He came home on Tuesday because she called him on Sunday and she was crying. He has been at the bakery this morning because his mother is at our house and is sleeping and Per could not be in the house with the bowl warm and his mother asleep and his thoughts.",
+      "text": "Marit's bowl. My wife's. She has had a bowl from her own mother since 1971. The bowl has been warm since the second week of July. She called Per in Eugene three weeks ago and she has been calling him every Sunday since.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "hans",
+      "text": "He came home on Tuesday because she called him on Sunday and she was crying.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "hans",
+      "text": "He has been at the bakery this morning because his mother is at our house and is sleeping and Per could not be in the house with the bowl warm and his mother asleep and his thoughts.",
       "expr": "neutral",
       "t": "say"
     },
@@ -215,7 +235,19 @@
     },
     {
       "char": "hans",
-      "text": "I am telling you this now because Tem is at the cabin today and Tem has been carrying a warm bowl since the second week of July and Tem has been carrying it alone, and Per has been carrying his mother's warm bowl since Sunday, and the two of them are in the same town, and the two of them should be at the same table. Saturday at six was the table I had in mind. But Saturday is not today. Per is at the bakery now.",
+      "text": "I am telling you this now because Tem is at the cabin today and Tem has been carrying a warm bowl since the second week of July and Tem has been carrying it alone,",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "hans",
+      "text": "and Per has been carrying his mother's warm bowl since Sunday, and the two of them are in the same town, and the two of them should be at the same table. Saturday at six was the table I had in mind. But Saturday is not today.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "hans",
+      "text": "Per is at the bakery now.",
       "expr": "neutral",
       "t": "say"
     },
@@ -278,7 +310,15 @@
       "t": "show"
     },
     {
-      "text": "Kai stood at the counter with the loaf in the cloth and looked at the door. Hans had told him, in the four years he had been the man who came over with bread, fewer things about his life than Kai could count on a hand. Hans had not, in those four years, ever brought up Marit's bowl. Kai had not known Marit had a bowl. Kai had not known Per's mother was Hans's wife's family. The bowl had been on Hans's wife's mother's shelf since 1971 and Kai had not known.",
+      "text": "Kai stood at the counter with the loaf in the cloth and looked at the door. Hans had told him, in the four years he had been the man who came over with bread, fewer things about his life than Kai could count on a hand.",
+      "t": "narrate"
+    },
+    {
+      "text": "Hans had not, in those four years, ever brought up Marit's bowl. Kai had not known Marit had a bowl. Kai had not known Per's mother was Hans's wife's family.",
+      "t": "narrate"
+    },
+    {
+      "text": "The bowl had been on Hans's wife's mother's shelf since 1971 and Kai had not known.",
       "t": "narrate"
     },
     {
@@ -298,11 +338,19 @@
       "t": "narrate"
     },
     {
-      "text": "By nine-thirty the shop had been to one customer, a man named Eddie Roe who had bought a set of bearings and not stayed for conversation. Kai had cleaned the front glass. He had checked the deck wall. He had stood at the front window twice looking at the sanderling mural and not gone outside.",
+      "text": "By nine-thirty the shop had been to one customer, a man named Eddie Roe who had bought a set of bearings and not stayed for conversation. Kai had cleaned the front glass. He had checked the deck wall.",
       "t": "narrate"
     },
     {
-      "text": "At nine-fifty he turned off the back light. He pulled the kettle off the burner. He flipped the OPEN to CLOSED. He wrote a note on a piece of register paper and taped it to the inside of the door above the sign: \"Family thing. Back Friday. — Kai.\" He locked the front. He went around to the back. He pulled the truck out of the alley and drove the three blocks to the bakery.",
+      "text": "He had stood at the front window twice looking at the sanderling mural and not gone outside.",
+      "t": "narrate"
+    },
+    {
+      "text": "At nine-fifty he turned off the back light. He pulled the kettle off the burner. He flipped the OPEN to CLOSED. He wrote a note on a piece of register paper and taped it to the inside of the door above the sign: \"Family thing.",
+      "t": "narrate"
+    },
+    {
+      "text": "Back Friday. — Kai.\" He locked the front. He went around to the back. He pulled the truck out of the alley and drove the three blocks to the bakery.",
       "t": "narrate"
     },
     {

@@ -33,11 +33,19 @@
    "t": "show"
   },
   {
-   "text": "[mood:morning_bright][shot:insert cat]In the kitchenette at the back of the bookstore the cat — Petra's cat, who was old enough that her name had stopped being used — was on her wool pillow on the chair beside the radiator. The cat opened one eye when the four of them came in. The cat closed the eye.",
+   "text": "[mood:morning_bright][shot:insert cat]In the kitchenette at the back of the bookstore the cat — Petra's cat, who was old enough that her name had stopped being used — was on her wool pillow on the chair beside the radiator.",
    "t": "narrate"
   },
   {
-   "text": "Petra had put the kettle on. Petra had set out four mugs. Petra had not, in her movements at the counter, asked anyone anything. She was working in the way she worked when she had decided to give a person the space the person needed by giving them the rhythm of coffee being made.",
+   "text": "The cat opened one eye when the four of them came in. The cat closed the eye.",
+   "t": "narrate"
+  },
+  {
+   "text": "Petra had put the kettle on. Petra had set out four mugs. Petra had not, in her movements at the counter, asked anyone anything.",
+   "t": "narrate"
+  },
+  {
+   "text": "She was working in the way she worked when she had decided to give a person the space the person needed by giving them the rhythm of coffee being made.",
    "t": "narrate"
   },
   {
@@ -62,7 +70,13 @@
   },
   {
    "char": "petra",
-   "text": "I have been in this town for forty-one years. I bought this building in '11. I have lived above the bookstore since '15. The mural on the wall outside my back door has been there since you painted it in '50. The face on the mural this morning is — Lena. The face is new.",
+   "text": "I have been in this town for forty-one years. I bought this building in '11. I have lived above the bookstore since '15. The mural on the wall outside my back door has been there since you painted it in '50.",
+   "expr": "serious",
+   "t": "say"
+  },
+  {
+   "char": "petra",
+   "text": "The face on the mural this morning is — Lena. The face is new.",
    "expr": "serious",
    "t": "say"
   },
@@ -80,13 +94,31 @@
   },
   {
    "char": "petra",
-   "text": "The face I have seen at the corner of Hemlock and Birch at six in the morning twice this summer. The face I saw at the Daily Grind in the corner table on a morning in May when I came in for the Tuesday meeting. The face I saw on the back of a Subaru leaving the foundation's lot at Ona Beach in June.",
+   "text": "The face I have seen at the corner of Hemlock and Birch at six in the morning twice this summer. The face I saw at the Daily Grind in the corner table on a morning in May when I came in for the Tuesday meeting.",
    "expr": "serious",
    "t": "say"
   },
   {
    "char": "petra",
-   "text": "The face is — Lena, the face has been at the edges of this town for some time. The face has not been a person I have been able to put a name to. The face has been the face of a young woman I have been seeing without registering until I am back at my apartment three hours later and have realized I have seen her. The face on the wall this morning — Lena. The face on the wall this morning is that face.",
+   "text": "The face I saw on the back of a Subaru leaving the foundation's lot at Ona Beach in June.",
+   "expr": "serious",
+   "t": "say"
+  },
+  {
+   "char": "petra",
+   "text": "The face is — Lena, the face has been at the edges of this town for some time. The face has not been a person I have been able to put a name to.",
+   "expr": "serious",
+   "t": "say"
+  },
+  {
+   "char": "petra",
+   "text": "The face has been the face of a young woman I have been seeing without registering until I am back at my apartment three hours later and have realized I have seen her. The face on the wall this morning — Lena.",
+   "expr": "serious",
+   "t": "say"
+  },
+  {
+   "char": "petra",
+   "text": "The face on the wall this morning is that face.",
    "expr": "serious",
    "t": "say"
   },
@@ -228,7 +260,13 @@
   },
   {
    "char": "petra",
-   "text": "I had been driving back from a property thing in old-Waldport. I had pulled over at the creamery to take a phone call. I had seen her — by what I have been figuring out in the years since — I had seen her cross the lot at the creamery and walk into the door. The door had not opened. She had walked into it.",
+   "text": "I had been driving back from a property thing in old-Waldport. I had pulled over at the creamery to take a phone call.",
+   "expr": "serious",
+   "t": "say"
+  },
+  {
+   "char": "petra",
+   "text": "I had seen her — by what I have been figuring out in the years since — I had seen her cross the lot at the creamery and walk into the door. The door had not opened. She had walked into it.",
    "expr": "serious",
    "t": "say"
   },
@@ -279,11 +317,27 @@
    "t": "narrate"
   },
   {
-   "text": "They sat at the kitchenette table for an hour. Petra made a second pot of coffee. The cat woke up and walked across the table once, in the way the cat had been walking across the table once a morning since 2049, and went back to her pillow. The rain on the bookstore's back window was steady. The town behind the bookstore was the town.",
+   "text": "They sat at the kitchenette table for an hour. Petra made a second pot of coffee.",
    "t": "narrate"
   },
   {
-   "text": "[shot:closeup lena]Lena did not, in the hour, drink much. She held the cup in both hands and looked at the cup. She had been at the wall and she had been at the asphalt and now she was at the kitchenette table and the count, by some accident of how the morning was working, had stopped. The count had been at six hundred and twelve when she had finished the collarbone. The count was at six hundred and twelve still. The count had not gone up since.",
+   "text": "The cat woke up and walked across the table once, in the way the cat had been walking across the table once a morning since 2049, and went back to her pillow. The rain on the bookstore's back window was steady.",
+   "t": "narrate"
+  },
+  {
+   "text": "The town behind the bookstore was the town.",
+   "t": "narrate"
+  },
+  {
+   "text": "[shot:closeup lena]Lena did not, in the hour, drink much. She held the cup in both hands and looked at the cup.",
+   "t": "narrate"
+  },
+  {
+   "text": "She had been at the wall and she had been at the asphalt and now she was at the kitchenette table and the count, by some accident of how the morning was working, had stopped.",
+   "t": "narrate"
+  },
+  {
+   "text": "The count had been at six hundred and twelve when she had finished the collarbone. The count was at six hundred and twelve still. The count had not gone up since.",
    "t": "narrate"
   },
   {
@@ -340,7 +394,13 @@
   },
   {
    "char": "lena",
-   "text": "I'm going to feel the absence for some hours. The count has been with me since Wednesday. It's been the leak, Cale — the leak that's been doing the listening to me. The listening is over. The face is on the wall. The substrate is done with me. That's how I read it.",
+   "text": "I'm going to feel the absence for some hours. The count has been with me since Wednesday. It's been the leak, Cale — the leak that's been doing the listening to me. The listening is over. The face is on the wall.",
+   "expr": "serious",
+   "t": "say"
+  },
+  {
+   "char": "lena",
+   "text": "The substrate is done with me. That's how I read it.",
    "expr": "serious",
    "t": "say"
   },
@@ -469,7 +529,15 @@
    "t": "narrate"
   },
   {
-   "text": "[shot:closeup lena~]For the first time in a week the silence behind her closed eyes was the silence of an apartment whose tenant had stepped out for the morning. The count had been in the apartment. The count had moved. The substrate had not gone away. The substrate was still in her — she could feel the listening, low and patient, the way a person feels the breathing of a sleeper in the next room. The listening was the substrate's. The substrate was sleeping for an hour.",
+   "text": "[shot:closeup lena~]For the first time in a week the silence behind her closed eyes was the silence of an apartment whose tenant had stepped out for the morning. The count had been in the apartment. The count had moved.",
+   "t": "narrate"
+  },
+  {
+   "text": "The substrate had not gone away. The substrate was still in her — she could feel the listening, low and patient, the way a person feels the breathing of a sleeper in the next room. The listening was the substrate's.",
+   "t": "narrate"
+  },
+  {
+   "text": "The substrate was sleeping for an hour.",
    "t": "narrate"
   },
   {

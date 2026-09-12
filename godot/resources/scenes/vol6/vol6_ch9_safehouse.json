@@ -39,7 +39,11 @@
     },
     {
       "t": "narrate",
-      "text": "He has been at the safehouse since Friday afternoon. He has, in the four days since, slept eighteen of every twenty-four hours. He has, in the eighteen, been mostly quiet. He has, in the six, been with his grandmother and his mother and Dr. Patel and Doyle, who has not — by his own choice — left."
+      "text": "He has been at the safehouse since Friday afternoon. He has, in the four days since, slept eighteen of every twenty-four hours. He has, in the eighteen, been mostly quiet."
+    },
+    {
+      "t": "narrate",
+      "text": "He has, in the six, been with his grandmother and his mother and Dr. Patel and Doyle, who has not — by his own choice — left."
     },
     {
       "t": "narrate",
@@ -174,7 +178,13 @@
     {
       "t": "say",
       "char": "Sam",
-      "text": "Diego. That was Friday morning. About an hour before they got you out. I was at the Kwik Stop. I was at the counter. I — I did press my hand to my own forehead, in the bathroom on my break, because I had a headache. And while I was pressing, I — I thought about you. I thought, I hope he can feel this. I didn't know — I don't know how to talk about this stuff yet. But I felt it go somewhere.",
+      "text": "Diego. That was Friday morning. About an hour before they got you out. I was at the Kwik Stop. I was at the counter. I — I did press my hand to my own forehead, in the bathroom on my break, because I had a headache.",
+      "expr": "thinking"
+    },
+    {
+      "t": "say",
+      "char": "Sam",
+      "text": "And while I was pressing, I — I thought about you. I thought, I hope he can feel this. I didn't know — I don't know how to talk about this stuff yet. But I felt it go somewhere.",
       "expr": "thinking"
     },
     {
@@ -255,7 +265,11 @@
     },
     {
       "t": "narrate",
-      "text": "He sleeps, holding her hand. She does not move. The slushie, on the bedside table, slowly melts. Dr. Patel comes in once and out once. Diego's grandmother is on the back porch. Doyle is in the kitchen making coffee. Diego's mother is in town buying him new socks because he has not, since the room, been able to bear the socks he had been put in, which had been, by the time Doyle pulled the blanket off him in the van, gray with five days of his own sweat."
+      "text": "He sleeps, holding her hand. She does not move. The slushie, on the bedside table, slowly melts. Dr. Patel comes in once and out once. Diego's grandmother is on the back porch. Doyle is in the kitchen making coffee."
+    },
+    {
+      "t": "narrate",
+      "text": "Diego's mother is in town buying him new socks because he has not, since the room, been able to bear the socks he had been put in, which had been, by the time Doyle pulled the blanket off him in the van, gray with five days of his own sweat."
     },
     {
       "t": "narrate",
@@ -320,7 +334,13 @@
     {
       "t": "say",
       "char": "Maya",
-      "text": "[shot:closeup person_b]Diego. I want you to write down the dream. I want you to write down the device on the wall. I want you to write down what Boyd told you. I want you to write all of it down before you forget it. We are going to need it. Not today. But eventually. The notebook is going to be one of the things we have, when we have to explain to people, later, what it was like.",
+      "text": "[shot:closeup person_b]Diego. I want you to write down the dream. I want you to write down the device on the wall. I want you to write down what Boyd told you. I want you to write all of it down before you forget it. We are going to need it. Not today.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Maya",
+      "text": "But eventually. The notebook is going to be one of the things we have, when we have to explain to people, later, what it was like.",
       "expr": "neutral"
     },
     {
@@ -333,7 +353,11 @@
     },
     {
       "t": "narrate",
-      "text": "He writes slowly. His hand is — for some weeks — not steady. He writes a page a day. He writes the dream first because the dream is the thing that hurts least to put down. He writes Boyd's last visit second, because Boyd's last visit is the thing that has been, in his head, the most complete piece. He writes the device on the wall third."
+      "text": "He writes slowly. His hand is — for some weeks — not steady. He writes a page a day. He writes the dream first because the dream is the thing that hurts least to put down."
+    },
+    {
+      "t": "narrate",
+      "text": "He writes Boyd's last visit second, because Boyd's last visit is the thing that has been, in his head, the most complete piece. He writes the device on the wall third."
     },
     {
       "t": "narrate",
@@ -417,7 +441,11 @@
     },
     {
       "t": "narrate",
-      "text": "When Sam goes to college in the fall of 2027, the notebook goes with her, in the box of small important things she does not want to lose, and it sits on her dorm desk, and it sits on her apartment shelf, and it eventually, in 2031, sits on her own first kitchen table when she is twenty-three and has, by then, become the person Diego had, in the five days, dreamed she would already be."
+      "text": "When Sam goes to college in the fall of 2027, the notebook goes with her, in the box of small important things she does not want to lose, and it sits on her dorm desk, and it sits on her apartment shelf,"
+    },
+    {
+      "t": "narrate",
+      "text": "and it eventually, in 2031, sits on her own first kitchen table when she is twenty-three and has, by then, become the person Diego had, in the five days, dreamed she would already be."
     },
     {
       "t": "narrate",
@@ -457,7 +485,11 @@
     },
     {
       "t": "narrate",
-      "text": "The Strength card, in some other deck on some other table, would, today, be showing — the figure is not subduing the lion. The figure has her hand, gently, on the lion's open mouth. The lion's open mouth is not, in this card, threatening. The lion's open mouth is, in this card, in the middle of a small private confession the figure is helping the lion to make."
+      "text": "The Strength card, in some other deck on some other table, would, today, be showing — the figure is not subduing the lion. The figure has her hand, gently, on the lion's open mouth."
+    },
+    {
+      "t": "narrate",
+      "text": "The lion's open mouth is not, in this card, threatening. The lion's open mouth is, in this card, in the middle of a small private confession the figure is helping the lion to make."
     },
     {
       "t": "narrate",
@@ -469,7 +501,15 @@
     },
     {
       "t": "narrate",
-      "text": "[shot:insert window]The figure with the gentle hand on the open mouth is — the figure is many people. Sam. Maya. Doyle. Dr. Patel. His grandmother. His mother. Frasier Temple, at his workbench in the warehouse, who has — the imps will report to Diego, eventually, in a chat window six months from now — kept, on a small private server in the warehouse, an audio file of the three-pulse acknowledgment the device on the wall made the night Boyd told Diego he was being given the stomach bug."
+      "text": "[shot:insert window]The figure with the gentle hand on the open mouth is — the figure is many people. Sam. Maya. Doyle. Dr. Patel. His grandmother. His mother."
+    },
+    {
+      "t": "narrate",
+      "text": "Frasier Temple, at his workbench in the warehouse, who has — the imps will report to Diego, eventually, in a chat window six months from now — kept,"
+    },
+    {
+      "t": "narrate",
+      "text": "on a small private server in the warehouse, an audio file of the three-pulse acknowledgment the device on the wall made the night Boyd told Diego he was being given the stomach bug."
     },
     {
       "t": "narrate",
@@ -489,7 +529,11 @@
     },
     {
       "t": "narrate",
-      "text": "In the years to come, when he is an adult and the work he has chosen to do is, in part, the small careful work of helping other people who have been in rooms like the room come to be able to describe their own rooms — trauma counselor, the official title, though Diego will not, generally, use the title aloud — he will, on bad nights, listen to the six seconds."
+      "text": "In the years to come, when he is an adult and the work he has chosen to do is, in part, the small careful work of helping other people who have been in rooms like the room come to be able to describe their own rooms —"
+    },
+    {
+      "t": "narrate",
+      "text": "trauma counselor, the official title, though Diego will not, generally, use the title aloud — he will, on bad nights, listen to the six seconds."
     },
     {
       "t": "narrate",

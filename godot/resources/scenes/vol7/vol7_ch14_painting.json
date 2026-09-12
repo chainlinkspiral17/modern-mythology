@@ -39,15 +39,43 @@
       "t": "show"
     },
     {
-      "text": "[trip:1.2][mood:dawn_warm]The count at five forty-three when Kai's truck came down the last switchback above the town was three hundred and eighteen. Lena had not been writing it down. She had slept beside Tem in Tem's bed with the count at one hundred and eighty-two when she had closed her eyes at eleven-twenty. She had woken at three with the count at two hundred and forty-something — the count had moved in her sleep — and had lain in the dark beside Tem and listened to Tem's breathing and to the rain on the cedar roof. The count had gone up at maybe one a minute. She had gotten up at five.",
+      "text": "[trip:1.2][mood:dawn_warm]The count at five forty-three when Kai's truck came down the last switchback above the town was three hundred and eighteen. Lena had not been writing it down.",
       "t": "narrate"
     },
     {
-      "text": "[shot:insert bowl]She had made coffee in the cabin's cone and had taken a cup to the table where the three bowls were and had sat with them. The cabin had been quiet. Per was asleep in the chair by the wood stove with the wool blanket pulled up to his shoulders. Cale was asleep in the other chair, his head fallen back against the chair's wooden post. Finn was asleep on the floor by the south window. Marina was asleep in the loft above the kitchen. Tem was asleep in the bedroom. Kai was on the daybed with his arm over his eyes.",
+      "text": "She had slept beside Tem in Tem's bed with the count at one hundred and eighty-two when she had closed her eyes at eleven-twenty.",
       "t": "narrate"
     },
     {
-      "text": "[shot:insert bowls]The bowls in the dim pre-dawn light coming through the south window had been doing what they had been doing. The crow on Marit's bowl had its head turned at a different angle than it had been at midnight. The young woman on the substrate-bowl had walked further past the stenciled doorway. The man on Marina's grandfather's bowl had his eyes now slightly above the rim of the bowl he was carved into, looking — by what Lena could read in the pre-dawn — at the kerosene lamp on the table.",
+      "text": "She had woken at three with the count at two hundred and forty-something — the count had moved in her sleep — and had lain in the dark beside Tem and listened to Tem's breathing and to the rain on the cedar roof.",
+      "t": "narrate"
+    },
+    {
+      "text": "The count had gone up at maybe one a minute. She had gotten up at five.",
+      "t": "narrate"
+    },
+    {
+      "text": "[shot:insert bowl]She had made coffee in the cabin's cone and had taken a cup to the table where the three bowls were and had sat with them. The cabin had been quiet.",
+      "t": "narrate"
+    },
+    {
+      "text": "Per was asleep in the chair by the wood stove with the wool blanket pulled up to his shoulders. Cale was asleep in the other chair, his head fallen back against the chair's wooden post.",
+      "t": "narrate"
+    },
+    {
+      "text": "Finn was asleep on the floor by the south window. Marina was asleep in the loft above the kitchen. Tem was asleep in the bedroom. Kai was on the daybed with his arm over his eyes.",
+      "t": "narrate"
+    },
+    {
+      "text": "[shot:insert bowls]The bowls in the dim pre-dawn light coming through the south window had been doing what they had been doing. The crow on Marit's bowl had its head turned at a different angle than it had been at midnight.",
+      "t": "narrate"
+    },
+    {
+      "text": "The young woman on the substrate-bowl had walked further past the stenciled doorway.",
+      "t": "narrate"
+    },
+    {
+      "text": "The man on Marina's grandfather's bowl had his eyes now slightly above the rim of the bowl he was carved into, looking — by what Lena could read in the pre-dawn — at the kerosene lamp on the table.",
       "t": "narrate"
     },
     {
@@ -58,37 +86,45 @@
       "opts": [
         {
           "text": "look at",
-          "goto": 11,
+          "goto": 18,
           "flag": "ch14_bowls_looked",
           "hide_if_flag": "ch14_bowls_looked"
         },
         {
           "text": "turn a bowl",
-          "goto": 13,
+          "goto": 21,
           "flag": "ch14_bowls_turned",
           "hide_if_flag": "ch14_bowls_turned"
         },
         {
           "text": "leave them",
-          "goto": 15
+          "goto": 24
         }
       ]
     },
     {
       "t": "narrate",
-      "text": "Marit's bowl: the crow's head had turned toward the door, which was where Kai would come in. The substrate-bowl: the young woman had her back to Lena now and one hand out, the way a person tests a wall in the dark. Marina's grandfather's bowl: the carved man's eyes were above the rim, and the thing they were looking at was the lamp, and the thing behind the lamp was the south window, and the thing past the window was the town."
-    },
-    {
-      "t": "jump",
-      "goto": 10
+      "text": "Marit's bowl: the crow's head had turned toward the door, which was where Kai would come in. The substrate-bowl: the young woman had her back to Lena now and one hand out, the way a person tests a wall in the dark."
     },
     {
       "t": "narrate",
-      "text": "She turned Marina's grandfather's bowl a quarter, the way Marina turned it at supper so the man faced the food. The man's eyes stayed on the lamp. They had not turned with the bowl. She set it back the way it had been and put both hands around her cup and did not do that again."
+      "text": "Marina's grandfather's bowl: the carved man's eyes were above the rim, and the thing they were looking at was the lamp, and the thing behind the lamp was the south window, and the thing past the window was the town."
     },
     {
       "t": "jump",
-      "goto": 10
+      "goto": 17
+    },
+    {
+      "t": "narrate",
+      "text": "She turned Marina's grandfather's bowl a quarter, the way Marina turned it at supper so the man faced the food. The man's eyes stayed on the lamp. They had not turned with the bowl."
+    },
+    {
+      "t": "narrate",
+      "text": "She set it back the way it had been and put both hands around her cup and did not do that again."
+    },
+    {
+      "t": "jump",
+      "goto": 17
     },
     {
       "text": "She had carried the cup back to the bedroom and had sat on the edge of the bed.",
@@ -227,7 +263,15 @@
       "t": "narrate"
     },
     {
-      "text": "She had gotten the canvas bag from the table with the eighth piece in it. Kai had texted Lena at four to say he would drive his own truck down, that he wanted to be at the shop early, that he would stop by the alley by seven-thirty. He had pulled out of the clearing before Cale had finished scraping the windshield. She had gotten in Cale's truck. Cale had not, on the road, said anything. She had counted, in her head, by ones, all the way to the town.",
+      "text": "She had gotten the canvas bag from the table with the eighth piece in it.",
+      "t": "narrate"
+    },
+    {
+      "text": "Kai had texted Lena at four to say he would drive his own truck down, that he wanted to be at the shop early, that he would stop by the alley by seven-thirty.",
+      "t": "narrate"
+    },
+    {
+      "text": "He had pulled out of the clearing before Cale had finished scraping the windshield. She had gotten in Cale's truck. Cale had not, on the road, said anything. She had counted, in her head, by ones, all the way to the town.",
       "t": "narrate"
     },
     {
@@ -245,11 +289,23 @@
       "t": "show"
     },
     {
-      "text": "Cale parked behind the Salty Tome. The alley at five forty-five was the gray-blue of late August on the Oregon coast at the hour before the sun would be making itself known through the cloud cover. The rain had been steady all night. The puddles in the alley were the puddles. The dumpster behind Petra's was the dumpster.",
+      "text": "Cale parked behind the Salty Tome. The alley at five forty-five was the gray-blue of late August on the Oregon coast at the hour before the sun would be making itself known through the cloud cover.",
       "t": "narrate"
     },
     {
-      "text": "[shot:establish]She stood at the alley entrance and looked at the wall. The Starfish Nebula mural in the gray-blue light was the mural. The patch had grown overnight — by what she could see at this distance, the patch had taken the right side of the sandstone arches sometime between when she had left the apartment yesterday morning and now. The patch was the size of her torso, maybe slightly bigger. The patch was the place where the face was going to go.",
+      "text": "The rain had been steady all night. The puddles in the alley were the puddles. The dumpster behind Petra's was the dumpster.",
+      "t": "narrate"
+    },
+    {
+      "text": "[shot:establish]She stood at the alley entrance and looked at the wall. The Starfish Nebula mural in the gray-blue light was the mural.",
+      "t": "narrate"
+    },
+    {
+      "text": "The patch had grown overnight — by what she could see at this distance, the patch had taken the right side of the sandstone arches sometime between when she had left the apartment yesterday morning and now.",
+      "t": "narrate"
+    },
+    {
+      "text": "The patch was the size of her torso, maybe slightly bigger. The patch was the place where the face was going to go.",
       "t": "narrate"
     },
     {
@@ -257,7 +313,11 @@
       "t": "narrate"
     },
     {
-      "text": "She turned. Cale was at the alley entrance. He had two coffees — he had been to the Daily Grind through the alley shortcut at the back, in for two minutes, back with two takeaway cups. He stood at the entrance of the alley with the two cups in his hands. He did not, for a count, come any further in.",
+      "text": "She turned. Cale was at the alley entrance. He had two coffees — he had been to the Daily Grind through the alley shortcut at the back, in for two minutes, back with two takeaway cups.",
+      "t": "narrate"
+    },
+    {
+      "text": "He stood at the entrance of the alley with the two cups in his hands. He did not, for a count, come any further in.",
       "t": "narrate"
     },
     {
@@ -374,7 +434,13 @@
     },
     {
       "char": "lena",
-      "text": "He won't. The alley is closed at the far end. The far end is the brick of the laundromat. The alley has only the one entrance. He could come in. I do not think he will. He has not, in any of his three visits to me, come down the alley. He comes in the front of the bookstore. He will go to the bookstore at eleven. We will be done by then.",
+      "text": "He won't. The alley is closed at the far end. The far end is the brick of the laundromat. The alley has only the one entrance. He could come in. I do not think he will.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "lena",
+      "text": "He has not, in any of his three visits to me, come down the alley. He comes in the front of the bookstore. He will go to the bookstore at eleven. We will be done by then.",
       "expr": "serious",
       "t": "say"
     },
@@ -395,15 +461,35 @@
       "t": "narrate"
     },
     {
-      "text": "[shot:insert cedar]She took out the eighth piece. She held it in her hand. The cedar in the alley light was the cedar. The face on it was the face. The eyes were closed. The hair was curling. The angle of the face had turned slightly — in the alley this morning the face was, by Lena's read of it, looking up. The face had its closed eyes facing the brick wall above the patch, looking at the place on the wall where the face was about to be painted.",
+      "text": "[shot:insert cedar]She took out the eighth piece. She held it in her hand. The cedar in the alley light was the cedar. The face on it was the face. The eyes were closed. The hair was curling.",
       "t": "narrate"
     },
     {
-      "text": "She set the cedar on the milk crate in front of the cup. She unwrapped, from the canvas bag, the brush. The brush was the sable Finn had given her — his grandfather's brush, inherited in '49, the one Finn had used in October 2050 to do the quick portrait of Lena she had told him she hated. She would give it back.",
+      "text": "The angle of the face had turned slightly — in the alley this morning the face was, by Lena's read of it, looking up.",
       "t": "narrate"
     },
     {
-      "text": "She opened the jar of bone black she had brought down in the canvas bag. The bone black was the pigment she ground from the batch she made every six months in the studio behind the Daily Grind — by her own reading of how it took to brick, the right black for the wall. The bone black was the black she had used for the octopus's eyes in 2050. She wet the brush in the jar of medium. She set the brush against the wall.",
+      "text": "The face had its closed eyes facing the brick wall above the patch, looking at the place on the wall where the face was about to be painted.",
+      "t": "narrate"
+    },
+    {
+      "text": "She set the cedar on the milk crate in front of the cup. She unwrapped, from the canvas bag, the brush.",
+      "t": "narrate"
+    },
+    {
+      "text": "The brush was the sable Finn had given her — his grandfather's brush, inherited in '49, the one Finn had used in October 2050 to do the quick portrait of Lena she had told him she hated. She would give it back.",
+      "t": "narrate"
+    },
+    {
+      "text": "She opened the jar of bone black she had brought down in the canvas bag.",
+      "t": "narrate"
+    },
+    {
+      "text": "The bone black was the pigment she ground from the batch she made every six months in the studio behind the Daily Grind — by her own reading of how it took to brick, the right black for the wall.",
+      "t": "narrate"
+    },
+    {
+      "text": "The bone black was the black she had used for the octopus's eyes in 2050. She wet the brush in the jar of medium. She set the brush against the wall.",
       "t": "narrate"
     },
     {
@@ -415,15 +501,27 @@
       "t": "narrate"
     },
     {
-      "text": "She had taken the cedar's face into her, by some accident of how looking at the cedar in the alley light at five fifty-something had moved the face from the cedar to the inside of her head, and she was now painting from the inside of her head. The brush did not, in those hours, leave the wall.",
+      "text": "She had taken the cedar's face into her, by some accident of how looking at the cedar in the alley light at five fifty-something had moved the face from the cedar to the inside of her head, and she was now painting from the inside of her head.",
       "t": "narrate"
     },
     {
-      "text": "The brush did the strokes the count told it to do. She was at three hundred and forty-something when she had set the brush against the wall at five fifty-eight. By six-twenty the count was four hundred. By seven the count was four hundred and fifty. By eight the count was five-fifty. The count had slowed since she had started painting, as if the substrate had been releasing the count at the rate the painting could take it.",
+      "text": "The brush did not, in those hours, leave the wall.",
       "t": "narrate"
     },
     {
-      "text": "She painted the closed-eyed face. She painted from the hair down. She painted the curling of the hair in the bone black against the brick — long, dark-when-wet, curling at the ends. She painted the line of the forehead. She painted the closed lids of the eyes. She painted the lashes against the closed lids. She painted the bridge of the nose.",
+      "text": "The brush did the strokes the count told it to do. She was at three hundred and forty-something when she had set the brush against the wall at five fifty-eight. By six-twenty the count was four hundred.",
+      "t": "narrate"
+    },
+    {
+      "text": "By seven the count was four hundred and fifty. By eight the count was five-fifty. The count had slowed since she had started painting, as if the substrate had been releasing the count at the rate the painting could take it.",
+      "t": "narrate"
+    },
+    {
+      "text": "She painted the closed-eyed face. She painted from the hair down. She painted the curling of the hair in the bone black against the brick — long, dark-when-wet, curling at the ends. She painted the line of the forehead.",
+      "t": "narrate"
+    },
+    {
+      "text": "She painted the closed lids of the eyes. She painted the lashes against the closed lids. She painted the bridge of the nose.",
       "t": "narrate"
     },
     {
@@ -435,7 +533,11 @@
       "t": "narrate"
     },
     {
-      "text": "She painted the line of the jaw. She painted the curve of the neck where the neck became the collarbone. She did not paint the body. The body was not, by what the substrate had cleared on the wall, in the count. The body would be on a wall somewhere else — possibly on the alley wall in some later week, possibly on a different wall in a different month. The body was not Lena's painting today.",
+      "text": "She painted the line of the jaw. She painted the curve of the neck where the neck became the collarbone. She did not paint the body. The body was not, by what the substrate had cleared on the wall, in the count.",
+      "t": "narrate"
+    },
+    {
+      "text": "The body would be on a wall somewhere else — possibly on the alley wall in some later week, possibly on a different wall in a different month. The body was not Lena's painting today.",
       "t": "narrate"
     },
     {
@@ -493,7 +595,11 @@
       "t": "say"
     },
     {
-      "text": "[shot:closeup lena]She did not, for a count, do anything. She looked at the face on the wall. The face was in the cleared space of the patch. The face filled the patch. The face had been painted into the place the substrate had cleared. The patch was no longer eating. The substrate had — by what Cale was reading from the alley entrance — finished what it had been doing on this wall.",
+      "text": "[shot:closeup lena]She did not, for a count, do anything. She looked at the face on the wall. The face was in the cleared space of the patch. The face filled the patch. The face had been painted into the place the substrate had cleared.",
+      "t": "narrate"
+    },
+    {
+      "text": "The patch was no longer eating. The substrate had — by what Cale was reading from the alley entrance — finished what it had been doing on this wall.",
       "t": "narrate"
     },
     {

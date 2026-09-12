@@ -188,7 +188,11 @@
       "t": "narrate"
     },
     {
-      "text": "A man had come into the reading room and sat in the chair across from her and read a book. After a long time he had said the bench is doing what you think it is doing, and when she had asked what he meant he had said he had been watching her sit on it and that in eight years at the museum he had watched maybe four people sit on the bench in a way the bench had responded to, and she was the fourth.",
+      "text": "A man had come into the reading room and sat in the chair across from her and read a book. After a long time he had said the bench is doing what you think it is doing,",
+      "t": "narrate"
+    },
+    {
+      "text": "and when she had asked what he meant he had said he had been watching her sit on it and that in eight years at the museum he had watched maybe four people sit on the bench in a way the bench had responded to, and she was the fourth.",
       "t": "narrate"
     },
     {
@@ -199,7 +203,13 @@
     },
     {
       "char": "tem",
-      "text": "I didn't know what it had done at the time. I knew I'd been registering something. The bench had felt warm. Wood doesn't feel warm. The bench had a small carved spiral on the underside of the seat that I had been running my thumb across without noticing I was doing it.",
+      "text": "I didn't know what it had done at the time. I knew I'd been registering something. The bench had felt warm. Wood doesn't feel warm.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "The bench had a small carved spiral on the underside of the seat that I had been running my thumb across without noticing I was doing it.",
       "expr": "neutral",
       "t": "say"
     },
@@ -276,7 +286,11 @@
       "t": "say"
     },
     {
-      "text": "He sat back down. He looked at his coffee for a minute. When he looked back up at her his face was not what she had expected. He was not annoyed and he was not concerned in the careful way Lena would have been concerned. He was just present. He was looking at her the way he looked at the crow on his fencepost.",
+      "text": "He sat back down. He looked at his coffee for a minute. When he looked back up at her his face was not what she had expected. He was not annoyed and he was not concerned in the careful way Lena would have been concerned.",
+      "t": "narrate"
+    },
+    {
+      "text": "He was just present. He was looking at her the way he looked at the crow on his fencepost.",
       "t": "narrate"
     },
     {
@@ -367,7 +381,19 @@
     },
     {
       "char": "tem",
-      "text": "I was going to tell all three of you tomorrow at the cabin. I am still going to tell all three of you tomorrow at the cabin. I'm telling you this afternoon because you came up alone and the cabin made the room for it and I would rather not do the telling for the first time in front of all three of you. I have done that twice already this week. It hasn't gone well.",
+      "text": "I was going to tell all three of you tomorrow at the cabin. I am still going to tell all three of you tomorrow at the cabin.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "I'm telling you this afternoon because you came up alone and the cabin made the room for it and I would rather not do the telling for the first time in front of all three of you. I have done that twice already this week.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "It hasn't gone well.",
       "expr": "neutral",
       "t": "say"
     },
@@ -410,11 +436,19 @@
       "t": "narrate"
     },
     {
-      "text": "She had, for two years, been thinking that the patches on the murals were leaking from the tower above old-Yachats. She had not gone to the tower. She had not, in two years of thinking about it, walked the access road. The man who had lived in the tower was Nate Dean. He had died in 2042. The tower had been sealed since.",
+      "text": "She had, for two years, been thinking that the patches on the murals were leaking from the tower above old-Yachats. She had not gone to the tower. She had not, in two years of thinking about it, walked the access road.",
       "t": "narrate"
     },
     {
-      "text": "She did not know what was in it. She had been afraid of it. Brandon Tillman had been investigating Dean — that was, she was fairly sure, why Brandon had moved to the museum-town in 2042, the year Dean died, though Brandon had not said it in those words and she had not asked.",
+      "text": "The man who had lived in the tower was Nate Dean. He had died in 2042. The tower had been sealed since.",
+      "t": "narrate"
+    },
+    {
+      "text": "She did not know what was in it. She had been afraid of it.",
+      "t": "narrate"
+    },
+    {
+      "text": "Brandon Tillman had been investigating Dean — that was, she was fairly sure, why Brandon had moved to the museum-town in 2042, the year Dean died, though Brandon had not said it in those words and she had not asked.",
       "t": "narrate"
     },
     {
@@ -422,7 +456,11 @@
       "t": "narrate"
     },
     {
-      "text": "She did not know what was leaking from the tower or how to stop it or whether stopping it was the right thing to do or whether there was someone living in the town now who was trying to stop them from stopping it. She did not know any of it. She had been pretending, badly, to know more than she did because the pretending had been the only way she had figured out to keep going.",
+      "text": "She did not know what was leaking from the tower or how to stop it or whether stopping it was the right thing to do or whether there was someone living in the town now who was trying to stop them from stopping it.",
+      "t": "narrate"
+    },
+    {
+      "text": "She did not know any of it. She had been pretending, badly, to know more than she did because the pretending had been the only way she had figured out to keep going.",
       "t": "narrate"
     },
     {
@@ -460,7 +498,11 @@
       "t": "say"
     },
     {
-      "text": "[shot:closeup tem]She put her face in her hands. She held it there for a count of about six and took her hands away. She was not going to cry. She had thought, on the drive up, that she might cry when she finally said all of it out loud, and now that she had said it she felt instead a kind of low-grade sickness and a tiredness at the back of her neck that she recognized as the first physical signal of having gotten through a thing.",
+      "text": "[shot:closeup tem]She put her face in her hands. She held it there for a count of about six and took her hands away. She was not going to cry.",
+      "t": "narrate"
+    },
+    {
+      "text": "She had thought, on the drive up, that she might cry when she finally said all of it out loud, and now that she had said it she felt instead a kind of low-grade sickness and a tiredness at the back of her neck that she recognized as the first physical signal of having gotten through a thing.",
       "t": "narrate"
     },
     {
@@ -489,7 +531,13 @@
     },
     {
       "char": "tem",
-      "text": "He said they were the only things that had survived an event he didn't want to describe. He said he thought they meant something and that he didn't, by 2050, know what. He said he was tired and dying. He said he was going to give them to whoever the next person was. He said he was going to figure out who that was before he went.",
+      "text": "He said they were the only things that had survived an event he didn't want to describe. He said he thought they meant something and that he didn't, by 2050, know what. He said he was tired and dying.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "He said he was going to give them to whoever the next person was. He said he was going to figure out who that was before he went.",
       "expr": "neutral",
       "t": "say"
     },
@@ -580,11 +628,19 @@
       "t": "narrate"
     },
     {
-      "text": "She told him she had finished re-reading the John Frank novel on Tuesday. He asked how it had ended this time. She said it had ended differently than the first two readings, and he asked her what that meant, and she said she did not know yet and would tell him when she had figured it out. He let her.",
+      "text": "She told him she had finished re-reading the John Frank novel on Tuesday. He asked how it had ended this time.",
       "t": "narrate"
     },
     {
-      "text": "Around four-thirty he heated up the soup she had taken out of the cooler and cut two pieces of the bread that had come up with her on Wednesday, and they ate at the table without talking much. The cabin held them at sixty-three by the thermometer. The rain on the roof did not change.",
+      "text": "She said it had ended differently than the first two readings, and he asked her what that meant, and she said she did not know yet and would tell him when she had figured it out. He let her.",
+      "t": "narrate"
+    },
+    {
+      "text": "Around four-thirty he heated up the soup she had taken out of the cooler and cut two pieces of the bread that had come up with her on Wednesday, and they ate at the table without talking much.",
+      "t": "narrate"
+    },
+    {
+      "text": "The cabin held them at sixty-three by the thermometer. The rain on the roof did not change.",
       "t": "narrate"
     },
     {
@@ -600,7 +656,11 @@
       "t": "hide"
     },
     {
-      "text": "The crow flew off the dashboard as he opened the truck door, made one slow circle of the clearing, and landed on his right shoulder. He got into the truck. The crow stayed on his shoulder. He drove down the road, and Tem stood on the porch with her arms folded and watched the truck disappear into the cedars.",
+      "text": "The crow flew off the dashboard as he opened the truck door, made one slow circle of the clearing, and landed on his right shoulder. He got into the truck. The crow stayed on his shoulder.",
+      "t": "narrate"
+    },
+    {
+      "text": "He drove down the road, and Tem stood on the porch with her arms folded and watched the truck disappear into the cedars.",
       "t": "narrate"
     },
     {
@@ -618,7 +678,11 @@
       "t": "show"
     },
     {
-      "text": "[mood:candlelight_low][shot:insert bowl~]She came back inside. She banked the stove. She washed the cups. She took down the small cedar bowl from the shelf above the kerosene lamp and set it on the table where the wood had been and sat with her hands on either side of it and looked at it for a long count.",
+      "text": "[mood:candlelight_low][shot:insert bowl~]She came back inside. She banked the stove. She washed the cups.",
+      "t": "narrate"
+    },
+    {
+      "text": "She took down the small cedar bowl from the shelf above the kerosene lamp and set it on the table where the wood had been and sat with her hands on either side of it and looked at it for a long count.",
       "t": "narrate"
     },
     {

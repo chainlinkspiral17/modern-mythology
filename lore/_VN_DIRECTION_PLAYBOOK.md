@@ -158,6 +158,45 @@ no-op (fallback discipline — a script must never crash the reader).
 
 ## Recent lessons
 
+### 2026-09-12 · ONE PAGE AT A TIME — the box was shrinking the font
+
+Deck read: "some sections have too much text on screen at once and it
+gets too small and cramped. Those may need to be made into multiple."
+
+- **The box was already doing the cramping.** `DialogueBox` keeps its
+  full 34 px body up to 260 visible characters and then AUTO-FITS —
+  steps the font toward half size until the whole passage fits the
+  box. 2,219 narrate / say / think nodes were over 260; the longest,
+  the Judgement's New Orleans paragraph, was 1,566 characters — a
+  17 px wall of type over the picture. The engine's fallback is what
+  the Deck saw; the data was asking it to.
+- **The fix is pages, not a smaller floor.** `page_split.py` packs
+  sentences greedily to 230 characters, breaking a sentence past 300
+  at the em dash / semicolon / comma nearest its middle, then at a
+  conjunction, then at any space (a page turn mid-list reads; a wall
+  does not). 2,155 nodes in 226 files became 3,306 extra pages.
+  Directives stay on the first page (a cut fires once), `voice` stays
+  on the first page, `char` / `expr` / `when_flag` copy to every page.
+- **Node indices are load-bearing.** Choice `goto`, choice
+  `check.pass` / `.fail` and jump `goto` reference node INDICES; every
+  one was re-pointed to the first page of the node it named and the
+  story audit's range checks confirmed them. A save file's node index
+  lands a few lines off inside a split chapter, once.
+- **Splice by span, never re-serialise.** 211 of 313 scene files do
+  not round-trip byte-for-byte through json.dumps. Each node's exact
+  span comes from `json.JSONDecoder.raw_decode`; only those spans are
+  replaced, pages are dumped in the node's own key order and the
+  file's own indent, and the result is parsed before it is written.
+- **Two audits measured in nodes, and a page is not a node.** The
+  inside/out audit's "a window in the last two lines" look-back and
+  the mood audit's three-node opening window both shifted after the
+  split without a word of prose changing. Both now measure in what
+  they mean: four pages, and 450 characters.
+- New gate `page_length_audit.py`: no narrate / say / think page over
+  300 visible characters (the two `[fade]` passages excused). 19,054
+  pages, zero.
+
+
 ### 2026-09-12 · PER-PRESET MARKERS — one .tscn, several rooms
 
 - **A marker resolved by name from the whole .tscn does not know

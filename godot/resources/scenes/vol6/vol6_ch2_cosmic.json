@@ -39,11 +39,19 @@
     },
     {
       "t": "narrate",
-      "text": "She has been re-alphabetizing the indie rack since ten. Rick had not asked her to. Rick was, in fact, napping in the back office when she'd come in at nine-forty-five with two iced coffees from the Kwik Stop — one for him, one for her — and had set his on the counter and gone to the indie rack without a word."
+      "text": "She has been re-alphabetizing the indie rack since ten. Rick had not asked her to."
     },
     {
       "t": "narrate",
-      "text": "Rick had not woken up for another forty minutes. When he had, he had come out of the back office, nodded at the coffee, nodded at Maya, taken his coffee, and returned to the office to do whatever it was Rick did in the office when the store was quiet, which was, as far as Maya could tell, mostly sit."
+      "text": "Rick was, in fact, napping in the back office when she'd come in at nine-forty-five with two iced coffees from the Kwik Stop — one for him, one for her — and had set his on the counter and gone to the indie rack without a word."
+    },
+    {
+      "t": "narrate",
+      "text": "Rick had not woken up for another forty minutes."
+    },
+    {
+      "t": "narrate",
+      "text": "When he had, he had come out of the back office, nodded at the coffee, nodded at Maya, taken his coffee, and returned to the office to do whatever it was Rick did in the office when the store was quiet, which was, as far as Maya could tell, mostly sit."
     },
     {
       "t": "narrate",
@@ -271,7 +279,13 @@
       "t": "say",
       "char": "Rick",
       "expr": "neutral",
-      "text": "[shot:closeup person_b]\"Yes. All three. Your dad is — your dad is not in a good place, Maya. But before he wasn't in a good place, he spent a long time making sure that if he ever wasn't in a good place, there would be people around you who could be. I am one of those people. F.T. is another. Your grandmother knew some of this before you came. Not all. Enough.\""
+      "text": "[shot:closeup person_b]\"Yes. All three. Your dad is — your dad is not in a good place, Maya. But before he wasn't in a good place, he spent a long time making sure that if he ever wasn't in a good place, there would be people around you who could be."
+    },
+    {
+      "t": "say",
+      "char": "Rick",
+      "expr": "neutral",
+      "text": "I am one of those people. F.T. is another. Your grandmother knew some of this before you came. Not all. Enough.\""
     },
     {
       "t": "say",
@@ -287,7 +301,13 @@
       "t": "say",
       "char": "Rick",
       "expr": "neutral",
-      "text": "\"That's a question you're going to have to ask him yourself, kiddo. I'm not allowed to answer it for him. I can tell you he's a friend. I can tell you he's been watching this town for longer than I have. I can tell you he's doing what he can from where he is. That's what I've got.\""
+      "text": "\"That's a question you're going to have to ask him yourself, kiddo. I'm not allowed to answer it for him. I can tell you he's a friend. I can tell you he's been watching this town for longer than I have."
+    },
+    {
+      "t": "say",
+      "char": "Rick",
+      "expr": "neutral",
+      "text": "I can tell you he's doing what he can from where he is. That's what I've got.\""
     },
     {
       "t": "say",
@@ -327,7 +347,13 @@
       "t": "say",
       "char": "Rick",
       "expr": "neutral",
-      "text": "\"Take lunch early. There's a bookstore in New Auburn called The Bindery. It's owned by a guy named Hal. Hal is a friend of mine. Go in. Ask for the Borges section. Pick up the copy of Labyrinths on the third shelf from the top. Inside there will be an envelope. Bring the envelope back. Don't open it. Bring me my sandwich from the deli across the street while you're there. Turkey, no mayo, extra pickle. Here's twenty for the sandwich and the gas.\""
+      "text": "\"Take lunch early. There's a bookstore in New Auburn called The Bindery. It's owned by a guy named Hal. Hal is a friend of mine. Go in. Ask for the Borges section. Pick up the copy of Labyrinths on the third shelf from the top."
+    },
+    {
+      "t": "say",
+      "char": "Rick",
+      "expr": "neutral",
+      "text": "Inside there will be an envelope. Bring the envelope back. Don't open it. Bring me my sandwich from the deli across the street while you're there. Turkey, no mayo, extra pickle. Here's twenty for the sandwich and the gas.\""
     },
     {
       "t": "narrate",

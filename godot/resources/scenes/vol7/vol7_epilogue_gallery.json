@@ -36,7 +36,11 @@
    "caption": "Estuary 7. Planner's view. The river coming down from the cedars."
   },
   {
-   "text": "The coastal template from above. The river coming down from the cedars to the east. The bar of sand at the mouth. The flats north of the river. The bluff south of it. The forested ridge behind the bluff. The drone-palette docked at the right of the view. The labor-crew palette docked below the drones. The construction primitives docked below the labor crews. The clock at the upper-right showing zero.",
+   "text": "The coastal template from above. The river coming down from the cedars to the east. The bar of sand at the mouth. The flats north of the river. The bluff south of it. The forested ridge behind the bluff.",
+   "t": "narrate"
+  },
+  {
+   "text": "The drone-palette docked at the right of the view. The labor-crew palette docked below the drones. The construction primitives docked below the labor crews. The clock at the upper-right showing zero.",
    "t": "narrate"
   },
   {
@@ -64,7 +68,15 @@
    "t": "narrate"
   },
   {
-   "text": "The bluff at the southwest of the coastal template filled first. Drones placed themselves at marked positions along the bluff above the river-mouth. The drones laid the footprint of a structure on the bluff — seventy feet on a side. The footprint extruded upward through seven floor-levels. Smart-glass and cedar, seven floors, an indoor garden at the seventh-floor roof level, a portal-room marked on the fourth floor.",
+   "text": "The bluff at the southwest of the coastal template filled first. Drones placed themselves at marked positions along the bluff above the river-mouth.",
+   "t": "narrate"
+  },
+  {
+   "text": "The drones laid the footprint of a structure on the bluff — seventy feet on a side. The footprint extruded upward through seven floor-levels.",
+   "t": "narrate"
+  },
+  {
+   "text": "Smart-glass and cedar, seven floors, an indoor garden at the seventh-floor roof level, a portal-room marked on the fourth floor.",
    "t": "narrate"
   },
   {
@@ -76,7 +88,11 @@
    "t": "narrate"
   },
   {
-   "text": "Hemlock and Main. The bakery at the corner of Main and Pine. ChillWave Video on Main. The Salty Tome at the alley behind the bookstore. The Daily Grind at the corner of Cedar and Hemlock. The Missing Link diner at the roadside. The co-op. The laundromat. Lena's apartment on Cedar Place. Tem's apartment on Cedar Place. The cabin up the road from town.",
+   "text": "Hemlock and Main. The bakery at the corner of Main and Pine. ChillWave Video on Main. The Salty Tome at the alley behind the bookstore. The Daily Grind at the corner of Cedar and Hemlock. The Missing Link diner at the roadside.",
+   "t": "narrate"
+  },
+  {
+   "text": "The co-op. The laundromat. Lena's apartment on Cedar Place. Tem's apartment on Cedar Place. The cabin up the road from town.",
    "t": "narrate"
   },
   {
@@ -100,7 +116,11 @@
    "t": "narrate"
   },
   {
-   "text": "Four small radiating points appeared on the coast. The first: Marit's house in Smolvud, on the corner of Pine and Cedar. The second: Eddvard's small mill on the river, just upstream of the cabin. The third: Lindholm's office building in Eugene, off the template's southeastern frame. The fourth: Olaus's house at a small cove south of Bandon, off the template's southern frame.",
+   "text": "Four small radiating points appeared on the coast. The first: Marit's house in Smolvud, on the corner of Pine and Cedar. The second: Eddvard's small mill on the river, just upstream of the cabin.",
+   "t": "narrate"
+  },
+  {
+   "text": "The third: Lindholm's office building in Eugene, off the template's southeastern frame. The fourth: Olaus's house at a small cove south of Bandon, off the template's southern frame.",
    "t": "narrate"
   },
   {
@@ -108,7 +128,11 @@
    "t": "narrate"
   },
   {
-   "text": "The substrate was showing her what Olaf had submitted in 1971 when he was thirty-three. The plan he had laid out before he had carved the bowls in '74 through '77 and before he had built the cabin with Eddvard in '79. Olaf's plan had been the network as architecture. He had built it in the world.",
+   "text": "The substrate was showing her what Olaf had submitted in 1971 when he was thirty-three. The plan he had laid out before he had carved the bowls in '74 through '77 and before he had built the cabin with Eddvard in '79.",
+   "t": "narrate"
+  },
+  {
+   "text": "Olaf's plan had been the network as architecture. He had built it in the world.",
    "t": "narrate"
   },
   {
@@ -176,11 +200,19 @@
    "t": "narrate"
   },
   {
-   "text": "Aud's submission, after she had left the foundation in Eugene in 2030. Her plan had been to open a diner in the small Oregon coastal town she had identified as being downstream of a substrate-leak. The submission said only: the smallest possible permanent gathering-place at the edge of a town not yet known. She had built the diner in 2031. The town had grown up around the diner.",
+   "text": "Aud's submission, after she had left the foundation in Eugene in 2030. Her plan had been to open a diner in the small Oregon coastal town she had identified as being downstream of a substrate-leak.",
    "t": "narrate"
   },
   {
-   "text": "Aud's Estuary 7 build was the diner as the social anchor of the town. The Tuesday-night dinners — that Aud, this very Tuesday, was probably preparing to hold for Jameson and Hannes and Roy and whoever else came — were the substrate beginning to use the diner the way her submission had anticipated.",
+   "text": "The submission said only: the smallest possible permanent gathering-place at the edge of a town not yet known. She had built the diner in 2031. The town had grown up around the diner.",
+   "t": "narrate"
+  },
+  {
+   "text": "Aud's Estuary 7 build was the diner as the social anchor of the town.",
+   "t": "narrate"
+  },
+  {
+   "text": "The Tuesday-night dinners — that Aud, this very Tuesday, was probably preparing to hold for Jameson and Hannes and Roy and whoever else came — were the substrate beginning to use the diner the way her submission had anticipated.",
    "t": "narrate"
   },
   {
@@ -204,11 +236,19 @@
    "t": "narrate"
   },
   {
-   "text": "Brandon had laid out the substrate-template that the Oneironautics team had later commercialized as a stick. He had submitted the template in 2046. He had built it as his Estuary 7 build. The template had become Tideline Survey as a separate commercial slow-stick in 2048, with Brandon credited as the original template-submitter.",
+   "text": "Brandon had laid out the substrate-template that the Oneironautics team had later commercialized as a stick. He had submitted the template in 2046. He had built it as his Estuary 7 build.",
    "t": "narrate"
   },
   {
-   "text": "Brandon had built his grief. He had laid out the pools where his dead would wait for him. He had played the stick — the Tideline Survey commercialization of his own template — thirty-eight times between January and October of 2050. He had died in November of 2050.",
+   "text": "The template had become Tideline Survey as a separate commercial slow-stick in 2048, with Brandon credited as the original template-submitter.",
+   "t": "narrate"
+  },
+  {
+   "text": "Brandon had built his grief. He had laid out the pools where his dead would wait for him.",
+   "t": "narrate"
+  },
+  {
+   "text": "He had played the stick — the Tideline Survey commercialization of his own template — thirty-eight times between January and October of 2050. He had died in November of 2050.",
    "t": "narrate"
   },
   {
@@ -216,7 +256,11 @@
    "t": "narrate"
   },
   {
-   "text": "Brandon's build had passed to Finn when the substrate had given Finn the crow in November of 2050. It was now also Finn's. Finn — at the chair behind Tem this Tuesday morning, watching her play through the headset's small green LED — was carrying Brandon's build into the next thing.",
+   "text": "Brandon's build had passed to Finn when the substrate had given Finn the crow in November of 2050. It was now also Finn's.",
+   "t": "narrate"
+  },
+  {
+   "text": "Finn — at the chair behind Tem this Tuesday morning, watching her play through the headset's small green LED — was carrying Brandon's build into the next thing.",
    "t": "narrate"
   },
   {
@@ -296,7 +340,11 @@
    "t": "narrate"
   },
   {
-   "text": "The nine builds held in the planner's-view as nine layers of architecture across the coastal template. The tower at the bluff. The cabin and the four radiating points. The mill. The grove. The diner. The tide-pools. The press in Bern, rendered as a small inset at the template's northeast corner. The foundation in Eugene, rendered as a similar inset at the southeast. The cove in Bandon at the southern edge.",
+   "text": "The nine builds held in the planner's-view as nine layers of architecture across the coastal template. The tower at the bluff. The cabin and the four radiating points. The mill. The grove. The diner. The tide-pools.",
+   "t": "narrate"
+  },
+  {
+   "text": "The press in Bern, rendered as a small inset at the template's northeast corner. The foundation in Eugene, rendered as a similar inset at the southeast. The cove in Bandon at the southern edge.",
    "t": "narrate"
   },
   {
@@ -304,7 +352,11 @@
    "t": "narrate"
   },
   {
-   "text": "She gazed at Dean's tower. She gazed at Olaf's cabin and at the bowl-radiating into the four households. She gazed at Eddvard's mill. She gazed at Marit's still-growing grove. She gazed at Aud's diner at the roadside. She gazed at Brandon's two pools. She gazed at the Schencks' press in Bern. She gazed at Lindholm's foundation in Eugene. She gazed at Olaus's small cove in Bandon.",
+   "text": "She gazed at Dean's tower. She gazed at Olaf's cabin and at the bowl-radiating into the four households. She gazed at Eddvard's mill. She gazed at Marit's still-growing grove. She gazed at Aud's diner at the roadside.",
+   "t": "narrate"
+  },
+  {
+   "text": "She gazed at Brandon's two pools. She gazed at the Schencks' press in Bern. She gazed at Lindholm's foundation in Eugene. She gazed at Olaus's small cove in Bandon.",
    "t": "narrate"
   },
   {
@@ -312,7 +364,11 @@
    "t": "narrate"
   },
   {
-   "text": "She did not register any one of them as more than the others. The nine builds held at the same elevation in the planner's-view. They were nine lives. Each life was a submission. Each submission had become a structure in the world. Each structure had become a piece of what Tem had been living in.",
+   "text": "She did not register any one of them as more than the others. The nine builds held at the same elevation in the planner's-view. They were nine lives. Each life was a submission. Each submission had become a structure in the world.",
+   "t": "narrate"
+  },
+  {
+   "text": "Each structure had become a piece of what Tem had been living in.",
    "t": "narrate"
   },
   {
@@ -336,7 +392,15 @@
    "t": "narrate"
   },
   {
-   "text": "[shot:insert cove]The substrate began to fade the nine builds. The fade was slow. The layers went translucent in order — Olaus's cove first, then Lindholm's foundation, then the Schencks' press, then Brandon's pools, then Aud's diner, then Marit's grove, then Eddvard's mill, then Olaf's cabin-and-network, last Dean's tower-and-town. Each fade took perhaps fifteen seconds. The gallery emptied.",
+   "text": "[shot:insert cove]The substrate began to fade the nine builds. The fade was slow.",
+   "t": "narrate"
+  },
+  {
+   "text": "The layers went translucent in order — Olaus's cove first, then Lindholm's foundation, then the Schencks' press, then Brandon's pools, then Aud's diner, then Marit's grove, then Eddvard's mill, then Olaf's cabin-and-network, last Dean's tower-and-town.",
+   "t": "narrate"
+  },
+  {
+   "text": "Each fade took perhaps fifteen seconds. The gallery emptied.",
    "t": "narrate"
   },
   {

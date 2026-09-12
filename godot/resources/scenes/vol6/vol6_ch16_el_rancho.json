@@ -33,7 +33,11 @@
     },
     {
       "t": "narrate",
-      "text": "Jessa runs the team meeting at ten oh-two. The team meeting tonight is shorter than usual because the team meeting tomorrow night is going to be the inventory meeting and Jessa has, in her shift-supervisor way, decided that tonight's prep work is going to be done in the doing rather than in the meeting about the doing."
+      "text": "Jessa runs the team meeting at ten oh-two."
+    },
+    {
+      "t": "narrate",
+      "text": "The team meeting tonight is shorter than usual because the team meeting tomorrow night is going to be the inventory meeting and Jessa has, in her shift-supervisor way, decided that tonight's prep work is going to be done in the doing rather than in the meeting about the doing."
     },
     {
       "t": "narrate",
@@ -41,7 +45,19 @@
     },
     {
       "t": "narrate",
-      "text": "[shot:insert pallet]The pallets are heavy because day-side packed them for inventory, which means double-stacking, which means the centers of gravity are wrong on most of the loads, which means Diego — in the first hour — takes three corners wider than he would otherwise and watches Russell, three aisles over, take five corners wider than he would otherwise. Marisol, who has been pushing pallets at this store for seven years, takes her corners normal-width by the small knowledge of how to lean against a wrong-stacked load to compensate for the wrong stack. Marisol is the team's center of gravity in more ways than one. Diego registers this without naming it."
+      "text": "[shot:insert pallet]The pallets are heavy because day-side packed them for inventory, which means double-stacking, which means the centers of gravity are wrong on most of the loads,"
+    },
+    {
+      "t": "narrate",
+      "text": "which means Diego — in the first hour — takes three corners wider than he would otherwise and watches Russell, three aisles over, take five corners wider than he would otherwise."
+    },
+    {
+      "t": "narrate",
+      "text": "Marisol, who has been pushing pallets at this store for seven years, takes her corners normal-width by the small knowledge of how to lean against a wrong-stacked load to compensate for the wrong stack."
+    },
+    {
+      "t": "narrate",
+      "text": "Marisol is the team's center of gravity in more ways than one. Diego registers this without naming it."
     },
     {
       "t": "narrate",
@@ -49,7 +65,15 @@
     },
     {
       "t": "narrate",
-      "text": "Doug is, by ten forty-eight, two pages into Book Seven of The Brothers Karamazov. He has been in Book Seven for three nights. Book Seven is, by Doug's own internal accounting which he has shared with no one, the section of Karamazov that does not, at any of his eleven previous readings, get easier. Doug works the half-gallons. Doug does not, in his work, look up."
+      "text": "Doug is, by ten forty-eight, two pages into Book Seven of The Brothers Karamazov. He has been in Book Seven for three nights."
+    },
+    {
+      "t": "narrate",
+      "text": "Book Seven is, by Doug's own internal accounting which he has shared with no one, the section of Karamazov that does not, at any of his eleven previous readings, get easier. Doug works the half-gallons."
+    },
+    {
+      "t": "narrate",
+      "text": "Doug does not, in his work, look up."
     },
     {
       "t": "narrate",
@@ -57,7 +81,11 @@
     },
     {
       "t": "narrate",
-      "text": "BT has been in cereal for six weeks. Jessa has, by some calculation Diego does not know the math of, decided that BT is going to be in cereal until Jessa decides otherwise. BT has, by his own count, asked Jessa about being moved to a more interesting aisle exactly once, in week four, and Jessa had said cereal in the way Jessa says things she has already decided about, and BT has not, since, asked again."
+      "text": "BT has been in cereal for six weeks. Jessa has, by some calculation Diego does not know the math of, decided that BT is going to be in cereal until Jessa decides otherwise."
+    },
+    {
+      "t": "narrate",
+      "text": "BT has, by his own count, asked Jessa about being moved to a more interesting aisle exactly once, in week four, and Jessa had said cereal in the way Jessa says things she has already decided about, and BT has not, since, asked again."
     },
     {
       "t": "narrate",
@@ -81,7 +109,11 @@
     },
     {
       "t": "narrate",
-      "text": "BT has, in his hand, the empty bottom flat of a case of Campbell's tomato. BT is bringing the flat back to the cardboard bale at receiving, which is a thing BT does not have to do — Marisol's domain is recycling tonight — but which BT has been doing all summer in the way new hires do small extra things that make them, in their own minds, more visible to the team."
+      "text": "BT has, in his hand, the empty bottom flat of a case of Campbell's tomato."
+    },
+    {
+      "t": "narrate",
+      "text": "BT is bringing the flat back to the cardboard bale at receiving, which is a thing BT does not have to do — Marisol's domain is recycling tonight — but which BT has been doing all summer in the way new hires do small extra things that make them, in their own minds, more visible to the team."
     },
     {
       "t": "show",
@@ -141,11 +173,27 @@
     },
     {
       "t": "narrate",
-      "text": "He thinks, in the time it takes BT to set the cardboard flat against his hip and shift his weight to the other foot: I have been declining BT for six weeks. Doug told me on Tuesday I do not have to be the one who lets him in. I have, for six weeks, not let him in. The not-letting-in has been — it has been the team's position. I have agreed with the team's position by my silence. I have, by agreeing with the team's position by my silence, been participating in the team's position without ever having had to defend it to anyone, including myself."
+      "text": "He thinks, in the time it takes BT to set the cardboard flat against his hip and shift his weight to the other foot: I have been declining BT for six weeks. Doug told me on Tuesday I do not have to be the one who lets him in."
     },
     {
       "t": "narrate",
-      "text": "He thinks: if I say yes tonight, I am not endorsing his cop story. I am not joining him. I am going for a taqueria run with a coworker at four AM. The taqueria run is, by the architecture of what coworkers do at four AM on graveyard shifts, the smallest possible yes. The smallest possible yes is also, by being the smallest possible yes, the one I can, in good faith, give without also having to give the larger thing."
+      "text": "I have, for six weeks, not let him in. The not-letting-in has been — it has been the team's position. I have agreed with the team's position by my silence."
+    },
+    {
+      "t": "narrate",
+      "text": "I have, by agreeing with the team's position by my silence, been participating in the team's position without ever having had to defend it to anyone, including myself."
+    },
+    {
+      "t": "narrate",
+      "text": "He thinks: if I say yes tonight, I am not endorsing his cop story. I am not joining him. I am going for a taqueria run with a coworker at four AM."
+    },
+    {
+      "t": "narrate",
+      "text": "The taqueria run is, by the architecture of what coworkers do at four AM on graveyard shifts, the smallest possible yes."
+    },
+    {
+      "t": "narrate",
+      "text": "The smallest possible yes is also, by being the smallest possible yes, the one I can, in good faith, give without also having to give the larger thing."
     },
     {
       "t": "narrate",
@@ -193,7 +241,11 @@
     },
     {
       "t": "narrate",
-      "text": "In dairy, Doug — who has, from the half-gallons, peripherally registered the exchange at the end of canned soup because the store at one fifty-six AM has the small acoustic openness that lets a man two aisles over hear a conversation if he is paying attention to whether the conversation is happening — turns the page of Karamazov."
+      "text": "In dairy, Doug — who has, from the half-gallons, peripherally registered the exchange at the end of canned soup because the store at one fifty-six AM has the small acoustic openness"
+    },
+    {
+      "t": "narrate",
+      "text": "that lets a man two aisles over hear a conversation if he is paying attention to whether the conversation is happening — turns the page of Karamazov."
     },
     {
       "t": "narrate",
@@ -201,7 +253,11 @@
     },
     {
       "t": "narrate",
-      "text": "Doug, at the half-gallons, registers — with the small Dostoevskian attention Doug brings to most things at this hour — that Diego has, this evening, said yes to BT, and that this is the first yes Diego has said to BT in six weeks, and that this is the thing Diego had to figure out on his own and that Doug had, on Tuesday in the parking lot, been right not to push him toward."
+      "text": "Doug, at the half-gallons, registers — with the small Dostoevskian attention Doug brings to most things at this hour — that Diego has, this evening, said yes to BT,"
+    },
+    {
+      "t": "narrate",
+      "text": "and that this is the first yes Diego has said to BT in six weeks, and that this is the thing Diego had to figure out on his own and that Doug had, on Tuesday in the parking lot, been right not to push him toward."
     },
     {
       "t": "narrate",
@@ -221,7 +277,11 @@
     },
     {
       "t": "narrate",
-      "text": "[shot:insert pallet]Marisol is at the deli station finishing her wipe-down of the case. Russell is at receiving inspecting the next pallet for the second half of the shift. Jessa is at the manager's desk doing the small spreadsheet check Jessa does at four every shift. Doug is at the break room with his thermos. BT is at the dock door with his keys in his hand."
+      "text": "[shot:insert pallet]Marisol is at the deli station finishing her wipe-down of the case. Russell is at receiving inspecting the next pallet for the second half of the shift."
+    },
+    {
+      "t": "narrate",
+      "text": "Jessa is at the manager's desk doing the small spreadsheet check Jessa does at four every shift. Doug is at the break room with his thermos. BT is at the dock door with his keys in his hand."
     },
     {
       "t": "narrate",
@@ -299,7 +359,11 @@
     },
     {
       "t": "narrate",
-      "text": "The Altima is a 2017, beige, with the small clean of a car that has not been washed recently but has not, otherwise, been allowed to get dirty inside. There is a single pine-tree air freshener on the rearview mirror. The pine tree is — Diego registers, getting in — mostly scent-out."
+      "text": "The Altima is a 2017, beige, with the small clean of a car that has not been washed recently but has not, otherwise, been allowed to get dirty inside. There is a single pine-tree air freshener on the rearview mirror."
+    },
+    {
+      "t": "narrate",
+      "text": "The pine tree is — Diego registers, getting in — mostly scent-out."
     },
     {
       "t": "show",
@@ -327,7 +391,15 @@
     },
     {
       "t": "narrate",
-      "text": "The road from Centro to El Rancho is the small parallel side road that runs behind the access road, past the cedar scrub, past the small dark frontage of a closed-for-the-night equipment-rental yard, past a single working streetlight that has been the only working streetlight on this stretch since Diego started at Centro five weeks ago. The road, at four oh-two AM, is empty. The Altima's headlights cut a small cone of yellow into the August night."
+      "text": "The road from Centro to El Rancho is the small parallel side road that runs behind the access road, past the cedar scrub, past the small dark frontage of a closed-for-the-night equipment-rental yard,"
+    },
+    {
+      "t": "narrate",
+      "text": "past a single working streetlight that has been the only working streetlight on this stretch since Diego started at Centro five weeks ago. The road, at four oh-two AM, is empty."
+    },
+    {
+      "t": "narrate",
+      "text": "The Altima's headlights cut a small cone of yellow into the August night."
     },
     {
       "t": "narrate",
@@ -363,7 +435,11 @@
     },
     {
       "t": "narrate",
-      "text": "It is — Diego does not, in the moment, recognize the song. The opening is electronic, a small repeating synth figure with a small drum loop underneath. The song is from another time. Diego, who has been, in his life, a kid who listens to mostly Spanish-language hip-hop and the small subset of American indie his older cousin in San Antonio had been pushing on him in late high school, has not, in his life, encountered this song."
+      "text": "It is — Diego does not, in the moment, recognize the song. The opening is electronic, a small repeating synth figure with a small drum loop underneath. The song is from another time."
+    },
+    {
+      "t": "narrate",
+      "text": "Diego, who has been, in his life, a kid who listens to mostly Spanish-language hip-hop and the small subset of American indie his older cousin in San Antonio had been pushing on him in late high school, has not, in his life, encountered this song."
     },
     {
       "t": "narrate",
@@ -379,7 +455,11 @@
     },
     {
       "t": "narrate",
-      "text": "[shot:establish]By the chorus, Diego has registered the song's central word, which is — the singer is saying — erf. Not earth. Erf. The singer is doing the thing of intentionally eliding the th into a ff in the way British speakers sometimes do and the way the singer, by the elision, is making a small choice to mark the song with."
+      "text": "[shot:establish]By the chorus, Diego has registered the song's central word, which is — the singer is saying — erf. Not earth. Erf."
+    },
+    {
+      "t": "narrate",
+      "text": "The singer is doing the thing of intentionally eliding the th into a ff in the way British speakers sometimes do and the way the singer, by the elision, is making a small choice to mark the song with."
     },
     {
       "t": "narrate",
@@ -388,7 +468,13 @@
     {
       "t": "say",
       "char": "BT",
-      "text": "[shot:closeup bt]BT. Brian Transeau. Came up about a year ago, when people started calling me BT at — at the last job. I went to look him up. There was a BT. There already was. He's been doing this for, like, twenty-five years. Most of it's — most of it's instrumental electronic. This one's the one with vocals. This is — this is the only one I really like. The rest is whatever. But this one. I been driving home to this one for about eight months.",
+      "text": "[shot:closeup bt]BT. Brian Transeau. Came up about a year ago, when people started calling me BT at — at the last job. I went to look him up. There was a BT. There already was. He's been doing this for, like, twenty-five years.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "BT",
+      "text": "Most of it's — most of it's instrumental electronic. This one's the one with vocals. This is — this is the only one I really like. The rest is whatever. But this one. I been driving home to this one for about eight months.",
       "expr": "neutral"
     },
     {
@@ -449,7 +535,11 @@
     },
     {
       "t": "narrate",
-      "text": "[shot:insert phone]BT, at the wheel, taps the dash. The phone screen shows the song's metadata. The song title is Never Gonna Come Back Down. The album is Movement in Still Life. The artist is BT. The lyrics — BT taps the lyrics tab — show the chorus on screen. The chorus has erf in it, lowercase, with the th elided into the f, exactly as the singer is singing it."
+      "text": "[shot:insert phone]BT, at the wheel, taps the dash. The phone screen shows the song's metadata. The song title is Never Gonna Come Back Down. The album is Movement in Still Life. The artist is BT."
+    },
+    {
+      "t": "narrate",
+      "text": "The lyrics — BT taps the lyrics tab — show the chorus on screen. The chorus has erf in it, lowercase, with the th elided into the f, exactly as the singer is singing it."
     },
     {
       "t": "narrate",
@@ -480,7 +570,13 @@
     {
       "t": "say",
       "char": "BT",
-      "text": "[shot:closeup person]I don't know, man. The whole album is — the whole album is from the late nineties. Lot of, like, weird stylization. Capitalization, spelling, all of it. He was doing that thing where it's — it's supposed to sound like the way somebody might actually say it. Erf, not earth. I think he — I think he liked the visual. The way erf looks. He uses it three times in the song.",
+      "text": "[shot:closeup person]I don't know, man. The whole album is — the whole album is from the late nineties. Lot of, like, weird stylization. Capitalization, spelling, all of it.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "BT",
+      "text": "He was doing that thing where it's — it's supposed to sound like the way somebody might actually say it. Erf, not earth. I think he — I think he liked the visual. The way erf looks. He uses it three times in the song.",
       "expr": "neutral"
     },
     {
@@ -501,7 +597,11 @@
     },
     {
       "t": "narrate",
-      "text": "The taqueria's sign is visible from a half-mile out — TAQUERIA EL RANCHO in red paint on a yellow building, with the small image of a steer's head on the side of the building under the sign, faded by twenty-some Texas summers into the small orange that red paint becomes when it has been outside for that long."
+      "text": "The taqueria's sign is visible from a half-mile out — TAQUERIA EL RANCHO in red paint on a yellow building, with the small image of a steer's head on the side of the building under the sign,"
+    },
+    {
+      "t": "narrate",
+      "text": "faded by twenty-some Texas summers into the small orange that red paint becomes when it has been outside for that long."
     },
     {
       "t": "narrate",
@@ -801,7 +901,15 @@
     },
     {
       "t": "narrate",
-      "text": "He thinks: I could tell him about — about the room, about the spring. I could tell him I am sixteen and that I should not be at this job and that the team has accepted me because of the weight I am carrying that they do not know about. I could tell him that I am, by being the kid the team protects, the reason they do not have to think about him."
+      "text": "He thinks: I could tell him about — about the room, about the spring."
+    },
+    {
+      "t": "narrate",
+      "text": "I could tell him I am sixteen and that I should not be at this job and that the team has accepted me because of the weight I am carrying that they do not know about."
+    },
+    {
+      "t": "narrate",
+      "text": "I could tell him that I am, by being the kid the team protects, the reason they do not have to think about him."
     },
     {
       "t": "narrate",
@@ -843,7 +951,11 @@
     },
     {
       "t": "narrate",
-      "text": "Hugo brings it himself, in a brown paper bag with the receipt stapled to the top. He hands the bag through the window to BT. He hands the two horchatas — large for Diego, medium for Doug — separately, in styrofoam cups with sealed lids. BT hands the medium across to Diego to hold for Doug. Diego holds it."
+      "text": "Hugo brings it himself, in a brown paper bag with the receipt stapled to the top. He hands the bag through the window to BT."
+    },
+    {
+      "t": "narrate",
+      "text": "He hands the two horchatas — large for Diego, medium for Doug — separately, in styrofoam cups with sealed lids. BT hands the medium across to Diego to hold for Doug. Diego holds it."
     },
     {
       "t": "narrate",
@@ -863,7 +975,15 @@
     },
     {
       "t": "narrate",
-      "text": "Hugo opens the small box at his elbow. He grabs a handful of small clear plastic packets — green sauce, red sauce, the orange ghost-pepper sauce El Rancho has been making in-house for two years and that they call El Diablito, and the small individual squeeze packets of pickled jalapeños El Rancho includes free with any flauta order. He tosses them into the bag."
+      "text": "Hugo opens the small box at his elbow."
+    },
+    {
+      "t": "narrate",
+      "text": "He grabs a handful of small clear plastic packets — green sauce, red sauce, the orange ghost-pepper sauce El Rancho has been making in-house for two years and that they call El Diablito, and the small individual squeeze packets of pickled jalapeños El Rancho includes free with any flauta order."
+    },
+    {
+      "t": "narrate",
+      "text": "He tosses them into the bag."
     },
     {
       "t": "narrate",
@@ -899,7 +1019,11 @@
     },
     {
       "t": "narrate",
-      "text": "He drives to a small lay-by a quarter mile down the road — a small gravel turnout the city has, at some point in the past, paved over with a single picnic table that nobody uses but that is, at four-fifteen AM in mid-August, available. BT pulls into the turnout. He parks. He kills the engine."
+      "text": "He drives to a small lay-by a quarter mile down the road — a small gravel turnout the city has, at some point in the past, paved over with a single picnic table that nobody uses but that is, at four-fifteen AM in mid-August, available."
+    },
+    {
+      "t": "narrate",
+      "text": "BT pulls into the turnout. He parks. He kills the engine."
     },
     {
       "t": "say",
@@ -921,7 +1045,15 @@
     },
     {
       "t": "narrate",
-      "text": "[shot:insert cup]He takes the bag. He opens it. He hands Diego the burrito, which is wrapped in foil and tin and is the weight of a custom burrito that has been wrapped at El Rancho. He pulls out his own flauta box. He opens the box on the center console between them. The flautas are five rolled fried chicken cylinders with a small cup of guacamole in the corner of the box. He pours one of the green-sauce packets over the flautas. He pours one of the red-sauce packets over the flautas. He pulls out an El Diablito packet, considers it for a beat, and puts it back in the bag."
+      "text": "[shot:insert cup]He takes the bag. He opens it. He hands Diego the burrito, which is wrapped in foil and tin and is the weight of a custom burrito that has been wrapped at El Rancho. He pulls out his own flauta box."
+    },
+    {
+      "t": "narrate",
+      "text": "He opens the box on the center console between them. The flautas are five rolled fried chicken cylinders with a small cup of guacamole in the corner of the box. He pours one of the green-sauce packets over the flautas."
+    },
+    {
+      "t": "narrate",
+      "text": "He pours one of the red-sauce packets over the flautas. He pulls out an El Diablito packet, considers it for a beat, and puts it back in the bag."
     },
     {
       "t": "say",
@@ -935,7 +1067,15 @@
     },
     {
       "t": "narrate",
-      "text": "The burrito is, by his count, the burrito he ordered. Steak, white onion, the small cube of potato Hugo's mother — who is the cook on most nights — does in the burrito when Diego asks for it, the guac and sour cream and cheese in roughly equal proportion, with the small salsa-roja Hugo's mother has done in-house for fifteen years already inside the burrito because Hugo's mother does not, in her burrito-making, accept the fiction that a burrito is supposed to be assembled without internal sauce."
+      "text": "The burrito is, by his count, the burrito he ordered."
+    },
+    {
+      "t": "narrate",
+      "text": "Steak, white onion, the small cube of potato Hugo's mother — who is the cook on most nights — does in the burrito when Diego asks for it, the guac and sour cream and cheese in roughly equal proportion,"
+    },
+    {
+      "t": "narrate",
+      "text": "with the small salsa-roja Hugo's mother has done in-house for fifteen years already inside the burrito because Hugo's mother does not, in her burrito-making, accept the fiction that a burrito is supposed to be assembled without internal sauce."
     },
     {
       "t": "narrate",
@@ -991,7 +1131,15 @@
     },
     {
       "t": "narrate",
-      "text": "The car is, in the lay-by, quiet. The AC is on at the second-from-lowest setting. The dashboard accumulates, between them, the small empty foil from the burrito's outer wrap and three of the fourteen sauce packets, two of them empty and crumpled, one of them — an El Diablito — that BT had, in his second flauta, dropped between his legs and that has, now, ended up on the driver's seat under his thigh in a way that means the packet is going to leak orange sauce into the upholstery and that BT is, in approximately ninety minutes when he gets home, going to discover."
+      "text": "The car is, in the lay-by, quiet. The AC is on at the second-from-lowest setting."
+    },
+    {
+      "t": "narrate",
+      "text": "The dashboard accumulates, between them, the small empty foil from the burrito's outer wrap and three of the fourteen sauce packets, two of them empty and crumpled, one of them — an El Diablito — that BT had, in his second flauta,"
+    },
+    {
+      "t": "narrate",
+      "text": "dropped between his legs and that has, now, ended up on the driver's seat under his thigh in a way that means the packet is going to leak orange sauce into the upholstery and that BT is, in approximately ninety minutes when he gets home, going to discover."
     },
     {
       "t": "narrate",
@@ -1119,7 +1267,15 @@
     },
     {
       "t": "narrate",
-      "text": "He thinks: Doug talks to me because Doug has decided I'm — that I'm someone Doug talks to. The deciding is some specific Doug thing. I do not know the rule. I have been, in the five weeks I have known him, registering the rule in small pieces. The rule is — the rule is something about the way I am in the building. Doug does not have a rule yet about the way you are in the building, BT. Doug is — Doug is still watching."
+      "text": "He thinks: Doug talks to me because Doug has decided I'm — that I'm someone Doug talks to. The deciding is some specific Doug thing. I do not know the rule."
+    },
+    {
+      "t": "narrate",
+      "text": "I have been, in the five weeks I have known him, registering the rule in small pieces. The rule is — the rule is something about the way I am in the building."
+    },
+    {
+      "t": "narrate",
+      "text": "Doug does not have a rule yet about the way you are in the building, BT. Doug is — Doug is still watching."
     },
     {
       "t": "say",
@@ -1201,7 +1357,15 @@
     },
     {
       "t": "narrate",
-      "text": "Diego has eaten about three-quarters of the burrito. The remaining quarter, wrapped back in the foil, is on the dashboard. He is going to take it home. He is going to eat it tomorrow afternoon when he wakes up. His grandmother is going to register the foil and is going to know he ate at El Rancho on his lunch break, and his grandmother has, over five weeks, learned to register this small fact without commenting on it because his grandmother has decided that the small fact of her grandson eating Mexican food at four AM is, in his recovery, a thing she does not need to interrogate."
+      "text": "Diego has eaten about three-quarters of the burrito. The remaining quarter, wrapped back in the foil, is on the dashboard. He is going to take it home. He is going to eat it tomorrow afternoon when he wakes up."
+    },
+    {
+      "t": "narrate",
+      "text": "His grandmother is going to register the foil and is going to know he ate at El Rancho on his lunch break, and his grandmother has, over five weeks,"
+    },
+    {
+      "t": "narrate",
+      "text": "learned to register this small fact without commenting on it because his grandmother has decided that the small fact of her grandson eating Mexican food at four AM is, in his recovery, a thing she does not need to interrogate."
     },
     {
       "t": "narrate",
@@ -1263,7 +1427,11 @@
     },
     {
       "t": "narrate",
-      "text": "BT laughs in the way a man laughs at a thing that is, by the small cosmic justice of late-night fast-food ordering, exactly the thing that should have happened. He laughs for about eight seconds. The laugh is loud. The laugh is the loudest sound the car has produced this morning."
+      "text": "BT laughs in the way a man laughs at a thing that is, by the small cosmic justice of late-night fast-food ordering, exactly the thing that should have happened. He laughs for about eight seconds. The laugh is loud."
+    },
+    {
+      "t": "narrate",
+      "text": "The laugh is the loudest sound the car has produced this morning."
     },
     {
       "t": "narrate",

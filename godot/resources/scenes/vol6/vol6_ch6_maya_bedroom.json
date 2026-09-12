@@ -35,7 +35,11 @@
     },
     {
       "t": "narrate",
-      "text": "[mood:day_bright][shot:insert laptop]Maya has been at her ThinkPad since one. She has not been doing anything productive. She has been scrolling, refreshing, scrolling again. She has been waiting for the message from F.T. that had, at 09:47, said: Diego is at the safehouse. I will tell you the address when it's safe to know. He is alive. Tell Sam in person — Ben is on it."
+      "text": "[mood:day_bright][shot:insert laptop]Maya has been at her ThinkPad since one. She has not been doing anything productive. She has been scrolling, refreshing, scrolling again."
+    },
+    {
+      "t": "narrate",
+      "text": "She has been waiting for the message from F.T. that had, at 09:47, said: Diego is at the safehouse. I will tell you the address when it's safe to know. He is alive. Tell Sam in person — Ben is on it."
     },
     {
       "t": "narrate",
@@ -48,7 +52,13 @@
     {
       "t": "say",
       "char": "F.T.",
-      "text": "kid. one more thing. you said something to rick this week. you asked if we could help me, sometime, after this. i wanted to tell you i heard you. i wanted to say thank you for asking. i want to be honest with you. i don't know what 'help' would look like, for me. i have been in this warehouse for ten years and the warehouse and i have, in some ways, become the same thing. i don't know if i can leave. i don't know if i want to. i don't know if i should. but you asked. nobody has, in some time, asked. it meant something to me. i wanted you to know.",
+      "text": "kid. one more thing. you said something to rick this week. you asked if we could help me, sometime, after this. i wanted to tell you i heard you. i wanted to say thank you for asking. i want to be honest with you. i don't know what 'help' would look like,",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "F.T.",
+      "text": "for me. i have been in this warehouse for ten years and the warehouse and i have, in some ways, become the same thing. i don't know if i can leave. i don't know if i want to. i don't know if i should. but you asked. nobody has, in some time, asked. it meant something to me. i wanted you to know.",
       "expr": "neutral"
     },
     {
@@ -74,7 +84,13 @@
     {
       "t": "say",
       "char": "F.T.",
-      "text": "now. one more thing. real one. there's going to be an issue with one of the adults this weekend. not your group. one of the adults. i can't tell you which one or what kind of issue. i don't actually know yet — the demons are flagging an anomaly but it isn't resolved. just — be careful with the adults this weekend. look at their faces when you talk to them. trust your read. — f.t.",
+      "text": "now. one more thing. real one. there's going to be an issue with one of the adults this weekend. not your group. one of the adults. i can't tell you which one or what kind of issue. i don't actually know yet —",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "F.T.",
+      "text": "the demons are flagging an anomaly but it isn't resolved. just — be careful with the adults this weekend. look at their faces when you talk to them. trust your read. — f.t.",
       "expr": "neutral"
     },
     {
@@ -105,7 +121,12 @@
     {
       "t": "think",
       "char": "Maya",
-      "text": "Which adults are in my life right now. My grandmother. Rick. Hal. Claire. Doyle. Detective Ramirez. Eileen Henderson. Chief Miller. Frasier himself, by extension. Mr. Henderson, who is fighting whatever's using him. And the people I haven't met yet — somewhere there is a Miriam I've heard about, somewhere there is, presumably, my father, whose status this week I have not been told."
+      "text": "Which adults are in my life right now. My grandmother. Rick. Hal. Claire. Doyle. Detective Ramirez. Eileen Henderson. Chief Miller. Frasier himself, by extension. Mr. Henderson, who is fighting whatever's using him."
+    },
+    {
+      "t": "think",
+      "char": "Maya",
+      "text": "And the people I haven't met yet — somewhere there is a Miriam I've heard about, somewhere there is, presumably, my father, whose status this week I have not been told."
     },
     {
       "t": "think",

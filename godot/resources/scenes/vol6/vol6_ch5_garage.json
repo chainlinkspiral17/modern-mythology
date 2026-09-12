@@ -29,15 +29,27 @@
     },
     {
       "t": "narrate",
-      "text": "[trip:1.2][mood:candlelight_low]Jesse has swept the garage. He does not, generally, sweep the garage. His father sweeps the garage, on the first Saturday of each month, with the thoroughness of a man who believes that a floor is a kind of moral statement. Jesse has always, privately, thought of the garage as his father's territory in the same way he has thought of the darkroom as his father's territory. He has not, until this week, swept either one."
+      "text": "[trip:1.2][mood:candlelight_low]Jesse has swept the garage. He does not, generally, sweep the garage. His father sweeps the garage, on the first Saturday of each month, with the thoroughness of a man who believes that a floor is a kind of moral statement."
     },
     {
       "t": "narrate",
-      "text": "He swept the garage at five PM because his mother asked him to. He swept it again, without being asked, at six, because the first sweep had missed a small drift of paint chips in the corner by the workbench, and because Jesse has decided — without being able to articulate exactly why — that tonight's practice should take place in a garage that has been swept twice."
+      "text": "Jesse has always, privately, thought of the garage as his father's territory in the same way he has thought of the darkroom as his father's territory. He has not, until this week, swept either one."
     },
     {
       "t": "narrate",
-      "text": "[shot:insert drum_kit]The drum kit is at the back. The amp is against the side wall. The Telecaster is on its stand, unplugged, waiting. The bass — his friend Nate's — leans against the amp. The microphone — which belongs to the band and which lives at the bassist's house when not in use — is plugged into the small mixer Jesse built from a kit in tenth grade. The strobing Christmas lights are plugged in. They strobe."
+      "text": "He swept the garage at five PM because his mother asked him to. He swept it again, without being asked, at six, because the first sweep had missed a small drift of paint chips in the corner by the workbench,"
+    },
+    {
+      "t": "narrate",
+      "text": "and because Jesse has decided — without being able to articulate exactly why — that tonight's practice should take place in a garage that has been swept twice."
+    },
+    {
+      "t": "narrate",
+      "text": "[shot:insert drum_kit]The drum kit is at the back. The amp is against the side wall. The Telecaster is on its stand, unplugged, waiting. The bass — his friend Nate's — leans against the amp."
+    },
+    {
+      "t": "narrate",
+      "text": "The microphone — which belongs to the band and which lives at the bassist's house when not in use — is plugged into the small mixer Jesse built from a kit in tenth grade. The strobing Christmas lights are plugged in. They strobe."
     },
     {
       "t": "show",
@@ -51,11 +63,31 @@
     },
     {
       "t": "narrate",
-      "text": "The bill is at the Pit Stop, folded, in Ben's apron pocket. Ben had texted Jesse at eight-oh-seven PM on Wednesday: bill is safe. Jesse had replied: thanks. He had not asked for more. Ben had not offered more. Ben had offered, instead, at seven-fifty PM: do you want me at practice thursday. Jesse had replied, yes. Ben is coming tonight. Ben is also bringing Sam and Maya, because Jesse had, at eleven PM last night, texted all three at once: practice thursday at 7. suburban blight. come if you can. Sam had replied in four minutes: i'll be there. Maya had replied in seven minutes: i don't know music. is that ok. Jesse had replied: maya it's a garage band. nobody knows music. Maya had replied: ok."
+      "text": "The bill is at the Pit Stop, folded, in Ben's apron pocket. Ben had texted Jesse at eight-oh-seven PM on Wednesday: bill is safe. Jesse had replied: thanks. He had not asked for more. Ben had not offered more."
     },
     {
       "t": "narrate",
-      "text": "The garage door is closed against the rain, which has mostly stopped but which has left the subdivision in the specific sticky humidity that follows a Texas storm. The air in the garage smells, faintly, of turpentine and sawdust and cold metal and the Mountain Dew. Jesse sits on the workbench and drinks his Mountain Dew and listens to the rain on the garage roof, which is tapering, and tries — for the first time all day — not to think about his father. He does not, in the end, succeed."
+      "text": "Ben had offered, instead, at seven-fifty PM: do you want me at practice thursday. Jesse had replied, yes. Ben is coming tonight."
+    },
+    {
+      "t": "narrate",
+      "text": "Ben is also bringing Sam and Maya, because Jesse had, at eleven PM last night, texted all three at once: practice thursday at 7. suburban blight. come if you can. Sam had replied in four minutes: i'll be there."
+    },
+    {
+      "t": "narrate",
+      "text": "Maya had replied in seven minutes: i don't know music. is that ok. Jesse had replied: maya it's a garage band. nobody knows music. Maya had replied: ok."
+    },
+    {
+      "t": "narrate",
+      "text": "The garage door is closed against the rain, which has mostly stopped but which has left the subdivision in the specific sticky humidity that follows a Texas storm."
+    },
+    {
+      "t": "narrate",
+      "text": "The air in the garage smells, faintly, of turpentine and sawdust and cold metal and the Mountain Dew."
+    },
+    {
+      "t": "narrate",
+      "text": "Jesse sits on the workbench and drinks his Mountain Dew and listens to the rain on the garage roof, which is tapering, and tries — for the first time all day — not to think about his father. He does not, in the end, succeed."
     },
     {
       "t": "hide",
@@ -73,11 +105,27 @@
     },
     {
       "t": "narrate",
-      "text": "[trip:1.2]Ben arrives first. He is in his truck. He parks at the curb. He does not pull into the driveway, because the driveway is where Jesse's father parks, and Ben — who has never been inside this house but who has, over the past forty-one hours, begun to build a small careful map of it in his head — does not want to be where Jesse's father would park, on the theory that Jesse's father may come home during practice and that Ben does not want to be the thing Jesse's father sees first."
+      "text": "[trip:1.2]Ben arrives first. He is in his truck. He parks at the curb."
     },
     {
       "t": "narrate",
-      "text": "Sam arrives second. She is in the Corolla. She parks behind Ben's truck. Maya arrives third. She is on her bike, in the rain, with her backpack on and her hair wet. She chains the bike to the light post at the end of the driveway. Ben, watching her through his windshield, winces slightly — Ben has registered that Maya has been on her bike in every weather since April, that Maya is the only one of the four of them without a car, that this is a condition that has not, until this moment, been something the other three have explicitly thought about."
+      "text": "He does not pull into the driveway, because the driveway is where Jesse's father parks, and Ben — who has never been inside this house but who has, over the past forty-one hours, begun to build a small careful map of it in his head —"
+    },
+    {
+      "t": "narrate",
+      "text": "does not want to be where Jesse's father would park, on the theory that Jesse's father may come home during practice and that Ben does not want to be the thing Jesse's father sees first."
+    },
+    {
+      "t": "narrate",
+      "text": "Sam arrives second. She is in the Corolla. She parks behind Ben's truck. Maya arrives third. She is on her bike, in the rain, with her backpack on and her hair wet. She chains the bike to the light post at the end of the driveway."
+    },
+    {
+      "t": "narrate",
+      "text": "Ben, watching her through his windshield, winces slightly — Ben has registered that Maya has been on her bike in every weather since April,"
+    },
+    {
+      "t": "narrate",
+      "text": "that Maya is the only one of the four of them without a car, that this is a condition that has not, until this moment, been something the other three have explicitly thought about."
     },
     {
       "t": "think",
@@ -133,7 +181,12 @@
     {
       "t": "say",
       "char": "Ben",
-      "text": "Okay. We go in. We do not talk about any of it in there. Jesse has his band practicing in twenty minutes. The band doesn't know. We do not tell the band. We sit, we watch, we eat whatever pizza Jesse's mom sends down, we leave at nine-thirty. After practice, the four of us talk in my truck for ten minutes. Then we all go home and do not do anything else tonight. Okay?"
+      "text": "Okay. We go in. We do not talk about any of it in there. Jesse has his band practicing in twenty minutes. The band doesn't know. We do not tell the band."
+    },
+    {
+      "t": "say",
+      "char": "Ben",
+      "text": "We sit, we watch, we eat whatever pizza Jesse's mom sends down, we leave at nine-thirty. After practice, the four of us talk in my truck for ten minutes. Then we all go home and do not do anything else tonight. Okay?"
     },
     {
       "t": "say",
@@ -217,7 +270,19 @@
     },
     {
       "t": "narrate",
-      "text": "Sam hugs him. Sam does not, generally, hug Jesse. Sam and Jesse have been in the same friend orbit since ninth grade, have sat at the same lunch table for two years, have, on some occasions, watched movies on the same couch, but have not, in Sam's memory, been huggers of each other. Sam hugs him anyway. Jesse hugs back. Briefly, firmly, with the small surprised gratitude of someone who has just discovered a category his friend group has been refusing to occupy and has, tonight, entered. Ben shakes Jesse's hand. Maya — to Ben and Sam's collective small surprise — hugs Jesse too. Maya is not, any of them will later realize, a hugger in her usual register. Maya is here to announce a membership."
+      "text": "Sam hugs him. Sam does not, generally, hug Jesse."
+    },
+    {
+      "t": "narrate",
+      "text": "Sam and Jesse have been in the same friend orbit since ninth grade, have sat at the same lunch table for two years, have, on some occasions, watched movies on the same couch, but have not, in Sam's memory, been huggers of each other."
+    },
+    {
+      "t": "narrate",
+      "text": "Sam hugs him anyway. Jesse hugs back. Briefly, firmly, with the small surprised gratitude of someone who has just discovered a category his friend group has been refusing to occupy and has, tonight, entered."
+    },
+    {
+      "t": "narrate",
+      "text": "Ben shakes Jesse's hand. Maya — to Ben and Sam's collective small surprise — hugs Jesse too. Maya is not, any of them will later realize, a hugger in her usual register. Maya is here to announce a membership."
     },
     {
       "t": "show",
@@ -258,11 +323,27 @@
     },
     {
       "t": "narrate",
-      "text": "The band arrives in a staggered burst over the next four minutes. Nate — the bassist, seventeen, a skateboarder whose hair has, this month, been dyed the specific green of a traffic-light go. Carl — the drummer, sixteen, smaller than the rest of them, wiry, with a nervous laugh and a left-handed kit that he has, over the past year, almost — almost — taught himself to play right-handed. Em — the backing vocalist and occasional keyboardist, eighteen, three inches taller than anybody in the garage, with a small specific I am from Fort Worth energy that Jesse has always, quietly, admired."
+      "text": "The band arrives in a staggered burst over the next four minutes. Nate — the bassist, seventeen, a skateboarder whose hair has, this month, been dyed the specific green of a traffic-light go."
     },
     {
       "t": "narrate",
-      "text": "They converge. They set up. They tune. There is the usual bickering about the snare head and the usual low-grade tuning conflict between the bass and the Telecaster and Carl's usual joke about the Christmas lights, which Carl has made every practice since November and which everyone laughs at anyway. Sam and Maya and Ben sit on the workbench, then on the camping chairs Jesse pulls out from under the workbench, and drink warm Mountain Dew from the cooler Nate has brought, and watch."
+      "text": "Carl — the drummer, sixteen, smaller than the rest of them, wiry, with a nervous laugh and a left-handed kit that he has, over the past year, almost — almost — taught himself to play right-handed."
+    },
+    {
+      "t": "narrate",
+      "text": "Em — the backing vocalist and occasional keyboardist, eighteen, three inches taller than anybody in the garage, with a small specific I am from Fort Worth energy that Jesse has always, quietly, admired."
+    },
+    {
+      "t": "narrate",
+      "text": "They converge. They set up. They tune."
+    },
+    {
+      "t": "narrate",
+      "text": "There is the usual bickering about the snare head and the usual low-grade tuning conflict between the bass and the Telecaster and Carl's usual joke about the Christmas lights, which Carl has made every practice since November and which everyone laughs at anyway."
+    },
+    {
+      "t": "narrate",
+      "text": "Sam and Maya and Ben sit on the workbench, then on the camping chairs Jesse pulls out from under the workbench, and drink warm Mountain Dew from the cooler Nate has brought, and watch."
     },
     {
       "t": "narrate",
@@ -270,11 +351,27 @@
     },
     {
       "t": "narrate",
-      "text": "[shot:insert drum_kit]The band launches into the song they had been working on for a month. It is called Grid Failure. It is, as far as Jesse has written the lyrics, about a specific kind of failure of a specific kind of electrical grid, but the lyrics are — Jesse will admit, privately, later — not especially good. The song is mostly riff. The riff is: distorted Telecaster doing a three-chord ascending figure over a driving eighth-note bass and a snare that hits on the and of two and four. Em's backing vocal is a long sustained syllable — ohhhh — that sits under the chord changes like a drone."
+      "text": "[shot:insert drum_kit]The band launches into the song they had been working on for a month. It is called Grid Failure."
     },
     {
       "t": "narrate",
-      "text": "The song is loud. The song is, in Jesse's garage, on a Thursday evening in late May after a thunderstorm, exactly what the three on the workbench need. Sam feels her shoulders drop two inches. Maya closes her eyes. Ben leans back against the garage wall and, for the first time in forty-one hours, does not think about cars."
+      "text": "It is, as far as Jesse has written the lyrics, about a specific kind of failure of a specific kind of electrical grid, but the lyrics are — Jesse will admit, privately, later — not especially good. The song is mostly riff."
+    },
+    {
+      "t": "narrate",
+      "text": "The riff is: distorted Telecaster doing a three-chord ascending figure over a driving eighth-note bass and a snare that hits on the and of two and four."
+    },
+    {
+      "t": "narrate",
+      "text": "Em's backing vocal is a long sustained syllable — ohhhh — that sits under the chord changes like a drone."
+    },
+    {
+      "t": "narrate",
+      "text": "The song is loud. The song is, in Jesse's garage, on a Thursday evening in late May after a thunderstorm, exactly what the three on the workbench need. Sam feels her shoulders drop two inches. Maya closes her eyes."
+    },
+    {
+      "t": "narrate",
+      "text": "Ben leans back against the garage wall and, for the first time in forty-one hours, does not think about cars."
     },
     {
       "t": "interlude",
@@ -284,7 +381,11 @@
     },
     {
       "t": "narrate",
-      "text": "[trip:1.2]The band is on their third run-through of Grid Failure. Em has started harmonizing above Jesse's lead, a third interval that she had not tried before and that, when it lands on the downbeat of the chorus, makes Nate turn his head — the universal bassist's gesture for that is new and I approve."
+      "text": "[trip:1.2]The band is on their third run-through of Grid Failure."
+    },
+    {
+      "t": "narrate",
+      "text": "Em has started harmonizing above Jesse's lead, a third interval that she had not tried before and that, when it lands on the downbeat of the chorus, makes Nate turn his head — the universal bassist's gesture for that is new and I approve."
     },
     {
       "t": "say",
@@ -307,11 +408,19 @@
     },
     {
       "t": "narrate",
-      "text": "Ben has been keeping a mental ledger of the emotional weather of the group. He has not, yet, written any of it in the legal pad. He is not sure whether the ledger belongs in the legal pad. He is beginning to suspect that it does not — that the ledger is for him, privately, as the thing he does with the attention he has been cultivating for the past three months, now that the attention has, at last, become about people rather than cars."
+      "text": "Ben has been keeping a mental ledger of the emotional weather of the group. He has not, yet, written any of it in the legal pad. He is not sure whether the ledger belongs in the legal pad."
     },
     {
       "t": "narrate",
-      "text": "At eight-seventeen the garage door rumbles. All three of them — Sam, Maya, Ben — tense. The band continues playing. They have not, with the volume of Grid Failure at this point, heard the door. The door opens two feet, then pauses. It is not Chief Miller. It is not Mr. Henderson."
+      "text": "He is beginning to suspect that it does not — that the ledger is for him, privately, as the thing he does with the attention he has been cultivating for the past three months, now that the attention has, at last, become about people rather than cars."
+    },
+    {
+      "t": "narrate",
+      "text": "At eight-seventeen the garage door rumbles. All three of them — Sam, Maya, Ben — tense. The band continues playing. They have not, with the volume of Grid Failure at this point, heard the door."
+    },
+    {
+      "t": "narrate",
+      "text": "The door opens two feet, then pauses. It is not Chief Miller. It is not Mr. Henderson."
     },
     {
       "t": "show",
@@ -382,7 +491,11 @@
     },
     {
       "t": "narrate",
-      "text": "The band eats. The four teenagers and the three band members eat. The Telecaster is set aside. Nate has taken his bass off. Carl has come out from behind the kit and is sitting on the floor with his back against the amp. Em has the last slice of the gluten-free side because Carl has, as he does every practice, politely offered her more than his actual need."
+      "text": "The band eats. The four teenagers and the three band members eat. The Telecaster is set aside. Nate has taken his bass off. Carl has come out from behind the kit and is sitting on the floor with his back against the amp."
+    },
+    {
+      "t": "narrate",
+      "text": "Em has the last slice of the gluten-free side because Carl has, as he does every practice, politely offered her more than his actual need."
     },
     {
       "t": "say",
@@ -472,7 +585,15 @@
     },
     {
       "t": "narrate",
-      "text": "[shot:closeup sam~]Sam, on the camping chair, does not cry. She does not, she realizes, need to cry. The four lines fall into her chest in the specific way good lyrics fall into a person's chest when the person hears them at the only moment in their life that they will ever, exactly, mean. She mouths the last line under her breath. Ben, watching her, notes it. Maya, on her chair, has her head tipped back against the workbench, her eyes closed."
+      "text": "[shot:closeup sam~]Sam, on the camping chair, does not cry. She does not, she realizes, need to cry."
+    },
+    {
+      "t": "narrate",
+      "text": "The four lines fall into her chest in the specific way good lyrics fall into a person's chest when the person hears them at the only moment in their life that they will ever, exactly, mean."
+    },
+    {
+      "t": "narrate",
+      "text": "She mouths the last line under her breath. Ben, watching her, notes it. Maya, on her chair, has her head tipped back against the workbench, her eyes closed."
     },
     {
       "t": "narrate",
@@ -490,7 +611,15 @@
     },
     {
       "t": "narrate",
-      "text": "The band takes a break. At nine-oh-six the band resumes. They play one more song — a cover, Pixies' Here Comes Your Man, which Jesse's version is not quite right but which is, in Jesse's version, exactly right for a garage on a Thursday in late May. At nine-thirty, the band packs up. Nate, Carl, and Em leave first."
+      "text": "The band takes a break. At nine-oh-six the band resumes."
+    },
+    {
+      "t": "narrate",
+      "text": "They play one more song — a cover, Pixies' Here Comes Your Man, which Jesse's version is not quite right but which is, in Jesse's version, exactly right for a garage on a Thursday in late May. At nine-thirty, the band packs up."
+    },
+    {
+      "t": "narrate",
+      "text": "Nate, Carl, and Em leave first."
     },
     {
       "t": "show",

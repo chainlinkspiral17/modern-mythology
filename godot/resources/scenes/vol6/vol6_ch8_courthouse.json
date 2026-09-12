@@ -33,7 +33,11 @@
     },
     {
       "t": "narrate",
-      "text": "It does not, as is usual, start at two PM. The judge is finishing lunch. The bailiffs are coordinating with the holding deputies. The attorneys are at the long pew at the front, going through a stack of folders that arrived this morning at eleven and that nobody, until eleven, had been told would be the size that they were."
+      "text": "It does not, as is usual, start at two PM. The judge is finishing lunch. The bailiffs are coordinating with the holding deputies."
+    },
+    {
+      "t": "narrate",
+      "text": "The attorneys are at the long pew at the front, going through a stack of folders that arrived this morning at eleven and that nobody, until eleven, had been told would be the size that they were."
     },
     {
       "t": "show",
@@ -59,11 +63,23 @@
     },
     {
       "t": "narrate",
-      "text": "Ramirez is not, technically, here in any official capacity. Ramirez is here because he asked to be, and because Sam's mother — who had only met Ramirez for the first time at six AM today when he had come by the house to drive her father to the courthouse — had, after meeting him, asked him to be."
+      "text": "Ramirez is not, technically, here in any official capacity."
     },
     {
       "t": "narrate",
-      "text": "Ramirez sits in his civilian clothes. Khakis, a dark polo, the rain jacket folded on his lap. He is, Sam has noticed in the four hours she has now spent in his presence, a man who occupies a chair the way a man occupies a chair when he has spent twenty years occupying chairs in courtrooms — without slumping, without performing alertness, with the small steady patience of a person who is aware that the room's center of gravity will, in a moment, shift, and who intends to be where he needs to be when it does."
+      "text": "Ramirez is here because he asked to be, and because Sam's mother — who had only met Ramirez for the first time at six AM today when he had come by the house to drive her father to the courthouse — had, after meeting him, asked him to be."
+    },
+    {
+      "t": "narrate",
+      "text": "Ramirez sits in his civilian clothes. Khakis, a dark polo, the rain jacket folded on his lap."
+    },
+    {
+      "t": "narrate",
+      "text": "He is, Sam has noticed in the four hours she has now spent in his presence, a man who occupies a chair the way a man occupies a chair when he has spent twenty years occupying chairs in courtrooms — without slumping,"
+    },
+    {
+      "t": "narrate",
+      "text": "without performing alertness, with the small steady patience of a person who is aware that the room's center of gravity will, in a moment, shift, and who intends to be where he needs to be when it does."
     },
     {
       "t": "narrate",
@@ -79,7 +95,15 @@
     },
     {
       "t": "narrate",
-      "text": "The room is — Sam registers, with the small steady attention she has been doing for ten days now — bigger than she had expected. The ceilings are higher. The wood is darker. The smell is of old varnish and the specific brand of carpet shampoo that municipal facilities have been using since the nineteen-eighties. There are — Sam counts — twelve other people in the gallery besides her group. Three of them look like reporters. Two of them look like NexCorp lawyers — she does not, technically, recognize them as NexCorp lawyers, but they are, as a category, recognizable. The rest are unidentifiable."
+      "text": "The room is — Sam registers, with the small steady attention she has been doing for ten days now — bigger than she had expected. The ceilings are higher. The wood is darker."
+    },
+    {
+      "t": "narrate",
+      "text": "The smell is of old varnish and the specific brand of carpet shampoo that municipal facilities have been using since the nineteen-eighties. There are — Sam counts — twelve other people in the gallery besides her group."
+    },
+    {
+      "t": "narrate",
+      "text": "Three of them look like reporters. Two of them look like NexCorp lawyers — she does not, technically, recognize them as NexCorp lawyers, but they are, as a category, recognizable. The rest are unidentifiable."
     },
     {
       "t": "narrate",
@@ -148,7 +172,11 @@
     },
     {
       "t": "narrate",
-      "text": "The judge is a woman Sam has never heard of — Judge Patricia Halverson, sixty-something, NAUC bench since 2006, with the small patient expression of a judge who has, over twenty years, learned that the best thing she can do for the dignity of her courtroom is to be unimpressed by everyone in it equally."
+      "text": "The judge is a woman Sam has never heard of — Judge Patricia Halverson, sixty-something, NAUC bench since 2006, with the small patient expression of a judge who has,"
+    },
+    {
+      "t": "narrate",
+      "text": "over twenty years, learned that the best thing she can do for the dignity of her courtroom is to be unimpressed by everyone in it equally."
     },
     {
       "t": "narrate",
@@ -166,7 +194,15 @@
     },
     {
       "t": "narrate",
-      "text": "He is in his civilian clothes — the gray slacks her mother had laid out this morning, the white shirt, no tie. His hands are not cuffed. He has, Ramirez had explained at six AM, agreed to a self-surrender arrangement that did not involve cuffs as long as he was cooperating, which he is, fully, intending to do. He looks, in the courtroom light, smaller than Sam had ever seen him."
+      "text": "He is in his civilian clothes — the gray slacks her mother had laid out this morning, the white shirt, no tie. His hands are not cuffed."
+    },
+    {
+      "t": "narrate",
+      "text": "He has, Ramirez had explained at six AM, agreed to a self-surrender arrangement that did not involve cuffs as long as he was cooperating, which he is, fully, intending to do."
+    },
+    {
+      "t": "narrate",
+      "text": "He looks, in the courtroom light, smaller than Sam had ever seen him."
     },
     {
       "t": "narrate",
@@ -178,7 +214,11 @@
     },
     {
       "t": "narrate",
-      "text": "He has been told — Ramirez had told him at six AM — not to look at his daughter during the proceedings. Ramirez had explained: Mike, the press in the back row will see the look. The look will be the photograph. You don't want her face to be the photograph. Wait until afterward."
+      "text": "He has been told — Ramirez had told him at six AM — not to look at his daughter during the proceedings. Ramirez had explained: Mike, the press in the back row will see the look. The look will be the photograph."
+    },
+    {
+      "t": "narrate",
+      "text": "You don't want her face to be the photograph. Wait until afterward."
     },
     {
       "t": "narrate",
@@ -194,7 +234,11 @@
     },
     {
       "t": "narrate",
-      "text": "[shot:establish]The prosecution lists the charges. The list is — the list is longer than Sam had let herself imagine. There are eleven counts. They are, in summary: official misconduct. Multiple. Conspiracy to commit kidnapping. Multiple. Conspiracy to defraud the public. Aggravated. Failure to act on multiple federal mandatory reports. The federal counts are, the prosecutor notes, going to be filed separately by a federal prosecutor in a different proceeding."
+      "text": "[shot:establish]The prosecution lists the charges. The list is — the list is longer than Sam had let herself imagine. There are eleven counts. They are, in summary: official misconduct. Multiple. Conspiracy to commit kidnapping. Multiple."
+    },
+    {
+      "t": "narrate",
+      "text": "Conspiracy to defraud the public. Aggravated. Failure to act on multiple federal mandatory reports. The federal counts are, the prosecutor notes, going to be filed separately by a federal prosecutor in a different proceeding."
     },
     {
       "t": "narrate",
@@ -278,7 +322,11 @@
     },
     {
       "t": "narrate",
-      "text": "He does not, Sam notes, walk like the men around him. He walks the way the man in her dream had walked — without hurry, without exaggerated patience, with the small specific economy of a person who has, in some sense, already arrived everywhere he is currently going."
+      "text": "He does not, Sam notes, walk like the men around him."
+    },
+    {
+      "t": "narrate",
+      "text": "He walks the way the man in her dream had walked — without hurry, without exaggerated patience, with the small specific economy of a person who has, in some sense, already arrived everywhere he is currently going."
     },
     {
       "t": "narrate",
@@ -328,7 +376,11 @@
     },
     {
       "t": "narrate",
-      "text": "He gets up. He goes to the front. He confers, briefly, with Ana. He confers, briefly, with the prosecutor. He confers, after a long moment, with the man in the charcoal suit, who answers him with a small calm courtesy that — Sam can see, even from the third row — does not change."
+      "text": "He gets up. He goes to the front. He confers, briefly, with Ana. He confers, briefly, with the prosecutor."
+    },
+    {
+      "t": "narrate",
+      "text": "He confers, after a long moment, with the man in the charcoal suit, who answers him with a small calm courtesy that — Sam can see, even from the third row — does not change."
     },
     {
       "t": "narrate",
@@ -341,7 +393,19 @@
     {
       "t": "say",
       "char": "Ramirez",
-      "text": "[shot:closeup person_b]Mary. Mike's plea has been — accepted. The charges are not changing. What Dean has filed is — Dean has filed a request with the court that Mike be permitted to enter what's essentially a witness-protection program in lieu of a custodial sentence. Dean is offering — or his organization is offering — to relocate the family, to provide ongoing security, in exchange for Mike's continued cooperation on a federal investigation that is, apparently, larger than this one.",
+      "text": "[shot:closeup person_b]Mary. Mike's plea has been — accepted. The charges are not changing.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Ramirez",
+      "text": "What Dean has filed is — Dean has filed a request with the court that Mike be permitted to enter what's essentially a witness-protection program in lieu of a custodial sentence.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Ramirez",
+      "text": "Dean is offering — or his organization is offering — to relocate the family, to provide ongoing security, in exchange for Mike's continued cooperation on a federal investigation that is, apparently, larger than this one.",
       "expr": "neutral"
     },
     {
@@ -357,7 +421,19 @@
     {
       "t": "say",
       "char": "Ramirez",
-      "text": "Yeah. Mary. I don't — I don't know what he is. I have never, in twenty-two years, been in a room with him. The folder he filed is real. The federal docket is real. The investigation he's referring to is — it's real. I called a friend in the marshals during the recess. There is, in fact, an open federal investigation that requires Mike's cooperation. The witness-protection offer is — it's standard, in those cases. It's not a trick, on its face.",
+      "text": "Yeah. Mary. I don't — I don't know what he is. I have never, in twenty-two years, been in a room with him. The folder he filed is real. The federal docket is real. The investigation he's referring to is — it's real.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Ramirez",
+      "text": "I called a friend in the marshals during the recess. There is, in fact, an open federal investigation that requires Mike's cooperation. The witness-protection offer is — it's standard, in those cases.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Ramirez",
+      "text": "It's not a trick, on its face.",
       "expr": "neutral"
     },
     {
@@ -391,12 +467,27 @@
     {
       "t": "narrate",
       "when_flag": "sam_dream_charcoal_suit",
-      "text": "She has seen him before. Not in a hallway. At 03:03 on Wednesday, in the dream she wrote down one minute later: her father at twenty-something, in a uniform she did not recognize, shaking hands with a man in a charcoal suit whose eyes found hers because the dream was not a record but an attention. The notebook is at home. The handwriting still says what it says."
+      "text": "She has seen him before. Not in a hallway."
+    },
+    {
+      "t": "narrate",
+      "when_flag": "sam_dream_charcoal_suit",
+      "text": "At 03:03 on Wednesday, in the dream she wrote down one minute later: her father at twenty-something, in a uniform she did not recognize, shaking hands with a man in a charcoal suit whose eyes found hers because the dream was not a record but an attention."
+    },
+    {
+      "t": "narrate",
+      "when_flag": "sam_dream_charcoal_suit",
+      "text": "The notebook is at home. The handwriting still says what it says."
     },
     {
       "t": "think",
       "char": "Sam",
-      "text": "The older system has its reasons. The older system has been running my father since 2017 and is, today, offering my father an exit. The older system is not, in any human sense, on a side. The older system is, in some sense, the chessboard, and the chessboard is, today, rearranging itself in a way I am not equipped, at seventeen, to understand."
+      "text": "The older system has its reasons. The older system has been running my father since 2017 and is, today, offering my father an exit. The older system is not, in any human sense, on a side."
+    },
+    {
+      "t": "think",
+      "char": "Sam",
+      "text": "The older system is, in some sense, the chessboard, and the chessboard is, today, rearranging itself in a way I am not equipped, at seventeen, to understand."
     },
     {
       "t": "think",
@@ -406,7 +497,12 @@
     {
       "t": "think",
       "char": "Sam",
-      "text": "I will be okay because the people in the gallery on my side now include my mother, Detective Ramirez, four friends my own age, three additional adults I have, this past week, met, my grandmother on my mother's side from beyond the grave, and — she now realizes, looking at the third row of the gallery directly across the aisle from her own row, where a silver-haired woman in a gray wool coat has, at some point during the recess, quietly seated herself — at least one woman she has never met but whose face she now recognizes from Maya's description of Miriam."
+      "text": "I will be okay because the people in the gallery on my side now include my mother, Detective Ramirez, four friends my own age, three additional adults I have, this past week, met, my grandmother on my mother's side from beyond the grave, and — she now realizes,"
+    },
+    {
+      "t": "think",
+      "char": "Sam",
+      "text": "looking at the third row of the gallery directly across the aisle from her own row, where a silver-haired woman in a gray wool coat has, at some point during the recess, quietly seated herself — at least one woman she has never met but whose face she now recognizes from Maya's description of Miriam."
     },
     {
       "t": "show",
@@ -455,7 +551,19 @@
     {
       "t": "say",
       "char": "Judge",
-      "text": "The court has accepted your plea on all eleven counts. The court has also received and reviewed an emergency motion filed by an interested party requesting an alternative custodial arrangement pending federal proceedings. The court is, at this time, deferring sentencing to a date no earlier than ninety days from today, pending the outcome of the federal proceeding referenced in the motion. You will be remanded to federal custody pending the outcome of that proceeding. You are, at this time, technically a federal witness rather than a state convict, although your state plea stands. Do you understand.",
+      "text": "The court has accepted your plea on all eleven counts. The court has also received and reviewed an emergency motion filed by an interested party requesting an alternative custodial arrangement pending federal proceedings.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Judge",
+      "text": "The court is, at this time, deferring sentencing to a date no earlier than ninety days from today, pending the outcome of the federal proceeding referenced in the motion.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Judge",
+      "text": "You will be remanded to federal custody pending the outcome of that proceeding. You are, at this time, technically a federal witness rather than a state convict, although your state plea stands. Do you understand.",
       "expr": "neutral"
     },
     {
@@ -476,7 +584,15 @@
     },
     {
       "t": "narrate",
-      "text": "Sam's father is, at 15:04, escorted out the side door — by federal marshals, not by state deputies. He does not, on the way out, look at the gallery. But just before the door closes behind him, he raises his right hand to the back of his neck in the small specific gesture Sam knows from her childhood — the gesture he had made when she was small and he was leaving for a long shift. I love you. Be back when I can."
+      "text": "Sam's father is, at 15:04, escorted out the side door — by federal marshals, not by state deputies. He does not, on the way out, look at the gallery."
+    },
+    {
+      "t": "narrate",
+      "text": "But just before the door closes behind him, he raises his right hand to the back of his neck in the small specific gesture Sam knows from her childhood — the gesture he had made when she was small and he was leaving for a long shift."
+    },
+    {
+      "t": "narrate",
+      "text": "I love you. Be back when I can."
     },
     {
       "t": "narrate",
@@ -494,7 +610,12 @@
     {
       "t": "think",
       "char": "Sam",
-      "text": "Whatever he is going to be, in the next five years or ten or however many, he is going to be alive. He is going to be a witness. He is going to be in a place I do not know the address of. He is going to come home, eventually. Or I am going to be told, eventually, where to go. The older system, today, has chosen to keep him."
+      "text": "Whatever he is going to be, in the next five years or ten or however many, he is going to be alive. He is going to be a witness. He is going to be in a place I do not know the address of. He is going to come home, eventually."
+    },
+    {
+      "t": "think",
+      "char": "Sam",
+      "text": "Or I am going to be told, eventually, where to go. The older system, today, has chosen to keep him."
     },
     {
       "t": "think",
@@ -545,7 +666,19 @@
     {
       "t": "say",
       "char": "Miriam",
-      "text": "Mary, Sam. I am Miriam. I am — I'm a friend of friends. I won't intrude long. I just wanted to tell you in person: he's going to be okay. Where he's going is — it isn't pretty, but it isn't punitive. He's going to be doing the federal thing. He'll be in touch within a month, in writing, from a routed address. You won't be able to write back at first. By next year you will. By Christmas next year, probably, you'll be able to see him.",
+      "text": "Mary, Sam. I am Miriam. I am — I'm a friend of friends. I won't intrude long. I just wanted to tell you in person: he's going to be okay. Where he's going is — it isn't pretty, but it isn't punitive.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Miriam",
+      "text": "He's going to be doing the federal thing. He'll be in touch within a month, in writing, from a routed address. You won't be able to write back at first. By next year you will.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Miriam",
+      "text": "By Christmas next year, probably, you'll be able to see him.",
       "expr": "neutral"
     },
     {
@@ -586,11 +719,19 @@
     },
     {
       "t": "narrate",
-      "text": "[shot:insert subaru]The green car is, when they reach the curb, a 2009 Subaru wagon, dark green, immaculate, with a silver-haired woman at the wheel who is, at this exact moment, reading a paperback copy of Princess Mononoke: The Art Of and smoking — though she will, when they approach, immediately stub out the cigarette and apologize, bad habit, I've been working on it."
+      "text": "[shot:insert subaru]The green car is, when they reach the curb, a 2009 Subaru wagon, dark green, immaculate, with a silver-haired woman at the wheel who is, at this exact moment,"
     },
     {
       "t": "narrate",
-      "text": "Sam, looking at the car as she approaches it, recognizes — with the small quiet click of a piece settling into a slot it had been built for — that she has, in some sense, seen this car before. In a story Maya had told her on Tuesday, in the back room of Cosmic Comics, about a silver-haired woman and a dark green wagon and a girl in the back seat heading west, six weeks ago, through New Mexico."
+      "text": "reading a paperback copy of Princess Mononoke: The Art Of and smoking — though she will, when they approach, immediately stub out the cigarette and apologize, bad habit, I've been working on it."
+    },
+    {
+      "t": "narrate",
+      "text": "Sam, looking at the car as she approaches it, recognizes — with the small quiet click of a piece settling into a slot it had been built for — that she has, in some sense, seen this car before."
+    },
+    {
+      "t": "narrate",
+      "text": "In a story Maya had told her on Tuesday, in the back room of Cosmic Comics, about a silver-haired woman and a dark green wagon and a girl in the back seat heading west, six weeks ago, through New Mexico."
     },
     {
       "t": "narrate",
@@ -643,7 +784,11 @@
     },
     {
       "t": "narrate",
-      "text": "[shot:establish]In Room 318 of New Auburn General, Linda Caldwell turns on the small bedside radio that Anita has, before leaving with Gracie at noon, plugged in for her. The radio is not the shortwave at home. It is a hospital radio. It picks up, on its preset stations, the New Auburn AM news loop, the Tejano station out of San Antonio, and — on a frequency that should not, by any FCC allocation, exist — a faint patient hum on what the dial reads as approximately 1776 kHz, between two assigned bands."
+      "text": "[shot:establish]In Room 318 of New Auburn General, Linda Caldwell turns on the small bedside radio that Anita has, before leaving with Gracie at noon, plugged in for her. The radio is not the shortwave at home. It is a hospital radio."
+    },
+    {
+      "t": "narrate",
+      "text": "It picks up, on its preset stations, the New Auburn AM news loop, the Tejano station out of San Antonio, and — on a frequency that should not, by any FCC allocation, exist — a faint patient hum on what the dial reads as approximately 1776 kHz, between two assigned bands."
     },
     {
       "t": "narrate",
@@ -667,7 +812,11 @@
     },
     {
       "t": "narrate",
-      "text": "Sam, in the green Subaru, headed home, eats a small bag of pretzels Miriam offers her from the glove compartment, and watches the freeway, and feels — for the first time in a week — the small clean settling of a load that has been, for some time, distributed across the entire upper half of her body, beginning at last to come down into the chair beneath her."
+      "text": "Sam, in the green Subaru, headed home, eats a small bag of pretzels Miriam offers her from the glove compartment, and watches the freeway, and feels — for the first time in a week —"
+    },
+    {
+      "t": "narrate",
+      "text": "the small clean settling of a load that has been, for some time, distributed across the entire upper half of her body, beginning at last to come down into the chair beneath her."
     },
     {
       "t": "narrate",

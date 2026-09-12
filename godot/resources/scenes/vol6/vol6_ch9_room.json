@@ -29,7 +29,19 @@
     },
     {
       "t": "narrate",
-      "text": "[trip:1.2][mood:night]A note on form: the chapter that follows is not in its narrator's full possession of itself. Diego Ramos is, at the time these fragments occur, somewhere between a concussion and the long quiet sleep that follows it. The scenes are not in clean order. They are not in clean tense. They are presented the way Diego will, six weeks later, write them down in the small spiral notebook Sam will buy him — out of order, in pieces, not, finally, complete. What follows is the closest thing to a record of those five days he will ever, at his choosing, allow."
+      "text": "[trip:1.2][mood:night]A note on form: the chapter that follows is not in its narrator's full possession of itself. Diego Ramos is, at the time these fragments occur, somewhere between a concussion and the long quiet sleep that follows it."
+    },
+    {
+      "t": "narrate",
+      "text": "The scenes are not in clean order. They are not in clean tense."
+    },
+    {
+      "t": "narrate",
+      "text": "They are presented the way Diego will, six weeks later, write them down in the small spiral notebook Sam will buy him — out of order, in pieces, not, finally, complete."
+    },
+    {
+      "t": "narrate",
+      "text": "What follows is the closest thing to a record of those five days he will ever, at his choosing, allow."
     },
     {
       "t": "interlude",
@@ -57,7 +69,11 @@
     },
     {
       "t": "narrate",
-      "text": "The bulb hums in a way he recognizes from the gas station — the same hum the back-stockroom bulb at the Gas & Go has been making since March, the hum he had, in March, started writing the red dots in his calendar against. The hum is, he understands, the same network. The network has, since March, been broadcasting through his workplace. The network is, today, broadcasting through his cell."
+      "text": "The bulb hums in a way he recognizes from the gas station — the same hum the back-stockroom bulb at the Gas & Go has been making since March, the hum he had, in March, started writing the red dots in his calendar against."
+    },
+    {
+      "t": "narrate",
+      "text": "The hum is, he understands, the same network. The network has, since March, been broadcasting through his workplace. The network is, today, broadcasting through his cell."
     },
     {
       "t": "narrate",
@@ -73,7 +89,11 @@
     },
     {
       "t": "narrate",
-      "text": "He knows it is Sunday. Then he sleeps. He wakes. He thinks it might be Tuesday. He sleeps. He wakes. There is food. The food is a sandwich on a paper plate slid through the slot at the bottom of the door. The sandwich is white bread and bologna and yellow mustard. The sandwich is the same sandwich each time. He stops, after the third one, eating it."
+      "text": "He knows it is Sunday. Then he sleeps. He wakes. He thinks it might be Tuesday. He sleeps. He wakes. There is food. The food is a sandwich on a paper plate slid through the slot at the bottom of the door."
+    },
+    {
+      "t": "narrate",
+      "text": "The sandwich is white bread and bologna and yellow mustard. The sandwich is the same sandwich each time. He stops, after the third one, eating it."
     },
     {
       "t": "narrate",
@@ -127,7 +147,11 @@
     },
     {
       "t": "narrate",
-      "text": "But Boyd's eyes are not, Diego registers, eyes. Boyd's eyes are — are cameras. They are looking at Diego the way the eye of his shift supervisor's phone had looked at him on Saturday morning when Skip had set the phone face-up on the counter to film him while pretending to scroll."
+      "text": "But Boyd's eyes are not, Diego registers, eyes. Boyd's eyes are — are cameras."
+    },
+    {
+      "t": "narrate",
+      "text": "They are looking at Diego the way the eye of his shift supervisor's phone had looked at him on Saturday morning when Skip had set the phone face-up on the counter to film him while pretending to scroll."
     },
     {
       "t": "narrate",
@@ -315,7 +339,11 @@
     },
     {
       "t": "narrate",
-      "text": "It is not the worst Diego has ever been hit. The hit is, in some sense, controlled — Boyd has hit him in the ribs, not the face, with the small specific economy of a man who has been told to leave the face alone. The ribs hurt. The hit, in Diego's experience of Boyd over the next four days, is the standard hit. Boyd will use it eight times."
+      "text": "It is not the worst Diego has ever been hit. The hit is, in some sense, controlled — Boyd has hit him in the ribs, not the face, with the small specific economy of a man who has been told to leave the face alone. The ribs hurt."
+    },
+    {
+      "t": "narrate",
+      "text": "The hit, in Diego's experience of Boyd over the next four days, is the standard hit. Boyd will use it eight times."
     },
     {
       "t": "narrate",
@@ -370,7 +398,11 @@
     },
     {
       "t": "narrate",
-      "text": "It is in the corner above the door. It is a small black device, the size of a deck of cards, with a single red LED that is not, technically, on, but that is glowing — faintly, in a register Diego is increasingly able to see — at the same frequency as the bulb in the cage and the water and Boyd's eyes."
+      "text": "It is in the corner above the door."
+    },
+    {
+      "t": "narrate",
+      "text": "It is a small black device, the size of a deck of cards, with a single red LED that is not, technically, on, but that is glowing — faintly, in a register Diego is increasingly able to see — at the same frequency as the bulb in the cage and the water and Boyd's eyes."
     },
     {
       "t": "narrate",
@@ -592,7 +624,19 @@
     {
       "t": "say",
       "char": "Boyd",
-      "text": "Kid. I need you to know something. I am about to get a stomach thing. It is not a normal stomach thing. It is being given to me. I do not know who is giving it to me. But I am going to be in the bathroom for a long time tomorrow morning. And during that time, the people who are coming for you are going to come. I want you to understand. I am not — I am not going to fight them. I am, in fact, going to be in the bathroom. I am telling you this so you know, when the door opens tomorrow morning, that the person on the other side of it is, in some specific sense, the friend.",
+      "text": "Kid. I need you to know something. I am about to get a stomach thing. It is not a normal stomach thing. It is being given to me. I do not know who is giving it to me.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Boyd",
+      "text": "But I am going to be in the bathroom for a long time tomorrow morning. And during that time, the people who are coming for you are going to come. I want you to understand. I am not — I am not going to fight them.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Boyd",
+      "text": "I am, in fact, going to be in the bathroom. I am telling you this so you know, when the door opens tomorrow morning, that the person on the other side of it is, in some specific sense, the friend.",
       "expr": "neutral"
     },
     {
@@ -604,7 +648,25 @@
     {
       "t": "say",
       "char": "Boyd",
-      "text": "Kid. I have been hitting you for five days. I have been doing the standard work. I have a long career in this kind of work. But the device on the wall has been — speaking to me. The device on the wall has been telling me, since Wednesday morning, that I am being unmade. The device says I am being given the stomach thing as my retirement. The device says I am not, after the bathroom, going to be one of these guys anymore. The device says, if I tell you what is coming, the device will, in the bathroom, be merciful. So I am telling you. I am — I am not, kid, a good man. I am not going to pretend to be. But I am telling you because I would like to be, on the other side of the bathroom, slightly less of the kind of man I have been.",
+      "text": "Kid. I have been hitting you for five days. I have been doing the standard work. I have a long career in this kind of work. But the device on the wall has been — speaking to me.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Boyd",
+      "text": "The device on the wall has been telling me, since Wednesday morning, that I am being unmade. The device says I am being given the stomach thing as my retirement.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Boyd",
+      "text": "The device says I am not, after the bathroom, going to be one of these guys anymore. The device says, if I tell you what is coming, the device will, in the bathroom, be merciful. So I am telling you.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Boyd",
+      "text": "I am — I am not, kid, a good man. I am not going to pretend to be. But I am telling you because I would like to be, on the other side of the bathroom, slightly less of the kind of man I have been.",
       "expr": "neutral"
     },
     {
@@ -638,7 +700,13 @@
     {
       "t": "say",
       "char": "Boyd",
-      "text": "[shot:closeup person_b]Kid. For what it's worth. Your grandmother loves you. I have been listening to her on the radio in the room above this one for three days. She has been — sending Morse. She has not stopped. The Morse says: he is alive. she is here. [wave amp=5 freq=2]we are coming.[/wave] she has been saying it on a loop for three days. I do not know how she knows. But she knows.",
+      "text": "[shot:closeup person_b]Kid. For what it's worth. Your grandmother loves you. I have been listening to her on the radio in the room above this one for three days. She has been — sending Morse. She has not stopped.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Boyd",
+      "text": "The Morse says: he is alive. she is here. [wave amp=5 freq=2]we are coming.[/wave] she has been saying it on a loop for three days. I do not know how she knows. But she knows.",
       "expr": "neutral"
     },
     {

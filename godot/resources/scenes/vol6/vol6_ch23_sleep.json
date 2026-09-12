@@ -168,7 +168,13 @@
     {
       "t": "say",
       "char": "Eileen",
-      "text": "The dining room. The dining room is going to be the piano room. We don't dine in the dining room. We dine here. The dining room has been, for fourteen years, the room where the small table that holds the lamp lives. The small table can move. The dining room is going to be the piano room.",
+      "text": "The dining room. The dining room is going to be the piano room. We don't dine in the dining room. We dine here. The dining room has been, for fourteen years, the room where the small table that holds the lamp lives.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Eileen",
+      "text": "The small table can move. The dining room is going to be the piano room.",
       "expr": "neutral"
     },
     {
@@ -307,7 +313,11 @@
     },
     {
       "t": "narrate",
-      "text": "[shot:establish]He showers. He eats the small specific Anita-Sunday dinner — chicken and rice — at the kitchen with Bill and Gracie. Anita has, this Sunday, the night off. She is at the table with them, in her sweatpants, drinking the small specific Sunday glass of red wine she has on the Sundays she does not have the night shift the next morning."
+      "text": "[shot:establish]He showers. He eats the small specific Anita-Sunday dinner — chicken and rice — at the kitchen with Bill and Gracie. Anita has, this Sunday, the night off."
+    },
+    {
+      "t": "narrate",
+      "text": "She is at the table with them, in her sweatpants, drinking the small specific Sunday glass of red wine she has on the Sundays she does not have the night shift the next morning."
     },
     {
       "t": "show",
@@ -497,7 +507,11 @@
     },
     {
       "t": "narrate",
-      "text": "[shot:closeup maya]In her bedroom on the same night, Maya has been going through the small box of school supplies her grandmother bought her on the small Tuesday trip to the Walmart in New Auburn three weeks ago. The box has, in it: the small specific binder she uses, the small pack of pens she likes, the index cards she has been using since freshman year, and a single small new notebook she has been saving for the first day."
+      "text": "[shot:closeup maya]In her bedroom on the same night, Maya has been going through the small box of school supplies her grandmother bought her on the small Tuesday trip to the Walmart in New Auburn three weeks ago."
+    },
+    {
+      "t": "narrate",
+      "text": "The box has, in it: the small specific binder she uses, the small pack of pens she likes, the index cards she has been using since freshman year, and a single small new notebook she has been saving for the first day."
     },
     {
       "t": "narrate",
@@ -539,7 +553,11 @@
     },
     {
       "t": "narrate",
-      "text": "He has the laptop open. He is looking at the schedule the school had sent in the mail two weeks ago. He is registering the rooms his classes will be in. He is registering that the Spanish IV teacher is the same teacher he had for Spanish III last year and that the calculus teacher is somebody he has not had before."
+      "text": "He has the laptop open. He is looking at the schedule the school had sent in the mail two weeks ago. He is registering the rooms his classes will be in."
+    },
+    {
+      "t": "narrate",
+      "text": "He is registering that the Spanish IV teacher is the same teacher he had for Spanish III last year and that the calculus teacher is somebody he has not had before."
     },
     {
       "t": "narrate",
@@ -591,7 +609,11 @@
     },
     {
       "t": "narrate",
-      "text": "[shot:insert window~]The Geller porch light at the end of the Caldwell cul-de-sac is on. Don's silhouette, at eleven-thirty, is at the window. He is doing the same Sunday-night thing he has been doing since 2009, which is sitting at the window with a small glass of water and watching the cul-de-sac for the small specific eleven-PM-to-midnight window when his late wife had used to walk the dog."
+      "text": "[shot:insert window~]The Geller porch light at the end of the Caldwell cul-de-sac is on. Don's silhouette, at eleven-thirty, is at the window."
+    },
+    {
+      "t": "narrate",
+      "text": "He is doing the same Sunday-night thing he has been doing since 2009, which is sitting at the window with a small glass of water and watching the cul-de-sac for the small specific eleven-PM-to-midnight window when his late wife had used to walk the dog."
     },
     {
       "t": "narrate",
@@ -659,7 +681,11 @@
     },
     {
       "t": "narrate",
-      "text": "[shot:closeup bianca]In a different cul-de-sac, the Salinas house has the kitchen light still on. Bianca, who had gone to bed at eleven-oh-two, has gotten up at eleven-thirty for a glass of water, is downstairs, has not yet gone back up. She is at the kitchen window, in her green terrycloth robe, looking at the cul-de-sac. The car Sammy will drive to school in the morning is in the driveway."
+      "text": "[shot:closeup bianca]In a different cul-de-sac, the Salinas house has the kitchen light still on. Bianca, who had gone to bed at eleven-oh-two, has gotten up at eleven-thirty for a glass of water, is downstairs, has not yet gone back up."
+    },
+    {
+      "t": "narrate",
+      "text": "She is at the kitchen window, in her green terrycloth robe, looking at the cul-de-sac. The car Sammy will drive to school in the morning is in the driveway."
     },
     {
       "t": "narrate",

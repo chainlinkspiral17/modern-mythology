@@ -41,7 +41,11 @@
    "t": "narrate"
   },
   {
-   "text": "[shot:insert note]The Tuesday note he had taped above the OPEN sign was still on the door. Family thing. Back Friday. — Kai. He pulled it off. He read it once. He folded it. He put it in the small drawer under the register where he kept the pieces of paper he had taken off the door over the years.",
+   "text": "[shot:insert note]The Tuesday note he had taped above the OPEN sign was still on the door. Family thing. Back Friday. — Kai. He pulled it off. He read it once. He folded it.",
+   "t": "narrate"
+  },
+  {
+   "text": "He put it in the small drawer under the register where he kept the pieces of paper he had taken off the door over the years.",
    "t": "narrate"
   },
   {
@@ -57,7 +61,11 @@
    "t": "narrate"
   },
   {
-   "text": "[shot:insert sanderling]He registered also that the substrate had not painted into the cleared section of the sanderling. The sanderling's bird-shape was gone. The brick under the patch was bare. The wall was waiting for somebody. Possibly Janet Halfmoon, who had painted the sanderling in '46. Possibly a different painter. Possibly nobody had been chosen yet and the wall would wait.",
+   "text": "[shot:insert sanderling]He registered also that the substrate had not painted into the cleared section of the sanderling. The sanderling's bird-shape was gone. The brick under the patch was bare. The wall was waiting for somebody.",
+   "t": "narrate"
+  },
+  {
+   "text": "Possibly Janet Halfmoon, who had painted the sanderling in '46. Possibly a different painter. Possibly nobody had been chosen yet and the wall would wait.",
    "t": "narrate"
   },
   {
@@ -69,7 +77,11 @@
    "t": "narrate"
   },
   {
-   "text": "Jameson was eighteen now — the kid who had come in Tuesday with his cousin Mateo and Hannes and the cracked Tess Mariana. He was in the kind of canvas jacket the boys in this town wore when their parents had bought it for them in 2049 and they had been wearing it ever since.",
+   "text": "Jameson was eighteen now — the kid who had come in Tuesday with his cousin Mateo and Hannes and the cracked Tess Mariana.",
+   "t": "narrate"
+  },
+  {
+   "text": "He was in the kind of canvas jacket the boys in this town wore when their parents had bought it for them in 2049 and they had been wearing it ever since.",
    "t": "narrate"
   },
   {
@@ -174,7 +186,12 @@
   },
   {
    "char": "jameson",
-   "text": "I stood at the wall for ten minutes. I was late to my shift. Margaret didn't say anything about my being late. She had her hand on the wall when she came through this morning at seven. She had been at the wall, by what she told me when I got in at twenty past, for fifteen minutes.",
+   "text": "I stood at the wall for ten minutes. I was late to my shift. Margaret didn't say anything about my being late. She had her hand on the wall when she came through this morning at seven.",
+   "t": "say"
+  },
+  {
+   "char": "jameson",
+   "text": "She had been at the wall, by what she told me when I got in at twenty past, for fifteen minutes.",
    "t": "say"
   },
   {
@@ -337,7 +354,11 @@
    "t": "narrate"
   },
   {
-   "text": "He registered also that he was — by his own reading of his body at the bench — running on the kind of attention that came from being awake at four-twenty and not being able to go back to sleep, and that the running was not, in the way running-on-not-enough-sleep usually was, draining him. He felt clear.",
+   "text": "He registered also that he was — by his own reading of his body at the bench — running on the kind of attention that came from being awake at four-twenty and not being able to go back to sleep, and that the running was not, in the way running-on-not-enough-sleep usually was, draining him.",
+   "t": "narrate"
+  },
+  {
+   "text": "He felt clear.",
    "t": "narrate"
   },
   {
@@ -353,7 +374,11 @@
    "t": "narrate"
   },
   {
-   "text": "He had been sleeping without the basement for three nights. The ferret in the dream had been replaced — by what Kai was now reading at the bench — by the imprint in the experience. Kai had met the imprint. The dream had been the dream that had been telling him to meet the imprint. The meeting was done. The dream was done.",
+   "text": "He had been sleeping without the basement for three nights. The ferret in the dream had been replaced — by what Kai was now reading at the bench — by the imprint in the experience. Kai had met the imprint.",
+   "t": "narrate"
+  },
+  {
+   "text": "The dream had been the dream that had been telling him to meet the imprint. The meeting was done. The dream was done.",
    "t": "narrate"
   },
   {

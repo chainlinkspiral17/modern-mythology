@@ -64,7 +64,11 @@
     },
     {
       "t": "narrate",
-      "text": "Sam Miller turns away from the window. She begins the long careful work of pretending, for the benefit of her father eating dinner at the kitchen table downstairs, that today was, in every way that matters, an ordinary day. She is, she will discover, not very good at it yet. She will get better."
+      "text": "Sam Miller turns away from the window. She begins the long careful work of pretending, for the benefit of her father eating dinner at the kitchen table downstairs, that today was, in every way that matters, an ordinary day."
+    },
+    {
+      "t": "narrate",
+      "text": "She is, she will discover, not very good at it yet. She will get better."
     },
     {
       "t": "flag",

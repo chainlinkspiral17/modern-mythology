@@ -1614,6 +1614,23 @@ room's OTHER presets by demand rather than by audit (main_street ×8 on
 board_lords_interior.tscn, cedar_tower's four areas, shuttle_bench ×8)
 — they pass the 12 m gate today only because their cues are few.
 
+**2026-09-12 (v) · ONE PAGE AT A TIME.** "Some sections have too much
+text on screen at once and it gets too small and cramped." The box was
+doing the cramping: DialogueBox auto-fits past 260 visible characters
+by stepping the font toward half size, and 2,219 nodes were over the
+line (the longest 1,566 characters — 17 px type over the picture). New
+`page_split.py`: sentences packed to 230 characters, long sentences
+broken at dash / semicolon / comma, then conjunction, then any space;
+directives and `voice` stay on the first page; `char` / `expr` / flag
+gates copy to every page; choice `goto` / `check` and jump `goto`
+re-pointed to first pages; raw spans spliced via raw_decode (211 of
+313 files do not round-trip), parsed before writing. 2,155 nodes in
+226 files → 3,306 extra pages; every scene gate green; two audits that
+counted in nodes now count in what they meant (four pages, 450
+characters). New gate `page_length_audit.py` at zero. NEXT (Deck): is
+230 the right page at 34 px, or does a page want three lines rather
+than four? One constant.
+
 **2026-08-19 · PER-STICK VOICE SWEEP VERDICT (voice draft 4).**
 Ran the leakage grep (TODO/WIP/placeholder/implemented/deferred/
 stub) and a string survey across EVERY stick directory: estuary_4,

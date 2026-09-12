@@ -39,7 +39,11 @@
   },
   {
    "t": "narrate",
-   "text": "She has, in the night, been moved from recovery to the regular floor. Her hip is in a brace and a cast. She has an IV in her right hand, which is the hand she would, normally, use for the Morse key, and she has noticed this and has, in her quiet way, registered the irony."
+   "text": "She has, in the night, been moved from recovery to the regular floor. Her hip is in a brace and a cast."
+  },
+  {
+   "t": "narrate",
+   "text": "She has an IV in her right hand, which is the hand she would, normally, use for the Morse key, and she has noticed this and has, in her quiet way, registered the irony."
   },
   {
    "t": "show",
@@ -138,7 +142,13 @@
   {
    "t": "say",
    "char": "Gracie",
-   "text": "Daisy is a mutt. Daisy is technically a coward. She is afraid of butterflies and ceiling fans and the vacuum. But she is brave about people. She is very brave about Maya. She slept on Maya's foot at breakfast which is something she only does for people she has decided to keep.",
+   "text": "Daisy is a mutt. Daisy is technically a coward. She is afraid of butterflies and ceiling fans and the vacuum. But she is brave about people. She is very brave about Maya.",
+   "expr": "neutral"
+  },
+  {
+   "t": "say",
+   "char": "Gracie",
+   "text": "She slept on Maya's foot at breakfast which is something she only does for people she has decided to keep.",
    "expr": "neutral"
   },
   {
@@ -236,13 +246,43 @@
   {
    "t": "say",
    "char": "Linda Caldwell",
-   "text": "Thomas worked for the Beaumont Enterprise for two years out of college, then quit to freelance. He shot mostly architecture and event work — weddings, school portraits, the occasional industrial commission. In 1976 he was hired by a company called Ardent Reclamation Holdings to document a chemical dump site outside Graustark. The site had been listed for cleanup. The company wanted before-and-after photographs. It was, in his understanding, a public-relations contract.",
+   "text": "Thomas worked for the Beaumont Enterprise for two years out of college, then quit to freelance. He shot mostly architecture and event work — weddings, school portraits, the occasional industrial commission.",
    "expr": "neutral"
   },
   {
    "t": "say",
    "char": "Linda Caldwell",
-   "text": "[shot:closeup person]He took the photographs. He developed them in his home darkroom in Beaumont. One of the photographs — one — showed something the company had not, in his briefing, told him about. A small structure inside the dump perimeter that was not on the site map. A — a building, Maya. A building roughly the size of a single-wide trailer, with a single door, no windows, and three trucks parked outside it, and a man standing at the door of the building who was looking, in the photograph, directly into Thomas's camera even though Thomas had not — Thomas was certain he had not — been close enough for the man to see him. The man in the photograph was wearing a charcoal suit.",
+   "text": "In 1976 he was hired by a company called Ardent Reclamation Holdings to document a chemical dump site outside Graustark. The site had been listed for cleanup. The company wanted before-and-after photographs.",
+   "expr": "neutral"
+  },
+  {
+   "t": "say",
+   "char": "Linda Caldwell",
+   "text": "It was, in his understanding, a public-relations contract.",
+   "expr": "neutral"
+  },
+  {
+   "t": "say",
+   "char": "Linda Caldwell",
+   "text": "[shot:closeup person]He took the photographs. He developed them in his home darkroom in Beaumont. One of the photographs — one — showed something the company had not, in his briefing, told him about.",
+   "expr": "neutral"
+  },
+  {
+   "t": "say",
+   "char": "Linda Caldwell",
+   "text": "A small structure inside the dump perimeter that was not on the site map. A — a building, Maya.",
+   "expr": "neutral"
+  },
+  {
+   "t": "say",
+   "char": "Linda Caldwell",
+   "text": "A building roughly the size of a single-wide trailer, with a single door, no windows, and three trucks parked outside it, and a man standing at the door of the building who was looking,",
+   "expr": "neutral"
+  },
+  {
+   "t": "say",
+   "char": "Linda Caldwell",
+   "text": "in the photograph, directly into Thomas's camera even though Thomas had not — Thomas was certain he had not — been close enough for the man to see him. The man in the photograph was wearing a charcoal suit.",
    "expr": "neutral"
   },
   {
@@ -289,13 +329,49 @@
   {
    "t": "say",
    "char": "Linda Caldwell",
-   "text": "Thomas — Thomas knew, the second he saw the print, that he had photographed something he should not have. He developed only the one print of that frame. He destroyed the negative. He hid the print in a book in our apartment. He went back to Ardent the next day and turned in the other photographs and told them the assignment was done.",
+   "text": "Thomas — Thomas knew, the second he saw the print, that he had photographed something he should not have. He developed only the one print of that frame. He destroyed the negative. He hid the print in a book in our apartment.",
    "expr": "neutral"
   },
   {
    "t": "say",
    "char": "Linda Caldwell",
-   "text": "For three weeks, nothing happened. Then one morning Thomas went to the parking lot of his studio and his car was gone. Not stolen — moved. It had been parked four blocks away, in front of a fire hydrant, where the police would, in the natural course of their morning, have to ticket it. The ticket arrived. With it, two days later, came a — visit. From a man in a charcoal suit. The man in the photograph. He came to our apartment. I was nineteen, Maya. We had been married six months. He came to our door. He sat in our kitchen. He drank a cup of coffee I made him. He was — I want you to understand — he was very polite. He did not threaten Thomas. He told Thomas, simply, that there was a photograph in our apartment that did not belong to us, and that he would be coming back the following day to collect it, and that if the photograph was not, in his estimation, all of the photograph, he would have to come back a third time, and the third time would not be a coffee.",
+   "text": "He went back to Ardent the next day and turned in the other photographs and told them the assignment was done.",
+   "expr": "neutral"
+  },
+  {
+   "t": "say",
+   "char": "Linda Caldwell",
+   "text": "For three weeks, nothing happened. Then one morning Thomas went to the parking lot of his studio and his car was gone. Not stolen — moved.",
+   "expr": "neutral"
+  },
+  {
+   "t": "say",
+   "char": "Linda Caldwell",
+   "text": "It had been parked four blocks away, in front of a fire hydrant, where the police would, in the natural course of their morning, have to ticket it. The ticket arrived. With it, two days later, came a — visit.",
+   "expr": "neutral"
+  },
+  {
+   "t": "say",
+   "char": "Linda Caldwell",
+   "text": "From a man in a charcoal suit. The man in the photograph. He came to our apartment. I was nineteen, Maya. We had been married six months. He came to our door. He sat in our kitchen. He drank a cup of coffee I made him.",
+   "expr": "neutral"
+  },
+  {
+   "t": "say",
+   "char": "Linda Caldwell",
+   "text": "He was — I want you to understand — he was very polite. He did not threaten Thomas.",
+   "expr": "neutral"
+  },
+  {
+   "t": "say",
+   "char": "Linda Caldwell",
+   "text": "He told Thomas, simply, that there was a photograph in our apartment that did not belong to us, and that he would be coming back the following day to collect it,",
+   "expr": "neutral"
+  },
+  {
+   "t": "say",
+   "char": "Linda Caldwell",
+   "text": "and that if the photograph was not, in his estimation, all of the photograph, he would have to come back a third time, and the third time would not be a coffee.",
    "expr": "neutral"
   },
   {
@@ -307,7 +383,19 @@
   {
    "t": "say",
    "char": "Linda Caldwell",
-   "text": "[shot:closeup person]Thomas spent the night looking for the print. He had hidden it so well — he had hidden it inside a copy of Moby-Dick in the back of the closet — that even he, by the morning, was not sure he could find it again. He did, finally, just before noon, find it. He looked at it for a long time. He copied it — three copies, on cheap film, the best he could do with the small Polaroid we had in the apartment. He hid the copies in three different places. Then he gave the original to the man in the suit, when the man came back at three.",
+   "text": "[shot:closeup person]Thomas spent the night looking for the print. He had hidden it so well — he had hidden it inside a copy of Moby-Dick in the back of the closet — that even he, by the morning, was not sure he could find it again.",
+   "expr": "neutral"
+  },
+  {
+   "t": "say",
+   "char": "Linda Caldwell",
+   "text": "He did, finally, just before noon, find it. He looked at it for a long time. He copied it — three copies, on cheap film, the best he could do with the small Polaroid we had in the apartment.",
+   "expr": "neutral"
+  },
+  {
+   "t": "say",
+   "char": "Linda Caldwell",
+   "text": "He hid the copies in three different places. Then he gave the original to the man in the suit, when the man came back at three.",
    "expr": "neutral"
   },
   {
@@ -319,7 +407,31 @@
   {
    "t": "say",
    "char": "Linda Caldwell",
-   "text": "Thomas went to the police that afternoon — to the New Auburn city police, not the Beaumont police, because he did not trust the Beaumont police. He told them what he had photographed. He showed them one of the copies. The police — they were polite. They took notes. They said they would be in touch. They were never in touch. Three days later Thomas was arrested at our apartment, at three AM, on charges of trafficking unlicensed photographic chemicals. Which was — Maya, it was nonsense. He had a darkroom in our apartment. The chemicals were the same chemicals every photographer in 1976 had. But the charges were the charges, and the charges led to a search of the darkroom, which led to a discovery of additional chemicals he had not, in fact, owned, and which led to a prosecution that took six months and a sentence, in 1977, of fifteen years.",
+   "text": "Thomas went to the police that afternoon — to the New Auburn city police, not the Beaumont police, because he did not trust the Beaumont police. He told them what he had photographed. He showed them one of the copies.",
+   "expr": "neutral"
+  },
+  {
+   "t": "say",
+   "char": "Linda Caldwell",
+   "text": "The police — they were polite. They took notes. They said they would be in touch. They were never in touch.",
+   "expr": "neutral"
+  },
+  {
+   "t": "say",
+   "char": "Linda Caldwell",
+   "text": "Three days later Thomas was arrested at our apartment, at three AM, on charges of trafficking unlicensed photographic chemicals. Which was — Maya, it was nonsense. He had a darkroom in our apartment.",
+   "expr": "neutral"
+  },
+  {
+   "t": "say",
+   "char": "Linda Caldwell",
+   "text": "The chemicals were the same chemicals every photographer in 1976 had.",
+   "expr": "neutral"
+  },
+  {
+   "t": "say",
+   "char": "Linda Caldwell",
+   "text": "But the charges were the charges, and the charges led to a search of the darkroom, which led to a discovery of additional chemicals he had not, in fact, owned, and which led to a prosecution that took six months and a sentence, in 1977, of fifteen years.",
    "expr": "neutral"
   },
   {
@@ -329,31 +441,97 @@
   {
    "t": "say",
    "char": "Linda Caldwell",
-   "text": "I waited. I worked. I — I kept the apartment. I learned the radio. The radio was your grandfather's. He had built it himself. He had told me, before he was arrested, that if anything ever happened to him, the radio was the way I would, eventually, hear from his — his friends. He did not, at the time, tell me what he meant by friends. I learned, over the years, what he meant. They were people who had — who had, in different ways, also crossed the man in the suit. They were people who had been — who had been quietly looking out for each other, at a distance, since at least 1968. The radio was their network.",
+   "text": "I waited. I worked. I — I kept the apartment. I learned the radio. The radio was your grandfather's. He had built it himself.",
    "expr": "neutral"
   },
   {
    "t": "say",
    "char": "Linda Caldwell",
-   "text": "Your grandfather served twelve of his fifteen years. He came home in 1989. He was — Maya. He was not the man who had gone in. He was thinner. He was quieter. He had been, in prison, beaten on three separate occasions by men who were not, exactly, prisoners. Each beating had been preceded by a small calling card slipped under his cell door — a card with no writing, just a small embossed D. He understood. He told me, when he came home, that the D was a reminder, not a threat. The reminder was: we have not forgotten you, and we will not, ever, forget you.",
+   "text": "He had told me, before he was arrested, that if anything ever happened to him, the radio was the way I would, eventually, hear from his — his friends. He did not, at the time, tell me what he meant by friends.",
    "expr": "neutral"
   },
   {
    "t": "say",
    "char": "Linda Caldwell",
-   "text": "He lived eleven more years. He died in 2000 of complications from a kidney condition the prison doctors had, for nine years, declined to treat. He never took another photograph. He kept the radio. He taught me how to listen. He taught me the cadence — the Morse he had learned in the navy in 1968, the Morse the friends used. He told me, on his last night, that someone — someone — would, eventually, ask me to be ready, and that when they asked, I would know.",
+   "text": "I learned, over the years, what he meant. They were people who had — who had, in different ways, also crossed the man in the suit.",
    "expr": "neutral"
   },
   {
    "t": "say",
    "char": "Linda Caldwell",
-   "text": "In April this year, your father called me. He said — he said Linda, my daughter needs to come live with you for a while. Will you take her. And I said — Maya. I said yes immediately. I said yes before he had finished asking. And after he hung up I went upstairs, and I plugged the radio in for the first time in eleven years, and I put it on 1776 kilohertz, and I waited.",
+   "text": "They were people who had been — who had been quietly looking out for each other, at a distance, since at least 1968. The radio was their network.",
    "expr": "neutral"
   },
   {
    "t": "say",
    "char": "Linda Caldwell",
-   "text": "[shot:closeup person]I have been waiting for you, sweetheart. Your whole life. I have been waiting for you to be the person you are now. And the past six weeks have been — they have been the happiest six weeks of my life since 1976. I want you to know that. I want you to know that, Maya. The fall on the stairs was not — it was not unhappiness. It was — it was relief. My body finally letting itself rest. Because you are here. Because the person I have been waiting for has come.",
+   "text": "Your grandfather served twelve of his fifteen years. He came home in 1989. He was — Maya. He was not the man who had gone in. He was thinner. He was quieter.",
+   "expr": "neutral"
+  },
+  {
+   "t": "say",
+   "char": "Linda Caldwell",
+   "text": "He had been, in prison, beaten on three separate occasions by men who were not, exactly, prisoners.",
+   "expr": "neutral"
+  },
+  {
+   "t": "say",
+   "char": "Linda Caldwell",
+   "text": "Each beating had been preceded by a small calling card slipped under his cell door — a card with no writing, just a small embossed D. He understood. He told me, when he came home, that the D was a reminder, not a threat.",
+   "expr": "neutral"
+  },
+  {
+   "t": "say",
+   "char": "Linda Caldwell",
+   "text": "The reminder was: we have not forgotten you, and we will not, ever, forget you.",
+   "expr": "neutral"
+  },
+  {
+   "t": "say",
+   "char": "Linda Caldwell",
+   "text": "He lived eleven more years. He died in 2000 of complications from a kidney condition the prison doctors had, for nine years, declined to treat. He never took another photograph. He kept the radio. He taught me how to listen.",
+   "expr": "neutral"
+  },
+  {
+   "t": "say",
+   "char": "Linda Caldwell",
+   "text": "He taught me the cadence — the Morse he had learned in the navy in 1968, the Morse the friends used.",
+   "expr": "neutral"
+  },
+  {
+   "t": "say",
+   "char": "Linda Caldwell",
+   "text": "He told me, on his last night, that someone — someone — would, eventually, ask me to be ready, and that when they asked, I would know.",
+   "expr": "neutral"
+  },
+  {
+   "t": "say",
+   "char": "Linda Caldwell",
+   "text": "In April this year, your father called me. He said — he said Linda, my daughter needs to come live with you for a while. Will you take her. And I said — Maya. I said yes immediately. I said yes before he had finished asking.",
+   "expr": "neutral"
+  },
+  {
+   "t": "say",
+   "char": "Linda Caldwell",
+   "text": "And after he hung up I went upstairs, and I plugged the radio in for the first time in eleven years, and I put it on 1776 kilohertz, and I waited.",
+   "expr": "neutral"
+  },
+  {
+   "t": "say",
+   "char": "Linda Caldwell",
+   "text": "[shot:closeup person]I have been waiting for you, sweetheart. Your whole life. I have been waiting for you to be the person you are now. And the past six weeks have been — they have been the happiest six weeks of my life since 1976.",
+   "expr": "neutral"
+  },
+  {
+   "t": "say",
+   "char": "Linda Caldwell",
+   "text": "I want you to know that. I want you to know that, Maya. The fall on the stairs was not — it was not unhappiness. It was — it was relief. My body finally letting itself rest. Because you are here.",
+   "expr": "neutral"
+  },
+  {
+   "t": "say",
+   "char": "Linda Caldwell",
+   "text": "Because the person I have been waiting for has come.",
    "expr": "neutral"
   },
   {
@@ -407,7 +585,13 @@
   {
    "t": "say",
    "char": "Linda Caldwell",
-   "text": "I'm going to be home in three weeks. We are going to sit at the radio together. I am going to teach you the Morse. I am going to teach you what your grandfather taught me. You are — Maya, you are going to be one of the friends. You already are. The radio knows you.",
+   "text": "I'm going to be home in three weeks. We are going to sit at the radio together. I am going to teach you the Morse. I am going to teach you what your grandfather taught me. You are — Maya, you are going to be one of the friends.",
+   "expr": "neutral"
+  },
+  {
+   "t": "say",
+   "char": "Linda Caldwell",
+   "text": "You already are. The radio knows you.",
    "expr": "neutral"
   },
   {
@@ -435,7 +619,19 @@
   {
    "t": "say",
    "char": "Linda Caldwell",
-   "text": "I know of him. Your grandfather mentioned him once, in 1999. He said there is a young man working in a warehouse in Graustark who is going to be one of us, and we are going to know him, in time, by his fondness for jokes that nobody else thinks are funny. I have not, until this minute, heard the name. But I know him. Tell me about him.",
+   "text": "I know of him. Your grandfather mentioned him once, in 1999.",
+   "expr": "neutral"
+  },
+  {
+   "t": "say",
+   "char": "Linda Caldwell",
+   "text": "He said there is a young man working in a warehouse in Graustark who is going to be one of us, and we are going to know him, in time, by his fondness for jokes that nobody else thinks are funny.",
+   "expr": "neutral"
+  },
+  {
+   "t": "say",
+   "char": "Linda Caldwell",
+   "text": "I have not, until this minute, heard the name. But I know him. Tell me about him.",
    "expr": "neutral"
   },
   {
@@ -444,7 +640,11 @@
   },
   {
    "t": "narrate",
-   "text": "Maya tells her about the Demons. About the Speak & Spell. About the warehouse. About Frasier's attachment to it, his reluctance to leave, the Beaumont rescue of Rick in 2002, the imps now active in Harmony Creek, the rescue of Diego, the giving-of-the-stomach-bug to Boyd."
+   "text": "Maya tells her about the Demons. About the Speak & Spell. About the warehouse."
+  },
+  {
+   "t": "narrate",
+   "text": "About Frasier's attachment to it, his reluctance to leave, the Beaumont rescue of Rick in 2002, the imps now active in Harmony Creek, the rescue of Diego, the giving-of-the-stomach-bug to Boyd."
   },
   {
    "t": "narrate",
@@ -453,7 +653,13 @@
   {
    "t": "say",
    "char": "Linda Caldwell",
-   "text": "[shot:closeup person]Sweetheart. He is one of the friends. He is, in fact, by your description, the most active of the friends in some time. You are going to meet him. Not soon. But you are going to meet him. And when you do, you are going to tell him your grandfather knew his name in 1999, and that we have been, in our small way, watching for him.",
+   "text": "[shot:closeup person]Sweetheart. He is one of the friends. He is, in fact, by your description, the most active of the friends in some time. You are going to meet him. Not soon. But you are going to meet him.",
+   "expr": "neutral"
+  },
+  {
+   "t": "say",
+   "char": "Linda Caldwell",
+   "text": "And when you do, you are going to tell him your grandfather knew his name in 1999, and that we have been, in our small way, watching for him.",
    "expr": "neutral"
   },
   {
@@ -469,7 +675,13 @@
   {
    "t": "say",
    "char": "Linda Caldwell",
-   "text": "Of course he does, baby. They all do. We all do. That is what the friends are for. We help each other. None of us is going to be — cured — of the thing the man in the suit started. But we sit at the radio, and we tell each other we are still here, and that is — that is most of what help is.",
+   "text": "Of course he does, baby. They all do. We all do. That is what the friends are for. We help each other. None of us is going to be — cured — of the thing the man in the suit started.",
+   "expr": "neutral"
+  },
+  {
+   "t": "say",
+   "char": "Linda Caldwell",
+   "text": "But we sit at the radio, and we tell each other we are still here, and that is — that is most of what help is.",
    "expr": "neutral"
   },
   {

@@ -53,7 +53,15 @@
     },
     {
       "t": "narrate",
-      "text": "The dream is the stockroom at two-fifteen, with the fluorescents and the bale and the pile of pallets to his right. He is standing at the bale with his hand on its side, the way he had been standing at the bale in real time. The dream version of him is registering, again, the absence of the watcher. The dream version is registering it the way the real him had not been able to in the moment — calmly, with the small calm that comes when a thing has happened once and the body remembers it can."
+      "text": "The dream is the stockroom at two-fifteen, with the fluorescents and the bale and the pile of pallets to his right. He is standing at the bale with his hand on its side, the way he had been standing at the bale in real time."
+    },
+    {
+      "t": "narrate",
+      "text": "The dream version of him is registering, again, the absence of the watcher."
+    },
+    {
+      "t": "narrate",
+      "text": "The dream version is registering it the way the real him had not been able to in the moment — calmly, with the small calm that comes when a thing has happened once and the body remembers it can."
     },
     {
       "t": "narrate",
@@ -145,7 +153,11 @@
     },
     {
       "t": "narrate",
-      "text": "He folds it. He puts it in a plain white envelope from the box of envelopes his grandmother keeps in the drawer with the bills. He writes the address on the envelope — the small house in San Luis Potosí his father has been at since 2017, the address his aunt in Monterrey had sent him in July."
+      "text": "He folds it. He puts it in a plain white envelope from the box of envelopes his grandmother keeps in the drawer with the bills."
+    },
+    {
+      "t": "narrate",
+      "text": "He writes the address on the envelope — the small house in San Luis Potosí his father has been at since 2017, the address his aunt in Monterrey had sent him in July."
     },
     {
       "t": "narrate",
@@ -245,7 +257,11 @@
     },
     {
       "t": "narrate",
-      "text": "She brings him a small bowl of the *caldo* with a piece of bread on the side. She brings him a glass of water. She sits, today, with him — Friday-evening-before-Saturday-inventory is, this week only, a sitting evening, because tonight is the night before the long Saturday."
+      "text": "She brings him a small bowl of the *caldo* with a piece of bread on the side. She brings him a glass of water."
+    },
+    {
+      "t": "narrate",
+      "text": "She sits, today, with him — Friday-evening-before-Saturday-inventory is, this week only, a sitting evening, because tonight is the night before the long Saturday."
     },
     {
       "t": "narrate",

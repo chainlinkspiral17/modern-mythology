@@ -242,7 +242,12 @@
     },
     {
       "char": "aud",
-      "text": "[shot:insert pie]Kai. The salmonberry pie. I've been carrying a slice in the cooler for you since Tuesday — you missed your usual night. I had it wrapped for the back booth and you did not come. It's been waiting. Eat it. With the soup. The soup's the leek I made yesterday because Frog Petersen comes in on Saturdays and Frog likes the leek.",
+      "text": "[shot:insert pie]Kai. The salmonberry pie. I've been carrying a slice in the cooler for you since Tuesday — you missed your usual night. I had it wrapped for the back booth and you did not come. It's been waiting. Eat it. With the soup.",
+      "t": "say"
+    },
+    {
+      "char": "aud",
+      "text": "The soup's the leek I made yesterday because Frog Petersen comes in on Saturdays and Frog likes the leek.",
       "t": "say"
     },
     {
@@ -268,7 +273,11 @@
       "t": "narrate"
     },
     {
-      "text": "The pie was the pie. Salmonberry season was mostly done by late August but Aud had been freezing salmonberries from the foundation's foraging quarter at Ona Beach since July. The pie was the kind of pie a person who had been at a diner for thirty years could make from frozen salmonberries and have it taste like the pie she had made at the start of the season.",
+      "text": "The pie was the pie. Salmonberry season was mostly done by late August but Aud had been freezing salmonberries from the foundation's foraging quarter at Ona Beach since July.",
+      "t": "narrate"
+    },
+    {
+      "text": "The pie was the kind of pie a person who had been at a diner for thirty years could make from frozen salmonberries and have it taste like the pie she had made at the start of the season.",
       "t": "narrate"
     },
     {
@@ -351,7 +360,12 @@
     },
     {
       "char": "aud",
-      "text": "I sat on the rocks beside the stream for what felt like maybe a day inside the experience and I had a conversation with a man at the stream who was — by what I figured out at the time, by what I am still figuring out — the imprint of an old monk who had been at the experience since 2034 and had been at the second station for some number of years.",
+      "text": "I sat on the rocks beside the stream for what felt like maybe a day inside the experience and I had a conversation with a man at the stream who was — by what I figured out at the time,",
+      "t": "say"
+    },
+    {
+      "char": "aud",
+      "text": "by what I am still figuring out — the imprint of an old monk who had been at the experience since 2034 and had been at the second station for some number of years.",
       "t": "say"
     },
     {
@@ -477,7 +491,11 @@
       "t": "narrate"
     },
     {
-      "text": "He had not seen Wren in the shop before. Wren was Lena's regular at the Daily Grind on Friday mornings — a girl who did not generally go into shops other than the Daily Grind and Margit's thrift store and the small market on Birch. The skate shop was not a Wren place.",
+      "text": "He had not seen Wren in the shop before.",
+      "t": "narrate"
+    },
+    {
+      "text": "Wren was Lena's regular at the Daily Grind on Friday mornings — a girl who did not generally go into shops other than the Daily Grind and Margit's thrift store and the small market on Birch. The skate shop was not a Wren place.",
       "t": "narrate"
     },
     {
@@ -685,7 +703,11 @@
       "t": "narrate"
     },
     {
-      "text": "He registered, on the stool, that the Starfish Nebula mural in Lena's alley was — by what was happening to it today — becoming what the substrate had been clearing the wall for. The substrate had eaten the bottom-left quadrant. Lena had painted the face. The face had been visible since yesterday at eight-something. Town people had been going to the alley.",
+      "text": "He registered, on the stool, that the Starfish Nebula mural in Lena's alley was — by what was happening to it today — becoming what the substrate had been clearing the wall for. The substrate had eaten the bottom-left quadrant.",
+      "t": "narrate"
+    },
+    {
+      "text": "Lena had painted the face. The face had been visible since yesterday at eight-something. Town people had been going to the alley.",
       "t": "narrate"
     },
     {
@@ -693,15 +715,27 @@
       "t": "narrate"
     },
     {
-      "text": "The face had been on the wall thirty-one hours by the time Wren had stood at it after school. The face had been on the cedar in Finn's duffel since Thursday morning. The face had been on the inside of Marit's bowl since 1974 and on the inside of the substrate-bowl since Wednesday at noon.",
+      "text": "The face had been on the wall thirty-one hours by the time Wren had stood at it after school. The face had been on the cedar in Finn's duffel since Thursday morning.",
       "t": "narrate"
     },
     {
-      "text": "The face had been on the eighth piece of wood the substrate had moved into Finn's duffel sometime overnight Wednesday-into-Thursday. The face had been at the corner of Lena's alley Friday morning at maybe eight-thirty when the figure in the yellow slicker had walked into the brick.",
+      "text": "The face had been on the inside of Marit's bowl since 1974 and on the inside of the substrate-bowl since Wednesday at noon.",
       "t": "narrate"
     },
     {
-      "text": "The face had been carved by Olaf since 1976. The face had been at the edges of this town for some years by Petra's reading. The face was — by Kai's read of the day at the bench — the face of a year-long arrival being made visible at the rate the substrate could make it visible.",
+      "text": "The face had been on the eighth piece of wood the substrate had moved into Finn's duffel sometime overnight Wednesday-into-Thursday.",
+      "t": "narrate"
+    },
+    {
+      "text": "The face had been at the corner of Lena's alley Friday morning at maybe eight-thirty when the figure in the yellow slicker had walked into the brick.",
+      "t": "narrate"
+    },
+    {
+      "text": "The face had been carved by Olaf since 1976. The face had been at the edges of this town for some years by Petra's reading.",
+      "t": "narrate"
+    },
+    {
+      "text": "The face was — by Kai's read of the day at the bench — the face of a year-long arrival being made visible at the rate the substrate could make it visible.",
       "t": "narrate"
     },
     {
@@ -758,7 +792,11 @@
       "t": "narrate"
     },
     {
-      "text": "[shot:insert face]The face on the wall was the face on the wall. The bone black against the brick was the bone black against the brick. The face had — by what Kai could see at four forty-five in the gray-blue of the late afternoon — the quality of being lit from inside Cale had described to him yesterday.",
+      "text": "[shot:insert face]The face on the wall was the face on the wall. The bone black against the brick was the bone black against the brick.",
+      "t": "narrate"
+    },
+    {
+      "text": "The face had — by what Kai could see at four forty-five in the gray-blue of the late afternoon — the quality of being lit from inside Cale had described to him yesterday.",
       "t": "narrate"
     },
     {
@@ -839,7 +877,11 @@
       "t": "narrate"
     },
     {
-      "text": "He put on the long-sleeve thermal his grandmother had given him when she had been alive — the dark green one, that he had been wearing on the kind of evening he had been thinking about her on. The thermal had been at the bottom of his drawer since Tuesday. He had not, in this week, been near her in his head. He put the thermal on.",
+      "text": "He put on the long-sleeve thermal his grandmother had given him when she had been alive — the dark green one, that he had been wearing on the kind of evening he had been thinking about her on.",
+      "t": "narrate"
+    },
+    {
+      "text": "The thermal had been at the bottom of his drawer since Tuesday. He had not, in this week, been near her in his head. He put the thermal on.",
       "t": "narrate"
     },
     {
@@ -847,7 +889,11 @@
       "t": "narrate"
     },
     {
-      "text": "He thought about the imprint at the desk. The boy at sixteen at the desk. The boy who had asked Kai to come back when Aria had arrived in the world and to tell him what her face looked like. The boy who had been waiting in the substrate for sixty years for someone to tell him.",
+      "text": "He thought about the imprint at the desk. The boy at sixteen at the desk. The boy who had asked Kai to come back when Aria had arrived in the world and to tell him what her face looked like.",
+      "t": "narrate"
+    },
+    {
+      "text": "The boy who had been waiting in the substrate for sixty years for someone to tell him.",
       "t": "narrate"
     },
     {
@@ -855,7 +901,11 @@
       "t": "narrate"
     },
     {
-      "text": "He thought: no. The face on the wall is the face. The face on the wall is not Aria in the room. The face is the substrate giving the town an image of her. The imprint asked for the face I see when she is in the room. The face on the wall is not that face. I am not going back until she is in the room.",
+      "text": "He thought: no. The face on the wall is the face. The face on the wall is not Aria in the room. The face is the substrate giving the town an image of her. The imprint asked for the face I see when she is in the room.",
+      "t": "narrate"
+    },
+    {
+      "text": "The face on the wall is not that face. I am not going back until she is in the room.",
       "t": "narrate"
     },
     {

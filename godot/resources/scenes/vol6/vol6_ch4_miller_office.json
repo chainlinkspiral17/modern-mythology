@@ -23,11 +23,23 @@
     },
     {
       "t": "narrate",
-      "text": "[mood:rain_interior]Chief Miller's home office is in what was, originally, a formal dining room. He converted it in 2018. The table that had been there became his desk. The built-in china cabinet became his file storage. The chandelier that had been there when they moved in he left hanging, because his wife had wanted it, and because he had found, over the years, that leaving small decorative things in place when they did not affect his work was a minor domestic lubricant he could afford."
+      "text": "[mood:rain_interior]Chief Miller's home office is in what was, originally, a formal dining room. He converted it in 2018. The table that had been there became his desk. The built-in china cabinet became his file storage."
     },
     {
       "t": "narrate",
-      "text": "[shot:insert desk]He is at the desk. The rain is hitting the window behind him. On the desk: his service laptop, which is issued by the Harmony Creek Estates Private Security Authority but which is, in fact, maintained and monitored by NexCorp Residential Solutions via a vendor contract he has never, himself, read. Beside the laptop: two phones. The one in his front pocket is the personal one. The one on the desk, face-down, is not."
+      "text": "The chandelier that had been there when they moved in he left hanging, because his wife had wanted it, and because he had found, over the years, that leaving small decorative things in place when they did not affect his work was a minor domestic lubricant he could afford."
+    },
+    {
+      "t": "narrate",
+      "text": "[shot:insert desk]He is at the desk. The rain is hitting the window behind him."
+    },
+    {
+      "t": "narrate",
+      "text": "On the desk: his service laptop, which is issued by the Harmony Creek Estates Private Security Authority but which is, in fact, maintained and monitored by NexCorp Residential Solutions via a vendor contract he has never, himself, read."
+    },
+    {
+      "t": "narrate",
+      "text": "Beside the laptop: two phones. The one in his front pocket is the personal one. The one on the desk, face-down, is not."
     },
     {
       "t": "narrate",
@@ -87,7 +99,11 @@
     },
     {
       "t": "narrate",
-      "text": "He hears, as he passes Sam's door, the small unmistakable sound of his daughter pulling on the jeans she wears to the Kwik Stop, the particular hip-hitch she has been doing since she was fourteen. He does not knock. He goes to the bathroom. He looks at his face in the mirror for a long moment."
+      "text": "He hears, as he passes Sam's door, the small unmistakable sound of his daughter pulling on the jeans she wears to the Kwik Stop, the particular hip-hitch she has been doing since she was fourteen. He does not knock."
+    },
+    {
+      "t": "narrate",
+      "text": "He goes to the bathroom. He looks at his face in the mirror for a long moment."
     },
     {
       "t": "think",

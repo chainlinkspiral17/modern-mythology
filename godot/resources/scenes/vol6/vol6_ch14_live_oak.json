@@ -39,7 +39,15 @@
     },
     {
       "t": "narrate",
-      "text": "He pulls into the parking lot at ten oh-eight. The lot is \u2014 at this hour, on a Wednesday \u2014 mostly empty. The Coin Wash next door is dark. The Bindery is dark. The other small storefronts are dark. The Foxhole's marquee \u2014 which is the small lit sign above the front door, with the venue logo and a chalk-board insert below it announcing the next show \u2014 is on. The chalk insert reads, in someone's handwriting from this afternoon: SAT 8/22 \u2014 SUBURBAN BLIGHT // DJ CHESS \u2014 DOORS 8."
+      "text": "He pulls into the parking lot at ten oh-eight. The lot is \u2014 at this hour, on a Wednesday \u2014 mostly empty. The Coin Wash next door is dark. The Bindery is dark. The other small storefronts are dark."
+    },
+    {
+      "t": "narrate",
+      "text": "The Foxhole's marquee \u2014 which is the small lit sign above the front door, with the venue logo and a chalk-board insert below it announcing the next show \u2014 is on."
+    },
+    {
+      "t": "narrate",
+      "text": "The chalk insert reads, in someone's handwriting from this afternoon: SAT 8/22 \u2014 SUBURBAN BLIGHT // DJ CHESS \u2014 DOORS 8."
     },
     {
       "t": "narrate",
@@ -63,7 +71,15 @@
     },
     {
       "t": "narrate",
-      "text": "The back of the strip mall is the loading area. The loading area is a long single strip of asphalt behind all the units, with a chain-link fence at the back separating the lot from a small drainage easement and a stand of cedar beyond. There are, behind the strip mall, three dumpsters and a small parked U-Haul that has been there for three weeks and a single sodium lamp on a pole that is, this evening, on."
+      "text": "The back of the strip mall is the loading area."
+    },
+    {
+      "t": "narrate",
+      "text": "The loading area is a long single strip of asphalt behind all the units, with a chain-link fence at the back separating the lot from a small drainage easement and a stand of cedar beyond."
+    },
+    {
+      "t": "narrate",
+      "text": "There are, behind the strip mall, three dumpsters and a small parked U-Haul that has been there for three weeks and a single sodium lamp on a pole that is, this evening, on."
     },
     {
       "t": "narrate",
@@ -75,7 +91,11 @@
     },
     {
       "t": "narrate",
-      "text": "The papered-over window is \u2014 Jesse cannot, from the car, see the window, because the window is at the front, not the back. But the back door of the unit is, from the loading area, visible. The back door is a metal service door, painted institutional gray, with no signage. The door, every other time Jesse has driven past, has been closed."
+      "text": "The papered-over window is \u2014 Jesse cannot, from the car, see the window, because the window is at the front, not the back. But the back door of the unit is, from the loading area, visible."
+    },
+    {
+      "t": "narrate",
+      "text": "The back door is a metal service door, painted institutional gray, with no signage. The door, every other time Jesse has driven past, has been closed."
     },
     {
       "t": "narrate",
@@ -83,7 +103,11 @@
     },
     {
       "t": "narrate",
-      "text": "Jesse, in the Civic, slows further. He stops the car at the corner of the lot, in the small position where the sodium lamp does not directly illuminate the Civic's silhouette and where the angle to the back door is \u2014 by his three previous reconnaissances \u2014 the angle from which he is least visible to anyone who might, from inside the unit, look out."
+      "text": "Jesse, in the Civic, slows further. He stops the car at the corner of the lot, in the small position where the sodium lamp does not directly illuminate the Civic's silhouette and where the angle to the back door is \u2014"
+    },
+    {
+      "t": "narrate",
+      "text": "by his three previous reconnaissances \u2014 the angle from which he is least visible to anyone who might, from inside the unit, look out."
     },
     {
       "t": "narrate",
@@ -205,7 +229,15 @@
     },
     {
       "t": "narrate",
-      "text": "The man is \u2014 Jesse, at the Civic, ducks low \u2014 backlit by the faint interior light. Jesse cannot see his face. The man is medium build. The man is wearing what looks, in the sodium light, like a polo shirt and slacks. The man pulls the back door closed behind him. The man locks it \u2014 Jesse can hear, at this distance, the small click of a deadbolt turning. The man crosses the loading area to a vehicle Jesse has not, until this moment, registered, parked at the far end of the lot in the shadow of the dumpster."
+      "text": "The man is \u2014 Jesse, at the Civic, ducks low \u2014 backlit by the faint interior light. Jesse cannot see his face. The man is medium build. The man is wearing what looks, in the sodium light, like a polo shirt and slacks."
+    },
+    {
+      "t": "narrate",
+      "text": "The man pulls the back door closed behind him. The man locks it \u2014 Jesse can hear, at this distance, the small click of a deadbolt turning."
+    },
+    {
+      "t": "narrate",
+      "text": "The man crosses the loading area to a vehicle Jesse has not, until this moment, registered, parked at the far end of the lot in the shadow of the dumpster."
     },
     {
       "t": "narrate",
@@ -213,7 +245,11 @@
     },
     {
       "t": "narrate",
-      "text": "The man gets in. The man starts the engine. The man pulls out of the lot \u2014 in the direction away from where Jesse is parked, which Jesse registers with the small relief of a kid whose pulse has, in the past forty seconds, gotten higher than he was prepared for."
+      "text": "The man gets in. The man starts the engine."
+    },
+    {
+      "t": "narrate",
+      "text": "The man pulls out of the lot \u2014 in the direction away from where Jesse is parked, which Jesse registers with the small relief of a kid whose pulse has, in the past forty seconds, gotten higher than he was prepared for."
     },
     {
       "t": "narrate",
@@ -263,7 +299,11 @@
     },
     {
       "t": "narrate",
-      "text": "He pulls into his driveway at ten forty-eight. His parents' house is mostly dark. The kitchen light is on \u2014 his mother has, all summer, been leaving the kitchen light on for him on practice nights. His father's truck is in the driveway. His father, by the hour, is in bed."
+      "text": "He pulls into his driveway at ten forty-eight. His parents' house is mostly dark. The kitchen light is on \u2014 his mother has, all summer, been leaving the kitchen light on for him on practice nights."
+    },
+    {
+      "t": "narrate",
+      "text": "His father's truck is in the driveway. His father, by the hour, is in bed."
     },
     {
       "t": "narrate",
@@ -312,7 +352,25 @@
     {
       "t": "say",
       "char": "Maya",
-      "text": "f.t. sent me one message in june and one in july and that's it for the summer. the imps are quiet. frasier's quiet. the substation has been an empty building since june. the apparatus has been doing \u2014 almost nothing \u2014 since the summer started. the almost nothing is the worrying thing, not the loud thing. if you have, by your own observation, found a unit at the back of a strip mall that has lights on at one in the morning and a white panel van that visits and a man in a polo shirt who locks the door behind him at ten thirty PM on a wednesday \u2014 that is, by my read, exactly the kind of thing the apparatus would be doing if the apparatus were, this summer, doing a small careful thing it did not want anyone to be watching.",
+      "text": "f.t. sent me one message in june and one in july and that's it for the summer. the imps are quiet. frasier's quiet. the substation has been an empty building since june. the apparatus has been doing \u2014",
+      "expr": "serious"
+    },
+    {
+      "t": "say",
+      "char": "Maya",
+      "text": "almost nothing \u2014 since the summer started. the almost nothing is the worrying thing, not the loud thing. if you have, by your own observation,",
+      "expr": "serious"
+    },
+    {
+      "t": "say",
+      "char": "Maya",
+      "text": "found a unit at the back of a strip mall that has lights on at one in the morning and a white panel van that visits and a man in a polo shirt who locks the door behind him at ten thirty PM on a wednesday \u2014",
+      "expr": "serious"
+    },
+    {
+      "t": "say",
+      "char": "Maya",
+      "text": "that is, by my read, exactly the kind of thing the apparatus would be doing if the apparatus were, this summer, doing a small careful thing it did not want anyone to be watching.",
       "expr": "serious"
     },
     {
@@ -346,7 +404,13 @@
     {
       "t": "say",
       "char": "Maya",
-      "text": "okay. one week. but jesse \u2014 if anything escalates \u2014 if the door is open during your gig, if the man in the polo shows up at the gig, if the sedan parks in the foxhole's lot \u2014 you tell me immediately. and you do not, under any circumstance, walk over to the unit. you stay in the foxhole. you finish your set. you come find me afterward. okay?",
+      "text": "okay. one week. but jesse \u2014 if anything escalates \u2014 if the door is open during your gig, if the man in the polo shows up at the gig, if the sedan parks in the foxhole's lot \u2014",
+      "expr": "serious"
+    },
+    {
+      "t": "say",
+      "char": "Maya",
+      "text": "you tell me immediately. and you do not, under any circumstance, walk over to the unit. you stay in the foxhole. you finish your set. you come find me afterward. okay?",
       "expr": "serious"
     },
     {
@@ -386,7 +450,13 @@
     {
       "t": "say",
       "char": "Jesse",
-      "text": "practice was good. em is running the band. i didn't realize until tonight. she's been running it for months. i've been the lead singer, she's been the band. the song is the song. she made me put it in the set saturday. second song. she said write the bridge about the people, not the substation. i'm \u2014 i'm going to.",
+      "text": "practice was good. em is running the band. i didn't realize until tonight. she's been running it for months. i've been the lead singer,",
+      "expr": "happy"
+    },
+    {
+      "t": "say",
+      "char": "Jesse",
+      "text": "she's been the band. the song is the song. she made me put it in the set saturday. second song. she said write the bridge about the people, not the substation. i'm \u2014 i'm going to.",
       "expr": "happy"
     },
     {
@@ -479,7 +549,15 @@
     },
     {
       "t": "narrate",
-      "text": "[shot:insert notebook]Then he puts the guitar down. He gets out his notebook \u2014 the small spiral one he has been writing lyrics in since 2023 \u2014 and he writes, on a fresh page: bridge \u2014 substation nine \u2014 here we are anyway \u2014 with the thing we have been carrying, the weight of it \u2014 and the room we are carrying it in \u2014 and the people we are carrying it with \u2014 and the small late evening, in mid-august, when the door is open two inches and the light is faint, and we are in the parking lot but not closer \u2014 and the song we wrote about the substation but the bridge is not about the substation \u2014 the bridge is about the parking lot."
+      "text": "[shot:insert notebook]Then he puts the guitar down. He gets out his notebook \u2014 the small spiral one he has been writing lyrics in since 2023 \u2014 and he writes, on a fresh page: bridge \u2014 substation nine \u2014"
+    },
+    {
+      "t": "narrate",
+      "text": "here we are anyway \u2014 with the thing we have been carrying, the weight of it \u2014 and the room we are carrying it in \u2014 and the people we are carrying it with \u2014"
+    },
+    {
+      "t": "narrate",
+      "text": "and the small late evening, in mid-august, when the door is open two inches and the light is faint, and we are in the parking lot but not closer \u2014 and the song we wrote about the substation but the bridge is not about the substation \u2014 the bridge is about the parking lot."
     },
     {
       "t": "narrate",
@@ -515,11 +593,23 @@
     },
     {
       "t": "narrate",
-      "text": "[shot:establish]He thinks: the unit has lights at hours it should not have lights, and the unit is across the parking lot from the venue we are playing on Saturday, and the convergence is the world, not the conspiracy. The convergence is not something the apparatus arranged. The convergence is two facts that happen to share a parking lot."
+      "text": "[shot:establish]He thinks: the unit has lights at hours it should not have lights, and the unit is across the parking lot from the venue we are playing on Saturday, and the convergence is the world, not the conspiracy."
     },
     {
       "t": "narrate",
-      "text": "He thinks, with the small careful honesty Em has, this evening, modeled for him: I have been treating the map as the more important thing because the map is the thing that, if it pays off, would prove I was right to be paying attention. I have been treating the band as the thing I get to do while I wait for the map to pay off. The band is the thing. The map is \u2014 the map is the small obsessive thing I do on the back roads on the way home from practice. The band is the thing."
+      "text": "The convergence is not something the apparatus arranged. The convergence is two facts that happen to share a parking lot."
+    },
+    {
+      "t": "narrate",
+      "text": "He thinks, with the small careful honesty Em has, this evening, modeled for him: I have been treating the map as the more important thing because the map is the thing that, if it pays off, would prove I was right to be paying attention."
+    },
+    {
+      "t": "narrate",
+      "text": "I have been treating the band as the thing I get to do while I wait for the map to pay off. The band is the thing. The map is \u2014 the map is the small obsessive thing I do on the back roads on the way home from practice."
+    },
+    {
+      "t": "narrate",
+      "text": "The band is the thing."
     },
     {
       "t": "narrate",
@@ -550,7 +640,19 @@
     {
       "t": "say",
       "char": "Maya",
-      "text": "F.T. \u2014 quick. Jesse Henderson has been mapping nexcorp activity in town since june. tonight he found an active site at the back of the strip mall on live oak street in new auburn. small commercial unit. lights at night, white panel van, a man in a polo shirt who locked up at 10:30 tonight. i told jesse to watch it for a week with no escalation. no getting closer. but i am telling you because it is \u2014 it is the kind of thing you would want to know. \u2014 m.",
+      "text": "F.T. \u2014 quick.",
+      "expr": "serious"
+    },
+    {
+      "t": "say",
+      "char": "Maya",
+      "text": "Jesse Henderson has been mapping nexcorp activity in town since june. tonight he found an active site at the back of the strip mall on live oak street in new auburn. small commercial unit. lights at night, white panel van,",
+      "expr": "serious"
+    },
+    {
+      "t": "say",
+      "char": "Maya",
+      "text": "a man in a polo shirt who locked up at 10:30 tonight. i told jesse to watch it for a week with no escalation. no getting closer. but i am telling you because it is \u2014 it is the kind of thing you would want to know. \u2014 m.",
       "expr": "serious"
     },
     {
@@ -563,7 +665,11 @@
     },
     {
       "t": "narrate",
-      "text": "The reply will read, in F.T.'s usual lower-case voice: \"kid. thank you for telling me. i had \u2014 i had not been watching that strip mall. i should have been. i am putting the imp on it tonight. tell jesse to keep watching but not closer. tell him saturday's gig is the gig. tell him to play the gig and let the unit be the unit. i will know more by next week. \u2014 f.t.\""
+      "text": "The reply will read, in F.T.'s usual lower-case voice: \"kid. thank you for telling me. i had \u2014"
+    },
+    {
+      "t": "narrate",
+      "text": "i had not been watching that strip mall. i should have been. i am putting the imp on it tonight. tell jesse to keep watching but not closer. tell him saturday's gig is the gig. tell him to play the gig and let the unit be the unit. i will know more by next week. \u2014 f.t.\""
     },
     {
       "t": "narrate",

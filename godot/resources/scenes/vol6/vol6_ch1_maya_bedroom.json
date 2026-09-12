@@ -29,19 +29,37 @@
       "t": "say",
       "char": "F.T.",
       "expr": "neutral",
-      "text": "\"maya, i'm sorry to do this over chat. my voice is stuck in a box right now and i can't do phones. i am a friend. i was a friend of your dad's, back when he was someone i'd want to be friends with, which is a long time ago. you don't know me. you have no reason to trust me. i am going to tell you three things, and if any of them are wrong, you can ignore me forever and i will understand.\""
+      "text": "\"maya, i'm sorry to do this over chat. my voice is stuck in a box right now and i can't do phones. i am a friend. i was a friend of your dad's, back when he was someone i'd want to be friends with,"
     },
     {
       "t": "say",
       "char": "F.T.",
       "expr": "neutral",
-      "text": "\"thing one. your dad called you on tuesday six weeks ago and told you to stay inside your grandmother's house for the day. he was scared when he said it. he said please. he said he'd send someone. that someone was a man named philip roberts. philip drove up to get you. you went back with him to graustark for three days. then you came back here. you have not told anyone in harmony creek this.\""
+      "text": "which is a long time ago. you don't know me. you have no reason to trust me. i am going to tell you three things, and if any of them are wrong, you can ignore me forever and i will understand.\""
     },
     {
       "t": "say",
       "char": "F.T.",
       "expr": "neutral",
-      "text": "\"thing two. the reason the house feels like it has more than one person in it at night is that the shortwave radio your grandmother is running on 1776 khz is being picked up by the water tower at the end of gallatin, and the water tower is rebroadcasting it at a lower frequency inside the subdivision as a kind of ambient signal. the dogs hear it. you hear it. most of the adults do not hear it because they were acclimated to it years ago. you weren't. that's why you're not sleeping.\""
+      "text": "\"thing one. your dad called you on tuesday six weeks ago and told you to stay inside your grandmother's house for the day. he was scared when he said it. he said please. he said he'd send someone."
+    },
+    {
+      "t": "say",
+      "char": "F.T.",
+      "expr": "neutral",
+      "text": "that someone was a man named philip roberts. philip drove up to get you. you went back with him to graustark for three days. then you came back here. you have not told anyone in harmony creek this.\""
+    },
+    {
+      "t": "say",
+      "char": "F.T.",
+      "expr": "neutral",
+      "text": "\"thing two. the reason the house feels like it has more than one person in it at night is that the shortwave radio your grandmother is running on 1776 khz is being picked up by the water tower at the end of gallatin,"
+    },
+    {
+      "t": "say",
+      "char": "F.T.",
+      "expr": "neutral",
+      "text": "and the water tower is rebroadcasting it at a lower frequency inside the subdivision as a kind of ambient signal. the dogs hear it. you hear it. most of the adults do not hear it because they were acclimated to it years ago. you weren't. that's why you're not sleeping.\""
     },
     {
       "t": "say",
@@ -57,7 +75,11 @@
     },
     {
       "t": "narrate",
-      "text": "[mood:dream_blur][shot:closeup maya~]Maya reads the message. She reads it a second time. She reads it a third time. Then she closes the laptop lid, very slowly, and sits on the bed with her hands flat on the closed lid, and she does not cry, because Maya does not, generally, cry; but her breath does the specific small hitching thing it did on Tuesday six weeks ago when her father called her and said please."
+      "text": "[mood:dream_blur][shot:closeup maya~]Maya reads the message. She reads it a second time. She reads it a third time."
+    },
+    {
+      "t": "narrate",
+      "text": "Then she closes the laptop lid, very slowly, and sits on the bed with her hands flat on the closed lid, and she does not cry, because Maya does not, generally, cry; but her breath does the specific small hitching thing it did on Tuesday six weeks ago when her father called her and said please."
     },
     {
       "t": "think",
@@ -71,7 +93,15 @@
     },
     {
       "t": "narrate",
-      "text": "[shot:establish]She takes off her shoes. She lies down on top of the bedspread. Her grandmother, in the living room, is vacuuming. The vacuum is emitting its own small second sound — a faint patterned clicking, four beats on, four beats off — that Maya has heard for six weeks and has, until today, not identified as not belonging to a vacuum. She identifies it now. She lets the sound go through her anyway. She sleeps."
+      "text": "[shot:establish]She takes off her shoes. She lies down on top of the bedspread. Her grandmother, in the living room, is vacuuming."
+    },
+    {
+      "t": "narrate",
+      "text": "The vacuum is emitting its own small second sound — a faint patterned clicking, four beats on, four beats off — that Maya has heard for six weeks and has, until today, not identified as not belonging to a vacuum."
+    },
+    {
+      "t": "narrate",
+      "text": "She identifies it now. She lets the sound go through her anyway. She sleeps."
     },
     {
       "t": "jump",

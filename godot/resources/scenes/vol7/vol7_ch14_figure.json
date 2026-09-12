@@ -55,7 +55,19 @@
       "t": "narrate"
     },
     {
-      "text": "[shot:insert face]The face on the wall was about three feet across. The hair came down to about the height of her waist. The closed eyes were at the height of her chest. The line of the jaw and the neck and the collarbone came down to the height of her hip. The face was painted in the bone black on the brick. The face had — by some accident of how the brick had taken the paint, by some accident of how Lena's hand had moved over the brick — a quality of being not painted but appeared. The face looked, by some optical effect Lena had not engineered, as if the face had always been on the wall and Lena had only revealed it by clearing the dust.",
+      "text": "[shot:insert face]The face on the wall was about three feet across. The hair came down to about the height of her waist. The closed eyes were at the height of her chest.",
+      "t": "narrate"
+    },
+    {
+      "text": "The line of the jaw and the neck and the collarbone came down to the height of her hip. The face was painted in the bone black on the brick.",
+      "t": "narrate"
+    },
+    {
+      "text": "The face had — by some accident of how the brick had taken the paint, by some accident of how Lena's hand had moved over the brick — a quality of being not painted but appeared.",
+      "t": "narrate"
+    },
+    {
+      "text": "The face looked, by some optical effect Lena had not engineered, as if the face had always been on the wall and Lena had only revealed it by clearing the dust.",
       "t": "narrate"
     },
     {
@@ -169,7 +181,15 @@
       "t": "narrate"
     },
     {
-      "text": "The face on the wall at the distance of the alley's full length was — Lena registered as she looked — visible from the entrance in a way it would not have been visible from the entrance an hour ago. The face was the face of a young woman in a moment of waiting. The closed eyes were the closed eyes of someone who had decided to keep her eyes closed for a count longer. The mouth was the mouth of someone who was about to say something but had not yet decided to say it.",
+      "text": "The face on the wall at the distance of the alley's full length was — Lena registered as she looked — visible from the entrance in a way it would not have been visible from the entrance an hour ago.",
+      "t": "narrate"
+    },
+    {
+      "text": "The face was the face of a young woman in a moment of waiting. The closed eyes were the closed eyes of someone who had decided to keep her eyes closed for a count longer.",
+      "t": "narrate"
+    },
+    {
+      "text": "The mouth was the mouth of someone who was about to say something but had not yet decided to say it.",
       "t": "narrate"
     },
     {
@@ -191,7 +211,15 @@
       "t": "say"
     },
     {
-      "text": "[shot:insert wall]The far end of the alley was the brick wall of the laundromat. The brick wall met the alley at a corner that was, by the geometry of the alley, the only place a person could come into the alley other than the entrance she and Cale were standing at. There was no door in the laundromat's brick. There was no fire escape. Past the corner the wall continued straight into the next building. There was nowhere to come from.",
+      "text": "[shot:insert wall]The far end of the alley was the brick wall of the laundromat.",
+      "t": "narrate"
+    },
+    {
+      "text": "The brick wall met the alley at a corner that was, by the geometry of the alley, the only place a person could come into the alley other than the entrance she and Cale were standing at. There was no door in the laundromat's brick.",
+      "t": "narrate"
+    },
+    {
+      "text": "There was no fire escape. Past the corner the wall continued straight into the next building. There was nowhere to come from.",
       "t": "narrate"
     },
     {
@@ -199,7 +227,11 @@
       "t": "narrate"
     },
     {
-      "text": "The figure was in a yellow slicker. The hood was up. The hair curling under the hood. The yellow of Finn's description from the headland. The yellow of the figure on the substrate's bowl. By Lena's read of the angle, the figure was not looking at her — the figure was looking at the mural.",
+      "text": "The figure was in a yellow slicker. The hood was up. The hair curling under the hood. The yellow of Finn's description from the headland. The yellow of the figure on the substrate's bowl.",
+      "t": "narrate"
+    },
+    {
+      "text": "By Lena's read of the angle, the figure was not looking at her — the figure was looking at the mural.",
       "t": "narrate"
     },
     {
@@ -466,13 +498,25 @@
     },
     {
       "char": "kai",
-      "text": "To stand at the entrance of the alley and look at the face for an hour. The same way the imprint at Kestrel Mountain will be in the basement waiting for me to come tell him what her face is. I am — I am not in Kestrel Mountain tonight. I am here. The face is here.",
+      "text": "To stand at the entrance of the alley and look at the face for an hour. The same way the imprint at Kestrel Mountain will be in the basement waiting for me to come tell him what her face is.",
       "expr": "serious",
       "t": "say"
     },
     {
       "char": "kai",
-      "text": "I am — I am going to come down at eight tonight and stand at the entrance and look at the face for an hour. I want to do that. I am going to do that. I am telling you because the face is yours and the wall is yours and I want — I want your blessing on me coming back.",
+      "text": "I am — I am not in Kestrel Mountain tonight. I am here. The face is here.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "kai",
+      "text": "I am — I am going to come down at eight tonight and stand at the entrance and look at the face for an hour. I want to do that. I am going to do that.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "kai",
+      "text": "I am telling you because the face is yours and the wall is yours and I want — I want your blessing on me coming back.",
       "expr": "serious",
       "t": "say"
     },
@@ -524,7 +568,19 @@
     },
     {
       "char": "kai",
-      "text": "I am going to my shop. I am going to be at the shop until five. I have — I have one repair I have to do and I have a kid coming in at one to look at boards and I have to call my supplier in Eugene at three about the bearings order. I will be back at the cabin by six. I will come down here at eight with Lena.",
+      "text": "I am going to my shop. I am going to be at the shop until five.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "kai",
+      "text": "I have — I have one repair I have to do and I have a kid coming in at one to look at boards and I have to call my supplier in Eugene at three about the bearings order. I will be back at the cabin by six.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "kai",
+      "text": "I will come down here at eight with Lena.",
       "expr": "neutral",
       "t": "say"
     },
@@ -569,7 +625,15 @@
       "t": "narrate"
     },
     {
-      "text": "[shot:closeup petra]Petra opened the back door of the bookstore at eight twenty-six. She came out into the alley to put a bag of trash in the dumpster. She had not, by what Lena could see of her at the back door, registered the three of them sitting on the asphalt at the alley entrance. She put the bag in the dumpster. She closed the dumpster's lid. She turned and saw, on the wall of her building, the face.",
+      "text": "[shot:closeup petra]Petra opened the back door of the bookstore at eight twenty-six. She came out into the alley to put a bag of trash in the dumpster.",
+      "t": "narrate"
+    },
+    {
+      "text": "She had not, by what Lena could see of her at the back door, registered the three of them sitting on the asphalt at the alley entrance. She put the bag in the dumpster. She closed the dumpster's lid.",
+      "t": "narrate"
+    },
+    {
+      "text": "She turned and saw, on the wall of her building, the face.",
       "t": "narrate"
     },
     {
@@ -623,7 +687,15 @@
       "t": "narrate"
     },
     {
-      "text": "The face on the wall in the eight-twenty-six light had a quality of being lit from inside. The bone black had not — by anything Lena had known about bone black in the years she had been grinding it — produced a luminance before. The face was lit. The closed eyes were closed. The hair held the bone black the way the hair would have held a kind of soft light. The face was on the wall and was lit and was the face she had been painting from the inside of her head from the moment she had set the brush against the brick at five fifty-eight.",
+      "text": "The face on the wall in the eight-twenty-six light had a quality of being lit from inside. The bone black had not — by anything Lena had known about bone black in the years she had been grinding it — produced a luminance before.",
+      "t": "narrate"
+    },
+    {
+      "text": "The face was lit. The closed eyes were closed. The hair held the bone black the way the hair would have held a kind of soft light.",
+      "t": "narrate"
+    },
+    {
+      "text": "The face was on the wall and was lit and was the face she had been painting from the inside of her head from the moment she had set the brush against the brick at five fifty-eight.",
       "t": "narrate"
     },
     {

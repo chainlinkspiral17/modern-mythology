@@ -39,7 +39,15 @@
     },
     {
       "t": "narrate",
-      "text": "Don, this morning, is — by his light — on schedule. Five oh-two would be the on-time light. Four forty-three is eight minutes early. Bianca registers the eight minutes. She does not know what the eight minutes mean. She imagines, in the way she has been imagining small things about Don all summer from the kitchen window, that Don has, this morning, woken up eight minutes early for a reason she is not going to know. A dream. A dog. A leg cramp. The fact of a sixty-some-year-old man's body waking him at the hour his body is going to wake him, which is, on some mornings, not the hour the alarm has been set for."
+      "text": "Don, this morning, is — by his light — on schedule. Five oh-two would be the on-time light. Four forty-three is eight minutes early. Bianca registers the eight minutes. She does not know what the eight minutes mean."
+    },
+    {
+      "t": "narrate",
+      "text": "She imagines, in the way she has been imagining small things about Don all summer from the kitchen window, that Don has, this morning, woken up eight minutes early for a reason she is not going to know. A dream. A dog."
+    },
+    {
+      "t": "narrate",
+      "text": "A leg cramp. The fact of a sixty-some-year-old man's body waking him at the hour his body is going to wake him, which is, on some mornings, not the hour the alarm has been set for."
     },
     {
       "t": "narrate",
@@ -81,7 +89,11 @@
     },
     {
       "t": "narrate",
-      "text": "She comes in without knocking. She is carrying the small French-press insulated coffee pot she had been threatening to bring on Monday and had, on Monday, forgotten. She is also carrying a small tote bag with, visible at the top, what looks like two small jars of preserves and a loaf of something wrapped in foil."
+      "text": "She comes in without knocking. She is carrying the small French-press insulated coffee pot she had been threatening to bring on Monday and had, on Monday, forgotten."
+    },
+    {
+      "t": "narrate",
+      "text": "She is also carrying a small tote bag with, visible at the top, what looks like two small jars of preserves and a loaf of something wrapped in foil."
     },
     {
       "t": "say",
@@ -120,7 +132,19 @@
     {
       "t": "say",
       "char": "Eileen",
-      "text": "I know. I know. I'm telling you so you know. Peggy has been — Peggy is doing her version of what I was doing in February through June, which is keeping her hands moving because her hands are the only part of her that will still function. Mine was the sewing table list. Hers is the peach preserves. She is going to run out of peaches in about ten days and then she is going to be in a bad way. I am going to figure out what to do about that when I get there.",
+      "text": "I know. I know. I'm telling you so you know.",
+      "expr": "serious"
+    },
+    {
+      "t": "say",
+      "char": "Eileen",
+      "text": "Peggy has been — Peggy is doing her version of what I was doing in February through June, which is keeping her hands moving because her hands are the only part of her that will still function. Mine was the sewing table list.",
+      "expr": "serious"
+    },
+    {
+      "t": "say",
+      "char": "Eileen",
+      "text": "Hers is the peach preserves. She is going to run out of peaches in about ten days and then she is going to be in a bad way. I am going to figure out what to do about that when I get there.",
       "expr": "serious"
     },
     {
@@ -189,7 +213,11 @@
     },
     {
       "t": "narrate",
-      "text": "Eileen has brought, in her French press, the coffee from the place on Magnolia that is, by Eileen's taste, better than what Bianca's Cuisinart produces. The Cuisinart is still on, running its own pot on the counter in the small ambient hum of a household appliance that has been running on every morning of the past sixteen weeks. The two coffees coexist."
+      "text": "Eileen has brought, in her French press, the coffee from the place on Magnolia that is, by Eileen's taste, better than what Bianca's Cuisinart produces."
+    },
+    {
+      "t": "narrate",
+      "text": "The Cuisinart is still on, running its own pot on the counter in the small ambient hum of a household appliance that has been running on every morning of the past sixteen weeks. The two coffees coexist."
     },
     {
       "t": "narrate",
@@ -197,7 +225,19 @@
     },
     {
       "t": "narrate",
-      "text": "Not the canning. Peggy herself. Peggy is, by Eileen's telling, sixty-eight. Peggy had been a teacher — elementary school, second grade, for thirty-one years at the same school in New Auburn. Peggy had retired three years ago. Peggy's husband is seventy-three and had been, until April, still working part-time at a hardware store in New Auburn. Peggy and her husband had been, by Eileen's telling, the kind of couple who had been making the small plans retired couples make — a trip to the Pacific Northwest that had been on a calendar for eighteen months. The trip was scheduled for May. The diagnosis came in March."
+      "text": "Not the canning. Peggy herself. Peggy is, by Eileen's telling, sixty-eight. Peggy had been a teacher — elementary school, second grade, for thirty-one years at the same school in New Auburn. Peggy had retired three years ago."
+    },
+    {
+      "t": "narrate",
+      "text": "Peggy's husband is seventy-three and had been, until April, still working part-time at a hardware store in New Auburn."
+    },
+    {
+      "t": "narrate",
+      "text": "Peggy and her husband had been, by Eileen's telling, the kind of couple who had been making the small plans retired couples make — a trip to the Pacific Northwest that had been on a calendar for eighteen months."
+    },
+    {
+      "t": "narrate",
+      "text": "The trip was scheduled for May. The diagnosis came in March."
     },
     {
       "t": "narrate",
@@ -244,7 +284,19 @@
     {
       "t": "say",
       "char": "Eileen",
-      "text": "[shot:closeup person_b]I tell you because you are — you are one of the two people in this town I can, right now, tell that kind of thing to without having to frame it. You are the first. Anita is the second. I have not — I have not, in the years before this year, been a person who had a Peggy. And now I have a Peggy, and I can tell you, and you can hear it, and I can go on to the next thing. That is — that is what the table is for. I want you to know I know that.",
+      "text": "[shot:closeup person_b]I tell you because you are — you are one of the two people in this town I can, right now, tell that kind of thing to without having to frame it. You are the first. Anita is the second.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Eileen",
+      "text": "I have not — I have not, in the years before this year, been a person who had a Peggy. And now I have a Peggy, and I can tell you, and you can hear it, and I can go on to the next thing. That is — that is what the table is for.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Eileen",
+      "text": "I want you to know I know that.",
       "expr": "neutral"
     },
     {
@@ -393,7 +445,11 @@
     },
     {
       "t": "narrate",
-      "text": "She comes in through the back door because she has walked over from her own house rather than driving, because Bianca's house is four streets from the Kowalskis' and Anita — who has, between the ER parking lot and Bianca's kitchen, already been in two enclosed spaces this morning — had decided she wanted the small twenty-minute walk through the pre-dawn to get her body back under her own authority before she sat with other people again."
+      "text": "She comes in through the back door because she has walked over from her own house rather than driving, because Bianca's house is four streets from the Kowalskis' and Anita — who has, between the ER parking lot and Bianca's kitchen,"
+    },
+    {
+      "t": "narrate",
+      "text": "already been in two enclosed spaces this morning — had decided she wanted the small twenty-minute walk through the pre-dawn to get her body back under her own authority before she sat with other people again."
     },
     {
       "t": "narrate",
@@ -401,7 +457,11 @@
     },
     {
       "t": "narrate",
-      "text": "She is in the specific clean scrubs she had changed into at the hospital before coming off shift, which is what Anita does on nights she is coming directly somewhere rather than going home. Her ponytail is low and loose. She has, in her hand, a small white bakery bag."
+      "text": "She is in the specific clean scrubs she had changed into at the hospital before coming off shift, which is what Anita does on nights she is coming directly somewhere rather than going home. Her ponytail is low and loose."
+    },
+    {
+      "t": "narrate",
+      "text": "She has, in her hand, a small white bakery bag."
     },
     {
       "t": "narrate",
@@ -419,7 +479,11 @@
     },
     {
       "t": "narrate",
-      "text": "Anita goes to the coffee pot — Eileen's French press — and pours herself a cup. She adds two sugars and a small splash of half-and-half Bianca has, since Eileen's first visit, started keeping in the fridge. She drinks the first half of the cup standing at the counter, in the specific way an ER nurse drinks the first half of a coffee, which is fast and without registering the taste."
+      "text": "Anita goes to the coffee pot — Eileen's French press — and pours herself a cup. She adds two sugars and a small splash of half-and-half Bianca has, since Eileen's first visit, started keeping in the fridge."
+    },
+    {
+      "t": "narrate",
+      "text": "She drinks the first half of the cup standing at the counter, in the specific way an ER nurse drinks the first half of a coffee, which is fast and without registering the taste."
     },
     {
       "t": "narrate",
@@ -454,7 +518,13 @@
     {
       "t": "say",
       "char": "Anita",
-      "text": "Two MVAs, a baby with a fever that turned out to be nothing, an old man who wanted his wife to come with him and she wouldn't — she's his second wife, she's thirty years younger, she was tired — and a kid who had gotten into his mother's oxy. The kid is going to be fine. His mother isn't.",
+      "text": "Two MVAs, a baby with a fever that turned out to be nothing, an old man who wanted his wife to come with him and she wouldn't — she's his second wife, she's thirty years younger, she was tired — and a kid who had gotten into his mother's oxy.",
+      "expr": "serious"
+    },
+    {
+      "t": "say",
+      "char": "Anita",
+      "text": "The kid is going to be fine. His mother isn't.",
       "expr": "serious"
     },
     {
@@ -561,11 +631,35 @@
     },
     {
       "t": "narrate",
-      "text": "For about twenty minutes, the three of them do the thing that happens when the table becomes a three-person table for the first time, which is a certain amount of logistical small talk to calibrate the shape. Anita is the one who does most of the talking in this phase, because Anita is the newcomer to the room's established weather and is, in the way middle children do when they enter an unfamiliar room, calibrating by being the one who speaks first on most topics so that she can, by the speaking, test the room's rhythm."
+      "text": "For about twenty minutes, the three of them do the thing that happens when the table becomes a three-person table for the first time, which is a certain amount of logistical small talk to calibrate the shape."
     },
     {
       "t": "narrate",
-      "text": "She talks about the ER. She talks about Gracie, who is — she reports — one page away from finishing the sticker activity book and has announced to Bill that the finishing is going to be on Sunday and that there is going to be a small ceremony for which Bill is expected to supply cake. She talks about Ben, briefly — Ben has been getting better at something he will not explain to me, which I gather has to do with his right foot. Coach K has, apparently, been the person making him get better at it. I do not understand football. I have, for three weeks now, been listening to my son describe his coach with a small reverence I have not heard him use before for anyone. I am not going to interrogate it. I am going to let it happen."
+      "text": "Anita is the one who does most of the talking in this phase, because Anita is the newcomer to the room's established weather and is,"
+    },
+    {
+      "t": "narrate",
+      "text": "in the way middle children do when they enter an unfamiliar room, calibrating by being the one who speaks first on most topics so that she can, by the speaking, test the room's rhythm."
+    },
+    {
+      "t": "narrate",
+      "text": "She talks about the ER."
+    },
+    {
+      "t": "narrate",
+      "text": "She talks about Gracie, who is — she reports — one page away from finishing the sticker activity book and has announced to Bill that the finishing is going to be on Sunday and that there is going to be a small ceremony for which Bill is expected to supply cake."
+    },
+    {
+      "t": "narrate",
+      "text": "She talks about Ben, briefly — Ben has been getting better at something he will not explain to me, which I gather has to do with his right foot. Coach K has, apparently, been the person making him get better at it."
+    },
+    {
+      "t": "narrate",
+      "text": "I do not understand football. I have, for three weeks now, been listening to my son describe his coach with a small reverence I have not heard him use before for anyone. I am not going to interrogate it."
+    },
+    {
+      "t": "narrate",
+      "text": "I am going to let it happen."
     },
     {
       "t": "narrate",
@@ -586,7 +680,19 @@
     {
       "t": "say",
       "char": "Eileen",
-      "text": "Jim played tight end in high school in Beaumont. Jim has not, in forty-two years, mentioned it. I found out in July when he said I want to take that kid to a game. I asked him how he knew which kid. He said your friend Anita's boy. I said you haven't met Ben. He said Maya told me about him. It turns out Jim and Maya have been, since June, having a specific small conversation in the basement when Maya comes by that neither of them has told anybody else about.",
+      "text": "Jim played tight end in high school in Beaumont. Jim has not, in forty-two years, mentioned it. I found out in July when he said I want to take that kid to a game. I asked him how he knew which kid.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Eileen",
+      "text": "He said your friend Anita's boy. I said you haven't met Ben. He said Maya told me about him.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Eileen",
+      "text": "It turns out Jim and Maya have been, since June, having a specific small conversation in the basement when Maya comes by that neither of them has told anybody else about.",
       "expr": "neutral"
     },
     {
@@ -598,7 +704,37 @@
     {
       "t": "say",
       "char": "Eileen",
-      "text": "Maya comes by when she is passing between her grandmother's and your house. About once a week. She comes in the front. Jim, who as you know was in the basement mostly for the first few weeks of the summer, had been doing his small basement work and had one Tuesday in June heard Maya at the kitchen table with me and had come up and had — for the first time since April — said hello. Maya had, that day, a very question about radios that her grandmother had mentioned that her grandfather had known how to do. Maya had asked me. I did not know. I had called Jim up. Jim, who as you both know was a photographer and not a radio guy, had nonetheless known enough about the period to answer the small question. The conversation had gone on for about twelve minutes. Maya had, the following Tuesday, come back with a second question. And a third. It has become a thing. Every Tuesday. Small things. A fifteen-minute basement conversation on some small technical question that is, every week, her grandfather-adjacent.",
+      "text": "Maya comes by when she is passing between her grandmother's and your house. About once a week. She comes in the front.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Eileen",
+      "text": "Jim, who as you know was in the basement mostly for the first few weeks of the summer, had been doing his small basement work and had one Tuesday in June heard Maya at the kitchen table with me and had come up and had — for the first time since April — said hello.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Eileen",
+      "text": "Maya had, that day, a very question about radios that her grandmother had mentioned that her grandfather had known how to do. Maya had asked me. I did not know. I had called Jim up.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Eileen",
+      "text": "Jim, who as you both know was a photographer and not a radio guy, had nonetheless known enough about the period to answer the small question. The conversation had gone on for about twelve minutes.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Eileen",
+      "text": "Maya had, the following Tuesday, come back with a second question. And a third. It has become a thing. Every Tuesday. Small things.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Eileen",
+      "text": "A fifteen-minute basement conversation on some small technical question that is, every week, her grandfather-adjacent.",
       "expr": "neutral"
     },
     {
@@ -650,7 +786,19 @@
     {
       "t": "say",
       "char": "Anita",
-      "text": "My mother is eighty-one. She is in Pharr. I have not been down to see her since March. I have been thinking — I have been thinking, the past two weeks, that I should drive down in September. For a weekend. Not to do anything. Just to sit with her. She is not — she is not sick. She is fine. She is eighty-one. She has been eighty-one in the specific way eighty-one is for a woman who has been running a house with six kids' worth of ongoing gravity for fifty years, and she is now, at eighty-one, finally, by her own report, tired.",
+      "text": "My mother is eighty-one. She is in Pharr. I have not been down to see her since March. I have been thinking — I have been thinking, the past two weeks, that I should drive down in September. For a weekend. Not to do anything.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Anita",
+      "text": "Just to sit with her. She is not — she is not sick. She is fine. She is eighty-one.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Anita",
+      "text": "She has been eighty-one in the specific way eighty-one is for a woman who has been running a house with six kids' worth of ongoing gravity for fifty years, and she is now, at eighty-one, finally, by her own report, tired.",
       "expr": "neutral"
     },
     {
@@ -674,7 +822,19 @@
     {
       "t": "say",
       "char": "Anita",
-      "text": "Four girls, two boys. I am the third girl. Middle of the middle, my mother used to call me, because I am also the third of six total. The math is — the math is that I was the one whose name got said when my mother had run out of names, which was every time my mother had run out of names, which was most days. There is a specific small thing that happens to the third of six that does not, generally, happen to the first or the second or the last. The specific small thing is you learn to move without waiting to be called.",
+      "text": "Four girls, two boys. I am the third girl. Middle of the middle, my mother used to call me, because I am also the third of six total.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Anita",
+      "text": "The math is — the math is that I was the one whose name got said when my mother had run out of names, which was every time my mother had run out of names, which was most days.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Anita",
+      "text": "There is a specific small thing that happens to the third of six that does not, generally, happen to the first or the second or the last. The specific small thing is you learn to move without waiting to be called.",
       "expr": "neutral"
     },
     {
@@ -722,7 +882,25 @@
     {
       "t": "say",
       "char": "Anita",
-      "text": "Not much to tell. I have been an ER nurse since 1997. I have, in my trunk, a small go-bag — gloves, a compact trauma kit, a reflective vest, a headlamp, a pair of trauma shears. The bag has been in my trunk since 2011. When I see a wreck on the side of the road that has happened within the last few minutes and where no first responders are yet on scene, I stop. I get out. I do what I can do for the first ten minutes. Then an ambulance arrives and I hand off and I go back to my car. I have, by rough count, done this fourteen times in fifteen years. Of the fourteen, eleven of the people I stopped for lived. Of the three who didn't, two would not have lived regardless and one — one, I think, would have had a better chance if I had been two minutes earlier, but I was not, and the two minutes were not mine to have, and I have — I have made my peace with that one.",
+      "text": "Not much to tell. I have been an ER nurse since 1997. I have, in my trunk, a small go-bag — gloves, a compact trauma kit, a reflective vest, a headlamp, a pair of trauma shears. The bag has been in my trunk since 2011.",
+      "expr": "serious"
+    },
+    {
+      "t": "say",
+      "char": "Anita",
+      "text": "When I see a wreck on the side of the road that has happened within the last few minutes and where no first responders are yet on scene, I stop. I get out. I do what I can do for the first ten minutes.",
+      "expr": "serious"
+    },
+    {
+      "t": "say",
+      "char": "Anita",
+      "text": "Then an ambulance arrives and I hand off and I go back to my car. I have, by rough count, done this fourteen times in fifteen years. Of the fourteen, eleven of the people I stopped for lived.",
+      "expr": "serious"
+    },
+    {
+      "t": "say",
+      "char": "Anita",
+      "text": "Of the three who didn't, two would not have lived regardless and one — one, I think, would have had a better chance if I had been two minutes earlier, but I was not, and the two minutes were not mine to have, and I have — I have made my peace with that one.",
       "expr": "serious"
     },
     {
@@ -762,7 +940,13 @@
     {
       "t": "say",
       "char": "Anita",
-      "text": "Bill knows. Bill has, twice, asked me to leave it at home. I said I would. I lied both times. By the third conversation Bill had stopped asking. Bill and I have, since, been in the agreement we are in, which is that he does not ask me to stop, and I do not make the stopping a thing.",
+      "text": "Bill knows. Bill has, twice, asked me to leave it at home. I said I would. I lied both times. By the third conversation Bill had stopped asking.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Anita",
+      "text": "Bill and I have, since, been in the agreement we are in, which is that he does not ask me to stop, and I do not make the stopping a thing.",
       "expr": "neutral"
     },
     {
@@ -774,7 +958,37 @@
     {
       "t": "say",
       "char": "Anita",
-      "text": "I am telling you because we are at the four-thirty table and the four-thirty table does not perform okay for each other. I am also telling you because it is relevant to the small thing I have been thinking about, which is driving down to Pharr in September. My mother, when I tell her about the bag — which I have, twice — laughs. She laughs in the specific way a woman who raised six kids on a farm in the Valley laughs at a daughter who has become an ER nurse and has a go-bag in her trunk. The laugh is not dismissive. The laugh is — the laugh is recognition. My mother recognizes me. Her middle-of-the-middle. She has always recognized me. The recognition is the thing I have, since I left the Valley in 1993, been getting from my mother, and I have been, this summer, thinking that I have not been down to see her enough in the past year, and that I should go in September, because she is eighty-one and the next year and the year after that are going to be the specific years where the math of how many visits I have left starts to become the kind of math I do not want to do.",
+      "text": "I am telling you because we are at the four-thirty table and the four-thirty table does not perform okay for each other.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Anita",
+      "text": "I am also telling you because it is relevant to the small thing I have been thinking about, which is driving down to Pharr in September. My mother, when I tell her about the bag — which I have, twice — laughs.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Anita",
+      "text": "She laughs in the specific way a woman who raised six kids on a farm in the Valley laughs at a daughter who has become an ER nurse and has a go-bag in her trunk. The laugh is not dismissive.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Anita",
+      "text": "The laugh is — the laugh is recognition. My mother recognizes me. Her middle-of-the-middle. She has always recognized me.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Anita",
+      "text": "The recognition is the thing I have, since I left the Valley in 1993, been getting from my mother, and I have been, this summer, thinking that I have not been down to see her enough in the past year, and that I should go in September,",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Anita",
+      "text": "because she is eighty-one and the next year and the year after that are going to be the specific years where the math of how many visits I have left starts to become the kind of math I do not want to do.",
       "expr": "neutral"
     },
     {
@@ -852,7 +1066,19 @@
     {
       "t": "say",
       "char": "Anita",
-      "text": "Everything is smaller than Anita's. I am the middle of six. I am, generally, in any room, the one whose thing is either the biggest or the smallest, because the middle in a farm family does not do the medium thing, the medium thing is handled by the older ones, I was raised to go to the edges. Go.",
+      "text": "Everything is smaller than Anita's. I am the middle of six.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Anita",
+      "text": "I am, generally, in any room, the one whose thing is either the biggest or the smallest, because the middle in a farm family does not do the medium thing, the medium thing is handled by the older ones, I was raised to go to the edges.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Anita",
+      "text": "Go.",
       "expr": "neutral"
     },
     {
@@ -862,7 +1088,37 @@
     {
       "t": "say",
       "char": "Eileen",
-      "text": "Okay. Mine is — I have been, for twenty-six years, the person in my household who makes things function. I have not, in those twenty-six years, had a specific small thing that was mine. I did — I had a garden, for a while, in the early 2000s, but the garden was also, in the way of gardens, for the house. I had a book club that met once a month from 2007 to 2014 that was closer to mine, but then Jim's father got sick and I dropped out and I didn't pick it back up. I have — I have been thinking, since June, that Jim is doing a thing that is, right now, only his — the photography class, the camera is his again. He has a thing. And I have been thinking — I have been thinking that I would like to also have a thing. I do not, yet, know what the thing is. I have been considering — and I want you both to understand that I have been holding this question for two months and I have not yet told Jim — I have been considering taking up the piano again.",
+      "text": "Okay. Mine is — I have been, for twenty-six years, the person in my household who makes things function. I have not, in those twenty-six years, had a specific small thing that was mine.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Eileen",
+      "text": "I did — I had a garden, for a while, in the early 2000s, but the garden was also, in the way of gardens, for the house.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Eileen",
+      "text": "I had a book club that met once a month from 2007 to 2014 that was closer to mine, but then Jim's father got sick and I dropped out and I didn't pick it back up.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Eileen",
+      "text": "I have — I have been thinking, since June, that Jim is doing a thing that is, right now, only his — the photography class, the camera is his again. He has a thing.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Eileen",
+      "text": "And I have been thinking — I have been thinking that I would like to also have a thing. I do not, yet, know what the thing is.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Eileen",
+      "text": "I have been considering — and I want you both to understand that I have been holding this question for two months and I have not yet told Jim — I have been considering taking up the piano again.",
       "expr": "neutral"
     },
     {
@@ -874,7 +1130,13 @@
     {
       "t": "say",
       "char": "Eileen",
-      "text": "I played piano. I played through high school. I had a teacher. I had a — I had a small talent, not enough to go to conservatory, but enough that I played other people's weddings for a hundred dollars apiece through college. I stopped when I had Jesse. I have not touched one in twenty years.",
+      "text": "I played piano. I played through high school. I had a teacher. I had a — I had a small talent, not enough to go to conservatory, but enough that I played other people's weddings for a hundred dollars apiece through college.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Eileen",
+      "text": "I stopped when I had Jesse. I have not touched one in twenty years.",
       "expr": "neutral"
     },
     {
@@ -886,7 +1148,13 @@
     {
       "t": "say",
       "char": "Eileen",
-      "text": "I have the piano from my mother that has been in the den under a cover since 2006. It is out of tune. The tuning is maybe two hundred dollars. The lessons are — the lessons I would want are harder to find in New Auburn. I have been thinking I would take a drive into Austin once a week for a proper teacher.",
+      "text": "I have the piano from my mother that has been in the den under a cover since 2006. It is out of tune. The tuning is maybe two hundred dollars. The lessons are — the lessons I would want are harder to find in New Auburn.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Eileen",
+      "text": "I have been thinking I would take a drive into Austin once a week for a proper teacher.",
       "expr": "neutral"
     },
     {
@@ -898,7 +1166,13 @@
     {
       "t": "say",
       "char": "Eileen",
-      "text": "[shot:closeup person_b]Yeah. I'm going to. I think. I am going to tell Jim in the next two weeks. I wanted — I wanted to tell you both first. Because — because I needed to hear myself say it out loud to two other people before I said it to my husband. That is the thing the table is for.",
+      "text": "[shot:closeup person_b]Yeah. I'm going to. I think. I am going to tell Jim in the next two weeks. I wanted — I wanted to tell you both first. Because — because I needed to hear myself say it out loud to two other people before I said it to my husband.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Eileen",
+      "text": "That is the thing the table is for.",
       "expr": "neutral"
     },
     {
@@ -950,7 +1224,19 @@
     {
       "t": "say",
       "char": "Bianca",
-      "text": "My father fixed radios. He was — he had a workbench in the garage in Lubbock. He fixed them for money, on the side, and for pleasure, mostly. He died in 2003 at the workbench with an unfinished project in front of him that had been for my brother's son. My brother finished the project. My nephew is — my nephew is in his thirties now, in Houston. The radio my father was working on ended up in my brother's garage and has been there since 2005. I called Monday. I asked Carlos if I could have it. He said yes. It's coming next week.",
+      "text": "My father fixed radios. He was — he had a workbench in the garage in Lubbock. He fixed them for money, on the side, and for pleasure, mostly.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Bianca",
+      "text": "He died in 2003 at the workbench with an unfinished project in front of him that had been for my brother's son. My brother finished the project. My nephew is — my nephew is in his thirties now, in Houston.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Bianca",
+      "text": "The radio my father was working on ended up in my brother's garage and has been there since 2005. I called Monday. I asked Carlos if I could have it. He said yes. It's coming next week.",
       "expr": "neutral"
     },
     {
@@ -990,7 +1276,13 @@
     {
       "t": "say",
       "char": "Bianca",
-      "text": "Because my father — my father did a thing, every Saturday morning of my childhood, which was to go to the workbench and lay out the parts on a white cloth and sit in front of them and take, on most Saturdays, four hours to fix one radio. He was not, in his life, a man who did a lot that was only his. He had a job he was fine at. He had a wife who was, by all accounts, the love of his life. He had six kids — ",
+      "text": "Because my father — my father did a thing, every Saturday morning of my childhood, which was to go to the workbench and lay out the parts on a white cloth and sit in front of them and take, on most Saturdays, four hours to fix one radio.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Bianca",
+      "text": "He was not, in his life, a man who did a lot that was only his. He had a job he was fine at. He had a wife who was, by all accounts, the love of his life. He had six kids —",
       "expr": "neutral"
     },
     {
@@ -1050,7 +1342,19 @@
     {
       "t": "say",
       "char": "Bianca",
-      "text": "Anyway. My father had his four hours on Saturdays. He had, by the end of those four hours, a working radio. I have been thinking, since Monday, that I have not, in my adult life, had a four-hour-on-a-Saturday thing. I don't, honestly, know that I want the radio to be that. I want the radio to be on the shelf so that, every time I see it, I remember that my father had a four-hour-on-a-Saturday thing, and that I — might. If I decide to. And that the not-deciding is its own decision, and that if I sit with the radio for a year without touching it, I will learn something about what I actually want the four hours to be for.",
+      "text": "Anyway. My father had his four hours on Saturdays. He had, by the end of those four hours, a working radio. I have been thinking, since Monday, that I have not, in my adult life, had a four-hour-on-a-Saturday thing.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Bianca",
+      "text": "I don't, honestly, know that I want the radio to be that. I want the radio to be on the shelf so that, every time I see it, I remember that my father had a four-hour-on-a-Saturday thing, and that I — might. If I decide to.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Bianca",
+      "text": "And that the not-deciding is its own decision, and that if I sit with the radio for a year without touching it, I will learn something about what I actually want the four hours to be for.",
       "expr": "neutral"
     },
     {
@@ -1272,7 +1576,13 @@
     {
       "t": "say",
       "char": "Anita",
-      "text": "I'm telling you because Bill and I have been watching her at our house for the past two months when she comes by. She has the specific small thing on her face that kids have the summer before their senior year when they have already, in their heads, left. She has not told you. You already know. I am only confirming what you already know.",
+      "text": "I'm telling you because Bill and I have been watching her at our house for the past two months when she comes by.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Anita",
+      "text": "She has the specific small thing on her face that kids have the summer before their senior year when they have already, in their heads, left. She has not told you. You already know. I am only confirming what you already know.",
       "expr": "neutral"
     },
     {
@@ -1342,7 +1652,13 @@
     {
       "t": "say",
       "char": "Anita",
-      "text": "I have to go home. Bill is going to be up and Gracie is going to be up and Daisy is going to need to be let out and my body is going to shut down in about ninety minutes. I am going to take my peach jar. I am going to go home. I am going to sleep until two. Bianca. Thank you for the morning.",
+      "text": "I have to go home. Bill is going to be up and Gracie is going to be up and Daisy is going to need to be let out and my body is going to shut down in about ninety minutes. I am going to take my peach jar. I am going to go home.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Anita",
+      "text": "I am going to sleep until two. Bianca. Thank you for the morning.",
       "expr": "neutral"
     },
     {
@@ -1359,7 +1675,11 @@
     },
     {
       "t": "narrate",
-      "text": "[shot:insert jar]Anita takes her peach jar and her scrubs and her empty kolache bag and her tote and she leaves out the back door, because that is the way she came in, and because she has, at seven fifty-two in mid-August, the small walk home through the four streets of the subdivision at the hour when the sprinklers are just starting their Friday cycle and the morning light is just beginning to be the morning light."
+      "text": "[shot:insert jar]Anita takes her peach jar and her scrubs and her empty kolache bag and her tote and she leaves out the back door, because that is the way she came in, and because she has, at seven fifty-two in mid-August,"
+    },
+    {
+      "t": "narrate",
+      "text": "the small walk home through the four streets of the subdivision at the hour when the sprinklers are just starting their Friday cycle and the morning light is just beginning to be the morning light."
     },
     {
       "t": "narrate",
@@ -1469,7 +1789,11 @@
     },
     {
       "t": "narrate",
-      "text": "She rinses them. She puts them in the dishwasher. She wipes the table. She puts the peach jar on the counter beside the loaf of whatever Eileen had brought wrapped in foil, which Bianca had, during the morning, forgotten to ask about and which she now, opening the foil, discovers is a small cinnamon coffee cake from the bakery Eileen had mentioned."
+      "text": "She rinses them. She puts them in the dishwasher. She wipes the table."
+    },
+    {
+      "t": "narrate",
+      "text": "She puts the peach jar on the counter beside the loaf of whatever Eileen had brought wrapped in foil, which Bianca had, during the morning, forgotten to ask about and which she now, opening the foil, discovers is a small cinnamon coffee cake from the bakery Eileen had mentioned."
     },
     {
       "t": "narrate",

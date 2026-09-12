@@ -63,7 +63,11 @@
   },
   {
    "t": "narrate",
-   "text": "[shot:insert window]He stood near the helm and surveyed the dining room from the upper deck, through the small leaded window his architect had insisted on, decades ago, calling it charming. Below, Friday night was unfolding on schedule. Tables filling. Laughter rising and falling in the predictable wave-patterns of a Friday that had not yet decided whether it wanted to be memorable."
+   "text": "[shot:insert window]He stood near the helm and surveyed the dining room from the upper deck, through the small leaded window his architect had insisted on, decades ago, calling it charming. Below, Friday night was unfolding on schedule."
+  },
+  {
+   "t": "narrate",
+   "text": "Tables filling. Laughter rising and falling in the predictable wave-patterns of a Friday that had not yet decided whether it wanted to be memorable."
   },
   {
    "t": "narrate",
@@ -107,7 +111,11 @@
   },
   {
    "t": "narrate",
-   "text": "He ran a hand over the polished brass railing he had installed himself, in the second year. The new brass was bright. The new brass was wrong, in some way he could not articulate. He maintained it anyway, on the principle that a man who maintains the wrong thing maintains something."
+   "text": "He ran a hand over the polished brass railing he had installed himself, in the second year. The new brass was bright. The new brass was wrong, in some way he could not articulate."
+  },
+  {
+   "t": "narrate",
+   "text": "He maintained it anyway, on the principle that a man who maintains the wrong thing maintains something."
   },
   {
    "t": "narrate",
@@ -131,7 +139,11 @@
   },
   {
    "t": "narrate",
-   "text": "Alberto was his father's grandson — meticulous, ambitious, and probably just as capable of gutting you with a polite smile. Dante respected the boy, maybe. Did not much like him. Too much like looking in a mirror that did not have the decency to crack at least once across the corner."
+   "text": "Alberto was his father's grandson — meticulous, ambitious, and probably just as capable of gutting you with a polite smile. Dante respected the boy, maybe. Did not much like him."
+  },
+  {
+   "t": "narrate",
+   "text": "Too much like looking in a mirror that did not have the decency to crack at least once across the corner."
   },
   {
    "t": "narrate",
@@ -262,7 +274,11 @@
   },
   {
    "t": "narrate",
-   "text": "[shot:establish]He released the button. He returned to the window. The man was, by now, crossing the parking lot toward a dark sedan he had parked carefully in the shadow of the dumpster, beyond the reach of the security camera that Dante had installed in 2003 and that the man, somehow, had known to avoid."
+   "text": "[shot:establish]He released the button. He returned to the window."
+  },
+  {
+   "t": "narrate",
+   "text": "The man was, by now, crossing the parking lot toward a dark sedan he had parked carefully in the shadow of the dumpster, beyond the reach of the security camera that Dante had installed in 2003 and that the man, somehow, had known to avoid."
   },
   {
    "t": "narrate",
@@ -371,7 +387,11 @@
   },
   {
    "t": "narrate",
-   "text": "He poured another bourbon. He drank it standing. He looked at the card, and he looked at the photograph of his wife on the wall opposite the desk — the photograph he had not replaced in twenty-three years, because he had decided, in the year after she died, that the photograph he chose to keep up was the one he had been looking at when she was alive."
+   "text": "He poured another bourbon. He drank it standing. He looked at the card, and he looked at the photograph of his wife on the wall opposite the desk — the photograph he had not replaced in twenty-three years,"
+  },
+  {
+   "t": "narrate",
+   "text": "because he had decided, in the year after she died, that the photograph he chose to keep up was the one he had been looking at when she was alive."
   },
   {
    "t": "narrate",
@@ -395,7 +415,15 @@
   },
   {
    "t": "narrate",
-   "text": "[shot:insert card]He picked up the card. He held it for a moment over the small brass ashtray on the corner of the desk — the ashtray his father had given him, the one with the bent edge he had never had repaired because the bent edge was the part his father had bent. He held the card there, lighter in his other hand."
+   "text": "[shot:insert card]He picked up the card."
+  },
+  {
+   "t": "narrate",
+   "text": "He held it for a moment over the small brass ashtray on the corner of the desk — the ashtray his father had given him, the one with the bent edge he had never had repaired because the bent edge was the part his father had bent."
+  },
+  {
+   "t": "narrate",
+   "text": "He held the card there, lighter in his other hand."
   },
   {
    "t": "narrate",
@@ -411,7 +439,11 @@
   },
   {
    "t": "narrate",
-   "text": "He drained the bourbon. He stood up, smoothed his shirt — the white shirt with the red wine stain near the third button that he had not had the decency to change before service — and he walked out of the office, down the narrow stairs, into the heart of the boat that was both his kingdom and his cage."
+   "text": "He drained the bourbon."
+  },
+  {
+   "t": "narrate",
+   "text": "He stood up, smoothed his shirt — the white shirt with the red wine stain near the third button that he had not had the decency to change before service — and he walked out of the office, down the narrow stairs, into the heart of the boat that was both his kingdom and his cage."
   },
   {
    "t": "narrate",
@@ -419,7 +451,11 @@
   },
   {
    "t": "narrate",
-   "text": "He moved among the tables. He shook a hand. He bent to murmur something into Mrs. Karras's ear that made her laugh, which had been the goal. He clapped Sammy on the shoulder, with affection that was not, for once, performative. He nodded to Nicola at the hostess stand."
+   "text": "He moved among the tables. He shook a hand. He bent to murmur something into Mrs. Karras's ear that made her laugh, which had been the goal. He clapped Sammy on the shoulder, with affection that was not, for once, performative."
+  },
+  {
+   "t": "narrate",
+   "text": "He nodded to Nicola at the hostess stand."
   },
   {
    "t": "narrate",

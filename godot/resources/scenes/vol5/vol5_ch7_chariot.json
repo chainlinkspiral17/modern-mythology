@@ -35,7 +35,11 @@
     },
     {
       "t": "narrate",
-      "text": "[mood:lunch]THE CHARIOT. The armored figure holds no reins — the sphinxes are controlled by will alone. Forward motion, absolute. Victory through discipline. And reversed: the chariot careening off the road. Speed without direction. The will that no longer knows what it is willing toward."
+      "text": "[mood:lunch]THE CHARIOT. The armored figure holds no reins — the sphinxes are controlled by will alone. Forward motion, absolute. Victory through discipline. And reversed: the chariot careening off the road. Speed without direction."
+    },
+    {
+      "t": "narrate",
+      "text": "The will that no longer knows what it is willing toward."
     },
     {
       "t": "narrate",
@@ -43,7 +47,15 @@
     },
     {
       "t": "narrate",
-      "text": "The girlfriend had not, at the time, intended it as a compliment. Antonio had taken it as one anyway, because he had been twenty-three and stupid and convinced that velocity was a substitute for direction, and because the only thing more flattering to a young man's vanity than a true criticism was a true criticism delivered with the tonal certainty of an aphorism. He had broken up with the girl two months later — gone, then more gone — and the line had stayed with him, the way the most useful diagnoses do, for the next eleven years."
+      "text": "The girlfriend had not, at the time, intended it as a compliment."
+    },
+    {
+      "t": "narrate",
+      "text": "Antonio had taken it as one anyway, because he had been twenty-three and stupid and convinced that velocity was a substitute for direction, and because the only thing more flattering to a young man's vanity than a true criticism was a true criticism delivered with the tonal certainty of an aphorism."
+    },
+    {
+      "t": "narrate",
+      "text": "He had broken up with the girl two months later — gone, then more gone — and the line had stayed with him, the way the most useful diagnoses do, for the next eleven years."
     },
     {
       "t": "narrate",
@@ -55,7 +67,11 @@
     },
     {
       "t": "narrate",
-      "text": "[shot:insert window]The office was hot. The office was always hot. The office was hot because it was August in New Orleans and because the window air-conditioning unit Jimmy had installed had been installed by Jimmy, which meant it ran, technically, but in the particular way that things installed by Jimmy ran — at half capacity, with a faint smell of melting plastic, and with a personality."
+      "text": "[shot:insert window]The office was hot. The office was always hot. The office was hot because it was August in New Orleans and because the window air-conditioning unit Jimmy had installed had been installed by Jimmy, which meant it ran,"
+    },
+    {
+      "t": "narrate",
+      "text": "technically, but in the particular way that things installed by Jimmy ran — at half capacity, with a faint smell of melting plastic, and with a personality."
     },
     {
       "t": "narrate",
@@ -71,7 +87,15 @@
     },
     {
       "t": "narrate",
-      "text": "He looked at it. The screen said Q. PAUL. It did not say Quentin, because Antonio had refused, on principle, to give Quentin Paul the dignity of a first name in his contacts, and it did not say Mr. Paul, because Antonio had refused, on principle, to give him the dignity of an honorific. The compromise had been the initial. The compromise was, like most of Antonio's compromises, less satisfying in practice than it had been in theory."
+      "text": "He looked at it. The screen said Q. PAUL. It did not say Quentin, because Antonio had refused, on principle, to give Quentin Paul the dignity of a first name in his contacts, and it did not say Mr."
+    },
+    {
+      "t": "narrate",
+      "text": "Paul, because Antonio had refused, on principle, to give him the dignity of an honorific. The compromise had been the initial."
+    },
+    {
+      "t": "narrate",
+      "text": "The compromise was, like most of Antonio's compromises, less satisfying in practice than it had been in theory."
     },
     {
       "t": "narrate",
@@ -95,7 +119,15 @@
     },
     {
       "t": "narrate",
-      "text": "He picked up the phone. He did not, this time, listen to the voicemail. He had, two weeks ago, started a small private experiment: do not listen to the voicemails. See if the world ends. So far the world had not ended. The voicemails had simply accumulated, like silt at a river bend, and Antonio had begun to notice that the silt itself constituted a kind of message — that the volume of unlistened voicemails from Q. PAUL was, by mid-August, a more accurate index of his relationship with Q. PAUL than any single voicemail would have been."
+      "text": "He picked up the phone. He did not, this time, listen to the voicemail. He had, two weeks ago, started a small private experiment: do not listen to the voicemails. See if the world ends. So far the world had not ended."
+    },
+    {
+      "t": "narrate",
+      "text": "The voicemails had simply accumulated, like silt at a river bend, and Antonio had begun to notice that the silt itself constituted a kind of message — that the volume of unlistened voicemails from Q."
+    },
+    {
+      "t": "narrate",
+      "text": "PAUL was, by mid-August, a more accurate index of his relationship with Q. PAUL than any single voicemail would have been."
     },
     {
       "t": "narrate",
@@ -107,11 +139,23 @@
     },
     {
       "t": "narrate",
-      "text": "That was the description he had used in the prospectus he had circulated, the prospectus that had landed him the loan, the prospectus that had also embarrassed him enough that he had, six months later, removed his own name from the masthead of the early publicity materials and replaced it with the corporate name of the LLC Jimmy Daigle had set up for him on a Tuesday afternoon over po' boys."
+      "text": "That was the description he had used in the prospectus he had circulated, the prospectus that had landed him the loan, the prospectus that had also embarrassed him enough that he had, six months later,"
     },
     {
       "t": "narrate",
-      "text": "The warehouse below the office: exposed brick scarred with generations of graffiti prayers and curses. Towering ceilings lost in shadow. The floor littered with salvaged materials waiting for transformation. It smelled of old wood, ambition, and the faint unsettling tang of ozone — like Frasier Temple's workshop in Graustark, but with more existential dread and worse plumbing. Antonio's vision: Creole meets Italian meets Southeast Asian street food meets — performance art? He still wasn't entirely sure. It was bold, chaotic, probably doomed."
+      "text": "removed his own name from the masthead of the early publicity materials and replaced it with the corporate name of the LLC Jimmy Daigle had set up for him on a Tuesday afternoon over po' boys."
+    },
+    {
+      "t": "narrate",
+      "text": "The warehouse below the office: exposed brick scarred with generations of graffiti prayers and curses. Towering ceilings lost in shadow. The floor littered with salvaged materials waiting for transformation."
+    },
+    {
+      "t": "narrate",
+      "text": "It smelled of old wood, ambition, and the faint unsettling tang of ozone — like Frasier Temple's workshop in Graustark, but with more existential dread and worse plumbing."
+    },
+    {
+      "t": "narrate",
+      "text": "Antonio's vision: Creole meets Italian meets Southeast Asian street food meets — performance art? He still wasn't entirely sure. It was bold, chaotic, probably doomed."
     },
     {
       "t": "narrate",
@@ -119,11 +163,23 @@
     },
     {
       "t": "narrate",
-      "text": "The crew was outside, on their thirty-minute lunch. Spanish on the radio. A hammer doing the slow bored work of hanging a thing the hanger had no opinion about. The hammer had been hanging the same thing — a section of reclaimed cypress beam, the beam Antonio had spent three weeks tracking down at a salvage yard outside Lafayette and had paid a great deal of money for and had loved more, when it arrived, than he had any business loving an inanimate object — for two days."
+      "text": "The crew was outside, on their thirty-minute lunch. Spanish on the radio. A hammer doing the slow bored work of hanging a thing the hanger had no opinion about."
     },
     {
       "t": "narrate",
-      "text": "The beam was not, in Antonio's professional opinion, going up straight. He had pointed this out to the foreman yesterday. The foreman had said, Boss, it's straight enough. Antonio had said, It needs to be straight, not straight enough. The foreman had said, Boss, in this building, in this town, in this neighborhood, that is the same word."
+      "text": "The hammer had been hanging the same thing — a section of reclaimed cypress beam, the beam Antonio had spent three weeks tracking down at a salvage yard outside Lafayette and had paid a great deal of money for and had loved more,"
+    },
+    {
+      "t": "narrate",
+      "text": "when it arrived, than he had any business loving an inanimate object — for two days."
+    },
+    {
+      "t": "narrate",
+      "text": "The beam was not, in Antonio's professional opinion, going up straight. He had pointed this out to the foreman yesterday. The foreman had said, Boss, it's straight enough."
+    },
+    {
+      "t": "narrate",
+      "text": "Antonio had said, It needs to be straight, not straight enough. The foreman had said, Boss, in this building, in this town, in this neighborhood, that is the same word."
     },
     {
       "t": "narrate",
@@ -139,15 +195,43 @@
     },
     {
       "t": "narrate",
-      "text": "The buildout was four months behind schedule. The kitchen equipment, ordered in March, had arrived in June and was the wrong gauge for the gas line, which meant either retrofitting the equipment (expensive) or retrofitting the gas line (also expensive, plus city permits Antonio did not currently have the political cover to obtain). The website was not built. The hire list was incomplete. The chef Antonio had courted from Houston — Lila Bao, the one who had run the pop-up that had made the Chronicle's best-of list two years running — had said yes in writing in May and had begun, in July, to send the kind of three-line emails that meant she was being courted by somebody with a better offer."
+      "text": "The buildout was four months behind schedule."
     },
     {
       "t": "narrate",
-      "text": "Quentin Paul was calling. Q. PAUL was calling. Q. PAUL had been calling, with increasing frequency, since the conversation in early July in which Antonio had told him, politely, that he did not need any external guidance on the project, and Q. PAUL had purred of course in the voice that meant we will see about that."
+      "text": "The kitchen equipment, ordered in March, had arrived in June and was the wrong gauge for the gas line, which meant either retrofitting the equipment (expensive) or retrofitting the gas line (also expensive, plus city permits Antonio did not currently have the political cover to obtain)."
     },
     {
       "t": "narrate",
-      "text": "His father had not visited since May. His father did not call. They spoke on the first Sunday of even-numbered months, and August was not an even-numbered month, and the next call was therefore six weeks away, and Antonio could feel — viscerally, sitting in the hot office with the cypress beam not going up straight downstairs — that something was going to happen before that call, and that the call would, in retrospect, become the last clean conversation he and his father had ever had."
+      "text": "The website was not built. The hire list was incomplete. The chef Antonio had courted from Houston — Lila Bao, the one who had run the pop-up that had made the Chronicle's best-of list two years running —"
+    },
+    {
+      "t": "narrate",
+      "text": "had said yes in writing in May and had begun, in July, to send the kind of three-line emails that meant she was being courted by somebody with a better offer."
+    },
+    {
+      "t": "narrate",
+      "text": "Quentin Paul was calling. Q. PAUL was calling. Q."
+    },
+    {
+      "t": "narrate",
+      "text": "PAUL had been calling, with increasing frequency, since the conversation in early July in which Antonio had told him, politely, that he did not need any external guidance on the project, and Q."
+    },
+    {
+      "t": "narrate",
+      "text": "PAUL had purred of course in the voice that meant we will see about that."
+    },
+    {
+      "t": "narrate",
+      "text": "His father had not visited since May. His father did not call."
+    },
+    {
+      "t": "narrate",
+      "text": "They spoke on the first Sunday of even-numbered months, and August was not an even-numbered month, and the next call was therefore six weeks away, and Antonio could feel — viscerally,"
+    },
+    {
+      "t": "narrate",
+      "text": "sitting in the hot office with the cypress beam not going up straight downstairs — that something was going to happen before that call, and that the call would, in retrospect, become the last clean conversation he and his father had ever had."
     },
     {
       "t": "narrate",
@@ -214,11 +298,27 @@
     },
     {
       "t": "narrate",
-      "text": "Antonio set the phone down. He felt, briefly, the small calming hum of having delegated a decision he had not yet had to make. Jimmy would arrive. Jimmy would assess. Jimmy would propose, with the particular calm of a man who had spent a decade managing other people's emergencies, the three or four moves available, ranked by how much they would cost in money versus how much they would cost in dignity. Antonio would pick. Antonio would commit. Antonio would, on the strength of having committed, feel briefly competent. The briefly competent feeling would last about forty minutes."
+      "text": "Antonio set the phone down. He felt, briefly, the small calming hum of having delegated a decision he had not yet had to make. Jimmy would arrive. Jimmy would assess."
     },
     {
       "t": "narrate",
-      "text": "This was the rhythm. This was the chariot, drawn by two horses pulling in opposite directions: Antonio's vision (which insisted on the cypress beam being straight, the chef being Lila Bao, the menu being Creole meets Italian meets Southeast Asian street food meets performance art) and Antonio's circumstance (which suggested, with mounting clarity, that the cypress beam would settle for straight enough, the chef would settle for whoever Jimmy could find on short notice, and the menu would settle for whatever the staff, when finally hired, could actually execute)."
+      "text": "Jimmy would propose, with the particular calm of a man who had spent a decade managing other people's emergencies, the three or four moves available, ranked by how much they would cost in money versus how much they would cost in dignity."
+    },
+    {
+      "t": "narrate",
+      "text": "Antonio would pick. Antonio would commit. Antonio would, on the strength of having committed, feel briefly competent. The briefly competent feeling would last about forty minutes."
+    },
+    {
+      "t": "narrate",
+      "text": "This was the rhythm. This was the chariot, drawn by two horses pulling in opposite directions: Antonio's vision (which insisted on the cypress beam being straight,"
+    },
+    {
+      "t": "narrate",
+      "text": "the chef being Lila Bao, the menu being Creole meets Italian meets Southeast Asian street food meets performance art) and Antonio's circumstance (which suggested,"
+    },
+    {
+      "t": "narrate",
+      "text": "with mounting clarity, that the cypress beam would settle for straight enough, the chef would settle for whoever Jimmy could find on short notice, and the menu would settle for whatever the staff, when finally hired, could actually execute)."
     },
     {
       "t": "narrate",
@@ -226,7 +326,15 @@
     },
     {
       "t": "narrate",
-      "text": "He stood at the small leaded window of the office and looked out at the neighborhood. The Marigny on a Saturday afternoon: ancient oaks dripping Spanish moss like weary debutantes. Wrought iron balconies rusting into lacework. Gaudy. Eye-catching. Like a bruise blooming on pale skin. The kind of beauty Antonio had moved here for and had now been living inside for nine months and had, somewhere in month six, stopped seeing the way one stops seeing the wallpaper in a house one has inherited and is in the process of slowly disliking."
+      "text": "He stood at the small leaded window of the office and looked out at the neighborhood. The Marigny on a Saturday afternoon: ancient oaks dripping Spanish moss like weary debutantes. Wrought iron balconies rusting into lacework."
+    },
+    {
+      "t": "narrate",
+      "text": "Gaudy. Eye-catching. Like a bruise blooming on pale skin."
+    },
+    {
+      "t": "narrate",
+      "text": "The kind of beauty Antonio had moved here for and had now been living inside for nine months and had, somewhere in month six, stopped seeing the way one stops seeing the wallpaper in a house one has inherited and is in the process of slowly disliking."
     },
     {
       "t": "narrate",
@@ -338,7 +446,17 @@
     {
       "t": "say",
       "char": "jimmy",
-      "text": "Second. He's not just Q. Paul's. I want to be honest with you, kid. I've also seen him at — other things. He works for more than one shop. I don't know what his deal is, but I know his face shows up around money that's getting moved, and I know his face is showing up here, today, on a Saturday, when the crew is on lunch. So whoever sent him — Paul or somebody else — knows the schedule of this jobsite. Which means somebody on the crew is talking. Or somebody at the supply yard. Or somebody at the bank."
+      "text": "Second. He's not just Q. Paul's. I want to be honest with you, kid. I've also seen him at — other things. He works for more than one shop."
+    },
+    {
+      "t": "say",
+      "char": "jimmy",
+      "text": "I don't know what his deal is, but I know his face shows up around money that's getting moved, and I know his face is showing up here, today, on a Saturday, when the crew is on lunch."
+    },
+    {
+      "t": "say",
+      "char": "jimmy",
+      "text": "So whoever sent him — Paul or somebody else — knows the schedule of this jobsite. Which means somebody on the crew is talking. Or somebody at the supply yard. Or somebody at the bank."
     },
     {
       "t": "say",
@@ -375,7 +493,11 @@
     },
     {
       "t": "narrate",
-      "text": "They sat for a while. The hammer downstairs had not resumed; the crew was still on lunch. The window air-conditioner cycled on, ran for forty seconds, cycled off. The room got, in the course of the cycle, half a degree cooler, and then immediately a full degree warmer."
+      "text": "They sat for a while. The hammer downstairs had not resumed; the crew was still on lunch. The window air-conditioner cycled on, ran for forty seconds, cycled off."
+    },
+    {
+      "t": "narrate",
+      "text": "The room got, in the course of the cycle, half a degree cooler, and then immediately a full degree warmer."
     },
     {
       "t": "say",
@@ -385,7 +507,12 @@
     {
       "t": "say",
       "char": "jimmy",
-      "text": "Couple of options. None of 'em great. One. You wait him out. He's there to be seen, you let him be seen, he leaves, you don't react. This costs you nothing today and probably a little something later. Two. You go out and say hello. This is the ballsy move. It tells Paul you're not scared, which has the disadvantage of being a lie. Three. You call your dad."
+      "text": "Couple of options. None of 'em great. One. You wait him out. He's there to be seen, you let him be seen, he leaves, you don't react. This costs you nothing today and probably a little something later. Two."
+    },
+    {
+      "t": "say",
+      "char": "jimmy",
+      "text": "You go out and say hello. This is the ballsy move. It tells Paul you're not scared, which has the disadvantage of being a lie. Three. You call your dad."
     },
     {
       "t": "narrate",
@@ -465,11 +592,23 @@
     },
     {
       "t": "narrate",
-      "text": "The downstairs hammer started up again. The crew was back from lunch. A radio came on, salsa this time, somebody's choice. The office got slowly, then suddenly, much hotter; the window unit, in protest at having been asked to do its job, made a small grinding noise and gave up entirely."
+      "text": "The downstairs hammer started up again. The crew was back from lunch. A radio came on, salsa this time, somebody's choice."
     },
     {
       "t": "narrate",
-      "text": "Antonio looked at the bourbon bottle. He did not pour another. He looked at the architectural plans rolled up on the desk, the plans he had loved when they were drafted, the plans that had committed him to a building he was no longer entirely sure he wanted. He looked at his phone, face-down, full of unread voicemails from Q. PAUL."
+      "text": "The office got slowly, then suddenly, much hotter; the window unit, in protest at having been asked to do its job, made a small grinding noise and gave up entirely."
+    },
+    {
+      "t": "narrate",
+      "text": "Antonio looked at the bourbon bottle. He did not pour another."
+    },
+    {
+      "t": "narrate",
+      "text": "He looked at the architectural plans rolled up on the desk, the plans he had loved when they were drafted, the plans that had committed him to a building he was no longer entirely sure he wanted."
+    },
+    {
+      "t": "narrate",
+      "text": "He looked at his phone, face-down, full of unread voicemails from Q. PAUL."
     },
     {
       "t": "narrate",
@@ -550,7 +689,11 @@
     },
     {
       "t": "narrate",
-      "text": "Jimmy left through the back stair. The office door clicked shut. Antonio sat at the desk and listened to the salsa from the crew's radio downstairs and the slow grinding death of the air-conditioner and the small interior sound — somewhere just behind his sternum, where the bourbon had not, in the end, reached — of a chariot picking up speed on a road he had not chosen."
+      "text": "Jimmy left through the back stair. The office door clicked shut. Antonio sat at the desk and listened to the salsa from the crew's radio downstairs and the slow grinding death of the air-conditioner and the small interior sound —"
+    },
+    {
+      "t": "narrate",
+      "text": "somewhere just behind his sternum, where the bourbon had not, in the end, reached — of a chariot picking up speed on a road he had not chosen."
     },
     {
       "t": "narrate",

@@ -76,7 +76,13 @@
     {
       "t": "say",
       "char": "Ben",
-      "text": "Diego is at a safehouse. He is alive. He is concussed and dehydrated but he is alive. The van got him out of the subdivision Wednesday night. The intercept happened this morning at seven thirty. Boyd — the man who hurt him — is in Nevada by tonight. Vince walked. Tomé took a payoff. Diego asked about you. He asked your name. That was the first word he said when Doyle put him in the van.",
+      "text": "Diego is at a safehouse. He is alive. He is concussed and dehydrated but he is alive. The van got him out of the subdivision Wednesday night. The intercept happened this morning at seven thirty.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Ben",
+      "text": "Boyd — the man who hurt him — is in Nevada by tonight. Vince walked. Tomé took a payoff. Diego asked about you. He asked your name. That was the first word he said when Doyle put him in the van.",
       "expr": "neutral"
     },
     {
@@ -139,7 +145,11 @@
     },
     {
       "t": "narrate",
-      "text": "[shot:establish]Sam stands behind the counter for one minute. Then two. Then she goes to the back, into the small employee bathroom, and she turns on the tap, and she leans her forehead against the cold porcelain of the sink, and she cries — quietly, with the particular efficient relief of a person who has been carrying a five-day-long grief that has just, finally, been given permission to start putting itself down."
+      "text": "[shot:establish]Sam stands behind the counter for one minute. Then two. Then she goes to the back, into the small employee bathroom, and she turns on the tap, and she leans her forehead against the cold porcelain of the sink, and she cries —"
+    },
+    {
+      "t": "narrate",
+      "text": "quietly, with the particular efficient relief of a person who has been carrying a five-day-long grief that has just, finally, been given permission to start putting itself down."
     },
     {
       "t": "narrate",

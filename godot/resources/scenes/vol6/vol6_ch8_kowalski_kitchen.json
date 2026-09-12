@@ -33,7 +33,11 @@
     },
     {
       "t": "narrate",
-      "text": "The basement is, as Ben had promised, a real bedroom with a real door. It has a small high window through which the morning light comes in low and yellow. The bed is a queen with a quilt that Maya does not recognize, and the quilt smells faintly of lavender, in the way of quilts kept in linen closets that women like Anita Kowalski maintain with a small specific ritual every other Sunday."
+      "text": "The basement is, as Ben had promised, a real bedroom with a real door. It has a small high window through which the morning light comes in low and yellow."
+    },
+    {
+      "t": "narrate",
+      "text": "The bed is a queen with a quilt that Maya does not recognize, and the quilt smells faintly of lavender, in the way of quilts kept in linen closets that women like Anita Kowalski maintain with a small specific ritual every other Sunday."
     },
     {
       "t": "narrate",
@@ -61,7 +65,11 @@
     },
     {
       "t": "narrate",
-      "text": "[shot:closeup bill]Ben's father — Bill, fifty-one, water-plant operator, broad-chested in a way Ben has clearly inherited — is at the stove cooking eggs. Anita is at the table in scrubs, still up from her shift, drinking coffee. Gracie is at the counter eating cereal in her pajamas. Daisy the dog is under the table."
+      "text": "[shot:closeup bill]Ben's father — Bill, fifty-one, water-plant operator, broad-chested in a way Ben has clearly inherited — is at the stove cooking eggs. Anita is at the table in scrubs, still up from her shift, drinking coffee."
+    },
+    {
+      "t": "narrate",
+      "text": "Gracie is at the counter eating cereal in her pajamas. Daisy the dog is under the table."
     },
     {
       "t": "show",

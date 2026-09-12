@@ -23,7 +23,13 @@
       "t": "say",
       "char": "The Artist",
       "expr": "neutral",
-      "text": "(comfortable) There comes a time in life when pieces click in place good and bad chambers of existence line up just so showing both the way and every single misstep ever taken specifically on purpose pressed in prehistoric mud so long gone yet still to come for ancestor gawkers to stumble cross centuries later and find mute satisfaction"
+      "text": "(comfortable) There comes a time in life when pieces click in place good and bad chambers of existence line up just so showing both the way"
+    },
+    {
+      "t": "say",
+      "char": "The Artist",
+      "expr": "neutral",
+      "text": "and every single misstep ever taken specifically on purpose pressed in prehistoric mud so long gone yet still to come for ancestor gawkers to stumble cross centuries later and find mute satisfaction"
     },
     {
       "t": "say",
@@ -99,7 +105,13 @@
       "t": "say",
       "char": "The Human Being",
       "expr": "neutral",
-      "text": "(making tamales, with flashes to:) I work towards the good if such a term gives any meaning —true— to you certainly me but my good a construct of culture a childhood of cartoons video games movies comic books sports nature library books travel friendships rivalries all with fierce science-fiction clarity."
+      "text": "(making tamales, with flashes to:) I work towards the good if such a term gives any meaning —true— to you certainly me"
+    },
+    {
+      "t": "say",
+      "char": "The Human Being",
+      "expr": "neutral",
+      "text": "but my good a construct of culture a childhood of cartoons video games movies comic books sports nature library books travel friendships rivalries all with fierce science-fiction clarity."
     },
     {
       "t": "narrate",
@@ -211,7 +223,13 @@
       "t": "say",
       "char": "The Artist",
       "expr": "neutral",
-      "text": "Self-doubt would have crippled me — instead ordered chaos electric statics and storm booted this operating system this great battle whir clicking inside me accelerates something crushing something so damned high I lose myself in art find beauty in friendship family found eternal connection in everyday existence."
+      "text": "Self-doubt would have crippled me — instead ordered chaos electric statics and storm booted this operating system this great battle whir clicking inside me accelerates something crushing something"
+    },
+    {
+      "t": "say",
+      "char": "The Artist",
+      "expr": "neutral",
+      "text": "so damned high I lose myself in art find beauty in friendship family found eternal connection in everyday existence."
     },
     {
       "t": "say",
@@ -227,7 +245,13 @@
       "t": "say",
       "char": "The Writer",
       "expr": "neutral",
-      "text": "My thanks trickles down rests here on books examined eyestraining existential dread untold delights library books by the armful — transparent clear skinned shrink-wrapped from future tense — tomes of forgotten lore — history repeating itself within fictional allegory — arts and crafts; horrors and hobbies — all books look the same (though good design, hardly lost on me) judging by the cover — fresh new bleached through razor blade pages slick enough — slit and scar an impressionable age."
+      "text": "My thanks trickles down rests here on books examined eyestraining existential dread untold delights library books by the armful — transparent clear skinned shrink-wrapped from future tense — tomes of forgotten lore — history repeating itself within fictional allegory —"
+    },
+    {
+      "t": "say",
+      "char": "The Writer",
+      "expr": "neutral",
+      "text": "arts and crafts; horrors and hobbies — all books look the same (though good design, hardly lost on me) judging by the cover — fresh new bleached through razor blade pages slick enough — slit and scar an impressionable age."
     },
     {
       "t": "narrate",
@@ -249,7 +273,13 @@
       "t": "say",
       "char": "The Writer",
       "expr": "neutral",
-      "text": "Writing — like any and all creation — is of the present, yet my mind tends to reside not with myself but with my audience in many a hypothetical future tense or deep in the past communing with ancient and long dead voice of genius I see fit to cozy up to — a child auditioning for parental approval, content I am to put words to paper or whatever medium exists to transmit naked thoughts into naked flesh — suppose I stand before you bereft of all but the barest sense of self and purpose."
+      "text": "Writing — like any and all creation — is of the present, yet my mind tends to reside not with myself but with my audience in many a hypothetical future tense or deep in the past communing with ancient and long dead voice of genius I see fit to cozy up to —"
+    },
+    {
+      "t": "say",
+      "char": "The Writer",
+      "expr": "neutral",
+      "text": "a child auditioning for parental approval, content I am to put words to paper or whatever medium exists to transmit naked thoughts into naked flesh — suppose I stand before you bereft of all but the barest sense of self and purpose."
     },
     {
       "t": "say",

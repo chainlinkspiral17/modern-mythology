@@ -43,7 +43,11 @@
    "t": "narrate"
   },
   {
-   "text": "[shot:insert hexagon]He drove to Lena's apartment first. The hexagon was complete. The crow was speaking. The figure had been on the stack. The leak was — by his read of it on the drive back — no longer leaking only into bodies and counts and dreams. The leak was making things now. The substrate had carved a bowl yesterday in the basement of Kestrel Mountain. The leak was finished with the interior. The leak was working at the scale of objects.",
+   "text": "[shot:insert hexagon]He drove to Lena's apartment first. The hexagon was complete. The crow was speaking. The figure had been on the stack. The leak was — by his read of it on the drive back — no longer leaking only into bodies and counts and dreams.",
+   "t": "narrate"
+  },
+  {
+   "text": "The leak was making things now. The substrate had carved a bowl yesterday in the basement of Kestrel Mountain. The leak was finished with the interior. The leak was working at the scale of objects.",
    "t": "narrate"
   },
   {
@@ -242,7 +246,13 @@
   },
   {
    "char": "lena",
-   "text": "The four of us — and Per — are supposed to be at the cabin at five for what Tem called the conversation we should have been having since June. Tem said the conversation needed to happen before Marina got there, and that Marina coming in at ten was when the next thing would start.",
+   "text": "The four of us — and Per — are supposed to be at the cabin at five for what Tem called the conversation we should have been having since June.",
+   "expr": "neutral",
+   "t": "say"
+  },
+  {
+   "char": "lena",
+   "text": "Tem said the conversation needed to happen before Marina got there, and that Marina coming in at ten was when the next thing would start.",
    "expr": "neutral",
    "t": "say"
   },
@@ -347,7 +357,11 @@
    "t": "say"
   },
   {
-   "text": "[shot:insert window~]She held it up to the kitchen window. The kitchen window was the one over the sink that looked into the alley at the Starfish Nebula. The patch had grown again overnight. The patch had taken the kite of starfish entirely. The patch had started, in the past twenty-four hours, on the section of the mural to the right of where the kite had been — the section Lena had painted as a set of sandstone arches. The arches were eating.",
+   "text": "[shot:insert window~]She held it up to the kitchen window. The kitchen window was the one over the sink that looked into the alley at the Starfish Nebula. The patch had grown again overnight. The patch had taken the kite of starfish entirely.",
+   "t": "narrate"
+  },
+  {
+   "text": "The patch had started, in the past twenty-four hours, on the section of the mural to the right of where the kite had been — the section Lena had painted as a set of sandstone arches. The arches were eating.",
    "t": "narrate"
   },
   {
@@ -408,13 +422,25 @@
   },
   {
    "char": "lena",
-   "text": "I have been — I have been trying not to. Tem told me on Friday that the substrate was eating the painting and that painting back would only — would only give the substrate more to eat. Tem said let it eat. The eating is the substrate communicating. Watch what it eats.",
+   "text": "I have been — I have been trying not to. Tem told me on Friday that the substrate was eating the painting and that painting back would only — would only give the substrate more to eat. Tem said let it eat.",
    "expr": "serious",
    "t": "say"
   },
   {
    "char": "lena",
-   "text": "I have been watching. The substrate has been eating my octopus. The substrate has been eating my kite. The substrate has now started on my arches. The substrate has been telling me, by what it has been eating, that the bottom-left quadrant of the painting is — the bottom-left is the section the substrate has been working on.",
+   "text": "The eating is the substrate communicating. Watch what it eats.",
+   "expr": "serious",
+   "t": "say"
+  },
+  {
+   "char": "lena",
+   "text": "I have been watching. The substrate has been eating my octopus. The substrate has been eating my kite. The substrate has now started on my arches.",
+   "expr": "serious",
+   "t": "say"
+  },
+  {
+   "char": "lena",
+   "text": "The substrate has been telling me, by what it has been eating, that the bottom-left quadrant of the painting is — the bottom-left is the section the substrate has been working on.",
    "expr": "serious",
    "t": "say"
   },
@@ -450,7 +476,13 @@
   },
   {
    "char": "lena",
-   "text": "I'll need the eighth piece. I'll need to look at it while I paint. I'll need — Finn, I'll need to look at her closed eyes and paint them with the brush you used to do that one quick portrait of me you did in October that I told you I hated. I'll need that brush.",
+   "text": "I'll need the eighth piece. I'll need to look at it while I paint.",
+   "expr": "serious",
+   "t": "say"
+  },
+  {
+   "char": "lena",
+   "text": "I'll need — Finn, I'll need to look at her closed eyes and paint them with the brush you used to do that one quick portrait of me you did in October that I told you I hated. I'll need that brush.",
    "expr": "serious",
    "t": "say"
   },
@@ -504,7 +536,13 @@
   },
   {
    "char": "finn",
-   "text": "You needed to see the face before anybody else did. The other three of us have other relationships with her. You have — you have the mural. The mural is the thing the substrate has been eating. The face is — the face is what you are going to put where the eating was.",
+   "text": "You needed to see the face before anybody else did. The other three of us have other relationships with her. You have — you have the mural. The mural is the thing the substrate has been eating.",
+   "expr": "serious",
+   "t": "say"
+  },
+  {
+   "char": "finn",
+   "text": "The face is — the face is what you are going to put where the eating was.",
    "expr": "serious",
    "t": "say"
   },

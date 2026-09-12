@@ -19,7 +19,11 @@
     },
     {
       "t": "narrate",
-      "text": "[shot:insert paper]She got up at five-something on Sunday and made coffee and sat at the kitchen table with the cup and a sheet of paper and a pen the ink in which had dried. She got up and found another. She came back and wrote Jorgen at the top of the page and looked at it for ten minutes and put the pen down."
+      "text": "[shot:insert paper]She got up at five-something on Sunday and made coffee and sat at the kitchen table with the cup and a sheet of paper and a pen the ink in which had dried. She got up and found another."
+    },
+    {
+      "t": "narrate",
+      "text": "She came back and wrote Jorgen at the top of the page and looked at it for ten minutes and put the pen down."
     },
     {
       "t": "narrate",
@@ -39,7 +43,11 @@
     },
     {
       "t": "narrate",
-      "text": "She was at the door of the apartment in twenty minutes. There was no wagon. The Sunday bus did not run to the cabin road. Kai's truck was at Board Lords, which meant Board Lords was closed at eight-thirty on a Sunday morning, which it had not been in four years."
+      "text": "She was at the door of the apartment in twenty minutes. There was no wagon. The Sunday bus did not run to the cabin road."
+    },
+    {
+      "t": "narrate",
+      "text": "Kai's truck was at Board Lords, which meant Board Lords was closed at eight-thirty on a Sunday morning, which it had not been in four years."
     },
     {
       "t": "narrate",

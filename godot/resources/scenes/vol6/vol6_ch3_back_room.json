@@ -45,7 +45,15 @@
   },
   {
    "t": "narrate",
-   "text": "[shot:establish]Sam slips in. The back room of Cosmic Comics is smaller than she imagined — an L-shaped storage and office area, lit by a single overhead with a pull chain, stacked with long boxes and cardboard cartons of new releases still in shrink. There is a small desk in one corner, a mini-fridge, a calendar of cats from 2022 nobody has taken down."
+   "text": "[shot:establish]Sam slips in."
+  },
+  {
+   "t": "narrate",
+   "text": "The back room of Cosmic Comics is smaller than she imagined — an L-shaped storage and office area, lit by a single overhead with a pull chain, stacked with long boxes and cardboard cartons of new releases still in shrink."
+  },
+  {
+   "t": "narrate",
+   "text": "There is a small desk in one corner, a mini-fridge, a calendar of cats from 2022 nobody has taken down."
   },
   {
    "t": "narrate",
@@ -137,7 +145,13 @@
    "t": "say",
    "char": "Maya",
    "expr": "neutral",
-   "text": "\"Thing one: Diego is alive. He is not at home. He is being held somewhere on the east side of the subdivision. I don't know exactly where yet, but I will by next Sunday. My source on this is a person called F.T. I don't know who F.T. is. Rick, up front, does know. Rick is not going to tell us. Rick knows some things about our dads that I don't. My grandmother knows some other things about some other people.\""
+   "text": "\"Thing one: Diego is alive. He is not at home. He is being held somewhere on the east side of the subdivision. I don't know exactly where yet, but I will by next Sunday. My source on this is a person called F.T."
+  },
+  {
+   "t": "say",
+   "char": "Maya",
+   "expr": "neutral",
+   "text": "I don't know who F.T. is. Rick, up front, does know. Rick is not going to tell us. Rick knows some things about our dads that I don't. My grandmother knows some other things about some other people.\""
   },
   {
    "t": "narrate",
@@ -147,7 +161,13 @@
    "t": "say",
    "char": "Maya",
    "expr": "neutral",
-   "text": "\"Thing two: your dad knows. About Diego. Not necessarily because he caused it — I don't know that part yet. But he knows, and he has chosen not to tell you. He came by Diego's grandmother's house Sunday morning at seven. He sat in his truck at the end of the driveway for eleven minutes. He did not knock.\""
+   "text": "\"Thing two: your dad knows. About Diego. Not necessarily because he caused it — I don't know that part yet. But he knows, and he has chosen not to tell you. He came by Diego's grandmother's house Sunday morning at seven."
+  },
+  {
+   "t": "say",
+   "char": "Maya",
+   "expr": "neutral",
+   "text": "He sat in his truck at the end of the driveway for eleven minutes. He did not knock.\""
   },
   {
    "t": "narrate",
@@ -169,7 +189,13 @@
    "t": "say",
    "char": "Maya",
    "expr": "neutral",
-   "text": "[shot:closeup person_b]\"Thing three: there are other adults in this town who know. I don't mean bad. I mean on your side. My grandmother. Rick. A bookshop guy in New Auburn named Hal. Diego's grandmother. There's a reporter from the Houston Chronicle working on something. There are two people in a white sedan parked at the Kwik Stop for the past two days —\""
+   "text": "[shot:closeup person_b]\"Thing three: there are other adults in this town who know. I don't mean bad. I mean on your side. My grandmother. Rick. A bookshop guy in New Auburn named Hal. Diego's grandmother."
+  },
+  {
+   "t": "say",
+   "char": "Maya",
+   "expr": "neutral",
+   "text": "There's a reporter from the Houston Chronicle working on something. There are two people in a white sedan parked at the Kwik Stop for the past two days —\""
   },
   {
    "t": "say",
@@ -213,7 +239,13 @@
    "t": "say",
    "char": "Maya",
    "expr": "neutral",
-   "text": "[shot:closeup person_b]\"Because my dad was in it. Not this specifically. Something like this, somewhere else, a long time ago. He sent me up here to get out of it. My grandmother has been waiting. The people she was waiting to hear from started talking to her last week. They told her I was ready.\""
+   "text": "[shot:closeup person_b]\"Because my dad was in it. Not this specifically. Something like this, somewhere else, a long time ago. He sent me up here to get out of it. My grandmother has been waiting."
+  },
+  {
+   "t": "say",
+   "char": "Maya",
+   "expr": "neutral",
+   "text": "The people she was waiting to hear from started talking to her last week. They told her I was ready.\""
   },
   {
    "t": "say",
@@ -263,7 +295,13 @@
    "t": "say",
    "char": "Maya",
    "expr": "neutral",
-   "text": "\"Today? Nothing. We let ourselves meet. We let me make the map I am going to make. We let you go home and practice being a regular teenager around your regular father for the next five days. F.T. thinks you are going to be fast when you decide to move. He is not wrong to think that. He also thinks we are not supposed to move yet.\""
+   "text": "\"Today? Nothing. We let ourselves meet. We let me make the map I am going to make. We let you go home and practice being a regular teenager around your regular father for the next five days."
+  },
+  {
+   "t": "say",
+   "char": "Maya",
+   "expr": "neutral",
+   "text": "F.T. thinks you are going to be fast when you decide to move. He is not wrong to think that. He also thinks we are not supposed to move yet.\""
   },
   {
    "t": "say",
@@ -335,7 +373,13 @@
    "t": "say",
    "char": "Maya",
    "expr": "neutral",
-   "text": "\"I don't know you very well yet. But I'm going to say this, because my grandmother said it to me last night and it helped: you are allowed to be this scared. You are allowed to be this angry. What you are not allowed to be is alone in it. I'm here. I'm the one who was sent, or I volunteered, or both — I don't know. But I'm in this with you until we find him.\""
+   "text": "\"I don't know you very well yet. But I'm going to say this, because my grandmother said it to me last night and it helped: you are allowed to be this scared. You are allowed to be this angry."
+  },
+  {
+   "t": "say",
+   "char": "Maya",
+   "expr": "neutral",
+   "text": "What you are not allowed to be is alone in it. I'm here. I'm the one who was sent, or I volunteered, or both — I don't know. But I'm in this with you until we find him.\""
   },
   {
    "t": "narrate",
@@ -433,7 +477,13 @@
    "t": "say",
    "char": "Maya",
    "expr": "neutral",
-   "text": "\"He's keeping a legal pad. He has been watching cars and off-duty cops and the backyard wrestling at the McClary place since March. He's one of us. He doesn't know that yet. Jesse Henderson found out yesterday. Jesse's dad is taking photographs that are — Jesse's dad is not okay, Sam. His photographs are showing figures that were not in the frame. One of the figures is looking at him.\""
+   "text": "\"He's keeping a legal pad. He has been watching cars and off-duty cops and the backyard wrestling at the McClary place since March. He's one of us. He doesn't know that yet. Jesse Henderson found out yesterday."
+  },
+  {
+   "t": "say",
+   "char": "Maya",
+   "expr": "neutral",
+   "text": "Jesse's dad is taking photographs that are — Jesse's dad is not okay, Sam. His photographs are showing figures that were not in the frame. One of the figures is looking at him.\""
   },
   {
    "t": "say",

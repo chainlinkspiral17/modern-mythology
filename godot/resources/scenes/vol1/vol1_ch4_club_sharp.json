@@ -101,7 +101,14 @@
    "char": "Dickens Dean",
    "role": "Antagonist",
    "expr": "neutral",
-   "text": "Just by coming here and meeting with us — you've begun to split your reality into many pieces. You have to be careful with this wonderful life you've been given. Respect others in your journeys. Watch for signs and patterns. And reflect inwardly as often as you can."
+   "text": "Just by coming here and meeting with us — you've begun to split your reality into many pieces. You have to be careful with this wonderful life you've been given. Respect others in your journeys. Watch for signs and patterns."
+  },
+  {
+   "t": "say",
+   "char": "Dickens Dean",
+   "role": "Antagonist",
+   "expr": "neutral",
+   "text": "And reflect inwardly as often as you can."
   },
   {
    "t": "say",
@@ -121,15 +128,15 @@
    "opts": [
     {
      "text": "\"What if insanity was a large part of me to begin with?\"",
-     "goto": 21
+     "goto": 22
     },
     {
      "text": "\"Then I'll fortify. I have things to make.\"",
-     "goto": 24
+     "goto": 25
     },
     {
      "text": "[Say nothing. Watch the dance floors.]",
-     "goto": 27
+     "goto": 28
     }
    ]
   },

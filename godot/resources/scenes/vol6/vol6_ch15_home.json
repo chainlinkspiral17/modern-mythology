@@ -37,7 +37,11 @@
   },
   {
    "t": "narrate",
-   "text": "[shot:insert cypress]The Cypress is — she sees, slowing the Corolla — a motel from the 1970s, single-story, twelve rooms in a long L around a small empty parking lot. There are three cars in the lot. None of them are the Peugeot, of course, but Sam had not been looking for the Peugeot. She had been looking for the small evidence of two people walking the access road in the heat."
+   "text": "[shot:insert cypress]The Cypress is — she sees, slowing the Corolla — a motel from the 1970s, single-story, twelve rooms in a long L around a small empty parking lot. There are three cars in the lot."
+  },
+  {
+   "t": "narrate",
+   "text": "None of them are the Peugeot, of course, but Sam had not been looking for the Peugeot. She had been looking for the small evidence of two people walking the access road in the heat."
   },
   {
    "t": "narrate",
@@ -209,7 +213,11 @@
   },
   {
    "t": "narrate",
-   "text": "Mark and Lucy, in Room 7 of the Cypress, are asleep by seven PM, having eaten the small early dinner the gas-station-adjacent McDonald's had provided them for fourteen dollars, and having decided, between them, that the Atlanta bus at six AM is going to be the bus they take and that the trip is, from this Kwik Stop on, going to be a bus trip and not a car trip, and that the Peugeot — Mark's father's car, which Mark has been, in some specific sense, driving since 2014 — is no longer his."
+   "text": "Mark and Lucy, in Room 7 of the Cypress, are asleep by seven PM, having eaten the small early dinner the gas-station-adjacent McDonald's had provided them for fourteen dollars, and having decided, between them,"
+  },
+  {
+   "t": "narrate",
+   "text": "that the Atlanta bus at six AM is going to be the bus they take and that the trip is, from this Kwik Stop on, going to be a bus trip and not a car trip, and that the Peugeot — Mark's father's car, which Mark has been, in some specific sense, driving since 2014 — is no longer his."
   },
   {
    "t": "narrate",

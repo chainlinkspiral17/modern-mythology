@@ -39,7 +39,15 @@
     },
     {
       "t": "narrate",
-      "text": "The pot roast has been in the oven since two-thirty. The smell of it has, for the past four hours, been rising through the house — past the laundry room, past the half-bath, down the basement stairs, and into the small converted broom closet off the garage where Mr. Henderson has been since five PM Friday."
+      "text": "The pot roast has been in the oven since two-thirty."
+    },
+    {
+      "t": "narrate",
+      "text": "The smell of it has, for the past four hours, been rising through the house — past the laundry room, past the half-bath, down the basement stairs, and into the small converted broom closet off the garage where Mr."
+    },
+    {
+      "t": "narrate",
+      "text": "Henderson has been since five PM Friday."
     },
     {
       "t": "narrate",
@@ -65,7 +73,11 @@
     },
     {
       "t": "narrate",
-      "text": "[shot:establish]Jesse comes home from his shift at five-fifty-eight. He goes upstairs to shower. He comes down at six-twenty in clean clothes. Ben arrives at six-twenty-two, in a button-down shirt his mother had washed for him this afternoon when he had told her, vaguely, that he was going to a friend's for dinner and it might be a thing."
+      "text": "[shot:establish]Jesse comes home from his shift at five-fifty-eight. He goes upstairs to shower. He comes down at six-twenty in clean clothes."
+    },
+    {
+      "t": "narrate",
+      "text": "Ben arrives at six-twenty-two, in a button-down shirt his mother had washed for him this afternoon when he had told her, vaguely, that he was going to a friend's for dinner and it might be a thing."
     },
     {
       "t": "show",
@@ -292,7 +304,31 @@
     {
       "t": "say",
       "char": "Mr. Henderson",
-      "text": "There was a — there was an arrangement. In 1998. When we were — when we first moved to Harmony Creek. The substation went up the year before. The substation had — had a contract with NexCorp Residential Solutions. The contract was for — for ambient signal management. They needed — Eileen. They needed a small number of — eyes. People with cameras. People with — with a kind of attention. The arrangement was — they would not interfere with our lives. They would only ask, occasionally, for — photographs. Specific photographs. From specific angles. At specific times. They would compensate. Modestly. The compensation was — it paid for the down payment on this house. It paid for Jesse's preschool. It paid for things I was, at the time, unable to pay for any other way. I was — I said yes. I did not — I did not understand what I was saying yes to.",
+      "text": "There was a — there was an arrangement. In 1998. When we were — when we first moved to Harmony Creek. The substation went up the year before. The substation had — had a contract with NexCorp Residential Solutions.",
+      "expr": "sad"
+    },
+    {
+      "t": "say",
+      "char": "Mr. Henderson",
+      "text": "The contract was for — for ambient signal management. They needed — Eileen. They needed a small number of — eyes. People with cameras. People with — with a kind of attention.",
+      "expr": "sad"
+    },
+    {
+      "t": "say",
+      "char": "Mr. Henderson",
+      "text": "The arrangement was — they would not interfere with our lives. They would only ask, occasionally, for — photographs. Specific photographs. From specific angles. At specific times. They would compensate. Modestly.",
+      "expr": "sad"
+    },
+    {
+      "t": "say",
+      "char": "Mr. Henderson",
+      "text": "The compensation was — it paid for the down payment on this house. It paid for Jesse's preschool. It paid for things I was, at the time, unable to pay for any other way. I was — I said yes.",
+      "expr": "sad"
+    },
+    {
+      "t": "say",
+      "char": "Mr. Henderson",
+      "text": "I did not — I did not understand what I was saying yes to.",
       "expr": "sad"
     },
     {
@@ -312,7 +348,25 @@
     {
       "t": "say",
       "char": "Mr. Henderson",
-      "text": "Then — Eileen. Then in 2011 — there was a — they put something in the camera. Or in me. I do not know which. After that — I would go down to the darkroom. I would develop the prints. The prints had — they had things in them I had not photographed. I had — I had photographed the same things I had always photographed. But the prints were — they were different. And after — after the prints came out, I would — I would know things. About — about the people in the prints. About where they were. About what they were doing. I — I would tell — I would tell, and they would pay. More, by then. Much more.",
+      "text": "Then — Eileen. Then in 2011 — there was a — they put something in the camera. Or in me. I do not know which. After that — I would go down to the darkroom. I would develop the prints.",
+      "expr": "sad"
+    },
+    {
+      "t": "say",
+      "char": "Mr. Henderson",
+      "text": "The prints had — they had things in them I had not photographed. I had — I had photographed the same things I had always photographed. But the prints were — they were different.",
+      "expr": "sad"
+    },
+    {
+      "t": "say",
+      "char": "Mr. Henderson",
+      "text": "And after — after the prints came out, I would — I would know things. About — about the people in the prints. About where they were. About what they were doing. I — I would tell — I would tell, and they would pay. More, by then.",
+      "expr": "sad"
+    },
+    {
+      "t": "say",
+      "char": "Mr. Henderson",
+      "text": "Much more.",
       "expr": "sad"
     },
     {
@@ -326,7 +380,19 @@
     {
       "t": "say",
       "char": "Mr. Henderson",
-      "text": "In April — Eileen — in April this year, the substation began — broadcasting — at me. Through the camera. I do not — I do not know how to explain it. It was not — it was not a voice. It was a — it was a direction. The camera would tell me where to point. The prints would — the prints would report. I was — I was not, by then, fully — fully me. I was — I was an eye. [shake rate=8 level=2]I was only an eye.[/shake] The eye was — the eye was theirs.",
+      "text": "In April — Eileen — in April this year, the substation began — broadcasting — at me. Through the camera. I do not — I do not know how to explain it. It was not — it was not a voice. It was a — it was a direction.",
+      "expr": "sad"
+    },
+    {
+      "t": "say",
+      "char": "Mr. Henderson",
+      "text": "The camera would tell me where to point. The prints would — the prints would report. I was — I was not, by then, fully — fully me. I was — I was an eye.",
+      "expr": "sad"
+    },
+    {
+      "t": "say",
+      "char": "Mr. Henderson",
+      "text": "[shake rate=8 level=2]I was only an eye.[/shake] The eye was — the eye was theirs.",
       "expr": "sad"
     },
     {
@@ -336,7 +402,25 @@
     {
       "t": "say",
       "char": "Mr. Henderson",
-      "text": "And then — Saturday last, I — there was a kid. The Ramos boy. The eye — the eye saw him. The eye — I — I told them where he would be. That night. I told them. And then on Tuesday morning I saw, in the prints, a man in a charcoal suit looking at me. He was not — he was not real. Or he was. I do not — I do not know. But he was — he was seeing me back. And after I saw that — Eileen, after I saw that, I began to — I began to fight. Not on the — not on the surface. On the inside. I would — every print, after, I would try to — to leave a thing. A small thing. The note on the bill. The pencil writing. The eye did not know I was doing it. The eye — the eye thought I was being a good eye. But the small things — they were mine. They were — the only mine I had left.",
+      "text": "And then — Saturday last, I — there was a kid. The Ramos boy. The eye — the eye saw him. The eye — I — I told them where he would be. That night. I told them.",
+      "expr": "sad"
+    },
+    {
+      "t": "say",
+      "char": "Mr. Henderson",
+      "text": "And then on Tuesday morning I saw, in the prints, a man in a charcoal suit looking at me. He was not — he was not real. Or he was. I do not — I do not know. But he was — he was seeing me back.",
+      "expr": "sad"
+    },
+    {
+      "t": "say",
+      "char": "Mr. Henderson",
+      "text": "And after I saw that — Eileen, after I saw that, I began to — I began to fight. Not on the — not on the surface. On the inside. I would — every print, after, I would try to — to leave a thing. A small thing. The note on the bill.",
+      "expr": "sad"
+    },
+    {
+      "t": "say",
+      "char": "Mr. Henderson",
+      "text": "The pencil writing. The eye did not know I was doing it. The eye — the eye thought I was being a good eye. But the small things — they were mine. They were — the only mine I had left.",
       "expr": "sad"
     },
     {
@@ -382,7 +466,13 @@
     {
       "t": "say",
       "char": "Ben",
-      "text": "Mr. Henderson. There is a man in Graustark named Frasier Temple. He runs — he runs the kind of system that probably knows what was put in your camera. Maya — Maya Daigle, who is one of our — one of our friends — has a way to ask him. We can ask. We can find out what it is. We can find out if it can be — if it can be removed.",
+      "text": "Mr. Henderson. There is a man in Graustark named Frasier Temple. He runs — he runs the kind of system that probably knows what was put in your camera.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Ben",
+      "text": "Maya — Maya Daigle, who is one of our — one of our friends — has a way to ask him. We can ask. We can find out what it is. We can find out if it can be — if it can be removed.",
       "expr": "neutral"
     },
     {

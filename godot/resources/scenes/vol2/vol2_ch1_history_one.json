@@ -25,7 +25,11 @@
   },
   {
    "t": "narrate",
-   "text": "At this moment in time I am twenty-six years old — far more potential than actual. I was just recently told this by my mother. That I am stunted developmentally. Not as much an adult as I should be. That I regressed for many years by staying in Small Wood when I should have been moving forward."
+   "text": "At this moment in time I am twenty-six years old — far more potential than actual. I was just recently told this by my mother. That I am stunted developmentally. Not as much an adult as I should be."
+  },
+  {
+   "t": "narrate",
+   "text": "That I regressed for many years by staying in Small Wood when I should have been moving forward."
   },
   {
    "t": "narrate",
@@ -49,7 +53,11 @@
   },
   {
    "t": "narrate",
-   "text": "[shot:insert sign]It was two stories. Yellowed and mildewed on the outside. Shingles split and prone to falling loose. The house proper could be reached driving down from the coastal highway by turning off a small, one-lane pebble road marked by a sign stating simply — Little Switzerland."
+   "text": "[shot:insert sign]It was two stories. Yellowed and mildewed on the outside. Shingles split and prone to falling loose."
+  },
+  {
+   "t": "narrate",
+   "text": "The house proper could be reached driving down from the coastal highway by turning off a small, one-lane pebble road marked by a sign stating simply — Little Switzerland."
   },
   {
    "t": "narrate",
@@ -65,11 +73,19 @@
   },
   {
    "t": "narrate",
-   "text": "But I was a teenager — coming from a very large, alien metropole, moving to a small, isolated house within a proportionately small, isolated community that gnawed at me. I was not at heart a spoiled bright-lights big-city boy. I did not complain about the sudden and drastic change to life, and the pace of life. Yet I was always self-aware, and out of place."
+   "text": "But I was a teenager — coming from a very large, alien metropole, moving to a small, isolated house within a proportionately small, isolated community that gnawed at me. I was not at heart a spoiled bright-lights big-city boy."
   },
   {
    "t": "narrate",
-   "text": "I lacked the skills my father and sister had to tend the land and raise livestock in limited quantities. I helped out where I could that summer — pulling weeds, feeding grass to the beasts, unpacking and moving into the place proper — but I was not an easy fit with the new accommodations."
+   "text": "I did not complain about the sudden and drastic change to life, and the pace of life. Yet I was always self-aware, and out of place."
+  },
+  {
+   "t": "narrate",
+   "text": "I lacked the skills my father and sister had to tend the land and raise livestock in limited quantities."
+  },
+  {
+   "t": "narrate",
+   "text": "I helped out where I could that summer — pulling weeds, feeding grass to the beasts, unpacking and moving into the place proper — but I was not an easy fit with the new accommodations."
   },
   {
    "t": "narrate",
@@ -81,11 +97,19 @@
   },
   {
    "t": "narrate",
-   "text": "I remembered skinny-dipping in the chill cold waters of the river. Of hopping the fence and dodging cow pies in a mad rush to the water — and not to catch the bull's attention. I had brought friends to vacation with me here in my youth, and those memories lingered around the place with an almost empty solace."
+   "text": "I remembered skinny-dipping in the chill cold waters of the river. Of hopping the fence and dodging cow pies in a mad rush to the water — and not to catch the bull's attention."
   },
   {
    "t": "narrate",
-   "text": "[shot:establish]I was a true teenager. Halfway between innocence and aged. The world had wizened me beyond my years. My family always a wonderful blessing to have as moral poles in my life. My parents were smart, if not brilliant, in ways I'd never understand. Both so very warm, and wise, and open to my development as a human being — and my sister's as well."
+   "text": "I had brought friends to vacation with me here in my youth, and those memories lingered around the place with an almost empty solace."
+  },
+  {
+   "t": "narrate",
+   "text": "[shot:establish]I was a true teenager. Halfway between innocence and aged. The world had wizened me beyond my years. My family always a wonderful blessing to have as moral poles in my life."
+  },
+  {
+   "t": "narrate",
+   "text": "My parents were smart, if not brilliant, in ways I'd never understand. Both so very warm, and wise, and open to my development as a human being — and my sister's as well."
   },
   {
    "t": "narrate",
@@ -113,11 +137,19 @@
   },
   {
    "t": "narrate",
-   "text": "I had routinely generalized that the people of Small Wood were nothing if not unaccepting and distrusting of outsiders. Which turned out to be not far from the truth. That element is always going to be there, as it is human nature. Some towns scream to be seen by the greater cast of the public's eye. Others retreat — and you have to wonder why."
+   "text": "I had routinely generalized that the people of Small Wood were nothing if not unaccepting and distrusting of outsiders. Which turned out to be not far from the truth."
   },
   {
    "t": "narrate",
-   "text": "Nothing against small towns. But with so few people, the degrees of personality are so sharply honed, and individual lifetimes so distinct, that it becomes its own parallel reality. For me, the fear of the small town was nestled firmly in my reading. H.P. Lovecraft. Stephen King. Edgar Allan Poe — all finely honed the small-town paranoia in me. My literary, thematic, cultural bias."
+   "text": "That element is always going to be there, as it is human nature. Some towns scream to be seen by the greater cast of the public's eye. Others retreat — and you have to wonder why."
+  },
+  {
+   "t": "narrate",
+   "text": "Nothing against small towns. But with so few people, the degrees of personality are so sharply honed, and individual lifetimes so distinct, that it becomes its own parallel reality."
+  },
+  {
+   "t": "narrate",
+   "text": "For me, the fear of the small town was nestled firmly in my reading. H.P. Lovecraft. Stephen King. Edgar Allan Poe — all finely honed the small-town paranoia in me. My literary, thematic, cultural bias."
   },
   {
    "t": "narrate",
@@ -151,7 +183,11 @@
   },
   {
    "t": "narrate",
-   "text": "[shot:establish~]The first time I saw the crumpled barn, I thought it part of the hill. Foliage consuming much of the exterior — more negative space than positive. I pushed my way in and found remnants in corners, hidden in shadows. The sunlight poking through, bleached, crumbled the flesh in places."
+   "text": "[shot:establish~]The first time I saw the crumpled barn, I thought it part of the hill. Foliage consuming much of the exterior — more negative space than positive. I pushed my way in and found remnants in corners, hidden in shadows."
+  },
+  {
+   "t": "narrate",
+   "text": "The sunlight poking through, bleached, crumbled the flesh in places."
   },
   {
    "t": "bg",
@@ -159,7 +195,11 @@
   },
   {
    "t": "narrate",
-   "text": "A cabinet of sorts held a broken marionette, sagging at the hip. At one time it danced a vaudevillian stage. But the glass fourth wall was broken. The buttons and levers that controlled the nickelodeon automaton still worked — herking and jerking the sneering puppet performer this way and that."
+   "text": "A cabinet of sorts held a broken marionette, sagging at the hip. At one time it danced a vaudevillian stage. But the glass fourth wall was broken."
+  },
+  {
+   "t": "narrate",
+   "text": "The buttons and levers that controlled the nickelodeon automaton still worked — herking and jerking the sneering puppet performer this way and that."
   },
   {
    "t": "narrate",
@@ -175,7 +215,11 @@
   },
   {
    "t": "narrate",
-   "text": "A beautiful woman sat on a rock, naked from the waist up. Her dark hair covered just enough of her chest, falling down below her waist. The rest of her figure was the product of an artist's imagination — a long bluefish tail that hugged the rock, heavy surf crashed up behind her."
+   "text": "A beautiful woman sat on a rock, naked from the waist up. Her dark hair covered just enough of her chest, falling down below her waist."
+  },
+  {
+   "t": "narrate",
+   "text": "The rest of her figure was the product of an artist's imagination — a long bluefish tail that hugged the rock, heavy surf crashed up behind her."
   },
   {
    "t": "narrate",

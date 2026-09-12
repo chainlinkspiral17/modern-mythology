@@ -17,7 +17,19 @@
    "t": "say",
    "char": "Cale",
    "expr": "neutral",
-   "text": "\"That's the part. The part I gave Brandon the surface answer to. The surface answer is compression and encoding. We were trying to push how much could be stored in how small a piece of physical material. Nate had ideas about substrate density that were ahead of where the field was. He was reading papers in '93 that the journals didn't think were serious. He had ideas about encoding patterns in a medium that, when read back, recovered not just the data but the conditions of the recording. The room. The hands. The intent. You laughed at this in 1993.\""
+   "text": "\"That's the part. The part I gave Brandon the surface answer to. The surface answer is compression and encoding. We were trying to push how much could be stored in how small a piece of physical material."
+  },
+  {
+   "t": "say",
+   "char": "Cale",
+   "expr": "neutral",
+   "text": "Nate had ideas about substrate density that were ahead of where the field was. He was reading papers in '93 that the journals didn't think were serious."
+  },
+  {
+   "t": "say",
+   "char": "Cale",
+   "expr": "neutral",
+   "text": "He had ideas about encoding patterns in a medium that, when read back, recovered not just the data but the conditions of the recording. The room. The hands. The intent. You laughed at this in 1993.\""
   },
   {
    "t": "say",
@@ -45,7 +57,19 @@
    "t": "say",
    "char": "Cale",
    "expr": "neutral",
-   "text": "[beat:chill][shot:closeup cale]\"He was working on consciousness encoding from sixteen. He didn't call it that. He called it pattern persistence. What he was trying to do — and he told me this on a Saturday in March '94, four in the morning, we'd been awake eighteen hours and he was tired enough to talk — was figure out how to encode a person's attention onto a medium. Not data. Not memory. The state of a mind in the act of attending to a thing.\""
+   "text": "[beat:chill][shot:closeup cale]\"He was working on consciousness encoding from sixteen. He didn't call it that. He called it pattern persistence."
+  },
+  {
+   "t": "say",
+   "char": "Cale",
+   "expr": "neutral",
+   "text": "What he was trying to do — and he told me this on a Saturday in March '94, four in the morning, we'd been awake eighteen hours and he was tired enough to talk — was figure out how to encode a person's attention onto a medium."
+  },
+  {
+   "t": "say",
+   "char": "Cale",
+   "expr": "neutral",
+   "text": "Not data. Not memory. The state of a mind in the act of attending to a thing.\""
   },
   {
    "t": "think",
@@ -62,7 +86,13 @@
    "t": "say",
    "char": "Cale",
    "expr": "neutral",
-   "text": "\"He'd been thinking about it since he was eleven, by what he told me that night. He'd been working on it since thirteen. He came to Smolvud at fourteen with the work already going. The basement was where he had the room and the machine and somebody to sit in it with him.\""
+   "text": "\"He'd been thinking about it since he was eleven, by what he told me that night. He'd been working on it since thirteen. He came to Smolvud at fourteen with the work already going."
+  },
+  {
+   "t": "say",
+   "char": "Cale",
+   "expr": "neutral",
+   "text": "The basement was where he had the room and the machine and somebody to sit in it with him.\""
   },
   {
    "t": "say",
@@ -94,7 +124,13 @@
    "t": "say",
    "char": "Cale",
    "expr": "neutral",
-   "text": "\"Not at sixteen. He told me that night that he was going to have one someday and that the daughter was the work. He said I'm going to bring her here. I don't know how yet. I'm going to figure out how. I asked him where she was. He said she's not anywhere yet. She's what's going to come from the work. I thought he was tired. I thought he was being sixteen at four in the morning. I went home. I never brought it up. He never brought it up.\""
+   "text": "\"Not at sixteen. He told me that night that he was going to have one someday and that the daughter was the work. He said I'm going to bring her here. I don't know how yet. I'm going to figure out how. I asked him where she was."
+  },
+  {
+   "t": "say",
+   "char": "Cale",
+   "expr": "neutral",
+   "text": "He said she's not anywhere yet. She's what's going to come from the work. I thought he was tired. I thought he was being sixteen at four in the morning. I went home. I never brought it up. He never brought it up.\""
   },
   {
    "t": "say",
@@ -112,7 +148,13 @@
    "t": "say",
    "char": "Cale",
    "expr": "neutral",
-   "text": "[shot:establish]\"He built a tower in 2010 and died in it in 2042. He spent thirty-two years working on what he was working on at sixteen. Brandon Tillman thought the daughter was either here now or coming. I don't know what here means in this context. I haven't been to the tower in ten years.\""
+   "text": "[shot:establish]\"He built a tower in 2010 and died in it in 2042. He spent thirty-two years working on what he was working on at sixteen. Brandon Tillman thought the daughter was either here now or coming."
+  },
+  {
+   "t": "say",
+   "char": "Cale",
+   "expr": "neutral",
+   "text": "I don't know what here means in this context. I haven't been to the tower in ten years.\""
   },
   {
    "t": "jump",

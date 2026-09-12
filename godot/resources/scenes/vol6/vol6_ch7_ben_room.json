@@ -47,7 +47,11 @@
   },
   {
    "t": "narrate",
-   "text": "Gracie — Ben's eleven-year-old sister — is on the patio. Gracie is sketching in a small notebook. Gracie has, since Maya arrived, been pretending to ignore Maya because Gracie has a small early-onset crush on the idea that her older brother's friends are now her friends too, and Gracie does not yet, at eleven, know how to handle that fact except by pretending to ignore it."
+   "text": "Gracie — Ben's eleven-year-old sister — is on the patio. Gracie is sketching in a small notebook."
+  },
+  {
+   "t": "narrate",
+   "text": "Gracie has, since Maya arrived, been pretending to ignore Maya because Gracie has a small early-onset crush on the idea that her older brother's friends are now her friends too, and Gracie does not yet, at eleven, know how to handle that fact except by pretending to ignore it."
   },
   {
    "t": "say",
@@ -230,7 +234,19 @@
   {
    "t": "say",
    "char": "Maya",
-   "text": "[shot:closeup maya~]Ben. I was at my grandmother's last night. We sat at the radio for an hour. She broadcast Morse to my grandfather. She has been doing that since Thursday, since the night you and I were in the truck. She is — she is happier than I have ever seen her. She is also tired in a way I have never seen her tired. I think — I think the issue might be her, Ben. I think holding the vigil has been costing her, and now that I am here she is letting herself feel the cost.",
+   "text": "[shot:closeup maya~]Ben. I was at my grandmother's last night. We sat at the radio for an hour. She broadcast Morse to my grandfather. She has been doing that since Thursday, since the night you and I were in the truck.",
+   "expr": "thinking"
+  },
+  {
+   "t": "say",
+   "char": "Maya",
+   "text": "She is — she is happier than I have ever seen her. She is also tired in a way I have never seen her tired. I think — I think the issue might be her, Ben.",
+   "expr": "thinking"
+  },
+  {
+   "t": "say",
+   "char": "Maya",
+   "text": "I think holding the vigil has been costing her, and now that I am here she is letting herself feel the cost.",
    "expr": "thinking"
   },
   {

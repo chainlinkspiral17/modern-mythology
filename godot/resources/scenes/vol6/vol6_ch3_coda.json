@@ -43,7 +43,11 @@
     },
     {
       "t": "narrate",
-      "text": "[shot:closeup rick]In the back office of Cosmic Comics, Rick — who does not sleep much and does not, on Tuesday nights, sleep at all until midnight — is sitting at the desk with the lamp on and a small folder in front of him. The folder contains the contents of the envelope Maya delivered on Monday."
+      "text": "[shot:closeup rick]In the back office of Cosmic Comics, Rick — who does not sleep much and does not, on Tuesday nights, sleep at all until midnight — is sitting at the desk with the lamp on and a small folder in front of him."
+    },
+    {
+      "t": "narrate",
+      "text": "The folder contains the contents of the envelope Maya delivered on Monday."
     },
     {
       "t": "narrate",
@@ -59,7 +63,11 @@
     },
     {
       "t": "narrate",
-      "text": "On the back of the photograph, in careful handwriting that matches the handwriting in Maya's grandmother's letters, it reads: This is the one. This is my husband. His name was Thomas. He took a picture he was not supposed to take. I am going to find the people who cost us the fifteen years, and they are not going to cost anyone else."
+      "text": "On the back of the photograph, in careful handwriting that matches the handwriting in Maya's grandmother's letters, it reads: This is the one. This is my husband. His name was Thomas. He took a picture he was not supposed to take."
+    },
+    {
+      "t": "narrate",
+      "text": "I am going to find the people who cost us the fifteen years, and they are not going to cost anyone else."
     },
     {
       "t": "narrate",

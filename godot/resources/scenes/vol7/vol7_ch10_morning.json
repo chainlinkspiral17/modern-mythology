@@ -34,15 +34,31 @@
       "t": "show"
     },
     {
-      "text": "[mood:morning_bright]Kai woke at five-forty on the floor of Lena's living room. He had not, in three years, slept on the floor of her apartment. The floor was new because the couch had Finn on it and the bed had Lena and Tem. He had put the braided rag rug from in front of the sink under his hip and a rolled-up sweater under his neck and the wool blanket Lena had pulled from the closet over the rest of him. He had slept five hours.",
+      "text": "[mood:morning_bright]Kai woke at five-forty on the floor of Lena's living room. He had not, in three years, slept on the floor of her apartment. The floor was new because the couch had Finn on it and the bed had Lena and Tem.",
       "t": "narrate"
     },
     {
-      "text": "He lay on his back a minute and looked at the ceiling. The ceiling had three water stains in a configuration Lena had once explained was proof her upstairs neighbor's bathtub leaked at the back-right corner of its drain ring. The stains had been there since 2050. The leak had been fixed in 2051. The stains had not been painted over because Lena had said, the night she told him, that painting them over would be a lie she did not want to live with.",
+      "text": "He had put the braided rag rug from in front of the sink under his hip and a rolled-up sweater under his neck and the wool blanket Lena had pulled from the closet over the rest of him. He had slept five hours.",
       "t": "narrate"
     },
     {
-      "text": "He could hear, from the bedroom, Lena's breath and Tem's. The two of them had gone to bed at maybe eleven-thirty. Lena had been at the bedroom door for a beat looking back at the three of them and had said: all right, we're going to sleep, knock if you need us. The we in we're going to sleep had been the we of a couple four days old, and Kai had heard it and not commented.",
+      "text": "He lay on his back a minute and looked at the ceiling. The ceiling had three water stains in a configuration Lena had once explained was proof her upstairs neighbor's bathtub leaked at the back-right corner of its drain ring.",
+      "t": "narrate"
+    },
+    {
+      "text": "The stains had been there since 2050. The leak had been fixed in 2051. The stains had not been painted over because Lena had said, the night she told him, that painting them over would be a lie she did not want to live with.",
+      "t": "narrate"
+    },
+    {
+      "text": "He could hear, from the bedroom, Lena's breath and Tem's. The two of them had gone to bed at maybe eleven-thirty.",
+      "t": "narrate"
+    },
+    {
+      "text": "Lena had been at the bedroom door for a beat looking back at the three of them and had said: all right, we're going to sleep, knock if you need us.",
+      "t": "narrate"
+    },
+    {
+      "text": "The we in we're going to sleep had been the we of a couple four days old, and Kai had heard it and not commented.",
       "t": "narrate"
     },
     {
@@ -50,7 +66,15 @@
       "t": "narrate"
     },
     {
-      "text": "[shot:insert mural]The patch on the Starfish Nebula mural was not visible from his position on the floor. At one in the morning before he had lain down he had gone to the window with a glass of water and looked. The fourth patch had grown overnight. The octopus had been gone since Monday by Lena's account. The patch now was past where the octopus had been, into the section where Lena had painted a triangular kite of starfish over what was meant to be a tide pool. The kite was, in the orange of the laundromat's safety light, half-eaten.",
+      "text": "[shot:insert mural]The patch on the Starfish Nebula mural was not visible from his position on the floor. At one in the morning before he had lain down he had gone to the window with a glass of water and looked. The fourth patch had grown overnight.",
+      "t": "narrate"
+    },
+    {
+      "text": "The octopus had been gone since Monday by Lena's account. The patch now was past where the octopus had been, into the section where Lena had painted a triangular kite of starfish over what was meant to be a tide pool.",
+      "t": "narrate"
+    },
+    {
+      "text": "The kite was, in the orange of the laundromat's safety light, half-eaten.",
       "t": "narrate"
     },
     {
@@ -58,7 +82,11 @@
       "t": "narrate"
     },
     {
-      "text": "He sat up. The light at five-forty through the kitchen window made the apartment look like the apartment of a person he did not know. He stood up. He folded the rug back to its place in front of the sink. He folded the blanket. He set the sweater on the arm of the couch beside Finn.",
+      "text": "He sat up. The light at five-forty through the kitchen window made the apartment look like the apartment of a person he did not know. He stood up. He folded the rug back to its place in front of the sink. He folded the blanket.",
+      "t": "narrate"
+    },
+    {
+      "text": "He set the sweater on the arm of the couch beside Finn.",
       "t": "narrate"
     },
     {
@@ -136,7 +164,19 @@
       "t": "narrate"
     },
     {
-      "text": "Kai went to the kitchen. He put the kettle on. The kettle was the steel one Lena had bought at Margit's two summers ago for nine tokens. She had told him once that it was the kettle her grandmother had used in Salem when Lena was a child. He pulled the cone filter down from the shelf above the stove and the bag of the dark French from the cabinet. He measured the beans. He ground them in the hand grinder Lena kept on the counter — a thing he had never used and had to figure out by holding it briefly before he started — and his hands at the grinder were, this morning, steady in a way they had not been on Tuesday at the bench.",
+      "text": "Kai went to the kitchen. He put the kettle on. The kettle was the steel one Lena had bought at Margit's two summers ago for nine tokens.",
+      "t": "narrate"
+    },
+    {
+      "text": "She had told him once that it was the kettle her grandmother had used in Salem when Lena was a child. He pulled the cone filter down from the shelf above the stove and the bag of the dark French from the cabinet.",
+      "t": "narrate"
+    },
+    {
+      "text": "He measured the beans.",
+      "t": "narrate"
+    },
+    {
+      "text": "He ground them in the hand grinder Lena kept on the counter — a thing he had never used and had to figure out by holding it briefly before he started — and his hands at the grinder were, this morning, steady in a way they had not been on Tuesday at the bench.",
       "t": "narrate"
     },
     {
@@ -170,11 +210,19 @@
       "t": "say"
     },
     {
-      "text": "[shot:insert bread]Finn opened the fridge. There were four eggs in the carton on the second shelf and the small block of cheddar Lena bought from the cheese-factory truck on Wednesdays. He took the eggs. He took the cheese. He took the heel of a loaf that had to be Hans's bread by the way it was wrapped. He put the cast iron on the stove. He turned the burner. The kettle came up at five fifty-eight.",
+      "text": "[shot:insert bread]Finn opened the fridge. There were four eggs in the carton on the second shelf and the small block of cheddar Lena bought from the cheese-factory truck on Wednesdays. He took the eggs. He took the cheese.",
       "t": "narrate"
     },
     {
-      "text": "Kai poured. He brought one cup to the bedroom door and stood there a beat without knocking and decided against. He set the cup on the side table outside the bedroom where Lena kept the lamp she did not use. The lamp had not been used since he had been coming over. He set the cup beside the lamp and went back to the kitchen.",
+      "text": "He took the heel of a loaf that had to be Hans's bread by the way it was wrapped. He put the cast iron on the stove. He turned the burner. The kettle came up at five fifty-eight.",
+      "t": "narrate"
+    },
+    {
+      "text": "Kai poured. He brought one cup to the bedroom door and stood there a beat without knocking and decided against. He set the cup on the side table outside the bedroom where Lena kept the lamp she did not use.",
+      "t": "narrate"
+    },
+    {
+      "text": "The lamp had not been used since he had been coming over. He set the cup beside the lamp and went back to the kitchen.",
       "t": "narrate"
     },
     {
@@ -248,7 +296,15 @@
       "t": "say"
     },
     {
-      "text": "[shot:insert bread]The three of them did not, for a while, talk. The rain on the roof had thinned since two-something in the morning. The kitchen window was the same gray-blue as the ceiling stains. Kai could hear the early traffic on Hemlock. Finn served the eggs to the small plates Lena pulled down for him. He cut three pieces of bread from the heel and put them on the plates. He grated some of the cheddar over the eggs. He brought the plates to the table by the window.",
+      "text": "[shot:insert bread]The three of them did not, for a while, talk. The rain on the roof had thinned since two-something in the morning. The kitchen window was the same gray-blue as the ceiling stains. Kai could hear the early traffic on Hemlock.",
+      "t": "narrate"
+    },
+    {
+      "text": "Finn served the eggs to the small plates Lena pulled down for him. He cut three pieces of bread from the heel and put them on the plates. He grated some of the cheddar over the eggs.",
+      "t": "narrate"
+    },
+    {
+      "text": "He brought the plates to the table by the window.",
       "t": "narrate"
     },
     {
@@ -273,7 +329,13 @@
     },
     {
       "char": "lena",
-      "text": "Forty-three this time. From the moment I woke up until I sat up. It was just there. I was not writing it down, but the count was — the count was just there in my head, the way a song is in your head when you wake up and you cannot make it stop. Forty-three by the time my feet were on the floor.",
+      "text": "Forty-three this time. From the moment I woke up until I sat up. It was just there.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "lena",
+      "text": "I was not writing it down, but the count was — the count was just there in my head, the way a song is in your head when you wake up and you cannot make it stop. Forty-three by the time my feet were on the floor.",
       "expr": "serious",
       "t": "say"
     },
@@ -301,7 +363,13 @@
     },
     {
       "char": "lena",
-      "text": "Not since the drive up. I have not written it once in the apartment in six days. I have been — I have been letting myself not. The count came anyway. The count was the count of what I would have been writing if I had been doing the thing the substrate wanted me to do.",
+      "text": "Not since the drive up. I have not written it once in the apartment in six days. I have been — I have been letting myself not. The count came anyway.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "lena",
+      "text": "The count was the count of what I would have been writing if I had been doing the thing the substrate wanted me to do.",
       "expr": "serious",
       "t": "say"
     },
@@ -363,7 +431,19 @@
     },
     {
       "char": "finn",
-      "text": "The crow was in a room I have not been in. The room was — it was the kind of room a person has been in but a person has not been in for a long time. The kind of room where the dust on the windowsill is older than the wallpaper. The crow was on a chair in the middle of the room and the crow was waiting. I came into the room. The crow looked at me. The crow said — the crow said a thing I cannot remember now. The thing was a word. The word was not English. I do not — I do not speak the word. The crow said the word twice. Then the dream was over.",
+      "text": "The crow was in a room I have not been in. The room was — it was the kind of room a person has been in but a person has not been in for a long time. The kind of room where the dust on the windowsill is older than the wallpaper.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "finn",
+      "text": "The crow was on a chair in the middle of the room and the crow was waiting. I came into the room. The crow looked at me. The crow said — the crow said a thing I cannot remember now. The thing was a word. The word was not English.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "finn",
+      "text": "I do not — I do not speak the word. The crow said the word twice. Then the dream was over.",
       "expr": "serious",
       "t": "say"
     },
@@ -387,7 +467,13 @@
     },
     {
       "char": "finn",
-      "text": "I am going to drive to Cape Perpetua tomorrow. The crow's been on the dashboard since I got here. I'll bring the crow. I'll bring the wood. I'll walk the headland trail. If the crow says the word again, the crow says it. If the crow does not say it, the crow does not. I am going to let the crow tell me what comes next.",
+      "text": "I am going to drive to Cape Perpetua tomorrow. The crow's been on the dashboard since I got here. I'll bring the crow. I'll bring the wood. I'll walk the headland trail. If the crow says the word again, the crow says it.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "finn",
+      "text": "If the crow does not say it, the crow does not. I am going to let the crow tell me what comes next.",
       "expr": "serious",
       "t": "say"
     },
@@ -437,7 +523,19 @@
     },
     {
       "char": "kai",
-      "text": "One of the sticks Tem brought to the cabin. I tried last Thursday and gave up at twenty minutes because my hands were not doing what I wanted them to. I want to try again. The ferret in the dream is — the ferret is louder this week than last. The basement is louder. The talking is louder. I keep — I keep going to the dream and I keep not getting where the dream is taking me. I want to take the dream as far as it goes. The stick is — the stick is the way.",
+      "text": "One of the sticks Tem brought to the cabin. I tried last Thursday and gave up at twenty minutes because my hands were not doing what I wanted them to. I want to try again.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "kai",
+      "text": "The ferret in the dream is — the ferret is louder this week than last. The basement is louder. The talking is louder. I keep — I keep going to the dream and I keep not getting where the dream is taking me.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "kai",
+      "text": "I want to take the dream as far as it goes. The stick is — the stick is the way.",
       "expr": "neutral",
       "t": "say"
     },
@@ -473,7 +571,13 @@
     },
     {
       "char": "kai",
-      "text": "I am not sure. I am — I am not. I have been thinking about it since Saturday. The ferret is not stopping. The basement is not stopping. The talking is not stopping. The substrate is doing what the substrate is doing whether I play the stick or not. The stick is the only thing I have not tried. I want to try.",
+      "text": "I am not sure. I am — I am not. I have been thinking about it since Saturday. The ferret is not stopping. The basement is not stopping. The talking is not stopping.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "kai",
+      "text": "The substrate is doing what the substrate is doing whether I play the stick or not. The stick is the only thing I have not tried. I want to try.",
       "expr": "neutral",
       "t": "say"
     },
@@ -574,7 +678,15 @@
       "t": "hide"
     },
     {
-      "text": "[shot:establish]Tem came out at six-twenty-two. She was in the wool sweater she had been in yesterday and the jeans and the wool socks. The blue of her hair had faded a little more since Tuesday — the gray that had been at the edges Sunday was now most of the way through. The leather thong was holding the dreads back. She came into the kitchen and stopped at the doorway and looked at the three of them at the table.",
+      "text": "[shot:establish]Tem came out at six-twenty-two. She was in the wool sweater she had been in yesterday and the jeans and the wool socks.",
+      "t": "narrate"
+    },
+    {
+      "text": "The blue of her hair had faded a little more since Tuesday — the gray that had been at the edges Sunday was now most of the way through. The leather thong was holding the dreads back.",
+      "t": "narrate"
+    },
+    {
+      "text": "She came into the kitchen and stopped at the doorway and looked at the three of them at the table.",
       "t": "narrate"
     },
     {
@@ -705,7 +817,13 @@
     },
     {
       "char": "lena",
-      "text": "Tem. I'm — I am scared for him. I am also — I am also at the place where what I think doesn't matter. The ferret is not stopping. The substrate is not stopping. Kai is going to do what Kai is going to do. I am all right with it because there is not a version of this morning where I am not.",
+      "text": "Tem. I'm — I am scared for him. I am also — I am also at the place where what I think doesn't matter. The ferret is not stopping. The substrate is not stopping. Kai is going to do what Kai is going to do.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "lena",
+      "text": "I am all right with it because there is not a version of this morning where I am not.",
       "expr": "neutral",
       "t": "say"
     },
@@ -791,7 +909,37 @@
     },
     {
       "char": "tem",
-      "text": "Kai. I am not going to be able to tell you. I have played a number of sticks for a number of years. They are different every time. The sticks I have played twice have been different the second time. The sticks I have played five times have been different the fifth time than the second. The stick I have been playing for the past three weeks — Estuary 7 — has become a thing I do not have words for, partly because what is happening in it has been about me, and the playing of a stick is one of the more private things a person can do, and partly because the substrate in it has been doing what it has been doing since the second week of July. I am not the person to tell you what the stick is going to be like. I am going to tell you what I can. I am going to be in the room when you come out. I am going to ask you what you saw. I am going to listen. I am going to not, when you tell me what you saw, tell you what I have seen. We are going to do this one stick at a time. We are going to do it as carefully as I know how to do it.",
+      "text": "Kai. I am not going to be able to tell you. I have played a number of sticks for a number of years. They are different every time. The sticks I have played twice have been different the second time.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "The sticks I have played five times have been different the fifth time than the second.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "The stick I have been playing for the past three weeks — Estuary 7 — has become a thing I do not have words for, partly because what is happening in it has been about me,",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "and the playing of a stick is one of the more private things a person can do, and partly because the substrate in it has been doing what it has been doing since the second week of July.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "I am not the person to tell you what the stick is going to be like. I am going to tell you what I can. I am going to be in the room when you come out. I am going to ask you what you saw. I am going to listen.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "I am going to not, when you tell me what you saw, tell you what I have seen. We are going to do this one stick at a time. We are going to do it as carefully as I know how to do it.",
       "expr": "serious",
       "t": "say"
     },
@@ -815,13 +963,61 @@
     },
     {
       "char": "tem",
-      "text": "[beat:chill][shot:closeup tem~]You should know that the sticks are not, in the place we are about to put you, safe. People who play sticks the way the people who really play them play them have come out of sticks — have come out of experiences — having lost time. Having lost weight. Having had relationships they were in dissolve over the next six months because the people they came out as were not, by every measure that mattered to the people who loved them, the same people who went in. The sticks are popular because the experiences in them are extraordinary. The experiences are extraordinary because the substrate gives them. The substrate [wave amp=6 freq=2]gives them by taking[/wave]. The taking is what we are walking you into.",
+      "text": "[beat:chill][shot:closeup tem~]You should know that the sticks are not, in the place we are about to put you, safe.",
       "expr": "serious",
       "t": "say"
     },
     {
       "char": "tem",
-      "text": "I would not, if you were not already in the substrate up to your collar by virtue of the ferret in the dream, recommend the playing. I am recommending the playing because the substrate has decided you are in this whether or not you sit down with the stick. The sitting down with the stick is — the sitting down is the version of being-in-this where you have a chair and a reader and a person in the room with you. I am the person in the room with you. The chair is the chair at the cabin in front of the wood stove. The reader is the reader my grandfather kept at the cabin from 2042 until I inherited it in 2046. The reader is a good reader. The reader is not, by anything I know, the source of the trouble. The trouble is the substrate. The reader is just the door.",
+      "text": "People who play sticks the way the people who really play them play them have come out of sticks — have come out of experiences — having lost time. Having lost weight.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "Having had relationships they were in dissolve over the next six months because the people they came out as were not, by every measure that mattered to the people who loved them, the same people who went in.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "The sticks are popular because the experiences in them are extraordinary. The experiences are extraordinary because the substrate gives them. The substrate [wave amp=6 freq=2]gives them by taking[/wave].",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "The taking is what we are walking you into.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "I would not, if you were not already in the substrate up to your collar by virtue of the ferret in the dream, recommend the playing.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "I am recommending the playing because the substrate has decided you are in this whether or not you sit down with the stick.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "The sitting down with the stick is — the sitting down is the version of being-in-this where you have a chair and a reader and a person in the room with you. I am the person in the room with you.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "The chair is the chair at the cabin in front of the wood stove. The reader is the reader my grandfather kept at the cabin from 2042 until I inherited it in 2046. The reader is a good reader.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "The reader is not, by anything I know, the source of the trouble. The trouble is the substrate. The reader is just the door.",
       "expr": "serious",
       "t": "say"
     },
@@ -857,7 +1053,13 @@
     },
     {
       "char": "tem",
-      "text": "I have not, in those two years, recommended it. I have been waiting for the moment you needed it. The moment is this Wednesday morning. I am — I am sorry it has been the moment for some time and I did not tell you. I did not know how to tell you. The not-knowing-how was my failure, and I am holding it, and I am going to tell you everything I should have told you over the past two years on the drive up. We have an hour. I will use the hour.",
+      "text": "I have not, in those two years, recommended it. I have been waiting for the moment you needed it. The moment is this Wednesday morning. I am — I am sorry it has been the moment for some time and I did not tell you.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "I did not know how to tell you. The not-knowing-how was my failure, and I am holding it, and I am going to tell you everything I should have told you over the past two years on the drive up. We have an hour. I will use the hour.",
       "expr": "serious",
       "t": "say"
     },
@@ -868,7 +1070,11 @@
       "t": "say"
     },
     {
-      "text": "[shot:establish]Tem went into the bathroom at six-forty. The shower came on. The pipes did the low knocking that Lena had told him once was something to do with the water-pressure tank in the building's basement and was, by the landlord's calculation, not worth fixing because the building was a hundred and four years old and there were eight other plumbing problems ahead of it on the list.",
+      "text": "[shot:establish]Tem went into the bathroom at six-forty. The shower came on. The pipes did the low knocking that Lena had told him once was something to do with the water-pressure tank in the building's basement and was,",
+      "t": "narrate"
+    },
+    {
+      "text": "by the landlord's calculation, not worth fixing because the building was a hundred and four years old and there were eight other plumbing problems ahead of it on the list.",
       "t": "narrate"
     },
     {
@@ -907,7 +1113,19 @@
     },
     {
       "char": "lena",
-      "text": "I know. The Grind. Soren is sick anyway. Wren comes in at six-eleven on Fridays and it's Wednesday. The morning rush is the cortado man and the woman with the syrup question and the brother-and-sister pair to the bus, and they can have their day at the Charging Station for once. I'll text Soren that I'm sick. I'll text Petra. I want to come up with you.",
+      "text": "I know. The Grind. Soren is sick anyway. Wren comes in at six-eleven on Fridays and it's Wednesday.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "lena",
+      "text": "The morning rush is the cortado man and the woman with the syrup question and the brother-and-sister pair to the bus, and they can have their day at the Charging Station for once. I'll text Soren that I'm sick. I'll text Petra.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "lena",
+      "text": "I want to come up with you.",
       "expr": "neutral",
       "t": "say"
     },

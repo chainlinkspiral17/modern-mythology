@@ -33,7 +33,11 @@
       "t": "show"
     },
     {
-      "text": "[trip:1.2][mood:dawn_warm]The seven of them got out. The alley at six forty-three on the first of September of 2052 was dim — rain on the asphalt and the back-door light Petra had turned on for the people coming. The face on the wall at the far end of the alley was — by what Tem could see at the alley's length — at rest. The closed eyes were closed.",
+      "text": "[trip:1.2][mood:dawn_warm]The seven of them got out. The alley at six forty-three on the first of September of 2052 was dim — rain on the asphalt and the back-door light Petra had turned on for the people coming.",
+      "t": "narrate"
+    },
+    {
+      "text": "The face on the wall at the far end of the alley was — by what Tem could see at the alley's length — at rest. The closed eyes were closed.",
       "t": "narrate"
     },
     {
@@ -57,7 +61,11 @@
       "t": "say"
     },
     {
-      "text": "Tem opened the back of the wagon. She lifted out the wooden box with the four bowls. She brought the box to the milk crate. She knelt. She took the four bowls out one at a time and arranged them on the crate in the order they had been at the bakery — Roy's at the right end, then Marit's, then the substrate-bowl, then Marina's grandfather's at the left.",
+      "text": "Tem opened the back of the wagon. She lifted out the wooden box with the four bowls. She brought the box to the milk crate. She knelt.",
+      "t": "narrate"
+    },
+    {
+      "text": "She took the four bowls out one at a time and arranged them on the crate in the order they had been at the bakery — Roy's at the right end, then Marit's, then the substrate-bowl, then Marina's grandfather's at the left.",
       "t": "narrate"
     },
     {
@@ -68,37 +76,45 @@
       "opts": [
         {
           "text": "look at",
-          "goto": 13,
+          "goto": 15,
           "flag": "ch20_bowls_looked",
           "hide_if_flag": "ch20_bowls_looked"
         },
         {
           "text": "touch Roy's",
-          "goto": 15,
+          "goto": 18,
           "flag": "ch20_bowls_touched",
           "hide_if_flag": "ch20_bowls_touched"
         },
         {
           "text": "step back",
-          "goto": 17
+          "goto": 21
         }
       ]
     },
     {
       "t": "narrate",
-      "text": "Four, in the order of the bakery: Roy's at the right end, the walnut one, its rim worn to a shine where his thumb had been for forty years; Marit's with the crow; the substrate-bowl with the young woman past the doorway; Marina's grandfather's with the man whose eyes were above the rim. In the back-door light they had the color of things that had been carried a long way to be set down here."
-    },
-    {
-      "t": "jump",
-      "goto": 12
+      "text": "Four, in the order of the bakery: Roy's at the right end, the walnut one, its rim worn to a shine where his thumb had been for forty years; Marit's with the crow; the substrate-bowl with the young woman past the doorway; Marina's grandfather's with the man whose eyes were above the rim."
     },
     {
       "t": "narrate",
-      "text": "[shot:insert hand]She put a hand flat over Roy's bowl, not on it — the way Roy had held his hand over it the day he had given it — and counted to four, and took the hand back. The rain on the asphalt did not change. Something behind her, at the wagon, had stopped moving for the four."
+      "text": "In the back-door light they had the color of things that had been carried a long way to be set down here."
     },
     {
       "t": "jump",
-      "goto": 12
+      "goto": 14
+    },
+    {
+      "t": "narrate",
+      "text": "[shot:insert hand]She put a hand flat over Roy's bowl, not on it — the way Roy had held his hand over it the day he had given it — and counted to four, and took the hand back. The rain on the asphalt did not change."
+    },
+    {
+      "t": "narrate",
+      "text": "Something behind her, at the wagon, had stopped moving for the four."
+    },
+    {
+      "t": "jump",
+      "goto": 14
     },
     {
       "char": "finn",
@@ -163,7 +179,11 @@
       "t": "narrate"
     },
     {
-      "text": "Jameson came at seven-oh-three with Hannes. Wren came at seven-oh-five with her mother — a woman Tem had seen at the Daily Grind perhaps three times in her life, who came up the alley behind Wren with her hand on Wren's shoulder and stopped at the wall and looked at the face on the wall and did not say anything.",
+      "text": "Jameson came at seven-oh-three with Hannes.",
+      "t": "narrate"
+    },
+    {
+      "text": "Wren came at seven-oh-five with her mother — a woman Tem had seen at the Daily Grind perhaps three times in her life, who came up the alley behind Wren with her hand on Wren's shoulder and stopped at the wall and looked at the face on the wall and did not say anything.",
       "t": "narrate"
     },
     {
@@ -171,7 +191,11 @@
       "t": "narrate"
     },
     {
-      "text": "Per went up the alley to meet his mother. He took her arm — not her hand, Marit didn't like being led — and let his arm be there beside hers in case she wanted it. They walked down the alley together. Marit walked carefully on the wet asphalt. She watched her feet for the first stretch and then, when she was close enough to the wall to see the face, she looked up.",
+      "text": "Per went up the alley to meet his mother. He took her arm — not her hand, Marit didn't like being led — and let his arm be there beside hers in case she wanted it. They walked down the alley together.",
+      "t": "narrate"
+    },
+    {
+      "text": "Marit walked carefully on the wet asphalt. She watched her feet for the first stretch and then, when she was close enough to the wall to see the face, she looked up.",
       "t": "narrate"
     },
     {
@@ -217,7 +241,15 @@
       "t": "say"
     },
     {
-      "text": "[shot:insert hand]Marit walked the rest of the way to the milk crate. Per a step behind her. She stopped at the crate. She looked down at the bowls. She looked at her own bowl — the one Olaf had carved her in 1974, the one she had been keeping at her bedside at Hans's since Wednesday. She bent down. She picked up the bowl in both hands. She straightened slowly, the way she straightened anything she had to straighten with a bowl in her hands.",
+      "text": "[shot:insert hand]Marit walked the rest of the way to the milk crate. Per a step behind her. She stopped at the crate. She looked down at the bowls.",
+      "t": "narrate"
+    },
+    {
+      "text": "She looked at her own bowl — the one Olaf had carved her in 1974, the one she had been keeping at her bedside at Hans's since Wednesday. She bent down. She picked up the bowl in both hands.",
+      "t": "narrate"
+    },
+    {
+      "text": "She straightened slowly, the way she straightened anything she had to straighten with a bowl in her hands.",
       "t": "narrate"
     },
     {
@@ -272,7 +304,11 @@
       "t": "narrate"
     },
     {
-      "text": "People she knew by name. People she knew by face. People she did not know. The mechanic from old-Waldport. The woman who ran the bakery on the cheese-factory-town's main street. Three teenagers from the consolidated middle school. Two of the foundation's drone-tenders in wax canvas. Soren — who had closed the Daily Grind at seven and walked over. Bernie Lund from the fish-co-op. Frog Petersen — the older town Frog, by Tem's count of Frogs.",
+      "text": "People she knew by name. People she knew by face. People she did not know. The mechanic from old-Waldport. The woman who ran the bakery on the cheese-factory-town's main street. Three teenagers from the consolidated middle school.",
+      "t": "narrate"
+    },
+    {
+      "text": "Two of the foundation's drone-tenders in wax canvas. Soren — who had closed the Daily Grind at seven and walked over. Bernie Lund from the fish-co-op. Frog Petersen — the older town Frog, by Tem's count of Frogs.",
       "t": "narrate"
     },
     {
@@ -470,7 +506,15 @@
       "t": "say"
     },
     {
-      "text": "[shot:establish]The crowd in the alley did not, for a long count, leave. Petra brought out the coffee thermos and the four mugs. Greta went up to Hans's van and brought back a basket of brioche Hans had baked yesterday and a basket of the morning's rye. The crowd ate. The crowd drank coffee in the alley behind the bookstore standing at the face on the wall with the four bowls and the cedar bell-piece and Brandon's notebook at the milk crate.",
+      "text": "[shot:establish]The crowd in the alley did not, for a long count, leave. Petra brought out the coffee thermos and the four mugs.",
+      "t": "narrate"
+    },
+    {
+      "text": "Greta went up to Hans's van and brought back a basket of brioche Hans had baked yesterday and a basket of the morning's rye. The crowd ate.",
+      "t": "narrate"
+    },
+    {
+      "text": "The crowd drank coffee in the alley behind the bookstore standing at the face on the wall with the four bowls and the cedar bell-piece and Brandon's notebook at the milk crate.",
       "t": "narrate"
     },
     {
@@ -486,11 +530,19 @@
       "t": "narrate"
     },
     {
-      "text": "She watched Marit at the milk crate with her bowl held in both hands. She watched Lena beside Marit. She watched Roy and Aud at the wall with Aud's hand on Roy's arm again. She watched Cale and Per at the wall — Cale picking at the cuticle of his thumb, Per with his arm around Cale's shoulder. She watched Finn at the wall with the crow on his shoulder.",
+      "text": "She watched Marit at the milk crate with her bowl held in both hands. She watched Lena beside Marit. She watched Roy and Aud at the wall with Aud's hand on Roy's arm again.",
       "t": "narrate"
     },
     {
-      "text": "She watched Kai at the wall with Wren beside him — Kai had said something quietly to Wren and Wren had nodded and the two of them were standing at the wall as if Kai was being the kind of older brother Wren had never had. She watched Marina at the milk crate with her hand on her grandfather's bowl.",
+      "text": "She watched Cale and Per at the wall — Cale picking at the cuticle of his thumb, Per with his arm around Cale's shoulder. She watched Finn at the wall with the crow on his shoulder.",
+      "t": "narrate"
+    },
+    {
+      "text": "She watched Kai at the wall with Wren beside him — Kai had said something quietly to Wren and Wren had nodded and the two of them were standing at the wall as if Kai was being the kind of older brother Wren had never had.",
+      "t": "narrate"
+    },
+    {
+      "text": "She watched Marina at the milk crate with her hand on her grandfather's bowl.",
       "t": "narrate"
     },
     {
@@ -546,7 +598,11 @@
       "t": "narrate"
     },
     {
-      "text": "The cabin and the bakery and the wall and the diner and the Daily Grind and the bookstore and the co-op and the laundromat and the small mill up the river and Cape Perpetua and the ferret-dream-basement and the second pool of Tideline Survey and the basement of Kestrel Mountain and the foundation in Eugene and the print shop in Bern and the headland in Bandon and the cutter base in old-Yaquina and the apartment on Cedar Place and the loft above the kitchen at the cabin and the chair beside the daybed and the cabin's door —",
+      "text": "The cabin and the bakery and the wall and the diner and the Daily Grind and the bookstore and the co-op and the laundromat and the small mill up the river and Cape Perpetua and the ferret-dream-basement and the second pool of Tideline Survey and the basement of Kestrel Mountain",
+      "t": "narrate"
+    },
+    {
+      "text": "and the foundation in Eugene and the print shop in Bern and the headland in Bandon and the cutter base in old-Yaquina and the apartment on Cedar Place and the loft above the kitchen at the cabin and the chair beside the daybed and the cabin's door —",
       "t": "narrate"
     },
     {

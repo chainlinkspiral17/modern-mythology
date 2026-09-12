@@ -15,7 +15,15 @@
   },
   {
    "t": "narrate",
-   "text": "Cale had assumed for thirty years it had been a sixteen-year-old talking weird at three in the morning. Brandon Tillman had not assumed. Brandon had a working theory. He had asked Cale, in 2049, whether Nate had ever talked to him about a daughter, and Cale had told him, and Brandon had sat with it for a long time and said thank you, Cale, and left, and had been back twice in the year before he died and had not asked about the daughter again because he had what he needed."
+   "text": "Cale had assumed for thirty years it had been a sixteen-year-old talking weird at three in the morning. Brandon Tillman had not assumed. Brandon had a working theory."
+  },
+  {
+   "t": "narrate",
+   "text": "He had asked Cale, in 2049, whether Nate had ever talked to him about a daughter, and Cale had told him, and Brandon had sat with it for a long time and said thank you,"
+  },
+  {
+   "t": "narrate",
+   "text": "Cale, and left, and had been back twice in the year before he died and had not asked about the daughter again because he had what he needed."
   },
   {
    "t": "narrate",
@@ -39,7 +47,19 @@
    "t": "say",
    "char": "Finn",
    "expr": "neutral",
-   "text": "\"The crow used to belong to Brandon,\" Finn said. \"Tem said yesterday. The crow used to belong to Brandon. The crow has been bringing me wood for nine months. The wood is from whatever Brandon was investigating. Brandon had a working theory that included a daughter. The wood is — the wood is part of how the daughter is coming. The crow has been bringing me her arrival, piece by piece, and I have been keeping the pieces in a cloth in a duffel bag in the corner of my kitchen.\""
+   "text": "\"The crow used to belong to Brandon,\" Finn said. \"Tem said yesterday. The crow used to belong to Brandon. The crow has been bringing me wood for nine months. The wood is from whatever Brandon was investigating."
+  },
+  {
+   "t": "say",
+   "char": "Finn",
+   "expr": "neutral",
+   "text": "Brandon had a working theory that included a daughter. The wood is — the wood is part of how the daughter is coming."
+  },
+  {
+   "t": "say",
+   "char": "Finn",
+   "expr": "neutral",
+   "text": "The crow has been bringing me her arrival, piece by piece, and I have been keeping the pieces in a cloth in a duffel bag in the corner of my kitchen.\""
   },
   {
    "t": "narrate",
@@ -67,7 +87,13 @@
    "t": "say",
    "char": "Finn",
    "expr": "neutral",
-   "text": "\"No. I don't. I'm putting it together. The crow brings wood. The wood is from whatever Brandon was investigating. Brandon was investigating Nate. Nate was making a daughter. The wood is part of the daughter. Possibly. I don't know in what way. I don't know what the wood is for. But the throughline runs through all of it and the throughline points at her.\""
+   "text": "\"No. I don't. I'm putting it together. The crow brings wood. The wood is from whatever Brandon was investigating. Brandon was investigating Nate. Nate was making a daughter. The wood is part of the daughter. Possibly."
+  },
+  {
+   "t": "say",
+   "char": "Finn",
+   "expr": "neutral",
+   "text": "I don't know in what way. I don't know what the wood is for. But the throughline runs through all of it and the throughline points at her.\""
   },
   {
    "t": "narrate",

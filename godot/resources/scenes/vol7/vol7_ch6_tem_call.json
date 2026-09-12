@@ -47,7 +47,11 @@
   },
   {
    "t": "narrate",
-   "text": "She closed her eyes for a second. She knew Roy from the Daily Grind. He had been on her do not engage list since her first week behind the bar, on Soren's instruction. She had been pulling Roy's hot chocolates twice a week for two and a half years and had managed, in all that time, never to be alone in the shop with him."
+   "text": "She closed her eyes for a second. She knew Roy from the Daily Grind. He had been on her do not engage list since her first week behind the bar, on Soren's instruction."
+  },
+  {
+   "t": "narrate",
+   "text": "She had been pulling Roy's hot chocolates twice a week for two and a half years and had managed, in all that time, never to be alone in the shop with him."
   },
   {
    "t": "say",
@@ -86,15 +90,15 @@
    "opts": [
     {
      "text": "Go home. Sit. Eat.",
-     "goto": 15
+     "goto": 16
     },
     {
      "text": "Walk to ChillWave.",
-     "goto": 15
+     "goto": 16
     },
     {
      "text": "[Stay on the corner a moment longer.]",
-     "goto": 15
+     "goto": 16
     }
    ]
   },

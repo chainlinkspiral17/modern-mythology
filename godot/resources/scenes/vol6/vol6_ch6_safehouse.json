@@ -33,7 +33,15 @@
     },
     {
       "t": "narrate",
-      "text": "Diego is in the back bedroom. A doctor — a woman named Dr. Sajna Patel, who is, in fact, an actual pediatrician, who has been Hal's friend for fifteen years, who had driven down from New Auburn this afternoon at Hal's request — is at his bedside. She has set the IV. She has cleaned the worst of the cuts. She has confirmed: concussion is mild, dehydration is severe but treatable, no fractures, no internal bleeding."
+      "text": "Diego is in the back bedroom. A doctor — a woman named Dr."
+    },
+    {
+      "t": "narrate",
+      "text": "Sajna Patel, who is, in fact, an actual pediatrician, who has been Hal's friend for fifteen years, who had driven down from New Auburn this afternoon at Hal's request — is at his bedside. She has set the IV."
+    },
+    {
+      "t": "narrate",
+      "text": "She has cleaned the worst of the cuts. She has confirmed: concussion is mild, dehydration is severe but treatable, no fractures, no internal bleeding."
     },
     {
       "t": "show",
@@ -49,7 +57,15 @@
     },
     {
       "t": "narrate",
-      "text": "Diego's grandmother is in the front room, on the phone with Diego's mother in San Antonio. They will both be at the safehouse tomorrow morning. Hal is in the kitchen, making sandwiches, because Hal is a bookshop owner and that is, in Hal's experience, what one does at a safehouse on a Friday evening. Claire is on the back porch, on the phone with her editor at the Houston Chronicle, beginning the careful slow work of telling the editor that the piece they have been waiting on for nine months is, as of tonight, ready to be filed in a window of three days."
+      "text": "Diego's grandmother is in the front room, on the phone with Diego's mother in San Antonio. They will both be at the safehouse tomorrow morning."
+    },
+    {
+      "t": "narrate",
+      "text": "Hal is in the kitchen, making sandwiches, because Hal is a bookshop owner and that is, in Hal's experience, what one does at a safehouse on a Friday evening."
+    },
+    {
+      "t": "narrate",
+      "text": "Claire is on the back porch, on the phone with her editor at the Houston Chronicle, beginning the careful slow work of telling the editor that the piece they have been waiting on for nine months is, as of tonight, ready to be filed in a window of three days."
     },
     {
       "t": "show",

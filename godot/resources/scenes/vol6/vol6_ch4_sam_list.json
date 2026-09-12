@@ -23,7 +23,15 @@
     },
     {
       "t": "narrate",
-      "text": "[mood:rain_interior]Sam has been awake since five-fifty-two. She is at her desk now, in her pajamas, with the lamp on against the grey of the storm. She has in front of her a notebook she bought at the Kwik Stop last night on her way home — one of the small cheap spiral-bound ones they stock for high-school kids, ninety-nine cents, lined pages, stapled on the short edge. She has not, until this summer, been a person who kept a notebook."
+      "text": "[mood:rain_interior]Sam has been awake since five-fifty-two. She is at her desk now, in her pajamas, with the lamp on against the grey of the storm."
+    },
+    {
+      "t": "narrate",
+      "text": "She has in front of her a notebook she bought at the Kwik Stop last night on her way home — one of the small cheap spiral-bound ones they stock for high-school kids, ninety-nine cents, lined pages, stapled on the short edge."
+    },
+    {
+      "t": "narrate",
+      "text": "She has not, until this summer, been a person who kept a notebook."
     },
     {
       "t": "narrate",
@@ -85,7 +93,15 @@
     },
     {
       "t": "narrate",
-      "text": "[shot:insert window]She stands. She goes to the window. The rain is hitting the window hard. The cul-de-sac below is running with a thin sheet of water that is not, quite, flooding — the grid's quiet efficiency holding, as advertised — but that is, for the first time in Sam's memory, visible as a sheet, continuous, catching the overhead streetlight in a long rippling silver that extends across all three driveways opposite and down toward the storm drain at the bend."
+      "text": "[shot:insert window]She stands. She goes to the window. The rain is hitting the window hard."
+    },
+    {
+      "t": "narrate",
+      "text": "The cul-de-sac below is running with a thin sheet of water that is not, quite, flooding — the grid's quiet efficiency holding, as advertised — but that is, for the first time in Sam's memory,"
+    },
+    {
+      "t": "narrate",
+      "text": "visible as a sheet, continuous, catching the overhead streetlight in a long rippling silver that extends across all three driveways opposite and down toward the storm drain at the bend."
     },
     {
       "t": "narrate",

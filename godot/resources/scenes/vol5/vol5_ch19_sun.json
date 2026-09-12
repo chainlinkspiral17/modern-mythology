@@ -35,23 +35,71 @@
     },
     {
       "t": "narrate",
-      "text": "[mood:day_bright]A note on the chronology: this chapter, like Temperance, takes place several years after the events of the chapters that precede it. The Sun is the card that comes after the Moon not in time but in sequence. Sequence, as the deck has been reminding us, is not chronology. Sequence is the order in which the cards agree to be read."
+      "text": "[mood:day_bright]A note on the chronology: this chapter, like Temperance, takes place several years after the events of the chapters that precede it. The Sun is the card that comes after the Moon not in time but in sequence."
     },
     {
       "t": "narrate",
-      "text": "It was a Tuesday morning in late May, and John Frank was at Café Olimpico on Saint-Viateur.\n\nHe had been coming here on Tuesdays for six years. The café had been here for fifty. The staff, by now, did not ask him what he wanted; they made him the single espresso he had started ordering in the first week, and set it down beside the small water glass he had not asked for but had been given, and went back to their own work. The transaction was the same transaction it had been for six years. The transaction was, by this point, more than a transaction. It was something closer to climate."
+      "text": "Sequence, as the deck has been reminding us, is not chronology. Sequence is the order in which the cards agree to be read."
     },
     {
       "t": "narrate",
-      "text": "[shot:closeup john]He sat at the small round metal table in the back corner, under the window, with his notebook open. A shaft of late-morning sunlight fell across the table, through the window, in the specific diagonal slant Montreal did in late May, and the dust motes — Café Olimpico had dust motes, and had had them for fifty years, and the dust motes were part of what you paid for — performed their intricate silent ballet in the shaft.\n\nHe watched the dust motes for a long time.\n\nHe had been watching them, in one form or another, for six years. He had been thinking, for most of those years, that they were random. He had been thinking, in the past three weeks, that they were not."
+      "text": "It was a Tuesday morning in late May, and John Frank was at Café Olimpico on Saint-Viateur. He had been coming here on Tuesdays for six years. The café had been here for fifty."
     },
     {
       "t": "narrate",
-      "text": "Elicia was, at this moment, twelve minutes late.\n\nWhich was — to be fair, if fairness still applied to Elicia Duchane and her relationship with the concept of time — not late by any standard Elicia recognized as binding. Elicia had, in her Graustark years, once arrived to a scheduled interview at her own apartment forty minutes after the interviewer had given up and left. Elicia had, in her Montreal years, begun to improve on this, but the improvement had been incremental and punctuated by reversals, and John had adopted, after the second time she had stood him up, the quiet protective stance of arriving on time himself and then using the waiting period for his own work, so that if Elicia did not arrive he had at least not lost the hour.\n\nHe had, on average, used this technique for the past three months. Elicia had, on average, arrived. He had stopped, sometime around month two, pretending he would not wait."
+      "text": "The staff, by now, did not ask him what he wanted; they made him the single espresso he had started ordering in the first week, and set it down beside the small water glass he had not asked for but had been given, and went back to their own work."
     },
     {
       "t": "narrate",
-      "text": "She had answered his three-week-old email, seven months ago, with one word: Yes.\n\nHe had, the following Tuesday, arrived at the café at ten. She had arrived at ten forty-three. She had looked, when she came in through the door, like a woman who had, in the recent past, been inside a building that was collapsing and who had, on exiting the building, not yet fully understood that she was still covered in dust.\n\nShe had sat across from him. She had ordered an espresso. She had said, without preamble:"
+      "text": "The transaction was the same transaction it had been for six years. The transaction was, by this point, more than a transaction. It was something closer to climate."
+    },
+    {
+      "t": "narrate",
+      "text": "[shot:closeup john]He sat at the small round metal table in the back corner, under the window, with his notebook open."
+    },
+    {
+      "t": "narrate",
+      "text": "A shaft of late-morning sunlight fell across the table, through the window, in the specific diagonal slant Montreal did in late May, and the dust motes —"
+    },
+    {
+      "t": "narrate",
+      "text": "Café Olimpico had dust motes, and had had them for fifty years, and the dust motes were part of what you paid for — performed their intricate silent ballet in the shaft. He watched the dust motes for a long time."
+    },
+    {
+      "t": "narrate",
+      "text": "He had been watching them, in one form or another, for six years. He had been thinking, for most of those years, that they were random. He had been thinking, in the past three weeks, that they were not."
+    },
+    {
+      "t": "narrate",
+      "text": "Elicia was, at this moment, twelve minutes late. Which was — to be fair, if fairness still applied to Elicia Duchane and her relationship with the concept of time — not late by any standard Elicia recognized as binding."
+    },
+    {
+      "t": "narrate",
+      "text": "Elicia had, in her Graustark years, once arrived to a scheduled interview at her own apartment forty minutes after the interviewer had given up and left."
+    },
+    {
+      "t": "narrate",
+      "text": "Elicia had, in her Montreal years, begun to improve on this, but the improvement had been incremental and punctuated by reversals, and John had adopted, after the second time she had stood him up,"
+    },
+    {
+      "t": "narrate",
+      "text": "the quiet protective stance of arriving on time himself and then using the waiting period for his own work, so that if Elicia did not arrive he had at least not lost the hour."
+    },
+    {
+      "t": "narrate",
+      "text": "He had, on average, used this technique for the past three months. Elicia had, on average, arrived. He had stopped, sometime around month two, pretending he would not wait."
+    },
+    {
+      "t": "narrate",
+      "text": "She had answered his three-week-old email, seven months ago, with one word: Yes. He had, the following Tuesday, arrived at the café at ten. She had arrived at ten forty-three."
+    },
+    {
+      "t": "narrate",
+      "text": "She had looked, when she came in through the door, like a woman who had, in the recent past, been inside a building that was collapsing and who had, on exiting the building, not yet fully understood that she was still covered in dust."
+    },
+    {
+      "t": "narrate",
+      "text": "She had sat across from him. She had ordered an espresso. She had said, without preamble:"
     },
     {
       "t": "show",
@@ -62,12 +110,22 @@
     {
       "t": "say",
       "c": "elicia",
-      "text": "[shot:closeup elicia]I am broke, I am evicted in twenty-three days, I have been filming myself every night for the past eleven days, I think I may finally be making a thing that is mine, and I have not had a real conversation with anyone in fourteen months. I am here because you wrote me a kind email and I don't have the energy to be clever about it. Please do not be kind to me right now. Kind will make me cry. I want to be, instead, dry.",
+      "text": "[shot:closeup elicia]I am broke, I am evicted in twenty-three days, I have been filming myself every night for the past eleven days, I think I may finally be making a thing that is mine, and I have not had a real conversation with anyone in fourteen months.",
+      "char": "elicia"
+    },
+    {
+      "t": "say",
+      "c": "elicia",
+      "text": "I am here because you wrote me a kind email and I don't have the energy to be clever about it. Please do not be kind to me right now. Kind will make me cry. I want to be, instead, dry.",
       "char": "elicia"
     },
     {
       "t": "narrate",
-      "text": "John, who had been preparing, for three weeks, a careful measured opening sentence intended to give Elicia exactly the amount of room she needed, had laughed — a short surprised laugh, the laugh of a man whose carefully prepared strategy had just been rendered unnecessary by the other party's willingness to go first."
+      "text": "John, who had been preparing, for three weeks, a careful measured opening sentence intended to give Elicia exactly the amount of room she needed, had laughed —"
+    },
+    {
+      "t": "narrate",
+      "text": "a short surprised laugh, the laugh of a man whose carefully prepared strategy had just been rendered unnecessary by the other party's willingness to go first."
     },
     {
       "t": "show",
@@ -135,33 +193,87 @@
     },
     {
       "t": "narrate",
-      "text": "The seven months had not fixed Elicia. Seven months did not, John had learned by his late thirties, fix anyone. Seven months could, however, temper — the word that his own card had given him as a gift, the word he had been using for some time as his practical ethic.\n\nElicia had, in the seven months, been evicted (as predicted). She had crashed at his apartment for two weeks during the transition (against his better judgment; with his full consent; he had taken the futon and given her the bedroom and they had fought, twice, about dishes and both times had apologized the next morning in the careful way adults apologized when they recognized the fight was about something else). She had found a much smaller apartment in Mile End, above a bagel shop, for roughly half what the previous apartment had cost. She had, in the new apartment, continued to film herself."
+      "text": "The seven months had not fixed Elicia. Seven months did not, John had learned by his late thirties, fix anyone."
     },
     {
       "t": "narrate",
-      "text": "The footage had accumulated. The footage was, at last count, approximately thirty hours. The footage was, Elicia had confided to him over espresso in March, the most honest thing she had ever made.\n\nShe had not, yet, shown any of it to anyone. Not to him. Not to the Roberts, whom she had begun, tentatively, to email. Not to the painter boyfriend (new, cautious, a carpenter named Luc, who worked with his hands and who did not, John understood, know about the footage). Not to anyone.\n\nThe footage was waiting. She was waiting with it. The waiting, John had come to recognize, was the project."
+      "text": "Seven months could, however, temper — the word that his own card had given him as a gift, the word he had been using for some time as his practical ethic. Elicia had, in the seven months, been evicted (as predicted)."
+    },
+    {
+      "t": "narrate",
+      "text": "She had crashed at his apartment for two weeks during the transition (against his better judgment; with his full consent; he had taken the futon and given her the bedroom and they had fought,"
+    },
+    {
+      "t": "narrate",
+      "text": "twice, about dishes and both times had apologized the next morning in the careful way adults apologized when they recognized the fight was about something else)."
+    },
+    {
+      "t": "narrate",
+      "text": "She had found a much smaller apartment in Mile End, above a bagel shop, for roughly half what the previous apartment had cost. She had, in the new apartment, continued to film herself."
+    },
+    {
+      "t": "narrate",
+      "text": "The footage had accumulated. The footage was, at last count, approximately thirty hours. The footage was, Elicia had confided to him over espresso in March, the most honest thing she had ever made."
+    },
+    {
+      "t": "narrate",
+      "text": "She had not, yet, shown any of it to anyone. Not to him. Not to the Roberts, whom she had begun, tentatively, to email."
+    },
+    {
+      "t": "narrate",
+      "text": "Not to the painter boyfriend (new, cautious, a carpenter named Luc, who worked with his hands and who did not, John understood, know about the footage). Not to anyone. The footage was waiting. She was waiting with it."
+    },
+    {
+      "t": "narrate",
+      "text": "The waiting, John had come to recognize, was the project."
     },
     {
       "t": "narrate",
       "when_flag": "elicia_pick",
       "is": "A",
-      "text": "The choose-your-own-adventure episode had gone out, in the end, with the slaughterhouse branch — confront the shadow self. Elicia had cut it twice and aired the second cut. You don't pick the abattoir, she had told him in March, over the espresso, unless some part of you is already standing in it. He had written that down later, in the notebook, word for word."
+      "text": "The choose-your-own-adventure episode had gone out, in the end, with the slaughterhouse branch — confront the shadow self. Elicia had cut it twice and aired the second cut."
+    },
+    {
+      "t": "narrate",
+      "when_flag": "elicia_pick",
+      "is": "A",
+      "text": "You don't pick the abattoir, she had told him in March, over the espresso, unless some part of you is already standing in it. He had written that down later, in the notebook, word for word."
     },
     {
       "t": "narrate",
       "when_flag": "elicia_pick",
       "is": "B",
-      "text": "The choose-your-own-adventure episode had gone out, in the end, with the tea party — the sentient mannequins, the interdimensional service, the whole velvet absurdity of it. Camp, John, is a load-bearing wall, she had told him in March, over the espresso. Take it out and see what the house does. He had written that down later, word for word."
+      "text": "The choose-your-own-adventure episode had gone out, in the end, with the tea party — the sentient mannequins, the interdimensional service, the whole velvet absurdity of it."
+    },
+    {
+      "t": "narrate",
+      "when_flag": "elicia_pick",
+      "is": "B",
+      "text": "Camp, John, is a load-bearing wall, she had told him in March, over the espresso. Take it out and see what the house does. He had written that down later, word for word."
     },
     {
       "t": "narrate",
       "when_flag": "elicia_pick",
       "is": "C",
-      "text": "The choose-your-own-adventure episode had gone out, in the end, with the void branch — free will as an illusion, embraced, comfortably. It had never tested well with focus groups. She had aired it anyway. Growth, she had told him in March, over the espresso, is doing the cut that doesn't test well because it's the true one. He had written that down later, word for word."
+      "text": "The choose-your-own-adventure episode had gone out, in the end, with the void branch — free will as an illusion, embraced, comfortably. It had never tested well with focus groups. She had aired it anyway."
     },
     {
       "t": "narrate",
-      "text": "He had not, in the seven months, told Elicia about the text from the Texas number.\n\nHe had not told her about the reply he had sent (yes.). He had not told her that the thread had gone quiet and then, twice more, pulsed — not with a message, but with the small vibration of the other party having opened the thread, read it, and chosen not to add to it.\n\nHe had told her, in a roundabout way, that he had begun, again, to note things. He had said:"
+      "when_flag": "elicia_pick",
+      "is": "C",
+      "text": "Growth, she had told him in March, over the espresso, is doing the cut that doesn't test well because it's the true one. He had written that down later, word for word."
+    },
+    {
+      "t": "narrate",
+      "text": "He had not, in the seven months, told Elicia about the text from the Texas number. He had not told her about the reply he had sent (yes.)."
+    },
+    {
+      "t": "narrate",
+      "text": "He had not told her that the thread had gone quiet and then, twice more, pulsed — not with a message, but with the small vibration of the other party having opened the thread, read it, and chosen not to add to it."
+    },
+    {
+      "t": "narrate",
+      "text": "He had told her, in a roundabout way, that he had begun, again, to note things. He had said:"
     },
     {
       "t": "say",
@@ -203,19 +315,71 @@
     },
     {
       "t": "narrate",
-      "text": "[shot:insert door]At ten twenty-three, the bell over the café door chimed.\n\nJohn looked up. It was not Elicia. It was a young woman he did not recognize. She was tall, blue-dreadlocked hair tucked under a bright yellow rain slicker (though it was not, today, raining), and she was carrying a cardboard tube of the kind artists used to carry rolled canvases. She glanced around the café, spotted what she was looking for — a small table by the front window where a man John had also never seen before was apparently waiting for her — and crossed to him without noticing John at all.\n\nJohn's eye followed her. He was not quite sure why."
+      "text": "[shot:insert door]At ten twenty-three, the bell over the café door chimed. John looked up. It was not Elicia. It was a young woman he did not recognize."
     },
     {
       "t": "narrate",
-      "text": "She sat with the man. They began a quiet conversation. The man pulled the cardboard tube toward himself and did not, at any point, open it. They both drank coffee. They both looked, to John's practiced eye, like they were having a meeting that was not quite a date and not quite a transaction, the kind of meeting that falls in the increasingly common genre between the two.\n\nJohn watched them for another moment, registered that his attention had been caught and that he did not know why, and looked away.\n\nHe looked down at the dust motes. The dust motes were doing the thing they did. Tuesdays, he thought. The clustering on Tuesdays."
+      "text": "She was tall, blue-dreadlocked hair tucked under a bright yellow rain slicker (though it was not, today, raining), and she was carrying a cardboard tube of the kind artists used to carry rolled canvases."
     },
     {
       "t": "narrate",
-      "text": "He opened his notebook. He wrote, in the small careful hand he had been using for his private dust-mote notes for six years:\n\nTuesday, May 27. Clustering confirmed, moderate, within normal range of elevated variance. Sub-pattern: secondary clustering around the new arrival at the window table, blue dreadlocks, yellow slicker. Possibly coincidence. Possibly the arrival displaced the air.\n\nAlso: I feel, faintly, a hum at the base of my skull that I have not felt since the text in December. The hum is not the same hum. Different vector. Still a hum.\n\nNote: do not mention this to Elicia today. Tomorrow. Maybe tomorrow.\n\nHe closed the notebook."
+      "text": "She glanced around the café, spotted what she was looking for — a small table by the front window where a man John had also never seen before was apparently waiting for her — and crossed to him without noticing John at all."
     },
     {
       "t": "narrate",
-      "text": "[shot:establish]The bell over the door chimed again.\n\nThis time it was Elicia.\n\nShe came in the way she came in everywhere these days — slower than she used to, more centered, wearing a denim jacket that had been repaired at the cuff and a scarf that was, John had noticed, the same scarf she had worn in the very first recording she had showed him last month, a scarf that had, she had told him, belonged to her mother. The scarf was, in the footage, the only thing Elicia wore that did not change costume.\n\nHe had asked her, when he saw it: is that the same scarf. She had said: yes. He had said: why. She had said: because whatever else I'm pretending not to be, I'm my mother's daughter. The scarf tells the camera not to let me forget.\n\nHe had not asked more. He did not need to."
+      "text": "John's eye followed her. He was not quite sure why."
+    },
+    {
+      "t": "narrate",
+      "text": "She sat with the man. They began a quiet conversation. The man pulled the cardboard tube toward himself and did not, at any point, open it. They both drank coffee."
+    },
+    {
+      "t": "narrate",
+      "text": "They both looked, to John's practiced eye, like they were having a meeting that was not quite a date and not quite a transaction, the kind of meeting that falls in the increasingly common genre between the two."
+    },
+    {
+      "t": "narrate",
+      "text": "John watched them for another moment, registered that his attention had been caught and that he did not know why, and looked away. He looked down at the dust motes. The dust motes were doing the thing they did."
+    },
+    {
+      "t": "narrate",
+      "text": "Tuesdays, he thought. The clustering on Tuesdays."
+    },
+    {
+      "t": "narrate",
+      "text": "He opened his notebook. He wrote, in the small careful hand he had been using for his private dust-mote notes for six years:\n\nTuesday, May 27. Clustering confirmed, moderate, within normal range of elevated variance."
+    },
+    {
+      "t": "narrate",
+      "text": "Sub-pattern: secondary clustering around the new arrival at the window table, blue dreadlocks, yellow slicker. Possibly coincidence. Possibly the arrival displaced the air."
+    },
+    {
+      "t": "narrate",
+      "text": "Also: I feel, faintly, a hum at the base of my skull that I have not felt since the text in December. The hum is not the same hum. Different vector. Still a hum. Note: do not mention this to Elicia today. Tomorrow. Maybe tomorrow."
+    },
+    {
+      "t": "narrate",
+      "text": "He closed the notebook."
+    },
+    {
+      "t": "narrate",
+      "text": "[shot:establish]The bell over the door chimed again. This time it was Elicia."
+    },
+    {
+      "t": "narrate",
+      "text": "She came in the way she came in everywhere these days — slower than she used to, more centered, wearing a denim jacket that had been repaired at the cuff and a scarf that was,"
+    },
+    {
+      "t": "narrate",
+      "text": "John had noticed, the same scarf she had worn in the very first recording she had showed him last month, a scarf that had, she had told him, belonged to her mother."
+    },
+    {
+      "t": "narrate",
+      "text": "The scarf was, in the footage, the only thing Elicia wore that did not change costume. He had asked her, when he saw it: is that the same scarf. She had said: yes. He had said: why."
+    },
+    {
+      "t": "narrate",
+      "text": "She had said: because whatever else I'm pretending not to be, I'm my mother's daughter. The scarf tells the camera not to let me forget. He had not asked more. He did not need to."
     },
     {
       "t": "narrate",
@@ -387,7 +551,23 @@
     },
     {
       "t": "narrate",
-      "text": "[shot:establish]He got up to go to the counter.\n\nAs he passed the window table, the blue-dreadlocked woman looked up from her conversation for the first time.\n\nShe was, John registered with the small prickling attention of a journalist whose subconscious had just offered him a lead, very young — twenty-two, maybe twenty-three — and her eyes were the kind of eyes that had already seen more than twenty-two years normally allowed for. She met his gaze for a fraction of a second.\n\nShe did not, he was almost certain, know him.\n\nBut she registered him. The registering was the precise thing a hunter did when a hunter had been told to watch for a specific signature and had not yet seen it but was, nonetheless, on duty.\n\nThen she looked back at the man across from her and the small moment — if it had been a moment — passed.\n\nJohn ordered the croissants. He returned to the table."
+      "text": "[shot:establish]He got up to go to the counter. As he passed the window table, the blue-dreadlocked woman looked up from her conversation for the first time."
+    },
+    {
+      "t": "narrate",
+      "text": "She was, John registered with the small prickling attention of a journalist whose subconscious had just offered him a lead, very young — twenty-two, maybe twenty-three — and her eyes were the kind of eyes that had already seen more than twenty-two years normally allowed for."
+    },
+    {
+      "t": "narrate",
+      "text": "She met his gaze for a fraction of a second. She did not, he was almost certain, know him. But she registered him."
+    },
+    {
+      "t": "narrate",
+      "text": "The registering was the precise thing a hunter did when a hunter had been told to watch for a specific signature and had not yet seen it but was, nonetheless, on duty."
+    },
+    {
+      "t": "narrate",
+      "text": "Then she looked back at the man across from her and the small moment — if it had been a moment — passed. John ordered the croissants. He returned to the table."
     },
     {
       "t": "say",
@@ -445,7 +625,11 @@
     },
     {
       "t": "narrate",
-      "text": "He looked at Elicia. He set down the small paper bag of croissants on the table between them. The shaft of late-morning sunlight was still falling across the table, the way it had been doing for six years of Tuesdays, the way it would do for the next hour at least before the angle of the light changed and the dust motes moved into their afternoon configurations."
+      "text": "He looked at Elicia. He set down the small paper bag of croissants on the table between them."
+    },
+    {
+      "t": "narrate",
+      "text": "The shaft of late-morning sunlight was still falling across the table, the way it had been doing for six years of Tuesdays, the way it would do for the next hour at least before the angle of the light changed and the dust motes moved into their afternoon configurations."
     },
     {
       "t": "say",
@@ -455,19 +639,51 @@
     },
     {
       "t": "narrate",
-      "text": "[shot:insert croissant]Elicia broke the first croissant in half. Handed him the larger piece. Ate the smaller.\n\nThey sat together for a long quiet moment, chewing their bread, watching the light and the dust motes and the blue-dreadlocked woman at the window, who had gone back to her conversation, who was now laughing at something her tablemate had said — a real laugh, a young laugh, the kind of laugh that was evidence, to anyone paying close attention, that the older seriousness in her eyes was not, yet, the only thing she was."
+      "text": "[shot:insert croissant]Elicia broke the first croissant in half. Handed him the larger piece. Ate the smaller."
     },
     {
       "t": "narrate",
-      "text": "John thought, she's not hunting. She's here for something else. The hunting is secondary.\n\nHe thought, and when she's done with whatever the primary thing is, she will be.\n\nHe thought, with the small clear honesty that had, in his Temperance period, become his working voice: I am glad, today, that I am sitting with Elicia. I am glad that the woman at the window has not, yet, come for me. I am glad that there are two warm croissants on the table. I am glad that I have six years of dust-mote notes and that they have, finally, begun to be about something.\n\nHe thought, this is what the Sun card is. Not the answer. Just the light on what is already here."
+      "text": "They sat together for a long quiet moment, chewing their bread, watching the light and the dust motes and the blue-dreadlocked woman at the window, who had gone back to her conversation,"
     },
     {
       "t": "narrate",
-      "text": "He broke a corner off his croissant. He ate it. The croissant was excellent.\n\nOutside, the morning was in full bloom. Saint-Viateur did its Tuesday work. The bagel shop across the street began its lunch rush. A dog, tied to a bike rack, looked at every pedestrian with the bright unjudging attention dogs reserved for their favorite hour of the day.\n\nThe dust motes clustered. The pattern, in its own patient way, clarified."
+      "text": "who was now laughing at something her tablemate had said — a real laugh, a young laugh, the kind of laugh that was evidence, to anyone paying close attention, that the older seriousness in her eyes was not, yet, the only thing she was."
     },
     {
       "t": "narrate",
-      "text": "Somewhere — south of here, south of this building, south of this country, somewhere on the long humid coast the older system was moving its pieces along — Joanna LeMoine's letter was arriving, this morning, at an address in New Orleans that had been waiting for it since 1987.\n\nJohn did not, in the café on Saint-Viateur in late May, know this.\n\nBut the hum at the base of his skull — the small new hum, the one he had written about in his notebook ten minutes ago — registered the arrival.\n\nThe hum pulsed once. Then it steadied."
+      "text": "John thought, she's not hunting. She's here for something else. The hunting is secondary. He thought, and when she's done with whatever the primary thing is, she will be."
+    },
+    {
+      "t": "narrate",
+      "text": "He thought, with the small clear honesty that had, in his Temperance period, become his working voice: I am glad, today, that I am sitting with Elicia. I am glad that the woman at the window has not, yet, come for me."
+    },
+    {
+      "t": "narrate",
+      "text": "I am glad that there are two warm croissants on the table. I am glad that I have six years of dust-mote notes and that they have, finally, begun to be about something. He thought, this is what the Sun card is. Not the answer."
+    },
+    {
+      "t": "narrate",
+      "text": "Just the light on what is already here."
+    },
+    {
+      "t": "narrate",
+      "text": "He broke a corner off his croissant. He ate it. The croissant was excellent. Outside, the morning was in full bloom. Saint-Viateur did its Tuesday work. The bagel shop across the street began its lunch rush."
+    },
+    {
+      "t": "narrate",
+      "text": "A dog, tied to a bike rack, looked at every pedestrian with the bright unjudging attention dogs reserved for their favorite hour of the day. The dust motes clustered. The pattern, in its own patient way, clarified."
+    },
+    {
+      "t": "narrate",
+      "text": "Somewhere — south of here, south of this building, south of this country, somewhere on the long humid coast the older system was moving its pieces along — Joanna LeMoine's letter was arriving, this morning, at an address in New Orleans that had been waiting for it since 1987."
+    },
+    {
+      "t": "narrate",
+      "text": "John did not, in the café on Saint-Viateur in late May, know this. But the hum at the base of his skull — the small new hum, the one he had written about in his notebook ten minutes ago — registered the arrival."
+    },
+    {
+      "t": "narrate",
+      "text": "The hum pulsed once. Then it steadied."
     },
     {
       "t": "narrate",
@@ -499,7 +715,19 @@
     },
     {
       "t": "narrate",
-      "text": "[beat:lift][shot:establish]He meant it. He would, in fact, tell her tomorrow. He did not yet know what he would be telling her, but he would, by the time the telling arrived, have figured it out.\n\nTemperance had brought him to this table. The Sun, this morning, was lighting it.\n\nJudgement was coming.\n\nBut not yet.\n\nNot, at least, for the length of this one warm bright Tuesday in late May, in a café on Saint-Viateur, over two croissants, at the small round metal table in the back corner under the window where the dust motes did what they did.\n\nNot yet.\n\nNot yet.\n\nThe light held."
+      "text": "[beat:lift][shot:establish]He meant it. He would, in fact, tell her tomorrow. He did not yet know what he would be telling her, but he would, by the time the telling arrived, have figured it out. Temperance had brought him to this table."
+    },
+    {
+      "t": "narrate",
+      "text": "The Sun, this morning, was lighting it. Judgement was coming. But not yet."
+    },
+    {
+      "t": "narrate",
+      "text": "Not, at least, for the length of this one warm bright Tuesday in late May, in a café on Saint-Viateur, over two croissants, at the small round metal table in the back corner under the window where the dust motes did what they did."
+    },
+    {
+      "t": "narrate",
+      "text": "Not yet. Not yet. The light held."
     },
     {
       "t": "end"

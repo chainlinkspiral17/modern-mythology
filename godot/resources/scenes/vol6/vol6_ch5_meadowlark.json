@@ -29,7 +29,11 @@
     },
     {
       "t": "narrate",
-      "text": "[trip:1.2][mood:candlelight_low]In the kitchen at 1428 Meadowlark, Sam comes home to a house that is, for the first time in some years, completely dark except for the small under-cabinet light her mother leaves on when her mother is awake upstairs. Sam goes up. Her bedroom door is open. Her mother is sitting on her bed."
+      "text": "[trip:1.2][mood:candlelight_low]In the kitchen at 1428 Meadowlark, Sam comes home to a house that is, for the first time in some years, completely dark except for the small under-cabinet light her mother leaves on when her mother is awake upstairs. Sam goes up."
+    },
+    {
+      "t": "narrate",
+      "text": "Her bedroom door is open. Her mother is sitting on her bed."
     },
     {
       "t": "show",
@@ -89,7 +93,17 @@
     {
       "t": "say",
       "char": "Mrs. Miller",
-      "text": "[beat:hit][shot:closeup mrs_miller]Your father has, tomorrow morning, agreed to meet with Detective Ramirez at the NAPD substation at seven AM. He is going to give Ramirez a — everything he has. What he knows. Who he knows. What he's done. Everything. This is not a negotiation. This is him making a full statement with a lawyer. Ramirez has agreed to keep him out of custody through the weekend so he can see the — the rescue thing, which I am not supposed to know about but which I know about, through. He will be arrested Monday morning."
+      "text": "[beat:hit][shot:closeup mrs_miller]Your father has, tomorrow morning, agreed to meet with Detective Ramirez at the NAPD substation at seven AM. He is going to give Ramirez a — everything he has. What he knows. Who he knows. What he's done. Everything."
+    },
+    {
+      "t": "say",
+      "char": "Mrs. Miller",
+      "text": "This is not a negotiation. This is him making a full statement with a lawyer."
+    },
+    {
+      "t": "say",
+      "char": "Mrs. Miller",
+      "text": "Ramirez has agreed to keep him out of custody through the weekend so he can see the — the rescue thing, which I am not supposed to know about but which I know about, through. He will be arrested Monday morning."
     },
     {
       "t": "narrate",
@@ -98,7 +112,22 @@
     {
       "t": "say",
       "char": "Mrs. Miller",
-      "text": "He wanted me to tell you three things. I'm going to tell you them. One. He loves you. He has loved you every second of your life including the seconds he was doing the bad things. He wants you to understand the two facts do not cancel each other. Two. He is asking you, for Monday, if you will come to the arraignment if it happens on Monday afternoon. Not to support him. Just to be there. He does not expect you to and will not be angry if you refuse. But he is asking. Three. The blue tin in his sock drawer also has, inside it, a letter to you that he has been updating over the years. It is in a manila envelope. He is asking you not to read it until — until he's gone to wherever he goes after Monday. I don't know when that is. He thinks it might be six, seven years. Maybe ten. It depends on what he can plead to."
+      "text": "He wanted me to tell you three things. I'm going to tell you them. One. He loves you. He has loved you every second of your life including the seconds he was doing the bad things."
+    },
+    {
+      "t": "say",
+      "char": "Mrs. Miller",
+      "text": "He wants you to understand the two facts do not cancel each other. Two. He is asking you, for Monday, if you will come to the arraignment if it happens on Monday afternoon. Not to support him. Just to be there."
+    },
+    {
+      "t": "say",
+      "char": "Mrs. Miller",
+      "text": "He does not expect you to and will not be angry if you refuse. But he is asking. Three. The blue tin in his sock drawer also has, inside it, a letter to you that he has been updating over the years. It is in a manila envelope."
+    },
+    {
+      "t": "say",
+      "char": "Mrs. Miller",
+      "text": "He is asking you not to read it until — until he's gone to wherever he goes after Monday. I don't know when that is. He thinks it might be six, seven years. Maybe ten. It depends on what he can plead to."
     },
     {
       "t": "narrate",
@@ -140,11 +169,19 @@
     },
     {
       "t": "narrate",
-      "text": "[mood:night][shot:establish]Sam sits on her bed. Outside, the rain has stopped entirely. The Texas night is doing its post-storm thing — the cicadas tuning up, the mockingbirds confused by the sudden change of pressure, the small far-off hum of the substation that Sam has, all her life, not heard and that she is, this week, starting to."
+      "text": "[mood:night][shot:establish]Sam sits on her bed. Outside, the rain has stopped entirely."
     },
     {
       "t": "narrate",
-      "text": "[shot:insert phone]She takes out her phone. She texts Ben: home. She texts Maya: home. She texts Jesse: home. She gets, within four minutes, three replies: home, home, home. She puts the phone down. She lies on her back on the bed. She watches the ceiling fan. She counts the clicks. Three, six, nine."
+      "text": "The Texas night is doing its post-storm thing — the cicadas tuning up, the mockingbirds confused by the sudden change of pressure, the small far-off hum of the substation that Sam has, all her life, not heard and that she is, this week, starting to."
+    },
+    {
+      "t": "narrate",
+      "text": "[shot:insert phone]She takes out her phone. She texts Ben: home. She texts Maya: home. She texts Jesse: home. She gets, within four minutes, three replies: home, home, home. She puts the phone down. She lies on her back on the bed."
+    },
+    {
+      "t": "narrate",
+      "text": "She watches the ceiling fan. She counts the clicks. Three, six, nine."
     },
     {
       "t": "think",

@@ -32,7 +32,11 @@
       "t": "narrate"
     },
     {
-      "text": "She drove down in the small Toyota wagon that had been her grandfather's, the wagon she had been driving since 2046 when she had inherited it. The wagon had two hundred and eighty-something thousand miles on it. The wagon ran. Tem had been keeping it running through an arrangement with the mechanic in old-Waldport who had also kept her grandfather's wagon running before her.",
+      "text": "She drove down in the small Toyota wagon that had been her grandfather's, the wagon she had been driving since 2046 when she had inherited it. The wagon had two hundred and eighty-something thousand miles on it. The wagon ran.",
+      "t": "narrate"
+    },
+    {
+      "text": "Tem had been keeping it running through an arrangement with the mechanic in old-Waldport who had also kept her grandfather's wagon running before her.",
       "t": "narrate"
     },
     {
@@ -229,7 +233,13 @@
     },
     {
       "char": "finn",
-      "text": "The radio. The one in the duffel. The shortwave from my grandfather. It turned itself on about twenty minutes into the drive down. I had not turned it on. I was driving. The hum came through the canvas and then a voice came through. The voice said one thing and then the radio cut out.",
+      "text": "The radio. The one in the duffel. The shortwave from my grandfather. It turned itself on about twenty minutes into the drive down. I had not turned it on. I was driving.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "finn",
+      "text": "The hum came through the canvas and then a voice came through. The voice said one thing and then the radio cut out.",
       "expr": "serious",
       "t": "say"
     },

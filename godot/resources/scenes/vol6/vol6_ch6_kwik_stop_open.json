@@ -101,7 +101,15 @@
     },
     {
       "t": "narrate",
-      "text": "[shot:closeup jen~]Jen does not, this morning, ask about Diego. Jen had, on Wednesday afternoon when Detective Ramirez left, walked over from the back office where she had been doing inventory and had said, quietly: Sammy. I don't know what's happening but I'm here, and I'm going to act like I don't know what's happening, and that's because that's what I think you need from me. Sam had nodded. Jen had returned to inventory. It was the most adult thing anybody but Graciela had said to Sam in a week."
+      "text": "[shot:closeup jen~]Jen does not, this morning, ask about Diego. Jen had, on Wednesday afternoon when Detective Ramirez left, walked over from the back office where she had been doing inventory and had said, quietly: Sammy."
+    },
+    {
+      "t": "narrate",
+      "text": "I don't know what's happening but I'm here, and I'm going to act like I don't know what's happening, and that's because that's what I think you need from me. Sam had nodded. Jen had returned to inventory."
+    },
+    {
+      "t": "narrate",
+      "text": "It was the most adult thing anybody but Graciela had said to Sam in a week."
     },
     {
       "t": "narrate",

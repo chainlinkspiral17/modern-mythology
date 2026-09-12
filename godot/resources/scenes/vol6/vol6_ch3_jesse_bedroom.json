@@ -35,7 +35,11 @@
   },
   {
    "t": "narrate",
-   "text": "[trip:1.2][mood:night]Jesse has been in his bedroom since seven. He has eaten dinner — chicken and rice, which his mother made, which he ate without tasting — and he has been sitting on the floor with his back against his bed ever since, with his Telecaster unplugged in his lap, not playing it, just holding it."
+   "text": "[trip:1.2][mood:night]Jesse has been in his bedroom since seven."
+  },
+  {
+   "t": "narrate",
+   "text": "He has eaten dinner — chicken and rice, which his mother made, which he ate without tasting — and he has been sitting on the floor with his back against his bed ever since, with his Telecaster unplugged in his lap, not playing it, just holding it."
   },
   {
    "t": "narrate",
@@ -146,7 +150,11 @@
   },
   {
    "t": "narrate",
-   "text": "[shot:insert guitar]He puts the phone face-down on the carpet. He picks up the Telecaster. He strums a single unplugged chord — E minor. The first chord he ever learned, the chord he plays when he does not know what to play. The strings hum. The hum goes nowhere, because the amp is off, but the guitar, against his chest, vibrates."
+   "text": "[shot:insert guitar]He puts the phone face-down on the carpet. He picks up the Telecaster. He strums a single unplugged chord — E minor. The first chord he ever learned, the chord he plays when he does not know what to play. The strings hum."
+  },
+  {
+   "t": "narrate",
+   "text": "The hum goes nowhere, because the amp is off, but the guitar, against his chest, vibrates."
   },
   {
    "t": "narrate",
@@ -154,7 +162,11 @@
   },
   {
    "t": "narrate",
-   "text": "He thinks about the photograph of the man in the charcoal suit. He thinks about the kid at the streetlight across from McClary's, who Ben saw, who should not have been visible, who waved. He thinks about his father, alone in the red light of the darkroom, looking at prints that had people in them who were not in the frame."
+   "text": "He thinks about the photograph of the man in the charcoal suit. He thinks about the kid at the streetlight across from McClary's, who Ben saw, who should not have been visible, who waved."
+  },
+  {
+   "t": "narrate",
+   "text": "He thinks about his father, alone in the red light of the darkroom, looking at prints that had people in them who were not in the frame."
   },
   {
    "t": "think",
@@ -208,7 +220,15 @@
   },
   {
    "t": "narrate",
-   "text": "[shot:closeup jesse~]Jesse sets the phone down. He does not, tonight, cry. But his eyes fill, briefly, and he lets them, and he does not wipe them, and he sits on the floor of his bedroom with the Telecaster beside him and his mother running the dishwasher one floor down and his father in the red light two floors below, and he thinks, in the small settled voice that has begun, in the past twenty-four hours, to be an interior voice he recognizes as his own adult one:"
+   "text": "[shot:closeup jesse~]Jesse sets the phone down. He does not, tonight, cry."
+  },
+  {
+   "t": "narrate",
+   "text": "But his eyes fill, briefly, and he lets them, and he does not wipe them, and he sits on the floor of his bedroom with the Telecaster beside him and his mother running the dishwasher one floor down and his father in the red light two floors below,"
+  },
+  {
+   "t": "narrate",
+   "text": "and he thinks, in the small settled voice that has begun, in the past twenty-four hours, to be an interior voice he recognizes as his own adult one:"
   },
   {
    "t": "think",
@@ -257,7 +277,11 @@
   },
   {
    "t": "narrate",
-   "text": "He hugs her. She is startled, briefly, then pats his back in the way mothers pat the backs of teenage boys when the teenage boys hug them for no apparent reason — which is to say with the small careful warmth of not wanting to make the hug feel remarkable in case the remarkable-ness might cause the hugger to reconsider."
+   "text": "He hugs her. She is startled, briefly, then pats his back in the way mothers pat the backs of teenage boys when the teenage boys hug them for no apparent reason —"
+  },
+  {
+   "t": "narrate",
+   "text": "which is to say with the small careful warmth of not wanting to make the hug feel remarkable in case the remarkable-ness might cause the hugger to reconsider."
   },
   {
    "t": "say",

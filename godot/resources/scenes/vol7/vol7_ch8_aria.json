@@ -38,7 +38,11 @@
       "t": "narrate"
     },
     {
-      "text": "She had said Roy in a voice that was not the voice she had been using with him. She had pushed back. The pushing back had felt good at the time. It also gave Roy a piece of information he had not had before walking in, which was that she could be made to push back. Tem had told them yesterday: the danger is being known by the wrong thing.",
+      "text": "She had said Roy in a voice that was not the voice she had been using with him. She had pushed back. The pushing back had felt good at the time.",
+      "t": "narrate"
+    },
+    {
+      "text": "It also gave Roy a piece of information he had not had before walking in, which was that she could be made to push back. Tem had told them yesterday: the danger is being known by the wrong thing.",
       "t": "narrate"
     },
     {
@@ -72,7 +76,11 @@
       "t": "say"
     },
     {
-      "text": "She told her. The three book titles \u2014 The Architecture of Inland Water, Pattern Persistence: Selected Essays, The Seven Floors of the Glass House. The Soren question. The Tem question. The Jorgen question. The line about being up at Jorgen's in June and buying a small one for the wife.",
+      "text": "She told her. The three book titles \u2014 The Architecture of Inland Water, Pattern Persistence: Selected Essays, The Seven Floors of the Glass House. The Soren question. The Tem question. The Jorgen question.",
+      "t": "narrate"
+    },
+    {
+      "text": "The line about being up at Jorgen's in June and buying a small one for the wife.",
       "t": "narrate"
     },
     {
@@ -126,7 +134,15 @@
       "t": "say"
     },
     {
-      "text": "[shot:closeup lena]The question landed in a way Lena did not expect. She had been at the bookstore for five hours running a Monday alone, had handled three customers and a hold and a child crying in the doorway and a man whose existence in her shop she had been managing for two and a half years walking in and asking her about her private correspondence, and Tem on the other end of the line was asking how she was, and she did not know. She had not asked herself. She had not been doing the kind of thinking that included that question.",
+      "text": "[shot:closeup lena]The question landed in a way Lena did not expect.",
+      "t": "narrate"
+    },
+    {
+      "text": "She had been at the bookstore for five hours running a Monday alone, had handled three customers and a hold and a child crying in the doorway and a man whose existence in her shop she had been managing for two and a half years walking in and asking her about her private correspondence,",
+      "t": "narrate"
+    },
+    {
+      "text": "and Tem on the other end of the line was asking how she was, and she did not know. She had not asked herself. She had not been doing the kind of thinking that included that question.",
       "t": "narrate"
     },
     {
@@ -137,7 +153,13 @@
     },
     {
       "char": "tem",
-      "text": "I'm coming down. The boys are still up here. Cale's been talking. Kai's at the table. Finn's on the porch. I have what I need from Cale for now. I'll be at the bookstore by two. Stay until Petra's back. Then come up to my apartment and we'll wait for the boys to come down.",
+      "text": "I'm coming down. The boys are still up here. Cale's been talking. Kai's at the table. Finn's on the porch. I have what I need from Cale for now. I'll be at the bookstore by two. Stay until Petra's back.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "Then come up to my apartment and we'll wait for the boys to come down.",
       "expr": "neutral",
       "t": "say"
     },
@@ -196,7 +218,11 @@
       "t": "show"
     },
     {
-      "text": "She did not, when she came in, kiss Lena. She did not put a hand anywhere on Lena. She came up to the counter and stood across it from Lena with her hands flat on the wood between them and looked at her for a long count, and the looking was the form of touching the bookstore allowed.",
+      "text": "She did not, when she came in, kiss Lena. She did not put a hand anywhere on Lena.",
+      "t": "narrate"
+    },
+    {
+      "text": "She came up to the counter and stood across it from Lena with her hands flat on the wood between them and looked at her for a long count, and the looking was the form of touching the bookstore allowed.",
       "t": "narrate"
     },
     {
@@ -260,12 +286,22 @@
       "t": "say"
     },
     {
-      "text": "[shot:insert brass_bell]The word landed the way a word lands when you have been near it for some time without knowing it had been there. Lena did not, in the moment, know what to do with it. She picked up the small brass bell on the counter and turned it over in her hand and set it back down.",
+      "text": "[shot:insert brass_bell]The word landed the way a word lands when you have been near it for some time without knowing it had been there. Lena did not, in the moment, know what to do with it.",
+      "t": "narrate"
+    },
+    {
+      "text": "She picked up the small brass bell on the counter and turned it over in her hand and set it back down.",
       "t": "narrate"
     },
     {
       "char": "tem",
-      "text": "Brandon told him in 2050. Cale held the name for two years. He said it this morning at the cabin in front of Kai and Finn. He hadn't planned to. It came out. He said he was sorry for the way it came out and Kai said don't be sorry, it came out, that's all right. Then Lena \u2014 then we sat with it. Then you called.",
+      "text": "Brandon told him in 2050. Cale held the name for two years. He said it this morning at the cabin in front of Kai and Finn. He hadn't planned to. It came out.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "He said he was sorry for the way it came out and Kai said don't be sorry, it came out, that's all right. Then Lena \u2014 then we sat with it. Then you called.",
       "expr": "serious",
       "t": "say"
     },
@@ -298,7 +334,15 @@
       "t": "show"
     },
     {
-      "text": "Petra came in with rain on her hair and the small canvas tote bag she carried up the river full of papers with mud on them. She saw the two of them at the counter, the cup of cold coffee in front of Tem, the brass bell upended on the wood, and did not say anything for a count. She set the tote bag on the table by the window display. She came up to the counter and put a hand on Lena's hand on the counter.",
+      "text": "Petra came in with rain on her hair and the small canvas tote bag she carried up the river full of papers with mud on them.",
+      "t": "narrate"
+    },
+    {
+      "text": "She saw the two of them at the counter, the cup of cold coffee in front of Tem, the brass bell upended on the wood, and did not say anything for a count. She set the tote bag on the table by the window display.",
+      "t": "narrate"
+    },
+    {
+      "text": "She came up to the counter and put a hand on Lena's hand on the counter.",
       "t": "narrate"
     },
     {

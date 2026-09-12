@@ -33,7 +33,11 @@
     },
     {
       "t": "narrate",
-      "text": "The safehouse is, by Hal's protocol — agreed upon Friday night with the doctor and the grandmother and Doyle — open today only to family. Diego's mother arrived at six-thirty this morning from San Antonio. She is, at this moment, in the bedroom with Diego, who is sitting up for the first time, drinking water, looking at her, talking, slowly, in Spanish, about nothing in particular."
+      "text": "The safehouse is, by Hal's protocol — agreed upon Friday night with the doctor and the grandmother and Doyle — open today only to family. Diego's mother arrived at six-thirty this morning from San Antonio."
+    },
+    {
+      "t": "narrate",
+      "text": "She is, at this moment, in the bedroom with Diego, who is sitting up for the first time, drinking water, looking at her, talking, slowly, in Spanish, about nothing in particular."
     },
     {
       "t": "show",
@@ -55,7 +59,15 @@
     },
     {
       "t": "narrate",
-      "text": "She is telling Sam, in the slow careful way she tells things, what Diego has — between sleep and water and his mother — said about the five days. Not the worst of it. Graciela is, herself, learning the worst of it as Diego comes back to himself, and is choosing carefully which pieces to relay to Sam. The pieces she is relaying are the ones that will, in Graciela's judgment, give Sam what Sam needs to know without giving her what Sam does not yet need to carry."
+      "text": "She is telling Sam, in the slow careful way she tells things, what Diego has — between sleep and water and his mother — said about the five days. Not the worst of it."
+    },
+    {
+      "t": "narrate",
+      "text": "Graciela is, herself, learning the worst of it as Diego comes back to himself, and is choosing carefully which pieces to relay to Sam."
+    },
+    {
+      "t": "narrate",
+      "text": "The pieces she is relaying are the ones that will, in Graciela's judgment, give Sam what Sam needs to know without giving her what Sam does not yet need to carry."
     },
     {
       "t": "say",
@@ -66,7 +78,13 @@
     {
       "t": "say",
       "char": "Graciela Ramos",
-      "text": "[shot:closeup person]Diego asked about your father, mija. I told him your father turned himself in yesterday. Diego cried. He cried because he had been afraid your father had — I will not say it. I will say only: Diego cried because he had been afraid for you, even in there. Even in the room they kept him in. He had been carrying you, mija. He had been carrying the worry about you. Now he can put it down.",
+      "text": "[shot:closeup person]Diego asked about your father, mija. I told him your father turned himself in yesterday. Diego cried. He cried because he had been afraid your father had — I will not say it.",
+      "expr": "sad"
+    },
+    {
+      "t": "say",
+      "char": "Graciela Ramos",
+      "text": "I will say only: Diego cried because he had been afraid for you, even in there. Even in the room they kept him in. He had been carrying you, mija. He had been carrying the worry about you. Now he can put it down.",
       "expr": "sad"
     },
     {

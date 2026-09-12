@@ -31,11 +31,27 @@
    "t": "narrate"
   },
   {
-   "text": "He had been at Hans's house in town from eight-forty until twenty-five past three. He had spent the morning with his mother and Greta in the kitchen — Marit at the table with a cup of the cold coffee Greta had put out for her, Per across from her, Greta at the stove making the soup she made on Sundays for the church-people lunch.",
+   "text": "He had been at Hans's house in town from eight-forty until twenty-five past three.",
    "t": "narrate"
   },
   {
-   "text": "[shot:closeup marit]The three of them had not, in the four hours after the bakery, said much. Marit had been somewhere inside herself after the morning, holding what had happened at the table when the carved young woman on her bowl had looked up from the cedar and acknowledged Marina. Per had been giving his mother the quiet. Greta had been making soup the way Greta did most things — by accident a kind of holding-of-the-room that the room benefited from. The three of them had been at the kitchen for four hours and the kitchen had been the kitchen.",
+   "text": "He had spent the morning with his mother and Greta in the kitchen — Marit at the table with a cup of the cold coffee Greta had put out for her, Per across from her, Greta at the stove making the soup she made on Sundays for the church-people lunch.",
+   "t": "narrate"
+  },
+  {
+   "text": "[shot:closeup marit]The three of them had not, in the four hours after the bakery, said much.",
+   "t": "narrate"
+  },
+  {
+   "text": "Marit had been somewhere inside herself after the morning, holding what had happened at the table when the carved young woman on her bowl had looked up from the cedar and acknowledged Marina.",
+   "t": "narrate"
+  },
+  {
+   "text": "Per had been giving his mother the quiet. Greta had been making soup the way Greta did most things — by accident a kind of holding-of-the-room that the room benefited from.",
+   "t": "narrate"
+  },
+  {
+   "text": "The three of them had been at the kitchen for four hours and the kitchen had been the kitchen.",
    "t": "narrate"
   },
   {
@@ -93,7 +109,15 @@
    "t": "narrate"
   },
   {
-   "text": "[shot:closeup per]He had walked back to his old Buick parked outside Hans's house. He thought about what his mother had said about the cabin being a place she should be again. He thought about whether he had read her right — whether she was waiting because she was tired, or because she wanted the cast to have the night alone, or because she had been at the bakery this morning at sixty-eight years old having waited fifty-one years for the room and was now at the kitchen with Greta because she needed an afternoon of quiet before she could be in the room one more time.",
+   "text": "[shot:closeup per]He had walked back to his old Buick parked outside Hans's house. He thought about what his mother had said about the cabin being a place she should be again.",
+   "t": "narrate"
+  },
+  {
+   "text": "He thought about whether he had read her right — whether she was waiting because she was tired, or because she wanted the cast to have the night alone,",
+   "t": "narrate"
+  },
+  {
+   "text": "or because she had been at the bakery this morning at sixty-eight years old having waited fifty-one years for the room and was now at the kitchen with Greta because she needed an afternoon of quiet before she could be in the room one more time.",
    "t": "narrate"
   },
   {
@@ -105,11 +129,19 @@
    "t": "bg"
   },
   {
-   "text": "The road up at three-thirty in the rain was a road Per had not, in his life, driven this much. He had been up Wednesday with Kai. Thursday night. Down Friday morning with Hans to the bakery. Up again Friday afternoon. He had been at the cabin for sleeps Wednesday, Thursday, Friday. He had slept at Hans's last night because Marit had needed her son. This was his fifth drive up in five days.",
+   "text": "The road up at three-thirty in the rain was a road Per had not, in his life, driven this much. He had been up Wednesday with Kai. Thursday night. Down Friday morning with Hans to the bakery. Up again Friday afternoon.",
    "t": "narrate"
   },
   {
-   "text": "The road, by the fifth time, was a road that knew him. The first switchback above the second creek crossing did not surprise him anymore. The alders coming up to the Sitka stand were the alders. The Sitka stand was — by what Per registered as he came through it — a stand of trees he had been at the bottom of in '79 when he had been nineteen and Olaf had been alive and the cabin had been a stand of studs.",
+   "text": "He had been at the cabin for sleeps Wednesday, Thursday, Friday. He had slept at Hans's last night because Marit had needed her son. This was his fifth drive up in five days.",
+   "t": "narrate"
+  },
+  {
+   "text": "The road, by the fifth time, was a road that knew him. The first switchback above the second creek crossing did not surprise him anymore. The alders coming up to the Sitka stand were the alders.",
+   "t": "narrate"
+  },
+  {
+   "text": "The Sitka stand was — by what Per registered as he came through it — a stand of trees he had been at the bottom of in '79 when he had been nineteen and Olaf had been alive and the cabin had been a stand of studs.",
    "t": "narrate"
   },
   {
@@ -135,7 +167,11 @@
    "t": "narrate"
   },
   {
-   "text": "He had not, in his life, expected to be at this cabin in the late summer of 2052 as a participant. He had been here in '79 and '80 helping to build it. In '85 for a Labor Day weekend with Marit and Olaf's brother. In '99 for Eddvard's sixty-fifth birthday. In '42 for Eddvard's funeral. He had not been here in the ten years between Eddvard's funeral and Wednesday. He had been at this cabin five days in a row.",
+   "text": "He had not, in his life, expected to be at this cabin in the late summer of 2052 as a participant. He had been here in '79 and '80 helping to build it. In '85 for a Labor Day weekend with Marit and Olaf's brother.",
+   "t": "narrate"
+  },
+  {
+   "text": "In '99 for Eddvard's sixty-fifth birthday. In '42 for Eddvard's funeral. He had not been here in the ten years between Eddvard's funeral and Wednesday. He had been at this cabin five days in a row.",
    "t": "narrate"
   },
   {
@@ -214,7 +250,12 @@
   },
   {
    "char": "tem",
-   "text": "Per. I'm not going to tell you what came out of the stick. Finn is going to come up the road in maybe forty minutes with the thing he's going to put on the table. I'm asking you to wait for Finn. That thing is Finn's to give. I want him to give it. I want you in the room when he does.",
+   "text": "Per. I'm not going to tell you what came out of the stick. Finn is going to come up the road in maybe forty minutes with the thing he's going to put on the table. I'm asking you to wait for Finn. That thing is Finn's to give.",
+   "t": "say"
+  },
+  {
+   "char": "tem",
+   "text": "I want him to give it. I want you in the room when he does.",
    "t": "say"
   },
   {

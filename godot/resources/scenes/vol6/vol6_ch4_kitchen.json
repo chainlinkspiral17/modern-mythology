@@ -23,7 +23,11 @@
     },
     {
       "t": "narrate",
-      "text": "[mood:dusk]Sam gets home from the Kwik Stop at a quarter to seven. The rain has settled into the lighter more ambient variation it always settles into by evening. The driveway is a shallow puddle. She parks. She runs the twelve feet from the Corolla to the front door. She comes in soaking."
+      "text": "[mood:dusk]Sam gets home from the Kwik Stop at a quarter to seven. The rain has settled into the lighter more ambient variation it always settles into by evening. The driveway is a shallow puddle. She parks."
+    },
+    {
+      "t": "narrate",
+      "text": "She runs the twelve feet from the Corolla to the front door. She comes in soaking."
     },
     {
       "t": "show",
@@ -68,7 +72,11 @@
     },
     {
       "t": "narrate",
-      "text": "[shot:closeup miller]Her father is at the kitchen table. He is not in uniform. He is in jeans and a short-sleeve shirt — the kind of shirt Sam has not, in some years, seen him in on a weekday evening. He has a glass of red wine. He is, when she comes in, looking at nothing in particular. He is looking in the direction of the window, which faces the cul-de-sac, which is dark and full of rain and empty."
+      "text": "[shot:closeup miller]Her father is at the kitchen table. He is not in uniform. He is in jeans and a short-sleeve shirt — the kind of shirt Sam has not, in some years, seen him in on a weekday evening. He has a glass of red wine."
+    },
+    {
+      "t": "narrate",
+      "text": "He is, when she comes in, looking at nothing in particular. He is looking in the direction of the window, which faces the cul-de-sac, which is dark and full of rain and empty."
     },
     {
       "t": "say",
@@ -96,7 +104,11 @@
     },
     {
       "t": "narrate",
-      "text": "Her father is quiet for the first seven minutes. Sam is quiet. Her mother does the talking — the sweet light chatter she does when the room is tense in a way Sam cannot, yet, identify the source of. The chatter covers the sound of the rain hitting the windows. The chatter covers the small absence of Sam's father's voice."
+      "text": "Her father is quiet for the first seven minutes. Sam is quiet. Her mother does the talking — the sweet light chatter she does when the room is tense in a way Sam cannot, yet, identify the source of."
+    },
+    {
+      "t": "narrate",
+      "text": "The chatter covers the sound of the rain hitting the windows. The chatter covers the small absence of Sam's father's voice."
     },
     {
       "t": "show",
@@ -188,7 +200,12 @@
     {
       "t": "say",
       "char": "Chief Miller",
-      "text": "[shot:closeup person]If anything ever happened to me — anything at all — I want you to know that there is a safe deposit box at the Bank of New Auburn on Live Oak Street, box number 287, and the key is in the blue tin in my sock drawer. Inside the box is everything you need to know about me. Not just the household stuff. The other things. The things I have not told you. I put it all there three years ago. Your mother knows. I am telling you tonight because —"
+      "text": "[shot:closeup person]If anything ever happened to me — anything at all — I want you to know that there is a safe deposit box at the Bank of New Auburn on Live Oak Street, box number 287, and the key is in the blue tin in my sock drawer."
+    },
+    {
+      "t": "say",
+      "char": "Chief Miller",
+      "text": "Inside the box is everything you need to know about me. Not just the household stuff. The other things. The things I have not told you. I put it all there three years ago. Your mother knows. I am telling you tonight because —"
     },
     {
       "t": "narrate",
@@ -221,11 +238,20 @@
     {
       "t": "say",
       "char": "Chief Miller",
-      "text": "I have — I have not been the man I wanted to be in all the ways I wanted to be him. I have done some things I am going to have to account for. If — when — I do account for them, I want you to know that the accounting was my choice and not something that happened to me. Okay?"
+      "text": "I have — I have not been the man I wanted to be in all the ways I wanted to be him. I have done some things I am going to have to account for."
+    },
+    {
+      "t": "say",
+      "char": "Chief Miller",
+      "text": "If — when — I do account for them, I want you to know that the accounting was my choice and not something that happened to me. Okay?"
     },
     {
       "t": "narrate",
-      "text": "Sam looks at him. She sees, for the first time in her seventeen years, her father as a man. Not as her father. As a man. A tired, frightened, careful man, sitting at his own kitchen table, eating his wife's cacciatore, drinking a glass of red wine, saying the only thing he has figured out how to say in the forty-eight hours since whatever happened to him on Monday happened."
+      "text": "Sam looks at him. She sees, for the first time in her seventeen years, her father as a man. Not as her father. As a man."
+    },
+    {
+      "t": "narrate",
+      "text": "A tired, frightened, careful man, sitting at his own kitchen table, eating his wife's cacciatore, drinking a glass of red wine, saying the only thing he has figured out how to say in the forty-eight hours since whatever happened to him on Monday happened."
     },
     {
       "t": "say",
@@ -324,7 +350,12 @@
     {
       "t": "say",
       "char": "Mrs. Miller",
-      "text": "I don't know everything. I know enough to know I don't know everything. I know he's decided to do something. I don't know what it is. I know he's scared. I know he's going to tell me tonight, when he gets back. And I know that whatever he's decided, you are going to be told first thing in the morning, because your father and I have discussed it and we agree on that one part."
+      "text": "I don't know everything. I know enough to know I don't know everything. I know he's decided to do something. I don't know what it is. I know he's scared. I know he's going to tell me tonight, when he gets back."
+    },
+    {
+      "t": "say",
+      "char": "Mrs. Miller",
+      "text": "And I know that whatever he's decided, you are going to be told first thing in the morning, because your father and I have discussed it and we agree on that one part."
     },
     {
       "t": "say",
@@ -364,7 +395,11 @@
     },
     {
       "t": "narrate",
-      "text": "At ten-oh-four, the sedan pulls out and drives, without lights, to a position three blocks from the building on the east side of the subdivision that is not currently on any map. At ten-thirty-six, a white unmarked van pulls into the lot of the building that is not on the map. At ten-fifty-eight, the van pulls out."
+      "text": "At ten-oh-four, the sedan pulls out and drives, without lights, to a position three blocks from the building on the east side of the subdivision that is not currently on any map."
+    },
+    {
+      "t": "narrate",
+      "text": "At ten-thirty-six, a white unmarked van pulls into the lot of the building that is not on the map. At ten-fifty-eight, the van pulls out."
     },
     {
       "t": "narrate",
@@ -372,7 +407,11 @@
     },
     {
       "t": "narrate",
-      "text": "At eleven-fifty-one, Chief Miller — who has been at the east-side building since eight-thirty — is back in his truck in his own driveway. He sits. He does not go inside. He is on the phone. At eleven-fifty-five, he hangs up. He sits in the truck for another sixteen minutes."
+      "text": "At eleven-fifty-one, Chief Miller — who has been at the east-side building since eight-thirty — is back in his truck in his own driveway. He sits. He does not go inside. He is on the phone. At eleven-fifty-five, he hangs up."
+    },
+    {
+      "t": "narrate",
+      "text": "He sits in the truck for another sixteen minutes."
     },
     {
       "t": "narrate",
@@ -384,7 +423,11 @@
     },
     {
       "t": "narrate",
-      "text": "[mood:night][shot:closeup sam]Upstairs, Sam is in her bed, not asleep, hearing only the low murmur of her father's voice through the floor, and her mother's softer replies, and occasionally a long silence, and the rain, which has begun, at last, to ease. She files the sounds. She waits for morning."
+      "text": "[mood:night][shot:closeup sam]Upstairs, Sam is in her bed, not asleep, hearing only the low murmur of her father's voice through the floor, and her mother's softer replies, and occasionally a long silence, and the rain, which has begun, at last, to ease."
+    },
+    {
+      "t": "narrate",
+      "text": "She files the sounds. She waits for morning."
     },
     {
       "t": "bg",
@@ -392,11 +435,19 @@
     },
     {
       "t": "narrate",
-      "text": "Somewhere, on a two-lane highway eighty miles west, the Houston Chronicle sedan is tailing a white unmarked van at three cars' distance through a thunderstorm that is, itself, just easing. In the sedan's backseat, unseen by any observer, a black cat — small, unregistered, the one from Gallatin Avenue, which had walked north toward the cedar scrub on Sunday and had continued west — is asleep."
+      "text": "Somewhere, on a two-lane highway eighty miles west, the Houston Chronicle sedan is tailing a white unmarked van at three cars' distance through a thunderstorm that is, itself, just easing."
     },
     {
       "t": "narrate",
-      "text": "The cat had, at some point in the night, chosen to be there. The cat had not, as far as the reporter could determine, ever been invited. The cat is going to be part of Friday morning's operation, in a way neither Claire nor her partner has yet, this Wednesday night, been made aware of."
+      "text": "In the sedan's backseat, unseen by any observer, a black cat — small, unregistered, the one from Gallatin Avenue, which had walked north toward the cedar scrub on Sunday and had continued west — is asleep."
+    },
+    {
+      "t": "narrate",
+      "text": "The cat had, at some point in the night, chosen to be there. The cat had not, as far as the reporter could determine, ever been invited."
+    },
+    {
+      "t": "narrate",
+      "text": "The cat is going to be part of Friday morning's operation, in a way neither Claire nor her partner has yet, this Wednesday night, been made aware of."
     },
     {
       "t": "narrate",

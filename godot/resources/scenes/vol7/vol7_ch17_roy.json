@@ -408,7 +408,12 @@
     },
     {
       "char": "roy",
-      "text": "[shot:closeup roy~]I came to Smolvud in October of 1931. I had been in Bandon for the previous six years working on a fishing boat out of the small commercial harbor. I had been at the boat since 1925 when I had come over from Norway. I was twenty-six in '31. I was forty when the bowl came to me.",
+      "text": "[shot:closeup roy~]I came to Smolvud in October of 1931. I had been in Bandon for the previous six years working on a fishing boat out of the small commercial harbor. I had been at the boat since 1925 when I had come over from Norway.",
+      "t": "say"
+    },
+    {
+      "char": "roy",
+      "text": "I was twenty-six in '31. I was forty when the bowl came to me.",
       "t": "say"
     },
     {
@@ -443,7 +448,12 @@
     },
     {
       "char": "roy",
-      "text": "The first was in '20 when I was fifteen and had been at Olaus's family's house in Bandon for a dinner that my father had taken me to. My father had been a friend of Olaus's brother. The bowl had been on the kitchen shelf. I touched it that night, with my father's permission.",
+      "text": "The first was in '20 when I was fifteen and had been at Olaus's family's house in Bandon for a dinner that my father had taken me to. My father had been a friend of Olaus's brother. The bowl had been on the kitchen shelf.",
+      "t": "say"
+    },
+    {
+      "char": "roy",
+      "text": "I touched it that night, with my father's permission.",
       "t": "say"
     },
     {
@@ -487,7 +497,12 @@
     },
     {
       "char": "roy",
-      "text": "I went into Hans's bakery for the first time in November of '31, a month after I arrived. I had been told — by the bowl, by some quality of how the bowl had been instructing me from the kitchen shelf — that the bakery on Hemlock was the place I would find the printed materials the network had been making.",
+      "text": "I went into Hans's bakery for the first time in November of '31, a month after I arrived.",
+      "t": "say"
+    },
+    {
+      "char": "roy",
+      "text": "I had been told — by the bowl, by some quality of how the bowl had been instructing me from the kitchen shelf — that the bakery on Hemlock was the place I would find the printed materials the network had been making.",
       "t": "say"
     },
     {

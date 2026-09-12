@@ -45,7 +45,11 @@
     },
     {
       "t": "narrate",
-      "text": "He is, she registers, wearing the same clothes he had on yesterday. The sunburn has not faded. His eyes do not go to the back cooler this time. They go, briefly, to her — the same three-second look in the convex mirror he had used yesterday — and then to the little snack section, where he picks up a bag of pretzels and a Snickers."
+      "text": "He is, she registers, wearing the same clothes he had on yesterday. The sunburn has not faded. His eyes do not go to the back cooler this time."
+    },
+    {
+      "t": "narrate",
+      "text": "They go, briefly, to her — the same three-second look in the convex mirror he had used yesterday — and then to the little snack section, where he picks up a bag of pretzels and a Snickers."
     },
     {
       "t": "narrate",
@@ -59,19 +63,19 @@
       "opts": [
         {
           "text": "look at",
-          "goto": 11,
+          "goto": 12,
           "flag": "ch2_cooler_looked",
           "hide_if_flag": "ch2_cooler_looked"
         },
         {
           "text": "watch him",
-          "goto": 13,
+          "goto": 14,
           "flag": "ch2_cooler_watched",
           "hide_if_flag": "ch2_cooler_watched"
         },
         {
           "text": "say nothing",
-          "goto": 15
+          "goto": 16
         }
       ]
     },
@@ -81,7 +85,7 @@
     },
     {
       "t": "jump",
-      "goto": 10
+      "goto": 11
     },
     {
       "t": "narrate",
@@ -89,7 +93,7 @@
     },
     {
       "t": "jump",
-      "goto": 10
+      "goto": 11
     },
     {
       "t": "narrate",
@@ -149,7 +153,11 @@
     },
     {
       "t": "narrate",
-      "text": "[shot:insert door~]Sam watches him cross the parking lot to the white sedan. He does not get in the driver's seat. He gets in the passenger seat. There is, Sam now sees, another person in the driver's seat — a woman she had not seen yesterday, who had not been visible through the tinted windshield from this angle until the man opened the passenger door."
+      "text": "[shot:insert door~]Sam watches him cross the parking lot to the white sedan. He does not get in the driver's seat. He gets in the passenger seat."
+    },
+    {
+      "t": "narrate",
+      "text": "There is, Sam now sees, another person in the driver's seat — a woman she had not seen yesterday, who had not been visible through the tinted windshield from this angle until the man opened the passenger door."
     },
     {
       "t": "narrate",
@@ -187,7 +195,11 @@
     },
     {
       "t": "narrate",
-      "text": "[shot:establish]She looks around the empty Kwik Stop — the row of slushie machines grinding softly under the fluorescent lights, the buzzing stockroom light, the decal hamburger missing its eye, the coolers humming, the microwave clock reading 13:59 when the time is actually 13:50 — and she thinks, with the small clear honesty that has, since yesterday afternoon, become the tone of her interior voice:"
+      "text": "[shot:establish]She looks around the empty Kwik Stop — the row of slushie machines grinding softly under the fluorescent lights, the buzzing stockroom light, the decal hamburger missing its eye, the coolers humming,"
+    },
+    {
+      "t": "narrate",
+      "text": "the microwave clock reading 13:59 when the time is actually 13:50 — and she thinks, with the small clear honesty that has, since yesterday afternoon, become the tone of her interior voice:"
     },
     {
       "t": "think",
@@ -206,7 +218,15 @@
     },
     {
       "t": "narrate",
-      "text": "She does not, until this moment, have the word node for what she is beginning to map. The word will come later, from Maya, who will give it to her in late June at a table in the back of Cosmic Comics over two iced coffees, and who will say — \"that's what F.T. called them, and it's the least wrong word I've heard.\" Sam will say, who is F.T. Maya will say, I'm still figuring that out."
+      "text": "She does not, until this moment, have the word node for what she is beginning to map."
+    },
+    {
+      "t": "narrate",
+      "text": "The word will come later, from Maya, who will give it to her in late June at a table in the back of Cosmic Comics over two iced coffees, and who will say — \"that's what F.T. called them, and it's the least wrong word I've heard.\""
+    },
+    {
+      "t": "narrate",
+      "text": "Sam will say, who is F.T. Maya will say, I'm still figuring that out."
     },
     {
       "t": "narrate",
@@ -214,7 +234,11 @@
     },
     {
       "t": "narrate",
-      "text": "Today, in the empty Kwik Stop, Sam Miller has only the small word inside, and the small word thing, and the slightly larger word node which she has not yet met. She registers the deficit. She notes it for future correction. She wipes down the counter. She watches the parking lot."
+      "text": "Today, in the empty Kwik Stop, Sam Miller has only the small word inside, and the small word thing, and the slightly larger word node which she has not yet met. She registers the deficit. She notes it for future correction."
+    },
+    {
+      "t": "narrate",
+      "text": "She wipes down the counter. She watches the parking lot."
     },
     {
       "t": "jump",

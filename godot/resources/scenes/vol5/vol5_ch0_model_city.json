@@ -11,8 +11,16 @@
     },
     {
       "t": "narrate",
-      "text": "[mood:night][stage:frasier stool][stage:john counter_post][shot:insert phone]Frasier turned the phone screen toward him. On the screen, a sequence of geometric shapes pulsed in slow rotation, blue and green and a color John had never seen on a screen before, a kind of luminous bruise that did not seem to belong to the visible spectrum. The shapes were, perhaps, a city seen from above. The shapes were, perhaps, a circuit. The shapes were, perhaps, both.",
+      "text": "[mood:night][stage:frasier stool][stage:john counter_post][shot:insert phone]Frasier turned the phone screen toward him.",
       "voice": "assets/audio/voice/vol5_ch0_model_city/000.mp3"
+    },
+    {
+      "t": "narrate",
+      "text": "On the screen, a sequence of geometric shapes pulsed in slow rotation, blue and green and a color John had never seen on a screen before, a kind of luminous bruise that did not seem to belong to the visible spectrum."
+    },
+    {
+      "t": "narrate",
+      "text": "The shapes were, perhaps, a city seen from above. The shapes were, perhaps, a circuit. The shapes were, perhaps, both."
     },
     {
       "t": "say",
@@ -44,8 +52,12 @@
     },
     {
       "t": "narrate",
-      "text": "[shot:insert notebook]John looked at his own notebook, open beside the coffee mug. Filled with cryptic observations, overheard snippets, hand-drawn diagrams of Graustark's warped ley lines. He was trying to document the decay. Frasier was, evidently, building new decays from scratch.",
+      "text": "[shot:insert notebook]John looked at his own notebook, open beside the coffee mug. Filled with cryptic observations, overheard snippets, hand-drawn diagrams of Graustark's warped ley lines. He was trying to document the decay.",
       "voice": "assets/audio/voice/vol5_ch0_model_city/005.mp3"
+    },
+    {
+      "t": "narrate",
+      "text": "Frasier was, evidently, building new decays from scratch."
     },
     {
       "t": "think",

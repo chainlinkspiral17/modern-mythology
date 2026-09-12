@@ -45,7 +45,11 @@
       "t": "show"
     },
     {
-      "text": "[shot:insert bowl][mood:day_bright]Cale arrived at the cabin at two-oh-five. He had the disc-case in his coat. He came up the porch steps. He came in. He did not take off the coat. He set the disc-case on the kitchen table beside the two bowls and the cedar bell-piece. He looked at the three of them.",
+      "text": "[shot:insert bowl][mood:day_bright]Cale arrived at the cabin at two-oh-five. He had the disc-case in his coat. He came up the porch steps. He came in. He did not take off the coat.",
+      "t": "narrate"
+    },
+    {
+      "text": "He set the disc-case on the kitchen table beside the two bowls and the cedar bell-piece. He looked at the three of them.",
       "t": "narrate"
     },
     {
@@ -88,7 +92,11 @@
       "t": "narrate"
     },
     {
-      "text": "[shot:insert disc]The disc-case was the case the stick had been in when Cale had sold it to Tem at ChillWave on the eleventh of July for nineteen dollars. It was the case that had been on Tem's writing desk through July. It was the case Tem had brought back to Cale on the eighth of August when she had decided the stick was broken. It was the case Cale had put on the inventory shelf behind his register on the seventeenth of August.",
+      "text": "[shot:insert disc]The disc-case was the case the stick had been in when Cale had sold it to Tem at ChillWave on the eleventh of July for nineteen dollars. It was the case that had been on Tem's writing desk through July.",
+      "t": "narrate"
+    },
+    {
+      "text": "It was the case Tem had brought back to Cale on the eighth of August when she had decided the stick was broken. It was the case Cale had put on the inventory shelf behind his register on the seventeenth of August.",
       "t": "narrate"
     },
     {

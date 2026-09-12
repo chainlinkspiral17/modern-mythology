@@ -37,7 +37,11 @@
       "t": "narrate"
     },
     {
-      "text": "Tem registered the second knock the way she had registered the first — by the sound passing through the cedar wall of the cabin and into the space behind her sternum, where the bell-note the crow had made was still vibrating. The kind of knock a person makes at a door when the person knows the people inside are awake. Confident. Not loud. The knock of somebody who had come up the road and across the porch and was now at the door, waiting.",
+      "text": "Tem registered the second knock the way she had registered the first — by the sound passing through the cedar wall of the cabin and into the space behind her sternum, where the bell-note the crow had made was still vibrating.",
+      "t": "narrate"
+    },
+    {
+      "text": "The kind of knock a person makes at a door when the person knows the people inside are awake. Confident. Not loud. The knock of somebody who had come up the road and across the porch and was now at the door, waiting.",
       "t": "narrate"
     },
     {
@@ -46,7 +50,11 @@
       "caption": "The cabin door at 3:02 AM. A figure on the porch in the rain."
     },
     {
-      "text": "Tem was at the table. Per was beside her. Lena beside Per. Cale and Finn and Kai and Roy were across the table from them. The seven were where they had been when the crow had rung. The bowls were where they had been. The crow was where it had been, beside the bell-piece, beak now closed.",
+      "text": "Tem was at the table. Per was beside her. Lena beside Per. Cale and Finn and Kai and Roy were across the table from them. The seven were where they had been when the crow had rung. The bowls were where they had been.",
+      "t": "narrate"
+    },
+    {
+      "text": "The crow was where it had been, beside the bell-piece, beak now closed.",
       "t": "narrate"
     },
     {
@@ -91,7 +99,17 @@
     },
     {
       "char": "tem",
-      "text": "Per. You stay at the table. The bowls stay at the table. The crow stays at the table. The cedar stays at the table. The notebook stays at the table. The seven of us at the cabin — six of you at the table, me at the door — we are going to be in the configuration the third instruction was about. The cabin is where she comes. I am the person who opens. The opening is mine because the cabin is mine. I am going to open.",
+      "text": "Per. You stay at the table. The bowls stay at the table. The crow stays at the table. The cedar stays at the table. The notebook stays at the table.",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "The seven of us at the cabin — six of you at the table, me at the door — we are going to be in the configuration the third instruction was about. The cabin is where she comes. I am the person who opens.",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "The opening is mine because the cabin is mine. I am going to open.",
       "t": "say"
     },
     {
@@ -110,7 +128,11 @@
       "t": "say"
     },
     {
-      "text": "She walked to the door. The cabin from the table to the door was twelve feet — by what Tem had measured at sixteen when Eddvard had asked her to figure out the dimensions for a math project. The twelve feet at three-oh-two on the first of September of 2052 were twelve feet she walked the way she had walked them in dreams since spring of 2049.",
+      "text": "She walked to the door. The cabin from the table to the door was twelve feet — by what Tem had measured at sixteen when Eddvard had asked her to figure out the dimensions for a math project.",
+      "t": "narrate"
+    },
+    {
+      "text": "The twelve feet at three-oh-two on the first of September of 2052 were twelve feet she walked the way she had walked them in dreams since spring of 2049.",
       "t": "narrate"
     },
     {
@@ -150,7 +172,11 @@
       "t": "narrate"
     },
     {
-      "text": "The person was a young woman in a yellow slicker. The slicker's hood was up. The hair under the hood was — by what Tem could see in the cabin's spilled light — curling and dark. The slicker was the yellow Finn had described from Cape Perpetua. The hair was what Lena had painted on the alley wall.",
+      "text": "The person was a young woman in a yellow slicker. The slicker's hood was up. The hair under the hood was — by what Tem could see in the cabin's spilled light — curling and dark.",
+      "t": "narrate"
+    },
+    {
+      "text": "The slicker was the yellow Finn had described from Cape Perpetua. The hair was what Lena had painted on the alley wall.",
       "t": "narrate"
     },
     {

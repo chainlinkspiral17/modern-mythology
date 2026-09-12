@@ -53,7 +53,11 @@
   },
   {
    "t": "narrate",
-   "text": "The emergency radio in his pack does the patterned-static thing again. He is used to it now. He does not stop walking. The Cumbia does not surface this morning; instead, briefly, distantly, like a transmission from a country with a different alphabet, he hears a girl's voice — young, dry, somewhere south — say help me find them."
+   "text": "The emergency radio in his pack does the patterned-static thing again. He is used to it now. He does not stop walking."
+  },
+  {
+   "t": "narrate",
+   "text": "The Cumbia does not surface this morning; instead, briefly, distantly, like a transmission from a country with a different alphabet, he hears a girl's voice — young, dry, somewhere south — say help me find them."
   },
   {
    "t": "narrate",
@@ -61,7 +65,11 @@
   },
   {
    "t": "narrate",
-   "text": "[shot:insert phone]He marks the GPS coordinate on his phone. He does not know why. He does not know the girl. He will find out, in November, that her name was Maya, and that the message was meant for him, and that the route she sent him on goes through a cannery he has been avoiding his whole life."
+   "text": "[shot:insert phone]He marks the GPS coordinate on his phone. He does not know why. He does not know the girl."
+  },
+  {
+   "t": "narrate",
+   "text": "He will find out, in November, that her name was Maya, and that the message was meant for him, and that the route she sent him on goes through a cannery he has been avoiding his whole life."
   },
   {
    "t": "narrate",
@@ -106,7 +114,11 @@
   },
   {
    "t": "narrate",
-   "text": "[trip:1.4] [shot:insert charcoal~]She is awake before her alarm. Her hand is on her thigh. Her thigh has charcoal on it in the shape of three letters: S U N. Her sketchbook is on the bedside table where she left it. The sketchbook has not been opened. The pencils are in the drawer, also where she left them. There is no charcoal in the apartment."
+   "text": "[trip:1.4] [shot:insert charcoal~]She is awake before her alarm. Her hand is on her thigh. Her thigh has charcoal on it in the shape of three letters: S U N. Her sketchbook is on the bedside table where she left it. The sketchbook has not been opened."
+  },
+  {
+   "t": "narrate",
+   "text": "The pencils are in the drawer, also where she left them. There is no charcoal in the apartment."
   },
   {
    "t": "narrate",

@@ -31,7 +31,11 @@
       "t": "narrate"
     },
     {
-      "text": "He had set no alarm. The apartment was at the corner of Hemlock and the alley that ran behind the bakery. Thursday was a quiet morning by the alley. He had woken at four forty-two because his body had decided, by some logic of its own that he had stopped questioning some years ago, that four forty-two was when he would wake on a Thursday in late August on the coast.",
+      "text": "He had set no alarm. The apartment was at the corner of Hemlock and the alley that ran behind the bakery. Thursday was a quiet morning by the alley.",
+      "t": "narrate"
+    },
+    {
+      "text": "He had woken at four forty-two because his body had decided, by some logic of its own that he had stopped questioning some years ago, that four forty-two was when he would wake on a Thursday in late August on the coast.",
       "t": "narrate"
     },
     {
@@ -43,7 +47,11 @@
       "t": "narrate"
     },
     {
-      "text": "The crow was awake. The crow was looking at him in the way the crow looked at him in the morning when the crow had something to communicate and was waiting for him to be awake enough to receive it. The crow's eye was the yellow-and-black he had been looking at across the bedroom for nine months.",
+      "text": "The crow was awake. The crow was looking at him in the way the crow looked at him in the morning when the crow had something to communicate and was waiting for him to be awake enough to receive it.",
+      "t": "narrate"
+    },
+    {
+      "text": "The crow's eye was the yellow-and-black he had been looking at across the bedroom for nine months.",
       "t": "narrate"
     },
     {
@@ -93,7 +101,11 @@
       "t": "narrate"
     },
     {
-      "text": "There were now eight pieces in the duffel. He registered the number without having opened the duffel. The crow was looking at the duffel in the way the crow looked at the duffel when there was a new piece in it that the crow had brought in overnight. The pieces had been coming faster.",
+      "text": "There were now eight pieces in the duffel. He registered the number without having opened the duffel.",
+      "t": "narrate"
+    },
+    {
+      "text": "The crow was looking at the duffel in the way the crow looked at the duffel when there was a new piece in it that the crow had brought in overnight. The pieces had been coming faster.",
       "t": "narrate"
     },
     {
@@ -105,7 +117,11 @@
       "t": "narrate"
     },
     {
-      "text": "The eighth piece had a figure carved into it. He held it up to the kitchen light. The figure was a sliver of a face. The face filled the unburnt portion of the wood. The face was the face of a young woman. The hair on the face was curling. The eyes were closed. The mouth was closed. He had not, on any of the previous seven pieces, seen a face.",
+      "text": "The eighth piece had a figure carved into it. He held it up to the kitchen light. The figure was a sliver of a face. The face filled the unburnt portion of the wood. The face was the face of a young woman.",
+      "t": "narrate"
+    },
+    {
+      "text": "The hair on the face was curling. The eyes were closed. The mouth was closed. He had not, on any of the previous seven pieces, seen a face.",
       "t": "narrate"
     },
     {
@@ -133,7 +149,11 @@
       "t": "narrate"
     },
     {
-      "text": "Then he laid the eighth piece on the table. He took the cloth out of the duffel. He took the other seven pieces out one at a time and laid them on the cloth. He moved pieces. He moved the eighth. The six smaller pieces wanted to fit together. He laid the six smaller pieces in a ring — a rough hexagon, with each piece making one side. The hexagon had a hole in its center. The hole was the size and shape of the eighth piece.",
+      "text": "Then he laid the eighth piece on the table. He took the cloth out of the duffel. He took the other seven pieces out one at a time and laid them on the cloth. He moved pieces. He moved the eighth.",
+      "t": "narrate"
+    },
+    {
+      "text": "The six smaller pieces wanted to fit together. He laid the six smaller pieces in a ring — a rough hexagon, with each piece making one side. The hexagon had a hole in its center. The hole was the size and shape of the eighth piece.",
       "t": "narrate"
     },
     {
@@ -161,7 +181,15 @@
       "t": "narrate"
     },
     {
-      "text": "[shot:closeup finn]He looked at the hexagon. The face in the center was the face. The hair was curling. The eyes were closed. He registered, sitting with it across the table, that the face was made of cedar — and that the cedar had been carved by the hand he had seen on Per's mother's bowl Wednesday afternoon at the cabin. The carver was Olaf. The crow had brought him a piece of cedar carved by Per's father, who had been dead since 1978.",
+      "text": "[shot:closeup finn]He looked at the hexagon. The face in the center was the face. The hair was curling. The eyes were closed.",
+      "t": "narrate"
+    },
+    {
+      "text": "He registered, sitting with it across the table, that the face was made of cedar — and that the cedar had been carved by the hand he had seen on Per's mother's bowl Wednesday afternoon at the cabin. The carver was Olaf.",
+      "t": "narrate"
+    },
+    {
+      "text": "The crow had brought him a piece of cedar carved by Per's father, who had been dead since 1978.",
       "t": "narrate"
     },
     {
@@ -199,7 +227,11 @@
       "t": "narrate"
     },
     {
-      "text": "He had been talking to the crow for nine months. The crow had not, in the nine months, ever responded with anything Finn could read as English. The crow had tapped, had shifted, had on occasion made the clicking sound crows made in the throat. He had not, in the nine months, expected the crow to speak.",
+      "text": "He had been talking to the crow for nine months. The crow had not, in the nine months, ever responded with anything Finn could read as English.",
+      "t": "narrate"
+    },
+    {
+      "text": "The crow had tapped, had shifted, had on occasion made the clicking sound crows made in the throat. He had not, in the nine months, expected the crow to speak.",
       "t": "narrate"
     },
     {
@@ -314,7 +346,13 @@
     },
     {
       "char": "finn",
-      "text": "Friend. You said Brandon. I — I have to ask. Was that you saying his name. Or was that — was that the crow that you are now, made of the crow you were when he was alive and the substrate that has been moving through everything since July, saying his name on his behalf.",
+      "text": "Friend. You said Brandon. I — I have to ask. Was that you saying his name.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "finn",
+      "text": "Or was that — was that the crow that you are now, made of the crow you were when he was alive and the substrate that has been moving through everything since July, saying his name on his behalf.",
       "expr": "serious",
       "t": "say"
     },
@@ -345,7 +383,11 @@
       "t": "narrate"
     },
     {
-      "text": "The co-op opened at six. Margaret was at the front when he came in — sixty-one years old, running the co-op since 2041, knowing Finn the way the woman who had run a co-op for two decades knew the cyclist who delivered the boxes. She was at the counter going through the morning's invoices when he came in.",
+      "text": "The co-op opened at six. Margaret was at the front when he came in — sixty-one years old, running the co-op since 2041, knowing Finn the way the woman who had run a co-op for two decades knew the cyclist who delivered the boxes.",
+      "t": "narrate"
+    },
+    {
+      "text": "She was at the counter going through the morning's invoices when he came in.",
       "t": "narrate"
     },
     {
@@ -479,15 +521,31 @@
       "t": "narrate"
     },
     {
-      "text": "Smolvud at seven-fifteen on a Thursday morning in late August was a town that had been awake an hour. The Daily Grind was open. He could see Lena through the window as he drove past — she had taken her shift this morning after all. He registered her without slowing. She did not see him drive past. The crow stayed on the dashboard.",
+      "text": "Smolvud at seven-fifteen on a Thursday morning in late August was a town that had been awake an hour. The Daily Grind was open.",
       "t": "narrate"
     },
     {
-      "text": "He took the road south. Past Cale's place — ChillWave was dark, Cale's truck not in the lot, Cale was probably at the cabin — and on past the foundation's bench at Ona Beach and into the section of the coast highway that wound along the headlands toward Cape Perpetua. The rain on the windshield was steady. Cape Perpetua was twenty-eight minutes from town in the rain at the speed he was driving.",
+      "text": "He could see Lena through the window as he drove past — she had taken her shift this morning after all. He registered her without slowing. She did not see him drive past. The crow stayed on the dashboard.",
       "t": "narrate"
     },
     {
-      "text": "[shot:insert phone]He thought, as he drove, about Maya. The voice through the emergency radio had said help me find them. He had marked the GPS coordinate on his phone and the radio had gone back to standard hiss. He had not, in the months since, looked at the notebook for that entry.",
+      "text": "He took the road south.",
+      "t": "narrate"
+    },
+    {
+      "text": "Past Cale's place — ChillWave was dark, Cale's truck not in the lot, Cale was probably at the cabin — and on past the foundation's bench at Ona Beach and into the section of the coast highway that wound along the headlands toward Cape Perpetua.",
+      "t": "narrate"
+    },
+    {
+      "text": "The rain on the windshield was steady. Cape Perpetua was twenty-eight minutes from town in the rain at the speed he was driving.",
+      "t": "narrate"
+    },
+    {
+      "text": "[shot:insert phone]He thought, as he drove, about Maya. The voice through the emergency radio had said help me find them. He had marked the GPS coordinate on his phone and the radio had gone back to standard hiss.",
+      "t": "narrate"
+    },
+    {
+      "text": "He had not, in the months since, looked at the notebook for that entry.",
       "t": "narrate"
     },
     {
@@ -529,7 +587,11 @@
       "t": "narrate"
     },
     {
-      "text": "[shot:insert hexagon]He stood at the rail. The crow landed on the rail beside him. He set the canvas bag on the bench. He took out the cloth. He carried the hexagon — six pieces in the ring, the cedar face in the center, the AR I A piece beside it — and set it on the platform's earthen floor between his boots and the rail.",
+      "text": "[shot:insert hexagon]He stood at the rail. The crow landed on the rail beside him. He set the canvas bag on the bench. He took out the cloth.",
+      "t": "narrate"
+    },
+    {
+      "text": "He carried the hexagon — six pieces in the ring, the cedar face in the center, the AR I A piece beside it — and set it on the platform's earthen floor between his boots and the rail.",
       "t": "narrate"
     },
     {
@@ -545,11 +607,19 @@
       "t": "narrate"
     },
     {
-      "text": "[beat:chill][shot:closeup figure~]The figure was at the second stack from the headland. The figure was standing on the seaward edge of the second stack, in a way no person could stand on a sea-stack at this hour with the tide what it was. The figure was standing on [wave amp=6 freq=2]the water. Or on nothing[/wave].",
+      "text": "[beat:chill][shot:closeup figure~]The figure was at the second stack from the headland. The figure was standing on the seaward edge of the second stack, in a way no person could stand on a sea-stack at this hour with the tide what it was.",
       "t": "narrate"
     },
     {
-      "text": "The figure was in a yellow slicker. The hood was up. The hair under the hood was the substrate's idea of curling. The slicker was the yellow of the slicker Kai had described coming back from the basement of Kestrel Mountain. The slicker was the yellow of the figure on the bowl Olaf had not carved and the substrate had made.",
+      "text": "The figure was standing on [wave amp=6 freq=2]the water. Or on nothing[/wave].",
+      "t": "narrate"
+    },
+    {
+      "text": "The figure was in a yellow slicker. The hood was up. The hair under the hood was the substrate's idea of curling. The slicker was the yellow of the slicker Kai had described coming back from the basement of Kestrel Mountain.",
+      "t": "narrate"
+    },
+    {
+      "text": "The slicker was the yellow of the figure on the bowl Olaf had not carved and the substrate had made.",
       "t": "narrate"
     },
     {
@@ -632,7 +702,13 @@
     },
     {
       "char": "finn",
-      "text": "He died and you came to me. You came to me because he had told you to come to me, or because the substrate had told you to come to me, or because — Brandon — because some part of the substrate had been him, and the part that had been him had come into you, and you had come to me because you knew where I lived.",
+      "text": "He died and you came to me.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "finn",
+      "text": "You came to me because he had told you to come to me, or because the substrate had told you to come to me, or because — Brandon — because some part of the substrate had been him, and the part that had been him had come into you, and you had come to me because you knew where I lived.",
       "expr": "serious",
       "t": "say"
     },

@@ -268,6 +268,18 @@ WROUT="$(python3 wrong_room_audit.py 2>/dev/null)" || {
 echo "$WROUT" | tail -1
 echo ""
 
+# ── Page-length gate (2026-09-12) ─────────────────────────────
+# DialogueBox keeps its full font to 260 visible characters and then
+# shrinks toward half size to fit — "too much text on screen at once,
+# too small and cramped." page_split turned 2,147 nodes into pages at
+# sentence boundaries; nothing over 300 characters ships again.
+echo "── page_length_audit.py ──"
+PLOUT="$(python3 page_length_audit.py 2>/dev/null)" || {
+    echo "$PLOUT" | grep "^LONG" | head -20
+    echo "$PLOUT" | tail -1; exit 1; }
+echo "$PLOUT" | tail -1
+echo ""
+
 # ── Phantom-surface gate (2026-09-10) ─────────────────────────
 # A detail pass that hard-codes a desk/counter/bar origin the builder
 # never put there (eighteen locales had one). Static: reads the x/y/z

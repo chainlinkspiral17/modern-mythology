@@ -33,7 +33,11 @@
   },
   {
    "t": "narrate",
-   "text": "The blackout curtains are doing what they have been doing since he was sixteen, which is keeping his bedroom in the kind of dark that has no relationship to the time of day outside it. He lies on his back for a beat. He registers the quality of the dark and registers that the quality of the dark is the four-PM quality, which is the recovery-Sunday quality, which is the day after inventory."
+   "text": "The blackout curtains are doing what they have been doing since he was sixteen, which is keeping his bedroom in the kind of dark that has no relationship to the time of day outside it. He lies on his back for a beat."
+  },
+  {
+   "t": "narrate",
+   "text": "He registers the quality of the dark and registers that the quality of the dark is the four-PM quality, which is the recovery-Sunday quality, which is the day after inventory."
   },
   {
    "t": "narrate",
@@ -159,7 +163,11 @@
   },
   {
    "t": "narrate",
-   "text": "I have been thinking about you. I have been wondering how the work is. I have been wondering whether the avocados came in well this season — I remember you used to write to me about the avocados when I was small, and I have been thinking about those letters this summer."
+   "text": "I have been thinking about you. I have been wondering how the work is."
+  },
+  {
+   "t": "narrate",
+   "text": "I have been wondering whether the avocados came in well this season — I remember you used to write to me about the avocados when I was small, and I have been thinking about those letters this summer."
   },
   {
    "t": "narrate",
@@ -235,7 +243,15 @@
   },
   {
    "t": "narrate",
-   "text": "[shot:insert cake]The folding table from the Kowalski garage is set up under the pecan tree. On the table is the cake — a sheet cake from the bakery on Magnolia, with white frosting and the words GRACIE — STICKER QUEEN in pink piping. Beside the cake, on a small folded cloth, sits Gracie's completed activity book — the Sunday-school-issued sticker-and-puzzle book. It is the third book Gracie has finished this summer. It is the one for which there is, by Anita's small declaration two weeks ago, going to be a small ceremony on the Sunday before school starts."
+   "text": "[shot:insert cake]The folding table from the Kowalski garage is set up under the pecan tree. On the table is the cake — a sheet cake from the bakery on Magnolia, with white frosting and the words GRACIE — STICKER QUEEN in pink piping."
+  },
+  {
+   "t": "narrate",
+   "text": "Beside the cake, on a small folded cloth, sits Gracie's completed activity book — the Sunday-school-issued sticker-and-puzzle book. It is the third book Gracie has finished this summer."
+  },
+  {
+   "t": "narrate",
+   "text": "It is the one for which there is, by Anita's small declaration two weeks ago, going to be a small ceremony on the Sunday before school starts."
   },
   {
    "t": "show",
@@ -257,7 +273,11 @@
   },
   {
    "t": "narrate",
-   "text": "[shot:establish]Linda is in the wicker chair from the Caldwell porch, which Maya has wheeled out to the yard. Anita is at the table, in her good Sunday blouse — the blue one — pouring lemonade into paper cups. Bill is by the cake, in his good Sunday shirt, doing the small specific Bill-thing of pretending he is annoyed about the ceremony while being, by anyone's read who has known him for more than ten minutes, deeply pleased."
+   "text": "[shot:establish]Linda is in the wicker chair from the Caldwell porch, which Maya has wheeled out to the yard. Anita is at the table, in her good Sunday blouse — the blue one — pouring lemonade into paper cups."
+  },
+  {
+   "t": "narrate",
+   "text": "Bill is by the cake, in his good Sunday shirt, doing the small specific Bill-thing of pretending he is annoyed about the ceremony while being, by anyone's read who has known him for more than ten minutes, deeply pleased."
   },
   {
    "t": "show",
@@ -283,7 +303,15 @@
   },
   {
    "t": "narrate",
-   "text": "The Hendersons arrive at three fifty-two. Eileen has the cinnamon coffee cake in the small white box from the bakery. Jim is beside her, in the careful clothes he has been wearing this summer for any public appearance. Jesse is not there — he is at home, by his own choice, sleeping off the gig. Eileen explains this to Anita at the lemonade table, and Anita says that Jesse is forgiven on the basis of the gig itself, which Anita had heard about from Bianca who had heard about it from Eileen at the four-thirty table on Friday and which Anita had then, all weekend, been telling her own night-shift coworkers about."
+   "text": "The Hendersons arrive at three fifty-two. Eileen has the cinnamon coffee cake in the small white box from the bakery. Jim is beside her, in the careful clothes he has been wearing this summer for any public appearance."
+  },
+  {
+   "t": "narrate",
+   "text": "Jesse is not there — he is at home, by his own choice, sleeping off the gig. Eileen explains this to Anita at the lemonade table, and Anita says that Jesse is forgiven on the basis of the gig itself,"
+  },
+  {
+   "t": "narrate",
+   "text": "which Anita had heard about from Bianca who had heard about it from Eileen at the four-thirty table on Friday and which Anita had then, all weekend, been telling her own night-shift coworkers about."
   },
   {
    "t": "show",
@@ -350,7 +378,19 @@
   {
    "t": "say",
    "char": "Bill",
-   "text": "Gracie, this summer, decided in early June that she was going to do the sticker book that the Sunday school had given her. The Sunday school had told the kids it was an optional summer activity. Gracie, who has, since she was four, taken instructions from the Sunday school more seriously than the Sunday school takes them itself, decided that the optional was not optional. She started the book on June ninth. She finished it last Tuesday.",
+   "text": "Gracie, this summer, decided in early June that she was going to do the sticker book that the Sunday school had given her. The Sunday school had told the kids it was an optional summer activity.",
+   "expr": "neutral"
+  },
+  {
+   "t": "say",
+   "char": "Bill",
+   "text": "Gracie, who has, since she was four, taken instructions from the Sunday school more seriously than the Sunday school takes them itself, decided that the optional was not optional. She started the book on June ninth.",
+   "expr": "neutral"
+  },
+  {
+   "t": "say",
+   "char": "Bill",
+   "text": "She finished it last Tuesday.",
    "expr": "neutral"
   },
   {
@@ -437,7 +477,11 @@
   },
   {
    "t": "narrate",
-   "text": "[shot:insert photo]The picture, at four eleven, is taken by Maya with Anita's phone. The picture is Gracie in the center, holding the third sticker book up, with Bill at her left and Anita at her right, the cake in front of them on the table. The picture is, by Maya's framing, slightly off-center to the left, which Maya does not notice and which Anita, when she looks at the picture later, decides she likes more than she would have liked the centered version."
+   "text": "[shot:insert photo]The picture, at four eleven, is taken by Maya with Anita's phone. The picture is Gracie in the center, holding the third sticker book up, with Bill at her left and Anita at her right, the cake in front of them on the table."
+  },
+  {
+   "t": "narrate",
+   "text": "The picture is, by Maya's framing, slightly off-center to the left, which Maya does not notice and which Anita, when she looks at the picture later, decides she likes more than she would have liked the centered version."
   },
   {
    "t": "narrate",
@@ -495,7 +539,11 @@
   },
   {
    "t": "narrate",
-   "text": "[mood:dusk][shot:establish]Ben drives Linda back to the porch with the wicker chair in the back of the Civic. Maya rides in the passenger seat. At the Caldwell porch Linda gets out. Maya helps her up the steps and into the wicker. Ben unloads the chair to the porch, sets it back where it had been on Friday evening."
+   "text": "[mood:dusk][shot:establish]Ben drives Linda back to the porch with the wicker chair in the back of the Civic. Maya rides in the passenger seat. At the Caldwell porch Linda gets out. Maya helps her up the steps and into the wicker."
+  },
+  {
+   "t": "narrate",
+   "text": "Ben unloads the chair to the porch, sets it back where it had been on Friday evening."
   },
   {
    "t": "say",
@@ -566,7 +614,19 @@
   {
    "t": "say",
    "char": "Linda",
-   "text": "[shot:closeup linda]I have, in seventy-eight years, watched many friendships of seventeen-year-olds. The ones that hold are the ones where the two people in question understand, by August before senior year, that the next several years are going to ask a different shape of the friendship than the previous ones did. The understanding does not, by itself, hold the friendship. But the not-understanding usually breaks it.",
+   "text": "[shot:closeup linda]I have, in seventy-eight years, watched many friendships of seventeen-year-olds.",
+   "expr": "neutral"
+  },
+  {
+   "t": "say",
+   "char": "Linda",
+   "text": "The ones that hold are the ones where the two people in question understand, by August before senior year, that the next several years are going to ask a different shape of the friendship than the previous ones did.",
+   "expr": "neutral"
+  },
+  {
+   "t": "say",
+   "char": "Linda",
+   "text": "The understanding does not, by itself, hold the friendship. But the not-understanding usually breaks it.",
    "expr": "neutral"
   },
   {
@@ -774,7 +834,19 @@
   {
    "t": "say",
    "char": "Bianca",
-   "text": "Yeah. UT-Austin is the right school for you. The early-decision program is the right way to go for the kind of student you are. The binding part is the part that will, by November, force you to be honest with yourself about whether you actually want to go there. You will, by then, know. If you submit the early-decision application, you have decided. If you do not, you have also decided. Either way, you will, by November, have decided.",
+   "text": "Yeah. UT-Austin is the right school for you. The early-decision program is the right way to go for the kind of student you are.",
+   "expr": "neutral"
+  },
+  {
+   "t": "say",
+   "char": "Bianca",
+   "text": "The binding part is the part that will, by November, force you to be honest with yourself about whether you actually want to go there. You will, by then, know. If you submit the early-decision application, you have decided.",
+   "expr": "neutral"
+  },
+  {
+   "t": "say",
+   "char": "Bianca",
+   "text": "If you do not, you have also decided. Either way, you will, by November, have decided.",
    "expr": "neutral"
   },
   {
@@ -798,7 +870,25 @@
   {
    "t": "say",
    "char": "Bianca",
-   "text": "I want you to go to UT-Austin. I have wanted you to go to UT-Austin since you were ten years old and we drove down for that football game and you spent the entire weekend asking your father about the architecture of the engineering quad. I am going to be — I am going to be very, very glad if you get in. I am also going to be very, very sad to have you gone. The two feelings are going to live in me at the same time. I want you to know that the two feelings are going to live in me at the same time. I do not want you to make the decision based on either one of them. The decision is yours. The feelings are mine.",
+   "text": "I want you to go to UT-Austin.",
+   "expr": "neutral"
+  },
+  {
+   "t": "say",
+   "char": "Bianca",
+   "text": "I have wanted you to go to UT-Austin since you were ten years old and we drove down for that football game and you spent the entire weekend asking your father about the architecture of the engineering quad.",
+   "expr": "neutral"
+  },
+  {
+   "t": "say",
+   "char": "Bianca",
+   "text": "I am going to be — I am going to be very, very glad if you get in. I am also going to be very, very sad to have you gone. The two feelings are going to live in me at the same time.",
+   "expr": "neutral"
+  },
+  {
+   "t": "say",
+   "char": "Bianca",
+   "text": "I want you to know that the two feelings are going to live in me at the same time. I do not want you to make the decision based on either one of them. The decision is yours. The feelings are mine.",
    "expr": "neutral"
   },
   {
@@ -905,11 +995,19 @@
   },
   {
    "t": "narrate",
-   "text": "Sammy is going to apply early to UT-Austin. She told me this afternoon. She told me on the Sunday before school started because she wanted me to know going in. I think she is going to get in. I think she should. I told her so. I am — I am going to be a wreck about it in November. She knows. She is going anyway and she is right to."
+   "text": "Sammy is going to apply early to UT-Austin. She told me this afternoon. She told me on the Sunday before school started because she wanted me to know going in. I think she is going to get in. I think she should. I told her so."
   },
   {
    "t": "narrate",
-   "text": "I have been doing a thing on Friday mornings with two of the women in the cul-de-sac. Eileen Henderson and Anita Kowalski. We sit at the table at four-thirty AM. We do not perform okay for each other. It is the closest thing I have to the consolation of having other adults in the room."
+   "text": "I am — I am going to be a wreck about it in November. She knows. She is going anyway and she is right to."
+  },
+  {
+   "t": "narrate",
+   "text": "I have been doing a thing on Friday mornings with two of the women in the cul-de-sac. Eileen Henderson and Anita Kowalski. We sit at the table at four-thirty AM. We do not perform okay for each other."
+  },
+  {
+   "t": "narrate",
+   "text": "It is the closest thing I have to the consolation of having other adults in the room."
   },
   {
    "t": "narrate",
@@ -921,7 +1019,11 @@
   },
   {
    "t": "narrate",
-   "text": "I think about you. I think about you on the days the schedule says I am allowed to and I think about you on the days the schedule does not. The schedule is a thing I made up to get through the summer. It worked. I am, by the end of the summer, in a different shape than I was in May. Some of the shape is the schedule. Some of it is the four-thirty-table. Some of it is Sammy. Some of it is — I do not entirely know what."
+   "text": "I think about you. I think about you on the days the schedule says I am allowed to and I think about you on the days the schedule does not. The schedule is a thing I made up to get through the summer. It worked."
+  },
+  {
+   "t": "narrate",
+   "text": "I am, by the end of the summer, in a different shape than I was in May. Some of the shape is the schedule. Some of it is the four-thirty-table. Some of it is Sammy. Some of it is — I do not entirely know what."
   },
   {
    "t": "narrate",

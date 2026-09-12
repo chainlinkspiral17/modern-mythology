@@ -28,7 +28,11 @@
       "t": "interlude"
     },
     {
-      "text": "[mood:morning_bright]Lena woke at six-forty in an apartment that held the cold she had set for it the night before. The thermostat above the bed read sixty-one. She put on the wool socks, the jeans, a long flannel that had been her uncle's before her aunt's before hers, and crossed the small hall to the main room.",
+      "text": "[mood:morning_bright]Lena woke at six-forty in an apartment that held the cold she had set for it the night before. The thermostat above the bed read sixty-one.",
+      "t": "narrate"
+    },
+    {
+      "text": "She put on the wool socks, the jeans, a long flannel that had been her uncle's before her aunt's before hers, and crossed the small hall to the main room.",
       "t": "narrate"
     },
     {
@@ -58,7 +62,11 @@
       "t": "narrate"
     },
     {
-      "text": "She went to the kitchen, set the kettle, filled the cone with the dark French Soren had given her on her birthday last year. She poured two cups. The smell filled the kitchen, then the main room, in the way that good coffee will when the apartment is small enough.",
+      "text": "She went to the kitchen, set the kettle, filled the cone with the dark French Soren had given her on her birthday last year. She poured two cups.",
+      "t": "narrate"
+    },
+    {
+      "text": "The smell filled the kitchen, then the main room, in the way that good coffee will when the apartment is small enough.",
       "t": "narrate"
     },
     {
@@ -88,7 +96,11 @@
       "t": "say"
     },
     {
-      "text": "They drank. The window over the kitchen sink looked out on the alley and on the wall of the building opposite, and on that wall was the Starfish Nebula mural Lena had painted across two months in the spring of 2050. She had counted the patches yesterday morning. Three on Friday. Four yesterday. She did not count them this morning.",
+      "text": "They drank. The window over the kitchen sink looked out on the alley and on the wall of the building opposite, and on that wall was the Starfish Nebula mural Lena had painted across two months in the spring of 2050.",
+      "t": "narrate"
+    },
+    {
+      "text": "She had counted the patches yesterday morning. Three on Friday. Four yesterday. She did not count them this morning.",
       "t": "narrate"
     },
     {
@@ -205,7 +217,13 @@
     },
     {
       "char": "tem",
-      "text": "Because I think the next few weeks are going to be busy and I don't want to forget you've had a thing you've been failing at, in your studio, every day, while everything else has been happening. The painting is what you've been doing. The patches are not what you've been doing. I don't want the patches to be the thing I ask about.",
+      "text": "Because I think the next few weeks are going to be busy and I don't want to forget you've had a thing you've been failing at, in your studio, every day, while everything else has been happening.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "The painting is what you've been doing. The patches are not what you've been doing. I don't want the patches to be the thing I ask about.",
       "expr": "neutral",
       "t": "say"
     },
@@ -215,7 +233,13 @@
     },
     {
       "char": "lena",
-      "text": "It's a big piece. Six by eight. Oil. I started it after Starfish Nebula. I told myself when I finished Starfish that the next thing I made was going to be the thing. The painting that was the painting. I haven't made it. I've started it eleven times. I've stripped it back eleven times. The canvas is thick enough now that I could paint a different painting on top of the underpainting and have it be fine. I cannot get past the underpainting.",
+      "text": "It's a big piece. Six by eight. Oil. I started it after Starfish Nebula. I told myself when I finished Starfish that the next thing I made was going to be the thing. The painting that was the painting. I haven't made it.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "lena",
+      "text": "I've started it eleven times. I've stripped it back eleven times. The canvas is thick enough now that I could paint a different painting on top of the underpainting and have it be fine. I cannot get past the underpainting.",
       "expr": "serious",
       "t": "say"
     },
@@ -239,7 +263,19 @@
     },
     {
       "char": "lena",
-      "text": "I'm not being coy. I have a feeling. The feeling started about the alley. About what it means to make a thirty-foot mural on a wall in an alley and have it stay there while I go on making the small painting nobody sees. The mural is for everyone. The painting is for me. I started thinking the new piece was going to be about the difference between them. Then I started painting and the painting did not want to be about that. It wanted to be about something else. I tried to paint what it wanted. The trying didn't work. I went back to what I'd thought it was about. That didn't work either. Two years.",
+      "text": "I'm not being coy. I have a feeling. The feeling started about the alley. About what it means to make a thirty-foot mural on a wall in an alley and have it stay there while I go on making the small painting nobody sees.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "lena",
+      "text": "The mural is for everyone. The painting is for me. I started thinking the new piece was going to be about the difference between them. Then I started painting and the painting did not want to be about that.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "lena",
+      "text": "It wanted to be about something else. I tried to paint what it wanted. The trying didn't work. I went back to what I'd thought it was about. That didn't work either. Two years.",
       "expr": "serious",
       "t": "say"
     },
@@ -331,7 +367,13 @@
     },
     {
       "char": "lena",
-      "text": "I've written to him. He says the room is mine if I want it. He says I'd need to be there by the end of September. He says the workshop needs me for a year. He says if I show up for less than a year he'd rather I not show up at all. He says he's in a good window.",
+      "text": "I've written to him. He says the room is mine if I want it. He says I'd need to be there by the end of September. He says the workshop needs me for a year.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "lena",
+      "text": "He says if I show up for less than a year he'd rather I not show up at all. He says he's in a good window.",
       "expr": "serious",
       "t": "say"
     },
@@ -367,7 +409,13 @@
     },
     {
       "char": "lena",
-      "text": "I don't know all of it. I've heard from Hannah at the Portland gallery. Hannah's known the ex-wife for years. The ex-wife told her he can be frightening when he's manic. Not violent. The word she used was consuming. He works for sixteen-hour stretches and he expects whoever's around him to be inside the work with him at his cadence. I would be the person around him. I would have to be inside the work.",
+      "text": "I don't know all of it. I've heard from Hannah at the Portland gallery. Hannah's known the ex-wife for years. The ex-wife told her he can be frightening when he's manic. Not violent. The word she used was consuming.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "lena",
+      "text": "He works for sixteen-hour stretches and he expects whoever's around him to be inside the work with him at his cadence. I would be the person around him. I would have to be inside the work.",
       "expr": "serious",
       "t": "say"
     },
@@ -407,7 +455,19 @@
     },
     {
       "char": "lena",
-      "text": "Because the painting isn't coming. Because I've been at the Daily Grind for two and a half years and I'm very good at it and it isn't what I'm doing. Because Jorgen is the only painter on this coast whose work I look at and feel that he has seen the thing I've been trying to see. I don't want to make work that looks like his. I want to make work that comes from where his comes from. I think I'd learn that from him in a year and not from anyone else, anywhere, including by myself.",
+      "text": "Because the painting isn't coming. Because I've been at the Daily Grind for two and a half years and I'm very good at it and it isn't what I'm doing.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "lena",
+      "text": "Because Jorgen is the only painter on this coast whose work I look at and feel that he has seen the thing I've been trying to see. I don't want to make work that looks like his.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "lena",
+      "text": "I want to make work that comes from where his comes from. I think I'd learn that from him in a year and not from anyone else, anywhere, including by myself.",
       "expr": "serious",
       "t": "say"
     },
@@ -424,7 +484,11 @@
       "t": "say"
     },
     {
-      "text": "The kettle on the stove had cooled. Through the kitchen window the rain had picked up in the way rain picks up when the front is reorganizing itself. Lena watched Tem look down at the floor and then back up and then down again, and recognized the small thing Tem did with her face when she was about to say something she had been working out for some time.",
+      "text": "The kettle on the stove had cooled. Through the kitchen window the rain had picked up in the way rain picks up when the front is reorganizing itself.",
+      "t": "narrate"
+    },
+    {
+      "text": "Lena watched Tem look down at the floor and then back up and then down again, and recognized the small thing Tem did with her face when she was about to say something she had been working out for some time.",
       "t": "narrate"
     },
     {
@@ -441,7 +505,25 @@
     },
     {
       "char": "tem",
-      "text": "Not exactly. Near enough. Before I came back to Smolvud full-time. The year I was twenty. I lived in Eugene and I worked under a printmaker. He was forty-four. I was twenty. Eight months. I learned a lot from him. The teaching and the personal and what he wanted from me became three things I could not, at twenty, hold separately. I left. I came home. I have not, since, talked about it. I'm telling you because the question you're asking yourself about Jorgen is a question I asked myself about a different person in a different town when I was younger. I want you to know I asked it. I want you to know I'm older than you and I have a stake in what you decide and I'm trying to keep my stake out of the deciding.",
+      "text": "Not exactly. Near enough. Before I came back to Smolvud full-time. The year I was twenty. I lived in Eugene and I worked under a printmaker. He was forty-four. I was twenty. Eight months. I learned a lot from him.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "The teaching and the personal and what he wanted from me became three things I could not, at twenty, hold separately. I left. I came home. I have not, since, talked about it.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "I'm telling you because the question you're asking yourself about Jorgen is a question I asked myself about a different person in a different town when I was younger. I want you to know I asked it.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "I want you to know I'm older than you and I have a stake in what you decide and I'm trying to keep my stake out of the deciding.",
       "expr": "serious",
       "t": "say"
     },
@@ -450,7 +532,11 @@
       "t": "narrate"
     },
     {
-      "text": "The room had gotten quiet in the specific way rooms get quiet when a thing has been said that the room had been keeping out for a while. Lena could hear the rain on the kitchen window. She could hear the small click of the radiator pipe in the corner that ran whether the heat was on or off, in a way the building's super had been promising to fix since 2049.",
+      "text": "The room had gotten quiet in the specific way rooms get quiet when a thing has been said that the room had been keeping out for a while. Lena could hear the rain on the kitchen window.",
+      "t": "narrate"
+    },
+    {
+      "text": "She could hear the small click of the radiator pipe in the corner that ran whether the heat was on or off, in a way the building's super had been promising to fix since 2049.",
       "t": "narrate"
     },
     {
@@ -507,7 +593,13 @@
     },
     {
       "char": "lena",
-      "text": "I had a teacher too. Before I came here. The year I was nineteen. She was a sculptor. She was thirty-six. Ten months. The same — the same shape. I left at twenty. I came here. I have not told anyone. Petra doesn't know. Hannah doesn't know. Kai and Finn don't know. You're the first.",
+      "text": "I had a teacher too. Before I came here. The year I was nineteen. She was a sculptor. She was thirty-six. Ten months. The same — the same shape. I left at twenty. I came here. I have not told anyone. Petra doesn't know.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "lena",
+      "text": "Hannah doesn't know. Kai and Finn don't know. You're the first.",
       "expr": "serious",
       "t": "say"
     },
@@ -547,7 +639,19 @@
     },
     {
       "char": "lena",
-      "text": "I have not, since April, thought about anything else. I have thought about you almost every day since you walked me to your door at six in the morning. I have not said anything because I did not know if the saying was the right thing or the wrong thing. I am twenty-three and I do not always know. I am telling you now, in this room, that the not-saying has been heavy. If you do not want it to be a thing again, that is a thing I can hear. If you do want it to be a thing again, I want to know. I do not want to spend the rest of the year not knowing. That's the only thing I have.",
+      "text": "I have not, since April, thought about anything else. I have thought about you almost every day since you walked me to your door at six in the morning.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "lena",
+      "text": "I have not said anything because I did not know if the saying was the right thing or the wrong thing. I am twenty-three and I do not always know. I am telling you now, in this room, that the not-saying has been heavy.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "lena",
+      "text": "If you do not want it to be a thing again, that is a thing I can hear. If you do want it to be a thing again, I want to know. I do not want to spend the rest of the year not knowing. That's the only thing I have.",
       "expr": "serious",
       "t": "say"
     },
@@ -573,7 +677,19 @@
     },
     {
       "char": "tem",
-      "text": "I want it to be a thing again. I have wanted it to be a thing again since April. I have not said anything because I am older than you and you told me about the teacher last winter at Petra's once, half a sentence, and stopped, and I read the half-sentence and decided I was not going to be the person you had to navigate again. I decided this without asking you. I am — I am sorry. I should have asked you.",
+      "text": "I want it to be a thing again. I have wanted it to be a thing again since April.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "I have not said anything because I am older than you and you told me about the teacher last winter at Petra's once, half a sentence, and stopped, and I read the half-sentence and decided I was not going to be the person you had to navigate again.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "I decided this without asking you. I am — I am sorry. I should have asked you.",
       "expr": "serious",
       "t": "say"
     },

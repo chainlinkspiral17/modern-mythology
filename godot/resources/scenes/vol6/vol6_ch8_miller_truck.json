@@ -66,7 +66,22 @@
     {
       "t": "think",
       "char": "Sam",
-      "text": "[shot:closeup sam~]This is not, Sam realizes, the silence she had expected. She had expected, this morning, a careful adult silence — the kind silence is when two people know there is a conversation to have and have chosen, for the moment, not to start it. This silence is different. This silence is the silence of two people who have been doing the same drive together since one of them was five — to the same lake, in the same truck, on countless Sunday mornings before whichever Little League season or fishing trip had been the day's official excuse — and who do not, at this hour and on this drive, need to fill it."
+      "text": "[shot:closeup sam~]This is not, Sam realizes, the silence she had expected."
+    },
+    {
+      "t": "think",
+      "char": "Sam",
+      "text": "She had expected, this morning, a careful adult silence — the kind silence is when two people know there is a conversation to have and have chosen, for the moment, not to start it. This silence is different."
+    },
+    {
+      "t": "think",
+      "char": "Sam",
+      "text": "This silence is the silence of two people who have been doing the same drive together since one of them was five — to the same lake, in the same truck,"
+    },
+    {
+      "t": "think",
+      "char": "Sam",
+      "text": "on countless Sunday mornings before whichever Little League season or fishing trip had been the day's official excuse — and who do not, at this hour and on this drive, need to fill it."
     },
     {
       "t": "think",
@@ -176,7 +191,11 @@
     },
     {
       "t": "narrate",
-      "text": "[mood:day_bright][shot:establish]The truck eats the highway. The sky shifts another half-shade lighter. A semi passes them on the left. The driver of the semi raises one finger off the steering wheel in the small specific Texas-driver acknowledgment, and her father — without lifting his hand from the wheel — returns it."
+      "text": "[mood:day_bright][shot:establish]The truck eats the highway. The sky shifts another half-shade lighter. A semi passes them on the left."
+    },
+    {
+      "t": "narrate",
+      "text": "The driver of the semi raises one finger off the steering wheel in the small specific Texas-driver acknowledgment, and her father — without lifting his hand from the wheel — returns it."
     },
     {
       "t": "jump",

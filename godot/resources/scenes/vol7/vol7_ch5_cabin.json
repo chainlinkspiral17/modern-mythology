@@ -28,7 +28,11 @@
       "t": "interlude"
     },
     {
-      "text": "[mood:morning_bright]Finn lived in a one-bedroom above the kayak shop on the connective stretch between old-Yachats and old-Waldport. The shop had been closed since 2048 when the owner went back to New Zealand. The building belonged to the foundation now and the foundation rented the upstairs apartment to Finn for the local-token rate and a standing arrangement that Finn would unlock the building for the foundation when they needed the downstairs.",
+      "text": "[mood:morning_bright]Finn lived in a one-bedroom above the kayak shop on the connective stretch between old-Yachats and old-Waldport. The shop had been closed since 2048 when the owner went back to New Zealand.",
+      "t": "narrate"
+    },
+    {
+      "text": "The building belonged to the foundation now and the foundation rented the upstairs apartment to Finn for the local-token rate and a standing arrangement that Finn would unlock the building for the foundation when they needed the downstairs.",
       "t": "narrate"
     },
     {
@@ -95,7 +99,13 @@
     },
     {
       "char": "kai",
-      "text": "Hawaiian shirt guy. South end. The creep my mom told me about when I was eighteen. He came in at eleven-oh-six and asked me, on behalf of someone he wouldn't name, whether you have been in possession of materials belonging to the museum-town historical society.",
+      "text": "Hawaiian shirt guy. South end. The creep my mom told me about when I was eighteen.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "kai",
+      "text": "He came in at eleven-oh-six and asked me, on behalf of someone he wouldn't name, whether you have been in possession of materials belonging to the museum-town historical society.",
       "expr": "neutral",
       "t": "say"
     },
@@ -215,7 +225,19 @@
     },
     {
       "char": "finn",
-      "text": "Tem met a man named Brandon Tillman three times in 2050 at the museum-town museum. Brandon was a man who had been investigating something. Tem told me about it yesterday afternoon at the cabin. Brandon died a year ago. The wood the crow has been bringing me — these three pieces — Tem thinks they are pieces of evidence Brandon collected. Tem thinks Brandon meant for them to come to me. The crow used to belong to Brandon, by Tem's reading. Brandon trained the crow to bring me the wood after he died. It has been doing that for nine months.",
+      "text": "Tem met a man named Brandon Tillman three times in 2050 at the museum-town museum. Brandon was a man who had been investigating something. Tem told me about it yesterday afternoon at the cabin. Brandon died a year ago.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "finn",
+      "text": "The wood the crow has been bringing me — these three pieces — Tem thinks they are pieces of evidence Brandon collected. Tem thinks Brandon meant for them to come to me. The crow used to belong to Brandon, by Tem's reading.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "finn",
+      "text": "Brandon trained the crow to bring me the wood after he died. It has been doing that for nine months.",
       "expr": "neutral",
       "t": "say"
     },
@@ -288,7 +310,15 @@
       "t": "say"
     },
     {
-      "text": "[shot:closeup kai~]Kai rubbed the back of his neck. He was angry in a way he had not been angry in some years. The anger was not at Finn. The anger was at Roy and at whoever Roy was working for and at the fact that he had been asked, in his own shop on a Sunday morning, to inform on a friend. The anger was also, in a small and less identifiable way, at himself — he had said Finn's my friend in the first ten seconds of the conversation and that was a piece of information Roy now had that he had not had before he walked in.",
+      "text": "[shot:closeup kai~]Kai rubbed the back of his neck. He was angry in a way he had not been angry in some years. The anger was not at Finn.",
+      "t": "narrate"
+    },
+    {
+      "text": "The anger was at Roy and at whoever Roy was working for and at the fact that he had been asked, in his own shop on a Sunday morning, to inform on a friend.",
+      "t": "narrate"
+    },
+    {
+      "text": "The anger was also, in a small and less identifiable way, at himself — he had said Finn's my friend in the first ten seconds of the conversation and that was a piece of information Roy now had that he had not had before he walked in.",
       "t": "narrate"
     },
     {
@@ -332,7 +362,15 @@
       "t": "say"
     },
     {
-      "text": "Kai thought about it. He could have not answered. He could have said I don't know who you're asking about. He could have walked Roy back out the door. He could have laughed in the man's face and made him leave. But Roy already knew. The shop's front window faced Main. Roy had probably watched Finn come into Board Lords on Friday morning. Roy had probably been watching for months. The information that Kai and Finn were friends was not a thing Kai had given Roy this morning. The information had been Roy's already, and Roy had led with it, and Kai had confirmed the obvious because the obvious was the obvious.",
+      "text": "Kai thought about it. He could have not answered. He could have said I don't know who you're asking about. He could have walked Roy back out the door. He could have laughed in the man's face and made him leave.",
+      "t": "narrate"
+    },
+    {
+      "text": "But Roy already knew. The shop's front window faced Main. Roy had probably watched Finn come into Board Lords on Friday morning. Roy had probably been watching for months.",
+      "t": "narrate"
+    },
+    {
+      "text": "The information that Kai and Finn were friends was not a thing Kai had given Roy this morning. The information had been Roy's already, and Roy had led with it, and Kai had confirmed the obvious because the obvious was the obvious.",
       "t": "narrate"
     },
     {
@@ -460,7 +498,11 @@
       "t": "narrate"
     },
     {
-      "text": "[mood:day_bright][shot:insert patch]The drive out of town went past Board Lords. Kai looked at the sanderling patch through the rain-streaked window as they passed. He looked at his own shop with the CLOSED sign in the door at eleven-thirty-five on a Sunday morning. He looked at Main going by. People at the Daily Grind. A couple coming out of the Missing Link. A drone at the south end doing something with the planters outside the Charging Station. Roy Hummel was nowhere in sight.",
+      "text": "[mood:day_bright][shot:insert patch]The drive out of town went past Board Lords. Kai looked at the sanderling patch through the rain-streaked window as they passed. He looked at his own shop with the CLOSED sign in the door at eleven-thirty-five on a Sunday morning.",
+      "t": "narrate"
+    },
+    {
+      "text": "He looked at Main going by. People at the Daily Grind. A couple coming out of the Missing Link. A drone at the south end doing something with the planters outside the Charging Station. Roy Hummel was nowhere in sight.",
       "t": "narrate"
     },
     {
@@ -535,12 +577,26 @@
     },
     {
       "char": "finn",
-      "text": "Tem thinks the patches are leaking from the tower. She has not gone to the tower. She has been afraid of it. The man who used to own the tower is dead. The tower has been sealed since 2042. Tem thinks something is happening in the tower. Brandon Tillman was investigating it. Tem knew Brandon. The wood on the table is from whatever Brandon was investigating.",
+      "text": "Tem thinks the patches are leaking from the tower. She has not gone to the tower. She has been afraid of it. The man who used to own the tower is dead. The tower has been sealed since 2042.",
       "expr": "neutral",
       "t": "say"
     },
     {
-      "text": "Kai thought about the tower. He had seen it from the highway every time he had driven north for the past sixteen years. He had skated the access road as a sixteen-year-old and gotten stopped at the gate by a drone that had asked him, in a synthesized voice, to please leave. He had laughed about it for weeks. He had not, since, thought about the tower as anything other than a fact about the town. The tower was a thing on a bluff. The tower was the tower.",
+      "char": "finn",
+      "text": "Tem thinks something is happening in the tower. Brandon Tillman was investigating it. Tem knew Brandon. The wood on the table is from whatever Brandon was investigating.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "text": "Kai thought about the tower. He had seen it from the highway every time he had driven north for the past sixteen years.",
+      "t": "narrate"
+    },
+    {
+      "text": "He had skated the access road as a sixteen-year-old and gotten stopped at the gate by a drone that had asked him, in a synthesized voice, to please leave. He had laughed about it for weeks.",
+      "t": "narrate"
+    },
+    {
+      "text": "He had not, since, thought about the tower as anything other than a fact about the town. The tower was a thing on a bluff. The tower was the tower.",
       "t": "narrate"
     },
     {
@@ -590,7 +646,11 @@
       "t": "show"
     },
     {
-      "text": "[shot:closeup tem]They got to the cabin at twelve-twelve. Tem was on the porch with a coffee in her hand. She had heard the truck on the road and come out to see who it was. When she saw it was Finn's truck and that Kai was in the passenger seat she set the coffee on the porch railing and waited.",
+      "text": "[shot:closeup tem]They got to the cabin at twelve-twelve. Tem was on the porch with a coffee in her hand. She had heard the truck on the road and come out to see who it was.",
+      "t": "narrate"
+    },
+    {
+      "text": "When she saw it was Finn's truck and that Kai was in the passenger seat she set the coffee on the porch railing and waited.",
       "t": "narrate"
     },
     {

@@ -34,11 +34,19 @@
       "t": "show"
     },
     {
-      "text": "[trip:1.2][mood:dusk]She had been at the apartment since one. She had made coffee. She had eaten a piece of bread with cheese. She had stripped the bed and put new sheets on it — she wanted the apartment to feel like an apartment that had been kept rather than one that had been slept in.",
+      "text": "[trip:1.2][mood:dusk]She had been at the apartment since one. She had made coffee. She had eaten a piece of bread with cheese.",
       "t": "narrate"
     },
     {
-      "text": "[shot:insert stick]She had run the small portable space heater because the apartment did not warm up otherwise. She had pulled the Estuary 7 stick out of her inside coat pocket and set it on the small wooden side table by the chair and looked at it for a long minute and put it back in her coat pocket.",
+      "text": "She had stripped the bed and put new sheets on it — she wanted the apartment to feel like an apartment that had been kept rather than one that had been slept in.",
+      "t": "narrate"
+    },
+    {
+      "text": "[shot:insert stick]She had run the small portable space heater because the apartment did not warm up otherwise.",
+      "t": "narrate"
+    },
+    {
+      "text": "She had pulled the Estuary 7 stick out of her inside coat pocket and set it on the small wooden side table by the chair and looked at it for a long minute and put it back in her coat pocket.",
       "t": "narrate"
     },
     {
@@ -92,7 +100,11 @@
       "t": "say"
     },
     {
-      "text": "They came in and took off the coats and hung them on the row of hooks by the door, which had, in three years, never had more than one coat on it at a time. Four hooks, four coats. The apartment was, with all of them in it, smaller than it was. She had known the apartment was small in the abstract. She had not, until now, registered the specific dimensions.",
+      "text": "They came in and took off the coats and hung them on the row of hooks by the door, which had, in three years, never had more than one coat on it at a time. Four hooks, four coats.",
+      "t": "narrate"
+    },
+    {
+      "text": "The apartment was, with all of them in it, smaller than it was. She had known the apartment was small in the abstract. She had not, until now, registered the specific dimensions.",
       "t": "narrate"
     },
     {
@@ -128,7 +140,11 @@
       "t": "hide"
     },
     {
-      "text": "He got up and went into the kitchen, and as he passed her he put his hand briefly on her shoulder — not a thing Kai did — and she registered it as him knowing that he was telling her, with the hand, that he knew. He found the soup pot. He set it on the stove. He found the bread. He found the cheese. He started cutting.",
+      "text": "He got up and went into the kitchen, and as he passed her he put his hand briefly on her shoulder — not a thing Kai did — and she registered it as him knowing that he was telling her, with the hand, that he knew.",
+      "t": "narrate"
+    },
+    {
+      "text": "He found the soup pot. He set it on the stove. He found the bread. He found the cheese. He started cutting.",
       "t": "narrate"
     },
     {
@@ -197,7 +213,13 @@
     },
     {
       "char": "tem",
-      "text": "He's been waiting since July. I knew on the day I went in that he had something to say. I did not ask him to say it. I was not ready, and I was not sure I was ever going to be ready, and I had decided to make him hold it until I figured out whether I was. He has been holding it for two months. I'm sorry, Cale.",
+      "text": "He's been waiting since July. I knew on the day I went in that he had something to say. I did not ask him to say it.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "I was not ready, and I was not sure I was ever going to be ready, and I had decided to make him hold it until I figured out whether I was. He has been holding it for two months. I'm sorry, Cale.",
       "expr": "serious",
       "t": "say"
     },
@@ -250,7 +272,15 @@
       "t": "narrate"
     },
     {
-      "text": "Cale had assumed for thirty years it had been a sixteen-year-old talking weird at three in the morning. Brandon Tillman had not assumed. Brandon had a working theory. He had asked Cale, in 2049, whether Nate had ever talked to him about a daughter, and Cale had told him, and Brandon had sat with it for a long time and said thank you, Cale, and left, and had been back twice in the year before he died and had not asked about the daughter again because he had what he needed.",
+      "text": "Cale had assumed for thirty years it had been a sixteen-year-old talking weird at three in the morning. Brandon Tillman had not assumed. Brandon had a working theory.",
+      "t": "narrate"
+    },
+    {
+      "text": "He had asked Cale, in 2049, whether Nate had ever talked to him about a daughter, and Cale had told him, and Brandon had sat with it for a long time and said thank you,",
+      "t": "narrate"
+    },
+    {
+      "text": "Cale, and left, and had been back twice in the year before he died and had not asked about the daughter again because he had what he needed.",
       "t": "narrate"
     },
     {
@@ -315,7 +345,13 @@
     },
     {
       "char": "finn",
-      "text": "No. I don't. I'm putting it together. The crow brings wood. The wood is from whatever Brandon was investigating. Brandon was investigating Nate. Nate was making a daughter. The wood is part of the daughter. Possibly. I don't know in what way. I don't know what the wood is for. But the throughline runs through all of it and the throughline points at her.",
+      "text": "No. I don't. I'm putting it together. The crow brings wood. The wood is from whatever Brandon was investigating. Brandon was investigating Nate. Nate was making a daughter. The wood is part of the daughter. Possibly.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "finn",
+      "text": "I don't know in what way. I don't know what the wood is for. But the throughline runs through all of it and the throughline points at her.",
       "expr": "serious",
       "t": "say"
     },
@@ -366,7 +402,11 @@
       "t": "hide"
     },
     {
-      "text": "[shot:establish]Kai brought the soup to the small kitchen table at six-twenty-something. He had warmed the soup, cut the bread into slices thick enough to dip, found four bowls and four spoons, and set the table the way somebody sets a table who has been doing it for somebody else his whole life.",
+      "text": "[shot:establish]Kai brought the soup to the small kitchen table at six-twenty-something.",
+      "t": "narrate"
+    },
+    {
+      "text": "He had warmed the soup, cut the bread into slices thick enough to dip, found four bowls and four spoons, and set the table the way somebody sets a table who has been doing it for somebody else his whole life.",
       "t": "narrate"
     },
     {
@@ -444,7 +484,11 @@
       "t": "hide"
     },
     {
-      "text": "They ate in the way four people who had not eaten in a day eat — without talking, without slowing, with the small mechanical attention that hunger pulls out of a body. Lena finished a bowl and got up and got herself a second. Kai finished two slices of bread and reached for a third. Finn ate one bowl slowly. Tem ate half of one and stopped and held the spoon over the bowl for a count and set the spoon down.",
+      "text": "They ate in the way four people who had not eaten in a day eat — without talking, without slowing, with the small mechanical attention that hunger pulls out of a body. Lena finished a bowl and got up and got herself a second.",
+      "t": "narrate"
+    },
+    {
+      "text": "Kai finished two slices of bread and reached for a third. Finn ate one bowl slowly. Tem ate half of one and stopped and held the spoon over the bowl for a count and set the spoon down.",
       "t": "narrate"
     },
     {
@@ -515,7 +559,13 @@
     },
     {
       "char": "tem",
-      "text": "[shot:closeup tem]I have known for two years that the patches were going to start showing up. I have known for two years that the tower was leaking. I have known for two years that Brandon Tillman had been investigating Nate Dean and that I had been pulled into the work by the bench at the museum and by what Brandon told me.",
+      "text": "[shot:closeup tem]I have known for two years that the patches were going to start showing up. I have known for two years that the tower was leaking.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "I have known for two years that Brandon Tillman had been investigating Nate Dean and that I had been pulled into the work by the bench at the museum and by what Brandon told me.",
       "expr": "serious",
       "t": "say"
     },
@@ -573,7 +623,13 @@
     },
     {
       "char": "kai",
-      "text": "[shot:closeup kai]Some of what you just said is true. The image-protecting part is true. I have watched you do that for the two years I have known you and I have, on a couple of occasions, thought you were doing it and not said anything. I am going to start saying something. That part, the apology is good. I take it.",
+      "text": "[shot:closeup kai]Some of what you just said is true. The image-protecting part is true. I have watched you do that for the two years I have known you and I have, on a couple of occasions, thought you were doing it and not said anything.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "kai",
+      "text": "I am going to start saying something. That part, the apology is good. I take it.",
       "expr": "serious",
       "t": "say"
     },
@@ -693,7 +749,13 @@
     },
     {
       "char": "finn",
-      "text": "I am not — I am not blaming you for the deciding. I have been quiet about my own things for years and I am not in any position to blame you. I am saying that the wait was lonely and the loneliness was a thing you chose, and I am sorry it took until this weekend for any of us to be in a room with you about it.",
+      "text": "I am not — I am not blaming you for the deciding. I have been quiet about my own things for years and I am not in any position to blame you.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "finn",
+      "text": "I am saying that the wait was lonely and the loneliness was a thing you chose, and I am sorry it took until this weekend for any of us to be in a room with you about it.",
       "expr": "serious",
       "t": "say"
     },

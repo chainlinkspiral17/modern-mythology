@@ -19,7 +19,13 @@
    "t": "say",
    "char": "Cale",
    "expr": "neutral",
-   "text": "\"Brandon told me he had a working theory about Nate that included a daughter. He didn't name her to me. He asked me whether Nate had ever talked to me about a daughter. I told him about the Saturday night in March '94. He sat with that a long time. He said thank you, Cale. He left. I saw him twice more in the year before he died and he never asked about the daughter again. He had what he needed.\""
+   "text": "\"Brandon told me he had a working theory about Nate that included a daughter. He didn't name her to me. He asked me whether Nate had ever talked to me about a daughter. I told him about the Saturday night in March '94."
+  },
+  {
+   "t": "say",
+   "char": "Cale",
+   "expr": "neutral",
+   "text": "He sat with that a long time. He said thank you, Cale. He left. I saw him twice more in the year before he died and he never asked about the daughter again. He had what he needed.\""
   },
   {
    "t": "narrate",
@@ -47,7 +53,13 @@
    "t": "say",
    "char": "Cale",
    "expr": "neutral",
-   "text": "[beat:hit][shot:closeup tem]\"She came in here at the end of July and asked me if I would, if she asked, tell her what I knew about Nate. She didn't ask. She said she wasn't ready. She said she'd come back. She's been in twice since. We talked about the designers. She didn't bring up Nate. I've been waiting since July. You walked in instead. That's good. I was getting tired.\""
+   "text": "[beat:hit][shot:closeup tem]\"She came in here at the end of July and asked me if I would, if she asked, tell her what I knew about Nate. She didn't ask. She said she wasn't ready. She said she'd come back. She's been in twice since."
+  },
+  {
+   "t": "say",
+   "char": "Cale",
+   "expr": "neutral",
+   "text": "We talked about the designers. She didn't bring up Nate. I've been waiting since July. You walked in instead. That's good. I was getting tired.\""
   },
   {
    "t": "say",
@@ -59,7 +71,13 @@
    "t": "say",
    "char": "Cale",
    "expr": "neutral",
-   "text": "\"She's been carrying it longer than that. She came in July because she'd been at it long enough that she couldn't be at it alone any further. She'd figured out I had something to say. She has been figuring out, since Brandon died, what he knew and where the threads went. She's done it well. I've watched her do it.\""
+   "text": "\"She's been carrying it longer than that. She came in July because she'd been at it long enough that she couldn't be at it alone any further. She'd figured out I had something to say."
+  },
+  {
+   "t": "say",
+   "char": "Cale",
+   "expr": "neutral",
+   "text": "She has been figuring out, since Brandon died, what he knew and where the threads went. She's done it well. I've watched her do it.\""
   },
   {
    "t": "say",

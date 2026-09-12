@@ -215,7 +215,15 @@
       "t": "say"
     },
     {
-      "text": "Roy was, by Tem's read, the most steady of the six. Roy had been at the door of an apartment in Smolvud with a bowl on a shelf for twenty-one years and had been waiting for the kind of moment that was happening at the cabin's door now. Roy was ready in a way the others, in their own readiness, were not.",
+      "text": "Roy was, by Tem's read, the most steady of the six.",
+      "t": "narrate"
+    },
+    {
+      "text": "Roy had been at the door of an apartment in Smolvud with a bowl on a shelf for twenty-one years and had been waiting for the kind of moment that was happening at the cabin's door now.",
+      "t": "narrate"
+    },
+    {
+      "text": "Roy was ready in a way the others, in their own readiness, were not.",
       "t": "narrate"
     },
     {
@@ -244,7 +252,11 @@
       "t": "narrate"
     },
     {
-      "text": "Tem registered this. The octopus was — by what Tem had been figuring out at the table for days, by what Lena had been writing in her notebook for a week — the figure Lena had been carrying. The octopus on the alley wall. The octopus the substrate had eaten in spring of 2050. The octopus that had been Lena's compulsion since Wednesday.",
+      "text": "Tem registered this. The octopus was — by what Tem had been figuring out at the table for days, by what Lena had been writing in her notebook for a week — the figure Lena had been carrying. The octopus on the alley wall.",
+      "t": "narrate"
+    },
+    {
+      "text": "The octopus the substrate had eaten in spring of 2050. The octopus that had been Lena's compulsion since Wednesday.",
       "t": "narrate"
     },
     {
@@ -257,7 +269,11 @@
       "t": "narrate"
     },
     {
-      "text": "Tem had not, until Lena's face, understood that Lena had been making the octopus her whole life. The octopus in spring of 2050 on the wall had been the visible part. The octopus that had been with Lena since she had been a girl in Salem before she came up here at eighteen had been the carrying. The octopus at the door of the cabin was the octopus.",
+      "text": "Tem had not, until Lena's face, understood that Lena had been making the octopus her whole life. The octopus in spring of 2050 on the wall had been the visible part.",
+      "t": "narrate"
+    },
+    {
+      "text": "The octopus that had been with Lena since she had been a girl in Salem before she came up here at eighteen had been the carrying. The octopus at the door of the cabin was the octopus.",
       "t": "narrate"
     },
     {
@@ -296,11 +312,19 @@
       "t": "narrate"
     },
     {
-      "text": "It was the face, by what she could see at the angle, of a young woman with curling dark hair and eyes that were open. The eyes were the eyes of a person who had been arriving for a hundred and twenty years. The face of the daughter Olaf had carved into the cedar in 1976. The face Lena had painted on the alley wall on Friday morning. The face that had been inside Marit's bowl since 1974. All of these.",
+      "text": "It was the face, by what she could see at the angle, of a young woman with curling dark hair and eyes that were open. The eyes were the eyes of a person who had been arriving for a hundred and twenty years.",
       "t": "narrate"
     },
     {
-      "text": "It was also — Tem registered, looking at it — not legible to her. The face was hers and was not hers to read. By some quality of how the substrate was holding it, the face was not the face Tem was going to remember tomorrow morning. It was a face she could see now and would not be able to bring with her.",
+      "text": "The face of the daughter Olaf had carved into the cedar in 1976. The face Lena had painted on the alley wall on Friday morning. The face that had been inside Marit's bowl since 1974. All of these.",
+      "t": "narrate"
+    },
+    {
+      "text": "It was also — Tem registered, looking at it — not legible to her. The face was hers and was not hers to read.",
+      "t": "narrate"
+    },
+    {
+      "text": "By some quality of how the substrate was holding it, the face was not the face Tem was going to remember tomorrow morning. It was a face she could see now and would not be able to bring with her.",
       "t": "narrate"
     },
     {

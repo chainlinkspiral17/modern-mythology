@@ -21,7 +21,11 @@
   },
   {
    "t": "narrate",
-   "text": "[shot:establish~][mood:night]The diner is a single rectangle of warm yellow light pinned to a wet asphalt apron. Two gas pumps, one of them retired in place. A sign hand-lettered on enamel — THE MISSING LINK — with the silhouette of a creature halfway between a man and an ape painted beneath the name with what you would have to call affection."
+   "text": "[shot:establish~][mood:night]The diner is a single rectangle of warm yellow light pinned to a wet asphalt apron. Two gas pumps, one of them retired in place."
+  },
+  {
+   "t": "narrate",
+   "text": "A sign hand-lettered on enamel — THE MISSING LINK — with the silhouette of a creature halfway between a man and an ape painted beneath the name with what you would have to call affection."
   },
   {
    "t": "narrate",
@@ -39,7 +43,11 @@
   },
   {
    "t": "narrate",
-   "text": "His hair is matted flat to his scalp with rain. His face is the pale of skin that has not seen weather for a long while. His trench coat is buttoned to the throat. At the seams of the coat — the cuffs, the lapels, the hem — there is a thin steady light, as if someone had stitched the seams with something hot and forgotten to put it out."
+   "text": "His hair is matted flat to his scalp with rain. His face is the pale of skin that has not seen weather for a long while. His trench coat is buttoned to the throat."
+  },
+  {
+   "t": "narrate",
+   "text": "At the seams of the coat — the cuffs, the lapels, the hem — there is a thin steady light, as if someone had stitched the seams with something hot and forgotten to put it out."
   },
   {
    "t": "narrate",

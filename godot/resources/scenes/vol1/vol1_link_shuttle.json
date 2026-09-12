@@ -27,7 +27,11 @@
   },
   {
    "t": "narrate",
-   "text": "Outside, headlights crawl over the wet asphalt and a shape too large for the apron pulls in, slow, without sound — or with a sound the rain is doing the work of covering. The Shillelagh is a long bus the color of old copper. It has no destination listed in the window. It has no driver visible from inside."
+   "text": "Outside, headlights crawl over the wet asphalt and a shape too large for the apron pulls in, slow, without sound — or with a sound the rain is doing the work of covering. The Shillelagh is a long bus the color of old copper."
+  },
+  {
+   "t": "narrate",
+   "text": "It has no destination listed in the window. It has no driver visible from inside."
   },
   {
    "t": "narrate",
@@ -62,11 +66,11 @@
    "opts": [
     {
      "text": "[Step up into the bus.]",
-     "goto": 13
+     "goto": 14
     },
     {
      "text": "[Stay on the apron. Watch it go.]",
-     "goto": 16
+     "goto": 17
     }
    ]
   },

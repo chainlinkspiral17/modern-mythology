@@ -65,7 +65,11 @@
     },
     {
       "t": "narrate",
-      "text": "Diego Ramos is, for the purposes of the Harmony Creek Estates Private Security Authority's database, unreachable at scheduled workplace, contact pending. His shift supervisor, Skip Donnelly, filed the notation this morning at 08:14 in the small checkbox field the NexCorp employment system provides for such occasions. He did not, in filing it, call Diego's grandmother."
+      "text": "Diego Ramos is, for the purposes of the Harmony Creek Estates Private Security Authority's database, unreachable at scheduled workplace, contact pending."
+    },
+    {
+      "t": "narrate",
+      "text": "His shift supervisor, Skip Donnelly, filed the notation this morning at 08:14 in the small checkbox field the NexCorp employment system provides for such occasions. He did not, in filing it, call Diego's grandmother."
     },
     {
       "t": "narrate",

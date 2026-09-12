@@ -23,7 +23,11 @@
     },
     {
       "t": "narrate",
-      "text": "[mood:day_bright]The air-conditioning at the Kwik Stop is set by corporate to sixty-eight degrees and maintained, against all local protest, by a unit on the roof that has been serviced exactly once in seven years. It does not produce cold air. It produces the memory of cold air, filtered through lint and the ghost of every hot dog that has ever sweated on the roller grill."
+      "text": "[mood:day_bright]The air-conditioning at the Kwik Stop is set by corporate to sixty-eight degrees and maintained, against all local protest, by a unit on the roof that has been serviced exactly once in seven years. It does not produce cold air."
+    },
+    {
+      "t": "narrate",
+      "text": "It produces the memory of cold air, filtered through lint and the ghost of every hot dog that has ever sweated on the roller grill."
     },
     {
       "t": "narrate",
@@ -31,7 +35,15 @@
     },
     {
       "t": "narrate",
-      "text": "[shot:closeup sam]She is leaning on the counter with her elbows on the rubber anti-fatigue mat, looking at the parking lot through the window that has been decal-ed over, in three overlapping layers, with ads for a lottery game nobody she knows plays, a cigarette brand that stopped being sold in Texas in 2019, and a cheerful cartoon hamburger holding a sign that reads TASTE HOME. The hamburger has lost one of its eyes. The eye is somewhere in the decal's adhesive layer, drifting."
+      "text": "[shot:closeup sam]She is leaning on the counter with her elbows on the rubber anti-fatigue mat, looking at the parking lot through the window that has been decal-ed over, in three overlapping layers,"
+    },
+    {
+      "t": "narrate",
+      "text": "with ads for a lottery game nobody she knows plays, a cigarette brand that stopped being sold in Texas in 2019, and a cheerful cartoon hamburger holding a sign that reads TASTE HOME. The hamburger has lost one of its eyes."
+    },
+    {
+      "t": "narrate",
+      "text": "The eye is somewhere in the decal's adhesive layer, drifting."
     },
     {
       "t": "narrate",
@@ -47,7 +59,11 @@
     },
     {
       "t": "narrate",
-      "text": "[shot:establish]A man Sam has never seen before comes in. He is in his fifties. He wears a golf shirt tucked into khaki shorts. He has a sunburn on the back of his neck in the particular shape of a person who has recently begun wearing a collared shirt after a lifetime of not. He nods at Sam."
+      "text": "[shot:establish]A man Sam has never seen before comes in. He is in his fifties. He wears a golf shirt tucked into khaki shorts."
+    },
+    {
+      "t": "narrate",
+      "text": "He has a sunburn on the back of his neck in the particular shape of a person who has recently begun wearing a collared shirt after a lifetime of not. He nods at Sam."
     },
     {
       "t": "show",
@@ -69,7 +85,11 @@
     },
     {
       "t": "narrate",
-      "text": "He goes to the back cooler. Opens it. Stands in front of it for a long time — longer than anyone ever stands in front of a back cooler at the Kwik Stop, because the back cooler holds the beer, and the beer is sold by the can for a dollar twenty-nine, and the kind of decision that takes a long time at that price point is not a decision that happens in Harmony Creek Estates."
+      "text": "He goes to the back cooler. Opens it. Stands in front of it for a long time — longer than anyone ever stands in front of a back cooler at the Kwik Stop, because the back cooler holds the beer,"
+    },
+    {
+      "t": "narrate",
+      "text": "and the beer is sold by the can for a dollar twenty-nine, and the kind of decision that takes a long time at that price point is not a decision that happens in Harmony Creek Estates."
     },
     {
       "t": "think",

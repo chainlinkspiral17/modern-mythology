@@ -160,7 +160,12 @@
   {
    "t": "say",
    "char": "Ben",
-   "text": "We are going to go ahead with Saturday morning breakfast with your mom, as planned. We are going to cover Friday night's match with the caveat that I may, depending on how it's shaping up, not go in the ring this time. And we are going to, if your dad shows up in the booth again, let him sit."
+   "text": "We are going to go ahead with Saturday morning breakfast with your mom, as planned. We are going to cover Friday night's match with the caveat that I may, depending on how it's shaping up, not go in the ring this time."
+  },
+  {
+   "t": "say",
+   "char": "Ben",
+   "text": "And we are going to, if your dad shows up in the booth again, let him sit."
   },
   {
    "t": "say",
@@ -247,7 +252,15 @@
   },
   {
    "t": "narrate",
-   "text": "[shot:insert bill]Ben comes out of the office. He picks up the ten-dollar bill. On the back of it, in pencil, in handwriting neither Ben nor Jesse recognizes but that Ben will, the following morning, compare against the handwritten dedication page of a photograph album Jesse's mother will show him, the pencil has written: The red light lies. I am sorry. I will come back when I can."
+   "text": "[shot:insert bill]Ben comes out of the office. He picks up the ten-dollar bill."
+  },
+  {
+   "t": "narrate",
+   "text": "On the back of it, in pencil, in handwriting neither Ben nor Jesse recognizes but that Ben will, the following morning, compare against the handwritten dedication page of a photograph album Jesse's mother will show him, the pencil has written: The red light lies."
+  },
+  {
+   "t": "narrate",
+   "text": "I am sorry. I will come back when I can."
   },
   {
    "t": "show",

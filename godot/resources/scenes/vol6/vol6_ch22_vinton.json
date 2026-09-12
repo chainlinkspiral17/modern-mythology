@@ -33,7 +33,15 @@
   },
   {
    "t": "narrate",
-   "text": "Ben is at the field gate in pads. He has been at the field gate in pads since three forty-five, which is when Coach K told the team to be at the field gate in pads. Coach K had said three forty-five in the locker room at three twenty-two and the team had — to a man, including the kids who, on practice days, drifted in late — been at the field gate at three forty-five. Saturday is not practice. Saturday is the day Coach K does not have to ask twice."
+   "text": "Ben is at the field gate in pads. He has been at the field gate in pads since three forty-five, which is when Coach K told the team to be at the field gate in pads."
+  },
+  {
+   "t": "narrate",
+   "text": "Coach K had said three forty-five in the locker room at three twenty-two and the team had — to a man, including the kids who, on practice days, drifted in late — been at the field gate at three forty-five."
+  },
+  {
+   "t": "narrate",
+   "text": "Saturday is not practice. Saturday is the day Coach K does not have to ask twice."
   },
   {
    "t": "show",
@@ -51,7 +59,11 @@
   },
   {
    "t": "narrate",
-   "text": "The Vinton kids start coming off at four oh-three. They are, by their bulk through the bus door, about the same size as the Texas team. Their pads are a different color. Their helmets have an alligator decal Ben has not seen before. The kid who comes off third is six-four. The kid who comes off seventh is the size of Tucker."
+   "text": "The Vinton kids start coming off at four oh-three. They are, by their bulk through the bus door, about the same size as the Texas team. Their pads are a different color."
+  },
+  {
+   "t": "narrate",
+   "text": "Their helmets have an alligator decal Ben has not seen before. The kid who comes off third is six-four. The kid who comes off seventh is the size of Tucker."
   },
   {
    "t": "narrate",
@@ -65,7 +77,11 @@
   },
   {
    "t": "narrate",
-   "text": "[shot:closeup guidry]Coach Guidry is wiry and sunburned, with patches of long white hair growing from a head that is otherwise mostly bald and red. He is in a Vinton Athletics polo, shorts, and the bright white New Balance sneakers a man wears when his wife told him that morning not to wear the loafers."
+   "text": "[shot:closeup guidry]Coach Guidry is wiry and sunburned, with patches of long white hair growing from a head that is otherwise mostly bald and red."
+  },
+  {
+   "t": "narrate",
+   "text": "He is in a Vinton Athletics polo, shorts, and the bright white New Balance sneakers a man wears when his wife told him that morning not to wear the loafers."
   },
   {
    "t": "narrate",
@@ -143,7 +159,11 @@
   },
   {
    "t": "narrate",
-   "text": "Coach K, at the home bench, has also been watching. He starts across the field. Guidry starts toward him. They meet at the fifty. Ben is too far back to hear them. He sees them shake hands. He sees Guidry slap Coach K's shoulder. He sees Coach K do the thing Coach K does, which is to nod once and listen."
+   "text": "Coach K, at the home bench, has also been watching. He starts across the field. Guidry starts toward him. They meet at the fifty. Ben is too far back to hear them. He sees them shake hands. He sees Guidry slap Coach K's shoulder."
+  },
+  {
+   "t": "narrate",
+   "text": "He sees Coach K do the thing Coach K does, which is to nod once and listen."
   },
   {
    "t": "hide",
@@ -155,7 +175,19 @@
   },
   {
    "t": "narrate",
-   "text": "She is sixty-two. She had the bypass in March. The doctor on Monday had said probably okay on the phone — the operating phrase as of this week, upgraded from we'll see in September. Eileen had carried the upgrade home and had not, between Monday and Thursday, told anyone. Thursday night she had told her husband at the kitchen table over the lemon-water he has been making her every morning since April. Her husband had set down the Express-News and looked at her and not said anything for a count and then said, Eileen. The game's Saturday. You want to come. And she had said, yes. And her husband had said, good. I'll set up the folding chair in the third row Saturday morning. And that had been that."
+   "text": "She is sixty-two. She had the bypass in March. The doctor on Monday had said probably okay on the phone — the operating phrase as of this week, upgraded from we'll see in September."
+  },
+  {
+   "t": "narrate",
+   "text": "Eileen had carried the upgrade home and had not, between Monday and Thursday, told anyone. Thursday night she had told her husband at the kitchen table over the lemon-water he has been making her every morning since April."
+  },
+  {
+   "t": "narrate",
+   "text": "Her husband had set down the Express-News and looked at her and not said anything for a count and then said, Eileen. The game's Saturday. You want to come. And she had said, yes. And her husband had said, good."
+  },
+  {
+   "t": "narrate",
+   "text": "I'll set up the folding chair in the third row Saturday morning. And that had been that."
   },
   {
    "t": "narrate",
@@ -171,7 +203,11 @@
   },
   {
    "t": "narrate",
-   "text": "She has, in a canvas bag over her shoulder: the thermos of lemon-water, the paper fan with the rooster on it she had bought in Mexico in 1989, a small bottle of the beta-blocker that travels with her now, a baseball cap her husband had bought her in 1996, and a phone she will not look at for the next four hours."
+   "text": "She has, in a canvas bag over her shoulder: the thermos of lemon-water, the paper fan with the rooster on it she had bought in Mexico in 1989,"
+  },
+  {
+   "t": "narrate",
+   "text": "a small bottle of the beta-blocker that travels with her now, a baseball cap her husband had bought her in 1996, and a phone she will not look at for the next four hours."
   },
   {
    "t": "narrate",
@@ -193,7 +229,15 @@
   },
   {
    "t": "narrate",
-   "text": "He sees her because he has, in three weeks of practice, been quietly trying to figure out which woman in the stands is Coach K's wife. He has known her name is Eileen since Wednesday at dinner when his father had mentioned it. He has known she had been sick. He has known, from the way Coach K had said Eileen in the parking lot on a Tuesday and from the way Coach K had not, in three weeks, mentioned her again, that she was the thing Coach K had been carrying through the summer that nobody on the team was supposed to be aware of."
+   "text": "He sees her because he has, in three weeks of practice, been quietly trying to figure out which woman in the stands is Coach K's wife. He has known her name is Eileen since Wednesday at dinner when his father had mentioned it."
+  },
+  {
+   "t": "narrate",
+   "text": "He has known she had been sick."
+  },
+  {
+   "t": "narrate",
+   "text": "He has known, from the way Coach K had said Eileen in the parking lot on a Tuesday and from the way Coach K had not, in three weeks, mentioned her again, that she was the thing Coach K had been carrying through the summer that nobody on the team was supposed to be aware of."
   },
   {
    "t": "narrate",
@@ -201,7 +245,11 @@
   },
   {
    "t": "narrate",
-   "text": "She is wearing jeans and a white short-sleeved blouse and the baseball cap. Her hair under the cap is gray. She is moving the way a woman who had open-heart surgery five months ago moves, which is slowly and deliberately and on a route she has, at the car, already chosen."
+   "text": "She is wearing jeans and a white short-sleeved blouse and the baseball cap. Her hair under the cap is gray."
+  },
+  {
+   "t": "narrate",
+   "text": "She is moving the way a woman who had open-heart surgery five months ago moves, which is slowly and deliberately and on a route she has, at the car, already chosen."
   },
   {
    "t": "narrate",
@@ -255,7 +303,11 @@
   },
   {
    "t": "narrate",
-   "text": "[shot:insert bleachers]The two teams run through the substitution and timeout procedures with the refs. Coach K and Coach Guidry stand at midfield with the head ref and confer about clock management. The Vinton kids are loud. The Texas kids are quieter. The home bleachers are filling — a hundred and twenty by six, maybe a hundred and fifty, which is what a Texas high school scrimmage on a Saturday in August draws when the schools have been doing this annual game since 1991."
+   "text": "[shot:insert bleachers]The two teams run through the substitution and timeout procedures with the refs. Coach K and Coach Guidry stand at midfield with the head ref and confer about clock management. The Vinton kids are loud. The Texas kids are quieter."
+  },
+  {
+   "t": "narrate",
+   "text": "The home bleachers are filling — a hundred and twenty by six, maybe a hundred and fifty, which is what a Texas high school scrimmage on a Saturday in August draws when the schools have been doing this annual game since 1991."
   },
   {
    "t": "narrate",
@@ -263,7 +315,15 @@
   },
   {
    "t": "narrate",
-   "text": "Tight end one. The starting tight end on Saturday. The position he had not, three weeks ago, been on Coach K's depth chart for, and that he is in now because of a conversation he had with Coach K in the parking lot on a Tuesday morning two weeks back when Coach K had asked him why he had said the thing he had said in the locker room about Pete, and Ben had said because it was the thing, and Coach K had said yeah, and Coach K had walked away, and the next Monday Ben had been at TE-1 in practice."
+   "text": "Tight end one. The starting tight end on Saturday."
+  },
+  {
+   "t": "narrate",
+   "text": "The position he had not, three weeks ago, been on Coach K's depth chart for, and that he is in now because of a conversation he had with Coach K in the parking lot on a Tuesday morning two weeks back when Coach K had asked him why he had said the thing he had said in the locker room about Pete,"
+  },
+  {
+   "t": "narrate",
+   "text": "and Ben had said because it was the thing, and Coach K had said yeah, and Coach K had walked away, and the next Monday Ben had been at TE-1 in practice."
   },
   {
    "t": "narrate",
@@ -375,7 +435,11 @@
   },
   {
    "t": "narrate",
-   "text": "The wrinkle is a play they have been practicing for six days and have not run in front of an opponent. The play is a play-action bootleg with Ben — at TE-1 — leaking out of the protection on the back side. Ben has practiced the leak twelve times. Six of the twelve had been clean. The other six had been late or had been so early Vinton would have read it from snap."
+   "text": "The wrinkle is a play they have been practicing for six days and have not run in front of an opponent. The play is a play-action bootleg with Ben — at TE-1 — leaking out of the protection on the back side."
+  },
+  {
+   "t": "narrate",
+   "text": "Ben has practiced the leak twelve times. Six of the twelve had been clean. The other six had been late or had been so early Vinton would have read it from snap."
   },
   {
    "t": "narrate",
@@ -523,7 +587,11 @@
   },
   {
    "t": "narrate",
-   "text": "The bypass had been March 4. By March 14 she had been home from the hospital. By April 1 she had been able to walk to the mailbox without resting. By June 1 she had been able to drive to the H-E-B by herself. By July she had been doing the four-thirty table on Fridays with Bianca and Anita, which had not been her idea — Bianca had asked her on a Wednesday — and which had become, over six Fridays, a thing she now planned her Thursday evenings around."
+   "text": "The bypass had been March 4. By March 14 she had been home from the hospital. By April 1 she had been able to walk to the mailbox without resting. By June 1 she had been able to drive to the H-E-B by herself."
+  },
+  {
+   "t": "narrate",
+   "text": "By July she had been doing the four-thirty table on Fridays with Bianca and Anita, which had not been her idea — Bianca had asked her on a Wednesday — and which had become, over six Fridays, a thing she now planned her Thursday evenings around."
   },
   {
    "t": "narrate",
@@ -578,7 +646,19 @@
   {
    "t": "say",
    "char": "Linda",
-   "text": "My husband told me, on the drive up from Vinton, that there was going to be a woman at the home bleachers tonight who was going to be Coach K's wife. He said Linda, I have known Coach K for ten years and I have not, in those ten years, met his wife. Tonight I have a feeling. I asked him what he meant by feeling. He said Coach K's been sending me emails this week with a different rhythm than usual. I asked him what the rhythm was.",
+   "text": "My husband told me, on the drive up from Vinton, that there was going to be a woman at the home bleachers tonight who was going to be Coach K's wife.",
+   "expr": "neutral"
+  },
+  {
+   "t": "say",
+   "char": "Linda",
+   "text": "He said Linda, I have known Coach K for ten years and I have not, in those ten years, met his wife. Tonight I have a feeling. I asked him what he meant by feeling.",
+   "expr": "neutral"
+  },
+  {
+   "t": "say",
+   "char": "Linda",
+   "text": "He said Coach K's been sending me emails this week with a different rhythm than usual. I asked him what the rhythm was.",
    "expr": "neutral"
   },
   {
@@ -729,7 +809,11 @@
   },
   {
    "t": "narrate",
-   "text": "Texas scores on the opening drive — a long pass on third-and-eight that Marcus, the slot, catches at the Vinton sixteen. Three plays later Brent finds Ben in the flat on a quick out and Ben gets six yards before going out of bounds. Omar in for the touchdown. 14-7."
+   "text": "Texas scores on the opening drive — a long pass on third-and-eight that Marcus, the slot, catches at the Vinton sixteen."
+  },
+  {
+   "t": "narrate",
+   "text": "Three plays later Brent finds Ben in the flat on a quick out and Ben gets six yards before going out of bounds. Omar in for the touchdown. 14-7."
   },
   {
    "t": "narrate",
@@ -769,7 +853,15 @@
   },
   {
    "t": "narrate",
-   "text": "[shot:insert folding_chair]Coach K and Coach Guidry shake hands. The handshake is a long one — eight seconds, Eileen will later realize, watching her husband walk back to the sideline — and during the handshake Coach K says something to Guidry that Eileen does not hear and that Linda also does not hear. Guidry laughs. Coach K does not."
+   "text": "[shot:insert folding_chair]Coach K and Coach Guidry shake hands."
+  },
+  {
+   "t": "narrate",
+   "text": "The handshake is a long one — eight seconds, Eileen will later realize, watching her husband walk back to the sideline — and during the handshake Coach K says something to Guidry that Eileen does not hear and that Linda also does not hear."
+  },
+  {
+   "t": "narrate",
+   "text": "Guidry laughs. Coach K does not."
   },
   {
    "t": "hide",
@@ -853,7 +945,15 @@
   },
   {
    "t": "narrate",
-   "text": "Coach K had emailed Coach Guidry on Wednesday to tell him about it. The Vinton team — twenty kids — pulls in at ten oh-six. Coach Guidry has the long booth at the back. The Vinton team takes the two tables in the corner. Hugo at the window has been told to expect them. Hugo at the window has gotten his mother in early to handle the rush. Hugo at the window is, by ten oh-eight, running orders through faster than he has ever run orders through on a Saturday night."
+   "text": "Coach K had emailed Coach Guidry on Wednesday to tell him about it. The Vinton team — twenty kids — pulls in at ten oh-six. Coach Guidry has the long booth at the back. The Vinton team takes the two tables in the corner."
+  },
+  {
+   "t": "narrate",
+   "text": "Hugo at the window has been told to expect them. Hugo at the window has gotten his mother in early to handle the rush."
+  },
+  {
+   "t": "narrate",
+   "text": "Hugo at the window is, by ten oh-eight, running orders through faster than he has ever run orders through on a Saturday night."
   },
   {
    "t": "show",

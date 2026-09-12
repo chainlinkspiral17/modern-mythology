@@ -7,7 +7,11 @@
   "nodes": [
     {
       "t": "narrate",
-      "text": "[mood:night]They ate the rest in a quiet that was not the quiet of a held breath but the quiet of a meal getting eaten by four people who had said the things they needed to say to start eating again. Kai got up at one point and made tea. Finn cleared the bowls. Lena cut more bread. Tem sat at the table and watched all three of them moving through the kitchen and did not, for a count of about ten minutes, do anything but watch."
+      "text": "[mood:night]They ate the rest in a quiet that was not the quiet of a held breath but the quiet of a meal getting eaten by four people who had said the things they needed to say to start eating again. Kai got up at one point and made tea."
+    },
+    {
+      "t": "narrate",
+      "text": "Finn cleared the bowls. Lena cut more bread. Tem sat at the table and watched all three of them moving through the kitchen and did not, for a count of about ten minutes, do anything but watch."
     },
     {
       "t": "narrate",
@@ -51,13 +55,31 @@
       "t": "say",
       "char": "Kai",
       "expr": "neutral",
-      "text": "[shot:closeup person]\"I told you on the porch at the cabin. I told Tem. I'll tell it again. He came in at eleven-oh-six. Orange shirt under wax canvas. Boat shoes. Walked in like he'd been in before. He hadn't. He said Kai? Roy Hummel. I see you at the Daily Grind. Lena makes me a hot chocolate sometimes. Sweet kid. That was the lead. He used Lena's name in the third sentence.\""
+      "text": "[shot:closeup person]\"I told you on the porch at the cabin. I told Tem. I'll tell it again. He came in at eleven-oh-six. Orange shirt under wax canvas. Boat shoes. Walked in like he'd been in before. He hadn't. He said Kai? Roy Hummel."
     },
     {
       "t": "say",
       "char": "Kai",
       "expr": "neutral",
-      "text": "\"He said I'm asking on behalf of someone. They wanted me to ask you something. I said who. He said doesn't matter who. I asked what he wanted. He said they want to know whether your friend Finn has been in possession of materials that belong to the museum-town historical society. I said what materials. He said they didn't say. I asked who's they. He said doesn't matter, just doing a favor. I said I didn't know.\""
+      "text": "I see you at the Daily Grind. Lena makes me a hot chocolate sometimes. Sweet kid. That was the lead. He used Lena's name in the third sentence.\""
+    },
+    {
+      "t": "say",
+      "char": "Kai",
+      "expr": "neutral",
+      "text": "\"He said I'm asking on behalf of someone. They wanted me to ask you something. I said who. He said doesn't matter who. I asked what he wanted."
+    },
+    {
+      "t": "say",
+      "char": "Kai",
+      "expr": "neutral",
+      "text": "He said they want to know whether your friend Finn has been in possession of materials that belong to the museum-town historical society. I said what materials. He said they didn't say. I asked who's they."
+    },
+    {
+      "t": "say",
+      "char": "Kai",
+      "expr": "neutral",
+      "text": "He said doesn't matter, just doing a favor. I said I didn't know.\""
     },
     {
       "t": "say",
@@ -115,7 +137,19 @@
       "t": "say",
       "char": "Tem",
       "expr": "neutral",
-      "text": "\"He's been here twenty-one years. He came up from somewhere south. He never says where. He has money he does not, on the surface, account for. He spends most of his days at the Daily Grind and the Charging Station. He talks to everyone. He is friendly to a degree that is not friendly. The locals over fifty have known him long enough to keep him at a polite distance. The locals under thirty have, since they were teenagers, registered him as a man you do not want to be alone with.\""
+      "text": "\"He's been here twenty-one years. He came up from somewhere south. He never says where. He has money he does not, on the surface, account for. He spends most of his days at the Daily Grind and the Charging Station."
+    },
+    {
+      "t": "say",
+      "char": "Tem",
+      "expr": "neutral",
+      "text": "He talks to everyone. He is friendly to a degree that is not friendly. The locals over fifty have known him long enough to keep him at a polite distance."
+    },
+    {
+      "t": "say",
+      "char": "Tem",
+      "expr": "neutral",
+      "text": "The locals under thirty have, since they were teenagers, registered him as a man you do not want to be alone with.\""
     },
     {
       "t": "say",

@@ -53,7 +53,17 @@
     {
       "t": "think",
       "char": "Maya",
-      "text": "Rick told me to keep noticing. F.T. told me to keep noticing. Graciela Ramos, who I have never met, is apparently in a parallel thread with a grown woman I have also never met, who is probably the reporter in the Houston Chronicle lanyard. A man named Hal in New Auburn runs a bookshop and takes envelopes."
+      "text": "Rick told me to keep noticing. F.T. told me to keep noticing."
+    },
+    {
+      "t": "think",
+      "char": "Maya",
+      "text": "Graciela Ramos, who I have never met, is apparently in a parallel thread with a grown woman I have also never met, who is probably the reporter in the Houston Chronicle lanyard."
+    },
+    {
+      "t": "think",
+      "char": "Maya",
+      "text": "A man named Hal in New Auburn runs a bookshop and takes envelopes."
     },
     {
       "t": "think",

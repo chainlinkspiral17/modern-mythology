@@ -39,7 +39,15 @@
   },
   {
    "t": "narrate",
-   "text": "The garage door is open because the temperature has dropped from the day's high of one hundred and three to the early-evening of ninety-six, and ninety-six is the threshold at which Jesse, in August, will leave the door up while he plays. The Telecaster is plugged in. The amp is at three-quarter volume. He is doing the small repeated work he has been doing every afternoon this week, which is the lead break on a song the band has been working on for a month called Substation Nine."
+   "text": "The garage door is open because the temperature has dropped from the day's high of one hundred and three to the early-evening of ninety-six, and ninety-six is the threshold at which Jesse, in August, will leave the door up while he plays."
+  },
+  {
+   "t": "narrate",
+   "text": "The Telecaster is plugged in. The amp is at three-quarter volume."
+  },
+  {
+   "t": "narrate",
+   "text": "He is doing the small repeated work he has been doing every afternoon this week, which is the lead break on a song the band has been working on for a month called Substation Nine."
   },
   {
    "t": "narrate",
@@ -51,7 +59,11 @@
   },
   {
    "t": "narrate",
-   "text": "[shot:insert flyer]The kid coming up the driveway is — Jesse, looking up from the strings — fourteen, maybe fifteen, on a skateboard, with a stack of paper flyers held against his chest under one elbow. Jesse knows the kid by face but not by name. He is one of the kids who has, in the past few weeks, started skating the cul-de-sacs in the late afternoons, in the small roving way kids on skateboards in Texas suburbs roam in late summer when school is about to start and there is, this week, nothing to do."
+   "text": "[shot:insert flyer]The kid coming up the driveway is — Jesse, looking up from the strings — fourteen, maybe fifteen, on a skateboard, with a stack of paper flyers held against his chest under one elbow. Jesse knows the kid by face but not by name."
+  },
+  {
+   "t": "narrate",
+   "text": "He is one of the kids who has, in the past few weeks, started skating the cul-de-sacs in the late afternoons, in the small roving way kids on skateboards in Texas suburbs roam in late summer when school is about to start and there is, this week, nothing to do."
   },
   {
    "t": "narrate",
@@ -103,7 +115,11 @@
   },
   {
    "t": "narrate",
-   "text": "[panel:vol6_foxhole_flyer]The flyer is the kind of flyer The Foxhole has been making since the venue opened in 2019. Half-letter, photocopied, two colors — black ink on a paper that is, today, a faded mustard yellow. The top of the flyer has the venue name in the typeface The Foxhole has been using since the beginning: a hand-drawn block lettering that the original owner's girlfriend had done in 2019 and that nobody, in seven years, has updated."
+   "text": "[panel:vol6_foxhole_flyer]The flyer is the kind of flyer The Foxhole has been making since the venue opened in 2019. Half-letter, photocopied, two colors — black ink on a paper that is, today, a faded mustard yellow."
+  },
+  {
+   "t": "narrate",
+   "text": "The top of the flyer has the venue name in the typeface The Foxhole has been using since the beginning: a hand-drawn block lettering that the original owner's girlfriend had done in 2019 and that nobody, in seven years, has updated."
   },
   {
    "t": "narrate",
@@ -119,11 +135,23 @@
   },
   {
    "t": "narrate",
-   "text": "DJ Chess is — SAN ANTONIO. Which means The Foxhole has, for its Saturday slot, brought in a DJ from San Antonio. Which means the venue is, for the first time since Suburban Blight has been booking small slots there, pairing the band with somebody from outside the immediate region."
+   "text": "DJ Chess is — SAN ANTONIO. Which means The Foxhole has, for its Saturday slot, brought in a DJ from San Antonio."
   },
   {
    "t": "narrate",
-   "text": "Jesse has, this summer, been roughly aware of DJ Chess. The name has been on flyers at three or four other venues Suburban Blight has played in the past two months — not as the headliner of those nights, but as the headliner of the night before or the night after, in the small overlapping booking patterns that small venues in this part of Texas use when they have, for the season, chosen to start running a regular DJ slot. Jesse has not, before this afternoon, paid attention."
+   "text": "Which means the venue is, for the first time since Suburban Blight has been booking small slots there, pairing the band with somebody from outside the immediate region."
+  },
+  {
+   "t": "narrate",
+   "text": "Jesse has, this summer, been roughly aware of DJ Chess."
+  },
+  {
+   "t": "narrate",
+   "text": "The name has been on flyers at three or four other venues Suburban Blight has played in the past two months — not as the headliner of those nights, but as the headliner of the night before or the night after,"
+  },
+  {
+   "t": "narrate",
+   "text": "in the small overlapping booking patterns that small venues in this part of Texas use when they have, for the season, chosen to start running a regular DJ slot. Jesse has not, before this afternoon, paid attention."
   },
   {
    "t": "narrate",
@@ -147,15 +175,35 @@
   },
   {
    "t": "narrate",
-   "text": "Practice that night is at seven in Nate's garage instead of Jesse's, because Nate's mother is having Jesse's parents over for dinner and the configuration of Wednesday evening has, at some point in the morning, been negotiated by the two mothers in the way the mothers of band members negotiate the small logistics of teenage boys having a band."
+   "text": "Practice that night is at seven in Nate's garage instead of Jesse's, because Nate's mother is having Jesse's parents over for dinner and the configuration of Wednesday evening has,"
   },
   {
    "t": "narrate",
-   "text": "Jesse drives to Nate's at six-forty. The route to Nate's is across town — twenty-two minutes, if he takes the back roads, which he does. The back roads are the ones he has been taking, all summer, for the small eleven minutes of being in a moving vehicle with his attention to himself, and also for the small fact that the back roads go past two of the addresses he has been tracking on the map."
+   "text": "at some point in the morning, been negotiated by the two mothers in the way the mothers of band members negotiate the small logistics of teenage boys having a band."
   },
   {
    "t": "narrate",
-   "text": "[mood:arcana][shot:insert map]The map is in his glove compartment. The map is a single folded sheet of printer paper from a Rand McNally pdf he had downloaded in early June, with the local New Auburn-Harmony Creek Estates corridor printed at one-to-twelve-thousand scale, and his own handwritten annotations in three colors of ballpoint pen — black for addresses he has registered, red for addresses where something has, by his observation, changed in the past six weeks, and blue for addresses where the change is, by his read, active: trucks coming and going, lights on at hours that do not match the building's stated occupancy, vehicles parked overnight that are not residents'."
+   "text": "Jesse drives to Nate's at six-forty. The route to Nate's is across town — twenty-two minutes, if he takes the back roads, which he does."
+  },
+  {
+   "t": "narrate",
+   "text": "The back roads are the ones he has been taking, all summer, for the small eleven minutes of being in a moving vehicle with his attention to himself, and also for the small fact that the back roads go past two of the addresses he has been tracking on the map."
+  },
+  {
+   "t": "narrate",
+   "text": "[mood:arcana][shot:insert map]The map is in his glove compartment."
+  },
+  {
+   "t": "narrate",
+   "text": "The map is a single folded sheet of printer paper from a Rand McNally pdf he had downloaded in early June, with the local New Auburn-Harmony Creek Estates corridor printed at one-to-twelve-thousand scale,"
+  },
+  {
+   "t": "narrate",
+   "text": "and his own handwritten annotations in three colors of ballpoint pen — black for addresses he has registered,"
+  },
+  {
+   "t": "narrate",
+   "text": "red for addresses where something has, by his observation, changed in the past six weeks, and blue for addresses where the change is, by his read, active: trucks coming and going, lights on at hours that do not match the building's stated occupancy, vehicles parked overnight that are not residents'."
   },
   {
    "t": "narrate",
@@ -167,11 +215,27 @@
   },
   {
    "t": "narrate",
-   "text": "He had, in late July, registered that the unit at the rear of the strip mall — the one whose front-facing storefront window has been papered over since the previous tenant, a payday-loan operation, had closed in March — had begun, in the past three weeks, to be visited at night by a small white panel van. The van arrives between one and three AM. The van stays between forty and ninety minutes. The van leaves. There is no signage on the unit. There is no permit displayed in the window. The papered-over window has, by Jesse's three observations, been re-papered over twice since the original papering — once in early July, once in early August — in a way that suggests the paper has been lifted from the inside and then replaced."
+   "text": "He had, in late July, registered that the unit at the rear of the strip mall — the one whose front-facing storefront window has been papered over since the previous tenant,"
   },
   {
    "t": "narrate",
-   "text": "Jesse has not, for two weeks, been able to confirm what is in the unit. The blue annotation is the only blue annotation on his map. The Foxhole is across the parking lot. He has not, until this afternoon's flyer, registered that the geography of his map and the geography of his band were, this Saturday, going to converge."
+   "text": "a payday-loan operation, had closed in March — had begun, in the past three weeks, to be visited at night by a small white panel van. The van arrives between one and three AM. The van stays between forty and ninety minutes."
+  },
+  {
+   "t": "narrate",
+   "text": "The van leaves. There is no signage on the unit. There is no permit displayed in the window."
+  },
+  {
+   "t": "narrate",
+   "text": "The papered-over window has, by Jesse's three observations, been re-papered over twice since the original papering — once in early July, once in early August — in a way that suggests the paper has been lifted from the inside and then replaced."
+  },
+  {
+   "t": "narrate",
+   "text": "Jesse has not, for two weeks, been able to confirm what is in the unit. The blue annotation is the only blue annotation on his map. The Foxhole is across the parking lot."
+  },
+  {
+   "t": "narrate",
+   "text": "He has not, until this afternoon's flyer, registered that the geography of his map and the geography of his band were, this Saturday, going to converge."
   },
   {
    "t": "hide",
@@ -183,7 +247,23 @@
   },
   {
    "t": "narrate",
-   "text": "Nate's garage is bigger than Jesse's. Nate's parents had, in 2018, converted the rear half of their two-car garage into a small finished room with sound dampening on the walls and a separate window AC that does not, technically, count as part of the house's HVAC envelope. The conversion had been Nate's father's project. Nate's father — a man in his fifties named Walt who works in commercial insurance and who plays the bass himself in a wedding band that performs three times a year — had finished the conversion the summer Nate had turned fifteen, with the small clarity of a man who had decided that his son was going to have, in their house, the room he himself had not had at fifteen in the house in Houston his own father had, in 1972, refused to let him put a drum kit into."
+   "text": "Nate's garage is bigger than Jesse's."
+  },
+  {
+   "t": "narrate",
+   "text": "Nate's parents had, in 2018, converted the rear half of their two-car garage into a small finished room with sound dampening on the walls and a separate window AC that does not, technically, count as part of the house's HVAC envelope."
+  },
+  {
+   "t": "narrate",
+   "text": "The conversion had been Nate's father's project."
+  },
+  {
+   "t": "narrate",
+   "text": "Nate's father — a man in his fifties named Walt who works in commercial insurance and who plays the bass himself in a wedding band that performs three times a year — had finished the conversion the summer Nate had turned fifteen,"
+  },
+  {
+   "t": "narrate",
+   "text": "with the small clarity of a man who had decided that his son was going to have, in their house, the room he himself had not had at fifteen in the house in Houston his own father had, in 1972, refused to let him put a drum kit into."
   },
   {
    "t": "narrate",
@@ -271,7 +351,15 @@
   },
   {
    "t": "narrate",
-   "text": "Em — backing vocals, occasional keys, eighteen, the band's I am from Fort Worth energy — is the one who looks up first when Jesse comes in. Em has the small careful look on her face that Jesse has been seeing on her face for about two weeks. The look is the look of a person who has been deciding whether to say a thing and who has, on this particular Wednesday, decided."
+   "text": "Em — backing vocals, occasional keys, eighteen, the band's I am from Fort Worth energy — is the one who looks up first when Jesse comes in."
+  },
+  {
+   "t": "narrate",
+   "text": "Em has the small careful look on her face that Jesse has been seeing on her face for about two weeks."
+  },
+  {
+   "t": "narrate",
+   "text": "The look is the look of a person who has been deciding whether to say a thing and who has, on this particular Wednesday, decided."
   },
   {
    "t": "say",
@@ -311,7 +399,11 @@
   },
   {
    "t": "narrate",
-   "text": "They run Substation Nine. The song is not finished. The song's structure is — verse, chorus, verse, chorus, the lead break Jesse has been working on, a third verse, a final chorus. The lead break is the part the band has been waiting on, because the lead break is the part Jesse has been writing, and the part that Jesse has been writing is the part that, when it finally lands, will tell the band whether the song is the song."
+   "text": "They run Substation Nine. The song is not finished. The song's structure is — verse, chorus, verse, chorus, the lead break Jesse has been working on, a third verse, a final chorus."
+  },
+  {
+   "t": "narrate",
+   "text": "The lead break is the part the band has been waiting on, because the lead break is the part Jesse has been writing, and the part that Jesse has been writing is the part that, when it finally lands, will tell the band whether the song is the song."
   },
   {
    "t": "narrate",
@@ -319,7 +411,11 @@
   },
   {
    "t": "narrate",
-   "text": "Carl, behind the kit, hears it the way drummers hear a bandmate's improvement — by the way his own playing changes underneath it. Carl, on the second time through the break, does a small fill on the second-to-last bar that he has not done before, and the fill is — by every band member's small unspoken assent — the right fill."
+   "text": "Carl, behind the kit, hears it the way drummers hear a bandmate's improvement — by the way his own playing changes underneath it."
+  },
+  {
+   "t": "narrate",
+   "text": "Carl, on the second time through the break, does a small fill on the second-to-last bar that he has not done before, and the fill is — by every band member's small unspoken assent — the right fill."
   },
   {
    "t": "say",
@@ -406,7 +502,25 @@
   {
    "t": "say",
    "char": "Em",
-   "text": "[shot:closeup person_b]Because the song is the thing you have been writing all summer. Because the song is — Jess. The song is about the substation. The substation is the thing this town does not, by general agreement, talk about. The Foxhole is in New Auburn, twelve miles from the substation. The Foxhole's audience on Saturday is going to be — it's going to be people who live close enough to the substation that they will, when you sing the chorus, register what you are singing about. I want to play it for them. I want it to be the second song in the set. I want to see what the room does.",
+   "text": "[shot:closeup person_b]Because the song is the thing you have been writing all summer. Because the song is — Jess. The song is about the substation. The substation is the thing this town does not, by general agreement, talk about.",
+   "expr": "serious"
+  },
+  {
+   "t": "say",
+   "char": "Em",
+   "text": "The Foxhole is in New Auburn, twelve miles from the substation.",
+   "expr": "serious"
+  },
+  {
+   "t": "say",
+   "char": "Em",
+   "text": "The Foxhole's audience on Saturday is going to be — it's going to be people who live close enough to the substation that they will, when you sing the chorus, register what you are singing about. I want to play it for them.",
+   "expr": "serious"
+  },
+  {
+   "t": "say",
+   "char": "Em",
+   "text": "I want it to be the second song in the set. I want to see what the room does.",
    "expr": "serious"
   },
   {
@@ -457,7 +571,19 @@
   },
   {
    "t": "narrate",
-   "text": "[shot:establish]They run the rest of the set. Blowback, which Sam had requested on a Thursday in May at Jesse's garage and which has, in the months since, become the song the band uses to anchor the middle of any set. Grid Failure, which is the older song they had been touring with all spring. The new song Carl wrote, which is called Box Fan and which is — by Carl's stated intent — just about a box fan, that's it, no metaphor, leave me alone. And the cover they have been doing for two months, the Pixies' Here Comes Your Man, which is the song they always end on because Em sings the lead and because Em singing Here Comes Your Man in a small Texas venue at the end of a set has, on every previous occasion, gotten the room to applaud in the specific warm way rooms applaud when a band has, in their estimation, given them something the band did not have to give."
+   "text": "[shot:establish]They run the rest of the set. Blowback, which Sam had requested on a Thursday in May at Jesse's garage and which has, in the months since, become the song the band uses to anchor the middle of any set."
+  },
+  {
+   "t": "narrate",
+   "text": "Grid Failure, which is the older song they had been touring with all spring. The new song Carl wrote, which is called Box Fan and which is — by Carl's stated intent — just about a box fan, that's it, no metaphor, leave me alone."
+  },
+  {
+   "t": "narrate",
+   "text": "And the cover they have been doing for two months, the Pixies' Here Comes Your Man, which is the song they always end on because Em sings the lead and because Em singing Here Comes Your Man in a small Texas venue at the end of a set has,"
+  },
+  {
+   "t": "narrate",
+   "text": "on every previous occasion, gotten the room to applaud in the specific warm way rooms applaud when a band has, in their estimation, given them something the band did not have to give."
   },
   {
    "t": "narrate",
@@ -485,7 +611,11 @@
   },
   {
    "t": "narrate",
-   "text": "Jesse, in the garage, with the order written on the back of the flyer in Nate's handwriting, registers — with the small careful attention that he has, all summer, been giving to things that are not, technically, the conspiracy — that the band has, this evening, made its first set list as a band that has been booked at a venue called The Foxhole on a Saturday night for which they will, at the end of the night, be paid actual money."
+   "text": "Jesse, in the garage, with the order written on the back of the flyer in Nate's handwriting, registers — with the small careful attention that he has, all summer, been giving to things that are not, technically,"
+  },
+  {
+   "t": "narrate",
+   "text": "the conspiracy — that the band has, this evening, made its first set list as a band that has been booked at a venue called The Foxhole on a Saturday night for which they will, at the end of the night, be paid actual money."
   },
   {
    "t": "narrate",
@@ -503,7 +633,11 @@
   },
   {
    "t": "narrate",
-   "text": "[shot:insert drum_kit]Practice ends at nine forty-six. Carl breaks down the kit. Nate unplugs. Em packs her own mic, which she has, since June, been bringing to every practice in a small soft case her mother had given her at her high school graduation. They load Jesse's Telecaster and amp into Jesse's car. Carl carries his snare to his mother's car at the curb. Nate's bass stays at Nate's."
+   "text": "[shot:insert drum_kit]Practice ends at nine forty-six. Carl breaks down the kit. Nate unplugs. Em packs her own mic, which she has, since June, been bringing to every practice in a small soft case her mother had given her at her high school graduation."
+  },
+  {
+   "t": "narrate",
+   "text": "They load Jesse's Telecaster and amp into Jesse's car. Carl carries his snare to his mother's car at the curb. Nate's bass stays at Nate's."
   },
   {
    "t": "hide",
@@ -558,7 +692,13 @@
   {
    "t": "say",
    "char": "Em",
-   "text": "Write the bridge about — write it about the people. Write the bridge about us. Write it about the people in this room and the people we know and the people we have, this summer, started — started taking care of, in our small ways. The verses are about the substation. The chorus is about the substation. The bridge needs to be the part where the song says — where the song says and here we are anyway. You know what I mean?",
+   "text": "Write the bridge about — write it about the people. Write the bridge about us. Write it about the people in this room and the people we know and the people we have, this summer, started — started taking care of, in our small ways.",
+   "expr": "serious"
+  },
+  {
+   "t": "say",
+   "char": "Em",
+   "text": "The verses are about the substation. The chorus is about the substation. The bridge needs to be the part where the song says — where the song says and here we are anyway. You know what I mean?",
    "expr": "serious"
   },
   {
@@ -591,7 +731,11 @@
   },
   {
    "t": "narrate",
-   "text": "He thinks, with the small surprise of a kid who has, in the past two hours, been told twice — once by Walt, once by Em — that the things he has been quietly working on are visible to other people: Em has been watching me write this song for months. Em has known what I am writing about. Em has been waiting for the bridge. Em is — Em is the band. Em is the band in a way I have not, this summer, been registering she is."
+   "text": "He thinks, with the small surprise of a kid who has, in the past two hours, been told twice — once by Walt, once by Em — that the things he has been quietly working on are visible to other people: Em has been watching me write this song for months."
+  },
+  {
+   "t": "narrate",
+   "text": "Em has known what I am writing about. Em has been waiting for the bridge. Em is — Em is the band. Em is the band in a way I have not, this summer, been registering she is."
   },
   {
    "t": "narrate",

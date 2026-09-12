@@ -151,6 +151,21 @@ def word_hits(text):
 
 
 OPENING_NODES = 3          # lines that describe the PRESENT scene
+# The window is measured in CHARACTERS, not pages, since the 2026-09-12
+# page split: three pre-split paragraphs held ~700 characters; three
+# post-split pages hold a third of that, and the evidence a mood was
+# judged by would have changed without a word of prose changing.
+OPENING_CHARS = 450
+
+
+def opening(buf):
+    out, n = [], 0
+    for line in buf:
+        if n >= OPENING_CHARS:
+            break
+        out.append(line)
+        n += len(line)
+    return " ".join(out)
 
 
 def passages(nodes):
@@ -169,13 +184,13 @@ def passages(nodes):
         m = MOOD_RX.search(t[:120])
         if m:
             if cur is not None:
-                out.append((cur, " ".join(buf[:OPENING_NODES])))
+                out.append((cur, opening(buf)))
             cur = m.group(1)
             buf = []
         if cur is not None:
             buf.append(t)
     if cur is not None:
-        out.append((cur, " ".join(buf[:OPENING_NODES])))
+        out.append((cur, opening(buf)))
     return out
 
 
@@ -188,6 +203,10 @@ DELIBERATE = {
     ("vol5_ch13_death", "dawn_warm"),
     ("vol7_ch14_painting", "dawn_warm"),
     ("vol5_ch0_booth6", "night"),
+    # "They sat down for bread at six oh-one … the morning's white … the
+    # morning's brötchen": a 6 AM breakfast that mentions the night before.
+    # Past tense, not the present light (2026-09-12).
+    ("vol7_ch15_bread", "dawn_warm"),
 }
 
 

@@ -31,7 +31,15 @@
       "t": "narrate"
     },
     {
-      "text": "He had closed ChillWave at three. He had taped a piece of register paper to the inside of the door above the CLOSED sign that said back Saturday and had locked the bolt and had gone home to the apartment above the laundromat for an hour to pack a bag. The bag was the canvas overnight bag he had used in '49 when he had gone down to Eugene for his sister's wedding and had not, since, used. He had not, in three years, slept anywhere other than the apartment above the laundromat.",
+      "text": "He had closed ChillWave at three.",
+      "t": "narrate"
+    },
+    {
+      "text": "He had taped a piece of register paper to the inside of the door above the CLOSED sign that said back Saturday and had locked the bolt and had gone home to the apartment above the laundromat for an hour to pack a bag.",
+      "t": "narrate"
+    },
+    {
+      "text": "The bag was the canvas overnight bag he had used in '49 when he had gone down to Eugene for his sister's wedding and had not, since, used. He had not, in three years, slept anywhere other than the apartment above the laundromat.",
       "t": "narrate"
     },
     {
@@ -43,7 +51,11 @@
       "t": "narrate"
     },
     {
-      "text": "[shot:insert crow]He came up through the alders into the Sitka stand and came around the last shoulder and the cabin was where it was. Two trucks and a wagon in the clearing. Finn's Toyota with the crow on the dashboard. Kai's truck. Tem's wagon. Per's old Buick at an angle on the porch side. Cale parked behind Tem's wagon.",
+      "text": "[shot:insert crow]He came up through the alders into the Sitka stand and came around the last shoulder and the cabin was where it was. Two trucks and a wagon in the clearing. Finn's Toyota with the crow on the dashboard. Kai's truck. Tem's wagon.",
+      "t": "narrate"
+    },
+    {
+      "text": "Per's old Buick at an angle on the porch side. Cale parked behind Tem's wagon.",
       "t": "narrate"
     },
     {
@@ -78,12 +90,22 @@
     },
     {
       "char": "tem",
-      "text": "[shot:closeup person]Came in this morning. I found it at six on the rail. I have been looking at it on and off all day. I do not know who put it there. I have been at the cabin all day. The crow has been at Finn's and at the headland and at Lena's and at Kai's and is now on Finn's dashboard. The crow did not put it there.",
+      "text": "[shot:closeup person]Came in this morning. I found it at six on the rail. I have been looking at it on and off all day. I do not know who put it there. I have been at the cabin all day.",
       "expr": "neutral",
       "t": "say"
     },
     {
-      "text": "[beat:chill][shot:insert cedar~]He looked at the cedar. The cedar on the rail had a figure carved into it. The figure was a hand. The hand was small. The hand was open, palm up, the way a hand was open when it was offering something. The hand was rendered in a register Cale knew. The register was the carver's. The register was Eddvard's.",
+      "char": "tem",
+      "text": "The crow has been at Finn's and at the headland and at Lena's and at Kai's and is now on Finn's dashboard. The crow did not put it there.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "text": "[beat:chill][shot:insert cedar~]He looked at the cedar. The cedar on the rail had a figure carved into it. The figure was a hand. The hand was small. The hand was open, palm up, the way a hand was open when it was offering something.",
+      "t": "narrate"
+    },
+    {
+      "text": "The hand was rendered in a register Cale knew. The register was the carver's. The register was Eddvard's.",
       "t": "narrate"
     },
     {
@@ -143,7 +165,13 @@
     },
     {
       "char": "tem",
-      "text": "[shot:closeup person]Three. Olaf's hand on the bowl Kai brought out of Kestrel Mountain yesterday. Olaf's hand on a piece of yellow-grained wood the crow brought Finn overnight. And Eddvard's hand on this. The carver was Eddvard. Eddvard died ten years ago. The cedar is, by what I can read, less than a week old. Come inside.",
+      "text": "[shot:closeup person]Three. Olaf's hand on the bowl Kai brought out of Kestrel Mountain yesterday. Olaf's hand on a piece of yellow-grained wood the crow brought Finn overnight. And Eddvard's hand on this. The carver was Eddvard.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "Eddvard died ten years ago. The cedar is, by what I can read, less than a week old. Come inside.",
       "expr": "serious",
       "t": "say"
     },
@@ -174,7 +202,11 @@
       "t": "show"
     },
     {
-      "text": "[mood:candlelight_low][shot:establish]The four of them were at the table. Per at the head, with the wooden box at his elbow and Marit's bowl on the table in front of him. Kai across from Per with the substrate-bowl in front of him. Lena beside Kai. Finn beside Per with his canvas bag with the hexagon at his feet. The two bowls were in the kerosene-lamp light. The wood stove was up. The cabin was at sixty-three.",
+      "text": "[mood:candlelight_low][shot:establish]The four of them were at the table. Per at the head, with the wooden box at his elbow and Marit's bowl on the table in front of him. Kai across from Per with the substrate-bowl in front of him. Lena beside Kai.",
+      "t": "narrate"
+    },
+    {
+      "text": "Finn beside Per with his canvas bag with the hexagon at his feet. The two bowls were in the kerosene-lamp light. The wood stove was up. The cabin was at sixty-three.",
       "t": "narrate"
     },
     {
@@ -182,15 +214,27 @@
       "t": "narrate"
     },
     {
-      "text": "The bowls were the bowls. He looked at them. He had not, in his life, seen Olaf's hand on a bowl. He had heard about the bowls from Tem since '49 when she had first told him about the network. He had told her at the time that Nate, in 1994, had said one thing about a bowl — about the listening. He had not, until Tem had said the word bowls to him in 2049, known what Nate had been talking about.",
+      "text": "The bowls were the bowls. He looked at them. He had not, in his life, seen Olaf's hand on a bowl. He had heard about the bowls from Tem since '49 when she had first told him about the network.",
       "t": "narrate"
     },
     {
-      "text": "He looked at the bowls now. Marit's bowl on the right. The substrate-bowl on the left. He could read the hand in the way the spiral on the outside ran from the rim down to the base in a single continuous curve. Olaf and Eddvard had carved alike. The hands were the hands of two men who had been at the same bench long enough that the hands had aligned.",
+      "text": "He had told her at the time that Nate, in 1994, had said one thing about a bowl — about the listening. He had not, until Tem had said the word bowls to him in 2049, known what Nate had been talking about.",
       "t": "narrate"
     },
     {
-      "text": "[shot:insert bowl]He picked up Marit's bowl. The imagery inside was the face. He saw the face. He set the bowl down without saying anything. He picked up the substrate-bowl. The crow looking off to the right. The seven-and-a-half-arm octopus. The ferret on a cedar floor. The young woman in the yellow slicker walking past a doorway. The seven-floor tower. The hanged man. He set the substrate-bowl down.",
+      "text": "He looked at the bowls now. Marit's bowl on the right. The substrate-bowl on the left. He could read the hand in the way the spiral on the outside ran from the rim down to the base in a single continuous curve.",
+      "t": "narrate"
+    },
+    {
+      "text": "Olaf and Eddvard had carved alike. The hands were the hands of two men who had been at the same bench long enough that the hands had aligned.",
+      "t": "narrate"
+    },
+    {
+      "text": "[shot:insert bowl]He picked up Marit's bowl. The imagery inside was the face. He saw the face. He set the bowl down without saying anything. He picked up the substrate-bowl. The crow looking off to the right. The seven-and-a-half-arm octopus.",
+      "t": "narrate"
+    },
+    {
+      "text": "The ferret on a cedar floor. The young woman in the yellow slicker walking past a doorway. The seven-floor tower. The hanged man. He set the substrate-bowl down.",
       "t": "narrate"
     },
     {
@@ -217,13 +261,25 @@
     },
     {
       "char": "cale",
-      "text": "Nate had — in the dream — walked into the basement and stood at the door and watched the kid at the desk. The kid had been working on something. The kid had not, in the dream, turned around. Nate told me he had stood at the door of the basement for the length of the dream watching the kid work and had not, in the dream, ever been able to see the kid's face.",
+      "text": "Nate had — in the dream — walked into the basement and stood at the door and watched the kid at the desk. The kid had been working on something. The kid had not, in the dream, turned around.",
       "expr": "serious",
       "t": "say"
     },
     {
       "char": "cale",
-      "text": "He had woken up. He had told me about it the next afternoon. He had told me because the dream had bothered him and he had not, in the dream, recognized the kid as himself until he had been awake for some hours afterward, and the recognizing had — by what he said to me — felt like the dream had been telling him something.",
+      "text": "Nate told me he had stood at the door of the basement for the length of the dream watching the kid work and had not, in the dream, ever been able to see the kid's face.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "cale",
+      "text": "He had woken up. He had told me about it the next afternoon.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "cale",
+      "text": "He had told me because the dream had bothered him and he had not, in the dream, recognized the kid as himself until he had been awake for some hours afterward, and the recognizing had — by what he said to me — felt like the dream had been telling him something.",
       "expr": "serious",
       "t": "say"
     },
@@ -241,7 +297,13 @@
     },
     {
       "char": "cale",
-      "text": "I had not, in the years since, said it to anybody. I had not, when Tem told me about the bowls in 2049, said it to her. I had not, when Brandon brought me the daughter theory in 2050, said it to him. I had not, when Brandon told me Nate had said Aria in 2050, said it to him. I had not — I had not, on Monday morning at this cabin in front of Kai and Finn, said it to them when I said her name out loud for the first time.",
+      "text": "I had not, in the years since, said it to anybody. I had not, when Tem told me about the bowls in 2049, said it to her. I had not, when Brandon brought me the daughter theory in 2050, said it to him.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "cale",
+      "text": "I had not, when Brandon told me Nate had said Aria in 2050, said it to him. I had not — I had not, on Monday morning at this cabin in front of Kai and Finn, said it to them when I said her name out loud for the first time.",
       "expr": "serious",
       "t": "say"
     },
@@ -253,13 +315,25 @@
     },
     {
       "char": "cale",
-      "text": "Nate had not yet played Kestrel Mountain in February of '94. Nate had played it for the first time in late '93 and had been into the basement for the first time on the twelfth playing. The twelfth playing was — by what I can figure from what Tem has told me about Kai meeting the imprint — the twelfth playing was in the spring of '94 or thereabouts. Nate had had the dream in February.",
+      "text": "Nate had not yet played Kestrel Mountain in February of '94. Nate had played it for the first time in late '93 and had been into the basement for the first time on the twelfth playing.",
       "expr": "serious",
       "t": "say"
     },
     {
       "char": "cale",
-      "text": "The dream had preceded the playing. The dream had been — by what I am now figuring out at this table — the dream had been Nate dreaming about a place he was going to walk into in the substrate three months later. Nate had been seventeen. Nate had been getting ready for a thing he had not yet done. The substrate had been preparing him by giving him the dream first.",
+      "text": "The twelfth playing was — by what I can figure from what Tem has told me about Kai meeting the imprint — the twelfth playing was in the spring of '94 or thereabouts. Nate had had the dream in February.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "cale",
+      "text": "The dream had preceded the playing. The dream had been — by what I am now figuring out at this table — the dream had been Nate dreaming about a place he was going to walk into in the substrate three months later.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "cale",
+      "text": "Nate had been seventeen. Nate had been getting ready for a thing he had not yet done. The substrate had been preparing him by giving him the dream first.",
       "expr": "serious",
       "t": "say"
     },
@@ -325,7 +399,13 @@
     },
     {
       "char": "per",
-      "text": "My father, in the notebook I burned in '86, had three dreams written down at the back of the notebook. The dreams were — by what I read at nineteen at the desk — the dreams were dreams my father had had about a person who was going to come through the listening.",
+      "text": "My father, in the notebook I burned in '86, had three dreams written down at the back of the notebook.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "per",
+      "text": "The dreams were — by what I read at nineteen at the desk — the dreams were dreams my father had had about a person who was going to come through the listening.",
       "expr": "serious",
       "t": "say"
     },
@@ -337,7 +417,19 @@
     },
     {
       "char": "per",
-      "text": "I burned the notebook in '86 and the dreams went with it. I have been carrying — I have been carrying for fifty years the fact that my father had dreams about a person he could not see who was going to come through the listening, and I have not, in the fifty years, said it. I am saying it now.",
+      "text": "I burned the notebook in '86 and the dreams went with it.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "per",
+      "text": "I have been carrying — I have been carrying for fifty years the fact that my father had dreams about a person he could not see who was going to come through the listening, and I have not, in the fifty years, said it.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "per",
+      "text": "I am saying it now.",
       "expr": "serious",
       "t": "say"
     },
@@ -367,7 +459,19 @@
     },
     {
       "char": "tem",
-      "text": "Cale and Per. Something is gathering. The bowls are warm. The substrate has been carving objects. The cast on the bowls is the cast at this table. The listening-room my grandfather knew about has been waiting for the people in it to bring what we have been carrying. We have been bringing it for an hour. Marina is going to be here at ten. By every measure my grandfather would have used, we are in the listening-room. We are in it.",
+      "text": "Cale and Per. Something is gathering. The bowls are warm. The substrate has been carving objects. The cast on the bowls is the cast at this table.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "The listening-room my grandfather knew about has been waiting for the people in it to bring what we have been carrying. We have been bringing it for an hour. Marina is going to be here at ten.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "By every measure my grandfather would have used, we are in the listening-room. We are in it.",
       "expr": "serious",
       "t": "say"
     },
@@ -453,7 +557,13 @@
     },
     {
       "char": "lena",
-      "text": "Not tonight. Tomorrow morning. I am going to be at the cabin with Marina at ten. I am going to drive down with Kai at six-thirty tomorrow morning. I am going to paint at seven when the alley light is right. The count by tomorrow morning will be — the count will be what it needs to be. I will paint the strokes the count tells me to paint. I will not, by my own decision, decide what each stroke does. I will let the substrate decide.",
+      "text": "Not tonight. Tomorrow morning. I am going to be at the cabin with Marina at ten. I am going to drive down with Kai at six-thirty tomorrow morning. I am going to paint at seven when the alley light is right.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "lena",
+      "text": "The count by tomorrow morning will be — the count will be what it needs to be. I will paint the strokes the count tells me to paint. I will not, by my own decision, decide what each stroke does. I will let the substrate decide.",
       "expr": "serious",
       "t": "say"
     },
@@ -483,7 +593,13 @@
     },
     {
       "char": "cale",
-      "text": "I have not — I have not been with a painter painting in some years. I want to be there tomorrow morning when you do it. I will bring coffee. I will stand at the end of the alley. I will not be in your space. I will be — I will be the witness. I want to be the witness.",
+      "text": "I have not — I have not been with a painter painting in some years. I want to be there tomorrow morning when you do it. I will bring coffee. I will stand at the end of the alley. I will not be in your space.",
+      "expr": "neutral",
+      "t": "say"
+    },
+    {
+      "char": "cale",
+      "text": "I will be — I will be the witness. I want to be the witness.",
       "expr": "neutral",
       "t": "say"
     },

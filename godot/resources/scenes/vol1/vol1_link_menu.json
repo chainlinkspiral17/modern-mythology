@@ -11,7 +11,11 @@
   },
   {
    "t": "narrate",
-   "text": "[mood:liminal_interior]The menu is laminated and slightly tacky. It has been hand-typed on a typewriter and photocopied at some point in the last decade or two. The header reads THE MISSING LINK in the same chipped enamel as the sign, and below it, in smaller letters: We have what we have."
+   "text": "[mood:liminal_interior]The menu is laminated and slightly tacky. It has been hand-typed on a typewriter and photocopied at some point in the last decade or two."
+  },
+  {
+   "t": "narrate",
+   "text": "The header reads THE MISSING LINK in the same chipped enamel as the sign, and below it, in smaller letters: We have what we have."
   },
   {
    "t": "narrate",

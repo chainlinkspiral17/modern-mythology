@@ -93,13 +93,25 @@
     },
     {
       "char": "kai",
-      "text": "[shot:closeup kai]He came in at eleven-oh-six. Orange shirt under wax canvas. Boat shoes. Walked in like he'd been in before. He hadn't. He said Kai? Roy Hummel. I see you at the Daily Grind. Lena makes me a hot chocolate sometimes. Sweet kid. That was the lead. He used Lena's name in the third sentence.",
+      "text": "[shot:closeup kai]He came in at eleven-oh-six. Orange shirt under wax canvas. Boat shoes. Walked in like he'd been in before. He hadn't. He said Kai? Roy Hummel. I see you at the Daily Grind. Lena makes me a hot chocolate sometimes. Sweet kid.",
       "expr": "serious",
       "t": "say"
     },
     {
       "char": "kai",
-      "text": "He said I'm asking on behalf of someone. They wanted me to ask you something. I said who. He said doesn't matter who. I asked what he wanted. He said they want to know whether your friend Finn has been in possession of materials that belong to the museum-town historical society. I said what materials. He said they didn't say.",
+      "text": "That was the lead. He used Lena's name in the third sentence.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "kai",
+      "text": "He said I'm asking on behalf of someone. They wanted me to ask you something. I said who. He said doesn't matter who. I asked what he wanted.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "kai",
+      "text": "He said they want to know whether your friend Finn has been in possession of materials that belong to the museum-town historical society. I said what materials. He said they didn't say.",
       "expr": "serious",
       "t": "say"
     },
@@ -235,7 +247,13 @@
     },
     {
       "char": "tem",
-      "text": "Roy is asking after you because you have the wood. Or because somebody who knows about the wood is using Roy to ask. Or because the substrate that may be in Roy is reading you the way it reads anybody who has come into contact with the work, and the substrate wants the wood back.",
+      "text": "Roy is asking after you because you have the wood. Or because somebody who knows about the wood is using Roy to ask.",
+      "expr": "serious",
+      "t": "say"
+    },
+    {
+      "char": "tem",
+      "text": "Or because the substrate that may be in Roy is reading you the way it reads anybody who has come into contact with the work, and the substrate wants the wood back.",
       "expr": "serious",
       "t": "say"
     },
@@ -436,7 +454,11 @@
       "t": "show"
     },
     {
-      "text": "[shot:insert phone]It was past nine. Lena looked at her phone on the side table and registered that they had been in the apartment for over three hours and that she was, by the kind of exhaustion that hits at the end of a long day in which people have said true things to each other in a small room, not going to be useful for any more thinking tonight.",
+      "text": "[shot:insert phone]It was past nine. Lena looked at her phone on the side table and registered that they had been in the apartment for over three hours and that she was,",
+      "t": "narrate"
+    },
+    {
+      "text": "by the kind of exhaustion that hits at the end of a long day in which people have said true things to each other in a small room, not going to be useful for any more thinking tonight.",
       "t": "narrate"
     },
     {
@@ -542,7 +564,11 @@
       "t": "say"
     },
     {
-      "text": "[shot:establish_c]There was a small shuffle at the door about who was driving back where. Kai said he would walk to the shop and pick up his truck and drive himself home. Finn said he would drop Tem at the cabin on his way to his apartment and come back down in the morning. Tem said she did not want to be at the cabin tonight.",
+      "text": "[shot:establish_c]There was a small shuffle at the door about who was driving back where. Kai said he would walk to the shop and pick up his truck and drive himself home.",
+      "t": "narrate"
+    },
+    {
+      "text": "Finn said he would drop Tem at the cabin on his way to his apartment and come back down in the morning. Tem said she did not want to be at the cabin tonight.",
       "t": "narrate"
     },
     {

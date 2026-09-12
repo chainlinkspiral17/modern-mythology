@@ -27,7 +27,11 @@
     },
     {
       "t": "narrate",
-      "text": "[shot:closeup graciela]Graciela Ramos is in the kitchen at the small round table under the window. In front of her is a rosary she is not, at this moment, using, and a cup of black coffee she is not, at this moment, drinking, and a cordless landline phone, on the table, that is face-up, that has not been used since 2017 but that is, this afternoon, plugged in and charging."
+      "text": "[shot:closeup graciela]Graciela Ramos is in the kitchen at the small round table under the window."
+    },
+    {
+      "t": "narrate",
+      "text": "In front of her is a rosary she is not, at this moment, using, and a cup of black coffee she is not, at this moment, drinking, and a cordless landline phone, on the table, that is face-up, that has not been used since 2017 but that is, this afternoon, plugged in and charging."
     },
     {
       "t": "show",
@@ -69,13 +73,25 @@
       "t": "say",
       "char": "Graciela",
       "expr": "cold",
-      "text": "\"Because my grandson kissed me goodnight at nine-thirty and told me he loved me, which he did not, on a Saturday, normally say. He said it with the small specific pressure of a boy saying goodbye. He did not know he was saying goodbye. He knew enough to say it anyway.\""
+      "text": "\"Because my grandson kissed me goodnight at nine-thirty and told me he loved me, which he did not, on a Saturday, normally say. He said it with the small specific pressure of a boy saying goodbye."
     },
     {
       "t": "say",
       "char": "Graciela",
       "expr": "cold",
-      "text": "\"The truck was driven by two sets of hands — it pulled out slowly, the way Diego drives when he is backing up, but it shifted into third gear by the corner of Ashberry and Linden, which Diego never does. Diego drives in fourth gear on our street. The shifting was wrong. The person driving was not my grandson.\""
+      "text": "He did not know he was saying goodbye. He knew enough to say it anyway.\""
+    },
+    {
+      "t": "say",
+      "char": "Graciela",
+      "expr": "cold",
+      "text": "\"The truck was driven by two sets of hands — it pulled out slowly, the way Diego drives when he is backing up, but it shifted into third gear by the corner of Ashberry and Linden, which Diego never does."
+    },
+    {
+      "t": "say",
+      "char": "Graciela",
+      "expr": "cold",
+      "text": "Diego drives in fourth gear on our street. The shifting was wrong. The person driving was not my grandson.\""
     },
     {
       "t": "say",
@@ -85,19 +101,35 @@
     },
     {
       "t": "narrate",
-      "text": "[shot:closeup sam]Sam stares at her. The cold from the Kwik Stop and the cold from her bedroom this morning have, at this point, converged into something that is no longer cold — something more like a still point inside her chest, from which she can observe, calmly and from a small safe distance, the architecture of a problem she has been refusing, all day, to name."
+      "text": "[shot:closeup sam]Sam stares at her. The cold from the Kwik Stop and the cold from her bedroom this morning have, at this point, converged into something that is no longer cold —"
+    },
+    {
+      "t": "narrate",
+      "text": "something more like a still point inside her chest, from which she can observe, calmly and from a small safe distance, the architecture of a problem she has been refusing, all day, to name."
     },
     {
       "t": "say",
       "char": "Graciela",
       "expr": "neutral",
-      "text": "\"I think my grandson saw something at the Gas & Go that he was not meant to see. I think he told one person. I think that one person told the wrong person. I think your father is either the one who decided, or the one who was told by the person who decided. I do not know which. I do not, yet, care which.\""
+      "text": "\"I think my grandson saw something at the Gas & Go that he was not meant to see. I think he told one person. I think that one person told the wrong person."
     },
     {
       "t": "say",
       "char": "Graciela",
       "expr": "neutral",
-      "text": "\"Mija. You are seventeen. I should not ask you for anything. But I have prayed on this since four-forty-nine this morning and the answer has been the same for eleven hours. You are the one who can walk into that house tonight, and tomorrow, and next week, and hear the things I cannot hear because I am not in that house.\""
+      "text": "I think your father is either the one who decided, or the one who was told by the person who decided. I do not know which. I do not, yet, care which.\""
+    },
+    {
+      "t": "say",
+      "char": "Graciela",
+      "expr": "neutral",
+      "text": "\"Mija. You are seventeen. I should not ask you for anything. But I have prayed on this since four-forty-nine this morning and the answer has been the same for eleven hours."
+    },
+    {
+      "t": "say",
+      "char": "Graciela",
+      "expr": "neutral",
+      "text": "You are the one who can walk into that house tonight, and tomorrow, and next week, and hear the things I cannot hear because I am not in that house.\""
     },
     {
       "t": "say",
@@ -122,13 +154,13 @@
       "opts": [
         {
           "text": "\"I'll do it.\"",
-          "goto": 21,
+          "goto": 27,
           "flag": "graciela_answer",
           "val": "said_yes"
         },
         {
           "text": "[She has been sitting here since four forty-nine this morning. Alone with this for eleven hours.]",
-          "goto": 21,
+          "goto": 27,
           "flag": "graciela_answer",
           "val": "sat_with_it"
         }
@@ -166,7 +198,11 @@
     },
     {
       "t": "narrate",
-      "text": "[mood:kitchen_practical][shot:insert hands]Graciela puts her hand over Sam's, and for a moment the two of them stay that way, and the kitchen is very quiet, and the cordless phone on the table blinks its small green charge light, and outside on Ashberry Drive the sprinklers are not running because the sprinklers on this block do not run until six PM on Sundays."
+      "text": "[mood:kitchen_practical][shot:insert hands]Graciela puts her hand over Sam's, and for a moment the two of them stay that way, and the kitchen is very quiet, and the cordless phone on the table blinks its small green charge light,"
+    },
+    {
+      "t": "narrate",
+      "text": "and outside on Ashberry Drive the sprinklers are not running because the sprinklers on this block do not run until six PM on Sundays."
     },
     {
       "t": "say",

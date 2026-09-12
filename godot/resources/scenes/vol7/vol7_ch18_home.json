@@ -68,7 +68,11 @@
    "t": "say"
   },
   {
-   "text": "He pulled the blanket off. He stood up. He reached into the shirt pocket of his shirt — which he had not, in the experience, been wearing; he had been wearing the wax canvas coat — and he registered before he reached that the cedar was going to be in his shirt pocket.",
+   "text": "He pulled the blanket off. He stood up.",
+   "t": "narrate"
+  },
+  {
+   "text": "He reached into the shirt pocket of his shirt — which he had not, in the experience, been wearing; he had been wearing the wax canvas coat — and he registered before he reached that the cedar was going to be in his shirt pocket.",
    "t": "narrate"
   },
   {
@@ -80,7 +84,11 @@
    "t": "narrate"
   },
   {
-   "text": "He held it up to the bedroom's ceiling light. The carved bell — by what Finn could read at this angle — the same bell as the bell at the bottom of the substrate's second pool. The substrate had given him the bell out of the experience. The substrate had put the bell in his pocket the way the substrate had put a bowl in Kai's pocket on Wednesday at the cabin.",
+   "text": "He held it up to the bedroom's ceiling light. The carved bell — by what Finn could read at this angle — the same bell as the bell at the bottom of the substrate's second pool.",
+   "t": "narrate"
+  },
+  {
+   "text": "The substrate had given him the bell out of the experience. The substrate had put the bell in his pocket the way the substrate had put a bowl in Kai's pocket on Wednesday at the cabin.",
    "t": "narrate"
   },
   {
@@ -146,7 +154,12 @@
   },
   {
    "char": "finn",
-   "text": "The old man told Brandon, on the fourth of October in '50, that there would be a person who would come to the stick after Brandon was gone, carrying Brandon's crow. The old man asked Brandon to give the crow to that person. Brandon did. The crow has been mine since November.",
+   "text": "The old man told Brandon, on the fourth of October in '50, that there would be a person who would come to the stick after Brandon was gone, carrying Brandon's crow. The old man asked Brandon to give the crow to that person.",
+   "t": "say"
+  },
+  {
+   "char": "finn",
+   "text": "Brandon did. The crow has been mine since November.",
    "t": "say"
   },
   {
@@ -185,7 +198,12 @@
   },
   {
    "char": "finn",
-   "text": "The crow is one of the vessels. The crow is the bell. The crow is going to ring. The crow rings; the daughter comes. She has been preparing the sound for two years. It will come out when the right people are gathered. Quiet. One note. At a pitch the people present will feel before they hear.",
+   "text": "The crow is one of the vessels. The crow is the bell. The crow is going to ring. The crow rings; the daughter comes. She has been preparing the sound for two years. It will come out when the right people are gathered. Quiet.",
+   "t": "say"
+  },
+  {
+   "char": "finn",
+   "text": "One note. At a pitch the people present will feel before they hear.",
    "t": "say"
   },
   {
@@ -210,7 +228,12 @@
   },
   {
    "char": "finn",
-   "text": "The old man told me Olaf carved it in '76 as a symbol piece for the foundation. He gave it to your grandfather to take down to Eugene. Your grandfather never took it down. The piece was in a drawer of the desk at the cabin from '76 to '42. You found it after Eddvard died. You have had it at your apartment in town for the past three years.",
+   "text": "The old man told me Olaf carved it in '76 as a symbol piece for the foundation. He gave it to your grandfather to take down to Eugene. Your grandfather never took it down.",
+   "t": "say"
+  },
+  {
+   "char": "finn",
+   "text": "The piece was in a drawer of the desk at the cabin from '76 to '42. You found it after Eddvard died. You have had it at your apartment in town for the past three years.",
    "t": "say"
   },
   {
@@ -229,7 +252,12 @@
   },
   {
    "char": "tem",
-   "text": "The piece is at my apartment in the drawer of my writing desk in the bedroom. I have not looked at it in some months. I have not, in the three years, known what to do with it. I have been carrying the piece the way Brandon was carrying the crow. The piece has been mine.",
+   "text": "The piece is at my apartment in the drawer of my writing desk in the bedroom. I have not looked at it in some months. I have not, in the three years, known what to do with it.",
+   "t": "say"
+  },
+  {
+   "char": "tem",
+   "text": "I have been carrying the piece the way Brandon was carrying the crow. The piece has been mine.",
    "t": "say"
   },
   {
@@ -239,7 +267,12 @@
   },
   {
    "char": "finn",
-   "text": "I do not know — by what we have been figuring out about the substrate's not-distinguishing-well between objects in different places — I do not know if there is one piece in two places, or two pieces, or three. The piece in my hand right now is what I took out of the substrate. It may still be in the drawer at your apartment. It may still be at the bottom of the substrate pool.",
+   "text": "I do not know — by what we have been figuring out about the substrate's not-distinguishing-well between objects in different places — I do not know if there is one piece in two places, or two pieces, or three.",
+   "t": "say"
+  },
+  {
+   "char": "finn",
+   "text": "The piece in my hand right now is what I took out of the substrate. It may still be in the drawer at your apartment. It may still be at the bottom of the substrate pool.",
    "t": "say"
   },
   {
@@ -278,11 +311,19 @@
    "t": "say"
   },
   {
-   "text": "He set the phone down. He went back to the bedroom. The wax canvas coat had been the body in the substrate — not in the bedroom. He had been on the bed in his thermal and his jeans the whole time. He went to the closet. His own wax canvas coat was on the hook. He patted the right outside pocket.",
+   "text": "He set the phone down. He went back to the bedroom. The wax canvas coat had been the body in the substrate — not in the bedroom. He had been on the bed in his thermal and his jeans the whole time. He went to the closet.",
    "t": "narrate"
   },
   {
-   "text": "[shot:insert notebook]The notebook was in his pocket. The notebook was Brandon's notebook from the substrate. Leather-bound. The size of his palm. It had been in the pocket of the substrate's coat the whole experience and was now, on the hook in his closet, in the pocket of his own actual coat.",
+   "text": "His own wax canvas coat was on the hook. He patted the right outside pocket.",
+   "t": "narrate"
+  },
+  {
+   "text": "[shot:insert notebook]The notebook was in his pocket. The notebook was Brandon's notebook from the substrate. Leather-bound. The size of his palm.",
+   "t": "narrate"
+  },
+  {
+   "text": "It had been in the pocket of the substrate's coat the whole experience and was now, on the hook in his closet, in the pocket of his own actual coat.",
    "t": "narrate"
   },
   {

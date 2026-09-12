@@ -29,7 +29,15 @@
     },
     {
       "t": "narrate",
-      "text": "[trip:1.2][mood:dawn_warm]He has not been to the New Auburn Police Department substation in nine years. The substation is a flat-roofed beige building in a strip-mall configuration off the New Auburn Bypass, sharing a parking lot with a payday loan store and a tax preparer. Its sign — NAPD SUBSTATION B — has been hand-touched-up by the same officer twice a year since 2014, with the same can of dark-blue enamel, in the small careful way departments maintained things they did not, technically, have the budget for."
+      "text": "[trip:1.2][mood:dawn_warm]He has not been to the New Auburn Police Department substation in nine years."
+    },
+    {
+      "t": "narrate",
+      "text": "The substation is a flat-roofed beige building in a strip-mall configuration off the New Auburn Bypass, sharing a parking lot with a payday loan store and a tax preparer."
+    },
+    {
+      "t": "narrate",
+      "text": "Its sign — NAPD SUBSTATION B — has been hand-touched-up by the same officer twice a year since 2014, with the same can of dark-blue enamel, in the small careful way departments maintained things they did not, technically, have the budget for."
     },
     {
       "t": "narrate",
@@ -37,11 +45,19 @@
     },
     {
       "t": "narrate",
-      "text": "Detective Ramirez's car is already in the lot. Ramirez is at the side door, a coffee in each hand, waiting. Ramirez does not wave. Ramirez has, Miller registers, the particular still presence of a man who has done this kind of intake before and has decided, on each occasion, to extend the small dignity of not making the moment harder than it needs to be."
+      "text": "Detective Ramirez's car is already in the lot. Ramirez is at the side door, a coffee in each hand, waiting. Ramirez does not wave."
     },
     {
       "t": "narrate",
-      "text": "Miller takes a long breath. He thinks: Sammy is asleep. He thinks: In two hours she will be at the Kwik Stop. In two hours she will know I am here, because her mother will tell her. She will work her shift. She will do what she is told. She is, this morning and from this morning forward, exactly the daughter I had hoped to raise without ever having had any business hoping it, given what I was doing while I raised her."
+      "text": "Ramirez has, Miller registers, the particular still presence of a man who has done this kind of intake before and has decided, on each occasion, to extend the small dignity of not making the moment harder than it needs to be."
+    },
+    {
+      "t": "narrate",
+      "text": "Miller takes a long breath. He thinks: Sammy is asleep. He thinks: In two hours she will be at the Kwik Stop. In two hours she will know I am here, because her mother will tell her. She will work her shift."
+    },
+    {
+      "t": "narrate",
+      "text": "She will do what she is told. She is, this morning and from this morning forward, exactly the daughter I had hoped to raise without ever having had any business hoping it, given what I was doing while I raised her."
     },
     {
       "t": "think",
@@ -105,7 +121,13 @@
     {
       "t": "say",
       "char": "Chief Miller",
-      "text": "Hernando. Sammy needs to come home from her shift today and find her mother and her father in the kitchen. She needs to have one more dinner. Then I need this to be done. Tomorrow is one more day she has to spend pretending. I am not going to make her spend it.",
+      "text": "Hernando. Sammy needs to come home from her shift today and find her mother and her father in the kitchen. She needs to have one more dinner. Then I need this to be done. Tomorrow is one more day she has to spend pretending.",
+      "expr": "neutral"
+    },
+    {
+      "t": "say",
+      "char": "Chief Miller",
+      "text": "I am not going to make her spend it.",
       "expr": "neutral"
     },
     {

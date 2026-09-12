@@ -38,11 +38,19 @@
       "t": "narrate"
     },
     {
-      "text": "He had not slept well. Three hours, then up, then another two, then up again at six. The first thing he did at six was check the wall across Main from his apartment window. The patch on the side of the laundromat building was where it had been Friday and where it had been yesterday. Bigger today, maybe. He could not be sure from his window. He had not gone out to look.",
+      "text": "He had not slept well. Three hours, then up, then another two, then up again at six. The first thing he did at six was check the wall across Main from his apartment window.",
       "t": "narrate"
     },
     {
-      "text": "He showered. Coffee at the kitchen counter standing up. Two slices of toast with the butter Hans gave him every other Tuesday for moving boxes at the bakery. Wool sweater — his grandmother had made it in 2048 — and the wax canvas jacket that had been Devon's before Devon left for Portland, and the boots. Four blocks to the shop.",
+      "text": "The patch on the side of the laundromat building was where it had been Friday and where it had been yesterday. Bigger today, maybe. He could not be sure from his window. He had not gone out to look.",
+      "t": "narrate"
+    },
+    {
+      "text": "He showered. Coffee at the kitchen counter standing up. Two slices of toast with the butter Hans gave him every other Tuesday for moving boxes at the bakery.",
+      "t": "narrate"
+    },
+    {
+      "text": "Wool sweater — his grandmother had made it in 2048 — and the wax canvas jacket that had been Devon's before Devon left for Portland, and the boots. Four blocks to the shop.",
       "t": "narrate"
     },
     {
@@ -54,7 +62,11 @@
       "t": "narrate"
     },
     {
-      "text": "Smolvud on a Sunday morning in late August in the rain. The Daily Grind would have its small rush from seven to nine and then nothing until eleven. The Missing Link was open. Hans's bakery was closed on Sundays. Petra's bookstore opened at one. The Charging Station was open.",
+      "text": "Smolvud on a Sunday morning in late August in the rain. The Daily Grind would have its small rush from seven to nine and then nothing until eleven. The Missing Link was open. Hans's bakery was closed on Sundays.",
+      "t": "narrate"
+    },
+    {
+      "text": "Petra's bookstore opened at one. The Charging Station was open.",
       "t": "narrate"
     },
     {
@@ -66,11 +78,23 @@
       "t": "narrate"
     },
     {
-      "text": "[mood:kitchen_practical][shot:closeup roy~]The man was mid-sixties, maybe older. Heavy. Orange Hawaiian shirt under a wax canvas coat he had not, on entering, taken off. Khakis. Brown leather boat shoes that nobody on the Smolvud coast wore in August in the rain. He was smiling. The smile was the smile of a person who had been smiling for so long the smile was no longer about anything specific. The smile was the smile he wore.",
+      "text": "[mood:kitchen_practical][shot:closeup roy~]The man was mid-sixties, maybe older. Heavy. Orange Hawaiian shirt under a wax canvas coat he had not, on entering, taken off. Khakis. Brown leather boat shoes that nobody on the Smolvud coast wore in August in the rain.",
       "t": "narrate"
     },
     {
-      "text": "Kai recognized him after about two seconds. Roy. He didn't know the last name. The Hawaiian shirt guy from the south end. He had been at the Daily Grind a hundred times. At the Charging Station. At the museum once when Kai had gone down to look at the Inga bench with Devon in 2049. Kai had never spoken to him. Kai's mother had told him in 2046, when Kai was eighteen: don't get into a conversation with that one. He'll keep you for an hour.",
+      "text": "He was smiling. The smile was the smile of a person who had been smiling for so long the smile was no longer about anything specific. The smile was the smile he wore.",
+      "t": "narrate"
+    },
+    {
+      "text": "Kai recognized him after about two seconds. Roy. He didn't know the last name. The Hawaiian shirt guy from the south end. He had been at the Daily Grind a hundred times. At the Charging Station.",
+      "t": "narrate"
+    },
+    {
+      "text": "At the museum once when Kai had gone down to look at the Inga bench with Devon in 2049. Kai had never spoken to him. Kai's mother had told him in 2046, when Kai was eighteen: don't get into a conversation with that one.",
+      "t": "narrate"
+    },
+    {
+      "text": "He'll keep you for an hour.",
       "t": "narrate"
     },
     {

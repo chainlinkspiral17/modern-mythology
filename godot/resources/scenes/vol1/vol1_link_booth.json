@@ -35,7 +35,11 @@
   },
   {
    "t": "narrate",
-   "text": "A polaroid, this one, smaller than the others and not in a frame — taped to the wall with brittle tape that has yellowed. A young man in a trench coat at a depot bench. The polaroid was taken in the rain. The seams of the coat are not glowing. They are not yet glowing. The date written in pen along the white border, in someone else's hand, is a date that has not happened yet."
+   "text": "A polaroid, this one, smaller than the others and not in a frame — taped to the wall with brittle tape that has yellowed. A young man in a trench coat at a depot bench. The polaroid was taken in the rain."
+  },
+  {
+   "t": "narrate",
+   "text": "The seams of the coat are not glowing. They are not yet glowing. The date written in pen along the white border, in someone else's hand, is a date that has not happened yet."
   },
   {
    "t": "jump",

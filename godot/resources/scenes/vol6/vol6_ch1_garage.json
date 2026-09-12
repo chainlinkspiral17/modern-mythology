@@ -29,7 +29,11 @@
     },
     {
       "t": "narrate",
-      "text": "[trip:1.2][mood:dusk][shot:closeup miller]Sam's father is in the garage. He is on the phone. He is speaking quietly. As Sam pulls in, he looks up. He says, into the phone: \"Gotta go. She's back.\" He hangs up. He slips the phone into his chest pocket. He smiles — the warm automatic smile he has been smiling at Sam since she was born, the smile Sam has never, in seventeen years, thought to question."
+      "text": "[trip:1.2][mood:dusk][shot:closeup miller]Sam's father is in the garage. He is on the phone. He is speaking quietly. As Sam pulls in, he looks up. He says, into the phone: \"Gotta go. She's back.\" He hangs up. He slips the phone into his chest pocket."
+    },
+    {
+      "t": "narrate",
+      "text": "He smiles — the warm automatic smile he has been smiling at Sam since she was born, the smile Sam has never, in seventeen years, thought to question."
     },
     {
       "t": "say",
