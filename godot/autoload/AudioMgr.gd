@@ -361,7 +361,9 @@ func _is_signature(src: String) -> bool:
 # playing. Returns the src cued, or "" when the character has no
 # signature in the current volume, its file is missing, or one is
 # already on its way (a queued unlock still catches it later).
-func cue_signature(char_key: String) -> String:
+# `any_volume` lifts the volume scope — the gauntlet board cues its
+# visitors' themes from vol 5 and the Stranger's is vol 1's.
+func cue_signature(char_key: String, any_volume: bool = false) -> String:
 	if char_key == "":
 		return ""
 	if _pending_src != "" or _is_signature(_current_src):
@@ -371,7 +373,7 @@ func cue_signature(char_key: String) -> String:
 		var id: String = String(entry.get("id", ""))
 		if not (char_key in chars) or not id.contains("theme"):
 			continue
-		if not _entry_in_current_volume(entry):
+		if not any_volume and not _entry_in_current_volume(entry):
 			continue
 		var src: String = String(entry.get("src", ""))
 		if src == "" or src in _failed_srcs:

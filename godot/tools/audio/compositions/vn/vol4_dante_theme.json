@@ -1,0 +1,43 @@
+{
+ "meta": {
+  "title": "vol4_dante_theme",
+  "composer": "authored for the VN score",
+  "for": "music_catalog.json \u00b7 vol4_dante_theme",
+  "notes": "Dante D'Ambrosio. A bowed double-bass note held until the bow leaves the string. The father."
+ },
+ "tempo_bpm": 52,
+ "time_sig": [
+  4,
+  4
+ ],
+ "sample_rate": 22050,
+ "loop": false,
+ "tracks": [
+  {
+   "instrument": "slowstick_pad",
+   "gain": 0.286,
+   "notes": [
+    {
+     "pitch": "D2",
+     "bar": 1,
+     "beat": 1,
+     "dur": 10,
+     "vel": 0.32
+    }
+   ]
+  },
+  {
+   "instrument": "ambient_drone",
+   "gain": 0.176,
+   "notes": [
+    {
+     "pitch": "D1",
+     "bar": 1,
+     "beat": 1,
+     "dur": 14,
+     "vel": 0.26
+    }
+   ]
+  }
+ ]
+}

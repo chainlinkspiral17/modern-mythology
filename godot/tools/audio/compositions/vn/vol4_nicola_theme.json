@@ -1,0 +1,126 @@
+{
+ "meta": {
+  "title": "vol4_nicola_theme",
+  "composer": "authored for the VN score",
+  "for": "music_catalog.json \u00b7 vol4_nicola_theme",
+  "notes": "Nicola. A short three-note descending figure on a detuned upright \u2014 the sine and the lead in unison, the lead's own detune doing the piano's."
+ },
+ "tempo_bpm": 58,
+ "time_sig": [
+  4,
+  4
+ ],
+ "sample_rate": 22050,
+ "loop": false,
+ "tracks": [
+  {
+   "instrument": "soft_sine",
+   "gain": 0.48,
+   "notes": [
+    {
+     "pitch": "A4",
+     "bar": 1,
+     "beat": 1,
+     "dur": 1,
+     "vel": 0.26
+    },
+    {
+     "pitch": "F4",
+     "bar": 1,
+     "beat": 2,
+     "dur": 1,
+     "vel": 0.24
+    },
+    {
+     "pitch": "D4",
+     "bar": 1,
+     "beat": 3,
+     "dur": 2.5,
+     "vel": 0.26
+    },
+    {
+     "pitch": "A4",
+     "bar": 3,
+     "beat": 1,
+     "dur": 1,
+     "vel": 0.22
+    },
+    {
+     "pitch": "F4",
+     "bar": 3,
+     "beat": 2,
+     "dur": 1,
+     "vel": 0.2
+    },
+    {
+     "pitch": "D4",
+     "bar": 3,
+     "beat": 3,
+     "dur": 3.0,
+     "vel": 0.22
+    }
+   ]
+  },
+  {
+   "instrument": "slowstick_lead",
+   "gain": 0.18,
+   "notes": [
+    {
+     "pitch": "A4",
+     "bar": 1,
+     "beat": 1,
+     "dur": 1,
+     "vel": 0.2
+    },
+    {
+     "pitch": "F4",
+     "bar": 1,
+     "beat": 2,
+     "dur": 1,
+     "vel": 0.18
+    },
+    {
+     "pitch": "D4",
+     "bar": 1,
+     "beat": 3,
+     "dur": 2.5,
+     "vel": 0.2
+    },
+    {
+     "pitch": "A4",
+     "bar": 3,
+     "beat": 1,
+     "dur": 1,
+     "vel": 0.16
+    },
+    {
+     "pitch": "F4",
+     "bar": 3,
+     "beat": 2,
+     "dur": 1,
+     "vel": 0.14
+    },
+    {
+     "pitch": "D4",
+     "bar": 3,
+     "beat": 3,
+     "dur": 3.0,
+     "vel": 0.16
+    }
+   ]
+  },
+  {
+   "instrument": "ambient_drone",
+   "gain": 0.3,
+   "notes": [
+    {
+     "pitch": "D2",
+     "bar": 1,
+     "beat": 1,
+     "dur": 18,
+     "vel": 0.18
+    }
+   ]
+  }
+ ]
+}

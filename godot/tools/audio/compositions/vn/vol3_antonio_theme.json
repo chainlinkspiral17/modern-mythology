@@ -1,0 +1,99 @@
+{
+ "meta": {
+  "title": "vol3_antonio_theme",
+  "composer": "authored for the VN score",
+  "for": "music_catalog.json \u00b7 vol3_antonio_theme",
+  "notes": "Antonio. A single piano figure on the upbeat, returning each time the call doesn't connect \u2014 three times, and no answer."
+ },
+ "tempo_bpm": 66,
+ "time_sig": [
+  4,
+  4
+ ],
+ "sample_rate": 22050,
+ "loop": false,
+ "tracks": [
+  {
+   "instrument": "soft_sine",
+   "gain": 0.576,
+   "notes": [
+    {
+     "pitch": "E4",
+     "bar": 1,
+     "beat": 1.5,
+     "dur": 0.5,
+     "vel": 0.26
+    },
+    {
+     "pitch": "G4",
+     "bar": 1,
+     "beat": 2,
+     "dur": 0.5,
+     "vel": 0.26
+    },
+    {
+     "pitch": "B4",
+     "bar": 1,
+     "beat": 2.5,
+     "dur": 1.5,
+     "vel": 0.28
+    },
+    {
+     "pitch": "E4",
+     "bar": 3,
+     "beat": 1.5,
+     "dur": 0.5,
+     "vel": 0.24
+    },
+    {
+     "pitch": "G4",
+     "bar": 3,
+     "beat": 2,
+     "dur": 0.5,
+     "vel": 0.24
+    },
+    {
+     "pitch": "B4",
+     "bar": 3,
+     "beat": 2.5,
+     "dur": 1.5,
+     "vel": 0.26
+    },
+    {
+     "pitch": "E4",
+     "bar": 5,
+     "beat": 1.5,
+     "dur": 0.5,
+     "vel": 0.22
+    },
+    {
+     "pitch": "G4",
+     "bar": 5,
+     "beat": 2,
+     "dur": 0.5,
+     "vel": 0.22
+    },
+    {
+     "pitch": "B4",
+     "bar": 5,
+     "beat": 2.5,
+     "dur": 2.0,
+     "vel": 0.24
+    }
+   ]
+  },
+  {
+   "instrument": "ambient_drone",
+   "gain": 0.32,
+   "notes": [
+    {
+     "pitch": "A2",
+     "bar": 1,
+     "beat": 1,
+     "dur": 24,
+     "vel": 0.18
+    }
+   ]
+  }
+ ]
+}

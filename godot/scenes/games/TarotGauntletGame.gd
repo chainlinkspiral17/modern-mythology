@@ -1995,6 +1995,37 @@ func _on_modal_dim_input(ev: InputEvent, dim: ColorRect) -> void:
 # button. Minimize closes without chaining; the player can re-click
 # the visitor row to view their card. Acknowledge advances to the
 # next queued arrival (if any).
+# SIGNATURES (2026-09-12). The catalog's character themes name the
+# gauntlet's visitor cast — the Drifter, the Twins, Drunk Uncle, the
+# Bus Kid — and a visitor is never a `show` node; the board is the
+# only place they appear. Their arrival card is the cue. Visitor ids
+# carry a board-local suffix (john_frank, mackenzie_remote, maya_age_7)
+# that the catalog's `chars` do not; the alias collapses them. The
+# volume scope is lifted: the board runs under a vol 5 chapter and
+# the Stranger's theme is vol 1's, Nicola's and Dante's vol 4's.
+const _VISITOR_SIGNATURE_ALIAS := {
+	"john_frank": "john", "john_as_regular": "john", "john_email": "john",
+	"frasier_as_regular": "frasier",
+	"mackenzie_remote": "mackenzie", "mackenzie_in_person": "mackenzie",
+	"mackenzie_texts_priestess": "mackenzie",
+	"the_bus_kid": "bus_kid", "maya_age_7": "maya_kid",
+	"elicia_phone": "elicia",
+	"dante_phone": "dante", "dante_at_the_helm": "dante",
+	"alberto_phone": "alberto", "alberto_passing_through": "alberto",
+	"alberto_for_dante": "alberto", "nicola_for_dante": "nicola",
+	"antonio_first_sunday": "antonio", "antonio_phone_brief": "antonio",
+	"antonio_phone_for_paul": "antonio",
+	"anya_on_screen": "anya_recording", "anya_text": "anya_recording",
+}
+
+
+func _cue_visitor_signature(vid: String) -> void:
+	if not AudioMgr.has_method("cue_signature"):
+		return
+	var key: String = String(_VISITOR_SIGNATURE_ALIAS.get(vid, vid))
+	AudioMgr.cue_signature(key, true)
+
+
 func _show_next_visitor_arrival() -> void:
 	if _visitor_arrival_queue.is_empty():
 		return
@@ -2007,6 +2038,7 @@ func _show_next_visitor_arrival() -> void:
 	var flavor: String = String(hints[hints.size() - 1]) if not hints.is_empty() else "%s walks in." % name_s
 	var accent_hex: String = String(v.get("accent", "#c8a268"))
 	_log_line("[color=#7c8398][i]» popping arrival modal for %s[/i][/color]" % name_s)
+	_cue_visitor_signature(vid)
 	# Tear down any prior drawn-card popup so this one stacks cleanly.
 	var existing: Node = get_node_or_null("drawn_card_modal")
 	if existing != null and is_instance_valid(existing):

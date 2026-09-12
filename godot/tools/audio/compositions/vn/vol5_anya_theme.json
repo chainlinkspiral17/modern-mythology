@@ -1,0 +1,64 @@
+{
+ "meta": {
+  "title": "vol5_anya_theme",
+  "composer": "authored for the VN score",
+  "for": "music_catalog.json \u00b7 vol5_anya_theme",
+  "notes": "Anya \u00b7 The Recording. Found-tape hiss + an almost-melody just under the noise floor."
+ },
+ "tempo_bpm": 56,
+ "time_sig": [
+  4,
+  4
+ ],
+ "sample_rate": 22050,
+ "loop": false,
+ "tracks": [
+  {
+   "instrument": "rain",
+   "gain": 0.6,
+   "notes": [
+    {
+     "pitch": "A4",
+     "bar": 1,
+     "beat": 1,
+     "dur": 18,
+     "vel": 0.22
+    }
+   ]
+  },
+  {
+   "instrument": "soft_sine",
+   "gain": 0.25,
+   "notes": [
+    {
+     "pitch": "G4",
+     "bar": 2,
+     "beat": 1,
+     "dur": 2,
+     "vel": 0.2
+    },
+    {
+     "pitch": "A4",
+     "bar": 2,
+     "beat": 3,
+     "dur": 2,
+     "vel": 0.2
+    },
+    {
+     "pitch": "G4",
+     "bar": 3,
+     "beat": 1,
+     "dur": 2,
+     "vel": 0.18
+    },
+    {
+     "pitch": "E4",
+     "bar": 3,
+     "beat": 3,
+     "dur": 4,
+     "vel": 0.18
+    }
+   ]
+  }
+ ]
+}

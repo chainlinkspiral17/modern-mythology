@@ -1,0 +1,69 @@
+{
+ "meta": {
+  "title": "vol5_line_cook_theme",
+  "composer": "authored for the VN score",
+  "for": "music_catalog.json \u00b7 vol5_line_cook_theme",
+  "notes": "The Line Cook. Heat-vent hum + a single brass bell strike at the start."
+ },
+ "tempo_bpm": 58,
+ "time_sig": [
+  4,
+  4
+ ],
+ "sample_rate": 22050,
+ "loop": false,
+ "tracks": [
+  {
+   "instrument": "chiptune_arp",
+   "gain": 0.18,
+   "notes": [
+    {
+     "pitch": "G5",
+     "bar": 1,
+     "beat": 1,
+     "dur": 0.3,
+     "vel": 0.3
+    }
+   ]
+  },
+  {
+   "instrument": "soft_sine",
+   "gain": 0.42,
+   "notes": [
+    {
+     "pitch": "G5",
+     "bar": 1,
+     "beat": 1,
+     "dur": 3,
+     "vel": 0.3
+    }
+   ]
+  },
+  {
+   "instrument": "fluorescent_hum",
+   "gain": 0.66,
+   "notes": [
+    {
+     "pitch": "A2",
+     "bar": 1,
+     "beat": 1,
+     "dur": 16,
+     "vel": 0.3
+    }
+   ]
+  },
+  {
+   "instrument": "rain",
+   "gain": 0.18,
+   "notes": [
+    {
+     "pitch": "A2",
+     "bar": 1,
+     "beat": 1,
+     "dur": 16,
+     "vel": 0.22
+    }
+   ]
+  }
+ ]
+}

@@ -375,7 +375,7 @@
   "id": "vol3_antonio_theme",
   "vol": 3,
   "title": "Antonio",
-  "src": "assets/audio/bgm/vol3_antonio_theme.ogg",
+  "src": "assets/audio/bgm/vol3_antonio_theme.wav",
   "composer": "—",
   "desc": "Single piano figure on the upbeat, returning each time the call doesn't connect.",
   "unlock": {
@@ -454,7 +454,7 @@
   "id": "vol4_dante_theme",
   "vol": 4,
   "title": "Dante D'Ambrosio",
-  "src": "assets/audio/bgm/vol4_dante_theme.ogg",
+  "src": "assets/audio/bgm/vol4_dante_theme.wav",
   "composer": "—",
   "desc": "A bowed double-bass note held until the bow leaves the string. The father.",
   "unlock": {
@@ -483,7 +483,7 @@
   "id": "vol4_nicola_theme",
   "vol": 4,
   "title": "Nicola",
-  "src": "assets/audio/bgm/vol4_nicola_theme.ogg",
+  "src": "assets/audio/bgm/vol4_nicola_theme.wav",
   "composer": "—",
   "desc": "A short three-note descending figure on a detuned upright piano. Nicola's signature.",
   "unlock": {
@@ -553,7 +553,7 @@
   "id": "vol5_anya_theme",
   "vol": 5,
   "title": "Anya · The Recording",
-  "src": "assets/audio/bgm/vol5_anya_theme.ogg",
+  "src": "assets/audio/bgm/vol5_anya_theme.wav",
   "composer": "—",
   "desc": "Found-tape hiss + an almost-melody just under the noise floor. Anya's signature.",
   "unlock": {
@@ -567,7 +567,7 @@
   "id": "vol5_bbs_caller_theme",
   "vol": 5,
   "title": "Sysop · ember.ash.rest.bbs",
-  "src": "assets/audio/bgm/vol5_bbs_caller_theme.ogg",
+  "src": "assets/audio/bgm/vol5_bbs_caller_theme.wav",
   "composer": "—",
   "desc": "Modem handshake + low fluorescent buzz.",
   "unlock": {
@@ -581,7 +581,7 @@
   "id": "vol5_bus_kid_theme",
   "vol": 5,
   "title": "The Bus Kid",
-  "src": "assets/audio/bgm/vol5_bus_kid_theme.ogg",
+  "src": "assets/audio/bgm/vol5_bus_kid_theme.wav",
   "composer": "—",
   "desc": "A bright wood-block tap + a smile of brass. The helper's signature.",
   "unlock": {
@@ -684,7 +684,7 @@
   "id": "vol5_line_cook_theme",
   "vol": 5,
   "title": "The Line Cook",
-  "src": "assets/audio/bgm/vol5_line_cook_theme.ogg",
+  "src": "assets/audio/bgm/vol5_line_cook_theme.wav",
   "composer": "—",
   "desc": "Heat-vent hum + a single brass bell strike at the start. The cook's signature.",
   "unlock": {
@@ -712,7 +712,7 @@
   "id": "vol5_maya_theme",
   "vol": 5,
   "title": "Maya · The Trick",
-  "src": "assets/audio/bgm/vol5_maya_theme.ogg",
+  "src": "assets/audio/bgm/vol5_maya_theme.wav",
   "composer": "—",
   "desc": "Music-box loop, ten seconds long, slightly varied each pass.",
   "unlock": {
@@ -815,7 +815,7 @@
   "id": "vol5_birdwatcher_theme",
   "vol": 5,
   "title": "The Bird-Watcher",
-  "src": "assets/audio/bgm/vol5_birdwatcher_theme.ogg",
+  "src": "assets/audio/bgm/vol5_birdwatcher_theme.wav",
   "composer": "—",
   "desc": "Chair creak + binocular-strap rustle + a slow patient exhale. The watcher's signature.",
   "unlock": {
@@ -842,7 +842,7 @@
   "id": "vol5_college_friend_theme",
   "vol": 5,
   "title": "The College Friend",
-  "src": "assets/audio/bgm/vol5_college_friend_theme.ogg",
+  "src": "assets/audio/bgm/vol5_college_friend_theme.wav",
   "composer": "—",
   "desc": "An old laugh, far in the back of the cathedral. The kind that remembers the year you stopped speaking.",
   "unlock": {
@@ -856,7 +856,7 @@
   "id": "vol5_critic_theme",
   "vol": 5,
   "title": "The Critic",
-  "src": "assets/audio/bgm/vol5_critic_theme.ogg",
+  "src": "assets/audio/bgm/vol5_critic_theme.wav",
   "composer": "—",
   "desc": "Pen-on-notebook scratch + a single sharp inhale through the nose. No music underneath.",
   "unlock": {
@@ -947,7 +947,7 @@
   "id": "vol5_drifter_theme",
   "vol": 5,
   "title": "The Drifter",
-  "src": "assets/audio/bgm/vol5_drifter_theme.ogg",
+  "src": "assets/audio/bgm/vol5_drifter_theme.wav",
   "composer": "—",
   "desc": "Gravel under boot. A far-away match-strike. The drifter doesn't stay long enough to leave a melody.",
   "unlock": {
@@ -961,7 +961,7 @@
   "id": "vol5_drunk_uncle_theme",
   "vol": 5,
   "title": "Drunk Uncle",
-  "src": "assets/audio/bgm/vol5_drunk_uncle_theme.ogg",
+  "src": "assets/audio/bgm/vol5_drunk_uncle_theme.wav",
   "composer": "—",
   "desc": "A baseline-room thump that refuses to sync to anything else playing. A glass on wood. The uncle who arrived and will not be greeted.",
   "unlock": {
@@ -1095,7 +1095,7 @@
   "id": "vol5_superfan_theme",
   "vol": 5,
   "title": "The Superfan",
-  "src": "assets/audio/bgm/vol5_superfan_theme.ogg",
+  "src": "assets/audio/bgm/vol5_superfan_theme.wav",
   "composer": "—",
   "desc": "Too-fast breath. Paper bag. Plastic-cup tap. A loyalty that hasn't read the room.",
   "unlock": {
@@ -1109,7 +1109,7 @@
   "id": "vol5_twins_theme",
   "vol": 5,
   "title": "The Twins",
-  "src": "assets/audio/bgm/vol5_twins_theme.ogg",
+  "src": "assets/audio/bgm/vol5_twins_theme.wav",
   "composer": "—",
   "desc": "Two of the same tone, played milliseconds apart, panned hard left and hard right. Stereo phase. They share patience, they share a theme.",
   "unlock": {

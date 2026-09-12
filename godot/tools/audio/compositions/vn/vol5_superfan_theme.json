@@ -1,0 +1,182 @@
+{
+ "meta": {
+  "title": "vol5_superfan_theme",
+  "composer": "authored for the VN score",
+  "for": "music_catalog.json \u00b7 vol5_superfan_theme",
+  "notes": "The Superfan. Too-fast breath. Paper bag. Plastic-cup tap. A loyalty that hasn't read the room."
+ },
+ "tempo_bpm": 80,
+ "time_sig": [
+  4,
+  4
+ ],
+ "sample_rate": 22050,
+ "loop": false,
+ "tracks": [
+  {
+   "instrument": "rain",
+   "gain": 0.704,
+   "notes": [
+    {
+     "pitch": "E4",
+     "bar": 1,
+     "beat": 1,
+     "dur": 0.3,
+     "vel": 0.24
+    },
+    {
+     "pitch": "C4",
+     "bar": 1,
+     "beat": 1.5,
+     "dur": 0.3,
+     "vel": 0.18
+    },
+    {
+     "pitch": "E4",
+     "bar": 1,
+     "beat": 2,
+     "dur": 0.3,
+     "vel": 0.24
+    },
+    {
+     "pitch": "C4",
+     "bar": 1,
+     "beat": 2.5,
+     "dur": 0.3,
+     "vel": 0.18
+    },
+    {
+     "pitch": "E4",
+     "bar": 1,
+     "beat": 3,
+     "dur": 0.3,
+     "vel": 0.24
+    },
+    {
+     "pitch": "C4",
+     "bar": 1,
+     "beat": 3.5,
+     "dur": 0.3,
+     "vel": 0.18
+    },
+    {
+     "pitch": "E4",
+     "bar": 1,
+     "beat": 4,
+     "dur": 0.3,
+     "vel": 0.24
+    },
+    {
+     "pitch": "C4",
+     "bar": 1,
+     "beat": 4.5,
+     "dur": 0.3,
+     "vel": 0.18
+    },
+    {
+     "pitch": "E4",
+     "bar": 2,
+     "beat": 1,
+     "dur": 0.3,
+     "vel": 0.24
+    },
+    {
+     "pitch": "C4",
+     "bar": 2,
+     "beat": 1.5,
+     "dur": 0.3,
+     "vel": 0.18
+    },
+    {
+     "pitch": "E4",
+     "bar": 2,
+     "beat": 2,
+     "dur": 0.3,
+     "vel": 0.24
+    },
+    {
+     "pitch": "C4",
+     "bar": 2,
+     "beat": 2.5,
+     "dur": 0.3,
+     "vel": 0.18
+    },
+    {
+     "pitch": "E4",
+     "bar": 2,
+     "beat": 3,
+     "dur": 0.3,
+     "vel": 0.24
+    },
+    {
+     "pitch": "C4",
+     "bar": 2,
+     "beat": 3.5,
+     "dur": 0.3,
+     "vel": 0.18
+    },
+    {
+     "pitch": "E4",
+     "bar": 2,
+     "beat": 4,
+     "dur": 0.3,
+     "vel": 0.24
+    },
+    {
+     "pitch": "C4",
+     "bar": 2,
+     "beat": 4.5,
+     "dur": 0.3,
+     "vel": 0.18
+    }
+   ]
+  },
+  {
+   "instrument": "rain",
+   "gain": 0.704,
+   "notes": [
+    {
+     "pitch": "C4",
+     "bar": 3,
+     "beat": 1,
+     "dur": 0.5,
+     "vel": 0.26
+    },
+    {
+     "pitch": "C4",
+     "bar": 3,
+     "beat": 2.5,
+     "dur": 0.4,
+     "vel": 0.22
+    }
+   ]
+  },
+  {
+   "instrument": "chiptune_arp",
+   "gain": 0.44,
+   "notes": [
+    {
+     "pitch": "A5",
+     "bar": 4,
+     "beat": 1,
+     "dur": 0.05,
+     "vel": 0.22
+    },
+    {
+     "pitch": "A5",
+     "bar": 4,
+     "beat": 1.4,
+     "dur": 0.05,
+     "vel": 0.2
+    },
+    {
+     "pitch": "A5",
+     "bar": 4,
+     "beat": 1.8,
+     "dur": 0.05,
+     "vel": 0.2
+    }
+   ]
+  }
+ ]
+}

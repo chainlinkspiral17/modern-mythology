@@ -1,0 +1,85 @@
+{
+ "meta": {
+  "title": "vol5_drunk_uncle_theme",
+  "composer": "authored for the VN score",
+  "for": "music_catalog.json \u00b7 vol5_drunk_uncle_theme",
+  "notes": "Drunk Uncle. A baseline-room thump that refuses to sync to anything else playing. A glass on wood."
+ },
+ "tempo_bpm": 63,
+ "time_sig": [
+  4,
+  4
+ ],
+ "sample_rate": 22050,
+ "loop": false,
+ "tracks": [
+  {
+   "instrument": "slowstick_bass",
+   "gain": 0.34,
+   "notes": [
+    {
+     "pitch": "E1",
+     "bar": 1,
+     "beat": 1,
+     "dur": 0.2,
+     "vel": 0.34
+    },
+    {
+     "pitch": "E1",
+     "bar": 1,
+     "beat": 2.7,
+     "dur": 0.2,
+     "vel": 0.3
+    },
+    {
+     "pitch": "E1",
+     "bar": 2,
+     "beat": 1.4,
+     "dur": 0.2,
+     "vel": 0.32
+    },
+    {
+     "pitch": "E1",
+     "bar": 2,
+     "beat": 3.9,
+     "dur": 0.2,
+     "vel": 0.3
+    },
+    {
+     "pitch": "E1",
+     "bar": 3,
+     "beat": 2.2,
+     "dur": 0.2,
+     "vel": 0.32
+    },
+    {
+     "pitch": "E1",
+     "bar": 4,
+     "beat": 1.1,
+     "dur": 0.2,
+     "vel": 0.3
+    },
+    {
+     "pitch": "E1",
+     "bar": 4,
+     "beat": 3.6,
+     "dur": 0.2,
+     "vel": 0.28
+    }
+   ]
+  },
+  {
+   "instrument": "chiptune_arp",
+   "gain": 0.085,
+   "notes": [
+    {
+     "pitch": "C6",
+     "bar": 3,
+     "beat": 3.5,
+     "dur": 0.06,
+     "vel": 0.24
+    }
+   ]
+  }
+ ]
+}

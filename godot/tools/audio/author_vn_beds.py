@@ -1178,6 +1178,182 @@ bed("vol7_finn_theme", 60,
      track("ambient_drone", 0.12, [n("D2", 1, 1, 18, 0.20)])],
     trim=2.5)
 
+# ── the visitors (2026-09-12, second wave) ─────────────────────────
+# Fifteen more themes name the TAROT GAUNTLET's visitor cast — never a
+# `show` node; the board is where they appear, and the arrival card is
+# the cue (TarotGauntletGame._cue_visitor_signature, any volume). The
+# Magician's seven walk-ins, the Fool's five regulars, and the three
+# vol 3-4 principals who come to the Emperor's and Empress's tables.
+
+bed("vol3_antonio_theme", 66,
+    "Antonio. A single piano figure on the upbeat, returning each "
+    "time the call doesn't connect — three times, and no answer.",
+    [track("soft_sine", 0.18,
+           [n("E4", 1, 1.5, 0.5, 0.26), n("G4", 1, 2, 0.5, 0.26),
+            n("B4", 1, 2.5, 1.5, 0.28),
+            n("E4", 3, 1.5, 0.5, 0.24), n("G4", 3, 2, 0.5, 0.24),
+            n("B4", 3, 2.5, 1.5, 0.26),
+            n("E4", 5, 1.5, 0.5, 0.22), n("G4", 5, 2, 0.5, 0.22),
+            n("B4", 5, 2.5, 2.0, 0.24)]),
+     track("ambient_drone", 0.10, [n("A2", 1, 1, 24, 0.18)])],
+    trim=3.2)
+
+bed("vol4_dante_theme", 52,
+    "Dante D'Ambrosio. A bowed double-bass note held until the bow "
+    "leaves the string. The father.",
+    [track("slowstick_pad", 0.26, [n("D2", 1, 1, 10, 0.32)]),
+     track("ambient_drone", 0.16, [n("D1", 1, 1, 14, 0.26)])],
+    trim=1.1)
+
+bed("vol4_nicola_theme", 58,
+    "Nicola. A short three-note descending figure on a detuned "
+    "upright — the sine and the lead in unison, the lead's own "
+    "detune doing the piano's.",
+    [track("soft_sine", 0.16,
+           [n("A4", 1, 1, 1, 0.26), n("F4", 1, 2, 1, 0.24),
+            n("D4", 1, 3, 2.5, 0.26),
+            n("A4", 3, 1, 1, 0.22), n("F4", 3, 2, 1, 0.20),
+            n("D4", 3, 3, 3.0, 0.22)]),
+     track("slowstick_lead", 0.06,
+           [n("A4", 1, 1, 1, 0.20), n("F4", 1, 2, 1, 0.18),
+            n("D4", 1, 3, 2.5, 0.20),
+            n("A4", 3, 1, 1, 0.16), n("F4", 3, 2, 1, 0.14),
+            n("D4", 3, 3, 3.0, 0.16)]),
+     track("ambient_drone", 0.10, [n("D2", 1, 1, 18, 0.18)])],
+    trim=3.0)
+
+bed("vol5_anya_theme", 56,
+    "Anya · The Recording. Found-tape hiss + an almost-melody just "
+    "under the noise floor.",
+    [track("rain", 0.12, [n("A4", 1, 1, 18, 0.22)]),
+     track("soft_sine", 0.05,
+           [n("G4", 2, 1, 2, 0.20), n("A4", 2, 3, 2, 0.20),
+            n("G4", 3, 1, 2, 0.18), n("E4", 3, 3, 4, 0.18)])],
+    trim=5.0)
+
+bed("vol5_bbs_caller_theme", 60,
+    "Sysop · ember.ash.rest.bbs. Modem handshake + low fluorescent "
+    "buzz: the square wave says its three tones and then warbles.",
+    [track("fluorescent_hum", 0.30, [n("A2", 1, 1, 16, 0.32)]),
+     track("chiptune_arp", 0.07,
+           [n("C6", 1, 1, 0.2, 0.22), n("G5", 1, 1.3, 0.2, 0.22),
+            n("C6", 1, 1.6, 0.2, 0.22)]
+           + [n("A#5" if k % 2 == 0 else "B5", 1, 2.2 + 0.12 * k, 0.1, 0.18)
+              for k in range(10)]
+           + [n("E5", 2, 1, 0.6, 0.16)])],
+    trim=7.5)
+
+bed("vol5_bus_kid_theme", 72,
+    "The Bus Kid. A bright wood-block tap + a smile of brass. The "
+    "helper's signature.",
+    [track("soft_sine", 0.14,
+           [n("C5", 1, 1, 0.08, 0.34), n("C5", 1, 2, 0.08, 0.30),
+            n("C5", 1, 3.5, 0.08, 0.32)]),
+     track("slowstick_lead", 0.10,
+           hold(["C4", "E4", "G4"], 2, 3, 0.22)
+           + hold(["C4", "E4", "G4"], 3, 1.2, 0.18))],
+    trim=1.8)
+
+bed("vol5_line_cook_theme", 58,
+    "The Line Cook. Heat-vent hum + a single brass bell strike at "
+    "the start.",
+    [track("chiptune_arp", 0.06, [n("G5", 1, 1, 0.3, 0.30)]),
+     track("soft_sine", 0.14, [n("G5", 1, 1, 3, 0.30)]),
+     track("fluorescent_hum", 0.22, [n("A2", 1, 1, 16, 0.30)]),
+     track("rain", 0.06, [n("A2", 1, 1, 16, 0.22)])],
+    trim=3.0)
+
+bed("vol5_maya_theme", 84,
+    "Maya · The Trick. Music-box loop, ten seconds long, slightly "
+    "varied the second time through.",
+    [track("soft_sine", 0.14,
+           [x for b in (1, 2, 3)
+            for x in (n("E6", b, 1, 0.45, 0.24), n("G6", b, 1.5, 0.45, 0.22),
+                      n("B6", b, 2, 0.45, 0.22), n("G6", b, 2.5, 0.45, 0.20),
+                      n("E6", b, 3, 0.45, 0.22), n("C6", b, 3.5, 0.9, 0.20))]
+           + [x for b in (5, 6, 7)
+              for x in (n("E6", b, 1, 0.45, 0.22),
+                        n("F#6" if b == 6 else "G6", b, 1.5, 0.45, 0.20),
+                        n("B6", b, 2, 0.45, 0.20), n("G6", b, 2.5, 0.45, 0.18),
+                        n("E6", b, 3, 0.45, 0.20),
+                        n("D6" if b == 7 else "C6", b, 3.5, 0.9, 0.18))]),
+     track("slowstick_pad", 0.06, hold(["E3", "B3"], 1, 28, 0.14))],
+    trim=3.7)
+
+bed("vol5_birdwatcher_theme", 50,
+    "The Bird-Watcher. Chair creak + binocular-strap rustle + a slow "
+    "patient exhale.",
+    [track("rain", 0.09, [n("C3", 1, 1, 0.6, 0.24), n("C3", 4, 2, 0.6, 0.22)]),
+     track("rain", 0.06,
+           [n("A5", 2, 1, 0.15, 0.20), n("A5", 2, 1.3, 0.2, 0.18),
+            n("A5", 2, 1.7, 0.15, 0.18)]),
+     track("slowstick_pad", 0.18, hold(["F2", "C3"], 3, 6, 0.22))],
+    trim=1.6)
+
+bed("vol5_college_friend_theme", 54,
+    "The College Friend. An old laugh, far in the back of the "
+    "cathedral — three falling notes under the drone, and the drone "
+    "does not notice.",
+    [track("ambient_drone", 0.20, [n("C2", 1, 1, 18, 0.28)]),
+     track("slowstick_pad", 0.12, hold(["C3", "G3"], 1, 18, 0.18)),
+     track("soft_sine", 0.08,
+           [n("G3", 2, 3, 0.25, 0.22), n("F3", 2, 3.3, 0.25, 0.20),
+            n("D#3", 2, 3.6, 0.5, 0.18),
+            n("G3", 4, 1, 0.25, 0.18), n("F3", 4, 1.3, 0.25, 0.16),
+            n("D#3", 4, 1.6, 0.6, 0.14)])],
+    trim=1.6)
+
+bed("vol5_critic_theme", 60,
+    "The Critic. Pen-on-notebook scratch + a single sharp inhale "
+    "through the nose. No music underneath.",
+    [track("rain", 0.10,
+           [n("A5", 1, 1, 0.35, 0.30), n("A5", 1, 1.5, 0.25, 0.26),
+            n("A5", 1, 2.4, 0.4, 0.30), n("A5", 2, 1.2, 0.3, 0.28),
+            n("A5", 2, 2, 0.45, 0.30)]),
+     track("rain", 0.10, [n("E4", 3, 1, 0.5, 0.30)])],
+    trim=5.0)
+
+bed("vol5_drifter_theme", 56,
+    "The Drifter. Gravel under boot. A far-away match-strike. He "
+    "doesn't stay long enough to leave a melody.",
+    [track("rain", 0.10,
+           [n("A2", 1, b, 0.25, 0.26 - 0.01 * b) for b in (1, 2, 3, 4)]
+           + [n("A2", 2, b, 0.25, 0.20) for b in (1, 2)]),
+     track("rain", 0.06, [n("A5", 3, 2, 0.15, 0.22)])],
+    trim=10.0)
+
+bed("vol5_drunk_uncle_theme", 63,
+    "Drunk Uncle. A baseline-room thump that refuses to sync to "
+    "anything else playing. A glass on wood.",
+    [track("slowstick_bass", 0.20,
+           [n("E1", 1, 1, 0.2, 0.34), n("E1", 1, 2.7, 0.2, 0.30),
+            n("E1", 2, 1.4, 0.2, 0.32), n("E1", 2, 3.9, 0.2, 0.30),
+            n("E1", 3, 2.2, 0.2, 0.32), n("E1", 4, 1.1, 0.2, 0.30),
+            n("E1", 4, 3.6, 0.2, 0.28)]),
+     track("chiptune_arp", 0.05, [n("C6", 3, 3.5, 0.06, 0.24)])],
+    trim=1.7)
+
+bed("vol5_superfan_theme", 80,
+    "The Superfan. Too-fast breath. Paper bag. Plastic-cup tap. A "
+    "loyalty that hasn't read the room.",
+    [track("rain", 0.08,
+           [x for b in (1, 2) for k in (1, 2, 3, 4)
+            for x in (n("E4", b, k, 0.3, 0.24), n("C4", b, k + 0.5, 0.3, 0.18))]),
+     track("rain", 0.08, [n("C4", 3, 1, 0.5, 0.26), n("C4", 3, 2.5, 0.4, 0.22)]),
+     track("chiptune_arp", 0.05,
+           [n("A5", 4, 1, 0.05, 0.22), n("A5", 4, 1.4, 0.05, 0.20),
+            n("A5", 4, 1.8, 0.05, 0.20)])],
+    trim=8.8)
+
+bed("vol5_twins_theme", 56,
+    "The Twins. Two of the same tone, played milliseconds apart — "
+    "the same note on two tracks, twenty milliseconds between them, "
+    "so the one tone beats against itself.",
+    [track("soft_sine", 0.12, [n("A4", 1, 1, 8, 0.24), n("D5", 4, 1, 8, 0.22)]),
+     track("soft_sine", 0.12, [n("A4", 1, 1.02, 8, 0.24), n("D5", 4, 1.02, 8, 0.22)]),
+     track("ambient_drone", 0.08, [n("A2", 1, 1, 20, 0.16)])],
+    trim=6.4)
+
 # The catalog named vol 1's principal "faust3" (the title is Faust III);
 # every show and line in vol 1 is keyed "faust". The theme could never
 # fire. Corrected with the catalog step.

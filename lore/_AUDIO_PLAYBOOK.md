@@ -307,6 +307,25 @@ played `_BGM_BY_LOCATION`'s location drone instead.
   Only the signatures were re-rendered; the 2026-09-11 beds keep
   their renders until the Deck has heard them once (re-render is one
   command; render-over-a-name is the lesson above).
+- **The visitors cue from the board (second wave, same day).**
+  Fifteen more of the "unreachable" themes name the gauntlet's
+  visitor cast — the Magician's seven walk-ins (Drifter, Bird-
+  Watcher, Critic, College Friend, Superfan, Twins, Drunk Uncle),
+  the Fool's five regulars (Sysop, Bus Kid, Line Cook, Anya's
+  recording, Maya's trick) and the three vol 3-4 principals at the
+  Emperor's and Empress's tables (Antonio, Dante, Nicola). A visitor
+  is never a `show` node; `TarotGauntletGame._cue_visitor_signature`
+  fires from the arrival card with the volume scope lifted
+  (`cue_signature(key, true)` — the board runs under a vol 5 chapter
+  and the Stranger's theme is vol 1's). Visitor ids carry board-local
+  suffixes (`john_frank`, `mackenzie_remote`, `maya_age_7`) that the
+  catalog's `chars` do not; `_VISITOR_SIGNATURE_ALIAS` collapses
+  them. Sparse foley themes are levelled by PEAK, not RMS (the
+  Drifter is six footsteps and a match in eleven seconds of air);
+  the set sits at 0.11-0.13 before normalization. 34 of 46 themes
+  have files; the 12 left (Sharp, Tobor, vol 2's Lena, vol 6's Skip/
+  Tanya/Lena/Alma, vol 7's Aria/Sal/Gable/Werner) name characters
+  no scene or board has yet.
 - **NEXT (Deck):** is once-per-scene the right rate (a vol 6 scene
   with Sam, Maya and Diego plays three stingers in its first
   minute); does 0.20 leave enough room under the signature; the
