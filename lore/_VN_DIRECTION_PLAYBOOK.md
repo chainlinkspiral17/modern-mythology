@@ -158,6 +158,51 @@ no-op (fallback discipline — a script must never crash the reader).
 
 ## Recent lessons
 
+### 2026-09-12 · PER-PRESET MARKERS — one .tscn, several rooms
+
+- **A marker resolved by name from the whole .tscn does not know
+  which room the scene is in.** salty_tome_interior.tscn is the shop,
+  the kitchenette AND the alley; the diner is the counter and the
+  formal room; lake_palestine is the shore and the dock; vehicle_cab
+  is inside the cab and beside it. The 2026-09-10 pass gave every
+  room ONE person/person_b pair at the first preset's look-point, and
+  VnDirector borrowed it for every cast closeup in the file — so a
+  scene on the dock cut to a face at the shore 15.7 m away, the
+  formal room's `closeup nicola` cut to the counter 23 m away, the
+  World's `closeup child` at the ruins cut 272 m across graustark.
+  **70 wrong-room closeups in 21 chapters**, every one placed by a
+  pass declared done.
+- **The convention: `<marker>__<preset_id>`.** `Background3D.find_
+  shot_marker(name)` tries `name__<loaded preset>` first, then the
+  plain name; `shot_markers_of_type` builds the borrow pool the same
+  way (a marker suffixed for ANOTHER preset is not in this room's
+  pool; one suffixed for THIS preset replaces its plain namesake).
+  Node names cannot carry `@`, hence the double underscore.
+  `marker_author --closeup [-b] --preset <id> <tscn>` authors a pair
+  at that preset's look-point under the suffixed names;
+  `marker_aim_audit` and `shot_marker_audit` strip the suffix before
+  matching subjects and cues.
+- **A face frame must SEE THE ROOM.** The lake dock's first pair
+  passed the fill verdict — exteriors are allowed to be empty — with
+  `distinct 0`: a closeup of open water. The closeup planner now
+  requires ≥ 3 distinct surfaces in frame, the way `--establish-b`
+  requires 4. Five pairs were re-authored under that gate.
+- **12 m is "the same room".** The diner's own named closeups sit
+  8.4–11 m from its preset camera (the booth alcove vs the door) and
+  are right; the formal room's sit 21–23 m away and are not. New gate
+  `wrong_room_audit.py`: every closeup cue resolved the engine's way,
+  fails past 12 m from the preset camera. Inserts are exempt — an
+  insert IS a cut to wherever the object is.
+- **Named closeups in a second room are clones of that room's pair.**
+  `shot_closeup_nicola__dambrosios_formal` is the formal room's
+  person frame under Nicola's name, `dean` its reverse; the ruins'
+  `child` is the ruins' person frame. A named frame is a face at the
+  conversation spot; where the spot is, is the preset's business.
+  (`marker_aim_audit` scopes a suffixed marker's subject search to
+  30 m — graustark's only geometry called "child" is a crawdad-hole
+  figure 272 m from the ruins, and it is not the World's child.)
+
+
 ### 2026-09-12 · the model chapter with a 43-line uncut dialogue
 
 Measured the longest uncut run per chapter (text lines between two
@@ -208,8 +253,11 @@ Three separate causes, each its own lesson:
   tscn regardless of preset, so a pair authored there would cut a
   scene in the alley to a face in the shop. That wants a per-preset
   pair (`shot_closeup_person@alley`, or a `--preset` on the planner)
-  before the seeder can help. `vol1_introduction` has no background at
-  all (a monologue over black) and is not a direction gap.
+  before the seeder can help — and got it the same day (per-preset
+  markers, below; the alley needed `--relax`, it is 2.8 m across).
+  Chapters with a run over 20 lines: 15 → 0. `vol1_introduction` has
+  no background at all (a monologue over black) and is not a
+  direction gap.
 
 
 ### 2026-09-11 · two Deck reads: a directive on screen, and a room the prose had left

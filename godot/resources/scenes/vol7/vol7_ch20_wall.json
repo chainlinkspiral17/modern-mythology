@@ -147,7 +147,7 @@
     },
     {
       "char": "lena",
-      "text": "Petra. Thank you.",
+      "text": "[shot:closeup person]Petra. Thank you.",
       "t": "say"
     },
     {
@@ -203,7 +203,7 @@
     },
     {
       "char": "lena",
-      "text": "Do you want to sit. There's the crate, but it's only got the bowls. I can get you a chair from Petra.",
+      "text": "[shot:closeup person]Do you want to sit. There's the crate, but it's only got the bowls. I can get you a chair from Petra.",
       "t": "say"
     },
     {
@@ -246,7 +246,7 @@
     },
     {
       "char": "marit",
-      "text": "Olaf would have loved to see her.",
+      "text": "[shot:closeup person_b]Olaf would have loved to see her.",
       "t": "say"
     },
     {
@@ -290,7 +290,7 @@
     },
     {
       "char": "tem",
-      "text": "Yes.",
+      "text": "[shot:closeup person]Yes.",
       "t": "say"
     },
     {

@@ -213,7 +213,18 @@ def author_cue(locale, cue, dry):
     return 0
 
 
-def author_closeup(locale, dry, side="a"):
+def _preset_arg():
+    """--preset <id>: pin the preset whose look-point the frame is built
+    at, and suffix the marker `__<id>` so Background3D resolves it only
+    while that preset is loaded (one .tscn, several areas)."""
+    if "--preset" in sys.argv:
+        i = sys.argv.index("--preset")
+        if i + 1 < len(sys.argv):
+            return sys.argv[i + 1]
+    return None
+
+
+def author_closeup(locale, dry, side="a", preset=None):
     """--closeup: a room's ONE generic closeup frame — `shot_closeup_person`
     — for scenes whose chapters cue closeups of PEOPLE but carry no
     closeup marker at all (112 presets, 561 cues). VnDirector borrows
@@ -223,20 +234,22 @@ def author_closeup(locale, dry, side="a"):
     1.2–2.2 m off it, ≤ 25° down, passing the gate's fill verdict."""
     path = os.path.join(M.LOCALES_TSCN, locale + ".tscn")
     src_txt = open(path).read()
-    mname = "shot_closeup_person" if side == "a" else "shot_closeup_person_b"
+    sfx = ("__" + preset) if preset else ""
+    aname = "shot_closeup_person" + sfx
+    mname = aname if side == "a" else "shot_closeup_person_b" + sfx
     # Skip only when the GENERIC frame exists. A named closeup
     # (shot_closeup_sam) is one face; a room with twelve speakers
     # needs the person / person_b PAIR so the director can alternate
     # sides — the kwik stop, a model chapter, ran a 43-line dialogue
     # with no cut because its one named frame satisfied this test
     # (2026-09-12).
-    if side == "a" and 'name="shot_closeup_person"' in src_txt:
+    if side == "a" and ('name="%s"' % aname) in src_txt:
         return 0
-    if side == "b" and ('name="shot_closeup_person"' not in src_txt or ('name="%s"' % mname) in src_txt):
+    if side == "b" and (('name="%s"' % aname) not in src_txt or ('name="%s"' % mname) in src_txt):
         return 0                      # the reverse shot only pairs with a generic frame
     a_pos = None
     if side == "b":
-        am = re.search(r'name="shot_closeup_person"[^\n]*\nposition = Vector3\(([^)]+)\)', src_txt)
+        am = re.search(r'name="%s"[^\n]*\nposition = Vector3\(([^)]+)\)' % re.escape(aname), src_txt)
         if am:
             a_pos = tuple(float(v) for v in am.group(1).split(","))
     gm = re.search(r'path="res://assets/3d/locales/(\w+)\.glb"', src_txt)
@@ -253,6 +266,8 @@ def author_closeup(locale, dry, side="a"):
         # failed to parse PI, and returned 0 without a word, which is
         # why the model chapter never got its closeup pair (2026-09-12).
         if re.search(r"godseye|diag|debug", pid):
+            continue
+        if preset and pid != preset:
             continue
         if ('"scene": "res://scenes/locales/%s.tscn"' % locale) in body:
             cm = re.search(r'"camera_origin":\s*Vector3\(([^)]+)\)', body)
@@ -287,7 +302,10 @@ def author_closeup(locale, dry, side="a"):
             continue                  # not the same side as the first frame
         rx, ry = R.aim(npos, tgt)
         st = VO.frame_stats(R.to_b(npos), rx, ry, 45.0, boxes)
-        if VO.verdict(st) or VO.inside_any(R.to_b(npos), boxes):
+        # A face frame must SEE THE ROOM: the lake dock's first pair
+        # passed the fill verdict (exteriors may be empty) with
+        # distinct 0 — a closeup of open water (2026-09-12).
+        if VO.verdict(st) or VO.inside_any(R.to_b(npos), boxes) or st["distinct"] < 3:
             continue
         print("== %-28s %s at (%.1f, %.1f, %.1f) %.1fm · %+.0f° median %.1f distinct %d" % (locale, mname, npos[0], npos[1], npos[2], d, el, st["median"], st["distinct"]))
         if not dry:
@@ -376,7 +394,7 @@ def author_establish_b(locale, dry):
 
 def main():
     dry = "--dry" in sys.argv
-    only = [a for a in sys.argv[1:] if not a.startswith("--")]
+    only = [a for a in sys.argv[1:] if not a.startswith("--") and a != _preset_arg()]
     P.A.install_stubs()
     if "--establish-b" in sys.argv:
         n = 0
@@ -390,7 +408,7 @@ def main():
         n = 0
         for fn in sorted(os.listdir(M.LOCALES_TSCN)):
             if fn.endswith(".tscn") and (not only or fn[:-5] in only):
-                n += author_closeup(fn[:-5], dry, side)
+                n += author_closeup(fn[:-5], dry, side, _preset_arg())
         print("\n%d closeup frame(s) %s" % (n, "planned" if dry else "authored"))
         return
     if "--cue" in sys.argv:

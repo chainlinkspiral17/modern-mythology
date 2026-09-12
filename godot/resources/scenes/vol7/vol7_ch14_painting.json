@@ -284,7 +284,7 @@
     },
     {
       "char": "lena",
-      "text": "Thank you.",
+      "text": "[shot:closeup person]Thank you.",
       "expr": "neutral",
       "t": "say"
     },
@@ -314,7 +314,7 @@
     },
     {
       "char": "cale",
-      "text": "What kind of anything.",
+      "text": "[shot:closeup person_b]What kind of anything.",
       "expr": "neutral",
       "t": "say"
     },
@@ -350,7 +350,7 @@
     },
     {
       "char": "lena",
-      "text": "If somebody comes in the alley I do not know — somebody who is not Kai at seven-thirty, somebody who is not Petra coming down to the bookstore — you tell me. Don't engage them. Just tell me.",
+      "text": "[shot:closeup person]If somebody comes in the alley I do not know — somebody who is not Kai at seven-thirty, somebody who is not Petra coming down to the bookstore — you tell me. Don't engage them. Just tell me.",
       "expr": "serious",
       "t": "say"
     },
@@ -380,7 +380,7 @@
     },
     {
       "char": "cale",
-      "text": "Yes.",
+      "text": "[shot:closeup person_b]Yes.",
       "expr": "serious",
       "t": "say"
     },

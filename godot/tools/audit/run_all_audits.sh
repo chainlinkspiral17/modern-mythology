@@ -255,6 +255,19 @@ TFOUT="$(python3 trip_fight_audit.py 2>/dev/null)" || {
 echo "$TFOUT" | tail -1
 echo ""
 
+# ── Wrong-room gate (2026-09-12) ──────────────────────────────
+# One .tscn serves several presets in different AREAS; a closeup
+# resolved by name from the whole file cut a dock scene to a face at
+# the shore, 15.7 m away — 70 cuts in 21 chapters. Per-preset markers
+# (`<name>__<preset>`) fix it; this resolves every closeup cue the way
+# the engine does and fails past 8 m from the preset camera. Zero.
+echo "── wrong_room_audit.py ──"
+WROUT="$(python3 wrong_room_audit.py 2>/dev/null)" || {
+    echo "$WROUT" | grep "^ROOM" | head -20
+    echo "$WROUT" | tail -1; exit 1; }
+echo "$WROUT" | tail -1
+echo ""
+
 # ── Phantom-surface gate (2026-09-10) ─────────────────────────
 # A detail pass that hard-codes a desk/counter/bar origin the builder
 # never put there (eighteen locales had one). Static: reads the x/y/z

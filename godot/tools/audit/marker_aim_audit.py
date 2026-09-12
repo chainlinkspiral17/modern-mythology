@@ -226,8 +226,20 @@ def main():
             m = re.match(r"shot_(insert|closeup)_(\w+)$", name)
             checked += 1
             if m:
-                cue_id = m.group(2)
+                # `shot_closeup_person__salty_tome_alley` is the alley's
+                # person frame; the subject is still "person"
+                cue_id = m.group(2).split("__")[0]
                 hits = matches_for(cue_id, geo)
+                if "__" in m.group(2):
+                    # A per-preset marker frames its preset's AREA. The
+                    # ruins' `child` frame is a face at the ruins; the
+                    # only geometry called child in graustark is a
+                    # crawdad-hole figure 272 m away in the cemetery,
+                    # which is not its subject. Geometry beyond the area
+                    # is not a candidate; none left means the subject is
+                    # a character, as for any unmatched cue.
+                    hits = [h for h in hits
+                            if sum((a - b) ** 2 for a, b in zip(h[1], pos)) ** 0.5 <= 30.0]
                 if hits:
                     # The SUBJECT is the shared subject_target() — the part
                     # nearest the lens widened to its cluster — unless a

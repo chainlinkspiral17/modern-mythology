@@ -490,3 +490,26 @@ light_color = Color(0.950, 0.780, 0.500, 1)
 light_energy = 1.30
 shadow_enabled = false
 omni_range = 5.00
+
+; the room's one closeup frame, authored by marker_author.py --closeup (2026-09-10)
+; every closeup of a person cued here cuts to it (the scene had no closeup marker)
+[node name="shot_closeup_person__graustark_ruins" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(65.017, 1.250, 388.732)
+rotation = Vector3(0.0000, 0.7854, 0.0)
+metadata/fov = 45.0
+
+; the room's REVERSE closeup frame, authored by marker_author.py --closeup (2026-09-10)
+; the far side of the same spot, so two speakers alternate sides
+[node name="shot_closeup_person_b__graustark_ruins" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(63.510, 1.250, 389.673)
+rotation = Vector3(0.0000, -0.2618, 0.0)
+metadata/fov = 45.0
+
+; the ruins' child frame = the ruins' person frame (2026-09-12): the plain shot_closeup_child is 272 m away
+[node name="shot_closeup_child__graustark_ruins" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(65.017, 1.250, 388.732)
+rotation = Vector3(0.0000, 0.7854, 0.0)
+metadata/fov = 45.0
+
+; the room's REVERSE closeup frame, authored by marker_author.py --closeup (2026-09-10)
+; the far side of the same spot, so two speakers alternate sides

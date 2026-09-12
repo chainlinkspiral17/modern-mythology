@@ -2407,6 +2407,20 @@ func has_locale_loaded() -> bool:
 func find_shot_marker(marker_name: String) -> Node3D:
 	if not has_locale_loaded():
 		return null
+	# PER-PRESET MARKERS (2026-09-12). One .tscn serves several
+	# presets in different AREAS of the same geometry — salty_tome_
+	# interior.tscn is the shop, the kitchenette and the alley; the
+	# diner is the counter and the formal room. A marker named
+	# `<name>__<preset_id>` belongs to that preset's area and wins
+	# while that preset is loaded; the plain name is the fallback.
+	# Before this, an alley scene's `[shot:closeup person]` cut to
+	# the pair authored at the shop counter — 70 such cuts across
+	# 21 chapters.
+	if _loaded_preset != "":
+		var local: Node3D = _location_instance.find_child(
+			marker_name + "__" + _loaded_preset, true, false) as Node3D
+		if local != null:
+			return local
 	return _location_instance.find_child(marker_name, true, false) as Node3D
 
 
@@ -2419,10 +2433,24 @@ func shot_markers_of_type(shot_type: String) -> Array:
 	if not has_locale_loaded():
 		return out
 	var want := "shot_%s_" % shot_type
+	# The pool honours per-preset markers the same way find_shot_marker
+	# does: a marker suffixed for ANOTHER preset is not in this room's
+	# pool, and a marker suffixed for THIS preset replaces its plain
+	# namesake.
+	var by_base: Dictionary = {}
 	for n in _location_instance.find_children("*", "Marker3D", true, false):
 		var nm: String = String(n.name)
-		if nm.begins_with(want):
-			out.append(n)
+		if not nm.begins_with(want):
+			continue
+		var cut: int = nm.find("__")
+		var base: String = nm if cut < 0 else nm.substr(0, cut)
+		var suffix: String = "" if cut < 0 else nm.substr(cut + 2)
+		if suffix != "" and suffix != _loaded_preset:
+			continue
+		if suffix != "" or not by_base.has(base):
+			by_base[base] = n
+	for k in by_base:
+		out.append(by_base[k])
 	out.sort_custom(func(a: Node, b: Node) -> bool:
 		return String(a.name) < String(b.name))
 	return out

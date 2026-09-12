@@ -347,3 +347,18 @@ metadata/fov = 45.0
 position = Vector3(1.335, 1.612, 2.136)
 rotation = Vector3(-0.2618, -0.0000, 0.0)
 metadata/fov = 45.0
+
+
+; the room's one closeup frame, authored by marker_author.py --closeup (2026-09-10)
+; every closeup of a person cued here cuts to it (the scene had no closeup marker)
+[node name="shot_closeup_person__lake_palestine_dock" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(0.690, 1.250, 18.975)
+rotation = Vector3(0.0000, 0.7854, 0.0)
+metadata/fov = 45.0
+
+; the room's REVERSE closeup frame, authored by marker_author.py --closeup (2026-09-10)
+; the far side of the same spot, so two speakers alternate sides
+[node name="shot_closeup_person_b__lake_palestine_dock" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(-1.300, 1.250, 19.717)
+rotation = Vector3(0.0000, -0.5236, 0.0)
+metadata/fov = 45.0

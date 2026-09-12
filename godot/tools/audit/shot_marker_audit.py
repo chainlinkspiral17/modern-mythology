@@ -73,7 +73,11 @@ def markers_in(res_rel_path):
     if not os.path.exists(path):
         return None
     src = open(path).read()
-    return set(re.findall(r'\[node name="(shot_[\w]+)"', src))
+    names = set(re.findall(r'\[node name="(shot_[\w]+)"', src))
+    # A per-preset marker (`shot_closeup_person__salty_tome_alley`)
+    # covers the plain cue for its preset; existence is what this
+    # audit asks, so the base name counts too (2026-09-12).
+    return names | {n.split("__")[0] for n in names}
 
 
 # ── Does the cued OBJECT even exist? ───────────────────────────

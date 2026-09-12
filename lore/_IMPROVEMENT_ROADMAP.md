@@ -1587,6 +1587,33 @@ lands at the first preset's look-point (the shop), so the alley needs a
 per-preset pair (`--preset` on the planner) before the seeder can cut
 it.
 
+**2026-09-12 (iv) · PER-PRESET MARKERS — 70 wrong-room closeups.** The
+alley problem generalised: one .tscn serves several presets in
+different AREAS (26 of them — the shop/kitchenette/alley, the counter/
+formal room, shore/dock, cab/cab-side, lobby/studio/quarters/portal,
+street/shop…), and a marker resolved by NAME from the whole file does
+not know which area the scene is in. The 2026-09-10 closeup-pair pass
+therefore sent 70 cast closeups in 21 chapters to a face in another
+room — the dock to the shore (15.7 m), the formal room to the counter
+(23 m), the World's child 272 m across graustark. Convention shipped:
+`<marker>__<preset_id>`; `Background3D.find_shot_marker` and the
+borrow pool prefer the loaded preset's own marker; `marker_author
+--preset <id>` authors at that preset's look-point; the aim and blind-
+cue audits strip the suffix. Pairs authored for lake_palestine_dock,
+accretion_basement, vehicle_cab_side, centro_dock, meadowlark_circle_
+henderson + _night, new_auburn_strip_mall + _bypass, riverfront_park,
+small_wood_roadside + _night, dambrosios_formal, graustark_ruins; the
+closeup planner now requires ≥ 3 distinct surfaces in frame (the dock's
+first pair looked at open water). Named second-room closeups are clones
+of that room's pair (nicola/dean at the formal room, the child at the
+ruins). New gate `wrong_room_audit.py` (12 m = the same room; inserts
+exempt). The alley got its pair too (`--relax`: an alley is 2.8 m
+across) and the painting / wall / leaving / eight chapters re-seeded —
+chapters with a run over 20 lines: 15 → 0. NEXT: every multi-preset
+room's OTHER presets by demand rather than by audit (main_street ×8 on
+board_lords_interior.tscn, cedar_tower's four areas, shuttle_bench ×8)
+— they pass the 12 m gate today only because their cues are few.
+
 **2026-08-19 · PER-STICK VOICE SWEEP VERDICT (voice draft 4).**
 Ran the leakage grep (TODO/WIP/placeholder/implemented/deferred/
 stub) and a string survey across EVERY stick directory: estuary_4,

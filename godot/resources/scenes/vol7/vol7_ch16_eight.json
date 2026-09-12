@@ -76,7 +76,7 @@
     },
     {
       "char": "kai",
-      "text": "Lena.",
+      "text": "[shot:closeup person]Lena.",
       "t": "say"
     },
     {
@@ -115,7 +115,7 @@
     },
     {
       "char": "lena",
-      "text": "Cale. We are at the entrance until nine.",
+      "text": "[shot:closeup person_b]Cale. We are at the entrance until nine.",
       "t": "say"
     },
     {
@@ -149,7 +149,7 @@
     },
     {
       "char": "jameson",
-      "text": "Lena.",
+      "text": "[shot:closeup person]Lena.",
       "t": "say"
     },
     {
@@ -174,7 +174,7 @@
     },
     {
       "char": "hannes",
-      "text": "Yeah.",
+      "text": "[shot:closeup person_b]Yeah.",
       "t": "say"
     },
     {
@@ -417,7 +417,7 @@
     },
     {
       "char": "kai",
-      "text": "Plus Cale. Nine.",
+      "text": "[shot:closeup person]Plus Cale. Nine.",
       "t": "say"
     },
     {
@@ -447,7 +447,7 @@
     },
     {
       "char": "lena",
-      "text": "Yeah.",
+      "text": "[shot:closeup person_b]Yeah.",
       "t": "say"
     },
     {
@@ -477,7 +477,7 @@
     },
     {
       "char": "kai",
-      "text": "Yeah.",
+      "text": "[shot:closeup person]Yeah.",
       "t": "say"
     },
     {

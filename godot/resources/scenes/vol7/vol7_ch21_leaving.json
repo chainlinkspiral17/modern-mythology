@@ -75,7 +75,7 @@
     },
     {
       "char": "tem",
-      "text": "Yes, Margaret.",
+      "text": "[shot:closeup person]Yes, Margaret.",
       "t": "say"
     },
     {
@@ -137,7 +137,7 @@
     },
     {
       "char": "per",
-      "text": "Mama.",
+      "text": "[shot:closeup person_b]Mama.",
       "t": "say"
     },
     {
@@ -175,7 +175,7 @@
     },
     {
       "char": "tem",
-      "text": "Yes, Marina.",
+      "text": "[shot:closeup person]Yes, Marina.",
       "t": "say"
     },
     {
@@ -252,7 +252,7 @@
     },
     {
       "char": "aud",
-      "text": "It'll be your first day at the diner as the carrier. The whole town's going to be in the diner today after this. I want you behind the counter beside me. I want them to see you there.",
+      "text": "[shot:closeup person_b]It'll be your first day at the diner as the carrier. The whole town's going to be in the diner today after this. I want you behind the counter beside me. I want them to see you there.",
       "t": "say"
     },
     {

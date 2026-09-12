@@ -344,3 +344,32 @@ light_color = Color(0.940, 0.840, 0.660, 1)
 light_energy = 1.20
 shadow_enabled = false
 omni_range = 4.50
+
+; the room's one closeup frame, authored by marker_author.py --closeup (2026-09-10)
+; every closeup of a person cued here cuts to it (the scene had no closeup marker)
+[node name="shot_closeup_person__small_wood_roadside" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(2.379, 1.250, -7.522)
+rotation = Vector3(0.0000, 0.5236, 0.0)
+metadata/fov = 45.0
+
+
+; the room's REVERSE closeup frame, authored by marker_author.py --closeup (2026-09-10)
+; the far side of the same spot, so two speakers alternate sides
+[node name="shot_closeup_person_b__small_wood_roadside" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(0.723, 1.612, -9.691)
+rotation = Vector3(-0.2618, -2.3562, 0.0)
+metadata/fov = 45.0
+
+; the room's one closeup frame, authored by marker_author.py --closeup (2026-09-10)
+; every closeup of a person cued here cuts to it (the scene had no closeup marker)
+[node name="shot_closeup_person__small_wood_road_night" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(0.900, 1.612, 17.153)
+rotation = Vector3(-0.2618, 0.0000, 0.0)
+metadata/fov = 45.0
+
+; the room's REVERSE closeup frame, authored by marker_author.py --closeup (2026-09-10)
+; the far side of the same spot, so two speakers alternate sides
+[node name="shot_closeup_person_b__small_wood_road_night" type="Marker3D" parent="." groups=["vn_shot"]]
+position = Vector3(0.900, 1.612, 14.448)
+rotation = Vector3(-0.2618, -3.1416, 0.0)
+metadata/fov = 45.0
