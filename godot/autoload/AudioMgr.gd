@@ -52,6 +52,7 @@ var _ambient:         AudioStreamPlayer = null
 var _ambient_tween:   Tween             = null
 var _ambient_active:  bool              = false
 var _ambient_locale:  String            = ""
+var _ambient_bed: String = ""      # the hum's src, un-prefixed — compared with _current_src
 var _ambient_cfg:     Dictionary        = {}
 var _ambient_cfg_loaded: bool           = false
 
@@ -294,6 +295,13 @@ func unduck() -> void:
 func _bgm_bus_target() -> float:
 	var duck_mult: float = DUCK_RATIO if _is_ducked else 1.0
 	var amb_mult:  float = AMBIENT_DUCK if _ambient_active else 1.0
+	# The hum and the Music Player track are, since 2026-09-12, usually
+	# the SAME bed (one locale→bed table feeds both layers). A 14% ghost
+	# of the file playing under itself, out of phase, is a chorus effect
+	# nobody asked for: when they coincide the Music Player goes to the
+	# floor and the hum carries the room alone.
+	if _ambient_active and _ambient_bed != "" and _current_src == _ambient_bed:
+		amb_mult = 0.0
 	return Settings.bgm_vol * duck_mult * amb_mult
 
 
@@ -334,6 +342,7 @@ func enter_locale_ambient(locale_id: String) -> void:
 	_ambient.play()
 	_ambient_active = true
 	_ambient_locale = locale_id
+	_ambient_bed = bed.trim_prefix("res://")
 	var gain: float = float(cfg.get("gain", 1.0))
 	_tween_ambient_bus(Settings.bgm_vol * gain, AMBIENT_FADE)
 	_retarget_bgm_bus(AMBIENT_FADE)
@@ -346,6 +355,7 @@ func exit_locale_ambient() -> void:
 		return
 	_ambient_active = false
 	_ambient_locale = ""
+	_ambient_bed = ""
 	_tween_ambient_bus(0.0, AMBIENT_FADE, true)
 	_retarget_bgm_bus(UNDUCK_FADE)
 
@@ -654,6 +664,8 @@ func _start_bgm(src: String, fade: bool = true) -> void:
 		stream = _with_loop(stream, true)
 	_current_src = src
 	_bgm.stream = stream
+	# the bus level depends on which track this is (see _bgm_bus_target)
+	_retarget_bgm_bus(0.5)
 	if fade:
 		_bgm.volume_db = linear_to_db(0.0001)
 		_bgm.play()

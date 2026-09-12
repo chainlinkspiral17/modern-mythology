@@ -237,6 +237,12 @@ played `_BGM_BY_LOCATION`'s location drone instead.
   The hum beds are WAVs now; the region is set from the stream's
   length when it is missing. Deck check: does a hum bed loop past its
   first pass?
+- **The same bed under itself is a chorus effect.** With one table
+  feeding both layers, the Music Player track is usually the hum's
+  own file at 14%, a few hundred ms out of phase. `_bgm_bus_target`
+  now takes the Music Player to the floor whenever `_current_src`
+  IS the active hum bed, and `_start_bgm` re-targets the bus on
+  every track change so the rule follows the queue.
 - **What the Deck will hear differently:** every vol 6 and vol 7 room.
   The Kwik Stop hums with its own sodium tubes at 11:47 instead of a
   Louisiana grocery; the cabin with its woodstove instead of "someone's
