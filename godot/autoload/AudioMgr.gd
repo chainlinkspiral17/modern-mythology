@@ -26,8 +26,11 @@ const AMBIENT_CFG    := "res://resources/audio/locale_ambient.json"
 # plays as a one-shot on the Music Player and hands back whatever was
 # playing. While it plays under a world hum the duck INVERTS — the
 # hum sinks to SIGNATURE_HUM of its gain and the signature rises to
-# full — then both return when it ends.
-const SIGNATURE_HUM  := 0.35
+# full — then both return when it ends. "Full" is still under the
+# dialogue duck (DUCK_RATIO, always on in the VN), so the hum has to
+# go well below that for the signature to read as foreground: 0.20
+# puts it ~5 dB above the room.
+const SIGNATURE_HUM  := 0.20
 const SIGNATURE_FADE := 0.5
 
 signal track_changed(src: String)

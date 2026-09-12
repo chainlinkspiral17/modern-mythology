@@ -283,7 +283,7 @@ played `_BGM_BY_LOCATION`'s location drone instead.
 - **The duck INVERTS under a signature.** The Music Player is at 14%
   (or on the floor) under a world hum; a signature is the one Music
   Player track that outranks the room: `_bgm_bus_target` takes it to
-  full and `_ambient_target` pulls the hum to `SIGNATURE_HUM` (0.35)
+  full and `_ambient_target` pulls the hum to `SIGNATURE_HUM` (0.20 — "full" is still under the always-on dialogue duck, so the room has to go ~5 dB below it)
   of its gain for its duration. `_start_bgm` re-targets BOTH buses on
   every track change, so the hum comes back by itself when the
   resume kicks in. `_ambient_gain` is now state (it was a local).
@@ -309,7 +309,7 @@ played `_BGM_BY_LOCATION`'s location drone instead.
   command; render-over-a-name is the lesson above).
 - **NEXT (Deck):** is once-per-scene the right rate (a vol 6 scene
   with Sam, Maya and Diego plays three stingers in its first
-  minute); does 0.35 leave enough room under the signature; the
+  minute); does 0.20 leave enough room under the signature; the
   translations that miss (Rick's shuffle, Carl's pour); then
   the 27 unreachable themes as their scenes are
   written, and whether the gauntlet visitors' themes should fire
