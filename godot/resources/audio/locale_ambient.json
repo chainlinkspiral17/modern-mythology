@@ -1,5 +1,5 @@
 {
-  "_doc": "Per-locale ambient beds. Key = Background3D CAMERA_PRESETS preset_id (the locale's bg3d id). On locale enter, AudioMgr ducks the dominant Music Player track to AMBIENT_DUCK (14%) and crossfades this bed up on the Ambient bus; on exit it reverses. bed = un-prefixed res path; gain = ambient bus target as a fraction of Settings.bgm_vol. Omit a locale (or point at a missing file) to leave the Music Player untouched there \u2014 a silent no-op. Character-portrait presets (alberto/antonio/dante/elicia/frasier/john/nicola/sam) are NOT locales and are intentionally absent. Beds reuse the shipped drones + four bespoke room-tones (diner, cathedral, domestic, and the two vol5 drones); any locale can get a bespoke bed later without touching code.",
+  "_doc": "Per-locale ambient beds. Key = Background3D CAMERA_PRESETS preset_id (the locale's bg3d id). On locale enter, AudioMgr ducks the dominant Music Player track to AMBIENT_DUCK (14%) and crossfades this bed up on the Ambient bus; on exit it reverses. bed = un-prefixed res path; gain = ambient bus target as a fraction of Settings.bgm_vol. Omit a locale (or point at a missing file) to leave the Music Player untouched there — a silent no-op. Character-portrait presets (alberto/antonio/dante/elicia/frasier/john/nicola/sam) are NOT locales and are intentionally absent. Beds reuse the shipped drones + four bespoke room-tones (diner, cathedral, domestic, and the two vol5 drones); any locale can get a bespoke bed later without touching code. REBUILT 2026-09-12 by tools/audio/rebuild_locale_ambient.py: a locale takes its PLACE bed (assign_chapter_beds.PLACES), else its existing generic room tone, else its volume floor.",
   "locales": {
     "diner_interior": {
       "bed": "assets/audio/bgm/vol5_diner_roomtone.wav",
@@ -10,7 +10,7 @@
       "gain": 1.0
     },
     "dambrosios_formal": {
-      "bed": "assets/audio/bgm/vol5_ambient.ogg",
+      "bed": "assets/audio/bgm/vol5_diner_roomtone.wav",
       "gain": 0.85
     },
     "cathedral_interior": {
@@ -18,23 +18,23 @@
       "gain": 1.0
     },
     "graustark_ruins": {
-      "bed": "assets/audio/bgm/vol5_warehouse_drone.ogg",
+      "bed": "assets/audio/bgm/vol5_cicadas_dusk.ogg",
       "gain": 0.95
     },
     "board_lords_interior": {
-      "bed": "assets/audio/bgm/vol5_store_ambient.wav",
+      "bed": "assets/audio/bgm/vol7_shop_signal_bell.wav",
       "gain": 0.82
     },
     "riverboat_interior": {
-      "bed": "assets/audio/bgm/vol5_riverboat_drone.ogg",
+      "bed": "assets/audio/bgm/vol5_venue_ambient.wav",
       "gain": 1.0
     },
     "riverfront_exterior": {
-      "bed": "assets/audio/bgm/vol5_riverboat_drone.ogg",
+      "bed": "assets/audio/bgm/vol5_cicadas_dusk.ogg",
       "gain": 0.9
     },
     "louisiana_road": {
-      "bed": "assets/audio/bgm/vol5_cicadas_dusk.ogg",
+      "bed": "assets/audio/bgm/vol6_two_lane.wav",
       "gain": 1.0
     },
     "chapel_exterior": {
@@ -42,15 +42,15 @@
       "gain": 0.9
     },
     "school_field_evening": {
-      "bed": "assets/audio/bgm/vol5_cicadas_dusk.ogg",
+      "bed": "assets/audio/bgm/vol6_live_oak_field.wav",
       "gain": 1.0
     },
     "miller_back_porch": {
-      "bed": "assets/audio/bgm/vol5_cicadas_dusk.ogg",
+      "bed": "assets/audio/bgm/vol7_cabin_woodstove.wav",
       "gain": 0.95
     },
     "caldwell_porch_night": {
-      "bed": "assets/audio/bgm/vol5_cicadas_dusk.ogg",
+      "bed": "assets/audio/bgm/vol6_new_auburn_kitchen.wav",
       "gain": 0.95
     },
     "kwik_stop_godseye": {
@@ -58,47 +58,47 @@
       "gain": 0.9
     },
     "kwik_stop_interior": {
-      "bed": "assets/audio/bgm/vol5_store_ambient.wav",
+      "bed": "assets/audio/bgm/vol6_kwik_stop_interior.wav",
       "gain": 0.82
     },
     "nexcorp_fueling_station": {
-      "bed": "assets/audio/bgm/vol5_store_ambient.wav",
+      "bed": "assets/audio/bgm/vol6_gas_and_go_interior.wav",
       "gain": 0.82
     },
     "pit_stop_interior": {
-      "bed": "assets/audio/bgm/vol5_store_ambient.wav",
+      "bed": "assets/audio/bgm/vol6_kwik_stop_interior.wav",
       "gain": 0.82
     },
     "centro_grocery_aisle": {
-      "bed": "assets/audio/bgm/vol5_store_ambient.wav",
+      "bed": "assets/audio/bgm/vol6_kwik_stop_interior.wav",
       "gain": 0.82
     },
     "bianca_kitchen_morning": {
-      "bed": "assets/audio/bgm/vol5_domestic_roomtone.wav",
+      "bed": "assets/audio/bgm/vol6_new_auburn_kitchen.wav",
       "gain": 0.9
     },
     "caldwell_kitchen_night": {
-      "bed": "assets/audio/bgm/vol5_domestic_roomtone.wav",
+      "bed": "assets/audio/bgm/vol6_new_auburn_kitchen.wav",
       "gain": 0.9
     },
     "grandmother_kitchen_morning": {
-      "bed": "assets/audio/bgm/vol5_domestic_roomtone.wav",
+      "bed": "assets/audio/bgm/vol6_new_auburn_kitchen.wav",
       "gain": 0.9
     },
     "henderson_kitchen": {
-      "bed": "assets/audio/bgm/vol5_domestic_roomtone.wav",
+      "bed": "assets/audio/bgm/vol6_new_auburn_kitchen.wav",
       "gain": 0.9
     },
     "kowalski_kitchen": {
-      "bed": "assets/audio/bgm/vol5_domestic_roomtone.wav",
+      "bed": "assets/audio/bgm/vol6_new_auburn_kitchen.wav",
       "gain": 0.9
     },
     "miller_kitchen": {
-      "bed": "assets/audio/bgm/vol5_domestic_roomtone.wav",
+      "bed": "assets/audio/bgm/vol6_new_auburn_kitchen.wav",
       "gain": 0.9
     },
     "ramos_kitchen_morning": {
-      "bed": "assets/audio/bgm/vol5_domestic_roomtone.wav",
+      "bed": "assets/audio/bgm/vol6_new_auburn_kitchen.wav",
       "gain": 0.9
     },
     "roberts_kitchen": {
@@ -106,27 +106,27 @@
       "gain": 0.9
     },
     "hans_bakery_back_kitchen": {
-      "bed": "assets/audio/bgm/vol5_domestic_roomtone.wav",
+      "bed": "assets/audio/bgm/vol7_bread_table.wav",
       "gain": 0.9
     },
     "diego_bedroom": {
-      "bed": "assets/audio/bgm/vol5_domestic_roomtone.wav",
+      "bed": "assets/audio/bgm/vol6_new_auburn_kitchen.wav",
       "gain": 0.85
     },
     "jesse_bedroom": {
-      "bed": "assets/audio/bgm/vol5_domestic_roomtone.wav",
+      "bed": "assets/audio/bgm/vol6_new_auburn_kitchen.wav",
       "gain": 0.85
     },
     "maya_bedroom": {
-      "bed": "assets/audio/bgm/vol5_domestic_roomtone.wav",
+      "bed": "assets/audio/bgm/vol6_new_auburn_kitchen.wav",
       "gain": 0.85
     },
     "sam_bedroom": {
-      "bed": "assets/audio/bgm/vol5_domestic_roomtone.wav",
+      "bed": "assets/audio/bgm/vol6_new_auburn_kitchen.wav",
       "gain": 0.85
     },
     "safehouse_bedroom": {
-      "bed": "assets/audio/bgm/vol5_domestic_roomtone.wav",
+      "bed": "assets/audio/bgm/vol6_new_auburn_kitchen.wav",
       "gain": 0.85
     },
     "elicia_apartment": {
@@ -146,7 +146,7 @@
       "gain": 0.88
     },
     "montreal_apartment": {
-      "bed": "assets/audio/bgm/vol5_domestic_roomtone.wav",
+      "bed": "assets/audio/bgm/vol5_cafe_ambient.wav",
       "gain": 0.88
     },
     "natalie_apartment": {
@@ -158,11 +158,11 @@
       "gain": 0.88
     },
     "new_orleans_room": {
-      "bed": "assets/audio/bgm/vol5_domestic_roomtone.wav",
+      "bed": "assets/audio/bgm/vol5_venue_ambient.wav",
       "gain": 0.88
     },
     "lena_apartment": {
-      "bed": "assets/audio/bgm/vol5_domestic_roomtone.wav",
+      "bed": "assets/audio/bgm/vol7_apartment_rain.wav",
       "gain": 0.88
     },
     "bungalow_interior": {
@@ -170,7 +170,7 @@
       "gain": 0.88
     },
     "cabin_interior": {
-      "bed": "assets/audio/bgm/vol5_domestic_roomtone.wav",
+      "bed": "assets/audio/bgm/vol7_cabin_woodstove.wav",
       "gain": 0.9
     },
     "hospice_room": {
@@ -178,19 +178,19 @@
       "gain": 0.82
     },
     "hospital_room": {
-      "bed": "assets/audio/bgm/vol5_warehouse_drone.ogg",
+      "bed": "assets/audio/bgm/vol6_ambient.wav",
       "gain": 0.7
     },
     "caldwell_radio_room_night": {
-      "bed": "assets/audio/bgm/vol5_warehouse_drone.ogg",
+      "bed": "assets/audio/bgm/vol6_substation_nine.wav",
       "gain": 0.75
     },
     "pit_stop_office": {
-      "bed": "assets/audio/bgm/vol5_warehouse_drone.ogg",
+      "bed": "assets/audio/bgm/vol6_kwik_stop_interior.wav",
       "gain": 0.72
     },
     "foxhole_stage": {
-      "bed": "assets/audio/bgm/vol5_warehouse_drone.ogg",
+      "bed": "assets/audio/bgm/vol1_club_thump.wav",
       "gain": 0.8
     },
     "cafe_olimpico": {
@@ -202,19 +202,19 @@
       "gain": 0.85
     },
     "el_rancho_taqueria": {
-      "bed": "assets/audio/bgm/vol5_store_ambient.wav",
+      "bed": "assets/audio/bgm/vol6_el_rancho_interior.wav",
       "gain": 0.82
     },
     "centro_break_room": {
-      "bed": "assets/audio/bgm/vol5_ambient.ogg",
+      "bed": "assets/audio/bgm/vol6_kwik_stop_interior.wav",
       "gain": 0.8
     },
     "cosmic_comics_interior": {
-      "bed": "assets/audio/bgm/vol5_ambient.ogg",
+      "bed": "assets/audio/bgm/vol6_cosmic_comics_interior.wav",
       "gain": 0.82
     },
     "cosmic_comics_back_office": {
-      "bed": "assets/audio/bgm/vol5_ambient.ogg",
+      "bed": "assets/audio/bgm/vol6_cosmic_comics_interior.wav",
       "gain": 0.8
     },
     "darkroom": {
@@ -222,27 +222,27 @@
       "gain": 0.78
     },
     "graciela_bedroom": {
-      "bed": "assets/audio/bgm/vol5_domestic_roomtone.wav",
+      "bed": "assets/audio/bgm/vol6_new_auburn_kitchen.wav",
       "gain": 0.86
     },
     "miller_office": {
-      "bed": "assets/audio/bgm/vol5_domestic_roomtone.wav",
+      "bed": "assets/audio/bgm/vol6_new_auburn_kitchen.wav",
       "gain": 0.82
     },
     "miller_garage": {
-      "bed": "assets/audio/bgm/vol5_warehouse_drone.ogg",
+      "bed": "assets/audio/bgm/vol6_new_auburn_kitchen.wav",
       "gain": 0.78
     },
     "courthouse_chamber": {
-      "bed": "assets/audio/bgm/vol5_ambient.ogg",
+      "bed": "assets/audio/bgm/vol6_ambient.wav",
       "gain": 0.8
     },
     "salty_tome_interior": {
-      "bed": "assets/audio/bgm/vol5_ambient.ogg",
+      "bed": "assets/audio/bgm/vol7_shop_signal_bell.wav",
       "gain": 0.8
     },
     "missing_link_interior": {
-      "bed": "assets/audio/bgm/vol5_diner_roomtone.wav",
+      "bed": "assets/audio/bgm/vol1_diner_ambient.wav",
       "gain": 0.9
     },
     "houston_office": {
@@ -254,19 +254,19 @@
       "gain": 0.82
     },
     "new_orleans_office": {
-      "bed": "assets/audio/bgm/vol5_ambient.ogg",
+      "bed": "assets/audio/bgm/vol5_cicadas_dusk.ogg",
       "gain": 0.8
     },
     "foxhole_bar": {
-      "bed": "assets/audio/bgm/vol5_venue_ambient.wav",
+      "bed": "assets/audio/bgm/vol1_club_thump.wav",
       "gain": 0.85
     },
     "foxhole_dressing_room": {
-      "bed": "assets/audio/bgm/vol5_ambient.ogg",
+      "bed": "assets/audio/bgm/vol1_club_thump.wav",
       "gain": 0.8
     },
     "new_orleans_bar": {
-      "bed": "assets/audio/bgm/vol5_venue_ambient.wav",
+      "bed": "assets/audio/bgm/vol1_club_thump.wav",
       "gain": 0.85
     },
     "chillwave_interior": {
@@ -274,47 +274,47 @@
       "gain": 0.85
     },
     "henderson_garage": {
-      "bed": "assets/audio/bgm/vol5_cicadas_dusk.ogg",
+      "bed": "assets/audio/bgm/vol6_substation_nine.wav",
       "gain": 0.72
     },
     "bindery": {
-      "bed": "assets/audio/bgm/vol5_store_ambient.wav",
+      "bed": "assets/audio/bgm/vol6_cosmic_comics_interior.wav",
       "gain": 0.7
     },
     "centro_stockroom": {
-      "bed": "assets/audio/bgm/vol5_warehouse_drone.ogg",
+      "bed": "assets/audio/bgm/vol6_kwik_stop_interior.wav",
       "gain": 0.74
     },
     "centro_dock": {
-      "bed": "assets/audio/bgm/vol5_cicadas_dusk.ogg",
+      "bed": "assets/audio/bgm/vol6_ambient.wav",
       "gain": 0.7
     },
     "ben_bedroom": {
-      "bed": "assets/audio/bgm/vol5_domestic_roomtone.wav",
+      "bed": "assets/audio/bgm/vol6_new_auburn_kitchen.wav",
       "gain": 0.7
     },
     "coach_k_bedroom": {
-      "bed": "assets/audio/bgm/vol5_domestic_roomtone.wav",
+      "bed": "assets/audio/bgm/vol6_new_auburn_kitchen.wav",
       "gain": 0.66
     },
     "kowalski_backyard": {
-      "bed": "assets/audio/bgm/vol5_ambient.ogg",
+      "bed": "assets/audio/bgm/vol6_new_auburn_kitchen.wav",
       "gain": 0.72
     },
     "henderson_porch_front": {
-      "bed": "assets/audio/bgm/vol5_cicadas_dusk.ogg",
+      "bed": "assets/audio/bgm/vol6_new_auburn_kitchen.wav",
       "gain": 0.76
     },
     "gym_weight_room": {
-      "bed": "assets/audio/bgm/vol5_warehouse_drone.ogg",
+      "bed": "assets/audio/bgm/vol2_ambient.wav",
       "gain": 0.7
     },
     "equipment_shed": {
-      "bed": "assets/audio/bgm/vol5_cicadas_dusk.ogg",
+      "bed": "assets/audio/bgm/vol6_live_oak_field.wav",
       "gain": 0.72
     },
     "nightmare_cell": {
-      "bed": "assets/audio/bgm/vol5_warehouse_drone.ogg",
+      "bed": "assets/audio/bgm/vol6_corporate_hum.wav",
       "gain": 0.82
     },
     "cape_perpetua_overlook": {
@@ -326,112 +326,276 @@
       "gain": 0.82
     },
     "meadowlark_circle": {
-      "bed": "assets/audio/bgm/vol5_ambient.ogg",
+      "bed": "assets/audio/bgm/vol6_ambient.wav",
       "gain": 0.72
     },
     "meadowlark_circle_night": {
-      "bed": "assets/audio/bgm/vol5_ambient.ogg",
+      "bed": "assets/audio/bgm/vol6_ambient.wav",
       "gain": 0.72
     },
     "vehicle_cab": {
-      "bed": "assets/audio/bgm/vol5_ambient.ogg",
-      "gain": 0.40
+      "bed": "assets/audio/bgm/vol6_two_lane.wav",
+      "gain": 0.4
     },
     "vehicle_cab_side": {
-      "bed": "assets/audio/bgm/vol5_ambient.ogg",
+      "bed": "assets/audio/bgm/vol6_two_lane.wav",
       "gain": 0.72
     },
     "lake_palestine": {
-      "bed": "assets/audio/bgm/vol5_ambient.ogg",
+      "bed": "assets/audio/bgm/vol6_ambient.wav",
       "gain": 0.64
     },
     "estuary_7_template": {
-      "bed": "assets/audio/bgm/vol5_warehouse_drone.ogg",
-      "gain": 0.30
+      "bed": "assets/audio/bgm/vol7_ambient.wav",
+      "gain": 0.3
     },
     "vehicle_cab_rear": {
-      "bed": "assets/audio/bgm/vol5_ambient.ogg",
-      "gain": 0.40
+      "bed": "assets/audio/bgm/vol6_two_lane.wav",
+      "gain": 0.4
     },
     "lake_palestine_dock": {
-      "bed": "assets/audio/bgm/vol5_ambient.ogg",
+      "bed": "assets/audio/bgm/vol6_ambient.wav",
       "gain": 0.64
     },
     "meadowlark_circle_henderson": {
-      "bed": "assets/audio/bgm/vol5_cicadas_dusk.ogg",
+      "bed": "assets/audio/bgm/vol6_ambient.wav",
       "gain": 0.66
     },
     "tideline_survey": {
-      "bed": "assets/audio/bgm/vol5_riverboat_drone.ogg",
+      "bed": "assets/audio/bgm/vol7_ambient.wav",
       "gain": 0.55
     },
     "tideline_survey_second": {
-      "bed": "assets/audio/bgm/vol5_riverboat_drone.ogg",
+      "bed": "assets/audio/bgm/vol7_ambient.wav",
       "gain": 0.55
     },
     "kestrel_mountain": {
-      "bed": "assets/audio/bgm/vol5_cathedral_drone.wav",
-      "gain": 0.40
+      "bed": "assets/audio/bgm/vol7_kestrel_circle.wav",
+      "gain": 0.4
     },
     "kestrel_mountain_square": {
-      "bed": "assets/audio/bgm/vol5_cathedral_drone.wav",
-      "gain": 0.40
+      "bed": "assets/audio/bgm/vol7_kestrel_circle.wav",
+      "gain": 0.4
     },
     "accretion_corridor": {
-      "bed": "assets/audio/bgm/vol5_warehouse_drone.ogg",
-      "gain": 0.50
+      "bed": "assets/audio/bgm/vol7_kestrel_circle.wav",
+      "gain": 0.5
     },
     "accretion_basement": {
-      "bed": "assets/audio/bgm/vol5_warehouse_drone.ogg",
+      "bed": "assets/audio/bgm/vol7_kestrel_circle.wav",
       "gain": 0.62
     },
     "cypress_motel": {
-      "bed": "assets/audio/bgm/vol5_cicadas_dusk.ogg",
+      "bed": "assets/audio/bgm/vol6_new_auburn_kitchen.wav",
       "gain": 0.62
     },
     "new_auburn_strip_mall": {
-      "bed": "assets/audio/bgm/vol5_cicadas_dusk.ogg",
+      "bed": "assets/audio/bgm/vol6_two_lane.wav",
       "gain": 0.62
     },
     "new_auburn_lot": {
-      "bed": "assets/audio/bgm/vol5_ambient.ogg",
+      "bed": "assets/audio/bgm/vol6_two_lane.wav",
       "gain": 0.66
     },
     "new_auburn_two_lane": {
-      "bed": "assets/audio/bgm/vol5_ambient.ogg",
+      "bed": "assets/audio/bgm/vol6_two_lane.wav",
       "gain": 0.55
     },
     "new_auburn_bypass": {
-      "bed": "assets/audio/bgm/vol5_ambient.ogg",
+      "bed": "assets/audio/bgm/vol6_two_lane.wav",
       "gain": 0.6
     },
     "new_auburn_cedar_route": {
-      "bed": "assets/audio/bgm/vol5_cicadas_dusk.ogg",
+      "bed": "assets/audio/bgm/vol6_two_lane.wav",
       "gain": 0.72
     },
     "small_wood_road": {
-      "bed": "assets/audio/bgm/vol5_ambient.ogg",
+      "bed": "assets/audio/bgm/vol2_ambient.wav",
       "gain": 0.6
     },
     "small_wood_road_night": {
-      "bed": "assets/audio/bgm/vol5_ambient.ogg",
+      "bed": "assets/audio/bgm/vol1_drive_night.wav",
       "gain": 0.5
     },
     "small_wood_roadside": {
-      "bed": "assets/audio/bgm/vol5_ambient.ogg",
+      "bed": "assets/audio/bgm/vol2_ambient.wav",
       "gain": 0.55
     },
     "highway_101": {
-      "bed": "assets/audio/bgm/vol5_riverboat_drone.ogg",
+      "bed": "assets/audio/bgm/vol7_ambient.wav",
       "gain": 0.55
     },
     "highway_101_turn": {
-      "bed": "assets/audio/bgm/vol5_riverboat_drone.ogg",
+      "bed": "assets/audio/bgm/vol7_ambient.wav",
       "gain": 0.5
     },
     "cabin_interior_bed": {
-      "bed": "assets/audio/bgm/vol5_domestic_roomtone.wav",
+      "bed": "assets/audio/bgm/vol7_cabin_woodstove.wav",
       "gain": 0.9
+    },
+    "bar_exterior_night": {
+      "bed": "assets/audio/bgm/vol1_drive_night.wav",
+      "gain": 0.82
+    },
+    "beach_night": {
+      "bed": "assets/audio/bgm/vol2_seagash_drone.wav",
+      "gain": 0.82
+    },
+    "briar_falls_building": {
+      "bed": "assets/audio/bgm/vol2_rest_stop_wind.wav",
+      "gain": 0.82
+    },
+    "briar_falls_overlook": {
+      "bed": "assets/audio/bgm/vol2_rest_stop_wind.wav",
+      "gain": 0.82
+    },
+    "briar_falls_picnic": {
+      "bed": "assets/audio/bgm/vol2_rest_stop_wind.wav",
+      "gain": 0.82
+    },
+    "briar_falls_rest_stop": {
+      "bed": "assets/audio/bgm/vol2_rest_stop_wind.wav",
+      "gain": 0.82
+    },
+    "briar_falls_trail": {
+      "bed": "assets/audio/bgm/vol2_rest_stop_wind.wav",
+      "gain": 0.82
+    },
+    "cabin_road": {
+      "bed": "assets/audio/bgm/vol7_cabin_woodstove.wav",
+      "gain": 0.82
+    },
+    "cathedral_exterior": {
+      "bed": "assets/audio/bgm/vol5_ambient.ogg",
+      "gain": 0.82
+    },
+    "cedar_tower_exterior": {
+      "bed": "assets/audio/bgm/vol7_ambient.wav",
+      "gain": 0.82
+    },
+    "cedar_tower_lobby": {
+      "bed": "assets/audio/bgm/vol7_ambient.wav",
+      "gain": 0.82
+    },
+    "cedar_tower_portal": {
+      "bed": "assets/audio/bgm/vol7_ambient.wav",
+      "gain": 0.82
+    },
+    "cedar_tower_quarters": {
+      "bed": "assets/audio/bgm/vol7_ambient.wav",
+      "gain": 0.82
+    },
+    "cedar_tower_studio": {
+      "bed": "assets/audio/bgm/vol7_ambient.wav",
+      "gain": 0.82
+    },
+    "chillwave_backroom": {
+      "bed": "assets/audio/bgm/vol7_ambient.wav",
+      "gain": 0.82
+    },
+    "cliffside_circus": {
+      "bed": "assets/audio/bgm/vol2_seagash_drone.wav",
+      "gain": 0.82
+    },
+    "crumpled_barn_ext": {
+      "bed": "assets/audio/bgm/vol2_ambient.wav",
+      "gain": 0.82
+    },
+    "crumpled_barn_int": {
+      "bed": "assets/audio/bgm/vol2_ambient.wav",
+      "gain": 0.82
+    },
+    "faust_apartment_day": {
+      "bed": "assets/audio/bgm/vol1_painting.wav",
+      "gain": 0.82
+    },
+    "faust_bedroom": {
+      "bed": "assets/audio/bgm/vol1_dream_drone.wav",
+      "gain": 0.82
+    },
+    "graustark_chalk_wall": {
+      "bed": "assets/audio/bgm/vol5_cicadas_dusk.ogg",
+      "gain": 0.82
+    },
+    "graustark_cottage": {
+      "bed": "assets/audio/bgm/vol5_domestic_roomtone.wav",
+      "gain": 0.82
+    },
+    "graustark_wreck": {
+      "bed": "assets/audio/bgm/vol5_cicadas_dusk.ogg",
+      "gain": 0.82
+    },
+    "grunion_beach": {
+      "bed": "assets/audio/bgm/vol2_seagash_drone.wav",
+      "gain": 0.82
+    },
+    "hospital_waiting": {
+      "bed": "assets/audio/bgm/vol6_ambient.wav",
+      "gain": 0.82
+    },
+    "little_switzerland": {
+      "bed": "assets/audio/bgm/vol2_ambient.wav",
+      "gain": 0.82
+    },
+    "missing_link_exterior": {
+      "bed": "assets/audio/bgm/vol1_diner_ambient.wav",
+      "gain": 0.82
+    },
+    "nexcorp_gas_go": {
+      "bed": "assets/audio/bgm/vol6_gas_and_go_interior.wav",
+      "gain": 0.82
+    },
+    "parish_cemetery": {
+      "bed": "assets/audio/bgm/vol2_graveyard_solo.wav",
+      "gain": 0.82
+    },
+    "pharmacy_floor": {
+      "bed": "assets/audio/bgm/vol1_pharmacy.wav",
+      "gain": 0.82
+    },
+    "pharmacy_office": {
+      "bed": "assets/audio/bgm/vol1_pharmacy.wav",
+      "gain": 0.82
+    },
+    "pit_stop_back_booth": {
+      "bed": "assets/audio/bgm/vol6_kwik_stop_interior.wav",
+      "gain": 0.82
+    },
+    "pit_stop_kitchen": {
+      "bed": "assets/audio/bgm/vol6_kwik_stop_interior.wav",
+      "gain": 0.82
+    },
+    "riverfront_park": {
+      "bed": "assets/audio/bgm/vol1_ambient.wav",
+      "gain": 0.82
+    },
+    "salty_tome_alley": {
+      "bed": "assets/audio/bgm/vol7_painting_room.wav",
+      "gain": 0.82
+    },
+    "salty_tome_kitchenette": {
+      "bed": "assets/audio/bgm/vol7_shop_signal_bell.wav",
+      "gain": 0.82
+    },
+    "sapo_falls": {
+      "bed": "assets/audio/bgm/vol2_seagash_drone.wav",
+      "gain": 0.82
+    },
+    "school_newspaper": {
+      "bed": "assets/audio/bgm/vol2_ambient.wav",
+      "gain": 0.82
+    },
+    "shuttle_bench": {
+      "bed": "assets/audio/bgm/vol1_diner_ambient.wav",
+      "gain": 0.82
+    },
+    "skatepark_day": {
+      "bed": "assets/audio/bgm/vol1_ambient.wav",
+      "gain": 0.82
+    },
+    "wagner_home": {
+      "bed": "assets/audio/bgm/vol1_ambient.wav",
+      "gain": 0.82
     }
   }
 }

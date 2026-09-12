@@ -280,6 +280,19 @@ PLOUT="$(python3 page_length_audit.py 2>/dev/null)" || {
 echo "$PLOUT" | tail -1
 echo ""
 
+# ── Locale-ambient gate (2026-09-12) ──────────────────────────
+# The world hum (locale_ambient.json) is the audible layer of a 3D
+# scene — the Music Player ducks to 14% under it. It mapped 108 rooms
+# to ten vol-5 files and left 42 rooms with no hum at all. Every
+# preset a chapter uses must have a bed that exists and belongs to
+# its volume (or is a generic room tone / a declared same-place bed).
+echo "── locale_ambient_audit.py ──"
+LAOUT="$(python3 locale_ambient_audit.py 2>/dev/null)" || {
+    echo "$LAOUT" | grep -E "^(NOHUM|NOFILE|OTHER)" | head -20
+    echo "$LAOUT" | tail -1; exit 1; }
+echo "$LAOUT" | tail -1
+echo ""
+
 # ── Phantom-surface gate (2026-09-10) ─────────────────────────
 # A detail pass that hard-codes a desk/counter/bar origin the builder
 # never put there (eighteen locales had one). Static: reads the x/y/z

@@ -1651,6 +1651,22 @@ entry already had — read `chars` and `chapters` first. The 22
 character themes stay NEXT, and with this fix they can be added
 without surprising the queue.
 
+**2026-09-12 (vii) · THE WORLD HUM.** Every 3D scene has TWO beds and
+the loud one is not the catalog's: `enter_locale_ambient` ducks the
+Music Player to 14% and raises the locale's bed from
+`resources/audio/locale_ambient.json` — which mapped 108 locales to ten
+vol-5 files (cicadas on Cape Perpetua, the riverboat drone on Highway
+101, D'Ambrosio's dawn in Cosmic Comics) and left 42 presets with no
+hum at all. So the 2026-09-11 chapter beds have been playing at 14%
+under vol 5. Rebuilt from the same locale→bed table the chapters use
+(`rebuild_locale_ambient.py`: place bed, else the author's generic
+room tone, else the volume floor): 19 kept, 86 re-pointed, 41 added.
+Runtime-looped WAVs now get a loop region (they had none). New gate
+`locale_ambient_audit.py` at zero. THIS is the change the Deck will
+hear first in vols 6–7. NEXT (Deck): do the hum beds loop; is 14%
+under the hum the right Music Player level now that both layers are
+the same room; the character themes belong in the ducked layer.
+
 **2026-08-19 · PER-STICK VOICE SWEEP VERDICT (voice draft 4).**
 Ran the leakage grep (TODO/WIP/placeholder/implemented/deferred/
 stub) and a string survey across EVERY stick directory: estuary_4,

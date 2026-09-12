@@ -375,7 +375,14 @@ func _set_stream_loop(stream: AudioStream, on: bool) -> void:
 	elif stream is AudioStreamMP3:
 		(stream as AudioStreamMP3).loop = on
 	elif stream is AudioStreamWAV:
-		(stream as AudioStreamWAV).loop_mode = AudioStreamWAV.LOOP_FORWARD if on else AudioStreamWAV.LOOP_DISABLED
+		var w: AudioStreamWAV = stream as AudioStreamWAV
+		w.loop_mode = AudioStreamWAV.LOOP_FORWARD if on else AudioStreamWAV.LOOP_DISABLED
+		# A runtime-set loop needs a loop REGION: loop_end is 0 unless the
+		# importer wrote one, and an empty region does not loop. The
+		# world-hum beds are WAVs now (2026-09-12) and must loop.
+		if on and w.loop_end <= w.loop_begin:
+			w.loop_begin = 0
+			w.loop_end = int(w.get_length() * float(w.mix_rate))
 
 
 func _ensure_ambient_cfg() -> void:

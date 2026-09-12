@@ -206,6 +206,45 @@ played `_BGM_BY_LOCATION`'s location drone instead.
   arcana. Scenario beds run 12-14 bars (55-65 s) rather than the
   chapter beds' ~40: a run is minutes, not a page.
 
+### 2026-09-12 (ii) · THE WORLD HUM was the audible layer, and it was vol 5
+
+- **There are two beds in every 3D scene, and the loud one is not the
+  one the catalog names.** `AudioMgr.enter_locale_ambient()` — "the
+  inverted soundtrack" — ducks the Music Player track to 14% when a
+  locale loads and crossfades the locale's bed from
+  `resources/audio/locale_ambient.json` up on the Ambient bus. So the
+  chapter beds assigned on the 11th play at 14% under whatever that
+  map says, and it said vol 5 for 108 locales on ten vol-5 files:
+  cicadas on Cape Perpetua and every New Auburn porch, the riverboat
+  drone on Highway 101 and the tide pools, D'Ambrosio's dawn on
+  Meadowlark Circle and in Cosmic Comics, the cathedral drone on
+  Kestrel. Its own `_doc` said so ("beds reuse the shipped drones …
+  any locale can get a bespoke bed later"). 42 presets chapters use
+  had no entry at all — full-volume Music Player in those rooms, a
+  14% ghost in the next, for no reason a player could hear.
+- **One table, two layers.** `rebuild_locale_ambient.py` points each
+  preset at its PLACE bed from `assign_chapter_beds.PLACES` — a room's
+  hum and a room's music agree — keeps the original author's generic
+  room tone (domestic / store / venue / cafe / diner / cathedral) for
+  a room with no bespoke bed, and floors on `vol<N>_ambient`. 19 kept,
+  86 re-pointed, 41 added; gains preserved. New gate
+  `locale_ambient_audit.py`: every preset a chapter uses has a hum,
+  the file exists, and it is that volume's, a generic room tone, or a
+  declared same-place bed.
+- **A runtime-looped WAV needs a loop REGION.** `_set_stream_loop`
+  set `loop_mode = LOOP_FORWARD` and nothing else; `loop_end` is 0
+  unless the importer wrote one, and an empty region does not loop.
+  The hum beds are WAVs now; the region is set from the stream's
+  length when it is missing. Deck check: does a hum bed loop past its
+  first pass?
+- **What the Deck will hear differently:** every vol 6 and vol 7 room.
+  The Kwik Stop hums with its own sodium tubes at 11:47 instead of a
+  Louisiana grocery; the cabin with its woodstove instead of "someone's
+  rooms"; Highway 101 with the two-lane's tire hiss instead of the
+  Static Bloom riverboat. The 14% Music Player track under it is, in
+  most rooms, the same bed — a ghost of itself, harmless, and the
+  place the character themes will go when they are rendered.
+
 ### 2026-09-12 · a character's `show` enqueued another volume's bed
 
 - **The files arriving exposed a queue rule nobody had heard.**
