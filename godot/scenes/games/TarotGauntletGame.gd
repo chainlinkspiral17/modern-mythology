@@ -3496,6 +3496,18 @@ func _build_fp_cache(cam_spec: Dictionary, standalone_scene) -> void:
 	_cached_fp_vc = vc
 	_cached_fp_vp = vp
 	_cached_fp_cam = cam
+	# THE TRIP's feedback (2026-09-12): the board's 3D renders into
+	# this SubViewport, which is a UI-free texture — the same source
+	# the VN uses. The show rect sits one z above the container and
+	# under the board header (5), so the wake lands on the room and
+	# never on a card. Torn down with the rest of the board contents.
+	var trip_fb: Node = get_node_or_null("/root/TripSync")
+	if trip_fb != null and trip_fb.has_method("attach_feedback"):
+		var fb_v: Variant = trip_fb.call("attach_feedback", vc)
+		if fb_v is Control:
+			var fb: Control = fb_v as Control
+			fb.z_index = 1
+			_board_content.add_child(fb)
 	# Post-process shader on the SubViewportContainer. Same pattern
 	# as VN portraits: a canvas_item shader sampling TEXTURE (the
 	# SubViewport's render target). Lives here instead of as a

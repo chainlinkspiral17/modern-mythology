@@ -123,8 +123,8 @@ const SOFT_SURFACE_SCALE: float = 0.45
 # is the background image, so the dialogue box and every glyph of
 # type are outside the buffer by construction and cannot smear —
 # which is the same reason the trip shader runs in texture mode
-# there. A screen-sourced feedback layer is draft 2 and needs a
-# UI-free source first.
+# there. Where nothing is mounted and the world renders straight to
+# the root viewport, THE MIRROR below is the UI-free source (draft 2).
 var _fb_shader: Shader = null
 var _fb_show_shader: Shader = null
 var _fb_vp: Array[SubViewport] = []
@@ -132,6 +132,20 @@ var _fb_mat: Array[ShaderMaterial] = []
 var _fb_shows: Array[Dictionary] = []      # [{rect, mat, srcs}]
 var _fb_write: int = 0
 var _fb_size: Vector2i = Vector2i.ZERO
+# THE MIRROR (draft 2, 2026-09-12): the UI-free source for surfaces
+# whose 3D renders straight to the root viewport — the locale walk,
+# the cathedral. A SubViewport that shares the root's World3D, with
+# its own Camera3D copying the live camera every frame, rendered at
+# quarter resolution with no shadows. The buffer catches light from
+# THAT render, so the HUD, the debug labels and the music-player
+# strip are never in it. Costs one extra low-res draw of the world.
+const MIRROR_DIV: int = 4
+const SHOW_LAYER: int = 61          # above the trip layer, below the slowstick look and HUD
+var _mirror_vp: SubViewport = null
+var _mirror_cam: Camera3D = null
+var _show_layer: CanvasLayer = null
+var _show_rect: ColorRect = null
+var _show_mat: ShaderMaterial = null
 
 # ── REGISTERS · the per-pillar look (2026-09-07, user direction) ──
 # "Major Arcana is swampy and arcade inspired; Planned Community is
@@ -369,6 +383,37 @@ func _spawn_feedback() -> void:
 		add_child(vp)
 		_fb_vp.append(vp)
 		_fb_mat.append(m)
+	# the mirror: shares the root World3D (own_world_3d stays false),
+	# its camera is the only current one inside it
+	_mirror_vp = SubViewport.new()
+	_mirror_vp.name = "TripMirror"
+	_mirror_vp.transparent_bg = false
+	_mirror_vp.gui_disable_input = true
+	_mirror_vp.positional_shadow_atlas_size = 0
+	_mirror_vp.msaa_3d = Viewport.MSAA_DISABLED
+	_mirror_vp.screen_space_aa = Viewport.SCREEN_SPACE_AA_DISABLED
+	_mirror_vp.size = Vector2i(4, 4)
+	_mirror_vp.render_target_update_mode = SubViewport.UPDATE_DISABLED
+	_mirror_cam = Camera3D.new()
+	_mirror_cam.name = "MirrorCam"
+	_mirror_vp.add_child(_mirror_cam)
+	add_child(_mirror_vp)
+	# the global show layer: the mirror's trail, drawn over the picture
+	_show_layer = CanvasLayer.new()
+	_show_layer.name = "TripFeedback"
+	_show_layer.layer = SHOW_LAYER
+	_show_layer.add_to_group("world_render")
+	_show_rect = ColorRect.new()
+	_show_rect.name = "TripFeedbackRect"
+	_show_rect.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
+	_show_rect.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	_show_rect.color = Color(0.0, 0.0, 0.0, 0.0)
+	_show_mat = ShaderMaterial.new()
+	_show_mat.shader = _fb_show_shader
+	_show_rect.material = _show_mat
+	_show_layer.add_child(_show_rect)
+	_show_layer.visible = false
+	add_child(_show_layer)
 	_resize_feedback()
 	var vport: Viewport = get_viewport()
 	if vport != null and not vport.size_changed.is_connected(_resize_feedback):
@@ -388,6 +433,9 @@ func _resize_feedback() -> void:
 	_fb_size = want
 	for vp in _fb_vp:
 		vp.size = want
+	if _mirror_vp != null:
+		_mirror_vp.size = Vector2i(
+			maxi(8, int(vis.x) / MIRROR_DIV), maxi(8, int(vis.y) / MIRROR_DIV))
 
 
 # Mount the feedback over a surface. `src_item` is the CanvasItem the
@@ -481,8 +529,8 @@ func _feedback_tint() -> Vector3:
 	return Vector3(1.0, 1.0, 1.0)
 
 
-func _update_feedback(dt: float) -> void:
-	if _fb_vp.size() < 2 or _fb_shows.is_empty():
+func _update_feedback(dt: float, local_active: bool) -> void:
+	if _fb_vp.size() < 2:
 		return
 	var reg: Dictionary = _feedback_floats()
 	var fb_amount: float = float(reg.get("fb_amount", 0.0))
@@ -503,14 +551,42 @@ func _update_feedback(dt: float) -> void:
 			if t != null:
 				src_tex = t
 				break
+	var mounted: bool = src_tex != null
+	# No mounted surface: mirror the root viewport's live camera, if
+	# there is one and the VN is not holding the global layer aside.
+	var mirrored: bool = false
+	if not mounted and not local_active and gain > 0.002 and _mirror_vp != null:
+		var vport: Viewport = get_viewport()
+		var cam: Camera3D = vport.get_camera_3d() if vport != null else null
+		if cam != null:
+			_mirror_cam.global_transform = cam.global_transform
+			_mirror_cam.fov = cam.fov
+			_mirror_cam.near = cam.near
+			_mirror_cam.far = cam.far
+			_mirror_cam.projection = cam.projection
+			_mirror_cam.size = cam.size
+			# the look must match or the mirror catches a different
+			# picture: the camera's own environment and exposure, and
+			# what it is allowed to see
+			_mirror_cam.environment = cam.environment
+			_mirror_cam.attributes = cam.attributes
+			_mirror_cam.cull_mask = cam.cull_mask
+			_mirror_cam.current = true
+			_mirror_vp.render_target_update_mode = SubViewport.UPDATE_ONCE
+			src_tex = _mirror_vp.get_texture()
+			mirrored = true
 	var live: bool = gain > 0.002 and src_tex != null
 	for e in _fb_shows:
 		var r: Control = e["rect"] as Control
 		if r != null:
-			r.visible = live
+			r.visible = live and mounted
+	if _show_layer != null:
+		_show_layer.visible = live and mirrored
 	if not live:
 		for vp in _fb_vp:
 			vp.render_target_update_mode = SubViewport.UPDATE_DISABLED
+		if _mirror_vp != null:
+			_mirror_vp.render_target_update_mode = SubViewport.UPDATE_DISABLED
 		return
 	_resize_feedback()
 	var read_i: int = 1 - _fb_write
@@ -542,8 +618,13 @@ func _update_feedback(dt: float) -> void:
 	_fb_vp[_fb_write].render_target_update_mode = SubViewport.UPDATE_ONCE
 	_fb_vp[read_i].render_target_update_mode = SubViewport.UPDATE_DISABLED
 	var buf: ViewportTexture = _fb_vp[_fb_write].get_texture()
+	var shows: Array = []
 	for e in _fb_shows:
-		var sm: ShaderMaterial = e["mat"] as ShaderMaterial
+		shows.append(e["mat"])
+	if mirrored and _show_mat != null:
+		shows.append(_show_mat)
+	for sm_v in shows:
+		var sm: ShaderMaterial = sm_v as ShaderMaterial
 		if sm == null:
 			continue
 		sm.set_shader_parameter("buf", buf)
@@ -675,7 +756,7 @@ func _process(delta: float) -> void:
 		_global_layer.visible = effective_amount() > 0.001 and not local_active
 	for mat in _materials:
 		_push_to(mat)
-	_update_feedback(dt)
+	_update_feedback(dt, local_active)
 
 
 func _push_to(mat: ShaderMaterial) -> void:

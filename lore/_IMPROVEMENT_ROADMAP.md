@@ -1546,6 +1546,22 @@ dark-mood pushes stay — pushing a dark scene is the bible's own
 direction. NEXT: the same product check for `[register:]` once more
 chapters carry it.
 
+**2026-09-12 (ii) · THE FEEDBACK, draft 2 — everywhere, still without
+the UI.** Draft 1 was the VN only, because the only UI-free source
+was the background texture. Draft 2 adds two more without a single
+screen read: the GAUNTLET BOARD mounts the rig on its own
+`fp_3d_container` (its 3D already renders into a SubViewport; show
+rect one z above it and under the board header), and THE MIRROR — a
+quarter-res SubViewport sharing the root World3D with its own Camera3D
+copying the live camera every frame (transform, fov, near/far,
+projection, environment, attributes, cull mask), no shadows, no AA —
+serves anything whose 3D renders straight to the root: the locale
+walk, the cathedral, a menu visualizer. HUD is never in the buffer by
+construction. It stands down when a mounted surface is live or the VN
+holds the global layer aside; 2D screens have no camera, so the sticks
+stay untouched. NEXT: the mirror's cost in graustark on the Deck; the
+same Deck reads as draft 1.
+
 **2026-08-19 · PER-STICK VOICE SWEEP VERDICT (voice draft 4).**
 Ran the leakage grep (TODO/WIP/placeholder/implemented/deferred/
 stub) and a string survey across EVERY stick directory: estuary_4,

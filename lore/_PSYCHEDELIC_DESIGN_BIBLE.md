@@ -295,10 +295,28 @@ picture under the trail is already bright the show pass steps back
 (`dark_bias`), because light on light is invisible — the same verdict
 that gave bright scenes ink instead of glow.
 
-Draft 2, when the Deck has seen it: the wake's length and the zoom
-sign per register are guesses made in a container; a screen-sourced
-rig for the locale walk and the gauntlet board; and the question of
-whether `milk_honey` at 0.90 is a light show or a fog.
+**Draft 2 (2026-09-12) — everywhere, still without the UI.** Two more
+sources, no screen reads anywhere:
+- **The gauntlet board** mounts the rig on its own `fp_3d_container`
+  (the board's 3D already renders into a SubViewport — the VN's
+  pattern), show rect one z above the container and under the board
+  header, so the wake lands on the room and never on a card.
+- **THE MIRROR** for anything whose 3D renders straight to the root
+  viewport — the locale walk, the cathedral, a menu visualizer. A
+  quarter-resolution SubViewport that shares the root's World3D, with
+  its own Camera3D copying the live camera (transform, fov, near/far,
+  projection, environment, attributes, cull mask) every frame, no
+  shadows, no AA. The buffer catches light from THAT render, so the
+  HUD, the debug labels and the music strip are never in it by
+  construction. Costs one extra low-res draw of the world. It stands
+  down whenever a mounted surface is live or the VN holds the global
+  layer aside, and a 2D screen (every slowstick) has no camera to
+  mirror — so the sticks stay untouched, as the register rule wants.
+
+Still Deck-gated: the wake's length and the zoom sign per register
+are guesses made in a container; whether `milk_honey` at 0.90 is a
+light show or a fog; and whether the mirror's quarter-res draw is
+free enough on the Deck in the biggest locale walks (graustark).
 
 ## Recent lessons
 
