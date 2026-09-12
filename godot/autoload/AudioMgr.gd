@@ -558,8 +558,32 @@ func _unlock_tracks_matching(predicate: Callable) -> int:
 			# equivalent to having heard the track for catalog purposes.
 			_mark_heard(src)
 			track_unlocked.emit(src, entry.get("title", id))
-		enqueue_music(src)
+		# ENQUEUE ONLY WITHIN THE CURRENT VOLUME (2026-09-12). A character
+		# carries every entry that names them: Lena is on vol2_ambient
+		# (Small Wood Variations) and vol7_apartment_rain, Nicola and
+		# Dante on vol4_standoff_strings and vol5_riverboat_drone. While
+		# those files did not exist the failed load advanced past them
+		# and nobody noticed; now that they do, a `show` of Lena in
+		# Smolvud put vol 2's bed at the head of the queue and it played
+		# next, over the cabin. The unlock (the Music Player's dot) is
+		# still volume-blind; what plays next is not.
+		if _entry_in_current_volume(entry):
+			enqueue_music(src)
 	return newly_unlocked
+
+
+# The chapter id is "<scene_id>::<chapter>" and scene ids start with
+# "vol<N>_"; an entry with no `vol`, or no chapter context, passes.
+func _entry_in_current_volume(entry: Dictionary) -> bool:
+	if _chapter_id == "" or not entry.has("vol"):
+		return true
+	var m: RegExMatch = _VOL_RX.search(_chapter_id)
+	if m == null:
+		return true
+	return int(entry.get("vol", -1)) == int(m.get_string(1))
+
+
+var _VOL_RX: RegEx = RegEx.create_from_string("^vol(\\d+)_")
 
 
 func play_next() -> void:

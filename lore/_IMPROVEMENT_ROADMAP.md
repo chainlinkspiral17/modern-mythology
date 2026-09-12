@@ -1639,6 +1639,18 @@ chapters with a run over 20 pages 11 → 4). NEXT (Deck): is 230 the
 right page at 34 px, or does a page want three lines rather than four?
 Does the seeder now cut too often? Two constants (TARGET, HOLD_MAX).
 
+**2026-09-12 (vi) · a `show` enqueued another volume's bed.** Found
+while sizing the character-theme wave: `unlock_tracks_for_character`
+enqueues every catalog entry naming the character, and BEDS name
+characters (Lena → `vol2_ambient`; Nicola/Dante → `vol4_standoff_
+strings`; Antonio → `vol3_ambient`). Masked while the files were
+missing; live since the 2026-09-11 render — a Lena `show` in vol 7
+queued Oregon over the cabin. Enqueue is now volume-scoped; the unlock
+is not. Recorded rule: rendering a file activates every consumer the
+entry already had — read `chars` and `chapters` first. The 22
+character themes stay NEXT, and with this fix they can be added
+without surprising the queue.
+
 **2026-08-19 · PER-STICK VOICE SWEEP VERDICT (voice draft 4).**
 Ran the leakage grep (TODO/WIP/placeholder/implemented/deferred/
 stub) and a string survey across EVERY stick directory: estuary_4,

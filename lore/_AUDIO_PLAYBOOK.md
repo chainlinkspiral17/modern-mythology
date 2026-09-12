@@ -206,6 +206,26 @@ played `_BGM_BY_LOCATION`'s location drone instead.
   arcana. Scenario beds run 12-14 bars (55-65 s) rather than the
   chapter beds' ~40: a run is minutes, not a page.
 
+### 2026-09-12 · a character's `show` enqueued another volume's bed
+
+- **The files arriving exposed a queue rule nobody had heard.**
+  `unlock_tracks_for_character` enqueues EVERY catalog entry whose
+  `chars` names the character shown — and beds carry characters:
+  Lena is on `vol2_ambient` (Small Wood Variations) and
+  `vol7_apartment_rain`, Nicola and Dante on `vol4_standoff_strings`
+  and `vol5_riverboat_drone`, Antonio on `vol3_ambient`. While those
+  files did not exist the failed load advanced past them; once the
+  2026-09-11 pass rendered them, a `show` of Lena in Smolvud put
+  vol 2's bed at the head of the queue, and the queue head beats the
+  chapter bed. Fixed in `_unlock_tracks_matching`: the UNLOCK (the
+  Music Player's dot) stays volume-blind; the ENQUEUE happens only
+  for entries in the current chapter's volume (`_chapter_id` is
+  "<scene>::<chapter>", scene ids start `vol<N>_`).
+- **The rule for the next audio wave:** authoring a file for an entry
+  activates every consumer that entry already had. Read the `chars`
+  list and the `chapters` list of an entry before rendering it, not
+  after the Deck asks why the cabin sounds like Oregon.
+
 ### 2026-09-11 (v) · the endings get their music
 
 Every gauntlet run ends on a win screen or a named Finale, and
