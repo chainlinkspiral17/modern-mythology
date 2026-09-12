@@ -103,7 +103,7 @@
       "t": "say",
       "char": "Sunburn Man",
       "expr": "neutral",
-      "text": "(looking at the pretzels, not at Sam) \"Hot one today.\""
+      "text": "[shot:closeup person](looking at the pretzels, not at Sam) \"Hot one today.\""
     },
     {
       "t": "say",

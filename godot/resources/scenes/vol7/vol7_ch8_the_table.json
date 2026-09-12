@@ -65,7 +65,7 @@
       "t": "say",
       "char": "Tem",
       "expr": "warm",
-      "text": "\"I have a shim at the cabin. I'll bring one next time.\""
+      "text": "[shot:closeup person]\"I have a shim at the cabin. I'll bring one next time.\""
     },
     {
       "t": "say",

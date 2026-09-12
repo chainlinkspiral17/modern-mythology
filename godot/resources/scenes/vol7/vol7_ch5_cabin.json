@@ -40,7 +40,7 @@
       "t": "narrate"
     },
     {
-      "text": "He knocked twice. Nothing. He knocked again. He could hear the radio going faintly through the door. He tried the knob. It turned. Finn never locked it during the day.",
+      "text": "[shot:establish]He knocked twice. Nothing. He knocked again. He could hear the radio going faintly through the door. He tried the knob. It turned. Finn never locked it during the day.",
       "t": "narrate"
     },
     {
@@ -247,7 +247,7 @@
     },
     {
       "char": "kai",
-      "text": "You were going to tell me when.",
+      "text": "[shot:closeup person]You were going to tell me when.",
       "expr": "neutral",
       "t": "say"
     },

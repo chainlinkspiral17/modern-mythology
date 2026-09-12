@@ -212,7 +212,7 @@
   {
    "t": "say",
    "char": "Carlos",
-   "text": "I wanted you to know it actually moved.",
+   "text": "[shot:closeup person]I wanted you to know it actually moved.",
    "expr": "neutral"
   },
   {
@@ -276,7 +276,7 @@
   {
    "t": "say",
    "char": "Bianca",
-   "text": "Not the tired tired. The other one. The one where I keep waking up at four-eleven on Saturdays because my body has decided four-eleven on Saturdays is a thing.",
+   "text": "[shot:closeup person_b]Not the tired tired. The other one. The one where I keep waking up at four-eleven on Saturdays because my body has decided four-eleven on Saturdays is a thing.",
    "expr": "neutral"
   },
   {
@@ -318,7 +318,7 @@
   {
    "t": "say",
    "char": "Bianca",
-   "text": "The table is the table.",
+   "text": "[shot:closeup person_b]The table is the table.",
    "expr": "neutral"
   },
   {
@@ -394,7 +394,7 @@
   {
    "t": "say",
    "char": "Carlos",
-   "text": "I'm sorry I haven't called more.",
+   "text": "[shot:closeup person]I'm sorry I haven't called more.",
    "expr": "neutral"
   },
   {
@@ -688,7 +688,7 @@
   {
    "t": "say",
    "char": "Bianca",
-   "text": "That is a thing siblings find out about each other in their forties.",
+   "text": "[shot:closeup person_b]That is a thing siblings find out about each other in their forties.",
    "expr": "neutral"
   },
   {
@@ -722,7 +722,7 @@
   {
    "t": "say",
    "char": "Carlos",
-   "text": "Yeah, Bianca.",
+   "text": "[shot:closeup person]Yeah, Bianca.",
    "expr": "neutral"
   },
   {
@@ -756,7 +756,7 @@
   {
    "t": "say",
    "char": "Bianca",
-   "text": "I love you too, Carlos.",
+   "text": "[shot:closeup person_b]I love you too, Carlos.",
    "expr": "neutral"
   },
   {

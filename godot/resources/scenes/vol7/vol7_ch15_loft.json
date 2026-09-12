@@ -55,7 +55,7 @@
    "t": "narrate"
   },
   {
-   "text": "Kai's breath was the breath of a man who had been in a slow-stick on Wednesday and was still working out what that meant. Tem's breath in the bedroom was below her. Lena's beside Tem's. The six were the six.",
+   "text": "[shot:insert stick]Kai's breath was the breath of a man who had been in a slow-stick on Wednesday and was still working out what that meant. Tem's breath in the bedroom was below her. Lena's beside Tem's. The six were the six.",
    "t": "narrate"
   },
   {
@@ -104,7 +104,7 @@
   },
   {
    "char": "marina",
-   "text": "Yes.",
+   "text": "[shot:closeup person]Yes.",
    "expr": "neutral",
    "t": "say"
   },
@@ -172,7 +172,7 @@
   },
   {
    "char": "tem",
-   "text": "I am. The bowls are at the cabin. I am not — I am not leaving the bowls at the cabin all day with the cabin empty. I am coming back up after the bakery.",
+   "text": "[shot:closeup person_b]I am. The bowls are at the cabin. I am not — I am not leaving the bowls at the cabin all day with the cabin empty. I am coming back up after the bakery.",
    "expr": "neutral",
    "t": "say"
   },
@@ -296,7 +296,7 @@
   },
   {
    "char": "tem",
-   "text": "She is going to be in the room with us at six. She is — Marit is the person who has been carrying the longest at the closest distance and who has been most alone. You and Marit are going to meet. The meeting is going to matter.",
+   "text": "[shot:closeup person_b]She is going to be in the room with us at six. She is — Marit is the person who has been carrying the longest at the closest distance and who has been most alone. You and Marit are going to meet. The meeting is going to matter.",
    "expr": "serious",
    "t": "say"
   },

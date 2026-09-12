@@ -77,7 +77,7 @@
       "t": "say",
       "char": "Lena",
       "expr": "neutral",
-      "text": "\"Hi.\""
+      "text": "[shot:closeup person]\"Hi.\""
     },
     {
       "t": "say",

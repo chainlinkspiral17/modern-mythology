@@ -82,7 +82,7 @@
   {
    "t": "say",
    "char": "Jesse",
-   "text": "Yeah.",
+   "text": "[shot:closeup person]Yeah.",
    "expr": "neutral"
   },
   {
@@ -147,7 +147,7 @@
   },
   {
    "t": "narrate",
-   "text": "The name has been on flyers at three or four other venues Suburban Blight has played in the past two months — not as the headliner of those nights, but as the headliner of the night before or the night after,"
+   "text": "[shot:establish]The name has been on flyers at three or four other venues Suburban Blight has played in the past two months — not as the headliner of those nights, but as the headliner of the night before or the night after,"
   },
   {
    "t": "narrate",
@@ -227,7 +227,7 @@
   },
   {
    "t": "narrate",
-   "text": "The papered-over window has, by Jesse's three observations, been re-papered over twice since the original papering — once in early July, once in early August — in a way that suggests the paper has been lifted from the inside and then replaced."
+   "text": "[shot:establish]The papered-over window has, by Jesse's three observations, been re-papered over twice since the original papering — once in early July, once in early August — in a way that suggests the paper has been lifted from the inside and then replaced."
   },
   {
    "t": "narrate",
@@ -272,7 +272,7 @@
   {
    "t": "say",
    "char": "Walt",
-   "text": "Hey, Jess. They're already set up.",
+   "text": "[shot:closeup person]Hey, Jess. They're already set up.",
    "expr": "neutral"
   },
   {
@@ -492,7 +492,7 @@
   {
    "t": "say",
    "char": "Jesse",
-   "text": "Why.",
+   "text": "[shot:closeup person_b]Why.",
    "expr": "neutral"
   },
   {
@@ -596,7 +596,7 @@
   {
    "t": "say",
    "char": "Nate",
-   "text": "Flip Substation Nine and Blowback.",
+   "text": "[shot:closeup person]Flip Substation Nine and Blowback.",
    "expr": "neutral"
   },
   {

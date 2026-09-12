@@ -242,7 +242,7 @@
     {
       "t": "say",
       "char": "Maya",
-      "text": "Morning, Curtis.",
+      "text": "[shot:closeup person]Morning, Curtis.",
       "expr": "neutral"
     },
     {
@@ -450,7 +450,7 @@
     {
       "t": "say",
       "char": "Maya",
-      "text": "Yeah.",
+      "text": "[shot:closeup person]Yeah.",
       "expr": "neutral"
     },
     {
@@ -494,7 +494,7 @@
     {
       "t": "say",
       "char": "Maya",
-      "text": "Yes.",
+      "text": "[shot:closeup person]Yes.",
       "expr": "neutral"
     },
     {

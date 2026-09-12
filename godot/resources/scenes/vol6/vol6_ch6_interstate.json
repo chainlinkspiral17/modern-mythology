@@ -66,7 +66,7 @@
     {
       "t": "say",
       "char": "Claire",
-      "text": "Yeah.",
+      "text": "[shot:closeup person]Yeah.",
       "expr": "neutral"
     },
     {
@@ -112,7 +112,7 @@
     {
       "t": "say",
       "char": "Frasier Temple",
-      "text": "Boyd is the one you have to be careful about. Boyd has, in the past, been the one who hurts the kids.",
+      "text": "[shot:closeup person_b]Boyd is the one you have to be careful about. Boyd has, in the past, been the one who hurts the kids.",
       "expr": "neutral"
     },
     {
@@ -180,7 +180,7 @@
     {
       "t": "say",
       "char": "Frasier Temple",
-      "text": "Your partner approaches Vince during the swap, badge out, NAPD courtesy badge — Ramirez has authorized you to flash it.",
+      "text": "[shot:closeup person_b]Your partner approaches Vince during the swap, badge out, NAPD courtesy badge — Ramirez has authorized you to flash it.",
       "expr": "neutral"
     },
     {

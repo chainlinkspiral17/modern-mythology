@@ -392,7 +392,7 @@
     {
       "t": "say",
       "char": "Tom Bell",
-      "text": "Thanks, kid.",
+      "text": "[shot:closeup person]Thanks, kid.",
       "expr": "neutral"
     },
     {
@@ -464,7 +464,7 @@
     {
       "t": "say",
       "char": "Maya",
-      "text": "Go ahead.",
+      "text": "[shot:closeup person_b]Go ahead.",
       "expr": "neutral"
     },
     {
@@ -618,7 +618,7 @@
     {
       "t": "say",
       "char": "Maya",
-      "text": "Thanks, Hal.",
+      "text": "[shot:closeup person_b]Thanks, Hal.",
       "expr": "neutral"
     },
     {
@@ -706,7 +706,7 @@
     {
       "t": "say",
       "char": "Maya",
-      "text": "fine. bought three issues. no harm. it stayed dim under the register the rest of the day. note on your desk. see you tomorrow.",
+      "text": "[shot:closeup person]fine. bought three issues. no harm. it stayed dim under the register the rest of the day. note on your desk. see you tomorrow.",
       "expr": "neutral"
     },
     {

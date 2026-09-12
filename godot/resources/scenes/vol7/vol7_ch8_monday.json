@@ -42,7 +42,7 @@
       "t": "narrate"
     },
     {
-      "text": "She lay there a minute looking at the small crack in the ceiling above the closet that the upstairs neighbor's bathtub had made in 2050. Tem on her back beside her with one arm above the blanket and the other under it.",
+      "text": "[shot:establish]She lay there a minute looking at the small crack in the ceiling above the closet that the upstairs neighbor's bathtub had made in 2050. Tem on her back beside her with one arm above the blanket and the other under it.",
       "t": "narrate"
     },
     {
@@ -140,7 +140,7 @@
       "t": "narrate"
     },
     {
-      "text": "The voice was Petra in mediation register, which Lena had heard Petra do on the phone three times in two years and which Lena recognized as Petra's I-am-going-to-bring-this-down voice. The tone was even. The pace was slow.",
+      "text": "[shot:insert phone]The voice was Petra in mediation register, which Lena had heard Petra do on the phone three times in two years and which Lena recognized as Petra's I-am-going-to-bring-this-down voice. The tone was even. The pace was slow.",
       "t": "narrate"
     },
     {
@@ -191,7 +191,7 @@
     },
     {
       "char": "lena",
-      "text": "Yes.",
+      "text": "[shot:closeup person]Yes.",
       "expr": "neutral",
       "t": "say"
     },
@@ -223,7 +223,7 @@
     },
     {
       "char": "petra",
-      "text": "There are two holds in the office. The Marsden woman is coming for hers at noon. The other is for whoever walks in and asks for Inga's monograph, which somebody will. The till is unlocked.",
+      "text": "[shot:closeup person_b]There are two holds in the office. The Marsden woman is coming for hers at noon. The other is for whoever walks in and asks for Inga's monograph, which somebody will. The till is unlocked.",
       "expr": "neutral",
       "t": "say"
     },
@@ -259,7 +259,7 @@
     },
     {
       "char": "lena",
-      "text": "You are leaving.",
+      "text": "[shot:closeup person]You are leaving.",
       "expr": "neutral",
       "t": "say"
     },
@@ -334,7 +334,7 @@
       "t": "narrate"
     },
     {
-      "text": "The bell rang at eleven-fifty-eight.",
+      "text": "[shot:insert brass_bell]The bell rang at eleven-fifty-eight.",
       "t": "narrate"
     },
     {
@@ -470,7 +470,7 @@
       "t": "say"
     },
     {
-      "text": "Roy did not, for a count, leave. He set the wax canvas coat on the small table by the window display and walked the new-arrivals shelf, picking up two books and putting them down.",
+      "text": "[shot:establish]Roy did not, for a count, leave. He set the wax canvas coat on the small table by the window display and walked the new-arrivals shelf, picking up two books and putting them down.",
       "t": "narrate"
     },
     {
@@ -497,7 +497,7 @@
     },
     {
       "char": "lena",
-      "text": "He had a bug last week. He's better now.",
+      "text": "[shot:closeup person]He had a bug last week. He's better now.",
       "expr": "neutral",
       "t": "say"
     },

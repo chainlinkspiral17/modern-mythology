@@ -42,7 +42,7 @@
       "t": "narrate"
     },
     {
-      "text": "It also gave Roy a piece of information he had not had before walking in, which was that she could be made to push back. Tem had told them yesterday: the danger is being known by the wrong thing.",
+      "text": "[shot:establish]It also gave Roy a piece of information he had not had before walking in, which was that she could be made to push back. Tem had told them yesterday: the danger is being known by the wrong thing.",
       "t": "narrate"
     },
     {
@@ -89,7 +89,7 @@
     },
     {
       "char": "tem",
-      "text": "He knows about the Jorgen correspondence.",
+      "text": "[shot:closeup person]He knows about the Jorgen correspondence.",
       "expr": "neutral",
       "t": "say"
     },

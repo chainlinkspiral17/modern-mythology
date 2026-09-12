@@ -57,7 +57,7 @@
     },
     {
       "char": "kai",
-      "text": "Per.",
+      "text": "[shot:closeup person]Per.",
       "expr": "neutral",
       "t": "say"
     },
@@ -355,7 +355,7 @@
     },
     {
       "char": "kai",
-      "text": "Per. What's the name.",
+      "text": "[shot:closeup person]Per. What's the name.",
       "expr": "neutral",
       "t": "say"
     },
@@ -383,7 +383,7 @@
     },
     {
       "char": "per",
-      "text": "I am not asking because I am being precious. I am asking because the saying is the only — the saying is the only thing I have left from when my father was alive. He never said the name to me.",
+      "text": "[shot:closeup person_b]I am not asking because I am being precious. I am asking because the saying is the only — the saying is the only thing I have left from when my father was alive. He never said the name to me.",
       "expr": "serious",
       "t": "say"
     },

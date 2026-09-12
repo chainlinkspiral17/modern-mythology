@@ -169,7 +169,7 @@
     },
     {
       "char": "tem",
-      "text": "Thanks, Lena.",
+      "text": "[shot:closeup person]Thanks, Lena.",
       "expr": "neutral",
       "t": "say"
     },

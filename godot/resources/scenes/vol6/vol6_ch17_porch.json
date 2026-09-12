@@ -75,7 +75,7 @@
   },
   {
    "t": "narrate",
-   "text": "She has not told Sam. She has not told Mike. She has not, until this morning, been asked about any of it by anybody who was in a position to hear the whole story."
+   "text": "[shot:establish]She has not told Sam. She has not told Mike. She has not, until this morning, been asked about any of it by anybody who was in a position to hear the whole story."
   },
   {
    "t": "narrate",
@@ -115,7 +115,7 @@
   },
   {
    "t": "narrate",
-   "text": "She finishes the coffee cake."
+   "text": "[shot:establish_b]She finishes the coffee cake."
   },
   {
    "t": "narrate",
@@ -275,7 +275,7 @@
   },
   {
    "t": "narrate",
-   "text": "She does not need to."
+   "text": "[shot:establish]She does not need to."
   },
   {
    "t": "narrate",

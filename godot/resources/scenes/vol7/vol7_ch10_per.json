@@ -217,7 +217,7 @@
     },
     {
       "char": "kai",
-      "text": "Hans.",
+      "text": "[shot:closeup person_b]Hans.",
       "expr": "neutral",
       "t": "say"
     },
@@ -247,7 +247,7 @@
     },
     {
       "char": "hans",
-      "text": "Per is at the bakery now.",
+      "text": "[shot:closeup person]Per is at the bakery now.",
       "expr": "neutral",
       "t": "say"
     },
@@ -277,7 +277,7 @@
     },
     {
       "char": "kai",
-      "text": "Okay.",
+      "text": "[shot:closeup person_b]Okay.",
       "expr": "neutral",
       "t": "say"
     },

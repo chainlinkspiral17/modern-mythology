@@ -41,7 +41,7 @@
     },
     {
       "t": "narrate",
-      "text": "The alarm is no longer the relevant instrument. Her body is the instrument. Her body wakes."
+      "text": "[shot:establish]The alarm is no longer the relevant instrument. Her body is the instrument. Her body wakes."
     },
     {
       "t": "narrate",
@@ -85,7 +85,7 @@
     },
     {
       "t": "narrate",
-      "text": "She goes downstairs."
+      "text": "[shot:establish_b]She goes downstairs."
     },
     {
       "t": "narrate",
@@ -179,7 +179,7 @@
     },
     {
       "t": "narrate",
-      "text": "Don has been going in at five thirty for as long as she can remember, and she has been watching his porch light come on at five oh-two for almost as long, because Don is the only person on the cul-de-sac who keeps the same hours she now keeps."
+      "text": "[shot:insert sink_light]Don has been going in at five thirty for as long as she can remember, and she has been watching his porch light come on at five oh-two for almost as long, because Don is the only person on the cul-de-sac who keeps the same hours she now keeps."
     },
     {
       "t": "narrate",
@@ -215,7 +215,7 @@
     },
     {
       "t": "narrate",
-      "text": "About the courthouse and the man in the charcoal suit and the federal arrangement and the small careful way Hernando had explained to her, in the hallway after, what the next ten years were probably going to look like."
+      "text": "[shot:establish_c]About the courthouse and the man in the charcoal suit and the federal arrangement and the small careful way Hernando had explained to her, in the hallway after, what the next ten years were probably going to look like."
     },
     {
       "t": "narrate",
@@ -506,7 +506,7 @@
     {
       "t": "say",
       "char": "Sam",
-      "text": "Sit with me. I'll wait.",
+      "text": "[shot:closeup person]Sit with me. I'll wait.",
       "expr": "neutral"
     },
     {
@@ -560,7 +560,7 @@
     {
       "t": "say",
       "char": "Sam",
-      "text": "You haven't sat in your chair in like two months.",
+      "text": "[shot:closeup person]You haven't sat in your chair in like two months.",
       "expr": "neutral"
     },
     {
@@ -678,7 +678,7 @@
     {
       "t": "say",
       "char": "Sam",
-      "text": "Yeah.",
+      "text": "[shot:closeup person]Yeah.",
       "expr": "neutral"
     },
     {
@@ -923,7 +923,7 @@
     },
     {
       "t": "narrate",
-      "text": "and who had asked for the radio for his birthday because he had heard about radios from his uncle and had thought, in the way eight-year-old boys think, that a radio was a thing he wanted."
+      "text": "[shot:establish]and who had asked for the radio for his birthday because he had heard about radios from his uncle and had thought, in the way eight-year-old boys think, that a radio was a thing he wanted."
     },
     {
       "t": "narrate",

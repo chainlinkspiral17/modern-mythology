@@ -42,7 +42,7 @@
       "t": "narrate"
     },
     {
-      "text": "He lay on his back a minute and looked at the ceiling. The ceiling had three water stains in a configuration Lena had once explained was proof her upstairs neighbor's bathtub leaked at the back-right corner of its drain ring.",
+      "text": "[shot:establish]He lay on his back a minute and looked at the ceiling. The ceiling had three water stains in a configuration Lena had once explained was proof her upstairs neighbor's bathtub leaked at the back-right corner of its drain ring.",
       "t": "narrate"
     },
     {
@@ -131,7 +131,7 @@
     },
     {
       "char": "finn",
-      "text": "I'm okay. I was lying here listening to the rain.",
+      "text": "[shot:closeup person]I'm okay. I was lying here listening to the rain.",
       "expr": "neutral",
       "t": "say"
     },
@@ -181,7 +181,7 @@
     },
     {
       "char": "finn",
-      "text": "Smells right.",
+      "text": "[shot:closeup person]Smells right.",
       "expr": "neutral",
       "t": "say"
     },
@@ -233,7 +233,7 @@
     },
     {
       "char": "kai",
-      "text": "How can you tell.",
+      "text": "[shot:closeup person_b]How can you tell.",
       "expr": "neutral",
       "t": "say"
     },
@@ -449,7 +449,7 @@
     },
     {
       "char": "kai",
-      "text": "The crow has been saying words to you.",
+      "text": "[shot:closeup person_b]The crow has been saying words to you.",
       "expr": "serious",
       "t": "say"
     },

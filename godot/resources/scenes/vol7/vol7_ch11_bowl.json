@@ -43,7 +43,7 @@
       "t": "narrate"
     },
     {
-      "text": "Per was at the table by the kerosene lamp. The three of them were watching him.",
+      "text": "[shot:insert table]Per was at the table by the kerosene lamp. The three of them were watching him.",
       "t": "narrate"
     },
     {
@@ -74,7 +74,7 @@
     },
     {
       "char": "kai",
-      "text": "I'm back.",
+      "text": "[shot:closeup person]I'm back.",
       "expr": "neutral",
       "t": "say"
     },
@@ -148,7 +148,7 @@
     },
     {
       "char": "per",
-      "text": "Kai.",
+      "text": "[shot:closeup person_b]Kai.",
       "expr": "serious",
       "t": "say"
     },

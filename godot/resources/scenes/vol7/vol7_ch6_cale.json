@@ -212,7 +212,7 @@
       "t": "say"
     },
     {
-      "text": "She watched him pick at the cuticle of his thumb.",
+      "text": "[shot:establish]She watched him pick at the cuticle of his thumb.",
       "t": "narrate"
     },
     {
@@ -338,7 +338,7 @@
       "t": "say"
     },
     {
-      "text": "She had to take a breath.",
+      "text": "[shot:establish_shop]She had to take a breath.",
       "t": "narrate"
     },
     {

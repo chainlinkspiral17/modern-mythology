@@ -45,7 +45,7 @@
    "t": "show"
   },
   {
-   "text": "[mood:lunch]They ate at twelve-fifteen.",
+   "text": "[shot:establish][mood:lunch]They ate at twelve-fifteen.",
    "t": "narrate"
   },
   {
@@ -104,7 +104,7 @@
   },
   {
    "char": "tem",
-   "text": "The experience was, by what is printed on the sleeve, designed in 2034 by a man named Diego — Diego only, no last name, the way the early designers did — and the substrate inside the experience has been worked by approximately,",
+   "text": "[shot:closeup person]The experience was, by what is printed on the sleeve, designed in 2034 by a man named Diego — Diego only, no last name, the way the early designers did — and the substrate inside the experience has been worked by approximately,",
    "expr": "serious",
    "t": "say"
   },
@@ -158,7 +158,7 @@
   },
   {
    "char": "tem",
-   "text": "I have not, in those two times, been able to figure out what the basement is doing in the experience. The basement was not in Diego's design.",
+   "text": "[shot:closeup person]I have not, in those two times, been able to figure out what the basement is doing in the experience. The basement was not in Diego's design.",
    "expr": "serious",
    "t": "say"
   },
@@ -224,7 +224,7 @@
   },
   {
    "char": "kai",
-   "text": "Tem.",
+   "text": "[shot:closeup person_b]Tem.",
    "expr": "neutral",
    "t": "say"
   },

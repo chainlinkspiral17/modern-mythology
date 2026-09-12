@@ -196,7 +196,7 @@
     {
       "t": "say",
       "char": "Bianca",
-      "text": "And you.",
+      "text": "[shot:closeup person]And you.",
       "expr": "neutral"
     },
     {
@@ -263,7 +263,7 @@
     },
     {
       "t": "narrate",
-      "text": "Bianca, at the table, does not, for a long moment, respond."
+      "text": "[shot:insert table]Bianca, at the table, does not, for a long moment, respond."
     },
     {
       "t": "narrate",
@@ -400,7 +400,7 @@
     {
       "t": "say",
       "char": "Bianca",
-      "text": "Yeah.",
+      "text": "[shot:closeup person]Yeah.",
       "expr": "neutral"
     },
     {

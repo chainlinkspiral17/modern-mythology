@@ -582,7 +582,7 @@
     {
       "t": "say",
       "char": "Jesse",
-      "text": "It's — there's a specific bass thing on the back wall on every third beat. It's doubling. Not bad. Just — it's a thing.",
+      "text": "[shot:closeup person]It's — there's a specific bass thing on the back wall on every third beat. It's doubling. Not bad. Just — it's a thing.",
       "expr": "neutral"
     },
     {
@@ -756,7 +756,7 @@
     {
       "t": "say",
       "char": "Jesse",
-      "text": "The blue is good. The purple is too long. By the time the kick re-enters, you're three seconds past the purple. Cut the purple to four bars.",
+      "text": "[shot:closeup person]The blue is good. The purple is too long. By the time the kick re-enters, you're three seconds past the purple. Cut the purple to four bars.",
       "expr": "neutral"
     },
     {

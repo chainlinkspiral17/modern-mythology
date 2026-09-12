@@ -96,7 +96,7 @@
     {
       "t": "say",
       "char": "Sam",
-      "text": "Oh. Okay."
+      "text": "[shot:closeup person]Oh. Okay."
     },
     {
       "t": "narrate",
@@ -166,7 +166,7 @@
     {
       "t": "say",
       "char": "Chief Miller",
-      "text": "I know."
+      "text": "[shot:closeup person_b]I know."
     },
     {
       "t": "say",

@@ -131,7 +131,7 @@
       "t": "say",
       "char": "Ben",
       "expr": "neutral",
-      "text": "I could see him. I shouldn't have been able to. He waved at me. I waved back. When I looked again, two seconds later, he was gone.\""
+      "text": "[shot:closeup person]I could see him. I shouldn't have been able to. He waved at me. I waved back. When I looked again, two seconds later, he was gone.\""
     },
     {
       "t": "say",

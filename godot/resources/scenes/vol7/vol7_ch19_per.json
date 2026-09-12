@@ -61,7 +61,7 @@
   },
   {
    "char": "per",
-   "text": "Yeah, Mama.",
+   "text": "[shot:closeup person]Yeah, Mama.",
    "t": "say"
   },
   {
@@ -265,7 +265,7 @@
   },
   {
    "char": "per",
-   "text": "Tem.",
+   "text": "[shot:closeup person]Tem.",
    "t": "say"
   },
   {

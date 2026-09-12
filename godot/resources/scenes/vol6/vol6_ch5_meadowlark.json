@@ -79,7 +79,7 @@
     {
       "t": "say",
       "char": "Mrs. Miller",
-      "text": "Your father is downstairs in his office. He'll be up in a bit. I want to tell you something first, alone, because I didn't get to tell you enough of it last night."
+      "text": "[shot:closeup person]Your father is downstairs in his office. He'll be up in a bit. I want to tell you something first, alone, because I didn't get to tell you enough of it last night."
     },
     {
       "t": "say",

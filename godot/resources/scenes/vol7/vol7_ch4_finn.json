@@ -365,7 +365,7 @@
     },
     {
       "char": "tem",
-      "text": "I know.",
+      "text": "[shot:closeup person]I know.",
       "expr": "serious",
       "t": "say"
     },
@@ -405,7 +405,7 @@
     },
     {
       "char": "tem",
-      "text": "It's gone how it's gone. I want this one to go better.",
+      "text": "[shot:closeup person]It's gone how it's gone. I want this one to go better.",
       "expr": "neutral",
       "t": "say"
     },
@@ -464,7 +464,7 @@
       "t": "narrate"
     },
     {
-      "text": "Finn listened. When she was done he sat for a while looking at the table between them, not at her.",
+      "text": "[shot:insert table]Finn listened. When she was done he sat for a while looking at the table between them, not at her.",
       "t": "narrate"
     },
     {

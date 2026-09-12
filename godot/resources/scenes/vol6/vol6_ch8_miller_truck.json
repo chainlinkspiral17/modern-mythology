@@ -100,7 +100,7 @@
     {
       "t": "say",
       "char": "Chief Miller",
-      "text": "Cold?",
+      "text": "[shot:closeup person]Cold?",
       "expr": "neutral"
     },
     {

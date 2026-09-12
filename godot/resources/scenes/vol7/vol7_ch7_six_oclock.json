@@ -219,7 +219,7 @@
     },
     {
       "char": "tem",
-      "text": "I was not ready, and I was not sure I was ever going to be ready, and I had decided to make him hold it until I figured out whether I was. He has been holding it for two months. I'm sorry, Cale.",
+      "text": "[shot:closeup person]I was not ready, and I was not sure I was ever going to be ready, and I had decided to make him hold it until I figured out whether I was. He has been holding it for two months. I'm sorry, Cale.",
       "expr": "serious",
       "t": "say"
     },
@@ -731,7 +731,7 @@
     },
     {
       "char": "finn",
-      "text": "You did not have to be ready by yourself. You decided you did. The deciding was not — Tem, the deciding was the loneliness.",
+      "text": "[shot:closeup person_b]You did not have to be ready by yourself. You decided you did. The deciding was not — Tem, the deciding was the loneliness.",
       "expr": "serious",
       "t": "say"
     },

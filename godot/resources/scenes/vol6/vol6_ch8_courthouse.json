@@ -180,7 +180,7 @@
     },
     {
       "t": "narrate",
-      "text": "The clerk reads the docket."
+      "text": "[shot:establish]The clerk reads the docket."
     },
     {
       "t": "narrate",
@@ -222,7 +222,7 @@
     },
     {
       "t": "narrate",
-      "text": "He has accepted this counsel."
+      "text": "[shot:establish_b]He has accepted this counsel."
     },
     {
       "t": "narrate",
@@ -255,7 +255,7 @@
     {
       "t": "say",
       "char": "Judge",
-      "text": "Counsel. The court accepts the plea. Sentencing will be scheduled per — ",
+      "text": "[shot:closeup person]Counsel. The court accepts the plea. Sentencing will be scheduled per — ",
       "expr": "neutral"
     },
     {
@@ -421,7 +421,7 @@
     {
       "t": "say",
       "char": "Ramirez",
-      "text": "Yeah. Mary. I don't — I don't know what he is. I have never, in twenty-two years, been in a room with him. The folder he filed is real. The federal docket is real. The investigation he's referring to is — it's real.",
+      "text": "[shot:closeup person_b]Yeah. Mary. I don't — I don't know what he is. I have never, in twenty-two years, been in a room with him. The folder he filed is real. The federal docket is real. The investigation he's referring to is — it's real.",
       "expr": "neutral"
     },
     {
@@ -512,7 +512,7 @@
     },
     {
       "t": "narrate",
-      "text": "Miriam, across the aisle, meets Sam's eye."
+      "text": "[shot:establish]Miriam, across the aisle, meets Sam's eye."
     },
     {
       "t": "narrate",
@@ -569,7 +569,7 @@
     {
       "t": "say",
       "char": "Chief Miller",
-      "text": "Yes, your honor.",
+      "text": "[shot:closeup person]Yes, your honor.",
       "expr": "neutral"
     },
     {
@@ -637,7 +637,7 @@
     },
     {
       "t": "narrate",
-      "text": "Across the aisle, Miriam gives her another small unworried smile."
+      "text": "[shot:establish_b]Across the aisle, Miriam gives her another small unworried smile."
     },
     {
       "t": "narrate",
@@ -812,7 +812,7 @@
     },
     {
       "t": "narrate",
-      "text": "Sam, in the green Subaru, headed home, eats a small bag of pretzels Miriam offers her from the glove compartment, and watches the freeway, and feels — for the first time in a week —"
+      "text": "[shot:insert subaru]Sam, in the green Subaru, headed home, eats a small bag of pretzels Miriam offers her from the glove compartment, and watches the freeway, and feels — for the first time in a week —"
     },
     {
       "t": "narrate",
@@ -848,7 +848,7 @@
     },
     {
       "t": "narrate",
-      "text": "But the house, when they walk through the door, will smell of the cooking her mother had started before they left. Pot roast. The same one, cooking all afternoon on warm."
+      "text": "[shot:establish]But the house, when they walk through the door, will smell of the cooking her mother had started before they left. Pot roast. The same one, cooking all afternoon on warm."
     },
     {
       "t": "narrate",

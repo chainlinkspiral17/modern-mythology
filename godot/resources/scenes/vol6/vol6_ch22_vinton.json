@@ -67,7 +67,7 @@
   },
   {
    "t": "narrate",
-   "text": "The last one off the bus is the coach."
+   "text": "[shot:establish]The last one off the bus is the coach."
   },
   {
    "t": "show",
@@ -102,7 +102,7 @@
   {
    "t": "say",
    "char": "Vinton Sophomore",
-   "text": "Where do we drop the gear.",
+   "text": "[shot:closeup person]Where do we drop the gear.",
    "expr": "neutral"
   },
   {
@@ -207,7 +207,7 @@
   },
   {
    "t": "narrate",
-   "text": "a small bottle of the beta-blocker that travels with her now, a baseball cap her husband had bought her in 1996, and a phone she will not look at for the next four hours."
+   "text": "[shot:insert phone]a small bottle of the beta-blocker that travels with her now, a baseball cap her husband had bought her in 1996, and a phone she will not look at for the next four hours."
   },
   {
    "t": "narrate",
@@ -261,7 +261,7 @@
   },
   {
    "t": "narrate",
-   "text": "She does not know who he is. She has no reason to. Ben is one of forty boys in helmets."
+   "text": "[shot:establish]She does not know who he is. She has no reason to. Ben is one of forty boys in helmets."
   },
   {
    "t": "narrate",

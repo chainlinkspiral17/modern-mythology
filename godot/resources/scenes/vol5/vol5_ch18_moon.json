@@ -43,7 +43,7 @@
     },
     {
       "t": "narrate",
-      "text": "Aria had sat, if that was the word, in the same body, just behind Nicola's eyes — and Natalie, who had never before in her life attempted to read for two consciousnesses in the same skin, had discovered that the cards were not, as she had feared, confused."
+      "text": "[shot:insert card]Aria had sat, if that was the word, in the same body, just behind Nicola's eyes — and Natalie, who had never before in her life attempted to read for two consciousnesses in the same skin, had discovered that the cards were not, as she had feared, confused."
     },
     {
       "t": "narrate",
@@ -127,7 +127,7 @@
     },
     {
       "t": "narrate",
-      "text": "over decades, been re-rendering her without the original — sang the first three words of I Put a Spell on You, and then trailed off. Not as if the recording had ended."
+      "text": "[shot:establish]over decades, been re-rendering her without the original — sang the first three words of I Put a Spell on You, and then trailed off. Not as if the recording had ended."
     },
     {
       "t": "narrate",
@@ -324,7 +324,7 @@
     {
       "t": "say",
       "c": "miriam",
-      "text": "I'm sorry about the hour. I'm Miriam. I've been driving all night. I think you were told I was coming.",
+      "text": "[shot:closeup natalie]I'm sorry about the hour. I'm Miriam. I've been driving all night. I think you were told I was coming.",
       "char": "natalie"
     },
     {
@@ -588,7 +588,7 @@
     {
       "t": "narrate",
       "when_flag": "aria_named_by_nicola",
-      "text": "And the name, Natalie thought. That was the other thing she kept coming back to."
+      "text": "[shot:establish]And the name, Natalie thought. That was the other thing she kept coming back to."
     },
     {
       "t": "narrate",
@@ -663,7 +663,7 @@
     {
       "t": "say",
       "c": "nicola",
-      "text": "Three.",
+      "text": "[shot:closeup person]Three.",
       "char": "nicola"
     },
     {
@@ -712,7 +712,7 @@
     },
     {
       "t": "narrate",
-      "text": "Natalie stood in the empty parking lot with one hand in her pocket on the Hanged Man card and watched the crow until she could not see it anymore. Then she went inside the gas station. Bought coffee."
+      "text": "[shot:establish]Natalie stood in the empty parking lot with one hand in her pocket on the Hanged Man card and watched the crow until she could not see it anymore. Then she went inside the gas station. Bought coffee."
     },
     {
       "t": "narrate",

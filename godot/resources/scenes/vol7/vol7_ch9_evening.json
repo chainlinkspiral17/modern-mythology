@@ -61,7 +61,7 @@
     },
     {
       "char": "finn",
-      "text": "Hey, Kai.",
+      "text": "[shot:closeup person]Hey, Kai.",
       "expr": "neutral",
       "t": "say"
     },

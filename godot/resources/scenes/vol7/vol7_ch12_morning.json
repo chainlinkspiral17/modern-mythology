@@ -39,7 +39,7 @@
       "t": "narrate"
     },
     {
-      "text": "He lay in the bed a count and listened to the rain. The rain on the roof had thinned overnight. He could hear it as a separate sound now from the dripping in the alley. The two of them together were the cadence of the alley at four in the morning in August.",
+      "text": "[shot:establish]He lay in the bed a count and listened to the rain. The rain on the roof had thinned overnight. He could hear it as a separate sound now from the dripping in the alley. The two of them together were the cadence of the alley at four in the morning in August.",
       "t": "narrate"
     },
     {
@@ -66,7 +66,7 @@
     },
     {
       "char": "finn",
-      "text": "Hey, friend.",
+      "text": "[shot:closeup person]Hey, friend.",
       "expr": "neutral",
       "t": "say"
     },
@@ -125,7 +125,7 @@
       "t": "narrate"
     },
     {
-      "text": "He sat down at the kitchen table with the wood in his hand. The crow watched him.",
+      "text": "[shot:insert crow]He sat down at the kitchen table with the wood in his hand. The crow watched him.",
       "t": "narrate"
     },
     {

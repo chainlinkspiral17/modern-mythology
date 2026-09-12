@@ -339,7 +339,7 @@
     },
     {
       "t": "narrate",
-      "text": "There is the usual bickering about the snare head and the usual low-grade tuning conflict between the bass and the Telecaster and Carl's usual joke about the Christmas lights, which Carl has made every practice since November and which everyone laughs at anyway."
+      "text": "[shot:insert drum_kit]There is the usual bickering about the snare head and the usual low-grade tuning conflict between the bass and the Telecaster and Carl's usual joke about the Christmas lights, which Carl has made every practice since November and which everyone laughs at anyway."
     },
     {
       "t": "narrate",
@@ -390,7 +390,7 @@
     {
       "t": "say",
       "char": "Sam",
-      "text": "I have been in this garage maybe ten times in my life. This is the first time it has felt like a garage and not, you know. A chief's house's garage."
+      "text": "[shot:closeup person]I have been in this garage maybe ten times in my life. This is the first time it has felt like a garage and not, you know. A chief's house's garage."
     },
     {
       "t": "say",
@@ -458,7 +458,7 @@
     {
       "t": "say",
       "char": "Eileen",
-      "text": "— welcome. I've met Sam. I'm Eileen. Ben, Jesse's told me about you. Maya —"
+      "text": "[shot:closeup person_b]— welcome. I've met Sam. I'm Eileen. Ben, Jesse's told me about you. Maya —"
     },
     {
       "t": "show",
@@ -546,7 +546,7 @@
     {
       "t": "say",
       "char": "Nate",
-      "text": "Of course."
+      "text": "[shot:closeup person_b]Of course."
     },
     {
       "t": "say",
@@ -571,7 +571,7 @@
     {
       "t": "say",
       "char": "Jesse",
-      "text": "Okay. Sam. For you."
+      "text": "[shot:closeup person]Okay. Sam. For you."
     },
     {
       "t": "narrate",

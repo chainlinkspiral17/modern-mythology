@@ -41,7 +41,7 @@
       "t": "narrate"
     },
     {
-      "text": "The thirty-five people had eaten and drunk and stood at the wall and looked at the face. The morning was moving. People had lives to return to.",
+      "text": "[shot:insert face]The thirty-five people had eaten and drunk and stood at the wall and looked at the face. The morning was moving. People had lives to return to.",
       "t": "narrate"
     },
     {
@@ -73,7 +73,7 @@
     },
     {
       "char": "tem",
-      "text": "Yes.",
+      "text": "[shot:closeup person]Yes.",
       "t": "say"
     },
     {

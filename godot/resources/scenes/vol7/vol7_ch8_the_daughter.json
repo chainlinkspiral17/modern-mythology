@@ -47,7 +47,7 @@
    "t": "say",
    "char": "Finn",
    "expr": "neutral",
-   "text": "\"The crow used to belong to Brandon,\" Finn said. \"Tem said yesterday. The crow used to belong to Brandon. The crow has been bringing me wood for nine months. The wood is from whatever Brandon was investigating."
+   "text": "[shot:closeup person]\"The crow used to belong to Brandon,\" Finn said. \"Tem said yesterday. The crow used to belong to Brandon. The crow has been bringing me wood for nine months. The wood is from whatever Brandon was investigating."
   },
   {
    "t": "say",

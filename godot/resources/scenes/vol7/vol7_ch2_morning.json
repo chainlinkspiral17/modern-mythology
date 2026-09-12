@@ -64,7 +64,7 @@
       "t": "narrate"
     },
     {
-      "text": "By six-thirty the drones were all docked and the sky over Smolvud was empty.",
+      "text": "[shot:insert drone]By six-thirty the drones were all docked and the sky over Smolvud was empty.",
       "t": "narrate"
     },
     {
@@ -233,7 +233,7 @@
     },
     {
       "char": "wren",
-      "text": "Petra at the Salty Tome had a copy in the new arrivals last week. She said it had come in on the estate-sale haul from the family up at the Tideway. She said the book felt like it was for somebody. I asked her if it was for me.",
+      "text": "[shot:closeup person]Petra at the Salty Tome had a copy in the new arrivals last week. She said it had come in on the estate-sale haul from the family up at the Tideway. She said the book felt like it was for somebody. I asked her if it was for me.",
       "expr": "neutral",
       "t": "say"
     },
@@ -279,7 +279,7 @@
     },
     {
       "char": "lena",
-      "text": "Yes. Why.",
+      "text": "[shot:closeup person_b]Yes. Why.",
       "expr": "serious",
       "t": "say"
     },
@@ -363,7 +363,7 @@
     },
     {
       "char": "lena",
-      "text": "Promise.",
+      "text": "[shot:closeup person_b]Promise.",
       "expr": "serious",
       "t": "say"
     },
@@ -680,7 +680,7 @@
       "t": "narrate"
     },
     {
-      "text": "Around twenty minutes into the drive, just past the second creek crossing, the radio in the back of the truck — the shortwave receiver from his grandfather — turned itself on.",
+      "text": "[shot:insert radio]Around twenty minutes into the drive, just past the second creek crossing, the radio in the back of the truck — the shortwave receiver from his grandfather — turned itself on.",
       "t": "narrate"
     },
     {

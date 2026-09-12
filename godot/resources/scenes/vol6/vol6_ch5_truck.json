@@ -123,7 +123,7 @@
   {
    "t": "say",
    "char": "Sam",
-   "text": "Okay."
+   "text": "[shot:closeup person]Okay."
   },
   {
    "t": "say",
@@ -193,7 +193,7 @@
   {
    "t": "say",
    "char": "Maya",
-   "text": "Jesus."
+   "text": "[shot:closeup person_b]Jesus."
   },
   {
    "t": "say",
@@ -239,7 +239,7 @@
   {
    "t": "say",
    "char": "Sam",
-   "text": "Your dad is a good man."
+   "text": "[shot:closeup person]Your dad is a good man."
   },
   {
    "t": "say",

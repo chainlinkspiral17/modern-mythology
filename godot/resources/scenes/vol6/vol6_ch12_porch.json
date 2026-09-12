@@ -41,7 +41,7 @@
   },
   {
    "t": "narrate",
-   "text": "She rides."
+   "text": "[shot:establish]She rides."
   },
   {
    "t": "narrate",
@@ -162,7 +162,7 @@
   {
    "t": "say",
    "char": "Linda",
-   "text": "Sweetheart.",
+   "text": "[shot:closeup person]Sweetheart.",
    "expr": "neutral"
   },
   {
@@ -230,7 +230,7 @@
   {
    "t": "say",
    "char": "Maya",
-   "text": "You knew Rick before you worked for him?",
+   "text": "[shot:closeup person_b]You knew Rick before you worked for him?",
    "expr": "surprised"
   },
   {

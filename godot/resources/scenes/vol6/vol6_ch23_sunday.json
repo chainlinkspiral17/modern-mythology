@@ -41,7 +41,7 @@
   },
   {
    "t": "narrate",
-   "text": "He gets up."
+   "text": "[shot:establish]He gets up."
   },
   {
    "t": "narrate",
@@ -187,7 +187,7 @@
   },
   {
    "t": "narrate",
-   "text": "[panel:off]He folds the letter. He puts it in an envelope. He addresses the envelope. He puts the envelope on the corner of the desk where he will find it Wednesday morning when he leaves for the post office before school."
+   "text": "[shot:establish_b][panel:off]He folds the letter. He puts it in an envelope. He addresses the envelope. He puts the envelope on the corner of the desk where he will find it Wednesday morning when he leaves for the post office before school."
   },
   {
    "t": "narrate",
@@ -402,7 +402,7 @@
   {
    "t": "say",
    "char": "Bill",
-   "text": "She also did the second book, which the Sunday school did not give her but which she found at the small bookstore in New Auburn in early July and which she insisted I buy.",
+   "text": "[shot:closeup person]She also did the second book, which the Sunday school did not give her but which she found at the small bookstore in New Auburn in early July and which she insisted I buy.",
    "expr": "neutral"
   },
   {
@@ -644,7 +644,7 @@
   {
    "t": "say",
    "char": "Maya",
-   "text": "Yeah.",
+   "text": "[shot:closeup person]Yeah.",
    "expr": "neutral"
   },
   {

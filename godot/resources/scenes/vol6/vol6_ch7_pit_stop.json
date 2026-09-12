@@ -41,7 +41,7 @@
   },
   {
    "t": "narrate",
-   "text": "Ben is at the booth when she arrives."
+   "text": "[shot:establish]Ben is at the booth when she arrives."
   },
   {
    "t": "show",
@@ -78,7 +78,7 @@
   {
    "t": "say",
    "char": "Ben",
-   "text": "Eileen.",
+   "text": "[shot:closeup person]Eileen.",
    "expr": "neutral"
   },
   {
@@ -148,7 +148,7 @@
   {
    "t": "say",
    "char": "Eileen",
-   "text": "Eileen.",
+   "text": "[shot:closeup person_b]Eileen.",
    "expr": "neutral"
   },
   {
@@ -238,7 +238,7 @@
   {
    "t": "say",
    "char": "Ben",
-   "text": "The photographs have, in them, people. Specific people. The negatives Jesse has checked do not show those people. The prints do.",
+   "text": "[shot:closeup person]The photographs have, in them, people. Specific people. The negatives Jesse has checked do not show those people. The prints do.",
    "expr": "neutral"
   },
   {

@@ -195,6 +195,19 @@ gets too small and cramped. Those may need to be made into multiple."
 - New gate `page_length_audit.py`: no narrate / say / think page over
   300 visible characters (the two `[fade]` passages excused). 19,054
   pages, zero.
+- **A voiced passage now spans pages, and `_advance` stopped the
+  voice on every page.** The recording is the whole passage and
+  lives on the first page; after the split, page two silenced it.
+  `_advance` now keeps the voice playing while the NEXT node is an
+  unvoiced text page — a node with its own voice, anything that is
+  not text, a choice and the scene end still stop it. (Cutting a
+  recording mid-sentence on advance was the worse behaviour anyway.)
+- **The seeder's units are pages now, and that is right.** HOLD_MAX
+  and the run measure count nodes; a three-page paragraph is three
+  nodes. Re-seeded vols 5–7 in light mode: 437 cues, chapters with a
+  run over 20 PAGES 11 → 4 — cuts land at speaker changes and
+  anchors as before, just measured against what is on screen. If the
+  Deck says it cuts too often, HOLD_MAX is one constant.
 
 
 ### 2026-09-12 · PER-PRESET MARKERS — one .tscn, several rooms

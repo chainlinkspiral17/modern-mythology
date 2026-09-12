@@ -236,7 +236,7 @@
   {
    "t": "say",
    "char": "Maya",
-   "text": "Are you sure.",
+   "text": "[shot:closeup person]Are you sure.",
    "expr": "neutral"
   },
   {

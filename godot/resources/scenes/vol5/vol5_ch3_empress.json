@@ -153,7 +153,7 @@
       "char": "Aria",
       "role": "— interior signal —",
       "expr": "neutral",
-      "text": "What is this flesh. This hunger. This — vibration.",
+      "text": "[shot:closeup person]What is this flesh. This hunger. This — vibration.",
       "voice": "assets/audio/voice/vol5_ch3_empress/024.mp3"
     },
     {
@@ -306,7 +306,7 @@
     },
     {
       "t": "narrate",
-      "text": "The horizon was not, geographically, available to her in the way the horizon is available to people in road movies."
+      "text": "[shot:establish]The horizon was not, geographically, available to her in the way the horizon is available to people in road movies."
     },
     {
       "t": "say",
@@ -403,7 +403,7 @@
       "char": "Aria",
       "role": "— polite interest —",
       "expr": "neutral",
-      "text": "I do not understand the metaphor of the microphone.",
+      "text": "[shot:closeup person]I do not understand the metaphor of the microphone.",
       "voice": "assets/audio/voice/vol5_ch3_empress/064.mp3"
     },
     {
@@ -472,7 +472,7 @@
       "char": "Aria",
       "role": "— database hit —",
       "expr": "neutral",
-      "text": "Dean. The card says Dean. Surname.",
+      "text": "[shot:closeup person]Dean. The card says Dean. Surname.",
       "voice": "assets/audio/voice/vol5_ch3_empress/075.mp3"
     },
     {

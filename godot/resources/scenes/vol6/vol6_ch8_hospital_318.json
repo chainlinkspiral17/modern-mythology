@@ -252,7 +252,7 @@
   {
    "t": "say",
    "char": "Linda Caldwell",
-   "text": "In 1976 he was hired by a company called Ardent Reclamation Holdings to document a chemical dump site outside Graustark. The site had been listed for cleanup. The company wanted before-and-after photographs.",
+   "text": "[shot:closeup person]In 1976 he was hired by a company called Ardent Reclamation Holdings to document a chemical dump site outside Graustark. The site had been listed for cleanup. The company wanted before-and-after photographs.",
    "expr": "neutral"
   },
   {
@@ -293,7 +293,7 @@
   {
    "t": "say",
    "char": "Maya",
-   "text": "Grandma.",
+   "text": "[shot:closeup person_b]Grandma.",
    "expr": "neutral"
   },
   {
@@ -347,7 +347,7 @@
   {
    "t": "say",
    "char": "Linda Caldwell",
-   "text": "It had been parked four blocks away, in front of a fire hydrant, where the police would, in the natural course of their morning, have to ticket it. The ticket arrived. With it, two days later, came a — visit.",
+   "text": "[shot:closeup person]It had been parked four blocks away, in front of a fire hydrant, where the police would, in the natural course of their morning, have to ticket it. The ticket arrived. With it, two days later, came a — visit.",
    "expr": "neutral"
   },
   {

@@ -223,7 +223,7 @@
     },
     {
       "char": "tem",
-      "text": "The painting is what you've been doing. The patches are not what you've been doing. I don't want the patches to be the thing I ask about.",
+      "text": "[shot:closeup person]The painting is what you've been doing. The patches are not what you've been doing. I don't want the patches to be the thing I ask about.",
       "expr": "neutral",
       "t": "say"
     },
@@ -275,7 +275,7 @@
     },
     {
       "char": "lena",
-      "text": "It wanted to be about something else. I tried to paint what it wanted. The trying didn't work. I went back to what I'd thought it was about. That didn't work either. Two years.",
+      "text": "[shot:closeup person_b]It wanted to be about something else. I tried to paint what it wanted. The trying didn't work. I went back to what I'd thought it was about. That didn't work either. Two years.",
       "expr": "serious",
       "t": "say"
     },
@@ -315,7 +315,7 @@
     },
     {
       "char": "lena",
-      "text": "How do you know about Jorgen.",
+      "text": "[shot:closeup person_b]How do you know about Jorgen.",
       "expr": "neutral",
       "t": "say"
     },
@@ -379,7 +379,7 @@
     },
     {
       "char": "tem",
-      "text": "What does the good window mean.",
+      "text": "[shot:closeup person]What does the good window mean.",
       "expr": "neutral",
       "t": "say"
     },

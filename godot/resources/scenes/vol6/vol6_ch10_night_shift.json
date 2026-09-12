@@ -119,7 +119,7 @@
     },
     {
       "t": "narrate",
-      "text": "He has been making this distinction for himself since his first shift at Centro five weeks ago. The distinction is, by his fifth week, automatic. He no longer has to make it. The fluorescent is a fluorescent. The hum is a hum."
+      "text": "[shot:insert five]He has been making this distinction for himself since his first shift at Centro five weeks ago. The distinction is, by his fifth week, automatic. He no longer has to make it. The fluorescent is a fluorescent. The hum is a hum."
     },
     {
       "t": "narrate",
@@ -196,7 +196,7 @@
     {
       "t": "say",
       "char": "Diego",
-      "text": "Yeah.",
+      "text": "[shot:closeup person]Yeah.",
       "expr": "neutral"
     },
     {
@@ -247,7 +247,7 @@
     },
     {
       "t": "narrate",
-      "text": "Restorative. Dignifying. A thing he did not know he was, this summer, going to need."
+      "text": "[shot:establish]Restorative. Dignifying. A thing he did not know he was, this summer, going to need."
     },
     {
       "t": "narrate",
@@ -614,7 +614,7 @@
     {
       "t": "say",
       "char": "Marisol",
-      "text": "You'll be fine, hon. It's just counting.",
+      "text": "[shot:closeup person]You'll be fine, hon. It's just counting.",
       "expr": "neutral"
     },
     {
@@ -662,7 +662,7 @@
     {
       "t": "say",
       "char": "BT",
-      "text": "It went till noon. The hardware-store one.",
+      "text": "[shot:closeup person_b]It went till noon. The hardware-store one.",
       "expr": "neutral"
     },
     {
@@ -969,7 +969,7 @@
     {
       "t": "say",
       "char": "Diego",
-      "text": "Nothing. The light.",
+      "text": "[shot:closeup person]Nothing. The light.",
       "expr": "neutral"
     },
     {
@@ -1074,7 +1074,7 @@
     },
     {
       "t": "narrate",
-      "text": "He drinks his coffee."
+      "text": "[shot:establish]He drinks his coffee."
     },
     {
       "t": "narrate",
@@ -1101,7 +1101,7 @@
     {
       "t": "say",
       "char": "BT",
-      "text": "I'm gonna go in. The truck's coming up the road.",
+      "text": "[shot:closeup person_b]I'm gonna go in. The truck's coming up the road.",
       "expr": "neutral"
     },
     {
@@ -1241,7 +1241,7 @@
     {
       "t": "say",
       "char": "Diego",
-      "text": "Yeah. I'm okay.",
+      "text": "[shot:closeup person]Yeah. I'm okay.",
       "expr": "neutral"
     },
     {
@@ -1294,7 +1294,7 @@
     },
     {
       "t": "narrate",
-      "text": "Diego watches him go to the end of the row, signal left, turn out of the lot."
+      "text": "[shot:establish]Diego watches him go to the end of the row, signal left, turn out of the lot."
     },
     {
       "t": "narrate",

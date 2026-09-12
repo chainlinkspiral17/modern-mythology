@@ -45,7 +45,7 @@
       "t": "show"
     },
     {
-      "text": "[mood:candlelight_low]Per said the name at twenty past eleven.",
+      "text": "[shot:establish][mood:candlelight_low]Per said the name at twenty past eleven.",
       "t": "narrate"
     },
     {
@@ -85,7 +85,7 @@
       "t": "narrate"
     },
     {
-      "text": "The cut was deep enough that the grain showed in everything. The cut was old. The cut was the hand Kai had seen in the lid of the box and had not, in the truck, named.",
+      "text": "[shot:insert truck]The cut was deep enough that the grain showed in everything. The cut was old. The cut was the hand Kai had seen in the lid of the box and had not, in the truck, named.",
       "t": "narrate"
     },
     {
@@ -142,7 +142,7 @@
     },
     {
       "char": "tem",
-      "text": "I have been waiting.",
+      "text": "[shot:closeup person]I have been waiting.",
       "expr": "neutral",
       "t": "say"
     },

@@ -110,7 +110,7 @@
     {
       "t": "say",
       "char": "Sam",
-      "text": "Yes, Dad.",
+      "text": "[shot:closeup person]Yes, Dad.",
       "expr": "neutral"
     },
     {
@@ -178,7 +178,7 @@
     {
       "t": "say",
       "char": "Chief Miller",
-      "text": "The understanding was, the PSA looked the other way on certain — operations — that took place inside the subdivision in exchange for two things.",
+      "text": "[shot:closeup person]The understanding was, the PSA looked the other way on certain — operations — that took place inside the subdivision in exchange for two things.",
       "expr": "neutral"
     },
     {
@@ -236,7 +236,7 @@
     {
       "t": "say",
       "char": "Sam",
-      "text": "What was it.",
+      "text": "[shot:closeup person_b]What was it.",
       "expr": "thinking"
     },
     {
@@ -264,7 +264,7 @@
     {
       "t": "say",
       "char": "Chief Miller",
-      "text": "By 2019 the favors had — they had grown. By 2021 I was making — choices — about whether specific kids stayed in town. Kids who had — kids who had drawn the wrong attention. Whose parents had drawn the wrong attention.",
+      "text": "[shot:closeup person]By 2019 the favors had — they had grown. By 2021 I was making — choices — about whether specific kids stayed in town. Kids who had — kids who had drawn the wrong attention. Whose parents had drawn the wrong attention.",
       "expr": "neutral"
     },
     {
@@ -362,7 +362,7 @@
     {
       "t": "say",
       "char": "Chief Miller",
-      "text": "So I am going to skip that part. I am going to tell you, instead, the part that is harder for me, which is: I knew. I knew he was strange. I knew the favors were — wrong. I did them anyway.",
+      "text": "[shot:closeup person]So I am going to skip that part. I am going to tell you, instead, the part that is harder for me, which is: I knew. I knew he was strange. I knew the favors were — wrong. I did them anyway.",
       "expr": "neutral"
     },
     {

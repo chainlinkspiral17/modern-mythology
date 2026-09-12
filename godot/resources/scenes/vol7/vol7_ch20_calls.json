@@ -340,7 +340,7 @@
     },
     {
       "char": "marina",
-      "text": "I felt it. I'm awake. I've been awake since three. I felt the sound. The crow. I don't have a clean account. I'll explain when I get there. I'm leaving now. I'll be at the cabin by ten if I drive hard.",
+      "text": "[shot:closeup person_b]I felt it. I'm awake. I've been awake since three. I felt the sound. The crow. I don't have a clean account. I'll explain when I get there. I'm leaving now. I'll be at the cabin by ten if I drive hard.",
       "t": "say"
     },
     {
@@ -379,7 +379,7 @@
       "t": "narrate"
     },
     {
-      "text": "[beat:lift]The town was coming to the wall.",
+      "text": "[shot:establish][beat:lift]The town was coming to the wall.",
       "t": "narrate"
     },
     {
@@ -403,7 +403,7 @@
     },
     {
       "char": "lena",
-      "text": "Yes.",
+      "text": "[shot:closeup person_b]Yes.",
       "t": "say"
     },
     {

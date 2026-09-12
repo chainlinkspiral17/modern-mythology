@@ -135,7 +135,7 @@
       "t": "narrate"
     },
     {
-      "text": "The closed eyes were not, this morning, all the way closed. The eyes were open by what Tem could read at the wall as the smallest possible amount.",
+      "text": "[shot:insert wall]The closed eyes were not, this morning, all the way closed. The eyes were open by what Tem could read at the wall as the smallest possible amount.",
       "t": "narrate"
     },
     {
@@ -263,7 +263,7 @@
     },
     {
       "char": "lena",
-      "text": "Marit.",
+      "text": "[shot:closeup person]Marit.",
       "t": "say"
     },
     {

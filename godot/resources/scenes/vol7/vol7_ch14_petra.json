@@ -82,7 +82,7 @@
   },
   {
    "char": "lena",
-   "text": "Yes.",
+   "text": "[shot:closeup person]Yes.",
    "expr": "serious",
    "t": "say"
   },
@@ -112,7 +112,7 @@
   },
   {
    "char": "petra",
-   "text": "The face has been the face of a young woman I have been seeing without registering until I am back at my apartment three hours later and have realized I have seen her. The face on the wall this morning — Lena.",
+   "text": "[shot:closeup person_b]The face has been the face of a young woman I have been seeing without registering until I am back at my apartment three hours later and have realized I have seen her. The face on the wall this morning — Lena.",
    "expr": "serious",
    "t": "say"
   },
@@ -148,7 +148,7 @@
   },
   {
    "char": "cale",
-   "text": "Yeah.",
+   "text": "[shot:closeup person]Yeah.",
    "expr": "serious",
    "t": "say"
   },
@@ -200,7 +200,7 @@
   },
   {
    "char": "lena",
-   "text": "Petra.",
+   "text": "[shot:closeup person]Petra.",
    "expr": "serious",
    "t": "say"
   },
@@ -230,7 +230,7 @@
   },
   {
    "char": "petra",
-   "text": "The corner at the far end of the alley.",
+   "text": "[shot:closeup person_b]The corner at the far end of the alley.",
    "expr": "serious",
    "t": "say"
   },
@@ -290,7 +290,7 @@
   },
   {
    "char": "lena",
-   "text": "How long has she been here.",
+   "text": "[shot:closeup person]How long has she been here.",
    "expr": "serious",
    "t": "say"
   },
@@ -492,7 +492,7 @@
   },
   {
    "char": "kai",
-   "text": "I'll come back.",
+   "text": "[shot:closeup person_b]I'll come back.",
    "expr": "neutral",
    "t": "say"
   },

@@ -94,7 +94,7 @@
     {
       "t": "say",
       "char": "Maya",
-      "text": "Okay."
+      "text": "[shot:closeup person]Okay."
     },
     {
       "t": "narrate",
@@ -175,7 +175,7 @@
     {
       "t": "say",
       "char": "Ms. Caldwell",
-      "text": "Come in, honey."
+      "text": "[shot:closeup person]Come in, honey."
     },
     {
       "t": "bg",

@@ -41,7 +41,7 @@
     },
     {
       "t": "narrate",
-      "text": "The rain in this country in late August was the rain that comes in off the Pacific and decides. The rain had decided."
+      "text": "[shot:establish]The rain in this country in late August was the rain that comes in off the Pacific and decides. The rain had decided."
     },
     {
       "t": "narrate",
@@ -77,7 +77,7 @@
     },
     {
       "t": "narrate",
-      "text": "The cabin smelled like cedar smoke and kerosene and the rosemary Tem had been burning in a clay dish on the windowsill since Saturday for reasons Tem had not explained."
+      "text": "[shot:insert cedar]The cabin smelled like cedar smoke and kerosene and the rosemary Tem had been burning in a clay dish on the windowsill since Saturday for reasons Tem had not explained."
     },
     {
       "t": "bg",
@@ -181,7 +181,7 @@
     },
     {
       "t": "narrate",
-      "text": "The two fingers were the first time Tem had touched her since the April morning at the door."
+      "text": "[shot:insert door]The two fingers were the first time Tem had touched her since the April morning at the door."
     },
     {
       "t": "narrate",
@@ -282,7 +282,7 @@
       "t": "say",
       "char": "tem",
       "name": "Tem",
-      "text": "He texted at five. He was leaving the headland trail. He'll be here by two if the road holds.",
+      "text": "[shot:closeup person]He texted at five. He was leaving the headland trail. He'll be here by two if the road holds.",
       "expr": "neutral"
     },
     {
@@ -342,7 +342,7 @@
       "t": "say",
       "char": "lena",
       "name": "Lena",
-      "text": "Tem.",
+      "text": "[shot:closeup person_b]Tem.",
       "expr": "neutral"
     },
     {
@@ -384,7 +384,7 @@
       "t": "say",
       "char": "tem",
       "name": "Tem",
-      "text": "Yeah.",
+      "text": "[shot:closeup person]Yeah.",
       "expr": "neutral"
     },
     {
@@ -903,7 +903,7 @@
       "t": "say",
       "char": "tem",
       "name": "Tem",
-      "text": "[beat:chill]Because Estuary 7 has been doing things in the past three weeks that the AI on a slow stick is not, by my understanding of how slow sticks work, supposed to do. The AI has been telling me things I was about to think.",
+      "text": "[shot:closeup person][beat:chill]Because Estuary 7 has been doing things in the past three weeks that the AI on a slow stick is not, by my understanding of how slow sticks work, supposed to do. The AI has been telling me things I was about to think.",
       "expr": "neutral"
     },
     {
@@ -945,7 +945,7 @@
       "t": "say",
       "char": "lena",
       "name": "Lena",
-      "text": "What is the name.",
+      "text": "[shot:closeup person_b]What is the name.",
       "expr": "neutral"
     },
     {
@@ -980,7 +980,7 @@
       "t": "say",
       "char": "kai",
       "name": "Kai",
-      "text": "Or all three.",
+      "text": "[shot:closeup person]Or all three.",
       "expr": "neutral"
     },
     {
@@ -1236,7 +1236,7 @@
       "t": "say",
       "char": "tem",
       "name": "Tem",
-      "text": "I bought your piece because the piece was good. I came back the next day for coffee because I wanted to know the person who had made the piece. The watching, with you, started over the coffee. Not at the piece. The piece was honest. The watching started after.",
+      "text": "[shot:closeup person]I bought your piece because the piece was good. I came back the next day for coffee because I wanted to know the person who had made the piece. The watching, with you, started over the coffee. Not at the piece. The piece was honest. The watching started after.",
       "expr": "neutral"
     },
     {
@@ -1299,7 +1299,7 @@
       "t": "say",
       "char": "lena",
       "name": "Lena",
-      "text": "When were the other two times.",
+      "text": "[shot:closeup person_b]When were the other two times.",
       "expr": "neutral"
     },
     {

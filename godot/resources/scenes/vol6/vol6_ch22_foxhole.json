@@ -388,7 +388,7 @@
   {
    "t": "say",
    "char": "Jesse",
-   "text": "Yes, Em.",
+   "text": "[shot:closeup person]Yes, Em.",
    "expr": "neutral"
   },
   {
@@ -567,7 +567,7 @@
   },
   {
    "t": "narrate",
-   "text": "The first chorus comes. The room has stopped moving. The kid at the rail is still headbanging. The rest of the room is heavy."
+   "text": "[shot:establish]The first chorus comes. The room has stopped moving. The kid at the rail is still headbanging. The rest of the room is heavy."
   },
   {
    "t": "narrate",
@@ -664,7 +664,7 @@
   {
    "t": "say",
    "char": "Em",
-   "text": "Thanks. This next one is about a box fan.",
+   "text": "[shot:closeup person]Thanks. This next one is about a box fan.",
    "expr": "neutral"
   },
   {

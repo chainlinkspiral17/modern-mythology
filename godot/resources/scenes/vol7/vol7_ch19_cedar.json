@@ -43,7 +43,7 @@
    "t": "narrate"
   },
   {
-   "text": "Two trucks came up the road one behind the other — Cale's F-150 in front with both of them in it, and Finn's Toyota behind, which Cale had driven because Finn had been too shaken at the trailhead at four-fifteen to drive the cabin road.",
+   "text": "[shot:insert truck]Two trucks came up the road one behind the other — Cale's F-150 in front with both of them in it, and Finn's Toyota behind, which Cale had driven because Finn had been too shaken at the trailhead at four-fifteen to drive the cabin road.",
    "t": "narrate"
   },
   {
@@ -194,7 +194,7 @@
   },
   {
    "char": "per",
-   "text": "Finn.",
+   "text": "[shot:closeup person]Finn.",
    "t": "say"
   },
   {
@@ -229,7 +229,7 @@
   },
   {
    "char": "finn",
-   "text": "I came out of the stick with the cedar in my shirt pocket.",
+   "text": "[shot:closeup person_b]I came out of the stick with the cedar in my shirt pocket.",
    "t": "say"
   },
   {
@@ -358,7 +358,7 @@
   },
   {
    "char": "finn",
-   "text": "The substrate gave him the company of his dead at the pool. Tem — he had Maria there. He had Eli. He had Iris. He had an old dog from when he was a boy. He had them at the pool. He was at the pool to be with them.",
+   "text": "[shot:closeup person_b]The substrate gave him the company of his dead at the pool. Tem — he had Maria there. He had Eli. He had Iris. He had an old dog from when he was a boy. He had them at the pool. He was at the pool to be with them.",
    "t": "say"
   },
   {
@@ -383,7 +383,7 @@
   },
   {
    "char": "tem",
-   "text": "Finn.",
+   "text": "[shot:closeup person]Finn.",
    "t": "say"
   },
   {
@@ -429,7 +429,7 @@
    "t": "narrate"
   },
   {
-   "text": "Per had known the shape of the carrying: Marit surviving Olaf for fifty-one years, Per having been a son who watched his mother carry the bowl as the carrying-companion Olaf had been. Brandon had been at the carrying his own way.",
+   "text": "[shot:insert bowl]Per had known the shape of the carrying: Marit surviving Olaf for fifty-one years, Per having been a son who watched his mother carry the bowl as the carrying-companion Olaf had been. Brandon had been at the carrying his own way.",
    "t": "narrate"
   },
   {

@@ -39,7 +39,7 @@
       "t": "narrate"
     },
     {
-      "text": "The bag was the canvas overnight bag he had used in '49 when he had gone down to Eugene for his sister's wedding and had not, since, used. He had not, in three years, slept anywhere other than the apartment above the laundromat.",
+      "text": "[shot:establish]The bag was the canvas overnight bag he had used in '49 when he had gone down to Eugene for his sister's wedding and had not, since, used. He had not, in three years, slept anywhere other than the apartment above the laundromat.",
       "t": "narrate"
     },
     {
@@ -527,7 +527,7 @@
     },
     {
       "char": "cale",
-      "text": "The count is becoming the count of brushstrokes.",
+      "text": "[shot:closeup person]The count is becoming the count of brushstrokes.",
       "expr": "serious",
       "t": "say"
     },
@@ -557,7 +557,7 @@
     },
     {
       "char": "lena",
-      "text": "Not tonight. Tomorrow morning. I am going to be at the cabin with Marina at ten. I am going to drive down with Kai at six-thirty tomorrow morning. I am going to paint at seven when the alley light is right.",
+      "text": "[shot:closeup person_b]Not tonight. Tomorrow morning. I am going to be at the cabin with Marina at ten. I am going to drive down with Kai at six-thirty tomorrow morning. I am going to paint at seven when the alley light is right.",
       "expr": "serious",
       "t": "say"
     },
@@ -593,7 +593,7 @@
     },
     {
       "char": "cale",
-      "text": "I have not — I have not been with a painter painting in some years. I want to be there tomorrow morning when you do it. I will bring coffee. I will stand at the end of the alley. I will not be in your space.",
+      "text": "[shot:closeup person]I have not — I have not been with a painter painting in some years. I want to be there tomorrow morning when you do it. I will bring coffee. I will stand at the end of the alley. I will not be in your space.",
       "expr": "neutral",
       "t": "say"
     },

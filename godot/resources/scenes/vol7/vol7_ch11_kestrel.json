@@ -79,7 +79,7 @@
    "t": "narrate"
   },
   {
-   "text": "The cloud sat on the top of the mountain in a way that suggested the top was inside the cloud and that walking up the path would take him into the cloud.",
+   "text": "[shot:establish]The cloud sat on the top of the mountain in a way that suggested the top was inside the cloud and that walking up the path would take him into the cloud.",
    "t": "narrate"
   },
   {
@@ -203,7 +203,7 @@
    "t": "narrate"
   },
   {
-   "text": "A plank of weathered fir lay across the stream for the crossing. On the middle of the plank, set there as if a person had left it there with the intention of being found, was a bowl.",
+   "text": "[shot:insert bowl]A plank of weathered fir lay across the stream for the crossing. On the middle of the plank, set there as if a person had left it there with the intention of being found, was a bowl.",
    "t": "narrate"
   },
   {
@@ -243,7 +243,7 @@
    "t": "narrate"
   },
   {
-   "text": "The substrate had reached into the cabin and given him back the bowl Per had set on the table, in a version proportioned to fit his palm and to be carried into the experience by a player who was supposed to carry it.",
+   "text": "[shot:establish]The substrate had reached into the cabin and given him back the bowl Per had set on the table, in a version proportioned to fit his palm and to be carried into the experience by a player who was supposed to carry it.",
    "t": "narrate"
   },
   {
@@ -375,7 +375,7 @@
    "t": "narrate"
   },
   {
-   "text": "Kai stood at the door. The boy did not, for a count, turn.",
+   "text": "[shot:insert door]Kai stood at the door. The boy did not, for a count, turn.",
    "t": "narrate"
   },
   {
@@ -434,7 +434,7 @@
   },
   {
    "char": "kai",
-   "text": "Cale told us about you on Sunday. I have been thinking about you since then. You are — you are not who I expected at the desk. You are who Tem said might be at the desk. I am — I am still figuring out which one.",
+   "text": "[shot:closeup person]Cale told us about you on Sunday. I have been thinking about you since then. You are — you are not who I expected at the desk. You are who Tem said might be at the desk. I am — I am still figuring out which one.",
    "expr": "neutral",
    "t": "say"
   },
@@ -480,7 +480,7 @@
   },
   {
    "char": "nate",
-   "text": "Nate was here in 1993. Nate played Kestrel Mountain for the first time in late 1993 at sixteen. Nate played it forty-one times between 1993 and 1995. Nate walked through the hedge on the eleventh playing.",
+   "text": "[shot:closeup person_b]Nate was here in 1993. Nate played Kestrel Mountain for the first time in late 1993 at sixteen. Nate played it forty-one times between 1993 and 1995. Nate walked through the hedge on the eleventh playing.",
    "expr": "serious",
    "t": "say"
   },
@@ -528,7 +528,7 @@
   },
   {
    "char": "nate",
-   "text": "I will tell you. But first I want you to know what you are talking to. I am the imprint of Nate. The conversation I am about to tell you about is a conversation Nate had with another imprint. The conversation was Nate's.",
+   "text": "[shot:closeup person_b]I will tell you. But first I want you to know what you are talking to. I am the imprint of Nate. The conversation I am about to tell you about is a conversation Nate had with another imprint. The conversation was Nate's.",
    "expr": "serious",
    "t": "say"
   },
@@ -608,7 +608,7 @@
   },
   {
    "char": "nate",
-   "text": "The carver told me that the bowls have, in the past number of decades, become not enough. The bowls are wood. The wood is — the wood is older than the substrate. The wood is the older medium. The newer medium is the substrate.",
+   "text": "[shot:closeup person_b]The carver told me that the bowls have, in the past number of decades, become not enough. The bowls are wood. The wood is — the wood is older than the substrate. The wood is the older medium. The newer medium is the substrate.",
    "expr": "serious",
    "t": "say"
   },
@@ -692,7 +692,7 @@
   },
   {
    "char": "nate",
-   "text": "Nate said: what do I do.",
+   "text": "[shot:closeup person_b]Nate said: what do I do.",
    "expr": "serious",
    "t": "say"
   },
@@ -786,7 +786,7 @@
   },
   {
    "char": "nate",
-   "text": "Soon.",
+   "text": "[shot:closeup person_b]Soon.",
    "expr": "neutral",
    "t": "say"
   },
@@ -820,7 +820,7 @@
   },
   {
    "char": "kai",
-   "text": "Yeah.",
+   "text": "[shot:closeup person]Yeah.",
    "expr": "neutral",
    "t": "say"
   },
@@ -982,7 +982,7 @@
   },
   {
    "char": "nate",
-   "text": "The bowl is going to be at the cabin and the bowl is going to be in your pocket. Both will be true. The substrate is fine with this. Are you.",
+   "text": "[shot:closeup person_b]The bowl is going to be at the cabin and the bowl is going to be in your pocket. Both will be true. The substrate is fine with this. Are you.",
    "expr": "serious",
    "t": "say"
   },
@@ -1039,7 +1039,7 @@
    "t": "narrate"
   },
   {
-   "text": "The bread was in the outside pocket of the wool coat. The bowl was in the inside pocket. He took the bread out and ate the rest of it standing at the bend.",
+   "text": "[shot:insert bowl]The bread was in the outside pocket of the wool coat. The bowl was in the inside pocket. He took the bread out and ate the rest of it standing at the bend.",
    "t": "narrate"
   },
   {
@@ -1075,7 +1075,7 @@
    "t": "narrate"
   },
   {
-   "text": "He let the pace be what it was. The town in the valley got closer. The square got closer.",
+   "text": "[shot:establish]He let the pace be what it was. The town in the valley got closer. The square got closer.",
    "t": "narrate"
   },
   {

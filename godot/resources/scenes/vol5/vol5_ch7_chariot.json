@@ -43,7 +43,7 @@
     },
     {
       "t": "narrate",
-      "text": "Antonio D'Ambrosio had been told, by a girlfriend in his early twenties, that he had two speeds: gone and about to be gone."
+      "text": "[shot:establish]Antonio D'Ambrosio had been told, by a girlfriend in his early twenties, that he had two speeds: gone and about to be gone."
     },
     {
       "t": "narrate",
@@ -151,7 +151,7 @@
     },
     {
       "t": "narrate",
-      "text": "It smelled of old wood, ambition, and the faint unsettling tang of ozone — like Frasier Temple's workshop in Graustark, but with more existential dread and worse plumbing."
+      "text": "[shot:establish_b]It smelled of old wood, ambition, and the faint unsettling tang of ozone — like Frasier Temple's workshop in Graustark, but with more existential dread and worse plumbing."
     },
     {
       "t": "narrate",
@@ -326,7 +326,7 @@
     },
     {
       "t": "narrate",
-      "text": "He stood at the small leaded window of the office and looked out at the neighborhood. The Marigny on a Saturday afternoon: ancient oaks dripping Spanish moss like weary debutantes. Wrought iron balconies rusting into lacework."
+      "text": "[shot:insert window]He stood at the small leaded window of the office and looked out at the neighborhood. The Marigny on a Saturday afternoon: ancient oaks dripping Spanish moss like weary debutantes. Wrought iron balconies rusting into lacework."
     },
     {
       "t": "narrate",
@@ -359,7 +359,7 @@
     {
       "t": "say",
       "char": "jimmy",
-      "text": "Yeah?"
+      "text": "[shot:closeup jimmy]Yeah?"
     },
     {
       "t": "say",
@@ -526,7 +526,7 @@
     {
       "t": "say",
       "char": "jimmy",
-      "text": "I know it's not on the table. I'm just telling you it's an option in the abstract."
+      "text": "[shot:closeup jimmy]I know it's not on the table. I'm just telling you it's an option in the abstract."
     },
     {
       "t": "say",
@@ -555,7 +555,7 @@
     {
       "t": "say",
       "char": "antonio",
-      "text": "What does that mean."
+      "text": "[shot:closeup antonio]What does that mean."
     },
     {
       "t": "say",

@@ -87,7 +87,7 @@
   {
    "t": "say",
    "char": "Frasier",
-   "text": "Rick."
+   "text": "[shot:closeup person]Rick."
   },
   {
    "t": "say",
@@ -125,7 +125,7 @@
   {
    "t": "say",
    "char": "Frasier",
-   "text": "Rick, honestly? I didn't. The imps did. I think they like her."
+   "text": "[shot:closeup person]Rick, honestly? I didn't. The imps did. I think they like her."
   },
   {
    "t": "say",

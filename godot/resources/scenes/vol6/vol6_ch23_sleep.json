@@ -186,7 +186,7 @@
     {
       "t": "say",
       "char": "Eileen",
-      "text": "Yes.",
+      "text": "[shot:closeup person]Yes.",
       "expr": "neutral"
     },
     {
@@ -340,7 +340,7 @@
     {
       "t": "say",
       "char": "Gracie",
-      "text": "Sixth grade.",
+      "text": "[shot:closeup person]Sixth grade.",
       "expr": "neutral"
     },
     {

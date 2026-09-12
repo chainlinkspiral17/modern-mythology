@@ -91,7 +91,7 @@
    "t": "say",
    "char": "Kai",
    "expr": "neutral",
-   "text": "\"The other part — the part where you say you made all of us wait and you made Cale wait and you made the patches wait — that part is too much. You did not make the patches wait. The patches are not on a schedule you set."
+   "text": "[shot:closeup person]\"The other part — the part where you say you made all of us wait and you made Cale wait and you made the patches wait — that part is too much. You did not make the patches wait. The patches are not on a schedule you set."
   },
   {
    "t": "say",

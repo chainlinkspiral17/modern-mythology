@@ -70,7 +70,7 @@
       "t": "narrate"
     },
     {
-      "text": "It had a long crack through the upper deck and a chunk missing from the tail.",
+      "text": "[shot:insert deck]It had a long crack through the upper deck and a chunk missing from the tail.",
       "t": "narrate"
     },
     {
@@ -129,7 +129,7 @@
     },
     {
       "char": "mateo",
-      "text": "My dad knew. My dad got it off Tess in 2034. He was twenty. He skated it from 2034 to 2018 and then he hung it on the wall because he didn't want to break it.",
+      "text": "[shot:closeup person]My dad knew. My dad got it off Tess in 2034. He was twenty. He skated it from 2034 to 2018 and then he hung it on the wall because he didn't want to break it.",
       "expr": "neutral",
       "t": "say"
     },
@@ -182,7 +182,7 @@
       "t": "narrate"
     },
     {
-      "text": "Mateo was the kind of thirteen-year-old who knew more about boards than fifteen-year-olds usually did and who had been waiting his whole conscious life to be in the same room with somebody who would understand why a 2034 Tess was the thing it was.",
+      "text": "[shot:establish]Mateo was the kind of thirteen-year-old who knew more about boards than fifteen-year-olds usually did and who had been waiting his whole conscious life to be in the same room with somebody who would understand why a 2034 Tess was the thing it was.",
       "t": "narrate"
     },
     {
@@ -217,7 +217,7 @@
     },
     {
       "char": "kai",
-      "text": "You're welcome. Tell your dad Kai at Board Lords does Tess work. Tell him I have three of hers at home. Tell him if he ever wants to sell the Driftwood Series one she made in '37 I will give him good token rate plus standard.",
+      "text": "[shot:closeup person_b]You're welcome. Tell your dad Kai at Board Lords does Tess work. Tell him I have three of hers at home. Tell him if he ever wants to sell the Driftwood Series one she made in '37 I will give him good token rate plus standard.",
       "expr": "neutral",
       "t": "say"
     },

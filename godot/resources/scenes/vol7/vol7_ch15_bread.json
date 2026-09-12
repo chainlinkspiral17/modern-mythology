@@ -102,7 +102,7 @@
     },
     {
       "char": "tem",
-      "text": "Hans.",
+      "text": "[shot:closeup person]Hans.",
       "expr": "neutral",
       "t": "say"
     },
@@ -374,7 +374,7 @@
     },
     {
       "char": "marit",
-      "text": "The visit included, by Olaf's notebook, a conversation about a young woman the printer had seen at his print shop at three in the morning earlier that month.",
+      "text": "[shot:closeup person_b]The visit included, by Olaf's notebook, a conversation about a young woman the printer had seen at his print shop at three in the morning earlier that month.",
       "expr": "serious",
       "t": "say"
     },
@@ -523,7 +523,7 @@
       "t": "narrate"
     },
     {
-      "text": "the bell-pull was the bell-pull",
+      "text": "[shot:establish]the bell-pull was the bell-pull",
       "t": "narrate"
     },
     {
@@ -680,7 +680,7 @@
     },
     {
       "char": "tem",
-      "text": "Roy has been at the edge of the network the way you have been at the edge. Roy is — Roy is not, by what we are figuring out, what we have been reading him as.",
+      "text": "[shot:closeup person]Roy has been at the edge of the network the way you have been at the edge. Roy is — Roy is not, by what we are figuring out, what we have been reading him as.",
       "expr": "serious",
       "t": "say"
     },
@@ -836,7 +836,7 @@
     },
     {
       "char": "cale",
-      "text": "Hans.",
+      "text": "[shot:closeup person_b]Hans.",
       "expr": "serious",
       "t": "say"
     },
@@ -866,7 +866,7 @@
     },
     {
       "char": "hans",
-      "text": "Cale.",
+      "text": "[shot:closeup person]Cale.",
       "expr": "serious",
       "t": "say"
     },

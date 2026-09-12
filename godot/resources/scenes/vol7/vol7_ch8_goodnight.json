@@ -49,7 +49,7 @@
    "t": "say",
    "char": "Finn",
    "expr": "neutral",
-   "text": "\"I'm fine to keep going if we need to.\""
+   "text": "[shot:closeup person]\"I'm fine to keep going if we need to.\""
   },
   {
    "t": "say",

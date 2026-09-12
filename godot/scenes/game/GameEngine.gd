@@ -1640,10 +1640,31 @@ func _advance() -> void:
 	if _dlg.visible and _dlg.call("is_typing"):
 		_dlg.call("finish_typing")
 		return
-	AudioMgr.stop_voice()
+	# A voiced passage now spans PAGES (page_split, 2026-09-12): the
+	# recording is the whole passage and lives on its first page.
+	# Stopping the voice on every advance cut it off after page one.
+	# Keep it playing while the next node is an unvoiced text page;
+	# a node with its own voice, or anything that is not text, still
+	# ends it — and so do choices and the scene end.
+	if not _next_is_voiceless_text():
+		AudioMgr.stop_voice()
 	_waiting    = false
 	_auto_timer = 0.0
 	_run_next()
+
+
+func _next_is_voiceless_text() -> bool:
+	var nodes: Array = _scene_data.get("nodes", [])
+	if _node_idx < 0 or _node_idx >= nodes.size():
+		return false
+	var nv: Variant = nodes[_node_idx]
+	if not (nv is Dictionary):
+		return false
+	var n: Dictionary = nv
+	var t: String = String(n.get("t", ""))
+	if t != "narrate" and t != "say" and t != "think":
+		return false
+	return String(n.get("voice", "")) == ""
 
 
 # ── End ───────────────────────────────────────────────────────────────────────

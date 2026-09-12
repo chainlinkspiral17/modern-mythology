@@ -55,7 +55,7 @@
       "t": "say",
       "char": "Sam",
       "expr": "neutral",
-      "text": "\"No.\""
+      "text": "[shot:closeup person]\"No.\""
     },
     {
       "t": "say",

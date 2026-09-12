@@ -46,7 +46,7 @@
     },
     {
       "char": "lena",
-      "text": "Come look.",
+      "text": "[shot:closeup person]Come look.",
       "expr": "neutral",
       "t": "say"
     },
@@ -84,7 +84,7 @@
     },
     {
       "char": "cale",
-      "text": "I have not seen you paint before.",
+      "text": "[shot:closeup person_b]I have not seen you paint before.",
       "expr": "serious",
       "t": "say"
     },
@@ -114,7 +114,7 @@
     },
     {
       "char": "lena",
-      "text": "I know.",
+      "text": "[shot:closeup person]I know.",
       "expr": "serious",
       "t": "say"
     },
@@ -144,7 +144,7 @@
     },
     {
       "char": "cale",
-      "text": "Just now. As you stepped back. The lids of the closed eyes shifted. Eyes are still closed. But they moved. I could see it from here.",
+      "text": "[shot:closeup person_b]Just now. As you stepped back. The lids of the closed eyes shifted. Eyes are still closed. But they moved. I could see it from here.",
       "expr": "serious",
       "t": "say"
     },
@@ -185,7 +185,7 @@
       "t": "narrate"
     },
     {
-      "text": "The face was the face of a young woman in a moment of waiting. The closed eyes were the closed eyes of someone who had decided to keep her eyes closed for a count longer.",
+      "text": "[shot:insert face]The face was the face of a young woman in a moment of waiting. The closed eyes were the closed eyes of someone who had decided to keep her eyes closed for a count longer.",
       "t": "narrate"
     },
     {
@@ -248,7 +248,7 @@
     },
     {
       "char": "lena",
-      "text": "I am — I am not going to walk down there.",
+      "text": "[shot:closeup person]I am — I am not going to walk down there.",
       "expr": "serious",
       "t": "say"
     },
@@ -296,7 +296,7 @@
     },
     {
       "char": "cale",
-      "text": "She was here.",
+      "text": "[shot:closeup person_b]She was here.",
       "expr": "serious",
       "t": "say"
     },
@@ -330,7 +330,7 @@
     },
     {
       "char": "lena",
-      "text": "The face on the wall. When she was looking at it. Did it do anything.",
+      "text": "[shot:closeup person]The face on the wall. When she was looking at it. Did it do anything.",
       "expr": "serious",
       "t": "say"
     },

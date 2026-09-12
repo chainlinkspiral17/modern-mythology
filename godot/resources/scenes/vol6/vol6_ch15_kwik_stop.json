@@ -43,7 +43,7 @@
     },
     {
       "t": "narrate",
-      "text": "Sam has, over two summers, stopped doing the small math of converting between them. The microwave is the closer-clock. The wall clock is the open-clock."
+      "text": "[shot:establish]Sam has, over two summers, stopped doing the small math of converting between them. The microwave is the closer-clock. The wall clock is the open-clock."
     },
     {
       "t": "narrate",
@@ -444,7 +444,7 @@
     {
       "t": "say",
       "char": "Mark",
-      "text": "Sorry. The — the car is dead. I think it's the head gasket but it doesn't really matter what it is. We're trying to figure out what to do. Is there — is there a tow yard around here you'd recommend.",
+      "text": "[shot:closeup person]Sorry. The — the car is dead. I think it's the head gasket but it doesn't really matter what it is. We're trying to figure out what to do. Is there — is there a tow yard around here you'd recommend.",
       "expr": "serious"
     },
     {
@@ -628,7 +628,7 @@
     {
       "t": "say",
       "char": "Mark",
-      "text": "If it's the head gasket — and it's the head gasket — the work is, for the Peugeot, is going to be — it's going to be at least two thousand dollars in parts and labor. He said realistically three.",
+      "text": "[shot:closeup person]If it's the head gasket — and it's the head gasket — the work is, for the Peugeot, is going to be — it's going to be at least two thousand dollars in parts and labor. He said realistically three.",
       "expr": "serious"
     },
     {
@@ -674,7 +674,7 @@
     {
       "t": "say",
       "char": "Lucy",
-      "text": "The eighty-five for the tow would leave us with two thirty-five, which would not pay for the diagnostic, which would mean the car would be sitting at his lot for a week while we figured out what to do, and the lot fee starts on day three at twenty-five a day.",
+      "text": "[shot:closeup person_b]The eighty-five for the tow would leave us with two thirty-five, which would not pay for the diagnostic, which would mean the car would be sitting at his lot for a week while we figured out what to do, and the lot fee starts on day three at twenty-five a day.",
       "expr": "serious"
     },
     {
@@ -840,7 +840,7 @@
     {
       "t": "say",
       "char": "Mark",
-      "text": "Lucy. You told me in El Paso. I heard you. I made the wrong call. I'm — I'm sorry.",
+      "text": "[shot:closeup person]Lucy. You told me in El Paso. I heard you. I made the wrong call. I'm — I'm sorry.",
       "expr": "serious"
     },
     {

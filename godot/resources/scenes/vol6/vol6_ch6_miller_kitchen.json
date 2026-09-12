@@ -80,7 +80,7 @@
     {
       "t": "say",
       "char": "Sam",
-      "text": "Yeah. Yours?",
+      "text": "[shot:closeup person]Yeah. Yours?",
       "expr": "neutral"
     },
     {

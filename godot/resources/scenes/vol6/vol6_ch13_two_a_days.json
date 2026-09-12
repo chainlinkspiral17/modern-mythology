@@ -89,7 +89,7 @@
   },
   {
    "t": "narrate",
-   "text": "Coach K does not, when Ben crosses the lot, look up."
+   "text": "[shot:establish]Coach K does not, when Ben crosses the lot, look up."
   },
   {
    "t": "narrate",
@@ -157,7 +157,7 @@
   },
   {
    "t": "narrate",
-   "text": "Coach K does the equipment cart for two more minutes. At six oh-five he closes the tailgate, turns off the cab music, locks the truck, and walks the cart to the field gate."
+   "text": "[shot:insert truck]Coach K does the equipment cart for two more minutes. At six oh-five he closes the tailgate, turns off the cab music, locks the truck, and walks the cart to the field gate."
   },
   {
    "t": "narrate",
@@ -399,7 +399,7 @@
   },
   {
    "t": "narrate",
-   "text": "Coach K, at the deadlift platform, has just turned and is walking back toward the squat rack."
+   "text": "[shot:insert squat]Coach K, at the deadlift platform, has just turned and is walking back toward the squat rack."
   },
   {
    "t": "say",

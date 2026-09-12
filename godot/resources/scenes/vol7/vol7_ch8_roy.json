@@ -49,7 +49,7 @@
       "t": "say",
       "char": "Lena",
       "expr": "neutral",
-      "text": "\"What did he say. Word for word.\""
+      "text": "[shot:closeup person]\"What did he say. Word for word.\""
     },
     {
       "t": "say",

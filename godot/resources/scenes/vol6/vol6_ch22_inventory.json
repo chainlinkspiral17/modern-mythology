@@ -60,7 +60,7 @@
   {
    "t": "say",
    "char": "Russell",
-   "text": "Vegetable beef. Three SKUs. Family size, regular, low sodium.",
+   "text": "[shot:closeup person]Vegetable beef. Three SKUs. Family size, regular, low sodium.",
    "expr": "neutral"
   },
   {
@@ -143,7 +143,7 @@
   },
   {
    "t": "narrate",
-   "text": "She is also the kindest of the five of them and Diego has known this since his second week, when she had walked him to his car at five AM in the rain on a night he had told nobody he was nervous about walking to."
+   "text": "[shot:insert five]She is also the kindest of the five of them and Diego has known this since his second week, when she had walked him to his car at five AM in the rain on a night he had told nobody he was nervous about walking to."
   },
   {
    "t": "narrate",
@@ -211,7 +211,7 @@
   },
   {
    "t": "narrate",
-   "text": "Diego scans the next can."
+   "text": "[shot:establish]Diego scans the next can."
   },
   {
    "t": "narrate",
@@ -267,7 +267,7 @@
   },
   {
    "t": "narrate",
-   "text": "He will mention his grandmother's tomatoes. He will not, in the second letter, ask anything either."
+   "text": "[shot:establish_b]He will mention his grandmother's tomatoes. He will not, in the second letter, ask anything either."
   },
   {
    "t": "narrate",
@@ -384,7 +384,7 @@
   {
    "t": "say",
    "char": "BT",
-   "text": "Yeah.",
+   "text": "[shot:closeup person]Yeah.",
    "expr": "neutral"
   },
   {
@@ -816,7 +816,7 @@
   {
    "t": "say",
    "char": "Marisol",
-   "text": "Doug.",
+   "text": "[shot:closeup person]Doug.",
    "expr": "neutral"
   },
   {
@@ -880,7 +880,7 @@
   {
    "t": "say",
    "char": "Doug",
-   "text": "The on-the-record version is what the official write-up says. BT did not, in 2022, do the thing the team has, all summer, been assuming he did.",
+   "text": "[shot:closeup person_b]The on-the-record version is what the official write-up says. BT did not, in 2022, do the thing the team has, all summer, been assuming he did.",
    "expr": "neutral"
   },
   {
@@ -1079,7 +1079,7 @@
   },
   {
    "t": "narrate",
-   "text": "Diego, at the table, drinks his coffee."
+   "text": "[shot:insert coffee]Diego, at the table, drinks his coffee."
   },
   {
    "t": "narrate",
@@ -1474,7 +1474,7 @@
   {
    "t": "say",
    "char": "Abuela",
-   "text": "Eat. Sleep.",
+   "text": "[shot:closeup person_b]Eat. Sleep.",
    "expr": "neutral"
   },
   {

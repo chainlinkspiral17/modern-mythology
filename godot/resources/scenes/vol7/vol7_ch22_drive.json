@@ -193,7 +193,7 @@
     },
     {
       "char": "tem",
-      "text": "I don't know.",
+      "text": "[shot:closeup person]I don't know.",
       "t": "say"
     },
     {
@@ -424,7 +424,7 @@
       "t": "narrate"
     },
     {
-      "text": "He had been carrying the substrate-signature of Dean's son from Dean's own stick for five days. The panel registered something. A small green LED at the panel's corner lit up. The double-doors eased open. Kai stepped back.",
+      "text": "[shot:insert door]He had been carrying the substrate-signature of Dean's son from Dean's own stick for five days. The panel registered something. A small green LED at the panel's corner lit up. The double-doors eased open. Kai stepped back.",
       "t": "narrate"
     },
     {

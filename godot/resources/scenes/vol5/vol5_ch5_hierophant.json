@@ -207,7 +207,7 @@
     },
     {
       "t": "narrate",
-      "text": "Something brittle. Maybe something afraid."
+      "text": "[shot:establish]Something brittle. Maybe something afraid."
     },
     {
       "t": "narrate",
@@ -238,7 +238,7 @@
     {
       "t": "say",
       "char": "gloria",
-      "text": "He's never gonna eat, Hector."
+      "text": "[shot:closeup person]He's never gonna eat, Hector."
     },
     {
       "t": "narrate",
@@ -473,7 +473,7 @@
     },
     {
       "t": "narrate",
-      "text": "[beat:hit]The fear of him was the point."
+      "text": "[shot:establish][beat:hit]The fear of him was the point."
     },
     {
       "t": "narrate",

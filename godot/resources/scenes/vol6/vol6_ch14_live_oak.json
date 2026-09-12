@@ -43,7 +43,7 @@
     },
     {
       "t": "narrate",
-      "text": "The Foxhole's marquee \u2014 which is the small lit sign above the front door, with the venue logo and a chalk-board insert below it announcing the next show \u2014 is on."
+      "text": "[shot:insert marquee]The Foxhole's marquee \u2014 which is the small lit sign above the front door, with the venue logo and a chalk-board insert below it announcing the next show \u2014 is on."
     },
     {
       "t": "narrate",
@@ -253,7 +253,7 @@
     },
     {
       "t": "narrate",
-      "text": "The sedan turns left at the lot's exit and is, within seconds, gone."
+      "text": "[shot:insert sedan]The sedan turns left at the lot's exit and is, within seconds, gone."
     },
     {
       "t": "narrate",
@@ -652,7 +652,7 @@
     {
       "t": "say",
       "char": "Maya",
-      "text": "a man in a polo shirt who locked up at 10:30 tonight. i told jesse to watch it for a week with no escalation. no getting closer. but i am telling you because it is \u2014 it is the kind of thing you would want to know. \u2014 m.",
+      "text": "[shot:closeup person]a man in a polo shirt who locked up at 10:30 tonight. i told jesse to watch it for a week with no escalation. no getting closer. but i am telling you because it is \u2014 it is the kind of thing you would want to know. \u2014 m.",
       "expr": "serious"
     },
     {
@@ -689,7 +689,7 @@
     },
     {
       "t": "narrate",
-      "text": "The town, in the small ways towns in mid-August do this work, holds."
+      "text": "[shot:establish]The town, in the small ways towns in mid-August do this work, holds."
     },
     {
       "t": "end"

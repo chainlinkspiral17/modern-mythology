@@ -127,7 +127,7 @@
    "t": "say",
    "char": "Sam",
    "expr": "neutral",
-   "text": "\"Maya. How do you know.\""
+   "text": "[shot:closeup person]\"Maya. How do you know.\""
   },
   {
    "t": "say",
@@ -273,7 +273,7 @@
    "t": "say",
    "char": "Maya",
    "expr": "neutral",
-   "text": "\"That's a nice question. I don't — yeah. I think so. I'm not, maybe. But I'm okay for now. Thank you for asking.\""
+   "text": "[shot:closeup person_b]\"That's a nice question. I don't — yeah. I think so. I'm not, maybe. But I'm okay for now. Thank you for asking.\""
   },
   {
    "t": "say",

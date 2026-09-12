@@ -79,7 +79,7 @@
     },
     {
       "t": "narrate",
-      "text": "He grunted. Gave the fitting one last, probably futile twist. Solace in physical labor — that was his motto. Fix the fence. Fix the faucet."
+      "text": "[shot:establish]He grunted. Gave the fitting one last, probably futile twist. Solace in physical labor — that was his motto. Fix the fence. Fix the faucet."
     },
     {
       "t": "narrate",
@@ -155,7 +155,7 @@
     {
       "t": "say",
       "char": "philip",
-      "text": "Could be worse. Could be Elicia calling at three AM again because her latest artistic vision involves setting something expensive on fire."
+      "text": "[shot:closeup philip]Could be worse. Could be Elicia calling at three AM again because her latest artistic vision involves setting something expensive on fire."
     },
     {
       "t": "narrate",
@@ -205,7 +205,7 @@
     },
     {
       "t": "narrate",
-      "text": "The casserole was now in the freezer. They did not discuss the casserole."
+      "text": "[shot:establish]The casserole was now in the freezer. They did not discuss the casserole."
     },
     {
       "t": "narrate",
@@ -237,7 +237,7 @@
     },
     {
       "t": "narrate",
-      "text": "He had stood in the doorway for a full minute, and then he had gone back to the kitchen, and he had cried briefly in the sink so she would not hear."
+      "text": "[shot:insert door]He had stood in the doorway for a full minute, and then he had gone back to the kitchen, and he had cried briefly in the sink so she would not hear."
     },
     {
       "t": "narrate",
@@ -453,7 +453,7 @@
     {
       "t": "say",
       "char": "philip",
-      "text": "I don't know, Kenz. I really don't."
+      "text": "[shot:closeup philip]I don't know, Kenz. I really don't."
     },
     {
       "t": "narrate",
@@ -481,7 +481,7 @@
     },
     {
       "t": "narrate",
-      "text": "Philip went back to the faucet. Picked up the wrench. Looked at the fitting for a moment, then set the wrench down again."
+      "text": "[shot:insert faucet]Philip went back to the faucet. Picked up the wrench. Looked at the fitting for a moment, then set the wrench down again."
     },
     {
       "t": "say",

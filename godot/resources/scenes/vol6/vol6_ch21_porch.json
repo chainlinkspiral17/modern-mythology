@@ -186,7 +186,7 @@
     {
       "t": "say",
       "char": "Maya",
-      "text": "And the 2003 one.",
+      "text": "[shot:closeup person]And the 2003 one.",
       "expr": "neutral"
     },
     {
@@ -252,7 +252,7 @@
     {
       "t": "say",
       "char": "Maya",
-      "text": "I am going to ask Rick to let me work through senior year.",
+      "text": "[shot:closeup person]I am going to ask Rick to let me work through senior year.",
       "expr": "neutral"
     },
     {

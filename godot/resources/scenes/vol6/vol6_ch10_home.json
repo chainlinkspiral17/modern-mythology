@@ -98,7 +98,7 @@
   {
    "t": "say",
    "char": "Diego",
-   "text": "Abuela.",
+   "text": "[shot:closeup person]Abuela.",
    "expr": "neutral"
   },
   {
@@ -148,7 +148,7 @@
   {
    "t": "say",
    "char": "Diego",
-   "text": "And he came out on the dock with me on second break tonight and tried to — tried to get me to be on his side about something. And I did the thing the team would have done. I — I closed the conversation.",
+   "text": "[shot:closeup person]And he came out on the dock with me on second break tonight and tried to — tried to get me to be on his side about something. And I did the thing the team would have done. I — I closed the conversation.",
    "expr": "neutral"
   },
   {

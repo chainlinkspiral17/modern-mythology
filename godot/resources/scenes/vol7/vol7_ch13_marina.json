@@ -70,7 +70,7 @@
     },
     {
       "char": "finn",
-      "text": "I have been waiting to take it out. I wanted to wait until we had eaten. I am — I am ready.",
+      "text": "[shot:closeup person]I have been waiting to take it out. I wanted to wait until we had eaten. I am — I am ready.",
       "expr": "neutral",
       "t": "say"
     },
@@ -168,7 +168,7 @@
     },
     {
       "char": "tem",
-      "text": "Both answers are probably true.",
+      "text": "[shot:closeup person_b]Both answers are probably true.",
       "expr": "serious",
       "t": "say"
     },
@@ -210,7 +210,7 @@
     },
     {
       "char": "tem",
-      "text": "The substrate has — I do not have a clean account of what the substrate is doing, but the substrate is doing it at a scale that has my grandfather's hand on a porch rail today and your father's cedar in Finn's duffel today and my mother's —",
+      "text": "[shot:closeup person_b]The substrate has — I do not have a clean account of what the substrate is doing, but the substrate is doing it at a scale that has my grandfather's hand on a porch rail today and your father's cedar in Finn's duffel today and my mother's —",
       "expr": "serious",
       "t": "say"
     },
@@ -335,7 +335,7 @@
     },
     {
       "char": "tem",
-      "text": "That is the cleanest reading anyone has put on this since Brandon.",
+      "text": "[shot:closeup person_b]That is the cleanest reading anyone has put on this since Brandon.",
       "expr": "serious",
       "t": "say"
     },
@@ -365,7 +365,7 @@
     },
     {
       "char": "cale",
-      "text": "He thought she was — Tem, he thought she was a thing being assembled by the listening itself. The listening was the maker. The listening was also the receiver. The listening was making her by listening for her.",
+      "text": "[shot:closeup person]He thought she was — Tem, he thought she was a thing being assembled by the listening itself. The listening was the maker. The listening was also the receiver. The listening was making her by listening for her.",
       "expr": "serious",
       "t": "say"
     },
@@ -400,7 +400,7 @@
     },
     {
       "char": "tem",
-      "text": "Brandon said it to me, too. In May of '50. Five months before he died.",
+      "text": "[shot:closeup person_b]Brandon said it to me, too. In May of '50. Five months before he died.",
       "expr": "serious",
       "t": "say"
     },
@@ -430,7 +430,7 @@
     },
     {
       "char": "cale",
-      "text": "Yeah.",
+      "text": "[shot:closeup person]Yeah.",
       "expr": "serious",
       "t": "say"
     },

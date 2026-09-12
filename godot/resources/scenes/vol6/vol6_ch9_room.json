@@ -101,7 +101,7 @@
     },
     {
       "t": "narrate",
-      "text": "The water tastes faintly of the substation hum. He does not know how water can taste of a hum. But it does."
+      "text": "[shot:establish]The water tastes faintly of the substation hum. He does not know how water can taste of a hum. But it does."
     },
     {
       "t": "hide",
@@ -159,7 +159,7 @@
     },
     {
       "t": "narrate",
-      "text": "Diego had finished stocking the cooler."
+      "text": "[shot:establish]Diego had finished stocking the cooler."
     },
     {
       "t": "narrate",
@@ -372,7 +372,7 @@
     },
     {
       "t": "narrate",
-      "text": "He hopes it is."
+      "text": "[shot:establish]He hopes it is."
     },
     {
       "t": "hide",

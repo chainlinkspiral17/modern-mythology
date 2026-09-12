@@ -100,7 +100,7 @@
     {
       "t": "say",
       "c": "frog",
-      "text": "World's done turnin' its page, seems like. Folks integratin'. Completing their arcs. Wholesome nonsense.",
+      "text": "[shot:closeup person]World's done turnin' its page, seems like. Folks integratin'. Completing their arcs. Wholesome nonsense.",
       "char": "the_frog"
     },
     {
@@ -216,7 +216,7 @@
     {
       "t": "say",
       "c": "frog",
-      "text": "See. Completion. Integration. Everyone findin' their slot in the grand design, connectin' the dots like they knew the picture all along. Makes ya wanna puke, don't it.",
+      "text": "[shot:closeup person_b]See. Completion. Integration. Everyone findin' their slot in the grand design, connectin' the dots like they knew the picture all along. Makes ya wanna puke, don't it.",
       "char": "frasier"
     },
     {
@@ -273,7 +273,7 @@
     },
     {
       "t": "narrate",
-      "text": "Also badly, by his own high standards, but productively, which is a different category. They have been, for six days, sleeping and eating and walking and not talking about any of it. Erica has not checked her email."
+      "text": "[shot:establish]Also badly, by his own high standards, but productively, which is a different category. They have been, for six days, sleeping and eating and walking and not talking about any of it. Erica has not checked her email."
     },
     {
       "t": "narrate",
@@ -301,7 +301,7 @@
     },
     {
       "t": "narrate",
-      "text": "Antonio D'Ambrosio is, against all expectation, still at Ember & Ash. The cypress beam held. The city inspector has not come back. The gas line got approved on Monday. Lila Bao, the chef, called last week — just to check in."
+      "text": "[shot:insert beam]Antonio D'Ambrosio is, against all expectation, still at Ember & Ash. The cypress beam held. The city inspector has not come back. The gas line got approved on Monday. Lila Bao, the chef, called last week — just to check in."
     },
     {
       "t": "narrate",
@@ -337,7 +337,7 @@
     },
     {
       "t": "narrate",
-      "text": "He does not, at this moment, know where he is going, only that he is going. The flight is to Houston. From Houston he will, he suspects, rent a car. The car will drive itself, he suspects, in the direction it needs to go."
+      "text": "[shot:establish]He does not, at this moment, know where he is going, only that he is going. The flight is to Houston. From Houston he will, he suspects, rent a car. The car will drive itself, he suspects, in the direction it needs to go."
     },
     {
       "t": "narrate",
@@ -440,7 +440,7 @@
     {
       "t": "say",
       "c": "miriam",
-      "text": "What movie, dear?",
+      "text": "[shot:closeup person_b]What movie, dear?",
       "char": "frasier"
     },
     {
@@ -503,7 +503,7 @@
     },
     {
       "t": "narrate",
-      "text": "was sitting at the edge of a pier looking out at a rusted steamship that had been relocated from Louisiana and set here because the museum's curator had, at the last minute, changed his mind about the grand opening and had driven the steamship and his own life directly into the sea."
+      "text": "[shot:insert steamship]was sitting at the edge of a pier looking out at a rusted steamship that had been relocated from Louisiana and set here because the museum's curator had, at the last minute, changed his mind about the grand opening and had driven the steamship and his own life directly into the sea."
     },
     {
       "t": "narrate",

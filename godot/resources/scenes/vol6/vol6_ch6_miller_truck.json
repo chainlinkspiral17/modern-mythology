@@ -95,7 +95,7 @@
     {
       "t": "say",
       "char": "Ramirez",
-      "text": "Lawyer's inside. Came up from Houston last night. She's good. She's been doing this twenty-six years. She is not going to let you hang yourself.",
+      "text": "[shot:closeup person]Lawyer's inside. Came up from Houston last night. She's good. She's been doing this twenty-six years. She is not going to let you hang yourself.",
       "expr": "neutral"
     },
     {

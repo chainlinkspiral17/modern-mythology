@@ -41,7 +41,7 @@
     },
     {
       "t": "narrate",
-      "text": "The pallets are heavy."
+      "text": "[shot:insert pallet]The pallets are heavy."
     },
     {
       "t": "narrate",
@@ -81,7 +81,7 @@
     },
     {
       "t": "narrate",
-      "text": "BT has been in cereal for six weeks. Jessa has, by some calculation Diego does not know the math of, decided that BT is going to be in cereal until Jessa decides otherwise."
+      "text": "[shot:establish]BT has been in cereal for six weeks. Jessa has, by some calculation Diego does not know the math of, decided that BT is going to be in cereal until Jessa decides otherwise."
     },
     {
       "t": "narrate",
@@ -193,7 +193,7 @@
     },
     {
       "t": "narrate",
-      "text": "The smallest possible yes is also, by being the smallest possible yes, the one I can, in good faith, give without also having to give the larger thing."
+      "text": "[shot:establish_b]The smallest possible yes is also, by being the smallest possible yes, the one I can, in good faith, give without also having to give the larger thing."
     },
     {
       "t": "narrate",

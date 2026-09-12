@@ -41,7 +41,7 @@
   },
   {
    "t": "narrate",
-   "text": "Diego, in the passenger seat, with the medium horchata for Doug between his thighs and the quarter-burrito on the dashboard and the empty El Diablito packets accumulated on the center console, watches the small parallel side road pass in the headlights."
+   "text": "[shot:establish]Diego, in the passenger seat, with the medium horchata for Doug between his thighs and the quarter-burrito on the dashboard and the empty El Diablito packets accumulated on the center console, watches the small parallel side road pass in the headlights."
   },
   {
    "t": "narrate",
@@ -277,7 +277,7 @@
   },
   {
    "t": "narrate",
-   "text": "Marisol is, in her own way, also a Doug."
+   "text": "[shot:establish]Marisol is, in her own way, also a Doug."
   },
   {
    "t": "narrate",
@@ -628,7 +628,7 @@
   {
    "t": "say",
    "char": "Diego",
-   "text": "Yeah.",
+   "text": "[shot:closeup person]Yeah.",
    "expr": "neutral"
   },
   {
@@ -666,7 +666,7 @@
   {
    "t": "say",
    "char": "Abuela",
-   "text": "You have to do, only, the thing your interrupting requires of you next.",
+   "text": "[shot:closeup person_b]You have to do, only, the thing your interrupting requires of you next.",
    "expr": "neutral"
   },
   {

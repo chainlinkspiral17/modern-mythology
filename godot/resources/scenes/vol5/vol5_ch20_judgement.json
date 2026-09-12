@@ -83,7 +83,7 @@
     },
     {
       "t": "narrate",
-      "text": "The letter from the Hermit arrived at its addressee at 10:47 AM Central. The addressee received it in silence, read it once, refolded it, and placed it in the breast pocket of his charcoal jacket."
+      "text": "[shot:insert letter]The letter from the Hermit arrived at its addressee at 10:47 AM Central. The addressee received it in silence, read it once, refolded it, and placed it in the breast pocket of his charcoal jacket."
     },
     {
       "t": "narrate",
@@ -119,7 +119,7 @@
     },
     {
       "t": "narrate",
-      "text": "Recommend observing chaotic emergence patterns. Note: fascinating architectural dissolution patterns observed in Sector Gamma (formerly D'Ambrosio's riverboat). Forwarding telemetry."
+      "text": "[shot:establish]Recommend observing chaotic emergence patterns. Note: fascinating architectural dissolution patterns observed in Sector Gamma (formerly D'Ambrosio's riverboat). Forwarding telemetry."
     },
     {
       "t": "narrate",
@@ -178,7 +178,7 @@
     {
       "t": "say",
       "c": "jordan",
-      "text": "Eri. I'm here.",
+      "text": "[shot:closeup person]Eri. I'm here.",
       "char": "jordan"
     },
     {
@@ -245,7 +245,7 @@
     },
     {
       "t": "narrate",
-      "text": "John laughed once — the short surprised laugh he had, over the past months, started laughing mostly around Elicia — and, in the small clean moment of the laugh, understood that he was going to Texas."
+      "text": "[shot:establish]John laughed once — the short surprised laugh he had, over the past months, started laughing mostly around Elicia — and, in the small clean moment of the laugh, understood that he was going to Texas."
     },
     {
       "t": "narrate",
@@ -272,7 +272,7 @@
     {
       "t": "say",
       "c": "clerk",
-      "text": "Go, Joanna. Go now.",
+      "text": "[shot:closeup person_b]Go, Joanna. Go now.",
       "char": "aria"
     },
     {
@@ -329,7 +329,7 @@
     },
     {
       "t": "narrate",
-      "text": "Hold on."
+      "text": "[shot:establish]Hold on."
     },
     {
       "t": "narrate",
@@ -364,7 +364,7 @@
     {
       "t": "say",
       "c": "dante",
-      "text": "I know you, you sonofabitch. I knew you in 1987. You haven't aged.",
+      "text": "[shot:closeup person]I know you, you sonofabitch. I knew you in 1987. You haven't aged.",
       "char": "john"
     },
     {
@@ -429,7 +429,7 @@
     },
     {
       "t": "narrate",
-      "text": "He did not dial Antonio. He dialed a number he had not dialed in eleven months. His daughter picked up on the fourth ring."
+      "text": "[shot:insert smoke_ring]He did not dial Antonio. He dialed a number he had not dialed in eleven months. His daughter picked up on the fourth ring."
     },
     {
       "t": "show",
@@ -458,7 +458,7 @@
     {
       "t": "say",
       "c": "maya",
-      "text": "Dad. I'm sixteen. I'm not in kindergarten.",
+      "text": "[shot:closeup person_b]Dad. I'm sixteen. I'm not in kindergarten.",
       "char": "antonio"
     },
     {
@@ -535,7 +535,7 @@
     },
     {
       "t": "narrate",
-      "text": "Prepare the room. Natalie took off her coat. Hung it on the hook. Walked to the closet."
+      "text": "[shot:establish]Prepare the room. Natalie took off her coat. Hung it on the hook. Walked to the closet."
     },
     {
       "t": "narrate",
@@ -606,7 +606,7 @@
     {
       "t": "say",
       "c": "douglas",
-      "text": "I know. It's okay. I knew, eventually. I forgive you.",
+      "text": "[shot:closeup person]I know. It's okay. I knew, eventually. I forgive you.",
       "char": "jimmy"
     },
     {

@@ -41,7 +41,7 @@
       "t": "narrate"
     },
     {
-      "text": "The Frog Petersen at the booth was a different Frog from the Frog at the jetty in the Frequency Interlude, by Kai's understanding of the town's two Frogs. The Frog at the booth was the older Frog.",
+      "text": "[shot:establish]The Frog Petersen at the booth was a different Frog from the Frog at the jetty in the Frequency Interlude, by Kai's understanding of the town's two Frogs. The Frog at the booth was the older Frog.",
       "t": "narrate"
     },
     {
@@ -143,7 +143,7 @@
     },
     {
       "char": "kai",
-      "text": "You worked for the foundation.",
+      "text": "[shot:closeup person]You worked for the foundation.",
       "t": "say"
     },
     {

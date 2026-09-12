@@ -63,7 +63,7 @@
     },
     {
       "t": "narrate",
-      "text": "She sets the table for four. Her own seat. Jesse's. Ben's. And a fourth, at the head of the table, which she has not, in eight days, set."
+      "text": "[shot:insert table]She sets the table for four. Her own seat. Jesse's. Ben's. And a fourth, at the head of the table, which she has not, in eight days, set."
     },
     {
       "t": "show",
@@ -254,7 +254,7 @@
     {
       "t": "say",
       "char": "Eileen",
-      "text": "Eat, Jim.",
+      "text": "[shot:closeup person]Eat, Jim.",
       "expr": "neutral"
     },
     {
@@ -316,7 +316,7 @@
     {
       "t": "say",
       "char": "Mr. Henderson",
-      "text": "The arrangement was — they would not interfere with our lives. They would only ask, occasionally, for — photographs. Specific photographs. From specific angles. At specific times. They would compensate. Modestly.",
+      "text": "[shot:closeup person_b]The arrangement was — they would not interfere with our lives. They would only ask, occasionally, for — photographs. Specific photographs. From specific angles. At specific times. They would compensate. Modestly.",
       "expr": "sad"
     },
     {

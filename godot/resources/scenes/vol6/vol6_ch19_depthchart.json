@@ -222,7 +222,7 @@
     {
       "t": "say",
       "char": "Ben",
-      "text": "Light. They're easing us off for tomorrow.",
+      "text": "[shot:closeup person]Light. They're easing us off for tomorrow.",
       "expr": "neutral"
     },
     {
@@ -266,7 +266,7 @@
     {
       "t": "say",
       "char": "Ben",
-      "text": "I think so. Coach K — he hasn't said. But I think so. The half-line work this week was good. The cone work is — the cone work is where he wants it. I think I'm at TE-1.",
+      "text": "[shot:closeup person]I think so. Coach K — he hasn't said. But I think so. The half-line work this week was good. The cone work is — the cone work is where he wants it. I think I'm at TE-1.",
       "expr": "neutral"
     },
     {
@@ -407,7 +407,7 @@
     },
     {
       "t": "narrate",
-      "text": "He walks at the small Ben-pace, which is the pace of a six-foot-four seventeen-year-old who has learned, over three weeks of two-a-days, that running across a parking lot in August in Texas is a thing his body does not, anymore, casually do without consequences."
+      "text": "[shot:establish]He walks at the small Ben-pace, which is the pace of a six-foot-four seventeen-year-old who has learned, over three weeks of two-a-days, that running across a parking lot in August in Texas is a thing his body does not, anymore, casually do without consequences."
     },
     {
       "t": "narrate",
@@ -774,7 +774,7 @@
     {
       "t": "say",
       "char": "Coach Dale",
-      "text": "What you said. You said his wife was going to be okay.",
+      "text": "[shot:closeup person]What you said. You said his wife was going to be okay.",
       "expr": "neutral"
     },
     {
@@ -834,7 +834,7 @@
     {
       "t": "say",
       "char": "Ben",
-      "text": "Coach.",
+      "text": "[shot:closeup person_b]Coach.",
       "expr": "neutral"
     },
     {

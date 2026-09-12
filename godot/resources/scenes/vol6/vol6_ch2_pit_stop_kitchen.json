@@ -71,7 +71,7 @@
   },
   {
    "t": "narrate",
-   "text": "The officer had said you should try. The small crowd had gotten larger."
+   "text": "[shot:establish]The officer had said you should try. The small crowd had gotten larger."
   },
   {
    "t": "narrate",
@@ -127,7 +127,7 @@
   },
   {
    "t": "narrate",
-   "text": "Ben had noticed the red dots because Ben had, one afternoon in March, been at the Gas & Go buying a Powerade, and Diego had been working, and Diego's phone had been face-up on the counter beside the register, and the wallpaper on Diego's phone had been a photograph of a calendar —"
+   "text": "[shot:insert phone]Ben had noticed the red dots because Ben had, one afternoon in March, been at the Gas & Go buying a Powerade, and Diego had been working, and Diego's phone had been face-up on the counter beside the register, and the wallpaper on Diego's phone had been a photograph of a calendar —"
   },
   {
    "t": "narrate",
@@ -215,7 +215,7 @@
    "t": "say",
    "char": "Ben",
    "expr": "neutral",
-   "text": "\"Yeah. Dumpster at two-fifteen. Bring two Powerades.\""
+   "text": "[shot:closeup person]\"Yeah. Dumpster at two-fifteen. Bring two Powerades.\""
   },
   {
    "t": "say",

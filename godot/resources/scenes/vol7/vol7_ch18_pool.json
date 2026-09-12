@@ -83,7 +83,7 @@
       "t": "narrate"
     },
     {
-      "text": "Fourth page:",
+      "text": "[shot:establish]Fourth page:",
       "t": "narrate"
     },
     {
@@ -285,7 +285,7 @@
     },
     {
       "char": "old_man",
-      "text": "She makes a sound. Not a word. A crow's sound, of the kind a crow makes when the substrate has chosen her to make it. She has been preparing it since Brandon told me he was going to give her to the next person, five days before he died.",
+      "text": "[shot:closeup person]She makes a sound. Not a word. A crow's sound, of the kind a crow makes when the substrate has chosen her to make it. She has been preparing it since Brandon told me he was going to give her to the next person, five days before he died.",
       "t": "say"
     },
     {
@@ -315,7 +315,7 @@
     },
     {
       "char": "old_man",
-      "text": "I cannot say.",
+      "text": "[shot:closeup person]I cannot say.",
       "t": "say"
     },
     {
@@ -375,7 +375,7 @@
     },
     {
       "char": "finn",
-      "text": "Old man.",
+      "text": "[shot:closeup person_b]Old man.",
       "t": "say"
     },
     {
@@ -455,7 +455,7 @@
     },
     {
       "char": "old_man",
-      "text": "The piece at the bottom of this pool is the one you will take out and bring back. The bell-piece. The bell itself.",
+      "text": "[shot:closeup person]The piece at the bottom of this pool is the one you will take out and bring back. The bell-piece. The bell itself.",
       "t": "say"
     },
     {

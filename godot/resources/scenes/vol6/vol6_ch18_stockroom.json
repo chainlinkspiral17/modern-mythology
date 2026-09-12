@@ -400,7 +400,7 @@
     {
       "t": "say",
       "char": "diego",
-      "text": "Hey, Doug.",
+      "text": "[shot:closeup person]Hey, Doug.",
       "expr": "neutral"
     },
     {
@@ -436,7 +436,7 @@
     {
       "t": "say",
       "char": "doug",
-      "text": "Russell talk to you in produce.",
+      "text": "[shot:closeup person_b]Russell talk to you in produce.",
       "expr": "neutral"
     },
     {

@@ -156,7 +156,7 @@
     {
       "t": "say",
       "char": "Eileen",
-      "text": "Yeah.",
+      "text": "[shot:closeup person]Yeah.",
       "expr": "neutral"
     },
     {
@@ -200,7 +200,7 @@
     {
       "t": "say",
       "char": "Eileen",
-      "text": "Let's sit.",
+      "text": "[shot:closeup person]Let's sit.",
       "expr": "neutral"
     },
     {
@@ -274,7 +274,7 @@
     {
       "t": "say",
       "char": "Bianca",
-      "text": "Eileen. I know why you're telling me. It's fine. Tell me.",
+      "text": "[shot:closeup person_b]Eileen. I know why you're telling me. It's fine. Tell me.",
       "expr": "neutral"
     },
     {
@@ -316,7 +316,7 @@
     {
       "t": "say",
       "char": "Eileen",
-      "text": "You okay this week?",
+      "text": "[shot:closeup person]You okay this week?",
       "expr": "neutral"
     },
     {
@@ -384,7 +384,7 @@
     {
       "t": "say",
       "char": "Eileen",
-      "text": "Okay.",
+      "text": "[shot:closeup person]Okay.",
       "expr": "neutral"
     },
     {
@@ -542,7 +542,7 @@
     {
       "t": "say",
       "char": "Bianca",
-      "text": "Jesus, Anita.",
+      "text": "[shot:closeup person_b]Jesus, Anita.",
       "expr": "serious"
     },
     {
@@ -576,7 +576,7 @@
     {
       "t": "say",
       "char": "Bianca",
-      "text": "From Peggy. Eileen brought it.",
+      "text": "[shot:closeup person_b]From Peggy. Eileen brought it.",
       "expr": "neutral"
     },
     {
@@ -1300,7 +1300,7 @@
     {
       "t": "say",
       "char": "Anita",
-      "text": "Bianca.",
+      "text": "[shot:closeup person]Bianca.",
       "expr": "neutral"
     },
     {
@@ -1330,7 +1330,7 @@
     {
       "t": "say",
       "char": "Bianca",
-      "text": "It has not — it has not come up. My four older siblings are all in Lubbock. Carlos is in Houston. I am here. We are not — we are not close. We are fine. We talk at holidays. But we are not close.",
+      "text": "[shot:closeup person_b]It has not — it has not come up. My four older siblings are all in Lubbock. Carlos is in Houston. I am here. We are not — we are not close. We are fine. We talk at holidays. But we are not close.",
       "expr": "neutral"
     },
     {
@@ -1360,7 +1360,7 @@
     {
       "t": "say",
       "char": "Anita",
-      "text": "Yeah. Okay. That's the answer.",
+      "text": "[shot:closeup person]Yeah. Okay. That's the answer.",
       "expr": "neutral"
     },
     {
