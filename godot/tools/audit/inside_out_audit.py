@@ -66,9 +66,11 @@ DIRECT = re.compile(r"^(\[[a-z]+:[^\]]*\]\s*)+")
 # reader, not describing a view.
 EXT_ASSERT = re.compile(
     r"^(?:"
-    r"From the (?:road|street|sidewalk|driveway|parking lot|lot|highway|shoulder|curb|yard|lawn|gate)\b"
+    r"From the (?:road|street|sidewalk|driveway|parking lot|lot|highway|curb|yard|lawn|gate)\b"
     r"|Out (?:on|in) the (?:street|lot|parking lot|road|yard|driveway|field|porch|dark|open|cold|rain|heat)\b"
-    r"|On the (?:sidewalk|street|road|highway|shoulder|curb|lawn|porch steps|dock|beach|sand|gravel)\b"
+    r"|On the (?:sidewalk|street|road|highway|curb|lawn|porch steps|dock|beach|sand|gravel)\b"
+    # (not "shoulder": "On the shoulder, perched, still and bright-eyed, was
+    # a crow" is a person's, in Natalie's apartment — 2026-09-12)
     r"|Across the (?:street|road|lot|parking lot|field)\b"
     r"|The (?:warehouse|house|building|cabin|diner|store|church|bungalow|motel|barn|shed|garage|tower|"
     r"apartment building|strip mall|station|school|courthouse|hospital|chapel|bar|shop|casino|roadhouse|lighthouse)"

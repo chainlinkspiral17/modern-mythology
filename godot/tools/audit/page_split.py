@@ -19,7 +19,9 @@ be broken at an em dash, semicolon or comma near the middle.
   · `char`, `expr`, `when_flag` / `when_not_flag` and every other field
     are copied to every page, so a gated or spoken node stays gated
     and spoken.
-  · Inline [fade …]…[/fade] markup is never split across (2 nodes).
+  · A [fade …]…[/fade] span is one unit — never split across; a
+    blank line inside a node is a hard page boundary (the author's
+    own pagination).
   · Index references — choice `goto`, choice `check.pass` / `.fail`,
     jump `goto` — are re-pointed to the first page of the node they
     named. A save file's node index will land a few lines off inside
@@ -92,19 +94,49 @@ def break_long(s):
     return break_long(s[:best].rstrip()) + break_long(s[best:].lstrip())
 
 
+FADE = re.compile(r"\[fade[^\]]*\].*?\[/fade\]", re.S)
+
+
+def units_of(body):
+    """Sentence units, with two authored structures respected: a
+    [fade …]…[/fade] span is one unit (it is a timed effect on those
+    words), and a blank line is a hard page boundary — "He settled
+    in." alone on its line is the author's own pagination, and the
+    World's last page is nine of them (2026-09-12)."""
+    out = []
+    for pi, para in enumerate(re.split(r"\n\s*\n", body)):
+        para = para.strip()
+        if not para:
+            continue
+        if pi:
+            out.append(None)                     # hard boundary
+        pos = 0
+        for fm in FADE.finditer(para):
+            for s in sentences(para[pos:fm.start()]):
+                out.extend(break_long(s))
+            out.append(fm.group(0))
+            pos = fm.end()
+        for s in sentences(para[pos:]):
+            out.extend(break_long(s))
+    return out
+
+
 def pages_for(text):
     """None if the node must not be split; else a list of page texts
     (the first carries the directives)."""
     m = DIRECT.match(text)
     pre = m.group(0) if m else ""
     body = text[len(pre):]
-    if len(body) <= LIMIT or "[fade" in body:
+    if len(body) <= LIMIT:
         return None
-    units = []
-    for s in sentences(body):
-        units.extend(break_long(s))
+    units = units_of(body)
     pages, cur = [], ""
     for u in units:
+        if u is None:
+            if cur:
+                pages.append(cur)
+            cur = ""
+            continue
         if cur and len(cur) + 1 + len(u) > TARGET:
             pages.append(cur)
             cur = u

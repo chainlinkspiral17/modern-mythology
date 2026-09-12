@@ -202,9 +202,18 @@ gets too small and cramped. Those may need to be made into multiple."
   unvoiced text page — a node with its own voice, anything that is
   not text, a choice and the scene end still stop it. (Cutting a
   recording mid-sentence on advance was the worse behaviour anyway.)
+- **The author's blank line is a page.** 93 of the long nodes carried
+  `\n\n` paragraph breaks inside them — the Moon's 1,221-character
+  opening had eight — and the first split packed those paragraphs
+  together by sentence count, losing the rhythm the author had set
+  ("He settled in." was meant to stand alone). Redone from the
+  pre-split state: a blank line inside a node is a HARD page
+  boundary, and a `[fade …]…[/fade]` span is one unit rather than a
+  reason not to split at all. 2,155 nodes → 3,460 extra pages (up
+  from 3,306), the World's finale now nine pages of one line each.
 - **The seeder's units are pages now, and that is right.** HOLD_MAX
   and the run measure count nodes; a three-page paragraph is three
-  nodes. Re-seeded vols 5–7 in light mode: 437 cues, chapters with a
+  nodes. Re-seeded vols 5–7 in light mode: 450 cues, chapters with a
   run over 20 PAGES 11 → 4 — cuts land at speaker changes and
   anchors as before, just measured against what is on screen. If the
   Deck says it cuts too often, HOLD_MAX is one constant.

@@ -29,19 +29,35 @@
     },
     {
       "t": "narrate",
-      "text": "[mood:day_bright]Sunlight — thick and syrupy yellow, like old honey — drips through the cypress trees lining the riverbank. Smells like damp earth finally breathing out after holding its breath too long."
+      "text": "[mood:day_bright]Sunlight — thick and syrupy yellow, like old honey — drips through the cypress trees lining the riverbank."
     },
     {
       "t": "narrate",
-      "text": "Smells like wildflowers bein' brave enough to push up through busted pavement. Smells faintly like burnt circuits and ozone if you sniff real hard past the jasmine. The Big Oops is over. Mostly. Ground stopped shakin'."
+      "text": "Smells like damp earth finally breathing out after holding its breath too long. Smells like wildflowers bein' brave enough to push up through busted pavement."
     },
     {
       "t": "narrate",
-      "text": "Sky stopped screamin'. Graustark ain't quite Graustark no more, but it ain't quite gone, neither. Just — different. Like waking up from a real bad fever dream and finding your teeth are all back, but maybe in the wrong order."
+      "text": "Smells faintly like burnt circuits and ozone if you sniff real hard past the jasmine."
     },
     {
       "t": "narrate",
-      "text": "And one of 'em is gold now for some reason nobody's explained, and it hums when you eat mushrooms. Ain't that life."
+      "text": "The Big Oops is over."
+    },
+    {
+      "t": "narrate",
+      "text": "Mostly."
+    },
+    {
+      "t": "narrate",
+      "text": "Ground stopped shakin'. Sky stopped screamin'. Graustark ain't quite Graustark no more, but it ain't quite gone, neither. Just — different."
+    },
+    {
+      "t": "narrate",
+      "text": "Like waking up from a real bad fever dream and finding your teeth are all back, but maybe in the wrong order. And one of 'em is gold now for some reason nobody's explained, and it hums when you eat mushrooms."
+    },
+    {
+      "t": "narrate",
+      "text": "Ain't that life."
     },
     {
       "t": "narrate",
@@ -49,11 +65,19 @@
     },
     {
       "t": "narrate",
-      "text": "That black egg doohickey hangs quiet 'round the neck today — dark and cool against the skin. Not humming like sometimes. Not humming, in fact, since Tuesday. Tuesday last. The Tuesday everything got rearranged."
+      "text": "That black egg doohickey hangs quiet 'round the neck today — dark and cool against the skin. Not humming like sometimes."
     },
     {
       "t": "narrate",
-      "text": "Perched on the ship's broken paddlewheel cover — lookin' for all the world like he owns the place, which maybe he does — sits the Frog. Four feet tall if he's an inch. Cork hat shading those big ol' unblinking eyes."
+      "text": "Not humming, in fact, since Tuesday. Tuesday last. The Tuesday everything got rearranged."
+    },
+    {
+      "t": "narrate",
+      "text": "Perched on the ship's broken paddlewheel cover — lookin' for all the world like he owns the place, which maybe he does — sits the Frog."
+    },
+    {
+      "t": "narrate",
+      "text": "Four feet tall if he's an inch. Cork hat shading those big ol' unblinking eyes."
     },
     {
       "t": "narrate",
@@ -105,7 +129,11 @@
     },
     {
       "t": "narrate",
-      "text": "[shot:establish]He ain't wrong. Up in the ruins, things are stirrin'. You can almost smell the fragile hope mixin' with the mildew."
+      "text": "[shot:establish]He ain't wrong."
+    },
+    {
+      "t": "narrate",
+      "text": "Up in the ruins, things are stirrin'. You can almost smell the fragile hope mixin' with the mildew."
     },
     {
       "t": "narrate",
@@ -137,15 +165,27 @@
     },
     {
       "t": "narrate",
-      "text": "Joanna had not spoken. She had only nodded. The older man had tipped his hat. He had turned. He had walked back down the flagstone path."
+      "text": "Joanna had not spoken. She had only nodded."
     },
     {
       "t": "narrate",
-      "text": "He had, at the gate, paused, looked once over his shoulder at the crow on the roof, and nodded to the crow also. The crow, Joanna had noted, had nodded back. The older man had not, since, returned."
+      "text": "The older man had tipped his hat. He had turned. He had walked back down the flagstone path. He had, at the gate, paused, looked once over his shoulder at the crow on the roof, and nodded to the crow also."
     },
     {
       "t": "narrate",
-      "text": "Joanna had slept, that night, for fourteen hours. The first real sleep in three years. She had, on waking, begun planting."
+      "text": "The crow, Joanna had noted, had nodded back."
+    },
+    {
+      "t": "narrate",
+      "text": "The older man had not, since, returned."
+    },
+    {
+      "t": "narrate",
+      "text": "Joanna had slept, that night, for fourteen hours. The first real sleep in three years."
+    },
+    {
+      "t": "narrate",
+      "text": "[shot:establish]She had, on waking, begun planting."
     },
     {
       "t": "narrate",
@@ -161,11 +201,11 @@
     },
     {
       "t": "narrate",
-      "text": "The younger — Sam for now — chews on a block of lindenwood Philip carved for her, which has a small carved face on one side that grins no matter what angle you hold it at. Talk of another baby on the way, too."
+      "text": "The younger — Sam for now — chews on a block of lindenwood Philip carved for her, which has a small carved face on one side that grins no matter what angle you hold it at."
     },
     {
       "t": "narrate",
-      "text": "Life findin' purchase, stubborn as dandelions."
+      "text": "Talk of another baby on the way, too. Life findin' purchase, stubborn as dandelions."
     },
     {
       "t": "narrate",
@@ -177,11 +217,19 @@
     },
     {
       "t": "narrate",
-      "text": "Maya has read the same paragraph three times. She does not mind. She will read it a fourth. Her grandmother, in Harmony Creek Estates, is fine. Her father, in New Orleans, is alive. Her father has called twice since Tuesday."
+      "text": "Maya has read the same paragraph three times. She does not mind. She will read it a fourth."
     },
     {
       "t": "narrate",
-      "text": "The second call, he had cried. Maya had let him. She had not, yet, forgiven him. But she had listened. Wholesome, like bad medicine that might actually work."
+      "text": "Her grandmother, in Harmony Creek Estates, is fine. Her father, in New Orleans, is alive. Her father has called twice since Tuesday. The second call, he had cried. Maya had let him. She had not, yet, forgiven him."
+    },
+    {
+      "t": "narrate",
+      "text": "But she had listened."
+    },
+    {
+      "t": "narrate",
+      "text": "Wholesome, like bad medicine that might actually work."
     },
     {
       "t": "narrate",
@@ -201,11 +249,11 @@
     },
     {
       "t": "narrate",
-      "text": "Frasier has, in fact, built a small glass case around it, and has sealed the case, and has written a small label beside the case, and the label reads: D'AMBROSIO'S. 1983–2026. REST. Power to illuminate, yeah."
+      "text": "Frasier has, in fact, built a small glass case around it, and has sealed the case, and has written a small label beside the case, and the label reads: D'AMBROSIO'S. 1983–2026. REST."
     },
     {
       "t": "narrate",
-      "text": "Hope he remembers to change the celestial lightbulbs before they burn out."
+      "text": "Power to illuminate, yeah. Hope he remembers to change the celestial lightbulbs before they burn out."
     },
     {
       "t": "show",
@@ -221,11 +269,15 @@
     },
     {
       "t": "narrate",
-      "text": "[shot:insert sinkhole]But it ain't all sunshine and rehabilitated archetypes. This is still Graustark, son. Or what's left of it. Shadows got teeth here. Sometimes, Joanna says, the wind carries phantom brass band music up from the sinkhole's gut."
+      "text": "[shot:insert sinkhole]But it ain't all sunshine and rehabilitated archetypes. This is still Graustark, son. Or what's left of it. Shadows got teeth here."
     },
     {
       "t": "narrate",
-      "text": "Maybe Jimmy Daigle's restless spirit runnin' one last con down there in the dark. Jimmy himself is, last anyone heard, in Arizona. Checked himself into a place."
+      "text": "Sometimes, Joanna says, the wind carries phantom brass band music up from the sinkhole's gut. Maybe Jimmy Daigle's restless spirit runnin' one last con down there in the dark."
+    },
+    {
+      "t": "narrate",
+      "text": "Jimmy himself is, last anyone heard, in Arizona. Checked himself into a place."
     },
     {
       "t": "narrate",
@@ -245,11 +297,15 @@
     },
     {
       "t": "narrate",
-      "text": "Then he had said: I need to sleep for a while, Phil. Couple of days. If that's alright. It had been alright. Doug was, this afternoon, asleep in the finished basement on a cot Philip had made up for him."
+      "text": "Then he had said: I need to sleep for a while, Phil. Couple of days. If that's alright."
     },
     {
       "t": "narrate",
-      "text": "He would, tomorrow or the day after, wake. He would, soon after, begin rebuilding something. Nobody — including Doug — knew yet what."
+      "text": "It had been alright. Doug was, this afternoon, asleep in the finished basement on a cot Philip had made up for him. He would, tomorrow or the day after, wake. He would, soon after, begin rebuilding something."
+    },
+    {
+      "t": "narrate",
+      "text": "Nobody — including Doug — knew yet what."
     },
     {
       "t": "narrate",
@@ -261,7 +317,11 @@
     },
     {
       "t": "narrate",
-      "text": "Watchful. Like finding a perfectly preserved baby doll with glassy eyes staring out from the mud under the Minstral's hull last Tuesday. Gone by Wednesday. Toothy scares tucked under the wholesome quilt."
+      "text": "Watchful."
+    },
+    {
+      "t": "narrate",
+      "text": "[shot:insert steamship]Like finding a perfectly preserved baby doll with glassy eyes staring out from the mud under the Minstral's hull last Tuesday. Gone by Wednesday. Toothy scares tucked under the wholesome quilt."
     },
     {
       "t": "narrate",
@@ -273,7 +333,7 @@
     },
     {
       "t": "narrate",
-      "text": "[shot:establish]Also badly, by his own high standards, but productively, which is a different category. They have been, for six days, sleeping and eating and walking and not talking about any of it. Erica has not checked her email."
+      "text": "Also badly, by his own high standards, but productively, which is a different category. They have been, for six days, sleeping and eating and walking and not talking about any of it. Erica has not checked her email."
     },
     {
       "t": "narrate",
@@ -281,11 +341,15 @@
     },
     {
       "t": "narrate",
-      "text": "Erica has decided that either outcome is, for the first time, acceptable. She has, three times, picked up a Christmas-card-sized sheet of paper and written the words John — I think I'm trying to rearrange something."
+      "text": "Erica has decided that either outcome is, for the first time, acceptable."
     },
     {
       "t": "narrate",
-      "text": "Bear with me. — E. She has, three times, put it down without mailing it. The fourth time, tomorrow, she will mail it."
+      "text": "She has, three times, picked up a Christmas-card-sized sheet of paper and written the words John — I think I'm trying to rearrange something. Bear with me. — E. She has, three times, put it down without mailing it."
+    },
+    {
+      "t": "narrate",
+      "text": "The fourth time, tomorrow, she will mail it."
     },
     {
       "t": "narrate",
@@ -293,7 +357,7 @@
     },
     {
       "t": "narrate",
-      "text": "Anna's lawyer — hastily retained — says the lawsuits will be real but survivable."
+      "text": "[shot:establish]Anna's lawyer — hastily retained — says the lawsuits will be real but survivable."
     },
     {
       "t": "narrate",
@@ -301,7 +365,7 @@
     },
     {
       "t": "narrate",
-      "text": "[shot:insert beam]Antonio D'Ambrosio is, against all expectation, still at Ember & Ash. The cypress beam held. The city inspector has not come back. The gas line got approved on Monday. Lila Bao, the chef, called last week — just to check in."
+      "text": "Antonio D'Ambrosio is, against all expectation, still at Ember & Ash. The cypress beam held. The city inspector has not come back. The gas line got approved on Monday. Lila Bao, the chef, called last week — just to check in."
     },
     {
       "t": "narrate",
@@ -321,11 +385,11 @@
     },
     {
       "t": "narrate",
-      "text": "Natalie David is, in Simons, clearing the spare corner of her apartment. The crib will arrive in six weeks. Elicia Duchane is in New York."
+      "text": "Natalie David is, in Simons, clearing the spare corner of her apartment. The crib will arrive in six weeks."
     },
     {
       "t": "narrate",
-      "text": "She had gotten on a plane in Montreal on Tuesday afternoon and had, on arriving, not gone home to Graustark, because she had realized in the air that home was not quite the right word yet."
+      "text": "Elicia Duchane is in New York. She had gotten on a plane in Montreal on Tuesday afternoon and had, on arriving, not gone home to Graustark, because she had realized in the air that home was not quite the right word yet."
     },
     {
       "t": "narrate",
@@ -333,15 +397,23 @@
     },
     {
       "t": "narrate",
-      "text": "It will, critically, do a thing Elicia had been waiting her whole life to have done about her. It will be, for the first time, enough. John Frank is on a plane."
+      "text": "It will, critically, do a thing Elicia had been waiting her whole life to have done about her. It will be, for the first time, enough."
     },
     {
       "t": "narrate",
-      "text": "[shot:establish]He does not, at this moment, know where he is going, only that he is going. The flight is to Houston. From Houston he will, he suspects, rent a car. The car will drive itself, he suspects, in the direction it needs to go."
+      "text": "John Frank is on a plane."
     },
     {
       "t": "narrate",
-      "text": "He has been told, by the Texas number whose thread he has now re-opened, that she is okay for now but that soon is a horizon as short as six months. She is the Third Consciousness. He does not know her name yet."
+      "text": "He does not, at this moment, know where he is going, only that he is going. The flight is to Houston. From Houston he will, he suspects, rent a car. The car will drive itself, he suspects, in the direction it needs to go."
+    },
+    {
+      "t": "narrate",
+      "text": "He has been told, by the Texas number whose thread he has now re-opened, that she is okay for now but that soon is a horizon as short as six months."
+    },
+    {
+      "t": "narrate",
+      "text": "She is the Third Consciousness. He does not know her name yet."
     },
     {
       "t": "narrate",
@@ -387,7 +459,15 @@
     },
     {
       "t": "narrate",
-      "text": "Looks back at the Frog — the Liar King, the grumpy gatekeeper. Smiled. A real smile this time. Maybe. Feels — ready."
+      "text": "Looks back at the Frog — the Liar King, the grumpy gatekeeper."
+    },
+    {
+      "t": "narrate",
+      "text": "Smiled. A real smile this time. Maybe."
+    },
+    {
+      "t": "narrate",
+      "text": "Feels — ready."
     },
     {
       "t": "narrate",
@@ -399,7 +479,11 @@
     },
     {
       "t": "narrate",
-      "text": "[beat:still]The Frog thinks, in the small private language Frogs use for thinking:\n\nThe old one has two more errands. One short. One long. After that, I take over again. It will be, by then, the right time."
+      "text": "[beat:still]The Frog thinks, in the small private language Frogs use for thinking:"
+    },
+    {
+      "t": "narrate",
+      "text": "The old one has two more errands. One short. One long. After that, I take over again. It will be, by then, the right time."
     },
     {
       "t": "narrate",
@@ -415,11 +499,15 @@
     },
     {
       "t": "narrate",
-      "text": "[mood:macro_haze][shot:insert smoke_ring~]He lights the cigarette. He inhales. He exhales a smoke ring."
+      "text": "[mood:macro_haze][shot:insert smoke_ring~]He lights the cigarette. He inhales."
     },
     {
       "t": "narrate",
-      "text": "The smoke ring drifts over the water and, before it dissipates, passes through a single pink wildflower growing at the river's edge, where no wildflower had grown a week ago. The flower does not move. The smoke does not bend."
+      "text": "He exhales a smoke ring. The smoke ring drifts over the water and, before it dissipates, passes through a single pink wildflower growing at the river's edge, where no wildflower had grown a week ago. The flower does not move."
+    },
+    {
+      "t": "narrate",
+      "text": "The smoke does not bend."
     },
     {
       "t": "narrate",
@@ -479,19 +567,23 @@
     },
     {
       "t": "narrate",
-      "text": "You don't have to hurry. But you are next. Sofia sat up in her bed. She did not, for a long minute, know where she was. Then she did."
+      "text": "You don't have to hurry. But you are next."
     },
     {
       "t": "narrate",
-      "text": "Then she got up, and crossed to her window, and looked out at her city, and watched the morning light move over the favela below. She had been having dreams like this for a month. She did not know what they were about."
+      "text": "Sofia sat up in her bed. She did not, for a long minute, know where she was. Then she did. Then she got up, and crossed to her window, and looked out at her city, and watched the morning light move over the favela below."
     },
     {
       "t": "narrate",
-      "text": "She suspected she was going to find out. In a notebook on her nightstand — a notebook she had only recently begun to keep — she wrote, in Portuguese: I had the dream again. The man with the bomber jacket."
+      "text": "She had been having dreams like this for a month. She did not know what they were about. She suspected she was going to find out."
     },
     {
       "t": "narrate",
-      "text": "The riverboat in the glass case. This time he said don't hurry. She closed the notebook. She put it back. She got dressed. She went out into her city to go to work."
+      "text": "In a notebook on her nightstand — a notebook she had only recently begun to keep — she wrote, in Portuguese: I had the dream again. The man with the bomber jacket. The riverboat in the glass case. This time he said don't hurry."
+    },
+    {
+      "t": "narrate",
+      "text": "[shot:insert notebook]She closed the notebook. She put it back. She got dressed. She went out into her city to go to work."
     },
     {
       "t": "narrate",
@@ -503,19 +595,31 @@
     },
     {
       "t": "narrate",
-      "text": "[shot:insert steamship]was sitting at the edge of a pier looking out at a rusted steamship that had been relocated from Louisiana and set here because the museum's curator had, at the last minute, changed his mind about the grand opening and had driven the steamship and his own life directly into the sea."
+      "text": "was sitting at the edge of a pier looking out at a rusted steamship that had been relocated from Louisiana and set here because the museum's curator had, at the last minute, changed his mind about the grand opening and had driven the steamship and his own life directly into the sea."
     },
     {
       "t": "narrate",
-      "text": "The steamship was called the Minstral's Green. The young woman was reading a book. The book was a small self-published novel nobody she knew had read."
+      "text": "The steamship was called the Minstral's Green."
     },
     {
       "t": "narrate",
-      "text": "The novel was written, she had discovered by accident, by a journalist named John Frank. The novel was dedicated to a girl named Sofia whom the author had never met."
+      "text": "The young woman was reading a book. The book was a small self-published novel nobody she knew had read. The novel was written, she had discovered by accident, by a journalist named John Frank."
     },
     {
       "t": "narrate",
-      "text": "The young woman — her name, she had lately been telling people, was Tem — was reading the novel for the third time. She was, without yet knowing it, waiting. Soon, she would find out what for."
+      "text": "The novel was dedicated to a girl named Sofia whom the author had never met."
+    },
+    {
+      "t": "narrate",
+      "text": "The young woman — her name, she had lately been telling people, was Tem — was reading the novel for the third time."
+    },
+    {
+      "t": "narrate",
+      "text": "She was, without yet knowing it, waiting."
+    },
+    {
+      "t": "narrate",
+      "text": "[shot:establish]Soon, she would find out what for."
     },
     {
       "t": "narrate",
@@ -546,20 +650,64 @@
     {
       "t": "say",
       "c": "frog",
-      "text": "Then: Smolvud. The coast. Kai and the ferret. Lena and her octopus. Finn and his crow. My favorite little triumvirate. Real scrappy, that bunch.",
+      "text": "[shot:closeup person]Then: Smolvud. The coast. Kai and the ferret. Lena and her octopus. Finn and his crow. My favorite little triumvirate. Real scrappy, that bunch.",
       "char": "joanna"
     },
     {
       "t": "narrate",
-      "text": "[beat:lift]He thought, without saying out loud: and then, eventually, back to me. Back to this river. Back to this seat. Back to the next child.\n\nHe tipped his cork hat down over his eyes.\n\nHe settled in.\n\nThe afternoon light moved slowly over the water.\n\nGraustark, what was left of it, continued the small brave work of being.\n\nSomewhere upriver, a crow cried once and was answered, faintly, from the far side of the water.\n\nThe World card, pinned to the top of the deck, hummed a last low note —\n\n[fade start=4 length=14]— and turned over.[/fade]"
+      "text": "[beat:lift]He thought, without saying out loud: and then, eventually, back to me. Back to this river. Back to this seat. Back to the next child."
     },
     {
       "t": "narrate",
-      "text": "[shot:establish~]End of Act One. The Major Arcana has been laid. The Triumvirate has scattered. The Calamity has fallen and lifted. The Third Consciousness is en route. The Frog is at his post. The Lovers are reweaving. The Hermit is planting."
+      "text": "He tipped his cork hat down over his eyes."
     },
     {
       "t": "narrate",
-      "text": "The Hierophant is adjusting his tie for a new season. The Wheel is, as always, spinning. Take a breath. The screen goes dark. An interlude follows."
+      "text": "He settled in."
+    },
+    {
+      "t": "narrate",
+      "text": "The afternoon light moved slowly over the water."
+    },
+    {
+      "t": "narrate",
+      "text": "Graustark, what was left of it, continued the small brave work of being."
+    },
+    {
+      "t": "narrate",
+      "text": "Somewhere upriver, a crow cried once and was answered, faintly, from the far side of the water."
+    },
+    {
+      "t": "narrate",
+      "text": "The World card, pinned to the top of the deck, hummed a last low note —"
+    },
+    {
+      "t": "narrate",
+      "text": "[fade start=4 length=14]— and turned over.[/fade]"
+    },
+    {
+      "t": "narrate",
+      "text": "[shot:establish~]End of Act One."
+    },
+    {
+      "t": "narrate",
+      "text": "The Major Arcana has been laid. The Triumvirate has scattered. The Calamity has fallen and lifted. The Third Consciousness is en route. The Frog is at his post. The Lovers are reweaving. The Hermit is planting."
+    },
+    {
+      "t": "narrate",
+      "text": "The Hierophant is adjusting his tie for a new season. The Wheel is, as always, spinning."
+    },
+    {
+      "t": "narrate",
+      "text": "Take a breath."
+    },
+    {
+      "t": "narrate",
+      "text": "The screen goes dark."
+    },
+    {
+      "t": "narrate",
+      "text": "An interlude follows."
     },
     {
       "t": "end"

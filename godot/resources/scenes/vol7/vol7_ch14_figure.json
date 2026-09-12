@@ -275,7 +275,15 @@
       "t": "narrate"
     },
     {
-      "text": "The figure turned. The figure walked around the corner of the laundromat. The corner was — by what Lena could see at the angle — a corner with no destination, because the wall continued past it into the brick wall of the building behind. The figure walked into the brick. The figure walked into the brick [fade start=4 length=14]and was gone[/fade].",
+      "text": "The figure turned. The figure walked around the corner of the laundromat.",
+      "t": "narrate"
+    },
+    {
+      "text": "The corner was — by what Lena could see at the angle — a corner with no destination, because the wall continued past it into the brick wall of the building behind. The figure walked into the brick. The figure walked into the brick",
+      "t": "narrate"
+    },
+    {
+      "text": "[fade start=4 length=14]and was gone[/fade] .",
       "t": "narrate"
     },
     {

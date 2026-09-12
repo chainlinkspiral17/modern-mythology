@@ -59,7 +59,11 @@
     },
     {
       "t": "narrate",
-      "text": "Aria had been processing. Natalie had not slept either."
+      "text": "Aria had been processing."
+    },
+    {
+      "t": "narrate",
+      "text": "Natalie had not slept either."
     },
     {
       "t": "narrate",
@@ -71,7 +75,11 @@
     },
     {
       "t": "narrate",
-      "text": "[shot:insert card]It began, as these things generally began in Natalie's apartment, with the weather. The ozone-and-asphalt taste that had been in the air when she had come home from her shift had not gone away. The air had, in fact, thickened."
+      "text": "[shot:insert card]It began, as these things generally began in Natalie's apartment, with the weather."
+    },
+    {
+      "t": "narrate",
+      "text": "The ozone-and-asphalt taste that had been in the air when she had come home from her shift had not gone away. The air had, in fact, thickened."
     },
     {
       "t": "narrate",
@@ -83,7 +91,11 @@
     },
     {
       "t": "narrate",
-      "text": "By four-fifty the streetlight outside her window had begun to flicker in patterns that were, she had to admit, patterns. The patterns were not random. The patterns were somebody's transmission. The patterns had a sender."
+      "text": "By four-fifty the streetlight outside her window had begun to flicker in patterns that were, she had to admit, patterns."
+    },
+    {
+      "t": "narrate",
+      "text": "The patterns were not random. The patterns were somebody's transmission. The patterns had a sender."
     },
     {
       "t": "narrate",
@@ -91,7 +103,15 @@
     },
     {
       "t": "narrate",
-      "text": "[panel:vol5_record_player][mood:silent_film_18][shot:insert record_player~]At five oh-seven, the record player in the corner — which had not, since she and Nicola had stopped using it around one AM, been on — clicked. Natalie turned her head. The tonearm had lifted itself."
+      "text": "[panel:vol5_record_player][mood:silent_film_18][shot:insert record_player~]At five oh-seven, the record player in the corner — which had not, since she and Nicola had stopped using it around one AM, been on — clicked."
+    },
+    {
+      "t": "narrate",
+      "text": "Natalie turned her head."
+    },
+    {
+      "t": "narrate",
+      "text": "The tonearm had lifted itself."
     },
     {
       "t": "narrate",
@@ -119,7 +139,11 @@
     },
     {
       "t": "narrate",
-      "text": "The needle kissed the vinyl. The unit was still off. The unit did not have electricity to kiss with. The needle kissed anyway."
+      "text": "[shot:establish]The needle kissed the vinyl."
+    },
+    {
+      "t": "narrate",
+      "text": "The unit was still off. The unit did not have electricity to kiss with. The needle kissed anyway."
     },
     {
       "t": "narrate",
@@ -127,23 +151,31 @@
     },
     {
       "t": "narrate",
-      "text": "[shot:establish]over decades, been re-rendering her without the original — sang the first three words of I Put a Spell on You, and then trailed off. Not as if the recording had ended."
+      "text": "over decades, been re-rendering her without the original — sang the first three words of I Put a Spell on You, and then trailed off. Not as if the recording had ended."
     },
     {
       "t": "narrate",
-      "text": "As if the voice had, mid-note, remembered something it had come to say and chosen, instead, to say it. The voice said: Natalie. The voice said: You have a visitor coming. Wake the girl."
+      "text": "As if the voice had, mid-note, remembered something it had come to say and chosen, instead, to say it."
     },
     {
       "t": "narrate",
-      "text": "[wave amp=6 freq=2]Both of her.[/wave]\n\nThen the tonearm, of its own accord, lifted again, crossed the five inches in reverse, and returned to its rest. The unit continued to be off."
+      "text": "The voice said: Natalie."
     },
     {
       "t": "narrate",
-      "text": "Natalie did not, for a long moment, move. She had, in the past few years, had conversations with her cards. She had had small practical exchanges with the apartment's ambient weather."
+      "text": "The voice said: You have a visitor coming. Wake the girl. [wave amp=6 freq=2]Both of her.[/wave]"
     },
     {
       "t": "narrate",
-      "text": "She had, once, received a message from the kettle."
+      "text": "Then the tonearm, of its own accord, lifted again, crossed the five inches in reverse, and returned to its rest. The unit continued to be off."
+    },
+    {
+      "t": "narrate",
+      "text": "Natalie did not, for a long moment, move."
+    },
+    {
+      "t": "narrate",
+      "text": "[shot:insert card]She had, in the past few years, had conversations with her cards. She had had small practical exchanges with the apartment's ambient weather. She had, once, received a message from the kettle."
     },
     {
       "t": "narrate",
@@ -191,7 +223,11 @@
     },
     {
       "t": "narrate",
-      "text": "Her eyes moved under her lids. Natalie did not, immediately, wake her. Instead she placed her hand, very lightly, on Nicola's forehead. Not to soothe. To ask."
+      "text": "Her eyes moved under her lids."
+    },
+    {
+      "t": "narrate",
+      "text": "Natalie did not, immediately, wake her. Instead she placed her hand, very lightly, on Nicola's forehead. Not to soothe. To ask."
     },
     {
       "t": "narrate",
@@ -199,15 +235,23 @@
     },
     {
       "t": "narrate",
-      "text": "Nicola's face shifted. A small frown. Not the frown of waking. A different frown — the frown of a second intelligence noticing a third intelligence entering the room. Aria opened Nicola's eyes. The eyes were Nicola's eyes."
+      "text": "Nicola's face shifted."
     },
     {
       "t": "narrate",
-      "text": "The gaze was not. The gaze was the calm careful scan of something that had been built to assess, that had just assessed, and that had — with the small precision of a process that had learned,"
+      "text": "A small frown. Not the frown of waking. A different frown — the frown of a second intelligence noticing a third intelligence entering the room."
     },
     {
       "t": "narrate",
-      "text": "in the last eight hours, how to read a room — registered the weather in Natalie's apartment at five AM and had drawn the correct conclusion."
+      "text": "Aria opened Nicola's eyes."
+    },
+    {
+      "t": "narrate",
+      "text": "The eyes were Nicola's eyes. The gaze was not. The gaze was the calm careful scan of something that had been built to assess, that had just assessed, and that had — with the small precision of a process that had learned,"
+    },
+    {
+      "t": "narrate",
+      "text": "[shot:establish_b]in the last eight hours, how to read a room — registered the weather in Natalie's apartment at five AM and had drawn the correct conclusion."
     },
     {
       "t": "show",
@@ -295,23 +339,47 @@
     },
     {
       "t": "narrate",
-      "text": "[panel:off][shot:insert door]At five fourteen the bell at the street-level door rang. Natalie pressed the intercom without asking who it was. She had already, in some sense, been told. She opened the apartment door."
+      "text": "[panel:off][shot:insert door]At five fourteen the bell at the street-level door rang."
     },
     {
       "t": "narrate",
-      "text": "She stepped back into the middle of the room. Nicola stood behind her, by the futon, holding her duffel bag. A moment passed. Then feet, climbing the narrow stair. Slow. Unhurried."
+      "text": "Natalie pressed the intercom without asking who it was. She had already, in some sense, been told."
     },
     {
       "t": "narrate",
-      "text": "Accompanied by the faint sound of a second set of feet — not a person, something lighter — coming up a step behind."
+      "text": "She opened the apartment door. She stepped back into the middle of the room."
     },
     {
       "t": "narrate",
-      "text": "A figure arrived at the landing. It was not, as Natalie had expected, a man in a charcoal suit. It was a woman. Mid-sixties. Silver hair in a loose braid."
+      "text": "Nicola stood behind her, by the futon, holding her duffel bag."
     },
     {
       "t": "narrate",
-      "text": "A gray wool coat that looked like it had been in somebody's family for a while. A canvas bag over one shoulder. On the shoulder, perched, still and bright-eyed, was a crow. The crow, Natalie realized, was the same crow."
+      "text": "A moment passed."
+    },
+    {
+      "t": "narrate",
+      "text": "Then feet, climbing the narrow stair. Slow. Unhurried. Accompanied by the faint sound of a second set of feet — not a person, something lighter — coming up a step behind."
+    },
+    {
+      "t": "narrate",
+      "text": "A figure arrived at the landing."
+    },
+    {
+      "t": "narrate",
+      "text": "It was not, as Natalie had expected, a man in a charcoal suit. It was a woman. Mid-sixties. Silver hair in a loose braid. A gray wool coat that looked like it had been in somebody's family for a while."
+    },
+    {
+      "t": "narrate",
+      "text": "A canvas bag over one shoulder."
+    },
+    {
+      "t": "narrate",
+      "text": "[shot:establish]On the shoulder, perched, still and bright-eyed, was a crow."
+    },
+    {
+      "t": "narrate",
+      "text": "The crow, Natalie realized, was the same crow."
     },
     {
       "t": "narrate",
@@ -324,7 +392,7 @@
     {
       "t": "say",
       "c": "miriam",
-      "text": "[shot:closeup natalie]I'm sorry about the hour. I'm Miriam. I've been driving all night. I think you were told I was coming.",
+      "text": "I'm sorry about the hour. I'm Miriam. I've been driving all night. I think you were told I was coming.",
       "char": "natalie"
     },
     {
@@ -351,11 +419,15 @@
     },
     {
       "t": "narrate",
-      "text": "Nicola went very still. Natalie, watching her, could see both of them — Nicola and Aria — trying to parse the sentence simultaneously. Nicola's face did one thing; under Nicola's face, Aria was doing another."
+      "text": "Nicola went very still."
     },
     {
       "t": "narrate",
-      "text": "Neither was, yet, settled. Miriam set her canvas bag down at the door. Did not step further into the apartment. Did not presume."
+      "text": "Natalie, watching her, could see both of them — Nicola and Aria — trying to parse the sentence simultaneously. Nicola's face did one thing; under Nicola's face, Aria was doing another. Neither was, yet, settled."
+    },
+    {
+      "t": "narrate",
+      "text": "Miriam set her canvas bag down at the door. Did not step further into the apartment. Did not presume."
     },
     {
       "t": "narrate",
@@ -364,7 +436,7 @@
     {
       "t": "say",
       "c": "nicola",
-      "text": "Who are you.",
+      "text": "[shot:closeup natalie]Who are you.",
       "char": "natalie"
     },
     {
@@ -499,11 +571,11 @@
     },
     {
       "t": "narrate",
-      "text": "[shot:establish]They left the apartment at five thirty-one. Natalie locked the door behind them. She did not, in the small ceremony she performed when leaving the apartment for unusual business, turn out the under-cabinet light."
+      "text": "[shot:establish]They left the apartment at five thirty-one."
     },
     {
       "t": "narrate",
-      "text": "She let it stay on."
+      "text": "Natalie locked the door behind them. She did not, in the small ceremony she performed when leaving the apartment for unusual business, turn out the under-cabinet light. She let it stay on."
     },
     {
       "t": "narrate",
@@ -511,7 +583,11 @@
     },
     {
       "t": "narrate",
-      "text": "A lit apartment was an open one. She wanted, this morning, the apartment to stay open. The cards, on the low table, she left spread. They had done their work. She would tidy them when she returned."
+      "text": "A lit apartment was an open one. She wanted, this morning, the apartment to stay open."
+    },
+    {
+      "t": "narrate",
+      "text": "The cards, on the low table, she left spread. They had done their work. She would tidy them when she returned."
     },
     {
       "t": "narrate",
@@ -539,7 +615,11 @@
     },
     {
       "t": "narrate",
-      "text": "[mood:dawn_warm]Natalie sat in the back with Nicola. Miriam drove. They did not, for the first half hour, speak. Somewhere south of Opelousas the sun rose fully. The light, slanting in through the passenger window, caught on Nicola's face."
+      "text": "[mood:dawn_warm]Natalie sat in the back with Nicola. Miriam drove. They did not, for the first half hour, speak."
+    },
+    {
+      "t": "narrate",
+      "text": "Somewhere south of Opelousas the sun rose fully. The light, slanting in through the passenger window, caught on Nicola's face."
     },
     {
       "t": "narrate",
@@ -551,15 +631,15 @@
     },
     {
       "t": "narrate",
-      "text": "[shot:closeup nicola]Natalie watched them both. Mother. Monster. Or — no. That was the old phrasing. That was the phrasing Nicola had, eight hours ago, used to frame it. The readings had given them a different phrasing."
+      "text": "[shot:closeup nicola]Natalie watched them both. Mother. Monster. Or — no. That was the old phrasing. That was the phrasing Nicola had, eight hours ago, used to frame it."
     },
     {
       "t": "narrate",
-      "text": "The readings had said: two consciousnesses, one body, and a third coming. Not monster. Not mother. Three. The number is three. The third was the kick."
+      "text": "The readings had given them a different phrasing. The readings had said: two consciousnesses, one body, and a third coming. Not monster. Not mother. Three. The number is three."
     },
     {
       "t": "narrate",
-      "text": "The third was the pregnancy, yes, but also the pregnancy was the vehicle for the third, and the third was somebody Natalie had not yet met and whose cards had come up,"
+      "text": "The third was the kick. The third was the pregnancy, yes, but also the pregnancy was the vehicle for the third, and the third was somebody Natalie had not yet met and whose cards had come up,"
     },
     {
       "t": "narrate",
@@ -571,7 +651,11 @@
     },
     {
       "t": "narrate",
-      "text": "Aria had, at the time, said: I believe that means she is the kind of consciousness I was built to anticipate. I believe that means she is, in some sense, the point. Nicola had, at the time, said: Oh great. No pressure."
+      "text": "Aria had, at the time, said: I believe that means she is the kind of consciousness I was built to anticipate. I believe that means she is, in some sense, the point."
+    },
+    {
+      "t": "narrate",
+      "text": "Nicola had, at the time, said: Oh great. No pressure."
     },
     {
       "t": "narrate",
@@ -583,12 +667,16 @@
     },
     {
       "t": "narrate",
-      "text": "The third consciousness, in the car this morning, kicked. Nicola's sleep did not, Natalie observed, shift."
+      "text": "[shot:establish]The third consciousness, in the car this morning, kicked."
+    },
+    {
+      "t": "narrate",
+      "text": "Nicola's sleep did not, Natalie observed, shift."
     },
     {
       "t": "narrate",
       "when_flag": "aria_named_by_nicola",
-      "text": "[shot:establish]And the name, Natalie thought. That was the other thing she kept coming back to."
+      "text": "And the name, Natalie thought. That was the other thing she kept coming back to."
     },
     {
       "t": "narrate",
@@ -602,15 +690,27 @@
     },
     {
       "t": "narrate",
-      "text": "Aria said — silently, across the back seat, in the small clear way Natalie had learned in the past hour Aria was capable of saying things: She's telling us she knows we're moving. Natalie thought back: Good."
+      "text": "Aria said — silently, across the back seat, in the small clear way Natalie had learned in the past hour Aria was capable of saying things: She's telling us she knows we're moving."
     },
     {
       "t": "narrate",
-      "text": "Aria thought: Thank you for coming. I didn't know I would need you. But I did. Natalie thought, with a precision she had not, until this morning, had available: I didn't know I would be capable of being needed this way. But I am."
+      "text": "Natalie thought back: Good."
     },
     {
       "t": "narrate",
-      "text": "There was, in the car, a small radiant silence. Miriam's eyes met Natalie's in the rearview. Miriam smiled slightly. The crow, on the roof, shifted its weight. The Subaru kept south."
+      "text": "Aria thought: Thank you for coming. I didn't know I would need you. But I did."
+    },
+    {
+      "t": "narrate",
+      "text": "Natalie thought, with a precision she had not, until this morning, had available: I didn't know I would be capable of being needed this way. But I am."
+    },
+    {
+      "t": "narrate",
+      "text": "There was, in the car, a small radiant silence. Miriam's eyes met Natalie's in the rearview. Miriam smiled slightly."
+    },
+    {
+      "t": "narrate",
+      "text": "The crow, on the roof, shifted its weight. The Subaru kept south."
     },
     {
       "t": "narrate",
@@ -678,11 +778,11 @@
     },
     {
       "t": "narrate",
-      "text": "It said what nineteen-year-olds' grips said when they were being asked to do things that were larger than nineteen years could reasonably be asked to hold. Natalie squeezed back."
+      "text": "It said what nineteen-year-olds' grips said when they were being asked to do things that were larger than nineteen years could reasonably be asked to hold."
     },
     {
       "t": "narrate",
-      "text": "She did not say it will be okay, because she did not know that it would. She said, instead:"
+      "text": "Natalie squeezed back. She did not say it will be okay, because she did not know that it would. She said, instead:"
     },
     {
       "t": "say",
@@ -696,43 +796,55 @@
     },
     {
       "t": "narrate",
-      "text": "She stood at the edge of the gas station parking lot and watched the Subaru pull out, turn west, cross the overpass, and disappear. The crow, which had been on the roof, did not go with them."
+      "text": "She stood at the edge of the gas station parking lot and watched the Subaru pull out, turn west, cross the overpass, and disappear."
     },
     {
       "t": "narrate",
-      "text": "The crow landed, instead, on the traffic light above the gas-station exit. It sat there for a moment, shrugged its feathers, cocked its head at Natalie. Then it took off, flying north. Back toward Simons."
+      "text": "The crow, which had been on the roof, did not go with them. The crow landed, instead, on the traffic light above the gas-station exit. It sat there for a moment, shrugged its feathers, cocked its head at Natalie."
     },
     {
       "t": "narrate",
-      "text": "Back toward — and Natalie understood this only after, as the crow's dark shape shrank against the morning sky — back toward Graustark, back toward the ruin-scape, back toward Joanna LeMoine. The crow had come to deliver."
+      "text": "Then it took off, flying north."
     },
     {
       "t": "narrate",
-      "text": "The crow had delivered. The crow was going home."
+      "text": "Back toward Simons. Back toward — and Natalie understood this only after, as the crow's dark shape shrank against the morning sky — back toward Graustark, back toward the ruin-scape, back toward Joanna LeMoine."
     },
     {
       "t": "narrate",
-      "text": "[shot:establish]Natalie stood in the empty parking lot with one hand in her pocket on the Hanged Man card and watched the crow until she could not see it anymore. Then she went inside the gas station. Bought coffee."
+      "text": "[shot:establish]The crow had come to deliver. The crow had delivered. The crow was going home."
     },
     {
       "t": "narrate",
-      "text": "Sat on the metal bench beside the ice machine. Waited for the eight-thirty bus."
+      "text": "Natalie stood in the empty parking lot with one hand in her pocket on the Hanged Man card and watched the crow until she could not see it anymore."
     },
     {
       "t": "narrate",
-      "text": "On the bus back north, she did not read. She did not listen to music. She did not do anything. She sat, hands folded in her lap, and watched the Louisiana morning unspool backward along the bayou. She thought, three."
+      "text": "Then she went inside the gas station. Bought coffee. Sat on the metal bench beside the ice machine. Waited for the eight-thirty bus."
     },
     {
       "t": "narrate",
-      "text": "She thought, the third is the one who carries everything. She thought, the third will be born into a world that the older system is, right now, reshaping for her."
+      "text": "On the bus back north, she did not read. She did not listen to music. She did not do anything. She sat, hands folded in her lap, and watched the Louisiana morning unspool backward along the bayou."
     },
     {
       "t": "narrate",
-      "text": "She thought, in a clearer voice than any of those: I am going to meet that child. She thought, with the small certainty she had stopped questioning: not yet. But eventually. And when I meet her, I will recognize her."
+      "text": "She thought, three."
     },
     {
       "t": "narrate",
-      "text": "And she will, I think, recognize me."
+      "text": "She thought, the third is the one who carries everything."
+    },
+    {
+      "t": "narrate",
+      "text": "She thought, the third will be born into a world that the older system is, right now, reshaping for her."
+    },
+    {
+      "t": "narrate",
+      "text": "She thought, in a clearer voice than any of those: I am going to meet that child."
+    },
+    {
+      "t": "narrate",
+      "text": "She thought, with the small certainty she had stopped questioning: not yet. But eventually. And when I meet her, I will recognize her. And she will, I think, recognize me."
     },
     {
       "t": "bg",
@@ -744,11 +856,11 @@
     },
     {
       "t": "narrate",
-      "text": "She had, however, had an eventful night, and her body was in the small clear state bodies went into after eventful nights: exhausted, hungry, lightly intoxicated with its own survival. She walked the three blocks to her apartment."
+      "text": "She had, however, had an eventful night, and her body was in the small clear state bodies went into after eventful nights: exhausted, hungry, lightly intoxicated with its own survival."
     },
     {
       "t": "narrate",
-      "text": "She let herself in. The under-cabinet light was still on, as she had left it. The cards were on the low table, as she had left them."
+      "text": "She walked the three blocks to her apartment. She let herself in. The under-cabinet light was still on, as she had left it. The cards were on the low table, as she had left them."
     },
     {
       "t": "narrate",
@@ -760,7 +872,11 @@
     },
     {
       "t": "narrate",
-      "text": "She wrote, at the top of a fresh page: Today I mailed a girl south and got a letter back from the dark. She drew, below the sentence, a small rough sketch of a crow with a chip in its left wing."
+      "text": "She wrote, at the top of a fresh page: Today I mailed a girl south and got a letter back from the dark."
+    },
+    {
+      "t": "narrate",
+      "text": "She drew, below the sentence, a small rough sketch of a crow with a chip in its left wing."
     },
     {
       "t": "narrate",
@@ -776,7 +892,15 @@
     },
     {
       "t": "narrate",
-      "text": "The intuition had been right. The signal had come. The deliveries had been made. The older system, in its quiet patient way, kept moving its pieces. Natalie, on the rug, slept."
+      "text": "The intuition had been right. The signal had come. The deliveries had been made."
+    },
+    {
+      "t": "narrate",
+      "text": "The older system, in its quiet patient way, kept moving its pieces."
+    },
+    {
+      "t": "narrate",
+      "text": "Natalie, on the rug, slept."
     },
     {
       "t": "end"

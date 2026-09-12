@@ -1625,12 +1625,16 @@ directives and `voice` stay on the first page; `char` / `expr` / flag
 gates copy to every page; choice `goto` / `check` and jump `goto`
 re-pointed to first pages; raw spans spliced via raw_decode (211 of
 313 files do not round-trip), parsed before writing. 2,155 nodes in
-226 files → 3,306 extra pages; every scene gate green; two audits that
+226 files → 3,460 extra pages (redone once: a blank line inside a
+node is a hard page boundary — the Moon's opening had eight and the
+first pass had packed them by sentence count; a [fade] span is one
+unit, not a reason to leave 549 characters whole); every scene gate
+green; two audits that
 counted in nodes now count in what they meant (four pages, 450
 characters). New gate `page_length_audit.py` at zero. Follow-through:
 `_advance` stopped the voice on every page (a recording is the whole
 passage, on page one) — it now plays on while the next node is an
-unvoiced text page; and vols 5–7 re-seeded in page units (437 cues;
+unvoiced text page; and vols 5–7 re-seeded in page units (450 cues;
 chapters with a run over 20 pages 11 → 4). NEXT (Deck): is 230 the
 right page at 34 px, or does a page want three lines rather than four?
 Does the seeder now cut too often? Two constants (TARGET, HOLD_MAX).

@@ -43,7 +43,11 @@
     },
     {
       "t": "narrate",
-      "text": "It was a Tuesday morning in late May, and John Frank was at Café Olimpico on Saint-Viateur. He had been coming here on Tuesdays for six years. The café had been here for fifty."
+      "text": "[shot:establish]It was a Tuesday morning in late May, and John Frank was at Café Olimpico on Saint-Viateur."
+    },
+    {
+      "t": "narrate",
+      "text": "He had been coming here on Tuesdays for six years. The café had been here for fifty."
     },
     {
       "t": "narrate",
@@ -63,7 +67,11 @@
     },
     {
       "t": "narrate",
-      "text": "Café Olimpico had dust motes, and had had them for fifty years, and the dust motes were part of what you paid for — performed their intricate silent ballet in the shaft. He watched the dust motes for a long time."
+      "text": "Café Olimpico had dust motes, and had had them for fifty years, and the dust motes were part of what you paid for — performed their intricate silent ballet in the shaft."
+    },
+    {
+      "t": "narrate",
+      "text": "He watched the dust motes for a long time."
     },
     {
       "t": "narrate",
@@ -71,7 +79,11 @@
     },
     {
       "t": "narrate",
-      "text": "Elicia was, at this moment, twelve minutes late. Which was — to be fair, if fairness still applied to Elicia Duchane and her relationship with the concept of time — not late by any standard Elicia recognized as binding."
+      "text": "Elicia was, at this moment, twelve minutes late."
+    },
+    {
+      "t": "narrate",
+      "text": "Which was — to be fair, if fairness still applied to Elicia Duchane and her relationship with the concept of time — not late by any standard Elicia recognized as binding."
     },
     {
       "t": "narrate",
@@ -83,7 +95,7 @@
     },
     {
       "t": "narrate",
-      "text": "the quiet protective stance of arriving on time himself and then using the waiting period for his own work, so that if Elicia did not arrive he had at least not lost the hour."
+      "text": "[shot:establish_b]the quiet protective stance of arriving on time himself and then using the waiting period for his own work, so that if Elicia did not arrive he had at least not lost the hour."
     },
     {
       "t": "narrate",
@@ -91,7 +103,11 @@
     },
     {
       "t": "narrate",
-      "text": "She had answered his three-week-old email, seven months ago, with one word: Yes. He had, the following Tuesday, arrived at the café at ten. She had arrived at ten forty-three."
+      "text": "She had answered his three-week-old email, seven months ago, with one word: Yes."
+    },
+    {
+      "t": "narrate",
+      "text": "He had, the following Tuesday, arrived at the café at ten. She had arrived at ten forty-three."
     },
     {
       "t": "narrate",
@@ -197,7 +213,11 @@
     },
     {
       "t": "narrate",
-      "text": "Seven months could, however, temper — the word that his own card had given him as a gift, the word he had been using for some time as his practical ethic. Elicia had, in the seven months, been evicted (as predicted)."
+      "text": "Seven months could, however, temper — the word that his own card had given him as a gift, the word he had been using for some time as his practical ethic."
+    },
+    {
+      "t": "narrate",
+      "text": "Elicia had, in the seven months, been evicted (as predicted)."
     },
     {
       "t": "narrate",
@@ -221,11 +241,11 @@
     },
     {
       "t": "narrate",
-      "text": "[shot:insert hands]Not to the painter boyfriend (new, cautious, a carpenter named Luc, who worked with his hands and who did not, John understood, know about the footage). Not to anyone. The footage was waiting. She was waiting with it."
+      "text": "[shot:insert hands]Not to the painter boyfriend (new, cautious, a carpenter named Luc, who worked with his hands and who did not, John understood, know about the footage). Not to anyone."
     },
     {
       "t": "narrate",
-      "text": "The waiting, John had come to recognize, was the project."
+      "text": "The footage was waiting. She was waiting with it. The waiting, John had come to recognize, was the project."
     },
     {
       "t": "narrate",
@@ -265,11 +285,15 @@
     },
     {
       "t": "narrate",
-      "text": "He had not, in the seven months, told Elicia about the text from the Texas number. He had not told her about the reply he had sent (yes.)."
+      "text": "He had not, in the seven months, told Elicia about the text from the Texas number."
     },
     {
       "t": "narrate",
-      "text": "[shot:establish]He had not told her that the thread had gone quiet and then, twice more, pulsed — not with a message, but with the small vibration of the other party having opened the thread, read it, and chosen not to add to it."
+      "text": "[shot:establish]He had not told her about the reply he had sent (yes.)."
+    },
+    {
+      "t": "narrate",
+      "text": "He had not told her that the thread had gone quiet and then, twice more, pulsed — not with a message, but with the small vibration of the other party having opened the thread, read it, and chosen not to add to it."
     },
     {
       "t": "narrate",
@@ -315,7 +339,11 @@
     },
     {
       "t": "narrate",
-      "text": "[shot:insert door]At ten twenty-three, the bell over the café door chimed. John looked up. It was not Elicia. It was a young woman he did not recognize."
+      "text": "[shot:insert door]At ten twenty-three, the bell over the café door chimed."
+    },
+    {
+      "t": "narrate",
+      "text": "John looked up. It was not Elicia. It was a young woman he did not recognize."
     },
     {
       "t": "narrate",
@@ -339,23 +367,31 @@
     },
     {
       "t": "narrate",
-      "text": "John watched them for another moment, registered that his attention had been caught and that he did not know why, and looked away. He looked down at the dust motes. The dust motes were doing the thing they did."
+      "text": "John watched them for another moment, registered that his attention had been caught and that he did not know why, and looked away."
     },
     {
       "t": "narrate",
-      "text": "Tuesdays, he thought. The clustering on Tuesdays."
+      "text": "He looked down at the dust motes. The dust motes were doing the thing they did. Tuesdays, he thought. The clustering on Tuesdays."
     },
     {
       "t": "narrate",
-      "text": "He opened his notebook. He wrote, in the small careful hand he had been using for his private dust-mote notes for six years:\n\nTuesday, May 27. Clustering confirmed, moderate, within normal range of elevated variance."
+      "text": "[shot:establish_b]He opened his notebook. He wrote, in the small careful hand he had been using for his private dust-mote notes for six years:"
     },
     {
       "t": "narrate",
-      "text": "Sub-pattern: secondary clustering around the new arrival at the window table, blue dreadlocks, yellow slicker. Possibly coincidence. Possibly the arrival displaced the air."
+      "text": "Tuesday, May 27. Clustering confirmed, moderate, within normal range of elevated variance. Sub-pattern: secondary clustering around the new arrival at the window table, blue dreadlocks, yellow slicker. Possibly coincidence."
     },
     {
       "t": "narrate",
-      "text": "Also: I feel, faintly, a hum at the base of my skull that I have not felt since the text in December. The hum is not the same hum. Different vector. Still a hum. Note: do not mention this to Elicia today. Tomorrow. Maybe tomorrow."
+      "text": "Possibly the arrival displaced the air."
+    },
+    {
+      "t": "narrate",
+      "text": "Also: I feel, faintly, a hum at the base of my skull that I have not felt since the text in December. The hum is not the same hum. Different vector. Still a hum."
+    },
+    {
+      "t": "narrate",
+      "text": "Note: do not mention this to Elicia today. Tomorrow. Maybe tomorrow."
     },
     {
       "t": "narrate",
@@ -363,7 +399,11 @@
     },
     {
       "t": "narrate",
-      "text": "[shot:establish]The bell over the door chimed again. This time it was Elicia."
+      "text": "[shot:establish]The bell over the door chimed again."
+    },
+    {
+      "t": "narrate",
+      "text": "This time it was Elicia."
     },
     {
       "t": "narrate",
@@ -375,11 +415,19 @@
     },
     {
       "t": "narrate",
-      "text": "The scarf was, in the footage, the only thing Elicia wore that did not change costume. He had asked her, when he saw it: is that the same scarf. She had said: yes. He had said: why."
+      "text": "The scarf was, in the footage, the only thing Elicia wore that did not change costume."
     },
     {
       "t": "narrate",
-      "text": "She had said: because whatever else I'm pretending not to be, I'm my mother's daughter. The scarf tells the camera not to let me forget. He had not asked more. He did not need to."
+      "text": "He had asked her, when he saw it: is that the same scarf. She had said: yes. He had said: why. She had said: because whatever else I'm pretending not to be, I'm my mother's daughter."
+    },
+    {
+      "t": "narrate",
+      "text": "The scarf tells the camera not to let me forget."
+    },
+    {
+      "t": "narrate",
+      "text": "He had not asked more. He did not need to."
     },
     {
       "t": "narrate",
@@ -551,7 +599,11 @@
     },
     {
       "t": "narrate",
-      "text": "[shot:establish]He got up to go to the counter. As he passed the window table, the blue-dreadlocked woman looked up from her conversation for the first time."
+      "text": "[shot:establish]He got up to go to the counter."
+    },
+    {
+      "t": "narrate",
+      "text": "As he passed the window table, the blue-dreadlocked woman looked up from her conversation for the first time."
     },
     {
       "t": "narrate",
@@ -559,15 +611,23 @@
     },
     {
       "t": "narrate",
-      "text": "She met his gaze for a fraction of a second. She did not, he was almost certain, know him. But she registered him."
+      "text": "She met his gaze for a fraction of a second."
     },
     {
       "t": "narrate",
-      "text": "The registering was the precise thing a hunter did when a hunter had been told to watch for a specific signature and had not yet seen it but was, nonetheless, on duty."
+      "text": "She did not, he was almost certain, know him."
     },
     {
       "t": "narrate",
-      "text": "Then she looked back at the man across from her and the small moment — if it had been a moment — passed. John ordered the croissants. He returned to the table."
+      "text": "But she registered him. The registering was the precise thing a hunter did when a hunter had been told to watch for a specific signature and had not yet seen it but was, nonetheless, on duty."
+    },
+    {
+      "t": "narrate",
+      "text": "Then she looked back at the man across from her and the small moment — if it had been a moment — passed."
+    },
+    {
+      "t": "narrate",
+      "text": "John ordered the croissants. He returned to the table."
     },
     {
       "t": "say",
@@ -651,7 +711,11 @@
     },
     {
       "t": "narrate",
-      "text": "John thought, she's not hunting. She's here for something else. The hunting is secondary. He thought, and when she's done with whatever the primary thing is, she will be."
+      "text": "John thought, she's not hunting. She's here for something else. The hunting is secondary."
+    },
+    {
+      "t": "narrate",
+      "text": "He thought, and when she's done with whatever the primary thing is, she will be."
     },
     {
       "t": "narrate",
@@ -659,19 +723,27 @@
     },
     {
       "t": "narrate",
-      "text": "I am glad that there are two warm croissants on the table. I am glad that I have six years of dust-mote notes and that they have, finally, begun to be about something. He thought, this is what the Sun card is. Not the answer."
+      "text": "I am glad that there are two warm croissants on the table. I am glad that I have six years of dust-mote notes and that they have, finally, begun to be about something."
     },
     {
       "t": "narrate",
-      "text": "Just the light on what is already here."
+      "text": "He thought, this is what the Sun card is. Not the answer. Just the light on what is already here."
     },
     {
       "t": "narrate",
-      "text": "He broke a corner off his croissant. He ate it. The croissant was excellent. Outside, the morning was in full bloom. Saint-Viateur did its Tuesday work. The bagel shop across the street began its lunch rush."
+      "text": "He broke a corner off his croissant. He ate it. The croissant was excellent."
     },
     {
       "t": "narrate",
-      "text": "A dog, tied to a bike rack, looked at every pedestrian with the bright unjudging attention dogs reserved for their favorite hour of the day. The dust motes clustered. The pattern, in its own patient way, clarified."
+      "text": "Outside, the morning was in full bloom. Saint-Viateur did its Tuesday work. The bagel shop across the street began its lunch rush."
+    },
+    {
+      "t": "narrate",
+      "text": "A dog, tied to a bike rack, looked at every pedestrian with the bright unjudging attention dogs reserved for their favorite hour of the day."
+    },
+    {
+      "t": "narrate",
+      "text": "The dust motes clustered. The pattern, in its own patient way, clarified."
     },
     {
       "t": "narrate",
@@ -679,7 +751,11 @@
     },
     {
       "t": "narrate",
-      "text": "John did not, in the café on Saint-Viateur in late May, know this. But the hum at the base of his skull — the small new hum, the one he had written about in his notebook ten minutes ago — registered the arrival."
+      "text": "John did not, in the café on Saint-Viateur in late May, know this."
+    },
+    {
+      "t": "narrate",
+      "text": "But the hum at the base of his skull — the small new hum, the one he had written about in his notebook ten minutes ago — registered the arrival."
     },
     {
       "t": "narrate",
@@ -715,11 +791,19 @@
     },
     {
       "t": "narrate",
-      "text": "[beat:lift][shot:establish]He meant it. He would, in fact, tell her tomorrow. He did not yet know what he would be telling her, but he would, by the time the telling arrived, have figured it out. Temperance had brought him to this table."
+      "text": "[beat:lift][shot:establish]He meant it. He would, in fact, tell her tomorrow. He did not yet know what he would be telling her, but he would, by the time the telling arrived, have figured it out."
     },
     {
       "t": "narrate",
-      "text": "The Sun, this morning, was lighting it. Judgement was coming. But not yet."
+      "text": "Temperance had brought him to this table. The Sun, this morning, was lighting it."
+    },
+    {
+      "t": "narrate",
+      "text": "Judgement was coming."
+    },
+    {
+      "t": "narrate",
+      "text": "But not yet."
     },
     {
       "t": "narrate",
@@ -727,7 +811,15 @@
     },
     {
       "t": "narrate",
-      "text": "Not yet. Not yet. The light held."
+      "text": "Not yet."
+    },
+    {
+      "t": "narrate",
+      "text": "Not yet."
+    },
+    {
+      "t": "narrate",
+      "text": "The light held."
     },
     {
       "t": "end"

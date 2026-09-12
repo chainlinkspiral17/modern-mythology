@@ -43,7 +43,11 @@
     },
     {
       "t": "narrate",
-      "text": "It is the morning the ground beneath Graustark finally refuses what it has been asked, for three years, to hold. It is the morning John Frank, in Montreal, receives the text that reads did you feel it."
+      "text": "It is the morning the ground beneath Graustark finally refuses what it has been asked, for three years, to hold."
+    },
+    {
+      "t": "narrate",
+      "text": "It is the morning John Frank, in Montreal, receives the text that reads did you feel it."
     },
     {
       "t": "narrate",
@@ -51,7 +55,11 @@
     },
     {
       "t": "narrate",
-      "text": "[beat:hit][shot:establish~]And then the stillness broke. Not gradually. Not like dawn easing over a weary horizon. Like flawed glass shattering under immense unseen pressure."
+      "text": "[beat:hit][shot:establish~]And then the stillness broke."
+    },
+    {
+      "t": "narrate",
+      "text": "Not gradually. Not like dawn easing over a weary horizon. Like flawed glass shattering under immense unseen pressure."
     },
     {
       "t": "narrate",
@@ -87,11 +95,15 @@
     },
     {
       "t": "narrate",
-      "text": "He then stood up from the desk he had been sitting at since 1987 and walked, unhurried, to the door. The reply had taken thirty-nine years. The addressee did not consider this unusual. The scales tilted. The mail was received."
+      "text": "He then stood up from the desk he had been sitting at since 1987 and walked, unhurried, to the door."
     },
     {
       "t": "narrate",
-      "text": "The next movement began."
+      "text": "The reply had taken thirty-nine years. The addressee did not consider this unusual."
+    },
+    {
+      "t": "narrate",
+      "text": "The scales tilted. The mail was received. The next movement began."
     },
     {
       "t": "narrate",
@@ -99,11 +111,15 @@
     },
     {
       "t": "narrate",
-      "text": "Fire did indeed gather unseen beyond the rim of the world, its reflection flickering in the widening cracks snaking across asphalt and concrete. Down in the wreckage, shadows didn't just pool. They writhed. Stretched. Grasped."
+      "text": "Fire did indeed gather unseen beyond the rim of the world, its reflection flickering in the widening cracks snaking across asphalt and concrete."
     },
     {
       "t": "narrate",
-      "text": "As the collapsed geometry of forgotten rooms gave way further, spilling long-held secrets into the dust. The Collective, scattered across continents and states of being yet bound by this place, felt the tremor simultaneously."
+      "text": "Down in the wreckage, shadows didn't just pool. They writhed. Stretched. Grasped. As the collapsed geometry of forgotten rooms gave way further, spilling long-held secrets into the dust."
+    },
+    {
+      "t": "narrate",
+      "text": "The Collective, scattered across continents and states of being yet bound by this place, felt the tremor simultaneously."
     },
     {
       "t": "narrate",
@@ -111,7 +127,7 @@
     },
     {
       "t": "narrate",
-      "text": "§ From the fragmented feed of Frasier Temple's eldest Demon, node designation TX-LA-01"
+      "text": "[shot:establish]§ From the fragmented feed of Frasier Temple's eldest Demon, node designation TX-LA-01"
     },
     {
       "t": "narrate",
@@ -119,7 +135,11 @@
     },
     {
       "t": "narrate",
-      "text": "[shot:establish]Recommend observing chaotic emergence patterns. Note: fascinating architectural dissolution patterns observed in Sector Gamma (formerly D'Ambrosio's riverboat). Forwarding telemetry."
+      "text": "Recommend observing chaotic emergence patterns."
+    },
+    {
+      "t": "narrate",
+      "text": "Note: fascinating architectural dissolution patterns observed in Sector Gamma (formerly D'Ambrosio's riverboat). Forwarding telemetry."
     },
     {
       "t": "narrate",
@@ -127,7 +147,15 @@
     },
     {
       "t": "narrate",
-      "text": "Secondary operator attempts to relocate have been declined. Sub-sub-note: it is humming. We did not make it hum. It is nevertheless humming. Query to operator: advise."
+      "text": "Secondary operator attempts to relocate have been declined."
+    },
+    {
+      "t": "narrate",
+      "text": "Sub-sub-note: it is humming. We did not make it hum. It is nevertheless humming."
+    },
+    {
+      "t": "narrate",
+      "text": "Query to operator: advise."
     },
     {
       "t": "narrate",
@@ -135,15 +163,15 @@
     },
     {
       "t": "narrate",
-      "text": "She had been at her desk for five days. The PetroTex settlement papers, open in the second tab of her monitor for reasons she could no longer reconstruct, blurred into meaningless glyphs. Justice. Accountability."
+      "text": "She had been at her desk for five days. The PetroTex settlement papers, open in the second tab of her monitor for reasons she could no longer reconstruct, blurred into meaningless glyphs."
     },
     {
       "t": "narrate",
-      "text": "Hollow words against the raw tectonics of consequence. The true cost wasn't tallied in courtrooms. It was here. Now. In the silent scream of the earth itself."
+      "text": "Justice. Accountability. Hollow words against the raw tectonics of consequence."
     },
     {
       "t": "narrate",
-      "text": "In the ghosts rising with the dust, the faces she had cross-examined and the faces she had lost, Mrs."
+      "text": "The true cost wasn't tallied in courtrooms. It was here. Now. In the silent scream of the earth itself. In the ghosts rising with the dust, the faces she had cross-examined and the faces she had lost, Mrs."
     },
     {
       "t": "narrate",
@@ -151,11 +179,19 @@
     },
     {
       "t": "narrate",
-      "text": "The Wheel had stopped spinning. The Wheel had flown off its axle entirely. She gripped her desk. The abyss not yawning below. Opening up within. Awaken. This felt more like being flayed. She reached for the phone."
+      "text": "The Wheel had stopped spinning. The Wheel had flown off its axle entirely."
     },
     {
       "t": "narrate",
-      "text": "She thumbed the painter's contact. She pressed call. He picked up on the second ring."
+      "text": "She gripped her desk. The abyss not yawning below. Opening up within."
+    },
+    {
+      "t": "narrate",
+      "text": "Awaken. This felt more like being flayed."
+    },
+    {
+      "t": "narrate",
+      "text": "[shot:insert smoke_ring]She reached for the phone. She thumbed the painter's contact. She pressed call. He picked up on the second ring."
     },
     {
       "t": "show",
@@ -178,13 +214,13 @@
     {
       "t": "say",
       "c": "jordan",
-      "text": "[shot:closeup person]Eri. I'm here.",
+      "text": "Eri. I'm here.",
       "char": "jordan"
     },
     {
       "t": "say",
       "c": "erica",
-      "text": "I need to come over.",
+      "text": "[shot:closeup person]I need to come over.",
       "char": "erica"
     },
     {
@@ -201,11 +237,15 @@
     },
     {
       "t": "narrate",
-      "text": "[shot:establish]She stood up from the teak desk. She did not shut down the monitor. She left the building. The settlement papers, on the monitor, continued to be airtight."
+      "text": "[shot:establish]She stood up from the teak desk. She did not shut down the monitor. She left the building."
     },
     {
       "t": "narrate",
-      "text": "The contract for Antonio D'Ambrosio, on the other monitor, continued to be elegant. Erica, for the first time in fourteen years, walked away from both of them before the close of business."
+      "text": "The settlement papers, on the monitor, continued to be airtight. The contract for Antonio D'Ambrosio, on the other monitor, continued to be elegant."
+    },
+    {
+      "t": "narrate",
+      "text": "Erica, for the first time in fourteen years, walked away from both of them before the close of business."
     },
     {
       "t": "narrate",
@@ -221,19 +261,35 @@
     },
     {
       "t": "narrate",
-      "text": "He saw the past, present, future held not in suspension but collapsing into a single unbearable Now. He reached for his notebook. The pen shaking."
+      "text": "He saw the past, present, future held not in suspension but collapsing into a single unbearable Now."
     },
     {
       "t": "narrate",
-      "text": "His phone, on the desk, buzzed. He did not need to look."
+      "text": "He reached for his notebook. The pen shaking."
     },
     {
       "t": "narrate",
-      "text": "He knew, with the small clean certainty that had become, in the past six years, the deepest thing in him: the text is from the Texas number.\n\ndid you feel it\n\nHe typed, without hesitation, without, this time, the small restraining pause: yes. i'm coming."
+      "text": "His phone, on the desk, buzzed. He did not need to look. He knew, with the small clean certainty that had become, in the past six years, the deepest thing in him: the text is from the Texas number."
     },
     {
       "t": "narrate",
-      "text": "He did not know what he meant. He sent it anyway. The thread, this time, pulsed back within three seconds:\n\ngood. take your time. she's okay for now. but soon. John did not know who she was. He would, shortly, find out."
+      "text": "did you feel it"
+    },
+    {
+      "t": "narrate",
+      "text": "He typed, without hesitation, without, this time, the small restraining pause: yes. i'm coming."
+    },
+    {
+      "t": "narrate",
+      "text": "He did not know what he meant. He sent it anyway. The thread, this time, pulsed back within three seconds:"
+    },
+    {
+      "t": "narrate",
+      "text": "[shot:establish]good. take your time. she's okay for now. but soon."
+    },
+    {
+      "t": "narrate",
+      "text": "John did not know who she was. He would, shortly, find out."
     },
     {
       "t": "narrate",
@@ -245,15 +301,19 @@
     },
     {
       "t": "narrate",
-      "text": "[shot:establish]John laughed once — the short surprised laugh he had, over the past months, started laughing mostly around Elicia — and, in the small clean moment of the laugh, understood that he was going to Texas."
+      "text": "John laughed once — the short surprised laugh he had, over the past months, started laughing mostly around Elicia — and, in the small clean moment of the laugh, understood that he was going to Texas."
     },
     {
       "t": "narrate",
-      "text": "[shot:establish]Amidst the actual Graustark rubble, Joanna LeMoine felt the concrete canvas beneath her hand buck. The charcoal snapped. The larger truth she had glimpsed wasn't serene. It was ravenous. She was at the post office on Elm."
+      "text": "[shot:establish]Amidst the actual Graustark rubble, Joanna LeMoine felt the concrete canvas beneath her hand buck. The charcoal snapped. The larger truth she had glimpsed wasn't serene. It was ravenous."
     },
     {
       "t": "narrate",
-      "text": "She had, three minutes before, handed the envelope to the clerk. The clerk had stamped it. The envelope had gone into the outgoing bin. Joanna had turned to leave. Joanna was, at the moment the earth began, halfway to the door."
+      "text": "She was at the post office on Elm. She had, three minutes before, handed the envelope to the clerk. The clerk had stamped it. The envelope had gone into the outgoing bin. Joanna had turned to leave."
+    },
+    {
+      "t": "narrate",
+      "text": "Joanna was, at the moment the earth began, halfway to the door."
     },
     {
       "t": "narrate",
@@ -277,7 +337,11 @@
     },
     {
       "t": "narrate",
-      "text": "Joanna went. Outside, the morning was already not what any morning had been. The sky had stopped being a sky. The sky had become a pressure."
+      "text": "Joanna went."
+    },
+    {
+      "t": "narrate",
+      "text": "Outside, the morning was already not what any morning had been. The sky had stopped being a sky. The sky had become a pressure."
     },
     {
       "t": "narrate",
@@ -285,19 +349,23 @@
     },
     {
       "t": "narrate",
-      "text": "The crow had delivered. The crow was now, as it had been meant to be, her escort home. They walked back toward the ruins. The ground, every few yards, shifted."
+      "text": "The crow had delivered. The crow was now, as it had been meant to be, her escort home."
     },
     {
       "t": "narrate",
-      "text": "The buildings along Elm had begun, in the small preliminary way buildings begin, to consider leaving their foundations."
+      "text": "They walked back toward the ruins. The ground, every few yards, shifted. The buildings along Elm had begun, in the small preliminary way buildings begin, to consider leaving their foundations."
     },
     {
       "t": "narrate",
-      "text": "[shot:insert wall]Joanna thought, with the small clean clarity she had earned on the wall last night: I have done my part. The letter is mailed. The rest is not mine to hold. She thought, I am going home."
+      "text": "[shot:insert wall]Joanna thought, with the small clean clarity she had earned on the wall last night: I have done my part. The letter is mailed. The rest is not mine to hold."
     },
     {
       "t": "narrate",
-      "text": "I will sit in the doorway of the patched shotgun house with the animals around me. I will watch whatever comes. I will not, this morning, run. Her animal companions whined, pressing close, seeking sanctuary where there was none."
+      "text": "She thought, I am going home. I will sit in the doorway of the patched shotgun house with the animals around me. I will watch whatever comes. I will not, this morning, run."
+    },
+    {
+      "t": "narrate",
+      "text": "Her animal companions whined, pressing close, seeking sanctuary where there was none."
     },
     {
       "t": "narrate",
@@ -325,19 +393,23 @@
     },
     {
       "t": "narrate",
-      "text": "the Third Consciousness kicks once, and the car's radio, which has been off, plays a single note of a melody nobody in the car has ever heard, and the silver-haired driver says, calmly, to the back seat: We're close, dear."
+      "text": "[shot:establish]the Third Consciousness kicks once, and the car's radio, which has been off, plays a single note of a melody nobody in the car has ever heard, and the silver-haired driver says, calmly, to the back seat: We're close, dear."
     },
     {
       "t": "narrate",
-      "text": "[shot:establish]Hold on."
+      "text": "Hold on."
     },
     {
       "t": "narrate",
-      "text": "[mood:night][shot:closeup dante]On the spectral deck of his sinking riverboat kingdom, the phantom of Dante D'Ambrosio felt the last mooring lines snap. The boat — which had not, technically, ever sailed anywhere — was sailing now. Not down the river. Down."
+      "text": "[mood:night][shot:closeup dante]On the spectral deck of his sinking riverboat kingdom, the phantom of Dante D'Ambrosio felt the last mooring lines snap."
     },
     {
       "t": "narrate",
-      "text": "Into the river. The hull listing in the specific way a hull lists when a hull has finally, after forty-one years, agreed to let the river take it."
+      "text": "The boat — which had not, technically, ever sailed anywhere — was sailing now. Not down the river. Down. Into the river."
+    },
+    {
+      "t": "narrate",
+      "text": "The hull listing in the specific way a hull lists when a hull has finally, after forty-one years, agreed to let the river take it."
     },
     {
       "t": "narrate",
@@ -345,15 +417,27 @@
     },
     {
       "t": "narrate",
-      "text": "Control yielded — irrevocably — to the primal chaos he had tried to pave over with overpriced pasta and bad bourbon. His empire, exposed as the cage it always was, collapsed around him. He was at the helm."
+      "text": "Control yielded — irrevocably — to the primal chaos he had tried to pave over with overpriced pasta and bad bourbon."
     },
     {
       "t": "narrate",
-      "text": "He had been at the helm, on this particular morning, for sixty consecutive hours. He had not slept. He had not eaten. He had been drinking the same bourbon he had poured at the beginning and had not, once, let the glass go empty."
+      "text": "His empire, exposed as the cage it always was, collapsed around him."
     },
     {
       "t": "narrate",
-      "text": "The card — Mr. D. Dean. Consulting. — was still on his desk, square to the corner, where he had placed it nine months before. He looked at the card one last time."
+      "text": "He was at the helm. He had been at the helm, on this particular morning, for sixty consecutive hours. He had not slept. He had not eaten."
+    },
+    {
+      "t": "narrate",
+      "text": "He had been drinking the same bourbon he had poured at the beginning and had not, once, let the glass go empty. The card — Mr. D. Dean."
+    },
+    {
+      "t": "narrate",
+      "text": "Consulting. — was still on his desk, square to the corner, where he had placed it nine months before."
+    },
+    {
+      "t": "narrate",
+      "text": "[shot:establish]He looked at the card one last time."
     },
     {
       "t": "show",
@@ -364,16 +448,28 @@
     {
       "t": "say",
       "c": "dante",
-      "text": "[shot:closeup person]I know you, you sonofabitch. I knew you in 1987. You haven't aged.",
+      "text": "I know you, you sonofabitch. I knew you in 1987. You haven't aged.",
       "char": "john"
     },
     {
       "t": "narrate",
-      "text": "The boat groaned. Dante raised his bourbon glass to the card. He drank the glass dry, this time. He set the glass down on top of the card — not covering it, just touching it — and he walked out of the office onto the deck."
+      "text": "The boat groaned."
     },
     {
       "t": "narrate",
-      "text": "He did not reach the deck rail. The water, by then, had come up to meet him. The river, in its slow indifferent program, received him."
+      "text": "Dante raised his bourbon glass to the card. He drank the glass dry, this time. He set the glass down on top of the card — not covering it, just touching it — and he walked out of the office onto the deck."
+    },
+    {
+      "t": "narrate",
+      "text": "He did not reach the deck rail."
+    },
+    {
+      "t": "narrate",
+      "text": "The water, by then, had come up to meet him."
+    },
+    {
+      "t": "narrate",
+      "text": "The river, in its slow indifferent program, received him."
     },
     {
       "t": "narrate",
@@ -381,7 +477,11 @@
     },
     {
       "t": "narrate",
-      "text": "He walked to his window. He looked east, toward Graustark. He did not, for some time, move. In New Orleans, his younger son Antonio received the same phone call. He did not answer."
+      "text": "He walked to his window. He looked east, toward Graustark. He did not, for some time, move."
+    },
+    {
+      "t": "narrate",
+      "text": "In New Orleans, his younger son Antonio received the same phone call. He did not answer."
     },
     {
       "t": "narrate",
@@ -397,19 +497,27 @@
     },
     {
       "t": "narrate",
-      "text": "That part had, without him noticing, been packed away somewhere around 2012 and he had forgotten the combination to the box. He would open the box later. Just not that day."
+      "text": "That part had, without him noticing, been packed away somewhere around 2012 and he had forgotten the combination to the box."
     },
     {
       "t": "narrate",
-      "text": "[mood:dawn_warm][shot:closeup jimmy]In New Orleans, the humid haze thickened. Tasting metallic. Jimmy Daigle, on his way to the Iron Crow for his three o'clock with Q. Paul, felt the Devil's rhythm stutter."
+      "text": "He would open the box later. Just not that day."
     },
     {
       "t": "narrate",
-      "text": "The second line faltered as the ground shifted beneath the entire damn continent. The chains he had embraced suddenly felt cold. Heavy. Inescapable. His grift stalled."
+      "text": "[mood:dawn_warm][shot:closeup jimmy]In New Orleans, the humid haze thickened. Tasting metallic."
     },
     {
       "t": "narrate",
-      "text": "The cost of his choices no longer an abstract calculation but a visceral tremor shaking the foundations of his carefully constructed damnation. He thought of Maya. His daughter. And the thought was pure uncut terror."
+      "text": "Jimmy Daigle, on his way to the Iron Crow for his three o'clock with Q. Paul, felt the Devil's rhythm stutter. The second line faltered as the ground shifted beneath the entire damn continent."
+    },
+    {
+      "t": "narrate",
+      "text": "The chains he had embraced suddenly felt cold. Heavy. Inescapable. His grift stalled. The cost of his choices no longer an abstract calculation but a visceral tremor shaking the foundations of his carefully constructed damnation."
+    },
+    {
+      "t": "narrate",
+      "text": "He thought of Maya. His daughter. And the thought was pure uncut terror."
     },
     {
       "t": "narrate",
@@ -417,19 +525,31 @@
     },
     {
       "t": "narrate",
-      "text": "He let himself in with the key he had kept for an emergency he had now, in some sense, called for. The room was empty. Douglas was not there. Douglas's things were not there either. The bed was made. The sink was clean."
+      "text": "He let himself in with the key he had kept for an emergency he had now, in some sense, called for."
     },
     {
       "t": "narrate",
-      "text": "The desk was clear. On the desk, centered, was a sealed envelope. The envelope was addressed, in Doug's careful third-grade handwriting, to J. Jimmy sat down at the desk. He opened the envelope. He read the letter."
+      "text": "The room was empty. Douglas was not there. Douglas's things were not there either. The bed was made. The sink was clean. The desk was clear."
     },
     {
       "t": "narrate",
-      "text": "He read it twice. He set it down. He did not, for a long time, move. When he did, he did so slowly, like a man whose spine had received new information about the body it was inside. He took out his phone. He did not dial Q. Paul."
+      "text": "On the desk, centered, was a sealed envelope. The envelope was addressed, in Doug's careful third-grade handwriting, to J."
     },
     {
       "t": "narrate",
-      "text": "[shot:insert smoke_ring]He did not dial Antonio. He dialed a number he had not dialed in eleven months. His daughter picked up on the fourth ring."
+      "text": "[shot:insert letter]Jimmy sat down at the desk. He opened the envelope. He read the letter. He read it twice. He set it down."
+    },
+    {
+      "t": "narrate",
+      "text": "He did not, for a long time, move. When he did, he did so slowly, like a man whose spine had received new information about the body it was inside."
+    },
+    {
+      "t": "narrate",
+      "text": "He took out his phone. He did not dial Q. Paul. He did not dial Antonio. He dialed a number he had not dialed in eleven months."
+    },
+    {
+      "t": "narrate",
+      "text": "His daughter picked up on the fourth ring."
     },
     {
       "t": "show",
@@ -440,7 +560,7 @@
     {
       "t": "say",
       "c": "maya",
-      "text": "Dad?",
+      "text": "[shot:closeup person]Dad?",
       "char": "antonio"
     },
     {
@@ -458,7 +578,7 @@
     {
       "t": "say",
       "c": "maya",
-      "text": "[shot:closeup person_b]Dad. I'm sixteen. I'm not in kindergarten.",
+      "text": "Dad. I'm sixteen. I'm not in kindergarten.",
       "char": "antonio"
     },
     {
@@ -487,7 +607,11 @@
     },
     {
       "t": "narrate",
-      "text": "[shot:insert letter]Jimmy set the phone down. He looked at Doug's letter. He looked at the empty room. He laughed once, a short laugh that did not sound, even to him, like any laugh he had laughed before. The Devil had, evidently, been dismissed."
+      "text": "[shot:insert letter]Jimmy set the phone down. He looked at Doug's letter. He looked at the empty room. He laughed once, a short laugh that did not sound, even to him, like any laugh he had laughed before."
+    },
+    {
+      "t": "narrate",
+      "text": "The Devil had, evidently, been dismissed."
     },
     {
       "t": "narrate",
@@ -499,11 +623,15 @@
     },
     {
       "t": "narrate",
-      "text": "The tarot cards scattered across her floor flew upward as if caught in a gale. Spinning. Revealing every face at once — Hanged Man, Moon, Tower, Death, all of it happening now, simultaneously. The mystery wasn't beckoning."
+      "text": "The tarot cards scattered across her floor flew upward as if caught in a gale. Spinning. Revealing every face at once — Hanged Man, Moon, Tower, Death, all of it happening now, simultaneously."
     },
     {
       "t": "narrate",
-      "text": "The mystery was invading. The Hanged Man card — the one she had taken with her to the county line, the one that had still been in her coat pocket when she came home — rose from the rug where her coat had fallen,"
+      "text": "The mystery wasn't beckoning. The mystery was invading."
+    },
+    {
+      "t": "narrate",
+      "text": "The Hanged Man card — the one she had taken with her to the county line, the one that had still been in her coat pocket when she came home — rose from the rug where her coat had fallen,"
     },
     {
       "t": "narrate",
@@ -511,11 +639,15 @@
     },
     {
       "t": "narrate",
-      "text": "The card's figure — the inverted man with the halo — was now, instead of serene, smiling. Natalie did not, this morning, have a word for the smile. She understood it anyway. She stood up from the rug."
+      "text": "The card's figure — the inverted man with the halo — was now, instead of serene, smiling."
     },
     {
       "t": "narrate",
-      "text": "She said, aloud, to her apartment:"
+      "text": "Natalie did not, this morning, have a word for the smile. She understood it anyway."
+    },
+    {
+      "t": "narrate",
+      "text": "She stood up from the rug. She said, aloud, to her apartment:"
     },
     {
       "t": "show",
@@ -531,11 +663,15 @@
     },
     {
       "t": "narrate",
-      "text": "The record player, in the corner, clicked on. Not to Nina Simone this time. To the silence between tracks, which was, in Natalie's apartment, its own kind of song. The silence said: She arrives in five months. You will be present."
+      "text": "[shot:establish]The record player, in the corner, clicked on. Not to Nina Simone this time. To the silence between tracks, which was, in Natalie's apartment, its own kind of song."
     },
     {
       "t": "narrate",
-      "text": "[shot:establish]Prepare the room. Natalie took off her coat. Hung it on the hook. Walked to the closet."
+      "text": "The silence said: She arrives in five months. You will be present. Prepare the room."
+    },
+    {
+      "t": "narrate",
+      "text": "Natalie took off her coat. Hung it on the hook. Walked to the closet."
     },
     {
       "t": "narrate",
@@ -551,7 +687,11 @@
     },
     {
       "t": "narrate",
-      "text": "The white rose, on the windowsill of Room 217, had continued to bloom. It was, at 10:47 AM — the moment the clerk on Elm Street stamped Joanna's letter — fully open."
+      "text": "The white rose, on the windowsill of Room 217, had continued to bloom."
+    },
+    {
+      "t": "narrate",
+      "text": "It was, at 10:47 AM — the moment the clerk on Elm Street stamped Joanna's letter — fully open."
     },
     {
       "t": "narrate",
@@ -559,23 +699,39 @@
     },
     {
       "t": "narrate",
-      "text": "Back in Houston, Anna Logue watched the perfect lines on her monitor waver. Distort. Dissolve into static. The corporate facade, the sterile logic — offered no defense against this raw unmediated reality."
+      "text": "Back in Houston, Anna Logue watched the perfect lines on her monitor waver. Distort. Dissolve into static."
     },
     {
       "t": "narrate",
-      "text": "The ethical scales tipped. Crashed. Broke apart. She saved D'AMB-IDOL-01.psd one more time. She airdropped it, for the first time, to her phone."
+      "text": "The corporate facade, the sterile logic — offered no defense against this raw unmediated reality."
     },
     {
       "t": "narrate",
-      "text": "Then she emailed it — without explanation, without subject line, just the file attached — to the one journalist whose byline she had followed, in her private reading, for the past two years."
+      "text": "The ethical scales tipped. Crashed. Broke apart."
     },
     {
       "t": "narrate",
-      "text": "She hit send before she could reconsider. She stood up from her desk. She took the stairs, not the elevator, down nineteen flights to the lobby. She walked out into the Houston morning."
+      "text": "She saved D'AMB-IDOL-01.psd one more time. She airdropped it, for the first time, to her phone."
     },
     {
       "t": "narrate",
-      "text": "She had not, in her career, ever left the office before noon without filing a request with HR. She did not, this morning, file the request."
+      "text": "[shot:establish]Then she emailed it — without explanation, without subject line, just the file attached — to the one journalist whose byline she had followed, in her private reading, for the past two years."
+    },
+    {
+      "t": "narrate",
+      "text": "She hit send before she could reconsider."
+    },
+    {
+      "t": "narrate",
+      "text": "She stood up from her desk. She took the stairs, not the elevator, down nineteen flights to the lobby. She walked out into the Houston morning."
+    },
+    {
+      "t": "narrate",
+      "text": "She had not, in her career, ever left the office before noon without filing a request with HR."
+    },
+    {
+      "t": "narrate",
+      "text": "She did not, this morning, file the request."
     },
     {
       "t": "narrate",
@@ -583,11 +739,19 @@
     },
     {
       "t": "narrate",
-      "text": "The bar's lights flickered. The bartender gripped the edge of the bar. Douglas set a folded twenty on the table. He drained the bourbon. He stood."
+      "text": "The bar's lights flickered. The bartender gripped the edge of the bar."
     },
     {
       "t": "narrate",
-      "text": "His quiet strength was tested now not by memory or loyalty, but by the raw brute fact of dissolution. His core held. The ground beneath him did not. He had known, when he left the letter on the desk, that Jimmy would find it."
+      "text": "Douglas set a folded twenty on the table. He drained the bourbon. He stood."
+    },
+    {
+      "t": "narrate",
+      "text": "His quiet strength was tested now not by memory or loyalty, but by the raw brute fact of dissolution. His core held. The ground beneath him did not."
+    },
+    {
+      "t": "narrate",
+      "text": "He had known, when he left the letter on the desk, that Jimmy would find it."
     },
     {
       "t": "narrate",
@@ -595,7 +759,11 @@
     },
     {
       "t": "narrate",
-      "text": "The crow had not left a bottle cap or a beetle wing. The crow had, instead, simply looked at him. Douglas had understood, in the way men who had loved women like Joanna understood."
+      "text": "The crow had not left a bottle cap or a beetle wing. The crow had, instead, simply looked at him."
+    },
+    {
+      "t": "narrate",
+      "text": "Douglas had understood, in the way men who had loved women like Joanna understood."
     },
     {
       "t": "show",
@@ -606,16 +774,24 @@
     {
       "t": "say",
       "c": "douglas",
-      "text": "[shot:closeup person]I know. It's okay. I knew, eventually. I forgive you.",
+      "text": "[shot:closeup person_b]I know. It's okay. I knew, eventually. I forgive you.",
       "char": "jimmy"
     },
     {
       "t": "narrate",
-      "text": "The crow had flown back west. Douglas had gone to the Iron Crow to wait for Jimmy, because he had still intended to finish the work."
+      "text": "The crow had flown back west."
     },
     {
       "t": "narrate",
-      "text": "He had, in fact, intended to finish it on his own terms, in his own way, with the kind of dignity a man like Douglas Forte brought to work he had consented to. He did not, now, have to. The ground was doing the work for him."
+      "text": "Douglas had gone to the Iron Crow to wait for Jimmy, because he had still intended to finish the work."
+    },
+    {
+      "t": "narrate",
+      "text": "He had, in fact, intended to finish it on his own terms, in his own way, with the kind of dignity a man like Douglas Forte brought to work he had consented to."
+    },
+    {
+      "t": "narrate",
+      "text": "He did not, now, have to. The ground was doing the work for him."
     },
     {
       "t": "narrate",
@@ -623,11 +799,19 @@
     },
     {
       "t": "narrate",
-      "text": "He stood for a moment in the middle of the intersection — as the lights flashed and the cars stopped — and looked northwest, toward what had been Graustark. Then he turned north. He began walking. He would, he knew, walk for days."
+      "text": "He stood for a moment in the middle of the intersection — as the lights flashed and the cars stopped — and looked northwest, toward what had been Graustark."
     },
     {
       "t": "narrate",
-      "text": "The walking would carry him home. He had not been home in some time."
+      "text": "Then he turned north. He began walking."
+    },
+    {
+      "t": "narrate",
+      "text": "He would, he knew, walk for days. The walking would carry him home."
+    },
+    {
+      "t": "narrate",
+      "text": "[shot:establish]He had not been home in some time."
     },
     {
       "t": "narrate",
@@ -635,7 +819,11 @@
     },
     {
       "t": "narrate",
-      "text": "The tomato seedlings shed their leaves in a single small gasp. Their love — tested by loss — now faced the ultimate test of endurance against forces elemental, indifferent."
+      "text": "The tomato seedlings shed their leaves in a single small gasp."
+    },
+    {
+      "t": "narrate",
+      "text": "Their love — tested by loss — now faced the ultimate test of endurance against forces elemental, indifferent."
     },
     {
       "t": "narrate",
@@ -648,7 +836,7 @@
     {
       "t": "say",
       "c": "philip",
-      "text": "I'll get them. You call Elicia. Tell her whatever we hear, she hears.",
+      "text": "[shot:closeup person]I'll get them. You call Elicia. Tell her whatever we hear, she hears.",
       "char": "natalie"
     },
     {
@@ -673,15 +861,19 @@
     },
     {
       "t": "narrate",
-      "text": "[shot:closeup elicia]In Montreal, Elicia Duchane felt the crash complete itself. The Tower fell not just metaphorically but seismically across the psychic landscape. The wreckage wasn't serene. It was deafening. Chaotic."
+      "text": "[shot:closeup elicia]In Montreal, Elicia Duchane felt the crash complete itself."
     },
     {
       "t": "narrate",
-      "text": "But amidst the roar — a tiny clear space opened. Rebirth, not as gentle unfolding, but as brutal emergence from total destruction. She was in her Mile End apartment above the bagel shop."
+      "text": "The Tower fell not just metaphorically but seismically across the psychic landscape. The wreckage wasn't serene. It was deafening. Chaotic."
     },
     {
       "t": "narrate",
-      "text": "The camera was on the windowsill, running, as it had been running every day since December."
+      "text": "But amidst the roar — a tiny clear space opened. Rebirth, not as gentle unfolding, but as brutal emergence from total destruction."
+    },
+    {
+      "t": "narrate",
+      "text": "She was in her Mile End apartment above the bagel shop. The camera was on the windowsill, running, as it had been running every day since December."
     },
     {
       "t": "narrate",
@@ -694,7 +886,7 @@
     {
       "t": "say",
       "c": "elicia",
-      "text": "Something is happening. I don't know what. I am going to keep the camera rolling. I am going to show you what this is, in real time, as I find out.",
+      "text": "[shot:closeup person]Something is happening. I don't know what. I am going to keep the camera rolling. I am going to show you what this is, in real time, as I find out.",
       "char": "natalie"
     },
     {
@@ -735,7 +927,11 @@
     },
     {
       "t": "narrate",
-      "text": "The life within her kicked. A fierce assertion against the void. The Third Consciousness — who had, until this moment, been mostly silent in the way unborn children are mostly silent — said,"
+      "text": "The life within her kicked. A fierce assertion against the void."
+    },
+    {
+      "t": "narrate",
+      "text": "The Third Consciousness — who had, until this moment, been mostly silent in the way unborn children are mostly silent — said,"
     },
     {
       "t": "narrate",
@@ -765,7 +961,7 @@
     },
     {
       "t": "narrate",
-      "text": "Nicola wept. Quietly. Her hand on her stomach.\n\nAria, through Nicola's eyes, said aloud, in her precise calm voice:"
+      "text": "[shot:establish]Nicola wept. Quietly. Her hand on her stomach.\n\nAria, through Nicola's eyes, said aloud, in her precise calm voice:"
     },
     {
       "t": "say",
@@ -785,15 +981,43 @@
     },
     {
       "t": "narrate",
-      "text": "[mood:morning_bright][shot:establish~]This wasn't punishment. It was birth pangs. It was apocalypse. It was the horrifying magnificent sound of the world ending and beginning all at once. The weight of Graustark's history pressed down. Cracked open. Released — what."
+      "text": "[mood:morning_bright][shot:establish~]This wasn't punishment."
     },
     {
       "t": "narrate",
-      "text": "The call wasn't just to awaken. The call was to survive the awakening. Ethereal music soared, discordant and terrifyingly beautiful, the sound of stars collapsing and novas igniting. The fever raged. The stillness shattered."
+      "text": "It was birth pangs."
     },
     {
       "t": "narrate",
-      "text": "Judgment wasn't a quiet verdict. Judgment was the deafening roar of reality tearing itself apart to make way for the unknown."
+      "text": "It was apocalypse."
+    },
+    {
+      "t": "narrate",
+      "text": "It was the horrifying magnificent sound of the world ending and beginning all at once. The weight of Graustark's history pressed down. Cracked open. Released — what."
+    },
+    {
+      "t": "narrate",
+      "text": "The call wasn't just to awaken. The call was to survive the awakening."
+    },
+    {
+      "t": "narrate",
+      "text": "Ethereal music soared, discordant and terrifyingly beautiful, the sound of stars collapsing and novas igniting."
+    },
+    {
+      "t": "narrate",
+      "text": "The fever raged."
+    },
+    {
+      "t": "narrate",
+      "text": "The stillness shattered."
+    },
+    {
+      "t": "narrate",
+      "text": "Judgment wasn't a quiet verdict."
+    },
+    {
+      "t": "narrate",
+      "text": "Judgment was the deafening roar of reality tearing itself apart to make way for the unknown."
     },
     {
       "t": "narrate",
@@ -801,7 +1025,11 @@
     },
     {
       "t": "narrate",
-      "text": "And, under the screaming, at a lower frequency only a few in the world could hear:\n\nThe small patient laugh of a four-foot figure in a cork hat, sitting beside a river that had, three years ago, not yet been a river, smoking a hand-rolled cigarette,"
+      "text": "And, under the screaming, at a lower frequency only a few in the world could hear:"
+    },
+    {
+      "t": "narrate",
+      "text": "The small patient laugh of a four-foot figure in a cork hat, sitting beside a river that had, three years ago, not yet been a river, smoking a hand-rolled cigarette,"
     },
     {
       "t": "narrate",
@@ -809,7 +1037,27 @@
     },
     {
       "t": "narrate",
-      "text": "The Frog, in the wreckage, inhaled. Then the Frog, in the wreckage, stood. Act One closed. The world did not. Quite. Yet."
+      "text": "The Frog, in the wreckage, inhaled."
+    },
+    {
+      "t": "narrate",
+      "text": "Then the Frog, in the wreckage, stood."
+    },
+    {
+      "t": "narrate",
+      "text": "Act One closed."
+    },
+    {
+      "t": "narrate",
+      "text": "The world did not."
+    },
+    {
+      "t": "narrate",
+      "text": "Quite."
+    },
+    {
+      "t": "narrate",
+      "text": "Yet."
     },
     {
       "t": "end"
