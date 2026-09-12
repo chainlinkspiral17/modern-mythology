@@ -1,0 +1,153 @@
+{
+ "meta": {
+  "title": "vol7_kai_theme",
+  "composer": "authored for the VN score",
+  "for": "music_catalog.json \u00b7 vol7_kai_theme",
+  "notes": "Kai. Boot-heel on plank pier + a single hand-line clicking, the water under the boards."
+ },
+ "tempo_bpm": 60,
+ "time_sig": [
+  4,
+  4
+ ],
+ "sample_rate": 22050,
+ "tracks": [
+  {
+   "instrument": "slowstick_bass",
+   "gain": 0.414,
+   "notes": [
+    {
+     "pitch": "E1",
+     "bar": 1,
+     "beat": 1,
+     "dur": 0.2,
+     "vel": 0.32
+    },
+    {
+     "pitch": "E1",
+     "bar": 1,
+     "beat": 3,
+     "dur": 0.2,
+     "vel": 0.28
+    },
+    {
+     "pitch": "E1",
+     "bar": 2,
+     "beat": 1,
+     "dur": 0.2,
+     "vel": 0.32
+    },
+    {
+     "pitch": "E1",
+     "bar": 2,
+     "beat": 3,
+     "dur": 0.2,
+     "vel": 0.28
+    },
+    {
+     "pitch": "E1",
+     "bar": 3,
+     "beat": 1,
+     "dur": 0.2,
+     "vel": 0.32
+    },
+    {
+     "pitch": "E1",
+     "bar": 3,
+     "beat": 3,
+     "dur": 0.2,
+     "vel": 0.28
+    },
+    {
+     "pitch": "E1",
+     "bar": 4,
+     "beat": 1,
+     "dur": 0.2,
+     "vel": 0.32
+    },
+    {
+     "pitch": "E1",
+     "bar": 4,
+     "beat": 3,
+     "dur": 0.2,
+     "vel": 0.28
+    },
+    {
+     "pitch": "E1",
+     "bar": 5,
+     "beat": 1,
+     "dur": 0.2,
+     "vel": 0.32
+    },
+    {
+     "pitch": "E1",
+     "bar": 5,
+     "beat": 3,
+     "dur": 0.2,
+     "vel": 0.28
+    }
+   ]
+  },
+  {
+   "instrument": "chiptune_arp",
+   "gain": 0.115,
+   "notes": [
+    {
+     "pitch": "E6",
+     "bar": 1,
+     "beat": 2.3,
+     "dur": 0.05,
+     "vel": 0.16
+    },
+    {
+     "pitch": "E6",
+     "bar": 1,
+     "beat": 4.1,
+     "dur": 0.05,
+     "vel": 0.14
+    },
+    {
+     "pitch": "E6",
+     "bar": 2,
+     "beat": 2.6,
+     "dur": 0.05,
+     "vel": 0.15
+    },
+    {
+     "pitch": "E6",
+     "bar": 3,
+     "beat": 1.8,
+     "dur": 0.05,
+     "vel": 0.14
+    },
+    {
+     "pitch": "E6",
+     "bar": 4,
+     "beat": 2.2,
+     "dur": 0.05,
+     "vel": 0.16
+    },
+    {
+     "pitch": "E6",
+     "bar": 4,
+     "beat": 3.9,
+     "dur": 0.05,
+     "vel": 0.14
+    }
+   ]
+  },
+  {
+   "instrument": "ambient_drone",
+   "gain": 0.276,
+   "notes": [
+    {
+     "pitch": "E2",
+     "bar": 1,
+     "beat": 1,
+     "dur": 20,
+     "vel": 0.2
+    }
+   ]
+  }
+ ]
+}

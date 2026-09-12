@@ -206,6 +206,61 @@ played `_BGM_BY_LOCATION`'s location drone instead.
   arcana. Scenario beds run 12-14 bars (55-65 s) rather than the
   chapter beds' ~40: a run is minutes, not a page.
 
+### 2026-09-12 (iii) · SIGNATURES · a principal's theme is a one-shot, and it outranks the hum
+
+- **The catalog promised 46 character themes and shipped one.** Every
+  entry with `chars` and "theme" in its id is a signature — "Sharp's
+  signature, played whenever Sharp shows up" — and only Elicia's
+  existed. Nineteen are authored now (`author_vn_beds.py`, the
+  SIGNATURES section): the nineteen whose character is shown or
+  speaks somewhere in their volume. The other 27 name keys that never
+  appear (`faust3`, `maya_kid`, `the_twins`, Sharp, the vol 2-4
+  principals — vols 2-4 are stubs with one speaker each) and wait
+  for their scenes. `faust3` → `faust` is corrected with the
+  `--catalog` step (`RECHAR`); 304 cues across 184 scenes fire.
+- **Cue on the first show OR the first line, once per scene.** Four
+  of the themed characters (the Stranger, Marit, Wren, Petra) are
+  never `show`n — they only talk — so `_do_say`/`_do_think` cue too.
+  `GameEngine._cue_signature` keys on `CharLayer.char_key`, dedupes
+  per scene (`_signatures_cued`, cleared on scene load), and a resume
+  fast-forward only MARKS (`_replaying`) so a save never opens on a
+  run of stingers.
+- **A signature plays NOW and hands the bed back.** It goes through
+  `play_oneshot_bgm` — in both jukebox modes; the jukebox complaint
+  was "the same song forever", and a 15 s figure that resumes the
+  rotation is not that — and `cue_signature` erases the same src from
+  the queue so the unlock path does not play it a second time. One at
+  a time: a cue while a signature is pending or playing returns ""
+  and the queue catches it later.
+- **The duck INVERTS under a signature.** The Music Player is at 14%
+  (or on the floor) under a world hum; a signature is the one Music
+  Player track that outranks the room: `_bgm_bus_target` takes it to
+  full and `_ambient_target` pulls the hum to `SIGNATURE_HUM` (0.35)
+  of its gain for its duration. `_start_bgm` re-targets BOTH buses on
+  every track change, so the hum comes back by itself when the
+  resume kicks in. `_ambient_gain` is now state (it was a local).
+- **Signatures are heard one at a time against the same bed, so
+  they need one level, and the synth's voices differ by 20 dB.** Raw
+  renders ran from −28 dB RMS (the bass heartbeat) to −48 (the CRT
+  hum). Set-normalization preserves that spread by design, so the
+  fix is at the spec: `bed(…, trim=)` multiplies every layer's gain
+  at compose time; sixteen carry a trim and the set now sits within
+  4 dB before `normalize_bank --set` lifts it 4.87×.
+- **The prose is translated, not rendered.** Eight voices, no foley:
+  pen scratch = bright noise bursts (`rain` at A5, 0.2-0.4 beats);
+  a cello = the pad on one note; a bell or a tin clasp = the square
+  wave for 60-150 ms; a heartbeat = two bass thumps a beat apart;
+  a humming voice = a sine in the low alto. The `rain` voice has no
+  envelope, so its short bursts have hard edges — listen for clicks
+  on Frasier, Diego and Per first.
+- **NEXT (Deck):** is once-per-scene the right rate (a vol 6 scene
+  with Sam, Maya and Diego plays three stingers in its first
+  minute); does 0.35 leave enough room under the signature; the
+  `rain` burst edges; the translations that miss (Rick's shuffle,
+  Carl's pour); then the 27 unreachable themes as their scenes are
+  written, and whether the gauntlet visitors' themes should fire
+  from the board (the visitor cast is data, not `show` nodes).
+
 ### 2026-09-12 (ii) · THE WORLD HUM was the audible layer, and it was vol 5
 
 - **There are two beds in every 3D scene, and the loud one is not the

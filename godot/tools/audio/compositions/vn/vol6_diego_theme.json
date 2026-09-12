@@ -1,0 +1,97 @@
+{
+ "meta": {
+  "title": "vol6_diego_theme",
+  "composer": "authored for the VN score",
+  "for": "music_catalog.json \u00b7 vol6_diego_theme",
+  "notes": "Diego \u00b7 Two-A-Days. Sneaker squeak on gym lacquer + a held breath at the line of scrimmage, then the snap."
+ },
+ "tempo_bpm": 66,
+ "time_sig": [
+  4,
+  4
+ ],
+ "sample_rate": 22050,
+ "tracks": [
+  {
+   "instrument": "rain",
+   "gain": 0.1,
+   "notes": [
+    {
+     "pitch": "A5",
+     "bar": 1,
+     "beat": 1,
+     "dur": 0.15,
+     "vel": 0.34
+    },
+    {
+     "pitch": "A5",
+     "bar": 1,
+     "beat": 2.7,
+     "dur": 0.12,
+     "vel": 0.3
+    },
+    {
+     "pitch": "A5",
+     "bar": 2,
+     "beat": 1.4,
+     "dur": 0.15,
+     "vel": 0.32
+    },
+    {
+     "pitch": "A5",
+     "bar": 3,
+     "beat": 3,
+     "dur": 0.12,
+     "vel": 0.3
+    },
+    {
+     "pitch": "A5",
+     "bar": 4,
+     "beat": 1.2,
+     "dur": 0.15,
+     "vel": 0.28
+    }
+   ]
+  },
+  {
+   "instrument": "slowstick_pad",
+   "gain": 0.22,
+   "notes": [
+    {
+     "pitch": "E3",
+     "bar": 2,
+     "beat": 1,
+     "dur": 11,
+     "vel": 0.26
+    },
+    {
+     "pitch": "G3",
+     "bar": 2,
+     "beat": 1,
+     "dur": 11,
+     "vel": 0.26
+    },
+    {
+     "pitch": "B3",
+     "bar": 2,
+     "beat": 1,
+     "dur": 11,
+     "vel": 0.26
+    }
+   ]
+  },
+  {
+   "instrument": "slowstick_bass",
+   "gain": 0.14,
+   "notes": [
+    {
+     "pitch": "E1",
+     "bar": 5,
+     "beat": 1,
+     "dur": 2,
+     "vel": 0.3
+    }
+   ]
+  }
+ ]
+}

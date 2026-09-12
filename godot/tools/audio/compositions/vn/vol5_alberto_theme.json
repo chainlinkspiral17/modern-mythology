@@ -1,0 +1,55 @@
+{
+ "meta": {
+  "title": "vol5_alberto_theme",
+  "composer": "authored for the VN score",
+  "for": "music_catalog.json \u00b7 vol5_alberto_theme",
+  "notes": "Alberto \u00b7 Sunglasses Indoors. Bowed cello single note, dampened: the pad on one C, an octave ghost, and nothing else."
+ },
+ "tempo_bpm": 54,
+ "time_sig": [
+  4,
+  4
+ ],
+ "sample_rate": 22050,
+ "tracks": [
+  {
+   "instrument": "slowstick_pad",
+   "gain": 0.26,
+   "notes": [
+    {
+     "pitch": "C3",
+     "bar": 1,
+     "beat": 1,
+     "dur": 10,
+     "vel": 0.3
+    }
+   ]
+  },
+  {
+   "instrument": "soft_sine",
+   "gain": 0.08,
+   "notes": [
+    {
+     "pitch": "C4",
+     "bar": 2,
+     "beat": 1,
+     "dur": 6,
+     "vel": 0.14
+    }
+   ]
+  },
+  {
+   "instrument": "ambient_drone",
+   "gain": 0.12,
+   "notes": [
+    {
+     "pitch": "C2",
+     "bar": 1,
+     "beat": 1,
+     "dur": 14,
+     "vel": 0.2
+    }
+   ]
+  }
+ ]
+}

@@ -1,0 +1,63 @@
+{
+ "meta": {
+  "title": "vol7_wren_theme",
+  "composer": "authored for the VN score",
+  "for": "music_catalog.json \u00b7 vol7_wren_theme",
+  "notes": "Wren. Two notes of a wooden whistle, the first held, the second never quite arriving."
+ },
+ "tempo_bpm": 56,
+ "time_sig": [
+  4,
+  4
+ ],
+ "sample_rate": 22050,
+ "tracks": [
+  {
+   "instrument": "slowstick_lead",
+   "gain": 0.448,
+   "notes": [
+    {
+     "pitch": "A5",
+     "bar": 1,
+     "beat": 1,
+     "dur": 5,
+     "vel": 0.22
+    },
+    {
+     "pitch": "C6",
+     "bar": 2,
+     "beat": 3,
+     "dur": 0.12,
+     "vel": 0.1
+    },
+    {
+     "pitch": "A5",
+     "bar": 4,
+     "beat": 1,
+     "dur": 4,
+     "vel": 0.2
+    },
+    {
+     "pitch": "C6",
+     "bar": 5,
+     "beat": 1,
+     "dur": 0.1,
+     "vel": 0.08
+    }
+   ]
+  },
+  {
+   "instrument": "ambient_drone",
+   "gain": 0.28,
+   "notes": [
+    {
+     "pitch": "D2",
+     "bar": 1,
+     "beat": 1,
+     "dur": 20,
+     "vel": 0.18
+    }
+   ]
+  }
+ ]
+}

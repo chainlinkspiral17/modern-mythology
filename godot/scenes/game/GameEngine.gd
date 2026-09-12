@@ -37,6 +37,16 @@ var _log:         Array      = []
 var _skin:        Dictionary = {}
 var _active_slot: int        = -1
 
+# SIGNATURES (2026-09-12). A principal's theme plays once per scene,
+# the first time they are shown OR speak (four of the themed
+# characters — the Stranger, Marit, Wren, Petra — are never `show`n;
+# they only talk). Keyed by CharLayer.char_key; cleared on scene load.
+# A resume fast-forward replays `show` nodes silently and must not
+# fire a run of stingers at once, so cues are only MARKED while
+# `_replaying`.
+var _signatures_cued: Dictionary = {}
+var _replaying: bool = false
+
 var _waiting:     bool  = false
 var _auto_timer:  float = 0.0
 var _paused:      bool  = false
@@ -464,6 +474,7 @@ func _load_scene(scene_id: String, start_at: int = 0) -> void:
 	_apply_trip_cue("reset")
 	_apply_register_cue("reset")
 	_scene_id   = scene_id
+	_signatures_cued.clear()
 	# Coverage rotation: the director assigns each chapter its
 	# establish angle from this key (see VnDirector._rotation_marker).
 	if _director != null:
@@ -538,6 +549,7 @@ func _fast_forward_to(target: int) -> void:
 	var last_register: String = "reset"
 	var last_shot: String = ""
 	var limit: int = mini(target, nodes.size())
+	_replaying = true
 	for i in limit:
 		var nv: Variant = nodes[i]
 		if not (nv is Dictionary):
@@ -602,6 +614,7 @@ func _fast_forward_to(target: int) -> void:
 	_apply_register_cue(last_register)
 	# Save-file flags win over replayed flag nodes.
 	_flags.merge(authoritative, true)
+	_replaying = false
 
 
 # Tell AudioMgr which catalog tracks belong to the current chapter.
@@ -843,6 +856,7 @@ func _do_say(n: Dictionary) -> void:
 	var expr: String      = _s(n, "expr", "neutral")
 	_log.append({"role": "say", "char": char_name, "text": text})
 	_ensure_portrait(char_name, expr)
+	_cue_signature(char_name)
 	_chars.call("update_expression", char_name.to_lower(), expr)
 	AudioMgr.set_sfx_pan(_char_pan(char_name))
 	AudioMgr.duck()
@@ -858,6 +872,7 @@ func _do_think(n: Dictionary) -> void:
 	var char_name: String = _s(n, "char")
 	var expr: String      = _s(n, "expr", "neutral")
 	_ensure_portrait(char_name, expr)
+	_cue_signature(char_name)
 	AudioMgr.set_sfx_pan(_char_pan(char_name))
 	AudioMgr.duck()
 	_chars.call("activate_speaker", char_name.to_lower())
@@ -936,10 +951,23 @@ func _do_show(n: Dictionary) -> void:
 		n.get("pos",  "center"),
 		n.get("facing", "")
 	)
+	_cue_signature(char_name)
+
+
+# The character's first appearance in this scene — shown or speaking —
+# unlocks every catalog track that names them (the Music Player's dot)
+# and, if one of those is their SIGNATURE, plays it once over the room
+# and hands the bed back. Once per character per scene.
+func _cue_signature(char_name: String) -> void:
 	# Use the CharLayer slug fn so "The Demon"/"oil exec"/etc collapse
 	# the same way they do for portrait lookups + accents.
 	var char_key: String = _chars.call("char_key", char_name)
+	if char_key == "" or char_key == "none" or _signatures_cued.has(char_key):
+		return
+	_signatures_cued[char_key] = true
 	AudioMgr.unlock_tracks_for_character(char_key)
+	if not _replaying and AudioMgr.has_method("cue_signature"):
+		AudioMgr.cue_signature(char_key)
 
 
 func _do_hide(n: Dictionary) -> void:

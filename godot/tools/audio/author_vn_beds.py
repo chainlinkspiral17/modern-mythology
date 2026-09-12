@@ -77,8 +77,12 @@ def track(instrument, gain, notes):
 BEDS = {}
 
 
-def bed(tid, tempo, note, layers):
-    BEDS[tid] = {"tempo": tempo, "note": note, "layers": layers}
+def bed(tid, tempo, note, layers, trim=1.0):
+    """`trim` multiplies every layer's gain at compose time — a level
+    knob for the SIGNATURES, whose voices differ 20 dB in raw output
+    (the fluorescent hum is a whisper, the bass thump is not) and are
+    heard one at a time against the same bed."""
+    BEDS[tid] = {"tempo": tempo, "note": note, "layers": layers, "trim": trim}
 
 
 # ── beds that WERE rendered, under a name the catalog didn't use ───
@@ -942,6 +946,241 @@ bed("vol5_priestess_finale_shift_ends", 52,
      track("soft_sine", 0.14, [n("E4", 7, 1, 6, 0.16)])])
 
 
+# ── SIGNATURES (2026-09-12) ────────────────────────────────────────
+# Forty-six catalog entries are a character's THEME ("Sharp's
+# signature, played whenever Sharp shows up") and none had a file.
+# These are the nineteen whose character is actually shown or speaks
+# somewhere in their volume — GameEngine cues a signature once per
+# scene on the first show or line, as a one-shot over the bed, and
+# the hum sinks under it (AudioMgr.SIGNATURE_HUM). 12-22 s each: a
+# figure, not a bed. The other 27 name characters who never appear
+# under that key (the gauntlet visitors, faust3/maya_kid, Sharp, the
+# vol 2-4 principals) and wait for their scenes.
+#
+# The synth has eight voices and no foley, so the catalog's prose is
+# TRANSLATED, not rendered: pen scratch = short bursts of bright
+# filtered noise; a cello = the pad on one note; a bell = the square
+# wave for 150 ms; a heartbeat = two bass thumps a beat apart. Draft 2
+# is what the Deck says about each translation.
+
+# vol 1
+bed("vol1_stranger_theme", 58,
+    "The Stranger. A single sustained tone in the upper register, "
+    "over the diner's D — he arrives at the booth and the room does "
+    "not change key for him.",
+    [track("soft_sine", 0.16, [n("E6", 1, 1, 14, 0.18)]),
+     track("ambient_drone", 0.14, [n("D2", 1, 1, 18, 0.24)])],
+    trim=2.0)
+
+bed("vol1_faust_theme", 56,
+    "Faust III. An echo of Sharp's bass but warmer — the same world "
+    "from another mouth: the bass figure in D under a D MAJOR pad.",
+    [track("slowstick_bass", 0.24,
+           [n("D1", 1, 1, 3, 0.34), n("F1", 1, 4, 1, 0.28),
+            n("D1", 2, 1, 3, 0.32), n("C1", 2, 4, 1, 0.26),
+            n("D1", 3, 1, 4, 0.30),
+            n("D1", 4, 1, 3, 0.26), n("F1", 4, 4, 1, 0.22),
+            n("D1", 5, 1, 4, 0.24)]),
+     track("slowstick_pad", 0.18, hold(["D3", "F#3", "A3"], 1, 18, 0.22)),
+     track("soft_sine", 0.10, [n("A4", 3, 3, 4, 0.16)])],
+    trim=0.8)
+
+# vol 5
+bed("vol5_alberto_theme", 54,
+    "Alberto · Sunglasses Indoors. Bowed cello single note, dampened: "
+    "the pad on one C, an octave ghost, and nothing else.",
+    [track("slowstick_pad", 0.26, [n("C3", 1, 1, 10, 0.30)]),
+     track("soft_sine", 0.08, [n("C4", 2, 1, 6, 0.14)]),
+     track("ambient_drone", 0.12, [n("C2", 1, 1, 14, 0.20)])])
+
+bed("vol5_frasier_theme_solo", 60,
+    "Frasier · Notebook. The pen scratch behind the warehouse drone — "
+    "short bright noise bursts in no rhythm at all.",
+    [track("ambient_drone", 0.18, [n("D#2", 1, 1, 20, 0.28)]),
+     track("rain", 0.10,
+           [n("A5", 1, 2, 0.3, 0.30), n("A5", 1, 2.5, 0.2, 0.26),
+            n("A5", 1, 3.2, 0.4, 0.30), n("A5", 2, 1.1, 0.25, 0.28),
+            n("A5", 2, 1.6, 0.3, 0.30), n("A5", 2, 3, 0.2, 0.24),
+            n("A5", 3, 2, 0.35, 0.30), n("A5", 3, 2.6, 0.2, 0.26),
+            n("A5", 4, 1, 0.3, 0.28), n("A5", 4, 1.5, 0.25, 0.28),
+            n("A5", 4, 3.4, 0.4, 0.30), n("A5", 5, 2, 0.2, 0.24)])],
+    trim=1.5)
+
+bed("vol5_john_theme", 60,
+    "John Frank. An apron-tied phrase: a single mid-range pad, a slow "
+    "heartbeat below — two bass thumps a beat, at rest.",
+    [track("slowstick_pad", 0.22, hold(["G3", "B3", "D4"], 1, 18, 0.26)),
+     track("slowstick_bass", 0.20,
+           [x for b in range(1, 6)
+            for x in (n("G1", b, 1, 0.3, 0.34), n("G1", b, 1.6, 0.25, 0.24))]),
+     track("ambient_drone", 0.10, [n("G2", 1, 1, 20, 0.18)])],
+    trim=0.8)
+
+bed("vol5_mackenzie_theme", 58,
+    "Mackenzie · Receiver. Phone-line static + a single piano "
+    "left-hand figure, A minor, played twice and then left on the A.",
+    [track("rain", 0.12, [n("C3", 1, 1, 20, 0.22)]),
+     track("slowstick_bass", 0.22,
+           [n("A1", 1, 1, 1.5, 0.30), n("E2", 1, 2.5, 1, 0.28),
+            n("C2", 1, 3.5, 2.5, 0.30),
+            n("A1", 3, 1, 1.5, 0.28), n("E2", 3, 2.5, 1, 0.26),
+            n("C2", 3, 3.5, 2.5, 0.28),
+            n("A1", 5, 1, 4, 0.26)]),
+     track("soft_sine", 0.08, [n("A3", 3, 1, 4, 0.14)])],
+    trim=1.2)
+
+bed("vol5_the_demon_theme", 52,
+    "The Man at the Bar. A cold sine pad about a half-step out of "
+    "tune with everything around it: F-B under a C that will not "
+    "move to the B.",
+    [track("slowstick_pad", 0.22, hold(["F2", "B2"], 1, 16, 0.26)),
+     track("soft_sine", 0.16, [n("C5", 1, 1, 16, 0.16)]),
+     track("ambient_drone", 0.14, [n("B1", 1, 1, 18, 0.22)])])
+
+# vol 6
+bed("vol6_sam_theme", 60,
+    "Sam · Eleven Forty-Seven. Register clerk's steady: a low sine "
+    "held, and the entry bell half a beat behind where you'd expect, "
+    "three times.",
+    [track("soft_sine", 0.20, [n("C3", 1, 1, 20, 0.28)]),
+     track("slowstick_pad", 0.12, hold(["C3", "G3"], 1, 20, 0.18)),
+     track("chiptune_arp", 0.06,
+           [n("E6", 1, 1.5, 0.15, 0.20), n("E6", 3, 1.5, 0.15, 0.18),
+            n("E6", 5, 1.5, 0.15, 0.16)])],
+    trim=1.3)
+
+bed("vol6_diego_theme", 66,
+    "Diego · Two-A-Days. Sneaker squeak on gym lacquer + a held "
+    "breath at the line of scrimmage, then the snap.",
+    [track("rain", 0.10,
+           [n("A5", 1, 1, 0.15, 0.34), n("A5", 1, 2.7, 0.12, 0.30),
+            n("A5", 2, 1.4, 0.15, 0.32), n("A5", 3, 3, 0.12, 0.30),
+            n("A5", 4, 1.2, 0.15, 0.28)]),
+     track("slowstick_pad", 0.22, hold(["E3", "G3", "B3"], 2, 11, 0.26)),
+     track("slowstick_bass", 0.14, [n("E1", 5, 1, 2, 0.30)])])
+
+bed("vol6_maya_theme", 58,
+    "Maya · Bedroom Recording. Cassette-deck hiss + a half-strummed "
+    "guitar through the wall: two chords, each string a hair late.",
+    [track("rain", 0.10, [n("A4", 1, 1, 20, 0.20)]),
+     track("slowstick_lead", 0.12,
+           [n("D3", 2, 1, 3, 0.20), n("F#3", 2, 1.12, 3, 0.18),
+            n("A3", 2, 1.24, 3, 0.16),
+            n("G3", 4, 1, 3, 0.20), n("B3", 4, 1.12, 3, 0.18),
+            n("D4", 4, 1.24, 3, 0.16)]),
+     track("ambient_drone", 0.10, [n("D2", 1, 1, 20, 0.18)])],
+    trim=2.5)
+
+bed("vol6_rick_theme", 60,
+    "Rick · Back-Issue Reverence. Bagged-and-boarded mylar shuffle + "
+    "a vintage-store CRT hum at 60 Hz.",
+    [track("fluorescent_hum", 0.16, [n("A2", 1, 1, 20, 0.30)]),
+     track("rain", 0.08,
+           [n("E4", 1, 2, 0.5, 0.24), n("E4", 1, 3.5, 0.4, 0.22),
+            n("E4", 2, 1.5, 0.6, 0.24), n("E4", 3, 2, 0.5, 0.22),
+            n("E4", 3, 4, 0.4, 0.20), n("E4", 4, 2.5, 0.6, 0.24)])],
+    trim=5.0)
+
+bed("vol6_carl_theme", 56,
+    "Carl · Lunch Pail. Tin-clasp pop + a thermos pour + the "
+    "unhurried exhale of a man who has done this thirty thousand "
+    "times.",
+    [track("chiptune_arp", 0.07, [n("C4", 1, 1, 0.08, 0.30),
+                                  n("C4", 1, 1.15, 0.06, 0.20)]),
+     track("rain", 0.10, [n("G3", 2, 1, 3, 0.20)]),
+     track("slowstick_pad", 0.18, hold(["F2", "C3"], 3, 8, 0.22)),
+     track("ambient_drone", 0.12, [n("F1", 1, 1, 18, 0.20)])],
+    trim=1.6)
+
+# vol 7
+bed("vol7_marit_theme", 54,
+    "Marit. An older voice humming a hymn fragment, very close to "
+    "the mic — a sine in the low alto, eight notes, G.",
+    [track("soft_sine", 0.20,
+           [n("G3", 1, 1, 2, 0.24), n("A3", 1, 3, 1, 0.22),
+            n("B3", 1, 4, 1, 0.22), n("G3", 2, 1, 2, 0.24),
+            n("D4", 2, 3, 2, 0.24), n("B3", 3, 1, 2, 0.22),
+            n("A3", 3, 3, 1, 0.20), n("G3", 3, 4, 3, 0.22)]),
+     track("slowstick_pad", 0.10, hold(["G2", "D3"], 1, 16, 0.16))],
+    trim=1.8)
+
+bed("vol7_wren_theme", 56,
+    "Wren. Two notes of a wooden whistle, the first held, the second "
+    "never quite arriving.",
+    [track("slowstick_lead", 0.16,
+           [n("A5", 1, 1, 5, 0.22), n("C6", 2, 3, 0.12, 0.10),
+            n("A5", 4, 1, 4, 0.20), n("C6", 5, 1, 0.10, 0.08)]),
+     track("ambient_drone", 0.10, [n("D2", 1, 1, 20, 0.18)])],
+    trim=2.8)
+
+bed("vol7_tem_theme", 58,
+    "Tem. Wool-mitten brush across a kitchen-window pane + a kettle "
+    "two rooms over, climbing.",
+    [track("rain", 0.09,
+           [n("C4", 1, 1, 1.5, 0.20), n("C4", 1, 3, 1.5, 0.18),
+            n("C4", 3, 1, 1.5, 0.20), n("C4", 3, 3, 1.5, 0.18)]),
+     track("soft_sine", 0.06,
+           [n("C6", 2, 1, 4, 0.10), n("C#6", 3, 1, 4, 0.11),
+            n("D6", 4, 1, 4, 0.12), n("D#6", 5, 1, 3, 0.12)]),
+     track("ambient_drone", 0.14, [n("F2", 1, 1, 20, 0.22)])],
+    trim=2.6)
+
+bed("vol7_petra_theme", 72,
+    "Petra. A child's six-note recorder run, played twice, the second "
+    "time a half-step lower.",
+    [track("soft_sine", 0.18,
+           [n("C5", 1, 1, 0.45, 0.26), n("D5", 1, 1.5, 0.45, 0.26),
+            n("E5", 1, 2, 0.45, 0.26), n("G5", 1, 2.5, 0.45, 0.26),
+            n("E5", 1, 3, 0.45, 0.24), n("C5", 1, 3.5, 1.0, 0.24),
+            n("B4", 3, 1, 0.45, 0.24), n("C#5", 3, 1.5, 0.45, 0.24),
+            n("D#5", 3, 2, 0.45, 0.24), n("F#5", 3, 2.5, 0.45, 0.24),
+            n("D#5", 3, 3, 0.45, 0.22), n("B4", 3, 3.5, 1.0, 0.22)]),
+     track("slowstick_pad", 0.08, hold(["C3", "G3"], 1, 14, 0.14))],
+    trim=2.8)
+
+bed("vol7_kai_theme", 60,
+    "Kai. Boot-heel on plank pier + a single hand-line clicking, the "
+    "water under the boards.",
+    [track("slowstick_bass", 0.18,
+           [x for b in range(1, 6)
+            for x in (n("E1", b, 1, 0.2, 0.32), n("E1", b, 3, 0.2, 0.28))]),
+     track("chiptune_arp", 0.05,
+           [n("E6", 1, 2.3, 0.05, 0.16), n("E6", 1, 4.1, 0.05, 0.14),
+            n("E6", 2, 2.6, 0.05, 0.15), n("E6", 3, 1.8, 0.05, 0.14),
+            n("E6", 4, 2.2, 0.05, 0.16), n("E6", 4, 3.9, 0.05, 0.14)]),
+     track("ambient_drone", 0.12, [n("E2", 1, 1, 20, 0.20)])],
+    trim=2.3)
+
+bed("vol7_per_theme", 52,
+    "Per. Tarred rope laid down, a pipe-knife strop, an exhale "
+    "through close-trimmed beard.",
+    [track("rain", 0.09, [n("A2", 1, 1, 2, 0.24), n("A2", 3, 1, 2, 0.22)]),
+     track("rain", 0.07,
+           [n("A5", 2, 1, 0.3, 0.22), n("A5", 2, 1.6, 0.3, 0.22),
+            n("A5", 2, 2.2, 0.3, 0.20), n("A5", 2, 2.8, 0.3, 0.20)]),
+     track("slowstick_pad", 0.18, hold(["D2", "A2"], 4, 6, 0.22)),
+     track("ambient_drone", 0.12, [n("D2", 1, 1, 20, 0.20)])],
+    trim=2.0)
+
+bed("vol7_finn_theme", 60,
+    "Finn. A short bow across a single fiddle string + the "
+    "snow-shovel scrape outside the door.",
+    [track("slowstick_lead", 0.18, [n("D5", 1, 1, 2, 0.26),
+                                    n("D5", 3, 1, 2.5, 0.24)]),
+     track("rain", 0.08,
+           [n("C3", 2, 1, 0.8, 0.24), n("C3", 2, 3, 0.8, 0.22),
+            n("C3", 4, 1, 0.8, 0.22), n("C3", 4, 3, 0.8, 0.20)]),
+     track("ambient_drone", 0.12, [n("D2", 1, 1, 18, 0.20)])],
+    trim=2.5)
+
+# The catalog named vol 1's principal "faust3" (the title is Faust III);
+# every show and line in vol 1 is keyed "faust". The theme could never
+# fire. Corrected with the catalog step.
+RECHAR = {
+    "vol1_faust_theme": ["faust"],
+}
+
+
 # ── beds that were already on disk and nothing pointed at ──────────
 # Six vol5 room tones were rendered at some point and never entered the
 # catalog, so the arcana chapters could not use them even though they
@@ -1088,6 +1327,10 @@ def adopt_into_catalog(cat_path):
             print("  src  %-32s %s -> %s" % (tid, e.get("src"), want))
             e["src"] = want
             changed += 1
+        if tid in RECHAR and e.get("chars") != RECHAR[tid]:
+            print("  chars %-32s %s -> %s" % (tid, e.get("chars"), RECHAR[tid]))
+            e["chars"] = list(RECHAR[tid])
+            changed += 1
     for tid, title, desc in ADOPT:
         if tid in by_id:
             continue
@@ -1120,7 +1363,8 @@ def compose(tid):
         "tempo_bpm": spec["tempo"],
         "time_sig": [4, 4],
         "sample_rate": SR,
-        "tracks": spec["layers"],
+        "tracks": [dict(t, gain=round(t["gain"] * spec.get("trim", 1.0), 4))
+                   for t in spec["layers"]],
     }
 
 

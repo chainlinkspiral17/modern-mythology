@@ -18,6 +18,18 @@ const AMBIENT_DUCK   := 0.14   # BGM sinks to 14% under an active locale bed
 const AMBIENT_FADE   := 1.4    # slow, atmospheric crossfade (s)
 const AMBIENT_CFG    := "res://resources/audio/locale_ambient.json"
 
+# ── Signatures (2026-09-12) ───────────────────────────────────────
+# A catalog entry that names a character in `chars` and carries
+# "theme" in its id is that character's SIGNATURE: a 12-20 s figure
+# ("Sharp's signature, played whenever Sharp shows up"). GameEngine
+# cues it once per scene on the character's first show or line; it
+# plays as a one-shot on the Music Player and hands back whatever was
+# playing. While it plays under a world hum the duck INVERTS — the
+# hum sinks to SIGNATURE_HUM of its gain and the signature rises to
+# full — then both return when it ends.
+const SIGNATURE_HUM  := 0.35
+const SIGNATURE_FADE := 0.5
+
 signal track_changed(src: String)
 
 var _bgm:   AudioStreamPlayer
@@ -53,6 +65,9 @@ var _ambient_tween:   Tween             = null
 var _ambient_active:  bool              = false
 var _ambient_locale:  String            = ""
 var _ambient_bed: String = ""      # the hum's src, un-prefixed — compared with _current_src
+var _ambient_gain: float = 1.0     # the locale's configured hum gain (locale_ambient.json)
+var _signature_srcs: Dictionary = {}   # src -> true, built lazily from the catalog
+var _signature_srcs_built: bool = false
 var _ambient_cfg:     Dictionary        = {}
 var _ambient_cfg_loaded: bool           = false
 
@@ -302,11 +317,73 @@ func _bgm_bus_target() -> float:
 	# floor and the hum carries the room alone.
 	if _ambient_active and _ambient_bed != "" and _current_src == _ambient_bed:
 		amb_mult = 0.0
+	# A signature is the one Music Player track that OUTRANKS the hum:
+	# it comes up to full and the hum sinks instead (see _ambient_target).
+	if _ambient_active and _is_signature(_current_src):
+		amb_mult = 1.0
 	return Settings.bgm_vol * duck_mult * amb_mult
 
 
 func _retarget_bgm_bus(duration: float) -> void:
 	_tween_bgm_bus(_bgm_bus_target(), duration)
+
+
+# The Ambient bus target while a hum is active: the locale's gain,
+# pulled down to SIGNATURE_HUM of itself for as long as a signature
+# is the Music Player track.
+func _ambient_target() -> float:
+	var sig_mult: float = SIGNATURE_HUM if _is_signature(_current_src) else 1.0
+	return Settings.bgm_vol * _ambient_gain * sig_mult
+
+
+func _retarget_ambient_bus(duration: float) -> void:
+	if _ambient_active:
+		_tween_ambient_bus(_ambient_target(), duration)
+
+
+func _is_signature(src: String) -> bool:
+	if src == "":
+		return false
+	if not _signature_srcs_built:
+		_signature_srcs_built = true
+		for entry: Dictionary in SceneDataDB.get_music_catalog():
+			var chars: Array = entry.get("chars", [])
+			var id: String = String(entry.get("id", ""))
+			if not chars.is_empty() and id.contains("theme"):
+				_signature_srcs[String(entry.get("src", ""))] = true
+	return _signature_srcs.has(src)
+
+
+# Play `char_key`'s signature now, once, then return to whatever was
+# playing. Returns the src cued, or "" when the character has no
+# signature in the current volume, its file is missing, or one is
+# already on its way (a queued unlock still catches it later).
+func cue_signature(char_key: String) -> String:
+	if char_key == "":
+		return ""
+	if _pending_src != "" or _is_signature(_current_src):
+		return ""
+	for entry: Dictionary in SceneDataDB.get_music_catalog():
+		var chars: Array = entry.get("chars", [])
+		var id: String = String(entry.get("id", ""))
+		if not (char_key in chars) or not id.contains("theme"):
+			continue
+		if not _entry_in_current_volume(entry):
+			continue
+		var src: String = String(entry.get("src", ""))
+		if src == "" or src in _failed_srcs:
+			continue
+		var p := "res://" + src
+		if not ResourceLoader.exists(p) and not FileAccess.file_exists(ProjectSettings.globalize_path(p)):
+			_failed_srcs[src] = true
+			continue
+		# unlock_tracks_for_character queued it as well — one hearing, not two.
+		if src in _queue:
+			_queue.erase(src)
+			queue_changed.emit()
+		play_oneshot_bgm(src)
+		return src
+	return ""
 
 
 # ── Per-locale ambient bed ────────────────────────────────────────
@@ -343,8 +420,8 @@ func enter_locale_ambient(locale_id: String) -> void:
 	_ambient_active = true
 	_ambient_locale = locale_id
 	_ambient_bed = bed.trim_prefix("res://")
-	var gain: float = float(cfg.get("gain", 1.0))
-	_tween_ambient_bus(Settings.bgm_vol * gain, AMBIENT_FADE)
+	_ambient_gain = float(cfg.get("gain", 1.0))
+	_tween_ambient_bus(_ambient_target(), AMBIENT_FADE)
 	_retarget_bgm_bus(AMBIENT_FADE)
 
 
@@ -664,8 +741,10 @@ func _start_bgm(src: String, fade: bool = true) -> void:
 		stream = _with_loop(stream, true)
 	_current_src = src
 	_bgm.stream = stream
-	# the bus level depends on which track this is (see _bgm_bus_target)
-	_retarget_bgm_bus(0.5)
+	# the bus level depends on which track this is (see _bgm_bus_target),
+	# and so does the hum's (a signature pushes it down; its end lets it back)
+	_retarget_bgm_bus(SIGNATURE_FADE)
+	_retarget_ambient_bus(SIGNATURE_FADE)
 	if fade:
 		_bgm.volume_db = linear_to_db(0.0001)
 		_bgm.play()

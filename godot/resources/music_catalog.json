@@ -138,14 +138,14 @@
   "id": "vol1_faust_theme",
   "vol": 1,
   "title": "Faust III",
-  "src": "assets/audio/bgm/vol1_faust_theme.ogg",
+  "src": "assets/audio/bgm/vol1_faust_theme.wav",
   "composer": "—",
   "desc": "An echo of Sharp's bass but warmer — the same world from another mouth. Faust's signature.",
   "unlock": {
    "type": "heard"
   },
   "chars": [
-   "faust3"
+   "faust"
   ]
  },
  {
@@ -211,7 +211,7 @@
   "id": "vol1_stranger_theme",
   "vol": 1,
   "title": "The Stranger",
-  "src": "assets/audio/bgm/vol1_stranger_theme.ogg",
+  "src": "assets/audio/bgm/vol1_stranger_theme.wav",
   "composer": "—",
   "desc": "A single sustained tone in the upper register. The Stranger arrives at the booth.",
   "unlock": {
@@ -515,7 +515,7 @@
   "id": "vol5_alberto_theme",
   "vol": 5,
   "title": "Alberto · Sunglasses Indoors",
-  "src": "assets/audio/bgm/vol5_alberto_theme.ogg",
+  "src": "assets/audio/bgm/vol5_alberto_theme.wav",
   "composer": "—",
   "desc": "Bowed cello single note, dampened. The grieving son.",
   "unlock": {
@@ -632,7 +632,7 @@
   "id": "vol5_frasier_theme_solo",
   "vol": 5,
   "title": "Frasier · Notebook",
-  "src": "assets/audio/bgm/vol5_frasier_theme_solo.ogg",
+  "src": "assets/audio/bgm/vol5_frasier_theme_solo.wav",
   "composer": "—",
   "desc": "The pen scratch behind the warehouse drone — distinct from the chapter ambient.",
   "unlock": {
@@ -670,7 +670,7 @@
   "id": "vol5_john_theme",
   "vol": 5,
   "title": "John Frank",
-  "src": "assets/audio/bgm/vol5_john_theme.ogg",
+  "src": "assets/audio/bgm/vol5_john_theme.wav",
   "composer": "—",
   "desc": "An apron-tied phrase: a single mid-range pad, a slow heartbeat below. John's signature.",
   "unlock": {
@@ -698,7 +698,7 @@
   "id": "vol5_mackenzie_theme",
   "vol": 5,
   "title": "Mackenzie · Receiver",
-  "src": "assets/audio/bgm/vol5_mackenzie_theme.ogg",
+  "src": "assets/audio/bgm/vol5_mackenzie_theme.wav",
   "composer": "—",
   "desc": "Phone-line static + a single piano left-hand figure.",
   "unlock": {
@@ -770,7 +770,7 @@
   "id": "vol5_the_demon_theme",
   "vol": 5,
   "title": "The Man at the Bar",
-  "src": "assets/audio/bgm/vol5_the_demon_theme.ogg",
+  "src": "assets/audio/bgm/vol5_the_demon_theme.wav",
   "composer": "—",
   "desc": "A cold sine pad about a half-step out of tune with everything around it.",
   "unlock": {
@@ -1376,7 +1376,7 @@
   "id": "vol6_sam_theme",
   "vol": 6,
   "title": "Sam · Eleven Forty-Seven",
-  "src": "assets/audio/bgm/vol6_sam_theme.ogg",
+  "src": "assets/audio/bgm/vol6_sam_theme.wav",
   "composer": "—",
   "desc": "Register clerk's steady. Low sine + a paper-thin chime on the entry bell, half a beat behind where you'd expect.",
   "unlock": {
@@ -1390,7 +1390,7 @@
   "id": "vol6_diego_theme",
   "vol": 6,
   "title": "Diego · Two-A-Days",
-  "src": "assets/audio/bgm/vol6_diego_theme.ogg",
+  "src": "assets/audio/bgm/vol6_diego_theme.wav",
   "composer": "—",
   "desc": "Sneaker squeak on gym lacquer + a held breath at the line of scrimmage. Diego's signature.",
   "unlock": {
@@ -1404,7 +1404,7 @@
   "id": "vol6_maya_theme",
   "vol": 6,
   "title": "Maya · Bedroom Recording",
-  "src": "assets/audio/bgm/vol6_maya_theme.ogg",
+  "src": "assets/audio/bgm/vol6_maya_theme.wav",
   "composer": "—",
   "desc": "Cassette-deck hiss + a half-strummed guitar through the wall. Maya's signature.",
   "unlock": {
@@ -1418,7 +1418,7 @@
   "id": "vol6_rick_theme",
   "vol": 6,
   "title": "Rick · Back-Issue Reverence",
-  "src": "assets/audio/bgm/vol6_rick_theme.ogg",
+  "src": "assets/audio/bgm/vol6_rick_theme.wav",
   "composer": "—",
   "desc": "Bagged-and-boarded mylar shuffle + a vintage-store CRT hum at 60 Hz. Rick Cosmic's signature.",
   "unlock": {
@@ -1460,7 +1460,7 @@
   "id": "vol6_carl_theme",
   "vol": 6,
   "title": "Carl · Lunch Pail",
-  "src": "assets/audio/bgm/vol6_carl_theme.ogg",
+  "src": "assets/audio/bgm/vol6_carl_theme.wav",
   "composer": "—",
   "desc": "Tin-clasp pop + a thermos pour + the unhurried exhale of a man who has done this thirty thousand times. Carl Reno's signature.",
   "unlock": {
@@ -1788,7 +1788,7 @@
   "id": "vol7_marit_theme",
   "vol": 7,
   "title": "Marit",
-  "src": "assets/audio/bgm/vol7_marit_theme.ogg",
+  "src": "assets/audio/bgm/vol7_marit_theme.wav",
   "composer": "—",
   "desc": "An older voice humming a hymn fragment, very close to the mic. (No legible vocal.)",
   "unlock": {
@@ -1833,7 +1833,7 @@
   "id": "vol7_wren_theme",
   "vol": 7,
   "title": "Wren",
-  "src": "assets/audio/bgm/vol7_wren_theme.ogg",
+  "src": "assets/audio/bgm/vol7_wren_theme.wav",
   "composer": "—",
   "desc": "Two notes of a wooden whistle, the first held, the second never quite arriving. Wren's signature.",
   "unlock": {
@@ -1847,7 +1847,7 @@
   "id": "vol7_tem_theme",
   "vol": 7,
   "title": "Tem",
-  "src": "assets/audio/bgm/vol7_tem_theme.ogg",
+  "src": "assets/audio/bgm/vol7_tem_theme.wav",
   "composer": "—",
   "desc": "Wool-mitten brush across a kitchen-window pane + a kettle two rooms over. Tem's signature.",
   "unlock": {
@@ -1861,7 +1861,7 @@
   "id": "vol7_petra_theme",
   "vol": 7,
   "title": "Petra",
-  "src": "assets/audio/bgm/vol7_petra_theme.ogg",
+  "src": "assets/audio/bgm/vol7_petra_theme.wav",
   "composer": "—",
   "desc": "A child's six-note recorder run, played twice, the second time a half-step lower. Petra's signature.",
   "unlock": {
@@ -1875,7 +1875,7 @@
   "id": "vol7_kai_theme",
   "vol": 7,
   "title": "Kai",
-  "src": "assets/audio/bgm/vol7_kai_theme.ogg",
+  "src": "assets/audio/bgm/vol7_kai_theme.wav",
   "composer": "—",
   "desc": "Boot-heel on plank pier + a single hand-line clicking. Kai's signature.",
   "unlock": {
@@ -1889,7 +1889,7 @@
   "id": "vol7_per_theme",
   "vol": 7,
   "title": "Per",
-  "src": "assets/audio/bgm/vol7_per_theme.ogg",
+  "src": "assets/audio/bgm/vol7_per_theme.wav",
   "composer": "—",
   "desc": "Tarred rope laid down, a pipe-knife strop, an exhale through close-trimmed beard. Per's signature.",
   "unlock": {
@@ -1917,7 +1917,7 @@
   "id": "vol7_finn_theme",
   "vol": 7,
   "title": "Finn",
-  "src": "assets/audio/bgm/vol7_finn_theme.ogg",
+  "src": "assets/audio/bgm/vol7_finn_theme.wav",
   "composer": "—",
   "desc": "A short bow across a single fiddle string + the snow-shovel scrape outside the door. Finn's signature.",
   "unlock": {
