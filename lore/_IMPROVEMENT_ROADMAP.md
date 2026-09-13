@@ -1713,6 +1713,23 @@ status line now speaks its own delta dialect ("the crew %d/5 in
 good heart"). Do NOT re-sweep; future voice work should come from
 playtest complaints, not grep.
 
+## THE VISUAL PROGRAM (2026-09-13 · read `lore/_VISUAL_PROGRAM.md`)
+
+The user's ask: *"Improving backgrounds, models and direction and
+design is still a big project. Let's plan that out."* The plan is its
+own file. In one line each: ARC 0 is THE LENS — a contact-sheet rig
+that renders every preset × marker and every hero GLB × expression to
+PNGs Claude can read, because 871 framings are math-verified and zero
+have been seen; backgrounds go one locale deep in screen-time order
+(cabin_interior 31 · lena_apartment 23 · the vol 6 dozen) through the
+primitive upgrade + D2–D6 + light + wear; models have three routes and
+the user picks (Mixamo · Meshy-from-image · GNM stopgap); direction's
+next draft is cut from the sheet; design gets the VN consequence map,
+the model-chapter verb coins, the gauntlet tempo rows, and Salmonberry
+on the word. Seven user decisions are listed in §8 of the file.
+
+---
+
 ## NEXT SESSION QUEUE (written 2026-08-11 night, session close)
 
 The audit era is consolidated: run_all_audits.sh is green end to

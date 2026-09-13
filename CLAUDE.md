@@ -10,6 +10,10 @@ touching code:
 0. `lore/_IMPROVEMENT_ROADMAP.md` — the living prioritized plan
    (per-pillar backlogs, the user-side gates, recommended sequence).
    Update it when items ship or a blocking decision lands.
+   AND `lore/_VISUAL_PROGRAM.md` — the 2026-09-13 plan for the four
+   big pillars (backgrounds · models · direction · design): the
+   arc sequence, the contact-sheet loop (Arc 0), and the decisions
+   the user owns. Update it when an arc ships.
 
 1. `lore/_3D_MODELING_PLAYBOOK.md` — hard-won rules for the Blender
    → glTF → Godot pipeline. Read the Core rules (especially the

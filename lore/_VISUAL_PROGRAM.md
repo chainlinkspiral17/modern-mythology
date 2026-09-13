@@ -1,0 +1,283 @@
+# THE VISUAL PROGRAM — backgrounds · models · direction · design
+
+Written 2026-09-13 at the user's ask: *"Improving backgrounds, models
+and direction and design is still a big project. Let's plan that
+out."* This is the plan. It sits under THE DRAFTING PROGRAM
+(CLAUDE.md, `_IMPROVEMENT_ROADMAP.md`): every arc below ships a
+numbered draft, never a finish. Read this before picking up any of
+the four pillars; update it when an arc ships or a decision lands.
+
+---
+
+## 0 · Where it stands (honest numbers, 2026-09-13)
+
+| Pillar | State |
+|---|---|
+| **Backgrounds** | 146 3D presets carry the VN's 478 background placements; 121 Blender builders behind them. The top 20 presets are 47% of everything the reader sees; 71 presets appear once. Four MODEL CHAPTERS (diner, kwik stop, cathedral, henderson) set the bar; ~40 tail-wave locales sit at draft 2–3; vols 1–2's migration sets at 1–2. Every set is vertex-colour geometry under real lights — no textures, by constraint. The 2026-09-05 lesson stands: *the primitive layer was the ceiling*; five new primitives (lathe, prism, tube, rot-box, heightfield) and the first composites (car, ranch house) exist, and most sets have not been rebuilt through them. |
+| **Models** | Seven vol 5 principals have hero GLBs (John, Frasier, Elicia, Nicola, Dante, Antonio, Alberto). The fifteen vol 6–7 characters are 60×64 pixel busts BY DECISION until real models exist; `Portrait3D` will light and frame any GLB dropped in with zero code. Three routes exist and none is running: Mixamo/Ready Player Me (the user's keyboard), GNM heads on lofted bodies (offline, shelved after one look at Sam), Meshy image-to-3D (runner + Blender import built, no key ever entered). |
+| **Direction** | The grammar is built (establish / closeup / insert / panel, beats, kinetic text, cast staging, registers, THE TRIP, the feedback). 871 markers across 153 presets, every one aim- and obstruction-audited to <0.5°; 19,208 pages, none over 300 characters; 0 story problems. **ZERO framings have been seen through a lens** since the per-preset marker wave; the two Deck reads that exist (the title-card directive, the warehouse exterior) each found a real defect in minutes. |
+| **Design** | One game-grammar row per pillar has shipped (attract mode, the letters column, one verb coin, Minter in the stick). The VN's own game layer — five skills, choice plates, flags — has never had a design pass; VnSweep found dead checks and unwinnable choices, which means nobody has drawn the consequence map. The Salmonberry overworld (the flagship gameplay build) is written and waiting on the word. |
+
+---
+
+## 1 · The ceiling, and the three levers that raise it
+
+Without textures the sets top out at "dense, lit, well-dressed
+geometry" — the model chapters. That is a real ceiling, and it is
+where most of the game should get to before anything else matters.
+Three levers go above it, and all three are user-side keys or hours:
+
+1. **An image key or ArtCraft exports** (gate 1) — painted chapter
+   cards, CG art, endpaper plates, and REFERENCE IMAGES for lever 2.
+   Never a scene background (the 2026-08-03 verdict: VN backgrounds
+   are 3D scenes).
+2. **A Meshy key** — image-to-3D for HERO OBJECTS: the things whose
+   silhouette carries a chapter and that a lathe cannot make (the
+   SCUMM machine, the riverboat, Olaf's woodstove, Lena's easel, the
+   Cathedral's rack). The pipeline exists end to end
+   (`meshy_render.py` → `build_meshy_import.py`); output is
+   untextured low-poly with a flat vertex colour, so it slots into the
+   same look. Also a CHARACTER route: a reference image → a mesh →
+   `Portrait3D`.
+3. **Character sessions** (gate 2) — Mixamo/RPM, ~30 minutes each,
+   fifteen characters, Lena first. Or lever 2 with a reference
+   image, which moves the user's part from thirty minutes to
+   approving one picture.
+
+Everything else in this plan is Claude-side and starts now.
+
+---
+
+## 2 · ARC 0 · THE LENS (the loop that makes the rest verifiable)
+
+The single blocking fact in every pillar is the same: the work is
+verified by math and never by eye. The user pastes screenshots by
+hand; each one has found a defect. The fix is a rig, not more
+discipline.
+
+**Build `godot/tools/VnContactSheet.tscn` (Claude, one session):**
+boot the VN engine headless-of-story, and for every 3D preset in
+`Background3D.CAMERA_PRESETS` (and every `shot_*` marker the preset
+owns), load the locale, apply the preset's default mood at its
+scene's clock, wait for lights and the post stack, and save a
+1280×720 PNG to `godot/qa/contact/<preset>/<marker>.png`. Also one
+frame per hero GLB through `Portrait3D` at each expression. ~1,000
+frames; a few minutes on the Deck.
+
+**The loop, standing:**
+1. Claude ships a draft, gives ONE paste: pull → `list_stale_builds`
+   rebuild loop → contact sheet.
+2. The user runs it and pushes `godot/qa/contact/` (a second paste).
+3. Claude READS the PNGs — the frames are the taste pass — and cuts
+   the next draft from what is actually on screen: the stump, the
+   wall the closeup is pointing at, the room lit from nowhere.
+4. The user's own screenshots and verdicts still outrank the sheet;
+   the sheet is for the 900 frames nobody was ever going to paste.
+
+**Why this is Arc 0 and not a nice-to-have:** it converts every
+"Deck-gated" line in the ledger (there are dozens) into work Claude
+can do between the user's sessions, and it makes the STOP RULE
+(`_3D_MODELING_PLAYBOOK.md`) cheap to obey: a stale GLB is visible
+in the sheet's timestamps before anyone says "I don't see changes."
+
+---
+
+## 3 · Pillar A · BACKGROUNDS
+
+**Principle:** one locale deep beats five shallow, and the order is
+screen time. The reader lives in twenty rooms.
+
+**The method per locale (each visit = one draft):**
+- **The primitive upgrade** — rebuild the set's furniture and fixtures
+  through the five primitives and the composites (`_props`): turned
+  legs, aprons, lathed lamps, a car with a profile, a roof with eaves.
+  When an object class appears in three locales it goes into
+  `_props` and the pass multiplies (the car helper upgraded eleven
+  vehicles in one commit).
+- **D2–D6** (`_SET_DETAIL_PLAYBOOK.md`): surface breakup →
+  infrastructure → use states → depth bands and edges (geometry runs
+  PAST the frame in every direction a camera looks) → coverage and
+  light.
+- **Wear PERSONALITY** — whose feet, whose spills; anchored in the
+  chapter prose (Olaf's decades vs Tem's weeks is the vocabulary).
+- **Lighting per the lighting playbook** — three-light foundation,
+  practicals tied to visible fixtures, gels by Kelvin. Most sets have
+  the props and not the light; this is the cheapest jump in
+  perceived quality left.
+- **Hero objects** — from prose first (the bowls, the pot roast, the
+  crow exist this way); from Meshy when the key lands.
+- **Verified by the contact sheet** before the next visit.
+
+**Draft targets, by volume, by uses:**
+- **Vol 7 (current):** `cabin_interior` (31) · `lena_apartment` (23)
+  · `miller_back_porch` (12, shared with vol 6) · `salty_tome_alley`
+  (10) · `hans_bakery_back_kitchen` (8) · `cabin_road` (8) ·
+  `main_street` (8) · `finn_apartment` (7) · `board_lords_interior`
+  (7). The cabin and Lena's are at draft 3 and closest to the bar;
+  the bakery, Finn's and Board Lords are at draft 1–2.
+- **Vol 6 (the biggest volume, 64 presets):** `cosmic_comics_interior`
+  (12) · `miller_kitchen` (12, a model chapter) ·
+  `cosmic_comics_back_office` (11) · `maya_bedroom` (10) ·
+  `kwik_stop_interior` (9, model) · `sam_bedroom` (9) ·
+  `centro_grocery_aisle` (9) · `school_field_evening` (8) ·
+  `kowalski_kitchen` · `vehicle_cab` · `henderson_kitchen` ·
+  `caldwell_porch_night` (7 each).
+- **Vol 5:** the six arcana sets ran D4 deep already; `diner_interior`
+  is the model. Next is the primitive upgrade across all six plus the
+  cathedral exterior the Magician now cuts to.
+- **Vols 1–2:** `missing_link_interior` and `shuttle_bench` (8 each)
+  carry vol 1; the Briar Falls set carries vol 2. Draft 2 after the
+  vol 6–7 rooms.
+- **The 71 single-use presets** get D2 + light only, in batches, from
+  the sheet's worst frames.
+
+**Ceiling raisers (user-gated):** Meshy hero objects, and — a decision,
+not a default — painted SKY panoramas as the horizon band for
+exteriors once an image key exists (a sky is an environment, not a
+mesh texture; it needs the user's yes because it is the first painted
+thing behind a 3D set).
+
+---
+
+## 4 · Pillar B · MODELS
+
+**What exists and what is missing:** seven vol 5 GLBs; fifteen vol 6–7
+busts; the demon models; `Portrait3D` with per-character lighting
+rigs, per-mood camera, breath bob; static meshes (the camera does the
+acting). Sam's GNM portrait is on disk and was shelved on sight.
+
+**The three routes, and who does what:**
+
+| Route | User's part | Claude's part | Look |
+|---|---|---|---|
+| **Mixamo / RPM** (the 2026-06-16 decision) | ~30 min per character; fifteen characters; the paint-by-numbers list in `godot/HANDOFF_CHARACTER_MODELS.md` | lighting rig per model the same day; `PORTRAIT_3D_KEY_TO_GLB` re-mapped | game-character; consistent with the vol 5 seven |
+| **Meshy from a reference image** | approve one image per character (ArtCraft or any generator, or a described prompt) | queue → mesh → normalize → GLB → rig; can also pose | faceted low-poly, flat colour — the diorama look the locales already have |
+| **GNM heads + lofted bodies** (resume) | none | re-run with the wardrobe tables; a draft tier so vol 6–7 stop being busts while the real route runs | stylized faceted; shelved once — only as a stopgap and only if asked |
+
+**Engine work regardless of route (Claude, now):**
+- The bust tier's draft 3 (the ledger row): raise the 60×64 base
+  canvas, more shading ramps — it stays the fallback forever.
+- `Portrait3D` acting: expression already drives camera + light;
+  add a per-character IDLE table (head turn, weight shift) so a
+  static mesh reads alive in a 43-line dialogue.
+- Contact-sheet frames per GLB per expression, so a model's lighting
+  rig is tuned from a picture, not a guess.
+- A `CharLayer` two-shot rule: when two 3D portraits share the frame,
+  key them from the same practical (the room's light, not each
+  bust's own).
+
+**Order:** Lena → Gable → Petra → Wren → Tem (vol 7 core), then
+Kai / Per / Sal / Finn, then the vol 6 six. The route is the user's
+decision (§8).
+
+---
+
+## 5 · Pillar C · DIRECTION
+
+**What exists:** the whole grammar, and audits that hold it at zero
+(inside_out, wrong_room, mood_clock, page_length, trip_fight,
+marker_aim, obstruction). What is missing is the eye.
+
+**Arc 0 first.** Then, from the sheet:
+- **The taste pass per volume** — every establish and closeup seen;
+  notes in the direction playbook's voice ("finn B too low"); draft 6
+  of coverage cut from the notes. The next marker tier (5–6-use
+  presets: foxhole_bar, henderson_garage, faust_bedroom,
+  jesse_bedroom, centro_break_room, bianca_kitchen_morning, the diner
+  variants) only after the tier above reads.
+- **Camera language, three additions:** a TWO-SHOT marker type (two
+  busts framed by one setup, keyed from the room's practical); the
+  letterbox on `establish~` drifts (a P2 that costs nothing);
+  through-window INSERTS as the D5 bands land (the sink light at
+  4:32, the garage window E).
+- **The model-chapter cut rate as the bar:** the 09-12 lesson on the
+  43-line uncut dialogue — the seeder now rotates holds; the sheet
+  will show which chapters still sit on one wide for a page.
+- **Registers by chapter, not by locale:** `[register:domestic]` went
+  on the Lovers and Temperance; the other six domestic-locale vol 5
+  chapters are the user's call (§8) — the Star is a cottage and not
+  cozy.
+- **Beats and kinetic text** keep seeding at the lines that turn as
+  chapters are reread; never in bulk.
+
+---
+
+## 6 · Pillar D · DESIGN
+
+**The honest state:** the game grammar has one row per pillar and the
+VN's own game layer has never been designed as a system. The
+program treats design like the other three: a numbered draft per arc,
+one row at a time, played on the Deck before the next.
+
+- **The VN consequence map (Claude, now):** one document per volume
+  listing every `choice`, `check`, `flag` and what it changes
+  downstream — the thing VnSweep implied when it found dead checks.
+  From the map: (a) every skill check pays off at least once per
+  volume or is cut; (b) three-way choices where a volume has only
+  binary ones; (c) the five skills get a face (a line of UI on the
+  choice plate that says which skill is listening).
+- **Verb coins on the four model chapters** (the bible's queue): the
+  diner's jukebox, the kwik stop's back cooler, the cathedral's
+  workbench, the Henderson stove — and the INVENTORY the coins feed
+  (`only_if_flag` already gates on it). Wrong answers funny, not
+  fatal.
+- **The gauntlet's tempo rows:** score bursts on chained rounds, tempo
+  as the difficulty axis, a per-arcana high-score card; the bed for
+  the seventeen arcana still on shared drones.
+- **Community Planned:** the BBS masthead in the zine's hand; a
+  reader letter that answers a `[trip:]` beat.
+- **The Salmonberry overworld (Wave A)** — the flagship gameplay build,
+  fully Claude-side, "starts on your word" since 2026-08. It is the
+  largest single design item in the project and the one the user has
+  to greenlight (§8).
+
+---
+
+## 7 · The arc sequence
+
+Each arc is roughly one Claude session plus one Deck run, and every
+arc ends with the sheet.
+
+| Arc | Backgrounds | Models | Direction | Design |
+|---|---|---|---|---|
+| **0 · THE LENS** | stale rebuild list | GLB × expression frames | the contact-sheet rig | — |
+| **1 · vol 7 core** | cabin_interior, lena_apartment, salty_tome_alley: primitive upgrade + light + wear | Lena (route per §8) | vol 7 taste pass → coverage draft 6 | vol 7 consequence map; the cabin's second coin |
+| **2 · vol 6 rooms** | cosmic_comics ×2, maya_bedroom, sam_bedroom, centro, school_field | Maya, Diego, Rick | vol 6 taste pass; two-shot markers | vol 6 map; the kwik stop's coin |
+| **3 · vol 5 arcana** | the six sets through the primitives; cathedral exterior | (the seven exist) lighting re-tune from frames | vol 5 taste pass; the domestic-register calls | gauntlet tempo rows |
+| **4 · vols 1–2 + the tail** | missing_link, shuttle_bench, briar falls; the 71 singles in batches | Gable, Petra, Wren, Tem | vols 1–2 taste pass | the Henderson + diner coins; inventory |
+| **5 ·** | the next visit to every room above (draft N+1) | Kai, Per, Sal, Finn; the vol 6 six | next marker tier | Salmonberry Wave A when greenlit |
+
+Then repeat from 1. "Dozens and dozens."
+
+---
+
+## 8 · Decisions the user owns (each changes the sequence)
+
+1. **Character route:** Mixamo sessions yourself · Meshy from a
+   reference image you approve · resume GNM as a stopgap tier. (Or
+   two of the three.)
+2. **A Meshy key** for hero objects — yes / no. If yes, the first
+   queue is the SCUMM machine, the riverboat, Olaf's woodstove,
+   Lena's easel.
+3. **The image route** (gate 1): ArtCraft exports by hand, a direct
+   key at `godot/tools/art/.image_key`, or neither for now.
+4. **The contact-sheet flow:** PNGs under `godot/qa/contact/`
+   committed to the branch (a few hundred MB over time; a separate
+   `qa` branch is the alternative).
+5. **Salmonberry overworld:** go / not yet.
+6. **Painted sky panoramas** behind exteriors once an image key
+   exists: yes / keep the horizon geometric.
+7. **The six other domestic-locale vol 5 chapters:** which get
+   `[register:domestic]` (Death yes; Hanged Man / Moon / Priestess
+   maybe; Devil / Tower / Strength no — Claude's read, your call).
+
+---
+
+## 9 · What starts now, without waiting
+
+- The contact-sheet rig (Arc 0).
+- The vol 7 consequence map.
+- The cabin's primitive upgrade + light + wear pass (draft 4), Lena's
+  apartment draft 4.
+- The bust tier's draft 3 and the Portrait3D idle table.
+- The stale-build paste for the next Deck session.
