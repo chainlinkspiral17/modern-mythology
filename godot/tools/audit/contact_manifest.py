@@ -1,0 +1,145 @@
+#!/usr/bin/env python3
+"""contact_manifest.py — what THE LENS should look at (Arc 0, 2026-09-15).
+
+Writes `godot/qa/contact_manifest.json`, the shot list for
+`tools/VnContactSheet.tscn` (run on the Deck — it needs a GPU). One
+entry per CAMERA_PRESET a chapter uses, with:
+  · the scene .tscn the preset declares (trust the preset's own path);
+  · the volume and how many placements the preset carries — the
+    sheet's own priority order is screen time;
+  · the moods the chapters actually cue under that preset (top two;
+    "" = the locale's default look), so a room is seen the way its
+    chapter lights it, not at the editor default;
+  · every `shot_*` marker the preset OWNS — per-preset suffixed
+    markers replace their plain namesake and other presets' markers
+    are excluded, exactly as Background3D.shot_markers_of_type does;
+plus every hero GLB × every Portrait3D expression.
+
+    python3 godot/tools/audit/contact_manifest.py
+    python3 godot/tools/audit/contact_manifest.py --all   # unused presets too
+
+Re-run whenever presets, markers or scene moods change; the file is
+committed so the Deck run needs no Python.
+"""
+import glob
+import json
+import os
+import re
+import sys
+from collections import Counter, defaultdict
+
+HERE = os.path.dirname(os.path.abspath(__file__))
+sys.path.insert(0, HERE)
+ROOT = os.path.abspath(os.path.join(HERE, "..", "..", ".."))
+GODOT = os.path.join(ROOT, "godot")
+SCENES = os.path.join(GODOT, "resources", "scenes")
+HEROES = os.path.join(GODOT, "assets", "3d", "characters", "heroes")
+PORTRAIT = os.path.join(GODOT, "scripts", "vn", "Portrait3D.gd")
+OUT = os.path.join(GODOT, "qa", "contact_manifest.json")
+
+import shot_marker_audit as SMA
+import marker_aim_audit as MAA
+
+MOOD_RX = re.compile(r"\[mood:([^\]]*)\]")
+
+
+def preset_usage():
+    """preset -> (volume it mostly belongs to, placements, Counter of moods)."""
+    vols = defaultdict(Counter)
+    moods = defaultdict(Counter)
+    for f in glob.glob(os.path.join(SCENES, "vol*", "*.json")):
+        vol = int(os.path.basename(os.path.dirname(f))[3:])
+        cur = None
+        for n in json.load(open(f, encoding="utf-8")).get("nodes", []):
+            if n.get("t") == "bg":
+                s = str(n.get("src") or "")
+                cur = s[3:] if s.startswith("3d:") else None
+                if cur:
+                    vols[cur][vol] += 1
+                continue
+            if cur is None:
+                continue
+            text = str(n.get("text") or n.get("title") or "")
+            for m in MOOD_RX.findall(text):
+                moods[cur][m.strip().lower()] += 1
+    return vols, moods
+
+
+def markers_for(preset, scene_rel):
+    """The markers this preset owns, in the order the sheet shoots them."""
+    path = os.path.join(GODOT, scene_rel)
+    if not os.path.exists(path):
+        return None
+    by_base = {}
+    for name, _pos, _rot in MAA.parse_markers(path):
+        if not name.startswith("shot_"):
+            continue
+        base, _, suffix = name.partition("__")
+        if suffix and suffix != preset:
+            continue
+        if suffix or base not in by_base:
+            by_base[base] = name
+    kind = lambda n: n.split("_")[1] if n.count("_") >= 2 else "other"
+    order = {"establish": 0, "closeup": 1, "insert": 2}
+    names = sorted(by_base.values(), key=lambda n: (order.get(kind(n), 3), n))
+    return [{"name": n, "type": kind(n)} for n in names]
+
+
+def expressions():
+    src = open(PORTRAIT, encoding="utf-8").read()
+    i = src.index("const MOOD_TABLE")
+    j = src.index("const CHARACTER_LIGHTING")
+    return [m for m in re.findall(r'^\t"(\w+)":\s*\{', src[i:j], re.M) if m != "demon_chaos"]
+
+
+def main():
+    show_all = "--all" in sys.argv
+    p2s = SMA.preset_to_scene()
+    vols, moods = preset_usage()
+    presets = []
+    for pid, scene_rel in sorted(p2s.items()):
+        uses = sum(vols[pid].values())
+        if uses == 0 and not show_all:
+            continue
+        vol = vols[pid].most_common(1)[0][0] if uses else 0
+        top = [m for m, _ in moods[pid].most_common(2)]
+        marks = markers_for(pid, scene_rel)
+        presets.append({
+            "id": pid,
+            "scene": "res://" + scene_rel,
+            "vol": vol,
+            "uses": uses,
+            "moods": top if top else [""],
+            "markers": marks if marks is not None else [],
+            "scene_missing": marks is None,
+        })
+    presets.sort(key=lambda p: (-p["uses"], p["id"]))
+    heroes = sorted(os.path.basename(g) for g in glob.glob(os.path.join(HEROES, "*.glb")))
+    exprs = expressions()
+    # The establish is shot under every listed mood; the markers under
+    # the FIRST (the chapter's primary look) — a marker's question is
+    # framing, and one light answers it.
+    frames = sum(len(p["moods"]) + len(p["markers"]) for p in presets) + len(heroes) * len(exprs)
+    manifest = {
+        "_doc": ("Shot list for tools/VnContactSheet.tscn. Generated by "
+                 "tools/audit/contact_manifest.py — do not edit; re-run it."),
+        "presets": presets,
+        "heroes": [{"file": h, "path": "res://assets/3d/characters/heroes/" + h} for h in heroes],
+        "expressions": exprs,
+        "frames": frames,
+    }
+    os.makedirs(os.path.dirname(OUT), exist_ok=True)
+    out = json.dumps(manifest, indent=1, ensure_ascii=False) + "\n"
+    json.loads(out)
+    with open(OUT, "w", encoding="utf-8") as f:
+        f.write(out)
+    no_markers = [p["id"] for p in presets if not p["markers"]]
+    print("contact_manifest · %d preset(s) · %d marker(s) · %d hero GLB(s) × %d expression(s) · %d frame(s)"
+          % (len(presets), sum(len(p["markers"]) for p in presets), len(heroes), len(exprs), frames))
+    print("  presets with no markers of their own (establish only): %d" % len(no_markers))
+    print("  wrote %s" % os.path.relpath(OUT, ROOT))
+    return 0
+
+
+if __name__ == "__main__":
+    sys.exit(main())

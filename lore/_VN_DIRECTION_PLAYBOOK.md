@@ -158,6 +158,37 @@ no-op (fallback discipline — a script must never crash the reader).
 
 ## Recent lessons
 
+### 2026-09-15 · THE LENS — a rig, not more discipline
+
+- **Every framing was math-verified and none had been seen.** 871
+  markers aim- and obstruction-audited to half a degree, and the two
+  Deck screenshots that existed each found a defect in minutes (a
+  directive on a title card; a room the prose had left). The fix is
+  `tools/VnContactSheet.tscn`: it renders `qa/contact_manifest.json`
+  through the SAME nodes the VN uses — Background3D for the rooms,
+  Portrait3D for the cast — one frame per preset × mood (the
+  establish), one per marker the preset owns under the chapter's
+  primary mood, one per hero GLB × expression. 1,559 frames; JPEG at
+  0.82 for rooms, PNG for the transparent portraits.
+- **The manifest is generated, and committed.** `contact_manifest.py`
+  reads the presets' own scene paths (the orphan-tscn lesson), the
+  moods the chapters actually cue under each preset (top two, so a
+  room is seen the way its chapter lights it), and the markers each
+  preset OWNS with the per-preset suffix rule. The Deck run needs no
+  Python.
+- **Frames travel on an orphan branch.** A sheet is a few hundred MB;
+  `contact_push.sh` writes a throwaway index + orphan commit to
+  `qa/contact` and force-pushes it, so the working branch carries
+  nothing and there is no history to bloat. Claude reads them with
+  `git show origin/qa/contact:…`.
+- **What a frame is not.** The SubViewport's texture: room, lights,
+  the locale's own PostProcess. Not THE TRIP, not the box, not the
+  busts — the sheet is the set and the framing, and the window's
+  layers stay the user's screenshots' job.
+- **NEXT:** the first run will find a settle count wrong somewhere;
+  a per-frame sidecar with the camera pose; THE TRIP as an optional
+  second pass.
+
 ### 2026-09-12 · ONE PAGE AT A TIME — the box was shrinking the font
 
 Deck read: "some sections have too much text on screen at once and it

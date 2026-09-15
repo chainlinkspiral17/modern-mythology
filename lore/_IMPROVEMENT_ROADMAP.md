@@ -1728,6 +1728,13 @@ next draft is cut from the sheet; design gets the VN consequence map,
 the model-chapter verb coins, the gauntlet tempo rows, and Salmonberry
 on the word. Seven user decisions are listed in §8 of the file.
 
+**2026-09-15 · ARC 0 draft 1 shipped (unseen).** The contact-sheet
+rig: `contact_manifest.py` (the shot list, committed), `VnContactSheet
+.tscn` (Background3D + Portrait3D, 1,559 frames), `contact_sheet.sh`,
+`contact_push.sh` (orphan branch `qa/contact`). One paste on the Deck in
+`godot/qa/README.md`. Until it has run once, every framing in the game
+is still unseen.
+
 ---
 
 ## NEXT SESSION QUEUE (written 2026-08-11 night, session close)

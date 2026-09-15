@@ -31,3 +31,7 @@ godot/tools/art/*.config.json
 godot/assets/3d/characters/heroes/*_[0-9].jpg
 godot/assets/3d/characters/heroes/*_Image_[0-9].jpg
 godot/assets/3d/characters/heroes/*_normal.png
+
+# THE LENS (2026-09-15): contact-sheet frames travel on the orphan
+# branch qa/contact (tools/contact_push.sh), never on the working branch.
+godot/qa/contact/

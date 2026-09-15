@@ -80,6 +80,19 @@ can do between the user's sessions, and it makes the STOP RULE
 (`_3D_MODELING_PLAYBOOK.md`) cheap to obey: a stale GLB is visible
 in the sheet's timestamps before anyone says "I don't see changes."
 
+**Status (2026-09-15) · draft 1 SHIPPED, unseen.** `tools/audit/
+contact_manifest.py` → `qa/contact_manifest.json` (146 presets, 1,266
+markers, 10 hero GLBs × 7 expressions = 1,559 frames); `tools/
+VnContactSheet.tscn` shoots it through Background3D + Portrait3D;
+`tools/contact_sheet.sh` runs it, `tools/contact_push.sh` puts the
+frames on the orphan branch `qa/contact` (decision 4 defaulted to the
+branch that costs the working branch nothing). `godot/qa/README.md` is
+the one-paste. Draft 2 targets: the first Deck run will find the
+settle counts wrong somewhere (a shader compiling on frame 31); a
+per-frame sidecar with the camera pose so a note can be turned into a
+marker edit without opening the .tscn; THE TRIP as an optional second
+pass at 75 %.
+
 ---
 
 ## 3 · Pillar A · BACKGROUNDS
