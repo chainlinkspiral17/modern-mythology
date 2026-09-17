@@ -172,15 +172,6 @@ light_color = Color(0.86, 0.62, 0.96, 1)
 light_energy = 0.28
 shadow_enabled = false
 
-; Practical tied to the visible desk lamp head (blender 1.05,1.70,1.16
-; → godot 1.05, 1.16, -1.70). Warm pool over the desk.
-[node name="Practical_DeskLamp" type="OmniLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.05, 1.16, -1.7)
-light_color = Color(1.0, 0.72, 0.4, 1)
-light_energy = 1.8
-omni_range = 3.0
-shadow_enabled = false
-
 ; ── vn_shot (2026-08-12) · Lena's working canvas ───────────────
 ; [shot:insert canvas] had neither marker nor object. The easel now
 ; stands in the west window's light at blender (-1.72, 2.35), board
@@ -431,3 +422,29 @@ metadata/fov = 45.0
 position = Vector3(-2.101, 1.612, -2.276)
 rotation = Vector3(-0.2618, -1.3090, 0.0)
 metadata/fov = 45.0
+
+; ── draft 4 (2026-09-17): the practicals this room actually has ──
+; The dorm-era desk-lamp practical floated where no lamp stands; gone.
+; The floor lamp east of the couch: blender (1.88, 3.95, 1.07) → godot (1.88, 1.07, -3.95).
+[node name="Floor_Lamp_Bulb_Practical" type="OmniLight3D" parent="."]
+position = Vector3(1.880, 1.070, -3.950)
+light_color = Color(0.950, 0.780, 0.500, 1)
+light_energy = 1.40
+shadow_enabled = false
+omni_range = 3.20
+
+; The fairy string on the N wall, one warm wash at its middle: blender (0.0, 4.92, 2.10) → godot (0.0, 2.10, -4.92).
+[node name="Fairy_String_Practical" type="OmniLight3D" parent="."]
+position = Vector3(0.000, 2.100, -4.920)
+light_color = Color(1.000, 0.820, 0.500, 1)
+light_energy = 0.90
+shadow_enabled = false
+omni_range = 3.60
+
+; The laundromat's sodium through the kitchen window over the sink: blender (-2.30, 1.30, 1.50) → godot (-2.30, 1.50, -1.30).
+[node name="Kitchen_Window_Practical" type="OmniLight3D" parent="."]
+position = Vector3(-2.300, 1.500, -1.300)
+light_color = Color(1.000, 0.620, 0.260, 1)
+light_energy = 1.00
+shadow_enabled = false
+omni_range = 3.40

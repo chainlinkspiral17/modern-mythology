@@ -442,6 +442,18 @@ The visual program's first background pass (lore/_VISUAL_PROGRAM.md
   side table, the spare chimney in its paper, the lamp's shade, the
   stovepipe thimble. The infrastructure pass is the same question in
   every room: what is this plugged into.
+- **Lena's apartment, draft 4, same day, same method.** Kettle,
+  faucet (a gooseneck tube), coffee cone, grinder hopper and crank,
+  stove knobs and oven bar, the seventies pedestal, the side-table
+  post, the nightstand pull — lathes and tubes; couch and window
+  chair chamfered with rolled arms on turned feet; the fridge's seam,
+  pull, and a photo under a magnet. D3 here is WIRES: a switch by the
+  door, outlets at 0.30, and a cord from every electric thing (the
+  heater, the fairy string, the fridge, the floor lamp the dressing
+  pass had named and never built). Bedroom wear is one side of a
+  shared bed. The switch first landed in the door opening (x 0.65;
+  the opening runs −1..1) — a plate belongs on a wall segment, and the
+  shell's own numbers say where those are.
 - **Draft 6 is in the builder's docstring** (the loft, the counter's
   face, the seven chairs told apart) and the contact sheet decides
   what draft 7 is.

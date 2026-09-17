@@ -131,6 +131,15 @@ lantern and the stove door's ember under a cool window key. Clip hunt
 chest` and was caught), aim 0. Draft 6 targets are in the builder's
 docstring; Lena's apartment is next.
 
+**Status (2026-09-17, later) · lena_apartment draft 4 shipped, unseen.**
+Same method: lathes and tubes for the kitchen's fixtures and the
+seventies pedestal, chamfered upholstery, the fridge's face; D3 wires
+(switch, outlets, four cords, the floor lamp the dressing pass had
+named); her side of the bed. The dorm-era desk-lamp practical floated
+in air by the window chair — gone; floor lamp, fairy string and the
+alley's sodium through the sink window carry the room. Clip 0,
+obstruction 0, FLOAT 0. Next: miller_back_porch, then the vol 6 dozen.
+
 **Draft targets, by volume, by uses:**
 - **Vol 7 (current):** `cabin_interior` (31) · `lena_apartment` (23)
   · `miller_back_porch` (12, shared with vol 6) · `salty_tome_alley`

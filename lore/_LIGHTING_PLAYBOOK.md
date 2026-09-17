@@ -259,6 +259,15 @@ Position note: lamp omnis are placed AT the lamp-head mesh position
   a warm bounce, and the three kerosene practicals (lamp 5 m, lantern
   2 m, the stove door's ember at 1.0, 0.45, 0.15) carry the warmth.
   The mood presets still lerp from these as scene_default.
+- **The same class in Lena's apartment: `Practical_DeskLamp` at the
+  dorm-era desk.** The builder was rebuilt from the prose on 08-03;
+  the light stayed at blender (1.05, 1.70, 1.16), which is now air
+  beside the window chair. Replaced by the three sources the room
+  actually has: the floor lamp's bulb (tungsten 1.4), the fairy
+  string as one warm wash mid-wall (0.9), and the laundromat's sodium
+  through the sink window (1.0). Rule, now twice-earned: a practical
+  is a claim about a fixture — grep the builder for the fixture before
+  trusting the light.
 - **`practical_author.py --dry cabin_interior` planned 0** with the
   tubes removed and the lamp and lantern standing there unlit — its
   fixture vocabulary or its near-light test missed them; authored by
