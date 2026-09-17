@@ -158,6 +158,35 @@ no-op (fallback discipline — a script must never crash the reader).
 
 ## Recent lessons
 
+### 2026-09-17 · SKILLS EARN — the check nobody could pass
+
+- **Draw the game layer before designing it.** `consequence_map.py`
+  lists every choice, flag and check in reading order; the first
+  drawing found that the five skills had no source. They started at
+  zero, loaded from the save, filled dots on the HUD, and were read by
+  five checks — and no node type raised one. Every "[EMPATHY] …"
+  option in the game was a fail branch with a label on it.
+- **The choice is the practice.** An option with `"skill"` trains it
+  by one when taken; the label shows the skill the way a check shows
+  its ask, minus the number. Tagging rule across the 28 choices:
+  listening and waiting are empathy, looking and asking-why are
+  logic, restraint and leaving-it are composure, the reply and the
+  ask are rhetoric, the uncanny is signal. About one option in three
+  carries a skill; a choice with every option tagged is a stat screen.
+- **Once per option per playthrough.** The vol 1 diner hub loops back
+  to its seven explorations; without the guard "Read the laminated
+  menu" is a logic mill. The spent keys ride in `_flags` so they save.
+- **A check's difficulty is the earnable, not a number that sounded
+  right.** `logic 9` in the second scene of the game; `empathy 6` with
+  three earnable. Re-sized to two-thirds of what the reader can have
+  before the scene; `vn_skill_audit.py` gates CANNOT_PASS at zero so a
+  new check is sized by the same arithmetic.
+- **Forty-three flags are set and never read.** A choice the game
+  never remembers is a choice that did not happen. The map lists them
+  as loose; paying them off — one `when_flag` line later in the volume
+  that knows what the reader did — is the next design draft, vol 7
+  first.
+
 ### 2026-09-15 · THE LENS — a rig, not more discipline
 
 - **Every framing was math-verified and none had been seen.** 871

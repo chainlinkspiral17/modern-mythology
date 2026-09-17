@@ -222,6 +222,14 @@ VN's own game layer has never been designed as a system. The
 program treats design like the other three: a numbered draft per arc,
 one row at a time, played on the Deck before the next.
 
+**Status (2026-09-17) · the map is drawn and the first row shipped.**
+`consequence_map.py` → `_VN_CONSEQUENCE_MAP.md` (28 choices, 5 checks,
+58 flags, 43 loose). Headline: nothing ever raised a skill, so no
+check could pass. SKILLS EARN, draft 1: options train skills (70
+tagged), checks re-sized to the earnable, `vn_skill_audit.py` gates
+at zero. Next: the loose flags paid off; the decorative checks given
+a pass branch; the model-chapter verb coins.
+
 - **The VN consequence map (Claude, now):** one document per volume
   listing every `choice`, `check`, `flag` and what it changes
   downstream — the thing VnSweep implied when it found dead checks.

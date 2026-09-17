@@ -19,23 +19,23 @@
       "t": "choice",
       "opts": [
         {
-          "text": "\"Are you waiting for the Shillelagh?\"",
+          "text": "\"Are you waiting for the Shillelagh?\"", "skill": "signal",
           "scene": "vol1_link_q_shuttle"
         },
         {
-          "text": "\"What's your name?\"",
+          "text": "\"What's your name?\"", "skill": "rhetoric",
           "scene": "vol1_link_q_name"
         },
         {
-          "text": "\"Why does your coat glow at the seams?\"",
+          "text": "\"Why does your coat glow at the seams?\"", "skill": "signal",
           "scene": "vol1_link_q_coat"
         },
         {
-          "text": "\"Where are you going?\"",
+          "text": "\"Where are you going?\"", "skill": "logic",
           "scene": "vol1_link_q_where"
         },
         {
-          "text": "\"Why aren't you cold?\"",
+          "text": "\"Why aren't you cold?\"", "skill": "empathy",
           "scene": "vol1_link_q_cold"
         },
         {

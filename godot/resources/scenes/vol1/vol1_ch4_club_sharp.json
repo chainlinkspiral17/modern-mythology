@@ -127,15 +127,15 @@
    "t": "choice",
    "opts": [
     {
-     "text": "\"What if insanity was a large part of me to begin with?\"",
+     "text": "\"What if insanity was a large part of me to begin with?\"", "skill": "rhetoric",
      "goto": 22
     },
     {
-     "text": "\"Then I'll fortify. I have things to make.\"",
+     "text": "\"Then I'll fortify. I have things to make.\"", "skill": "composure",
      "goto": 25
     },
     {
-     "text": "[Say nothing. Watch the dance floors.]",
+     "text": "[Say nothing. Watch the dance floors.]", "skill": "empathy",
      "goto": 28
     }
    ]

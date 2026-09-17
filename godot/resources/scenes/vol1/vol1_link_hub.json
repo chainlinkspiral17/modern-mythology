@@ -25,23 +25,23 @@
       "t": "choice",
       "opts": [
         {
-          "text": "Look out the rain-glazed window.",
+          "text": "Look out the rain-glazed window.", "skill": "signal",
           "scene": "vol1_link_window"
         },
         {
-          "text": "Read the laminated menu.",
+          "text": "Read the laminated menu.", "skill": "logic",
           "scene": "vol1_link_menu"
         },
         {
-          "text": "Stand by the jukebox.",
+          "text": "Stand by the jukebox.", "skill": "signal",
           "scene": "vol1_link_jukebox"
         },
         {
-          "text": "Examine the photographs above the booth.",
+          "text": "Examine the photographs above the booth.", "skill": "logic",
           "scene": "vol1_link_booth"
         },
         {
-          "text": "Take a stool at the counter.",
+          "text": "Take a stool at the counter.", "skill": "rhetoric",
           "scene": "vol1_link_counter"
         },
         {
@@ -49,7 +49,7 @@
           "scene": "vol1_link_outside"
         },
         {
-          "text": "Wait. The bus will come when it comes.",
+          "text": "Wait. The bus will come when it comes.", "skill": "composure",
           "scene": "vol1_link_shuttle"
         }
       ]

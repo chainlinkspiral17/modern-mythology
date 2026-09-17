@@ -89,15 +89,15 @@
    "t": "choice",
    "opts": [
     {
-     "text": "Go home. Sit. Eat.",
+     "text": "Go home. Sit. Eat.", "skill": "composure",
      "goto": 16
     },
     {
-     "text": "Walk to ChillWave.",
+     "text": "Walk to ChillWave.", "skill": "signal",
      "goto": 16
     },
     {
-     "text": "[Stay on the corner a moment longer.]",
+     "text": "[Stay on the corner a moment longer.]", "skill": "empathy",
      "goto": 16
     }
    ]

@@ -125,18 +125,18 @@
    "t": "choice",
    "opts": [
     {
-     "text": "Listen. Say nothing.",
+     "text": "Listen. Say nothing.", "skill": "empathy",
      "goto": 23
     },
     {
-     "text": "\"All right.\"",
+     "text": "\"All right.\"", "skill": "composure",
      "goto": 22
     },
     {
      "text": "[EMPATHY] She already knew. She's been waiting for someone to say it.",
      "check": {
       "skill": "empathy",
-      "diff": 6,
+      "diff": 2,
       "pass": 24,
       "fail": 22
      }

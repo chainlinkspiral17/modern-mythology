@@ -153,13 +153,13 @@
       "t": "choice",
       "opts": [
         {
-          "text": "\"I'll do it.\"",
+          "text": "\"I'll do it.\"", "skill": "composure",
           "goto": 27,
           "flag": "graciela_answer",
           "val": "said_yes"
         },
         {
-          "text": "[She has been sitting here since four forty-nine this morning. Alone with this for eleven hours.]",
+          "text": "[She has been sitting here since four forty-nine this morning. Alone with this for eleven hours.]", "skill": "empathy",
           "goto": 27,
           "flag": "graciela_answer",
           "val": "sat_with_it"

@@ -95,11 +95,11 @@
    "t": "choice",
    "opts": [
     {
-     "text": "\"If you're already in my head — hold me close.\"",
+     "text": "\"If you're already in my head — hold me close.\"", "skill": "empathy",
      "goto": 17
     },
     {
-     "text": "\"Leave me. Let me sleep this off.\"",
+     "text": "\"Leave me. Let me sleep this off.\"", "skill": "composure",
      "goto": 21
     }
    ]

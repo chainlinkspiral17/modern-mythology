@@ -17,11 +17,11 @@
    "t": "choice",
    "opts": [
     {
-     "text": "\"Why me and not her, Cale.\"",
+     "text": "\"Why me and not her, Cale.\"", "skill": "rhetoric",
      "goto": 3
     },
     {
-     "text": "[Say nothing. Wait for him to continue.]",
+     "text": "[Say nothing. Wait for him to continue.]", "skill": "empathy",
      "goto": 4
     }
    ]

@@ -217,15 +217,15 @@
    "t": "choice",
    "opts": [
     {
-     "text": "[Listen to Fire. Lean in.]",
+     "text": "[Listen to Fire. Lean in.]", "skill": "rhetoric",
      "goto": 39
     },
     {
-     "text": "[Listen to Water. Stay steady.]",
+     "text": "[Listen to Water. Stay steady.]", "skill": "composure",
      "goto": 41
     },
     {
-     "text": "[Listen to Air. Take the warning.]",
+     "text": "[Listen to Air. Take the warning.]", "skill": "signal",
      "goto": 43
     }
    ]

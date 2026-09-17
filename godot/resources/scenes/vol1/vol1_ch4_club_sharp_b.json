@@ -82,11 +82,11 @@
    "t": "choice",
    "opts": [
     {
-     "text": "\"Can I see you again tomorrow?\"",
+     "text": "\"Can I see you again tomorrow?\"", "skill": "rhetoric",
      "goto": 14
     },
     {
-     "text": "\"I have to go. The friends I came with.\"",
+     "text": "\"I have to go. The friends I came with.\"", "skill": "composure",
      "goto": 18
     }
    ]

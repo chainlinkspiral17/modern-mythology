@@ -60,7 +60,7 @@
      "text": "[COMPOSURE] Set the bottle down. Two will do.",
      "check": {
       "skill": "composure",
-      "diff": 4,
+      "diff": 1,
       "pass": 13,
       "fail": 10
      }

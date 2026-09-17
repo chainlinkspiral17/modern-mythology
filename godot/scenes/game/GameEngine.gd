@@ -922,6 +922,15 @@ func _do_choice(n: Dictionary) -> void:
 			# choice to be remembered without goto-index surgery.
 			if opt.has("flag"):
 				_flags[String(opt["flag"])] = opt.get("val", true)
+			# SKILLS EARN (2026-09-17). An option with "skill" trains
+			# that skill by one (or "amount") when taken — the choice IS
+			# the practice. Before this, nothing in the game ever raised
+			# a skill: the five started at zero and every "[LOGIC] …"
+			# option took its fail branch, silently, since the first
+			# build (see tools/audit/consequence_map.py).
+			if opt.has("skill"):
+				_train_skill(String(opt["skill"]), int(opt.get("amount", 1)),
+					"%s#%d:%d" % [_scene_id, _node_idx, idx])
 			if opt.has("check"):
 				_resolve_check(opt["check"])
 			elif opt.has("scene"):
@@ -932,6 +941,28 @@ func _do_choice(n: Dictionary) -> void:
 			else:
 				_run_next()
 	, String(n.get("style", "")), String(n.get("hotspot", "")))
+
+
+# `once_key` names the option (scene#node:index): an option trains its
+# skill ONCE per playthrough. The vol 1 diner hub loops back to its
+# choice after every exploration, and "Read the laminated menu" must
+# not be a logic mill. The spent keys ride in _flags, so they save.
+func _train_skill(skill: String, amount: int, once_key: String = "") -> void:
+	if skill == "" or not _skills.has(skill) or amount == 0:
+		return
+	if once_key != "":
+		var spent := "_trained:" + once_key
+		if bool(_flags.get(spent, false)):
+			return
+		_flags[spent] = true
+	_skills[skill] = int(_skills.get(skill, 0)) + amount
+	if _hud != null and _hud.has_method("update_skills"):
+		_hud.call("update_skills", _skills)
+	if _toast != null:
+		_toast.call("show_toast", {
+			"title":    skill.to_upper(),
+			"subtitle": "%d" % int(_skills[skill]),
+		})
 
 
 func _resolve_check(check: Dictionary) -> void:

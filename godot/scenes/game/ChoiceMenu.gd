@@ -129,6 +129,11 @@ func present(prompt: String, opts: Array, callback: Callable, style: String = ""
 		if opt.has("check"):
 			var check: Dictionary = opt["check"]
 			label += "    ·  %s %d  ·" % [str(check.get("skill", "?")), int(check.get("diff", 0))]
+		elif opt.has("skill"):
+			# The skill an option exercises, named the way a check names
+			# what it asks for — minus the number. The face of the five
+			# skills on the plate (2026-09-17).
+			label += "    ·  %s  ·" % str(opt.get("skill", ""))
 		btn.text                  = label
 		btn.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 		btn.alignment             = HORIZONTAL_ALIGNMENT_CENTER

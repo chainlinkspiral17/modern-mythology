@@ -27,18 +27,18 @@
    "t": "choice",
    "opts": [
     {
-     "text": "\"What are you?\"",
+     "text": "\"What are you?\"", "skill": "signal",
      "goto": 5
     },
     {
-     "text": "\"Why are you telling me this?\"",
+     "text": "\"Why are you telling me this?\"", "skill": "logic",
      "goto": 8
     },
     {
      "text": "[LOGIC] The coffee appeared without anyone taking an order. The booth was empty when you walked in.",
      "check": {
       "skill": "logic",
-      "diff": 9,
+      "diff": 1,
       "pass": 11,
       "fail": 8
      }

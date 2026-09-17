@@ -1735,6 +1735,20 @@ rig: `contact_manifest.py` (the shot list, committed), `VnContactSheet
 `godot/qa/README.md`. Until it has run once, every framing in the game
 is still unseen.
 
+**2026-09-17 · DESIGN · the consequence map, and SKILLS EARN (draft 1).**
+The VN's game layer drawn for the first time (`consequence_map.py` →
+`lore/_VN_CONSEQUENCE_MAP.md`): 28 choices, 5 skill checks, 58 flags
+of which 43 are set and never read. The headline defect: NO NODE EVER
+RAISED A SKILL — every labelled check option took its fail branch since
+the first build. Now an option trains the skill it exercises (`skill`
+on a choice option; once per playthrough per option; plate label, HUD
+dots, toast), 70 options tagged, the five checks re-sized to what is
+earnable before them, and `vn_skill_audit.py` gates CANNOT_PASS /
+NO_EARN / UNKNOWN at zero in the suite. NEXT: the 43 loose flags paid
+off one callback line at a time (vol 7 first); the two decorative
+checks (pass = fail) given a real pass branch; the verb coins on the
+four model chapters.
+
 ---
 
 ## NEXT SESSION QUEUE (written 2026-08-11 night, session close)

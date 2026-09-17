@@ -532,19 +532,19 @@
       "prompt": "",
       "opts": [
         {
-          "text": "look at",
+          "text": "look at", "skill": "logic",
           "goto": 99,
           "flag": "ch10_box_looked",
           "hide_if_flag": "ch10_box_looked"
         },
         {
-          "text": "ask Per",
+          "text": "ask Per", "skill": "rhetoric",
           "goto": 101,
           "flag": "ch10_box_asked",
           "hide_if_flag": "ch10_box_asked"
         },
         {
-          "text": "leave it",
+          "text": "leave it", "skill": "composure",
           "goto": 104
         }
       ]

@@ -65,11 +65,11 @@
    "t": "choice",
    "opts": [
     {
-     "text": "[Step up into the bus.]",
+     "text": "[Step up into the bus.]", "skill": "signal",
      "goto": 14
     },
     {
-     "text": "[Stay on the apron. Watch it go.]",
+     "text": "[Stay on the apron. Watch it go.]", "skill": "composure",
      "goto": 17
     }
    ]

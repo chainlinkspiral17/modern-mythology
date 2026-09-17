@@ -216,6 +216,23 @@ sludge hangs).
   FLYING is the wind's own light leaving to the right and not coming
   back. One house sting each. Next: the Deck read of both sticks' light
   at 75 % trip, and whether the finale's 0.9 s hold is the right beat.
+- **VN · SKILLS EARN (draft 1, 2026-09-17).** The consequence map
+  (`tools/audit/consequence_map.py` → `lore/_VN_CONSEQUENCE_MAP.md`)
+  found that nothing in the game had ever raised a skill: the five
+  start at zero, show on the HUD, and every "[LOGIC] …" option took
+  its fail branch since the first build. Now a choice option carries
+  `"skill": "<name>"` and trains it by one when taken, once per
+  playthrough per option (the diner hub loops); the plate shows the
+  skill the way a check shows its ask (`·  empathy  ·`), the HUD dots
+  fill, a toast names the count. Seventy options tagged across 28
+  choices — listening is empathy, looking is logic, restraint is
+  composure, the reply is rhetoric, the uncanny is signal — and the
+  five checks' difficulties set from what is earnable before them.
+  `vn_skill_audit.py` gates it: a check the reader cannot pass is a
+  lie. Next: the 43 loose flags (set, never read — a choice the game
+  never remembers) paid off one line at a time; the two decorative
+  checks written a pass branch; a check per volume that a whole
+  arc of listening unlocks.
 - **direction · [trip:] cues (draft 1).** 190 interlude beats across
   vols 5–7 carry `[trip:1.2]` (the structural turn pushes the layer,
   the way `[mood:]` cues were placed on interludes), plus three

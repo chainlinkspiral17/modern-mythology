@@ -129,15 +129,15 @@
    "t": "choice",
    "opts": [
     {
-     "text": "\"Time and place for everything — you know this.\"",
+     "text": "\"Time and place for everything — you know this.\"", "skill": "rhetoric",
      "goto": 24
     },
     {
-     "text": "\"From where you look, sure. From where I sit, no.\"",
+     "text": "\"From where you look, sure. From where I sit, no.\"", "skill": "logic",
      "goto": 26
     },
     {
-     "text": "[Say nothing. Let him finish.]",
+     "text": "[Say nothing. Let him finish.]", "skill": "empathy",
      "goto": 28
     }
    ]

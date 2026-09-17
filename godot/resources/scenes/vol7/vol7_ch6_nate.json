@@ -91,18 +91,18 @@
    "t": "choice",
    "opts": [
     {
-     "text": "\"What kind of things.\"",
+     "text": "\"What kind of things.\"", "skill": "logic",
      "goto": 16
     },
     {
-     "text": "[Listen. Let him find the order.]",
+     "text": "[Listen. Let him find the order.]", "skill": "empathy",
      "goto": 16
     },
     {
      "text": "[EMPATHY] His thumb. The held breath. He has been carrying this a long time.",
      "check": {
       "skill": "empathy",
-      "diff": 5,
+      "diff": 1,
       "pass": 16,
       "fail": 16
      }

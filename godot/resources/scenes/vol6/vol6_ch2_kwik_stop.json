@@ -62,19 +62,19 @@
       "prompt": "",
       "opts": [
         {
-          "text": "look at",
+          "text": "look at", "skill": "logic",
           "goto": 12,
           "flag": "ch2_cooler_looked",
           "hide_if_flag": "ch2_cooler_looked"
         },
         {
-          "text": "watch him",
+          "text": "watch him", "skill": "signal",
           "goto": 14,
           "flag": "ch2_cooler_watched",
           "hide_if_flag": "ch2_cooler_watched"
         },
         {
-          "text": "say nothing",
+          "text": "say nothing", "skill": "composure",
           "goto": 16
         }
       ]

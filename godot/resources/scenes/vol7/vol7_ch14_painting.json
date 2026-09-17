@@ -85,19 +85,19 @@
       "prompt": "",
       "opts": [
         {
-          "text": "look at",
+          "text": "look at", "skill": "logic",
           "goto": 18,
           "flag": "ch14_bowls_looked",
           "hide_if_flag": "ch14_bowls_looked"
         },
         {
-          "text": "turn a bowl",
+          "text": "turn a bowl", "skill": "signal",
           "goto": 21,
           "flag": "ch14_bowls_turned",
           "hide_if_flag": "ch14_bowls_turned"
         },
         {
-          "text": "leave them",
+          "text": "leave them", "skill": "composure",
           "goto": 24
         }
       ]

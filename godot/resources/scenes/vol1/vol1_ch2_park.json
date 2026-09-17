@@ -123,11 +123,11 @@
    "t": "choice",
    "opts": [
     {
-     "text": "\"Long story short, let me sum it up.\"",
+     "text": "\"Long story short, let me sum it up.\"", "skill": "logic",
      "goto": 22
     },
     {
-     "text": "\"Buckle up. This one earns its bourbon.\"",
+     "text": "\"Buckle up. This one earns its bourbon.\"", "skill": "rhetoric",
      "goto": 22
     }
    ]

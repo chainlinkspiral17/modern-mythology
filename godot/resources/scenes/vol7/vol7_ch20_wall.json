@@ -75,19 +75,19 @@
       "prompt": "",
       "opts": [
         {
-          "text": "look at",
+          "text": "look at", "skill": "logic",
           "goto": 15,
           "flag": "ch20_bowls_looked",
           "hide_if_flag": "ch20_bowls_looked"
         },
         {
-          "text": "touch Roy's",
+          "text": "touch Roy's", "skill": "signal",
           "goto": 18,
           "flag": "ch20_bowls_touched",
           "hide_if_flag": "ch20_bowls_touched"
         },
         {
-          "text": "step back",
+          "text": "step back", "skill": "composure",
           "goto": 21
         }
       ]

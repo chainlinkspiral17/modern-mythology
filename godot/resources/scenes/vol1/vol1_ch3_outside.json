@@ -57,7 +57,7 @@
    "t": "choice",
    "opts": [
     {
-     "text": "\"To be myself, only better.\"",
+     "text": "\"To be myself, only better.\"", "skill": "composure",
      "goto": 11
     },
     {
@@ -65,7 +65,7 @@
      "goto": 13
     },
     {
-     "text": "\"I'd hear what people aren't saying.\"",
+     "text": "\"I'd hear what people aren't saying.\"", "skill": "signal",
      "goto": 15
     }
    ]

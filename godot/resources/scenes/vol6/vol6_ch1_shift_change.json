@@ -99,13 +99,13 @@
       "t": "choice",
       "opts": [
         {
-          "text": "\"Why.\"",
+          "text": "\"Why.\"", "skill": "logic",
           "goto": 17,
           "flag": "shift_change_answer",
           "val": "asked_why"
         },
         {
-          "text": "[Listen. Wait for the rest of it.]",
+          "text": "[Listen. Wait for the rest of it.]", "skill": "empathy",
           "goto": 17,
           "flag": "shift_change_answer",
           "val": "waited"

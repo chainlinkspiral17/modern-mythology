@@ -234,15 +234,15 @@
    "t": "choice",
    "opts": [
     {
-     "text": "[A — the slaughterhouse]",
+     "text": "[A — the slaughterhouse]", "skill": "logic",
      "goto": 46
     },
     {
-     "text": "[B — the mannequins]",
+     "text": "[B — the mannequins]", "skill": "signal",
      "goto": 48
     },
     {
-     "text": "[C — the comforting void]",
+     "text": "[C — the comforting void]", "skill": "composure",
      "goto": 50
     }
    ]

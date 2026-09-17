@@ -25,27 +25,27 @@
       "t": "choice",
       "opts": [
         {
-          "text": "The low brick building.",
+          "text": "The low brick building.", "skill": "logic",
           "scene": "vol2_bf_building"
         },
         {
-          "text": "The picnic shelter.",
+          "text": "The picnic shelter.", "skill": "empathy",
           "scene": "vol2_bf_picnic"
         },
         {
-          "text": "The wooden box at the trailhead.",
+          "text": "The wooden box at the trailhead.", "skill": "signal",
           "scene": "vol2_bf_trail"
         },
         {
-          "text": "Down to the railing. The falls.",
+          "text": "Down to the railing. The falls.", "skill": "composure",
           "scene": "vol2_bf_overlook"
         },
         {
-          "text": "The family. From a distance.",
+          "text": "The family. From a distance.", "skill": "empathy",
           "scene": "vol2_bf_lot"
         },
         {
-          "text": "The dog. It has not moved.",
+          "text": "The dog. It has not moved.", "skill": "signal",
           "scene": "vol2_bf_dog"
         },
         {

@@ -123,14 +123,14 @@
    "t": "choice",
    "opts": [
     {
-     "text": "\"Yeah. Stay.\"",
+     "text": "\"Yeah. Stay.\"", "skill": "empathy",
      "goto": 23
     },
     {
      "text": "[EMPATHY] You feel the ask in it — not just for a place to sleep.",
      "check": {
       "skill": "empathy",
-      "diff": 5,
+      "diff": 3,
       "pass": 23,
       "fail": 23
      }
