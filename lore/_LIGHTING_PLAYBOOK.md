@@ -240,6 +240,31 @@ Position note: lamp omnis are placed AT the lamp-head mesh position
 
 
 
+### 2026-09-17 · the cabin's fluorescents — derived practicals outlive the builder they came from
+
+- **The 08-02 derived practicals were right for the builder of that
+  day and wrong for this one.** cabin_interior shipped two
+  `Fluor*_Practical` omnis at 4000K because its builder THEN carried
+  fluorescent tube fixtures; the builder was rebuilt from the prose
+  a day later ("no electricity: kerosene and candlelight only") and
+  the lights stayed. The room's own bed-alcove scene had the lamp
+  and lantern authored on 09-11 while the main scene — 31
+  placements — kept the tubes. A practical is a claim about a
+  fixture; when the fixture goes, so must the light. Check
+  `<Fixture>_Practical` names against the builder's object names in
+  every rig pass.
+- **Cool key over warm practicals, even indoors.** Key and Fill were
+  both 2100K orange — the room was monochrome by construction. The
+  Key is the window now (overcast 0.70, 0.76, 0.86 at 0.45), the Fill
+  a warm bounce, and the three kerosene practicals (lamp 5 m, lantern
+  2 m, the stove door's ember at 1.0, 0.45, 0.15) carry the warmth.
+  The mood presets still lerp from these as scene_default.
+- **`practical_author.py --dry cabin_interior` planned 0** with the
+  tubes removed and the lamp and lantern standing there unlit — its
+  fixture vocabulary or its near-light test missed them; authored by
+  hand from the bed scene's values. NEXT: find out which, before the
+  next rig pass leans on it.
+
 ### 2026-08-02 · practicals-from-build-scripts · the zero-practical four
 
 The visual audit found four rooms with NO practicals at all despite

@@ -121,6 +121,16 @@ screen time. The reader lives in twenty rooms.
   crow exist this way); from Meshy when the key lands.
 - **Verified by the contact sheet** before the next visit.
 
+**Status (2026-09-17) · cabin_interior draft 5 shipped, unseen.** The
+primitive upgrade (ten lathe profiles for twenty-two stacked shapes,
+kit bed/desk/chair, chamfered upholstery, chest straps), kerosene D3,
+and the lighting fix the audit could never see: two fluorescent
+practicals in a cabin with no electricity, replaced by the lamp, the
+lantern and the stove door's ember under a cool window key. Clip hunt
+0, marker obstruction 0 (the kit bed's headboard blocked `insert
+chest` and was caught), aim 0. Draft 6 targets are in the builder's
+docstring; Lena's apartment is next.
+
 **Draft targets, by volume, by uses:**
 - **Vol 7 (current):** `cabin_interior` (31) · `lena_apartment` (23)
   · `miller_back_porch` (12, shared with vol 6) · `salty_tome_alley`

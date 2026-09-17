@@ -156,14 +156,14 @@ environment = SubResource("Env_Locale")
 
 [node name="Key" type="DirectionalLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6, 0)
-light_color = Color(0.96, 0.62, 0.28, 1)
-light_energy = 0.5
+light_color = Color(0.70, 0.76, 0.86, 1)
+light_energy = 0.45
 shadow_enabled = false
 
 [node name="Fill" type="DirectionalLight3D" parent="."]
 transform = Transform3D(-0.707, -0.354, -0.612, 0, 0.866, -0.5, 0.707, -0.354, -0.612, -3, 4, 0)
-light_color = Color(0.96, 0.62, 0.28, 1)
-light_energy = 0.35
+light_color = Color(0.96, 0.78, 0.52, 1)
+light_energy = 0.30
 shadow_enabled = false
 
 [node name="Back" type="DirectionalLight3D" parent="."]
@@ -378,20 +378,6 @@ offset_right = 520.0
 offset_bottom = 980.0
 script = ExtResource("14_dbgm")
 
-[node name="Fluor0_Practical" type="OmniLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0, 2.6, -1.8)
-light_color = Color(0.86, 0.92, 0.88, 1)
-light_energy = 1.2
-shadow_enabled = false
-omni_range = 4.5
-
-[node name="Fluor1_Practical" type="OmniLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0, 2.6, -4.2)
-light_color = Color(0.86, 0.92, 0.88, 1)
-light_energy = 1.2
-shadow_enabled = false
-omni_range = 4.5
-
 ; ── 2026-09-01 hero-prop wave · fifteen blind cues ──────────────
 ; insert: Finn's grandfather's Toyota at the turnaround (west south window)
 [node name="shot_insert_truck" type="Marker3D" parent="." groups=["vn_shot"]]
@@ -524,3 +510,29 @@ light_color = Color(0.950, 0.780, 0.500, 1)
 light_energy = 1.30
 shadow_enabled = false
 omni_range = 5.00
+
+; The hurricane lantern on the table: blender (0.35, 2.60, 0.95) → godot (0.35, 0.95, -2.60).
+[node name="Lantern_Glass_Practical" type="OmniLight3D" parent="."]
+position = Vector3(0.350, 0.950, -2.600)
+light_color = Color(0.950, 0.780, 0.500, 1)
+light_energy = 1.30
+shadow_enabled = false
+omni_range = 2.00
+
+; The hanging oil lamp over the table: blender (0.0, 2.90, 2.78) → godot (0.0, 2.78, -2.90).
+[node name="OilLamp_Font_Practical" type="OmniLight3D" parent="."]
+position = Vector3(0.000, 2.780, -2.900)
+light_color = Color(0.950, 0.780, 0.500, 1)
+light_energy = 1.30
+shadow_enabled = false
+omni_range = 5.00
+
+; ── draft 5 (2026-09-17): kerosene practicals for a cabin with no wires ──
+; The two fluorescent tubes a template gave this room are gone. The
+; stove door's ember glow: blender (1.94, 5.40, 0.50) → godot (1.94, 0.50, -5.40).
+[node name="Stove_EmberGlow_Practical" type="OmniLight3D" parent="."]
+position = Vector3(1.940, 0.500, -5.400)
+light_color = Color(1.000, 0.450, 0.150, 1)
+light_energy = 0.90
+shadow_enabled = false
+omni_range = 2.60

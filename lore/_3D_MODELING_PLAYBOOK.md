@@ -399,6 +399,53 @@ Louisville's hurricane-deck proportions"). Don't guess at numbers.
 
 ## Recent lessons
 
+### 2026-09-17 · THE CABIN, DRAFT 5 — the primitive upgrade on the most-seen room
+
+The visual program's first background pass (lore/_VISUAL_PROGRAM.md
+§3): cabin_interior, 31 placements, one locale deep.
+
+- **A fixture is a PROFILE, not a stack.** The stove was three
+  cylinders (a water heater); it is one `make_lathe` — ash lip, the
+  belly's swell, the waist, the plate — on four turned legs, with a
+  pipe that rises, elbows (`make_tube`) and enters the wall through
+  a thimble. The same move for the kettle (shoulder, knob, spout and
+  bail as tubes), the oil lamp (font, flared chimney, a tin shade on
+  three chains), the hurricane lantern (globe, vented cap, bail), the
+  basin and pitcher, the firewood basket, the mason jars (with
+  contents at four levels). Ten profiles replaced twenty-two boxes
+  and cylinders and the room's silhouettes changed more than any
+  prop pass did.
+- **Use the kit before building the thing again.** The east bed and
+  the desk came from `_props/furniture` (`make_bed`, `make_table`) —
+  turned legs, aprons, a stretcher, a made bed — and the vigil chair
+  from `make_chair`. Upholstery is chamfered boxes with rolled arms
+  (`make_cyl` along X) on turned feet.
+- **A kit piece can stand in a marker's line.** `make_bed`'s default
+  headboard rose at the head of the east bed and stood between
+  `shot_insert_chest` and the chest (vantage_obstruction --markers
+  caught it: OCCLUDED by EBed_Headboard). `headboard=False`; the
+  marker gate is the reason a rebuild is safe.
+- **Same-assembly parts share the prefix, or the clip hunt flags
+  them.** `Kettle_Bail` × `Copper_Kettle` was the pass's one clip;
+  `Copper_Kettle_Bail` is not. Name the parts after the assembly
+  before running the audit, not after.
+- **A narrow table found the kit's stretcher floating.** `make_table`'s
+  single centre rail ran between no legs — it hung at 16 cm and passed
+  in four kitchens because their tables were wide enough for the
+  grammar's nearest-support search to find something. The cabin desk
+  (d 0.60) failed it. The kit has an H-stretcher now (two side rails
+  leg-to-leg, a cross rail between them); five locales re-audited at
+  FLOAT 0. A gate that trips on the fifth use of a helper is telling
+  you about the helper.
+- **D3 for a room with no wires is what it burns.** The kerosene can
+  and funnel inside the door, the match tin and wick scissors on the
+  side table, the spare chimney in its paper, the lamp's shade, the
+  stovepipe thimble. The infrastructure pass is the same question in
+  every room: what is this plugged into.
+- **Draft 6 is in the builder's docstring** (the loft, the counter's
+  face, the seven chairs told apart) and the contact sheet decides
+  what draft 7 is.
+
 ### 2026-09-05 · DETAIL DRAFT 1 — the primitive layer was the ceiling
 
 User: "3d scenes are still feeling real primitive. basic cubes and

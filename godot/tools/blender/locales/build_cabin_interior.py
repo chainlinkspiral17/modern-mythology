@@ -16,6 +16,30 @@ seat seven ("The seven stayed at the table").
 No electricity: kerosene and candlelight only — the hanging oil
 lamp over the table and the hurricane lantern are the practicals.
 
+DETAIL DRAFT 5 (2026-09-17, the visual program's first background
+pass — lore/_VISUAL_PROGRAM.md §3, cabin_interior is the game's
+most-seen room at 31 placements): the primitive upgrade. The stove
+is one turned potbelly on cast legs with an elbowed pipe into a wall
+thimble; the kettle, oil lamp, hurricane lantern, basin, pitcher,
+firewood basket, side-table pedestal and mason jars are lathe
+profiles; the east bed and the desk come from the furniture kit
+(turned legs, aprons, a made bed); the armchairs are chamfered
+upholstery with rolled arms on turned feet; the cedar chest has its
+straps and hasp; the vigil chair is a kit chair. Kerosene
+INFRASTRUCTURE (D3 for a room with no wires): the fuel can and funnel
+by the door, the match tin, the lamp's tin shade, the stovepipe
+thimble. The .tscn loses the two fluorescent practicals a template
+gave a cabin with no electricity and gains the lamp, lantern and
+stove-door glow.
+
+DRAFT 6 targets: the loft (deck, rail, mattress are still boxes —
+turned balusters, a rope-lashed ladder); the kitchen counter's face
+(a plank door, a drawer, the coffee cone as a lathe); the daybed's
+blanket draped over the edge (a rot_box fold); the crow's window sill
+and the Sitka trunks as lathes with bark taper; the table's SEVEN
+chairs told apart (one with a cushion, one mended); Deck: the
+contact sheet's establish + `insert bowls` under candlelight_low.
+
 Coordinate frame: Blender Z-up, y=0 south wall with the door, +Y
 into the cabin, x=±3.0, back wall y=6.0, ceiling 3.4 (raised for
 the loft). glTF export remaps to Godot (x, z, -y).
@@ -24,9 +48,10 @@ import os, sys
 import math as _m
 _BT = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)), ".."))
 if _BT not in sys.path: sys.path.insert(0, _BT)
-from _props.furniture import make_chair
+from _props.furniture import make_chair, make_table, make_bed
 from _props import palette as P
-from _props.geometry import make_taper_cyl, clear_scene, make_box, make_cyl, make_lathe, export_glb
+from _props.geometry import (make_taper_cyl, clear_scene, make_box, make_cyl, make_lathe,
+                             make_chamfer_box, make_tube, make_rot_box, export_glb)
 from _props.structure import make_floor, make_wall, make_ceiling, make_window
 from _props.food_service import make_coffee_pots  # noqa: F401 (unused, kept for parity)
 
@@ -78,10 +103,17 @@ def build_kitchen():
     make_cyl("Counter_Carafe", (-1.85, 4.10, 1.06), 0.075, 0.18, COL_GLASS, segments=10)
     make_cyl("Counter_Cone", (-1.85, 4.10, 1.20), 0.07, 0.09, (0.86, 0.82, 0.74, 1.0), segments=8)
     # Mason jars, capped inside the room now
-    for i in range(4):
-        make_cyl(f"Counter_Jar_{i}", (-1.80, 4.95 + i * 0.22, 1.08), 0.055, 0.22,
-                 (0.80, 0.82, 0.72, 0.85), segments=8)
-        make_cyl(f"Counter_Jar_{i}_Lid", (-1.80, 4.95 + i * 0.22, 1.20), 0.056, 0.03, COL_IRON, segments=8)
+    # Mason jars: the shoulder, the threaded neck, the ring lid — and
+    # what is in them, at four different levels (draft 5: lathes)
+    for i, (fill, fcol) in enumerate(((0.16, (0.62, 0.48, 0.26, 1.0)), (0.09, (0.86, 0.80, 0.62, 1.0)),
+                                      (0.13, (0.40, 0.28, 0.18, 1.0)), (0.05, (0.90, 0.88, 0.80, 1.0)))):
+        jy = 4.95 + i * 0.22
+        make_lathe(f"Counter_Jar_{i}", (-1.80, jy, 0.97),
+                   [(0.05, 0.0), (0.055, 0.01), (0.055, 0.16), (0.045, 0.19), (0.042, 0.215)],
+                   (0.80, 0.82, 0.72, 0.85), segments=10)
+        make_cyl(f"Counter_Jar_{i}_Contents", (-1.80, jy, 0.975 + fill / 2.0), 0.049, fill, fcol, segments=10)
+        make_lathe(f"Counter_Jar_{i}_Lid", (-1.80, jy, 1.185),
+                   [(0.045, 0.0), (0.056, 0.005), (0.056, 0.03), (0.0, 0.03)], COL_IRON, segments=10)
     # Hanging pot rack over the counter
     make_box("PotRack_Bar", (-1.7, 4.6, 2.0), (0.04, 1.4, 0.04), COL_IRON)
     for i, (py, r, h, col) in enumerate([(4.2, 0.11, 0.14, COL_IRON), (4.6, 0.13, 0.16, (0.55, 0.35, 0.18, 1.0)),
@@ -124,17 +156,46 @@ def build_stove_corner():
     pulled to the stove ("Cale and Per in the chairs by the
     stove")."""
     sx, sy = 2.3, 5.4
-    make_cyl("Stove_Belly", (sx, sy, 0.55), 0.35, 0.7, COL_IRON, segments=12)
-    make_cyl("Stove_Waist", (sx, sy, 0.95), 0.28, 0.16, COL_IRON_WM, segments=12)
-    make_cyl("Stove_Top", (sx, sy, 1.08), 0.32, 0.08, COL_IRON, segments=12)
+    # DETAIL DRAFT 5 (2026-09-17): the potbelly is ONE turned profile
+    # — ash lip, the belly's swell, the waist, the cooking plate — on
+    # four cast legs; the pipe rises, elbows, and enters the north
+    # wall through its thimble. Three stacked cylinders read as a
+    # water heater.
+    for li, (lx, ly) in enumerate(((sx - 0.24, sy - 0.24), (sx + 0.24, sy - 0.24),
+                                   (sx - 0.24, sy + 0.24), (sx + 0.24, sy + 0.24))):
+        make_lathe(f"Stove_Leg_{li}", (lx, ly, 0.0),
+                   [(0.05, 0.0), (0.035, 0.02), (0.03, 0.14), (0.045, 0.19), (0.045, 0.22)],
+                   COL_IRON, segments=8)
+    make_lathe("Stove_Body", (sx, sy, 0.20),
+               [(0.30, 0.0), (0.34, 0.04), (0.36, 0.20), (0.35, 0.42), (0.31, 0.58),
+                (0.27, 0.68), (0.26, 0.74), (0.30, 0.78), (0.32, 0.86), (0.31, 0.90),
+                (0.24, 0.905), (0.0, 0.905)],
+               COL_IRON, segments=16)
+    make_lathe("Stove_Plate_Ring", (sx, sy, 1.10), [(0.16, 0.0), (0.17, 0.012), (0.10, 0.012), (0.0, 0.012)],
+               COL_IRON_WM, segments=14)
     make_box("Stove_Door", (sx - 0.34, sy, 0.5), (0.04, 0.26, 0.30), COL_IRON_WM)
+    make_box("Stove_Door_Hinge", (sx - 0.355, sy - 0.15, 0.5), (0.015, 0.02, 0.26), COL_IRON)
+    make_cyl("Stove_Door_Latch", (sx - 0.365, sy + 0.11, 0.50), 0.012, 0.05, COL_IRON, axis='X', segments=6)
     make_box("Stove_EmberGlow", (sx - 0.355, sy, 0.5), (0.02, 0.16, 0.18), (0.95, 0.45, 0.15, 1.0))
-    make_box("Stove_Legs_hint", (sx, sy, 0.12), (0.5, 0.5, 0.12), COL_IRON)
-    make_cyl("Stove_Pipe", (sx, sy, 2.2), 0.09, 2.2, COL_IRON_WM, segments=8)
-    # THE COPPER KETTLE with the small dent in its side
-    make_cyl("Copper_Kettle", (sx - 0.20, sy + 0.05, 1.20), 0.11, 0.16, COL_COPPER, segments=10)
-    make_box("Kettle_Dent", (sx + 0.10, sy, 1.18), (0.03, 0.06, 0.06), (0.58, 0.32, 0.18, 1.0))
-    make_box("Kettle_Spout", (sx - 0.34, sy + 0.05, 1.22), (0.08, 0.03, 0.03), COL_COPPER)
+    make_cyl("Stove_Pipe", (sx, sy, 1.62), 0.09, 1.02, COL_IRON_WM, segments=10)
+    make_tube("Stove_Pipe_Elbow", [(sx, sy, 2.10), (sx, sy, 2.36), (sx, sy + 0.08, 2.44),
+                                   (sx, sy + 0.18, 2.48), (sx, ROOM_D - 0.10, 2.48)],
+              0.09, COL_IRON_WM, segments=10)
+    make_cyl("Stove_Pipe_Thimble", (sx, ROOM_D - 0.10, 2.48), 0.15, 0.03, COL_IRON, axis='Y', segments=12)
+    # THE COPPER KETTLE with the small dent in its side — a turned
+    # body with a shoulder, the lid's knob, a spout that rises, a
+    # bail handle over the top.
+    kx, ky, kz = sx - 0.20, sy + 0.05, 1.12
+    make_lathe("Copper_Kettle", (kx, ky, kz),
+               [(0.07, 0.0), (0.11, 0.02), (0.12, 0.08), (0.10, 0.14), (0.06, 0.165),
+                (0.065, 0.18), (0.02, 0.195), (0.02, 0.215), (0.0, 0.215)],
+               COL_COPPER, segments=12)
+    make_box("Copper_Kettle_Dent", (kx + 0.11, ky, kz + 0.07), (0.03, 0.06, 0.06), (0.58, 0.32, 0.18, 1.0))
+    make_tube("Copper_Kettle_Spout", [(kx - 0.10, ky, kz + 0.06), (kx - 0.15, ky, kz + 0.10), (kx - 0.18, ky, kz + 0.15)],
+              0.014, COL_COPPER, segments=6)
+    make_tube("Copper_Kettle_Bail", [(kx - 0.08, ky, kz + 0.16), (kx - 0.07, ky, kz + 0.25), (kx, ky, kz + 0.29),
+                              (kx + 0.07, ky, kz + 0.25), (kx + 0.08, ky, kz + 0.16)],
+              0.008, COL_IRON, segments=5)
     # Firewood: the stack and the cedar BASKET beside the stove
     for r in range(3):
         for c in range(4):
@@ -142,23 +203,49 @@ def build_stove_corner():
             fz = 0.12 + r * 0.16 + (0.0 if c % 2 == 0 else 0.02)
             make_cyl(f"Firewood_{r}_{c}", (2.7, fy, fz), 0.075, 0.5,
                      COL_WOOD if (r + c) % 2 else COL_WOOD_DK, segments=6, axis='X')
-    make_cyl("Wood_Basket", (1.68, 5.70, 0.20), 0.28, 0.40, (0.56, 0.42, 0.26, 1.0), segments=10)
-    make_cyl("Wood_Basket_Cedar", (1.68, 5.70, 0.36), 0.20, 0.14, COL_WOOD_DK, segments=8)
+    # The firewood basket: a splayed weave, a rolled rim, the cedar
+    # kindling standing in it (draft 5: a lathe, not two tins)
+    make_lathe("Wood_Basket", (1.68, 5.70, 0.0),
+               [(0.20, 0.0), (0.22, 0.02), (0.29, 0.36), (0.31, 0.40), (0.29, 0.42), (0.27, 0.40), (0.0, 0.40)],
+               (0.56, 0.42, 0.26, 1.0), segments=12)
+    for ki, (kdx, kdy) in enumerate(((-0.08, 0.02), (0.05, -0.07), (0.02, 0.09), (0.10, 0.04))):
+        make_rot_box(f"Wood_Basket_Kindling_{ki}", (1.68 + kdx, 5.70 + kdy, 0.42),
+                     (0.035, 0.035, 0.46), COL_WOOD_DK if ki % 2 else COL_WOOD,
+                     yaw=0.4 * ki, pitch=0.12 + 0.05 * ki)
     # The side table by the wood stove ("She put the stick down on
-    # the side table by the wood stove")
-    make_box("Stove_SideTable_Top", (1.60, 4.95, 0.54), (0.42, 0.42, 0.05), COL_WOOD)
-    make_cyl("Stove_SideTable_Post", (1.60, 4.95, 0.27), 0.05, 0.52, COL_WOOD, segments=8)
-    # The two armchairs, at the stove where the prose puts them
+    # the side table by the wood stove") — a turned pedestal on a foot
+    make_chamfer_box("Stove_SideTable_Top", (1.60, 4.95, 0.54), (0.42, 0.42, 0.04), COL_WOOD, chamfer=0.01)
+    make_lathe("Stove_SideTable_Post", (1.60, 4.95, 0.0),
+               [(0.15, 0.0), (0.13, 0.03), (0.06, 0.05), (0.045, 0.16), (0.06, 0.24), (0.04, 0.34), (0.05, 0.48), (0.07, 0.52)],
+               COL_WOOD, segments=10)
+    # A tin of matches on the side table, by the stick's spot
+    make_box("SideTable_MatchTin", (1.72, 5.06, 0.57), (0.06, 0.04, 0.02), (0.62, 0.58, 0.44, 1.0))
+    # The two armchairs, at the stove where the prose puts them —
+    # upholstered: a chamfered cushion on a plinth, rolled arms, the
+    # back's crest a soft edge, four turned feet under it all.
+    upholstery = (0.44, 0.36, 0.28, 1.0)
+    upholstery_dk = (0.40, 0.32, 0.25, 1.0)
     for ci, (cx, cy, tag) in enumerate(((1.35, 4.35, "A"), (0.85, 5.35, "B"))):
-        make_box(f"Armchair_{tag}_Base", (cx, cy, 0.23), (0.66, 0.66, 0.46), (0.44, 0.36, 0.28, 1.0))   # to the floor
-        make_box(f"Armchair_{tag}_Back", (cx + 0.28, cy, 0.66), (0.14, 0.66, 0.60), (0.40, 0.32, 0.25, 1.0))
+        for fi, (fx, fy) in enumerate(((cx - 0.28, cy - 0.28), (cx + 0.28, cy - 0.28),
+                                       (cx - 0.28, cy + 0.28), (cx + 0.28, cy + 0.28))):
+            make_lathe(f"Armchair_{tag}_Foot_{fi}", (fx, fy, 0.0),
+                       [(0.03, 0.0), (0.035, 0.03), (0.025, 0.06), (0.03, 0.10)], COL_WOOD_DK, segments=8)
+        make_chamfer_box(f"Armchair_{tag}_Base", (cx, cy, 0.27), (0.66, 0.66, 0.34), upholstery, chamfer=0.03)
+        make_chamfer_box(f"Armchair_{tag}_Cushion", (cx - 0.04, cy, 0.475), (0.50, 0.44, 0.07), upholstery, chamfer=0.025)
+        make_chamfer_box(f"Armchair_{tag}_Back", (cx + 0.28, cy, 0.66), (0.14, 0.66, 0.60), upholstery_dk, chamfer=0.04)
         for ay in (cy - 0.31, cy + 0.31):
-            make_box(f"Armchair_{tag}_Arm_{ay:.2f}", (cx, ay, 0.50), (0.62, 0.12, 0.36), (0.40, 0.32, 0.25, 1.0))
+            make_chamfer_box(f"Armchair_{tag}_Arm_{ay:.2f}", (cx, ay, 0.50), (0.62, 0.12, 0.30), upholstery_dk, chamfer=0.03)
+            make_cyl(f"Armchair_{tag}_ArmRoll_{ay:.2f}", (cx - 0.05, ay, 0.66), 0.062, 0.52, upholstery_dk, axis='X', segments=10)
     # The wool blanket draped over armchair A
-    make_box("Armchair_Blanket", (1.35, 4.05, 0.62), (0.60, 0.10, 0.30), COL_WOOL)
-    # Cedar chest (the wool blankets live in it)
-    make_box("Cedar_Chest", (2.55, 3.55, 0.26), (0.60, 1.05, 0.52), (0.56, 0.40, 0.24, 1.0))
-    make_box("Cedar_Chest_Lid", (2.55, 3.55, 0.545), (0.64, 1.09, 0.05), (0.50, 0.36, 0.22, 1.0))
+    make_chamfer_box("Armchair_Blanket", (1.35, 4.05, 0.62), (0.60, 0.10, 0.30), COL_WOOL, chamfer=0.02)
+    # Cedar chest (the wool blankets live in it): chamfered box, a
+    # lid with a lip, two iron straps over the top, the hasp at the front
+    make_chamfer_box("Cedar_Chest", (2.55, 3.55, 0.26), (0.60, 1.05, 0.52), (0.56, 0.40, 0.24, 1.0), chamfer=0.012)
+    make_chamfer_box("Cedar_Chest_Lid", (2.55, 3.55, 0.545), (0.64, 1.09, 0.05), (0.50, 0.36, 0.22, 1.0), chamfer=0.012)
+    for si, syy in enumerate((3.20, 3.90)):
+        make_box(f"Cedar_Chest_Strap_{si}", (2.55, syy, 0.572), (0.66, 0.04, 0.006), COL_IRON)
+        make_box(f"Cedar_Chest_StrapDown_{si}", (2.24, syy, 0.40), (0.006, 0.04, 0.30), COL_IRON)
+    make_box("Cedar_Chest_Hasp", (2.235, 3.55, 0.50), (0.008, 0.06, 0.09), COL_IRON)
 
 
 def build_table():
@@ -224,19 +311,33 @@ def build_table():
                                    (1.2, (0.54, 0.40, 0.28, 1.0)),
                                    (0.8, (0.40, 0.28, 0.22, 1.0))]):
         make_cyl(f"Rug_Ring_{i}", (tx, ty, 0.008 + i * 0.002), rr, 0.006, col, segments=16)
-    # Hurricane lantern on the table
-    make_cyl("Lantern_Base", (0.35, 2.6, 0.86), 0.05, 0.05, COL_IRON, segments=8)
-    make_cyl("Lantern_Glass", (0.35, 2.6, 0.96), 0.04, 0.13, (0.96, 0.86, 0.55, 0.8), segments=8)
-    make_cyl("Lantern_Flame", (0.35, 2.6, 0.99), 0.012, 0.05, (1.0, 0.7, 0.2, 1.0), segments=5)
-    make_cyl("Lantern_Cap", (0.35, 2.6, 1.05), 0.045, 0.04, COL_IRON, segments=8)
+    # Hurricane lantern on the table — the font, the globe's swell,
+    # the vented cap, the wire bail (draft 5: turned, not stacked)
+    make_lathe("Lantern_Base", (0.35, 2.6, 0.785),
+               [(0.055, 0.0), (0.06, 0.01), (0.05, 0.03), (0.055, 0.07), (0.035, 0.085), (0.03, 0.09)],
+               COL_IRON, segments=10)
+    make_lathe("Lantern_Glass", (0.35, 2.6, 0.875),
+               [(0.03, 0.0), (0.045, 0.02), (0.052, 0.07), (0.045, 0.12), (0.03, 0.145)],
+               (0.96, 0.86, 0.55, 0.8), segments=10)
+    make_cyl("Lantern_Flame", (0.35, 2.6, 0.94), 0.010, 0.05, (1.0, 0.7, 0.2, 1.0), segments=5)
+    make_lathe("Lantern_Cap", (0.35, 2.6, 1.02),
+               [(0.03, 0.0), (0.05, 0.015), (0.045, 0.035), (0.025, 0.05), (0.02, 0.06), (0.0, 0.06)],
+               COL_IRON, segments=10)
+    make_tube("Lantern_Bail", [(0.30, 2.6, 1.03), (0.29, 2.6, 1.10), (0.35, 2.6, 1.14), (0.41, 2.6, 1.10), (0.40, 2.6, 1.03)],
+              0.005, COL_IRON, segments=5)
 
 
 def build_daybed():
     """The daybed against the W wall where Kai slept."""
-    make_box("Daybed_Frame", (-2.42, 1.9, 0.20), (0.92, 2.00, 0.34), COL_WOOD_DK)
-    make_box("Daybed_Mattress", (-2.42, 1.9, 0.44), (0.86, 1.92, 0.16), (0.90, 0.86, 0.78, 1.0))
-    make_box("Daybed_Bolster", (-2.78, 1.9, 0.62), (0.18, 1.85, 0.22), COL_WOOL)
-    make_box("Daybed_Blanket", (-2.28, 1.5, 0.545), (0.84, 0.95, 0.06), (0.56, 0.40, 0.30, 1.0))   # clear of the bolster (2026-09-07)
+    # draft 5: the frame stands on four turned feet, the mattress and
+    # blanket have soft edges, the bolster is the roll it is
+    for fi, (fx, fy) in enumerate(((-2.84, 0.96), (-2.00, 0.96), (-2.84, 2.84), (-2.00, 2.84))):
+        make_lathe(f"Daybed_Foot_{fi}", (fx, fy, 0.0),
+                   [(0.03, 0.0), (0.04, 0.02), (0.03, 0.05), (0.035, 0.08)], COL_WOOD_DK, segments=8)
+    make_chamfer_box("Daybed_Frame", (-2.42, 1.9, 0.21), (0.92, 2.00, 0.26), COL_WOOD_DK, chamfer=0.012)
+    make_chamfer_box("Daybed_Mattress", (-2.42, 1.9, 0.44), (0.86, 1.92, 0.16), (0.90, 0.86, 0.78, 1.0), chamfer=0.03)
+    make_cyl("Daybed_Bolster", (-2.78, 1.9, 0.62), 0.11, 1.85, COL_WOOL, axis='Y', segments=10)
+    make_chamfer_box("Daybed_Blanket", (-2.28, 1.5, 0.545), (0.84, 0.95, 0.06), (0.56, 0.40, 0.30, 1.0), chamfer=0.015)   # clear of the bolster (2026-09-07)
     # Chair by the SOUTH window, main room ("The chair by the south
     # window" / "Finn on the floor by the south window")
     make_window("South_Window_W", (-2.0, 0.04, 1.45), width=1.10, height=1.00)
@@ -249,20 +350,22 @@ def build_east_room():
     cedars"), the writing desk with the cedar shelf ("the reader
     was on the shelf where it had been since '46"), the basin with
     the mirror over it."""
-    # Bed along the E wall
-    make_box("EBed_Frame", (2.10, 1.75, 0.20), (1.45, 1.90, 0.30), COL_WOOD_DK)
-    make_box("EBed_Mattress", (2.10, 1.75, 0.46), (1.38, 1.82, 0.16), (0.90, 0.86, 0.78, 1.0))
-    make_box("EBed_Blanket", (2.10, 1.45, 0.565), (1.34, 1.10, 0.07), COL_WOOL)
-    make_box("EBed_Pillow", (2.10, 2.50, 0.60), (0.90, 0.38, 0.12), (0.96, 0.92, 0.86, 1.0))
+    # Bed along the E wall — the furniture kit's frame bed (draft 5):
+    # legs, rails, a deck, the mattress, a made bed with its blanket
+    # turned down and the pillows at the head (+Y, where they were)
+    make_bed("EBed", 2.10, 1.75, head="+Y", w=1.45, d=1.90, style="frame",
+             frame_col=COL_WOOD_DK, mattress_col=(0.90, 0.86, 0.78, 1.0),
+             blanket_col=COL_WOOL, pillow_col=(0.96, 0.92, 0.86, 1.0), pillows=2,
+             made=True, headboard=False)   # no headboard: shot_insert_chest looks past the bed's head at the chest
     # The window above the bed (E wall) — cedars beyond
     make_box("EBed_Win_Frame", (2.96, 1.45, 1.75), (0.04, 1.20, 0.95), COL_WOOD_DK)
     make_box("EBed_Win_Glass", (2.98, 1.45, 1.75), (0.02, 1.06, 0.82), COL_GLASS)
-    # Writing desk against the S wall + the south window over it
+    # Writing desk against the S wall + the south window over it —
+    # the kit table: turned legs, an apron, a stretcher (draft 5)
     make_window("South_Window_E", (2.0, 0.04, 1.45), width=0.95, height=0.95)
-    make_box("Desk_Top", (1.75, 0.55, 0.74), (0.95, 0.60, 0.05), COL_WOOD)
-    for lx in (1.35, 2.15):
-        make_box(f"Desk_Leg_{lx:.2f}", (lx, 0.55, 0.37), (0.06, 0.55, 0.72), COL_WOOD_DK)
-    make_box("Desk_Notebook", (1.72, 0.52, 0.775), (0.26, 0.20, 0.015), (0.30, 0.26, 0.22, 1.0))
+    make_table("Desk", 1.75, 0.55, w=0.95, d=0.60, h=0.75, wood=COL_WOOD, top_col=COL_WOOD)
+    make_box("Desk_Notebook", (1.72, 0.52, 0.7575), (0.26, 0.20, 0.015), (0.30, 0.26, 0.22, 1.0))
+    make_cyl("Desk_Pen", (1.90, 0.44, 0.754), 0.004, 0.14, (0.16, 0.16, 0.18, 1.0), axis='X', segments=5)
     # The cedar shelf above the desk — player, books, notebooks
     make_box("Cedar_Shelf", (1.75, 0.16, 1.55), (1.10, 0.24, 0.04), (0.56, 0.40, 0.24, 1.0))
     make_box("Shelf_Player", (1.45, 0.16, 1.63), (0.24, 0.16, 0.10), (0.20, 0.20, 0.22, 1.0))
@@ -270,9 +373,15 @@ def build_east_room():
         make_box(f"Shelf_Book_{bi}", (1.80 + bi * 0.10, 0.16, 1.66),
                  (0.07, 0.16, 0.20), [(0.48, 0.20, 0.16, 1.0), (0.22, 0.30, 0.24, 1.0),
                                       (0.60, 0.52, 0.36, 1.0), (0.30, 0.26, 0.34, 1.0)][bi])
-    # Basin + mirror on the partition side
-    make_box("Basin_Stand", (0.55, 0.35, 0.42), (0.44, 0.36, 0.84), COL_WOOD)
-    make_cyl("Basin_Bowl", (0.55, 0.35, 0.88), 0.16, 0.08, (0.86, 0.86, 0.84, 1.0), segments=12)
+    # Basin + mirror on the partition side — the enamel bowl is a
+    # bowl (draft 5), with the pitcher beside it
+    make_chamfer_box("Basin_Stand", (0.55, 0.35, 0.42), (0.44, 0.36, 0.84), COL_WOOD, chamfer=0.01)
+    make_lathe("Basin_Bowl", (0.55, 0.35, 0.84),
+               [(0.08, 0.0), (0.13, 0.02), (0.165, 0.07), (0.175, 0.09), (0.16, 0.09), (0.0, 0.085)],
+               (0.86, 0.86, 0.84, 1.0), segments=14)
+    make_lathe("Basin_Pitcher", (0.42, 0.24, 0.84),
+               [(0.045, 0.0), (0.06, 0.03), (0.065, 0.12), (0.045, 0.19), (0.05, 0.22), (0.0, 0.22)],
+               (0.86, 0.86, 0.84, 1.0), segments=10)
     make_box("Basin_Mirror", (1.06, 2.35, 1.50), (0.03, 0.36, 0.50), (0.68, 0.74, 0.78, 1.0))
 
 
@@ -288,9 +397,21 @@ def build_wall_dressing():
                  (0.78, 0.74, 0.62, 1.0), segments=4)
     # The hanging oil lamp over the table — the cabin's practical
     # (no fluorescents in an off-grid kerosene cabin)
-    make_box("OilLamp_Chain", (0.0, 2.9, CEIL-0.25), (0.02, 0.02, 0.50), COL_IRON)
-    make_cyl("OilLamp_Font", (0.0, 2.9, CEIL-0.62), 0.09, 0.12, (0.66, 0.52, 0.24, 1.0), segments=10)
-    make_cyl("OilLamp_Chimney", (0.0, 2.9, CEIL-0.48), 0.05, 0.16, (0.96, 0.86, 0.55, 0.8), segments=8)
+    # (draft 5: the font is a brass lathe with a burner collar, the
+    # chimney flares, a tin reflector-shade hangs over it, three chains)
+    for ci, ang in enumerate((0.0, 2.094, 4.189)):
+        make_tube(f"OilLamp_Chain_{ci}", [(0.0, 2.9, CEIL - 0.02), (0.11 * _m.cos(ang), 2.9 + 0.11 * _m.sin(ang), CEIL - 0.50)],
+                  0.006, COL_IRON, segments=4)
+    make_lathe("OilLamp_Shade", (0.0, 2.9, CEIL - 0.56),
+               [(0.0, 0.06), (0.06, 0.06), (0.16, 0.0), (0.17, 0.0), (0.07, 0.065), (0.0, 0.065)],
+               (0.72, 0.68, 0.60, 1.0), segments=12)
+    make_lathe("OilLamp_Font", (0.0, 2.9, CEIL - 0.72),
+               [(0.04, 0.0), (0.09, 0.02), (0.10, 0.07), (0.08, 0.11), (0.05, 0.125), (0.05, 0.14), (0.035, 0.15)],
+               (0.66, 0.52, 0.24, 1.0), segments=12)
+    make_lathe("OilLamp_Chimney", (0.0, 2.9, CEIL - 0.57),
+               [(0.035, 0.0), (0.05, 0.03), (0.045, 0.10), (0.03, 0.17), (0.028, 0.19)],
+               (0.96, 0.86, 0.55, 0.8), segments=10)
+    make_cyl("OilLamp_Flame", (0.0, 2.9, CEIL - 0.54), 0.010, 0.04, (1.0, 0.72, 0.24, 1.0), segments=5)
     # Curtained E window in the main… now inside the east room wall
     # segment north of the partition (main room's east outlook)
     make_box("Window_E_Frame", (2.96, 4.2, 1.6), (0.04, 1.4, 1.1), COL_WOOD_DK)
@@ -388,11 +509,8 @@ def build_wear_personality_2026_08():
     # ── TEM'S WEEKS ────────────────────────────────────────────
     # The chair beside the daybed and the short path to it — worn
     # FAINT and NARROW. Six weeks against forty-five years.
-    make_box("Vigil_Chair_Seat", (-1.70, 1.9, 0.42), (0.42, 0.42, 0.05), COL_WOOD)
-    for li, (ox, oy) in enumerate(((-0.17, -0.17), (0.17, -0.17), (-0.17, 0.17), (0.17, 0.17))):
-        make_box("Vigil_Chair_Leg_%d" % li, (-1.70 + ox, 1.9 + oy, 0.20),
-                 (0.045, 0.045, 0.40), COL_WOOD_DK)
-    make_box("Vigil_Chair_Back", (-1.89, 1.9, 0.80), (0.05, 0.42, 0.72), COL_WOOD)   # back west; he faces the room (2026-09-07)
+    # the kit chair (draft 5): back west, he faces the room (2026-09-07)
+    make_chair("Vigil_Chair", -1.70, 1.9, yaw=-1.5708, wood=COL_WOOD, w=0.42)
     make_traffic_wear("Wear_Tem_Path",
                       [(0.0, 1.0), (-1.0, 1.5), (-1.55, 1.9)],
                       width=0.30, tint=floor_new)
@@ -539,6 +657,32 @@ def build_hero_props_2026_09():
         make_cyl(f"Station_Wagon_Wheel_{wi2}", (wx3, wy3, 0.34), 0.34, 0.25, (0.14, 0.14, 0.15, 1.0), axis='Y', segments=10)
 
 
+def build_kerosene_infra_2026_09():
+    """D3 for a room with no wires (draft 5): what an off-grid cabin
+    is plugged into. The kerosene can and its funnel inside the door
+    on the west side, where a can gets set down; a spare lamp chimney
+    on the counter's end; the lamp's wick-trimmer scissors on the
+    side table. Positions clear of the door swing (x ±0.5) and the
+    daybed (x < -1.96)."""
+    tin = (0.56, 0.20, 0.16, 1.0)
+    tin_dk = (0.40, 0.14, 0.12, 1.0)
+    # The kerosene can: a square-shouldered can with a screw cap and
+    # a wire-and-wood handle
+    make_chamfer_box("Kerosene_Can", (-1.15, 0.40, 0.14), (0.24, 0.16, 0.28), tin, chamfer=0.015)
+    make_lathe("Kerosene_Can_Neck", (-1.22, 0.40, 0.28), [(0.03, 0.0), (0.03, 0.03), (0.035, 0.035), (0.035, 0.05), (0.0, 0.05)], tin_dk, segments=8)
+    make_tube("Kerosene_Can_Handle", [(-1.06, 0.34, 0.28), (-1.06, 0.34, 0.36), (-1.06, 0.46, 0.36), (-1.06, 0.46, 0.28)],
+              0.006, COL_IRON, segments=5)
+    make_cyl("Kerosene_Can_Grip", (-1.06, 0.40, 0.36), 0.012, 0.08, COL_WOOD_DK, axis='Y', segments=6)
+    # The funnel, upside down on the can's shoulder
+    make_lathe("Kerosene_Funnel", (-1.10, 0.44, 0.28), [(0.012, 0.0), (0.012, 0.03), (0.06, 0.09), (0.062, 0.095), (0.0, 0.095)], (0.70, 0.70, 0.68, 1.0), segments=10)
+    # A spare chimney at the counter's south end, in its paper
+    make_lathe("Spare_Chimney", (-1.90, 3.55, 0.97), [(0.035, 0.0), (0.05, 0.03), (0.045, 0.10), (0.03, 0.17), (0.028, 0.19)],
+               (0.92, 0.90, 0.84, 0.9), segments=10)
+    # Wick-trimmer scissors on the stove side table, beside the tin
+    make_box("Wick_Scissors_A", (1.52, 4.86, 0.562), (0.12, 0.012, 0.004), COL_IRON)
+    make_rot_box("Wick_Scissors_B", (1.52, 4.86, 0.566), (0.12, 0.012, 0.004), COL_IRON, yaw=0.35)
+
+
 def main():
     clear_scene()
     build_shell()
@@ -553,6 +697,7 @@ def main():
     build_wear_personality_2026_08()
     build_through_windows_2026_08()
     build_hero_props_2026_09()
+    build_kerosene_infra_2026_09()
     out = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)),
         "../../../assets/3d/locales/cabin_interior.glb"))
     print(f"\n[build_cabin_interior] exporting to {out}")

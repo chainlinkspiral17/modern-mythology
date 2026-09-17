@@ -64,7 +64,14 @@ def make_table(prefix, x, y, w=1.2, d=0.8, h=0.75, wood=WOOD, top_col=None, z0=0
     make_box(f"{prefix}_Apron_R", (x + w / 2.0 - 0.06, y, h - 0.09), (0.025, d - 0.16, 0.10), WOOD_DK)
     for li, (u, v) in enumerate(((-w / 2.0 + 0.06, -d / 2.0 + 0.06), (w / 2.0 - 0.06, -d / 2.0 + 0.06), (-w / 2.0 + 0.06, d / 2.0 - 0.06), (w / 2.0 - 0.06, d / 2.0 - 0.06))):
         _leg(f"{prefix}_Leg_{li}", x + u, y + v, z0, h0 - 0.14, r=0.032, wood=wood)
-    make_tube(f"{prefix}_Stretcher", [(x - w / 2.0 + 0.06, y, z0 + 0.16), (x + w / 2.0 - 0.06, y, z0 + 0.16)], 0.014, wood, segments=5)
+    # An H-stretcher (2026-09-17): two side rails leg-to-leg along the
+    # length and a cross rail between them. The single centre rail ran
+    # between no legs at all — it hung in the air at 16 cm and the
+    # furniture grammar's FLOAT rule caught it the first time a table
+    # was narrow enough (the cabin desk, d 0.60).
+    for si, v in enumerate((-d / 2.0 + 0.06, d / 2.0 - 0.06)):
+        make_tube(f"{prefix}_Stretcher_{si}", [(x - w / 2.0 + 0.06, y + v, z0 + 0.16), (x + w / 2.0 - 0.06, y + v, z0 + 0.16)], 0.014, wood, segments=5)
+    make_tube(f"{prefix}_Stretcher_X", [(x, y - d / 2.0 + 0.06, z0 + 0.16), (x, y + d / 2.0 - 0.06, z0 + 0.16)], 0.012, wood, segments=5)
 
 
 def make_stool(prefix, x, y, h=0.70, wood=WOOD):
