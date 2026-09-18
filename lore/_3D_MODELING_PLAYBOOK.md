@@ -466,6 +466,21 @@ The visual program's first background pass (lore/_VISUAL_PROGRAM.md
   both property lines, a treeline past the yard so the screens look
   at something). A rocker's cross-stretcher between no legs floated
   the same way the table's did: rails go leg to leg.
+- **Cosmic Comics, draft 4 (2026-09-18): density is not history.** The
+  shop had 700 objects and no wear, no wires, no street. The spinner
+  pockets are U-wires now, the grail dome a dome, the bell a bell, the
+  stool and the new-arrivals table from the kit; the first wear pass
+  (door→bins→register worn into the checkerboard, the counter's elbow
+  strip, bin-base scuffs, the stool's ring, tape ghosts on the glass);
+  the switch, the register's cord, and the corner CRT that the scene's
+  blue fill light had been standing in for since the rig pass — built,
+  plugged in, glowing; sidewalk, curb, a parked car, a streetlamp and
+  the storefronts across, so the window looks at a street.
+- **A wear object must not carry a cue word.** `Wear_Path_Door_Bins`
+  made `[shot:insert door]` resolve to a floor stain, and the marker
+  gate reported the door insert OCCLUDED by a comic. Wear, stains and
+  bands are named for the wear (`Wear_Path_Entry_Bins`), never for
+  the object they lead to.
 - **Draft 6 is in the builder's docstring** (the loft, the counter's
   face, the seven chairs told apart) and the contact sheet decides
   what draft 7 is.

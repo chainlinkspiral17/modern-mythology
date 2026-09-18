@@ -11,12 +11,30 @@ dome, a front WINDOW with a display, a checkerboard TILE floor, a
 hanging COSMIC COMICS banner, and more posters. Room: door/S wall at
 blender y=0, extends +Y; interior lands at godot -Z. Props kept inside
 the 10.0 x 8.0 footprint.
+
+DRAFT 4 (2026-09-18, lore/_VISUAL_PROGRAM.md §3): the spinner pockets
+are U-wires, the grail dome is a dome, the bell a bell, the stool and
+the new-arrivals table come from the kit, longboxes have lids with a
+lip and a label; the shop's first WEAR pass (door→bins→register worn
+into the tile, the counter's elbow strip, scuffs along the bin bases,
+the stool's ring, tape ghosts on the glass); D3 (switch, the register's
+cord, the corner CRT the blue fill has lit since the rig pass — now
+built, plugged in, and glowing); D5 (sidewalk, curb, a parked car, a
+streetlamp, the storefronts across). The .tscn gains the CRT's glow.
+
+DRAFT 5 targets: the bins as real bins (a front lip, dividers that
+read, comics at a lean); the key-wall bags as a lathe-less relief (a
+raised rim); statues with a pose each; the pegwall's figures as
+silhouettes; the checkerboard worn through at the door; Deck: the
+sheet's establish at ten AM (the Galactus bars) and `insert dome`.
 """
 import os, sys, math
 _BT = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)), ".."))
 if _BT not in sys.path: sys.path.insert(0, _BT)
 from _props import palette as P
-from _props.geometry import clear_scene, make_box, make_chamfer_box, make_cyl, export_glb
+from _props.geometry import (clear_scene, make_box, make_chamfer_box, make_cyl, make_lathe,
+                             make_tube, make_rot_box, export_glb)
+from _props.furniture import make_stool, make_table
 from _props.structure import make_floor, make_wall, make_ceiling, make_crown_molding, make_window
 from _props.store_fixtures import make_counter, make_counter_bullnose, make_register
 from _props.shelving import make_snack_aisle, make_endcap
@@ -91,7 +109,10 @@ def build_second_spinner():
         for pk in range(6):
             ang = pk * (2.0 * math.pi / 6.0) + tier * 0.4
             ox, oy = math.cos(ang) * 0.34, math.sin(ang) * 0.34
-            make_box(f"Spin2_Wire_{tier}_{pk}", (rx+ox*0.6, ry+oy*0.6, tz), (0.02, 0.02, 0.30), P.METAL_STEEL)
+            # draft 4 (2026-09-18): a wire pocket is a U of wire, not a peg
+            make_tube(f"Spin2_Wire_{tier}_{pk}", [(rx+ox*0.6, ry+oy*0.6, tz+0.15), (rx+ox*0.6, ry+oy*0.6, tz-0.14),
+                                                 (rx+ox*1.05, ry+oy*1.05, tz-0.14), (rx+ox*1.05, ry+oy*1.05, tz-0.02)],
+                      0.006, P.METAL_STEEL, segments=5)
             tint = P.SNACK_TINTS[(tier + pk + 2) % len(P.SNACK_TINTS)]
             make_box(f"Spin2_Comic_{tier}_{pk}", (rx+ox, ry+oy, tz+0.02), (0.22, 0.03, 0.30), tint)
 
@@ -133,8 +154,9 @@ def build_back_issues():
     # Floor stacks of cardboard back-issue longboxes (lidded).
     def longbox_stack(pfx, bx, by, n):
         for li in range(n):
-            make_box(f"{pfx}_Box_{li}", (bx, by, 0.14 + li*0.24), (0.42, 0.74, 0.22), (0.72, 0.62, 0.44, 1.0))
-            make_box(f"{pfx}_Lid_{li}", (bx, by, 0.25 + li*0.24), (0.44, 0.76, 0.03), (0.60, 0.50, 0.34, 1.0))
+            make_chamfer_box(f"{pfx}_Box_{li}", (bx, by, 0.14 + li*0.24), (0.42, 0.74, 0.22), (0.72, 0.62, 0.44, 1.0), chamfer=0.008)
+            make_chamfer_box(f"{pfx}_Lid_{li}", (bx, by, 0.25 + li*0.24), (0.44, 0.76, 0.03), (0.60, 0.50, 0.34, 1.0), chamfer=0.006)
+            make_box(f"{pfx}_Lid_{li}_Label", (bx - 0.22 - 0.002, by, 0.14 + li*0.24), (0.002, 0.30, 0.10), (0.92, 0.90, 0.82, 1.0))
     longbox_stack("LB_E0", ROOM_W/2.0-0.75, 5.2, 3)
     longbox_stack("LB_E1", ROOM_W/2.0-0.75, 6.2, 2)
     longbox_stack("LB_SW", -ROOM_W/2.0+0.75, 1.6, 3)
@@ -150,7 +172,9 @@ def build_register_counter():
     gx, gy = cx-0.7, cy
     make_box("Grail_Slab", (gx, gy, top_z+0.14), (0.20, 0.30, 0.03), (0.86, 0.42, 0.30, 1.0))
     make_box("Grail_Label", (gx, gy-0.13, top_z+0.20), (0.16, 0.02, 0.06), P.PAPER)
-    make_box("Grail_Dome", (gx, gy, top_z+0.16), (0.30, 0.40, 0.30), (0.72, 0.80, 0.92, 0.25))
+    make_lathe("Grail_Dome", (gx, gy, top_z+0.04),
+               [(0.19, 0.0), (0.19, 0.20), (0.16, 0.26), (0.10, 0.29), (0.03, 0.30), (0.0, 0.30)],
+               (0.72, 0.80, 0.92, 0.25), segments=16)   # draft 4: a dome, not a box of glass
     make_box("Grail_DomeBase", (gx, gy, top_z+0.02), (0.32, 0.42, 0.04), P.METAL_BLACK)
     # A glass display of graded slabs along the counter face (customer side)
     for si in range(4):
@@ -168,7 +192,10 @@ def build_rack():
         for pk in range(6):
             ang = pk * (2.0 * math.pi / 6.0) + tier * 0.4
             ox, oy = math.cos(ang) * 0.34, math.sin(ang) * 0.34
-            make_box(f"Spinner_Wire_{tier}_{pk}", (rx+ox*0.6, ry+oy*0.6, tz), (0.02, 0.02, 0.30), P.METAL_STEEL)
+            # draft 4 (2026-09-18): a wire pocket is a U of wire, not a peg
+            make_tube(f"Spinner_Wire_{tier}_{pk}", [(rx+ox*0.6, ry+oy*0.6, tz+0.15), (rx+ox*0.6, ry+oy*0.6, tz-0.14),
+                                                 (rx+ox*1.05, ry+oy*1.05, tz-0.14), (rx+ox*1.05, ry+oy*1.05, tz-0.02)],
+                      0.006, P.METAL_STEEL, segments=5)
             tint = P.SNACK_TINTS[(tier + pk) % len(P.SNACK_TINTS)]
             make_box(f"Spinner_Comic_{tier}_{pk}", (rx+ox, ry+oy, tz+0.02), (0.22, 0.03, 0.30), tint)
 
@@ -237,8 +264,7 @@ def build_dressing():
     make_box("Standee_Board", (ROOM_W/2.0 - 1.3, 1.0, 0.98), (0.55, 0.05, 1.92), COL_ACCENT)
     make_box("Standee_Foot", (ROOM_W/2.0 - 1.3, 1.15, 0.03), (0.55, 0.30, 0.03), (0.30, 0.22, 0.14, 1.0))
     # Stool behind the register
-    make_cyl("Stool_Seat", (ROOM_W/4.0 - 0.7, ROOM_D - 2.6, 0.56), 0.18, 0.06, P.METAL_BLACK, segments=12)
-    make_cyl("Stool_Post", (ROOM_W/4.0 - 0.7, ROOM_D - 2.6, 0.28), 0.03, 0.54, P.METAL_STEEL, segments=8)
+    make_stool("Stool", ROOM_W/4.0 - 0.7, ROOM_D - 2.6, h=0.60, wood=(0.30, 0.26, 0.30, 1.0))   # draft 4: the kit stool
 
 def build_hero_props():
     """2026-08-03 hero-prop pass — the props the vol6 comics-floor
@@ -255,7 +281,8 @@ def build_hero_props():
                  (0.34, 2.6, 0.006), (0.46, 0.30, 0.58, 0.30))
     # The brass bell above the door (1994 estate sale)
     make_box("Bell_Bracket", (0.0, 0.16, 2.40), (0.04, 0.14, 0.04), (0.20, 0.19, 0.20, 1.0))
-    make_cyl("Brass_Bell", (0.0, 0.24, 2.34), 0.05, 0.07, brass, segments=8)
+    make_lathe("Brass_Bell", (0.0, 0.24, 2.30), [(0.055, 0.0), (0.05, 0.01), (0.035, 0.05), (0.02, 0.075), (0.012, 0.085), (0.0, 0.085)], brass, segments=10)
+    make_cyl("Brass_Bell_Clapper", (0.0, 0.24, 2.29), 0.008, 0.03, (0.30, 0.26, 0.18, 1.0), segments=5)
     # The front door leaf + OPEN/CLOSED card + deadbolt + chain
     make_box("Front_Door", (0.0, 0.03, 1.02), (1.90, 0.04, 2.04), (0.30, 0.28, 0.26, 1.0))
     make_box("Front_Door_Glass", (0.0, 0.02, 1.20), (1.50, 0.02, 1.55), (0.45, 0.52, 0.60, 0.5))
@@ -271,7 +298,8 @@ def build_hero_props():
     # The small bench by the front window (Rick, 2018, for waiting kids)
     make_chamfer_box("Window_Bench", (-3.0, 1.05, 0.42), (1.60, 0.42, 0.06), wood)
     for lx in (-3.65, -2.35):
-        make_box(f"Window_Bench_Leg_{lx:.2f}", (lx, 1.05, 0.20), (0.08, 0.36, 0.40), (0.32, 0.22, 0.14, 1.0))
+        make_chamfer_box(f"Window_Bench_Leg_{lx:.2f}", (lx, 1.05, 0.20), (0.08, 0.36, 0.40), (0.32, 0.22, 0.14, 1.0), chamfer=0.01)
+    make_tube("Window_Bench_Stretcher", [(-3.65, 1.05, 0.12), (-2.35, 1.05, 0.12)], 0.014, (0.32, 0.22, 0.14, 1.0), segments=5)
     # Shelf under the register (the Speak & Spell + Maya's wallet
     # ride here) + the small waste bin
     make_box("Register_UnderShelf", (2.5, 6.7, 0.55), (2.20, 0.70, 0.04), wood)
@@ -300,9 +328,7 @@ def build_hero_props():
     for ti in range(3):
         make_box(f"Indie_Talker_{ti}", (-3.85 + ti * 0.25, 2.28, 1.30), (0.16, 0.02, 0.10),
                  (0.94, 0.90, 0.78, 1.0))
-    make_chamfer_box("NewArrivals_Table", (0.0, 2.0, 0.40), (1.40, 0.80, 0.06), wood)
-    for lx, ly in ((-0.6, 1.68), (0.6, 1.68), (-0.6, 2.32), (0.6, 2.32)):
-        make_box(f"NewArrivals_Leg_{lx:.1f}_{ly:.2f}", (lx, ly, 0.20), (0.06, 0.06, 0.40), (0.32, 0.22, 0.14, 1.0))
+    make_table("NewArrivals", 0.0, 2.0, w=1.40, d=0.80, h=0.43, wood=wood, top_col=wood)   # draft 4: the kit table (turned legs, apron, H-stretcher)
     for ci in range(6):
         make_box(f"NewArrivals_Comic_{ci}", (-0.55 + (ci % 3) * 0.55, 1.82 + (ci // 3) * 0.38, 0.445),
                  (0.30, 0.42, 0.01), [(0.74, 0.30, 0.30, 1.0), (0.30, 0.44, 0.62, 1.0),
@@ -346,6 +372,56 @@ def build_hero_props_2026_09():
     make_box("SpeakSpell_Display", (3.2, 6.465, 0.0361), (0.16, 0.045, 0.002), (0.16, 0.30, 0.18, 1.0))
 
 
+def build_draft4_2026_09():
+    """DRAFT 4 (2026-09-18, lore/_VISUAL_PROGRAM.md §3; the shop carries
+    12 placements, the back office 11 more). The shop had density and
+    no history. WEAR: the path the door wears to the bins and the
+    register, and the spur to the spinner; the counter's elbow-worn
+    strip on the customer side; the stool's ring behind it; scuffs
+    along every bin base; the door's push-plate patch; tape ghosts on
+    the window glass where posters were. D3: the shop has wires — the
+    switch by the door, the register's cord down the counter's back to
+    its outlet, the CRT on a corner bracket (the Fill_CRTBlue light has
+    lit an empty corner since the rig pass) with its own cord and
+    screen glow. D5: the sidewalk, the curb, a parked car and the
+    storefronts across the street, so the front window looks at a
+    street and not the world's edge.
+    """
+    from _props.detail import make_traffic_wear, make_floor_stain, make_scuff_band, make_light_switch, make_wall_outlet, make_cord_run, make_far_bands
+    from _props.vehicles import make_car
+    tile_dk = (0.18, 0.15, 0.21, 1.0)
+    wood_dk = (0.32, 0.22, 0.14, 1.0)
+    # ── WEAR ──
+    make_traffic_wear("Wear_Path_Entry_Bins", [(0.0, 0.6), (0.0, 1.6), (-0.4, 2.3), (-1.2, 3.4)], width=0.55, tint=tile_dk)
+    make_traffic_wear("Wear_Path_Bins_Register", [(-1.2, 3.4), (0.6, 4.7), (1.8, 5.6), (2.4, 5.95)], width=0.50, tint=tile_dk)
+    make_traffic_wear("Wear_Path_Spinner", [(-1.2, 3.4), (-2.6, 3.8), (-3.2, 4.0)], width=0.36, tint=tile_dk)
+    make_box("Wear_Counter_Elbow", (ROOM_W/4.0 - 0.2, ROOM_D - 1.5 - 0.50, 0.952), (1.40, 0.06, 0.004), (0.24, 0.18, 0.26, 1.0))
+    make_floor_stain("Wear_Stool_Ring", (ROOM_W/4.0 - 0.7, ROOM_D - 2.6), radius=0.26, tint=tile_dk, segments=10)
+    for ji, (ay, row_w, row_x) in enumerate(((2.75, 5.0, 0.0), (4.0, 5.0, 0.0), (5.4, 3.6, -0.7))):
+        make_scuff_band(f"Wear_Bin_{ji}_Kick", (row_x, ay - 0.26), row_w - 0.3, axis='X', height=0.06, band_z=0.04, tint=(0.22, 0.16, 0.10, 1.0))
+    make_box("Wear_Door_Push", (0.55, 0.055, 1.10), (0.16, 0.004, 0.22), (0.40, 0.38, 0.36, 1.0))
+    for ti, (tx, tz) in enumerate(((-4.0, 2.10), (-2.1, 2.05), (-3.9, 0.95))):
+        make_box(f"Wear_Window_TapeGhost_{ti}", (tx, 0.115, tz), (0.05, 0.002, 0.05), (0.62, 0.60, 0.52, 0.5))
+    # ── D3 ──
+    make_light_switch("Switch_Door", (1.30, 0.0), axis='X', face_sign=1, z=1.20, aged=True)
+    make_wall_outlet("Outlet_Register", (2.80, ROOM_D), axis='X', face_sign=-1, z=0.30, aged=True)
+    make_cord_run("Cord_Register", (ROOM_W/4.0 + 0.30, ROOM_D - 1.5 + 0.48, 0.95), (2.80, ROOM_D - 0.12, 0.30), sag=0.0)
+    # the CRT on its bracket in the NE corner, angled at the floor
+    make_box("CRT_Bracket_Arm", (ROOM_W/2.0 - 0.30, ROOM_D - 0.30, 2.10), (0.40, 0.06, 0.06), P.METAL_BLACK)
+    make_rot_box("CRT_Body", (ROOM_W/2.0 - 0.42, ROOM_D - 0.42, 2.02), (0.44, 0.40, 0.36), (0.30, 0.30, 0.32, 1.0), yaw=0.78, pitch=0.20)
+    make_rot_box("CRT_Screen", (ROOM_W/2.0 - 0.58, ROOM_D - 0.58, 1.99), (0.34, 0.02, 0.28), (0.36, 0.52, 0.72, 1.0), yaw=0.78, pitch=0.20)
+    make_wall_outlet("Outlet_CRT", (ROOM_W/2.0, ROOM_D - 0.60), axis='Y', face_sign=-1, z=2.30, aged=True)
+    make_cord_run("Cord_CRT", (ROOM_W/2.0 - 0.36, ROOM_D - 0.36, 1.86), (ROOM_W/2.0 - 0.13, ROOM_D - 0.60, 2.30), sag=0.02)
+    # ── D5 · the street outside the front window ──
+    make_box("Sidewalk", (0.0, -1.3, -0.06), (14.0, 2.4, 0.12), (0.62, 0.60, 0.56, 1.0))
+    make_box("Curb", (0.0, -2.55, -0.08), (14.0, 0.12, 0.16), (0.55, 0.53, 0.50, 1.0))
+    make_box("Street", (0.0, -7.0, -0.18), (18.0, 9.0, 0.08), (0.24, 0.24, 0.25, 1.0))
+    make_car("Street_Car", -3.4, -3.9, 4.4, (0.52, 0.18, 0.16, 1.0), along="X", z0=-0.14)
+    make_lathe("Streetlamp_Post", (4.6, -2.2, 0.0), [(0.10, 0.0), (0.07, 0.10), (0.05, 3.6), (0.06, 3.8), (0.0, 3.8)], (0.20, 0.20, 0.22, 1.0), segments=8)
+    make_lathe("Streetlamp_Head", (4.6, -2.2, 3.75), [(0.0, 0.0), (0.10, 0.05), (0.14, 0.18), (0.0, 0.22)], (0.90, 0.86, 0.70, 1.0), segments=10)
+    make_far_bands("Far", (0.44, 0.40, 0.38, 1.0), [(13.0, 12.0, 4.5, 0.85), (16.0, 14.0, 6.5, 0.7)], sides="S", cy=0.0, profile="roofline")
+
+
 def main():
     clear_scene()
     build_shell()
@@ -369,6 +445,7 @@ def main():
     print(f"\n[build_cosmic_comics_interior] exporting to {out}")
     build_hero_props()
     build_hero_props_2026_09()
+    build_draft4_2026_09()
     export_glb(out)
 
 if __name__ == "__main__":

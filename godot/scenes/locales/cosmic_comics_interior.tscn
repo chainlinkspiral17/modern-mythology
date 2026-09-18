@@ -397,3 +397,11 @@ position = Vector3(1.426, 1.612, -3.626)
 rotation = Vector3(-0.2618, -2.3562, 0.0)
 metadata/fov = 45.0
 
+; ── draft 4 (2026-09-18): the corner CRT the blue fill has been standing in for ──
+; CRT_Screen at blender (4.42, 7.42, 1.99) → godot (4.42, 1.99, -7.42). Cool phosphor.
+[node name="CRT_Screen_Practical" type="OmniLight3D" parent="."]
+position = Vector3(4.420, 1.990, -7.420)
+light_color = Color(0.420, 0.620, 0.960, 1)
+light_energy = 0.80
+shadow_enabled = false
+omni_range = 3.20

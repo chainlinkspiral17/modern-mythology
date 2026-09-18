@@ -152,6 +152,12 @@ and 7): the primitive upgrade plus the wear, D3 and D5 passes it had
 never had. Clip 0, obstruction 0, FLOAT 0. Next: the vol 6 dozen,
 cosmic_comics_interior first.
 
+**Status (2026-09-18, later) · cosmic_comics_interior draft 4 shipped,
+unseen.** The fourth room: the primitive upgrade where it counted, the
+shop's first wear pass, its wires (and the CRT a fill light had been
+pretending was there), and a street outside the window. Next: the
+back office, then the bedrooms.
+
 **Draft targets, by volume, by uses:**
 - **Vol 7 (current):** `cabin_interior` (31) · `lena_apartment` (23)
   · `miller_back_porch` (12, shared with vol 6) · `salty_tome_alley`

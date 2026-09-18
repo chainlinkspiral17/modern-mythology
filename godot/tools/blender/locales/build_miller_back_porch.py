@@ -303,9 +303,9 @@ def build_draft3_2026_09():
     floor_pale = (0.50, 0.38, 0.27, 1.0)
     cy = ROOM_D / 2.0
     # ── WEAR ──
-    make_traffic_wear("Wear_Path_Door_Rocker", [(-0.9, 3.6), (-1.3, 2.6), (-1.5, 2.3)], width=0.45, tint=floor_dk)
+    make_traffic_wear("Wear_Path_Entry_Rocker", [(-0.9, 3.6), (-1.3, 2.6), (-1.5, 2.3)], width=0.45, tint=floor_dk)
     make_traffic_wear("Wear_Path_Rocker_Screen", [(-1.3, 1.6), (-0.6, 0.9), (0.0, 0.5)], width=0.42, tint=floor_dk)
-    make_traffic_wear("Wear_Path_Door_Wicker", [(-0.6, 3.6), (0.4, 3.5), (1.0, 3.35)], width=0.36, tint=floor_dk)
+    make_traffic_wear("Wear_Path_Entry_Wicker", [(-0.6, 3.6), (0.4, 3.5), (1.0, 3.35)], width=0.36, tint=floor_dk)
     for ri, rx in enumerate((-1.72, -1.28)):
         make_box(f"Wear_Rocker_Arc_{ri}", (rx, cy, 0.006), (0.06, 0.95, 0.004), floor_pale)
     make_cyl("Wear_Wicker_CupRing", (1.20 - 0.34, ROOM_D - 0.65 + 0.12, 0.626), 0.040, 0.003, (0.42, 0.30, 0.18, 1.0), segments=10)
