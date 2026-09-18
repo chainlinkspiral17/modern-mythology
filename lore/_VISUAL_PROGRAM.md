@@ -140,6 +140,12 @@ in air by the window chair — gone; floor lamp, fairy string and the
 alley's sodium through the sink window carry the room. Clip 0,
 obstruction 0, FLOAT 0. Next: miller_back_porch, then the vol 6 dozen.
 
+**Status (2026-09-18) · the lights-from-nowhere class, gated.** What the
+cabin and the apartment found by hand, `orphan_practical_audit.py` now
+finds everywhere: nine practicals with no fixture, fixed (seven moved
+onto real lamps and tubes, the cafe's pendants built). Every room's
+named light stands on a fixture from here on.
+
 **Draft targets, by volume, by uses:**
 - **Vol 7 (current):** `cabin_interior` (31) · `lena_apartment` (23)
   · `miller_back_porch` (12, shared with vol 6) · `salty_tome_alley`

@@ -180,8 +180,10 @@ light_color = Color(0.74, 0.78, 0.86, 1)
 light_energy = 0.25
 shadow_enabled = false
 
-[node name="Practical_FloorLamp" type="OmniLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, 1.65, -2.0)
+
+; moved onto its fixture by orphan_practical_audit (2026-09-18): the light stood at a template position no lamp occupied
+[node name="Scarf_Lamp_Shade_Practical" type="OmniLight3D" parent="."]
+transform = Transform3D(1,  0,  0,  0,  1,  0,  0,  0,  1, 1.150, 0.900, -0.550)
 light_color = Color(1.00, 0.78, 0.46, 1)
 light_energy = 1.4
 shadow_enabled = false

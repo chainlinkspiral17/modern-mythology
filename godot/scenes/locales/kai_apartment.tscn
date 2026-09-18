@@ -173,8 +173,10 @@ light_energy = 0.2
 shadow_enabled = false
 
 ; Cool desk-lamp practical (blender 0.925,1.7,1.16)
-[node name="Practical_DeskLamp" type="OmniLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.925, 1.16, -1.7)
+
+; moved onto its fixture by orphan_practical_audit (2026-09-18): the light stood at a template position no lamp occupied
+[node name="Lamp_Head_Practical" type="OmniLight3D" parent="."]
+transform = Transform3D(1,  0,  0,  0,  1,  0,  0,  0,  1, 0.925, 1.140, -4.750)
 light_color = Color(0.72, 0.82, 0.98, 1)
 light_energy = 1.1
 omni_range = 2.8

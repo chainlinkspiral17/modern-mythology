@@ -240,6 +240,29 @@ Position note: lamp omnis are placed AT the lamp-head mesh position
 
 
 
+### 2026-09-18 · ORPHAN PRACTICALS — the class, gated
+
+- **The two hand-finds were a class of forty-one.** `orphan_practical_
+  audit.py` asks the builder about every named practical: is there a
+  fixture standing where the light is? A first pass on the NAME alone
+  flagged 76 of 289; restricting the claim to fixture words (lamp,
+  bulb, pendant, chandelier, fluor, tube…) and accepting any fixture
+  of any name within 1.5 m of the light — the name is how a fixture
+  is found, not the question — left nine: lights with nothing under
+  them. Spills and glows (`Practical_Overhead`, `JukeboxGlow`,
+  `Forecourt`) are lighting decisions, not claims, and pass.
+- **Four bedrooms shared one light.** diego, jesse, kai and sam all
+  carried `Practical_DeskLamp` at blender (0.80, 1.70, 1.16) — the
+  dorm-room template's desk, in rooms that each have their own lamp
+  1.5–3 m away. Moved onto those lamps (and renamed for the geometry:
+  `Bedside_Lamp_Shade_Practical`), with Natalie's floor lamp onto her
+  scarf lamp and two fluorescents onto their tubes. Only the cafe had
+  no fixture at all — two pendants built (`furniture.make_pendant`:
+  canopy, cord, shade, bulb) with the bulbs where the lights were.
+- **The rule, now a gate:** when a light is named for a fixture, the
+  fixture must exist and be there; when a fixture is built, its light
+  moves with it. `orphan_practical_audit` runs in the suite at zero.
+
 ### 2026-09-17 · the cabin's fluorescents — derived practicals outlive the builder they came from
 
 - **The 08-02 derived practicals were right for the builder of that

@@ -142,9 +142,20 @@ def build_hero_props_2026_09():
     make_cyl("Hands_Cup_Ring", (-2.15, 1.02, 0.7615), 0.045, 0.003, (0.42, 0.34, 0.26, 1.0), segments=10)
 
 
+def build_pendants_2026_09():
+    """Two pendants the scene has lit since 08-02 with nothing hanging
+    there (orphan_practical_audit, 2026-09-18): one over the bar's
+    middle, one over the seating — bulbs where the practicals are,
+    canopies on the ceiling."""
+    from _props.furniture import make_pendant
+    make_pendant("BarPendant", 0.0, 4.80, 2.60, 3.10, shade_col=(0.18, 0.18, 0.20, 1.0), shade_r=0.17)
+    make_pendant("SeatingPendant", 0.0, 1.80, 2.60, 3.10, shade_col=(0.18, 0.18, 0.20, 1.0), shade_r=0.20)
+
+
 def main():
     clear_scene(); build_shell(); build_bar_counter(); build_seating(); build_pennants_and_decor(); build_ceiling_infra()
     build_hero_props_2026_09()
+    build_pendants_2026_09()
     out = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)), "../../../assets/3d/locales/cafe_olimpico.glb"))
     print(f"\n[build_cafe_olimpico] exporting to {out}")
     export_glb(out)

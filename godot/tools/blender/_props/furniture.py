@@ -129,6 +129,17 @@ def make_bench(prefix, x, y, length=1.6, yaw=0.0, wood=WOOD, h=0.45):
 _BED_STYLES = ("frame", "platform", "captain", "futon", "hospital")
 
 
+def make_pendant(prefix, x, y, bulb_z, ceil_z, shade_col=(0.30, 0.30, 0.32, 1.0), cord_col=(0.16, 0.16, 0.18, 1.0), shade_r=0.16):
+    """A pendant hung from the ceiling: canopy, cord, a shade that
+    flares down to its rim, the bulb below the shade's mouth at
+    `bulb_z` — put the practical there (2026-09-18: two cafe pendants
+    were lights with no fixture)."""
+    make_lathe(f"{prefix}_Canopy", (x, y, ceil_z - 0.03), [(0.06, 0.0), (0.06, 0.02), (0.02, 0.03), (0.0, 0.03)], shade_col, segments=10)
+    make_tube(f"{prefix}_Cord", [(x, y, ceil_z - 0.03), (x, y, bulb_z + 0.12)], 0.005, cord_col, segments=5)
+    make_lathe(f"{prefix}_Shade", (x, y, bulb_z - 0.02), [(shade_r, 0.0), (shade_r * 0.9, 0.02), (shade_r * 0.35, 0.14), (0.025, 0.16), (0.0, 0.16)], shade_col, segments=12)
+    make_lathe(f"{prefix}_Bulb", (x, y, bulb_z - 0.05), [(0.0, 0.0), (0.03, 0.01), (0.032, 0.04), (0.02, 0.06), (0.02, 0.07), (0.0, 0.07)], (0.98, 0.94, 0.80, 1.0), segments=8)
+
+
 def make_bed(prefix, x, y, head="+Y", w=1.4, d=2.0, style="frame",
              frame_col=WOOD, mattress_col=(0.90, 0.89, 0.85, 1.0), sheet_col=(0.93, 0.92, 0.88, 1.0),
              blanket_col=(0.38, 0.44, 0.54, 1.0), pillow_col=(0.94, 0.93, 0.90, 1.0),

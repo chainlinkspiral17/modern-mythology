@@ -1735,6 +1735,16 @@ rig: `contact_manifest.py` (the shot list, committed), `VnContactSheet
 `godot/qa/README.md`. Until it has run once, every framing in the game
 is still unseen.
 
+**2026-09-18 · LIGHTING · orphan practicals, gated.** The two hand-
+finds (fluorescents in the kerosene cabin, a desk lamp nobody built in
+Lena's) were a class: `orphan_practical_audit.py` found nine lights with
+no fixture — four bedrooms sharing one template desk-lamp position,
+Natalie's floor lamp, two fluorescents off their tubes, the cafe's two
+pendants that never existed. Seven moved onto their rooms' real lamps
+and tubes; the cafe's pendants built (`make_pendant`). Gate at zero in
+the suite. NEXT: `practical_author.py` planned 0 for the cabin's unlit
+lamp and lantern — find out why before the next rig pass.
+
 **2026-09-17 · DESIGN · the consequence map, and SKILLS EARN (draft 1).**
 The VN's game layer drawn for the first time (`consequence_map.py` →
 `lore/_VN_CONSEQUENCE_MAP.md`): 28 choices, 5 skill checks, 58 flags

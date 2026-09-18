@@ -276,6 +276,16 @@ echo ""
 # A skill check the reader cannot pass is a lie (2026-09-17): every
 # check's diff against what its skill can have been EARNED before that
 # scene in reading order; a volume that checks a skill it never trains.
+# A practical is a claim about a fixture (2026-09-18): every named
+# practical must have a fixture standing where the light is. Two rooms
+# lit fluorescents in a kerosene cabin and a desk lamp nobody built.
+echo "── orphan_practical_audit.py ──"
+OPOUT="$(python3 orphan_practical_audit.py 2>/dev/null | grep -v "^\[build_")" || {
+    echo "$OPOUT" | grep -E "^(ORPHAN|DRIFTED)" | head -20
+    echo "REGRESSION  orphan_practical_audit found a light with no fixture (ceiling 0)"; exit 1; }
+echo "$OPOUT" | tail -1
+echo ""
+
 echo "── vn_skill_audit.py ──"
 SKOUT="$(python3 vn_skill_audit.py 2>/dev/null)" || {
     echo "$SKOUT" | grep -vE "^\s*$" | head -20

@@ -168,14 +168,14 @@ shadow_enabled = false
 
 ; Warm amber pendant pools over the bar and the seating (blender bar
 ; y=5 → godot z=-5; tables y=1.8 → godot z=-1.8).
-[node name="Practical_BarPendant" type="OmniLight3D" parent="."]
+[node name="BarPendant_Practical" type="OmniLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.6, -4.8)
 light_color = Color(1.0, 0.78, 0.44, 1)
 light_energy = 1.4
 omni_range = 5.5
 shadow_enabled = false
 
-[node name="Practical_SeatingPendant" type="OmniLight3D" parent="."]
+[node name="SeatingPendant_Practical" type="OmniLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.6, -1.8)
 light_color = Color(1.0, 0.8, 0.48, 1)
 light_energy = 1.2

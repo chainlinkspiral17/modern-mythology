@@ -317,8 +317,10 @@ light_energy = 1.1
 shadow_enabled = false
 omni_range = 4.0
 
-[node name="Fluor1_Practical" type="OmniLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0, 2.4, -3.5)
+
+; moved onto its fixture by orphan_practical_audit (2026-09-18): the light stood off its tube
+[node name="Hall_A_Fluor_1_Practical" type="OmniLight3D" parent="."]
+transform = Transform3D(1,  0,  0,  0,  1,  0,  0,  0,  1, 0.000, 2.590, -6.000)
 light_color = Color(0.86, 0.92, 0.88, 1)
 light_energy = 1.1
 shadow_enabled = false
