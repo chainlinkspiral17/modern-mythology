@@ -373,3 +373,12 @@ metadata/fov = 45.0
 position = Vector3(-1.626, 1.612, -3.822)
 rotation = Vector3(-0.2618, -2.3562, 0.0)
 metadata/fov = 45.0
+
+; ── draft 4 (2026-09-18): the fairy string's wash, mid-string on the N wall ──
+; blender (0.0, 4.92, 2.05) → godot (0.0, 2.05, -4.92).
+[node name="Fairy_String_Practical" type="OmniLight3D" parent="."]
+position = Vector3(0.000, 2.050, -4.920)
+light_color = Color(1.000, 0.840, 0.600, 1)
+light_energy = 0.70
+shadow_enabled = false
+omni_range = 3.20

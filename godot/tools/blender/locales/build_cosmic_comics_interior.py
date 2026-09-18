@@ -392,26 +392,26 @@ def build_draft4_2026_09():
     tile_dk = (0.18, 0.15, 0.21, 1.0)
     wood_dk = (0.32, 0.22, 0.14, 1.0)
     # ── WEAR ──
-    make_traffic_wear("Wear_Path_Entry_Bins", [(0.0, 0.6), (0.0, 1.6), (-0.4, 2.3), (-1.2, 3.4)], width=0.55, tint=tile_dk)
-    make_traffic_wear("Wear_Path_Bins_Register", [(-1.2, 3.4), (0.6, 4.7), (1.8, 5.6), (2.4, 5.95)], width=0.50, tint=tile_dk)
-    make_traffic_wear("Wear_Path_Spinner", [(-1.2, 3.4), (-2.6, 3.8), (-3.2, 4.0)], width=0.36, tint=tile_dk)
-    make_box("Wear_Counter_Elbow", (ROOM_W/4.0 - 0.2, ROOM_D - 1.5 - 0.50, 0.952), (1.40, 0.06, 0.004), (0.24, 0.18, 0.26, 1.0))
-    make_floor_stain("Wear_Stool_Ring", (ROOM_W/4.0 - 0.7, ROOM_D - 2.6), radius=0.26, tint=tile_dk, segments=10)
+    make_traffic_wear("Wear_Path_Entry_A", [(0.0, 0.6), (0.0, 1.6), (-0.4, 2.3), (-1.2, 3.4)], width=0.55, tint=tile_dk)
+    make_traffic_wear("Wear_Path_B", [(-1.2, 3.4), (0.6, 4.7), (1.8, 5.6), (2.4, 5.95)], width=0.50, tint=tile_dk)
+    make_traffic_wear("Wear_Path_C", [(-1.2, 3.4), (-2.6, 3.8), (-3.2, 4.0)], width=0.36, tint=tile_dk)
+    make_box("Wear_Elbow_Strip", (ROOM_W/4.0 - 0.2, ROOM_D - 1.5 - 0.50, 0.952), (1.40, 0.06, 0.004), (0.24, 0.18, 0.26, 1.0))
+    make_floor_stain("Wear_Ring_Behind", (ROOM_W/4.0 - 0.7, ROOM_D - 2.6), radius=0.26, tint=tile_dk, segments=10)
     for ji, (ay, row_w, row_x) in enumerate(((2.75, 5.0, 0.0), (4.0, 5.0, 0.0), (5.4, 3.6, -0.7))):
-        make_scuff_band(f"Wear_Bin_{ji}_Kick", (row_x, ay - 0.26), row_w - 0.3, axis='X', height=0.06, band_z=0.04, tint=(0.22, 0.16, 0.10, 1.0))
-    make_box("Wear_Door_Push", (0.55, 0.055, 1.10), (0.16, 0.004, 0.22), (0.40, 0.38, 0.36, 1.0))
+        make_scuff_band(f"Wear_Kick_Row_{ji}", (row_x, ay - 0.26), row_w - 0.3, axis='X', height=0.06, band_z=0.04, tint=(0.22, 0.16, 0.10, 1.0))
+    make_box("Wear_Push_Plate", (0.55, 0.055, 1.10), (0.16, 0.004, 0.22), (0.40, 0.38, 0.36, 1.0))
     for ti, (tx, tz) in enumerate(((-4.0, 2.10), (-2.1, 2.05), (-3.9, 0.95))):
-        make_box(f"Wear_Window_TapeGhost_{ti}", (tx, 0.115, tz), (0.05, 0.002, 0.05), (0.62, 0.60, 0.52, 0.5))
+        make_box(f"Wear_TapeGhost_{ti}", (tx, 0.115, tz), (0.05, 0.002, 0.05), (0.62, 0.60, 0.52, 0.5))
     # ── D3 ──
     make_light_switch("Switch_Door", (1.30, 0.0), axis='X', face_sign=1, z=1.20, aged=True)
-    make_wall_outlet("Outlet_Register", (2.80, ROOM_D), axis='X', face_sign=-1, z=0.30, aged=True)
-    make_cord_run("Cord_Register", (ROOM_W/4.0 + 0.30, ROOM_D - 1.5 + 0.48, 0.95), (2.80, ROOM_D - 0.12, 0.30), sag=0.0)
+    make_wall_outlet("Outlet_N_1", (2.80, ROOM_D), axis='X', face_sign=-1, z=0.30, aged=True)
+    make_cord_run("Cord_1", (ROOM_W/4.0 + 0.30, ROOM_D - 1.5 + 0.48, 0.95), (2.80, ROOM_D - 0.12, 0.30), sag=0.0)
     # the CRT on its bracket in the NE corner, angled at the floor
     make_box("CRT_Bracket_Arm", (ROOM_W/2.0 - 0.30, ROOM_D - 0.30, 2.10), (0.40, 0.06, 0.06), P.METAL_BLACK)
     make_rot_box("CRT_Body", (ROOM_W/2.0 - 0.42, ROOM_D - 0.42, 2.02), (0.44, 0.40, 0.36), (0.30, 0.30, 0.32, 1.0), yaw=0.78, pitch=0.20)
     make_rot_box("CRT_Screen", (ROOM_W/2.0 - 0.58, ROOM_D - 0.58, 1.99), (0.34, 0.02, 0.28), (0.36, 0.52, 0.72, 1.0), yaw=0.78, pitch=0.20)
-    make_wall_outlet("Outlet_CRT", (ROOM_W/2.0, ROOM_D - 0.60), axis='Y', face_sign=-1, z=2.30, aged=True)
-    make_cord_run("Cord_CRT", (ROOM_W/2.0 - 0.36, ROOM_D - 0.36, 1.86), (ROOM_W/2.0 - 0.13, ROOM_D - 0.60, 2.30), sag=0.02)
+    make_wall_outlet("Outlet_E_1", (ROOM_W/2.0, ROOM_D - 0.60), axis='Y', face_sign=-1, z=2.30, aged=True)
+    make_cord_run("Cord_2", (ROOM_W/2.0 - 0.36, ROOM_D - 0.36, 1.86), (ROOM_W/2.0 - 0.13, ROOM_D - 0.60, 2.30), sag=0.02)
     # ── D5 · the street outside the front window ──
     make_box("Sidewalk", (0.0, -1.3, -0.06), (14.0, 2.4, 0.12), (0.62, 0.60, 0.56, 1.0))
     make_box("Curb", (0.0, -2.55, -0.08), (14.0, 0.12, 0.16), (0.55, 0.53, 0.50, 1.0))

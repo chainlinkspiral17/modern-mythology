@@ -303,20 +303,20 @@ def build_draft3_2026_09():
     floor_pale = (0.50, 0.38, 0.27, 1.0)
     cy = ROOM_D / 2.0
     # ── WEAR ──
-    make_traffic_wear("Wear_Path_Entry_Rocker", [(-0.9, 3.6), (-1.3, 2.6), (-1.5, 2.3)], width=0.45, tint=floor_dk)
-    make_traffic_wear("Wear_Path_Rocker_Screen", [(-1.3, 1.6), (-0.6, 0.9), (0.0, 0.5)], width=0.42, tint=floor_dk)
-    make_traffic_wear("Wear_Path_Entry_Wicker", [(-0.6, 3.6), (0.4, 3.5), (1.0, 3.35)], width=0.36, tint=floor_dk)
+    make_traffic_wear("Wear_Path_Entry_A", [(-0.9, 3.6), (-1.3, 2.6), (-1.5, 2.3)], width=0.45, tint=floor_dk)
+    make_traffic_wear("Wear_Path_B", [(-1.3, 1.6), (-0.6, 0.9), (0.0, 0.5)], width=0.42, tint=floor_dk)
+    make_traffic_wear("Wear_Path_Entry_C", [(-0.6, 3.6), (0.4, 3.5), (1.0, 3.35)], width=0.36, tint=floor_dk)
     for ri, rx in enumerate((-1.72, -1.28)):
-        make_box(f"Wear_Rocker_Arc_{ri}", (rx, cy, 0.006), (0.06, 0.95, 0.004), floor_pale)
-    make_cyl("Wear_Wicker_CupRing", (1.20 - 0.34, ROOM_D - 0.65 + 0.12, 0.626), 0.040, 0.003, (0.42, 0.30, 0.18, 1.0), segments=10)
-    make_cyl("Wear_SideTbl_Ring", (0.10, cy + 0.12, 0.462), 0.045, 0.003, (0.42, 0.30, 0.18, 1.0), segments=10)
-    make_scuff_band("Wear_Mat_Scuff", (0.0, 0.29), 0.80, axis='X', height=0.03, band_z=0.02, tint=(0.26, 0.19, 0.13, 1.0))
+        make_box(f"Wear_Arc_{ri}", (rx, cy, 0.006), (0.06, 0.95, 0.004), floor_pale)
+    make_cyl("Wear_CupRing_A", (1.20 - 0.34, ROOM_D - 0.65 + 0.12, 0.626), 0.040, 0.003, (0.42, 0.30, 0.18, 1.0), segments=10)
+    make_cyl("Wear_CupRing_B", (0.10, cy + 0.12, 0.462), 0.045, 0.003, (0.42, 0.30, 0.18, 1.0), segments=10)
+    make_scuff_band("Wear_Scuff_Threshold", (0.0, 0.29), 0.80, axis='X', height=0.03, band_z=0.02, tint=(0.26, 0.19, 0.13, 1.0))
     for bi, (bx, by) in enumerate(((2.45, 0.62), (2.30, 0.95), (2.52, 1.20), (2.36, 1.42))):
         make_rot_box(f"Bark_Litter_{bi}", (bx, by, 0.006), (0.05, 0.03, 0.01), (0.28, 0.19, 0.12, 1.0), yaw=0.7 * bi)
-    make_box("Screen_Patch_E", (ROOM_W / 2.0 + 0.012, 1.40, 1.50), (0.006, 0.30, 0.25), (0.50, 0.50, 0.46, 0.45))
-    make_floor_stain("Wear_Under_Plant", (ROOM_W / 2.0 - 0.55, ROOM_D - 0.6), radius=0.24, tint=(0.38, 0.27, 0.18, 1.0), segments=10)
+    make_box("Patch_Mesh_E", (ROOM_W / 2.0 + 0.012, 1.40, 1.50), (0.006, 0.30, 0.25), (0.50, 0.50, 0.46, 0.45))
+    make_floor_stain("Wear_Ring_Corner", (ROOM_W / 2.0 - 0.55, ROOM_D - 0.6), radius=0.24, tint=(0.38, 0.27, 0.18, 1.0), segments=10)
     # ── D3 ──
-    make_light_switch("Switch_Porch", (-0.25, ROOM_D), axis='X', face_sign=-1, z=1.20, aged=True)
+    make_light_switch("Switch_1", (-0.25, ROOM_D), axis='X', face_sign=-1, z=1.20, aged=True)
     make_cyl("Hose_Bib", (2.50, ROOM_D - 0.10, 0.45), 0.02, 0.12, (0.62, 0.60, 0.56, 1.0), axis='Y', segments=6)
     make_lathe("Hose_Bib_Handle", (2.50, ROOM_D - 0.18, 0.45), [(0.0, 0.0), (0.03, 0.0), (0.03, 0.008), (0.0, 0.008)], (0.70, 0.30, 0.24, 1.0), segments=8)
     hose = []

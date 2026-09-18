@@ -163,6 +163,12 @@ unseen.** The fifth room: the bulb's room with its wear and its wires;
 the two fluorescent practicals the prose never had are gone (the gate
 now matches fixture families). Next: maya_bedroom, sam_bedroom.
 
+**Status (2026-09-18, later) · maya_bedroom and sam_bedroom draft 4
+shipped, unseen.** Seven rooms deep now, in screen-time order; the vol 6
+bedrooms share one backyard helper. The cue-word rule generalized to
+every secondary object. Next: kwik_stop_interior (a model chapter —
+verify, not rebuild), centro_grocery_aisle, school_field_evening.
+
 **Draft targets, by volume, by uses:**
 - **Vol 7 (current):** `cabin_interior` (31) · `lena_apartment` (23)
   · `miller_back_porch` (12, shared with vol 6) · `salty_tome_alley`

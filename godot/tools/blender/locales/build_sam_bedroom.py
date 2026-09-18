@@ -3,19 +3,34 @@ and video games). Boyish BLUE/GREEN palette and a distinct prop set:
 a captain's bed with storage drawers, comic/movie posters, a shelf of
 comic longboxes + action figures, a CRT/TV + game console, a desk with
 sketches + a lamp, a beanbag, and model kits — so it reads as a
-comics-and-games kid's room, not a reskin of Maya's."""
+comics-and-games kid's room, not a reskin of Maya's.
+
+DRAFT 4 (2026-09-18, lore/_VISUAL_PROGRAM.md §3): turned desk legs and
+an apron, the clip lamp with a neck and a bulb, the kit chair facing
+the desk, one sat-in beanbag, the skateboard leaning on trucks and
+wheels, dresser pulls, the bedside lamp as base + shade profiles, the
+fan's pull chain; first WEAR (paths, the chair's patch, the forearm,
+the bed's kick, stickers and a peeled one on his door); D3 switch,
+power strip, five cords; D5 the backyard through the north window.
+
+DRAFT 5 targets: the action figures as figures (a pose each); the
+longboxes with lids; the CRT's bezel and a screen glow practical when
+the console is on; the curtains hung from rings; the laundry as
+clothes, not discs; Deck: the sheet's establish and `insert notebook`.
+"""
 import os, sys
 _BT = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)), ".."))
 if _BT not in sys.path: sys.path.insert(0, _BT)
 from _props import palette as P
-from _props.geometry import clear_scene, make_box, make_chamfer_box, make_cyl, export_glb
+from _props.geometry import (clear_scene, make_box, make_chamfer_box, make_cyl, make_lathe,
+                             make_tube, make_rot_box, export_glb)
 from _props.structure import make_floor, make_wall, make_ceiling, make_crown_molding, make_window
 from _props.store_fixtures import make_counter, make_counter_bullnose, make_register
 from _props.shelving import make_snack_aisle, make_endcap
 from _props.food_service import make_coffee_pots
 from _props.decor import make_wall_clock, make_floor_plant, make_faded_poster, make_calendar
 from _props.safety import make_smoke_detector, make_hvac_vent, make_fluorescent_tube_fixture
-from _props.furniture import make_bed
+from _props.furniture import make_bed, make_chair
 
 ROOM_W = 4.0; ROOM_D = 5.0; CEIL = 2.6
 # Denim-blue walls, lime-green accent — boyish, distinct from the girls'/others'.
@@ -49,13 +64,17 @@ def build_bed():
 
 def build_desk_lamp():
     dx, dy = +ROOM_W/4.0, ROOM_D - 0.45   # 13 cm off the N wall (2026-09-07: it stood mid-room)
-    make_box("Desk_Top", (dx, dy, 0.74), (1.00, 0.60, 0.04), COL_WOOD)
+    # draft 4 (2026-09-18): chamfered top, apron, turned legs; the clip
+    # lamp a weighted base, a column, a bent neck, a cone head
+    make_chamfer_box("Desk_Top", (dx, dy, 0.74), (1.00, 0.60, 0.04), COL_WOOD, chamfer=0.01)
+    make_box("Desk_Apron_F", (dx, dy-0.27, 0.68), (0.88, 0.02, 0.08), (0.32, 0.38, 0.32, 1.0))
     for i, (lx, ly) in enumerate([(-0.44, -0.26), (0.44, -0.26), (-0.44, 0.26), (0.44, 0.26)]):
-        make_box(f"Desk_Leg_{i}", (dx+lx, dy+ly, 0.37), (0.06, 0.06, 0.72), COL_WOOD)
-    # Clip lamp
-    make_cyl("Lamp_Base", (dx-0.34, dy+0.18, 0.78), 0.07, 0.03, P.METAL_BLACK)
-    make_cyl("Lamp_Col", (dx-0.34, dy+0.18, 0.98), 0.02, 0.40, P.METAL_BLACK)
-    make_cyl("Lamp_Head", (dx-0.24, dy+0.20, 1.16), 0.06, 0.10, COL_ACCENT)
+        make_lathe(f"Desk_Leg_{i}", (dx+lx, dy+ly, 0.0), [(0.025, 0.0), (0.032, 0.05), (0.022, 0.10), (0.028, 0.30), (0.034, 0.40), (0.024, 0.55), (0.024, 0.68), (0.03, 0.72)], COL_WOOD, segments=8)
+    make_lathe("Lamp_Base", (dx-0.34, dy+0.18, 0.76), [(0.07, 0.0), (0.065, 0.02), (0.03, 0.035), (0.02, 0.04), (0.0, 0.04)], P.METAL_BLACK, segments=10)
+    make_cyl("Lamp_Col", (dx-0.34, dy+0.18, 0.98), 0.014, 0.36, P.METAL_BLACK, segments=6)
+    make_tube("Lamp_Neck", [(dx-0.34, dy+0.18, 1.16), (dx-0.30, dy+0.19, 1.20), (dx-0.25, dy+0.20, 1.18)], 0.008, P.METAL_BLACK, segments=5)
+    make_lathe("Lamp_Head", (dx-0.24, dy+0.20, 1.11), [(0.0, 0.0), (0.03, 0.0), (0.065, 0.10), (0.06, 0.11), (0.0, 0.11)], COL_ACCENT, segments=10)
+    make_lathe("Lamp_Bulb", (dx-0.24, dy+0.20, 1.12), [(0.0, 0.0), (0.02, 0.005), (0.024, 0.03), (0.0, 0.05)], (0.98, 0.94, 0.80, 1.0), segments=8)
     # Chunky CRT monitor + keyboard
     make_chamfer_box("Monitor_Body", (dx+0.10, dy+0.14, 0.98), (0.42, 0.40, 0.38), (0.24, 0.24, 0.26, 1.0))
     make_box("Monitor_Screen", (dx+0.10, dy-0.06, 0.98), (0.34, 0.02, 0.28), (0.30, 0.52, 0.70, 1.0))
@@ -69,10 +88,7 @@ def build_desk_lamp():
         make_box(f"Sketch_{si}", (dx-0.28+si*0.10, dy+0.24, 0.767), (0.20, 0.26, 0.004), (0.92, 0.90, 0.84, 1.0))
     make_cyl("Pencil", (dx-0.05, dy+0.06, 0.762), 0.01, 0.18, (0.86, 0.72, 0.28, 1.0), axis='Y', segments=6)
     # Desk chair
-    make_box("Chair_Seat", (dx, dy-0.55, 0.46), (0.42, 0.42, 0.05), COL_WOOD)
-    make_box("Chair_Back", (dx, dy-0.74, 0.74), (0.42, 0.05, 0.46), COL_BLUE)
-    for i, (lx, ly) in enumerate([(-0.16, -0.16), (0.16, -0.16), (-0.16, 0.16), (0.16, 0.16)]):
-        make_box(f"Chair_Leg_{i}", (dx+lx, dy-0.55+ly, 0.23), (0.05, 0.05, 0.44), P.METAL_BLACK)
+    make_chair("Chair", dx+0.22, dy-0.66, yaw=0.55, wood=COL_WOOD, seat_col=COL_BLUE, w=0.42)   # draft 4: the kit chair, facing the desk
 
 def build_posters():
     # Comic / movie posters along the west wall
@@ -92,6 +108,7 @@ def build_ceiling_infra():
     # occupied its centreline are gone.
     make_cyl("Fan_Downrod", (0.0, 2.5, CEIL-0.10), 0.02, 0.20, P.METAL_BLACK, segments=6)
     make_cyl("Fan_Hub", (0.0, 2.5, CEIL-0.24), 0.11, 0.10, P.METAL_BLACK, segments=10)
+    make_tube("Fan_Pull_Chain", [(0.05, 2.5, CEIL-0.29), (0.06, 2.5, CEIL-0.56)], 0.003, (0.70, 0.70, 0.68, 1.0), segments=4)
     import math as _m
     for bi in range(5):
         ang = bi * (2.0 * _m.pi / 5.0)
@@ -135,12 +152,15 @@ def build_dressing():
     for mi in range(3):
         make_box(f"ModelKit_{mi}", (ROOM_W/2.0-0.4, 0.7, 0.12+mi*0.16), (0.42-mi*0.04, 0.30, 0.14), TINTS[(mi*2) % len(TINTS)])
     # Beanbag chair (squashed stack of discs)
-    for di in range(3):
-        make_cyl(f"Beanbag_{di}", (0.3, 1.1, 0.14+di*0.10), 0.42-di*0.08, 0.12, COL_ACCENT, segments=14)
+    make_lathe("Beanbag", (0.3, 1.1, 0.0), [(0.36, 0.0), (0.44, 0.06), (0.45, 0.16), (0.40, 0.26), (0.30, 0.34), (0.14, 0.40), (0.0, 0.41)], COL_ACCENT, segments=14)   # draft 4: one sat-in shape
+    make_lathe("Beanbag_Dent", (0.34, 1.06, 0.36), [(0.16, 0.0), (0.12, 0.02), (0.0, 0.03)], (0.38, 0.58, 0.32, 1.0), segments=12)
     # Skateboard leaning against the south wall
-    make_chamfer_box("Skateboard", (0.9, 0.15, 0.42), (0.20, 0.06, 0.80), COL_BLUE)
-    for wi, wz in enumerate([0.05, 0.74]):
-        make_cyl(f"Skate_Wheel_{wi}", (0.9, 0.10, wz), 0.05, 0.10, (0.86, 0.82, 0.30, 1.0), axis='X', segments=8)
+    # draft 4: the deck leans on the wall (tail on the floor), trucks and wheels on the room side
+    make_rot_box("Skateboard", (0.9, 0.21, 0.40), (0.20, 0.02, 0.80), COL_BLUE, pitch=0.28)
+    for wi, (wy, wz) in enumerate(((0.26, 0.16), (0.33, 0.66))):
+        make_box(f"Skate_Truck_{wi}", (0.9, wy, wz), (0.16, 0.05, 0.025), P.METAL_STEEL)
+        for sgn in (-1, 1):
+            make_cyl(f"Skate_Wheel_{wi}_{sgn:+d}", (0.9 + sgn * 0.09, wy + 0.03, wz), 0.025, 0.02, (0.86, 0.82, 0.30, 1.0), axis='X', segments=8)
     # Laundry pile in the corner
     for li, (lc, lz) in enumerate([((0.30, 0.44, 0.62, 1.0), 0.06), ((0.46, 0.60, 0.36, 1.0), 0.14), ((0.24, 0.36, 0.52, 1.0), 0.20)]):
         make_cyl(f"Laundry_{li}", (-ROOM_W/2.0+0.5, 0.6, lz), 0.24-li*0.04, 0.10, lc, segments=10)
@@ -164,14 +184,15 @@ def build_hero_props():
     make_chamfer_box("Dresser", (1.62, 2.45, 0.42), (0.50, 1.00, 0.84), (0.46, 0.34, 0.22, 1.0))
     for di in range(3):
         make_box(f"Dresser_Drawer_{di}", (1.36, 2.45, 0.20 + di * 0.26), (0.02, 0.86, 0.20), (0.38, 0.28, 0.18, 1.0))
+        make_lathe(f"Dresser_Pull_{di}", (1.35, 2.45, 0.19 + di * 0.26), [(0.0, 0.0), (0.012, 0.0), (0.014, 0.01), (0.008, 0.02), (0.0, 0.02)], (0.60, 0.56, 0.42, 1.0), segments=8)
     make_box("Sams_Phone", (1.62, 2.0, 0.855), (0.08, 0.15, 0.012), (0.12, 0.12, 0.14, 1.0))
     # Closet bi-fold in the S wall east segment
     for ci, cx in enumerate((1.10, 1.60)):
         make_box(f"Closet_Leaf_{ci}", (cx, 0.10, 1.05), (0.48, 0.05, 2.10), (0.82, 0.80, 0.74, 1.0))
     # Bedside lamp on the nightstand
-    make_cyl("Bedside_Lamp_Base", (-0.05, 3.2, 0.62), 0.08, 0.03, (0.42, 0.30, 0.18, 1.0), segments=10)
-    make_cyl("Bedside_Lamp_Post", (-0.05, 3.2, 0.74), 0.015, 0.22, (0.20, 0.19, 0.20, 1.0), segments=6)
-    make_cyl("Bedside_Lamp_Shade", (-0.05, 3.2, 0.88), 0.11, 0.16, (0.86, 0.78, 0.62, 1.0), segments=10)
+    make_lathe("Bedside_Lamp_Base", (-0.05, 3.2, 0.60), [(0.08, 0.0), (0.075, 0.02), (0.04, 0.03), (0.03, 0.05), (0.02, 0.08), (0.03, 0.10), (0.018, 0.12), (0.0, 0.12)], (0.42, 0.30, 0.18, 1.0), segments=10)
+    make_cyl("Bedside_Lamp_Post", (-0.05, 3.2, 0.74), 0.012, 0.16, (0.20, 0.19, 0.20, 1.0), segments=6)
+    make_lathe("Bedside_Lamp_Shade", (-0.05, 3.2, 0.80), [(0.08, 0.0), (0.12, 0.16), (0.0, 0.16)], (0.86, 0.78, 0.62, 1.0), segments=12)
 
 
 def build_hero_props_2026_09():
@@ -203,6 +224,43 @@ def build_hero_props_2026_09():
              (0.24, 0.28, 0.52, 1.0), axis='Y', segments=6)
 
 
+def build_draft4_2026_09():
+    """DRAFT 4 (2026-09-18, lore/_VISUAL_PROGRAM.md §3; 9 placements).
+    The room's first WEAR (door to bed to desk; the chair's patch; the
+    forearm at the desk; the bed's kick scuff; sticker residue on his
+    door; the beanbag's floor ring), D3 (the switch, a power strip under
+    the desk for the monitor and console, cords from the desk lamp and
+    the bedside lamp), D5 (the backyard through the north window — the
+    same yard the porch looks at, from the other side of the house).
+    """
+    from _props.detail import make_traffic_wear, make_floor_stain, make_scuff_band, make_light_switch, make_wall_outlet, make_cord_run, make_backyard_view
+    floor_dk = (0.50, 0.50, 0.53, 1.0)
+    bx, by = -ROOM_W/4.0, ROOM_D - 0.15 - 0.92
+    dx, dy = +ROOM_W/4.0, ROOM_D - 0.45
+    # ── WEAR ──
+    make_traffic_wear("Wear_Path_Entry_A", [(0.0, 0.5), (-0.3, 1.6), (-0.6, 2.6), (-0.7, 3.2)], width=0.42, tint=floor_dk)
+    make_traffic_wear("Wear_Path_Entry_B", [(0.2, 1.4), (0.7, 2.6), (1.0, 3.6)], width=0.36, tint=floor_dk)
+    make_floor_stain("Wear_Patch_Seat", (dx+0.1, dy - 0.58), radius=0.32, tint=(0.46, 0.46, 0.49, 1.0), segments=10)
+    make_floor_stain("Wear_Ring_Floor", (0.3, 1.1), radius=0.48, tint=(0.54, 0.54, 0.57, 1.0), segments=12)
+    make_box("Wear_Forearm", (dx - 0.05, dy - 0.24, 0.762), (0.36, 0.08, 0.004), (0.48, 0.54, 0.48, 1.0))
+    make_scuff_band("Wear_Kick_Foot", (bx, by - 0.92), 1.10, axis='X', height=0.05, band_z=0.06, tint=(0.32, 0.36, 0.32, 1.0))
+    for si, (sx_, sz_, sc_) in enumerate(((-0.12, 1.32, (0.44, 0.66, 0.36, 1.0)), (0.06, 1.44, (0.24, 0.42, 0.66, 1.0)), (0.18, 1.28, (0.86, 0.82, 0.30, 1.0)), (-0.22, 1.50, (0.72, 0.30, 0.28, 1.0)))):
+        make_box(f"Sticker_{si}", (sx_, 0.087, sz_), (0.06, 0.002, 0.06), sc_)
+    make_box("Sticker_Residue", (0.24, 0.086, 1.40), (0.05, 0.001, 0.05), (0.80, 0.78, 0.72, 1.0))
+    # ── D3 ──
+    make_light_switch("Switch_Door", (0.70, 0.0), axis='X', face_sign=1, z=1.20, aged=True)
+    make_box("Power_Strip", (dx + 0.20, dy + 0.22, 0.03), (0.30, 0.06, 0.04), (0.86, 0.86, 0.82, 1.0))
+    make_wall_outlet("Outlet_N_1", (dx + 0.20, ROOM_D), axis='X', face_sign=-1, z=0.30, aged=True)
+    make_cord_run("Cord_1", (dx + 0.20, dy + 0.25, 0.03), (dx + 0.20, ROOM_D - 0.12, 0.30), sag=0.0)
+    make_cord_run("Cord_2", (dx + 0.10, dy + 0.34, 0.80), (dx + 0.12, dy + 0.22, 0.05), sag=0.03)
+    make_cord_run("Cord_3", (dx - 0.30, dy - 0.06, 0.77), (dx + 0.06, dy + 0.22, 0.05), sag=0.03)
+    make_cord_run("Cord_4", (dx - 0.34, dy + 0.22, 0.76), (dx + 0.08, dy + 0.22, 0.05), sag=0.03)
+    make_wall_outlet("Outlet_N_2", (0.30, ROOM_D), axis='X', face_sign=-1, z=0.30, aged=True)
+    make_cord_run("Cord_5", (-0.05, 3.28, 0.60), (0.30, ROOM_D - 0.12, 0.30), sag=0.02)
+    # ── D5 · the backyard through the north window ──
+    make_backyard_view("Yard", ROOM_D, span=6.0, tree=(2.6, 3.0))
+
+
 def main():
     clear_scene()
     build_shell()
@@ -215,6 +273,7 @@ def main():
     build_dressing()
     build_hero_props()
     build_hero_props_2026_09()
+    build_draft4_2026_09()
     out = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)),
         "../../../assets/3d/locales/sam_bedroom.glb"))
     print(f"\n[build_sam_bedroom] exporting to {out}")

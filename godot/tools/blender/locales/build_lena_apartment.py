@@ -600,25 +600,25 @@ def build_draft4_2026_09():
     from _props.detail import make_wall_outlet, make_light_switch, make_cord_run
     # ── the floor lamp, east of the couch, cord to the E wall ──
     make_lamp("Floor_Lamp", 1.88, 3.95, base_z=0.0, h=1.45, shade_col=(0.90, 0.84, 0.70, 1.0))
-    make_wall_outlet("Outlet_E_Lamp", (ROOM_W / 2.0, 3.00), axis='Y', face_sign=-1, z=0.30, aged=True)
-    make_cord_run("Cord_Floor_Lamp", (1.92, 3.95, 0.03), (ROOM_W / 2.0 - 0.13, 3.00, 0.30), sag=0.02)
+    make_wall_outlet("Outlet_E_1", (ROOM_W / 2.0, 3.00), axis='Y', face_sign=-1, z=0.30, aged=True)
+    make_cord_run("Cord_1", (1.92, 3.95, 0.03), (ROOM_W / 2.0 - 0.13, 3.00, 0.30), sag=0.02)
     # ── the switch by the door (S wall, east of the door) ──
     make_light_switch("Switch_Door", (1.15, 0.0), axis='X', face_sign=1, z=1.20, aged=True)   # on Wall_S_E (the opening runs x -1..1)
     # ── the space heater's cord to the E wall ──
-    make_wall_outlet("Outlet_E_Heater", (ROOM_W / 2.0, 2.60), axis='Y', face_sign=-1, z=0.30, aged=True)
-    make_cord_run("Cord_Heater", (1.21, 2.90, 0.10), (ROOM_W / 2.0 - 0.13, 2.60, 0.30), sag=0.04)
+    make_wall_outlet("Outlet_E_2", (ROOM_W / 2.0, 2.60), axis='Y', face_sign=-1, z=0.30, aged=True)
+    make_cord_run("Cord_2", (1.21, 2.90, 0.10), (ROOM_W / 2.0 - 0.13, 2.60, 0.30), sag=0.04)
     # ── the fairy lights' cord down the N wall's east end ──
-    make_wall_outlet("Outlet_E_Fairy", (ROOM_W / 2.0, 4.75), axis='Y', face_sign=-1, z=0.30, aged=True)
-    make_cord_run("Cord_Fairy", (1.62, ROOM_D - 0.10, 2.05), (ROOM_W / 2.0 - 0.13, 4.75, 0.30), sag=0.0)
+    make_wall_outlet("Outlet_E_3", (ROOM_W / 2.0, 4.75), axis='Y', face_sign=-1, z=0.30, aged=True)
+    make_cord_run("Cord_3", (1.62, ROOM_D - 0.10, 2.05), (ROOM_W / 2.0 - 0.13, 4.75, 0.30), sag=0.0)
     # ── the fridge, plugged in behind its own north flank ──
-    make_wall_outlet("Outlet_E_Fridge", (ROOM_W / 2.0, 0.98), axis='Y', face_sign=-1, z=0.30, aged=True)
-    make_cord_run("Cord_Fridge", (2.40, 0.89, 0.12), (ROOM_W / 2.0 - 0.13, 0.98, 0.30), sag=0.0)
+    make_wall_outlet("Outlet_E_4", (ROOM_W / 2.0, 0.98), axis='Y', face_sign=-1, z=0.30, aged=True)
+    make_cord_run("Cord_4", (2.40, 0.89, 0.12), (ROOM_W / 2.0 - 0.13, 0.98, 0.30), sag=0.0)
     # ── one over the counter with nothing in it (the grinder is a hand grinder) ──
-    make_wall_outlet("Outlet_W_Counter", (-ROOM_W / 2.0, 2.05), axis='Y', face_sign=1, z=1.10, aged=True)
+    make_wall_outlet("Outlet_W_1", (-ROOM_W / 2.0, 2.05), axis='Y', face_sign=1, z=1.10, aged=True)
     # ── BEDROOM WEAR · her side of the bed ──
     bx, by = -1.0, ROOM_D - 0.99
-    make_chamfer_box("Wear_Duvet_HerSide", (bx - 0.36, by + 0.05, 0.5935), (0.56, 0.95, 0.004), (0.66, 0.42, 0.48, 1.0), chamfer=0.002)
-    make_cyl("Wear_Nightstand_CupRing", (bx + 1.02, by + 0.60, 0.603), 0.040, 0.003, (0.36, 0.25, 0.15, 1.0), segments=10)
+    make_chamfer_box("Wear_HerSide", (bx - 0.36, by + 0.05, 0.5935), (0.56, 0.95, 0.004), (0.66, 0.42, 0.48, 1.0), chamfer=0.002)
+    make_cyl("Wear_CupRing_N", (bx + 1.02, by + 0.60, 0.603), 0.040, 0.003, (0.36, 0.25, 0.15, 1.0), segments=10)
     make_rot_box("Slipper_L", (-1.98, 3.42, 0.03), (0.10, 0.26, 0.06), (0.52, 0.40, 0.36, 1.0), yaw=0.22)
     make_rot_box("Slipper_R", (-1.84, 3.40, 0.03), (0.10, 0.26, 0.06), (0.52, 0.40, 0.36, 1.0), yaw=-0.12)
 

@@ -383,3 +383,31 @@ def make_road_bend(prefix, x0, y0, heading0, turn_deg, arc_len, run_len, width,
                  (left(b2[0], b2[1], mh, 0.05)[0] - cx, left(b2[0], b2[1], mh, 0.05)[1] - cy), (left(a2[0], a2[1], mh, 0.05)[0] - cx, left(a2[0], a2[1], mh, 0.05)[1] - cy)]
             make_prism(f"{prefix}_Dash_{i}", (cx, cy, z + 0.022), q, 0.005, line, axis="Z")
     return pts[-1]
+
+def make_backyard_view(prefix, wall_y, span=6.0, tree=(-2.6, 3.4), fence_dist=4.2,
+                       grass=(0.40, 0.48, 0.28, 1.0), fence_wood=(0.52, 0.46, 0.38, 1.0)):
+    """D5 for a bedroom window on a back wall at `wall_y` (blender +Y
+    beyond it): a strip of lawn, a board fence at `fence_dist` with
+    posts and two rails, one tree (a tapered trunk under a blob
+    canopy) and a neighbour's roofline past the fence — so the window
+    frames a yard and not the world's edge (2026-09-18, the vol 6
+    bedrooms)."""
+    from .geometry import make_box, make_lathe, make_taper_cyl, make_blob
+    make_box(f"{prefix}_Lawn", (0.0, wall_y + fence_dist / 2.0 + 0.3, -0.03), (span * 2.0 + 4.0, fence_dist + 0.6, 0.05), grass)
+    fy = wall_y + fence_dist
+    n = int((span * 2.0) / 1.8) + 1
+    for i in range(n):
+        px = -span + i * 1.8
+        make_lathe(f"{prefix}_FencePost_{i}", (px, fy, 0.0), [(0.05, 0.0), (0.05, 1.6), (0.03, 1.68), (0.0, 1.68)], fence_wood, segments=6)
+    for ri, rz in enumerate((0.45, 1.25)):
+        make_box(f"{prefix}_FenceRail_{ri}", (0.0, fy - 0.04, rz), (span * 2.0, 0.04, 0.09), fence_wood)
+    nb = int((span * 2.0) / 0.16)
+    for bi in range(nb):
+        bx = -span + 0.08 + bi * 0.16
+        make_box(f"{prefix}_FenceBoard_{bi}", (bx, fy - 0.085, 0.80), (0.14, 0.02, 1.55),
+                 fence_wood if bi % 5 else (fence_wood[0] * 0.9, fence_wood[1] * 0.9, fence_wood[2] * 0.9, 1.0))
+    tx, ty = tree
+    make_taper_cyl(f"{prefix}_TreeTrunk", (tx, wall_y + ty, 1.4), 0.16, 0.10, 2.8, (0.38, 0.30, 0.22, 1.0), segments=8)
+    make_blob(f"{prefix}_TreeCanopy", (tx, wall_y + ty, 3.9), 1.7, (0.30, 0.42, 0.24, 1.0), noise=0.22, seed=17, squash=0.8)
+    make_far_bands(f"{prefix}_Far", (0.46, 0.42, 0.40, 1.0), [(fence_dist + 9.0, span + 6.0, 4.0, 0.85), (fence_dist + 16.0, span + 10.0, 5.5, 0.7)],
+                   sides="N", cy=wall_y, profile="roofline")

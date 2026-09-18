@@ -485,6 +485,26 @@ The visual program's first background pass (lore/_VISUAL_PROGRAM.md
   added to the safe's door stood behind the longbox stack from the
   `insert safe` lens and became the insert's subject — dropped; a new
   part on a cued object is a new subject for the cue's marker.
+- **Maya's and Sam's bedrooms, draft 4 (2026-09-18), the same day.**
+  Turned desk legs and aprons, real lamps (weighted base, neck, cone
+  head, bulb), pulls on every drawer, Maya's perfume bottles as
+  bottles and her record player with a record and a tonearm, her
+  hamper a lidded basket, HER DOOR (the shell had an opening and no
+  leaf — stickers on it); Sam's kit chair, one sat-in beanbag, the
+  skateboard leaning on trucks and wheels, the fan's pull chain.
+  First wear in both; a switch, outlets and five cords each; and the
+  backyard through both north windows from one new helper
+  (`detail.make_backyard_view`: lawn, board fence, a tree, a
+  roofline) — the vol 6 bedrooms all look at the same yard.
+- **The cue-word rule is general, and it is about every SECONDARY
+  object.** `Cord_Laptop` joined the laptop's cluster and dragged its
+  centre to the floor, so the desk top stood between the lens and the
+  laptop; a kit chair's back rail stood between the lens and the
+  monitor after the chair got taller. Cords, outlets, switches, wear,
+  stickers and patches are now named `Cord_1`, `Outlet_N_1`,
+  `Wear_Forearm`, `Sticker_0` — never for the thing they serve — in
+  all seven rooms this week; and a chair that stands in a cue's line
+  gets pushed out and turned, the way a chair is left.
 - **A wear object must not carry a cue word.** `Wear_Path_Door_Bins`
   made `[shot:insert door]` resolve to a floor stain, and the marker
   gate reported the door insert OCCLUDED by a comic. Wear, stains and

@@ -219,7 +219,7 @@ def build_stove_corner():
                [(0.15, 0.0), (0.13, 0.03), (0.06, 0.05), (0.045, 0.16), (0.06, 0.24), (0.04, 0.34), (0.05, 0.48), (0.07, 0.52)],
                COL_WOOD, segments=10)
     # A tin of matches on the side table, by the stick's spot
-    make_box("SideTable_MatchTin", (1.72, 5.06, 0.57), (0.06, 0.04, 0.02), (0.62, 0.58, 0.44, 1.0))
+    make_box("MatchTin", (1.72, 5.06, 0.57), (0.06, 0.04, 0.02), (0.62, 0.58, 0.44, 1.0))
     # The two armchairs, at the stove where the prose puts them —
     # upholstered: a chamfered cushion on a plinth, rolled arms, the
     # back's crest a soft edge, four turned feet under it all.

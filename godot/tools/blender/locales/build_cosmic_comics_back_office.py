@@ -304,30 +304,30 @@ def build_draft4_2026_09():
     dx, dy = 0.0 + DESK_DX, ROOM_D-1.5 + DESK_DY
     ch_x, ch_y = 0.0 + DESK_DX, 2.7 + DESK_DY
     # ── WEAR ──
-    make_traffic_wear("Wear_Path_Entry_Chair", [(0.0, 0.5), (-0.2, 1.6), (-0.35, 2.9), (ch_x, ch_y - 0.45)], width=0.45, tint=floor_dk)
-    make_traffic_wear("Wear_Path_Entry_Coffee", [(-0.2, 0.9), (-0.9, 1.15), (-1.15, 1.4)], width=0.34, tint=floor_dk)
+    make_traffic_wear("Wear_Path_Entry_A", [(0.0, 0.5), (-0.2, 1.6), (-0.35, 2.9), (ch_x, ch_y - 0.45)], width=0.45, tint=floor_dk)
+    make_traffic_wear("Wear_Path_Entry_B", [(-0.2, 0.9), (-0.9, 1.15), (-1.15, 1.4)], width=0.34, tint=floor_dk)
     make_floor_stain("Wear_Caster_Oval", (ch_x, ch_y + 0.05), radius=0.42, tint=(0.46, 0.38, 0.30, 1.0), segments=12)
-    make_box("Wear_Desk_Forearm", (dx + 0.10, dy - 0.32, 0.762), (0.42, 0.10, 0.004), (0.52, 0.40, 0.28, 1.0))
+    make_box("Wear_Forearm", (dx + 0.10, dy - 0.32, 0.762), (0.42, 0.10, 0.004), (0.52, 0.40, 0.28, 1.0))
     for ri, (rx, ry) in enumerate(((-1.72, 0.85), (-1.62, 1.18), (-1.15, 1.22))):
-        make_cyl(f"Wear_Filing_Ring_{ri}", (rx, ry, 1.303), 0.04, 0.003, (0.42, 0.30, 0.20, 1.0), segments=10)
-    make_box("Wear_LightTable_Ink", (-1.5 + 0.20, 2.6 - 0.30, 0.822), (0.08, 0.05, 0.002), (0.12, 0.12, 0.16, 1.0))
+        make_cyl(f"Wear_Ring_W_{ri}", (rx, ry, 1.303), 0.04, 0.003, (0.42, 0.30, 0.20, 1.0), segments=10)
+    make_box("Wear_Ink_Spot", (-1.5 + 0.20, 2.6 - 0.30, 0.822), (0.08, 0.05, 0.002), (0.12, 0.12, 0.16, 1.0))
     for hi, (hx, hz) in enumerate(((-0.62, 1.95), (-0.55, 1.35), (0.25, 1.98), (0.62, 1.30), (0.05, 1.25))):
-        make_cyl(f"Wear_Cork_Hole_{hi}", (hx, 4.79, hz), 0.004, 0.006, (0.30, 0.22, 0.14, 1.0), axis='Y', segments=4)
-    make_scuff_band("Wear_LongBox_Kick", (1.55, 1.45), 0.7, axis='Y', height=0.05, band_z=0.02, tint=(0.38, 0.30, 0.22, 1.0))
+        make_cyl(f"Wear_PinHole_{hi}", (hx, 4.79, hz), 0.004, 0.006, (0.30, 0.22, 0.14, 1.0), axis='Y', segments=4)
+    make_scuff_band("Wear_Kick_E", (1.55, 1.45), 0.7, axis='Y', height=0.05, band_z=0.02, tint=(0.38, 0.30, 0.22, 1.0))
     # ── D3 ──
     make_box("Power_Strip", (dx - 0.20, dy + 0.30, 0.03), (0.30, 0.06, 0.04), (0.86, 0.86, 0.82, 1.0))
     for si in range(4):
         make_box(f"Power_Strip_Socket_{si}", (dx - 0.31 + si * 0.07, dy + 0.30, 0.052), (0.03, 0.03, 0.004), (0.30, 0.30, 0.30, 1.0))
-    make_wall_outlet("Outlet_N_Desk", (dx - 0.20, ROOM_D), axis='X', face_sign=-1, z=0.30, aged=True)
-    make_cord_run("Cord_Strip", (dx - 0.20, dy + 0.33, 0.03), (dx - 0.20, ROOM_D - 0.12, 0.30), sag=0.0)
-    make_cord_run("Cord_Monitor", (dx, dy + 0.22, 0.78), (dx - 0.20, dy + 0.30, 0.05), sag=0.05)
-    make_cord_run("Cord_DeskLamp", (-0.65 + DESK_DX + 0.05, 3.75 + DESK_DY + 0.03, 0.80), (dx - 0.27, dy + 0.30, 0.05), sag=0.05)
-    make_wall_outlet("Outlet_W_Coffee", (-ROOM_W/2.0, 0.85), axis='Y', face_sign=1, z=1.45, aged=True)
-    make_cord_run("Cord_Coffee", (-1.31, 1.0, 1.36), (-ROOM_W/2.0 + 0.13, 0.85, 1.45), sag=0.03)
-    make_wall_outlet("Outlet_W_LightTable", (-ROOM_W/2.0, 2.95), axis='Y', face_sign=1, z=0.30, aged=True)
-    make_cord_run("Cord_LightTable", (-1.75, 2.9, 0.74), (-ROOM_W/2.0 + 0.13, 2.95, 0.30), sag=0.02)
-    make_wall_outlet("Outlet_E_Fridge", (ROOM_W/2.0, 1.10), axis='Y', face_sign=-1, z=0.30, aged=True)
-    make_cord_run("Cord_Fridge", (1.92, 0.95, 0.10), (ROOM_W/2.0 - 0.13, 1.10, 0.30), sag=0.0)
+    make_wall_outlet("Outlet_N_1", (dx - 0.20, ROOM_D), axis='X', face_sign=-1, z=0.30, aged=True)
+    make_cord_run("Cord_1", (dx - 0.20, dy + 0.33, 0.03), (dx - 0.20, ROOM_D - 0.12, 0.30), sag=0.0)
+    make_cord_run("Cord_2", (dx, dy + 0.22, 0.78), (dx - 0.20, dy + 0.30, 0.05), sag=0.05)
+    make_cord_run("Cord_3", (-0.65 + DESK_DX + 0.05, 3.75 + DESK_DY + 0.03, 0.80), (dx - 0.27, dy + 0.30, 0.05), sag=0.05)
+    make_wall_outlet("Outlet_W_1", (-ROOM_W/2.0, 0.85), axis='Y', face_sign=1, z=1.45, aged=True)
+    make_cord_run("Cord_4", (-1.31, 1.0, 1.36), (-ROOM_W/2.0 + 0.13, 0.85, 1.45), sag=0.03)
+    make_wall_outlet("Outlet_W_2", (-ROOM_W/2.0, 2.95), axis='Y', face_sign=1, z=0.30, aged=True)
+    make_cord_run("Cord_5", (-1.75, 2.9, 0.74), (-ROOM_W/2.0 + 0.13, 2.95, 0.30), sag=0.02)
+    make_wall_outlet("Outlet_E_1", (ROOM_W/2.0, 1.10), axis='Y', face_sign=-1, z=0.30, aged=True)
+    make_cord_run("Cord_6", (1.92, 0.95, 0.10), (ROOM_W/2.0 - 0.13, 1.10, 0.30), sag=0.0)
 
 
 def main():
