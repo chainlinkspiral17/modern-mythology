@@ -373,3 +373,12 @@ metadata/fov = 45.0
 position = Vector3(-1.494, 1.612, -1.276)
 rotation = Vector3(-0.2618, -1.0472, 0.0)
 metadata/fov = 45.0
+
+; ── draft 3 (2026-09-18): the house window's spill onto the porch ──
+; HouseWin_Glow at blender (1.60, 3.92, 1.60) → godot (1.60, 1.60, -3.92). Tungsten through glass.
+[node name="HouseWin_Glow_Practical" type="OmniLight3D" parent="."]
+position = Vector3(1.600, 1.600, -3.850)
+light_color = Color(0.950, 0.780, 0.500, 1)
+light_energy = 1.20
+shadow_enabled = false
+omni_range = 3.50

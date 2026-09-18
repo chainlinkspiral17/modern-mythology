@@ -454,6 +454,18 @@ The visual program's first background pass (lore/_VISUAL_PROGRAM.md
   shared bed. The switch first landed in the door opening (x 0.65;
   the opening runs −1..1) — a plate belongs on a wall segment, and the
   shell's own numbers say where those are.
+- **The Millers' porch, draft 3 (2026-09-18): a draft-2 set has props
+  and no history.** Turned balusters on a bottom rail, the rocker on
+  curved runners (a `make_tube` arc, legs down to it), the wicker's
+  weave as alternating bands, a globe lamp on its canopy, the pickup
+  from the vehicle kit. Then the three passes the set had never had:
+  WEAR (three worn paths to the porch's three destinations, the
+  runners' pale arcs, cup rings, the mat's scuff, bark litter), D3
+  (the porch light's switch, the fan's pull chain, a hose bib with
+  its coil — a 25-point `make_tube` spiral), D5 (wire fences down
+  both property lines, a treeline past the yard so the screens look
+  at something). A rocker's cross-stretcher between no legs floated
+  the same way the table's did: rails go leg to leg.
 - **Draft 6 is in the builder's docstring** (the loft, the counter's
   face, the seven chairs told apart) and the contact sheet decides
   what draft 7 is.

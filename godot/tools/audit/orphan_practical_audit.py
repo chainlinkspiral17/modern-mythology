@@ -14,7 +14,9 @@ For every locale scene, run its builder through the audit recorder
 and, for every named practical:
   · ORPHAN  — no object the builder emits matches the fixture name;
   · DRIFTED — the nearest matching object is more than DRIFT metres
-    from the light (the fixture moved; the light did not).
+    from the light (the fixture moved; the light did not);
+  · DUPLICATE — two root nodes in the scene share a name (Godot renames
+    the second on load; a light lit twice, a marker found once).
 Unnamed practicals (a `Sodium_S`, a `DiningRoomGlow`) are not claims
 and are not checked.
 
@@ -104,6 +106,15 @@ def main():
         if only and locale not in only:
             continue
         src = open(tscn, encoding="utf-8").read()
+        # DUPLICATE root node names: Godot renames the second on load
+        # with a warning, and a rename that collides with a light the
+        # practical author already placed lights one fixture twice
+        # (2026-09-18: six scenes, all from one careless rename).
+        from collections import Counter
+        root_names = Counter(re.findall(r'^\[node name="([^"]+)" type="[^"]+" parent="\."', src, re.M))
+        for rn, k in root_names.items():
+            if k > 1:
+                problems.append(("DUPLICATE", locale, rn, "%d root nodes share the name" % k))
         lights = [(m.group(1), m.group(3)) for m in LIGHT_RX.finditer(src)]
         named = [(n, b) for n, b in lights if practical_stem(n)]
         if not named:

@@ -291,11 +291,13 @@ Position note: lamp omnis are placed AT the lamp-head mesh position
   through the sink window (1.0). Rule, now twice-earned: a practical
   is a claim about a fixture — grep the builder for the fixture before
   trusting the light.
-- **`practical_author.py --dry cabin_interior` planned 0** with the
-  tubes removed and the lamp and lantern standing there unlit — its
-  fixture vocabulary or its near-light test missed them; authored by
-  hand from the bed scene's values. NEXT: find out which, before the
-  next rig pass leans on it.
+- **`practical_author.py --dry cabin_interior` planned 0 — because it
+  had already lit the lamp and the lantern on 09-11, at the FILE'S
+  TAIL, below the markers.** The fluorescents were the visible lights;
+  the kerosene ones were there all along, and the hand-authored copies
+  duplicated them (caught the next day by the DUPLICATE check in
+  `orphan_practical_audit`). Read the whole .tscn's light list, not
+  the first screen of it, before authoring a practical.
 
 ### 2026-08-02 · practicals-from-build-scripts · the zero-practical four
 

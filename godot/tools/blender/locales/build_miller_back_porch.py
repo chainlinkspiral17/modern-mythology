@@ -5,6 +5,22 @@ chair from Lubbock, the crepe myrtle in the yard corner, the door
 to the house, steps down to the browning yard, and (vol7) the
 smokers' tin + Eddvard's thumb-sized carved cedar on the rail.
 
+DRAFT 3 (2026-09-18, lore/_VISUAL_PROGRAM.md §3): the primitive
+upgrade — turned balusters on a bottom rail, the rocker on curved
+runners, the wicker's weave and cushion on turned legs, a globe lamp on
+its canopy, the side table's pedestal and splayed legs, risers and
+stringers under the steps, the pickup from the vehicle kit; WEAR (three
+worn paths, the runners' arcs, cup rings, the mat's scuff, bark litter,
+a patched screen); D3 (the switch, the fan's pull chain, the hose bib
+and coil); D5 (fences down both lines, a treeline past the yard). The
+.tscn gains the lit house window's spill.
+
+DRAFT 4 targets: the second rocker the preset comment remembers (or
+the comment corrected); the screen mesh as a real weave at the frame
+edges; the yard as a heightfield with the brown patches following it;
+the crepe myrtle's trunks as tapered lathes; the neighbor's house past
+the east fence; Deck: the sheet's establish at dusk and `insert bowls`.
+
 Coordinate frame: Blender Z-up, y=0 yard side (railing/steps), +Y
 toward the house wall at y=4.0, x=±3.0, ceiling 2.8. glTF export
 remaps to Godot (x, z, -y).
@@ -13,7 +29,8 @@ import os, sys, math
 _BT = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)), ".."))
 if _BT not in sys.path: sys.path.insert(0, _BT)
 from _props import palette as P
-from _props.geometry import clear_scene, make_box, make_cyl, export_glb
+from _props.geometry import (clear_scene, make_box, make_cyl, make_lathe, make_chamfer_box,
+                             make_tube, make_rot_box, make_taper_cyl, export_glb)
 from _props.structure import make_floor, make_wall, make_ceiling
 from _props.decor import make_floor_plant
 
@@ -54,10 +71,15 @@ def build_shell():
 
 
 def build_railing():
-    make_box("Rail_Top", (0.0, 0.10, 1.00), (ROOM_W-1.0, 0.06, 0.06), COL_WOOD)
+    # draft 3 (2026-09-18): a chamfered cap rail, a bottom rail, and
+    # turned balusters between them — a porch rail, not a picket fence
+    make_chamfer_box("Rail_Top", (0.0, 0.10, 1.00), (ROOM_W-1.0, 0.08, 0.05), COL_WOOD, chamfer=0.01)
+    make_box("Rail_Bottom", (0.0, 0.10, 0.10), (ROOM_W-1.0, 0.05, 0.04), COL_WOOD)
     for vi in range(10):
         vx = -(ROOM_W-1.0)/2.0+vi*0.6
-        make_box(f"Rail_Bal_{vi}", (vx, 0.10, 0.50), (0.04, 0.04, 0.90), COL_WOOD)
+        make_lathe(f"Rail_Bal_{vi}", (vx, 0.10, 0.12),
+                   [(0.022, 0.0), (0.022, 0.10), (0.032, 0.16), (0.02, 0.24), (0.026, 0.42), (0.02, 0.60),
+                    (0.03, 0.70), (0.022, 0.78), (0.022, 0.86)], COL_WOOD, segments=8)
     # vol7's rail-corner props: the small tin Tem keeps for the
     # people who smoke, and the thumb-sized carved cedar Eddvard left
     make_cyl("Smokers_Tin", (-2.20, 0.10, 1.05), 0.05, 0.03, (0.62, 0.62, 0.60, 1.0), segments=10)
@@ -70,7 +92,7 @@ def build_chairs():
     coffee cup on)."""
     # The rocker keeps its spot west of center
     cx, cy = -1.5, ROOM_D/2.0
-    make_box("Rocker_0_Seat", (cx, cy, 0.46), (0.50, 0.46, 0.04), COL_WOOD)
+    make_chamfer_box("Rocker_0_Seat", (cx, cy, 0.46), (0.50, 0.46, 0.04), COL_WOOD, chamfer=0.01)
     make_box("Rocker_0_Back", (cx, cy+0.20, 0.78), (0.50, 0.04, 0.66), COL_WOOD)
     for si in range(4):
         sx = cx - 0.18 + si * 0.12
@@ -78,20 +100,34 @@ def build_chairs():
     for ai, ax in enumerate([cx-0.24, cx+0.24]):
         make_box(f"Rocker_0_Arm_{ai}", (ax, cy, 0.62), (0.04, 0.44, 0.04), COL_WOOD)
         make_cyl(f"Rocker_0_ArmPost_{ai}", (ax, cy-0.18, 0.54), 0.02, 0.16, COL_WOOD, segments=6)
-    for ri, ry in enumerate([cy-0.20, cy+0.20]):
-        make_cyl(f"Rocker_0_Rocker_{ri}", (cx, ry, 0.10), 0.04, 0.50, COL_WOOD, axis='X', segments=8)
+    # the runners CURVE (draft 3): an arc under each side, the chair's
+    # legs down to it, a cross-stretcher between the runners
+    for ri, rx in enumerate([cx-0.22, cx+0.22]):
+        make_tube(f"Rocker_0_Runner_{ri}",
+                  [(rx, cy-0.42, 0.10), (rx, cy-0.25, 0.035), (rx, cy, 0.02), (rx, cy+0.25, 0.035), (rx, cy+0.42, 0.10)],
+                  0.02, COL_WOOD, segments=6)
+        for li, ly in enumerate((cy-0.18, cy+0.18)):
+            make_lathe(f"Rocker_0_Leg_{ri}_{li}", (rx, ly, 0.03), [(0.018, 0.0), (0.022, 0.12), (0.016, 0.28), (0.02, 0.41)], COL_WOOD, segments=6)
+    # cross-stretchers leg to leg (a rail between no legs floats — the
+    # furniture grammar said so, 2026-09-18)
+    for si2, sy2 in enumerate((cy-0.18, cy+0.18)):
+        make_tube(f"Rocker_0_Stretcher_{si2}", [(cx-0.22, sy2, 0.20), (cx+0.22, sy2, 0.20)], 0.012, COL_WOOD, segments=5)
     # The wicker chair, against the house wall
     wx, wy = 1.20, ROOM_D - 0.65
-    make_box("Wicker_Seat", (wx, wy, 0.42), (0.52, 0.48, 0.10), COL_WICKER)
-    make_box("Wicker_Back", (wx, wy+0.24, 0.80), (0.54, 0.08, 0.70), COL_WICKER)
-    make_box("Wicker_Back_Weave", (wx, wy+0.21, 0.80), (0.44, 0.02, 0.58), (0.74, 0.62, 0.42, 1.0))
+    make_chamfer_box("Wicker_Seat", (wx, wy, 0.42), (0.52, 0.48, 0.10), COL_WICKER, chamfer=0.02)
+    make_chamfer_box("Wicker_Cushion", (wx, wy-0.02, 0.495), (0.44, 0.40, 0.05), (0.62, 0.50, 0.40, 1.0), chamfer=0.02)
+    make_chamfer_box("Wicker_Back", (wx, wy+0.24, 0.80), (0.54, 0.08, 0.70), COL_WICKER, chamfer=0.025)
+    # the weave: alternating bands read as wicker at porch distance (draft 3)
+    for bi, bz in enumerate((0.56, 0.66, 0.76, 0.86, 0.96, 1.06)):
+        make_box(f"Wicker_Back_Weave_{bi}", (wx, wy+0.195, bz), (0.44, 0.012, 0.04),
+                 (0.74, 0.62, 0.42, 1.0) if bi % 2 == 0 else (0.86, 0.74, 0.52, 1.0))
     # Wide flat arms — "She puts the coffee cup down on the wicker
     # chair's arm"
     for ai, ax in enumerate((wx-0.34, wx+0.34)):
         make_box(f"Wicker_Arm_{ai}", (ax, wy, 0.60), (0.14, 0.52, 0.05), COL_WICKER)
         make_box(f"Wicker_ArmSide_{ai}", (ax, wy, 0.42), (0.10, 0.46, 0.32), COL_WICKER)
     for li, (lx, ly) in enumerate(((-0.20, -0.18), (0.20, -0.18), (-0.20, 0.20), (0.20, 0.20))):
-        make_box(f"Wicker_Leg_{li}", (wx+lx, wy+ly, 0.18), (0.05, 0.05, 0.36), COL_WICKER)
+        make_lathe(f"Wicker_Leg_{li}", (wx+lx, wy+ly, 0.0), [(0.03, 0.0), (0.025, 0.04), (0.025, 0.30), (0.03, 0.37)], COL_WICKER, segments=8)
     # The coffee cup on the arm
     make_cyl("Wicker_Cup", (wx-0.34, wy-0.08, 0.665), 0.04, 0.08, (0.86, 0.82, 0.74, 1.0), segments=10)
 
@@ -119,8 +155,13 @@ def build_yard():
         make_box(f"Yard_Brown_{i}", (px, py, -0.435), (pw, pd, 0.045), COL_GRASS_DRY)
     # Three treads from the screen door down to grade
     for si in range(3):
-        make_box(f"Step_{si}", (0.0, -0.35 - si*0.32, -0.075 - si*0.15),
-                 (1.3, 0.32, 0.15), COL_WOOD)
+        make_chamfer_box(f"Step_{si}_Tread", (0.0, -0.35 - si*0.32, -0.02 - si*0.15),
+                         (1.3, 0.34, 0.04), COL_WOOD, chamfer=0.008)
+        make_box(f"Step_{si}_Riser", (0.0, -0.19 - si*0.32, -0.095 - si*0.15),
+                 (1.26, 0.03, 0.15), (0.36, 0.26, 0.16, 1.0))
+    # stringers under the treads, both sides, down to grade
+    for sgn in (-1, 1):
+        make_rot_box(f"Step_Stringer_{sgn:+d}", (sgn * 0.66, -0.67, -0.30), (0.04, 1.10, 0.18), (0.36, 0.26, 0.16, 1.0), pitch=0.44)
     # The crepe myrtle, late bloom, in the corner of the back yard
     mx, my = 2.6, -2.2
     for ti, (dx, dy) in enumerate(((0.0, 0.0), (0.14, 0.10), (-0.12, 0.08))):
@@ -142,12 +183,19 @@ def build_yard():
 
 
 def build_porchlamp():
-    make_cyl("PorchLamp_Cord", (-1.5, 0.30, CEIL-0.20), 0.005, 0.40, P.METAL_BLACK)
-    make_cyl("PorchLamp_Bulb", (-1.5, 0.30, CEIL-0.66), 0.08, 0.16, COL_ACCENT)
+    # draft 3: a canopy, the cord, a frosted globe with its collar
+    make_lathe("PorchLamp_Canopy", (-1.5, 0.30, CEIL-0.03), [(0.06, 0.0), (0.06, 0.015), (0.02, 0.03), (0.0, 0.03)], P.METAL_BLACK, segments=10)
+    make_tube("PorchLamp_Cord", [(-1.5, 0.30, CEIL-0.03), (-1.5, 0.30, CEIL-0.48)], 0.005, P.METAL_BLACK, segments=4)
+    make_lathe("PorchLamp_Collar", (-1.5, 0.30, CEIL-0.50), [(0.03, 0.0), (0.035, 0.01), (0.03, 0.03), (0.0, 0.03)], P.METAL_BLACK, segments=8)
+    make_lathe("PorchLamp_Bulb", (-1.5, 0.30, CEIL-0.72),
+               [(0.0, 0.0), (0.05, 0.01), (0.08, 0.06), (0.085, 0.12), (0.07, 0.18), (0.035, 0.22), (0.0, 0.22)],
+               COL_ACCENT, segments=12)
     # A porch, not an office: ceiling fan instead of tube fixtures
     fx, fy = 0.0, ROOM_D/2.0
     make_cyl("Fan_Downrod", (fx, fy, CEIL-0.12), 0.025, 0.24, P.METAL_BLACK, segments=6)
     make_cyl("Fan_Hub", (fx, fy, CEIL-0.28), 0.10, 0.10, P.METAL_BLACK, segments=10)
+    make_tube("Fan_Pull_Chain", [(fx+0.04, fy, CEIL-0.33), (fx+0.05, fy, CEIL-0.62)], 0.003, (0.70, 0.70, 0.68, 1.0), segments=4)
+    make_lathe("Fan_Pull_Bead", (fx+0.05, fy, CEIL-0.66), [(0.0, 0.0), (0.012, 0.005), (0.012, 0.03), (0.0, 0.035)], COL_WOOD, segments=6)
     for bi, (dx, dy) in enumerate([(0.55, 0.0), (-0.55, 0.0), (0.0, 0.55), (0.0, -0.55)]):
         make_box(f"Fan_Blade_{bi}", (fx+dx, fy+dy, CEIL-0.30),
                  (0.72 if dy == 0.0 else 0.20, 0.20 if dy == 0.0 else 0.72, 0.025),
@@ -160,11 +208,12 @@ def build_dressing():
     cy = ROOM_D/2.0
     COL_TERRA = (0.66, 0.40, 0.26, 1.0); COL_LEAF = (0.36, 0.48, 0.30, 1.0)
     make_cyl("SideTbl_Top", (0.0, cy, 0.44), 0.28, 0.04, COL_WOOD, segments=16)
-    make_cyl("SideTbl_Col", (0.0, cy, 0.24), 0.05, 0.40, COL_WOOD, segments=8)
+    make_lathe("SideTbl_Col", (0.0, cy, 0.04), [(0.06, 0.0), (0.045, 0.04), (0.035, 0.14), (0.05, 0.22), (0.035, 0.30), (0.05, 0.38)], COL_WOOD, segments=10)
+    # three legs splayed out from the column's foot (draft 3)
     for li in range(3):
         ang = li * (2.0 * math.pi / 3.0)
-        make_box(f"SideTbl_Leg_{li}", (math.cos(ang) * 0.18, cy + math.sin(ang) * 0.18, 0.10),
-                 (0.05, 0.05, 0.20), COL_WOOD)
+        make_rot_box(f"SideTbl_Leg_{li}", (math.cos(ang) * 0.12, cy + math.sin(ang) * 0.12, 0.05),
+                     (0.24, 0.035, 0.03), COL_WOOD, yaw=ang, pitch=-0.35)
     make_cyl("Mug_Body", (0.10, cy - 0.05, 0.52), 0.045, 0.09, (0.82, 0.36, 0.24, 1.0), segments=12)
     make_cyl("Mug_Handle", (0.16, cy - 0.05, 0.55), 0.02, 0.03, (0.82, 0.36, 0.24, 1.0), axis='X', segments=8)
     make_box("Newspaper", (-0.13, cy + 0.02, 0.475), (0.20, 0.14, 0.02), (0.80, 0.78, 0.72, 1.0))
@@ -230,19 +279,55 @@ def build_hero_props_2026_09():
     # ── THE TRUCK · gravel turnaround, yard (grade -0.44) ──
     make_box("Gravel_Turnaround", (-2.2, -5.0, -0.415), (4.20, 3.20, 0.05),
              (0.55, 0.52, 0.47, 1.0))
-    make_box("Finn_Truck_Body", (-2.2, -5.0, 0.21), (1.70, 3.90, 0.70),
-             (0.44, 0.48, 0.42, 1.0))
-    make_box("Finn_Truck_Cab", (-2.2, -4.0, 0.835), (1.60, 1.30, 0.55),
-             (0.40, 0.44, 0.38, 1.0))
-    make_box("Finn_Truck_Windshield", (-2.2, -3.34, 0.90), (1.30, 0.020, 0.35),
-             (0.26, 0.30, 0.34, 1.0))
-    for hi2, hx3 in enumerate((-2.75, -1.65)):
-        make_cyl(f"Finn_Truck_Headlight_{hi2}", (hx3, -3.04, 0.35), 0.070, 0.020,
-                 (0.96, 0.90, 0.70, 1.0), axis='Y', segments=8)
-    for wi2, (wx3, wy3) in enumerate(((-3.175, -4.1), (-1.225, -4.1),
-                                      (-3.175, -6.1), (-1.225, -6.1))):
-        make_cyl(f"Finn_Truck_Wheel_{wi2}", (wx3, wy3, -0.06), 0.33, 0.25,
-                 (0.14, 0.14, 0.15, 1.0), axis='X', segments=10)
+    # draft 3: the pickup from the vehicle kit (profile body, lathed
+    # wheels, lights, grille, mirrors), nose toward the porch along Y,
+    # standing on the gravel at grade
+    from _props.vehicles import make_car
+    make_car("Finn_Truck", -2.2, -4.9, 4.6, (0.44, 0.48, 0.42, 1.0), pickup=True, along="Y", z0=-0.39)
+
+
+def build_draft3_2026_09():
+    """DRAFT 3 (2026-09-18, lore/_VISUAL_PROGRAM.md §3; the porch carries
+    12 placements across vols 6 and 7). What the ledger called draft 2
+    was props on a plane. This pass: WEAR (the porch's three
+    destinations worn into the boards — house door, the rocker, the
+    screen door; the runners' pale arcs; the cup rings; the mat's
+    scuff; bark litter by the stack; a patched screen), D3 (the porch
+    light's switch beside the house door, the fan's pull chain, the
+    hose bib and its coiled hose), and D5 (a wire fence down both
+    property lines, a treeline past the yard so the screens never look
+    at a world edge).
+    """
+    from _props.detail import make_traffic_wear, make_floor_stain, make_scuff_band, make_light_switch, make_wire_fence, make_far_bands
+    floor_dk = (0.36, 0.25, 0.16, 1.0)
+    floor_pale = (0.50, 0.38, 0.27, 1.0)
+    cy = ROOM_D / 2.0
+    # ── WEAR ──
+    make_traffic_wear("Wear_Path_Door_Rocker", [(-0.9, 3.6), (-1.3, 2.6), (-1.5, 2.3)], width=0.45, tint=floor_dk)
+    make_traffic_wear("Wear_Path_Rocker_Screen", [(-1.3, 1.6), (-0.6, 0.9), (0.0, 0.5)], width=0.42, tint=floor_dk)
+    make_traffic_wear("Wear_Path_Door_Wicker", [(-0.6, 3.6), (0.4, 3.5), (1.0, 3.35)], width=0.36, tint=floor_dk)
+    for ri, rx in enumerate((-1.72, -1.28)):
+        make_box(f"Wear_Rocker_Arc_{ri}", (rx, cy, 0.006), (0.06, 0.95, 0.004), floor_pale)
+    make_cyl("Wear_Wicker_CupRing", (1.20 - 0.34, ROOM_D - 0.65 + 0.12, 0.626), 0.040, 0.003, (0.42, 0.30, 0.18, 1.0), segments=10)
+    make_cyl("Wear_SideTbl_Ring", (0.10, cy + 0.12, 0.462), 0.045, 0.003, (0.42, 0.30, 0.18, 1.0), segments=10)
+    make_scuff_band("Wear_Mat_Scuff", (0.0, 0.29), 0.80, axis='X', height=0.03, band_z=0.02, tint=(0.26, 0.19, 0.13, 1.0))
+    for bi, (bx, by) in enumerate(((2.45, 0.62), (2.30, 0.95), (2.52, 1.20), (2.36, 1.42))):
+        make_rot_box(f"Bark_Litter_{bi}", (bx, by, 0.006), (0.05, 0.03, 0.01), (0.28, 0.19, 0.12, 1.0), yaw=0.7 * bi)
+    make_box("Screen_Patch_E", (ROOM_W / 2.0 + 0.012, 1.40, 1.50), (0.006, 0.30, 0.25), (0.50, 0.50, 0.46, 0.45))
+    make_floor_stain("Wear_Under_Plant", (ROOM_W / 2.0 - 0.55, ROOM_D - 0.6), radius=0.24, tint=(0.38, 0.27, 0.18, 1.0), segments=10)
+    # ── D3 ──
+    make_light_switch("Switch_Porch", (-0.25, ROOM_D), axis='X', face_sign=-1, z=1.20, aged=True)
+    make_cyl("Hose_Bib", (2.50, ROOM_D - 0.10, 0.45), 0.02, 0.12, (0.62, 0.60, 0.56, 1.0), axis='Y', segments=6)
+    make_lathe("Hose_Bib_Handle", (2.50, ROOM_D - 0.18, 0.45), [(0.0, 0.0), (0.03, 0.0), (0.03, 0.008), (0.0, 0.008)], (0.70, 0.30, 0.24, 1.0), segments=8)
+    hose = []
+    for k in range(25):
+        ang = k / 24.0 * 3.0 * 2.0 * math.pi
+        hose.append((2.50 + 0.20 * math.cos(ang), ROOM_D - 0.42 + 0.20 * math.sin(ang), 0.02 + 0.03 * (k / 24.0)))
+    make_tube("Hose_Coil", hose, 0.012, (0.24, 0.40, 0.26, 1.0), segments=6)
+    # ── D5 · the property lines and the treeline ──
+    for sgn in (-1, 1):
+        make_wire_fence("Fence_%s" % ("W" if sgn < 0 else "E"), sgn * 8.0, -9.5, 0.2, h=1.2, post_every=3.2, wires=3)
+    make_far_bands("Far", (0.30, 0.40, 0.24, 1.0), [(14.0, 16.0, 3.2, 0.85), (23.0, 22.0, 5.0, 0.65)], sides="S", cy=0.0)
 
 
 def main():
@@ -256,6 +341,7 @@ def main():
     build_dressing()
     build_crow_2026_08()
     build_hero_props_2026_09()
+    build_draft3_2026_09()
     out = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)),
         "../../../assets/3d/locales/miller_back_porch.glb"))
     print(f"\n[build_miller_back_porch] exporting to {out}")

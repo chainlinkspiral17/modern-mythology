@@ -360,8 +360,8 @@ metadata/fov = 45.0
 
 ; practicals authored by practical_author.py (2026-09-11):
 ; every visible fixture is also a light (_LIGHTING_PLAYBOOK.md)
-[node name="Hall_A_Fluor_1_Practical" type="OmniLight3D" parent="."]
-position = Vector3(0.000, 2.670, -6.000)
+[node name="Hall_A_Fluor_2_Practical" type="OmniLight3D" parent="."]
+position = Vector3(0.000, 2.590, -10.000)
 light_color = Color(0.920, 0.920, 0.850, 1)
 light_energy = 1.30
 shadow_enabled = false

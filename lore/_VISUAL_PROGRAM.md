@@ -146,6 +146,12 @@ finds everywhere: nine practicals with no fixture, fixed (seven moved
 onto real lamps and tubes, the cafe's pendants built). Every room's
 named light stands on a fixture from here on.
 
+**Status (2026-09-18, later) · miller_back_porch draft 3 shipped, unseen.**
+The third room in screen-time order (12 placements, shared by vols 6
+and 7): the primitive upgrade plus the wear, D3 and D5 passes it had
+never had. Clip 0, obstruction 0, FLOAT 0. Next: the vol 6 dozen,
+cosmic_comics_interior first.
+
 **Draft targets, by volume, by uses:**
 - **Vol 7 (current):** `cabin_interior` (31) · `lena_apartment` (23)
   · `miller_back_porch` (12, shared with vol 6) · `salty_tome_alley`
