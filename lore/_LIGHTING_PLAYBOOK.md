@@ -259,6 +259,11 @@ Position note: lamp omnis are placed AT the lamp-head mesh position
   scarf lamp and two fluorescents onto their tubes. Only the cafe had
   no fixture at all — two pendants built (`furniture.make_pendant`:
   canopy, cord, shade, bulb) with the bulbs where the lights were.
+- **The nearby fixture must be of the light's own class.** The comics
+  back office — "a single overhead with a pull chain" — kept two
+  fluorescent practicals because the bulb hung within 1.5 m of them.
+  The gate now matches families (tube vs point source); they were the
+  last two of the class and are gone.
 - **The rule, now a gate:** when a light is named for a fixture, the
   fixture must exist and be there; when a fixture is built, its light
   moves with it. `orphan_practical_audit` runs in the suite at zero.

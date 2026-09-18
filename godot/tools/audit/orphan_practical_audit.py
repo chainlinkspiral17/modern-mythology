@@ -51,6 +51,13 @@ LIGHT_RX = re.compile(r'\[node name="([^"]+)" type="(OmniLight3D|SpotLight3D)"[^
 FIXTURE_WORD = re.compile(r"(lamp|bulb|sconce|pendant|chandelier|lantern|fluor|tube|candle|worklight|shoplight|dome|hood|neon|sign)", re.I)
 
 
+def fixture_family(name):
+    """Two families: the tube (fluor, tube, shoplight, worklight) and
+    the point source (lamp, bulb, sconce, pendant, chandelier,
+    lantern, candle, dome, hood, neon, sign)."""
+    return "tube" if re.search(r"(fluor|tube|shoplight|worklight)", name, re.I) else "point"
+
+
 def practical_stem(name):
     if name.endswith("_Practical"):
         stem = name[:-len("_Practical")]
@@ -134,7 +141,13 @@ def main():
             # one stands where the light is. A fixture of any name within
             # reach answers it (TubeRow_S over a run of Fluor_* tubes).
             if pos is not None:
-                anyfix = [b for b in boxes if FIXTURE_WORD.search(b[0]) and not re.search(r"(cord|switch|outlet|wear|stain|glow|halo|zone|^z_)", b[0], re.I)]
+                # …of the light's own CLASS: a fluorescent light is not
+                # answered by a bare bulb a metre away (the comics back
+                # office, whose prose has one bulb on a pull chain, kept
+                # two fluorescent practicals that way).
+                fam = fixture_family(stem)
+                anyfix = [b for b in boxes if FIXTURE_WORD.search(b[0]) and fixture_family(b[0]) == fam
+                          and not re.search(r"(cord|switch|outlet|wear|stain|glow|halo|zone|^z_)", b[0], re.I)]
                 near_any = min((math.dist(pos, b[1]) for b in anyfix), default=99.0)
             else:
                 near_any = 99.0

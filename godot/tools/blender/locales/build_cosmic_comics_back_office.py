@@ -1,9 +1,28 @@
-"""Cosmic Comics — back office — vol6 placement script."""
+"""Cosmic Comics — back office — vol6 placement script.
+
+DRAFT 4 (2026-09-18, lore/_VISUAL_PROGRAM.md §3, 11 placements): turned
+desk legs and an apron, the monitor on a foot and neck with a screen,
+drawer pulls and labels on the filing cabinets, the bulb as a bulb on
+a socket with a chain and a pull, the carafe and the chair seat as
+profiles,  the room's first WEAR (entry
+paths, the casters' oval, the forearm patch, coffee rings, ink, pin
+holes); D3 (a power strip under the desk and cords from everything
+that plugs in). The .tscn loses the two fluorescent practicals the
+prose's "single overhead with a pull chain" never had.
+
+DRAFT 5 targets: the longbox tops as comics at a lean, not a slab;
+the light table lit from within (an emissive plane + practical); the
+corkboard's pages as pages (a drawn line or two); the office door with
+its knob and a hand-worn patch; the service door's threshold and the
+alley beyond it when it stands open; Deck: the sheet's establish and
+`insert notebook` under the bulb.
+"""
 import os, sys
 _BT = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)), ".."))
 if _BT not in sys.path: sys.path.insert(0, _BT)
 from _props import palette as P
-from _props.geometry import clear_scene, make_box, make_chamfer_box, make_cyl, export_glb
+from _props.geometry import (clear_scene, make_box, make_chamfer_box, make_cyl, make_lathe,
+                             make_tube, make_rot_box, export_glb)
 from _props.structure import make_floor, make_wall, make_ceiling, make_crown_molding, make_window
 from _props.store_fixtures import make_counter, make_counter_bullnose, make_register
 from _props.shelving import make_snack_aisle, make_endcap
@@ -45,15 +64,22 @@ DESK_DX, DESK_DY = -0.35, 1.05
 
 def build_desk():
     dx, dy = 0.0 + DESK_DX, ROOM_D-1.5 + DESK_DY
-    make_box("Desk_Top", (dx, dy, 0.74), (1.80, 0.80, 0.04), COL_WOOD)
+    # draft 4 (2026-09-18): a chamfered top on turned legs, an apron
+    make_chamfer_box("Desk_Top", (dx, dy, 0.74), (1.80, 0.80, 0.04), COL_WOOD, chamfer=0.01)
+    make_box("Desk_Apron_F", (dx, dy-0.36, 0.68), (1.66, 0.025, 0.08), (0.34, 0.24, 0.16, 1.0))
     for li in range(4):
         lx, ly = dx+(-0.84,+0.84,-0.84,+0.84)[li], dy+(-0.34,-0.34,+0.34,+0.34)[li]
-        make_box(f"Desk_Leg_{li}", (lx, ly, 0.36), (0.04, 0.04, 0.72), COL_WOOD)
+        make_lathe(f"Desk_Leg_{li}", (lx, ly, 0.0),
+                   [(0.025, 0.0), (0.035, 0.05), (0.022, 0.10), (0.03, 0.22), (0.038, 0.30), (0.026, 0.42), (0.026, 0.65), (0.034, 0.68), (0.034, 0.72)],
+                   COL_WOOD, segments=8)
     # Papers stacked
     for pi in range(3):
         make_box(f"Papers_{pi}", (dx-0.30+pi*0.18, dy, 0.78+pi*0.02), (0.20, 0.26, 0.03), P.PAPER)
     # Monitor + keyboard
-    make_box("Monitor", (dx, dy+0.20, 1.05), (0.50, 0.04, 0.30), (0.06, 0.08, 0.10, 1.0))
+    make_lathe("Monitor_Foot", (dx, dy+0.20, 0.76), [(0.11, 0.0), (0.10, 0.01), (0.04, 0.02), (0.03, 0.025), (0.0, 0.025)], (0.14, 0.15, 0.17, 1.0), segments=10)
+    make_box("Monitor_Neck", (dx, dy+0.20, 0.83), (0.05, 0.03, 0.12), (0.14, 0.15, 0.17, 1.0))
+    make_chamfer_box("Monitor", (dx, dy+0.20, 1.05), (0.50, 0.04, 0.30), (0.06, 0.08, 0.10, 1.0), chamfer=0.008)
+    make_box("Monitor_Screen", (dx, dy+0.178, 1.05), (0.46, 0.002, 0.26), (0.18, 0.22, 0.28, 1.0))
     make_box("Keyboard", (dx, dy-0.10, 0.76), (0.42, 0.16, 0.02), (0.32, 0.30, 0.32, 1.0))
 
 def build_filing():
@@ -62,6 +88,8 @@ def build_filing():
         make_chamfer_box(f"Filing_{ci}", (cx, 1.0, 0.65), (0.50, 0.60, 1.30), (0.62, 0.62, 0.58, 1.0))
         for di in range(4):
             make_box(f"Filing_{ci}_Drawer_{di}", (cx, 0.70, 1.20-di*0.30), (0.46, 0.04, 0.26), (0.78, 0.78, 0.74, 1.0))
+            make_box(f"Filing_{ci}_Pull_{di}", (cx, 0.675, 1.20-di*0.30), (0.10, 0.012, 0.025), (0.50, 0.50, 0.48, 1.0))
+            make_box(f"Filing_{ci}_Label_{di}", (cx-0.14, 0.677, 1.26-di*0.30), (0.07, 0.006, 0.03), (0.92, 0.90, 0.84, 1.0))
 
 def build_cal():
     make_calendar("Calendar", (+ROOM_W/2.0-0.05, ROOM_D/2.0, 1.70))
@@ -69,9 +97,13 @@ def build_cal():
 def build_bulb():
     # "lit by a single overhead with a pull chain" — the bulb is the
     # room's only light (fluorescents removed, hero-prop pass)
-    make_cyl("Bulb_Cord", (0.0, ROOM_D/2.0, CEIL-0.30), 0.005, 0.60, P.METAL_BLACK)
-    make_cyl("Bulb_Glass", (0.0, ROOM_D/2.0, CEIL-0.86), 0.06, 0.14, (0.96, 0.86, 0.46, 1.0))
-    make_box("Bulb_PullChain", (0.06, ROOM_D/2.0, CEIL-0.98), (0.008, 0.008, 0.22), P.METAL_BLACK)
+    # draft 4: the ceiling box, the cord, a socket, a bulb that is a bulb, the chain and its pull
+    make_lathe("Bulb_Ceiling_Box", (0.0, ROOM_D/2.0, CEIL-0.03), [(0.05, 0.0), (0.05, 0.03), (0.0, 0.03)], P.METAL_BLACK, segments=8)
+    make_tube("Bulb_Cord", [(0.0, ROOM_D/2.0, CEIL-0.03), (0.0, ROOM_D/2.0, CEIL-0.66)], 0.005, P.METAL_BLACK, segments=4)
+    make_lathe("Bulb_Socket", (0.0, ROOM_D/2.0, CEIL-0.72), [(0.02, 0.0), (0.022, 0.04), (0.018, 0.06), (0.0, 0.06)], (0.36, 0.30, 0.22, 1.0), segments=8)
+    make_lathe("Bulb_Glass", (0.0, ROOM_D/2.0, CEIL-0.93), [(0.0, 0.0), (0.04, 0.02), (0.06, 0.08), (0.055, 0.14), (0.03, 0.19), (0.02, 0.21), (0.0, 0.21)], (0.96, 0.86, 0.46, 1.0), segments=10)
+    make_tube("Bulb_PullChain", [(0.03, ROOM_D/2.0, CEIL-0.70), (0.06, ROOM_D/2.0, CEIL-1.10)], 0.003, (0.70, 0.70, 0.68, 1.0), segments=4)
+    make_lathe("Bulb_Pull", (0.06, ROOM_D/2.0, CEIL-1.14), [(0.0, 0.0), (0.012, 0.005), (0.012, 0.035), (0.0, 0.04)], (0.44, 0.34, 0.22, 1.0), segments=6)
 
 def build_ceiling_infra():
     make_smoke_detector("Smoke", (0.0, ROOM_D/2.0, CEIL))
@@ -130,7 +162,7 @@ def build_backoffice_detail():
     # carry the back off the seat.
     ch_x, ch_y = 0.0 + DESK_DX, 2.7 + DESK_DY
     make_cyl("Chair_Column", (ch_x, ch_y, 0.28), 0.03, 0.42, (0.12, 0.12, 0.14, 1.0), segments=6)
-    make_cyl("Chair_Seat", (ch_x, ch_y, 0.50), 0.24, 0.08, (0.16, 0.16, 0.18, 1.0), segments=10)
+    make_lathe("Chair_Seat", (ch_x, ch_y, 0.46), [(0.10, 0.0), (0.22, 0.01), (0.24, 0.04), (0.235, 0.07), (0.20, 0.08), (0.0, 0.08)], (0.16, 0.16, 0.18, 1.0), segments=12)
     make_box("Chair_Back", (ch_x, ch_y - 0.22, 0.80), (0.42, 0.05, 0.40), (0.16, 0.16, 0.18, 1.0))
     for sgn in (-1, +1):
         make_box(f"Chair_BackPost_{sgn:+d}", (ch_x + sgn * 0.15, ch_y - 0.21, 0.585), (0.025, 0.03, 0.17), (0.12, 0.12, 0.14, 1.0))
@@ -154,7 +186,8 @@ def build_backoffice_detail():
     # ── Coffee maker on the filing cabinets (top z 1.3) ──
     cmx, cmy = -1.2, 1.0
     make_chamfer_box("CoffeeMaker_Body", (cmx, cmy, 1.48), (0.22, 0.28, 0.34), (0.16, 0.16, 0.18, 1.0))
-    make_cyl("CoffeeMaker_Carafe", (cmx, cmy - 0.02, 1.40), 0.07, 0.14, (0.40, 0.28, 0.20, 0.9), segments=8)
+    make_lathe("CoffeeMaker_Carafe", (cmx, cmy - 0.02, 1.34), [(0.05, 0.0), (0.07, 0.02), (0.072, 0.09), (0.05, 0.13), (0.04, 0.14)], (0.40, 0.28, 0.20, 0.9), segments=10)
+    make_cyl("CoffeeMaker_Coffee", (cmx, cmy - 0.02, 1.36), 0.06, 0.03, (0.20, 0.12, 0.08, 1.0), segments=10)
     make_box("CoffeeMaker_Warmer", (cmx, cmy - 0.02, 1.33), (0.18, 0.20, 0.02), (0.10, 0.10, 0.11, 1.0))
     # ── Taped wall shelf with trade spines (west wall over table) ──
     make_box("WallShelf_Plank", (-1.82, 2.6, 1.7), (0.22, 1.2, 0.03), (0.44, 0.34, 0.24, 1.0))
@@ -254,6 +287,49 @@ def build_hero_props_2026_09():
     make_box("Fireproof_Box_Handle", (-0.45 + DESK_DX, 3.55 + DESK_DY, 0.255), (0.14, 0.02, 0.03), (0.20, 0.20, 0.22, 1.0))
 
 
+def build_draft4_2026_09():
+    """DRAFT 4 (2026-09-18, lore/_VISUAL_PROGRAM.md §3; the office carries
+    11 placements). The room's prose says one bulb on a pull chain; the
+    scene has shipped two fluorescent practicals over it since the rig
+    pass — they go. WEAR: the path from the office door to the chair and
+    the spur to the coffee maker; the oval the casters have worn in
+    front of the desk; the forearm patch at Rick's place; coffee rings
+    on the filing cabinet's top; ink on the light table's edge; the
+    corkboard's old pin holes. D3: a power strip under the desk on the
+    wall side (monitor, lamp) and its cord to the outlet; the coffee
+    maker, the mini fridge and the light table plugged into theirs.
+    """
+    from _props.detail import make_traffic_wear, make_floor_stain, make_scuff_band, make_wall_outlet, make_cord_run
+    floor_dk = (0.50, 0.41, 0.32, 1.0)
+    dx, dy = 0.0 + DESK_DX, ROOM_D-1.5 + DESK_DY
+    ch_x, ch_y = 0.0 + DESK_DX, 2.7 + DESK_DY
+    # ── WEAR ──
+    make_traffic_wear("Wear_Path_Entry_Chair", [(0.0, 0.5), (-0.2, 1.6), (-0.35, 2.9), (ch_x, ch_y - 0.45)], width=0.45, tint=floor_dk)
+    make_traffic_wear("Wear_Path_Entry_Coffee", [(-0.2, 0.9), (-0.9, 1.15), (-1.15, 1.4)], width=0.34, tint=floor_dk)
+    make_floor_stain("Wear_Caster_Oval", (ch_x, ch_y + 0.05), radius=0.42, tint=(0.46, 0.38, 0.30, 1.0), segments=12)
+    make_box("Wear_Desk_Forearm", (dx + 0.10, dy - 0.32, 0.762), (0.42, 0.10, 0.004), (0.52, 0.40, 0.28, 1.0))
+    for ri, (rx, ry) in enumerate(((-1.72, 0.85), (-1.62, 1.18), (-1.15, 1.22))):
+        make_cyl(f"Wear_Filing_Ring_{ri}", (rx, ry, 1.303), 0.04, 0.003, (0.42, 0.30, 0.20, 1.0), segments=10)
+    make_box("Wear_LightTable_Ink", (-1.5 + 0.20, 2.6 - 0.30, 0.822), (0.08, 0.05, 0.002), (0.12, 0.12, 0.16, 1.0))
+    for hi, (hx, hz) in enumerate(((-0.62, 1.95), (-0.55, 1.35), (0.25, 1.98), (0.62, 1.30), (0.05, 1.25))):
+        make_cyl(f"Wear_Cork_Hole_{hi}", (hx, 4.79, hz), 0.004, 0.006, (0.30, 0.22, 0.14, 1.0), axis='Y', segments=4)
+    make_scuff_band("Wear_LongBox_Kick", (1.55, 1.45), 0.7, axis='Y', height=0.05, band_z=0.02, tint=(0.38, 0.30, 0.22, 1.0))
+    # ── D3 ──
+    make_box("Power_Strip", (dx - 0.20, dy + 0.30, 0.03), (0.30, 0.06, 0.04), (0.86, 0.86, 0.82, 1.0))
+    for si in range(4):
+        make_box(f"Power_Strip_Socket_{si}", (dx - 0.31 + si * 0.07, dy + 0.30, 0.052), (0.03, 0.03, 0.004), (0.30, 0.30, 0.30, 1.0))
+    make_wall_outlet("Outlet_N_Desk", (dx - 0.20, ROOM_D), axis='X', face_sign=-1, z=0.30, aged=True)
+    make_cord_run("Cord_Strip", (dx - 0.20, dy + 0.33, 0.03), (dx - 0.20, ROOM_D - 0.12, 0.30), sag=0.0)
+    make_cord_run("Cord_Monitor", (dx, dy + 0.22, 0.78), (dx - 0.20, dy + 0.30, 0.05), sag=0.05)
+    make_cord_run("Cord_DeskLamp", (-0.65 + DESK_DX + 0.05, 3.75 + DESK_DY + 0.03, 0.80), (dx - 0.27, dy + 0.30, 0.05), sag=0.05)
+    make_wall_outlet("Outlet_W_Coffee", (-ROOM_W/2.0, 0.85), axis='Y', face_sign=1, z=1.45, aged=True)
+    make_cord_run("Cord_Coffee", (-1.31, 1.0, 1.36), (-ROOM_W/2.0 + 0.13, 0.85, 1.45), sag=0.03)
+    make_wall_outlet("Outlet_W_LightTable", (-ROOM_W/2.0, 2.95), axis='Y', face_sign=1, z=0.30, aged=True)
+    make_cord_run("Cord_LightTable", (-1.75, 2.9, 0.74), (-ROOM_W/2.0 + 0.13, 2.95, 0.30), sag=0.02)
+    make_wall_outlet("Outlet_E_Fridge", (ROOM_W/2.0, 1.10), axis='Y', face_sign=-1, z=0.30, aged=True)
+    make_cord_run("Cord_Fridge", (1.92, 0.95, 0.10), (ROOM_W/2.0 - 0.13, 1.10, 0.30), sag=0.0)
+
+
 def main():
     clear_scene()
     build_shell()
@@ -268,6 +344,7 @@ def main():
     build_backoffice_detail()
     build_hero_props()
     build_hero_props_2026_09()
+    build_draft4_2026_09()
     export_glb(out)
 
 if __name__ == "__main__":

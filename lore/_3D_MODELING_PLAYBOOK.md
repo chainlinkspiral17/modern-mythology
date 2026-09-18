@@ -476,6 +476,15 @@ The visual program's first background pass (lore/_VISUAL_PROGRAM.md
   blue fill light had been standing in for since the rig pass — built,
   plugged in, glowing; sidewalk, curb, a parked car, a streetlamp and
   the storefronts across, so the window looks at a street.
+- **The back office, draft 4, same day.** Turned desk legs and an
+  apron, the monitor on a foot and neck, drawer pulls and labels, the
+  bulb as a bulb on its socket with a chain and a pull, the carafe and
+  the chair seat as profiles; the first wear (entry paths, the casters'
+  oval, the forearm patch, coffee rings, ink, pin holes); a power strip
+  under the desk and a cord from everything that plugs in. A handle
+  added to the safe's door stood behind the longbox stack from the
+  `insert safe` lens and became the insert's subject — dropped; a new
+  part on a cued object is a new subject for the cue's marker.
 - **A wear object must not carry a cue word.** `Wear_Path_Door_Bins`
   made `[shot:insert door]` resolve to a floor stain, and the marker
   gate reported the door insert OCCLUDED by a comic. Wear, stains and

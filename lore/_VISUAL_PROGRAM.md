@@ -158,6 +158,11 @@ shop's first wear pass, its wires (and the CRT a fill light had been
 pretending was there), and a street outside the window. Next: the
 back office, then the bedrooms.
 
+**Status (2026-09-18, later) · cosmic_comics_back_office draft 4 shipped,
+unseen.** The fifth room: the bulb's room with its wear and its wires;
+the two fluorescent practicals the prose never had are gone (the gate
+now matches fixture families). Next: maya_bedroom, sam_bedroom.
+
 **Draft targets, by volume, by uses:**
 - **Vol 7 (current):** `cabin_interior` (31) · `lena_apartment` (23)
   · `miller_back_porch` (12, shared with vol 6) · `salty_tome_alley`
