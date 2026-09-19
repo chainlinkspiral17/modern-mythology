@@ -56,8 +56,15 @@
       "text": "\"Hey.\""
     },
     {
-      "t": "narrate",
-      "text": "Jesse hands Ben the second Powerade. He leans against the dumpster, which he has never leaned against before, because Jesse has a fastidious relationship to surfaces that have been touched by grease."
+     "t": "narrate",
+     "text": "Jesse hands Ben the second Powerade. He leans against the dumpster, which he has never leaned against before, because Jesse has a fastidious relationship to surfaces that have been touched by grease.",
+     "when_flag": "item:two Powerades",
+     "drop_item": "two Powerades"
+    },
+    {
+     "t": "narrate",
+     "when_not_flag": "item:two Powerades",
+     "text": "Jesse has brought nothing. He leans against the dumpster, which he has never leaned against before, because Jesse has a fastidious relationship to surfaces that his leaning against it now, Ben registers, is its own kind of tell."
     },
     {
       "t": "narrate",

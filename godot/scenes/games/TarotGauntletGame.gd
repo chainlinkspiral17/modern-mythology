@@ -9578,7 +9578,37 @@ func _post_run_reading(won: bool) -> String:
 				_claimed_visitors_count, "" if _claimed_visitors_count == 1 else "s"])
 	else:
 		lines.append("the hand · every card you held, you played · nothing wasted, nothing spared")
+	# IV · the card · this arcana's record across runs (the tempo row,
+	# design pillar 2026-09-19): runs, wins, the best clock. Kept in
+	# SaveSystem records so the board remembers between sessions.
+	lines.append(_arcana_record_line(won))
 	return "\n\n[color=#c8a842][b]· THE READING ·[/b]\n%s[/color]" % "\n".join(lines)
+
+
+func _arcana_record_line(won: bool) -> String:
+	var key: String = "gauntlet:" + _arcana_id
+	var rec: Dictionary = SaveSystem.get_record(key)
+	var runs: int = int(rec.get("runs", 0)) + 1
+	var wins: int = int(rec.get("wins", 0)) + (1 if won else 0)
+	var best: int = int(rec.get("best_turns", 0))
+	var new_best: bool = false
+	if won and (best == 0 or _turn < best):
+		best = _turn
+		new_best = runs > 1
+	rec["runs"] = runs
+	rec["wins"] = wins
+	rec["best_turns"] = best
+	rec["last_turns"] = _turn
+	rec["last_won"] = won
+	SaveSystem.set_record(key, rec)
+	var max_t: int = int(_setup.get("max_turns", 8))
+	if runs == 1:
+		return "the card · first run · the room will remember the next one"
+	if new_best:
+		return "the card · a new best · %d of %d turns · %d run%s, %d won" % [best, max_t, runs, "" if runs == 1 else "s", wins]
+	if best > 0:
+		return "the card · best %d of %d turns · %d runs, %d won" % [best, max_t, runs, wins]
+	return "the card · %d runs, none won yet · the room is still forming its opinion" % runs
 
 
 func _show_end_screen(won: bool, title: String, body: String, cg_path: String = "") -> void:

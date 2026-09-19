@@ -97,6 +97,13 @@ def load_volumes():
                         v["flags_read"][str(n[k])].append((sid, i, k))
                 if t == "flag":
                     v["flags_set"][str(n.get("key"))].append((sid, i, "flag"))
+                # THE INVENTORY (2026-09-19): an item is the flag
+                # "item:<name>" — a node that hands one over sets it,
+                # a node that uses one up reads it.
+                if n.get("item"):
+                    v["flags_set"]["item:" + str(n.get("item"))].append((sid, i, "item"))
+                if n.get("drop_item"):
+                    v["flags_read"]["item:" + str(n.get("drop_item"))].append((sid, i, "drop_item"))
                 if t == "check":
                     v["checks"].append({"scene": sid, "node": i, "skill": n.get("skill"),
                                         "diff": int(n.get("diff", 0)), "pass": n.get("pass"),
@@ -115,6 +122,12 @@ def load_volumes():
                            "only_if": o.get("only_if_flag")}
                     if opt["flag"]:
                         v["flags_set"][str(opt["flag"])].append((sid, i, "opt"))
+                    if o.get("item"):
+                        v["flags_set"]["item:" + str(o.get("item"))].append((sid, i, "item"))
+                    if o.get("needs_item"):
+                        v["flags_read"]["item:" + str(o.get("needs_item"))].append((sid, i, "needs_item"))
+                    if o.get("drop_item"):
+                        v["flags_read"]["item:" + str(o.get("drop_item"))].append((sid, i, "drop_item"))
                     for k in ("hide_if", "only_if"):
                         if opt[k]:
                             v["flags_read"][str(opt[k])].append((sid, i, k))

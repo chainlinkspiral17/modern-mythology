@@ -174,6 +174,19 @@ BBS thread IDs: schema before content.
 
 ## Recent lessons
 
+### 2026-09-19 · THE CARD — the arcana remembers its runs
+
+- The reading under an ending had three lines built from the run;
+  the fourth is built from every run before it: `gauntlet:<arcana>`
+  in `SaveSystem` records (runs · wins · best_turns · last). "first
+  run · the room will remember the next one" → "best 5 of 8 turns ·
+  3 runs, 1 won" → "a new best". Tempo is the difficulty axis, so
+  the record is the CLOCK, not a point total; a faster win is the
+  only score the board keeps.
+- Records are a generic store (`get_record` / `set_record`, one JSON
+  beside the unlocks); anything that should outlive a run and is not
+  an unlock goes there.
+
 ### 2026-07-02 · Wave-2 support-tier is complete · hands · hosts · picker · locale props · endings
 
 Not authoring new scenarios · closing the support tier that makes

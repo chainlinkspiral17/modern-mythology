@@ -1806,6 +1806,35 @@ for the inventory: an item per model chapter (the napkin, the
 cooler's bottle, the stove's kettle) and one use each across a
 chapter boundary; `drop_item` on a wrong use with a funny line, not a
 fatal one.
+SHIPPED same day, the kwik stop's: TAKE TWO on the cooler coin puts two
+Powerades in the pocket; at the dumpster the handing-over line plays
+two ways and the held one uses them up (a narrate may carry
+`drop_item` now — a thing handed over is a line, not a choice). The
+Henderson kettle is a remembered choice rather than an item: the
+sleep chapter's kitchen sees it full on the clean burner, or cold on
+the burner nobody uses. The diner's napkin stays prose: John does
+not return in vol 5 after ch0, so nothing could use it. The
+consequence map lists items now (`item:<name>` set by `item`, read by
+`needs_item` / `drop_item`).
+AND COMMUNITY PLANNED (§6's row): RUST_CODE's masthead is in the
+zine's hand now — lowercase, hand-ruled, "news from harmony creek ·
+the letters column lives here · cut · pasted · photocopied · two inks
+you can't see from here" — instead of figlet block capitals that read
+as any BBS; and RN_010 "to the editor: 6:12" (W4) answers the
+prelude's `[trip:]` sprinkler beat: a Meadowlark Circle lawn writes
+that the sprinklers come on at 6:12 not 6:15 and that the cracked
+head on the Miller lawn is the association's, on the list since
+March, and still throws one last arc that catches the light; m.d.
+corrects the reprint and draws the head. Data only (json.loads-
+validated, the thread shape of RN_001); no engine change.
+AND THE GAUNTLET'S TEMPO ROW (draft 1): the reading under every ending
+gets a fourth line, THE CARD — this arcana's record across runs (runs,
+wins, the best clock: "best 5 of 8 turns · 3 runs, 1 won", "a new
+best", "first run · the room will remember the next one"), kept in
+`SaveSystem.get_record / set_record` (user://progress/records.json,
+beside the unlocks). The score bursts on chained rounds wait for a
+Deck look at the board (a burst is feedback, and nothing here has been
+seen).
 
 **2026-09-17 · DESIGN · the consequence map, and SKILLS EARN (draft 1).**
 The VN's game layer drawn for the first time (`consequence_map.py` →

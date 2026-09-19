@@ -106,6 +106,35 @@ func is_unlocked(key: String) -> bool:
 	return _unlocked.has(key)
 
 
+# ── Records (2026-09-19) ─────────────────────────────────────────────────────
+# Small per-key dictionaries that outlive a run: the gauntlet's
+# per-arcana card (runs, wins, best turns). One JSON file beside the
+# unlocks; loaded on first use, written on every set.
+const RECORDS_PATH := "user://progress/records.json"
+var _records: Dictionary = {}
+var _records_loaded: bool = false
+
+
+func get_record(key: String) -> Dictionary:
+	_ensure_records()
+	var rv: Variant = _records.get(key, {})
+	return (rv as Dictionary).duplicate() if rv is Dictionary else {}
+
+
+func set_record(key: String, data: Dictionary) -> void:
+	_ensure_records()
+	_records[key] = data.duplicate()
+	DirAccess.make_dir_recursive_absolute("user://progress")
+	_write_json(RECORDS_PATH, _records)
+
+
+func _ensure_records() -> void:
+	if _records_loaded:
+		return
+	_records_loaded = true
+	_records = _read_json(RECORDS_PATH)
+
+
 # ── Internal ──────────────────────────────────────────────────────────────────
 
 func _slot_path(slot: int) -> String:

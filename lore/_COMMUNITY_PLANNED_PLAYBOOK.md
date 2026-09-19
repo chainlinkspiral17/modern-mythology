@@ -954,6 +954,26 @@ fixes shipped this commit:
   is the escalation shape W12+ wants: not bigger numbers, more
   people at one kitchen table.
 
+### 2026-09-19 · the masthead in the zine's hand; a letter that answers a beat
+
+- **A masthead is a register claim.** Figlet block capitals say "a
+  BBS, 1991, anyone's". RUST_CODE hosts the zine's letters column,
+  so its masthead is the zine's: lowercase, letterspaced, two ruled
+  lines, a subtitle in m.d.'s voice, and the risograph joke (two
+  inks you can't see from here — the terminal is green). The other
+  five boards keep their own hands; only the zine's board changed.
+- **A reader letter can answer the book.** The VN's `[trip:]` beats
+  are the community's dawn as prose; a letter that disputes one
+  (6:12, not 6:15; the cracked head is the association's) makes the
+  zine and the chapter the same town. Author it to the pressure curve
+  (W4: long, a grievance with a grace note), and let the editor's
+  reply be the correction printed — the zine's only verb.
+- **Thread shape:** copy RN_001's keys exactly (id · subject ·
+  available_from_week · sysop_tagged · op{handle, canonical_character_id,
+  date, body} · replies[]); splice the object after its neighbour in
+  the file by raw text and validate with json.loads. Ids need not be
+  in file order; the week is what the board sorts by.
+
 ### 2026-09-07 · the letters column (game grammar row 2)
 
 - **A zine's letters column IS a board.** THE_LETTERS on RUST_CODE:

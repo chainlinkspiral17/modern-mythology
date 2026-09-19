@@ -74,8 +74,15 @@
           "hide_if_flag": "ch2_cooler_watched"
         },
         {
+          "text": "take two", "skill": "signal",
+          "goto": 16,
+          "flag": "ch2_cooler_took",
+          "hide_if_flag": "ch2_cooler_took",
+          "item": "two Powerades"
+        },
+        {
           "text": "say nothing", "skill": "composure",
-          "goto": 16
+          "goto": 18
         }
       ]
     },
@@ -94,6 +101,14 @@
     {
       "t": "jump",
       "goto": 11
+    },
+    {
+     "t": "narrate",
+     "text": "He opens the cooler and takes two Powerades, the blue kind, and does not look at the glass while the door is open. The cold comes off the shelves like a held breath let out."
+    },
+{
+     "t": "jump",
+     "goto": 11
     },
     {
       "t": "narrate",

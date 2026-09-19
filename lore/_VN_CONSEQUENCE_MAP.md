@@ -15,7 +15,7 @@ check's scene, taking the best option at every earlier choice.
 | choices | 32 |
 | skill checks | 5 |
 | checks that cannot pass | 0 |
-| flags set | 67 |
+| flags set | 70 |
 | flags set and never read | 38 |
 
 
@@ -268,6 +268,7 @@ Skills earnable across the volume: logic 4, composure 4, signal 3
 | `ch1_bench_sorted` | vol5_ch1_magician#55 | vol5_ch1_magician#55 (hide_if) |
 | `ch1_river_capacitor` | vol5_ch1_magician#88 | vol5_ch1_magician#99 (when_flag) |
 | `elicia_pick` | vol5_ch2_priestess#46, vol5_ch2_priestess#48, vol5_ch2_priestess#50 | vol5_ch19_sun#53 (when_flag), vol5_ch19_sun#54 (when_flag), vol5_ch19_sun#55 (when_flag), vol5_ch19_sun#56 (when_flag), vol5_ch19_sun#57 (when_flag), vol5_ch19_sun#58 (when_flag) |
+| `item:a capacitor` | vol5_ch1_magician#55 | vol5_ch1_magician#88 (needs_item), vol5_ch1_magician#88 (drop_item) |
 | `nicola_has_dean_note` | vol5_ch3_empress#108 | vol5_ch20_judgement#217 (when_flag), vol5_ch20_judgement#218 (when_flag) |
 | `nicola_pregnant_known` | vol5_ch3_empress#62 | **never — loose** |
 | `vol5_ch0_complete` | vol5_ch0_closing#25 | **never — loose** |
@@ -300,7 +301,8 @@ Skills earnable across the volume: empathy 3, logic 3, composure 3, signal 1
 
 - look at → #12 — trains **logic**; sets `ch2_cooler_looked`; hidden once `ch2_cooler_looked`
 - watch him → #14 — trains **signal**; sets `ch2_cooler_watched`; hidden once `ch2_cooler_watched`
-- say nothing → #16 — trains **composure**
+- take two → #16 — trains **signal**; sets `ch2_cooler_took`; hidden once `ch2_cooler_took`
+- say nothing → #18 — trains **composure**
 
 **vol6_ch20_prints** #8 · verb coin on **the stove**
 > On the stove, the kettle his mother uses and his father does not. Cold.
@@ -314,12 +316,14 @@ Skills earnable across the volume: empathy 3, logic 3, composure 3, signal 1
 | flag | set at | read at |
 |---|---|---|
 | `ben_has_list` | vol6_ch3_pit_stop_office#26 | **never — loose** |
-| `ben_has_prints` | vol6_ch2_dumpster#104 | **never — loose** |
-| `ch20_kettle_on` | vol6_ch20_prints#8 | vol6_ch20_prints#8 (hide_if) |
+| `ben_has_prints` | vol6_ch2_dumpster#105 | **never — loose** |
+| `ch20_kettle_on` | vol6_ch20_prints#8 | vol6_ch20_prints#8 (hide_if), vol6_ch23_sleep#10 (when_flag), vol6_ch23_sleep#11 (when_not_flag) |
 | `ch20_stove_looked` | vol6_ch20_prints#8 | vol6_ch20_prints#8 (hide_if) |
 | `ch2_cooler_looked` | vol6_ch2_kwik_stop#11 | vol6_ch2_kwik_stop#11 (hide_if) |
+| `ch2_cooler_took` | vol6_ch2_kwik_stop#11 | vol6_ch2_kwik_stop#11 (hide_if) |
 | `ch2_cooler_watched` | vol6_ch2_kwik_stop#11 | vol6_ch2_kwik_stop#11 (hide_if) |
 | `graciela_answer` | vol6_ch1_graciela#26, vol6_ch1_graciela#26 | vol6_ch7_safehouse#22 (when_flag), vol6_ch7_safehouse#23 (when_flag) |
+| `item:two Powerades` | vol6_ch2_kwik_stop#11 | vol6_ch2_dumpster#10 (when_flag), vol6_ch2_dumpster#10 (drop_item), vol6_ch2_dumpster#11 (when_not_flag) |
 | `maya_has_envelope` | vol6_ch2_bindery#19 | vol6_ch4_maya_floor#19 (when_flag), vol6_ch4_maya_floor#20 (when_flag) |
 | `maya_knows_ft` | vol6_ch2_cosmic#78 | **never — loose** |
 | `maya_knows_grandfather` | vol6_ch2_maya_bedroom#55 | **never — loose** |

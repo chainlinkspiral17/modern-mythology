@@ -9,7 +9,20 @@ the four pillars; update it when an arc ships or a decision lands.
 
 ---
 
-## 0 · Where it stands (honest numbers, 2026-09-13)
+## 0 · Where it stands (honest numbers, 2026-09-13; tally 2026-09-19 below)
+
+**Tally, 2026-09-19 (one session):** backgrounds — 24 rooms through a
+numbered draft in screen-time order (vol 7's first and second tier,
+vol 6's dozen, vol 1's two, the six arcana sets), every one Deck-unseen;
+two kit helpers (`make_fern`, `make_pendant`), one kit defect fixed at
+the helper (`make_cord_run` drew slabs), one new gate (orphan
+practicals). Design — the consequence map drawn, SKILLS EARN, the two
+decorative checks made real, seven remembered choices (vol 7's apology,
+vol 1's four, vol 2's house, the Henderson kettle), two broken choices
+found and gated (`vn_target_audit`), verb coins on all four model
+chapters, THE INVENTORY (two items that cross a chapter), Community
+Planned's masthead and reader letter, the gauntlet's per-arcana card.
+Still zero frames seen: the contact sheet has not run.
 
 | Pillar | State |
 |---|---|
@@ -296,6 +309,23 @@ the first thing picked up and used. Next on the design row: an item
 per model chapter with a use across a chapter boundary; then the
 gauntlet's tempo rows.
 
+**Status (2026-09-19, later) · DESIGN · the second item crosses a
+chapter.** Two Powerades from the cooler reach the dumpster; the
+kettle is remembered on Sunday. Two model chapters carry an item that
+matters; the diner's cannot (John leaves the volume at ch0). Next on
+the design row: Community Planned's masthead and the reader letter;
+then the gauntlet's tempo rows.
+
+**Status (2026-09-19, later) · DESIGN · Community Planned's row.** The
+masthead reads as the zine; a reader letter answers the prelude's
+sprinklers. Left on the design row: the gauntlet's tempo rows, and
+Salmonberry on the word.
+
+**Status (2026-09-19, later) · DESIGN · the gauntlet's per-arcana card.**
+Every ending's reading now carries the arcana's record. The design
+row's Claude-side items are through; what remains on it is Deck-
+gated (the bursts) or user-gated (Salmonberry).
+
 **Draft targets, by volume, by uses:**
 - **Vol 7 (current):** `cabin_interior` (31) · `lena_apartment` (23)
   · `miller_back_porch` (12, shared with vol 6) · `salty_tome_alley`
@@ -418,10 +448,13 @@ a pass branch; the model-chapter verb coins.
   and the INVENTORY the coins feed (`only_if_flag` already gates on
   it). Wrong answers funny, not fatal.
 - **The gauntlet's tempo rows:** score bursts on chained rounds, tempo
-  as the difficulty axis, a per-arcana high-score card; the bed for
-  the seventeen arcana still on shared drones.
+  as the difficulty axis, a per-arcana high-score card — the card
+  SHIPPED 2026-09-19 (THE CARD line in the reading, SaveSystem
+  records); bursts Deck-gated; the bed for the seventeen arcana still
+  on shared drones.
 - **Community Planned:** the BBS masthead in the zine's hand; a
-  reader letter that answers a `[trip:]` beat.
+  reader letter that answers a `[trip:]` beat — SHIPPED 2026-09-19
+  (RUST_CODE's masthead; RN_010 answers the 6:12 sprinklers).
 - **The Salmonberry overworld (Wave A)** — the flagship gameplay build,
   fully Claude-side, "starts on your word" since 2026-08. It is the
   largest single design item in the project and the one the user has
