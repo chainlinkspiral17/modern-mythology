@@ -174,6 +174,14 @@ no-op (fallback discipline — a script must never crash the reader).
   when_flag line AND its when_not_flag twin so both players get a
   sentence that knows what they did. Roy's scene is the model: Finn
   clears the bowls two ways.
+- **THE INVENTORY is flags with a prefix.** `item:<name>` in `_flags`
+  — no new save shape, no new node type. `"item"` on an option picks
+  up (TAKEN toast, HUD strip), `"drop_item"` uses up, `"needs_item"`
+  hides the option until held. A pick-up verb belongs on a coin (it
+  hides itself like any verb); the use belongs on a LATER choice with
+  `needs_item`, and the use should set a flag a later line reads, or
+  the item vanished for nothing. The capacitor is the model: pocketed
+  at the bench, fitted under the river, remembered at the scene's end.
 - **A coin is a contiguous block, and a helper builds it.** Place
   narrate (optional) · the coin · (branch narrate, `jump goto` back)
   per verb; the exit's goto is the old node the block displaced. In a

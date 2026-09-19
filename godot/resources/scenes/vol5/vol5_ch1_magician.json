@@ -314,9 +314,17 @@
        "hide_if_flag": "ch1_bench_sorted"
       },
       {
+       "text": "pocket a part",
+       "skill": "signal",
+       "goto": 60,
+       "flag": "ch1_bench_pocketed",
+       "hide_if_flag": "ch1_bench_pocketed",
+       "item": "a capacitor"
+      },
+      {
        "text": "leave it",
        "skill": "composure",
-       "goto": 60
+       "goto": 62
       }
      ]
     },
@@ -331,6 +339,14 @@
 {
      "t": "narrate",
      "text": "He sorted by feel, not by value. The parts that wanted to be together found each other's hands. That is not how electronics works. It is how Frasier works."
+    },
+{
+     "t": "jump",
+     "goto": 55
+    },
+    {
+     "t": "narrate",
+     "text": "A capacitor the size of a thumb, rated for something that no longer exists. He put it in his jacket pocket without deciding to. Some parts choose their pocket."
     },
 {
      "t": "jump",
@@ -463,6 +479,33 @@
       "voice": "assets/audio/voice/vol5_ch1_magician/067.mp3"
     },
     {
+     "t": "choice",
+     "prompt": "",
+     "opts": [
+      {
+       "text": "[USE] the capacitor — fit it under the river",
+       "skill": "logic",
+       "needs_item": "a capacitor",
+       "drop_item": "a capacitor",
+       "flag": "ch1_river_capacitor",
+       "goto": 89
+      },
+      {
+       "text": "Set it back down.",
+       "skill": "composure",
+       "goto": 91
+      }
+     ]
+    },
+{
+     "t": "narrate",
+     "text": "He wedged the capacitor under the river's substrate, where the hum lived. The hum changed key. It did not stop. Nothing in this room stops; it only changes key."
+    },
+{
+     "t": "narrate",
+     "text": "He held the riverboat over the changed river and did not set it down. Not yet. But the room had let him closer than it ever had."
+    },
+    {
       "t": "narrate",
       "text": "The phone chirped.",
       "voice": "assets/audio/voice/vol5_ch1_magician/068.mp3"
@@ -512,6 +555,11 @@
       "t": "narrate",
       "text": "The riverboat sat in his palm, weighing what it weighed.",
       "voice": "assets/audio/voice/vol5_ch1_magician/075.mp3"
+    },
+    {
+     "t": "narrate",
+     "when_flag": "ch1_river_capacitor",
+     "text": "Under the river the capacitor held its charge like a held breath. The hum, in its new key, waited to see what he would do."
     },
     {
       "t": "narrate",

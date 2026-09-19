@@ -1793,6 +1793,19 @@ one; seven coins in the game; every verb sets and hides on its own
 flag, the exit lands on the beat that followed. No new shot cues (the
 diner and the Henderson kitchen have no jukebox / stove markers —
 the placing narrate names the object without cueing a lens).
+AND THE INVENTORY (draft 1, same day): items are flags named
+`item:<name>` (they save with everything else); an option may carry
+`item` (picked up — a TAKEN toast), `drop_item` (used up) and
+`needs_item` (shown only while held); HudBar shows the held items as
+a strip of small caps after the chapter whisper. The first item: the
+workbench coin's fourth verb POCKET A PART takes a capacitor; at the
+riverboat a `needs_item` option fits it under the river (the hum
+changes key, it does not stop), uses it up, and the scene's end
+remembers it (`ch1_river_capacitor` read by a when_flag line). NEXT
+for the inventory: an item per model chapter (the napkin, the
+cooler's bottle, the stove's kettle) and one use each across a
+chapter boundary; `drop_item` on a wrong use with a funny line, not a
+fatal one.
 
 **2026-09-17 · DESIGN · the consequence map, and SKILLS EARN (draft 1).**
 The VN's game layer drawn for the first time (`consequence_map.py` →

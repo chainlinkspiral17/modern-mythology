@@ -12,10 +12,10 @@ check's scene, taking the best option at every earlier choice.
 
 | | |
 |---|---|
-| choices | 31 |
+| choices | 32 |
 | skill checks | 5 |
 | checks that cannot pass | 0 |
-| flags set | 65 |
+| flags set | 67 |
 | flags set and never read | 38 |
 
 
@@ -220,9 +220,9 @@ Skills earnable across the volume: none
 | `vol4_casper_met` | vol4_end#0 | **never — loose** |
 
 
-## Volume 5 — 27 scenes · 3 choices · 0 checks
+## Volume 5 — 27 scenes · 4 choices · 0 checks
 
-Skills earnable across the volume: logic 3, composure 3, signal 3
+Skills earnable across the volume: logic 4, composure 4, signal 3
 
 
 ### Choices
@@ -239,7 +239,14 @@ Skills earnable across the volume: logic 3, composure 3, signal 3
 
 - look at → #56 — trains **logic**; sets `ch1_bench_looked`; hidden once `ch1_bench_looked`
 - sort parts → #58 — trains **signal**; sets `ch1_bench_sorted`; hidden once `ch1_bench_sorted`
-- leave it → #60 — trains **composure**
+- pocket a part → #60 — trains **signal**; sets `ch1_bench_pocketed`; hidden once `ch1_bench_pocketed`
+- leave it → #62 — trains **composure**
+
+**vol5_ch1_magician** #88
+> He held it now and considered, again, whether to try.
+
+- [USE] the capacitor — fit it under the river → #89 — trains **logic**; sets `ch1_river_capacitor`
+- Set it back down. → #91 — trains **composure**
 
 **vol5_ch2_priestess** #45
 > Option C — Realize free will is an illusion and embrace the comforting void.
@@ -257,12 +264,14 @@ Skills earnable across the volume: logic 3, composure 3, signal 3
 | `ch0_juke_looked` | vol5_ch0_closing#4 | vol5_ch0_closing#4 (hide_if) |
 | `ch0_juke_played` | vol5_ch0_closing#4 | vol5_ch0_closing#4 (hide_if) |
 | `ch1_bench_looked` | vol5_ch1_magician#55 | vol5_ch1_magician#55 (hide_if) |
+| `ch1_bench_pocketed` | vol5_ch1_magician#55 | vol5_ch1_magician#55 (hide_if) |
 | `ch1_bench_sorted` | vol5_ch1_magician#55 | vol5_ch1_magician#55 (hide_if) |
+| `ch1_river_capacitor` | vol5_ch1_magician#88 | vol5_ch1_magician#99 (when_flag) |
 | `elicia_pick` | vol5_ch2_priestess#46, vol5_ch2_priestess#48, vol5_ch2_priestess#50 | vol5_ch19_sun#53 (when_flag), vol5_ch19_sun#54 (when_flag), vol5_ch19_sun#55 (when_flag), vol5_ch19_sun#56 (when_flag), vol5_ch19_sun#57 (when_flag), vol5_ch19_sun#58 (when_flag) |
 | `nicola_has_dean_note` | vol5_ch3_empress#108 | vol5_ch20_judgement#217 (when_flag), vol5_ch20_judgement#218 (when_flag) |
 | `nicola_pregnant_known` | vol5_ch3_empress#62 | **never — loose** |
 | `vol5_ch0_complete` | vol5_ch0_closing#25 | **never — loose** |
-| `vol5_ch1_complete` | vol5_ch1_magician#110 | **never — loose** |
+| `vol5_ch1_complete` | vol5_ch1_magician#116 | **never — loose** |
 | `vol5_ch2_complete` | vol5_ch2_priestess_b#68 | **never — loose** |
 | `vol5_ch3_complete` | vol5_ch3_empress#124 | **never — loose** |
 

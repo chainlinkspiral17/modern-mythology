@@ -290,6 +290,12 @@ verb coin each.** Seven coins in the game. Next on the design row:
 the inventory the coins feed; the gauntlet's tempo rows; Community
 Planned's masthead. Backgrounds resume when the contact sheet lands.
 
+**Status (2026-09-19, later) · DESIGN · the inventory, draft 1.** Items
+ride in the flags; the HUD carries them; the workbench's capacitor is
+the first thing picked up and used. Next on the design row: an item
+per model chapter with a use across a chapter boundary; then the
+gauntlet's tempo rows.
+
 **Draft targets, by volume, by uses:**
 - **Vol 7 (current):** `cabin_interior` (31) · `lena_apartment` (23)
   · `miller_back_porch` (12, shared with vol 6) · `salty_tome_alley`

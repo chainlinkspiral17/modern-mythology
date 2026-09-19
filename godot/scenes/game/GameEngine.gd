@@ -760,6 +760,13 @@ func _dispatch(n: Dictionary) -> void:
 	if n.has("when_not_flag") and _flags.get(String(n.get("when_not_flag")), false):
 		_run_next()
 		return
+	# THE INVENTORY: any node that PLAYS may pick up or use up an item
+	# ("item" / "drop_item" on a narrate or say) — the handing-over of
+	# a thing is a line, not a choice.
+	if n.has("item"):
+		_give_item(String(n.get("item")))
+	if n.has("drop_item"):
+		_drop_item(String(n.get("drop_item")))
 	match n.get("t", ""):
 		"narrate":    _do_narrate(_directed(n))
 		"say":        _do_say(_directed(n))
