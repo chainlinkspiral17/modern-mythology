@@ -158,6 +158,28 @@ no-op (fallback discipline — a script must never crash the reader).
 
 ## Recent lessons
 
+### 2026-09-19 · a check's pass must land somewhere the fail does not; a flag set by every path remembers nothing
+
+- **Decorative checks.** Two empathy checks had pass and fail pointing
+  at the same node: the plate promised a test and the game could not
+  tell. The fix is one node — a `think` beat the pass alone reaches
+  before the shared line — spliced in by raw text with every
+  goto/pass/fail after it bumped. `vn_skill_audit` counts these as
+  DECORATIVE; keep it at zero.
+- **Unconditional flags.** `vol7_ch7_apology_heard` was a `flag` node
+  at the end of a scene every player passes through: set on every
+  path, so any `when_flag` callback would fire for everyone. A flag
+  is a memory only when a CHOICE sets it — put `"flag"` on the option
+  (the engine applies opt flags), remove the node, and read it with a
+  when_flag line AND its when_not_flag twin so both players get a
+  sentence that knows what they did. Roy's scene is the model: Finn
+  clears the bowls two ways.
+- **Splicing a scene.** Insert at the file's own indentation (the
+  vol 7 files use one-space and four-space styles both), bump
+  `"goto"/"pass"/"fail"` ≥ the index, re-point the check's pass,
+  validate with json.loads and compare every old node's text to its
+  shifted twin before writing. Never re-serialize the file.
+
 ### 2026-09-17 · SKILLS EARN — the check nobody could pass
 
 - **Draw the game layer before designing it.** `consequence_map.py`

@@ -92,11 +92,11 @@
    "opts": [
     {
      "text": "\"What kind of things.\"", "skill": "logic",
-     "goto": 16
+     "goto": 17
     },
     {
      "text": "[Listen. Let him find the order.]", "skill": "empathy",
-     "goto": 16
+     "goto": 17
     },
     {
      "text": "[EMPATHY] His thumb. The held breath. He has been carrying this a long time.",
@@ -104,12 +104,17 @@
       "skill": "empathy",
       "diff": 1,
       "pass": 16,
-      "fail": 16
+      "fail": 17
      }
     }
    ]
   },
   {
+      "t": "think",
+      "char": "Lena",
+      "text": "His thumb went still on the table. He had found the order he was going to tell it in. She let him have it."
+    },
+    {
    "t": "say",
    "char": "Cale",
    "expr": "neutral",

@@ -1746,6 +1746,24 @@ the suite. (The cabin's "planned 0" was right: its lamp and lantern had
 been lit on 09-11 at the file's tail; the hand copies were duplicates,
 now removed, and the audit checks DUPLICATE root names too.)
 
+**2026-09-19 · DESIGN · the two decorative checks made real, the first
+remembered choice.** Nate's basement (ch6) and Tem staying (ch8): the
+empathy checks' pass branches land on a line of their own now (a
+think beat before the shared continuation) — `vn_skill_audit` reports
+0 decorative. The apology (ch8): `vol7_ch7_apology_heard` was set by an
+unconditional node at the end of Finn's speech, so no callback could
+mean anything; it rides the two options that HEAR the apology now
+(listening, and the passed empathy check) and Roy's scene remembers
+either way (a when_flag line and its when_not_flag twin — Finn clears
+the bowls like a man let back into a kitchen, or carefully, unsure of
+his welcome). Loose flags 43 → 42. The splice: nodes inserted by raw
+text at the file's own indentation, every goto/pass/fail ≥ the
+insertion index bumped, the check's pass re-pointed; json.loads and a
+node-by-node text comparison before writing. NEXT: the other loose
+choice flags the same way — vol 1's faust_* set (asked_for_joan,
+black_lodge, dose, dream_woman_held, elem_favored, met_dickens),
+each read once in a later scene of its own volume.
+
 **2026-09-17 · DESIGN · the consequence map, and SKILLS EARN (draft 1).**
 The VN's game layer drawn for the first time (`consequence_map.py` →
 `lore/_VN_CONSEQUENCE_MAP.md`): 28 choices, 5 skill checks, 58 flags

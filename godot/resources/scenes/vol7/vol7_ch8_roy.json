@@ -14,6 +14,16 @@
       "text": "Finn cleared the bowls. Lena cut more bread. Tem sat at the table and watched all three of them moving through the kitchen and did not, for a count of about ten minutes, do anything but watch."
     },
     {
+     "t": "narrate",
+     "when_flag": "vol7_ch7_apology_heard",
+     "text": "Tem had said her two words to Finn and left them there, and they had been enough. He cleared the bowls like a man let back into a kitchen."
+    },
+{
+     "t": "narrate",
+     "when_not_flag": "vol7_ch7_apology_heard",
+     "text": "Tem's all right was still sitting on the table between them. Finn cleared the bowls carefully, the way you clear a table you are not sure you are welcome at."
+    },
+    {
       "t": "narrate",
       "text": "[shot:establish]When the dishes were rinsed and stacked on the small drainer they moved back to the front room. Tem and Finn back on the couch. Kai back in the chair by the window. Lena pulled the kitchen chair into the room and sat in it."
     },

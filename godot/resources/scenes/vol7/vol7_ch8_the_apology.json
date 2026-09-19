@@ -126,6 +126,7 @@
    "opts": [
     {
      "text": "Listen. Say nothing.", "skill": "empathy",
+     "flag": "vol7_ch7_apology_heard",
      "goto": 23
     },
     {
@@ -134,6 +135,7 @@
     },
     {
      "text": "[EMPATHY] She already knew. She's been waiting for someone to say it.",
+     "flag": "vol7_ch7_apology_heard",
      "check": {
       "skill": "empathy",
       "diff": 2,

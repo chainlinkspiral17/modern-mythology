@@ -124,7 +124,7 @@
    "opts": [
     {
      "text": "\"Yeah. Stay.\"", "skill": "empathy",
-     "goto": 23
+     "goto": 24
     },
     {
      "text": "[EMPATHY] You feel the ask in it — not just for a place to sleep.",
@@ -132,12 +132,17 @@
       "skill": "empathy",
       "diff": 3,
       "pass": 23,
-      "fail": 23
+      "fail": 24
      }
     }
    ]
   },
   {
+      "t": "think",
+      "char": "Lena",
+      "text": "Not a place to sleep. A place to be, tonight, where the day had happened — with someone who had been in it. Lena heard the whole of it."
+    },
+    {
    "t": "say",
    "char": "Lena",
    "expr": "warm",

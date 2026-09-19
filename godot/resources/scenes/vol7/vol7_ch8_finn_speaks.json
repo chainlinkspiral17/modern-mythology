@@ -112,11 +112,6 @@
    "text": "[shot:establish]She picked up her spoon. She finished the soup."
   },
   {
-   "t": "flag",
-   "key": "vol7_ch7_apology_heard",
-   "val": true
-  },
-  {
    "t": "jump",
    "scene": "vol7_ch8_roy"
   }

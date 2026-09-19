@@ -16,7 +16,7 @@ check's scene, taking the best option at every earlier choice.
 | skill checks | 5 |
 | checks that cannot pass | 0 |
 | flags set | 58 |
-| flags set and never read | 43 |
+| flags set and never read | 42 |
 
 
 ## Volume 1 — 43 scenes · 12 choices · 2 checks
@@ -312,9 +312,9 @@ Skills earnable across the volume: empathy 5, logic 4, composure 5, rhetoric 2, 
 **vol7_ch6_nate** #15
 > Either he was at work in Newport or he was upstairs with the door shut. Nate had the run of the house. He had the run of the basement. He had built things in th
 
-- "What kind of things." → #16 — trains **logic**
-- [Listen. Let him find the order.] → #16 — trains **empathy**
-- [EMPATHY] His thumb. The held breath. He has been carrying this a long time. → next — CHECK empathy ≥ 1 (pass #16 / fail #16)
+- "What kind of things." → #17 — trains **logic**
+- [Listen. Let him find the order.] → #17 — trains **empathy**
+- [EMPATHY] His thumb. The held breath. He has been carrying this a long time. → next — CHECK empathy ≥ 1 (pass #16 / fail #17)
 
 **vol7_ch6_why_lena** #2
 > She sat with her hands in her lap. The chair under her was a folding metal one Cale had probably grabbed out of the closet when his mother visited at Christmas.
@@ -325,15 +325,15 @@ Skills earnable across the volume: empathy 5, logic 4, composure 5, rhetoric 2, 
 **vol7_ch8_the_apology** #21
 > Tem looked at him.
 
-- Listen. Say nothing. → #23 — trains **empathy**
+- Listen. Say nothing. → #23 — trains **empathy**; sets `vol7_ch7_apology_heard`
 - "All right." → #22 — trains **composure**
-- [EMPATHY] She already knew. She's been waiting for someone to say it. → next — CHECK empathy ≥ 2 (pass #24 / fail #22)
+- [EMPATHY] She already knew. She's been waiting for someone to say it. → next — CHECK empathy ≥ 2 (pass #24 / fail #22); sets `vol7_ch7_apology_heard`
 
 **vol7_ch8_goodnight** #22
 > She said it to Lena.
 
-- "Yeah. Stay." → #23 — trains **empathy**
-- [EMPATHY] You feel the ask in it — not just for a place to sleep. → next — CHECK empathy ≥ 3 (pass #23 / fail #23)
+- "Yeah. Stay." → #24 — trains **empathy**
+- [EMPATHY] You feel the ask in it — not just for a place to sleep. → next — CHECK empathy ≥ 3 (pass #23 / fail #24)
 
 **vol7_ch10_cabin** #98 · verb coin on **Per's box**
 > Per set the wooden box on the table, between the bowls, and did not open it. Nobody asked him to. The kettle ticked toward its whistle.
@@ -360,9 +360,9 @@ Skills earnable across the volume: empathy 5, logic 4, composure 5, rhetoric 2, 
 
 | scene | skill | diff | earnable before | pass ≠ fail | verdict |
 |---|---|---|---|---|---|
-| vol7_ch6_nate #15 | empathy | 1 | 1 | no — decorative | passable |
+| vol7_ch6_nate #15 | empathy | 1 | 1 | yes | passable |
 | vol7_ch8_the_apology #21 | empathy | 2 | 3 | yes | passable |
-| vol7_ch8_goodnight #22 | empathy | 3 | 4 | no — decorative | passable |
+| vol7_ch8_goodnight #22 | empathy | 3 | 4 | yes | passable |
 
 ### Flags
 
@@ -375,8 +375,8 @@ Skills earnable across the volume: empathy 5, logic 4, composure 5, rhetoric 2, 
 | `ch20_bowls_looked` | vol7_ch20_wall#14 | vol7_ch20_wall#14 (hide_if) |
 | `ch20_bowls_touched` | vol7_ch20_wall#14 | vol7_ch20_wall#14 (hide_if) |
 | `vol7_ch6_complete` | vol7_ch6_get_going#9 | **never — loose** |
-| `vol7_ch7_apology_heard` | vol7_ch8_finn_speaks#19 | **never — loose** |
+| `vol7_ch7_apology_heard` | vol7_ch8_the_apology#21, vol7_ch8_the_apology#21 | vol7_ch8_roy#2 (when_flag), vol7_ch8_roy#3 (when_not_flag) |
 | `vol7_ch7_complete` | vol7_ch8_dark#22 | **never — loose** |
-| `vol7_ch7_tem_stays` | vol7_ch8_goodnight#28 | **never — loose** |
+| `vol7_ch7_tem_stays` | vol7_ch8_goodnight#29 | **never — loose** |
 | `vol7_ch7_vessel_understood` | vol7_ch8_the_vessel#27 | **never — loose** |
 

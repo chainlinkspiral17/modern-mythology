@@ -269,6 +269,12 @@ rooms. Next: the cathedral exterior the Magician cuts to; then the
 single-use presets in batches (D2 + light), then the model chapters'
 verification sweeps.
 
+**Status (2026-09-19, later) · DESIGN · the two decorative checks are
+real, the apology is a remembered choice.** The backgrounds pass is at
+the Deck-gated boundary (single-use presets from the sheet's worst
+frames), so the design row runs: next the vol 1 faust_* flags paid off
+one callback each.
+
 **Draft targets, by volume, by uses:**
 - **Vol 7 (current):** `cabin_interior` (31) · `lena_apartment` (23)
   · `miller_back_porch` (12, shared with vol 6) · `salty_tome_alley`
