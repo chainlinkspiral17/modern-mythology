@@ -462,6 +462,17 @@ The thirteenth room of the backgrounds pass (lore/_VISUAL_PROGRAM.md
 - **A squashed blob is a full sphere to the recorder.** `make_blob`
   with squash 0.22 on a floor is a 0.15 m clip in the gate. A shallow
   mound is a lathe (`[(0,0),(r,0),(0.9r,h/3),(0.6r,0.75h),(0,h)]`).
+- **Props are placed against furniture by COORDINATE, and furniture
+  moves (finn_apartment, same day).** The desk moved to the east
+  wall on 09-07, the bed north on 09-10; the phone, the notebook,
+  the reader and the headset stayed at the old numbers — two beside
+  the desk in the air, two hovering 10 cm over the perch chair — and
+  the desk-lamp practical stayed at the old lamp. Nothing gated it:
+  a floating prop overlaps nothing, and the orphan gate's 1.5 m
+  drift is wider than a desk. When a piece of furniture moves, grep
+  the builder AND the tscn for everything that was set against it;
+  better, anchor props to the furniture's variables (`DESK_X`,
+  `BED_Y`) so they move with it.
 - Cue-word discipline, again: `matches_for` splits names on `_` and
   CamelCase and matches PARTS whole — Wear_Grip, Wear_Kick, Wear_Edge,
   Hemlock_*, FOH_* carry none of box/bag/bowl/crow/hands/mixer/window/

@@ -212,6 +212,15 @@ curbs, which is what the LANE rule measures from), the block given
 its corners. Next: finn_apartment, then vol 1's missing_link_interior
 and shuttle_bench, then the arcana sets' primitive upgrade.
 
+**Status (2026-09-19, later) · finn_apartment draft 3 shipped, unseen.**
+Sixteen rooms deep — the vol 7 second tier is through (bakery, road,
+Board Lords + Main, Finn's). The room's own lesson: three hero props
+were placed against furniture that had since moved (the desk on
+09-07, the bed on 09-10) and floated where the furniture used to
+be; the practical stayed behind too. Next: vol 1's
+missing_link_interior and shuttle_bench, then the arcana sets'
+primitive upgrade (vol 5), then the single-use presets in batches.
+
 **Draft targets, by volume, by uses:**
 - **Vol 7 (current):** `cabin_interior` (31) · `lena_apartment` (23)
   · `miller_back_porch` (12, shared with vol 6) · `salty_tome_alley`
