@@ -452,6 +452,16 @@ The thirteenth room of the backgrounds pass (lore/_VISUAL_PROGRAM.md
 - **Anything lying on the road gets buried when the road rises.**
   The tire-line boxes (z 0.033) ran 2.7 m into the new fill. When a
   surface moves, grep for every object that sat on it.
+- **A road box ends at the curb (board_lords, same day).** Main ran
+  under both sidewalks (y -8.7..-0.2), so the LANE rule — a car's
+  centre within 1.4 m of the road's long edge — could not be met by
+  any car that was not on the sidewalk, and the 09-07 "move it to the
+  curb" had put Finn's truck ON the sidewalk to satisfy it. The road
+  is the strip between the curbs; sidewalks and curbs are their own
+  slabs beside it.
+- **A squashed blob is a full sphere to the recorder.** `make_blob`
+  with squash 0.22 on a floor is a 0.15 m clip in the gate. A shallow
+  mound is a lathe (`[(0,0),(r,0),(0.9r,h/3),(0.6r,0.75h),(0,h)]`).
 - Cue-word discipline, again: `matches_for` splits names on `_` and
   CamelCase and matches PARTS whole — Wear_Grip, Wear_Kick, Wear_Edge,
   Hemlock_*, FOH_* carry none of box/bag/bowl/crow/hands/mixer/window/

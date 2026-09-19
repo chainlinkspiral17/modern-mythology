@@ -204,6 +204,14 @@ tree kit gained `make_fern`. Next: board_lords_interior (its scene
 also serves the `main_street` preset — 15 placements together),
 finn_apartment, then vol 1's missing_link and shuttle_bench.
 
+**Status (2026-09-19, later) · board_lords_interior draft 3 shipped,
+unseen.** Fifteen rooms deep; this one carries two presets (the shop
+and `main_street`). Four layout clips fixed by hand, Finn's truck off
+the sidewalk into the parking lane (the road box now ends at the
+curbs, which is what the LANE rule measures from), the block given
+its corners. Next: finn_apartment, then vol 1's missing_link_interior
+and shuttle_bench, then the arcana sets' primitive upgrade.
+
 **Draft targets, by volume, by uses:**
 - **Vol 7 (current):** `cabin_interior` (31) · `lena_apartment` (23)
   · `miller_back_porch` (12, shared with vol 6) · `salty_tome_alley`
