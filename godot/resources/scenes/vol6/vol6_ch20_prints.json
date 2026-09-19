@@ -36,6 +36,53 @@
       "text": "He pulls into his parents' driveway at ten thirty-eight. His mother's car is in the driveway. His father's truck is also in the driveway. The kitchen light is on."
     },
     {
+     "t": "narrate",
+     "text": "On the stove, the kettle his mother uses and his father does not. Cold."
+    },
+{
+     "t": "choice",
+     "style": "verb_coin",
+     "hotspot": "the stove",
+     "prompt": "",
+     "opts": [
+      {
+       "text": "look at",
+       "skill": "logic",
+       "goto": 9,
+       "flag": "ch20_stove_looked",
+       "hide_if_flag": "ch20_stove_looked"
+      },
+      {
+       "text": "put the kettle on",
+       "skill": "empathy",
+       "goto": 11,
+       "flag": "ch20_kettle_on",
+       "hide_if_flag": "ch20_kettle_on"
+      },
+      {
+       "text": "leave it",
+       "skill": "composure",
+       "goto": 13
+      }
+     ]
+    },
+{
+     "t": "narrate",
+     "text": "One burner's grate is cleaner than the other three. Since June, one burner."
+    },
+{
+     "t": "jump",
+     "goto": 8
+    },
+{
+     "t": "narrate",
+     "text": "He fills it and sets it on the clean burner and does not say why. His father does not ask why. The click of the igniter is the loudest thing in the room."
+    },
+{
+     "t": "jump",
+     "goto": 8
+    },
+    {
       "t": "show",
       "char": "jim",
       "expr": "neutral",

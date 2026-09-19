@@ -285,6 +285,11 @@ choice-target gate added, vol 2's house remembered.** vol 1's opening
 ended the volume on two of three options; vol 2's graveyard looped.
 `vn_target_audit.py` gates every goto/pass/fail from here on.
 
+**Status (2026-09-19, later) · DESIGN · the four model chapters carry a
+verb coin each.** Seven coins in the game. Next on the design row:
+the inventory the coins feed; the gauntlet's tempo rows; Community
+Planned's masthead. Backgrounds resume when the contact sheet lands.
+
 **Draft targets, by volume, by uses:**
 - **Vol 7 (current):** `cabin_interior` (31) · `lena_apartment` (23)
   · `miller_back_porch` (12, shared with vol 6) · `salty_tome_alley`
@@ -403,9 +408,9 @@ a pass branch; the model-chapter verb coins.
   choice plate that says which skill is listening).
 - **Verb coins on the four model chapters** (the bible's queue): the
   diner's jukebox, the kwik stop's back cooler, the cathedral's
-  workbench, the Henderson stove — and the INVENTORY the coins feed
-  (`only_if_flag` already gates on it). Wrong answers funny, not
-  fatal.
+  workbench, the Henderson stove — SHIPPED 2026-09-19 (all four) —
+  and the INVENTORY the coins feed (`only_if_flag` already gates on
+  it). Wrong answers funny, not fatal.
 - **The gauntlet's tempo rows:** score bursts on chained rounds, tempo
   as the difficulty axis, a per-arcana high-score card; the bed for
   the seventeen arcana still on shared drones.

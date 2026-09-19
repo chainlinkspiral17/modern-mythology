@@ -12,10 +12,10 @@ check's scene, taking the best option at every earlier choice.
 
 | | |
 |---|---|
-| choices | 28 |
+| choices | 31 |
 | skill checks | 5 |
 | checks that cannot pass | 0 |
-| flags set | 59 |
+| flags set | 65 |
 | flags set and never read | 38 |
 
 
@@ -220,12 +220,26 @@ Skills earnable across the volume: none
 | `vol4_casper_met` | vol4_end#0 | **never — loose** |
 
 
-## Volume 5 — 27 scenes · 1 choices · 0 checks
+## Volume 5 — 27 scenes · 3 choices · 0 checks
 
-Skills earnable across the volume: logic 1, composure 1, signal 1
+Skills earnable across the volume: logic 3, composure 3, signal 3
 
 
 ### Choices
+
+**vol5_ch0_closing** #4 · verb coin on **the jukebox**
+> The jukebox in the corner had been blinking through its red eye all night, unfed. It blinked now at an empty room.
+
+- look at → #5 — trains **logic**; sets `ch0_juke_looked`; hidden once `ch0_juke_looked`
+- play b4 → #7 — trains **signal**; sets `ch0_juke_played`; hidden once `ch0_juke_played`
+- leave it → #9 — trains **composure**
+
+**vol5_ch1_magician** #55 · verb coin on **the workbench**
+> He grabbed a handful of scavenged components from the workbench — chipped RAM sticks like fossilized teeth. Capacitors swollen like toadstools after a hard rain
+
+- look at → #56 — trains **logic**; sets `ch1_bench_looked`; hidden once `ch1_bench_looked`
+- sort parts → #58 — trains **signal**; sets `ch1_bench_sorted`; hidden once `ch1_bench_sorted`
+- leave it → #60 — trains **composure**
 
 **vol5_ch2_priestess** #45
 > Option C — Realize free will is an illusion and embrace the comforting void.
@@ -240,18 +254,22 @@ Skills earnable across the volume: logic 1, composure 1, signal 1
 |---|---|---|
 | `aria_active` | vol5_ch3_empress#34 | **never — loose** |
 | `aria_named_by_nicola` | vol5_ch3_empress#63 | vol5_ch18_moon#149 (when_flag), vol5_ch18_moon#150 (when_flag), vol5_ch18_moon#151 (when_flag) |
+| `ch0_juke_looked` | vol5_ch0_closing#4 | vol5_ch0_closing#4 (hide_if) |
+| `ch0_juke_played` | vol5_ch0_closing#4 | vol5_ch0_closing#4 (hide_if) |
+| `ch1_bench_looked` | vol5_ch1_magician#55 | vol5_ch1_magician#55 (hide_if) |
+| `ch1_bench_sorted` | vol5_ch1_magician#55 | vol5_ch1_magician#55 (hide_if) |
 | `elicia_pick` | vol5_ch2_priestess#46, vol5_ch2_priestess#48, vol5_ch2_priestess#50 | vol5_ch19_sun#53 (when_flag), vol5_ch19_sun#54 (when_flag), vol5_ch19_sun#55 (when_flag), vol5_ch19_sun#56 (when_flag), vol5_ch19_sun#57 (when_flag), vol5_ch19_sun#58 (when_flag) |
 | `nicola_has_dean_note` | vol5_ch3_empress#108 | vol5_ch20_judgement#217 (when_flag), vol5_ch20_judgement#218 (when_flag) |
 | `nicola_pregnant_known` | vol5_ch3_empress#62 | **never — loose** |
-| `vol5_ch0_complete` | vol5_ch0_closing#19 | **never — loose** |
-| `vol5_ch1_complete` | vol5_ch1_magician#105 | **never — loose** |
+| `vol5_ch0_complete` | vol5_ch0_closing#25 | **never — loose** |
+| `vol5_ch1_complete` | vol5_ch1_magician#110 | **never — loose** |
 | `vol5_ch2_complete` | vol5_ch2_priestess_b#68 | **never — loose** |
 | `vol5_ch3_complete` | vol5_ch3_empress#124 | **never — loose** |
 
 
-## Volume 6 — 118 scenes · 3 choices · 0 checks
+## Volume 6 — 118 scenes · 4 choices · 0 checks
 
-Skills earnable across the volume: empathy 2, logic 2, composure 2, signal 1
+Skills earnable across the volume: empathy 3, logic 3, composure 3, signal 1
 
 
 ### Choices
@@ -275,12 +293,21 @@ Skills earnable across the volume: empathy 2, logic 2, composure 2, signal 1
 - watch him → #14 — trains **signal**; sets `ch2_cooler_watched`; hidden once `ch2_cooler_watched`
 - say nothing → #16 — trains **composure**
 
+**vol6_ch20_prints** #8 · verb coin on **the stove**
+> On the stove, the kettle his mother uses and his father does not. Cold.
+
+- look at → #9 — trains **logic**; sets `ch20_stove_looked`; hidden once `ch20_stove_looked`
+- put the kettle on → #11 — trains **empathy**; sets `ch20_kettle_on`; hidden once `ch20_kettle_on`
+- leave it → #13 — trains **composure**
+
 ### Flags
 
 | flag | set at | read at |
 |---|---|---|
 | `ben_has_list` | vol6_ch3_pit_stop_office#26 | **never — loose** |
 | `ben_has_prints` | vol6_ch2_dumpster#104 | **never — loose** |
+| `ch20_kettle_on` | vol6_ch20_prints#8 | vol6_ch20_prints#8 (hide_if) |
+| `ch20_stove_looked` | vol6_ch20_prints#8 | vol6_ch20_prints#8 (hide_if) |
 | `ch2_cooler_looked` | vol6_ch2_kwik_stop#11 | vol6_ch2_kwik_stop#11 (hide_if) |
 | `ch2_cooler_watched` | vol6_ch2_kwik_stop#11 | vol6_ch2_kwik_stop#11 (hide_if) |
 | `graciela_answer` | vol6_ch1_graciela#26, vol6_ch1_graciela#26 | vol6_ch7_safehouse#22 (when_flag), vol6_ch7_safehouse#23 (when_flag) |

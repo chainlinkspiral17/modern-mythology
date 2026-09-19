@@ -174,6 +174,12 @@ no-op (fallback discipline — a script must never crash the reader).
   when_flag line AND its when_not_flag twin so both players get a
   sentence that knows what they did. Roy's scene is the model: Finn
   clears the bowls two ways.
+- **A coin is a contiguous block, and a helper builds it.** Place
+  narrate (optional) · the coin · (branch narrate, `jump goto` back)
+  per verb; the exit's goto is the old node the block displaced. In a
+  scene with no index references the splice needs no bumping; the
+  target gate confirms every goto lands on a line. Three shipped this
+  way in one pass (jukebox, workbench, stove).
 - **Indices nobody checked.** vol1_ch1_s2 sent two of its three
   branches to `jump vol1_end` (the volume ended before the replies);
   vol2_graveyard's first option pointed two nodes back and re-opened

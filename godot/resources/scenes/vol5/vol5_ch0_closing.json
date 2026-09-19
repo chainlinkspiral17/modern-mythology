@@ -20,6 +20,53 @@
       "voice": "assets/audio/voice/vol5_ch0_closing/001.mp3"
     },
     {
+     "t": "narrate",
+     "text": "The jukebox in the corner had been blinking through its red eye all night, unfed. It blinked now at an empty room."
+    },
+{
+     "t": "choice",
+     "style": "verb_coin",
+     "hotspot": "the jukebox",
+     "prompt": "",
+     "opts": [
+      {
+       "text": "look at",
+       "skill": "logic",
+       "goto": 5,
+       "flag": "ch0_juke_looked",
+       "hide_if_flag": "ch0_juke_looked"
+      },
+      {
+       "text": "play b4",
+       "skill": "signal",
+       "goto": 7,
+       "flag": "ch0_juke_played",
+       "hide_if_flag": "ch0_juke_played"
+      },
+      {
+       "text": "leave it",
+       "skill": "composure",
+       "goto": 9
+      }
+     ]
+    },
+{
+     "t": "narrate",
+     "text": "The selection card was a decade out of date. Somebody had crossed out A7 in ballpoint and written the same title back in, in the same ballpoint."
+    },
+{
+     "t": "jump",
+     "goto": 4
+    },
+{
+     "t": "narrate",
+     "text": "He did not put a quarter in. It played anyway, low — the song the man in booth six had been humming. The machine had a working theory too."
+    },
+{
+     "t": "jump",
+     "goto": 4
+    },
+    {
       "t": "narrate",
       "text": "[stage:john stool][shot:insert notebook]He sat down on the stool Frasier had just vacated, opened his notebook, and began to write. His pen moved in the frantic, slightly desperate scratching that had become his only reliable response to being in the presence of Frasier Temple.",
       "voice": "assets/audio/voice/vol5_ch0_closing/002.mp3"

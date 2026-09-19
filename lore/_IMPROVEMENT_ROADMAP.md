@@ -1782,6 +1782,17 @@ was a hand-typed index nothing checked. Fixed, and gated:
 ONTO_JUMP listed as info — "Listen. Say nothing." legitimately jumps).
 The graveyard's decision is a memory now (`vol2_house_decision` =
 sell | wait | ask, read three ways in vol2_end).
+AND THE MODEL-CHAPTER VERB COINS (the bible's queue, §6): the diner's
+jukebox in ch0_closing (LOOK AT · PLAY B4 · LEAVE IT — it plays the
+booth-six song unfed), the cathedral's workbench right after the
+Magician's workbench beat (LOOK AT · SORT PARTS — by feel, not value
+— · LEAVE IT), the Henderson stove at the prints chapter's kitchen
+door (LOOK AT — one burner cleaner since June — · PUT THE KETTLE ON ·
+LEAVE IT). With the kwik stop's cooler, all four model chapters carry
+one; seven coins in the game; every verb sets and hides on its own
+flag, the exit lands on the beat that followed. No new shot cues (the
+diner and the Henderson kitchen have no jukebox / stove markers —
+the placing narrate names the object without cueing a lens).
 
 **2026-09-17 · DESIGN · the consequence map, and SKILLS EARN (draft 1).**
 The VN's game layer drawn for the first time (`consequence_map.py` →

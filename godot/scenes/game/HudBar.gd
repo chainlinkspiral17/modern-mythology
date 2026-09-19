@@ -17,6 +17,8 @@ const VOL_TITLES: Dictionary = {
 var _dot_rects: Dictionary = {}
 var _chapter_lbl: Label = null
 var _chapter_text: String = ""
+var _items_lbl: Label = null
+var _items_text: String = ""
 
 
 func setup(skin: Dictionary, vol: int, skills: Dictionary, _unused: Variant = null) -> void:
@@ -35,6 +37,20 @@ func set_chapter(text: String) -> void:
 	if _chapter_lbl != null and is_instance_valid(_chapter_lbl):
 		_chapter_lbl.text = text
 		_chapter_lbl.visible = text != ""
+
+
+## THE INVENTORY strip (2026-09-19): what the reader is carrying, as
+## small caps after the chapter whisper — "· a capacitor · the napkin".
+## Empty hands show nothing. Survives setup() rebuilds like the
+## chapter text.
+func update_items(items: Array[String]) -> void:
+	var parts: Array[String] = []
+	for it in items:
+		parts.append(it.to_upper())
+	_items_text = ("· " + " · ".join(parts)) if not parts.is_empty() else ""
+	if _items_lbl != null and is_instance_valid(_items_lbl):
+		_items_lbl.text = _items_text
+		_items_lbl.visible = _items_text != ""
 
 
 func update_skills(skills: Dictionary) -> void:
@@ -92,6 +108,18 @@ func _build(skin: Dictionary, vol: int, skills: Dictionary) -> void:
 	if ResourceLoader.exists(SkinDB.F_IMFELL_I):
 		_chapter_lbl.add_theme_font_override("font", load(SkinDB.F_IMFELL_I) as Font)
 	row.add_child(_chapter_lbl)
+
+	# The items strip — the same dim serif, a step dimmer.
+	_items_lbl = Label.new()
+	_items_lbl.text = _items_text
+	_items_lbl.visible = _items_text != ""
+	_items_lbl.vertical_alignment = VERTICAL_ALIGNMENT_CENTER
+	_items_lbl.add_theme_font_size_override("font_size", 11)
+	_items_lbl.add_theme_color_override("font_color",
+			Color(hud_col.r, hud_col.g, hud_col.b, 0.45))
+	if ResourceLoader.exists(hud_font):
+		_items_lbl.add_theme_font_override("font", load(hud_font) as Font)
+	row.add_child(_items_lbl)
 
 	var sp1 := Control.new()
 	sp1.size_flags_horizontal = Control.SIZE_EXPAND_FILL

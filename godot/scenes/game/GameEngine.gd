@@ -495,6 +495,7 @@ func _load_scene(scene_id: String, start_at: int = 0) -> void:
 	_unlock_gallery_for_scene(scene_id)
 	_apply_chapter_music_context(scene_id)
 	# Persistent chapter echo in the HUD (the plate's quiet twin).
+	_refresh_items()
 	if _hud != null and _hud.has_method("set_chapter"):
 		var ch := str(_scene_data.get("chapter", "")).strip_edges()
 		var ttl := String(_scene_data.get("title", "")).strip_edges()
@@ -907,6 +908,11 @@ func _do_choice(n: Dictionary) -> void:
 			continue
 		if o.has("only_if_flag") and not bool(_flags.get(String(o.get("only_if_flag")), false)):
 			continue
+		# THE INVENTORY (2026-09-19, design row): an option with
+		# "needs_item" shows only while that item is held. Items ride
+		# in _flags as "item:<name>" so they save with everything else.
+		if o.has("needs_item") and not _has_item(String(o.get("needs_item"))):
+			continue
 		opts.append(o)
 	if opts.is_empty():
 		_dlg.visible = true
@@ -922,6 +928,12 @@ func _do_choice(n: Dictionary) -> void:
 			# choice to be remembered without goto-index surgery.
 			if opt.has("flag"):
 				_flags[String(opt["flag"])] = opt.get("val", true)
+			# An option may pick something up ("item") or use it up
+			# ("drop_item"); the HUD's ITEMS strip follows.
+			if opt.has("item"):
+				_give_item(String(opt["item"]))
+			if opt.has("drop_item"):
+				_drop_item(String(opt["drop_item"]))
 			# SKILLS EARN (2026-09-17). An option with "skill" trains
 			# that skill by one (or "amount") when taken — the choice IS
 			# the practice. Before this, nothing in the game ever raised
@@ -947,6 +959,49 @@ func _do_choice(n: Dictionary) -> void:
 # skill ONCE per playthrough. The vol 1 diner hub loops back to its
 # choice after every exploration, and "Read the laminated menu" must
 # not be a logic mill. The spent keys ride in _flags, so they save.
+# ── THE INVENTORY (2026-09-19) ───────────────────────────────────
+# SCUMM grammar's second half: a verb coin can PICK UP, and a later
+# option can need what was picked up. Held items are flags named
+# "item:<name>" (they save, they survive a scene load); the HUD bar
+# shows them as a strip of small caps beside the chapter whisper.
+const ITEM_PREFIX := "item:"
+
+
+func _has_item(name: String) -> bool:
+	return bool(_flags.get(ITEM_PREFIX + name, false))
+
+
+func _held_items() -> Array[String]:
+	var out: Array[String] = []
+	for k in _flags.keys():
+		var key: String = String(k)
+		if key.begins_with(ITEM_PREFIX) and bool(_flags[k]):
+			out.append(key.substr(ITEM_PREFIX.length()))
+	out.sort()
+	return out
+
+
+func _give_item(name: String) -> void:
+	if name == "" or _has_item(name):
+		return
+	_flags[ITEM_PREFIX + name] = true
+	_refresh_items()
+	if _toast != null:
+		_toast.call("show_toast", {"title": "TAKEN", "subtitle": name})
+
+
+func _drop_item(name: String) -> void:
+	if not _has_item(name):
+		return
+	_flags.erase(ITEM_PREFIX + name)
+	_refresh_items()
+
+
+func _refresh_items() -> void:
+	if _hud != null and _hud.has_method("update_items"):
+		_hud.call("update_items", _held_items())
+
+
 func _train_skill(skill: String, amount: int, once_key: String = "") -> void:
 	if skill == "" or not _skills.has(skill) or amount == 0:
 		return
