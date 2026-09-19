@@ -406,3 +406,12 @@ light_color = Color(0.920, 0.920, 0.850, 1)
 light_energy = 1.30
 shadow_enabled = false
 omni_range = 4.67
+
+; ── draft 4 (2026-09-18): the EXIT sign over the door ──
+; blender (0.0, 0.14, 2.58) → godot (0.0, 2.58, -0.14). Red phosphor, small.
+[node name="Exit_Sign_Practical" type="OmniLight3D" parent="."]
+position = Vector3(0.000, 2.580, -0.140)
+light_color = Color(1.000, 0.300, 0.250, 1)
+light_energy = 0.50
+shadow_enabled = false
+omni_range = 1.60

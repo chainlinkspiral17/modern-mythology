@@ -19,12 +19,29 @@ playing surface. Now a real high-school gridiron:
 
 Coords: x = sideline-to-sideline (0 = midfield), y = downfield,
 z = up. The Background3D camera sits just behind the south end line
-looking downfield — the whole field runs away from it."""
+looking downfield — the whole field runs away from it.
+
+DRAFT 4 (2026-09-18, lore/_VISUAL_PROGRAM.md §3): tapered light poles
+on base plates with conduit and a transformer box, hooded lamps,
+lathed fence posts and a chain-link mesh, the four staged vehicles from
+the vehicle kit, Eileen's chair a folding chair; an exterior's WEAR
+(the worn band between the hashes, the goal mouths, dirt under both
+benches, the sideline path from the gate, the gate's tread); D3 (the
+field house's light over its door — the corkboard is read under it —
+the scoreboard's cable and box, the goalposts' pads). The .tscn gains
+the field-house lamp.
+
+DRAFT 5 targets: the spectators and players as figures with a pose
+(the class belongs in _props); the bleachers' underside; the press box;
+the scoreboard's digits as digits; the parking lot's lamp practicals at
+dusk; Deck: the sheet's establish at dusk and `insert corkboard`.
+"""
 import os, sys, math
 _BT = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)), ".."))
 if _BT not in sys.path: sys.path.insert(0, _BT)
 from _props import palette as P
-from _props.geometry import clear_scene, make_box, make_cyl, export_glb
+from _props.geometry import (clear_scene, make_box, make_cyl, make_lathe, make_tube,
+                             make_rot_box, make_chamfer_box, make_taper_cyl, export_glb)
 
 YD = 0.9144
 FIELD_W   = 53.333 * YD          # 48.77 sideline to sideline
@@ -253,7 +270,11 @@ def build_floodlights():
                                    (+(SIDE_X + 9.5), GL_S + 15.0 * YD),
                                    (+(SIDE_X + 9.5), MID_Y),
                                    (+(SIDE_X + 9.5), GL_N - 15.0 * YD))):
-        make_cyl(f"Pole_{pi}", (px, py, 9.0), 0.16, 18.0, COL_POLE, segments=8)
+        # draft 4 (2026-09-18): a tapered pole on its base plate, the
+        # conduit up the field side, a transformer box at the foot
+        make_lathe(f"Pole_{pi}", (px, py, 0.0), [(0.34, 0.0), (0.34, 0.04), (0.19, 0.06), (0.17, 6.0), (0.13, 12.0), (0.10, 18.0), (0.0, 18.0)], COL_POLE, segments=10)
+        make_tube(f"Pole_{pi}_Conduit", [(px + (1.0 if px < 0 else -1.0) * 0.20, py + 0.10, 0.4), (px + (1.0 if px < 0 else -1.0) * 0.19, py + 0.10, 16.4)], 0.03, (0.36, 0.36, 0.38, 1.0), segments=5)
+        make_chamfer_box(f"Pole_{pi}_Box", (px + (1.0 if px < 0 else -1.0) * 0.45, py + 0.55, 0.45), (0.40, 0.30, 0.70), (0.36, 0.38, 0.36, 1.0), chamfer=0.015)
         toward = 1.0 if px < 0 else -1.0
         # Bank faces the FIELD: wide along y, hung on the field side
         # of its pole.
@@ -263,6 +284,8 @@ def build_floodlights():
             lz = -0.5 + (li // 4) * 0.5
             make_cyl(f"Lamp_{pi}_{li}", (px + toward * 0.80, py + ly, 17.2 + lz),
                      0.14, 0.10, COL_LAMP, axis='X', segments=8)
+            make_cyl(f"Lamp_{pi}_{li}_Hood", (px + toward * 0.74, py + ly, 17.2 + lz),
+                     0.17, 0.06, (0.22, 0.22, 0.24, 1.0), axis='X', segments=10)
 
 
 def build_fence():
@@ -272,7 +295,8 @@ def build_fence():
     fy = FIELD_LEN + 2.6
     for i in range(n):
         fx = -fw / 2.0 + i * (fw / (n - 1))
-        make_cyl(f"FencePost_{i}", (fx, fy, 0.6), 0.03, 1.2, COL_METAL, segments=6)
+        make_lathe(f"FencePost_{i}", (fx, fy, 0.0), [(0.03, 0.0), (0.03, 1.18), (0.035, 1.20), (0.0, 1.22)], COL_METAL, segments=6)
+    make_box("Fence_Mesh", (0.0, fy, 0.62), (fw, 0.008, 1.10), (0.62, 0.64, 0.66, 0.28))   # draft 4: the chain-link reads
     make_box("FenceRail_Top", (0.0, fy, 1.15), (fw, 0.03, 0.04), COL_METAL)
     make_box("FenceRail_Mid", (0.0, fy, 0.60), (fw, 0.03, 0.04), COL_METAL)
 
@@ -313,23 +337,26 @@ def build_hero_props():
     make_box("Parking_Lot", (0.0, -12.0, 0.01), (56.0, 16.0, 0.04), (0.24, 0.24, 0.26, 1.0))
     for si in range(10):
         make_box(f"Lot_Stripe_{si}", (-18.0 + si * 4.0, -6.4, 0.035), (0.10, 2.2, 0.01), (0.72, 0.70, 0.60, 1.0))
-    make_box("F250_Body", (13.5, -6.8, 0.85), (2.0, 4.6, 0.85), (0.62, 0.20, 0.18, 1.0))
-    make_box("F250_Cab", (13.5, -5.8, 1.45), (1.85, 1.7, 0.60), (0.62, 0.20, 0.18, 1.0))
-    make_box("F250_Glass", (13.5, -5.8, 1.48), (1.65, 1.5, 0.45), (0.14, 0.16, 0.20, 1.0))
-    make_box("Civic_Body", (-22.0, -11.5, 0.62), (1.75, 4.0, 0.60), (0.55, 0.58, 0.62, 1.0))
-    make_box("Civic_Cabin", (-22.0, -11.3, 1.08), (1.6, 2.0, 0.48), (0.50, 0.53, 0.57, 1.0))
-    make_box("Tacoma_Body", (-10.0, -13.0, 0.78), (1.9, 4.4, 0.75), (0.24, 0.30, 0.26, 1.0))
-    make_box("Tacoma_Cab", (-10.0, -12.0, 1.35), (1.75, 1.6, 0.55), (0.24, 0.30, 0.26, 1.0))
+    # draft 4: the staged vehicles from the vehicle kit
+    from _props.vehicles import make_car
+    make_car("F250", 13.5, -6.5, 5.6, (0.62, 0.20, 0.18, 1.0), pickup=True, along="Y", z0=0.03)
+    make_car("Civic", -22.0, -11.4, 4.4, (0.55, 0.58, 0.62, 1.0), along="Y", z0=0.03)
+    make_car("Tacoma", -8.4, -12.9, 5.0, (0.24, 0.30, 0.26, 1.0), pickup=True, along="Y", z0=0.03)
     # Eileen's folding chair — third row, south of the crowd
     bx = -(SIDE_X + 2.6)
-    make_box("Eileen_Chair_Seat", (bx - 2 * 0.55, MID_Y - 17.0, 1.35), (0.42, 0.42, 0.03), (0.36, 0.42, 0.55, 1.0))
-    make_box("Eileen_Chair_Back", (bx - 2 * 0.55 - 0.2, MID_Y - 17.0, 1.560), (0.03, 0.42, 0.36), (0.32, 0.38, 0.50, 1.0))
+    # draft 4: a folding chair — X-frame legs, a canvas seat, a low back
+    ex_, ey_ = bx - 2 * 0.55, MID_Y - 17.0
+    bench_top = 0.4 + 2 * 0.42 + 0.08
+    for sgn in (-1, 1):
+        make_rot_box(f"Eileen_Chair_Leg_{sgn:+d}", (ex_, ey_ + sgn * 0.17, bench_top + 0.20), (0.025, 0.025, 0.46), (0.30, 0.30, 0.32, 1.0), yaw=0.0, roll=sgn * 0.55)
+        make_rot_box(f"Eileen_Chair_LegB_{sgn:+d}", (ex_, ey_ - sgn * 0.17, bench_top + 0.20), (0.025, 0.025, 0.46), (0.30, 0.30, 0.32, 1.0), yaw=0.0, roll=-sgn * 0.55)
+    make_chamfer_box("Eileen_Chair_Seat", (ex_, ey_, bench_top + 0.40), (0.42, 0.42, 0.03), (0.36, 0.42, 0.55, 1.0), chamfer=0.008)
+    make_rot_box("Eileen_Chair_Back", (ex_ - 0.20, ey_, bench_top + 0.60), (0.03, 0.42, 0.36), (0.32, 0.38, 0.50, 1.0), pitch=-0.15)
     # Equipment shed + Coach Dale's truck, beyond the NW corner
     make_box("Equip_Shed", (-30.0, FIELD_LEN + 6.0, 1.3), (4.0, 3.0, 2.6), (0.48, 0.42, 0.34, 1.0))
     make_box("Equip_Shed_Roof", (-30.0, FIELD_LEN + 6.0, 2.75), (4.4, 3.4, 0.3), (0.34, 0.30, 0.26, 1.0))
     make_box("Equip_Shed_Door", (-30.0, FIELD_LEN + 4.46, 1.05), (1.3, 0.06, 2.1), (0.30, 0.26, 0.22, 1.0))
-    make_box("Dale_Truck_Body", (-30.0, FIELD_LEN + 10.6, 0.80), (1.9, 4.2, 0.78), (0.44, 0.40, 0.34, 1.0))
-    make_box("Dale_Truck_Cab", (-30.0, FIELD_LEN + 9.6, 1.38), (1.75, 1.6, 0.55), (0.44, 0.40, 0.34, 1.0))
+    make_car("Dale_Truck", -30.0, FIELD_LEN + 11.3, 5.0, (0.44, 0.40, 0.34, 1.0), pickup=True, along="Y", z0=-0.03)
     # Equipment cart + the morning's drill cones (south 20s)
     make_box("Equip_Cart", (SIDE_X + 3.4, GL_S + 8.0, 0.45), (0.9, 1.4, 0.70), steel)
     for wi, (wx, wy) in enumerate(((SIDE_X + 3.0, GL_S + 7.4), (SIDE_X + 3.8, GL_S + 7.4),
@@ -402,6 +429,35 @@ def build_horizon_2026_08():
                    cy=55.0, profile="treeline")
 
 
+def build_draft4_2026_09():
+    """DRAFT 4 (2026-09-18, lore/_VISUAL_PROGRAM.md §3; 8 placements).
+    An exterior's wear is where the grass is gone: the worn band between
+    the hashes, the goal mouths, the dirt under both benches, the path
+    along the home sideline from the gate, the tread inside the gate.
+    D3: the field house's light over its door (the corkboard climax is
+    read under it), the scoreboard's cable, the goalposts' pads. D5
+    exists (the 08 horizon); the lot's stripes stay.
+    """
+    from _props.detail import make_traffic_wear, make_floor_stain
+    worn = (0.30, 0.34, 0.20, 1.0)
+    dirt = (0.36, 0.30, 0.20, 1.0)
+    make_box("Wear_Middle_Band", (0.0, MID_Y, 0.0012), (HASH_X * 2.0 - 1.0, 60.0, 0.006), (0.20, 0.33, 0.17, 1.0))
+    for gy in (GL_S + 2.0, GL_N - 2.0):
+        make_floor_stain(f"Wear_Goalmouth_{gy:.0f}", (0.0, gy), radius=3.2, tint=worn, segments=14)
+    for by_ in (MID_Y - 8.0, MID_Y + 8.0):
+        ex_ = (SIDE_X + 2.0) if by_ < MID_Y else -(SIDE_X + 2.0)
+        make_box(f"Wear_Bench_Dirt_{by_:.0f}", (ex_ + (0.6 if by_ < MID_Y else -0.6), by_, 0.001), (1.6, 12.4, 0.004), dirt)
+    make_traffic_wear("Wear_Path_Sideline", [(10.5, -2.6), (18.0, 4.0), (SIDE_X + 1.2, 20.0), (SIDE_X + 1.2, 44.0)], width=1.2, tint=dirt)
+    make_floor_stain("Wear_Gate_Tread", (10.5, -3.0), radius=1.6, tint=dirt, segments=12)
+    # ── D3 ──
+    make_lathe("FieldHouse_Lamp_Canopy", (-16.0, -6.70, 2.55), [(0.08, 0.0), (0.08, 0.02), (0.02, 0.04), (0.0, 0.04)], (0.30, 0.30, 0.32, 1.0), segments=8)
+    make_lathe("FieldHouse_Lamp_Glass", (-16.0, -6.62, 2.32), [(0.03, 0.0), (0.07, 0.04), (0.075, 0.14), (0.05, 0.22), (0.0, 0.23)], (0.96, 0.90, 0.72, 0.9), segments=10)
+    make_tube("Score_Cable", [(0.0, FIELD_LEN + 9.0, 5.8), (0.0, FIELD_LEN + 9.1, 3.0), (0.6, FIELD_LEN + 9.6, 0.0)], 0.02, (0.16, 0.16, 0.18, 1.0), segments=5)
+    make_chamfer_box("Score_Box", (1.2, FIELD_LEN + 9.8, 0.30), (0.60, 0.40, 0.60), (0.36, 0.38, 0.36, 1.0), chamfer=0.015)
+    for tag, gy in (("S", 0.0), ("N", FIELD_LEN)):
+        make_lathe(f"Goal_{tag}_Pad", (0.0, gy, 0.0), [(0.20, 0.0), (0.20, 1.8), (0.12, 1.9), (0.0, 1.9)], (0.30, 0.36, 0.52, 1.0), segments=10)
+
+
 def main():
     clear_scene()
     build_ground()
@@ -422,6 +478,7 @@ def main():
     print(f"\n[build_school_field_evening] exporting to {out}")
     build_horizon_2026_08()
     build_hero_props_2026_09()
+    build_draft4_2026_09()
     export_glb(out)
 
 

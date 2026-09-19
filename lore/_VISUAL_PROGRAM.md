@@ -169,6 +169,13 @@ bedrooms share one backyard helper. The cue-word rule generalized to
 every secondary object. Next: kwik_stop_interior (a model chapter —
 verify, not rebuild), centro_grocery_aisle, school_field_evening.
 
+**Status (2026-09-19) · centro_grocery_aisle and school_field_evening
+draft 4 shipped, unseen.** Nine rooms deep. The kwik stop, a model
+chapter, was verified rather than rebuilt (every gate clean). Next by
+uses: kowalski_kitchen, vehicle_cab, henderson_kitchen (model — verify),
+caldwell_porch_night, then the vol 7 second tier (hans_bakery,
+cabin_road, main_street).
+
 **Draft targets, by volume, by uses:**
 - **Vol 7 (current):** `cabin_interior` (31) · `lena_apartment` (23)
   · `miller_back_porch` (12, shared with vol 6) · `salty_tome_alley`

@@ -8,12 +8,30 @@ west-wall DRY-GOODS shelf run (cans + boxes + bread), a small BAKERY /
 coffee kiosk, per-aisle hanging NUMBER signs, plus more carts/baskets
 and lived-in decor. Room: door/S wall at blender y=0, extends +Y;
 interior lands at godot -Z. Props kept inside the 10.0 x 8.0 footprint.
+
+DRAFT 4 (2026-09-18, lore/_VISUAL_PROGRAM.md §3): wire shopping carts
+(a local `make_shopping_cart` — the class goes to _props on its third
+room), the wet-floor cone a cone, fruit round, the produce scale with
+its dial, pan and chains, lathed queue posts, hand-truck and pallet-jack
+wheels, the cooler door's handle; the store's first WEAR (entry path,
+both aisle lanes, endcap scuffs, the belt's centre, the wet spot, cart
+lines, the cooler door's arc); D3 (cords to a floor box, the EXIT sign
+and its conduit, the compressor grille, a floor drain); D5 (the lot:
+asphalt, walk, curb, stripes, a parked car, the cart corral, a lamp
+post, the strip across). The .tscn gains the EXIT sign's glow.
+
+DRAFT 5 targets: the aisles' facings as products with faces (the
+inventory chapter runs on them); the cooler wall's doors with handles
+and price strips; the meat trays' contents; the bakery's donuts as
+rings; the checkout's bag rack and bags; Deck: the sheet's establish and
+`insert scanner`.
 """
-import os, sys
+import os, sys, math
 _BT = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)), ".."))
 if _BT not in sys.path: sys.path.insert(0, _BT)
 from _props import palette as P
-from _props.geometry import clear_scene, make_box, make_chamfer_box, make_cyl, export_glb
+from _props.geometry import (clear_scene, make_box, make_chamfer_box, make_cyl, make_lathe,
+                             make_tube, make_rot_box, export_glb)
 from _props.structure import make_floor, make_wall, make_ceiling, make_crown_molding, make_window
 from _props.store_fixtures import (make_counter, make_counter_bullnose, make_register,
                                    make_credit_card_terminal)
@@ -106,9 +124,9 @@ def build_checkout():
     # Order divider bar on the belt
     make_box("Checkout_Divider", (cx-0.05, cy+0.20, top_z+0.06), (0.40, 0.03, 0.05), (0.72, 0.20, 0.18, 1.0))
     # Queue guide rail (customer side, west)
-    make_cyl("Queue_Post_S", (cx-0.9, cy-0.9, 0.5), 0.02, 1.0, P.METAL_STEEL)
-    make_cyl("Queue_Post_N", (cx-0.9, cy+0.9, 0.5), 0.02, 1.0, P.METAL_STEEL)
-    make_box("Queue_Rail", (cx-0.9, cy, 0.95), (0.03, 1.80, 0.04), P.METAL_STEEL)
+    for qi, qy in (("S", cy-0.9), ("N", cy+0.9)):
+        make_lathe(f"Queue_Post_{qi}", (cx-0.9, qy, 0.0), [(0.14, 0.0), (0.13, 0.02), (0.03, 0.04), (0.02, 0.95), (0.03, 0.98), (0.0, 0.98)], P.METAL_STEEL, segments=10)
+    make_tube("Queue_Rail", [(cx-0.9, cy-0.9, 0.95), (cx-0.9, cy+0.9, 0.95)], 0.014, P.METAL_STEEL, segments=6)
     # Impulse candy rack facing the lane (west face of the counter)
     for ri in range(3):
         rz = top_z - 0.16 - ri*0.24
@@ -130,15 +148,20 @@ def build_produce():
         gx = px - 0.5 + gi*0.26
         col = prod_cols[gi % len(prod_cols)]
         for kk in range(4):
-            make_cyl(f"Produce_{gi}_{kk}", (gx + (kk%2)*0.08, py-0.30 + (kk//2)*0.10, 0.74),
-                     0.05, 0.08, col, segments=8)
+            # draft 4: fruit is round
+            make_lathe(f"Produce_{gi}_{kk}", (gx + (kk%2)*0.08, py-0.30 + (kk//2)*0.10, 0.69),
+                       [(0.0, 0.0), (0.035, 0.008), (0.05, 0.035), (0.048, 0.065), (0.03, 0.085), (0.0, 0.09)], col, segments=8)
     # Leafy greens on the upper tier
     for li in range(4):
         make_box(f"Greens_{li}", (px-0.4+li*0.26, py+0.30, 1.00), (0.18, 0.18, 0.12), (0.34, 0.50, 0.26, 1.0))
     # A hanging scale over the produce
-    make_box("Produce_Scale_Body", (px+0.5, py, 1.55), (0.24, 0.24, 0.16), P.METAL_STEEL)
-    make_cyl("Produce_Scale_Rod", (px+0.5, py, 1.85), 0.01, 0.60, P.METAL_STEEL)
-    make_box("Produce_Scale_Pan", (px+0.5, py, 1.42), (0.30, 0.30, 0.03), (0.72, 0.74, 0.78, 1.0))
+    make_lathe("Produce_Scale_Body", (px+0.5, py, 1.47), [(0.12, 0.0), (0.13, 0.02), (0.13, 0.14), (0.10, 0.16), (0.0, 0.16)], P.METAL_STEEL, segments=12)
+    make_cyl("Produce_Scale_Dial", (px+0.5, py-0.132, 1.55), 0.09, 0.006, (0.92, 0.92, 0.88, 1.0), axis='Y', segments=14)
+    make_tube("Produce_Scale_Rod", [(px+0.5, py, 1.63), (px+0.5, py, 2.15)], 0.008, P.METAL_STEEL, segments=5)
+    make_lathe("Produce_Scale_Pan", (px+0.5, py, 1.30), [(0.0, 0.0), (0.16, 0.0), (0.18, 0.03), (0.16, 0.04), (0.0, 0.035)], (0.72, 0.74, 0.78, 1.0), segments=14)
+    for ci2 in range(3):
+        ang2 = ci2 * 2.094
+        make_tube(f"Produce_Scale_Chain_{ci2}", [(px+0.5 + 0.15 * math.cos(ang2), py + 0.15 * math.sin(ang2), 1.34), (px+0.5, py, 1.47)], 0.003, P.METAL_STEEL, segments=4)
 
 def build_dry_goods():
     # West-wall shelf run of canned goods + boxed dry goods + bread.
@@ -183,30 +206,44 @@ def build_ceiling_infra():
 def build_storefront():
     make_window("Win_S", (-3.0, 0.10, 1.55), width=2.60, height=1.50)
 
+def make_shopping_cart(prefix, cx, cy, yaw_open=True):
+    """A wire cart (draft 4, 2026-09-18): a frame of tubes, basket rails,
+    a handle with grips, lathed casters — not a box on four discs."""
+    wire = (0.72, 0.74, 0.78, 1.0)
+    rails = []
+    for zi, bz in enumerate((0.46, 0.60, 0.74)):
+        w = 0.22 + zi * 0.02
+        d = 0.32 + zi * 0.02
+        make_tube(f"{prefix}_Rail_{zi}", [(cx - w, cy - d, bz), (cx + w, cy - d, bz), (cx + w, cy + d, bz), (cx - w, cy + d, bz), (cx - w, cy - d, bz)], 0.006, wire, segments=5)
+    for ci, (u, v) in enumerate(((-1, -1), (1, -1), (-1, 1), (1, 1))):
+        make_tube(f"{prefix}_Upright_{ci}", [(cx + u * 0.22, cy + v * 0.32, 0.44), (cx + u * 0.26, cy + v * 0.36, 0.80)], 0.007, wire, segments=5)
+    for vi in range(6):
+        vx = cx - 0.20 + vi * 0.08
+        make_tube(f"{prefix}_Vert_{vi}", [(vx, cy - 0.32, 0.46), (vx, cy - 0.34, 0.76)], 0.004, wire, segments=4)
+        make_tube(f"{prefix}_VertB_{vi}", [(vx, cy + 0.32, 0.46), (vx, cy + 0.34, 0.76)], 0.004, wire, segments=4)
+    make_box(f"{prefix}_Floor", (cx, cy, 0.45), (0.44, 0.62, 0.012), wire)
+    for u in (-1, 1):
+        make_tube(f"{prefix}_Leg_{u:+d}", [(cx + u * 0.20, cy - 0.28, 0.10), (cx + u * 0.20, cy - 0.28, 0.44), (cx + u * 0.20, cy + 0.28, 0.44), (cx + u * 0.20, cy + 0.28, 0.10)], 0.01, P.METAL_STEEL, segments=5)
+    make_tube(f"{prefix}_Handle", [(cx - 0.26, cy + 0.36, 0.80), (cx - 0.26, cy + 0.42, 0.92), (cx + 0.26, cy + 0.42, 0.92), (cx + 0.26, cy + 0.36, 0.80)], 0.012, P.METAL_STEEL, segments=6)
+    make_cyl(f"{prefix}_Grip", (cx, cy + 0.42, 0.92), 0.018, 0.30, (0.72, 0.20, 0.18, 1.0), axis='X', segments=8)
+    for wi, (u, v) in enumerate(((-1, -1), (1, -1), (-1, 1), (1, 1))):
+        make_lathe(f"{prefix}_Caster_{wi}", (cx + u * 0.20, cy + v * 0.28, 0.02), [(0.0, 0.0), (0.04, 0.005), (0.045, 0.06), (0.03, 0.09), (0.0, 0.10)], P.METAL_BLACK, segments=8)
+
+
 def build_more_decor():
     make_wall_clock("Clock", (0.0, ROOM_D-0.11, CEIL-0.55), frozen_hour=5, frozen_min=48)
     make_calendar("Calendar", (ROOM_W/2.0-0.05, 1.6, 1.70))
     make_faded_poster("Poster_W", (-ROOM_W/2.0+0.05, 7.2, 1.70))
     make_floor_plant("Plant", (ROOM_W/2.0-0.6, 0.7, 0.0))
-    # A second nested shopping cart near the entrance
-    cx, cy = 0.9, 1.0
-    make_box("Cart2_Basket", (cx, cy, 0.62), (0.46, 0.66, 0.36), (0.72, 0.74, 0.78, 1.0))
-    make_box("Cart2_Floor", (cx, cy, 0.44), (0.44, 0.62, 0.02), (0.72, 0.74, 0.78, 1.0))
-    make_cyl("Cart2_Handle", (cx, cy+0.36, 0.86), 0.02, 0.44, P.METAL_STEEL, axis='X', segments=8)
-    for wi, (wx, wy) in enumerate([(-0.20,-0.28),(0.20,-0.28),(-0.20,0.28),(0.20,0.28)]):
-        make_cyl(f"Cart2_Wheel_{wi}", (cx+wx, cy+wy, 0.06), 0.06, 0.05, P.METAL_BLACK, axis='X', segments=8)
+    # A second shopping cart near the entrance
+    make_shopping_cart("Cart2", 0.9, 1.0)
 
 def build_dressing():
     """Grocery flavour: a shopping cart, a chest freezer along the east
     wall, a hanging aisle-number sign, a stack of hand baskets by the
     entrance, and a wet-floor cone."""
     # Shopping cart — open wire basket on a splayed frame with wheels
-    cx, cy = -1.6, 2.4
-    make_box("Cart_Basket", (cx, cy, 0.62), (0.46, 0.66, 0.36), (0.72, 0.74, 0.78, 1.0))
-    make_box("Cart_Basket_Floor", (cx, cy, 0.44), (0.44, 0.62, 0.02), (0.72, 0.74, 0.78, 1.0))
-    make_cyl("Cart_Handle", (cx, cy+0.36, 0.86), 0.02, 0.44, P.METAL_STEEL, axis='X', segments=8)
-    for wi, (wx, wy) in enumerate([(-0.20, -0.28), (0.20, -0.28), (-0.20, 0.28), (0.20, 0.28)]):
-        make_cyl(f"Cart_Wheel_{wi}", (cx+wx, cy+wy, 0.06), 0.06, 0.05, P.METAL_BLACK, axis='X', segments=8)
+    make_shopping_cart("Cart", -1.6, 2.4)
     # Chest freezer, east wall (body + frosty glass lid)
     fx = ROOM_W/2.0 - 0.6
     make_chamfer_box("Freezer_Body", (fx, ROOM_D-1.85, 0.45), (0.90, 1.80, 0.90), (0.82, 0.86, 0.90, 1.0))
@@ -220,8 +257,9 @@ def build_dressing():
     for bi in range(4):
         make_box(f"Basket_{bi}", (-ROOM_W/2.0+0.7, 0.6, 0.14+bi*0.10), (0.34, 0.24, 0.10), (0.62, 0.30, 0.24, 1.0))
     # Wet-floor cone
-    make_cyl("Cone_Body", (1.4, 1.2, 0.18), 0.14, 0.36, (0.96, 0.72, 0.20, 1.0), segments=10)
-    make_box("Cone_Base", (1.4, 1.2, 0.02), (0.30, 0.30, 0.04), (0.96, 0.72, 0.20, 1.0))
+    make_chamfer_box("Cone_Base", (1.4, 1.2, 0.02), (0.30, 0.30, 0.04), (0.96, 0.72, 0.20, 1.0), chamfer=0.01)
+    make_lathe("Cone_Body", (1.4, 1.2, 0.04), [(0.13, 0.0), (0.12, 0.05), (0.03, 0.62), (0.0, 0.64)], (0.96, 0.72, 0.20, 1.0), segments=12)   # draft 4: a cone
+    make_box("Cone_Sign", (1.4, 1.2, 0.36), (0.16, 0.002, 0.10), (0.16, 0.16, 0.18, 1.0))
 
 def build_departments():
     """2026-08-03 hero-prop pass: meat counter, deli case, the
@@ -243,13 +281,16 @@ def build_departments():
     # Pallet + hand truck + the forgotten pallet jack
     make_box("Pallet", (-1.0, 1.55, 0.08), (1.00, 1.20, 0.16), (0.62, 0.48, 0.30, 1.0))
     make_chamfer_box("Pallet_Load", (-1.0, 1.55, 0.46), (0.90, 1.05, 0.60), (0.68, 0.56, 0.38, 1.0))
-    make_box("HandTruck_Frame", (-1.9, 1.5, 0.60), (0.08, 0.40, 1.20), (0.62, 0.28, 0.24, 1.0))
+    make_rot_box("HandTruck_Frame", (-1.9, 1.5, 0.60), (0.08, 0.40, 1.20), (0.62, 0.28, 0.24, 1.0), roll=0.0)
     make_box("HandTruck_Toe", (-1.86, 1.5, 0.04), (0.30, 0.44, 0.03), steel)
+    for wi3, wy3 in enumerate((1.28, 1.72)):
+        make_lathe(f"HandTruck_Wheel_{wi3}", (-1.94, wy3, 0.0), [(0.0, 0.0), (0.12, 0.0), (0.12, 0.05), (0.0, 0.05)], P.METAL_BLACK, segments=10)
     make_box("PalletJack_Forks", (2.3, 1.55, 0.08), (0.56, 1.10, 0.12), (0.86, 0.52, 0.16, 1.0))
     make_box("PalletJack_Tiller", (2.3, 2.20, 0.55), (0.08, 0.10, 0.90), (0.30, 0.30, 0.32, 1.0))
     # Cooler swing door propped open with the milk crate (sticking
     # lock since July)
     make_box("Cooler_Door_Leaf", (-3.72, 7.35, 1.00), (0.30, 0.05, 1.90), (0.82, 0.84, 0.86, 1.0))
+    make_tube("Cooler_Door_Handle", [(-3.60, 7.30, 0.85), (-3.60, 7.26, 0.85), (-3.60, 7.26, 1.15), (-3.60, 7.30, 1.15)], 0.012, steel, segments=6)
     make_box("Milk_Crate_Prop", (-3.55, 7.15, 0.14), (0.32, 0.32, 0.28), (0.30, 0.44, 0.62, 1.0))
     # Frozen run: upright glass doors, W wall north end
     make_chamfer_box("Frozen_Bank", (-4.62, 6.8, 1.10), (0.55, 1.70, 2.20), (0.80, 0.84, 0.88, 1.0))
@@ -314,6 +355,65 @@ def build_hero_props_2026_09():
              (0.13, 0.13, 0.15, 1.0))
 
 
+def build_draft4_2026_09():
+    """DRAFT 4 (2026-09-18, lore/_VISUAL_PROGRAM.md §3; 9 placements).
+    The store had departments and no shift. WEAR: the entry path to the
+    checkout and down both aisles; endcap kick scuffs; the belt's worn
+    centre; the wet spot under the cone's warning; cart-wheel lines by
+    the parked cart; the cooler door's floor arc. D3: the register and
+    the card terminal on a cord to the floor box; the EXIT sign over
+    the door and its conduit; the cooler wall's compressor grille at
+    the base of the north wall; a floor drain under the cooler door.
+    D5: the lot outside the storefront — asphalt, a curb, a parked car,
+    the cart corral, a lamp post, the strip across the street.
+    """
+    from _props.detail import make_traffic_wear, make_floor_stain, make_scuff_band, make_far_bands
+    from _props.vehicles import make_car
+    tile_dk = (0.66, 0.66, 0.62, 1.0)
+    # ── WEAR ──
+    make_traffic_wear("Wear_Path_Entry_A", [(0.0, 0.5), (1.4, 1.2), (2.6, 1.75)], width=0.55, tint=tile_dk)
+    make_traffic_wear("Wear_Path_B", [(-2.8, 2.0), (0.0, 2.0), (2.8, 2.05)], width=0.50, tint=tile_dk)
+    make_traffic_wear("Wear_Path_C", [(-2.8, 4.6), (0.0, 4.6), (2.8, 4.6)], width=0.50, tint=tile_dk)
+    for ei, ex in enumerate([-3.5, +3.5]):
+        make_scuff_band(f"Wear_Kick_End_{ei}", (ex, ROOM_D/2.0 + 1.0 - 0.45), 0.9, axis='X', height=0.05, band_z=0.03, tint=(0.50, 0.50, 0.46, 1.0))
+    make_box("Wear_Belt_Centre", (3.50, 1.75, 0.9365), (0.30, 1.50, 0.002), (0.20, 0.20, 0.22, 1.0))
+    make_floor_stain("Wear_Wet_Spot", (1.55, 1.45), radius=0.22, tint=(0.70, 0.70, 0.68, 1.0), segments=10)
+    for li, lx in enumerate((-1.80, -1.40)):
+        make_box(f"Wear_Wheel_Line_{li}", (lx, 3.05, 0.004), (0.02, 1.10, 0.003), (0.60, 0.60, 0.56, 1.0))
+    make_floor_stain("Wear_Arc_Cooler", (-3.55, 7.05), radius=0.30, tint=(0.68, 0.68, 0.64, 1.0), segments=10)
+    # ── D3 ──
+    make_box("Floor_Box", (4.10, 2.30, 0.02), (0.14, 0.14, 0.04), (0.42, 0.42, 0.40, 1.0))
+    # each cord as straight segments: the recorder boxes a tube by its
+    # whole path, and an L-run's box swallows the counter
+    cord = (0.16, 0.16, 0.18, 1.0)
+    make_tube("Cord_1_A", [(3.75, 2.45, 0.915), (4.02, 2.45, 0.915)], 0.006, cord, segments=4)
+    make_tube("Cord_1_B", [(4.03, 2.45, 0.915), (4.03, 2.45, 0.03)], 0.006, cord, segments=4)
+    make_tube("Cord_1_C", [(4.03, 2.45, 0.03), (4.05, 2.37, 0.03)], 0.006, cord, segments=4)
+    make_tube("Cord_2_A", [(3.20, 1.10, 0.915), (4.02, 1.10, 0.915)], 0.006, cord, segments=4)
+    make_tube("Cord_2_B", [(4.03, 1.10, 0.915), (4.03, 1.10, 0.03)], 0.006, cord, segments=4)
+    make_tube("Cord_2_C", [(4.03, 1.10, 0.03), (4.05, 2.23, 0.03)], 0.006, cord, segments=4)
+    make_box("Exit_Sign", (0.0, 0.14, CEIL - 0.42), (0.34, 0.06, 0.18), (0.94, 0.94, 0.90, 1.0))
+    make_box("Exit_Sign_Letters", (0.0, 0.105, CEIL - 0.42), (0.24, 0.004, 0.10), (0.90, 0.16, 0.14, 1.0))
+    make_tube("Exit_Sign_Conduit", [(0.0, 0.14, CEIL - 0.33), (0.0, 0.14, CEIL - 0.02)], 0.008, (0.62, 0.62, 0.60, 1.0), segments=5)
+    make_box("Compressor_Grille", (-2.5, ROOM_D - 0.03, 0.18), (1.60, 0.03, 0.26), (0.30, 0.30, 0.32, 1.0))
+    for si in range(6):
+        make_box(f"Compressor_Grille_Slat_{si}", (-2.5, ROOM_D - 0.045, 0.08 + si * 0.04), (1.50, 0.004, 0.012), (0.62, 0.62, 0.60, 1.0))
+    make_lathe("Floor_Drain", (-3.2, 6.9, 0.0), [(0.0, 0.0), (0.08, 0.0), (0.09, 0.006), (0.0, 0.008)], (0.36, 0.36, 0.38, 1.0), segments=12)
+    # ── D5 · the lot ──
+    make_box("Lot_Asphalt", (0.0, -7.0, -0.06), (24.0, 13.0, 0.10), (0.26, 0.26, 0.27, 1.0))
+    make_box("Lot_Walk", (0.0, -1.0, -0.03), (20.0, 1.8, 0.06), (0.62, 0.60, 0.56, 1.0))
+    make_box("Lot_Curb", (0.0, -1.95, -0.05), (20.0, 0.12, 0.14), (0.55, 0.53, 0.50, 1.0))
+    for si in range(6):
+        make_box(f"Lot_Stripe_{si}", (-6.0 + si * 2.6, -4.6, -0.008), (0.10, 4.4, 0.006), (0.86, 0.84, 0.72, 1.0))
+    make_car("Lot_Car", -3.6, -4.9, 4.5, (0.60, 0.60, 0.62, 1.0), along="Y", z0=-0.01)
+    for ci, cx2 in enumerate((4.2, 6.4)):
+        make_tube(f"Corral_Rail_{ci}", [(cx2, -3.2, 0.05), (cx2, -3.2, 0.95), (cx2, -6.2, 0.95), (cx2, -6.2, 0.05)], 0.02, (0.62, 0.62, 0.60, 1.0), segments=6)
+    make_box("Corral_Sign", (5.3, -6.25, 1.35), (1.20, 0.04, 0.30), (0.32, 0.62, 0.42, 1.0))
+    make_lathe("Lot_Lamp_Post", (8.5, -4.0, 0.0), [(0.16, 0.0), (0.10, 0.10), (0.07, 5.8), (0.08, 6.0), (0.0, 6.0)], (0.30, 0.30, 0.32, 1.0), segments=8)
+    make_box("Lot_Lamp_Head", (8.5, -4.0, 6.05), (0.70, 0.30, 0.16), (0.30, 0.30, 0.32, 1.0))
+    make_far_bands("Far", (0.46, 0.44, 0.42, 1.0), [(18.0, 20.0, 5.0, 0.85), (26.0, 26.0, 7.0, 0.7)], sides="S", cy=0.0, profile="roofline")
+
+
 def main():
     clear_scene()
     build_shell()
@@ -333,6 +433,7 @@ def main():
     build_more_decor()
     build_departments()
     build_hero_props_2026_09()
+    build_draft4_2026_09()
     out = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)),
         "../../../assets/3d/locales/centro_grocery_aisle.glb"))
     print(f"\n[build_centro_grocery_aisle] exporting to {out}")

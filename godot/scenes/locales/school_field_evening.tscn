@@ -465,3 +465,12 @@ light_color = Color(0.950, 0.780, 0.500, 1)
 light_energy = 1.30
 shadow_enabled = false
 omni_range = 5.00
+
+; ── draft 4 (2026-09-18): the field house's door light — the corkboard is read under it ──
+; blender (-16.0, -6.62, 2.40) → godot (-16.0, 2.40, 6.62). Halogen porch.
+[node name="FieldHouse_Lamp_Glass_Practical" type="OmniLight3D" parent="."]
+position = Vector3(-16.000, 2.400, 6.620)
+light_color = Color(0.940, 0.840, 0.660, 1)
+light_energy = 1.60
+shadow_enabled = false
+omni_range = 5.00

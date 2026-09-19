@@ -496,6 +496,30 @@ The visual program's first background pass (lore/_VISUAL_PROGRAM.md
   backyard through both north windows from one new helper
   (`detail.make_backyard_view`: lawn, board fence, a tree, a
   roofline) — the vol 6 bedrooms all look at the same yard.
+- **Centro Grocery and the school field, draft 4 (2026-09-18).** The
+  store: wire shopping carts (a local helper; the class goes to
+  `_props` on its third room), a cone that is a cone, round fruit, the
+  produce scale with dial, pan and chains, lathed queue posts, wheels
+  on the hand truck; the first wear (entry path, both aisle lanes,
+  endcap scuffs, the belt's centre, the wet spot, cart lines, the
+  cooler door's arc); cords to a floor box, the EXIT sign, the
+  compressor grille, a floor drain; the lot outside the storefront.
+  The field: tapered light poles on base plates with conduit and a
+  transformer box, hooded lamps, chain-link that reads, four kit
+  vehicles, Eileen's chair a folding chair; an exterior's wear is
+  where the grass is gone (the band between the hashes, the goal
+  mouths, the dirt under the benches, the sideline path, the gate's
+  tread); the field house's door light, so the corkboard is read
+  under it.
+- **The recorder boxes a `make_tube` by its whole path.** An L-shaped
+  cord over a counter's edge and down its back has a bounding box
+  that swallows the counter, and the clip hunt says so. Cords and
+  pipes that turn are several straight tubes, one per leg.
+- **A kit vehicle is longer than the boxes it replaces.** Dale's truck
+  from the kit put `shot_insert_truck`'s lens inside the body, and the
+  Tacoma's nose reached into the field house; both moved. Re-run the
+  marker gate after every kit swap — the kit's silhouette is the
+  point, and it is bigger.
 - **The cue-word rule is general, and it is about every SECONDARY
   object.** `Cord_Laptop` joined the laptop's cluster and dragged its
   centre to the floor, so the desk top stood between the lens and the
