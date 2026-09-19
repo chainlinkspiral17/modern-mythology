@@ -275,6 +275,11 @@ the Deck-gated boundary (single-use presets from the sheet's worst
 frames), so the design row runs: next the vol 1 faust_* flags paid off
 one callback each.
 
+**Status (2026-09-19, later) · DESIGN · vol 1's four choice-flags paid
+off.** Every choice in vol 1 that sets a flag is now remembered by a
+line later in the volume (`when_flag` with `is` for valued flags).
+Next: vol 2's Delores pair (ghost / lost) if they are choice-set.
+
 **Draft targets, by volume, by uses:**
 - **Vol 7 (current):** `cabin_interior` (31) · `lena_apartment` (23)
   · `miller_back_porch` (12, shared with vol 6) · `salty_tome_alley`

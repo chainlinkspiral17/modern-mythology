@@ -35,6 +35,20 @@
   },
   {
    "t": "say",
+   "char": "Joan",
+   "expr": "neutral",
+   "when_flag": "faust_asked_for_joan",
+   "text": "You asked to see me tomorrow. It is tomorrow."
+  },
+{
+   "t": "say",
+   "char": "Joan",
+   "expr": "neutral",
+   "when_not_flag": "faust_asked_for_joan",
+   "text": "You went back to your friends. Good. They're the ones who'll remember you."
+  },
+  {
+   "t": "say",
    "char": "Dickens Dean",
    "role": "Antagonist",
    "expr": "neutral",

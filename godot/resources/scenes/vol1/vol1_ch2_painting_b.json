@@ -17,6 +17,30 @@
   },
   {
    "t": "say",
+   "char": "Fire",
+   "expr": "neutral",
+   "when_flag": "faust_elem_favored",
+   "is": "fire",
+   "text": "You leaned in. I felt it. Don't pretend you didn't."
+  },
+{
+   "t": "say",
+   "char": "Water",
+   "expr": "neutral",
+   "when_flag": "faust_elem_favored",
+   "is": "water",
+   "text": "He held steady. I'll give him that — he held steady while you shouted."
+  },
+{
+   "t": "say",
+   "char": "Fire",
+   "expr": "neutral",
+   "when_flag": "faust_elem_favored",
+   "is": "air",
+   "text": "You took Air's warning. Fine. Air is always warning somebody."
+  },
+  {
+   "t": "say",
    "char": "Faust",
    "expr": "neutral",
    "text": "You have to admit — that is worth some mad real-life XP right there. This tinnitus in my ear is like a ding. Methinks I've leveled up."

@@ -1763,6 +1763,14 @@ node-by-node text comparison before writing. NEXT: the other loose
 choice flags the same way — vol 1's faust_* set (asked_for_joan,
 black_lodge, dose, dream_woman_held, elem_favored, met_dickens),
 each read once in a later scene of its own volume.
+SHIPPED same day: `faust_dose` (2 | 3 — `when_flag` + `is`) in the
+pharmacy mirror; `faust_elem_favored` (fire | water | air) in the
+painting's second scene, each element claiming its own listener;
+`faust_dream_woman_held` in the lullaby (held: her arm's weight; not:
+alone in the middle of the bed); `faust_asked_for_joan` in the waking
+(Joan: it is tomorrow / you went back to your friends). Loose flags
+42 → 38; the rest are `*_complete` progression markers and flags set
+on every path (black_lodge, met_dickens) — not memories.
 
 **2026-09-17 · DESIGN · the consequence map, and SKILLS EARN (draft 1).**
 The VN's game layer drawn for the first time (`consequence_map.py` →

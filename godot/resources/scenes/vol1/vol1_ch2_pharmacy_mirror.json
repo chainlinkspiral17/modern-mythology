@@ -22,6 +22,22 @@
    "text": "My world of possibility expands with each new breath. They give this drug to shut-ins — agoraphfolk struggling with writer's block."
   },
   {
+   "t": "say",
+   "char": "Faust",
+   "expr": "neutral",
+   "when_flag": "faust_dose",
+   "is": 3,
+   "text": "Three was the right number. The mirror agrees — a little too readily."
+  },
+{
+   "t": "say",
+   "char": "Faust",
+   "expr": "neutral",
+   "when_flag": "faust_dose",
+   "is": 2,
+   "text": "Two. The one I put back is still in the bottle, and I can feel it there, waiting its turn."
+  },
+  {
    "t": "narrate",
    "text": "Faust looks at his phone."
   },

@@ -32,6 +32,16 @@
    "text": "Faust sleeps."
   },
   {
+   "t": "narrate",
+   "when_flag": "faust_dream_woman_held",
+   "text": "He sleeps with the weight of her arm across him and does not mind the heat."
+  },
+{
+   "t": "narrate",
+   "when_not_flag": "faust_dream_woman_held",
+   "text": "He sleeps alone in the middle of the bed, the way he asked to, and the room is colder for it."
+  },
+  {
    "t": "interlude",
    "text": "IN HIS SLEEP",
    "sub": "Faust, talking",

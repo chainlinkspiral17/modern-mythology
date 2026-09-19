@@ -16,7 +16,7 @@ check's scene, taking the best option at every earlier choice.
 | skill checks | 5 |
 | checks that cannot pass | 0 |
 | flags set | 58 |
-| flags set and never read | 42 |
+| flags set and never read | 38 |
 
 
 ## Volume 1 — 43 scenes · 12 choices · 2 checks
@@ -123,17 +123,17 @@ Skills earnable across the volume: empathy 4, logic 5, composure 7, rhetoric 7, 
 
 | flag | set at | read at |
 |---|---|---|
-| `faust_asked_for_joan` | vol1_ch4_club_sharp_b#16, vol1_ch4_club_sharp_b#20 | **never — loose** |
+| `faust_asked_for_joan` | vol1_ch4_club_sharp_b#16, vol1_ch4_club_sharp_b#20 | vol1_ch4_waking#5 (when_flag), vol1_ch4_waking#6 (when_not_flag) |
 | `faust_black_lodge` | vol1_ch3_outside_b#17 | **never — loose** |
-| `faust_dose` | vol1_ch2_pharmacy#11, vol1_ch2_pharmacy#14 | **never — loose** |
-| `faust_dream_woman_held` | vol1_ch4_dream_states#19, vol1_ch4_dream_states#23 | **never — loose** |
-| `faust_elem_favored` | vol1_ch2_painting#39, vol1_ch2_painting#41, vol1_ch2_painting#43 | **never — loose** |
+| `faust_dose` | vol1_ch2_pharmacy#11, vol1_ch2_pharmacy#14 | vol1_ch2_pharmacy_mirror#3 (when_flag), vol1_ch2_pharmacy_mirror#4 (when_flag) |
+| `faust_dream_woman_held` | vol1_ch4_dream_states#19, vol1_ch4_dream_states#23 | vol1_ch4_lullaby#5 (when_flag), vol1_ch4_lullaby#6 (when_not_flag) |
+| `faust_elem_favored` | vol1_ch2_painting#39, vol1_ch2_painting#41, vol1_ch2_painting#43 | vol1_ch2_painting_b#2 (when_flag), vol1_ch2_painting_b#3 (when_flag), vol1_ch2_painting_b#4 (when_flag) |
 | `faust_met_dickens` | vol1_ch4_dream_bar#22 | **never — loose** |
 | `handsome_triumvirate` | vol1_ch3_judgement_day#17 | **never — loose** |
 | `vol1_ch1_complete` | vol1_end#0 | **never — loose** |
 | `vol1_ch2_complete` | vol1_ch2_skatepark#38 | **never — loose** |
 | `vol1_ch3_complete` | vol1_ch3_club#22 | **never — loose** |
-| `vol1_ch4_complete` | vol1_ch4_waking#15 | **never — loose** |
+| `vol1_ch4_complete` | vol1_ch4_waking#17 | **never — loose** |
 | `vol1_missing_link_complete` | vol1_link_end#1 | **never — loose** |
 | `vol1_shuttle_boarded` | vol1_link_shuttle#14, vol1_link_shuttle#17 | **never — loose** |
 
