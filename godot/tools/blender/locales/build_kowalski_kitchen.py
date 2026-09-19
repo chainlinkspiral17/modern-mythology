@@ -1,10 +1,29 @@
-"""Kowalski Kitchen — vol6 placement script."""
+"""Kowalski Kitchen — vol6 placement script.
+
+DRAFT 4 (2026-09-18, lore/_VISUAL_PROGRAM.md §3, 7 placements): a
+gooseneck faucet with its handle, burners, knobs and an oven bar on the
+stove, the pendant as canopy + cord + shade + bulb, the fridge's handle
+as a pull with a photo under a magnet, salt and pepper as shakers; the
+kitchen's first WEAR (paths, the chairs' patches, the counter's edge,
+the drip line, the fridge's hand patch, Daisy's spot and her hair on
+the couch); D3 (two switches, outlets, cords from the TV, the coffee
+maker and the fridge); D5 (the backyard through the sink window, the
+neighbour's yard and mower through the east one). The .tscn's overhead
+practical becomes the pendant's bulb and the under-cabinet light
+Anita sits by gets its own.
+
+DRAFT 5 targets: the upper cabinet doors with pulls and one ajar; the
+dish rack's dishes; the stair treads with risers and a runner; the TV
+on a stand with its cord; the couch's throw; Deck: the ch19 establish
+under the under-cabinet light alone.
+"""
 import os, sys
 _BT = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)), ".."))
 if _BT not in sys.path: sys.path.insert(0, _BT)
 from _props.furniture import make_table, make_chair
 from _props import palette as P
-from _props.geometry import clear_scene, make_box, make_chamfer_box, make_cyl, export_glb
+from _props.geometry import (clear_scene, make_box, make_chamfer_box, make_cyl, make_lathe,
+                             make_tube, make_rot_box, export_glb)
 from _props.structure import make_floor, make_wall, make_ceiling, make_crown_molding, make_window
 from _props.store_fixtures import make_counter, make_counter_bullnose, make_register
 from _props.shelving import make_snack_aisle, make_endcap
@@ -47,10 +66,18 @@ def build_counter():
     make_counter_bullnose("Counter", (-ROOM_W/4.0, ROOM_D-1.0 - 0.35, top_z), length=2.40, axis='X')
     # Sink
     make_box("Sink_Bowl", (-ROOM_W/4.0, ROOM_D-1.0, 0.86), (0.50, 0.40, 0.12), (0.86, 0.86, 0.84, 1.0))
-    make_cyl("Sink_Faucet", (-ROOM_W/4.0, ROOM_D-1.10, top_z+0.04), 0.015, 0.30, P.METAL_STEEL)
+    # draft 4 (2026-09-18): a gooseneck faucet with its handle
+    make_lathe("Sink_Faucet_Base", (-ROOM_W/4.0, ROOM_D-0.78, top_z), [(0.035, 0.0), (0.03, 0.01), (0.02, 0.02), (0.02, 0.06)], P.METAL_STEEL, segments=8)
+    make_tube("Sink_Faucet", [(-ROOM_W/4.0, ROOM_D-0.78, top_z+0.05), (-ROOM_W/4.0, ROOM_D-0.78, top_z+0.24), (-ROOM_W/4.0, ROOM_D-0.84, top_z+0.30), (-ROOM_W/4.0, ROOM_D-0.94, top_z+0.30), (-ROOM_W/4.0, ROOM_D-1.00, top_z+0.24)], 0.014, P.METAL_STEEL, segments=6)
+    make_cyl("Sink_Faucet_Handle", (-ROOM_W/4.0+0.07, ROOM_D-0.78, top_z+0.06), 0.008, 0.06, P.METAL_STEEL, axis='X', segments=5)
     # Stove
     make_chamfer_box("Stove_Body", (ROOM_W/4.0, ROOM_D-1.0, 0.45), (0.70, 0.70, 0.92), (0.86, 0.84, 0.80, 1.0))
     make_box("Stove_Top", (ROOM_W/4.0, ROOM_D-1.0, 0.92), (0.70, 0.70, 0.04), P.METAL_BLACK)
+    for bi, (ox, oy) in enumerate(((-0.17, -0.17), (0.17, -0.17), (-0.17, 0.17), (0.17, 0.17))):
+        make_cyl(f"Stove_Burner_{bi}", (ROOM_W/4.0+ox, ROOM_D-1.0+oy, 0.945), 0.09, 0.01, (0.14, 0.14, 0.15, 1.0), segments=10)
+    for ki in range(4):
+        make_lathe(f"Stove_Knob_{ki}", (ROOM_W/4.0 - 0.24 + ki * 0.16, ROOM_D-1.0-0.352, 0.80), [(0.0, 0.0), (0.02, 0.0), (0.022, 0.012), (0.014, 0.02), (0.0, 0.02)], (0.16, 0.16, 0.17, 1.0), segments=8)
+    make_tube("Stove_Oven_Bar", [(ROOM_W/4.0-0.28, ROOM_D-1.0-0.38, 0.62), (ROOM_W/4.0+0.28, ROOM_D-1.0-0.38, 0.62)], 0.012, P.METAL_STEEL, segments=6)
 
 def build_table():
     tx, ty = 0.0, ROOM_D/2.0
@@ -71,8 +98,10 @@ def build_window():
 def build_ceiling_infra():
     # Family kitchen: flush dome + over-table pendant, no shop tubes
     make_cyl("Ceiling_Dome", (0.0, 1.6, CEIL-0.10), 0.16, 0.16, (0.96, 0.90, 0.72, 1.0), segments=12)
-    make_cyl("Table_Pendant_Cord", (0.0, ROOM_D/2.0, CEIL-0.14), 0.008, 0.28, P.METAL_BLACK)
-    make_cyl("Table_Pendant_Shade", (0.0, ROOM_D/2.0, CEIL-0.36), 0.15, 0.15, (0.62, 0.46, 0.28, 1.0), segments=12)
+    make_lathe("Table_Pendant_Canopy", (0.0, ROOM_D/2.0, CEIL-0.03), [(0.06, 0.0), (0.06, 0.02), (0.02, 0.03), (0.0, 0.03)], P.METAL_BLACK, segments=8)
+    make_tube("Table_Pendant_Cord", [(0.0, ROOM_D/2.0, CEIL-0.03), (0.0, ROOM_D/2.0, CEIL-0.30)], 0.005, P.METAL_BLACK, segments=4)
+    make_lathe("Table_Pendant_Shade", (0.0, ROOM_D/2.0, CEIL-0.46), [(0.17, 0.0), (0.16, 0.02), (0.06, 0.14), (0.025, 0.16), (0.0, 0.16)], (0.62, 0.46, 0.28, 1.0), segments=12)
+    make_lathe("Table_Pendant_Bulb", (0.0, ROOM_D/2.0, CEIL-0.48), [(0.0, 0.0), (0.03, 0.01), (0.032, 0.04), (0.02, 0.06), (0.0, 0.07)], (0.98, 0.94, 0.80, 1.0), segments=8)
     make_smoke_detector("Smoke", (0.9, ROOM_D/2.0, CEIL))
 
 
@@ -81,7 +110,9 @@ def build_fridge():
     make_chamfer_box("Fridge_Body", (fx, fy, 1.00), (0.70, 0.70, 2.00), (0.82, 0.82, 0.84, 1.0))
     make_chamfer_box("Fridge_DoorTop", (fx-0.34, fy, 1.50), (0.04, 0.66, 0.80), (0.82, 0.82, 0.84, 1.0))
     make_chamfer_box("Fridge_DoorBot", (fx-0.34, fy, 0.40), (0.04, 0.66, 1.00), (0.82, 0.82, 0.84, 1.0))
-    make_box("Fridge_Handle", (fx-0.38, fy-0.20, 1.30), (0.04, 0.04, 0.50), P.METAL_STEEL)
+    make_tube("Fridge_Handle", [(fx-0.36, fy-0.20, 1.05), (fx-0.40, fy-0.20, 1.05), (fx-0.40, fy-0.20, 1.55), (fx-0.36, fy-0.20, 1.55)], 0.012, P.METAL_STEEL, segments=6)
+    make_box("Fridge_Photo", (fx-0.362, fy+0.05, 1.42), (0.003, 0.10, 0.075), (0.72, 0.66, 0.58, 1.0))
+    make_cyl("Fridge_Magnet", (fx-0.365, fy+0.05, 1.465), 0.012, 0.004, (0.62, 0.20, 0.18, 1.0), axis='X', segments=8)
 
 def build_dressing():
     """Counter + table + wall dressing so it reads as a family kitchen."""
@@ -94,8 +125,8 @@ def build_dressing():
     # Table centrepiece: napkin holder + salt & pepper
     tx, ty = 0.0, ROOM_D/2.0
     make_box("NapkinHolder", (tx, ty, 0.82), (0.14, 0.06, 0.12), (0.86, 0.84, 0.80, 1.0))
-    make_cyl("Salt", (tx+0.16, ty, 0.80), 0.025, 0.10, (0.92, 0.92, 0.90, 1.0), segments=8)
-    make_cyl("Pepper", (tx+0.22, ty, 0.80), 0.025, 0.10, (0.28, 0.24, 0.22, 1.0), segments=8)
+    for nm, sx_, col in (("Salt", tx+0.16, (0.92, 0.92, 0.90, 1.0)), ("Pepper", tx+0.22, (0.28, 0.24, 0.22, 1.0))):
+        make_lathe(nm, (sx_, ty, 0.76), [(0.02, 0.0), (0.025, 0.01), (0.025, 0.07), (0.018, 0.09), (0.02, 0.10), (0.0, 0.105)], col, segments=8)
     # Floor plant in the SW corner (make_floor_plant was unused)
     make_floor_plant("Plant", (-ROOM_W/2.0+0.5, 0.7, 0.0), palette={"leaf": (0.36, 0.48, 0.30, 1.0), "pot": (0.60, 0.40, 0.26, 1.0)})
 
@@ -162,6 +193,48 @@ def build_hero_props_2026_09():
              (0.62, 0.30, 0.22, 1.0))
 
 
+def build_draft4_2026_09():
+    """DRAFT 4 (2026-09-18, lore/_VISUAL_PROGRAM.md §3; 7 placements). A
+    family kitchen's WEAR: the path from the stair mouth to the table
+    and the counter, the chairs' floor patches, the counter's edge, the
+    sink's drip line, the fridge door's hand patch, Daisy's spot on the
+    couch. D3: the switch, outlets, cords from the TV, the coffee maker
+    and the fridge; the under-cabinet light's own switch. D5: the
+    backyard through the sink window (the shared helper) and Gracie's
+    dad's yard through the east window.
+    """
+    from _props.detail import make_traffic_wear, make_floor_stain, make_scuff_band, make_light_switch, make_wall_outlet, make_cord_run, make_backyard_view
+    floor_dk = (0.58, 0.46, 0.30, 1.0)
+    tx, ty = 0.0, ROOM_D/2.0
+    make_traffic_wear("Wear_Path_Entry_A", [(0.0, 0.5), (0.0, 1.5), (0.0, 1.9)], width=0.5, tint=floor_dk)
+    make_traffic_wear("Wear_Path_B", [(-0.3, 3.1), (-1.0, 3.5), (-1.5, 3.7)], width=0.42, tint=floor_dk)
+    for ci, (cx, cy) in enumerate([(tx-0.80, ty), (tx+0.80, ty), (tx, ty-0.62), (tx, ty+0.62)]):
+        make_floor_stain(f"Wear_Patch_Seat_{ci}", (cx, cy), radius=0.26, tint=(0.66, 0.52, 0.34, 1.0), segments=10)
+    make_box("Wear_Elbow_Strip", (-ROOM_W/4.0, ROOM_D-1.0-0.36, 0.927), (2.2, 0.06, 0.004), (0.28, 0.19, 0.12, 1.0))
+    make_scuff_band("Wear_Drip", (-ROOM_W/4.0, ROOM_D-1.0-0.35), 0.6, axis='X', height=0.12, band_z=0.60, tint=(0.62, 0.52, 0.34, 1.0))
+    make_box("Wear_Hand_Patch", (ROOM_W/2.0-0.55-0.362, 1.0-0.10, 1.30), (0.003, 0.14, 0.20), (0.74, 0.74, 0.76, 1.0))
+    make_chamfer_box("Wear_Daisy_Spot", (-2.28, 1.5, 0.535), (0.50, 0.55, 0.02), (0.42, 0.36, 0.30, 1.0), chamfer=0.008)
+    for hi in range(6):
+        make_rot_box(f"Wear_Hair_{hi}", (-2.35 + 0.08 * (hi % 3), 1.35 + 0.10 * (hi // 3), 0.548), (0.03, 0.004, 0.002), (0.80, 0.72, 0.56, 1.0), yaw=0.6 * hi)
+    # D3
+    make_light_switch("Switch_1", (1.30, 0.0), axis='X', face_sign=1, z=1.20, aged=True)
+    make_light_switch("Switch_2", (-0.20, ROOM_D), axis='X', face_sign=-1, z=1.35, aged=True)
+    make_wall_outlet("Outlet_E_1", (ROOM_W/2.0, 2.0), axis='Y', face_sign=-1, z=1.00, aged=True)
+    make_cord_run("Cord_1", (2.82, 2.2, 0.92), (ROOM_W/2.0 - 0.13, 2.0, 1.00), sag=0.02)
+    make_wall_outlet("Outlet_N_1", (-2.55, ROOM_D), axis='X', face_sign=-1, z=1.10, aged=True)
+    make_cord_run("Cord_2", (-2.45, ROOM_D-1.0+0.10, 0.96), (-2.55, ROOM_D - 0.12, 1.10), sag=0.03)
+    make_wall_outlet("Outlet_E_2", (ROOM_W/2.0, 0.55), axis='Y', face_sign=-1, z=0.30, aged=True)
+    make_cord_run("Cord_3", (ROOM_W/2.0-0.22, 0.75, 0.10), (ROOM_W/2.0 - 0.13, 0.55, 0.30), sag=0.0)
+    # D5
+    make_backyard_view("Yard", ROOM_D, span=7.0, tree=(2.4, 3.2))
+    make_box("EYard_Lawn", (ROOM_W/2.0 + 3.0, 3.0, -0.03), (6.0, 8.0, 0.05), (0.40, 0.48, 0.28, 1.0))
+    make_lathe("EYard_Tree", (ROOM_W/2.0 + 3.5, 3.4, 0.0), [(0.16, 0.0), (0.12, 1.2), (0.09, 2.6), (0.0, 2.6)], (0.38, 0.30, 0.22, 1.0), segments=8)
+    from _props.geometry import make_blob
+    make_blob("EYard_Canopy", (ROOM_W/2.0 + 3.5, 3.4, 3.6), 1.5, (0.30, 0.42, 0.24, 1.0), noise=0.22, seed=23, squash=0.8)
+    make_chamfer_box("EYard_Mower", (ROOM_W/2.0 + 1.6, 2.2, 0.185), (0.55, 0.85, 0.34), (0.66, 0.20, 0.16, 1.0), chamfer=0.02)
+    make_tube("EYard_Mower_Handle", [(ROOM_W/2.0 + 1.6 - 0.2, 2.2 - 0.4, 0.35), (ROOM_W/2.0 + 1.6 - 0.2, 2.2 - 1.1, 0.95), (ROOM_W/2.0 + 1.6 + 0.2, 2.2 - 1.1, 0.95), (ROOM_W/2.0 + 1.6 + 0.2, 2.2 - 0.4, 0.35)], 0.012, (0.30, 0.30, 0.32, 1.0), segments=5)
+
+
 def main():
     clear_scene()
     build_shell()
@@ -174,6 +247,7 @@ def main():
     build_dressing()
     build_hero_props()
     build_hero_props_2026_09()
+    build_draft4_2026_09()
     out = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)),
         "../../../assets/3d/locales/kowalski_kitchen.glb"))
     print(f"\n[build_kowalski_kitchen] exporting to {out}")

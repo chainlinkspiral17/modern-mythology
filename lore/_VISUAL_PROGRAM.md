@@ -176,6 +176,13 @@ uses: kowalski_kitchen, vehicle_cab, henderson_kitchen (model — verify),
 caldwell_porch_night, then the vol 7 second tier (hans_bakery,
 cabin_road, main_street).
 
+**Status (2026-09-19, later) · kowalski_kitchen, caldwell_porch_night and
+vehicle_cab shipped, unseen.** Twelve rooms deep in screen-time order
+(the two model chapters in the list verified, not rebuilt). Next: the
+vol 7 second tier — hans_bakery_back_kitchen, cabin_road, main_street,
+finn_apartment, board_lords_interior — then vol 1's missing_link and
+shuttle_bench.
+
 **Draft targets, by volume, by uses:**
 - **Vol 7 (current):** `cabin_interior` (31) · `lena_apartment` (23)
   · `miller_back_porch` (12, shared with vol 6) · `salty_tome_alley`

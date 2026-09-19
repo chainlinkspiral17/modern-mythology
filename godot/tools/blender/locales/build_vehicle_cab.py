@@ -45,12 +45,22 @@ Draft 2 targets: headlight cones + dash-glow practical variants per
 scene (the night preset), a second cab preset from the rear bench
 (ch5's four-up), rain on the windshield for ch4_storm, a
 Civic-shaped hatch variant behind the sedan for Jesse's scenes.
+
+DRAFT 2 (2026-09-18, lore/_VISUAL_PROGRAM.md §3, 7 placements): treads
+and lug rings on the truck's wheels, lathed fence and mile-marker
+posts, the sedan from the vehicle kit, tapered scrub trunks, the picnic
+table as planks on A-frame legs with somebody's initials; the cab's
+WEAR (the heel-worn mat, the bolster's shine, the dash's dust line, a
+door ding, the ruts deeper by the truck); D3 (the phone's charger cord
+to the 12 V socket, the key ring, the pine tree on the mirror).
+The draft-2 targets above stay open for draft 3.
 """
 import os, sys, math
 _BT = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)), ".."))
 if _BT not in sys.path: sys.path.insert(0, _BT)
 from _props import palette as P
-from _props.geometry import clear_scene, make_box, make_cyl, make_blob, make_wedge, make_lathe, make_chamfer_box, export_glb
+from _props.geometry import (clear_scene, make_box, make_cyl, make_blob, make_wedge, make_lathe, make_chamfer_box,
+                             make_tube, make_rot_box, make_taper_cyl, export_glb)
 from _props.detail import make_far_bands
 
 GRAVEL = (0.56, 0.52, 0.44, 1.0)
@@ -93,11 +103,11 @@ def build_ground():
     make_box("Road_Edge_Line_S", (0.0, 6.15, 0.002), (300.0, 0.10, 0.004), (0.86, 0.86, 0.84, 1.0))
     make_box("Road_Edge_Line_N", (0.0, 12.85, 0.002), (300.0, 0.10, 0.004), (0.86, 0.86, 0.84, 1.0))
     # mile marker on the far shoulder
-    make_cyl("Mile_Marker_Post", (3.5, 13.8, 0.9), 0.04, 1.8, (0.40, 0.42, 0.40, 1.0), segments=6)
+    make_lathe("Mile_Marker_Post", (3.5, 13.8, 0.0), [(0.04, 0.0), (0.04, 1.75), (0.03, 1.8), (0.0, 1.8)], (0.40, 0.42, 0.40, 1.0), segments=6)
     make_box("Mile_Marker_Sign", (3.5, 13.8, 1.75), (0.22, 0.02, 0.36), (0.16, 0.42, 0.24, 1.0))
     # a fence line along the far ditch
     for i in range(14):
-        make_cyl(f"Fence_Post_{i}", (-39.0 + i * 6.0, 16.5, 0.6), 0.05, 1.2, (0.36, 0.30, 0.22, 1.0), segments=6)
+        make_lathe(f"Fence_Post_{i}", (-39.0 + i * 6.0, 16.5, 0.0), [(0.05, 0.0), (0.05, 1.15), (0.035, 1.2), (0.0, 1.2)], (0.36, 0.30, 0.22, 1.0), segments=6)
     make_box("Fence_Wire_Top", (0.0, 16.5, 1.12), (80.0, 0.01, 0.01), (0.50, 0.50, 0.48, 1.0))
     make_box("Fence_Wire_Mid", (0.0, 16.5, 0.72), (80.0, 0.01, 0.01), (0.50, 0.50, 0.48, 1.0))
 
@@ -137,9 +147,11 @@ def build_truck_exterior():
     make_box("Truck_Plate", (0.0, 3.51, 0.50), (0.30, 0.01, 0.15), (0.88, 0.86, 0.80, 1.0))
     # wheels: outside the skins
     for wi, (wx, wy) in enumerate(((-1.07, 2.50), (1.07, 2.50), (-1.07, -2.60), (1.07, -2.60))):
-        make_cyl(f"Truck_Wheel_{wi}", (wx, wy, 0.40), 0.40, 0.26, RUBBER, axis="X", segments=12)
+        make_cyl(f"Truck_Wheel_{wi}", (wx, wy, 0.40), 0.40, 0.26, RUBBER, axis="X", segments=14)
+        make_cyl(f"Truck_Tread_{wi}", (wx, wy, 0.40), 0.405, 0.18, (0.16, 0.16, 0.17, 1.0), axis="X", segments=14)
         make_cyl(f"Truck_Hubcap_{wi}", (wx + (0.135 if wx > 0 else -0.135), wy, 0.40), 0.18, 0.01,
                  (0.60, 0.62, 0.64, 1.0), axis="X", segments=10)
+        make_cyl(f"Truck_Lug_{wi}", (wx + (0.142 if wx > 0 else -0.142), wy, 0.40), 0.05, 0.006, (0.40, 0.42, 0.44, 1.0), axis="X", segments=6)
 
 
 def build_cab_shell():
@@ -304,24 +316,22 @@ def build_turnout_furniture():
     barrel; the white sedan further along the turnout."""
     px, py = 5.0, -3.5
     make_box("Picnic_Pad", (px, py, 0.03), (3.2, 2.8, 0.06), CONCRETE)
-    make_box("Picnic_Table_Top", (px, py, 0.785), (1.80, 0.72, 0.05), WOOD)
+    # the picnic table nobody uses: planked top and benches on A-frame legs
+    for pi3 in range(4):
+        make_chamfer_box(f"Picnic_Table_Plank_{pi3}", (px, py - 0.27 + pi3 * 0.18, 0.785), (1.80, 0.16, 0.04), WOOD, chamfer=0.006)
     for sgn, nm in ((1, "N"), (-1, "S")):
-        make_box(f"Picnic_Bench_{nm}", (px, py + sgn * 0.60, 0.47), (1.80, 0.26, 0.04), WOOD)
+        make_chamfer_box(f"Picnic_Bench_{nm}", (px, py + sgn * 0.60, 0.47), (1.80, 0.26, 0.04), WOOD, chamfer=0.006)
     for sgn, nm in ((1, "E"), (-1, "W")):
-        make_box(f"Picnic_Leg_{nm}", (px + sgn * 0.70, py, 0.41), (0.08, 1.40, 0.70), (0.44, 0.34, 0.24, 1.0))
+        for lsgn in (-1, 1):
+            make_rot_box(f"Picnic_Leg_{nm}_{lsgn:+d}", (px + sgn * 0.70, py + lsgn * 0.30, 0.40), (0.06, 0.10, 0.80), (0.44, 0.34, 0.24, 1.0), roll=lsgn * 0.55)
+        make_box(f"Picnic_Brace_{nm}", (px + sgn * 0.70, py, 0.45), (0.06, 1.50, 0.08), (0.44, 0.34, 0.24, 1.0))
+    make_box("Picnic_Initials", (px + 0.30, py + 0.05, 0.811), (0.10, 0.06, 0.002), (0.34, 0.26, 0.18, 1.0))
     make_cyl("Trash_Barrel", (px + 1.9, py + 0.9, 0.45), 0.28, 0.90, (0.28, 0.30, 0.30, 1.0), segments=12)
     make_cyl("Trash_Barrel_Rim", (px + 1.9, py + 0.9, 0.915), 0.30, 0.03, (0.20, 0.22, 0.22, 1.0), segments=12)
     # Claire's white sedan, nose to the road, west of the truck
-    sx, sy = -8.5, -2.5
-    make_box("Sedan_Body", (sx, sy, 0.62), (1.70, 4.20, 0.60), (0.90, 0.90, 0.88, 1.0))
-    make_box("Sedan_Cabin", (sx, sy - 0.3, 1.13), (1.50, 2.20, 0.42), (0.82, 0.83, 0.82, 1.0))
-    make_box("Sedan_Windshield", (sx, sy + 0.815, 1.15), (1.30, 0.03, 0.30), (0.26, 0.30, 0.36, 1.0))
-    for sgn, nm in ((1, "R"), (-1, "L")):
-        make_box(f"Sedan_Side_Glass_{nm}", (sx + sgn * 0.765, sy - 0.3, 1.15), (0.03, 1.80, 0.30), (0.26, 0.30, 0.36, 1.0))
-    for wi, (wx, wy) in enumerate(((sx - 0.975, sy - 1.4), (sx + 0.975, sy - 1.4), (sx - 0.975, sy + 1.4), (sx + 0.975, sy + 1.4))):
-        make_cyl(f"Sedan_Wheel_{wi}", (wx, wy, 0.33), 0.33, 0.25, RUBBER, axis="X", segments=10)
-    make_box("Sedan_Bumper_F", (sx, sy + 2.15, 0.50), (1.60, 0.10, 0.20), (0.80, 0.80, 0.78, 1.0))
-    make_box("Sedan_Plate", (sx, sy + 2.205, 0.55), (0.30, 0.01, 0.15), (0.88, 0.86, 0.80, 1.0))
+    # draft 2 (2026-09-18): Claire's sedan from the vehicle kit, nose to the road
+    from _props.vehicles import make_car
+    make_car("Sedan", -8.5, -2.5, 4.4, (0.90, 0.90, 0.88, 1.0), along="Y", z0=-0.02)
 
 
 def build_scrub():
@@ -330,7 +340,7 @@ def build_scrub():
                                       (8.0, 22.0, 2.0, 4), (15.0, 20.5, 2.6, 5), (22.0, 21.0, 1.9, 6),
                                       (-10.0, -12.5, 2.0, 7), (0.5, -13.5, 2.4, 8), (11.0, -12.0, 1.8, 9),
                                       (-20.0, -11.0, 2.2, 10), (19.0, -13.0, 2.3, 11))):
-        make_cyl(f"Scrub_{i}_Trunk", (x, y, 0.9), 0.14, 1.8, (0.30, 0.24, 0.18, 1.0), segments=6)
+        make_taper_cyl(f"Scrub_{i}_Trunk", (x, y, 0.9), 0.16, 0.09, 1.8, (0.30, 0.24, 0.18, 1.0), segments=6)
         make_blob(f"Scrub_{i}_Crown", (x, y, 1.8 + r * 0.8), r, (0.24, 0.32, 0.20, 1.0), noise=0.24, seed=s, squash=0.85)
 
 
@@ -339,6 +349,27 @@ def build_horizon():
                    [(60.0, 90.0, 7.0, 0.90), (120.0, 150.0, 9.0, 0.72),
                     (250.0, 260.0, 11.0, 0.55), (500.0, 420.0, 14.0, 0.42)],
                    cx=0.0, cy=0.0, profile="treeline")
+
+
+def build_draft4_2026_09():
+    """DRAFT 2 (2026-09-18, lore/_VISUAL_PROGRAM.md §3; the cab carries 7
+    placements). The cab's WEAR: the driver's heel-worn mat, the
+    bolster's shine, the dash's dust line under the windshield, a
+    parking-lot ding on the passenger door skin, the turnout's tire
+    ruts deeper by the truck. D3: the phone's charger cord to the 12 V
+    socket, the key ring, a pine-tree freshener on the mirror.
+    """
+    from _props.detail import make_floor_stain
+    make_box("Wear_Heel", (-0.52, 0.85, 0.467), (0.16, 0.20, 0.003), (0.24, 0.23, 0.22, 1.0))
+    make_box("Wear_Bolster_Shine", (-0.46, 0.30, 0.933), (0.30, 0.22, 0.003), (0.46, 0.42, 0.35, 1.0))
+    make_box("Wear_Dust_Line", (0.0, 1.50, 1.183), (1.60, 0.03, 0.002), (0.34, 0.33, 0.30, 1.0))
+    make_chamfer_box("Ding", (0.928, 0.95, 0.72), (0.012, 0.10, 0.06), TRUCK_GREEN_DK, chamfer=0.004)
+    make_floor_stain("Wear_Rut_Deep", (-1.07, 0.5), radius=0.6, tint=(0.48, 0.44, 0.36, 1.0), segments=10)
+    make_tube("Cord_1", [(0.22, 1.07, 1.19), (0.22, 1.02, 1.05), (0.10, 0.96, 0.85), (0.02, 0.94, 0.80)], 0.004, (0.90, 0.90, 0.88, 1.0), segments=4)
+    make_cyl("Socket_12V", (0.0, 0.925, 0.80), 0.014, 0.01, (0.12, 0.12, 0.13, 1.0), axis="Y", segments=8)
+    make_tube("Key_Ring", [(-0.34, 0.845, 0.925), (-0.33, 0.845, 0.905), (-0.35, 0.845, 0.895), (-0.36, 0.845, 0.915), (-0.34, 0.845, 0.925)], 0.003, CHROME, segments=4)
+    make_tube("Freshener_String", [(0.0, 1.40, 1.545), (0.0, 1.40, 1.46)], 0.002, (0.60, 0.60, 0.58, 1.0), segments=4)
+    make_box("Freshener", (0.0, 1.40, 1.42), (0.06, 0.003, 0.08), (0.24, 0.50, 0.30, 1.0))
 
 
 def main():
@@ -352,6 +383,7 @@ def main():
     build_turnout_furniture()
     build_scrub()
     build_horizon()
+    build_draft4_2026_09()
     out = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)),
         "../../../assets/3d/locales/vehicle_cab.glb"))
     print(f"\n[build_vehicle_cab] exporting to {out}")

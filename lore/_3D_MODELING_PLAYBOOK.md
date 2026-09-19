@@ -511,6 +511,23 @@ The visual program's first background pass (lore/_VISUAL_PROGRAM.md
   mouths, the dirt under the benches, the sideline path, the gate's
   tread); the field house's door light, so the corkboard is read
   under it.
+- **The Kowalski kitchen, the Caldwell porch and the vehicle cab
+  (2026-09-18).** The kitchen: a gooseneck faucet, burners and knobs
+  and an oven bar, the pendant as canopy + cord + shade + bulb, a
+  pull and a photo on the fridge, shakers; Daisy's spot and her hair
+  on the couch; two switches and three cords; the backyard through
+  the sink window and the neighbour's mower through the east one —
+  and the scene's "overhead fluorescent" practical, in a kitchen with
+  no tubes, became the pendant's bulb, with the under-cabinet light
+  Anita sits by (the only light in ch19) lit at last. The porch: the
+  same rocker and baluster grammar as the Millers', the carriage lamp
+  caged, spokes on Maya's bike, the slow car from the kit, a hedge
+  and a streetlamp. The cab: treads and lugs, the sedan from the kit,
+  a planked picnic table with initials, the heel-worn mat, the
+  bolster's shine, the dust line, a door ding, the charger cord.
+- **Things outside stand on the ground they were given.** A mower set
+  at a cabin-floor height floated over a lawn at −0.03; FLOAT caught
+  it. Exterior props take their z from the slab under them.
 - **The recorder boxes a `make_tube` by its whole path.** An L-shaped
   cord over a counter's edge and down its back has a bounding box
   that swallows the counter, and the clip hunt says so. Cords and
