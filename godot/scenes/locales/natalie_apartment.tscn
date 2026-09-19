@@ -167,8 +167,11 @@ light_energy = 0.5
 shadow_enabled = false
 
 ; Warm table-lamp practical
-[node name="Practical_Lamp" type="OmniLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.6, 1.1, -1.6)
+; (2026-09-19: this light hung at blender (1.6, 1.6, 1.1) with no fixture
+; under it — the scarf lamp has its own practical. It is now the
+; under-cabinet light's, the builder's "you're-welcome lamp".)
+[node name="UnderCab_Light_Practical" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5, 1.45, -5.0)
 light_color = Color(1.0, 0.8, 0.5, 1)
 light_energy = 1.1
 omni_range = 3.0
@@ -348,9 +351,11 @@ rotation = Vector3(-0.6433, 2.1859, 0.0)
 metadata/fov = 42.0
 
 ; insert: the worn deck, shuffled (vol5)
+; (2026-09-19: the deck moved north with the rug, to blender (-1.4, 2.35);
+; the lens looks east-north-east at it from the rug's west edge)
 [node name="shot_insert_deck" type="Marker3D" parent="." groups=["vn_shot"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.533, 0.395, -1.391)
-rotation = Vector3(-0.5236, -1.3090, 0.0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.9, 0.45, -2.0)
+rotation = Vector3(-0.59, -0.96, 0.0)
 metadata/fov = 42.0
 
 ; insert: her phone on the kitchen counter, ringing (vol5)

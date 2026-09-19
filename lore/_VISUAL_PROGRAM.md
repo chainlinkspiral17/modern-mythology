@@ -231,6 +231,14 @@ in both builders. Next: the vol 5 arcana sets' primitive upgrade
 presets in batches, D2 + light only, from the contact sheet's worst
 frames once one exists.
 
+**Status (2026-09-19, later) · natalie_apartment draft 3 shipped, unseen
+— the arcana primitive upgrade opens.** Nineteen rooms deep. The Empress
+set had nine layout faults no gate reports (a sofa in the door's
+swing, a lamp and a quilt in the air, a record inside its plinth);
+the footprint walk found them in ten minutes. Next: new_orleans_office,
+new_orleans_apartment, houston_office, bungalow_interior, hospice_room,
+then the cathedral exterior.
+
 **Draft targets, by volume, by uses:**
 - **Vol 7 (current):** `cabin_interior` (31) · `lena_apartment` (23)
   · `miller_back_porch` (12, shared with vol 6) · `salty_tome_alley`
