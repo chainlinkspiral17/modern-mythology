@@ -221,6 +221,16 @@ be; the practical stayed behind too. Next: vol 1's
 missing_link_interior and shuttle_bench, then the arcana sets'
 primitive upgrade (vol 5), then the single-use presets in batches.
 
+**Status (2026-09-19, later) · vol 1's two rooms shipped, unseen:
+missing_link_interior draft 3, missing_link_exterior (the shuttle
+bench) draft 2.** Eighteen rooms deep. The pair disagree about the
+diner itself (the exterior's door is at the east end and its body a
+metre wider than the room inside) — a draft-4 reconciliation, noted
+in both builders. Next: the vol 5 arcana sets' primitive upgrade
+(six rooms plus the cathedral exterior), then the 71 single-use
+presets in batches, D2 + light only, from the contact sheet's worst
+frames once one exists.
+
 **Draft targets, by volume, by uses:**
 - **Vol 7 (current):** `cabin_interior` (31) · `lena_apartment` (23)
   · `miller_back_porch` (12, shared with vol 6) · `salty_tome_alley`

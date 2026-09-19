@@ -8,12 +8,33 @@ back kitchen. Two gas pumps outside, one retired in place.
 
 Rebuilt 2026-07-13 from the bare auto-generated template (which
 shipped only a register counter + a vending box) into a full diner.
+
+DRAFT 3 (2026-09-19, lore/_VISUAL_PROGRAM.md §3 backgrounds pass, 8
+placements — vol 1's first room). The stools as profiles (flared base,
+foot ring, rolled seat); the booths with chamfered vinyl, a top rail,
+a flanged table post and a chrome edge band; the cake dome a bell;
+feet and side trims on the jukebox; the kitchen door's push plate and
+hinge strip. OUTSIDE the front windows: the pumps moved WEST of the
+door to where the exterior builder has them (the east one stood in
+front of the entrance), the island, a hose, the depot bench under a
+real awning east of the door, the road and its dashes past the apron,
+the pole sign, the cobra lamppost, the treeline. First WEAR: the
+entry path over the checker tiles, the counter's kick scuff and elbow
+strip, the booths' sit shine, the lean patch at the jukebox. D3: the
+switch bank by the kitchen door, the jukebox's outlet and cord, the
+coffee station's.
+Draft 4 targets: reconcile this plan with build_missing_link_exterior
+(the exterior's door is at the diner's EAST end, this room's is
+centred, and the exterior body is 8 m to this room's 7 m); the swing
+door's kick; napkin dispensers as the chrome kind; the pie case lit;
+Deck: the preset from the SW corner + establish_b.
 """
 import os, sys
 _BT = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)), ".."))
 if _BT not in sys.path: sys.path.insert(0, _BT)
 from _props import palette as P
-from _props.geometry import clear_scene, make_box, make_chamfer_box, make_cyl, export_glb
+from _props.geometry import clear_scene, make_box, make_chamfer_box, make_cyl, make_lathe, make_tube, export_glb
+from _props.detail import make_traffic_wear, make_floor_stain, make_scuff_band, make_light_switch, make_wall_outlet
 from _props.structure import make_floor, make_wall, make_ceiling, make_crown_molding, make_window
 from _props.food_service import make_coffee_pots
 from _props.decor import make_wall_clock, make_floor_plant, make_faded_poster, make_calendar
@@ -73,10 +94,11 @@ def build_counter_and_stools():
     # Five chrome swivel stools facing N
     for si, sx in enumerate([-2.0, -1.0, 0.0, +1.0, +2.0]):
         sy = cy - 0.85
-        make_cyl(f"Stool_{si}_Base", (sx, sy, 0.04), 0.19, 0.04, COL_CHROME, segments=12)
-        make_cyl(f"Stool_{si}_Post", (sx, sy, 0.38), 0.035, 0.68, COL_CHROME)
-        make_cyl(f"Stool_{si}_FootRing", (sx, sy, 0.22), 0.14, 0.02, COL_CHROME, segments=12)
-        make_cyl(f"Stool_{si}_Seat", (sx, sy, 0.76), 0.18, 0.07, COL_VINYL_RED, segments=12)
+        # (draft 3: profiles — a flared base, a foot ring, a rolled seat)
+        make_lathe(f"Stool_{si}_Base", (sx, sy, 0.0), [(0.19, 0.0), (0.19, 0.02), (0.12, 0.04), (0.05, 0.05), (0.035, 0.06)], COL_CHROME, segments=12)
+        make_cyl(f"Stool_{si}_Post", (sx, sy, 0.39), 0.035, 0.66, COL_CHROME)
+        make_lathe(f"Stool_{si}_FootRing", (sx, sy, 0.22), [(0.13, 0.0), (0.15, 0.012), (0.13, 0.024)], COL_CHROME, segments=12, loop=True)
+        make_lathe(f"Stool_{si}_Seat", (sx, sy, 0.725), [(0.0, 0.0), (0.16, 0.0), (0.18, 0.02), (0.18, 0.05), (0.16, 0.07), (0.0, 0.075)], COL_VINYL_RED, segments=12)
     # Counter dressing: 2 chipped white mugs, 3 condiment sets
     for mi, mx in enumerate([-1.6, +0.4]):
         make_cyl(f"CounterMug_{mi}", (mx, cy - 0.10, 1.14), 0.045, 0.10, COL_MUG, segments=10)
@@ -89,7 +111,7 @@ def build_counter_and_stools():
     # Cake dome + pie on the counter
     make_cyl("CakePlate", (+1.6, cy - 0.02, 1.11), 0.22, 0.03, COL_CHROME, segments=16)
     make_cyl("CakePie", (+1.6, cy - 0.02, 1.16), 0.20, 0.08, COL_PIE, segments=16)
-    make_cyl("CakeDome", (+1.6, cy - 0.02, 1.24), 0.23, 0.22, COL_GLASS, segments=16)
+    make_lathe("CakeDome", (+1.6, cy - 0.02, 1.13), [(0.23, 0.0), (0.23, 0.14), (0.19, 0.19), (0.08, 0.22), (0.03, 0.22), (0.03, 0.25), (0.0, 0.25)], COL_GLASS, segments=16)
 
 
 def build_backbar_kitchen():
@@ -135,6 +157,8 @@ def build_backbar_kitchen():
     make_box("KitchenDoor", (0.0, ROOM_D - 0.02, 1.05), (0.94, 0.06, 2.05), COL_LAMINATE)
     make_cyl("KitchenDoor_Porthole", (0.0, ROOM_D - 0.05, 1.55), 0.15, 0.04, COL_GLASS, axis='Y', segments=12)
     make_cyl("KitchenDoor_PortRim", (0.0, ROOM_D - 0.04, 1.55), 0.17, 0.02, COL_CHROME, axis='Y', segments=12)
+    make_box("KitchenDoor_PushPlate", (0.30, ROOM_D - 0.053, 1.05), (0.16, 0.004, 0.30), COL_CHROME)
+    make_box("KitchenDoor_HingeStrip", (-0.46, ROOM_D - 0.02, 1.05), (0.02, 0.07, 2.00), COL_STEEL)
 
 
 def build_window_booths():
@@ -143,12 +167,15 @@ def build_window_booths():
     for bi, bx in enumerate([-2.5, -1.4, +1.4, +2.5]):
         for sgn, tag in [(-1, "W"), (+1, "E")]:
             benchx = bx + sgn * 0.36
-            make_box(f"Booth_{bi}_Seat_{tag}", (benchx, 0.95, 0.44),
-                     (0.30, 1.10, 0.10), COL_VINYL_RED)
-            make_box(f"Booth_{bi}_Back_{tag}", (bx + sgn * 0.52, 0.95, 0.83),
-                     (0.10, 1.10, 0.66), COL_VINYL_DK)
-        make_cyl(f"Booth_{bi}_Table_Post", (bx, 0.95, 0.36), 0.03, 0.72, COL_CHROME)
+            make_chamfer_box(f"Booth_{bi}_Seat_{tag}", (benchx, 0.95, 0.44),
+                             (0.30, 1.10, 0.10), COL_VINYL_RED, chamfer=0.03)
+            make_chamfer_box(f"Booth_{bi}_Back_{tag}", (bx + sgn * 0.52, 0.95, 0.83),
+                             (0.10, 1.10, 0.66), COL_VINYL_DK, chamfer=0.03)
+            make_tube(f"Booth_{bi}_Rail_{tag}", [(bx + sgn * 0.52, 0.40, 1.17), (bx + sgn * 0.52, 1.50, 1.17)], 0.018, COL_CHROME, segments=6)
+        # (draft 3: a flanged post, a chrome edge band round the top)
+        make_lathe(f"Booth_{bi}_Table_Post", (bx, 0.95, 0.011), [(0.16, 0.0), (0.16, 0.015), (0.05, 0.03), (0.03, 0.05), (0.03, 0.705)], COL_CHROME, segments=10)
         make_box(f"Booth_{bi}_Table", (bx, 0.95, 0.74), (0.48, 0.62, 0.05), COL_LAMINATE)
+        make_tube(f"Booth_{bi}_Table_Band", [(bx - 0.245, 0.64, 0.74), (bx + 0.245, 0.64, 0.74), (bx + 0.245, 1.26, 0.74), (bx - 0.245, 1.26, 0.74), (bx - 0.245, 0.64, 0.74)], 0.012, COL_CHROME, segments=6)
         # a napkin box + a mug on each table
         make_box(f"Booth_{bi}_Napkin", (bx, 1.10, 0.80), (0.08, 0.06, 0.08), COL_CHROME)
         make_cyl(f"Booth_{bi}_Mug", (bx - 0.10, 0.85, 0.80), 0.04, 0.09, COL_MUG, segments=8)
@@ -174,6 +201,11 @@ def build_jukebox():
     # The blinking red eye + coin slot
     make_cyl("Juke_RedEye", (jx - 0.245, jy + 0.24, 1.30), 0.03, 0.02, COL_RED_EYE, axis='X', segments=8)
     make_box("Juke_CoinSlot", (jx - 0.245, jy - 0.20, 1.28), (0.005, 0.04, 0.08), COL_CHROME)
+    # (draft 3: feet, chrome side trims)
+    for fi, (fx, fy) in enumerate(((jx - 0.17, jy - 0.30), (jx + 0.17, jy - 0.30), (jx - 0.17, jy + 0.30), (jx + 0.17, jy + 0.30))):
+        make_cyl(f"Juke_Foot_{fi}", (fx, fy, 0.005), 0.03, 0.01, COL_BLACK, segments=6)
+    for ti, ty in enumerate((jy - 0.37, jy + 0.37)):
+        make_box(f"Juke_Trim_{ti}", (jx - 0.12, ty, 0.72), (0.20, 0.012, 1.10), COL_CHROME)
 
 
 def build_ceiling_infra():
@@ -204,24 +236,63 @@ def build_decor():
 def build_exterior():
     # Wet asphalt apron + two gas pumps + a depot bench, visible through
     # the front windows (Blender -Y = south = outside the S wall).
-    make_box("Apron", (0.0, -3.0, -0.02), (10.0, 6.0, 0.04), COL_ASPHALT)
-    for pi, pxy in enumerate([(-2.2, -2.6), (+1.6, -2.6)]):
-        px, py = pxy
+    make_box("Apron", (0.0, -3.0, -0.02), (20.0, 6.0, 0.04), COL_ASPHALT)
+    # (draft 3: the pumps WEST of the door where build_missing_link_
+    # exterior puts them — the east pump stood in front of the entrance)
+    make_box("Pump_Island", (-5.6, -2.6, 0.08), (2.6, 1.0, 0.16), (0.28, 0.28, 0.30, 1.0))
+    for pi, px in enumerate((-4.9, -6.3)):
+        py = -2.6
         retired = (pi == 1)
         col = (0.42, 0.40, 0.40, 1.0) if retired else COL_PUMP
-        make_box(f"Pump_{pi}_Island", (px, py, 0.08), (1.10, 0.60, 0.16), (0.28, 0.28, 0.30, 1.0))
-        make_box(f"Pump_{pi}_Body", (px, py, 0.80), (0.50, 0.40, 1.30), col)
+        make_chamfer_box(f"Pump_{pi}_Body", (px, py, 0.81), (0.50, 0.40, 1.30), col, chamfer=0.02)
         make_box(f"Pump_{pi}_Display", (px, py - 0.21, 1.15), (0.36, 0.02, 0.26),
                  (0.20, 0.24, 0.20, 1.0) if retired else (0.86, 0.92, 0.78, 1.0))
-        make_box(f"Pump_{pi}_Topper", (px, py, 1.55), (0.56, 0.30, 0.20), (0.90, 0.88, 0.80, 1.0))
+        make_box(f"Pump_{pi}_Topper", (px, py, 1.56), (0.56, 0.30, 0.20), (0.90, 0.88, 0.80, 1.0))
         if not retired:
-            make_cyl(f"Pump_{pi}_Hose", (px + 0.28, py, 0.90), 0.02, 0.50, COL_BLACK, segments=6)
-            make_box(f"Pump_{pi}_Nozzle", (px + 0.28, py, 0.60), (0.06, 0.10, 0.14), COL_STEEL)
-    # Depot bench under the awning
-    make_chamfer_box("DepotBench_Seat", (+3.0, -1.6, 0.42), (1.20, 0.36, 0.06), COL_WOOD)
-    make_chamfer_box("DepotBench_Back", (+3.0, -1.42, 0.66), (1.20, 0.06, 0.42), COL_WOOD)
+            make_tube(f"Pump_{pi}_Hose", [(px + 0.26, py, 1.30), (px + 0.42, py, 0.95), (px + 0.28, py, 0.62)], 0.02, COL_BLACK, segments=6)
+            make_box(f"Pump_{pi}_Nozzle", (px + 0.28, py, 0.55), (0.06, 0.10, 0.14), COL_STEEL)
+    # Depot bench under its awning, east of the door beyond Window_E
+    make_chamfer_box("DepotBench_Seat", (5.0, -1.2, 0.42), (1.20, 0.36, 0.06), COL_WOOD)
+    make_chamfer_box("DepotBench_Back", (5.0, -1.02, 0.66), (1.20, 0.06, 0.42), COL_WOOD)
     for lx in (-0.5, +0.5):
-        make_box(f"DepotBench_Leg_{lx:+.0f}", (+3.0 + lx, -1.6, 0.20), (0.06, 0.30, 0.40), COL_BLACK)
+        make_box(f"DepotBench_Leg_{lx:+.0f}", (5.0 + lx, -1.2, 0.20), (0.06, 0.30, 0.40), COL_BLACK)
+    for ax in (4.0, 6.0):
+        make_cyl(f"Awning_Post_{ax:.0f}", (ax, -1.9, 1.25), 0.05, 2.5, COL_STEEL, segments=6)
+    make_box("Awning_Roof", (5.0, -1.1, 2.55), (2.6, 1.9, 0.08), (0.36, 0.38, 0.36, 1.0))
+    # The road past the apron, the pole sign west, the cobra lamppost
+    # east, the treeline
+    make_box("Road_S", (0.0, -7.7, -0.02), (24.0, 3.4, 0.04), (0.14, 0.14, 0.16, 1.0))
+    for di in range(8):
+        make_box(f"Road_Dash_{di}", (-10.5 + di * 3.0, -7.7, 0.005), (1.3, 0.12, 0.01), (0.72, 0.68, 0.52, 1.0))
+    make_lathe("PoleSign_Pole", (-8.9, -1.5, 0.0), [(0.20, 0.0), (0.20, 0.05), (0.11, 0.10), (0.11, 4.2), (0.0, 4.2)], (0.30, 0.30, 0.32, 1.0), segments=8)
+    make_box("PoleSign_Face", (-8.9, -1.5, 4.7), (2.6, 0.22, 1.1), (0.88, 0.84, 0.72, 1.0))
+    make_box("PoleSign_Border", (-8.9, -1.5, 4.7), (2.75, 0.08, 1.25), (0.62, 0.20, 0.16, 1.0))
+    make_lathe("Lamppost_Pole", (5.8, -4.0, 0.0), [(0.16, 0.0), (0.16, 0.05), (0.09, 0.10), (0.07, 5.0), (0.0, 5.0)], (0.30, 0.30, 0.32, 1.0), segments=8)
+    make_tube("Lamppost_Arm", [(5.8, -4.0, 4.9), (5.8, -4.6, 5.0), (5.8, -5.3, 4.95)], 0.04, (0.30, 0.30, 0.32, 1.0), segments=6)
+    make_box("Lamppost_Head", (5.8, -5.5, 4.88), (0.24, 0.62, 0.14), (0.44, 0.46, 0.50, 1.0))
+    make_box("Treeline_S", (0.0, -12.0, 2.6), (30.0, 0.6, 5.2), (0.10, 0.14, 0.10, 1.0))
+
+
+def build_draft3_2026_09():
+    """DRAFT 3 (2026-09-19) · wear and infrastructure. No part name
+    carries a cue word (pie · juke · food)."""
+    floor_dk = (COL_FLOOR[0] * 0.84, COL_FLOOR[1] * 0.84, COL_FLOOR[2] * 0.84, 1.0)
+    cord = (0.16, 0.16, 0.18, 1.0)
+    # the entry line rides ON the checker tiles (z 0.012), not under them
+    make_traffic_wear("Wear_Path_Entry", [(0.0, 1.1), (0.0, 3.0)], width=0.70, floor_z=0.008, tint=floor_dk)
+    make_scuff_band("Wear_Kick", (0.0, 4.30 - 0.32 - 0.007), 3.6, axis='X', height=0.10, band_z=0.30, tint=(0.36, 0.32, 0.28, 1.0))
+    make_box("Wear_Elbow", (0.0, 3.95, 1.0965), (5.0, 0.06, 0.003), (0.70, 0.64, 0.50, 1.0))
+    for bi, bx in enumerate([-2.5, -1.4, +1.4, +2.5]):
+        for sgn, tag in [(-1, "W"), (+1, "E")]:
+            make_box(f"Wear_Sit_{bi}_{tag}", (bx + sgn * 0.36, 0.85, 0.4915), (0.22, 0.50, 0.003), (0.80, 0.30, 0.26, 1.0))
+    make_floor_stain("Wear_Lean", (2.55, 2.9), radius=0.30, tint=floor_dk, segments=10)
+    # D3
+    make_light_switch("Switch_1", (0.90, ROOM_D), axis='X', face_sign=-1, z=1.20, aged=True)
+    make_light_switch("Switch_2", (1.02, ROOM_D), axis='X', face_sign=-1, z=1.20, aged=True)
+    make_wall_outlet("Outlet_E_1", (ROOM_W / 2.0, 3.7), axis='Y', face_sign=-1, z=0.30, aged=True)
+    make_tube("Cord_1", [(3.30, 3.27, 0.20), (ROOM_W / 2.0 - 0.13, 3.68, 0.30)], 0.008, cord, segments=5)
+    make_wall_outlet("Outlet_N_1", (-2.2, ROOM_D), axis='X', face_sign=-1, z=1.10, aged=True)
+    make_tube("Cord_2", [(-2.0, 5.66, 0.98), (-2.2, ROOM_D - 0.13, 1.10)], 0.008, cord, segments=5)
 
 
 def build_hero_props_2026_09():
@@ -249,6 +320,7 @@ def main():
     build_decor()
     build_exterior()
     build_hero_props_2026_09()
+    build_draft3_2026_09()
     out = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)),
         "../../../assets/3d/locales/missing_link_interior.glb"))
     print(f"\n[build_missing_link_interior] exporting to {out}")

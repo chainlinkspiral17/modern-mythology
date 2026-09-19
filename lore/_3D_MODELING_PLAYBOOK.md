@@ -473,6 +473,15 @@ The thirteenth room of the backgrounds pass (lore/_VISUAL_PROGRAM.md
   the builder AND the tscn for everything that was set against it;
   better, anchor props to the furniture's variables (`DESK_X`,
   `BED_Y`) so they move with it.
+- **Two builders of one building must share a plan (the Missing
+  Link, same day).** The interior's door is centred in a 7 m front;
+  the exterior's door is at the east end of an 8 m front; the
+  interior's east pump stood in front of its own entrance while the
+  exterior's pumps sit west of the door. Each scene passed every
+  gate alone. When a place has an inside and an outside builder,
+  write the plan once (front width, door x, window x's, the pump
+  island) as shared constants and let both read it — recorded as
+  both rooms' draft-4 target.
 - Cue-word discipline, again: `matches_for` splits names on `_` and
   CamelCase and matches PARTS whole — Wear_Grip, Wear_Kick, Wear_Edge,
   Hemlock_*, FOH_* carry none of box/bag/bowl/crow/hands/mixer/window/
