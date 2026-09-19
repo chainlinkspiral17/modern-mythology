@@ -293,6 +293,13 @@ SKOUT="$(python3 vn_skill_audit.py 2>/dev/null)" || {
 echo "$SKOUT" | tail -1
 echo ""
 
+echo "── vn_target_audit.py ──"
+TGOUT="$(python3 vn_target_audit.py 2>/dev/null)" || {
+    echo "$TGOUT" | grep -vE "^\s*$" | head -20
+    echo "REGRESSION  vn_target_audit found a choice branch that lands wrong (ceiling 0)"; exit 1; }
+echo "$TGOUT" | tail -1
+echo ""
+
 echo "── page_length_audit.py ──"
 PLOUT="$(python3 page_length_audit.py 2>/dev/null)" || {
     echo "$PLOUT" | grep "^LONG" | head -20

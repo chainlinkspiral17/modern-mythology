@@ -34,15 +34,18 @@
    "opts": [
     {
      "text": "\"I'll sell it.\"", "skill": "logic",
-     "goto": 5
+     "flag": "vol2_house_decision", "val": "sell",
+     "goto": 7
     },
     {
      "text": "\"I hadn't thought about it yet.\"", "skill": "composure",
-     "goto": 8
+     "flag": "vol2_house_decision", "val": "wait",
+     "goto": 10
     },
     {
      "text": "\"What do you think I should do?\"", "skill": "empathy",
-     "goto": 11
+     "flag": "vol2_house_decision", "val": "ask",
+     "goto": 13
     }
    ]
   },

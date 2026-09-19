@@ -17,6 +17,24 @@
   },
   {
    "t": "narrate",
+   "when_flag": "vol2_house_decision",
+   "is": "sell",
+   "text": "She says it lightly. She has already decided not to mention the house again, and you can see the decision costing her."
+  },
+{
+   "t": "narrate",
+   "when_flag": "vol2_house_decision",
+   "is": "wait",
+   "text": "She says it lightly. Not thinking about it yet is, she has decided, the same as thinking about it; she will wait with you."
+  },
+{
+   "t": "narrate",
+   "when_flag": "vol2_house_decision",
+   "is": "ask",
+   "text": "She says it lightly. Someone in it, she had said — and she is looking at you the way you look at a house you might move back into."
+  },
+  {
+   "t": "narrate",
    "text": "[beat:still]A small mercy. A small wood. Small volumes of everything."
   },
   {

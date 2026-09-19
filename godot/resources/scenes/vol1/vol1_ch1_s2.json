@@ -32,15 +32,15 @@
     },
     {
      "text": "\"Why are you telling me this?\"", "skill": "logic",
-     "goto": 8
+     "goto": 9
     },
     {
      "text": "[LOGIC] The coffee appeared without anyone taking an order. The booth was empty when you walked in.",
      "check": {
       "skill": "logic",
       "diff": 1,
-      "pass": 11,
-      "fail": 8
+      "pass": 12,
+      "fail": 9
      }
     }
    ]

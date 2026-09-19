@@ -174,6 +174,13 @@ no-op (fallback discipline — a script must never crash the reader).
   when_flag line AND its when_not_flag twin so both players get a
   sentence that knows what they did. Roy's scene is the model: Finn
   clears the bowls two ways.
+- **Indices nobody checked.** vol1_ch1_s2 sent two of its three
+  branches to `jump vol1_end` (the volume ended before the replies);
+  vol2_graveyard's first option pointed two nodes back and re-opened
+  itself. Seventy-one hand-typed targets and no gate — until
+  `vn_target_audit.py`: BACKWARD, OOB, ONTO_END and SELF at zero,
+  ONTO_JUMP as info (a silence option may jump). When you splice a
+  node in, this is the gate that catches the goto you forgot to bump.
 - **Splicing a scene.** Insert at the file's own indentation (the
   vol 7 files use one-space and four-space styles both), bump
   `"goto"/"pass"/"fail"` ≥ the index, re-point the check's pass,

@@ -1771,6 +1771,17 @@ alone in the middle of the bed); `faust_asked_for_joan` in the waking
 (Joan: it is tomorrow / you went back to your friends). Loose flags
 42 → 38; the rest are `*_complete` progression markers and flags set
 on every path (black_lodge, met_dickens) — not memories.
+AND TWO BROKEN CHOICES, found on the way: vol1_ch1_s2's second option
+and its passed logic check pointed at `jump vol1_end` nodes (the
+Stranger's written replies never played; the volume ended), and
+vol2_graveyard's "I'll sell it." pointed two nodes BACK at the think
+before the choice, re-opening it forever; the other two gotos were two
+short and skipped Jo's first reply. Every goto/pass/fail in the game
+was a hand-typed index nothing checked. Fixed, and gated:
+`vn_target_audit.py` (BACKWARD · OOB · ONTO_END · SELF at zero;
+ONTO_JUMP listed as info — "Listen. Say nothing." legitimately jumps).
+The graveyard's decision is a memory now (`vol2_house_decision` =
+sell | wait | ask, read three ways in vol2_end).
 
 **2026-09-17 · DESIGN · the consequence map, and SKILLS EARN (draft 1).**
 The VN's game layer drawn for the first time (`consequence_map.py` →

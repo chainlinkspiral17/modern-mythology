@@ -15,7 +15,7 @@ check's scene, taking the best option at every earlier choice.
 | choices | 28 |
 | skill checks | 5 |
 | checks that cannot pass | 0 |
-| flags set | 58 |
+| flags set | 59 |
 | flags set and never read | 38 |
 
 
@@ -57,8 +57,8 @@ Skills earnable across the volume: empathy 4, logic 5, composure 7, rhetoric 7, 
 > The distinction, you're realizing, may not matter as much as you thought.
 
 - "What are you?" → #5 — trains **signal**
-- "Why are you telling me this?" → #8 — trains **logic**
-- [LOGIC] The coffee appeared without anyone taking an order. The booth was empty when you w → next — CHECK logic ≥ 1 (pass #11 / fail #8)
+- "Why are you telling me this?" → #9 — trains **logic**
+- [LOGIC] The coffee appeared without anyone taking an order. The booth was empty when you w → next — CHECK logic ≥ 1 (pass #12 / fail #9)
 
 **vol1_ch2_pharmacy** #9
 > The latest model. Think I'll try three. Going down a stringent chalky burn — can't sell what isn't personal.
@@ -159,9 +159,9 @@ Skills earnable across the volume: empathy 2, logic 2, composure 2, signal 1
 **vol2_graveyard** #6
 > Of course she did. Of course.
 
-- "I'll sell it." → #5 — trains **logic**
-- "I hadn't thought about it yet." → #8 — trains **composure**
-- "What do you think I should do?" → #11 — trains **empathy**
+- "I'll sell it." → #7 — trains **logic**; sets `vol2_house_decision` = sell
+- "I hadn't thought about it yet." → #10 — trains **composure**; sets `vol2_house_decision` = wait
+- "What do you think I should do?" → #13 — trains **empathy**; sets `vol2_house_decision` = ask
 
 ### Flags
 
@@ -174,6 +174,7 @@ Skills earnable across the volume: empathy 2, logic 2, composure 2, signal 1
 | `vol2_delores_lost` | vol2_ch2_cliffside#27 | **never — loose** |
 | `vol2_found_jiggles` | vol2_ch1_history_one#55 | **never — loose** |
 | `vol2_funeral_attended` | vol2_graveyard#1 | **never — loose** |
+| `vol2_house_decision` | vol2_graveyard#6, vol2_graveyard#6, vol2_graveyard#6 | vol2_end#3 (when_flag), vol2_end#4 (when_flag), vol2_end#5 (when_flag) |
 | `vol2_preface_read` | vol2_title#28 | **never — loose** |
 
 
