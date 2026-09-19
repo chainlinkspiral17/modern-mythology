@@ -482,6 +482,23 @@ The thirteenth room of the backgrounds pass (lore/_VISUAL_PROGRAM.md
   write the plan once (front width, door x, window x's, the pump
   island) as shared constants and let both read it — recorded as
   both rooms' draft-4 target.
+- **The arcana sets were dressed by coordinate and never walked
+  (six rooms, one afternoon).** Natalie's sofa in the door's swing;
+  the New Orleans office's modesty panel at the sitter's knees and
+  its cabinet across the back door; the Tower apartment's whole
+  window wall inside the wall; Houston's glass office drawn inside
+  out; the bungalow's laptop inside a CRT and its two floor lamps
+  sharing names. None of it gated: a thing inside a wall overlaps
+  only the wall (exempt), a thing in the air overlaps nothing, a
+  chair facing the wrong way is geometry like any other. Before a
+  primitive pass on a template room, walk the plan on paper: each
+  big piece's extents on a line, the door swing, which way every
+  chair faces, what each practical sits on. Ten minutes; it found
+  more than the pass itself in every room today.
+- **A vendored builder can still use the kit.** build_bungalow
+  carries its own make_box/make_cyl so the recorder can rebind
+  them; `from _props.geometry import make_lathe, make_tube` beside
+  them works, and the stubs record the kit's meshes as usual.
 - Cue-word discipline, again: `matches_for` splits names on `_` and
   CamelCase and matches PARTS whole — Wear_Grip, Wear_Kick, Wear_Edge,
   Hemlock_*, FOH_* carry none of box/bag/bowl/crow/hands/mixer/window/

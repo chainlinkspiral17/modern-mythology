@@ -257,6 +257,12 @@ Twenty-two rooms deep. The Emperor set's glass office was drawn
 inside out. Next: bungalow_interior, hospice_room, the cathedral
 exterior; then the single-use presets.
 
+**Status (2026-09-19, later) · bungalow living room + studio shipped,
+unseen.** Twenty-three rooms. The Priestess set is a vendored builder
+(its own make_box for the recorder); the kit imports into it fine.
+Next: hospice_room, the cathedral exterior; then the single-use
+presets in batches.
+
 **Draft targets, by volume, by uses:**
 - **Vol 7 (current):** `cabin_interior` (31) · `lena_apartment` (23)
   · `miller_back_porch` (12, shared with vol 6) · `salty_tome_alley`

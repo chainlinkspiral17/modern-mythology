@@ -46,6 +46,29 @@ Run:
 
 Output:
     godot/assets/3d/locales/bungalow.glb
+
+DRAFT N+1 · LIVING ROOM + STUDIO (2026-09-19, lore/_VISUAL_PROGRAM.md
+§3 backgrounds pass, the arcana primitive upgrade's fifth room; 2 VN
+placements + the Priestess board). Scoped to the two stations the
+preset and the cast markers stage. LAYOUT the gates never reported:
+two floor lamps shared one set of object names (LR_FloorLamp_*);
+the closed laptop and the coffee cup sat INSIDE Anya's CRT case; a
+second drive stack hung half off the desk's north edge; a box stack
+stood inside the reading chair; both book bundles sat in the floor
+lamp's base; Anya's chair faced AWAY from the mic. PRIMITIVES (the
+shared _props kit, imported into this vendored builder): the reading
+chair as chamfered cushions with rolled arms; the side table from
+the kit; both floor lamps as profiles (weighted base, pole, flared
+shade); Anya's chair from the kit, facing the mic; the studio can
+light, the mic capsule and pop filter, the headphone cups and band,
+the coffee cup as profiles; the boom arm a tube. WEAR (the chair you
+sat in too long): the seat's dent and the arm's shine, the feet
+patch before it, Anya's floor patch, the desk's elbow strip. D3: the
+floor lamp's cord to a south-wall outlet, a power strip under the
+desk with the reel's cord.
+Draft N+2 targets: the kitchen and bedroom stations by the same
+method; the porch's wicker as woven lathes; the string lights' cord
+as one catenary tube; Deck: the preset + the cast markers' frames.
 """
 
 import bpy
@@ -59,6 +82,15 @@ if _SCRIPT_DIR not in sys.path:
 
 OUTPUT_DIR  = "../../../assets/3d/locales"
 OUTPUT_NAME = "bungalow.glb"
+
+# The shared primitive kit (2026-09-19): this builder vendors its own
+# make_box/make_cyl for the recorder; the profiles come from _props.
+_BT = os.path.normpath(os.path.join(_SCRIPT_DIR, ".."))
+if _BT not in sys.path:
+    sys.path.insert(0, _BT)
+from _props.geometry import make_lathe, make_tube, make_chamfer_box
+from _props.furniture import make_table, make_chair
+from _props.detail import make_floor_stain, make_wall_outlet
 
 
 # ── Palette ──────────────────────────────────────────────────────
@@ -508,14 +540,8 @@ def build_living_room():
     # ── Side table next to the (south, facing the window) seating —
     # with the Whispers script page on it
     table_x, table_y = -2.2, +1.8
-    make_box("LR_SideTable_Top",
-             (table_x, table_y, 0.62),
-             (0.50, 0.40, 0.03), (0.46, 0.32, 0.22, 1.0))
-    for sx in (-1, +1):
-        for sy in (-1, +1):
-            make_cyl(f"LR_SideTable_Leg_{sx}_{sy}",
-                     (table_x + sx * 0.20, table_y + sy * 0.15, 0.30),
-                     0.018, 0.60, (0.36, 0.24, 0.16, 1.0))
+    # (draft N+1: the kit table — turned legs, an apron; same top height)
+    make_table("LR_SideTable", table_x, table_y, w=0.50, d=0.40, h=0.635, wood=(0.36, 0.24, 0.16, 1.0), top_col=(0.46, 0.32, 0.22, 1.0))
     # The Whispers script page — single sheet on top
     make_box("LR_ScriptPage",
              (table_x + 0.04, table_y + 0.05, 0.638),
@@ -548,29 +574,23 @@ def build_living_room():
     # ── Reading chair — a single tired armchair facing the south
     # window. The chair you sat in too long, in '23.
     ch_x, ch_y = -1.6, +0.8
-    make_box("LR_Chair_Seat",
-             (ch_x, ch_y, 0.42),
-             (0.70, 0.65, 0.20), (0.52, 0.40, 0.32, 1.0))
-    make_box("LR_Chair_Back",
-             (ch_x, ch_y + 0.30, 0.95),
-             (0.70, 0.12, 0.90), (0.52, 0.40, 0.32, 1.0))
-    make_box("LR_Chair_ArmL",
-             (ch_x - 0.32, ch_y - 0.02, 0.66),
-             (0.10, 0.62, 0.30), (0.42, 0.32, 0.26, 1.0))
-    make_box("LR_Chair_ArmR",
-             (ch_x + 0.32, ch_y - 0.02, 0.66),
-             (0.10, 0.62, 0.30), (0.42, 0.32, 0.26, 1.0))
+    # (draft N+1: chamfered cushions, rolled arms — the chair you sat
+    # in too long has a dent, see build_lr_studio_draft_2026_09)
+    make_chamfer_box("LR_Chair_Base", (ch_x, ch_y, 0.22), (0.70, 0.65, 0.24), (0.42, 0.32, 0.26, 1.0), chamfer=0.02)
+    make_chamfer_box("LR_Chair_Seat", (ch_x, ch_y - 0.03, 0.42), (0.62, 0.56, 0.16), (0.52, 0.40, 0.32, 1.0), chamfer=0.04)
+    make_chamfer_box("LR_Chair_Back", (ch_x, ch_y + 0.30, 0.95), (0.70, 0.12, 0.90), (0.52, 0.40, 0.32, 1.0), chamfer=0.04)
+    for side, sx in (("L", -0.32), ("R", 0.32)):
+        make_chamfer_box(f"LR_Chair_Arm{side}", (ch_x + sx, ch_y - 0.02, 0.62), (0.10, 0.62, 0.22), (0.42, 0.32, 0.26, 1.0), chamfer=0.02)
+        make_cyl(f"LR_Chair_Arm{side}_Roll", (ch_x + sx, ch_y - 0.02, 0.76), 0.06, 0.62, (0.42, 0.32, 0.26, 1.0), segments=10, axis='Y')
 
-    # ── Floor lamp behind the chair
+    # ── Floor lamp behind the chair (draft N+1: a weighted base, the
+    # pole, a flared shade — as profiles)
+    make_lathe("LR_FloorLamp_Base", (ch_x + 0.50, ch_y - 0.30, 0.0), [(0.13, 0.0), (0.13, 0.03), (0.06, 0.05), (0.02, 0.06), (0.018, 0.08)], COL_METAL_BLACK, segments=10)
     make_cyl("LR_FloorLamp_Pole",
              (ch_x + 0.50, ch_y - 0.30, 0.80),
-             0.018, 1.60, COL_METAL_BLACK)
-    make_box("LR_FloorLamp_Base",
-             (ch_x + 0.50, ch_y - 0.30, 0.03),
-             (0.26, 0.26, 0.04), COL_METAL_BLACK)
-    make_cyl("LR_FloorLamp_Shade",
-             (ch_x + 0.50, ch_y - 0.30, 1.65),
-             0.18, 0.28, (0.92, 0.84, 0.66, 1.0), segments=10)
+             0.018, 1.46, COL_METAL_BLACK)
+    make_lathe("LR_FloorLamp_Shade", (ch_x + 0.50, ch_y - 0.30, 1.51), [(0.12, 0.0), (0.18, 0.28), (0.0, 0.28)], (0.92, 0.84, 0.66, 1.0), segments=12)
+    make_lathe("LR_FloorLamp_Bulb", (ch_x + 0.50, ch_y - 0.30, 1.56), [(0.0, 0.0), (0.03, 0.02), (0.03, 0.06), (0.0, 0.08)], (0.98, 0.94, 0.80, 1.0), segments=8)
 
     # ── Warped-floor hint — a single plank pushed up slightly
     # (the warp the flavor mentions)
@@ -597,9 +617,7 @@ def build_studio_and_editing_desk():
     make_box("Studio_LightBracket",
              (STUDIO_CX, STUDIO_CY + 0.4, CEIL_Z - 0.05),
              (0.80, 0.60, 0.04), COL_METAL_BLACK)
-    make_cyl("Studio_OverheadLight",
-             (STUDIO_CX, STUDIO_CY + 0.4, CEIL_Z - 0.30),
-             0.22, 0.30, COL_METAL_STEEL)
+    make_lathe("Studio_OverheadLight", (STUDIO_CX, STUDIO_CY + 0.4, CEIL_Z - 0.45), [(0.24, 0.0), (0.22, 0.03), (0.20, 0.36), (0.20, 0.38), (0.0, 0.38)], COL_METAL_STEEL, segments=12)
     # Bright bulb visible inside
     make_box("Studio_OverheadBulb",
              (STUDIO_CX, STUDIO_CY + 0.4, CEIL_Z - 0.42),
@@ -614,34 +632,21 @@ def build_studio_and_editing_desk():
              (boom_x, boom_y, 0.90),
              0.018, 1.70, COL_METAL_BLACK)
     # Horizontal arm
-    make_box("Studio_BoomStand_Arm",
-             (boom_x + 0.32, boom_y, 1.70),
-             (0.70, 0.025, 0.025), COL_METAL_BLACK)
-    # Cardioid mic shape at end
-    make_cyl("Studio_Mic",
-             (boom_x + 0.62, boom_y, 1.66),
-             0.04, 0.18, COL_METAL_BLACK, segments=8, axis='Z')
-    make_cyl("Studio_Mic_Mesh",
-             (boom_x + 0.62, boom_y, 1.78),
-             0.05, 0.10, (0.32, 0.30, 0.30, 1.0), segments=8, axis='Z')
-    # Pop filter — flat circle in front
+    make_tube("Studio_BoomStand_Arm", [(boom_x, boom_y, 1.72), (boom_x + 0.66, boom_y, 1.70)], 0.012, COL_METAL_BLACK, segments=6)
+    # Cardioid mic — a capsule profile, its mesh head (draft N+1)
+    make_lathe("Studio_Mic", (boom_x + 0.62, boom_y, 1.57), [(0.02, 0.0), (0.035, 0.02), (0.04, 0.16), (0.045, 0.18), (0.05, 0.22), (0.05, 0.28), (0.03, 0.31), (0.0, 0.31)], COL_METAL_BLACK, segments=10)
+    make_lathe("Studio_Mic_Mesh", (boom_x + 0.62, boom_y, 1.79), [(0.05, 0.0), (0.052, 0.06), (0.03, 0.09), (0.0, 0.10)], (0.32, 0.30, 0.30, 1.0), segments=10)
+    # Pop filter — a hoop on a gooseneck (draft N+1)
+    make_tube("Studio_PopFilter_Neck", [(boom_x + 0.62, boom_y - 0.02, 1.62), (boom_x + 0.58, boom_y - 0.10, 1.68), (boom_x + 0.55, boom_y - 0.14, 1.74)], 0.006, COL_METAL_BLACK, segments=5)
     make_cyl("Studio_PopFilter",
-             (boom_x + 0.55, boom_y, 1.74),
-             0.06, 0.014, (0.18, 0.16, 0.16, 1.0), segments=10, axis='Y')
+             (boom_x + 0.55, boom_y - 0.14, 1.74),
+             0.06, 0.008, (0.18, 0.16, 0.16, 1.0), segments=12, axis='Y')
 
     # ── Anya's chair — a director's-style chair facing the mic ──
     ay_x, ay_y = STUDIO_CX - 0.6, STUDIO_CY - 0.4
-    make_box("Studio_AnyaChair_Seat",
-             (ay_x, ay_y, 0.50),
-             (0.46, 0.46, 0.06), (0.36, 0.20, 0.14, 1.0))
-    make_box("Studio_AnyaChair_Back",
-             (ay_x, ay_y + 0.20, 0.740),
-             (0.46, 0.05, 0.40), (0.36, 0.20, 0.14, 1.0))
-    for sx in (-1, +1):
-        for sy in (-1, +1):
-            make_cyl(f"Studio_AnyaChair_Leg_{sx}_{sy}",
-                     (ay_x + sx * 0.18, ay_y + sy * 0.18, 0.25),
-                     0.014, 0.50, COL_METAL_BLACK)
+    # (draft N+1: the kit chair, FACING the mic to its north — the old
+    # back was on the mic's side; the closed laptop rests on its seat)
+    make_chair("Studio_AnyaChair", ay_x, ay_y, yaw=0.0, wood=(0.36, 0.20, 0.14, 1.0), seat_col=(0.36, 0.20, 0.14, 1.0), w=0.46, seat_h=0.50)
 
     # ── EDITING DESK — desk along the studio's east wall ──
     desk_x, desk_y = STUDIO_CX + 0.5, STUDIO_CY - 0.5
@@ -656,15 +661,17 @@ def build_studio_and_editing_desk():
     # Laptop — CLOSED, pushed to the left front corner. The desk
     # center now belongs to the Priestess CRT pair + master reel;
     # the open laptop stood inside Anya's monitor case.
+    # (draft N+1: on Anya's chair seat — on the desk's "left front
+    # corner" it still sat inside Anya's CRT case)
     make_box("Studio_Laptop_Base",
-             (desk_x - 0.45, desk_y - 0.22, 0.755),
+             (ay_x, ay_y - 0.02, 0.535),
              (0.40, 0.30, 0.02), COL_METAL_STEEL)
     make_box("Studio_Laptop_Lid",
-             (desk_x - 0.45, desk_y - 0.22, 0.773),
+             (ay_x, ay_y - 0.02, 0.553),
              (0.40, 0.30, 0.014), COL_METAL_STEEL)
     # Amber sleep LED on the lid's front edge
     make_box("Studio_Laptop_SleepLED",
-             (desk_x - 0.45, desk_y - 0.365, 0.769),
+             (ay_x, ay_y - 0.165, 0.549),
              (0.02, 0.004, 0.006), (0.92, 0.70, 0.28, 1.0))
     # Two external drives — stacked, humming
     make_box("Studio_HD_1",
@@ -683,22 +690,15 @@ def build_studio_and_editing_desk():
     # Closed-back headphones — drape on the desk corner
     # (headphones moved to the right front corner — the old left
     # spot is under Anya's CRT now)
-    make_cyl("Studio_HP_CupL",
-             (desk_x + 0.50, desk_y - 0.26, 0.78),
-             0.07, 0.05, (0.10, 0.10, 0.12, 1.0), segments=8, axis='Z')
-    make_cyl("Studio_HP_CupR",
-             (desk_x + 0.64, desk_y - 0.26, 0.78),
-             0.07, 0.05, (0.10, 0.10, 0.12, 1.0), segments=8, axis='Z')
-    make_cyl("Studio_HP_Band",
-             (desk_x + 0.57, desk_y - 0.26, 0.83),
-             0.08, 0.18, (0.14, 0.14, 0.18, 1.0), segments=8, axis='X')
-    # Coffee cup with cold inch
-    make_cyl("Studio_CoffeeCup",
-             (desk_x - 0.50, desk_y - 0.20, 0.78),
-             0.045, 0.10, COL_TRIM_WHITE, segments=10)
+    # (draft N+1: cups as profiles, the band an arc between them)
+    for side, hx in (("L", desk_x + 0.50), ("R", desk_x + 0.64)):
+        make_lathe(f"Studio_HP_Cup{side}", (hx, desk_y - 0.26, 0.74), [(0.0, 0.0), (0.06, 0.0), (0.07, 0.02), (0.065, 0.05), (0.04, 0.06), (0.0, 0.06)], (0.10, 0.10, 0.12, 1.0), segments=10)
+    make_tube("Studio_HP_Band", [(desk_x + 0.50, desk_y - 0.26, 0.80), (desk_x + 0.52, desk_y - 0.26, 0.90), (desk_x + 0.57, desk_y - 0.26, 0.94), (desk_x + 0.62, desk_y - 0.26, 0.90), (desk_x + 0.64, desk_y - 0.26, 0.80)], 0.012, (0.14, 0.14, 0.18, 1.0), segments=6)
+    # Coffee cup with cold inch (draft N+1: west of the CRT it sat in)
+    make_lathe("Studio_CoffeeCup", (desk_x - 0.62, desk_y - 0.27, 0.74), [(0.0, 0.0), (0.035, 0.0), (0.045, 0.10), (0.0, 0.10)], COL_TRIM_WHITE, segments=10)
     make_cyl("Studio_CoffeeContents",
-             (desk_x - 0.50, desk_y - 0.20, 0.81),
-             0.040, 0.02, (0.20, 0.10, 0.06, 1.0), segments=10)
+             (desk_x - 0.62, desk_y - 0.27, 0.77),
+             0.038, 0.02, (0.20, 0.10, 0.06, 1.0), segments=10)
     # Studio acoustic foam panel on the east wall
     make_box("Studio_FoamPanel_1",
              (INTERIOR_X_E - 0.06, STUDIO_CY + 0.7, 1.60),
@@ -1681,9 +1681,11 @@ def build_packing_dressing():
     make_cyl("LR_Rug_Ring", (-1.7, 1.35, 0.015), 0.62, 0.008,
              (0.30, 0.20, 0.18, 1.0), segments=14)
     # Two more box stacks south of the chair (by the front window)
-    make_box("LR_Box_6", (-1.55, 0.45, 0.24), (0.48, 0.42, 0.48), cardboard)
-    make_box("LR_Box_7", (-1.55, 0.45, 0.66), (0.42, 0.38, 0.36), cardboard)
-    make_box("LR_Box_7_Tape", (-1.55, 0.45, 0.845), (0.44, 0.10, 0.012), tape)
+    # (draft N+1: north of the chair by the west wall — at (-1.55, 0.45)
+    # the stack stood inside the reading chair)
+    make_box("LR_Box_6", (-1.25, 2.55, 0.24), (0.48, 0.42, 0.48), cardboard)
+    make_box("LR_Box_7", (-1.25, 2.55, 0.66), (0.42, 0.38, 0.36), cardboard)
+    make_box("LR_Box_7_Tape", (-1.25, 2.55, 0.845), (0.44, 0.10, 0.012), tape)
     make_box("LR_Box_8", (-2.15, 2.55, 0.21), (0.44, 0.40, 0.42), cardboard)
     # Framed photos leaning face-to-wall (west wall, packed away)
     for i in range(3):
@@ -1698,12 +1700,12 @@ def build_packing_dressing():
     make_box("LR_Marker", (-2.05, 1.85, 0.655), (0.12, 0.03, 0.025),
              (0.12, 0.12, 0.14, 1.0))
     # Floor lamp beside the chair (glow = FloorLampGlow in the tscn)
-    make_cyl("LR_FloorLamp_Base", (-2.3, 0.9, 0.02), 0.16, 0.04,
-             (0.20, 0.18, 0.16, 1.0), segments=8)
-    make_cyl("LR_FloorLamp_Pole", (-2.3, 0.9, 0.75), 0.02, 1.45,
+    # (draft N+1: its own names — it shared LR_FloorLamp_* with the
+    # chair's lamp — and a profile)
+    make_lathe("LR_FloorLamp2_Base", (-2.3, 0.9, 0.0), [(0.16, 0.0), (0.16, 0.03), (0.07, 0.05), (0.022, 0.06), (0.02, 0.08)], (0.20, 0.18, 0.16, 1.0), segments=10)
+    make_cyl("LR_FloorLamp2_Pole", (-2.3, 0.9, 0.76), 0.02, 1.36,
              (0.26, 0.22, 0.18, 1.0), segments=6)
-    make_cyl("LR_FloorLamp_Shade", (-2.3, 0.9, 1.58), 0.16, 0.22,
-             (0.88, 0.76, 0.52, 1.0), segments=10)
+    make_lathe("LR_FloorLamp2_Shade", (-2.3, 0.9, 1.44), [(0.10, 0.0), (0.16, 0.24), (0.0, 0.24)], (0.88, 0.76, 0.52, 1.0), segments=12)
 
 
 
@@ -1787,11 +1789,13 @@ def build_desk_tech_and_tea():
     mother's teacup — handle and saucer, mid-abandonment."""
     dz = 0.74
     # Hard-drive stack, staggered, with LEDs
+    # (draft N+1: on the floor under the desk's east end — at (4.18,
+    # 1.62) the stack hung half off the desk's north edge)
     for i, (ox, oy) in enumerate([(0.0, 0.0), (0.03, -0.02), (-0.02, 0.03)]):
-        hz = dz + 0.045 + i * 0.075
-        make_box(f"Desk_HDD_{i}", (4.18 + ox, 1.62 + oy, hz),
+        hz = 0.033 + i * 0.075
+        make_box(f"Desk_HDD_{i}", (4.15 + ox, 1.20 + oy, hz),
                  (0.13, 0.21, 0.065), (0.16 + 0.03 * i, 0.17, 0.19, 1.0))
-        make_box(f"Desk_HDD_{i}_LED", (4.115 + ox, 1.53 + oy, hz),
+        make_box(f"Desk_HDD_{i}_LED", (4.085 + ox, 1.11 + oy, hz),
                  (0.012, 0.012, 0.012),
                  (0.30, 0.85, 0.40, 1.0) if i != 1 else (0.90, 0.60, 0.20, 1.0))
     # Cable run: segments draping off the desk edge
@@ -1826,7 +1830,9 @@ def build_books_and_curtains():
     window with a brass rod."""
     twine = (0.68, 0.58, 0.38, 1.0)
     # Two book bundles near the front door
-    for b, (bx, by) in enumerate([(-1.15, 0.40), (-0.75, 0.45)]):
+    # (draft N+1: east of the chair's lamp — at (-1.15, 0.40) the first
+    # bundle sat in the lamp's base)
+    for b, (bx, by) in enumerate([(-0.75, 0.40), (-0.85, 0.85)]):
         for i in range(3):
             make_box(f"BookBundle_{b}_{i}",
                      (bx + 0.015 * (i % 2), by - 0.012 * (i % 2), 0.045 + i * 0.09),
@@ -1849,6 +1855,32 @@ def build_books_and_curtains():
                  (0.07, 0.05, 1.30), (0.50, 0.41, 0.36, 1.0))
     make_box("Curtain_Valance", (2.0, 0.13, 2.00), (1.44, 0.08, 0.22),
              (0.54, 0.44, 0.38, 1.0))
+
+
+def build_lr_studio_draft_2026_09():
+    """DRAFT N+1 (2026-09-19) · the wear of the two staged stations and
+    their cords. No part name carries a cue word (boxes · script ·
+    page · phone · mirror · shard · basil · screen)."""
+    floor_dk = (COL_FLOOR_WOOD[0] * 0.84, COL_FLOOR_WOOD[1] * 0.84, COL_FLOOR_WOOD[2] * 0.84, 1.0)
+    cord = (0.16, 0.16, 0.18, 1.0)
+    ch_x, ch_y = -1.6, +0.8
+    # the chair you sat in too long: the seat's dent, the right arm's
+    # shine, the feet patch before it
+    make_box("Wear_Chair_Dent", (ch_x + 0.05, ch_y - 0.05, 0.5015), (0.36, 0.34, 0.003), (0.44, 0.34, 0.27, 1.0))
+    make_box("Wear_Arm_Shine", (ch_x + 0.32, ch_y - 0.10, 0.8215), (0.08, 0.30, 0.003), (0.50, 0.40, 0.33, 1.0))
+    make_floor_stain("Wear_Feet", (ch_x, ch_y - 0.55), radius=0.22, floor_z=0.02, tint=floor_dk, segments=10)
+    make_floor_stain("Wear_Anya", (STUDIO_CX - 0.6, STUDIO_CY - 0.75), radius=0.22, floor_z=0.0, tint=floor_dk, segments=10)
+    make_box("Wear_Elbow", (STUDIO_CX + 0.5, STUDIO_CY - 0.80, 0.7415), (1.10, 0.05, 0.003), (0.30, 0.22, 0.15, 1.0))
+    # D3 · the chair lamp's cord: along the floor east, then to the
+    # south-wall outlet (two straight runs — the recorder boxes a
+    # diagonal by its whole span)
+    make_wall_outlet("Outlet_S_1", (-0.55, INTERIOR_Y_S), axis='X', face_sign=1, z=0.30, aged=True)
+    make_tube("Cord_1a", [(ch_x + 0.62, ch_y - 0.25, 0.04), (-0.55, ch_y - 0.25, 0.04)], 0.008, cord, segments=5)
+    make_tube("Cord_1b", [(-0.55, ch_y - 0.25, 0.04), (-0.55, INTERIOR_Y_S + 0.115, 0.30)], 0.008, cord, segments=5)
+    # the power strip under the editing desk, the reel's cord to it
+    make_box("Power_Strip", (STUDIO_CX + 0.5, STUDIO_CY - 0.25, 0.02), (0.30, 0.06, 0.04), (0.86, 0.86, 0.84, 1.0))
+    make_tube("Cord_2", [(STUDIO_CX + 0.46, STUDIO_CY + 0.14, 0.76), (STUDIO_CX + 0.46, STUDIO_CY + 0.14, 0.06)], 0.008, cord, segments=5)
+    make_tube("Cord_2b", [(STUDIO_CX + 0.46, STUDIO_CY + 0.14, 0.06), (STUDIO_CX + 0.46, STUDIO_CY - 0.22, 0.04)], 0.008, cord, segments=5)
 
 
 def main():
@@ -1874,6 +1906,7 @@ def main():
     build_filmmaker_dressing()
     build_desk_tech_and_tea()
     build_books_and_curtains()
+    build_lr_studio_draft_2026_09()
     export_glb()
 
 
