@@ -247,6 +247,11 @@ were dressed by coordinate and never walked. Next: new_orleans_
 apartment, houston_office, bungalow_interior, hospice_room, the
 cathedral exterior.
 
+**Status (2026-09-19, later) · new_orleans_apartment draft 3 shipped,
+unseen.** Twenty-one rooms deep. The Tower set's whole window wall was
+inside the wall. Next: houston_office, bungalow_interior, hospice_room,
+the cathedral exterior; then the single-use presets.
+
 **Draft targets, by volume, by uses:**
 - **Vol 7 (current):** `cabin_interior` (31) · `lena_apartment` (23)
   · `miller_back_porch` (12, shared with vol 6) · `salty_tome_alley`
