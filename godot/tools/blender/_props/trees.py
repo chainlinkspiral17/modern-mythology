@@ -8,6 +8,7 @@
 # per (prefix-hash) seed — same tree, forever.
 import math
 from .geometry import (make_taper_cyl, make_blob, make_cyl, make_box)
+from .geometry import make_prism
 
 
 def _seed_of(prefix):
@@ -141,3 +142,21 @@ def make_shrub(prefix, px, py, h=0.9, r=0.55, col=(0.26, 0.40, 0.24, 1.0), segme
     make_lathe(prefix, (px, py, 0.0),
                [(0.0, 0.0), (r * 0.55, h * 0.08), (r, h * 0.42), (r * 0.82, h * 0.78), (r * 0.35, h * 0.96), (0.0, h)],
                col, segments=segments)
+
+
+def make_fern(prefix, px, py, h=0.55, fronds=7, col=(0.24, 0.40, 0.24, 1.0), z0=0.0):
+    """A sword fern (2026-09-19): a rosette of arching BLADES — each a
+    thin prism (a tapered arc in the vertical plane, 9 cm wide) yawed
+    about the crown — over a stub of a crown. cabin_road's ferns were
+    four stacked bars. Deterministic per prefix; `h` is the blade
+    reach, the tips arch to ~0.5 h."""
+    s = _seed_of(prefix)
+    dark = (col[0] * 0.82, col[1] * 0.86, col[2] * 0.82, 1.0)
+    make_cyl(f"{prefix}_Crown", (px, py, z0 + 0.04), 0.05, 0.08, (0.30, 0.24, 0.16, 1.0), segments=6)
+    for i in range(fronds):
+        L = h * (0.82 + ((s >> (i * 2)) % 5) * 0.07)
+        a = i * (2.0 * math.pi / fronds) + ((s >> (i * 3 + 5)) % 7 - 3) * 0.06
+        rise = 0.36 + ((s >> (i + 9)) % 3) * 0.06
+        blade = [(0.02, 0.02), (0.36 * L, rise * L * 0.55), (0.70 * L, rise * L * 0.92), (1.00 * L, rise * L * 0.70),
+                 (0.92 * L, rise * L * 0.98), (0.55 * L, rise * L * 1.02), (0.20 * L, rise * L * 0.55), (0.02, 0.10)]
+        make_prism(f"{prefix}_F{i}", (px, py, z0), blade, 0.09, col if i % 2 else dark, axis="X", yaw=a)

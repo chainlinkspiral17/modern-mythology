@@ -196,6 +196,14 @@ was a plank; it emits straight tubes now, all rooms at once. Next:
 cabin_road, main_street, finn_apartment, board_lords_interior, then
 vol 1's missing_link and shuttle_bench.
 
+**Status (2026-09-19, later) · cabin_road draft 3 shipped, unseen.**
+Fourteen rooms deep. The road was four stepped slabs; it climbs on
+sloped prisms now, the bend and the upper run laid end to end on the
+heading, and every wear sheet on the gravel follows the grade. The
+tree kit gained `make_fern`. Next: board_lords_interior (its scene
+also serves the `main_street` preset — 15 placements together),
+finn_apartment, then vol 1's missing_link and shuttle_bench.
+
 **Draft targets, by volume, by uses:**
 - **Vol 7 (current):** `cabin_interior` (31) · `lena_apartment` (23)
   · `miller_back_porch` (12, shared with vol 6) · `salty_tome_alley`

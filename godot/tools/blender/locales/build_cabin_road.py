@@ -20,11 +20,37 @@ glTF export remaps to Godot (x, z, -y).
 Vantage wired in Background3D.CAMERA_PRESETS:
   cabin_road — on the asphalt looking N up the climb: transition
   line, creek, the bend, the Sitka walls.
+
+DRAFT 3 (2026-09-19, lore/_VISUAL_PROGRAM.md §3 backgrounds pass, 8
+placements). The stand was already draft-4 trees; the ROAD was not.
+  · the gravel climbs on a continuous GRADE — four road prisms whose
+    tops slope (0.06 → 1.05 m over y 6..20), the bend and the upper
+    run yawed north-east — instead of four stepped slabs with 20–40 cm
+    risers between them;
+  · the culvert sits at creek level (pipe centre z 0, half below the
+    duff, water through it) under the fill, with a concrete headwall
+    at each mouth and a delineator post on each shoulder; the rust
+    fan below the west mouth on the creek bed;
+  · the creek stones are noise blobs with moss-cap blobs, not boxes;
+  · the ferns are the kit's sword ferns (make_fern: arching blade
+    prisms round a crown) — ten of them, not six stacks of bars;
+  · the mile marker LEANS (a rot box) and wears a cap; the county's
+    PAVEMENT ENDS diamond on a post at the transition;
+  · exterior WEAR on the grade: the parking fan and the washboard
+    strips as sheets that FOLLOW the slope (prisms), the wet band
+    where the culvert crossing sweats, puddles standing in the tire
+    lines on the asphalt, a fallen alder branch on the west shoulder.
+Draft 4 targets: an embankment (fill slopes) either side of the
+crossing so the culvert headwalls have a bank to stand in; the ditch
+along the east shoulder (make_ditch_field); bark on the near Sitka
+trunks (a lathe with ridges); a second mile marker down the asphalt;
+the drone worker's shadow on the gravel; Deck: shot_establish_b from
+the bend and the preset from the asphalt, for the grade's read.
 """
 import os, sys
 _BT = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)), ".."))
 if _BT not in sys.path: sys.path.insert(0, _BT)
-from _props.geometry import clear_scene, make_box, make_cyl, export_glb
+from _props.geometry import clear_scene, make_box, make_cyl, make_blob, make_lathe, make_prism, make_rot_box, make_tube, export_glb
 
 COL_ASPHALT = (0.24, 0.24, 0.25, 1.0)   # wet coastal asphalt
 COL_GRAVEL = (0.52, 0.48, 0.42, 1.0)
@@ -45,6 +71,38 @@ COL_MIST = (0.72, 0.76, 0.76, 0.35)
 COL_SKY = (0.66, 0.70, 0.70, 1.0)       # coastal gray-bright
 
 
+# The grade: the gravel's top surface along y (piecewise linear).
+GRADE = ((6.0, 0.06), (10.0, 0.32), (14.0, 0.55))
+ROAD_T = 0.10   # fill thickness under the running surface
+
+
+def z_top(y):
+    for (y0, z0), (y1, z1) in zip(GRADE, GRADE[1:]):
+        if y0 <= y <= y1:
+            return z0 + (z1 - z0) * (y - y0) / (y1 - y0)
+    return GRADE[0][1] if y < GRADE[0][0] else GRADE[-1][1]
+
+
+def road_prism(name, y0, y1, ztop0, ztop1, cx, width, col, yaw=0.0):
+    """A road section as a prism along X: its top slopes from ztop0
+    at y0 to ztop1 at y1, ROAD_T thick. Consecutive sections share
+    their edge z, so the climb has no risers."""
+    cy = (y0 + y1) / 2.0
+    h = (y1 - y0) / 2.0
+    poly = [(-h, ztop0 - ROAD_T), (h, ztop1 - ROAD_T), (h, ztop1), (-h, ztop0)]
+    make_prism(name, (cx, cy, 0.0), poly, width, col, axis="X", yaw=yaw)
+
+
+def road_sheet(name, y0, y1, cx, width, col, lift=0.004, thick=0.006):
+    """A wear sheet that FOLLOWS the grade: a thin parallelogram prism
+    riding `lift` above the surface between y0 and y1 (a flat disc
+    on a 6 % slope floats at one edge and sinks at the other)."""
+    cy = (y0 + y1) / 2.0
+    h = (y1 - y0) / 2.0
+    a, b = z_top(y0) + lift, z_top(y1) + lift
+    make_prism(name, (cx, cy, 0.0), [(-h, a), (h, b), (h, b + thick), (-h, a + thick)], width, col, axis="X")
+
+
 def build_road():
     # GROUND (2026-08-09): full forest-floor plane under everything —
     # the road used to float in a void past the tree trunks. Oregon
@@ -57,31 +115,45 @@ def build_road():
     make_box("Asphalt_Patch", (0.6, 4.6, 0.035), (1.2, 0.9, 0.02), (0.20, 0.20, 0.21, 1.0))
     # THE TRANSITION — where the asphalt gives out
     make_box("Transition_Lip", (0.0, 6.05, 0.045), (4.6, 0.25, 0.03), COL_GRAVEL_DK)
-    # Gravel climbing away, rising with the grade
-    make_box("Gravel_0", (0.0, 8.0, 0.10), (4.4, 4.0, 0.08), COL_GRAVEL)
-    make_box("Gravel_1", (0.4, 12.0, 0.30), (4.2, 4.0, 0.08), COL_GRAVEL)
-    # The switchback: the bend swings east and up
-    make_box("Gravel_Bend", (2.6, 15.5, 0.55), (5.0, 3.4, 0.08), COL_GRAVEL_DK)
-    make_box("Gravel_Upper", (5.4, 17.5, 0.95), (4.4, 3.0, 0.08), COL_GRAVEL)
-    # Soft shoulders
+    # DRAFT 3: the gravel climbs on a continuous grade (road_prism) —
+    # four slabs stepped 20–40 cm at each joint until now.
+    road_prism("Gravel_0", 6.0, 10.0, z_top(6.0), z_top(10.0), 0.0, 4.4, COL_GRAVEL)
+    road_prism("Gravel_1", 10.0, 14.0, z_top(10.0), z_top(14.0), 0.4, 4.2, COL_GRAVEL)
+    # The switchback: the bend swings east and up (yawed prisms; the
+    # yaw is negative so +Y turns toward +X)
+    # The bend's near end meets Gravel_1's far end (0.4, 14.0); the
+    # upper run starts where the bend ends. sin/cos of the yaw place
+    # the centres along the heading.
+    sn, cs = 0.4794, 0.8776
+    road_prism("Gravel_Bend", 14.0 + 1.8 * cs - 1.8, 14.0 + 1.8 * cs + 1.8, 0.55, 0.82, 0.4 + 1.8 * sn, 5.0, COL_GRAVEL_DK, yaw=-0.50)
+    # (the prism's y-span is only its length; the centre carries it)
+    road_prism("Gravel_Upper", 14.0 + 3.6 * cs + 1.6 * cs - 1.6, 14.0 + 3.6 * cs + 1.6 * cs + 1.6, 0.82, 1.05,
+               0.4 + 3.6 * sn + 1.6 * sn, 4.4, COL_GRAVEL, yaw=-0.50)
+    # Soft shoulders (to the crossing; the headwalls take over there)
     for sx in (-2.6, 2.6):
-        make_box(f"Shoulder_{sx:+.1f}", (sx, 5.0, 0.02), (0.8, 10.0, 0.05), COL_SHOULDER)
+        make_box(f"Shoulder_{sx:+.1f}", (sx, 4.75, 0.02), (0.8, 9.5, 0.05), COL_SHOULDER)
 
 
 def build_creek():
     """The creek crossing at y≈10: water band under the roadbed,
-    culvert mouths both sides, mossed stones."""
-    make_box("Creek_W", (-5.5, 10.0, 0.02), (6.5, 1.6, 0.05), COL_CREEK)
-    make_box("Creek_E", (5.5, 10.0, 0.02), (6.5, 1.6, 0.05), COL_CREEK)
-    make_box("Creek_Foam_W", (-3.1, 10.0, 0.06), (1.2, 0.5, 0.02), COL_CREEK_FOAM)
-    make_box("Creek_Foam_E", (2.9, 10.2, 0.06), (1.0, 0.4, 0.02), COL_CREEK_FOAM)
+    culvert mouths both sides, mossed stones. DRAFT 3: the pipe at
+    creek level (centre z 0) with a headwall each side; the stones
+    are blobs."""
+    make_box("Creek_W", (-6.0, 10.0, 0.02), (6.0, 1.6, 0.05), COL_CREEK)
+    make_box("Creek_E", (6.0, 10.0, 0.02), (6.0, 1.6, 0.05), COL_CREEK)
+    make_box("Creek_Foam_W", (-4.2, 10.15, 0.06), (1.2, 0.5, 0.02), COL_CREEK_FOAM)
+    make_box("Creek_Foam_E", (3.9, 10.2, 0.06), (1.0, 0.4, 0.02), COL_CREEK_FOAM)
     for sgn in (-1, 1):
-        make_cyl(f"Culvert_{sgn:+d}", (sgn * 2.5, 10.0, 0.14), 0.30, 0.6, COL_CULVERT,
+        make_cyl(f"Culvert_{sgn:+d}", (sgn * 2.55, 10.0, 0.0), 0.28, 0.7, COL_CULVERT,
                  segments=10, axis='X')
+        make_box(f"Culvert_Headwall_{sgn:+d}", (sgn * 2.92, 10.0, 0.25), (0.14, 1.30, 0.75), (0.56, 0.56, 0.53, 1.0))
+        make_box(f"Culvert_Headwall_Cap_{sgn:+d}", (sgn * 2.92, 10.0, 0.645), (0.18, 1.34, 0.04), (0.60, 0.60, 0.57, 1.0))
     stones = [(-3.6, 9.4, 0.30), (-4.8, 10.5, 0.42), (3.4, 9.6, 0.34), (4.6, 10.6, 0.28)]
     for i, (px, py, s) in enumerate(stones):
-        make_box(f"Creek_Stone_{i}", (px, py, s / 2.0), (s * 1.6, s * 1.2, s), (0.44, 0.44, 0.42, 1.0))
-        make_box(f"Creek_Stone_{i}_Moss", (px, py, s + 0.02), (s * 1.2, s * 0.9, 0.05), COL_MOSS)
+        make_blob(f"Creek_Stone_{i}", (px, py, s * 0.42), s * 0.72, (0.44, 0.44, 0.42, 1.0),
+                  noise=0.22, seed=41 + i, squash=0.72)
+        make_blob(f"Creek_Stone_{i}_Moss", (px + 0.04, py - 0.03, s * 0.80), s * 0.52, COL_MOSS,
+                  noise=0.18, seed=61 + i, squash=0.35)
 
 
 def _conifer(prefix, px, py, h, col):
@@ -98,7 +170,7 @@ def build_forest():
     west = [(-4.5, 2.0, 7.5), (-5.5, 5.5, 9.0), (-4.8, 8.0, 8.0), (-5.8, 12.0, 9.5),
             (-4.6, 15.0, 8.5), (-6.5, 18.0, 10.0), (-7.5, 8.5, 9.0), (-8.0, 14.0, 10.0)]
     east = [(4.6, 1.5, 8.0), (5.6, 4.5, 9.5), (4.9, 7.5, 8.5), (6.0, 12.5, 9.0),
-            (7.5, 9.0, 10.0), (8.2, 15.5, 9.5), (7.0, 20.0, 10.5), (2.2, 19.5, 9.0)]
+            (7.5, 9.0, 10.0), (8.2, 15.5, 9.5), (7.0, 20.0, 10.5), (-0.6, 20.2, 9.0)]
     for i, (px, py, h) in enumerate(west):
         _conifer(f"SitkaW_{i}", px, py, h, COL_SITKA if i % 3 else COL_CEDAR)
     for i, (px, py, h) in enumerate(east):
@@ -112,14 +184,20 @@ def build_forest():
         make_broadleaf(f"Alder_{i}", px, py, 4.4, COL_ALDER,
                        COL_ALDER_BARK, crown=0.30)
     # Ferns along the shoulders
-    ferns = [(-2.9, 1.5), (2.9, 3.0), (-3.0, 7.2), (3.1, 8.6), (-3.2, 11.5), (2.8, 14.0)]
-    for i, (px, py) in enumerate(ferns):
-        for b in range(4):
-            make_box(f"Fern_{i}_{b}", (px + 0.10 * ((b * 3) % 3 - 1), py + 0.08 * (b % 2),
-                     0.18 + 0.04 * b), (0.34 - 0.06 * b, 0.05, 0.05), COL_FERN)
-    # Leaning mile marker at the transition
-    make_box("Mile_Marker", (-2.65, 6.0, 0.50), (0.08, 0.08, 1.00), (0.86, 0.86, 0.82, 1.0))
-    make_box("Mile_Marker_Band", (-2.65, 6.0, 0.85), (0.09, 0.09, 0.12), (0.26, 0.44, 0.30, 1.0))
+    # DRAFT 3: the kit's sword ferns (arching blade prisms round a
+    # crown); ten along both shoulders, the near ones larger. Off the
+    # shoulder slabs (x beyond ±3.0) so the crowns stand on the duff.
+    from _props.trees import make_fern
+    ferns = [(-3.35, 1.5, 0.62), (3.35, 3.0, 0.58), (-3.4, 7.2, 0.55), (3.5, 8.4, 0.5),
+             (-3.5, 11.6, 0.52), (3.3, 13.2, 0.48), (-3.45, 4.6, 0.5), (3.45, 0.6, 0.6),
+             (-3.6, 13.9, 0.46), (3.6, 5.8, 0.54)]
+    for i, (px, py, fh) in enumerate(ferns):
+        make_fern(f"Fern_{i}", px, py, h=fh, col=COL_FERN if i % 2 else (0.20, 0.36, 0.22, 1.0))
+    # Leaning mile marker at the transition (DRAFT 3: it leans — a rot
+    # box rolled 7° toward the road — and wears a cap)
+    make_rot_box("Mile_Marker", (-2.65, 6.0, 0.545), (0.08, 0.08, 1.00), (0.86, 0.86, 0.82, 1.0), roll=0.12)
+    make_rot_box("Mile_Marker_Band", (-2.65, 6.0, 0.86), (0.09, 0.09, 0.12), (0.26, 0.44, 0.30, 1.0), roll=0.12)
+    make_rot_box("Mile_Marker_Cap", (-2.65, 6.0, 1.05), (0.10, 0.10, 0.03), (0.80, 0.80, 0.76, 1.0), roll=0.12)
 
 
 def build_atmosphere():
@@ -204,12 +282,16 @@ def build_road_history_2026_08():
     for sgn in (-1, 1):
         make_box("Road_TireLine_%+d_A" % sgn, (sgn * 0.80, -12.0, 0.032),
                  (0.34, 34.0, 0.004), tire)
-        make_box("Road_TireLine_%+d_B" % sgn, (sgn * 0.80 + 0.25, 6.5, 0.033),
-                 (0.34, 4.5, 0.004), tire)
+        make_box("Road_TireLine_%+d_B" % sgn, (sgn * 0.80 + 0.25, 5.1, 0.033),
+                 (0.34, 1.7, 0.004), tire)
+        # (DRAFT 3: the ruts continue up the gravel as sheets on the
+        # grade — the old 4.5 m boxes lay buried inside the fill)
+        road_sheet("Gravel_Rut_%+d" % sgn, 6.2, 13.6, sgn * 0.80 + 0.22, 0.34, COL_GRAVEL_DK, lift=0.003, thick=0.005)
     # The parking fan at the gravel turn + the one oil shadow.
-    make_cyl("Gravel_ParkFan", (0.3, 11.5, 0.345), 1.5, 0.012,
-             (0.44, 0.40, 0.36, 1.0), segments=10)
-    make_cyl("Gravel_OilShadow", (0.45, 11.8, 0.352), 0.28, 0.006, oil, segments=8)
+    # (DRAFT 3: sheets that follow the grade — a flat disc on the
+    # slope floated at one edge and sank at the other)
+    road_sheet("Gravel_ParkFan", 10.1, 13.0, 0.3, 2.8, (0.44, 0.40, 0.36, 1.0), lift=0.004)
+    make_cyl("Gravel_OilShadow", (0.45, 11.8, z_top(11.8) + 0.014), 0.28, 0.006, oil, segments=8)
     # Needle drift over the shoulder edges — the forest reclaiming.
     for ni, (nx, ny, nl) in enumerate(((2.9, -2.0, 7.0), (-2.9, 2.5, 6.0),
                                        (2.85, -16.0, 8.0), (-2.85, -12.0, 5.0))):
@@ -217,8 +299,37 @@ def build_road_history_2026_08():
                  needle)
     # Moss in the asphalt's center seam on the darkest stretch.
     make_box("Road_MossSeam", (0.0, -18.0, 0.034), (0.06, 6.0, 0.006), moss)
-    # The culvert's rust fan below its west mouth.
-    make_box("Culvert_RustFan", (-2.5, 10.0, 0.055), (0.5, 0.65, 0.01), rust)
+    # The culvert's rust fan below its west mouth, on the creek bed.
+    make_box("Culvert_RustFan", (-3.28, 10.05, 0.051), (0.5, 0.65, 0.01), rust)
+
+
+def build_draft3_2026_09():
+    """DRAFT 3 (2026-09-19) · the road's furniture and its wear on the
+    grade — see the module docstring."""
+    white = (0.90, 0.90, 0.86, 1.0)
+    # PAVEMENT ENDS: the county's diamond on a steel post, east
+    # shoulder, forty metres of warning it never needed
+    make_lathe("RoadSign_Post", (2.85, 3.6, 0.045), [(0.035, 0.0), (0.035, 2.0), (0.0, 2.0)], (0.42, 0.42, 0.44, 1.0), segments=8)
+    make_rot_box("RoadSign_Face", (2.85, 3.6, 1.72), (0.62, 0.02, 0.62), (0.84, 0.70, 0.18, 1.0), roll=0.0, pitch=0.0, yaw=0.0)
+    make_box("RoadSign_Rim", (2.85, 3.585, 1.72), (0.50, 0.005, 0.50), (0.20, 0.18, 0.12, 1.0))
+    # Delineator posts at the crossing, one each shoulder
+    # (the east one stands NORTH of the crossing: at 9.1 it stood
+    # between shot_insert_stones and its stone)
+    for sgn, dy, dz in ((-1, 9.1, 0.045), (1, 10.9, 0.0)):
+        make_lathe(f"Delineator_{sgn:+d}", (sgn * 2.7, dy, dz), [(0.03, 0.0), (0.03, 1.10), (0.036, 1.10), (0.036, 1.22), (0.0, 1.22)], white, segments=7)
+        make_box(f"Delineator_Band_{sgn:+d}", (sgn * 2.7 - sgn * 0.036, dy, dz + 1.02), (0.008, 0.06, 0.07), (0.90, 0.46, 0.14, 1.0))
+    # WEAR on the grade: washboard where the trucks brake for the bend,
+    # the wet band where the crossing sweats through the fill
+    for wi in range(5):
+        road_sheet(f"Gravel_Washboard_{wi}", 12.3 + wi * 0.34, 12.42 + wi * 0.34, 0.4, 3.6, COL_GRAVEL_DK, lift=0.009, thick=0.008)
+    road_sheet("Gravel_Wet_Band", 9.55, 10.45, 0.0, 4.3, (0.40, 0.37, 0.32, 1.0), lift=0.005)
+    # Puddles standing in the tire lines on the wet asphalt
+    for pi, (px, py, pr) in enumerate(((-0.8, -9.0, 0.36), (0.85, -3.0, 0.30), (-0.75, 2.4, 0.40), (0.8, -17.5, 0.34))):
+        make_cyl(f"Road_Puddle_{pi}", (px, py, 0.037), pr, 0.004, (0.50, 0.54, 0.56, 1.0), segments=10)
+    # A fallen alder branch on the west shoulder, bark pale, the
+    # break end raw
+    make_tube("Branch_West", [(-3.05, 2.2, 0.10), (-2.75, 2.9, 0.09), (-2.6, 3.5, 0.13)], 0.045, COL_ALDER_BARK, segments=6)
+    make_tube("Branch_West_Fork", [(-2.75, 2.9, 0.09), (-2.95, 3.3, 0.16)], 0.025, COL_ALDER_BARK, segments=5)
 
 
 def main():
@@ -229,6 +340,7 @@ def main():
     build_atmosphere()
     build_drones_2026_08()
     build_road_history_2026_08()
+    build_draft3_2026_09()
     out = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)),
         "../../../assets/3d/locales/cabin_road.glb"))
     print(f"\n[build_cabin_road] exporting to {out}")

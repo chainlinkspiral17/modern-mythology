@@ -437,6 +437,21 @@ The thirteenth room of the backgrounds pass (lore/_VISUAL_PROGRAM.md
   fourth; the kit chair is 0.42. Space by the seat width the KIT
   emits, not the width the boxes had; and Roy's chair is w=0.44 in
   the dark wood so the head of the table reads at a glance.
+- **A grade is a sloped top, not a staircase (cabin_road, same day).**
+  Four gravel slabs at four heights had 20–40 cm risers between
+  them, and every flat wear disc on them floated at one edge. A road
+  section is a `make_prism` along X whose (y, z) polygon slopes from
+  the last section's edge height to the next (`road_prism`), and a
+  wear sheet on it is a thin parallelogram prism riding the same
+  slope (`road_sheet`). Yawed sections are laid END TO END along
+  the heading (centre = last end + half-length · (sin, cos)), never
+  at eyeballed centres — the first try left the bend and the upper
+  run 1.6 m apart laterally and a Sitka standing in the road. The
+  recorder boxes a yawed prism unyawed, so its envelope is loose:
+  read the printed boxes, don't trust a "clean" for the joints.
+- **Anything lying on the road gets buried when the road rises.**
+  The tire-line boxes (z 0.033) ran 2.7 m into the new fill. When a
+  surface moves, grep for every object that sat on it.
 - Cue-word discipline, again: `matches_for` splits names on `_` and
   CamelCase and matches PARTS whole — Wear_Grip, Wear_Kick, Wear_Edge,
   Hemlock_*, FOH_* carry none of box/bag/bowl/crow/hands/mixer/window/
