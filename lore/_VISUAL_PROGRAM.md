@@ -239,6 +239,14 @@ the footprint walk found them in ten minutes. Next: new_orleans_office,
 new_orleans_apartment, houston_office, bungalow_interior, hospice_room,
 then the cathedral exterior.
 
+**Status (2026-09-19, later) · new_orleans_office draft 3 shipped,
+unseen.** Twenty rooms deep. Six layout faults again (a modesty panel
+at the sitter's knees, a cabinet across a door, wainscot inside the
+wall). The pattern of the day, for the playbook: the template rooms
+were dressed by coordinate and never walked. Next: new_orleans_
+apartment, houston_office, bungalow_interior, hospice_room, the
+cathedral exterior.
+
 **Draft targets, by volume, by uses:**
 - **Vol 7 (current):** `cabin_interior` (31) · `lena_apartment` (23)
   · `miller_back_porch` (12, shared with vol 6) · `salty_tome_alley`

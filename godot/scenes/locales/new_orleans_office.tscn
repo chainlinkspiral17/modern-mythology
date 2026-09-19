@@ -175,8 +175,10 @@ omni_range = 5.5
 shadow_enabled = false
 
 ; Banker's-lamp green-glass glow on the desk (north end)
+; (2026-09-19: on the lamp's shade, blender (-0.6, 3.64, 1.06) — it hung
+; 0.85 m off the lamp, over the far side of the desk)
 [node name="Practical_BankerLamp" type="OmniLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.2, -4.3)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.6, 1.0, -3.64)
 light_color = Color(0.6, 1.0, 0.68, 1)
 light_energy = 0.9
 omni_range = 2.2
@@ -334,9 +336,11 @@ rotation = Vector3(-0.283808, -0.785398, 0)
 metadata/fov = 38.0
 
 ; insert: the bourbon on the bookcase shelf
+; (2026-09-19: the bottle is on the desk beside the chipped glass, blender
+; (0.55, 3.45, 0.93); the lens looks over the chair's west arm at it)
 [node name="shot_insert_bourbon" type="Marker3D" parent="." groups=["vn_shot"]]
-position = Vector3(-1.9, 1.15, -2.3)
-rotation = Vector3(-0.0732, -1.0209, 0.0)
+position = Vector3(-0.3, 1.05, -2.75)
+rotation = Vector3(-0.11, -0.88, 0.0)
 metadata/fov = 40.0
 
 ; insert: the east window over the street
