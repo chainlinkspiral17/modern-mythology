@@ -183,6 +183,19 @@ vol 7 second tier — hans_bakery_back_kitchen, cabin_road, main_street,
 finn_apartment, board_lords_interior — then vol 1's missing_link and
 shuttle_bench.
 
+**Status (2026-09-19, later) · hans_bakery_back_kitchen draft 4 shipped,
+unseen.** Thirteen rooms deep. THE TABLE's twelve chairs are kit
+chairs, the pass window is cut through with the front of house behind
+it, the hemlock stands outside the window. Five layout clips the
+overlap recorder's threshold never reported were fixed by hand (the
+counter inside the table's end, the prep table into the chairs, the
+rack under the window chair, the plant in the counter). And a kit
+defect found on the way: `make_cord_run` emitted its diagonal segments
+as axis-aligned SLABS — every cord in the eleven rooms before this one
+was a plank; it emits straight tubes now, all rooms at once. Next:
+cabin_road, main_street, finn_apartment, board_lords_interior, then
+vol 1's missing_link and shuttle_bench.
+
 **Draft targets, by volume, by uses:**
 - **Vol 7 (current):** `cabin_interior` (31) · `lena_apartment` (23)
   · `miller_back_porch` (12, shared with vol 6) · `salty_tome_alley`

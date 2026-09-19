@@ -143,23 +143,23 @@ def make_thermostat(name, wall_point, axis='X', face_sign=1, z=1.45):
 
 def make_cord_run(name, from_point, to_point, sag=0.10,
                   radius=0.008, color=COL_CORD):
-    """A power cord from a device (x, y, z) to an outlet (x, y, z)
-    as a two-segment sagging run. Segments are thin axis-aligned
-    boxes (cheap and reads correctly at VN camera distance)."""
+    """A power cord from a device (x, y, z) to an outlet (x, y, z):
+    two straight tubes meeting at a droop `sag` below the lower end
+    (sag=0 → one straight run). Until 2026-09-19 this emitted the
+    segments as axis-aligned BOXES whose midpoint sat at half the
+    lower height: a counter-to-outlet run was a 0.4 m plank behind
+    the counter, a desk cord a slab on the wall. The recorder saw
+    the same bbox either way, so no audit noticed."""
+    from .geometry import make_tube
     x0, y0, z0 = from_point
     x1, y1, z1 = to_point
+    if sag <= 0.0:
+        make_tube(f"{name}_Seg0", [(x0, y0, z0), (x1, y1, z1)], radius, color, segments=5)
+        return
     mx, my = (x0 + x1) / 2.0, (y0 + y1) / 2.0
-    mz = min(z0, z1) * 0.5 - sag + 0.05
-    mz = max(mz, 0.015)
-    for i, (a, b) in enumerate((((x0, y0, z0), (mx, my, mz)),
-                                ((mx, my, mz), (x1, y1, z1)))):
-        ax_, ay, az = a
-        bx, by, bz = b
-        cx, cy, cz = (ax_ + bx) / 2.0, (ay + by) / 2.0, (az + bz) / 2.0
-        sx = max(abs(bx - ax_), radius * 2)
-        sy = max(abs(by - ay), radius * 2)
-        sz = max(abs(bz - az), radius * 2)
-        make_box(f"{name}_Seg{i}", (cx, cy, cz), (sx, sy, sz), color)
+    mz = max(min(z0, z1) - sag, 0.015)
+    make_tube(f"{name}_Seg0", [(x0, y0, z0), (mx, my, mz)], radius, color, segments=5)
+    make_tube(f"{name}_Seg1", [(mx, my, mz), (x1, y1, z1)], radius, color, segments=5)
 
 
 def make_corner_guard(name, corner_point, height=1.2,

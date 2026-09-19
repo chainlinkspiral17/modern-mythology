@@ -399,6 +399,50 @@ Louisville's hurricane-deck proportions"). Don't guess at numbers.
 
 ## Recent lessons
 
+### 2026-09-19 · THE BAKERY, DRAFT 4 — the helper that drew slabs, and the clips the recorder waves through
+
+The thirteenth room of the backgrounds pass (lore/_VISUAL_PROGRAM.md
+§3): hans_bakery_back_kitchen, THE TABLE of vol 7.
+
+- **A helper's output is geometry; read it before trusting it.**
+  `make_cord_run` built each of its two segments as an axis-aligned
+  box sized (|dx|, |dy|, |dz|) — a cord from a desk to an outlet was
+  a SLAB on the wall, and its midpoint sat at half the lower end's
+  height, so a counter-to-outlet run was a 0.4 m plank behind the
+  counter. Eleven rooms shipped that way this week. The recorder
+  boxes a straight tube by the same bbox, so no audit could tell the
+  difference: the audit sees envelopes, not shapes. Fixed in the
+  helper (two straight `make_tube` runs meeting `sag` below the
+  lower end; sag 0 → one run), which fixed every room at once — the
+  kit is the place to fix a kit defect, never the call sites.
+- **"clean (403 objects)" is not "no clips."** The overlap gate has a
+  threshold, and this room passed it with the counter's corner inside
+  the table's north end, the prep table's edge inside the side chairs,
+  the speed rack under the window chair and a floor plant standing in
+  the counter. Before a draft pass, walk the footprints by hand for
+  the big pieces (table · counter · racks · chairs) — extents on a
+  line each, the way the counter comment does — and move what shares
+  floor. The gate catches props into props; it does not catch a room
+  that was laid out twice.
+- **Cut the wall for the window that reads through.** The pass window
+  was a steel frame on a solid wall. Cutting the segment (two piers,
+  a spandrel, a lintel) and building the closed front of house behind
+  it — the display case, one table, the street pane's pre-dawn grey,
+  a floor and a ceiling of its own — gives shot_establish_b (down the
+  table to the door) a second room in depth for the price of ten
+  boxes. The FOH floor and ceiling start where the room's slabs end
+  (y -0.2), or the recorder reports the seam.
+- **Chairs at a long table need their own spacing pass.** Ten box
+  seats 0.40 wide at 0.65 spacing with the fifth pair 0.40 from the
+  fourth; the kit chair is 0.42. Space by the seat width the KIT
+  emits, not the width the boxes had; and Roy's chair is w=0.44 in
+  the dark wood so the head of the table reads at a glance.
+- Cue-word discipline, again: `matches_for` splits names on `_` and
+  CamelCase and matches PARTS whole — Wear_Grip, Wear_Kick, Wear_Edge,
+  Hemlock_*, FOH_* carry none of box/bag/bowl/crow/hands/mixer/window/
+  light/coffee/brioche/brotchen/chapbook, and the marker gate stayed
+  at 0 misaims across 18 markers.
+
 ### 2026-09-17 · THE CABIN, DRAFT 5 — the primitive upgrade on the most-seen room
 
 The visual program's first background pass (lore/_VISUAL_PROGRAM.md
