@@ -53,11 +53,11 @@ TREE_CROWN = re.compile(r"(tree|cedar|sitka|hemlock|grove|scrub|conifer|broadlea
 # "leaf" dropped the centro cooler's door, so its handle floated)
 DOOR_LEAF = re.compile(r"(door|window|gate|shutter|hatch|lid)_?leaf", re.I)
 TERRAIN = {"graustark", "harmony_terrain", "small_wood_road", "riverfront", "louisiana_road", "new_auburn_road", "harmony_district"}
-SHELL = re.compile(r"(^|_)(wall|floor|ceil|ground|road|slab|apron|sidewalk|curb|terrain|lawn|grass|deck|stair|step|porch|platform|roof|beam|joist|foundation|pier|spandrel|lintel|jamb|partition|hull|shell|facade|street|path|gravel|asphalt|track|rail_bed|island|dock|bridge)", re.I)
+SHELL = re.compile(r"(^|_)(wall|floor|ceil|ground|road|slab|apron|sidewalk|curb|terrain|lawn|grass|deck|stair|step|porch|platform|roof|beam|joist|foundation|pier|spandrel|lintel|jamb|partition|hull|shell|facade|street|path|gravel|asphalt|track|rail_bed|island|dock|bridge)|parking_lot|^lot_(asphalt|dirt|gravel|walk|curb)", re.I)
 # (the vantage audit's IGNORE is not used here: its `plinth$` dropped the
 # sundial's plinth and its `band` the cedar tower's floor bands, 2026-09-22)
 # whole name PARTS only — "ridge" must not eat the Fridge (2026-09-22)
-SKY = re.compile(r"(^|_)(sky|far|farband|horizon|mist|cloud|drone|skein|haze|fog|treeline|ridge|hill|glow|clearing|sundisc|moondisc|shimmer|mote|void|sea|swamp_floor|lake_water|valley_floor|template_land|template_sea|ribbon)(_|$)|^far[a-z]|(^|_)out_[a-z]+_(ground|street|facade|wall|sea|sky|roof|treeline|lawn|tower|freeway|brick|gallery)|garden_far", re.I)
+SKY = re.compile(r"(^|_)(sky|far|farband|horizon|mist|cloud|drone|skein|haze|fog|treeline|ridge|hill|glow|clearing|sundisc|moondisc|shimmer|smear|mote|void|sea|swamp_floor|lake_water|valley_floor|template_land|template_sea|ribbon)(_|$)|^far[a-z]|(^|_)out_[a-z]+_(ground|street|facade|wall|sea|sky|roof|treeline|lawn|tower|freeway|brick|gallery)|garden_far", re.I)
 
 
 def touching(a, b):

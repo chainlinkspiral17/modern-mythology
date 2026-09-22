@@ -206,7 +206,7 @@ def build_dash():
     make_cyl("Radio_Dial", (-0.11, 0.925, 0.90), 0.022, 0.014, CHROME, axis="Y", segments=10)
     make_cyl("Radio_Knob_Tune", (0.12, 0.925, 0.885), 0.012, 0.012, CHROME, axis="Y", segments=8)
     for ki, kx in enumerate((-0.10, 0.0, 0.10)):
-        make_cyl(f"Climate_Knob_{ki}", (kx, 0.925, 0.76), 0.02, 0.014, DASH_LT, axis="Y", segments=8)
+        make_cyl(f"Climate_Knob_{ki}", (kx, 0.94, 0.76), 0.02, 0.014, DASH_LT, axis="Y", segments=8)   # on the dash face (0.95)
     make_box("Hazard_Button", (0.0, 0.928, 0.985), (0.03, 0.004, 0.02), (0.80, 0.18, 0.12, 1.0))
     # the phone in the dashboard cradle, screen lit
     make_box("Phone_Cradle", (0.22, 1.08, 1.25), (0.10, 0.03, 0.14), RUBBER)
@@ -230,12 +230,17 @@ def build_dash():
     make_lathe("Steering_Hub", (-0.46, 0.78, 0.98), [(0.0, 0.0), (0.07, 0.0), (0.075, 0.02), (0.06, 0.05), (0.0, 0.055)], DASH, segments=12)
     make_box("Steering_Spoke_L", (-0.56, 0.78, 0.98), (0.10, 0.02, 0.03), DASH)
     make_box("Steering_Spoke_R", (-0.36, 0.78, 0.98), (0.10, 0.02, 0.03), DASH)
-    make_box("Steering_Spoke_D", (-0.46, 0.78, 0.885), (0.03, 0.02, 0.10), DASH)
-    make_box("Ignition_Key", (-0.34, 0.86, 0.94), (0.01, 0.05, 0.02), CHROME)
-    make_box("Ignition_Fob", (-0.34, 0.83, 0.92), (0.02, 0.01, 0.03), (0.30, 0.28, 0.26, 1.0))
+    make_box("Steering_Spoke_D", (-0.46, 0.78, 0.89), (0.03, 0.02, 0.18), DASH)   # hub to rim (2026-09-22)
+    make_box("Steering_Spoke_U", (-0.46, 0.78, 1.10), (0.03, 0.02, 0.14), DASH)
+    for di, ang_ in enumerate((0.785, 2.356, 3.927, 5.498)):   # four diagonal spokes: the rim segments between them ride these
+        make_rot_box(f"Steering_Spoke_X{di}", (-0.46 + 0.105 * _m.cos(ang_), 0.78, 0.98 + 0.105 * _m.sin(ang_)), (0.14, 0.02, 0.03), DASH, pitch=-ang_)   # out to the rim (2026-09-22: 1.2 cm short of four segments)
+    # the key in the column's right flank (2026-09-22: it hung 8 cm off the column)
+    make_box("Ignition_Key", (-0.425, 0.86, 0.98), (0.01, 0.05, 0.02), CHROME)
+    make_box("Ignition_Fob", (-0.425, 0.83, 0.96), (0.02, 0.01, 0.03), (0.30, 0.28, 0.26, 1.0))
     # pedals, floor mats
     for pi, px in enumerate((-0.52, -0.40)):
         make_box(f"Pedal_{pi}", (px, 1.10, 0.56), (0.06, 0.02, 0.10), RUBBER)
+        make_box(f"Pedal_{pi}_Arm", (px, 1.075, 0.66), (0.02, 0.05, 0.20), DASH)   # to the dash's underside (2026-09-22)
     for sgn, nm in ((1, "R"), (-1, "L")):
         make_box(f"Floor_Mat_F_{nm}", (sgn * 0.46, 0.65, 0.463), (0.55, 0.60, 0.006), (0.15, 0.15, 0.15, 1.0))
         make_box(f"Floor_Mat_R_{nm}", (sgn * 0.46, -0.60, 0.463), (0.55, 0.50, 0.006), (0.15, 0.15, 0.15, 1.0))
@@ -367,7 +372,7 @@ def build_draft4_2026_09():
     make_floor_stain("Wear_Rut_Deep", (-1.07, 0.5), radius=0.6, tint=(0.48, 0.44, 0.36, 1.0), segments=10)
     make_tube("Cord_1", [(0.22, 1.07, 1.19), (0.22, 1.02, 1.05), (0.10, 0.96, 0.85), (0.02, 0.94, 0.80)], 0.004, (0.90, 0.90, 0.88, 1.0), segments=4)
     make_cyl("Socket_12V", (0.0, 0.925, 0.80), 0.014, 0.01, (0.12, 0.12, 0.13, 1.0), axis="Y", segments=8)
-    make_tube("Key_Ring", [(-0.34, 0.845, 0.925), (-0.33, 0.845, 0.905), (-0.35, 0.845, 0.895), (-0.36, 0.845, 0.915), (-0.34, 0.845, 0.925)], 0.003, CHROME, segments=4)
+    make_tube("Key_Ring", [(-0.425, 0.845, 0.975), (-0.415, 0.845, 0.955), (-0.435, 0.845, 0.945), (-0.445, 0.845, 0.965), (-0.425, 0.845, 0.975)], 0.003, CHROME, segments=4)
     make_tube("Freshener_String", [(0.0, 1.40, 1.545), (0.0, 1.40, 1.46)], 0.002, (0.60, 0.60, 0.58, 1.0), segments=4)
     make_box("Freshener", (0.0, 1.40, 1.42), (0.06, 0.003, 0.08), (0.24, 0.50, 0.30, 1.0))
 

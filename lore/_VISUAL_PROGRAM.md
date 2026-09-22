@@ -340,10 +340,22 @@ more (carnival, centro, hierophant circuit, courthouse, el rancho,
 bungalow, salty tome, both nexcorp stations) to zero and the repo
 to 422; the fifth took seven of the long tail (christian ice, parish
 cemetery, roadside chapel, elicia, mixing glass, montreal, cliffside
-circus) to zero and the repo to 326. This pass runs ahead of every
-other background item now: a room that floats is not a draft of
-anything. Next: the rest of the tail (estuary_7_template 15, then
-the rooms at 8–10).
+circus) to zero and the repo to 326. THEN THE USER'S VERDICT ("still
+getting pillows floating away from beds … objects inside other
+objects, too"): the GLBs are not in git (the Deck renders old builds
+until the rebuild paste runs) and the gates were forgiving — the
+touch tolerance went 3 cm → 1.2 cm, the overlap grammar tightened,
+both gates on per-locale baselines that only come down. The sixth and
+seventh passes took the kwik stop and the diner to zero at the new
+tolerance (support 1,088, overlap 208); the eighth took twelve more
+rooms to zero and re-planned the centro grocery aisle, whose meat
+case stood in the checkout lane and whose deli stood inside the
+bakery — hidden by the gate's "contents" rule, now a size test
+(support 725, overlap 210 under the tighter grammar). This pass runs
+ahead of every other background item: a room that floats is not a
+draft of anything. Next: bindery, hierophant, riverboat (29 each),
+asylum ward, new orleans bar (19), then the rooms at 14–18; overlap:
+pit stop 26, crumpled barn 11.
 
 **Draft targets, by volume, by uses:**
 - **Vol 7 (current):** `cabin_interior` (31) · `lena_apartment` (23)

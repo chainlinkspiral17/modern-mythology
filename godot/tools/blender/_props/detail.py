@@ -236,8 +236,8 @@ def make_utility_pole(prefix, x, y, h=9.0, crossarm=True, transformer=False, woo
     make_lathe(f"{prefix}_Pole", (x, y, 0.0), [(0.16, 0.0), (0.15, h * 0.4), (0.12, h - 0.3), (0.11, h)], wood, segments=8)
     if crossarm:
         make_box(f"{prefix}_Crossarm", (x, y, h - 0.45), (1.9, 0.09, 0.11), wood)
-        make_box(f"{prefix}_Brace_L", (x - 0.55, y + 0.06, h - 0.85), (0.05, 0.03, 0.6), (0.50, 0.50, 0.52, 1.0))
-        make_box(f"{prefix}_Brace_R", (x + 0.55, y + 0.06, h - 0.85), (0.05, 0.03, 0.6), (0.50, 0.50, 0.52, 1.0))
+        make_box(f"{prefix}_Brace_L", (x - 0.55, y + 0.06, h - 0.80), (0.05, 0.03, 0.6), (0.50, 0.50, 0.52, 1.0))   # up to the crossarm (2026-09-22)
+        make_box(f"{prefix}_Brace_R", (x + 0.55, y + 0.06, h - 0.80), (0.05, 0.03, 0.6), (0.50, 0.50, 0.52, 1.0))
         for ii, dx in enumerate((-0.8, -0.3, 0.3, 0.8)):
             make_lathe(f"{prefix}_Insulator_{ii}", (x + dx, y, h - 0.395),
                        [(0.03, 0.0), (0.055, 0.05), (0.04, 0.09), (0.06, 0.13), (0.045, 0.17), (0.0, 0.19)],

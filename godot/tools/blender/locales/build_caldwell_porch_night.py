@@ -118,9 +118,11 @@ def build_dressing():
             make_tube(f"MayaBike_Spoke_{wx:.1f}_{sk}", [(wx - 0.28 * _mm.cos(ang), by, 0.33 - 0.28 * _mm.sin(ang)), (wx + 0.28 * _mm.cos(ang), by, 0.33 + 0.28 * _mm.sin(ang))], 0.003, (0.62, 0.64, 0.66, 1.0), segments=4)
     make_box("MayaBike_TopBar", (bx, by, 0.60), (0.70, 0.03, 0.04), (0.30,0.42,0.55,1.0))
     make_box("MayaBike_DownBar", (bx-0.12, by, 0.47), (0.52, 0.03, 0.04), (0.30,0.42,0.55,1.0))
+    make_box("MayaBike_SeatPost", (bx-0.28, by, 0.68), (0.03, 0.03, 0.16), (0.30,0.42,0.55,1.0))   # (2026-09-22: seat, bars and basket hung loose)
+    make_box("MayaBike_HeadTube", (bx+0.36, by, 0.70), (0.03, 0.03, 0.20), (0.30,0.42,0.55,1.0))
     make_chamfer_box("MayaBike_Seat", (bx-0.28, by, 0.76), (0.15, 0.06, 0.05), P.METAL_BLACK)
-    make_box("MayaBike_Bars", (bx+0.40, by, 0.80), (0.05, 0.28, 0.04), P.METAL_BLACK)
-    make_chamfer_box("MayaBike_Basket", (bx+0.50, by, 0.62), (0.20, 0.24, 0.16), (0.46,0.36,0.24,1.0))
+    make_box("MayaBike_Bars", (bx+0.36, by, 0.80), (0.05, 0.28, 0.04), P.METAL_BLACK)
+    make_chamfer_box("MayaBike_Basket", (bx+0.47, by, 0.62), (0.20, 0.24, 0.16), (0.46,0.36,0.24,1.0))
     # Doormat at the door.
     make_box("Doormat", (0.0, 0.55, 0.02), (0.90, 0.55, 0.03), P.RUBBER_MAT)
     make_box("Doormat_Trim", (0.0, 0.55, 0.03), (0.78, 0.44, 0.02), (0.36,0.30,0.22,1.0))
@@ -129,17 +131,17 @@ def build_dressing():
     for r, n in enumerate((4,3,2)):
         for c in range(n):
             col = (0.52,0.38,0.26,1.0) if (r+c)%2 else (0.42,0.30,0.20,1.0)
-            make_cyl(f"Log_{r}_{c}", (lx0, ly0 - 0.16*(n-1)/2.0 + c*0.16, 0.12+r*0.15),
+            make_cyl(f"Log_{r}_{c}", (lx0, ly0 - 0.16*(n-1)/2.0 + c*0.16, 0.07+r*0.14),   # on the deck, log on log
                      0.07, 0.52, col, axis='X', segments=8)
     # Potted plant in the NE corner (wire the imported helper).
     make_floor_plant("PorchPlant", (ROOM_W/2.0-0.5, ROOM_D-0.6, 0.0),
                      palette={"leaf":(0.34,0.46,0.30,1.0),"pot":(0.56,0.36,0.24,1.0)})
     # Hanging planter over the railing on the east side.
     hx, hy = 1.5, 0.62
-    make_cyl("HangWire", (hx, hy, CEIL-0.35), 0.005, 0.68, P.METAL_BLACK)
+    make_cyl("HangWire", (hx, hy, CEIL-0.36), 0.005, 0.72, P.METAL_BLACK)   # ceiling to pot rim (2026-09-22: 3 cm short)
     make_cyl("HangPot", (hx, hy, CEIL-0.80), 0.14, 0.16, (0.56,0.36,0.24,1.0))
     for i,(dx,dy) in enumerate([(0.14,0.0),(0.07,0.121),(-0.07,0.121),(-0.14,0.0),(-0.07,-0.121),(0.07,-0.121)]):
-        make_cyl(f"HangLeaf_{i}", (hx+dx, hy+dy, CEIL-0.94), 0.03, 0.16, (0.36,0.48,0.32,1.0))
+        make_cyl(f"HangLeaf_{i}", (hx+dx, hy+dy, CEIL-0.95), 0.03, 0.16, (0.36,0.48,0.32,1.0))   # from the pot rim, not through it (2026-09-22)
 
 def build_ceiling_infra():
     # A porch gets a ceiling fan, not office fluorescents (the tube
@@ -150,7 +152,7 @@ def build_ceiling_infra():
     make_cyl("Fan_Hub", (fx, fy, CEIL-0.28), 0.10, 0.10, P.METAL_BLACK, segments=10)
     for bi, (dx, dy) in enumerate([(0.55,0.0),(-0.55,0.0),(0.0,0.55),(0.0,-0.55)]):
         make_box(f"Fan_Blade_{bi}", (fx+dx, fy+dy, CEIL-0.30),
-                 (0.72 if dy==0.0 else 0.20, 0.20 if dy==0.0 else 0.72, 0.025),
+                 (0.92 if dy==0.0 else 0.20, 0.20 if dy==0.0 else 0.92, 0.025),   # into the hub (2026-09-22: 9 cm short)
                  (0.40,0.30,0.22,1.0))
 
 def build_porch_props_2026_08():
@@ -160,14 +162,17 @@ def build_porch_props_2026_08():
     tx, ty = 0.0, ROOM_D/2.0
     # Transistor radio on the rail, antenna up at an angle (two
     # segments), dial face lit-warm.
-    make_box("Radio_Body", (1.45, 0.30, 1.06), (0.24, 0.09, 0.14), (0.32, 0.26, 0.22, 1.0))
-    make_box("Radio_Dial", (1.40, 0.252, 1.07), (0.09, 0.006, 0.07), (0.90, 0.80, 0.55, 1.0))
-    make_cyl("Radio_Antenna_A", (1.55, 0.32, 1.22), 0.006, 0.18, (0.62, 0.64, 0.66, 1.0), segments=6)
-    make_cyl("Radio_Antenna_B", (1.585, 0.335, 1.36), 0.005, 0.14, (0.62, 0.64, 0.66, 1.0), segments=6)
+    # ON the rail's top (y 0.06..0.14, z 1.025); 2026-09-22 it hung 11 cm
+    # off the rail, 15 cm over nothing
+    make_box("Radio_Body", (1.45, 0.145, 1.095), (0.24, 0.09, 0.14), (0.32, 0.26, 0.22, 1.0))
+    make_box("Radio_Dial", (1.40, 0.097, 1.105), (0.09, 0.006, 0.07), (0.90, 0.80, 0.55, 1.0))
+    make_cyl("Radio_Antenna_A", (1.55, 0.165, 1.255), 0.006, 0.18, (0.62, 0.64, 0.66, 1.0), segments=6)
+    make_cyl("Radio_Antenna_B", (1.562, 0.18, 1.395), 0.005, 0.14, (0.62, 0.64, 0.66, 1.0), segments=6)
     # The blanket over a chair back, one corner hanging lower.
-    make_box("Blanket_Fold", (-1.15, 1.35, 0.78), (0.55, 0.16, 0.10), (0.52, 0.36, 0.30, 1.0))
-    make_box("Blanket_Drop", (-1.15, 1.44, 0.52), (0.50, 0.05, 0.42), (0.49, 0.34, 0.28, 1.0))
-    make_box("Blanket_Corner", (-0.95, 1.46, 0.30), (0.16, 0.04, 0.16), (0.46, 0.32, 0.27, 1.0))
+    # over Rocker_0's back (cx -1.5, back at cy + 0.22; 2026-09-22 it hung 30 cm in front of it)
+    make_box("Blanket_Fold", (-1.35, ROOM_D/2.0 + 0.22, 0.78), (0.55, 0.16, 0.10), (0.52, 0.36, 0.30, 1.0))
+    make_box("Blanket_Drop", (-1.35, ROOM_D/2.0 + 0.175, 0.52), (0.50, 0.05, 0.42), (0.49, 0.34, 0.28, 1.0))
+    make_box("Blanket_Corner", (-1.15, ROOM_D/2.0 + 0.18, 0.30), (0.16, 0.04, 0.16), (0.46, 0.32, 0.27, 1.0))
     # The cake on its plate at the side table, two slices gone —
     # a porch cake is a cake being eaten.
     make_cyl("Cake_Plate", (tx + 0.10, ty + 0.10, 0.545), 0.13, 0.012, (0.90, 0.88, 0.84, 1.0), segments=12)

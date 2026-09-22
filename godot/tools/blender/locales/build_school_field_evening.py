@@ -115,7 +115,8 @@ def build_hashmarks():
                      (0.10, 0.10, 0.45), (0.94, 0.44, 0.16, 1.0))
     # A football teed up at the 50
     make_cyl("Tee", (0.0, MID_Y, 0.03), 0.06, 0.06, (0.92, 0.72, 0.20, 1.0), segments=10)
-    make_cyl("Ball", (0.0, MID_Y, 0.14), 0.055, 0.28, (0.42, 0.24, 0.14, 1.0), axis='X', segments=8)
+    # Ball rests on the tee (tee top 0.06; ball r 0.055 → centre 0.115)
+    make_cyl("Ball", (0.0, MID_Y, 0.115), 0.055, 0.28, (0.42, 0.24, 0.14, 1.0), axis='X', segments=8)
 
 
 def build_goalposts():
@@ -137,7 +138,7 @@ def build_bleachers():
         h = 0.4 + step * 0.42
         make_box(f"Bleach_Riser_{step}", (bx - step * 0.55, MID_Y, h * 0.5),
                  (0.55, 36.0, h), COL_METAL)
-        make_box(f"Bleach_Bench_{step}", (bx - step * 0.55, MID_Y, h + 0.05),
+        make_box(f"Bleach_Bench_{step}", (bx - step * 0.55, MID_Y, h + 0.03),   # on the riser (2026-09-22: 2 cm up)
                  (0.50, 36.0, 0.06), (0.44, 0.36, 0.26, 1.0))
     for ly in (MID_Y - 16.0, MID_Y + 16.0):
         make_box(f"Bleach_Leg_{ly:.0f}", (bx - 2.4, ly, 1.7), (5.0, 0.10, 0.10), COL_METAL)
@@ -157,12 +158,12 @@ def build_spectators():
              (5,0.5),(5,-6.0),(6,-12.5),(6,3.5),(6,9.0),(7,-3.5),(7,15.0),(8,6.0)]
     for si, (step, yo) in enumerate(seats):
         h = 0.4 + step * 0.42
-        seat_top = h + 0.08
+        seat_top = h + 0.06   # the bench's top face
         px = bx - step * 0.55
         py = MID_Y + yo
         col = coats[si % len(coats)]
         make_box(f"Fan_{si}_Torso", (px, py, seat_top + 0.24), (0.34, 0.34, 0.46), col)
-        make_cyl(f"Fan_{si}_Head", (px, py, seat_top + 0.58), 0.10, 0.16, skin, segments=8)
+        make_cyl(f"Fan_{si}_Head", (px, py, seat_top + 0.55), 0.10, 0.16, skin, segments=8)   # on the shoulders
 
 
 def build_players():
@@ -183,14 +184,14 @@ def build_players():
             py = line_y + dy
             make_box(f"Player_{tag}_Legs", (px, py, 0.42), (0.34, 0.26, 0.84), pants)
             make_box(f"Player_{tag}_Torso", (px, py, 1.10), (0.46, 0.30, 0.52), jersey)
-            make_cyl(f"Player_{tag}_Head", (px, py, 1.47), 0.11, 0.18, skin, segments=8)   # on the shoulders (2026-09-22)
-            make_cyl(f"Player_{tag}_Helmet", (px, py, 1.55), 0.125, 0.10, jersey, segments=8)
+            make_cyl(f"Player_{tag}_Head", (px, py, 1.46), 0.11, 0.18, skin, segments=8)   # on the shoulders (2026-09-22)
+            make_cyl(f"Player_{tag}_Helmet", (px, py, 1.54), 0.125, 0.10, jersey, segments=8)
     # QB in the gun + a back, home side
     for tag, (px, py) in (("QB", (0.0, line_y - 3.2)), ("RB", (1.4, line_y - 4.6))):
         make_box(f"Player_{tag}_Legs", (px, py, 0.42), (0.34, 0.26, 0.84), pants)
         make_box(f"Player_{tag}_Torso", (px, py, 1.10), (0.46, 0.30, 0.52), wine)
-        make_cyl(f"Player_{tag}_Head", (px, py, 1.47), 0.11, 0.18, skin, segments=8)
-        make_cyl(f"Player_{tag}_Helmet", (px, py, 1.55), 0.125, 0.10, wine, segments=8)
+        make_cyl(f"Player_{tag}_Head", (px, py, 1.46), 0.11, 0.18, skin, segments=8)
+        make_cyl(f"Player_{tag}_Helmet", (px, py, 1.54), 0.125, 0.10, wine, segments=8)
     # Coach K on the home sideline at the line of scrimmage
     make_box("Coach_Legs", (SIDE_X + 1.2, line_y, 0.46), (0.36, 0.28, 0.92), (0.30, 0.30, 0.34, 1.0))
     make_box("Coach_Torso", (SIDE_X + 1.2, line_y, 1.18), (0.48, 0.32, 0.52), (0.30, 0.36, 0.52, 1.0))
@@ -351,7 +352,7 @@ def build_hero_props():
     bx = -(SIDE_X + 2.6)
     # draft 4: a folding chair — X-frame legs, a canvas seat, a low back
     ex_, ey_ = bx - 2 * 0.55, MID_Y - 17.0
-    bench_top = 0.4 + 2 * 0.42 + 0.08
+    bench_top = 0.4 + 2 * 0.42 + 0.06   # Bleach_Bench_2 top (2026-09-22: the chair hung 2 cm over it)
     for sgn in (-1, 1):
         make_rot_box(f"Eileen_Chair_Leg_{sgn:+d}", (ex_, ey_ + sgn * 0.17, bench_top + 0.20), (0.025, 0.025, 0.46), (0.30, 0.30, 0.32, 1.0), yaw=0.0, roll=sgn * 0.55)
         make_rot_box(f"Eileen_Chair_LegB_{sgn:+d}", (ex_, ey_ - sgn * 0.17, bench_top + 0.20), (0.025, 0.025, 0.46), (0.30, 0.30, 0.32, 1.0), yaw=0.0, roll=-sgn * 0.55)
@@ -455,7 +456,8 @@ def build_draft4_2026_09():
     make_traffic_wear("Wear_Path_Sideline", [(10.5, -2.6), (18.0, 4.0), (SIDE_X + 1.2, 20.0), (SIDE_X + 1.2, 44.0)], width=1.2, tint=dirt)
     make_floor_stain("Wear_Gate_Tread", (10.5, -3.0), radius=1.6, tint=dirt, segments=12)
     # ── D3 ──
-    make_lathe("FieldHouse_Lamp_Canopy", (-16.0, -6.70, 2.55), [(0.08, 0.0), (0.08, 0.02), (0.02, 0.04), (0.0, 0.04)], (0.30, 0.30, 0.32, 1.0), segments=8)
+    # against the house face
+    make_lathe("FieldHouse_Lamp_Canopy", (-16.0, -6.72, 2.55), [(0.08, 0.0), (0.08, 0.02), (0.02, 0.04), (0.0, 0.04)], (0.30, 0.30, 0.32, 1.0), segments=8)
     make_lathe("FieldHouse_Lamp_Glass", (-16.0, -6.70, 2.33), [(0.03, 0.0), (0.07, 0.04), (0.075, 0.14), (0.05, 0.22), (0.0, 0.23)], (0.96, 0.90, 0.72, 0.9), segments=10)   # under its canopy (2026-09-22)
     make_tube("Score_Cable", [(0.0, FIELD_LEN + 9.0, 5.8), (0.0, FIELD_LEN + 9.1, 3.0), (0.6, FIELD_LEN + 9.6, 0.0)], 0.02, (0.16, 0.16, 0.18, 1.0), segments=5)
     make_chamfer_box("Score_Box", (1.2, FIELD_LEN + 9.8, 0.30), (0.60, 0.40, 0.60), (0.36, 0.38, 0.36, 1.0), chamfer=0.015)

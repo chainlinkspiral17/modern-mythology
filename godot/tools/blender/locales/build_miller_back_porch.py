@@ -214,8 +214,8 @@ def build_dressing():
         ang = li * (2.0 * math.pi / 3.0)
         make_rot_box(f"SideTbl_Leg_{li}", (math.cos(ang) * 0.12, cy + math.sin(ang) * 0.12, 0.05),
                      (0.24, 0.035, 0.03), COL_WOOD, yaw=ang, pitch=-0.35)
-    make_cyl("Mug_Body", (0.10, cy - 0.05, 0.52), 0.045, 0.09, (0.82, 0.36, 0.24, 1.0), segments=12)
-    make_cyl("Mug_Handle", (0.16, cy - 0.05, 0.55), 0.02, 0.03, (0.82, 0.36, 0.24, 1.0), axis='X', segments=8)
+    make_cyl("Mug_Body", (0.10, cy - 0.05, 0.505), 0.045, 0.09, (0.82, 0.36, 0.24, 1.0), segments=12)
+    make_cyl("Mug_Handle", (0.16, cy - 0.05, 0.535), 0.02, 0.03, (0.82, 0.36, 0.24, 1.0), axis='X', segments=8)
     make_box("Newspaper", (-0.13, cy + 0.02, 0.475), (0.20, 0.14, 0.02), (0.80, 0.78, 0.72, 1.0))
     make_box("Doormat", (0.0, 0.55, 0.012), (0.90, 0.55, 0.02), (0.34, 0.26, 0.18, 1.0))
     make_floor_plant("Plant", (ROOM_W/2.0 - 0.55, ROOM_D - 0.6, 0.0),

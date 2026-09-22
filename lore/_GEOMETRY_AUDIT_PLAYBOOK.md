@@ -246,6 +246,47 @@ banisters classed · pans as containers.
   lowered the centroid under the bar top and failed a shot that
   had passed by a hair. When a support fix moves a hero prop's
   part, re-run `--markers` for that locale before the suite.
+- **A name with "case" in it is not a container (eighth pass).** The
+  overlap gate's contents rule exempted any pair where one name was
+  container-ish and the other's CENTRE fell inside it — with no size
+  test. So the grocery's 2.4 m meat case swallowed the checkout lane
+  (the queue posts, the candy rack and the card terminal all stood
+  inside it), the deli case swallowed the bakery counter, and the
+  gate reported both rooms "clean". Contents are now under 1 m in
+  every dimension and must FIT the container. When a gate says a
+  crowded room is clean, dump the room's big boxes and look for two
+  fixtures sharing a footprint.
+- **The assembly key: an index joins it, a part name does not.** The
+  same gate paired any two names sharing their FIRST segment as one
+  assembly, so `Aisle_2` (a 4.4 m gondola) sat bodily inside
+  `Aisle_0` unreported for its whole life. Keying on the first two
+  segments over-fired the other way (Radiator_Fin_4 x Radiator_Body,
+  Spinner_Tier_1 x Spinner_Pole — 1,361 clips). The rule that holds:
+  when the second segment is an integer it is a family index and
+  joins the key (`Aisle_0`, `Cooler_3`); otherwise the first segment
+  alone is the assembly. 247 under that rule against 208 under the
+  old — and the 39 were real.
+- **Compile every builder after a batch, not just the ones you
+  meant to touch.** Replacing the front of a one-line make_* call and
+  appending a `# comment` swallows the rest of the arguments into
+  the comment: three builders (school field, cedar tower, cosmic)
+  went to SyntaxError this way in one session, and a fourth
+  (vehicle cab) to NameError, and the audits reported each as
+  "partial" or ERR — which a skim reads as a clean row.
+  `python3 -m py_compile locales/build_*.py _props/*.py` before any
+  audit; put the comment on its own line above the call.
+- **A region dump cut by `head` is a lie about what is there.** The
+  deli's second home was chosen from a W-wall dump truncated at 50
+  lines — the produce island and the dry-goods run were below the
+  cut, and the case landed inside both. Filter the dump by NAME
+  (the big fixtures: Body, Base, Bank, Shelf_0) rather than by
+  count, and read the whole thing.
+- **Hangers must reach the head, not just the wire.** A stoplight
+  whose stub stopped 6 cm above its top lens floated even after the
+  pole and the arm were built; a planter whose wire stopped 3 cm
+  above the pot rim floated with all six leaves. After tethering a
+  thing from above, check the LAST link (stub → head, wire → rim,
+  cord → device) before the first.
 
 ### 2026-09-06 · a builder that raises under the recorder is dropped without a flag
 

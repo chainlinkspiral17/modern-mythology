@@ -158,7 +158,7 @@ def build_repair_back():
     make_chamfer_box("Repair_Bench", (bx, 6.2, 0.45), (2.20, 0.70, 0.90), COL_WOOD)
     make_chamfer_box("Repair_Bench_Top", (bx, 6.2, 0.92), (2.26, 0.76, 0.05), (0.32, 0.24, 0.16, 1.0))
     # A board mid-repair on the bench, trucks off
-    make_box("Repair_Board", (bx + 0.15, 6.15, 0.98), (0.80, 0.22, 0.03), DECK_TINTS[1])
+    make_box("Repair_Board", (bx + 0.15, 6.15, 0.96), (0.80, 0.22, 0.03), DECK_TINTS[1])   # on the bench
     make_box("Repair_Truck_Loose", (bx - 0.45, 6.3, 0.96), (0.16, 0.10, 0.06), COL_STEEL)
     # the bench vise at the east end, the top's scars
     make_box("Repair_Vise_Body", (bx + 0.95, 6.02, 1.00), (0.16, 0.14, 0.11), (0.28, 0.30, 0.32, 1.0))
@@ -184,8 +184,8 @@ def build_repair_back():
     make_cyl("Lathe_Stock", (-2.5, 6.35, 1.18), 0.05, 0.70, COL_WOOD, axis='X', segments=8)
     make_box("Lathe_Tailstock", (-2.05, 6.35, 1.20), (0.14, 0.16, 0.16), (0.30, 0.32, 0.34, 1.0))
     make_cyl("Lathe_Tail_Centre", (-2.16, 6.35, 1.18), 0.012, 0.10, COL_STEEL, axis='X', segments=6)
-    make_box("Lathe_Tool_Rest", (-2.55, 6.12, 1.16), (0.30, 0.03, 0.02), (0.30, 0.32, 0.34, 1.0))
-    make_box("Lathe_Tool_Rest_Post", (-2.55, 6.12, 1.05), (0.03, 0.03, 0.20), (0.30, 0.32, 0.34, 1.0))
+    make_box("Lathe_Tool_Rest", (-2.55, 6.14, 1.16), (0.30, 0.03, 0.02), (0.30, 0.32, 0.34, 1.0))
+    make_box("Lathe_Tool_Rest_Post", (-2.55, 6.14, 1.05), (0.03, 0.03, 0.20), (0.30, 0.32, 0.34, 1.0))   # on the bed (2026-09-22)
     make_box("Lathe_Motor", (-2.85, 6.35, 0.45), (0.28, 0.24, 0.24), (0.24, 0.24, 0.26, 1.0))
     make_box("Lathe_Belt_Cover", (-3.05, 6.35, 0.80), (0.10, 0.14, 0.50), (0.30, 0.32, 0.34, 1.0))
     # (a shallow lathed mound: the recorder boxes a blob by its full
@@ -211,7 +211,7 @@ def build_office():
     # (ch12: Kai sits on one and looks at the hexagon), one flap open
     for bi, by in enumerate((5.35, 5.68)):
         make_box(f"Bearings_Box_{bi}", (3.95, by, 0.16), (0.34, 0.28, 0.32), (0.60, 0.48, 0.32, 1.0))
-    make_rot_box("Bearings_Box_1_Flap", (3.95, 5.55, 0.40), (0.34, 0.14, 0.008), (0.64, 0.52, 0.36, 1.0), roll=1.1)
+    make_rot_box("Bearings_Box_1_Flap", (3.95, 5.55, 0.33), (0.34, 0.14, 0.008), (0.64, 0.52, 0.36, 1.0), roll=1.1)
     make_box("Bearings_Box_0_Label", (3.78, 5.35, 0.18), (0.004, 0.16, 0.10), (0.92, 0.90, 0.84, 1.0))
 
 
@@ -228,9 +228,9 @@ def build_retail():
             make_cyl(f"Parts_Peg_{r}_{c}", (4.395, py, pz + 0.09), 0.005, 0.05, COL_STEEL, axis='X', segments=5)
     # Wheels in a low bin (draft 3: the bin off the east wall; the
     # wheels as wheels — rounded edges, a bearing seat)
-    make_chamfer_box("Wheel_Bin", (4.1, 2.4, 0.35), (0.55, 0.55, 0.55), COL_WOOD)
+    make_chamfer_box("Wheel_Bin", (4.1, 2.4, 0.275), (0.55, 0.55, 0.55), COL_WOOD)   # on the floor
     for wi in range(4):
-        make_lathe(f"Wheel_{wi}", (4.0 + (wi % 2) * 0.18, 2.3 + (wi // 2) * 0.18, 0.625),
+        make_lathe(f"Wheel_{wi}", (4.0 + (wi % 2) * 0.18, 2.3 + (wi // 2) * 0.18, 0.545),   # on the bin (2026-09-22: 7 cm over it)
                    [(0.03, 0.0), (0.06, 0.0), (0.07, 0.012), (0.07, 0.078), (0.06, 0.09), (0.03, 0.09), (0.03, 0.0)],
                    (0.92, 0.88, 0.66, 1.0), segments=12)
     # Front window + the parents' bench under it (NO staged board
@@ -291,18 +291,18 @@ def build_hero_props():
              (0.56, 0.62, 0.64, 1.0))
     make_box("Sanderling_Mural_Sand", (-2.75, -8.90, 1.02), (6.0, 0.06, 0.65),
              (0.74, 0.68, 0.56, 1.0))
-    make_chamfer_box("Sanderling_Body", (-3.30, -8.83, 1.80), (1.60, 0.05, 0.78),
+    make_chamfer_box("Sanderling_Body", (-3.30, -8.845, 1.80), (1.60, 0.05, 0.78),
                      (0.88, 0.87, 0.84, 1.0))
-    make_chamfer_box("Sanderling_Head", (-2.32, -8.83, 2.24), (0.46, 0.05, 0.42),
+    make_chamfer_box("Sanderling_Head", (-2.32, -8.845, 2.24), (0.46, 0.05, 0.42),
                      (0.88, 0.87, 0.84, 1.0))
-    make_box("Sanderling_Beak", (-1.98, -8.83, 2.22), (0.30, 0.04, 0.07),
+    make_box("Sanderling_Beak", (-1.98, -8.85, 2.22), (0.30, 0.04, 0.07),
              (0.28, 0.26, 0.24, 1.0))
-    make_box("Sanderling_Leg", (-3.05, -8.83, 1.22), (0.06, 0.04, 0.44),
+    make_box("Sanderling_Leg", (-3.05, -8.85, 1.22), (0.06, 0.04, 0.44),
              (0.30, 0.28, 0.26, 1.0))
     # the patch · flat, black, wrong · body first, the head this week
-    make_box("Mural_Patch", (-3.30, -8.76, 1.80), (1.15, 0.03, 1.02),
+    make_box("Mural_Patch", (-3.30, -8.855, 1.80), (1.15, 0.03, 1.02),   # on the mural (2026-09-22: 10 cm off it)
              (0.06, 0.06, 0.07, 1.0))
-    make_box("Mural_Patch_Head", (-2.32, -8.76, 2.24), (0.52, 0.03, 0.46),
+    make_box("Mural_Patch_Head", (-2.32, -8.855, 2.24), (0.52, 0.03, 0.46),
              (0.06, 0.06, 0.07, 1.0))
 
     # ── the counter still life ──
@@ -353,7 +353,7 @@ def build_main_street_2026_09():
     # Board Lords' front: awning + sign on the parapet, CLOSED sign
     make_box("Shop_Awning", (0.0, -0.62, 2.55), (4.0, 1.00, 0.06), (0.30, 0.34, 0.42, 1.0))
     for ai, ax in enumerate((-1.85, 1.85)):
-        make_box(f"Shop_Awning_Arm_{ai}", (ax, -0.60, 2.45), (0.04, 1.02, 0.04), (0.20, 0.20, 0.22, 1.0))   # reaches the wall face
+        make_box(f"Shop_Awning_Arm_{ai}", (ax, -0.60, 2.50), (0.04, 1.02, 0.04), (0.20, 0.20, 0.22, 1.0))   # reaches the wall face and the awning
     make_box("Shop_Sign", (0.0, -0.13, 2.85), (2.40, 0.06, 0.50), (0.22, 0.18, 0.16, 1.0))
     make_box("Shop_Sign_Letters", (0.0, -0.165, 2.85), (2.00, 0.01, 0.22), (0.88, 0.80, 0.52, 1.0))
     make_box("Closed_Sign", (0.55, 0.014, 1.35), (0.22, 0.008, 0.14), (0.90, 0.88, 0.82, 1.0))   # on the door glass, street side
@@ -409,7 +409,7 @@ def build_draft3_2026_09():
     for si, sx in enumerate((-3.35, -2.75, -2.15)):
         make_box(f"Wear_Sit_{si}", (sx, 0.55, 0.4515), (0.42, 0.30, 0.003), (0.36, 0.26, 0.16, 1.0))
     make_floor_stain("Wear_Stand_Glass", (-3.75, 3.8), radius=0.30, tint=floor_dk, segments=10)
-    make_box("Wear_Win_Smudge", (-2.75, 0.126, 1.05), (1.40, 0.004, 0.10), (0.62, 0.66, 0.68, 0.5))
+    make_box("Wear_Win_Smudge", (-2.75, 0.104, 1.05), (1.40, 0.004, 0.10), (0.62, 0.66, 0.68, 0.5))
     make_box("Wear_Elbow", (2.25, 5.03, 0.953), (2.20, 0.06, 0.003), (0.24, 0.17, 0.11, 1.0))
     # D3
     make_light_switch("Switch_1", (1.15, 0.0), axis='X', face_sign=1, z=1.25, aged=True)
@@ -418,8 +418,8 @@ def build_draft3_2026_09():
     make_wall_outlet("Outlet_N_2", (-0.6, ROOM_D), axis='X', face_sign=-1, z=1.10, aged=True)
     make_tube("Cord_2", [(-0.23, 6.60, 0.98), (-0.6, 6.86, 1.10)], 0.008, (0.16, 0.16, 0.18, 1.0), segments=5)
     # the EXIT sign over the alley door (its practical is in the tscn)
-    make_box("Exit_Sign", (3.15, ROOM_D - 0.16, 2.62), (0.32, 0.06, 0.16), (0.30, 0.10, 0.08, 1.0))
-    make_box("Exit_Sign_Face", (3.15, ROOM_D - 0.195, 2.62), (0.26, 0.004, 0.10), (0.96, 0.30, 0.22, 1.0))
+    make_box("Exit_Sign", (3.15, ROOM_D - 0.13, 2.62), (0.32, 0.06, 0.16), (0.30, 0.10, 0.08, 1.0))   # on the wall (2026-09-22: 3 cm off it)
+    make_box("Exit_Sign_Face", (3.15, ROOM_D - 0.162, 2.62), (0.26, 0.004, 0.10), (0.96, 0.30, 0.22, 1.0))
 
 
 def main():

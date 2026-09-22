@@ -85,7 +85,7 @@ def build_ground():
     # Road: two lanes running E-W, y ∈ [0, 3.4]
     make_box("Road", (0.0, 1.7, 0.0), (34.0, 3.4, 0.04), COL_ASPHALT)
     for i in range(11):
-        make_box(f"Dash_{i}", (-15.0 + i * 3.0, 1.7, 0.045), (1.3, 0.12, 0.012), COL_DASH)
+        make_box(f"Dash_{i}", (-15.0 + i * 3.0, 1.7, 0.026), (1.3, 0.12, 0.012), COL_DASH)   # on the road (2026-09-22)
     # The asphalt apron ("wet asphalt apron" — canon) north of the road
     make_box("Apron", (0.0, 5.7, 0.0), (34.0, 4.6, 0.05), COL_APRON)
     # Rain: puddle gleams scattered on apron + road
@@ -93,7 +93,7 @@ def build_ground():
                (7.4, 4.4, 1.8, 0.9), (-10.5, 5.9, 1.4, 0.8), (1.2, 2.2, 2.4, 0.7),
                (-4.0, 1.2, 1.7, 0.6)]
     for i, (px, py, pw, pd) in enumerate(puddles):
-        make_box(f"Puddle_{i}", (px, py, 0.055), (pw, pd, 0.008), COL_PUDDLE)
+        make_box(f"Puddle_{i}", (px, py, 0.029), (pw, pd, 0.008), COL_PUDDLE)
     # Grass fringes: south of road, and between apron and treeline
     make_box("Grass_S", (0.0, -2.0, 0.0), (34.0, 4.0, 0.04), COL_GRASS)
     make_box("Grass_N", (0.0, 14.5, 0.0), (34.0, 5.0, 0.04), COL_GRASS)
@@ -112,7 +112,7 @@ def build_gas_pumps():
     make_tube("Pump_E_Hose", [(-2.22, 5.4, 1.42), (-2.05, 5.4, 1.05), (-2.20, 5.4, 0.72)], 0.02, COL_POLE, segments=6)
     make_box("Pump_E_Nozzle", (-2.21, 5.4, 0.64), (0.06, 0.10, 0.14), COL_CLAD)
     for bi_, bx_ in enumerate((-4.7, -1.7)):
-        make_lathe(f"Bollard_{bi_}", (bx_, 5.4, 0.05), [(0.07, 0.0), (0.07, 0.85), (0.05, 0.90), (0.0, 0.90)], (0.86, 0.72, 0.18, 1.0), segments=8)
+        make_lathe(f"Bollard_{bi_}", (bx_, 5.4, 0.025), [(0.07, 0.0), (0.07, 0.85), (0.05, 0.90), (0.0, 0.90)], (0.86, 0.72, 0.18, 1.0), segments=8)
     # Retired pump (west) — faded, capped, hoseless
     make_chamfer_box("Pump_W_Body", (-3.9, 5.4, 0.78), (0.55, 0.45, 1.36), COL_PUMP_DEAD, chamfer=0.02)
     make_box("Pump_W_Face", (-3.9, 5.16, 1.02), (0.40, 0.04, 0.55), COL_PUMP_DEAD_FACE)
@@ -129,30 +129,30 @@ def build_diner():
     make_box("Diner_Parapet", (-0.5, 10.5, 3.48), (8.2, 5.2, 0.16), COL_CLAD_DK)
     # Warm window band along the front (proud of the face so it reads)
     for i, wx in enumerate((-3.4, -1.9, -0.4, 1.1)):
-        make_box(f"Diner_Win_{i}", (wx, 7.94, 1.65), (1.25, 0.06, 1.15), COL_GLOW)
-        make_box(f"Diner_WinFrame_{i}", (wx, 7.96, 1.65), (1.40, 0.05, 1.30), COL_CLAD_DK)
+        make_box(f"Diner_Win_{i}", (wx, 7.955, 1.65), (1.25, 0.06, 1.15), COL_GLOW)   # in the front wall's face (8.00; 2026-09-22: 3 cm off it)
+        make_box(f"Diner_WinFrame_{i}", (wx, 7.975, 1.65), (1.40, 0.05, 1.30), COL_CLAD_DK)
     # Glazed door, east end of the front, with concrete step
     make_box("Diner_Door", (2.4, 7.94, 1.25), (0.92, 0.08, 2.30), COL_DOOR)
     make_box("Diner_DoorGlass", (2.4, 7.90, 1.55), (0.62, 0.05, 1.20), COL_GLOW)
     make_box("Diner_Step", (2.4, 7.65, 0.09), (1.3, 0.7, 0.18), COL_CLAD_DK)
     # (draft 2: mullions in the windows, a pull on the door, a downspout)
     for i, wx in enumerate((-3.4, -1.9, -0.4, 1.1)):
-        make_box(f"Diner_Mullion_{i}", (wx, 7.905, 1.65), (0.04, 0.02, 1.15), COL_CLAD_DK)
+        make_box(f"Diner_Mullion_{i}", (wx, 7.915, 1.65), (0.04, 0.02, 1.15), COL_CLAD_DK)
     make_tube("Diner_Door_Pull", [(2.75, 7.88, 0.95), (2.75, 7.88, 1.30)], 0.012, COL_CLAD, segments=6)
     make_tube("Diner_Downspout", [(-4.55, 8.06, 3.35), (-4.55, 8.06, 0.30), (-4.55, 7.80, 0.12)], 0.04, COL_CLAD_DK, segments=6)
     # The bell over the door ("unsubtle about your leaving")
-    make_cyl("Door_Bell", (2.4, 7.86, 2.48), 0.05, 0.06, (0.66, 0.52, 0.24, 1.0),
+    make_cyl("Door_Bell", (2.4, 7.86, 2.43), 0.05, 0.06,   # on the door's top edge (0.66, 0.52, 0.24, 1.0),
              segments=8)
     # Roof clutter: A/C unit + vent
     make_box("Diner_AC", (-2.5, 10.8, 3.85), (1.2, 1.0, 0.6), COL_CLAD_DK)
-    make_cyl("Diner_Vent", (1.5, 11.5, 3.85), 0.16, 0.55, COL_POLE, segments=8)
+    make_cyl("Diner_Vent", (1.5, 11.5, 3.83), 0.16, 0.55, COL_POLE, segments=8)   # on the parapet
 
 
 def build_pole_sign():
     """Double-panel MISSING LINK sign on a pole west of the diner,
     an arrow panel angled at the lot."""
-    make_lathe("Sign_Pole", (-6.5, 6.5, 0.05), [(0.22, 0.0), (0.22, 0.05), (0.12, 0.10), (0.11, 4.15), (0.0, 4.15)], COL_POLE, segments=8)
-    make_box("Rust_Streak", (-6.5, 6.15, 0.057), (0.30, 0.55, 0.004), (0.36, 0.22, 0.14, 1.0))
+    make_lathe("Sign_Pole", (-6.5, 6.5, 0.025), [(0.22, 0.0), (0.22, 0.05), (0.12, 0.10), (0.11, 4.15), (0.0, 4.15)], COL_POLE, segments=8)
+    make_box("Rust_Streak", (-6.5, 6.15, 0.027), (0.30, 0.55, 0.004), (0.36, 0.22, 0.14, 1.0))
     make_box("Sign_Face_N", (-6.5, 6.56, 4.7), (2.6, 0.10, 1.1), COL_SIGN)
     make_box("Sign_Face_S", (-6.5, 6.44, 4.7), (2.6, 0.10, 1.1), COL_SIGN)
     make_box("Sign_Border", (-6.5, 6.5, 4.7), (2.75, 0.08, 1.25), COL_SIGN_RED)
@@ -179,7 +179,7 @@ def build_depot_awning():
     make_box("Shelter_Tube_Housing", (sx + 0.9, sy - 0.2, 2.44), (0.90, 0.14, 0.06), COL_CLAD_DK)
     make_cyl("Shelter_Tube", (sx + 0.9, sy - 0.2, 2.40), 0.02, 0.80, COL_GLOW, axis='X', segments=6)
     # Back panel (the "wall" the schedule is taped to)
-    make_box("Awning_Back", (sx, sy + 1.0, 1.30), (3.5, 0.10, 2.4), COL_SHELTER)
+    make_box("Awning_Back", (sx, sy + 1.0, 1.225), (3.5, 0.10, 2.4), COL_SHELTER)   # on the apron
     # The schedule: paper sheet + cracked plexiglass + a crack line
     make_box("Schedule_Paper", (sx - 0.6, sy + 0.93, 1.55), (0.55, 0.03, 0.75), COL_SIGN)
     make_box("Schedule_Plexi", (sx - 0.6, sy + 0.90, 1.55), (0.62, 0.02, 0.82), COL_PLEXI)
@@ -187,7 +187,7 @@ def build_depot_awning():
     # Slat bench under the awning
     for i in range(3):
         make_box(f"Bench_Slat_{i}", (sx, sy + 0.62 - i * 0.13, 0.46), (2.4, 0.11, 0.04), COL_BENCH)
-    make_box("Bench_Back", (sx, sy + 0.80, 0.72), (2.4, 0.06, 0.34), COL_BENCH)
+    make_box("Bench_Back", (sx, sy + 0.70, 0.65), (2.4, 0.06, 0.34), COL_BENCH)   # on the rear slat (2026-09-22: 10 cm behind it, 7 cm up)
     for lx in (sx - 1.0, sx + 1.0):
         make_box(f"Bench_Leg_{lx:.1f}", (lx, sy + 0.52, 0.22), (0.08, 0.34, 0.44), COL_POLE)
     # Route board on its own post at the awning's road side
@@ -195,13 +195,13 @@ def build_depot_awning():
     make_box("Route_Board", (sx - 2.1, sy - 1.35, 1.95), (0.55, 0.06, 0.75), COL_SIGN)
     make_box("Route_Board_Head", (sx - 2.1, sy - 1.33, 2.22), (0.55, 0.05, 0.16), COL_SIGN_RED)
     # Trash can east of the bench
-    make_lathe("Trash", (sx + 2.1, sy - 0.6, 0.05), [(0.0, 0.0), (0.22, 0.0), (0.24, 0.70), (0.26, 0.72), (0.26, 0.76), (0.18, 0.84), (0.06, 0.86), (0.0, 0.86)], COL_SHELTER, segments=10)
+    make_lathe("Trash", (sx + 2.1, sy - 0.6, 0.025), [(0.0, 0.0), (0.22, 0.0), (0.24, 0.70), (0.26, 0.72), (0.26, 0.76), (0.18, 0.84), (0.06, 0.86), (0.0, 0.86)], COL_SHELTER, segments=10)
     make_box("Trash_Slot", (sx + 2.1, sy - 0.86, 0.72), (0.18, 0.02, 0.10), (0.12, 0.12, 0.12, 1.0))
 
 
 def build_street_furniture():
     # Cobra-head lamppost between shelter and road
-    make_lathe("Lamp_Pole", (8.2, 4.0, 0.05), [(0.18, 0.0), (0.18, 0.05), (0.10, 0.10), (0.08, 4.90), (0.0, 4.90)], COL_POLE, segments=8)
+    make_lathe("Lamp_Pole", (8.2, 4.0, 0.025), [(0.18, 0.0), (0.18, 0.05), (0.10, 0.10), (0.08, 4.90), (0.0, 4.90)], COL_POLE, segments=8)
     make_tube("Lamp_Arm", [(8.2, 4.0, 4.85), (8.2, 3.4, 4.98), (8.2, 2.7, 4.94)], 0.04, COL_POLE, segments=6)
     make_box("Lamp_Head", (8.2, 2.45, 4.88), (0.24, 0.62, 0.14), COL_CLAD_DK)
     make_box("Lamp_Bulb", (8.2, 2.45, 4.80), (0.16, 0.42, 0.03), COL_GLOW)
@@ -242,7 +242,7 @@ def build_draft2_2026_09():
     for ti, tx in enumerate((-4.0, -2.4)):
         make_box(f"Apron_Track_{ti}", (tx, 4.2, 0.064), (0.34, 1.6, 0.008), track)
     make_floor_stain("Oil_Stain", (-3.2, 4.55), radius=0.40, floor_z=0.05, tint=(0.09, 0.09, 0.10, 1.0), segments=10)
-    make_box("Awning_Drip", (5.6, 5.92, 0.064), (3.4, 0.06, 0.008), (0.14, 0.14, 0.16, 1.0))
+    make_box("Awning_Drip", (5.6, 5.92, 0.029), (3.4, 0.06, 0.008), (0.14, 0.14, 0.16, 1.0))
     make_box("Step_Worn", (2.4, 7.65, 0.182), (0.60, 0.50, 0.003), (0.38, 0.40, 0.44, 1.0))
     for i in range(3):
         make_box(f"Seat_Shine_{i}", (4.6 + i * 1.0, 6.98, 0.482), (0.40, 0.30, 0.003), (0.54, 0.42, 0.28, 1.0))

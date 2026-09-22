@@ -174,7 +174,7 @@ def make_drone_dock(prefix, x, y, base_z, n=3, spacing=1.35,
     make_box("%s_Beam" % prefix, (x, y, base_z + post_h + 0.08),
              (span + 0.30, 0.16, 0.16), cedar_dk)
     # Rain hood over the cradles (weather-sealed drones still get a roof)
-    make_box("%s_Hood" % prefix, (x, y - 0.10, base_z + post_h + 0.22),
+    make_box("%s_Hood" % prefix, (x, y - 0.10, base_z + post_h + 0.19),   # on the beam (2026-09-22: 3 cm over it)
              (span + 0.50, 0.90, 0.06), cedar_dk)
     # the rail the cradle plates bolt to, post to post (2026-09-22: an
     # EMPTY cradle touched nothing — the occupied ones hung by their drones)

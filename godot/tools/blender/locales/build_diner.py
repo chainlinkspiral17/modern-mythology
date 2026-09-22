@@ -408,12 +408,15 @@ def build_counter():
     cy = -3.5
     counter_top_z = 1.05
     # Main counter — runs from X=-7 to +3 (10m long)
-    make_box("Counter_Top", (-2.0, cy, counter_top_z),
+    # top face at 1.10 — every dressing pass places from 1.10 (2026-09-22:
+    # the slab's face was 1.08 with a 2 cm gap to the front, so 67
+    # things on the counter floated with it)
+    make_box("Counter_Top", (-2.0, cy, counter_top_z + 0.02),
              (10.0, 0.8, 0.06), COL_FORMICA)
     # Front of counter (NORTH side — customer-facing, vinyl) —
     # this is the side stools sit against
-    make_box("Counter_Front", (-2.0, cy + 0.40, 0.50),
-             (10.0, 0.05, 1.00), COL_WOOD_TRIM)
+    make_box("Counter_Front", (-2.0, cy + 0.40, 0.52),
+             (10.0, 0.05, 1.04), COL_WOOD_TRIM)
     # Brass foot rail along the customer (north) side — round cylinder
     make_cyl("Counter_Brass_Rail", (-2.0, cy + 0.42, 0.18),
              0.024, 10.0, COL_BRASS, segments=8, axis='X')
@@ -847,16 +850,16 @@ def build_rush_and_service_dressing():
     import math as _wm
     for c in range(6):
         ang = _wm.radians(c * 60)
-        ex = wheel_x + 0.20 * _wm.cos(ang)
-        ey = wheel_y + 0.20 * _wm.sin(ang)
+        ex = wheel_x + 0.17 * _wm.cos(ang)   # on the disc's rim (r 0.16)
+        ey = wheel_y + 0.17 * _wm.sin(ang)
         make_box("TicketWheel_Clip_%d" % c,
                  (ex, ey, wheel_z + 0.012),
                  (0.04, 0.014, 0.024), COL_BRASS)
     # 3 tickets clipped on (cream paper rectangles standing up)
     for t, c in enumerate([0, 2, 4]):
         ang = _wm.radians(c * 60)
-        tx = wheel_x + 0.20 * _wm.cos(ang)
-        ty = wheel_y + 0.20 * _wm.sin(ang)
+        tx = wheel_x + 0.17 * _wm.cos(ang)
+        ty = wheel_y + 0.17 * _wm.sin(ang)
         make_box("TicketWheel_Ticket_%d" % t,
                  (tx, ty, wheel_z + 0.10),
                  (0.06, 0.002, 0.14),
@@ -891,7 +894,7 @@ def build_rush_and_service_dressing():
     # vantage. Add a spatula resting on it and a small grease pan
     # at the edge so "the line cook is on the grill" reads as recent.
     grill_y = -5.55 + 0.30   # surface-side of the grill body
-    grill_top_z = 0.92
+    grill_top_z = 0.905   # the charbroiler's bars top out at 0.906 (2026-09-22)
     # Spatula handle (wood) + blade (steel)
     spat_x = -4.5
     make_box("Grill_Spatula_Handle",
@@ -904,7 +907,7 @@ def build_rush_and_service_dressing():
              COL_KITCHEN_STEEL)
     # Small steel grease pan at the grill's east edge
     make_box("Grill_GreasePan_Body",
-             (spat_x + 0.80, grill_y, grill_top_z + 0.03),
+             (spat_x + 0.80, grill_y, grill_top_z + 0.02),   # on the griddle surface (0.90)
              (0.22, 0.18, 0.05),
              COL_KITCHEN_STEEL)
     make_box("Grill_GreasePan_Inside",
@@ -983,12 +986,12 @@ def build_jukebox(cx, cy, base_z=0.0):
                  segments=6, axis='Z')
     # Selection-button panel (chrome strip across the front)
     make_box("Jukebox_ButtonStrip",
-             (cx, cy - 0.255, base_z + 0.85),
+             (cx, cy - 0.2125, base_z + 0.85),   # on the shoulder's face
              (0.50, 0.005, 0.10), COL_KITCHEN_STEEL)
     # Title-strip backer (cream paper under glass — read as the
     # printed track list when the player looks closely)
     make_box("Jukebox_TitleStrip",
-             (cx, cy - 0.255, base_z + 0.72),
+             (cx, cy - 0.2325, base_z + 0.72),   # on the mid cabinet's face
              (0.50, 0.005, 0.06),
              (0.92, 0.86, 0.72, 1.0))
     # Coin slot (small brass)
@@ -1493,7 +1496,7 @@ def build_west_extension():
         gx = sb_x - 0.10
         gy = sb_y + 0.60 + g * 0.15
         make_cyl(f"WestFormal_Glass_{g}",
-                 (gx, gy, 1.10),
+                 (gx, gy, 1.07),   # on the sideboard top (1.02)
                  0.035, 0.10, (0.86, 0.90, 0.92, 1.0), segments=6, axis='Z')
 
 
@@ -2227,13 +2230,18 @@ def build_riverboat_galley():
     expo_cy = -4.10
     expo_top_z = 0.92
     expo_d = 0.25
+    # the expo starts east of alcove booth 1 (x -7.5); 2026-09-22 it ran
+    # the galley's whole width, 25 cm through the booth's south bench
+    expo_x0 = -7.40
+    expo_cx = (expo_x0 + K_X_E - 0.10) / 2.0
+    expo_len = K_X_E - 0.10 - expo_x0
     make_box("Galley_Expo_Body",
-             (cx_k, expo_cy, expo_top_z / 2),
-             (K_X_E - K_X_W - 0.20, expo_d, expo_top_z),
+             (expo_cx, expo_cy, expo_top_z / 2),
+             (expo_len, expo_d, expo_top_z),
              COL_KITCHEN_STEEL)
     make_box("Galley_Expo_Top",
-             (cx_k, expo_cy, expo_top_z + 0.02),
-             (K_X_E - K_X_W - 0.20, expo_d, 0.04),
+             (expo_cx, expo_cy, expo_top_z + 0.02),
+             (expo_len, expo_d, 0.04),
              (0.72, 0.72, 0.70, 1.0))
     # Heat lamps (5)
     for h in range(5):
@@ -2268,7 +2276,7 @@ def build_riverboat_galley():
         (+2.6, (0.86, 0.74, 0.50, 1.0)),
     ]):
         make_cyl(f"Galley_ExpoPlate_{p_i}",
-                 (px, expo_cy, expo_top_z + 0.06),
+                 (px, expo_cy, expo_top_z + 0.006),   # on the expo (2026-09-22: 5 cm up)
                  0.14, 0.012, (0.92, 0.90, 0.84, 1.0),
                  segments=10, axis='Z')
         make_sphere_low(f"Galley_ExpoPlate_Food_{p_i}",
@@ -2299,10 +2307,10 @@ def build_riverboat_galley():
         kz = 1.55 + k * 0.10
         ky_off = -0.10 + k * 0.10
         make_box(f"Galley_Knife_{k}_Blade",
-                 (K_X_W + 0.03, line_cy + 0.20 + ky_off * 0, kz),
+                 (K_X_W + 0.015, line_cy + 0.20 + ky_off * 0, kz),
                  (0.04, 0.04, 0.28), (0.86, 0.86, 0.88, 1.0))
         make_box(f"Galley_Knife_{k}_Handle",
-                 (K_X_W + 0.03, line_cy + 0.20 + ky_off * 0, kz - 0.18),
+                 (K_X_W + 0.015, line_cy + 0.20 + ky_off * 0, kz - 0.18),
                  (0.04, 0.04, 0.08), (0.22, 0.14, 0.08, 1.0))
 
     # ── ANTI-FATIGUE MAT in front of the cook line ──
@@ -2351,10 +2359,10 @@ def build_riverboat_galley():
     # "OUT" sign above the door (red, brass-framed) — visible from inside
     # the kitchen so the cook knows which way the door swings
     make_box("Galley_ServiceDoor_OutSign",
-             (+4.92, door_cy, 2.30),
+             (+4.9275, door_cy, 2.30),   # on its frame, the frame on the wall (4.95)
              (0.02, 0.30, 0.10), COL_VINYL_RED)
     make_box("Galley_ServiceDoor_OutFrame",
-             (+4.91, door_cy, 2.30),
+             (+4.9425, door_cy, 2.30),
              (0.015, 0.34, 0.14), COL_BRASS)
 
 
@@ -2913,7 +2921,7 @@ def build_southeast_bathroom():
         # Stall door (lower / hinged style)
         make_box(f"BR_Stall_{st}_Door",
                  (stall_cx, -3.85, 1.20),
-                 (0.90, 0.02, 1.60), (0.62, 0.40, 0.20, 1.0))
+                 (0.96, 0.02, 1.60), (0.62, 0.40, 0.20, 1.0))   # wall to wall (2026-09-22: 3 cm short each side)
         # Toilet bowl (cylinder + box tank)
         make_cyl(f"BR_Stall_{st}_ToiletBowl",
                  (stall_cx, -4.7, 0.20),
@@ -2950,7 +2958,7 @@ def build_southeast_bathroom():
              (0.20, 0.10, 0.30), (0.46, 0.44, 0.42, 1.0))
     # Trash bin (corner)
     make_cyl("BR_TrashBin",
-             (BR_X_W + 0.30, -4.0, 0.30),
+             (BR_X_W + 0.30, -4.25, 0.30),   # clear of the partition (2026-09-22: it straddled the wall)
              0.16, 0.60, (0.30, 0.30, 0.32, 1.0), segments=8, axis='Z')
 
     # ── Supply closet (south of bathroom) ──
@@ -3804,8 +3812,8 @@ def build_ceiling_fans():
             # radial direction (so inner edge of blade meets the
             # housing); blade slightly tilted is faked by sitting
             # 1.5 cm below the housing midline
-            bx = fx + (0.30 + blade_len / 2) * ux
-            by = fy + (0.30 + blade_len / 2) * uy
+            bx = fx + (0.27 + blade_len / 2) * ux   # onto the arm (2026-09-22: 3 cm short)
+            by = fy + (0.27 + blade_len / 2) * uy
             bz = fan_z - 0.02
             # Choose box size based on blade orientation
             if abs(ux) > abs(uy):
@@ -3826,8 +3834,8 @@ def build_ceiling_fans():
                      (edge_size_x, edge_size_y, 0.006),
                      (0.42, 0.36, 0.30, 1.0))
             # Brass blade arm bracket (between housing and blade)
-            arm_x = fx + 0.26 * ux
-            arm_y = fy + 0.26 * uy
+            arm_x = fx + 0.245 * ux   # into the housing's rim (r 0.22)
+            arm_y = fy + 0.245 * uy
             make_box(f"Fan_{label}_BladeArm_{b}",
                      (arm_x, arm_y, fan_z - 0.06),
                      (0.04 if abs(ux) > abs(uy) else 0.06,
@@ -3861,7 +3869,7 @@ def build_counter_accessories():
     make_box("PieCase_Base", (pcx, cy + 0.10, counter_top_z + 0.04),
              (0.80, 0.50, 0.08), COL_FORMICA)
     # Glass dome (a single tall box with light glass color)
-    make_box("PieCase_Glass", (pcx, cy + 0.10, counter_top_z + 0.45),
+    make_box("PieCase_Glass", (pcx, cy + 0.10, counter_top_z + 0.43),   # on its base (1.18)
              (0.78, 0.48, 0.70), COL_PIE_CASE_GLASS)
     # Pies inside (two visible)
     make_box("Pie_Cherry", (pcx - 0.20, cy + 0.10, counter_top_z + 0.16),
@@ -3900,7 +3908,7 @@ def build_counter_accessories():
                  0.10, 0.03, brass, segments=10, axis='X')
     # Curved brass crown carrying the total-tag window
     make_box("Register_Crown", (rcx, cy + 0.10, counter_top_z + 0.46),
-             (0.40, 0.14, 0.10), brass)
+             (0.46, 0.14, 0.10), brass)   # out to the scrolls (2026-09-22: 2 cm short of them)
     make_box("Register_TagWindow", (rcx, cy - 0.02, counter_top_z + 0.50),
              (0.30, 0.03, 0.14), (0.12, 0.12, 0.14, 1.0))
     # Two little price-flag numerals behind the glass
@@ -4117,8 +4125,8 @@ def _rotate_mesh_y(obj, pivot_xz, angle):
 def build_back_door_bell():
     """The bell over the KITCHEN/back door — 'did not jingle. It
     jangled.' Harsher, bigger, brassier than the front one."""
-    make_box("BackBell_Bracket", (5.05, -4.36, 2.10), (0.05, 0.14, 0.05), (0.20, 0.19, 0.20, 1.0))
-    make_cyl("BackBell", (5.05, -4.28, 2.02), 0.07, 0.09, (0.66, 0.50, 0.22, 1.0), segments=8)
+    make_box("BackBell_Bracket", (4.925, -4.36, 2.10), (0.05, 0.14, 0.05), (0.20, 0.19, 0.20, 1.0))   # on the wall face
+    make_cyl("BackBell", (4.87, -4.28, 2.02), 0.07, 0.09, (0.66, 0.50, 0.22, 1.0), segments=8)   # on the wall's galley face (2026-09-22: inside the wall)
     make_cyl("BackBell_Clapper", (5.05, -4.28, 1.95), 0.02, 0.05, (0.30, 0.28, 0.24, 1.0), segments=6)
 
 
@@ -4290,7 +4298,7 @@ def build_entry_props():
              (px, py, pod_top_z + 0.094),
              (0.24, 0.18, 0.005), COL_NAPKIN)
     make_cyl("Reservation_Pen",
-             (px + 0.05, py + 0.12, pod_top_z + 0.105),
+             (px + 0.05, py + 0.06, pod_top_z + 0.105),   # on the open pages (2026-09-22: past them)
              0.005, 0.13, COL_BRASS, segments=4, axis='X')
     # Menus stacked at the back-right corner (no longer the loud
     # bright-red read — brown leather binders).
@@ -4321,7 +4329,7 @@ def build_entry_props():
              (lamp_x, lamp_y, pod_top_z + 0.16),
              0.012, 0.20, COL_BRASS, segments=4, axis='Z')
     make_box("HostessLamp_Shade",
-             (lamp_x, lamp_y, pod_top_z + 0.30),
+             (lamp_x, lamp_y, pod_top_z + 0.285),   # on the post
              (0.16, 0.12, 0.05),
              (0.20, 0.34, 0.18, 1.0))   # green banker's shade, dimmer
 
@@ -4639,7 +4647,7 @@ def build_gauntlet_decor():
         # (above the L-bend opening so it isn't floating in a gap).
         ("Fool",       +4.92, +4.5, 'X', -1, COL_VINYL_RED,    COL_BRASS),
         # Magician — back hallway west wall (near BBS closet)
-        ("Magician",   -2.45, +7.0, 'X', +1, COL_PAYPHONE_DARK, COL_BRASS),
+        ("Magician",   -2.48, +7.0, 'X', +1, COL_PAYPHONE_DARK, COL_BRASS),   # on the wall (-2.50)
         # Hierophant — the formal room's partition wall (y -1.05
         # face), above Table 4, looking south into the room. The
         # centre-floor private-dining box it hung in was removed
@@ -5106,7 +5114,7 @@ def build_riverboat_superstructure():
             # through the hub, the bottom diving under the road.
             make_box(f"Wheel_{sgn_x:+d}_Blade_{b}",
                      (wx, -D_D/2 - 1.5 + ry, wheel_cz + rz),
-                     (0.20, 0.40, 0.10), COL_BOAT_WHEEL)
+                     (0.20, 0.40, 0.16), COL_BOAT_WHEEL)   # deep enough to meet its spoke (2026-09-22)
             # Spoke from hub to blade — diagonal proxy plate
             spoke_len = math.hypot(ry, rz)
             if spoke_len > 0.20:
@@ -5176,8 +5184,8 @@ def build_riverboat_superstructure():
     for i in range(int(deck_d / spacing)):
         py = -deck_d/2 + (i + 0.5) * deck_d / int(deck_d / spacing)
         make_box(f"BD_Fretwork_W_{i}",
-                 (deck_x_W - 0.04, py, fretwork_z),
-                 (0.04, spacing - 0.20, 0.20), COL_BOAT_GINGER)
+                 (deck_x_W - 0.025, py, fretwork_z - 0.08),   # spanning the two upper rails (4.07..4.47; 2026-09-22: it hung between them)
+                 (0.04, spacing - 0.20, 0.40), COL_BOAT_GINGER)
 
 
 def build_exterior_hints():
@@ -5883,7 +5891,7 @@ def build_counter_hero_props():
              0.004, 0.20, COL_PHONE_WIRE, segments=4, axis='X')
     make_cyl("FrPhone_Shunt_2", (ph_x + 0.20, ph_y - 0.04, ph_z + 0.006),
              0.004, 0.14, COL_PHONE_WIRE, segments=4, axis='Y')
-    for k, (ex, ey) in enumerate([(0.28, -0.02), (0.30, 0.05)]):
+    for k, (ex, ey) in enumerate([(0.20, -0.09), (0.20, 0.02)]):   # on the shunt wire's line (2026-09-22: 6 cm past its end)
         make_cyl(f"FrPhone_Electrode_{k}", (ph_x + ex, ph_y + ey, ph_z + 0.004),
                  0.016, 0.004, COL_PHONE_PAD, segments=8, axis='Z')
 
@@ -5926,11 +5934,14 @@ def build_booth_lamps_and_payphone():
              (0.10, 0.10, 0.12, 1.0), segments=6, axis='X')
     make_box("VestPayphone_HandsetGrip", (px - 0.08, py - 0.135, 1.38), (0.045, 0.05, 0.24),
              (0.12, 0.12, 0.14, 1.0))
-    # drooping cord — short segments sagging from the body's bottom
-    for i, (cy_off, cz) in enumerate([(-0.12, 1.14), (-0.08, 1.085), (-0.02, 1.05),
-                                      (0.04, 1.075), (0.07, 1.12)]):
-        make_cyl(f"VestPayphone_Cord_{i}", (px - 0.07, py + cy_off, cz), 0.010, 0.10,
-                 (0.08, 0.08, 0.08, 1.0), segments=4, axis='Y')
+    # drooping cord — one sagging line from the body's bottom edge
+    # (boxes spanning each sag segment so they chain; the diner vendors
+    # its helpers and has no make_tube)
+    pts = [(py - 0.13, 1.14), (py - 0.06, 1.06), (py + 0.02, 1.05), (py + 0.08, 1.13)]
+    for i in range(3):
+        (y0, z0), (y1, z1) = pts[i], pts[i + 1]
+        make_box(f"VestPayphone_Cord_{i}", (px - 0.06, (y0 + y1) / 2.0, (z0 + z1) / 2.0),
+                 (0.012, abs(y1 - y0) + 0.012, abs(z1 - z0) + 0.012), (0.08, 0.08, 0.08, 1.0))
 
 
 
@@ -5954,7 +5965,7 @@ def build_closing_shift_props():
     # ── Coats + hat on the entry coat rack (pole at ~(8.3,-1.5)) ──
     for i, (ang_y, col) in enumerate([(-0.20, (0.28, 0.22, 0.18, 1.0)),
                                       (0.18, (0.20, 0.24, 0.30, 1.0))]):
-        cx, cy = 8.3 + (0.08 if i else -0.08), -1.5 + ang_y
+        cx, cy = 8.3 + (0.08 if i else -0.08), -1.5 + ang_y * 0.7   # against the pole (2026-09-22: 5 cm off it)
         make_cyl(f"CoatRack_Coat_{i}_Shoulder", (cx, cy, 1.62), 0.15, 0.12,
                  col, segments=8)
         make_cyl(f"CoatRack_Coat_{i}_Body", (cx, cy, 1.30), 0.12, 0.55,
@@ -5987,8 +5998,8 @@ def build_dambrosios_dressing_2026_08():
     brass = (0.72, 0.58, 0.28, 1.0)
     linen = (0.94, 0.90, 0.78, 1.0)
     # Four corner 2-tops around the central banquet table.
-    tables = [("T4", -14.15, -1.75), ("T9", -9.85, -1.75),
-              ("T12", -14.15, -5.25), ("T14", -9.85, -5.25)]
+    tables = [("T4", -14.15, -1.75), ("T9", -9.97, -1.75),   # T9/T14 12 cm off the west wall (2026-09-22: their chair backs were inside it)
+              ("T12", -14.15, -5.25), ("T14", -9.97, -5.25)]
     for tag, tx, ty in tables:
         make_cyl(f"Damb_{tag}_Pedestal", (tx, ty, 0.36), 0.05, 0.72, (0.24, 0.16, 0.10, 1.0),
                  segments=8, axis='Z')

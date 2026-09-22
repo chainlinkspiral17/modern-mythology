@@ -122,14 +122,15 @@ def build_lots():
         build_house(tag, hx, -12.5, -1, HOUSE_COLS[5 + i], lit_window=(tag == "Salinas"), porch_on=False, lot_num=None)
     # the car Sammy will drive to school, in the Salinas driveway
     make_box("Salinas_Car_Body", (-10.4, -6.6, 0.62), (1.75, 4.2, 0.62), (0.52, 0.56, 0.60, 1.0))
-    make_box("Salinas_Car_Cabin", (-10.4, -6.6, 1.20), (1.65, 2.3, 0.50), (0.44, 0.48, 0.52, 1.0))
+    make_box("Salinas_Car_Cabin", (-10.4, -6.6, 1.18), (1.65, 2.3, 0.50), (0.44, 0.48, 0.52, 1.0))   # on the body
     for wi, (wx, wy) in enumerate(((-11.275, -8.0), (-9.525, -8.0), (-11.275, -5.2), (-9.525, -5.2))):
         make_cyl(f"Salinas_Car_Wheel_{wi}", (wx, wy, 0.32), 0.32, 0.25, (0.14, 0.14, 0.15, 1.0), axis="X", segments=10)
     # the Geller house at the end of the cul-de-sac: porch light ON, Don at the window
     build_house("Geller", 31.5, 0.0, +1, HOUSE_COLS[3], lit_window=True, porch_on=True, garage=False)
-    make_box("Don_Silhouette", (35.1, -4.6, 1.45), (0.40, 0.30, 0.90), (0.10, 0.10, 0.12, 1.0))
-    make_cyl("Don_Silhouette_Head", (35.1, -4.6, 2.05), 0.11, 0.18, (0.10, 0.10, 0.12, 1.0), segments=8)
-    make_cyl("Don_Water_Glass", (34.6, -4.75, 1.32), 0.035, 0.09, (0.80, 0.86, 0.90, 0.7), segments=8)
+    # standing at the window (2026-09-22: his feet were a metre up)
+    make_box("Don_Silhouette", (35.1, -4.6, 0.45), (0.40, 0.30, 0.90), (0.10, 0.10, 0.12, 1.0))
+    make_cyl("Don_Silhouette_Head", (35.1, -4.6, 0.99), 0.11, 0.18, (0.10, 0.10, 0.12, 1.0), segments=8)
+    make_cyl("Don_Water_Glass", (34.865, -4.6, 0.85), 0.035, 0.09, (0.80, 0.86, 0.90, 0.7), segments=8)   # in his hand
 
 
 def build_sprinklers():
@@ -224,21 +225,23 @@ def build_henderson_2026_09():
     make_car("Corolla", co[0], co[1], 4.3, (0.72, 0.70, 0.64, 1.0))
     pv = curb_park(0.0, 3.5, "X", -1, 5.0)
     make_car("Patrol_Vehicle", pv[0], pv[1], 4.9, (0.92, 0.92, 0.90, 1.0), light_bar=True)
-    make_box("Patrol_Door_Stripe", (-1.0, -2.705, 0.62), (2.4, 0.01, 0.30), (0.16, 0.22, 0.40, 1.0))
+    make_box("Patrol_Door_Stripe", (5.05, -1.635, 0.62), (2.4, 0.01, 0.30), (0.16, 0.22, 0.40, 1.0))   # on the car's street-side flank (2026-09-22: 4 m west of the car)
     # the light post at the end of the Henderson driveway, on the sidewalk edge
-    make_cyl("Henderson_Light_Post", (3.4, 5.3, 1.64), 0.06, 3.14, (0.30, 0.30, 0.32, 1.0), segments=8)
-    make_box("Henderson_Light_Post_Head", (3.4, 5.3, 3.31), (0.30, 0.30, 0.20), (0.96, 0.92, 0.78, 1.0))
+    make_cyl("Henderson_Light_Post", (3.4, 5.3, 1.57), 0.06, 3.14, (0.30, 0.30, 0.32, 1.0), segments=8)   # from the ground
+    make_box("Henderson_Light_Post_Head", (3.4, 5.3, 3.24), (0.30, 0.30, 0.20), (0.96, 0.92, 0.78, 1.0))
     # Maya's bike, chained to the post, wet
     for wi, wy in enumerate((5.0, 6.05)):
         make_cyl(f"Maya_Bike_Wheel_{wi}", (3.8, wy, 0.33), 0.33, 0.04, (0.14, 0.14, 0.15, 1.0), axis="X", segments=12)
     make_box("Maya_Bike_Frame_Top", (3.8, 5.52, 0.86), (0.03, 0.62, 0.03), (0.62, 0.22, 0.24, 1.0))
     make_box("Maya_Bike_Frame_Down", (3.8, 5.52, 0.62), (0.03, 0.46, 0.03), (0.62, 0.22, 0.24, 1.0))
+    make_box("Maya_Bike_SeatTube", (3.8, 5.35, 0.765), (0.03, 0.03, 0.31), (0.62, 0.22, 0.24, 1.0))   # down bar to seat (2026-09-22: the seat, top bar and bars hung loose)
+    make_box("Maya_Bike_HeadTube", (3.8, 5.88, 0.80), (0.03, 0.03, 0.36), (0.62, 0.22, 0.24, 1.0))
     make_box("Maya_Bike_Seat", (3.8, 5.25, 0.94), (0.10, 0.20, 0.05), (0.14, 0.14, 0.15, 1.0))
     make_box("Maya_Bike_Bars", (3.8, 5.90, 0.98), (0.44, 0.03, 0.03), (0.30, 0.30, 0.32, 1.0))
     make_box("Bike_Chain", (3.6, 5.30, 0.75), (0.34, 0.02, 0.02), (0.36, 0.36, 0.38, 1.0))
     # the garage door's single open vent at the top, the Telecaster light in it
-    make_box("Henderson_Garage_Vent", (1.1, 8.40, 2.30), (0.60, 0.01, 0.10), (0.98, 0.86, 0.58, 1.0))
-    make_box("Henderson_Vent_Slats", (1.1, 8.392, 2.30), (0.56, 0.002, 0.08), (0.72, 0.62, 0.42, 1.0))
+    make_box("Henderson_Garage_Vent", (1.1, 8.435, 2.30), (0.60, 0.01, 0.10), (0.98, 0.86, 0.58, 1.0))   # on the garage header (2026-09-22: 4 cm off it)
+    make_box("Henderson_Vent_Slats", (1.1, 8.427, 2.30), (0.56, 0.002, 0.08), (0.72, 0.62, 0.42, 1.0))
     # rain has mostly stopped: a puddle at the foot of the drive, the wet sheen on the truck's hood
     make_box("Driveway_Puddle", (1.5, 4.6, 0.0705), (1.6, 0.9, 0.001), (0.34, 0.36, 0.40, 1.0))
     make_box("Ben_Truck_Hood_Sheen", (-2.6, 2.4, 0.9805), (1.2, 1.2, 0.001), (0.30, 0.42, 0.34, 1.0))

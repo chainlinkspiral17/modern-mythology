@@ -77,7 +77,8 @@ def build_aisles():
                          (6.0, 0.012, 0.035), (0.94, 0.94, 0.92, 1.0))
     # Two more runs so "Aisle Seven … Aisle Nine" reads as a store,
     # not a pair
-    make_snack_aisle("Aisle_2", (-0.6, ROOM_D * 0.34, 0.0), length=4.4, shelf_count=5)
+    # (2026-09-22) Aisle_2 was a 4.4 m gondola at y 2.72 — bodily
+    # INSIDE Aisle_0 at y 2.80. Removed; three runs read as a store.
     make_snack_aisle("Aisle_3", (0.0, ROOM_D * 0.80, 0.0), length=6.0, shelf_count=5)
 
 def build_endcaps():
@@ -179,7 +180,7 @@ def build_dry_goods():
 
 def build_bakery():
     # Small bakery / coffee kiosk along the east wall.
-    bx, by = ROOM_W/2.0 - 0.7, 3.4
+    bx, by = ROOM_W/2.0 - 0.7, 3.75   # clear of the checkout's N end (2026-09-22)
     top_z = make_counter("Bakery", (bx, by, 0.0), length=1.60, depth=0.70, height=0.92,
                          palette={"formica": (0.74, 0.62, 0.42, 1.0),
                                   "top": (0.32, 0.22, 0.14, 1.0), "kick": (0.32, 0.22, 0.14, 1.0)})
@@ -234,21 +235,26 @@ def build_more_decor():
     make_wall_clock("Clock", (0.0, ROOM_D-0.11, CEIL-0.55), frozen_hour=5, frozen_min=48)
     make_calendar("Calendar", (ROOM_W/2.0-0.05, 1.6, 1.70))
     make_faded_poster("Poster_W", (-ROOM_W/2.0+0.05, 7.2, 1.70))
-    make_floor_plant("Plant", (ROOM_W/2.0-0.6, 0.7, 0.0))
+    make_floor_plant("Plant", (ROOM_W/2.0-0.6, 0.40, 0.0))
     # A second shopping cart near the entrance
-    make_shopping_cart("Cart2", 0.9, 1.0)
+    make_shopping_cart("Cart2", 0.0, 1.35)   # just inside the entrance (2026-09-22: the deli took its spot)
 
 def build_dressing():
     """Grocery flavour: a shopping cart, a chest freezer along the east
     wall, a hanging aisle-number sign, a stack of hand baskets by the
     entrance, and a wet-floor cone."""
     # Shopping cart — open wire basket on a splayed frame with wheels
-    make_shopping_cart("Cart", -1.6, 2.4)
+    make_shopping_cart("Cart", -1.6, 3.85)   # in the corridor (2026-09-22: it straddled Aisle_0's face)
     # Chest freezer, east wall (body + frosty glass lid)
-    fx = ROOM_W/2.0 - 0.6
-    make_chamfer_box("Freezer_Body", (fx, ROOM_D-1.85, 0.45), (0.90, 1.80, 0.90), (0.82, 0.86, 0.90, 1.0))
-    make_box("Freezer_Lid", (fx, ROOM_D-1.85, 0.94), (0.86, 1.72, 0.04), (0.80, 0.90, 0.96, 0.5))
-    make_box("Freezer_Kick", (fx, ROOM_D-1.85, 0.06), (0.90, 1.80, 0.12), P.METAL_STEEL)
+    # (2026-09-22 re-plan) the E wall could not hold checkout + bakery
+    # + deli + meat case + freezer — the deli sat inside the bakery
+    # and the meat case inside the checkout lane. Freezer to the S
+    # wall's W section under the window; deli to the W wall; meat
+    # case to the E wall's north end where the docstring always said.
+    fx, fy = -2.9, 0.57
+    make_chamfer_box("Freezer_Body", (fx, fy, 0.45), (1.80, 0.90, 0.90), (0.82, 0.86, 0.90, 1.0))
+    make_box("Freezer_Lid", (fx, fy, 0.92), (1.72, 0.86, 0.04), (0.80, 0.90, 0.96, 0.5))   # lid ON the body (was 2 cm over it)
+    make_box("Freezer_Kick", (fx, fy, 0.06), (1.80, 0.90, 0.12), P.METAL_STEEL)
     # Hanging aisle-number sign over the aisle mouth
     make_cyl("AisleSign_Wire_L", (-0.40, ROOM_D/2.0, CEIL-0.255), 0.006, 0.51, P.METAL_STEEL)
     make_cyl("AisleSign_Wire_R", (0.40, ROOM_D/2.0, CEIL-0.255), 0.006, 0.51, P.METAL_STEEL)
@@ -257,9 +263,9 @@ def build_dressing():
     for bi in range(4):
         make_box(f"Basket_{bi}", (-ROOM_W/2.0+0.7, 0.6, 0.05+bi*0.10), (0.34, 0.24, 0.10), (0.62, 0.30, 0.24, 1.0))   # from the floor (2026-09-22)
     # Wet-floor cone
-    make_chamfer_box("Cone_Base", (1.4, 1.2, 0.02), (0.30, 0.30, 0.04), (0.96, 0.72, 0.20, 1.0), chamfer=0.01)
-    make_lathe("Cone_Body", (1.4, 1.2, 0.04), [(0.13, 0.0), (0.12, 0.05), (0.03, 0.62), (0.0, 0.64)], (0.96, 0.72, 0.20, 1.0), segments=12)   # draft 4: a cone
-    make_box("Cone_Sign", (1.4, 1.2, 0.36), (0.16, 0.002, 0.10), (0.16, 0.16, 0.18, 1.0))
+    make_chamfer_box("Cone_Base", (1.4, 1.30, 0.02), (0.30, 0.30, 0.04), (0.96, 0.72, 0.20, 1.0), chamfer=0.01)
+    make_lathe("Cone_Body", (1.4, 1.30, 0.04), [(0.13, 0.0), (0.12, 0.05), (0.03, 0.62), (0.0, 0.64)], (0.96, 0.72, 0.20, 1.0), segments=12)   # draft 4: a cone
+    make_box("Cone_Sign", (1.4, 1.30, 0.36), (0.16, 0.002, 0.10), (0.16, 0.16, 0.18, 1.0))
 
 def build_departments():
     """2026-08-03 hero-prop pass: meat counter, deli case, the
@@ -269,15 +275,17 @@ def build_departments():
     steel = (0.60, 0.62, 0.63, 1.0)
     glass = (0.55, 0.62, 0.66, 0.4)
     # Meat counter, E wall north end
-    make_chamfer_box("Meat_Case_Body", (3.05, 1.15, 0.55), (1.10, 2.40, 1.10), (0.86, 0.86, 0.84, 1.0))
-    make_box("Meat_Case_Glass", (2.52, 1.15, 1.25), (0.04, 2.30, 0.55), glass)
-    for mi in range(4):   # (2026-09-22: they sat at y 5.75..7.4, on air — the case is at y 1.15)
-        make_box(f"Meat_Tray_{mi}", (3.05, 0.35 + mi * 0.55, 1.13), (0.60, 0.42, 0.06),
+    mcx, mcy = 4.35, 5.85   # E wall, between the endcap and the cooler run
+    make_chamfer_box("Meat_Case_Body", (mcx, mcy, 0.55), (1.10, 2.40, 1.10), (0.86, 0.86, 0.84, 1.0))
+    make_box("Meat_Case_Glass", (mcx - 0.53, mcy, 1.25), (0.04, 2.30, 0.55), glass)
+    for mi in range(4):
+        make_box(f"Meat_Tray_{mi}", (mcx, mcy - 0.80 + mi * 0.55, 1.13), (0.60, 0.42, 0.06),
                  [(0.72, 0.32, 0.30, 1.0), (0.80, 0.46, 0.42, 1.0)][mi % 2])
     # Deli case + wipe-down worktop
-    make_chamfer_box("Deli_Case_Body", (4.15, 4.0, 0.55), (1.00, 1.60, 1.10), (0.86, 0.86, 0.84, 1.0))
-    make_box("Deli_Case_Glass", (3.68, 4.0, 1.28), (0.04, 1.50, 0.50), glass)
-    make_box("Deli_Worktop", (4.62, 4.0, 0.92), (0.30, 1.50, 0.05), steel)
+    dcx, dcy = 1.70, 0.60   # S wall E section, between the entrance and the queue; glass faces north
+    make_chamfer_box("Deli_Case_Body", (dcx, dcy, 0.55), (1.60, 1.00, 1.10), (0.86, 0.86, 0.84, 1.0))
+    make_box("Deli_Case_Glass", (dcx, dcy + 0.47, 1.28), (1.50, 0.04, 0.50), glass)
+    make_box("Deli_Worktop", (dcx, dcy - 0.33, 0.92), (1.50, 0.30, 0.05), steel)
     # Pallet + hand truck + the forgotten pallet jack
     make_box("Pallet", (-1.0, 1.55, 0.08), (1.00, 1.20, 0.16), (0.62, 0.48, 0.30, 1.0))
     make_chamfer_box("Pallet_Load", (-1.0, 1.55, 0.46), (0.90, 1.05, 0.60), (0.68, 0.56, 0.38, 1.0))
@@ -289,9 +297,9 @@ def build_departments():
     make_box("PalletJack_Tiller", (2.3, 2.20, 0.55), (0.08, 0.10, 0.90), (0.30, 0.30, 0.32, 1.0))
     # Cooler swing door propped open with the milk crate (sticking
     # lock since July)
-    make_box("Cooler_Door_Leaf", (-3.72, 7.35, 1.00), (0.30, 0.05, 1.90), (0.82, 0.84, 0.86, 1.0))
-    make_tube("Cooler_Door_Handle", [(-3.60, 7.30, 0.85), (-3.60, 7.26, 0.85), (-3.60, 7.26, 1.15), (-3.60, 7.30, 1.15)], 0.012, steel, segments=6)
-    make_box("Milk_Crate_Prop", (-3.55, 7.15, 0.14), (0.32, 0.32, 0.28), (0.30, 0.44, 0.62, 1.0))
+    make_box("Cooler_Door_Leaf", (-3.72, 7.375, 1.00), (0.30, 0.05, 1.90), (0.82, 0.84, 0.86, 1.0))   # against the frame (2026-09-22: 2.5 cm off it)
+    make_tube("Cooler_Door_Handle", [(-3.60, 7.34, 0.85), (-3.60, 7.30, 0.85), (-3.60, 7.30, 1.15), (-3.60, 7.34, 1.15)], 0.012, steel, segments=6)   # standoffs meet the leaf
+    make_box("Milk_Crate_Prop", (-3.55, 7.19, 0.14), (0.32, 0.32, 0.28), (0.30, 0.44, 0.62, 1.0))   # against the leaf it props
     # Frozen run: upright glass doors, W wall north end
     make_chamfer_box("Frozen_Bank", (-4.62, 6.8, 1.10), (0.55, 1.70, 2.20), (0.80, 0.84, 0.88, 1.0))
     for fi in range(3):
@@ -301,8 +309,10 @@ def build_departments():
     make_box("Card_Bale_Lid", (-4.15, 4.35, 1.42), (0.86, 0.76, 0.05), steel)
     make_box("Card_Bale_Stack", (-4.15, 4.30, 0.90), (0.70, 0.60, 0.30), (0.66, 0.54, 0.36, 1.0))
     # Register cubby (Diego's backpack)
-    make_chamfer_box("Register_Cubby", (3.15, 1.6, 0.45), (0.36, 1.20, 0.90), (0.46, 0.42, 0.36, 1.0))
-    make_chamfer_box("Cubby_Backpack", (3.15, 1.4, 0.30), (0.28, 0.30, 0.42), (0.30, 0.36, 0.30, 1.0))
+    # cashier side, against the counter's back (2026-09-22: it sat 18 cm
+    # inside the counter front AND inside the meat case)
+    make_chamfer_box("Register_Cubby", (4.12, 1.6, 0.45), (0.36, 1.20, 0.90), (0.46, 0.42, 0.36, 1.0))
+    make_chamfer_box("Cubby_Backpack", (4.12, 1.4, 0.30), (0.28, 0.30, 0.42), (0.30, 0.36, 0.30, 1.0))
     # The dented can of cream of mushroom, leaking under row 4F
     make_cyl("Dented_Can", (1.2, 2.22, 0.055), 0.05, 0.11, (0.84, 0.80, 0.70, 1.0), axis='X', segments=10)
     make_cyl("Can_Puddle", (1.28, 2.20, 0.006), 0.09, 0.005, (0.72, 0.68, 0.56, 1.0), segments=10)
@@ -330,9 +340,9 @@ def build_hero_props_2026_09():
     """
     steel = (0.62, 0.63, 0.64, 1.0)
     # ── THE COOLER THERMOMETER · inner face of the door leaf ──
-    make_box("Cooler_Thermometer", (-3.70, 7.319, 1.45), (0.050, 0.012, 0.140),
+    make_box("Cooler_Thermometer", (-3.70, 7.344, 1.45), (0.050, 0.012, 0.140),
              (0.90, 0.89, 0.86, 1.0))
-    make_box("Thermometer_Needle", (-3.70, 7.311, 1.43), (0.008, 0.004, 0.030),
+    make_box("Thermometer_Needle", (-3.70, 7.336, 1.43), (0.008, 0.004, 0.030),
              (0.80, 0.22, 0.18, 1.0))
     # ── THE FIVE · on the checkout belt, between ribs ──
     make_box("Five_Dollar_Bill", (3.50, 1.42, 0.9358), (0.156, 0.066, 0.0015),
@@ -386,18 +396,24 @@ def build_draft4_2026_09():
     # each cord as straight segments: the recorder boxes a tube by its
     # whole path, and an L-run's box swallows the counter
     cord = (0.16, 0.16, 0.18, 1.0)
-    make_tube("Cord_1_A", [(3.75, 2.45, 0.915), (4.02, 2.45, 0.915)], 0.006, cord, segments=4)
-    make_tube("Cord_1_B", [(4.03, 2.45, 0.915), (4.03, 2.45, 0.03)], 0.006, cord, segments=4)
+    make_tube("Cord_1_A", [(3.88, 2.45, 0.97), (4.02, 2.45, 0.97)], 0.006, cord, segments=4)   # from the register's back, ON the top (2026-09-22: inside the slab)
+    make_tube("Cord_1_B", [(4.03, 2.45, 0.97), (4.03, 2.45, 0.03)], 0.006, cord, segments=4)
     make_tube("Cord_1_C", [(4.03, 2.45, 0.03), (4.05, 2.37, 0.03)], 0.006, cord, segments=4)
-    make_tube("Cord_2_A", [(3.20, 1.10, 0.915), (4.02, 1.10, 0.915)], 0.006, cord, segments=4)
-    make_tube("Cord_2_B", [(4.03, 1.10, 0.915), (4.03, 1.10, 0.03)], 0.006, cord, segments=4)
-    make_tube("Cord_2_C", [(4.03, 1.10, 0.03), (4.05, 2.23, 0.03)], 0.006, cord, segments=4)
+    # card-terminal cord: south around the belt, over the back edge,
+    # along the floor around the cubby to the floor box (2026-09-22:
+    # it ran inside the counter top and through the cubby)
+    make_tube("Cord_2_A0", [(3.11, 0.90, 0.966), (3.11, 0.80, 0.966)], 0.006, cord, segments=4)
+    make_tube("Cord_2_A", [(3.11, 0.80, 0.966), (4.01, 0.80, 0.966)], 0.006, cord, segments=4)
+    make_tube("Cord_2_B", [(4.01, 0.80, 0.966), (4.01, 0.80, 0.03)], 0.006, cord, segments=4)
+    make_tube("Cord_2_C", [(4.01, 0.80, 0.03), (4.36, 0.80, 0.03)], 0.006, cord, segments=4)
+    make_tube("Cord_2_D", [(4.36, 0.80, 0.03), (4.36, 2.30, 0.03)], 0.006, cord, segments=4)
+    make_tube("Cord_2_E", [(4.36, 2.30, 0.03), (4.17, 2.30, 0.03)], 0.006, cord, segments=4)
     make_box("Exit_Sign", (0.0, 0.14, CEIL - 0.42), (0.34, 0.06, 0.18), (0.94, 0.94, 0.90, 1.0))
     make_box("Exit_Sign_Letters", (0.0, 0.105, CEIL - 0.42), (0.24, 0.004, 0.10), (0.90, 0.16, 0.14, 1.0))
     make_tube("Exit_Sign_Conduit", [(0.0, 0.14, CEIL - 0.33), (0.0, 0.14, CEIL - 0.02)], 0.008, (0.62, 0.62, 0.60, 1.0), segments=5)
-    make_box("Compressor_Grille", (-2.5, ROOM_D - 0.03, 0.18), (1.60, 0.03, 0.26), (0.30, 0.30, 0.32, 1.0))
+    make_box("Compressor_Grille", (-2.5, ROOM_D - 0.115, 0.18), (1.60, 0.03, 0.26), (0.30, 0.30, 0.32, 1.0))   # on the wall face (2026-09-22: inside the wall)
     for si in range(6):
-        make_box(f"Compressor_Grille_Slat_{si}", (-2.5, ROOM_D - 0.045, 0.08 + si * 0.04), (1.50, 0.004, 0.012), (0.62, 0.62, 0.60, 1.0))
+        make_box(f"Compressor_Grille_Slat_{si}", (-2.5, ROOM_D - 0.13, 0.08 + si * 0.04), (1.50, 0.004, 0.012), (0.62, 0.62, 0.60, 1.0))
     make_lathe("Floor_Drain", (-3.2, 6.9, 0.0), [(0.0, 0.0), (0.08, 0.0), (0.09, 0.006), (0.0, 0.008)], (0.36, 0.36, 0.38, 1.0), segments=12)
     # ── D5 · the lot ──
     make_box("Lot_Asphalt", (0.0, -7.0, -0.06), (24.0, 13.0, 0.10), (0.26, 0.26, 0.27, 1.0))

@@ -123,17 +123,20 @@ def make_car(prefix, cx, cy, length, col, pickup=False, hatch=False, light_bar=F
     else:
         make_box(f"{prefix}_Rear_Glass", P(nose - 3.44, 0.0, z0 + 1.36), S(0.03, 2 * hw - 0.44, 0.44), glass)
     for sgn, nm in ((1, "L"), (-1, "R")):
-        make_box(f"{prefix}_Side_Glass_{nm}", P((cab_u0 + cab_u1) / 2.0, sgn * (hw - 0.005), z0 + 1.25),
+        # the body's side is at hw - 0.02: everything on the flank starts
+        # there (2026-09-22: handles, pillars and mirrors sat 2 cm off it)
+        side = hw - 0.02
+        make_box(f"{prefix}_Side_Glass_{nm}", P((cab_u0 + cab_u1) / 2.0, sgn * (side - 0.005), z0 + 1.25),
                  S(cab_u1 - cab_u0 - 0.30, 0.02, 0.36), glass)
-        make_box(f"{prefix}_Pillar_B_{nm}", P((cab_u0 + cab_u1) / 2.0, sgn * (hw + 0.006), z0 + 1.25), S(0.06, 0.012, 0.36), trim)
+        make_box(f"{prefix}_Pillar_B_{nm}", P((cab_u0 + cab_u1) / 2.0, sgn * (side + 0.006), z0 + 1.25), S(0.06, 0.012, 0.36), trim)
         # door seams + handles + rocker
         for si, du in enumerate((0.0, -1.05)):
-            make_box(f"{prefix}_Door_Seam_{nm}_{si}", P(cab_u1 - 0.25 + du, sgn * (hw + 0.003), z0 + 0.72), S(0.012, 0.006, 0.56), DARK)
-            make_box(f"{prefix}_Door_Handle_{nm}_{si}", P(cab_u1 - 0.45 + du, sgn * (hw + 0.012), z0 + 0.92), S(0.14, 0.02, 0.03), CHROME)
-        make_box(f"{prefix}_Rocker_{nm}", P(0.0, sgn * (hw - 0.02 + 0.005), z0 + 0.45), S(L - 1.2, 0.02, 0.08), DARK)
-        # mirror on its arm
-        make_box(f"{prefix}_Mirror_Arm_{nm}", P(ws_u - 0.15, sgn * (hw + 0.08), z0 + 1.08), S(0.05, 0.16, 0.03), trim)
-        make_chamfer_box(f"{prefix}_Mirror_{nm}", P(ws_u - 0.15, sgn * (hw + 0.20), z0 + 1.10), S(0.10, 0.10, 0.14), col, chamfer=0.02)
+            make_box(f"{prefix}_Door_Seam_{nm}_{si}", P(cab_u1 - 0.25 + du, sgn * (side + 0.003), z0 + 0.72), S(0.012, 0.006, 0.56), DARK)
+            make_box(f"{prefix}_Door_Handle_{nm}_{si}", P(cab_u1 - 0.45 + du, sgn * (side + 0.01), z0 + 0.92), S(0.14, 0.02, 0.03), CHROME)
+        make_box(f"{prefix}_Rocker_{nm}", P(0.0, sgn * (side + 0.005), z0 + 0.45), S(L - 1.2, 0.02, 0.08), DARK)
+        # mirror on its arm, the arm from the flank
+        make_box(f"{prefix}_Mirror_Arm_{nm}", P(ws_u - 0.15, sgn * (side + 0.08), z0 + 1.08), S(0.05, 0.16, 0.03), trim)
+        make_chamfer_box(f"{prefix}_Mirror_{nm}", P(ws_u - 0.15, sgn * (side + 0.20), z0 + 1.10), S(0.10, 0.10, 0.14), col, chamfer=0.02)
         # lights
         make_box(f"{prefix}_Headlight_{nm}", P(nose + 0.006, sgn * 0.55, z0 + 0.72), S(0.012, 0.36, 0.16), (0.90, 0.90, 0.82, 1.0))
         # on the body's rear face (the profiles end at tail + 0.10; the
@@ -161,9 +164,10 @@ def make_car(prefix, cx, cy, length, col, pickup=False, hatch=False, light_bar=F
         make_box(f"{prefix}_Tailgate", P(bed_u0 + 0.03, 0.0, z0 + 1.22), S(0.06, 2 * hw - 0.20, 0.44), col)
         make_box(f"{prefix}_Bed_Step", P(tail - 0.04, 0.0, z0 + 0.36), S(0.06, 0.6, 0.06), CHROME)
     if light_bar:
-        make_chamfer_box(f"{prefix}_Light_Bar", P(ws_u - 0.55, 0.0, z0 + 1.55), S(0.28, 1.10, 0.10), DARK, chamfer=0.02)
-        make_box(f"{prefix}_Light_Bar_Red", P(ws_u - 0.55, 0.32, z0 + 1.55), S(0.30, 0.30, 0.11), (0.72, 0.12, 0.10, 1.0))
-        make_box(f"{prefix}_Light_Bar_Blue", P(ws_u - 0.55, -0.32, z0 + 1.55), S(0.30, 0.30, 0.11), (0.14, 0.24, 0.74, 1.0))
+        make_chamfer_box(f"{prefix}_Light_Bar", P(ws_u - 0.55, 0.0, z0 + 1.51), S(0.28, 1.10, 0.10), DARK, chamfer=0.02)   # on the roof (2026-09-22: 4 cm over it)
+        make_box(f"{prefix}_Light_Bar_Red", P(ws_u - 0.55, 0.32, z0 + 1.51), S(0.30, 0.30, 0.11), (0.72, 0.12, 0.10, 1.0))
+        make_box(f"{prefix}_Light_Bar_Blue", P(ws_u - 0.55, -0.32, z0 + 1.51), S(0.30, 0.30, 0.11), (0.14, 0.24, 0.74, 1.0))
     # ── wheels: outside the body's width
-    for wi, (wu, wv) in enumerate(((-L * 0.32, -(hw + 0.14)), (L * 0.32, -(hw + 0.14)), (-L * 0.32, hw + 0.14), (L * 0.32, hw + 0.14))):
+    # (2026-09-22: at hw + 0.14 the tires cleared the body by 4 cm and every kit car floated)
+    for wi, (wu, wv) in enumerate(((-L * 0.32, -(hw + 0.08)), (L * 0.32, -(hw + 0.08)), (-L * 0.32, hw + 0.08), (L * 0.32, hw + 0.08))):
         _wheel(f"{prefix}_Wheel_{wi}", P, cx, cy, wu, wv, z0, along)

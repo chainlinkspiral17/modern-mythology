@@ -349,7 +349,7 @@ def build_intersection_and_streets():
                 make_plane(f"Crosswalk_EW_{leg_sign}_{i}",
                            x - 0.30, base_y - 0.05,
                            x + 0.30, base_y + 0.05,
-                           GROUND_Z + 0.025, COL_PAINT_WHITE)
+                           GROUND_Z + 0.012, COL_PAINT_WHITE)   # on the asphalt (2026-09-22)
         else:
             base_x = leg_sign * (STREET_WIDTH_NS / 2 + 0.5)
             for i in range(6):
@@ -357,7 +357,7 @@ def build_intersection_and_streets():
                 make_plane(f"Crosswalk_NS_{leg_sign}_{i}",
                            base_x - 0.05, y - 0.30,
                            base_x + 0.05, y + 0.30,
-                           GROUND_Z + 0.025, COL_PAINT_WHITE)
+                           GROUND_Z + 0.012, COL_PAINT_WHITE)
     crosswalk_strips('EW', +1)   # north side
     crosswalk_strips('EW', -1)   # south side
     crosswalk_strips('NS', +1)   # east side
@@ -670,7 +670,7 @@ def build_gas_and_go():
     # Brand sign on kiosk roof (NexCorp blue panel)
     make_box("Gas_Kiosk_SignBack",
              (GAS_KIOSK_CX, GAS_KIOSK_CY - GAS_KIOSK_L / 2 - 0.10,
-              GROUND_Z + GAS_KIOSK_H + 0.85),
+              GROUND_Z + GAS_KIOSK_H + 0.775),   # on the roof slab (2026-09-22: 7 cm over it)
              (GAS_KIOSK_W * 0.70, 0.10, 0.95),
              COL_NEX_BRAND_BLUE)
 
@@ -717,7 +717,7 @@ def build_cosmic_comics():
                  COL_COSMIC_AWNING)
     # Storefront glass (under the awning)
     make_box("Cosmic_Glass",
-             (COSMIC_CX + 0.6, COSMIC_CY + COSMIC_L / 2 + 0.06,
+             (COSMIC_CX + 0.6, COSMIC_CY + COSMIC_L / 2 + 0.04,   # against the storefront
               GROUND_Z + 1.3),
              (awning_w - 2.5, 0.08, 2.0),
              COL_COSMIC_GLASS)
@@ -836,8 +836,8 @@ def build_site_furniture():
         cy = sy_dir * 8.0
         # Hanging pole stub
         make_cyl(f"Stoplight_Stub_{i}",
-                 (cx, cy, GROUND_Z + 6.8),
-                 0.06, 0.6, COL_STOPLIGHT_BOX, segments=6)
+                 (cx, cy, GROUND_Z + 6.77),   # reaches the top lens AND the arm (2026-09-22: 6 cm short of the head)
+                 0.06, 0.68, COL_STOPLIGHT_BOX, segments=6)
         # Stoplight box (3-light vertical)
         for j, col in enumerate([COL_STOPLIGHT_RED,
                                   COL_STOPLIGHT_AMBER,
@@ -851,6 +851,18 @@ def build_site_furniture():
                  (cx - 0.20, cy, GROUND_Z + 5.85),
                  (0.10, 0.34, 0.95),
                  COL_STOPLIGHT_BOX)
+        # 2026-09-22: the heads hung from nothing (nearest shell
+        # 3.4 m). A corner pole on the sidewalk and an L-arm out
+        # over the lane to the hanger stub.
+        sgx = 1 if sx_dir > 0 else -1
+        sgy = 1 if sy_dir > 0 else -1
+        px, py = sgx * 7.6, sgy * 8.6
+        make_cyl(f"Stoplight_{i}_Pole", (px, py, GROUND_Z + 3.55),
+                 0.12, 7.10, COL_STOPLIGHT_BOX, segments=8)
+        make_box(f"Stoplight_{i}_ArmA", (px, (py + cy) / 2.0, GROUND_Z + 7.16),
+                 (0.12, abs(py - cy) + 0.12, 0.12), COL_STOPLIGHT_BOX)
+        make_box(f"Stoplight_{i}_ArmB", ((px + cx) / 2.0, cy, GROUND_Z + 7.16),
+                 (abs(px - cx) + 0.12, 0.12, 0.12), COL_STOPLIGHT_BOX)
 
     # 6 utility poles — wood creosote with crossbars + wires
     util_positions = [
@@ -959,6 +971,16 @@ def _make_car(name, cx, cy, body_color, facing='+Y'):
               GROUND_Z + body_h + 0.15 + cabin_h * 0.65),
              (cabin_l - 0.30, cabin_w - 0.20, cabin_h * 0.55),
              COL_CAR_GLASS)
+    # Wheels (2026-09-22: the body hung 15 cm over the lot with
+    # nothing under it) — four discs under the corners.
+    tire = (0.12, 0.12, 0.12, 1.0)
+    if facing in ('+X', '-X'):
+        corners = [(u * 0.72, v * 1.35, 'X') for u in (-1, 1) for v in (-1, 1)]
+    else:
+        corners = [(u * 1.35, v * 0.72, 'Y') for u in (-1, 1) for v in (-1, 1)]
+    for wi, (du, dv, ax) in enumerate(corners):
+        make_cyl(f"{name}_Wheel_{wi}", (cx + du, cy + dv, GROUND_Z + 0.32),
+                 0.32, 0.22, tire, axis=ax, segments=10)
 
 
 def build_parked_cars():

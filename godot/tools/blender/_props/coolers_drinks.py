@@ -27,6 +27,8 @@ def make_cooler_door(prefix, anchor, *,
     make_box(f"{prefix}_Interior",
              (cx, wall_y + 0.30, cz),
              (1.30, 0.40, 2.20), interior)
+    if cz - 1.06 > 0.03:   # a plinth to the floor under the body AND the door frame (2026-09-22: kwik's four coolers hung 20 cm up)
+        make_box(f"{prefix}_Plinth", (cx, wall_y + 0.25, (cz - 1.06) / 2.0), (1.30, 0.50, cz - 1.06), (0.20, 0.20, 0.22, 1.0))
     # Back mirror (recursion canon)
     make_box(f"{prefix}_BackMirror",
              (cx, wall_y + 0.485, cz),

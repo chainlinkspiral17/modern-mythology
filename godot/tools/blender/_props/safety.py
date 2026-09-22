@@ -65,7 +65,8 @@ def make_ceiling_speaker(prefix, anchor, *, palette=None):
     palette = palette or {}
     body = palette.get("body", P.PAPER)
     cx, cy, ceil_z = anchor
-    make_cyl(f"{prefix}_Dome", (cx, cy, ceil_z - 0.08),
+    # dome top ON the ceiling (2026-09-22: it hung 4 cm under it)
+    make_cyl(f"{prefix}_Dome", (cx, cy, ceil_z - 0.04),
              0.16, 0.08, body)
 
 

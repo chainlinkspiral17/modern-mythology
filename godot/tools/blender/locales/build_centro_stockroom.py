@@ -94,7 +94,7 @@ def build_dock():
     apron outside — 'The dock is empty. The truck has not come yet.'"""
     dock_w = 3.0
     # Rolled coil above the opening
-    make_cyl("Dock_Coil", (0.0, ROOM_D - 0.10, CEIL - 1.25), 0.22, dock_w,   # ends inside the tracks
+    make_cyl("Dock_Coil", (0.0, ROOM_D - 0.10, CEIL - 1.32), 0.22, dock_w,   # ends inside the tracks; under the header (2026-09-22: 7 cm into it)
              COL_DOOR, segments=14, axis='X')
     # Door tracks
     for sgn in (-1, 1):
@@ -150,12 +150,12 @@ def _rack_row(prefix, x, y0, y1):
                     h = 0.42 + 0.10 * ((bx_i + by_i + b) % 3)
                     make_box(f"{prefix}_Box_{b}_{lz:.1f}_{bx_i}_{by_i}",
                              (x - 0.33 + bx_i * 0.33, cy - 0.5 + by_i * 1.0,
-                              lz + dz + h / 2.0 + 0.02),
+                              lz + dz + h / 2.0 + 0.005),   # on the floor / the deck (2026-09-22: 2 cm up, 58 boxes)
                              (0.30, 0.42, h),
                              COL_BOX if (bx_i + by_i) % 2 == 0 else COL_BOX_DK)
                     make_box(f"{prefix}_Tape_{b}_{lz:.1f}_{bx_i}_{by_i}",
                              (x - 0.33 + bx_i * 0.33, cy - 0.5 + by_i * 1.0,
-                              lz + dz + h + 0.025),
+                              lz + dz + h + 0.009),   # on the box's lid
                              (0.30, 0.06, 0.008), COL_TAPE)
 
 
@@ -180,8 +180,8 @@ def build_floor_stock():
     make_box("Jack_Fork_L", (px - 0.18, py - 0.9, 0.05), (0.16, 1.0, 0.06), COL_JACK)
     make_box("Jack_Fork_R", (px + 0.18, py - 0.9, 0.05), (0.16, 1.0, 0.06), COL_JACK)
     make_box("Jack_Body", (px, py - 1.45, 0.28), (0.44, 0.24, 0.44), COL_JACK)
-    make_box("Jack_Handle", (px, py - 1.62, 0.75), (0.06, 0.06, 0.60), COL_STEEL_DK)
-    make_box("Jack_Grip", (px, py - 1.62, 1.06), (0.30, 0.05, 0.05), COL_RUBBER)
+    make_box("Jack_Handle", (px, py - 1.60, 0.75), (0.06, 0.06, 0.60), COL_STEEL_DK)   # against the body
+    make_box("Jack_Grip", (px, py - 1.60, 1.06), (0.30, 0.05, 0.05), COL_RUBBER)
     # Hand truck against the east rack
     make_box("HandTruck_Frame", (1.75, 6.9, 0.65), (0.42, 0.06, 1.3), COL_STEEL)
     make_box("HandTruck_Toe", (1.75, 6.78, 0.04), (0.42, 0.30, 0.03), COL_STEEL_DK)
@@ -189,7 +189,7 @@ def build_floor_stock():
         make_cyl(f"HandTruck_Wheel_{sgn:+d}", (1.75 + sgn * 0.20, 6.95, 0.12),
                  0.11, 0.05, COL_RUBBER, segments=10, axis='X')
     # Broom leaning by the swing door
-    make_cyl("Broom_Handle", (-2.0, 0.35, 0.75), 0.016, 1.45, COL_DECK, segments=6)
+    make_cyl("Broom_Handle", (-2.0, 0.35, 0.735), 0.016, 1.45, COL_DECK, segments=6)   # on the floor
     make_box("Broom_Head", (-2.0, 0.42, 0.06), (0.30, 0.08, 0.12), COL_BOX_DK)
 
 
@@ -244,7 +244,11 @@ def build_hero_props_2026_09():
     make_box("Baler_Mouth", (2.50, 1.5, 1.20), (0.02, 0.70, 0.50), (0.12, 0.12, 0.14, 1.0))
     make_box("Cardboard_Bale", (2.90, 0.40, 0.35), (0.90, 0.70, 0.70), (0.66, 0.54, 0.38, 1.0))
     for si, sy in enumerate((0.22, 0.58)):
-        make_box(f"Bale_Strap_{si}", (2.90, sy, 0.35), (0.92, 0.02, 0.72), (0.20, 0.20, 0.22, 1.0))
+        # three faces of a strap ON the bale (2026-09-22: one slab
+        # through it) — top run + the two side drops
+        make_box(f"Bale_Strap_{si}_Top", (2.90, sy, 0.7075), (0.92, 0.04, 0.015), (0.20, 0.20, 0.22, 1.0))
+        make_box(f"Bale_Strap_{si}_W", (2.4425, sy, 0.35), (0.015, 0.04, 0.70), (0.20, 0.20, 0.22, 1.0))
+        make_box(f"Bale_Strap_{si}_E", (3.3575, sy, 0.35), (0.015, 0.04, 0.70), (0.20, 0.20, 0.22, 1.0))
     make_box("Hands_Bale_Grip_A", (2.75, 0.40, 0.7015), (0.12, 0.08, 0.003), (0.56, 0.46, 0.32, 1.0))
     make_box("Hands_Bale_Grip_B", (3.05, 0.40, 0.7015), (0.12, 0.08, 0.003), (0.56, 0.46, 0.32, 1.0))
     make_box("Far_Cedar_Band", (0.0, 30.0, 3.0), (24.0, 2.0, 6.0), (0.14, 0.18, 0.14, 1.0))

@@ -32,9 +32,10 @@ sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 import locale_geometry_audit as A
 
 EPS = 0.015
+CONTENT_MAX_HALF = 0.50   # contents of a container are under 1 m in every dimension (2026-09-22)
 EMBED_MAX = 0.06   # a prop's back set into the plaster; 2026-09-22 (user: objects inside other objects) it was 0.14, a chair back 12 cm in a wall passed
 WALLISH = re.compile(
-    r"wall|window|door|sign|brand|part[nsew]?\b|partition|trim|crown|band\b|band_|"
+    r"wall|hull|window|door|sign|brand|part[nsew]?\b|partition|trim|crown|band\b|band_|"
     r"baseboard|backsplash|wainscot|frame|sill|floor|ceil|apron|"
     r"cornice|facade|knee|"
     r"turf|road|grass|rug|mat|plumbing|curb|kerb|lawn|drive|sidewalk|path|apron|asphalt|edgeline|stripe|shoulder|gravel|yard\b|headland|ground|walk\b|walkway|win\b|win_|outlet|socket|plate\b|numeral|slab|flagstone|plaza|endzone|seam|shore|sand|dune|land\b|grout", re.I)
@@ -272,9 +273,19 @@ def overlaps(boxes):
         # Rooftop fixtures are named Roof_<Building>_... — strip the
         # Roof_ prefix for the assembly token so a building's own
         # HVAC/vents/ducts pair with it as same-assembly.
-        first = n.split("_")[0]
-        if first.lower() == "roof" and n.count("_") >= 2:
-            first = n.split("_")[1]
+        # 2026-09-22 (user: "objects inside other objects"): the
+        # assembly token used to be the FIRST name segment alone, so
+        # Aisle_2 sitting bodily inside Aisle_0 was "the same
+        # assembly". When the second segment is an INDEX (Aisle_0,
+        # Cooler_3) it now joins the key — siblings of an indexed
+        # family pair no more. A kit's own parts (Radiator_Fin_4 x
+        # Radiator_Body, Spinner_Tier_1 x Spinner_Pole) still do.
+        toks = n.split("_")
+        if toks[0].lower() == "roof" and len(toks) >= 3:
+            toks = toks[1:]
+        first = toks[0]
+        if len(toks) >= 3 and re.fullmatch(r"-?\d+", toks[1]):
+            first = toks[0] + "_" + toks[1]
         ann.append((
             n, c, h,
             n.rsplit("_", 1)[0], first,
@@ -349,11 +360,18 @@ def overlaps(boxes):
             # Containment: a small object whose center sits inside a
             # container-named object is contents, not clipping
             # (propane tanks in their cage, sixpacks in the fridge).
-            if co1 and all(abs(c2[ax] - c1[ax]) < h1[ax]
-                           for ax in range(3)):
+            # 2026-09-22: "small" is now enforced — the contents must
+            # be under 1 m in every dimension and fit the container.
+            # A 1.6 m bakery counter whose centre fell inside the
+            # deli CASE, and a checkout lane inside the meat CASE,
+            # both passed as "contents".
+            if co1 and max(h2) <= CONTENT_MAX_HALF and \
+                    all(abs(c2[ax] - c1[ax]) < h1[ax] and
+                        h2[ax] <= h1[ax] + 0.05 for ax in range(3)):
                 continue
-            if co2 and all(abs(c1[ax] - c2[ax]) < h2[ax]
-                           for ax in range(3)):
+            if co2 and max(h1) <= CONTENT_MAX_HALF and \
+                    all(abs(c1[ax] - c2[ax]) < h2[ax] and
+                        h1[ax] <= h2[ax] + 0.05 for ax in range(3)):
                 continue
             # Pallet-jack forks ENTER pallets — that is their job.
             if ("fork" in l1 and "pallet" in l2) or \

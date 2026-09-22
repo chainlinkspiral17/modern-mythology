@@ -133,7 +133,7 @@ def build_key_wall():
             make_box(f"Key_{r}_{c}_Bag", (kx, ROOM_D-0.10, kz), (0.36, 0.02, 0.40), (0.82, 0.86, 0.90, 0.4))
             make_box(f"Key_{r}_{c}_Cover", (kx, ROOM_D-0.115, kz), (0.30, 0.01, 0.34), tint)
     # Statue shelf below the key wall
-    make_chamfer_box("StatShelf", (cx, ROOM_D-0.30, 1.02), (3.6, 0.36, 0.05), COL_WOOD)
+    make_chamfer_box("StatShelf", (cx, ROOM_D-0.28, 1.02), (3.6, 0.36, 0.05), COL_WOOD)   # back edge on the wall (2026-09-22: 2 cm off it)
     for si in range(6):
         sx = cx - 1.5 + si * 0.6
         make_mini_statue(f"Statue_{si}", (sx, ROOM_D-0.30, 1.045), h=0.36,
@@ -224,7 +224,7 @@ def build_window():
     for si in range(2):
         make_mini_statue(f"WinStatue_{si}", (-3.5+si*1.0, 0.35, 0.80), h=0.42,
                          body_col=HERO_COLS[si], accent_col=HERO_COLS[si+2])
-    make_box("WinPoster", (-3.0, 0.16, 1.70), (1.6, 0.01, 0.90), HERO_COLS[1])
+    make_box("WinPoster", (-3.0, 0.125, 1.70), (1.6, 0.01, 0.90), HERO_COLS[1])   # taped over the window paint (2026-09-22: 5 cm off the glass)
 
 def build_floor_tiles():
     # Checkerboard tile overlay — comic-shop floor.
@@ -281,9 +281,10 @@ def build_hero_props():
     wood = (0.42, 0.30, 0.18, 1.0)
     # THE PAINTED GALACTUS on the front window + the purple bars it
     # lays across the floor in the ten-AM light
-    make_box("Galactus_Paint", (-3.0, 0.12, 1.55), (2.50, 0.01, 1.40), (0.44, 0.26, 0.58, 0.55))
-    make_box("Galactus_Helm", (-3.0, 0.13, 2.05), (1.30, 0.01, 0.55), (0.34, 0.18, 0.48, 0.7))
-    make_box("Galactus_Face", (-3.0, 0.135, 1.70), (0.70, 0.01, 0.50), (0.62, 0.48, 0.72, 0.7))
+    # painted ON the glass (2026-09-22: the layers hung 2-5 cm off it)
+    make_box("Galactus_Paint", (-3.0, 0.0955, 1.55), (2.50, 0.01, 1.40), (0.44, 0.26, 0.58, 0.55))
+    make_box("Galactus_Helm", (-3.0, 0.1055, 2.05), (1.30, 0.01, 0.55), (0.34, 0.18, 0.48, 0.7))
+    make_box("Galactus_Face", (-3.0, 0.1155, 1.70), (0.70, 0.01, 0.50), (0.62, 0.48, 0.72, 0.7))
     for bi in range(4):
         make_box(f"Galactus_FloorBar_{bi}", (-4.1 + bi * 0.72, 1.7, 0.012),
                  (0.34, 2.6, 0.006), (0.46, 0.30, 0.58, 0.30))
@@ -314,7 +315,7 @@ def build_hero_props():
     make_box("Register_Bin", (3.4, 6.8, 0.18), (0.30, 0.30, 0.36), (0.34, 0.36, 0.38, 1.0))
     # The floor census sections: manga wall (E), YA shelf (W),
     # Pokemon endcap, indie rack, new-arrivals table
-    make_box("Manga_Wall", (4.72, 5.0, 1.10), (0.30, 2.60, 2.20), wood)
+    make_box("Manga_Wall", (4.80, 5.0, 1.10), (0.20, 2.60, 2.20), wood)   # panel on the E wall, BEHIND the books (2026-09-22: they stood 6 cm inside it)
     for r_ in range(4):      # boards the manga rows stand on (2026-09-08)
         make_box(f"Manga_Board_{r_}", (4.55, 5.0, 0.17 + r_ * 0.52), (0.28, 2.60, 0.02), wood)
     for r in range(4):
@@ -410,17 +411,22 @@ def build_draft4_2026_09():
         make_scuff_band(f"Wear_Kick_Row_{ji}", (row_x, ay - 0.26), row_w - 0.3, axis='X', height=0.06, band_z=0.04, tint=(0.22, 0.16, 0.10, 1.0))
     make_box("Wear_Push_Plate", (0.55, 0.055, 1.10), (0.16, 0.004, 0.22), (0.40, 0.38, 0.36, 1.0))
     for ti, (tx, tz) in enumerate(((-4.0, 2.10), (-2.1, 2.05), (-3.9, 0.95))):
-        make_box(f"Wear_TapeGhost_{ti}", (tx, 0.115, tz), (0.05, 0.002, 0.05), (0.62, 0.60, 0.52, 0.5))
+        make_box(f"Wear_TapeGhost_{ti}", (tx, 0.1015, tz), (0.05, 0.002, 0.05), (0.62, 0.60, 0.52, 0.5))   # on the window paint
     # ── D3 ──
     make_light_switch("Switch_Door", (1.30, 0.0), axis='X', face_sign=1, z=1.20, aged=True)
     make_wall_outlet("Outlet_N_1", (2.80, ROOM_D), axis='X', face_sign=-1, z=0.30, aged=True)
-    make_cord_run("Cord_1", (ROOM_W/4.0 + 0.30, ROOM_D - 1.5 + 0.48, 0.95), (2.80, ROOM_D - 0.12, 0.30), sag=0.0)
+    # down the register's back face, then along the floor to the
+    # outlet (2026-09-22: one diagonal that passed through the counter)
+    make_cord_run("Cord_1A", (2.80, ROOM_D - 0.29, 0.94), (2.80, ROOM_D - 0.29, 0.30), sag=0.0)
+    make_cord_run("Cord_1B", (2.80, ROOM_D - 0.29, 0.30), (2.80, ROOM_D - 0.12, 0.30), sag=0.0)
     # the CRT on its bracket in the NE corner, angled at the floor
     make_box("CRT_Bracket_Arm", (ROOM_W/2.0 - 0.30, ROOM_D - 0.30, 2.10), (0.40, 0.06, 0.06), P.METAL_BLACK)
     make_rot_box("CRT_Body", (ROOM_W/2.0 - 0.42, ROOM_D - 0.42, 2.02), (0.44, 0.40, 0.36), (0.30, 0.30, 0.32, 1.0), yaw=0.78, pitch=0.20)
     make_rot_box("CRT_Screen", (ROOM_W/2.0 - 0.58, ROOM_D - 0.58, 1.99), (0.34, 0.02, 0.28), (0.36, 0.52, 0.72, 1.0), yaw=0.78, pitch=0.20)
     make_wall_outlet("Outlet_E_1", (ROOM_W/2.0, ROOM_D - 0.60), axis='Y', face_sign=-1, z=2.30, aged=True)
-    make_cord_run("Cord_2", (ROOM_W/2.0 - 0.36, ROOM_D - 0.36, 1.86), (ROOM_W/2.0 - 0.13, ROOM_D - 0.60, 2.30), sag=0.02)
+    # up the E wall from the CRT's top corner to the outlet (2026-09-22:
+    # the old run ended inside the CRT)
+    make_cord_run("Cord_2", (ROOM_W/2.0 - 0.115, ROOM_D - 0.40, 2.245), (ROOM_W/2.0 - 0.115, ROOM_D - 0.58, 2.30), sag=0.0)
     # ── D5 · the street outside the front window ──
     make_box("Sidewalk", (0.0, -1.3, -0.06), (14.0, 2.4, 0.12), (0.62, 0.60, 0.56, 1.0))
     make_box("Curb", (0.0, -2.55, -0.08), (14.0, 0.12, 0.16), (0.55, 0.53, 0.50, 1.0))

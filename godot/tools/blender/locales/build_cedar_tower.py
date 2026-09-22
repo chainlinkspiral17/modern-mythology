@@ -123,11 +123,11 @@ def build_studio():
             for row, pz in enumerate((z0 + 0.85, z0 + 2.05)):
                 tint = POSTER_TINTS[idx % len(POSTER_TINTS)]; idx += 1
                 if wall == "S":
-                    make_box(f"Poster_S_{idx}_Frame", (px, py, pz), (1.00, 0.03, 1.05), FRAME)
-                    make_box(f"Poster_S_{idx}", (px, py - 0.005, pz), (0.90, 0.025, 0.95), tint)
+                    make_box(f"Poster_S_{idx}_Frame", (px, 0.115, pz), (1.00, 0.03, 1.05), FRAME)
+                    make_box(f"Poster_S_{idx}", (px, 0.1225, pz), (0.90, 0.025, 0.95), tint)
                 else:
-                    make_box(f"Poster_W_{idx}_Frame", (px, py, pz), (0.03, 1.00, 1.05), FRAME)
-                    make_box(f"Poster_W_{idx}", (px + 0.005, py, pz), (0.025, 0.90, 0.95), tint)
+                    make_box(f"Poster_W_{idx}_Frame", (-5.885, py, pz), (0.03, 1.00, 1.05), FRAME)
+                    make_box(f"Poster_W_{idx}", (-5.8775, py, pz), (0.025, 0.90, 0.95), tint)
     # ESTUARY 7, half-sized, on the S wall east run — the river
     # coming down to the sea, coastal blues
     # (2026-09-22: it hung at x 0.55 — in the S wall's door gap, on
@@ -138,8 +138,8 @@ def build_studio():
     # East wall: the smaller framed photographs (Dean in '14, '19,
     # '41…)
     for pi, py in enumerate((2.0, 3.1, 4.2, 5.3, 6.4)):
-        make_box(f"EPhoto_{pi}_Frame", (5.87, py, z0 + 1.60), (0.03, 0.42, 0.34), FRAME)
-        make_box(f"EPhoto_{pi}", (5.865, py, z0 + 1.60), (0.025, 0.34, 0.26), (0.62, 0.58, 0.52, 1.0))
+        make_box(f"EPhoto_{pi}_Frame", (5.885, py, z0 + 1.60), (0.03, 0.42, 0.34), FRAME)
+        make_box(f"EPhoto_{pi}", (5.8775, py, z0 + 1.60), (0.025, 0.34, 0.26), (0.62, 0.58, 0.52, 1.0))
 
 
 def build_quarters():
@@ -261,7 +261,7 @@ def build_draft2_density_2026_08():
                  (0.12, 0.20, 0.005), POSTER_TINTS[fi % len(POSTER_TINTS)])
     # Wall sconces flanking the portrait.
     for sx in (-1.4, 1.4):
-        make_box(f"Lobby_Sconce_{sx:+.1f}_Back", (sx, 7.86, z0 + 2.10), (0.10, 0.04, 0.22), BRASS)
+        make_box(f"Lobby_Sconce_{sx:+.1f}_Back", (sx, 7.88, z0 + 2.10), (0.10, 0.04, 0.22), BRASS)
         make_cyl(f"Lobby_Sconce_{sx:+.1f}_Glow", (sx, 7.80, z0 + 2.16), 0.045, 0.09, (0.98, 0.90, 0.70, 1.0), segments=8)
 
     # ── STUDIO (z0=5) · people work here mid-shift ──
@@ -307,7 +307,8 @@ def build_draft2_density_2026_08():
         # face is x -4.55; bunks sit 0.2 m apart so nothing fits between)
         make_box(f"Bunk_{bi}_Footlocker", (-4.10, by - 0.55, z0 + 0.20), (0.85, 0.42, 0.40), CEDAR_DK)
     # Folded clothes on one mattress, a guitar leaning at the last bunk.
-    make_box("Q_Folded_Clothes", (-5.1, 1.35, z0 + 1.78), (0.30, 0.40, 0.10), (0.52, 0.46, 0.42, 1.0))
+    # on the upper bunk's blanket (2026-09-22: was 35 cm over it)
+    make_box("Q_Folded_Clothes", (-5.1, 1.35, z0 + 1.475), (0.30, 0.40, 0.10), (0.52, 0.46, 0.42, 1.0))
     make_box("Q_Guitar_Body", (-4.35, 6.85, z0 + 0.30), (0.32, 0.10, 0.40), (0.55, 0.38, 0.22, 1.0))
     make_box("Q_Guitar_Neck", (-4.35, 6.88, z0 + 0.75), (0.06, 0.05, 0.55), CEDAR_DK)
     # Kitchen life: kettle on the stove, dish rack, mug pegs, pot rail.
@@ -319,7 +320,7 @@ def build_draft2_density_2026_08():
     for mi in range(5):
         make_cyl(f"Q_MugPeg_{mi}", (5.52, 2.6 + mi * 0.28, z0 + 1.55), 0.015, 0.06,   # on the cabinets' face (2026-09-22)
                  CEDAR_DK, axis='X', segments=6)
-        make_cyl(f"Q_PegMug_{mi}", (5.45, 2.6 + mi * 0.28, z0 + 1.47), 0.04, 0.08,
+        make_cyl(f"Q_PegMug_{mi}", (5.45, 2.6 + mi * 0.28, z0 + 1.485), 0.04, 0.08,
                  POSTER_TINTS[mi % len(POSTER_TINTS)], segments=8)
     # Table life: three mugs at seats, a dealt card fan mid-game.
     for mi2, (mx, my) in enumerate(((-1.6, 3.6), (0.4, 4.4), (1.0, 3.6))):
@@ -387,7 +388,7 @@ def build_exterior():
     make_box("Tower_Cap", (X, 12.0, 7 * 3.7 + 0.2), (8.4, 8.4, 0.4), CEDAR_DK)
     # Garden silhouettes behind the seventh floor's glass
     for gi, gx in enumerate((-2.4, -0.6, 1.2, 2.8)):
-        make_box(f"Garden_Green_{gi}", (X + gx, 7.85, 6 * 3.7 + 2.8), (1.0, 0.10, 0.9 + 0.2 * (gi % 2)),
+        make_box(f"Garden_Green_{gi}", (X + gx, 7.90, 6 * 3.7 + 2.8), (1.0, 0.10, 0.9 + 0.2 * (gi % 2)),
                  (0.28, 0.48, 0.30, 1.0))
     # Double doors at the base, S face
     for sgn in (-1, 1):
@@ -475,7 +476,7 @@ def build_wear_personality_2026_08():
     # One desk carries coffee rings; the others don't — one person
     # on the crew drinks at their desk, and everyone knows who.
     for ri2, (rx2, ry2) in enumerate(((-2.95, 3.55), (-2.88, 3.75), (-3.05, 3.68))):
-        make_cyl("Wear_Desk_Ring_%d" % ri2, (rx2, ry2, 5.775), 0.042, 0.003,
+        make_cyl("Wear_Desk_Ring_%d" % ri2, (rx2, ry2, 5.7465), 0.042, 0.003,
                  (0.38, 0.26, 0.16, 1.0), segments=8)
     # The service line along the racks — feet that tend machines.
     make_traffic_wear("Wear_Rack_Line",

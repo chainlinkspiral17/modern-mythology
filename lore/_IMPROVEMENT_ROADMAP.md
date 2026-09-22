@@ -1895,15 +1895,84 @@ let a chair back sit 12 cm inside a wall and a box 25 cm inside a
 locker. SIXTH PASS: TOUCH → 1.2 cm, embed/tuck/flex/contents →
 0.06/0.20/0.15/0.15, the kit helpers fixed, both gates on
 per-locale baselines that only come down: support 1,316, overlap
-254. NEXT, at the new tolerances: kwik stop 88 (cig warning labels
-6 cm off their boxes, peg bags 9 cm off their hooks, neon tubes
-2 cm off the glass, the coolers' frames 21 cm up), diner 56 (the
-counter top 2 cm over its body carries 67 things with it; the
-fans' blades 31 cm off their hubs; the BD fretwork), the chapel's
-altar top and votives, school field 65, centro stockroom 61, cedar
-tower 45; then the overlap list: diner 36 (a booth bench 25 cm
-into the expo counter), pit stop 26, kwik 16 (the magazine rack in
-the coffee counter, the beer stack in the novelty cooler).
+254. SEVENTH PASS: the two model chapters to ZERO at the new tolerances
+(support 1,316 → 1,088; overlap 254 → 208). The kwik stop (88 → 0,
+16 → 0 clips): the cigarette bands 4 cm in front of their packs,
+peg bags 1 cm off their hooks, neon tubes 2 cm off the glass, the
+four coolers hung 20 cm up (a plinth each now), the register's
+drawer buried in the counter, the hose reel's coil 11 cm off its
+bracket AND 8 cm into the wall, three decals inside the wall, the
+quarter machines standing in the window tables' chairs (east of the
+mat now), the magazine rack 20 cm into the coffee counter, the beer
+stack 20 cm into the novelty cooler. The diner (56 → 0, 36 → 6
+clips): the counter's top face was 1.08 while every dressing pass
+placed from 1.10 — the top and its front raised 2 cm and 67 things
+landed at once; the fans' arms and blades to the housing; the expo
+counter ran 25 cm through alcove booth 1's bench (it starts east of
+the alcove now); the bathroom bin straddled its partition; two
+D'Ambrosio tables' chair backs sat inside the west wall; the back
+bell inside the galley wall; the fretwork spans its two rails. The
+diner's hull slabs are wall-class for the overlap gate (they join
+the walls by construction). NEXT: roadside chapel 87 (mostly
+CaneLeaf, now foliage) → recount; school field 65, centro stockroom
+61, cedar tower 45, missing link 40, harmony commercial 35,
+meadowlark 32, bindery 29, hierophant 29, riverboat 29; overlap:
+pit stop 26, centro 11, crumpled barn 11, ben's bedroom 10.
+EIGHTH PASS (batches 10–11): support 1,088 → 725; overlap 208 → 210
+under a TIGHTER grammar (its rules alone would have read 247). Twelve
+more rooms to zero at the 1.2 cm tolerance: the school field (the
+bleacher benches 2 cm over their risers — 65 things landed; player
+heads and helmets; Eileen's chair on the actual bench top; the
+football ON its tee), the cedar tower (posters and photos 1–2 cm off
+their walls; the mug pegs and folded clothes), the stockroom (every
+box tier 1 cm over the tier below; the door coil 7 cm INTO the wall
+header; the bale's straps as three faces ON the bale, not a slab
+through it), missing link's exterior (dashes, puddles, bollards,
+windows, bell, vent, awning, bench — all 1–3 cm short), meadowlark
+(Salinas' cabin, Don's glass, the patrol stripe and light bar — kit
+fix, on the roof now — the garage vent on its header), caldwell's
+porch (the bike's tubes, the log pile, the fan blades, the radio ON
+the rail, the blanket ON the rocker, the planter's wire reaching the
+pot and its leaves hung from the rim), board lords (the flap, tool
+rest, repair board, sanderling, mural patch, awning arms, the wheels
+resting ON their bin), harmony commercial (crosswalks, kiosk sign,
+cosmic glass; the four STOPLIGHTS hung from nothing 3.4 m over the
+lane — a corner pole and an L-arm each, the stub reaching the head;
+the far cars had no wheels and hung 15 cm over the lot), the
+vehicle cab (climate knobs, the wheel's four diagonal spokes out to
+the rim, the key in the column, the pedals' arms), lake palestine
+(two reed clumps 12 cm over the water), miller's porch (the mug on
+the side table), cosmic comics (the window paint, helm, face and
+poster ON the glass in four layers; the statue shelf on the wall;
+the register cord down its back face and along the floor — it cut a
+diagonal through the counter; the CRT's cord up the wall, not into
+the CRT; the manga panel BEHIND the books, which stood 6 cm inside
+it). And CENTRO GROCERY, a re-plan: the 2.4 m MEAT CASE sat in the
+checkout lane (queue posts, candy rack and card terminal inside it,
+its own back 15 cm in the S wall), the DELI CASE sat inside the
+BAKERY counter, a fourth gondola (Aisle_2) sat bodily INSIDE
+Aisle_0, and the cart was parked through Aisle_0's face — all
+unreported, because the overlap gate's contents rule exempted any
+pair whose one name held "case" and its assembly key was the first
+name segment alone. Now: meat case on the E wall's north end (the
+docstring's own placement), deli along the S wall between the
+entrance and the queue (the W wall is the dry-goods run and the
+produce island), chest freezer under the S window, bakery clear of
+the checkout, the cubby on the cashier's side of the counter (it was
+18 cm inside the front), Aisle_2 removed, the cart in the corridor
+its wheel lines already lead to, both cords ON the top and around
+the cubby, the grille on the wall face; the meat-case insert marker
+re-aimed. Grammar: contents must be under 1 m and fit; an integer
+second segment joins the assembly key (`Aisle_0`), a part name does
+not. Three builders had been broken by comment-swallowing edits
+(SyntaxError reads as "partial" in a skimmed report) — compile all
+before any audit now. NEXT (support 725, by locale): bindery 29,
+hierophant 29, riverboat 29, asylum ward 19, new orleans bar 19,
+estuary_7_template 18, simon 17, le roulant 16, roberts house 16,
+roberts kitchen 16, frog knows best 14, natalie 14, both nexcorp 14,
+pharmacy 14; overlap (210): pit stop 26, crumpled barn 11,
+courthouse 10, centro break room 10, ben's bedroom 10, riverboat 8,
+graustark 8, mixing glass 7.
 
 **2026-09-19 · DESIGN · the two decorative checks made real, the first
 remembered choice.** Nate's basement (ch6) and Tem staying (ch8): the
