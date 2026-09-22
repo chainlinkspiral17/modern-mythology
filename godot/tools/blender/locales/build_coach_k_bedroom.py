@@ -94,7 +94,7 @@ def build_bed():
     # Coach K's side: pillow dented, quilt folded back (he is on his
     # back on TOP of the covers, abstracted as a flatter mound)
     make_box("Sleeper_CoachK", (0.45, by - 0.15, 0.62), (0.5, 1.7, 0.08), COL_QUILT)
-    make_box("Pillow_CoachK", (0.45, ROOM_D - 0.35, 0.60), (0.55, 0.4, 0.08), COL_PILLOW)
+    make_box("Pillow_CoachK", (0.45, ROOM_D - 0.35, 0.59), (0.55, 0.4, 0.08), COL_PILLOW)   # on the sheet (2026-09-22: 1 cm up)
 
 
 def build_nightstands():

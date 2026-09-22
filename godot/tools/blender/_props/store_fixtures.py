@@ -79,14 +79,17 @@ def make_register(prefix, anchor, *, palette=None):
     keys = palette.get("keys", (0.32, 0.32, 0.34, 1.0))
     screen = palette.get("screen", (0.10, 0.32, 0.16, 1.0))
     cx, cy, top_z = anchor
-    make_box(f"{prefix}_Body",   (cx, cy, top_z + 0.21),
-             (0.42, 0.40, 0.32), body)
-    make_box(f"{prefix}_Display",(cx - 0.22, cy, top_z + 0.38),
-             (0.04, 0.34, 0.14), screen)
-    make_box(f"{prefix}_Keypad", (cx, cy, top_z + 0.06),
-             (0.36, 0.36, 0.02), keys)
-    make_box(f"{prefix}_Drawer", (cx, cy, top_z - 0.10),
+    # the cash drawer ON the counter, the body on the drawer (2026-09-22:
+    # the drawer was buried 15 cm in the counter and the body hung 5 cm
+    # over it, in eight rooms)
+    make_box(f"{prefix}_Drawer", (cx, cy, top_z + 0.05),
              (0.50, 0.40, 0.10), body)
+    make_box(f"{prefix}_Body",   (cx, cy, top_z + 0.26),
+             (0.42, 0.40, 0.32), body)
+    make_box(f"{prefix}_Display",(cx - 0.22, cy, top_z + 0.43),
+             (0.04, 0.34, 0.14), screen)
+    make_box(f"{prefix}_Keypad", (cx, cy, top_z + 0.11),
+             (0.36, 0.36, 0.02), keys)
 
 
 def make_cigarette_rack(prefix, anchor, *, shelves=3, columns=12,

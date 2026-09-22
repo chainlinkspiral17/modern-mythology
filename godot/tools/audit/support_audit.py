@@ -41,10 +41,10 @@ import vantage_obstruction_audit as VO
 
 ROOT = os.path.abspath(os.path.join(HERE, "..", "..", ".."))
 BUILDERS = P.A.LOCALES
-TOUCH = 0.03
+TOUCH = 0.012   # 1.2 cm: a 3 cm gap reads as floating on the Deck (2026-09-22, user: pillows off their beds)
 # foliage and vapour hang in their crowns by design — whole name PARTS,
 # so "smoke" cannot eat the Smokers_Tin (the vantage audit's PASSABLE did)
-FOLIAGE = re.compile(r"(^|_)(foliage|leaf|leaves|frond|lobe|salal|shrub|bush|hedge|needles|fern|grass|reed|vine|ivy|moss|drape|sheer|curtain|spray|stream|fog|haze|mist|steam|cloud|leader)(_|$)|_[CL][0-9]+(_|$)", re.I)
+FOLIAGE = re.compile(r"caneleaf|(^|_)(foliage|leaf|leaves|frond|lobe|salal|shrub|bush|hedge|needles|fern|grass|reed|vine|ivy|moss|drape|sheer|curtain|spray|stream|fog|haze|mist|steam|cloud|leader)(_|$)|_[CL][0-9]+(_|$)", re.I)
 # a tree's crown hangs in its trunk by design; a candelabra's crown, a
 # register's crown, crown moulding do not (2026-09-22: "crown" in FOLIAGE
 # dropped the diner's candelabra ring, so its candles read as floating)

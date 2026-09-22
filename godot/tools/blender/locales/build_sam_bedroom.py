@@ -113,7 +113,7 @@ def build_ceiling_infra():
     for bi in range(5):
         ang = bi * (2.0 * _m.pi / 5.0)
         make_box(f"Fan_Blade_{bi}", (0.45 * _m.cos(ang), 2.5 + 0.45 * _m.sin(ang), CEIL-0.26),
-                 (0.62 if abs(_m.cos(ang)) > 0.5 else 0.18,
+                 (0.70 if abs(_m.cos(ang)) > 0.5 else 0.18,   # into the hub (2026-09-22: 3 cm short)
                   0.18 if abs(_m.cos(ang)) > 0.5 else 0.62, 0.02),
                  (0.44, 0.32, 0.22, 1.0))
     make_smoke_detector("Smoke", (0.9, ROOM_D/2.0, CEIL))
@@ -248,7 +248,7 @@ def build_draft4_2026_09():
         make_box(f"Sticker_{si}", (sx_, 0.087, sz_), (0.06, 0.002, 0.06), sc_)
     make_box("Sticker_Residue", (0.24, 0.086, 1.40), (0.05, 0.001, 0.05), (0.80, 0.78, 0.72, 1.0))
     # ── D3 ──
-    make_light_switch("Switch_Door", (0.70, 0.0), axis='X', face_sign=1, z=1.20, aged=True)
+    make_light_switch("Switch_Door", (1.15, 0.0), axis='X', face_sign=1, z=1.20, aged=True)   # on the wall east of the door gap (2026-09-22: it hung in the doorway)
     make_box("Power_Strip", (dx + 0.20, dy + 0.22, 0.03), (0.30, 0.06, 0.04), (0.86, 0.86, 0.82, 1.0))
     make_wall_outlet("Outlet_N_1", (dx + 0.20, ROOM_D), axis='X', face_sign=-1, z=0.30, aged=True)
     make_cord_run("Cord_1", (dx + 0.20, dy + 0.25, 0.03), (dx + 0.20, ROOM_D - 0.12, 0.30), sag=0.0)

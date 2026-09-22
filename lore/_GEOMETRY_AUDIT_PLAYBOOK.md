@@ -222,6 +222,24 @@ banisters classed · pans as containers.
   eight papers hung in the next room for a month. When a float's
   gap is "in another room", read the placement's arithmetic before
   its numbers.
+- **The gates were forgiving where the eye is not (2026-09-22, user
+  after five passes: "still getting pillows floating away from beds
+  … not seeing much difference"; "objects inside other objects,
+  too").** Two causes. (1) The GLBs are not in git: nothing changes
+  on the Deck until `list_stale_builds.sh`'s printed rebuild line
+  is run there — a pull plus a contact sheet renders the OLD builds.
+  Say this in every report that touches builders. (2) The
+  tolerances: a 3 cm touch let 1,644 gaps of 1–3 cm through (a
+  pillow 2 cm over its sheet, a smoke detector 2 cm under its
+  ceiling in 22 rooms, a register 5 cm over its counter in 8, fence
+  boards 2.5 cm off the ground in 3 — kit helpers, all); the
+  overlap grammar's embed 0.14 / tuck 0.30 / flex 0.30 / contents
+  0.25 let a chair back 12 cm into a wall pass. TOUCH is 1.2 cm
+  now, the grammar 0.06 / 0.20 / 0.15 / 0.15, and BOTH gates hold a
+  per-locale baseline (`support_baseline.json`,
+  `overlap_baseline.json`) that only comes down. A tolerance is a
+  claim about what the player can see from a Deck seat; 3 cm was
+  never true.
 - **A subject marker judges a cluster centroid.** shot_insert_*
   markers cast at the centroid of the cue's parts near the nearest
   one; lowering a part (the jukebox's quarters onto its marquee)

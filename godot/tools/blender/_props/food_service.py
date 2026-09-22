@@ -118,13 +118,15 @@ def make_coffee_pots(prefix, anchor, *, palette=None, pots=3):
     for i in range(pots):
         py = cy - 0.50 + i * 0.50
         col = liquids[i % len(liquids)]
-        make_cyl(f"{prefix}_Pot_{i}_Body", (cx + 0.05, py, bz + 0.13),
-                 0.08, 0.26, glass)
-        make_cyl(f"{prefix}_Pot_{i}_Liquid", (cx + 0.05, py, bz + 0.07),
-                 0.068, 0.16, col)
-        make_cyl(f"{prefix}_Pot_{i}_Burner", (cx + 0.05, py, bz - 0.06),
+        # the burner ON the counter, the pot ON the burner (2026-09-22: the
+        # burner sat 6 cm inside the counter and the pot 5 cm above it)
+        make_cyl(f"{prefix}_Pot_{i}_Burner", (cx + 0.05, py, bz + 0.01),
                  0.10, 0.02, P.METAL_BLACK)
-        make_box(f"{prefix}_Pot_{i}_Handle", (cx + 0.16, py, bz + 0.13),
+        make_cyl(f"{prefix}_Pot_{i}_Body", (cx + 0.05, py, bz + 0.15),
+                 0.08, 0.26, glass)
+        make_cyl(f"{prefix}_Pot_{i}_Liquid", (cx + 0.05, py, bz + 0.10),
+                 0.068, 0.16, col)
+        make_box(f"{prefix}_Pot_{i}_Handle", (cx + 0.16, py, bz + 0.15),
                  (0.06, 0.04, 0.10), P.METAL_BLACK)
     # The brewer's head over the pots, on two posts down to the burner
     # level — the labels live on its face (2026-09-22: they floated
@@ -133,7 +135,7 @@ def make_coffee_pots(prefix, anchor, *, palette=None, pots=3):
     hy = cy - 0.50 + 0.25 * (pots - 1)      # centred on the pots, which start at cy - 0.50
     make_box(f"{prefix}_Head", (cx + 0.05, hy, bz + 0.40), (0.30, span, 0.16), (0.24, 0.24, 0.26, 1.0))
     for si, sy in enumerate((hy - span / 2.0 + 0.03, hy + span / 2.0 - 0.03)):
-        make_box(f"{prefix}_Post_{si}", (cx + 0.16, sy, bz + 0.13), (0.06, 0.06, 0.38), (0.24, 0.24, 0.26, 1.0))
+        make_box(f"{prefix}_Post_{si}", (cx + 0.16, sy, bz + 0.20), (0.06, 0.06, 0.40), (0.24, 0.24, 0.26, 1.0))   # counter to head
     for i in range(pots):
         py = cy - 0.50 + i * 0.50
         make_box(f"{prefix}_Pot_{i}_Label", (cx - 0.105, py, bz + 0.40),
@@ -157,11 +159,11 @@ def make_sugar_creamer_caddy(prefix, anchor, *, palette=None):
         make_box(f"{prefix}_Divider_{di}",
                  (cx + dx_off, cy, bz + 0.06),
                  (0.005, 0.26, 0.12), caddy)
-        for stack in range(4):
+        for stack in range(4):   # packets standing in their slot, on the tray (2026-09-22: flat, 2 cm over it)
             make_box(f"{prefix}_Sugar_{di}_{stack}",
                      (cx + dx_off + 0.06, cy - 0.10 + stack * 0.06,
-                      bz + 0.06),
-                     (0.06, 0.05, 0.005), packet_colors[di])
+                      bz + 0.07),
+                     (0.005, 0.05, 0.06), packet_colors[di])
     # Stirrer cup + stirrers
     make_cyl(f"{prefix}_StirrerCup", (cx + 0.16, cy + 0.08, bz + 0.10),
              0.04, 0.16, P.METAL_STEEL)

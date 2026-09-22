@@ -280,7 +280,7 @@ def build_draft4_2026_09():
     for hi, (hy, hz) in enumerate(((ROOM_D-1.25, 1.75), (ROOM_D-0.75, 1.30), (ROOM_D-1.0, 1.85))):
         make_cyl(f"Wear_PinHole_{hi}", (-ROOM_W/2.0 + 0.085, hy, hz), 0.004, 0.006, (0.40, 0.28, 0.18, 1.0), axis='X', segments=4)
     # ── D3 ──
-    make_light_switch("Switch_Door", (0.70, 0.0), axis='X', face_sign=1, z=1.20, aged=True)
+    make_light_switch("Switch_Door", (1.15, 0.0), axis='X', face_sign=1, z=1.20, aged=True)   # on the wall east of the door gap (2026-09-22: it hung in the doorway)
     make_wall_outlet("Outlet_E_1", (ROOM_W/2.0, 1.20), axis='Y', face_sign=-1, z=0.30, aged=True)
     make_cord_run("Cord_1", (dx-0.30, dy+0.20, 0.76), (ROOM_W/2.0 - 0.13, 1.20, 0.30), sag=0.06)
     make_cord_run("Cord_2", (dx+0.16, dy+0.18, 0.76), (ROOM_W/2.0 - 0.13, 1.20, 0.30), sag=0.04)

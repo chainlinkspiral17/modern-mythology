@@ -359,9 +359,10 @@ def build_landline_and_twenty_2026_08():
     for ci, (dx2, dy2) in enumerate(((0.10, 0.02), (0.16, 0.10), (0.24, 0.06))):
         make_cyl("Landline_Cord_%d" % ci, (cx - 0.85 + dx2, cy - 0.25 + dy2, 0.975),
                  0.008, 0.09, beige, segments=6)
-    make_box("Twenty_Bill", (cx + 0.18, cy - 0.42, 0.988), (0.16, 0.068, 0.003),
+    # beside the register, not under it (2026-09-22: the drawer sits on the counter now)
+    make_box("Twenty_Bill", (cx - 0.42, cy - 0.42, 1.0115), (0.16, 0.068, 0.003),
              (0.55, 0.62, 0.52, 1.0))
-    make_box("Twenty_Band", (cx + 0.18, cy - 0.42, 0.990), (0.05, 0.068, 0.002),
+    make_box("Twenty_Band", (cx - 0.42, cy - 0.42, 1.014), (0.05, 0.068, 0.002),
              (0.42, 0.50, 0.42, 1.0))
 
 

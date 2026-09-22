@@ -71,7 +71,7 @@ def build_bed():
     make_box("Bed_Mattress", (bx, by, 0.42), (1.10, 1.90, 0.18), COL_LINEN)
     # Rumpled sheet — single thicker box pushed to one side
     make_box("Bed_Sheet", (bx-0.10, by+0.10, 0.56), (1.10, 0.90, 0.10), COL_LINEN)   # on the mattress, short of the pillow (2026-09-07)
-    make_box("Bed_Pillow", (bx, by+0.86, 0.56), (1.00, 0.30, 0.08), P.PAPER)
+    make_box("Bed_Pillow", (bx, by+0.80, 0.55), (1.00, 0.30, 0.08), P.PAPER)   # ON the mattress, inside its head end (2026-09-22: 1 cm up, 6 cm past the end)
     # Bedside crate (no nightstand — Simon never replaced the one
     # that broke). Doubles as the TV stand if rotated; here just a
     # crate-on-end with a lamp.

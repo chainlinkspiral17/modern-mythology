@@ -176,8 +176,8 @@ def make_floor_plant(prefix, anchor, *, palette=None):
         make_cyl(f"{prefix}_Pot_{r}",
                  (px, py, base_z + 0.03 + r * 0.06),
                  0.18 - r * 0.02, 0.06, pot)
-    make_cyl(f"{prefix}_Pot_Fill", (px, py, base_z + 0.21), 0.12, 0.02, (0.28, 0.20, 0.14, 1.0))
-    make_cyl(f"{prefix}_Stem", (px, py, base_z + 0.32), 0.02, 0.22, (0.36, 0.30, 0.22, 1.0), segments=6)
+    make_cyl(f"{prefix}_Pot_Fill", (px, py, base_z + 0.19), 0.12, 0.02, (0.28, 0.20, 0.14, 1.0))   # in the pot's rim (2026-09-22: 2 cm over it)
+    make_cyl(f"{prefix}_Stem", (px, py, base_z + 0.31), 0.02, 0.22, (0.36, 0.30, 0.22, 1.0), segments=6)
     for li, lz in enumerate([0.42, 0.50, 0.58, 0.64]):
         for ang_i in range(6):
             ang = ang_i * (math.pi * 2.0 / 6.0) + li * 0.3

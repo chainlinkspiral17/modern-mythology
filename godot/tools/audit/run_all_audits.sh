@@ -64,46 +64,38 @@ SOUT="$(python3 vn_story_audit.py 2>/dev/null)" || {
 echo "$SOUT" | tail -2
 echo ""
 
-# ── Prop-overlap ZERO-REGRESSION gate (2026-08-11) ─────────────
-# Every locale audits clean except four known holdouts. A locale
-# outside the allowlist reporting ANY clips is a regression; a
-# holdout exceeding its recorded ceiling is one too. Fix the
-# builder (or, for genuinely natural contact, extend the grammar
-# in prop_overlap_audit.py) — never bump a ceiling to make the
-# gate pass.
+# ── Prop-overlap ZERO-REGRESSION gate (2026-08-11; baseline form 2026-09-22) ──
+# Every locale's clip count is held at or under overlap_baseline.json.
+# The grammar was tightened 2026-09-22 (user: "objects inside other
+# objects") — embed 0.14 → 0.06, tuck 0.30 → 0.20, flex 0.30 → 0.15,
+# contents 0.25 → 0.15 — which surfaced hundreds of real clips at
+# once; the baseline holds them at their counts and each pass lowers
+# it with `prop_overlap_audit.py --write-baseline`. Never raise a
+# count to make the gate pass.
 echo "── prop_overlap_audit.py (zero-regression gate) ──"
 python3 - <<'PYGATE'
+import json
+import os
 import re
 import subprocess
 import sys
 
-HOLDOUTS = {
-    # ── TRIAGE COMPLETE, 2026-08-12 (2 holdouts, both intentional)
-    # The day's arc: opening the audit's eyes (the composite _props
-    # modules had been stubbed to no-ops) took the repo 18 -> 286,
-    # and triage took it to 15. What that exposed, beyond ordinary
-    # clipping: ELEVEN windows centered at floor level, TWELVE
-    # counters and SIX windows built 90 DEGREES ROTATED (helper
-    # axis conventions), and the centro grocery double-booked
-    # store-wide. Both remaining entries are BY DESIGN.
-    "crumpled_barn": 11,    # the crumple IS the overlap
-    "diner": 4,             # ticket tucks at <=0.06
-}
+base = json.load(open("overlap_baseline.json")).get("counts", {}) if os.path.exists("overlap_baseline.json") else {}
 out = subprocess.run(
     [sys.executable, "prop_overlap_audit.py", "--all"],
-    capture_output=True, text=True, timeout=900).stdout
+    capture_output=True, text=True, timeout=1800).stdout
 bad = []
 for m in re.finditer(r"^== (\S+) · \d+ objects · (\d+) clips", out, re.M):
     name, n = m.group(1), int(m.group(2))
-    if n > HOLDOUTS.get(name, 0):
-        bad.append((name, n, HOLDOUTS.get(name, 0)))
+    if n > base.get(name, 0):
+        bad.append((name, n, base.get(name, 0)))
 total = re.search(r"^(\d+) clip\(s\)", out, re.M)
 print("total: %s clips across the repo" % (total.group(1) if total else "?"))
 if bad:
     for name, n, ceil in bad:
-        print("REGRESSION  %-28s %d clips (allowed %d)" % (name, n, ceil))
+        print("REGRESSION  %-28s %d clips (baseline %d)" % (name, n, ceil))
     sys.exit(1)
-print("0 regressions: every non-holdout locale is clean")
+print("0 regressions: no locale clips more than its baseline")
 PYGATE
 
 # ── Vantage-obstruction gate (2026-09-03) ──────────────────────

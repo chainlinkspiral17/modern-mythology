@@ -1880,14 +1880,30 @@ south of the bar arms they were "on"; wear patches inside the back
 wall; the banquettes on plinths), MONTREAL (the drying rack, bowl,
 mug and kettle south of the fridge on air — on the counter; the
 bookshelf's sides 20 cm up) and the CLIFFSIDE CIRCUS (bunting: one
-sagging tube; string bulbs on drops from their wire). NEXT: the
-rest of the tail — estuary_7_template 15, caldwell 10, equipment
-shed 10, gym 10, harmony commercial 10, le roulant 10, the two new
-orleans rooms 10, daily grind 9, little switzerland 9, meadowlark 9,
-natalie 9, asylum ward c 8 — then the sub-8s; `--write-baseline`
-after each pass; start each room with the region dump
-(`support_audit`'s boxes via `VO.boxes_for`) around the float —
-half the fixes are "on what?" questions the builder answers wrong.
+sagging tube; string bulbs on drops from their wire). THE USER'S VERDICT AFTER FIVE PASSES: "still getting pillows
+floating away from beds … not seeing much difference"; "objects
+inside other objects, too." Two things were true at once. The GLBs
+are not in git — the Deck paste pulled and rendered the OLD builds
+(every report that touches builders must carry the rebuild line
+`list_stale_builds.sh` prints). And the gates forgave what the eye
+does not: the 3 cm touch tolerance hid 1,644 more gaps of 1–3 cm
+(kit helpers again: smoke detectors 2 cm under 22 ceilings, the
+register 5 cm over 8 counters, fence boards 2.5 cm up, plant fills,
+coffee pots 5 cm over their burners, sugar packets 2 cm over their
+tray, the soda pyramid centred on its anchor); the overlap grammar
+let a chair back sit 12 cm inside a wall and a box 25 cm inside a
+locker. SIXTH PASS: TOUCH → 1.2 cm, embed/tuck/flex/contents →
+0.06/0.20/0.15/0.15, the kit helpers fixed, both gates on
+per-locale baselines that only come down: support 1,316, overlap
+254. NEXT, at the new tolerances: kwik stop 88 (cig warning labels
+6 cm off their boxes, peg bags 9 cm off their hooks, neon tubes
+2 cm off the glass, the coolers' frames 21 cm up), diner 56 (the
+counter top 2 cm over its body carries 67 things with it; the
+fans' blades 31 cm off their hubs; the BD fretwork), the chapel's
+altar top and votives, school field 65, centro stockroom 61, cedar
+tower 45; then the overlap list: diner 36 (a booth bench 25 cm
+into the expo counter), pit stop 26, kwik 16 (the magazine rack in
+the coffee counter, the beer stack in the novelty cooler).
 
 **2026-09-19 · DESIGN · the two decorative checks made real, the first
 remembered choice.** Nate's basement (ch6) and Tem staying (ch8): the

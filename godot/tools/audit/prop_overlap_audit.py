@@ -32,7 +32,7 @@ sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 import locale_geometry_audit as A
 
 EPS = 0.015
-EMBED_MAX = 0.14   # wall thickness + proud trim/frame
+EMBED_MAX = 0.06   # a prop's back set into the plaster; 2026-09-22 (user: objects inside other objects) it was 0.14, a chair back 12 cm in a wall passed
 WALLISH = re.compile(
     r"wall|window|door|sign|brand|part[nsew]?\b|partition|trim|crown|band\b|band_|"
     r"baseboard|backsplash|wainscot|frame|sill|floor|ceil|apron|"
@@ -83,7 +83,7 @@ STRUCTISH = re.compile(
 # a booth bench meeting the expo counter. Bounded so a chair buried
 # waist-deep in a table still reports.
 SEATISH = re.compile(r"stool|chair|bench|seat", re.I)
-TUCK_MAX = 0.30
+TUCK_MAX = 0.20   # (2026-09-22: was 0.30)
 PORCHISH = re.compile(r"porch|veranda|stoop|balcony|marquee|portico|"
                       r"pediment", re.I)
 PORCH_MAX = 0.30
@@ -101,7 +101,7 @@ FLEXISH = re.compile(r"wire|cable|cord|cord_|rope|chain|towel|rag|"
                      r"rag_|cloth|blanket|quilt|comforter|drape|linen|banner|"
                      r"pennant|festoon|valance|curtain|blind|slat|sock|laundry|shirt|jacket|"
                      r"strap|beanbag|paper\b|twine|bag\b|trashbag|pricetag|tag\b", re.I)
-FLEX_MAX = 0.30
+FLEX_MAX = 0.15   # (2026-09-22: was 0.30)
 # Landscaping features are mounded soft dirt — poles, hydrants,
 # signs and wheels sink into berms and beds by planting/parking.
 BERMISH = re.compile(r"berm|mulch|planter|plantstrip|flower_bed|_bed\b|hill", re.I)
@@ -410,7 +410,7 @@ def overlaps(boxes):
             # Contents PRESS into their container's walls even when
             # their centers sit outside it (ice blocks proud of the
             # freezer, gum boxes on the checkout rack lip).
-            if depth <= 0.25 and (co1 or co2):
+            if depth <= 0.15 and (co1 or co2):   # (2026-09-22: was 0.25)
                 continue
             # TWO wall-class surfaces joining (partition into stall
             # wall, floor meeting wall, trim into facade) overlap by
@@ -601,9 +601,14 @@ def overlaps(boxes):
     return hits
 
 
+BASELINE = os.path.join(os.path.dirname(os.path.abspath(__file__)), "overlap_baseline.json")
+
+
 def main():
-    args = sys.argv[1:]
+    write_baseline = "--write-baseline" in sys.argv
+    args = [a for a in sys.argv[1:] if a != "--write-baseline"]
     A.install_stubs()
+    per = {}
     if "--all" in args:
         names = sorted(f[6:-3] for f in os.listdir(A.LOCALES)
                        if f.startswith("build_") and f.endswith(".py"))
@@ -625,6 +630,7 @@ def main():
         if err:
             print("%-32s (partial: %s)" % (name, err))
         hits = overlaps([b for b in boxes if b[0] not in MESH_NAMES])
+        per[name] = len(hits)
         if hits:
             print("== %s · %d objects · %d clips" % (name, len(boxes), len(hits)))
             for depth, n1, n2, pen in hits[:20]:
@@ -635,6 +641,10 @@ def main():
         elif "--all" not in args:
             print("%-32s clean (%d objects)" % (name, len(boxes)))
     print("\n%d clip(s) across %d builder(s)" % (total, len(names)))
+    if write_baseline and "--all" in args:
+        import json
+        json.dump({"counts": {k: v for k, v in per.items() if v}}, open(BASELINE, "w"), indent=1, sort_keys=True)
+        print("baseline written")
     return 0
 
 

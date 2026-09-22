@@ -136,9 +136,17 @@ def make_soda_bottle_pyramid(prefix, anchor, *,
     ])
     bx, by, base_z = anchor
     spacing = bottle_r * 2.2
+    # base_z is the display's FOOT: a riser stands it up from the floor,
+    # each tier stands on a board over the caps below (2026-09-22: the
+    # bottom tier was CENTRED on base_z — half a bottle in the floor or,
+    # on a 0.6 m anchor, hanging in air — and the tiers sat on nothing)
+    pitch = bottle_h * 0.65 + 0.02
+    if base_z > 0.03:
+        make_box(f"{prefix}_Riser", (bx, by, base_z / 2.0),
+                 (base_count * spacing + 0.10, bottle_r * 2.0 + 0.06, base_z), (0.62, 0.48, 0.30, 1.0))
     for ti in range(tiers):
         count = base_count - ti
-        tier_z = base_z + ti * (bottle_h + 0.02)
+        tier_z = base_z + bottle_h / 2.0 + ti * pitch
         offset = -(count - 1) * spacing / 2.0 + ti * (spacing / 2.0)
         for ci in range(count):
             col, cap = bottles[ci % len(bottles)]
@@ -149,6 +157,9 @@ def make_soda_bottle_pyramid(prefix, anchor, *,
             make_cyl(f"{prefix}_T{ti}_Cap_{ci}",
                      (bx + x_off, by, tier_z + bottle_h * 0.55),
                      bottle_r * 0.7, bottle_h * 0.2, cap)
+        if ti < tiers - 1:
+            make_box(f"{prefix}_Board_{ti}", (bx + ti * spacing / 2.0, by, tier_z + bottle_h * 0.65 + 0.01),
+                     ((count - 1) * spacing + bottle_r * 2.0, bottle_r * 2.0 + 0.04, 0.02), (0.62, 0.48, 0.30, 1.0))
 
 
 def make_ice_machine(prefix, anchor, *, palette=None):

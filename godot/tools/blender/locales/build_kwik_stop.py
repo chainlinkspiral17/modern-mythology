@@ -1829,7 +1829,7 @@ def build_donut_display():
 def build_creamer_sugar_caddy():
     # On the coffee counter — coffee station is at cx=-5.30, cy=4.50.
     cx, cy = -4.90, 5.50  # north end of the coffee counter, east of the pots (2026-09-22: it shared space with pot 1, then the lid dispenser)
-    base_z = 0.94  # just above coffee counter top
+    base_z = 0.92  # ON the coffee counter top (0.88)
     # Sugar caddy — a tray with sugar packet slots and creamer cups
     make_box("Caddy_Tray", (cx, cy, base_z),
              (0.40, 0.30, 0.08), COL_SUGAR_CADDY)
@@ -1844,10 +1844,10 @@ def build_creamer_sugar_caddy():
                       (0.82, 0.58, 0.34, 1.0),  # brown
                       (0.42, 0.62, 0.92, 1.0)][di]  # blue (equal)
         for stack in range(4):
-            make_box(f"Caddy_Sugar_{di}_{stack}",
+            make_box(f"Caddy_Sugar_{di}_{stack}",   # standing in the slot, on the tray (2026-09-22)
                      (cx + dx_off + 0.06, cy - 0.10 + stack * 0.06,
-                      base_z + 0.06),
-                     (0.06, 0.05, 0.005), packet_col)
+                      base_z + 0.07),
+                     (0.005, 0.05, 0.06), packet_col)
     # Stirrer cup
     make_cyl("Caddy_StirrerCup", (cx + 0.16, cy + 0.08, base_z + 0.10),
              0.04, 0.16, COL_METAL_STEEL)

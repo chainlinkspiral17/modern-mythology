@@ -135,7 +135,7 @@ def make_pendant(prefix, x, y, bulb_z, ceil_z, shade_col=(0.30, 0.30, 0.32, 1.0)
     `bulb_z` — put the practical there (2026-09-18: two cafe pendants
     were lights with no fixture)."""
     make_lathe(f"{prefix}_Canopy", (x, y, ceil_z - 0.03), [(0.06, 0.0), (0.06, 0.02), (0.02, 0.03), (0.0, 0.03)], shade_col, segments=10)
-    make_tube(f"{prefix}_Cord", [(x, y, ceil_z - 0.03), (x, y, bulb_z + 0.12)], 0.005, cord_col, segments=5)
+    make_tube(f"{prefix}_Cord", [(x, y, ceil_z - 0.03), (x, y, bulb_z + 0.06)], 0.005, cord_col, segments=5)   # into the shade (2026-09-22: 4 cm short of it)
     make_lathe(f"{prefix}_Shade", (x, y, bulb_z - 0.02), [(shade_r, 0.0), (shade_r * 0.9, 0.02), (shade_r * 0.35, 0.14), (0.025, 0.16), (0.0, 0.16)], shade_col, segments=12)
     make_lathe(f"{prefix}_Bulb", (x, y, bulb_z - 0.05), [(0.0, 0.0), (0.03, 0.01), (0.032, 0.04), (0.02, 0.06), (0.02, 0.07), (0.0, 0.07)], (0.98, 0.94, 0.80, 1.0), segments=8)
 

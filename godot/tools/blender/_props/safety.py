@@ -26,9 +26,9 @@ def make_smoke_detector(prefix, anchor, *, palette=None):
     body = palette.get("body", P.PAPER)
     led = palette.get("led", (0.86, 0.42, 0.32, 1.0))
     cx, cy, ceil_z = anchor
-    make_cyl(f"{prefix}_Body", (cx, cy, ceil_z - 0.04),
+    make_cyl(f"{prefix}_Body", (cx, cy, ceil_z - 0.02),   # ON the ceiling (2026-09-22: 2 cm under it, in 22 rooms)
              0.10, 0.04, body)
-    make_box(f"{prefix}_LED", (cx + 0.04, cy, ceil_z - 0.06),
+    make_box(f"{prefix}_LED", (cx + 0.04, cy, ceil_z - 0.045),
              (0.012, 0.012, 0.012), led)
 
 

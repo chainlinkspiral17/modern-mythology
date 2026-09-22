@@ -404,7 +404,7 @@ def make_backyard_view(prefix, wall_y, span=6.0, tree=(-2.6, 3.4), fence_dist=4.
     nb = int((span * 2.0) / 0.16)
     for bi in range(nb):
         bx = -span + 0.08 + bi * 0.16
-        make_box(f"{prefix}_FenceBoard_{bi}", (bx, fy - 0.085, 0.80), (0.14, 0.02, 1.55),
+        make_box(f"{prefix}_FenceBoard_{bi}", (bx, fy - 0.085, 0.775), (0.14, 0.02, 1.55),   # to the ground (2026-09-22: 2.5 cm up)
                  fence_wood if bi % 5 else (fence_wood[0] * 0.9, fence_wood[1] * 0.9, fence_wood[2] * 0.9, 1.0))
     tx, ty = tree
     make_taper_cyl(f"{prefix}_TreeTrunk", (tx, wall_y + ty, 1.4), 0.16, 0.10, 2.8, (0.38, 0.30, 0.22, 1.0), segments=8)
