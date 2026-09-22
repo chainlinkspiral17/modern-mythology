@@ -67,16 +67,17 @@ def build_altar():
     for sgn in (-1, +1):
         make_cyl(f"Altar_Candle_{sgn:+d}", (ax + sgn*0.40, ay, 1.18), 0.04, 0.24, P.PAPER)
         make_cyl(f"Altar_Candle_Flame_{sgn:+d}", (ax + sgn*0.40, ay, 1.34), 0.025, 0.04, COL_VOTIVE)
-    make_box("Altar_Crucifix_V", (ax, ay, 1.40), (0.04, 0.04, 0.40), COL_PEW_WOOD)
-    make_box("Altar_Crucifix_H", (ax, ay, 1.50), (0.20, 0.04, 0.04), COL_PEW_WOOD)
-    # Votive rack to the right of the altar
+    make_box("Altar_Crucifix_V", (ax, ay, 1.26), (0.04, 0.04, 0.40), COL_PEW_WOOD)   # on the altar top (2026-09-22: 14 cm up)
+    make_box("Altar_Crucifix_H", (ax, ay, 1.36), (0.20, 0.04, 0.04), COL_PEW_WOOD)
+    # Votive rack to the right of the altar, on its stand
     vx, vy = +1.40, ay - 0.20
+    make_box("Votive_Stand", (vx, vy, 0.185), (0.06, 0.06, 0.37), COL_BELL_BRONZE)   # (2026-09-22: the rack hung at 0.37)
     make_box("Votive_Rack", (vx, vy, 0.42), (0.30, 0.30, 0.10), COL_BELL_BRONZE)
     for i in range(6):
         cx = vx - 0.20 + (i % 3) * 0.20
         cy = vy - 0.10 + (i // 3) * 0.20
         make_cyl(f"Votive_{i}", (cx, cy, 0.50), 0.025, 0.06, COL_VOTIVE)
-        make_cyl(f"Votive_Flame_{i}", (cx, cy, 0.58), 0.018, 0.03, COL_VOTIVE)
+        make_cyl(f"Votive_Flame_{i}", (cx, cy, 0.545), 0.018, 0.03, COL_VOTIVE)   # on the wick
 
 
 def build_pews():
@@ -84,9 +85,9 @@ def build_pews():
     for pi, py in enumerate([2.00, 3.80]):
         make_box(f"Pew_{pi}_Seat",   (0.0, py, 0.46), (2.20, 0.40, 0.06), COL_PEW_WOOD)
         make_box(f"Pew_{pi}_Back",   (0.0, py-0.20, 0.80), (2.20, 0.06, 0.68), COL_PEW_WOOD)
-        make_box(f"Pew_{pi}_Kneeler", (0.0, py+0.32, 0.12), (2.20, 0.16, 0.06), COL_PEW_WOOD)
+        make_box(f"Pew_{pi}_Kneeler", (0.0, py+0.32, 0.04), (2.20, 0.16, 0.06), COL_PEW_WOOD)   # on the floor (2026-09-22)
         for sgn in (-1, +1):
-            make_box(f"Pew_{pi}_End_{sgn:+d}", (sgn*1.12, py, 0.46), (0.04, 0.40, 0.80), COL_PEW_WOOD)
+            make_box(f"Pew_{pi}_End_{sgn:+d}", (sgn*1.12, py, 0.43), (0.04, 0.40, 0.86), COL_PEW_WOOD)   # to the floor
 
 
 def build_statue_niche():
@@ -102,7 +103,7 @@ def build_statue_niche():
 def build_bell_pull():
     # Rope dangling from ceiling in SW corner.
     bx, by = -ROOM_W/2.0 + 0.40, 0.60
-    make_box("BellPull_Rope", (bx, by, 1.70), (0.04, 0.04, 1.60), COL_BELL_BRONZE)
+    make_box("BellPull_Rope", (bx, by, (CEIL + 0.89) / 2.0), (0.04, 0.04, CEIL - 0.89), COL_BELL_BRONZE)   # from the ceiling (2026-09-22: 0.9 m short)
     make_cyl("BellPull_Knot", (bx, by, 0.94), 0.08, 0.10, COL_BELL_BRONZE)
 
 
@@ -111,7 +112,7 @@ def build_ceiling_infra():
     make_sprinkler("Spr", (0.0, 1.5, CEIL))
     # Hanging brass pendant over the altar
     make_cyl("Pendant_Cord", (0.0, ROOM_D-1.20, CEIL-0.40), 0.012, 0.80, P.METAL_BLACK)
-    make_cyl("Pendant_Bowl", (0.0, ROOM_D-1.20, CEIL-0.96), 0.16, 0.08, COL_BELL_BRONZE)
+    make_cyl("Pendant_Bowl", (0.0, ROOM_D-1.20, CEIL-0.84), 0.16, 0.08, COL_BELL_BRONZE)   # at the cord's end (2026-09-22: 12 cm under it)
 
 
 def build_decor():
@@ -212,11 +213,12 @@ def build_facade_2026_08():
     make_box("Church_Door", (0.0, -0.02, 1.30), (1.10, 0.08, 2.30), (0.36, 0.26, 0.16, 1.0))
     make_box("Facade_Face", (0.0, -0.05, 1.85), (5.2, 0.06, 3.7), wood)
     make_box("Facade_Gable", (0.0, -0.05, 4.2), (3.4, 0.06, 1.2), wood)
-    make_box("Steeple_Base", (0.0, 0.8, 4.6), (1.2, 1.2, 1.6), wood)
-    make_box("Steeple_Spire_0", (0.0, 0.8, 5.9), (0.85, 0.85, 1.2), trim)
-    make_box("Steeple_Spire_1", (0.0, 0.8, 7.1), (0.5, 0.5, 1.4), trim)
-    make_box("Steeple_Cross_V", (0.0, 0.8, 8.2), (0.06, 0.06, 0.8), (0.74, 0.58, 0.28, 1.0))
-    make_box("Steeple_Cross_H", (0.0, 0.8, 8.4), (0.4, 0.06, 0.06), (0.74, 0.58, 0.28, 1.0))
+    # on the roof slab (top 3.50; 2026-09-22: 30 cm of air under the base)
+    make_box("Steeple_Base", (0.0, 0.8, 4.3), (1.2, 1.2, 1.6), wood)
+    make_box("Steeple_Spire_0", (0.0, 0.8, 5.6), (0.85, 0.85, 1.2), trim)
+    make_box("Steeple_Spire_1", (0.0, 0.8, 6.8), (0.5, 0.5, 1.4), trim)
+    make_box("Steeple_Cross_V", (0.0, 0.8, 7.9), (0.06, 0.06, 0.8), (0.74, 0.58, 0.28, 1.0))
+    make_box("Steeple_Cross_H", (0.0, 0.8, 8.1), (0.4, 0.06, 0.06), (0.74, 0.58, 0.28, 1.0))
     # The shimmering asphalt apron + curb
     make_box("Asphalt_Apron", (0.0, -6.5, -0.01), (14.0, 10.0, 0.04), (0.22, 0.22, 0.24, 1.0))
     make_box("Curb", (0.0, -9.0, 0.05), (14.0, 0.25, 0.12), (0.55, 0.53, 0.48, 1.0))
@@ -257,7 +259,7 @@ def build_wear_personality_2026_08():
     # THE PAIR OF KNEE-DENTS · front kneeler (pew 0 at y=2.0,
     # kneeler at y=2.32), centered, 0.34m apart.
     for sgn in (-1, 1):
-        make_box("Wear_Knee_%+d" % sgn, (sgn * 0.17, 2.32, 0.155),
+        make_box("Wear_Knee_%+d" % sgn, (sgn * 0.17, 2.32, 0.0725),   # on the kneeler (now on the floor)
                  (0.14, 0.13, 0.004), knee)
     # The aisle: narrow, centered, door to altar. Walked in step.
     make_traffic_wear("Wear_Aisle",

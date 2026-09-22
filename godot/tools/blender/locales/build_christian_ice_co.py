@@ -70,6 +70,11 @@ def build_ice_letters_outside():
         # Strokes carved out — abstracted with darker boxes inside
         make_box(f"ICE_Letter_Stroke_{label}", (lx, -1.50, 4.50),
                  (0.60, 0.05, 0.80), (0.32, 0.42, 0.52, 1.0))
+    # the sign's two posts to the lot (2026-09-22: the letters hung on
+    # a parapet that was never built)
+    for sgn in (-1, 1):
+        make_box(f"ICE_Sign_Post_{sgn:+d}", (sgn * 1.85, -1.40, 1.95), (0.10, 0.10, 3.90), COL_BRINE_TANK)
+    make_box("ICE_Sign_Rail", (0.0, -1.40, 3.87), (3.90, 0.10, 0.06), COL_BRINE_TANK)   # the rail the three letters stand on
     # Pole sign also far back
     make_cyl("PoleSign_Pole", (-3.0, -3.0, 3.0), 0.10, 6.0, COL_BRINE_TANK)
     make_box("PoleSign_BG", (-3.0, -3.0, 5.80), (1.20, 0.10, 0.80), COL_NEON_ICE)
@@ -108,7 +113,7 @@ def build_ice_block_freezer():
             make_box(f"IceBlock_{col}_{row}", (fx + ix, fy, iz),
                      (0.50, 0.40, 0.40), COL_ICE_BLOCK)
     # Frost coil pipe visible at the top
-    make_cyl("FrostCoil", (fx, fy-0.30, 2.30), 0.05, 3.00, COL_PIPE, axis='X')
+    make_cyl("FrostCoil", (fx, fy-0.30, 2.33), 0.05, 3.00, COL_PIPE, axis='X')   # under the freezer's top (2026-09-22)
 
 
 def build_chest_freezers():
@@ -131,7 +136,7 @@ def build_machinery():
     cx1, cy1 = +1.80, 6.50
     make_box("Comp1_Base", (cx1, cy1, 0.30), (1.00, 0.80, 0.60), COL_COMPRESSOR)
     make_cyl("Comp1_Drum", (cx1, cy1, 0.80), 0.30, 0.40, COL_COMPRESSOR, segments=12)
-    make_cyl("Comp1_Pipe_Top", (cx1, cy1, 1.30), 0.04, 0.40, COL_PIPE)
+    make_cyl("Comp1_Pipe_Top", (cx1, cy1, 1.20), 0.04, 0.40, COL_PIPE)   # from the drum's top (2026-09-22: 10 cm of air)
     # Compressor 2
     cx2, cy2 = +3.00, 6.50
     make_box("Comp2_Base", (cx2, cy2, 0.30), (0.80, 0.80, 0.60), COL_COMPRESSOR)
@@ -142,13 +147,19 @@ def build_machinery():
     make_cyl("BrineTank_Top", (bx, by, 1.84), 0.72, 0.08, COL_PIPE, segments=14)
     # Connecting pipes (red = hot gas, plain = brine)
     make_box("Pipe_Hot_1", (cx1, cy1, 1.60), (0.04, 0.04, 0.50), COL_PIPE_RED)
-    make_box("Pipe_Hot_2", ((cx1+bx)/2.0, (cy1+by)/2.0, 1.84),
-             (abs(cx1-bx), 0.04, 0.04), COL_PIPE_RED)
-    make_box("Pipe_Brine", ((cx2+bx)/2.0, (cy2+by)/2.0, 1.50),
+    # (2026-09-22: the hot line was a zero-length box — compressor 1 and
+    # the tank share an x — and the brine line cut a diagonal that touched
+    # neither end; runs along the axes now, with a riser off compressor 2)
+    make_box("Pipe_Hot_2", (cx1, (cy1+by)/2.0, 1.84),
+             (0.04, abs(cy1-by), 0.04), COL_PIPE_RED)
+    make_box("Pipe_Brine_Riser", (cx2, cy2, 1.25), (0.04, 0.04, 0.50), COL_PIPE)
+    make_box("Pipe_Brine", ((cx2+bx)/2.0, cy2, 1.50),
              (abs(cx2-bx), 0.04, 0.04), COL_PIPE)
-    # Pressure gauges
-    for gi, (gx, gy) in enumerate([(cx1+0.20, cy1-0.40), (cx2-0.20, cy2-0.40), (bx, by-0.70)]):
-        make_cyl(f"Gauge_{gi}", (gx, gy, 1.20), 0.06, 0.02, P.PAPER, axis='Y', segments=10)
+    make_box("Pipe_Brine_2", (bx, (cy2 + by - 0.70) / 2.0, 1.50),   # to the tank's side
+             (0.04, abs(cy2 - (by - 0.70)), 0.04), COL_PIPE)
+    # Pressure gauges — on the lines (2026-09-22: two hung beside the drums)
+    for gi, (gx, gy, gz) in enumerate([(cx1, cy1-0.03, 1.60), (cx2, cy2-0.03, 1.30), (bx, by-0.70, 1.20)]):
+        make_cyl(f"Gauge_{gi}", (gx, gy, gz), 0.06, 0.02, P.PAPER, axis='Y', segments=10)
 
 
 def build_ceiling_infra():
@@ -289,8 +300,11 @@ def build_star_wave2_props():
 
     # The framed grandfather photograph over the register
     # (register is at the counter · frame goes up on the wall behind)
+    # on the block freezer's glass (y 3.40) — the "wall behind the
+    # register" is the freezer; 2026-09-22 the frame hung 0.4 m in
+    # front of it
     frame_x = rc_x
-    frame_y = rc_y + 0.60
+    frame_y = 3.4175
     make_box("Emile_Frame_Body",
              (frame_x, frame_y - 0.02, 2.20),
              (0.30, 0.02, 0.24),
@@ -372,6 +386,8 @@ def build_star_wave2_props():
                  0.014, 1.60,
                  (0.42, 0.30, 0.22, 1.0), segments=6, axis='Z')
     # Frame (bigger than the interior photograph)
+    make_box("Easel_Ledge", (easel_x, easel_y, 1.26), (0.50, 0.30, 0.03),   # the ledge across the legs (2026-09-22)
+             (0.42, 0.30, 0.22, 1.0))
     make_box("Easel_PhotoFrame",
              (easel_x, easel_y, 1.60),
              (0.90, 0.03, 0.68),
@@ -387,7 +403,7 @@ def build_star_wave2_props():
     mag_y = -5.20
     # Burlap-wrapped root ball
     make_cyl("Magnolia_RootBall",
-             (mag_x, mag_y, 0.24),
+             (mag_x, mag_y, 0.18),   # on the ground (2026-09-22: 6 cm up)
              0.18, 0.36,
              (0.72, 0.60, 0.34, 1.0), segments=8, axis='Z')
     # Trunk
@@ -420,7 +436,7 @@ def build_star_wave2_props():
              (0.78, 0.62, 0.30, 1.0), segments=10, axis='X')
     # Blade at the bottom
     make_box("Theriot_Shovel_Blade",
-             (shovel_x, shovel_y, 0.14),
+             (shovel_x, shovel_y, 0.10),   # on the lot (2026-09-22)
              (0.14, 0.04, 0.20),
              (0.78, 0.62, 0.30, 1.0))
 
@@ -473,7 +489,7 @@ def build_ice_tools_and_crates():
     px, py = +3.20, 5.20
     make_box("CratePallet", (px, py, 0.06), (1.00, 1.00, 0.12), (0.52, 0.40, 0.26, 1.0))
     for ci, (cxo, cyo, cz) in enumerate([(-0.24, -0.22, 0.34), (+0.24, -0.22, 0.34),
-                                          (0.0, +0.24, 0.34), (0.0, 0.0, 0.78)]):
+                                          (0.0, +0.24, 0.34), (0.0, 0.0, 0.74)]):   # the top crate ON the others (2026-09-22)
         cx = px + cxo; cy = py + cyo
         make_box(f"Crate_{ci}", (cx, cy, cz), (0.44, 0.40, 0.40), (0.60, 0.46, 0.30, 1.0))
         for si in range(3):

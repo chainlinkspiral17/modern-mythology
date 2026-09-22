@@ -1863,14 +1863,31 @@ the two NEXCORP stations (impulse rack items with no rack; the
 no-smoking placard 0.4 m from its post; tubes 5 cm short; the
 PENDING folder 0.6 m off its desk). Two insert markers were re-aimed
 on the way (centro's meat case: the trays it framed had been on air
-across the room). NEXT: the long tail — fifteen rooms at 10–15
-(christian ice, estuary_7_template, parish cemetery, roadside
-chapel, elicia, mixing glass, montreal, cliffside circus, caldwell,
-equipment shed, gym, harmony commercial, le roulant, the two new
-orleans rooms) and then the sub-10s; `--write-baseline` after each
-pass; start each room with the region dump (`support_audit`'s
-boxes via `VO.boxes_for`) around the float — half the fixes are "on
-what?" questions the builder answers wrong.
+across the room). FIFTH PASS, same day — seven of the long tail to zero (422 → 326):
+CHRISTIAN ICE (the ICE letters on a parapet never built — on two
+posts and a rail now; a zero-length hot-gas pipe and a brine line
+cutting a diagonal that touched neither end; the grandfather's
+photo 0.4 m in front of the freezer it was "on"), the PARISH
+CEMETERY (every course of the mausoleum's roof 5–20 cm over the one
+below; the Menard markers 40 cm up BETWEEN the vaults; the gate's
+swung leaf a metre inside the gateway, its y hand-typed as -8 in a
+-9 fence), the ROADSIDE CHAPEL (steeple 30 cm over the roof slab;
+bell rope 0.9 m short of the ceiling; votive rack on a stand now),
+ELICIA'S (three door hinges in a 3 m opening with no door — a leaf
+and a sidelight panel now; the light switch in the doorway; ring
+light LEDs on a hoop), the MIXING GLASS (both tool stations 0.6 m
+south of the bar arms they were "on"; wear patches inside the back
+wall; the banquettes on plinths), MONTREAL (the drying rack, bowl,
+mug and kettle south of the fridge on air — on the counter; the
+bookshelf's sides 20 cm up) and the CLIFFSIDE CIRCUS (bunting: one
+sagging tube; string bulbs on drops from their wire). NEXT: the
+rest of the tail — estuary_7_template 15, caldwell 10, equipment
+shed 10, gym 10, harmony commercial 10, le roulant 10, the two new
+orleans rooms 10, daily grind 9, little switzerland 9, meadowlark 9,
+natalie 9, asylum ward c 8 — then the sub-8s; `--write-baseline`
+after each pass; start each room with the region dump
+(`support_audit`'s boxes via `VO.boxes_for`) around the float —
+half the fixes are "on what?" questions the builder answers wrong.
 
 **2026-09-19 · DESIGN · the two decorative checks made real, the first
 remembered choice.** Nate's basement (ch6) and Tem staying (ch8): the

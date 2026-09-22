@@ -45,16 +45,24 @@ def build_shell():
         make_crown_molding(nm, wall_x=wx, wall_y=wy, length=length, axis=ax, ceil_z=CEIL, palette={"wood": COL_WOOD})
     make_window("Window_SE", (+2.0, 0.0, 1.40), width=1.40, height=1.20)
     make_window("Window_W", (-ROOM_W/2.0+0.02, 3.0, 1.40), width=1.60, height=1.40, axis='Y')
+    # the front door: a leaf on its hinges, a sidelight panel to the
+    # jamb (2026-09-22: three hinges hung in the 3 m opening with no door)
+    make_box("FrontDoor_Jamb_Panel", (-1.30, 0.0, CEIL/2.0 - 0.15), (0.40, 0.20, CEIL - 0.30), PAL["wall"])
+    make_box("FrontDoor_Leaf", (-0.65, 0.05, 1.05), (0.90, 0.05, 2.10), COL_WOOD)
     make_door_hinges("FrontDoor_Hinge", edge_x=-1.10, edge_y=0.0, edge_z_centers=[0.30, 1.05, 1.80], axis='X')
 
 def build_living():
     sx, sy = 0.0, 1.50
+    make_box("Sofa_Base", (sx, sy, 0.12), (1.90, 0.76, 0.24), (0.28, 0.32, 0.40, 1.0))   # (2026-09-22: the sofa hung at 0.24)
     make_box("Sofa_Seat", (sx, sy, 0.34), (2.0, 0.80, 0.20), COL_COUCH)
     make_box("Sofa_Back", (sx, sy+0.32, 0.74), (2.0, 0.20, 0.60), COL_COUCH)
     for cs in (-1, +1):
         make_box(f"Sofa_Arm_{cs:+d}", (sx + cs*1.04, sy, 0.50), (0.16, 0.80, 0.42), (0.28, 0.32, 0.40, 1.0))
     # Coffee table low
     make_box("CoffeeTable", (sx, sy-0.80, 0.30), (1.20, 0.50, 0.04), COL_WOOD)
+    for lx_ in (-1, 1):   # legs (2026-09-22)
+        for ly_ in (-1, 1):
+            make_box(f"CoffeeTable_Leg_{lx_:+d}_{ly_:+d}", (sx + lx_ * 0.55, sy-0.80 + ly_ * 0.20, 0.14), (0.04, 0.04, 0.28), COL_WOOD)
     # Vinyl shelf east wall
     for shf in range(4):
         make_box(f"VinylShelf_{shf}", (+3.20, 3.0, 0.40+shf*0.36), (0.40, 1.20, 0.02), COL_WOOD)
@@ -79,6 +87,7 @@ def build_studio_nook():
     make_cyl("Mic_Pop", (mx-0.30, my-0.10, 1.04), 0.07, 0.06, COL_RING_LIGHT, axis='Y')
     # Ring light on a separate pole
     make_cyl("Ring_Pole", (mx+0.40, my, 0.80), 0.012, 0.76, P.METAL_BLACK)
+    make_cyl("Ring_Light_Hoop", (mx+0.40, my-0.04, 1.20), 0.24, 0.015, P.METAL_BLACK, axis='Y', segments=16)   # the hoop the LEDs sit on (2026-09-22)
     for ri in range(8):
         import math
         ang = ri * 0.785
@@ -151,7 +160,7 @@ def build_detail_pass_2026_08():
     make_wall_tint_band("Band_E", (ROOM_W / 2.0 - 0.105, ROOM_D / 2.0, 0.0),
                         length=ROOM_D - 0.4, axis='Y', band_z=CEIL - 0.16, tint=band)
     make_threshold("Threshold_Entry", (0.0, 0.10), width=1.9, axis='X')
-    make_light_switch("Switch_Entry", (1.15, 0.0), axis='X', face_sign=1, aged=True)
+    make_light_switch("Switch_Entry", (1.65, 0.0), axis='X', face_sign=1, aged=True)   # on the wall east of the opening (2026-09-22: it hung in the doorway)
     make_wall_outlet("Outlet_W", (-ROOM_W / 2.0, ROOM_D * 0.35), axis='Y',
                      face_sign=1, aged=True)
     make_wall_outlet("Outlet_E", (ROOM_W / 2.0, ROOM_D * 0.70), axis='Y',
@@ -181,7 +190,7 @@ def build_use_states_d4():
     make_box("Pack_Box_B", (-1.45, 0.55, 0.15), (0.42, 0.34, 0.30),
              (0.50, 0.38, 0.26, 1.0))
     for sgn in (-1, 1):
-        make_box(f"Pack_Box_B_Flap_{sgn:+d}", (-1.45 + sgn * 0.24, 0.55, 0.34),
+        make_box(f"Pack_Box_B_Flap_{sgn:+d}", (-1.45 + sgn * 0.24, 0.55, 0.31),   # on the box's rim
                  (0.10, 0.32, 0.02), (0.48, 0.36, 0.25, 1.0))
     # The second teacup — one on the coffee table (marker), one
     # abandoned on the desk corner

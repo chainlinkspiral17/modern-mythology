@@ -31,7 +31,7 @@ import os, sys, math
 _BT = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)), ".."))
 if _BT not in sys.path: sys.path.insert(0, _BT)
 from _props.geometry import (clear_scene, make_box, make_cyl,
-                             make_taper_cyl, export_glb)
+                             make_taper_cyl, make_tube, export_glb)
 
 COL_GRASS = (0.40, 0.44, 0.30, 1.0)      # salt-wind headland grass
 COL_DIRT = (0.46, 0.40, 0.32, 1.0)
@@ -166,28 +166,32 @@ def build_entrance():
     # roof corner down to a flagpole on shack 0, flags hanging from
     # it. (They used to float mid-air with no rope and no second
     # anchor — "a clothesline hovering in air.")
-    make_cyl("Bunting_Pole", (2.2, 9.8, 3.4), 0.05, 1.9, COL_SIGN_WOOD, segments=6)
+    make_cyl("Bunting_Pole", (2.2, 9.7, 3.4), 0.05, 1.9, COL_SIGN_WOOD, segments=6)   # on the line's y (2026-09-22: 10 cm off it)
     ax, az = -1.0, 6.05     # main roof corner anchor
     bx2, bz = 2.2, 4.30     # flagpole top
     segs = 8
-    for i in range(segs):
-        t0 = i / segs
-        t1 = (i + 1) / segs
-        sag0 = 0.55 * 4.0 * t0 * (1.0 - t0)
-        sag1 = 0.55 * 4.0 * t1 * (1.0 - t1)
-        x0, z0 = ax + (bx2 - ax) * t0, az + (bz - az) * t0 - sag0
-        x1, z1 = ax + (bx2 - ax) * t1, az + (bz - az) * t1 - sag1
-        mx, mz = (x0 + x1) / 2.0, (z0 + z1) / 2.0
-        seg_len = ((x1 - x0) ** 2 + (z1 - z0) ** 2) ** 0.5
-        make_box(f"Bunting_Line_{i}", (mx, 9.7, mz), (seg_len, 0.025, 0.025), COL_SIGN_WOOD)
-        if i < segs - 1:
-            col = COL_BUNTING if i % 2 == 0 else COL_BUNTING_B
-            make_box(f"Bunting_{i}", (x1, 9.7, z1 - 0.20), (0.30, 0.04, 0.35), col)
+    # one sagging line (2026-09-22: eight level stubs at eight heights,
+    # each touching neither its neighbours nor its flag)
+    pts = []
+    for i in range(segs + 1):
+        t = i / segs
+        sag = 0.55 * 4.0 * t * (1.0 - t)
+        pts.append((ax + (bx2 - ax) * t, 9.7, az + (bz - az) * t - sag))
+    make_tube("Bunting_Line", pts, 0.0125, COL_SIGN_WOOD, segments=4)
+    for i in range(segs - 1):
+        x1, _, z1 = pts[i + 1]
+        col = COL_BUNTING if i % 2 == 0 else COL_BUNTING_B
+        make_box(f"Bunting_{i}", (x1, 9.7, z1 - 0.19), (0.30, 0.04, 0.35), col)
     # String lights along the porch eave — warm evening bulbs
     for i in range(9):
         lx = -6.7 + i * 0.68
-        make_cyl(f"StringBulb_{i}", (lx, 7.28, 2.62 - 0.10 * (1.0 - abs(i - 4) / 4.0)),
+        zb = 2.62 - 0.10 * (1.0 - abs(i - 4) / 4.0)
+        make_cyl(f"StringBulb_{i}", (lx, 7.28, zb),
                  0.045, 0.09, COL_WIN_WARM, segments=6)
+        drop = 2.69 - (zb + 0.045)   # each bulb on its drop from the wire (2026-09-22)
+        if drop > 0.02:
+            make_cyl(f"StringDrop_{i}", (lx, 7.28, zb + 0.045 + drop / 2.0), 0.004, drop,
+                     (0.20, 0.18, 0.16, 1.0), segments=4)
     make_box("StringWire", (-4.0, 7.28, 2.70), (5.6, 0.02, 0.02), (0.20, 0.18, 0.16, 1.0))
 
 

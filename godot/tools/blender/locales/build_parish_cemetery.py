@@ -105,11 +105,12 @@ def build_central_mausoleum():
     # Lintel inscription plaque
     make_box("Mauso_Inscription", (mx, my - 2.23, 2.80), (1.40, 0.02, 0.30), COL_BRASS)
     # Stepped roof — small pediment + pyramid spire
-    make_box("Mauso_Pediment", (mx, my, 3.80), (3.00, 4.60, 0.30), COL_VAULT_SHADOW)
-    make_box("Mauso_Cap", (mx, my, 4.30), (1.80, 1.80, 0.40), COL_MAUSOLEUM)
-    make_box("Mauso_Spire", (mx, my, 4.80), (0.40, 0.40, 0.80), COL_VAULT_SHADOW)
+    # (2026-09-22: every course of the roof hung 5–20 cm over the one below)
+    make_box("Mauso_Pediment", (mx, my, 3.75), (3.00, 4.60, 0.30), COL_VAULT_SHADOW)
+    make_box("Mauso_Cap", (mx, my, 4.10), (1.80, 1.80, 0.40), COL_MAUSOLEUM)
+    make_box("Mauso_Spire", (mx, my, 4.70), (0.40, 0.40, 0.80), COL_VAULT_SHADOW)
     # Cross atop
-    make_box("Mauso_Cross_V", (mx, my, 5.40), (0.06, 0.06, 0.40), COL_BRASS)
+    make_box("Mauso_Cross_V", (mx, my, 5.30), (0.06, 0.06, 0.40), COL_BRASS)
     make_box("Mauso_Cross_H", (mx, my, 5.50), (0.30, 0.06, 0.06), COL_BRASS)
 
 
@@ -152,7 +153,7 @@ def build_perimeter_iron_fence_and_gate():
         make_box(f"GatePier_{sgn:+d}", (sgn*1.50, fence_y, 1.50),
                  (0.40, 0.40, 3.00), COL_MAUSOLEUM)
         # Ball atop pier
-        make_cyl(f"GatePier_Ball_{sgn:+d}", (sgn*1.50, fence_y, 3.20),
+        make_cyl(f"GatePier_Ball_{sgn:+d}", (sgn*1.50, fence_y, 3.10),   # on the pier (2026-09-22)
                  0.20, 0.20, COL_VAULT_SHADOW, segments=10)
     # Gate leaves (half-open)
     make_box("Gate_Leaf_W", (-1.00, fence_y - 0.40, 1.00),
@@ -196,9 +197,9 @@ def build_judgement_dressing():
     # Half-open gate · already built. Add an indicator showing the
     # right leaf is swung in.
     gate_x = 0.0
-    gate_y = -8.0
+    gate_y = -9.0   # fence_y (2026-09-22: the indicator used -8.0, a metre inside the gate)
     make_box("Gate_OpenLeaf_Indicator",
-             (gate_x + 0.30, gate_y + 0.20, 1.20),
+             (gate_x + 1.275, gate_y + 0.40, 1.20),   # swung in against the east pier (2026-09-22: it hung mid-gateway)
              (0.05, 0.40, 1.80),
              (0.18, 0.16, 0.14, 1.0))
 
@@ -212,8 +213,8 @@ def build_judgement_dressing():
     lectern_y = mau_y - 2.90
     # Stone pedestal
     make_box("Lectern_Pedestal",
-             (lectern_x, lectern_y, 0.50),
-             (0.50, 0.50, 1.00),
+             (lectern_x, lectern_y, 0.53),
+             (0.50, 0.50, 1.06),   # up to the reading top (2026-09-22: 6 cm short)
              (0.72, 0.68, 0.60, 1.0))
     # Slanted reading top
     make_box("Lectern_Top",
@@ -326,27 +327,30 @@ def build_judgement_wave2_props():
         # Each slot has an existing vault; we add a small marker on top
         marker_names = ["Sylvie", "Emile", "Rose", "Charles"]
         name = marker_names[slot_i]
-        my = slot_offset
+        # standing on the grass against each vault's south face (the
+        # vaults are at y ±1.5, ±3.5 with 0.8 m bodies; 2026-09-22 the
+        # markers hung 40 cm up between them)
+        my = slot_offset + 0.07
         # Small headstone/plaque
         make_box("MenardPlot_%s_Marker" % name,
-                 (vre_x, my, 0.60),
+                 (5.0, my, 0.22),
                  (0.36, 0.06, 0.40),
                  (0.72, 0.68, 0.60, 1.0))
         # Engraved name (a darker rectangle)
         make_box("MenardPlot_%s_Engraving" % name,
-                 (vre_x, my - 0.031, 0.60),
+                 (5.0, my - 0.031, 0.22),
                  (0.28, 0.001, 0.10),
                  (0.20, 0.16, 0.12, 1.0))
 
     # Sylvie's wreath (evergreen circle with red bow)
     sylv_y = +3.0
     make_cyl("Sylvie_Wreath_Ring",
-             (vre_x + 0.20, sylv_y, 0.40),
+             (5.20, sylv_y + 0.07, 0.16),   # leaning on her marker, on the grass (2026-09-22)
              0.14, 0.03,
              (0.24, 0.38, 0.22, 1.0), segments=12, axis='Y')
     # Red satin bow on the wreath
     make_box("Sylvie_Wreath_Bow",
-             (vre_x + 0.20, sylv_y - 0.14, 0.34),
+             (5.20, sylv_y + 0.055, 0.10),
              (0.001, 0.06, 0.06),
              (0.72, 0.16, 0.14, 1.0))
     # Trimmed ivy at the base
@@ -380,7 +384,7 @@ def build_judgement_wave2_props():
     # Emile's small brass shovel-blade token
     em_y = +1.0
     make_box("EmilePlot_ShovelBladeToken",
-             (vre_x + 0.10, em_y - 0.20, 0.08),
+             (5.10, em_y - 0.10, 0.024),   # on the grass (2026-09-22: 6 cm up)
              (0.05, 0.03, 0.008),
              (0.78, 0.62, 0.30, 1.0))
 
@@ -426,21 +430,21 @@ def build_judgement_wave2_props():
     vrw_x = -4.20
     wmf_y = +2.20   # slot 8 approximate
     make_box("WillaMay_Stone",
-             (vrw_x, wmf_y, 0.28),
+             (vrw_x, wmf_y, 0.14),   # on the grass (2026-09-22: 14 cm up)
              (0.20, 0.08, 0.24),
              (0.72, 0.68, 0.60, 1.0))
     # Engraved 'WILLA MAY FONTENOT · 1958-1958'
     make_box("WillaMay_Engraving",
-             (vrw_x, wmf_y - 0.041, 0.28),
+             (vrw_x, wmf_y - 0.041, 0.14),
              (0.16, 0.001, 0.06),
              (0.20, 0.16, 0.12, 1.0))
     # Cecile's stone adjacent (mother · relocated to be next to WMF in '94)
     make_box("Cecile_Stone_Adjacent",
-             (vrw_x, wmf_y - 0.40, 0.28),
+             (vrw_x, wmf_y - 0.40, 0.14),
              (0.20, 0.08, 0.24),
              (0.72, 0.68, 0.60, 1.0))
     make_box("Cecile_Engraving",
-             (vrw_x, wmf_y - 0.44, 0.28),
+             (vrw_x, wmf_y - 0.44, 0.14),
              (0.16, 0.001, 0.06),
              (0.20, 0.16, 0.12, 1.0))
 
@@ -448,7 +452,7 @@ def build_judgement_wave2_props():
     vrn_y = +4.20
     tab_x = +2.00
     make_box("TerryBertrand_SharedStone",
-             (tab_x, vrn_y, 0.30),
+             (tab_x, vrn_y, 0.16),   # on the path (2026-09-22: 14 cm up)
              (0.36, 0.08, 0.28),
              (0.72, 0.68, 0.60, 1.0))
     # Engraving 'love and rest · 1979'

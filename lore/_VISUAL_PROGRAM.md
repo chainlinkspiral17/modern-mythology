@@ -338,10 +338,12 @@ third took the riverboat, the school field, the solenade garden and
 the cedar tower to zero and the repo to 652; the fourth took nine
 more (carnival, centro, hierophant circuit, courthouse, el rancho,
 bungalow, salty tome, both nexcorp stations) to zero and the repo
-to 422. This pass runs ahead of every other background item now: a
-room that floats is not a draft of anything. Next: the long tail of
-rooms at 10–15 (christian ice, parish cemetery, roadside chapel,
-elicia, mixing glass, montreal, cliffside circus …).
+to 422; the fifth took seven of the long tail (christian ice, parish
+cemetery, roadside chapel, elicia, mixing glass, montreal, cliffside
+circus) to zero and the repo to 326. This pass runs ahead of every
+other background item now: a room that floats is not a draft of
+anything. Next: the rest of the tail (estuary_7_template 15, then
+the rooms at 8–10).
 
 **Draft targets, by volume, by uses:**
 - **Vol 7 (current):** `cabin_interior` (31) · `lena_apartment` (23)

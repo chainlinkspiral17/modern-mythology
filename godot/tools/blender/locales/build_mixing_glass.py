@@ -68,7 +68,7 @@ def build_backbar():
     # Three shelves of bottles
     for si in range(3):
         sz = 1.30 + si * 0.40
-        make_box(f"Backbar_Shelf_{si}", (0.0, ROOM_D-0.30, sz), (3.00, 0.30, 0.02), COL_BACK_WOOD)
+        make_box(f"Backbar_Shelf_{si}", (0.0, ROOM_D-0.30, sz), (3.00, 0.36, 0.02), COL_BACK_WOOD)   # back to the mirror (2026-09-22: 5 cm of air)
         for bi in range(15):
             bx = -1.40 + bi * 0.20
             cycle = bi % 3
@@ -81,6 +81,8 @@ def build_booths():
     for bi in range(4):
         by = 1.20 + bi * 1.42
         # Banquette against W wall
+        make_box(f"Booth_{bi}_Plinth", (-ROOM_W/2.0 + 0.40, by, 0.205),   # to the floor (2026-09-22: the banquettes hung at 0.41)
+                 (0.46, 1.46, 0.41), COL_BOOTH_LEATHER)
         make_box(f"Booth_{bi}_Bench", (-ROOM_W/2.0 + 0.40, by, 0.46),
                  (0.50, 1.50, 0.10), COL_BOOTH_LEATHER)
         make_box(f"Booth_{bi}_Back",  (-ROOM_W/2.0 + 0.20, by, 0.84),
@@ -255,7 +257,7 @@ def build_temperance_wave2_props():
     # Citrus prep tray on the back bar (west end)
     prep_x = -1.10
     prep_y = ROOM_D - 0.30
-    prep_z = 1.22
+    prep_z = 1.13   # the back bar's top (2026-09-22: 9 cm up)
     make_box("PreShift_CuttingBoard",
              (prep_x, prep_y, prep_z + 0.008),
              (0.32, 0.28, 0.016),
@@ -353,9 +355,9 @@ def build_temperance_wave2_props():
              (0.86, 0.92, 0.96, 0.80))
     # Small metal scoop resting on the ice
     make_cyl("LastCall_IceScoop_Handle",
-             (+0.30, 7.30, 1.14),
+             (+0.28, 7.30, 1.12),
              0.008, 0.16,
-             (0.78, 0.80, 0.82, 1.0), segments=6, axis='Y')
+             (0.78, 0.80, 0.82, 1.0), segments=6, axis='X')   # out of the cup (2026-09-22: beside it, on air)
     make_box("LastCall_IceScoop_Cup",
              (+0.20, 7.30, 1.10),
              (0.06, 0.08, 0.05),
@@ -389,12 +391,12 @@ def build_temperance_wave2_props():
              (0.30, 0.52, 0.78, 1.0))
     # Chest lid
     make_box("LastCall_BackupIceChest_Lid",
-             (ax_door + 0.20, ay_door + 0.90, 0.38),
+             (ax_door + 0.20, ay_door + 0.90, 0.255),   # on the chest (2026-09-22: 12 cm over it)
              (0.36, 0.30, 0.03),
              (0.28, 0.50, 0.76, 1.0))
     # Handle recess (a darker line on top)
     make_box("LastCall_BackupIceChest_HandleLine",
-             (ax_door + 0.20, ay_door + 0.90, 0.40),
+             (ax_door + 0.20, ay_door + 0.90, 0.272),
              (0.24, 0.02, 0.006),
              (0.18, 0.34, 0.58, 1.0))
 
@@ -409,7 +411,7 @@ def build_bar_tools_and_glassware():
     COL_OLIVE = (0.42, 0.52, 0.24, 1.0); COL_TIN = (0.72, 0.74, 0.76, 1.0)
 
     # Bar-tools station on the E-arm bar top (bar top z ~1.06)
-    tx, ty, tz = +1.50, 5.20, 1.08
+    tx, ty, tz = +1.50, 6.10, 1.08   # ON the east arm (2026-09-22: 0.6 m south of it)
     make_box("Tools_Mat", (tx, ty, tz), (0.36, 0.26, 0.01), (0.16, 0.14, 0.12, 1.0))
     make_cyl("Tools_ShakerTin", (tx - 0.10, ty, tz + 0.09), 0.05, 0.16, COL_TIN, segments=12)
     make_cyl("Tools_ShakerCap", (tx - 0.10, ty, tz + 0.20), 0.045, 0.08, COL_TIN, segments=12)
@@ -423,7 +425,7 @@ def build_bar_tools_and_glassware():
              (0.42, 0.30, 0.20, 1.0), segments=8)
 
     # Garnish caddy on the W-arm bar top
-    gx, gy, gz = -1.50, 5.20, 1.08
+    gx, gy, gz = -1.50, 6.10, 1.08   # ON the west arm
     make_box("Garnish_Tray", (gx, gy, gz + 0.02), (0.34, 0.22, 0.04), COL_TIN)
     for di, dx in enumerate([-0.11, 0.0, +0.11]):
         make_box(f"Garnish_Divider_{di}", (gx + dx, gy, gz + 0.05), (0.005, 0.20, 0.06), COL_TIN)
@@ -443,6 +445,7 @@ def build_bar_tools_and_glassware():
         make_box(f"GlassRack_Rail_{sgn:+d}", (rx, ry + sgn*0.16, rz - 0.02),
                  (2.20, 0.03, 0.04), P.METAL_BLACK)
         make_cyl(f"GlassRack_Mount_{sgn:+d}", (rx + sgn*0.9, ry, CEIL - 0.03), 0.02, 0.06, P.METAL_BLACK)
+        make_box(f"GlassRack_Cross_{sgn:+d}", (rx + sgn*0.9, ry, rz - 0.02), (0.04, 0.36, 0.04), P.METAL_BLACK)   # mount to both rails (2026-09-22)
     for gi in range(7):
         cxp = rx - 0.90 + gi * 0.30
         for sgn in (-1, +1):
@@ -499,9 +502,9 @@ def build_wear_personality_2026_08():
     # Backbar reach-wear: pale front-edge patches under the five
     # working bottles (shelf 1); the top shelf keeps its dust.
     for bi4, bx4 in enumerate((-1.1, -0.55, 0.0, 0.55, 1.1)):
-        make_box("Wear_Shelf_Reach_%d" % bi4, (bx4, 8.05, 1.416),
+        make_box("Wear_Shelf_Reach_%d" % bi4, (bx4, ROOM_D - 0.42, 1.7125),   # on shelf 1's front edge (2026-09-22: inside the wall, between shelves)
                  (0.28, 0.03, 0.005), shelf_pale)
-    make_box("Wear_TopShelf_Dust", (0.0, 8.20, 2.222), (2.9, 0.28, 0.004),
+    make_box("Wear_TopShelf_Dust", (0.0, ROOM_D - 0.30, 2.112), (2.9, 0.28, 0.004),
              (0.42, 0.34, 0.24, 1.0))
     # THE ONE RING · hers, S end of the west arm.
     make_cyl("Wear_HerRing", (-1.52, 5.98, 1.083), 0.042, 0.003,

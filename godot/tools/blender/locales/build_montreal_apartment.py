@@ -84,8 +84,8 @@ def build_living():
             bx = sx2; by = 1.55 - 0.50 + bi*0.16
             spine = COL_BOOK_SPINES[(shf*3+bi)%len(COL_BOOK_SPINES)]
             make_box(f"Book_{shf}_{bi}", (bx, by, sz+0.16), (0.10, 0.12, 0.30), spine)
-    make_box("BookShelf_Side_S", (sx2+0.02, 0.83, 1.40), (0.44, 0.04, 2.40), COL_WOOD)
-    make_box("BookShelf_Side_N", (sx2+0.02, 2.27, 1.40), (0.44, 0.04, 2.40), COL_WOOD)
+    make_box("BookShelf_Side_S", (sx2+0.02, 0.83, 1.30), (0.44, 0.04, 2.60), COL_WOOD)   # to the floor (2026-09-22: 20 cm up)
+    make_box("BookShelf_Side_N", (sx2+0.02, 2.27, 1.30), (0.44, 0.04, 2.60), COL_WOOD)
 
 def build_dining_nook():
     # Small bistro dining nook east-centre, between bookshelf & kitchen.
@@ -163,7 +163,7 @@ def build_hero_props():
     make_box("Task_Chair", (-1.50, 3.40, 0.46), (0.44, 0.44, 0.05), (0.28, 0.28, 0.30, 1.0))
     make_cyl("Task_Chair_Post", (-1.50, 3.40, 0.22), 0.03, 0.44, (0.20, 0.20, 0.22, 1.0), segments=8)   # pedestal + base (2026-09-09)
     make_cyl("Task_Chair_Base", (-1.50, 3.40, 0.02), 0.28, 0.04, (0.20, 0.20, 0.22, 1.0), segments=12)
-    make_box("Task_Chair_Back", (-1.28, 3.40, 0.80), (0.05, 0.44, 0.55), (0.24, 0.24, 0.26, 1.0))
+    make_box("Task_Chair_Back", (-1.28, 3.40, 0.76), (0.05, 0.44, 0.55), (0.24, 0.24, 0.26, 1.0))   # from the seat (2026-09-22)
     # THE NARWHAL MUG on its coaster
     make_cyl("Coaster", (-2.55, 3.55, 0.772), 0.06, 0.008, (0.34, 0.26, 0.20, 1.0), segments=10)
     make_cyl("Narwhal_Mug", (-2.55, 3.55, 0.82), 0.045, 0.09, (0.55, 0.72, 0.80, 1.0), segments=10)
@@ -173,7 +173,9 @@ def build_hero_props():
     make_box("Drip_Maker", (2.80, 4.50, 1.10), (0.28, 0.28, 0.36), (0.20, 0.20, 0.22, 1.0))
     make_cyl("Drip_Carafe", (2.80, 4.42, 1.00), 0.09, 0.16, (0.45, 0.38, 0.28, 0.7), segments=10)
     # Notebook ziggurats on every available surface
-    for zi, (zx, zy, zz, n) in enumerate(((-2.65, 2.9, 0.775, 4), (0.4, 2.2, 0.44, 3), (1.9, 4.5, 0.94, 3))):
+    # (2026-09-22: stack 1 hung 42 cm up on nothing — on the floor by the
+    # sofa now; stack 2 was past the counter's west edge)
+    for zi, (zx, zy, zz, n) in enumerate(((-2.65, 2.9, 0.775, 4), (0.4, 2.2, 0.015, 3), (2.25, 4.75, 0.995, 3))):
         for k in range(n):
             make_box(f"Ziggurat_{zi}_{k}", (zx + 0.01 * (k % 2), zy, zz + k * 0.035),
                      (0.20 - 0.02 * k, 0.26 - 0.02 * k, 0.03),
@@ -226,20 +228,23 @@ def build_use_states_d4():
     make_cyl("Chair_Pen", (-2.30, 2.29, 0.44), 0.006, 0.13,
              (0.20, 0.22, 0.30, 1.0), segments=6, axis='X')
     # Drying rack by the fridge: two plates on edge, a bowl, a mug
-    make_box("Drying_Rack", (2.35, 2.75, 0.90), (0.40, 0.28, 0.04),
+    # ON the kitchen counter (Kitch_Top: x 2.1..2.9, y 3.85..5.15, top
+    # 0.98). 2026-09-22: rack, plates, bowl, mug and kettle sat south of
+    # the fridge at y 2.4..3.0 — on air.
+    make_box("Drying_Rack", (2.35, 4.15, 1.00), (0.40, 0.28, 0.04),
              (0.60, 0.62, 0.64, 1.0))
-    make_box("Drying_Plate_A", (2.28, 2.72, 1.02), (0.02, 0.24, 0.24),
+    make_box("Drying_Plate_A", (2.28, 4.12, 1.12), (0.02, 0.24, 0.24),
              (0.88, 0.86, 0.82, 1.0))
-    make_box("Drying_Plate_B", (2.38, 2.74, 1.01), (0.02, 0.23, 0.23),
+    make_box("Drying_Plate_B", (2.38, 4.14, 1.11), (0.02, 0.23, 0.23),
              (0.86, 0.84, 0.80, 1.0))
-    make_bowl("Drying_Bowl", 2.52, 2.70, 0.92, (0.80, 0.76, 0.68, 1.0), r=0.09)
-    make_mug("Counter_Mug", 2.60, 3.05, 0.92, (0.46, 0.54, 0.50, 1.0))
-    # Kettle on the stove-side of the fridge counter
-    make_cyl("Kettle_Body", (2.72, 2.45, 0.99), 0.09, 0.14,
+    make_bowl("Drying_Bowl", 2.52, 4.10, 1.02, (0.80, 0.76, 0.68, 1.0), r=0.09)
+    make_mug("Counter_Mug", 2.60, 4.45, 0.98, (0.46, 0.54, 0.50, 1.0))
+    # Kettle on the stove-side of the counter
+    make_cyl("Kettle_Body", (2.72, 4.75, 1.05), 0.09, 0.14,
              (0.72, 0.72, 0.74, 1.0), segments=10)
-    make_cyl("Kettle_Lidknob", (2.72, 2.45, 1.075), 0.02, 0.03,
+    make_cyl("Kettle_Lidknob", (2.72, 4.75, 1.135), 0.02, 0.03,
              (0.30, 0.30, 0.32, 1.0), segments=6)
-    make_box("Kettle_Spout", (2.62, 2.36, 1.00), (0.05, 0.05, 0.04),
+    make_box("Kettle_Spout", (2.62, 4.66, 1.06), (0.05, 0.05, 0.04),
              (0.70, 0.70, 0.72, 1.0))
     # Folded laundry on the sofa arm, one sock off the stack
     make_box("Laundry_Stack", (-1.42, 0.95, 0.52), (0.28, 0.24, 0.14),
