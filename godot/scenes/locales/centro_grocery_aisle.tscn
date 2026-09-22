@@ -330,7 +330,7 @@ metadata/fov = 42.0
 
 ; insert: the meat case glass
 [node name="shot_insert_meatcase" type="Marker3D" parent="." groups=["vn_shot"]]
-position = Vector3(2.7, 1.45, -6.6)
+position = Vector3(1.75, 1.5, -1.15)
 rotation = Vector3(-0.35877, -1.5708, 0)
 metadata/fov = 40.0
 

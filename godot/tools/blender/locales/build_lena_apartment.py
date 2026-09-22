@@ -79,7 +79,7 @@ def build_shell():
     make_cyl("Door_Knob", (0.34, 0.10, 1.00), 0.035, 0.04, (0.66, 0.52, 0.24, 1.0), axis='Y', segments=8)
     make_box("Deadbolt", (0.34, 0.10, 1.22), (0.06, 0.03, 0.10), (0.74, 0.60, 0.30, 1.0))
     # Four hooks, four coats — by the door
-    for i, hx in enumerate((-1.15, -0.95, -0.75, -0.55)):
+    for i, hx in enumerate((-2.35, -2.15, -1.95, -1.75)):   # (2026-09-22: three of four hung in the door gap; Wall_S_W is x -2.5..-1.0)
         make_cyl(f"Coat_Hook_{i}", (hx, 0.10, 1.70), 0.015, 0.06, COL_FRAME, axis='Y', segments=6)
         coat_cols = [(0.30, 0.34, 0.40, 1.0), (0.44, 0.30, 0.22, 1.0),
                      (0.26, 0.36, 0.30, 1.0), (0.52, 0.44, 0.30, 1.0)]

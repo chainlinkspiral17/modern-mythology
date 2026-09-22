@@ -89,7 +89,10 @@ def build_shell():
     # Front door: bell + reversible OPEN/CLOSED + the taped note
     make_box("Front_Door", (0.0, 0.04, 1.02), (1.90, 0.04, 2.04), (0.30, 0.28, 0.26, 1.0))
     make_box("Front_Door_Glass", (0.0, 0.03, 1.20), (1.50, 0.02, 1.55), COL_GLASS)
-    make_cyl("Door_Bell", (0.0, 0.16, 2.05), 0.04, 0.06, (0.74, 0.58, 0.28, 1.0), segments=8)
+    # (2026-09-22: the bell hangs from a bracket under the header — it
+    # floated over the door with nothing holding it)
+    make_box("Door_Bell_Bracket", (0.0, 0.16, 2.44), (0.03, 0.12, 0.12), (0.22, 0.20, 0.18, 1.0))
+    make_cyl("Door_Bell", (0.0, 0.16, 2.35), 0.04, 0.06, (0.74, 0.58, 0.28, 1.0), segments=8)
     # (draft 3) the push bar and the kick plate
     make_tube("Front_Door_Bar", [(-0.70, 0.085, 1.02), (0.70, 0.085, 1.02)], 0.016, COL_STEEL, segments=6)
     for bx in (-0.66, 0.66):
@@ -160,7 +163,7 @@ def build_repair_back():
     # the bench vise at the east end, the top's scars
     make_box("Repair_Vise_Body", (bx + 0.95, 6.02, 1.00), (0.16, 0.14, 0.11), (0.28, 0.30, 0.32, 1.0))
     make_box("Repair_Vise_Jaw", (bx + 0.95, 5.90, 1.00), (0.16, 0.05, 0.11), (0.28, 0.30, 0.32, 1.0))
-    make_lathe("Repair_Vise_Screw", (bx + 0.95, 5.82, 1.00), [(0.012, 0.0), (0.012, 0.12), (0.0, 0.12)], COL_STEEL, segments=6)
+    make_cyl("Repair_Vise_Screw", (bx + 0.95, 5.815, 1.00), 0.012, 0.12, COL_STEEL, axis='Y', segments=6)
     for si, (sx, sy, sl, syaw) in enumerate(((bx - 0.6, 6.05, 0.30, 0.3), (bx + 0.4, 6.40, 0.22, -0.5), (bx - 0.1, 6.45, 0.18, 1.1))):
         make_rot_box(f"Wear_Bench_Scar_{si}", (sx, sy, 0.9465), (sl, 0.012, 0.003), (0.22, 0.16, 0.10, 1.0), yaw=syaw)
     # The clamp work lamp (draft 3: a clamp at the bench's back edge,
@@ -350,10 +353,10 @@ def build_main_street_2026_09():
     # Board Lords' front: awning + sign on the parapet, CLOSED sign
     make_box("Shop_Awning", (0.0, -0.62, 2.55), (4.0, 1.00, 0.06), (0.30, 0.34, 0.42, 1.0))
     for ai, ax in enumerate((-1.85, 1.85)):
-        make_box(f"Shop_Awning_Arm_{ai}", (ax, -0.62, 2.45), (0.04, 0.96, 0.04), (0.20, 0.20, 0.22, 1.0))
+        make_box(f"Shop_Awning_Arm_{ai}", (ax, -0.60, 2.45), (0.04, 1.02, 0.04), (0.20, 0.20, 0.22, 1.0))   # reaches the wall face
     make_box("Shop_Sign", (0.0, -0.13, 2.85), (2.40, 0.06, 0.50), (0.22, 0.18, 0.16, 1.0))
     make_box("Shop_Sign_Letters", (0.0, -0.165, 2.85), (2.00, 0.01, 0.22), (0.88, 0.80, 0.52, 1.0))
-    make_box("Closed_Sign", (0.55, -0.055, 1.35), (0.22, 0.008, 0.14), (0.90, 0.88, 0.82, 1.0))
+    make_box("Closed_Sign", (0.55, 0.014, 1.35), (0.22, 0.008, 0.14), (0.90, 0.88, 0.82, 1.0))   # on the door glass, street side
     # the far facade's breaks: laundromat (east of the mural), shoe repair (west)
     make_box("Laundromat_Door", (2.4, -8.92, 1.05), (0.95, 0.04, 2.10), (0.66, 0.64, 0.60, 1.0))
     make_box("Laundromat_Window", (4.2, -8.92, 1.55), (2.00, 0.03, 1.40), (0.55, 0.62, 0.66, 0.6))

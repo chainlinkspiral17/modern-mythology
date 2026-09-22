@@ -326,6 +326,23 @@ Every ending's reading now carries the arcana's record. The design
 row's Claude-side items are through; what remains on it is Deck-
 gated (the bursts) or user-gated (Salmonberry).
 
+**Status (2026-09-22) · THE SUPPORT PASS.** The user saw the frames: objects
+floating everywhere. A new gate (`support_audit.py`: everything must
+be connected to floor, wall or ceiling through what it touches)
+found 3,805; a recorder bug (strung wires recorded as a point), five
+kit helpers and eight rooms brought it to 1,181 with a per-locale
+zero-regression baseline; the second pass took the kwik stop and
+the diner to ZERO and the repo to 913 (the two model chapters set
+the four kinds of float — see the geometry audit playbook); the
+third took the riverboat, the school field, the solenade garden and
+the cedar tower to zero and the repo to 652; the fourth took nine
+more (carnival, centro, hierophant circuit, courthouse, el rancho,
+bungalow, salty tome, both nexcorp stations) to zero and the repo
+to 422. This pass runs ahead of every other background item now: a
+room that floats is not a draft of anything. Next: the long tail of
+rooms at 10–15 (christian ice, parish cemetery, roadside chapel,
+elicia, mixing glass, montreal, cliffside circus …).
+
 **Draft targets, by volume, by uses:**
 - **Vol 7 (current):** `cabin_interior` (31) · `lena_apartment` (23)
   · `miller_back_porch` (12, shared with vol 6) · `salty_tome_alley`

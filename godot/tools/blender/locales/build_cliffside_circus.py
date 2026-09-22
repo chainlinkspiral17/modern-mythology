@@ -205,7 +205,7 @@ def build_bandstand():
     make_taper_cyl("Band_Roof", (bx, by, 3.0), 2.5, 0.10, 1.1, COL_MAROON, segments=10)
     make_taper_cyl("Band_Roof_Stripe", (bx, by, 2.80), 2.56, 1.5, 0.34, COL_CREAM, segments=10)
     make_cyl("Band_Finial", (bx, by, 3.75), 0.05, 0.35, COL_CREAM, segments=6)
-    make_box("Band_Rail_S", (bx, by - 1.85, 0.75), (2.6, 0.06, 0.06), COL_RAIL)
+    make_box("Band_Rail_S", (bx, by - 1.52, 0.75), (2.6, 0.06, 0.06), COL_RAIL)   # between the two south posts (2026-09-22: 23 cm outside them)
 
 
 def build_cliff_and_sea():

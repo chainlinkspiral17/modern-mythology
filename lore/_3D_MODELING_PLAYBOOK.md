@@ -499,6 +499,15 @@ The thirteenth room of the backgrounds pass (lore/_VISUAL_PROGRAM.md
   carries its own make_box/make_cyl so the recorder can rebind
   them; `from _props.geometry import make_lathe, make_tube` beside
   them works, and the stubs record the kit's meshes as usual.
+- **TETHER EVERYTHING (2026-09-22, the user's sentence: "lots of
+  objects floating, not tethered to walls or tables or floors").**
+  A cord reaches the ceiling PLANE (z = ceil_z, not ceil_z − 0.05).
+  A wall-hung thing's back face is at the wall's FACE (wall plane
+  ± 0.10 − its own half-depth), not at the wall plane. A shelf has
+  uprights or brackets; a hanging pot has a hook that reaches the
+  bar; a stool seat has a post and a foot; a sign on a roof has
+  posts. Before committing a room, run `support_audit.py <locale>`
+  — it lists what hangs on nothing, lowest member first.
 - Cue-word discipline, again: `matches_for` splits names on `_` and
   CamelCase and matches PARTS whole — Wear_Grip, Wear_Kick, Wear_Edge,
   Hemlock_*, FOH_* carry none of box/bag/bowl/crow/hands/mixer/window/

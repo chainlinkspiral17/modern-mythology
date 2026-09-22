@@ -220,6 +220,14 @@ def install_stubs():
             BOXES.append((str(name), (cx + mu, cy, cz + mv), (hu, hl, hv)))
         return _obj_stub(name)
 
+    def _real_catenary(a, b, sag, n=8):
+        out = []
+        for i in range(n + 1):
+            t = i / n
+            out.append((a[0] + (b[0] - a[0]) * t, a[1] + (b[1] - a[1]) * t,
+                        a[2] + (b[2] - a[2]) * t - sag * (1.0 - (2.0 * t - 1.0) ** 2)))
+        return out
+
     def _rec_tube(name, path, radius, color=None, *a, **k):
         r = abs(float(radius))
         xs = [float(p[0]) for p in path]; ys = [float(p[1]) for p in path]; zs = [float(p[2]) for p in path]
@@ -263,6 +271,10 @@ def install_stubs():
         # DETAIL DRAFT 1 primitives (2026-09-05)
         "make_lathe": _rec_lathe, "make_prism": _rec_prism_poly,
         "make_tube": _rec_tube, "make_rot_box": _rec_rot_box,
+        # catenary is pure math, not geometry: stubbed to 0.9 it made
+        # every strung wire (fences, power lines, chains) record as a
+        # point at (0.5, 0.5, 0.5) — invisible to every gate (2026-09-22)
+        "catenary": _real_catenary,
         "make_heightfield": _rec_heightfield,
     }
 

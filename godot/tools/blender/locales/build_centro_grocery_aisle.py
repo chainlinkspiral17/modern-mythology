@@ -73,7 +73,7 @@ def build_aisles():
         # facings and tags)
         for side in (-1, 1):
             for lvl in range(5):
-                make_box(f"TagRail_{ai}_{side}_{lvl}", (0.0, ay + side * 0.62, 0.30 + lvl * 0.36),
+                make_box(f"TagRail_{ai}_{side}_{lvl}", (0.0, ay + side * 0.35, 0.30 + lvl * 0.36),   # on the shelf faces (2026-09-22: 28 cm out)
                          (6.0, 0.012, 0.035), (0.94, 0.94, 0.92, 1.0))
     # Two more runs so "Aisle Seven … Aisle Nine" reads as a store,
     # not a pair
@@ -95,8 +95,8 @@ def build_aisle_signs():
     # Hanging numbered aisle signs over each aisle's south mouth.
     for ai in range(2):
         ay = ROOM_D * (0.35 + ai * 0.30) - 3.0
-        for wo in (-0.6, 0.6):
-            make_cyl(f"AisleNum_{ai}_Wire_{'L' if wo<0 else 'R'}", (wo, ay, CEIL-0.35), 0.006, 0.60, P.METAL_STEEL)
+        for wo in (-0.35, 0.35):   # inside the board's width; board top to the ceiling (2026-09-22: 5 cm short, 20 cm outside)
+            make_cyl(f"AisleNum_{ai}_Wire_{'L' if wo<0 else 'R'}", (wo, ay, CEIL-0.255), 0.006, 0.51, P.METAL_STEEL)
         make_box(f"AisleNum_{ai}_Board", (0.0, ay, CEIL-0.68), (0.80, 0.05, 0.34), COL_ACCENT)
         make_box(f"AisleNum_{ai}_Num", (0.0, ay-0.03, CEIL-0.68), (0.20, 0.02, 0.22), P.PAPER)
         # Legible numerals: 7 and 9 (the prose counts twelve aisles;
@@ -185,7 +185,7 @@ def build_bakery():
                                   "top": (0.32, 0.22, 0.14, 1.0), "kick": (0.32, 0.22, 0.14, 1.0)})
     make_donut_display("Donuts", (bx-0.10, by-0.45, top_z), tiers=3)
     make_coffee_pots("CoffeePots", (bx-0.05, by+0.55, top_z), pots=3)
-    make_box("Bakery_Sign", (bx, by-0.30, 2.20), (0.05, 1.00, 0.36), (0.86, 0.62, 0.30, 1.0))
+    make_box("Bakery_Sign", (ROOM_W/2.0 - 0.125, by-0.30, 2.20), (0.05, 1.00, 0.36), (0.86, 0.62, 0.30, 1.0))   # on the E wall (2026-09-22: 0.6 m off it)
 
 def build_floor_grid():
     # Cross-seams for grid tile floor
@@ -250,12 +250,12 @@ def build_dressing():
     make_box("Freezer_Lid", (fx, ROOM_D-1.85, 0.94), (0.86, 1.72, 0.04), (0.80, 0.90, 0.96, 0.5))
     make_box("Freezer_Kick", (fx, ROOM_D-1.85, 0.06), (0.90, 1.80, 0.12), P.METAL_STEEL)
     # Hanging aisle-number sign over the aisle mouth
-    make_cyl("AisleSign_Wire_L", (-0.6, ROOM_D/2.0, CEIL-0.35), 0.006, 0.60, P.METAL_STEEL)
-    make_cyl("AisleSign_Wire_R", (0.6, ROOM_D/2.0, CEIL-0.35), 0.006, 0.60, P.METAL_STEEL)
+    make_cyl("AisleSign_Wire_L", (-0.40, ROOM_D/2.0, CEIL-0.255), 0.006, 0.51, P.METAL_STEEL)
+    make_cyl("AisleSign_Wire_R", (0.40, ROOM_D/2.0, CEIL-0.255), 0.006, 0.51, P.METAL_STEEL)
     make_box("AisleSign_Board", (0.0, ROOM_D/2.0, CEIL-0.68), (0.90, 0.05, 0.34), COL_ACCENT)
     # Stack of hand baskets by the south entrance
     for bi in range(4):
-        make_box(f"Basket_{bi}", (-ROOM_W/2.0+0.7, 0.6, 0.14+bi*0.10), (0.34, 0.24, 0.10), (0.62, 0.30, 0.24, 1.0))
+        make_box(f"Basket_{bi}", (-ROOM_W/2.0+0.7, 0.6, 0.05+bi*0.10), (0.34, 0.24, 0.10), (0.62, 0.30, 0.24, 1.0))   # from the floor (2026-09-22)
     # Wet-floor cone
     make_chamfer_box("Cone_Base", (1.4, 1.2, 0.02), (0.30, 0.30, 0.04), (0.96, 0.72, 0.20, 1.0), chamfer=0.01)
     make_lathe("Cone_Body", (1.4, 1.2, 0.04), [(0.13, 0.0), (0.12, 0.05), (0.03, 0.62), (0.0, 0.64)], (0.96, 0.72, 0.20, 1.0), segments=12)   # draft 4: a cone
@@ -271,8 +271,8 @@ def build_departments():
     # Meat counter, E wall north end
     make_chamfer_box("Meat_Case_Body", (3.05, 1.15, 0.55), (1.10, 2.40, 1.10), (0.86, 0.86, 0.84, 1.0))
     make_box("Meat_Case_Glass", (2.52, 1.15, 1.25), (0.04, 2.30, 0.55), glass)
-    for mi in range(4):
-        make_box(f"Meat_Tray_{mi}", (4.05, 5.75 + mi * 0.55, 1.12), (0.60, 0.42, 0.06),
+    for mi in range(4):   # (2026-09-22: they sat at y 5.75..7.4, on air — the case is at y 1.15)
+        make_box(f"Meat_Tray_{mi}", (3.05, 0.35 + mi * 0.55, 1.13), (0.60, 0.42, 0.06),
                  [(0.72, 0.32, 0.30, 1.0), (0.80, 0.46, 0.42, 1.0)][mi % 2])
     # Deli case + wipe-down worktop
     make_chamfer_box("Deli_Case_Body", (4.15, 4.0, 0.55), (1.00, 1.60, 1.10), (0.86, 0.86, 0.84, 1.0))
@@ -285,7 +285,7 @@ def build_departments():
     make_box("HandTruck_Toe", (-1.86, 1.5, 0.04), (0.30, 0.44, 0.03), steel)
     for wi3, wy3 in enumerate((1.28, 1.72)):
         make_lathe(f"HandTruck_Wheel_{wi3}", (-1.94, wy3, 0.0), [(0.0, 0.0), (0.12, 0.0), (0.12, 0.05), (0.0, 0.05)], P.METAL_BLACK, segments=10)
-    make_box("PalletJack_Forks", (2.3, 1.55, 0.08), (0.56, 1.10, 0.12), (0.86, 0.52, 0.16, 1.0))
+    make_box("PalletJack_Forks", (2.3, 1.60, 0.08), (0.56, 1.20, 0.12), (0.86, 0.52, 0.16, 1.0))   # reach the tiller (2026-09-22: 5 cm short)
     make_box("PalletJack_Tiller", (2.3, 2.20, 0.55), (0.08, 0.10, 0.90), (0.30, 0.30, 0.32, 1.0))
     # Cooler swing door propped open with the milk crate (sticking
     # lock since July)
@@ -407,8 +407,8 @@ def build_draft4_2026_09():
         make_box(f"Lot_Stripe_{si}", (-6.0 + si * 2.6, -4.6, -0.008), (0.10, 4.4, 0.006), (0.86, 0.84, 0.72, 1.0))
     make_car("Lot_Car", -3.6, -4.9, 4.5, (0.60, 0.60, 0.62, 1.0), along="Y", z0=-0.01)
     for ci, cx2 in enumerate((4.2, 6.4)):
-        make_tube(f"Corral_Rail_{ci}", [(cx2, -3.2, 0.05), (cx2, -3.2, 0.95), (cx2, -6.2, 0.95), (cx2, -6.2, 0.05)], 0.02, (0.62, 0.62, 0.60, 1.0), segments=6)
-    make_box("Corral_Sign", (5.3, -6.25, 1.35), (1.20, 0.04, 0.30), (0.32, 0.62, 0.42, 1.0))
+        make_tube(f"Corral_Rail_{ci}", [(cx2, -3.2, 0.02), (cx2, -3.2, 0.95), (cx2, -6.2, 0.95), (cx2, -6.2, 0.02)], 0.02, (0.62, 0.62, 0.60, 1.0), segments=6)
+    make_box("Corral_Sign", (5.3, -6.25, 1.12), (2.24, 0.04, 0.30), (0.32, 0.62, 0.42, 1.0))   # on the rails, rail to rail (2026-09-22: 23 cm over them, 0.5 m short of each)
     make_lathe("Lot_Lamp_Post", (8.5, -4.0, 0.0), [(0.16, 0.0), (0.10, 0.10), (0.07, 5.8), (0.08, 6.0), (0.0, 6.0)], (0.30, 0.30, 0.32, 1.0), segments=8)
     make_box("Lot_Lamp_Head", (8.5, -4.0, 6.05), (0.70, 0.30, 0.16), (0.30, 0.30, 0.32, 1.0))
     make_far_bands("Far", (0.46, 0.44, 0.42, 1.0), [(18.0, 20.0, 5.0, 0.85), (26.0, 26.0, 7.0, 0.7)], sides="S", cy=0.0, profile="roofline")

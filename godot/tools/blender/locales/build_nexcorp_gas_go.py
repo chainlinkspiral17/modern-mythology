@@ -196,7 +196,7 @@ def build_shell():
     for j, ypos in enumerate([2.5, 5.3]):
         for i in range(-1, 2):
             xp = i * 2.4
-            make_box(f"Tube_{j}_{i}", (xp, ypos, CEIL_Z - 0.08),
+            make_box(f"Tube_{j}_{i}", (xp, ypos, CEIL_Z - 0.03),   # against the ceiling (2026-09-22: 5 cm short)
                      (1.8, 0.40, 0.06), (0.96, 0.96, 0.92, 1.0))
 
 
@@ -222,7 +222,7 @@ def build_counter():
     for i in range(8):
         led_col = (0.96, 0.18, 0.16, 1.0) if i == 3 else (0.32, 0.86, 0.42, 1.0)
         make_box(f"Pump_LED_{i}",
-                 (cx + 0.5 - 0.30 + i * 0.08, cy + 0.34, 1.20),
+                 (cx + 0.5 - 0.30 + i * 0.08, cy + 0.3025, 1.20),   # on the controller's face (2026-09-22: 4 cm off it)
                  (0.04, 0.005, 0.04), led_col)
     # Stool — BEHIND the counter (Skip's side). At cy+0.32 the seat
     # was buried 0.14m in the counter body.
@@ -318,6 +318,7 @@ def build_office():
                      (dx + sx * 0.62, dy + sy * 0.30, 0.37),
                      0.020, 0.74, (0.24, 0.18, 0.12, 1.0))
     # Computer monitor (the schedule + the dispatch log live here)
+    make_box("Monitor_Stand", (dx, dy + 0.16, 0.79), (0.16, 0.12, 0.06), (0.18, 0.18, 0.20, 1.0))   # (2026-09-22: the monitor hung 6 cm over the desk)
     make_box("Monitor_Body", (dx, dy + 0.16, 1.00),
              (0.50, 0.04, 0.36), (0.18, 0.18, 0.20, 1.0))
     make_box("Monitor_Screen", (dx, dy + 0.135, 1.00),
@@ -375,6 +376,8 @@ def build_floor_props():
     # Aisle top sign — corporate blue
     make_box("Aisle_Sign", (ax, ay, 2.30),
              (5.0, 0.10, 0.26), COL_WALL_NEXCORP)
+    for e in (-1, 1):   # hung from the ceiling (2026-09-22: it hung on nothing)
+        make_cyl(f"Aisle_Sign_Wire_{e:+d}", (ax + e * 2.0, ay, (2.43 + CEIL_Z) / 2.0), 0.006, CEIL_Z - 2.43, COL_METAL_STEEL, segments=4)
 
     # Coffee station, simpler than Kwik Stop (gas-station coffee)
     cfx = -5.0
@@ -402,7 +405,7 @@ def build_floor_props():
     # at (-5.5, 8.0), which is INSIDE the locker bank: lockers 5-6,
     # the bench end and the west wall all ran through its body.
     fx, fy = -3.6, 8.35
-    make_box("BeerFridge_Body", (fx, fy, 1.20),
+    make_box("BeerFridge_Body", (fx, fy, 1.15),   # on the floor (2026-09-22: 5 cm up)
              (1.00, 0.80, 2.30), (0.42, 0.42, 0.46, 1.0))
     make_box("BeerFridge_Glass", (fx, fy - 0.36, 1.20),
              (0.92, 0.04, 2.20), (0.46, 0.78, 0.92, 0.55))
@@ -529,8 +532,8 @@ def build_hero_props_2026_09():
     make_box("Thermometer_Needle_97", (-3.53, -1.760, 1.72), (0.050, 0.006, 0.008),
              (0.80, 0.22, 0.18, 1.0))
     # ── THE FOLDER · PENDING — R, on the office desk (top 0.76) ──
-    make_box("Pending_Folder", (4.05, 7.35, 0.766), (0.24, 0.32, 0.010), manila)
-    make_box("Pending_Folder_Tab", (3.92, 7.54, 0.7725), (0.060, 0.090, 0.003),
+    make_box("Pending_Folder", (4.05, 8.30, 0.766), (0.24, 0.32, 0.010), manila)   # ON the desk (2026-09-22: 0.6 m south of it)
+    make_box("Pending_Folder_Tab", (3.92, 8.49, 0.7725), (0.060, 0.090, 0.003),
              (0.76, 0.64, 0.42, 1.0))
 
 

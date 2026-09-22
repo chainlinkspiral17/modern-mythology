@@ -61,10 +61,11 @@ def build_counter():
     # Upper cabinets + the under-cabinet light over the sink ("She
     # does not turn on the overhead. She turns on, instead, the
     # small under-cabinet light over the sink")
-    make_chamfer_box("Upper_Cabinets", (-ROOM_W/4.0, ROOM_D-0.55, 1.95), (2.40, 0.34, 0.75), (0.72, 0.60, 0.40, 1.0))
+    # (2026-09-22: against the wall — the run hung 28 cm off it)
+    make_chamfer_box("Upper_Cabinets", (-ROOM_W/4.0, ROOM_D-0.27, 1.95), (2.40, 0.34, 0.75), (0.72, 0.60, 0.40, 1.0))
     for di, dx in enumerate((-0.85, -0.28, 0.28, 0.85)):
-        make_box(f"Upper_Cab_Door_{di}", (-ROOM_W/4.0+dx, ROOM_D-0.72, 1.95), (0.52, 0.02, 0.68), (0.78, 0.66, 0.42, 1.0))
-    make_box("UnderCab_Light", (-ROOM_W/4.0, ROOM_D-0.74, 1.56), (1.10, 0.05, 0.04), (0.98, 0.92, 0.74, 1.0))
+        make_box(f"Upper_Cab_Door_{di}", (-ROOM_W/4.0+dx, ROOM_D-0.44, 1.95), (0.52, 0.02, 0.68), (0.78, 0.66, 0.42, 1.0))
+    make_box("UnderCab_Light", (-ROOM_W/4.0, ROOM_D-0.46, 1.56), (1.10, 0.05, 0.04), (0.98, 0.92, 0.74, 1.0))
     # The pantry — tall door on the W wall
     make_box("Pantry_Door", (-ROOM_W/2.0+0.06, 4.20, 1.05), (0.05, 0.80, 2.10), (0.78, 0.66, 0.42, 1.0))
     make_cyl("Pantry_Knob", (-ROOM_W/2.0+0.12, 3.90, 1.02), 0.025, 0.03, (0.66, 0.52, 0.24, 1.0), axis='X', segments=8)
@@ -293,14 +294,14 @@ def build_infrastructure_2026_08():
                                make_cord_run)
     # Door wall (south): the light switch where a hand finds it in
     # the dark, at the door's latch side.
-    make_light_switch("Switch_Door", (1.15, 0.10), axis='X', face_sign=1, z=1.20)
+    make_light_switch("Switch_Door", (1.15, 0.0), axis='X', face_sign=1, z=1.20)   # the wall plane, not its face
     # Counter-run outlets on the north wall at backsplash height —
     # the code pair, one per work zone.
     make_wall_outlet("Outlet_Counter_W", (-2.35, 5.92), axis='X', face_sign=-1, z=1.05)
-    make_wall_outlet("Outlet_Counter_E", (0.65, 5.92), axis='X', face_sign=-1, z=1.05)
+    make_wall_outlet("Outlet_Counter_E", (0.65, ROOM_D), axis='X', face_sign=-1, z=1.05)   # on the wall (2026-09-22: 9 cm off it)
     # Floor-level outlet on the east wall behind the table (the
     # vacuum outlet every dining room has).
-    make_wall_outlet("Outlet_East", (2.92, 2.4), axis='Y', face_sign=-1, z=0.30)
+    make_wall_outlet("Outlet_East", (ROOM_W/2.0, 2.4), axis='Y', face_sign=-1, z=0.30)   # (2026-09-22: 60 cm off the wall)
     # The under-cabinet light's cord drops behind the counter lip
     # to the west counter outlet.
     make_cord_run("Cord_UnderCab", (-1.20, 5.90, 1.54), (-2.30, 5.90, 1.08),

@@ -142,8 +142,9 @@ def build_dressing():
     make_box("Chair_Back", (dx, dy-0.74, 0.74), (0.42, 0.05, 0.46), COL_ACCENT)
     for i, (lx, ly) in enumerate([(-0.16, -0.16), (0.16, -0.16), (-0.16, 0.16), (0.16, 0.16)]):
         make_box(f"Chair_Leg_{i}", (dx+lx, dy-0.55+ly, 0.23), (0.05, 0.05, 0.44), P.METAL_BLACK)
-    # Corner sprout (wires the imported helper)
-    make_floor_plant("Plant", (-ROOM_W/2.0+0.5, ROOM_D-0.6, 0.0), palette={"leaf": (0.30, 0.54, 0.34, 1.0), "pot": (0.78, 0.24, 0.22, 1.0)})
+    # Corner sprout (wires the imported helper) — SW corner, under the
+    # low striker poster; the NW corner is the bed's footprint (2026-09-22)
+    make_floor_plant("Plant", (-ROOM_W/2.0+0.40, 0.45, 0.0), palette={"leaf": (0.30, 0.54, 0.34, 1.0), "pot": (0.78, 0.24, 0.22, 1.0)})
 
 def build_hero_props():
     """2026-08-03 tail pass: the BLACKOUT curtains (and the regular

@@ -196,9 +196,9 @@ def build_porchlamp():
     make_cyl("Fan_Hub", (fx, fy, CEIL-0.28), 0.10, 0.10, P.METAL_BLACK, segments=10)
     make_tube("Fan_Pull_Chain", [(fx+0.04, fy, CEIL-0.33), (fx+0.05, fy, CEIL-0.62)], 0.003, (0.70, 0.70, 0.68, 1.0), segments=4)
     make_lathe("Fan_Pull_Bead", (fx+0.05, fy, CEIL-0.66), [(0.0, 0.0), (0.012, 0.005), (0.012, 0.03), (0.0, 0.035)], COL_WOOD, segments=6)
-    for bi, (dx, dy) in enumerate([(0.55, 0.0), (-0.55, 0.0), (0.0, 0.55), (0.0, -0.55)]):
+    for bi, (dx, dy) in enumerate([(0.50, 0.0), (-0.50, 0.0), (0.0, 0.50), (0.0, -0.50)]):
         make_box(f"Fan_Blade_{bi}", (fx+dx, fy+dy, CEIL-0.30),
-                 (0.72 if dy == 0.0 else 0.20, 0.20 if dy == 0.0 else 0.72, 0.025),
+                 (0.92 if dy == 0.0 else 0.20, 0.20 if dy == 0.0 else 0.92, 0.025),   # roots in the hub
                  (0.40, 0.30, 0.22, 1.0))
 
 
@@ -223,7 +223,7 @@ def build_dressing():
     for row in range(3):
         for col in range(4):
             make_cyl(f"Firewood_{row}_{col}",
-                     (ROOM_W/2.0 - 0.38, 0.7 + col * 0.16, 0.12 + row * 0.15),
+                     (ROOM_W/2.0 - 0.38, 0.7 + col * 0.16, 0.072 + row * 0.15),   # the bottom row on the deck (was 5 cm up)
                      0.072, 0.5, (0.40, 0.28, 0.18, 1.0), axis='X', segments=8)
     make_cyl("Hanger_Cord", (1.5, cy - 0.5, CEIL - 0.35), 0.004, 0.70, P.METAL_BLACK)
     make_cyl("Hanger_Pot", (1.5, cy - 0.5, CEIL - 0.78), 0.14, 0.14, COL_TERRA, segments=12)

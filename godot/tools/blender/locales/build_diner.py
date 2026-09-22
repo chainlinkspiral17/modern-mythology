@@ -625,7 +625,7 @@ def _build_booth_table(prefix, cx, cy, axis_along):
              0.22, 0.04, (0.16, 0.14, 0.12, 1.0), segments=10, axis='Z')
     # Pendant lamp above the table — chrome stem, enameled cone shade, warm bulb
     lamp_z = TABLE_TOP_Z + 0.70
-    wire_top_z = D_H - 0.05
+    wire_top_z = D_H   # cords meet the ceiling (2026-09-22: 5 cm short)
     make_cyl(f"{prefix}_lamp_stem",
              (cx, cy, (lamp_z + wire_top_z) / 2),
              0.012, wire_top_z - lamp_z, COL_PAYPHONE_DARK, segments=4, axis='Z')
@@ -779,11 +779,16 @@ def build_the_leap_dressing():
     # so the player "can hear the door." Brass shopkeeper bell on
     # a spring, mounted to the lintel.
     door_x = D_W / 2 - 0.10   # just inside the front door
-    door_y = -1.5
+    door_y = -1.0             # on the door-side window mullion (2026-09-22:
+                              # it hung in a glass pane half a metre south)
     door_lintel_z = 2.05
+    # Bracket from the mullion (x 9.03) to the spring's top
+    make_box("DoorBell_Bracket",
+             (door_x + 0.08, door_y, door_lintel_z + 0.02),
+             (0.18, 0.03, 0.02), COL_BRASS)
     # Spring — a thin vertical brass coil-like cylinder
     make_cyl("DoorBell_Spring",
-             (door_x, door_y, door_lintel_z - 0.06),
+             (door_x, door_y, door_lintel_z - 0.03),   # into the lintel
              0.012, 0.10, COL_BRASS,
              segments=4, axis='Z')
     # Bell body (a small dome — using a low-poly sphere)
@@ -793,7 +798,7 @@ def build_the_leap_dressing():
                     COL_BRASS, rings=2, segments=8)
     # Clapper (small box hanging just under the bell)
     make_box("DoorBell_Clapper",
-             (door_x, door_y, door_lintel_z - 0.21),
+             (door_x, door_y, door_lintel_z - 0.19),
              (0.012, 0.012, 0.040),
              (0.42, 0.32, 0.22, 1.0))
 
@@ -931,17 +936,17 @@ def build_rush_and_service_dressing():
     # Coiled hose (a few segments of cylinder simulating the spiral)
     for s in range(4):
         make_cyl("SodaGun_HoseSeg_%d" % s,
-                 (sg_x, sg_y + s * 0.04 - 0.06, sg_top_z + 0.08 - s * 0.018),
+                 (sg_x, sg_y + s * 0.04 - 0.09, sg_top_z + 0.08 - s * 0.018),   # from the gun body (2026-09-22)
                  0.016, 0.05, (0.10, 0.10, 0.10, 1.0),
                  segments=4, axis='Z')
 
     # ── Quarters stack on the jukebox top ──
     # Jukebox is at (-10.5, +5.0) per build_jukebox.
-    jb_top_z = 1.45  # just above the jukebox shoulder
+    jb_top_z = 1.3611  # ON the marquee top (1.36) — 2026-09-22: they hovered 9 cm over it
     # A small stack of 6 quarters
     for q in range(6):
         make_cyl("Jukebox_Quarter_%d" % q,
-                 (-10.40, 5.0 - 0.10, jb_top_z + q * 0.0025),
+                 (-10.40, 5.20 - 0.10, jb_top_z + q * 0.0025),
                  0.012, 0.0022,
                  (0.74, 0.72, 0.68, 1.0),
                  segments=8, axis='Z')
@@ -988,7 +993,7 @@ def build_jukebox(cx, cy, base_z=0.0):
              (0.92, 0.86, 0.72, 1.0))
     # Coin slot (small brass)
     make_box("Jukebox_CoinSlot",
-             (cx + 0.22, cy - 0.255, base_z + 1.00),
+             (cx + 0.22, cy - 0.215, base_z + 1.00),   # on the shoulder's face (2026-09-22)
              (0.06, 0.005, 0.04), COL_BRASS)
 
 
@@ -1203,6 +1208,11 @@ def build_west_extension():
     make_box("WestBar_BackCab",
              (bar_cx_int, bb_y, 0.65),
              (bar_len, 0.30, 1.30), COL_BAR_WOOD)
+    # uprights from the cabinet to the top shelf (2026-09-22: the shelves,
+    # bottles and mirror hung 15 cm over the cabinet on nothing)
+    for ui, ux in enumerate((bar_cx_int - bar_len / 2.0 + 0.05, bar_cx_int + bar_len / 2.0 - 0.05)):
+        make_box(f"WestBar_BackUpright_{ui}", (ux, bb_y + 0.05, (1.30 + 2.27) / 2.0),
+                 (0.06, 0.18, 2.27 - 1.30), COL_WOOD_TRIM)
     for s in range(3):
         sz = 1.45 + s * 0.40
         make_box(f"WestBar_BackShelf_{s}",
@@ -1268,12 +1278,17 @@ def build_west_extension():
             make_cyl(f"WestBar_PortStool_{i}_{sgn:+d}",
                      (tx, ty + sgn * 0.55, 0.82), 0.20, 0.07,
                      (0.32, 0.18, 0.10, 1.0), segments=10, axis='Z')
+            # a post and a foot under each seat (2026-09-22: they floated)
+            make_cyl(f"WestBar_PortStool_{i}_{sgn:+d}_Post",
+                     (tx, ty + sgn * 0.55, 0.41), 0.03, 0.78, COL_BRASS, segments=6, axis='Z')
+            make_cyl(f"WestBar_PortStool_{i}_{sgn:+d}_Foot",
+                     (tx, ty + sgn * 0.55, 0.02), 0.18, 0.04, (0.16, 0.14, 0.12, 1.0), segments=10, axis='Z')
     # 3 pendant lamps over the bar
     for i, plx in enumerate([bar_cx_int - 1.6, bar_cx_int, bar_cx_int + 1.6]):
         plz = 2.40
         make_cyl(f"WestBar_Pendant_{i}_Wire",
-                 (plx, bar_cy, (plz + D_H - 0.05) / 2),
-                 0.010, (D_H - 0.05) - plz,
+                 (plx, bar_cy, (plz + D_H) / 2),
+                 0.010, D_H - plz,   # to the ceiling (2026-09-22: 5 cm short)
                  COL_PAYPHONE_DARK, segments=4, axis='Z')
         make_cyl(f"WestBar_Pendant_{i}_Shade",
                  (plx, bar_cy, plz), 0.16, 0.18,
@@ -1322,6 +1337,10 @@ def build_west_extension():
     # White-linen table
     make_box("WestFormal_Table_Top", (pd_cx, pd_cy, table_top_z),
              (table_w, table_d, 0.04), (0.94, 0.90, 0.78, 1.0))
+    # the table under the linen (2026-09-22: the set stood on its cloth)
+    for pi_, px_ in enumerate((pd_cx - table_w * 0.35, pd_cx + table_w * 0.35)):
+        make_box(f"WestFormal_Table_Pedestal_{pi_}", (px_, pd_cy, (table_top_z - 0.02) / 2.0),
+                 (0.30, 0.60, table_top_z - 0.02), COL_WOOD_TRIM)
     for sgn in (-1, +1):
         make_box(f"WestFormal_Cloth_NS_{sgn:+d}",
                  (pd_cx, pd_cy + sgn * (table_d/2 + 0.002),
@@ -1407,7 +1426,7 @@ def build_west_extension():
                      (ecx + back_dx, ecy + bz_off, 0.82),
                      (0.05, 0.04, 0.70), (0.32, 0.20, 0.12, 1.0))
     # ── Large brass chandelier over the formal table ──
-    ch_z_top = D_H - 0.10
+    ch_z_top = D_H            # the chain meets the ceiling (2026-09-22: 10 cm short)
     ch_z_low = ch_z_top - 1.20
     make_cyl("WestFormal_Chandelier_Chain",
              (pd_cx, pd_cy, (ch_z_top + ch_z_low) / 2),
@@ -1424,6 +1443,12 @@ def build_west_extension():
             make_cyl(f"WestFormal_Chandelier_Cup_{tier_i}_{ang_i}",
                      (ax, ay, ch_z_low + 0.06),
                      0.04, 0.08, COL_BRASS, segments=6, axis='Z')
+            # the arm from the body to the cup (2026-09-22: cups hung on nothing)
+            make_cyl(f"WestFormal_Chandelier_ArmX_{tier_i}_{ang_i}",
+                     ((pd_cx + ax) / 2, pd_cy, ch_z_low + 0.02), 0.012, abs(ax - pd_cx) + 0.06, COL_BRASS, segments=4, axis='X')
+            if abs(ay - pd_cy) > 0.02:
+                make_cyl(f"WestFormal_Chandelier_ArmY_{tier_i}_{ang_i}",
+                         (ax, (pd_cy + ay) / 2, ch_z_low + 0.02), 0.012, abs(ay - pd_cy) + 0.06, COL_BRASS, segments=4, axis='Y')
             make_sphere_low(f"WestFormal_Chandelier_Bulb_{tier_i}_{ang_i}",
                             (ax, ay, ch_z_low + 0.20), 0.06,
                             (0.98, 0.86, 0.56, 1.0), rings=2, segments=6)
@@ -1450,12 +1475,14 @@ def build_west_extension():
     make_cyl("WestFormal_Candelabra",
              (sb_x - 0.10, sb_y, 1.20),
              0.025, 0.40, COL_BRASS, segments=6, axis='Z')
+    make_cyl("WestFormal_Candelabra_Crown",   # the arms' ring the candles sit in (2026-09-22)
+             (sb_x - 0.10, sb_y, 1.35), 0.15, 0.02, COL_BRASS, segments=8, axis='Z')
     for cnd in range(3):
         ang = math.radians(cnd * 120 - 60)
         cx_off = 0.12 * math.cos(ang)
         cy_off = 0.12 * math.sin(ang)
         make_cyl(f"WestFormal_Candle_{cnd}",
-                 (sb_x - 0.10 + cx_off, sb_y + cy_off, 1.42),
+                 (sb_x - 0.10 + cx_off, sb_y + cy_off, 1.41),
                  0.020, 0.18, (0.96, 0.92, 0.82, 1.0),
                  segments=4, axis='Z')
         make_sphere_low(f"WestFormal_CandleFlame_{cnd}",
@@ -1621,7 +1648,7 @@ def build_alcove_booths():
                  segments=10, axis='Z')
 
         # ── Pendant lamp directly above the table ──
-        wire_top_z = D_H - 0.05
+        wire_top_z = D_H   # cords meet the ceiling (2026-09-22: 5 cm short)
         lamp_z = table_top_z + 0.85
         make_cyl(f"{prefix}_Lamp_Canopy",
                  (table_cx, by, wire_top_z - 0.02),
@@ -2014,8 +2041,8 @@ def build_riverboat_galley():
              (1.20, 0.40, 0.020), (0.96, 0.32, 0.16, 1.0))
     for sgn in (-1, +1):
         make_box(f"Galley_Salamander_Bracket_{sgn:+d}",
-                 (-1.75 + sgn * 0.65, line_cy + 0.30, line_top_z + 0.45),
-                 (0.04, 0.04, 0.70), COL_KITCHEN_STEEL)
+                 (-1.75 + sgn * 0.65, line_cy + 0.30, line_top_z + 0.40),
+                 (0.04, 0.04, 0.80), COL_KITCHEN_STEEL)   # from the line's top
 
     # 8) Steam table — X=0 .. +1.5
     make_box("Galley_SteamTable_Body",
@@ -2039,6 +2066,8 @@ def build_riverboat_galley():
     make_box("Galley_SteamTable_Guard",
              (+0.75, line_cy + line_d / 2 - 0.10, line_top_z + 0.30),
              (1.40, 0.04, 0.40), (0.78, 0.84, 0.86, 1.0))
+    for gi_, gx_ in enumerate((+0.10, +1.40)):   # guard posts (2026-09-22)
+        make_box(f"Galley_SteamTable_GuardPost_{gi_}", (gx_, line_cy + line_d / 2 - 0.10, line_top_z + 0.05), (0.03, 0.03, 0.12), COL_KITCHEN_STEEL)
 
     # 9) Plating / garnish station — X=+1.5 .. +3
     make_box("Galley_Plating_Body",
@@ -2080,16 +2109,16 @@ def build_riverboat_galley():
                      (0.42, 0.56, 0.66, 1.0))
     # Faucet riser + swing-arm + spray head
     make_cyl("Galley_Sink_FaucetRiser",
-             (+4.0, line_cy + 0.20, line_top_z + 0.30),
-             0.022, 0.50, COL_BRASS, segments=6, axis='Z')
+             (+4.0, line_cy + 0.20, line_top_z + 0.25),
+             0.022, 0.50, COL_BRASS, segments=6, axis='Z')   # stands on the line
     make_cyl("Galley_Sink_FaucetArm",
-             (+3.80, line_cy + 0.10, line_top_z + 0.50),
-             0.018, 0.55, COL_BRASS, segments=6, axis='X')
+             (+3.765, line_cy + 0.20, line_top_z + 0.50),   # on the post's line, out to the head (2026-09-22)
+             0.018, 0.62, COL_BRASS, segments=6, axis='X')
     make_box("Galley_Sink_SprayHead",
-             (+3.45, line_cy + 0.10, line_top_z + 0.40),
+             (+3.45, line_cy + 0.20, line_top_z + 0.42),
              (0.05, 0.05, 0.12), COL_BRASS)
     make_cyl("Galley_Sink_SprayHose",
-             (+3.45, line_cy + 0.10, line_top_z + 0.30),
+             (+3.45, line_cy + 0.20, line_top_z + 0.26),
              0.012, 0.18, (0.20, 0.18, 0.16, 1.0),
              segments=4, axis='Z')
     # Drying rack with 5 clean plates
@@ -2168,8 +2197,8 @@ def build_riverboat_galley():
                  0.010, 0.10, COL_BRASS, segments=4, axis='X')
         # S-hook from pot up to the rack
         make_cyl(f"Galley_HangPot_{i}_Hook",
-                 (px, line_cy + 0.05, pr_z - 0.18),
-                 0.012, 0.20, COL_BRASS, segments=4, axis='Z')
+                 (px, line_cy + 0.05, pr_z - 0.15),
+                 0.012, 0.30, COL_BRASS, segments=4, axis='Z')   # reaches the rack
     # ── Additional formal touches: a copper saucier pan on the line ──
     make_cyl("Galley_Saucier",
              (-3.0, line_cy + 0.10, line_top_z + 0.10),
@@ -2218,8 +2247,8 @@ def build_riverboat_galley():
                         0.06, (0.96, 0.42, 0.18, 1.0),
                         rings=2, segments=6)
         make_cyl(f"Galley_HeatLamp_{h}_Cord",
-                 (hx, expo_cy, (1.92 + D_H - 0.05) / 2),
-                 0.008, (D_H - 0.05) - 1.92,
+                 (hx, expo_cy, (1.88 + D_H) / 2),
+                 0.008, D_H - 1.88,   # housing top to ceiling (2026-09-22)
                  (0.10, 0.08, 0.06, 1.0), segments=4, axis='Z')
     # Ticket rail with hanging order tickets
     make_cyl("Galley_TicketRail",
@@ -2264,16 +2293,16 @@ def build_riverboat_galley():
 
     # ── KNIFE STRIP (magnetic) on the west wall ──
     make_box("Galley_KnifeStrip",
-             (K_X_W + 0.04, line_cy + 0.30, 1.70),
+             (K_X_W - 0.03, line_cy + 0.30, 1.70),   # on the wall (2026-09-22)
              (0.04, 0.40, 0.50), (0.42, 0.32, 0.20, 1.0))
     for k in range(4):
         kz = 1.55 + k * 0.10
         ky_off = -0.10 + k * 0.10
         make_box(f"Galley_Knife_{k}_Blade",
-                 (K_X_W + 0.10, line_cy + 0.20 + ky_off * 0, kz),
+                 (K_X_W + 0.03, line_cy + 0.20 + ky_off * 0, kz),
                  (0.04, 0.04, 0.28), (0.86, 0.86, 0.88, 1.0))
         make_box(f"Galley_Knife_{k}_Handle",
-                 (K_X_W + 0.10, line_cy + 0.20 + ky_off * 0, kz - 0.18),
+                 (K_X_W + 0.03, line_cy + 0.20 + ky_off * 0, kz - 0.18),
                  (0.04, 0.04, 0.08), (0.22, 0.14, 0.08, 1.0))
 
     # ── ANTI-FATIGUE MAT in front of the cook line ──
@@ -2676,7 +2705,7 @@ def build_formal_dining_room():
              (1.20, 0.02, 1.00), (0.50, 0.54, 0.60, 1.0))
 
     # ── Brass chandelier overhead ──
-    ch_z_top = D_H - 0.10
+    ch_z_top = D_H   # (2026-09-22: the chain meets the ceiling)
     ch_z_low = ch_z_top - 1.10
     make_cyl("Formal_Chandelier_Chain",
              (table_cx, table_cy, (ch_z_top + ch_z_low) / 2),
@@ -2801,7 +2830,7 @@ def build_private_dining_room():
              (0.08, 0.08, 0.005), COL_BRASS)
 
     # ── Brass chandelier ──
-    ch_z_top = D_H - 0.10
+    ch_z_top = D_H   # (2026-09-22: the chain meets the ceiling)
     ch_z_low = ch_z_top - 0.90
     make_cyl("PrivChandelier_Chain",
              (pd_cx, pd_cy, (ch_z_top + ch_z_low) / 2.0),
@@ -2907,16 +2936,18 @@ def build_southeast_bathroom():
     make_cyl("BR_Sink_Faucet",
              (BR_X_E - 0.30, -4.5 + 0.15, 0.96),
              0.025, 0.16, COL_BRASS, segments=6, axis='Z')
+    # Mirror + hand dryer on the bathroom's NORTH partition (face
+    # y -4.0) — the east side here is the picture window; 2026-09-22
+    # both hung on the glass and the dryer sat inside the partition.
     make_box("BR_Mirror",
-             (BR_X_E - 0.08, -4.5, 1.40),
-             (0.04, 0.80, 0.70), (0.50, 0.54, 0.58, 1.0))
+             (BR_X_E - 0.45, -4.045, 1.40),
+             (0.80, 0.04, 0.70), (0.50, 0.54, 0.58, 1.0))
     make_box("BR_Mirror_Frame",
-             (BR_X_E - 0.07, -4.5, 1.40),
-             (0.05, 0.86, 0.76), COL_WOOD_TRIM)
-    # Hand-dryer + paper-towel dispenser (boxes against east wall)
+             (BR_X_E - 0.45, -4.025, 1.40),
+             (0.86, 0.05, 0.76), COL_WOOD_TRIM)
     make_box("BR_HandDryer",
-             (BR_X_E - 0.05, -4.5 + 0.60, 1.30),
-             (0.10, 0.20, 0.30), (0.46, 0.44, 0.42, 1.0))
+             (BR_X_E - 1.05, -4.05, 1.30),
+             (0.20, 0.10, 0.30), (0.46, 0.44, 0.42, 1.0))
     # Trash bin (corner)
     make_cyl("BR_TrashBin",
              (BR_X_W + 0.30, -4.0, 0.30),
@@ -3254,8 +3285,8 @@ def build_north_annex_bar():
     for i, plx in enumerate([bar_cx_int - 2.0, bar_cx_int, bar_cx_int + 2.0]):
         plz = 2.40
         make_cyl(f"BarPendant_{i}_Wire",
-                 (plx, bar_cy_int, (plz + D_H - 0.05) / 2),
-                 0.010, (D_H - 0.05) - plz,
+                 (plx, bar_cy_int, (plz + D_H) / 2),
+                 0.010, D_H - plz,   # (2026-09-22)
                  COL_PAYPHONE_DARK, segments=4, axis='Z')
         make_cyl(f"BarPendant_{i}_Shade",
                  (plx, bar_cy_int, plz), 0.16, 0.18,
@@ -3599,7 +3630,7 @@ def build_storage_closet_and_bbs():
         sh_z = 1.80 + s * 0.50
         make_box(f"Closet_Shelf_{s}",
                  (cl_cx, cl_cy, sh_z),
-                 (cl_w - 0.30, cl_d - 0.30, 0.025), COL_WOOD_TRIM)
+                 (cl_w - 0.02, cl_d - 0.02, 0.025), COL_WOOD_TRIM)   # wall to wall (2026-09-22: 15 cm off each)
         # A few boxes/jars on each shelf
         for b in range(3):
             bx = cl_cx - 0.30 + b * 0.30
@@ -3638,23 +3669,24 @@ def build_back_hallway():
     make_box("Hall_Wall_N", (hx_center, hy_center + HALL_D/2 + 0.05, D_H/2), (HALL_W, 0.10, D_H), COL_WALL_INTERIOR)
 
     # payphone mounted on the east wall of the hallway
-    py_x = HALL_W/2 - 0.18
+    py_x = HALL_W/2 - 0.06   # flush with the hall's east wall (2026-09-22: 12 cm off it)
     py_y = hy_center - 0.6
     make_box("Payphone_Body", (py_x, py_y, 1.40), (0.12, 0.25, 0.50), COL_PAYPHONE_DARK)
     make_box("Payphone_Receiver", (py_x - 0.10, py_y - 0.12, 1.50), (0.08, 0.07, 0.18), COL_PAYPHONE_DARK)
     make_box("Payphone_Keypad", (py_x - 0.08, py_y, 1.40), (0.05, 0.10, 0.12), (0.48, 0.42, 0.32, 1.0))
     # phone-book chained below
     make_box("Payphone_Book", (py_x - 0.06, py_y, 0.95), (0.08, 0.20, 0.15), (0.62, 0.50, 0.32, 1.0))
+    make_box("Payphone_BookChain", (py_x - 0.06, py_y, 1.085), (0.01, 0.01, 0.13), (0.50, 0.50, 0.52, 1.0))   # (2026-09-22)
     # the coiled cord
     for i in range(4):
-        cy_off = -0.05 - i * 0.04
+        cy_off = -0.13   # hangs down the body's edge (2026-09-22: it drifted away from it)
         cz = 1.30 - i * 0.05
-        make_box(f"Payphone_Cord_{i}", (py_x - 0.10, py_y + cy_off, cz), (0.012, 0.022, 0.012), (0.10, 0.08, 0.06, 1.0))
+        make_box(f"Payphone_Cord_{i}", (py_x - 0.07, py_y + cy_off, cz), (0.012, 0.022, 0.05), (0.10, 0.08, 0.06, 1.0))
 
     # bathroom door on the west wall of the hallway
-    bd_x = -HALL_W/2 + 0.10
+    bd_x = -HALL_W/2 + 0.025   # against the west wall (2026-09-22: 7 cm off it)
     bd_y = hy_center + 0.5
-    make_box("Bathroom_Door", (bd_x, bd_y, 1.10), (0.05, 0.90, 2.10), COL_WOOD_TRIM)
+    make_box("Bathroom_Door", (bd_x, bd_y, 1.05), (0.05, 0.90, 2.10), COL_WOOD_TRIM)   # on the floor (was 5 cm up)
     # bathroom door sign (a small darker rectangle)
     make_box("Bathroom_Sign", (bd_x - 0.03, bd_y, 1.95), (0.02, 0.15, 0.08), (0.20, 0.16, 0.10, 1.0))
 
@@ -3740,7 +3772,7 @@ def build_ceiling_fans():
                  (fx, fy, D_H - 0.04),
                  0.12, 0.06, COL_FAN_HOUSING, segments=12, axis='Z')
         # Downrod (slim cylinder dropping from canopy to motor)
-        downrod_top = D_H - 0.08
+        downrod_top = D_H   # the canopy sits on the ceiling (2026-09-22: 8 cm short)
         downrod_bot = fan_z + 0.08
         make_cyl(f"Fan_{label}_Downrod",
                  (fx, fy, (downrod_top + downrod_bot) / 2),
@@ -3803,7 +3835,7 @@ def build_ceiling_fans():
                       0.10), COL_BRASS)
         # Pull-chain (thin dangling cord with small ball at the end)
         make_cyl(f"Fan_{label}_PullChain",
-                 (fx + 0.08, fy + 0.04, fan_z - 0.32),
+                 (fx + 0.05, fy + 0.02, fan_z - 0.32),
                  0.005, 0.30, (0.40, 0.32, 0.18, 1.0),
                  segments=4, axis='Z')
         make_sphere_low(f"Fan_{label}_PullChain_Ball",
@@ -3811,8 +3843,8 @@ def build_ceiling_fans():
                         0.025, COL_BRASS, rings=2, segments=4)
         # Light fixture below the fan — brass cup + sphere globe
         make_cyl(f"Fan_{label}_GlobeMount",
-                 (fx, fy, fan_z - 0.26),
-                 0.10, 0.06, COL_BRASS, segments=8, axis='Z')
+                 (fx, fy, fan_z - 0.19),    # from the housing's bottom plate (2026-09-22)
+                 0.10, 0.13, COL_BRASS, segments=8, axis='Z')
         make_sphere_low(f"Fan_{label}_Globe",
                         (fx, fy, fan_z - 0.46),
                         0.22, (0.96, 0.92, 0.78, 1.0),
@@ -3876,7 +3908,7 @@ def build_counter_accessories():
         make_box("Register_Flag_%d" % i,
                  (rcx + fx, cy - 0.035, counter_top_z + 0.51),
                  (0.05, 0.01, 0.09), (0.92, 0.90, 0.84, 1.0))
-    make_cyl("Register_CrownFinial", (rcx, cy + 0.10, counter_top_z + 0.545),
+    make_cyl("Register_CrownFinial", (rcx, cy + 0.10, counter_top_z + 0.53),
              0.02, 0.04, brass, segments=6)
     # Ticket spike (thin tall iron spike + a few papers)
     make_box("TicketSpike_Base",
@@ -4205,7 +4237,7 @@ def build_wall_decor():
     # Neon "OPEN" sign in the front window (south of front-door area —
     # still on south wall above galley, high enough to clear the hood)
     make_box("NeonOpenSign",
-             (+6.5, D_D/2 - 0.10, 2.30),
+             (+6.5, D_D/2 - 0.02, 2.30),   # against the front glass (2026-09-22)
              (1.20, 0.06, 0.45), (0.95, 0.32, 0.62, 1.0))
     # Chalkboard daily-specials — moved AGAIN to the east-annex
     # west wall in the VESTIBULE section (Y=-0.2, above the L-bend
@@ -4302,10 +4334,10 @@ def build_entry_props():
     for h in range(4):
         ang = h * 1.5708
         import math as _m
-        hx = cr_x + 0.20 * _m.cos(ang)
-        hy = cr_y + 0.20 * _m.sin(ang)
+        hx = cr_x + 0.10 * _m.cos(ang)
+        hy = cr_y + 0.10 * _m.sin(ang)
         make_box(f"CoatHook_{h}", (hx, hy, 1.78),
-                 (0.04, 0.04, 0.12), COL_BRASS)
+                 (0.16 if abs(_m.cos(ang)) > 0.5 else 0.04, 0.16 if abs(_m.sin(ang)) > 0.5 else 0.04, 0.12), COL_BRASS)   # reaches the post
     make_box("Jacket_Draped",
              (cr_x + 0.18, cr_y, 1.40),
              (0.22, 0.06, 0.50), (0.32, 0.40, 0.52, 1.0))
@@ -4598,17 +4630,23 @@ def build_gauntlet_decor():
         # (label, surface_x, surface_y, normal_axis, base, accent)
         # normal_axis 'X' → frame is flat against an east/west wall;
         # normal_axis 'Y' → frame is flat against a north/south wall.
+        # `face` is the side the viewer stands on (+1 / -1 along the
+        # normal axis): the card + sigil + title sit proud of the
+        # frame on that side. 2026-09-22: they were centred INSIDE
+        # the frame slab, hidden by its face.
+        # (label, surface_x, surface_y, normal_axis, face, base, accent)
         # Fool — on the east-annex W wall north of vestibule arch
         # (above the L-bend opening so it isn't floating in a gap).
-        ("Fool",       +4.92, +4.5, 'X', COL_VINYL_RED,    COL_BRASS),
+        ("Fool",       +4.92, +4.5, 'X', -1, COL_VINYL_RED,    COL_BRASS),
         # Magician — back hallway west wall (near BBS closet)
-        ("Magician",   -2.45, +7.0, 'X', COL_PAYPHONE_DARK, COL_BRASS),
-        # Hierophant — INSIDE the new PD, on its NORTH wall facing
-        # the table from above (PD spans Y=-2.5..+1; mount the print
-        # on the inside face of the Y=+1 north wall)
-        ("Hierophant", +2.0,  +0.94, 'Y', COL_VINYL_RED,    COL_PHOTO_FRAME),
+        ("Magician",   -2.45, +7.0, 'X', +1, COL_PAYPHONE_DARK, COL_BRASS),
+        # Hierophant — the formal room's partition wall (y -1.05
+        # face), above Table 4, looking south into the room. The
+        # centre-floor private-dining box it hung in was removed
+        # 2026-07-12; the print floated in open air until 2026-09-22.
+        ("Hierophant", -14.0, -1.07, 'Y', -1, COL_VINYL_RED,    COL_PHOTO_FRAME),
     ]
-    for i, (label, sx, sy, nax, base, accent) in enumerate(arcana_specs):
+    for i, (label, sx, sy, nax, face, base, accent) in enumerate(arcana_specs):
         if nax == 'X':
             frame_sz  = (0.04, 0.40, 0.62)
             card_sz   = (0.02, 0.32, 0.54)
@@ -4619,23 +4657,26 @@ def build_gauntlet_decor():
             card_sz   = (0.32, 0.02, 0.54)
             sigil_sz  = (0.10, 0.005, 0.10)
             title_sz  = (0.26, 0.005, 0.04)
+        card_off = face * 0.025     # card proud of the frame's face (0.02) by 1.5 cm
+        print_off = face * 0.0375   # sigil + title on the card's face
         make_box(f"Gauntlet_ArcanaFrame_{label}",
                  (sx, sy, 1.50), frame_sz, COL_PHOTO_FRAME)
         make_box(f"Gauntlet_ArcanaCard_{label}",
-                 (sx + (0.01 if nax == 'X' else 0.0),
-                  sy + (0.0 if nax == 'X' else 0.01), 1.50),
+                 (sx + (card_off if nax == 'X' else 0.0),
+                  sy + (0.0 if nax == 'X' else card_off), 1.50),
                  card_sz, COL_CARD_PAPER)
         make_box(f"Gauntlet_ArcanaSigil_{label}",
-                 (sx + (0.015 if nax == 'X' else 0.0),
-                  sy + (0.0 if nax == 'X' else 0.015), 1.66),
+                 (sx + (print_off if nax == 'X' else 0.0),
+                  sy + (0.0 if nax == 'X' else print_off), 1.66),
                  sigil_sz, accent)
         make_box(f"Gauntlet_ArcanaTitle_{label}",
-                 (sx + (0.015 if nax == 'X' else 0.0),
-                  sy + (0.0 if nax == 'X' else 0.015), 1.30),
+                 (sx + (print_off if nax == 'X' else 0.0),
+                  sy + (0.0 if nax == 'X' else print_off), 1.30),
                  title_sz, base)
     # ── A small "Now Playing" gauntlet-themed chalkboard near the
     # hostess stand (in the vestibule), listing house rules ──
     cb_x, cb_y = +6.5, +0.7
+    make_box("Gauntlet_HouseRules_Post", (cb_x, cb_y, 0.78), (0.05, 0.05, 1.56), COL_WOOD_TRIM)   # an easel post (2026-09-22)
     make_box("Gauntlet_HouseRules_Frame",
              (cb_x, cb_y, 1.90),
              (0.50, 0.04, 0.70), COL_WOOD_TRIM)
@@ -4653,10 +4694,16 @@ def build_gauntlet_decor():
                  (0.92, 0.90, 0.84, 1.0))
     # ── Visitor-meeple-like figurine collection on a small shelf
     # near the cardwall ──
-    sh_x, sh_y, sh_z = +1.5, D_D/2 + 1.0, 1.60
+    # on the hallway's north wall (face y 8.40) east of the corkboard
+    # (2026-09-22: it hung mid-hallway at y 7.0, on nothing)
+    sh_x, sh_y, sh_z = +2.0, D_D/2 + HALL_D - 0.10, 1.60
     make_box("Gauntlet_VisitorShelf",
              (sh_x, sh_y, sh_z),
-             (1.20, 0.20, 0.025), COL_WOOD_TRIM)
+             (0.90, 0.20, 0.025), COL_WOOD_TRIM)
+    for sgn in (-1, +1):
+        make_box(f"Gauntlet_VisitorShelf_Bracket_{sgn:+d}",
+                 (sh_x + sgn * 0.35, sh_y + 0.05, sh_z - 0.07),
+                 (0.03, 0.10, 0.10), COL_WOOD_TRIM)
     # 7 meeples (small humanoid shapes)
     meeple_colors = [
         COL_VINYL_RED, COL_BRASS, COL_CARD_PINK,
@@ -4664,7 +4711,7 @@ def build_gauntlet_decor():
         (0.42, 0.32, 0.18, 1.0),
     ]
     for m in range(7):
-        mx = sh_x - 0.50 + m * 0.16
+        mx = sh_x - 0.36 + m * 0.12
         # Body (small box)
         make_box(f"Gauntlet_Meeple_{m}_Body",
                  (mx, sh_y, sh_z + 0.07),
@@ -5557,6 +5604,8 @@ def build_diner_streetscape():
                  (bench_x + sgn * 0.55, bench_y, 0.21),
                  0.04, 0.42, COL_POLE_DARK, segments=4, axis='Z')
     # Backrest
+    for ui, ux in enumerate((bench_x - 0.65, bench_x + 0.65)):   # back uprights (2026-09-22: rails hung on nothing)
+        make_box(f"Bench_BackUpright_{ui}", (ux, bench_y + 0.16, 0.66), (0.05, 0.04, 0.60), (0.30, 0.20, 0.12, 1.0))
     for r in range(3):
         rz = 0.65 + r * 0.10
         make_box(f"Bench_BackRail_{r}",
@@ -5635,7 +5684,7 @@ def build_diner_streetscape():
         # 3 insulators on the cross-arm
         for ix in (-1, 0, +1):
             make_cyl(f"UtilPole_{upi}_Insulator_{ix:+d}",
-                     (upx + ix * 1.0, upy, 9.18),
+                     (upx + ix * 1.0, upy, 9.13),   # on the cross-arm (2026-09-22)
                      0.08, 0.16, (0.86, 0.86, 0.84, 1.0),
                      segments=6, axis='Z')
 
@@ -5646,6 +5695,8 @@ def build_diner_streetscape():
     make_box("DinerSign_Backing",
              (0, sign_y, D_H + 1.0),
              (8.0, 0.10, 1.20), (0.18, 0.14, 0.10, 1.0))
+    for pi_, px_ in enumerate((-3.5, 3.5)):   # posts to the roof (2026-09-22)
+        make_box(f"DinerSign_Post_{pi_}", (px_, sign_y + 0.25, D_H + 0.25), (0.08, 0.60, 0.30), (0.18, 0.14, 0.10, 1.0))
     # Neon "D'AMBROSIO'S" text — a wide red glow slab + dark backer
     make_box("DinerSign_Neon",
              (0, sign_y - 0.06, D_H + 1.0),
@@ -5858,25 +5909,27 @@ def build_booth_lamps_and_payphone():
                  (0.86, 0.70, 0.40, 1.0), segments=10)
         make_cyl(f"BoothLamp_{i}_Finial", (lx, by, 1.63), 0.02, 0.04,
                  brass_dk, segments=5)
-    # ── Wall payphone in the entry vestibule (east wall) ──
-    px, py = 8.88, 0.6
-    make_box("Payphone_Body", (px, py, 1.35), (0.10, 0.24, 0.42),
+    # ── Wall payphone in the entry vestibule (east wall, NE corner —
+    # the only solid east wall north of the door; 2026-09-22 it hung
+    # in the door opening's glass at y 0.6) ──
+    px, py = 8.95, 5.5
+    make_box("VestPayphone_Body", (px, py, 1.35), (0.10, 0.24, 0.42),
              (0.16, 0.18, 0.24, 1.0))
-    make_box("Payphone_Faceplate", (px - 0.055, py, 1.44), (0.02, 0.18, 0.16),
+    make_box("VestPayphone_Faceplate", (px - 0.055, py, 1.44), (0.02, 0.18, 0.16),
              (0.62, 0.64, 0.66, 1.0))
-    make_box("Payphone_CoinSlot", (px - 0.062, py + 0.05, 1.52), (0.012, 0.03, 0.05),
+    make_box("VestPayphone_CoinSlot", (px - 0.062, py + 0.05, 1.52), (0.012, 0.03, 0.05),
              (0.10, 0.10, 0.10, 1.0))
     # handset resting in the cradle (two cup cylinders + a grip bar)
-    make_cyl("Payphone_HandsetEar", (px - 0.08, py - 0.135, 1.52), 0.035, 0.05,
+    make_cyl("VestPayphone_HandsetEar", (px - 0.08, py - 0.135, 1.52), 0.035, 0.05,
              (0.10, 0.10, 0.12, 1.0), segments=6, axis='X')
-    make_cyl("Payphone_HandsetMouth", (px - 0.08, py - 0.135, 1.24), 0.035, 0.05,
+    make_cyl("VestPayphone_HandsetMouth", (px - 0.08, py - 0.135, 1.24), 0.035, 0.05,
              (0.10, 0.10, 0.12, 1.0), segments=6, axis='X')
-    make_box("Payphone_HandsetGrip", (px - 0.08, py - 0.135, 1.38), (0.045, 0.05, 0.24),
+    make_box("VestPayphone_HandsetGrip", (px - 0.08, py - 0.135, 1.38), (0.045, 0.05, 0.24),
              (0.12, 0.12, 0.14, 1.0))
-    # drooping cord — short segments sagging toward the body
-    for i, (cy_off, cz) in enumerate([(-0.12, 1.14), (-0.08, 1.06), (-0.02, 1.02),
-                                      (0.04, 1.05), (0.07, 1.12)]):
-        make_cyl(f"Payphone_Cord_{i}", (px - 0.07, py + cy_off, cz), 0.010, 0.10,
+    # drooping cord — short segments sagging from the body's bottom
+    for i, (cy_off, cz) in enumerate([(-0.12, 1.14), (-0.08, 1.085), (-0.02, 1.05),
+                                      (0.04, 1.075), (0.07, 1.12)]):
+        make_cyl(f"VestPayphone_Cord_{i}", (px - 0.07, py + cy_off, cz), 0.010, 0.10,
                  (0.08, 0.08, 0.08, 1.0), segments=4, axis='Y')
 
 
@@ -5948,6 +6001,8 @@ def build_dambrosios_dressing_2026_08():
         for ci, cxo in enumerate([-0.62, 0.62]):
             make_box(f"Damb_{tag}_Ch{ci}_Seat", (tx + cxo, ty, 0.46), (0.42, 0.42, 0.06),
                      (0.32, 0.20, 0.12, 1.0))
+            for li_, (lx_, ly_) in enumerate(((-0.17, -0.17), (0.17, -0.17), (-0.17, 0.17), (0.17, 0.17))):   # legs (2026-09-22)
+                make_box(f"Damb_{tag}_Ch{ci}_Leg_{li_}", (tx + cxo + lx_, ty + ly_, 0.215), (0.035, 0.035, 0.43), (0.24, 0.16, 0.10, 1.0))
             bxo = -0.19 if cxo < 0 else 0.19
             make_box(f"Damb_{tag}_Ch{ci}_Back", (tx + cxo + bxo, ty, 0.82), (0.05, 0.42, 0.66),
                      (0.32, 0.20, 0.12, 1.0))
@@ -5962,8 +6017,8 @@ def build_dambrosios_dressing_2026_08():
     make_box("Damb_T14_Card", (-9.72, -5.05, 0.778), (0.09, 0.05, 0.004),
              (0.92, 0.90, 0.84, 1.0))
     # Table 12's section: the slightly-too-loud wall speaker.
-    make_box("Damb_T12_Speaker", (-14.85, -5.25, 2.30), (0.10, 0.30, 0.42), (0.16, 0.14, 0.14, 1.0))
-    make_box("Damb_T12_Speaker_Grille", (-14.79, -5.25, 2.30), (0.02, 0.22, 0.32), (0.10, 0.10, 0.10, 1.0))
+    make_box("Damb_T12_Speaker", (-14.94, -5.25, 2.30), (0.10, 0.30, 0.42), (0.16, 0.14, 0.14, 1.0))   # on the west wall
+    make_box("Damb_T12_Speaker_Grille", (-14.88, -5.25, 2.30), (0.02, 0.22, 0.32), (0.10, 0.10, 0.10, 1.0))
     # VELVET ROPES on brass moorings at the formal-partition door
     # (Y=-1, door at X=-12).
     for ri, rx in enumerate([-12.95, -11.05]):
@@ -5972,9 +6027,9 @@ def build_dambrosios_dressing_2026_08():
         make_cyl(f"Damb_RopePost_{ri}_Base", (rx, -1.45, 0.03), 0.11, 0.05, brass, segments=10, axis='Z')
     # Sagging rope between the posts (three segments approximate the
     # catenary droop).
-    make_box("Damb_Rope_Mid", (-12.0, -1.45, 0.82), (0.80, 0.05, 0.05), burg)
-    make_box("Damb_Rope_L", (-12.60, -1.45, 0.90), (0.50, 0.05, 0.05), burg)
-    make_box("Damb_Rope_R", (-11.40, -1.45, 0.90), (0.50, 0.05, 0.05), burg)
+    make_box("Damb_Rope_Mid", (-12.0, -1.45, 0.84), (0.96, 0.05, 0.05), burg)   # meets both ends
+    make_box("Damb_Rope_L", (-12.665, -1.45, 0.90), (0.50, 0.05, 0.05), burg)   # to the post (2026-09-22)
+    make_box("Damb_Rope_R", (-11.335, -1.45, 0.90), (0.50, 0.05, 0.05), burg)
     # SERVICE BAR stub against the room's E wall — where the
     # bartender runs cards up to the helm.
     make_box("Damb_ServiceBar_Body", (-9.35, -1.52, 0.55), (0.50, 0.85, 1.10), (0.30, 0.18, 0.10, 1.0))
@@ -6060,7 +6115,7 @@ def main():
     # in the west-extension bar room. Per setup_evening_service.json
     # flavor: "the jukebox skipping". Facing south so the marquee
     # reads from the bar's south doorway approach.
-    build_jukebox(-10.5, 5.0)
+    build_jukebox(-10.5, 5.20)   # clear of the bar top (2026-09-22: its base sat 10 cm inside the counter)
     # Scene-description specifics from setup_the_leap.json — the
     # Booth_6 fluorescent, the brass plaque, John Frank's rag, the
     # empty mug and the ring it left, the brass door bell. Always

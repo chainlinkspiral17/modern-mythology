@@ -119,10 +119,13 @@ def make_fluorescent_tube_fixture(prefix, anchor, *,
     diffuser = palette.get("diffuser", (1.0, 0.96, 0.86, 1.0))
     frame = palette.get("frame", P.METAL_STEEL)
     cx, cy, ceil_z = anchor
-    make_box(f"{prefix}_Tube", (cx, cy, ceil_z - 0.08),
-             (length, width, 0.06), tube)
-    make_box(f"{prefix}_Frame", (cx, cy, ceil_z - 0.10),
+    # Recessed means FLUSH: the frame's top touches the ceiling plane
+    # (2026-09-22 support audit: every fixture from this helper hung
+    # 9 cm below its ceiling, in the air, in seventeen rooms).
+    make_box(f"{prefix}_Frame", (cx, cy, ceil_z - 0.01),
              (length + 0.10, width + 0.08, 0.02), frame)
+    make_box(f"{prefix}_Tube", (cx, cy, ceil_z - 0.05),
+             (length, width, 0.06), tube)
     # Brighter under-strip
-    make_box(f"{prefix}_Glow", (cx, cy, ceil_z - 0.14),
+    make_box(f"{prefix}_Glow", (cx, cy, ceil_z - 0.085),
              (length - 0.10, width * 0.45, 0.02), diffuser)

@@ -65,6 +65,12 @@ def make_endcap(prefix, anchor, *, palette=None, shelves=4):
     cx, cy, bz = anchor
     make_box(f"{prefix}_Base", (cx, cy, bz + 0.12),
              (0.60, 0.80, 0.24), base)
+    # two uprights carry the shelves and the header (2026-09-22: the
+    # shelves hung on nothing and the products 4 cm above them)
+    top_z = bz + 0.40 + shelves * 0.34 + 0.10
+    for ui, uy in enumerate((cy - 0.36, cy + 0.36)):
+        make_box(f"{prefix}_Upright_{ui}", (cx, uy, (bz + 0.24 + top_z) / 2.0),
+                 (0.04, 0.04, top_z - bz - 0.24), metal)
     for sh in range(shelves):
         shz = bz + 0.40 + sh * 0.34
         make_box(f"{prefix}_Shelf_{sh}", (cx, cy, shz),
@@ -73,7 +79,7 @@ def make_endcap(prefix, anchor, *, palette=None, shelves=4):
             px = -0.20 + p * 0.14
             tint = tints[(sh + p) % len(tints)]
             make_box(f"{prefix}_Product_{sh}_{p}",
-                     (cx + px, cy, shz + 0.14),
+                     (cx + px, cy, shz + 0.10),
                      (0.10, 0.50, 0.18), tint)
     make_box(f"{prefix}_Header", (cx, cy, bz + 0.40 + shelves * 0.34),
              (0.62, 0.78, 0.20), header)

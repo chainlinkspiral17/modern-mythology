@@ -170,10 +170,14 @@ def make_floor_plant(prefix, anchor, *, palette=None):
     leaf = palette.get("leaf", (0.42, 0.52, 0.36, 1.0))
     pot = palette.get("pot", (0.46, 0.34, 0.22, 1.0))
     px, py, base_z = anchor
+    # the pot stands ON the floor (2026-09-22: it started 17 cm up, in
+    # every room that used this helper)
     for r in range(3):
         make_cyl(f"{prefix}_Pot_{r}",
-                 (px, py, base_z + 0.20 + r * 0.06),
+                 (px, py, base_z + 0.03 + r * 0.06),
                  0.18 - r * 0.02, 0.06, pot)
+    make_cyl(f"{prefix}_Pot_Fill", (px, py, base_z + 0.21), 0.12, 0.02, (0.28, 0.20, 0.14, 1.0))
+    make_cyl(f"{prefix}_Stem", (px, py, base_z + 0.32), 0.02, 0.22, (0.36, 0.30, 0.22, 1.0), segments=6)
     for li, lz in enumerate([0.42, 0.50, 0.58, 0.64]):
         for ang_i in range(6):
             ang = ang_i * (math.pi * 2.0 / 6.0) + li * 0.3

@@ -136,13 +136,16 @@ def make_car(prefix, cx, cy, length, col, pickup=False, hatch=False, light_bar=F
         make_chamfer_box(f"{prefix}_Mirror_{nm}", P(ws_u - 0.15, sgn * (hw + 0.20), z0 + 1.10), S(0.10, 0.10, 0.14), col, chamfer=0.02)
         # lights
         make_box(f"{prefix}_Headlight_{nm}", P(nose + 0.006, sgn * 0.55, z0 + 0.72), S(0.012, 0.36, 0.16), (0.90, 0.90, 0.82, 1.0))
-        make_box(f"{prefix}_Taillight_{nm}", P(tail - 0.006, sgn * 0.62, z0 + 0.82), S(0.012, 0.28, 0.14), (0.78, 0.14, 0.10, 1.0))
+        # on the body's rear face (the profiles end at tail + 0.10; the
+        # lights used to sit 10 cm behind it, in the air)
+        make_box(f"{prefix}_Taillight_{nm}", P(tail + 0.10 - 0.006, sgn * 0.62, z0 + 0.82), S(0.012, 0.28, 0.14), (0.78, 0.14, 0.10, 1.0))
     # ── nose: grille slats, plate, bumpers
     for gi in range(4):
         make_box(f"{prefix}_Grille_{gi}", P(nose + 0.004, 0.0, z0 + 0.60 + gi * 0.06), S(0.008, 0.90, 0.025), DARK)
     make_box(f"{prefix}_Plate", P(nose + 0.008, 0.0, z0 + 0.50), S(0.008, 0.30, 0.15), (0.90, 0.88, 0.82, 1.0))
     make_chamfer_box(f"{prefix}_Bumper_F", P(nose + 0.08, 0.0, z0 + 0.44), S(0.14, 2 * hw - 0.02, 0.16), CHROME, chamfer=0.03)
-    make_chamfer_box(f"{prefix}_Bumper_R", P(tail - 0.08, 0.0, z0 + 0.44), S(0.14, 2 * hw - 0.02, 0.16), CHROME, chamfer=0.03)
+    # on the body's rear face (tail + 0.10); it hung 11 cm behind it (2026-09-22)
+    make_chamfer_box(f"{prefix}_Bumper_R", P(tail + 0.035, 0.0, z0 + 0.44), S(0.14, 2 * hw - 0.02, 0.16), CHROME, chamfer=0.03)
     # wipers, antenna
     for wi, dv in enumerate((-0.30, 0.20)):
         make_box(f"{prefix}_Wiper_{wi}", P(ws_u + 0.05, dv, ws_z - ws_h / 2.0 + 0.03), S(0.01, 0.40, 0.012), DARK)

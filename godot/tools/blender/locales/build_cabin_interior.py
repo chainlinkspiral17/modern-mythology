@@ -116,10 +116,12 @@ def build_kitchen():
                    [(0.045, 0.0), (0.056, 0.005), (0.056, 0.03), (0.0, 0.03)], COL_IRON, segments=10)
     # Hanging pot rack over the counter
     make_box("PotRack_Bar", (-1.7, 4.6, 2.0), (0.04, 1.4, 0.04), COL_IRON)
+    for si, sy in enumerate((4.0, 5.2)):   # (2026-09-22: straps to the ceiling — the bar hung on nothing)
+        make_box(f"PotRack_Strap_{si}", (-1.7, sy, (2.02 + CEIL) / 2.0), (0.03, 0.03, CEIL - 2.02), COL_IRON)
     for i, (py, r, h, col) in enumerate([(4.2, 0.11, 0.14, COL_IRON), (4.6, 0.13, 0.16, (0.55, 0.35, 0.18, 1.0)),
                                          (5.0, 0.10, 0.12, COL_IRON)]):
         make_cyl(f"PotRack_Hook_{i}", (-1.7, py, 1.9), 0.006, 0.16, COL_IRON_WM, segments=4)
-        make_cyl(f"PotRack_Pot_{i}", (-1.7, py, 1.72), r, h, col, segments=10)
+        make_cyl(f"PotRack_Pot_{i}", (-1.7, py, 1.82 - h / 2.0 + 0.01), r, h, col, segments=10)   # hangs from its hook
     # The kitchen window (N wall over the counter's end)…
     make_window("Kitchen_Window", (-1.6, ROOM_D-0.04, 1.48), width=1.00, height=0.95)
     # …and the black rotary phone on a small table beside it
@@ -484,9 +486,9 @@ def build_wear_personality_2026_08():
     make_floor_stain("Wear_IronScorch", (1.95, 4.78), radius=0.07, tint=scorch, segments=6)
     # The marking iron itself, hanging by the stove — Olaf's mark
     # for the family, within reach of the fire that heats it.
-    make_box("MarkIron_Hook", (2.72, 5.72, 1.45), (0.04, 0.04, 0.06), COL_IRON)
-    make_box("MarkIron_Shaft", (2.72, 5.70, 1.18), (0.025, 0.025, 0.50), COL_IRON)
-    make_box("MarkIron_Head", (2.72, 5.70, 0.90), (0.06, 0.03, 0.06), COL_IRON_WM)
+    make_box("MarkIron_Hook", (2.72, ROOM_D - 0.13, 1.45), (0.04, 0.06, 0.06), COL_IRON)   # on the N wall face
+    make_box("MarkIron_Shaft", (2.72, ROOM_D - 0.15, 1.18), (0.025, 0.025, 0.50), COL_IRON)
+    make_box("MarkIron_Head", (2.72, ROOM_D - 0.15, 0.90), (0.06, 0.03, 0.06), COL_IRON_WM)
     # Door wear: the latch-hand patch and boot scuff at the base.
     make_box("Wear_Door_Hand", (0.30, 0.078, 1.04), (0.16, 0.008, 0.20), handworn)
     make_scuff_band("Wear_Door_Boot", (0.0, 0.085), 0.80, axis='X',
@@ -544,7 +546,8 @@ def build_through_windows_2026_08():
     # NORTH · woodpile lean-to, a pale trunk, the creek strip
     make_box("Thru_N_Leanto_Roof", (-2.6, 8.0, 1.7), (2.2, 1.4, 0.10),
              (0.40, 0.32, 0.24, 1.0))
-    for pi3, pz3 in enumerate((0.35, 0.65, 0.95)):
+    make_box("Thru_N_Ground", (-2.6, 8.0, -0.02), (3.0, 2.4, 0.04), (0.30, 0.26, 0.20, 1.0))
+    for pi3, pz3 in enumerate((0.14, 0.42, 0.70)):
         make_box("Thru_N_Woodrow_%d" % pi3, (-2.6, 8.0, pz3), (2.0, 1.1, 0.28),
                  (0.48, 0.38, 0.26, 1.0))
     make_cyl("Thru_N_PaleTrunk", (0.6, 9.5, 3.0), 0.30, 6.0,

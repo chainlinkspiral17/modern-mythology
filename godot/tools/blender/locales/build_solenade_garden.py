@@ -57,10 +57,12 @@ def build_perimeter_wall_and_benches():
         bx = math.cos(ma) * (GARDEN_R - 0.78)
         by = math.sin(ma) * (GARDEN_R - 0.78)
         make_box(f"Bench_Seat_{si}", (bx, by, 0.46), (chord*0.65, 0.36, 0.06), COL_BENCH_WOOD)
-        # Bench legs (2)
+        # Bench legs (2) — under the seat slab's ends. The slab is
+        # axis-aligned (x-long) like the wall blocks; legs placed along
+        # the ring's tangent stood 0.9 m from the diagonal seats (2026-09-22)
         for sgn in (-1, +1):
-            lx = bx + math.cos(ma + math.pi/2) * (sgn * chord*0.25)
-            ly = by + math.sin(ma + math.pi/2) * (sgn * chord*0.25)
+            lx = bx + sgn * chord*0.25
+            ly = by
             make_box(f"Bench_Leg_{si}_{sgn:+d}", (lx, ly, 0.23),
                      (0.06, 0.30, 0.46), COL_BENCH_WOOD)
 
@@ -68,7 +70,7 @@ def build_perimeter_wall_and_benches():
 def build_central_oak():
     # Buttressed base + tall trunk + 4 stacked foliage clusters
     make_cyl("Oak_Base", (0.0, 0.0, 0.50), 1.00, 1.00, COL_OAK_TRUNK, segments=14)
-    make_cyl("Oak_Trunk", (0.0, 0.0, 3.50), 0.60, 4.00, COL_OAK_TRUNK, segments=14)
+    make_cyl("Oak_Trunk", (0.0, 0.0, 3.25), 0.60, 4.50, COL_OAK_TRUNK, segments=14)   # from the base's top (2026-09-22: 0.5 m of air)
     # Branching foliage (5 clusters)
     foliage_positions = [(0.0, 0.0, 6.50), (1.50, 0.50, 6.80), (-1.20, 1.40, 6.60),
                           (0.80, -1.80, 6.40), (-1.80, -1.00, 6.70)]
@@ -89,15 +91,15 @@ def build_sundial():
     # Bronze sundial S of the oak, on a small plinth
     sx, sy = 0.0, -3.40
     make_cyl("Sundial_Plinth", (sx, sy, 0.30), 0.40, 0.60, COL_LIMESTONE, segments=12)
-    make_cyl("Sundial_Plate", (sx, sy, 0.66), 0.36, 0.04, COL_SUNDIAL, segments=18)
+    make_cyl("Sundial_Plate", (sx, sy, 0.62), 0.36, 0.04, COL_SUNDIAL, segments=18)   # on the plinth (2026-09-22: 4 cm up)
     # Triangular gnomon (approximated as a thin angled box)
-    make_box("Sundial_Gnomon", (sx, sy, 0.74), (0.02, 0.30, 0.18), COL_SUNDIAL)
+    make_box("Sundial_Gnomon", (sx, sy, 0.72), (0.02, 0.30, 0.18), COL_SUNDIAL)
     # 12 hour ticks around the plate edge
     for hi in range(12):
         ang = hi * (math.pi/6)
         tx = sx + math.cos(ang) * 0.32
         ty = sy + math.sin(ang) * 0.32
-        make_box(f"Sundial_Tick_{hi}", (tx, ty, 0.68), (0.02, 0.02, 0.02), COL_OAK_TRUNK)
+        make_box(f"Sundial_Tick_{hi}", (tx, ty, 0.65), (0.02, 0.02, 0.02), COL_OAK_TRUNK)
 
 
 def build_hedges_and_flowerbeds():
@@ -108,6 +110,8 @@ def build_hedges_and_flowerbeds():
         make_box(f"Hedge_{qi}_S", (qx, qy - 1.40, 0.40), (3.20, 0.20, 0.40), COL_HEDGE)
         make_box(f"Hedge_{qi}_W", (qx - 1.40, qy, 0.40), (0.20, 3.20, 0.40), COL_HEDGE)
         make_box(f"Hedge_{qi}_E", (qx + 1.40, qy, 0.40), (0.20, 3.20, 0.40), COL_HEDGE)
+        # the bed's soil (2026-09-22: the blooms hung 27 cm over grass)
+        make_box(f"Bed_{qi}_Soil", (qx, qy, 0.14), (2.60, 2.60, 0.28), (0.26, 0.20, 0.14, 1.0))
         # Flowers inside (a few dots of each colour)
         for fi in range(9):
             fc = [COL_FLOWERS_W, COL_FLOWERS_Y, COL_FLOWERS_R][fi % 3]
@@ -121,7 +125,7 @@ def build_pergola_arch_at_n_entry():
     for sgn_x in (-1, +1):
         make_box(f"Pergola_Post_N_{sgn_x:+d}", (sgn_x*0.80, GARDEN_R - 0.20, 1.30),
                  (0.10, 0.10, 2.60), COL_BENCH_WOOD)
-    make_box("Pergola_Top", (0.0, GARDEN_R - 0.20, 2.70), (1.80, 0.30, 0.10), COL_BENCH_WOOD)
+    make_box("Pergola_Top", (0.0, GARDEN_R - 0.20, 2.65), (1.80, 0.30, 0.10), COL_BENCH_WOOD)   # on the posts (2026-09-22)
     # Climbing vine on it
     for vi in range(6):
         make_cyl(f"PergolaVine_{vi}", (-0.60 + vi*0.24, GARDEN_R - 0.20, 1.80),
@@ -157,37 +161,46 @@ def build_sun_dressing():
     bench_cx = +3.5
     bench_cy = 0.0
     bench_seat_z = 0.44
+    # THE BENCH ITSELF (2026-09-22: "already built" — it never was; the
+    # thermos, mugs, book, wear patch and plaque all sat on air)
+    make_box("Frank_Bench_Seat", (bench_cx, bench_cy, bench_seat_z - 0.03),
+             (0.60, 1.60, 0.06), COL_BENCH_WOOD)
+    for sgn in (-1, +1):
+        make_box(f"Frank_Bench_Leg_{sgn:+d}", (bench_cx, bench_cy + sgn * 0.70, 0.19),
+                 (0.50, 0.06, 0.38), COL_BENCH_WOOD)
+    make_box("Frank_Bench_Back", (bench_cx + 0.27, bench_cy, bench_seat_z + 0.25),
+             (0.06, 1.60, 0.50), COL_BENCH_WOOD)
 
     # Worn wear-patch on Frank's seat
     make_box("Frank_Bench_WearPatch",
-             (bench_cx - 0.20, bench_cy, bench_seat_z + 0.045),
+             (bench_cx - 0.10, bench_cy, bench_seat_z + 0.0025),
              (0.40, 0.30, 0.005),
              (0.30, 0.20, 0.12, 1.0))   # darker wood from wear
     # Small brass plaque on the bench back
     make_box("Frank_Bench_Plaque",
-             (bench_cx, bench_cy + 0.18, bench_seat_z + 0.40),
-             (0.16, 0.005, 0.05),
+             (bench_cx + 0.2375, bench_cy + 0.18, bench_seat_z + 0.40),   # on the back's face
+             (0.005, 0.16, 0.05),
              (0.78, 0.62, 0.30, 1.0))
     # Engraved text on the plaque (dark slot)
     make_box("Frank_Bench_Plaque_Engraving",
-             (bench_cx, bench_cy + 0.181, bench_seat_z + 0.40),
-             (0.12, 0.001, 0.020),
+             (bench_cx + 0.2345, bench_cy + 0.18, bench_seat_z + 0.40),
+             (0.001, 0.12, 0.020),
              (0.18, 0.14, 0.10, 1.0))
 
     # The open Galway Kinnell book, face-down on the bench seat
     make_box("Kinnell_Book_Cover",
-             (bench_cx + 0.16, bench_cy + 0.04, bench_seat_z + 0.06),
+             (bench_cx + 0.16, bench_cy + 0.04, bench_seat_z + 0.01),   # on the seat (2026-09-22: 5 cm up)
              (0.14, 0.20, 0.020),
              (0.42, 0.32, 0.20, 1.0))   # forest-green cloth
     # Slightly-visible top of pages (the book is face down, so this
     # is the bottom edge of the open pages showing)
     make_box("Kinnell_Book_PagesEdge",
-             (bench_cx + 0.16, bench_cy + 0.04, bench_seat_z + 0.073),
+             (bench_cx + 0.16, bench_cy + 0.04, bench_seat_z + 0.0205),
              (0.13, 0.19, 0.001),
              (0.94, 0.90, 0.80, 1.0))
     # A bookmark ribbon sticking out
     make_box("Kinnell_Book_Bookmark",
-             (bench_cx + 0.16, bench_cy + 0.14, bench_seat_z + 0.078),
+             (bench_cx + 0.16, bench_cy + 0.14, bench_seat_z + 0.0215),
              (0.012, 0.20, 0.001),
              (0.62, 0.20, 0.18, 1.0))   # red satin ribbon
 
@@ -283,8 +296,8 @@ def build_sun_wave2_props():
     # Two garden hoses coiled on the pergola arch's crossbeam
     # (Pergola is at N entry · approximately (0, GARDEN_R-0.6, ...))
     pergola_x = 0.0
-    pergola_y = GARDEN_R - 0.60
-    hose_z = 2.00   # coiled around the crossbeam
+    pergola_y = GARDEN_R - 0.20
+    hose_z = 2.73   # ON the crossbeam (2026-09-22: it hung 0.6 m under it, 0.4 m south)
     for hi, (dx, col) in enumerate([(-0.20, (0.24, 0.62, 0.30, 1.0)),
                                      (+0.20, (0.22, 0.30, 0.44, 1.0))]):
         # Coil represented as a stubby torus (approximation via a
@@ -340,7 +353,7 @@ def build_sun_wave2_props():
 
     # Salvia bed at NW · dark-green heavy looking
     salvia_x = -3.5
-    salvia_y = +3.5
+    salvia_y = +5.2   # on the grass north of the NW quadrant's hedge (2026-09-22: it sat INSIDE that flowerbed, over its blooms)
     # Elevated bed frame (limestone)
     make_box("SalviaBed_Frame_N",
              (salvia_x, salvia_y + 0.40, 0.08),
@@ -363,12 +376,12 @@ def build_sun_wave2_props():
                                     (+0.30, +0.20), (+0.10, -0.20)]):
         # Plant base
         make_cyl("SalviaBed_Plant_%d" % pi,
-                 (salvia_x + dx, salvia_y + dy, 0.28),
+                 (salvia_x + dx, salvia_y + dy, 0.15),   # rooted (2026-09-22: 13 cm up)
                  0.10, 0.30,
                  (0.22, 0.38, 0.20, 1.0), segments=6, axis='Z')  # dark green
         # Flower stalks (deep purple, indicating salvia)
         make_cyl("SalviaBed_Flower_%d" % pi,
-                 (salvia_x + dx, salvia_y + dy, 0.50),
+                 (salvia_x + dx, salvia_y + dy, 0.37),
                  0.03, 0.16,
                  (0.32, 0.20, 0.42, 1.0), segments=6, axis='Z')
 

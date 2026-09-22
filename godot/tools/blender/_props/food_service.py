@@ -126,8 +126,18 @@ def make_coffee_pots(prefix, anchor, *, palette=None, pots=3):
                  0.10, 0.02, P.METAL_BLACK)
         make_box(f"{prefix}_Pot_{i}_Handle", (cx + 0.16, py, bz + 0.13),
                  (0.06, 0.04, 0.10), P.METAL_BLACK)
-        make_box(f"{prefix}_Pot_{i}_Label", (cx + 0.05, py, bz + 0.42),
-                 (0.20, 0.18, 0.10), col)
+    # The brewer's head over the pots, on two posts down to the burner
+    # level — the labels live on its face (2026-09-22: they floated
+    # 11 cm above the pots in nineteen rooms)
+    span = 0.50 * max(pots - 1, 0) + 0.34
+    hy = cy - 0.50 + 0.25 * (pots - 1)      # centred on the pots, which start at cy - 0.50
+    make_box(f"{prefix}_Head", (cx + 0.05, hy, bz + 0.40), (0.30, span, 0.16), (0.24, 0.24, 0.26, 1.0))
+    for si, sy in enumerate((hy - span / 2.0 + 0.03, hy + span / 2.0 - 0.03)):
+        make_box(f"{prefix}_Post_{si}", (cx + 0.16, sy, bz + 0.13), (0.06, 0.06, 0.38), (0.24, 0.24, 0.26, 1.0))
+    for i in range(pots):
+        py = cy - 0.50 + i * 0.50
+        make_box(f"{prefix}_Pot_{i}_Label", (cx - 0.105, py, bz + 0.40),
+                 (0.006, 0.18, 0.10), liquids[i % len(liquids)])
 
 
 def make_sugar_creamer_caddy(prefix, anchor, *, palette=None):

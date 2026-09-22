@@ -109,9 +109,11 @@ def build_studio():
         for di, (dx, dy) in enumerate(((-0.75, -0.5), (0.75, -0.5), (-0.75, 0.5), (0.75, 0.5))):
             make_box(f"Desk_{ci}_{di}", (cx + dx, cy + dy, z0 + 0.72), (1.30, 0.75, 0.05), CEDAR)
             make_box(f"Desk_{ci}_{di}_Leg", (cx + dx, cy + dy, z0 + 0.36), (0.10, 0.60, 0.70), CEDAR_DK)
-            make_box(f"Desk_{ci}_{di}_Monitor", (cx + dx, cy + dy + 0.22, z0 + 0.95),
+            make_box(f"Desk_{ci}_{di}_Monitor", (cx + dx, cy + dy + 0.22, z0 + 0.885),   # on the desk (2026-09-22: 7 cm up)
                      (0.44, 0.03, 0.28), (0.14, 0.15, 0.17, 1.0))
             make_box(f"Chair_{ci}_{di}", (cx + dx, cy + dy - 0.65, z0 + 0.44), (0.42, 0.42, 0.06), CEDAR_DK)
+            make_cyl(f"Chair_{ci}_{di}_Post", (cx + dx, cy + dy - 0.65, z0 + 0.225), 0.03, 0.41, CEDAR_DK, segments=6)   # (2026-09-22)
+            make_cyl(f"Chair_{ci}_{di}_Base", (cx + dx, cy + dy - 0.65, z0 + 0.04), 0.22, 0.04, CEDAR_DK, segments=8)
     # THE POSTER ARCHIVE: floor-to-ceiling framed slowstick posters,
     # S + W walls
     idx = 0
@@ -128,9 +130,11 @@ def build_studio():
                     make_box(f"Poster_W_{idx}", (px + 0.005, py, pz), (0.025, 0.90, 0.95), tint)
     # ESTUARY 7, half-sized, on the S wall east run — the river
     # coming down to the sea, coastal blues
-    make_box("Estuary7_Frame", (0.55, 0.13, z0 + 1.55), (0.55, 0.035, 0.60), BRASS)
-    make_box("Estuary7_Poster", (0.55, 0.125, z0 + 1.55), (0.47, 0.03, 0.52), (0.40, 0.56, 0.60, 1.0))
-    make_box("Estuary7_River", (0.55, 0.12, z0 + 1.50), (0.10, 0.028, 0.40), (0.62, 0.76, 0.78, 1.0))
+    # (2026-09-22: it hung at x 0.55 — in the S wall's door gap, on
+    # air; now on the E wall between the first two photographs)
+    make_box("Estuary7_Frame", (5.8825, 2.55, z0 + 1.55), (0.035, 0.55, 0.60), BRASS)
+    make_box("Estuary7_Poster", (5.85, 2.55, z0 + 1.55), (0.03, 0.47, 0.52), (0.40, 0.56, 0.60, 1.0))
+    make_box("Estuary7_River", (5.8355, 2.55, z0 + 1.50), (0.028, 0.10, 0.40), (0.62, 0.76, 0.78, 1.0))
     # East wall: the smaller framed photographs (Dean in '14, '19,
     # '41…)
     for pi, py in enumerate((2.0, 3.1, 4.2, 5.3, 6.4)):
@@ -150,19 +154,26 @@ def build_quarters():
     # Kitchen at the EAST end: cedar cabinets + wood-stove
     make_box("Q_Counter", (5.1, 4.0, z0 + 0.46), (0.9, 3.2, 0.92), CEDAR_DK)
     make_box("Q_Counter_Top", (5.1, 4.0, z0 + 0.94), (0.95, 3.3, 0.05), CEDAR)
-    make_box("Q_Cabinets", (5.55, 4.0, z0 + 1.95), (0.35, 3.0, 0.80), CEDAR_PANEL)
+    make_box("Q_Cabinets", (5.725, 4.0, z0 + 1.95), (0.35, 3.0, 0.80), CEDAR_PANEL)   # on the E wall (2026-09-22: 18 cm off it)
     make_cyl("Q_Stove_Belly", (5.0, 6.6, z0 + 0.375), 0.32, 0.75, (0.14, 0.14, 0.16, 1.0), segments=12)   # to the floor
     make_cyl("Q_Stove_Pipe", (5.0, 6.6, z0 + 1.9), 0.08, 2.0, (0.20, 0.19, 0.20, 1.0), segments=8)
     # The communal table that seats twelve
     make_box("Q_Table", (-0.4, 4.0, z0 + 0.76), (4.2, 1.10, 0.07), CEDAR)
     for lx in (-2.2, 1.4):
         make_box(f"Q_Table_Leg_{lx:+.1f}", (lx, 4.0, z0 + 0.38), (0.12, 0.95, 0.74), CEDAR_DK)
+    def _q_legs(tag, x, y):   # (2026-09-22: twelve seats hung at 0.42)
+        for lx_ in (-1, 1):
+            for ly_ in (-1, 1):
+                make_box(f"{tag}_Leg_{lx_:+d}_{ly_:+d}", (x + lx_ * 0.16, y + ly_ * 0.16, z0 + 0.2125),
+                         (0.035, 0.035, 0.425), CEDAR_DK)
     for si in range(5):
         sx = -2.0 + si * 0.85
         for sy in (3.25, 4.75):
             make_box(f"Q_Chair_{si}_{sy:.2f}", (sx, sy, z0 + 0.45), (0.40, 0.40, 0.05), CEDAR_DK)
+            _q_legs(f"Q_Chair_{si}_{sy:.2f}", sx, sy)
     for hx in (-2.75, 2.0):
         make_box(f"Q_HeadChair_{hx:+.2f}", (hx, 4.0, z0 + 0.45), (0.40, 0.44, 0.05), CEDAR_DK)
+        _q_legs(f"Q_HeadChair_{hx:+.2f}", hx, 4.0)
     # The open book — the same book on Tem's cedar shelf
     make_box("Q_Book_Open_L", (1.2, 4.1, z0 + 0.80), (0.14, 0.20, 0.012), (0.88, 0.86, 0.78, 1.0))
     make_box("Q_Book_Open_R", (1.35, 4.1, z0 + 0.80), (0.14, 0.20, 0.012), (0.88, 0.86, 0.78, 1.0))
@@ -263,15 +274,19 @@ def build_draft2_density_2026_08():
         make_cyl(f"Studio_Mug_{ci}", (cx + 0.55, cy - 0.62, z0 + 0.80), 0.04, 0.09,
                  POSTER_TINTS[(ci * 2) % len(POSTER_TINTS)], segments=8)
     make_box("Studio_Chair_Shoved", (-1.85, 3.35, z0 + 0.44), (0.42, 0.42, 0.06), CEDAR_DK)
+    make_cyl("Studio_Chair_Shoved_Post", (-1.85, 3.35, z0 + 0.225), 0.03, 0.41, CEDAR_DK, segments=6)
+    make_cyl("Studio_Chair_Shoved_Base", (-1.85, 3.35, z0 + 0.04), 0.22, 0.04, CEDAR_DK, segments=8)
     # Task lamps on the two rack-side desks.
     for ti, tx in enumerate((-2.95, 1.45)):
         make_cyl(f"Studio_TaskLamp_{ti}_Arm", (tx, 4.75, z0 + 0.95), 0.012, 0.40, (0.22, 0.22, 0.24, 1.0), segments=6)
-        make_cyl(f"Studio_TaskLamp_{ti}_Head", (tx + 0.12, 4.70, z0 + 1.12), 0.06, 0.09, (0.96, 0.90, 0.72, 1.0), segments=8)
+        make_cyl(f"Studio_TaskLamp_{ti}_Head", (tx + 0.06, 4.70, z0 + 1.12), 0.06, 0.09, (0.96, 0.90, 0.72, 1.0), segments=8)   # on the arm (2026-09-22)
     # Cable tray from desk clusters to the racks + floor cable runs
     # (the room is PLUGGED IN — D3 rule at tower scale).
     make_box("Studio_CableTray", (0.0, 6.6, z0 + 2.65), (9.5, 0.25, 0.08), (0.30, 0.31, 0.33, 1.0))
+    for hi, hx_ in enumerate((-3.5, 3.5)):   # hung from the ceiling (2026-09-22: 31 cm under it)
+        make_cyl(f"Studio_CableTray_Hanger_{hi}", (hx_, 6.6, z0 + 2.845), 0.01, 0.31, (0.30, 0.31, 0.33, 1.0), segments=6)
     for ci2, cx2 in enumerate((-2.2, 2.2)):
-        make_box(f"Studio_CableDrop_{ci2}", (cx2, 6.6, z0 + 1.70), (0.10, 0.06, 1.90), (0.24, 0.24, 0.26, 1.0))
+        make_box(f"Studio_CableDrop_{ci2}", (cx2, 6.6, z0 + 1.35), (0.10, 0.06, 2.60), (0.24, 0.24, 0.26, 1.0))   # to the floor run
         make_box(f"Studio_CableFloor_{ci2}", (cx2, 5.6, z0 + 0.045), (0.12, 2.0, 0.025), (0.22, 0.22, 0.24, 1.0))
     # Rack labels + ONE rack door ajar (mid-maintenance).
     for ri in range(5):
@@ -302,9 +317,9 @@ def build_draft2_density_2026_08():
         make_box(f"Q_Dish_{di2}", (5.05, 2.80 + di2 * 0.07, z0 + 1.06), (0.30, 0.015, 0.16),
                  (0.88, 0.86, 0.80, 1.0))
     for mi in range(5):
-        make_cyl(f"Q_MugPeg_{mi}", (5.62, 2.6 + mi * 0.28, z0 + 1.55), 0.015, 0.06,
+        make_cyl(f"Q_MugPeg_{mi}", (5.52, 2.6 + mi * 0.28, z0 + 1.55), 0.015, 0.06,   # on the cabinets' face (2026-09-22)
                  CEDAR_DK, axis='X', segments=6)
-        make_cyl(f"Q_PegMug_{mi}", (5.55, 2.6 + mi * 0.28, z0 + 1.47), 0.04, 0.08,
+        make_cyl(f"Q_PegMug_{mi}", (5.45, 2.6 + mi * 0.28, z0 + 1.47), 0.04, 0.08,
                  POSTER_TINTS[mi % len(POSTER_TINTS)], segments=8)
     # Table life: three mugs at seats, a dealt card fan mid-game.
     for mi2, (mx, my) in enumerate(((-1.6, 3.6), (0.4, 4.4), (1.0, 3.6))):
@@ -368,7 +383,7 @@ def build_exterior():
         fz = f * 3.7
         make_box(f"Tower_Band_{f}", (X, 12.0, fz + 1.1), (8.0, 8.0, 2.2), CEDAR_PANEL)
         glass_col = (0.34, 0.55, 0.40, 0.9) if f == 6 else GLASS
-        make_box(f"Tower_Glass_{f}", (X, 12.0, fz + 2.85), (8.15, 8.15, 1.3), glass_col)
+        make_box(f"Tower_Glass_{f}", (X, 12.0, fz + 2.95), (8.15, 8.15, 1.5), glass_col)   # band to band (2026-09-22: 20 cm of air under each floor)
     make_box("Tower_Cap", (X, 12.0, 7 * 3.7 + 0.2), (8.4, 8.4, 0.4), CEDAR_DK)
     # Garden silhouettes behind the seventh floor's glass
     for gi, gx in enumerate((-2.4, -0.6, 1.2, 2.8)):
@@ -447,8 +462,8 @@ def build_wear_personality_2026_08():
              (0.58, 0.45, 0.32, 1.0))
     # The brass handrail worn BRIGHT at the grab points (bottom +
     # top), duller mid-run.
-    for gz, gy in ((1.15, 4.9), (2.35, 6.7)):
-        make_cyl("Wear_Handrail_Bright_%d" % int(gz * 10), (2.85, gy, gz),
+    for gz, gy in ((1.55, 4.9), (1.55, 6.7)):   # on the rail (z 1.55; 2026-09-22: one hung 0.8 m over it)
+        make_cyl("Wear_Handrail_Bright_%d" % int(gy * 10), (2.85, gy, gz),
                  0.032, 0.30, (0.85, 0.72, 0.42, 1.0), segments=8, axis='Y')
     # ── STUDIO (z 5) · chairs and the rack line ──
     for ci, (cx2, cy2) in enumerate(((-2.2, 4.2), (2.2, 4.2))):

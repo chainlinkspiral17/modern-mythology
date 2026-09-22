@@ -257,7 +257,7 @@ def gauntlet_marker(label, cx, cy, w, d, numeral):
     """Paint a brass-stencil rectangle on the floor + a numeral
     plate. Mirrors build_cathedral_interior._zone_marker style so
     the two locations read as the same gauntlet system."""
-    Z_PAINT = 0.063
+    Z_PAINT = 0.008   # ON the floor (2026-09-22: the stencils hovered 6 cm up)
     for sgn in (-1, +1):
         make_box(f"{label}_outline_x{sgn:+d}",
                  (cx + sgn * w / 2, cy, Z_PAINT),
@@ -527,7 +527,7 @@ def build_living_room():
              (0.60, 0.45, 0.40), COL_CARDBOARD)
     # Tape strips on the lids
     for i, bx in enumerate([-0.2, +0.4, +1.0, -0.2, +0.7]):
-        bz = (z + 0.50 + 0.001) if i < 3 else (z + 0.45 + 0.40 + 0.001)
+        bz = (z + 0.50 + 0.001) if i < 3 else (z + 0.45 + 0.20 + 0.001)   # the upper boxes are 0.40 tall (2026-09-22: tape 20 cm over them)
         make_box(f"LR_Box_Tape_{i}",
                  (bx, +2.6, bz),
                  (0.06, 0.40, 0.002), COL_PAPER)
@@ -918,7 +918,7 @@ def build_kitchen():
              (0.010, 0.020, 0.030), (0.95, 0.92, 0.88, 1.0))
     # Steam rising — a few tiny rising boxes
     for i in range(3):
-        make_box(f"Kitchen_TeacupSteam_{i}",
+        make_box(f"Kitchen_Teacup_Steam_{i}",   # named as steam, so the support gate reads it as vapour
                  (tc_x + (i - 1) * 0.02, tc_y, 1.04 + i * 0.04),
                  (0.012, 0.012, 0.015), (0.96, 0.96, 0.96, 0.6))
 
@@ -1100,7 +1100,7 @@ def build_bathroom():
 
     # Towel
     make_box("Bathroom_Towel",
-             (sn_x, sn_y + 0.45, 1.10),
+             (sn_x, sn_y + 0.45, 0.89),   # folded on the counter's top (2026-09-22: 20 cm over it)
              (0.20, 0.30, 0.02), (0.42, 0.62, 0.66, 1.0))
 
 
@@ -1140,19 +1140,19 @@ def build_storage_closet():
     # A few hard drives stacked on top of the boxes
     for i in range(3):
         make_box(f"Closet_HD_{i}",
-                 (+0.2, +1.4, 0.95 + i * 0.04),
+                 (+0.2, +1.4, 0.918 + i * 0.03),   # on box 4's lid tape (2026-09-22: 3 cm of air)
                  (0.15, 0.20, 0.03), (0.20, 0.20, 0.22, 1.0))
     # Cassette tapes — a small pile
     for i in range(5):
         make_box(f"Closet_Tape_{i}",
-                 (-0.5 + i * 0.08, +1.5, 0.96),
+                 (-0.40 + i * 0.08, +1.45, 0.910),   # on box 3's lid
                  (0.07, 0.10, 0.014), (0.18, 0.16, 0.16, 1.0))
     # A disc case — the never-finished pilot episode
     make_box("Closet_DiscCase",
-             (+0.0, +1.7, 0.98),
+             (+0.42, +1.40, 0.910),   # on box 4's lid (2026-09-22: it hung past the boxes at y 1.7)
              (0.13, 0.14, 0.014), (0.10, 0.10, 0.12, 1.0))
     make_box("Closet_DiscCase_Label",
-             (+0.0, +1.7, 0.988),
+             (+0.42, +1.40, 0.9175),
              (0.10, 0.10, 0.001), COL_PAPER)
 
     # Door — slatted, mostly closed (we leave a small visible slit)
@@ -1407,11 +1407,11 @@ def build_back_yard():
              (0.0, +8.5, 0.20),
              0.10, 0.40, (0.62, 0.60, 0.56, 1.0))
     make_cyl("Yard_BirdBath_Bowl",
-             (0.0, +8.5, 0.46),
+             (0.0, +8.5, 0.42),   # on the pedestal (2026-09-22: 4 cm up)
              0.32, 0.04, (0.74, 0.72, 0.66, 1.0), segments=12)
     # Water in the bowl
     make_cyl("Yard_BirdBath_Water",
-             (0.0, +8.5, 0.49),
+             (0.0, +8.5, 0.45),
              0.28, 0.01, (0.42, 0.58, 0.66, 0.8), segments=12)
 
 
@@ -1727,11 +1727,11 @@ def build_filmmaker_dressing():
         lx, ly = tx + 0.20 * _m.cos(a), ty + 0.20 * _m.sin(a)
         make_cyl(f"Tripod_Leg_{i}", (lx, ly, 0.55), 0.016, 1.10, alu, segments=5)
         make_cyl(f"Tripod_Foot_{i}", (lx, ly, 0.015), 0.035, 0.03, black, segments=5)
-    make_cyl("Tripod_Hub", (tx, ty, 1.14), 0.06, 0.10, black, segments=6)
-    make_box("Tripod_CamBody", (tx, ty, 1.26), (0.24, 0.16, 0.14), black)
-    make_cyl("Tripod_CamLens", (tx, ty - 0.14, 1.26), 0.05, 0.10,
+    make_cyl("Tripod_Hub", (tx, ty, 1.12), 0.22, 0.06, black, segments=6)   # a plate the three legs meet (2026-09-22: a puck between them)
+    make_box("Tripod_CamBody", (tx, ty, 1.22), (0.24, 0.16, 0.14), black)
+    make_cyl("Tripod_CamLens", (tx, ty - 0.14, 1.22), 0.05, 0.10,
              (0.10, 0.10, 0.12, 1.0), segments=8, axis='Y')
-    make_cyl("Tripod_CamLensGlass", (tx, ty - 0.195, 1.26), 0.038, 0.01,
+    make_cyl("Tripod_CamLensGlass", (tx, ty - 0.195, 1.22), 0.038, 0.01,
              (0.28, 0.34, 0.44, 1.0), segments=8, axis='Y')
     # ── Ring light on a stand beside it ──
     rx, ry = 2.85, 0.78
@@ -1752,20 +1752,22 @@ def build_filmmaker_dressing():
                  (0.55, 0.20, 0.18, 1.0) if i != 1 else (0.60, 0.55, 0.30, 1.0),
                  segments=6)
     # ── String lights sagging along the living wall (glow in tscn) ──
+    # (2026-09-22: eight level cord stubs each touched only its higher
+    # bulb, and the string hung 4 cm off the wall — one sagging cord
+    # now, hooked to the bath partition at one end and the south wall
+    # at the other)
     n_bulb = 9
+    pts = []
     for i in range(n_bulb):
         t = i / float(n_bulb - 1)
         ly = 0.35 + t * 2.5
         lz = 2.32 - 0.28 * _m.sin(_m.pi * t)
+        pts.append((-2.38, ly, lz))
         make_cyl(f"StringLight_Bulb_{i}", (-2.38, ly, lz - 0.035), 0.028, 0.055,
                  (0.96, 0.86, 0.55, 1.0), segments=5)
-        if i < n_bulb - 1:
-            ny = 0.35 + (i + 1) / float(n_bulb - 1) * 2.5
-            nz = 2.32 - 0.28 * _m.sin(_m.pi * (i + 1) / float(n_bulb - 1))
-            make_cyl(f"StringLight_Cord_{i}",
-                     (-2.38, (ly + ny) / 2, (lz + nz) / 2 + 0.02),
-                     0.006, ny - ly + 0.02, (0.10, 0.10, 0.10, 1.0),
-                     segments=3, axis='Y')
+    make_tube("StringLight_Cord", pts, 0.006, (0.10, 0.10, 0.10, 1.0), segments=3)
+    make_cyl("StringLight_Hook_0", (-2.42, 0.35, 2.32), 0.006, 0.07, (0.30, 0.30, 0.32, 1.0), segments=4, axis='X')
+    make_cyl("StringLight_Hook_1", (-2.38, 2.90, 2.32), 0.006, 0.10, (0.30, 0.30, 0.32, 1.0), segments=4, axis='Y')
     # ── Two film posters on the bathroom partition (east face) ──
     posters = [
         (0.75, 1.45, 0.46, 0.66, [(0.16, 0.10, 0.22, 1.0), (0.72, 0.30, 0.20, 1.0),

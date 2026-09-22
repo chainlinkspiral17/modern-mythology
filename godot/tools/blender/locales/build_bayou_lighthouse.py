@@ -131,12 +131,12 @@ def build_lens_stage_above():
         make_cyl(f"Lens_Ring_{li}", (lx, ly, lz + 0.04 + li*0.10),
                  0.42 - li*0.08, 0.08, COL_LENS_GLASS, segments=20)
     # Brass crown
-    make_cyl("Lens_Crown", (lx, ly, lz + 0.50), 0.20, 0.06, COL_BRASS, segments=12)
+    make_cyl("Lens_Crown", (lx, ly, lz + 0.41), 0.20, 0.06, COL_BRASS, segments=12)   # on the top ring (2026-09-22)
 
 
 def build_ceiling_infra():
     make_smoke_detector("Smoke", (0.0, 0.0, CEIL-0.05))
-    make_sprinkler("Spr", (1.40, -1.40, CEIL-0.05))
+    make_sprinkler("Spr", (1.40, -1.40, CEIL))   # the kit hangs from the anchor (2026-09-22: 5 cm short)
 
 
 def build_decor():
@@ -145,7 +145,7 @@ def build_decor():
     make_calendar("Calendar", (-RADIUS+0.05, +1.20, 2.30))
     # Coiled rope on the floor
     for ri in range(3):
-        make_cyl(f"Rope_Coil_{ri}", (-RADIUS+1.20, -1.40, 0.10 + ri*0.05),
+        make_cyl(f"Rope_Coil_{ri}", (-RADIUS+1.20, -1.40, 0.02 + ri*0.04),   # on the floor (2026-09-22: 8 cm up)
                  0.18 - ri*0.04, 0.04, (0.62, 0.46, 0.26, 1.0), segments=12)
     # A pair of oilskin coats hanging by the door (S)
     for ci, cx in enumerate([-0.30, +0.30]):
@@ -266,8 +266,10 @@ def build_hermit_dressing():
              segments=10, axis='Z')
 
     # Wall calendar with the last Tuesday circled
-    cal_x = desk_cx + 0.50
-    cal_y = +2.40
+    # on the NE wall slab's inner face (WallSeg_2: y 1.896 at x 0.84..1.83).
+    # 2026-09-22: it hung at (2.1, 2.4) — r 3.2, outside the tower.
+    cal_x = 1.33
+    cal_y = 1.896
     cal_cz = 1.70
     make_box("Calendar_Backing",
              (cal_x, cal_y - 0.005, cal_cz),
@@ -350,29 +352,37 @@ def build_hermit_wave2_props():
                  (0.02, 0.005, 0.02),
                  (0.62, 0.62, 0.64, 1.0))
 
-    bunk_x = -2.00
-    bunk_y = +2.50
-    bunk_top_z = 0.50
+    # on the bunk's quilt (build_keepers_quarters: bunk at (0, -1.6),
+    # quilt top 0.57). 2026-09-22: it sat at (-2, 2.5) — outside the
+    # tower, on nothing.
+    bunk_x = 0.55
+    bunk_y = -RADIUS + 0.80
+    bunk_top_z = 0.57
     make_box("Octant_Towel_Bundle",
-             (bunk_x, bunk_y, bunk_top_z + 0.08),
+             (bunk_x, bunk_y, bunk_top_z + 0.05),
              (0.30, 0.24, 0.10),
              (0.94, 0.90, 0.82, 1.0))
     for si in range(3):
         make_box("Octant_Towel_Stripe_%d" % si,
-                 (bunk_x, bunk_y - 0.08 + si * 0.08, bunk_top_z + 0.13),
+                 (bunk_x, bunk_y - 0.08 + si * 0.08, bunk_top_z + 0.10),
                  (0.28, 0.02, 0.001),
                  (0.32, 0.56, 0.36, 1.0))
     make_cyl("Octant_BrassCorner",
-             (bunk_x + 0.08, bunk_y - 0.02, bunk_top_z + 0.12),
+             (bunk_x + 0.08, bunk_y - 0.02, bunk_top_z + 0.11),
              0.05, 0.02,
              (0.78, 0.62, 0.30, 1.0), segments=10, axis='Z')
     make_box("Octant_CalibrationCard",
-             (bunk_x + 0.12, bunk_y + 0.08, bunk_top_z + 0.11),
+             (bunk_x + 0.12, bunk_y + 0.08, bunk_top_z + 0.10),
              (0.05, 0.03, 0.001),
              (0.92, 0.88, 0.72, 1.0))
 
     # ── the_storm_visit ────────────────────────────────────────
     # Bow lamp glow (persists across visits · a nod to the arrival)
+    # the skiff's bow itself, nosed up to the tower, the lamp on a
+    # post from its foredeck (2026-09-22: the lamp hung over the marsh)
+    make_box("Marsh_Floor_Skiff", (+2.00, -3.60, -0.05), (4.0, 4.0, 0.10), (0.30, 0.30, 0.22, 1.0))   # the water the skiff sits in
+    make_box("TheriotSkiff_Bow", (+2.00, -3.60, 0.16), (0.70, 1.40, 0.32), COL_CYPRESS)
+    make_cyl("TheriotSkiff_LampPost", (+2.00, -3.20, 0.44), 0.025, 0.24, COL_STAIR_IRON, segments=6)
     make_cyl("TheriotSkiff_BowLamp",
              (+2.00, -3.20, 0.60),
              0.04, 0.04,
@@ -462,8 +472,8 @@ def build_hermit_props_pass():
     make_box("LensDrive_Weight", (mx + 0.10, my, 3.60), (0.14, 0.14, 0.36), COL_STAIR_IRON)
 
     # ── Life ring on the S wall (maritime keeper's kit) ──
-    ring_cx, ring_cz = -1.10, 1.70
-    ring_wy = -RADIUS + 0.14   # flat against the S wall arc
+    ring_cx, ring_cz = -1.33, 1.70
+    ring_wy = -1.896 + 0.051   # flat on the SW wall slab's inner face (2026-09-22: it sat at r 2.5, inside the wall)
     ring_R = 0.34
     for ai in range(16):
         aa = ai * (2*math.pi/16)
@@ -477,7 +487,7 @@ def build_hermit_props_pass():
         gz = ring_cz + math.sin(ga) * (ring_R + 0.05)
         make_box("LifeRing_Grab_%d" % gi, (gx, ring_wy + 0.02, gz), (0.05, 0.05, 0.05),
                  (0.72, 0.60, 0.34, 1.0))
-    make_cyl("LifeRing_Peg", (ring_cx, ring_wy + 0.05, ring_cz + ring_R + 0.05),
+    make_cyl("LifeRing_Peg", (ring_cx, ring_wy - 0.001, ring_cz + ring_R + 0.05),   # from the wall through the ring
              0.02, 0.10, COL_STAIR_IRON, segments=6, axis='Y')
 
     # ── Brass keeper's telescope on a tripod at the water window (N) ──
@@ -485,12 +495,12 @@ def build_hermit_props_pass():
     for li, (lx_off, ly_off) in enumerate([(-0.18, -0.10), (0.18, -0.10), (0.0, 0.20)]):
         make_cyl("Telescope_Leg_%d" % li, (tel_x + lx_off, tel_y + ly_off, 0.55),
                  0.02, 1.10, COL_CYPRESS, segments=6)
-    make_cyl("Telescope_Head", (tel_x, tel_y, 1.12), 0.05, 0.08, COL_BRASS, segments=10)
-    make_cyl("Telescope_Tube", (tel_x, tel_y + 0.25, 1.25), 0.045, 0.50, COL_BRASS,
+    make_cyl("Telescope_Head", (tel_x, tel_y, 1.12), 0.22, 0.08, COL_BRASS, segments=10)   # a plate the legs meet (2026-09-22)
+    make_cyl("Telescope_Tube", (tel_x, tel_y + 0.25, 1.20), 0.045, 0.50, COL_BRASS,
              segments=12, axis='Y')
-    make_cyl("Telescope_Objective", (tel_x, tel_y + 0.52, 1.25), 0.055, 0.04, COL_LENS_GLASS,
+    make_cyl("Telescope_Objective", (tel_x, tel_y + 0.52, 1.20), 0.055, 0.04, COL_LENS_GLASS,
              segments=12, axis='Y')
-    make_cyl("Telescope_Eyepiece", (tel_x, tel_y - 0.02, 1.25), 0.03, 0.05, COL_STAIR_IRON,
+    make_cyl("Telescope_Eyepiece", (tel_x, tel_y - 0.02, 1.20), 0.03, 0.05, COL_STAIR_IRON,
              segments=10, axis='Y')
 
 

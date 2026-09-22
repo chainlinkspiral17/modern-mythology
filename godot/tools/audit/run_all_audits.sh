@@ -293,6 +293,13 @@ SKOUT="$(python3 vn_skill_audit.py 2>/dev/null)" || {
 echo "$SKOUT" | tail -1
 echo ""
 
+echo "── support_audit.py (zero-regression gate) ──"
+SUOUT="$(python3 support_audit.py 2>/dev/null)" || {
+    echo "$SUOUT" | grep -E "REGRESSION" | head -20
+    echo "REGRESSION  support_audit found a locale floating more than its baseline"; exit 1; }
+echo "$SUOUT" | tail -2
+echo ""
+
 echo "── vn_target_audit.py ──"
 TGOUT="$(python3 vn_target_audit.py 2>/dev/null)" || {
     echo "$TGOUT" | grep -vE "^\s*$" | head -20

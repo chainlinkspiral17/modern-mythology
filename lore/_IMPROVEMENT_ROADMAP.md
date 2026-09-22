@@ -1746,6 +1746,132 @@ the suite. (The cabin's "planned 0" was right: its lamp and lantern had
 been lit on 09-11 at the file's tail; the hand copies were duplicates,
 now removed, and the audit checks DUPLICATE root names too.)
 
+**2026-09-22 · THE SUPPORT PASS (user: "lots of objects floating in
+scenes still, not tethered to walls or tables or floors").** The
+furniture gate's FLOAT rule only judged prop-sized parts, let
+anything named like a fixture off by name, and counted a part
+EMBEDDED in a solid as held. `support_audit.py` asks the plain
+question of every recorded box: is it connected, through what it
+touches (3 cm), to the floor, a wall or the ceiling? First run: 3,805
+floating components in 121 locales. Three causes were systemic:
+(1) the recorder's stub turned `catenary` into the constant 0.9, so
+every strung wire, fence strand and chain in the game had recorded as
+a POINT at (0.5, 0.5, 0.5) since the stubs were written — invisible
+to every gate; (2) kit helpers built things in the air: every recessed
+fluorescent 9 cm below its ceiling, every floor plant's pot 17 cm up,
+every kit car's taillights 10 cm behind the body, the endcap's
+shelves on nothing, the coffee station's labels 11 cm over the pots;
+(3) rooms dressed by coordinate: Miller's upper cabinets 28 cm off
+the wall, outlets 60 cm off theirs, the cabin's pot rack hung on
+nothing, Lena's coat hooks in the door gap, the kwik stop's spinner
+pole 34 cm above its base, the diner's cords all 5–10 cm short of
+the ceiling (`D_H - 0.05` everywhere), its port stools without
+posts, its formal table standing on its cloth. After the recorder,
+kit and eight-room fixes: 1,181 → the baseline
+(`support_baseline.json`, per-locale, zero-regression in the suite);
+the six most-seen rooms are at zero, the kwik stop 145 → 49, the
+diner 87 → 45. Terrain locales (graustark, harmony, riverfront, the
+roads) are skipped: a heightfield floor the recorder cannot see.
+SECOND PASS, same day: the kwik stop and the diner to ZERO (1,181 →
+913 repo-wide, baseline rewritten). What the last floats were, by
+kind — worth knowing because every locale has the same kinds:
+(a) DRESSED A PHANTOM: the kwik stop's ATM detail (14 keys, three
+slots, an overhead sign) at (-5.4, 2.1) where no machine had stood
+since v2 — the real ATM is at (4.8, 1.0), and its screen faced the
+south wall 70 cm away while the queue tape lay on the north side;
+now it faces the store and wears the detail. The diner's Hierophant
+print hung in open air where the centre-floor private dining box
+was removed on 07-12 (now on the formal room's partition); its
+meeple shelf hung mid-hallway (now on the north wall by the
+corkboard); its vestibule payphone hung IN the front door's glass
+(now in the NE corner's solid wall); the bathroom mirror + hand
+dryer hung on the picture window (now on the north partition).
+(b) OFF THE COUNTER'S END: the donut case 0.6 m past the coffee
+counter, the cream/sugar unit over both its edges and 4 cm into the
+top, the microwave 19 cm up and half past the edge. (c) A HAIR
+SHORT: coin slot 4 cm off the jukebox face, LEDs 5 cm off the pump
+display, the spray head 5 cm past the arm's end, ropes 6 cm short of
+their posts, the sign topper with no posts, the bottle pyramid
+starting 25 cm up (a riser now), the hose nozzle with no hose to
+the coil. (d) THE AUDIT'S OWN BLIND SPOT: "crown" in the foliage
+list dropped the candelabra's crown and the register's crown, so
+their candles and finial read as floating whatever the builder did
+(`TREE_CROWN` now needs a tree word in the name). The bayou
+lighthouse got the same treatment on the way (11 → 1): its calendar,
+life ring and octant kit sat OUTSIDE the tower (r 3.2 in a 2.4 m
+room), the skiff's lamp over the marsh.
+THIRD PASS, same day — the next four by placements to ZERO (913 →
+652 repo-wide): the RIVERBOAT (78: the bulletin notices' y was
+computed from the board's x, so eight papers hung in the catering
+office; the card-room placard hung past the lower deck's south
+rooms; the calling card sat beside the desk at the height of the
+top's underside; the pass counter touched neither wall on nothing;
+chandeliers 30 cm under the ceiling with crystals 20 cm off the
+core — a rod and a ring each now; coat hooks were vertical pegs 15
+cm out from the pole; the time clock 15 cm off the wall; card
+chairs and Table 17's benches without legs or plinths), the SCHOOL
+FIELD (58: every player's head 7 cm above the shoulders, the chain
+lying 13 cm over the turf, the coolers and transformer boxes 4–10
+cm up, the helmet rack's two bars and five helmets in the air, the
+car kit's rear bumper 11 cm behind every sedan — kit fix), the
+SOLENADE GARDEN (50: Frank's "already built" east bench never was —
+thermos, mugs, book, wear patch and plaque all sat on air; 36
+blooms 27 cm over grass, soil now; the oak's trunk began 0.5 m
+above its base; the diagonal benches' legs stood 0.9 m from their
+seats; the salvia bed sat inside a flowerbed over its blooms) and
+the CEDAR TOWER (41: the Estuary 7 print hung in the studio's door
+gap; monitors 7 cm over desks; twelve dining chairs and five studio
+chairs with no legs; the tower's glass bands 20 cm short of each
+floor; the mug pegs inside the cabinets; the drone dock's EMPTY
+cradle on nothing — kit fix, a rail post to post). Also the diner's
+jukebox base sat 10 cm inside the bar counter (moved north; the
+insert shot's target had dipped under the bar top when the quarters
+came down onto the marquee).
+THE AUDIT'S OWN LIES, four more: "canopy" in the foliage list ate
+lamp canopies and the gas-station roof; the vantage audit's IGNORE
+(`plinth$`, `band`, `far`) ate the sundial's plinth and the tower's
+floor bands — the support audit no longer uses it, and `^far` names
+(FarTown_E0, FarWood_N1) are sky by their own rule; "shimmer",
+"sundisc" are sky. Each regex fix surfaced one or two REAL floats
+that had been hiding behind a dropped neighbour (a circus rail 23 cm
+outside its posts, a bandstand finial 5 cm short).
+FOURTH PASS, same day — nine more rooms to zero (652 → 422): the
+CARNIVAL (39: the big top was eight flat slabs touching neither the
+pole nor each other — a cone now; six carousel heads hung off the
+bodies' sides; the cage door 0.6 m past the wagon; Marv's pickup
+with no wheels; the festoon eleven level stubs at eleven heights —
+one hanging line), CENTRO (35: shelf-edge tag rails 28 cm out from
+the shelves; aisle signs' wires outside the boards and 5 cm short of
+the ceiling; the meat trays at the room's other end from the meat
+case; the cooler door's LEAF dropped as foliage), the HIEROPHANT
+CIRCUIT (29: belfry 40 cm over the facade; paddlewheel blades around
+an axle touching nothing — side rims now; pews without ends; the
+corridor's clock and coats off the deckhouse; the riverboat's upper
+deck 10 cm short of its posts), the COURTHOUSE (27: the chambers
+corridor "stub" was never built — placard, robe hook and bench hung
+in open air, on the east wall now; the DEPT 3 placard 4 m outside
+the room; pews, juror chairs, counsel chairs without legs; rails
+without posts; scales' pans without chains), EL RANCHO (festoon
+wires on nothing, bulbs 3 cm under them), the BUNGALOW (gauntlet
+stencils 6 cm over the floor, string lights' cords level between
+sagging bulbs — one sagging tube now; closet tapes past their box;
+a tripod hub between three legs), the SALTY TOME (the hero pass
+dressed an E-W counter — the real one runs N-S: ledger, terminal
+and hold shelf hung beside it; pendants 5 cm short; couch,
+radiator 9–12 cm up; a phone cord of four rings on nothing) and
+the two NEXCORP stations (impulse rack items with no rack; the
+no-smoking placard 0.4 m from its post; tubes 5 cm short; the
+PENDING folder 0.6 m off its desk). Two insert markers were re-aimed
+on the way (centro's meat case: the trays it framed had been on air
+across the room). NEXT: the long tail — fifteen rooms at 10–15
+(christian ice, estuary_7_template, parish cemetery, roadside
+chapel, elicia, mixing glass, montreal, cliffside circus, caldwell,
+equipment shed, gym, harmony commercial, le roulant, the two new
+orleans rooms) and then the sub-10s; `--write-baseline` after each
+pass; start each room with the region dump (`support_audit`'s
+boxes via `VO.boxes_for`) around the float — half the fixes are "on
+what?" questions the builder answers wrong.
+
 **2026-09-19 · DESIGN · the two decorative checks made real, the first
 remembered choice.** Nate's basement (ch6) and Tem staying (ch8): the
 empathy checks' pass branches land on a line of their own now (a

@@ -13,7 +13,7 @@ import os, sys, math
 _BT = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)), ".."))
 if _BT not in sys.path: sys.path.insert(0, _BT)
 from _props import palette as P
-from _props.geometry import clear_scene, make_box, make_cyl, export_glb
+from _props.geometry import clear_scene, make_box, make_cyl, make_tube, export_glb
 from _props.structure import make_floor, make_wall, make_ceiling, make_crown_molding, make_window
 from _props.store_fixtures import make_counter, make_register
 from _props.decor import make_wall_clock, make_floor_plant, make_faded_poster, make_calendar
@@ -220,9 +220,9 @@ def build_globe_and_catalog():
 
 def build_ceiling_and_sign():
     for pi, px in enumerate([-2.4, 0.0, +2.4]):
-        make_cyl(f"Pendant_Cord_{pi}", (px, 3.0, CEIL-0.30), 0.01, 0.50, COL_BLACK)
-        make_cyl(f"Pendant_Shade_{pi}", (px, 3.0, CEIL-0.60), 0.14, 0.14, COL_BRASS, segments=12)
-        make_cyl(f"Pendant_Bulb_{pi}", (px, 3.0, CEIL-0.70), 0.05, 0.06, COL_LAMP, segments=8)
+        make_cyl(f"Pendant_Cord_{pi}", (px, 3.0, CEIL-0.25), 0.01, 0.50, COL_BLACK)   # to the ceiling (2026-09-22: 5 cm short)
+        make_cyl(f"Pendant_Shade_{pi}", (px, 3.0, CEIL-0.57), 0.14, 0.14, COL_BRASS, segments=12)
+        make_cyl(f"Pendant_Bulb_{pi}", (px, 3.0, CEIL-0.67), 0.05, 0.06, COL_LAMP, segments=8)
     make_smoke_detector("Smoke", (0.0, ROOM_D/2.0, CEIL))
     make_hvac_vent("Vent", (+2.0, 4.8, CEIL), width=1.00, depth=0.50, slats=5)
     # Hanging "THE SALTY TOME" shop sign near the entrance
@@ -286,10 +286,10 @@ def build_back_annex_2026_08():
     for pi2 in range(3):
         make_box(f"Office_Papers_{pi2}", (3.0-pi2*0.05, 8.32, 0.765+pi2*0.008), (0.22, 0.28, 0.008),
                  (0.90, 0.88, 0.82, 1.0))
-    make_box("Office_Couch_Base", (2.9, 6.85, 0.26), (1.70, 0.70, 0.34), (0.40, 0.30, 0.26, 1.0))
+    make_box("Office_Couch_Base", (2.9, 6.85, 0.17), (1.70, 0.70, 0.34), (0.40, 0.30, 0.26, 1.0))   # on the floor (2026-09-22: 9 cm up)
     make_box("Office_Couch_Back", (2.9, 7.16, 0.60), (1.70, 0.16, 0.55), (0.40, 0.30, 0.26, 1.0))
     for ci2, cxo in enumerate([-0.55, 0.0, 0.55]):
-        make_box(f"Office_Couch_Cushion_{ci2}", (2.9+cxo, 6.80, 0.45), (0.52, 0.60, 0.10),
+        make_box(f"Office_Couch_Cushion_{ci2}", (2.9+cxo, 6.80, 0.39), (0.52, 0.60, 0.10),
                  (0.46, 0.35, 0.30, 1.0))
     # KITCHENETTE along the annex W + N walls.
     make_box("Kitch_Counter", (-3.55, 7.4, 0.45), (0.60, 1.8, 0.90), COL_WOOD)
@@ -326,11 +326,14 @@ def build_back_annex_2026_08():
             make_box(f"Kitch_Chair_{ci3}_Back", (-1.6+cxo, 8.1+cyo-0.20, 0.75), (0.42, 0.05, 0.55), COL_WOOD)
     # Radiator under the kitchenette window.
     for ri2 in range(6):
-        make_box(f"Radiator_Fin_{ri2}", (-2.05+ri2*0.18, AN_Y1-0.22, 0.42), (0.10, 0.16, 0.60),
+        make_box(f"Radiator_Fin_{ri2}", (-2.05+ri2*0.18, AN_Y1-0.22, 0.32), (0.10, 0.16, 0.60),   # to the floor (2026-09-22: 12 cm up)
                  (0.72, 0.70, 0.66, 1.0))
-    make_box("Radiator_Top", (-1.6, AN_Y1-0.22, 0.74), (1.10, 0.18, 0.04), (0.66, 0.64, 0.60, 1.0))
+    make_box("Radiator_Top", (-1.6, AN_Y1-0.22, 0.64), (1.10, 0.18, 0.04), (0.66, 0.64, 0.60, 1.0))
     # The CAT — Petra's old cat, asleep in a loaf on its own chair.
     make_box("Cat_Chair_Seat", (-0.5, 6.7, 0.42), (0.44, 0.44, 0.05), COL_WOOD)
+    for lx_ in (-1, 1):   # legs (2026-09-22: the seat hung at 0.39)
+        for ly_ in (-1, 1):
+            make_box(f"Cat_Chair_Leg_{lx_:+d}_{ly_:+d}", (-0.5 + lx_ * 0.18, 6.7 + ly_ * 0.18, 0.20), (0.03, 0.03, 0.40), COL_WOOD)
     make_box("Cat_Chair_Back", (-0.28, 6.7, 0.72), (0.05, 0.44, 0.52), COL_WOOD)
     make_box("Cat_Cushion", (-0.5, 6.7, 0.47), (0.38, 0.38, 0.06), (0.52, 0.30, 0.26, 1.0))
     make_box("Cat_Loaf_Body", (-0.5, 6.7, 0.56), (0.30, 0.20, 0.13), (0.28, 0.26, 0.24, 1.0))
@@ -441,25 +444,35 @@ def build_use_states_2026_08():
     # ── Counter: the ledger open beside the register, the slow
     # terminal (a CRT that takes its time), the hold shelf below
     # with three tagged books waiting for their people ──
+    # The counter runs N-S: x 2.2..3.0, y 1.25..3.95, top face 1.01,
+    # the clerk to the east. (2026-09-22: this pass dressed an E-W
+    # counter that isn't there — ledger, terminal and hold shelf all
+    # hung beside the real one, on air.)
     cx, cy = ROOM_W/2.0 - 1.4, 2.6
-    make_box("Ledger_Open_L", (cx - 0.75, cy - 0.15, 0.965), (0.18, 0.26, 0.015), (0.90, 0.88, 0.80, 1.0))
-    make_box("Ledger_Open_R", (cx - 0.56, cy - 0.15, 0.965), (0.18, 0.26, 0.015), (0.90, 0.88, 0.80, 1.0))
-    make_box("Ledger_Spine", (cx - 0.655, cy - 0.15, 0.972), (0.02, 0.26, 0.012), (0.36, 0.24, 0.16, 1.0))
-    make_box("SlowTerminal_Body", (cx + 0.85, cy + 0.35, 1.13), (0.40, 0.36, 0.34), (0.78, 0.75, 0.68, 1.0))
-    make_box("SlowTerminal_Screen", (cx + 0.85, cy + 0.16, 1.15), (0.30, 0.02, 0.22), (0.16, 0.24, 0.18, 1.0))
-    make_box("SlowTerminal_Cursor", (cx + 0.76, cy + 0.148, 1.10), (0.03, 0.005, 0.02), (0.55, 0.85, 0.55, 1.0))
-    make_box("SlowTerminal_Keyboard", (cx + 0.85, cy - 0.12, 0.975), (0.36, 0.14, 0.025), (0.70, 0.67, 0.60, 1.0))
+    top = 1.01
+    make_box("Ledger_Open_L", (cx - 0.18, cy - 0.15, top + 0.0075), (0.18, 0.26, 0.015), (0.90, 0.88, 0.80, 1.0))
+    make_box("Ledger_Open_R", (cx + 0.01, cy - 0.15, top + 0.0075), (0.18, 0.26, 0.015), (0.90, 0.88, 0.80, 1.0))
+    make_box("Ledger_Spine", (cx - 0.085, cy - 0.15, top + 0.014), (0.02, 0.26, 0.012), (0.36, 0.24, 0.16, 1.0))
+    make_box("SlowTerminal_Body", (cx, cy + 0.25, top + 0.17), (0.40, 0.36, 0.34), (0.78, 0.75, 0.68, 1.0))
+    make_box("SlowTerminal_Screen", (cx + 0.19, cy + 0.25, top + 0.19), (0.02, 0.30, 0.22), (0.16, 0.24, 0.18, 1.0))   # faces the clerk
+    make_box("SlowTerminal_Cursor", (cx + 0.2025, cy + 0.16, top + 0.14), (0.005, 0.03, 0.02), (0.55, 0.85, 0.55, 1.0))
+    make_box("SlowTerminal_Keyboard", (cx + 0.30, cy + 0.25, top + 0.0125), (0.14, 0.36, 0.025), (0.70, 0.67, 0.60, 1.0))
+    # the hold shelf on the counter's east face, the books on it
+    make_box("Hold_Shelf", (cx + 0.475, cy + 0.42, 0.59), (0.25, 1.35, 0.03), COL_WOOD_DK)
     for hi in range(3):
-        make_box(f"Hold_Book_{hi}", (cx - 0.9 + hi * 0.35, cy + 0.42, 0.62),
-                 (0.24, 0.17, 0.05), BOOK_SPINES[(hi * 2) % len(BOOK_SPINES)])
-        make_box(f"Hold_Slip_{hi}", (cx - 0.9 + hi * 0.35, cy + 0.34, 0.655),
-                 (0.06, 0.14, 0.005), (0.94, 0.92, 0.84, 1.0))
-    make_box("Hold_Shelf", (cx - 0.55, cy + 0.42, 0.59), (1.35, 0.25, 0.03), COL_WOOD_DK)
+        make_box(f"Hold_Book_{hi}", (cx + 0.475, cy - 0.08 + hi * 0.35, 0.63),
+                 (0.17, 0.24, 0.05), BOOK_SPINES[(hi * 2) % len(BOOK_SPINES)])
+        make_box(f"Hold_Slip_{hi}", (cx + 0.555, cy - 0.08 + hi * 0.35, 0.6575),
+                 (0.14, 0.06, 0.005), (0.94, 0.92, 0.84, 1.0))
     # ── Petra's office mid-call: handset OFF the cradle, coiled
     # cord to her ear-height, papers pushed to one side ──
-    make_box("Office_Handset_InUse", (2.35, 8.05, 1.35), (0.06, 0.20, 0.05), COL_BLACK)
+    make_box("Office_Handset_InUse", (2.35, 8.05, 1.26), (0.06, 0.20, 0.05), COL_BLACK)   # at the cord's end (2026-09-22)
+    # the cord: one line from the phone's base to the handset, the coil
+    # rings riding it (2026-09-22: four rings hung 10 cm apart on nothing)
+    make_tube("Office_PhoneCord", [(2.35, 8.26, 0.815), (2.35, 8.05, 1.235)], 0.010, COL_BLACK, segments=4)
     for ci in range(4):
-        make_cyl(f"Office_PhoneCoil_{ci}", (2.35, 8.12 + ci * 0.05, 0.95 + ci * 0.10),
+        t_ = (ci + 0.5) / 4.0
+        make_cyl(f"Office_PhoneCoil_{ci}", (2.35, 8.26 - 0.21 * t_, 0.815 + 0.42 * t_),
                  0.025, 0.03, COL_BLACK, segments=6)
     make_box("Office_Papers_Pushed", (3.25, 8.45, 0.775), (0.30, 0.24, 0.03), (0.88, 0.86, 0.80, 1.0))
     # ── The four mugs POURED (dark coffee discs) + the kettle just
@@ -467,12 +480,12 @@ def build_use_states_2026_08():
     for mi in range(4):
         mx = -3.40 + 0.14 * (mi % 2)
         my = 6.55 + 0.16 * (mi // 2)
-        make_cyl(f"Mug_{mi}_Coffee", (mx, my, 1.075), 0.033, 0.008, (0.24, 0.16, 0.10, 1.0), segments=8)
-    make_cyl("Clay_Mug_Coffee", (-3.62, 6.70, 1.085), 0.038, 0.008, (0.26, 0.17, 0.11, 1.0), segments=8)
+        make_cyl(f"Mug_{mi}_Coffee", (mx, my, 1.031), 0.033, 0.008, (0.24, 0.16, 0.10, 1.0), segments=8)   # in the rim (2026-09-22: 4 cm over it)
+    make_cyl("Clay_Mug_Coffee", (-3.62, 6.70, 1.046), 0.038, 0.008, (0.26, 0.17, 0.11, 1.0), segments=8)
     # ── The reading nook mid-read: the side-table book now OPEN on
     # the chair arm, cushion dented (darker patch) ──
-    make_box("Nook_Book_Open_L", (-2.62, 1.62, 0.665), (0.11, 0.16, 0.01), (0.90, 0.88, 0.80, 1.0))
-    make_box("Nook_Book_Open_R", (-2.50, 1.62, 0.665), (0.11, 0.16, 0.01), (0.90, 0.88, 0.80, 1.0))
+    make_box("Nook_Book_Open_L", (-3.08, 1.62, 0.655), (0.11, 0.16, 0.01), (0.90, 0.88, 0.80, 1.0))   # ON the chair arm (2026-09-22: 12 cm east of it)
+    make_box("Nook_Book_Open_R", (-2.96, 1.62, 0.655), (0.11, 0.16, 0.01), (0.90, 0.88, 0.80, 1.0))
     make_box("Nook_Cushion_Dent", (-2.9, 1.3, 0.555), (0.36, 0.34, 0.015), (0.40, 0.24, 0.17, 1.0))
     # ── The alley crate as a reading perch: Petra's glasses folded
     # on it + the folded newspaper ("by my reading at the dumpster") ──
@@ -497,6 +510,10 @@ def build_beyond_glass_2026_08():
     make_box("Hemlock_Centerline", (0.0, -4.8, 0.005), (12.5, 0.10, 0.01), (0.85, 0.76, 0.30, 1.0))
     # The parked car framed by the front window (x=-2.5 glass).
     make_box("Hemlock_Car_Body", (-2.7, -2.6, 0.55), (4.2, 1.75, 0.55), (0.30, 0.34, 0.30, 1.0))
+    for wxo in (-1.4, 1.4):   # wheels (2026-09-22: the car hung 28 cm over the street)
+        for sgn in (-1, 1):
+            make_cyl(f"Hemlock_Car_Wheel_{wxo:+.1f}_{sgn:+d}", (-2.7 + wxo, -2.6 + sgn * 0.82, 0.30), 0.30, 0.20,
+                     (0.10, 0.10, 0.11, 1.0), segments=10, axis='Y')
     make_box("Hemlock_Car_Cabin", (-3.0, -2.6, 1.02), (2.2, 1.6, 0.45), (0.30, 0.34, 0.30, 1.0))
     # Mailbox on the sidewalk + street tree between sightlines.
     make_box("Hemlock_Mailbox_Body", (2.6, -1.0, 1.05), (0.5, 0.4, 0.5), (0.22, 0.30, 0.46, 1.0))

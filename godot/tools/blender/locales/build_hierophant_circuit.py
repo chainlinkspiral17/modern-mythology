@@ -212,7 +212,7 @@ def build_church():
                      (0.10, 0.16, 0.40),
                      COL_STATUE_WEATHERED)
     # ── Small bell tower hint above the facade peak ──
-    peak_z = facade_z_top + 0.40
+    peak_z = facade_z_top   # the base sits ON the facade's top (2026-09-22: 40 cm of air)
     # Square stone base
     make_box("Church_BellTower_Base",
              (0.0, facade_y, peak_z + 0.80),
@@ -222,8 +222,8 @@ def build_church():
     for sgn_x in (-1, +1):
         for sgn_y in (-1, +1):
             make_box("Church_BellTower_Column_%+d_%+d" % (sgn_x, sgn_y),
-                     (sgn_x * 0.70, facade_y + sgn_y * 0.60, peak_z + 2.00),
-                     (0.16, 0.16, 1.20),
+                     (sgn_x * 0.70, facade_y + sgn_y * 0.60, peak_z + 2.10),
+                     (0.16, 0.16, 1.40),   # base to roof (2026-09-22: 20 cm short of the roof)
                      COL_CHURCH_PLASTER)
     # Pyramidal roof (a single tapered box for the steeple)
     make_box("Church_BellTower_Roof",
@@ -241,7 +241,7 @@ def build_church():
              COL_BRASS)
     # The bell visible in the belfry
     make_cyl("Church_Bell",
-             (0.0, facade_y, peak_z + 2.40),
+             (0.0, facade_y, peak_z + 2.60),   # hangs from the roof
              0.32, 0.40,
              COL_BELL_BRASS, segments=10, axis='Z')
 
@@ -333,7 +333,7 @@ def build_long_black_car():
                  COL_CAR_HUB, segments=10, axis='Y')
     # Side mirror (driver's side)
     make_box("Car_SideMirror",
-             (cx - 1.20, cy - body_d / 2.0 - 0.10, 1.20),
+             (cx - 1.20, cy - body_d / 2.0 - 0.05, 1.02),   # on the door (2026-09-22: beside the narrower cabin, on air)   # on the door (2026-09-22: 5 cm off it)
              (0.16, 0.10, 0.10),
              COL_CAR_BODY)
     # Exhaust pipe (small chrome tube at the back, low)
@@ -420,11 +420,11 @@ def build_bandstand():
              COL_BANDSTAND_ROOF, segments=8, axis='Z')
     # Small finial at the top
     make_cyl("Bandstand_Finial_Post",
-             (bs_cx, bs_cy, roof_z + 1.80),
+             (bs_cx, bs_cy, roof_z + 1.75),   # from the roof's peak (2026-09-22: 5 cm of air)
              0.020, 0.30,
              COL_BRASS, segments=4, axis='Z')
     make_cyl("Bandstand_Finial_Ball",
-             (bs_cx, bs_cy, roof_z + 2.00),
+             (bs_cx, bs_cy, roof_z + 1.94),
              0.080, 0.08,
              COL_BRASS, segments=10, axis='Z')
     # ── Low railing between columns (skip the south-facing gap
@@ -523,7 +523,7 @@ def build_bandstand():
                  (0.20, 0.18, 0.14, 1.0))
     # Pencil resting on the open page
     make_cyl("Bench_Pencil",
-             (bench_cx + 0.46, bench_cy + 0.04, 0.518),
+             (bench_cx + 0.36, bench_cy + 0.04, 0.516),   # on the page (2026-09-22: 8 cm past it)
              0.004, 0.14,
              (0.86, 0.66, 0.20, 1.0), segments=4, axis='Y')
 
@@ -593,17 +593,20 @@ def build_circuit_stations_2026_08():
         for sgn in (-1, 1):
             make_box("Nave_Pew_%d_%+d" % (ri, sgn), (sgn * 3.1, py, 0.48),
                      (4.6, 0.34, 0.16), pew)
+            for e in (-1, 1):   # pew ends to the floor (2026-09-22: the seats hung at 0.40)
+                make_box("Nave_PewEnd_%d_%+d_%+d" % (ri, sgn, e), (sgn * 3.1 + e * 2.27, py, 0.225),
+                         (0.06, 0.34, 0.35), pew)
             make_box("Nave_PewBack_%d_%+d" % (ri, sgn), (sgn * 3.1, py + 0.16, 0.85),
                      (4.6, 0.06, 0.60), pew)
     # Altar + the office that owns him
     make_box("Nave_AltarStep", (0.0, 2.9, 0.12), (5.2, 1.6, 0.24), (0.62, 0.58, 0.52, 1.0))
-    make_box("Nave_Altar", (0.0, 3.1, 0.85), (2.2, 0.9, 1.00), plaster)
-    make_box("Nave_AltarCloth", (0.0, 3.1, 1.38), (2.3, 0.95, 0.06), (0.86, 0.82, 0.72, 1.0))
+    make_box("Nave_Altar", (0.0, 3.1, 0.74), (2.2, 0.9, 1.00), plaster)   # on the step (2026-09-22: 11 cm up)
+    make_box("Nave_AltarCloth", (0.0, 3.1, 1.27), (2.3, 0.95, 0.06), (0.86, 0.82, 0.72, 1.0))
     for ci in (-1, 1):
-        make_cyl("Nave_Candle_%+d" % ci, (ci * 0.8, 3.1, 1.55), 0.035, 0.28,
+        make_cyl("Nave_Candle_%+d" % ci, (ci * 0.8, 3.1, 1.44), 0.035, 0.28,
                  (0.90, 0.88, 0.80, 1.0), segments=6)
     # Incense haze · one thin warm sheet in the crossing light
-    make_box("Nave_IncenseHaze", (0.0, -0.5, 3.4), (5.5, 0.02, 3.4),
+    make_box("Nave_Incense_Haze", (0.0, -0.5, 3.4), (5.5, 0.02, 3.4),   # a haze, named so the support gate reads it as vapour
              (0.85, 0.80, 0.66, 0.16))
     # ── OLD ARMORY · park's west edge ──
     ax, ay = -17.0, 12.0
@@ -612,12 +615,12 @@ def build_circuit_stations_2026_08():
     make_box("Armory_RoofRidge", (ax, ay, 6.05), (0.5, 10.6, 0.35), tin)
     make_box("Armory_Door", (ax + 3.52, ay - 2.0, 1.5), (0.08, 1.8, 3.0), wood_dk)
     for wi in range(3):
-        make_box("Armory_WinBoard_%d" % wi, (ax + 3.52, ay + 1.2 + wi * 2.2, 3.4),
+        make_box("Armory_WinBoard_%d" % wi, (ax + 3.52, ay - 0.6 + wi * 2.2, 3.4),   # within the wall's run (2026-09-22: the last hung past its end)
                  (0.06, 1.0, 1.5), (0.42, 0.34, 0.26, 1.0))
     # The plaque nobody cleans · low, by the door
-    make_box("Armory_Plaque", (ax + 3.56, ay - 3.4, 1.3), (0.03, 0.55, 0.40),
+    make_box("Armory_Plaque", (ax + 3.515, ay - 3.4, 1.3), (0.03, 0.55, 0.40),   # on the brick (2026-09-22)
              (0.42, 0.44, 0.38, 1.0))
-    make_box("Armory_Plaque_Grime", (ax + 3.575, ay - 3.5, 1.18), (0.02, 0.35, 0.10),
+    make_box("Armory_Plaque_Grime", (ax + 3.54, ay - 3.5, 1.18), (0.02, 0.35, 0.10),
              (0.30, 0.32, 0.28, 1.0))
     # ── RIVERFRONT · far north · the muddy divide ──
     make_box("River_Bank", (0.0, 30.0, -0.05), (40.0, 4.0, 0.14), (0.52, 0.44, 0.34, 1.0))
@@ -637,7 +640,7 @@ def build_circuit_stations_2026_08():
     make_box("Boat_Hull", (bx, by, 0.55), (16.0, 5.6, 1.5), hull_w)
     make_box("Boat_HullStripe", (bx, by, 1.05), (16.1, 5.65, 0.18), hull_r)
     make_box("Boat_MainDeck", (bx, by, 1.35), (15.4, 5.2, 0.14), deck)
-    make_box("Boat_UpperDeck", (bx, by, 3.95), (13.0, 4.4, 0.14), deck)
+    make_box("Boat_UpperDeck", (bx, by, 3.95), (13.0, 4.7, 0.14), deck)   # out to the posts (2026-09-22: 10 cm short of them)
     for pi in range(6):
         make_box("Boat_DeckPost_%d" % pi, (bx - 6.0 + pi * 2.4, by - 2.35, 2.65),
                  (0.10, 0.10, 2.6), hull_w)
@@ -660,6 +663,9 @@ def build_circuit_stations_2026_08():
         bzo = _m.sin(ang) * 1.05
         make_box("Boat_Paddle_Blade_%d" % pb, (wx + bxo, by, 1.3 + bzo),
                  (0.55, 3.9, 0.16), hull_r)
+    for s in (-1, 1):   # the wheel's side rims — the blades ride them (2026-09-22: eight blades hung around the axle, touching nothing)
+        make_cyl("Boat_Paddle_Rim_%+d" % s, (wx, by + s * 1.97, 1.3), 1.10, 0.06, hull_r,
+                 segments=16, axis='Y')
     make_box("Boat_Paddle_Box", (wx, by + 2.35, 2.1), (2.9, 0.7, 2.2), hull_r)
     # ── THE BRUNCH FLOOR · main-deck dining slice ──
     # Twelve tables in canon; six modeled forward + TABLE 17, the
@@ -670,8 +676,8 @@ def build_circuit_stations_2026_08():
         make_cyl("Boat_Table_%d" % ti, (tx2, ty2, 1.75), 0.45, 0.05, hull_w, segments=10)
         make_cyl("Boat_Table_%d_Post" % ti, (tx2, ty2, 1.55), 0.05, 0.40,
                  (0.30, 0.28, 0.26, 1.0), segments=6)
-    make_box("Table17_Booth_Seat", (bx + 5.6, by - 1.6, 1.62), (1.6, 0.5, 0.14), hull_r)
-    make_box("Table17_Booth_Back", (bx + 5.6, by - 1.32, 1.98), (1.6, 0.10, 0.62), hull_r)
+    make_box("Table17_Booth_Seat", (bx + 5.6, by - 1.6, 1.49), (1.6, 0.5, 0.14), hull_r)   # on the deck (2026-09-22: 13 cm up)
+    make_box("Table17_Booth_Back", (bx + 5.6, by - 1.32, 1.87), (1.6, 0.10, 0.62), hull_r)
     make_box("Table17_Top", (bx + 5.6, by - 2.05, 1.80), (1.4, 0.7, 0.05), hull_w)
     make_box("Table17_Card", (bx + 5.3, by - 2.05, 1.84), (0.10, 0.14, 0.015),
              (0.88, 0.86, 0.80, 1.0))
@@ -683,11 +689,12 @@ def build_circuit_stations_2026_08():
     make_box("BoatKitchen_Pass", (bx + 1.6, by + 1.55, 2.35), (1.2, 0.08, 0.5),
              (0.66, 0.68, 0.70, 1.0))
     # Corridor between kitchen house and stern: time clock + coats.
-    make_box("Corridor_TimeClock", (bx + 5.55, by + 1.1, 2.6), (0.24, 0.10, 0.34),
+    # (2026-09-22: 13 cm off the deckhouse's east face, the coats 7 cm off its north)
+    make_box("Corridor_TimeClock", (bx + 5.42, by + 1.1, 2.6), (0.24, 0.10, 0.34),
              (0.72, 0.70, 0.66, 1.0))
-    make_box("Corridor_CardRack", (bx + 5.55, by + 1.5, 2.5), (0.30, 0.06, 0.4), wood_dk)
+    make_box("Corridor_CardRack", (bx + 5.45, by + 1.5, 2.5), (0.30, 0.06, 0.4), wood_dk)
     for ci2 in range(3):
-        make_box("Corridor_Coat_%d" % ci2, (bx + 5.0 - ci2 * 0.35, by + 2.62, 2.2),
+        make_box("Corridor_Coat_%d" % ci2, (bx + 5.0 - ci2 * 0.35, by + 2.55, 2.2),
                  (0.22, 0.10, 0.75), (0.30 + ci2 * 0.08, 0.28, 0.30, 1.0))
     # ── THE CURB · gangway + bell above the front door ──
     make_box("Curb_Gangway", (bx - 7.2, by - 3.6, 0.75), (1.2, 2.6, 0.10), deck)

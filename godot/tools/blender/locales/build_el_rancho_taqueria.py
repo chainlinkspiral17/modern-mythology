@@ -160,7 +160,7 @@ def build_drive_thru_2026_08():
     make_box("DriveThru_Slide", (wx+0.02, 4.30, 1.45), (0.03, 0.55, 1.04), (0.58, 0.68, 0.72, 0.7))
     make_box("DriveThru_Sill", (wx-0.10, 4.6, 0.86), (0.30, 1.40, 0.05), (0.66, 0.62, 0.56, 1.0))
     # Interior headset hook + ticket spike at the window.
-    make_cyl("DriveThru_Headset_Hook", (wx-0.14, 5.15, 1.65), 0.02, 0.06, P.METAL_STEEL, axis='X', segments=6)
+    make_cyl("DriveThru_Headset_Hook", (wx+0.13, 5.15, 1.65), 0.02, 0.06, P.METAL_STEEL, axis='X', segments=6)   # on the wall's inner face (2026-09-22: it was outside the wall)
     make_cyl("DriveThru_Ticket_Spike", (wx-0.16, 4.25, 0.92), 0.006, 0.12, P.METAL_STEEL)
     # Outside: the speaker box on a post + the taped sign.
     make_cyl("Speaker_Post", (ROOM_W/2.0+1.2, 3.2, 0.60), 0.04, 1.20, P.METAL_BLACK)
@@ -188,10 +188,12 @@ def build_string_lights():
     for strand in range(2):
         sy = ROOM_D*(0.32+strand*0.34)
         make_box(f"Festoon_Wire_{strand}", (0.0, sy, CEIL-0.12), (ROOM_W-0.6, 0.01, 0.01), P.METAL_BLACK)
+        for e in (-1, 1):   # drops from the ceiling at the wire's ends (2026-09-22: it hung on nothing)
+            make_cyl(f"Festoon_Drop_{strand}_{e:+d}", (e * (ROOM_W/2.0 - 0.35), sy, CEIL-0.06), 0.005, 0.12, P.METAL_BLACK, segments=4)
         span = ROOM_W-0.8
         for b in range(9):
             bx = -span/2.0 + b*(span/8.0)
-            make_cyl(f"Festoon_Bulb_{strand}_{b}", (bx, sy, CEIL-0.20), 0.035, 0.08, (1.0,0.82,0.5,1.0))
+            make_cyl(f"Festoon_Bulb_{strand}_{b}", (bx, sy, CEIL-0.165), 0.035, 0.08, (1.0,0.82,0.5,1.0))   # on the wire
 
 def build_ceiling_infra():
     for j in range(2):

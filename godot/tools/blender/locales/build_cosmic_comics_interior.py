@@ -106,6 +106,9 @@ def build_second_spinner():
     make_cyl("Spin2_Base", (rx, ry, 0.06), 0.46, 0.12, P.METAL_BLACK, segments=16)
     make_cyl("Spin2_Pole", (rx, ry, 0.98), 0.045, 1.84, P.METAL_STEEL, segments=8)
     for tier, tz in enumerate([0.66, 1.16, 1.66]):
+        # (2026-09-22: a tier disc on the pole the pockets hang from — the
+        # wire U's hung 20 cm out from the pole on nothing)
+        make_cyl(f"Spin2_Tier_{tier}", (rx, ry, tz + 0.15), 0.40, 0.02, P.METAL_STEEL, segments=16)
         for pk in range(6):
             ang = pk * (2.0 * math.pi / 6.0) + tier * 0.4
             ox, oy = math.cos(ang) * 0.34, math.sin(ang) * 0.34
@@ -177,8 +180,10 @@ def build_register_counter():
                (0.72, 0.80, 0.92, 0.25), segments=16)   # draft 4: a dome, not a box of glass
     make_box("Grail_DomeBase", (gx, gy, top_z+0.02), (0.32, 0.42, 0.04), P.METAL_BLACK)
     # A glass display of graded slabs along the counter face (customer side)
+    # (2026-09-22: on the counter's WEST face — make_counter's length runs
+    # along Y, so the slabs sat in the air beyond its ends)
     for si in range(4):
-        make_box(f"CounterSlab_{si}", (cx-0.9+si*0.5, cy-0.52, top_z-0.30), (0.18, 0.02, 0.26),
+        make_box(f"CounterSlab_{si}", (cx-0.51, cy-0.9+si*0.5, top_z-0.30), (0.02, 0.18, 0.26),
                  HERO_COLS[si % len(HERO_COLS)])
 
 def build_rack():
@@ -189,6 +194,9 @@ def build_rack():
     make_cyl("Spinner_Base", (rx, ry, 0.06), 0.46, 0.12, P.METAL_BLACK, segments=16)
     make_cyl("Spinner_Pole", (rx, ry, 0.98), 0.045, 1.84, P.METAL_STEEL, segments=8)
     for tier, tz in enumerate([0.66, 1.16, 1.66]):
+        # (2026-09-22: a tier disc on the pole the pockets hang from — the
+        # wire U's hung 20 cm out from the pole on nothing)
+        make_cyl(f"Spinner_Tier_{tier}", (rx, ry, tz + 0.15), 0.40, 0.02, P.METAL_STEEL, segments=16)
         for pk in range(6):
             ang = pk * (2.0 * math.pi / 6.0) + tier * 0.4
             ox, oy = math.cos(ang) * 0.34, math.sin(ang) * 0.34

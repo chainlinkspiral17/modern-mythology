@@ -90,6 +90,7 @@ def build_judge_bench_and_dais():
     make_cyl("Scales_Post", (+0.40, by+0.20, 1.62), 0.014, 0.30, COL_SCALES)
     make_box("Scales_Beam", (+0.40, by+0.20, 1.76), (0.30, 0.02, 0.02), COL_SCALES)
     for sgn in (-1, +1):
+        make_cyl(f"Scales_Chain_{sgn:+d}", (+0.40 + sgn*0.14, by+0.20, 1.71), 0.004, 0.08, COL_BRASS, segments=4)   # (2026-09-22)
         make_cyl(f"Scales_Pan_{sgn:+d}", (+0.40 + sgn*0.14, by+0.20, 1.66),
                  0.06, 0.02, COL_SCALES, segments=10)
 
@@ -117,6 +118,10 @@ def build_jury_box():
         jx = -ROOM_W/2.0 + 0.80 + row * 0.70
         jy = ROOM_D/2.0 - 1.20 + (col_ - 1) * 0.70
         make_box(f"Juror_Chair_Seat_{ji}", (jx, jy, 0.46), (0.40, 0.40, 0.04), COL_LEATHER)
+        for lx_ in (-1, 1):   # legs (2026-09-22: the seats hung at 0.44)
+            for ly_ in (-1, 1):
+                make_box(f"Juror_Chair_Leg_{ji}_{lx_:+d}_{ly_:+d}", (jx + lx_ * 0.16, jy + ly_ * 0.16, 0.22),
+                         (0.03, 0.03, 0.44), COL_WOOD_DARK)
         make_box(f"Juror_Chair_Back_{ji}", (jx+0.16, jy, 0.86), (0.04, 0.40, 0.74), COL_LEATHER)
     # Jury box railing
     make_box("Jury_Rail_S", (-ROOM_W/2.0 + 1.50, ROOM_D/2.0 + 1.40, 1.00),
@@ -125,6 +130,11 @@ def build_jury_box():
              (2.00, 0.04, 0.80), COL_WOOD_DARK)
     make_box("Jury_Rail_E", (-ROOM_W/2.0 + 2.50, ROOM_D/2.0, 1.00),
              (0.04, 3.60, 0.80), COL_WOOD_DARK)
+    # the rails' posts to the floor (2026-09-22: the rails hung at 0.60)
+    for pi_, (px_, py_) in enumerate(((-ROOM_W/2.0 + 0.55, ROOM_D/2.0 + 1.40), (-ROOM_W/2.0 + 2.45, ROOM_D/2.0 + 1.40),
+                                      (-ROOM_W/2.0 + 0.55, ROOM_D/2.0 - 2.00), (-ROOM_W/2.0 + 2.45, ROOM_D/2.0 - 2.00),
+                                      (-ROOM_W/2.0 + 2.50, ROOM_D/2.0))):
+        make_box(f"Jury_Rail_Post_{pi_}", (px_, py_, 0.30), (0.05, 0.05, 0.60), COL_WOOD_DARK)
 
 
 def build_counsel_tables():
@@ -132,11 +142,15 @@ def build_counsel_tables():
     for ti, (tx, label) in enumerate([(-1.50, "Plaintiff"), (+1.50, "Defense")]):
         ty = ROOM_D/2.0 - 0.50
         make_box(f"Table_{ti}_Top",  (tx, ty, 0.74), (1.40, 0.80, 0.04), COL_WOOD_MID)
-        make_box(f"Table_{ti}_Body", (tx, ty, 0.40), (1.36, 0.76, 0.68), COL_WOOD_MID)
+        make_box(f"Table_{ti}_Body", (tx, ty, 0.37), (1.36, 0.76, 0.68), COL_WOOD_MID)   # on the floor (2026-09-22: 6 cm up)
         # Two chairs per table (S-facing, attorneys)
         for ci, csgn in enumerate([-0.40, +0.40]):
             make_box(f"Table_{ti}_Chair_Seat_{ci}", (tx+csgn, ty-0.60, 0.46),
                      (0.40, 0.40, 0.04), COL_LEATHER)
+            for lx_ in (-1, 1):
+                for ly_ in (-1, 1):
+                    make_box(f"Table_{ti}_Chair_Leg_{ci}_{lx_:+d}_{ly_:+d}", (tx+csgn + lx_ * 0.16, ty-0.60 + ly_ * 0.16, 0.22),
+                             (0.03, 0.03, 0.44), COL_WOOD_DARK)
             make_box(f"Table_{ti}_Chair_Back_{ci}", (tx+csgn, ty-0.80, 0.86),
                      (0.40, 0.04, 0.74), COL_LEATHER)
         # Folder / papers on the table
@@ -152,9 +166,13 @@ def build_public_pews():
         py = 1.50 + pi * 1.20
         for side, sx in (("W", -1.60), ("E", 1.60)):
             make_box(f"Pew_{pi}_{side}_Seat", (sx, py, 0.46), (2.20, 0.50, 0.06), COL_WOOD_DARK)
+            for e in (-1, 1):   # end panels (2026-09-22: the seats hung at 0.43)
+                make_box(f"Pew_{pi}_{side}_End_{e:+d}", (sx + e * 1.07, py, 0.215), (0.06, 0.50, 0.43), COL_WOOD_DARK)
             make_box(f"Pew_{pi}_{side}_Back", (sx, py-0.22, 0.84), (2.20, 0.06, 0.70), COL_WOOD_DARK)
     # The bar (low railing separating well from audience)
     make_box("Bar_Rail", (0.0, 4.20, 1.00), (5.40, 0.04, 0.86), COL_WOOD_DARK)
+    for bx_ in (-2.65, 0.0, 2.65):   # posts (2026-09-22: the rail hung at 0.57)
+        make_box(f"Bar_Rail_Post_{bx_:+.2f}", (bx_, 4.20, 0.285), (0.05, 0.05, 0.57), COL_WOOD_DARK)
     make_box("Bar_Cap",  (0.0, 4.20, 1.46), (5.40, 0.08, 0.06), COL_BENCH_TOP)
 
 
@@ -163,6 +181,7 @@ def build_flag_and_seal():
     for ci, (cx, fc1, fc2) in enumerate([(-3.20, COL_FLAG_RED, COL_FLAG_WHITE),
                                           (+3.20, COL_FLAG_BLUE, COL_FLAG_WHITE)]):
         make_cyl(f"Flag_Pole_{ci}", (cx, ROOM_D-0.30, 2.20), 0.04, 4.20, COL_BRASS, segments=8)
+        make_cyl(f"Flag_Base_{ci}", (cx, ROOM_D-0.30, 0.05), 0.16, 0.10, COL_BRASS, segments=10)   # (2026-09-22)
         # Flag drape (alternating stripes via two boxes)
         make_box(f"Flag_Drape_R_{ci}", (cx+0.40, ROOM_D-0.30, 3.50), (0.60, 0.04, 0.40), fc1)
         make_box(f"Flag_Drape_W_{ci}", (cx+0.40, ROOM_D-0.30, 3.10), (0.60, 0.04, 0.40), fc2)
@@ -212,7 +231,7 @@ def build_justice_dressing():
 
     # ── DEPT 3 placard on the courtroom door (south wall) ──
     placard_x = -3.40
-    placard_y = -3.95
+    placard_y = 0.1055   # the south wall's inner face (2026-09-22: it hung at y -3.95, 4 m outside the room)
     make_box("Dept3_Placard_Backing",
              (placard_x, placard_y, 2.20),
              (0.30, 0.005, 0.20),
@@ -300,6 +319,8 @@ def build_justice_dressing():
         for ci in range(6):
             sx = jb_x + ci * 0.30
             sy = jb_y + ri * 0.40
+            if ci == 0:   # the row's bench slab to the floor (2026-09-22: twelve seats at 0.44)
+                make_box("JurySeat_Bench_%d" % ri, (jb_x + 0.75, sy, 0.22), (1.80, 0.26, 0.44), (0.36, 0.26, 0.18, 1.0))
             # Seat (empty)
             make_box("JurySeat_%d_%d" % (ri, ci),
                      (sx, sy, 0.46),
@@ -367,12 +388,14 @@ def build_justice_wave2_props():
     # and put the placard and bench visually adjacent.
 
     # Chambers-corridor placard on the wall between courtroom and chambers
+    # (2026-09-22: the corridor stub was never built; the placard hung at
+    # x 3.2 in open air — on the east wall's face now)
     make_box("Chambers_Placard_Backing",
-             (+3.20, +5.50, 2.20),
+             (+5.3975, +5.50, 2.20),
              (0.005, 0.42, 0.16),
              (0.78, 0.62, 0.30, 1.0))   # brass
     make_box("Chambers_Placard_Text",
-             (+3.203, +5.50, 2.20),
+             (+5.3945, +5.50, 2.20),
              (0.001, 0.36, 0.08),
              (0.20, 0.16, 0.10, 1.0))
 
@@ -387,6 +410,11 @@ def build_justice_wave2_props():
              (corridor_x + 0.13, corridor_y, 0.650),
              (0.05, 0.60, 0.36),
              (0.42, 0.30, 0.22, 1.0))
+    for e in (-1, 1):   # legs (2026-09-22)
+        make_box("Chambers_CorridorBench_Leg_%+d" % e,
+                 (corridor_x, corridor_y + e * 0.27, 0.205),
+                 (0.26, 0.05, 0.41),
+                 (0.42, 0.30, 0.22, 1.0))
     # The Boutte-Street bakery bag on the bench (paper bag)
     make_box("Chambers_BakeryBag_Body",
              (corridor_x - 0.02, corridor_y + 0.10, 0.52),
@@ -416,7 +444,7 @@ def build_justice_wave2_props():
              (0.28, 0.18, 0.14, 1.0))
     # Desk drawers (side)
     make_box("Erica_JudgeDesk_Drawers",
-             (desk_x + 0.30, desk_y, 0.40),
+             (desk_x + 0.30, desk_y, 0.36),   # on the floor (2026-09-22: 4 cm up)
              (0.30, 0.50, 0.72),
              (0.24, 0.16, 0.12, 1.0))
     # Desk lamp
@@ -429,13 +457,14 @@ def build_justice_wave2_props():
              0.08, 0.08,
              (0.94, 0.86, 0.62, 1.0), segments=10, axis='Z')
     # Erica's robe on a hook on the chambers wall
+    # on the east wall (2026-09-22: the hook hung in open air at x 3.9)
     make_box("Erica_Robe_Hanger",
-             (+3.90, +6.60, 1.90),
-             (0.20, 0.02, 0.03),
+             (+5.39, +6.60, 1.90),
+             (0.02, 0.20, 0.03),
              (0.62, 0.62, 0.60, 1.0))
     make_box("Erica_Robe_Body",
-             (+3.90, +6.60, 1.30),
-             (0.40, 0.06, 0.90),
+             (+5.37, +6.60, 1.43),
+             (0.06, 0.40, 0.90),
              (0.14, 0.12, 0.10, 1.0))   # black judicial robe
 
     # ── Marcellette's clerk desk to the side of the bench ──
@@ -447,7 +476,7 @@ def build_justice_wave2_props():
              (0.70, 0.42, 0.04),
              (0.32, 0.22, 0.16, 1.0))
     make_box("Marcellette_ClerkDesk_Drawers",
-             (md_x, md_y - 0.16, 0.40),
+             (md_x, md_y - 0.16, 0.36),   # on the floor (2026-09-22)
              (0.70, 0.10, 0.72),
              (0.28, 0.20, 0.14, 1.0))
     # The court clerk's typewriter (IBM Selectric-ish · gray box)

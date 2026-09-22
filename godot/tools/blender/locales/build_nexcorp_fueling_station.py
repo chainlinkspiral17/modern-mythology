@@ -98,14 +98,17 @@ def build_storefront():
                                      (wx-5.7, ROOM_D/2.0-0.9), (wx-5.7, ROOM_D/2.0+0.9)]):
         make_cyl(f"Canopy_Post_{ci}", (cx2, cy, 1.70), 0.08, 3.00, P.METAL_STEEL, segments=8)
     # No-smoking placard + waste bin at the island end
-    make_box("NoSmoking_Placard", (wx-1.6, ROOM_D/2.0-1.15, 1.60), (0.04, 0.26, 0.20), (0.90, 0.90, 0.92, 1.0))
-    make_box("NoSmoking_Bar", (wx-1.6, ROOM_D/2.0-1.16, 1.60), (0.03, 0.22, 0.04), (0.72, 0.20, 0.18, 1.0))
+    # on the near canopy post (2026-09-22: it hung 0.4 m from it)
+    make_box("NoSmoking_Placard", (wx-1.20, ROOM_D/2.0-0.9, 1.60), (0.04, 0.26, 0.20), (0.90, 0.90, 0.92, 1.0))
+    make_box("NoSmoking_Bar", (wx-1.235, ROOM_D/2.0-0.9, 1.60), (0.03, 0.22, 0.04), (0.72, 0.20, 0.18, 1.0))
     make_cyl("Pump_Bin", (wx-1.0, ROOM_D/2.0-1.3, 0.40), 0.20, 0.80, (0.30, 0.32, 0.34, 1.0), segments=10)
 
 def build_brand_and_register():
     # Backlit brand sign on the north wall behind the register
     make_box("BrandSign", (ROOM_W/4.0, ROOM_D-0.06, 2.10), (1.60, 0.06, 0.50), COL_ACCENT)
-    # Impulse-buy rack in front of the register counter
+    # Impulse-buy rack in front of the register counter — the rack
+    # itself (2026-09-22: fifteen items hung in three rows on nothing)
+    make_box("Impulse_Rack", (ROOM_W/4.0, ROOM_D-1.5-0.62, 0.55), (1.90, 0.06, 1.10), P.METAL_BLACK)
     for r in range(3):
         for c in range(5):
             make_box(f"Impulse_{r}_{c}", (ROOM_W/4.0-0.72+c*0.36, ROOM_D-1.5-0.62, 0.62+r*0.22),

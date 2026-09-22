@@ -183,14 +183,14 @@ def build_players():
             py = line_y + dy
             make_box(f"Player_{tag}_Legs", (px, py, 0.42), (0.34, 0.26, 0.84), pants)
             make_box(f"Player_{tag}_Torso", (px, py, 1.10), (0.46, 0.30, 0.52), jersey)
-            make_cyl(f"Player_{tag}_Head", (px, py, 1.52), 0.11, 0.18, skin, segments=8)
-            make_cyl(f"Player_{tag}_Helmet", (px, py, 1.60), 0.125, 0.10, jersey, segments=8)
+            make_cyl(f"Player_{tag}_Head", (px, py, 1.47), 0.11, 0.18, skin, segments=8)   # on the shoulders (2026-09-22)
+            make_cyl(f"Player_{tag}_Helmet", (px, py, 1.55), 0.125, 0.10, jersey, segments=8)
     # QB in the gun + a back, home side
     for tag, (px, py) in (("QB", (0.0, line_y - 3.2)), ("RB", (1.4, line_y - 4.6))):
         make_box(f"Player_{tag}_Legs", (px, py, 0.42), (0.34, 0.26, 0.84), pants)
         make_box(f"Player_{tag}_Torso", (px, py, 1.10), (0.46, 0.30, 0.52), wine)
-        make_cyl(f"Player_{tag}_Head", (px, py, 1.52), 0.11, 0.18, skin, segments=8)
-        make_cyl(f"Player_{tag}_Helmet", (px, py, 1.60), 0.125, 0.10, wine, segments=8)
+        make_cyl(f"Player_{tag}_Head", (px, py, 1.47), 0.11, 0.18, skin, segments=8)
+        make_cyl(f"Player_{tag}_Helmet", (px, py, 1.55), 0.125, 0.10, wine, segments=8)
     # Coach K on the home sideline at the line of scrimmage
     make_box("Coach_Legs", (SIDE_X + 1.2, line_y, 0.46), (0.36, 0.28, 0.92), (0.30, 0.30, 0.34, 1.0))
     make_box("Coach_Torso", (SIDE_X + 1.2, line_y, 1.18), (0.48, 0.32, 0.52), (0.30, 0.36, 0.52, 1.0))
@@ -212,15 +212,19 @@ def build_benches():
     # Water coolers + helmet rack behind the HOME (east) bench
     hx = SIDE_X + 2.0
     for wi, wy in enumerate((MID_Y - 15.0, MID_Y + 2.0)):
-        make_cyl(f"Cooler_{wi}_Body", (hx + 1.0, wy, 0.34), 0.24, 0.60, (0.92, 0.48, 0.18, 1.0), segments=12)
-        make_cyl(f"Cooler_{wi}_Lid", (hx + 1.0, wy, 0.66), 0.25, 0.06, (0.92, 0.90, 0.86, 1.0), segments=12)
-        make_box(f"Cooler_{wi}_Spigot", (hx + 0.74, wy, 0.24), (0.06, 0.05, 0.05), P.METAL_BLACK)
+        make_cyl(f"Cooler_{wi}_Body", (hx + 1.0, wy, 0.30), 0.24, 0.60, (0.92, 0.48, 0.18, 1.0), segments=12)   # on the ground (2026-09-22)
+        make_cyl(f"Cooler_{wi}_Lid", (hx + 1.0, wy, 0.62), 0.25, 0.06, (0.92, 0.90, 0.86, 1.0), segments=12)
+        make_box(f"Cooler_{wi}_Spigot", (hx + 0.74, wy, 0.20), (0.06, 0.05, 0.05), P.METAL_BLACK)
     rx = hx + 1.6
+    # (2026-09-22: two bars and five helmets in the air — the rack's
+    # uprights, and the helmets sit on the lower bar)
+    for uy in (MID_Y - 6.45, MID_Y - 3.55):
+        make_box(f"Rack_Upright_{uy:.0f}", (rx, uy, 0.565), (0.06, 0.06, 1.13), COL_METAL)
     make_box("Rack_Bar_T", (rx, MID_Y - 5.0, 1.10), (0.06, 3.0, 0.06), COL_METAL)
     make_box("Rack_Bar_B", (rx, MID_Y - 5.0, 0.60), (0.06, 3.0, 0.06), COL_METAL)
     for hi in range(5):
         hy = MID_Y - 6.2 + hi * 0.6
-        make_cyl(f"Rack_Helmet_{hi}", (rx, hy, 0.84), 0.11, 0.14, (0.30, 0.36, 0.52, 1.0), axis='Y', segments=10)
+        make_cyl(f"Rack_Helmet_{hi}", (rx, hy, 0.74), 0.11, 0.14, (0.30, 0.36, 0.52, 1.0), axis='Y', segments=10)
 
 
 def build_scoreboard():
@@ -238,7 +242,7 @@ def build_scoreboard():
                      (0.8, 0.06, 1.2), amber)
     for di in range(4):
         make_box(f"Score_Clock_{di}", (sx - 1.35 + di * 0.9, sy - 0.24, 6.1), (0.5, 0.06, 0.8), amber)
-    make_box("Score_QtrBox", (sx, sy - 0.24, 5.2), (0.7, 0.06, 0.7), (0.94, 0.30, 0.22, 1.0))
+    make_box("Score_QtrBox", (sx, sy - 0.24, 5.55), (0.7, 0.06, 0.7), (0.94, 0.30, 0.22, 1.0))   # under the clock, on the panel (2026-09-22)
 
 
 def build_first_down_chain():
@@ -253,7 +257,7 @@ def build_first_down_chain():
     links = 24
     for li in range(links):
         ly = y0 + (li + 0.5) * (y1 - y0) / links
-        make_box(f"Chain_Link_{li}", (cx, ly, 0.16), (0.03, (y1 - y0) / links * 0.6, 0.03), P.METAL_STEEL)
+        make_box(f"Chain_Link_{li}", (cx, ly, 0.015), (0.03, (y1 - y0) / links * 0.6, 0.03), P.METAL_STEEL)   # on the turf (2026-09-22)
     make_cyl("Down_Pole", (cx, y0 - 1.8, 1.0), 0.03, 2.0, COL_METAL, segments=6)
     make_box("Down_Box", (cx, y0 - 1.8, 2.1), (0.40, 0.10, 0.40), (0.94, 0.82, 0.28, 1.0))
     make_box("Down_Num", (cx - 0.06, y0 - 1.8, 2.1), (0.005, 0.20, 0.24), P.METAL_BLACK)
@@ -274,7 +278,7 @@ def build_floodlights():
         # conduit up the field side, a transformer box at the foot
         make_lathe(f"Pole_{pi}", (px, py, 0.0), [(0.34, 0.0), (0.34, 0.04), (0.19, 0.06), (0.17, 6.0), (0.13, 12.0), (0.10, 18.0), (0.0, 18.0)], COL_POLE, segments=10)
         make_tube(f"Pole_{pi}_Conduit", [(px + (1.0 if px < 0 else -1.0) * 0.20, py + 0.10, 0.4), (px + (1.0 if px < 0 else -1.0) * 0.19, py + 0.10, 16.4)], 0.03, (0.36, 0.36, 0.38, 1.0), segments=5)
-        make_chamfer_box(f"Pole_{pi}_Box", (px + (1.0 if px < 0 else -1.0) * 0.45, py + 0.55, 0.45), (0.40, 0.30, 0.70), (0.36, 0.38, 0.36, 1.0), chamfer=0.015)
+        make_chamfer_box(f"Pole_{pi}_Box", (px + (1.0 if px < 0 else -1.0) * 0.45, py + 0.55, 0.35), (0.40, 0.30, 0.70), (0.36, 0.38, 0.36, 1.0), chamfer=0.015)   # on the ground (2026-09-22)
         toward = 1.0 if px < 0 else -1.0
         # Bank faces the FIELD: wide along y, hung on the field side
         # of its pole.
@@ -329,10 +333,11 @@ def build_hero_props():
     # Field house + THE CORKBOARD outside its door
     make_box("Field_House", (-14.0, -8.5, 1.45), (7.0, 3.4, 2.9), (0.55, 0.50, 0.44, 1.0))
     make_box("Field_House_Roof", (-14.0, -8.5, 3.02), (7.5, 3.9, 0.24), (0.32, 0.28, 0.24, 1.0))
-    make_box("Field_House_Door", (-16.0, -6.74, 1.05), (0.90, 0.06, 2.10), (0.30, 0.32, 0.36, 1.0))
-    make_box("Corkboard", (-13.2, -6.72, 1.55), (1.40, 0.05, 1.00), (0.52, 0.38, 0.26, 1.0))
-    make_box("Corkboard_Frame", (-13.2, -6.74, 1.55), (1.50, 0.04, 1.10), wood)
-    make_box("DepthChart_Sheet", (-13.2, -6.69, 1.60), (0.30, 0.01, 0.42), (0.92, 0.90, 0.82, 1.0))
+    # on the house's north face (y -6.80); 2026-09-22: 4-6 cm off it
+    make_box("Field_House_Door", (-16.0, -6.77, 1.05), (0.90, 0.06, 2.10), (0.30, 0.32, 0.36, 1.0))
+    make_box("Corkboard", (-13.2, -6.775, 1.55), (1.40, 0.05, 1.00), (0.52, 0.38, 0.26, 1.0))
+    make_box("Corkboard_Frame", (-13.2, -6.78, 1.55), (1.50, 0.04, 1.10), wood)
+    make_box("DepthChart_Sheet", (-13.2, -6.745, 1.60), (0.30, 0.01, 0.42), (0.92, 0.90, 0.82, 1.0))
     # Parking lot + the staged vehicles
     make_box("Parking_Lot", (0.0, -12.0, 0.01), (56.0, 16.0, 0.04), (0.24, 0.24, 0.26, 1.0))
     for si in range(10):
@@ -451,7 +456,7 @@ def build_draft4_2026_09():
     make_floor_stain("Wear_Gate_Tread", (10.5, -3.0), radius=1.6, tint=dirt, segments=12)
     # ── D3 ──
     make_lathe("FieldHouse_Lamp_Canopy", (-16.0, -6.70, 2.55), [(0.08, 0.0), (0.08, 0.02), (0.02, 0.04), (0.0, 0.04)], (0.30, 0.30, 0.32, 1.0), segments=8)
-    make_lathe("FieldHouse_Lamp_Glass", (-16.0, -6.62, 2.32), [(0.03, 0.0), (0.07, 0.04), (0.075, 0.14), (0.05, 0.22), (0.0, 0.23)], (0.96, 0.90, 0.72, 0.9), segments=10)
+    make_lathe("FieldHouse_Lamp_Glass", (-16.0, -6.70, 2.33), [(0.03, 0.0), (0.07, 0.04), (0.075, 0.14), (0.05, 0.22), (0.0, 0.23)], (0.96, 0.90, 0.72, 0.9), segments=10)   # under its canopy (2026-09-22)
     make_tube("Score_Cable", [(0.0, FIELD_LEN + 9.0, 5.8), (0.0, FIELD_LEN + 9.1, 3.0), (0.6, FIELD_LEN + 9.6, 0.0)], 0.02, (0.16, 0.16, 0.18, 1.0), segments=5)
     make_chamfer_box("Score_Box", (1.2, FIELD_LEN + 9.8, 0.30), (0.60, 0.40, 0.60), (0.36, 0.38, 0.36, 1.0), chamfer=0.015)
     for tag, gy in (("S", 0.0), ("N", FIELD_LEN)):

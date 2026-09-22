@@ -158,6 +158,77 @@ banisters classed · pans as containers.
 
 ## Recent lessons
 
+### 2026-09-22 · THE SUPPORT GATE — everything stands on something
+
+- **The question is connectivity, not height.** `support_audit.py`
+  unions every recorded box with every box it touches (3 cm on all
+  three axes, overlap allowed) and grounds a component that holds a
+  shell piece (floor · wall · ceiling · ground · road · slab) or a
+  box whose underside is at z ≤ 0.03. Everything else floats. The
+  report names each component by its lowest member, its z span, and
+  the gap to the nearest shell — a 0.03–0.10 gap is a cord or a
+  fixture built short; a 0.5+ gap is a thing dressed by coordinate.
+- **The furniture gate's FLOAT rule was three lies.** Prop-sized
+  only (a cabinet run off the wall passed), MOUNTED by name (a lamp
+  named Lamp could hang anywhere), and EMBEDDED-in-a-solid counted
+  as held. Keep FLOAT for what it does; the support gate is the one
+  that answers the user's sentence.
+- **The recorder had a hole a wire wide.** `catenary` is pure math
+  in geometry.py; the stubs replaced it with 0.9, so every
+  `make_tube(catenary(...))` recorded as a point at (0.5, 0.5, 0.5).
+  Fence strands, power lines, chains: unmeasured by every gate for
+  a month. Any helper that RETURNS DATA (not geometry) needs a real
+  stand-in in the recorder, not the generic stub.
+- **Regex parts, never substrings.** "ridge" ate the Fridge, "smoke"
+  ate the Smokers_Tin, "floor|ceil" in the vantage IGNORE list ate
+  the very shells this gate stands on. Anchor on `(^|_)word(_|$)`.
+- **Baseline, then only down.** `support_baseline.json` holds each
+  locale's count; the suite fails a locale that floats MORE. After a
+  pass, `--write-baseline` lowers the line. Terrain locales are
+  skipped (their floor is a heightfield the recorder cannot see).
+- **"On what?" — dump the region before moving anything.** A float
+  with a 0.3–1.2 m gap is usually not short, it is placed against
+  a thing that is not there: the kwik stop's ATM detail dressed a
+  machine removed in v2, the diner's Hierophant hung where a wall
+  was removed in July, the bayou lighthouse's calendar and life
+  ring hung at r 3.2 in a 2.4 m tower. List every recorded box in
+  a metre around the float (`VO.boxes_for(locale)`, filter by bbox)
+  and read what the builder THINKS is there against what is.
+- **The foliage list must not name furniture parts.** "crown"
+  (tree crowns) dropped Candelabra_Crown and Register_Crown, so
+  their candles and finial floated no matter what the builder did.
+  Whole-name parts are not enough when the word is shared;
+  `TREE_CROWN` requires a tree word ahead of `_crown`. Same trap
+  waits for "cap", "arm", "leader", "spray" — check the dropped set
+  when a fix does not land.
+- **Two clean model chapters set the kinds.** With the kwik stop and
+  the diner at zero, the remaining 913 floats sort into four kinds
+  seen there: dressed a phantom · off the counter's end · a hair
+  short (2–6 cm: coin slots, LEDs, rope ends, spray heads) · the
+  audit's own blind spot. Fix the third kind in the kit when the
+  same helper made it (sprinkler anchors, fluorescents), in the
+  builder otherwise.
+- **Never borrow another audit's drop list.** The support audit
+  used the vantage audit's IGNORE, written to keep floors and far
+  bands out of obstruction counts: its `plinth$` dropped the
+  sundial's plinth (so the dial floated), its `band` dropped the
+  cedar tower's floor bands (so every glass band floated), its
+  `far` substring was the only thing hiding FarTown_E0 as sky.
+  Each audit owns its own lists, part-anchored, with a comment
+  naming the thing each word is FOR. Each time a word came off a
+  list here, one or two real floats appeared behind it.
+- **A variable named like a coordinate is not one.** The riverboat's
+  notices computed `px` from the board's X and passed it as Y —
+  eight papers hung in the next room for a month. When a float's
+  gap is "in another room", read the placement's arithmetic before
+  its numbers.
+- **A subject marker judges a cluster centroid.** shot_insert_*
+  markers cast at the centroid of the cue's parts near the nearest
+  one; lowering a part (the jukebox's quarters onto its marquee)
+  lowered the centroid under the bar top and failed a shot that
+  had passed by a hair. When a support fix moves a hero prop's
+  part, re-run `--markers` for that locale before the suite.
+
 ### 2026-09-06 · a builder that raises under the recorder is dropped without a flag
 
 - **"0 flagged" can mean "not measured."** locale_geometry_audit runs
