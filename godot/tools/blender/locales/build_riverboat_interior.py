@@ -233,7 +233,7 @@ def make_sphere_low(name, center, radius, base_color, rings=3, segments=8):
 def gauntlet_marker(label, cx, cy, cz, w, d, numeral):
     """Brass-stencil rectangle painted onto the deck at height cz +
     a small numeral plate. Same style as cathedral + bungalow."""
-    z = cz + 0.013
+    z = cz + 0.010   # plates ON the deck (2026-09-22: 1.25 cm over it)
     for sgn in (-1, +1):
         make_box(f"{label}_outline_x{sgn:+d}",
                  (cx + sgn * w / 2, cy, z),
@@ -437,7 +437,7 @@ def build_maitre_d():
              (0.28, 0.34, 0.002), COL_PAPER_AGED)
     # Pencil — short stub
     make_cyl("MaitreD_Pencil",
-             (cx + 0.05, cy + 0.12, cz + 1.345),
+             (cx + 0.05, cy + 0.12, cz + 1.318),   # on the stand top
              0.008, 0.16,
              (0.78, 0.62, 0.30, 1.0), segments=6, axis='X')
     # 1971 candy dish — vintage cut crystal, half full
@@ -692,11 +692,11 @@ def build_sammys_bar():
              (0.70, 10.0, 0.10), COL_DECK_PLANK)
     # Brass foot rail
     make_cyl("Bar_FootRail",
-             (bar_x - 0.40, bar_y, cz + 0.20),
+             (bar_x - 0.36, bar_y, cz + 0.20),   # against the front panel
              0.025, 9.80, COL_BRASS, segments=8, axis='Y')
     # Bar front panel
     make_box("Bar_Front",
-             (bar_x - 0.40, bar_y, cz + 0.52),   # on the deck (2026-09-22: 6 cm up)
+             (bar_x - 0.33, bar_y, cz + 0.52),   # on the deck, under the counter's edge (2026-09-22: 4 cm in front of it)
              (0.05, 9.80, 1.04), COL_WALL_DARK)
     # 16 stools
     for i in range(16):
@@ -855,7 +855,7 @@ def build_kitchen():
              (+2.8, line_y + 0.15, cz + 1.18),
              (0.32, 0.40, 0.40), (0.92, 0.88, 0.74, 1.0))
     make_box("Kit_Mixer_Head",
-             (+2.8, line_y + 0.30, cz + 1.50),
+             (+2.8, line_y + 0.30, cz + 1.48),
              (0.30, 0.20, 0.20), (0.86, 0.82, 0.68, 1.0))
 
     # Walk-in cooler — west end, big metal door
@@ -896,7 +896,7 @@ def build_kitchen():
 
     # Milk-crate radio — on the floor near the line
     make_box("Kit_MilkCrate",
-             (+3.4, +8.7, cz + 0.18),
+             (+3.4, +8.7, cz + 0.16),
              (0.34, 0.34, 0.32), (0.62, 0.20, 0.18, 1.0))
     # Slot pattern (just decorative cutouts via darker color)
     for i in range(3):
@@ -904,7 +904,7 @@ def build_kitchen():
             make_box(f"Kit_MilkCrate_Slot_{i}_{j}",
                      (+3.4 - 0.10 + i * 0.10,
                       +8.7 - 0.17 + 0.001,
-                      cz + 0.18 - 0.10 + j * 0.10),
+                      cz + 0.16 - 0.10 + j * 0.10),
                      (0.04, 0.001, 0.04),
                      (0.32, 0.10, 0.10, 1.0))
     # Radio on top of the crate
@@ -1080,8 +1080,8 @@ def build_helm():
              (dk_x, dk_y, cz + 0.78),
              (2.00, 1.00, 0.06), COL_WALL_DARK)
     make_box("Helm_Desk_Skirt",
-             (dk_x, dk_y, cz + 0.36),
-             (1.90, 0.92, 0.74), (0.30, 0.20, 0.14, 1.0))
+             (dk_x, dk_y, cz + 0.37),
+             (1.90, 0.92, 0.76), (0.30, 0.20, 0.14, 1.0))   # reaches the top (2026-09-22: 2 cm short)
     # Desk drawers
     for sgn in (-1, +1):
         make_box(f"Helm_Desk_Drawer_{sgn}",
@@ -1092,8 +1092,8 @@ def build_helm():
              (dk_x - 0.60, dk_y - 0.30, cz + 0.84),
              0.07, 0.04, COL_BRASS)
     make_cyl("Helm_DeskLamp_Pole",
-             (dk_x - 0.60, dk_y - 0.30, cz + 0.96),
-             0.014, 0.20, COL_BRASS)
+             (dk_x - 0.60, dk_y - 0.30, cz + 0.97),
+             0.014, 0.26, COL_BRASS)
     make_cyl("Helm_DeskLamp_Shade",
              (dk_x - 0.60, dk_y - 0.30, cz + 1.16),
              0.10, 0.14, (0.92, 0.78, 0.46, 1.0), segments=10)
@@ -1143,7 +1143,7 @@ def build_helm():
              0.04, 0.04, COL_BRASS_DARK, segments=8)
     # Glass next to the bottle
     make_cyl("Helm_FileCab_Glass",
-             (+2.78, +2.0, cz + 1.30),
+             (+2.78, +2.0, cz + 1.28),
              0.04, 0.08, (0.86, 0.92, 0.94, 0.5), segments=10)
 
     # Office chair behind the desk
@@ -1174,7 +1174,7 @@ def build_helm():
         col = [COL_LEATHER_OX, COL_LEATHER_BLACK, COL_BRASS_DARK,
                COL_WALL_DARK][i % 4]
         make_box(f"Helm_Book_{i}",
-                 (-3.30, -2.0 - 0.40 + i * 0.16, cz + 1.66),
+                 (-3.30, -2.0 - 0.40 + i * 0.16, cz + 1.64),
                  (0.20, 0.12, 0.24), col)
 
 
@@ -1202,20 +1202,20 @@ def build_office_staircase():
         # Stringer (the iron side rail beam)
         for sgn in (-1, +1):
             make_box(f"OS_Stringer_{i}_{sgn}",
-                     (cx + sgn * 0.55, ty, tz - 0.16),
+                     (cx + sgn * 0.50, ty, tz - 0.16),   # under the tread's edge (2026-09-22: 3 cm outside it)
                      (0.04, 0.32, 0.32), COL_BLACK)
     # Iron railing (a continuous rail on both sides)
     for sgn in (-1, +1):
         # Top rail
         make_cyl(f"OS_RailTop_{sgn}",
-                 (cx + sgn * 0.62, cy - 1.0, cz - 1.0),
+                 (cx + sgn * 0.53, cy - 1.0, cz - 1.0),
                  0.024, 3.20, COL_BLACK, segments=6, axis='Y')
         # Vertical balusters
         for i in range(8):
             by_pos = cy + 0.60 - i * 0.40
             b_h = 0.90 if i == 7 else 0.80   # the last one reaches the rail (2026-09-22)
             make_cyl(f"OS_Baluster_{sgn}_{i}",
-                     (cx + sgn * 0.62, by_pos,
+                     (cx + sgn * 0.53, by_pos,
                       cz - i * 0.26 + b_h / 2.0 - 0.10),
                      0.012, b_h, COL_BLACK)
 
@@ -1308,7 +1308,7 @@ def build_back_corridor():
              (0.42, 0.30, 0.18, 1.0))
     for i in range(8):
         make_box(f"BC_TimeCard_{i}",
-                 (+5.69, +5.5 - 0.18 + i * 0.04, cz + 1.10),
+                 (+5.73, +5.5 - 0.18 + i * 0.04, cz + 1.10),   # in the rack
                  (0.006, 0.04, 0.20), COL_PAPER)
 
     # Coat rack — east-center
@@ -1392,13 +1392,13 @@ def build_catering_office():
     for i in range(4):
         zoff = i * 0.025
         make_cyl(f"Cat_Phone_Cord_{i}",
-                 (dk_x + 0.40, dk_y - 0.32, cz + 0.80 + zoff),
+                 (dk_x + 0.40, dk_y - 0.26, cz + 0.80 + zoff),
                  0.012, 0.02,
                  (0.62, 0.52, 0.38, 1.0), segments=6, axis='Y')
     # Paperwork — stacked + dated entries
     for i in range(3):
         make_box(f"Cat_Paper_Stack_{i}",
-                 (dk_x - 0.30, dk_y, cz + 0.78 + i * 0.014),
+                 (dk_x - 0.30, dk_y, cz + 0.766 + i * 0.012),
                  (0.20, 0.28, 0.012), COL_PAPER_AGED)
     # File cabinet — 4 drawer, holds 8 years of contracts
     make_box("Cat_FileCab_Body",

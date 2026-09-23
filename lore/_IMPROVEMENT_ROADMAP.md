@@ -1973,6 +1973,37 @@ roberts kitchen 16, frog knows best 14, natalie 14, both nexcorp 14,
 pharmacy 14; overlap (210): pit stop 26, crumpled barn 11,
 courthouse 10, centro break room 10, ben's bedroom 10, riverboat 8,
 graustark 8, mixing glass 7.
+NINTH PASS (batches 12–13): support 725 → 567, overlap 210 → 209.
+Seven more rooms to zero. The BINDERY (the door bell 20 cm over the
+door; the open book 14 cm over its stack; the Borges sign in the
+open at y 7.8 where the cases end at 6.9 — on shelf 4 now; the
+ladder's brass rail on three brackets). HIEROPHANT (the bandstand's
+balusters 5 cm over the deck and 2 cm under the rail; the town
+car's side glass outside its greenhouse). The RIVERBOAT (the station
+plates 1 cm over every deck; the office stair's stringers and rails
+3–9 cm outside the treads; the milk crate, mixer head, desk lamp,
+glass, books, pencil, time cards, catering papers). The ASYLUM (the
+gurney's frame 40 cm over its wheels — posts now; Ward 5's bed with
+no legs; the nurse desk a top on nothing; both wheelchairs' seats
+floating between their wheels; Emile's cart 15 cm up; the boarded
+cupola pane at the room's SOUTH end while the cupola is at the
+north — "we approximate"; the bed-rail hand wear 20 cm past the
+bed). NEW ORLEANS BAR (the bottle wall 40 cm off the wall, on the
+mirror now and short of the TV; pendants 10 cm short of ceiling and
+shade; two lamp sets sharing one name; stools, table post). SIMON'S
+(the armchair wear 1.5 m from the armchair; the remote on a coffee
+table that did not exist — built; the non-renewal form on a counter
+at the wrong wall; the coat peg inside the wall, and once it came
+out, the boot that had hung THROUGH the wall; banker's boxes, lamp,
+faucet, shirt, phone, pull cord). The ROBERTS KITCHEN (the south
+wall's halves 40 cm short of the door header with the hinges in the
+hole; the VCR stack, sill, stools, magnets, towel). The support
+audit counts "streak" as sky (a light streak is not a solid). NEXT
+(support 567): estuary_7_template 18, le roulant 16, roberts house
+16, frog knows best 14, natalie 14, both nexcorp 14, pharmacy 14,
+daigles 13, equipment shed 13, static drive-in 13; overlap (209):
+pit stop 26, crumpled barn 11, courthouse 10, centro break room 10,
+ben's bedroom 10.
 
 **2026-09-19 · DESIGN · the two decorative checks made real, the first
 remembered choice.** Nate's basement (ch6) and Tem staying (ch8): the

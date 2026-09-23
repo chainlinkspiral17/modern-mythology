@@ -287,6 +287,29 @@ banisters classed · pans as containers.
   above the pot rim floated with all six leaves. After tethering a
   thing from above, check the LAST link (stub → head, wire → rim,
   cord → device) before the first.
+- **"Approximate" in a comment is a float waiting to be found
+  (ninth pass).** Simon's armchair wear sat 1.5 m west of the
+  armchair ("Approximate armchair at (-1.0, +2.0)" — it is at
+  (0.5, 2.4)); the asylum's boarded cupola pane stood at the
+  room's SOUTH end ("cupola at (0, 0) … we approximate") while
+  build_cupola put it at the north; the non-renewal form lay on
+  a kitchen counter at (+2, 0.6) in a room whose kitchenette is the
+  west wall. A dressing pass that guesses another function's
+  anchor is placing against a thing that is not there. Read the
+  anchor from the function that built it, or dump the region.
+- **A fix can UNCOVER floats the wall was hiding.** Simon's coat peg
+  sat inside the south wall (embedded = "touching" = grounded), and
+  its hanging boot swung outward THROUGH the wall — grounded by the
+  same embedding. Moving the mount onto the wall's face turned the
+  boot into two new floats, then a lace loop 10 cm short of its
+  hook. When a fix raises the count, the new rows are usually the
+  old defect's children, not a regression — chase them in the same
+  batch.
+- **A wall gap is a shell the audit cannot see.** The Roberts
+  kitchen's south wall halves stopped 40 cm short of the door header
+  on each side, and the door hinges hung in the hole; the bindery's
+  Borges sign hung at y 7.8 where the west cases end at 6.9. Before
+  moving a prop to "the wall", check the wall's box spans the spot.
 
 ### 2026-09-06 · a builder that raises under the recorder is dropped without a flag
 

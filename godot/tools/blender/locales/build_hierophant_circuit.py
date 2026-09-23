@@ -281,12 +281,12 @@ def build_long_black_car():
     for sgn in (-1, +1):
         # Front side window
         make_box("Car_SideWin_F_%+d" % sgn,
-                 (cx - 0.20, cy + sgn * (body_d / 2.0 - 0.04), 1.30),
+                 (cx - 0.20, cy + sgn * (body_d / 2.0 - 0.07), 1.30),   # in the greenhouse's flank (2026-09-22: 2 cm outside it)
                  (1.30, 0.04, 0.50),
                  COL_CAR_GLASS)
         # Rear side window
         make_box("Car_SideWin_R_%+d" % sgn,
-                 (cx + 1.10, cy + sgn * (body_d / 2.0 - 0.04), 1.30),
+                 (cx + 1.10, cy + sgn * (body_d / 2.0 - 0.07), 1.30),
                  (1.30, 0.04, 0.50),
                  COL_CAR_GLASS)
     # Chrome trim along the lower body (a thin strip)
@@ -460,8 +460,8 @@ def build_bandstand():
             by = bs_cy + (stage_radius - 0.20) * (
                 math.sin(ang1) * (1 - t) + math.sin(ang2) * t)
             make_box("Bandstand_Baluster_%d_%d" % (ri, bi),
-                     (bx, by, stage_h + 0.25),
-                     (0.04, 0.04, 0.40),
+                     (bx, by, stage_h + 0.235),   # deck to rail (2026-09-22: 5 cm over the deck, 2 cm under the rail)
+                     (0.04, 0.04, 0.47),
                      COL_BANDSTAND_TRIM)
 
     # ── The park bench (John Frank's bench) ──

@@ -51,8 +51,9 @@ def build_shell():
 
 def build_front_window_and_fire_escape():
     # Front window (S, between Wall_S_W and Wall_S_E)
-    make_box("FrontWindow_Frame", (0.0, 0.04, 1.55), (1.60, 0.04, 1.20), (0.42, 0.32, 0.22, 1.0))
-    make_box("FrontWindow_Glass", (0.0, 0.06, 1.55), (1.40, 0.005, 1.00), COL_WINDOW_GLASS)
+    make_box("FrontWindow_Frame", (0.0, 0.04, 1.55), (2.00, 0.04, 1.20), (0.42, 0.32, 0.22, 1.0))   # wall to wall (2026-09-22: 20 cm short of each)
+    make_box("FrontWindow_Glass", (0.0, 0.06, 1.55), (1.80, 0.005, 1.00), COL_WINDOW_GLASS)
+    make_box("FrontWindow_Apron", (0.0, 0.0, 0.475), (2.00, 0.20, 0.95), (0.42, 0.32, 0.22, 1.0))   # the wall under the sill
     # Outside: fire-escape platform + railing visible just past the glass
     make_box("FireEscape_Platform", (0.0, -1.20, 1.10), (2.20, 1.20, 0.04), COL_FIREESCAPE)
     for ri in range(6):
@@ -78,8 +79,8 @@ def build_bed():
     cx, cy = +1.40, ROOM_D - 2.70
     make_box("Crate_Nightstand", (cx, cy, 0.30), (0.40, 0.40, 0.60), COL_CRATE)
     # Lamp
-    make_cyl("Lamp_Base", (cx, cy, 0.66), 0.06, 0.04, (0.32, 0.32, 0.32, 1.0))
-    make_cyl("Lamp_Stem", (cx, cy, 0.84), 0.014, 0.32, (0.32, 0.32, 0.32, 1.0))
+    make_cyl("Lamp_Base", (cx, cy, 0.62), 0.06, 0.04, (0.32, 0.32, 0.32, 1.0))   # on the crate (2026-09-22: 4 cm over it)
+    make_cyl("Lamp_Stem", (cx, cy, 0.80), 0.014, 0.32, (0.32, 0.32, 0.32, 1.0))
     make_cyl("Lamp_Shade", (cx, cy, 1.04), 0.14, 0.16, (0.62, 0.58, 0.50, 1.0))
 
 
@@ -99,7 +100,7 @@ def build_kitchenette():
     make_box("Counter_Body", (cx_, cy_, 0.47), (0.60, 1.60, 0.94), COL_KITCHEN_CAB)
     # Sink
     make_box("Sink", (cx_, cy_-0.30, 0.92), (0.40, 0.40, 0.06), (0.62, 0.62, 0.58, 1.0))
-    make_box("Sink_Faucet", (cx_, cy_-0.30, 1.10), (0.04, 0.04, 0.20), (0.62, 0.62, 0.58, 1.0))
+    make_box("Sink_Faucet", (cx_, cy_-0.30, 1.06), (0.04, 0.04, 0.20), (0.62, 0.62, 0.58, 1.0))   # on the counter top
     # Coffee maker + sugar jar on the counter
     make_box("CoffeeMaker", (cx_-0.10, cy_+0.30, 1.08), (0.20, 0.20, 0.28), (0.42, 0.30, 0.30, 1.0))
     make_cyl("SugarJar", (cx_+0.20, cy_+0.40, 1.04), 0.06, 0.16, (0.96, 0.86, 0.62, 1.0))
@@ -150,8 +151,8 @@ def build_hanged_motifs():
              (0.32, 0.32, 0.32, 1.0))
     # Pale shirt on a hanger nearby (also from another peg) — looks
     # like a body suspended at a glance
-    make_box("Shirt_Hanger", (pegx + 0.20, pegy + 0.20, 1.74), (0.30, 0.04, 0.04), P.METAL_BLACK)
-    make_box("Shirt_Body", (pegx + 0.30, pegy + 0.20, 1.30), (0.20, 0.34, 0.70), COL_SHIRT_PALE)
+    make_box("Shirt_Hanger", (pegx + 0.20, pegy + 0.20, 1.78), (0.30, 0.04, 0.04), P.METAL_BLACK)   # on peg 2 (2026-09-22: 3 cm under it)
+    make_box("Shirt_Body", (pegx + 0.30, pegy + 0.20, 1.41), (0.20, 0.34, 0.70), COL_SHIRT_PALE)   # from the hanger
 
 
 def build_ceiling_infra():
@@ -191,13 +192,14 @@ def build_hanged_man_dressing():
         battery compartment showing
     """
     # ── Wear pattern on the armchair (already built by
-    # build_armchair_and_tv). Approximate armchair at (-1.0, +2.0).
-    chair_cx = -1.0
-    chair_cy = +2.0
+    # build_armchair_and_tv), which stands at (+0.5, 2.4) — the wear
+    # sat 1.5 m west of it on air until 2026-09-22.
+    chair_cx = +0.50
+    chair_cy = +2.40
     seat_z = 0.46
     # Darker wear patch on the seat cushion
     make_box("Armchair_WearPatch",
-             (chair_cx, chair_cy, seat_z + 0.055),
+             (chair_cx, chair_cy, seat_z + 0.0025),   # on the seat (2026-09-22: 5 cm over it)
              (0.36, 0.34, 0.005),
              (0.32, 0.20, 0.12, 1.0))   # darker velour
     # Wear-line trough across the back-cushion bottom
@@ -231,7 +233,7 @@ def build_hanged_man_dressing():
     # ── Simon's boot hanging from the coat peg by its laces ──
     # Coat peg on the wall near the front door (south wall)
     peg_x = +1.50
-    peg_y = -0.05   # south wall interior face
+    peg_y = +0.12   # on the south wall's interior face, y 0.10 (2026-09-22: it sat inside the wall)
     peg_z = 1.80
     # Coat peg itself (small brass hook)
     make_box("CoatPeg_Mount",
@@ -239,7 +241,7 @@ def build_hanged_man_dressing():
              (0.08, 0.04, 0.04),
              (0.32, 0.22, 0.14, 1.0))
     make_cyl("CoatPeg_Hook",
-             (peg_x, peg_y - 0.04, peg_z),
+             (peg_x, peg_y + 0.04, peg_z),
              0.012, 0.06,
              (0.78, 0.62, 0.30, 1.0),
              segments=6, axis='Y')
@@ -247,23 +249,23 @@ def build_hanged_man_dressing():
     boot_z = peg_z - 0.24
     # Boot upper (the calf/shaft)
     make_box("SimonBoot_Shaft",
-             (peg_x, peg_y - 0.08, boot_z - 0.12),
+             (peg_x, peg_y + 0.08, boot_z - 0.12),
              (0.12, 0.14, 0.18),
              (0.18, 0.12, 0.08, 1.0))   # dark worn leather
     # Boot foot (the actual foot, angled forward — pointing south)
     make_box("SimonBoot_Foot",
-             (peg_x, peg_y - 0.16, boot_z - 0.24),
+             (peg_x, peg_y + 0.16, boot_z - 0.24),
              (0.12, 0.22, 0.08),
              (0.18, 0.12, 0.08, 1.0))
     # Sole (slightly lighter, lower)
     make_box("SimonBoot_Sole",
-             (peg_x, peg_y - 0.16, boot_z - 0.29),
+             (peg_x, peg_y + 0.16, boot_z - 0.29),
              (0.12, 0.22, 0.02),
              (0.32, 0.22, 0.14, 1.0))
     # Laces hanging from the boot up to the peg (a thin line)
     make_box("SimonBoot_LaceLoop",
-             (peg_x, peg_y - 0.04, boot_z + 0.06),
-             (0.006, 0.06, 0.14),
+             (peg_x, peg_y + 0.04, boot_z + 0.10),   # shaft top to the hook (2026-09-22: 10 cm short of it)
+             (0.006, 0.06, 0.28),
              (0.62, 0.50, 0.32, 1.0))
 
     # ── TV at static + the remote with no batteries ──
@@ -292,6 +294,11 @@ def build_hanged_man_dressing():
     remote_x = -0.30
     remote_y = +1.50
     remote_top_z = 0.46
+    # the coffee table it lies on (2026-09-22: the remote hung 46 cm over the floor)
+    make_box("CoffeeTable_Top", (-0.25, 1.40, 0.44), (0.60, 0.50, 0.04), (0.42, 0.30, 0.22, 1.0))
+    for lx_ in (-1, 1):
+        for ly_ in (-1, 1):
+            make_box(f"CoffeeTable_Leg_{lx_:+d}_{ly_:+d}", (-0.25 + lx_ * 0.26, 1.40 + ly_ * 0.21, 0.21), (0.04, 0.04, 0.42), (0.42, 0.30, 0.22, 1.0))
     # Remote body
     make_box("Remote_Body",
              (remote_x, remote_y, remote_top_z + 0.014),
@@ -341,7 +348,7 @@ def build_hanged_man_wave2_props():
     boot_x = +1.20
     boot_y = +0.60
     make_box("Simon_RightBoot_Sole",
-             (boot_x, boot_y, 0.03),
+             (boot_x, boot_y, 0.01),
              (0.12, 0.28, 0.02),
              (0.32, 0.20, 0.14, 1.0))    # dark leather
     make_box("Simon_RightBoot_Upper",
@@ -368,7 +375,7 @@ def build_hanged_man_wave2_props():
     lb_x = -0.35
     lb_y = +0.40          # inside the doorway (was 1.6 m outside)
     make_box("Simon_LeftBoot_Sole",
-             (lb_x, lb_y, 0.03),
+             (lb_x, lb_y, 0.01),
              (0.12, 0.28, 0.02),
              (0.32, 0.20, 0.14, 1.0))
     make_box("Simon_LeftBoot_Upper",
@@ -411,14 +418,14 @@ def build_hanged_man_wave2_props():
              (0.94, 0.86, 0.62, 0.85), segments=12, axis='Z')
     # Pull cord hanging
     make_cyl("SimonKitchenette_PullCord",
-             (kit_light_x - 0.14, kit_light_y, 2.20),
-             0.003, 0.60,
+             (kit_light_x - 0.14, kit_light_y, 2.35),   # from the ceiling (2026-09-22: the glow disc is not a solid; 10 cm short)
+             0.003, 0.90,
              (0.42, 0.34, 0.24, 1.0), segments=4, axis='Z')
 
     # The kitchen phone with receiver hanging by cord
     # Kitchen wall phone approx at (+2.20, +0.20)
     ph_x = +2.20
-    ph_y = +0.20
+    ph_y = +0.125   # base on the S wall (2026-09-22: 7 cm off it)
     make_box("SimonKitchenPhone_Base",
              (ph_x, ph_y, 1.40),
              (0.16, 0.05, 0.24),
@@ -448,23 +455,23 @@ def build_hanged_man_wave2_props():
         col = bi // 3
         row = bi % 3
         make_box("BankersBox_%d_%d" % (col, row),
-                 (bx_x + col * 0.36, bx_y, 0.14 + row * 0.28),
+                 (bx_x + col * 0.36, bx_y, 0.13 + row * 0.26),   # each on the lid below (2026-09-22: 2 cm gaps)
                  (0.32, 0.30, 0.26),
                  (0.76, 0.64, 0.42, 1.0))
         # Reinforced lid strip
         make_box("BankersBox_Lid_%d_%d" % (col, row),
-                 (bx_x + col * 0.36, bx_y, 0.26 + row * 0.28),
+                 (bx_x + col * 0.36, bx_y, 0.25 + row * 0.26),
                  (0.32, 0.30, 0.02),
                  (0.62, 0.50, 0.32, 1.0))
 
     # Blue sharpie on the front-door bench (or floor beside boxes)
     make_cyl("BlueSharpie_Body",
-             (bx_x + 0.20, bx_y + 0.20, 0.10),
+             (bx_x + 0.20, bx_y + 0.20, 0.011),   # on the floor (2026-09-22: 9 cm up)
              0.010, 0.14,
              (0.24, 0.34, 0.68, 1.0), segments=6, axis='Y')
     # Cap (darker)
     make_cyl("BlueSharpie_Cap",
-             (bx_x + 0.20 + 0.09, bx_y + 0.20, 0.10),
+             (bx_x + 0.20 + 0.09, bx_y + 0.20, 0.011),
              0.011, 0.04,
              (0.14, 0.20, 0.44, 1.0), segments=6, axis='Y')
 
@@ -483,9 +490,10 @@ def build_hanged_man_wave2_props():
 
     # Landlord's non-renewal form on the kitchen counter
     # (kitchen counter at approx +2.00, +0.60 · z ~0.90)
-    nrf_x = +2.00
-    nrf_y = +0.60
-    counter_z = 0.90
+    # the kitchenette is the W wall; this sat at (+2, 0.6) on air (2026-09-22)
+    nrf_x = -2.00
+    nrf_y = +3.05
+    counter_z = 0.96
     make_box("NonRenewalForm_Paper",
              (nrf_x, nrf_y, counter_z + 0.010),
              (0.22, 0.30, 0.001),

@@ -85,11 +85,11 @@ def build_shell():
     make_wall("Wall_N", (0.0, ROOM_D, 0),
               length=ROOM_W + 0.4, height=CEIL_Z, axis='X',
               palette=PAL_DOMESTIC_WALL, baseboard_face_sign=-1)
-    make_wall("Wall_S_W", (-2.75, 0.0, 0),
-              length=2.50, height=CEIL_Z, axis='X',
+    make_wall("Wall_S_W", (-2.55, 0.0, 0),   # to the header's edge (2026-09-22: 40 cm short)
+              length=2.90, height=CEIL_Z, axis='X',
               palette=PAL_DOMESTIC_WALL)
-    make_wall("Wall_S_E", (+2.75, 0.0, 0),
-              length=2.50, height=CEIL_Z, axis='X',
+    make_wall("Wall_S_E", (+2.55, 0.0, 0),
+              length=2.90, height=CEIL_Z, axis='X',
               palette=PAL_DOMESTIC_WALL)
     make_box("Wall_S_AboveDoor", (0.0, 0.0, CEIL_Z - 0.30),
              (2.20, 0.20, 0.60), PAL_DOMESTIC_WALL["wall"])
@@ -133,8 +133,8 @@ def build_kitchen_island():
     for si, sx in enumerate([-0.80, +0.80]):
         make_cyl(f"Stool_{si}_Seat", (sx, 1.80, 0.74),
                  0.18, 0.04, COL_WOOD_TRIM)
-        make_cyl(f"Stool_{si}_Post", (sx, 1.80, 0.37),
-                 0.025, 0.70, P.METAL_BLACK)
+        make_cyl(f"Stool_{si}_Post", (sx, 1.80, 0.355),   # floor to seat (2026-09-22: 2 cm up)
+                 0.025, 0.71, P.METAL_BLACK)
     # Coffee pots on the island
     make_coffee_pots("Coffee", (0.20, 3.10, top_z), pots=2)
     # Sugar caddy
@@ -186,7 +186,7 @@ def build_north_appliances():
         my_off = 0.0 if mi < 4 else -0.10
         tint = P.SNACK_TINTS[mi % len(P.SNACK_TINTS)]
         make_box(f"Fridge_Magnet_{mi}",
-                 (+2.0 + mx_off, 5.06, 1.60 + my_off),
+                 (+2.0 + mx_off, 5.075, 1.60 + my_off),   # on the door face
                  (0.05, 0.005, 0.08), tint)
 
 
@@ -207,13 +207,13 @@ def build_living_room_tv_corner():
              (0.60, 0.50, 0.50), COL_TV_CASE)
     make_box("TV_Screen", (tx, ty + 0.26, 0.46),      # faces the room (2026-09-10: it faced the S wall)
              (0.40, 0.005, 0.30), COL_TV_SCREEN)
-    make_box("TV_Stand", (tx, ty, 0.16),
+    make_box("TV_Stand", (tx, ty, 0.12),   # on the VCR, which is on the floor (2026-09-22: 5 cm up)
              (0.60, 0.50, 0.04), COL_WOOD_TRIM)
     # VCR underneath
-    make_box("VCR", (tx, ty, 0.10),
+    make_box("VCR", (tx, ty, 0.05),
              (0.50, 0.40, 0.10), P.METAL_BLACK)
     # Cassette half-ejected
-    make_box("VCR_Tape", (tx, ty - 0.20, 0.14),
+    make_box("VCR_Tape", (tx, ty - 0.20, 0.09),
              (0.16, 0.10, 0.02), COL_TV_CASE)
 
 
@@ -244,9 +244,9 @@ def build_hero_props():
     make_cyl("Mug_Weaver", (-1.30, 5.35, 0.98), 0.045, 0.10, (0.72, 0.62, 0.44, 1.0), segments=10)
     make_box("Mug_Weaver_Band", (-1.285, 5.35, 1.00), (0.02, 0.06, 0.03), (0.30, 0.30, 0.34, 1.0))
     # Sill under the E window: radio + Philip's driftwood
-    make_box("E_Sill", (ROOM_W/2.0-0.24, 3.5, 0.94), (0.16, 1.90, 0.05), (0.46, 0.34, 0.22, 1.0))
-    make_box("Sill_Radio", (ROOM_W/2.0-0.26, 3.10, 1.05), (0.14, 0.24, 0.16), (0.36, 0.32, 0.28, 1.0))
-    make_cyl("Sill_Driftwood", (ROOM_W/2.0-0.26, 3.95, 1.00), 0.05, 0.30, (0.62, 0.55, 0.44, 1.0), segments=7, axis='Y')
+    make_box("E_Sill", (ROOM_W/2.0-0.18, 3.5, 0.94), (0.16, 1.90, 0.05), (0.46, 0.34, 0.22, 1.0))   # on the E wall (2026-09-22: 6 cm off it)
+    make_box("Sill_Radio", (ROOM_W/2.0-0.20, 3.10, 1.05), (0.14, 0.24, 0.16), (0.36, 0.32, 0.28, 1.0))
+    make_cyl("Sill_Driftwood", (ROOM_W/2.0-0.20, 3.95, 1.00), 0.05, 0.30, (0.62, 0.55, 0.44, 1.0), segments=7, axis='Y')
     # The small table by the door: keys, unopened mail, pinecones,
     # and the Polaroid the scene ends on
     make_box("Hall_Table", (-1.90, 0.55, 0.76), (0.80, 0.40, 0.04), (0.42, 0.30, 0.20, 1.0))
@@ -257,7 +257,7 @@ def build_hero_props():
     make_cyl("Pinecone_Bowl", (-1.62, 0.48, 0.80), 0.09, 0.06, (0.52, 0.42, 0.30, 1.0), segments=10)
     make_box("The_Polaroid", (-2.02, 0.62, 0.785), (0.09, 0.11, 0.003), (0.92, 0.90, 0.86, 1.0))
     # The dishtowel, clean an hour ago
-    make_box("Dishtowel", (0.0, 5.20, 0.68), (0.30, 0.04, 0.28), (0.78, 0.74, 0.66, 1.0))
+    make_box("Dishtowel", (0.0, 5.235, 0.68), (0.30, 0.04, 0.28), (0.78, 0.74, 0.66, 1.0))   # over the oven door (2026-09-22: 3 cm off it)
 
 
 

@@ -46,19 +46,20 @@ def build_bar():
     for si, sx in enumerate([-2.4, -1.2, 0.0, +1.2, +2.4]):
         make_cyl(f"Stool_{si}_Seat", (sx, 3.20, 0.78), 0.18, 0.06, COL_BAR)
         make_cyl(f"Stool_{si}_Pillar", (sx, 3.20, 0.40), 0.04, 0.74, COL_BRASS)
-        make_cyl(f"Stool_{si}_Foot", (sx, 3.20, 0.04), 0.16, 0.04, COL_BRASS)
+        make_cyl(f"Stool_{si}_Foot", (sx, 3.20, 0.02), 0.16, 0.04, COL_BRASS)   # on the floor (2026-09-22: 2 cm up)
     # Bottle wall north of bar (mounted shelves)
     for shf in range(3):
         sz = top_z + 0.30 + shf*0.40
-        make_box(f"Bottle_Shelf_{shf}", (0.0, 5.40, sz), (6.4, 0.20, 0.02), COL_TOP)
-        for bi in range(20):
+        # mounted ON the mirror's face, short of the TV (2026-09-22: 40 cm off the wall)
+        make_box(f"Bottle_Shelf_{shf}", (-0.65, 5.78, sz), (5.1, 0.20, 0.02), COL_TOP)
+        for bi in range(16):
             bx = -3.0 + bi*0.32
             tint = [COL_BOTTLE_AMBER, COL_BOTTLE_CLEAR, COL_BOTTLE_GREEN][(shf+bi)%3]
-            make_liquor_bottle(f"Bottle_{shf}_{bi}", bx, 5.40, sz + 0.01,
+            make_liquor_bottle(f"Bottle_{shf}_{bi}", bx, 5.78, sz + 0.01,
                                tint, h=0.24 + ((shf + bi) % 3) * 0.035,
                                r=0.033)
     # Back mirror (long horizontal — bartender's reflection canon)
-    make_box("Bar_Mirror", (0.0, 5.87, top_z+0.85), (6.4, 0.02, 1.50), (0.78, 0.84, 0.86, 0.85))
+    make_box("Bar_Mirror", (-0.65, 5.89, top_z+0.85), (5.1, 0.02, 1.50), (0.78, 0.84, 0.86, 0.85))   # on the wall; ends where the TV hangs
 
 def build_jukebox():
     # Wurlitzer-style jukebox SE corner
@@ -72,27 +73,28 @@ def build_decor():
     make_wall_clock("Clock", (0.0, ROOM_D-0.05, 2.60), frozen_hour=11, frozen_min=47)
     # Pendant lamps over bar
     for pi, px in enumerate([-2.0, 0.0, +2.0]):
-        make_cyl(f"Pendant_{pi}_Cord", (px, 4.5, CEIL-0.30), 0.005, 0.40, P.METAL_BLACK)
-        make_box(f"Pendant_{pi}_Shade", (px, 4.5, CEIL-0.70), (0.30, 0.30, 0.30), (0.92, 0.74, 0.32, 1.0))
+        make_cyl(f"Pendant_{pi}_Cord", (px, 4.5, CEIL-0.25), 0.005, 0.50, P.METAL_BLACK)   # ceiling to shade (2026-09-22: 10 cm short of both)
+        make_box(f"Pendant_{pi}_Shade", (px, 4.5, CEIL-0.65), (0.30, 0.30, 0.30), (0.92, 0.74, 0.32, 1.0))
 
 def build_ceiling_fan():
     # Slow-turning ceiling fan with a warm light kit (jazz-club canon).
     fx, fy, fz = 0.0, 3.0, CEIL - 0.15
-    make_cyl("Fan_Downrod", (fx, fy, fz - 0.02), 0.02, 0.30, P.METAL_BLACK)
-    make_cyl("Fan_Motor", (fx, fy, fz - 0.24), 0.12, 0.14, COL_BRASS, segments=12)
+    make_cyl("Fan_Downrod", (fx, fy, fz), 0.02, 0.30, P.METAL_BLACK)   # to the ceiling (2026-09-22: 2 cm short)
+    make_cyl("Fan_Motor", (fx, fy, fz - 0.23), 0.12, 0.14, COL_BRASS, segments=12)
     blades = [(0.46, fy, 0.66, 0.16), (-0.46, fy, 0.66, 0.16),
               (fx, fy+0.46, 0.16, 0.66), (fx, fy-0.46, 0.16, 0.66)]
     for bi, (bx, by, sw, sd) in enumerate(blades):
         make_box(f"Fan_Blade_{bi}", (bx, by, fz - 0.30), (sw, sd, 0.02), (0.36, 0.24, 0.14, 1.0))
-    make_cyl("Fan_LightKit", (fx, fy, fz - 0.40), 0.09, 0.12, (0.96, 0.84, 0.62, 1.0), segments=12)
+    make_cyl("Fan_LightKit", (fx, fy, fz - 0.36), 0.09, 0.12, (0.96, 0.84, 0.62, 1.0), segments=12)   # on the motor
 
 def build_ceiling_infra():
     # A grimy dive lights by neon, TV glow and low pendants — no
     # shop tubes
     for pi, (px, py) in enumerate(((-2.0, 2.2), (2.0, 2.2))):
-        make_cyl(f"Pendant_{pi}_Cord", (px, py, CEIL-0.16), 0.008, 0.32, P.METAL_BLACK)
-        make_cyl(f"Pendant_{pi}_Shade", (px, py, CEIL-0.42), 0.15, 0.14, (0.30, 0.24, 0.18, 1.0), segments=12)
-        make_cyl(f"Pendant_{pi}_Bulb", (px, py, CEIL-0.50), 0.05, 0.06, (1.0, 0.80, 0.45, 1.0), segments=8)
+        # (2026-09-22: these shared the bar pendants' names — Lamp_ now; shade on the cord, bulb in the shade)
+        make_cyl(f"Lamp_{pi}_Cord", (px, py, CEIL-0.16), 0.008, 0.32, P.METAL_BLACK)
+        make_cyl(f"Lamp_{pi}_Shade", (px, py, CEIL-0.39), 0.15, 0.14, (0.30, 0.24, 0.18, 1.0), segments=12)
+        make_cyl(f"Lamp_{pi}_Bulb", (px, py, CEIL-0.47), 0.05, 0.06, (1.0, 0.80, 0.45, 1.0), segments=8)
 
 
 def build_hero_props():
@@ -106,8 +108,8 @@ def build_hero_props():
     wood = (0.35, 0.24, 0.15, 1.0)
     felt = (0.16, 0.36, 0.24, 1.0)
     # The bar TV, muted, over the back bar
-    make_box("Bar_TV", (2.6, 5.80, 2.30), (1.10, 0.08, 0.62), (0.10, 0.10, 0.12, 1.0))
-    make_box("Bar_TV_Screen", (2.6, 5.74, 2.30), (0.98, 0.02, 0.52), (0.32, 0.40, 0.36, 1.0))
+    make_box("Bar_TV", (2.6, 5.86, 2.30), (1.10, 0.08, 0.62), (0.10, 0.10, 0.12, 1.0))   # on the wall (2026-09-22: 6 cm off it)
+    make_box("Bar_TV_Screen", (2.6, 5.81, 2.30), (0.98, 0.02, 0.52), (0.32, 0.40, 0.36, 1.0))
     # Corner booth SW: L-benches + table + the props on it
     make_box("Booth_Bench_W", (-4.15, 1.6, 0.30), (0.55, 1.9, 0.46), vinyl)
     make_box("Booth_Back_W", (-4.38, 1.6, 0.80), (0.10, 1.9, 0.70), vinyl)
@@ -148,8 +150,8 @@ def build_hero_props():
     make_box("MissileCmd_Marquee", (3.80, 4.5, 1.68), (0.05, 0.62, 0.18), (0.80, 0.30, 0.24, 1.0))
     make_box("MissileCmd_Panel", (3.72, 4.5, 0.90), (0.16, 0.60, 0.06), (0.24, 0.24, 0.28, 1.0))
     # A six-top for the vol1 party
-    make_cyl("Group_Table", (0.6, 1.75, 0.74), 0.65, 0.05, wood, segments=14)
-    make_cyl("Group_Table_Post", (0.6, 1.75, 0.37), 0.07, 0.70, (0.20, 0.19, 0.20, 1.0), segments=8)
+    make_cyl("Group_Table", (0.6, 1.75, 0.725), 0.65, 0.05, wood, segments=14)
+    make_cyl("Group_Table_Post", (0.6, 1.75, 0.35), 0.07, 0.70, (0.20, 0.19, 0.20, 1.0), segments=8)   # floor to top (2026-09-22: 2 cm up)
     import math as _m
     for ci in range(6):
         ang = ci * (2.0 * _m.pi / 6.0) + 0.3

@@ -351,11 +351,11 @@ tolerance (support 1,088, overlap 208); the eighth took twelve more
 rooms to zero and re-planned the centro grocery aisle, whose meat
 case stood in the checkout lane and whose deli stood inside the
 bakery — hidden by the gate's "contents" rule, now a size test
-(support 725, overlap 210 under the tighter grammar). This pass runs
+(support 725, overlap 210 under the tighter grammar); the ninth took seven more (bindery, hierophant, riverboat, asylum, new orleans bar, simon, roberts kitchen) to zero (support 567, overlap 209). This pass runs
 ahead of every other background item: a room that floats is not a
-draft of anything. Next: bindery, hierophant, riverboat (29 each),
-asylum ward, new orleans bar (19), then the rooms at 14–18; overlap:
-pit stop 26, crumpled barn 11.
+draft of anything. Next: estuary_7_template 18, le roulant and the
+roberts house (16 each), then the rooms at 13–14; overlap: pit stop
+26, crumpled barn 11.
 
 **Draft targets, by volume, by uses:**
 - **Vol 7 (current):** `cabin_interior` (31) · `lena_apartment` (23)

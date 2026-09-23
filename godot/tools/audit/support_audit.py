@@ -57,7 +57,7 @@ SHELL = re.compile(r"(^|_)(wall|floor|ceil|ground|road|slab|apron|sidewalk|curb|
 # (the vantage audit's IGNORE is not used here: its `plinth$` dropped the
 # sundial's plinth and its `band` the cedar tower's floor bands, 2026-09-22)
 # whole name PARTS only — "ridge" must not eat the Fridge (2026-09-22)
-SKY = re.compile(r"(^|_)(sky|far|farband|horizon|mist|cloud|drone|skein|haze|fog|treeline|ridge|hill|glow|clearing|sundisc|moondisc|shimmer|smear|mote|void|sea|swamp_floor|lake_water|valley_floor|template_land|template_sea|ribbon)(_|$)|^far[a-z]|(^|_)out_[a-z]+_(ground|street|facade|wall|sea|sky|roof|treeline|lawn|tower|freeway|brick|gallery)|garden_far", re.I)
+SKY = re.compile(r"(^|_)(sky|far|farband|horizon|mist|cloud|drone|skein|haze|fog|treeline|ridge|hill|glow|clearing|sundisc|moondisc|shimmer|smear|mote|streak|void|sea|swamp_floor|lake_water|valley_floor|template_land|template_sea|ribbon)(_|$)|^far[a-z]|(^|_)out_[a-z]+_(ground|street|facade|wall|sea|sky|roof|treeline|lawn|tower|freeway|brick|gallery)|garden_far", re.I)
 
 
 def touching(a, b):

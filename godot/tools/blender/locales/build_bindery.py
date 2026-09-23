@@ -116,8 +116,9 @@ def build_storefront():
     make_box("Door_Glass", (0.55, 0.10, 1.35), (0.66, 0.02, 1.30), COL_GLASS)
     make_cyl("Door_Knob", (0.90, 0.14, 1.02), 0.035, 0.04, COL_BRASS, segments=8, axis='Y')
     # The bell — small brass dome over the door (lower, mellower)
-    make_cyl("Door_Bell", (0.55, 0.16, 2.24), 0.05, 0.06, COL_BRASS, segments=8)
-    make_box("Door_Bell_Arm", (0.55, 0.13, 2.30), (0.03, 0.10, 0.02), COL_FRAME)
+    # the bell's spring arm stands ON the door's top rail (2026-09-22: both hung 20 cm over it)
+    make_cyl("Door_Bell", (0.55, 0.16, 2.17), 0.05, 0.06, COL_BRASS, segments=8)
+    make_box("Door_Bell_Arm", (0.55, 0.13, 2.12), (0.03, 0.10, 0.04), COL_FRAME)
     # ── Window display: the lazy attractive chaos ──
     make_box("Display_Deck", (-1.08, 0.55, 0.50), (1.85, 0.85, 0.06), COL_CASE_LT)
     stacks = [(-1.70, 0.45, 4), (-1.30, 0.70, 6), (-0.85, 0.40, 3), (-0.50, 0.62, 5)]
@@ -129,8 +130,9 @@ def build_storefront():
                       0.55 + b * 0.045),
                      (0.30 - 0.02 * (b % 2), 0.22, 0.042), SPINES[k])
     # One book standing open on top of the tallest stack
-    make_box("WinOpen_L", (-1.36, 0.62, 0.85), (0.14, 0.20, 0.01), COL_PAPER)
-    make_box("WinOpen_R", (-1.22, 0.62, 0.85), (0.14, 0.20, 0.01), COL_PAPER)
+    # the open book lies on window stack 1 (2026-09-22: 14 cm over it)
+    make_box("WinOpen_L", (-1.36, 0.62, 0.711), (0.14, 0.20, 0.01), COL_PAPER)
+    make_box("WinOpen_R", (-1.22, 0.62, 0.711), (0.14, 0.20, 0.01), COL_PAPER)
 
 
 def build_wall_cases():
@@ -159,7 +161,8 @@ def build_wall_cases():
                     _book_run(f"Books_{side}{b}_{zi}", wx, y0 + 0.08, y1 - 0.08,
                               z + 0.02, seed=b * 6 + zi + (0 if side == "W" else 3))
     # Borges sign — back-left bay, third shelf down (canon)
-    make_box("Borges_Sign", (-ROOM_W / 2.0 + 0.40, ROOM_D - 1.2, 1.98),
+    # on Case_W2's front face (2026-09-22: it hung in the open at y 7.8 where no case stands)
+    make_box("Borges_Sign", (-1.695, 6.0, 2.11),   # on shelf S4's front edge
              (0.02, 0.34, 0.10), COL_SIGN)
     # North wall case (behind the back of the shop) — solid books
     make_box("Case_N_Back", (0.0, ROOM_D - 0.10, 1.45), (ROOM_W - 0.5, 0.04, 2.9), COL_CASE)
@@ -216,7 +219,7 @@ def build_center_tables():
                 k = (ti * 11 + r * 5 + c * 3) % len(SPINES)
                 make_box(f"Table_{ti}_Bk_{r}_{c}",
                          (0.45 + c * 0.21, ty - 0.5 + r * 0.5 + 0.03 * ((c + r) % 2),
-                          0.77 + 0.012 * ((c * 3 + r) % 2)),
+                          0.7575 + 0.012 * ((c * 3 + r) % 2)),   # on the top (2026-09-22: 1.3 cm over it)
                          (0.17, 0.24, 0.025), SPINES[k])
     # Rolling ladder leaning on the west cases
     make_box("Ladder_Rail_L", (-1.72, 5.6, 1.45), (0.05, 0.05, 2.75), COL_CASE)
@@ -226,6 +229,9 @@ def build_center_tables():
                  COL_CASE_LT)
     make_cyl("Ladder_Brass_Rail", (-1.55, 4.9, 2.95), 0.02, 3.4, COL_BRASS,
              segments=6, axis='Y')
+    # three brackets from the case tops out to the rail (2026-09-22: it hung 11 cm off them)
+    for bi_, by_ in enumerate((3.4, 5.0, 6.4)):
+        make_box(f"Ladder_Brass_Bracket_{bi_}", (-1.62, by_, 2.955), (0.20, 0.03, 0.02), COL_BRASS)
     # Box of unsorted paperbacks by the counter
     make_box("SortBox", (0.45, 1.1, 0.16), (0.42, 0.34, 0.30), (0.52, 0.40, 0.26, 1.0),
              open_faces={"+Z"})
