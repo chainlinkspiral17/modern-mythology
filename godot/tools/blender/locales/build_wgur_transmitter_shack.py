@@ -81,6 +81,9 @@ def build_n_window_and_tower_view():
     # Obstruction lights (red dots) at three heights
     for li, lz in enumerate([3.0, 6.0, 9.0]):
         make_cyl(f"Obstr_{li}", (tower_x, tower_y, lz), 0.16, 0.10, COL_OBSTR_RED, segments=10)
+        # the platform it sits on, leg to leg (2026-09-23: the lamps hung
+        # in the tower's middle on nothing)
+        make_box(f"Obstr_{li}_Platform", (tower_x, tower_y, lz - 0.07), (0.88, 0.88, 0.04), COL_RACK_GREY)
     # Three guy wires anchoring out
     for gi, ang_deg in enumerate([0, 120, 240]):
         ang = math.radians(ang_deg)
@@ -142,7 +145,7 @@ def build_operator_desk_and_mic():
     # Operator desk centered S of the rack
     dx, dy = -0.40, 1.40
     make_box("Desk_Top",  (dx, dy, 0.74), (1.40, 0.80, 0.04), COL_DESK_WOOD)
-    make_box("Desk_Drawer", (dx, dy, 0.52), (1.14, 0.78, 0.20), COL_DESK_WOOD)   # between the side panels
+    make_box("Desk_Drawer", (dx, dy, 0.62), (1.18, 0.78, 0.20), COL_DESK_WOOD)   # between the side panels, under the top (2026-09-23: 10 cm under it, 2 cm short of each)
     for sgn in (-1, +1):
         make_box(f"Desk_Leg_{sgn:+d}", (dx + sgn*0.62, dy, 0.36),
                  (0.06, 0.78, 0.72), COL_DESK_WOOD)
@@ -252,29 +255,31 @@ def build_tower_dressing():
              (0.18, 0.96, 0.40, 1.0))
 
     # Kill switch — big red bakelite button on the patch panel
-    # Patch panel approx at the east wall, near (+1.8, +0.5)
-    ks_x = +1.8
-    ks_y = +0.5
+    # On the E wall beside the patch cables (x 2.65, y 1.98..2.92), facing
+    # the room. (2026-09-23: "patch panel approx at (+1.8, +0.5)" put it
+    # 34 cm out from the south wall in the air, facing that wall.)
+    ks_x = 2.65     # the E wall's inner face
+    ks_y = 1.70
     # Mounting plate (gray metal)
     make_box("KillSwitch_Plate",
-             (ks_x, ks_y - 0.045, 1.40),
-             (0.20, 0.04, 0.20),
+             (ks_x - 0.02, ks_y, 1.40),
+             (0.04, 0.20, 0.20),
              (0.62, 0.62, 0.62, 1.0))
     # The big red button (low-poly cylinder facing patron)
     make_cyl("KillSwitch_Button",
-             (ks_x, ks_y - 0.090, 1.40),
+             (ks_x - 0.06, ks_y, 1.40),
              0.060, 0.04,
              (0.86, 0.18, 0.16, 1.0),
-             segments=10, axis='Y')
+             segments=10, axis='X')
     # Brass placard above the button
     make_box("KillSwitch_Placard",
-             (ks_x, ks_y - 0.046, 1.54),
-             (0.16, 0.001, 0.04),
+             (ks_x - 0.0005, ks_y, 1.54),
+             (0.001, 0.16, 0.04),
              (0.78, 0.62, 0.30, 1.0))
     # Placard letters (dark)
     make_box("KillSwitch_Placard_Text",
-             (ks_x, ks_y - 0.0465, 1.54),
-             (0.12, 0.0005, 0.022),
+             (ks_x - 0.00125, ks_y, 1.54),
+             (0.0005, 0.12, 0.022),
              (0.20, 0.16, 0.10, 1.0))
 
     # Pulse-light reflections on the floor in front of the N window
@@ -354,10 +359,12 @@ def build_tower_wave2_props():
              (0.10, 0.001, 0.06),
              (0.42, 0.28, 0.18, 1.0))
 
-    kitch_x = +2.20
-    kitch_y = +2.60
+    # the shack has no counter: on the desk's east end (2026-09-23: it
+    # stood 80 cm up on nothing by the E wall)
+    kitch_x = +0.15
+    kitch_y = +1.60
     make_box("PreDawn_CoffeeMaker_Base",
-             (kitch_x, kitch_y, 0.86),
+             (kitch_x, kitch_y, 0.82),
              (0.24, 0.20, 0.12),
              (0.14, 0.14, 0.16, 1.0))
     make_cyl("PreDawn_Carafe_Body",
@@ -366,20 +373,22 @@ def build_tower_wave2_props():
              (0.82, 0.84, 0.88, 0.60),
              segments=10, axis='Z')
     make_cyl("PreDawn_Carafe_FirstDrip",
-             (kitch_x, kitch_y - 0.03, 1.08),
+             (kitch_x, kitch_y - 0.03, 1.06),
              0.002, 0.04,
              (0.30, 0.18, 0.10, 1.0), segments=4, axis='Z')
 
-    patch_x = -1.00
-    patch_y = -1.00
+    patch_x = -1.95   # Rack_0's face — the "patch" (2026-09-23: (-1, -1) is outside the building)
+    patch_y = +1.20
     patch_z = 1.20
+    # across Rack_0's face (x -1.95) — "patch (-1, -1)" was outside the
+    # building (2026-09-23)
     make_box("PreDawn_CautionTape",
-             (patch_x, patch_y - 0.02, patch_z + 0.10),
-             (0.60, 0.001, 0.05),
+             (patch_x + 0.0005, patch_y, patch_z + 0.10),
+             (0.001, 0.60, 0.05),
              (0.94, 0.84, 0.24, 1.0))
     make_box("PreDawn_CautionTape_X",
-             (patch_x, patch_y - 0.018, patch_z + 0.02),
-             (0.60, 0.001, 0.05),
+             (patch_x + 0.0005, patch_y, patch_z + 0.02),
+             (0.001, 0.60, 0.05),
              (0.94, 0.84, 0.24, 1.0))
 
     make_box("PreDawn_HorizonGlow",
@@ -448,15 +457,15 @@ def build_tower_wave2_props():
     ws_x = -1.60
     ws_y = +1.60
     make_cyl("ClearMorning_Wastebasket",
-             (ws_x, ws_y, 0.24),
+             (ws_x, ws_y, 0.18),   # on the floor (2026-09-23: 6 cm up)
              0.14, 0.36,
              (0.32, 0.30, 0.30, 1.0), segments=10, axis='Z')
     make_box("ClearMorning_TacoWrapper_1",
-             (ws_x - 0.02, ws_y, 0.44),
+             (ws_x - 0.02, ws_y, 0.38),
              (0.06, 0.05, 0.04),
              (0.86, 0.86, 0.88, 0.90))
     make_box("ClearMorning_TacoWrapper_2",
-             (ws_x + 0.04, ws_y + 0.03, 0.42),
+             (ws_x + 0.04, ws_y + 0.03, 0.36),
              (0.05, 0.06, 0.04),
              (0.86, 0.86, 0.88, 0.90))
 

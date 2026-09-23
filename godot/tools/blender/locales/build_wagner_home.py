@@ -78,7 +78,7 @@ def build_window():
     make_box("Win_Glass", (0.3, ROOM_D - 0.08, 1.60), (1.7, 0.05, 1.3), COL_GLASS)
     make_box("Win_Mull", (0.3, ROOM_D - 0.10, 1.60), (0.06, 0.05, 1.3), COL_FRAME)
     make_box("Win_Sill", (0.3, ROOM_D - 0.14, 0.82), (2.1, 0.20, 0.06), COL_FRAME)
-    make_cyl("Curtain_Rod", (0.3, ROOM_D - 0.16, 2.42), 0.02, 2.3, COL_FRAME,
+    make_cyl("Curtain_Rod", (0.3, ROOM_D - 0.12, 2.42), 0.02, 2.3, COL_FRAME,   # on the wall (2026-09-23: 4 cm off it)
              segments=6, axis='X')
     make_box("Curtain_W", (-0.62, ROOM_D - 0.18, 1.55), (0.40, 0.12, 1.80), COL_CURTAIN)
     make_box("Curtain_E", (1.22, ROOM_D - 0.18, 1.55), (0.40, 0.12, 1.80), COL_CURTAIN)

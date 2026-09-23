@@ -95,7 +95,7 @@ def build_windows():
 
 def _booth(tag, by, corner=False):
     """One W-wall booth: two facing vinyl benches + formica table."""
-    bx = -ROOM_W/2.0 + 0.55
+    bx = -ROOM_W/2.0 + 0.68   # flush with the window frames (2026-09-23: the backs sat 10 cm in the wall, 13 in the frames)
     for si, (yo, back_yo) in enumerate([(-0.52, -0.72), (0.52, 0.72)]):
         make_box(f"Booth_{tag}_Seat_{si}", (bx, by+yo, 0.44), (1.10, 0.42, 0.10), COL_BOOTH)
         make_box(f"Booth_{tag}_Back_{si}", (bx, by+back_yo, 0.80), (1.10, 0.10, 0.85), COL_BOOTH)
@@ -182,7 +182,7 @@ def build_partition():
     make_box("Pass_Sill", (0.7, PART_Y, 1.08), (2.7, 0.44, 0.05), COL_STEEL)
     make_box("Pass_TicketRail", (0.7, PART_Y-0.08, 1.92), (2.4, 0.03, 0.05), COL_STEEL_DK)
     for ti, tx in enumerate([-0.2, 0.5, 1.2]):
-        make_box(f"Pass_Ticket_{ti}", (tx, PART_Y-0.10, 1.80), (0.12, 0.005, 0.16), (0.94, 0.92, 0.84, 1.0))
+        make_box(f"Pass_Ticket_{ti}", (tx, PART_Y-0.10, 1.82), (0.12, 0.005, 0.16), (0.94, 0.92, 0.84, 1.0))   # clipped IN the rail (2026-09-23: 1.5 cm under it)
     make_cyl("Service_Bell_Base", (1.75, PART_Y-0.16, 1.115), 0.05, 0.02, COL_STEEL_DK, segments=10)
     make_cyl("Service_Bell_Dome", (1.75, PART_Y-0.16, 1.15), 0.045, 0.05, (0.85, 0.80, 0.55, 1.0), segments=10)
     # Swing door, slightly ajar, at x=3.65.
@@ -207,7 +207,7 @@ def build_kitchen():
     make_box("Vent_Duct", (-1.0, ROOM_D-0.45, 2.80), (0.60, 0.60, 0.40), COL_STEEL_DK)
     # Fryer beside the grill.
     make_box("Fryer_Body", (0.6, ROOM_D-0.50, 0.45), (0.70, 0.75, 0.90), COL_STEEL)
-    make_box("Fryer_Baskets", (0.6, ROOM_D-0.50, 0.98), (0.55, 0.50, 0.10), (0.30, 0.30, 0.32, 1.0))
+    make_box("Fryer_Baskets", (0.6, ROOM_D-0.50, 0.95), (0.55, 0.50, 0.10), (0.30, 0.30, 0.32, 1.0))   # in the fryer (2026-09-23: 3 cm over it)
     # Stainless prep line down the middle of the kitchen.
     make_box("Prep_Table", (0.6, ky0+1.0, 0.45), (2.6, 0.75, 0.90), COL_STEEL)
     make_box("Prep_Top", (0.6, ky0+1.0, 0.925), (2.7, 0.85, 0.05), COL_STEEL)
@@ -236,7 +236,7 @@ def build_kitchen():
 
 def build_decor():
     make_wall_clock("Clock", (-2.0, PART_Y-0.12, CEIL-0.55), frozen_hour=9, frozen_min=18)
-    make_calendar("Calendar_Kitchen", (2.4, ROOM_D-0.13, 1.70), axis='X')
+    make_calendar("Calendar_Kitchen", (2.4, ROOM_D-0.10, 1.70), axis='X')   # on the wall (2026-09-23: 2.8 cm off it)
     make_faded_poster("Poster_E", (ROOM_W/2.0-0.05, 2.6, 1.60))
     make_trash_can("Trash", (4.9, 0.9, 0.0), branded=False,
                    palette={"body": (0.30, 0.30, 0.32, 1.0)})
@@ -285,8 +285,8 @@ def build_detail_pass_2026_08():
                      tint=(0.50, 0.47, 0.42, 1.0))
     make_floor_stain("Stain_Counter", (1.2, 3.75), radius=0.28, tint=wear)
     # Kick scuffs: counter customer face + swing door + booth bases.
-    make_scuff_band("Scuff_Counter", (1.4, 4.11), length=5.6, axis='X',
-                    band_z=0.12, tint=scuff)
+    make_scuff_band("Scuff_Counter", (1.4, 4.169), length=5.6, axis='X',   # on the front, from the floor (2026-09-23: 6 cm off it, 4 cm up)
+                    band_z=0.08, tint=scuff)
     make_scuff_band("Scuff_SwingDoor", (3.65, PART_Y+0.13), length=1.0,
                     axis='X', band_z=0.10, tint=scuff)
     # Ceiling-shadow gather at the top of the big walls (proud 5mm).
@@ -323,11 +323,11 @@ def build_use_states_2026_08():
     for pi, pxo in enumerate([-0.25, 0.05]):
         make_cyl(f"Grill_Patty_{pi}", (-1.0+pxo, 8.4, 1.01), 0.07, 0.02, (0.36, 0.22, 0.14, 1.0), segments=10)
     make_box("Grill_Spatula_Blade", (-0.35, 8.35, 1.005), (0.09, 0.11, 0.008), P.METAL_STEEL)
-    make_box("Grill_Spatula_Handle", (-0.35, 8.15, 1.02), (0.03, 0.22, 0.02), (0.20, 0.20, 0.22, 1.0))
-    make_box("Hood_Towel", (-0.2, 8.35, 2.10), (0.30, 0.06, 0.28), (0.80, 0.80, 0.76, 1.0))
+    make_box("Grill_Spatula_Handle", (-0.35, 8.185, 1.005), (0.03, 0.22, 0.02), (0.20, 0.20, 0.22, 1.0))   # into the blade, on the flat-top
+    make_box("Hood_Towel", (-0.2, 7.87, 2.10), (0.30, 0.06, 0.28), (0.80, 0.80, 0.76, 1.0))   # over the hood's front lip (2026-09-23: through the hood)
     # Ticket on the pass-through rail mid-order (one more than the
     # static three — this one's crooked).
-    make_box("Pass_Ticket_Live", (1.05, PART_Y-0.11, 1.78), (0.13, 0.005, 0.15), (0.96, 0.94, 0.86, 1.0))
+    make_box("Pass_Ticket_Live", (1.05, PART_Y-0.10, 1.82), (0.13, 0.005, 0.15), (0.96, 0.94, 0.86, 1.0))   # in the rail
     # Table A half-bussed: two plates stacked, crumpled napkin, one
     # chair shoved out of true.
     make_cyl("TableA_Plate_Stack", (1.45, 1.55, 0.79), 0.11, 0.035, (0.90, 0.88, 0.84, 1.0), segments=10)
@@ -360,11 +360,17 @@ def build_beyond_glass_2026_08():
     # Two parked cars + THE LOUISIANA PICKUP (nose-in, engine cold,
     # driver never enters) framed by the W_Mid booth window.
     for tag, cy2, col in [("A", 1.9, (0.32, 0.34, 0.40, 1.0)), ("B", 6.6, (0.62, 0.60, 0.56, 1.0))]:
-        make_box(f"Lot_Car_{tag}_Body", (-7.6, cy2, 0.55), (4.2, 1.75, 0.55), col)
-        make_box(f"Lot_Car_{tag}_Cabin", (-7.9, cy2, 1.02), (2.2, 1.6, 0.45), col)
+        make_box(f"Lot_Car_{tag}_Body", (-7.72, cy2, 0.55), (4.2, 1.75, 0.55), col)   # clear of the wall (2026-09-23: 10 cm into it)
+        make_box(f"Lot_Car_{tag}_Cabin", (-8.02, cy2, 1.02), (2.2, 1.6, 0.45), col)
+        for wx_ in (-9.22, -6.22):   # wheels (2026-09-23: the wall had been holding the cars up)
+            for wy_ in (-0.70, 0.70):
+                make_cyl(f"Lot_Car_{tag}_Wheel_{wx_:.1f}_{wy_:+.1f}", (wx_, cy2 + wy_, 0.30), 0.30, 0.24, (0.10, 0.10, 0.11, 1.0), axis='Y', segments=10)
     make_box("Lot_LA_Pickup_Body", (-8.1, 4.35, 0.62), (4.8, 1.85, 0.70), (0.30, 0.24, 0.20, 1.0))
     make_box("Lot_LA_Pickup_Cab", (-9.1, 4.35, 1.25), (1.8, 1.75, 0.55), (0.30, 0.24, 0.20, 1.0))
     make_box("Lot_LA_Pickup_Bed_Rim", (-6.9, 4.35, 1.02), (2.3, 1.85, 0.08), (0.24, 0.19, 0.16, 1.0))
+    for wx_ in (-9.8, -6.4):   # the pickup had no wheels — it hung 27 cm over the lot (2026-09-23)
+        for wy_ in (3.55, 5.15):
+            make_cyl(f"Lot_LA_Pickup_Wheel_{wx_:.1f}_{wy_:.2f}", (wx_, wy_, 0.32), 0.32, 0.26, (0.10, 0.10, 0.11, 1.0), axis='Y', segments=10)
     # Lot light pole + far treeline wall (edge-of-set).
     make_cyl("Lot_Pole", (-11.5, 4.5, 3.0), 0.09, 6.0, (0.40, 0.40, 0.42, 1.0), segments=8)
     make_box("Lot_Pole_Head", (-11.2, 4.5, 6.0), (0.7, 0.25, 0.18), (0.30, 0.30, 0.32, 1.0))
@@ -377,7 +383,7 @@ def build_beyond_glass_2026_08():
     make_box("Road_S", (0.0, -3.2, -0.02), (16.0, 3.0, 0.04), (0.26, 0.26, 0.28, 1.0))
     make_box("Road_S_Centerline", (0.0, -3.2, 0.005), (14.0, 0.10, 0.01), (0.85, 0.76, 0.30, 1.0))
     make_box("Strip_Across", (1.5, -6.4, 1.7), (10.0, 0.8, 3.4), (0.42, 0.38, 0.34, 1.0))
-    make_box("Strip_Across_Sign", (-2.0, -5.9, 3.0), (1.6, 0.12, 0.7), (0.66, 0.58, 0.42, 1.0))
+    make_box("Strip_Across_Sign", (-2.0, -5.94, 3.0), (1.6, 0.12, 0.7), (0.66, 0.58, 0.42, 1.0))   # on the facade (2026-09-23: 4 cm off it)
 
 
 def build_hero_props_2026_09():

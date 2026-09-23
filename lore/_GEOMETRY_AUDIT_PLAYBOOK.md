@@ -349,6 +349,24 @@ banisters classed · pans as containers.
   register stood off one side, the bell off the other, the kick
   scuff ran across the counter's body. When a float sits a fixed
   distance off BOTH sides of a fixture, check the fixture's axis.
+- **A wall can be holding things up that should not need it
+  (thirteenth pass).** The pit stop's lot cars sat 10 cm INSIDE the
+  building's west wall from outside; moving them clear made them
+  float, because they had no wheels — the wall was their support.
+  Same for the courthouse wainscot (built inside its walls) and the
+  bungalow's closet boxes. When a clip fix turns into a float, the
+  clip was hiding a missing support.
+- **A scan finds candidates; each one still needs its room read.**
+  A static scan for "a slab centred on the height its dressing is
+  placed from" found seven builders. In two the dressing really was
+  buried half a slab deep; in five the author had already added the
+  half-thickness, and "fixing" the slab left everything hovering 3
+  cm — the support gate caught it and the five were reverted.
+- **Dressing placed for a fixture's OLD position survives the move.**
+  Diego's desk moved to the north wall on 09-07; the laptop and the
+  letter "on the desk's SE corner" stayed at the old coordinates in
+  mid-air for two weeks. When a fixture moves, grep for everything
+  that names it in a comment.
 - **A tabletop is not sky.** `template_land|template_sea` sat in the
   support audit's SKY list, so every model on the estuary 7 diorama
   (cedars, rivers, labels, the cursor) read as floating. A drop list

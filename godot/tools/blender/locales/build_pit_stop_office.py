@@ -46,7 +46,7 @@ def build_desk():
     make_box("Keyboard", (dx, dy-0.16, 0.77), (0.44, 0.16, 0.03), (0.32, 0.32, 0.30, 1.0))
     for pi in range(3):
         make_box(f"Paper_{pi}", (dx-0.6+pi*0.14, dy+0.05, 0.77), (0.18, 0.24, 0.01), (0.86, 0.84, 0.78, 1.0))
-    make_cyl("Mug", (dx+0.62, dy-0.05, 0.82), 0.04, 0.09, COL_ACCENT, segments=10)
+    make_cyl("Mug", (dx+0.62, dy-0.05, 0.805), 0.04, 0.09, COL_ACCENT, segments=10)   # on the desk
     # Ben's yellow legal pad + pen (vol6_ch3 — the list).
     make_box("Legal_Pad", (dx+0.34, dy-0.10, 0.765), (0.22, 0.30, 0.012), (0.94, 0.88, 0.42, 1.0))
     make_box("Legal_Pad_Lines", (dx+0.34, dy-0.10, 0.772), (0.18, 0.24, 0.004), (0.88, 0.82, 0.38, 1.0))
@@ -63,15 +63,15 @@ def build_desk():
     # Gooseneck desk lamp
     make_cyl("Lamp_Base", (dx-0.68, dy+0.14, 0.78), 0.07, 0.03, P.METAL_BLACK)
     make_cyl("Lamp_Col", (dx-0.68, dy+0.14, 0.98), 0.02, 0.40, P.METAL_BLACK)
-    make_cyl("Lamp_Head", (dx-0.58, dy+0.16, 1.16), 0.06, 0.10, COL_ACCENT)
+    make_cyl("Lamp_Head", (dx-0.61, dy+0.16, 1.16), 0.06, 0.10, COL_ACCENT)   # on its column (2026-09-23: 2 cm off it)
     # Swivel office chair
     make_cyl("Chair_Seat", (dx, dy-0.7, 0.48), 0.24, 0.08, (0.20, 0.20, 0.22, 1.0), segments=14)
-    make_box("Chair_Back", (dx, dy-0.92, 0.78), (0.44, 0.06, 0.46), (0.20, 0.20, 0.22, 1.0))
+    make_box("Chair_Back", (dx, dy-0.92, 0.75), (0.44, 0.06, 0.46), (0.20, 0.20, 0.22, 1.0))   # on the seat (2026-09-23: 3 cm over it)
     make_cyl("Chair_Post", (dx, dy-0.7, 0.22), 0.03, 0.44, P.METAL_STEEL)
     for wi in range(5):
         import math as _m
         a = wi * (2.0*_m.pi/5.0)
-        make_box(f"Chair_Foot_{wi}", (dx+_m.cos(a)*0.24, dy-0.7+_m.sin(a)*0.24, 0.05), (0.08, 0.08, 0.06), P.METAL_BLACK)
+        make_box(f"Chair_Foot_{wi}", (dx+_m.cos(a)*0.24, dy-0.7+_m.sin(a)*0.24, 0.03), (0.08, 0.08, 0.06), P.METAL_BLACK)   # on the floor
 
 def build_filing():
     for ci in range(2):
@@ -98,11 +98,12 @@ def build_office_dressing():
         for c in range(4):
             make_box(f"PartBox_{r}_{c}", (sx-0.03, ROOM_D-1.85+c*0.30, 0.75+r*0.42), (0.22, 0.22, 0.24), P.SNACK_TINTS[(r+c) % len(P.SNACK_TINTS)])
     # Coffee maker on top of a filing cabinet
-    make_coffee_pots("Coffee", (-ROOM_W/2.0+0.9, 1.0, 1.35), pots=1)
+    make_coffee_pots("Coffee", (-ROOM_W/2.0+0.9, 1.5, 1.30), pots=1)   # ON the cabinet (2026-09-23: 5 cm over it and off its front)
     # Supplier cases stacked in the SE corner (syrup, napkins).
     for ti, (cw, cd, ch) in enumerate([(0.55, 0.42, 0.30), (0.50, 0.38, 0.28), (0.44, 0.34, 0.26)]):
-        make_box(f"Supplier_Case_{ti}", (ROOM_W/2.0-0.5, 0.7, 0.15+ti*0.29), (cw, cd, ch), (0.62, 0.50, 0.34, 1.0))
-        make_box(f"Supplier_Case_Tape_{ti}", (ROOM_W/2.0-0.5, 0.7, 0.15+ti*0.29+0.005), (cw+0.01, 0.08, ch), (0.74, 0.62, 0.42, 1.0))
+        cz_ = (0.15, 0.44, 0.71)[ti]   # each on the one below (2026-09-23: a fixed pitch left 2 cm gaps)
+        make_box(f"Supplier_Case_{ti}", (ROOM_W/2.0-0.5, 0.7, cz_), (cw, cd, ch), (0.62, 0.50, 0.34, 1.0))
+        make_box(f"Supplier_Case_Tape_{ti}", (ROOM_W/2.0-0.5, 0.7, cz_ + 0.005), (cw+0.01, 0.08, ch), (0.74, 0.62, 0.42, 1.0))
     # Spare apron on a hook beside the door.
     make_cyl("Apron_Hook", (1.35, 0.14, 1.65), 0.02, 0.06, P.METAL_STEEL, segments=6)
     make_box("Apron_Hanging", (1.35, 0.17, 1.15), (0.34, 0.03, 0.95), (0.92, 0.92, 0.90, 1.0))
@@ -120,7 +121,7 @@ def build_hero_props_2026_09():
     THE LIST ("The list, at 15:48, reads —"): the block-letter list
     as ink lines on the legal pad (which exists — marker only for
     legal_pad)."""
-    make_box("Legal_Pad_List", (0.34, 3.40, 0.7785), (0.10, 0.14, 0.0005), (0.26, 0.26, 0.30, 1.0))
+    make_box("Legal_Pad_List", (0.34, 4.48, 0.7715), (0.10, 0.14, 0.0005), (0.26, 0.26, 0.30, 1.0))   # ON the legal pad (2026-09-23: in the air in front of the chair)
 
 
 def main():

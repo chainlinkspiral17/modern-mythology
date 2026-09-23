@@ -118,7 +118,7 @@ def build_window():
     make_box("Win_Mullion_V", (wx - 0.03, 2.4, 1.65), (0.05, 0.06, 1.45), COL_FRAME)
     make_box("Win_Mullion_H", (wx - 0.03, 2.4, 1.65), (0.05, 1.55, 0.06), COL_FRAME)
     make_box("Win_Sill", (wx - 0.10, 2.4, 0.80), (0.22, 1.95, 0.06), COL_FRAME)
-    make_cyl("Curtain_Rod", (wx - 0.14, 2.4, 2.56), 0.02, 2.2, COL_STEEL,
+    make_cyl("Curtain_Rod", (wx - 0.06, 2.4, 2.56), 0.02, 2.2, COL_STEEL,   # on the wall (2026-09-23: 8 cm off it)
              segments=6, axis='Y')
     # Curtains bunched at both ends (half-drawn)
     make_box("Curtain_S", (wx - 0.16, 1.62, 1.62), (0.14, 0.42, 1.85), COL_CURTAIN)

@@ -42,7 +42,9 @@ def build_bar():
     # bar body).
     top_z = 1.14
     make_box("Bar_Front", (0.7, 5.0, 0.55), (4.6, 0.60, 1.10), COL_BAR)
-    make_box("Bar_Top",   (0.7, 4.94, top_z), (4.8, 0.80, 0.06), COL_BAR_TOP)
+    # top_z is the slab's TOP face (2026-09-23: it was the centre — everything
+    # dressed from top_z sat half the slab's thickness inside it)
+    make_box("Bar_Top",   (0.7, 4.94, top_z - 0.06 / 2.0), (4.8, 0.80, 0.06), COL_BAR_TOP)
     make_box("Bar_Kick",  (0.7, 4.70, 0.10), (4.6, 0.05, 0.20), COL_BLACK)
     # Brass foot rail along the customer (south) side.
     make_cyl("Bar_FootRail", (0.7, 4.62, 0.16), 0.03, 4.6, COL_BRASS, axis='X', segments=8)
@@ -71,6 +73,9 @@ def _make_tap_tower(prefix, cx, cy, top_z):
         make_box(f"{prefix}_Handle_{ti}", (hx, cy - 0.12, top_z + 0.20), (0.03, 0.10, 0.14),
                  [COL_NEON_AMBER, (0.86,0.24,0.20,1.0), (0.24,0.42,0.68,1.0), (0.30,0.52,0.30,1.0)][ti])
         make_cyl(f"{prefix}_Spout_{ti}", (hx, cy - 0.16, top_z + 0.06), 0.012, 0.08, COL_STEEL)
+    # the manifold the handles sit on and the spouts hang from (2026-09-23:
+    # both floated in front of the column)
+    make_box(f"{prefix}_Manifold", (cx, cy - 0.07, top_z + 0.12), (0.46, 0.14, 0.05), COL_STEEL)
 
 def _make_bar_stool(prefix, cx, cy, seat_r=0.19):
     make_cyl(f"{prefix}_Seat",   (cx, cy, 0.78), seat_r, 0.06, COL_LEATHER, segments=12)
@@ -96,13 +101,13 @@ def build_high_tops():
     _make_high_top("HighTop_1", 2.3, 2.2)
 
 def _make_neon_sign(prefix, cx, cz, w, h, col):
-    y = 5.855
+    y = 5.885   # on the N wall's face (2026-09-23: 3 cm off it)
     make_box(f"{prefix}_Top",   (cx, y, cz + h/2.0), (w, 0.03, 0.05), col)
     make_box(f"{prefix}_Bottom",(cx, y, cz - h/2.0), (w, 0.03, 0.05), col)
     make_box(f"{prefix}_Left",  (cx - w/2.0, y, cz), (0.05, 0.03, h), col)
     make_box(f"{prefix}_Right", (cx + w/2.0, y, cz), (0.05, 0.03, h), col)
-    make_box(f"{prefix}_TubeA", (cx, y, cz + h*0.12), (w*0.7, 0.02, 0.04), col)
-    make_box(f"{prefix}_TubeB", (cx, y, cz - h*0.14), (w*0.5, 0.02, 0.04), col)
+    make_box(f"{prefix}_TubeA", (cx, y + 0.005, cz + h*0.12), (w*0.7, 0.02, 0.04), col)
+    make_box(f"{prefix}_TubeB", (cx, y + 0.005, cz - h*0.14), (w*0.5, 0.02, 0.04), col)
 
 def build_neon_signs():
     _make_neon_sign("Neon_Magenta", -2.1, 2.60, 1.30, 0.60, COL_NEON_MAGENTA)
@@ -112,7 +117,7 @@ def build_neon_signs():
 def build_pendants():
     # Warm hanging pendant lamps over the bar (motivate the .tscn practicals).
     for pi, px in enumerate([-1.5, 1.5]):
-        make_cyl(f"Pendant_{pi}_Cord", (px, 5.0, CEIL - 0.30), 0.006, 0.40, COL_BLACK)
+        make_cyl(f"Pendant_{pi}_Cord", (px, 5.0, CEIL - 0.265), 0.006, 0.53, COL_BLACK)   # ceiling to shade
         make_cyl(f"Pendant_{pi}_Shade", (px, 5.0, CEIL - 0.62), 0.16, 0.18, (0.28,0.20,0.14,1.0), segments=12)
         make_cyl(f"Pendant_{pi}_Bulb", (px, 5.0, CEIL - 0.70), 0.05, 0.06, (0.98,0.86,0.60,1.0))
 

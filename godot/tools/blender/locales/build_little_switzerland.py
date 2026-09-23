@@ -66,9 +66,10 @@ def chalet(prefix, cx, width, depth, floors):
     for fl in range(1, floors + 1):
         make_box(f"{prefix}_Band_{fl}", (cx, face_y - 0.04, fl * 2.6 - 0.05),
                  (width, 0.08, 0.16), COL_TIMBER)
-    make_box(f"{prefix}_Brace_A", (cx - width * 0.22, face_y - 0.05, h - 1.3),
+    # braces, windows, boxes ON the facade (2026-09-23: 2–4 cm proud of it, on nothing)
+    make_box(f"{prefix}_Brace_A", (cx - width * 0.22, face_y - 0.03, h - 1.3),
              (0.12, 0.06, 2.0), COL_TIMBER)
-    make_box(f"{prefix}_Brace_B", (cx + width * 0.22, face_y - 0.05, h - 1.3),
+    make_box(f"{prefix}_Brace_B", (cx + width * 0.22, face_y - 0.03, h - 1.3),
              (0.12, 0.06, 2.0), COL_TIMBER)
     # Steep roof: three stepped slabs with deep eaves
     for ri in range(3):
@@ -79,18 +80,18 @@ def chalet(prefix, cx, width, depth, floors):
     n_win = max(2, int(width / 1.7))
     for wi in range(n_win):
         wx = cx - width / 2.0 + width * (wi + 0.5) / n_win
-        make_box(f"{prefix}_GWin_{wi}", (wx, face_y - 0.06, 1.30), (0.85, 0.05, 1.0),
+        make_box(f"{prefix}_GWin_{wi}", (wx, face_y - 0.025, 1.30), (0.85, 0.05, 1.0),
                  COL_WIN_WARM)
-        make_box(f"{prefix}_GBox_{wi}", (wx, face_y - 0.16, 0.72), (0.95, 0.22, 0.20),
+        make_box(f"{prefix}_GBox_{wi}", (wx, face_y - 0.11, 0.72), (0.95, 0.22, 0.20),
                  COL_FLOWER_BOX)
         fcol = COL_FLOWER_R if (wi + int(cx)) % 2 == 0 else COL_FLOWER_P
-        make_box(f"{prefix}_GFlower_{wi}", (wx, face_y - 0.18, 0.86), (0.85, 0.20, 0.10), fcol)
+        make_box(f"{prefix}_GFlower_{wi}", (wx, face_y - 0.13, 0.86), (0.85, 0.20, 0.10), fcol)
         if floors > 1:
-            make_box(f"{prefix}_UWin_{wi}", (wx, face_y - 0.06, 3.75), (0.75, 0.05, 0.9),
+            make_box(f"{prefix}_UWin_{wi}", (wx, face_y - 0.025, 3.75), (0.75, 0.05, 0.9),
                      COL_WIN)
     if floors > 1:
         # Balcony rail across the upper floor
-        make_box(f"{prefix}_Balc_Deck", (cx, face_y - 0.30, 2.85), (width - 0.5, 0.5, 0.10),
+        make_box(f"{prefix}_Balc_Deck", (cx, face_y - 0.25, 2.85), (width - 0.5, 0.5, 0.10),   # into the facade
                  COL_TIMBER)
         make_box(f"{prefix}_Balc_Rail", (cx, face_y - 0.52, 3.25), (width - 0.5, 0.06, 0.08),
                  COL_TIMBER)
@@ -137,7 +138,8 @@ def build_mountains():
     # Snow caps: light bands along the far ridge tops
     make_box("Snow_Far_A", (-12.0, 19.95, 12.0), (10.0, 0.05, 2.0), COL_SNOW)
     make_box("Snow_Far_B", (4.0, 19.95, 12.6), (8.0, 0.05, 1.6), COL_SNOW)
-    make_box("Snow_Near", (10.0, 15.95, 8.4), (7.0, 0.05, 1.2), COL_SNOW)
+    # (2026-09-23: Snow_Near deleted — the near ridge it capped was
+    # deleted on 08-04, and the white strip hung 16 m out in the sky)
     # (Sky wall deleted 2026-08-04 — it stood between the camera
     # and the new far bands, occluding the horizon it faked.
     # The sky is the .tscn environment's job.)

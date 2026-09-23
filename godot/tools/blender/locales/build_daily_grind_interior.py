@@ -46,8 +46,10 @@ def build_shell():
 def build_service_counter():
     # Espresso bar running along X in front of the north wall.
     top_z = 1.03
-    make_box("Counter_Front", (-0.4, 5.2, 0.47), (5.6, 0.60, 0.94), COL_WOOD)
-    make_box("Counter_Top",   (-0.4, 5.14, top_z), (5.8, 0.80, 0.06), COL_COUNTER_TOP)
+    make_box("Counter_Front", (-0.4, 5.2, 0.485), (5.6, 0.60, 0.97), COL_WOOD)   # up to the top slab
+    # top_z is the slab's TOP face (2026-09-23: it was the centre — everything
+    # dressed from top_z sat half the slab's thickness inside it)
+    make_box("Counter_Top",   (-0.4, 5.14, top_z - 0.06 / 2.0), (5.8, 0.80, 0.06), COL_COUNTER_TOP)
     make_box("Counter_Kick",  (-0.4, 4.90, 0.10), (5.6, 0.05, 0.20), COL_BLACK)
     # Espresso machine (2-group, chrome).
     ex, ey = -1.9, 5.25
@@ -68,19 +70,20 @@ def build_service_counter():
     make_box("Milk_Cooler", (ex+0.85, ey+0.05, 0.38), (0.55, 0.50, 0.70), (0.66, 0.68, 0.70, 1.0))
     make_box("Milk_Cooler_Door", (ex+0.85, ey-0.21, 0.38), (0.48, 0.02, 0.60), (0.58, 0.60, 0.62, 1.0))
     make_box("Milk_Cooler_Handle", (ex+1.02, ey-0.23, 0.50), (0.03, 0.02, 0.14), COL_BLACK)
-    make_box("Marshmallow_Board", (0.9, 5.05, top_z+0.045), (0.40, 0.28, 0.03), (0.52, 0.40, 0.28, 1.0))
-    make_box("Marshmallow_Slab", (0.9, 5.05, top_z+0.10), (0.30, 0.20, 0.08), (0.97, 0.95, 0.90, 1.0))
-    for si, (sxo, syo) in enumerate([(0.20, 0.06), (0.24, -0.05)]):
-        make_box(f"Marshmallow_Cube_{si}", (0.9+sxo, 5.05+syo, top_z+0.075), (0.05, 0.05, 0.05),
+    # (these were tuned to the old buried top: now top_z IS the surface)
+    make_box("Marshmallow_Board", (0.9, 5.05, top_z+0.015), (0.40, 0.28, 0.03), (0.52, 0.40, 0.28, 1.0))
+    make_box("Marshmallow_Slab", (0.9, 5.05, top_z+0.07), (0.30, 0.20, 0.08), (0.97, 0.95, 0.90, 1.0))
+    for si, (sxo, syo) in enumerate([(0.15, 0.06), (0.17, -0.05)]):   # on the board (2026-09-23: one off its edge)
+        make_box(f"Marshmallow_Cube_{si}", (0.9+sxo, 5.05+syo, top_z+0.055), (0.05, 0.05, 0.05),
                  (0.97, 0.95, 0.90, 1.0))
-    make_box("Marshmallow_Knife", (0.9, 4.88, top_z+0.05), (0.22, 0.03, 0.01), COL_STEEL)
+    make_box("Marshmallow_Knife", (0.9, 4.93, top_z+0.035), (0.22, 0.03, 0.01), COL_STEEL)   # on the board
     make_paper_cup_stack("CupStack", (ex-0.66, ey+0.02, top_z), count=16)
     # Drip coffee pots (make_coffee_pots — was imported but never used).
     make_coffee_pots("Coffee", (0.5, 5.25, top_z), pots=2)
     # Pastry case at the east end.
     make_donut_display("Pastry", (2.0, 5.28, top_z))
     # Register on the counter top.
-    make_register("Register", (2.95, 5.05, top_z))
+    make_register("Register", (-0.3, 5.05, top_z))   # ON the counter (2026-09-23: at x 2.95 it stood past the counter's end)
     # Condiment / sugar caddy at the west end.
     make_sugar_creamer_caddy("Caddy", (-3.0, 4.95, top_z))
 
@@ -131,7 +134,7 @@ def build_tables():
         else:
             bxo = 0.17 if cxo > 0 else -0.17
             make_box(f"FourTop_Chair_{ci}_Back", (tx+cxo+bxo, ty+cyo, 0.72), (0.04, 0.36, 0.52), COL_WOOD)
-    make_cyl("FourTop_Cup", (tx-0.15, ty+0.12, 0.81), 0.04, 0.06, P.PAPER)
+    make_cyl("FourTop_Cup", (tx-0.15, ty+0.12, 0.795), 0.04, 0.06, P.PAPER)   # on the table
 
 def build_lounge():
     # Couch + armchair + low table nook in the SW corner.
@@ -158,7 +161,7 @@ def build_lounge():
 
 def build_pendants():
     for pi, (px, py) in enumerate([(-1.5, 5.0), (1.0, 5.0), (0.0, 2.3)]):
-        make_cyl(f"Pendant_{pi}_Cord", (px, py, CEIL-0.28), 0.006, 0.36, COL_BLACK)
+        make_cyl(f"Pendant_{pi}_Cord", (px, py, CEIL-0.25), 0.006, 0.50, COL_BLACK)   # ceiling to shade (2026-09-23: short of both)
         make_cyl(f"Pendant_{pi}_Shade", (px, py, CEIL-0.58), 0.15, 0.16, (0.86,0.58,0.28,1.0), segments=12)
         make_cyl(f"Pendant_{pi}_Bulb", (px, py, CEIL-0.66), 0.05, 0.06, (0.98,0.88,0.62,1.0))
 

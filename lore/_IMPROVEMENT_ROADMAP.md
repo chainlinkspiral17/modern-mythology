@@ -2054,6 +2054,39 @@ NEXT (support 371): bungalow 11, daily grind 11, foxhole bar 11,
 little switzerland 11, pit stop interior and office 11, wgur 11,
 courthouse 10, diego bedroom 10; overlap: pit stop 26, crumpled barn
 11, courthouse 10, centro break room 10, ben's bedroom 10.
+THIRTEENTH PASS (batches 18–22): eleven more rooms to zero on the
+support gate and the two worst overlap rooms to zero clips. The PIT
+STOP (26 clips → 0: every booth's back 10 cm inside the west wall
+and 13 cm inside its window frames; the lot cars 10 cm into the
+same wall from outside — and with no wheels, so moving them off the
+wall left them hanging; the LA pickup with no wheels either; the
+hood towel through the hood), the COURTHOUSE (10 floats and 10 clips
+→ 0: the wainscot built INSIDE the walls; a second, older gavel
+sharing the real one's names; the tables' bodies 3 cm up), the
+BUNGALOW (door headers short of door and wall; the closet boxes'
+bottom row 2.5 cm up; the headboard over the legs; a mirror insert
+shot from outside the house at 2.4 m), DAILY GRIND and FOXHOLE BAR
+(each declared its counter's top as the slab's CENTRE and dressed
+from it, so the register, pots, pitchers, cup stack and taps sat 3
+cm inside the counter; the daily grind's register stood past the
+counter's end; pendant cords short of ceiling and shade), LITTLE
+SWITZERLAND (every chalet window, flower box and brace 2–4 cm proud
+of its facade; a snow strip left hanging 16 m out after its ridge
+was deleted), the PIT STOP OFFICE, DIEGO (his laptop and letter were
+dressed for the desk's old position and hung in mid-air 2.5 m from
+it), and WGUR (the kill switch, coffee maker and caution tape at
+guessed coordinates — one outside the building; the tower's
+obstruction lamps in its middle on nothing). A scan for "slab
+centred on the height the dressing uses" found seven builders; in
+five the dressing already sat right (placed with the half-thickness
+added) and the change was reverted there — a scan is a lead, not a
+fix. Audit: the foliage drop list no longer drops curtain RODS and
+other hardware; backdrop terrain (hill, ridge, sea) holds what
+stands on it; `Part_*` partitions are walls to the overlap grammar.
+NEXT: gym weight room 10, new orleans office 10, salty tome 10, cafe
+olimpico 9, cosmic back office 9, henderson garage 9, hospital room
+9, darkroom 8, houston design studio 8, houston office 8; overlap:
+crumpled barn 11, centro break room 10, ben's bedroom 10.
 
 **2026-09-19 · DESIGN · the two decorative checks made real, the first
 remembered choice.** Nate's basement (ch6) and Tem staying (ch8): the

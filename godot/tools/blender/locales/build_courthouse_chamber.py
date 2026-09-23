@@ -45,9 +45,11 @@ def build_shell():
                            ceil_z=CEIL, palette={"wood": COL_WOOD_DARK})
     # Wainscoting band on all walls
     for nm, axis, length, wx, wy, sign in [
-        ("Wains_W", 'Y', ROOM_D, -ROOM_W/2.0 + 0.06, ROOM_D/2.0, +1),
-        ("Wains_E", 'Y', ROOM_D, +ROOM_W/2.0 - 0.06, ROOM_D/2.0, -1),
-        ("Wains_N", 'X', ROOM_W, 0.0, ROOM_D - 0.06, -1)]:
+        # ON the walls' inner faces, between the corner walls (2026-09-23:
+        # built 8 cm inside the walls and through the corners)
+        ("Wains_W", 'Y', ROOM_D - 0.20, -ROOM_W/2.0 + 0.14, ROOM_D/2.0, +1),
+        ("Wains_E", 'Y', ROOM_D - 0.20, +ROOM_W/2.0 - 0.14, ROOM_D/2.0, -1),
+        ("Wains_N", 'X', ROOM_W - 0.20, 0.0, ROOM_D - 0.14, -1)]:
         if axis == 'Y':
             make_box(nm, (wx, wy, 1.10), (0.08, length, 1.20), COL_WOOD_DARK)
         else:
@@ -82,10 +84,9 @@ def build_judge_bench_and_dais():
     make_cyl("Judge_Chair_Post", (0.0, by+0.40, 0.30 + (0.74 - 0.30) / 2.0), 0.03, 0.74 - 0.30, COL_WOOD_DARK, segments=8)
     make_cyl("Judge_Chair_Base", (0.0, by+0.40, 0.30 + 0.02), 0.28, 0.04, COL_WOOD_DARK, segments=12)
     make_box("Judge_Chair_Back", (0.0, by+0.70, 1.38), (0.60, 0.10, 1.20), COL_LEATHER)
-    # Gavel + sound block on the bench top
-    make_box("Sound_Block", (-0.40, by+0.20, 1.46), (0.20, 0.16, 0.04), COL_BENCH_TOP)
-    make_cyl("Gavel_Handle", (-0.40, by+0.20, 1.52), 0.018, 0.20, COL_GAVEL, axis='X')
-    make_cyl("Gavel_Head", (-0.20, by+0.20, 1.52), 0.05, 0.08, COL_GAVEL)
+    # (2026-09-23) a second gavel + sound block stood here, 2-3 cm over the
+    # top, sharing its names with the real one (build_gavel_dressing, on the
+    # sound block by the scales) — removed.
     # Scales of justice
     make_cyl("Scales_Post", (+0.40, by+0.20, 1.62), 0.014, 0.30, COL_SCALES)
     make_box("Scales_Beam", (+0.40, by+0.20, 1.76), (0.30, 0.02, 0.02), COL_SCALES)
@@ -99,7 +100,7 @@ def build_witness_stand():
     # Small box on the dais to the judge's right (E side)
     wx, wy = +2.40, ROOM_D - 2.40
     make_box("Witness_Stand_Front", (wx, wy, 0.60), (0.60, 0.20, 1.20), COL_WOOD_DARK)   # to the floor (2026-09-08)
-    make_box("Witness_Stand_Top",   (wx, wy, 1.24), (0.70, 0.30, 0.04), COL_BENCH_TOP)
+    make_box("Witness_Stand_Top",   (wx, wy, 1.22), (0.70, 0.30, 0.04), COL_BENCH_TOP)   # on its front (2026-09-23: 2 cm over it)
     make_box("Witness_Chair_Seat", (wx, wy-0.30, 0.46), (0.40, 0.40, 0.04), COL_LEATHER)
     # legs (2026-09-08)
     for lx_ in (-1, 1):
@@ -142,7 +143,7 @@ def build_counsel_tables():
     for ti, (tx, label) in enumerate([(-1.50, "Plaintiff"), (+1.50, "Defense")]):
         ty = ROOM_D/2.0 - 0.50
         make_box(f"Table_{ti}_Top",  (tx, ty, 0.74), (1.40, 0.80, 0.04), COL_WOOD_MID)
-        make_box(f"Table_{ti}_Body", (tx, ty, 0.37), (1.36, 0.76, 0.68), COL_WOOD_MID)   # on the floor (2026-09-22: 6 cm up)
+        make_box(f"Table_{ti}_Body", (tx, ty, 0.36), (1.36, 0.76, 0.72), COL_WOOD_MID)   # floor to top (2026-09-23: 3 cm up, 1 cm under it)
         # Two chairs per table (S-facing, attorneys)
         for ci, csgn in enumerate([-0.40, +0.40]):
             make_box(f"Table_{ti}_Chair_Seat_{ci}", (tx+csgn, ty-0.60, 0.46),
@@ -186,7 +187,7 @@ def build_flag_and_seal():
         make_box(f"Flag_Drape_R_{ci}", (cx+0.40, ROOM_D-0.30, 3.50), (0.60, 0.04, 0.40), fc1)
         make_box(f"Flag_Drape_W_{ci}", (cx+0.40, ROOM_D-0.30, 3.10), (0.60, 0.04, 0.40), fc2)
     # Court seal mounted high above the bench arched window
-    make_box("Seal_Mount", (0.0, ROOM_D-0.04, 4.10), (0.80, 0.04, 0.40), COL_WOOD_DARK)
+    make_box("Seal_Mount", (0.0, ROOM_D-0.12, 4.10), (0.80, 0.04, 0.40), COL_WOOD_DARK)   # on the wall face (2026-09-23: inside the wall)
     make_cyl("Seal", (0.0, ROOM_D-0.06, 4.10), 0.34, 0.04, COL_BRASS, axis='Y', segments=18)
 
 
@@ -429,7 +430,7 @@ def build_justice_wave2_props():
     # approximations · two brown ovals)
     for ci, dx in enumerate([-0.04, +0.04]):
         make_cyl("Chambers_Croissant_%d" % ci,
-                 (corridor_x + dx, corridor_y + 0.10, 0.66),
+                 (corridor_x + dx, corridor_y + 0.10, 0.64),   # in the bag's mouth
                  0.05, 0.04,
                  (0.78, 0.58, 0.28, 1.0), segments=8, axis='Z')
 
@@ -439,7 +440,7 @@ def build_justice_wave2_props():
     desk_y = +6.00
     # Desk top
     make_box("Erica_JudgeDesk_Top",
-             (desk_x, desk_y, table_top_z),
+             (desk_x, desk_y, table_top_z - 0.02),   # on its pedestal (2026-09-23: 2 cm over it)
              (0.90, 0.50, 0.04),
              (0.28, 0.18, 0.14, 1.0))
     # Desk drawers (side)
@@ -449,21 +450,21 @@ def build_justice_wave2_props():
              (0.24, 0.16, 0.12, 1.0))
     # Desk lamp
     make_cyl("Erica_JudgeDesk_LampPost",
-             (desk_x - 0.32, desk_y + 0.12, table_top_z + 0.20),
+             (desk_x - 0.32, desk_y + 0.12, table_top_z + 0.18),
              0.008, 0.36,
              (0.62, 0.62, 0.60, 1.0), segments=6, axis='Z')
     make_cyl("Erica_JudgeDesk_LampShade",
-             (desk_x - 0.32, desk_y + 0.12, table_top_z + 0.38),
+             (desk_x - 0.32, desk_y + 0.12, table_top_z + 0.36),
              0.08, 0.08,
              (0.94, 0.86, 0.62, 1.0), segments=10, axis='Z')
     # Erica's robe on a hook on the chambers wall
     # on the east wall (2026-09-22: the hook hung in open air at x 3.9)
     make_box("Erica_Robe_Hanger",
-             (+5.39, +6.60, 1.90),
-             (0.02, 0.20, 0.03),
+             (+5.365, +6.60, 1.90),   # out over the wainscot (2026-09-23: the robe hung through it)
+             (0.07, 0.20, 0.03),
              (0.62, 0.62, 0.60, 1.0))
     make_box("Erica_Robe_Body",
-             (+5.37, +6.60, 1.43),
+             (+5.29, +6.60, 1.43),
              (0.06, 0.40, 0.90),
              (0.14, 0.12, 0.10, 1.0))   # black judicial robe
 
@@ -506,7 +507,7 @@ def build_justice_wave2_props():
              (0.30, 0.20, 0.44),
              (0.24, 0.20, 0.18, 1.0))   # dark suit
     make_cyl("Avant_Suit_Head",
-             (avant_x, avant_y, 1.02),
+             (avant_x, avant_y, 1.00),   # on the shoulders
              0.09, 0.14,
              (0.78, 0.62, 0.52, 1.0),   # skin-tone approx
              segments=10, axis='Z')
@@ -538,7 +539,7 @@ def build_justice_wave2_props():
              (0.42, 0.24, 0.14, 1.0))
     # Handle
     make_box("Reynaud_Briefcase_Handle",
-             (dt_x + 0.30, dt_y - 0.06, table_top_z + 0.20),
+             (dt_x + 0.30, dt_y - 0.06, table_top_z + 0.185),   # on the case
              (0.14, 0.02, 0.03),
              (0.42, 0.24, 0.14, 1.0))
     # Gold catch
@@ -553,7 +554,7 @@ def build_arraignment_props():
     clerk's docket screen, Dean's manila folder in the second
     gallery row."""
     make_box("Side_Door", (ROOM_W/2.0-0.06, 9.20, 1.05), (0.06, 0.95, 2.10), COL_WOOD_DARK)
-    make_cyl("Side_Door_Knob", (ROOM_W/2.0-0.14, 8.85, 1.02), 0.03, 0.04, (0.74, 0.58, 0.28, 1.0), axis='X', segments=8)
+    make_cyl("Side_Door_Knob", (ROOM_W/2.0-0.11, 8.85, 1.02), 0.03, 0.04, (0.74, 0.58, 0.28, 1.0), axis='X', segments=8)
     make_box("Clerk_Screen", (-1.55, 10.05, 1.15), (0.42, 0.06, 0.30), (0.14, 0.15, 0.17, 1.0))
     make_box("Clerk_Screen_Doc", (-1.55, 10.01, 1.15), (0.34, 0.01, 0.22), (0.86, 0.88, 0.84, 1.0))
     make_box("Deans_Folder", (-1.90, 2.70, 0.50), (0.30, 0.22, 0.02), (0.82, 0.72, 0.50, 1.0))

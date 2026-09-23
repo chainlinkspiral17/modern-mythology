@@ -51,6 +51,10 @@ FOLIAGE = re.compile(r"caneleaf|(^|_)(foliage|leaf|leaves|frond|lobe|salal|shrub
 TREE_CROWN = re.compile(r"(tree|cedar|sitka|hemlock|grove|scrub|conifer|broadleaf|oak|pine|maple|birch|elm|willow|fir|spruce|palm|alder|cottonwood|poplar|aspen|cypress|juniper|shrub|bush|sapling|myrtle|magnolia|dogwood|sycamore|laurel|neardeep|deep|wild|yard|back)[a-z0-9_]*_(crown|canopy)", re.I)
 # a door / window / gate / shutter LEAF is a slab, not foliage (2026-09-22:
 # "leaf" dropped the centro cooler's door, so its handle floated)
+# a curtain ROD, a vine TRELLIS rail, a spray-bar BRACKET are hardware the
+# fabric or plant hangs from — not foliage (2026-09-23: "curtain" dropped
+# diego's rod, so his blackout curtains hung from nothing)
+HARDWARE = re.compile(r"(^|_)(rod|rail|track|bracket|hook|pole|trellis)(_|$)", re.I)
 DOOR_LEAF = re.compile(r"(door|window|gate|shutter|hatch|lid)_?leaf", re.I)
 TERRAIN = {"graustark", "harmony_terrain", "small_wood_road", "riverfront", "louisiana_road", "new_auburn_road", "harmony_district"}
 SHELL = re.compile(r"(^|_)(wall|floor|ceil|ground|road|slab|apron|sidewalk|curb|terrain|lawn|grass|deck|stair|step|porch|platform|roof|beam|joist|foundation|pier|spandrel|lintel|jamb|partition|hull|shell|facade|street|path|gravel|asphalt|track|rail_bed|island|dock|bridge)|parking_lot|^lot_(asphalt|dirt|gravel|walk|curb)|^part_[a-z]+(_base)?$", re.I)
@@ -62,6 +66,9 @@ SKY = re.compile(r"(^|_)(sky|far|farband|horizon|mist|cloud|drone|skein|haze|fog
 # a diorama's land and sea plates are the TABLE its models stand on
 # (2026-09-23: "template_land|template_sea" sat in SKY, so every cedar,
 # river and label on the estuary 7 template read as floating)
+# backdrop TERRAIN is still ground: a watch tower on the far hill, a
+# skiff on the sea (2026-09-23). It must still be touched to hold.
+GROUNDLIKE = re.compile(r"(^|_)(hill|ridge|valley_floor|swamp_floor|lake_water|sea)(_|$)", re.I)
 TABLETOP = re.compile(r"^template_(land|sea)$", re.I)
 
 
@@ -78,9 +85,9 @@ def audit(locale, boxes, show_all=False):
     for n, c, h in boxes:
         # shells stay whatever the vantage audit ignores (it drops floors
         # and ceilings as not-a-thing; here they are what things stand on)
-        if not SHELL.search(n) and not DOOR_LEAF.search(n) and (FOLIAGE.search(n) or TREE_CROWN.search(n)):
+        if not SHELL.search(n) and not DOOR_LEAF.search(n) and not HARDWARE.search(n) and (FOLIAGE.search(n) or TREE_CROWN.search(n)):
             continue
-        if SKY.search(n) and not TABLETOP.search(n):
+        if SKY.search(n) and not TABLETOP.search(n) and not GROUNDLIKE.search(n):
             continue
         keep.append((n, tuple(c[i] - h[i] for i in range(3)), tuple(c[i] + h[i] for i in range(3))))
     n = len(keep)
@@ -109,14 +116,14 @@ def audit(locale, boxes, show_all=False):
         active.append(i)
     grounded = set()
     for i, (nm, lo, hi) in enumerate(keep):
-        if SHELL.search(nm) or lo[2] <= TOUCH:
+        if SHELL.search(nm) or GROUNDLIKE.search(nm) or lo[2] <= TOUCH:
             grounded.add(find(i))
     comps = defaultdict(list)
     for i in range(n):
         r = find(i)
         if r not in grounded:
             comps[r].append(i)
-    shells = [(keep[i][1], keep[i][2]) for i in range(n) if SHELL.search(keep[i][0])]
+    shells = [(keep[i][1], keep[i][2]) for i in range(n) if SHELL.search(keep[i][0]) or GROUNDLIKE.search(keep[i][0])]
     floats = []
     for r, members in comps.items():
         members.sort(key=lambda i: keep[i][1][2])

@@ -36,7 +36,7 @@ EPS = 0.015
 CONTENT_MAX_HALF = 0.50   # contents of a container are under 1 m in every dimension (2026-09-22)
 EMBED_MAX = 0.06   # a prop's back set into the plaster; 2026-09-22 (user: objects inside other objects) it was 0.14, a chair back 12 cm in a wall passed
 WALLISH = re.compile(
-    r"wall|hull|window|door|sign|brand|part[nsew]?\b|partition|trim|crown|band\b|band_|"
+    r"wall|hull|window|door|sign|brand|part[nsew]?\b|(^|_)part_|partition|trim|crown|band\b|band_|"
     r"baseboard|backsplash|wainscot|frame|sill|floor|ceil|apron|"
     r"cornice|facade|knee|"
     r"turf|road|grass|rug|mat|plumbing|curb|kerb|lawn|drive|sidewalk|path|apron|asphalt|edgeline|stripe|shoulder|gravel|yard\b|headland|ground|walk\b|walkway|win\b|win_|outlet|socket|plate\b|numeral|slab|flagstone|plaza|endzone|seam|shore|sand|dune|land\b|grout", re.I)

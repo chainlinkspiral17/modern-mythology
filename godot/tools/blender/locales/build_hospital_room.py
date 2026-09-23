@@ -69,7 +69,7 @@ def build_curtain():
     rail_z = CEIL-0.20
     make_cyl("Curtain_Rail", (0.0, 1.9, rail_z), 0.02, ROOM_W-0.6, P.METAL_STEEL, axis='X')
     for bi, bx in enumerate((-2.0, 2.0)):
-        make_cyl(f"Curtain_Bracket_{bi}", (bx, 1.9, rail_z-0.05), 0.015, 0.10, P.METAL_STEEL)
+        make_cyl(f"Curtain_Bracket_{bi}", (bx, 1.9, (rail_z + CEIL) / 2.0), 0.015, CEIL - rail_z, P.METAL_STEEL)   # rail UP to the ceiling (2026-09-23: they hung below the rail)
     make_box("Curtain_Fabric", (1.2, 1.9, rail_z-0.85), (2.0, 0.03, 1.60), (0.60,0.74,0.70,1.0))
     for i in range(6):
         make_box(f"Curtain_Pleat_{i}", (0.3+i*0.34, 1.88, rail_z-0.85), (0.02, 0.02, 1.58), (0.50,0.64,0.60,1.0))

@@ -326,8 +326,8 @@ def build_shell():
     # Front door + back door
     make_box("FrontDoor", (0.0, INTERIOR_Y_S - 0.04, 1.05),
              (1.40, 0.04, 2.10), COL_DOOR)
-    make_box("FrontDoor_Frame_T", (0.0, INTERIOR_Y_S, 2.18),
-             (1.60, 0.22, 0.12), COL_DOORFRAME)
+    make_box("FrontDoor_Frame_T", (0.0, INTERIOR_Y_S, 2.20),   # door top to the wall above (2026-09-23: 2 cm and 6 cm gaps)
+             (1.60, 0.22, 0.20), COL_DOORFRAME)
     # Screen door overlay (paler, in front)
     make_box("FrontDoor_Screen", (0.0, INTERIOR_Y_S - 0.10, 1.05),
              (1.40, 0.02, 2.10), (0.62, 0.60, 0.52, 0.6))
@@ -338,8 +338,8 @@ def build_shell():
 
     make_box("BackDoor", (0.0, INTERIOR_Y_N + 0.04, 1.05),
              (1.40, 0.04, 2.10), COL_DOOR)
-    make_box("BackDoor_Frame_T", (0.0, INTERIOR_Y_N, 2.18),
-             (1.60, 0.22, 0.12), COL_DOORFRAME)
+    make_box("BackDoor_Frame_T", (0.0, INTERIOR_Y_N, 2.20),
+             (1.60, 0.22, 0.20), COL_DOORFRAME)
 
     # WELCOME mat — outside the front door, cursive
     make_box("WelcomeMat",
@@ -534,7 +534,7 @@ def build_living_room():
     # Marker labels — illegible at this scale, but visible
     for i, (bx, by) in enumerate([(-0.2, +2.6), (+0.4, +2.6), (+1.0, +2.6)]):
         make_box(f"LR_Box_Label_{i}",
-                 (bx - 0.20, by - 0.255, z + 0.25),
+                 (bx - 0.20, by - (0.229 if i == 1 else 0.255), z + 0.25),   # on its own box's face (box 2 stands 2.5 cm further back)
                  (0.16, 0.004, 0.06), COL_PAPER)
 
     # ── Side table next to the (south, facing the window) seating —
@@ -576,7 +576,7 @@ def build_living_room():
     ch_x, ch_y = -1.6, +0.8
     # (draft N+1: chamfered cushions, rolled arms — the chair you sat
     # in too long has a dent, see build_lr_studio_draft_2026_09)
-    make_chamfer_box("LR_Chair_Base", (ch_x, ch_y, 0.22), (0.70, 0.65, 0.24), (0.42, 0.32, 0.26, 1.0), chamfer=0.02)
+    make_chamfer_box("LR_Chair_Base", (ch_x, ch_y, 0.17), (0.70, 0.65, 0.34), (0.42, 0.32, 0.26, 1.0), chamfer=0.02)   # to the floor (2026-09-23: 10 cm up)
     make_chamfer_box("LR_Chair_Seat", (ch_x, ch_y - 0.03, 0.42), (0.62, 0.56, 0.16), (0.52, 0.40, 0.32, 1.0), chamfer=0.04)
     make_chamfer_box("LR_Chair_Back", (ch_x, ch_y + 0.30, 0.95), (0.70, 0.12, 0.90), (0.52, 0.40, 0.32, 1.0), chamfer=0.04)
     for side, sx in (("L", -0.32), ("R", 0.32)):
@@ -829,10 +829,10 @@ def build_kitchen():
              (+1.6, counter_y - 0.04, 0.84),
              (0.50, 0.36, 0.10), COL_METAL_STEEL)
     make_cyl("Kitchen_Faucet",
-             (+1.6, counter_y + 0.16, 1.05),
+             (+1.6, counter_y + 0.16, 1.03),   # on the counter
              0.016, 0.20, COL_METAL_BRASS, segments=8)
     make_box("Kitchen_FaucetHandle",
-             (+1.6, counter_y + 0.18, 1.18),
+             (+1.6, counter_y + 0.18, 1.15),
              (0.10, 0.04, 0.04), COL_METAL_BRASS)
     # Stovetop — 4 burners, one listing (slightly off-center)
     make_box("Kitchen_Stove",
@@ -849,10 +849,10 @@ def build_kitchen():
     # rotated position rather than mesh rotation)
     kx, ky = +3.6 + 0.04, counter_y + 0.12 - 0.04  # offset = list
     make_cyl("Kitchen_Kettle_Body",
-             (kx, ky, 1.05),
+             (kx, ky, 1.035),   # on the burner (2026-09-23: 1.5 cm over it)
              0.10, 0.12, (0.18, 0.18, 0.22, 1.0), segments=10)
     make_cyl("Kitchen_Kettle_Top",
-             (kx, ky, 1.135),
+             (kx, ky, 1.115),
              0.08, 0.04, (0.22, 0.22, 0.26, 1.0), segments=10)
     # Spout
     make_cyl("Kitchen_Kettle_Spout",
@@ -981,8 +981,8 @@ def build_bedroom():
              frame_col=(0.36, 0.24, 0.16, 1.0), mattress_col=(0.92, 0.86, 0.74, 1.0),
              blanket_col=COL_FABRIC_SHEET, pillow_col=COL_TRIM_WHITE, pillows=1, made=False, headboard=False)
     make_box("Bedroom_Bed_Headboard",
-             (bd_x, bd_y + 1.00, 0.95),
-             (1.50, 0.10, 1.00), (0.32, 0.22, 0.14, 1.0))
+             (bd_x, bd_y + 0.99, 0.725),   # floor to 1.45, against the mattress (2026-09-23: it hung 11 cm over the legs)
+             (1.50, 0.10, 1.45), (0.32, 0.22, 0.14, 1.0))
 
     # ── Dresser — opposite the bed (south part of room)
     dr_x, dr_y = -3.0, +3.4
@@ -1026,13 +1026,13 @@ def build_bedroom():
 
     # ── Bedside lamp on the dresser
     make_cyl("Bedroom_LampBase",
-             (dr_x - 0.40, dr_y, 1.04),
+             (dr_x - 0.40, dr_y, 1.02),   # on the dresser (2026-09-23: 2 cm over it)
              0.06, 0.04, COL_METAL_BRASS)
     make_cyl("Bedroom_LampPole",
-             (dr_x - 0.40, dr_y, 1.16),
+             (dr_x - 0.40, dr_y, 1.14),
              0.012, 0.20, COL_METAL_BRASS)
     make_cyl("Bedroom_LampShade",
-             (dr_x - 0.40, dr_y, 1.30),
+             (dr_x - 0.40, dr_y, 1.31),   # on the pole (2026-09-23: 3 cm down it)
              0.08, 0.14, (0.86, 0.78, 0.62, 1.0), segments=10)
 
 
@@ -1118,9 +1118,9 @@ def build_storage_closet():
     # ── 5 stacked boxes, dusty, labeled POMEGRANATE HOUR ──
     bx_y = +1.5
     layout = [
-        (-0.5, +1.3, 0.45, 0.45, 0.45),
-        (+0.0, +1.3, 0.45, 0.45, 0.45),
-        (+0.5, +1.3, 0.45, 0.45, 0.45),
+        (-0.5, +1.3, 0.45, 0.45, 0.50),   # floor to 0.50, under the top row (2026-09-23: 2.5 cm up, 5 cm under it)
+        (+0.0, +1.3, 0.45, 0.45, 0.50),
+        (+0.5, +1.3, 0.45, 0.45, 0.50),
         (-0.2, +1.3, 0.45, 0.40, 0.40),   # stacked on row 1
         (+0.3, +1.3, 0.40, 0.40, 0.40),
     ]
@@ -1639,7 +1639,7 @@ def build_priestess_dressing():
     basil_y = INTERIOR_Y_N - 0.16   # (2026-09-10: the fallen leaves were at (2.6, 1.4) — mid-kitchen floor)
     basil_z = 1.04                  # the pot's rim
     for li, (lx_off, ly_off, lz_off) in enumerate([
-        (+0.04, +0.02, +0.18),
+        (+0.04, +0.02, +0.106),   # on the stem's tip (2026-09-23: 2.4 cm off the plant)
         (-0.03, -0.02, +0.14),
     ]):
         make_box("Priestess_BasilYellowLeaf_%d" % li,

@@ -68,7 +68,7 @@ def build_desk_lamp():
         make_box(f"Desk_Leg_{li}", (lx, ly, 0.36), (0.04, 0.04, 0.72), COL_WOOD)
     make_box("Lamp_Base", (dx-0.30, dy+0.20, 0.78), (0.10, 0.10, 0.04), P.METAL_BLACK)
     make_cyl("Lamp_Arm", (dx-0.30, dy+0.20, 0.96), 0.012, 0.30, P.METAL_BLACK)
-    make_cyl("Lamp_Head", (dx-0.20, dy+0.20, 1.16), 0.06, 0.08, COL_RED)
+    make_cyl("Lamp_Head", (dx-0.23, dy+0.20, 1.16), 0.06, 0.08, COL_RED)   # on its arm (2026-09-23: 2.8 cm off it)
     # Homework: an open notebook + textbook + a pen
     make_box("Notebook", (dx+0.12, dy-0.02, 0.765), (0.30, 0.40, 0.01), P.PAPER)
     make_box("Textbook", (dx+0.30, dy+0.16, 0.79), (0.24, 0.30, 0.05), COL_ACCENT)
@@ -88,7 +88,7 @@ def build_ceiling_infra():
     # THE FAN that clicks on the third rotation — not shop tubes
     make_cyl("Fan_Downrod", (0.0, ROOM_D/2.0, CEIL-0.08), 0.02, 0.16, (0.20, 0.19, 0.20, 1.0), segments=6)
     make_cyl("Fan_Hub", (0.0, ROOM_D/2.0, CEIL-0.20), 0.10, 0.09, (0.20, 0.19, 0.20, 1.0), segments=10)
-    for bi, (dx, dy) in enumerate([(0.5, 0.0), (-0.5, 0.0), (0.0, 0.5), (0.0, -0.5)]):
+    for bi, (dx, dy) in enumerate([(0.41, 0.0), (-0.41, 0.0), (0.0, 0.41), (0.0, -0.41)]):   # into the hub (2026-09-23: 9 cm short)
         make_box(f"Fan_Blade_{bi}", (dx, ROOM_D/2.0 + dy, CEIL-0.22),
                  (0.62 if dy == 0.0 else 0.18, 0.18 if dy == 0.0 else 0.62, 0.02),
                  (0.44, 0.32, 0.22, 1.0))
@@ -139,7 +139,7 @@ def build_dressing():
     # Desk chair
     dx, dy = +ROOM_W/4.0, ROOM_D - 0.45   # 13 cm off the N wall (2026-09-07: it stood mid-room)
     make_box("Chair_Seat", (dx, dy-0.55, 0.46), (0.42, 0.42, 0.05), COL_WOOD)
-    make_box("Chair_Back", (dx, dy-0.74, 0.74), (0.42, 0.05, 0.46), COL_ACCENT)
+    make_box("Chair_Back", (dx, dy-0.74, 0.715), (0.42, 0.05, 0.46), COL_ACCENT)   # on the seat
     for i, (lx, ly) in enumerate([(-0.16, -0.16), (0.16, -0.16), (-0.16, 0.16), (0.16, 0.16)]):
         make_box(f"Chair_Leg_{i}", (dx+lx, dy-0.55+ly, 0.23), (0.05, 0.05, 0.44), P.METAL_BLACK)
     # Corner sprout (wires the imported helper) — SW corner, under the
@@ -150,18 +150,20 @@ def build_hero_props():
     """2026-08-03 tail pass: the BLACKOUT curtains (and the regular
     pair), the clock moved to the dresser, the letter's envelope on
     the desk corner, the laptop."""
-    make_cyl("Curtain_Rod", (0.0, ROOM_D-0.14, 2.12), 0.015, 1.60, (0.20, 0.19, 0.20, 1.0), segments=6, axis='X')
+    # on the wall (2026-09-23: 2.5 cm off it)
+    make_cyl("Curtain_Rod", (0.0, ROOM_D-0.115, 2.12), 0.015, 1.60, (0.20, 0.19, 0.20, 1.0), segments=6, axis='X')
     for cx in (-0.42, 0.42):
         make_box(f"Blackout_{cx:+.2f}", (cx, ROOM_D-0.16, 1.50), (0.50, 0.04, 1.30), (0.14, 0.14, 0.18, 1.0))
         make_box(f"Regular_Curtain_{cx:+.2f}", (cx, ROOM_D-0.22, 1.50), (0.46, 0.03, 1.26), (0.55, 0.52, 0.60, 1.0))
     # Clock on the DRESSER ("The clock on the dresser says three eleven")
     make_box("Dresser_Clock", (1.70, 2.94, 1.00), (0.14, 0.09, 0.09), (0.16, 0.16, 0.18, 1.0))
     make_box("Dresser_Clock_Face", (1.70, 2.89, 1.00), (0.10, 0.01, 0.055), (0.72, 0.24, 0.20, 1.0))
-    # The envelope on the desk's SE corner
-    make_box("Letter_Envelope", (1.40, 1.24, 0.765), (0.22, 0.11, 0.005), (0.94, 0.93, 0.90, 1.0))
+    # The envelope on the desk's SE corner — the desk moved to the N wall
+    # on 09-07 and these stayed behind in mid-air at y 1.2-1.6 (2026-09-23)
+    make_box("Letter_Envelope", (1.45, 3.95, 0.7625), (0.22, 0.11, 0.005), (0.94, 0.93, 0.90, 1.0))
     # The laptop with the schedule open
-    make_box("Laptop_Base", (1.00, 1.44, 0.77), (0.32, 0.24, 0.02), (0.30, 0.30, 0.34, 1.0))
-    make_box("Laptop_Screen", (1.00, 1.56, 0.87), (0.32, 0.02, 0.20), (0.16, 0.20, 0.26, 1.0))
+    make_box("Laptop_Base", (0.85, 4.00, 0.77), (0.32, 0.24, 0.02), (0.30, 0.30, 0.34, 1.0))
+    make_box("Laptop_Screen", (0.85, 4.12, 0.87), (0.32, 0.02, 0.20), (0.16, 0.20, 0.26, 1.0))
 
 
 
