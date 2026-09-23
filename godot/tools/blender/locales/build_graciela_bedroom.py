@@ -117,9 +117,10 @@ def build_bed():
     make_cyl("Rosary_Drape", (bx - (bw / 2.0 + 0.02), hb_y, 1.35), 0.02, 0.5,
              COL_ROSARY, segments=6)
     for k in range(6):
-        make_box(f"Rosary_Bead_{k}", (bx - 0.2 + k * 0.05, by - 0.2, mattress_z + 0.11),
+        # on the spread (2026-09-23: 3 cm over it)
+        make_box(f"Rosary_Bead_{k}", (bx - 0.2 + k * 0.05, by - 0.2, mattress_z + 0.08),
                  (0.02, 0.02, 0.02), COL_ROSARY)
-    make_box("Rosary_Cross", (bx + 0.12, by - 0.2, mattress_z + 0.11),
+    make_box("Rosary_Cross", (bx + 0.12, by - 0.2, mattress_z + 0.08),
              (0.02, 0.05, 0.02), COL_BRASS)
     # Small crucifix centered above the headboard on the north wall
     make_box("BedCrucifix_V", (bx, ROOM_D - 0.03, 2.1), (0.05, 0.02, 0.26), COL_WOOD_DK)

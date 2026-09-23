@@ -112,10 +112,10 @@ def build_ceiling_infra():
     import math as _m
     for bi in range(5):
         ang = bi * (2.0 * _m.pi / 5.0)
-        make_box(f"Fan_Blade_{bi}", (0.45 * _m.cos(ang), 2.5 + 0.45 * _m.sin(ang), CEIL-0.26),
-                 (0.70 if abs(_m.cos(ang)) > 0.5 else 0.18,   # into the hub (2026-09-22: 3 cm short)
-                  0.18 if abs(_m.cos(ang)) > 0.5 else 0.62, 0.02),
-                 (0.44, 0.32, 0.22, 1.0))
+        # each blade turned to its own angle, root in the hub (2026-09-23:
+        # axis-aligned boxes left two of the five 6 cm off the hub)
+        make_rot_box(f"Fan_Blade_{bi}", (0.43 * _m.cos(ang), 2.5 + 0.43 * _m.sin(ang), CEIL-0.26),
+                     (0.66, 0.16, 0.02), (0.44, 0.32, 0.22, 1.0), yaw=ang)
     make_smoke_detector("Smoke", (0.9, ROOM_D/2.0, CEIL))
 
 
@@ -150,14 +150,17 @@ def build_dressing():
             make_cyl(f"FigureHead_{r}_{c}", (shx-0.04, ROOM_D-1.85+c*0.30, 0.95+r*0.42), 0.05, 0.10, (0.86, 0.70, 0.54, 1.0), segments=8)
     # Stack of model kit boxes in the SE corner
     for mi in range(3):
-        make_box(f"ModelKit_{mi}", (ROOM_W/2.0-0.4, 0.7, 0.12+mi*0.16), (0.42-mi*0.04, 0.30, 0.14), TINTS[(mi*2) % len(TINTS)])
+        # stacked, box on box from the floor (2026-09-23: 2 cm gaps, 5 cm off the floor)
+        make_box(f"ModelKit_{mi}", (ROOM_W/2.0-0.4, 0.7, 0.07+mi*0.14), (0.42-mi*0.04, 0.30, 0.14), TINTS[(mi*2) % len(TINTS)])
     # Beanbag chair (squashed stack of discs)
     make_lathe("Beanbag", (0.3, 1.1, 0.0), [(0.36, 0.0), (0.44, 0.06), (0.45, 0.16), (0.40, 0.26), (0.30, 0.34), (0.14, 0.40), (0.0, 0.41)], COL_ACCENT, segments=14)   # draft 4: one sat-in shape
     make_lathe("Beanbag_Dent", (0.34, 1.06, 0.36), [(0.16, 0.0), (0.12, 0.02), (0.0, 0.03)], (0.38, 0.58, 0.32, 1.0), segments=12)
     # Skateboard leaning against the south wall
     # draft 4: the deck leans on the wall (tail on the floor), trucks and wheels on the room side
-    make_rot_box("Skateboard", (0.9, 0.21, 0.40), (0.20, 0.02, 0.80), COL_BLUE, pitch=0.28)
-    for wi, (wy, wz) in enumerate(((0.26, 0.16), (0.33, 0.66))):
+    # (2026-09-23: pitch tipped the deck sideways, 10 cm off the wall, trucks
+    # and wheels on air; roll leans it back onto the wall, tail on the floor)
+    make_rot_box("Skate_Deck", (0.9, 0.22, 0.388), (0.20, 0.02, 0.80), COL_BLUE, roll=0.28)
+    for wi, (wy, wz) in enumerate(((0.331, 0.129), (0.176, 0.667))):
         make_box(f"Skate_Truck_{wi}", (0.9, wy, wz), (0.16, 0.05, 0.025), P.METAL_STEEL)
         for sgn in (-1, 1):
             make_cyl(f"Skate_Wheel_{wi}_{sgn:+d}", (0.9 + sgn * 0.09, wy + 0.03, wz), 0.025, 0.02, (0.86, 0.82, 0.30, 1.0), axis='X', segments=8)

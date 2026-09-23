@@ -85,7 +85,8 @@ def build_bed():
     make_chamfer_box("Bed_Comforter", (bx + 0.15, by, 0.76), (1.40, 0.82, 0.10), COL_ACCENT)   # ON the mattress, clear of the pillow (2026-09-07)
     make_chamfer_box("Bed_Pillow", (bx - 0.68, by, 0.76), (0.30, 0.90, 0.12), P.PAPER)   # on the mattress, off its chamfered edge (2026-09-22)
     for ci, cx in enumerate((bx - 0.55, bx + 0.1, bx + 0.65)):
-        make_box(f"Bed_Crate_{ci}", (cx, by, 0.18), (0.40, 0.90, 0.28), (0.34, 0.24, 0.16, 1.0))
+        # on the floor (2026-09-23: 4 cm up, the frame standing on nothing)
+        make_box(f"Bed_Crate_{ci}", (cx, by, 0.14), (0.40, 0.90, 0.28), (0.34, 0.24, 0.16, 1.0))
 
 def build_desk_lamp():
     dx, dy = DESK_X, 1.5   # end against the E wall; the perch chair owns the N side (2026-09-07)
@@ -287,8 +288,11 @@ def build_draft3_2026_09():
     make_box("Wear_Corner", (ROOM_W / 2.0 - 0.104, 0.42, 0.26), (0.004, 0.50, 0.22), (0.86, 0.76, 0.66, 1.0))
     make_box("Wear_Desk_Edge", (DESK_X, 1.23, 0.7615), (0.80, 0.05, 0.003), (0.36, 0.26, 0.16, 1.0))
     make_box("Wear_Drip", (-1.415, 1.30, 0.60), (0.004, 0.30, 0.20), (0.44, 0.38, 0.30, 1.0))
+    # the S window's interior sill — the crow and its marks were on air
+    # (2026-09-23: the window had a frame in the wall and no sill)
+    make_box("S_Window_Sill", (1.55, 0.26, 1.055), (1.00, 0.32, 0.03), (0.80, 0.78, 0.72, 1.0))
     for mi in range(5):
-        make_box(f"Sill_Mark_{mi}", (1.35 + mi * 0.09, 0.22 + (mi % 2) * 0.05, 1.052), (0.03, 0.02, 0.002), (0.90, 0.90, 0.86, 1.0))
+        make_box(f"Sill_Mark_{mi}", (1.35 + mi * 0.09, 0.22 + (mi % 2) * 0.05, 1.071), (0.03, 0.02, 0.002), (0.90, 0.90, 0.86, 1.0))
     # D3: the counter's outlet + the kettle's cord; the desk's outlet +
     # the lamp's cord (straight tubes)
     make_wall_outlet("Outlet_W_2", (-ROOM_W / 2.0, 1.15), axis='Y', face_sign=1, z=1.15, aged=True)

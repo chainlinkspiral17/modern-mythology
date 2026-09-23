@@ -2111,6 +2111,36 @@ rooms mounted it 10 cm into the east wall.
 NEXT: the rooms at 7 (finn, graciela, missing link interior, new
 orleans room, roadside chapel, sam bedroom, hans bakery); overlap:
 crumpled barn 11, centro break room 10, ben's bedroom 10.
+FIFTEENTH PASS (batches 29–30; support 176 → 123, overlap 151 → 120):
+the seven rooms at 7 to zero. FINN (a crow and its sill marks on a
+sill the window never had; bed crates 4 cm off the floor), GRACIELA
+(the rosary 3 cm over the spread), MISSING LINK (every booth seat a
+cushion at 39 cm on nothing — plinths added; the ticket rail on air
+15 cm off the wall, now along the menu board), NEW ORLEANS ROOM (the
+letter, pen and envelope at the desk's OLD position over the pillow;
+the headboard 2 cm over the platform; the bulb, socket and cord in
+three pieces), the ROADSIDE CHAPEL (the altar top over its base; four
+of six votives standing off the rack's edges), SAM (two of five fan
+blades off the hub — blades rotated now; the model kits stacked with
+gaps; the skateboard tipped SIDEWAYS by `pitch`, 10 cm off the wall),
+HANS BAKERY (hood, scale, tool rail, calendar, drawers, and two coat
+pegs in the air in front of the pass window). And the three worst
+overlap rooms to zero: the CENTRO BREAK ROOM's whole kitchenette faced
+the wall (counter doors, upper cabinet doors and fridge doors on the
+wall side, the run 8 cm inside the W wall, the fridge 16 cm into the
+N wall, the bulletin board inside it, the dishwasher half inside the
+counter carcass); BEN'S BEDROOM (the headboard, the desk and the depth
+chart inside their walls; the "cracked" door was a shut leaf with its
+knob 56 cm in front of it and a slot open to the ceiling beside the
+opening — the leaf swings in on its hinge now); the CRUMPLED BARN
+(the automaton cabinet was one solid block with Jiggles inside the
+wood — built hollow now; a post through a fallen roof plane; the
+fallen beam through the rubble).
+NEXT: the rooms at 6 (bar exterior, briar falls, caldwell radio room
+night, foxhole dressing room, miller office) and 5 (christian ice co,
+elicia apartment, kowalski backyard, parish cemetery, safehouse
+bedroom); overlap: graustark 8, riverboat interior 8, mixing glass 7,
+the diner 6 (a model chapter — first), harmony terrain 6.
 
 **2026-09-19 · DESIGN · the two decorative checks made real, the first
 remembered choice.** Nate's basement (ch6) and Tem staying (ch8): the

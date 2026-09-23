@@ -46,7 +46,8 @@ def build_bed():
              frame_col=COL_BED_FRAME, mattress_col=COL_LINEN, sheet_col=COL_LINEN,
              blanket_col=COL_LINEN, pillow_col=P.PAPER, pillows=1, made=False, headboard=False)
     # Head/foot board
-    make_box("Bed_HeadBoard", (bx, by+0.92, 0.70), (1.20, 0.04, 0.80), COL_BED_FRAME)
+    # to the floor (2026-09-23: it hung 2 cm over the platform)
+    make_box("Bed_HeadBoard", (bx, by+0.92, 0.55), (1.20, 0.04, 1.10), COL_BED_FRAME)
     make_box("Bed_FootBoard", (bx, by-0.92, 0.46), (1.20, 0.04, 0.50), COL_BED_FRAME)
     # Nightstand
     make_box("Nightstand", (-0.95, 4.35, 0.40), (0.40, 0.40, 0.80), COL_BED_FRAME)   # at the bed's west side by the head (2026-09-10)
@@ -59,8 +60,9 @@ def build_washbasin():
     make_box("Basin_Bracket", (wx, wy, 0.74), (0.04, 0.50, 0.10), COL_FAUCET)
     make_box("Basin_Bowl", (wx-0.20, wy, 0.84), (0.36, 0.46, 0.16), COL_BASIN)
     make_cyl("Basin_Faucet", (wx-0.20, wy, 1.00), 0.012, 0.20, COL_FAUCET)
-    make_box("Basin_Spout", (wx-0.30, wy, 1.10), (0.10, 0.04, 0.04), COL_FAUCET)
-    make_cyl("Basin_DrainPipe", (wx-0.20, wy, 0.40), 0.025, 0.50, COL_FAUCET)
+    # spout off the faucet, drain up to the bowl (2026-09-23: both on air)
+    make_box("Basin_Spout", (wx-0.26, wy, 1.08), (0.10, 0.04, 0.04), COL_FAUCET)
+    make_cyl("Basin_DrainPipe", (wx-0.20, wy, 0.455), 0.025, 0.61, COL_FAUCET)
     # Towel hanging
     make_box("Basin_Towel", (wx-0.30, wy-0.30, 0.60), (0.02, 0.30, 0.40), (0.78, 0.62, 0.42, 1.0))
 
@@ -88,8 +90,9 @@ def build_decor():
 def build_ceiling_infra():
     # Bare bulb on cord (only light)
     make_cyl("Bulb_Cord", (0.0, 2.5, CEIL-0.30), 0.005, 0.60, P.METAL_BLACK)
-    make_cyl("Bulb_Socket", (0.0, 2.5, CEIL-0.66), 0.025, 0.06, (0.62, 0.62, 0.60, 1.0))
-    make_cyl("Bulb_Glass", (0.0, 2.5, CEIL-0.80), 0.06, 0.12, COL_BULB)
+    # socket on the cord, bulb in the socket (2026-09-23: 3 cm and 5 cm gaps)
+    make_cyl("Bulb_Socket", (0.0, 2.5, CEIL-0.63), 0.025, 0.06, (0.62, 0.62, 0.60, 1.0))
+    make_cyl("Bulb_Glass", (0.0, 2.5, CEIL-0.72), 0.06, 0.12, COL_BULB)
     make_smoke_detector("Smoke", (+1.0, 1.5, CEIL))
 
 def build_hero_props():
@@ -103,9 +106,11 @@ def build_hero_props():
     for lx in (-0.44, 0.44):
         make_box(f"Desk_Leg_{lx:+.2f}", (1.10 + lx, 4.55, 0.37), (0.06, 0.50, 0.72), wood)
     make_box("Desk_Drawer", (1.10, 4.30, 0.62), (0.60, 0.02, 0.12), (0.30, 0.22, 0.14, 1.0))
-    make_box("Letter_Paper", (-0.10, 4.50, 0.775), (0.16, 0.22, 0.005), (0.92, 0.90, 0.84, 1.0))
-    make_box("Letter_Pen", (0.14, 4.48, 0.775), (0.02, 0.13, 0.01), (0.14, 0.14, 0.16, 1.0))
-    make_box("Addressed_Envelope", (0.24, 4.60, 0.775), (0.20, 0.10, 0.005), (0.90, 0.88, 0.82, 1.0))
+    # on the desk, W of the basin (2026-09-23: the three stayed at the
+    # desk's old x 0 when the top moved to 1.1 — over the pillow, on air)
+    make_box("Letter_Paper", (0.78, 4.50, 0.7675), (0.16, 0.22, 0.005), (0.92, 0.90, 0.84, 1.0))
+    make_box("Letter_Pen", (0.90, 4.48, 0.770), (0.02, 0.13, 0.01), (0.14, 0.14, 0.16, 1.0))
+    make_box("Addressed_Envelope", (1.06, 4.64, 0.7675), (0.20, 0.10, 0.005), (0.90, 0.88, 0.82, 1.0))
     # Dresser + the small mirror
     make_box("Dresser", (-1.75, 2.60, 0.44), (0.45, 1.00, 0.88), wood)
     for di in range(3):

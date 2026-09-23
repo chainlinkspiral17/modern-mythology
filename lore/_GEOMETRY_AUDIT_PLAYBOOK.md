@@ -385,6 +385,27 @@ banisters classed · pans as containers.
   support audit's SKY list, so every model on the estuary 7 diorama
   (cedars, rivers, labels, the cursor) read as floating. A drop list
   entry needs the name of the thing it is FOR; that one had none.
+- **"Into the wall" can mean "facing the wall" (fifteenth pass).** The
+  overlap gate reported the Centro break room's fridge 16 cm into the
+  N wall. Looking closer: the counter, the upper cabinets and the
+  fridge all put their doors and pulls on the WALL side (`cx - 0.24`),
+  and the whole run stood 8 cm inside the W wall. When a clip says a
+  fixture is inside a wall, check which side its fronts are on before
+  nudging it out.
+- **A solid block with something inside it is a case with no inside.**
+  The crumpled barn's automaton cabinet was one `Cab_Body` box, 1.9 m
+  of solid wood with Jiggles hanging inside it — eight clips. The fix
+  is to build the case hollow (base, back, sides, head), not to move
+  the puppet.
+- **`make_rot_box` pitch turns about local Y.** Sam's skateboard used
+  `pitch` to "lean on the wall" and tipped over sideways instead, 10 cm
+  off the wall with its trucks on air. To lean something against a
+  wall that runs along X, use `roll` (about X); along Y, `pitch`.
+- **When the prose names a surface, check the surface was built.**
+  Finn's crow sat "on the south sill" with five sill marks around it;
+  the window kit had built a frame in the wall and no interior sill,
+  so the crow's marks were on air. New Orleans room's letter, pen and
+  envelope sat at the desk's old x after the top moved 1.1 m.
 
 ### 2026-09-06 · a builder that raises under the recorder is dropped without a flag
 

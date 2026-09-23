@@ -23,7 +23,7 @@ import os, sys
 _BT = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)), ".."))
 if _BT not in sys.path: sys.path.insert(0, _BT)
 from _props import palette as P
-from _props.geometry import clear_scene, make_box, make_cyl, export_glb
+from _props.geometry import clear_scene, make_box, make_cyl, make_rot_box, export_glb
 from _props.structure import make_floor, make_wall, make_ceiling
 from _props.detail import (make_floor_stain, make_traffic_wear, make_wall_outlet, make_wall_tint_band)
 
@@ -64,15 +64,26 @@ def build_shell():
     make_wall("Wall_S_E", (0.85, 0.0, 0), length=ROOM_W - 1.5, height=CEIL,
               axis='X', palette=pal)
     make_box("Wall_S_W", (-1.55, 0.0, CEIL / 2.0), (0.5, 0.20, CEIL), COL_WALL)
-    make_box("Wall_S_Above", (-0.85, 0.0, CEIL - 0.20), (0.95, 0.20, 0.40), COL_WALL)
+    # the full width of the opening (2026-09-23: it stopped 17 cm short of
+    # Wall_S_E and left a slot open to the ceiling)
+    make_box("Wall_S_Above", (-0.75, 0.0, CEIL - 0.20), (1.10, 0.20, 0.40), COL_WALL)
     make_ceiling("Ceil", (0.0, ROOM_D / 2.0, CEIL), size_x=ROOM_W + 0.4,
                  size_y=ROOM_D + 0.4, with_grid=False, with_stains=False)
     # The CRACKED door — ajar ~25 degrees into the room (canon: the
     # small specific way, for Mister)
-    make_box("Door_Leaf", (-0.81, 0.06, 1.02), (0.82, 0.05, 2.03), COL_DOOR)
-    make_box("Door_Crack_Dark", (-0.28, 0.05, 1.02), (0.12, 0.03, 2.00), (0.05, 0.05, 0.06, 1.0))
-    make_cyl("Door_Knob", (-0.62, 0.62, 0.98), 0.035, 0.05, COL_FRAME_DK,
-             segments=8, axis='X')
+    # (2026-09-23: the leaf stood shut in the plane of the wall, the knob
+    # hung in the air 56 cm in front of it and the "crack" was a dark
+    # strip in the slot beside the opening; the leaf now swings in on its
+    # W hinge, the knob on its free end, the dark hall behind the opening)
+    import math as _m
+    th = 0.44
+    hx, hy = -1.24, 0.06
+    make_rot_box("Door_Leaf", (hx + 0.41 * _m.cos(th), hy + 0.41 * _m.sin(th), 1.02),
+                 (0.82, 0.05, 2.03), COL_DOOR, yaw=th)
+    make_box("Door_Crack_Dark", (-0.75, -0.115, 1.05), (1.10, 0.03, 2.10), (0.05, 0.05, 0.06, 1.0))
+    make_cyl("Door_Knob", (hx + 0.76 * _m.cos(th) - 0.05 * _m.sin(th),
+                           hy + 0.76 * _m.sin(th) + 0.05 * _m.cos(th), 0.98), 0.035, 0.05, COL_FRAME_DK,
+             segments=8, axis='Y')
     make_box("Door_Jamb", (-1.28, 0.0, 1.02), (0.08, 0.22, 2.04), COL_FRAME_DK)
     # Oval rug mid-floor
     make_cyl("Rug", (0.1, 2.0, 0.008), 0.85, 0.012, COL_RUG, segments=16)
@@ -82,9 +93,10 @@ def build_bed():
     from _props.furniture import make_bed
     """Twin-XL, headboard EAST wall (unique footprint), footlocker at
     the foot, Mister curled at the foot of the blanket."""
-    bx = ROOM_W / 2.0 - 1.10     # bed runs E→W, head at east wall (platform ends at the headboard)
+    bx = ROOM_W / 2.0 - 1.18     # bed runs E→W, head at east wall (platform ends at the headboard)
     by = 2.9
-    make_box("Bed_Head", (ROOM_W / 2.0 - 0.06, by, 0.55), (0.08, 1.05, 0.75), COL_FRAME_DK)
+    # on the wall face (2026-09-23: the whole board was inside the E wall)
+    make_box("Bed_Head", (ROOM_W / 2.0 - 0.14, by, 0.55), (0.08, 1.05, 0.75), COL_FRAME_DK)
     # the shared bed, head to the E wall, navy blanket made (2026-09-07)
     make_bed("Bed", bx, by, head="+X", w=1.05, d=2.0, style="platform",
              frame_col=COL_FRAME, mattress_col=COL_SHEET, sheet_col=COL_SHEET,
@@ -100,7 +112,7 @@ def build_bed():
 def build_desk():
     """Desk on the WEST wall: lamp, the 9:48 alarm clock, homework
     stack, the depth chart taped above."""
-    dx = -ROOM_W / 2.0 + 0.32
+    dx = -ROOM_W / 2.0 + 0.40   # against the wall face (2026-09-23: 8 cm into it)
     dy = 1.4
     make_box("Desk_Top", (dx, dy, 0.74), (0.6, 1.2, 0.05), COL_FRAME)
     for sy in (dy - 0.52, dy + 0.52):
@@ -123,12 +135,13 @@ def build_desk():
                    (dx + 0.72, dy - 0.16), (dx + 0.72, dy + 0.16)):
         make_box(f"Chair_Leg_{cx:.2f}_{cy:.2f}", (cx, cy, 0.22), (0.04, 0.04, 0.44), COL_FRAME_DK)
     # THE DEPTH CHART taped to the wall above the desk (ch19 canon)
-    make_box("DepthChart", (-ROOM_W / 2.0 + 0.03, dy, 1.55), (0.01, 0.5, 0.65), COL_PAPER)
+    # on the wall face (2026-09-23: taped inside the wall)
+    make_box("DepthChart", (-ROOM_W / 2.0 + 0.105, dy, 1.55), (0.01, 0.5, 0.65), COL_PAPER)
     for r in range(6):
-        make_box(f"DepthChart_Row_{r}", (-ROOM_W / 2.0 + 0.036, dy, 1.78 - r * 0.09),
+        make_box(f"DepthChart_Row_{r}", (-ROOM_W / 2.0 + 0.1125, dy, 1.78 - r * 0.09),
                  (0.005, 0.42, 0.025), (0.35, 0.35, 0.38, 1.0))
     for tc in ((dy - 0.22, 1.86), (dy + 0.22, 1.24)):
-        make_box(f"DepthChart_Tape_{tc[1]:.2f}", (-ROOM_W / 2.0 + 0.035, tc[0], tc[1]),
+        make_box(f"DepthChart_Tape_{tc[1]:.2f}", (-ROOM_W / 2.0 + 0.113, tc[0], tc[1]),
                  (0.006, 0.08, 0.04), (0.85, 0.82, 0.70, 0.8))
 
 
@@ -148,9 +161,11 @@ def build_gear_and_pack():
         make_box(f"Cleat_{k}", (-1.3 + k * 0.24, 3.15, 0.06), (0.12, 0.30, 0.10),
                  (0.15, 0.15, 0.16, 1.0))
     # Jersey on a hanger, north wall
-    make_box("Jersey", (-0.75, ROOM_D - 0.12, 1.55), (0.55, 0.04, 0.6), COL_JERSEY)
-    make_box("Jersey_Num", (-0.75, ROOM_D - 0.145, 1.55), (0.22, 0.01, 0.3), COL_PILLOW)
-    make_cyl("Jersey_Rod", (-0.75, ROOM_D - 0.13, 1.92), 0.015, 0.7, COL_FRAME_DK,
+    # hung from the rod, the rod on the wall (2026-09-23: rod 1.5 cm off
+    # the wall, jersey 5.5 cm under the rod)
+    make_box("Jersey", (-0.75, ROOM_D - 0.12, 1.605), (0.55, 0.04, 0.6), COL_JERSEY)
+    make_box("Jersey_Num", (-0.75, ROOM_D - 0.145, 1.605), (0.22, 0.01, 0.3), COL_PILLOW)
+    make_cyl("Jersey_Rod", (-0.75, ROOM_D - 0.115, 1.92), 0.015, 0.7, COL_FRAME_DK,
              segments=6, axis='X')
     # A REAL window on the north wall (the cicadas are loud through
     # it; the old build was a single 6 cm stick inside the wall)

@@ -115,7 +115,7 @@ def build_stove():
         make_cyl(f"Oven_Handle_{di}", (sx-0.50, sy, dz-0.24), 0.02, 0.60, P.METAL_STEEL, axis='Y', segments=8)
         for k, hy in enumerate((sy-0.26, sy+0.26)):
             make_cyl(f"Oven_Handle_Post_{di}_{k}", (sx-0.475, hy, dz-0.24), 0.012, 0.05, P.METAL_STEEL, axis='X', segments=6)
-    make_chamfer_box("Oven_Hood", (sx, sy, 1.70), (1.10, 0.90, 0.30), P.METAL_STEEL)
+    make_chamfer_box("Oven_Hood", (sx, sy, 1.65), (1.10, 0.90, 0.30), P.METAL_STEEL)   # on the oven (2026-09-23: 5 cm over it)
 
 def build_bakery():
     """Back-of-house bakery: a rolling speed rack of sheet trays + loaves,
@@ -189,10 +189,11 @@ def build_equipment():
         make_cyl(f"FlourBin_Wheel_{wi}", (fx+wo, fy, 0.05), 0.05, 0.05, P.METAL_BLACK, axis='X', segments=8)
     # Platform baker's scale on the prep table's edge.
     sx, sy = -1.48, 1.93   # (draft 4: on the prep table's NE corner, off the dough and the pin)
-    make_box("Scale_Base", (sx, sy, 0.98), (0.24, 0.24, 0.06), (0.30, 0.30, 0.32, 1.0))
-    make_box("Scale_Platform", (sx, sy, 1.04), (0.20, 0.20, 0.02), P.METAL_STEEL)
-    make_box("Scale_Column", (sx+0.09, sy, 1.14), (0.03, 0.03, 0.18), (0.30, 0.30, 0.32, 1.0))
-    make_cyl("Scale_Dial", (sx+0.09, sy, 1.26), 0.07, 0.03, (0.94, 0.92, 0.86, 1.0), axis='Y', segments=12)
+    # stacked from the table top up (2026-09-23: every piece 2-4 cm apart)
+    make_box("Scale_Base", (sx, sy, 0.96), (0.24, 0.24, 0.06), (0.30, 0.30, 0.32, 1.0))
+    make_box("Scale_Platform", (sx - 0.02, sy, 1.00), (0.20, 0.20, 0.02), P.METAL_STEEL)
+    make_box("Scale_Column", (sx+0.09, sy, 1.08), (0.03, 0.03, 0.18), (0.30, 0.30, 0.32, 1.0))
+    make_cyl("Scale_Dial", (sx+0.09, sy, 1.20), 0.07, 0.03, (0.94, 0.92, 0.86, 1.0), axis='Y', segments=12)
 
 def build_cooling_rack():
     # Wire cooling rack of finished loaves, center-east floor.
@@ -211,6 +212,9 @@ def build_utensil_rail():
     rx0, rx1 = COUNTER_CX-1.0, COUNTER_CX+0.9
     ry = ROOM_D - 0.14
     make_box("Rail", ((rx0+rx1)/2.0, ry, 1.85), (rx1-rx0, 0.03, 0.03), P.METAL_STEEL)
+    # the rail's wall brackets (2026-09-23: rail, hooks and tools on air)
+    for k, bxk in enumerate((rx0 + 0.05, rx1 - 0.05)):
+        make_box(f"Rail_Bracket_{k}", (bxk, ROOM_D - 0.1125, 1.85), (0.03, 0.025, 0.04), P.METAL_STEEL)
     tools = [("Whisk", 0.10, 0.22, P.METAL_STEEL), ("Spatula", 0.05, 0.26, (0.42,0.30,0.18,1.0)),
              ("Scraper", 0.08, 0.20, (0.30,0.42,0.52,1.0)), ("Ladle", 0.07, 0.24, P.METAL_STEEL),
              ("Brush", 0.05, 0.22, (0.62,0.46,0.30,1.0)), ("Sieve", 0.10, 0.18, P.METAL_STEEL)]
@@ -241,7 +245,7 @@ def build_pass_window():
                  (0.86, 0.64, 0.34, 1.0), segments=8)
 
 def build_decor():
-    make_calendar("Calendar", (-ROOM_W/2.0+0.13, 1.4, 1.70))
+    make_calendar("Calendar", (-ROOM_W/2.0+0.1025, 1.4, 1.70))   # on the wall (2026-09-23: 2.7 cm off it)
     make_faded_poster("Poster_E", (ROOM_W/2.0-0.05, 1.6, 1.60))
     # (draft 4: by the pass window's east pier — at (-2.5, 4.4) the pot
     # stood inside the north counter's west end)
@@ -304,9 +308,9 @@ def build_communal_table():
     # seat shared 0.1 m with the speed rack's frame)
     make_chair("WinChair", -2.35, 2.75, yaw=-_m.pi/2.0, wood=wood, w=0.40)
     # Greta's cloth drawer + the chapbook drawer, N counter faces
-    make_box("Greta_Drawer", (-1.5, 3.62, 0.74), (0.44, 0.02, 0.16), wood_dk)
+    make_box("Greta_Drawer", (-1.5, 3.64, 0.74), (0.44, 0.02, 0.16), wood_dk)   # on the counter face (2026-09-23: 2 cm off it)
     make_box("Greta_Cloth", (-1.5, 3.70, 0.70), (0.20, 0.12, 0.02), (0.88, 0.86, 0.80, 1.0))
-    make_box("Chapbook_Drawer", (-1.9, 3.62, 0.56), (0.44, 0.02, 0.16), wood_dk)
+    make_box("Chapbook_Drawer", (-1.9, 3.64, 0.56), (0.44, 0.02, 0.16), wood_dk)
 
 
 def build_pers_box_2026_08():
@@ -333,8 +337,10 @@ def build_pers_box_2026_08():
     make_box("PersBox_Clasp", (bx - 0.375, by, 0.560), (0.010, 0.035, 0.030), brass)
     # The coat peg row above the bench (the canvas coat's home).
     for pi2, py2 in enumerate((by - 0.10, by + 0.14)):
-        make_cyl("DoorPeg_%d" % pi2, (bx + 0.30, py2, 1.52), 0.016, 0.09,
-                 wood_dk, segments=6, axis='X')
+        # out of the S wall beside the door (2026-09-23: two pegs in the air
+        # in front of the pass window)
+        make_cyl("DoorPeg_%d" % pi2, (1.08 + pi2 * 0.16, 0.145, 1.52), 0.016, 0.09,
+                 wood_dk, segments=6, axis='Y')
 
 
 def build_hero_props_2026_09():

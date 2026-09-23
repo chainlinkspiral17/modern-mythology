@@ -75,18 +75,22 @@ def build_collapse():
     # vantage stands there)
     make_box("Roof_Plane_W", (-2.6, 12.4, 0.75), (4.4, 4.2, 0.30), COL_ROOF)
     make_box("Roof_Plane_E", (1.9, 12.8, 1.15), (4.0, 3.8, 0.30), COL_ROOF_DK)
+    # (2026-09-23: Post_3 ran straight up through this plane; it is a
+    # stub now, the post the plane came down on)
     make_box("Roof_Ridge_Piece", (-0.3, 13.6, 1.55), (3.2, 0.7, 0.35), COL_ROOF_DK)
     # Rubble bed under and around the planes
-    rubble = [(-3.8, 9.6, 0.5), (-1.0, 10.2, 0.7), (2.8, 9.8, 0.45), (0.6, 12.8, 0.55),
+    rubble = [(-3.8, 9.6, 0.5), (-1.0, 10.2, 0.6),   # (Rubble_1 up to the W plane's underside, not 10 cm into it) (2.8, 9.8, 0.45), (0.6, 12.8, 0.55),
               (-4.4, 11.8, 0.4), (4.0, 11.6, 0.6), (2.0, 13.4, 0.35)]
     for i, (rx, ry, rh) in enumerate(rubble):
         make_box(f"Rubble_{i}", (rx, ry, rh / 2.0), (1.3 + 0.3 * (i % 3), 1.0, rh),
                  COL_RUBBLE)
     # Frame posts still standing inside the footprint, varied heights
-    posts = [(-2.8, 10.4, 3.4), (1.6, 10.8, 2.6), (-0.4, 12.2, 3.0), (3.0, 12.6, 1.8)]
+    posts = [(-2.8, 10.4, 3.4), (1.6, 10.8, 2.6), (-0.4, 12.2, 3.0), (3.0, 12.6, 1.0)]
     for i, (px, py, ph) in enumerate(posts):
         make_box(f"Post_{i}", (px, py, ph / 2.0), (0.24, 0.24, ph), COL_FRAME)
-    make_box("Beam_Fallen", (-1.0, 11.2, 0.35), (0.22, 3.8, 0.22), COL_FRAME)
+    # on the ground, from the rubble's end (2026-09-23: 3.8 m of it ran
+    # through Rubble_1 at knee height)
+    make_box("Beam_Fallen", (-1.0, 11.95, 0.11), (0.22, 2.5, 0.22), COL_FRAME)
     # Scattered siding boards in the yard
     boards = [(-3.5, 6.8, 0.0), (-1.2, 6.2, 0.4), (1.8, 6.9, -0.2), (3.2, 7.6, 0.3)]
     for i, (bx, by, rot_hint) in enumerate(boards):
@@ -126,30 +130,39 @@ def build_interior():
     # The cabinet — against the gable's inner face beside the sign,
     # glass fourth wall facing north into the bay
     cbx, cby = -1.8, 8.95
-    make_box("Cab_Body", (cbx, cby, 0.95), (0.7, 0.9, 1.9), (0.30, 0.22, 0.16, 1.0))
+    # a hollow case — base, back, sides, head (2026-09-23: Cab_Body was
+    # one solid block and Jiggles hung inside the wood)
+    cab = (0.30, 0.22, 0.16, 1.0)
+    make_box("Cab_Body", (cbx, cby, 0.36), (0.7, 0.9, 0.72), cab)
+    make_box("Cab_Back", (cbx, cby - 0.43, 1.31), (0.7, 0.04, 1.18), cab)
+    for sgn, tag in ((-1, "W"), (1, "E")):
+        make_box(f"Cab_Side_{tag}", (cbx + sgn * 0.33, cby + 0.02, 1.31), (0.04, 0.86, 1.18), cab)
+    make_box("Cab_Head", (cbx, cby + 0.02, 1.85), (0.62, 0.86, 0.10), cab)
     make_box("Cab_Stage", (cbx + 0.1, cby, 0.75), (0.45, 0.7, 0.06), (0.44, 0.34, 0.22, 1.0))
     # Glass fourth wall (north face), broken: partial pane + shard
-    make_box("Cab_Glass", (cbx - 0.12, cby + 0.44, 1.30), (0.55, 0.02, 0.75),
+    make_box("Cab_Glass", (cbx - 0.035, cby + 0.42, 1.30), (0.55, 0.02, 0.75),
              (0.55, 0.62, 0.66, 0.35))
-    make_box("Cab_Glass_Shard", (cbx + 0.24, cby + 0.42, 0.82), (0.20, 0.02, 0.16),
+    make_box("Cab_Glass_Shard", (cbx + 0.21, cby + 0.42, 0.82), (0.20, 0.02, 0.16),
              (0.55, 0.62, 0.66, 0.5))
     # Jiggles the Juggler — sagging at the hip, head against shoulder
     make_box("Jiggles_Torso", (cbx + 0.08, cby, 1.10), (0.14, 0.18, 0.30),
              (0.56, 0.44, 0.30, 1.0))
-    make_box("Jiggles_Hip_Sag", (cbx + 0.06, cby + 0.06, 0.90), (0.13, 0.16, 0.14),
+    # slumped onto the stage, torso to boards (2026-09-23: hung 5 cm over it)
+    make_box("Jiggles_Hip_Sag", (cbx + 0.06, cby + 0.06, 0.865), (0.13, 0.16, 0.17),
              (0.48, 0.36, 0.26, 1.0))
     make_cyl("Jiggles_Head", (cbx + 0.14, cby - 0.09, 1.30), 0.07, 0.12,
              (0.78, 0.68, 0.55, 1.0), segments=8)
-    make_box("Jiggles_Arm_L", (cbx + 0.04, cby - 0.16, 1.02), (0.05, 0.05, 0.26),
+    make_box("Jiggles_Arm_L", (cbx + 0.04, cby - 0.115, 1.02), (0.05, 0.05, 0.26),   # at the shoulder
              (0.56, 0.44, 0.30, 1.0))
-    make_box("Jiggles_Arm_R", (cbx + 0.04, cby + 0.17, 1.12), (0.05, 0.05, 0.22),
+    make_box("Jiggles_Arm_R", (cbx + 0.04, cby + 0.115, 1.12), (0.05, 0.05, 0.22),
              (0.56, 0.44, 0.30, 1.0))
     # His name in red paint on the cabinet base (north face)
     make_box("Jiggles_Name", (cbx, cby + 0.46, 0.62), (0.5, 0.02, 0.08),
              (0.58, 0.16, 0.12, 1.0))
     # Marionette strings up into the case head
-    for i, sy in enumerate((cby - 0.1, cby, cby + 0.1)):
-        make_box(f"Jiggles_String_{i}", (cbx + 0.08, sy, 1.60), (0.008, 0.008, 0.45),
+    # from the case head down to head, shoulders, hip
+    for i, (sy, sb) in enumerate(((cby - 0.1, 1.36), (cby, 1.25), (cby + 0.1, 0.95))):
+        make_box(f"Jiggles_String_{i}", (cbx + 0.08, sy, (1.80 + sb) / 2.0), (0.008, 0.008, 1.80 - sb),
                  (0.62, 0.60, 0.55, 1.0))
     # The carved wooden sign, half-hanging on the gable's inner face:
     # one corner up, one dropped (two offset panels read as a tilt)

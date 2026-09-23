@@ -356,8 +356,8 @@ ahead of every other background item: a room that floats is not a
 draft of anything. The tenth pass taught the recorder spheres —
 every vendored sphere had been invisible to every gate, and the
 diner (a model chapter) had six table lamps built inside six booth
-pendants because of it (support 517); the eleventh took five more rooms to zero (support 447); the twelfth found the counter kit burying all its dressing 2 cm deep in 22 builders and took six more rooms to zero (support 371); the thirteenth took eleven more, including the two worst overlap rooms (the pit stop 26 clips → 0, the courthouse 10 → 0); the fourteenth took eleven more and fixed two more kits (the hospital bed's rails, the security camera). Next: the rooms at 7;
-overlap: pit stop 26, crumpled barn 11.
+pendants because of it (support 517); the eleventh took five more rooms to zero (support 447); the twelfth found the counter kit burying all its dressing 2 cm deep in 22 builders and took six more rooms to zero (support 371); the thirteenth took eleven more, including the two worst overlap rooms (the pit stop 26 clips → 0, the courthouse 10 → 0); the fourteenth took eleven more and fixed two more kits (the hospital bed's rails, the security camera); the fifteenth took the seven rooms at 7 and the three worst overlap rooms to zero — the Centro break room's whole kitchenette faced the wall, and the crumpled barn's automaton hung inside a solid block (support 123, overlap 120). Next: the rooms at 6 and 5;
+overlap: the diner's last 6 (a model chapter), graustark 8, riverboat interior 8.
 
 **Draft targets, by volume, by uses:**
 - **Vol 7 (current):** `cabin_interior` (31) · `lena_apartment` (23)

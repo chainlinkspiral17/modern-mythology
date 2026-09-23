@@ -149,9 +149,11 @@ def build_backbar_kitchen():
         make_box(f"MenuBoard_Row_{li}", (-0.4, ROOM_D - 0.14, 2.22 - li * 0.14),
                  (2.2, 0.005, 0.05), (0.90, 0.86, 0.72, 1.0))
     # Ticket rail at the pass
-    make_box("TicketRail", (0.0, ROOM_D - 0.28, 1.70), (2.0, 0.02, 0.02), COL_CHROME)
+    # (2026-09-23: the rail hung on air 15 cm off the wall; it runs along the
+    # menu board's bottom edge now, tickets clipped under it)
+    make_box("TicketRail", (0.0, ROOM_D - 0.145, 1.74), (2.0, 0.02, 0.02), COL_CHROME)
     for ti in range(3):
-        make_box(f"Ticket_{ti}", (-0.6 + ti * 0.6, ROOM_D - 0.30, 1.62),
+        make_box(f"Ticket_{ti}", (-0.6 + ti * 0.6, ROOM_D - 0.1575, 1.66),
                  (0.10, 0.005, 0.14), (0.94, 0.90, 0.62, 1.0))
     # Swinging kitchen door with a round porthole
     make_box("KitchenDoor", (0.0, ROOM_D - 0.02, 1.05), (0.94, 0.06, 2.05), COL_LAMINATE)
@@ -169,6 +171,10 @@ def build_window_booths():
             benchx = bx + sgn * 0.36
             make_chamfer_box(f"Booth_{bi}_Seat_{tag}", (benchx, 0.95, 0.44),
                              (0.30, 1.10, 0.10), COL_VINYL_RED, chamfer=0.03)
+            # the bench's plinth (2026-09-23: every seat cushion hung at
+            # 0.39 with nothing under it)
+            make_box(f"Booth_{bi}_Plinth_{tag}", (benchx + sgn * 0.02, 0.95, 0.195),
+                     (0.26, 1.04, 0.39), COL_VINYL_DK)
             make_chamfer_box(f"Booth_{bi}_Back_{tag}", (bx + sgn * 0.52, 0.95, 0.83),
                              (0.10, 1.10, 0.66), COL_VINYL_DK, chamfer=0.03)
             make_tube(f"Booth_{bi}_Rail_{tag}", [(bx + sgn * 0.52, 0.40, 1.17), (bx + sgn * 0.52, 1.50, 1.17)], 0.018, COL_CHROME, segments=6)

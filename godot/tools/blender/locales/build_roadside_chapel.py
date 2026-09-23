@@ -59,14 +59,14 @@ def build_stained_glass_window():
 
 def build_altar():
     ax, ay = 0.0, ROOM_D - 1.20
-    make_box("Altar_Base", (ax, ay, 0.50), (1.30, 0.50, 1.00), COL_ALTAR)
+    make_box("Altar_Base", (ax, ay, 0.51), (1.30, 0.50, 1.02), COL_ALTAR)   # up to the top (2026-09-23: the top hung 2 cm over it)
     make_box("Altar_Top",  (ax, ay, 1.04), (1.40, 0.56, 0.04), COL_ALTAR)
     # Altar cloth front
     make_box("Altar_Cloth", (ax, ay-0.30, 0.50), (1.34, 0.005, 1.00), COL_ALTAR_CLOTH)
     # Candle pair + crucifix
     for sgn in (-1, +1):
         make_cyl(f"Altar_Candle_{sgn:+d}", (ax + sgn*0.40, ay, 1.18), 0.04, 0.24, P.PAPER)
-        make_cyl(f"Altar_Candle_Flame_{sgn:+d}", (ax + sgn*0.40, ay, 1.34), 0.025, 0.04, COL_VOTIVE)
+        make_cyl(f"Altar_Candle_Flame_{sgn:+d}", (ax + sgn*0.40, ay, 1.32), 0.025, 0.04, COL_VOTIVE)   # on the wick
     make_box("Altar_Crucifix_V", (ax, ay, 1.26), (0.04, 0.04, 0.40), COL_PEW_WOOD)   # on the altar top (2026-09-22: 14 cm up)
     make_box("Altar_Crucifix_H", (ax, ay, 1.36), (0.20, 0.04, 0.04), COL_PEW_WOOD)
     # Votive rack to the right of the altar, on its stand
@@ -74,8 +74,9 @@ def build_altar():
     make_box("Votive_Stand", (vx, vy, 0.185), (0.06, 0.06, 0.37), COL_BELL_BRONZE)   # (2026-09-22: the rack hung at 0.37)
     make_box("Votive_Rack", (vx, vy, 0.42), (0.30, 0.30, 0.10), COL_BELL_BRONZE)
     for i in range(6):
-        cx = vx - 0.20 + (i % 3) * 0.20
-        cy = vy - 0.10 + (i // 3) * 0.20
+        # inside the rack (2026-09-23: the outer four stood off its edges)
+        cx = vx - 0.10 + (i % 3) * 0.10
+        cy = vy - 0.06 + (i // 3) * 0.12
         make_cyl(f"Votive_{i}", (cx, cy, 0.50), 0.025, 0.06, COL_VOTIVE)
         make_cyl(f"Votive_Flame_{i}", (cx, cy, 0.545), 0.018, 0.03, COL_VOTIVE)   # on the wick
 
