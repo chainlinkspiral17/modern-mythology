@@ -39,8 +39,8 @@ def build_shell():
     make_wall("Wall_N", (0.0, ROOM_D, 0), length=ROOM_W+0.4, height=CEIL, axis='X',
               palette=PAL, baseboard_face_sign=-1)
     # S wall: door + front window
-    make_wall("Wall_S_W", (-1.80, 0.0, 0), length=1.60, height=CEIL, axis='X', palette=PAL)
-    make_wall("Wall_S_E", (+1.80, 0.0, 0), length=1.60, height=CEIL, axis='X', palette=PAL)
+    make_wall("Wall_S_W", (-1.80, 0.0, 0), length=1.60, height=CEIL, axis='X', palette=PAL, baseboard_face_sign=+1)
+    make_wall("Wall_S_E", (+1.80, 0.0, 0), length=1.60, height=CEIL, axis='X', palette=PAL, baseboard_face_sign=+1)
     make_ceiling("Ceil", (0.0, ROOM_D/2.0, CEIL), size_x=ROOM_W+0.4, size_y=ROOM_D+0.4, with_grid=False)
     for nm, ax, length, wx, wy in [("Crown_W",'Y',ROOM_D,-ROOM_W/2.0+0.10,ROOM_D/2.0),
                                     ("Crown_E",'Y',ROOM_D,+ROOM_W/2.0-0.10,ROOM_D/2.0),

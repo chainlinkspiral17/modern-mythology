@@ -56,7 +56,7 @@ def build_shell():
     make_wall("Wall_N", (0.0, ROOM_D, 0), length=ROOM_W + 0.4, height=CEIL,
               axis='X', palette=pal, baseboard_face_sign=-1)
     make_wall("Wall_S", (0.0, 0.0, 0), length=ROOM_W + 0.4, height=CEIL,
-              axis='X', palette=pal)
+              axis='X', palette=pal, baseboard_face_sign=+1)
     make_ceiling("Ceil", (0.0, ROOM_D / 2.0, CEIL), size_x=ROOM_W + 0.4,
                  size_y=ROOM_D + 0.4, with_grid=False, with_stains=False)
     # THE CEILING FAN — what he is looking at. Center of the room.

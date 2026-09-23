@@ -70,10 +70,10 @@ def build_shell():
     make_wall("Wall_N_W", (-1.35, ROOM_D, 0), length=3.7, height=CEIL, axis='X', palette=PAL, baseboard_face_sign=-1)
     make_wall("Wall_N_E", (+2.85, ROOM_D, 0), length=0.7, height=CEIL, axis='X', palette=PAL, baseboard_face_sign=-1)
     make_box("Wall_N_Spandrel", (WIN_X, ROOM_D, 0.45), (2.00, 0.20, 0.90), PAL["wall"])
-    make_box("Wall_N_Spandrel_Base", (WIN_X, ROOM_D - 0.06, 0.08), (2.00, 0.06, 0.16), PAL["baseboard"])
+    make_box("Wall_N_Spandrel_Base", (WIN_X, ROOM_D - 0.106, 0.08), (2.00, 0.012, 0.16), PAL["baseboard"])   # on the wall face, 1.2 cm proud (2026-09-23: inside the wall)
     make_box("Wall_N_Lintel", (WIN_X, ROOM_D, 2.65), (2.00, 0.20, 0.30), PAL["wall"])
-    make_wall("Wall_S_W", (-2.0, 0.0, 0), length=2.0, height=CEIL, axis='X', palette=PAL)
-    make_wall("Wall_S_E", (+2.0, 0.0, 0), length=2.0, height=CEIL, axis='X', palette=PAL)
+    make_wall("Wall_S_W", (-2.0, 0.0, 0), length=2.0, height=CEIL, axis='X', palette=PAL, baseboard_face_sign=+1)
+    make_wall("Wall_S_E", (+2.0, 0.0, 0), length=2.0, height=CEIL, axis='X', palette=PAL, baseboard_face_sign=+1)
     make_ceiling("Ceil", (0.0, ROOM_D/2.0, CEIL), size_x=ROOM_W+0.4, size_y=ROOM_D+0.4, with_grid=False)
     for nm, ax, length, wx, wy in [("Crown_W",'Y',ROOM_D,-ROOM_W/2.0+0.10,ROOM_D/2.0),("Crown_E",'Y',ROOM_D,+ROOM_W/2.0-0.10,ROOM_D/2.0),("Crown_N",'X',ROOM_W,0.0,ROOM_D-0.10),("Crown_S",'X',ROOM_W,0.0,+0.10)]:
         make_crown_molding(nm, wall_x=wx, wall_y=wy, length=length, axis=ax, ceil_z=CEIL, palette={"wood": (0.62, 0.58, 0.54, 1.0)})

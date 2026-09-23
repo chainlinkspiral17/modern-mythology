@@ -87,10 +87,10 @@ def build_shell():
               palette=PAL_DOMESTIC_WALL, baseboard_face_sign=-1)
     make_wall("Wall_S_W", (-2.55, 0.0, 0),   # to the header's edge (2026-09-22: 40 cm short)
               length=2.90, height=CEIL_Z, axis='X',
-              palette=PAL_DOMESTIC_WALL)
+              palette=PAL_DOMESTIC_WALL, baseboard_face_sign=+1)
     make_wall("Wall_S_E", (+2.55, 0.0, 0),
               length=2.90, height=CEIL_Z, axis='X',
-              palette=PAL_DOMESTIC_WALL)
+              palette=PAL_DOMESTIC_WALL, baseboard_face_sign=+1)
     make_box("Wall_S_AboveDoor", (0.0, 0.0, CEIL_Z - 0.30),
              (2.20, 0.20, 0.60), PAL_DOMESTIC_WALL["wall"])
     make_ceiling("Ceil", (0.0, ROOM_D / 2.0, CEIL_Z),

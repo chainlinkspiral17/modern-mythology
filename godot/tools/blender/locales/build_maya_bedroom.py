@@ -49,8 +49,8 @@ def build_shell():
                   palette=PAL_WALL, baseboard_face_sign=bb)
     make_wall("Wall_N", (0.0, ROOM_D, 0), length=ROOM_W+0.4, height=CEIL, axis='X',
               palette=PAL_WALL, baseboard_face_sign=-1)
-    make_wall("Wall_S_W", (-(ROOM_W/4.0+0.5), 0.0, 0), length=ROOM_W/2.0-1.0, height=CEIL, axis='X', palette=PAL_WALL)
-    make_wall("Wall_S_E", (+(ROOM_W/4.0+0.5), 0.0, 0), length=ROOM_W/2.0-1.0, height=CEIL, axis='X', palette=PAL_WALL)
+    make_wall("Wall_S_W", (-(ROOM_W/4.0+0.5), 0.0, 0), length=ROOM_W/2.0-1.0, height=CEIL, axis='X', palette=PAL_WALL, baseboard_face_sign=+1)
+    make_wall("Wall_S_E", (+(ROOM_W/4.0+0.5), 0.0, 0), length=ROOM_W/2.0-1.0, height=CEIL, axis='X', palette=PAL_WALL, baseboard_face_sign=+1)
     make_box("Wall_S_AboveDoor", (0.0, 0.0, CEIL-0.30), (2.0, 0.20, 0.60), PAL_WALL["wall"])
     make_ceiling("Ceil", (0.0, ROOM_D/2.0, CEIL), size_x=ROOM_W+0.4, size_y=ROOM_D+0.4,
                  with_grid=False, with_stains=False,
@@ -80,7 +80,8 @@ def build_bed():
     make_chamfer_box("Bed_ThrowPillow_B", (bx+0.30, by+0.12, 0.67), (0.34, 0.34, 0.16), COL_ACCENT)
 
 def build_desk_lamp():
-    dx, dy = ROOM_W/2.0 - 0.54, 1.5   # end against the E wall; the bed owns the N wall (2026-09-07)
+    # end against the E wall face at 1.90 (2026-09-23: 6 cm into it)
+    dx, dy = ROOM_W/2.0 - 0.60, 1.5   # end against the E wall; the bed owns the N wall (2026-09-07)
     # draft 4 (2026-09-18): chamfered top, apron, turned legs; the lamp
     # a weighted base, a bent arm, a cone head
     make_chamfer_box("Desk_Top", (dx, dy, 0.74), (1.00, 0.60, 0.04), COL_WOOD, chamfer=0.01)
@@ -134,13 +135,15 @@ def build_dressing():
     make_box("Clock", (nsx, by+0.7, 0.62), (0.15, 0.10, 0.10), P.METAL_BLACK)
     make_lathe("Nightstand_Pull", (nsx, by+0.7-0.205, 0.40), [(0.0, 0.0), (0.012, 0.0), (0.014, 0.01), (0.008, 0.02), (0.0, 0.02)], (0.66, 0.60, 0.42, 1.0), segments=8)
     # Vanity dresser against the east wall: body, three drawers, ROUND mirror
-    vx = ROOM_W/2.0 - 0.30
+    vx = ROOM_W/2.0 - 0.35   # against the E wall face (2026-09-23: 5 cm into it)
     make_chamfer_box("Vanity_Body", (vx, ROOM_D-1.2, 0.42), (0.50, 0.90, 0.84), COL_WOOD)
     for di in range(3):
         make_box(f"Vanity_Drawer_{di}", (vx-0.26, ROOM_D-1.2, 0.24+di*0.24), (0.02, 0.80, 0.18), (0.44, 0.32, 0.42, 1.0))
         make_lathe(f"Vanity_Pull_{di}", (vx-0.27, ROOM_D-1.2, 0.23+di*0.24), [(0.0, 0.0), (0.012, 0.0), (0.014, 0.01), (0.008, 0.02), (0.0, 0.02)], (0.66, 0.60, 0.42, 1.0), segments=8)
-    make_cyl("Vanity_Mirror", (vx-0.02, ROOM_D-1.2, 1.34), 0.34, 0.03, (0.80, 0.86, 0.92, 0.6), axis='X', segments=16)
-    make_cyl("Vanity_MirrorFrame", (vx+0.005, ROOM_D-1.2, 1.34), 0.38, 0.03, COL_ACCENT, axis='X', segments=16)
+    # hung on the wall over the vanity (2026-09-23: it stood in the air
+    # 12 cm over the top and 20 cm off the wall)
+    make_cyl("Vanity_Mirror", (ROOM_W/2.0 - 0.145, ROOM_D-1.2, 1.34), 0.34, 0.03, (0.80, 0.86, 0.92, 0.6), axis='X', segments=16)
+    make_cyl("Vanity_MirrorFrame", (ROOM_W/2.0 - 0.115, ROOM_D-1.2, 1.34), 0.38, 0.03, COL_ACCENT, axis='X', segments=16)
     # Perfume/trinket bottles on the vanity top
     for ti, tc in enumerate([(0.86, 0.62, 0.72, 1.0), (0.62, 0.78, 0.86, 1.0), (0.92, 0.82, 0.42, 1.0)]):
         make_lathe(f"Trinket_{ti}", (vx-0.1, ROOM_D-1.5+ti*0.2, 0.84),
@@ -216,11 +219,14 @@ def build_hero_props():
     make_chamfer_box("Box_Fan", (-1.30, 4.40, 0.24), (0.44, 0.16, 0.44), (0.80, 0.78, 0.74, 1.0))
     make_cyl("Box_Fan_Grille", (-1.30, 4.31, 0.24), 0.17, 0.02, (0.30, 0.30, 0.32, 1.0), axis='Y', segments=12)
     # The spiral notebook on the desk + the packing-order supplies
-    make_box("Spiral_Notebook", (0.64, 1.62, 0.765), (0.20, 0.26, 0.012), (0.30, 0.44, 0.62, 1.0))
-    make_cyl("Spiral_Coil", (0.545, 1.62, 0.772), 0.008, 0.25, (0.60, 0.62, 0.64, 1.0), axis='Y', segments=6)
-    for si, (sx, col) in enumerate(((0.60, (0.62, 0.24, 0.24, 1.0)), (0.80, (0.24, 0.42, 0.52, 1.0)),
-                                    (1.00, (0.72, 0.62, 0.30, 1.0)), (1.20, (0.86, 0.82, 0.72, 1.0)))):
-        make_box(f"Pack_Supply_{si}", (sx, 1.30, 0.785), (0.14, 0.10, 0.03), col)
+    # ON the desk, at its free front edge (2026-09-23: the notebook and
+    # the four supply packs stayed where the desk stood before 09-07 —
+    # off its W end, in the air); the packs in a stack at the E end
+    make_box("Spiral_Notebook", (1.50, 1.32, 0.766), (0.26, 0.20, 0.012), (0.30, 0.44, 0.62, 1.0))
+    make_cyl("Spiral_Coil", (1.50, 1.415, 0.772), 0.008, 0.25, (0.60, 0.62, 0.64, 1.0), axis='X', segments=6)
+    for si, col in enumerate(((0.62, 0.24, 0.24, 1.0), (0.24, 0.42, 0.52, 1.0),
+                              (0.72, 0.62, 0.30, 1.0), (0.86, 0.82, 0.72, 1.0))):
+        make_box(f"Pack_Supply_{si}", (1.80, 1.32, 0.775 + si * 0.03), (0.14, 0.10, 0.03), col)
     # Phone on the nightstand
     make_box("Phone", (0.95, 4.55, 0.585), (0.08, 0.15, 0.012), (0.12, 0.12, 0.14, 1.0))
 

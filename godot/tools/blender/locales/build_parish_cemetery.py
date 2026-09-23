@@ -400,29 +400,30 @@ def build_judgement_wave2_props():
              (0.06, 0.06, 1.20),
              (0.62, 0.42, 0.26, 1.0))
     # Angled reading surface
+    # on the post (2026-09-23: 2.5 cm over it)
     make_box("Beatrice_Lectern_Surface",
-             (0.0, -3.12, 1.24),
+             (0.0, -3.12, 1.215),
              (0.32, 0.24, 0.03),
              (0.72, 0.56, 0.34, 1.0))
     # Bound reading list open on the surface
     make_box("Beatrice_ReadingList_Cover",
-             (0.0, -3.12, 1.26),
+             (0.0, -3.12, 1.237),
              (0.28, 0.22, 0.014),
              (0.42, 0.20, 0.16, 1.0))    # bookbinder maroon
     # Open page (cream)
     make_box("Beatrice_ReadingList_Page",
-             (0.0, -3.12, 1.27),
+             (0.0, -3.12, 1.2445),
              (0.26, 0.20, 0.001),
              (0.94, 0.90, 0.80, 1.0))
     # Twenty-two name lines (small dark stripes)
     for ni in range(11):
         make_box("Beatrice_ReadingList_Name_L_%d" % ni,
-                 (-0.06, -3.12 - 0.06 + ni * 0.013, 1.271),
+                 (-0.06, -3.12 - 0.06 + ni * 0.013, 1.2455),
                  (0.09, 0.006, 0.0005),
                  (0.20, 0.16, 0.12, 1.0))
     for ni in range(11):
         make_box("Beatrice_ReadingList_Name_R_%d" % ni,
-                 (+0.06, -3.12 - 0.06 + ni * 0.013, 1.271),
+                 (+0.06, -3.12 - 0.06 + ni * 0.013, 1.2455),
                  (0.09, 0.006, 0.0005),
                  (0.20, 0.16, 0.12, 1.0))
 
@@ -463,29 +464,29 @@ def build_judgement_wave2_props():
     # Two small pale-pink zinnias at the base (from Natalie's reading)
     for zi, dx in enumerate([-0.06, +0.06]):
         make_cyl("TerryBertrand_Zinnia_%d" % zi,
-                 (tab_x + dx, vrn_y - 0.16, 0.06),
+                 (tab_x + dx, vrn_y - 0.16, 0.03),   # on the grass (2026-09-23: 3 cm over it)
                  0.024, 0.02,
                  (0.94, 0.72, 0.72, 1.0), segments=6, axis='Z')
 
     # Louis Landry's stone at vault_row_e slot 22 (behind the family
     # plots). Pulled 16cm off the vault base it was sunk into.
     louis_x = +4.60
-    louis_y = -5.04
+    louis_y = -5.06     # against the vault base's face (2026-09-23: 2 cm off it)
     make_box("Louis_Stone",
-             (louis_x, louis_y, 0.28),
-             (0.24, 0.08, 0.32),
+             (louis_x, louis_y, 0.20),   # set in the ground (2026-09-23: 12 cm over it)
+             (0.24, 0.08, 0.40),
              (0.72, 0.68, 0.60, 1.0))
     make_box("Louis_Engraving",
-             (louis_x, louis_y - 0.041, 0.28),
+             (louis_x, louis_y + 0.041, 0.28),   # on the path face, not the face against the vault (2026-09-23)
              (0.20, 0.001, 0.09),
              (0.20, 0.16, 0.12, 1.0))
     # A small candle lit at the base (Cecile's · from the second-hour scene)
     make_cyl("Louis_LitCandle_Body",
-             (louis_x, louis_y - 0.16, 0.04),
+             (louis_x, louis_y + 0.16, 0.07),   # on the path in front (2026-09-23: inside the vault base)
              0.014, 0.06,
              (0.94, 0.92, 0.86, 1.0), segments=8, axis='Z')
     make_cyl("Louis_LitCandle_Flame",
-             (louis_x, louis_y - 0.16, 0.11),
+             (louis_x, louis_y + 0.16, 0.11),
              0.008, 0.02,
              (0.96, 0.72, 0.24, 1.0), segments=6, axis='Z')
 
@@ -533,18 +534,19 @@ def build_judgement_wave2_props():
              (reg_x, reg_y, 0.60),
              (0.06, 0.06, 1.20),
              (0.62, 0.42, 0.26, 1.0))
+    # on the post (2026-09-23: 2.5 cm over it)
     make_box("ParishRegister_Lectern_Surface",
-             (reg_x, reg_y - 0.02, 1.24),
+             (reg_x, reg_y - 0.02, 1.215),
              (0.36, 0.28, 0.03),
              (0.72, 0.56, 0.34, 1.0))
     # The register itself · larger, thicker leather-bound book
     make_box("ParishRegister_Book_Cover",
-             (reg_x, reg_y - 0.02, 1.28),
+             (reg_x, reg_y - 0.02, 1.25),
              (0.32, 0.24, 0.04),
              (0.24, 0.14, 0.10, 1.0))    # aged leather
     # Gold-stamped 'REGISTER' on the cover
     make_box("ParishRegister_Book_GoldStamp",
-             (reg_x, reg_y - 0.041, 1.30),
+             (reg_x, reg_y - 0.041, 1.25),
              (0.20, 0.001, 0.03),
              (0.86, 0.72, 0.20, 1.0))
 

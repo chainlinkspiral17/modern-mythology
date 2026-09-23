@@ -66,7 +66,9 @@ def make_payphone(prefix, anchor, *, palette=None):
     trim = palette.get("trim", (0.20, 0.18, 0.18, 1.0))
     px, py, pz = anchor
     make_box(f"{prefix}_Box", (px, py, pz), (0.06, 0.34, 0.60), body)
-    make_box(f"{prefix}_Hood", (px - 0.16, py, pz + 0.44),
+    # the hood on the wall over the box (2026-09-23: it hung 9 cm over
+    # the box and 4 cm off the wall)
+    make_box(f"{prefix}_Hood", (px - 0.12, py, pz + 0.35),
              (0.30, 0.36, 0.10), trim)
     make_box(f"{prefix}_Handset",
              (px - 0.06, py - 0.20, pz),

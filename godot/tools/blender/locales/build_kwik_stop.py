@@ -226,13 +226,15 @@ def build_shell():
         make_box(f"Wall_X{sgn:+d}", (xpos, 4.5, CEIL_Z/2.0),
                  (WALL_THICK, 9.4, CEIL_Z), COL_WALL_CREAM)
         # Baseboard run
-        make_box(f"Wall_X{sgn:+d}_Base", (xpos - sgn*0.06, 4.5, 0.08),
-                 (0.06, 9.4, 0.16), COL_WALL_BASEBOARD)
+        # on the wall face, 1.2 cm proud (2026-09-23: inside the wall —
+        # the same 0.06/0.06 pattern that buried 398 kit baseboards)
+        make_box(f"Wall_X{sgn:+d}_Base", (xpos - sgn*(WALL_THICK/2.0 + 0.006), 4.5, 0.08),
+                 (0.012, 9.4, 0.16), COL_WALL_BASEBOARD)
     # North wall (back, beer cooler runs along it)
     make_box("Wall_N", (0.0, 9.0, CEIL_Z/2.0),
              (12.4, WALL_THICK, CEIL_Z), COL_WALL_CREAM)
-    make_box("Wall_N_Base", (0.0, 9.0 - 0.06, 0.08),
-             (12.4, 0.06, 0.16), COL_WALL_BASEBOARD)
+    make_box("Wall_N_Base", (0.0, 9.0 - (WALL_THICK/2.0 + 0.006), 0.08),
+             (12.4, 0.012, 0.16), COL_WALL_BASEBOARD)
     # South wall — door at centre, brand-red panel either side
     make_box("Wall_S_W", (-3.75, 0.0, CEIL_Z/2.0),
              (4.50, WALL_THICK, CEIL_Z), COL_BRAND_RED)

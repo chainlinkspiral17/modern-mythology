@@ -39,9 +39,9 @@ def build_shell():
     make_wall("Wall_N", (0.0, ROOM_D, 0), length=ROOM_W+0.4, height=CEIL, axis='X',
               palette=PAL, baseboard_face_sign=-1)
     # S wall has TWO big roll-up bay doors (open / partial)
-    make_wall("Wall_S_W", (-4.20, 0.0, 0), length=1.40, height=CEIL, axis='X', palette=PAL)
-    make_wall("Wall_S_Mid", (0.0, 0.0, 0), length=1.60, height=CEIL, axis='X', palette=PAL)
-    make_wall("Wall_S_E", (+4.20, 0.0, 0), length=1.40, height=CEIL, axis='X', palette=PAL)
+    make_wall("Wall_S_W", (-4.20, 0.0, 0), length=1.40, height=CEIL, axis='X', palette=PAL, baseboard_face_sign=+1)
+    make_wall("Wall_S_Mid", (0.0, 0.0, 0), length=1.60, height=CEIL, axis='X', palette=PAL, baseboard_face_sign=+1)
+    make_wall("Wall_S_E", (+4.20, 0.0, 0), length=1.40, height=CEIL, axis='X', palette=PAL, baseboard_face_sign=+1)
     # Roll-up door tracks above the bays (signal of bay doors)
     make_box("Bay_Door_W_Track", (-2.50, 0.10, 3.80), (2.20, 0.10, 0.20), COL_PEGBOARD)
     make_box("Bay_Door_E_Track", (+2.50, 0.10, 3.80), (2.20, 0.10, 0.20), COL_PEGBOARD)

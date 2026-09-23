@@ -54,7 +54,7 @@ def build_shell():
               axis='X', palette=pal, baseboard_face_sign=-1)
     # South wall split around the stairwell opening (east side)
     make_wall("Wall_S_W", (-1.5, 0.0, 0), length=ROOM_W - 3.0, height=CEIL,
-              axis='X', palette=pal)
+              axis='X', palette=pal, baseboard_face_sign=+1)
     make_box("Wall_S_Above", (2.6, 0.0, CEIL - 0.30), (2.3, 0.2, 0.60), COL_WALL)
     make_ceiling("Ceil", (0.0, ROOM_D / 2.0, CEIL), size_x=ROOM_W + 0.4,
                  size_y=ROOM_D + 0.4, with_grid=False, with_stains=True)

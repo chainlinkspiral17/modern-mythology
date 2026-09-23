@@ -188,7 +188,7 @@ rotation = Vector3(-0.4687, -0.6234, 0.0)
 
 [node name="shot_insert_notebook" type="Marker3D" parent="." groups=["vn_shot"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.390, 1.024, -0.687)
-rotation = Vector3(-0.2618, -0.2618, 0.0)
+rotation = Vector3(-0.1992, -1.0525, 0.0)
 
 [node name="Interior" parent="." instance=ExtResource("1_glb")]
 

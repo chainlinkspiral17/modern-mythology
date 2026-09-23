@@ -87,9 +87,9 @@ def build_shell():
               baseboard_face_sign=-1)
     # South wall split around door (door at X∈[-1.5, 1.5])
     make_wall("Wall_S_W", (-3.25, 0.0, 0),
-              length=3.50, height=CEIL_Z, axis='X')
+              length=3.50, height=CEIL_Z, axis='X', baseboard_face_sign=+1)
     make_wall("Wall_S_E", (+3.25, 0.0, 0),
-              length=3.50, height=CEIL_Z, axis='X')
+              length=3.50, height=CEIL_Z, axis='X', baseboard_face_sign=+1)
     # Door header
     make_box("Wall_S_AboveDoor", (0.0, 0.0, CEIL_Z - 0.30),
              (3.20, 0.20, 0.60), P.WALL_CREAM)
@@ -130,9 +130,12 @@ def build_counter_setup():
                   palette={"screen": (0.46, 0.32, 0.62, 1.0)})  # purple LCD
     make_credit_card_terminal("CCTerm", (cx, cy + 0.40, top_z))
     # Long-boxes of back-issues stacked behind counter
+    # two stacks of two in the gap between the counter and the E wall
+    # (2026-09-23: they stood 20 cm into the counter, every other one
+    # hanging 20 cm up with nothing under it)
     for li in range(4):
         make_box(f"LongBox_{li}",
-                 (cx + 0.50, cy + (li - 1.5) * 0.32, 0.16 + (li % 2) * 0.20),
+                 (cx + 0.70, cy + (li // 2 - 0.5) * 0.34, 0.10 + (li % 2) * 0.20),
                  (0.40, 0.30, 0.20), P.PAPER_AGED)
 
 
@@ -166,18 +169,18 @@ def build_browse_bins():
 # ════════════════════════════════════════════════════════════════
 def build_decor():
     # Wall clock above the counter
-    make_wall_clock("Clock", (4.0, 7.80, 2.10),
+    make_wall_clock("Clock", (4.0, 7.88, 2.10),   # on the N wall (2026-09-23: 8 cm off it)
                     frozen_hour=4, frozen_min=22)
     # Faded movie posters on west wall (3)
     for pi, py in enumerate([2.5, 5.0, 7.0]):
         make_faded_poster(f"Poster_W_{pi}", (-4.90, py, 1.70))
     # Payphone east wall by door
-    make_payphone("Payphone", (4.85, 1.40, 1.30))
+    make_payphone("Payphone", (4.87, 1.40, 1.30))   # on the E wall (2026-09-23: 2 cm off it)
     # Comic-shop staple: floor plant near door
     make_floor_plant("Plant", (-3.80, 1.20, 0.0))
     # Saturated purple comic-rack accent piece (signature canon)
     make_box("ComicRack_Accent",
-             (-4.80, 5.20, 1.40),
+             (-4.85, 5.20, 1.40),   # on the W wall (2026-09-23: 5 cm off it)
              (0.10, 1.40, 1.60), PAL_PURPLE_ACCENT)
 
 

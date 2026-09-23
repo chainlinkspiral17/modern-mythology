@@ -354,9 +354,10 @@ position = Vector3(0.700, 1.645, 5.722)
 rotation = Vector3(-0.2618, 0.2618, 0.0)
 metadata/fov = 35.0
 
+; (2026-09-23: the engraving faces the path now — the lens faces it)
 [node name="shot_insert_louis" type="Marker3D" parent="." groups=["vn_shot"]]
-position = Vector3(3.667, 0.436, 4.880)
-rotation = Vector3(-0.2618, -1.8326, 0.0)
+position = Vector3(4.450, 0.450, 4.200)
+rotation = Vector3(-0.2980, -2.9560, 0.0)
 metadata/fov = 35.0
 
 [node name="shot_insert_terry_bertrand" type="Marker3D" parent="." groups=["vn_shot"]]

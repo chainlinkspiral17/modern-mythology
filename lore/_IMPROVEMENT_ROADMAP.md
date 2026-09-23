@@ -2184,6 +2184,36 @@ NEXT: parish cemetery 5, safehouse bedroom 5, then the 4s (carnival
 lot, cosmic comics, faust apartment, maya bedroom, miller garage);
 overlap: the new worst in overlap_baseline.json. Deck-verify the 43
 windows (the first frames of those rooms with glass in them).
+SEVENTEENTH PASS (support 75 → 45, overlap 81 → 75): THE BURIED
+BASEBOARDS. `make_wall` built its baseboard 6 cm thick, centred 6 cm
+off the wall's centre line — wholly inside any 20 cm wall, whichever
+side was asked for. 398 baseboards in 79 rooms had never been
+visible (the scan: a `<wall>_Base` wholly inside `<wall>`). The kit
+sets it ON the face now, 1.2 cm proud (under the overlap gate's
+1.5 cm abutment tolerance, so furniture set flush to a wall still
+reads flush); then 119 walls in 61 builders whose baseboard_face_sign
+pointed OUT of the room were flipped (AST rewrite: the kwarg, or the
+loop tuple that feeds it). Five hand-copied 0.06/0.06 baseboards
+(kwik stop ×3, three spandrels) and the cabin's new N wall fixed by
+hand. Rooms to zero: parish cemetery (both lecterns' tops over their
+posts; Louis's engraving on the face pressed AGAINST the vault, his
+candle inside it — turned to the path, the insert with it), safehouse
+bedroom (the cork wall 2.5 cm inside its wall; the IV line a rod in
+the air, now bag → bed in two runs clear of two inserts; the duvet
+"hands" creases 30 cm off the foot of the bed, left behind when the
+bed moved on 09-10; a 0.44 nightstand in a 0.32 gap), carnival lot,
+cosmic comics (clock, payphone — the kit's hood hung over nothing —
+the purple rack, the long boxes inside the counter), faust apartment,
+maya bedroom (desk and vanity into the E wall, the mirror on air, the
+notebook and packs at the desk's pre-09-07 position), miller garage
+(the shop light's chains hung from no joist; a mower handle plate on
+air; bike seat and bars on no posts). marker_reaim.py re-aimed the
+vanity insert at a drawer pull — reverted by hand: the reaim tool
+picks the nearest named part, not the prose subject.
+NEXT: cabin interior 3, grunion beach 3, jesse bedroom 3, kowalski
+kitchen 3, school newspaper 3, tideline survey 3; overlap: the new
+worst; Deck-verify the windows AND baseboards (the first frames of
+most rooms with a baseboard in them).
 
 **2026-09-19 · DESIGN · the two decorative checks made real, the first
 remembered choice.** Nate's basement (ch6) and Tem staying (ch8): the

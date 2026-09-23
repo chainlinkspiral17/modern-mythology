@@ -70,7 +70,7 @@ def build_shell():
     make_wall("Wall_S_E_L", (1.175, 0.0, 0), length=0.35, height=CEIL, axis='X', palette=PAL_WALL, baseboard_face_sign=+1)
     make_wall("Wall_S_E_R", (2.825, 0.0, 0), length=0.35, height=CEIL, axis='X', palette=PAL_WALL, baseboard_face_sign=+1)
     make_box("Wall_S_E_Spandrel", (2.0, 0.0, 0.50), (1.30, 0.20, 1.00), PAL_WALL["wall"])
-    make_box("Wall_S_E_Spandrel_Base", (2.0, 0.06, 0.08), (1.30, 0.06, 0.16), PAL_WALL["baseboard"])
+    make_box("Wall_S_E_Spandrel_Base", (2.0, 0.106, 0.08), (1.30, 0.012, 0.16), PAL_WALL["baseboard"])   # on the wall face, 1.2 cm proud (2026-09-23: inside the wall)
     make_box("Wall_S_E_Lintel", (2.0, 0.0, 2.35), (1.30, 0.20, 0.90), PAL_WALL["wall"])
     make_box("Wall_S_AboveDoor", (0.0, 0.0, CEIL-0.30), (2.0, 0.20, 0.60), PAL_WALL["wall"])
     make_ceiling("Ceil", (0.0, ROOM_D/2.0, CEIL), size_x=ROOM_W+0.4, size_y=ROOM_D+0.4)

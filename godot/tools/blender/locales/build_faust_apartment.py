@@ -98,12 +98,12 @@ def build_bed():
              blanket_col=COL_BLANKET, pillow_col=COL_PILLOW, pillows=2, made=False, headboard=False)
     # Nightstand + shaded lamp, east of the bed
     make_box("Nightstand", (-0.85, 4.65, 0.30), (0.5, 0.45, 0.60), COL_WOOD)
-    make_cyl("NLamp_Post", (-0.85, 4.65, 0.78), 0.02, 0.32, COL_STEEL, segments=6)
+    make_cyl("NLamp_Post", (-0.85, 4.65, 0.76), 0.02, 0.32, COL_STEEL, segments=6)   # on the nightstand (2026-09-23: 2 cm over it)
     make_cyl("NLamp_Shade", (-0.85, 4.65, 0.98), 0.13, 0.16, COL_SHADE, segments=10)
     make_cyl("NLamp_Bulb", (-0.85, 4.65, 0.90), 0.05, 0.06, COL_LAMP, segments=8)
     # A dream journal, the alarm clock ("wakes at four a.m. with the
     # sound of an alarm"), and the glass of water ("a tug of water")
-    make_box("Journal", (-0.72, 4.52, 0.63), (0.20, 0.15, 0.035), (0.24, 0.22, 0.34, 1.0))
+    make_box("Journal", (-0.72, 4.52, 0.6175), (0.20, 0.15, 0.035), (0.24, 0.22, 0.34, 1.0))
     make_box("Alarm_Clock", (-0.98, 4.74, 0.68), (0.16, 0.10, 0.14), (0.20, 0.18, 0.16, 1.0))
     make_box("Alarm_Face", (-0.98, 4.68, 0.68), (0.12, 0.02, 0.09), (0.72, 0.24, 0.20, 1.0))
     make_cyl("Water_Glass", (-0.70, 4.74, 0.66), 0.035, 0.11, COL_GLASS, segments=8)
@@ -235,7 +235,8 @@ def build_fixtures():
     make_box("Clock_Hand_M", (0.8, ROOM_D - 0.10, 2.12), (0.02, 0.015, 0.13), COL_FRAME)
     # Canvases leaned against the S wall, faces to the plaster
     for i, (cx, cw, ch) in enumerate(((0.4, 0.6, 0.85), (-0.35, 0.5, 0.7))):
-        make_box(f"Leaned_Canvas_{i}", (cx, 0.16, ch / 2.0 + 0.02), (cw, 0.05, ch), COL_CANVAS)
+        # against the wall, on the floor (2026-09-23: 3.5 cm off the wall, 2 up)
+        make_box(f"Leaned_Canvas_{i}", (cx, 0.125, ch / 2.0), (cw, 0.05, ch), COL_CANVAS)
 
 
 def main():

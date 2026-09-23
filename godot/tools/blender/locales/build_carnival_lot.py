@@ -131,7 +131,7 @@ def build_ticket_booth():
         make_box(f"Booth_Stripe_W_{si}", (bx-0.80, sy, 1.20), (0.05, 0.28, 2.20), sc)
         make_box(f"Booth_Stripe_E_{si}", (bx+0.80, sy, 1.20), (0.05, 0.28, 2.20), sc)
     # Ticket window (front, S-facing)
-    make_box("Booth_Window", (bx, by-0.84, 1.40), (0.50, 0.005, 0.30), (0.78, 0.84, 0.86, 0.55))
+    make_box("Booth_Window", (bx, by-0.8275, 1.40), (0.50, 0.005, 0.30), (0.78, 0.84, 0.86, 0.55))   # on the stripes (2026-09-23: 1.2 cm off them)
     # Conical hat roof
     make_box("Booth_Roof_R", (bx, by, 2.50), (1.80, 1.80, 0.20), COL_BOOTH_STRIPE_R)
     make_box("Booth_Roof_W", (bx, by, 2.70), (1.40, 1.40, 0.20), COL_BOOTH_STRIPE_W)
@@ -310,12 +310,12 @@ def build_strength_wave2_props():
 
     # Bowl of water at wagon's bottom step (for the three-legged dog)
     make_cyl("DawnDogBowl_Rim",
-             (wag_x + 0.36, wag_y - 0.60, 0.05),
+             (wag_x + 0.36, wag_y - 0.60, 0.03),   # on the dirt (2026-09-23: 2 cm over it)
              0.10, 0.02,
              (0.62, 0.62, 0.60, 1.0), segments=12, axis='Z')
     # Water inside (thin blue disc)
     make_cyl("DawnDogBowl_Water",
-             (wag_x + 0.36, wag_y - 0.60, 0.045),
+             (wag_x + 0.36, wag_y - 0.60, 0.03),
              0.08, 0.005,
              (0.62, 0.78, 0.82, 0.85), segments=12, axis='Z')
 
@@ -333,7 +333,7 @@ def build_strength_wave2_props():
     for wy in (-1.20, +1.20):
         for wx in (-0.50, +0.50):
             make_cyl("DawnMilkTruck_Wheel_%d_%d" % (int(wx*100), int(wy*100)),
-                     (wx, -17.0 + wy, 0.30),
+                     (wx, -17.0 + wy, 0.26),   # on the ground (2026-09-23: 4 cm over it)
                      0.28, 0.14,
                      (0.10, 0.08, 0.08, 1.0), segments=10, axis='X')
 
@@ -406,7 +406,7 @@ def build_strength_wave2_props():
              (0.22, 0.32, 0.58, 1.0))
     # Twine roll on the tarp
     make_cyl("Marv_Tarp_TwineRoll",
-             (marv_x + 0.90, marv_y + 0.20, truck_z + 0.42),
+             (marv_x + 0.90, marv_y + 0.20, truck_z + 0.395),   # on the tarp (2026-09-23: 2.5 cm over it)
              0.06, 0.05,
              (0.86, 0.72, 0.42, 1.0), segments=8, axis='Z')
 

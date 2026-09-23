@@ -435,6 +435,21 @@ banisters classed · pans as containers.
   checks the repo-wide deltas for both a rise AND a suspicious fall —
   a first try hid two real Kwik Stop clips by matching the upright's
   own index.
+- **Once a kit is caught hiding things in walls, scan its siblings
+  (seventeenth pass).** The window kit's fault had a twin in the
+  wall kit: the baseboard was 6 cm thick centred 6 cm off the wall's
+  centre line, so it sat inside every 20 cm wall — 398 of them, in
+  79 rooms, since the kit was written. The scan is the same shape:
+  "is `<X>_Base` wholly inside `<X>`?" And the fix has the same two
+  halves: the kit puts the part ON the face, and a side check
+  (room centre vs wall centre) flips every call whose sign points
+  out of the room. Hand-copied patterns (the 0.06/0.06 baseboard in
+  the kwik stop and three spandrels — and one written this session)
+  need a grep for the old numbers too.
+- **A re-aim tool aims at the nearest NAMED part, not the prose.**
+  marker_reaim.py swung the vanity-mirror insert down 57° onto a
+  drawer pull because the pull was the subject it resolved. Read every
+  re-aim diff; revert the ones whose new subject is not the shot.
 - **A back bar is not a block.** The riverboat's back bar was one 2 m
   solid with the mirror on its face and sixty bottles inside it; the
   overlap gate never saw them, because bottle and body share the Bar_

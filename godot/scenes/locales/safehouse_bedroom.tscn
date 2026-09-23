@@ -344,16 +344,19 @@ rotation = Vector3(-0.5040, 0.6747, 0.0)
 metadata/fov = 42.0
 
 ; insert: she takes his hand — the duvet creases (ch9)
+; (2026-09-23: re-aimed onto the creases on the blanket, where the bed is)
 [node name="shot_insert_hands" type="Marker3D" parent="." groups=["vn_shot"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.3, 1.0, -2.2)
-rotation = Vector3(-0.7400, 0.7682, 0.0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.25, 1.05, -3.05)
+rotation = Vector3(-0.6435, 0.5820, 0.0)
 metadata/fov = 42.0
 
 ; the room's one closeup frame, authored by marker_author.py --closeup (2026-09-10):
 ; every closeup of a person cued here cuts to it (the scene had no closeup marker)
+; (2026-09-23: turned 10° off the W wall — the narrowed nightstand no
+; longer broke up the wall that filled the old frame)
 [node name="shot_closeup_person" type="Marker3D" parent="." groups=["vn_shot"]]
 position = Vector3(-0.151, 1.612, -1.534)
-rotation = Vector3(-0.2618, 0.5236, 0.0)
+rotation = Vector3(-0.2618, 0.3491, 0.0)
 metadata/fov = 45.0
 
 ; the room's REVERSE closeup frame, authored by marker_author.py --closeup (2026-09-10)

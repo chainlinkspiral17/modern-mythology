@@ -73,8 +73,8 @@ def build_shell():
               palette=PAL_WALL, baseboard_face_sign=-1)
     make_box("Wall_N_AboveDoor", (0.0, ROOM_D, CEIL-0.30), (1.2, 0.20, 0.60), PAL_WALL["wall"])
     # S front wall — two solid segments flanking the entrance
-    make_wall("Wall_S_W", (-2.25, 0.0, 0), length=2.5, height=CEIL, axis='X', palette=PAL_WALL)
-    make_wall("Wall_S_E", (+2.25, 0.0, 0), length=2.5, height=CEIL, axis='X', palette=PAL_WALL)
+    make_wall("Wall_S_W", (-2.25, 0.0, 0), length=2.5, height=CEIL, axis='X', palette=PAL_WALL, baseboard_face_sign=+1)
+    make_wall("Wall_S_E", (+2.25, 0.0, 0), length=2.5, height=CEIL, axis='X', palette=PAL_WALL, baseboard_face_sign=+1)
     make_box("Wall_S_AboveDoor", (0.0, 0.0, CEIL-0.30), (2.0, 0.20, 0.60), PAL_WALL["wall"])
     make_ceiling("Ceil", (0.0, ROOM_D/2.0, CEIL), size_x=ROOM_W+0.4, size_y=ROOM_D+0.4)
     for nm, ax, length, wx, wy in [("Crown_W", 'Y', ROOM_D, -ROOM_W/2.0+0.10, ROOM_D/2.0),

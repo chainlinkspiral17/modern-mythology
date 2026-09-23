@@ -82,11 +82,11 @@ def build_shell():
     make_box("Wall_N_W", ((wn_x0 + kw_x0) / 2.0, ROOM_D, CEIL / 2.0), (kw_x0 - wn_x0, 0.20, CEIL), wcol)
     make_box("Wall_N_Sill", ((kw_x0 + kw_x1) / 2.0, ROOM_D, kw_z0 / 2.0), (kw_x1 - kw_x0, 0.20, kw_z0), wcol)
     make_box("Wall_N_Head", ((kw_x0 + kw_x1) / 2.0, ROOM_D, (kw_z1 + CEIL) / 2.0), (kw_x1 - kw_x0, 0.20, CEIL - kw_z1), wcol)
-    make_box("Wall_N_Base", (0.0, ROOM_D - 0.06, 0.08), (ROOM_W + 0.4, 0.06, 0.16), PAL_WALL["baseboard"])
+    make_box("Wall_N_Base", (0.0, ROOM_D - 0.106, 0.08), (ROOM_W + 0.4, 0.012, 0.16), PAL_WALL["baseboard"])
     # the outside sill the crow stands on
     make_box("Kitchen_Window_OutSill", ((kw_x0 + kw_x1) / 2.0, ROOM_D + 0.275, 1.04), (1.10, 0.35, 0.04), wcol)
-    make_wall("Wall_S_W", (-(ROOM_W/4.0+0.5), 0.0, 0), length=ROOM_W/2.0-1.0, height=CEIL, axis='X', palette=PAL_WALL)
-    make_wall("Wall_S_E", (+(ROOM_W/4.0+0.5), 0.0, 0), length=ROOM_W/2.0-1.0, height=CEIL, axis='X', palette=PAL_WALL)
+    make_wall("Wall_S_W", (-(ROOM_W/4.0+0.5), 0.0, 0), length=ROOM_W/2.0-1.0, height=CEIL, axis='X', palette=PAL_WALL, baseboard_face_sign=+1)
+    make_wall("Wall_S_E", (+(ROOM_W/4.0+0.5), 0.0, 0), length=ROOM_W/2.0-1.0, height=CEIL, axis='X', palette=PAL_WALL, baseboard_face_sign=+1)
     make_box("Wall_S_AboveDoor", (0.0, 0.0, CEIL-0.45), (2.0, 0.20, 0.90), PAL_WALL["wall"])
     make_ceiling("Ceil", (0.0, ROOM_D/2.0, CEIL), size_x=ROOM_W+0.4, size_y=ROOM_D+0.4,
                  with_grid=False, with_stains=False,

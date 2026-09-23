@@ -73,9 +73,9 @@ def build_shell():
                   axis='Y', palette=pal, baseboard_face_sign=bb)
     # South wall split around the swing door to the store
     make_wall("Wall_S_W", (-(ROOM_W / 4.0 + 0.55), 0.0, 0),
-              length=ROOM_W / 2.0 - 1.10, height=CEIL, axis='X', palette=pal)
+              length=ROOM_W / 2.0 - 1.10, height=CEIL, axis='X', palette=pal, baseboard_face_sign=+1)
     make_wall("Wall_S_E", (+(ROOM_W / 4.0 + 0.55), 0.0, 0),
-              length=ROOM_W / 2.0 - 1.10, height=CEIL, axis='X', palette=pal)
+              length=ROOM_W / 2.0 - 1.10, height=CEIL, axis='X', palette=pal, baseboard_face_sign=+1)
     make_box("Wall_S_Above", (0.0, 0.0, CEIL - 0.65), (2.4, 0.20, 1.30), COL_WALL)
     # North (dock) wall split around the big roll-up opening
     dock_w = 3.0

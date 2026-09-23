@@ -45,8 +45,8 @@ def build_shell():
         make_box(f"DockDoor_Rib_{di}", (0.0, ROOM_D-0.02, 0.20 + di*0.36),
                  (3.20, 0.04, 0.06), (0.32, 0.36, 0.42, 1.0))
     # S wall (storefront) — glass front with central door
-    make_wall("Wall_S_W", (-3.50, 0.0, 0), length=2.0, height=0.80, axis='X', palette=PAL)
-    make_wall("Wall_S_E", (+3.50, 0.0, 0), length=2.0, height=0.80, axis='X', palette=PAL)
+    make_wall("Wall_S_W", (-3.50, 0.0, 0), length=2.0, height=0.80, axis='X', palette=PAL, baseboard_face_sign=+1)
+    make_wall("Wall_S_E", (+3.50, 0.0, 0), length=2.0, height=0.80, axis='X', palette=PAL, baseboard_face_sign=+1)
     # Glass storefront panels above the low wall
     make_box("Storefront_W_Glass", (-3.20, 0.04, 2.20), (1.40, 0.04, 2.80), COL_FROST_GLASS)
     make_box("Storefront_E_Glass", (+3.20, 0.04, 2.20), (1.40, 0.04, 2.80), COL_FROST_GLASS)

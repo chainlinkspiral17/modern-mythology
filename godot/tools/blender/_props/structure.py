@@ -37,7 +37,14 @@ def make_wall(prefix, anchor, *, length, height=3.0, thickness=0.20,
     """Single straight wall. axis='Y' (runs N-S) or 'X' (runs E-W).
     For Y walls, baseboard_face_sign=+1 puts baseboard on +X (east)
     side; -1 puts it on -X (west) side. For X walls, +1/-1 flip
-    along Y."""
+    along Y — i.e. the sign points from the wall INTO THE ROOM.
+
+    2026-09-23: the baseboard was 6 cm thick centred 6 cm off the wall's
+    centre line — wholly inside any 20 cm wall, on either side. 398
+    baseboards in 79 rooms had never been visible. It sits ON the face
+    now, 1.2 cm proud (under the overlap gate's 1.5 cm abutment
+    tolerance, so furniture set against a wall still reads as flush)."""
+    b_off = thickness / 2.0 + 0.006
     palette = palette or {}
     wall_col = palette.get("wall", P.WALL_CREAM)
     base_col = palette.get("baseboard", P.WALL_BASEBOARD)
@@ -47,15 +54,15 @@ def make_wall(prefix, anchor, *, length, height=3.0, thickness=0.20,
                  (thickness, length, height), wall_col)
         if with_baseboard:
             make_box(f"{prefix}_Base",
-                     (cx + baseboard_face_sign * 0.06, cy, 0.08),
-                     (0.06, length, 0.16), base_col)
+                     (cx + baseboard_face_sign * b_off, cy, 0.08),
+                     (0.012, length, 0.16), base_col)
     else:
         make_box(f"{prefix}", (cx, cy, height / 2.0),
                  (length, thickness, height), wall_col)
         if with_baseboard:
             make_box(f"{prefix}_Base",
-                     (cx, cy + baseboard_face_sign * 0.06, 0.08),
-                     (length, 0.06, 0.16), base_col)
+                     (cx, cy + baseboard_face_sign * b_off, 0.08),
+                     (length, 0.012, 0.16), base_col)
 
 
 def make_ceiling(prefix, anchor, *, size_x, size_y, palette=None,

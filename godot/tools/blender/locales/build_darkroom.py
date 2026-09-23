@@ -73,9 +73,9 @@ def build_shell():
               axis='X', palette=pal, baseboard_face_sign=-1)
     # South wall split around a doorway (light-tight door + curtain)
     make_wall("Wall_S_W", (-(ROOM_W / 4.0 + 0.35), 0.0, 0),
-              length=ROOM_W / 2.0 - 0.70, height=CEIL, axis='X', palette=pal)
+              length=ROOM_W / 2.0 - 0.70, height=CEIL, axis='X', palette=pal, baseboard_face_sign=+1)
     make_wall("Wall_S_E", (+(ROOM_W / 4.0 + 0.35), 0.0, 0),
-              length=ROOM_W / 2.0 - 0.70, height=CEIL, axis='X', palette=pal)
+              length=ROOM_W / 2.0 - 0.70, height=CEIL, axis='X', palette=pal, baseboard_face_sign=+1)
     make_box("Wall_S_AboveDoor", (0.0, 0.0, CEIL - 0.28), (1.5, 0.20, 0.56), COL_WALL)
     make_ceiling("Ceil", (0.0, ROOM_D / 2.0, CEIL), size_x=ROOM_W + 0.4,
                  size_y=ROOM_D + 0.4, with_grid=False, with_stains=False)

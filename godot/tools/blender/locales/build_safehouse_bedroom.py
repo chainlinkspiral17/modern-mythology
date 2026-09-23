@@ -16,7 +16,7 @@ import os, sys
 _BT = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)), ".."))
 if _BT not in sys.path: sys.path.insert(0, _BT)
 from _props import palette as P
-from _props.geometry import clear_scene, make_box, make_cyl, export_glb
+from _props.geometry import clear_scene, make_box, make_cyl, make_tube, export_glb
 from _props.structure import make_floor, make_wall, make_ceiling, make_crown_molding, make_window
 from _props.decor import make_wall_clock, make_floor_plant, make_faded_poster, make_calendar
 from _props.safety import make_smoke_detector, make_fluorescent_tube_fixture
@@ -38,8 +38,8 @@ def build_shell():
     for nm, x, bb in [("Wall_W", -ROOM_W/2.0, +1), ("Wall_E", +ROOM_W/2.0, -1)]:
         make_wall(nm, (x, ROOM_D/2.0, 0), length=ROOM_D+0.4, height=CEIL, axis='Y', palette=PAL_WALL, baseboard_face_sign=bb)
     make_wall("Wall_N", (0.0, ROOM_D, 0), length=ROOM_W+0.4, height=CEIL, axis='X', palette=PAL_WALL, baseboard_face_sign=-1)
-    make_wall("Wall_S_W", (-(ROOM_W/4.0+0.5), 0.0, 0), length=ROOM_W/2.0-1.0, height=CEIL, axis='X', palette=PAL_WALL)
-    make_wall("Wall_S_E", (+(ROOM_W/4.0+0.5), 0.0, 0), length=ROOM_W/2.0-1.0, height=CEIL, axis='X', palette=PAL_WALL)
+    make_wall("Wall_S_W", (-(ROOM_W/4.0+0.5), 0.0, 0), length=ROOM_W/2.0-1.0, height=CEIL, axis='X', palette=PAL_WALL, baseboard_face_sign=+1)
+    make_wall("Wall_S_E", (+(ROOM_W/4.0+0.5), 0.0, 0), length=ROOM_W/2.0-1.0, height=CEIL, axis='X', palette=PAL_WALL, baseboard_face_sign=+1)
     make_box("Wall_S_AboveDoor", (0.0, 0.0, CEIL-0.30), (2.0, 0.20, 0.60), PAL_WALL["wall"])
     make_ceiling("Ceil", (0.0, ROOM_D/2.0, CEIL), size_x=ROOM_W+0.4, size_y=ROOM_D+0.4, with_grid=False)
     for nm, ax, length, wx, wy in [
@@ -67,20 +67,23 @@ def build_bed():
              blanket_col=COL_DUVET, pillow_col=COL_SHEET, pillows=1, made=True, headboard=False)
 
 def build_nightstand():
-    nx, ny = -1.72, 3.95
-    make_box("Night_Body", (nx, ny, 0.28), (0.44, 0.42, 0.56), COL_WOOD)
-    make_box("Night_Drawer", (nx-0.20, ny, 0.36), (0.03, 0.34, 0.16), (0.34, 0.24, 0.16, 1.0))
-    make_cyl("Night_Pull", (nx-0.22, ny, 0.36), 0.02, 0.04, P.METAL_BLACK, axis='X', segments=6)
-    top = 0.58
+    # (2026-09-23: 0.44 wide in a 0.32 gap — 8 cm into the mattress and
+    # 4 cm into the W wall, its drawer facing the wall, its top dressing
+    # 2 cm over its top. Narrow now, drawer to the room, dressing on it.)
+    nx, ny = -1.75, 3.95
+    make_box("Night_Body", (nx, ny, 0.28), (0.30, 0.42, 0.56), COL_WOOD)
+    make_box("Night_Drawer", (nx, ny-0.225, 0.36), (0.24, 0.03, 0.16), (0.34, 0.24, 0.16, 1.0))
+    make_cyl("Night_Pull", (nx, ny-0.25, 0.36), 0.02, 0.04, P.METAL_BLACK, axis='Y', segments=6)
+    top = 0.56
     # Gooseneck-free table lamp: base + column + drum shade
-    make_cyl("Lamp_Base", (nx+0.10, ny+0.08, top+0.02), 0.08, 0.04, P.METAL_BLACK, segments=10)
-    make_cyl("Lamp_Column", (nx+0.10, ny+0.08, top+0.18), 0.02, 0.30, P.METAL_STEEL, segments=8)
-    make_cyl("Lamp_Shade", (nx+0.10, ny+0.08, top+0.36), 0.11, 0.14, (0.94, 0.82, 0.52, 1.0), segments=10)
+    make_cyl("Lamp_Base", (nx+0.04, ny+0.10, top+0.02), 0.08, 0.04, P.METAL_BLACK, segments=10)
+    make_cyl("Lamp_Column", (nx+0.04, ny+0.10, top+0.18), 0.02, 0.30, P.METAL_STEEL, segments=8)
+    make_cyl("Lamp_Shade", (nx+0.04, ny+0.10, top+0.36), 0.11, 0.14, (0.94, 0.82, 0.52, 1.0), segments=10)
     # Table clock (a small boxy alarm clock with a red face)
-    make_box("Clock_Body", (nx-0.10, ny-0.08, top+0.06), (0.14, 0.10, 0.10), COL_DARK)
-    make_box("Clock_Face", (nx-0.10, ny-0.14, top+0.06), (0.10, 0.005, 0.06), (0.86, 0.22, 0.18, 1.0))
+    make_box("Clock_Body", (nx-0.03, ny-0.08, top+0.05), (0.14, 0.10, 0.10), COL_DARK)
+    make_box("Clock_Face", (nx-0.03, ny-0.1325, top+0.05), (0.10, 0.005, 0.06), (0.86, 0.22, 0.18, 1.0))
     # Mug
-    make_cyl("Night_Mug", (nx+0.14, ny-0.12, top+0.05), 0.04, 0.09, (0.42, 0.46, 0.52, 1.0), segments=10)
+    make_cyl("Night_Mug", (nx+0.08, ny-0.12, top+0.045), 0.04, 0.09, (0.42, 0.46, 0.52, 1.0), segments=10)
 
 def build_desk():
     dx, dy = 0.35, 4.55
@@ -155,24 +158,26 @@ def build_corkboard():
     # The "conspiracy" wall over the desk: cork panel, pinned notes,
     # a map, pushpins, and red string linking clues.
     bx, bz = 0.35, 1.95
-    make_box("Cork_Panel", (bx, ROOM_D-0.09, bz), (1.60, 0.03, 0.90), COL_CORK)
-    make_box("Cork_Frame_T", (bx, ROOM_D-0.10, bz+0.47), (1.66, 0.04, 0.06), COL_DARK)
-    make_box("Cork_Frame_B", (bx, ROOM_D-0.10, bz-0.47), (1.66, 0.04, 0.06), COL_DARK)
+    # on the wall face at ROOM_D-0.10 (2026-09-23: the panel was 2.5 cm
+    # inside the wall and the notes, pins and string hung in front of it)
+    make_box("Cork_Panel", (bx, ROOM_D-0.115, bz), (1.60, 0.03, 0.90), COL_CORK)
+    make_box("Cork_Frame_T", (bx, ROOM_D-0.12, bz+0.47), (1.66, 0.04, 0.06), COL_DARK)
+    make_box("Cork_Frame_B", (bx, ROOM_D-0.12, bz-0.47), (1.66, 0.04, 0.06), COL_DARK)
     # A muted street map pinned centre-left
-    make_box("Cork_Map", (bx-0.42, ROOM_D-0.11, bz+0.05), (0.52, 0.005, 0.44), (0.62, 0.66, 0.58, 1.0))
+    make_box("Cork_Map", (bx-0.42, ROOM_D-0.1325, bz+0.05), (0.52, 0.005, 0.44), (0.62, 0.66, 0.58, 1.0))
     # Pinned notes / photos across the board
     notes = [(-0.62,0.30,0.16,0.20,P.PAPER),(0.05,0.34,0.20,0.24,P.PAPER_AGED),
              (0.42,0.28,0.18,0.22,(0.86,0.82,0.62,1.0)),(0.60,-0.06,0.16,0.20,P.PAPER),
              (0.20,-0.24,0.18,0.16,P.PAPER_AGED),(-0.10,-0.20,0.16,0.18,P.PAPER),
              (0.44,-0.30,0.14,0.16,(0.82,0.70,0.60,1.0))]
     for ni, (dy, dz, w, h, col) in enumerate(notes):
-        make_box(f"Cork_Note_{ni}", (bx+dy, ROOM_D-0.115, bz+dz), (w, 0.004, h), col)
-        make_cyl(f"Cork_Pin_{ni}", (bx+dy, ROOM_D-0.14, bz+dz+h*0.4), 0.012, 0.03, (0.86,0.22,0.18,1.0), axis='Y', segments=6)
+        make_box(f"Cork_Note_{ni}", (bx+dy, ROOM_D-0.132, bz+dz), (w, 0.004, h), col)
+        make_cyl(f"Cork_Pin_{ni}", (bx+dy, ROOM_D-0.149, bz+dz+h*0.4), 0.012, 0.03, (0.86,0.22,0.18,1.0), axis='Y', segments=6)
     # Red string connecting a few nodes (thin boxes)
     for si, (x0, z0, x1, z1) in enumerate([(-0.42,0.10,0.05,0.34),(0.05,0.34,0.60,-0.06),(0.60,-0.06,0.20,-0.24)]):
         mx, mz = (x0+x1)/2.0, (z0+z1)/2.0
         ln = ((x1-x0)**2 + (z1-z0)**2)**0.5
-        make_box(f"Cork_String_{si}", (bx+mx, ROOM_D-0.125, bz+mz), (ln, 0.003, 0.008), (0.82,0.20,0.16,1.0))
+        make_box(f"Cork_String_{si}", (bx+mx, ROOM_D-0.1365, bz+mz), (ln, 0.003, 0.008), (0.82,0.20,0.16,1.0))
 
 def build_minifridge():
     fx, fy = 1.58, 0.85
@@ -205,7 +210,7 @@ def build_wall_decor():
 
 def build_bulb():
     make_cyl("Bulb_Cord", (0.0, ROOM_D/2.0, CEIL-0.30), 0.005, 0.60, P.METAL_BLACK)
-    make_cyl("Bulb_Glass", (0.0, ROOM_D/2.0, CEIL-0.86), 0.06, 0.14, (0.96, 0.86, 0.46, 1.0))
+    make_cyl("Bulb_Glass", (0.0, ROOM_D/2.0, CEIL-0.67), 0.06, 0.14, (0.96, 0.86, 0.46, 1.0))   # on the cord (2026-09-23: 19 cm under it)
 
 def build_ceiling_infra():
     make_smoke_detector("Smoke", (0.0, ROOM_D/2.0, CEIL))
@@ -219,7 +224,13 @@ def build_hero_props():
     make_cyl("IV_Pole", (-0.35, 3.30, 0.85), 0.015, 1.70, steel, segments=6)
     make_cyl("IV_Base", (-0.35, 3.30, 0.03), 0.16, 0.03, steel, segments=10)
     make_box("IV_Bag", (-0.35, 3.30, 1.58), (0.10, 0.04, 0.16), (0.86, 0.90, 0.92, 0.8))
-    make_box("IV_Line", (-0.55, 3.20, 1.10), (0.008, 0.008, 0.85), (0.80, 0.84, 0.86, 0.9))
+    # from the bag down to the bed (2026-09-23: a straight rod in the air
+    # 20 cm from the bag and 8 cm over the blanket)
+    # two straight runs, so neither's box stands in the notebook or
+    # hands inserts' line of sight
+    for li, (p0, p1) in enumerate((((-0.35, 3.30, 1.50), (-0.45, 3.52, 1.10)),
+                                   ((-0.45, 3.52, 1.10), (-0.55, 3.75, 0.595)))):
+        make_tube(f"IV_Line_{li}", [p0, p1], 0.004, (0.80, 0.84, 0.86, 0.9), segments=4)
     # The chair beside the bed
     # (2026-09-10: the bed moved to the N wall; the chair follows, beside the head)
     make_box("Bedside_Chair_Seat", (-0.10, 4.15, 0.44), (0.42, 0.42, 0.05), (0.44, 0.34, 0.24, 1.0))
@@ -285,9 +296,11 @@ def build_hero_props_2026_09():
     make_box("Spiral_Notebook_Wire", (-0.331, 3.70, 0.567), (0.012, 0.160, 0.014),
              (0.55, 0.56, 0.58, 1.0))
     # ── THE HANDS · duvet creases at the open side (top 0.62) ──
-    make_box("Hands_Duvet_Crease_A", (-0.60, 2.55, 0.596), (0.16, 0.05, 0.012),
+    # (2026-09-23: at y 2.4-2.6 they were 30 cm off the foot of the bed,
+    # in the air — the bed moved to the N wall on 09-10 and they stayed)
+    make_box("Hands_Duvet_Crease_A", (-0.60, 3.60, 0.596), (0.16, 0.05, 0.012),
              (0.62, 0.58, 0.52, 1.0))
-    make_box("Hands_Duvet_Crease_B", (-0.57, 2.44, 0.595), (0.05, 0.13, 0.010),
+    make_box("Hands_Duvet_Crease_B", (-0.57, 3.49, 0.595), (0.05, 0.13, 0.010),
              (0.60, 0.56, 0.50, 1.0))
 
 

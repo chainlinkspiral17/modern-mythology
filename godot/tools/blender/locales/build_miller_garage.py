@@ -18,7 +18,7 @@ import os, sys
 _BT = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)), ".."))
 if _BT not in sys.path: sys.path.insert(0, _BT)
 from _props import palette as P
-from _props.geometry import clear_scene, make_box, make_cyl, export_glb
+from _props.geometry import clear_scene, make_box, make_cyl, make_tube, export_glb
 from _props.structure import make_floor, make_wall, make_ceiling
 
 ROOM_W = 5.4      # x ∈ [-2.7, 2.7]  (two-car width)
@@ -137,7 +137,7 @@ def build_appliances():
     # Water heater (tall white cylinder) NW corner
     make_cyl("WaterHeater", (-ROOM_W / 2.0 + 0.45, ROOM_D - 0.5, 0.75), 0.30, 1.5, COL_WHITE, segments=14)
     make_cyl("WaterHeater_Top", (-ROOM_W / 2.0 + 0.45, ROOM_D - 0.5, 1.52), 0.30, 0.06, COL_STEEL_DK, segments=14)
-    make_cyl("WaterHeater_Flue", (-ROOM_W / 2.0 + 0.45, ROOM_D - 0.5, 1.9), 0.05, 0.6, COL_STEEL, segments=8)
+    make_cyl("WaterHeater_Flue", (-ROOM_W / 2.0 + 0.45, ROOM_D - 0.5, 1.85), 0.05, 0.6, COL_STEEL, segments=8)   # from the heater top (2026-09-23: 5 cm over it)
     # Furnace box next to it
     make_box("Furnace", (-ROOM_W / 2.0 + 1.15, ROOM_D - 0.5, 0.85), (0.6, 0.6, 1.7), COL_STEEL)
     make_box("Furnace_Vent", (-ROOM_W / 2.0 + 1.15, ROOM_D - 0.82, 0.9), (0.44, 0.02, 0.5), COL_STEEL_DK)
@@ -159,22 +159,32 @@ def build_appliances():
         make_cyl(f"Bike_Wheel_{nm}", (bkx, wy, 0.34), 0.32, 0.04, COL_TIRE, segments=16, axis='Y')
         make_cyl(f"Bike_Hub_{nm}", (bkx, wy, 0.34), 0.05, 0.05, COL_STEEL, segments=8, axis='Y')
     make_box("Bike_Frame", (bkx + 0.02, 1.7, 0.55), (0.06, 0.9, 0.10), COL_BIN_B)
+    # seat and bars on posts from the frame (2026-09-23: both on air)
+    make_box("Bike_SeatPost", (bkx + 0.02, 2.1, 0.66), (0.03, 0.03, 0.12), COL_STEEL_DK)
     make_box("Bike_Seat", (bkx, 2.1, 0.74), (0.10, 0.22, 0.05), COL_TOOL)
+    make_box("Bike_Stem", (bkx + 0.02, 1.3, 0.65), (0.03, 0.03, 0.10), COL_STEEL_DK)
     make_box("Bike_Bars", (bkx, 1.3, 0.72), (0.10, 0.30, 0.05), COL_STEEL_DK)
     # Push mower on the floor (center-S)
     make_box("Mower_Deck", (-0.6, 1.3, 0.22), (0.5, 0.56, 0.18), COL_BIN_R)
     for mw in (-0.22, 0.22):
         for my in (1.05, 1.55):
             make_cyl(f"Mower_Wheel_{mw}_{my}", (-0.6 + mw, my, 0.12), 0.11, 0.06, COL_TOOL, segments=10, axis='Y')
-    make_box("Mower_Handle", (-0.6, 0.85, 0.62), (0.44, 0.5, 0.04), COL_STEEL_DK)
+    # the handle rises from the deck's back (2026-09-23: a flat plate
+    # hanging 29 cm over the floor on nothing)
+    for s in (-1, 1):
+        make_tube(f"Mower_Handle_Rail_{s:+d}", [(-0.6 + s * 0.20, 1.04, 0.28), (-0.6 + s * 0.20, 0.62, 0.95)],
+                  0.012, COL_STEEL_DK, segments=5)
+    make_cyl("Mower_Handle", (-0.6, 0.62, 0.95), 0.015, 0.44, COL_STEEL_DK, segments=6, axis='X')
 
 
 def build_shoplight():
     """Hanging twin-tube fluorescent shop light over the bay + a couple of
     ceiling joists to catch it."""
     lx, ly = 0.0, ROOM_D / 2.0
-    for cy in (2.0, 4.0):
-        make_box(f"Joist_{cy}", (0.0, cy, CEIL - 0.04), (ROOM_W - 0.2, 0.10, 0.08), COL_BENCH_DK)
+    # the joists the light's chains hang from (2026-09-23: at y 2.0 and
+    # 4.0 they missed both chains, and the light hung from nothing)
+    for cy in (ly - 0.5, ly + 0.5):
+        make_box(f"Joist_{cy:.1f}", (0.0, cy, CEIL - 0.04), (ROOM_W - 0.2, 0.10, 0.08), COL_BENCH_DK)
     make_box("ShopLight_Body", (lx, ly, CEIL - 0.18), (0.24, 1.30, 0.10), COL_STEEL)
     make_box("ShopLight_Tube_L", (lx - 0.06, ly, CEIL - 0.24), (0.05, 1.24, 0.05), COL_FLUOR)
     make_box("ShopLight_Tube_R", (lx + 0.06, ly, CEIL - 0.24), (0.05, 1.24, 0.05), COL_FLUOR)

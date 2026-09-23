@@ -62,7 +62,7 @@ def build_shell():
               axis='X', palette=pal, baseboard_face_sign=-1)
     # South wall split around the door opening (west of center)
     make_wall("Wall_S_E", (0.85, 0.0, 0), length=ROOM_W - 1.5, height=CEIL,
-              axis='X', palette=pal)
+              axis='X', palette=pal, baseboard_face_sign=+1)
     make_box("Wall_S_W", (-1.55, 0.0, CEIL / 2.0), (0.5, 0.20, CEIL), COL_WALL)
     # the full width of the opening (2026-09-23: it stopped 17 cm short of
     # Wall_S_E and left a slot open to the ceiling)

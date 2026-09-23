@@ -62,7 +62,7 @@ def build_shell():
         make_wall(f"Wall_S_{sgn:+d}_Pier_O", (sx + sgn * 0.85, 0.0, 0), length=0.30, height=CEIL, axis='X', palette=PAL, baseboard_face_sign=+1)
         make_wall(f"Wall_S_{sgn:+d}_Pier_I", (sx - sgn * 0.85, 0.0, 0), length=0.30, height=CEIL, axis='X', palette=PAL, baseboard_face_sign=+1)
         make_box(f"Wall_S_{sgn:+d}_Spandrel", (sx, 0.0, 0.30), (1.40, 0.20, 0.60), PAL["wall"])
-        make_box(f"Wall_S_{sgn:+d}_Spandrel_Base", (sx, 0.06, 0.08), (1.40, 0.06, 0.16), PAL["baseboard"])
+        make_box(f"Wall_S_{sgn:+d}_Spandrel_Base", (sx, 0.106, 0.08), (1.40, 0.012, 0.16), PAL["baseboard"])   # on the wall face, 1.2 cm proud (2026-09-23: inside the wall)
         make_box(f"Wall_S_{sgn:+d}_Lintel", (sx, 0.0, 3.20), (1.40, 0.20, 0.40), PAL["wall"])
     make_wall("Wall_S_Jamb_W", (-1.0, 0.0, 0), length=1.0, height=CEIL, axis='X', palette=PAL, baseboard_face_sign=+1)
     make_wall("Wall_S_Jamb_E", (+1.0, 0.0, 0), length=1.0, height=CEIL, axis='X', palette=PAL, baseboard_face_sign=+1)
