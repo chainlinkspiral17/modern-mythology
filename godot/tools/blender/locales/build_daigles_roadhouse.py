@@ -62,7 +62,7 @@ def build_bar():
     # Beer tap row at bar front
     for ti in range(4):
         tx = -1.20 + ti * 0.80
-        make_cyl(f"Tap_{ti}_Stem", (tx, ROOM_D-0.50, 1.30), 0.025, 0.30, COL_JUKE_CHROME)
+        make_cyl(f"Tap_{ti}_Stem", (tx, ROOM_D-0.50, 1.28), 0.025, 0.30, COL_JUKE_CHROME)   # from the bar top (2026-09-23: 2 cm over it)
         make_box(f"Tap_{ti}_Handle", (tx, ROOM_D-0.50, 1.50), (0.06, 0.06, 0.20),
                  (0.42, 0.20, 0.16, 1.0))
     # 5 bar stools facing the bar (S side)
@@ -263,12 +263,12 @@ def build_devil_dressing():
              (0.94, 0.92, 0.88, 1.0), segments=8, axis='Z')
     # Cue resting on the side rail (along the east rail)
     make_cyl("PoolCue_Shaft",
-             (pt_cx + 0.50, pt_cy, pt_top_z + 0.06),
+             (pt_cx + 0.75, pt_cy, 0.902),   # ON the east rail (2026-09-23: 5 cm over the felt)
              0.012, 1.40,
              (0.74, 0.62, 0.42, 1.0), segments=6, axis='Y')
     # Cue tip
     make_cyl("PoolCue_Tip",
-             (pt_cx + 0.50, pt_cy + 0.70, pt_top_z + 0.06),
+             (pt_cx + 0.75, pt_cy + 0.70, 0.902),
              0.014, 0.04,
              (0.42, 0.28, 0.16, 1.0), segments=6, axis='Y')
 
@@ -300,7 +300,7 @@ def build_devil_dressing():
     # The front wall is the SOUTH wall (y 0, interior face 0.10) with
     # its doorway at x -1.5..1.5; the sign hangs on the wall just east
     # of the opening. (2026-09-10: it stood at (0, 5.4) — mid-room.)
-    door_x = 1.35
+    door_x = 1.65   # on the wall EAST of the opening (2026-09-23: 1.35 is inside the 3 m doorway)
     door_y = 0.122
     make_box("SixSteps_Sign_Backing",
              (door_x, door_y - 0.012, 1.60),
@@ -358,15 +358,15 @@ def build_devil_wave2_props():
              (0.10, 0.20, 0.24, 1.0))
 
     make_cyl("Lou_IronicMug_Body",
-             (-0.60, +0.20, bar_top_z + 0.06),
+             (-0.60, 7.05, bar_top_z + 0.06),   # on the bar, on its own ring (2026-09-23: at y 0.2, in the air by the door)
              0.040, 0.12,
              (0.92, 0.90, 0.86, 1.0), segments=10, axis='Z')
     make_box("Lou_IronicMug_Handle",
-             (-0.66, +0.20, bar_top_z + 0.10),
+             (-0.645, 7.05, bar_top_z + 0.10),
              (0.006, 0.020, 0.04),
              (0.92, 0.90, 0.86, 1.0))
     make_box("Lou_IronicMug_Text",
-             (-0.56, +0.20, bar_top_z + 0.08),
+             (-0.5595, 7.05, bar_top_z + 0.08),
              (0.001, 0.06, 0.04),
              (0.12, 0.10, 0.10, 1.0))
 
@@ -501,7 +501,7 @@ def build_wear_personality_2026_08():
                  rings, segments=8)
     # Cigarette scallops on the south edge, clustered near the taps.
     for ci5, cx5 in enumerate((-1.6, -1.45, 0.2, 1.1, 1.22)):
-        make_box("Wear_CigBurn_%d" % ci5, (cx5, 6.72, 1.132), (0.045, 0.02, 0.003),
+        make_box("Wear_CigBurn_%d" % ci5, (cx5, 6.87, 1.132), (0.045, 0.02, 0.003),   # on the top's south edge (2026-09-23: 13 cm past it)
                  burn)
     # THE DANCE PATCH · in front of the jukebox: pale ring worn
     # through the finish, dark scuff rim where the watchers stand.

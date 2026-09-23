@@ -92,8 +92,8 @@ def build_keepers_quarters():
     # detail passes below, on THIS desk since 2026-09-08)
     # Oil lamp
     make_cyl("Lamp_Base", (dx+0.28, dy, 0.80), 0.06, 0.08, COL_BRASS)
-    make_cyl("Lamp_Reservoir", (dx+0.28, dy, 0.92), 0.05, 0.10, COL_LENS_GLASS)
-    make_cyl("Lamp_Chimney", (dx+0.28, dy, 1.08), 0.04, 0.18, COL_LENS_GLASS)
+    make_cyl("Lamp_Reservoir", (dx+0.28, dy, 0.89), 0.05, 0.10, COL_LENS_GLASS)   # on the base (2026-09-23: 3 cm over it)
+    make_cyl("Lamp_Chimney", (dx+0.28, dy, 1.03), 0.04, 0.18, COL_LENS_GLASS)
     make_cyl("Lamp_Flame", (dx+0.28, dy, 1.00), 0.018, 0.04, COL_OIL_LAMP)
 
 
@@ -123,15 +123,15 @@ def build_lens_stage_above():
     # The Fresnel lens visible THROUGH the ceiling hatch. We won't
     # model the upper floor, but a brass-glass lens disk floating
     # above the hatch reads correctly when the camera glances up.
-    lx, ly, lz = 0.0, +0.80, CEIL + 0.40
+    lx, ly, lz = 0.0, +0.80, CEIL + 0.225   # on the lens drive's cap (2026-09-23: 17 cm over it)
     # Brass plate around lens
     make_cyl("Lens_Plate", (lx, ly, lz), 0.50, 0.06, COL_BRASS, segments=20)
     # The glass lens itself — stacked rings
     for li in range(4):
-        make_cyl(f"Lens_Ring_{li}", (lx, ly, lz + 0.04 + li*0.10),
+        make_cyl(f"Lens_Ring_{li}", (lx, ly, lz + 0.04 + li*0.08),   # stacked, not 2 cm apart
                  0.42 - li*0.08, 0.08, COL_LENS_GLASS, segments=20)
     # Brass crown
-    make_cyl("Lens_Crown", (lx, ly, lz + 0.41), 0.20, 0.06, COL_BRASS, segments=12)   # on the top ring (2026-09-22)
+    make_cyl("Lens_Crown", (lx, ly, lz + 0.35), 0.20, 0.06, COL_BRASS, segments=12)   # on the top ring (2026-09-22)
 
 
 def build_ceiling_infra():
@@ -141,7 +141,9 @@ def build_ceiling_infra():
 
 def build_decor():
     # Wall clock on the E wall, brass calendar on the W wall
-    make_wall_clock("Clock", (+RADIUS-0.05, +1.20, 2.40), frozen_hour=4, frozen_min=15)
+    # on WallSeg_1's inner face (y 1.233 at x 1.50..2.49) — at x 2.35 it
+    # hung past the slab's end, 4.5 cm off it (2026-09-23)
+    make_wall_clock("Clock", (2.00, 1.213, 2.40), frozen_hour=4, frozen_min=15)
     make_calendar("Calendar", (-RADIUS+0.05, +1.20, 2.30))
     # Coiled rope on the floor
     for ri in range(3):
@@ -149,7 +151,7 @@ def build_decor():
                  0.18 - ri*0.04, 0.04, (0.62, 0.46, 0.26, 1.0), segments=12)
     # A pair of oilskin coats hanging by the door (S)
     for ci, cx in enumerate([-0.30, +0.30]):
-        make_box(f"Coat_{ci}", (cx, -RADIUS + 0.20, 1.40), (0.40, 0.06, 1.20),
+        make_box(f"Coat_{ci}", (cx, -RADIUS + 0.176, 1.40), (0.40, 0.06, 1.20),   # against the S slabs (2026-09-23: 2.4 cm off)
                  (0.32, 0.28, 0.22, 1.0))
 
 
@@ -332,7 +334,7 @@ def build_hermit_wave2_props():
              (0.36, 0.14, 0.32),
              (0.14, 0.16, 0.20, 1.0))
     make_box("MarcusLaptopBag_Strap",
-             (lb_x, lb_y, 0.52),
+             (lb_x, lb_y, 0.49),   # on the bag
              (0.14, 0.03, 0.02),
              (0.14, 0.16, 0.20, 1.0))
     make_box("MarcusLaptopBag_Badge",
@@ -388,7 +390,7 @@ def build_hermit_wave2_props():
              0.04, 0.04,
              (0.94, 0.86, 0.42, 1.0), segments=10, axis='Y')
     make_cyl("TheriotSkiff_BowLampGlow",
-             (+2.00, -3.15, 0.60),
+             (+2.00, -3.1775, 0.60),   # on the lamp's lens
              0.10, 0.005,
              (0.94, 0.86, 0.42, 0.35), segments=12, axis='Y')
 
@@ -401,7 +403,7 @@ def build_hermit_wave2_props():
              (0.18, 0.001, 0.10),
              (0.10, 0.10, 0.10, 1.0))
     make_cyl("USCG_Radio_LED",
-             (desk_x - 0.30, desk_y + 0.16, desk_top_z + 0.14),
+             (desk_x - 0.30, desk_y + 0.16, desk_top_z + 0.10),   # on the grille (2026-09-23: over the radio)
              0.006, 0.008,
              (0.94, 0.24, 0.20, 1.0), segments=6, axis='Y')
     make_box("USCG_Radio_Mic_Body",
@@ -441,7 +443,7 @@ def build_hermit_wave2_props():
                  (0.08, 0.02, 0.0005),
                  (0.24, 0.20, 0.60, 1.0))
     make_box("Cypriane_LogEntry_Signature",
-             (lb_book_x + 0.06, lb_book_y - 0.18, desk_top_z + 0.026),
+             (lb_book_x + 0.06, lb_book_y - 0.10, desk_top_z + 0.026),   # on the page (2026-09-23: off the book's edge)
              (0.10, 0.03, 0.0005),
              (0.24, 0.20, 0.60, 1.0))
 

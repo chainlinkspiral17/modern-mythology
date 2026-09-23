@@ -331,7 +331,7 @@ metadata/fov = 60.0
 ; the service bell + face-down paperback
 [node name="shot_closeup_counter" type="Marker3D" parent="." groups=["vn_shot"]]
 position = Vector3(1.517, 2.239, -3.533)
-rotation = Vector3(-0.5236, 1.8326, 0.0)
+rotation = Vector3(-0.4252, 1.7851, 0.0)
 metadata/fov = 45.0
 
 ; through the doorway: inventory + workbench + stick box

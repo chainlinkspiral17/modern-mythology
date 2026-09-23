@@ -333,6 +333,22 @@ banisters classed · pans as containers.
   pairs by centre distance and sphere-box pairs by the nearest point
   of the box — exact, not an exemption. Prefer a sharper test over a
   new name rule whenever the false positive is geometric.
+- **A kit's return value is a placement for everything after it
+  (twelfth pass).** `make_counter` returned its top as base+height
+  +0.04; the slab ends at +0.06. Every register, bell and paperback
+  dressed from it in 22 builders sat 2 cm INSIDE the counter, and
+  neither gate could see it: the support gate calls embedding
+  "touching", the overlap gate forgives 10 cm of "resting on a
+  surface". When a helper returns a surface height, test it against
+  the box it built — `top_z == box top` — the day it is written.
+  Fixing the return lifts exactly the things placed from it; the
+  few hand-tuned to the wrong value then hover, and the support gate
+  names them.
+- **A kit's axis is not the caller's assumption.** The counter kit
+  runs its length along Y; chillwave dressed it as if along X — the
+  register stood off one side, the bell off the other, the kick
+  scuff ran across the counter's body. When a float sits a fixed
+  distance off BOTH sides of a fixture, check the fixture's axis.
 - **A tabletop is not sky.** `template_land|template_sea` sat in the
   support audit's SKY list, so every model on the estuary 7 diorama
   (cedars, rivers, labels, the cursor) read as floating. A drop list

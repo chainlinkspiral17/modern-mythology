@@ -106,6 +106,11 @@ EXCLUDE = {
     "photograph": ["door", "window"],
     "phone": ["booth"],
     "cooler": ["novelty", "souvenir", "toy"],
+    # a counter close-up frames what is ON the counter — not the kick
+    # scuff, the outlet or the cord named after it (2026-09-23: chillwave's
+    # aim point was dragged behind the counter by Scuff_Counter and
+    # Outlet_Counter)
+    "counter": ["scuff", "outlet", "socket", "plate", "cord", "wear"],
 }
 
 SYNONYMS = {

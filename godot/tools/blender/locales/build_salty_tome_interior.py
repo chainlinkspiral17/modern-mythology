@@ -155,7 +155,7 @@ def build_sales_counter():
     for si in range(4):
         make_box(f"CounterStack_{si}", (cx - 0.05, cy - 0.60, top_z + 0.03 + si*0.055),
                  (0.34, 0.24, 0.05), BOOK_SPINES[si % len(BOOK_SPINES)])
-    make_cyl("CounterBell", (cx - 0.10, cy - 1.00, top_z + 0.04), 0.05, 0.05, COL_BRASS, segments=12)
+    make_cyl("CounterBell", (cx - 0.10, cy - 1.00, top_z + 0.025), 0.05, 0.05, COL_BRASS, segments=12)   # on the top
     # Green banker's lamp
     make_cyl("DeskLamp_Base", (cx + 0.05, cy + 1.05, top_z + 0.03), 0.06, 0.04, COL_BRASS, segments=10)
     make_cyl("DeskLamp_Stem", (cx + 0.05, cy + 1.05, top_z + 0.14), 0.012, 0.20, COL_BRASS)

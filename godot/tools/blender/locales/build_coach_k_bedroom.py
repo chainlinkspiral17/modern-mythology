@@ -66,7 +66,7 @@ def build_shell():
         ang = bi * 1.5708
         bx, by = 0.42 * math.cos(ang), 0.42 * math.sin(ang)
         make_box(f"Fan_Blade_{bi}", (bx, 2.3 + by, CEIL - 0.24),
-                 (0.55 if bi % 2 == 0 else 0.16, 0.16 if bi % 2 == 0 else 0.55, 0.02),
+                 (0.61 if bi % 2 == 0 else 0.16, 0.16 if bi % 2 == 0 else 0.61, 0.02),   # into the motor (2026-09-23: 2.5 cm short)
                  COL_FAN)
     # Curtained window WEST — closed but for a seam of night
     make_box("Curtain_L", (-ROOM_W / 2.0 + 0.08, 2.3, 1.5), (0.06, 0.70, 1.6), COL_CURTAIN)
@@ -82,7 +82,7 @@ def build_bed():
     one asleep."""
     by = ROOM_D - 1.15
     make_box("Bed_Head", (0.0, ROOM_D - 0.08, 0.68), (1.7, 0.10, 0.95), COL_FRAME_DK)
-    make_box("Bed_Foot", (0.0, by - 1.09, 0.42), (1.7, 0.06, 0.35), COL_FRAME_DK)
+    make_box("Bed_Foot", (0.0, by - 1.07, 0.42), (1.7, 0.06, 0.35), COL_FRAME_DK)   # on the foot rail (2026-09-23: 1.5 cm off it)
     # the shared bed under the two sleepers (2026-09-07); the quilt is
     # its made blanket, the pillows below are theirs
     make_bed("Bed", 0.0, by, head="+Y", w=1.7, d=2.1, style="frame",
@@ -101,10 +101,10 @@ def build_nightstands():
     by = ROOM_D - 0.45
     for sgn, side in ((-1, "W"), (1, "E")):
         nx = sgn * 1.25
-        make_box(f"Nightstand_{side}", (nx, by, 0.30), (0.45, 0.42, 0.55), COL_FRAME)
+        make_box(f"Nightstand_{side}", (nx, by, 0.2875), (0.45, 0.42, 0.575), COL_FRAME)   # to the floor, same top (2026-09-23: 2.5 cm up)
         make_box(f"Nightstand_{side}_Drawer", (nx, by - 0.23, 0.38), (0.36, 0.02, 0.14), COL_FRAME_DK)
     # Her side: a book, her glasses case
-    make_box("Book_Eileen", (-1.25, by - 0.05, 0.61), (0.16, 0.22, 0.04), (0.40, 0.24, 0.22, 1.0))
+    make_box("Book_Eileen", (-1.25, by - 0.05, 0.595), (0.16, 0.22, 0.04), (0.40, 0.24, 0.22, 1.0))   # on the nightstand
     # His side: THE CLOCK (glowing digits — Friday night is long),
     # reading glasses, folded newspaper sports section
     make_box("Clock_Body", (1.25, by - 0.02, 0.63), (0.22, 0.11, 0.10), (0.10, 0.10, 0.11, 1.0))
@@ -127,9 +127,9 @@ def build_dresser():
                      0.02, 0.03, COL_BASE, segments=6, axis='X')
     # Framed photos, staggered
     for pi, (py, ph) in enumerate(((dy - 0.5, 0.22), (dy - 0.1, 0.28), (dy + 0.45, 0.20))):
-        make_box(f"Photo_{pi}", (dx + 0.05, py, 1.02 + ph / 2.0 + 0.02),
+        make_box(f"Photo_{pi}", (dx + 0.05, py, 1.02 + ph / 2.0),   # standing ON the dresser (2026-09-23: 2 cm over it)
                  (0.02, 0.16, ph), COL_FRAME_DK)
-        make_box(f"Photo_{pi}_Img", (dx + 0.03, py, 1.02 + ph / 2.0 + 0.02),
+        make_box(f"Photo_{pi}_Img", (dx + 0.03, py, 1.02 + ph / 2.0),
                  (0.015, 0.12, ph - 0.05), (0.55, 0.52, 0.46, 1.0))
     # The dish: keys + the whistle he has carried for twenty years
     make_cyl("Dish", (dx - 0.05, dy + 0.15, 1.05), 0.09, 0.04, (0.55, 0.55, 0.58, 1.0),
@@ -138,7 +138,7 @@ def build_dresser():
              segments=6, axis='Y')
     # Folded laundry stack
     for li in range(3):
-        make_box(f"Laundry_{li}", (dx - 0.02, dy - 0.55, 1.06 + li * 0.06),
+        make_box(f"Laundry_{li}", (dx - 0.12, dy - 0.55, 1.0475 + li * 0.06),   # on the dresser, clear of photo 0 (2026-09-23: the photo stood inside the stack)
                  (0.30, 0.26, 0.055), (0.5 + 0.08 * li, 0.5, 0.46, 1.0))
 
 
@@ -150,7 +150,7 @@ def build_hero_props():
     make_cyl("Lamp_Stem", (1.25, ROOM_D-0.62, 0.72), 0.012, 0.20, (0.20, 0.19, 0.20, 1.0), segments=6)
     make_cyl("Lamp_Shade", (1.25, ROOM_D-0.62, 0.86), 0.10, 0.14, (0.82, 0.74, 0.58, 1.0), segments=10)
     make_box("W_Window_Glass", (-2.09, 2.6, 1.55), (0.02, 1.10, 1.00), (0.14, 0.18, 0.26, 0.6))
-    make_box("Moon_Seam", (-2.06, 2.6, 1.55), (0.015, 0.05, 0.96), (0.72, 0.76, 0.84, 1.0))
+    make_box("Moon_Seam", (-2.0725, 2.6, 1.55), (0.015, 0.05, 0.96), (0.72, 0.76, 0.84, 1.0))   # on the glass
 
 
 

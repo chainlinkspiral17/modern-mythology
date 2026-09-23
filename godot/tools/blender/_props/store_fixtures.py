@@ -26,7 +26,10 @@ def make_counter(prefix, anchor, *, length=4.40, depth=1.00,
     top_col = palette.get("top",       P.COUNTER_TOP)
     dark    = palette.get("kick",      P.COUNTER_DARK)
     cx, cy, base_z = anchor
-    counter_top_z = base_z + height + 0.04
+    # the top box spans base+height .. base+height+0.06; this returned
+    # +0.04, so everything dressed from it sat 2 cm INSIDE the top in
+    # 22 builders (2026-09-23 — the overlap gate's resting allowance hid it)
+    counter_top_z = base_z + height + 0.06
     # Front counter (customer-facing west face)
     make_box(f"{prefix}_Front",
              (cx, cy, base_z + height / 2.0),

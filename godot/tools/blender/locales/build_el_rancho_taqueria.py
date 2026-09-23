@@ -46,7 +46,7 @@ def build_register_counter():
     make_register("RegisterMachine", (ROOM_W/4.0, ROOM_D-1.5-0.30, top_z))
     # Chip warmer on the counter — metal case, warm lamp, tortilla chips.
     cx, cy = ROOM_W/4.0-0.85, ROOM_D-1.5
-    make_box("ChipWarmer_Body", (cx, cy, top_z+0.22), (0.46,0.46,0.40), P.METAL_STEEL)
+    make_box("ChipWarmer_Body", (cx, cy, top_z+0.20), (0.46,0.46,0.40), P.METAL_STEEL)   # on the top (the kit's top_z is the true top since 2026-09-23)
     make_box("ChipWarmer_Glass", (cx-0.24, cy, top_z+0.24), (0.02,0.42,0.34), P.GLASS_WARM)
     make_box("ChipWarmer_Lamp", (cx, cy, top_z+0.42), (0.44,0.44,0.03), (1.0,0.78,0.32,1.0))
     for i in range(3):
@@ -58,7 +58,7 @@ def build_register_counter():
     make_box("TipJar_Label", (jx, jy-0.055, top_z+0.10), (0.07, 0.005, 0.05), (0.94, 0.92, 0.84, 1.0))
     # The yellow order pad + pen by the register.
     make_box("Order_Pad", (ROOM_W/4.0+0.35, ROOM_D-1.25, top_z+0.012), (0.15, 0.21, 0.012), (0.94, 0.88, 0.42, 1.0))
-    make_cyl("Order_Pen", (ROOM_W/4.0+0.50, ROOM_D-1.20, top_z+0.02), 0.007, 0.13, (0.20, 0.24, 0.40, 1.0), axis='Y', segments=6)
+    make_cyl("Order_Pen", (ROOM_W/4.0+0.50, ROOM_D-1.20, top_z+0.007), 0.007, 0.13, (0.20, 0.24, 0.40, 1.0), axis='Y', segments=6)
     # Cardboard sauce-packet box at the counter's end.
     make_box("Sauce_Box", (ROOM_W/4.0+0.95, ROOM_D-1.5, top_z+0.07), (0.30, 0.24, 0.13), (0.62, 0.50, 0.34, 1.0))
     for si2 in range(6):

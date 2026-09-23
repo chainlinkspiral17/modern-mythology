@@ -101,9 +101,9 @@ def build_counter_front():
     top_z = make_counter("Shop", (-1.1, ccy, 0.0), length=2.60, depth=0.70, height=0.95,
                          palette={"formica": COL_CEDAR, "top": COL_CEDAR_DK,
                                   "kick": (0.30, 0.22, 0.16, 1.0)})
-    make_register("RegisterMachine", (-1.9, ccy+0.05, top_z))
-    make_cyl("Counter_Bell_Base", (-0.5, ccy-0.10, top_z+0.015), 0.05, 0.02, COL_STEEL, segments=10)
-    make_cyl("Counter_Bell_Dome", (-0.5, ccy-0.10, top_z+0.05), 0.045, 0.05, COL_BRASS, segments=10)
+    make_register("RegisterMachine", (-1.1, ccy+0.75, top_z))   # ON the N-S counter (2026-09-23: 15 cm west of it)
+    make_cyl("Counter_Bell_Base", (-0.95, ccy-0.10, top_z+0.01), 0.05, 0.02, COL_STEEL, segments=10)   # on the counter (2026-09-23: 20 cm east of it)
+    make_cyl("Counter_Bell_Dome", (-0.95, ccy-0.10, top_z+0.045), 0.045, 0.05, COL_BRASS, segments=10)
     # The paperback, face-down, spine cracked, mid-read.
     make_box("Paperback", (-1.2, ccy-0.15, top_z+0.012), (0.13, 0.19, 0.022), (0.72, 0.62, 0.44, 1.0))
     make_box("Paperback_Pages", (-1.2, ccy-0.15, top_z+0.030), (0.12, 0.18, 0.012), (0.90, 0.87, 0.78, 1.0))
@@ -167,7 +167,7 @@ def build_workbench():
     make_box("Bench_Backboard", (ROOM_W/2.0-0.12, 6.4, 1.55), (0.05, 2.40, 1.20), COL_CEDAR)
     # Soldering iron in its coil stand + sponge tin.
     make_cyl("Solder_Stand", (bx-0.15, 5.7, 0.96), 0.05, 0.10, COL_STEEL, segments=8)
-    make_cyl("Solder_Iron", (bx-0.05, 5.78, 1.00), 0.015, 0.22, (0.24, 0.24, 0.26, 1.0),
+    make_cyl("Solder_Iron", (bx-0.05, 5.78, 0.945), 0.015, 0.22,   # on the bench (2026-09-23: 5.5 cm over it) (0.24, 0.24, 0.26, 1.0),
              axis='X', segments=6)
     make_box("Solder_Sponge", (bx-0.30, 5.7, 0.945), (0.10, 0.08, 0.025), (0.80, 0.74, 0.30, 1.0))
     # Bench transformer (the heavy hum in the corner of the scene).
@@ -182,11 +182,11 @@ def build_workbench():
     make_box("Repair_Board", (bx-0.02, 6.85, 0.94), (0.12, 0.09, 0.015), (0.24, 0.42, 0.28, 1.0))
     # Parts trays on the backboard + task lamp clamped at the N end.
     for ti in range(3):
-        make_box(f"Parts_Tray_{ti}", (ROOM_W/2.0-0.28, 5.9+ti*0.5, 1.30), (0.22, 0.34, 0.10),
+        make_box(f"Parts_Tray_{ti}", (ROOM_W/2.0-0.21, 5.9+ti*0.5, 1.30), (0.22, 0.34, 0.10),   # on the E wall rail
                  (0.70, 0.70, 0.66, 1.0))
     make_cyl("TaskLamp_Clamp", (bx+0.30, 7.5, 0.96), 0.04, 0.08, (0.22, 0.22, 0.24, 1.0), segments=8)
     make_cyl("TaskLamp_Arm", (bx+0.22, 7.45, 1.25), 0.015, 0.55, (0.22, 0.22, 0.24, 1.0))
-    make_cyl("TaskLamp_Head", (bx+0.05, 7.35, 1.50), 0.08, 0.12, (0.96, 0.90, 0.72, 1.0), segments=10)
+    make_cyl("TaskLamp_Head", (bx+0.13, 7.35, 1.50), 0.08, 0.12, (0.96, 0.90, 0.72, 1.0), segments=10)   # on its arm (2026-09-23: 7.5 cm off it)
     # Cale's chair at the bench + THE second chair (he stayed in
     # the chair while she stood at the stick box).
     for ci, (cx, cy, ang_tag) in enumerate([(bx-0.85, 6.4, "Bench"), (0.6, 6.6, "Second")]):
@@ -233,7 +233,9 @@ def build_detail_pass_2026_08():
     make_floor_stain("Stain_Bench_Ring", (2.55, 6.1), radius=0.18,
                      tint=(0.55, 0.43, 0.31, 1.0))
     # Soft kick scuff on the counter's customer face only.
-    make_scuff_band("Scuff_Counter", (-1.1, 2.73), length=2.4, axis='X',
+    # the counter runs N-S; its customer face is the WEST kick (2026-09-23:
+    # the band ran E-W 18 cm inside the counter front)
+    make_scuff_band("Scuff_Counter", (-1.476, 3.1), length=2.4, axis='Y',
                     band_z=0.10, tint=(0.42, 0.30, 0.20, 1.0))
     # Ceiling gather on the two long walls.
     make_wall_tint_band("Band_W", (-ROOM_W/2.0+0.105, ROOM_D/2.0, 0.0),
@@ -253,7 +255,11 @@ def build_detail_pass_2026_08():
     make_thermostat("Thermostat", (-1.05, PART_Y), axis='X', face_sign=-1)
     # Cords: register, the task lamp, and the transformer all reach
     # the bench outlet — the honest tangle of a one-man repair shop.
-    make_cord_run("Cord_Register", (-1.9, 3.35, 0.90), (-3.39, 3.0, 0.30))
+    # over the counter's west edge, down its face, along the floor to the outlet
+    make_cord_run("Cord_Register_A", (-1.30, 3.85, 1.018), (-1.52, 3.85, 1.018), sag=0.0)
+    make_cord_run("Cord_Register_B", (-1.52, 3.85, 1.018), (-1.52, 3.85, 0.03), sag=0.0)
+    make_cord_run("Cord_Register_C", (-1.52, 3.85, 0.03), (-3.38, 3.00, 0.03), sag=0.0)
+    make_cord_run("Cord_Register_D", (-3.38, 3.00, 0.03), (-3.39, 3.00, 0.30), sag=0.0)
     make_cord_run("Cord_TaskLamp", (3.0, 7.5, 0.95), (3.39, 6.9, 0.30))
     make_cord_run("Cord_Transformer", (3.05, 7.3, 0.92), (3.39, 6.9, 0.30))
 
@@ -272,10 +278,10 @@ def build_use_states_2026_08():
     make_box("InvStick_HalfOut", (-1.15, ROOM_D-0.44, 1.11), (0.10, 0.16, 0.16), STICK_TINTS[0])
     # The bench mid-repair: tweezers, three screws in a saucer, the
     # magnifier loupe set down lens-up.
-    make_box("Bench_Tweezers", (2.90, 6.62, 0.95), (0.015, 0.11, 0.01), P.METAL_STEEL)
-    make_cyl("Bench_Screw_Saucer", (3.05, 6.72, 0.955), 0.04, 0.012, (0.88, 0.86, 0.80, 1.0), segments=8)
+    make_box("Bench_Tweezers", (2.90, 6.62, 0.935), (0.015, 0.11, 0.01), P.METAL_STEEL)   # on the bench top 0.93
+    make_cyl("Bench_Screw_Saucer", (3.05, 6.72, 0.936), 0.04, 0.012, (0.88, 0.86, 0.80, 1.0), segments=8)
     for si, (sxo, syo) in enumerate([(-0.012, 0.008), (0.010, -0.006), (0.002, 0.014)]):
-        make_cyl(f"Bench_Screw_{si}", (3.05+sxo, 6.72+syo, 0.968), 0.004, 0.008,
+        make_cyl(f"Bench_Screw_{si}", (3.05+sxo, 6.72+syo, 0.946), 0.004, 0.008,
                  (0.55, 0.55, 0.58, 1.0), segments=6)
     make_cyl("Bench_Loupe", (2.72, 6.55, 0.955), 0.035, 0.025, (0.24, 0.24, 0.26, 1.0), segments=10)
     # Tea going cold at the bench's far corner — ring already dry
@@ -283,9 +289,10 @@ def build_use_states_2026_08():
     make_cyl("Bench_Tea", (3.15, 7.05, 0.98), 0.04, 0.09, (0.62, 0.58, 0.50, 1.0), segments=8)
     make_cyl("Bench_Tea_Ring", (3.08, 6.95, 0.933), 0.045, 0.003, (0.44, 0.30, 0.20, 1.0), segments=8)
     # Reading glasses folded on the counter beside the paperback.
-    make_box("Counter_Glasses_Bridge", (-0.95, 2.90, 0.965), (0.10, 0.015, 0.01), (0.24, 0.22, 0.20, 1.0))
+    # ON the top (1.01): at 0.965 they lay inside the counter slab (2026-09-23)
+    make_box("Counter_Glasses_Bridge", (-0.95, 2.80, 1.015), (0.10, 0.015, 0.01), (0.24, 0.22, 0.20, 1.0))
     for gi, gxo in enumerate([-0.055, 0.055]):
-        make_cyl(f"Counter_Glasses_Lens_{gi}", (-0.95+gxo, 2.90, 0.962), 0.025, 0.006,
+        make_cyl(f"Counter_Glasses_Lens_{gi}", (-0.95+gxo, 2.80, 1.013), 0.025, 0.006,
                  (0.70, 0.76, 0.78, 0.6), segments=8)
     # One brass letter tab crooked — the alphabet is human.
     make_box("InvTab_Crooked", (0.65, ROOM_D-0.455, 1.64), (0.08, 0.02, 0.06), COL_BRASS)
@@ -306,8 +313,8 @@ def build_beyond_glass_2026_08():
     make_box("Street_Car_Cabin", (2.3, -2.5, 1.02), (2.2, 1.6, 0.45), (0.36, 0.30, 0.26, 1.0))
     # The shopfront across the street: facade band + one lit window.
     make_box("Across_Facade", (0.0, -7.2, 2.0), (13.0, 0.6, 4.0), (0.38, 0.34, 0.30, 1.0))
-    make_box("Across_Window_Dark", (-2.6, -6.85, 1.6), (1.6, 0.06, 1.3), (0.14, 0.15, 0.18, 1.0))
-    make_box("Across_Window_Lit", (2.2, -6.85, 1.6), (1.6, 0.06, 1.3), (0.88, 0.78, 0.52, 1.0))
+    make_box("Across_Window_Dark", (-2.6, -6.87, 1.6), (1.6, 0.06, 1.3), (0.14, 0.15, 0.18, 1.0))   # on the facade (2026-09-23: 2 cm off it)
+    make_box("Across_Window_Lit", (2.2, -6.87, 1.6), (1.6, 0.06, 1.3), (0.88, 0.78, 0.52, 1.0))
     make_box("Across_Door", (0.0, -6.85, 1.15), (0.95, 0.06, 2.3), (0.22, 0.20, 0.18, 1.0))
     # A street tree between the windows' sightlines.
     make_cyl("Street_Tree_Trunk", (-3.4, -2.2, 1.2), 0.12, 2.4, (0.30, 0.24, 0.18, 1.0), segments=8)

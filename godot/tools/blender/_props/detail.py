@@ -129,7 +129,9 @@ def make_light_switch(name, wall_point, axis='X', face_sign=1,
 
 
 def make_thermostat(name, wall_point, axis='X', face_sign=1, z=1.45):
-    dx, dy = _wall_offsets(axis, face_sign, 0.125)
+    # 0.1125 = wall half-thickness 0.10 + half the body; 0.125 hung
+    # every thermostat 1.25 cm off its wall (2026-09-23)
+    dx, dy = _wall_offsets(axis, face_sign, 0.1125)
     x, y = wall_point
     if axis == 'X':
         make_box(f"{name}_Body", (x + dx, y + dy, z), (0.11, 0.025, 0.09), COL_PLATE)

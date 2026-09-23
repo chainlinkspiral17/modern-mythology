@@ -80,8 +80,8 @@ def build_shell():
         make_cyl(f"Goal_Upright_{sgn:+d}", (1.8 + sgn * 1.3, -5.4, 3.4), 0.045, 1.7,
                  COL_GOAL, segments=8)
     # Bare bulb over the back wall (Coach Dale's work light)
-    make_cyl("Bulb_Base", (0.0, 4.6, CEIL - 0.05), 0.05, 0.05, COL_STEEL_DK, segments=8)
-    make_cyl("Bulb", (0.0, 4.6, CEIL - 0.13), 0.045, 0.09, COL_BULB, segments=10)
+    make_cyl("Bulb_Base", (0.0, 4.6, CEIL - 0.025), 0.05, 0.05, COL_STEEL_DK, segments=8)   # on the ceiling (2026-09-23: 2.5 cm under it)
+    make_cyl("Bulb", (0.0, 4.6, CEIL - 0.095), 0.045, 0.09, COL_BULB, segments=10)
 
 
 def build_shelving():
@@ -93,8 +93,8 @@ def build_shelving():
     # Helmets in a row on the top shelf
     for i in range(5):
         hy = 1.35 + i * 0.62
-        make_cyl(f"Helmet_{i}", (wx, hy, 1.94), 0.14, 0.22, COL_HELMET, segments=12)
-        make_box(f"Helmet_{i}_Stripe", (wx, hy, 2.06), (0.28, 0.04, 0.03), COL_HELMET_STRIPE)
+        make_cyl(f"Helmet_{i}", (wx, hy, 1.885), 0.14, 0.22, COL_HELMET, segments=12)   # on the top shelf (2026-09-23: 5.5 cm over it)
+        make_box(f"Helmet_{i}_Stripe", (wx, hy, 2.005), (0.28, 0.04, 0.03), COL_HELMET_STRIPE)
     # Shoulder-pad stacks on the middle shelf
     for i in range(3):
         make_box(f"Pads_{i}", (wx, 1.6 + i * 0.9, 1.28), (0.42, 0.6, 0.20), COL_HELMET)
@@ -107,11 +107,11 @@ def build_shelving():
     # Cone stacks by the door
     for ci in range(2):
         for k in range(4):
-            make_cyl(f"Cone_{ci}_{k}", (2.0 - ci * 0.5, 0.6, 0.10 + k * 0.09),
+            make_cyl(f"Cone_{ci}_{k}", (2.0 - ci * 0.5, 0.6, 0.08 + k * 0.09),   # the stack on the floor
                      0.16 - k * 0.012, 0.16, COL_CONE, segments=8)
     # THE CLIPBOARD WALL — back wall, where Coach Dale sorts: roster
     # sheets on nails, one clipboard hanging, a small stack on a stool
-    nx = ROOM_D - 0.05
+    nx = ROOM_D - 0.11   # on the wall's face (2026-09-23: the sheets were 6 cm inside it)
     for pi in range(4):
         make_box(f"Roster_{pi}", (-1.5 + pi * 0.55, nx, 1.65 + 0.05 * (pi % 2)),
                  (0.30, 0.02, 0.40), COL_PAPER)
@@ -128,10 +128,11 @@ def build_big_gear():
     """The blocking sled + two tackle dummies + the field liner."""
     # Blocking sled — steel skid frame with two upright pads
     sx, sy = 1.5, 3.6
-    make_box("Sled_Skid_L", (sx - 0.45, sy, 0.10), (0.10, 1.3, 0.12), COL_STEEL_DK)
-    make_box("Sled_Skid_R", (sx + 0.45, sy, 0.10), (0.10, 1.3, 0.12), COL_STEEL_DK)
+    make_box("Sled_Skid_L", (sx - 0.45, sy, 0.06), (0.10, 1.3, 0.12), COL_STEEL_DK)   # on the floor (2026-09-23: 4 cm up)
+    make_box("Sled_Skid_R", (sx + 0.45, sy, 0.06), (0.10, 1.3, 0.12), COL_STEEL_DK)
     make_box("Sled_Cross", (sx, sy, 0.16), (1.0, 0.10, 0.10), COL_STEEL)
     for di, dy in enumerate((-0.35, 0.35)):
+        make_box(f"Sled_Rail_{di}", (sx, sy + dy, 0.16), (1.0, 0.10, 0.10), COL_STEEL)   # a crossmember under each arm (2026-09-23: the arms stood on nothing)
         make_box(f"Sled_Arm_{di}", (sx, sy + dy, 0.62), (0.08, 0.08, 1.0), COL_STEEL)
         make_box(f"Sled_Pad_{di}", (sx, sy + dy, 1.15), (0.34, 0.22, 0.6), COL_PAD)
     # Tackle dummies leaning in the NE corner
@@ -143,7 +144,8 @@ def build_big_gear():
     lx, ly = -1.5, 4.5
     make_box("Liner_Hopper", (lx, ly, 0.45), (0.4, 0.5, 0.4), COL_LINER)
     make_box("Liner_Chalk", (lx, ly, 0.66), (0.32, 0.42, 0.03), COL_CHALK)
-    make_box("Liner_Handle", (lx, ly + 0.5, 0.75), (0.05, 0.5, 0.05), COL_STEEL)
+    make_box("Liner_Handle", (lx, ly + 0.5, 0.66), (0.05, 0.5, 0.05), COL_STEEL)   # out of the hopper (2026-09-23: 7 cm over it)
+    make_box("Liner_Handle_Riser", (lx, ly + 0.75, 0.82), (0.05, 0.05, 0.30), COL_STEEL)   # up to the grip
     make_box("Liner_Grip", (lx, ly + 0.75, 0.98), (0.30, 0.04, 0.04), COL_STEEL_DK)
     for wy in (-0.2, 0.25):
         make_cyl(f"Liner_Wheel_{wy:+.1f}", (lx, ly + wy, 0.12), 0.12, 0.05,

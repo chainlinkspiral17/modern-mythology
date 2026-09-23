@@ -115,7 +115,7 @@ def build_kitchenette():
     top_z = make_counter("Kitch", (cx, cy, 0.0), length=1.20, depth=0.70, height=0.92, palette={"formica": (0.74, 0.62, 0.42, 1.0), "top": (0.32, 0.22, 0.14, 1.0), "kick": (0.32, 0.22, 0.14, 1.0)})
     make_counter_bullnose("Kitch", (cx-0.35, cy, top_z), length=1.20, palette={"top": (0.32, 0.22, 0.14, 1.0)})
     # French press
-    make_cyl("FrenchPress_Body", (cx-0.20, cy, top_z+0.12), 0.06, 0.20, (0.78, 0.84, 0.86, 0.55))
+    make_cyl("FrenchPress_Body", (cx-0.20, cy, top_z+0.10), 0.06, 0.20, (0.78, 0.84, 0.86, 0.55))   # on the top
     make_cyl("FrenchPress_Plunger", (cx-0.20, cy, top_z+0.26), 0.012, 0.10, P.METAL_STEEL)
     make_cyl("FrenchPress_Lid", (cx-0.20, cy, top_z+0.30), 0.06, 0.02, P.METAL_BLACK)
     # Coffee in press

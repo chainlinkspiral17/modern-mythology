@@ -2025,6 +2025,35 @@ bayou lighthouse 12, chillwave 12, coach k 12, bungalow 11, daily
 grind 11, foxhole bar 11, little switzerland 11, pit stop interior
 and office 11, wgur 11; overlap: pit stop 26, crumpled barn 11,
 courthouse 10, centro break room 10, ben's bedroom 10.
+TWELFTH PASS (batches 16–17): support 447 → 371, overlap 208 → 204.
+THE COUNTER KIT BURIED EVERYTHING 2 CM: `make_counter` returned
+base+height+0.04 as the top while its top slab ends at +0.06, so in 22
+builders every register, bell, pot, pad and paperback dressed from
+the return value sat 2 cm INSIDE the counter — and the overlap gate's
+"resting on a surface" allowance (10 cm) waved it through. Fixed in
+the kit; three hand-tuned items that now hovered were re-seated.
+Rooms to zero: DAIGLES (taps, the pool cue ON the rail, the six-steps
+sign inside the doorway, Lou's mug by the front door at bar height,
+the cigarette burns past the bar's edge), the EQUIPMENT SHED (sled
+arms on nothing, the liner's handle, helmets, cones, the bulb, the
+roster sheets 6 cm inside the wall), the STATIC DRIVE-IN (a 4.2 m
+wall opening around a 1.4 m window — sill and header now; the candy
+case in the gap between the counters; Natalie's notebook a second
+copy of the sigil notebook, outside the building; the mini-fridge in
+the south wall; Ollie's note on a booth door that was never built),
+the BAYOU LIGHTHOUSE (the clock past its wall slab's end; the lens 17
+cm over its drive with 2 cm gaps between rings), CHILLWAVE (the kit
+counter runs N-S but its register and bell were placed for an E-W
+one — one off each side; the reading glasses inside the counter
+slab; the kick scuff inside the counter front), COACH K (the fan's
+blades short of the motor, the photo standing inside the laundry
+stack, nightstands 2.5 cm up). The thermostat kit set every
+thermostat 1.25 cm off its wall. A counter close-up's subject no
+longer includes scuffs, outlets and cords named for the counter.
+NEXT (support 371): bungalow 11, daily grind 11, foxhole bar 11,
+little switzerland 11, pit stop interior and office 11, wgur 11,
+courthouse 10, diego bedroom 10; overlap: pit stop 26, crumpled barn
+11, courthouse 10, centro break room 10, ben's bedroom 10.
 
 **2026-09-19 · DESIGN · the two decorative checks made real, the first
 remembered choice.** Nate's basement (ch6) and Tem staying (ch8): the
