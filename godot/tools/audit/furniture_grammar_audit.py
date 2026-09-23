@@ -119,7 +119,8 @@ NOT_SEATING = re.compile(r"(side|end|night|console|hall|lamp|plant|tv|outline|zo
 # him"; the New Orleans executive desk centred on the door; Antonio's
 # desk turned to watch the AC; the WGUR operator console facing the rack.
 DESK_FREESTANDING_LOCALES = {"miller_office", "new_orleans_office", "ember_ash_office", "wgur_transmitter_shack"}
-DESK_FREESTANDING = re.compile(r"(judge|clerk|helm|newspaper|desk_[0-9]_top|reception|teller|island|kiosk|studio|cat_desk|drafting|drawing)", re.I)
+# pit_desk: a casino pit boss's podium stands in the pit (le roulant, 2026-09-23)
+DESK_FREESTANDING = re.compile(r"(judge|clerk|helm|newspaper|desk_[0-9]_top|reception|teller|island|kiosk|studio|cat_desk|drafting|drawing|pit_desk)", re.I)
 TOPISH = re.compile(r"(top|surface|slab)(_[0-9]+)?$", re.I)
 
 

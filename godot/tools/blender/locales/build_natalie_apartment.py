@@ -127,11 +127,11 @@ def build_shell():
     make_wall("Wall_N", (0.0, ROOM_D, 0),
               length=ROOM_W + 0.4, height=CEIL_Z, axis='X',
               palette=PAL_APT_WALL, baseboard_face_sign=-1)
-    make_wall("Wall_S_W", (-2.50, 0.0, 0),
-              length=2.00, height=CEIL_Z, axis='X',
+    make_wall("Wall_S_W", (-2.30, 0.0, 0),   # to the door edge the hinges mark (2026-09-23: 40 cm short)
+              length=2.40, height=CEIL_Z, axis='X',
               palette=PAL_APT_WALL)
-    make_wall("Wall_S_E", (+2.50, 0.0, 0),
-              length=2.00, height=CEIL_Z, axis='X',
+    make_wall("Wall_S_E", (+2.30, 0.0, 0),
+              length=2.40, height=CEIL_Z, axis='X',
               palette=PAL_APT_WALL)
     make_box("Wall_S_AboveDoor", (0.0, 0.0, CEIL_Z - 0.30),
              (3.00, 0.20, 0.60), PAL_APT_WALL["wall"])
@@ -163,7 +163,7 @@ def build_living_room():
     # chamfered cushions, rolled arms; moved east + north out of the
     # door's swing)
     sx, sy = SOFA_X, SOFA_Y
-    make_chamfer_box("Sofa_Base", (sx, sy, 0.16), (1.80, 0.80, 0.24), COL_COUCH_TRIM, chamfer=0.02)
+    make_chamfer_box("Sofa_Base", (sx, sy, 0.14), (1.80, 0.80, 0.28), COL_COUCH_TRIM, chamfer=0.02)   # to the floor (2026-09-23: 4 cm up)
     for ci, cx in enumerate((-0.44, 0.44)):
         make_chamfer_box(f"Sofa_Cushion_{ci}", (sx + cx, sy - 0.04, 0.36), (0.84, 0.70, 0.16), COL_COUCH_TEAL, chamfer=0.04)
     make_chamfer_box("Sofa_Back", (sx, sy + 0.32, 0.74), (1.80, 0.20, 0.60), COL_COUCH_TEAL, chamfer=0.04)
@@ -172,7 +172,7 @@ def build_living_room():
         make_cyl(f"Sofa_Arm_Roll_{cs:+d}", (sx + cs * 0.94, sy, 0.63), 0.085, 0.80, COL_COUCH_TRIM, axis='Y', segments=10)
     # Throw pillows (rose accent)
     for pi, px in enumerate([-0.50, +0.30, +0.70]):
-        make_chamfer_box(f"Sofa_Pillow_{pi}", (sx + px, sy + 0.10, 0.56), (0.30, 0.20, 0.18), COL_ACCENT_ROSE, chamfer=0.03)
+        make_chamfer_box(f"Sofa_Pillow_{pi}", (sx + px, sy + 0.10, 0.53), (0.30, 0.20, 0.18), COL_ACCENT_ROSE, chamfer=0.03)   # on the cushions
     # Coffee table (draft 3: the kit table, turned legs and an apron)
     make_table("CoffeeTable", sx, sy - 0.80, w=1.20, d=0.60, h=0.40, wood=COL_WOOD_TRIM)
     # Mug + book on coffee table
@@ -292,13 +292,13 @@ def build_hero_props():
     # (draft 3: the rug + low table north of the sofa's back, y 2.9)
     make_box("Reading_Rug", (RUG_X, RUG_Y, 0.012), (2.20, 1.80, 0.02), (0.46, 0.34, 0.30, 1.0))
     make_box("Rug_Worn_Patch", (RUG_X - 0.80, RUG_Y, 0.024), (0.55, 0.45, 0.006), (0.54, 0.42, 0.36, 1.0))
-    make_box("Low_Table", (RUG_X, RUG_Y, 0.22), (0.55, 0.55, 0.10), (0.42, 0.30, 0.20, 1.0))
+    make_box("Low_Table", (RUG_X, RUG_Y, 0.146), (0.55, 0.55, 0.248), (0.42, 0.30, 0.20, 1.0))   # a footstool block ON the rug (2026-09-23: a top on nothing)
     for ci in range(5):
         make_box(f"Fanned_Card_{ci}", (RUG_X - 0.15 + ci * 0.09, RUG_Y - 0.18 + 0.02 * (ci % 2), 0.276),
                  (0.07, 0.11, 0.002), (0.86, 0.82, 0.70, 1.0))
     # Upper cabinets + THE under-cabinet light
-    make_box("Upper_Cabs", (-1.50, 5.18, 1.85), (2.40, 0.34, 0.70), (0.42, 0.32, 0.24, 1.0))
-    make_box("UnderCab_Light", (-1.50, 5.04, 1.49), (2.30, 0.06, 0.03), (0.98, 0.90, 0.70, 1.0))
+    make_box("Upper_Cabs", (-1.50, 5.23, 1.85), (2.40, 0.34, 0.70), (0.42, 0.32, 0.24, 1.0))   # on the N wall (2026-09-23: 5 cm off it)
+    make_box("UnderCab_Light", (-1.50, 5.09, 1.49), (2.30, 0.06, 0.03), (0.98, 0.90, 0.70, 1.0))
     # Futon-ify: the twilight quilt over the sofa/futon
     # (draft 3: folded over the sofa's east arm — it floated in the air
     # at (2.1, 2.4) with nothing under it)
@@ -310,7 +310,7 @@ def build_hero_props():
     make_lamp("Scarf_Lamp", 1.15, 0.55, base_z=0.60, h=0.55, shade_col=(0.62, 0.34, 0.44, 0.9), body_col=(0.30, 0.22, 0.14, 1.0))
     make_rot_box("Draped_Scarf", (1.22, 0.50, 1.05), (0.20, 0.16, 0.04), (0.56, 0.28, 0.40, 1.0), yaw=0.4, roll=0.25)
     for bi in range(8):
-        make_box(f"Blind_Slat_{bi}", (-3.30, 2.5, 0.80 + bi * 0.14), (0.02, 1.80, 0.03), (0.72, 0.70, 0.64, 1.0))
+        make_box(f"Blind_Slat_{bi}", (-3.42, 2.5, 0.80 + bi * 0.14), (0.02, 1.80, 0.03), (0.72, 0.70, 0.64, 1.0))   # in the window (2026-09-23: 13 cm into the room)
 
 
 
@@ -426,7 +426,10 @@ def build_draft3_2026_09():
     make_scuff_band("Wear_Stove_Drip", (0.05, 5.05 - 0.356), 0.40, axis='X', height=0.10, band_z=0.55, tint=(0.62, 0.58, 0.52, 1.0))
     # D3 · the turntable's cord to Outlet_W, the scarf lamp's cord to a
     # south-wall outlet, the kettle-side outlet above the counter
-    make_tube("Cord_1", [(-3.10, 1.92, 0.60), (-3.385, 1.925, 0.30)], 0.008, cord, segments=5)
+    # over the stand's top and down its west face (2026-09-23: a diagonal through the stand)
+    make_tube("Cord_1A", [(-3.10, 1.92, 0.61), (-3.265, 1.92, 0.61)], 0.008, cord, segments=5)
+    make_tube("Cord_1B", [(-3.265, 1.92, 0.61), (-3.265, 1.925, 0.30)], 0.008, cord, segments=5)
+    make_tube("Cord_1C", [(-3.265, 1.925, 0.30), (-3.385, 1.925, 0.30)], 0.008, cord, segments=5)
     make_wall_outlet("Outlet_S_1", (1.60, 0.0), axis='X', face_sign=1, z=0.30, aged=True)
     make_tube("Cord_2", [(1.20, 0.40, 0.60), (1.60, 0.12, 0.30)], 0.008, cord, segments=5)
     make_wall_outlet("Outlet_N_1", (-0.90, ROOM_D), axis='X', face_sign=-1, z=1.15, aged=True)

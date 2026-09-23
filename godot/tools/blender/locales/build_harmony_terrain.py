@@ -7744,7 +7744,7 @@ def build_commercial_cluster():
         (nc_x + ks_x) / 2,              # between NexCorp & Kwik Shop (-37.5)
         (ks_x + dn_x) / 2,              # between Kwik Shop & Diner (10)
         (dn_x + cc_x) / 2,              # between Diner & Cosmic (52.5)
-        cc_x + 8,                       # east of Cosmic (open end)
+        cc_x + 12,                      # east of Cosmic (open end); clear of Comm_Lamp_6 at cc_x + 6 (2026-09-23: its globe was in the canopy)
     ]
     for k, stx in enumerate(street_tree_xs):
         sty = walk_strip_y - 2.5      # south of the sidewalk, planted
@@ -11922,6 +11922,13 @@ def build_arterial_trees():
                 perp_y =  dxs / seg_len
                 tx = mx + side_sgn * perp_x * RES_TREE_OFFSET
                 ty = my + side_sgn * perp_y * RES_TREE_OFFSET
+                # keep clear of the stop signs (2026-09-23: WEMag tree 6's cone
+                # stood around X_Stop_WE_MagLoop_S's pole) — push to 3 m
+                for kx_, ky_ in ((-324.5, -194.5),):
+                    d_ = math.hypot(tx - kx_, ty - ky_)
+                    if 1e-6 < d_ < 3.0:
+                        tx = kx_ + (tx - kx_) / d_ * 3.0
+                        ty = ky_ + (ty - ky_) / d_ * 3.0
                 tz = mesh_z(tx, ty)
                 # Tree variety — cycle 4 species deterministically
                 # so each block has a mix instead of uniform oaks
@@ -12299,11 +12306,14 @@ def build_arterial_berms():
                 0.55, COL_BERM_SHRUB,
                 rings=2, segments=6)
         # 1 specimen tree at the berm midpoint
+        # (2026-09-23) HZ_W_N's midpoint is HorizonDr lamp 260's spot —
+        # the pole stood in the trunk. That specimen moves 4 m along.
+        tcx_ = cx + (4.0 if tag == "HZ_W_N" else 0.0)
         _make_cyl_local(f"Berm_{tag}_TreeTrunk",
-                        (cx, cy, z + 0.55 + 1.8),
+                        (tcx_, cy, z + 0.55 + 1.8),
                         0.18, 3.6, COL_TRUNK, segments=6)
         _make_sphere_low_local(f"Berm_{tag}_TreeCanopy",
-                                (cx, cy, z + 0.55 + 3.8),
+                                (tcx_, cy, z + 0.55 + 3.8),
                                 1.8, COL_CANOPY,
                                 rings=3, segments=8)
         # Flower clusters at the berm ends
@@ -14959,7 +14969,7 @@ def build_harmony_park():
 
     # ── FLOWER BEDS · 3 strategic spots
     flower_specs = [
-        (gz_cx, gz_cy - gz_r - 3.0, 2.4, COL_FLOWER_PINK),   # gazebo entry
+        (gz_cx, gz_cy - gz_r - 2.2, 1.6, COL_FLOWER_PINK),   # gazebo entry; clear of the church lot's north stall line (2026-09-23: in the stalls)
         ( -30,   175,              2.0, COL_FLOWER_YELLOW),  # north arc
         (  60,    95,              1.8, COL_FLOWER_PURPLE),  # NE pool corner
         (  -5,    25,              1.6, COL_FLOWER_PINK),    # SW pool
@@ -16067,6 +16077,10 @@ def build_north_ranch_neighborhood():
         ('Cedar', 0, -1),     # straddles NR settlement south
         ('Cedar', 1, -1),
         ('Cedar', 2, -1),
+        ('Birch', 2, -1),     # INSIDE the skatepark (cx -280, cy 82): the
+                              # house stood on the bowl floor, its shrubs
+                              # in the manual pad (2026-09-23 — found when
+                              # the recorder learned spheres)
         ('Birch', 2, +1),     # north side at x≈-250 is INSIDE
                               # OTPark: house + shed stood on the W
                               # radial lamp, the drinking fountain

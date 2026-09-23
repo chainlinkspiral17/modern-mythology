@@ -176,7 +176,8 @@ def build_cabin_and_network():
     cx, cy = 2.20, 0.15
     make_box("Cabin", (cx, cy, Z_TOP + 0.06), (0.24, 0.20, 0.12), (0.46, 0.36, 0.26, 1.0))
     make_gable("Cabin_Roof", (cx, cy, Z_TOP + 0.12), (0.28, 0.24, 0.08), ROOF, ridge_axis="X")
-    make_cyl("Cabin_Chimney", (cx + 0.08, cy, Z_TOP + 0.22), 0.012, 0.04, (0.32, 0.30, 0.28, 1.0), segments=6)
+    # through the roof (2026-09-23: 4 cm over it)
+    make_cyl("Cabin_Chimney", (cx + 0.08, cy, Z_TOP + 0.17), 0.012, 0.06, (0.32, 0.30, 0.28, 1.0), segments=6)
     make_box("Cabin_Clearing", (cx, cy, Z_DECAL + 0.0001), (0.44, 0.40, 0.002), LAND_DK)
     # Marit: west along y=cy to x=-0.80, then south to her house
     make_box("Substrate_Line_Marit", ((cx - 0.12 + -0.80) / 2.0, cy, Z_TRACE), (cx - 0.12 + 0.80, 0.02, 0.003), TRACE)
@@ -281,6 +282,10 @@ def build_gallery_2026_09():
         make_box(f"Gallery_Layer_{li}_Edge", (1.4, -4.51, z), (9.2, 0.02, 0.012), (0.62, 0.86, 0.96, 0.6))
         make_box(f"Gallery_Layer_{li}_Tab", (-2.9, -4.62, z), (0.70, 0.20, 0.010), PALETTE)
         make_box(f"Gallery_Layer_{li}_Tab_Text", (-2.9, -4.62, z + 0.0075), (0.56, 0.06, 0.004), PALETTE_GLYPH if li == 0 else PALETTE_GREY)
+    # the vitrine's four brass standards the sheets hang on (2026-09-23:
+    # four glass sheets hovered 1.5-2.3 m over the table on nothing)
+    for sx_, sy_ in ((-3.21, -4.49), (6.01, -4.49), (-3.21, 4.51), (6.01, 4.51)):
+        make_box(f"Gallery_Standard_{sx_:+.0f}_{sy_:+.0f}", (sx_, sy_, 0.30 + (2.66 - 0.30) / 2.0), (0.05, 0.05, 2.66 - 0.30), BRASS)
     # the off-frame glyphs get their labels
     make_box("Foundation_Label", (5.94, -1.16, Z_TRACE + 0.001), (0.30, 0.08, 0.004), PALETTE)
     make_box("Foundation_Label_Text", (5.94, -1.16, Z_TRACE + 0.0045), (0.24, 0.03, 0.002), PALETTE_GLYPH)

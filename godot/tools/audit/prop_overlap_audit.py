@@ -23,6 +23,7 @@ Usage:
     python3 godot/tools/audit/prop_overlap_audit.py <builder> [...]
     python3 godot/tools/audit/prop_overlap_audit.py --all
 """
+import math
 import os
 import re
 import sys
@@ -133,6 +134,8 @@ LAMP_MAX = 0.20
 # audits, meaningless for box-vs-box overlap: a sloped 50 m ribbon's
 # bbox "clips" everything under it. The overlap check skips them.
 MESH_NAMES = set()
+# vendored spheres: name -> (centre, radius), for the sphere-aware test
+SPHERES = {}
 
 
 def record_builder(path):
@@ -141,6 +144,7 @@ def record_builder(path):
     make_box/make_cyl definitions (by rebinding build_* globals)."""
     A.BOXES.clear()
     MESH_NAMES.clear()
+    SPHERES.clear()
     src = open(path).read()
     src = re.sub(r"^if __name__.*$[\s\S]*", "", src, flags=re.M)
     g = {"__name__": "_overlap_probe", "__file__": path}
@@ -194,6 +198,23 @@ def record_builder(path):
         g["_make_box_local"] = rec_box
     if "_make_cyl_local" in g:
         g["_make_cyl_local"] = rec_cyl
+
+    # Vendored SPHERE helpers (2026-09-23, the "sphere recorder gap"):
+    # the diner's 27 make_sphere_low calls (door bell, expo bell, lamp
+    # shades, finials), riverfront's make_sphere, the roberts house's
+    # bird and knobs — built straight through bpy, so every gate had
+    # measured the set without them. A sphere records as its cube.
+    def rec_sphere(name, center, radius, *a, **k):
+        r = abs(float(radius))
+        cc = tuple(float(c) for c in center)
+        A.BOXES.append((str(name), cc, (r, r, r)))
+        SPHERES[str(name)] = (cc, r)
+        return A._obj_stub(name)
+
+    for sph in ("make_sphere_low", "make_sphere", "_make_sphere_low",
+                "_make_sphere_low_local"):
+        if sph in g:
+            g[sph] = rec_sphere
     for noop_name in ("export_glb", "clear_scene"):
         if noop_name in g:
             g[noop_name] = lambda *a, **k: None
@@ -388,6 +409,23 @@ def overlaps(boxes):
             if not ok:
                 continue
             depth = min(pen)
+            # A sphere is recorded as its cube; judge it as a sphere
+            # (2026-09-23). A grass tuft outside a canopy's ball but
+            # inside its cube is not a clip; a lamp globe inside the
+            # ball is, and reports the true depth.
+            s1, s2 = SPHERES.get(n1), SPHERES.get(n2)
+            if s1 or s2:
+                if s1 and s2:
+                    sp = s1[1] + s2[1] - math.dist(s1[0], s2[0])
+                else:
+                    (sc, sr), (bc, bh) = (s1, (c2, h2)) if s1 else (s2, (c1, h1))
+                    q = [max(bc[i] - bh[i], min(sc[i], bc[i] + bh[i])) for i in range(3)]
+                    sp = sr - math.dist(sc, q)
+                if sp <= EPS:
+                    continue
+                if sp < depth:   # keep the axis: later rules read pen.index(depth)
+                    pen[pen.index(depth)] = sp
+                    depth = sp
             # Things STAND IN the ground: a foundation sinks to any
             # depth as long as the object rises proud of the ground
             # sheet's surface (warehouses on the port land, bridge

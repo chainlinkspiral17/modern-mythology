@@ -117,7 +117,8 @@ def build_retail_counter():
     make_box("Counter_Top",  (0.0, cy, 0.96), (3.00, 0.60, 0.04), COL_COUNTER_TOP)
     make_box("Counter_Body", (0.0, cy, 0.48), (3.00, 0.60, 0.96), COL_COUNTER)
     # Register
-    make_box("Register_Body", (-1.20, cy, 1.16), (0.40, 0.40, 0.30), (0.42, 0.30, 0.22, 1.0))
+    # the old till (a second register_body shared its name) ON the top (2026-09-23: 3 cm over it)
+    make_box("Register_Old_Body", (-1.20, cy, 1.13), (0.40, 0.40, 0.30), (0.42, 0.30, 0.22, 1.0))
     # Tackle wall hook for prices
     make_box("PriceChalkboard", (0.0, cy, 1.50), (0.60, 0.005, 0.40), (0.18, 0.20, 0.18, 1.0))
     # Nightcrawler chest cooler
@@ -147,10 +148,17 @@ def build_pegboard_walls():
 def build_screened_porch_and_door():
     # Door (S, between the two S wall segments)
     make_box("Door", (0.0, 0.04, 1.05), (1.00, 0.08, 2.10), COL_COUNTER)
+    # (2026-09-23) the S wall's opening is 3 m and the door 1 m: a metre
+    # of open air stood either side of it, and nothing above it — the
+    # keys hook and the frog sign hung in the gaps. Jambs + a header.
+    for sgn_ in (-1, 1):
+        make_box(f"Wall_S_Jamb_{sgn_:+d}", (sgn_ * 1.0, 0.0, CEIL / 2.0), (1.00, 0.20, CEIL), PAL["wall"])
+    make_box("Wall_S_Header", (0.0, 0.0, (2.10 + CEIL) / 2.0), (1.00, 0.20, CEIL - 2.10), PAL["wall"])
     make_cyl("Door_Knob", (0.30, -0.02, 1.00), 0.04, 0.04, (0.62, 0.62, 0.58, 1.0), axis='Y')
     # Painted frog sign over the door
-    make_box("Frog_Sign_BG", (0.0, 0.04, 2.40), (1.40, 0.04, 0.50), COL_FROG_SIGN)
-    make_box("Frog_Sign_Belly", (0.0, 0.02, 2.40), (0.005, 1.10, 0.30), COL_FROG_BELLY)
+    # on the header's porch face (2026-09-23: in the gap; the belly lay 1.1 m deep through it)
+    make_box("Frog_Sign_BG", (0.0, -0.12, 2.40), (1.40, 0.04, 0.50), COL_FROG_SIGN)
+    make_box("Frog_Sign_Belly", (0.0, -0.1425, 2.40), (1.10, 0.005, 0.30), COL_FROG_BELLY)
     # Screened porch backdrop (visible through the doorway)
     make_box("Porch_Floor", (0.0, -1.60, 0.04), (4.00, 3.20, 0.08), COL_FLOOR_WOOD)
     # Porch posts
@@ -282,14 +290,14 @@ def build_world_dressing():
              segments=6, axis='Y')
     # Key ring (brass loop)
     make_cyl("EmKeys_Ring",
-             (door_x, door_y + 0.02, 1.42),
+             (door_x, door_y + 0.02, 1.46),   # on the hook (2026-09-23: 4 cm under it)
              0.030, 0.005,
              (0.78, 0.62, 0.30, 1.0),
              segments=10, axis='Y')
     # Three keys hanging from the ring
     for ki, kx_off in enumerate([-0.020, 0.0, +0.020]):
         make_box("EmKeys_Key_%d" % ki,
-                 (door_x + kx_off, door_y + 0.02, 1.36),
+                 (door_x + kx_off, door_y + 0.02, 1.40),
                  (0.008, 0.025, 0.08),
                  (0.78, 0.62, 0.30, 1.0))
 
@@ -393,19 +401,19 @@ def build_world_wave2_props():
              (0.14, 0.14, 0.16, 1.0))
 
     # Em's till counting sheet on the counter (~1978 carbon-back form)
-    till_x = +0.20
-    till_y = -0.40
+    till_x = -0.84   # on the counter (2026-09-23: at y -0.40 it lay in the air over the porch)
+    till_y = +2.10
     make_box("EmsTillSheet_Paper",
-             (till_x, till_y, counter_z + 0.014),
+             (till_x, till_y, counter_z + 0.0015),   # flat on the top
              (0.20, 0.28, 0.001),
              (0.92, 0.88, 0.78, 1.0))
     for li in range(8):
         make_box("EmsTillSheet_Field_%d" % li,
-                 (till_x, till_y + 0.10 - li * 0.028, counter_z + 0.015),
+                 (till_x, till_y + 0.10 - li * 0.028, counter_z + 0.0025),
                  (0.18, 0.010, 0.0005),
                  (0.28, 0.22, 0.18, 1.0))
     make_box("EmsTillSheet_CarbonEdge",
-             (till_x, till_y - 0.14, counter_z + 0.0155),
+             (till_x, till_y - 0.14, counter_z + 0.0025),
              (0.20, 0.01, 0.0005),
              (0.28, 0.34, 0.62, 1.0))
 
@@ -428,10 +436,10 @@ def build_world_wave2_props():
                  (0.22, 0.18, 0.14, 1.0))
 
     # The safe in the back office · behind the framed license
-    safe_x = +2.00
+    safe_x = +2.68   # against the E wall, the license over it (2026-09-23: in the open, the frame in the air)
     safe_y = +2.75
     make_box("BackOffice_Safe_Body",
-             (safe_x, safe_y, 0.32),
+             (safe_x, safe_y, 0.30),
              (0.44, 0.36, 0.60),
              (0.12, 0.12, 0.12, 1.0))
     make_cyl("BackOffice_Safe_Dial",
@@ -447,12 +455,12 @@ def build_world_wave2_props():
              0.008, 0.10,
              (0.62, 0.62, 0.60, 1.0), segments=6, axis='X')
     make_box("BackOffice_License_Frame",
-             (safe_x, safe_y - 0.15, 0.94),
-             (0.30, 0.005, 0.22),
+             (2.8975, safe_y, 0.94),
+             (0.005, 0.30, 0.22),
              (0.62, 0.46, 0.24, 1.0))
     make_box("BackOffice_License_Paper",
-             (safe_x, safe_y - 0.152, 0.94),
-             (0.24, 0.001, 0.18),
+             (2.8945, safe_y, 0.94),
+             (0.001, 0.24, 0.18),
              (0.94, 0.92, 0.86, 1.0))
 
     # Régis's olive-green pickup · outside the front door
@@ -464,23 +472,23 @@ def build_world_wave2_props():
              (1.20, 0.90, 1.20),
              (0.34, 0.42, 0.24, 1.0))
     make_box("Regis_Pickup_Bed",
-             (truck_x + 0.90, truck_y, truck_z - 0.10),
+             (truck_x + 1.30, truck_y, truck_z - 0.10),   # behind the cab, not 40 cm into it (2026-09-23)
              (1.40, 0.90, 0.80),
              (0.34, 0.42, 0.24, 1.0))
     for wx in (-0.50, +1.20):
         for wy in (-0.55, +0.55):
             make_cyl("Regis_Pickup_Wheel_%d_%d" % (int(wx*100), int(wy*100)),
-                     (truck_x + wx, truck_y + wy, 0.30),
+                     (truck_x + wx, truck_y + wy, 0.28),   # on the ground
                      0.28, 0.14,
                      (0.10, 0.08, 0.08, 1.0), segments=10, axis='Y')
 
     # OPEN sign on the interior door hook
     make_box("OpenSign_Backing",
-             (-0.10, -2.20, 1.50),
+             (-0.10, 0.0825, 1.50),   # on the door's inside face (2026-09-23: 2.2 m out on the porch)
              (0.24, 0.005, 0.10),
              (0.94, 0.94, 0.90, 1.0))
     make_box("OpenSign_Text",
-             (-0.10, -2.202, 1.50),
+             (-0.10, 0.0855, 1.50),
              (0.18, 0.001, 0.06),
              (0.22, 0.62, 0.28, 1.0))
 
@@ -512,8 +520,8 @@ def build_bait_shop_gear():
 
     # Minnow dip net leaning by the W tank end
     nx, ny = -2.55, 5.20
-    make_cyl("DipNet_Handle", (nx, ny, 0.80), 0.014, 1.50, (0.72, 0.58, 0.36, 1.0), segments=6)
-    make_cyl("DipNet_Hoop", (nx, ny, 1.58), 0.18, 0.03, (0.42, 0.44, 0.46, 1.0), segments=12)
+    make_cyl("DipNet_Handle", (nx, ny, 0.76), 0.014, 1.50, (0.72, 0.58, 0.36, 1.0), segments=6)   # on the floor
+    make_cyl("DipNet_Hoop", (nx, ny, 1.525), 0.18, 0.03, (0.42, 0.44, 0.46, 1.0), segments=12)   # on the handle
     make_cyl("DipNet_Mesh", (nx, ny, 1.44), 0.16, 0.22, (0.40, 0.52, 0.34, 0.45), segments=12)
 
     # Bobber/float display card on the counter top

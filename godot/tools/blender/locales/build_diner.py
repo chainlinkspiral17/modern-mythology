@@ -1297,7 +1297,7 @@ def build_west_extension():
                  (plx, bar_cy, plz), 0.16, 0.18,
                  (0.52, 0.30, 0.16, 1.0), segments=8, axis='Z')
         make_sphere_low(f"WestBar_Pendant_{i}_Bulb",
-                        (plx, bar_cy, plz - 0.16), 0.05,
+                        (plx, bar_cy, plz - 0.13), 0.05,   # in the shade's mouth (2026-09-23: 2 cm under it)
                         (0.96, 0.78, 0.42, 1.0), rings=2, segments=6)
 
     # ── CORRIDOR (Y=-1..+2) — the formal-hallway transition zone.
@@ -1453,7 +1453,7 @@ def build_west_extension():
                 make_cyl(f"WestFormal_Chandelier_ArmY_{tier_i}_{ang_i}",
                          (ax, (pd_cy + ay) / 2, ch_z_low + 0.02), 0.012, abs(ay - pd_cy) + 0.06, COL_BRASS, segments=4, axis='Y')
             make_sphere_low(f"WestFormal_Chandelier_Bulb_{tier_i}_{ang_i}",
-                            (ax, ay, ch_z_low + 0.20), 0.06,
+                            (ax, ay, ch_z_low + 0.16), 0.06,   # seated in its cup (2026-09-23: 4 cm over it)
                             (0.98, 0.86, 0.56, 1.0), rings=2, segments=6)
     # ── Sideboard against the EAST wall of the formal room (X=-9
     # partition wall, which is the building's old west wall) ──
@@ -1489,7 +1489,7 @@ def build_west_extension():
                  0.020, 0.18, (0.96, 0.92, 0.82, 1.0),
                  segments=4, axis='Z')
         make_sphere_low(f"WestFormal_CandleFlame_{cnd}",
-                        (sb_x - 0.10 + cx_off, sb_y + cy_off, 1.56),
+                        (sb_x - 0.10 + cx_off, sb_y + cy_off, 1.54),   # on the wick
                         0.04, (0.98, 0.78, 0.32, 1.0),
                         rings=2, segments=4)
     for g in range(4):
@@ -2284,7 +2284,7 @@ def build_riverboat_galley():
                         0.08, color, rings=2, segments=6)
     # Chrome service bell at the west end of the expo line
     make_sphere_low("Galley_ExpoBell",
-                    (-7.5, expo_cy, expo_top_z + 0.10),
+                    (expo_x0 + 0.15, expo_cy, expo_top_z + 0.07),   # ON the expo, which starts at -7.40 now (2026-09-23)
                     0.07, COL_BRASS, rings=2, segments=8)
 
     # ── SUBWAY-TILE BACKSPLASH along the south wall ──
@@ -5905,18 +5905,13 @@ def build_booth_lamps_and_payphone():
     wall payphone with handset and drooping cord."""
     brass_dk = (0.30, 0.22, 0.10, 1.0)
     shade_warm = (0.92, 0.78, 0.46, 1.0)
-    for i, by in enumerate((-3.75, -2.25, -0.75, 0.75, 2.25, 3.75)):
-        lx = -7.95
-        make_cyl(f"BoothLamp_{i}_Base", (lx, by, 0.93), 0.055, 0.03,
-                 brass_dk, segments=8)
-        make_cyl(f"BoothLamp_{i}_Stem", (lx, by, 1.20), 0.014, 0.52,
-                 brass_dk, segments=5)
-        make_cyl(f"BoothLamp_{i}_ShadeLow", (lx, by, 1.50), 0.115, 0.07,
-                 shade_warm, segments=10)
-        make_cyl(f"BoothLamp_{i}_ShadeHigh", (lx, by, 1.57), 0.085, 0.07,
-                 (0.86, 0.70, 0.40, 1.0), segments=10)
-        make_cyl(f"BoothLamp_{i}_Finial", (lx, by, 1.63), 0.02, 0.04,
-                 brass_dk, segments=5)
+    # (2026-09-23) The six table lamps that stood here are gone. Each
+    # booth already had a ceiling pendant whose shade centre sits
+    # exactly on its BoothLamp_N omni (build_booths: lamp_z =
+    # table_top + 0.85 = 1.59) — but the pendant's shade and bulb are
+    # spheres, and the recorder could not see spheres, so the light
+    # read as "floating bare" and a second lamp was built INSIDE the
+    # first one's shade. The sphere recorder sees them now.
     # ── Wall payphone in the entry vestibule (east wall, NE corner —
     # the only solid east wall north of the door; 2026-09-22 it hung
     # in the door opening's glass at y 0.6) ──

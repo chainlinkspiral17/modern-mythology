@@ -57,7 +57,7 @@ def build_marble_columns():
 def build_roulette_table():
     rx, ry = 0.0, 4.50
     # Table base — long oval (approximated as box + rounded ends)
-    make_box("Roulette_Base", (rx, ry, 0.40), (2.40, 1.20, 0.80), COL_FELT)
+    make_box("Roulette_Base", (rx, ry, 0.41), (2.40, 1.20, 0.82), COL_FELT)   # up to the top (2026-09-23: 2 cm short — 94 things on the table floated)
     make_box("Roulette_Top",  (rx, ry, 0.84), (2.50, 1.30, 0.04), (0.32, 0.20, 0.16, 1.0))
     # Roulette wheel at the W end of the table
     wx, wy = rx - 0.85, ry
@@ -109,7 +109,7 @@ def build_cashier_cage():
     # Cashier window on N wall (right of column) with brass bars
     cx, cy = +3.50, ROOM_D - 0.10
     make_box("Cage_Window_Frame", (cx, cy, 1.60), (1.80, 0.06, 1.20), COL_BRASS)
-    make_box("Cage_Counter_Top",   (cx, cy - 0.30, 1.06), (1.80, 0.50, 0.04), COL_BRASS)
+    make_box("Cage_Counter_Top",   (cx, cy - 0.28, 1.06), (1.80, 0.50, 0.04), COL_BRASS)   # against the window frame
     # Vertical brass bars
     for bi in range(8):
         bx = cx - 0.78 + bi * 0.22
@@ -129,6 +129,7 @@ def build_neon_wheel_sign():
         ey = sy + math.sin(ang) * 0.40
         make_box(f"NeonSign_Spoke_{i}", (ex, ey, CEIL-0.30), (0.04, 0.04, 0.04), COL_NEON)
     make_cyl("NeonSign_Hub", (sx, sy, CEIL-0.30), 0.10, 0.04, COL_BRASS, segments=10)
+    make_cyl("NeonSign_Rod", (sx, sy, CEIL-0.14), 0.015, 0.28, COL_BRASS, segments=6)   # hub to ceiling (2026-09-23: the sign hung from nothing)
 
 
 def build_ceiling_infra():
@@ -186,19 +187,20 @@ def build_wheel_dressing():
              (0.32, 0.24, 0.16, 1.0))
 
     # Bachelor party at the slot bank · streamers + a plastic crown
-    # Slot bank approx at (-3.0, -2.0)
-    slot_cx = -3.0
-    slot_cy = -2.0
+    # the slot bank (build_slots): x -4.95, slots at y 1.5 … 6.3, tops z 1.80
+    # (2026-09-23: "approx at (-3.0, -2.0)" — 1.7 m up in the open floor)
+    slot_cx = -4.95
+    slot_cy = 2.70
     # Two streamers draped (small horizontal box at slot-top height)
     for si, sox in enumerate([-0.6, +0.4]):
         make_box("BachelorParty_Streamer_%d" % si,
-                 (slot_cx + sox, slot_cy + 0.10, 1.95),
+                 (slot_cx, 1.50 + si * 2.40, 1.807),   # across a slot top
                  (0.50, 0.04, 0.014),
                  (0.96, 0.42, 0.62, 1.0) if si == 0 else (0.42, 0.74, 0.96, 1.0))
     # Plastic crown on top of one of the slots
-    crown_x = slot_cx + 0.30
-    crown_y = slot_cy - 0.04
-    crown_z = 1.66
+    crown_x = slot_cx
+    crown_y = slot_cy
+    crown_z = 1.82
     # Crown base (small ring band)
     make_cyl("BachelorParty_CrownBase",
              (crown_x, crown_y, crown_z),
@@ -247,25 +249,27 @@ def build_wheel_dressing():
              (clip_x, clip_y, 1.00),
              (0.20, 0.04, 0.04),
              (0.32, 0.22, 0.14, 1.0))
+    for sgn in (-1, 1):   # posts (2026-09-23: a rail stub in the air)
+        make_box("PitRail_Post_%+d" % sgn, (clip_x + sgn * 0.085, clip_y, 0.49), (0.03, 0.03, 0.98), (0.32, 0.22, 0.14, 1.0))
     # Clipboard body
     make_box("Maddox_Clipboard_Body",
-             (clip_x, clip_y - 0.04, 1.04),
+             (clip_x, clip_y - 0.0225, 1.04),   # on the rail's face
              (0.16, 0.005, 0.22),
              (0.42, 0.32, 0.20, 1.0))
     # Cream paper on the clipboard
     make_box("Maddox_Clipboard_Paper",
-             (clip_x, clip_y - 0.043, 1.04),
+             (clip_x, clip_y - 0.0255, 1.04),
              (0.14, 0.001, 0.20),
              (0.94, 0.90, 0.80, 1.0))
     # 4 dark ruled lines (the tally Maddox keeps)
     for li in range(4):
         make_box("Maddox_Clipboard_Line_%d" % li,
-                 (clip_x, clip_y - 0.045, 1.10 - li * 0.04),
+                 (clip_x, clip_y - 0.0265, 1.10 - li * 0.04),
                  (0.10, 0.0005, 0.012),
                  (0.20, 0.16, 0.10, 1.0))
     # Brass clip at the top
     make_box("Maddox_Clipboard_Clip",
-             (clip_x, clip_y - 0.045, 1.14),
+             (clip_x, clip_y - 0.0265, 1.14),
              (0.12, 0.001, 0.02),
              (0.78, 0.62, 0.30, 1.0))
 
@@ -273,13 +277,13 @@ def build_wheel_dressing():
     # "bad ballast" that explains the hum being wrong
     # Neon wheel sign approx at (0, +4.0, ceiling-side)
     make_box("NeonWheel_BadBallast",
-             (-1.20, +4.00, 2.50),
+             (-0.95, +3.00, 3.70),   # on the ceiling by the sign (2026-09-23: in the air at (-1.2, 4.0))
              (0.10, 0.08, 0.20),
              (0.42, 0.32, 0.20, 1.0))
     # A dark wire snake running down from the bracket
     make_box("NeonWheel_BadBallast_Wire",
-             (-1.20, +4.04, 2.20),
-             (0.012, 0.012, 0.40),
+             (-0.85, +3.00, 3.61),   # ballast to the ring
+             (0.12, 0.012, 0.012),
              (0.10, 0.08, 0.06, 1.0))
 
 
@@ -321,6 +325,9 @@ def build_wheel_wave2_props():
              (cr_x, cr_y, ct_z),
              (1.20, 0.70, 0.04),
              (0.32, 0.22, 0.16, 1.0))
+    for lx_ in (-0.55, 0.55):   # legs (2026-09-23: a top on nothing)
+        for ly_ in (-0.30, 0.30):
+            make_box("CountRoom_Table_Leg_%+d_%+d" % (int(lx_ * 10), int(ly_ * 10)), (cr_x + lx_, cr_y + ly_, (ct_z - 0.02) / 2.0), (0.04, 0.04, ct_z - 0.02), (0.32, 0.22, 0.16, 1.0))
     # Two banker's trays
     for ti, dx in enumerate([-0.40, +0.40]):
         make_box("CountRoom_BankersTray_%d" % ti,
@@ -385,8 +392,8 @@ def build_wheel_wave2_props():
     # Neon wheel sign · OFF · (transformer cut at 2:15)
     # We add a small overlay square that mutes the neon color
     make_box("Wave2_NeonWheelSign_OffOverlay",
-             (0.0, +4.00, 3.20),
-             (2.10, 0.001, 0.90),
+             (0.0, +3.00, 3.475),   # under the ring itself (2026-09-23: a pane 1 m from the sign)
+             (1.62, 1.62, 0.001),
              (0.10, 0.08, 0.08, 0.60))
 
     # ── the_service_call_saturday ─────────────────────────────
@@ -459,9 +466,14 @@ def build_wheel_wave2_props():
 
     # Service history folder open on the pit desk with pages 4 and 7 missing
     # Pit desk at approximately (-2.60, +2.00) · desk_z 0.78
-    pit_x = -2.60
+    pit_x = -1.95   # east of Column_0 (2026-09-23: at -2.60 the folder lay inside the column's shaft)
     pit_y = +2.00
     pit_z = 0.78
+    # the desk itself (2026-09-23: "pit desk at approximately" — never built)
+    make_box("Pit_Desk_Top", (pit_x + 0.05, pit_y - 0.18, 0.77), (0.80, 0.76, 0.04), (0.30, 0.20, 0.14, 1.0))
+    for lx_ in (-1, 1):
+        for ly_ in (-1, 1):
+            make_box("Pit_Desk_Leg_%+d_%+d" % (lx_, ly_), (pit_x + 0.05 + lx_ * 0.36, pit_y - 0.18 + ly_ * 0.34, 0.375), (0.04, 0.04, 0.75), (0.30, 0.20, 0.14, 1.0))
     make_box("ServiceHistory_Folder_Left",
              (pit_x - 0.12, pit_y, pit_z + 0.014),
              (0.20, 0.28, 0.002),
@@ -560,7 +572,7 @@ def build_wear_personality_2026_08():
                      tint=(0.28, 0.13, 0.13, 1.0), segments=9)
     make_floor_stain("Wear_Slot2_Floor_Deep", (-4.35, 3.90), radius=0.16,
                      tint=(0.24, 0.11, 0.11, 1.0), segments=8)
-    make_box("Wear_Slot2_Edge", (-4.62, 3.90, 1.30), (0.006, 0.30, 0.25),
+    make_box("Wear_Slot2_Edge", (-4.647, 3.90, 1.30), (0.006, 0.30, 0.25),   # on the cabinet face
              worn_pale)
     # The cage sill: brass worn pale mid-span where the chips slide.
     make_box("Wear_Cage_Sill", (3.50, 8.62, 1.083), (0.7, 0.44, 0.005),

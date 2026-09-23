@@ -478,7 +478,7 @@ def build_front_hallway():
     # An upright wall-mounted phone, bakelite-brown, with a small
     # paper notepad above it.
     phone_x = -0.50
-    phone_y = 0.10
+    phone_y = 0.05   # on the S wall (2026-09-23: 5 cm off it)
     phone_z = 1.30
     # Phone body
     make_box("Phone_Body",
@@ -487,12 +487,12 @@ def build_front_hallway():
              COL_PHONE_BAKELITE)
     # Handset cradle (top)
     make_box("Phone_Cradle",
-             (phone_x, phone_y - 0.04, phone_z + 0.18),
+             (phone_x, phone_y + 0.02, phone_z + 0.16),
              (0.20, 0.06, 0.04),
              (0.20, 0.16, 0.14, 1.0))
     # Handset (resting on the cradle)
     make_box("Phone_Handset",
-             (phone_x, phone_y - 0.06, phone_z + 0.22),
+             (phone_x, phone_y + 0.03, phone_z + 0.20),
              (0.22, 0.05, 0.04),
              (0.20, 0.16, 0.14, 1.0))
     # Coiled cord (a few segments)
@@ -503,13 +503,13 @@ def build_front_hallway():
                  (0.20, 0.16, 0.14, 1.0), segments=4, axis='Y')
     # Notepad above the phone (the family contact list)
     make_box("Phone_Notepad",
-             (phone_x, phone_y, phone_z + 0.55),
+             (phone_x, 0.0025, phone_z + 0.55),   # on the wall
              (0.18, 0.005, 0.22),
              COL_PAPER)
     # A few hand-written lines on the notepad (darker streaks)
     for li in range(5):
         make_box("Phone_NotepadLine_%d" % li,
-                 (phone_x, phone_y - 0.003, phone_z + 0.62 - li * 0.04),
+                 (phone_x, 0.0055, phone_z + 0.62 - li * 0.04),
                  (0.14, 0.002, 0.005),
                  (0.30, 0.26, 0.20, 1.0))
 
@@ -587,7 +587,7 @@ def build_living_room():
              (0.60, 0.60, 0.10),
              COL_CHAIR_VINYL)
     make_box("SideChair_Back",
-             (sc_cx, sc_cy + 0.26, 0.85),
+             (sc_cx, sc_cy + 0.26, 0.81),   # on the seat (2026-09-23: 4 cm over it)
              (0.60, 0.08, 0.60),
              COL_CHAIR_VINYL)
     for sx in (-1, +1):
@@ -684,18 +684,18 @@ def build_kitchen():
     # Two handles (hot/cold)
     for sgn, name in ((-1, "Cold"), (+1, "Hot")):
         make_cyl("Kitchen_Faucet_Handle_%s" % name,
-                 (faucet_cx + sgn * 0.10, faucet_cy, faucet_base_z + 0.04),
+                 (faucet_cx + sgn * 0.10, faucet_cy, faucet_base_z + 0.02),   # on the rim
                  0.022, 0.05, COL_METAL_FAUCET,
                  segments=6, axis='Z')
         make_box("Kitchen_Faucet_Lever_%s" % name,
-                 (faucet_cx + sgn * 0.10, faucet_cy, faucet_base_z + 0.075),
+                 (faucet_cx + sgn * 0.10, faucet_cy, faucet_base_z + 0.052),
                  (0.06, 0.014, 0.014),
                  COL_METAL_FAUCET)
     # The drip · a thin vertical streak from the spout down to the
     # basin, frozen mid-fall. Reads as the canonical drip.
     make_cyl("Kitchen_Faucet_Drip",
-             (faucet_cx, faucet_cy - 0.16, faucet_base_z + 0.10),
-             0.004, 0.12,
+             (faucet_cx, faucet_cy - 0.16, faucet_base_z + 0.0985),   # spout to basin, mid-fall
+             0.004, 0.21,
              (0.78, 0.86, 0.92, 0.85), segments=4, axis='Z')
     # A small puddle at the bottom of the basin where the drip lands
     make_cyl("Kitchen_Faucet_Puddle",
@@ -722,7 +722,7 @@ def build_kitchen():
              COL_COFFEE_LIQUID, segments=10, axis='Z')
     # Carafe handle
     make_box("Coffee_Carafe_Handle",
-             (cp_cx - 0.05, cp_cy, cnt_top_z + 0.21),
+             (cp_cx - 0.017, cp_cy, cnt_top_z + 0.21),   # on the carafe
              (0.018, 0.06, 0.08),
              COL_COFFEE_POT)
     # Top of the machine (where the basket sits)
@@ -738,7 +738,7 @@ def build_kitchen():
 
     # ── Mug shelf (a half-shelf with 4 mugs) ──
     shelf_cx = +4.5
-    shelf_cy = cnt_y
+    shelf_cy = H_Y_N - 0.11   # on the N wall (2026-09-23: 29 cm off it)
     shelf_z = cnt_top_z + 0.50
     make_box("Mug_Shelf",
              (shelf_cx, shelf_cy, shelf_z),
@@ -956,17 +956,19 @@ def build_bedroom_peek():
              (bed_cx, bed_cy + 0.95, 0.85),
              (1.50, 0.06, 0.80),
              COL_DOOR)
+    # Bedside table the lamp stands on (2026-09-23: the lamp stood on air 50 cm up)
+    make_box("Bedroom_Nightstand", (bed_cx - 0.95, bed_cy + 0.5, 0.25), (0.40, 0.40, 0.50), COL_DOOR)
     # Bedside lamp (small)
     make_cyl("Bedroom_Lamp_Base",
              (bed_cx - 0.95, bed_cy + 0.5, 0.52),
              0.05, 0.04, COL_METAL_BRASS,
              segments=6, axis='Z')
     make_cyl("Bedroom_Lamp_Post",
-             (bed_cx - 0.95, bed_cy + 0.5, 0.66),
+             (bed_cx - 0.95, bed_cy + 0.5, 0.64),   # base to shade (2026-09-23: 2 cm gaps both ends)
              0.012, 0.20, COL_METAL_BRASS,
              segments=4, axis='Z')
     make_box("Bedroom_Lamp_Shade",
-             (bed_cx - 0.95, bed_cy + 0.5, 0.84),
+             (bed_cx - 0.95, bed_cy + 0.5, 0.79),
              (0.16, 0.16, 0.10),
              (0.86, 0.78, 0.62, 1.0))
 
@@ -1029,9 +1031,9 @@ def build_loom_and_tapestry_2026_08():
                  (0.06, 0.26, 0.21), frame_dk)
     make_box("Loom_Shuttle", (lx + 0.22, ly - 0.63, 0.27), (0.22, 0.06, 0.035), frame_dk)
     # ── The tapestry · west wall of the bedroom, eye level ──
-    tx, ty = -4.90, 5.0
+    tx, ty = -5.02, 5.0   # rod on the W wall (2026-09-23: 12 cm off it)
     make_box("Tapestry_Rod", (tx + 0.04, ty, 2.06), (0.04, 1.30, 0.04), frame_dk)
-    make_box("Tapestry_Cloth", (tx + 0.06, ty, 1.45), (0.025, 1.20, 1.15),
+    make_box("Tapestry_Cloth", (tx + 0.045, ty, 1.46), (0.025, 1.20, 1.15),
              (0.38, 0.33, 0.30, 1.0))
     # Woven bands — depicting nothing recognizable
     for bi, (bz, bh, col) in enumerate((
@@ -1039,7 +1041,7 @@ def build_loom_and_tapestry_2026_08():
             (1.58, 0.22, (0.30, 0.34, 0.42, 1.0)),
             (1.30, 0.18, (0.62, 0.54, 0.38, 1.0)),
             (1.06, 0.20, (0.42, 0.28, 0.30, 1.0)))):
-        make_box("Tapestry_Band_%d" % bi, (tx + 0.075, ty, bz),
+        make_box("Tapestry_Band_%d" % bi, (tx + 0.07, ty, bz),
                  (0.012, 1.14, bh), col)
     # THE IMPERFECTION · one thread runs against its band, low and
     # off-center — the mark of a piece made by a person.

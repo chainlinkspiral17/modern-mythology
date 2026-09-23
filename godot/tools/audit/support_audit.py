@@ -57,7 +57,12 @@ SHELL = re.compile(r"(^|_)(wall|floor|ceil|ground|road|slab|apron|sidewalk|curb|
 # (the vantage audit's IGNORE is not used here: its `plinth$` dropped the
 # sundial's plinth and its `band` the cedar tower's floor bands, 2026-09-22)
 # whole name PARTS only — "ridge" must not eat the Fridge (2026-09-22)
-SKY = re.compile(r"(^|_)(sky|far|farband|horizon|mist|cloud|drone|skein|haze|fog|treeline|ridge|hill|glow|clearing|sundisc|moondisc|shimmer|smear|mote|streak|void|sea|swamp_floor|lake_water|valley_floor|template_land|template_sea|ribbon)(_|$)|^far[a-z]|(^|_)out_[a-z]+_(ground|street|facade|wall|sea|sky|roof|treeline|lawn|tower|freeway|brick|gallery)|garden_far", re.I)
+SKY = re.compile(r"(^|_)(sky|far|farband|horizon|mist|cloud|drone|skein|haze|fog|treeline|ridge|hill|glow|clearing|sundisc|moondisc|shimmer|smear|mote|streak|void|sea|swamp_floor|lake_water|valley_floor|ribbon)(_|$)|^far[a-z]|(^|_)out_[a-z]+_(ground|street|facade|wall|sea|sky|roof|treeline|lawn|tower|freeway|brick|gallery|litwin)|garden_far", re.I)
+
+# a diorama's land and sea plates are the TABLE its models stand on
+# (2026-09-23: "template_land|template_sea" sat in SKY, so every cedar,
+# river and label on the estuary 7 template read as floating)
+TABLETOP = re.compile(r"^template_(land|sea)$", re.I)
 
 
 def touching(a, b):
@@ -75,7 +80,7 @@ def audit(locale, boxes, show_all=False):
         # and ceilings as not-a-thing; here they are what things stand on)
         if not SHELL.search(n) and not DOOR_LEAF.search(n) and (FOLIAGE.search(n) or TREE_CROWN.search(n)):
             continue
-        if SKY.search(n):
+        if SKY.search(n) and not TABLETOP.search(n):
             continue
         keep.append((n, tuple(c[i] - h[i] for i in range(3)), tuple(c[i] + h[i] for i in range(3))))
     n = len(keep)

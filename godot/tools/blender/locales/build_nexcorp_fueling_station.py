@@ -69,7 +69,7 @@ def build_aisles():
 def build_coffee_hotcase():
     # Coffee station on a short NW counter
     make_box("CoffeeCounter", (-ROOM_W/2.0+0.9, ROOM_D-1.0, 0.45), (1.40, 0.60, 0.90), COL_WOOD)
-    make_coffee_pots("Coffee", (-ROOM_W/2.0+0.9, ROOM_D-1.0, 0.94), pots=2)
+    make_coffee_pots("Coffee", (-ROOM_W/2.0+0.9, ROOM_D-1.0, 0.90), pots=2)   # the counter top (2026-09-23: 4 cm over it)
     # Roller-grill hot case on the register counter
     hx = ROOM_W/4.0
     make_box("HotCase", (hx-0.7, ROOM_D-1.5, 1.08), (0.50, 0.40, 0.30), (0.86, 0.72, 0.34, 1.0))
@@ -90,8 +90,8 @@ def build_storefront():
             n = isl * 2 + pi
             make_box(f"Pump_{n}_Body", (px, py, 0.85), (0.40, 0.50, 1.40), COL_ACCENT)
             make_box(f"Pump_{n}_Screen", (px-0.22, py, 1.15), (0.02, 0.34, 0.30), (0.12, 0.16, 0.20, 1.0))
-            make_box(f"Pump_{n}_NumTag", (px-0.22, py, 1.52), (0.015, 0.14, 0.14), (0.90, 0.90, 0.92, 1.0))
-            make_cyl(f"Pump_{n}_Hose", (px-0.24, py+0.28, 0.90), 0.02, 0.50, P.METAL_BLACK)
+            make_box(f"Pump_{n}_NumTag", (px-0.2075, py, 1.52), (0.015, 0.14, 0.14), (0.90, 0.90, 0.92, 1.0))   # on the face
+            make_cyl(f"Pump_{n}_Hose", (px-0.21, py+0.26, 0.90), 0.02, 0.50, P.METAL_BLACK)   # hung on the pump's corner (2026-09-23: 2 cm off it)
     make_box("Canopy_Beam", (wx - 3.4, ROOM_D/2.0, 3.20), (5.4, 2.60, 0.30), (0.90, 0.90, 0.92, 1.0))
     make_box("Canopy_Trim", (wx - 3.4, ROOM_D/2.0, 3.02), (5.5, 2.70, 0.08), COL_ACCENT)
     for ci, (cx2, cy) in enumerate([(wx-1.1, ROOM_D/2.0-0.9), (wx-1.1, ROOM_D/2.0+0.9),
@@ -145,7 +145,7 @@ def build_hero_props():
             make_box(f"Vape_Pack_{r}_{c}", (ROOM_W/4.0-0.75+c*0.30, ROOM_D-0.38, 1.55+r*0.32),
                      (0.14, 0.03, 0.18), P.SNACK_TINTS[(r*3+c) % len(P.SNACK_TINTS)])
     # Security dome covering register + door line
-    make_cyl("Security_Dome", (0.0, 5.7, 2.72), 0.10, 0.08, (0.16, 0.16, 0.20, 1.0), segments=10)
+    make_cyl("Security_Dome", (0.0, 5.7, 2.76), 0.10, 0.08, (0.16, 0.16, 0.20, 1.0), segments=10)   # on the ceiling
     # Fuel-price pole sign out west
     make_cyl("Price_Pole", (-9.0, 1.0, 2.5), 0.12, 5.0, P.METAL_STEEL, segments=8)
     make_box("Price_Sign", (-9.0, 1.0, 5.4), (0.15, 1.6, 1.4), COL_ACCENT)

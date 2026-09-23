@@ -95,7 +95,7 @@ def build_gondolas():
         make_box(f"Gondola_{gi}_Base", (gx, 2.7, 0.10), (0.9, 3.0, 0.20), COL_SHELF_DK)
         make_box(f"Gondola_{gi}_Spine", (gx, 2.7, 0.85), (0.10, 3.0, 1.5), COL_SHELF)
         for zi, z in enumerate((0.35, 0.80, 1.25)):
-            for side, sx in ((0, gx - 0.34), (1, gx + 0.34)):
+            for side, sx in ((0, gx - 0.325), (1, gx + 0.325)):   # shelves reach the spine (2026-09-23: 1.5 cm off it)
                 make_box(f"Gondola_{gi}_{side}_S{zi}", (sx, 2.7, z),
                          (0.55, 2.9, 0.035), COL_SHELF)
             _stocked_run(f"Stock_{gi}_W_{zi}", gx - 0.55, gx - 0.12, 2.7, 0.37 + zi * 0.45,
@@ -158,14 +158,14 @@ def build_office():
     # pedestal + base (2026-09-08: the seat hung in the air)
     make_cyl("Office_Chair_Post", (3.1, 4.95, 0.22), 0.03, 0.44, COL_MIRROR_FR, segments=8)
     make_cyl("Office_Chair_Base", (3.1, 4.95, 0.02), 0.28, 0.04, COL_MIRROR_FR, segments=12)
-    make_box("Office_Chair_Back", (3.1, 4.75, 0.80), (0.42, 0.05, 0.55), COL_MIRROR_FR)   # back away from the desk (2026-09-07)
+    make_box("Office_Chair_Back", (3.1, 4.75, 0.765), (0.42, 0.05, 0.55), COL_MIRROR_FR)   # on the seat (2026-09-23: 3.5 cm over it)   # back away from the desk (2026-09-07)
 
 
 def build_checkout():
     """Checkout stand near the door."""
     make_box("Checkout", (-2.7, 1.3, 0.50), (0.9, 0.6, 1.00), COL_COUNTER)
     make_box("Checkout_Top", (-2.7, 1.3, 1.03), (1.0, 0.7, 0.05), (0.58, 0.52, 0.44, 1.0))
-    make_box("Checkout_Reg", (-2.7, 1.45, 1.22), (0.36, 0.28, 0.28), COL_MIRROR_FR)
+    make_box("Checkout_Reg", (-2.7, 1.45, 1.195), (0.36, 0.28, 0.28), COL_MIRROR_FR)   # on the top
     make_cyl("Gum_Rack", (-2.3, 0.95, 0.70), 0.12, 1.35, COL_SHELF, segments=8)
 
 

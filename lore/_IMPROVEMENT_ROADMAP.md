@@ -2004,6 +2004,27 @@ audit counts "streak" as sky (a light streak is not a solid). NEXT
 daigles 13, equipment shed 13, static drive-in 13; overlap (209):
 pit stop 26, crumpled barn 11, courthouse 10, centro break room 10,
 ben's bedroom 10.
+TENTH PASS (batch 14): support 567 → 517, overlap 209 → 209 with
+MORE seen. The recorder never rebound a hand-rolled builder's
+sphere helpers — every vendored sphere in the game (the diner's 27,
+harmony terrain's canopies and globes, the roberts house's bird)
+was invisible to every gate. Hooked, and the overlap gate judges a
+sphere by its ball, not its cube. The DINER's six booths each had a
+table lamp built INSIDE the ceiling pendant (asset pass 3 read the
+invisible pendant's light as "floating bare"); gone. Harmony
+terrain: a house in the skatepark, a lamp pole in a tree trunk, a
+stop sign in a conifer, a globe in a street tree, a flower bed in
+the church's stalls. Le roulant, the roberts house and the estuary
+7 template (its land plate had been listed as sky) to zero.
+ELEVENTH PASS (batch 15): support 517 → 447, overlap 208. Frog knows
+best (a 3 m wall opening around a 1 m door — jambs and header now;
+the till sheet over the porch; the OPEN sign 2 m out on the porch),
+natalie, both nexcorp stations, the pharmacy — all to zero. NEXT
+(support 447): daigles 13, equipment shed 13, static drive-in 13,
+bayou lighthouse 12, chillwave 12, coach k 12, bungalow 11, daily
+grind 11, foxhole bar 11, little switzerland 11, pit stop interior
+and office 11, wgur 11; overlap: pit stop 26, crumpled barn 11,
+courthouse 10, centro break room 10, ben's bedroom 10.
 
 **2026-09-19 · DESIGN · the two decorative checks made real, the first
 remembered choice.** Nate's basement (ch6) and Tem staying (ch8): the

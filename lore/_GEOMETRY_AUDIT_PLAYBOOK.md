@@ -310,6 +310,33 @@ banisters classed · pans as containers.
   on each side, and the door hinges hung in the hole; the bindery's
   Borges sign hung at y 7.8 where the west cases end at 6.9. Before
   moving a prop to "the wall", check the wall's box spans the spot.
+- **The recorder could not see spheres (tenth pass, 2026-09-23).**
+  It rebinds a hand-rolled builder's own make_box / make_cyl /
+  _finalize_mesh, but not its make_sphere_low / make_sphere — so the
+  diner's 27 spheres, the roberts house's bird and knobs, and harmony
+  terrain's every canopy, globe and shrub were measured by no gate.
+  The cost was concrete: asset pass 3 saw the diner's six booth
+  lights "floating bare" and built a table lamp for each — INSIDE the
+  ceiling pendant that was already there, whose shade centre sat
+  exactly on the light. Once seen: 15 floats in the model chapter
+  (bulbs 2–4 cm off their cups and shades, candle flames off their
+  wicks, the expo bell off the end of the expo), a lamp pole planted
+  in a berm tree's trunk, a stop sign inside a conifer, a lamp globe
+  inside a street tree, a flower bed in the church's parking stalls,
+  and a whole HOUSE standing in the middle of the skatepark (its
+  body was never flagged: the skatepark's floor is a mesh). Any new
+  vendored primitive helper needs a recorder hook the day it is
+  written; grep `^def make_` in a builder against the hook list.
+- **Judge a sphere as a sphere.** Recording a sphere as its cube
+  fills the corners: a grass tuft outside a canopy's ball but inside
+  its cube read as a clip. The overlap gate now measures sphere
+  pairs by centre distance and sphere-box pairs by the nearest point
+  of the box — exact, not an exemption. Prefer a sharper test over a
+  new name rule whenever the false positive is geometric.
+- **A tabletop is not sky.** `template_land|template_sea` sat in the
+  support audit's SKY list, so every model on the estuary 7 diorama
+  (cedars, rivers, labels, the cursor) read as floating. A drop list
+  entry needs the name of the thing it is FOR; that one had none.
 
 ### 2026-09-06 · a builder that raises under the recorder is dropped without a flag
 

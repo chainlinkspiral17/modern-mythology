@@ -180,7 +180,7 @@ def build_shell():
     # Glass door + frame
     make_box("Door_Frame_T", (0.0, 0.0, 2.10), (3.00, 0.10, 0.08),
              COL_METAL_STEEL)
-    make_box("Door_Frame_B", (0.0, 0.0, 0.06), (3.00, 0.10, 0.08),
+    make_box("Door_Frame_B", (0.0, 0.0, 0.04), (3.00, 0.10, 0.08),   # on the floor
              COL_METAL_STEEL)
     make_box("Door_Glass", (0.0, 0.0, 1.05), (2.80, 0.04, 2.00), COL_GLASS)
     # South-side picture windows showing the canopy + pumps
@@ -209,28 +209,28 @@ def build_counter():
     make_box("Counter_Top", (cx, cy, 1.04),
              (4.10, 0.70, 0.06), COL_METAL_BLACK)
     # Register
-    make_box("Register_Body", (cx - 1.0, cy + 0.10, 1.25),
+    make_box("Register_Body", (cx - 1.0, cy + 0.10, 1.23),   # on the top
              (0.36, 0.40, 0.32), (0.20, 0.20, 0.22, 1.0))
-    make_box("Register_Display", (cx - 1.0, cy + 0.32, 1.42),
+    make_box("Register_Display", (cx - 1.0, cy + 0.32, 1.40),
              (0.30, 0.04, 0.10), (0.10, 0.32, 0.16, 1.0))
     # Fuel-pump controller (NexCorp distinctive — Kwik Stop doesn't have)
-    make_box("PumpController", (cx + 0.5, cy + 0.10, 1.30),
+    make_box("PumpController", (cx + 0.5, cy + 0.10, 1.27),   # on the top (2026-09-23: 3 cm over it)
              (0.80, 0.40, 0.40), (0.32, 0.34, 0.38, 1.0))
-    make_box("PumpController_Screen", (cx + 0.5, cy + 0.32, 1.42),
+    make_box("PumpController_Screen", (cx + 0.5, cy + 0.32, 1.39),
              (0.74, 0.04, 0.20), (0.42, 0.62, 0.88, 1.0))
     # 8 pump-station status LEDs (a row, mostly green, one red)
     for i in range(8):
         led_col = (0.96, 0.18, 0.16, 1.0) if i == 3 else (0.32, 0.86, 0.42, 1.0)
         make_box(f"Pump_LED_{i}",
-                 (cx + 0.5 - 0.30 + i * 0.08, cy + 0.3025, 1.20),   # on the controller's face (2026-09-22: 4 cm off it)
+                 (cx + 0.5 - 0.30 + i * 0.08, cy + 0.3025, 1.17),   # on the controller's face (2026-09-22: 4 cm off it)
                  (0.04, 0.005, 0.04), led_col)
     # Stool — BEHIND the counter (Skip's side). At cy+0.32 the seat
     # was buried 0.14m in the counter body.
     make_cyl("Stool_Seat", (cx, cy + 0.62, 0.66),
              0.16, 0.04, COL_LOCKER_GREY, segments=10)
-    make_cyl("Stool_Post", (cx, cy + 0.62, 0.36),
-             0.030, 0.56, COL_METAL_BLACK)
-    make_cyl("Stool_Base", (cx, cy + 0.62, 0.05),
+    make_cyl("Stool_Post", (cx, cy + 0.62, 0.34),
+             0.030, 0.60, COL_METAL_BLACK)
+    make_cyl("Stool_Base", (cx, cy + 0.62, 0.02),   # on the floor
              0.20, 0.04, COL_METAL_BLACK, segments=8)
     # Back-wall cigarette + stock shelves — north wall, west of the
     # office. They used to sit at x≈4.0, y=8.85, which ran them
@@ -264,6 +264,7 @@ def build_lockers():
         # Body
         make_box(f"Locker_{i+1}_Body", (lx, ly, 1.00),
                  (0.50, 0.50, 1.80), COL_LOCKER_GREY)
+        make_box(f"Locker_{i+1}_Kick", (lx, ly, 0.05), (0.46, 0.46, 0.10), COL_METAL_BLACK)   # (2026-09-23: the bank stood 10 cm up on nothing)
         # Door seam
         make_box(f"Locker_{i+1}_Door", (lx + 0.21, ly, 1.00),
                  (0.02, 0.48, 1.74), COL_LOCKER_DOORSEAM)
@@ -389,11 +390,11 @@ def build_floor_props():
     for i, tint in enumerate([(0.18, 0.10, 0.06, 1.0),
                               (0.42, 0.32, 0.20, 1.0)]):
         pot_y = 2.5 + i * 1.50
-        make_cyl(f"Coffee_Pot_{i}", (cfx - 0.10, pot_y, 1.10),
+        make_cyl(f"Coffee_Pot_{i}", (cfx - 0.10, pot_y, 1.05),   # on its burner
                  0.10, 0.30, COL_GLASS, segments=8)
-        make_cyl(f"Coffee_Liquid_{i}", (cfx - 0.10, pot_y, 1.04),
+        make_cyl(f"Coffee_Liquid_{i}", (cfx - 0.10, pot_y, 1.00),
                  0.085, 0.20, tint, segments=8)
-        make_cyl(f"Coffee_Burner_{i}", (cfx - 0.10, pot_y, 0.91),
+        make_cyl(f"Coffee_Burner_{i}", (cfx - 0.10, pot_y, 0.89),   # on the counter (2026-09-23: 2 cm over it)
                  0.13, 0.02, COL_METAL_BLACK, segments=8)
     # Cup stack
     for i in range(5):

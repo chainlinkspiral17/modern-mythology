@@ -353,9 +353,11 @@ case stood in the checkout lane and whose deli stood inside the
 bakery — hidden by the gate's "contents" rule, now a size test
 (support 725, overlap 210 under the tighter grammar); the ninth took seven more (bindery, hierophant, riverboat, asylum, new orleans bar, simon, roberts kitchen) to zero (support 567, overlap 209). This pass runs
 ahead of every other background item: a room that floats is not a
-draft of anything. Next: estuary_7_template 18, le roulant and the
-roberts house (16 each), then the rooms at 13–14; overlap: pit stop
-26, crumpled barn 11.
+draft of anything. The tenth pass taught the recorder spheres —
+every vendored sphere had been invisible to every gate, and the
+diner (a model chapter) had six table lamps built inside six booth
+pendants because of it (support 517); the eleventh took five more rooms to zero (support 447). Next: the rooms at 11–13;
+overlap: pit stop 26, crumpled barn 11.
 
 **Draft targets, by volume, by uses:**
 - **Vol 7 (current):** `cabin_interior` (31) · `lena_apartment` (23)
