@@ -68,7 +68,10 @@ SKY = re.compile(r"(^|_)(sky|far|farband|horizon|mist|cloud|drone|skein|haze|fog
 # river and label on the estuary 7 template read as floating)
 # backdrop TERRAIN is still ground: a watch tower on the far hill, a
 # skiff on the sea (2026-09-23). It must still be touched to hold.
-GROUNDLIKE = re.compile(r"(^|_)(hill|ridge|valley_floor|swamp_floor|lake_water|sea)(_|$)", re.I)
+# …and so is a backdrop BUILDING: a balcony on the facade across the
+# street, shutters on the brick, a rail on the gallery floor.
+GROUNDLIKE = re.compile(r"(^|_)(hill|ridge|valley_floor|swamp_floor|lake_water|sea)(_|$)"
+                        r"|(^|_)out_[a-z]+_(ground|street|facade|wall|roof|lawn|tower|freeway|brick|gallery)", re.I)
 TABLETOP = re.compile(r"^template_(land|sea)$", re.I)
 
 

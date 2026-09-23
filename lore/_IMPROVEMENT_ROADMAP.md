@@ -2087,6 +2087,30 @@ NEXT: gym weight room 10, new orleans office 10, salty tome 10, cafe
 olimpico 9, cosmic back office 9, henderson garage 9, hospital room
 9, darkroom 8, houston design studio 8, houston office 8; overlap:
 crumpled barn 11, centro break room 10, ben's bedroom 10.
+FOURTEENTH PASS (batches 23–28): eleven more rooms to zero. The GYM
+(the dumbbell rack's two shelves on no frame; a pulldown seat and
+thigh pad on no post; fixtures 5 cm under the ceiling; the depth
+chart 7 cm inside its wall), CAFE OLIMPICO (every bentwood chair a
+seat at 44 cm with no legs; the booth a seat and back on nothing),
+the NEW ORLEANS OFFICE (six shelves with no sides; its street view's
+balcony, shutters and gallery rail count now — backdrop buildings
+hold what is mounted on them), SALTY TOME (the bookcase helper stood
+every book 1.5 cm above every shelf — some 300 books; the kick scuff
+through the N-S counter again), the COSMIC BACK OFFICE, the
+HENDERSON GARAGE (the bass 20 cm over a stand that had only a foot;
+the opener motor hung from nothing; the rack tom over the kick), the
+HOSPITAL ROOM and HOSPICE (the bed kit set its side rails 4 cm
+outside the deck; the IV bag under its hook; blanket creases 80 cm
+off the bed; a clipboard and a door-kick scuff in a doorway with no
+door), the DARKROOM (the enlarger head stacked with gaps; prints
+under their clips; the timer inside the wall and through the
+enlarger), both HOUSTON rooms (chair backs 3 cm over seats; sticky
+notes 34 cm in front of the monitor they were stuck to). The
+security-camera kit hung every dome 4 cm under its ceiling, and four
+rooms mounted it 10 cm into the east wall.
+NEXT: the rooms at 7 (finn, graciela, missing link interior, new
+orleans room, roadside chapel, sam bedroom, hans bakery); overlap:
+crumpled barn 11, centro break room 10, ben's bedroom 10.
 
 **2026-09-19 · DESIGN · the two decorative checks made real, the first
 remembered choice.** Nate's basement (ch6) and Tem staying (ch8): the

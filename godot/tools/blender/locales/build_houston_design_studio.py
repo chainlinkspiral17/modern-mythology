@@ -84,8 +84,9 @@ def build_plotter_and_mood_board():
 
 def _task_chair(name, cx, cy, seat_col=(0.20, 0.22, 0.26, 1.0)):
     make_box(f"{name}_Seat", (cx, cy, 0.50), (0.44, 0.44, 0.06), seat_col)
-    make_box(f"{name}_Back", (cx, cy-0.20, 0.86), (0.44, 0.05, 0.60), seat_col)   # chairs sit S of their desks; the back is S (2026-09-07)
+    make_box(f"{name}_Back", (cx, cy-0.20, 0.83), (0.44, 0.05, 0.60), seat_col)   # on the seat (2026-09-23: 3 cm over it)   # chairs sit S of their desks; the back is S (2026-09-07)
     make_cyl(f"{name}_Post", (cx, cy, 0.26), 0.03, 0.48, P.METAL_BLACK, segments=6, axis='Z')
+    make_cyl(f"{name}_Hub", (cx, cy, 0.05), 0.20, 0.04, P.METAL_BLACK, segments=10)   # post to feet (2026-09-23: the seat stood on a post that touched nothing)
     import math
     for s in range(5):
         a = math.radians(72*s)
@@ -143,7 +144,7 @@ def build_hero_props():
         make_cyl(f"Air_Purifier_{pi}", (px, py, 0.30), 0.14, 0.60, (0.90, 0.90, 0.88, 1.0), segments=12)
         make_cyl(f"Air_Purifier_{pi}_Vent", (px, py, 0.58), 0.12, 0.04, (0.70, 0.72, 0.72, 1.0), segments=12)
     make_cyl("Cold_Brew", (-3.55, 1.45, 0.82), 0.04, 0.14, (0.42, 0.30, 0.20, 0.85), segments=8)
-    make_box("Anna_Phone", (-3.35, 1.35, 0.775), (0.075, 0.15, 0.009), (0.12, 0.12, 0.14, 1.0))
+    make_box("Anna_Phone", (-3.35, 1.35, 0.7445), (0.075, 0.15, 0.009), (0.12, 0.12, 0.14, 1.0))   # on the desk (2026-09-23: 3 cm over it)
 
 
 

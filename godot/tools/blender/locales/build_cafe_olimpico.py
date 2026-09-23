@@ -76,31 +76,38 @@ def build_seating():
     # street-watching seat the scenes describe).
     for ti, (tx, ty) in enumerate([(-2.0, 0.95), (+2.0, 1.80)]):
         make_cyl(f"Table_{ti}_Top", (tx, ty, 0.74), 0.42, 0.04, COL_MARBLE)
-        make_cyl(f"Table_{ti}_Pedestal", (tx, ty, 0.37), 0.06, 0.70, COL_ESPRESSO_TRIM)
-        make_cyl(f"Table_{ti}_Foot", (tx, ty, 0.04), 0.24, 0.04, COL_ESPRESSO_TRIM)
+        make_cyl(f"Table_{ti}_Pedestal", (tx, ty, 0.36), 0.06, 0.72, COL_ESPRESSO_TRIM)   # floor to top (2026-09-23: 2 cm up)
+        make_cyl(f"Table_{ti}_Foot", (tx, ty, 0.02), 0.24, 0.04, COL_ESPRESSO_TRIM)
         # 2 chairs per table
         for ci, (cx_off, cy_off) in enumerate([(-0.60, 0), (+0.60, 0)]):
             cx, cy = tx + cx_off, ty + cy_off
             make_cyl(f"Table_{ti}_Chair_{ci}_Seat", (cx, cy, 0.46), 0.20, 0.04, COL_WOOD)
+            for lx_ in (-0.14, 0.14):   # bentwood legs (2026-09-23: seats hung 44 cm up on nothing)
+                for ly_ in (-0.14, 0.14):
+                    make_cyl(f"Table_{ti}_Chair_{ci}_Leg_{lx_:+.2f}_{ly_:+.2f}", (cx + lx_, cy + ly_, 0.22), 0.015, 0.44, COL_WOOD, segments=6)
             make_box(f"Table_{ti}_Chair_{ci}_Back", (cx, cy + (0.18 if cx_off < 0 else -0.18), 0.74), (0.40, 0.04, 0.56), COL_WOOD)
         # Espresso + saucer on each table
-        make_cyl(f"Table_{ti}_Saucer", (tx, ty, 0.78), 0.06, 0.005, P.PAPER)
-        make_cyl(f"Table_{ti}_Cup", (tx, ty, 0.82), 0.04, 0.06, P.PAPER)
+        make_cyl(f"Table_{ti}_Saucer", (tx, ty, 0.7625), 0.06, 0.005, P.PAPER)   # on the marble (2026-09-23: 1.8 cm over it)
+        make_cyl(f"Table_{ti}_Cup", (tx, ty, 0.795), 0.04, 0.06, P.PAPER)
     # Vinyl booth along east wall
     bx, by = +3.30, 3.0
     make_box("Booth_Seat", (bx, by, 0.40), (0.60, 2.20, 0.10), COL_VINYL_BOOTH)
+    make_box("Booth_Base", (bx, by, 0.175), (0.56, 2.16, 0.35), COL_ESPRESSO_TRIM)   # (2026-09-23: seat and back on nothing)
     make_box("Booth_Back", (bx+0.20, by, 0.92), (0.20, 2.20, 1.00), COL_VINYL_BOOTH)
     make_box("Booth_Table", (bx-0.60, by, 0.72), (0.50, 1.40, 0.04), COL_MARBLE)
-    make_cyl("Booth_Table_Pedestal", (bx-0.60, by, 0.37), 0.06, 0.70, COL_ESPRESSO_TRIM)
+    make_cyl("Booth_Table_Pedestal", (bx-0.60, by, 0.36), 0.06, 0.72, COL_ESPRESSO_TRIM)
     # The BACK-CORNER table (NW, under its window): water glass, the
     # open notebook, and the croissant in its paper bag.
     ctx, cty = -3.25, 4.25
     make_cyl("CornerTable_Top", (ctx, cty, 0.74), 0.42, 0.04, COL_MARBLE)
-    make_cyl("CornerTable_Pedestal", (ctx, cty, 0.37), 0.06, 0.70, COL_ESPRESSO_TRIM)
-    make_cyl("CornerTable_Foot", (ctx, cty, 0.04), 0.24, 0.04, COL_ESPRESSO_TRIM)
+    make_cyl("CornerTable_Pedestal", (ctx, cty, 0.36), 0.06, 0.72, COL_ESPRESSO_TRIM)
+    make_cyl("CornerTable_Foot", (ctx, cty, 0.02), 0.24, 0.04, COL_ESPRESSO_TRIM)
     for ci2, (cxo, cyo) in enumerate([(0.60, 0.0), (0.0, -0.60)]):
         ccx, ccy = ctx + cxo, cty + cyo
         make_cyl(f"CornerTable_Chair_{ci2}_Seat", (ccx, ccy, 0.46), 0.20, 0.04, COL_WOOD)
+        for lx_ in (-0.14, 0.14):   # bentwood legs (2026-09-23: seats hung 44 cm up on nothing)
+            for ly_ in (-0.14, 0.14):
+                make_cyl(f"CornerTable_Chair_{ci2}_Leg_{lx_:+.2f}_{ly_:+.2f}", (ccx + lx_, ccy + ly_, 0.22), 0.015, 0.44, COL_WOOD, segments=6)
         if cxo != 0.0:
             make_box(f"CornerTable_Chair_{ci2}_Back", (ccx+0.18, ccy, 0.74), (0.04, 0.40, 0.56), COL_WOOD)
         else:

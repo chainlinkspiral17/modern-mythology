@@ -14,9 +14,10 @@ def make_security_camera(prefix, anchor, *, palette=None):
     body = palette.get("body", P.METAL_BLACK)
     glass = palette.get("glass", (0.18, 0.20, 0.22, 0.70))
     cx, cy, ceil_z = anchor
-    make_cyl(f"{prefix}_Dome", (cx, cy, ceil_z - 0.10),
+    # the dome's base ON the ceiling (2026-09-23: every dome hung 4 cm under it)
+    make_cyl(f"{prefix}_Dome", (cx, cy, ceil_z - 0.06),
              0.12, 0.12, body)
-    make_cyl(f"{prefix}_Glass", (cx, cy, ceil_z - 0.16),
+    make_cyl(f"{prefix}_Glass", (cx, cy, ceil_z - 0.14),
              0.10, 0.04, glass)
 
 

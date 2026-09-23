@@ -367,6 +367,20 @@ banisters classed · pans as containers.
   letter "on the desk's SE corner" stayed at the old coordinates in
   mid-air for two weeks. When a fixture moves, grep for everything
   that names it in a comment.
+- **Compile inside the batch script, not after it (fourteenth pass).**
+  The trailing-comment trap struck twice more; a batch's `rep()` now
+  runs `py_compile.compile(path, doraise=True)` after every file it
+  writes, so a broken builder stops the batch at the line that broke
+  it. And a text block inserted into a loop must match the loop's
+  indentation: an 8-space legs block dropped into a 12-space chair
+  loop gave only the last chair legs and moved its back into the leg
+  loop — the support gate caught it as "chair 0 still floats".
+- **Furniture without an underside is the commonest float left.**
+  Chairs as a seat and a back (cafe olimpico), shelves without sides
+  (new orleans office), a rack's shelves without a frame (gym), a
+  pedestal seat with no pedestal (pulldown), a guitar stand that is
+  only a foot. When a float's lowest member is a seat or a shelf at
+  its working height, the fix is the missing part, not a nudge.
 - **A tabletop is not sky.** `template_land|template_sea` sat in the
   support audit's SKY list, so every model on the estuary 7 diorama
   (cedars, rivers, labels, the cursor) read as floating. A drop list

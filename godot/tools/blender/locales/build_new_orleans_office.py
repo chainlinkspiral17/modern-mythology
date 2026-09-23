@@ -116,11 +116,14 @@ def build_desk_and_chair():
 
 def build_bookcase_and_filing():
     # Floor-to-near-ceiling bookcase west wall
+    # the case's sides (2026-09-23: six shelves on nothing)
+    for sy_ in (1.78, 4.22):
+        make_box(f"BookCase_Side_{sy_:.2f}", (-3.0, sy_, 1.30), (0.40, 0.04, 2.60), COL_OAK_DARK)
     for shf in range(6):
         sz = 0.30 + shf*0.45
         make_box(f"BookCase_Shelf_{shf}", (-3.0, 3.0, sz), (0.40, 2.40, 0.04), COL_OAK_DARK)
         for bi in range(10):
-            make_box(f"Book_{shf}_{bi}", (-3.0, 1.9 + bi*0.22, sz + 0.18), (0.16, 0.18, 0.36), COL_BOOK[(shf+bi)%len(COL_BOOK)])
+            make_box(f"Book_{shf}_{bi}", (-3.0, 1.9 + bi*0.22, sz + 0.20), (0.16, 0.18, 0.36), COL_BOOK[(shf+bi)%len(COL_BOOK)])   # ON the shelf (2026-09-23: 2 cm into it)
     # Filing cabinet north-east
     # (draft 3: up the east wall at y 4.9 — at 5.5 it stood in front of
     # the back-stair door)

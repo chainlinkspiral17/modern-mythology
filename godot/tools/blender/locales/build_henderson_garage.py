@@ -97,6 +97,7 @@ def build_shell():
     # Opener rail + motor box on the ceiling centerline
     make_box("Opener_Rail", (0.0, 1.9, CEIL - 0.20), (0.06, 3.0, 0.06), COL_TRACK)
     make_box("Opener_Motor", (0.0, 3.4, CEIL - 0.28), (0.34, 0.44, 0.22), COL_STEEL_DK)
+    make_box("Opener_Hanger", (0.0, 3.4, CEIL - 0.085), (0.04, 0.30, 0.17), COL_STEEL_DK)   # strap to the ceiling (2026-09-23: motor and rail hung on nothing)
 
 
 def build_driveway():
@@ -135,6 +136,7 @@ def build_band_gear():
     make_cyl("Snare_Stand", (kx - 0.48, ky - 0.28, 0.30), 0.02, 0.60, COL_STEEL, segments=6)
     # Rack tom on the kick
     make_cyl("Tom_Rack", (kx + 0.10, ky - 0.05, 0.78), 0.16, 0.18, COL_DRUM, segments=12)
+    make_box("Tom_Rack_Mount", (kx + 0.10, ky - 0.05, 0.645), (0.03, 0.03, 0.09), COL_STEEL)   # on the kick (2026-09-23: 9 cm over it)
     make_cyl("Tom_Rack_Head", (kx + 0.10, ky - 0.05, 0.875), 0.15, 0.01, COL_HEAD, segments=12)
     # Floor tom right
     make_cyl("Tom_Floor", (kx + 0.55, ky - 0.20, 0.48), 0.20, 0.30, COL_DRUM, segments=12)
@@ -148,7 +150,7 @@ def build_band_gear():
     make_cyl("HiHat_Bot", (kx - 0.85, ky - 0.30, 0.90), 0.16, 0.008, COL_CYMBAL, segments=14)
     # Crash cymbal right, higher
     make_cyl("Crash_Stand", (kx + 0.85, ky + 0.05, 0.60), 0.015, 1.20, COL_STEEL, segments=6)
-    make_cyl("Crash", (kx + 0.85, ky + 0.05, 1.22), 0.20, 0.008, COL_CYMBAL, segments=14)
+    make_cyl("Crash", (kx + 0.85, ky + 0.05, 1.204), 0.20, 0.008, COL_CYMBAL, segments=14)   # on its stand
     # Throne
     make_cyl("Throne_Seat", (kx, ky + 0.55, 0.50), 0.17, 0.08, COL_AMP, segments=10)
     make_cyl("Throne_Post", (kx, ky + 0.55, 0.25), 0.03, 0.50, COL_STEEL, segments=6)
@@ -175,13 +177,16 @@ def build_band_gear():
     make_box("Tele_Guard", (gx - 0.05, gy - 0.028, 0.40), (0.16, 0.006, 0.24), COL_TELE_GUARD)
     make_box("Tele_Neck", (gx + 0.02, gy, 0.82), (0.055, 0.04, 0.46), COL_BENCH)
     make_box("Tele_Head", (gx + 0.02, gy, 1.10), (0.08, 0.035, 0.14), COL_TELE)
-    make_box("GStand_Leg_A", (gx - 0.10, gy + 0.08, 0.22), (0.03, 0.03, 0.45), COL_STEEL_DK)
-    make_box("GStand_Leg_B", (gx + 0.10, gy + 0.08, 0.22), (0.03, 0.03, 0.45), COL_STEEL_DK)
-    make_box("GStand_Foot", (gx, gy - 0.02, 0.03), (0.30, 0.26, 0.03), COL_STEEL_DK)
+    # the stand's uprights under the body (2026-09-23: 4 cm behind it)
+    make_box("GStand_Leg_A", (gx - 0.10, gy + 0.02, 0.22), (0.03, 0.03, 0.45), COL_STEEL_DK)
+    make_box("GStand_Leg_B", (gx + 0.10, gy + 0.02, 0.22), (0.03, 0.03, 0.45), COL_STEEL_DK)
+    make_box("GStand_Foot", (gx, gy - 0.02, 0.015), (0.30, 0.26, 0.03), COL_STEEL_DK)
     # Bass on a stand by the bass rig
     make_box("Bass_Body", (1.55, 2.4, 0.44), (0.28, 0.05, 0.40), COL_BASS)
     make_box("Bass_Neck", (1.57, 2.4, 0.92), (0.05, 0.04, 0.56), COL_BENCH_DK)
-    make_box("BStand_Foot", (1.55, 2.38, 0.03), (0.28, 0.26, 0.03), COL_STEEL_DK)
+    make_box("BStand_Foot", (1.55, 2.38, 0.015), (0.28, 0.26, 0.03), COL_STEEL_DK)
+    for sx_ in (1.45, 1.65):   # the stand's uprights (2026-09-23: the bass stood 20 cm over its stand's foot)
+        make_box(f"BStand_Leg_{sx_:.2f}", (sx_, 2.40, 0.22), (0.03, 0.03, 0.45), COL_STEEL_DK)
 
     # ── Mic stand front-center (Em's portable one) ──
     make_cyl("Mic_Post", (0.2, 1.35, 0.75), 0.018, 1.50, COL_STEEL_DK, segments=6)
@@ -226,14 +231,14 @@ def build_wall_dressing():
     make_box("Fridge_Door_Seam", (2.44, 1.12, 0.42), (0.52, 0.01, 0.80), COL_STEEL)
     make_box("Fridge_Handle", (2.20, 1.14, 0.60), (0.03, 0.02, 0.22), COL_STEEL_DK)
     # Box fan pointed at the kit (it is August)
-    make_box("BoxFan", (-2.3, 1.5, 0.35), (0.14, 0.55, 0.55), COL_STEEL_DK)
-    make_cyl("BoxFan_Grille", (-2.22, 1.5, 0.35), 0.24, 0.02, COL_STEEL, segments=14, axis='X')
+    make_box("BoxFan", (-2.3, 1.5, 0.275), (0.14, 0.55, 0.55), COL_STEEL_DK)   # on the floor (2026-09-23: 7.5 cm up)
+    make_cyl("BoxFan_Grille", (-2.22, 1.5, 0.275), 0.24, 0.02, COL_STEEL, segments=14, axis='X')
     # Milk crates stacked by the amps
-    for ci, (cx, cy, cz) in enumerate([(-2.45, 4.4, 0.17), (-2.45, 4.4, 0.51), (2.5, 4.5, 0.17)]):
+    for ci, (cx, cy, cz) in enumerate([(-2.45, 4.4, 0.16), (-2.45, 4.4, 0.48), (2.5, 4.5, 0.16)]):   # floor, and stacked (2026-09-23: 1-2 cm gaps)
         make_box(f"Crate_{ci}", (cx, cy, cz), (0.33, 0.33, 0.32), COL_CRATE, open_faces={"+Z"})
     # The Foxhole flyer pinned by the door jamb (ch14)
-    make_box("Flyer", (ROOM_W / 2.0 - 0.13, 0.35, 1.45), (0.02, 0.22, 0.28), COL_FLYER)
-    make_box("Flyer_Band", (ROOM_W / 2.0 - 0.125, 0.35, 1.52), (0.015, 0.18, 0.05), COL_STEEL_DK)
+    make_box("Flyer", (ROOM_W / 2.0 - 0.11, 0.35, 1.45), (0.02, 0.22, 0.28), COL_FLYER)   # on the wall (2026-09-23: 2 cm off it)
+    make_box("Flyer_Band", (ROOM_W / 2.0 - 0.1275, 0.35, 1.52), (0.015, 0.18, 0.05), COL_STEEL_DK)
     # Bare-bulb ceiling fixture — the practical the tscn Omni sits on
     make_cyl("Bulb_Base", (0.0, 2.6, CEIL - 0.06), 0.05, 0.06, COL_STEEL_DK, segments=8)
     make_cyl("Bulb", (0.0, 2.6, CEIL - 0.14), 0.045, 0.09, COL_BULB, segments=10)

@@ -94,7 +94,7 @@ def build_benches():
     """Two flat benches mid-floor, bars racked on uprights."""
     for bi, (bx, by) in enumerate([(1.4, 4.35), (1.4, 2.9)]):
         make_box(f"Bench_{bi}_Pad", (bx, by, 0.45), (0.32, 1.25, 0.09), COL_BENCH_PAD)
-        make_box(f"Bench_{bi}_Spine", (bx, by, 0.28), (0.14, 1.1, 0.26), COL_IRON)
+        make_box(f"Bench_{bi}_Spine", (bx, by, 0.26), (0.14, 1.1, 0.30), COL_IRON)   # on its feet (2026-09-23: 4 cm over them)
         for dy in (-0.5, 0.5):
             make_box(f"Bench_{bi}_Foot_{dy:+.1f}", (bx, by + dy, 0.06), (0.5, 0.08, 0.10),
                      COL_IRON)
@@ -113,7 +113,10 @@ def build_dumbbells_and_plates():
     """Dumbbell rack along the WEST wall under the mirror; two plate
     trees; the wall mirror panel."""
     dx = -ROOM_W / 2.0 + 0.45
-    # Two-tier rack
+    # Two-tier rack — with the end frames the shelves stand on
+    # (2026-09-23: two shelves at 0.35 and 0.75 on nothing)
+    for ey_ in (1.325, 3.575):
+        make_box(f"DB_Rack_End_{ey_:.1f}", (dx, ey_, 0.39), (0.50, 0.05, 0.78), COL_RACK)
     for tier, tz in ((0, 0.35), (1, 0.75)):
         make_box(f"DB_Shelf_{tier}", (dx, 2.4, tz), (0.5, 2.4, 0.06), COL_RACK)
         for i in range(6):
@@ -143,7 +146,7 @@ def build_dumbbells_and_plates():
 def build_wall_dressing():
     """Depth chart + record board on the EAST wall; the box fan; a
     water cooler; motivational sign."""
-    ex = ROOM_W / 2.0 - 0.04
+    ex = ROOM_W / 2.0 - 0.11   # on the E wall's face (2026-09-23: 7 cm inside the wall)
     # THE DEPTH CHART (ch13/ch19 object of dread) — big, gridded
     make_box("DepthChart", (ex, 3.4, 1.6), (0.02, 0.9, 1.0), COL_PAPER)
     for r in range(8):
@@ -199,6 +202,9 @@ def build_vol6_hero_props_2026_08():
     make_cyl("Pulldown_LatBar", (lx, ly - 0.85, 1.10), 0.018, 1.05, COL_IRON, segments=8, axis='X')
     make_box("Pulldown_Seat", (lx, ly - 1.15, 0.42), (0.45, 0.32, 0.08), COL_BENCH_PAD)
     make_box("Pulldown_ThighPad", (lx, ly - 1.05, 0.70), (0.40, 0.14, 0.10), COL_BENCH_PAD)
+    # the seat's post and the thigh pad's riser (2026-09-23: both floated)
+    make_box("Pulldown_SeatPost", (lx, ly - 1.15, 0.19), (0.06, 0.06, 0.38), COL_RACK)
+    make_box("Pulldown_PadRiser", (lx, ly - 1.05, 0.555), (0.05, 0.05, 0.19), COL_RACK)
     # The MISSING BOLT on the squat rack's SE post: empty dark hole
     # + the bolt itself in the dust at the post's foot.
     make_cyl("Rack_BoltHole_Empty", (-1.2 + 0.045, ROOM_D - 0.7 - 0.35, 0.95), 0.018, 0.02,
@@ -217,10 +223,10 @@ def build_vol6_hero_props_2026_08():
 def build_fluorescents():
     for fx in (-1.8, 1.4):
         for fy in (1.8, 4.4):
-            make_box(f"Fix_{fx:+.1f}_{fy:.1f}", (fx, fy, CEIL - 0.08),
+            make_box(f"Fix_{fx:+.1f}_{fy:.1f}", (fx, fy, CEIL - 0.03),   # on the ceiling (2026-09-23: 5 cm under it)
                      (0.30, 1.25, 0.06), COL_FIXTURE)
             for dx in (-0.07, 0.07):
-                make_cyl(f"Tube_{fx:+.1f}_{fy:.1f}_{dx:+.2f}", (fx + dx, fy, CEIL - 0.13),
+                make_cyl(f"Tube_{fx:+.1f}_{fy:.1f}_{dx:+.2f}", (fx + dx, fy, CEIL - 0.08),
                          0.02, 1.2, COL_TUBE, segments=8, axis='Y')
 
 

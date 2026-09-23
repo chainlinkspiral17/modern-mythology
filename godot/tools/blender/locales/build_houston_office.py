@@ -59,7 +59,7 @@ import math as _m
 def make_office_chair(prefix, x, y, seat_z=0.50, w=0.42, back_dy=-0.20, col=COL_CHAIR, arms=True):
     """A five-star office chair facing +Y (back on the -Y side)."""
     make_chamfer_box(f"{prefix}_Seat", (x, y, seat_z), (w, w, 0.06), col, chamfer=0.02)
-    make_chamfer_box(f"{prefix}_Back", (x, y + back_dy, seat_z + 0.36), (w, 0.05, 0.60), col, chamfer=0.02)
+    make_chamfer_box(f"{prefix}_Back", (x, y + back_dy, seat_z + 0.33), (w, 0.05, 0.60), col, chamfer=0.02)   # on the seat (2026-09-23: 3 cm over it)
     make_lathe(f"{prefix}_Pillar", (x, y, 0.06), [(0.03, 0.0), (0.03, seat_z - 0.14), (0.05, seat_z - 0.11), (0.05, seat_z - 0.09), (0.0, seat_z - 0.09)], P.METAL_BLACK, segments=8)
     for si in range(5):
         a = si * 2.0 * _m.pi / 5.0 + 0.3
@@ -137,7 +137,7 @@ def build_glass_office():
     make_box("Manager_MonFoot", (ox, oy+0.20, 0.75), (0.30, 0.20, 0.02), P.METAL_BLACK)
     # Desk phone (draft 3: a wedge base, handset arc, coiled cord)
     make_chamfer_box("Manager_Phone_Base", (ox+0.42, oy-0.05, 0.765), (0.20, 0.24, 0.05), P.METAL_BLACK, chamfer=0.012)
-    make_tube("Manager_Phone_Handset", [(ox+0.34, oy+0.02, 0.82), (ox+0.42, oy+0.02, 0.85), (ox+0.50, oy+0.02, 0.82)], 0.016, (0.12,0.12,0.14,1.0), segments=8)
+    make_tube("Manager_Phone_Handset", [(ox+0.34, oy+0.02, 0.805), (ox+0.42, oy+0.02, 0.835), (ox+0.50, oy+0.02, 0.805)], 0.016, (0.12,0.12,0.14,1.0), segments=8)
     make_tube("Manager_Phone_Cord", [(ox+0.52, oy+0.05, 0.76), (ox+0.60, oy+0.20, 0.75), (ox+0.66, oy+0.32, 0.745)], 0.004, (0.12,0.12,0.14,1.0), segments=5)
     # Papers / blotter
     make_box("Manager_Blotter", (ox-0.10, oy-0.05, 0.745), (0.60, 0.40, 0.01), (0.30,0.28,0.30,1.0))
@@ -270,7 +270,8 @@ def build_use_states_d4():
     make_mug("Cub_Mug", -2.15, CUB_Y + 0.16, 0.74, (0.62, 0.58, 0.50, 1.0))
     # Sticky notes on the manager monitor edge
     for i, (ox, oz) in enumerate(((0.14, 0.05), (0.16, -0.06), (-0.15, 0.02))):
-        make_box(f"Sticky_{i}", (-3.9 + ox, 1.34, 1.20 + oz), (0.05, 0.005, 0.05),
+        # ON the monitor's face (2026-09-23: in the air 34 cm in front of it)
+        make_box(f"Sticky_{i}", (-3.72 + ox * 0.5, 1.6725, 1.10 + oz), (0.05, 0.005, 0.05),
                  (0.95, 0.88, 0.40, 1.0) if i != 1 else (0.70, 0.88, 0.60, 1.0))
     # Water cooler: cup sleeve on top, one cup abandoned on the sill
     make_lathe("Cooler_LoneCup", (4.35, 1.35, 0.0), [(0.0, 0.0), (0.025, 0.0), (0.033, 0.09), (0.0, 0.09)],

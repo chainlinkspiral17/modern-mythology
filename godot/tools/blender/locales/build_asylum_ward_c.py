@@ -201,7 +201,8 @@ def build_ceiling_infra():
     make_smoke_detector("Smoke_N", (0.0, 10.0, CEIL))
     make_sprinkler("Spr_S", (0.0, 4.0, CEIL))
     make_sprinkler("Spr_N", (0.0, 10.0, CEIL))
-    make_security_camera("Cam", (+ROOM_W/2.0-0.10, 7.0, CEIL-0.10))
+    # on the ceiling, off the E wall (2026-09-23: 10 cm into the wall, 10-20 cm under the ceiling)
+    make_security_camera("Cam", (+ROOM_W/2.0-0.22, 7.0, CEIL))
 
 
 def build_decor():

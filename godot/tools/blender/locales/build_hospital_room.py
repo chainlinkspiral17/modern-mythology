@@ -42,7 +42,7 @@ def build_bed():
              frame_col=frame, mattress_col=mattress, blanket_col=(0.52, 0.70, 0.72, 1.0),
              pillow_col=(0.96, 0.96, 0.92, 1.0))
     make_box("Bed_Headboard", (bx, by+1.02, 0.62), (1.00, 0.06, 0.60), board)
-    make_box("Bed_Footboard", (bx, by-1.02, 0.52), (1.00, 0.06, 0.40), board)
+    make_box("Bed_Footboard", (bx, by-0.95, 0.52), (1.00, 0.06, 0.40), board)   # on the foot posts (2026-09-23: 7 cm off them)
 
 def build_monitor():
     mx, my = 1.1, 3.5
@@ -61,8 +61,8 @@ def build_iv():
         make_box(f"IV_Foot_{k}", (ix+dx*0.6, iy+dy*0.6, 0.02), (0.14,0.04,0.03), P.METAL_STEEL)
     make_cyl("IV_Pole", (ix, iy, 1.05), 0.02, 2.00, P.METAL_STEEL)
     make_box("IV_Hook", (ix, iy-0.08, 1.98), (0.03,0.16,0.03), P.METAL_STEEL)
-    make_box("IV_Bag", (ix, iy-0.12, 1.72), (0.10, 0.16, 0.26), (0.86,0.90,0.86,1.0))
-    make_cyl("IV_Chamber", (ix, iy-0.12, 1.52), 0.02, 0.10, (0.78,0.86,0.90,1.0))
+    make_box("IV_Bag", (ix, iy-0.12, 1.835), (0.10, 0.16, 0.26), (0.86,0.90,0.86,1.0))   # from the hook (2026-09-23: 11.5 cm under it)
+    make_cyl("IV_Chamber", (ix, iy-0.12, 1.655), 0.02, 0.10, (0.78,0.86,0.90,1.0))
     make_box("IV_Line", (ix+0.02, iy-0.30, 1.10), (0.008, 0.60, 0.008), (0.84,0.84,0.82,1.0))
 
 def build_curtain():
@@ -86,7 +86,7 @@ def build_chair():
 
 def build_tray_table():
     tx, ty = 0.7, 2.0
-    make_box("Tray_Top", (tx, ty, 0.88), (0.60, 0.42, 0.04), (0.86,0.84,0.80,1.0))
+    make_box("Tray_Top", (tx + 0.03, ty, 0.88), (0.60, 0.42, 0.04), (0.86,0.84,0.80,1.0))   # over its post (2026-09-23: 2 cm off it)
     make_box("Tray_Post", (tx+0.34, ty, 0.45), (0.04,0.04,0.86), P.METAL_STEEL)
     make_box("Tray_Foot", (tx+0.34, ty, 0.03), (0.10,0.44,0.05), P.METAL_STEEL)
     make_cyl("Tray_Cup", (tx-0.10, ty, 0.94), 0.05, 0.10, (0.92,0.90,0.86,1.0))
@@ -109,7 +109,7 @@ def build_waiting_corner():
         cx = -0.85 + ci * 0.56
         make_box(f"Wait_Chair_{ci}_Seat", (cx, 4.55, 0.44), (0.50, 0.46, 0.05), (0.36, 0.46, 0.56, 1.0))
         make_box(f"Wait_Chair_{ci}_Back", (cx, 4.76, 0.72), (0.50, 0.05, 0.50), (0.32, 0.42, 0.52, 1.0))
-    make_box("Wait_Chair_Beam", (0.0, 4.55, 0.34), (2.3, 0.08, 0.06), (0.55, 0.57, 0.58, 1.0))
+    make_box("Wait_Chair_Beam", (0.0, 4.55, 0.385), (2.3, 0.08, 0.06), (0.55, 0.57, 0.58, 1.0))   # under the seats (2026-09-23: 4.5 cm under them)
     make_box("Vending_Machine", (-1.90, 4.55, 0.93), (0.85, 0.75, 1.85), (0.62, 0.28, 0.24, 1.0))
     make_box("Vending_Face", (-1.90, 4.16, 1.10), (0.55, 0.05, 1.20), (0.26, 0.30, 0.38, 1.0))
     make_cyl("Paper_Coffee_Cup", (-0.85, 4.42, 0.50), 0.035, 0.10, (0.88, 0.86, 0.80, 1.0), segments=8)
@@ -148,8 +148,9 @@ def build_hero_props_2026_09():
     THE HANDS ("she takes Linda's free hand in both of hers and
     holds it"): residue grammar — two creases in the bed blanket
     at the free-hand side."""
-    make_box("Hands_Blanket_Crease_A", (0.10, 2.00, 0.666), (0.14, 0.05, 0.012), (0.52, 0.58, 0.62, 1.0))
-    make_box("Hands_Blanket_Crease_B", (0.13, 1.88, 0.665), (0.05, 0.12, 0.010), (0.50, 0.56, 0.60, 1.0))
+    # on the blanket (2026-09-23: 80 cm off the bed's foot, in the air)
+    make_box("Hands_Blanket_Crease_A", (0.10, 3.20, 0.706), (0.14, 0.05, 0.012), (0.52, 0.58, 0.62, 1.0))
+    make_box("Hands_Blanket_Crease_B", (0.13, 3.08, 0.705), (0.05, 0.12, 0.010), (0.50, 0.56, 0.60, 1.0))
 
 
 def main():

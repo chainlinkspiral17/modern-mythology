@@ -195,9 +195,11 @@ def make_bed(prefix, x, y, head="+Y", w=1.4, d=2.0, style="frame",
             make_cyl(f"{prefix}_Caster_{li}", P(u, v, 0.05), 0.05, 0.04, (0.14, 0.14, 0.15, 1.0), axis=ax_across, segments=8)
         make_box(f"{prefix}_Deck", P(0.0, 0.0, deck - 0.02), S(w - 0.06, d - 0.10, 0.04), steel)
         for sgn in (-1, 1):
-            make_cyl(f"{prefix}_SideRail_{sgn:+d}", P(sgn * (hw + 0.02), 0.10, deck + 0.34), 0.015, d * 0.55, steel, axis=ax_along, segments=6)
+            # rails on the deck's edge (hw - 0.02), clear of the mattress
+            # (2026-09-23: at hw + 0.02 they stood 4 cm outside the deck)
+            make_cyl(f"{prefix}_SideRail_{sgn:+d}", P(sgn * (hw - 0.02), 0.10, deck + 0.34), 0.015, d * 0.55, steel, axis=ax_along, segments=6)
             for k in range(3):
-                make_cyl(f"{prefix}_RailPost_{sgn:+d}_{k}", P(sgn * (hw + 0.02), 0.10 + (k - 1) * d * 0.22, deck + 0.17), 0.012, 0.34, steel, segments=5)
+                make_cyl(f"{prefix}_RailPost_{sgn:+d}_{k}", P(sgn * (hw - 0.02), 0.10 + (k - 1) * d * 0.22, deck + 0.17), 0.012, 0.34, steel, segments=5)
         mat_h, mat_w, mat_d = 0.14, w - 0.10, d - 0.16
         pillows = 1
         made = False

@@ -166,13 +166,16 @@ def build_backoffice_detail():
     make_box("Chair_Back", (ch_x, ch_y - 0.22, 0.80), (0.42, 0.05, 0.40), (0.16, 0.16, 0.18, 1.0))
     for sgn in (-1, +1):
         make_box(f"Chair_BackPost_{sgn:+d}", (ch_x + sgn * 0.15, ch_y - 0.21, 0.585), (0.025, 0.03, 0.17), (0.12, 0.12, 0.14, 1.0))
+    # the hub the column and the star arms meet in (2026-09-23: column,
+    # arms and casters were three separate floating things)
+    make_cyl("Chair_Hub", (ch_x, ch_y, 0.06), 0.10, 0.05, (0.10, 0.10, 0.12, 1.0), segments=10)
     for k in range(5):
         a = k * (2 * _m.pi / 5)
         make_box(f"Chair_Star_{k}",
                  (ch_x + _m.cos(a) * 0.14, ch_y + _m.sin(a) * 0.14, 0.06),
                  (0.10, 0.10, 0.05), (0.10, 0.10, 0.12, 1.0))
         make_cyl(f"Chair_Caster_{k}",
-                 (ch_x + _m.cos(a) * 0.26, ch_y + _m.sin(a) * 0.26, 0.04),
+                 (ch_x + _m.cos(a) * 0.21, ch_y + _m.sin(a) * 0.21, 0.04),   # under the arm's end
                  0.035, 0.05, (0.06, 0.06, 0.07, 1.0), segments=6, axis='X')
     # ── Corkboard of pinned pages on the NORTH wall ──
     make_box("Corkboard", (0.0, 4.82, 1.6), (1.4, 0.03, 0.9), (0.56, 0.42, 0.26, 1.0))
@@ -201,10 +204,12 @@ def build_backoffice_detail():
     # ── Desk clutter: art boards + mug + pen cup ──
     make_box("Desk_ArtBoard_0", (0.35 + DESK_DX, 3.5 + DESK_DY, 0.815), (0.34, 0.44, 0.006), (0.94, 0.93, 0.88, 1.0))
     make_box("Desk_ArtBoard_1", (0.42 + DESK_DX, 3.55 + DESK_DY, 0.822), (0.34, 0.44, 0.006), (0.90, 0.90, 0.84, 1.0))
-    make_cyl("Desk_Mug", (0.7 + DESK_DX, 3.2 + DESK_DY, 0.86), 0.04, 0.10, (0.30, 0.44, 0.52, 1.0), segments=8)
-    make_cyl("Desk_PenCup", (-0.75 + DESK_DX, 3.3 + DESK_DY, 0.87), 0.045, 0.11, (0.20, 0.20, 0.24, 1.0), segments=8)
+    # on the desk (2026-09-23: 5 cm over it)
+    make_cyl("Desk_Mug", (0.7 + DESK_DX, 3.2 + DESK_DY, 0.81), 0.04, 0.10, (0.30, 0.44, 0.52, 1.0), segments=8)
+    # on the desk
+    make_cyl("Desk_PenCup", (-0.75 + DESK_DX, 3.3 + DESK_DY, 0.815), 0.045, 0.11, (0.20, 0.20, 0.24, 1.0), segments=8)
     for k in range(4):
-        make_cyl(f"Desk_Pen_{k}", (-0.75 + (k - 1.5) * 0.012 + DESK_DX, 3.3 + DESK_DY, 0.95), 0.006, 0.14,
+        make_cyl(f"Desk_Pen_{k}", (-0.75 + (k - 1.5) * 0.012 + DESK_DX, 3.3 + DESK_DY, 0.895), 0.006, 0.14,
                  [(0.1,0.1,0.1,1),(0.2,0.3,0.7,1),(0.7,0.2,0.2,1),(0.1,0.5,0.3,1)][k], segments=4)
 
 
@@ -230,8 +235,8 @@ def build_hero_props():
         make_box(f"Desk_Drawer_{di}", (0.62 + DESK_DX, 3.13 + DESK_DY, 0.62 - di * 0.21), (0.44, 0.02, 0.16), (0.34, 0.24, 0.16, 1.0))
         make_box(f"Desk_Drawer_{di}_Pull", (0.62 + DESK_DX, 3.11 + DESK_DY, 0.62 - di * 0.21), (0.12, 0.015, 0.03), iron)
     # Desk phone (Rick's long calls)
-    make_box("Desk_Phone", (0.55 + DESK_DX, 3.72 + DESK_DY, 0.82), (0.22, 0.16, 0.08), (0.16, 0.16, 0.18, 1.0))
-    make_box("Desk_Phone_Handset", (0.55 + DESK_DX, 3.72 + DESK_DY, 0.90), (0.20, 0.06, 0.04), (0.12, 0.12, 0.14, 1.0))
+    make_box("Desk_Phone", (0.55 + DESK_DX, 3.72 + DESK_DY, 0.80), (0.22, 0.16, 0.08), (0.16, 0.16, 0.18, 1.0))   # on the desk
+    make_box("Desk_Phone_Handset", (0.55 + DESK_DX, 3.72 + DESK_DY, 0.86), (0.20, 0.06, 0.04), (0.12, 0.12, 0.14, 1.0))   # on its cradle
     # Overturned milk crate — Sam's seat, opposite the desk
     make_chamfer_box("Milk_Crate", (-0.20 + DESK_DX, 2.40 + DESK_DY, 0.16), (0.36, 0.36, 0.32), (0.62, 0.28, 0.24, 1.0))
     make_box("Milk_Crate_Rim", (-0.20 + DESK_DX, 2.40 + DESK_DY, 0.315), (0.38, 0.38, 0.03), (0.52, 0.22, 0.20, 1.0))

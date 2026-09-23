@@ -97,10 +97,11 @@ def build_hospital_bed():
     make_bed("Bed", bx, by, head="+Y", w=1.20, d=2.20, style="hospital",
              frame_col=COL_BED_FRAME, mattress_col=COL_LINEN, blanket_col=COL_BLANKET, pillow_col=P.PAPER)
     # Foot panel
-    make_box("Bed_Foot", (bx, by-1.10, 0.60), (1.20, 0.04, 0.60), COL_BED_FRAME)
+    make_box("Bed_Foot", (bx, by-1.07, 0.60), (1.20, 0.04, 0.60), COL_BED_FRAME)   # against the deck (2026-09-23: 3 cm off it)
     # Bed controls dangling on their cord from the rail (draft 3)
-    make_chamfer_box("Bed_Controls", (bx+0.70, by-0.20, 0.40), (0.10, 0.06, 0.20), COL_MEDICAL, chamfer=0.01)
-    make_tube("Bed_Controls_Cord", [(bx+0.70, by-0.20, 0.50), (bx+0.66, by-0.10, 0.62)], 0.006, (0.70, 0.70, 0.70, 1.0), segments=5)
+    # the pendant hangs from the side rail by its cord (2026-09-23: both in the air)
+    make_chamfer_box("Bed_Controls", (bx+0.64, by-0.20, 0.40), (0.10, 0.06, 0.20), COL_MEDICAL, chamfer=0.01)
+    make_tube("Bed_Controls_Cord", [(bx+0.64, by-0.20, 0.50), (bx+0.58, by-0.20, 0.86)], 0.006, (0.70, 0.70, 0.70, 1.0), segments=5)
 
 def build_iv_stand_and_monitor():
     # IV stand beside bed
@@ -108,9 +109,9 @@ def build_iv_stand_and_monitor():
     make_cyl("IV_Pole", (ix, iy, 1.05), 0.012, 1.94, COL_MEDICAL)
     make_lathe("IV_Base", (ix, iy, 0.0), [(0.20, 0.0), (0.20, 0.03), (0.06, 0.06), (0.02, 0.08)], COL_MEDICAL, segments=10)
     make_tube("IV_Hook", [(ix, iy, 1.98), (ix - 0.06, iy, 2.02), (ix - 0.10, iy, 1.92)], 0.006, COL_MEDICAL, segments=5)
-    make_chamfer_box("IV_Bag", (ix-0.10, iy, 1.70), (0.04, 0.16, 0.30), COL_IV_BAG, chamfer=0.01)
+    make_chamfer_box("IV_Bag", (ix-0.04, iy, 1.70), (0.04, 0.16, 0.30), COL_IV_BAG, chamfer=0.01)   # on the pole (2026-09-23: 7 cm off it)
     # the drip line to the bed rail (draft 3: a tube, not a post)
-    make_tube("IV_Tube", [(ix-0.10, iy, 1.55), (ix-0.09, iy, 1.00), (ix-0.35, iy+0.15, 0.78)], 0.004, COL_IV_BAG, segments=4)
+    make_tube("IV_Tube", [(ix-0.04, iy, 1.55), (ix-0.09, iy, 1.00), (ix-0.41, iy, 0.86)], 0.004, COL_IV_BAG, segments=4)   # bag to the bed rail
     # Vitals monitor on a cart
     mx, my = -1.0, 4.20
     make_box("Monitor_Cart_Base", (mx, my, 0.05), (0.50, 0.50, 0.10), COL_MEDICAL)
@@ -198,8 +199,8 @@ def build_hero_props():
     make_box("Sink_Counter", (2.40, 4.60, 0.45), (0.9, 0.55, 0.90), (0.72, 0.70, 0.66, 1.0))
     make_box("Sink_Basin", (2.40, 4.60, 0.91), (0.42, 0.36, 0.05), (0.86, 0.86, 0.84, 1.0))
     make_tube("Sink_Faucet", [(2.66, 4.60, 0.935), (2.66, 4.60, 1.12), (2.58, 4.60, 1.16), (2.50, 4.60, 1.10)], 0.012, (0.80, 0.82, 0.84, 1.0), segments=6)
-    make_box("Sink_Cabinet", (2.70, 4.60, 1.70), (0.35, 0.55, 0.60), (0.66, 0.62, 0.56, 1.0))
-    make_box("UnderCab_Light", (2.48, 4.60, 1.395), (0.30, 0.45, 0.03), (0.98, 0.90, 0.72, 1.0))
+    make_box("Sink_Cabinet", (2.725, 4.60, 1.70), (0.35, 0.55, 0.60), (0.66, 0.62, 0.56, 1.0))   # on the E wall (2026-09-23: 2.5 cm off it)
+    make_box("UnderCab_Light", (2.505, 4.60, 1.395), (0.30, 0.45, 0.03), (0.98, 0.90, 0.72, 1.0))
     # The beach print — on the west wall by the clock (draft 3: over
     # the bed it hung inside the window's opening)
     make_box("Beach_Print_Frame", (-2.88, 2.2, 1.70), (0.04, 0.70, 0.50), (0.42, 0.36, 0.28, 1.0))
@@ -265,8 +266,10 @@ def build_use_states_d4():
     # (the second pair of slippers is gone — canon has one pair, by
     # the door, three weeks unworn)
     # The nurse's clipboard hanging at the door
-    make_box("Door_Clipboard", (-0.55, 0.10, 1.35), (0.24, 0.02, 0.32), wood)
-    make_box("Door_Clipboard_Sheet", (-0.55, 0.115, 1.34), (0.20, 0.005, 0.26),
+    # on the wall beside the doorway (2026-09-23: in the open doorway — the
+    # room has no door leaf)
+    make_box("Door_Clipboard", (-1.25, 0.11, 1.35), (0.24, 0.02, 0.32), wood)
+    make_box("Door_Clipboard_Sheet", (-1.25, 0.1225, 1.34), (0.20, 0.005, 0.26),
              (0.92, 0.92, 0.88, 1.0))
     # Erica's unsent thank-you: an envelope square on the dresser
     make_box("Dresser_Envelope", (-2.60, 3.25, 0.895), (0.16, 0.11, 0.008),
@@ -279,7 +282,8 @@ def build_draft3_2026_09():
     cord = (0.40, 0.40, 0.42, 1.0)
     make_floor_stain("Wear_Visitor", (-1.90, 4.50), radius=0.28, tint=wear, segments=10)
     make_cyl("Wear_Table_Ring", (0.79, 4.50, 0.761), 0.042, 0.002, (0.48, 0.38, 0.28, 1.0), segments=10)
-    make_box("Wear_Door_Kick", (0.0, 0.106, 0.16), (1.6, 0.012, 0.10), (0.52, 0.42, 0.32, 1.0))
+    # (2026-09-23: a door-kick scuff hung across the open doorway — there is
+    # no door for it to be on; removed)
     make_box("Wear_Arm_Shine", (-1.60, 5.00, 0.7515), (0.06, 0.30, 0.003), (0.66, 0.46, 0.40, 1.0))
     # D3 · the monitor's cord to the north-east outlet, the lamp's cord
     # off the table's back to the same wall

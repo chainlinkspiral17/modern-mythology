@@ -81,7 +81,7 @@ def build_shell():
                  size_y=ROOM_D + 0.4, with_grid=False, with_stains=False)
     # Blackout curtain hung across the doorway (south)
     make_box("Curtain", (0.0, 0.14, 1.05), (1.30, 0.04, 2.05), COL_CURTAIN)
-    make_box("Curtain_Rod", (0.0, 0.14, 2.12), (1.40, 0.03, 0.03), COL_STEEL_DK)
+    make_box("Curtain_Rod", (0.0, 0.115, 2.12), (1.40, 0.03, 0.03), COL_STEEL_DK)   # on the wall over the door (2026-09-23: 2.5 cm off it)
     # A couple of vertical folds so the curtain isn't a flat slab
     for fi, fx in enumerate((-0.42, -0.10, 0.24, 0.52)):
         make_box(f"Curtain_Fold_{fi}", (fx, 0.11, 1.05), (0.05, 0.03, 2.02), COL_BASE)
@@ -172,20 +172,21 @@ def build_dry_bench():
     make_box("Enlarger_Lamphouse", (ex, head_y, car_z + 0.05), (0.24, 0.22, 0.22), COL_STEEL_DK)
     make_box("Enlarger_Lamphouse_Vent", (ex, head_y, car_z + 0.18), (0.18, 0.16, 0.03), COL_STEEL)
     # Negative stage
-    make_box("Enlarger_NegStage", (ex, head_y, car_z - 0.09), (0.22, 0.20, 0.03), COL_STEEL)
+    # the head stacked without gaps (2026-09-23: 1.5–2.5 cm between each)
+    make_box("Enlarger_NegStage", (ex, head_y, car_z - 0.075), (0.22, 0.20, 0.03), COL_STEEL)
     # Bellows (tapered box stack down to the lens)
     for k in range(4):
         s = 0.18 - k * 0.02
-        make_box(f"Enlarger_Bellows_{k}", (ex, head_y, car_z - 0.14 - k * 0.03),
+        make_box(f"Enlarger_Bellows_{k}", (ex, head_y, car_z - 0.105 - k * 0.03),
                  (s, s, 0.03), COL_BASE)
     # Lens
-    make_cyl("Enlarger_Lens", (ex, head_y, car_z - 0.30), 0.05, 0.06, COL_STEEL_DK, segments=10)
-    make_cyl("Enlarger_Lens_Glass", (ex, head_y, car_z - 0.33), 0.038, 0.01,
+    make_cyl("Enlarger_Lens", (ex, head_y, car_z - 0.24), 0.05, 0.06, COL_STEEL_DK, segments=10)
+    make_cyl("Enlarger_Lens_Glass", (ex, head_y, car_z - 0.275), 0.038, 0.01,
              (0.20, 0.22, 0.26, 1.0), segments=10)
     # Red filter swung under the lens (the safelight-compatible printing filter)
-    make_cyl("Enlarger_RedFilter", (ex + 0.10, head_y, car_z - 0.31), 0.05, 0.008,
+    make_cyl("Enlarger_RedFilter", (ex + 0.10, head_y, car_z - 0.26), 0.05, 0.008,
              COL_SAFERED, segments=8)
-    make_box("Enlarger_Filter_Arm", (ex + 0.05, head_y, car_z - 0.31),
+    make_box("Enlarger_Filter_Arm", (ex + 0.05, head_y, car_z - 0.26),
              (0.10, 0.02, 0.01), COL_STEEL_DK)
     # Focus knob on the carriage
     make_cyl("Enlarger_FocusKnob", (ex + 0.09, col_y, car_z - 0.10), 0.035, 0.03,
@@ -212,12 +213,14 @@ def build_dry_bench():
 
     # ── GraLab-style timer on the north wall above the enlarger ──
     tz = 1.86
-    make_cyl("Timer_Body", (ex, ROOM_D - 0.03, tz), 0.11, 0.05, COL_STEEL_DK,
+    # on the wall face beside the column (2026-09-23: inside the wall and
+    # through the enlarger's carriage)
+    make_cyl("Timer_Body", (ex + 0.45, ROOM_D - 0.125, tz), 0.11, 0.05, COL_STEEL_DK,
              segments=14, axis='Y')
-    make_cyl("Timer_Face", (ex, ROOM_D - 0.075, tz), 0.095, 0.01,
+    make_cyl("Timer_Face", (ex + 0.45, ROOM_D - 0.155, tz), 0.095, 0.01,
              (0.90, 0.88, 0.80, 1.0), segments=14, axis='Y')
     # a red sweep hand
-    make_box("Timer_Hand", (ex + 0.02, ROOM_D - 0.085, tz + 0.03),
+    make_box("Timer_Hand", (ex + 0.47, ROOM_D - 0.1625, tz + 0.03),
              (0.012, 0.006, 0.07), COL_SAFERED)
 
 
@@ -234,9 +237,10 @@ def build_drying_line():
         # hanging print (paper) with an image area, slight size variety
         pw = 0.20 + 0.03 * (i % 2)
         ph = 0.26 + 0.03 * ((i + 1) % 2)
-        make_box(f"DryPrint_{i}", (px, ly + 0.01, lz - 0.06 - ph / 2.0 - drop),
+        # hung FROM the clip's jaw (2026-09-23: 1.5–5.5 cm under it)
+        make_box(f"DryPrint_{i}", (px, ly + 0.01, lz - 0.045 - ph / 2.0),
                  (pw, 0.004, ph), COL_PRINT)
-        make_box(f"DryPrint_{i}_Img", (px, ly + 0.013, lz - 0.06 - ph / 2.0 - drop),
+        make_box(f"DryPrint_{i}_Img", (px, ly + 0.013, lz - 0.045 - ph / 2.0),
                  (pw - 0.05, 0.002, ph - 0.06),
                  (0.28 + 0.06 * (i % 3), 0.28, 0.32 - 0.04 * (i % 2), 1.0))
 
@@ -267,14 +271,14 @@ def build_wall_dressing():
     light-fighting brightness: a pinned test-strip card, a wall clock
     face, a coiled squeegee, a roll of paper towels."""
     # Pinned test strip + notes on the west wall over the wet bench
-    make_box("Pinned_TestStrip", (-1.28, 2.9, 1.55), (0.01, 0.10, 0.34), COL_PRINT)
+    make_box("Pinned_TestStrip", (-1.195, 2.9, 1.55), (0.01, 0.10, 0.34), COL_PRINT)   # on the wall face (2026-09-23: inside the wall)
     for k in range(5):
-        make_box(f"TestStrip_Band_{k}", (-1.272, 2.9, 1.42 + k * 0.06),
+        make_box(f"TestStrip_Band_{k}", (-1.187, 2.9, 1.42 + k * 0.06),
                  (0.006, 0.09, 0.03), (0.12 + k * 0.15, 0.12 + k * 0.15, 0.14 + k * 0.14, 1.0))
-    make_box("Pinned_Note", (-1.28, 2.5, 1.62), (0.01, 0.16, 0.20), (0.72, 0.70, 0.62, 1.0))
+    make_box("Pinned_Note", (-1.195, 2.5, 1.62), (0.01, 0.16, 0.20), (0.72, 0.70, 0.62, 1.0))
     # Squeegee hung by the sink
-    make_box("Squeegee", (0.4, ROOM_D - 0.04, 1.5), (0.16, 0.02, 0.04), COL_STEEL_DK)
-    make_box("Squeegee_Blade", (0.4, ROOM_D - 0.05, 1.46), (0.15, 0.01, 0.04), COL_BASE)
+    make_box("Squeegee", (0.4, ROOM_D - 0.11, 1.5), (0.16, 0.02, 0.04), COL_STEEL_DK)   # on the wall face (2026-09-23: inside the wall)
+    make_box("Squeegee_Blade", (0.4, ROOM_D - 0.125, 1.46), (0.15, 0.01, 0.04), COL_BASE)
     # Paper-towel roll on a holder under the chem shelf
     make_cyl("PaperTowel", (-1.2, 0.9, 1.28), 0.06, 0.24, (0.86, 0.84, 0.78, 1.0),
              segments=10, axis='Y')

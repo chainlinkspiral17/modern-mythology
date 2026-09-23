@@ -64,8 +64,8 @@ def make_bookshelf(prefix, anchor, *, run_len=4.0, height=2.2, depth=0.32,
                     break
                 bh = shelf_gap * BOOK_HF[(sh*2+bi) % len(BOOK_HF)]
                 col = BOOK_SPINES[(sh*3+bi) % len(BOOK_SPINES)]
-                make_box(f"{prefix}_Book_{sh}_{bi}",
-                         (x + w/2.0, cy + front_sign*(depth*0.12), sz + 0.03 + bh/2.0),
+                make_box(f"{prefix}_Book_{sh}_{bi}",   # ON the shelf top, sz + 0.015 (2026-09-23: 1.5 cm over every shelf)
+                         (x + w/2.0, cy + front_sign*(depth*0.12), sz + 0.015 + bh/2.0),
                          (w, depth*0.72, bh), col)
                 x += w + 0.006
     else:  # axis == 'Y'
@@ -87,7 +87,7 @@ def make_bookshelf(prefix, anchor, *, run_len=4.0, height=2.2, depth=0.32,
                 bh = shelf_gap * BOOK_HF[(sh*2+bi) % len(BOOK_HF)]
                 col = BOOK_SPINES[(sh*3+bi) % len(BOOK_SPINES)]
                 make_box(f"{prefix}_Book_{sh}_{bi}",
-                         (cx + front_sign*(depth*0.12), y + w/2.0, sz + 0.03 + bh/2.0),
+                         (cx + front_sign*(depth*0.12), y + w/2.0, sz + 0.015 + bh/2.0),
                          (depth*0.72, w, bh), col)
                 y += w + 0.006
 
@@ -201,6 +201,7 @@ def build_globe_and_catalog():
         ang = ai * (2.0*math.pi/3.0)
         make_box(f"Globe_Leg_{ai}", (gx + math.cos(ang)*0.16, gy + math.sin(ang)*0.16, 0.35),
                  (0.04, 0.04, 0.70), COL_WOOD_DK)
+    make_cyl("Globe_Cradle", (gx, gy, 0.715), 0.18, 0.03, COL_WOOD_DK, segments=12)   # legs to globe (2026-09-23: the globe floated between its legs)
     make_cyl("Globe_Ring", (gx, gy, 0.86), 0.20, 0.02, COL_BRASS, axis='X', segments=16)
     for zi, r in enumerate([0.09, 0.13, 0.15, 0.15, 0.13, 0.09]):
         make_cyl(f"Globe_Sphere_{zi}", (gx, gy, 0.74 + zi*0.058), r, 0.058,
@@ -300,7 +301,7 @@ def build_back_annex_2026_08():
     make_box("Kitch_Hob", (-3.55, 7.85, 0.95), (0.44, 0.36, 0.04), COL_BLACK)
     make_cyl("Kettle_Body", (-3.55, 7.85, 1.06), 0.11, 0.16, (0.74, 0.76, 0.78, 1.0), segments=12)
     make_cyl("Kettle_Lid", (-3.55, 7.85, 1.16), 0.05, 0.04, (0.66, 0.68, 0.70, 1.0), segments=10)
-    make_box("Kettle_Handle", (-3.55, 7.85, 1.22), (0.16, 0.03, 0.03), COL_BLACK)
+    make_box("Kettle_Handle", (-3.55, 7.85, 1.19), (0.16, 0.03, 0.03), COL_BLACK)   # on the lid (2026-09-23: 2.5 cm over it)
     # Four mugs set out + the small clay mug from Margit's (2009).
     for mi in range(4):
         make_cyl(f"Mug_{mi}", (-3.40+0.14*(mi%2), 6.55+0.16*(mi//2), 0.99), 0.04, 0.09,
@@ -326,7 +327,7 @@ def build_back_annex_2026_08():
             make_box(f"Kitch_Chair_{ci3}_Back", (-1.6+cxo, 8.1+cyo-0.20, 0.75), (0.42, 0.05, 0.55), COL_WOOD)
     # Radiator under the kitchenette window.
     for ri2 in range(6):
-        make_box(f"Radiator_Fin_{ri2}", (-2.05+ri2*0.18, AN_Y1-0.22, 0.32), (0.10, 0.16, 0.60),   # to the floor (2026-09-22: 12 cm up)
+        make_box(f"Radiator_Fin_{ri2}", (-2.05+ri2*0.18, AN_Y1-0.22, 0.31), (0.10, 0.16, 0.62),   # to the floor (2026-09-22: 12 cm up)
                  (0.72, 0.70, 0.66, 1.0))
     make_box("Radiator_Top", (-1.6, AN_Y1-0.22, 0.64), (1.10, 0.18, 0.04), (0.66, 0.64, 0.60, 1.0))
     # The CAT — Petra's old cat, asleep in a loaf on its own chair.
@@ -401,8 +402,10 @@ def build_detail_pass_2026_08():
     # Reading-nook rug shadow (the rug has not moved since 2015).
     make_floor_stain("Stain_NookEdge", (-2.6, 1.3), radius=0.30, tint=wear)
     # Kick scuffs: sales counter + the back door's boot line.
-    make_scuff_band("Scuff_Counter", (ROOM_W/2.0-1.4, 2.24), length=2.5, axis='X',
-                    band_z=0.11, tint=(0.28, 0.20, 0.13, 1.0))
+    # the counter runs N-S (x 2.25..2.95, y 1.3..3.9); its customer face is the
+    # WEST kick (2026-09-23: the band ran E-W 19 cm through the counter front)
+    make_scuff_band("Scuff_Counter", (2.224, 2.6), length=2.5, axis='Y',
+                    band_z=0.08, tint=(0.28, 0.20, 0.13, 1.0))
     make_scuff_band("Scuff_BackDoor", (-3.3, 8.90), length=0.9, axis='X',
                     band_z=0.09, tint=(0.26, 0.20, 0.14, 1.0))
     # Ceiling gather over the tall shelf walls.
@@ -527,8 +530,8 @@ def build_beyond_glass_2026_08():
     # The facing building: facade band, one lit window (the town is
     # awake), a dark doorway.
     make_box("Hemlock_Across_Facade", (0.0, -7.6, 2.0), (13.0, 0.6, 4.0), (0.42, 0.36, 0.30, 1.0))
-    make_box("Hemlock_Across_Win_Dark", (-3.0, -7.25, 1.6), (1.6, 0.06, 1.3), (0.14, 0.15, 0.18, 1.0))
-    make_box("Hemlock_Across_Win_Lit", (1.8, -7.25, 1.6), (1.6, 0.06, 1.3), (0.88, 0.78, 0.52, 1.0))
+    make_box("Hemlock_Across_Win_Dark", (-3.0, -7.27, 1.6), (1.6, 0.06, 1.3), (0.14, 0.15, 0.18, 1.0))   # on the facade
+    make_box("Hemlock_Across_Win_Lit", (1.8, -7.27, 1.6), (1.6, 0.06, 1.3), (0.88, 0.78, 0.52, 1.0))
     make_box("Hemlock_Across_Door", (-0.6, -7.25, 1.15), (0.95, 0.06, 2.3), (0.24, 0.20, 0.18, 1.0))
 
 
