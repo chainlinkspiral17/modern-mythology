@@ -105,10 +105,12 @@ def build_shell():
         make_crown_molding(nm, wall_x=anchor[0], wall_y=anchor[1],
                            length=length, axis=axis, ceil_z=CEIL_Z)
     # Front window (south, west side of door)
-    make_window("Window_SW", (-3.20, 0.0, 1.40),
-                width=2.40, height=1.40)
-    make_window("Window_SE", (+3.20, 0.0, 1.40),
-                width=2.40, height=1.40)
+    # anchored on the wall's room face, built toward the room (2026-09-23: the glass was inside the wall)
+    make_window("Window_SW", (-3.20, 0.10, 1.40),
+                width=2.40, height=1.40, room_dir=+1)
+    # anchored on the wall's room face, built toward the room (2026-09-23: the glass was inside the wall)
+    make_window("Window_SE", (+3.20, 0.10, 1.40),
+                width=2.40, height=1.40, room_dir=+1)
     # Door hinges
     make_door_hinges("FrontDoor_Hinge", edge_x=-1.50, edge_y=0.0,
                      edge_z_centers=[0.30, 1.05, 1.80], axis='X')

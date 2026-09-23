@@ -35,8 +35,10 @@ def build_shell():
     make_ceiling("Ceil", (0.0, ROOM_D/2.0, CEIL), size_x=ROOM_W+0.4, size_y=ROOM_D+0.4)
     # 2026-08 tail pass: FRONT WINDOWS in both S segments (street
     # light on the tables) + the BELL over the entry door.
-    make_window("Win_SW", (-2.25, 0.10, 1.60), width=1.70, height=1.40)
-    make_window("Win_SE", (+2.25, 0.10, 1.60), width=1.70, height=1.40)
+    # anchored on the wall's room face, built toward the room (2026-09-23: the glass was inside the wall)
+    make_window("Win_SW", (-2.25, 0.10, 1.60), width=1.70, height=1.40, room_dir=+1)
+    # anchored on the wall's room face, built toward the room (2026-09-23: the glass was inside the wall)
+    make_window("Win_SE", (+2.25, 0.10, 1.60), width=1.70, height=1.40, room_dir=+1)
     make_box("DoorBell_Arm", (0.55, 0.16, 2.28), (0.03, 0.14, 0.03), COL_STEEL)
     make_cyl("DoorBell", (0.55, 0.26, 2.22), 0.05, 0.07, (0.82, 0.72, 0.42, 1.0), segments=10)
     # BACK DOOR in the N wall's E end (to the alley), mostly closed.

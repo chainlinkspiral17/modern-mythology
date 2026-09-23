@@ -186,8 +186,10 @@ def build_window_booths():
         make_box(f"Booth_{bi}_Napkin", (bx, 1.10, 0.80), (0.08, 0.06, 0.08), COL_CHROME)
         make_cyl(f"Booth_{bi}_Mug", (bx - 0.10, 0.85, 0.80), 0.04, 0.09, COL_MUG, segments=8)
     # Two front windows on the S wall segments
-    make_window("Window_W", (-2.25, 0.0, 1.55), width=2.0, height=1.30)
-    make_window("Window_E", (+2.25, 0.0, 1.55), width=2.0, height=1.30)
+    # anchored on the wall's room face, built toward the room (2026-09-23: the glass was inside the wall)
+    make_window("Window_W", (-2.25, 0.10, 1.55), width=2.0, height=1.30, room_dir=+1)
+    # anchored on the wall's room face, built toward the room (2026-09-23: the glass was inside the wall)
+    make_window("Window_E", (+2.25, 0.10, 1.55), width=2.0, height=1.30, room_dir=+1)
 
 
 def build_jukebox():

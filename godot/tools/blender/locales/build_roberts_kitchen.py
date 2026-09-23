@@ -112,8 +112,9 @@ def build_shell():
                            length=length, axis=ax, ceil_z=CEIL_Z,
                            palette={"wood": COL_WOOD_TRIM})
     # Front window — east of door
-    make_window("Window_SE", (+2.00, 0.0, 1.40),
-                width=1.40, height=1.20)
+    # anchored on the wall's room face, built toward the room (2026-09-23: the glass was inside the wall)
+    make_window("Window_SE", (+2.00, 0.10, 1.40),
+                width=1.40, height=1.20, room_dir=+1)
     # Back-yard window (east wall, faces sage curtains)
     make_box("Window_E_Frame", (ROOM_W / 2.0 - 0.04, 3.5, 1.55),
              (0.04, 1.80, 1.20), P.METAL_STEEL)

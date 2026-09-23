@@ -263,6 +263,8 @@ HULL_X_W = -6.0
 HULL_X_E = +6.0
 HULL_Y_S = -12.0
 HULL_Y_N = +12.0
+# the main deck's stairwell (x0, x1, y0, y1) over MD_StairsDown's treads
+STAIR_HOLE = (-5.1, -3.9, -9.66, -7.20)
 
 
 # ════════════════════════════════════════════════════════════════
@@ -302,12 +304,34 @@ def build_hull_and_decks():
         ("MainFloor",  MAIN_FLOOR_Z,   COL_DECK_PLANK),
         ("UpperFloor", UPPER_FLOOR_Z,  COL_DECK_PLANK_LT),
     ]:
-        make_box(f"Hull_{label}",
-                 (0.0, 0.0, zf - 0.05),
-                 (12.0, 24.0, 0.10), color)
+        if label != "MainFloor":
+            make_box(f"Hull_{label}",
+                     (0.0, 0.0, zf - 0.05),
+                     (12.0, 24.0, 0.10), color)
+        else:
+            # the stairwell down (build_maitre_d's MD_StairsDown) is a
+            # HOLE in the main deck (2026-09-23: the deck was one slab and
+            # the top tread stood through it; a dark decal inside the slab
+            # stood in for the opening)
+            hx0, hx1, hy0, hy1 = STAIR_HOLE
+            make_box("Hull_MainFloor", ((hx1 + HULL_X_E) / 2.0, 0.0, zf - 0.05),
+                     (HULL_X_E - hx1, 24.0, 0.10), color)
+            for nm, (x0, x1, y0, y1) in (("S", (HULL_X_W, hx1, HULL_Y_S, hy0)),
+                                         ("N", (HULL_X_W, hx1, hy1, HULL_Y_N)),
+                                         ("Mid", (HULL_X_W, hx0, hy0, hy1))):
+                make_box(f"Hull_MainFloor_W{nm}", ((x0 + x1) / 2.0, (y0 + y1) / 2.0, zf - 0.05),
+                         (x1 - x0, y1 - y0, 0.10), color)
         # Plank seams (running E-W)
         for i in range(-5, 6):
             y = i * 2.0
+            if label == "MainFloor" and STAIR_HOLE[2] < y < STAIR_HOLE[3]:
+                # split round the stairwell
+                for k, (x0, x1) in enumerate(((HULL_X_W, STAIR_HOLE[0]), (STAIR_HOLE[1], HULL_X_E))):
+                    make_box(f"Hull_{label}_Seam_{i}_{k}",
+                             ((x0 + x1) / 2.0, y, zf + 0.012),
+                             (x1 - x0, 0.01, 0.001),
+                             (0.20, 0.14, 0.08, 1.0))
+                continue
             make_box(f"Hull_{label}_Seam_{i}",
                      (0.0, y, zf + 0.012),
                      (12.0, 0.01, 0.001),
@@ -405,8 +429,8 @@ def build_main_deck_partitions():
 
     # Carpet on the main dining floor (red — the boat's livery)
     make_box("MD_Carpet_Dining",
-             (-1.0, -3.0, MAIN_FLOOR_Z + 0.014),
-             (10.0, 8.0, 0.008), COL_CARPET_RED)
+             (-0.95, -3.0, MAIN_FLOOR_Z + 0.014),
+             (9.9, 8.0, 0.008), COL_CARPET_RED)   # to the hull's inner face (2026-09-23: 10 cm into it)
     make_box("MD_Carpet_PrivateDining",
              (-4.0, +3.0, MAIN_FLOOR_Z + 0.014),
              (3.0, 4.0, 0.008), COL_CARPET_DARK)
@@ -488,9 +512,7 @@ def build_maitre_d():
     # ── Stairs DOWN to lower deck (catering office etc.) ──
     # Behind the maitre d' wall, a stair down at west side
     sdx, sdy = -4.5, -9.5
-    make_box("MD_StairsDown_Opening",
-             (sdx, sdy, cz - 0.05),
-             (1.20, 2.40, 0.02), (0.10, 0.08, 0.06, 1.0))
+    # (the opening is a real hole in Hull_MainFloor now — STAIR_HOLE)
     for i in range(8):
         # Linear straight stair going north as you descend
         tx = sdx
@@ -711,33 +733,43 @@ def build_sammys_bar():
                  (bar_x - 0.95, sy, cz + 0.02),
                  0.20, 0.04, COL_BRASS, segments=8)
     # Back-bar shelving against east wall
-    bb_x = HULL_X_E - 0.40
+    # (2026-09-23: the back bar was one solid 2 m block standing 50 cm
+    # off the deck, with the mirror on its face and all three shelves
+    # and sixty bottles INSIDE it — behind the mirror; and it ran across
+    # the side door. Now: a low cabinet on the deck against the hull, a
+    # mirror panel on the hull above it, open shelves in front of the
+    # mirror; the run starts N of the side door's frame.)
+    bb_y0, bb_y1 = -2.30, bar_y + 4.50
+    bb_cy, bb_len = (bb_y0 + bb_y1) / 2.0, bb_y1 - bb_y0
     make_box("Bar_BackBar_Body",
-             (bb_x, bar_y, cz + 1.5),
-             (0.40, 9.0, 2.00), COL_WALL_DARK)
+             (HULL_X_E - 0.30, bb_cy, cz + 0.50),
+             (0.40, bb_len, 1.00), COL_WALL_DARK)
+    make_box("Bar_BackBar_Panel",
+             (HULL_X_E - 0.12, bb_cy, cz + 1.75),
+             (0.04, bb_len, 1.50), COL_WALL_DARK)
     # Mirror across the back bar
     make_box("Bar_BackBar_Mirror",
-             (bb_x - 0.21, bar_y, cz + 1.6),
-             (0.02, 8.4, 1.50),
+             (HULL_X_E - 0.15, bb_cy, cz + 1.75),
+             (0.02, bb_len - 0.40, 1.40),
              (0.92, 0.94, 0.96, 1.0))
-    # Liquor bottles across 3 shelves
+    # Liquor bottles across 3 shelves, in front of the mirror
+    n_b = int((bb_len - 0.40) / 0.42)
     for sh in range(3):
         shz = cz + 1.10 + sh * 0.42
         # Shelf plank
         make_box(f"Bar_BackBar_Shelf_{sh}",
-                 (bb_x - 0.16, bar_y, shz - 0.02),
-                 (0.20, 8.0, 0.02), COL_DECK_PLANK)
-        # Bottles — 20 per shelf, alternating colors
-        for b in range(20):
-            by_pos = bar_y - 4.0 + b * 0.42
+                 (HULL_X_E - 0.26, bb_cy, shz - 0.01),
+                 (0.20, bb_len - 0.40, 0.02), COL_DECK_PLANK)
+        for b in range(n_b):
+            by_pos = bb_y0 + 0.40 + b * 0.42
             col = [COL_BOTTLE_BROWN, COL_BOTTLE_GREEN,
                    COL_BOTTLE_CLEAR][b % 3]
             make_cyl(f"Bar_Bottle_{sh}_{b}",
-                     (bb_x - 0.10, by_pos, shz + 0.14),
+                     (HULL_X_E - 0.26, by_pos, shz + 0.15),
                      0.04, 0.30, col, segments=6)
             # Cap
             make_cyl(f"Bar_BottleCap_{sh}_{b}",
-                     (bb_x - 0.10, by_pos, shz + 0.31),
+                     (HULL_X_E - 0.26, by_pos, shz + 0.32),
                      0.025, 0.04, COL_BRASS_DARK, segments=6)
     # Tap handle row at the counter's south end
     for i in range(5):
@@ -753,13 +785,15 @@ def build_sammys_bar():
                   (0.16, 0.42, 0.62, 1.0),
                   (0.42, 0.30, 0.18, 1.0)][i % 3])
     # Cash register — central
+    # on the counter's back edge (2026-09-23: it stood inside the old
+    # solid back bar; the back bar's shelves own that face now)
+    make_box("Bar_Register_Drawer",
+             (bar_x + 0.14, bar_y + 3.0, cz + 1.20),
+             (0.36, 0.50, 0.10), COL_DECK_PLANK)
     make_box("Bar_Register_Body",
-             (bb_x - 0.10, bar_y + 3.0, cz + 1.32),
+             (bar_x + 0.16, bar_y + 3.0, cz + 1.45),
              (0.30, 0.40, 0.40),
              (0.30, 0.20, 0.14, 1.0))
-    make_box("Bar_Register_Drawer",
-             (bb_x - 0.05, bar_y + 3.0, cz + 1.18),
-             (0.36, 0.50, 0.10), COL_DECK_PLANK)
 
 
 # ════════════════════════════════════════════════════════════════
@@ -860,8 +894,8 @@ def build_kitchen():
 
     # Walk-in cooler — west end, big metal door
     make_box("Kit_Walkin_Body",
-             (-5.0, +9.5, cz + 1.30),
-             (1.80, 1.80, 2.60), COL_STEEL)
+             (-5.0, +9.5, cz + 1.25),
+             (1.80, 1.80, 2.50), COL_STEEL)   # up to the deck above (2026-09-23: 10 cm through it)
     make_box("Kit_Walkin_Door",
              (-5.0, +8.65, cz + 1.10),
              (1.00, 0.08, 2.10), (0.74, 0.76, 0.78, 1.0))
@@ -1233,12 +1267,13 @@ def build_lower_deck_partitions():
     # 3 doors cut: catering office, card room, back room
     # Corridor north wall is the hull at Y=+12 (not built here)
     # Corridor south wall pieces
-    make_box("LD_Corr_S_W", (-4.0, +2.0, cz + 1.20),
-             (4.0, 0.10, 2.30), COL_WALL_PAPER)
+    # both end pieces stop at the hull's inner face (2026-09-23: 10 cm into it)
+    make_box("LD_Corr_S_W", (-3.95, +2.0, cz + 1.20),
+             (3.9, 0.10, 2.30), COL_WALL_PAPER)
     make_box("LD_Corr_S_C", (+1.0, +2.0, cz + 1.20),
              (2.0, 0.10, 2.30), COL_WALL_PAPER)
-    make_box("LD_Corr_S_E", (+4.6, +2.0, cz + 1.20),
-             (2.8, 0.10, 2.30), COL_WALL_PAPER)
+    make_box("LD_Corr_S_E", (+4.55, +2.0, cz + 1.20),
+             (2.7, 0.10, 2.30), COL_WALL_PAPER)
     # Above-door headers (3 doorways)
     for dx in [-1.5, +2.5, +5.4]:
         make_box(f"LD_Corr_AboveDoor_{int(dx*10)}",
@@ -1807,29 +1842,32 @@ def build_empress_dressing():
     # Sammy's bar is the east half of the main deck (positive X).
     # Mount the intercom on the bar's east-facing back wall at
     # bartender eye height.
-    int_x = +5.8
-    int_y = -2.5    # roughly mid-bar
+    # (2026-09-23: the box sat 9 cm inside the hull, then inside the back
+    # bar, turned to face a wall. It hangs on the hull's inner face S of
+    # the side door now, facing the bartender, -X.)
+    int_x = HULL_X_E - 0.10     # the hull's inner face
+    int_y = -4.20
     int_z = MAIN_FLOOR_Z + 1.42
     # Body
     make_box("Sammy_Intercom_Body",
-             (int_x + 0.10, int_y, int_z),
-             (0.18, 0.06, 0.24),
+             (int_x - 0.03, int_y, int_z),
+             (0.06, 0.18, 0.24),
              (0.30, 0.26, 0.20, 1.0))   # bakelite brown
     # Speaker grille (mesh-effect via a slightly lighter inset box)
     make_box("Sammy_Intercom_Speaker",
-             (int_x + 0.10, int_y - 0.031, int_z + 0.05),
-             (0.14, 0.005, 0.10),
+             (int_x - 0.0625, int_y, int_z + 0.05),
+             (0.005, 0.14, 0.10),
              (0.18, 0.16, 0.14, 1.0))
     # Press-to-talk button (brass)
     make_cyl("Sammy_Intercom_PTT",
-             (int_x, int_y - 0.031, int_z - 0.07),
+             (int_x - 0.066, int_y, int_z - 0.07),
              0.020, 0.012,
              (0.74, 0.62, 0.32, 1.0),
-             segments=8, axis='Y')
+             segments=8, axis='X')
     # Brass "HELM" plaque under the button
     make_box("Sammy_Intercom_HelmPlaque",
-             (int_x, int_y - 0.031, int_z - 0.10),
-             (0.08, 0.003, 0.020),
+             (int_x - 0.0615, int_y, int_z - 0.10),
+             (0.003, 0.08, 0.020),
              (0.74, 0.62, 0.32, 1.0))
 
     # ── "SATURDAY REGULARS" placard on the card-room door ──

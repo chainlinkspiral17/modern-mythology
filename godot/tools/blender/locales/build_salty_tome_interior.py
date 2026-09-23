@@ -238,7 +238,8 @@ def build_decor():
     make_floor_plant("Plant", (+ROOM_W/2.0-0.40, 0.55, 0.0),
                      palette={"leaf": (0.36, 0.46, 0.32, 1.0)})
     # Front window on the S-W wall segment
-    make_window("Window_Front", (-2.5, 0.0, 1.55), width=2.4, height=1.30)
+    # anchored on the wall's room face, built toward the room (2026-09-23: the glass was inside the wall)
+    make_window("Window_Front", (-2.5, 0.10, 1.55), width=2.4, height=1.30, room_dir=+1)
 
 
 def build_back_annex_2026_08():

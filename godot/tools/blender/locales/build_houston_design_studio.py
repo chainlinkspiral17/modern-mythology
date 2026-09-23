@@ -33,7 +33,8 @@ def build_shell():
     # Exposed ductwork running E-W
     make_cyl("Duct", (0.0, ROOM_D/2.0, CEIL-0.25), 0.20, ROOM_W, COL_DUCT, axis='X', segments=10)
     # North window — mullioned (make_window was imported/unused)
-    make_window("Window_N", (0.0, ROOM_D, 2.10), width=5.0, height=1.60,
+    # anchored on the wall's room face, built toward the room (2026-09-23: the glass was inside the wall)
+    make_window("Window_N", (0.0, ROOM_D - 0.10, 2.10), width=5.0, height=1.60,
                 palette={"glass": (0.78, 0.84, 0.86, 0.50), "frame": P.METAL_BLACK})
 
 def build_drafting_row():

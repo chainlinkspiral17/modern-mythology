@@ -91,6 +91,15 @@ for m in re.finditer(r"^== (\S+) · \d+ objects · (\d+) clips", out, re.M):
         bad.append((name, n, base.get(name, 0)))
 total = re.search(r"^(\d+) clip\(s\)", out, re.M)
 print("total: %s clips across the repo" % (total.group(1) if total else "?"))
+# A builder whose main() raises under the recorder falls back to running
+# every build_* alone — coverage survives, but the Deck build is BROKEN
+# (2026-09-23: a NameError in the riverboat's main() passed as "clean"
+# with every part recorded twice). Any partial/ERR line fails the gate.
+broken = re.findall(r"^(\S+)\s+(?:\(partial: |ERR )(.*?)\)?$", out, re.M)
+for name, err in broken:
+    print("BROKEN BUILDER  %-28s %s" % (name, err))
+if broken:
+    sys.exit(1)
 if bad:
     for name, n, ceil in bad:
         print("REGRESSION  %-28s %d clips (baseline %d)" % (name, n, ceil))

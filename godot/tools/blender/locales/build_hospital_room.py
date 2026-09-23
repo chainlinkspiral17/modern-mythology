@@ -92,7 +92,8 @@ def build_tray_table():
     make_cyl("Tray_Cup", (tx-0.10, ty, 0.94), 0.05, 0.10, (0.92,0.90,0.86,1.0))
 
 def build_window():
-    make_window("Window", (1.3, ROOM_D-0.06, 1.55), width=1.6, height=1.5)
+    # anchored on the wall's room face, built toward the room (2026-09-23: the glass was inside the wall)
+    make_window("Window", (1.3, ROOM_D - 0.10, 1.55), width=1.6, height=1.5)
 
 def build_ceiling_infra():
     for j in range(2):

@@ -110,7 +110,8 @@ def build_kitchen():
     """W wall: counter + sink under the alley window, stove, fridge
     at the SW corner end, dish drainer, kettle, braided rug."""
     # The window over the sink → the alley + the Starfish Nebula mural
-    make_window("Kitchen_Window", (-ROOM_W/2.0+0.02, 1.30, 1.50), width=1.10, height=1.10, axis='Y')
+    # anchored on the wall's room face, built toward the room (2026-09-23: the glass was inside the wall)
+    make_window("Kitchen_Window", (-ROOM_W/2.0 + 0.10, 1.30, 1.50), width=1.10, height=1.10, axis='Y', room_dir=+1)
     # Counter run
     make_box("Counter_Body", (-2.20, 1.40, 0.44), (0.60, 2.00, 0.88), COL_WOOD)
     make_box("Counter_Top", (-2.20, 1.40, 0.90), (0.64, 2.06, 0.05), COL_COUNTER)
@@ -196,7 +197,8 @@ def build_front_room():
     table, the front window down onto Hemlock."""
     # The front window (Wall_S_E) — "she went to the front window
     # and looked down"
-    make_window("Front_Window", (1.75, 0.02, 1.42), width=1.00, height=1.20)
+    # anchored on the wall's room face, built toward the room (2026-09-23: the glass was inside the wall)
+    make_window("Front_Window", (1.75, 0.10, 1.42), width=1.00, height=1.20, room_dir=+1)
     # Couch against the partition's east reach, facing south
     sx, sy = 0.70, 3.60
     # draft 4 (2026-09-17): upholstery has soft edges and rolled arms;

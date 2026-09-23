@@ -162,12 +162,14 @@ def build_corner_across_window():
     Corner Across threshold becomes visible when the man arrives.")
     """
     # Window on the east wall, mid-height
-    make_window("CornerAcross", (ROOM_W/2.0 - 0.01, 2.4, 1.40),
+    # anchored on the wall's room face, built toward the room (2026-09-23: the glass was inside the wall)
+    make_window("CornerAcross", (ROOM_W/2.0 - 0.10, 2.4, 1.40),
                 width=1.20, height=1.20, axis='Y')
     # Frame trim (warmer wood)
-    make_box("CornerAcross_FrameTop", (ROOM_W/2.0 - 0.01, 2.4, 2.06),
+    # the trim on the wall face too (2026-09-23: inside the wall)
+    make_box("CornerAcross_FrameTop", (ROOM_W/2.0 - 0.12, 2.4, 2.06),
              (0.04, 1.30, 0.08), (0.34, 0.26, 0.18, 1.0))
-    make_box("CornerAcross_FrameBot", (ROOM_W/2.0 - 0.01, 2.4, 0.78),
+    make_box("CornerAcross_FrameBot", (ROOM_W/2.0 - 0.12, 2.4, 0.78),
              (0.04, 1.30, 0.08), (0.34, 0.26, 0.18, 1.0))
     # A small brass radiator under the window (the cool-side option
     # — radiator on east wall, AC on south wall)

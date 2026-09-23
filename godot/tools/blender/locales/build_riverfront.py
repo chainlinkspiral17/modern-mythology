@@ -1979,14 +1979,16 @@ def build_road_network():
         for side_label, gx in (("W", FRONTAGE_X - road_w/2 + 0.30),
                                 ("E", FRONTAGE_X + road_w/2 - 0.30)):
             # the grate frame
+            # long side ALONG the curb (2026-09-23: laid 1.2 m across the
+            # road, every E grate ran 30 cm up into the raised sidewalk)
             make_box(f"SewerGrate_{side_label}_{gi}", (gx, gy, road_paint_z - 0.02),
-                     (1.2, 0.6, 0.03), grate_col)
+                     (0.6, 1.2, 0.03), grate_col)
             # parallel slats
             for sj in range(6):
-                sy_o = -0.22 + sj * 0.09
+                sx_o = -0.22 + sj * 0.09
                 make_box(f"SewerGrate_{side_label}_{gi}_slat_{sj}",
-                         (gx, gy + sy_o, road_paint_z + 0.005),
-                         (1.0, 0.04, 0.005), slat_col)
+                         (gx + sx_o, gy, road_paint_z + 0.005),
+                         (0.04, 1.0, 0.005), slat_col)
 
     # ── SIDEWALKS along both sides of the frontage road, full length
     side_w = 2.2

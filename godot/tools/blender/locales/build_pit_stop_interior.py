@@ -79,10 +79,12 @@ def build_shell():
 
 def build_windows():
     # Storefront glass either side of the door (S wall, Y-thin).
-    for tag, wx in [("SW", -3.4), ("SE", 3.4)]:
-        make_window(f"Win_{tag}", (wx, 0.10, 1.60), width=2.40, height=1.50)
+    # built toward the room (2026-09-23: into the S wall, invisible);
+    # 1.96 wide so the SW frame clears the corner booth's back
+    for tag, wx in [("SW", -3.18), ("SE", 3.18)]:
+        make_window(f"Win_{tag}", (wx, 0.10, 1.60), width=1.96, height=1.50, room_dir=+1)
     # W wall windows beside the booth row — the lot is out the W
-    # glass (hand-built X-thin panes; make_window is Y-axis only).
+    # glass (hand-built X-thin panes).
     for tag, wy in [("W_Front", 1.55), ("W_Mid", 3.55)]:
         wx = -ROOM_W/2.0 + 0.10
         make_box(f"Win_{tag}_Frame", (wx, wy, 1.60), (0.06, 1.70, 1.55), COL_WOOD)

@@ -3505,6 +3505,11 @@ def _build_cypress_hummocks():
         hz = graustark_elevation(hx, hy)
         if hz > 0.0 or hz < -1.6:
             continue
+        # Skip the sinkhole (build_ruin_quarter_2026_08: rings to r 34 m,
+        # lip at 35.5 round (10, -300)) — 2026-09-23: a hummock and its
+        # cypresses stood inside the top ring
+        if math.hypot(hx - 10.0, hy + 300.0) < 38.0:
+            continue
         # Mound — flat-topped low cylinder raised 0.4m above local
         ht._make_cyl_local(
             f"Graustark_Hummock_{count}_Mound",
@@ -4757,8 +4762,11 @@ def build_ruin_quarter_2026_08():
         _mb(f"Ruin_Rubble_{i}", (38.0 + dx, -364.0 + dy, s * 0.25), (s, s * 0.8, s * 0.5), conc)
     _mb("Sitting_Block", (47.5, -370.0, 0.225), (0.9, 0.7, 0.45), conc_dk)
     # Cottage path + gate + herbs (cottage at +50, -380)
-    for fi in range(6):
-        _mb(f"Flagstone_{fi}", (50.0, -381.5 - fi * 1.0, 0.03), (0.9, 0.8, 0.05), (0.58, 0.56, 0.50, 1.0))
+    # from the platform deck's S edge (y -384.5) to the gate (2026-09-23:
+    # the first three stones lay under the deck, and the path ran
+    # through pile 6)
+    for fi in range(3):
+        _mb(f"Flagstone_{fi}", (50.0, -385.0 - fi * 1.0, 0.03), (0.9, 0.8, 0.05), (0.58, 0.56, 0.50, 1.0))
     for gx in (49.5, 50.5):
         _mb(f"Gate_Post_{gx:.1f}", (gx, -387.8, 0.6), (0.12, 0.12, 1.2), (0.42, 0.30, 0.20, 1.0))
     # was (52.2,-379): inside the 9x9 concrete deck. Beside it now.

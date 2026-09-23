@@ -22,7 +22,7 @@ import os, sys
 _BT = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)), ".."))
 if _BT not in sys.path: sys.path.insert(0, _BT)
 from _props import palette as P
-from _props.geometry import clear_scene, make_box, make_cyl, export_glb
+from _props.geometry import clear_scene, make_box, make_cyl, make_tube, export_glb
 from _props.structure import (make_floor, make_wall, make_ceiling,
                               make_crown_molding, make_window)
 from _props.detail import (make_floor_stain, make_light_switch, make_threshold, make_traffic_wear, make_wall_outlet, make_wall_tint_band)
@@ -91,7 +91,8 @@ def build_shell():
         make_crown_molding(nm, wall_x=wx, wall_y=wy, length=length, axis=ax,
                            ceil_z=CEIL, palette={"wood": COL_WALNUT})
     # Rainy window on the N wall (behind the desk)
-    make_window("Window_N", (0.0, ROOM_D - 0.02, 1.55), width=1.60, height=1.30,
+    # anchored on the wall's room face, built toward the room (2026-09-23: the glass was inside the wall)
+    make_window("Window_N", (0.0, ROOM_D - 0.10, 1.55), width=1.60, height=1.30,
                 cross_mullion=True,
                 palette={"glass": COL_RAINGLASS, "warm": (0.42, 0.48, 0.54, 0.5)})
 
@@ -111,8 +112,9 @@ def build_desk():
                      (0.10, 0.10, top_z), COL_WALNUT_DK)
     # Service laptop (open, faint cold screen)
     make_box("Laptop_Base", (dx - 0.35, dy - 0.05, top_z + 0.04), (0.42, 0.30, 0.03), COL_LAPTOP)
-    make_box("Laptop_Lid", (dx - 0.35, dy + 0.14, top_z + 0.20), (0.42, 0.03, 0.28), COL_LAPTOP)
-    make_box("Laptop_Screen", (dx - 0.35, dy + 0.125, top_z + 0.20), (0.36, 0.02, 0.22), COL_SCREEN)
+    # the lid on the base's back edge (2026-09-23: 2.5 cm behind it)
+    make_box("Laptop_Lid", (dx - 0.35, dy + 0.115, top_z + 0.20), (0.42, 0.03, 0.28), COL_LAPTOP)
+    make_box("Laptop_Screen", (dx - 0.35, dy + 0.09, top_z + 0.20), (0.36, 0.02, 0.22), COL_SCREEN)
     # Two phones — personal (upright) + the other FACE-DOWN
     make_box("Phone_Personal", (dx + 0.30, dy - 0.30, top_z + 0.04), (0.09, 0.17, 0.02), COL_PHONE)
     make_box("Phone_FaceDown", (dx + 0.55, dy + 0.10, top_z + 0.03), (0.09, 0.17, 0.015), COL_PHONE)
@@ -132,6 +134,8 @@ def build_desk():
     make_box("Landline_Handset", (dx - 0.70, dy + 0.12, top_z + 0.09), (0.24, 0.07, 0.05), COL_LAPTOP)
     # Leather desk chair behind (N of) the desk, facing S
     ch_y = dy + 0.85
+    # the column on a base (2026-09-23: it stopped 8 cm over the floor)
+    make_cyl("Chair_Base", (dx, ch_y, 0.04), 0.28, 0.08, COL_SCANNER, segments=10)
     make_cyl("Chair_Column", (dx, ch_y, 0.30), 0.03, 0.44, COL_SCANNER, segments=6)
     make_box("Chair_Seat", (dx, ch_y, 0.52), (0.52, 0.50, 0.10), COL_LEATHER)
     make_box("Chair_Back", (dx, ch_y + 0.24, 0.86), (0.52, 0.08, 0.60), COL_LEATHER)
@@ -181,8 +185,10 @@ def build_chandelier():
     for k in range(6):
         a = k * (2 * _m.pi / 6)
         ax_, ay_ = cx + _m.cos(a) * 0.34, cy + _m.sin(a) * 0.34
-        make_cyl(f"Chand_Arm_{k}", (cx + _m.cos(a) * 0.17, cy + _m.sin(a) * 0.17, CEIL - 0.52),
-                 0.012, 0.40, COL_BRASS, segments=5, axis='X' if abs(_m.cos(a)) > abs(_m.sin(a)) else 'Y')
+        # each arm runs from the hub to its own cup (2026-09-23: axis-
+        # aligned rods missed four of the six cups)
+        make_tube(f"Chand_Arm_{k}", [(cx, cy, CEIL - 0.52), (ax_, ay_, CEIL - 0.52)],
+                  0.012, COL_BRASS, segments=5)
         make_cyl(f"Chand_Cup_{k}", (ax_, ay_, CEIL - 0.50), 0.03, 0.03, COL_BRASS, segments=6)
         make_cyl(f"Chand_Candle_{k}", (ax_, ay_, CEIL - 0.44), 0.015, 0.08, (0.90, 0.86, 0.78, 1.0), segments=6)
         make_box(f"Chand_Flame_{k}", (ax_, ay_, CEIL - 0.38), (0.03, 0.03, 0.05), COL_CANDLE)

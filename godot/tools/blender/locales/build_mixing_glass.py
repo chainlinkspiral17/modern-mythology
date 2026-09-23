@@ -68,7 +68,8 @@ def build_backbar():
     # Three shelves of bottles
     for si in range(3):
         sz = 1.30 + si * 0.40
-        make_box(f"Backbar_Shelf_{si}", (0.0, ROOM_D-0.30, sz), (3.00, 0.36, 0.02), COL_BACK_WOOD)   # back to the mirror (2026-09-22: 5 cm of air)
+        # back to the wall (2026-09-22: 5 cm of air; 2026-09-23: still 2)
+        make_box(f"Backbar_Shelf_{si}", (0.0, ROOM_D-0.28, sz), (3.00, 0.36, 0.02), COL_BACK_WOOD)
         for bi in range(15):
             bx = -1.40 + bi * 0.20
             cycle = bi % 3
@@ -81,12 +82,14 @@ def build_booths():
     for bi in range(4):
         by = 1.20 + bi * 1.42
         # Banquette against W wall
+        # (2026-09-23: each booth 1.50 long on a 1.42 pitch — every back
+        # and plinth ran 8 cm into the next booth's; 1.40 now)
         make_box(f"Booth_{bi}_Plinth", (-ROOM_W/2.0 + 0.40, by, 0.205),   # to the floor (2026-09-22: the banquettes hung at 0.41)
-                 (0.46, 1.46, 0.41), COL_BOOTH_LEATHER)
+                 (0.46, 1.36, 0.41), COL_BOOTH_LEATHER)
         make_box(f"Booth_{bi}_Bench", (-ROOM_W/2.0 + 0.40, by, 0.46),
-                 (0.50, 1.50, 0.10), COL_BOOTH_LEATHER)
+                 (0.50, 1.40, 0.10), COL_BOOTH_LEATHER)
         make_box(f"Booth_{bi}_Back",  (-ROOM_W/2.0 + 0.20, by, 0.84),
-                 (0.10, 1.50, 0.70), COL_BOOTH_LEATHER)
+                 (0.10, 1.40, 0.70), COL_BOOTH_LEATHER)
         # Small round table
         make_cyl(f"Booth_{bi}_Table", (-ROOM_W/2.0 + 1.00, by, 0.74), 0.30, 0.04, COL_BAR_COPPER)
         make_cyl(f"Booth_{bi}_TablePost", (-ROOM_W/2.0 + 1.00, by, 0.37), 0.025, 0.74, P.METAL_BLACK)
@@ -245,12 +248,12 @@ def build_temperance_wave2_props():
              (0.28, 0.36, 0.28),
              (0.60, 0.48, 0.32, 1.0))
     make_box("PreShift_ProduceBox_Hi",
-             (ax_door + 0.65, ay_door, 0.42),
+             (ax_door + 0.65, ay_door, 0.40),   # on the lower box (2026-09-23: 2 cm over it)
              (0.28, 0.36, 0.24),
              (0.62, 0.50, 0.34, 1.0))
     # A bright-green stem sticking out of the top box (mint)
     make_cyl("PreShift_MintSprig",
-             (ax_door + 0.65, ay_door + 0.02, 0.56),
+             (ax_door + 0.65, ay_door + 0.02, 0.55),
              0.02, 0.10,
              (0.44, 0.68, 0.36, 1.0), segments=5)
 
@@ -385,18 +388,20 @@ def build_temperance_wave2_props():
 
     # Back walk-in second ice chest · 40-pound blue cooler on the
     # floor near the alley door (Frank's job to haul in)
+    # (2026-09-23: at ay_door + 0.90 it sat inside booth 0's plinth; it
+    # is in the SW corner now, S of the booth, against the S wall)
     make_box("LastCall_BackupIceChest_Body",
-             (ax_door + 0.20, ay_door + 0.90, 0.12),
+             (ax_door + 0.20, ay_door - 0.23, 0.12),
              (0.36, 0.30, 0.24),
              (0.30, 0.52, 0.78, 1.0))
     # Chest lid
     make_box("LastCall_BackupIceChest_Lid",
-             (ax_door + 0.20, ay_door + 0.90, 0.255),   # on the chest (2026-09-22: 12 cm over it)
+             (ax_door + 0.20, ay_door - 0.23, 0.255),   # on the chest (2026-09-22: 12 cm over it)
              (0.36, 0.30, 0.03),
              (0.28, 0.50, 0.76, 1.0))
     # Handle recess (a darker line on top)
     make_box("LastCall_BackupIceChest_HandleLine",
-             (ax_door + 0.20, ay_door + 0.90, 0.272),
+             (ax_door + 0.20, ay_door - 0.23, 0.272),
              (0.24, 0.02, 0.006),
              (0.18, 0.34, 0.58, 1.0))
 

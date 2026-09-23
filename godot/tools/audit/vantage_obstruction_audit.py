@@ -74,19 +74,25 @@ UNMEASURED = set()   # harmony_terrain measured since the _finalize_mesh hook (2
 # so "sees only sky" is an artifact there, not a verdict.
 NO_EMPTY = {"graustark", "harmony_terrain"}
 ASPECT = 16.0 / 9.0
-IGNORE = re.compile(r"(ground|sky|horizon|far|band|floor|ceil|void|sea\b|swamp_floor|lake_water|valley_floor|plinth$|template_(land|sea)|road_asphalt|asphalt$|hwy9_(asphalt|shoulder|median|emb|berm|paint|lane|fill)|_ribbon_|terrain)", re.I)
+# far(?!_door): "Far_Door" is the cedar tower's exit, not a backdrop band
+# (2026-09-23: its closeup read as 100% sky once glass stopped blocking)
+IGNORE = re.compile(r"(ground|sky|horizon|far(?!_door)|band|floor|ceil|void|sea\b|swamp_floor|lake_water|valley_floor|plinth$|template_(land|sea)|road_asphalt|asphalt$|hwy9_(asphalt|shoulder|median|emb|berm|paint|lane|fill)|_ribbon_|terrain)", re.I)
 # What counts as NOTHING for the EMPTY test: sky, haze, far bands. Ground,
 # floor, ceiling and road anchor a frame and are not empty (a highway
 # preset looking down its own road is a picture; the diner's clock
 # insert looking at a lit ceiling is caught by WALL, not EMPTY).
-SKY = re.compile(r"(sky|horizon|far|band|void|haze)", re.I)
+SKY = re.compile(r"(sky|horizon|far(?!_door)|band|void|haze)", re.I)
 # Not solid for a LENS: fog, smoke, foliage tiers and lobes, shrubs,
 # water spray. A camera may stand in a canopy or a fog bank and see
 # through it (2026-09-07 · the drone insert in the Sitka crowns, the
 # hexagon in Cape Perpetua's fog).
 _PASSABLE_RE = re.compile(r"(fog|haze|mist|smoke|steam|cloud|canopy|foliage|_C[0-9]|_L[0-9]|salal|shrub|bush|leaf|leaves|spray|stream|"
                           r"crown|needles|fern|grass|reed|hedge|vine|ivy|moss|drape|sheer|curtain|frond|palm|leader|"
-                          r"pine|fir|spruce|cedar|cypress|oak|alder|willow|maple|tree)", re.I)
+                          r"pine|fir|spruce|cedar|cypress|oak|alder|willow|maple|tree|"
+                          # window glass and its tint pane (2026-09-23): a lens sees
+                          # THROUGH a window — the cabin's crow insert is shot through
+                          # the kitchen glass, which only became visible this pass
+                          r"glass|_warm$)", re.I)
 _SOLID_RE = re.compile(r"(trunk|stump|log|pole|post|butt)", re.I)
 
 

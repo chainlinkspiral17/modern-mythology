@@ -99,7 +99,8 @@ def build_house_back():
     make_box("Eave", (0.0, 0.10, HOUSE_H + 0.05), (YARD_W + 0.3, 0.5, 0.10), COL_TRIM)
     make_cyl("Downspout", (5.2, 0.06, HOUSE_H / 2.0), 0.05, HOUSE_H, COL_TRIM, segments=6)
     # Hose reel by the downspout
-    make_cyl("HoseReel", (4.6, 0.25, 0.35), 0.24, 0.18, (0.24, 0.34, 0.24, 1.0),
+    # on the house wall (2026-09-23: 16 cm off it)
+    make_cyl("HoseReel", (4.6, 0.09, 0.35), 0.24, 0.18, (0.24, 0.34, 0.24, 1.0),
              segments=12, axis='Y')
 
 
@@ -115,7 +116,7 @@ def build_fence_and_tree():
     make_box("Fence_N_Rail", (0.0, YARD_D - 0.05, 1.55), (YARD_W, 0.06, 0.08), COL_FENCE_DK)
     # Gate — slightly different panel, latch block
     make_box("Fence_Gate", (3.6, YARD_D - 0.02, 0.88), (1.0, 0.07, 1.76), COL_FENCE_DK)
-    make_box("Gate_Latch", (3.1, YARD_D - 0.10, 1.05), (0.08, 0.06, 0.12), (0.4, 0.4, 0.42, 1.0))
+    make_box("Gate_Latch", (3.1, YARD_D - 0.085, 1.05), (0.08, 0.06, 0.12), (0.4, 0.4, 0.42, 1.0))   # on the gate (2026-09-23: 1.5 cm off it)
     for sgn in (-1, 1):
         m = int(YARD_D / panel_w)
         for i in range(m):
@@ -155,17 +156,23 @@ def build_scene_props():
     make_box("Chair_Arm_L", (cx - 0.28, cy, 0.55), (0.05, 0.5, 0.05), COL_CHAIR_FRAME)
     make_box("Chair_Arm_R", (cx + 0.28, cy, 0.55), (0.05, 0.5, 0.05), COL_CHAIR_FRAME)
     # DAISY — crouched BEHIND the chair (north side), head low
-    make_box("Daisy_Body", (cx, cy + 0.75, 0.26), (0.35, 0.62, 0.30), COL_DAISY)
-    make_box("Daisy_Head", (cx, cy + 0.42, 0.22), (0.22, 0.26, 0.20), COL_DAISY)
-    make_box("Daisy_Ear_L", (cx - 0.10, cy + 0.38, 0.34), (0.05, 0.10, 0.12), (0.5, 0.4, 0.28, 1.0))
-    make_box("Daisy_Ear_R", (cx + 0.10, cy + 0.38, 0.34), (0.05, 0.10, 0.12), (0.5, 0.4, 0.28, 1.0))
-    make_box("Daisy_Tail", (cx, cy + 1.1, 0.30), (0.05, 0.24, 0.05), COL_DAISY)
+    # belly on the grass (2026-09-23: the crouch hung 11 cm up)
+    make_box("Daisy_Body", (cx, cy + 0.75, 0.15), (0.35, 0.62, 0.30), COL_DAISY)
+    make_box("Daisy_Head", (cx, cy + 0.42, 0.11), (0.22, 0.26, 0.20), COL_DAISY)
+    make_box("Daisy_Ear_L", (cx - 0.10, cy + 0.38, 0.23), (0.05, 0.10, 0.12), (0.5, 0.4, 0.28, 1.0))
+    make_box("Daisy_Ear_R", (cx + 0.10, cy + 0.38, 0.23), (0.05, 0.10, 0.12), (0.5, 0.4, 0.28, 1.0))
+    make_box("Daisy_Tail", (cx, cy + 1.1, 0.19), (0.05, 0.24, 0.05), COL_DAISY)
     # Maya's patch — a towel flattened in the grass where she lies
     make_box("Maya_Towel", (-1.6, 5.4, 0.005), (0.9, 1.9, 0.015), (0.75, 0.62, 0.30, 1.0))
     # Gracie's patio corner: small table + chair + sketchbook + pencil cup
     make_box("Gracie_Table", (-3.9, 1.3, 0.42), (0.7, 0.7, 0.04), COL_TABLE)
     make_cyl("Gracie_Table_Leg", (-3.9, 1.3, 0.21), 0.05, 0.42, COL_CHAIR_FRAME, segments=8)
     make_box("Gracie_Chair", (-3.9, 0.7, 0.24), (0.42, 0.42, 0.05), COL_TABLE)
+    # legs (2026-09-23: the seat was a board at 24 cm on nothing)
+    for lx in (-0.18, 0.18):
+        for ly in (-0.18, 0.18):
+            make_box(f"Gracie_Chair_Leg_{lx:+.2f}_{ly:+.2f}", (-3.9 + lx, 0.7 + ly, 0.1075),
+                     (0.04, 0.04, 0.215), COL_CHAIR_FRAME)
     make_box("Gracie_Chair_Back", (-3.9, 0.5, 0.55), (0.42, 0.05, 0.55), COL_TABLE)
     make_box("Sketchbook", (-3.85, 1.32, 0.455), (0.30, 0.24, 0.02), COL_PAPER)
     make_cyl("Pencil_Cup", (-4.12, 1.45, 0.50), 0.05, 0.12, (0.3, 0.35, 0.4, 1.0), segments=8)

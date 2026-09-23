@@ -39,15 +39,17 @@ def build_vanity():
         make_box(f"Vanity_Side_{sx:+.0f}", (sx, vy, 0.37), (0.06, 0.44, 0.74), COL_WOOD)
     make_box("Vanity_Back", (0.0, vy+0.20, 0.42), (1.60, 0.04, 0.60), (0.36,0.26,0.18,1.0))
     # Mirror + frame
-    make_box("Vanity_MirrorFrame", (0.0, 3.83, 1.55), (1.06, 0.04, 0.96), (0.30,0.22,0.16,1.0))
-    make_box("Vanity_Mirror", (0.0, 3.80, 1.55), (0.92, 0.03, 0.82), COL_MIRROR)
+    # on the N wall face at y 3.90 (2026-09-23: frame, mirror and all
+    # eleven bulbs 5 cm off the wall on nothing)
+    make_box("Vanity_MirrorFrame", (0.0, 3.88, 1.55), (1.06, 0.04, 0.96), (0.30,0.22,0.16,1.0))
+    make_box("Vanity_Mirror", (0.0, 3.85, 1.55), (0.92, 0.03, 0.82), COL_MIRROR)
     # Bulb frame — top row + side columns
     for bi in range(5):
         bx = -0.44 + bi * 0.22
-        make_cyl(f"Vanity_BulbTop_{bi}", (bx, 3.78, 2.06), 0.045, 0.06, COL_BULB, segments=8)
+        make_cyl(f"Vanity_BulbTop_{bi}", (bx, 3.83, 2.06), 0.045, 0.06, COL_BULB, segments=8)
     for si, bz in enumerate([1.30, 1.55, 1.80]):
-        make_cyl(f"Vanity_BulbL_{si}", (-0.58, 3.78, bz), 0.045, 0.06, COL_BULB, segments=8)
-        make_cyl(f"Vanity_BulbR_{si}", (0.58, 3.78, bz), 0.045, 0.06, COL_BULB, segments=8)
+        make_cyl(f"Vanity_BulbL_{si}", (-0.58, 3.83, bz), 0.045, 0.06, COL_BULB, segments=8)
+        make_cyl(f"Vanity_BulbR_{si}", (0.58, 3.83, bz), 0.045, 0.06, COL_BULB, segments=8)
     # Clutter on the vanity
     make_cyl("Vanity_Jar", (-0.30, vy, 0.85), 0.05, 0.14, (0.42,0.62,0.58,0.6))
     make_bottle("Vanity_Bottle", 0.34, vy, 0.78, (0.72, 0.32, 0.24, 1.0),
@@ -69,7 +71,7 @@ def build_clothing_rack():
     for gi in range(5):
         gy = 1.15 + gi * 0.40
         make_cyl(f"Rack_Hanger_{gi}", (rx, gy, 1.62), 0.008, 0.10, COL_STEEL)
-        make_box(f"Rack_Garment_{gi}", (rx-0.02, gy, 1.15), (0.10, 0.20, 0.80), garment_cols[gi])
+        make_box(f"Rack_Garment_{gi}", (rx-0.02, gy, 1.17), (0.10, 0.20, 0.80), garment_cols[gi])   # on its hanger (2026-09-23: 2 cm under it)
 
 def build_couch():
     cx = -1.52
@@ -84,18 +86,19 @@ def build_couch():
     make_box("Couch_Jacket", (cx, 1.20, 0.62), (0.62, 0.30, 0.10), (0.30,0.22,0.20,1.0))
 
 def _make_guitar_case(prefix, cx, cy, col, rot_y=False):
+    # flat on the floor (2026-09-23: the case lay 6 cm over it)
     if rot_y:
-        make_box(f"{prefix}_Body", (cx, cy, 0.13), (0.90, 0.44, 0.14), col)
-        make_box(f"{prefix}_Neck", (cx+0.62, cy, 0.13), (0.42, 0.16, 0.11), col)
-        make_box(f"{prefix}_Handle", (cx, cy-0.24, 0.20), (0.16, 0.03, 0.03), COL_BLACK)
-        make_box(f"{prefix}_LatchA", (cx-0.20, cy-0.23, 0.13), (0.05,0.02,0.05), COL_STEEL)
-        make_box(f"{prefix}_LatchB", (cx+0.20, cy-0.23, 0.13), (0.05,0.02,0.05), COL_STEEL)
+        make_box(f"{prefix}_Body", (cx, cy, 0.07), (0.90, 0.44, 0.14), col)
+        make_box(f"{prefix}_Neck", (cx+0.62, cy, 0.055), (0.42, 0.16, 0.11), col)
+        make_box(f"{prefix}_Handle", (cx, cy-0.24, 0.14), (0.16, 0.03, 0.03), COL_BLACK)
+        make_box(f"{prefix}_LatchA", (cx-0.20, cy-0.23, 0.07), (0.05,0.02,0.05), COL_STEEL)
+        make_box(f"{prefix}_LatchB", (cx+0.20, cy-0.23, 0.07), (0.05,0.02,0.05), COL_STEEL)
     else:
-        make_box(f"{prefix}_Body", (cx, cy, 0.13), (0.44, 0.90, 0.14), col)
-        make_box(f"{prefix}_Neck", (cx, cy+0.62, 0.13), (0.16, 0.42, 0.11), col)
-        make_box(f"{prefix}_Handle", (cx-0.24, cy, 0.20), (0.03, 0.16, 0.03), COL_BLACK)
-        make_box(f"{prefix}_LatchA", (cx-0.23, cy-0.20, 0.13), (0.02,0.05,0.05), COL_STEEL)
-        make_box(f"{prefix}_LatchB", (cx-0.23, cy+0.20, 0.13), (0.02,0.05,0.05), COL_STEEL)
+        make_box(f"{prefix}_Body", (cx, cy, 0.07), (0.44, 0.90, 0.14), col)
+        make_box(f"{prefix}_Neck", (cx, cy+0.62, 0.055), (0.16, 0.42, 0.11), col)
+        make_box(f"{prefix}_Handle", (cx-0.24, cy, 0.14), (0.03, 0.16, 0.03), COL_BLACK)
+        make_box(f"{prefix}_LatchA", (cx-0.23, cy-0.20, 0.07), (0.02,0.05,0.05), COL_STEEL)
+        make_box(f"{prefix}_LatchB", (cx-0.23, cy+0.20, 0.07), (0.02,0.05,0.05), COL_STEEL)
 
 def build_cases():
     _make_guitar_case("Case_A", -0.30, 0.70, (0.14,0.12,0.12,1.0), rot_y=False)

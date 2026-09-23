@@ -86,8 +86,10 @@ def build_retail_counter():
     make_box("Counter_Top",  (0.0, ry, 1.00), (3.40, 0.60, 0.04), COL_COUNTER_TOP)
     make_box("Counter_Body", (0.0, ry, 0.50), (3.40, 0.60, 1.00), COL_COUNTER)
     # Cash register
-    make_box("Register_Body", (-1.20, ry, 1.20), (0.40, 0.40, 0.30), COL_BRINE_TANK)
-    make_box("Register_Drawer", (-1.20, ry, 0.94), (0.40, 0.40, 0.08), COL_BRINE_TANK)
+    # drawer on the counter top, register on the drawer (2026-09-23: the
+    # drawer was inside the counter and the register 3 cm over its top)
+    make_box("Register_Drawer", (-1.20, ry, 1.06), (0.40, 0.40, 0.08), COL_BRINE_TANK)
+    make_box("Register_Body", (-1.20, ry, 1.25), (0.40, 0.40, 0.30), COL_BRINE_TANK)
     # Bell + receipt spike + price-card display
     make_cyl("CounterBell", (+0.80, ry, 1.04), 0.06, 0.04, (0.74, 0.56, 0.28, 1.0))
     make_box("PriceCard", (+1.20, ry, 1.20), (0.30, 0.04, 0.20), P.PAPER)
@@ -200,13 +202,13 @@ def build_star_dressing():
     bf_glass_z = 1.30
     # Fog overlay on the freezer glass (a pale frosted rectangle)
     make_box("BlockFreezer_FogOverlay",
-             (bf_x, bf_y - 0.42, bf_glass_z),
+             (bf_x, bf_y - 0.4055, bf_glass_z),   # ON the glass (2026-09-23: 1.5 cm in front of it)
              (0.80, 0.005, 0.50),
              (0.86, 0.90, 0.94, 0.65))
     # A wiped clean-streak diagonal across the fog (where Delphine
     # just wiped it)
     make_box("BlockFreezer_WipedStreak",
-             (bf_x, bf_y - 0.421, bf_glass_z + 0.04),
+             (bf_x, bf_y - 0.4105, bf_glass_z + 0.04),
              (0.50, 0.005, 0.08),
              (0.62, 0.74, 0.86, 0.5))
     # The wiping cloth on the freezer top (damp blue canvas)
@@ -446,7 +448,7 @@ def build_star_wave2_props():
     stack_y = rc_y + 0.20
     for pi in range(25):
         make_cyl("BunnPaperCup_%d" % pi,
-                 (stack_x, stack_y, counter_z + 0.04 + pi * 0.02),
+                 (stack_x, stack_y, counter_z + 0.01 + pi * 0.02),   # on the counter (2026-09-23: 3 cm over it)
                  0.036, 0.020,
                  (0.94, 0.92, 0.90, 1.0), segments=10, axis='Z')
 
@@ -460,7 +462,7 @@ def build_ice_tools_and_crates():
     sx, sy = +2.80, 3.20
     make_box("Scale_Base", (sx, sy, 0.06), (0.60, 0.60, 0.12), COL_COMPRESSOR)
     make_box("Scale_Platform", (sx, sy, 0.16), (0.54, 0.54, 0.04), COL_PIPE)
-    make_box("Scale_Column", (sx, sy + 0.26, 0.70), (0.06, 0.06, 1.00), COL_PIPE)
+    make_box("Scale_Column", (sx, sy + 0.26, 0.66), (0.06, 0.06, 1.08), COL_PIPE)   # from the base (2026-09-23: 2 cm over the platform)
     make_cyl("Scale_DialHead", (sx, sy + 0.29, 1.20), 0.16, 0.06, COL_COMPRESSOR, axis='Y', segments=12)
     make_cyl("Scale_DialFace", (sx, sy + 0.255, 1.20), 0.14, 0.02, P.PAPER, axis='Y', segments=12)
     make_box("Scale_Needle", (sx, sy + 0.245, 1.24), (0.02, 0.005, 0.10), COL_PIPE_RED)
@@ -489,8 +491,9 @@ def build_ice_tools_and_crates():
     # Delivery crate stack on a wooden pallet, SE of the machinery
     px, py = +3.20, 5.20
     make_box("CratePallet", (px, py, 0.06), (1.00, 1.00, 0.12), (0.52, 0.40, 0.26, 1.0))
-    for ci, (cxo, cyo, cz) in enumerate([(-0.24, -0.22, 0.34), (+0.24, -0.22, 0.34),
-                                          (0.0, +0.24, 0.34), (0.0, 0.0, 0.74)]):   # the top crate ON the others (2026-09-22)
+    # on the pallet (2026-09-23: 2 cm over it)
+    for ci, (cxo, cyo, cz) in enumerate([(-0.24, -0.22, 0.32), (+0.24, -0.22, 0.32),
+                                          (0.0, +0.24, 0.32), (0.0, 0.0, 0.72)]):   # the top crate ON the others (2026-09-22)
         cx = px + cxo; cy = py + cyo
         make_box(f"Crate_{ci}", (cx, cy, cz), (0.44, 0.40, 0.40), (0.60, 0.46, 0.30, 1.0))
         for si in range(3):

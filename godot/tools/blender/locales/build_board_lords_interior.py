@@ -235,7 +235,8 @@ def build_retail():
                    (0.92, 0.88, 0.66, 1.0), segments=12)
     # Front window + the parents' bench under it (NO staged board
     # games — the mural across Main does the window's work)
-    make_window("Win_S", (-2.75, 0.10, 1.55), width=2.60, height=1.50)
+    # anchored on the wall's room face, built toward the room (2026-09-23: the glass was inside the wall)
+    make_window("Win_S", (-2.75, 0.10, 1.55), width=2.60, height=1.50, room_dir=+1)
     # (draft 3: the kit bench)
     make_bench("Wait_Bench", -2.75, 0.55, length=1.80, wood=COL_WOOD, h=0.45)
 

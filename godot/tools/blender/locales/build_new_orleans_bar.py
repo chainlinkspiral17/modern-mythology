@@ -28,8 +28,10 @@ def build_shell():
     make_ceiling("Ceil", (0.0, ROOM_D/2.0, CEIL), size_x=ROOM_W+0.4, size_y=ROOM_D+0.4, palette={"tile": (0.30, 0.22, 0.14, 1.0), "grid": (0.18, 0.12, 0.10, 1.0)})
     for nm, ax, length, wx, wy in [("Crown_W",'Y',ROOM_D,-ROOM_W/2.0+0.10,ROOM_D/2.0),("Crown_E",'Y',ROOM_D,+ROOM_W/2.0-0.10,ROOM_D/2.0),("Crown_N",'X',ROOM_W,0.0,ROOM_D-0.10),("Crown_S",'X',ROOM_W,0.0,+0.10)]:
         make_crown_molding(nm, wall_x=wx, wall_y=wy, length=length, axis=ax, ceil_z=CEIL, palette={"wood": COL_BRASS})
-    make_window("Window_SW", (-3.0, 0.0, 1.60), width=1.00, height=1.20)
-    make_window("Window_SE", (+3.0, 0.0, 1.60), width=1.00, height=1.20)
+    # anchored on the wall's room face, built toward the room (2026-09-23: the glass was inside the wall)
+    make_window("Window_SW", (-3.0, 0.10, 1.60), width=1.00, height=1.20, room_dir=+1)
+    # anchored on the wall's room face, built toward the room (2026-09-23: the glass was inside the wall)
+    make_window("Window_SE", (+3.0, 0.10, 1.60), width=1.00, height=1.20, room_dir=+1)
 
 def build_bar():
 # make_counter's `depth` is the X extent and `length` is Y —

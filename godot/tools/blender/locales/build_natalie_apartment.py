@@ -151,8 +151,9 @@ def build_shell():
     make_box("Window_W_Glass", (-ROOM_W / 2.0 + 0.06, 2.5, 1.45),
              (0.005, 1.70, 1.70), P.GLASS_WARM)
     # South window beside door
-    make_window("Window_SE", (+2.00, 0.0, 1.40),
-                width=1.40, height=1.20)
+    # anchored on the wall's room face, built toward the room (2026-09-23: the glass was inside the wall)
+    make_window("Window_SE", (+2.00, 0.10, 1.40),
+                width=1.40, height=1.20, room_dir=+1)
     # Door hinges
     make_door_hinges("FrontDoor_Hinge", edge_x=-1.10, edge_y=0.0,
                      edge_z_centers=[0.30, 1.05, 1.80], axis='X')

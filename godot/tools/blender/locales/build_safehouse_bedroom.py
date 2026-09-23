@@ -141,7 +141,8 @@ def build_footlocker():
 def build_window():
     # Boarded-over front window on the SE south-wall segment.
     wx = 1.45
-    make_window("Win_S", (wx, 0.10, 1.45), width=0.90, height=1.20)
+    # anchored on the wall's room face, built toward the room (2026-09-23: the glass was inside the wall)
+    make_window("Win_S", (wx, 0.10, 1.45), width=0.90, height=1.20, room_dir=+1)
     # Nailed planks across the glass (blocking the view out).
     for bi, bz in enumerate([0.95, 1.30, 1.65]):
         make_box(f"Win_Board_{bi}", (wx, 0.14, bz), (1.02, 0.04, 0.18), COL_WOOD)

@@ -177,8 +177,8 @@ shadow_enabled = false
 ; godot (-1.6, 1.06, -6.30). Camera inside, looking out through
 ; the glass — the pane is part of the shot.
 [node name="shot_insert_crow" type="Marker3D" parent="." groups=["vn_shot"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.575, 0.910, -5.310)
-rotation = Vector3(0.1745, -0.7854, 0.0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.575, 1.250, -5.310)
+rotation = Vector3(0.0, -0.917, 0.0)
 
 ; Desk notebook: blender (1.72, 0.52, 0.775) → godot (1.72, 0.775, -0.52).
 [node name="shot_insert_notebook" type="Marker3D" parent="." groups=["vn_shot"]]
@@ -484,9 +484,11 @@ metadata/fov = 42.0
 
 ; the room's one closeup frame, authored by marker_author.py --closeup (2026-09-10):
 ; every closeup of a person cued here cuts to it (the scene had no closeup marker)
+; (2026-09-23: off the S wall and turned up the bay — the south window
+; now stands on the wall face and filled a third of the old frame)
 [node name="shot_closeup_person" type="Marker3D" parent="." groups=["vn_shot"]]
-position = Vector3(2.767, 1.768, -0.110)
-rotation = Vector3(-0.2618, 1.0472, 0.0)
+position = Vector3(2.767, 1.768, -0.300)
+rotation = Vector3(-0.2618, 0.5236, 0.0)
 metadata/fov = 45.0
 
 ; practicals authored by practical_author.py (2026-09-11):

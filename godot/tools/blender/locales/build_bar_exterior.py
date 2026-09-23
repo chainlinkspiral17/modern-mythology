@@ -55,7 +55,7 @@ def build_building():
     make_box("Facade", (0.0, 5.0, 3.1), (16.0, 1.0, 6.2), COL_BRICK)
     make_box("Facade_Base", (0.0, 4.46, 0.35), (16.0, 0.10, 0.7), COL_BRICK_DK)
     make_box("Cornice", (0.0, 4.55, 6.05), (16.2, 0.35, 0.30), COL_LINTEL)
-    make_box("Band_Course", (0.0, 4.44, 3.30), (16.0, 0.08, 0.22), COL_LINTEL)
+    make_box("Band_Course", (0.0, 4.46, 3.30), (16.0, 0.08, 0.22), COL_LINTEL)   # on the facade (2026-09-23: 2 cm off it)
     # Recessed bar door west of center, warm spill inside the reveal
     make_box("Door_Reveal", (-1.0, 4.30, 1.20), (1.4, 0.35, 2.4), COL_BRICK_DK)
     make_box("Door", (-1.0, 4.42, 1.15), (0.95, 0.06, 2.3), COL_DOOR)
@@ -67,8 +67,10 @@ def build_building():
     make_box("Win_Sill", (2.4, 4.36, 0.66), (3.4, 0.18, 0.10), COL_LINTEL)
     # Dark upper-story windows
     for i, wx in enumerate((-5.5, -2.5, 0.5, 3.5, 6.5)):
-        make_box(f"Up_Win_{i}", (wx, 4.44, 4.55), (1.1, 0.06, 1.5), COL_WIN_DARK)
-        make_box(f"Up_Sill_{i}", (wx, 4.40, 3.75), (1.3, 0.14, 0.08), COL_LINTEL)
+        # glass and sill on the facade face at y 4.50 (2026-09-23: both
+        # stood 3 cm proud of the wall on nothing)
+        make_box(f"Up_Win_{i}", (wx, 4.47, 4.55), (1.1, 0.06, 1.5), COL_WIN_DARK)
+        make_box(f"Up_Sill_{i}", (wx, 4.43, 3.75), (1.3, 0.14, 0.08), COL_LINTEL)
     # Neighbor frontage beyond the alley gap, west
     make_box("Alley_Gap", (-8.6, 5.2, 2.6), (1.2, 1.4, 5.2), (0.05, 0.05, 0.07, 1.0))
     make_box("Neighbor", (-11.5, 5.0, 2.6), (4.6, 1.0, 5.2), COL_BRICK_DK)
@@ -77,10 +79,11 @@ def build_building():
 def build_neon():
     """The bar's neon over the door: backing box + two tube runs +
     a hanging bracket."""
-    make_box("Neon_Box", (-1.0, 4.30, 3.15), (2.6, 0.22, 0.9), COL_NEON_BOX)
-    make_box("Neon_Tube_Top", (-1.0, 4.16, 3.38), (2.1, 0.05, 0.10), COL_NEON)
-    make_box("Neon_Tube_Bot", (-1.0, 4.16, 2.95), (1.6, 0.05, 0.08), COL_NEON)
-    make_box("Neon_Bracket", (-1.0, 4.42, 3.68), (0.12, 0.30, 0.12), COL_FRAME)
+    make_box("Neon_Box", (-1.0, 4.31, 3.15), (2.6, 0.22, 0.9), COL_NEON_BOX)
+    make_box("Neon_Tube_Top", (-1.0, 4.175, 3.38), (2.1, 0.05, 0.10), COL_NEON)
+    make_box("Neon_Tube_Bot", (-1.0, 4.175, 2.95), (1.6, 0.05, 0.08), COL_NEON)
+    # the bracket down onto the box (2026-09-23: 2 cm over it)
+    make_box("Neon_Bracket", (-1.0, 4.42, 3.66), (0.12, 0.30, 0.12), COL_FRAME)
 
 
 def build_street_furniture():
@@ -90,7 +93,7 @@ def build_street_furniture():
     make_box("Lamp_Head", (4.8, 1.45, 4.48), (0.22, 0.55, 0.12), COL_FRAME)
     make_box("Lamp_Bulb", (4.8, 1.45, 4.41), (0.15, 0.38, 0.03), COL_LAMP)
     # Trash can by the alley
-    make_cyl("Trash", (-6.9, 3.6, 0.40), 0.26, 0.80, COL_POLE, segments=10)
+    make_cyl("Trash", (-6.9, 3.6, 0.50), 0.26, 0.80, COL_POLE, segments=10)   # on the sidewalk (2026-09-23: sunk 10 cm through it)
     # Parked sedan at the curb, west of the door
     cx, cy = -3.8, 1.15
     make_box("Car_Body", (cx, cy, 0.62), (3.9, 1.6, 0.55), COL_CAR)

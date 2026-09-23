@@ -84,7 +84,8 @@ def build_dressing():
     make_floor_plant("Plant", (-ROOM_W/2.0+0.5, ROOM_D-0.6, 0.0), palette={"leaf": (0.40, 0.50, 0.38, 1.0), "pot": (0.44, 0.34, 0.24, 1.0)})
 
 def build_win():
-    make_window("Window_N", (0.0, ROOM_D-0.02, 1.50), width=1.20, height=1.00)
+    # anchored on the wall's room face, built toward the room (2026-09-23: the glass was inside the wall)
+    make_window("Window_N", (0.0, ROOM_D - 0.10, 1.50), width=1.20, height=1.00)
 
 def build_ceiling_infra():
     # A home: warm dome fixture, no shop tubes

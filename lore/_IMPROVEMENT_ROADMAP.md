@@ -2141,6 +2141,49 @@ night, foxhole dressing room, miller office) and 5 (christian ice co,
 elicia apartment, kowalski backyard, parish cemetery, safehouse
 bedroom); overlap: graustark 8, riverboat interior 8, mixing glass 7,
 the diner 6 (a model chapter — first), harmony terrain 6.
+SIXTEENTH PASS (support 123 → 75, overlap 120 → 81): THE BURIED
+WINDOWS. `make_window` built its glass and frame toward −Y/−X from
+the anchor, which is into the wall for every SOUTH and WEST wall; and
+callers that anchored on the wall's centre line buried theirs on any
+wall. A scan for "window glass wholly inside a wall solid" found 43
+windows in 34 rooms that could not be seen from the room at all —
+the Deck has been rendering those rooms as blank walls. The kit takes
+`room_dir` now (default −1, the old behaviour); all 43 are anchored on
+the room face and built toward the room (an AST rewrite kept the
+builders' symbolic anchors: `ROOM_D - 0.10`). Rooms fixed by hand: the
+DINER, a model chapter, to zero (its first alcove booth lay inside the
+galley — tile, grout and ticket rail through it; a ticket through the
+soda fountain; the soda gun on the customers' side inside a stool
+back), MIXING GLASS (booths 1.50 long on a 1.42 pitch; the ice chest
+inside booth 0), GRAUSTARK (a hummock in the sinkhole; the flagstone
+path under the lighthouse deck), the RIVERFRONT (every E sewer grate
+laid across the road 30 cm into the sidewalk), the RIVERBOAT INTERIOR
+(stairs down through a main deck with no stairwell — a hole now; the
+back bar a solid 2 m block 50 cm off the deck with 60 bottles INSIDE
+it behind the mirror, across the side door; corridor walls, carpet,
+walk-in and intercom in the hull), and the rooms at 6 and 5: bar
+exterior, briar falls, caldwell radio room night (the mic boom four
+pieces in the air), foxhole dressing room, miller office (the
+chandelier's axis-aligned arms missed four of six cups), christian
+ice co, elicia apartment, kowalski backyard. AUDIT: the overlap key's
+index rule needed three name segments, so two-segment siblings
+(Aisle_0 / Aisle_2) were one assembly and Drum_0 a stranger to its
+own Drum_0_band; a bare numbered whole now owns its parts wherever
+the number sits (NapkinDispenser_8 / NapkinDispenser_Slot_8). The
+suite FAILS on a builder whose main() raises under the recorder — the
+riverboat passed as "clean" through a NameError that would have broken
+the Deck build. The support gate lets things drawn in flight
+(butterfly, moth, firefly) fly. Walls are SOLID in this pipeline, so a
+window is a lit panel on the wall, not a view out — except the CABIN
+KITCHEN window, whose crow ("seen through the glass… on the outside
+sill") had never been in any frame: its wall is built round a real
+opening now, with an outside sill for the bird; the lens audit treats
+glass as see-through. Four markers re-placed where the new windows
+stood in the frame (cabin crow ×2, cabin-bed closeup, natalie desk).
+NEXT: parish cemetery 5, safehouse bedroom 5, then the 4s (carnival
+lot, cosmic comics, faust apartment, maya bedroom, miller garage);
+overlap: the new worst in overlap_baseline.json. Deck-verify the 43
+windows (the first frames of those rooms with glass in them).
 
 **2026-09-19 · DESIGN · the two decorative checks made real, the first
 remembered choice.** Nate's basement (ch6) and Tem staying (ch8): the

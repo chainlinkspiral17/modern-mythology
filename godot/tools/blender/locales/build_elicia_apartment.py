@@ -44,7 +44,8 @@ def build_shell():
             ("Crown_S", 'X', ROOM_W, 0.0, +0.10)]:
         make_crown_molding(nm, wall_x=wx, wall_y=wy, length=length, axis=ax, ceil_z=CEIL, palette={"wood": COL_WOOD})
     make_window("Window_SE", (+2.0, 0.0, 1.40), width=1.40, height=1.20)
-    make_window("Window_W", (-ROOM_W/2.0+0.02, 3.0, 1.40), width=1.60, height=1.40, axis='Y')
+    # anchored on the wall's room face, built toward the room (2026-09-23: the glass was inside the wall)
+    make_window("Window_W", (-ROOM_W/2.0 + 0.10, 3.0, 1.40), width=1.60, height=1.40, axis='Y', room_dir=+1)
     # the front door: a leaf on its hinges, a sidelight panel to the
     # jamb (2026-09-22: three hinges hung in the 3 m opening with no door)
     make_box("FrontDoor_Jamb_Panel", (-1.30, 0.0, CEIL/2.0 - 0.15), (0.40, 0.20, CEIL - 0.30), PAL["wall"])
@@ -81,19 +82,19 @@ def build_studio_nook():
         ly = my + (-0.24, -0.24, +0.24, +0.24)[li]
         make_box(f"Desk_Leg_{li}", (lx, ly, 0.18), (0.04, 0.04, 0.36), COL_WOOD)
     # Mic stand
-    make_cyl("MicStand_Base", (mx-0.30, my, 0.42), 0.06, 0.04, P.METAL_BLACK)
+    make_cyl("MicStand_Base", (mx-0.30, my, 0.40), 0.06, 0.04, P.METAL_BLACK)   # on the desk (2026-09-23: 2 cm over it)
     make_cyl("MicStand_Pole", (mx-0.30, my, 0.70), 0.012, 0.56, P.METAL_BLACK)
     make_cyl("Mic_Body", (mx-0.30, my, 1.04), 0.04, 0.20, P.METAL_BLACK)
-    make_cyl("Mic_Pop", (mx-0.30, my-0.10, 1.04), 0.07, 0.06, COL_RING_LIGHT, axis='Y')
+    make_cyl("Mic_Pop", (mx-0.30, my-0.07, 1.04), 0.07, 0.06, COL_RING_LIGHT, axis='Y')   # against the mic
     # Ring light on a separate pole
-    make_cyl("Ring_Pole", (mx+0.40, my, 0.80), 0.012, 0.76, P.METAL_BLACK)
-    make_cyl("Ring_Light_Hoop", (mx+0.40, my-0.04, 1.20), 0.24, 0.015, P.METAL_BLACK, axis='Y', segments=16)   # the hoop the LEDs sit on (2026-09-22)
+    make_cyl("Ring_Pole", (mx+0.40, my, 0.78), 0.012, 0.80, P.METAL_BLACK)   # from the desk (2026-09-23: 4 cm over it)
+    make_cyl("Ring_Light_Hoop", (mx+0.40, my-0.025, 1.20), 0.24, 0.015, P.METAL_BLACK, axis='Y', segments=16)   # the hoop the LEDs sit on (2026-09-22)
     for ri in range(8):
         import math
         ang = ri * 0.785
         ox = mx+0.40 + math.cos(ang)*0.22
         oz = 1.20 + math.sin(ang)*0.22
-        make_box(f"Ring_Light_{ri}", (ox, my-0.04, oz), (0.04, 0.02, 0.04), COL_RING_LIGHT)
+        make_box(f"Ring_Light_{ri}", (ox, my-0.025, oz), (0.04, 0.02, 0.04), COL_RING_LIGHT)
     # Laptop on desk
     make_box("Laptop_Base", (mx+0.20, my, 0.40), (0.34, 0.24, 0.02), P.METAL_BLACK)
     make_box("Laptop_Lid",  (mx+0.20, my+0.10, 0.50), (0.34, 0.02, 0.20), P.METAL_BLACK)
@@ -171,7 +172,7 @@ def build_use_states_d4():
     """D4 use states: the Tower is the week it all comes down —
     papers fanned by the door, the laptop open, boxes half-packed."""
     # The eviction notice on the desk + papers fanned on the floor
-    make_box("Desk_Notice", (2.65, 4.35, 0.395), (0.15, 0.21, 0.004),
+    make_box("Desk_Notice", (2.65, 4.35, 0.382), (0.15, 0.21, 0.004),   # on the desk (2026-09-23: 1.3 cm over it)
              (0.94, 0.92, 0.86, 1.0))
     for i, (px, py, rot_off) in enumerate(((0.35, 0.55, 0.0), (0.55, 0.42, 0.06),
                                            (0.22, 0.38, -0.04))):
@@ -194,7 +195,7 @@ def build_use_states_d4():
                  (0.10, 0.32, 0.02), (0.48, 0.36, 0.25, 1.0))
     # The second teacup — one on the coffee table (marker), one
     # abandoned on the desk corner
-    make_cyl("Desk_Teacup", (2.35, 4.62, 0.425), 0.032, 0.055,
+    make_cyl("Desk_Teacup", (2.35, 4.62, 0.4075), 0.032, 0.055,
              (0.86, 0.84, 0.80, 1.0), segments=8)
 
 def build_eviction_notice_2026_08():

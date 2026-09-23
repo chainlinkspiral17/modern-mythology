@@ -103,12 +103,13 @@ def build_building():
     # TWO doors on the south face, restroom plaques above each
     for i, dx in enumerate((-4.1, -1.4)):
         make_box(f"Bldg_Door_{i}", (dx, 7.96, 1.10), (0.90, 0.10, 2.20), COL_DOOR)
-        make_box(f"Bldg_Plaque_{i}", (dx, 7.94, 2.42), (0.30, 0.06, 0.34), COL_SIGN)
+        # on the wall face at y 8.00 (2026-09-23: 3 cm off it)
+        make_box(f"Bldg_Plaque_{i}", (dx, 7.97, 2.42), (0.30, 0.06, 0.34), COL_SIGN)
         # the stick figure: head + body bar; skirt triangle-read wedge on door 0
-        make_cyl(f"Fig_{i}_Head", (dx, 7.90, 2.52), 0.035, 0.02, COL_DOOR, segments=8, axis='Y')
-        make_box(f"Fig_{i}_Body", (dx, 7.90, 2.38), (0.03, 0.02, 0.14), COL_DOOR)
+        make_cyl(f"Fig_{i}_Head", (dx, 7.93, 2.52), 0.035, 0.02, COL_DOOR, segments=8, axis='Y')
+        make_box(f"Fig_{i}_Body", (dx, 7.93, 2.38), (0.03, 0.02, 0.14), COL_DOOR)
         if i == 0:
-            make_box(f"Fig_{i}_Skirt", (dx, 7.90, 2.36), (0.10, 0.02, 0.05), COL_DOOR)
+            make_box(f"Fig_{i}_Skirt", (dx, 7.93, 2.36), (0.10, 0.02, 0.05), COL_DOOR)
     # Vending machine between the doors, glowing selection column
     # Stands AGAINST the south face (base front y=7.9), not in it.
     make_box("Vending", (-2.75, 7.60, 0.95), (0.85, 0.55, 1.90), COL_VENDING)
@@ -151,7 +152,7 @@ def build_trailhead():
     make_box("Box_Post", (5.2, 8.2, 0.55), (0.13, 0.13, 1.10), COL_TIMBER)
     make_box("Box_Body", (5.2, 8.2, 1.22), (0.55, 0.40, 0.26), COL_TIMBER)
     # Lid hinged from the back, propped a crack open
-    make_box("Box_Lid", (5.2, 8.14, 1.39), (0.58, 0.44, 0.05), COL_ROOF)
+    make_box("Box_Lid", (5.2, 8.14, 1.375), (0.58, 0.44, 0.05), COL_ROOF)   # on the box (2026-09-23: 1.5 cm over it)
     # The pencil on its string
     make_box("Box_String", (4.95, 8.02, 1.10), (0.015, 0.015, 0.28), COL_DOOR)
     make_box("Box_Pencil", (4.95, 8.00, 0.94), (0.03, 0.03, 0.12), (0.72, 0.58, 0.24, 1.0))
@@ -167,22 +168,26 @@ def build_overlook():
     make_box("Basalt_Slab", (9.25, 14.6, 0.14), (4.2, 2.4, 0.28), COL_BASALT)
     # Rail posts + two rails: north edge and both returns
     for px in (7.6, 8.7, 9.8, 10.9):
-        make_box(f"Rail_Post_N_{px:.1f}", (px, 15.42, 0.85), (0.10, 0.10, 1.0), COL_RAIL)
+        # bolted into the slab (2026-09-23: every post stood 7 cm over it)
+        make_box(f"Rail_Post_N_{px:.1f}", (px, 15.42, 0.815), (0.10, 0.10, 1.07), COL_RAIL)
     make_box("Rail_N_Top", (9.25, 15.42, 1.32), (3.5, 0.09, 0.09), COL_RAIL)
     make_box("Rail_N_Mid", (9.25, 15.42, 0.90), (3.5, 0.07, 0.07), COL_RAIL)
     for side_x in (7.55, 10.95):
         make_box(f"Rail_Ret_{side_x:.1f}_Top", (side_x, 14.9, 1.32), (0.09, 1.1, 0.09), COL_RAIL)
-        make_box(f"Rail_Ret_{side_x:.1f}_Post", (side_x, 14.35, 0.85), (0.10, 0.10, 1.0), COL_RAIL)
+        make_box(f"Rail_Ret_{side_x:.1f}_Post", (side_x, 14.35, 0.815), (0.10, 0.10, 1.07), COL_RAIL)
     # The ribbon + 707 key, tied at the top rail east of center
-    make_box("Ribbon", (10.2, 15.40, 1.18), (0.05, 0.03, 0.22), COL_RIBBON)
-    make_box("Key_707", (10.2, 15.40, 1.02), (0.045, 0.02, 0.10), COL_KEY)
+    # the key hangs to the mid rail and rests on it (2026-09-23: it hung
+    # 3.5 cm over it on a ribbon the support gate reads as cloth)
+    make_box("Ribbon", (10.2, 15.40, 1.16), (0.05, 0.03, 0.25), COL_RIBBON)
+    make_box("Key_707", (10.2, 15.40, 0.985), (0.045, 0.02, 0.10), COL_KEY)
     # THE FALLS, right below the bluff: stage one — the long shallow
     # tilted shelf, water spreading white at the lip
     make_box("Falls_Shelf", (9.5, 16.8, 0.9), (5.5, 2.6, 0.14), COL_WATER_SHELF)
     make_box("Falls_Lip", (9.5, 15.6, 1.05), (5.0, 0.35, 0.10), COL_FALLS)
     # The feather on the wet shelf ("long and grey, with a white tip")
-    make_box("Feather", (8.4, 16.3, 1.00), (0.34, 0.06, 0.02), (0.55, 0.55, 0.56, 1.0))
-    make_box("Feather_Tip", (8.60, 16.3, 1.005), (0.07, 0.05, 0.02), (0.86, 0.86, 0.86, 1.0))
+    # on the shelf (2026-09-23: 2 cm over the water)
+    make_box("Feather", (8.4, 16.3, 0.98), (0.34, 0.06, 0.02), (0.55, 0.55, 0.56, 1.0))
+    make_box("Feather_Tip", (8.60, 16.3, 0.985), (0.07, 0.05, 0.02), (0.86, 0.86, 0.86, 1.0))
     # Stage two — the column dropping out of sight below the shelf
     make_box("Falls_Column", (9.5, 18.3, -1.6), (2.6, 0.4, 5.4), COL_FALLS)
     make_box("Falls_Column_Core", (9.5, 18.25, -1.2), (1.4, 0.3, 4.6), (0.94, 0.96, 0.96, 1.0))

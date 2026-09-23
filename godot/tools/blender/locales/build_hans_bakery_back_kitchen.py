@@ -302,7 +302,8 @@ def build_communal_table():
     make_cyl("Preserve_Jar", (0.28, 2.45, 0.85), 0.045, 0.12, (0.48, 0.22, 0.30, 0.9), segments=8)
     make_box("Butter_Dish", (-0.28, 2.45, 0.80), (0.16, 0.10, 0.06), (0.90, 0.88, 0.80, 1.0))
     # The Hemlock window + sill + the chair beside it (W wall)
-    make_window("Win_W", (-2.99, 2.6, 1.50), width=1.10, height=1.10, axis='Y')
+    # anchored on the wall's room face, built toward the room (2026-09-23: the glass was inside the wall)
+    make_window("Win_W", (-2.90, 2.6, 1.50), width=1.10, height=1.10, axis='Y', room_dir=+1)
     make_box("Win_W_Sill", (-2.86, 2.6, 0.95), (0.26, 1.10, 0.06), wood)
     # (draft 4: a kit chair, back to the window, at y 2.75 — at 2.6 its
     # seat shared 0.1 m with the speed rack's frame)

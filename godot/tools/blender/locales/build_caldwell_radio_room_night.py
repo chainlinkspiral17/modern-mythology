@@ -114,23 +114,28 @@ def build_mic_and_boom():
     make_box("MicBoom_Clamp", (clamp_x, clamp_y, top_z), (0.08, 0.10, 0.10), COL_METAL_DK)
     # Vertical post
     make_cyl("MicBoom_Post", (clamp_x, clamp_y, top_z + 0.30), 0.014, 0.56, COL_METAL_DK, axis='Z')
-    # Horizontal arm reaching toward the operator
-    make_cyl("MicBoom_Arm", (clamp_x + 0.22, clamp_y - 0.18, top_z + 0.56),
-             0.012, 0.60, COL_METAL_DK, axis='X')
-    make_cyl("MicBoom_Arm2", (clamp_x + 0.30, clamp_y - 0.36, top_z + 0.48),
-             0.012, 0.44, COL_METAL_DK, axis='Y')
+    # (2026-09-23: the two arms, the mic and the pop filter were four
+    # pieces in the air, none touching the next. One chain now: post
+    # top → arm toward the operator → arm across → drop → mic.)
+    make_cyl("MicBoom_Arm", (clamp_x, clamp_y - 0.20, top_z + 0.56),
+             0.012, 0.40, COL_METAL_DK, axis='Y')
+    make_cyl("MicBoom_Arm2", (clamp_x + 0.15, clamp_y - 0.40, top_z + 0.56),
+             0.012, 0.30, COL_METAL_DK, axis='X')
+    make_cyl("MicBoom_Drop", (clamp_x + 0.30, clamp_y - 0.40, top_z + 0.515),
+             0.010, 0.09, COL_METAL_DK, axis='Z')
     # Mic capsule hanging from the arm
-    mic_x, mic_y, mic_z = clamp_x + 0.30, clamp_y - 0.56, top_z + 0.34
+    mic_x, mic_y, mic_z = clamp_x + 0.30, clamp_y - 0.40, top_z + 0.34
     make_cyl("Mic_Body", (mic_x, mic_y, mic_z), 0.035, 0.16, COL_BAKELITE, axis='Z', segments=10)
     make_cyl("Mic_Grille", (mic_x, mic_y, mic_z + 0.10), 0.040, 0.06, COL_METAL, axis='Z', segments=10)
     # Pop filter (thin disc in front of the mic, facing operator)
-    make_cyl("Mic_PopFilter", (mic_x, mic_y - 0.09, mic_z + 0.06), 0.07, 0.006,
+    make_cyl("Mic_PopFilter", (mic_x, mic_y - 0.043, mic_z + 0.06), 0.07, 0.006,
              (0.10, 0.10, 0.12, 0.6), axis='Y', segments=12)
     # Headphones hooked on the desk edge
     hx, hy = 0.85, dy - 0.42
     make_cyl("Phones_Band", (hx, hy, top_z + 0.06), 0.10, 0.03, COL_BAKELITE, axis='X', segments=12)
     for sgn in (-1, +1):
-        make_cyl(f"Phones_Cup_{sgn:+d}", (hx + sgn*0.09, hy, top_z + 0.06),
+        # against the band (2026-09-23: 5 cm off it)
+        make_cyl(f"Phones_Cup_{sgn:+d}", (hx + sgn*0.0375, hy, top_z + 0.06),
                  0.06, 0.045, COL_BAKELITE, axis='X', segments=10)
 
 
@@ -230,15 +235,16 @@ def build_coffee_and_clutter():
 
 def build_bulb():
     make_cyl("Bulb_Cord", (0.0, ROOM_D/2.0, CEIL-0.30), 0.005, 0.60, P.METAL_BLACK)
-    make_cyl("Bulb_Glass", (0.0, ROOM_D/2.0, CEIL-0.86), 0.06, 0.14, (0.96, 0.86, 0.46, 1.0))
+    make_cyl("Bulb_Glass", (0.0, ROOM_D/2.0, CEIL-0.67), 0.06, 0.14, (0.96, 0.86, 0.46, 1.0))   # on the cord (2026-09-23: 19 cm under it)
 
 
 def build_window():
     # Small window on the S wall east of the door (night — dark warm glass)
-    make_window("WindowS", (+1.55, 0.06, 1.55), width=1.00, height=0.90,
+    # anchored on the wall's room face, built toward the room (2026-09-23: the glass was inside the wall)
+    make_window("WindowS", (+1.55, 0.10, 1.55), width=1.00, height=0.90,
                 palette={"glass": (0.10, 0.12, 0.18, 0.7),
                          "warm": (0.24, 0.20, 0.16, 0.5),
-                         "frame": COL_WOOD_DK})
+                         "frame": COL_WOOD_DK}, room_dir=+1)
 
 
 def build_ceiling_infra():

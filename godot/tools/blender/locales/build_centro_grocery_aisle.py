@@ -205,7 +205,8 @@ def build_ceiling_infra():
     make_ceiling_speaker("Speaker", (ROOM_W/4.0, 2.0, CEIL))
 
 def build_storefront():
-    make_window("Win_S", (-3.0, 0.10, 1.55), width=2.60, height=1.50)
+    # anchored on the wall's room face, built toward the room (2026-09-23: the glass was inside the wall)
+    make_window("Win_S", (-3.0, 0.10, 1.55), width=2.60, height=1.50, room_dir=+1)
 
 def make_shopping_cart(prefix, cx, cy, yaw_open=True):
     """A wire cart (draft 4, 2026-09-18): a frame of tubes, basket rails,

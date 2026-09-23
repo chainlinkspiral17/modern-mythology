@@ -181,9 +181,10 @@ def build_dresser_window():
     below/beside it a dresser crowded with framed family photographs —
     the visual record of a long life."""
     # Window high on the west wall
-    make_window("Window", (-ROOM_W / 2.0 + 0.05, 3.3, 1.55), width=1.10, height=1.10,
+    # anchored on the wall's room face, built toward the room (2026-09-23: the glass was inside the wall)
+    make_window("Window", (-ROOM_W / 2.0 + 0.10, 3.3, 1.55), width=1.10, height=1.10,
                 cross_mullion=True, axis='Y',
-                palette={"glass": COL_GLASS, "warm": (1.0, 0.82, 0.52, 0.7)})
+                palette={"glass": COL_GLASS, "warm": (1.0, 0.82, 0.52, 0.7)}, room_dir=+1)
     # Lace curtains (two panels + a valance)
     make_box("Curtain_Valance", (-ROOM_W / 2.0 + 0.10, 3.3, 2.18), (0.03, 1.4, 0.20), COL_LACE)
     for sgn, cy in [(-1, 3.3 - 0.62), (+1, 3.3 + 0.62)]:

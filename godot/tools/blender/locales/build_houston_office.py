@@ -82,7 +82,8 @@ def build_shell():
     for nm, ax, length, wx, wy in [("Crown_W",'Y',ROOM_D,-ROOM_W/2.0+0.10,ROOM_D/2.0),("Crown_E",'Y',ROOM_D,+ROOM_W/2.0-0.10,ROOM_D/2.0),("Crown_N",'X',ROOM_W,0.0,ROOM_D-0.10),("Crown_S",'X',ROOM_W,0.0,+0.10)]:
         make_crown_molding(nm, wall_x=wx, wall_y=wy, length=length, axis=ax, ceil_z=CEIL, palette={"wood": COL_TRIM})
     # Large mullioned window N wall, looking at downtown
-    make_window("Window_N", (0.0, ROOM_D, 1.65), width=5.0, height=2.0,
+    # anchored on the wall's room face, built toward the room (2026-09-23: the glass was inside the wall)
+    make_window("Window_N", (0.0, ROOM_D - 0.10, 1.65), width=5.0, height=2.0,
                 palette={"glass": COL_GLASS})
 
 def build_cubicles():

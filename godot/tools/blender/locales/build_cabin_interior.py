@@ -72,7 +72,19 @@ def build_shell():
                palette={"vinyl": COL_FLOOR, "seam": COL_SEAM})
     for nm, x, bb in [("Wall_W", -ROOM_W/2.0, +1), ("Wall_E", +ROOM_W/2.0, -1)]:
         make_wall(nm, (x, ROOM_D/2.0, 0), length=ROOM_D+0.4, height=CEIL, axis='Y', palette=PAL_WALL, baseboard_face_sign=bb)
-    make_wall("Wall_N", (0.0, ROOM_D, 0), length=ROOM_W+0.4, height=CEIL, axis='X', palette=PAL_WALL, baseboard_face_sign=-1)
+    # the N wall built round a REAL opening for the kitchen window
+    # (2026-09-23: the wall was solid, so the crow "seen through the
+    # glass" on the outside sill was never in any frame)
+    kw_x0, kw_x1, kw_z0, kw_z1 = -2.10, -1.10, 1.005, 1.955
+    wn_x0, wn_x1 = -(ROOM_W + 0.4) / 2.0, (ROOM_W + 0.4) / 2.0
+    wcol = PAL_WALL["wall"]
+    make_box("Wall_N", ((kw_x1 + wn_x1) / 2.0, ROOM_D, CEIL / 2.0), (wn_x1 - kw_x1, 0.20, CEIL), wcol)
+    make_box("Wall_N_W", ((wn_x0 + kw_x0) / 2.0, ROOM_D, CEIL / 2.0), (kw_x0 - wn_x0, 0.20, CEIL), wcol)
+    make_box("Wall_N_Sill", ((kw_x0 + kw_x1) / 2.0, ROOM_D, kw_z0 / 2.0), (kw_x1 - kw_x0, 0.20, kw_z0), wcol)
+    make_box("Wall_N_Head", ((kw_x0 + kw_x1) / 2.0, ROOM_D, (kw_z1 + CEIL) / 2.0), (kw_x1 - kw_x0, 0.20, CEIL - kw_z1), wcol)
+    make_box("Wall_N_Base", (0.0, ROOM_D - 0.06, 0.08), (ROOM_W + 0.4, 0.06, 0.16), PAL_WALL["baseboard"])
+    # the outside sill the crow stands on
+    make_box("Kitchen_Window_OutSill", ((kw_x0 + kw_x1) / 2.0, ROOM_D + 0.275, 1.04), (1.10, 0.35, 0.04), wcol)
     make_wall("Wall_S_W", (-(ROOM_W/4.0+0.5), 0.0, 0), length=ROOM_W/2.0-1.0, height=CEIL, axis='X', palette=PAL_WALL)
     make_wall("Wall_S_E", (+(ROOM_W/4.0+0.5), 0.0, 0), length=ROOM_W/2.0-1.0, height=CEIL, axis='X', palette=PAL_WALL)
     make_box("Wall_S_AboveDoor", (0.0, 0.0, CEIL-0.45), (2.0, 0.20, 0.90), PAL_WALL["wall"])
@@ -123,7 +135,8 @@ def build_kitchen():
         make_cyl(f"PotRack_Hook_{i}", (-1.7, py, 1.9), 0.006, 0.16, COL_IRON_WM, segments=4)
         make_cyl(f"PotRack_Pot_{i}", (-1.7, py, 1.82 - h / 2.0 + 0.01), r, h, col, segments=10)   # hangs from its hook
     # The kitchen window (N wall over the counter's end)…
-    make_window("Kitchen_Window", (-1.6, ROOM_D-0.04, 1.48), width=1.00, height=0.95)
+    # anchored on the wall's room face, built toward the room (2026-09-23: the glass was inside the wall)
+    make_window("Kitchen_Window", (-1.6, ROOM_D - 0.10, 1.48), width=1.00, height=0.95)
     # …and the black rotary phone on a small table beside it
     make_box("Phone_Table", (-2.60, 5.35, 0.30), (0.45, 0.45, 0.60), COL_WOOD)
     make_box("Phone_Body", (-2.60, 5.35, 0.66), (0.24, 0.20, 0.10), (0.10, 0.10, 0.11, 1.0))
@@ -342,7 +355,8 @@ def build_daybed():
     make_chamfer_box("Daybed_Blanket", (-2.28, 1.5, 0.545), (0.84, 0.95, 0.06), (0.56, 0.40, 0.30, 1.0), chamfer=0.015)   # clear of the bolster (2026-09-07)
     # Chair by the SOUTH window, main room ("The chair by the south
     # window" / "Finn on the floor by the south window")
-    make_window("South_Window_W", (-2.0, 0.04, 1.45), width=1.10, height=1.00)
+    # anchored on the wall's room face, built toward the room (2026-09-23: the glass was inside the wall)
+    make_window("South_Window_W", (-2.0, 0.10, 1.45), width=1.10, height=1.00, room_dir=+1)
     make_chair("SWChair", -1.70, 0.95, yaw=3.1416, wood=COL_WOOD, w=0.44)
 
 
@@ -364,7 +378,8 @@ def build_east_room():
     make_box("EBed_Win_Glass", (2.98, 1.45, 1.75), (0.02, 1.06, 0.82), COL_GLASS)
     # Writing desk against the S wall + the south window over it —
     # the kit table: turned legs, an apron, a stretcher (draft 5)
-    make_window("South_Window_E", (2.0, 0.04, 1.45), width=0.95, height=0.95)
+    # anchored on the wall's room face, built toward the room (2026-09-23: the glass was inside the wall)
+    make_window("South_Window_E", (2.0, 0.10, 1.45), width=0.95, height=0.95, room_dir=+1)
     make_table("Desk", 1.75, 0.55, w=0.95, d=0.60, h=0.75, wood=COL_WOOD, top_col=COL_WOOD)
     make_box("Desk_Notebook", (1.72, 0.52, 0.7575), (0.26, 0.20, 0.015), (0.30, 0.26, 0.22, 1.0))
     make_cyl("Desk_Pen", (1.90, 0.44, 0.754), 0.004, 0.14, (0.16, 0.16, 0.18, 1.0), axis='X', segments=5)

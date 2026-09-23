@@ -406,6 +406,40 @@ banisters classed · pans as containers.
   the window kit had built a frame in the wall and no interior sill,
   so the crow's marks were on air. New Orleans room's letter, pen and
   envelope sat at the desk's old x after the top moved 1.1 m.
+- **A kit with a fixed build direction is right for half the walls
+  (sixteenth pass).** `make_window` built from its anchor toward −Y
+  (or −X): toward the room on a north or east wall, INTO the wall on
+  a south or west one. Callers anchoring on the wall's centre line
+  buried theirs on any wall. 43 windows in 34 rooms were invisible
+  from inside — no gate could see it, because windows are WALLISH
+  (embedded on purpose). The scan that found them asks a different
+  question: is any window's GLASS wholly inside a wall solid? A kit
+  that places things relative to a wall takes the room side as a
+  parameter (`room_dir`), never assumes it. And a window on a solid
+  wall is a panel, not a view: when a shot is written THROUGH a
+  window (the cabin crow), the wall needs a real opening — and the
+  lens audit must treat glass as see-through, or the first honest
+  window reads as an occluder.
+- **"clean" over a broken builder.** When a builder's main() raises
+  under the recorder, it falls back to running each build_* alone —
+  coverage survives, every part is recorded twice, and the gate said
+  "clean". The riverboat's main() had a NameError from a renamed
+  variable; the Deck build would have died. The suite now fails on
+  any `(partial: …)` line. Watch the object count: it doubled.
+- **An assembly key must survive both naming habits.** Index second
+  (Aisle_0, Drum_0_band) and index last (NapkinDispenser_Slot_8) both
+  occur. The ≥3-segment rule made two-segment siblings one assembly
+  (blind to Aisle_0 inside Aisle_2) and a numbered whole a stranger
+  to its own parts (Drum_0 vs Drum_0_band, a false clip). The fix
+  pairs a BARE numbered whole (X_N) with any part carrying N, and
+  checks the repo-wide deltas for both a rise AND a suspicious fall —
+  a first try hid two real Kwik Stop clips by matching the upright's
+  own index.
+- **A back bar is not a block.** The riverboat's back bar was one 2 m
+  solid with the mirror on its face and sixty bottles inside it; the
+  overlap gate never saw them, because bottle and body share the Bar_
+  assembly. When the object count of a family is high and its
+  container is a single solid, look inside.
 
 ### 2026-09-06 · a builder that raises under the recorder is dropped without a flag
 

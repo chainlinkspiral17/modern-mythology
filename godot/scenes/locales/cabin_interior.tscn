@@ -177,8 +177,8 @@ shadow_enabled = false
 ; godot (-1.6, 1.06, -6.30). Camera inside, looking out through
 ; the glass — the pane is part of the shot.
 [node name="shot_insert_crow" type="Marker3D" parent="." groups=["vn_shot"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.575, 0.910, -5.310)
-rotation = Vector3(0.1745, -0.7854, 0.0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.575, 1.250, -5.310)
+rotation = Vector3(0.0, -0.917, 0.0)
 
 ; Desk notebook: blender (1.72, 0.52, 0.775) → godot (1.72, 0.775, -0.52).
 [node name="shot_insert_notebook" type="Marker3D" parent="." groups=["vn_shot"]]

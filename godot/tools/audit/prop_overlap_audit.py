@@ -305,8 +305,24 @@ def overlaps(boxes):
         if toks[0].lower() == "roof" and len(toks) >= 3:
             toks = toks[1:]
         first = toks[0]
-        if len(toks) >= 3 and re.fullmatch(r"-?\d+", toks[1]):
+        if len(toks) >= 2 and re.fullmatch(r"-?\d+", toks[1]):
             first = toks[0] + "_" + toks[1]
+        # 2026-09-23: the index rule wanted >= 3 segments, so a family
+        # member named with two (Aisle_0, Drum_0) keyed as its bare
+        # family — Aisle_0 and Aisle_2 were one assembly, and Drum_0 was
+        # a stranger to its own Drum_0_band. And the index is not always
+        # second: NapkinDispenser_8 owns NapkinDispenser_Slot_8. A second
+        # key — first segment + every index in the name — joins a part
+        # to its numbered whole wherever the number sits — but only for
+        # a BARE numbered whole (X_N), or EndCap_Box_1 would claim
+        # EndCap_-1_Upright_1 by its upright's own index. (Signed ±1
+        # tokens are sides, not indices.) A bare whole (Gravel_1) still
+        # pairs with its family's un-numbered parts (Gravel_Rut_+1) as it
+        # did before, so nothing the old key excused is newly seen except
+        # the two-segment siblings it was blind to.
+        idx = frozenset(t for t in toks[1:] if re.fullmatch(r"\d+", t))
+        bare = toks[1] if (len(toks) == 2 and re.fullmatch(r"-?\d+", toks[1])) else None
+        first = (first, idx, toks[0], bare)
         ann.append((
             n, c, h,
             n.rsplit("_", 1)[0], first,
@@ -338,7 +354,10 @@ def overlaps(boxes):
              sr2, lp2, bd2) = ann[j]
             if c2[0] - h2[0] > xmax1:
                 break
-            if p1l == p2l or p1f == p2f:
+            if (p1l == p2l or p1f[0] == p2f[0]
+                    or (p1f[2] == p2f[2] and (
+                        (p1f[3] is not None and (not p2f[1] or p1f[3] in p2f[1]))
+                        or (p2f[3] is not None and (not p1f[1] or p2f[3] in p1f[1]))))):
                 continue
             l1, l2 = n1.lower(), n2.lower()
             if ns1 or ns2:

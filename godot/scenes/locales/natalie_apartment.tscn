@@ -372,6 +372,6 @@ metadata/fov = 42.0
 
 ; insert: the desk, the dream journal open after three years (vol5)
 [node name="shot_insert_desk" type="Marker3D" parent="." groups=["vn_shot"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.643, 1.083, -0.159)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.643, 1.083, -0.250)
 rotation = Vector3(-0.5236, -0.7854, 0.0)
 metadata/fov = 42.0

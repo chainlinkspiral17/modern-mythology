@@ -919,7 +919,9 @@ def build_rush_and_service_dressing():
     # Bar room is X=-15..-9, Y=+2..+6. Soda gun on its coiled hose
     # at the bartender's station, roughly at (-13, +3.5).
     sg_x = -13.0
-    sg_y = +3.5
+    # the bar's back edge, the bartender's side (2026-09-23: at +3.5 the
+    # gun hung on the customers' side, inside stool 1's back pad)
+    sg_y = +5.06
     sg_top_z = 1.08
     # Holster (a small steel cradle mounted to the bar's interior face)
     make_box("SodaGun_Holster",
@@ -1877,21 +1879,32 @@ def build_riverboat_galley():
     cy_k = (K_Y_S + K_Y_N) / 2.0
 
     # ── Floor (kitchen tile painting over the diner checker) ──
-    make_box("Galley_Floor", (cx_k, cy_k, 0.045),
-             (K_X_E - K_X_W, K_Y_N - K_Y_S, 0.05),
+    # (2026-09-23: the galley's W end ran north to -3.95 under the first
+    # alcove booth — its tile, grout and ticket rail lay through booth 1
+    # and its divider. W of the alcove's east edge the kitchen stops at
+    # divider 0, y -4.53.)
+    ALC_X_E = -7.40
+    ALC_Y_S = -4.53
+    make_box("Galley_Floor", ((ALC_X_E + K_X_E) / 2.0, cy_k, 0.045),
+             (K_X_E - ALC_X_E, K_Y_N - K_Y_S, 0.05),
+             COL_KITCHEN_TILE)
+    make_box("Galley_Floor_W", ((K_X_W + ALC_X_E) / 2.0, (K_Y_S + ALC_Y_S) / 2.0, 0.045),
+             (ALC_X_E - K_X_W, ALC_Y_S - K_Y_S, 0.05),
              COL_KITCHEN_TILE)
     # Tile grout grid (light visible lines)
     n_tiles_x = int((K_X_E - K_X_W) / 0.5)
     n_tiles_y = int((K_Y_N - K_Y_S) / 0.5)
     for i in range(1, n_tiles_x):
         gx = K_X_W + i * (K_X_E - K_X_W) / n_tiles_x
-        make_box(f"Galley_Grout_V_{i}", (gx, cy_k, 0.075),
-                 (0.025, K_Y_N - K_Y_S, 0.005),
+        gy_n = ALC_Y_S if gx < ALC_X_E else K_Y_N
+        make_box(f"Galley_Grout_V_{i}", (gx, (K_Y_S + gy_n) / 2.0, 0.075),
+                 (0.025, gy_n - K_Y_S, 0.005),
                  (0.50, 0.46, 0.40, 1.0))
     for j in range(1, n_tiles_y):
         gy = K_Y_S + j * (K_Y_N - K_Y_S) / n_tiles_y
-        make_box(f"Galley_Grout_H_{j}", (cx_k, gy, 0.075),
-                 (K_X_E - K_X_W, 0.025, 0.005),
+        gx_w = ALC_X_E if gy > ALC_Y_S else K_X_W
+        make_box(f"Galley_Grout_H_{j}", ((gx_w + K_X_E) / 2.0, gy, 0.075),
+                 (K_X_E - gx_w, 0.025, 0.005),
                  (0.50, 0.46, 0.40, 1.0))
 
     # ── HOT LINE along the south wall (Y ≈ -5.55) ──
@@ -2259,11 +2272,14 @@ def build_riverboat_galley():
                  0.008, D_H - 1.88,   # housing top to ceiling (2026-09-22)
                  (0.10, 0.08, 0.06, 1.0), segments=4, axis='Z')
     # Ticket rail with hanging order tickets
+    # from the expo bell east (2026-09-23: it ran on over the first
+    # alcove booth to x -8.75)
     make_cyl("Galley_TicketRail",
-             (cx_k, expo_cy - 0.05, 1.55),
-             0.010, K_X_E - K_X_W - 0.40,
+             ((-7.30 + 4.75) / 2.0, expo_cy - 0.05, 1.55),
+             0.010, 4.75 + 7.30,
              COL_BRASS, segments=4, axis='X')
-    for ti, tx in enumerate([-7.0, -5.5, -3.5, -1.8, +0.5, +2.0, +3.5]):
+    # (ticket 3 at -1.3: at -1.8 it hung through the soda fountain, 2026-09-23)
+    for ti, tx in enumerate([-7.0, -5.5, -3.5, -1.3, +0.5, +2.0, +3.5]):
         make_box(f"Galley_Ticket_{ti}",
                  (tx, expo_cy - 0.05, 1.45),
                  (0.10, 0.005, 0.18), (0.92, 0.88, 0.74, 1.0))

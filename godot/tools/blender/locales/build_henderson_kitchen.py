@@ -104,7 +104,8 @@ def build_hero_props():
     wood = (0.48, 0.36, 0.24, 1.0)
     # Front window, S wall east of the doorway — matches the porch
     # build's lit window at x=+2.55
-    make_window("Front_Window", (1.45, 0.05, 1.50), width=0.90, height=1.05)
+    # anchored on the wall's room face, built toward the room (2026-09-23: the glass was inside the wall)
+    make_window("Front_Window", (1.45, 0.10, 1.50), width=0.90, height=1.05, room_dir=+1)
     # The basement door, E wall, dark stair void behind
     make_box("Basement_Doorframe", (ROOM_W/2.0-0.04, 1.6, 1.08), (0.10, 1.00, 2.16), wood)
     make_chamfer_box("Basement_Door", (ROOM_W/2.0-0.07, 1.6, 1.05), (0.05, 0.85, 2.05), (0.42, 0.32, 0.22, 1.0))

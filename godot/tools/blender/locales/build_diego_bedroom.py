@@ -82,7 +82,8 @@ def build_posters():
         make_faded_poster(f"Poster_Striker_{pi}", (px, py, 1.55))
 
 def build_win():
-    make_window("Window_N", (0.0, ROOM_D-0.02, 1.50), width=1.20, height=1.00)
+    # anchored on the wall's room face, built toward the room (2026-09-23: the glass was inside the wall)
+    make_window("Window_N", (0.0, ROOM_D - 0.10, 1.50), width=1.20, height=1.00)
 
 def build_ceiling_infra():
     # THE FAN that clicks on the third rotation — not shop tubes

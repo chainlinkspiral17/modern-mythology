@@ -107,7 +107,7 @@ def make_crown_molding(prefix, *, wall_x, wall_y, length, axis,
 
 
 def make_window(prefix, anchor, *, width=2.60, height=1.50,
-                cross_mullion=True, palette=None, axis='X'):
+                cross_mullion=True, palette=None, axis='X', room_dir=-1):
     """Mullioned multi-pane glass window.
 
     axis='X' (default): the window lies in a NORTH or SOUTH wall and
@@ -120,7 +120,15 @@ def make_window(prefix, anchor, *, width=2.60, height=1.50,
     glass ACROSS the room and 0.6m into the wall. `center_z` is a
     CENTER, not a sill — eleven callers passed 0 and got windows
     half-buried in the floor (fixed the same day).
-    cross_mullion=True draws horizontal + vertical bars."""
+    cross_mullion=True draws horizontal + vertical bars.
+
+    room_dir (2026-09-23): the side of the wall the ROOM is on, along
+    the wall's normal (-1: the room is toward -Y / -X, a NORTH or EAST
+    wall — the old fixed behaviour and the default; +1: a SOUTH or WEST
+    wall). The glass and frame are built from the anchor toward the
+    room. Before this, every south/west-wall window was built INTO its
+    wall, and callers that passed the wall's centre line buried theirs
+    on any wall: 43 windows in 34 rooms were invisible."""
     palette = palette or {}
     glass = palette.get("glass", P.GLASS)
     frame = palette.get("frame", P.METAL_STEEL)
@@ -136,8 +144,8 @@ def make_window(prefix, anchor, *, width=2.60, height=1.50,
     def _at(off, inset, dz):
         """Position `off` along the wall, `inset` into it, dz up."""
         if along_y:
-            return (cx - inset, cy + off, cz + dz)
-        return (cx + off, cy - inset, cz + dz)
+            return (cx + room_dir * inset, cy + off, cz + dz)
+        return (cx + off, cy + room_dir * inset, cz + dz)
 
     # Glass behind a slight warm tint (sun-through-window canon)
     make_box(f"{prefix}_Glass", _at(0.0, 0.02, 0.0),
