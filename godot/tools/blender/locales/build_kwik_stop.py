@@ -659,24 +659,9 @@ def build_coffee_station():
                  (cx - 0.5475, py, 1.42),
                  (0.005, 0.18, 0.10), label_tint)
 
-    # ── Slurpee twin barrels ────────────────────────────────────
-    for i, tint in enumerate([
-            (0.62, 0.20, 0.78, 1.0),   # blue raspberry
-            (0.92, 0.30, 0.18, 1.0)]):  # cherry
-        sy = cy + 0.80 + i * 0.50
-        make_cyl(f"Slurpee_{i}_Barrel",
-                 (cx + 0.05, sy, 1.32),
-                 0.14, 0.44, tint, segments=10)
-        make_cyl(f"Slurpee_{i}_TopCap",
-                 (cx + 0.05, sy, 1.58),
-                 0.16, 0.10, COL_METAL_STEEL, segments=10)
-        make_cyl(f"Slurpee_{i}_Spout",
-                 (cx + 0.05, sy - 0.14, 1.16),
-                 0.020, 0.10, COL_METAL_BLACK, segments=6, axis='Z')
-        # Drip tray below
-        make_box(f"Slurpee_{i}_Tray",
-                 (cx + 0.10, sy - 0.20, 0.95),
-                 (0.20, 0.30, 0.04), COL_METAL_STEEL)
+    # (2026-09-23: the twin Slurpee barrels that stood here were a SECOND
+    # machine built into build_slurpee_fountain's — barrels through its
+    # base. The fountain is the machine; it sits on this counter.)
 
     # ── Cup stack (next to coffee pots) ─────────────────────────
     for i in range(8):
@@ -1081,17 +1066,21 @@ def build_trash_can():
 
 def build_strip_curtain():
     # Plastic strip curtain hanging in stockroom doorway
-    door_x = 5.0
-    door_y = 8.78  # at back-room door near north end of east wall
+    # (2026-09-23: the curtain hung at x 4.88, y 8.28-9.28 — a metre from
+    # the E wall, 1.3 m north of the only door in it, through the break
+    # nook's locker and on into the N wall. The back door is BackDoor, in
+    # the E wall at y 7.05-7.95; the curtain hangs in front of it.)
+    door_x = 5.90
+    door_y = 7.50
     # The stockroom door is built elsewhere; the strip curtain hangs
     # in FRONT of it as 6 PVC slats.
     # (2026-09-22: the doorway is IN the east wall, so the slats hang
     # along Y across it from a rail on the wall's inside face; they used
     # to be spread across the wall's thickness, in the air)
-    make_box("StripCurtain_Rail", (door_x - 0.12, door_y, 2.22), (0.04, 1.00, 0.04), COL_METAL_STEEL)
+    make_box("StripCurtain_Rail", (door_x - 0.04, door_y, 2.22), (0.04, 1.00, 0.04), COL_METAL_STEEL)   # on the door frame
     for s in range(6):
         sy = door_y - 0.40 + s * 0.16
-        make_box(f"StripCurtain_{s}", (door_x - 0.12, sy, 1.40),
+        make_box(f"StripCurtain_{s}", (door_x - 0.04, sy, 1.40),
                  (0.005, 0.12, 1.60), COL_STRIP_PVC)
 
 
@@ -1299,26 +1288,11 @@ def build_exterior_through_windows():
     # Lamp head (sodium-warm)
     make_box("Streetlamp_Head", (lp_x + 1.30, lp_y, 4.50),
              (0.50, 0.20, 0.20), COL_STREETLAMP_LIT)
-    # ── End-cap product display facing the south windows ────────
-    # A cardboard end-cap pyramid of stacked product cases — adds
-    # density between the registers and the windows.
-    ec_x, ec_y = -3.20, 2.60
-    for ec_tier in range(3):
-        tier_w = 1.20 - ec_tier * 0.30
-        tier_y = ec_y + ec_tier * 0.20
-        tier_z = 0.40 + ec_tier * 0.30
-        make_box(f"EndCap_Box_{ec_tier}",
-                 (ec_x, tier_y, tier_z),
-                 (tier_w, 0.60, 0.30), (0.84, 0.62, 0.30, 1.0))
-    # End-cap signage
-    make_box("EndCap_Sign", (ec_x, ec_y - 0.42, 1.40),
-             (1.20, 0.005, 0.22), COL_LOTTERY_RED)
-    # Stacked products visible on top of the smallest tier
-    for p_i in range(4):
-        make_box(f"EndCap_Product_{p_i}",
-                 (ec_x - 0.30 + p_i * 0.20, ec_y + 0.40, 1.25),   # on the top tier (2026-09-22)
-                 (0.14, 0.14, 0.20),
-                 SNACK_TINTS[(p_i + 3) % len(SNACK_TINTS)])
+    # (2026-09-23: the cardboard end-cap pyramid is gone — it was built
+    # on the SAME spot as the aisle's end-cap shelving (EndCap_-1), its
+    # boxes through the shelves and uprights, its bottom tier hanging
+    # 25 cm off the floor; and the floor south of it is the window
+    # seating. The shelving end cap is the display.)
 
 
 def build_polish_pass():
@@ -1483,23 +1457,23 @@ def build_slurpee_fountain():
     # Blue cherry + red cola. Sits next to the existing coffee
     # station; reads as the "drinks" pole of the west wall.
     cx, cy = -5.30, 5.40
-    base_z = 1.30
+    base_z = 1.03   # the base ON the coffee counter's top at 0.88 (2026-09-23: 27 cm over it)
     # Stainless base
     make_box("Slurpee_Base", (cx, cy, base_z),
              (0.86, 0.50, 0.30), COL_METAL_STEEL)
     # Two clear barrels
     for bs, by_off in [(-1, -0.18), (+1, +0.18)]:
         make_cyl(f"Slurpee_Barrel_{bs:+d}",
-                 (cx, cy + by_off, base_z + 0.46),
+                 (cx, cy + by_off, base_z + 0.40),   # on the base (2026-09-23: 6 cm over it)
                  0.16, 0.50, COL_SLURPEE_CASE)
         # Liquid inside (different colour each barrel)
         col = COL_SLURPEE_BLUE if bs < 0 else COL_SLURPEE_RED
         make_cyl(f"Slurpee_Liquid_{bs:+d}",
-                 (cx, cy + by_off, base_z + 0.36),
+                 (cx, cy + by_off, base_z + 0.30),
                  0.14, 0.28, col)
         # Top auger cap
         make_cyl(f"Slurpee_Top_{bs:+d}",
-                 (cx, cy + by_off, base_z + 0.74),
+                 (cx, cy + by_off, base_z + 0.68),
                  0.16, 0.06, COL_METAL_BLACK)
         # Dispense handle on the customer side (south)
         make_box(f"Slurpee_Handle_{bs:+d}",
@@ -1510,7 +1484,7 @@ def build_slurpee_fountain():
                  (cx + 0.18, cy + by_off, base_z + 0.16),
                  (0.16, 0.20, 0.04), COL_METAL_STEEL)
     # Flavor-label header strip across both barrels
-    make_box("Slurpee_LabelHeader", (cx - 0.18, cy, base_z + 0.82),   # meets the top caps (2026-09-22)
+    make_box("Slurpee_LabelHeader", (cx - 0.18, cy, base_z + 0.76),   # meets the top caps (2026-09-22)
              (0.04, 0.50, 0.12), COL_BRAND_NAVY)
 
 
@@ -2720,13 +2694,13 @@ def build_cup_stack_lid_dispenser():
     # check if I need this. Adding a SECOND stack near the slurpee
     # fountain so the west wall reads as a serving station.
     sx, sy = -5.20, 5.90
-    base_z = 0.90
+    base_z = 0.887   # on the counter top at 0.88 (2026-09-23: 1.3 cm over it)
     # Cup stack (40 cups tall)
     for ci in range(20):
         make_cyl(f"CupStackSlurp_{ci}", (sx, sy, base_z + ci * 0.012),
                  0.045, 0.014, COL_PAPER)
     # Lid dispenser (cylinder)
-    make_cyl("LidDisp_Slurp", (sx + 0.14, sy, base_z + 0.08),
+    make_cyl("LidDisp_Slurp", (sx + 0.14, sy, base_z + 0.083),
              0.05, 0.18, COL_METAL_BLACK)
     # Single visible lid on top
     make_cyl("LidDisp_Slurp_TopLid", (sx + 0.14, sy, base_z + 0.18),

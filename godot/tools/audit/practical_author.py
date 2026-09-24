@@ -46,7 +46,9 @@ NEAR_LIGHT = 0.9             # m · a fixture this close to a light already has 
 
 FIXTURE = re.compile(r"(lamp|bulb|sconce|pendant|chandelier|lantern|fluor|fixture|candle|worklight|shoplight|ceiling_?dome)", re.I)
 # parts of a fixture that are not the emitter
-NOT_EMITTER = re.compile(r"(cord|wire|switch|shade|base|post|pole|stand|arm|bracket|plate|glow|halo|zone|outline|^z_|stain|wear|chain|mount|canopy|frame)", re.I)
+# kelp|seaweed|flower|tulip|onion|garlic (2026-09-23): a plant "bulb" is not a light
+# bulb — a kelp float on the tideline rocks had been given a warm practical
+NOT_EMITTER = re.compile(r"(cord|wire|switch|shade|base|post|pole|stand|arm|bracket|plate|glow|halo|zone|outline|^z_|stain|wear|chain|mount|canopy|frame|kelp|seaweed|flower|tulip|onion|garlic)", re.I)
 # a fixture the fiction says is not burning
 UNLIT = re.compile(r"(broken|dead|burnt|burned|unlit|dark|off_|_off|cracked|shattered|smashed|empty|spent)", re.I)
 

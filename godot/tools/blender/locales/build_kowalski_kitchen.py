@@ -77,7 +77,8 @@ def build_counter():
         make_cyl(f"Stove_Burner_{bi}", (ROOM_W/4.0+ox, ROOM_D-1.0+oy, 0.945), 0.09, 0.01, (0.14, 0.14, 0.15, 1.0), segments=10)
     for ki in range(4):
         make_lathe(f"Stove_Knob_{ki}", (ROOM_W/4.0 - 0.24 + ki * 0.16, ROOM_D-1.0-0.352, 0.80), [(0.0, 0.0), (0.02, 0.0), (0.022, 0.012), (0.014, 0.02), (0.0, 0.02)], (0.16, 0.16, 0.17, 1.0), segments=8)
-    make_tube("Stove_Oven_Bar", [(ROOM_W/4.0-0.28, ROOM_D-1.0-0.38, 0.62), (ROOM_W/4.0+0.28, ROOM_D-1.0-0.38, 0.62)], 0.012, P.METAL_STEEL, segments=6)
+    # on the oven door (2026-09-23: 1.8 cm in front of it)
+    make_tube("Stove_Oven_Bar", [(ROOM_W/4.0-0.28, ROOM_D-1.0-0.362, 0.62), (ROOM_W/4.0+0.28, ROOM_D-1.0-0.362, 0.62)], 0.012, P.METAL_STEEL, segments=6)
 
 def build_table():
     tx, ty = 0.0, ROOM_D/2.0
@@ -137,17 +138,18 @@ def build_hero_props():
     sink (Gracie's dad yells about weeds through it)."""
     wood = (0.52, 0.40, 0.26, 1.0)
     # Upper cabinets over the counter + the box left of the stove
-    make_chamfer_box("Upper_Cabs", (-1.5, ROOM_D-0.18, 1.85), (2.40, 0.35, 0.72), wood)
+    # on the wall face (2026-09-23: 9.5 cm into the N wall)
+    make_chamfer_box("Upper_Cabs", (-1.5, ROOM_D-0.275, 1.85), (2.40, 0.35, 0.72), wood)
     for di, dx in enumerate((-2.3, -1.75, -1.2, -0.65)):
-        make_box(f"Upper_Cab_Door_{di}", (dx, ROOM_D-0.355, 1.85), (0.50, 0.02, 0.64), (0.58, 0.46, 0.30, 1.0))
-    make_chamfer_box("HotSauce_Cab", (0.75, ROOM_D-0.18, 1.85), (0.60, 0.35, 0.72), wood)
+        make_box(f"Upper_Cab_Door_{di}", (dx, ROOM_D-0.46, 1.85), (0.50, 0.02, 0.64), (0.58, 0.46, 0.30, 1.0))
+    make_chamfer_box("HotSauce_Cab", (0.75, ROOM_D-0.275, 1.85), (0.60, 0.35, 0.72), wood)   # on the wall face (2026-09-23: 9.5 cm into it)
     # The under-cabinet light — the only light in the ch19 beat
     make_box("UnderCab_Light", (-1.5, ROOM_D-0.38, 1.46), (1.20, 0.05, 0.04), (0.98, 0.90, 0.70, 1.0))
     # The window over the sink onto the backyard
     # anchored on the wall's room face, built toward the room (2026-09-23: the glass was inside the wall)
     make_window("Sink_Window", (-1.5, ROOM_D - 0.10, 1.52), width=1.50, height=1.00)
     # Couch + Daisy's spot + the muted noon news
-    make_chamfer_box("Couch_Base", (-2.35, 2.0, 0.24), (0.85, 2.00, 0.38), (0.44, 0.38, 0.30, 1.0))
+    make_chamfer_box("Couch_Base", (-2.35, 2.0, 0.19), (0.85, 2.00, 0.38), (0.44, 0.38, 0.30, 1.0))   # on the floor (2026-09-23: 5 cm over it)
     make_chamfer_box("Couch_Back", (-2.72, 2.0, 0.62), (0.18, 2.00, 0.58), (0.40, 0.34, 0.27, 1.0))
     for py in (1.5, 2.5):
         make_chamfer_box(f"Couch_Cushion_{py:.1f}", (-2.28, py, 0.46), (0.70, 0.85, 0.14), (0.48, 0.42, 0.34, 1.0))
@@ -232,8 +234,8 @@ def build_draft4_2026_09():
     make_lathe("EYard_Tree", (ROOM_W/2.0 + 3.5, 3.4, 0.0), [(0.16, 0.0), (0.12, 1.2), (0.09, 2.6), (0.0, 2.6)], (0.38, 0.30, 0.22, 1.0), segments=8)
     from _props.geometry import make_blob
     make_blob("EYard_Canopy", (ROOM_W/2.0 + 3.5, 3.4, 3.6), 1.5, (0.30, 0.42, 0.24, 1.0), noise=0.22, seed=23, squash=0.8)
-    make_chamfer_box("EYard_Mower", (ROOM_W/2.0 + 1.6, 2.2, 0.185), (0.55, 0.85, 0.34), (0.66, 0.20, 0.16, 1.0), chamfer=0.02)
-    make_tube("EYard_Mower_Handle", [(ROOM_W/2.0 + 1.6 - 0.2, 2.2 - 0.4, 0.35), (ROOM_W/2.0 + 1.6 - 0.2, 2.2 - 1.1, 0.95), (ROOM_W/2.0 + 1.6 + 0.2, 2.2 - 1.1, 0.95), (ROOM_W/2.0 + 1.6 + 0.2, 2.2 - 0.4, 0.35)], 0.012, (0.30, 0.30, 0.32, 1.0), segments=5)
+    make_chamfer_box("EYard_Mower", (ROOM_W/2.0 + 1.6, 2.2, 0.165), (0.55, 0.85, 0.34), (0.66, 0.20, 0.16, 1.0), chamfer=0.02)   # on the lawn (2026-09-23: 2 cm over it)
+    make_tube("EYard_Mower_Handle", [(ROOM_W/2.0 + 1.6 - 0.2, 2.2 - 0.4, 0.33), (ROOM_W/2.0 + 1.6 - 0.2, 2.2 - 1.1, 0.93), (ROOM_W/2.0 + 1.6 + 0.2, 2.2 - 1.1, 0.93), (ROOM_W/2.0 + 1.6 + 0.2, 2.2 - 0.4, 0.33)], 0.012, (0.30, 0.30, 0.32, 1.0), segments=5)
 
 
 def main():

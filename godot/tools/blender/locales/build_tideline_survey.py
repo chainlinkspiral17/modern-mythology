@@ -95,7 +95,8 @@ def build_sea_and_shelf():
         make_box(f"Mussel_Bed_{i}", (x, y, Z_TOP + 0.03), (2.6, 0.9, 0.06), (0.10, 0.10, 0.16, 1.0))
     for i, (x, y) in enumerate(((-11.0, -13.2), (1.5, -13.6), (16.5, -10.0))):
         make_box(f"Kelp_Wrack_{i}", (x, y, Z_TOP + 0.03), (1.8, 0.35, 0.06), (0.30, 0.26, 0.14, 1.0))
-        make_blob(f"Kelp_Bulb_{i}", (x + 1.05, y, Z_TOP + 0.14), 0.10, (0.36, 0.30, 0.14, 1.0), noise=0.2, seed=20 + i, squash=0.8)
+        # at the wrack's end, on the rock (2026-09-23: 5 cm past the wrack, 4 cm over the rock)
+    make_blob(f"Kelp_Bulb_{i}", (x + 0.95, y, Z_TOP + 0.10), 0.10, (0.36, 0.30, 0.14, 1.0), noise=0.2, seed=20 + i, squash=0.8)
     # cracks in the basalt
     for i, (x, y, w, d) in enumerate(((-6.0, 2.0, 5.0, 0.05), (3.0, -8.0, 0.05, 6.0), (13.0, -2.0, 4.0, 0.05), (-12.0, -6.0, 0.05, 5.0))):
         make_box(f"Basalt_Crack_{i}", (x, y, Z_TOP + 0.001), (w, d, 0.002), BASALT_WET)

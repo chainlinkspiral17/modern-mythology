@@ -450,6 +450,17 @@ banisters classed · pans as containers.
   marker_reaim.py swung the vanity-mirror insert down 57° onto a
   drawer pull because the pull was the subject it resolved. Read every
   re-aim diff; revert the ones whose new subject is not the shot.
+- **Two builders, one spot (eighteenth pass).** The kwik stop had
+  two Slurpee machines — the coffee station's twin barrels and
+  build_slurpee_fountain — built into each other, and an end-cap
+  pyramid built on the aisle's end-cap shelving. Each "held the other
+  up": remove one and the other floats (the fountain was 27 cm over
+  its counter). When a clip is between two things of the same KIND
+  from different build functions, one of them is a duplicate.
+- **Move the light with the lamp.** Jesse's bedside lamp moved 1.3 m;
+  its practical OmniLight in the .tscn would have lit an empty corner.
+  orphan_practical_audit catches it — and it also caught the reverse:
+  a practical authored on a KELP float, because the name had "Bulb".
 - **A back bar is not a block.** The riverboat's back bar was one 2 m
   solid with the mirror on its face and sixty bottles inside it; the
   overlap gate never saw them, because bottle and body share the Bar_

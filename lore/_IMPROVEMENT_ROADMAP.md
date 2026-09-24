@@ -2214,6 +2214,40 @@ NEXT: cabin interior 3, grunion beach 3, jesse bedroom 3, kowalski
 kitchen 3, school newspaper 3, tideline survey 3; overlap: the new
 worst; Deck-verify the windows AND baseboards (the first frames of
 most rooms with a baseboard in them).
+EIGHTEENTH PASS (support 45 → 27, overlap 75 → 56): the six rooms
+at 3 to zero, and the overlap top list. CABIN (the oil lamp's chains
+stopped 1.4 cm under the ceiling — the whole lamp hung on nothing;
+the ladder stood 13 cm inside the kitchen counter under the loft's
+open end — it stands in front of the counter now and hooks over the
+loft beam), GRUNION BEACH (a 70 cm strip of nothing between the tide
+gleam and the sea, the first surf line floating over it), JESSE
+(the bedside lamp and both notebooks left at y 2.95 when the bed and
+nightstand moved to the N wall on 09-10 — 1.2 m from their table; the
+lamp's practical light moved with them; the guitar case 25 cm into
+the S wall and under the stand), KOWALSKI KITCHEN (couch base, oven
+bar, mower; the upper cabinets and the hot-sauce cabinet 9.5 cm into
+the N wall), SCHOOL NEWSPAPER (pages at stacking heights over nothing),
+TIDELINE SURVEY (the kelp floats; and a PRACTICAL LIGHT on a kelp float
+— practical_author read "Bulb" as a light bulb: removed, and
+practical_author now ignores kelp/seaweed/flower/tulip/onion/garlic).
+The KWIK STOP, a model chapter, to zero: TWO Slurpee machines built
+into one spot (the fountain kept, set on the counter it hung 27 cm
+over; the duplicate barrels removed); the cardboard end-cap pyramid
+built on the same spot as the aisle's end-cap shelving (removed — the
+shelving is the display); the strip curtain hanging 1.3 m north of the
+back door, through a locker and into the N wall (on the back door's
+frame now). GRACIELA (crucifix and Guadalupe inside their walls), LENA
+(the whole kitchen run 10 cm inside the W wall — shifted, the faucet
+clear of the now-visible window, the pan flat on the wall; table
+chairs at 1.0 m pulled to 0.78; the lamp cord routed round the shelf).
+STILL IN THE KWIK STOP'S NE CORNER: a heap — stockroom boxes, shelf
+backboard, products into the N wall, the trash bag, the break bench
+and lockers, all in one 1.5 m corner. Re-plan it next pass.
+NEXT: the kwik stop NE corner; the rooms at 2 (cliffside circus, el
+rancho, ember ash office, henderson porch front, new orleans
+apartment, nightmare cell, ramos kitchen, sapo falls); overlap: the
+new worst (harmony terrain 6, accretion basement 5, cabin road 5, new
+auburn road 5).
 
 **2026-09-19 · DESIGN · the two decorative checks made real, the first
 remembered choice.** Nate's basement (ch6) and Tem staying (ch8): the

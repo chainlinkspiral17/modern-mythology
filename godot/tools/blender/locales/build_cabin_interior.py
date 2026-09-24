@@ -141,7 +141,7 @@ def build_kitchen():
     make_box("Phone_Table", (-2.60, 5.35, 0.30), (0.45, 0.45, 0.60), COL_WOOD)
     make_box("Phone_Body", (-2.60, 5.35, 0.66), (0.24, 0.20, 0.10), (0.10, 0.10, 0.11, 1.0))
     make_cyl("Phone_Dial", (-2.60, 5.28, 0.72), 0.07, 0.02, (0.80, 0.78, 0.72, 1.0), axis='Y', segments=10)
-    make_box("Phone_Handset", (-2.60, 5.42, 0.75), (0.22, 0.07, 0.05), (0.10, 0.10, 0.11, 1.0))
+    make_box("Phone_Handset", (-2.60, 5.42, 0.735), (0.22, 0.07, 0.05), (0.10, 0.10, 0.11, 1.0))   # in the cradle (2026-09-23: 1.5 cm over it)
 
 
 def build_loft():
@@ -159,10 +159,14 @@ def build_loft():
     # reaching the deck (2026-09-07 Deck: it stood UNDER the deck at
     # y 3.95, climbing into the loft's underside — "turned 90 degrees")
     # west end of the loft edge — clear of the table's chair ring (r 1.22) and the daybed
+    # (2026-09-23: at y 3.50 the ladder stood 13 cm inside the kitchen
+    # counter, which runs under the loft's open end. It stands in front
+    # of the counter now and hooks over the loft beam.)
     for rx in (-2.30, -2.00):
-        make_box(f"Ladder_Rail_{rx:.2f}", (rx, 3.50, 1.10), (0.05, 0.05, 2.20), COL_WOOD)
+        make_box(f"Ladder_Rail_{rx:.2f}", (rx, 3.30, 1.10), (0.05, 0.05, 2.20), COL_WOOD)
+        make_box(f"Ladder_Hook_{rx:.2f}", (rx, 3.44, 2.125), (0.05, 0.24, 0.05), COL_WOOD_DK)
     for s in range(6):
-        make_box(f"Ladder_Rung_{s}", (-2.15, 3.50, 0.30 + s * 0.36), (0.34, 0.04, 0.04), COL_WOOD_DK)
+        make_box(f"Ladder_Rung_{s}", (-2.15, 3.30, 0.30 + s * 0.36), (0.34, 0.04, 0.04), COL_WOOD_DK)
 
 
 def build_stove_corner():
@@ -417,7 +421,8 @@ def build_wall_dressing():
     # (draft 5: the font is a brass lathe with a burner collar, the
     # chimney flares, a tin reflector-shade hangs over it, three chains)
     for ci, ang in enumerate((0.0, 2.094, 4.189)):
-        make_tube(f"OilLamp_Chain_{ci}", [(0.0, 2.9, CEIL - 0.02), (0.11 * _m.cos(ang), 2.9 + 0.11 * _m.sin(ang), CEIL - 0.50)],
+        # from the ceiling itself (2026-09-23: 1.4 cm under it — the whole lamp hung on nothing)
+        make_tube(f"OilLamp_Chain_{ci}", [(0.0, 2.9, CEIL - 0.01), (0.11 * _m.cos(ang), 2.9 + 0.11 * _m.sin(ang), CEIL - 0.50)],
                   0.006, COL_IRON, segments=4)
     make_lathe("OilLamp_Shade", (0.0, 2.9, CEIL - 0.56),
                [(0.0, 0.06), (0.06, 0.06), (0.16, 0.0), (0.17, 0.0), (0.07, 0.065), (0.0, 0.065)],
@@ -510,7 +515,7 @@ def build_wear_personality_2026_08():
                     height=0.12, band_z=0.08, tint=(0.28, 0.20, 0.14, 1.0))
     # Ladder rungs worn pale at the grab line (the loft, decades).
     for s in (2, 3, 4):
-        make_box("Wear_Rung_%d" % s, (-2.15, 3.475, 0.305 + s * 0.36),
+        make_box("Wear_Rung_%d" % s, (-2.15, 3.2775, 0.305 + s * 0.36),
                  (0.20, 0.045, 0.012), handworn)
     # The reader's shelf shadow: "on the shelf where it had been
     # since '46" — the shelf around it darkened, the rectangle
@@ -520,7 +525,8 @@ def build_wear_personality_2026_08():
     make_box("Wear_Shelf_ReaderShadow", (1.55, 0.16, 1.574), (0.26, 0.18, 0.004),
              (0.58, 0.42, 0.26, 1.0))
     # Counter drip-line below the kettle's pour path.
-    make_scuff_band("Wear_Counter_Drip", (-1.52, 4.60), 0.9, axis='Y',
+    # on the counter's face (2026-09-23: 2.4 cm in front of it)
+    make_scuff_band("Wear_Counter_Drip", (-1.544, 4.60), 0.9, axis='Y',
                     height=0.10, band_z=0.55, tint=(0.26, 0.18, 0.11, 1.0))
 
     # ── TEM'S WEEKS ────────────────────────────────────────────

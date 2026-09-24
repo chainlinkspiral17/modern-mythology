@@ -123,9 +123,10 @@ def build_bed():
     make_box("Rosary_Cross", (bx + 0.12, by - 0.2, mattress_z + 0.08),
              (0.02, 0.05, 0.02), COL_BRASS)
     # Small crucifix centered above the headboard on the north wall
-    make_box("BedCrucifix_V", (bx, ROOM_D - 0.03, 2.1), (0.05, 0.02, 0.26), COL_WOOD_DK)
-    make_box("BedCrucifix_H", (bx, ROOM_D - 0.03, 2.14), (0.18, 0.02, 0.05), COL_WOOD_DK)
-    make_box("BedCrucifix_Corpus", (bx, ROOM_D - 0.045, 2.13), (0.06, 0.02, 0.12), COL_CORPUS)
+    # on the wall face at ROOM_D-0.10 (2026-09-23: inside the N wall)
+    make_box("BedCrucifix_V", (bx, ROOM_D - 0.11, 2.1), (0.05, 0.02, 0.26), COL_WOOD_DK)
+    make_box("BedCrucifix_H", (bx, ROOM_D - 0.11, 2.14), (0.18, 0.02, 0.05), COL_WOOD_DK)
+    make_box("BedCrucifix_Corpus", (bx, ROOM_D - 0.125, 2.13), (0.06, 0.02, 0.12), COL_CORPUS)
 
 
 def build_altar():
@@ -146,7 +147,7 @@ def build_altar():
     make_box("Altar_Cloth", (ax, ay, top_z + 0.01), (0.42, 0.94, 0.02), COL_LACE)
     make_box("Altar_Cloth_Fringe", (ax - 0.20, ay, top_z - 0.04), (0.02, 0.94, 0.08), COL_LACE)
     # Framed Virgen de Guadalupe on the wall above the altar
-    gx = ROOM_W / 2.0 - 0.04
+    gx = ROOM_W / 2.0 - 0.115   # on the E wall face at 1.90 (2026-09-23: inside the wall)
     make_box("Guadalupe_Frame", (gx, ay, 1.62), (0.03, 0.44, 0.62), COL_GUAD_RAY)
     make_box("Guadalupe_Image", (gx - 0.005, ay, 1.62), (0.02, 0.36, 0.54), COL_GUAD_ROBE)
     make_box("Guadalupe_Figure", (gx - 0.012, ay, 1.60), (0.02, 0.14, 0.34), COL_CORPUS)

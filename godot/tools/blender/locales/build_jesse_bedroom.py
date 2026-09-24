@@ -62,11 +62,13 @@ def build_desk_lamp():
         make_box(f"Desk_Leg_{li}", (lx, ly, 0.36), (0.04, 0.04, 0.72), COL_WOOD)
     make_box("Lamp_Base", (dx-0.30, dy+0.20, 0.78), (0.10, 0.10, 0.04), P.METAL_BLACK)
     make_cyl("Lamp_Arm", (dx-0.30, dy+0.20, 0.96), 0.012, 0.30, P.METAL_BLACK)
-    make_cyl("Lamp_Head", (dx-0.20, dy+0.20, 1.16), 0.06, 0.08, COL_ACCENT)
+    # the head on the arm's top (2026-09-23: 10 cm off it and 1 cm over it)
+    make_cyl("Lamp_Head", (dx-0.26, dy+0.20, 1.15), 0.06, 0.08, COL_ACCENT)
     # Turntable on the desk + a record on the platter
     make_box("Turntable", (dx+0.14, dy+0.02, 0.79), (0.42, 0.44, 0.08), P.METAL_BLACK)
-    make_cyl("Turntable_Platter", (dx+0.14, dy+0.02, 0.85), 0.16, 0.01, (0.14, 0.14, 0.16, 1.0), segments=16)
-    make_cyl("Record_Spinning", (dx+0.14, dy+0.02, 0.855), 0.15, 0.006, (0.08, 0.08, 0.09, 1.0), segments=16)
+    # on the deck (2026-09-23: 1.5 cm over it)
+    make_cyl("Turntable_Platter", (dx+0.14, dy+0.02, 0.835), 0.16, 0.01, (0.14, 0.14, 0.16, 1.0), segments=16)
+    make_cyl("Record_Spinning", (dx+0.14, dy+0.02, 0.843), 0.15, 0.006, (0.08, 0.08, 0.09, 1.0), segments=16)
     # Headphones resting on the desk edge (band + two cups)
     make_cyl("Headphone_Band", (dx-0.30, dy-0.14, 0.84), 0.10, 0.02, COL_ACCENT, axis='Y', segments=12)
     for hs in (-1, +1):
@@ -97,7 +99,7 @@ def build_dressing():
     corner plant (wires the imported make_floor_plant)."""
     bx, by = -ROOM_W/4.0, ROOM_D - 0.15 - 0.92   # head to the N wall (2026-09-10)
     make_box("Nightstand", (bx+0.95, by+0.7, 0.24), (0.40, 0.40, 0.48), COL_WOOD)
-    make_box("Clock", (bx+0.95, by+0.7, 0.54), (0.15, 0.10, 0.10), P.METAL_BLACK)
+    make_box("Clock", (bx+1.06, by+0.84, 0.53), (0.15, 0.10, 0.10), P.METAL_BLACK)   # back corner, on the top (2026-09-23: 1 cm over it)
     # Guitar on an A-frame stand, SE corner
     gx, gy = ROOM_W/2.0-0.5, 0.9
     for ss in (-1, +1):
@@ -141,21 +143,26 @@ def build_hero_props():
     closed door (narrowed to bedroom width), the guitar case, the
     face-down phone, the carpet the phone lands on."""
     wood = (0.42, 0.30, 0.20, 1.0)
-    # Bedside lamp on the nightstand
-    make_cyl("Bedside_Lamp_Base", (-0.05, 2.95, 0.50), 0.07, 0.03, wood, segments=10)
-    make_cyl("Bedside_Lamp_Post", (-0.05, 2.95, 0.62), 0.014, 0.20, (0.20, 0.19, 0.20, 1.0), segments=6)
-    make_cyl("Bedside_Lamp_Shade", (-0.05, 2.95, 0.76), 0.10, 0.14, (0.86, 0.76, 0.58, 1.0), segments=10)
+    # Bedside lamp on the nightstand (2026-09-23: the lamp and both
+    # notebooks stayed at y 2.95 when the bed and nightstand moved to the
+    # N wall on 09-10 — on nothing, 1.2 m from the table they belong on)
+    make_cyl("Bedside_Lamp_Base", (-0.17, 4.25, 0.495), 0.07, 0.03, wood, segments=10)
+    make_cyl("Bedside_Lamp_Post", (-0.17, 4.25, 0.61), 0.014, 0.20, (0.20, 0.19, 0.20, 1.0), segments=6)
+    make_cyl("Bedside_Lamp_Shade", (-0.17, 4.25, 0.76), 0.10, 0.14, (0.86, 0.76, 0.58, 1.0), segments=10)
     # The bridge notebook + the songwriting notebook
-    make_box("Bridge_Notebook", (-0.14, 2.90, 0.50), (0.15, 0.21, 0.015), (0.30, 0.44, 0.62, 1.0))
-    make_box("Song_Notebook", (0.12, 2.98, 0.50), (0.15, 0.21, 0.015), (0.62, 0.30, 0.26, 1.0))
+    # the two notebooks stacked at the front of the top
+    make_box("Bridge_Notebook", (-0.08, 4.04, 0.4875), (0.15, 0.21, 0.015), (0.30, 0.44, 0.62, 1.0))
+    make_box("Song_Notebook", (-0.06, 4.05, 0.5025), (0.15, 0.21, 0.015), (0.62, 0.30, 0.26, 1.0))
     # Narrow the garage-sized S gap and hang the CLOSED door
     make_box("Door_Jamb_W", (-0.72, 0.0, 1.15), (0.56, 0.20, 2.30), PAL_WALL["wall"])
     make_box("Door_Jamb_E", (0.72, 0.0, 1.15), (0.56, 0.20, 2.30), PAL_WALL["wall"])
     make_box("Bedroom_Door", (0.0, 0.04, 1.02), (0.88, 0.05, 2.04), wood)
     make_cyl("Door_Knob", (0.32, 0.09, 1.00), 0.03, 0.04, (0.66, 0.52, 0.24, 1.0), axis='Y', segments=8)
     # Guitar case laid beside the stand
-    make_box("Guitar_Case", (1.35, 0.45, 0.08), (0.45, 1.20, 0.16), (0.16, 0.14, 0.13, 1.0))
-    make_box("Guitar_Case_Ridge", (1.35, 0.45, 0.17), (0.28, 1.00, 0.03), (0.22, 0.19, 0.17, 1.0))
+    # along the S wall between the record crate and the E wall (2026-09-23:
+    # 25 cm into the S wall and under the guitar stand's legs)
+    make_box("Guitar_Case", (1.33, 0.35, 0.08), (1.10, 0.45, 0.16), (0.16, 0.14, 0.13, 1.0))
+    make_box("Guitar_Case_Ridge", (1.33, 0.35, 0.17), (0.92, 0.28, 0.03), (0.22, 0.19, 0.17, 1.0))
     # The carpet (the phone lands face-down on it) + the phone
     make_cyl("Carpet", (-0.4, 2.0, 0.010), 1.05, 0.008, (0.46, 0.40, 0.34, 1.0), segments=16)
     make_box("Phone_Facedown", (-0.55, 1.9, 0.024), (0.08, 0.16, 0.012), (0.14, 0.14, 0.16, 1.0))

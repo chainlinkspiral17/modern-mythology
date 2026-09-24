@@ -52,7 +52,9 @@ def build_sea():
     make_box("Surf_0", (0.0, 10.6, 0.035), (36.0, 0.25, 0.02), COL_SURF)
     make_box("Surf_1", (-2.0, 11.5, 0.03), (30.0, 0.20, 0.02), COL_SURF)
     make_box("Surf_2", (3.0, 12.6, 0.03), (26.0, 0.16, 0.02), COL_SURF)
-    make_box("Sea_Near", (0.0, 14.5, 0.0), (44.0, 7.0, 0.05), COL_SEA)
+    # up to the tide gleam (2026-09-23: a 70 cm strip of nothing between
+    # the gleam and the sea, with the first surf line floating over it)
+    make_box("Sea_Near", (0.0, 14.15, 0.0), (44.0, 7.7, 0.05), COL_SEA)
     make_box("Sea_Far", (0.0, 21.0, 0.4), (52.0, 6.0, 0.05), COL_SEA_FAR)
 
 
@@ -88,7 +90,8 @@ def build_grunion():
     for i in range(26):
         gx = -14.0 + (i * 41) % 28 + 0.35 * ((i * 7) % 3)
         gy = 9.3 + 0.011 * ((i * 13) % 100)
-        make_box(f"Grunion_{i}", (gx, gy, 0.055),
+        # on the gleam, or on the sea past it (2026-09-23: 2 cm over the sea)
+        make_box(f"Grunion_{i}", (gx, gy, 0.055 if gy <= 10.3 else 0.035),
                  (0.16, 0.045, 0.02), COL_GRUNION)
 
 

@@ -77,12 +77,15 @@ def build_layout_island():
                 make_box(f"Desk_{i}_Leg_{lx:.2f}_{ly:.2f}", (lx, ly, 0.36),
                          (0.05, 0.05, 0.72), COL_DESK_LEG)
     # Paste-up pages fanned across the island
-    pages = [(-1.1, 2.2, 0.0), (-0.45, 2.55, 0.012), (0.2, 2.3, 0.0),
-             (0.9, 2.6, 0.012), (-0.8, 3.3, 0.0), (0.1, 3.5, 0.012),
-             (0.95, 3.25, 0.0), (-0.15, 2.95, 0.024)]
+    # flat on the island; only page 7 overlaps another (page 1) and lies
+    # on it (2026-09-23: three pages hung 1.3 cm over the desk tops on
+    # stacking heights with nothing under them)
+    pages = [(-1.1, 2.2, 0.0), (-0.45, 2.55, 0.0), (0.2, 2.3, 0.0),
+             (0.9, 2.6, 0.0), (-0.8, 3.3, 0.0), (0.1, 3.5, 0.0),
+             (0.95, 3.25, 0.0), (-0.15, 2.95, 0.008)]
     for i, (px, py, dz) in enumerate(pages):
         col = COL_PAPER if i % 3 else COL_PAPER_DK
-        make_box(f"Page_{i}", (px, py, 0.75 + dz), (0.34, 0.44, 0.008), col)
+        make_box(f"Page_{i}", (px, py, 0.749 + dz), (0.34, 0.44, 0.008), col)
     # Katrina's camera, strap pooled beside it on the island
     make_box("Camera_Body", (-1.05, 3.45, 0.80), (0.22, 0.14, 0.13), COL_TYPE)
     make_cyl("Camera_Lens", (-1.05, 3.36, 0.80), 0.05, 0.06, COL_DESK_LEG,

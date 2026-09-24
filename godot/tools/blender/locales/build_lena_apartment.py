@@ -112,45 +112,48 @@ def build_kitchen():
     # The window over the sink → the alley + the Starfish Nebula mural
     # anchored on the wall's room face, built toward the room (2026-09-23: the glass was inside the wall)
     make_window("Kitchen_Window", (-ROOM_W/2.0 + 0.10, 1.30, 1.50), width=1.10, height=1.10, axis='Y', room_dir=+1)
-    # Counter run
-    make_box("Counter_Body", (-2.20, 1.40, 0.44), (0.60, 2.00, 0.88), COL_WOOD)
-    make_box("Counter_Top", (-2.20, 1.40, 0.90), (0.64, 2.06, 0.05), COL_COUNTER)
-    make_box("Sink_Bowl", (-2.24, 1.30, 0.905), (0.42, 0.44, 0.05), (0.42, 0.44, 0.45, 1.0))
+    # Counter run (2026-09-23: the whole run — counter, sink, stove,
+    # kettle, grinder — stood 10 cm inside the W wall; shifted out 0.10)
+    make_box("Counter_Body", (-2.10, 1.40, 0.44), (0.60, 2.00, 0.88), COL_WOOD)
+    make_box("Counter_Top", (-2.10, 1.40, 0.90), (0.64, 2.06, 0.05), COL_COUNTER)
+    make_box("Sink_Bowl", (-2.14, 1.30, 0.905), (0.42, 0.44, 0.05), (0.42, 0.44, 0.45, 1.0))
     # draft 4 (2026-09-17): the faucet is a gooseneck, not a post
-    make_lathe("Faucet_Base", (-2.44, 1.30, 0.93), [(0.035, 0.0), (0.03, 0.01), (0.02, 0.02), (0.02, 0.06)], COL_STEEL, segments=8)
-    make_tube("Faucet", [(-2.44, 1.30, 0.98), (-2.44, 1.30, 1.16), (-2.40, 1.30, 1.22), (-2.33, 1.30, 1.22), (-2.28, 1.30, 1.17), (-2.27, 1.30, 1.12)],
+    make_lathe("Faucet_Base", (-2.27, 1.30, 0.93), [(0.035, 0.0), (0.03, 0.01), (0.02, 0.02), (0.02, 0.06)], COL_STEEL, segments=8)
+    make_tube("Faucet", [(-2.27, 1.30, 0.98), (-2.27, 1.30, 1.16), (-2.23, 1.30, 1.22), (-2.16, 1.30, 1.22), (-2.11, 1.30, 1.17), (-2.10, 1.30, 1.12)],
               0.014, COL_STEEL, segments=6)
-    make_cyl("Faucet_Handle", (-2.44, 1.38, 1.00), 0.008, 0.06, COL_STEEL, axis='Y', segments=5)
+    make_cyl("Faucet_Handle", (-2.27, 1.365, 1.00), 0.008, 0.06, COL_STEEL, axis='Y', segments=5)
     # Dish drainer beside the sink
-    make_box("Dish_Drainer", (-2.20, 1.82, 0.945), (0.34, 0.28, 0.06), COL_STEEL)
-    make_box("Drainer_Plate", (-2.20, 1.82, 1.00), (0.03, 0.20, 0.16), (0.86, 0.82, 0.74, 1.0))
+    make_box("Dish_Drainer", (-2.10, 1.82, 0.945), (0.34, 0.28, 0.06), COL_STEEL)
+    make_box("Drainer_Plate", (-2.10, 1.82, 1.00), (0.03, 0.20, 0.16), (0.86, 0.82, 0.74, 1.0))
     # Stove at the counter's S end, kettle on it
-    make_chamfer_box("Stove_Body", (-2.18, 0.50, 0.44), (0.62, 0.62, 0.88), (0.82, 0.80, 0.76, 1.0), chamfer=0.01)
-    make_box("Stove_Top", (-2.18, 0.50, 0.895), (0.60, 0.60, 0.03), (0.22, 0.22, 0.24, 1.0))
+    make_chamfer_box("Stove_Body", (-2.08, 0.50, 0.44), (0.62, 0.62, 0.88), (0.82, 0.80, 0.76, 1.0), chamfer=0.01)
+    make_box("Stove_Top", (-2.08, 0.50, 0.895), (0.60, 0.60, 0.03), (0.22, 0.22, 0.24, 1.0))
     for bi, (ox, oy) in enumerate(((-0.15, -0.15), (0.15, -0.15), (-0.15, 0.15), (0.15, 0.15))):
-        make_cyl(f"Burner_{bi}", (-2.18+ox, 0.50+oy, 0.912), 0.09, 0.01,
+        make_cyl(f"Burner_{bi}", (-2.08+ox, 0.50+oy, 0.912), 0.09, 0.01,
                  (0.14, 0.14, 0.15, 1.0), segments=10)
     # draft 4: the stove's face — four knobs, the oven door's seam and
     # its towel bar, the kettle a turned body with a spout and bail
     for ki in range(4):
-        make_lathe(f"Stove_Knob_{ki}", (-2.18 - 0.21 + ki * 0.14, 0.50 - 0.312, 0.80),
+        make_lathe(f"Stove_Knob_{ki}", (-2.08 - 0.21 + ki * 0.14, 0.50 - 0.312, 0.80),
                    [(0.0, 0.0), (0.02, 0.0), (0.022, 0.012), (0.014, 0.02), (0.0, 0.02)],
                    (0.16, 0.16, 0.17, 1.0), segments=8)
-    make_box("Stove_Oven_Seam", (-2.18, 0.50 - 0.312, 0.66), (0.54, 0.004, 0.006), (0.60, 0.58, 0.55, 1.0))
-    make_tube("Stove_Oven_Bar", [(-2.42, 0.50 - 0.34, 0.60), (-1.94, 0.50 - 0.34, 0.60)], 0.012, COL_STEEL, segments=6)
-    make_lathe("Kettle", (-2.03, 0.35, 0.91),
+    make_box("Stove_Oven_Seam", (-2.08, 0.50 - 0.312, 0.66), (0.54, 0.004, 0.006), (0.60, 0.58, 0.55, 1.0))
+    make_tube("Stove_Oven_Bar", [(-2.32, 0.50 - 0.322, 0.60), (-1.84, 0.50 - 0.322, 0.60)], 0.012, COL_STEEL, segments=6)
+    make_lathe("Kettle", (-1.93, 0.35, 0.91),
                [(0.06, 0.0), (0.10, 0.02), (0.105, 0.09), (0.08, 0.14), (0.05, 0.16), (0.055, 0.175), (0.02, 0.19), (0.0, 0.19)],
                COL_STEEL, segments=12)
-    make_tube("Kettle_Spout", [(-2.12, 0.35, 0.97), (-2.16, 0.35, 1.02), (-2.18, 0.35, 1.07)], 0.012, COL_STEEL, segments=6)
-    make_tube("Kettle_Handle", [(-1.97, 0.35, 1.06), (-1.96, 0.35, 1.13), (-2.03, 0.35, 1.16), (-2.10, 0.35, 1.13), (-2.09, 0.35, 1.06)],
+    make_tube("Kettle_Spout", [(-2.02, 0.35, 0.97), (-2.06, 0.35, 1.02), (-2.08, 0.35, 1.07)], 0.012, COL_STEEL, segments=6)
+    make_tube("Kettle_Handle", [(-1.87, 0.35, 1.06), (-1.86, 0.35, 1.13), (-1.93, 0.35, 1.16), (-2.00, 0.35, 1.13), (-1.99, 0.35, 1.06)],
               0.008, (0.20, 0.18, 0.16, 1.0), segments=5)
     # Cast iron pan hanging by the stove; hand grinder + cone on top
-    make_cyl("CastIron_Pan", (-2.44, 0.82, 1.35), 0.14, 0.03, (0.16, 0.16, 0.17, 1.0), axis='Y', segments=12)
-    make_tube("CastIron_Pan_Handle", [(-2.44, 0.82, 1.49), (-2.44, 0.82, 1.62)], 0.012, (0.16, 0.16, 0.17, 1.0), segments=5)
-    make_chamfer_box("Coffee_Grinder", (-2.28, 2.28, 1.00), (0.10, 0.10, 0.16), COL_WOOD, chamfer=0.006)
-    make_lathe("Coffee_Grinder_Hopper", (-2.28, 2.28, 1.08), [(0.03, 0.0), (0.045, 0.02), (0.045, 0.03), (0.0, 0.03)], COL_STEEL, segments=8)
-    make_tube("Coffee_Grinder_Crank", [(-2.28, 2.28, 1.11), (-2.28, 2.28, 1.14), (-2.22, 2.28, 1.14), (-2.22, 2.28, 1.17)], 0.005, COL_STEEL, segments=5)
-    make_lathe("Coffee_Cone", (-2.12, 2.28, 0.925), [(0.025, 0.0), (0.03, 0.005), (0.062, 0.085), (0.064, 0.09), (0.0, 0.09)],
+    # flat against the wall over the stove (2026-09-23: edge-on, half in
+    # the wall, and in front of the window once it showed)
+    make_cyl("CastIron_Pan", (-2.385, 0.50, 1.35), 0.14, 0.03, (0.16, 0.16, 0.17, 1.0), axis='X', segments=12)
+    make_tube("CastIron_Pan_Handle", [(-2.385, 0.50, 1.49), (-2.385, 0.50, 1.62)], 0.012, (0.16, 0.16, 0.17, 1.0), segments=5)
+    make_chamfer_box("Coffee_Grinder", (-2.18, 2.28, 1.00), (0.10, 0.10, 0.16), COL_WOOD, chamfer=0.006)
+    make_lathe("Coffee_Grinder_Hopper", (-2.18, 2.28, 1.08), [(0.03, 0.0), (0.045, 0.02), (0.045, 0.03), (0.0, 0.03)], COL_STEEL, segments=8)
+    make_tube("Coffee_Grinder_Crank", [(-2.18, 2.28, 1.11), (-2.18, 2.28, 1.14), (-2.12, 2.28, 1.14), (-2.12, 2.28, 1.17)], 0.005, COL_STEEL, segments=5)
+    make_lathe("Coffee_Cone", (-2.02, 2.28, 0.925), [(0.025, 0.0), (0.03, 0.005), (0.062, 0.085), (0.064, 0.09), (0.0, 0.09)],
                (0.86, 0.82, 0.74, 1.0), segments=10)
     # Fridge, E wall near the S corner ("four eggs in the carton on
     # the second shelf") — a door seam, a chamfered pull, one photo
@@ -184,7 +187,8 @@ def build_kitchen_table():
                          (0.34 if ang_off[1]==0.0 else 0.10,
                           0.10 if ang_off[1]==0.0 else 0.34, h), COL_OAK, chamfer=0.012)
     # Four mismatched chairs
-    for ci, (cx, cy) in enumerate(((tx-1.0, ty), (tx+1.0, ty), (tx, ty-1.0), (tx, ty+1.0))):
+    # 0.78 m out, at the table (2026-09-23: at 1.0 m chair 0 stood in the counter)
+    for ci, (cx, cy) in enumerate(((tx-0.78, ty), (tx+0.78, ty), (tx, ty-0.78), (tx, ty+0.78))):
         wood = CHAIR_WOODS[ci]
         back_dx = -0.20 if cx < tx else (0.20 if cx > tx else 0.0)
         back_dy = -0.20 if cy < ty else (0.20 if cy > ty else 0.0)
@@ -282,7 +286,7 @@ def build_dressing():
     the old build the prose supports, kept."""
     BOOK_COLS = [(0.62, 0.24, 0.24, 1.0), (0.24, 0.42, 0.52, 1.0),
                  (0.72, 0.62, 0.30, 1.0), (0.30, 0.46, 0.34, 1.0)]
-    shx = ROOM_W/2.0 - 0.20
+    shx = ROOM_W/2.0 - 0.25   # against the E wall face (2026-09-23: 5 cm into it)
     make_box("Shelf_Body", (shx, ROOM_D-1.2, 0.90), (0.30, 1.00, 1.80), COL_WOOD)
     for r in range(4):
         for c in range(6):
@@ -316,7 +320,7 @@ def build_canvas_2026_08():
     gesso = (0.90, 0.88, 0.82, 1.0)
     block = (0.36, 0.46, 0.52, 1.0)      # the blocked-in shape
     block_dk = (0.24, 0.32, 0.40, 1.0)
-    ex, ey = -1.72, 2.35                 # in the west window's light
+    ex, ey = -1.45, 2.35                 # in the west window's light, clear of the counter (2026-09-23: a leg through its top)
     # Easel: two front legs splayed, one back leg, a mast, a tray
     for sgn in (-1, 1):
         make_box("Easel_Leg_%d" % sgn, (ex + sgn * 0.30, ey - 0.10, 0.72),
@@ -455,7 +459,7 @@ def build_wear_personality_2026_08():
                      tint=(0.38, 0.35, 0.30, 1.0), segments=9)
     # Charcoal smudge on the west wall at hand height, where she
     # steadies herself leaning in to the board.
-    make_box("Wear_CharcoalSmudge", (-2.46, 2.15, 1.32), (0.012, 0.16, 0.10),
+    make_box("Wear_CharcoalSmudge", (-2.394, 2.15, 1.32), (0.012, 0.16, 0.10),   # on the wall face (2026-09-23: inside it)
              (0.24, 0.23, 0.22, 1.0))
     # ── SIXTY-ONE DEGREES ──────────────────────────────────────
     # The thermostat reads what it reads; the draft towel at the
@@ -603,7 +607,9 @@ def build_draft4_2026_09():
     # ── the floor lamp, east of the couch, cord to the E wall ──
     make_lamp("Floor_Lamp", 1.88, 3.95, base_z=0.0, h=1.45, shade_col=(0.90, 0.84, 0.70, 1.0))
     make_wall_outlet("Outlet_E_1", (ROOM_W / 2.0, 3.00), axis='Y', face_sign=-1, z=0.30, aged=True)
-    make_cord_run("Cord_1", (1.92, 3.95, 0.03), (ROOM_W / 2.0 - 0.13, 3.00, 0.30), sag=0.02)
+    # round the bookshelf, not through it (2026-09-23)
+    make_cord_run("Cord_1", (1.92, 3.95, 0.03), (1.95, 3.10, 0.03), sag=0.0)
+    make_cord_run("Cord_1b", (1.95, 3.10, 0.03), (ROOM_W / 2.0 - 0.13, 3.00, 0.30), sag=0.02)
     # ── the switch by the door (S wall, east of the door) ──
     make_light_switch("Switch_Door", (1.15, 0.0), axis='X', face_sign=1, z=1.20, aged=True)   # on Wall_S_E (the opening runs x -1..1)
     # ── the space heater's cord to the E wall ──
