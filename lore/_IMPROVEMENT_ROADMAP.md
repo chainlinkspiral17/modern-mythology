@@ -2463,6 +2463,25 @@ qa/contact/_glb_diag.txt and contact_push now carries .txt.
 NEXT (draft 26): the full rebuild again (geometry.py changed) → sheet →
 read _glb_diag.txt: expect "converted N colours" in the build log and
 linear values in the diag; THEN judge the draft 22–23 light re-aims.
+TWENTY-SIXTH PASS — THE FILES WERE RIGHT; GODOT'S DEFAULT WAS NOT. The
+Deck's glb_diag output: every GLB written by "Khronos glTF Blender I/O
+v5.2.39" (the Blender update, confirmed), COLOR_0 as normalised u16, and
+the values CORRECT — cedar tower's desk asks for (0.58, 0.42, 0.28) and
+holds (0.296, 0.147, 0.063), exactly srgb_to_linear. The draft-25
+"gamma flip" diagnosis was WRONG (its read-back fix measures first, found
+nothing to fix, and stays as a harmless guard). The decider: the DINER
+was rebuilt on the same exporter (10:39) and stayed in colour — its scene
+runs LocaleSetup.gd, which puts a vertex-colour-as-albedo material on
+every mesh; the white scenes use the material Godot's importer makes for
+a material-less primitive, which with the v5 files no longer reads the
+colours. FIX (runtime, no rebuild): scripts/VertexColorGuard.gd, called
+from MoodCycler._ready on the locale root (every locale scene, walkable
+and VN background alike) — for every surface that HAS a colour array and
+an untextured StandardMaterial3D without vertex_color_use_as_albedo (or
+no material), a cached copy with the flag on; real materials untouched.
+NEXT (draft 27): pull + sheet only (no rebuild needed for this) → every
+room in colour? THEN the draft 22–23 light re-aims on real colour, then
+the carried list.
 
 **2026-09-19 · DESIGN · the two decorative checks made real, the first
 remembered choice.** Nate's basement (ch6) and Tem staying (ch8): the

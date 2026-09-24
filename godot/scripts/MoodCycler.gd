@@ -16,6 +16,8 @@
 
 extends CanvasLayer
 
+const _VERTEX_COLOR_GUARD := preload("res://scripts/VertexColorGuard.gd")
+
 const MOODS: Array = [
 	# ── naturalistic time-of-day ─────────────────────────────────
 	{
@@ -1512,6 +1514,16 @@ func _ready() -> void:
 		_collect_lights(root)
 	for i in range(_scene_lights.size()):
 		_scene_light_phase.append(float(i) * 1.273)   # ~irrational so they don't sync
+	# Vertex colours ON for every locale mesh that carries them (2026-09-24:
+	# after the Deck's Blender update the imported default material stopped
+	# reading COLOR_0 and ~80 rooms rendered white — see VertexColorGuard).
+	# This node's parent is the locale root, in a walkable scene and as a
+	# VN background alike.
+	var vc_root: Node = get_parent()
+	if vc_root != null:
+		var vc_fixed: int = _VERTEX_COLOR_GUARD.apply(vc_root)
+		if vc_fixed > 0:
+			print("[Mood] vertex colours switched on for %d surface(s)" % vc_fixed)
 
 	# Per-scene starting style pack — applied AFTER strata + lights are
 	# resolved so the lighting transition has somewhere to lerp from.

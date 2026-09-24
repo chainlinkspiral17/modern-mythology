@@ -576,6 +576,12 @@ banisters classed · pans as containers.
   depends on a fact only the Deck holds, ship the fix that MEASURES the
   fact (read the file back) and a diagnostic that reports it
   (_glb_diag.txt rides back with the sheet), not a guess.
+- **…and the measurement overturned the guess (twenty-sixth pass).** The
+  diagnostic showed the file colours were exactly right; the washed
+  rooms were Godot's import default ignoring them. The control case was
+  in the data all along: one room (the diner) on the same exporter
+  stayed in colour — find what the working case does differently
+  before theorising about the broken ones.
 
 ### 2026-09-06 · a builder that raises under the recorder is dropped without a flag
 

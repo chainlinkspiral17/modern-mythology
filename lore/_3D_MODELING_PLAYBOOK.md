@@ -415,6 +415,13 @@ Louisville's hurricane-deck proportions"). Don't guess at numbers.
   (0.5 → 0.73). Measure, don't guess the version: every export now
   goes through `_props.glb_colorfix.postfix(path, bpy)`, which reads
   the file back and linearises COLOR_0 only when it is unconverted.
+- **Correction (same day): the files were right.** Blender 5.2's
+  exporter writes COLOR_0 correctly (normalised u16, linear). What
+  changed is Godot's import DEFAULT material for a material-less
+  primitive: it no longer uses the vertex colours. Every locale now
+  runs `scripts/VertexColorGuard.gd` (from MoodCycler) to switch
+  vertex_color_use_as_albedo on for surfaces that carry colours. A
+  locale scene without a MoodCycler must call it itself.
 
 ### 2026-09-24 · the glass cases were solid blocks with the product inside
 
