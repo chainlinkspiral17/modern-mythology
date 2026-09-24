@@ -88,11 +88,12 @@ SKY = re.compile(r"(sky|horizon|far(?!_door)|band|void|haze)", re.I)
 # hexagon in Cape Perpetua's fog).
 _PASSABLE_RE = re.compile(r"(fog|haze|mist|smoke|steam|cloud|canopy|foliage|_C[0-9]|_L[0-9]|salal|shrub|bush|leaf|leaves|spray|stream|"
                           r"crown|needles|fern|grass|reed|hedge|vine|ivy|moss|drape|sheer|curtain|frond|palm|leader|"
-                          r"pine|fir|spruce|cedar|cypress|oak|alder|willow|maple|tree|"
-                          # window glass and its tint pane (2026-09-23): a lens sees
-                          # THROUGH a window — the cabin's crow insert is shot through
-                          # the kitchen glass, which only became visible this pass
-                          r"glass|_warm$)", re.I)
+                          r"pine|fir|spruce|cedar|cypress|oak|alder|willow|maple|tree)", re.I)
+# NOT glass (2026-09-24, reverting 09-23's "glass|_warm$"): the pipeline
+# has no alpha, so a glass slab and its warm tint pane render OPAQUE.
+# Calling them passable made the cabin's crow insert pass while the
+# frame showed a grey pane and no crow. A lens sees through a window
+# only when the window has no glass (make_window(see_through=True)).
 _SOLID_RE = re.compile(r"(trunk|stump|log|pole|post|butt)", re.I)
 
 

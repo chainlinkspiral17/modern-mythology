@@ -114,10 +114,16 @@ def build_deck_wall():
             make_chamfer_box(f"Deck_{r}_{c}", (-4.36, dy, dz), (0.05, 0.22, 0.82), tint, chamfer=0.03)
             make_box(f"Deck_{r}_{c}_Stripe", (-4.33, dy, dz + 0.15), (0.04, 0.18, 0.10),
                      DECK_TINTS[(r * 7 + c + 3) % len(DECK_TINTS)])
-    # The glass front Kai cleans
-    make_box("DeckWall_Glass", (-4.10, 3.8, 1.30), (0.02, 4.3, 2.20), COL_GLASS)
-    make_box("DeckWall_Glass_Frame_T", (-4.10, 3.8, 2.42), (0.05, 4.4, 0.06), COL_STEEL)
-    make_box("DeckWall_Glass_Frame_B", (-4.10, 3.8, 0.18), (0.05, 4.4, 0.06), COL_STEEL)
+    # The glass front Kai cleans — its frame on two end posts, the glass
+    # itself as two glints (2026-09-24: a 4.3 x 2.2 m "glass" slab — this
+    # pipeline has no alpha, so it rendered as a lavender wall over every
+    # deck; the insert_decks / insert_deckwall frames were one flat colour)
+    for pe, py_ in (("S", 1.625), ("N", 5.975)):
+        make_box(f"DeckWall_Glass_Post_{pe}", (-4.10, py_, 1.225), (0.05, 0.05, 2.45), COL_STEEL)
+    make_box("DeckWall_Glass_Frame_T", (-4.10, 3.8, 2.42), (0.05, 4.30, 0.06), COL_STEEL)
+    make_box("DeckWall_Glass_Frame_B", (-4.10, 3.8, 0.18), (0.05, 4.30, 0.06), COL_STEEL)
+    for gi, (gy, gw) in enumerate(((2.3, 0.03), (2.45, 0.012), (4.9, 0.02))):
+        make_box(f"DeckWall_Glint_{gi}", (-4.10, gy, 1.30), (0.004, gw, 2.18), (0.86, 0.90, 0.92, 1.0))
 
 
 def build_counter():

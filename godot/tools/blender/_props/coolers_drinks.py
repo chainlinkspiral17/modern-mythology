@@ -7,6 +7,11 @@
 import math
 from . import palette as P
 from .geometry import make_box, make_cyl
+from .structure import make_case_shell
+
+# The glint on a glass door that is not modelled (no alpha in this
+# pipeline — see make_case_shell): two thin pale strips frame to frame.
+GLINT = (0.82, 0.88, 0.92, 1.0)
 
 
 def make_cooler_door(prefix, anchor, *,
@@ -17,26 +22,28 @@ def make_cooler_door(prefix, anchor, *,
     anchor=(door_center_x, wall_y, door_center_z).
     Caller chains multiple doors along a wall."""
     palette = palette or {}
-    glass = palette.get("glass", P.COOLER_GLASS)
     interior = palette.get("interior", P.COOLER_INTERIOR)
     steel = palette.get("steel", P.METAL_STEEL)
     handle = palette.get("handle", P.METAL_BLACK)
     tints = palette.get("tints", P.SNACK_TINTS)
     cx, wall_y, cz = anchor
-    # Interior box
-    make_box(f"{prefix}_Interior",
-             (cx, wall_y + 0.30, cz),
-             (1.30, 0.40, 2.20), interior)
+    # The case: a five-panel shell open to the room (-Y), from the
+    # frame's foot to the old box's top (2026-09-24: a SOLID interior
+    # box with the shelves, six-packs and cans modelled inside it,
+    # behind an opaque "glass" slab — none of it could render)
+    z_lo, z_hi = cz - 1.06, cz + 1.10
+    make_case_shell(f"{prefix}_Interior", (cx, wall_y + 0.30, (z_lo + z_hi) / 2.0),
+                    (1.30, 0.40, z_hi - z_lo), interior, open_face='-Y')
     if cz - 1.06 > 0.03:   # a plinth to the floor under the body AND the door frame (2026-09-22: kwik's four coolers hung 20 cm up)
         make_box(f"{prefix}_Plinth", (cx, wall_y + 0.25, (cz - 1.06) / 2.0), (1.30, 0.50, cz - 1.06), (0.20, 0.20, 0.22, 1.0))
-    # Back mirror (recursion canon)
+    # Back mirror (recursion canon) — on the back panel's face
     make_box(f"{prefix}_BackMirror",
-             (cx, wall_y + 0.485, cz),
-             (1.20, 0.005, 2.10), (0.18, 0.30, 0.42, 0.85))
-    # Glass front
-    make_box(f"{prefix}_Glass",
-             (cx, wall_y + 0.06, cz),
-             (1.24, 0.04, 2.10), glass)
+             (cx, wall_y + 0.4775, cz),
+             (1.20, 0.005, 2.00), (0.18, 0.30, 0.42, 0.85))
+    # The door: frame + two glints where the glass is (no glass slab)
+    for gi, (gx, gw) in enumerate(((-0.34, 0.03), (-0.26, 0.012))):
+        make_box(f"{prefix}_Glint_{gi}", (cx + gx, wall_y + 0.06, cz),
+                 (gw, 0.004, 2.08), GLINT)
     # Frame
     for sgn, label in [(-1, 'L'), (+1, 'R')]:
         make_box(f"{prefix}_Frame_{label}",
@@ -59,28 +66,29 @@ def make_cooler_door(prefix, anchor, *,
         make_cyl(f"{prefix}_Gasket_{sgn}",
                  (cx, wall_y + 0.05, cz + sgn * 1.04),
                  0.008, 1.20, (0.12, 0.12, 0.14, 1.0), axis='X')
-    # Shelves + product
+    # Shelves side panel to side panel, front lip to the back panel;
+    # product standing ON them (it hung 1-4 cm over them inside the box)
     for sh in range(shelves):
         shz = cz - 0.90 + sh * 0.42
         make_box(f"{prefix}_Shelf_{sh}",
                  (cx, wall_y + 0.30, shz),
-                 (1.20, 0.30, 0.02), steel)
+                 (1.26, 0.36, 0.02), steel)
         if include_six_packs:
             for b in range(sixpacks_per_shelf):
                 bx = cx - 0.48 + b * 0.24
                 tint = tints[(sh + b) % len(tints)]
                 make_box(f"{prefix}_Sixpack_{sh}_{b}",
-                         (bx, wall_y + 0.30, shz + 0.20),
-                         (0.20, 0.22, 0.30), tint)
+                         (bx, wall_y + 0.33, shz + 0.01 + 0.13),
+                         (0.20, 0.22, 0.26), tint)
         if include_cans:
             for c in range(cans_per_shelf):
                 bx = cx - 0.50 + c * 0.20
                 tint = tints[(sh + c + 3) % len(tints)]
                 make_cyl(f"{prefix}_Can_{sh}_{c}",
-                         (bx, wall_y + 0.16, shz + 0.08),
+                         (bx, wall_y + 0.18, shz + 0.01 + 0.08),
                          0.04, 0.16, tint)
                 make_cyl(f"{prefix}_CanLid_{sh}_{c}",
-                         (bx, wall_y + 0.16, shz + 0.16),
+                         (bx, wall_y + 0.18, shz + 0.01 + 0.165),
                          0.04, 0.01, (0.78, 0.80, 0.82, 1.0))
 
 

@@ -80,7 +80,7 @@ echo ""
 # slip) and lit ceilings instead of floors. Nonzero exit fails.
 echo "── light_direction_audit.py ──"
 LOUT="$(python3 light_direction_audit.py 2>/dev/null)" || {
-    echo "$LOUT" | grep "UPWARD"; exit 1; }
+    echo "$LOUT" | grep -E "^(UPWARD|LEVEL)"; exit 1; }
 echo "$LOUT" | tail -1
 echo ""
 

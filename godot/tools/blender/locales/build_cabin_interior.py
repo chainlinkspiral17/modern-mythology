@@ -136,7 +136,11 @@ def build_kitchen():
         make_cyl(f"PotRack_Pot_{i}", (-1.7, py, 1.82 - h / 2.0 + 0.01), r, h, col, segments=10)   # hangs from its hook
     # The kitchen window (N wall over the counter's end)…
     # anchored on the wall's room face, built toward the room (2026-09-23: the glass was inside the wall)
-    make_window("Kitchen_Window", (-1.6, ROOM_D - 0.10, 1.48), width=1.00, height=0.95)
+    # see_through (2026-09-24): the crow on the OUTSIDE sill is the reason
+    # this window exists, and the glass + warm pane render opaque — the
+    # crow insert was filming a grey pane
+    make_window("Kitchen_Window", (-1.6, ROOM_D - 0.10, 1.48), width=1.00, height=0.95,
+                see_through=True)
     # …and the black rotary phone on a small table beside it
     make_box("Phone_Table", (-2.60, 5.35, 0.30), (0.45, 0.45, 0.60), COL_WOOD)
     make_box("Phone_Body", (-2.60, 5.35, 0.66), (0.24, 0.20, 0.10), (0.10, 0.10, 0.11, 1.0))

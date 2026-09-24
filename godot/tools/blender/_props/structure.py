@@ -114,7 +114,8 @@ def make_crown_molding(prefix, *, wall_x, wall_y, length, axis,
 
 
 def make_window(prefix, anchor, *, width=2.60, height=1.50,
-                cross_mullion=True, palette=None, axis='X', room_dir=-1):
+                cross_mullion=True, palette=None, axis='X', room_dir=-1,
+                see_through=False):
     """Mullioned multi-pane glass window.
 
     axis='X' (default): the window lies in a NORTH or SOUTH wall and
@@ -135,7 +136,14 @@ def make_window(prefix, anchor, *, width=2.60, height=1.50,
     wall). The glass and frame are built from the anchor toward the
     room. Before this, every south/west-wall window was built INTO its
     wall, and callers that passed the wall's centre line buried theirs
-    on any wall: 43 windows in 34 rooms were invisible."""
+    on any wall: 43 windows in 34 rooms were invisible.
+
+    see_through (2026-09-24): no glass and no warm pane — frame and
+    mullions only, the opening left empty, two glints on the frame
+    line. The pipeline has no alpha: the glass and the warm pane render
+    as two OPAQUE panels, so a window something must be SEEN through
+    (the cabin's crow on the outside sill) cannot have them (the 3D
+    modelling playbook's picture-window rule)."""
     palette = palette or {}
     glass = palette.get("glass", P.GLASS)
     frame = palette.get("frame", P.METAL_STEEL)
@@ -154,11 +162,17 @@ def make_window(prefix, anchor, *, width=2.60, height=1.50,
             return (cx + room_dir * inset, cy + off, cz + dz)
         return (cx + off, cy + room_dir * inset, cz + dz)
 
-    # Glass behind a slight warm tint (sun-through-window canon)
-    make_box(f"{prefix}_Glass", _at(0.0, 0.02, 0.0),
-             _sz(width, 0.005, height), glass)
-    make_box(f"{prefix}_Warm", _at(0.0, 0.01, 0.0),
-             _sz(width * 0.96, 0.001, height * 0.96), warm)
+    if see_through:
+        # glints on the pane line, sill frame to head frame
+        for gi, (go, gw) in enumerate(((-width * 0.18, 0.03), (-width * 0.12, 0.012))):
+            make_box(f"{prefix}_Glint_{gi}", _at(go, 0.075, 0.0),   # in front of MullH
+                     _sz(gw, 0.004, height - 0.10), (0.84, 0.88, 0.92, 1.0))
+    else:
+        # Glass behind a slight warm tint (sun-through-window canon)
+        make_box(f"{prefix}_Glass", _at(0.0, 0.02, 0.0),
+                 _sz(width, 0.005, height), glass)
+        make_box(f"{prefix}_Warm", _at(0.0, 0.01, 0.0),
+                 _sz(width * 0.96, 0.001, height * 0.96), warm)
     # Frame — top + bottom + sides
     make_box(f"{prefix}_FrameT", _at(0.0, 0.04, height / 2.0),
              _sz(width + 0.10, 0.08, 0.10), frame)
@@ -187,3 +201,37 @@ def make_door_hinges(prefix, *, edge_x, edge_y, edge_z_centers,
     for hi, hz in enumerate(edge_z_centers):
         make_cyl(f"{prefix}_{hi}", (edge_x, edge_y, hz),
                  0.018, 0.08, col, axis=axis)
+
+
+def make_case_shell(prefix, center, size, color, *, open_face='-Y', wall=0.02):
+    """A display case / cooler / cabinet body as FIVE PANELS with one
+    face open, same outer extents as a solid make_box(center, size).
+
+    2026-09-24 (support pass, twenty-third draft): every glass-front
+    case in the kits was a SOLID body with its product modelled inside
+    it and a tinted "glass" slab in front — and this pipeline has no
+    alpha (vertex colour only), so the glass rendered as an opaque
+    panel over a solid block: 95 objects per kwik stop cooler door that
+    no camera could ever see. Build the shell; put the product on
+    shelves inside it; frame the opening and leave the glass out.
+
+    Panels: `{prefix}_Top` / `_Bottom` span the full footprint; the two
+    sides sit between them; the back sits between the sides. Faces
+    touch, nothing overlaps. open_face: '-X', '+X', '-Y' or '+Y'."""
+    cx, cy, cz = center
+    sx, sy, sz = size
+    hx, hy, hz = sx / 2.0, sy / 2.0, sz / 2.0
+    w = wall
+    make_box(f"{prefix}_Top", (cx, cy, cz + hz - w / 2.0), (sx, sy, w), color)
+    make_box(f"{prefix}_Bottom", (cx, cy, cz - hz + w / 2.0), (sx, sy, w), color)
+    ih = sz - 2.0 * w
+    if open_face in ('-Y', '+Y'):
+        s = 1.0 if open_face == '-Y' else -1.0      # back is opposite the opening
+        make_box(f"{prefix}_Side_L", (cx - hx + w / 2.0, cy, cz), (w, sy, ih), color)
+        make_box(f"{prefix}_Side_R", (cx + hx - w / 2.0, cy, cz), (w, sy, ih), color)
+        make_box(f"{prefix}_Back", (cx, cy + s * (hy - w / 2.0), cz), (sx - 2.0 * w, w, ih), color)
+    else:
+        s = 1.0 if open_face == '-X' else -1.0
+        make_box(f"{prefix}_Side_L", (cx, cy - hy + w / 2.0, cz), (sx, w, ih), color)
+        make_box(f"{prefix}_Side_R", (cx, cy + hy - w / 2.0, cz), (sx, w, ih), color)
+        make_box(f"{prefix}_Back", (cx + s * (hx - w / 2.0), cy, cz), (w, sy - 2.0 * w, ih), color)

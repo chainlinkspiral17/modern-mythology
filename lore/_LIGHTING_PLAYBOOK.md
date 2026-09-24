@@ -151,6 +151,28 @@ Position note: lamp omnis are placed AT the lamp-head mesh position
 
 ## Recent lessons
 
+### 2026-09-24 · keys that shone sideways, rims that shone up
+
+- **An identity transform is a light pointing SIDEWAYS.** 22 key-named
+  lights (hospital room, cabin, foxhole, pit stop, school field,
+  the miller porch…) sat at `Transform3D(1,0,0, 0,1,0, 0,0,1, …)` —
+  Godot's default pose, which shines along −Z, level with the floor.
+  They lit walls edge-on and no floor, no table, no face from above.
+  Now 45° down (the repo's standard key matrix), or 60° for overhead
+  / pendant / bare-bulb keys.
+- **39 BACK / rim lights shared one copied matrix aimed 45° UP.** The
+  foundation table says BACK is "behind subject, down 25°". Mirrored
+  (D·M·D with D = diag(1,−1,1): same heading, Y travel flipped).
+- **FILL may travel up** — the table's FILL is "opposite side, low
+  angle", a warm ground bounce — and is not judged.
+- `light_direction_audit.py` gates it: key Y travel < −0.10, back ≤
+  +0.05; the portrait rig's BackRim (vn/Portrait3D.tscn) is the one
+  named exception — a look call across every character.
+- **MoodCycler re-aims only the KEY, and only in moods that set
+  `sun_pitch_deg`** (all downward). In every other mood the .tscn
+  matrix is what renders. A scene with no light whose name ends in
+  "Key" hands the sun rotation to its FIRST directional — even a fill.
+
 ### 2026-09-11 · 158 fixtures that gave no light, and the tool that lights them
 
 - **The 2026-08-19 lesson had not held.** A repo count found 205

@@ -11,7 +11,7 @@ _BT = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)), 
 if _BT not in sys.path: sys.path.insert(0, _BT)
 from _props import palette as P
 from _props.geometry import clear_scene, make_box, make_cyl, export_glb
-from _props.structure import make_floor, make_wall, make_ceiling, make_crown_molding, make_window
+from _props.structure import make_floor, make_wall, make_ceiling, make_crown_molding, make_window, make_case_shell
 from _props.store_fixtures import make_counter, make_counter_bullnose, make_register
 from _props.shelving import make_snack_aisle, make_endcap
 from _props.food_service import make_coffee_pots
@@ -46,11 +46,14 @@ def build_register_counter():
     make_register("RegisterMachine", (ROOM_W/4.0, ROOM_D-1.5-0.30, top_z))
     # Chip warmer on the counter — metal case, warm lamp, tortilla chips.
     cx, cy = ROOM_W/4.0-0.85, ROOM_D-1.5
-    make_box("ChipWarmer_Body", (cx, cy, top_z+0.20), (0.46,0.46,0.40), P.METAL_STEEL)   # on the top (the kit's top_z is the true top since 2026-09-23)
-    make_box("ChipWarmer_Glass", (cx-0.24, cy, top_z+0.24), (0.02,0.42,0.34), P.GLASS_WARM)
-    make_box("ChipWarmer_Lamp", (cx, cy, top_z+0.42), (0.44,0.44,0.03), (1.0,0.78,0.32,1.0))
+    # an open shell on the counter top, the lamp under its lid, chips on
+    # its floor (2026-09-24: a solid body with the chips inside it)
+    make_case_shell("ChipWarmer_Body", (cx, cy, top_z+0.20), (0.46,0.46,0.40), P.METAL_STEEL, open_face='-X')   # on the top (the kit's top_z is the true top since 2026-09-23)
+    for gi, (gy, gw) in enumerate(((-0.12, 0.02), (-0.06, 0.01))):
+        make_box(f"ChipWarmer_Glint_{gi}", (cx-0.21, cy+gy, top_z+0.20), (0.004, gw, 0.36), (0.86, 0.90, 0.92, 1.0))
+    make_box("ChipWarmer_Lamp", (cx, cy, top_z+0.365), (0.42,0.42,0.03), (1.0,0.78,0.32,1.0))
     for i in range(3):
-        make_box(f"Chips_{i}", (cx-0.12+i*0.12, cy, top_z+0.10), (0.08,0.32,0.14), (0.92,0.78,0.42,1.0))
+        make_box(f"Chips_{i}", (cx-0.12+i*0.12, cy, top_z+0.09), (0.08,0.32,0.14), (0.92,0.78,0.42,1.0))
     # Tip jar by the register (a few coins + folded bills).
     jx, jy = ROOM_W/4.0+0.55, ROOM_D-1.85
     make_cyl("TipJar", (jx, jy, top_z+0.09), 0.055, 0.18, (0.80, 0.86, 0.88, 0.55), segments=10)

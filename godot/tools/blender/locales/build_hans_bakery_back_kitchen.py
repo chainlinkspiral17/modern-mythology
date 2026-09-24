@@ -42,7 +42,7 @@ from _props import palette as P
 from _props.geometry import clear_scene, make_box, make_chamfer_box, make_blob, make_cyl, make_lathe, make_tube, make_taper_cyl, make_rot_box, export_glb
 from _props.furniture import make_chair
 from _props.detail import make_traffic_wear, make_floor_stain, make_scuff_band, make_light_switch, make_wall_outlet, make_cord_run
-from _props.structure import make_floor, make_wall, make_ceiling, make_crown_molding, make_window
+from _props.structure import make_floor, make_wall, make_ceiling, make_crown_molding, make_window, make_case_shell
 from _props.store_fixtures import make_counter, make_counter_bullnose, make_register
 from _props.shelving import make_snack_aisle, make_endcap
 from _props.food_service import make_coffee_pots
@@ -160,13 +160,22 @@ def build_proofer():
     # Roll-in proofing cabinet on casters, east of the oven: stainless
     # body, a full glass door showing racked trays, a warm proof glow.
     px, py = ROOM_W/2.0 - 0.55, ROOM_D - 1.4
-    make_chamfer_box("Proofer_Body", (px, py, 1.00), (0.66, 0.80, 1.90), (0.78, 0.80, 0.84, 1.0))
-    make_box("Proofer_Door", (px-0.30, py, 1.05), (0.06, 0.66, 1.60), (0.30, 0.30, 0.32, 1.0))
-    make_box("Proofer_Glass", (px-0.34, py, 1.05), (0.02, 0.54, 1.44), (0.72, 0.82, 0.86, 0.4))
-    make_cyl("Proofer_Handle", (px-0.38, py+0.24, 1.05), 0.02, 0.70, P.METAL_STEEL, axis='Z', segments=8)
+    # (2026-09-24: a SOLID body with the trays inside it, a solid door,
+    # and a glass slab on the door — no alpha in this pipeline. Now an
+    # open shell, the door a frame round its window, trays side to side,
+    # the proof glow on the back panel over each tray.)
+    make_case_shell("Proofer_Body", (px, py, 1.00), (0.66, 0.80, 1.90), (0.78, 0.80, 0.84, 1.0), open_face='-X')
+    dk = (0.30, 0.30, 0.32, 1.0)
+    make_box("Proofer_Door_T", (px-0.30, py, 1.81), (0.06, 0.76, 0.08), dk)
+    make_box("Proofer_Door_B", (px-0.30, py, 0.29), (0.06, 0.76, 0.08), dk)
+    for sgn, tag in ((-1, "L"), (1, "R")):
+        make_box(f"Proofer_Door_{tag}", (px-0.30, py + sgn * 0.325, 1.05), (0.06, 0.11, 1.44), dk)
+    for gi, (gy, gw) in enumerate(((-0.16, 0.02), (-0.09, 0.01))):
+        make_box(f"Proofer_Glint_{gi}", (px-0.30, py+gy, 1.05), (0.004, gw, 1.44), (0.86, 0.90, 0.92, 1.0))
+    make_cyl("Proofer_Handle", (px-0.35, py+0.325, 1.05), 0.02, 0.70, P.METAL_STEEL, axis='Z', segments=8)   # on the door's latch stile
     for ti, tz in enumerate([0.55, 0.85, 1.15, 1.45, 1.75]):
-        make_box(f"Proofer_Tray_{ti}", (px-0.02, py, tz), (0.56, 0.60, 0.03), (0.72, 0.72, 0.74, 1.0))
-        make_box(f"Proofer_Glow_{ti}", (px-0.30, py, tz), (0.02, 0.50, 0.10), (1.0, 0.78, 0.42, 0.7))
+        make_box(f"Proofer_Tray_{ti}", (px+0.03, py, tz), (0.56, 0.76, 0.03), (0.72, 0.72, 0.74, 1.0))
+        make_box(f"Proofer_Glow_{ti}", (px+0.30, py, tz+0.08), (0.02, 0.50, 0.10), (1.0, 0.78, 0.42, 0.7))
     for wi, wo in enumerate([-0.26, 0.26]):
         make_cyl(f"Proofer_Wheel_{wi}", (px+wo, py, 0.05), 0.05, 0.05, P.METAL_BLACK, axis='X', segments=8)
 

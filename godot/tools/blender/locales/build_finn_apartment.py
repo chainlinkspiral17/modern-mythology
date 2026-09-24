@@ -181,8 +181,15 @@ def build_hero_props():
     # segment, above the entry level
     # on the wall's room face, glass in front of the frame (2026-09-24: frame and glass
     # were offset from the wall's CENTRE line — inside the wall, never visible)
-    make_box("S_Window_Frame", (1.55, 0.14, 1.55), (0.90, 0.08, 1.00), (0.34, 0.28, 0.22, 1.0))
-    make_box("S_Window_Glass", (1.55, 0.205, 1.55), (0.76, 0.05, 0.86), (0.45, 0.52, 0.60, 0.5))
+    # four frame bars with the glass set between them (2026-09-24: the
+    # frame was one solid slab, so the glass had to stand proud of it —
+    # and stood through the crow's head on the sill)
+    for fn_, fc, fs in (("T", (1.55, 0.14, 2.015), (0.90, 0.08, 0.07)),
+                        ("B", (1.55, 0.14, 1.085), (0.90, 0.08, 0.07)),
+                        ("L", (1.135, 0.14, 1.55), (0.07, 0.08, 0.86)),
+                        ("R", (1.965, 0.14, 1.55), (0.07, 0.08, 0.86))):
+        make_box(f"S_Window_Frame_{fn_}", fc, fs, (0.34, 0.28, 0.22, 1.0))
+    make_box("S_Window_Glass", (1.55, 0.135, 1.55), (0.76, 0.01, 0.86), (0.45, 0.52, 0.60, 0.5))
     # Bedroom partition (the crow flies low through this doorway)
     make_box("Bedroom_Part", (-0.55, 3.05, 1.3), (1.9, 0.14, 2.6), (0.62, 0.55, 0.46, 1.0))
     make_box("Bedroom_Part_Header", (0.75, 3.05, 2.35), (0.7, 0.14, 0.5), (0.62, 0.55, 0.46, 1.0))
@@ -223,7 +230,7 @@ def build_crow_2026_08():
     at (1.55, 0.05), sill height ~1.05.
     """
     from _props.creatures import make_crow
-    make_crow("Crow", 1.55, 0.37, 1.07, facing=1.0)   # beak clear of the glass (2026-09-24: 5 cm into the wall)
+    make_crow("Crow", 1.55, 0.41, 1.07, facing=1.0)   # beak clear of the glass, now set in the frame (2026-09-24)
 
 
 def build_hero_props_2026_09():

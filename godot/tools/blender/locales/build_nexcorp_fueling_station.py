@@ -4,7 +4,7 @@ _BT = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)), 
 if _BT not in sys.path: sys.path.insert(0, _BT)
 from _props import palette as P
 from _props.geometry import clear_scene, make_box, make_cyl, export_glb
-from _props.structure import make_floor, make_wall, make_ceiling, make_crown_molding, make_window
+from _props.structure import make_floor, make_wall, make_ceiling, make_crown_molding, make_window, make_case_shell
 from _props.store_fixtures import make_counter, make_counter_bullnose, make_register
 from _props.shelving import make_snack_aisle, make_endcap
 from _props.food_service import make_coffee_pots
@@ -55,9 +55,14 @@ def build_coolers():
     cx = ROOM_W/2.0 - 0.4
     for i in range(3):
         cy = 1.6 + i*1.4
-        make_box(f"Cooler_{i}_Body", (cx, cy, 1.05), (0.70, 1.30, 2.10), (0.80, 0.82, 0.86, 1.0))
-        make_box(f"Cooler_{i}_Glass", (cx-0.34, cy, 1.15), (0.03, 1.20, 1.70), (0.72, 0.86, 0.94, 0.45))
+        # an open shell, a shelf under each row, glints for the glass door
+        # (2026-09-24: a solid body with the cans inside it, behind a glass
+        # slab that renders opaque — no alpha in this pipeline)
+        make_case_shell(f"Cooler_{i}_Body", (cx, cy, 1.05), (0.70, 1.30, 2.10), (0.80, 0.82, 0.86, 1.0), open_face='-X')
+        for gi, (gy, gw) in enumerate(((-0.36, 0.03), (-0.27, 0.012))):
+            make_box(f"Cooler_{i}_Glint_{gi}", (cx-0.34, cy+gy, 1.05), (0.004, gw, 2.06), (0.86, 0.90, 0.92, 1.0))
         for r in range(4):
+            make_box(f"Cooler_{i}_Shelf_{r}", (cx, cy, 0.46+r*0.42), (0.66, 1.26, 0.02), P.METAL_STEEL)
             for c in range(4):
                 make_box(f"Cooler_{i}_Can_{r}_{c}", (cx-0.20, cy-0.5+c*0.32, 0.55+r*0.42),
                          (0.14, 0.10, 0.16), P.SNACK_TINTS[(i+r+c) % len(P.SNACK_TINTS)])

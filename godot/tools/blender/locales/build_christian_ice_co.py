@@ -106,7 +106,14 @@ def build_ice_block_freezer():
         make_box(f"BlockFreezer_Side_{sx_:+d}", (fx + sx_ * 1.59, fy, 1.20), (0.02, 0.80, 2.40), COL_FREEZER_BODY)
     make_box("BlockFreezer_Top", (fx, fy, 2.39), (3.20, 0.80, 0.02), COL_FREEZER_BODY)
     make_box("BlockFreezer_Floor", (fx, fy, 0.05), (3.20, 0.80, 0.10), COL_FREEZER_BODY)
-    make_box("BlockFreezer_Glass", (fx, fy-0.40, 1.40), (3.00, 0.005, 2.00), COL_FROST_GLASS)
+    # the frost-glass front as three glints, floor to top (2026-09-24: a
+    # 3 x 2 m slab — no alpha in this pipeline, it rendered as a wall
+    # over the stack this shell was built to show)
+    for gi, (gx, gw) in enumerate(((-1.10, 0.03), (-0.98, 0.012), (0.70, 0.02))):
+        make_box(f"BlockFreezer_Glint_{gi}", (fx + gx, fy-0.398, 1.24), (gw, 0.004, 2.28), (0.86, 0.90, 0.92, 1.0))
+    # the centre mullion between the two sliding doors (Emile's photo
+    # hangs on it — it hung on the glass)
+    make_box("BlockFreezer_Mullion", (fx, fy-0.385, 1.24), (0.06, 0.03, 2.28), COL_FREEZER_BODY)
     # Stacked ice blocks behind the glass (5x3 grid, block on block)
     for col in range(5):
         for row in range(3):
@@ -200,17 +207,10 @@ def build_star_dressing():
     bf_x = -0.8
     bf_y = +3.80
     bf_glass_z = 1.30
-    # Fog overlay on the freezer glass (a pale frosted rectangle)
-    make_box("BlockFreezer_FogOverlay",
-             (bf_x, bf_y - 0.4055, bf_glass_z),   # ON the glass (2026-09-23: 1.5 cm in front of it)
-             (0.80, 0.005, 0.50),
-             (0.86, 0.90, 0.94, 0.65))
-    # A wiped clean-streak diagonal across the fog (where Delphine
-    # just wiped it)
-    make_box("BlockFreezer_WipedStreak",
-             (bf_x, bf_y - 0.4105, bf_glass_z + 0.04),
-             (0.50, 0.005, 0.08),
-             (0.62, 0.74, 0.86, 0.5))
+    # (the fog overlay that sat ON the freezer glass went with the glass,
+    # 2026-09-24 — an opaque pale slab in mid-air over the block stack)
+    # (and the wiped clean-streak across the fog with it; the cloth on
+    # the freezer top still says Delphine just wiped it)
     # The wiping cloth on the freezer top (damp blue canvas)
     make_box("BlockFreezer_WipingCloth",
              (bf_x + 0.20, bf_y, 2.41),
@@ -307,7 +307,7 @@ def build_star_wave2_props():
     # register" is the freezer; 2026-09-22 the frame hung 0.4 m in
     # front of it
     frame_x = rc_x
-    frame_y = 3.4175
+    frame_y = 3.41    # on the freezer's centre mullion (2026-09-24: the glass is gone)
     make_box("Emile_Frame_Body",
              (frame_x, frame_y - 0.02, 2.20),
              (0.30, 0.02, 0.24),
@@ -329,7 +329,7 @@ def build_star_wave2_props():
              (0.94, 0.92, 0.86, 1.0))
     # A small brass plaque under the frame
     make_box("Emile_Frame_Plaque",
-             (frame_x, frame_y - 0.02, 2.02),
+             (frame_x, frame_y - 0.0125, 2.02),   # on the mullion
              (0.20, 0.005, 0.03),
              (0.78, 0.62, 0.30, 1.0))
 

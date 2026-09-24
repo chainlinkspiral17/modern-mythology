@@ -35,7 +35,7 @@ if _BT not in sys.path: sys.path.insert(0, _BT)
 from _props import palette as P
 from _props.geometry import clear_scene, make_box, make_chamfer_box, make_cyl, make_lathe, make_tube, export_glb
 from _props.detail import make_traffic_wear, make_floor_stain, make_scuff_band, make_light_switch, make_wall_outlet
-from _props.structure import make_floor, make_wall, make_ceiling, make_crown_molding, make_window
+from _props.structure import make_floor, make_wall, make_ceiling, make_crown_molding, make_window, make_case_shell
 from _props.food_service import make_coffee_pots
 from _props.decor import make_wall_clock, make_floor_plant, make_faded_poster, make_calendar
 from _props.safety import make_smoke_detector, make_hvac_vent, make_fluorescent_tube_fixture
@@ -123,13 +123,17 @@ def build_backbar_kitchen():
                      palette={"glass": COL_GLASS})
     # Pie / dessert display case
     px = +1.5
-    make_chamfer_box("PieCase_Body", (px, by, 1.20), (0.60, 0.44, 0.56), COL_STEEL)
-    make_box("PieCase_Glass", (px, by - 0.22, 1.20), (0.56, 0.02, 0.52), COL_GLASS)
+    # (2026-09-24: a solid body with its shelves and pies inside it,
+    # behind a glass slab that renders opaque; 20 cm pies on 16 cm
+    # centres overlapped. An open shell; 15 cm pies; glints.)
+    make_case_shell("PieCase_Body", (px, by, 1.20), (0.60, 0.44, 0.56), COL_STEEL, open_face='-Y')
+    for gi, (gx, gw) in enumerate(((-0.20, 0.02), (-0.13, 0.01))):
+        make_box(f"PieCase_Glint_{gi}", (px + gx, by - 0.21, 1.20), (gw, 0.004, 0.52), (0.86, 0.90, 0.92, 1.0))
     for ti, tz in enumerate([1.06, 1.30]):
-        make_box(f"PieCase_Shelf_{ti}", (px, by, tz), (0.54, 0.40, 0.02), COL_CHROME)
+        make_box(f"PieCase_Shelf_{ti}", (px, by + 0.005, tz), (0.56, 0.39, 0.02), COL_CHROME)
         for wi in range(3):
-            make_cyl(f"PieCase_Pie_{ti}_{wi}", (px - 0.16 + wi * 0.16, by, tz + 0.05),
-                     0.10, 0.05, [COL_PIE, (0.72, 0.34, 0.28, 1.0), (0.86, 0.78, 0.52, 1.0)][wi],
+            make_cyl(f"PieCase_Pie_{ti}_{wi}", (px - 0.17 + wi * 0.17, by, tz + 0.035),
+                     0.075, 0.05, [COL_PIE, (0.72, 0.34, 0.28, 1.0), (0.86, 0.78, 0.52, 1.0)][wi],
                      segments=12)
     # Milkshake multi-spindle mixer
     mx = +2.5

@@ -23,6 +23,7 @@ _BT = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)), 
 if _BT not in sys.path: sys.path.insert(0, _BT)
 from _props import palette as P
 from _props.geometry import clear_scene, make_box, make_cyl, make_tube, export_glb
+from _props.structure import make_case_shell
 from _props.structure import (make_floor, make_wall, make_ceiling,
                               make_crown_molding, make_window)
 from _props.detail import (make_floor_stain, make_light_switch, make_threshold, make_traffic_wear, make_wall_outlet, make_wall_tint_band)
@@ -152,16 +153,22 @@ def build_china_cabinet():
         make_box(f"Cabinet_Door_{dz}", (cx - 0.22, cy - 0.42, dz), (0.02, 0.7, 0.28), COL_WALNUT_DK)
         make_cyl(f"Cabinet_Knob_{dz}", (cx - 0.23, cy - 0.42, dz), 0.02, 0.03, COL_BRASS, segments=6, axis='X')
     # Glass-front upper with shelves of binders
-    make_box("Cabinet_Upper_Frame", (cx, cy, 1.72), (0.44, 1.8, 1.04), COL_WALNUT)
-    make_box("Cabinet_Upper_Hollow", (cx - 0.04, cy, 1.72), (0.38, 1.68, 0.92), COL_WALNUT_DK)
-    make_box("Cabinet_Glass", (cx - 0.22, cy, 1.72), (0.02, 1.7, 0.94), COL_GLASS)
-    for si, sz in enumerate((1.34, 1.72, 2.10)):
-        make_box(f"Cabinet_Shelf_{si}", (cx - 0.02, cy, sz - 0.20), (0.34, 1.66, 0.03), COL_WALNUT_DK)
+    # (2026-09-24: a solid frame, a solid "hollow" inside it, the binders
+    # inside both, a glass slab in front — and the lowest shelf hung under
+    # the cabinet's own floor. An open shell now: its floor is the first
+    # shelf, two shelves over it, a dark back lining, glints for glass.)
+    make_case_shell("Cabinet_Upper_Frame", (cx, cy, 1.72), (0.44, 1.8, 1.04), COL_WALNUT, open_face='-X', wall=0.03)
+    make_box("Cabinet_Upper_Hollow", (cx + 0.185, cy, 1.72), (0.01, 1.74, 0.98), COL_WALNUT_DK)
+    for gi, (gy, gw) in enumerate(((-0.55, 0.03), (-0.45, 0.012))):
+        make_box(f"Cabinet_Glint_{gi}", (cx - 0.215, cy + gy, 1.72), (0.004, gw, 0.98), (0.86, 0.90, 0.92, 1.0))
+    for si, sz in enumerate((1.23, 1.56, 1.89)):
+        if si:
+            make_box(f"Cabinet_Shelf_{si}", (cx - 0.01, cy, sz - 0.015), (0.38, 1.74, 0.03), COL_WALNUT_DK)
         for bi in range(7):
             by = cy - 0.72 + bi * 0.22
-            h = 0.30 + 0.03 * (bi % 2)
+            h = 0.27 + 0.03 * (bi % 2)
             col = [COL_BINDER_A, COL_BINDER_B, COL_BINDER_C][(si + bi) % 3]
-            make_box(f"Binder_{si}_{bi}", (cx - 0.04, by, sz - 0.185 + h / 2.0),
+            make_box(f"Binder_{si}_{bi}", (cx - 0.04, by, sz + h / 2.0),
                      (0.30, 0.18, h), col)
     # Police scanner on top of the cabinet, one red LED
     make_box("Scanner", (cx, cy - 0.4, 2.30), (0.34, 0.24, 0.14), COL_SCANNER)

@@ -10,6 +10,11 @@
 import math
 from . import palette as P
 from .geometry import make_box, make_cyl
+from .structure import make_case_shell
+
+# No alpha in this pipeline (vertex colour only): a "glass" slab renders
+# as an opaque panel. Cases are open shells; the glass is two glints.
+GLINT = (0.86, 0.90, 0.92, 1.0)
 
 
 def make_hot_food_case(prefix, anchor, *, palette=None,
@@ -18,18 +23,19 @@ def make_hot_food_case(prefix, anchor, *, palette=None,
     Default 3 hot items inside; pass hot_items=N for more."""
     palette = palette or {}
     body = palette.get("body", (0.94, 0.92, 0.84, 1.0))
-    glass = palette.get("glass", P.GLASS)
     lamp = palette.get("lamp", (1.0, 0.78, 0.32, 1.0))
     cx, cy, bz = anchor
-    make_box(f"{prefix}_Body", (cx, cy, bz),
-             (0.50, 0.70, 0.60), body)
-    make_box(f"{prefix}_Glass", (cx - 0.22, cy, bz),
-             (0.04, 0.70, 0.58), glass)
-    make_box(f"{prefix}_Lamp", (cx, cy, bz + 0.25),
-             (0.50, 0.70, 0.04), lamp)
+    # open shell, glass side (-X) open (2026-09-24: a solid body with the
+    # items inside it, behind an opaque glass slab)
+    make_case_shell(f"{prefix}_Body", (cx, cy, bz), (0.50, 0.70, 0.60), body, open_face='-X')
+    for gi, gy in enumerate((-0.18, -0.10)):
+        make_box(f"{prefix}_Glint_{gi}", (cx - 0.22, cy + gy, bz),
+                 (0.004, 0.02 if gi == 0 else 0.01, 0.56), GLINT)
+    make_box(f"{prefix}_Lamp", (cx, cy, bz + 0.26),
+             (0.46, 0.66, 0.04), lamp)
     for i in range(hot_items):
         y_off = -0.24 + i * (0.48 / max(1, hot_items - 1))
-        make_box(f"{prefix}_Item_{i}", (cx - 0.08, cy + y_off, bz - 0.12),
+        make_box(f"{prefix}_Item_{i}", (cx - 0.08, cy + y_off, bz - 0.24),
                  (0.20, 0.14, 0.08), (0.78, 0.58, 0.40, 1.0))
 
 
@@ -49,30 +55,36 @@ def make_pizza_warmer(prefix, anchor, *, palette=None, pans=3):
     """Pizza-warmer case with heat lamp. anchor=(center_x, center_y, base_z)."""
     palette = palette or {}
     body = palette.get("body", P.METAL_STEEL)
-    glass = palette.get("glass", P.GLASS)
     heat = palette.get("heat_lamp", (1.0, 0.74, 0.34, 1.0))
     cheese = palette.get("cheese", (0.86, 0.62, 0.32, 1.0))
     cx, cy, bz = anchor
-    make_box(f"{prefix}_Body", (cx, cy, bz),
-             (0.50, 0.50, 0.42), body)
-    make_box(f"{prefix}_Glass", (cx - 0.26, cy, bz),
-             (0.04, 0.50, 0.38), glass)
+    # open shell, glass side (-X) open; pans on its floor (2026-09-24:
+    # a solid body with the pans inside it, behind an opaque glass slab)
+    make_case_shell(f"{prefix}_Body", (cx, cy, bz), (0.50, 0.50, 0.42), body, open_face='-X')
+    for gi, gy in enumerate((-0.14, -0.07)):
+        make_box(f"{prefix}_Glint_{gi}", (cx - 0.24, cy + gy, bz),
+                 (0.004, 0.02 if gi == 0 else 0.01, 0.38), GLINT)
+    # pans side by side across the inner width (2026-09-24: three 28 cm
+    # pans on 18 cm centres overlapped each other and the case sides —
+    # unseen while the body was solid)
+    pitch = 0.46 / max(1, pans)
+    pr = min(0.14, pitch / 2.0 - 0.005)
     for pi in range(pans):
-        py_off = (pi - (pans - 1) / 2.0) * (0.36 / max(1, pans - 1))
-        make_cyl(f"{prefix}_Pan_{pi}", (cx, cy + py_off, bz - 0.10),
-                 0.14, 0.02, body)
-        make_cyl(f"{prefix}_Cheese_{pi}", (cx, cy + py_off, bz - 0.085),
-                 0.13, 0.012, cheese)
+        py_off = (pi - (pans - 1) / 2.0) * pitch
+        make_cyl(f"{prefix}_Pan_{pi}", (cx, cy + py_off, bz - 0.18),
+                 pr, 0.02, body)
+        make_cyl(f"{prefix}_Cheese_{pi}", (cx, cy + py_off, bz - 0.164),
+                 pr - 0.01, 0.012, cheese)
         # 4 pepperoni dots
         for di in range(4):
             ang = di * 1.57
-            dx = math.cos(ang) * 0.06
-            dy = math.sin(ang) * 0.06
+            dx = math.cos(ang) * pr * 0.45
+            dy = math.sin(ang) * pr * 0.45
             make_cyl(f"{prefix}_Pep_{pi}_{di}",
-                     (cx + dx, cy + py_off + dy, bz - 0.07),
-                     0.018, 0.005, (0.74, 0.18, 0.16, 1.0))
-    make_box(f"{prefix}_HeatLamp", (cx, cy, bz + 0.25),
-             (0.46, 0.46, 0.04), heat)
+                     (cx + dx, cy + py_off + dy, bz - 0.1555),
+                     min(0.018, pr * 0.2), 0.005, (0.74, 0.18, 0.16, 1.0))
+    make_box(f"{prefix}_HeatLamp", (cx, cy, bz + 0.17),
+             (0.46, 0.46, 0.04), heat)   # under the top panel (it hung 2 cm over the body)
 
 
 def make_donut_display(prefix, anchor, *, palette=None, tiers=3):
@@ -85,23 +97,25 @@ def make_donut_display(prefix, anchor, *, palette=None, tiers=3):
     pink = palette.get("pink", (0.96, 0.62, 0.78, 1.0))
     choc = palette.get("choc", (0.32, 0.20, 0.12, 1.0))
     dx, dy, bz = anchor
-    make_box(f"{prefix}_CaseBody", (dx, dy, bz + 0.30),
-             (0.86, 0.40, 0.60), body)
-    make_box(f"{prefix}_CaseGlass", (dx + 0.21, dy, bz + 0.30),
-             (0.04, 0.36, 0.56), P.GLASS)
+    # open shell, glass side (+X) open, trays wall to wall (2026-09-24:
+    # a solid body with the trays inside it; the "glass" sat inside too)
+    make_case_shell(f"{prefix}_CaseBody", (dx, dy, bz + 0.30), (0.86, 0.40, 0.60), body, open_face='+X')
+    for gi, gy in enumerate((-0.10, -0.04)):
+        make_box(f"{prefix}_CaseGlint_{gi}", (dx + 0.41, dy + gy, bz + 0.30),
+                 (0.004, 0.02 if gi == 0 else 0.01, 0.56), GLINT)
     tier_colors = [glaze, choc, pink]
     for tier in range(tiers):
         tray_z = bz + 0.12 + tier * 0.18
-        make_box(f"{prefix}_Tray_{tier}", (dx, dy, tray_z),
-                 (0.74, 0.34, 0.02), tray)
+        make_box(f"{prefix}_Tray_{tier}", (dx - 0.02, dy, tray_z),
+                 (0.78, 0.36, 0.02), tray)
         for di in range(4):
             dcol = tier_colors[(tier + di) % len(tier_colors)]
             d_off_y = -0.12 + di * 0.08
             make_cyl(f"{prefix}_Donut_{tier}_{di}",
-                     (dx, dy + d_off_y, tray_z + 0.04),
+                     (dx, dy + d_off_y, tray_z + 0.0225),
                      0.035, 0.025, dcol)
             make_cyl(f"{prefix}_DonutHole_{tier}_{di}",
-                     (dx, dy + d_off_y, tray_z + 0.05),
+                     (dx, dy + d_off_y, tray_z + 0.0235),
                      0.012, 0.025, P.METAL_BLACK)
 
 

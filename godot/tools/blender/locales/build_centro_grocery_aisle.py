@@ -278,7 +278,13 @@ def build_departments():
     # Meat counter, E wall north end
     mcx, mcy = 4.35, 5.85   # E wall, between the endcap and the cooler run
     make_chamfer_box("Meat_Case_Body", (mcx, mcy, 0.55), (1.10, 2.40, 1.10), (0.86, 0.86, 0.84, 1.0))
-    make_box("Meat_Case_Glass", (mcx - 0.53, mcy, 1.25), (0.04, 2.30, 0.55), glass)
+    # the sneeze glass as a railed frame + glints (2026-09-24: a 2.3 m
+    # slab — no alpha in this pipeline — standing over the trays)
+    for pe, dy_ in (("S", -1.13), ("N", 1.13)):
+        make_box(f"Meat_Case_Glass_Post_{pe}", (mcx - 0.53, mcy + dy_, 1.36), (0.04, 0.04, 0.52), steel)
+    make_box("Meat_Case_Glass_Rail", (mcx - 0.53, mcy, 1.635), (0.04, 2.30, 0.03), steel)
+    for gi, (gy, gw) in enumerate(((-0.70, 0.03), (-0.60, 0.012), (0.55, 0.02))):
+        make_box(f"Meat_Case_Glint_{gi}", (mcx - 0.53, mcy + gy, 1.36), (0.004, gw, 0.52), (0.86, 0.90, 0.92, 1.0))
     for mi in range(4):
         make_box(f"Meat_Tray_{mi}", (mcx, mcy - 0.80 + mi * 0.55, 1.13), (0.60, 0.42, 0.06),
                  [(0.72, 0.32, 0.30, 1.0), (0.80, 0.46, 0.42, 1.0)][mi % 2])

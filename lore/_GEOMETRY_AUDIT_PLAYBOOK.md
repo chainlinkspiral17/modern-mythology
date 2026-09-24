@@ -538,6 +538,23 @@ banisters classed · pans as containers.
   read the story before trusting it (the riverboat "card" is Dean's
   calling card on the helm desk; the audit's nearest match was table
   14's reserved tent).
+- **An audit must not see through what the renderer cannot (twenty-
+  third pass).** On 09-23 the obstruction audit was taught that "a lens
+  sees THROUGH a window" (glass and `_warm` panes passable). The
+  pipeline has no alpha: both render opaque. The cabin's crow insert
+  passed while its frame showed a grey pane and no crow. Glass is solid
+  for the lens again; the window is `see_through` instead. Before
+  teaching an audit an exception, check the frame on the sheet.
+- **"Horizontal" is not "up", and keys are not the only lights.** The
+  first light gate asked only "is the key pointing up?" — 22 keys at
+  the identity matrix (level) and 39 backs aimed 45° up passed. When a
+  gate is born from one sign slip, sweep the neighbouring cases (level,
+  other roles) before calling it done.
+- **A solid box hides its contents from every gate.** Shelves floating
+  4 cm over nothing, pans overlapping pans — all inside solid case
+  bodies, invisible to support and overlap alike (contained = fine).
+  scratch glass_scan (pane + what lies within 0.6 m behind it) found
+  the cases; open them and the audits measure what is inside.
 
 ### 2026-09-06 · a builder that raises under the recorder is dropped without a flag
 

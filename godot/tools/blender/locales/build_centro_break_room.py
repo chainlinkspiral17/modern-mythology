@@ -5,7 +5,7 @@ if _BT not in sys.path: sys.path.insert(0, _BT)
 from _props.furniture import make_chair
 from _props import palette as P
 from _props.geometry import clear_scene, make_box, make_cyl, make_lathe, export_glb
-from _props.structure import make_floor, make_wall, make_ceiling, make_crown_molding, make_window
+from _props.structure import make_floor, make_wall, make_ceiling, make_crown_molding, make_window, make_case_shell
 from _props.store_fixtures import make_counter, make_counter_bullnose, make_register
 from _props.shelving import make_snack_aisle, make_endcap
 from _props.food_service import make_coffee_pots, make_donut_display
@@ -48,9 +48,14 @@ def build_table():
 
 def build_vending():
     vx, vy = +ROOM_W/2.0-0.30, ROOM_D-1.0
-    make_box("Vending_Body", (vx, vy, 1.00), (0.50, 0.70, 2.00), COL_ACCENT)
-    make_box("Vending_Glass", (vx-0.26, vy, 1.20), (0.04, 0.66, 1.20), (0.78, 0.84, 0.86, 0.50))
+    # an open shell with a shelf under each row, glints for the glass
+    # (2026-09-24: a solid body with the snacks inside it, behind a glass
+    # slab that renders opaque — no alpha in this pipeline)
+    make_case_shell("Vending_Body", (vx, vy, 1.00), (0.50, 0.70, 2.00), COL_ACCENT, open_face='-X')
+    for gi, (gy, gw) in enumerate(((-0.20, 0.02), (-0.13, 0.01))):
+        make_box(f"Vending_Glint_{gi}", (vx-0.248, vy+gy, 1.00), (0.004, gw, 1.96), (0.86, 0.90, 0.92, 1.0))
     for r in range(4):
+        make_box(f"Vending_Shelf_{r}", (vx-0.0075, vy, 0.60+r*0.30), (0.475, 0.66, 0.02), P.METAL_STEEL)
         for c in range(5):
             make_box(f"Vending_Snack_{r}_{c}", (vx-0.22, vy-0.28+c*0.14, 0.70+r*0.30), (0.04, 0.10, 0.18), P.SNACK_TINTS[(r+c)%len(P.SNACK_TINTS)])
 

@@ -406,20 +406,23 @@ def build_floor_props():
     # at (-5.5, 8.0), which is INSIDE the locker bank: lockers 5-6,
     # the bench end and the west wall all ran through its body.
     fx, fy = -3.6, 8.35
-    make_box("BeerFridge_Body", (fx, fy, 1.15),   # on the floor (2026-09-22: 5 cm up)
-             (1.00, 0.80, 2.30), (0.42, 0.42, 0.46, 1.0))
-    make_box("BeerFridge_Glass", (fx, fy - 0.36, 1.20),
-             (0.92, 0.04, 2.20), (0.46, 0.78, 0.92, 0.55))
+    from _props.structure import make_case_shell   # make_box's delegate has put _props on the path
+    # an open shell (2026-09-24: a solid body with the shelves and
+    # six-packs inside it, behind a glass slab that renders opaque)
+    make_case_shell("BeerFridge_Body", (fx, fy, 1.15),   # on the floor (2026-09-22: 5 cm up)
+                    (1.00, 0.80, 2.30), (0.42, 0.42, 0.46, 1.0), open_face='-Y')
+    for gi, (gx, gw) in enumerate(((-0.26, 0.03), (-0.19, 0.012))):
+        make_box(f"BeerFridge_Glint_{gi}", (fx + gx, fy - 0.385, 1.15), (gw, 0.004, 2.26), (0.86, 0.90, 0.92, 1.0))
     # Visible six-packs
     for sh in range(4):
         shz = 0.30 + sh * 0.50
         make_box(f"BeerFridge_Shelf_{sh}",
-                 (fx, fy, shz),
-                 (0.94, 0.70, 0.02), COL_METAL_STEEL)
+                 (fx, fy + 0.005, shz),
+                 (0.96, 0.75, 0.02), COL_METAL_STEEL)   # side to side, to the back panel
         for b in range(3):
             bx = fx - 0.30 + b * 0.30
             make_box(f"BeerFridge_Sixpack_{sh}_{b}",
-                     (bx, fy, shz + 0.20),
+                     (bx, fy, shz + 0.01 + 0.15),   # on the shelf (it hung 4 cm over it)
                      (0.24, 0.24, 0.30), SNACK_TINTS[(sh+b) % len(SNACK_TINTS)])
 
     # Restroom door — west wall, marked with M/W signs

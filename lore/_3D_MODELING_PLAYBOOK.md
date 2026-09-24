@@ -399,6 +399,33 @@ Louisville's hurricane-deck proportions"). Don't guess at numbers.
 
 ## Recent lessons
 
+### 2026-09-24 · the glass cases were solid blocks with the product inside
+
+- **The picture-window rule applies to every case.** A (r,g,b,0.35)
+  "glass" slab renders opaque — and most glass-front fixtures were
+  worse: a SOLID body with the product modelled inside it. The kwik
+  stop's four cooler doors hid 95 objects each; the kits' hot-food
+  case, pizza warmer and donut case (15 rooms), the Board Lords deck
+  wall (28 decks behind a lavender wall), Jiggles in the crumpled
+  barn's cabinet, the proofer, the vending machine, the file cabinet.
+- **Build the shell, seat the product, leave the glass out.**
+  `_props.structure.make_case_shell(prefix, center, size, color,
+  open_face=…)` builds five panels with the same outer extents as the
+  old solid box (top/bottom full, sides between them, back between
+  the sides — faces touch, nothing overlaps). Shelves span side to
+  side (and to the back panel) so they are supported; the product
+  sits ON them (six-packs had hung 4 cm over their shelves, pizzas
+  overlapped, pies overlapped — all hidden while the body was solid).
+  The glass is two thin pale GLINT strips running frame to frame.
+- **What hung on the glass goes with it.** Emile's photograph and its
+  plaque were on the ice freezer's glass; the fog overlay and the
+  wiped streak were decals on it. A centre mullion now carries the
+  photo; the decals are gone (the support audit exempts decals — grep
+  for "on the glass" when a pane goes).
+- `make_window(see_through=True)` — frame + mullions + glints, no
+  glass, no warm pane — for a window something must be SEEN through
+  (the cabin's crow on the outside sill).
+
 ### 2026-09-19 · THE BAKERY, DRAFT 4 — the helper that drew slabs, and the clips the recorder waves through
 
 The thirteenth room of the backgrounds pass (lore/_VISUAL_PROGRAM.md

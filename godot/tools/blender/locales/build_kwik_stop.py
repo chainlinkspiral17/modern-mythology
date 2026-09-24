@@ -196,6 +196,32 @@ def make_cyl(name, center, radius, height, base_color, segments=8, axis='Z'):
     return _finalize_mesh(name, verts, faces, base_color)
 
 
+def case_shell(prefix, center, size, color, open_face, wall=0.02):
+    """Five panels, one face open — _props.structure.make_case_shell's
+    twin for this self-contained builder (2026-09-24: every glass case
+    here was a SOLID body with its food inside it, behind a "glass" slab
+    that renders opaque — the pipeline has no alpha)."""
+    cx, cy, cz = center
+    sx, sy, sz = size
+    hx, hy, hz = sx / 2.0, sy / 2.0, sz / 2.0
+    w, ih = wall, sz - 2.0 * wall
+    make_box(f"{prefix}_Top", (cx, cy, cz + hz - w / 2.0), (sx, sy, w), color)
+    make_box(f"{prefix}_Bottom", (cx, cy, cz - hz + w / 2.0), (sx, sy, w), color)
+    if open_face in ('-Y', '+Y'):
+        sg = 1.0 if open_face == '-Y' else -1.0
+        make_box(f"{prefix}_Side_L", (cx - hx + w / 2.0, cy, cz), (w, sy, ih), color)
+        make_box(f"{prefix}_Side_R", (cx + hx - w / 2.0, cy, cz), (w, sy, ih), color)
+        make_box(f"{prefix}_Back", (cx, cy + sg * (hy - w / 2.0), cz), (sx - 2.0 * w, w, ih), color)
+    else:
+        sg = 1.0 if open_face == '-X' else -1.0
+        make_box(f"{prefix}_Side_L", (cx, cy - hy + w / 2.0, cz), (sx, w, ih), color)
+        make_box(f"{prefix}_Side_R", (cx, cy + hy - w / 2.0, cz), (sx, w, ih), color)
+        make_box(f"{prefix}_Back", (cx + sg * (hx - w / 2.0), cy, cz), (w, sy - 2.0 * w, ih), color)
+
+
+COL_GLINT = (0.86, 0.90, 0.92, 1.0)   # where a glass pane is: two pale strips
+
+
 CEIL_Z   = 3.00
 WALL_THICK = 0.20
 
@@ -381,23 +407,24 @@ def build_counter():
 
     # ── Hot food case beside register (Hot Pockets canon) ───────
     hcx, hcy = cx, cy - 0.10
-    make_box("HotCase_Body", (hcx, hcy, 1.30),
-             (0.50, 0.70, 0.60), (0.94, 0.92, 0.84, 1.0))
-    make_box("HotCase_Glass", (hcx - 0.22, hcy, 1.30),
-             (0.04, 0.70, 0.58), COL_GLASS)
-    # Warm lamp inside (amber glow visible through glass)
-    make_box("HotCase_Lamp", (hcx, hcy, 1.55),
-             (0.50, 0.70, 0.04), (1.0, 0.78, 0.32, 1.0))
-    # Hot Pockets visible (3 of them at different angles)
+    # open to the customer (-X); the glass is two glints
+    case_shell("HotCase_Body", (hcx, hcy, 1.30), (0.50, 0.70, 0.60), (0.94, 0.92, 0.84, 1.0), '-X')
+    for gi, (gy, gw) in enumerate(((-0.18, 0.02), (-0.10, 0.01))):
+        make_box(f"HotCase_Glint_{gi}", (hcx - 0.22, hcy + gy, 1.30), (0.004, gw, 0.56), COL_GLINT)
+    # Warm lamp under the top panel (amber glow over the food)
+    make_box("HotCase_Lamp", (hcx, hcy, 1.56),
+             (0.46, 0.66, 0.04), (1.0, 0.78, 0.32, 1.0))
+    # Hot Pockets on the case floor (3 of them)
     for i in range(3):
         hp_y = hcy - 0.24 + i * 0.24
-        make_box(f"HotPocket_{i}", (hcx - 0.08, hp_y, 1.18),
+        make_box(f"HotPocket_{i}", (hcx - 0.08, hp_y, 1.06),
                  (0.20, 0.14, 0.08), (0.78, 0.58, 0.40, 1.0))
-    # Taquito roller (canon convenience-store fixture)
+    # Taquito roller (canon convenience-store fixture) — rods from the
+    # back panel toward the opening (they ran 5 cm out through the back)
     for i in range(2):
         make_cyl(f"TaquitoRoller_{i}",
-                 (hcx + 0.05, hcy + 0.20 - i * 0.10, 1.42),
-                 0.04, 0.50, (0.42, 0.32, 0.20, 1.0), segments=8, axis='X')
+                 (hcx + 0.015, hcy + 0.20 - i * 0.10, 1.42),
+                 0.04, 0.43, (0.42, 0.32, 0.20, 1.0), segments=8, axis='X')
 
     # ── Wire basket on counter (left-behind objects) ────────────
     # The canon motif. Small steel basket with miscellaneous items
@@ -560,19 +587,21 @@ def build_beer_cooler():
     # 4 cooler doors evenly spaced
     door_centres = [-2.40, -0.80, +0.80, +2.40]
     for i, cx in enumerate(door_centres):
-        # Interior box (recessed into the wall area)
-        make_box(f"Cooler_{i}_Interior",
-                 (cx, cy + 0.30, 1.30),
-                 (1.30, 0.40, 2.20), COL_COOLER_INTERIOR)
-        # The "infinite recursion" inner mirror — placed at the
-        # back of the interior with a slight tint shift
+        # The case: five panels open to the room, frame foot to top
+        # (2026-09-24: a SOLID interior box with every shelf and six-pack
+        # modelled inside it, behind an opaque "glass" door — 95 objects
+        # per door the camera could never see)
+        case_shell(f"Cooler_{i}_Interior", (cx, cy + 0.30, 1.32),
+                   (1.30, 0.40, 2.16), COL_COOLER_INTERIOR, '-Y')
+        # The "infinite recursion" inner mirror — on the back panel's
+        # face, with a slight tint shift
         make_box(f"Cooler_{i}_BackMirror",
-                 (cx, cy + 0.485, 1.30),
-                 (1.20, 0.005, 2.10), (0.18, 0.30, 0.42, 0.85))
-        # Glass door (front)
-        make_box(f"Cooler_{i}_Glass",
-                 (cx, cy + 0.06, 1.30),
-                 (1.24, 0.04, 2.10), COL_COOLER_GLASS)
+                 (cx, cy + 0.4775, 1.31),
+                 (1.20, 0.005, 2.00), (0.18, 0.30, 0.42, 0.85))
+        # Glass door: two glints frame to frame (no glass slab)
+        for gi, (gx, gw) in enumerate(((-0.34, 0.03), (-0.26, 0.012))):
+            make_box(f"Cooler_{i}_Glint_{gi}", (cx + gx, cy + 0.06, 1.30),
+                     (gw, 0.004, 2.08), COL_GLINT)
         # Door frame
         for sgn, sz in [(-1, 'L'), (+1, 'R')]:
             make_box(f"Cooler_{i}_Frame_{sz}",
@@ -598,18 +627,20 @@ def build_beer_cooler():
             shz = 0.40 + sh * 0.42
             make_box(f"Cooler_{i}_Shelf_{sh}",
                      (cx, cy + 0.30, shz),
-                     (1.20, 0.30, 0.02), COL_METAL_STEEL)
+                     (1.26, 0.36, 0.02), COL_METAL_STEEL)   # side panel to side panel
             for b in range(5):
                 bx = cx - 0.48 + b * 0.24
                 tint = SNACK_TINTS[(i + sh + b) % len(SNACK_TINTS)]
                 make_box(f"Cooler_{i}_Sixpack_{sh}_{b}",
-                         (bx, cy + 0.30, shz + 0.20),
-                         (0.20, 0.22, 0.30), tint)
+                         (bx, cy + 0.30, shz + 0.01 + 0.13),
+                         (0.20, 0.22, 0.26), tint)   # on the shelf (it hung 4 cm over it)
 
     # ── Price tag strip across the top of all coolers ───────────
     for i, cx in enumerate(door_centres):
+        # on the top shelf's front lip (2026-09-24: it was stuck to the
+        # door glass, which is gone — the glass never rendered as glass)
         make_box(f"Cooler_PriceTag_{i}",
-                 (cx, cy + 0.03, 2.18),
+                 (cx, cy + 0.1175, 2.03),
                  (0.36, 0.005, 0.10), COL_PAPER)
 
 
@@ -1756,17 +1787,16 @@ def build_donut_display():
     dx, dy = -4.92, 4.52
     base_z = 0.88  # ON the coffee counter top
     # Case body (metal/glass front)
-    make_box("Donut_CaseBody", (dx, dy, base_z + 0.30),
-             (0.40, 0.86, 0.60), COL_METAL_STEEL)
-    # Front glass
-    make_box("Donut_CaseGlass", (dx + 0.21, dy, base_z + 0.30),
-             (0.04, 0.82, 0.56), COL_GLASS)
+    case_shell("Donut_CaseBody", (dx, dy, base_z + 0.30), (0.40, 0.86, 0.60), COL_METAL_STEEL, '+X')
+    # Front glass: two glints at the opening
+    for gi, (gy, gw) in enumerate(((-0.30, 0.02), (-0.22, 0.01))):
+        make_box(f"Donut_CaseGlint_{gi}", (dx + 0.18, dy + gy, base_z + 0.30), (0.004, gw, 0.56), COL_GLINT)
     # 3 tiers of donuts inside
     for tier in range(3):
         tray_z = base_z + 0.12 + tier * 0.18
         # Tray
-        make_box(f"Donut_Tray_{tier}", (dx, dy, tray_z),
-                 (0.34, 0.74, 0.02), COL_DONUT_TRAY)
+        make_box(f"Donut_Tray_{tier}", (dx - 0.01, dy, tray_z),
+                 (0.34, 0.82, 0.02), COL_DONUT_TRAY)   # wall to wall, on the side panels
         # 4 donuts per tier — vary by tier
         donut_colors = [
             [COL_DONUT_GLAZE, COL_DONUT_GLAZE, COL_DONUT_PINK, COL_DONUT_GLAZE],
@@ -1775,16 +1805,16 @@ def build_donut_display():
         ][tier]
         for di, dcol in enumerate(donut_colors):
             d_off_y = -0.12 + di * 0.08
-            make_cyl(f"Donut_{tier}_{di}", (dx, dy + d_off_y, tray_z + 0.04),
+            make_cyl(f"Donut_{tier}_{di}", (dx, dy + d_off_y, tray_z + 0.0225),
                      0.035, 0.025, dcol)
             # Hole in middle (just a darker small box)
             make_cyl(f"Donut_{tier}_{di}_Hole",
-                     (dx, dy + d_off_y, tray_z + 0.05),
+                     (dx, dy + d_off_y, tray_z + 0.0235),
                      0.012, 0.025, COL_METAL_BLACK)
     # DONUTS sign on top of case, reading east
-    make_box("Donut_Sign", (dx, dy, base_z + 0.66),
+    make_box("Donut_Sign", (dx, dy, base_z + 0.68),
              (0.04, 0.84, 0.16), COL_BRAND_RED)
-    make_box("Donut_SignText", (dx + 0.022, dy, base_z + 0.66),
+    make_box("Donut_SignText", (dx + 0.022, dy, base_z + 0.68),
              (0.005, 0.60, 0.08), COL_PAPER)
 
 
@@ -1876,7 +1906,7 @@ def build_cooler_price_windows():
     door_centres = [-2.40, -0.80, +0.80, +2.40]
     for i, cx in enumerate(door_centres):
         make_box(f"Cooler_PriceBand_{i}",
-                 (cx, cy + 0.02, 2.12),
+                 (cx, cy + 0.1175, 1.96),   # under the price tag, on the shelf lip
                  (0.32, 0.005, 0.04), COL_BRAND_RED)
 
 
@@ -2114,31 +2144,31 @@ def build_pizza_warmer():
     # (HotCase at cx, cy-0.10, 1.30 in build_counter)
     px, py = 5.0, 4.5 + 0.70
     base_z = 1.20
-    make_box("Pizza_CaseBody", (px, py, base_z),
-             (0.50, 0.50, 0.42), COL_METAL_STEEL)
-    # Glass front (south face)
-    make_box("Pizza_Glass", (px - 0.26, py, base_z),
-             (0.04, 0.50, 0.38), COL_GLASS)
-    # 3 round pizza pans visible inside
-    for pi, py_off in enumerate([-0.16, 0.0, +0.16]):
-        make_cyl(f"Pizza_Pan_{pi}", (px, py + py_off, base_z - 0.10),
-                 0.14, 0.02, COL_METAL_STEEL)
+    case_shell("Pizza_CaseBody", (px, py, base_z), (0.50, 0.50, 0.42), COL_METAL_STEEL, '-X')
+    # Glass front: two glints at the opening
+    for gi, (gy, gw) in enumerate(((-0.14, 0.02), (-0.07, 0.01))):
+        make_box(f"Pizza_Glint_{gi}", (px - 0.24, py + gy, base_z), (0.004, gw, 0.38), COL_GLINT)
+    # 3 round pizzas on the case floor, side by side (28 cm pans on
+    # 16 cm centres overlapped each other and the case sides)
+    for pi, py_off in enumerate([-0.15, 0.0, +0.15]):
+        make_cyl(f"Pizza_Pan_{pi}", (px, py + py_off, base_z - 0.18),
+                 0.07, 0.02, COL_METAL_STEEL)
         # Pizza (cheese-orange)
-        make_cyl(f"Pizza_Cheese_{pi}", (px, py + py_off, base_z - 0.085),
-                 0.13, 0.012, COL_PIZZA_ORANGE)
+        make_cyl(f"Pizza_Cheese_{pi}", (px, py + py_off, base_z - 0.164),
+                 0.06, 0.012, COL_PIZZA_ORANGE)
         # 4 pepperoni dots
         for di in range(4):
             ang = di * 1.57
-            dx2 = math.cos(ang) * 0.06
-            dy2 = math.sin(ang) * 0.06
+            dx2 = math.cos(ang) * 0.032
+            dy2 = math.sin(ang) * 0.032
             make_cyl(f"Pizza_Pep_{pi}_{di}",
-                     (px + dx2, py + py_off + dy2, base_z - 0.07),
-                     0.018, 0.005, (0.74, 0.18, 0.16, 1.0))
-    # Heat lamp glow (top)
-    make_box("Pizza_HeatLamp", (px, py, base_z + 0.25),
+                     (px + dx2, py + py_off + dy2, base_z - 0.1555),
+                     0.014, 0.005, (0.74, 0.18, 0.16, 1.0))
+    # Heat lamp glow, under the top panel
+    make_box("Pizza_HeatLamp", (px, py, base_z + 0.17),
              (0.46, 0.46, 0.04), (1.0, 0.74, 0.34, 1.0))
-    # PIZZA label
-    make_box("Pizza_Sign", (px, py, base_z + 0.30),
+    # PIZZA label, on the case top
+    make_box("Pizza_Sign", (px, py, base_z + 0.23),
              (0.50, 0.50, 0.04), COL_BRAND_RED)
 
 
@@ -2244,11 +2274,11 @@ def build_vape_smoke_kiosk():
     kx, ky = 5.84, 5.80
     base_z = 1.20
     # Body
-    make_box("Vape_KioskBody", (kx, ky, base_z),
-             (0.06, 0.80, 1.10), COL_VAPE_DARK)
-    # Glass front (west-facing)
-    make_box("Vape_Glass", (kx - 0.04, ky, base_z),
-             (0.005, 0.76, 1.06), COL_GLASS)
+    # a shallow shell open to the west (the pens were INSIDE a solid 6 cm
+    # body, behind an opaque glass slab)
+    case_shell("Vape_KioskBody", (kx, ky, base_z), (0.06, 0.80, 1.10), COL_VAPE_DARK, '-X', wall=0.015)
+    for gi, (gy, gw) in enumerate(((-0.30, 0.02), (-0.22, 0.01))):
+        make_box(f"Vape_Glint_{gi}", (kx - 0.028, ky + gy, base_z), (0.004, gw, 1.07), COL_GLINT)
     # Stacked vape pens on 3 shelves
     for sh in range(3):
         shz = base_z - 0.40 + sh * 0.34
@@ -2256,7 +2286,7 @@ def build_vape_smoke_kiosk():
             cx2 = ky - 0.32 + c * 0.16
             tint = SNACK_TINTS[(sh + c) % len(SNACK_TINTS)]
             make_box(f"VapePen_{sh}_{c}",
-                     (kx - 0.02, cx2, shz),
+                     (kx + 0.0125, cx2, shz),   # on the back panel
                      (0.005, 0.04, 0.16), tint)
     # Neon green VAPE sign
     make_box("Vape_NeonSign", (kx - 0.02, ky, base_z + 0.60),   # on the kiosk's top

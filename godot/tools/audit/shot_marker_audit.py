@@ -119,6 +119,9 @@ SYNONYMS = {
     # sixteen insert cues had no geometry answering to their names
     "fardoor": ["far_door"],
     "deckwall": ["deck_wall", "deckwall"], "boxes": ["box", "crate", "carton"],
+    # the Miller office "file cabinet" is the china cabinet full of
+    # binders: an open case now (2026-09-24), its binders ARE the subject
+    "cabinet": ["cabinet", "binder"],
     "meatcase": ["meat_case", "meat"], "speak_and_spell": ["speak_spell"],
     "oneway": ["one_way", "oneway", "mirror"], "setlist": ["set_list", "setlist"],
     "wreck": ["abandon_boat", "wreck", "hull"], "bed": ["bed", "mattress", "futon", "pillow"],

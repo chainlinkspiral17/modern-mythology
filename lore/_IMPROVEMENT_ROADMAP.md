@@ -2375,6 +2375,39 @@ windows, the inserts; run contact_frame_screen.py on it. Still open from
 the screener: dark inserts (cedar tower credit, montreal drainpipe,
 board lords decks, nightmare cell), markers too close to large subjects
 (carnival storm heap, the henderson truck), and the direction backlog.
+TWENTY-THIRD PASS — WHAT THE LENS COULD NOT SEE. Read from the old sheet's
+screener list (39 flagged frames) with a fan-cast per marker: most dark
+frames were LIT wrong, the flat ones were GLASS. Lights: 22 keys sat at
+the identity matrix (shining sideways, level with the floor) and 39
+back/rim lights shared a matrix aimed 45° UP — all down now;
+light_direction_audit gates key < −0.10 and back ≤ +0.05 (222 lights, the
+portrait rig's BackRim the one named exception). Glass: the pipeline has
+no alpha, so every "glass" slab is an opaque panel — and most glass
+cases were SOLID bodies with the product inside. New
+_props.structure.make_case_shell (five panels, same extents); the kits'
+cooler door, hot-food case, pizza warmer and donut case (15 rooms) and
+the kwik stop's own coolers / hot case / donut / pizza / vape kiosk are
+open shells with product on real shelves and two glints for the glass;
+by hand: the Board Lords deck wall (28 decks behind lavender), the
+centro vending machine, the ice freezer front (Emile's photo now on a
+centre mullion; the fog decal and wiped streak went with the glass),
+Jiggles' cabinet (a broken remnant along the head, not a full pane), the
+chip warmer, the proofer (door is a frame now), the Miller file cabinet,
+the missing-link pie case, nexcorp's three coolers, the gas-go fridge,
+the meat case's sneeze glass. make_window(see_through=True): the cabin's
+crow insert filmed a grey pane — the kitchen window has no glass now.
+The obstruction audit no longer treats glass as see-through (it
+passed that crow). Finn's window: four frame bars, glass set in them,
+the crow's beak clear. Markers: henderson truck insert 0.66 m → 2.8 m
+off the cab; cedar credit 0.43 → 1.0 m.
+NEXT (draft 24): a fresh contact sheet (the relit rooms, the open
+cases, the crow through the window). Glass still hiding things: the
+frog tanks (water is a slab too), the diner's west glass over
+D'Ambrosio's service bar (model chapter — look first), the asylum
+window bars, the cosmic comics window display, the missing-link cake
+dome, the bakery FOH case. Dark rooms with NO key at all (equipment
+shed, nightmare cell, centro stockroom: fill + practicals only) — a
+lighting call per room. The carnival storm-heap marker.
 
 **2026-09-19 · DESIGN · the two decorative checks made real, the first
 remembered choice.** Nate's basement (ch6) and Tem staying (ch8): the

@@ -140,7 +140,10 @@ def build_interior():
     make_box("Cab_Head", (cbx, cby + 0.02, 1.85), (0.62, 0.86, 0.10), cab)
     make_box("Cab_Stage", (cbx + 0.1, cby, 0.75), (0.45, 0.7, 0.06), (0.44, 0.34, 0.22, 1.0))
     # Glass fourth wall (north face), broken: partial pane + shard
-    make_box("Cab_Glass", (cbx - 0.035, cby + 0.42, 1.30), (0.55, 0.02, 0.75),
+    # the pane is BROKEN: what is left is a jagged strip along the head
+    # (2026-09-24: the "partial pane" was 0.55 x 0.75 m over the whole
+    # opening — no alpha in this pipeline, so it hid Jiggles entirely)
+    make_box("Cab_Glass", (cbx - 0.035, cby + 0.42, 1.5875), (0.55, 0.02, 0.175),
              (0.55, 0.62, 0.66, 0.35))
     make_box("Cab_Glass_Shard", (cbx + 0.21, cby + 0.42, 0.82), (0.20, 0.02, 0.16),
              (0.55, 0.62, 0.66, 0.5))

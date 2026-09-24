@@ -169,7 +169,7 @@ shadow_enabled = false
 
 ; BACK · cool cyan rim for depth
 [node name="Back" type="DirectionalLight3D" parent="."]
-transform = Transform3D(-0.866, -0.354, -0.354, 0, 0.707, -0.707, 0.5, -0.612, -0.612, 0, 4, -8)
+transform = Transform3D(-0.866, 0.354, -0.354, 0, 0.707, 0.707, 0.5, 0.612, -0.612, 0, 4, -8)
 light_color = Color(0.58, 0.74, 0.92, 1)
 light_energy = 0.28
 shadow_enabled = false

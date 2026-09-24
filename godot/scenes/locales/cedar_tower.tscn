@@ -393,7 +393,7 @@ metadata/fov = 42.0
 
 ; insert: the Tideline Survey poster's lower-right credit
 [node name="shot_insert_credit" type="Marker3D" parent="." groups=["vn_shot"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.95, 5.3, -0.55)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.950, 5.160, -1.071)
 rotation = Vector3(0.2634, -3.1416, 0.0)
 metadata/fov = 42.0
 
