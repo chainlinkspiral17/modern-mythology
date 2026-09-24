@@ -570,6 +570,12 @@ banisters classed · pans as containers.
 - **Rebuild on dependency, not on file.** list_stale_builds compared a
   builder's own commit time: every KIT fix since the kits existed
   reached a caller only if the caller's file also changed.
+- **Look at a frame before naming the fault (twenty-fifth pass).** "White
+  rooms" was read as "no colour" and fixed as such; the frames showed
+  faint distinct colours all along — WASHED, a gamma flip. When the fix
+  depends on a fact only the Deck holds, ship the fix that MEASURES the
+  fact (read the file back) and a diagnostic that reports it
+  (_glb_diag.txt rides back with the sheet), not a guess.
 
 ### 2026-09-06 · a builder that raises under the recorder is dropped without a flag
 

@@ -409,6 +409,12 @@ Louisville's hurricane-deck proportions"). Don't guess at numbers.
   'ACTIVE' and for colours on material-less meshes
   (`_props.geometry.gltf_color_kwargs`); `glb_color_check.py` proves a
   built GLB carries COLOR_0. Any NEW export path must use the helper.
+- **…and then the colours came back WASHED (same day).** COLOR_0 is
+  linear by the glTF spec; after the update the chain wrote our
+  colours unconverted, so everything rendered lifted toward white
+  (0.5 → 0.73). Measure, don't guess the version: every export now
+  goes through `_props.glb_colorfix.postfix(path, bpy)`, which reads
+  the file back and linearises COLOR_0 only when it is unconverted.
 
 ### 2026-09-24 · the glass cases were solid blocks with the product inside
 

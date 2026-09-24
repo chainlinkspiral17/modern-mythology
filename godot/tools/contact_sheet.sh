@@ -60,6 +60,10 @@ if ! CC="$(python3 "$PROJECT/tools/audit/glb_color_check.py" 2>/dev/null)"; then
 fi
 # shellcheck disable=SC2086
 $GODOT --path . res://tools/VnContactSheet.tscn -- "$@"
+# What the exporter wrote (2026-09-24): exporter version + sample COLOR_0
+# values per GLB ride back with the frames (contact_push carries qa/contact).
+python3 "$PROJECT/tools/audit/glb_diag.py" > "$PROJECT/qa/contact/_glb_diag.txt" 2>&1 || true
+python3 "$PROJECT/tools/audit/glb_color_check.py" >> "$PROJECT/qa/contact/_glb_diag.txt" 2>&1 || true
 echo
 echo "frames: $PROJECT/qa/contact  ·  report: $PROJECT/qa/contact/_report.json"
 [ -f "$PROJECT/qa/contact/_report.json" ] && python3 - "$PROJECT/qa/contact/_report.json" <<'EOF'

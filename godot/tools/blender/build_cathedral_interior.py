@@ -1231,6 +1231,16 @@ def export_glb():
         legacy['export_active_vertex_color_when_no_material'] = True
     if 'export_normals' in rna.properties: legacy['export_normals'] = True
     bpy.ops.export_scene.gltf(**base, **legacy)
+    try:   # COLOR_0 read-back + correction (2026-09-24 · the washed-white rooms)
+        import sys as _s, os as _o
+        _d = _o.path.dirname(_o.path.abspath(__file__))
+        for _c in (_d, _o.path.dirname(_d)):
+            if _o.path.isdir(_o.path.join(_c, "_props")) and _c not in _s.path:
+                _s.path.insert(0, _c)
+        from _props.glb_colorfix import postfix as _colorfix
+        _colorfix(base["filepath"], bpy)
+    except Exception as _e:
+        print("[glb_colorfix] skipped:", _e)
     if os.path.exists(out_path):
         size = os.path.getsize(out_path)
         print(f"[build_cathedral] ✓ wrote {out_path} ({size} bytes)")

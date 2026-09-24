@@ -38,9 +38,14 @@ try:
     # the export must carry the vertex colours on a new exporter
     # (2026-09-24) — unless the builder colours through real materials
     kw = bpy.STATS.get("export_kw", {})
-    col = kw.get("export_vertex_color") == "ACTIVE" or "materials.new(" in open(path).read()
+    mat = "materials.new(" in open(path).read()
+    col = kw.get("export_vertex_color") == "ACTIVE" or mat
+    # …and read the file back through _props.glb_colorfix.postfix
+    _cf = sys.modules.get("_props.glb_colorfix")
+    fixed = mat or (_cf is not None and getattr(_cf, "CALLS", 0) > 0)
     res = ("BAD-MESH" if bpy.STATS["bad"] else "NO-EXPORT" if not ok
-           else "NO-COLOUR (export drops vertex colours)" if not col else "OK")
+           else "NO-COLOUR (export drops vertex colours)" if not col
+           else "NO-COLOURFIX (export not read back by glb_colorfix.postfix)" if not fixed else "OK")
     print("RESULT", res, bpy.STATS["meshes"], bpy.STATS["bad"][:2])
 except SystemExit as e:
     print("RESULT EXIT", e.code)

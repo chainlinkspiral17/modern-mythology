@@ -30,7 +30,7 @@ TMP="$(mktemp -d)"
 trap 'rm -rf "$TMP"' EXIT
 # A throwaway index + orphan commit, without touching the checkout.
 export GIT_INDEX_FILE="$TMP/index"
-( cd "$FRAMES" && find . -type f \( -name '*.jpg' -o -name '*.png' -o -name '*.json' \) -print0 \
+( cd "$FRAMES" && find . -type f \( -name '*.jpg' -o -name '*.png' -o -name '*.json' -o -name '*.txt' \) -print0 \
 	| sed -z 's|^\./|godot/qa/contact/|' \
 	| xargs -0 git -C "$REPO" update-index --add -- )
 TREE="$(git -C "$REPO" write-tree)"

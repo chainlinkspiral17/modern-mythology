@@ -2438,6 +2438,31 @@ on every room (glb_color_check 0), THEN judge the drafts 22–23 light
 re-aims on real colour. The draft-24 list carries over (frog tanks,
 diner west glass, asylum bars, cosmic window, cake dome, FOH case,
 keyless dark rooms, carnival storm heap).
+TWENTY-FIFTH PASS — WASHED, NOT WHITE. The sheet from 72bdde67 (after a
+full Deck rebuild) still showed the rebuilt rooms pale — 79 rooms far
+brighter than draft 19; pixel-identical frames (24 → 25) were rooms that
+were ALREADY washed and rebuilt to the same thing. Looking closer: the
+kwik stop's product boxes show faint distinct colours — the colours are
+PRESENT but lifted toward white. That is a gamma flip, not a missing
+attribute: glTF COLOR_0 is linear; the old chain wrote
+srgb_to_linear(our colour); the new one writes our colour unconverted
+(whether the colour layer now takes linear input or the exporter
+stopped converting, the GLB is identical), and 0.5 renders as 0.73. The
+draft-24 `export_vertex_color` fix was necessary but not this.
+FIX, version-proof by measurement: _props/glb_colorfix.postfix reads
+every exported GLB back, compares COLOR_0 of up to 300 objects with the
+colour Blender holds for them (the layer returns what the builder
+wrote), and ONLY when the values are unconverted rewrites every COLOR_0
+through srgb_to_linear; a correct export is untouched (tested: float +
+normalised u16, idempotent). Called after export_glb and in all 16
+self-contained export blocks; blender_dryrun fails an export that is
+not read back (NO-COLOURFIX, negative-tested). DIAGNOSTICS: glb_diag.py
+prints each GLB's exporter (asset.generator) + sample COLOR_0 values;
+contact_sheet.sh writes it and glb_color_check into
+qa/contact/_glb_diag.txt and contact_push now carries .txt.
+NEXT (draft 26): the full rebuild again (geometry.py changed) → sheet →
+read _glb_diag.txt: expect "converted N colours" in the build log and
+linear values in the diag; THEN judge the draft 22–23 light re-aims.
 
 **2026-09-19 · DESIGN · the two decorative checks made real, the first
 remembered choice.** Nate's basement (ch6) and Tem staying (ch8): the

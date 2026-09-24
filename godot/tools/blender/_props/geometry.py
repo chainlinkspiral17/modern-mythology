@@ -177,6 +177,10 @@ def export_glb(out_path, *, export_lights=False, export_cameras=False):
     legacy = gltf_color_kwargs()
     if 'export_normals' in rna.properties: legacy['export_normals'] = True
     bpy.ops.export_scene.gltf(**base, **legacy)
+    # read the file back: correct COLOR_0 if this exporter left it
+    # unconverted (2026-09-24 · the washed-white rooms)
+    from .glb_colorfix import postfix
+    postfix(out_path, bpy)
     if os.path.exists(out_path):
         size = os.path.getsize(out_path)
         print(f"[props.export_glb] wrote {out_path} ({size} bytes)")
