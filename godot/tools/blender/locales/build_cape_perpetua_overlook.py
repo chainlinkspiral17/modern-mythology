@@ -70,7 +70,7 @@ def build_lot():
         make_cyl(f"Foundation_Truck_Wheel_{wi}", (wx, wy, 0.33), 0.33, 0.25, (0.14, 0.14, 0.15, 1.0), axis="X", segments=10)
     # the older Subaru he did not recognize
     make_box("Old_Subaru_Body", (2.6, -6.0, 0.62), (1.8, 4.4, 0.62), (0.48, 0.50, 0.46, 1.0))
-    make_box("Old_Subaru_Cabin", (2.6, -5.9, 1.20), (1.7, 2.6, 0.50), (0.42, 0.44, 0.40, 1.0))
+    make_box("Old_Subaru_Cabin", (2.6, -5.9, 1.18), (1.7, 2.6, 0.50), (0.42, 0.44, 0.40, 1.0))   # on the body (2026-09-24: 2 cm over it)
     for wi, (wx, wy) in enumerate(((1.675, -7.3), (3.525, -7.3), (1.675, -4.7), (3.525, -4.7))):
         make_cyl(f"Old_Subaru_Wheel_{wi}", (wx, wy, 0.32), 0.32, 0.25, (0.14, 0.14, 0.15, 1.0), axis="X", segments=10)
     # the trailhead post with its three-branch board

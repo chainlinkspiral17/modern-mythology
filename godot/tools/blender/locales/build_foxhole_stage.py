@@ -138,7 +138,7 @@ def build_show_props():
                      [(0.72, 0.26, 0.60, 1.0), (0.26, 0.55, 0.80, 1.0), (0.86, 0.62, 0.22, 1.0)][li])
     # DJ booth stage-left on the deck (Chess up in fifteen)
     make_box("DJ_Booth", (-3.3, 4.4, 0.30 + 0.55), (1.0, 0.6, 1.10), (0.18, 0.17, 0.19, 1.0))
-    make_box("DJ_Laptop", (-3.3, 4.3, 1.44), (0.30, 0.22, 0.03), (0.55, 0.57, 0.58, 1.0))
+    make_box("DJ_Laptop", (-3.3, 4.3, 1.415), (0.30, 0.22, 0.03), (0.55, 0.57, 0.58, 1.0))   # on the booth (2026-09-24: 2.5 cm over it)
 
 
 def main():

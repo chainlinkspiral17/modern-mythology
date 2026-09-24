@@ -459,7 +459,16 @@ def build_road():
     BEND_Y = 420.0
     span = (BEND_Y - ROAD_NEAR)
     mid = (BEND_Y + ROAD_NEAR) / 2.0
-    make_box("Ground_Far", (0.0, 0.0, -0.06), (2600.0, 2600.0, 0.02), (0.46, 0.44, 0.28, 1.0))
+    # the far ground, cut round the two ditch strips (2026-09-24: one 2.6 km
+    # sheet at -0.06 lay OVER the ditches, which bottom out at -0.40 — the
+    # ditches could not be seen)
+    gcol = (0.46, 0.44, 0.28, 1.0)
+    make_box("Ground_Far", (-(1300.0 + 5.5) / 2.0, 0.0, -0.06), (1300.0 - 5.5, 2600.0, 0.02), gcol)
+    make_box("Ground_Far_E", ((1300.0 + 5.5) / 2.0, 0.0, -0.06), (1300.0 - 5.5, 2600.0, 0.02), gcol)
+    make_box("Ground_Far_Mid", (0.0, 0.0, -0.06), (7.4, 2600.0, 0.02), gcol)
+    for sgn in (-1, +1):
+        make_box(f"Ground_Far_DitchS_{sgn:+d}", (sgn * 4.6, (ROAD_NEAR - 1300.0) / 2.0, -0.06), (1.8, ROAD_NEAR + 1300.0, 0.02), gcol)
+        make_box(f"Ground_Far_DitchN_{sgn:+d}", (sgn * 4.6, (BEND_Y + 1300.0) / 2.0, -0.06), (1.8, 1300.0 - BEND_Y, 0.02), gcol)
     make_box("Road_Asphalt", (0.0, mid, 0.0), (4.4, span, 0.04), COL_ASPHALT)
     di = 0
     dy = ROAD_NEAR

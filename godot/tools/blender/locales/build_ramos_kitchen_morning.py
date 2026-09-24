@@ -43,7 +43,7 @@ def build_counter():
     # Sink + faucet (was missing)
     make_box("Sink_Bowl", (-ROOM_W/4.0, ROOM_D-1.0, 0.86), (0.50, 0.40, 0.12), (0.86, 0.86, 0.84, 1.0))
     make_cyl("Sink_Faucet", (-ROOM_W/4.0, ROOM_D-1.10, top_z+0.04), 0.015, 0.30, P.METAL_STEEL)
-    make_box("Sink_Faucet_Spout", (-ROOM_W/4.0, ROOM_D-1.20, top_z+0.28), (0.03, 0.16, 0.03), P.METAL_STEEL)
+    make_box("Sink_Faucet_Spout", (-ROOM_W/4.0, ROOM_D-1.20, top_z+0.19), (0.03, 0.16, 0.03), P.METAL_STEEL)   # off the riser's top (2026-09-24: 7.5 cm over it)
     # Coffee maker on the counter (make_coffee_pots was imported/unused)
     make_coffee_pots("Coffee", (-ROOM_W/4.0-0.85, ROOM_D-1.0, top_z), pots=1)
 
@@ -74,9 +74,11 @@ def build_stove():
         make_cyl(f"Stove_Burner_{bi}", (sx+bx, sy+by, 0.95), 0.10, 0.02, P.METAL_STEEL)
     make_box("Stove_Oven_Door", (sx, sy-0.36, 0.45), (0.66, 0.02, 0.60), (0.72, 0.70, 0.66, 1.0))
     make_box("Stove_Handle", (sx, sy-0.38, 0.78), (0.50, 0.04, 0.04), P.METAL_STEEL)
-    make_box("Stove_Backsplash", (sx, sy+0.36, 1.20), (0.80, 0.04, 0.40), (0.92, 0.88, 0.82, 1.0))
+    # the riser ON the stove top's back edge, its knobs on its face
+    # (2026-09-24: 6 cm over the top, the knobs inside it)
+    make_box("Stove_Backsplash", (sx, sy+0.36, 1.14), (0.80, 0.04, 0.40), (0.92, 0.88, 0.82, 1.0))
     for ki in range(4):
-        make_cyl(f"Stove_Knob_{ki}", (sx-0.28+ki*0.18, sy+0.36, 1.10), 0.025, 0.04, P.METAL_BLACK, axis='Y')
+        make_cyl(f"Stove_Knob_{ki}", (sx-0.28+ki*0.18, sy+0.32, 1.04), 0.025, 0.04, P.METAL_BLACK, axis='Y')
 
 def build_fridge():
     fx, fy = +ROOM_W/2.0 - 0.50, 1.0

@@ -1569,36 +1569,14 @@ def build_payphone():
 
 
 def build_stockroom_through_curtain():
-    # Stack of cardboard boxes visible THROUGH the strip curtain.
-    # Sits just inside the stockroom door — the door opens at
-    # (5.0, 8.78) per build_floor_props; we put the boxes a bit
-    # past it (Blender Y=9.2 — outside the interior wall but the
-    # SubViewport renders the open world, no occlusion check).
-    # Actually safer: keep them inside the building, on the inner
-    # face of the stockroom-door cutout — visible because the door
-    # is implied (no actual closed door geometry, just the strip
-    # curtain). Place at Y≈8.8 just behind the curtain.
-    box_x = 5.0
-    box_y = 8.72  # slightly past the strip curtain
-    # Stack of three cardboard cartons
-    for ti in range(3):
-        make_box(f"Stockroom_Box_{ti}",
-                 (box_x - 0.20 + (ti % 2) * 0.40,
-                  box_y,
-                  0.25 + (ti // 2) * 0.50),
-                 (0.36, 0.30, 0.40), COL_BOX_KRAFT)
-    # A shelving unit visible behind the boxes
-    make_box("Stockroom_Shelf",
-             (box_x, box_y + 0.20, 1.40),
-             (1.20, 0.04, 1.60), COL_METAL_STEEL)
-    # Three loose products on the shelf
-    for pi in range(3):
-        make_box(f"Stockroom_Product_{pi}",
-                 (box_x - 0.40 + pi * 0.40,
-                  box_y + 0.22,
-                  1.20),
-                 (0.30, 0.20, 0.30),
-                 SNACK_TINTS[pi % len(SNACK_TINTS)])
+    # (2026-09-24 re-plan of the NE corner: this stack was placed to be
+    # seen "through the strip curtain" into a stockroom the model does
+    # not have — the back door is a closed leaf in the E wall — and with
+    # a steel backboard and three products half into the N wall, a
+    # locker and the trash bag, it was a heap. Three cartons now, stacked
+    # in the corner N of the back door, clear of its swing.)
+    for ti, (bx_, by_, bz_) in enumerate(((5.66, 8.35, 0.20), (5.66, 8.68, 0.20), (5.66, 8.35, 0.60))):
+        make_box(f"Stockroom_Box_{ti}", (bx_, by_, bz_), (0.36, 0.30, 0.40), COL_BOX_KRAFT)
 
 
 def build_more_floor_displays():
@@ -1914,7 +1892,8 @@ def build_dust_stripes():
 def build_trashbag_at_stockroom():
     # Tied-off black trash bag at the stockroom door threshold —
     # Sam's mid-shift "still need to take this out" prop.
-    bx, by = 4.50, 8.80
+    # between the lockers and the cartons (2026-09-24: it stood in a locker)
+    bx, by = 5.20, 8.62
     make_cyl("Trashbag_Body", (bx, by, 0.30), 0.20, 0.60, COL_BAG_BLACK)
     # Tied top
     make_cyl("Trashbag_Tie", (bx, by, 0.60), 0.04, 0.06, COL_BAG_BLACK)
@@ -2615,8 +2594,9 @@ def build_floor_plant():
 
 
 def build_broom_and_mop():
-    # Broom + mop leaning in the corner near the stockroom door.
-    bx, by = 4.40, 8.40
+    # Broom + mop against the N wall between the last cooler and the break
+    # bench (2026-09-24: at (4.40, 8.40) both stood through the bench)
+    bx, by = 3.70, 8.78
     # Broom
     make_cyl("Broom_Handle", (bx, by, 0.80),
              0.018, 1.60, COL_BROOM_HANDLE, axis='Z')
@@ -2734,9 +2714,11 @@ def build_door_hinges():
                      0.018, 0.10, COL_METAL_BLACK, axis='X')
     # Back door (north-east, near stockroom)
     for hi in range(3):
+        # on the back door's N edge (2026-09-24: three hinges stood in
+        # mid-air at (4.40, 8.78), where an older back door once was)
         make_cyl(f"BackDoor_Hinge_{hi}",
-                 (4.40, 8.78, 0.30 + hi * 0.70),
-                 0.018, 0.08, COL_METAL_BLACK, axis='Y')
+                 (5.862, 7.94, 0.30 + hi * 0.70),
+                 0.018, 0.08, COL_METAL_BLACK, axis='Z')
 
 
 def build_paper_towel_dispenser():
@@ -2940,9 +2922,13 @@ def build_hero_props_2026_08():
     # Rubber anti-fatigue mat on the working side of the counter
     make_box("AntiFatigue_Mat", (5.55, 4.5, 0.010), (0.80, 3.60, 0.015), (0.14, 0.14, 0.15, 1.0))
     # Employee break nook, NE corner: bench + two lockers
-    make_box("Break_Bench", (4.8, 8.35, 0.42), (1.10, 0.40, 0.06), wood)
-    for li, lx in enumerate((4.45, 4.85)):
-        make_box(f"Break_Locker_{li}", (lx, 8.75, 0.95), (0.38, 0.35, 1.90), (0.44, 0.50, 0.54, 1.0))
+    # (2026-09-24: lockers flush on the N wall, W of the corner; the bench
+    # in front of them, on legs — it was a board at 42 cm on nothing)
+    make_box("Break_Bench", (4.45, 8.25, 0.42), (1.00, 0.36, 0.06), wood)
+    for bi, (lx, ly) in enumerate(((-0.44, -0.14), (0.44, -0.14), (-0.44, 0.14), (0.44, 0.14))):
+        make_box(f"Break_Bench_Leg_{bi}", (4.45 + lx, 8.25 + ly, 0.195), (0.04, 0.04, 0.39), wood)
+    for li, lx in enumerate((4.25, 4.65)):
+        make_box(f"Break_Locker_{li}", (lx, 8.70, 0.95), (0.38, 0.35, 1.90), (0.44, 0.50, 0.54, 1.0))
     # Indoor ice-cream novelty cooler (the one acting up)
     make_box("Novelty_Cooler", (-1.2, 7.4, 0.45), (1.60, 0.80, 0.90), (0.86, 0.88, 0.90, 1.0))
     make_box("Novelty_Cooler_Lid", (-1.2, 7.4, 0.92), (1.55, 0.75, 0.04), (0.55, 0.62, 0.66, 0.6))

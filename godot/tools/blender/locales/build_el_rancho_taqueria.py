@@ -79,7 +79,7 @@ def build_salsa_station():
     sx, sy = -ROOM_W/2.0+0.8, ROOM_D-1.2
     make_box("Salsa_Table", (sx, sy, 0.45), (1.10, 0.62, 0.06), COL_WOOD)
     for k,(ox,oy) in enumerate([(-0.46,-0.24),(0.46,-0.24),(-0.46,0.24),(0.46,0.24)]):
-        make_box(f"Salsa_Leg_{k}", (sx+ox, sy+oy, 0.24), (0.05,0.05,0.42), COL_WOOD)
+        make_box(f"Salsa_Leg_{k}", (sx+ox, sy+oy, 0.21), (0.05,0.05,0.42), COL_WOOD)   # to the floor (2026-09-24: 3 cm short)
     salsa_cols = [(0.72,0.20,0.16,1.0),(0.36,0.52,0.24,1.0),(0.86,0.62,0.24,1.0)]
     for i in range(3):
         px = sx-0.34+i*0.34
@@ -88,7 +88,7 @@ def build_salsa_station():
     for i,col in enumerate([(0.86,0.22,0.16,1.0),(0.86,0.72,0.20,1.0),(0.36,0.46,0.24,1.0)]):
         # Hot-sauce bottles line the table's FRONT edge, clear of
         # the salsa pans (bottle 1 stood in salsa 2).
-        make_bottle(f"Bottle_{i}", sx + 0.40, sy + 0.22 + i * 0.06, 0.50,
+        make_bottle(f"Bottle_{i}", sx + 0.40, sy + 0.22 + i * 0.06, 0.48,   # on the table top (2026-09-24: 2 cm over it)
                     col, h=0.16, r=0.026)
     make_box("Napkins", (sx-0.40, sy+0.22, 0.54), (0.16,0.10,0.12), P.METAL_STEEL)
 

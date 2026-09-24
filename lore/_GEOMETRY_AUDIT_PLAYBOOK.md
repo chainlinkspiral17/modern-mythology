@@ -457,6 +457,17 @@ banisters classed · pans as containers.
   up": remove one and the other floats (the fountain was 27 cm over
   its counter). When a clip is between two things of the same KIND
   from different build functions, one of them is a duplicate.
+- **An exemption written for one pair excuses every pair (nineteenth
+  pass).** "Closet tools lean together and against the bench" let a
+  broom or mop overlap ANYTHING by 20 cm — so the kwik stop's broom
+  stood through the break bench unflagged. Write an exemption for the
+  pair it was meant for (tool vs tool), and name the new ones narrowly
+  (creek_stone, not stone; sprinkler vs lawn, not sprinkler).
+- **A ground sheet can hide what is cut into the ground.** New Auburn
+  Road's 2.6 km far-ground sheet at z -0.06 lay over both roadside
+  ditches (which bottom at -0.40) — the ditches were never visible. The
+  overlap gate called it "ground x ditch, 7 cm". When a depression
+  clips a ground plane, the plane is on top: cut the plane.
 - **Move the light with the lamp.** Jesse's bedside lamp moved 1.3 m;
   its practical OmniLight in the .tscn would have lit an empty corner.
   orphan_practical_audit catches it — and it also caught the reverse:

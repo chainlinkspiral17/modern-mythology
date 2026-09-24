@@ -90,8 +90,9 @@ def build_main_building():
         make_box(f"Main_UWin_{i}", (wx, 8.44, 4.45), (0.80, 0.08, 1.35), col)
         make_box(f"Main_UWin_Frame_{i}", (wx, 8.46, 4.45), (0.94, 0.06, 1.5), COL_CREAM)
     # The house sign over the porch — long cream board
-    make_box("Main_Sign", (-4.0, 8.30, 3.45), (3.4, 0.08, 0.55), COL_CREAM)
-    make_box("Main_Sign_Text", (-4.0, 8.26, 3.45), (2.8, 0.05, 0.24), COL_MAROON_DK)
+    # standing on the beltline (2026-09-24: 3 cm in front of it, on air)
+    make_box("Main_Sign", (-4.0, 8.40, 3.45), (3.4, 0.08, 0.55), COL_CREAM)
+    make_box("Main_Sign_Text", (-4.0, 8.335, 3.45), (2.8, 0.05, 0.24), COL_MAROON_DK)
 
 
 def build_satellites():
@@ -208,7 +209,7 @@ def build_bandstand():
         make_cyl(f"Band_Post_{i}", (px, py, 1.45), 0.07, 2.2, COL_CREAM, segments=6)
     make_taper_cyl("Band_Roof", (bx, by, 3.0), 2.5, 0.10, 1.1, COL_MAROON, segments=10)
     make_taper_cyl("Band_Roof_Stripe", (bx, by, 2.80), 2.56, 1.5, 0.34, COL_CREAM, segments=10)
-    make_cyl("Band_Finial", (bx, by, 3.75), 0.05, 0.35, COL_CREAM, segments=6)
+    make_cyl("Band_Finial", (bx, by, 3.725), 0.05, 0.35, COL_CREAM, segments=6)   # on the roof peak (2026-09-24: 2.5 cm over it)
     make_box("Band_Rail_S", (bx, by - 1.52, 0.75), (2.6, 0.06, 0.06), COL_RAIL)   # between the two south posts (2026-09-22: 23 cm outside them)
 
 

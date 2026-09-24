@@ -592,12 +592,24 @@ def overlaps(boxes):
             # A swing rope hangs THROUGH the canopy from its branch.
             if (cr1 and fx2) or (cr2 and fx1):
                 continue
+            # Stones in a creek or path bed are set INTO the ground, and a
+            # lawn sprinkler head is flush in its lawn (2026-09-24 — named
+            # narrowly: a "stone" alone could be a wall or a headstone, and
+            # a ceiling sprinkler is still judged against its ceiling).
+            if any(t in l1 or t in l2 for t in ("creek_stone", "river_stone", "stepping_stone", "steppingstone")) and \
+                    any(g in l1 or g in l2 for g in ("floor", "ground", "bank", "bed", "dirt", "grass", "lawn")):
+                continue
+            if ("sprinkler" in l1 and "lawn" in l2) or ("sprinkler" in l2 and "lawn" in l1):
+                continue
             # A tank's collar rings its tank.
             if depth <= 0.10 and ("collar" in l1 or "collar" in l2):
                 continue
-            # Closet tools lean together and against the bench.
-            if depth <= 0.20 and any(t in l1 or t in l2 for t in
-                                     ("broom", "mop_", "squeegee")):
+            # Closet tools lean together. (2026-09-24: this used to excuse
+            # a broom or mop against ANYTHING to 20 cm — the kwik stop's
+            # broom stood through the break bench unseen. Tool against tool
+            # only now.)
+            _TOOLS = ("broom", "mop_", "squeegee")
+            if depth <= 0.20 and any(t in l1 for t in _TOOLS) and any(t in l2 for t in _TOOLS):
                 continue
             # Cues lean against whatever is behind them.
             if depth <= 0.10 and ("cue" in n1.lower() or

@@ -157,7 +157,7 @@ def build_hero_props():
     back from, the disintegrating lace curtain — and vol1's TV +
     console + bass for Jacob's place."""
     # The rented sofa, springs and all
-    make_box("Rented_Sofa_Base", (-2.40, 2.40, 0.26), (0.90, 2.00, 0.40), (0.42, 0.36, 0.30, 1.0))
+    make_box("Rented_Sofa_Base", (-2.40, 2.40, 0.20), (0.90, 2.00, 0.40), (0.42, 0.36, 0.30, 1.0))   # on the floor (2026-09-24: 6 cm over it)
     make_box("Rented_Sofa_Back", (-2.80, 2.40, 0.66), (0.20, 2.00, 0.60), (0.38, 0.32, 0.27, 1.0))
     for cy in (1.95, 2.85):
         make_chamfer_box(f"Sofa_Cushion_{cy:.2f}", (-2.32, cy, 0.53), (0.72, 0.80, 0.14), (0.46, 0.40, 0.33, 1.0), chamfer=0.03)
@@ -188,6 +188,10 @@ def build_hero_props():
     # (draft 3: the bass as a bass — body, neck, headstock, four strings —
     # north of the armoire it used to run into; the amp beyond it)
     make_chamfer_box("Bass_Body", (2.65, 4.55, 0.55), (0.14, 0.36, 0.50), (0.52, 0.22, 0.16, 1.0), chamfer=0.03)
+    # its stand (2026-09-24: the bass stood 30 cm up on nothing)
+    make_box("Bass_Stand_Base", (2.65, 4.55, 0.015), (0.30, 0.40, 0.03), (0.12, 0.12, 0.13, 1.0))
+    for ui, uy in enumerate((4.42, 4.68)):
+        make_box(f"Bass_Stand_Upright_{ui}", (2.65, uy, 0.17), (0.03, 0.03, 0.28), (0.12, 0.12, 0.13, 1.0))
     make_box("Bass_Neck", (2.65, 4.55, 1.25), (0.05, 0.07, 0.95), (0.30, 0.22, 0.14, 1.0))
     make_box("Bass_Headstock", (2.65, 4.55, 1.78), (0.05, 0.09, 0.14), (0.30, 0.22, 0.14, 1.0))
     for si_ in range(4):
@@ -278,7 +282,10 @@ def build_draft3_2026_09():
     make_cyl("Wear_Can_Ring", (2.45, 1.35, 0.007), 0.04, 0.002, (0.30, 0.20, 0.14, 1.0), segments=8)
     # D3
     make_wall_outlet("Outlet_E_2", (ROOM_W / 2.0, 2.2), axis='Y', face_sign=-1, z=0.30, aged=True)
-    make_tube("Cord_1", [(2.85, 2.2, 0.75), (ROOM_W / 2.0 - 0.13, 2.2, 0.30)], 0.008, cord, segments=5)
+    # back off the TV, then down BEHIND the stand to the outlet
+    # (2026-09-24: one diagonal ran through the stand)
+    make_tube("Cord_1", [(2.85, 2.2, 0.75), (3.10, 2.2, 0.75)], 0.008, cord, segments=5)
+    make_tube("Cord_1b", [(3.10, 2.2, 0.75), (3.10, 2.2, 0.30), (ROOM_W / 2.0 - 0.13, 2.2, 0.30)], 0.008, cord, segments=5)
     make_wall_outlet("Outlet_N_1", (1.5, ROOM_D), axis='X', face_sign=-1, z=1.15, aged=True)
     make_tube("Cord_2", [(1.44, 5.75, 1.05), (1.50, ROOM_D - 0.13, 1.15)], 0.008, cord, segments=5)
     make_tube("Cord_3", [(2.80, 5.00, 0.30), (ROOM_W / 2.0 - 0.13, 4.25, 0.30)], 0.008, cord, segments=5)

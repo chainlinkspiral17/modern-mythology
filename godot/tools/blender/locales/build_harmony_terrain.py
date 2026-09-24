@@ -10728,7 +10728,7 @@ def build_dumpsters():
     _dumpster("Dump_KS_Kwik",    -15,       -360 + 6.0, COL_DUMP_BROWN)
     _dumpster("Dump_KS_Laundro", -15 + 9.0, -360 + 6.0, COL_DUMP_GREEN)
     # Behind NexCorp Gas & Go
-    _dumpster("Dump_NC", -60, -360 + 6.0, COL_DUMP_GREEN)
+    _dumpster("Dump_NC", -60, -360 + 5.88, COL_DUMP_GREEN)   # clear of the car wash's S wall (2026-09-24: its lid 10 cm in)
     # Behind the Diner
     _dumpster("Dump_Diner", 35, -360 + 5.5, COL_DUMP_BROWN)
     # Behind Cosmic Comics
@@ -13694,7 +13694,7 @@ def build_hs_stadium_overflow_lot():
     # of the lot, where the field is just north)
     for sgn, tag in ((-1, 'L'), (1, 'R')):
         tx = cx + sgn * 5.0
-        ty = cy + hd_lot + 2.0
+        ty = cy + hd_lot   # on the lot's N edge (2026-09-24: 2 m further N they stood on the end zone)
         tz = mesh_z(tx, ty)
         # Body
         _make_box_local(f"HS_TicketBooth_{tag}_Body",
@@ -15178,9 +15178,11 @@ def build_country_club_lot():
     # ── VALET LOT east of the clubhouse
     cc_lot_cx = 30.0   # clubhouse spans cx-18..+18, lot east of that
     cc_lot_cy = 370.0
-    _build_parking_lot("CCValet", cc_lot_cx + 30.0, cc_lot_cy - 4.0,
+    # (2026-09-24: 3.2 m further east — the lot's W edge ran 3 m over
+    # tennis court 1, curb stops on its baseline)
+    _build_parking_lot("CCValet", cc_lot_cx + 33.2, cc_lot_cy - 4.0,
                         lot_w=22.0, lot_d=18.0,
-                        ground_z=mesh_z(cc_lot_cx + 30.0,
+                        ground_z=mesh_z(cc_lot_cx + 33.2,
                                          cc_lot_cy - 4.0),
                         building_y_north=cc_lot_cy,
                         car_palette=[
@@ -15448,7 +15450,8 @@ def build_phase3_neighborhood():
 
     # 2 framed-only houses · just a slab + 4 corner studs + a
     # stack of lumber on top of the slab
-    for k, (fcx, fcy) in enumerate(((-410, -240), (-400, -195))):
+    # (2026-09-24: slab 1 at x -400 ran 0.5 m under WE_House_A1 — 0.6 m east)
+    for k, (fcx, fcy) in enumerate(((-410, -240), (-399.4, -195))):
         fz = mesh_z(fcx, fcy)
         # Slab
         _make_box_local(f"P3_Framed_Slab_{k}",

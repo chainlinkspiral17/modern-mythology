@@ -102,7 +102,7 @@ def build_dressing():
     kx, ky = ROOM_W/4.0, ROOM_D-1.0
     make_cyl("Kettle_Body", (kx-0.2, ky, 1.02), 0.10, 0.16, (0.72, 0.68, 0.30, 1.0), segments=12)
     make_cyl("Kettle_Spout", (kx-0.30, ky, 1.06), 0.02, 0.10, (0.72, 0.68, 0.30, 1.0), axis='X', segments=6)
-    make_cyl("Kettle_Handle", (kx-0.2, ky, 1.18), 0.015, 0.14, P.METAL_BLACK, axis='X', segments=6)
+    make_cyl("Kettle_Handle", (kx-0.2, ky, 1.115), 0.015, 0.14, P.METAL_BLACK, axis='X', segments=6)   # on the lid (2026-09-24: 6.5 cm over it)
     # Pie + fruit bowl on the table
     make_cyl("Pie", (-0.18, ROOM_D/2.0, 0.79), 0.14, 0.05, (0.82, 0.62, 0.34, 1.0), segments=14)
     make_cyl("FruitBowl", (0.18, ROOM_D/2.0, 0.80), 0.14, 0.07, (0.66, 0.62, 0.50, 1.0), segments=14)

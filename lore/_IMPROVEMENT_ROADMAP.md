@@ -2248,6 +2248,33 @@ rancho, ember ash office, henderson porch front, new orleans
 apartment, nightmare cell, ramos kitchen, sapo falls); overlap: the
 new worst (harmony terrain 6, accretion basement 5, cabin road 5, new
 auburn road 5).
+NINETEENTH PASS (support 27 → 0 — NO FLOATING COMPONENT IN ANY OF THE
+114 MEASURED LOCALES; overlap 56 → 34): the KWIK STOP's NE corner
+re-planned (lockers flush on the N wall, the bench on legs, the trash
+bag between them and three cartons stacked N of the back door, clear
+of its swing; the "seen through the curtain" stockroom shelf and
+products removed — there is no stockroom in the model; a broom and mop
+that stood through the bench moved to the N wall; three back-door
+hinges floating mid-room at an old door position moved onto the
+door). The rooms at 2 and 1, eighteen of them, to zero — among them
+the NIGHTMARE CELL's only light (fixture, tubes and cage 5.5 cm under
+the ceiling), SAPO FALLS (a strip of nothing between shore and pool;
+the tepui flank began 5 m up), NEW ORLEANS APARTMENT (the bass on no
+stand), EMBER ASH (an office chair whose five feet and post touched
+nothing), LACOMBE (the tow boom 50 cm over the bed). Overlap: HARMONY
+TERRAIN to zero (ticket booths on the end zone, a valet lot over tennis
+court 1, a framed slab under a house, a dumpster in the car wash wall),
+ACCRETION BASEMENT (block-course lines through the N wall), NEW AUBURN
+ROAD (the far ground sheet lay OVER both roadside ditches — they were
+never visible; the sheet is cut round them), CABIN ROAD. AUDIT: the
+"closet tools" rule excused a broom or mop against ANYTHING to 20 cm —
+tool against tool only now; creek/river/stepping stones may root in the
+ground, lawn sprinklers sit flush in the lawn (named narrowly).
+NEXT (the support gate now holds every locale at 0 — any float is a
+regression): overlap bayou lighthouse 3, finn apartment 3, small wood
+road 3, then the 2s (cape perpetua, carnival lot, coach k, hierophant
+circuit, pharmacy, solenade garden). Deck-verify the whole run
+(windows, baseboards, the rebuilt corners).
 
 **2026-09-19 · DESIGN · the two decorative checks made real, the first
 remembered choice.** Nate's basement (ch6) and Tem staying (ch8): the

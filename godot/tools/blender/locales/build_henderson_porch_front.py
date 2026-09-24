@@ -184,7 +184,7 @@ def build_hero_props():
     make_box("Garage_Door", (3.4, 0.03, 1.15), (2.60, 0.06, 2.30), (0.80, 0.78, 0.72, 1.0))
     for gi in range(4):
         make_box(f"Garage_Panel_{gi}", (3.4, 0.065, 0.42 + gi * 0.55), (2.45, 0.01, 0.06), (0.62, 0.60, 0.55, 1.0))
-    make_box("Garage_Handle", (3.4, 0.09, 0.55), (0.24, 0.03, 0.05), steel)
+    make_box("Garage_Handle", (3.4, 0.075, 0.55), (0.24, 0.03, 0.05), steel)   # on the door (2026-09-24: 1.5 cm off it)
 
 
 def build_hero_props_2026_09():
@@ -194,7 +194,7 @@ def build_hero_props_2026_09():
     buzzes."): face-up on the hood of the car in the drive — the
     truck's cabin is solid, so the phone rides where the insert can
     see it."""
-    make_box("Jesses_Phone", (3.6, 1.9, 0.8255), (0.070, 0.140, 0.011), (0.13, 0.13, 0.15, 1.0))
+    make_box("Jesses_Phone", (3.6, 1.9, 0.8005), (0.070, 0.140, 0.011), (0.13, 0.13, 0.15, 1.0))   # on the hood (2026-09-24: 2.5 cm over it)
 
 
 def main():

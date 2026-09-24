@@ -41,7 +41,7 @@ import os, sys, math
 _BT = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)), ".."))
 if _BT not in sys.path: sys.path.insert(0, _BT)
 from _props import palette as P
-from _props.geometry import clear_scene, make_box, make_cyl, export_glb
+from _props.geometry import clear_scene, make_box, make_cyl, make_tube, export_glb
 from _props.structure import make_floor, make_wall, make_ceiling, make_crown_molding, make_window
 from _props.decor import make_wall_clock, make_faded_poster
 from _props.safety import make_smoke_detector
@@ -341,6 +341,9 @@ def build_office_chair():
         fy = cy + 0.24 * math.sin(a)
         make_box("OfficeChair_Foot_%d" % s, (fx, fy, 0.04),
                  (0.08, 0.08, 0.06), COL_DESK_LEG)
+        # the spoke from the post to the foot (2026-09-24: five feet and a
+        # post that stopped 2 cm off the floor, none of them joined)
+        make_tube("OfficeChair_Spoke_%d" % s, [(cx, cy, 0.05), (fx, fy, 0.05)], 0.018, COL_DESK_LEG, segments=5)
 
 
 def build_back_stair_opening():
@@ -454,7 +457,7 @@ def build_ceiling_infra():
     # Pendant light over the desk
     make_cyl("Pendant_Cord", (-0.50, 3.20, CEIL - 0.40),
              0.012, 0.80, (0.18, 0.16, 0.14, 1.0), segments=4, axis='Z')
-    make_cyl("Pendant_Shade", (-0.50, 3.20, CEIL - 0.96),
+    make_cyl("Pendant_Shade", (-0.50, 3.20, CEIL - 0.85),   # on the cord (2026-09-24: 11 cm under it)
              0.20, 0.10, (0.86, 0.78, 0.62, 1.0), segments=12, axis='Z')
 
 

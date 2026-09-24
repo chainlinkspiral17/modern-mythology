@@ -90,18 +90,24 @@ def build_door():
 def build_light():
     """THE fluorescent — one twin-tube fixture dead-center behind a
     wire cage. The only light. The tscn Omni sits under it."""
-    make_box("Fix", (0.0, ROOM_D / 2.0, CEIL - 0.09), (0.30, 1.25, 0.07), COL_STEEL)
+    # on the ceiling (2026-09-24: 5.5 cm under it, the tubes and the
+    # cage with it — the only light in the room hung on nothing)
+    make_box("Fix", (0.0, ROOM_D / 2.0, CEIL - 0.035), (0.30, 1.25, 0.07), COL_STEEL)
     for dx in (-0.07, 0.07):
-        make_cyl(f"Tube_{dx:+.2f}", (dx, ROOM_D / 2.0, CEIL - 0.145), 0.022, 1.2,
+        make_cyl(f"Tube_{dx:+.2f}", (dx, ROOM_D / 2.0, CEIL - 0.09), 0.022, 1.2,
                  COL_TUBE, segments=8, axis='Y')
     # The wire cage — bar lattice boxing the fixture
-    cz = CEIL - 0.24
+    cz = CEIL - 0.13
     for i in range(5):
         cy = ROOM_D / 2.0 - 0.62 + i * 0.31
         make_box(f"Cage_Rib_{i}", (0.0, cy, cz), (0.44, 0.015, 0.015), COL_CAGE)
     for sgn in (-1, 1):
         make_box(f"Cage_Rail_{sgn:+d}", (sgn * 0.21, ROOM_D / 2.0, cz),
                  (0.015, 1.28, 0.015), COL_CAGE)
+        # struts from the rail ends up to the ceiling
+        for e in (-1, 1):
+            make_box(f"Cage_Strut_{sgn:+d}_{e:+d}", (sgn * 0.21, ROOM_D / 2.0 + e * 0.63, (cz + CEIL) / 2.0),
+                     (0.015, 0.015, CEIL - cz), COL_CAGE)
         for i in range(4):
             cy = ROOM_D / 2.0 - 0.5 + i * 0.33
             make_box(f"Cage_Drop_{sgn:+d}_{i}", (sgn * 0.21, cy, CEIL - 0.165),

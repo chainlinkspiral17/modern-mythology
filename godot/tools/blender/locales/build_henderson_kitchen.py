@@ -229,6 +229,9 @@ def build_hero_props_2026_09():
         make_box(f"Guitar_Stand_Leg_{'W' if sgn < 0 else 'E'}", (gx + sgn * 0.12, gy - 0.10, 0.15),
                  (0.03, 0.03, 0.30), (0.20, 0.20, 0.22, 1.0))
     make_box("Guitar_Stand_Foot", (gx, gy - 0.10, 0.015), (0.30, 0.06, 0.03), (0.20, 0.20, 0.22, 1.0))
+    # the cradle the body sits in (2026-09-24: the body stood 2 cm up,
+    # 4.5 cm in front of the stand, touching none of it)
+    make_box("Guitar_Stand_Cradle", (gx, gy - 0.035, 0.035), (0.30, 0.07, 0.03), (0.20, 0.20, 0.22, 1.0))
 
 
 def main():

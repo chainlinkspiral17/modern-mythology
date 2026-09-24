@@ -175,7 +175,8 @@ def build_hero_props():
     # Notebook ziggurats on every available surface
     # (2026-09-22: stack 1 hung 42 cm up on nothing — on the floor by the
     # sofa now; stack 2 was past the counter's west edge)
-    for zi, (zx, zy, zz, n) in enumerate(((-2.65, 2.9, 0.775, 4), (0.4, 2.2, 0.015, 3), (2.25, 4.75, 0.995, 3))):
+    # (2026-09-24: stack 0 at y 2.9 stood 2 cm off the desk's front edge)
+    for zi, (zx, zy, zz, n) in enumerate(((-2.65, 3.20, 0.78, 4), (0.4, 2.2, 0.015, 3), (2.25, 4.75, 0.995, 3))):
         for k in range(n):
             make_box(f"Ziggurat_{zi}_{k}", (zx + 0.01 * (k % 2), zy, zz + k * 0.035),
                      (0.20 - 0.02 * k, 0.26 - 0.02 * k, 0.03),

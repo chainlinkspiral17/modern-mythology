@@ -141,7 +141,7 @@ def build_hallways():
         make_box(f"Bulletin_Paper_{pi}", (-1.115, 13.55 + pi * 0.30, 1.60 - (pi % 2) * 0.2), (0.01, 0.21, 0.28), PAPER)
     # second leg: +x from 1.2 to 10.8 along y 24 (walls at y 22.8 / 25.2)
     hallway_leg("Hall_B", "X", 1.3, 10.8, 24.0, doors=False, ceiling_grid=False)
-    make_box("Hall_B_Exit_Sign", (6.0, 25.15, 2.35), (0.30, 0.02, 0.14), (0.86, 0.20, 0.16, 1.0))
+    make_box("Hall_B_Exit_Sign", (6.0, 25.19, 2.35), (0.30, 0.02, 0.14), (0.86, 0.20, 0.16, 1.0))   # on the wall (2026-09-24: 4 cm off it)
 
 
 def build_stairwell():
@@ -194,7 +194,8 @@ def build_basement():
     make_box("Basement_Wall_S", (cx, y_s - WALL_T / 2.0, B_FLOOR + B_H / 2.0), (6.0 + 2 * WALL_T, WALL_T, B_H), BLOCK)
     # block-course lines on the west wall
     for i in range(1, 6):
-        make_box(f"Block_Course_{i}", (9.005, ym, B_FLOOR + i * 0.4), (0.01, L, 0.012), (0.56, 0.54, 0.50, 1.0))
+        # to the N wall's face at 15.4, not through it (2026-09-24)
+        make_box(f"Block_Course_{i}", (9.005, (y_s + 15.4) / 2.0, B_FLOOR + i * 0.4), (0.01, 15.4 - y_s, 0.012), (0.56, 0.54, 0.50, 1.0))
     # fixtures every five meters, the far one a worse run of the bulbs
     n = 6
     for i in range(n):

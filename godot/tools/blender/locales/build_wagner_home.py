@@ -87,7 +87,7 @@ def build_window():
 def build_sofa():
     """Three-seat sofa against the W wall, facing the TV."""
     sx = -2.35
-    make_box("Sofa_Base", (sx, 2.6, 0.28), (0.95, 2.2, 0.42), COL_SOFA_DK)
+    make_box("Sofa_Base", (sx, 2.6, 0.21), (0.95, 2.2, 0.42), COL_SOFA_DK)   # on the floor (2026-09-24: 7 cm over it)
     make_box("Sofa_Back", (sx - 0.32, 2.6, 0.62), (0.30, 2.2, 0.75), COL_SOFA)
     for i, cy in enumerate((1.9, 2.6, 3.3)):
         make_box(f"Sofa_Seat_{i}", (sx + 0.08, cy, 0.50), (0.72, 0.64, 0.16), COL_SOFA)

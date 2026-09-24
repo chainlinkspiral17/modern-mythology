@@ -210,23 +210,23 @@ def build_sun_dressing():
     pep_y = -2.5
     # Body
     make_box("Pepper_Body",
-             (pep_x, pep_y, 0.18),
+             (pep_x, pep_y, 0.09),   # lying on the path (2026-09-24: 9 cm over it)
              (0.40, 0.22, 0.18),
              (0.94, 0.86, 0.66, 1.0))   # spaniel cream
     # Head
     make_box("Pepper_Head",
-             (pep_x - 0.22, pep_y, 0.22),
+             (pep_x - 0.22, pep_y, 0.13),
              (0.16, 0.16, 0.14),
              (0.94, 0.86, 0.66, 1.0))
     # Ears (two pendulous flaps)
     for sgn in (-1, +1):
         make_box("Pepper_Ear_%+d" % sgn,
-                 (pep_x - 0.22, pep_y + sgn * 0.08, 0.16),
+                 (pep_x - 0.22, pep_y + sgn * 0.08, 0.07),
                  (0.08, 0.04, 0.10),
                  (0.62, 0.46, 0.26, 1.0))   # brown
     # Tail
     make_box("Pepper_Tail",
-             (pep_x + 0.22, pep_y, 0.22),
+             (pep_x + 0.22, pep_y, 0.13),
              (0.10, 0.04, 0.06),
              (0.94, 0.86, 0.66, 1.0))
     # 4 paws

@@ -128,6 +128,9 @@ def build_foreground():
         make_box(f"Boulder_{i}", (rx, ry, rz / 2.0 + 0.02), (rs, rs * 0.8, rz),
                  COL_ROCK_WET if i % 2 == 0 else COL_ROCK_DK)
     make_box("Shore", (0.0, 2.2, 0.05), (12.0, 3.4, 0.14), COL_ROCK)
+    # the rock between the shore and the pool, wall to wall (2026-09-24: a
+    # 1.6 m strip of nothing, boulder 0 standing over it)
+    make_box("Shore_Lip", (0.0, 4.7, 0.05), (7.6, 1.6, 0.14), COL_ROCK)
     # Green growth — dense, everywhere the rock lets it hold: rims,
     # ledges, shore, and hanging masses down the gorge walls
     fringe = [(-5.2, 2.5, 0.9), (5.0, 2.8, 0.8), (-4.4, 12.6, 10.1),
@@ -143,7 +146,7 @@ def build_foreground():
 def build_sky():
     # The tepui on the skyline: sheer flanks, dead-flat green top —
     # the shape that says Canaima and nowhere else
-    make_box("Tepui_Flank", (-9.0, 17.2, 8.5), (9.0, 0.8, 7.0), COL_TEPUI)
+    make_box("Tepui_Flank", (-9.0, 17.2, 6.0), (9.0, 0.8, 12.0), COL_TEPUI)   # down to the ground (2026-09-24: it began 5 m up)
     make_box("Tepui_Band", (-9.0, 17.1, 6.2), (9.4, 0.7, 1.0), (0.38, 0.34, 0.36, 1.0))
     make_box("Tepui_Top", (-9.0, 17.2, 12.15), (9.6, 1.0, 0.5), COL_TEPUI_TOP)
     # A second, farther table to the east, hazier

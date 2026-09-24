@@ -114,7 +114,7 @@ def build_road():
     make_box("Asphalt", (0.0, -27.0, 0.0), (4.6, 66.0, 0.06), COL_ASPHALT)
     make_box("Asphalt_Patch", (0.6, 4.6, 0.035), (1.2, 0.9, 0.02), (0.20, 0.20, 0.21, 1.0))
     # THE TRANSITION — where the asphalt gives out
-    make_box("Transition_Lip", (0.0, 6.05, 0.045), (4.6, 0.25, 0.03), COL_GRAVEL_DK)
+    make_box("Transition_Lip", (0.0, 5.9625, 0.045), (4.6, 0.075, 0.03), COL_GRAVEL_DK)   # up to the gravel's edge at y 6.0, not over it (2026-09-24)
     # DRAFT 3: the gravel climbs on a continuous grade (road_prism) —
     # four slabs stepped 20–40 cm at each joint until now.
     road_prism("Gravel_0", 6.0, 10.0, z_top(6.0), z_top(10.0), 0.0, 4.4, COL_GRAVEL)

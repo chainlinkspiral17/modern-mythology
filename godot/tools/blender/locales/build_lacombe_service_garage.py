@@ -78,6 +78,8 @@ def build_tow_truck():
     make_box("Truck_Boom", (tx, ty+1.50, 2.00), (0.20, 2.00, 0.20), (0.32, 0.32, 0.32, 1.0))
     # Hook
     make_box("Truck_Hook", (tx, ty+2.40, 1.80), (0.10, 0.30, 0.20), (0.32, 0.32, 0.32, 1.0))
+    # the boom's mast off the bed (2026-09-24: boom and hook 50 cm over the bed)
+    make_box("Truck_Boom_Mast", (tx, 5.20, 1.65), (0.16, 0.16, 0.50), (0.32, 0.32, 0.32, 1.0))
     # Jack stands (4) instead of wheels
     for sgn_x in (-1, +1):
         for sgn_y in (-1, +1):
