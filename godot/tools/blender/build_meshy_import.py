@@ -162,6 +162,18 @@ def export_glb(out_path):
     rna = bpy.ops.export_scene.gltf.get_rna_type()
     if 'export_colors' in rna.properties:
         base['export_colors'] = True
+    # vertex colours on EVERY exporter version (2026-09-24: newer glTF
+    # exporters dropped `export_colors`; their default exports colours only
+    # for meshes whose material reads them, and ours have no material —
+    # the 09-24 sheet rendered 30 rebuilt rooms white). Mirrors
+    # _props.geometry.gltf_color_kwargs.
+    try:
+        if 'ACTIVE' in [e.identifier for e in rna.properties['export_vertex_color'].enum_items]:
+            base['export_vertex_color'] = 'ACTIVE'
+    except Exception:
+        pass
+    if 'export_active_vertex_color_when_no_material' in rna.properties:
+        base['export_active_vertex_color_when_no_material'] = True
     if 'export_normals' in rna.properties:
         base['export_normals'] = True
     bpy.ops.export_scene.gltf(**base)

@@ -170,6 +170,15 @@ omni_range = 6.0
 omni_attenuation = 1.6
 shadow_enabled = false
 
+; A dusk KEY (2026-09-24): the scene had only a 0.14 fill, so Ben's
+; truck at the curb rendered black and MoodCycler's sun rotation fell on
+; the fill. Low warm sun from the west, 25 deg down.
+[node name="Dusk_Key" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0, 0.423, -0.906, 0, 0.906, 0.423, 1, 0, 0, -6, 5, -3)
+light_color = Color(1, 0.72, 0.5, 1)
+light_energy = 0.45
+shadow_enabled = false
+
 [node name="Fill_Cool" type="DirectionalLight3D" parent="."]
 transform = Transform3D(-0.707, -0.354, -0.612, 0, 0.866, -0.5, 0.707, -0.354, -0.612, 0, 4, 0)
 light_color = Color(0.44, 0.4, 0.46, 1)

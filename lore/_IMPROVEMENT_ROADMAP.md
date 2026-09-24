@@ -2408,6 +2408,36 @@ window bars, the cosmic comics window display, the missing-link cake
 dome, the bakery FOH case. Dark rooms with NO key at all (equipment
 shed, nightmare cell, centro stockroom: fill + practicals only) — a
 lighting call per room. The carnival storm-heap marker.
+TWENTY-FOURTH PASS — THE WHITE ROOMS. The 09-24 sheet (from fa48a810)
+came back with ~30 rooms washed near-white (hans, el rancho, the kwik
+stop, centro, nexcorp, kowalski, the miller rooms, faust, finn…). Not the
+light re-aims — henderson kitchen had kowalski's exact light changes and
+did not move — the GEOMETRY lost its vertex colours: every GLB rebuilt on
+the Deck that day renders with a white albedo, every GLB not rebuilt is
+fine. The export set only the legacy `export_colors`; a newer glTF
+exporter (the Deck's Blender evidently updated overnight) replaced it
+with `export_vertex_color`, whose default ('MATERIAL') skips meshes with
+no material — all of ours. FIX: _props.geometry.gltf_color_kwargs sets
+export_vertex_color='ACTIVE' + colours-without-material on any exporter
+version (and the colour layer is made the ACTIVE colour attribute); the
+16 builders with their own export blocks carry the same lines. GUARDS:
+blender_dryrun now models the NEW exporter and fails any builder whose
+export would drop colours (NO-COLOUR; negative-tested);
+tools/audit/glb_color_check.py reads each built GLB's JSON and fails
+colourless ones; contact_sheet.sh warns before rendering;
+list_stale_builds.sh counts a GLB stale when it lost its colours OR when
+any _props kit its builder imports is newer — it compared the builder
+alone, so kit fixes (draft 20's grounded horizon bands, draft 23's open
+cases in 15 kit rooms) NEVER rebuilt their callers. The next Deck
+rebuild is therefore nearly every locale (geometry.py changed) — long,
+once. Also: henderson garage had no key (only a 0.14 fill — Ben's truck
+at the curb rendered black, and MoodCycler's sun rotation landed on the
+fill): Dusk_Key added.
+NEXT (draft 25): the full Deck rebuild + a fresh sheet; confirm colour
+on every room (glb_color_check 0), THEN judge the drafts 22–23 light
+re-aims on real colour. The draft-24 list carries over (frog tanks,
+diner west glass, asylum bars, cosmic window, cake dome, FOH case,
+keyless dark rooms, carnival storm heap).
 
 **2026-09-19 · DESIGN · the two decorative checks made real, the first
 remembered choice.** Nate's basement (ch6) and Tem staying (ch8): the

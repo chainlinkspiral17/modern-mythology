@@ -21,32 +21,71 @@ GLB_DIR="$SCRIPT_DIR/../../assets/3d/locales"
 stale=()
 missing=()
 
-for f in locales/build_*.py; do
-    name="$(basename "$f" .py)"
-    name="${name#build_}"
-    glb="$GLB_DIR/$name.glb"
-    # Last commit touching the builder (falls back to file mtime on
-    # a tree with uncommitted edits).
-    src_t="$(git log -1 --format=%ct -- "$f" 2>/dev/null || true)"
-    file_t="$(stat -c %Y "$f" 2>/dev/null || echo 0)"
-    [ -z "$src_t" ] && src_t=0
-    [ "$file_t" -gt "$src_t" ] && src_t="$file_t"
-    if [ ! -f "$glb" ]; then
-        missing+=("$name")
-    else
-        glb_t="$(stat -c %Y "$glb")"
-        if [ "$src_t" -gt "$glb_t" ]; then
-            stale+=("$name")
-        fi
-    fi
-done
+# A builder is stale when its GLB is older than the builder OR than any
+# _props kit it imports (2026-09-24: this compared the builder alone, so
+# a KIT fix — the grounded horizon bands, the open glass cases — never
+# rebuilt a caller whose own file did not change), or when the GLB has
+# no vertex colours (2026-09-24: the white rooms — see
+# tools/audit/glb_color_check.py). Last GIT COMMIT time per file, or the
+# file's mtime when it has uncommitted edits.
+while IFS=' ' read -r kind name; do
+    case "$kind" in
+        MISSING) missing+=("$name") ;;
+        STALE)   stale+=("$name") ;;
+    esac
+done < <(python3 - "$GLB_DIR" <<'PY'
+import glob, os, re, subprocess, sys
+glb_dir = sys.argv[1]
+sys.path.insert(0, os.path.join("..", "audit"))
+try:
+    import glb_color_check as G
+except Exception:
+    G = None
+_t = {}
+def src_time(path):
+    if path not in _t:
+        out = subprocess.run(["git", "log", "-1", "--format=%ct", "--", path],
+                             capture_output=True, text=True).stdout.strip()
+        t = int(out) if out else 0
+        try:
+            t = max(t, int(os.stat(path).st_mtime))
+        except OSError:
+            pass
+        _t[path] = t
+    return _t[path]
+IMP = re.compile(r"from _props(?:\.([a-z_0-9]+))? import ([a-zA-Z_0-9, ()\n]+)")
+REL = re.compile(r"from \.([a-z_0-9]+) import")
+def kit_deps(src):
+    mods = set()
+    for m in IMP.finditer(src):
+        if m.group(1):
+            mods.add(m.group(1))
+        else:
+            mods |= {w.strip().split(" ")[0] for w in m.group(2).replace("(", "").replace(")", "").split(",")}
+    if mods:
+        mods.add("geometry")          # export_glb lives there
+    for mod in list(mods):            # one level of kit-to-kit imports
+        mp = os.path.join("_props", mod + ".py")
+        if os.path.exists(mp):
+            mods |= set(REL.findall(open(mp).read()))
+    return [os.path.join("_props", m + ".py") for m in mods if os.path.exists(os.path.join("_props", m + ".py"))]
+for f in sorted(glob.glob("locales/build_*.py")):
+    name = os.path.basename(f)[6:-3]
+    glb = os.path.join(glb_dir, name + ".glb")
+    if not os.path.isfile(glb):
+        print("MISSING", name); continue
+    t = max([src_time(f)] + [src_time(k) for k in kit_deps(open(f).read())])
+    if t > int(os.stat(glb).st_mtime) or (G and G.check(glb)[0] != "ok"):
+        print("STALE", name)
+PY
+)
 
 if [ "${#missing[@]}" -gt 0 ]; then
     echo "── NEVER BUILT (${#missing[@]}) ──"
     printf '  %s\n' "${missing[@]}"
 fi
 if [ "${#stale[@]}" -gt 0 ]; then
-    echo "── STALE (${#stale[@]}) — builder newer than GLB ──"
+    echo "── STALE (${#stale[@]}) — builder or a kit it imports newer than the GLB, or the GLB lost its colours ──"
     printf '  %s\n' "${stale[@]}"
 fi
 

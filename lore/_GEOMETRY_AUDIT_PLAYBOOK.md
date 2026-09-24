@@ -555,6 +555,21 @@ banisters classed · pans as containers.
   bodies, invisible to support and overlap alike (contained = fine).
   scratch glass_scan (pane + what lies within 0.6 m behind it) found
   the cases; open them and the audits measure what is inside.
+- **Before blaming the last change, correlate (twenty-fourth pass).** The
+  sheet came back with 30 white rooms right after two passes of light
+  re-aims; the obvious suspect was wrong. Old-vs-new brightness per room
+  against "which lights changed" showed no pattern (identical changes,
+  one room white, one untouched); against "which GLBs were rebuilt" it
+  was one-to-one. The frames said it too: white desks, white walls —
+  albedo, not light.
+- **A stand-in must model the NEW version, not the one it was written
+  against.** The dry-run bpy offered `export_colors`, so every builder
+  "exported colours". It now models the current exporter (no
+  export_colors; export_vertex_color defaulting to MATERIAL) and checks
+  what each export actually asked for.
+- **Rebuild on dependency, not on file.** list_stale_builds compared a
+  builder's own commit time: every KIT fix since the kits existed
+  reached a caller only if the caller's file also changed.
 
 ### 2026-09-06 · a builder that raises under the recorder is dropped without a flag
 

@@ -82,12 +82,18 @@ context.collection.objects.link = lambda o: None
 context.scene = _Any(); context.scene.objects = data.objects
 class _Gltf:
     def __call__(self, **kw):
-        fp = kw.get("filepath"); STATS["export"] = fp
+        fp = kw.get("filepath"); STATS["export"] = fp; STATS["export_kw"] = kw
         if fp and not os.path.exists(fp):
             os.makedirs(os.path.dirname(fp), exist_ok=True)
             open(fp, "wb").close(); STATS["touched"] = fp
     def get_rna_type(self):
-        return types.SimpleNamespace(properties={"export_colors": 1, "export_normals": 1})
+        # a NEW exporter (2026-09-24): no `export_colors`; vertex colours
+        # export only via export_vertex_color='ACTIVE' (default 'MATERIAL'
+        # skips material-less meshes — the 09-24 sheet's white rooms)
+        _ev = types.SimpleNamespace(enum_items=[types.SimpleNamespace(identifier=i)
+                                                for i in ("MATERIAL", "ACTIVE", "NONE")])
+        return types.SimpleNamespace(properties={"export_normals": 1, "export_vertex_color": _ev,
+                                                 "export_active_vertex_color_when_no_material": 1})
 def _prim(**k):
     data.objects.append(_Obj("prim"))
 ops = _Any()

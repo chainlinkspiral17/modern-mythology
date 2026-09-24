@@ -48,6 +48,16 @@ cd "$PROJECT"
 # every GLB in, then quits.
 # shellcheck disable=SC2086
 $GODOT --headless --path . --import >/dev/null 2>&1 || echo "contact_sheet: --import step failed (continuing with what is imported)" >&2
+# Colourless GLBs render as WHITE rooms (2026-09-24: a Blender update's
+# glTF exporter dropped the vertex colours of every GLB rebuilt that
+# day; 30 rooms came back white). Say so loudly before rendering.
+if ! CC="$(python3 "$PROJECT/tools/audit/glb_color_check.py" 2>/dev/null)"; then
+    echo "" >&2
+    echo "contact_sheet: WARNING — GLBs WITHOUT VERTEX COLOURS (they will render white):" >&2
+    echo "$CC" | grep -v "^glb_color_check" | sed 's/^/    /' >&2
+    echo "  rebuild them: cd tools/blender && for n in \$(./list_stale_builds.sh | sed -n '/^  /p' | tr -d ' '); do ./run_cathedral.sh build_\$n.py; done" >&2
+    echo "" >&2
+fi
 # shellcheck disable=SC2086
 $GODOT --path . res://tools/VnContactSheet.tscn -- "$@"
 echo

@@ -399,6 +399,17 @@ Louisville's hurricane-deck proportions"). Don't guess at numbers.
 
 ## Recent lessons
 
+### 2026-09-24 · the exporter update that made 30 rooms white
+
+- **Vertex colours are not exported by default any more.** Newer
+  glTF exporters dropped `export_colors` for `export_vertex_color`
+  (default 'MATERIAL': colours only for meshes whose material reads
+  them). This pipeline has NO materials, so a rebuilt GLB came out
+  colourless and Godot drew it white. Every export path now asks for
+  'ACTIVE' and for colours on material-less meshes
+  (`_props.geometry.gltf_color_kwargs`); `glb_color_check.py` proves a
+  built GLB carries COLOR_0. Any NEW export path must use the helper.
+
 ### 2026-09-24 · the glass cases were solid blocks with the product inside
 
 - **The picture-window rule applies to every case.** A (r,g,b,0.35)

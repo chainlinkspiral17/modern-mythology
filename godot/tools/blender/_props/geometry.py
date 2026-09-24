@@ -36,12 +36,19 @@ def _finalize_mesh(name, verts, faces, base_color):
     mesh = bpy.data.meshes.new(name + "_mesh")
     mesh.from_pydata(verts, [], faces)
     mesh.update()
-    if not mesh.vertex_colors:
-        mesh.vertex_colors.new(name="Col")
-    layer = mesh.vertex_colors["Col"]
+    if hasattr(mesh, "vertex_colors"):
+        if not mesh.vertex_colors:
+            mesh.vertex_colors.new(name="Col")
+        layer = mesh.vertex_colors["Col"]
+    else:   # Blender without the legacy API: a corner-domain colour attribute
+        layer = mesh.color_attributes.get("Col") or mesh.color_attributes.new("Col", 'BYTE_COLOR', 'CORNER')
     for poly in mesh.polygons:
         for li in poly.loop_indices:
             layer.data[li].color = base_color
+    try:    # the exporter's 'ACTIVE' mode reads the active colour attribute
+        mesh.color_attributes.active_color_name = "Col"
+    except Exception:
+        pass
     obj = bpy.data.objects.new(name, mesh)
     bpy.context.collection.objects.link(obj)
     return obj
@@ -120,6 +127,39 @@ def make_cyl(name, center, radius, height, base_color,
     return _finalize_mesh(name, verts, faces, base_color)
 
 
+def gltf_color_kwargs(op=None):
+    """glTF exporter keywords that make VERTEX COLOURS export, whatever
+    the Blender version.
+
+    2026-09-24: the 09-24 contact sheet rendered 30 rooms WHITE — every
+    GLB rebuilt that day had lost its colours. The pipeline sets only
+    the legacy `export_colors`; newer exporters dropped it for
+    `export_vertex_color` (default 'MATERIAL': colours only for meshes
+    whose material reads them — ours have no material), so the colour
+    layer was silently left out. Set every knob the running exporter
+    has: legacy flag, 'ACTIVE' colour attribute, and colours for
+    material-less meshes."""
+    if op is None:
+        op = bpy.ops.export_scene.gltf
+    try:
+        props = op.get_rna_type().properties
+    except Exception:
+        return {'export_colors': True}
+    kw = {}
+    if 'export_colors' in props:
+        kw['export_colors'] = True
+    if 'export_vertex_color' in props:
+        try:
+            items = [e.identifier for e in props['export_vertex_color'].enum_items]
+        except Exception:
+            items = ['ACTIVE']
+        if 'ACTIVE' in items:
+            kw['export_vertex_color'] = 'ACTIVE'
+    if 'export_active_vertex_color_when_no_material' in props:
+        kw['export_active_vertex_color_when_no_material'] = True
+    return kw
+
+
 def export_glb(out_path, *, export_lights=False, export_cameras=False):
     """Standard glTF export — select-all + use_selection=False so
     every object lands in the GLB. Defaults match what all our
@@ -134,8 +174,7 @@ def export_glb(out_path, *, export_lights=False, export_cameras=False):
             'export_lights': export_lights,
             'export_cameras': export_cameras}
     rna = bpy.ops.export_scene.gltf.get_rna_type()
-    legacy = {}
-    if 'export_colors' in rna.properties:  legacy['export_colors'] = True
+    legacy = gltf_color_kwargs()
     if 'export_normals' in rna.properties: legacy['export_normals'] = True
     bpy.ops.export_scene.gltf(**base, **legacy)
     if os.path.exists(out_path):

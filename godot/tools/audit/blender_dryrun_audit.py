@@ -35,8 +35,13 @@ sys.argv = [path]
 try:
     runpy.run_path(path, run_name="__main__")
     ok = "export" in bpy.STATS
-    print("RESULT", "OK" if (ok and not bpy.STATS["bad"]) else ("BAD-MESH" if bpy.STATS["bad"] else "NO-EXPORT"),
-          bpy.STATS["meshes"], bpy.STATS["bad"][:2])
+    # the export must carry the vertex colours on a new exporter
+    # (2026-09-24) — unless the builder colours through real materials
+    kw = bpy.STATS.get("export_kw", {})
+    col = kw.get("export_vertex_color") == "ACTIVE" or "materials.new(" in open(path).read()
+    res = ("BAD-MESH" if bpy.STATS["bad"] else "NO-EXPORT" if not ok
+           else "NO-COLOUR (export drops vertex colours)" if not col else "OK")
+    print("RESULT", res, bpy.STATS["meshes"], bpy.STATS["bad"][:2])
 except SystemExit as e:
     print("RESULT EXIT", e.code)
 except Exception as e:
