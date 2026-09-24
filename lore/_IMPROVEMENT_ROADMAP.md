@@ -2329,6 +2329,29 @@ NEXT: Deck-verify (the whole support pass has not been seen on the
 Deck; windows, baseboards, the kwik stop corner, the rebuilt lighthouse
 weight, the grounded horizons). Then back to THE DRAFTING PROGRAM's
 visual backlog with both gates holding at zero.
+TWENTY-FIRST PASS — BUILDS THAT DIE IN BLENDER. Every gate ran
+builders under the RECORDER, whose stubs accept any arguments; a builder
+that crashes in Blender passed all of them and just left its GLB
+missing. NEW GATE blender_dryrun_audit.py runs every builder through its
+REAL kit code against a small stand-in bpy (godot/tools/audit/
+blender_dryrun/: meshes from the kits' real vertex lists, faces checked
+for bad or repeated indices, exported only if main() finishes). It
+found TWO builds that had died in Blender since the twelfth support
+pass — chillwave_interior and missing_link_exterior — both the
+trailing-comment trap (a comment pasted mid-call swallowed make_cyl's
+colour). 121/121 pass now, in ~30 s; it runs in the suite. The 09-24
+sheet also skipped highway 101 and small wood road: both build cleanly
+here, so contact_sheet.sh now runs `godot --headless --import` first —
+a run of the project does not import new or changed GLBs. Cameras from
+the sheet: D'AMBROSIO'S FORMAL stood OUTSIDE the diner (an 09-03
+automatic re-vantage picked x -15.4, past the west wall) — inside the
+partition door now; the CRUMPLED BARN's "shaft of daylight" was a solid
+pale slab in front of the interior camera (vertex alpha does not render
+translucent) — removed, the tscn's OmniLight is the light. Nightmare
+cell (the tall dark cell looked up at) and cabin bed (the waking POV)
+read as intended.
+NEXT: a fresh contact sheet from this build (the grounded horizons, the
+two recovered builds, the two roads), then the direction backlog.
 
 **2026-09-19 · DESIGN · the two decorative checks made real, the first
 remembered choice.** Nate's basement (ch6) and Tem staying (ch8): the

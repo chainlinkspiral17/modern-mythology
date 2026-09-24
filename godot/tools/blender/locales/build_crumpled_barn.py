@@ -174,8 +174,10 @@ def build_interior():
     make_box("Sign_Hair", (0.94, 8.50, 1.58), (0.10, 0.03, 0.42), (0.22, 0.16, 0.12, 1.0))
     # The old-script line below, a lighter incised band
     make_box("Sign_Script", (0.85, 8.53, 1.16), (0.80, 0.03, 0.10), (0.58, 0.48, 0.34, 1.0))
-    # A shaft of daylight through the broken roof: pale dust plane
-    make_box("Light_Shaft", (-0.6, 9.8, 1.6), (1.1, 0.9, 3.0), (0.72, 0.70, 0.62, 0.18))
+    # (2026-09-24: the "shaft of daylight" box is gone — vertex alpha does
+    # not render as translucent, so it was a solid pale slab standing
+    # between the interior camera and the cabinet and the sign. The light
+    # through the roof is the scene's Interior_Shaft OmniLight.)
 
 
 def build_backdrop():

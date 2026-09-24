@@ -64,6 +64,18 @@ SOUT="$(python3 vn_story_audit.py 2>/dev/null)" || {
 echo "$SOUT" | tail -2
 echo ""
 
+# ── Blender dry-run gate (2026-09-24) ──────────────────────────
+# Every builder runs its REAL kit code against a stand-in bpy. The
+# recorder-based gates accept any arguments, so a builder that dies in
+# Blender passed them all and left its GLB missing on the Deck
+# (chillwave_interior and missing_link_exterior, since the twelfth
+# support pass). Nonzero exit fails.
+echo "── blender_dryrun_audit.py ──"
+DOUT="$(python3 blender_dryrun_audit.py 2>/dev/null)" || {
+    echo "$DOUT" | grep "FAIL"; exit 1; }
+echo "$DOUT" | tail -1
+echo ""
+
 # ── Prop-overlap ZERO-REGRESSION gate (2026-08-11; baseline form 2026-09-22) ──
 # Every locale's clip count is held at or under overlap_baseline.json.
 # The grammar was tightened 2026-09-22 (user: "objects inside other

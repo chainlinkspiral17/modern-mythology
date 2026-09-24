@@ -175,8 +175,12 @@ const CAMERA_PRESETS := {
 		"scene": "res://scenes/locales/diner.tscn",
 		"requires_glb": "res://assets/3d/locales/diner.glb",
 		# RE-VANTAGED 2026-09-03: vantage_obstruction_audit --propose (the partition filled 78% of frame at 0.8 m)
-		"camera_origin": Vector3(-15.40, 1.90, 0.05),
-		"camera_rotation": Vector3(-0.08, 2.618, 0.0),
+		# 2026-09-24: that proposal stood OUTSIDE the building (x -15.4, past
+		# the west wall at -15) looking out at the dark — the contact sheet's
+		# frame was water and a railing. Inside the partition door now,
+		# looking S across the room: the banquet ahead, Table 14 left.
+		"camera_origin": Vector3(-12.00, 1.60, 1.35),
+		"camera_rotation": Vector3(-0.10, 3.1416, 0.0),
 		"fov": 62.0,
 		"suppress_input": true,
 	},

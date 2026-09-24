@@ -168,7 +168,9 @@ def build_workbench():
     make_box("Bench_Backboard", (ROOM_W/2.0-0.12, 6.4, 1.55), (0.05, 2.40, 1.20), COL_CEDAR)
     # Soldering iron in its coil stand + sponge tin.
     make_cyl("Solder_Stand", (bx-0.15, 5.7, 0.96), 0.05, 0.10, COL_STEEL, segments=8)
-    make_cyl("Solder_Iron", (bx-0.05, 5.78, 0.945), 0.015, 0.22,   # on the bench (2026-09-23: 5.5 cm over it) (0.24, 0.24, 0.26, 1.0),
+    # on the bench (2026-09-23: 5.5 cm over it). (2026-09-24: this comment
+    # once sat mid-call and swallowed the colour — the Blender build died here)
+    make_cyl("Solder_Iron", (bx-0.05, 5.78, 0.945), 0.015, 0.22, (0.24, 0.24, 0.26, 1.0),
              axis='X', segments=6)
     make_box("Solder_Sponge", (bx-0.30, 5.7, 0.945), (0.10, 0.08, 0.025), (0.80, 0.74, 0.30, 1.0))
     # Bench transformer (the heavy hum in the corner of the scene).

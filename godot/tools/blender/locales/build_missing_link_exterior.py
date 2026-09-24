@@ -141,7 +141,9 @@ def build_diner():
     make_tube("Diner_Door_Pull", [(2.75, 7.88, 0.95), (2.75, 7.88, 1.30)], 0.012, COL_CLAD, segments=6)
     make_tube("Diner_Downspout", [(-4.55, 8.06, 3.35), (-4.55, 8.06, 0.30), (-4.55, 7.80, 0.12)], 0.04, COL_CLAD_DK, segments=6)
     # The bell over the door ("unsubtle about your leaving")
-    make_cyl("Door_Bell", (2.4, 7.86, 2.43), 0.05, 0.06,   # on the door's top edge (0.66, 0.52, 0.24, 1.0),
+    # on the door's top edge. (2026-09-24: this comment once sat mid-call
+    # and swallowed the colour — the Blender build died here)
+    make_cyl("Door_Bell", (2.4, 7.86, 2.43), 0.05, 0.06, (0.66, 0.52, 0.24, 1.0),
              segments=8)
     # Roof clutter: A/C unit + vent
     make_box("Diner_AC", (-2.5, 10.8, 3.85), (1.2, 1.0, 0.6), COL_CLAD_DK)

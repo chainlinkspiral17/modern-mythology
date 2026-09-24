@@ -477,6 +477,14 @@ banisters classed · pans as containers.
   height was "touching" it. The recorder now runs the kit's own vertex
   ring. When a stub approximates a kit, check it against the kit's
   vertex maths once.
+- **A gate that stubs the engine cannot see the engine fail.** Every
+  audit ran builders under recorder stubs that take any arguments, so
+  two builders that died in Blender (a mid-call comment swallowed
+  make_cyl's colour) passed everything for eight passes while the Deck
+  quietly skipped their GLBs. blender_dryrun_audit runs the REAL kits
+  against a stand-in bpy and fails on any exception. And an automatic
+  "re-vantage" can pick a spot outside the building — no obstruction
+  out there; read what it chose.
 - **A drop list hides a kit's bug in every caller at once.** The first
   read of the contact sheet showed flat slabs floating in the sky; the
   support gate said zero, because "far" was in its SKY list. The far-

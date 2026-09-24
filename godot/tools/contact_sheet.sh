@@ -41,6 +41,13 @@ if [ ! -f "$PROJECT/qa/contact_manifest.json" ]; then
 fi
 echo "contact_sheet: $GODOT · $(python3 -c "import json;print(json.load(open('$PROJECT/qa/contact_manifest.json'))['frames'])" 2>/dev/null || echo '?') frame(s) planned"
 cd "$PROJECT"
+# Import first (2026-09-24): running the project does NOT import new or
+# changed GLBs — only the editor or --import does — so a locale built
+# since the editor last opened is "not built" to the sheet (highway 101
+# and small wood road were skipped on the 09-24 sheet). --import brings
+# every GLB in, then quits.
+# shellcheck disable=SC2086
+$GODOT --headless --path . --import >/dev/null 2>&1 || echo "contact_sheet: --import step failed (continuing with what is imported)" >&2
 # shellcheck disable=SC2086
 $GODOT --path . res://tools/VnContactSheet.tscn -- "$@"
 echo
