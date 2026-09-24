@@ -34,6 +34,12 @@ shader_type canvas_item;
 uniform sampler2D SCREEN_TEXTURE : hint_screen_texture, filter_linear;
 
 uniform float palette_size : hint_range(2.0, 32.0) = 12.0;
+// Shadow lift (2026-09-24, the user's call on the black night frames):
+// a gamma lift BEFORE the quantiser, set only by the dark moods (night,
+// 3_47_am, dusk). floor(col * palette_size) sends everything under the
+// first step to black — at palette 9 that is every pixel under 28/255,
+// most of a moonlit set. 0.0 (the default) leaves the output unchanged.
+uniform float shadow_lift : hint_range(0.0, 1.5) = 0.0;
 uniform float dither_strength : hint_range(0.0, 1.0) = 0.15;
 uniform float scanline_strength : hint_range(0.0, 1.0) = 0.30;
 uniform float chromatic_aberration : hint_range(0.0, 0.004) = 0.0015;
@@ -107,6 +113,11 @@ void fragment() {
     col.r = texture(SCREEN_TEXTURE, uv + vec2(chromatic_aberration, 0.0)).r;
     col.g = texture(SCREEN_TEXTURE, uv).g;
     col.b = texture(SCREEN_TEXTURE, uv - vec2(chromatic_aberration, 0.0)).b;
+
+    // ── shadow lift (dark moods only; 0 = off) ──
+    if (shadow_lift > 0.0) {
+        col = pow(max(col, vec3(0.0)), vec3(1.0 / (1.0 + shadow_lift)));
+    }
 
     // ── ordered dither ──
     float d = bayer_at(pixel_coord) * dither_strength;

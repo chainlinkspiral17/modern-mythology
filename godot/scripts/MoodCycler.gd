@@ -30,7 +30,7 @@ const MOODS: Array = [
 		"neon_grad": 1.0, "neon_blend": 0.0, "neon_glow": 0.4,
 	},
 	{
-		"name": "dusk", "trip_scale": 1.00,
+		"name": "dusk", "trip_scale": 1.00, "shadow_lift": 0.3,
 		"palette": 14.0, "dither": 0.18, "scanline": 0.40, "aberration": 0.0016,
 		"ascii": 0.0, "ascii_cell": 10.0, "ascii_gamma": 0.85, "ascii_tint": true,
 		"ascii_fg": Color(0.92, 0.78, 0.45, 1), "ascii_bg": Color(0.05, 0.04, 0.02, 1),
@@ -591,7 +591,7 @@ const MOODS: Array = [
 	},
 	# ── deep moods: code substrate states ────────────────────────
 	{
-		"name": "night", "trip_scale": 1.00,
+		"name": "night", "trip_scale": 1.00, "shadow_lift": 0.6,
 		"palette": 9.0, "dither": 0.26, "scanline": 0.50, "aberration": 0.0022,
 		"ascii": 0.0, "ascii_cell": 10.0, "ascii_gamma": 0.85, "ascii_tint": true,
 		"ascii_fg": Color(0.92, 0.78, 0.45, 1), "ascii_bg": Color(0.05, 0.04, 0.02, 1),
@@ -600,7 +600,7 @@ const MOODS: Array = [
 		"neon_grad": 1.0, "neon_blend": 0.0, "neon_glow": 0.4,
 	},
 	{
-		"name": "3_47_am", "trip_scale": 1.40,
+		"name": "3_47_am", "trip_scale": 1.40, "shadow_lift": 0.6,
 		"palette": 7.0, "dither": 0.36, "scanline": 0.62, "aberration": 0.0030,
 		"ascii": 0.55, "ascii_cell": 9.0, "ascii_gamma": 0.85, "ascii_tint": true,
 		"ascii_fg": Color(0.92, 0.78, 0.45, 1), "ascii_bg": Color(0.05, 0.04, 0.02, 1),
@@ -2065,6 +2065,7 @@ func _apply(preset: Dictionary) -> void:
 	})
 	_set_params("Quad", {
 		"palette_size":         preset["palette"],
+		"shadow_lift":          preset.get("shadow_lift", 0.0),
 		"dither_strength":      preset["dither"],
 		"scanline_strength":    preset["scanline"]   * vn.call("scanline"),
 		"chromatic_aberration": preset["aberration"] * vn.call("aberration"),

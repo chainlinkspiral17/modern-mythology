@@ -334,9 +334,13 @@ literal wireframe look. When authoring VN scene direction that must
   palette 9 everything under 28/255 is 0. A dark-albedo set lit to a
   believable night sits there. The 2026-07-12 rule is the lever:
   scene ambient 1.0–1.8 (eight scenes lifted from 0.5–0.65).
-- **Open question for the user:** round-to-nearest in the quantiser
-  would stop the crush in every palette mood — and shift every mood's
-  look by half a step. A look call, not a fix.
+- **The user's answer (same day): lift only the dark moods.**
+  demoscene_post has `shadow_lift` (a gamma lift, col^(1/(1+lift)),
+  applied BEFORE dither + quantise; 0 = off, byte-identical output).
+  Set per mood in MOODS: night 0.6, 3_47_am 0.6, dusk 0.3 — tuned so a
+  moonlit ~0.03 clears the first step of that mood's palette. Every
+  other mood is untouched. A new dark mood gets its own shadow_lift;
+  don't reach for scene ambient first.
 
 ### 2026-07-12 · the recurring "scene is black" antipattern
 

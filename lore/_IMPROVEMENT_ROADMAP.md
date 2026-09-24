@@ -2532,6 +2532,26 @@ Deck: rebuild frog_knows_best, missing_link_interior, riverboat_interior
 NEXT (draft 29): sheet → the ambient-lifted night sets, the tanks, the
 cake, the sconce; the cedar credit; the montreal drainpipe; the carnival
 storm heap; the bakery FOH case.
+TWENTY-NINTH PASS — THE DARK END IS THE QUANTISER. Sheet from 9e0d0dbc:
+the new fixture reads (the bourbon insert shows the bottle and glass
+under the sconce's glow), the equipment shed's cones are lit, the cake
+and the tanks built. The night frames did NOT move with ambient 1.0:
+grunion's night establish has R and G at 0–2 across the whole frame and
+only blue above zero — every value the blue moon puts under the
+quantiser's first step (28/255) floors to 0, and most remaining dark
+frames read only at 4x. Lights are not the lever; the floor() in
+demoscene_post is — a USER decision (asked). Centro's smear insert: the
+text puts the smear on the eastern HORIZON above the cedar; the camera
+stood 2 m from the slab looking up — it shoots from the dock now
+(24.6 m, 12.5° up). Carnival storm heap: no preset, no cue — unused.
+Bakery FOH case: an empty shelf — nothing to hide.
+The user's answer: lift only the dark moods — demoscene_post
+`shadow_lift` (gamma lift before the quantiser, default 0), night 0.6,
+3_47_am 0.6, dusk 0.3; every other mood unchanged.
+NEXT (draft 30): sheet → do the night frames read (grunion, beach night,
+nightmare cell, bar trash, henderson truck at dusk) without looking
+washed? tune the three lifts; then the cedar credit, the montreal
+drainpipe, the diner west glass (user look).
 
 **2026-09-19 · DESIGN · the two decorative checks made real, the first
 remembered choice.** Nate's basement (ch6) and Tem staying (ch8): the
