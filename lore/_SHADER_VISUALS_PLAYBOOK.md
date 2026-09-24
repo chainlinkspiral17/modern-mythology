@@ -326,6 +326,18 @@ literal wireframe look. When authoring VN scene direction that must
   `[mood:X]` is safe iff MOODS[X] (or the mood its STYLE_PACK resolves
   to) has neon<1.0 AND ascii<0.5.
 
+### 2026-09-24 · the keys did nothing: the quantiser floors the dark end
+
+- **Raising a key does not rescue a black palette-mood frame.** The
+  night mood changes no Light3D; demoscene_post quantises with
+  `floor(col * palette_size) / palette_size` on the sRGB screen, so at
+  palette 9 everything under 28/255 is 0. A dark-albedo set lit to a
+  believable night sits there. The 2026-07-12 rule is the lever:
+  scene ambient 1.0–1.8 (eight scenes lifted from 0.5–0.65).
+- **Open question for the user:** round-to-nearest in the quantiser
+  would stop the crush in every palette mood — and shift every mood's
+  look by half a step. A look call, not a fix.
+
 ### 2026-07-12 · the recurring "scene is black" antipattern
 
 - **Never pair an establishing/clean pack with the `midnight`

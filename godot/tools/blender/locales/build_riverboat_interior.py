@@ -1179,6 +1179,14 @@ def build_helm():
     make_cyl("Helm_FileCab_Glass",
              (+2.78, +2.0, cz + 1.28),
              0.04, 0.08, (0.86, 0.92, 0.94, 0.5), segments=10)
+    # A brass wall sconce over the cabinet, on the east partition's face
+    # (2026-09-24: the bourbon corner had no light near it — the desk
+    # lamp is 5 m off — and the insert on Dante's bottle rendered black;
+    # a practical needs a fixture to come from)
+    make_box("Helm_Sconce_Plate", (+3.44, +2.0, cz + 1.85), (0.02, 0.10, 0.16), COL_BRASS)
+    make_box("Helm_Sconce_Arm", (+3.39, +2.0, cz + 1.85), (0.08, 0.02, 0.02), COL_BRASS)
+    make_cyl("Helm_Sconce_Shade", (+3.29, +2.0, cz + 1.83), 0.06, 0.10,
+             (0.92, 0.70, 0.40, 1.0), segments=10)
 
     # Office chair behind the desk
     ch_x, ch_y = 0.0, -2.4

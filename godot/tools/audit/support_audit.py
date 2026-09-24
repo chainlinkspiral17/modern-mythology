@@ -67,7 +67,9 @@ SHELL = re.compile(r"(^|_)(wall|floor|ceil|ground|road|slab|apron|sidewalk|curb|
 # Distant things stand on the ground like near ones.
 # butterfly|moth|firefly (2026-09-23): things drawn IN FLIGHT — the
 # kowalski butterfly is "the butterfly leaves", in the air on purpose.
-SKY = re.compile(r"(^|_)(sky|horizon|mist|cloud|drone|skein|haze|fog|treeline|ridge|hill|glow|clearing|sundisc|moondisc|moon|shimmer|smear|mote|streak|void|sea|swamp_floor|lake_water|valley_floor|ribbon|butterfly|moth|firefly)(_|$)|(^|_)out_[a-z]+_(ground|street|facade|wall|sea|sky|roof|treeline|lawn|tower|freeway|brick|gallery|litwin)|garden_far", re.I)
+# minnow (2026-09-24): swimmers — the frog tanks' water is a surface now,
+# not a solid block, and a shoal hangs in it
+SKY = re.compile(r"(^|_)(sky|horizon|mist|cloud|drone|skein|haze|fog|treeline|ridge|hill|glow|clearing|sundisc|moondisc|moon|shimmer|smear|mote|streak|void|sea|swamp_floor|lake_water|valley_floor|ribbon|butterfly|moth|firefly|minnow)(_|$)|(^|_)out_[a-z]+_(ground|street|facade|wall|sea|sky|roof|treeline|lawn|tower|freeway|brick|gallery|litwin)|garden_far", re.I)
 
 # a diorama's land and sea plates are the TABLE its models stand on
 # (2026-09-23: "template_land|template_sea" sat in SKY, so every cedar,

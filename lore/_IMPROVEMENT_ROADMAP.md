@@ -2504,6 +2504,34 @@ the key's back side); the crumpled barn "lean" insert (one grey wall);
 the montreal drainpipe; then the glass list (frog tanks, diner west
 glass, asylum bars, cosmic window, cake dome, FOH case) and the
 carnival storm heap.
+TWENTY-EIGHTH PASS — WHY THE KEYS DID NOTHING. Sheet from 949d283e: the
+raised keys barely moved the night frames (grunion 2.3 → ~2). The night
+mood changes no light; it posterises to 9 levels with floor() in the
+Compatibility renderer's sRGB, so everything under 28/255 goes to 0 —
+most of a dark-albedo set. The shader playbook already had the rule
+(2026-07-12): dark-albedo night sets want scene ambient 1.0–1.8. Eight
+scenes sat at 0.5–0.65 — grunion, bar exterior, caldwell porch night,
+equipment shed, nightmare cell, centro stockroom, henderson garage, cedar
+tower — all 1.0 now. USER DECISION (not taken): demoscene_post's
+quantiser uses floor(); round-to-nearest would stop crushing shadows in
+EVERY palette mood but shifts every mood's look by half a step.
+Glass: the frog tanks' front pane + SOLID water box hid every fish —
+front is glints now, the water a surface at the waterline, the back pane
+carries the water's colour, plants rooted in the gravel, the frog's eyes
+on its head (support_audit: `minnow` joins the flyers, a shoal hangs in
+water); the missing-link cake dome is lifted and set beside the stand
+(it was an opaque bell over the pie); the riverboat's bourbon corner got
+a real fixture — a brass sconce on the east partition over the file
+cabinet — and its practical. Checked and left: the cosmic comics
+window statues and the asylum bars stand on the ROOM side of their
+glass. Left for the user: the diner's west glass over D'Ambrosio's
+service bar (model chapter). The crumpled barn "lean" insert is used by
+no cue.
+Deck: rebuild frog_knows_best, missing_link_interior, riverboat_interior
+(the rest is scene-only).
+NEXT (draft 29): sheet → the ambient-lifted night sets, the tanks, the
+cake, the sconce; the cedar credit; the montreal drainpipe; the carnival
+storm heap; the bakery FOH case.
 
 **2026-09-19 · DESIGN · the two decorative checks made real, the first
 remembered choice.** Nate's basement (ch6) and Tem staying (ch8): the

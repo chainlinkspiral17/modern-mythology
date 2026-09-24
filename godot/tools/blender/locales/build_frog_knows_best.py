@@ -61,11 +61,15 @@ def build_aquarium_tanks():
         (+0.00, "Catfish",    COL_WATER_MURKY, COL_CATFISH),
         (+1.70, "Frog",       COL_WATER_MURKY, COL_FROG_GREEN),
     ]):
-        # Tank glass walls (5 sides)
-        make_box(f"Tank_{ti}_Glass_F", (tx, shelf_y - 0.30, 1.30),
-                 (1.40, 0.005, 0.96), COL_TANK_GLASS)
+        # Tank glass walls. The FRONT pane is two glints between the rims
+        # and the back pane carries the water's colour (2026-09-24: a
+        # front "glass" slab and a SOLID water box hid every fish — the
+        # pipeline has no alpha; opaque water is a wall)
+        for gi, (gx, gw) in enumerate(((-0.45, 0.03), (-0.37, 0.012))):
+            make_box(f"Tank_{ti}_Glint_{gi}", (tx + gx, shelf_y - 0.30, 1.32),
+                     (gw, 0.004, 0.92), (0.84, 0.90, 0.90, 1.0))
         make_box(f"Tank_{ti}_Glass_B", (tx, shelf_y + 0.30, 1.30),
-                 (1.40, 0.005, 0.96), COL_TANK_GLASS)
+                 (1.40, 0.005, 0.96), water)
         make_box(f"Tank_{ti}_Glass_W", (tx - 0.70, shelf_y, 1.30),
                  (0.005, 0.62, 0.96), COL_TANK_GLASS)
         make_box(f"Tank_{ti}_Glass_E", (tx + 0.70, shelf_y, 1.30),
@@ -76,14 +80,15 @@ def build_aquarium_tanks():
                      (1.42, 0.04, 0.04), COL_TANK_FRAME)
             make_box(f"Tank_{ti}_Frame_B_{fz:.0f}", (tx, shelf_y + 0.30, fz),
                      (1.42, 0.04, 0.04), COL_TANK_FRAME)
-        # Water + gravel
-        make_box(f"Tank_{ti}_Water", (tx, shelf_y, 1.30), (1.30, 0.55, 0.80), water)
+        # Water: its SURFACE at the waterline, glass to glass (the fish
+        # below it read through the open front), + gravel
+        make_box(f"Tank_{ti}_Water", (tx, shelf_y, 1.695), (1.395, 0.595, 0.01), water)
         make_box(f"Tank_{ti}_Gravel", (tx, shelf_y, 0.92), (1.30, 0.55, 0.10), COL_GRAVEL)
         # Plants in tank
         for pi in range(3):
             px_ = tx - 0.40 + pi * 0.40
-            make_box(f"Tank_{ti}_Plant_{pi}", (px_, shelf_y + 0.10, 1.30),
-                     (0.04, 0.06, 0.50), COL_PLANT_WET)
+            make_box(f"Tank_{ti}_Plant_{pi}", (px_, shelf_y + 0.10, 1.22),
+                     (0.04, 0.06, 0.50), COL_PLANT_WET)   # rooted in the gravel (it hung 8 cm over it)
         # Fish / occupant
         if ti == 0:  # minnow shoal
             for mi in range(6):
@@ -105,7 +110,7 @@ def build_aquarium_tanks():
             make_box("Frog_Belly", (tx, shelf_y - 0.05, 1.22), (0.26, 0.04, 0.08), COL_FROG_BELLY)
             # Eyes
             for sgn in (-1, +1):
-                make_cyl(f"Frog_Eye_{sgn:+d}", (tx + sgn*0.08, shelf_y - 0.02, 1.42),
+                make_cyl(f"Frog_Eye_{sgn:+d}", (tx + sgn*0.08, shelf_y - 0.02, 1.40),   # on the head (2026-09-24: 2 cm over it, held by the old water block)
                          0.04, 0.04, COL_FROG_BELLY, segments=8)
         # Tank label plaque
         make_box(f"Tank_{ti}_Label", (tx, shelf_y - 0.32, 0.92),

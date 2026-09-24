@@ -133,7 +133,9 @@ background_mode = 1
 background_color = Color(0.16, 0.10, 0.12, 1)
 ambient_light_source = 2
 ambient_light_color = Color(0.50, 0.42, 0.38, 1)
-ambient_light_energy = 0.6
+ambient_light_energy = 1.0
+; (2026-09-24, sheet 28: was 0.6 — dark-albedo set under the night/dusk
+; palette moods rendered black; the shader playbook's 2026-07-12 rule: ambient 1.0-1.8)
 fog_enabled = true
 fog_light_color = Color(0.36, 0.26, 0.24, 1)
 fog_light_energy = 0.4

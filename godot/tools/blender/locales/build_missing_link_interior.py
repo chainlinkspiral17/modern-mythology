@@ -111,7 +111,9 @@ def build_counter_and_stools():
     # Cake dome + pie on the counter
     make_cyl("CakePlate", (+1.6, cy - 0.02, 1.11), 0.22, 0.03, COL_CHROME, segments=16)
     make_cyl("CakePie", (+1.6, cy - 0.02, 1.16), 0.20, 0.08, COL_PIE, segments=16)
-    make_lathe("CakeDome", (+1.6, cy - 0.02, 1.13), [(0.23, 0.0), (0.23, 0.14), (0.19, 0.19), (0.08, 0.22), (0.03, 0.22), (0.03, 0.25), (0.0, 0.25)], COL_GLASS, segments=16)
+    # the dome LIFTED and set down beside the stand (2026-09-24: over the
+    # pie it rendered as an opaque grey bell — no alpha in this pipeline)
+    make_lathe("CakeDome", (+2.1, cy - 0.02, 1.095), [(0.23, 0.0), (0.23, 0.14), (0.19, 0.19), (0.08, 0.22), (0.03, 0.22), (0.03, 0.25), (0.0, 0.25)], COL_GLASS, segments=16)
 
 
 def build_backbar_kitchen():

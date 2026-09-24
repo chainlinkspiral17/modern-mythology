@@ -194,6 +194,13 @@ shadow_enabled = false
 
 ; ── Practicals ───────────────────────────────────────────────────
 ; HELM · brass desk lamp (Dante's vantage)
+[node name="Helm_Sconce_Shade_Practical" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.29, 6.9, -2.0)
+light_color = Color(1, 0.78, 0.5, 1)
+light_energy = 0.9
+omni_range = 2.4
+shadow_enabled = false
+
 [node name="Practical_Helm_Desk" type="OmniLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.6, 6.05, 1.5)
 light_color = Color(0.96, 0.78, 0.42, 1)
