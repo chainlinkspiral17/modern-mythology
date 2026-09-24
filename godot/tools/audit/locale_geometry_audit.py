@@ -192,6 +192,32 @@ def install_stubs():
                       tuple(float(c) for c in center), (r, r, r)))
         return _obj_stub(name)
 
+    def _rec_blob(name, center, radius, color=None, noise=0.22, seed=0,
+                  rings=5, segments=9, squash=0.8, *a, **k):
+        # 2026-09-24: blobs recorded as round balls of `radius` — 25% too
+        # tall at the default squash 0.8, 82% too tall for the finn duffel
+        # (squash 0.55), and too narrow where the noise pushes out. The
+        # exact extents of _props.geometry._uv_sphere, same hash:
+        def _h(a_, b_, c_=0):
+            n_ = (a_ * 374761393 + b_ * 668265263 + c_ * 1442695041) & 0xFFFFFFFF
+            n_ = ((n_ ^ (n_ >> 13)) * 1274126177) & 0xFFFFFFFF
+            return ((n_ ^ (n_ >> 16)) & 0xFFFF) / 65536.0
+        r = abs(float(radius)); sq = float(squash); nz = float(noise or 0.0)
+        cx, cy, cz = (float(c) for c in center)
+        xs, ys, zs = [cx], [cy], [cz + r * sq, cz - r * sq]
+        for ri in range(1, int(rings)):
+            phi = math.pi * ri / rings
+            for si in range(int(segments)):
+                th = 2.0 * math.pi * si / segments
+                kk = 1.0 + (0.0 if not nz else (_h(ri, si, int(seed)) - 0.5) * 2.0 * nz)
+                rr = r * kk
+                xs.append(cx + rr * math.sin(phi) * math.cos(th))
+                ys.append(cy + rr * math.sin(phi) * math.sin(th))
+                zs.append(cz + rr * math.cos(phi) * sq)
+        BOXES.append((str(name), ((max(xs) + min(xs)) / 2.0, (max(ys) + min(ys)) / 2.0, (max(zs) + min(zs)) / 2.0),
+                      ((max(xs) - min(xs)) / 2.0, (max(ys) - min(ys)) / 2.0, (max(zs) - min(zs)) / 2.0)))
+        return _obj_stub(name)
+
     def _rec_lathe(name, center, profile, color=None, segments=12, yaw=0.0, loop=False, *a, **k):
         r = max(abs(float(p[0])) for p in profile)
         zs = [float(p[1]) for p in profile]
@@ -267,7 +293,7 @@ def install_stubs():
         "make_box": _make_box, "make_cyl": _make_cyl,
         "make_chamfer_box": _rec_prism, "make_wedge": _rec_prism,
         "make_gable": _rec_prism, "make_taper_cyl": _rec_taper,
-        "make_dome": _rec_round, "make_blob": _rec_round,
+        "make_dome": _rec_round, "make_blob": _rec_blob,
         # DETAIL DRAFT 1 primitives (2026-09-05)
         "make_lathe": _rec_lathe, "make_prism": _rec_prism_poly,
         "make_tube": _rec_tube, "make_rot_box": _rec_rot_box,

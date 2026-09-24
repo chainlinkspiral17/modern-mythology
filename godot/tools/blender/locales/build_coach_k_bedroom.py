@@ -81,7 +81,7 @@ def build_bed():
     """Queen centered on the NORTH wall — two sleepers' sides, only
     one asleep."""
     by = ROOM_D - 1.15
-    make_box("Bed_Head", (0.0, ROOM_D - 0.08, 0.68), (1.7, 0.10, 0.95), COL_FRAME_DK)
+    make_box("Bed_Head", (0.0, ROOM_D - 0.15, 0.68), (1.7, 0.10, 0.95), COL_FRAME_DK)   # on the N wall face (2026-09-24: 7 cm into it)
     make_box("Bed_Foot", (0.0, by - 1.07, 0.42), (1.7, 0.06, 0.35), COL_FRAME_DK)   # on the foot rail (2026-09-23: 1.5 cm off it)
     # the shared bed under the two sleepers (2026-09-07); the quilt is
     # its made blanket, the pillows below are theirs
@@ -116,7 +116,7 @@ def build_nightstands():
 def build_dresser():
     """Dresser on the EAST wall + twenty years of sediment: framed
     photos, a dish of keys and whistles, folded laundry."""
-    dx = ROOM_W / 2.0 - 0.30
+    dx = ROOM_W / 2.0 - 0.375   # against the E wall face (2026-09-24: 7.5 cm into it)
     dy = 1.4
     make_box("Dresser", (dx, dy, 0.52), (0.55, 1.5, 1.0), COL_FRAME)
     for r in range(3):

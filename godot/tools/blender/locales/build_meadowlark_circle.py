@@ -82,7 +82,7 @@ def build_street():
         make_prism(f"{'Streetlamp'}_{li}_Head", (lx, -3.7, 5.95), [(-0.30, -0.10), (0.30, -0.02), (0.34, 0.06), (0.10, 0.10), (-0.30, 0.04)], 0.34, steel, axis="X")
         make_box(f"Streetlamp_{li}_Lens", (lx, -3.72, 5.83), (0.30, 0.44, 0.03), (0.96, 0.92, 0.78, 1.0))
     # the black cat crossing Prairie View
-    make_blob("Black_Cat_Body", (5.0, -1.4, 0.17), 0.20, (0.06, 0.06, 0.07, 1.0), noise=0.18, seed=7, squash=0.7)
+    make_blob("Black_Cat_Body", (5.0, -1.4, 0.135), 0.20, (0.06, 0.06, 0.07, 1.0), noise=0.18, seed=7, squash=0.7)   # seated by its squashed height (2026-09-24: a blob's half-height is radius x squash)
     make_cyl("Black_Cat_Tail", (5.34, -1.4, 0.24), 0.02, 0.34, (0.06, 0.06, 0.07, 1.0), axis="X", segments=6)
 
 

@@ -64,7 +64,7 @@ NONSOLID = re.compile(r"spray|mist|steam|smoke|shaft|glow|beam\b|dust|fog|surf|f
 BURIEDISH = re.compile(r"culvert|drain|conduit|footing|foundation|piling", re.I)
 # Rock against rock — talus piles, jagged outcrops, scree — is
 # geology, not clipping.
-ROCKISH = re.compile(r"jag|talus|rock|outcrop|boulder|scree|crag|cliff|rim\b|rim_|face\b|face_|gorge|tepui|ledge|hill|"
+ROCKISH = re.compile(r"jag|talus|rock|outcrop|boulder|scree|crag|cliff|bluff|rim\b|rim_|face\b|face_|gorge|tepui|ledge|hill|"
                      # Collapsed masonry IS rubble — graustark's ruins
                      # interpenetrate each other and their sinkhole by
                      # design, and vegetation grows through them.
@@ -600,6 +600,17 @@ def overlaps(boxes):
                     any(g in l1 or g in l2 for g in ("floor", "ground", "bank", "bed", "dirt", "grass", "lawn")):
                 continue
             if ("sprinkler" in l1 and "lawn" in l2) or ("sprinkler" in l2 and "lawn" in l1):
+                continue
+            # A far horizon band is set a few cm into the ground or sea it
+            # stands on (2026-09-24: the far-band kit grounds its bands now).
+            if depth <= 0.10 and (("far" in l1 and any(g in l2 for g in ("ground", "gravel", "sea", "lawn", "grass", "sand", "dirt", "water", "field", "lot"))) or
+                                  ("far" in l2 and any(g in l1 for g in ("ground", "gravel", "sea", "lawn", "grass", "sand", "dirt", "water", "field", "lot")))):
+                continue
+            # Driftwood half-buried in sand; a chapel's floor slab set into
+            # its earth mound (2026-09-24, named narrowly).
+            if ("driftwood" in l1 and "sand" in l2) or ("driftwood" in l2 and "sand" in l1):
+                continue
+            if ("floor_slab" in l1 and "mound" in l2) or ("floor_slab" in l2 and "mound" in l1):
                 continue
             # A tank's collar rings its tank.
             if depth <= 0.10 and ("collar" in l1 or "collar" in l2):

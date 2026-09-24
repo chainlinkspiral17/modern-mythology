@@ -83,7 +83,7 @@ def build_shell():
     # Storefront glass door + window, S wall
     make_box("Door", (-2.6, 0.08, 1.10), (0.95, 0.05, 2.20), COL_MIRROR_FR)
     make_box("Door_Glass", (-2.6, 0.06, 1.20), (0.70, 0.04, 1.70), COL_GLASS)
-    make_box("Front_Glass", (-0.6, 0.06, 1.45), (2.4, 0.04, 1.60), COL_GLASS)
+    make_box("Front_Glass", (-0.6, 0.12, 1.45), (2.4, 0.04, 1.60), COL_GLASS)   # on the room face (2026-09-24: inside the solid S wall)
     # Fluorescent tube panels (the practicals sit on these)
     for i, fy in enumerate((1.6, 3.2, 4.8)):
         make_box(f"Fluor_{i}", (0.0, fy, CEIL - 0.03), (2.6, 0.34, 0.05), COL_FLUOR)
@@ -151,9 +151,9 @@ def build_office():
     make_cyl("Office_Lamp_Post", (3.75, 5.75, 0.92), 0.018, 0.34, COL_MIRROR_FR, segments=6)
     make_box("Office_Lamp_Shade", (3.70, 5.72, 1.10), (0.22, 0.14, 0.08), (0.30, 0.34, 0.28, 1.0))
     # File cabinet + chair
-    make_box("Office_File", (2.35, 5.70, 0.65), (0.45, 0.55, 1.30), COL_FILE)
+    make_box("Office_File", (2.35, 5.625, 0.65), (0.45, 0.55, 1.30), COL_FILE)   # against the N wall face (2026-09-24: 7.5 cm into it)
     for d in range(3):
-        make_box(f"Office_File_D{d}", (2.35, 5.42, 0.28 + d * 0.42), (0.38, 0.03, 0.32), COL_SHELF_DK)
+        make_box(f"Office_File_D{d}", (2.35, 5.345, 0.28 + d * 0.42), (0.38, 0.03, 0.32), COL_SHELF_DK)
     make_box("Office_Chair_Seat", (3.1, 4.95, 0.46), (0.42, 0.42, 0.06), COL_MIRROR_FR)
     # pedestal + base (2026-09-08: the seat hung in the air)
     make_cyl("Office_Chair_Post", (3.1, 4.95, 0.22), 0.03, 0.44, COL_MIRROR_FR, segments=8)

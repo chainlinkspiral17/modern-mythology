@@ -117,7 +117,7 @@ def build_path_and_mountain():
         top = z1
         make_wedge(f"Drop_{i}", (1.5 + 38.5 / 2.0, ym, (VALLEY_Z + top) / 2.0), (38.5, SEG, top - VALLEY_Z), GRASS if i % 3 else (0.38, 0.40, 0.30, 1.0), high_end="-X")
         # rock texture: a few boulders on the cliff face's foot and the drop's shoulder
-        make_blob(f"Cliff_Rock_{i}", (-1.5 - ledge - 0.9, y0 + 2.0 + (i % 3), cliff_h + 0.55), 0.55, BASALT_DK, noise=0.28, seed=60 + i, squash=0.8)   # seated on the cliff top
+        make_blob(f"Cliff_Rock_{i}", (-1.5 - ledge - 0.9, y0 + 2.0 + (i % 3), cliff_h + 0.42), 0.55, BASALT_DK, noise=0.28, seed=60 + i, squash=0.8)   # seated on the cliff top
     return levels
 
 
@@ -164,7 +164,7 @@ def build_stations(levels):
     make_box("Bench_Bread_Crumbs", (-2.05, by + 0.2, z + 0.5215), (0.10, 0.08, 0.003), (0.74, 0.62, 0.42, 1.0))
     hy = Y0 + 6 * SEG + 6.4
     for hi, hxx in enumerate((-4.4, -3.2, -2.0)):
-        make_blob(f"Hedge_{hi}", (hxx, hy, z + 0.55), 0.45, HEDGE, noise=0.22, seed=90 + hi, squash=0.8)
+        make_blob(f"Hedge_{hi}", (hxx, hy, z + 0.34), 0.45, HEDGE, noise=0.22, seed=90 + hi, squash=0.8)   # seated by its squashed height (2026-09-24: a blob's half-height is radius x squash)
         for bi in range(3):
             a = math.pi / 2.0 + (bi - 1) * 0.7
             make_box(f"Hedge_Berry_{hi}_{bi}", (hxx + 0.62 * math.cos(a), hy - 0.62 * math.sin(a), z + 0.55 + 0.1 * bi), (0.03, 0.03, 0.03), BERRY)

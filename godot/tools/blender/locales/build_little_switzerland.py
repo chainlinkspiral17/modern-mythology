@@ -135,9 +135,9 @@ def build_mountains():
     # 'mountain' occluding the real banded ridges behind it)
     # (occluder slab deleted 2026-08-04 — a paper-thin wall 20m out
     # hiding the real receding bands built behind it)
-    # Snow caps: light bands along the far ridge tops
-    make_box("Snow_Far_A", (-12.0, 19.95, 12.0), (10.0, 0.05, 2.0), COL_SNOW)
-    make_box("Snow_Far_B", (4.0, 19.95, 12.6), (8.0, 0.05, 1.6), COL_SNOW)
+    # (2026-09-24: Snow_Far_A/B deleted — white strips 20 m out, 11-13 m
+    # up, capping ridges that stand 260 m and more away: strips in the sky)
+    pass
     # (2026-09-23: Snow_Near deleted — the near ridge it capped was
     # deleted on 08-04, and the white strip hung 16 m out in the sky)
     # (Sky wall deleted 2026-08-04 — it stood between the camera

@@ -41,8 +41,9 @@ def build_desk():
     for i, lx in enumerate([-0.82, 0.82]):
         make_box(f"Desk_Side_{i}", (dx+lx, dy, 0.37), (0.06, 0.76, 0.72), COL_WOOD)
     # CRT monitor on a base + keyboard + scattered work-order papers + mug
-    make_box("Monitor_Body", (dx, dy+0.20, 1.02), (0.46, 0.36, 0.36), (0.30, 0.30, 0.28, 1.0))
-    make_box("Monitor_Screen", (dx, dy+0.02, 1.02), (0.40, 0.02, 0.28), (0.08, 0.14, 0.12, 1.0))
+    # off the N wall (2026-09-24: its back 6 cm into it)
+    make_box("Monitor_Body", (dx, dy+0.14, 1.02), (0.46, 0.36, 0.36), (0.30, 0.30, 0.28, 1.0))
+    make_box("Monitor_Screen", (dx, dy-0.04, 1.02), (0.40, 0.02, 0.28), (0.08, 0.14, 0.12, 1.0))
     make_box("Keyboard", (dx, dy-0.16, 0.77), (0.44, 0.16, 0.03), (0.32, 0.32, 0.30, 1.0))
     for pi in range(3):
         make_box(f"Paper_{pi}", (dx-0.6+pi*0.14, dy+0.05, 0.77), (0.18, 0.24, 0.01), (0.86, 0.84, 0.78, 1.0))

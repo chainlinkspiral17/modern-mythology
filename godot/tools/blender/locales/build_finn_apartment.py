@@ -221,7 +221,7 @@ def build_crow_2026_08():
     at (1.55, 0.05), sill height ~1.05.
     """
     from _props.creatures import make_crow
-    make_crow("Crow", 1.55, 0.30, 1.07, facing=1.0)
+    make_crow("Crow", 1.55, 0.37, 1.07, facing=1.0)   # beak clear of the glass (2026-09-24: 5 cm into the wall)
 
 
 def build_hero_props_2026_09():

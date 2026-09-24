@@ -144,7 +144,9 @@ def build_decor():
     # on WallSeg_1's inner face (y 1.233 at x 1.50..2.49) — at x 2.35 it
     # hung past the slab's end, 4.5 cm off it (2026-09-23)
     make_wall_clock("Clock", (2.00, 1.213, 2.40), frozen_hour=4, frozen_min=15)
-    make_calendar("Calendar", (-RADIUS+0.05, +1.20, 2.30))
+    # (2026-09-24: the kit calendar that stood here was inside WallSeg_6,
+    # and the room already has its calendar — the brass one on the NE
+    # wall, build_calendar below. Removed.)
     # Coiled rope on the floor
     for ri in range(3):
         make_cyl(f"Rope_Coil_{ri}", (-RADIUS+1.20, -1.40, 0.02 + ri*0.04),   # on the floor (2026-09-22: 8 cm up)
@@ -470,8 +472,11 @@ def build_hermit_props_pass():
         gy = my + math.sin(ga) * 0.20
         make_box("LensDrive_GearTooth_%d" % gi, (gx, gy, drum_z - 0.04),
                  (0.04, 0.04, 0.05), COL_BRASS)
-    make_cyl("LensDrive_Chain", (mx + 0.10, my, 4.85), 0.012, 2.20, COL_STAIR_IRON, segments=6)
-    make_box("LensDrive_Weight", (mx + 0.10, my, 3.60), (0.14, 0.14, 0.36), COL_STAIR_IRON)
+    # the weight near the TOP of its drop — wound this morning — so its
+    # chain clears the spiral stair (2026-09-24: hung to 3.6 m, the chain
+    # ran through tread 11)
+    make_cyl("LensDrive_Chain", (mx + 0.10, my, 5.635), 0.012, 0.65, COL_STAIR_IRON, segments=6)
+    make_box("LensDrive_Weight", (mx + 0.10, my, 5.13), (0.14, 0.14, 0.36), COL_STAIR_IRON)
 
     # ── Life ring on the S wall (maritime keeper's kit) ──
     ring_cx, ring_cz = -1.33, 1.70

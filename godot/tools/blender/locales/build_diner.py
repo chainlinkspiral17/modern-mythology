@@ -5547,12 +5547,13 @@ def build_diner_streetscape():
                      (0.72, 0.02, 0.92),
                      (0.10, 0.08, 0.06, 1.0))
         # Hanging sign over the door (a small box with brass trim)
+        # flat on the facade (2026-09-24: 10 cm in front of it, on air)
         make_box(f"Far_{label}_Sign",
-                 (fx, far_y + 0.85, 3.10),
+                 (fx, far_y + 0.77, 3.10),
                  (fw * 0.5, 0.04, 0.40),
                  (0.20, 0.16, 0.12, 1.0))
         make_box(f"Far_{label}_Sign_Text",
-                 (fx, far_y + 0.86, 3.10),
+                 (fx, far_y + 0.79, 3.10),
                  (fw * 0.4, 0.02, 0.20),
                  (0.86, 0.78, 0.42, 1.0))
         # Front door (dark)

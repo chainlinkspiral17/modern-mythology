@@ -41,6 +41,11 @@ def build_ground():
     make_box("Slab", (-1.0, 6.0, 0.02), (16.0, 12.0, 0.06), COL_SLAB)
     # Expansion seams
     for i in range(4):
+        if i == 0:
+            # split round the stair set (2026-09-24: it ran under the stairs)
+            make_box("Seam_X_0", (-7.0, 8.425 / 2.0, 0.055), (0.06, 8.425, 0.01), COL_SLAB_DK)
+            make_box("Seam_X_0_N", (-7.0, (9.475 + 12.0) / 2.0, 0.055), (0.06, 12.0 - 9.475, 0.01), COL_SLAB_DK)
+            continue
         make_box(f"Seam_X_{i}", (-7.0 + i * 4.0, 6.0, 0.055), (0.06, 12.0, 0.01), COL_SLAB_DK)
     make_box("Seam_Y", (-1.0, 6.0, 0.055), (16.0, 0.06, 0.01), COL_SLAB_DK)
 

@@ -32,8 +32,10 @@ def build_shell():
     make_ceiling("Ceil", (0.0, ROOM_D/2.0, CEIL), size_x=ROOM_W+0.4, size_y=ROOM_D+0.4)
     for nm, ax, length, wx, wy in [("Crown_W",'Y',ROOM_D,-ROOM_W/2.0+0.10,ROOM_D/2.0),("Crown_E",'Y',ROOM_D,+ROOM_W/2.0-0.10,ROOM_D/2.0),("Crown_N",'X',ROOM_W,0.0,ROOM_D-0.10),("Crown_S",'X',ROOM_W,0.0,+0.10)]:
         make_crown_molding(nm, wall_x=wx, wall_y=wy, length=length, axis=ax, ceil_z=CEIL, palette={"wood": COL_WOOD})
-    make_window("Window_SW", (-2.0, 0.0, 1.60), width=2.20, height=1.60)
-    make_window("Window_SE", (+2.0, 0.0, 1.60), width=2.20, height=1.60)
+    # anchored on the wall's room face, built toward the room (2026-09-23: the glass was inside the wall)
+    make_window("Window_SW", (-2.0, 0.10, 1.60), width=2.20, height=1.60, room_dir=+1)
+    # anchored on the wall's room face, built toward the room (2026-09-23: the glass was inside the wall)
+    make_window("Window_SE", (+2.0, 0.10, 1.60), width=2.20, height=1.60, room_dir=+1)
     # 2026-08 tail pass: the BELL over the door + the BACK-CORNER
     # window in the W wall (X-thin, hand-built) the corner table
     # sits under.

@@ -4430,9 +4430,12 @@ def build_park_horizon_2026_08():
     """
     from _props.detail import make_far_bands
     from _props.geometry import make_cyl as _mc
+    # (2026-09-24: WEST only — the north bands stood across the frontage
+    # road and through the real north town (church, houses), floating over
+    # both until the far-band kit grounded its bands; the north has its town)
     make_far_bands("ParkFarTown", (0.34, 0.31, 0.29),
                    [(55.0, 60.0, 6.5, 0.92), (110.0, 95.0, 8.0, 0.76)],
-                   sides="NW", cx=-49.0, cy=24.0, profile="roofline")
+                   sides="W", cx=-49.0, cy=24.0, profile="roofline")
     make_far_bands("ParkFarWood", (0.18, 0.26, 0.16),
                    [(210.0, 170.0, 11.0, 0.58), (400.0, 290.0, 14.0, 0.44)],
                    sides="NW", cx=-49.0, cy=24.0, profile="treeline")

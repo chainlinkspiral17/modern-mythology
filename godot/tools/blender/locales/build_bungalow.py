@@ -1090,7 +1090,7 @@ def build_bathroom():
              (0.40, 0.50, 0.36), COL_TRIM_WHITE)
 
     # Tub — full east side of bathroom
-    tb_x, tb_y = -2.8, +1.10
+    tb_x, tb_y = -2.9, +1.10   # clear of the bath partition (2026-09-24: 10 cm into it)
     make_box("Bathroom_Tub_Body",
              (tb_x, tb_y, 0.30),
              (0.70, 1.20, 0.60), COL_TRIM_WHITE)

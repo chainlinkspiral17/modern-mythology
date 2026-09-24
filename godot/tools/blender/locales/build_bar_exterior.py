@@ -111,7 +111,9 @@ def build_backdrop():
     # The sky is the .tscn environment's job.)
     # Far rooflines across the street behind the camera don't render;
     # a low distant block face beyond the building's roof
-    make_box("Far_Block", (6.0, 9.0, 7.2), (20.0, 0.06, 2.4), (0.07, 0.07, 0.10, 1.0))
+    # to the ground (2026-09-24: a slab hanging 6 m up — it only read as
+    # "a block beyond the roof" from one camera)
+    make_box("Far_Block", (6.0, 9.0, 4.2), (20.0, 0.06, 8.4), (0.07, 0.07, 0.10, 1.0))
 
 
 def main():

@@ -112,9 +112,9 @@ def build_hero_props():
     make_box("Letter_Pen", (0.90, 4.48, 0.770), (0.02, 0.13, 0.01), (0.14, 0.14, 0.16, 1.0))
     make_box("Addressed_Envelope", (1.06, 4.64, 0.7675), (0.20, 0.10, 0.005), (0.90, 0.88, 0.82, 1.0))
     # Dresser + the small mirror
-    make_box("Dresser", (-1.75, 2.60, 0.44), (0.45, 1.00, 0.88), wood)
+    make_box("Dresser", (-1.675, 2.60, 0.44), (0.45, 1.00, 0.88), wood)   # against the W wall face (2026-09-24: 7.5 cm into it)
     for di in range(3):
-        make_box(f"Dresser_Drawer_{di}", (-1.52, 2.60, 0.20 + di * 0.26), (0.02, 0.86, 0.20), (0.30, 0.22, 0.14, 1.0))
+        make_box(f"Dresser_Drawer_{di}", (-1.445, 2.60, 0.20 + di * 0.26), (0.02, 0.86, 0.20), (0.30, 0.22, 0.14, 1.0))
     make_box("Small_Mirror_Frame", (-1.96, 2.60, 1.45), (0.03, 0.44, 0.56), (0.28, 0.20, 0.13, 1.0))
     make_box("Small_Mirror", (-1.94, 2.60, 1.45), (0.02, 0.36, 0.48), (0.68, 0.74, 0.78, 1.0))
 

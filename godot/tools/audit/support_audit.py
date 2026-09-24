@@ -61,9 +61,13 @@ SHELL = re.compile(r"(^|_)(wall|floor|ceil|ground|road|slab|apron|sidewalk|curb|
 # (the vantage audit's IGNORE is not used here: its `plinth$` dropped the
 # sundial's plinth and its `band` the cedar tower's floor bands, 2026-09-22)
 # whole name PARTS only — "ridge" must not eat the Fridge (2026-09-22)
+# "far" is no longer sky (2026-09-24): the far-band kit built every
+# horizon band a quarter of its height OFF the ground with its crowns
+# floating over it — floating slabs on 37 exteriors that this list hid.
+# Distant things stand on the ground like near ones.
 # butterfly|moth|firefly (2026-09-23): things drawn IN FLIGHT — the
 # kowalski butterfly is "the butterfly leaves", in the air on purpose.
-SKY = re.compile(r"(^|_)(sky|far|farband|horizon|mist|cloud|drone|skein|haze|fog|treeline|ridge|hill|glow|clearing|sundisc|moondisc|moon|shimmer|smear|mote|streak|void|sea|swamp_floor|lake_water|valley_floor|ribbon|butterfly|moth|firefly)(_|$)|^far[a-z]|(^|_)out_[a-z]+_(ground|street|facade|wall|sea|sky|roof|treeline|lawn|tower|freeway|brick|gallery|litwin)|garden_far", re.I)
+SKY = re.compile(r"(^|_)(sky|horizon|mist|cloud|drone|skein|haze|fog|treeline|ridge|hill|glow|clearing|sundisc|moondisc|moon|shimmer|smear|mote|streak|void|sea|swamp_floor|lake_water|valley_floor|ribbon|butterfly|moth|firefly)(_|$)|(^|_)out_[a-z]+_(ground|street|facade|wall|sea|sky|roof|treeline|lawn|tower|freeway|brick|gallery|litwin)|garden_far", re.I)
 
 # a diorama's land and sea plates are the TABLE its models stand on
 # (2026-09-23: "template_land|template_sea" sat in SKY, so every cedar,

@@ -2275,6 +2275,60 @@ regression): overlap bayou lighthouse 3, finn apartment 3, small wood
 road 3, then the 2s (cape perpetua, carnival lot, coach k, hierophant
 circuit, pharmacy, solenade garden). Deck-verify the whole run
 (windows, baseboards, the rebuilt corners).
+TWENTIETH PASS (support 0 → 0, overlap 34 → 0 — BOTH GATES AT ZERO IN
+EVERY BUILDER; both baselines are now all-zero, so ANY float or clip
+anywhere fails the suite). THE RECORDER HAD BLOBS WRONG: every
+make_blob recorded as a round ball of its radius, ignoring `squash`
+(default 0.8) and noise — 25% too tall by default, 82% for a flat
+duffel. The recorder now builds the kit's own vertex ring (same hash)
+and takes its exact extents. That removed false clips (finn's duffel
+"13 cm into the floor") and exposed 48 REAL floats the round ball had
+hidden: blobs seated at "centre = radius" hang radius x (1 - squash)
+over the ground — tideline boulders and pool pebbles, highway 101 rock
+rubble, salal and the headland, kestrel cliff rocks and hedges, lake
+palestine reeds, meadowlark's black cat, hans's flour sacks — all
+seated by their squashed height now; and the crow kit's back toe hung
+2.2 cm behind its leg, held only by the over-tall body box. The 34
+overlaps: the bayou lighthouse (a SECOND calendar inside a wall segment
+— removed; the lens-drive weight hung to the bottom of its drop through
+a stair tread — wound up now), carnival festoon cable and bulbs through
+the tent pole and the carousel finial, walls (asylum hatch, bungalow
+tub, coach k headboard and dresser, the daily grind four-top, foxhole
+cymbal, new orleans room dresser, pharmacy file, pit stop monitor,
+solenade tap, nexcorp restroom shell), henderson's BASEMENT DOOR dark
+inside its wall (never visible), maya's CAVITY and ENVELOPE inside the
+floor slab (never visible — on the planks under the lifted board now),
+pharmacy's storefront glass inside the S wall, small wood road's
+ditches under the far-ground sheet (cut round them), hierophant's curb
+inside the wharf deck, skatepark's seam under the stairs, elicia's
+camera lens into the wall. The window scan widened (glass inside a
+wall's THICKNESS and overlapping it along the run, not only "wholly
+inside one segment") and found three more buried windows: cafe olimpico
+×2, elicia SE. Grammar: bluff rock roots in ground; driftwood half-
+buried in sand; a floor slab set into its earth mound.
+THE CONTACT SHEET (2026-09-24, from draft 19's build, 1,529 frames,
+141 presets) was read as one establish frame per preset. What the gates
+could not see and the frames showed: FLAT SLABS FLOATING IN THE SKY on
+the exteriors (vehicle cab side, skatepark, and others) — the far-band
+kit (`make_far_bands`, 37 callers) passed half-extents to make_box as
+sizes, so every horizon band stood a quarter of its height OFF the
+ground and every crown hung over its band; the support audit never saw
+it because "far" was in its SKY list. The kit grounds its bands now
+(footprints as built — the scenes were composed around them); "far" is
+out of the SKY list, and the nine other far pieces that then floated
+were fixed (the diner's far storefront signs 10 cm off their facades,
+the bar's far block 6 m up, the sapo falls far tepui 4.4 m up, little
+switzerland's two "snow caps" 20 m out capping ridges 260 m away —
+deleted). The riverfront park's north far-town band stood across the
+frontage road and through the real north town; west only now. Also on
+the sheet, for the next direction pass: establish frames facing a wall
+or near-black (crumpled barn int, nightmare cell, d'ambrosio's formal,
+cabin interior bed, chapel exterior), and highway 101 + small wood road
+were SKIPPED (their GLBs did not load on the Deck) — rebuild and check.
+NEXT: Deck-verify (the whole support pass has not been seen on the
+Deck; windows, baseboards, the kwik stop corner, the rebuilt lighthouse
+weight, the grounded horizons). Then back to THE DRAFTING PROGRAM's
+visual backlog with both gates holding at zero.
 
 **2026-09-19 · DESIGN · the two decorative checks made real, the first
 remembered choice.** Nate's basement (ch6) and Tem staying (ch8): the

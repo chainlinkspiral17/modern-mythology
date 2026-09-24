@@ -1,26 +1,3 @@
 {
- "counts": {
-  "asylum_ward_c": 1,
-  "bayou_lighthouse": 3,
-  "bungalow": 1,
-  "cape_perpetua_overlook": 2,
-  "carnival_lot": 2,
-  "coach_k_bedroom": 2,
-  "daily_grind_interior": 1,
-  "elicia_apartment": 1,
-  "finn_apartment": 3,
-  "foxhole_stage": 1,
-  "grunion_beach": 1,
-  "henderson_kitchen": 1,
-  "hierophant_circuit": 2,
-  "maya_bedroom": 1,
-  "new_orleans_room": 1,
-  "nexcorp_fueling_station": 1,
-  "pharmacy": 2,
-  "pit_stop_office": 1,
-  "roadside_chapel": 1,
-  "skatepark": 1,
-  "small_wood_road": 3,
-  "solenade_garden": 2
- }
+ "counts": {}
 }

@@ -90,7 +90,7 @@ def build_sea_and_shelf():
     # boulders, mussel beds and kelp wrack along the seaward edge
     for i, (x, y, r, s) in enumerate(((-16.0, -12.0, 1.1, 3), (-9.0, -13.5, 0.8, 4), (6.0, -13.0, 1.3, 5), (15.0, -11.5, 0.9, 6),
                                       (17.5, 2.0, 1.0, 7), (-17.0, 6.0, 1.2, 8), (12.0, 12.5, 0.9, 9))):
-        make_blob(f"Boulder_{i}", (x, y, Z_TOP + r * 0.98), r, BASALT_LT, noise=0.26, seed=s, squash=0.7)
+        make_blob(f"Boulder_{i}", (x, y, Z_TOP + r * 0.7 - 0.02), r, BASALT_LT, noise=0.26, seed=s, squash=0.7)   # seated by its squashed height (2026-09-24: a blob's half-height is radius x squash)
     for i, (x, y) in enumerate(((-13.0, -14.2), (-5.0, -14.4), (2.0, -14.3), (10.0, -14.1), (19.2, -6.0), (19.3, 4.0))):
         make_box(f"Mussel_Bed_{i}", (x, y, Z_TOP + 0.03), (2.6, 0.9, 0.06), (0.10, 0.10, 0.16, 1.0))
     for i, (x, y) in enumerate(((-11.0, -13.2), (1.5, -13.6), (16.5, -10.0))):
@@ -135,7 +135,7 @@ def build_first_pool():
     make_cyl("Hermit_Crab_Shell_Spire", (cx + 0.15, cy - 0.5, fz + 0.065), 0.02, 0.02, (0.54, 0.42, 0.28, 1.0), segments=6)
     make_box("Hermit_Crab_Legs", (cx + 0.15, cy - 0.42, fz + 0.01), (0.08, 0.04, 0.02), (0.60, 0.36, 0.24, 1.0))
     for i in range(4):
-        make_blob(f"Pool_Pebble_{i}", (cx - 0.5 + i * 0.35, cy + 0.2 - (i % 2) * 0.5, fz + 0.05), 0.04,
+        make_blob(f"Pool_Pebble_{i}", (cx - 0.5 + i * 0.35, cy + 0.2 - (i % 2) * 0.5, fz + 0.026), 0.04,
                   (0.34, 0.34, 0.32, 1.0), noise=0.2, seed=30 + i, squash=0.7)
     # Finn's seat on the basalt at the south edge, the notebook and pencil beside it
     make_box("Finn_Sit_Wear", (cx - 0.3, YS[1] - 0.45, Z_TOP + 0.0035), (0.70, 0.50, 0.001), (0.34, 0.34, 0.35, 1.0))
@@ -153,7 +153,7 @@ def build_second_pool():
     make_box("Cedar_Hand_Figure", (cx + 0.2, cy - 0.3, fz + 0.0255), (0.04, 0.018, 0.003), (0.72, 0.54, 0.34, 1.0))
     make_cyl("Cedar_Bell", (cx + 0.205, cy - 0.3, fz + 0.029), 0.005, 0.004, (0.80, 0.66, 0.40, 1.0), segments=6)
     for i in range(6):
-        make_blob(f"Second_Pool_Pebble_{i}", (cx - 1.0 + i * 0.4, cy + 0.6 - (i % 3) * 0.55, fz + 0.055), 0.045,
+        make_blob(f"Second_Pool_Pebble_{i}", (cx - 1.0 + i * 0.4, cy + 0.6 - (i % 3) * 0.55, fz + 0.029), 0.045,
                   (0.32, 0.33, 0.31, 1.0), noise=0.2, seed=40 + i, squash=0.7)
     # where the old man has knelt since 2023: two knee hollows worn into the west rim
     for ki, dy in enumerate((-0.18, 0.18)):

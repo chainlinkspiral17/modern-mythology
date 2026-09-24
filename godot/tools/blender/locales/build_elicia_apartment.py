@@ -43,7 +43,8 @@ def build_shell():
             ("Crown_N", 'X', ROOM_W, 0.0, ROOM_D-0.10),
             ("Crown_S", 'X', ROOM_W, 0.0, +0.10)]:
         make_crown_molding(nm, wall_x=wx, wall_y=wy, length=length, axis=ax, ceil_z=CEIL, palette={"wood": COL_WOOD})
-    make_window("Window_SE", (+2.0, 0.0, 1.40), width=1.40, height=1.20)
+    # anchored on the wall's room face, built toward the room (2026-09-23: the glass was inside the wall)
+    make_window("Window_SE", (+2.0, 0.10, 1.40), width=1.40, height=1.20, room_dir=+1)
     # anchored on the wall's room face, built toward the room (2026-09-23: the glass was inside the wall)
     make_window("Window_W", (-ROOM_W/2.0 + 0.10, 3.0, 1.40), width=1.60, height=1.40, axis='Y', room_dir=+1)
     # the front door: a leaf on its hinges, a sidelight panel to the
@@ -128,9 +129,12 @@ def build_hero_props():
     make_cyl("Mothers_Teacup", (1.90, 5.20, 1.00), 0.045, 0.07, (0.90, 0.88, 0.82, 1.0), segments=10)
     make_cyl("Teacup_Saucer", (1.90, 5.20, 0.965), 0.075, 0.012, (0.90, 0.88, 0.82, 1.0), segments=10)
     # The camera on the windowsill, red light on
-    make_box("Camera_Body", (2.0, 0.14, 1.05), (0.16, 0.10, 0.10), (0.14, 0.14, 0.16, 1.0))
-    make_cyl("Camera_Lens", (2.0, 0.06, 1.05), 0.035, 0.05, (0.10, 0.10, 0.12, 1.0), axis='Y', segments=8)
-    make_box("Camera_RedLight", (2.06, 0.10, 1.11), (0.015, 0.015, 0.015), (0.96, 0.16, 0.14, 1.0))
+    # on the window's bottom rail, lens to the room (2026-09-24: the lens
+    # pointed into the wall — the window it filmed through had been built
+    # inside that wall; it faces the room she films herself in)
+    make_box("Camera_Body", (2.0, 0.19, 0.90), (0.16, 0.10, 0.10), (0.14, 0.14, 0.16, 1.0))
+    make_cyl("Camera_Lens", (2.0, 0.265, 0.90), 0.035, 0.05, (0.10, 0.10, 0.12, 1.0), axis='Y', segments=8)
+    make_box("Camera_RedLight", (2.06, 0.20, 0.9575), (0.015, 0.015, 0.015), (0.96, 0.16, 0.14, 1.0))
     # The award + the eviction envelope on the coffee table
     make_box("Glass_Award", (-0.30, 0.70, 0.42), (0.10, 0.06, 0.20), (0.66, 0.78, 0.84, 0.7))
     make_box("Award_Base", (-0.30, 0.70, 0.335), (0.14, 0.10, 0.03), (0.20, 0.20, 0.22, 1.0))

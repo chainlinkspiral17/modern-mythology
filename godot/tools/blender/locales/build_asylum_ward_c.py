@@ -138,7 +138,7 @@ def build_cupola():
     # Broken-paned cupola at the N end — a small square skylight
     # tower above the ceiling, visible through a hatch
     cx, cy = 0.0, ROOM_D - 0.80
-    make_box("Cupola_Hatch", (cx, cy, CEIL-0.04), (1.80, 1.80, 0.04), (0.10, 0.10, 0.10, 1.0))
+    make_box("Cupola_Hatch", (cx, cy - 0.10, CEIL-0.04), (1.80, 1.60, 0.04), (0.10, 0.10, 0.10, 1.0))   # to the N wall face (2026-09-24: 20 cm into it)
     # Cupola tower above
     make_box("Cupola_Walls_N", (cx, cy+0.80, CEIL+0.80), (1.80, 0.10, 1.40), COL_WALL_GROUT)
     make_box("Cupola_Walls_S", (cx, cy-0.80, CEIL+0.80), (1.80, 0.10, 1.40), COL_WALL_GROUT)

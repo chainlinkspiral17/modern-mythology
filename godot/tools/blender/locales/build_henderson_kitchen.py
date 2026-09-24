@@ -109,7 +109,9 @@ def build_hero_props():
     # The basement door, E wall, dark stair void behind
     make_box("Basement_Doorframe", (ROOM_W/2.0-0.04, 1.6, 1.08), (0.10, 1.00, 2.16), wood)
     make_chamfer_box("Basement_Door", (ROOM_W/2.0-0.07, 1.6, 1.05), (0.05, 0.85, 2.05), (0.42, 0.32, 0.22, 1.0))
-    make_box("Basement_Void", (ROOM_W/2.0-0.02, 1.6, 1.00), (0.02, 0.80, 2.00), (0.06, 0.05, 0.05, 1.0))
+    # on the wall face (2026-09-24: inside the wall — the basement door's
+    # dark was never visible)
+    make_box("Basement_Void", (ROOM_W/2.0-0.11, 1.6, 1.00), (0.02, 0.80, 2.00), (0.06, 0.05, 0.05, 1.0))
     # Stair mouth (up), S gap edge
     make_box("Stair_Newel", (0.92, 0.15, 0.60), (0.10, 0.10, 1.20), wood)
     for s in range(3):

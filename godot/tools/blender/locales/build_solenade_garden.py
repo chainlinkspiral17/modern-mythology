@@ -278,18 +278,20 @@ def build_sun_wave2_props():
 
     # Perimeter tap on the south wall · south = -Y in our coord frame
     tap_x = 0.0
-    tap_y = -GARDEN_R + 0.20
+    # on the garden wall's inner face, facing in (2026-09-24: inside the
+    # wall, its handle and spout pointing into it)
+    tap_y = -GARDEN_R + 0.453
     tap_z = 0.40
     make_cyl("Tap_Body",
              (tap_x, tap_y, tap_z),
              0.03, 0.14,
              (0.62, 0.62, 0.60, 1.0), segments=8, axis='Z')
     make_cyl("Tap_Handle",
-             (tap_x, tap_y - 0.08, tap_z + 0.14),
+             (tap_x, tap_y, tap_z + 0.09),
              0.02, 0.10,
              (0.72, 0.68, 0.62, 1.0), segments=6, axis='Y')
     make_cyl("Tap_Spout",
-             (tap_x, tap_y - 0.06, tap_z + 0.04),
+             (tap_x, tap_y + 0.06, tap_z + 0.04),
              0.014, 0.06,
              (0.62, 0.62, 0.60, 1.0), segments=8, axis='Y')
 

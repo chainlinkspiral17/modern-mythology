@@ -478,8 +478,10 @@ def build_strength_props_pass():
 
     # ── Festoon string lights across the lot (big top → carousel) ──
     # Shallow catenary of faded bulbs on a sagging cable.
-    ax0, az0 = -6.0, 6.4
-    ax1, az1 = 6.0, 5.2
+    # from the pole's surface to the finial ball's (2026-09-24: both ends
+    # ran to the centres — through the pole and through the ball)
+    ax0, az0 = -5.82, 6.4
+    ax1, az1 = 5.80, 5.5
     NODES = 11
     warm = [(0.98, 0.86, 0.52, 1.0), (0.96, 0.62, 0.42, 1.0), (0.72, 0.82, 0.88, 1.0)]
     # (2026-09-22: eleven flat cable stubs at different heights that
@@ -487,7 +489,7 @@ def build_strength_props_pass():
     make_tube("Festoon_Cable", catenary((ax0, 0.0, az0), (ax1, 0.0, az1), 0.8, n=20),
               0.012, P.METAL_BLACK, segments=5)
     for ni in range(NODES):
-        t = ni / (NODES - 1)
+        t = (ni + 0.5) / NODES   # bulbs between the ends, not on them
         cxp = ax0 + (ax1 - ax0) * t
         czp = az0 + (az1 - az0) * t - 0.8 * (1.0 - (2.0 * t - 1.0) ** 2)
         make_cyl("Festoon_Bulb_%d" % ni, (cxp, 0.0, czp - 0.065), 0.06, 0.10,

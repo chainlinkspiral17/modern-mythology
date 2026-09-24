@@ -103,18 +103,18 @@ def build_inland():
     make_box("Rock_Cut", (10.5, 80.0, 6.0), (6.0, 80.0, 12.0), ROCK)
     make_box("Rock_Cut_Face_Band", (7.49, 80.0, 3.0), (0.02, 80.0, 1.2), ROCK_DK)
     for i in range(10):
-        make_blob(f"Rock_Cut_Rubble_{i}", (6.4, 44.0 + i * 8.0, 0.48), 0.5, ROCK_DK, noise=0.3, seed=20 + i, squash=0.7)
+        make_blob(f"Rock_Cut_Rubble_{i}", (6.4, 44.0 + i * 8.0, 0.33), 0.5, ROCK_DK, noise=0.3, seed=20 + i, squash=0.7)   # seated by its squashed height (2026-09-24: a blob's half-height is radius x squash)
     for i in range(24):
         y = -230.0 + i * 20.0
         if 40.0 < y < 120.0:
             continue
-        make_blob(f"Salal_{i}", (6.6, y, 0.72), 0.9, SALAL, noise=0.26, seed=50 + i, squash=0.55)
+        make_blob(f"Salal_{i}", (6.6, y, 0.47), 0.9, SALAL, noise=0.26, seed=50 + i, squash=0.55)   # seated by its squashed height (2026-09-24: a blob's half-height is radius x squash)
 
 
 def build_headland_and_turn():
     """The old-Yachats headland rising ahead to the north-west with the
     bluff on it; the decommissioned turn with its chain and marker."""
-    make_blob("Headland_Mass", (-98.0, 380.0, 26.0), 40.0, (0.24, 0.32, 0.22, 1.0), noise=0.22, seed=7, squash=0.5)
+    make_blob("Headland_Mass", (-98.0, 380.0, 19.5), 40.0, (0.24, 0.32, 0.22, 1.0), noise=0.22, seed=7, squash=0.5)   # seated by its squashed height (2026-09-24: a blob's half-height is radius x squash)
     # the turn: a gravel spur west off the shoulder at y 160, chained
     make_box("Old_Yachats_Spur", (-9.0, 160.0, 0.006), (9.0, 4.0, 0.012), GRAVEL)
     make_box("Old_Yachats_Spur_Far", (-20.0, 163.0, 0.006), (14.0, 4.0, 0.012), GRAVEL)

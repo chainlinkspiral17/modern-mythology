@@ -468,6 +468,29 @@ banisters classed · pans as containers.
   ditches (which bottom at -0.40) — the ditches were never visible. The
   overlap gate called it "ground x ditch, 7 cm". When a depression
   clips a ground plane, the plane is on top: cut the plane.
+- **Record the shape the kit BUILDS, not the one its name suggests
+  (twentieth pass).** make_blob recorded as a round ball of `radius`;
+  the kit squashes it (default 0.8) and pushes noise outward. Two
+  failures from one stub: false clips (a flat duffel "13 cm into the
+  floor") and hidden floats — every blob seated at centre = radius
+  hangs radius x (1 - squash) over its ground, and the ball's extra
+  height was "touching" it. The recorder now runs the kit's own vertex
+  ring. When a stub approximates a kit, check it against the kit's
+  vertex maths once.
+- **A drop list hides a kit's bug in every caller at once.** The first
+  read of the contact sheet showed flat slabs floating in the sky; the
+  support gate said zero, because "far" was in its SKY list. The far-
+  band kit had passed half-extents as sizes since it was written: every
+  horizon band on 37 exteriors stood a quarter of its height off the
+  ground, every crown hung over its band. Read the frames — a gate
+  that exempts a word is blind to everything named with it. And when
+  you ground something that used to float, check what it now stands
+  in: the riverfront's grounded north band was a wall across a road.
+- **"Wholly inside one segment" misses windows at a segment's end.**
+  Elicia's SE window ran past Wall_S_E's end into the door opening, so
+  the first buried-window scan passed it. The scan that holds: glass
+  inside the wall's THICKNESS and overlapping it along the run and in
+  height. Three more found.
 - **Move the light with the lamp.** Jesse's bedside lamp moved 1.3 m;
   its practical OmniLight in the .tscn would have lit an empty corner.
   orphan_practical_audit catches it — and it also caught the reverse:

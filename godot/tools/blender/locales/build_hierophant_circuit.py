@@ -698,13 +698,13 @@ def build_circuit_stations_2026_08():
                  (0.22, 0.10, 0.75), (0.30 + ci2 * 0.08, 0.28, 0.30, 1.0))
     # ── THE CURB · gangway + bell above the front door ──
     make_box("Curb_Gangway", (bx - 7.2, by - 3.6, 0.75), (1.2, 2.6, 0.10), deck)
-    make_box("Curb_Strip", (bx - 7.2, by - 5.2, 0.06), (6.0, 0.9, 0.12), (0.62, 0.60, 0.56, 1.0))
+    make_box("Curb_Strip", (bx - 7.2, by - 5.2, 0.28), (6.0, 0.9, 0.12), (0.62, 0.60, 0.56, 1.0))   # on the wharf deck (2026-09-24: inside it)
     make_box("Curb_DoorFrame", (bx - 7.2, by - 2.45, 2.3), (1.4, 0.12, 1.9), wood_dk)
     make_cyl("Curb_Bell", (bx - 7.2, by - 2.5, 3.35), 0.10, 0.14, (0.72, 0.60, 0.30, 1.0),
              segments=8)
     # The long black car's SPOT at the curb is empty — the car
     # itself is parked at the church (it drives the circuit).
-    make_box("Curb_NoParking_Stencil", (bx - 7.2, by - 5.15, 0.125), (1.8, 0.35, 0.012),
+    make_box("Curb_NoParking_Stencil", (bx - 7.2, by - 5.15, 0.346), (1.8, 0.35, 0.012),
              (0.82, 0.78, 0.55, 1.0))
 
 

@@ -130,8 +130,10 @@ def make_crow(prefix, x, y, z, facing=1.0, scale=1.0, perched=True):
                          (x + sgn * (0.035 + (t - 1) * 0.018) * s,
                           y - f * 0.048 * s, z + 0.008 * s),
                          (0.010 * s, 0.048 * s, 0.010 * s), CROW_LEG)
+            # the back toe from the leg (2026-09-24: 2.2 cm behind it, held
+            # only by the body's over-tall recorded box)
             make_box("%s_Hallux_%d" % (prefix, sgn),
-                     (x + sgn * 0.035 * s, y + f * 0.030 * s,
+                     (x + sgn * 0.035 * s, y + f * 0.008 * s,
                       z + 0.008 * s),
                      (0.010 * s, 0.036 * s, 0.010 * s), CROW_LEG)
 

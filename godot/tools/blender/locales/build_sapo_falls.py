@@ -150,7 +150,7 @@ def build_sky():
     make_box("Tepui_Band", (-9.0, 17.1, 6.2), (9.4, 0.7, 1.0), (0.38, 0.34, 0.36, 1.0))
     make_box("Tepui_Top", (-9.0, 17.2, 12.15), (9.6, 1.0, 0.5), COL_TEPUI_TOP)
     # A second, farther table to the east, hazier
-    make_box("Tepui_Far", (11.0, 17.6, 7.0), (7.0, 0.6, 5.2), (0.54, 0.52, 0.56, 1.0))
+    make_box("Tepui_Far", (11.0, 17.6, 4.8), (7.0, 0.6, 9.6), (0.54, 0.52, 0.56, 1.0))   # to the ground (2026-09-24: it began 4.4 m up)
     make_box("Tepui_Far_Top", (11.0, 17.6, 9.75), (7.4, 0.8, 0.4), (0.42, 0.48, 0.42, 1.0))
     # (Sky wall deleted 2026-08-04 — it stood between the camera
     # and the new far bands, occluding the horizon it faked.

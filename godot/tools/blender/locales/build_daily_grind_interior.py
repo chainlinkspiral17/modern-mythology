@@ -118,7 +118,7 @@ def build_tables():
     _make_cafe_table("Table_1", 0.4, 1.9)
     # The CORNER FOUR-TOP (SE, by the front window) — square, four
     # chairs; where the group scenes actually sit.
-    tx, ty = 2.55, 1.3
+    tx, ty = 2.43, 1.3   # chair 3's back clear of the E wall (2026-09-24: 12 cm into it)
     make_box("FourTop_Top", (tx, ty, 0.74), (0.95, 0.95, 0.05), COL_WOOD)
     for li,(lxo,lyo) in enumerate([(-0.40,-0.40),(0.40,-0.40),(-0.40,0.40),(0.40,0.40)]):
         make_box(f"FourTop_Leg_{li}", (tx+lxo, ty+lyo, 0.36), (0.06, 0.06, 0.72), COL_ESPRESSO_TRIM)

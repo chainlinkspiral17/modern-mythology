@@ -210,8 +210,11 @@ def build_hero_props():
     # The loose board, lifted a crack at one end
     make_box("Loose_Board", (0.0, 3.30, 0.020), (0.90, 0.13, 0.018), pine_dk)
     # The cavity + the envelope
-    make_box("Cavity_Void", (0.0, 3.30, -0.035), (0.42, 0.125, 0.07), (0.10, 0.08, 0.06, 1.0))
-    make_box("Manila_Envelope", (0.0, 3.30, -0.008), (0.26, 0.11, 0.006), (0.82, 0.72, 0.50, 1.0))
+    # (2026-09-24: the cavity and the envelope were INSIDE the floor slab,
+    # under the plank field — never visible. The dark of the gap and the
+    # envelope now lie on the planks, under the lifted board.)
+    make_box("Cavity_Void", (0.0, 3.30, 0.004), (0.42, 0.125, 0.001), (0.10, 0.08, 0.06, 1.0))
+    make_box("Manila_Envelope", (0.0, 3.30, 0.0075), (0.26, 0.11, 0.006), (0.82, 0.72, 0.50, 1.0))
     # Rug re-centred so it covers the board when smoothed back
     # (the build's Rug cyl stays; this ring marks the pulled-back lip)
     make_cyl("Rug_Fold", (0.0, 3.02, 0.018), 0.55, 0.012, (0.72, 0.42, 0.44, 1.0), segments=14)

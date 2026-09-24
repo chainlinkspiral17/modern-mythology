@@ -146,7 +146,8 @@ def build_bakery():
     for hi, hx in enumerate((tx-0.36, tx+0.16)):
         make_cyl(f"RollingPin_Handle_{hi}", (hx, ty+0.22, 0.97), 0.014, 0.08, COL_WOOD, axis='X', segments=6)
     # Stacked flour sacks in the SW corner
-    for si, (sx2, sz) in enumerate([(-ROOM_W/2.0+0.6, 0.22), (-ROOM_W/2.0+0.55, 0.62), (-ROOM_W/2.0+0.85, 0.22)]):
+    # seated by their squashed height (2026-09-24)
+    for si, (sx2, sz) in enumerate([(-ROOM_W/2.0+0.6, 0.20), (-ROOM_W/2.0+0.55, 0.60), (-ROOM_W/2.0+0.85, 0.20)]):
         make_blob(f"FlourSack_{si}", (sx2, 0.7, sz), 0.21,
                   (0.88, 0.84, 0.76, 1.0), noise=0.16, seed=11 + si,
                   squash=0.95)

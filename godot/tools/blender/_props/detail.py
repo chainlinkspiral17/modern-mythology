@@ -205,8 +205,15 @@ def make_far_bands(prefix, base_color, bands, sides="NSEW",
             else:
                 ctr, half = (cx - dist, cy), (5.0, half_span)
             nm = "%s_%s%d" % (prefix, side, i)
-            make_box(nm, (ctr[0], ctr[1], height * 0.5),
-                     (half[0], half[1], height * 0.5), c)
+            # make_box takes FULL sizes (2026-09-24): this passed half-
+            # extents, so every band stood a quarter of its height OFF the
+            # ground and every lump hung over its band — the floating
+            # slabs on 37 exteriors' horizons. The FOOTPRINTS stay as built
+            # (every scene was composed around them); the band now rises
+            # from 6 cm into the ground to its full height, the lumps sit
+            # on its top.
+            make_box(nm, (ctr[0], ctr[1], (height - 0.06) * 0.5),
+                     (half[0], half[1], height + 0.06), c)
             # break the top line so the band doesn't read as a slab
             along_x = side in "NS"
             n_lumps = 3 + (i % 2)
@@ -223,7 +230,7 @@ def make_far_bands(prefix, base_color, bands, sides="NSEW",
                       ctr[1] + (0.0 if along_x else off))
                 lhalf = ((lw, 4.0) if along_x else (4.0, lw))
                 make_box("%s_%s%d_l%d" % (prefix, side, i, j),
-                         (lc[0], lc[1], height + lh * 0.5),
+                         (lc[0], lc[1], height + lh * 0.25),
                          (lhalf[0], lhalf[1], lh * 0.5), c)
 
 

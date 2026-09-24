@@ -147,7 +147,7 @@ def build_lake():
     make_box("Lake_Glint_Band", (12.0, -40.0, -0.019), (18.0, 60.0, 0.002), WATER_LIT)
     # shore reeds
     for i, (x, r, s) in enumerate(((-16.0, 0.9, 1), (-13.5, 0.7, 2), (4.0, 0.8, 3), (7.5, 1.0, 4), (11.0, 0.7, 5), (16.0, 0.9, 6))):
-        make_blob(f"Reeds_{i}", (x, -1.2, r - 0.05), r, REED, noise=0.3, seed=s, squash=0.6)   # rooted 5 cm into the water (2026-09-22: two clumps hung 12 cm over it)
+        make_blob(f"Reeds_{i}", (x, -1.2, r * 0.6 - 0.05), r, REED, noise=0.3, seed=s, squash=0.6)   # seated by its squashed height (2026-09-24: a blob's half-height is radius x squash)   # rooted 5 cm into the water (2026-09-22: two clumps hung 12 cm over it)
     # two bass boats emerging from the launch on the far side
     for bi, (bx, by) in enumerate(((12.0, -60.0), (-14.0, -75.0))):
         make_box(f"Bass_Boat_{bi}_Hull", (bx, by, 0.24), (2.0, 5.0, 0.52), (0.84, 0.86, 0.86, 1.0))
