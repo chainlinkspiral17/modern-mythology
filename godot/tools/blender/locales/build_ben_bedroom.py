@@ -27,8 +27,8 @@ from _props.geometry import clear_scene, make_box, make_cyl, make_rot_box, expor
 from _props.structure import make_floor, make_wall, make_ceiling
 from _props.detail import (make_floor_stain, make_traffic_wear, make_wall_outlet, make_wall_tint_band)
 
-ROOM_W = 3.6      # x ∈ [-1.8, 1.8]
-ROOM_D = 4.0      # y ∈ [0, 4.0]
+ROOM_W = 4.4      # x ∈ [-2.2, 2.2] (2026-09-24: widened, "rooms too cramped")
+ROOM_D = 4.6      # y ∈ [0, 4.6] (2026-09-24)
 CEIL = 2.5
 
 COL_WALL = (0.36, 0.40, 0.46, 1.0)      # slate blue-grey

@@ -32,7 +32,7 @@ from _props.decor import make_wall_clock, make_floor_plant, make_faded_poster, m
 from _props.safety import make_smoke_detector, make_hvac_vent, make_fluorescent_tube_fixture
 from _props.furniture import make_bed, make_chair
 
-ROOM_W = 4.0; ROOM_D = 5.0; CEIL = 2.6
+ROOM_W = 4.8; ROOM_D = 5.6; CEIL = 2.6
 # Denim-blue walls, lime-green accent — boyish, distinct from the girls'/others'.
 PAL_WALL = {"wall":(0.56,0.66,0.78,1.0),"baseboard":(0.32,0.40,0.50,1.0)}
 COL_FLOOR = (0.60,0.60,0.62,1.0); COL_SEAM = (0.38,0.38,0.42,1.0); COL_WOOD = (0.40,0.46,0.40,1.0)
@@ -94,7 +94,7 @@ def build_posters():
     # Comic / movie posters along the west wall
     for pi in range(3):
         px = -ROOM_W/2.0+0.05; py = 1.0 + pi*1.5
-        make_faded_poster(f"Poster_W_{pi}", (px, py, 1.55))
+        make_faded_poster(f"Poster_W_{pi}", (px + 0.0535, py, 1.55), into_room=+1)
 
 def build_rug():
     make_cyl("Rug", (0.0, ROOM_D/2.0, 0.012), 1.20, 0.005, COL_BLUE_DK)
@@ -154,8 +154,9 @@ def build_dressing():
         # stacked, box on box from the floor (2026-09-23: 2 cm gaps, 5 cm off the floor)
         make_box(f"ModelKit_{mi}", (ROOM_W/2.0-0.4, 0.7, 0.07+mi*0.14), (0.42-mi*0.04, 0.30, 0.14), TINTS[(mi*2) % len(TINTS)])
     # Beanbag chair (squashed stack of discs)
-    make_lathe("Beanbag", (0.3, 1.1, 0.0), [(0.36, 0.0), (0.44, 0.06), (0.45, 0.16), (0.40, 0.26), (0.30, 0.34), (0.14, 0.40), (0.0, 0.41)], COL_ACCENT, segments=14)   # draft 4: one sat-in shape
-    make_lathe("Beanbag_Dent", (0.34, 1.06, 0.36), [(0.16, 0.0), (0.12, 0.02), (0.0, 0.03)], (0.38, 0.58, 0.32, 1.0), segments=12)
+    # out of the door's swing (2026-09-24, the user: doorways obstructed)
+    make_lathe("Beanbag", (0.3, 1.530, 0.0), [(0.36, 0.0), (0.44, 0.06), (0.45, 0.16), (0.40, 0.26), (0.30, 0.34), (0.14, 0.40), (0.0, 0.41)], COL_ACCENT, segments=14)   # draft 4: one sat-in shape
+    make_lathe("Beanbag_Dent", (0.34, 1.490, 0.36), [(0.16, 0.0), (0.12, 0.02), (0.0, 0.03)], (0.38, 0.58, 0.32, 1.0), segments=12)
     # Skateboard leaning against the south wall
     # draft 4: the deck leans on the wall (tail on the floor), trucks and wheels on the room side
     # (2026-09-23: pitch tipped the deck sideways, 10 cm off the wall, trucks
@@ -177,12 +178,13 @@ def build_hero_props():
     curtains, dresser + phone, closet doors, bedside lamp."""
     # Box spring under the mattress — "She slides it between the
     # mattress and the box spring."
-    make_chamfer_box("Bed_BoxSpring", (-1.0, 2.5, 0.50), (1.12, 1.72, 0.14), (0.86, 0.84, 0.78, 1.0))
-    make_box("Sams_Notebook", (-0.55, 2.10, 0.58), (0.16, 0.22, 0.012), (0.72, 0.62, 0.30, 1.0))
+    make_chamfer_box("Bed_BoxSpring", (-ROOM_W/4.0, ROOM_D - 2.50, 0.50),   # room-relative (2026-09-24: the room widened)
+                      (1.12, 1.72, 0.14), (0.86, 0.84, 0.78, 1.0))
+    make_box("Sams_Notebook", (-ROOM_W/4.0 + 0.45, ROOM_D - 2.90, 0.58), (0.16, 0.22, 0.012), (0.72, 0.62, 0.30, 1.0))
     # Curtains on the N window
-    make_cyl("Curtain_Rod", (0.0, 4.88, 2.14), 0.015, 1.60, (0.20, 0.19, 0.20, 1.0), axis='X', segments=6)
+    make_cyl("Curtain_Rod", (0.0, ROOM_D - 0.12, 2.14), 0.015, 1.60, (0.20, 0.19, 0.20, 1.0), axis='X', segments=6)
     for cx in (-0.72, 0.72):
-        make_box(f"Curtain_{cx:+.2f}", (cx, 4.88, 1.50), (0.44, 0.04, 1.20), (0.55, 0.60, 0.70, 1.0))
+        make_box(f"Curtain_{cx:+.2f}", (cx, ROOM_D - 0.12, 1.50), (0.44, 0.04, 1.20), (0.55, 0.60, 0.70, 1.0))
     # Dresser with the phone on it ("Sam's phone, on her dresser,
     # buzzes")
     make_chamfer_box("Dresser", (1.62, 2.45, 0.42), (0.50, 1.00, 0.84), (0.46, 0.34, 0.22, 1.0))
@@ -265,6 +267,13 @@ def build_draft4_2026_09():
     make_backyard_view("Yard", ROOM_D, span=6.0, tree=(2.6, 3.0))
 
 
+
+def build_door_infill_sams_door_2026_09():
+    """Sams_Door was narrower than its wall opening (the user, 2026-09-24:
+    "doorways ... misaligned"): close the gap to the door and its frame."""
+    make_wall("Wall_Fill_Sams_Door_W", (-0.762, 0.000, 0), length=0.475, height=2.000, axis='X', palette=PAL_WALL, baseboard_face_sign=+1)
+    make_wall("Wall_Fill_Sams_Door_E", (0.762, 0.000, 0), length=0.475, height=2.000, axis='X', palette=PAL_WALL, baseboard_face_sign=+1)
+
 def main():
     clear_scene()
     build_shell()
@@ -280,6 +289,7 @@ def main():
     build_draft4_2026_09()
     out = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)),
         "../../../assets/3d/locales/sam_bedroom.glb"))
+    build_door_infill_sams_door_2026_09()
     print(f"\n[build_sam_bedroom] exporting to {out}")
     export_glb(out)
 

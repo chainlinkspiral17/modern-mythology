@@ -126,7 +126,7 @@ def make_calendar(prefix, anchor, *, palette=None, axis='Y'):
              (0.001, 0.34, 0.20), P.PAPER)
 
 
-def make_faded_poster(prefix, anchor, *, palette=None, axis='Y'):
+def make_faded_poster(prefix, anchor, *, palette=None, axis='Y', into_room=None):
     """Sun-faded vintage poster on a wall. anchor=(wall_x, wall_y,
     center_z).
 
@@ -136,25 +136,35 @@ def make_faded_poster(prefix, anchor, *, palette=None, axis='Y'):
     Added 2026-08-12: elicia's north-wall poster and the foxhole's
     south-wall flyer were hanging PERPENDICULAR to their walls,
     0.30m out into the room and 0.30 into the plaster.
+
+    into_room (2026-09-24): +1 / -1, the direction along the wall's
+    normal the ROOM lies. The old guess (the sign of the coordinate)
+    printed the ink INTO the wall on every east/west poster and on
+    south walls at y = 0; callers now pass it.
     """
     palette = palette or {}
     body = palette.get("body", (0.78, 0.62, 0.46, 1.0))
     ink = palette.get("ink", (0.32, 0.24, 0.20, 1.0))
     cx, cy, cz = anchor
     if str(axis).upper() == 'X':
-        off = 0.005 * (1 if cy >= 0 else -1)
+        d = into_room if into_room is not None else (-1 if cy >= 0 else 1)
         make_box(f"{prefix}_Body", (cx, cy, cz), (0.60, 0.005, 0.80), body)
-        make_box(f"{prefix}_Title", (cx, cy - off, cz - 0.30),
+        make_box(f"{prefix}_Title", (cx, cy + 0.0035 * d, cz - 0.30),
                  (0.50, 0.002, 0.10), ink)
-        make_box(f"{prefix}_Figure", (cx, cy - off, cz + 0.20),
+        make_box(f"{prefix}_Figure", (cx, cy + 0.0035 * d, cz + 0.20),
                  (0.36, 0.002, 0.40), ink)
         return
+    # the print goes on the ROOM side of the sheet (2026-09-24: it went
+    # +x on an east wall and -x on a west one — into the wall, behind
+    # the sheet, on every east/west poster in the game)
+    if into_room is None:
+        into_room = -1 if cx >= 0 else 1
     make_box(f"{prefix}_Body", (cx, cy, cz),
              (0.005, 0.60, 0.80), body)
-    make_box(f"{prefix}_Title", (cx + 0.005 * (1 if cx >= 0 else -1),
+    make_box(f"{prefix}_Title", (cx + 0.0035 * into_room,
                                  cy, cz - 0.30),
              (0.002, 0.50, 0.10), ink)
-    make_box(f"{prefix}_Figure", (cx + 0.005 * (1 if cx >= 0 else -1),
+    make_box(f"{prefix}_Figure", (cx + 0.0035 * into_room,
                                   cy, cz + 0.20),
              (0.002, 0.36, 0.40), ink)
 

@@ -177,9 +177,9 @@ def build_living_room():
     for pi, px in enumerate([-0.50, +0.30, +0.70]):
         make_chamfer_box(f"Sofa_Pillow_{pi}", (sx + px, sy + 0.10, 0.53), (0.30, 0.20, 0.18), COL_ACCENT_ROSE, chamfer=0.03)   # on the cushions
     # Coffee table (draft 3: the kit table, turned legs and an apron)
-    make_table("CoffeeTable", sx, sy - 0.80, w=1.20, d=0.60, h=0.40, wood=COL_WOOD_TRIM)
+    make_table("CoffeeTable", sx + 0.15, sy - 0.80, w=1.20, d=0.60, h=0.40, wood=COL_WOOD_TRIM)   # out of the front door's swing (2026-09-24, the user: "doorways obstructed")
     # Mug + book on coffee table
-    make_cyl("Mug", (sx - 0.30, sy - 0.80, 0.45), 0.05, 0.10, COL_ACCENT_ROSE)
+    make_cyl("Mug", (sx - 0.15, sy - 0.80, 0.45), 0.05, 0.10, COL_ACCENT_ROSE)
     make_box("Book", (sx + 0.30, sy - 0.80, 0.42), (0.20, 0.28, 0.04), COL_BOOK_SPINES[0])
     # Bookshelf along east wall (draft 3: at y 2.2 — at 1.5 its side ran
     # into the writing chair)
@@ -255,9 +255,9 @@ def build_decor():
     # clear of the window (2026-09-24: once the clock faced the room it overlapped it)
     make_wall_clock("Clock", (-3.400, 3.65, 2.10),
                     frozen_hour=4, frozen_min=22, facing='+X')
-    make_faded_poster("Poster_W", (-3.45, 1.0, 1.40))
-    make_faded_poster("Poster_E", (+3.45, 4.5, 1.50),
-                      palette={"body": COL_ACCENT_ROSE})
+    make_faded_poster("Poster_W", (-3.3965, 1.0, 1.40), into_room=+1)
+    make_faded_poster("Poster_E", (3.3965, 4.5, 1.50),
+                      palette={"body": COL_ACCENT_ROSE}, into_room=-1)
     make_floor_plant("Plant", (-2.5, 1.50, 0.0),
                      palette={"leaf": (0.42, 0.56, 0.42, 1.0)})
 

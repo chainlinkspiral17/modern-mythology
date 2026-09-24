@@ -54,7 +54,7 @@ def build_shell():
     make_door_hinges("FrontDoor_Hinge", edge_x=-1.10, edge_y=0.0, edge_z_centers=[0.30, 1.05, 1.80], axis='X')
 
 def build_living():
-    sx, sy = 0.0, 1.50
+    sx, sy = 0.45, 1.50   # east of the front door's swing (2026-09-24, the user: "doorways obstructed")
     make_box("Sofa_Base", (sx, sy, 0.12), (1.90, 0.76, 0.24), (0.28, 0.32, 0.40, 1.0))   # (2026-09-22: the sofa hung at 0.24)
     make_box("Sofa_Seat", (sx, sy, 0.34), (2.0, 0.80, 0.20), COL_COUCH)
     make_box("Sofa_Back", (sx, sy+0.32, 0.74), (2.0, 0.20, 0.60), COL_COUCH)
@@ -103,8 +103,8 @@ def build_studio_nook():
 def build_decor():
     # clear of the window (2026-09-24: once the clock faced the room it overlapped it)
     make_wall_clock("Clock", (-3.400, 3.0, 2.37), frozen_hour=4, frozen_min=22, facing='+X')
-    make_faded_poster("Poster_N", (0.0, ROOM_D-0.02, 1.70), axis='X',
-                      palette={"body": (0.62, 0.42, 0.52, 1.0)})
+    make_faded_poster("Poster_N", (0.0, ROOM_D-0.02 - 0.0835, 1.70), axis='X',
+                      palette={"body": (0.62, 0.42, 0.52, 1.0)}, into_room=-1)
     make_floor_plant("Plant_S1", (-3.0, 0.80, 0.0))
     make_floor_plant("Plant_S2", (+3.0, 0.80, 0.0), palette={"leaf": (0.62, 0.74, 0.56, 1.0)})
 
@@ -137,9 +137,10 @@ def build_hero_props():
     make_cyl("Camera_Lens", (2.0, 0.265, 0.90), 0.035, 0.05, (0.10, 0.10, 0.12, 1.0), axis='Y', segments=8)
     make_box("Camera_RedLight", (2.06, 0.20, 0.9575), (0.015, 0.015, 0.015), (0.96, 0.16, 0.14, 1.0))
     # The award + the eviction envelope on the coffee table
-    make_box("Glass_Award", (-0.30, 0.70, 0.42), (0.10, 0.06, 0.20), (0.66, 0.78, 0.84, 0.7))
-    make_box("Award_Base", (-0.30, 0.70, 0.335), (0.14, 0.10, 0.03), (0.20, 0.20, 0.22, 1.0))
-    make_box("Eviction_Envelope", (0.25, 0.70, 0.33), (0.22, 0.11, 0.006), (0.94, 0.93, 0.90, 1.0))
+    # with the coffee table, 0.45 east (2026-09-24)
+    make_box("Glass_Award", (0.15, 0.70, 0.42), (0.10, 0.06, 0.20), (0.66, 0.78, 0.84, 0.7))
+    make_box("Award_Base", (0.15, 0.70, 0.335), (0.14, 0.10, 0.03), (0.20, 0.20, 0.22, 1.0))
+    make_box("Eviction_Envelope", (0.70, 0.70, 0.33), (0.22, 0.11, 0.006), (0.94, 0.93, 0.90, 1.0))
     # The wreckage
     for i, (sx, sy) in enumerate(((-2.4, 2.2), (-1.2, 3.6), (0.8, 2.8), (2.4, 1.6))):
         make_box(f"Data_Slate_{i}", (sx, sy, 0.02), (0.42, 0.28, 0.03), (0.18, 0.20, 0.24, 1.0))
@@ -191,12 +192,13 @@ def build_use_states_d4():
     make_box("Laptop_Screen", (2.95, 4.665, 0.50), (0.26, 0.005, 0.16),
              (0.18, 0.24, 0.30, 1.0))
     # Half-packed boxes by the door: one closed, one open with flaps
-    make_box("Pack_Box_A", (-0.9, 0.5, 0.18), (0.45, 0.35, 0.36),
+    # beside the door, west of its swing (2026-09-24: box A stood in it)
+    make_box("Pack_Box_A", (-1.40, 0.5, 0.18), (0.45, 0.35, 0.36),
              (0.52, 0.40, 0.28, 1.0))
-    make_box("Pack_Box_B", (-1.45, 0.55, 0.15), (0.42, 0.34, 0.30),
+    make_box("Pack_Box_B", (-1.87, 0.55, 0.15), (0.42, 0.34, 0.30),
              (0.50, 0.38, 0.26, 1.0))
     for sgn in (-1, 1):
-        make_box(f"Pack_Box_B_Flap_{sgn:+d}", (-1.45 + sgn * 0.24, 0.55, 0.31),   # on the box's rim
+        make_box(f"Pack_Box_B_Flap_{sgn:+d}", (-1.87 + sgn * 0.24, 0.55, 0.31),   # on the box's rim
                  (0.10, 0.32, 0.02), (0.48, 0.36, 0.25, 1.0))
     # The second teacup — one on the coffee table (marker), one
     # abandoned on the desk corner
@@ -250,6 +252,12 @@ def build_eviction_notice_2026_08():
              (0.044, 0.002, 0.026), tape)
 
 
+
+def build_door_infill_frontdoor_leaf_2026_09():
+    """FrontDoor_Leaf was narrower than its wall opening (the user, 2026-09-24:
+    "doorways ... misaligned"): close the gap to the door and its frame."""
+    make_wall("Wall_Fill_FrontDoor_Leaf_E", (0.650, 0.000, 0), length=1.700, height=2.000, axis='X', palette=PAL, baseboard_face_sign=+1)
+
 def main():
     clear_scene(); build_shell(); build_living(); build_studio_nook(); build_decor(); build_ceiling_infra()
     build_hero_props()
@@ -257,6 +265,7 @@ def main():
     build_use_states_d4()
     build_eviction_notice_2026_08()
     out = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)), "../../../assets/3d/locales/elicia_apartment.glb"))
+    build_door_infill_frontdoor_leaf_2026_09()
     print(f"\n[build_elicia_apartment] exporting to {out}")
     export_glb(out)
 

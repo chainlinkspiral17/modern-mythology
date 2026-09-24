@@ -183,7 +183,7 @@ def build_ceiling_infra():
 def build_decor():
     make_wall_clock("Clock", (2.650, 1.0, 2.30), frozen_hour=4, frozen_min=15, facing='-X')
     make_calendar("Calendar", (-ROOM_W/2.0+0.05, 3.5, 2.20))
-    make_faded_poster("FCC_Poster", (+ROOM_W/2.0-0.05, 3.5, 1.50))
+    make_faded_poster("FCC_Poster", (+ROOM_W/2.0-0.05 - 0.0535, 3.5, 1.50), into_room=-1)
 
 
 def build_tower_dressing():

@@ -160,7 +160,7 @@ def build_ceiling_infra():
 def build_decor():
     make_wall_clock("Clock", (-4.900, 1.5, 2.30), frozen_hour=4, frozen_min=15, facing='+X')
     make_calendar("Calendar", (+ROOM_W/2.0-0.05, 6.5, 2.20))
-    make_faded_poster("Poster_Pinup", (-ROOM_W/2.0+0.05, 6.5, 1.80))
+    make_faded_poster("Poster_Pinup", (-ROOM_W/2.0+0.05 + 0.0535, 6.5, 1.80), into_room=+1)
 
 
 def main():

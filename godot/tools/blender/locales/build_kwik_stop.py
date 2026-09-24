@@ -353,9 +353,12 @@ def build_shell():
     for stain_i, (sx, sy) in enumerate([
         (-2.0, 2.5), (+1.0, 5.5), (+3.0, 7.5),
     ]):
+        # a faint blotch, not a dark 0.8 m board (2026-09-24, the user:
+        # "furniture on ceilings" — the stains read as slabs)
         make_box(f"Ceiling_Stain_{stain_i}",
                  (sx, sy, CEIL_Z - 0.004),
-                 (0.80, 0.80, 0.004), COL_CEILING_STAIN)
+                 (0.46, 0.38, 0.004),
+                 tuple(COL_CEILING_TILE[k] * 0.72 + COL_CEILING_STAIN[k] * 0.28 for k in range(3)) + (1.0,))
 
     # ── Fluorescent tube fixtures (3 rows of 2 each) ────────────
     for j, ypos in enumerate([2.5, 5.0, 7.5]):
@@ -723,17 +726,17 @@ def build_coffee_station():
 
     # ── Squeegee + bucket near the coffee station ──────────────
     make_cyl("Mop_Bucket",
-             (cx + 0.60, cy + 1.80, 0.20),
+             (cx + 0.60 + 0.550, cy + 1.80, 0.20),
              0.18, 0.40, (0.92, 0.86, 0.36, 1.0), segments=10)
     make_box("Mop_Wringer",
-             (cx + 0.60, cy + 1.80, 0.42),
+             (cx + 0.60 + 0.550, cy + 1.80, 0.42),
              (0.30, 0.30, 0.06), COL_METAL_BLACK)
     # Squeegee handle
     make_cyl("Squeegee_Handle",
-             (cx + 0.60, cy + 1.80, 1.20),
+             (cx + 0.60 + 0.550, cy + 1.80, 1.20),
              0.020, 1.60, (0.62, 0.32, 0.20, 1.0), segments=8)
     make_box("Squeegee_Head",
-             (cx + 0.60, cy + 1.80, 0.42),
+             (cx + 0.60 + 0.550, cy + 1.80, 0.42),
              (0.08, 0.30, 0.06), (0.18, 0.18, 0.20, 1.0))
 
 
@@ -1999,17 +2002,17 @@ def build_pickup_truck_outside():
 def build_squeegee_bucket():
     # Squeegee + bucket beside the right pump — gas-station prop.
     px, py = +2.20, -2.80
-    make_cyl("Squeegee_Bucket", (px, py, 0.20), 0.18, 0.40, COL_METAL_STEEL)
+    make_cyl("Squeegee_Bucket", (px + 0.550, py, 0.20), 0.18, 0.40, COL_METAL_STEEL)
     # Water-blue inside
-    make_cyl("Squeegee_Water", (px, py, 0.32), 0.16, 0.10, COL_ICE_BLUE)
+    make_cyl("Squeegee_Water", (px + 0.550, py, 0.32), 0.16, 0.10, COL_ICE_BLUE)
     # Two squeegee handles sticking out
     for s_off in (-0.06, +0.06):
         make_box(f"Squeegee_Handle_{s_off:+.2f}",
-                 (px + s_off, py, 0.55),
+                 (px + s_off + 0.550, py, 0.55),
                  (0.02, 0.02, 0.50), COL_METAL_BLACK)   # in the bucket (started 5 cm above it)
         # Squeegee head
         make_box(f"Squeegee_Head_{s_off:+.2f}",
-                 (px + s_off, py, 0.81),
+                 (px + s_off + 0.550, py, 0.81),
                  (0.06, 0.20, 0.06), COL_METAL_STEEL)
 
 
@@ -2630,19 +2633,20 @@ def build_broom_and_mop():
     # bench (2026-09-24: at (4.40, 8.40) both stood through the bench)
     bx, by = 3.70, 8.78
     # Broom
-    make_cyl("Broom_Handle", (bx, by, 0.80),
+    # out of the door's swing (2026-09-24, the user: doorways obstructed)
+    make_cyl("Broom_Handle", (bx + 0.550, by, 0.80),
              0.018, 1.60, COL_BROOM_HANDLE, axis='Z')
     # Slight lean (offset along Y at top — abstracted by a second cylinder)
-    make_cyl("Broom_HandleTop", (bx + 0.04, by, 1.46),
+    make_cyl("Broom_HandleTop", (bx + 0.04 + 0.550, by, 1.46),
              0.018, 0.30, COL_BROOM_HANDLE, axis='Z')
     # Brush head
-    make_box("Broom_Brush", (bx, by, 0.06),
+    make_box("Broom_Brush", (bx + 0.550, by, 0.06),
              (0.28, 0.06, 0.10), COL_BROOM_BRUSH)
     # Mop (next to broom)
     mx = bx - 0.16
-    make_cyl("Mop_Handle", (mx, by, 0.80),
+    make_cyl("Mop_Handle", (mx + 0.550, by, 0.80),
              0.018, 1.60, COL_METAL_STEEL, axis='Z')
-    make_box("Mop_Head", (mx, by, 0.08),
+    make_box("Mop_Head", (mx + 0.550, by, 0.08),
              (0.18, 0.20, 0.10), (0.82, 0.78, 0.72, 1.0))
 
 

@@ -589,6 +589,18 @@ banisters classed · pans as containers.
   them. The worst was one kit — every wall clock's rim was a solid disc
   in front of its dial. Read a kit's layer order (what is in front of
   what) the way you read its extents.
+- **"Furniture on ceilings" was a decal (thirty-first pass).** The user
+  reads the frame, not the names: three dark 0.8 m ceiling stains per
+  room read as boards. Before hunting objects by name and height, look
+  at the frames and ask what reads as what.
+- **A door is only as good as its opening.** Doors "misaligned" were
+  0.9 m leaves in 2–3 m wall gaps (template rooms cut one gap for every
+  door); a leaf that does not meet the wall on both sides is ADRIFT.
+  doorway_audit also checks the 0.9 m of clearance each side.
+- **Signs by coordinate are guesses.** The poster kit chose the ink's
+  side by the sign of x — right for half the walls, and wrong on south
+  walls at y 0. When a kit needs "which side is the room", take it as
+  an argument.
 
 ### 2026-09-06 · a builder that raises under the recorder is dropped without a flag
 

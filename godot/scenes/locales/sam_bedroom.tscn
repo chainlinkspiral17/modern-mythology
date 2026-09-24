@@ -186,7 +186,7 @@ shadow_enabled = false
 ; computed by marker_reaim.py (the post-aim-gate discipline)
 [node name="shot_insert_window" type="Marker3D" parent="." groups=["vn_shot"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.586, 1.850, -5.102)
-rotation = Vector3(-1.1169, 2.8198, 0.0)
+rotation = Vector3(-0.7685, 0.1497, 0.0)
 
 [node name="shot_insert_bed" type="Marker3D" parent="." groups=["vn_shot"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.28, 0.98, -1.01)
@@ -194,7 +194,7 @@ rotation = Vector3(-0.3663, 0.2628, 0.0)
 
 [node name="shot_insert_notebook" type="Marker3D" parent="." groups=["vn_shot"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.212, 0.761, -2.686)
-rotation = Vector3(-0.2618, 2.6180, 0.0)
+rotation = Vector3(-0.3244, 1.5448, 0.0)
 
 [node name="Interior" parent="." instance=ExtResource("1_glb")]
 
@@ -338,8 +338,8 @@ metadata/fov = 40.0
 
 ; insert: the longboxes on the shelf
 [node name="shot_insert_longboxes" type="Marker3D" parent="." groups=["vn_shot"]]
-position = Vector3(0.448, 1.065, -1.118)
-rotation = Vector3(-0.2618, -0.5236, 0.0)
+position = Vector3(0.834, 0.858, -2.694)
+rotation = Vector3(-0.2618, -0.7854, 0.0)
 metadata/fov = 42.0
 
 ; insert: Sam's phone on the dresser (dusk buzz / home texts)

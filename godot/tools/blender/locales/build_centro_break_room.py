@@ -206,6 +206,13 @@ def build_hero_props_2026_09():
              (0.82, 0.80, 0.76, 1.0), segments=10)
 
 
+
+def build_door_infill_dock_door_2026_09():
+    """Dock_Door was narrower than its wall opening (the user, 2026-09-24:
+    "doorways ... misaligned"): close the gap to the door and its frame."""
+    make_wall("Wall_Fill_Dock_Door_W", (-0.725, 0.000, 0), length=0.550, height=2.000, axis='X', palette=PAL_WALL, baseboard_face_sign=+1)
+    make_wall("Wall_Fill_Dock_Door_E", (0.725, 0.000, 0), length=0.550, height=2.000, axis='X', palette=PAL_WALL, baseboard_face_sign=+1)
+
 def main():
     clear_scene()
     build_shell()
@@ -220,6 +227,7 @@ def main():
     build_hero_props_2026_09()
     out = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)),
         "../../../assets/3d/locales/centro_break_room.glb"))
+    build_door_infill_dock_door_2026_09()
     print(f"\n[build_centro_break_room] exporting to {out}")
     export_glb(out)
 

@@ -310,6 +310,12 @@ def build_shell():
              (3.2, 0.20, 2.70), COL_WALL_OUTER)
     make_box("Wall_S_AboveDoor", (0.0, INTERIOR_Y_S, 2.50),
              (1.6, 0.20, 0.40), COL_WALL_OUTER)
+    # the front door is 1.6 m with its frame; the opening was 3.6 m —
+    # a metre of open air each side (2026-09-24, the user: "doorways ...
+    # misaligned"): close it to the frame
+    for fs in (-1, 1):
+        make_box(f"Wall_S_DoorFill_{fs:+d}", (fs * 1.30, INTERIOR_Y_S, 1.35),
+                 (1.00, 0.20, 2.70), COL_WALL_OUTER)
     # North wall has the back-door (kitchen → yard) cutout
     make_box("Wall_N_W", (-3.4, INTERIOR_Y_N, 1.35),
              (3.2, 0.20, 2.70), COL_WALL_OUTER)
@@ -317,6 +323,10 @@ def build_shell():
              (3.2, 0.20, 2.70), COL_WALL_OUTER)
     make_box("Wall_N_AboveDoor", (0.0, INTERIOR_Y_N, 2.50),
              (1.6, 0.20, 0.40), COL_WALL_OUTER)
+    # the back door, likewise (2026-09-24: 3.6 m opening, 1.6 m door)
+    for fs in (-1, 1):
+        make_box(f"Wall_N_DoorFill_{fs:+d}", (fs * 1.30, INTERIOR_Y_N, 1.35),
+                 (1.00, 0.20, 2.70), COL_WALL_OUTER)
     # East/West walls — full height, no cuts
     make_box("Wall_E", (INTERIOR_X_E, 3.0, 1.35),
              (0.20, 6.0, 2.70), COL_WALL_OUTER)
@@ -643,7 +653,7 @@ def build_studio_and_editing_desk():
              0.06, 0.008, (0.18, 0.16, 0.16, 1.0), segments=12, axis='Y')
 
     # ── Anya's chair — a director's-style chair facing the mic ──
-    ay_x, ay_y = STUDIO_CX - 0.6, STUDIO_CY - 0.4
+    ay_x, ay_y = STUDIO_CX - 0.48, STUDIO_CY - 0.4   # clear of the closet door (2026-09-24)
     # (draft N+1: the kit chair, FACING the mic to its north — the old
     # back was on the mic's side; the closed laptop rests on its seat)
     make_chair("Studio_AnyaChair", ay_x, ay_y, yaw=0.0, wood=(0.36, 0.20, 0.14, 1.0), seat_col=(0.36, 0.20, 0.14, 1.0), w=0.46, seat_h=0.50)
@@ -811,13 +821,15 @@ def build_kitchen():
     counter_y = INTERIOR_Y_N - 0.40
     # (2026-09-08: the run stops at x 4.0 — the fridge stands at the
     # east end of the counter, not inside it)
+    # the run starts EAST of the back door ((2026-09-24, the user: "doorways obstructed") — it ran across
+    # half the doorway from x 0)
     make_box("Kitchen_Counter",
-             (+2.0, counter_y, 0.90),
-             (4.00, 0.60, 0.06), COL_TRIM_WHITE)
+             (+2.375, counter_y, 0.90),
+             (3.25, 0.60, 0.06), COL_TRIM_WHITE)
     # Counter base cabinets
     make_box("Kitchen_BaseCabinet",
-             (+2.0, counter_y, 0.42),
-             (4.00, 0.55, 0.84), (0.62, 0.46, 0.30, 1.0))
+             (+2.375, counter_y, 0.42),
+             (3.25, 0.55, 0.84), (0.62, 0.46, 0.30, 1.0))
     # Cabinet door splits
     for i in range(-1, 2):
         x = +2.0 + i * 1.0
@@ -879,9 +891,9 @@ def build_kitchen():
              (0.04, 0.004, 0.03), COL_BOOK_BLUE)
 
     # ── Upper cabinets ──
-    make_box("Kitchen_UpperCab",
-             (+2.5, counter_y + 0.04, 1.95),
-             (5.00, 0.40, 0.70), (0.78, 0.62, 0.46, 1.0))
+    make_box("Kitchen_UpperCab",   # east of the back door, like the counter (2026-09-24)
+             (+2.875, counter_y + 0.04, 1.95),
+             (4.25, 0.40, 0.70), (0.78, 0.62, 0.46, 1.0))
 
     # ── Basil plant on the windowsill (THE one that's dying) ──
     bsl_x = +2.8  # under the kitchen window
@@ -1157,15 +1169,19 @@ def build_storage_closet():
 
     # Door — slatted, mostly closed (we leave a small visible slit)
     # The east edge of the closet is at X=+1.4; door is at +1.45
+    # IN the partition's 1.0 m opening (y 1.0-2.0), in its plane
+    # (2026-09-24, the user: "doorways ... misaligned": the leaf was 1.4 m
+    # wide, stood 10 cm proud of the wall and ran 0.2 m into the solid
+    # partition on both sides — under the bookshelf at the north end)
     make_box("Closet_Door",
-             (+1.40, +1.5, 1.10),
-             (0.04, 1.40, 2.20), (0.42, 0.30, 0.20, 1.0))
-    # Slats
+             (+1.50, +1.5, 1.10),
+             (0.04, 1.00, 2.20), (0.42, 0.30, 0.20, 1.0))
+    # Slats, on its living-room face
     for i in range(8):
         sz = 0.30 + i * 0.20
         make_box(f"Closet_Door_Slat_{i}",
-                 (+1.38, +1.5, sz),
-                 (0.02, 1.30, 0.05), (0.36, 0.24, 0.16, 1.0))
+                 (+1.47, +1.5, sz),
+                 (0.02, 0.92, 0.05), (0.36, 0.24, 0.16, 1.0))
 
 
 # ════════════════════════════════════════════════════════════════
@@ -1673,7 +1689,7 @@ def build_priestess_dressing():
     # Storage closet has its own builder; this just adds a small
     # masking-tape label on the door so the storage reads as the
     # PH-tape archive.
-    closet_door_x = 1.40   # the storage closet door (Closet_Door, x 1.4, y 1.5)
+    closet_door_x = 1.50   # the storage closet door (Closet_Door, x 1.5, y 1.5 — in the partition since 2026-09-24)
     closet_door_y = 1.50   # (2026-09-10: was (-3, -0.8), a label on open air)
     make_box("Priestess_PHTapes_Label",
              (closet_door_x + 0.02, closet_door_y, 1.62),
@@ -1764,9 +1780,10 @@ def build_filmmaker_dressing():
     make_cyl("RingLight_RingHole", (rx, ry - 0.033, 1.48), 0.16, 0.052,
              (0.20, 0.20, 0.22, 1.0), segments=12, axis='Y')
     # ── Wine bottles at the counter's tarot corner ──
-    for i, (bx, col) in enumerate([(0.35, (0.16, 0.26, 0.18, 1.0)),
-                                   (0.52, (0.30, 0.16, 0.12, 1.0)),
-                                   (0.70, (0.18, 0.28, 0.20, 1.0))]):
+    # (2026-09-24: the counter now starts at x 0.75, east of the back door)
+    for i, (bx, col) in enumerate([(0.90, (0.16, 0.26, 0.18, 1.0)),
+                                   (1.07, (0.30, 0.16, 0.12, 1.0)),
+                                   (1.25, (0.18, 0.28, 0.20, 1.0))]):
         by = 5.55 + 0.08 * (i % 2)
         make_cyl(f"WineBottle_{i}", (bx, by, 1.07), 0.045, 0.28, col, segments=7)
         make_cyl(f"WineBottle_{i}_Neck", (bx, by, 1.26), 0.016, 0.11, col, segments=6)
@@ -1856,7 +1873,7 @@ def build_books_and_curtains():
     # Two book bundles near the front door
     # (draft N+1: east of the chair's lamp — at (-1.15, 0.40) the first
     # bundle sat in the lamp's base)
-    for b, (bx, by) in enumerate([(-0.75, 0.40), (-0.85, 0.85)]):
+    for b, (bx, by) in enumerate([(-0.95, 0.40), (-1.05, 0.85)]):   # clear of the front door (2026-09-24, the user: "doorways obstructed")
         for i in range(3):
             make_box(f"BookBundle_{b}_{i}",
                      (bx + 0.015 * (i % 2), by - 0.012 * (i % 2), 0.045 + i * 0.09),

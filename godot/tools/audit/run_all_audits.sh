@@ -78,6 +78,13 @@ echo ""
 # ── Light-direction gate (2026-09-24) ─────────────────────────
 # 32 key/sun/moon/overhead lights pointed UP (a copied Rx(+45) sign
 # slip) and lit ceilings instead of floors. Nonzero exit fails.
+# Doorways (2026-09-24, the user: "doorways obstructed or misaligned"):
+# REPORT only for now — outdoor façades on solid massings still read as
+# false BLOCKED; interiors were cleared by hand this pass.
+echo "── doorway_audit.py (report) ──"
+python3 doorway_audit.py 2>/dev/null | tail -1 || true
+echo ""
+
 echo "── light_direction_audit.py ──"
 LOUT="$(python3 light_direction_audit.py 2>/dev/null)" || {
     echo "$LOUT" | grep -E "^(UPWARD|LEVEL)"; exit 1; }

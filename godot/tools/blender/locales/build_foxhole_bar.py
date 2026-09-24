@@ -125,11 +125,11 @@ def build_flyers():
     # Band flyers taped to the west wall.
     flyer_inks = [(0.86,0.24,0.20,1.0), (0.24,0.42,0.68,1.0), (0.86,0.72,0.24,1.0)]
     for pi in range(3):
-        make_faded_poster(f"Flyer_W_{pi}", (-ROOM_W/2.0 + 0.05, 1.2 + pi * 1.6, 1.70),
-                          palette={"body": (0.82,0.78,0.70,1.0), "ink": flyer_inks[pi]})
+        make_faded_poster(f"Flyer_W_{pi}", (-ROOM_W/2.0 + 0.05 + 0.0535, 1.2 + pi * 1.6, 1.70),
+                          palette={"body": (0.82,0.78,0.70,1.0), "ink": flyer_inks[pi]}, into_room=+1)
     # A couple more taped to the wall by the door.
-    make_faded_poster("Flyer_S", (-(ROOM_W/4.0+0.5), 0.05, 1.60), axis='X',
-                      palette={"body": (0.80,0.76,0.68,1.0), "ink": (0.30,0.52,0.30,1.0)})
+    make_faded_poster("Flyer_S", (-(ROOM_W/4.0+0.5), 0.1035, 1.60), axis='X',
+                      palette={"body": (0.80,0.76,0.68,1.0), "ink": (0.30,0.52,0.30,1.0)}, into_room=+1)
 
 def build_ceiling_infra():
     make_smoke_detector("Smoke", (0.0, ROOM_D/2.0, CEIL))

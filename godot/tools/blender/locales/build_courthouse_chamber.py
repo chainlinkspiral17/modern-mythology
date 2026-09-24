@@ -209,7 +209,7 @@ def build_decor():
                      palette={"leaf": (0.40, 0.46, 0.30, 1.0)})
     make_floor_plant("Plant_SW", (-ROOM_W/2.0+0.40, 0.40, 0.0),
                      palette={"leaf": (0.40, 0.46, 0.30, 1.0)})
-    make_faded_poster("Notice", (-ROOM_W/2.0+0.05, 1.5, 1.80))
+    make_faded_poster("Notice", (-ROOM_W/2.0+0.05 + 0.0535, 1.5, 1.80), into_room=+1)
 
 
 def build_justice_dressing():

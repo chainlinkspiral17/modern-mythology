@@ -131,7 +131,7 @@ def build_armoire():
 
 def build_decor():
     make_wall_clock("Clock", (-3.400, 2.0, 2.10), frozen_hour=6, frozen_min=23, facing='+X')
-    make_faded_poster("PosterW", (-3.45, 1.0, 1.50))
+    make_faded_poster("PosterW", (-3.3965, 1.0, 1.50), into_room=+1)
     make_floor_plant("Plant_S", (+2.50, 1.50, 0.0))
     # Ceiling fan
     cx, cy = 0.0, 3.0

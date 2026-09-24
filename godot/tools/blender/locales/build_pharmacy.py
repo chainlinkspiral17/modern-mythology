@@ -162,11 +162,15 @@ def build_office():
 
 
 def build_checkout():
+    # out of the door's swing (2026-09-24, the user: doorways obstructed)
     """Checkout stand near the door."""
-    make_box("Checkout", (-2.7, 1.3, 0.50), (0.9, 0.6, 1.00), COL_COUNTER)
-    make_box("Checkout_Top", (-2.7, 1.3, 1.03), (1.0, 0.7, 0.05), (0.58, 0.52, 0.44, 1.0))
-    make_box("Checkout_Reg", (-2.7, 1.45, 1.195), (0.36, 0.28, 0.28), COL_MIRROR_FR)   # on the top
-    make_cyl("Gum_Rack", (-2.3, 0.95, 0.70), 0.12, 1.35, COL_SHELF, segments=8)
+    make_box("Checkout", (-2.7, 1.460, 0.50), (0.9, 0.6, 1.00), COL_COUNTER)
+    make_box("Checkout_Top", (-2.7, 1.460, 1.03), (1.0, 0.7, 0.05), (0.58, 0.52, 0.44, 1.0))
+    make_box("Checkout_Reg", (-2.7, 1.610, 1.195), (0.36, 0.28, 0.28), COL_MIRROR_FR)   # on the top
+    # a countertop gum rack at the checkout's front-west corner (2026-09-24:
+    # a 1.35 m floor rack stood in the door's swing, then in the checkout
+    # insert's lens)
+    make_cyl("Gum_Rack", (-3.08, 1.25, 1.205), 0.08, 0.30, COL_SHELF, segments=8)
 
 
 def main():

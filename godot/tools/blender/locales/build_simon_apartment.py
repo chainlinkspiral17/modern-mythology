@@ -172,7 +172,7 @@ def build_decor():
     make_floor_plant("Plant_NE", (+ROOM_W/2.0-0.40, 6.60, 0.0),
                      palette={"leaf": (0.40, 0.46, 0.30, 1.0)})
     # Faded poster — vol5 record cover or similar
-    make_faded_poster("Poster", (+ROOM_W/2.0-0.05, 2.0, 1.50))
+    make_faded_poster("Poster", (+ROOM_W/2.0-0.05 - 0.0535, 2.0, 1.50), into_room=-1)
 
 
 def build_hanged_man_dressing():

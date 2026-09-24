@@ -125,7 +125,7 @@ def build_dressing():
     # bed deck)
     make_floor_plant("Plant", (1.9, ROOM_D-0.45, 0.0), palette={"leaf": (0.36, 0.48, 0.30, 1.0), "pot": (0.44, 0.34, 0.24, 1.0)})
     # Wall art over the bed (make_faded_poster was imported/unused)
-    make_faded_poster("Poster_W", (-ROOM_W/2.0+0.05, ROOM_D/2.0, 1.60))
+    make_faded_poster("Poster_W", (-ROOM_W/2.0+0.05 + 0.0535, ROOM_D/2.0, 1.60), into_room=+1)
 
 def build_win():
     # anchored on the wall's room face, built toward the room (2026-09-23: the glass was inside the wall)

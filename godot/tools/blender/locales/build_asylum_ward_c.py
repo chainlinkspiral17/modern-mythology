@@ -42,6 +42,13 @@ def build_shell():
             make_wall(f"Wall_W_{di}_b", (-ROOM_W/2.0, (seg_y_start+seg_y_end)/2.0, 0),
                       length=seg_len, height=CEIL, axis='Y',
                       palette=PAL, baseboard_face_sign=+1)
+        # the 1.6 m opening around a 1.2 m door: jambs each side and the
+        # wall over it to the ceiling (2026-09-24, the user: "doorways ...
+        # misaligned" — 20 cm slots and a 1.3 m hole above every door)
+        for js in (-1, 1):
+            make_wall(f"Wall_W_{di}_Jamb_{js:+d}", (-ROOM_W/2.0, dy + js * 0.70, 0), length=0.20, height=CEIL,
+                      axis='Y', palette=PAL, baseboard_face_sign=+1)
+        make_box(f"Wall_W_{di}_Header", (-ROOM_W/2.0, dy, (2.10 + CEIL) / 2.0), (0.20, 1.20, CEIL - 2.10), PAL["wall"])
         # Door
         make_box(f"Door_{di}", (-ROOM_W/2.0 + 0.04, dy, 1.05), (0.08, 1.20, 2.10), COL_DOOR)
         # Small wire-glass window in each door
@@ -207,7 +214,7 @@ def build_ceiling_infra():
 
 def build_decor():
     make_wall_clock("Clock", (-2.400, 7.0, 2.50), frozen_hour=4, frozen_min=15, facing='+X')
-    make_faded_poster("PSA_Notice", (-ROOM_W/2.0+0.05, 12.5, 1.80))
+    make_faded_poster("PSA_Notice", (-ROOM_W/2.0+0.05 + 0.0535, 12.5, 1.80), into_room=+1)
 
 
 def build_death_dressing():

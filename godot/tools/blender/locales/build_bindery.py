@@ -233,11 +233,12 @@ def build_center_tables():
     for bi_, by_ in enumerate((3.4, 5.0, 6.4)):
         make_box(f"Ladder_Brass_Bracket_{bi_}", (-1.62, by_, 2.955), (0.20, 0.03, 0.02), COL_BRASS)
     # Box of unsorted paperbacks by the counter
-    make_box("SortBox", (0.45, 1.1, 0.16), (0.42, 0.34, 0.30), (0.52, 0.40, 0.26, 1.0),
+    # out of the door's swing (2026-09-24, the user: doorways obstructed)
+    make_box("SortBox", (0.45, 1.280, 0.16), (0.42, 0.34, 0.30), (0.52, 0.40, 0.26, 1.0),
              open_faces={"+Z"})
     for b in range(6):
         k = (b * 5 + 1) % len(SPINES)
-        make_box(f"SortBox_Bk_{b}", (0.34 + 0.07 * (b % 3), 1.05 + 0.05 * (b % 2),
+        make_box(f"SortBox_Bk_{b}", (0.34 + 0.07 * (b % 3), 1.05 + 0.05 * (b % 2) + 0.180,
                  0.20 + b * 0.03), (0.18, 0.13, 0.028), SPINES[k])
 
 

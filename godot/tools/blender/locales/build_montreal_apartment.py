@@ -135,8 +135,8 @@ def build_radiator_under_window():
 
 def build_decor():
     make_wall_clock("Clock", (-2.900, 2.5, 2.10), frozen_hour=10, frozen_min=33, facing='+X')
-    make_faded_poster("Poster", (+2.95, 0.8, 1.60))
-    make_faded_poster("Art_W", (-2.95, 1.1, 1.65), palette={"body": (0.52, 0.56, 0.60, 1.0)})
+    make_faded_poster("Poster", (2.8965, 0.8, 1.60), into_room=-1)
+    make_faded_poster("Art_W", (-2.8965, 1.1, 1.65), palette={"body": (0.52, 0.56, 0.60, 1.0)}, into_room=+1)
     make_floor_plant("Plant", (-2.0, 4.0, 0.0))
     # Stack of books on floor
     for bi in range(5):

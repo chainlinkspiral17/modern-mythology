@@ -73,8 +73,9 @@ def build_aisles():
 
 def build_coffee_hotcase():
     # Coffee station on a short NW counter
-    make_box("CoffeeCounter", (-ROOM_W/2.0+0.9, ROOM_D-1.0, 0.45), (1.40, 0.60, 0.90), COL_WOOD)
-    make_coffee_pots("Coffee", (-ROOM_W/2.0+0.9, ROOM_D-1.0, 0.90), pots=2)   # the counter top (2026-09-23: 4 cm over it)
+    # out of the door's swing (2026-09-24, the user: doorways obstructed)
+    make_box("CoffeeCounter", (-ROOM_W/2.0+0.9, ROOM_D-1.0 - 0.380, 0.45), (1.40, 0.60, 0.90), COL_WOOD)
+    make_coffee_pots("Coffee", (-ROOM_W/2.0+0.9, ROOM_D-1.0 - 0.380, 0.90), pots=2)   # the counter top (2026-09-23: 4 cm over it)
     # Roller-grill hot case on the register counter
     hx = ROOM_W/4.0
     make_box("HotCase", (hx-0.7, ROOM_D-1.5, 1.08), (0.50, 0.40, 0.30), (0.86, 0.72, 0.34, 1.0))

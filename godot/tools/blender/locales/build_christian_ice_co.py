@@ -186,7 +186,7 @@ def build_ceiling_infra():
 def build_decor():
     make_wall_clock("Clock", (-4.400, 1.5, 2.40), frozen_hour=4, frozen_min=15, facing='+X')
     make_calendar("Calendar", (-ROOM_W/2.0+0.05, 9.5, 2.30))
-    make_faded_poster("Notice", (+ROOM_W/2.0-0.05, 9.5, 1.80))
+    make_faded_poster("Notice", (+ROOM_W/2.0-0.05 - 0.0535, 9.5, 1.80), into_room=-1)
 
 
 def build_star_dressing():

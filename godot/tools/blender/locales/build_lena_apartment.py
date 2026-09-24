@@ -173,17 +173,18 @@ def build_kitchen_table():
     leg — and four chairs that are not a matched set. The hexagon
     gets laid out here in ch12; four people eat here in ch8."""
     tx, ty = -0.80, 1.60
-    make_cyl("Table_Top", (tx, ty, 0.745), 0.55, 0.045, COL_OAK, segments=16)
+    # out of the door's swing (2026-09-24, the user: doorways obstructed)
+    make_cyl("Table_Top", (tx, ty - 0.150, 0.745), 0.55, 0.045, COL_OAK, segments=16)
     # draft 4: a seventies turned pedestal — the collar under the top,
     # the swell, the ring, the flare into the foot
-    make_lathe("Table_Pedestal", (tx, ty, 0.055),
+    make_lathe("Table_Pedestal", (tx, ty - 0.150, 0.055),
                [(0.11, 0.0), (0.075, 0.03), (0.065, 0.16), (0.085, 0.28), (0.065, 0.40), (0.06, 0.52),
                 (0.075, 0.58), (0.06, 0.62), (0.13, 0.665), (0.13, 0.67)],
                COL_OAK, segments=12)
     # Four feet — one shorter: the wobble
     for fi, ang_off in enumerate(((0.30, 0.0), (-0.30, 0.0), (0.0, 0.30), (0.0, -0.30))):
         h = 0.055 if fi != 2 else 0.047   # the wobbling leg
-        make_chamfer_box(f"Table_Foot_{fi}", (tx+ang_off[0], ty+ang_off[1], h/2.0),
+        make_chamfer_box(f"Table_Foot_{fi}", (tx+ang_off[0], ty+ang_off[1] - 0.150, h/2.0),
                          (0.34 if ang_off[1]==0.0 else 0.10,
                           0.10 if ang_off[1]==0.0 else 0.34, h), COL_OAK, chamfer=0.012)
     # Four mismatched chairs
@@ -193,7 +194,7 @@ def build_kitchen_table():
         back_dx = -0.20 if cx < tx else (0.20 if cx > tx else 0.0)
         back_dy = -0.20 if cy < ty else (0.20 if cy > ty else 0.0)
         import math as _mm
-        make_chair(f"KChair_{ci}", cx, cy, yaw=_mm.atan2(back_dx, -back_dy) if (back_dx or back_dy) else 0.0, wood=wood, w=0.42)
+        make_chair(f"KChair_{ci}", cx, cy - 0.150, yaw=_mm.atan2(back_dx, -back_dy) if (back_dx or back_dy) else 0.0, wood=wood, w=0.42)
 
 
 def build_front_room():
@@ -271,7 +272,7 @@ def build_bedroom():
     make_box("Hall_Table", (0.05, 2.78, 0.34), (0.36, 0.30, 0.68), COL_WOOD)
     # Posters on the W wall, bedroom side
     for pi, py in enumerate((3.55, 4.35)):
-        make_faded_poster(f"Poster_W_{pi}", (-ROOM_W/2.0+0.05, py, 1.50))
+        make_faded_poster(f"Poster_W_{pi}", (-ROOM_W/2.0+0.05 + 0.0535, py, 1.50), into_room=+1)
     # Space heater by the bedroom doorway
     make_chamfer_box("Space_Heater", (1.05, 2.90, 0.18), (0.30, 0.16, 0.36), (0.80, 0.78, 0.74, 1.0), chamfer=0.01)
     make_box("Heater_Grille", (1.05, 3.00, 0.18), (0.24, 0.02, 0.26), (0.94, 0.60, 0.34, 1.0))
@@ -576,9 +577,9 @@ def build_hero_props_2026_09():
     make_box("Bread_Knife_Handle", (-1.985, 1.99, 0.947), (0.040, 0.028, 0.014), COL_WOOD)
 
     # ── THE BOWL · the east place setting, an inch off true ──
-    make_cyl("Table_Place_Bowl", (-0.40, 1.60, 0.790), 0.075, 0.044,
+    make_cyl("Table_Place_Bowl", (-0.40, 1.450, 0.790), 0.075, 0.044,
              (0.58, 0.52, 0.46, 1.0), segments=12)
-    make_cyl("Table_Place_Bowl_Inner", (-0.40, 1.60, 0.8145), 0.058, 0.005,
+    make_cyl("Table_Place_Bowl_Inner", (-0.40, 1.450, 0.8145), 0.058, 0.005,
              (0.42, 0.36, 0.30, 1.0), segments=12)
 
 

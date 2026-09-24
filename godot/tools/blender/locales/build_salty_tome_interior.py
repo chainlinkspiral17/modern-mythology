@@ -234,7 +234,7 @@ def build_ceiling_and_sign():
 def build_decor():
     make_wall_clock("Clock", (3.900, 1.2, 2.10), frozen_hour=5, frozen_min=10, facing='-X')
     make_calendar("Calendar", (-ROOM_W/2.0+0.05, 5.4, 2.05))
-    make_faded_poster("Poster", (+ROOM_W/2.0-0.05, 5.6, 1.70))
+    make_faded_poster("Poster", (+ROOM_W/2.0-0.05 - 0.0535, 5.6, 1.70), into_room=-1)
     make_floor_plant("Plant", (+ROOM_W/2.0-0.40, 0.55, 0.0),
                      palette={"leaf": (0.36, 0.46, 0.32, 1.0)})
     # Front window on the S-W wall segment
@@ -294,12 +294,13 @@ def build_back_annex_2026_08():
         make_box(f"Office_Couch_Cushion_{ci2}", (2.9+cxo, 6.80, 0.39), (0.52, 0.60, 0.10),
                  (0.46, 0.35, 0.30, 1.0))
     # KITCHENETTE along the annex W + N walls.
-    make_box("Kitch_Counter", (-3.55, 7.4, 0.45), (0.60, 1.8, 0.90), COL_WOOD)
-    make_box("Kitch_Counter_Top", (-3.55, 7.4, 0.92), (0.66, 1.9, 0.05), (0.72, 0.68, 0.60, 1.0))
-    make_box("Kitch_Sink", (-3.55, 7.0, 0.93), (0.40, 0.34, 0.03), (0.60, 0.62, 0.64, 1.0))
-    make_cyl("Kitch_Faucet", (-3.72, 7.0, 1.05), 0.015, 0.20, (0.62, 0.64, 0.66, 1.0), segments=6)
+    # out of the door's swing (2026-09-24, the user: doorways obstructed)
+    make_box("Kitch_Counter", (-3.55, 6.960, 0.45), (0.60, 1.8, 0.90), COL_WOOD)
+    make_box("Kitch_Counter_Top", (-3.55, 6.960, 0.92), (0.66, 1.9, 0.05), (0.72, 0.68, 0.60, 1.0))
+    make_box("Kitch_Sink", (-3.55, 6.560, 0.93), (0.40, 0.34, 0.03), (0.60, 0.62, 0.64, 1.0))
+    make_cyl("Kitch_Faucet", (-3.72, 6.560, 1.05), 0.015, 0.20, (0.62, 0.64, 0.66, 1.0), segments=6)
     # Petra's KETTLE on a two-ring hob.
-    make_box("Kitch_Hob", (-3.55, 7.85, 0.95), (0.44, 0.36, 0.04), COL_BLACK)
+    make_box("Kitch_Hob", (-3.55, 7.410, 0.95), (0.44, 0.36, 0.04), COL_BLACK)
     make_cyl("Kettle_Body", (-3.55, 7.85, 1.06), 0.11, 0.16, (0.74, 0.76, 0.78, 1.0), segments=12)
     make_cyl("Kettle_Lid", (-3.55, 7.85, 1.16), 0.05, 0.04, (0.66, 0.68, 0.70, 1.0), segments=10)
     make_box("Kettle_Handle", (-3.55, 7.85, 1.19), (0.16, 0.03, 0.03), COL_BLACK)   # on the lid (2026-09-23: 2.5 cm over it)
@@ -311,21 +312,21 @@ def build_back_annex_2026_08():
     make_cyl("Clay_Mug_Margits", (-3.62, 6.70, 1.00), 0.045, 0.10, (0.58, 0.38, 0.26, 1.0), segments=8)
     # The table by the kitchenette window + three chairs (Lena and
     # Cale sit, Kai stands by the door).
-    make_box("Kitch_Table_Top", (-1.6, 8.1, 0.74), (0.95, 0.85, 0.04), COL_WOOD)
+    make_box("Kitch_Table_Top", (-1.6, 7.660, 0.74), (0.95, 0.85, 0.04), COL_WOOD)
     for li3, (lxo, lyo) in enumerate([(-0.40, -0.35), (0.40, -0.35), (-0.40, 0.35), (0.40, 0.35)]):
-        make_box(f"Kitch_Table_Leg_{li3}", (-1.6+lxo, 8.1+lyo, 0.36), (0.05, 0.05, 0.72), COL_WOOD_DK)
+        make_box(f"Kitch_Table_Leg_{li3}", (-1.6+lxo, 8.1+lyo - 0.440, 0.36), (0.05, 0.05, 0.72), COL_WOOD_DK)
     for ci3, (cxo, cyo, bxo) in enumerate([(-0.75, 0.0, -0.20), (0.75, 0.0, 0.20), (0.0, -0.75, 0.0)]):
-        make_box(f"Kitch_Chair_{ci3}_Seat", (-1.6+cxo, 8.1+cyo, 0.45), (0.42, 0.42, 0.05), COL_WOOD)
+        make_box(f"Kitch_Chair_{ci3}_Seat", (-1.6+cxo, 8.1+cyo - 0.440, 0.45), (0.42, 0.42, 0.05), COL_WOOD)
         # legs (2026-09-08)
         for lx_ in (-1, 1):
             for ly_ in (-1, 1):
                 make_box(f"Kitch_Chair_{ci3}_Leg_{lx_:+d}_{ly_:+d}",
-                         (-1.6+cxo + lx_ * 0.17, 8.1+cyo + ly_ * 0.17, 0.22),
+                         (-1.6+cxo + lx_ * 0.17, 8.1+cyo + ly_ * 0.17 - 0.440, 0.22),
                          (0.035, 0.035, 0.44), COL_WOOD)
         if ci3 < 2:
-            make_box(f"Kitch_Chair_{ci3}_Back", (-1.6+cxo+bxo, 8.1+cyo, 0.75), (0.05, 0.42, 0.55), COL_WOOD)
+            make_box(f"Kitch_Chair_{ci3}_Back", (-1.6+cxo+bxo, 8.1+cyo - 0.440, 0.75), (0.05, 0.42, 0.55), COL_WOOD)
         else:
-            make_box(f"Kitch_Chair_{ci3}_Back", (-1.6+cxo, 8.1+cyo-0.20, 0.75), (0.42, 0.05, 0.55), COL_WOOD)
+            make_box(f"Kitch_Chair_{ci3}_Back", (-1.6+cxo, 8.1+cyo-0.20 - 0.440, 0.75), (0.42, 0.05, 0.55), COL_WOOD)
     # Radiator under the kitchenette window.
     for ri2 in range(6):
         make_box(f"Radiator_Fin_{ri2}", (-2.05+ri2*0.18, AN_Y1-0.22, 0.31), (0.10, 0.16, 0.62),   # to the floor (2026-09-22: 12 cm up)

@@ -173,7 +173,7 @@ def build_decor():
                     frozen_hour=4, frozen_min=22, facing='-Y')
     # Faded movie posters on west wall (3)
     for pi, py in enumerate([2.5, 5.0, 7.0]):
-        make_faded_poster(f"Poster_W_{pi}", (-4.90, py, 1.70))
+        make_faded_poster(f"Poster_W_{pi}", (-4.8965, py, 1.70), into_room=+1)
     # Payphone east wall by door
     make_payphone("Payphone", (4.87, 1.40, 1.30))   # on the E wall (2026-09-23: 2 cm off it)
     # Comic-shop staple: floor plant near door

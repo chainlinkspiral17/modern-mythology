@@ -217,16 +217,17 @@ def build_bicycle():
     door: two wheels, frame bars, seat, handlebars."""
     bx, by = 1.2, 0.28
     for wx in (bx - 0.52, bx + 0.52):
-        make_cyl(f"Bike_Wheel_{wx:.2f}", (wx, by, 0.34), 0.33, 0.04, COL_FRAME,
+        # out of the door's swing (2026-09-24, the user: doorways obstructed)
+        make_cyl(f"Bike_Wheel_{wx:.2f}", (wx - 0.400, by, 0.34), 0.33, 0.04, COL_FRAME,
                  segments=14, axis='Y')
-        make_cyl(f"Bike_Hub_{wx:.2f}", (wx, by, 0.34), 0.05, 0.06, COL_STEEL,
+        make_cyl(f"Bike_Hub_{wx:.2f}", (wx - 0.400, by, 0.34), 0.05, 0.06, COL_STEEL,
                  segments=8, axis='Y')
-    make_box("Bike_Bar_Top", (bx, by, 0.62), (0.72, 0.03, 0.04), (0.46, 0.20, 0.16, 1.0))
-    make_box("Bike_Bar_Down", (bx - 0.12, by, 0.48), (0.55, 0.03, 0.04), (0.46, 0.20, 0.16, 1.0))
-    make_box("Bike_Seat", (bx - 0.30, by, 0.78), (0.16, 0.06, 0.05), COL_FRAME)
-    make_box("Bike_Post", (0.90, by, 0.70), (0.03, 0.03, 0.14), COL_STEEL)
-    make_box("Bike_Handlebar", (bx + 0.42, by, 0.82), (0.05, 0.30, 0.04), COL_STEEL)
-    make_box("Bike_Stem", (bx + 0.44, by, 0.72), (0.03, 0.03, 0.18), COL_STEEL)
+    make_box("Bike_Bar_Top", (bx - 0.400, by, 0.62), (0.72, 0.03, 0.04), (0.46, 0.20, 0.16, 1.0))
+    make_box("Bike_Bar_Down", (bx - 0.12 - 0.400, by, 0.48), (0.55, 0.03, 0.04), (0.46, 0.20, 0.16, 1.0))
+    make_box("Bike_Seat", (bx - 0.30 - 0.400, by, 0.78), (0.16, 0.06, 0.05), COL_FRAME)
+    make_box("Bike_Post", (0.500, by, 0.70), (0.03, 0.03, 0.14), COL_STEEL)
+    make_box("Bike_Handlebar", (bx + 0.42 - 0.400, by, 0.82), (0.05, 0.30, 0.04), COL_STEEL)
+    make_box("Bike_Stem", (bx + 0.44 - 0.400, by, 0.72), (0.03, 0.03, 0.18), COL_STEEL)
 
 
 def build_fixtures():

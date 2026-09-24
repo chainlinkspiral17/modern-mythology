@@ -232,7 +232,7 @@ def build_ceiling_infra():
 def build_decor():
     make_wall_clock("Clock", (3.400, 4.6, 2.20), frozen_hour=3, frozen_min=40, facing='-X')
     make_calendar("Calendar", (-ROOM_W/2.0+0.05, 2.4, 2.10))
-    make_faded_poster("Poster", (-ROOM_W/2.0+0.05, 4.6, 1.60))
+    make_faded_poster("Poster", (-ROOM_W/2.0+0.05 + 0.0535, 4.6, 1.60), into_room=+1)
     make_floor_plant("Plant", (-ROOM_W/2.0+0.40, 5.4, 0.0),
                      palette={"leaf": (0.36, 0.46, 0.32, 1.0)})
     # The hand-lettered "THE MISSING LINK" ape-man panel by the door (W of it)

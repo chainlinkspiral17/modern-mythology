@@ -79,7 +79,7 @@ def build_posters():
     for pi in range(2):
         px = -ROOM_W/2.0+0.05
         py = 1.0 + pi*1.6
-        make_faded_poster(f"Poster_Striker_{pi}", (px, py, 1.55))
+        make_faded_poster(f"Poster_Striker_{pi}", (px + 0.0535, py, 1.55), into_room=+1)
 
 def build_win():
     # anchored on the wall's room face, built toward the room (2026-09-23: the glass was inside the wall)

@@ -192,7 +192,7 @@ rotation = Vector3(-0.1946, -0.3268, 0.0)   ; the desk top + what's on it
 
 [node name="shot_insert_window" type="Marker3D" parent="." groups=["vn_shot"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.586, 1.850, -4.602)
-rotation = Vector3(-1.1169, 2.8198, 0.0)   ; the north window
+rotation = Vector3(-0.7685, 0.1497, 0.0)   ; the north window
 
 [node name="shot_insert_bed" type="Marker3D" parent="." groups=["vn_shot"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.10, 1.00, -2.10)
@@ -337,7 +337,7 @@ metadata/fov = 42.0
 ; insert: the Telecaster from its stand, plugged into the practice setting
 [node name="shot_insert_telecaster" type="Marker3D" parent="." groups=["vn_shot"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.75, 0.85, -0.86)
-rotation = Vector3(-0.2379, -1.8041, 0.0)
+rotation = Vector3(-0.7538, -2.2921, 0.0)
 metadata/fov = 42.0
 
 ; the room's one closeup frame, authored by marker_author.py --closeup (2026-09-10):

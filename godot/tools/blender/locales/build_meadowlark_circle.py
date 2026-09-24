@@ -138,12 +138,28 @@ def build_sprinklers():
     lawn and a translucent arc standing over it. The Miller head on
     the left corner is cracked: a thin surgical arc that reaches the
     sidewalk, and the grey stripe it has etched there."""
+    # THREE impact heads per lawn (2026-09-24, the user: "more in a single
+    # yard ... wider arcs ... the rotational chug-chug-chug"): the two
+    # street corners of the grass (west of the driveway) each sweep a
+    # wide quarter-plus, and one by the house throws a half circle back
+    # toward the street. The ARC is in the name — _a<from>_<to>, degrees
+    # counter-clockwise from +X (east) in the builder's frame — and
+    # SprinklerFX steps each jet across it in impact-sprinkler ticks.
+    # (The single heads stood a metre west of their lawns.)
     for i, hx in enumerate((-24.0, -13.0, -2.0, 9.0)):
-        make_cyl(f"Sprinkler_Head_{i}", (hx - 3.0, 6.0, 0.03), 0.03, 0.06, (0.24, 0.26, 0.24, 1.0), segments=6)
-        make_box(f"Sprinkler_Wet_{i}", (hx - 1.5, 7.2, 0.013), (3.2, 2.2, 0.006), (0.28, 0.40, 0.24, 1.0))
+        gx0, gx1 = hx - 2.0, hx + 1.5          # the grass, west of the driveway
+        gy0, gy1 = 3.9, 8.5
+        heads = ((gx0 + 0.35, gy0 + 0.35, 0, 115),        # SW corner: east -> north
+                 (gx1 - 0.35, gy0 + 0.35, 65, 180),       # SE corner: north -> west
+                 ((gx0 + gx1) / 2.0, gy1 - 0.45, 185, 355))   # by the house: toward the street
+        for k, (sx, sy, a0, a1) in enumerate(heads):
+            make_cyl(f"Sprinkler_Head_{i}_{k}_a{a0}_{a1}", (sx, sy, 0.042), 0.03, 0.06,
+                     (0.24, 0.26, 0.24, 1.0), segments=6)
+        # the grass the heads have been at since 6:12, a shade darker
+        make_box(f"Sprinkler_Wet_{i}", ((gx0 + gx1) / 2.0, (gy0 + gy1) / 2.0, 0.013),
+                 (gx1 - gx0 - 0.1, gy1 - gy0 - 0.1, 0.006), (0.28, 0.40, 0.24, 1.0))
         # the spray itself is PARTICLES, spawned at scene load by
-        # LocaleSetup from every Sprinkler_Head_* (2026-09-07 Deck: tubes
-        # "still look ridiculous, consider particles or transparent images")
+        # SprinklerFX from every Sprinkler_Head_*
     # the Miller head, left corner, cracked housing
     mx = 20.0 - 3.6
     make_cyl("Miller_Cracked_Head", (mx, 5.6, 0.03), 0.03, 0.06, (0.24, 0.26, 0.24, 1.0), segments=6)

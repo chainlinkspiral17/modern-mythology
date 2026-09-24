@@ -24,7 +24,7 @@ from _props.detail import (make_traffic_wear, make_floor_stain,
                            make_wall_tint_band, make_threshold,
                            make_wall_outlet, make_light_switch)
 
-ROOM_W = 4.0; ROOM_D = 5.0; CEIL = 2.6
+ROOM_W = 4.8; ROOM_D = 5.6; CEIL = 2.6
 PAL_WALL = {"wall":(0.78,0.70,0.58,1.0),"baseboard":(0.42,0.32,0.22,1.0)}
 COL_FLOOR = (0.62,0.52,0.42,1.0); COL_SEAM = (0.32,0.22,0.14,1.0); COL_WOOD = (0.42,0.30,0.20,1.0)
 COL_ACCENT = (0.78,0.42,0.22,1.0)
@@ -128,11 +128,12 @@ def build_dresser():
 def build_footlocker():
     # Steel footlocker at the foot of the bed + a canvas duffel beside it.
     fx, fy = -1.05, 1.10
-    make_box("Locker_Body", (fx, fy, 0.20), (1.00, 0.48, 0.40), COL_DARK)
-    make_box("Locker_Lid", (fx, fy, 0.42), (1.02, 0.50, 0.06), (0.30, 0.28, 0.26, 1.0))
+    # out of the door's swing (2026-09-24, the user: doorways obstructed)
+    make_box("Locker_Body", (fx, fy + 0.250, 0.20), (1.00, 0.48, 0.40), COL_DARK)
+    make_box("Locker_Lid", (fx, fy + 0.250, 0.42), (1.02, 0.50, 0.06), (0.30, 0.28, 0.26, 1.0))
     for lk in (-0.36, 0.36):
-        make_box(f"Locker_Latch_{'L' if lk<0 else 'R'}", (fx+lk, fy-0.25, 0.34), (0.08, 0.02, 0.08), P.METAL_STEEL)
-    make_box("Locker_Hasp", (fx, fy-0.25, 0.40), (0.06, 0.02, 0.10), P.METAL_STEEL)
+        make_box(f"Locker_Latch_{'L' if lk<0 else 'R'}", (fx+lk, fy-0.25 + 0.250, 0.34), (0.08, 0.02, 0.08), P.METAL_STEEL)
+    make_box("Locker_Hasp", (fx, fy-0.25 + 0.250, 0.40), (0.06, 0.02, 0.10), P.METAL_STEEL)
     # Canvas duffel (horizontal cylinder + end caps + strap)
     duf_x, duf_y = 0.55, 0.95
     make_cyl("Duffel_Body", (duf_x, duf_y, 0.22), 0.22, 0.86, COL_CANVAS, axis='X', segments=10)
@@ -203,9 +204,9 @@ def build_clutter_and_rug():
         make_cyl(f"FloorCan_{ci}", (cx2, cy2, 0.07), 0.035, 0.13, P.SNACK_TINTS[(ci+2)%len(P.SNACK_TINTS)], segments=8)
 
 def build_wall_decor():
-    make_faded_poster("Poster_W", (-ROOM_W/2.0+0.05, 2.6, 1.90))
+    make_faded_poster("Poster_W", (-ROOM_W/2.0+0.05 + 0.0535, 2.6, 1.90), into_room=+1)
     make_calendar("Calendar_E", (ROOM_W/2.0-0.05, 3.9, 1.70))
-    make_wall_clock("Clock_N", (-1.30, 4.900, 2.05), frozen_hour=2, frozen_min=18, facing='-Y')
+    make_wall_clock("Clock_N", (-1.30, ROOM_D - 0.10, 2.05), frozen_hour=2, frozen_min=18, facing='-Y')
     make_floor_plant("Plant", (ROOM_W/2.0-0.55, 4.55, 0.0))
 
 def build_bulb():

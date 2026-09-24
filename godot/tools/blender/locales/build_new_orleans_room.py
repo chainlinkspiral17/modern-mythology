@@ -70,7 +70,7 @@ def build_washbasin():
 
 def build_decor():
     make_wall_clock("Clock", (-1.900, 2.0, 2.10), frozen_hour=11, frozen_min=24, facing='+X')
-    make_faded_poster("Poster", (+1.95, 2.0, 1.50))
+    make_faded_poster("Poster", (1.8965, 2.0, 1.50), into_room=-1)
     # Single chair
     # Chair at the desk, the jacket over its back (the sealed
     # envelope rides the inside pocket)

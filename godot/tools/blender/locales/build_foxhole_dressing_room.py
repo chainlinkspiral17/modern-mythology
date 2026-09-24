@@ -101,7 +101,8 @@ def _make_guitar_case(prefix, cx, cy, col, rot_y=False):
         make_box(f"{prefix}_LatchB", (cx-0.23, cy+0.20, 0.07), (0.02,0.05,0.05), COL_STEEL)
 
 def build_cases():
-    _make_guitar_case("Case_A", -0.30, 0.70, (0.14,0.12,0.12,1.0), rot_y=False)
+    # out of the door's swing (2026-09-24, the user: doorways obstructed)
+    _make_guitar_case("Case_A", 0.230, 0.70, (0.14,0.12,0.12,1.0), rot_y=False)
     _make_guitar_case("Case_B", 0.60, 0.55, (0.28,0.20,0.14,1.0), rot_y=True)
 
 def build_setlist_stickers():

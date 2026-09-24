@@ -256,7 +256,7 @@ def build_pass_window():
 
 def build_decor():
     make_calendar("Calendar", (-ROOM_W/2.0+0.1025, 1.4, 1.70))   # on the wall (2026-09-23: 2.7 cm off it)
-    make_faded_poster("Poster_E", (ROOM_W/2.0-0.05, 1.6, 1.60))
+    make_faded_poster("Poster_E", (ROOM_W/2.0-0.05 - 0.0535, 1.6, 1.60), into_room=-1)
     # (draft 4: by the pass window's east pier — at (-2.5, 4.4) the pot
     # stood inside the north counter's west end)
     make_floor_plant("Plant", (2.72, 0.48, 0.0))

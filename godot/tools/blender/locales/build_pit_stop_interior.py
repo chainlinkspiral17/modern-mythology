@@ -239,7 +239,7 @@ def build_kitchen():
 def build_decor():
     make_wall_clock("Clock", (-2.0, 5.900, CEIL-0.55), frozen_hour=9, frozen_min=18, facing='-Y')
     make_calendar("Calendar_Kitchen", (2.4, ROOM_D-0.10, 1.70), axis='X')   # on the wall (2026-09-23: 2.8 cm off it)
-    make_faded_poster("Poster_E", (ROOM_W/2.0-0.05, 2.6, 1.60))
+    make_faded_poster("Poster_E", (ROOM_W/2.0-0.05 - 0.0535, 2.6, 1.60), into_room=-1)
     make_trash_can("Trash", (4.9, 0.9, 0.0), branded=False,
                    palette={"body": (0.30, 0.30, 0.32, 1.0)})
     make_box("FloorMat", (0.0, 0.7, 0.02), (1.60, 1.00, 0.02), P.RUBBER_MAT)

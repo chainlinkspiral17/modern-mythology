@@ -122,8 +122,8 @@ def build_materials_shelf():
                  (0.86, 0.82, 0.72, 1.0), segments=8, axis='Z')
 
 def build_decor():
-    make_faded_poster("Poster_E1", (+4.95, 1.5, 1.80))
-    make_faded_poster("Poster_W1", (-4.95, 4.5, 2.20), palette={"body": (0.62, 0.46, 0.32, 1.0)})
+    make_faded_poster("Poster_E1", (4.8965, 1.5, 1.80), into_room=-1)
+    make_faded_poster("Poster_W1", (-4.8965, 4.5, 2.20), palette={"body": (0.62, 0.46, 0.32, 1.0)}, into_room=+1)
     make_floor_plant("Plant_NE", (+4.0, 6.5, 0.0))
 
 def build_ceiling_infra():

@@ -402,11 +402,12 @@ def build_east_room():
                                       (0.60, 0.52, 0.36, 1.0), (0.30, 0.26, 0.34, 1.0)][bi])
     # Basin + mirror on the partition side — the enamel bowl is a
     # bowl (draft 5), with the pitcher beside it
-    make_chamfer_box("Basin_Stand", (0.55, 0.35, 0.42), (0.44, 0.36, 0.84), COL_WOOD, chamfer=0.01)
-    make_lathe("Basin_Bowl", (0.55, 0.35, 0.84),
+    # east of the front door's swing (2026-09-24, the user: "doorways obstructed")
+    make_chamfer_box("Basin_Stand", (0.75, 0.35, 0.42), (0.44, 0.36, 0.84), COL_WOOD, chamfer=0.01)
+    make_lathe("Basin_Bowl", (0.75, 0.35, 0.84),
                [(0.08, 0.0), (0.13, 0.02), (0.165, 0.07), (0.175, 0.09), (0.16, 0.09), (0.0, 0.085)],
                (0.86, 0.86, 0.84, 1.0), segments=14)
-    make_lathe("Basin_Pitcher", (0.42, 0.24, 0.84),
+    make_lathe("Basin_Pitcher", (0.62, 0.24, 0.84),
                [(0.045, 0.0), (0.06, 0.03), (0.065, 0.12), (0.045, 0.19), (0.05, 0.22), (0.0, 0.22)],
                (0.86, 0.86, 0.84, 1.0), segments=10)
     make_box("Basin_Mirror", (1.06, 2.35, 1.50), (0.03, 0.36, 0.50), (0.68, 0.74, 0.78, 1.0))
@@ -713,6 +714,13 @@ def build_kerosene_infra_2026_09():
     make_rot_box("Wick_Scissors_B", (1.52, 4.86, 0.566), (0.12, 0.012, 0.004), COL_IRON, yaw=0.35)
 
 
+
+def build_door_infill_front_door_2026_09():
+    """Front_Door was narrower than its wall opening (the user, 2026-09-24:
+    "doorways ... misaligned"): close the gap to the door and its frame."""
+    make_wall("Wall_Fill_Front_Door_W", (-0.738, 0.000, 0), length=0.525, height=2.500, axis='X', palette=PAL_WALL, baseboard_face_sign=+1)
+    make_wall("Wall_Fill_Front_Door_E", (0.738, 0.000, 0), length=0.525, height=2.500, axis='X', palette=PAL_WALL, baseboard_face_sign=+1)
+
 def main():
     clear_scene()
     build_shell()
@@ -730,6 +738,7 @@ def main():
     build_kerosene_infra_2026_09()
     out = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)),
         "../../../assets/3d/locales/cabin_interior.glb"))
+    build_door_infill_front_door_2026_09()
     print(f"\n[build_cabin_interior] exporting to {out}")
     export_glb(out)
 

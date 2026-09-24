@@ -2580,6 +2580,57 @@ walls (~70), the riverboat's ceiling tiles inside the ceiling slabs
 courses inside walls, rack labels, calendar grids, card-terminal keys;
 graduate buried_decals into a gate. Then the montreal drainpipe and the
 diner west glass (user look).
+THIRTY-FIRST PASS — THE USER'S LIST: "furniture on ceilings, rooms too
+cramped, doorways obstructed or misaligned; sprinklers should do the
+rotational chug-chug-chug thing, more in a yard, wider arcs."
+· CEILINGS: no chair was on a ceiling — the ceiling kit's WATER STAINS
+  were three solid 0.8 m squares in a dark tan at fixed metre offsets
+  (hitting walls in small rooms), reading as boards stuck overhead in
+  80 rooms. make_ceiling: a faint tint of the tile, an irregular
+  three-piece blotch at fractions of the ceiling, none under 2.5 m;
+  the kwik stop's and lena's hand-built stains the same.
+· DOORWAYS: NEW tools/audit/doorway_audit.py (report in the suite) —
+  BLOCKED (solid furniture in the 0.9 m clearance each side of a
+  leaf) and ADRIFT (a leaf not in a wall). ~25 interior doors cleared
+  by moving what stood in them (coffee tables at elicia's and natalie's
+  front doors, the bungalow's books / counter / upper cabinet /
+  studio chair, the cabin's basin, crates, beanbags, bike, guitar
+  case, lockers, counters, the pharmacy gum rack → a countertop rack).
+  MISALIGNED: the template bedrooms (sam, maya, jesse), elicia, the
+  cabin, board lords, centro break room hung 0.9 m doors in 2–3 m wall
+  gaps; the bungalow's front/back doors (1.6 m) in 3.6 m gaps; the
+  asylum's five cell doors in 1.6 m openings open to the ceiling —
+  all closed to the frame (infill walls, jambs, headers); the
+  bungalow closet door (1.4 m, 10 cm proud, 0.2 m into the partition
+  both sides) refitted to its 1.0 m opening. DEFERRED (need a
+  replan): board lords' alley door vs Devon's desk (corner full: east
+  wall + register), lena's bedroom door between the kitchen chairs and
+  the bed foot.
+· SPRINKLERS: impact heads — each jet steps 6° every 0.16 s across its
+  arc (a visible arm kicks per chug), swings back fast, sprays the
+  whole time; three heads per lawn (two street corners ~110°, one by
+  the house a half circle back to the street), the arc in the head's
+  name; lots come on west → east and stay on; the Miller cracked head
+  keeps its jammed arc. The single heads had stood a metre off their
+  lawns. (Sound: no chug SFX yet — next.)
+· CRAMPED: furniture covers 10–30% of floor almost everywhere — the
+  rooms are SMALL. Widened the five smallest bedrooms (sam, maya,
+  safehouse 4×5 → 4.8×5.6; jesse 4×4.5 → 4.8×5.1; ben 3.6×4 →
+  4.4×4.6); absolute-placed props re-anchored to ROOM_W/ROOM_D, 5
+  markers re-aimed, one reframed.
+· POSTERS: make_faded_poster printed its ink INTO the wall on every
+  east/west poster (sign by coordinate) and on south walls at y 0; new
+  `into_room`; 46 call sites moved onto their wall's room face (they
+  were anchored 5 cm off the wall's centre line — inside it).
+NEXT (draft 32): Deck sheet (full rebuild — kits changed): ceilings,
+the refilled doorways, the widened bedrooms, the sprinklers moving (a
+video capture would help). Then: the deferred two doors; a chug SFX for
+the impact heads; more rooms to widen if the bedrooms read better
+(lena 5×5, finn, grandmother, cosmic back office, centro break room);
+the buried-decal families still open (riverboat ceiling tiles 165,
+street paint, brick courses, rack labels, calendar grids, the
+courthouse notice behind its wainscot); doorway_audit to a gate once
+the façade false positives are tuned.
 
 **2026-09-19 · DESIGN · the two decorative checks made real, the first
 remembered choice.** Nate's basement (ch6) and Tem staying (ch8): the

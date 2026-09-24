@@ -224,7 +224,7 @@ def build_decor():
     make_wall_clock("Clock", (-3.900, 4.0, 2.10),
                     frozen_hour=8, frozen_min=15, facing='+X')
     make_calendar("Calendar", (-3.95, 1.5, 1.60))
-    make_faded_poster("Poster", (3.95, 2.5, 1.70))
+    make_faded_poster("Poster", (3.8965, 2.5, 1.70), into_room=-1)
     make_floor_plant("Plant", (-3.0, 1.0, 0.0),
                      palette={"leaf": COL_CURTAIN_SAGE,
                               "pot": COL_WOOD_TRIM})

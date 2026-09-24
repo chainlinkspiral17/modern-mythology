@@ -32,7 +32,7 @@ from _props.food_service import make_coffee_pots, make_donut_display
 from _props.decor import make_wall_clock, make_floor_plant, make_faded_poster, make_calendar
 from _props.safety import make_smoke_detector, make_hvac_vent, make_fluorescent_tube_fixture, make_ceiling_speaker
 
-ROOM_W = 4.0; ROOM_D = 5.0; CEIL = 2.6
+ROOM_W = 4.8; ROOM_D = 5.6; CEIL = 2.6
 # Lavender walls, teal accent — cool, distinct from the boys' tan rooms.
 PAL_WALL = {"wall": (0.74, 0.68, 0.86, 1.0), "baseboard": (0.50, 0.44, 0.62, 1.0)}
 COL_FLOOR = (0.70, 0.60, 0.50, 1.0); COL_SEAM = (0.44, 0.34, 0.26, 1.0); COL_WOOD = (0.56, 0.42, 0.52, 1.0)
@@ -106,7 +106,7 @@ def build_posters():
     for pi in range(3):
         px = -ROOM_W/2.0+0.05
         py = 1.0 + pi*1.5
-        make_faded_poster(f"Poster_W_{pi}", (px, py, 1.60))
+        make_faded_poster(f"Poster_W_{pi}", (px + 0.0535, py, 1.60), into_room=+1)
 
 def build_rug():
     make_cyl("Rug", (0.0, ROOM_D/2.0, 0.012), 1.20, 0.005, COL_ACCENT)
@@ -231,7 +231,7 @@ def build_hero_props():
                               (0.72, 0.62, 0.30, 1.0), (0.86, 0.82, 0.72, 1.0))):
         make_box(f"Pack_Supply_{si}", (1.80, 1.32, 0.775 + si * 0.03), (0.14, 0.10, 0.03), col)
     # Phone on the nightstand
-    make_box("Phone", (0.95, 4.55, 0.585), (0.08, 0.15, 0.012), (0.12, 0.12, 0.14, 1.0))
+    make_box("Phone", (0.95, ROOM_D - 0.45, 0.585), (0.08, 0.15, 0.012), (0.12, 0.12, 0.14, 1.0))
 
 
 def build_hero_props_2026_09():
@@ -303,6 +303,13 @@ def build_draft4_2026_09():
     make_backyard_view("Yard", ROOM_D, span=6.0, tree=(-2.4, 3.2))
 
 
+
+def build_door_infill_mayas_door_2026_09():
+    """Mayas_Door was narrower than its wall opening (the user, 2026-09-24:
+    "doorways ... misaligned"): close the gap to the door and its frame."""
+    make_wall("Wall_Fill_Mayas_Door_W", (-0.762, 0.000, 0), length=0.475, height=2.000, axis='X', palette=PAL_WALL, baseboard_face_sign=+1)
+    make_wall("Wall_Fill_Mayas_Door_E", (0.762, 0.000, 0), length=0.475, height=2.000, axis='X', palette=PAL_WALL, baseboard_face_sign=+1)
+
 def main():
     clear_scene()
     build_shell()
@@ -318,6 +325,7 @@ def main():
     build_draft4_2026_09()
     out = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)),
         "../../../assets/3d/locales/maya_bedroom.glb"))
+    build_door_infill_mayas_door_2026_09()
     print(f"\n[build_maya_bedroom] exporting to {out}")
     export_glb(out)
 

@@ -134,13 +134,14 @@ def build_counter():
     # a narrow face against the wall and the run jutting into
     # the room. Swapped 2026-08-12 (same bug as the New
     # Orleans bar and the pit stop's lunch counter).
-    top_z = make_counter("Register", (2.25, 5.5, 0.0), length=1.00, depth=2.40, height=0.95,
+    # out of the door's swing (2026-09-24, the user: doorways obstructed)
+    top_z = make_counter("Register", (2.25, 5.380, 0.0), length=1.00, depth=2.40, height=0.95,
                          palette={"formica": (0.52, 0.42, 0.30, 1.0),
                                   "top": (0.30, 0.22, 0.14, 1.0), "kick": (0.24, 0.18, 0.12, 1.0)})
-    make_register("Register", (2.6, 5.4, top_z))
+    make_register("Register", (2.6, 5.280, top_z))
     # The small drawer under the register (the pieces of paper live here)
-    make_box("Register_Drawer", (1.75, 5.02, 0.72), (0.40, 0.02, 0.14), (0.34, 0.24, 0.16, 1.0))
-    make_box("Register_Drawer_Pull", (1.75, 5.00, 0.72), (0.10, 0.015, 0.03), COL_STEEL)
+    make_box("Register_Drawer", (1.75, 4.900, 0.72), (0.40, 0.02, 0.14), (0.34, 0.24, 0.16, 1.0))
+    make_box("Register_Drawer_Pull", (1.75, 4.880, 0.72), (0.10, 0.015, 0.03), COL_STEEL)
     # The stool behind the counter
     # (draft 3: the kit stool — turned legs, a foot ring)
     make_stool("Counter_Stool", 2.25, 6.15, h=0.72, wood=COL_WOOD)
@@ -207,8 +208,8 @@ def build_office():
     # (draft 3: the partition at y 6.1 — at 6.0 it ran through the
     # counter's back edge)
     make_box("Office_Part", (3.55, 6.1, CEIL/2.0), (1.90, 0.10, CEIL), PAL_WALL["wall"])
-    make_chamfer_box("Devon_Desk", (3.9, 6.55, 0.37), (1.00, 0.55, 0.74), COL_WOOD)
-    make_box("Devon_Desk_Drawer", (3.39, 6.55, 0.55), (0.02, 0.36, 0.12), (0.34, 0.24, 0.16, 1.0))
+    make_chamfer_box("Devon_Desk", (3.900, 6.55, 0.37), (1.00, 0.55, 0.74), COL_WOOD)
+    make_box("Devon_Desk_Drawer", (3.390, 6.55, 0.55), (0.02, 0.36, 0.12), (0.34, 0.24, 0.16, 1.0))
     make_box("Devon_Desk_Drawer_Pull", (3.375, 6.55, 0.55), (0.01, 0.08, 0.02), COL_STEEL)
     # the chair Devon also left — a kit chair facing the desk
     import math as _m
@@ -252,7 +253,7 @@ def build_decor():
     make_floor_plant("Plant", (-4.0, 0.8, 0.0),
                      palette={"leaf": (0.36, 0.48, 0.30, 1.0), "pot": (0.66, 0.40, 0.26, 1.0)})
     for pi, py in enumerate((1.5, 2.6)):
-        make_faded_poster(f"Poster_E_{pi}", (ROOM_W/2.0-0.05, py, 1.55))
+        make_faded_poster(f"Poster_E_{pi}", (ROOM_W/2.0-0.05 - 0.0535, py, 1.55), into_room=-1)
     make_smoke_detector("Smoke", (0.0, ROOM_D/2.0, CEIL))
     make_hvac_vent("HVAC", (-2.0, ROOM_D-0.5, CEIL), width=0.80, depth=0.40)
     # Shop lighting: two tubes over the retail floor (a shop earns
@@ -429,6 +430,13 @@ def build_draft3_2026_09():
     make_box("Exit_Sign_Face", (3.15, ROOM_D - 0.162, 2.62), (0.26, 0.004, 0.10), (0.96, 0.30, 0.22, 1.0))
 
 
+
+def build_door_infill_alley_door_2026_09():
+    """Alley_Door was narrower than its wall opening (the user, 2026-09-24:
+    "doorways ... misaligned"): close the gap to the door and its frame."""
+    make_wall("Wall_Fill_Alley_Door_W", (2.600, 7.000, 0), length=0.200, height=2.784, axis='X', palette=PAL_WALL, baseboard_face_sign=-1)
+    make_wall("Wall_Fill_Alley_Door_E", (3.650, 7.000, 0), length=0.100, height=2.784, axis='X', palette=PAL_WALL, baseboard_face_sign=-1)
+
 def main():
     clear_scene()
     build_shell()
@@ -443,6 +451,7 @@ def main():
     build_draft3_2026_09()
     out = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)),
         "../../../assets/3d/locales/board_lords_interior.glb"))
+    build_door_infill_alley_door_2026_09()
     print(f"\n[build_board_lords_interior] exporting to {out}")
     export_glb(out)
 

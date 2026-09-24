@@ -210,11 +210,11 @@ def build_rack():
 def build_posters():
     for pi in range(3):
         py = 1.0 + pi*2.0
-        make_faded_poster(f"Poster_W_{pi}", (-ROOM_W/2.0+0.05, py, 1.70), palette={"body": COL_ACCENT})
+        make_faded_poster(f"Poster_W_{pi}", (-ROOM_W/2.0+0.05 + 0.0535, py, 1.70), palette={"body": COL_ACCENT}, into_room=+1)
     # Two more posters flanking the counter on the east wall
     for pi, py in enumerate([4.6, 6.4]):
-        make_faded_poster(f"Poster_E_{pi}", (ROOM_W/2.0-0.05, py, 1.80),
-                          palette={"body": HERO_COLS[pi % len(HERO_COLS)]})
+        make_faded_poster(f"Poster_E_{pi}", (ROOM_W/2.0-0.05 - 0.0535, py, 1.80),
+                          palette={"body": HERO_COLS[pi % len(HERO_COLS)]}, into_room=-1)
 
 def build_window():
     # Front display window on the SW south-wall segment.

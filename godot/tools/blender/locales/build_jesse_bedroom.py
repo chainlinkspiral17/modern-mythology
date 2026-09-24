@@ -17,7 +17,7 @@ from _props.decor import make_wall_clock, make_floor_plant, make_faded_poster, m
 from _props.safety import make_smoke_detector, make_hvac_vent, make_fluorescent_tube_fixture, make_ceiling_speaker
 from _props.furniture import make_bed
 
-ROOM_W = 4.0; ROOM_D = 4.5; CEIL = 2.6
+ROOM_W = 4.8; ROOM_D = 5.1; CEIL = 2.6
 # Plum-charcoal walls, amber accent — dark and warm, a practice-space vibe.
 PAL_WALL = {"wall": (0.34, 0.29, 0.33, 1.0), "baseboard": (0.20, 0.16, 0.18, 1.0)}
 COL_FLOOR = (0.34, 0.28, 0.24, 1.0); COL_SEAM = (0.20, 0.16, 0.14, 1.0); COL_WOOD = (0.40, 0.30, 0.20, 1.0)
@@ -68,7 +68,7 @@ def build_desk_lamp():
     make_box("Turntable", (dx+0.14, dy+0.02, 0.79), (0.42, 0.44, 0.08), P.METAL_BLACK)
     # on the deck (2026-09-23: 1.5 cm over it)
     make_cyl("Turntable_Platter", (dx+0.14, dy+0.02, 0.835), 0.16, 0.01, (0.14, 0.14, 0.16, 1.0), segments=16)
-    make_cyl("Record_Spinning", (dx+0.14, dy+0.02, 0.843), 0.15, 0.006, (0.08, 0.08, 0.09, 1.0), segments=16)
+    make_cyl("Record_Spinning", (dx+0.14, dy+0.02 + 0.700 - 0.700, 0.843), 0.15, 0.006, (0.08, 0.08, 0.09, 1.0), segments=16)
     # Headphones resting on the desk edge (band + two cups)
     make_cyl("Headphone_Band", (dx-0.30, dy-0.14, 0.84), 0.10, 0.02, COL_ACCENT, axis='Y', segments=12)
     for hs in (-1, +1):
@@ -79,7 +79,7 @@ def build_posters():
     for pi in range(3):
         px = -ROOM_W/2.0+0.05
         py = 0.9 + pi*1.4
-        make_faded_poster(f"Poster_Band_{pi}", (px, py, 1.55))
+        make_faded_poster(f"Poster_Band_{pi}", (px + 0.0535, py, 1.55), into_room=+1)
 
 def build_win():
     # anchored on the wall's room face, built toward the room (2026-09-23: the glass was inside the wall)
@@ -116,9 +116,10 @@ def build_dressing():
     for ki in range(3):
         make_cyl(f"Amp_Knob_{ki}", (ax-0.14+ki*0.14, ay-0.20, 0.56), 0.02, 0.03, P.METAL_STEEL, segments=6)
     # Crate of records on the floor
-    make_box("Record_Crate", (0.5, 0.6, 0.20), (0.46, 0.46, 0.40), COL_WOOD)
+    # out of the door's swing (2026-09-24, the user: doorways obstructed)
+    make_box("Record_Crate", (0.5, 1.300, 0.20), (0.46, 0.46, 0.40), COL_WOOD)
     for ri in range(5):
-        make_box(f"Record_{ri}", (0.5, 0.42+ri*0.07, 0.24), (0.42, 0.02, 0.34), P.SNACK_TINTS[ri % len(P.SNACK_TINTS)])
+        make_box(f"Record_{ri}", (0.5, 0.42+ri*0.07 + 0.700, 0.24), (0.42, 0.02, 0.34), P.SNACK_TINTS[ri % len(P.SNACK_TINTS)])
     # Egg-crate acoustic foam grid on the east wall
     ex = ROOM_W/2.0 - 0.04
     for r in range(4):
@@ -146,9 +147,10 @@ def build_hero_props():
     # Bedside lamp on the nightstand (2026-09-23: the lamp and both
     # notebooks stayed at y 2.95 when the bed and nightstand moved to the
     # N wall on 09-10 — on nothing, 1.2 m from the table they belong on)
-    make_cyl("Bedside_Lamp_Base", (-0.17, 4.25, 0.495), 0.07, 0.03, wood, segments=10)
-    make_cyl("Bedside_Lamp_Post", (-0.17, 4.25, 0.61), 0.014, 0.20, (0.20, 0.19, 0.20, 1.0), segments=6)
-    make_cyl("Bedside_Lamp_Shade", (-0.17, 4.25, 0.76), 0.10, 0.14, (0.86, 0.76, 0.58, 1.0), segments=10)
+    make_cyl("Bedside_Lamp_Base", (-ROOM_W/4.0 + 0.83, ROOM_D - 0.25, 0.495),   # on the nightstand, room-relative (2026-09-24)
+             0.07, 0.03, wood, segments=10)
+    make_cyl("Bedside_Lamp_Post", (-ROOM_W/4.0 + 0.83, ROOM_D - 0.25, 0.61), 0.014, 0.20, (0.20, 0.19, 0.20, 1.0), segments=6)
+    make_cyl("Bedside_Lamp_Shade", (-ROOM_W/4.0 + 0.83, ROOM_D - 0.25, 0.76), 0.10, 0.14, (0.86, 0.76, 0.58, 1.0), segments=10)
     # The bridge notebook + the songwriting notebook
     # the two notebooks stacked at the front of the top
     make_box("Bridge_Notebook", (-0.08, 4.04, 0.4875), (0.15, 0.21, 0.015), (0.30, 0.44, 0.62, 1.0))
@@ -168,6 +170,13 @@ def build_hero_props():
     make_box("Phone_Facedown", (-0.55, 1.9, 0.024), (0.08, 0.16, 0.012), (0.14, 0.14, 0.16, 1.0))
 
 
+
+def build_door_infill_bedroom_door_2026_09():
+    """Bedroom_Door was narrower than its wall opening (the user, 2026-09-24:
+    "doorways ... misaligned"): close the gap to the door and its frame."""
+    make_wall("Wall_Fill_Bedroom_Door_W", (-0.720, 0.000, 0), length=0.560, height=2.000, axis='X', palette=PAL_WALL, baseboard_face_sign=+1)
+    make_wall("Wall_Fill_Bedroom_Door_E", (0.720, 0.000, 0), length=0.560, height=2.000, axis='X', palette=PAL_WALL, baseboard_face_sign=+1)
+
 def main():
     clear_scene()
     build_shell()
@@ -180,6 +189,7 @@ def main():
     build_ceiling_infra()
     out = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)),
         "../../../assets/3d/locales/jesse_bedroom.glb"))
+    build_door_infill_bedroom_door_2026_09()
     print(f"\n[build_jesse_bedroom] exporting to {out}")
     export_glb(out)
 

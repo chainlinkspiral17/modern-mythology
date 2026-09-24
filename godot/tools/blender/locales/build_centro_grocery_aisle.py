@@ -235,7 +235,7 @@ def make_shopping_cart(prefix, cx, cy, yaw_open=True):
 def build_more_decor():
     make_wall_clock("Clock", (0.0, 7.900, CEIL-0.55), frozen_hour=5, frozen_min=48, facing='-Y')
     make_calendar("Calendar", (ROOM_W/2.0-0.05, 1.6, 1.70))
-    make_faded_poster("Poster_W", (-ROOM_W/2.0+0.05, 7.2, 1.70))
+    make_faded_poster("Poster_W", (-ROOM_W/2.0+0.05 + 0.0535, 7.2, 1.70), into_room=+1)
     make_floor_plant("Plant", (ROOM_W/2.0-0.6, 0.40, 0.0))
     # A second shopping cart near the entrance
     make_shopping_cart("Cart2", 0.0, 1.35)   # just inside the entrance (2026-09-22: the deli took its spot)

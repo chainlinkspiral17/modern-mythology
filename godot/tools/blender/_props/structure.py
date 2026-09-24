@@ -86,12 +86,21 @@ def make_ceiling(prefix, anchor, *, size_x, size_y, palette=None,
         for j in range(int(cy - size_y / 2), int(cy + size_y / 2) + 1):
             make_box(f"{prefix}_GridY_{j}", (cx, j, ceil_z - 0.010),
                      (size_x, 0.04, 0.012), grid)
-    if with_stains:
-        for si, (sx, sy) in enumerate([
-                (cx - 2, cy - 2), (cx + 1, cy + 1), (cx + 3, cy + 3)]):
-            make_box(f"{prefix}_Stain_{si}",
-                     (sx, sy, ceil_z - 0.004),
-                     (0.80, 0.80, 0.003), stain)
+    # Water stains (2026-09-24, the user: "furniture on ceilings"): they
+    # were three SOLID 0.8 m squares in a dark tan, at fixed metre
+    # offsets from the centre (so in small rooms they hit the walls) —
+    # under a warm key they read as boards stuck to the ceiling. Now a
+    # faint tint of the tile, an irregular blotch of three overlapping
+    # pieces, placed at fractions of the ceiling so it stays inside it,
+    # and none on a ceiling under 2.5 m across.
+    if with_stains and min(size_x, size_y) >= 2.5:
+        tint = tuple(tile[k] * 0.72 + stain[k] * 0.28 for k in range(3)) + (1.0,)
+        for si, (fx, fy, r) in enumerate(((-0.26, -0.20, 0.34), (0.22, 0.28, 0.26))):
+            sx, sy = cx + fx * size_x, cy + fy * size_y
+            for pi, (ox, oy, k) in enumerate(((0.0, 0.0, 1.0), (0.14, 0.06, 0.62), (-0.08, 0.12, 0.48))):
+                make_box(f"{prefix}_Stain_{si}_{pi}",
+                         (sx + ox * r * 2.0, sy + oy * r * 2.0, ceil_z - 0.003 - 0.0005 * pi),
+                         (r * k, r * k * 0.8, 0.002), tint)
 
 
 def make_crown_molding(prefix, *, wall_x, wall_y, length, axis,

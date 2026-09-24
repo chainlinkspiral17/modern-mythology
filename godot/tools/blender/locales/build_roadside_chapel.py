@@ -119,7 +119,7 @@ def build_ceiling_infra():
 def build_decor():
     make_wall_clock("Clock", (-2.400, 5.5, 2.20), frozen_hour=4, frozen_min=15, facing='+X')
     make_floor_plant("Plant_SE", (ROOM_W/2.0-0.60, 0.60, 0.0), palette={"leaf": (0.42, 0.52, 0.36, 1.0)})
-    make_faded_poster("Poster", (-ROOM_W/2.0+0.05, 1.8, 1.50))
+    make_faded_poster("Poster", (-ROOM_W/2.0+0.05 + 0.0535, 1.8, 1.50), into_room=+1)
 
 
 def build_lovers_exterior():

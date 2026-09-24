@@ -30,7 +30,7 @@ def build_shell():
 def build_posters():
     for pi in range(3):
         px = -ROOM_W/2.0+0.05; py = 1.0 + pi*1.5
-        make_faded_poster(f"Poster_W_{pi}", (px, py, 1.50))
+        make_faded_poster(f"Poster_W_{pi}", (px + 0.0535, py, 1.50), into_room=+1)
 
 STAGE_Y = 4.2
 STAGE_TOP = 0.30

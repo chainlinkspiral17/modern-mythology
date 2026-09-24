@@ -63,7 +63,7 @@ def build_desk_lamp():
 def build_posters():
     for pi in range(3):
         px = -ROOM_W/2.0+0.05; py = 1.0 + pi*1.5
-        make_faded_poster(f"Poster_W_{pi}", (px, py, 1.50))
+        make_faded_poster(f"Poster_W_{pi}", (px + 0.0535, py, 1.50), into_room=+1)
 
 def build_dressing():
     bx, by = -0.65, 1.25

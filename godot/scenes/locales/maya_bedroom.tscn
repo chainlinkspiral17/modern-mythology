@@ -333,7 +333,7 @@ metadata/fov = 44.0
 ; insert: the vanity mirror
 [node name="shot_insert_vanity" type="Marker3D" parent="." groups=["vn_shot"]]
 position = Vector3(0.85, 1.35, -3.8)
-rotation = Vector3(-0.0594536, -1.5708, 0)
+rotation = Vector3(-0.6553, -1.0182, 0.0)
 metadata/fov = 40.0
 
 ; insert: her grandmother's hand on her hand, in the dark
