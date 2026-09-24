@@ -164,7 +164,7 @@ environment = SubResource("Env_Locale")
 [node name="Moon_Key" type="DirectionalLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.707, 0.707, 0, -0.707, 0.707, 0, 8, 0)
 light_color = Color(0.6, 0.66, 0.9, 1)
-light_energy = 0.45
+light_energy = 0.6
 shadow_enabled = false
 
 [node name="Fill_WindowWarm" type="DirectionalLight3D" parent="."]

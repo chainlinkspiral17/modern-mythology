@@ -2482,6 +2482,28 @@ no material), a cached copy with the flag on; real materials untouched.
 NEXT (draft 27): pull + sheet only (no rebuild needed for this) → every
 room in colour? THEN the draft 22–23 light re-aims on real colour, then
 the carried list.
+TWENTY-SEVENTH PASS — COLOUR BACK; THE DARK ROOMS. Sheet from 7c853dd5:
+VertexColorGuard worked — flat frames 135 → 8, glb_color_check 121/121
+coloured, every room back in its palette (and the draft-23 open cases
+READ: the kwik coolers show product, the Board Lords deck wall shows its
+decks). The drafts 22–23 light re-aims look right on real colour. Of the
+20 near-black: under-keyed night/dusk rooms — grunion Moon_Key 0.4 → 0.6
++ Fill 0.15 → 0.22 (the playbook's night band is 0.45–0.6), the bar
+exterior's moon 0.45 → 0.6, henderson's Dusk_Key 0.45 → 0.8; three
+rooms had NO key at all (fill + practicals only, their inserts pure
+black) — equipment shed Key_Bulb 0.35, centro stockroom Key_Fluor 0.5,
+nightmare cell Key_Tube 0.2 (the cell stays dark). The riverboat bourbon
+insert framed Dante's bottle on the helm file cabinet at 3.7 m in a 30°
+lens in a dark corner — moved in to 1.4 m. (A scratch-tool lesson: the
+frame caster read "rays escape" for self-contained builders because it
+queried the recorder before installing its stubs.)
+NEXT (draft 28): sheet → the keyed rooms and the night beach; a FIXTURE
++ practical by the helm file cabinet (the bourbon corner is unlit — a
+light needs something to come from); the cedar credit (poster wall on
+the key's back side); the crumpled barn "lean" insert (one grey wall);
+the montreal drainpipe; then the glass list (frog tanks, diner west
+glass, asylum bars, cosmic window, cake dome, FOH case) and the
+carnival storm heap.
 
 **2026-09-19 · DESIGN · the two decorative checks made real, the first
 remembered choice.** Nate's basement (ch6) and Tem staying (ch8): the

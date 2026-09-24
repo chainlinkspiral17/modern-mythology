@@ -508,7 +508,7 @@ rotation = Vector3(0, 0, 0)
 metadata/fov = 34.0
 
 [node name="shot_insert_bourbon" type="Marker3D" parent="." groups=["vn_shot"]]
-position = Vector3(0.5, 6.35, 0.7)
+position = Vector3(2.050, 6.443, -0.974)
 rotation = Vector3(0.0407, -0.7470, 0.0)
 metadata/fov = 30.0
 

@@ -170,6 +170,13 @@ omni_range = 6.0
 omni_attenuation = 1.6
 shadow_enabled = false
 
+; (2026-09-24, sheet 27: no key — the cone insert and person_b closeup rendered black; the bare bulb's direction, steep, toward the door)
+[node name="Key_Bulb" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-1, 0, 0, 0, 0.5, 0.866, 0, 0.866, -0.5, 0, 4, -3)
+light_color = Color(1, 0.82, 0.58, 1)
+light_energy = 0.35
+shadow_enabled = false
+
 [node name="Fill_Dusk" type="DirectionalLight3D" parent="."]
 transform = Transform3D(-0.707, -0.354, -0.612, 0, 0.866, -0.5, 0.707, -0.354, -0.612, 0, 4, 0)
 light_color = Color(0.44, 0.38, 0.42, 1)

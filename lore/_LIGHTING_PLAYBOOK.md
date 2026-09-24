@@ -151,6 +151,19 @@ Position note: lamp omnis are placed AT the lamp-head mesh position
 
 ## Recent lessons
 
+### 2026-09-24 · the rooms with no key
+
+- **Fill + practicals is not a lighting rig.** Three rooms (equipment
+  shed, centro stockroom, nightmare cell) had only a 0.06–0.14 fill and
+  their practicals; every insert more than ~3 m from a practical
+  rendered pure black. Each has a KEY now, modelled on the practical
+  that motivates it (the bare bulb, the tube rows, the caged tube),
+  steep, in the practical's colour, low energy — the room keeps its
+  mood and the inserts read.
+- **Judge light on true colour.** The white-albedo weeks made every
+  exposure call meaningless; after VertexColorGuard the night beach at
+  Moon_Key 0.4 was black again. Stay in the published bands.
+
 ### 2026-09-24 · keys that shone sideways, rims that shone up
 
 - **An identity transform is a light pointing SIDEWAYS.** 22 key-named

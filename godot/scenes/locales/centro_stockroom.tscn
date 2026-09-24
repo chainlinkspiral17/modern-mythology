@@ -186,6 +186,13 @@ omni_range = 8.0
 omni_attenuation = 1.4
 shadow_enabled = false
 
+; (2026-09-24, sheet 27: no key — the smear insert and dock closeup rendered black; the tube rows, near-vertical)
+[node name="Key_Fluor" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.94, 0.321, -0.117, 0, 0.342, 0.94, 0.342, 0.883, -0.321, 0, 5, -4)
+light_color = Color(0.9, 0.95, 1, 1)
+light_energy = 0.5
+shadow_enabled = false
+
 [node name="Fill_Cool" type="DirectionalLight3D" parent="."]
 transform = Transform3D(-0.707, -0.354, -0.612, 0, 0.866, -0.5, 0.707, -0.354, -0.612, 0, 4, 0)
 light_color = Color(0.4, 0.44, 0.46, 1)

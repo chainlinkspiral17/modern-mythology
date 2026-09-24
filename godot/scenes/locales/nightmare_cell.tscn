@@ -162,6 +162,13 @@ omni_range = 7.0
 omni_attenuation = 1.0
 shadow_enabled = false
 
+; (2026-09-24, sheet 27: no key — the device / wall inserts rendered pure black; a faint caged-tube key, the cell stays dark)
+[node name="Key_Tube" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.985, -0.157, 0.073, 0, 0.423, 0.906, -0.174, 0.893, -0.416, 0, 4, -2)
+light_color = Color(0.7, 0.85, 0.72, 1)
+light_energy = 0.2
+shadow_enabled = false
+
 [node name="Fill_Faint" type="DirectionalLight3D" parent="."]
 transform = Transform3D(-0.707, -0.354, -0.612, 0, 0.866, -0.5, 0.707, -0.354, -0.612, 0, 4, 0)
 light_color = Color(0.30, 0.34, 0.30, 1)
