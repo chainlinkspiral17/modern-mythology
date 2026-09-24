@@ -143,7 +143,7 @@ def build_decor():
     # Wall clock on the E wall, brass calendar on the W wall
     # on WallSeg_1's inner face (y 1.233 at x 1.50..2.49) — at x 2.35 it
     # hung past the slab's end, 4.5 cm off it (2026-09-23)
-    make_wall_clock("Clock", (2.00, 1.213, 2.40), frozen_hour=4, frozen_min=15)
+    make_wall_clock("Clock", (2.00, 1.233, 2.40), frozen_hour=4, frozen_min=15, facing='-Y')
     # (2026-09-24: the kit calendar that stood here was inside WallSeg_6,
     # and the room already has its calendar — the brass one on the NE
     # wall, build_calendar below. Removed.)

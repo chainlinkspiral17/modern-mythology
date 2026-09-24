@@ -134,7 +134,7 @@ def build_radiator_under_window():
     make_box("Radiator_Pipe", (rx-0.70, ry+0.06, 0.30), (0.04, 0.06, 0.60), COL_RADIATOR)
 
 def build_decor():
-    make_wall_clock("Clock", (-2.95, 2.5, 2.10), frozen_hour=10, frozen_min=33)
+    make_wall_clock("Clock", (-2.900, 2.5, 2.10), frozen_hour=10, frozen_min=33, facing='+X')
     make_faded_poster("Poster", (+2.95, 0.8, 1.60))
     make_faded_poster("Art_W", (-2.95, 1.1, 1.65), palette={"body": (0.52, 0.56, 0.60, 1.0)})
     make_floor_plant("Plant", (-2.0, 4.0, 0.0))

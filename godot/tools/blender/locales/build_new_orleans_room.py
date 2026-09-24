@@ -69,7 +69,7 @@ def build_washbasin():
     make_box("Basin_Towel", (wx-0.30, wy-0.30, 0.60), (0.02, 0.30, 0.40), (0.78, 0.62, 0.42, 1.0))
 
 def build_decor():
-    make_wall_clock("Clock", (-1.95, 2.0, 2.10), frozen_hour=11, frozen_min=24)
+    make_wall_clock("Clock", (-1.900, 2.0, 2.10), frozen_hour=11, frozen_min=24, facing='+X')
     make_faded_poster("Poster", (+1.95, 2.0, 1.50))
     # Single chair
     # Chair at the desk, the jacket over its back (the sealed

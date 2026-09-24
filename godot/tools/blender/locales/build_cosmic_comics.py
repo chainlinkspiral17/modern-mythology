@@ -169,8 +169,8 @@ def build_browse_bins():
 # ════════════════════════════════════════════════════════════════
 def build_decor():
     # Wall clock above the counter
-    make_wall_clock("Clock", (4.0, 7.88, 2.10),   # on the N wall (2026-09-23: 8 cm off it)
-                    frozen_hour=4, frozen_min=22)
+    make_wall_clock("Clock", (4.0, 7.900, 2.10),   # on the N wall (2026-09-23: 8 cm off it)
+                    frozen_hour=4, frozen_min=22, facing='-Y')
     # Faded movie posters on west wall (3)
     for pi, py in enumerate([2.5, 5.0, 7.0]):
         make_faded_poster(f"Poster_W_{pi}", (-4.90, py, 1.70))

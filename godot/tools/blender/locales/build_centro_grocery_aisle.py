@@ -233,7 +233,7 @@ def make_shopping_cart(prefix, cx, cy, yaw_open=True):
 
 
 def build_more_decor():
-    make_wall_clock("Clock", (0.0, ROOM_D-0.11, CEIL-0.55), frozen_hour=5, frozen_min=48)
+    make_wall_clock("Clock", (0.0, 7.900, CEIL-0.55), frozen_hour=5, frozen_min=48, facing='-Y')
     make_calendar("Calendar", (ROOM_W/2.0-0.05, 1.6, 1.70))
     make_faded_poster("Poster_W", (-ROOM_W/2.0+0.05, 7.2, 1.70))
     make_floor_plant("Plant", (ROOM_W/2.0-0.6, 0.40, 0.0))

@@ -199,7 +199,7 @@ def build_window_blinds():
 
 
 def build_decor():
-    make_wall_clock("Clock", (0.0, ROOM_D-0.05, 2.30), frozen_hour=8, frozen_min=40)
+    make_wall_clock("Clock", (0.0, 6.900, 2.30), frozen_hour=8, frozen_min=40, facing='-Y')
     make_floor_plant("Plant_NE", (+4.0, ROOM_D-1.0, 0.0))
     make_floor_plant("Plant_NW", (-4.0, ROOM_D-1.0, 0.0))
     # Water cooler

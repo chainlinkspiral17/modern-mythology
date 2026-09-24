@@ -210,8 +210,9 @@ def build_ceiling_infra():
 
 
 def build_decor():
-    make_wall_clock("Clock", (-ROOM_W/2.0+0.05, 2.4, 2.25), frozen_hour=8, frozen_min=52,
-                    palette={"face": (0.88, 0.84, 0.74, 1.0), "rim": COL_CEDAR_DK})
+    # clear of the shelf (2026-09-24: once the clock faced the room it overlapped it)
+    make_wall_clock("Clock", (-3.400, 2.4, 2.55), frozen_hour=8, frozen_min=52,
+                    palette={"face": (0.88, 0.84, 0.74, 1.0), "rim": COL_CEDAR_DK}, facing='+X')
     make_floor_plant("Plant", (2.9, 0.7, 0.0),
                      palette={"leaf": (0.34, 0.48, 0.34, 1.0), "pot": (0.46, 0.36, 0.28, 1.0)})
     # Woven runner between door and counter.

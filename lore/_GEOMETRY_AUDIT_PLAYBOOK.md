@@ -582,6 +582,13 @@ banisters classed · pans as containers.
   in the data all along: one room (the diner) on the same exporter
   stayed in colour — find what the working case does differently
   before theorising about the broken ones.
+- **A decal inside its host is invisible, and no gate looked (thirtieth
+  pass).** The overlap audit waves thin objects through; the support
+  audit counts a decal inside a wall as supported. A 6 mm-and-thinner
+  object lying wholly inside a thicker box can never render: 1351 of
+  them. The worst was one kit — every wall clock's rim was a solid disc
+  in front of its dial. Read a kit's layer order (what is in front of
+  what) the way you read its extents.
 
 ### 2026-09-06 · a builder that raises under the recorder is dropped without a flag
 

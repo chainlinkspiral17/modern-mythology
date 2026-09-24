@@ -146,7 +146,7 @@ def build_ceiling_infra():
 
 
 def build_decor():
-    make_wall_clock("Clock", (-ROOM_W/2.0+0.05, 5.5, 2.20), frozen_hour=4, frozen_min=15)
+    make_wall_clock("Clock", (-4.400, 5.5, 2.20), frozen_hour=4, frozen_min=15, facing='+X')
     make_faded_poster("Poster_S", (+ROOM_W/2.0-0.05, 5.0, 1.50))
     # Cardboard corkboard with stapled notices near the front (E wall)
     make_box("Corkboard", (+ROOM_W/2.0-0.04, 1.7, 1.50), (0.04, 0.80, 0.60), (0.62, 0.46, 0.32, 1.0))

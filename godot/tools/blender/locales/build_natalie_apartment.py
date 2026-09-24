@@ -252,8 +252,9 @@ def build_bed_nook():
 
 
 def build_decor():
-    make_wall_clock("Clock", (-3.45, 2.5, 2.10),
-                    frozen_hour=4, frozen_min=22)
+    # clear of the window (2026-09-24: once the clock faced the room it overlapped it)
+    make_wall_clock("Clock", (-3.400, 3.65, 2.10),
+                    frozen_hour=4, frozen_min=22, facing='+X')
     make_faded_poster("Poster_W", (-3.45, 1.0, 1.40))
     make_faded_poster("Poster_E", (+3.45, 4.5, 1.50),
                       palette={"body": COL_ACCENT_ROSE})

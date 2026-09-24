@@ -205,7 +205,7 @@ def build_clutter_and_rug():
 def build_wall_decor():
     make_faded_poster("Poster_W", (-ROOM_W/2.0+0.05, 2.6, 1.90))
     make_calendar("Calendar_E", (ROOM_W/2.0-0.05, 3.9, 1.70))
-    make_wall_clock("Clock_N", (-1.30, ROOM_D-0.11, 2.05), frozen_hour=2, frozen_min=18)
+    make_wall_clock("Clock_N", (-1.30, 4.900, 2.05), frozen_hour=2, frozen_min=18, facing='-Y')
     make_floor_plant("Plant", (ROOM_W/2.0-0.55, 4.55, 0.0))
 
 def build_bulb():

@@ -127,7 +127,7 @@ def build_pennants_and_decor():
     for pi, col in enumerate(pennant_colors):
         px = -2.0 + pi*1.0
         make_box(f"Pennant_{pi}", (px, ROOM_D-0.04, 2.50), (0.40, 0.04, 0.40), col)
-    make_wall_clock("Clock", (0.0, ROOM_D-0.05, 2.10), frozen_hour=10, frozen_min=30)
+    make_wall_clock("Clock", (0.0, 5.900, 2.10), frozen_hour=10, frozen_min=30, facing='-Y')
     make_faded_poster("Poster_W", (-3.95, 3.0, 1.80))
 
 def build_ceiling_infra():

@@ -115,7 +115,7 @@ def build_fridge():
         make_box(f"Magnet_{mi}", (fx-0.36, fy-0.20+mi*0.10, 1.60), (0.005, 0.06, 0.08), P.SNACK_TINTS[mi%len(P.SNACK_TINTS)])
 
 def build_clock():
-    make_wall_clock("Clock", (0.0, ROOM_D-0.05, CEIL-0.50), frozen_hour=8, frozen_min=15)
+    make_wall_clock("Clock", (0.0, 5.900, CEIL-0.50), frozen_hour=8, frozen_min=15, facing='-Y')
 
 def build_window():
     """The E window is the FRONT elevation (Don Geller's porch light

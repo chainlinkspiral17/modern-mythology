@@ -2552,6 +2552,34 @@ NEXT (draft 30): sheet → do the night frames read (grunion, beach night,
 nightmare cell, bar trash, henderson truck at dusk) without looking
 washed? tune the three lifts; then the cedar credit, the montreal
 drainpipe, the diner west glass (user look).
+THIRTIETH PASS — THE NIGHT READS; EVERY CLOCK WAS BLANK. Sheet from
+61b0b329: near-black 14 → 4 — the grunion / beach-night frames read as a
+dark teal shore with the surf lit, the nightmare cell has shape,
+henderson's truck reads at dusk; the lifts look like night, not wash.
+The 4 left: the dock's smear insert looked at a near-black background
+(centro_stockroom background → pre-dawn 0.12/0.14/0.24; the text says "a
+clear morning"); the nightmare cell's wall insert stood OUTSIDE the cell,
+0.2 m behind the west wall — now inside, 1.8 m from the dots; the
+cedar-tower credit sat at y 0.105, INSIDE the poster's frame (face at
+0.135) — on the face now, printed pale.
+A new scan (scratch buried_decals.py: a thin object ≤ 6 mm lying wholly
+inside a thicker box) found 1351 hits; the biggest family was the WALL
+CLOCK KIT: the rim was a solid 20 cm disc IN FRONT of the 18 cm face, so
+every kit clock rendered as a blank grey disc — face, ticks and hands
+inside the rim. Kit fixed (rim behind the face; ticks on it; hands on
+the ticks) and given `facing` ('-Y' default, '+Y', '-X', '+X'): about
+twenty clocks on east/west walls faced along their wall, dials inside it.
+All 44 call sites snapped onto their host wall's room face and faced
+into the room (scratch fix_clocks.py, from the recorded geometry); four
+that then overlapped a window or shelf frame moved clear.
+Deck: the kits changed (geometry.py in 25, decor.py now) — the next
+paste rebuilds nearly every locale, once.
+NEXT (draft 31): the other buried-decal families — posters inside W/E
+walls (~70), the riverboat's ceiling tiles inside the ceiling slabs
+(165), street paint inside roads (crosswalks, sidewalk seams), brick
+courses inside walls, rack labels, calendar grids, card-terminal keys;
+graduate buried_decals into a gate. Then the montreal drainpipe and the
+diner west glass (user look).
 
 **2026-09-19 · DESIGN · the two decorative checks made real, the first
 remembered choice.** Nate's basement (ch6) and Tem staying (ch8): the

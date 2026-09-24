@@ -125,7 +125,7 @@ def build_board():
 
 def build_break_decor():
     # Wall clock on the N wall beside the bulletin board
-    make_wall_clock("Clock", (1.70, ROOM_D-0.05, 2.10), frozen_hour=12, frozen_min=30)
+    make_wall_clock("Clock", (1.70, 3.900, 2.10), frozen_hour=12, frozen_min=30, facing='-Y')
     # Wall calendar on the E wall (make_calendar was imported/unused)
     make_calendar("Calendar", (ROOM_W/2.0-0.06, 1.20, 1.60))
     # Corner floor plant (make_floor_plant was imported/unused)

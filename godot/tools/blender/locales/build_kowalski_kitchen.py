@@ -90,7 +90,7 @@ def build_table():
         make_chair(f"Chair_{ci}", cx, cy, yaw=yaw, wood=COL_WOOD)
 
 def build_clock():
-    make_wall_clock("Clock", (0.0, ROOM_D-0.05, CEIL-0.50), frozen_hour=8, frozen_min=15)
+    make_wall_clock("Clock", (0.0, 4.900, CEIL-0.50), frozen_hour=8, frozen_min=15, facing='-Y')
 
 def build_window():
     # on the wall's room face, glass in front of the frame (2026-09-24: frame and glass

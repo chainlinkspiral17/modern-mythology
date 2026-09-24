@@ -204,7 +204,7 @@ def build_ceiling_infra():
 
 
 def build_decor():
-    make_wall_clock("Clock", (+ROOM_W/2.0-0.05, 6.0, 3.20), frozen_hour=4, frozen_min=15)
+    make_wall_clock("Clock", (5.400, 6.0, 3.20), frozen_hour=4, frozen_min=15, facing='-X')
     make_floor_plant("Plant_SE", (+ROOM_W/2.0-0.40, 0.40, 0.0),
                      palette={"leaf": (0.40, 0.46, 0.30, 1.0)})
     make_floor_plant("Plant_SW", (-ROOM_W/2.0+0.40, 0.40, 0.0),

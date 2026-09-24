@@ -412,8 +412,8 @@ def build_wall_photo_and_clock():
              (0.36, 0.003, 0.04), COL_BRASS)
 
     # Wall clock — stopped at the canonical morning hour
-    make_wall_clock("OfficeClock", (-ROOM_W/2.0 + 0.05, 3.0, 2.10),
-                    frozen_hour=11, frozen_min=14)
+    make_wall_clock("OfficeClock", (-2.900, 3.0, 2.10),
+                    frozen_hour=11, frozen_min=14, facing='+X')
 
 
 def build_guest_seating_and_filing():

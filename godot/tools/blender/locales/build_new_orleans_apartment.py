@@ -130,7 +130,7 @@ def build_armoire():
     make_cyl("Armoire_KnobR", (ax+0.24, ay+0.06, 1.20), 0.025, 0.04, (0.86, 0.62, 0.28, 1.0), axis='X')
 
 def build_decor():
-    make_wall_clock("Clock", (-3.45, 2.0, 2.10), frozen_hour=6, frozen_min=23)
+    make_wall_clock("Clock", (-3.400, 2.0, 2.10), frozen_hour=6, frozen_min=23, facing='+X')
     make_faded_poster("PosterW", (-3.45, 1.0, 1.50))
     make_floor_plant("Plant_S", (+2.50, 1.50, 0.0))
     # Ceiling fan

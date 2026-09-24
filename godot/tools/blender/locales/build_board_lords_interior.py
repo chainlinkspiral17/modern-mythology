@@ -248,7 +248,7 @@ def build_retail():
 
 
 def build_decor():
-    make_wall_clock("Clock", (0.0, ROOM_D-0.05, CEIL-0.45), frozen_hour=10, frozen_min=5)
+    make_wall_clock("Clock", (0.0, 6.900, CEIL-0.45), frozen_hour=10, frozen_min=5, facing='-Y')
     make_floor_plant("Plant", (-4.0, 0.8, 0.0),
                      palette={"leaf": (0.36, 0.48, 0.30, 1.0), "pot": (0.66, 0.40, 0.26, 1.0)})
     for pi, py in enumerate((1.5, 2.6)):

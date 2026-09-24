@@ -101,7 +101,8 @@ def build_studio_nook():
     make_box("Laptop_Lid",  (mx+0.20, my+0.10, 0.50), (0.34, 0.02, 0.20), P.METAL_BLACK)
 
 def build_decor():
-    make_wall_clock("Clock", (-3.45, 3.0, 2.10), frozen_hour=4, frozen_min=22)
+    # clear of the window (2026-09-24: once the clock faced the room it overlapped it)
+    make_wall_clock("Clock", (-3.400, 3.0, 2.37), frozen_hour=4, frozen_min=22, facing='+X')
     make_faded_poster("Poster_N", (0.0, ROOM_D-0.02, 1.70), axis='X',
                       palette={"body": (0.62, 0.42, 0.52, 1.0)})
     make_floor_plant("Plant_S1", (-3.0, 0.80, 0.0))

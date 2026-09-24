@@ -232,7 +232,7 @@ def build_ceiling_and_sign():
 
 
 def build_decor():
-    make_wall_clock("Clock", (+ROOM_W/2.0-0.05, 1.2, 2.10), frozen_hour=5, frozen_min=10)
+    make_wall_clock("Clock", (3.900, 1.2, 2.10), frozen_hour=5, frozen_min=10, facing='-X')
     make_calendar("Calendar", (-ROOM_W/2.0+0.05, 5.4, 2.05))
     make_faded_poster("Poster", (+ROOM_W/2.0-0.05, 5.6, 1.70))
     make_floor_plant("Plant", (+ROOM_W/2.0-0.40, 0.55, 0.0),

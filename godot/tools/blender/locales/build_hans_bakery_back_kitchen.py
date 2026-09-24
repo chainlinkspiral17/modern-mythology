@@ -262,7 +262,7 @@ def build_decor():
     make_floor_plant("Plant", (2.72, 0.48, 0.0))
 
 def build_clock():
-    make_wall_clock("Clock", (0.0, ROOM_D-0.05, CEIL-0.50), frozen_hour=6, frozen_min=1)
+    make_wall_clock("Clock", (0.0, 4.900, CEIL-0.50), frozen_hour=6, frozen_min=1, facing='-Y')
 
 def build_ceiling_infra():
     for j in range(2):

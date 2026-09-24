@@ -11,38 +11,55 @@ from .geometry import make_box, make_cyl
 
 
 def make_wall_clock(prefix, anchor, *, frozen_hour=11, frozen_min=47,
-                    palette=None):
-    """Wall-mounted analog clock. anchor=(wall_x, wall_y, center_z).
-    Wall_y is the wall's nearest face — clock barrel extends 4cm.
+                    palette=None, facing='-Y'):
+    """Wall-mounted analog clock. anchor=(wall_x, wall_y, center_z) ON the
+    wall's ROOM face; the barrel is centred on it (2 cm each way).
+    facing = the direction the dial looks, INTO the room: '-Y' (a north
+    wall, the old fixed behaviour and the default), '+Y' (south), '-X'
+    (east), '+X' (west) — 2026-09-24: about twenty clocks on east/west
+    walls faced along their wall with the dial inside it.
     Frozen time defaults to 11:47 (canon vol6 Sam-shift hour);
     pass (frozen_hour, frozen_min) to override for other locales."""
     palette = palette or {}
     face = palette.get("face", (0.94, 0.92, 0.86, 1.0))
     rim = palette.get("rim", (0.42, 0.40, 0.36, 1.0))
     cx, cy, cz = anchor
-    make_cyl(f"{prefix}_Face", (cx, cy, cz), 0.18, 0.04, face, axis='Y')
-    make_cyl(f"{prefix}_Rim", (cx, cy - 0.022, cz),
-             0.20, 0.02, rim, axis='Y')
+    f = str(facing).upper()
+    along_x = f in ('-X', '+X')
+    sgn = -1.0 if f.startswith('-') else 1.0
+
+    def at(lat, depth, dz):
+        """lat along the wall, depth toward the room, dz up."""
+        if along_x:
+            return (cx + sgn * depth, cy + lat, cz + dz)
+        return (cx + lat, cy + sgn * depth, cz + dz)
+
+    def sz(lat, depth, tall):
+        return (depth, lat, tall) if along_x else (lat, depth, tall)
+
+    ax = 'X' if along_x else 'Y'
+    # Layered back to front (2026-09-24: the rim was a SOLID 20 cm disc IN
+    # FRONT of the 18 cm face — the face, ticks and hands were all inside
+    # it and every kit clock rendered as a blank grey disc): the rim sits
+    # BEHIND the face's front and shows only as the ring past r 0.18; the
+    # ticks lie on the face; the hands lie on the ticks.
+    make_cyl(f"{prefix}_Face", (cx, cy, cz), 0.18, 0.04, face, axis=ax)
+    make_cyl(f"{prefix}_Rim", (cx, cy, cz), 0.20, 0.02, rim, axis=ax)
     for ang_i, (mx, mz) in enumerate([(0.0, +0.13), (+0.13, 0.0),
                                        (0.0, -0.13), (-0.13, 0.0)]):
-        make_box(f"{prefix}_Tick_{ang_i}",
-                 (cx + mx, cy - 0.025, cz + mz),
-                 (0.02, 0.005, 0.02), P.METAL_BLACK)
+        make_box(f"{prefix}_Tick_{ang_i}", at(mx, 0.0225, mz),
+                 sz(0.02, 0.005, 0.02), P.METAL_BLACK)
     # Hands — point to frozen_hour / frozen_min on a 12-hour clock face
     hour_ang = ((frozen_hour % 12) + frozen_min / 60.0) * (math.pi * 2 / 12) - math.pi / 2
     min_ang = (frozen_min / 60.0) * (math.pi * 2) - math.pi / 2
     h_len = 0.10
     m_len = 0.16
     make_box(f"{prefix}_HourHand",
-             (cx + math.cos(hour_ang) * h_len * 0.5,
-              cy - 0.030,
-              cz + math.sin(hour_ang) * h_len * 0.5),
-             (0.05, 0.004, 0.05), P.METAL_BLACK)
+             at(math.cos(hour_ang) * h_len * 0.5, 0.027, math.sin(hour_ang) * h_len * 0.5),
+             sz(0.05, 0.004, 0.05), P.METAL_BLACK)
     make_box(f"{prefix}_MinuteHand",
-             (cx + math.cos(min_ang) * m_len * 0.5,
-              cy - 0.030,
-              cz + math.sin(min_ang) * m_len * 0.5),
-             (0.08, 0.004, 0.05), P.METAL_BLACK)
+             at(math.cos(min_ang) * m_len * 0.5, 0.027, math.sin(min_ang) * m_len * 0.5),
+             sz(0.08, 0.004, 0.05), P.METAL_BLACK)
 
 
 def make_fire_extinguisher(prefix, anchor, *, palette=None):

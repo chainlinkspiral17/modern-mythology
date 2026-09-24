@@ -514,7 +514,10 @@ def build_hero_props_2026_09():
     lower-right of the studio's Poster_S_9. Photograph (Dean's
     portrait), estuary_7, the portal door and window exist —
     markers only."""
-    make_box("Tideline_Credit", (1.95, 0.105, 5.42), (0.14, 0.002, 0.02), (0.30, 0.30, 0.34, 1.0))
+    # ON the poster's face, printed pale (2026-09-24: at y 0.105 it sat inside
+    # the frame, behind the poster's face at 0.135 — the insert filmed a
+    # dark poster and no credit)
+    make_box("Tideline_Credit", (1.95, 0.136, 5.42), (0.16, 0.002, 0.025), (0.88, 0.86, 0.80, 1.0))
 
 
 def main():

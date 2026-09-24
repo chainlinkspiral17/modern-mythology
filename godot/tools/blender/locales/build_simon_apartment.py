@@ -168,7 +168,7 @@ def build_ceiling_infra():
 
 
 def build_decor():
-    make_wall_clock("Clock", (+ROOM_W/2.0-0.05, 4.0, 2.30), frozen_hour=4, frozen_min=15)
+    make_wall_clock("Clock", (2.400, 4.0, 2.30), frozen_hour=4, frozen_min=15, facing='-X')
     make_floor_plant("Plant_NE", (+ROOM_W/2.0-0.40, 6.60, 0.0),
                      palette={"leaf": (0.40, 0.46, 0.30, 1.0)})
     # Faded poster — vol5 record cover or similar

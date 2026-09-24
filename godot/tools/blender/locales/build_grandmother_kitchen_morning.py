@@ -73,7 +73,7 @@ def build_stove():
         make_cyl(f"Burner_{bi}", (sx+bx, sy+by, 0.94), 0.08, 0.02, P.METAL_STEEL)
 
 def build_clock():
-    make_wall_clock("Clock", (0.0, ROOM_D-0.05, CEIL-0.50), frozen_hour=8, frozen_min=15)
+    make_wall_clock("Clock", (0.0, 4.900, CEIL-0.50), frozen_hour=8, frozen_min=15, facing='-Y')
 
 def build_ceiling_infra():
     # An abuela's kitchen: flush dome + a warm pendant over the

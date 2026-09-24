@@ -92,7 +92,7 @@ def build_dressing():
     make_floor_plant("Plant", (-ROOM_W/2.0+0.5, 0.7, 0.0), palette={"leaf": (0.40, 0.50, 0.32, 1.0), "pot": (0.62, 0.40, 0.24, 1.0)})
 
 def build_clock():
-    make_wall_clock("Clock", (0.0, ROOM_D-0.12, CEIL-0.50), frozen_hour=7, frozen_min=30)
+    make_wall_clock("Clock", (0.0, 4.900, CEIL-0.50), frozen_hour=7, frozen_min=30, facing='-Y')
 
 def build_ceiling_infra():
     # Domestic light, not shop tubes (hero-prop pass)

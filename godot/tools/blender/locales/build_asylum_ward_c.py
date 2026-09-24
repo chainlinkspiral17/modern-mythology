@@ -206,7 +206,7 @@ def build_ceiling_infra():
 
 
 def build_decor():
-    make_wall_clock("Clock", (-ROOM_W/2.0+0.05, 7.0, 2.50), frozen_hour=4, frozen_min=15)
+    make_wall_clock("Clock", (-2.400, 7.0, 2.50), frozen_hour=4, frozen_min=15, facing='+X')
     make_faded_poster("PSA_Notice", (-ROOM_W/2.0+0.05, 12.5, 1.80))
 
 

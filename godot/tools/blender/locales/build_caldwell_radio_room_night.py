@@ -256,7 +256,7 @@ def build_ceiling_infra():
 
 
 def build_decor():
-    make_wall_clock("Clock", (+ROOM_W/2.0-0.05, 3.6, 1.90), frozen_hour=2, frozen_min=14)
+    make_wall_clock("Clock", (2.150, 3.6, 1.90), frozen_hour=2, frozen_min=14, facing='-X')
     make_calendar("Calendar", (-ROOM_W/2.0+0.05, 3.6, 1.85))
     make_faded_poster("StationLicense", (+ROOM_W/2.0-0.05, 2.2, 1.55))
     make_floor_plant("Plant", (-ROOM_W/2.0+0.45, ROOM_D-0.5, 0.0),

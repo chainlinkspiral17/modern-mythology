@@ -195,7 +195,7 @@ def build_ceiling_infra():
 
 
 def build_decor():
-    make_wall_clock("Clock", (+ROOM_W/2.0-0.05, 4.5, 2.30), frozen_hour=4, frozen_min=15)
+    make_wall_clock("Clock", (2.900, 4.5, 2.30), frozen_hour=4, frozen_min=15, facing='-X')
     make_calendar("Calendar", (-ROOM_W/2.0+0.05, 4.5, 2.20))
     make_faded_poster("FrogPoster", (-ROOM_W/2.0+0.05, 1.6, 1.50))
 

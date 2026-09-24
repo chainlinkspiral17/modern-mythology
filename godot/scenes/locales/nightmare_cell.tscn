@@ -186,8 +186,10 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.30, 1.05, -1.60)
 rotation = Vector3(-0.62, -0.50, 0.0)   ; the cot + blanket
 
 [node name="shot_insert_wall" type="Marker3D" parent="." groups=["vn_shot"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.980, 1.700, -1.980)
-rotation = Vector3(0.0000, -1.1659, 0.0)   ; the cell wall
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.2, 1.55, -2.4)
+rotation = Vector3(0.0, 1.5708, 0.0)   ; the cell wall
+; (2026-09-24: the camera stood OUTSIDE the cell, 0.2 m behind the west
+; wall's back face — a black frame; now inside, 1.8 m from the dots)
 
 [node name="Interior" parent="." instance=ExtResource("1_glb")]
 

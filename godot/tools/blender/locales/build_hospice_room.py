@@ -175,7 +175,7 @@ def build_visitor_chair_and_decor():
     make_box("Cross_Horiz", (-2.89, dyy, 1.80), (0.03, 0.24, 0.06), (0.46, 0.34, 0.22, 1.0))
     # Plant by window
     make_floor_plant("Plant", (-2.50, ROOM_D-0.50, 0.0), palette={"leaf": COL_PLANT_LEAF})
-    make_wall_clock("Clock", (-2.95, 1.5, 2.10), frozen_hour=4, frozen_min=15)
+    make_wall_clock("Clock", (-2.900, 1.5, 2.10), frozen_hour=4, frozen_min=15, facing='+X')
     make_faded_poster("Poster", (+2.95, 2.0, 1.50), palette={"body": (0.80, 0.70, 0.52, 1.0)})
 
 def build_ceiling_infra():

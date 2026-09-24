@@ -72,7 +72,7 @@ def build_jukebox():
     make_box("Jukebox_LightBar", (jx, jy-0.32, 1.50), (0.70, 0.02, 0.10), (0.96, 0.78, 0.42, 1.0))
 
 def build_decor():
-    make_wall_clock("Clock", (0.0, ROOM_D-0.05, 2.60), frozen_hour=11, frozen_min=47)
+    make_wall_clock("Clock", (0.0, 5.900, 2.60), frozen_hour=11, frozen_min=47, facing='-Y')
     # Pendant lamps over bar
     for pi, px in enumerate([-2.0, 0.0, +2.0]):
         make_cyl(f"Pendant_{pi}_Cord", (px, 4.5, CEIL-0.25), 0.005, 0.50, P.METAL_BLACK)   # ceiling to shade (2026-09-22: 10 cm short of both)

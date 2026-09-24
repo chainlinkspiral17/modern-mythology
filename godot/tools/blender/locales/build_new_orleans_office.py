@@ -140,7 +140,7 @@ def build_bookcase_and_filing():
         make_box(f"Filing_Handle_{di}", (+3.1, 4.58, 1.20 - di*0.30), (0.16, 0.04, 0.02), COL_BRASS)
 
 def build_decor():
-    make_wall_clock("Clock", (0.0, ROOM_D-0.05, 2.50), frozen_hour=3, frozen_min=42)
+    make_wall_clock("Clock", (0.0, 5.900, 2.50), frozen_hour=3, frozen_min=42, facing='-Y')
     make_faded_poster("DiplomaW", (-3.45, 4.5, 2.10), palette={"body": P.PAPER_AGED})
     make_faded_poster("DiplomaE", (-3.45, 4.5, 1.55), palette={"body": P.PAPER_AGED})
     make_floor_plant("Plant", (+2.5, 1.0, 0.0))
