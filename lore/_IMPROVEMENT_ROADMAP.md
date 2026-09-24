@@ -2352,6 +2352,29 @@ cell (the tall dark cell looked up at) and cabin bed (the waking POV)
 read as intended.
 NEXT: a fresh contact sheet from this build (the grounded horizons, the
 two recovered builds, the two roads), then the direction backlog.
+TWENTY-SECOND PASS — WHAT THE SHEET SHOWED. The 09-24 sheet's black
+frames were not all the night mood: 32 key/sun/moon/overhead
+DirectionalLight3Ds in 31 scenes pointed UP (grunion's moon, the kwik
+stop's fluorescent key, …) — all flipped down; NEW GATE
+light_direction_audit.py (132 key lights, 0 up) runs in the suite, and
+contact_frame_screen.py lists near-black / one-flat-colour frames from a
+sheet (report only). Flat inserts: ~15 hand-built windows in 14 builders
+sat inside their walls (offset from the wall's centre line) — on the
+room face now, glass in front of the frame; the New Orleans office's
+east window was a solid slab over its glass — four bars now; Faust's
+curtain rod got brackets back to the wall. Markers: henderson garage's
+map insert looked over the map (pitched down now); graustark's wreck
+insert stood inside the wreck (moved off it). THE MARKER-AIM GATE COULD
+NOT FAIL: its exit code was grep's; four misaims had ridden through —
+cedar tower's two ESTUARY 7 cameras still filmed the door gap the poster
+left in the twentieth pass (moved to the E wall), hospital hands and the
+riverboat calling card (re-aimed; the card is the helm desk's, per
+vol5 ch4). Gate fixed (and orphan_practical's, same bug); 0 misaims.
+NEXT (draft 23): a fresh contact sheet — confirm the lit rooms, the
+windows, the inserts; run contact_frame_screen.py on it. Still open from
+the screener: dark inserts (cedar tower credit, montreal drainpipe,
+board lords decks, nightmare cell), markers too close to large subjects
+(carnival storm heap, the henderson truck), and the direction backlog.
 
 **2026-09-19 · DESIGN · the two decorative checks made real, the first
 remembered choice.** Nate's basement (ch6) and Tem staying (ch8): the

@@ -93,8 +93,10 @@ def build_clock():
     make_wall_clock("Clock", (0.0, ROOM_D-0.05, CEIL-0.50), frozen_hour=8, frozen_min=15)
 
 def build_window():
-    make_box("Window_E_Frame", (ROOM_W/2.0-0.04, ROOM_D/2.0+0.5, 1.55), (0.04, 1.60, 1.20), P.METAL_STEEL)
-    make_box("Window_E_Glass", (ROOM_W/2.0-0.06, ROOM_D/2.0+0.5, 1.55), (0.005, 1.50, 1.10), (0.78, 0.84, 0.86, 0.55))
+    # on the wall's room face, glass in front of the frame (2026-09-24: frame and glass
+    # were offset from the wall's CENTRE line — inside the wall, never visible)
+    make_box("Window_E_Frame", (ROOM_W/2.0-0.12, ROOM_D/2.0+0.5, 1.55), (0.04, 1.60, 1.20), P.METAL_STEEL)
+    make_box("Window_E_Glass", (ROOM_W/2.0-0.1425, ROOM_D/2.0+0.5, 1.55), (0.005, 1.50, 1.10), (0.78, 0.84, 0.86, 0.55))
 
 def build_ceiling_infra():
     # Family kitchen: flush dome + over-table pendant, no shop tubes

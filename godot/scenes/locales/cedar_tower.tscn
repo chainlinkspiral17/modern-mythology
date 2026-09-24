@@ -162,7 +162,7 @@ glow_hdr_scale = 2.4
 environment = SubResource("Env_Locale")
 
 [node name="Key_Warm" type="DirectionalLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.707, -0.707, 0, 0.707, 0.707, 0, 8, 0)
+transform = Transform3D(1, 0, 0, 0, 0.707, 0.707, 0, -0.707, 0.707, 0, 8, 0)
 light_color = Color(0.95, 0.86, 0.7, 1)
 light_energy = 0.85
 shadow_enabled = false
@@ -357,8 +357,8 @@ metadata/fov = 62.0
 
 ; the half-sized Estuary 7 poster on the archive wall
 [node name="shot_closeup_estuary7" type="Marker3D" parent="." groups=["vn_shot"]]
-position = Vector3(0.55, 6.55, -1.6)
-rotation = Vector3(0, 3.14159, 0)
+position = Vector3(4.15, 6.55, -2.55)
+rotation = Vector3(0, -1.5708, 0)
 metadata/fov = 35.0
 
 ; the communal table + bunks, mid-card-game
@@ -387,8 +387,8 @@ metadata/fov = 42.0
 
 ; insert: Estuary 7 — the poster, sixty-three times since July
 [node name="shot_insert_estuary_7" type="Marker3D" parent="." groups=["vn_shot"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.55, 6.3, -1.0)
-rotation = Vector3(0.2606, -3.1416, 0.0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.95, 6.45, -2.55)
+rotation = Vector3(0.05, -1.5708, 0.0)
 metadata/fov = 42.0
 
 ; insert: the Tideline Survey poster's lower-right credit

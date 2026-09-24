@@ -54,8 +54,10 @@ def build_shell():
 
 def build_n_window_and_tower_view():
     # Small high window N
-    make_box("WindowN_Frame", (0.0, ROOM_D-0.04, 2.20), (1.20, 0.04, 0.50), COL_RACK_PANEL)
-    make_box("WindowN_Glass", (0.0, ROOM_D-0.06, 2.20), (1.00, 0.005, 0.40),
+    # on the wall's room face, glass in front of the frame (2026-09-24: frame and glass
+    # were offset from the wall's CENTRE line — inside the wall, never visible)
+    make_box("WindowN_Frame", (0.0, ROOM_D-0.12, 2.20), (1.20, 0.04, 0.50), COL_RACK_PANEL)
+    make_box("WindowN_Glass", (0.0, ROOM_D-0.1425, 2.20), (1.00, 0.005, 0.40),
              (0.78, 0.84, 0.86, 0.55))
     # Night sky backdrop beyond
     make_box("Sky", (0.0, ROOM_D + 12.0, 6.0), (40.0, 0.04, 14.0), COL_NIGHT_SKY)

@@ -32,8 +32,10 @@ def build_shell():
     for nm, ax, length, wx, wy in [("Crown_W",'Y',ROOM_D,-ROOM_W/2.0+0.10,ROOM_D/2.0),("Crown_E",'Y',ROOM_D,+ROOM_W/2.0-0.10,ROOM_D/2.0),("Crown_N",'X',ROOM_W,0.0,ROOM_D-0.10),("Crown_S",'X',ROOM_W,0.0,+0.10)]:
         make_crown_molding(nm, wall_x=wx, wall_y=wy, length=length, axis=ax, ceil_z=CEIL, palette={"wood": COL_WOOD})
     # Tall north window with snow-light through
-    make_box("Window_N_Frame", (0.0, ROOM_D-0.04, 1.60), (2.20, 0.04, 2.00), P.METAL_STEEL)
-    make_box("Window_N_Glass", (0.0, ROOM_D-0.06, 1.60), (2.00, 0.005, 1.80), (0.78, 0.84, 0.92, 0.65))
+    # on the wall's room face, glass in front of the frame (2026-09-24: frame and glass
+    # were offset from the wall's CENTRE line — inside the wall, never visible)
+    make_box("Window_N_Frame", (0.0, ROOM_D-0.12, 1.60), (2.20, 0.04, 2.00), P.METAL_STEEL)
+    make_box("Window_N_Glass", (0.0, ROOM_D-0.1425, 1.60), (2.00, 0.005, 1.80), (0.78, 0.84, 0.92, 0.65))
     # Heavy curtains either side
     for cs in (-1, +1):
         make_box(f"Curtain_{cs:+d}", (cs*1.30, ROOM_D-0.08, 1.60), (0.20, 0.06, 2.00), COL_CURTAIN)

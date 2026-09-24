@@ -378,8 +378,10 @@ def build_east_room():
              blanket_col=COL_WOOL, pillow_col=(0.96, 0.92, 0.86, 1.0), pillows=2,
              made=True, headboard=False)   # no headboard: shot_insert_chest looks past the bed's head at the chest
     # The window above the bed (E wall) — cedars beyond
-    make_box("EBed_Win_Frame", (2.96, 1.45, 1.75), (0.04, 1.20, 0.95), COL_WOOD_DK)
-    make_box("EBed_Win_Glass", (2.98, 1.45, 1.75), (0.02, 1.06, 0.82), COL_GLASS)
+    # on the wall's room face, glass in front of the frame (2026-09-24: frame and glass
+    # were offset from the wall's CENTRE line — inside the wall, never visible)
+    make_box("EBed_Win_Frame", (2.88, 1.45, 1.75), (0.04, 1.20, 0.95), COL_WOOD_DK)
+    make_box("EBed_Win_Glass", (2.85, 1.45, 1.75), (0.02, 1.06, 0.82), COL_GLASS)
     # Writing desk against the S wall + the south window over it —
     # the kit table: turned legs, an apron, a stretcher (draft 5)
     # anchored on the wall's room face, built toward the room (2026-09-23: the glass was inside the wall)
@@ -436,10 +438,10 @@ def build_wall_dressing():
     make_cyl("OilLamp_Flame", (0.0, 2.9, CEIL - 0.54), 0.010, 0.04, (1.0, 0.72, 0.24, 1.0), segments=5)
     # Curtained E window in the main… now inside the east room wall
     # segment north of the partition (main room's east outlook)
-    make_box("Window_E_Frame", (2.96, 4.2, 1.6), (0.04, 1.4, 1.1), COL_WOOD_DK)
-    make_box("Window_E_Glass", (2.98, 4.2, 1.6), (0.02, 1.24, 0.94), COL_GLASS)
+    make_box("Window_E_Frame", (2.88, 4.2, 1.6), (0.04, 1.4, 1.1), COL_WOOD_DK)
+    make_box("Window_E_Glass", (2.85, 4.2, 1.6), (0.02, 1.24, 0.94), COL_GLASS)
     for sgn in (-1, +1):
-        make_box("Window_E_Curtain_%+d" % sgn, (2.9, 4.2 + sgn * 0.55, 1.6),
+        make_box("Window_E_Curtain_%+d" % sgn, (2.815, 4.2 + sgn * 0.55, 1.6),
                  (0.05, 0.34, 1.14), (0.60, 0.28, 0.24, 1.0))
 
 

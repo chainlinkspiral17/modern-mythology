@@ -168,7 +168,7 @@ environment = SubResource("Env_Kwik")
 ; The convenience store reads as fluorescent-overhead-dominated.
 ; Keep DirectionalLights gentle and let the practicals do the work.
 [node name="Key_FluorescentOverhead" type="DirectionalLight3D" parent="."]
-transform = Transform3D(0.707, -0.707, 0, 0, 0, -1, 0.707, 0.707, 0, 0, 6, 5)
+transform = Transform3D(1, 0, 0, 0, 0, 1, 0, -1, 0, 0, 6, 5)
 light_color = Color(0.96, 0.98, 1.0, 1)
 light_energy = 0.55
 shadow_enabled = false

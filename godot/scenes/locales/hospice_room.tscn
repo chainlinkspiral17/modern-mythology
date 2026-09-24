@@ -155,13 +155,13 @@ glow_hdr_scale = 2.4
 environment = SubResource("Env_Locale")
 
 [node name="Key_WindowSoft" type="DirectionalLight3D" parent="."]
-transform = Transform3D(-0.707, -0.354, -0.612, 0, 0.866, -0.5, 0.707, -0.354, -0.612, 0, 4, -6)
+transform = Transform3D(-0.707, 0.354, -0.612, 0, 0.865, 0.5, 0.707, 0.354, -0.612, 0, 4, -6)
 light_color = Color(0.92, 0.92, 0.86, 1)
 light_energy = 0.75
 shadow_enabled = false
 
 [node name="Fill_OverheadWarm" type="DirectionalLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.574, -0.819, 0, 0.819, 0.574, 0, 6, 0)
+transform = Transform3D(1, 0, 0, 0, 0.574, 0.819, 0, -0.819, 0.574, 0, 6, 0)
 light_color = Color(0.98, 0.9, 0.76, 1)
 light_energy = 0.4
 shadow_enabled = false

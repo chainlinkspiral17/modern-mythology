@@ -55,8 +55,14 @@ def build_shell():
     for nm, ax, length, wx, wy in [("Crown_W",'Y',ROOM_D,-ROOM_W/2.0+0.10,ROOM_D/2.0),("Crown_E",'Y',ROOM_D,+ROOM_W/2.0-0.10,ROOM_D/2.0),("Crown_N",'X',ROOM_W,0.0,ROOM_D-0.10),("Crown_S",'X',ROOM_W,0.0,+0.10)]:
         make_crown_molding(nm, wall_x=wx, wall_y=wy, length=length, axis=ax, ceil_z=CEIL, palette={"wood": COL_OAK_DARK})
     # Tall window E wall (afternoon sun)
-    make_box("Window_E_Frame", (ROOM_W/2.0-0.04, 3.0, 1.80), (0.04, 1.80, 2.20), P.METAL_BLACK)
-    make_box("Window_E_Glass", (ROOM_W/2.0-0.06, 3.0, 1.80), (0.005, 1.70, 2.00), (0.96, 0.86, 0.62, 0.70))
+    # (2026-09-24: a SOLID black slab the size of the window stood inside
+    # the E wall with the glass behind it — the insert framed a black
+    # rectangle. A frame of four bars on the wall face now, the glass in it.)
+    fx = ROOM_W/2.0 - 0.12
+    for tag, (fy, fz, sy, sz) in (("T", (3.0, 2.85, 1.80, 0.10)), ("B", (3.0, 0.75, 1.80, 0.10)),
+                                  ("L", (2.15, 1.80, 0.10, 2.20)), ("R", (3.85, 1.80, 0.10, 2.20))):
+        make_box(f"Window_E_Frame_{tag}", (fx, fy, fz), (0.04, sy, sz), P.METAL_BLACK)
+    make_box("Window_E_Glass", (fx - 0.005, 3.0, 1.80), (0.005, 1.60, 2.00), (0.96, 0.86, 0.62, 0.70))
     # Wainscoting along west wall (vertical wood panels)
     for pi in range(6):
         py = 0.5 + pi*1.0
@@ -161,10 +167,12 @@ def build_hero_props():
     make_box("Window_AC", (-0.80, 0.10, 1.10), (0.60, 0.45, 0.40), (0.78, 0.76, 0.70, 1.0))
     make_box("Window_AC_Grille", (-0.80, -0.14, 1.10), (0.50, 0.02, 0.30), (0.60, 0.58, 0.54, 1.0))
     # The small leaded window beside it (the charcoal-suit watch)
-    make_box("Leaded_Win_Frame", (0.85, 0.04, 1.45), (0.80, 0.08, 0.90), wood)
-    make_box("Leaded_Win_Glass", (0.85, 0.02, 1.45), (0.66, 0.05, 0.76), (0.50, 0.56, 0.60, 0.5))
-    make_box("Leaded_Win_MullV", (0.85, 0.015, 1.45), (0.03, 0.04, 0.76), wood)
-    make_box("Leaded_Win_MullH", (0.85, 0.015, 1.45), (0.66, 0.04, 0.03), wood)
+    # on the wall's room face, glass in front of the frame (2026-09-24: frame and glass
+    # were offset from the wall's CENTRE line — inside the wall, never visible)
+    make_box("Leaded_Win_Frame", (0.85, 0.14, 1.45), (0.80, 0.08, 0.90), wood)
+    make_box("Leaded_Win_Glass", (0.85, 0.205, 1.45), (0.66, 0.05, 0.76), (0.50, 0.56, 0.60, 0.5))
+    make_box("Leaded_Win_MullV", (0.85, 0.20, 1.45), (0.03, 0.04, 0.76), wood)
+    make_box("Leaded_Win_MullH", (0.85, 0.20, 1.45), (0.66, 0.04, 0.03), wood)
     # Emergency bourbon (second drawer) + the chipped glass on the desk
     # (draft 3: on the desk beside the glass — out of the second drawer,
     # which is where it lives; at (2.75, 5.15) it stood on the floor by

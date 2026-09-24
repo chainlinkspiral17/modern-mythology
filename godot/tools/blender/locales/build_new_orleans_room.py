@@ -30,9 +30,11 @@ def build_shell():
     for nm, ax, length, wx, wy in [("Crown_W",'Y',ROOM_D,-ROOM_W/2.0+0.10,ROOM_D/2.0),("Crown_E",'Y',ROOM_D,+ROOM_W/2.0-0.10,ROOM_D/2.0),("Crown_N",'X',ROOM_W,0.0,ROOM_D-0.10),("Crown_S",'X',ROOM_W,0.0,+0.10)]:
         make_crown_molding(nm, wall_x=wx, wall_y=wy, length=length, axis=ax, ceil_z=CEIL, palette={"wood": (0.42, 0.30, 0.20, 1.0)})
     # Sash window N wall
-    make_box("Window_N_Frame", (0.0, ROOM_D-0.04, 1.60), (1.40, 0.04, 1.40), (0.42, 0.30, 0.20, 1.0))
-    make_box("Window_N_Glass", (0.0, ROOM_D-0.06, 1.60), (1.20, 0.005, 1.20), (0.78, 0.84, 0.86, 0.55))
-    make_box("Window_N_Mull", (0.0, ROOM_D-0.05, 1.60), (1.20, 0.04, 0.04), (0.42, 0.30, 0.20, 1.0))
+    # on the wall's room face, glass in front of the frame (2026-09-24: frame and glass
+    # were offset from the wall's CENTRE line — inside the wall, never visible)
+    make_box("Window_N_Frame", (0.0, ROOM_D-0.12, 1.60), (1.40, 0.04, 1.40), (0.42, 0.30, 0.20, 1.0))
+    make_box("Window_N_Glass", (0.0, ROOM_D-0.1425, 1.60), (1.20, 0.005, 1.20), (0.78, 0.84, 0.86, 0.55))
+    make_box("Window_N_Mull", (0.0, ROOM_D-0.16, 1.60), (1.20, 0.04, 0.04), (0.42, 0.30, 0.20, 1.0))
     # Peeling wallpaper strips on E wall
     for pi in range(3):
         py = 1.0 + pi*1.5

@@ -508,6 +508,36 @@ banisters classed · pans as containers.
   overlap gate never saw them, because bottle and body share the Bar_
   assembly. When the object count of a family is high and its
   container is a single solid, look inside.
+- **A key light is a direction, and nobody reads it (twenty-second
+  pass).** 32 key / sun / moon / overhead DirectionalLight3Ds in 31
+  scenes shone UPWARD — the transform's forward (−Z) had a positive Y
+  (in a row-major .tscn basis the light's Y travel is −m12). They lit
+  ceilings and the undersides of things; floors and faces went dark,
+  and the night mood's 9-level quantise crushed those rooms to black
+  frames on the contact sheet. light_direction_audit.py now gates it
+  (nonzero on any key-named directional with Y travel > 0.05).
+  contact_frame_screen.py (report only) lists near-black and one-flat-
+  colour frames from a sheet, so the next read starts from a list.
+- **"Offset from the wall" means from its FACE.** ~15 hand-built
+  windows in 14 builders set frame and glass a few cm off the wall's
+  CENTRE line — inside the wall, invisible (the window kit had been
+  fixed in the sixteenth pass; these were hand-built). And a SOLID
+  frame slab in front of the glass reads as a blank panel (the New
+  Orleans office): frame a window with four bars, glass just in front.
+  When a window moves, move what hangs off it (Faust's curtain rod
+  was left standing 8 cm off the wall — it has brackets now).
+- **A gate's exit code is the last command in its pipe.** The suite's
+  marker_aim block was `AOUT="$(audit | grep -v …)" || fail` — grep's
+  status, so it could never fail, and four misaims rode through two
+  suites. Capture the audit's status first, filter second (fixed there
+  and in orphan_practical). Test a new gate by making it fail once.
+- **Cameras do not follow props.** The twentieth pass moved cedar
+  tower's ESTUARY 7 poster onto the E wall; its two markers kept
+  filming the door gap where it used to hang. Moving a hero prop: grep
+  its shot markers. And marker_reaim aims at the nearest NAME match —
+  read the story before trusting it (the riverboat "card" is Dean's
+  calling card on the helm desk; the audit's nearest match was table
+  14's reserved tent).
 
 ### 2026-09-06 · a builder that raises under the recorder is dropped without a flag
 

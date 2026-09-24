@@ -47,8 +47,13 @@ echo ""
 # global_transform to the camera; forward is −Z). A wave of markers
 # shipped facing 180° from their subjects. Nonzero exit fails.
 echo "── marker_aim_audit.py ──"
-AOUT="$(python3 marker_aim_audit.py 2>/dev/null | grep -v "^\[")" || {
-    echo "$AOUT" | grep -E "MISAIM|misaim"; exit 1; }
+# (2026-09-24: the exit status is captured BEFORE the grep filter —
+# `$(audit | grep -v …) || {…}` took grep's status, so this gate could
+# never fail and four misaims rode through suites 13 and 14)
+AOUT="$(python3 marker_aim_audit.py 2>/dev/null)" && ARC=0 || ARC=$?
+AOUT="$(echo "$AOUT" | grep -v "^\[")"   || true
+if [ "$ARC" -ne 0 ]; then
+    echo "$AOUT" | grep -E "MISAIM|misaim"; exit 1; fi
 echo "$AOUT" | tail -2
 echo ""
 
@@ -70,6 +75,15 @@ echo ""
 # Blender passed them all and left its GLB missing on the Deck
 # (chillwave_interior and missing_link_exterior, since the twelfth
 # support pass). Nonzero exit fails.
+# ── Light-direction gate (2026-09-24) ─────────────────────────
+# 32 key/sun/moon/overhead lights pointed UP (a copied Rx(+45) sign
+# slip) and lit ceilings instead of floors. Nonzero exit fails.
+echo "── light_direction_audit.py ──"
+LOUT="$(python3 light_direction_audit.py 2>/dev/null)" || {
+    echo "$LOUT" | grep "UPWARD"; exit 1; }
+echo "$LOUT" | tail -1
+echo ""
+
 echo "── blender_dryrun_audit.py ──"
 DOUT="$(python3 blender_dryrun_audit.py 2>/dev/null)" || {
     echo "$DOUT" | grep "FAIL"; exit 1; }
@@ -293,9 +307,11 @@ echo ""
 # practical must have a fixture standing where the light is. Two rooms
 # lit fluorescents in a kerosene cabin and a desk lamp nobody built.
 echo "── orphan_practical_audit.py ──"
-OPOUT="$(python3 orphan_practical_audit.py 2>/dev/null | grep -v "^\[build_")" || {
+OPOUT="$(python3 orphan_practical_audit.py 2>/dev/null)" && OPRC=0 || OPRC=$?   # status before the filter (2026-09-24)
+OPOUT="$(echo "$OPOUT" | grep -v "^\[build_")"   || true
+if [ "$OPRC" -ne 0 ]; then
     echo "$OPOUT" | grep -E "^(ORPHAN|DRIFTED)" | head -20
-    echo "REGRESSION  orphan_practical_audit found a light with no fixture (ceiling 0)"; exit 1; }
+    echo "REGRESSION  orphan_practical_audit found a light with no fixture (ceiling 0)"; exit 1; fi
 echo "$OPOUT" | tail -1
 echo ""
 

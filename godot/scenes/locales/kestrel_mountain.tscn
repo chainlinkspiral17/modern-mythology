@@ -159,7 +159,7 @@ environment = SubResource("Env_Locale")
 ; mood at node 133. The hut's door and the square's lamps are the
 ; practicals.
 [node name="Key_High" type="DirectionalLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.5, -0.866, 0, 0.866, 0.5, 0, 8, 0)
+transform = Transform3D(1, 0, 0, 0, 0.5, 0.866, 0, -0.866, 0.5, 0, 8, 0)
 light_color = Color(0.90, 0.92, 0.96, 1)
 light_energy = 0.95
 shadow_enabled = false

@@ -116,11 +116,13 @@ def build_shell():
     make_window("Window_SE", (+2.00, 0.10, 1.40),
                 width=1.40, height=1.20, room_dir=+1)
     # Back-yard window (east wall, faces sage curtains)
-    make_box("Window_E_Frame", (ROOM_W / 2.0 - 0.04, 3.5, 1.55),
+    # on the wall's room face, glass in front of the frame (2026-09-24: frame and glass
+    # were offset from the wall's CENTRE line — inside the wall, never visible)
+    make_box("Window_E_Frame", (ROOM_W / 2.0 - 0.12, 3.5, 1.55),
              (0.04, 1.80, 1.20), P.METAL_STEEL)
-    make_box("Window_E_Glass", (ROOM_W / 2.0 - 0.06, 3.5, 1.55),
+    make_box("Window_E_Glass", (ROOM_W / 2.0 - 0.1425, 3.5, 1.55),
              (0.005, 1.70, 1.10), P.GLASS)
-    make_box("Window_E_Curtain", (ROOM_W / 2.0 - 0.10, 3.5, 1.55),
+    make_box("Window_E_Curtain", (ROOM_W / 2.0 - 0.16, 3.5, 1.55),
              (0.01, 1.80, 1.20), COL_CURTAIN_SAGE)
 
 

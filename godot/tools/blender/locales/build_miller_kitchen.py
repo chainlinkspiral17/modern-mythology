@@ -122,9 +122,11 @@ def build_window():
     at 5:02 across the cul-de-sac) — Mike's chair sits beside it.
     Sheer curtain per vol6_ch5 ("watching him through the sheer
     curtain")."""
-    make_box("Window_E_Frame", (ROOM_W/2.0-0.04, ROOM_D/2.0+0.5, 1.55), (0.04, 1.60, 1.20), P.METAL_STEEL)
-    make_box("Window_E_Glass", (ROOM_W/2.0-0.06, ROOM_D/2.0+0.5, 1.55), (0.005, 1.50, 1.10), (0.78, 0.84, 0.86, 0.55))
-    make_box("Window_E_Sheer", (ROOM_W/2.0-0.10, ROOM_D/2.0+0.5, 1.55), (0.01, 1.44, 1.06), (0.94, 0.92, 0.88, 0.35))
+    # on the wall's room face, glass in front of the frame (2026-09-24: frame and glass
+    # were offset from the wall's CENTRE line — inside the wall, never visible)
+    make_box("Window_E_Frame", (ROOM_W/2.0-0.12, ROOM_D/2.0+0.5, 1.55), (0.04, 1.60, 1.20), P.METAL_STEEL)
+    make_box("Window_E_Glass", (ROOM_W/2.0-0.1425, ROOM_D/2.0+0.5, 1.55), (0.005, 1.50, 1.10), (0.78, 0.84, 0.86, 0.55))
+    make_box("Window_E_Sheer", (ROOM_W/2.0-0.16, ROOM_D/2.0+0.5, 1.55), (0.01, 1.44, 1.06), (0.94, 0.92, 0.88, 0.35))
     # Back door on the E wall, south end (Anita's door — "comes in
     # through the back door because she has walked over")
     make_box("Back_Door", (ROOM_W/2.0-0.05, 1.20, 1.05), (0.05, 0.90, 2.10), (0.70, 0.58, 0.40, 1.0))

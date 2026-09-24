@@ -80,8 +80,10 @@ def build_storefront():
     # West-wall storefront window + a fuel-pump island and canopy beyond
     # the glass — the beat that says "fueling station."
     wx = -ROOM_W/2.0
-    make_box("Storefront_Frame", (wx+0.04, ROOM_D/2.0, 1.40), (0.06, 2.60, 1.80), P.METAL_STEEL)
-    make_box("Storefront_Glass", (wx+0.06, ROOM_D/2.0, 1.40), (0.02, 2.40, 1.60), (0.66, 0.78, 0.86, 0.40))
+    # on the wall's room face, glass in front of the frame (2026-09-24: frame and glass
+    # were offset from the wall's CENTRE line — inside the wall, never visible)
+    make_box("Storefront_Frame", (wx+0.13, ROOM_D/2.0, 1.40), (0.06, 2.60, 1.80), P.METAL_STEEL)
+    make_box("Storefront_Glass", (wx+0.17, ROOM_D/2.0, 1.40), (0.02, 2.40, 1.60), (0.66, 0.78, 0.86, 0.40))
     # SIX pumps on three islands, navy-branded — "The unmarked van
     # is at pump six" needs a pump six to be at
     for isl, px in enumerate((wx - 1.6, wx - 3.4, wx - 5.2)):

@@ -112,7 +112,7 @@ def build_bed():
 def build_window():
     """E wall, centered y=2.4: frame + cool glass + half-drawn
     curtains on a rod."""
-    wx = ROOM_W / 2.0 - 0.06
+    wx = ROOM_W / 2.0 - 0.14   # frame on the E wall face at 2.90 (2026-09-24: inside the wall)
     make_box("Win_Frame", (wx, 2.4, 1.65), (0.08, 1.75, 1.65), COL_FRAME)
     make_box("Win_Glass", (wx - 0.01, 2.4, 1.65), (0.05, 1.55, 1.45), COL_GLASS)
     make_box("Win_Mullion_V", (wx - 0.03, 2.4, 1.65), (0.05, 0.06, 1.45), COL_FRAME)
@@ -120,6 +120,11 @@ def build_window():
     make_box("Win_Sill", (wx - 0.10, 2.4, 0.80), (0.22, 1.95, 0.06), COL_FRAME)
     make_cyl("Curtain_Rod", (wx - 0.06, 2.4, 2.56), 0.02, 2.2, COL_STEEL,   # on the wall (2026-09-23: 8 cm off it)
              segments=6, axis='Y')
+    # brackets from the rod back to the wall (2026-09-24: the window moved
+    # onto the wall face; the rod kept its offset and stood 8 cm off it)
+    for bk, by_ in enumerate((2.4 - 1.0, 2.4 + 1.0)):
+        make_box(f"Curtain_Rod_Bracket_{bk}", ((wx - 0.06 + ROOM_W / 2.0 - 0.10) / 2.0, by_, 2.56),
+                 ((ROOM_W / 2.0 - 0.10) - (wx - 0.06), 0.03, 0.03), COL_STEEL)
     # Curtains bunched at both ends (half-drawn)
     make_box("Curtain_S", (wx - 0.16, 1.62, 1.62), (0.14, 0.42, 1.85), COL_CURTAIN)
     make_box("Curtain_N", (wx - 0.16, 3.18, 1.62), (0.14, 0.42, 1.85), COL_CURTAIN)

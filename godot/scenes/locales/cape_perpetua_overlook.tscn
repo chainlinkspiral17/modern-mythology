@@ -158,7 +158,7 @@ environment = SubResource("Env_Locale")
 ; from the south-east, a big sky fill, no practicals — fog does the
 ; rest as a mood.
 [node name="Sun" type="DirectionalLight3D" parent="."]
-transform = Transform3D(-0.707, -0.354, -0.612, 0, 0.866, -0.5, 0.707, -0.354, -0.612, 0, 4, 0)
+transform = Transform3D(-0.707, 0.354, -0.612, 0, 0.865, 0.5, 0.707, 0.354, -0.612, 0, 4, 0)
 light_color = Color(0.90, 0.92, 0.96, 1)
 light_energy = 0.75
 shadow_enabled = false

@@ -277,16 +277,18 @@ def build_shell():
     # the parking lot + NexCorp across the intersection. Warm
     # sunset-through-glass colour.
     for sgn, cx in [(-1, -3.50), (+1, +3.50)]:
+    # on the wall's room face, glass in front of the frame (2026-09-24: frame and glass
+    # were offset from the wall's CENTRE line — inside the wall, never visible)
         # Glass
-        make_box(f"Window_S_{sgn:+d}_Glass", (cx, -0.02, 1.55),
+        make_box(f"Window_S_{sgn:+d}_Glass", (cx, 0.12, 1.55),
                  (2.40, 0.04, 1.40), COL_GLASS_WARM)
         # Frame T + B
-        make_box(f"Window_S_{sgn:+d}_Frame_T", (cx, -0.04, 2.30),
+        make_box(f"Window_S_{sgn:+d}_Frame_T", (cx, 0.13, 2.30),
                  (2.50, 0.06, 0.10), COL_METAL_STEEL)
-        make_box(f"Window_S_{sgn:+d}_Frame_B", (cx, -0.04, 0.80),
+        make_box(f"Window_S_{sgn:+d}_Frame_B", (cx, 0.13, 0.80),
                  (2.50, 0.06, 0.10), COL_METAL_STEEL)
         # Mullion in middle (vertical)
-        make_box(f"Window_S_{sgn:+d}_Mull", (cx, -0.06, 1.55),
+        make_box(f"Window_S_{sgn:+d}_Mull", (cx, 0.165, 1.55),
                  (0.05, 0.05, 1.40), COL_METAL_STEEL)
 
     # ── Outdoor thermometer (canon — Texas heat cue) ────────────

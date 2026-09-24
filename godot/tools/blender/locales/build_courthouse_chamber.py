@@ -58,11 +58,13 @@ def build_shell():
 
 def build_arched_window_behind_bench():
     # Tall arched window centered on N wall above the judge's bench
-    make_box("Window_Frame", (0.0, ROOM_D-0.04, 3.20), (2.40, 0.04, 1.80), COL_BRASS)
-    make_box("Window_Glass", (0.0, ROOM_D-0.06, 3.20), (2.20, 0.005, 1.60), COL_WINDOW_GLASS)
+    # on the wall's room face, glass in front of the frame (2026-09-24: frame and glass
+    # were offset from the wall's CENTRE line — inside the wall, never visible)
+    make_box("Window_Frame", (0.0, ROOM_D-0.12, 3.20), (2.40, 0.04, 1.80), COL_BRASS)
+    make_box("Window_Glass", (0.0, ROOM_D-0.1425, 3.20), (2.20, 0.005, 1.60), COL_WINDOW_GLASS)
     # Arch top — three half-discs
     for i, px in enumerate([-0.60, 0.0, +0.60]):
-        make_cyl(f"Window_Arch_{i}", (px, ROOM_D-0.06, 4.10), 0.30, 0.005,
+        make_cyl(f"Window_Arch_{i}", (px, ROOM_D-0.1425, 4.10), 0.30, 0.005,
                  COL_WINDOW_GLASS, axis='Y', segments=10)
 
 

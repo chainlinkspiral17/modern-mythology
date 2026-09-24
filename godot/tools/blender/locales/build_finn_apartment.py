@@ -179,8 +179,10 @@ def build_hero_props():
     make_lathe("Pour_Mug", (-1.75, 1.55, 0.945), [(0.0, 0.0), (0.04, 0.0), (0.042, 0.018), (0.0, 0.018)], (0.30, 0.34, 0.40, 1.0), segments=10)
     # The SOUTH kitchen window (toward Cape Perpetua) — S wall east
     # segment, above the entry level
-    make_box("S_Window_Frame", (1.55, 0.05, 1.55), (0.90, 0.08, 1.00), (0.34, 0.28, 0.22, 1.0))
-    make_box("S_Window_Glass", (1.55, 0.03, 1.55), (0.76, 0.05, 0.86), (0.45, 0.52, 0.60, 0.5))
+    # on the wall's room face, glass in front of the frame (2026-09-24: frame and glass
+    # were offset from the wall's CENTRE line — inside the wall, never visible)
+    make_box("S_Window_Frame", (1.55, 0.14, 1.55), (0.90, 0.08, 1.00), (0.34, 0.28, 0.22, 1.0))
+    make_box("S_Window_Glass", (1.55, 0.205, 1.55), (0.76, 0.05, 0.86), (0.45, 0.52, 0.60, 0.5))
     # Bedroom partition (the crow flies low through this doorway)
     make_box("Bedroom_Part", (-0.55, 3.05, 1.3), (1.9, 0.14, 2.6), (0.62, 0.55, 0.46, 1.0))
     make_box("Bedroom_Part_Header", (0.75, 3.05, 2.35), (0.7, 0.14, 0.5), (0.62, 0.55, 0.46, 1.0))

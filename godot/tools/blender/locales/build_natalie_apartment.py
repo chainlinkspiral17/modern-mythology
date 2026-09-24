@@ -146,9 +146,11 @@ def build_shell():
                            length=length, axis=ax, ceil_z=CEIL_Z,
                            palette={"wood": COL_WOOD_TRIM})
     # Tall west window (afternoon sun)
-    make_box("Window_W_Frame", (-ROOM_W / 2.0 + 0.04, 2.5, 1.45),
+    # on the wall's room face, glass in front of the frame (2026-09-24: frame and glass
+    # were offset from the wall's CENTRE line — inside the wall, never visible)
+    make_box("Window_W_Frame", (-ROOM_W / 2.0 + 0.12, 2.5, 1.45),
              (0.04, 1.80, 1.80), P.METAL_STEEL)
-    make_box("Window_W_Glass", (-ROOM_W / 2.0 + 0.06, 2.5, 1.45),
+    make_box("Window_W_Glass", (-ROOM_W / 2.0 + 0.1425, 2.5, 1.45),
              (0.005, 1.70, 1.70), P.GLASS_WARM)
     # South window beside door
     # anchored on the wall's room face, built toward the room (2026-09-23: the glass was inside the wall)
