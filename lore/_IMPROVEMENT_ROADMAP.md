@@ -2861,7 +2861,31 @@ edge, and had since the kits were placed; anchors are at the wall
 plane now, pots at the counter centre; (c) Ramos's pulled-out bills
 drawer stood half inside the counter; (d) Miller's phone insert had
 the moved counter filling its frame — 1.5 m off the wall phone, level.
-NEXT (draft 36): judge the moved pieces on the sheet (ben, jesse, sam,
+THIRTY-SEVENTH PASS. Sheet from 7ccc25ff: `contact_diff.py` is a tool
+now (old sheet dir, new sheet dir → every frame whose 160×90 grey
+diff ≥ 6, with brightness before/after, NEW and GONE): 20 changed, of
+which the memory_warm and dream_blur moods account for 12 (film grain
+— those moods are not deterministic frame to frame; a diff report
+should say so), the corrected kitchens for 6. What it showed: the
+coffee makers sit on their counters; Miller's phone insert, which the
+reframe tool had pointed at a bare wall, is hand-placed over the cell
+phone on the counter (0.7 m in front, 36° down).
+· PLACEMENT IS A GATE. `DELIBERATE` names the pieces that stand free
+  on purpose (the asylum's nurse station and its radiator under the
+  barred window bay — its wall is the 1.2 m wainscot tile the rule
+  cannot see; the cabin's wood stove and its clearance; cedar's
+  reception desk; the back office's milk crate that is Sam's seat;
+  nexcorp's locker bench; Houston's office L). The two that were NOT
+  deliberate moved: the safehouse footlocker to the bed's foot (it
+  stood 1.5 m short of it), and Simon's TV — on a crate mid-floor, its
+  screen facing east while the armchair faced south — is on the E
+  wall under the poster (raised), the chair turned to face it.
+NEXT (draft 38): judge Simon's room and the safehouse on the sheet;
+the "door-like polygons" — still unlocated (FREE_SLAB and HALF_SLAB
+find nothing outside Houston's L); the diner's 0.98 m opening beside
+the Precipice Door; the roads' second draft.
+
+NEXT (draft 36, as written): judge the moved pieces on the sheet (ben, jesse, sam,
 safehouse, the seven kitchens); name the 13 deliberate OFF_WALL pieces
 (a `free=True` tag or a name class) and gate placement; simon's TV on
 a crate mid-room and the back office's milk crate — decide; the

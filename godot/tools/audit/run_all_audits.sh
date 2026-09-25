@@ -283,13 +283,16 @@ IOOUT="$(python3 inside_out_audit.py 2>/dev/null)" || {
 echo "$IOOUT" | tail -1
 echo ""
 
-# ── Placement (2026-09-25, the user: "objects just hanging out in the
-# middle of rooms, not against walls") — REPORT: wall-class pieces off
-# every wall, tall thin slabs reaching no wall, storage tight on a bed.
-# The residue is deliberate (a nurse station, a reception desk, a milk
-# crate that is a seat, a TV on a crate) — gate once those are named.
-echo "── placement_audit.py (report) ──"
-python3 placement_audit.py 2>/dev/null | tail -1 || true
+# ── Placement gate (2026-09-25, the user: "objects just hanging out in
+# the middle of rooms, not against walls") — wall-class pieces off every
+# wall, tall thin slabs reaching no wall, storage tight on a bed. The
+# deliberate ones (a nurse station, a reception desk, a milk crate that
+# is a seat, a wood stove's clearance) are named in DELIBERATE. Zero.
+echo "── placement_audit.py ──"
+PLOUT="$(python3 placement_audit.py 2>/dev/null)" || {
+    echo "$PLOUT" | grep -E "^(OFF_WALL|FREE_SLAB|HALF_SLAB|TIGHT)" | head -20
+    echo "REGRESSION  placement_audit found a piece standing free of its wall (ceiling 0)"; exit 1; }
+echo "$PLOUT" | tail -1
 echo ""
 
 # ── Scene-syntax gate (2026-09-25) ────────────────────────────

@@ -186,8 +186,8 @@ shadow_enabled = false
 ; The landline: blender (-2.85, 5.90, 1.42) → godot (-2.85, 1.42,
 ; -5.90). Camera pulls back into the room, level with the base.
 [node name="shot_insert_phone" type="Marker3D" parent="." groups=["vn_shot"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.025, 1.712, -2.933)
-rotation = Vector3(-0.1875, 2.9141, 0.0)   ; 1.5 m off the wall phone, level (2026-09-25: the counter moved under the old spot and filled the frame)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.2, 1.55, -4.45)
+rotation = Vector3(-0.63, 0.0, 0.0)   ; over the cell phone on the counter from 0.7 m in front, looking down 36° (2026-09-25: the counter moved under the old spot; the reframe tool then chose a bare-wall view)
 
 ; The skillet: blender (1.59, 5.10, 0.97) → godot (1.59, 0.97, -5.10).
 [node name="shot_insert_french_toast" type="Marker3D" parent="." groups=["vn_shot"]]

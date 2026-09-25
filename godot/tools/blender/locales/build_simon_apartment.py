@@ -114,14 +114,18 @@ def build_armchair_and_tv():
     # Armchair S of bed, facing the TV-on-crate
     ax, ay = +0.50, 2.40
     make_box("Armchair_Seat", (ax, ay, 0.40), (0.80, 0.70, 0.12), COL_ARMCHAIR)
-    make_box("Armchair_Back", (ax, ay+0.30, 0.80), (0.80, 0.16, 0.72), COL_ARMCHAIR)
-    make_box("Armchair_Arm_W", (ax-0.46, ay, 0.50), (0.10, 0.70, 0.30), COL_ARMCHAIR)
-    make_box("Armchair_Arm_E", (ax+0.46, ay, 0.50), (0.10, 0.70, 0.30), COL_ARMCHAIR)
-    # TV on a crate at the W facing the armchair
-    tx, ty = -0.50, 2.20
+    # turned to face EAST, at the TV (2026-09-25: its back was on the north
+    # side, so it faced south at nothing)
+    make_box("Armchair_Back", (ax-0.30, ay, 0.80), (0.16, 0.80, 0.72), COL_ARMCHAIR)
+    make_box("Armchair_Arm_S", (ax, ay-0.46, 0.50), (0.70, 0.10, 0.30), COL_ARMCHAIR)
+    make_box("Armchair_Arm_N", (ax, ay+0.46, 0.50), (0.70, 0.10, 0.30), COL_ARMCHAIR)
+    # TV on a crate against the E wall under the poster, its screen west toward the armchair
+    # (2026-09-25: at x -0.50 it stood 1.6 m off the wall, mid-floor, and
+    # its screen faced east while the chair faced south — neither saw the other)
+    tx, ty = 2.10, 2.40
     make_box("TV_Crate", (tx, ty, 0.40), (0.60, 0.50, 0.80), COL_CRATE)
     make_box("TV_Body",  (tx, ty, 0.94), (0.60, 0.50, 0.50), COL_TV_BODY)
-    make_box("TV_Screen", (tx+0.26 + 0.0431, ty, 0.94), (0.005, 0.40, 0.36), COL_TV_SCREEN_STATIC)
+    make_box("TV_Screen", (tx-0.26 - 0.0431, ty, 0.94), (0.005, 0.40, 0.36), COL_TV_SCREEN_STATIC)   # on the west face, toward the chair
     # Antenna
     for sgn in (-1, +1):
         make_box(f"TV_Antenna_{sgn:+d}", (tx, ty+sgn*0.10, 1.30), (0.008, 0.008, 0.40), P.METAL_BLACK)
@@ -172,7 +176,7 @@ def build_decor():
     make_floor_plant("Plant_NE", (+ROOM_W/2.0-0.40, 6.60, 0.0),
                      palette={"leaf": (0.40, 0.46, 0.30, 1.0)})
     # Faded poster — vol5 record cover or similar
-    make_faded_poster("Poster", (+ROOM_W/2.0-0.05 - 0.0535, 2.0, 1.50), into_room=-1)
+    make_faded_poster("Poster", (+ROOM_W/2.0-0.05 - 0.0535, 2.0, 1.95), into_room=-1)   # raised over the TV that moved under it (2026-09-25)
 
 
 def build_hanged_man_dressing():
@@ -204,8 +208,8 @@ def build_hanged_man_dressing():
              (0.32, 0.20, 0.12, 1.0))   # darker velour
     # Wear-line trough across the back-cushion bottom
     make_box("Armchair_BackWearLine",
-             (chair_cx, chair_cy + 0.22, 0.78),
-             (0.40, 0.005, 0.04),
+             (chair_cx - 0.22, chair_cy, 0.78),   # the back is on the chair's west side now (2026-09-25)
+             (0.005, 0.40, 0.04),
              (0.30, 0.20, 0.12, 1.0))
 
     # ── Tipped chair on the kitchen floor ──
@@ -214,7 +218,7 @@ def build_hanged_man_dressing():
     tc_y = +2.20
     # Chair seat (now horizontal on the floor — z ≈ 0.04, lying flat)
     make_box("TippedChair_Seat",
-             (tc_x, tc_y, 0.06),
+             (tc_x, tc_y, 0.02),   # on the floor (2026-09-25: 4 cm over it — the armchair's old arm had held it)
              (0.42, 0.42, 0.04),
              (0.32, 0.22, 0.14, 1.0))
     # Chair back (now horizontal too — lying flat behind the seat)
@@ -226,7 +230,7 @@ def build_hanged_man_dressing():
     for sx in (-1, +1):
         for sy in (-1, +1):
             make_box("TippedChair_Leg_%+d_%+d" % (sx, sy),
-                     (tc_x + sx * 0.18, tc_y + sy * 0.18, 0.27),
+                     (tc_x + sx * 0.18, tc_y + sy * 0.18, 0.23),
                      (0.04, 0.04, 0.46),
                      (0.32, 0.22, 0.14, 1.0))
 
@@ -274,8 +278,8 @@ def build_hanged_man_dressing():
     # plane at x -0.24 facing EAST, 0.40 wide × 0.36 tall at z 0.94.
     # (2026-09-10: the static overlay was a second screen on the south
     # wall at (-1, 0.09).)
-    tv_x = -0.232
-    tv_y = +2.20
+    tv_x = 1.7619   # the TV's screen face is at x 1.797 on the E wall now (2026-09-25)
+    tv_y = +2.40   # with the TV (2026-09-25)
     tv_screen_z = 0.94
     # Static-grey screen overlay (on the screen face)
     make_box("TV_StaticScreen",
@@ -286,19 +290,20 @@ def build_hanged_man_dressing():
     for ni in range(6):
         nz = tv_screen_z - 0.15 + ni * 0.06
         make_box("TV_NoiseLine_%d" % ni,
-                 (tv_x + 0.004, tv_y, nz),
+                 (tv_x + 0.0311, tv_y, nz),   # 4 mm on the viewer's (west) side of the face
                  (0.001, 0.36, 0.006),
                  (0.86, 0.86, 0.86, 1.0))
     # Remote on the coffee table — flipped over with battery compartment open
-    # Coffee table approx at (-0.5, +1.5, 0.42)
-    remote_x = -0.30
-    remote_y = +1.50
+    # Coffee table at (1.30, 1.55, 0.44) since 2026-09-25 (between the armchair and the TV)
+    remote_x = 1.25
+    remote_y = +1.65
     remote_top_z = 0.46
     # the coffee table it lies on (2026-09-22: the remote hung 46 cm over the floor)
-    make_box("CoffeeTable_Top", (-0.25, 1.40, 0.44), (0.60, 0.50, 0.04), (0.42, 0.30, 0.22, 1.0))
+    # between the armchair and the TV (2026-09-25: at (-0.25, 1.40) it sat behind the turned chair)
+    make_box("CoffeeTable_Top", (1.3000, 1.5500, 0.44), (0.60, 0.50, 0.04), (0.42, 0.30, 0.22, 1.0))
     for lx_ in (-1, 1):
         for ly_ in (-1, 1):
-            make_box(f"CoffeeTable_Leg_{lx_:+d}_{ly_:+d}", (-0.25 + lx_ * 0.26, 1.40 + ly_ * 0.21, 0.21), (0.04, 0.04, 0.42), (0.42, 0.30, 0.22, 1.0))
+            make_box(f"CoffeeTable_Leg_{lx_:+d}_{ly_:+d}", (-0.25 + lx_ * 0.26 + 1.5500, 1.40 + ly_ * 0.21 + 0.1500, 0.21), (0.04, 0.04, 0.42), (0.42, 0.30, 0.22, 1.0))
     # Remote body
     make_box("Remote_Body",
              (remote_x, remote_y, remote_top_z + 0.014),

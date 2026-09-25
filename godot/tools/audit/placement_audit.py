@@ -38,6 +38,22 @@ WALL_CLASS = re.compile(r"dresser|wardrobe|armoire|bookcase|bookshelf|shelf_body
 NOT_SLAB = re.compile(r"door|window|win_|glass|poster|mirror|curtain|blind|shutter|screen|panel|sign|board|banner|flag|sheet|cloth|drape|shade|ladder|pipe|post|column|pillar|stud|jamb|casing|header|trim|frame|rail|fence|gate|tree|trunk|pole|lamp|light|hose|cord|cable|conduit|duct|vent|chimney|flue|stack|silhouette|cutout|figure|person|body|bar$|counter|partition_glass|rack|case|shelf|shelv|cabinet|locker|fridge|cooler|vending|machine|booth|stall|divider|hedge|bush|shrub|awning|canopy|roof|eave|gutter|face|side|end|top|lid|hood|bed|mattress|pew|bench|altar|organ|piano|kiosk|column|tower|silo|tank|drum|barrel|crate|pallet|stack", re.I)
 BED = re.compile(r"(^|_)(bed|cot|bunk)(_mattress|_frame|_platform)?$", re.I)
 IGN = re.compile(r"(^|_)(floor|ceil|ceiling|rug|mat|carpet|slab|base|kick|toe|seam|stain|wear|decal|shadow)(_|$)", re.I)
+# Pieces that stand free ON PURPOSE (2026-09-25), named so the audit can
+# gate: (locale, name-prefix) → why.
+DELIBERATE = {
+    ("asylum_ward_c", "Nurse_Desk"): "a nurse station in the ward's middle",
+    ("asylum_ward_c", "Radiator"): "under the E window bay, its back on the wainscot tile (a 1.2 m wall the wall rule is too short to see)",
+    ("cabin_interior", "Stove"): "a wood stove keeps its clearance off the wall",
+    ("cedar_tower", "Reception_Desk"): "a reception desk faces the doors",
+    ("cosmic_comics_back_office", "Milk_Crate"): "Sam's seat, opposite the desk",
+    ("nexcorp_gas_go", "Locker_Bench"): "a locker-room bench between the rows",
+    ("houston_office", "Office_PartN"): "the manager office's L — meets Office_PartE",
+    ("houston_office", "Office_PartE"): "the manager office's L — meets Office_PartN",
+}
+
+
+def deliberate(loc, name):
+    return any(l == loc and name.startswith(pre) for (l, pre) in DELIBERATE)
 
 
 def interior(boxes):
@@ -92,7 +108,7 @@ def audit(loc, boxes):
     for stem, parts in pieces.items():
         n = max(parts, key=lambda b: b[2][0] * b[2][1] * b[2][2])[0]
         c, h = union(parts)                        # the whole piece, not its biggest part
-        if min(h[0], h[1]) < 0.05:
+        if deliberate(loc, n) or min(h[0], h[1]) < 0.05:
             continue                               # a face panel or a handle on something else (a dishwasher front in a counter run)
         w = nearest_wall(c, h, walls)
         if w and w[1] <= 0.12:
@@ -112,7 +128,7 @@ def audit(loc, boxes):
         if not anchored:
             out.append(("OFF_WALL", n, "%.2f m off %s" % (w[1], w[0]) if w else "no wall in line"))
     for n, c, h in inside:
-        if 2 * h[2] < 1.7 or min(h[0], h[1]) > 0.125 or max(h[0], h[1]) < 0.3 or WALL.search(n) or NOT_SLAB.search(n) or c[2] - h[2] > 0.3:
+        if 2 * h[2] < 1.7 or min(h[0], h[1]) > 0.125 or max(h[0], h[1]) < 0.3 or WALL.search(n) or NOT_SLAB.search(n) or c[2] - h[2] > 0.3 or deliberate(loc, n):
             continue
         ax = 0 if h[0] < h[1] else 1
         lat = 1 - ax
@@ -169,7 +185,7 @@ def main():
             tot[kind] += 1
             print("%-9s %-28s %-28s %s" % (kind, loc, name, what))
     print("placement_audit · OFF_WALL %d · FREE_SLAB %d · HALF_SLAB %d · TIGHT %d" % (tot["OFF_WALL"], tot["FREE_SLAB"], tot["HALF_SLAB"], tot["TIGHT"]))
-    return 0
+    return 1 if sum(tot.values()) else 0          # a gate since 2026-09-25 (DELIBERATE names the exceptions)
 
 
 if __name__ == "__main__":

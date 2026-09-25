@@ -127,7 +127,7 @@ def build_dresser():
 
 def build_footlocker():
     # Steel footlocker at the foot of the bed + a canvas duffel beside it.
-    fx, fy = -1.05, 1.10
+    fx, fy = -1.05, 2.38   # at the bed's foot (its mattress starts at y 2.89) — 2026-09-25: it stood 1.5 m short of it, mid-floor
     # out of the door's swing (2026-09-24, the user: doorways obstructed)
     make_box("Locker_Body", (fx, fy + 0.250, 0.20), (1.00, 0.48, 0.40), COL_DARK)
     make_box("Locker_Lid", (fx, fy + 0.250, 0.42), (1.02, 0.50, 0.06), (0.30, 0.28, 0.26, 1.0))

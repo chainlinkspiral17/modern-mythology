@@ -326,6 +326,14 @@ Every ending's reading now carries the arcana's record. The design
 row's Claude-side items are through; what remains on it is Deck-
 gated (the bursts) or user-gated (Salmonberry).
 
+**Status (2026-09-25, night) · draft 37 · the sheet diffs itself.**
+`contact_diff.py <old> <new>` says which frames changed between two
+sheets and by how much, so "is this progress or breakage" is a table,
+not a feeling. Two moods (memory_warm, dream_blur) are film grain and
+always differ; everything else that moves has a commit behind it.
+Placement gates at zero with DELIBERATE naming the free-standing
+pieces. Roadmap: THIRTY-SEVENTH PASS.
+
 **Status (2026-09-25, evening) · draft 35 · against the wall, or
 dropped.** The user's verdict on the complete sheet: objects hanging
 out mid-room, a door behind a sign, a cramped bedroom. `placement_
