@@ -206,8 +206,11 @@ and **"The Box"** (December 21, 2014).
 
 Cadence, venues, the two sabbaticals, the 2018–2020 burnout and
 the private era are in `drift_wood/publication_history.md`. The
-scope of what the book shows (~200 units of ~10,000) and every
-year 1997–2027 are in `drift_wood/_SCOPE_AND_YEARS.md`.
+edition — about 1,500 pages of finished material, a two-volume
+physical set (*DRIFT WOOD*, *ROFLCOPTER*) and one digital edition,
+selected from the ~10,000-strip archive — and the complete run
+roughed arc by arc are in `drift_wood/_THE_COMPLETE_RUN.md`; every
+year 1997–2027 is in `drift_wood/_SCOPE_AND_YEARS.md`.
 Drafted strips for every era are in `drift_wood/sample_strips.md`.
 
 ### The phantom graphic novel
@@ -356,14 +359,17 @@ strip's own panel grid as the presentation. Decision reserved.
    with the delusion-and-leak samples.
 8. **`drift_wood/arthur_finch.md`** and the other three character
    files, read as inference documents.
-9. **`drift_wood/_SCOPE_AND_YEARS.md`** — how much of the archive
-   the book shows, and every year 1997–2027.
-10. **`drift_wood/_ARC_OUTLINE.md`** — the book's structure as runs
+9. **`drift_wood/_THE_COMPLETE_RUN.md`** — the edition (~1,500
+   pages, two physical volumes and a digital one), the selection
+   principle, and the complete run roughed arc by arc.
+10. **`drift_wood/_SCOPE_AND_YEARS.md`** — every year 1997–2027, the
+    per-year spine.
+11. **`drift_wood/_ARC_OUTLINE.md`** — the book's structure as runs
     of strips and the proposed scene-id plan.
-11. **`drift_wood/_CONCEPT_ART.md`** — the September 2026 sheet.
-12. **`_VOL7_WIKI.md`** — only for the Smolvud echoes and the far
+12. **`drift_wood/_CONCEPT_ART.md`** — the September 2026 sheet.
+13. **`_VOL7_WIKI.md`** — only for the Smolvud echoes and the far
     horizon.
-13. **Vol 2's title scene** — there is no vol 2 wiki; read
+14. **Vol 2's title scene** — there is no vol 2 wiki; read
    `godot/resources/scenes/vol2/vol2_title.json` for the found-
    notebook frame if the nesting matters to the chapter at hand.
 
