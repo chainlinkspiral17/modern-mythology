@@ -326,6 +326,12 @@ Every ending's reading now carries the arcana's record. The design
 row's Claude-side items are through; what remains on it is Deck-
 gated (the bursts) or user-gated (Salmonberry).
 
+**Status (2026-09-26) · draft 38 · the first road gets a second
+draft.** Highway 101 at dusk: reflectors on the rail, a car's
+taillights ahead, the last light over the sea — the three things the
+first frame lacked. The diner's last OPENING was a leaf drawn proud of
+a continuous wall. Roadmap: THIRTY-EIGHTH PASS.
+
 **Status (2026-09-25, night) · draft 37 · the sheet diffs itself.**
 `contact_diff.py <old> <new>` says which frames changed between two
 sheets and by how much, so "is this progress or breakage" is a table,

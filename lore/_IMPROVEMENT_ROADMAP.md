@@ -2885,6 +2885,29 @@ the "door-like polygons" — still unlocated (FREE_SLAB and HALF_SLAB
 find nothing outside Houston's L); the diner's 0.98 m opening beside
 the Precipice Door; the roads' second draft.
 
+THIRTY-EIGHTH PASS. Sheet from fcdb082d (labelled "from
+claude/meshy-image-generation-w92vr6@fcdb082d": the Deck's checkout
+carries that branch NAME — the user's reset put our commit under it;
+the real meshy work, 128 commits of Hero Studio / roster / keys, is
+safe on origin). contact_diff: 9 changed, 7 of them film grain; the
+safehouse footlocker reads at the bed's foot; Miller's phone insert
+is a counter still-life with the phone at the left edge — a draft.
+Simon's apartment has no preset on the sheet at all (no vn_shot
+frames it) — it can only be judged in the game.
+· THE DINER'S OPENING was a false alarm: the Precipice Door stands
+  3 cm proud of a continuous wall; the fill test's plane tolerance
+  went 2 → 8 cm. OPENING 0.
+· HIGHWAY 101, DRAFT 2 (`build_dusk_dressing_2026_09`): amber
+  reflectors on every guardrail post's road face over the visible
+  stretch (y -40..155), a sedan 190 m up the lane with its taillights
+  to the truck, a warm band 600 m out over the sea haze. The builder
+  carries its own NEXT (dashboard glow, wet asphalt, the marker lit
+  at the turn).
+NEXT (draft 39): small_wood_road's second draft (it is template +
+props: the house's window lit, a porch light, the mailboxes'
+reflectors, a car in the drive); the "door-like polygons" — ask the
+user for a locale; the 46 nightmare-cell dots, verified on the sheet.
+
 NEXT (draft 36, as written): judge the moved pieces on the sheet (ben, jesse, sam,
 safehouse, the seven kitchens); name the 13 deliberate OFF_WALL pieces
 (a `free=True` tag or a name class) and gate placement; simon's TV on

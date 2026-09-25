@@ -131,8 +131,8 @@ def audit(loc, boxes):
                 continue
             mid = [0.0, 0.0, z0 + 1.0]
             mid[ax], mid[lat] = c[ax], (gap_lo + gap_hi) / 2.0
-            filled = any(all(abs(mid[i] - c2[i]) < h2[i] + (0.02 if i == ax else 0.0) for i in range(3))
-                         and max(h2) > 0.3 for n2, c2, h2 in boxes if n2 != n)
+            filled = any(all(abs(mid[i] - c2[i]) < h2[i] + (0.08 if i == ax else 0.0) for i in range(3))
+                         and max(h2) > 0.3 for n2, c2, h2 in boxes if n2 != n)   # a leaf drawn on a wall's face stands a few cm proud of it (the diner's Precipice door, 2026-09-25)
             if not filled:
                 out.append(("OPENING", n, "%.2f m of daylight on the %s side" % (gap_hi - gap_lo, tag), 0))
     return out

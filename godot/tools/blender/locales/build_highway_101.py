@@ -140,12 +140,37 @@ def build_horizon():
     make_box("Sea_Horizon_Haze", (-320.0, 0.0, 6.0), (30.0, 2600.0, 12.0), (0.74, 0.78, 0.80, 1.0))
 
 
+def build_dusk_dressing_2026_09():
+    """Draft 2 (2026-09-25) — the first sheet with this road on it read
+    as a road at dusk and nothing else: a flat grey sky, black cedars,
+    an unlit rail. What dusk on 101 has that the frame lacked:
+      · REFLECTORS — an amber lens on every guardrail post's road face,
+        the one thing on a coast rail that reads at dusk;
+      · A CAR AHEAD — a sedan northbound 190 m up the lane, its
+        taillights toward the truck (the kit puts red lenses on the tail);
+      · THE LAST LIGHT — a warm band 600 m out over the sea haze, the
+        sun gone but not its colour.
+    NEXT (draft 3): the truck's dashboard glow on the hood preset; wet
+    asphalt after the ch22 rain (a darker lane with a sheen band); the
+    green Old Yachats marker lit by the headlights at the turn preset."""
+    y = ROAD_NEAR + 0.4
+    i = 0
+    while y < 154.55:
+        if y > -40.0:
+            make_box("Guardrail_Reflector_%d" % i, (-5.35, y, 0.71), (0.02, 0.06, 0.06), (0.98, 0.84, 0.30, 1.0))
+        y += 3.8
+        i += 1
+    make_car("Far_Sedan_Northbound", 1.8, 198.0, 4.6, (0.30, 0.32, 0.36, 1.0), along="Y", z0=0.02)
+    make_box("Far_Dusk_Glow", (-600.0, 0.0, SEA_Z + 30.0), (40.0, 2600.0, 28.0), (0.96, 0.66, 0.38, 1.0))
+
+
 def main():
     clear_scene()
     build_road()
     build_inland()
     build_headland_and_turn()
     build_horizon()
+    build_dusk_dressing_2026_09()
     out = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)), "../../../assets/3d/locales/highway_101.glb"))
     print(f"\n[build_highway_101] exporting to {out}")
     export_glb(out)
