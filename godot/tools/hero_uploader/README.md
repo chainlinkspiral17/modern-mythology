@@ -14,12 +14,16 @@ truth for names, canonical filenames, speaker keys and prompts.
 
 ## Run it (Steam Deck)
 
-Keys go in env vars or gitignored files next to the script — only the
-providers you use need a key:
+Keys go in gitignored files next to the script (or env vars). Only the
+providers you use need a key. Paste them interactively — this prompts
+for each one with hidden input, saves it, and tests it:
 
 ```bash
-cd /home/deck/Downloads/modern-mythology && echo 'msy_...' > godot/tools/.meshy_key && echo 'AIza...' > godot/tools/.google_key && echo 'key_...' > godot/tools/.runway_key
+cd /home/deck/Downloads/modern-mythology && python3 godot/tools/meshy_pipeline.py keys
 ```
+
+(Do not `echo 'msy_...'` a placeholder into the file — `doctor` will
+call that out as "not a key".)
 
 Or paste them in the page: **KEYS** (top right) saves each key to those
 files and tests it with one cheap authenticated call. To check from the

@@ -39,6 +39,7 @@ Usage:
   python3 godot/tools/meshy_pipeline.py mesh frasier_temple --texture
   python3 godot/tools/meshy_pipeline.py run all --provider google --texture --dry-run
   python3 godot/tools/meshy_pipeline.py serve                    # http://127.0.0.1:8765/hero_uploader/
+  python3 godot/tools/meshy_pipeline.py keys                     # paste keys (hidden), save + test
   python3 godot/tools/meshy_pipeline.py doctor                   # where are the keys, do they work
 
 Selectors are roster slugs, globs on slug, `vol5`/`vol6`/`vol7`,
@@ -245,7 +246,9 @@ def save_key(provider, raw):
 def mask_key(k):
     if not k:
         return ""
-    return k[:6] + "…" + k[-4:] if len(k) > 12 else k[:3] + "…"
+    if len(k) > 12:
+        return f"{k[:6]}…{k[-4:]} ({len(k)} chars)"
+    return f"{k[:3]}… ({len(k)} chars)"
 
 
 def _classify_http_error(msg, provider):
@@ -268,10 +271,31 @@ def _classify_http_error(msg, provider):
     return msg[-240:]
 
 
+PLACEHOLDER_RE = re.compile(r"^(AIza|key_|msy_)?[.…_\-x*]*$", re.I)
+MIN_KEY_LEN = 20
+
+
+def placeholder_reason(key):
+    """Why this string cannot be a real key ('' if it might be)."""
+    if not key:
+        return ""
+    if PLACEHOLDER_RE.match(key) or key.endswith("...") or key.endswith("…"):
+        return (f"this is the placeholder text {key!r} from the README, not a key — "
+                "paste the real key (Hero Studio → KEYS, or: meshy_pipeline.py keys)")
+    if len(key) < MIN_KEY_LEN:
+        return f"only {len(key)} characters — real keys are 35+; paste the whole key"
+    if " " in key:
+        return "contains a space — paste only the key"
+    return ""
+
+
 def check_key(provider, key):
     """One cheap authenticated call per provider. Returns {ok, message}."""
     if not key:
         return {"ok": False, "message": "no key: " + KEY_PREFIX_HINT[provider][1]}
+    why = placeholder_reason(key)
+    if why:
+        return {"ok": False, "message": "not a key: " + why}
     warn = ""
     pref = KEY_PREFIX_HINT[provider][0]
     if not key.startswith(pref):
@@ -313,6 +337,43 @@ def key_report(providers=None, check=True):
     return out
 
 
+def cmd_keys(args):
+    """Interactive: prompt for each key (input hidden), save, test."""
+    import getpass
+    provs = args.providers or list(KEY_FILES)
+    bad = [x for x in provs if x not in KEY_FILES]
+    if bad:
+        sys.exit(f"unknown provider(s) {bad}; choose from {sorted(KEY_FILES)}")
+    print("Paste each key and press Enter (input is hidden; leave blank to keep the current one).")
+    for prov in provs:
+        cur, src = key_source(prov)
+        hint = KEY_PREFIX_HINT[prov][1]
+        print(f"\n{prov}: {hint}")
+        if cur:
+            print(f"  current: {mask_key(cur)} from {src}")
+        try:
+            raw = getpass.getpass(f"  {prov} key: ")
+        except (EOFError, KeyboardInterrupt):
+            print("\naborted"); return 1
+        k = clean_key(raw)
+        if not k:
+            print("  (kept)")
+            continue
+        why = placeholder_reason(k)
+        if why:
+            print(f"  NOT SAVED — {why}")
+            continue
+        kf = save_key(prov, k)
+        print(f"  saved → {rel(kf)}  ({mask_key(k)})")
+        r = check_key(prov, k)
+        print(f"  test: {'OK' if r['ok'] else 'BAD'} — {r['message']}")
+        env_set = [e for e in KEY_ENVS[prov] if os.environ.get(e)]
+        if env_set:
+            print(f"  note: env {env_set[0]} is set in this shell and takes precedence over the file")
+    print("\nrun `meshy_pipeline.py doctor` any time to re-test.")
+    return 0
+
+
 def cmd_doctor(args):
     print(f"repo: {REPO.parent}")
     print(f"key files live in: {rel(TOOLS)}/  (.google_key  .runway_key  .meshy_key — gitignored)\n")
@@ -321,13 +382,14 @@ def cmd_doctor(args):
     for prov, r in rep.items():
         state = "OK " if r["ok"] else ("-- " if r["ok"] is None else "BAD")
         src = r["source"] or "MISSING"
-        print(f"[{state}] {prov:7} {src:34} {r['masked']:16} {r['message']}")
+        print(f"[{state}] {prov:7} {src:34} {r['masked']:26} {r['message']}")
         if r["ok"] is False:
             bad += 1
             if not r["present"]:
                 print(f"        → export {r['env']}=…   or   echo '…' > {r['file']}")
     if bad:
-        print("\nfix the BAD rows above; Hero Studio → KEYS can save + test them too.", file=sys.stderr)
+        print("\nfix the BAD rows above:  python3 godot/tools/meshy_pipeline.py keys   (or Hero Studio → KEYS)",
+              file=sys.stderr)
     return 1 if bad else 0
 
 
@@ -1245,6 +1307,9 @@ def make_handler(runner, roster_path):
                 if prov not in KEY_FILES:
                     return self._json({"error": "provider must be google|runway|meshy"}, 400)
                 if req.get("key"):
+                    why = placeholder_reason(clean_key(req["key"]))
+                    if why:
+                        return self._json({"error": "not saved — " + why}, 400)
                     try:
                         kf = save_key(prov, req["key"])
                     except (ValueError, OSError) as ex:
@@ -1394,6 +1459,9 @@ def main():
     p = sub.add_parser("run", help="image then mesh")
     common_opts(p); add_image_opts(p); add_mesh_opts(p)
 
+    p = sub.add_parser("keys", help="paste the API keys interactively (hidden input), save + test them")
+    p.add_argument("providers", nargs="*", help="google runway meshy (default: all)")
+
     p = sub.add_parser("doctor", help="find + test the API keys (one cheap call per provider)")
     p.add_argument("providers", nargs="*", help="google runway meshy (default: all)")
     p.add_argument("--no-check", action="store_true", help="only report where keys were found")
@@ -1403,6 +1471,8 @@ def main():
     p.add_argument("--port", type=int, default=8765)
 
     args = ap.parse_args()
+    if args.cmd == "keys":
+        return cmd_keys(args)
     if args.cmd == "doctor":
         bad = [x for x in args.providers if x not in KEY_FILES]
         if bad:
