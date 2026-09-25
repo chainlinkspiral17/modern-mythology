@@ -1,6 +1,8 @@
 # CHLOE STERLING · the harshest mirror
 ## Small Wood → Seattle / Chicago / Europe / Portland → Todd's dock
 
+*An inference document. In the panels she is the strip's Chloe; whether the real woman is Chloe Sterling is something the bookends establish, if anything does. Lean: she writes the afterword. See `_AUTHORIAL_RULE.md`, `foreword_afterword.md`.*
+
 Arthur's intellectual equal and the only person in Small Wood who
 could deconstruct his pretenses before he finished speaking. In the
 late 1990s: *The Timberline*'s culture editor, smudged black

@@ -225,14 +225,18 @@ editor comes for the boxes of dailies and finds boxes 21 through
 40 — six years of pages no one has seen, signed with the name she
 came expecting to have to explain away.
 
-What happens next is the volume's last decision, and it is reserved
-with a lean: **the retrospective publishes Drift Wood; ROFLCOPTER
-stays private.** The editor has seen it. The reader has seen it.
-Arthur does not need it to be seen by anyone else, and that is the
-thing he could not have said at seventeen. The final page (April
-2027) is a ROFLCOPTER page. It's the one in the brief: the bay, the
-chimney, the mug, the tide line, the sandpipers, the cedar branch
-going out. Signed *Arthur Finch, 1997–2027.*
+**His work is published.** That is the happy ending, per the user,
+and the lean is that *both halves* are: the book is *Drift Wood*
+and then *ROFLCOPTER*, with a foreword and an afterword that tell
+the author's life and hardships in prose — the only place in the
+volume he is seen. The final page (April 2027) is the last page of
+the book: the bay, the chimney, the mug, the tide line, the
+sandpipers, the cedar branch going out. Signed *Arthur Finch,
+1997–2027.* Then the afterword.
+
+The specter of his own life is foreshadowed in the pages; the
+afterword points back at them. Whether he is alive to see the book
+is reserved (`foreword_afterword.md`).
 
 ---
 

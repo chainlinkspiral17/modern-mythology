@@ -17,19 +17,28 @@ synthesizing wiki is `../_VOL10_WIKI.md`.
 | file | what |
 |---|---|
 | `_SOURCE_BRIEF.md` | the user's September 2026 brief, transcribed in full. The root document; everything else is derived from it |
+| `_AUTHORIAL_RULE.md` | **we don't see the author, but we feel him.** The governing rule: the volume is the strip; Wood is not Arthur; delusion and leak in the same panel; epiphanies are weather. Read first |
+| `foreword_afterword.md` | the bookends — the only prose, the only place the author is seen; the ending (the work is published; the specter foreshadowed); who writes them; the foreshadowing index |
 | `_CONCEPT_ART.md` | the September 2026 character/environment sheet, described, with where it departs from the brief |
 | `_ARC_OUTLINE.md` | the five arcs as chapters; proposed scene-id plan; the strip-as-presentation question |
 | `the_strip.md` | *Drift Wood* → *ROFLCOPTER* as an artifact: the names, the four eras, the motifs, the two fully-specified Sunday pages |
 | `publication_history.md` | the five cadences (biweekly · weekday-daily · newspaper · sabbaticals · private), the 2006 meme incident, the 2018–2020 burnout, the personal voyage |
 | `sample_strips.md` | drafted strips for every era, including the last public Sunday and the first private page |
-| `arthur_finch.md` | Arthur "Woody" Finch |
-| `chloe_sterling.md` | Chloe Sterling |
-| `todd_gulliver.md` | Todd "Gully" Gulliver |
-| `barnaby.md` | Barnaby, and Barnaby II |
+| `arthur_finch.md` | Arthur "Woody" Finch — the author, never on the page; what the strip lets us infer |
+| `chloe_sterling.md` | Chloe Sterling — as inferred from the strip's Chloe and (lean) the afterword |
+| `todd_gulliver.md` | Todd "Gully" Gulliver — as inferred from the strip's Gully |
+| `barnaby.md` | Barnaby, and Barnaby II — three silent Sundays and a margin mark |
 
 ## the shape
 
-Works within works. The strip is inside the retrospective, which is
+```
+FOREWORD
+  Drift Wood · 1997–2020     the public strip, in runs
+  ROFLCOPTER · 2021–2027     the private pages
+AFTERWORD
+```
+
+We don't see the author. Works within works. The strip is inside the retrospective, which is
 inside the volume, which is inside the saga. Vol 2, *Small Wood
 Volumes*, was a found notebook about the same town; vol 10 is a
 found archive about the same town. The saga's continuity is felt,

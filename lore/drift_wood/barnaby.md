@@ -1,6 +1,8 @@
 # BARNABY · and BARNABY II · the sentry
 ## Under the drafting table · 1999–2014 · 2014–
 
+*An inference document. No strip says the dog died; three silent Sundays and a flat stroke in the margin do. This is the model for every fact in the volume. See `_AUTHORIAL_RULE.md`.*
+
 Barnaby does not talk. He does not have thought bubbles. His
 presence is entirely behavioral — brushwork and posture, after
 Watterson's observation of animal weight and motion. He is the
