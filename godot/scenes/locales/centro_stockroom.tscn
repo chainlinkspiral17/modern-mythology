@@ -325,8 +325,8 @@ script = ExtResource("14_dbgm")
 
 ; insert: the rust-colored thermal smear on the far horizon
 [node name="shot_insert_smear" type="Marker3D" parent="." groups=["vn_shot"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0, 1.65, -10.0)
-rotation = Vector3(0.2190, 0.0, 0.0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0, 1.65, -18.0)
+rotation = Vector3(0.3200, 0.0, 0.0)   ; 16 m off the ridge band, not 24 (2026-09-25)
 metadata/fov = 42.0
 ; (2026-09-24: the smear is on the eastern HORIZON above the cedar —
 ; the camera stood 2 m from it looking up at a slab; now from the dock)

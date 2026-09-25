@@ -305,6 +305,12 @@ def build_hero_props_2026_09():
              (0.60, 0.56, 0.50, 1.0))
 
 
+
+def build_door_infill_door_leaf_2026_09():
+    """Door_Leaf was narrower than its wall opening (the user, 2026-09-24:
+    "doorways ... misaligned"): close the gap to the door and its frame."""
+    make_wall("Door_Leaf_Fill_E", (0.450, 0.000, 0), length=1.100, height=2.000, axis='X', palette=PAL_WALL, baseboard_face_sign=+1)
+
 def main():
     clear_scene()
     build_shell()
@@ -327,6 +333,7 @@ def main():
     build_hero_props_2026_09()
     out = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)),
         "../../../assets/3d/locales/safehouse_bedroom.glb"))
+    build_door_infill_door_leaf_2026_09()
     print(f"\n[build_safehouse_bedroom] exporting to {out}")
     export_glb(out)
 

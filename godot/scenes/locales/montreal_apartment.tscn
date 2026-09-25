@@ -334,14 +334,14 @@ metadata/fov = 42.0
 
 ; insert: the dust motes in the late-morning shaft
 [node name="shot_insert_dust" type="Marker3D" parent="." groups=["vn_shot"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0, 1.35, -3.5)
-rotation = Vector3(0, 0, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0, 0.90, -3.2)
+rotation = Vector3(0.35, 0, 0)   ; low, tilted up into the window's light with the motes between (2026-09-25: level, it saw only the lit wall)
 metadata/fov = 42.0
 
 ; insert: the graffiti-scarred drainpipe, when the light hits it
 [node name="shot_insert_drainpipe" type="Marker3D" parent="." groups=["vn_shot"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.015, 1.912, -5.919)
-rotation = Vector3(-0.2618, -0.2618, 0.0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.022, 1.662, -7.200)
+rotation = Vector3(-0.0808, -1.5528, 0.0)   ; in the alley, looking back up the pipe (2026-09-25: it looked at the pipe through the window glass, which is opaque here)
 metadata/fov = 42.0
 
 ; the room's one closeup frame, authored by marker_author.py --closeup (2026-09-10):

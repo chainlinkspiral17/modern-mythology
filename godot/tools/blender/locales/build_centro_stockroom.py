@@ -252,7 +252,7 @@ def build_hero_props_2026_09():
     make_box("Hands_Bale_Grip_A", (2.75, 0.40, 0.7015), (0.12, 0.08, 0.003), (0.56, 0.46, 0.32, 1.0))
     make_box("Hands_Bale_Grip_B", (3.05, 0.40, 0.7015), (0.12, 0.08, 0.003), (0.56, 0.46, 0.32, 1.0))
     make_box("Far_Cedar_Band", (0.0, 30.0, 3.0), (24.0, 2.0, 6.0), (0.14, 0.18, 0.14, 1.0))
-    make_box("Thermal_Smear", (0.0, 34.0, 7.0), (30.0, 0.4, 1.6), (0.62, 0.30, 0.16, 0.45))
+    make_box("Thermal_Smear", (0.0, 34.0, 7.0), (30.0, 0.4, 2.4), (0.98, 0.62, 0.34, 1.0))   # the last light on the ridge — hot enough to survive dusk's ambient (2026-09-25: its insert was black on every sheet)
     # The dock view is an EXTERIOR now (stump-hunt horizon rule):
     # ground past the apron and receding treeline bands north.
     from _props.detail import make_far_bands

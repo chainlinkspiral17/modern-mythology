@@ -133,6 +133,12 @@ def build_shell():
     make_wall("Wall_S_E", (+2.30, 0.0, 0),
               length=2.40, height=CEIL_Z, axis='X',
               palette=PAL_APT_WALL, baseboard_face_sign=+1)
+    # the opening is x -1.10..1.10 and the leaf -1.10..-0.20: the wall
+    # closes the 1.3 m of daylight east of it, under Wall_S_AboveDoor
+    # (2026-09-25, doorway_audit OPENING)
+    make_wall("Wall_S_DoorFill_E", (0.45, 0.0, 0),
+              length=1.30, height=CEIL_Z - 0.60, axis='X',
+              palette=PAL_APT_WALL, baseboard_face_sign=+1)
     make_box("Wall_S_AboveDoor", (0.0, 0.0, CEIL_Z - 0.30),
              (3.00, 0.20, 0.60), PAL_APT_WALL["wall"])
     make_ceiling("Ceil", (0.0, ROOM_D / 2.0, CEIL_Z),

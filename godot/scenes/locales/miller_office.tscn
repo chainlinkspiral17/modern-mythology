@@ -200,8 +200,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00, 1.20, -2.10)
 rotation = Vector3(-0.40, 0.00, 0.0)   ; the walnut desk
 
 [node name="shot_insert_window" type="Marker3D" parent="." groups=["vn_shot"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.586, 1.900, -5.302)
-rotation = Vector3(-0.5236, -1.8326, 0.0)   ; the north window
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.400, 1.700, -4.200)
+rotation = Vector3(-0.154, -0.427, 0.0)   ; the north window, from inside the room (2026-09-25: the lens stood beyond the N wall, in the dark)
 
 [node name="shot_insert_cabinet" type="Marker3D" parent="." groups=["vn_shot"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.577, 1.812, -3.890)

@@ -114,13 +114,34 @@ def audit(loc, boxes):
                     break
         if not walled:
             out.append(("ADRIFT", n, "", 0))
+        # OPENING (2026-09-25, report only): the leaf is narrower than the
+        # gap between the wall ends either side of it, and nothing fills
+        # the difference — Lena's front door passed ADRIFT (a header
+        # spanned it) with 55 cm of daylight each side.
+        if re.search(r"open|swing|ajar", n, re.I) or (hosts and not any(WALLISH.search(hn) for hn in hosts)):
+            continue                               # a swung leaf's plane is not the wall's; a massing has no wall ends
+        walls = [(c2, h2) for n2, c2, h2 in boxes
+                 if n2 != n and WALLISH.search(n2) and not DOOR.search(n2)
+                 and h2[2] >= 0.8 and 2 * h2[ax] <= 0.5 and abs(c2[ax] - c[ax]) <= h2[ax] + h[ax] + 0.25]
+        lo, hi = c[lat] - h[lat], c[lat] + h[lat]
+        left = [c2[lat] + h2[lat] for c2, h2 in walls if c2[lat] + h2[lat] <= lo + 0.15 and c2[lat] + h2[lat] > lo - 2.5]
+        right = [c2[lat] - h2[lat] for c2, h2 in walls if c2[lat] - h2[lat] >= hi - 0.15 and c2[lat] - h2[lat] < hi + 2.5]
+        for gap_lo, gap_hi, tag in ((max(left), lo, "-") if left else (None, None, ""), (hi, min(right), "+") if right else (None, None, "")):
+            if gap_lo is None or gap_hi - gap_lo <= 0.12:
+                continue
+            mid = [0.0, 0.0, z0 + 1.0]
+            mid[ax], mid[lat] = c[ax], (gap_lo + gap_hi) / 2.0
+            filled = any(all(abs(mid[i] - c2[i]) < h2[i] + (0.02 if i == ax else 0.0) for i in range(3))
+                         and max(h2) > 0.3 for n2, c2, h2 in boxes if n2 != n)
+            if not filled:
+                out.append(("OPENING", n, "%.2f m of daylight on the %s side" % (gap_hi - gap_lo, tag), 0))
     return out
 
 
 def main():
     only = [a for a in sys.argv[1:] if not a.startswith("-")]
     P.A.install_stubs()
-    tot = {"BLOCKED": 0, "ADRIFT": 0}
+    tot = {"BLOCKED": 0, "ADRIFT": 0, "OPENING": 0}
     n_doors = 0
     for fn in sorted(os.listdir(LOCALES)):
         if not (fn.startswith("build_") and fn.endswith(".py")):
@@ -134,8 +155,8 @@ def main():
         for kind, door, what, side in audit(loc, boxes):
             tot[kind] += 1
             print("%-8s %-28s %-30s %s" % (kind, loc, door, ("%s (side %+d)" % (what, side)) if what else ""))
-    print("doorway_audit · BLOCKED %d · ADRIFT %d" % (tot["BLOCKED"], tot["ADRIFT"]))
-    return 1 if (tot["BLOCKED"] or tot["ADRIFT"]) else 0     # a gate since 2026-09-25
+    print("doorway_audit · BLOCKED %d · ADRIFT %d · OPENING %d (report)" % (tot["BLOCKED"], tot["ADRIFT"], tot["OPENING"]))
+    return 1 if (tot["BLOCKED"] or tot["ADRIFT"]) else 0     # a gate since 2026-09-25 (OPENING reports only)
 
 
 if __name__ == "__main__":

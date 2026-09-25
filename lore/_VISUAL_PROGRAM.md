@@ -326,6 +326,14 @@ Every ending's reading now carries the arcana's record. The design
 row's Claude-side items are through; what remains on it is Deck-
 gated (the bursts) or user-gated (Salmonberry).
 
+**Status (2026-09-25, later) · draft 34 · the first complete sheet.**
+1559 frames, all 122 locales, no skips; the seven frames that had
+screened black or flat on every sheet each had a cause (a lens beyond
+a wall, a lens looking through opaque glass, motes too small to see,
+a dark plank at 1 m, a far dark band) and each is moved or rebuilt.
+doorway_audit reports OPENING (a leaf narrower than its wall gap);
+four filled. Roadmap: THIRTY-FOURTH PASS.
+
 **Status (2026-09-25) · draft 33 · the lens sees the roads.** Two
 locales had been skipped on every sheet since the rig began:
 highway_101 and small_wood_road. Not the builds — a three-argument

@@ -2279,7 +2279,8 @@ def build_riverboat_galley():
              0.010, 4.75 + 7.30,
              COL_BRASS, segments=4, axis='X')
     # (ticket 3 at -1.3: at -1.8 it hung through the soda fountain, 2026-09-23)
-    for ti, tx in enumerate([-7.0, -5.5, -3.5, -1.3, +0.5, +2.0, +3.5]):
+    # (ticket 2 at -2.6: at -3.5 it hung through the dessert stand's dome, 2026-09-25)
+    for ti, tx in enumerate([-7.0, -5.5, -2.6, -1.3, +0.5, +2.0, +3.5]):
         make_box(f"Galley_Ticket_{ti}",
                  (tx, expo_cy - 0.05, 1.45),
                  (0.10, 0.005, 0.18), (0.92, 0.88, 0.74, 1.0))

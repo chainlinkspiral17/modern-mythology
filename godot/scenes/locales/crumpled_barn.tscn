@@ -320,8 +320,8 @@ rotation = Vector3(-0.2068, -1.1485, 0.0)
 metadata/fov = 35.0
 
 [node name="shot_insert_lean" type="Marker3D" parent="." groups=["vn_shot"]]
-position = Vector3(-0.083, 1.409, -7.213)
-rotation = Vector3(-0.2618, -0.5236, 0.0)
+position = Vector3(-0.900, 1.500, -6.200)
+rotation = Vector3(-0.154, -0.612, 0.0)   ; 2.3 m off the leaning board so the wall and ground frame it (2026-09-25: at 1 m the dark plank filled the frame flat)
 metadata/fov = 35.0
 
 [node name="shot_insert_cab" type="Marker3D" parent="." groups=["vn_shot"]]

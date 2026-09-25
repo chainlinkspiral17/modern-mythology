@@ -161,6 +161,12 @@ def build_hero_props():
         make_cyl(f"Drum_Stick_{si}", (-0.2, 0.9+dy, 0.02), 0.012, 0.40, (0.72, 0.58, 0.36, 1.0), segments=6, axis='Y')
 
 
+
+def build_door_infill_dr_door_2026_09():
+    """DR_Door was narrower than its wall opening (the user, 2026-09-24:
+    "doorways ... misaligned"): close the gap to the door and its frame."""
+    make_wall("DR_Door_Fill_E", (0.438, 0.000, 0), length=1.125, height=2.000, axis='X', palette=PAL_WALL, baseboard_face_sign=+1)
+
 def main():
     clear_scene()
     build_shell()
@@ -175,6 +181,7 @@ def main():
     build_hero_props()
     out = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)),
         "../../../assets/3d/locales/foxhole_dressing_room.glb"))
+    build_door_infill_dr_door_2026_09()
     print(f"\n[build_foxhole_dressing_room] exporting to {out}")
     export_glb(out)
 

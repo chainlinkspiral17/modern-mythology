@@ -191,8 +191,21 @@ banisters classed · pans as containers.
   everything it caught reads wrong on the sheet.
 - **A door can pass ADRIFT and still be misaligned**: Lena's front
   door (0.9 in a 2.0 opening) had a header spanning it, so the
-  header hosted it. NEXT: a "leaf narrower than its opening between
-  wall ends" check.
+  header hosted it. OPENING (report, same day): the nearest wall
+  ends either side of the leaf in its plane; a gap over 12 cm that
+  no box ≥ 0.3 m fills is daylight. Ten on the first run, four real
+  interiors filled. Swung leaves (`open|swing|ajar`) and doors whose
+  only hosts are massings are skipped — they have no wall ends.
+- **A frame that screens black or flat on every sheet is one of five
+  things** (2026-09-25, the seven stable ones): the lens BEYOND a
+  wall (miller office, outside the N wall); the lens looking THROUGH
+  glass at its subject (montreal's drainpipe — glass is opaque here);
+  a subject too small to see (1 cm dust motes); a dark subject on a
+  dark wall at 1 m (the barn's leaning plank); a far dark decal
+  (centro's ridge band 24 m off). Three are marker moves, two are
+  builder changes (a hot colour, a bigger band). `contact_frame_screen`
+  finds them; `vantage_obstruction --markers` does NOT — a lens in the
+  dark outside a wall casts rays that hit nothing.
 
 ### 2026-09-22 · THE SUPPORT GATE — everything stands on something
 

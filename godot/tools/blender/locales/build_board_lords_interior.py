@@ -63,7 +63,7 @@ PAL_WALL = {"wall": (0.50, 0.46, 0.42, 1.0), "baseboard": (0.24, 0.20, 0.16, 1.0
 COL_FLOOR = (0.44, 0.34, 0.24, 1.0); COL_SEAM = (0.28, 0.20, 0.14, 1.0)
 COL_WOOD = (0.42, 0.30, 0.18, 1.0)
 COL_STEEL = (0.58, 0.60, 0.62, 1.0)
-COL_GLASS = (0.55, 0.62, 0.66, 0.35)
+COL_GLASS = (0.80, 0.86, 0.90, 0.35)   # daylight in the pane — nothing is transparent here, and shot_insert_door read black off the old dark slab (2026-09-25)
 CROW_X = 4.3   # the kit pickup's cab centre (rear glass 3.61 .. windshield 5.02, recorded)
 # Deck graphics — a mixed wall of boards
 DECK_TINTS = [(0.72, 0.26, 0.22, 1.0), (0.26, 0.44, 0.62, 1.0), (0.86, 0.72, 0.26, 1.0),
@@ -79,7 +79,13 @@ def build_shell():
     # Back wall with a gap for the alley door (x ~ +3.4)
     make_wall("Wall_N_W", (-1.0, ROOM_D, 0), length=7.0, height=CEIL, axis='X', palette=PAL_WALL, baseboard_face_sign=-1)
     make_box("Wall_N_E", (4.15, ROOM_D, CEIL/2.0), (0.9, 0.20, CEIL), PAL_WALL["wall"])
-    make_box("Wall_N_AboveAlley", (3.15, ROOM_D, CEIL-0.30), (1.1, 0.20, 0.60), PAL_WALL["wall"])
+    make_box("Wall_N_AboveAlley", (3.10, ROOM_D, CEIL-0.30), (1.2, 0.20, 0.60), PAL_WALL["wall"])   # x 2.5..3.7, wall to wall (2026-09-25)
+    # the opening under it is 2.5..3.7 and the leaf 2.70..3.60: the wall
+    # closes the 20 cm and 10 cm of daylight either side and the 15 cm
+    # over the leaf (2026-09-25, doorway_audit OPENING)
+    make_wall("Alley_Door_Fill_W", (2.60, ROOM_D, 0), length=0.20, height=CEIL-0.60, axis='X', palette=PAL_WALL, baseboard_face_sign=-1)
+    make_wall("Alley_Door_Fill_E", (3.65, ROOM_D, 0), length=0.10, height=CEIL-0.60, axis='X', palette=PAL_WALL, baseboard_face_sign=-1)
+    make_box("Alley_Door_Header", (3.15, ROOM_D, 2.125), (0.90, 0.20, 0.15), PAL_WALL["wall"])
     make_wall("Wall_S_W", (-(ROOM_W/4.0+0.5), 0.0, 0), length=ROOM_W/2.0-1.0, height=CEIL, axis='X', palette=PAL_WALL, baseboard_face_sign=+1)
     make_wall("Wall_S_E", (+(ROOM_W/4.0+0.5), 0.0, 0), length=ROOM_W/2.0-1.0, height=CEIL, axis='X', palette=PAL_WALL, baseboard_face_sign=+1)
     make_box("Wall_S_AboveDoor", (0.0, 0.0, CEIL-0.30), (2.0, 0.20, 0.60), PAL_WALL["wall"])

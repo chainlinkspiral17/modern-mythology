@@ -440,7 +440,7 @@ def build_photographs_2026_09():
     at the photographs."): three prints fanned on the counter east
     of the sink."""
     for pi, (dx, dy) in enumerate(((0.0, 0.0), (0.03, 0.02), (0.06, 0.04))):
-        make_box(f"Photographs_{pi}", (-1.18 + dx, 4.95 + dy, 0.9758 + pi * 0.0012), (0.10, 0.15, 0.001), (0.78, 0.76, 0.70, 1.0))
+        make_box(f"Photographs_{pi}", (-1.18 + dx, 4.95 + dy, 0.9808 + pi * 0.0012), (0.10, 0.15, 0.001), (0.78, 0.76, 0.70, 1.0))   # on the counter top at 0.98 (2026-09-25: 4 mm inside it)
 
 
 def main():

@@ -440,7 +440,7 @@ def build_prints_2026_09():
     eight-by-tens. He hands them to Ben.") — the bag and the three
     prints fanned on the lunch counter west of the card terminal."""
     for pi, (dx, dy) in enumerate(((0.0, 0.0), (0.035, 0.02), (0.07, 0.04))):
-        make_box(f"Print_8x10_{pi}", (2.80 + dx, 4.52 + dy, 1.0058 + pi * 0.0015), (0.20, 0.25, 0.0015), (0.30, 0.30, 0.32, 1.0))
+        make_box(f"Print_8x10_{pi}", (2.80 + dx, 4.52 + dy, 1.0118 + pi * 0.0015), (0.20, 0.25, 0.0015), (0.30, 0.30, 0.32, 1.0))   # on the lunch table's top (2026-09-25: 5 mm inside it)
     make_box("Prints_Paper_Bag", (2.95, 4.82, 1.115), (0.16, 0.10, 0.22), (0.72, 0.60, 0.42, 1.0))
 
 

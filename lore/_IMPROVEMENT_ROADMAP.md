@@ -2758,6 +2758,45 @@ and the shed's swung leaves on the sheet; a "door narrower than its
 opening" check (Lena's front door passed ADRIFT because the header
 spanned it).
 
+THIRTY-FOURTH PASS. Sheet from 284d2904: 1559 frames, ALL 122 locales,
+no skips — the first complete sheet. highway_101 (dusk) and
+small_wood_road read as roads: guardrail, centre line, treewall,
+mailboxes; both are draft 1 and dark at dusk. The widened rooms read
+as rooms (finn's partition and window, the break room's counter run,
+the back office's desk wall); Lena's leaf fills its opening and the
+couch nook reads through the cased opening.
+· THE SEVEN FRAMES, each a different disease: miller office's window
+  insert stood BEYOND the N wall (in the dark outside) — inside now;
+  montreal's drainpipe insert looked at the pipe THROUGH the window
+  glass (opaque here) — in the alley now, reframed off the brick;
+  montreal's dust insert saw only the lit wall (1 cm motes are
+  invisible) — low and tilted into the window's light; the barn's
+  lean insert was 1 m from a dark plank on a dark wall — 2.3 m off
+  with wall and ground; the centro smear was a dark band 24 m off at
+  z 7 — a hot band twice as tall, 16 m off. (The two centro presets
+  share the marker.) All five pass aim + sight.
+· Board Lords' front-door insert had been black on the previous sheet
+  too: the door's glass pane is an opaque dark slab 1.4 m from the
+  lens — a daylight tint now. Its exit-sign practical followed the N
+  wall (it was 0.7 m south of the sign).
+· OPENING (report) in doorway_audit: a leaf narrower than the gap
+  between its wall ends, nothing filling the difference. Ten found;
+  four real interiors filled (board lords alley door 20 + 10 cm and a
+  header, foxhole dressing room 1.1 m, natalie's front door 1.3 m,
+  safehouse 1.1 m); swung leaves and massing-hosted doors skipped;
+  the diner's Precipice_Door (0.98 m) stays as a report line.
+· Buried details: kwik's aisle sign text and wet-floor text onto
+  their faces, the ice-machine sign onto the machine's front (it
+  faced the wall), miller's photographs and pit stop's prints onto
+  their tables, the diner ticket out of the dessert dome. 7 loop
+  partials left (scuffs under a mat, stains under a fixture, seams
+  under a raised walk — hidden, harmless).
+NEXT (draft 35): the roads' second draft (they are template + props:
+lights, edge-of-set, coverage); the OPENING residue (diner Precipice
+door); nightmare cell's 46 dots (they no longer report — verify on
+the sheet); the near-black screen should read 0 — if the smear is
+still black at dusk, give the ridge a practical.
+
 **2026-09-19 · DESIGN · the two decorative checks made real, the first
 remembered choice.** Nate's basement (ch6) and Tem staying (ch8): the
 empathy checks' pass branches land on a line of their own now (a

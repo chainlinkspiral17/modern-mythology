@@ -787,7 +787,7 @@ def build_snack_aisles():
                          (0.01, 0.01, CEIL_Z - 2.62), COL_METAL_STEEL)
             # Letter band (cream)
             make_box(f"Aisle_{j}_TopSign_Text_{k}",
-                     (0.0, ay + lbl_y_off + (0.001 if k == 0 else -0.001), 2.50),
+                     (0.0, ay + lbl_y_off + (0.033 if k == 0 else -0.033), 2.50),   # on the sign's face (2026-09-25: at ±1 mm the band lay inside the 6 cm sign)
                      (4.6, 0.005, 0.12), label_text_tint)
 
     # ── End-caps (the small slanted stands near windows, per ref) ──
@@ -1032,9 +1032,12 @@ def build_ice_machine():
     make_box("IceMachine_Lid",  (cx + 0.10, cy, 1.66),
              (0.94, 1.04, 0.04), COL_ICE_BLUE)
     # ICE label
-    make_box("IceMachine_Sign", (cx - 0.50, cy, 1.20),
+    # on the machine's EAST face — the loader side, toward the room
+    # (2026-09-25: the sign sat 4 cm inside the west edge against the W
+    # wall, and its text had been pushed into the wall)
+    make_box("IceMachine_Sign", (cx + 0.56, cy, 1.20),
              (0.02, 0.80, 0.30), COL_ICE_BLUE)
-    make_box("IceMachine_SignText", (cx - 0.51 + 0.0131 - 0.0562, cy, 1.20),
+    make_box("IceMachine_SignText", (cx + 0.5731, cy, 1.20),
              (0.005, 0.40, 0.16), COL_PAPER)
     # Floor drain pan at base
     make_box("IceMachine_DrainPan", (cx, cy, 0.04),
@@ -1228,7 +1231,7 @@ def build_wet_floor_cone():
     # Text band ("WET FLOOR")
     for sgn in (-1, +1):
         make_box(f"WetFloor_Text_{sgn:+d}",
-                 (cx + sgn * 0.19, cy, 0.40),
+                 (cx + sgn * 0.2025, cy, 0.40),   # on the panel's outer face (2026-09-25: inside it)
                  (0.004, 0.26, 0.10), COL_METAL_BLACK)
     # Foot
     make_box("WetFloor_Foot", (cx, cy, 0.02),
