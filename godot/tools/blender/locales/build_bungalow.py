@@ -352,11 +352,12 @@ def build_shell():
              (1.60, 0.22, 0.20), COL_DOORFRAME)
 
     # WELCOME mat — outside the front door, cursive
+    # on the porch deck's top at 0.10 (2026-09-25: the mat lay inside the deck slab)
     make_box("WelcomeMat",
-             (0.0, INTERIOR_Y_S - 0.90, 0.012),
+             (0.0, INTERIOR_Y_S - 0.90, 0.110),
              (1.20, 0.80, 0.02), COL_FABRIC_RUG)
     make_box("WelcomeMat_Letters",
-             (0.0, INTERIOR_Y_S - 0.90, 0.0236),
+             (0.0, INTERIOR_Y_S - 0.90, 0.1216),
              (0.80, 0.18, 0.002), COL_TRIM_WHITE)
 
     # Windows — south wall (living room), east wall (studio),

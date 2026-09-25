@@ -399,6 +399,38 @@ Louisville's hurricane-deck proportions"). Don't guess at numbers.
 
 ## Recent lessons
 
+### 2026-09-25 · rings, rakes and the thing you cannot see through glass
+
+- **A rim is a RING, not a disc.** The cabin's turned bowls had a
+  solid "rim" cylinder over a "hollow" disc that sat under it, inside
+  the body — flat-topped cylinders on the sheet, the water buried.
+  `make_lathe` takes a closed profile with an inner radius (the
+  Wheel precedent): `[(0.104, 0), (0.122, 0), (0.122, 0.02),
+  (0.104, 0.02), (0.104, 0)]` is a lip; the hollow is a thin dark
+  disc on the body's top INSIDE it, the water a thinner disc on
+  that. Same for the Roberts sink: the chrome "rim" was a plate over
+  the basin — four strips on the basin's top edge now.
+- **A sheen on a sloped surface is a rotated box.** Ben's truck hood
+  rises 4 cm over 1.47 m (vehicles.py profile); a flat 1 mm sheet at
+  one height lies inside the body for most of its length.
+  `make_rot_box(..., pitch=atan(rise/run))` — positive pitch drops
+  the +x end; positive roll raises the +y end (`_rot3`). The same for
+  glows on windshield rakes: for a hatch nosed north the rake runs
+  from (nose-1.10, 0.99) up to (nose-1.85, 1.47); roll =
+  -atan2(0.48, 0.75), the patch's centre 1 mm along the normal.
+- **Nothing in this pipeline is transparent — do not build what only
+  glass would show.** The Civic's lit phone "between the dash and the
+  windshield" was 1.2 m inside the body's box: invisible, and the
+  buried-detail audit's biggest hit. What a lit phone in a dark car
+  looks like from outside is a glow on the glass, so that is the
+  object: one patch on the rake. Ask what the camera sees, then
+  build that.
+- **A detail keyed to an old draft's anchor stays behind when the
+  anchor moves.** The asylum votive went from the corridor wall to
+  the counter (09-22); its wax runs and pool stayed at the S wall,
+  1.1 m inside it. Keep a detail's coordinates on the anchor's
+  variables (`votive_x, votive_y, votive_z`) so it travels.
+
 ### 2026-09-24 · the exporter update that made 30 rooms white
 
 - **Vertex colours are not exported by default any more.** Newer

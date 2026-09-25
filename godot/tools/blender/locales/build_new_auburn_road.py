@@ -35,7 +35,7 @@ _BT = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)), 
 if _BT not in sys.path: sys.path.insert(0, _BT)
 import math
 from _props import palette as P
-from _props.geometry import clear_scene, make_box, make_cyl, make_blob, make_wedge, make_tube, make_lathe, export_glb
+from _props.geometry import clear_scene, make_box, make_cyl, make_blob, make_wedge, make_tube, make_lathe, make_rot_box, export_glb
 from _props.detail import make_far_bands
 from _props.trees import make_broadleaf, make_cypress
 from _props.vehicles import make_car
@@ -362,9 +362,13 @@ def build_live_oak_2026_09():
     make_box("Unit_Door_Light_Spill", (ux - 0.40, my - 0.55, 0.033), (0.70, 0.60, 0.002), (0.46, 0.40, 0.28, 1.0))
     # Jesse's Civic at the south-west corner of the lot, nose north, lights off
     make_car("Civic", 7.2, 38.0, 4.3, (0.34, 0.36, 0.40, 1.0), hatch=True, along="Y", z0=0.03)
-    # the phone, lit, in the gap between the dash and the windshield, driver's side
-    make_box("Civic_Phone", (6.85, 38.0 - 0.40 + 1.30 + 0.015, 0.03 + 1.08), (0.07, 0.012, 0.14), (0.08, 0.08, 0.09, 1.0))
-    make_box("Civic_Phone_Screen", (6.85, 38.0 - 0.40 + 1.30 + 0.0225, 0.03 + 1.08), (0.062, 0.001, 0.126), (0.66, 0.80, 0.96, 1.0))
+    # the phone, lit, in the gap between the dash and the windshield,
+    # driver's side — SEEN THROUGH THE GLASS: nothing in this pipeline is
+    # transparent, so the phone itself (1.2 m inside the body's box)
+    # went, and its screen's light is a patch laid on the windshield
+    # rake, which runs from (y 39.05, z 0.99) up to (38.30, 1.47) for a
+    # hatch nosed north (2026-09-25)
+    make_rot_box("Civic_Phone_Screen", (6.85, 38.9205, 1.0724), (0.062, 0.126, 0.001), (0.66, 0.80, 0.96, 1.0), roll=-0.5695)
 
 def build_cypress_motel_2026_09():
     """THE CYPRESS (vol6 ch15, Room 7 — re-homed 2026-09-03). "A motel
@@ -399,11 +403,15 @@ def build_cypress_motel_2026_09():
     # the office at the south end, its window lit, the ice machine and the soda machine beside it
     make_box("Cypress_Motel_Office", (-26.0, y0 - 2.5, 1.45), (8.0, 5.0, 2.90), wall_dk)
     make_box("Cypress_Motel_Office_Roof", (-26.0, y0 - 2.5, 3.02), (8.4, 5.4, 0.24), roof)
-    make_box("Cypress_Motel_Office_Window", (-21.98, y0 - 2.5, 1.55), (0.04, 2.60, 1.20), glass_lit)
-    make_box("Cypress_Motel_Office_Door", (-21.98, y0 - 0.2, 1.05), (0.04, 0.90, 2.10), glass)
-    make_box("Motel_Ice_Machine", (-21.5, y0 + 0.6, 0.85), (0.80, 0.70, 1.70), (0.80, 0.80, 0.78, 1.0))
-    make_box("Motel_Soda_Machine", (-21.5, y0 + 1.5, 0.90), (0.80, 0.80, 1.80), (0.72, 0.16, 0.14, 1.0))
-    make_box("Motel_Soda_Machine_Face", (-21.09, y0 + 1.5, 1.10), (0.01, 0.60, 1.10), (0.96, 0.92, 0.80, 1.0))
+    # the office's east face, south to north: the soda machine, the
+    # window (1.6 wide), the ice machine, the door — 2026-09-25: the door
+    # straddled the office/wing seam by 25 cm and both machines stood
+    # across room 1's door
+    make_box("Cypress_Motel_Office_Window", (-21.98, y0 - 2.9, 1.55), (0.04, 1.60, 1.20), glass_lit)
+    make_box("Cypress_Motel_Office_Door", (-21.98, y0 - 0.7, 1.05), (0.04, 0.90, 2.10), glass)
+    make_box("Motel_Ice_Machine", (-21.5, y0 - 1.65, 0.85), (0.80, 0.70, 1.70), (0.80, 0.80, 0.78, 1.0))
+    make_box("Motel_Soda_Machine", (-21.5, y0 - 4.45, 0.90), (0.80, 0.80, 1.80), (0.72, 0.16, 0.14, 1.0))
+    make_box("Motel_Soda_Machine_Face", (-21.09, y0 - 4.45, 1.10), (0.01, 0.60, 1.10), (0.96, 0.92, 0.80, 1.0))
     # the walkway under the overhang, the posts
     make_box("Cypress_Motel_Walk_Long", (-21.2, y0 + 4 * rw, 0.05), (1.6, 8 * rw, 0.10), walk)
     make_box("Cypress_Motel_Walk_Short", (-15.2, y0 + 8 * rw - 0.8, 0.05), (13.6, 1.6, 0.10), walk)
@@ -514,7 +522,10 @@ def build_front_lot():
     make_box("Foxhole_Front_Door", (22.03, 49.0, 1.05), (0.06, 1.0, 2.10), (0.30, 0.24, 0.20, 1.0))
     make_box("Foxhole_Front_Sign", (22.06, 49.0, 3.2), (0.06, 3.0, 0.7), (0.14, 0.14, 0.15, 1.0))
     make_car("Lot_Sedan", 28.0, 44.0, 4.4, (0.92, 0.92, 0.90, 1.0), along="Y", z0=0.03)
-    make_box("Lot_Sedan_Tablet_Glow", (27.65, 44.0 + 0.9 + 0.012, 1.05), (0.20, 0.006, 0.14), (0.62, 0.78, 0.94, 1.0))
+    # the tablet's glow on the sedan's windshield rake ((45.10, 0.99) up to
+    # (44.50, 1.45) for a sedan nosed north) — 2026-09-25: it hung 1.3 m
+    # inside the body's box
+    make_rot_box("Lot_Sedan_Tablet_Glow", (27.65, 44.9125, 1.1347), (0.20, 0.14, 0.001), (0.62, 0.78, 0.94, 1.0), roll=-0.654)
     make_car("Tacoma", 28.0, 52.0, 5.4, (0.72, 0.30, 0.20, 1.0), pickup=True, along="Y", z0=0.03)
     make_car("Lighting_Van", 32.5, 48.0, 5.6, (0.88, 0.88, 0.86, 1.0), along="Y", z0=0.03)
     make_box("Lighting_Van_Logo", (31.575, 48.0, 1.0), (0.01, 2.6, 0.5), (0.20, 0.30, 0.56, 1.0))
@@ -576,8 +587,9 @@ def build_substation():
     make_box("Payday_Loan_Sign", (bx + 5.02, by + 12.0, 3.0), (0.04, 4.0, 0.70), (0.92, 0.72, 0.20, 1.0))
     make_box("Payday_Loan_Sign_Text", (bx + 5.05, by + 12.0, 3.0), (0.01, 3.2, 0.24), (0.16, 0.16, 0.18, 1.0))
     make_box("Payday_Loan_Glass", (bx + 5.02, by + 12.0, 1.5), (0.04, 6.0, 1.6), (0.22, 0.26, 0.32, 1.0))
-    make_car("Ramirez_Car", -13.5, by + 1.0, 4.6, (0.24, 0.26, 0.30, 1.0), along="Y", z0=0.03)
-    make_car("Miller_Truck", -13.5, by - 7.0, 5.6, (0.20, 0.26, 0.38, 1.0), pickup=True, along="Y", z0=0.03)
+    # 0.9 m off the substation's doors (2026-09-25: at -13.5 their flanks were 10 cm inside the doors' clearance)
+    make_car("Ramirez_Car", -13.15, by + 1.0, 4.6, (0.24, 0.26, 0.30, 1.0), along="Y", z0=0.03)
+    make_car("Miller_Truck", -13.15, by - 7.0, 5.6, (0.20, 0.26, 0.38, 1.0), pickup=True, along="Y", z0=0.03)
     make_cyl("Coffee_Cup_0", (bx + 5.4, by + 2.9, 0.26), 0.04, 0.12, (0.94, 0.92, 0.88, 1.0), segments=8)
     make_cyl("Coffee_Cup_1", (bx + 5.4, by + 4.1, 0.26), 0.04, 0.12, (0.94, 0.92, 0.88, 1.0), segments=8)
     make_cyl("Bypass_Signal_Pole", (5.4, 100.0, 3.2), 0.12, 6.4, (0.30, 0.30, 0.32, 1.0), segments=8)

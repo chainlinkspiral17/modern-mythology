@@ -603,11 +603,13 @@ def build_wear_personality_2026_08():
         make_cyl("Wear_VigilFoot_%d" % fi2, (fx2, fy2, 0.008), 0.035, 0.004,
                  (0.58, 0.58, 0.56, 1.0), segments=6)
     make_box("Wear_BedRail_Hand", (-1.75, 11.845, 0.32), (0.22, 0.01, 0.035), hand)   # on the frame's foot rail (2026-09-22: 20 cm past the bed in the air)
-    # Wax history below the votive: two old drips down the shelf
-    # face and one dried pool.
-    make_box("Wear_Votive_Drip_A", (-0.28, -0.055, 1.18), (0.015, 0.008, 0.10), wax)
-    make_box("Wear_Votive_Drip_B", (-0.22, -0.055, 1.22), (0.012, 0.008, 0.06), wax)
-    make_cyl("Wear_Votive_Pool", (-0.25, -0.02, 1.128), 0.045, 0.005, wax, segments=8)
+    # Wax history beside the votive ON THE COUNTER (2026-09-25: these
+    # were left at the S wall from the draft that hung the votive in
+    # the corridor — the pool 1.1 m inside Wall_S): two old wax runs
+    # across the counter top and one dried pool at the jar's foot.
+    make_box("Wear_Votive_Run_A", (-0.635, 6.595, 1.1306), (0.015, 0.10, 0.001), wax)
+    make_box("Wear_Votive_Run_B", (-0.660, 6.500, 1.1306), (0.012, 0.06, 0.001), wax)
+    make_cyl("Wear_Votive_Pool", (-0.525, 6.53, 1.1331), 0.045, 0.005, wax, segments=8)
     # The wheelchair's four tire shadows — it has stood a while.
     for si3, (sx3, sy3) in enumerate(((1.72, 8.15), (2.32, 8.15),
                                       (1.78, 8.52), (2.26, 8.52))):

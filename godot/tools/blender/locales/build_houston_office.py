@@ -185,7 +185,9 @@ def build_exec_furniture():
     # A framed photo + a small trophy on the credenza top
     make_box("Mother_Photo_Galveston", (-2.95, 1.25, 0.80), (0.16, 0.03, 0.14), COL_TRIM)  # the ONLY personal item — desk corner
     # Two guest chairs facing the manager desk (north side)
-    for gi, gx in enumerate([-3.95, -3.05]):
+    # between the bookcase (x -4.54) and the office door's swing (x -3.42)
+    # — 2026-09-25: chair 1 stood 33 cm from the door
+    for gi, gx in enumerate([-4.28, -3.74]):
         make_chair(f"Guest_{gi}", gx, 2.45, yaw=_m.pi, wood=(0.26, 0.20, 0.16, 1.0), seat_col=COL_CHAIR, w=0.44)
     # Framed diploma on the W wall of the manager office
 

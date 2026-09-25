@@ -266,7 +266,7 @@ def build_dressing():
     # Wet-floor cone
     make_chamfer_box("Cone_Base", (1.4, 1.30, 0.02), (0.30, 0.30, 0.04), (0.96, 0.72, 0.20, 1.0), chamfer=0.01)
     make_lathe("Cone_Body", (1.4, 1.30, 0.04), [(0.13, 0.0), (0.12, 0.05), (0.03, 0.62), (0.0, 0.64)], (0.96, 0.72, 0.20, 1.0), segments=12)   # draft 4: a cone
-    make_box("Cone_Sign", (1.4, 1.30, 0.36), (0.16, 0.002, 0.10), (0.16, 0.16, 0.18, 1.0))
+    make_box("Cone_Sign", (1.4, 1.222, 0.36), (0.12, 0.002, 0.10), (0.16, 0.16, 0.18, 1.0))   # a sleeve on the cone's face (2026-09-25: it ran through the cone's axis)
 
 def build_departments():
     """2026-08-03 hero-prop pass: meat counter, deli case, the

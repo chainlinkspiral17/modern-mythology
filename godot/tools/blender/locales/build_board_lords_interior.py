@@ -58,7 +58,7 @@ from _props.store_fixtures import make_counter, make_register
 from _props.decor import make_wall_clock, make_floor_plant, make_faded_poster
 from _props.safety import make_smoke_detector, make_hvac_vent, make_fluorescent_tube_fixture
 
-ROOM_W = 9.0; ROOM_D = 7.0; CEIL = 2.8
+ROOM_W = 9.0; ROOM_D = 7.6; CEIL = 2.8   # 2026-09-25: 7.0 → 7.6 so the back office (north of the register's back at y 5.93) holds the alley door's swing AND Devon's desk
 PAL_WALL = {"wall": (0.50, 0.46, 0.42, 1.0), "baseboard": (0.24, 0.20, 0.16, 1.0)}
 COL_FLOOR = (0.44, 0.34, 0.24, 1.0); COL_SEAM = (0.28, 0.20, 0.14, 1.0)
 COL_WOOD = (0.42, 0.30, 0.18, 1.0)
@@ -206,20 +206,26 @@ def build_office():
     """The back office: Devon's old desk, the chair Devon also left,
     two cardboard boxes of bearings on the floor."""
     # (draft 3: the partition at y 6.1 — at 6.0 it ran through the
-    # counter's back edge)
+    # counter's back edge, which is at 5.93. 2026-09-25: with the N wall
+    # at 7.0 the office was 0.85 m deep and the alley door opened onto
+    # Devon's chair; the building is 7.6 deep now, the office 1.4 m,
+    # the desk against the E wall SOUTH of the door's swing (y 6.64..
+    # 7.54, x 2.70..3.60), Devon's chair north of it with its back to
+    # the alley door, the bearings boxes on the floor at the counter's
+    # east end)
     make_box("Office_Part", (3.55, 6.1, CEIL/2.0), (1.90, 0.10, CEIL), PAL_WALL["wall"])
-    make_chamfer_box("Devon_Desk", (3.900, 6.55, 0.37), (1.00, 0.55, 0.74), COL_WOOD)
-    make_box("Devon_Desk_Drawer", (3.390, 6.55, 0.55), (0.02, 0.36, 0.12), (0.34, 0.24, 0.16, 1.0))
-    make_box("Devon_Desk_Drawer_Pull", (3.375, 6.55, 0.55), (0.01, 0.08, 0.02), COL_STEEL)
-    # the chair Devon also left — a kit chair facing the desk
+    make_chamfer_box("Devon_Desk", (4.000, 6.375, 0.37), (0.80, 0.55, 0.74), COL_WOOD)
+    make_box("Devon_Desk_Drawer", (4.000, 6.660, 0.55), (0.36, 0.02, 0.12), (0.34, 0.24, 0.16, 1.0))
+    make_box("Devon_Desk_Drawer_Pull", (4.000, 6.675, 0.55), (0.08, 0.01, 0.02), COL_STEEL)
+    # the chair Devon also left — a kit chair facing the desk (-Y)
     import math as _m
-    make_chair("Devon_Chair", 3.15, 6.5, yaw=-_m.pi / 2.0, wood=COL_WOOD, w=0.40)
-    # two cardboard boxes of bearings — by the counter's east end
-    # (ch12: Kai sits on one and looks at the hexagon), one flap open
-    for bi, by in enumerate((5.35, 5.68)):
-        make_box(f"Bearings_Box_{bi}", (3.95, by, 0.16), (0.34, 0.28, 0.32), (0.60, 0.48, 0.32, 1.0))
-    make_rot_box("Bearings_Box_1_Flap", (3.95, 5.55, 0.33), (0.34, 0.14, 0.008), (0.64, 0.52, 0.36, 1.0), roll=1.1)
-    make_box("Bearings_Box_0_Label", (3.78, 5.35, 0.18), (0.004, 0.16, 0.10), (0.92, 0.90, 0.84, 1.0))
+    make_chair("Devon_Chair", 4.00, 6.95, yaw=_m.pi, wood=COL_WOOD, w=0.40)
+    # two cardboard boxes of bearings — on the floor at the counter's
+    # east end (ch12: Kai sits on one and looks at the hexagon), one flap open
+    for bi, by in enumerate((5.42, 5.75)):
+        make_box(f"Bearings_Box_{bi}", (3.75, by, 0.16), (0.34, 0.28, 0.32), (0.60, 0.48, 0.32, 1.0))
+    make_rot_box("Bearings_Box_1_Flap", (3.75, 5.62, 0.33), (0.34, 0.14, 0.008), (0.64, 0.52, 0.36, 1.0), roll=1.1)
+    make_box("Bearings_Box_0_Label", (3.58, 5.42, 0.18), (0.004, 0.16, 0.10), (0.92, 0.90, 0.84, 1.0))
 
 
 def build_retail():
@@ -249,7 +255,7 @@ def build_retail():
 
 
 def build_decor():
-    make_wall_clock("Clock", (0.0, 6.900, CEIL-0.45), frozen_hour=10, frozen_min=5, facing='-Y')
+    make_wall_clock("Clock", (0.0, ROOM_D - 0.100, CEIL-0.45), frozen_hour=10, frozen_min=5, facing='-Y')   # on the N wall's face (2026-09-25: literal 6.9 floated when the room grew)
     make_floor_plant("Plant", (-4.0, 0.8, 0.0),
                      palette={"leaf": (0.36, 0.48, 0.30, 1.0), "pot": (0.66, 0.40, 0.26, 1.0)})
     for pi, py in enumerate((1.5, 2.6)):
@@ -422,9 +428,9 @@ def build_draft3_2026_09():
     # D3
     make_light_switch("Switch_1", (1.15, 0.0), axis='X', face_sign=1, z=1.25, aged=True)
     make_wall_outlet("Outlet_N_1", (-2.4, ROOM_D), axis='X', face_sign=-1, z=0.35, aged=True)
-    make_tube("Cord_1", [(-2.85, 6.47, 0.35), (-2.4, 6.86, 0.35)], 0.008, (0.16, 0.16, 0.18, 1.0), segments=5)
+    make_tube("Cord_1", [(-2.85, 6.47, 0.35), (-2.4, ROOM_D - 0.14, 0.35)], 0.008, (0.16, 0.16, 0.18, 1.0), segments=5)
     make_wall_outlet("Outlet_N_2", (-0.6, ROOM_D), axis='X', face_sign=-1, z=1.10, aged=True)
-    make_tube("Cord_2", [(-0.23, 6.60, 0.98), (-0.6, 6.86, 1.10)], 0.008, (0.16, 0.16, 0.18, 1.0), segments=5)
+    make_tube("Cord_2", [(-0.23, 6.60, 0.98), (-0.6, ROOM_D - 0.14, 1.10)], 0.008, (0.16, 0.16, 0.18, 1.0), segments=5)
     # the EXIT sign over the alley door (its practical is in the tscn)
     make_box("Exit_Sign", (3.15, ROOM_D - 0.13, 2.62), (0.32, 0.06, 0.16), (0.30, 0.10, 0.08, 1.0))   # on the wall (2026-09-22: 3 cm off it)
     make_box("Exit_Sign_Face", (3.15, ROOM_D - 0.162, 2.62), (0.26, 0.004, 0.10), (0.96, 0.30, 0.22, 1.0))

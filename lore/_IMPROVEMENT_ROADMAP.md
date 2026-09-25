@@ -2671,6 +2671,93 @@ buried moves by hand; the 84 mixed-loop details; the two deferred
 doors; doorway_audit's façade false positives → gate; more small rooms
 to widen (lena, finn, grandmother, cosmic back office, centro break).
 
+THIRTY-THIRD PASS. Sheet from 15256b30 (1459 frames; near-black 3,
+flat 4 — the same seven as last time).
+· THE TWO ROADS, FOUND: skip_reasons said "scene failed to load (GLB
+  present)" for highway_101 and small_wood_road, and the GLBs were
+  there (4.3 MB, 2.3 MB). The cause was one line in each .tscn:
+  `background_color = Color(0.62, 0.66, 0.72)` — three arguments.
+  Godot's scene parser wants four, so the whole file failed to parse
+  and load() returned null. Every other locale scene writes four.
+  Fixed; `tscn_syntax_audit.py` (constructor arity for Color/Vector/
+  Transform/…, declared resource ids, ext_resource paths, node
+  parents) is a gate, 217 files, zero. The next sheet should carry
+  highway_101 (×2 presets) and small_wood_road (×3) for the first
+  time — those frames are unscreened.
+· THE DOORWAY GATE: 59 BLOCKED / 194 ADRIFT → 0 / 0, and it gates.
+  Rules learned: a door set into a solid massing (motel wing, shed,
+  house body) is HOSTED — the massing is its wall and the side
+  inside it is nobody's room; HouseW_0_Door's host is HouseW_0_Body
+  (no prefix skip); roads, curbs, parked cars, hanging robes and
+  sheets under 12 mm do not block. Then 30 real ones by hand: the
+  Briar Falls bench across door 0, the mausoleum lectern 3 cm inside
+  the clearance, Houston's guest chairs at the office door, the
+  Cosmic Comics display tower moved east of the entry (north of the
+  door it hit the new-arrivals table), the accretion extinguisher case
+  ON door 2 and the bulletin board across door 3, the motel office
+  door straddling the office/wing seam (and both machines across
+  room 1's door), the circus shacks 0.7 m from the pool coping, the
+  substation's cars 10 cm inside the doors, Miller's coffee maker
+  overhanging into the pantry door, the equipment shed's "open"
+  leaves that were flat boxes 0.55 m in front of the wall (rotated
+  120° on their jambs now).
+· THE TWO DEFERRED DOORS: board lords — the register counter runs
+  along X to y 5.93, so the partition could not come south; the
+  BUILDING is longer instead (ROOM_D 7.0 → 7.6, everything on the N
+  wall relative — clock and cord ends tied to it), the office 1.4 m
+  deep, Devon's desk against the E wall south of the door's swing, his
+  chair north of it with its back to the alley, the bearings boxes on
+  the floor at the counter's east end; lena's bedroom door fills its opening
+  (0.86 at -0.30 — it was 0.62 at -0.62, 18 cm into the partition),
+  the bed against the W wall, the couch east (0.17..2.07), the hall
+  table west of the door, the front door at +0.30 with the wall
+  closed either side (55 cm of daylight before), the table south to
+  1.26 with its fourth chair at the NE diagonal.
+· BIG BURIED DETAILS, ALL 11 BY HAND: the asylum votive's wax runs and
+  pool (left at the S wall from a draft that hung the votive in the
+  corridor) are on the counter by the jar; cedar's rack labels on the
+  racks' fronts (37 cm inside); the centro cone sign a sleeve on the
+  cone's face; kwik's PIN pad laid on the terminal's top, its sugar
+  caddy off the Slurpee base; the casino service case on the floor at
+  the table's front (its back half stood inside the base, in the air)
+  with the decal on its front; the WGUR shirt stain on the shirt's
+  top; Ben's truck hood sheen PITCHED with the hood (make_rot_box,
+  0.027 rad); the Civic phone and the sedan tablet — nothing here is
+  transparent, so a lit phone inside a car is invisible — are glow
+  patches laid on the windshield rakes (roll -0.57 / -0.65). Plus 18
+  second-order ones by tool (OnAir face, diner sign letters, roulette
+  scuffs…) and three the tool misread: the bungalow welcome mat lay
+  inside the porch deck (raised to it); the cabin bowls' rims were
+  solid discs over the hollows (a lathe RING now, the hollow and the
+  water inside it); the Roberts sink rim was a plate over the basin
+  (a ring of strips, the drip's puddle on the basin's top).
+· ROOMS WIDENED: centro break room 5.0×4.0 → 5.6×4.6; finn 4.5×5.0 →
+  5.0×5.4; cosmic back office 4.0×5.0 → 4.6×5.2 (its one-way mirror
+  frame off the doorway, the safe out of the service door's swing).
+  Lena and grandmother (5×5) stay: their partitions are literal.
+  Widening fallout, the usual kind: the break room's trash can and
+  wall clock were literal and its dishwasher wall-relative (a clip
+  and a float) — tied to the walls now; Finn's two insert markers
+  re-aimed; Miller's coffee maker, pushed back onto the counter, met
+  the microwave (east of it now); Lena's cushion wear stayed at the
+  old couch spot. And four insert markers lost their line of sight to
+  subjects that moved (the back-office safe, the Cosmic tower, Finn's
+  nightstand, Lena's charcoal letters) — marker_reframe moved them.
+  And the floats: the accretion bulletin papers pinned where the
+  board used to be; the back-office mug keyed to a literal y while
+  the desk moved with ROOM_D; Finn's counter, grounded only by
+  touching the W wall, lost the wall (the counter and its dressing
+  followed it). LESSON, again: everything on or against a wall is
+  written against ROOM_W/ROOM_D, never a number.
+NEXT (draft 34): screen highway_101 and small_wood_road on their first
+sheet; the 65 mixed-loop buried details left (nightmare cell's 46
+dots); the seven stable near-black/flat frames (centro dock dusk
+smear, stockroom smear, miller office rain window, the two barn lean
+inserts, montreal drainpipe + dust) by hand; judge the widened rooms
+and the shed's swung leaves on the sheet; a "door narrower than its
+opening" check (Lena's front door passed ADRIFT because the header
+spanned it).
+
 **2026-09-19 · DESIGN · the two decorative checks made real, the first
 remembered choice.** Nate's basement (ch6) and Tem staying (ch8): the
 empathy checks' pass branches land on a line of their own now (a

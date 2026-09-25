@@ -182,10 +182,10 @@ def build_on_air_sign():
     """ON AIR sign over the S door (lit red)."""
     sx, sy, sz = 0.0, 0.12, 2.18
     make_box("OnAir_Backing", (sx, sy, sz), (0.90, 0.06, 0.30), (0.10, 0.10, 0.12, 1.0))
-    make_box("OnAir_Face", (sx, sy - 0.032 + 0.0151, sz), (0.80, 0.005, 0.22), (0.16, 0.06, 0.06, 1.0))
+    make_box("OnAir_Face", (sx, sy - 0.032 + 0.0151 - 0.0162, sz), (0.80, 0.005, 0.22), (0.16, 0.06, 0.06, 1.0))
     # "ON" + "AIR" letter blocks (emissive red)
-    make_box("OnAir_ON", (sx - 0.20, sy - 0.035 + 0.0161, sz), (0.26, 0.001, 0.12), COL_ONAIR)
-    make_box("OnAir_AIR", (sx + 0.22, sy - 0.035 + 0.0161, sz), (0.30, 0.001, 0.12), COL_ONAIR)
+    make_box("OnAir_ON", (sx - 0.20, sy - 0.035 + 0.0161 - 0.0122, sz), (0.26, 0.001, 0.12), COL_ONAIR)
+    make_box("OnAir_AIR", (sx + 0.22, sy - 0.035 + 0.0161 - 0.0122, sz), (0.30, 0.001, 0.12), COL_ONAIR)
 
 
 def build_coffee_and_clutter():

@@ -178,12 +178,12 @@ def build_wheel_dressing():
     # Third-quadrant scuff — a darker arc on the wheel surface,
     # SE side of the wheel (the canonical "hesitates here" spot)
     make_box("RouletteWheel_ThirdQuadrantScuff",
-             (wheel_cx + 0.16, wheel_cy - 0.16, wheel_top_z + 0.002 - 0.0131),
+             (wheel_cx + 0.16, wheel_cy - 0.16, wheel_top_z + 0.002 - 0.0131 + 0.0122),
              (0.18, 0.10, 0.001),
              (0.18, 0.14, 0.10, 1.0))   # darker scuff
     # A scratch streak radiating outward from the scuff
     make_box("RouletteWheel_ScuffStreak",
-             (wheel_cx + 0.22, wheel_cy - 0.22, wheel_top_z + 0.003 - 0.0139),
+             (wheel_cx + 0.22, wheel_cy - 0.22, wheel_top_z + 0.003 - 0.0139 + 0.0118),
              (0.04, 0.04, 0.0005),
              (0.32, 0.24, 0.16, 1.0))
 
@@ -442,26 +442,29 @@ def build_wheel_wave2_props():
              (0.20, 0.14, 0.10, 1.0))
 
     # Terry's Gulf Coast Gaming service case (silver, marked)
+    # on the floor at the table's front face (2026-09-25: at rt_y - 0.60
+    # and z 0.40 its back half stood inside the table's base, in the
+    # air; the decal on its back was 16 cm inside the base)
     tc_x = rt_x + 0.60
-    tc_y = rt_y - 0.60
+    tc_y = rt_y - 0.751
     make_box("Terry_ServiceCase_Body",
-             (tc_x, tc_y, 0.40),
+             (tc_x, tc_y, 0.07),
              (0.44, 0.30, 0.14),
              (0.86, 0.86, 0.88, 1.0))
     # Two silver latches
     for cx in (-0.16, +0.16):
         make_box("Terry_ServiceCase_Latch_%d" % int(cx*100),
-                 (tc_x + cx, tc_y - 0.16, 0.44),
+                 (tc_x + cx, tc_y - 0.1525, 0.11),
                  (0.02, 0.005, 0.02),
                  (0.62, 0.62, 0.64, 1.0))
-    # Gulf Coast Gaming decal (small blue rectangle)
+    # Gulf Coast Gaming decal (small blue rectangle) on the front face
     make_box("Terry_ServiceCase_Decal",
-             (tc_x, tc_y + 0.16, 0.46),
+             (tc_x, tc_y - 0.1505, 0.07),
              (0.14, 0.001, 0.06),
              (0.24, 0.42, 0.68, 1.0))
     # White stencil letters on decal
     make_box("Terry_ServiceCase_Decal_Letters",
-             (tc_x, tc_y + 0.161, 0.46),
+             (tc_x, tc_y - 0.15125, 0.07),
              (0.10, 0.0005, 0.020),
              (0.94, 0.92, 0.86, 1.0))
 

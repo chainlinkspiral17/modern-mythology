@@ -655,11 +655,17 @@ def build_kitchen():
              (sink_cx, sink_cy, cnt_top_z + 0.005),
              (0.60, 0.40, 0.08),
              (0.30, 0.30, 0.30, 1.0))
-    # Sink rim (chrome surround)
-    make_box("Kitchen_Sink_Rim",
-             (sink_cx, sink_cy, cnt_top_z + 0.045),
-             (0.66, 0.46, 0.005),
-             COL_METAL_STEEL)
+    # Sink rim (chrome surround) — a RING of four strips on the basin's
+    # top edge (2026-09-25: it was a full plate over the basin, and the
+    # drip's puddle lay 4 cm inside the basin box under it); the N
+    # strip parts around the faucet
+    for nm, sx, sy, sl, sw in (("W", -0.285, 0.0, 0.03, 0.40), ("E", +0.285, 0.0, 0.03, 0.40),
+                               ("S", 0.0, -0.185, 0.60, 0.03),
+                               ("N0", -0.175, +0.185, 0.25, 0.03), ("N1", +0.175, +0.185, 0.25, 0.03)):
+        make_box("Kitchen_Sink_Rim_%s" % nm,
+                 (sink_cx + sx, sink_cy + sy, cnt_top_z + 0.0475),
+                 (sl, sw, 0.005),
+                 COL_METAL_STEEL)
     # ── The drip faucet · the central beat ──
     # Per setup_he_waved: "The drip is the drip."
     # Per setup_the_faucet_wins: "you and Philip have already been
@@ -699,7 +705,7 @@ def build_kitchen():
              (0.78, 0.86, 0.92, 0.85), segments=4, axis='Z')
     # A small puddle at the bottom of the basin where the drip lands
     make_cyl("Kitchen_Faucet_Puddle",
-             (faucet_cx, faucet_cy - 0.16, cnt_top_z - 0.030 + 0.0331),
+             (faucet_cx, faucet_cy - 0.16, cnt_top_z + 0.045 + 0.0031),   # on the basin's top face (2026-09-25)
              0.040, 0.005,
              (0.62, 0.74, 0.82, 0.8), segments=10, axis='Z')
 

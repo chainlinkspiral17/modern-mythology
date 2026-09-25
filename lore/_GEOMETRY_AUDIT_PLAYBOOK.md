@@ -158,6 +158,42 @@ banisters classed · pans as containers.
 
 ## Recent lessons
 
+### 2026-09-25 · the scene that would not parse; the doorway gate
+
+- **A locale skipped on every sheet with its GLB present is a .tscn
+  that failed to PARSE.** highway_101 and small_wood_road: one line
+  each, `background_color = Color(0.62, 0.66, 0.72)`. Godot's
+  VariantParser wants exactly four arguments for Color (and 3 for
+  Vector3, 12 for Transform3D…); on a miss the whole resource fails
+  and `load()` returns null with a one-line warning nobody reads.
+  Background3D now records `last_load_error` and the sheet writes it
+  to `_report.json` as `skip_reasons` — read that first.
+  `tscn_syntax_audit.py` checks constructor arity, declared
+  ExtResource/SubResource ids, ext_resource paths (GLBs excepted)
+  and node parents across every .tscn/.tres; a gate at zero.
+- **doorway_audit is a gate (0 / 0 from 59 / 194) — the rules that
+  got it there.** A door set INTO a solid box that spans it laterally
+  and stands taller (a motel wing, a shed, a house body) is HOSTED:
+  the box is its wall (not ADRIFT) and the side whose zone centre
+  lies inside a host is the building's interior nobody built (not
+  BLOCKED). No prefix skip when finding hosts — HouseW_0_Door's host
+  is HouseW_0_Body. Roads, curbs, driveways, parked cars (pan,
+  wheel, tire), hanging cloth (robe, coat, towel) and sheets under
+  12 mm (paper, posters, decals — but not glass, fences, grilles) do
+  not block. Armoire/wardrobe/cupboard doors are furniture parts.
+- **What the residue looked like once the noise was gone** (30, all
+  real, all moved): furniture set against a door's wall INSIDE the
+  door's width (a bench, guest chairs, a display tower 0.6 m inside
+  the front door), wall-mounted things ON the leaf (an extinguisher
+  case, a bulletin board), a door straddling two massings' seam, a
+  lectern 3 cm inside 0.9 m, "open" leaves modelled as flat boxes
+  standing in the field. The 0.9 m clearance is the right number:
+  everything it caught reads wrong on the sheet.
+- **A door can pass ADRIFT and still be misaligned**: Lena's front
+  door (0.9 in a 2.0 opening) had a header spanning it, so the
+  header hosted it. NEXT: a "leaf narrower than its opening between
+  wall ends" check.
+
 ### 2026-09-22 · THE SUPPORT GATE — everything stands on something
 
 - **The question is connectivity, not height.** `support_audit.py`

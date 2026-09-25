@@ -134,11 +134,11 @@ def build_hallways():
     make_box("Hall_Corner_Wall_N", (0.0, 25.2 + WALL_T / 2.0, H_H / 2.0), (H_W + 0.2, WALL_T, H_H), OFFWHITE)
     make_box("Hall_Corner_Fluor", (0.0, 24.0, H_H - 0.03), (0.3, 1.2, 0.06), FLUOR)
     # a fire-extinguisher case and a bulletin board on the first leg
-    make_box("Extinguisher_Case", (1.16, 10.0, 1.25), (0.08, 0.30, 0.70), (0.72, 0.16, 0.14, 1.0))
-    make_box("Extinguisher_Case_Glass", (1.115, 10.0, 1.25), (0.01, 0.24, 0.60), GLASS)
-    make_box("Bulletin_Board", (-1.16, 14.0, 1.55), (0.08, 1.20, 0.90), (0.60, 0.46, 0.30, 1.0))
+    make_box("Extinguisher_Case", (1.16, 10.75, 1.25), (0.08, 0.30, 0.70), (0.72, 0.16, 0.14, 1.0))   # beside door 2, not on its leaf (2026-09-25)
+    make_box("Extinguisher_Case_Glass", (1.115, 10.75, 1.25), (0.01, 0.24, 0.60), GLASS)
+    make_box("Bulletin_Board", (-1.16, 12.0, 1.55), (0.08, 1.20, 0.90), (0.60, 0.46, 0.30, 1.0))   # on the wall between the W doors (2026-09-25: it hung across door 3)
     for pi in range(4):
-        make_box(f"Bulletin_Paper_{pi}", (-1.115, 13.55 + pi * 0.30, 1.60 - (pi % 2) * 0.2), (0.01, 0.21, 0.28), PAPER)
+        make_box(f"Bulletin_Paper_{pi}", (-1.115, 11.55 + pi * 0.30, 1.60 - (pi % 2) * 0.2), (0.01, 0.21, 0.28), PAPER)   # pinned to the board at y 12 (2026-09-25)
     # second leg: +x from 1.2 to 10.8 along y 24 (walls at y 22.8 / 25.2)
     hallway_leg("Hall_B", "X", 1.3, 10.8, 24.0, doors=False, ceiling_grid=False)
     make_box("Hall_B_Exit_Sign", (6.0, 25.19, 2.35), (0.30, 0.02, 0.14), (0.86, 0.20, 0.16, 1.0))   # on the wall (2026-09-24: 4 cm off it)

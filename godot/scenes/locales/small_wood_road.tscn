@@ -130,7 +130,7 @@ shader_parameter/tint_color = Color(0.96, 0.62, 0.28, 1)
 
 [sub_resource type="Environment" id="Env_Locale"]
 background_mode = 1
-background_color = Color(0.70, 0.76, 0.82)
+background_color = Color(0.70, 0.76, 0.82, 1.0)
 ambient_light_source = 2
 ambient_light_color = Color(0.72, 0.74, 0.70, 1)
 ambient_light_energy = 0.9

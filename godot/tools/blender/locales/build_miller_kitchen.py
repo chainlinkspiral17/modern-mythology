@@ -151,7 +151,10 @@ def build_dressing():
     reads as a family's working kitchen."""
     cw_x = -ROOM_W/4.0; cw_y = ROOM_D-1.0
     # Drip coffee maker at the left end of the west counter
-    make_coffee_pots("Coffee", (cw_x-1.0, cw_y, 0.94), pots=1)
+    # on the counter top (0.98), set back on it (2026-09-25: its burner
+    # overhung the counter's front by 17 cm into the pantry door's swing,
+    # and sat 4 cm inside the top)
+    make_coffee_pots("Coffee", (cw_x-0.45, cw_y+0.3, 0.98), pots=1)   # east of the microwave (x to -2.36)
     # Dish rack (frame + upright tines) at the right end
     make_box("DishRack_Base", (cw_x+0.9, cw_y, 0.95), (0.34, 0.30, 0.03), P.METAL_STEEL)
     for ti in range(6):

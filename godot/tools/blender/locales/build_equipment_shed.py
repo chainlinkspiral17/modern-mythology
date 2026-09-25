@@ -15,11 +15,11 @@ Coordinate frame: Blender Z-up. y=0 is the OPEN double door (south,
 to the field); +Y into the shed. glTF export remaps to Godot
 (x, z, -y).
 """
-import os, sys
+import math, os, sys
 _BT = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)), ".."))
 if _BT not in sys.path: sys.path.insert(0, _BT)
 from _props import palette as P
-from _props.geometry import clear_scene, make_box, make_cyl, export_glb
+from _props.geometry import clear_scene, make_box, make_cyl, make_rot_box, export_glb
 from _props.structure import make_floor, make_wall, make_ceiling
 
 ROOM_W = 4.8      # x ∈ [-2.4, 2.4]
@@ -69,9 +69,12 @@ def build_shell():
     for sgn in (-1, 1):
         make_box(f"Door_Jamb_{sgn:+d}", (sgn * (ROOM_W / 2.0 - 0.12), 0.0, CEIL / 2.0),
                  (0.24, 0.2, CEIL), COL_WALL)
-        # leaves swung out ~120°, standing proud of the front wall
-        make_box(f"Door_Leaf_{sgn:+d}", (sgn * (ROOM_W / 2.0 - 0.55), -0.55, 1.1),
-                 (0.9, 0.07, 2.2), COL_DOOR)
+        # leaves swung out 120° on their jambs' inner edges (2026-09-25:
+        # they were axis-aligned boxes hanging 0.55 m in front of the
+        # wall, parallel to it — doors standing in the field)
+        hinge_x = sgn * (ROOM_W / 2.0 - 0.24)
+        make_rot_box(f"Door_Leaf_{sgn:+d}", (hinge_x + sgn * 0.225, -0.39, 1.1),
+                     (0.9, 0.07, 2.2), COL_DOOR, yaw=-sgn * math.pi / 3.0)
     # The field beyond: dusk grass apron + a goalpost silhouette
     make_box("Field", (0.0, -3.6, -0.02), (ROOM_W + 8.0, 6.4, 0.04), COL_FIELD)
     make_cyl("Goal_Post", (1.8, -5.4, 1.5), 0.06, 3.0, COL_GOAL, segments=8)

@@ -75,7 +75,13 @@ def build_shell():
     make_ceiling("Ceil", (0.0, ROOM_D/2.0, CEIL), size_x=ROOM_W+0.4, size_y=ROOM_D+0.4, with_grid=False)
     # The front door itself, ajar-closed in the opening, with the
     # deadbolt ("She had not, in three years, locked the deadbolt")
-    make_box("Front_Door", (0.0, 0.06, 1.02), (0.90, 0.05, 2.04), COL_WOOD)
+    # east of centre so its swing (x -0.15..0.75) clears the kitchen table (2026-09-25)
+    make_box("Front_Door", (0.30, 0.06, 1.02), (0.90, 0.05, 2.04), COL_WOOD)
+    # the S wall's opening is x -1.0..1.0 under Wall_S_AboveDoor; the leaf
+    # fills 0.9 of it — the wall closes the rest (2026-09-25: 55 cm of
+    # daylight either side of the door)
+    make_wall("Wall_S_DoorFill_W", (-0.575, 0.0, 0), length=0.85, height=2.0, axis='X', palette=PAL_WALL, baseboard_face_sign=+1)
+    make_wall("Wall_S_DoorFill_E", (0.875, 0.0, 0), length=0.25, height=2.0, axis='X', palette=PAL_WALL, baseboard_face_sign=+1)
     make_cyl("Door_Knob", (0.34, 0.10, 1.00), 0.035, 0.04, (0.66, 0.52, 0.24, 1.0), axis='Y', segments=8)
     make_box("Deadbolt", (0.34, 0.10, 1.22), (0.06, 0.03, 0.10), (0.74, 0.60, 0.30, 1.0))
     # Four hooks, four coats — by the door
@@ -98,7 +104,10 @@ def build_shell():
     make_box("Bedroom_Part_Casing_W", (0.40, 3.05, (CEIL-0.5)/2.0), (0.04, 0.20, CEIL-0.5), COL_WOOD)
     make_box("Bedroom_Part_Casing_E", (ROOM_W/2.0 - 0.25, 3.05, (CEIL-0.5)/2.0), (0.04, 0.20, CEIL-0.5), COL_WOOD)
     make_box("Bedroom_Part_Casing_Top", (1.45, 3.05, CEIL-0.52), (2.14, 0.20, 0.06), COL_WOOD)
-    make_box("Bedroom_Door", (-0.62, 3.02, 1.02), (0.62, 0.04, 2.04), COL_WOOD)
+    # the leaf fills its opening (Part_W ends at -0.75, Post_E starts at
+    # +0.15) — 2026-09-25: a 62 cm leaf at -0.62 overlapped the partition
+    # by 18 cm and left a 46 cm gap to the post
+    make_box("Bedroom_Door", (-0.30, 3.02, 1.02), (0.86, 0.04, 2.04), COL_WOOD)
     # The three ceiling water stains ("proof her upstairs neighbor's
     # bathtub leaked... painting them over would be a lie")
     for i, (sx, sy, sr) in enumerate(((0.40, 3.55, 0.22), (0.62, 3.78, 0.14), (0.48, 3.98, 0.10))):
@@ -172,8 +181,10 @@ def build_kitchen_table():
     """The small round oak table from the seventies — wobble in one
     leg — and four chairs that are not a matched set. The hexagon
     gets laid out here in ch12; four people eat here in ch8."""
-    tx, ty = -0.80, 1.60
-    # out of the door's swing (2026-09-24, the user: doorways obstructed)
+    tx, ty = -0.80, 1.26
+    # out of the door's swing (2026-09-24, the user: doorways obstructed;
+    # 2026-09-25: the north chair still reached 2.44 — the door's zone
+    # starts at 2.12; the south chair's back is now 2 cm off the S wall)
     make_cyl("Table_Top", (tx, ty - 0.150, 0.745), 0.55, 0.045, COL_OAK, segments=16)
     # draft 4: a seventies turned pedestal — the collar under the top,
     # the swell, the ring, the flare into the foot
@@ -189,7 +200,9 @@ def build_kitchen_table():
                           0.10 if ang_off[1]==0.0 else 0.34, h), COL_OAK, chamfer=0.012)
     # Four mismatched chairs
     # 0.78 m out, at the table (2026-09-23: at 1.0 m chair 0 stood in the counter)
-    for ci, (cx, cy) in enumerate(((tx-0.78, ty), (tx+0.78, ty), (tx, ty-0.78), (tx, ty+0.78))):
+    # the fourth chair sits at the NE diagonal, not east: east of the
+    # table is the front door's swing (2026-09-25)
+    for ci, (cx, cy) in enumerate(((tx-0.78, ty), (tx+0.55, ty+0.55), (tx, ty-0.78), (tx, ty+0.78))):
         wood = CHAIR_WOODS[ci]
         back_dx = -0.20 if cx < tx else (0.20 if cx > tx else 0.0)
         back_dy = -0.20 if cy < ty else (0.20 if cy > ty else 0.0)
@@ -204,8 +217,10 @@ def build_front_room():
     # and looked down"
     # anchored on the wall's room face, built toward the room (2026-09-23: the glass was inside the wall)
     make_window("Front_Window", (1.75, 0.10, 1.42), width=1.00, height=1.20, room_dir=+1)
-    # Couch against the partition's east reach, facing south
-    sx, sy = 0.70, 3.60
+    # Couch against the partition's east reach, facing south — its west
+    # end at 0.17, clear of the bedroom door's swing (x to 0.08) and
+    # its east end 3 cm off the shelf (2026-09-25: at 0.70 it reached -0.25)
+    sx, sy = 1.12, 3.60
     # draft 4 (2026-09-17): upholstery has soft edges and rolled arms;
     # the couch stands on four short turned feet
     couch = (0.44, 0.40, 0.34, 1.0)
@@ -247,7 +262,10 @@ def build_bedroom():
     # The bed is 1.94 long and the bedroom is 1.95 deep behind
     # the y=3.05 partition — at ROOM_D-1.15 its footboard
     # crossed into the partition. Pushed to the north wall.
-    bx, by = -1.0, ROOM_D - 0.99
+    # 2026-09-25: at bx -1.0 the bed's foot stood across the bedroom
+    # door's swing; against the W wall now (its east edge at -0.75 is
+    # the partition's end, where the door opening starts)
+    bx, by = -1.5, ROOM_D - 0.99
     from _props.furniture import make_bed
     # the shared bed, rose duvet made up (2026-09-07); her head- and footboards stay
     make_bed("Bed", bx, by, head="+Y", w=1.50, d=1.94, style="frame",
@@ -269,7 +287,7 @@ def build_bedroom():
     # Thermostat above the bed (reads 61)
     make_box("Thermostat", (bx, ROOM_D-0.06, 1.85), (0.14, 0.05, 0.10), (0.88, 0.86, 0.82, 1.0))
     # The small side table just OUTSIDE the bedroom door (Kai's cup)
-    make_box("Hall_Table", (0.05, 2.78, 0.34), (0.36, 0.30, 0.68), COL_WOOD)
+    make_box("Hall_Table", (-1.05, 2.78, 0.34), (0.36, 0.30, 0.68), COL_WOOD)   # west of the door, on the partition (2026-09-25: it stood in the door's swing)
     # Posters on the W wall, bedroom side
     for pi, py in enumerate((3.55, 4.35)):
         make_faded_poster(f"Poster_W_{pi}", (-ROOM_W/2.0+0.05 + 0.0535, py, 1.50), into_room=+1)
@@ -293,7 +311,7 @@ def build_dressing():
         for c in range(6):
             make_box(f"Shelf_Book_{r}_{c}", (shx-0.03, ROOM_D-1.7+c*0.16, 0.35+r*0.42),
                      (0.22, 0.12, 0.26), BOOK_COLS[(r+c) % 4])
-    make_floor_plant("Plant", (-ROOM_W/2.0+0.5, ROOM_D-0.6, 0.0),
+    make_floor_plant("Plant", (1.60, ROOM_D-0.45, 0.0),   # NE corner, west of the shelf (2026-09-25: the bed moved onto its old spot)
                      palette={"leaf": (0.36, 0.48, 0.30, 1.0), "pot": (0.66, 0.40, 0.26, 1.0)})
     for i in range(9):
         make_cyl(f"Fairy_{i}", (-1.6+i*0.4, ROOM_D-0.08, 2.10), 0.03, 0.03,
@@ -474,9 +492,9 @@ def build_wear_personality_2026_08():
     # ── THE CROWDING (weeks, so: objects, not floor) ───────────
     # Finn's end of the couch: one cushion sits lower and prouder
     # at the front edge than its twin.
-    # (couch sits at (0.70, 3.60); first placement floated in front
+    # (couch sits at (1.12, 3.60) since 2026-09-25; first placement floated in front
     # of it and hit the partition — the flat sits ON Finn's cushion)
-    make_box("Wear_Cushion_Flat", (0.25, 3.51, 0.545), (0.74, 0.58, 0.030),
+    make_box("Wear_Cushion_Flat", (0.67, 3.51, 0.545), (0.74, 0.58, 0.030),
              (0.45, 0.41, 0.35, 1.0))
     # Kai's floor bed, folded and stacked by the couch arm each
     # morning — a guest who folds is a guest who knows he's one.
@@ -625,11 +643,12 @@ def build_draft4_2026_09():
     # ── one over the counter with nothing in it (the grinder is a hand grinder) ──
     make_wall_outlet("Outlet_W_1", (-ROOM_W / 2.0, 2.05), axis='Y', face_sign=1, z=1.10, aged=True)
     # ── BEDROOM WEAR · her side of the bed ──
-    bx, by = -1.0, ROOM_D - 0.99
+    bx, by = -1.5, ROOM_D - 0.99   # the bed moved west (2026-09-25, see build_bedroom)
     make_chamfer_box("Wear_HerSide", (bx - 0.36, by + 0.05, 0.5935), (0.56, 0.95, 0.004), (0.66, 0.42, 0.48, 1.0), chamfer=0.002)
     make_cyl("Wear_CupRing_N", (bx + 1.02, by + 0.60, 0.603), 0.040, 0.003, (0.36, 0.25, 0.15, 1.0), segments=10)
-    make_rot_box("Slipper_L", (-1.98, 3.42, 0.03), (0.10, 0.26, 0.06), (0.52, 0.40, 0.36, 1.0), yaw=0.22)
-    make_rot_box("Slipper_R", (-1.84, 3.40, 0.03), (0.10, 0.26, 0.06), (0.52, 0.40, 0.36, 1.0), yaw=-0.12)
+    # her slippers at the foot of the bed, her side (the bed's west edge is 15 cm off the wall now)
+    make_rot_box("Slipper_L", (-1.75, 2.85, 0.03), (0.10, 0.26, 0.06), (0.52, 0.40, 0.36, 1.0), yaw=0.22)
+    make_rot_box("Slipper_R", (-1.61, 2.83, 0.03), (0.10, 0.26, 0.06), (0.52, 0.40, 0.36, 1.0), yaw=-0.12)
 
 
 def main():

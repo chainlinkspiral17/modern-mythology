@@ -1153,7 +1153,7 @@ def build_west_extension():
              (0.60, 0.06, 0.16), COL_BAR_WOOD)
     for i, c in enumerate("BAR"):
         make_box(f"WestExt_BarSign_Char_{i}",
-                 (bar_part_door_x + (i - 1) * 0.16, +2.0 - 0.04 - 0.0131,
+                 (bar_part_door_x + (i - 1) * 0.16, +2.0 - 0.04 - 0.0131 - 0.0100,
                   bar_part_door_h + 0.30),
                  (0.10, 0.005, 0.08), COL_BRASS)
 
@@ -1190,7 +1190,7 @@ def build_west_extension():
     for i, c in enumerate("FORMAL"):
         make_box(f"WestExt_FormalSign_Char_{i}",
                  (formal_part_door_x + (i - 2.5) * 0.20,
-                  -1.0 - 0.04 - 0.0131, formal_part_door_h + 0.30),
+                  -1.0 - 0.04 - 0.0131 - 0.0100, formal_part_door_h + 0.30),
                  (0.14, 0.005, 0.08), COL_BRASS)
 
     # ── BAR (NORTH section of extension, Y=+2..+6) ──

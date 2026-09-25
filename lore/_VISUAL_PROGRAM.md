@@ -326,6 +326,16 @@ Every ending's reading now carries the arcana's record. The design
 row's Claude-side items are through; what remains on it is Deck-
 gated (the bursts) or user-gated (Salmonberry).
 
+**Status (2026-09-25) · draft 33 · the lens sees the roads.** Two
+locales had been skipped on every sheet since the rig began:
+highway_101 and small_wood_road. Not the builds — a three-argument
+`Color(...)` in each .tscn, which Godot's parser refuses, so the scene
+never loaded. `tscn_syntax_audit.py` gates that class now, and
+`doorway_audit.py` gates at 0 / 0 (from 59 / 194) after its rules
+learned that a door set into a massing is hosted by it. The next
+sheet is the first with all 122 locales on it. Roadmap: THIRTY-THIRD
+PASS.
+
 **Status (2026-09-22) · THE SUPPORT PASS.** The user saw the frames: objects
 floating everywhere. A new gate (`support_audit.py`: everything must
 be connected to floor, wall or ceiling through what it touches)

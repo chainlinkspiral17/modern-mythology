@@ -218,7 +218,7 @@ def build_draft4_2026_09():
         for ri, rx in enumerate((cx-0.22, cx+0.22)):
             make_box(f"Wear_Arc_{ci}_{ri}", (rx, cy, 0.006), (0.06, 0.95, 0.004), (0.50, 0.38, 0.27, 1.0))
     make_cyl("Wear_CupRing_A", (-0.12, cy - 0.12, 0.542), 0.04, 0.003, (0.42, 0.30, 0.18, 1.0), segments=10)
-    make_cyl("Wear_CupRing_B", (0.14, cy + 0.14, 0.5329), 0.04, 0.003, (0.42, 0.30, 0.18, 1.0), segments=10)
+    make_cyl("Wear_CupRing_B", (0.14, cy + 0.14, 0.5421), 0.04, 0.003, (0.42, 0.30, 0.18, 1.0), segments=10)
     make_scuff_band("Wear_Scuff_Threshold", (0.0, 0.29), 0.80, axis='X', height=0.03, band_z=0.02, tint=(0.26, 0.19, 0.13, 1.0))
     make_box("Wear_Rail_Hands", (-0.9, 0.10, 1.027), (0.60, 0.06, 0.004), (0.52, 0.40, 0.28, 1.0))
     make_light_switch("Switch_1", (0.75, ROOM_D), axis='X', face_sign=-1, z=1.20, aged=True)

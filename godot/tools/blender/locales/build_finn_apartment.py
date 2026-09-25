@@ -43,7 +43,7 @@ from _props.detail import (make_traffic_wear, make_floor_stain,
                            make_wall_tint_band, make_threshold,
                            make_wall_outlet, make_light_switch)
 
-ROOM_W = 4.5; ROOM_D = 5.0; CEIL = 2.6
+ROOM_W = 5.0; ROOM_D = 5.4; CEIL = 2.6   # 2026-09-25: 4.5 × 5.0 read cramped on the sheet (the user: "rooms too cramped")
 PAL_WALL = {"wall":(0.96,0.86,0.78,1.0),"baseboard":(0.62,0.46,0.30,1.0)}
 COL_FLOOR = (0.74,0.58,0.38,1.0); COL_SEAM = (0.42,0.30,0.18,1.0); COL_WOOD = (0.46,0.34,0.22,1.0)
 COL_ACCENT = (0.86,0.62,0.62,1.0)
@@ -167,15 +167,16 @@ def build_hero_props():
     make_box("Duffel_Zip", (1.82, 0.36, 0.335), (0.44, 0.012, 0.006), (0.72, 0.70, 0.62, 1.0))
     # Counter along the W wall: kettle + cone (draft 3: off the wall —
     # its west 5 cm stood inside it; the kettle and cone as profiles)
-    make_chamfer_box("Counter", (-1.78, 1.30, 0.44), (0.70, 1.60, 0.88), (0.50, 0.44, 0.36, 1.0))
-    make_box("Counter_Top", (-1.78, 1.30, 0.92), (0.74, 1.66, 0.05), (0.34, 0.28, 0.22, 1.0))
-    make_box("Counter_Door_Seam", (-1.427, 1.30, 0.44), (0.004, 0.02, 0.80), (0.30, 0.26, 0.20, 1.0))
+    # 2026-09-25: the room is 5.0 wide now; the counter followed the W wall 0.25 west (its dressing with it)
+    make_chamfer_box("Counter", (-2.03, 1.30, 0.44), (0.70, 1.60, 0.88), (0.50, 0.44, 0.36, 1.0))
+    make_box("Counter_Top", (-2.03, 1.30, 0.92), (0.74, 1.66, 0.05), (0.34, 0.28, 0.22, 1.0))
+    make_box("Counter_Door_Seam", (-1.677, 1.30, 0.44), (0.004, 0.02, 0.80), (0.30, 0.26, 0.20, 1.0))
     for ki, ky in enumerate((0.95, 1.65)):
-        make_box(f"Counter_Pull_{ki}", (-1.425, ky, 0.80), (0.008, 0.10, 0.02), P.METAL_BLACK)
-    make_lathe("Kettle", (-1.75, 0.90, 0.945), [(0.0, 0.0), (0.085, 0.0), (0.095, 0.05), (0.09, 0.13), (0.06, 0.16), (0.035, 0.165), (0.035, 0.18), (0.0, 0.18)], (0.62, 0.64, 0.65, 1.0), segments=12)
-    make_tube("Kettle_Spout", [(-1.67, 0.90, 1.03), (-1.60, 0.90, 1.10), (-1.57, 0.90, 1.14)], 0.012, (0.62, 0.64, 0.65, 1.0), segments=6)
-    make_tube("Kettle_Bail", [(-1.75, 0.84, 1.11), (-1.75, 0.86, 1.20), (-1.75, 0.94, 1.20), (-1.75, 0.96, 1.11)], 0.008, (0.18, 0.17, 0.16, 1.0), segments=5)
-    make_lathe("Pour_Cone", (-1.75, 1.55, 0.945), [(0.03, 0.0), (0.03, 0.02), (0.045, 0.03), (0.075, 0.10), (0.065, 0.10), (0.04, 0.035), (0.0, 0.035)], (0.86, 0.82, 0.74, 1.0), segments=10)
+        make_box(f"Counter_Pull_{ki}", (-1.675, ky, 0.80), (0.008, 0.10, 0.02), P.METAL_BLACK)
+    make_lathe("Kettle", (-2.00, 0.90, 0.945), [(0.0, 0.0), (0.085, 0.0), (0.095, 0.05), (0.09, 0.13), (0.06, 0.16), (0.035, 0.165), (0.035, 0.18), (0.0, 0.18)], (0.62, 0.64, 0.65, 1.0), segments=12)
+    make_tube("Kettle_Spout", [(-1.92, 0.90, 1.03), (-1.85, 0.90, 1.10), (-1.82, 0.90, 1.14)], 0.012, (0.62, 0.64, 0.65, 1.0), segments=6)
+    make_tube("Kettle_Bail", [(-2.00, 0.84, 1.11), (-2.00, 0.86, 1.20), (-2.00, 0.94, 1.20), (-2.00, 0.96, 1.11)], 0.008, (0.18, 0.17, 0.16, 1.0), segments=5)
+    make_lathe("Pour_Cone", (-2.00, 1.55, 0.945), [(0.03, 0.0), (0.03, 0.02), (0.045, 0.03), (0.075, 0.10), (0.065, 0.10), (0.04, 0.035), (0.0, 0.035)], (0.86, 0.82, 0.74, 1.0), segments=10)
     make_lathe("Pour_Mug", (-1.75, 1.55, 0.945), [(0.0, 0.0), (0.04, 0.0), (0.042, 0.018), (0.0, 0.018)], (0.30, 0.34, 0.40, 1.0), segments=10)
     # The SOUTH kitchen window (toward Cape Perpetua) — S wall east
     # segment, above the entry level
@@ -297,7 +298,7 @@ def build_draft3_2026_09():
     # under a blob is a clip to the recorder, which boxes the blob whole)
     make_box("Wear_Corner", (ROOM_W / 2.0 - 0.104, 0.42, 0.26), (0.004, 0.50, 0.22), (0.86, 0.76, 0.66, 1.0))
     make_box("Wear_Desk_Edge", (DESK_X, 1.23, 0.7615), (0.80, 0.05, 0.003), (0.36, 0.26, 0.16, 1.0))
-    make_box("Wear_Drip", (-1.415, 1.30, 0.60), (0.004, 0.30, 0.20), (0.44, 0.38, 0.30, 1.0))
+    make_box("Wear_Drip", (-1.665, 1.30, 0.60), (0.004, 0.30, 0.20), (0.44, 0.38, 0.30, 1.0))   # on the counter's east face, which moved west with the wall (2026-09-25)
     # the S window's interior sill — the crow and its marks were on air
     # (2026-09-23: the window had a frame in the wall and no sill)
     make_box("S_Window_Sill", (1.55, 0.26, 1.055), (1.00, 0.32, 0.03), (0.80, 0.78, 0.72, 1.0))
@@ -306,7 +307,7 @@ def build_draft3_2026_09():
     # D3: the counter's outlet + the kettle's cord; the desk's outlet +
     # the lamp's cord (straight tubes)
     make_wall_outlet("Outlet_W_2", (-ROOM_W / 2.0, 1.15), axis='Y', face_sign=1, z=1.15, aged=True)
-    make_tube("Cord_1", [(-1.66, 0.96, 0.96), (-2.13, 1.15, 1.15)], 0.008, cord, segments=5)
+    make_tube("Cord_1", [(-1.91, 0.96, 0.96), (-ROOM_W / 2.0 + 0.12, 1.15, 1.15)], 0.008, cord, segments=5)   # kettle edge → the outlet on the W wall's face (2026-09-25)
     # (the lamp's cord runs along the desk's back edge, behind the
     # carved piece — across the top it stood in shot_insert_cedar's line)
     make_wall_outlet("Outlet_E_2", (ROOM_W / 2.0, 1.78), axis='Y', face_sign=-1, z=1.0, aged=True)

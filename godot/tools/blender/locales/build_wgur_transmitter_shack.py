@@ -357,8 +357,8 @@ def build_tower_wave2_props():
              (0.24, 0.30, 0.24),
              (0.86, 0.82, 0.76, 1.0))
     make_box("PreDawn_JulesShirt_Stain",
-             (rack_x + 0.20, rack_y + 0.02, rack_top_z + 0.20),
-             (0.10, 0.001, 0.06),
+             (rack_x + 0.20, rack_y + 0.02, rack_top_z + 0.2406),   # on the folded shirt's top (2026-09-25: 13 cm inside it)
+             (0.10, 0.06, 0.001),
              (0.42, 0.28, 0.18, 1.0))
 
     # the shack has no counter: on the desk's east end (2026-09-23: it

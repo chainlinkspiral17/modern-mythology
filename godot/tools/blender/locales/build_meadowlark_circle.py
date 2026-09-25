@@ -40,7 +40,7 @@ import os, sys, math
 _BT = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)), ".."))
 if _BT not in sys.path: sys.path.insert(0, _BT)
 from _props import palette as P
-from _props.geometry import clear_scene, make_box, make_cyl, make_blob, make_lathe, make_prism, make_tube, export_glb
+from _props.geometry import clear_scene, make_box, make_cyl, make_blob, make_lathe, make_prism, make_tube, make_rot_box, export_glb
 from _props.detail import make_far_bands
 from _props.vehicles import make_car
 from _props.buildings import make_ranch_house
@@ -260,7 +260,10 @@ def build_henderson_2026_09():
     make_box("Henderson_Vent_Slats", (1.1, 8.427, 2.30), (0.56, 0.002, 0.08), (0.72, 0.62, 0.42, 1.0))
     # rain has mostly stopped: a puddle at the foot of the drive, the wet sheen on the truck's hood
     make_box("Driveway_Puddle", (1.5, 4.6, 0.0705), (1.6, 0.9, 0.001), (0.34, 0.36, 0.40, 1.0))
-    make_box("Ben_Truck_Hood_Sheen", (-2.6, 2.4, 0.9805), (1.2, 1.2, 0.001), (0.30, 0.42, 0.34, 1.0))
+    # the pickup's hood rises 4 cm over 1.47 m toward the cab (vehicles.py
+    # profile): the sheen is pitched with it (2026-09-25: flat at 0.98 it
+    # lay 56 cm inside the body's box; the truck is at x -4.2, nose east)
+    make_rot_box("Ben_Truck_Hood_Sheen", (-2.225, 2.4, 1.0012), (1.30, 1.2, 0.001), (0.30, 0.42, 0.34, 1.0), pitch=0.0272)
 
 
 def main():

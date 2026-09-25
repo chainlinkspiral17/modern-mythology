@@ -79,10 +79,15 @@ echo ""
 # 32 key/sun/moon/overhead lights pointed UP (a copied Rx(+45) sign
 # slip) and lit ceilings instead of floors. Nonzero exit fails.
 # Doorways (2026-09-24, the user: "doorways obstructed or misaligned"):
-# REPORT only for now — outdoor façades on solid massings still read as
-# false BLOCKED; interiors were cleared by hand this pass.
-echo "── doorway_audit.py (report) ──"
-python3 doorway_audit.py 2>/dev/null | tail -1 || true
+# a GATE since 2026-09-25 — doors set into massings are hosted, not
+# blocked; the last 30 real ones (a bench across a door, a lectern 3 cm
+# inside the clearance, guest chairs at the office door, a display
+# tower in the entry, an ice machine across room 1) were moved. Zero.
+echo "── doorway_audit.py ──"
+DWOUT="$(python3 doorway_audit.py 2>/dev/null)" || {
+    echo "$DWOUT" | grep -E "^(BLOCKED|ADRIFT)" | head -20
+    echo "REGRESSION  doorway_audit found a blocked or adrift door (ceiling 0)"; exit 1; }
+echo "$DWOUT" | tail -1
 echo ""
 
 echo "── light_direction_audit.py ──"
@@ -276,6 +281,18 @@ IOOUT="$(python3 inside_out_audit.py 2>/dev/null)" || {
     echo "$IOOUT" | grep -A1 "^PLACE" | head -30
     echo "$IOOUT" | tail -1; exit 1; }
 echo "$IOOUT" | tail -1
+echo ""
+
+# ── Scene-syntax gate (2026-09-25) ────────────────────────────
+# highway_101 and small_wood_road were skipped on every contact sheet:
+# `Color(r, g, b)` — Godot's parser wants four arguments — and the
+# whole .tscn failed to load. Constructor arity, declared resource ids,
+# ext_resource paths, node parents. Zero.
+echo "── tscn_syntax_audit.py ──"
+TSOUT="$(python3 tscn_syntax_audit.py 2>/dev/null)" || {
+    echo "$TSOUT" | grep -E "^(ARITY|UNDECL|MISSING|NOPARENT)" | head -20
+    echo "REGRESSION  tscn_syntax_audit found a scene Godot cannot parse (ceiling 0)"; exit 1; }
+echo "$TSOUT" | tail -1
 echo ""
 
 # ── Trip-fight gate (2026-09-12) ──────────────────────────────

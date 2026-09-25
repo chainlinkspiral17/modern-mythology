@@ -319,14 +319,18 @@ def build_table():
                                        (0.104, 0.114))):
             make_cyl(f"{pfx}_Spiral_{si}", (bx, by, top_z + sz),
                      sr, 0.007, cedar_dk, segments=16)
-        # Rim lip + the hollow (darker disc sunk below the rim)
-        make_cyl(f"{pfx}_Rim", (bx, by, top_z + 0.122),
-                 0.122, 0.014, cedar_lt, segments=16)
-        make_cyl(f"{pfx}_Hollow", (bx, by, top_z + 0.108),
-                 0.104, 0.010, cedar_dk, segments=16)
+        # Rim lip as a RING on the body's top, the hollow a darker disc
+        # inside it (2026-09-25: the rim was a solid disc and the hollow
+        # sat under it, inside the body — the bowls read as flat-topped
+        # cylinders and the water lay buried)
+        make_lathe(f"{pfx}_Rim", (bx, by, top_z + 0.120),
+                   [(0.104, 0.0), (0.122, 0.0), (0.122, 0.020), (0.104, 0.020), (0.104, 0.0)],
+                   cedar_lt, segments=16)
+        make_cyl(f"{pfx}_Hollow", (bx, by, top_z + 0.121),
+                 0.104, 0.002, cedar_dk, segments=16)
     # One bowl holds a little water from the wash; the other is dry —
     # the difference the chapter turns on, stated in one highlight.
-    make_cyl("Bowl_Substrate_Water", (tx + 0.22, ty - 0.06, top_z + 0.104 + 0.0186),
+    make_cyl("Bowl_Substrate_Water", (tx + 0.22, ty - 0.06, top_z + 0.124),
              0.094, 0.004, (0.58, 0.62, 0.60, 0.85), segments=14)
 
     # Braided oval rug under the table

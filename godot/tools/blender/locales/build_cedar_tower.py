@@ -290,7 +290,7 @@ def build_draft2_density_2026_08():
         make_box(f"Studio_CableFloor_{ci2}", (cx2, 5.6, z0 + 0.045), (0.12, 2.0, 0.025), (0.22, 0.22, 0.24, 1.0))
     # Rack labels + ONE rack door ajar (mid-maintenance).
     for ri in range(5):
-        make_box(f"Rack_{ri}_Label", (-4.6 + ri * 2.3, 8.44, z0 + 2.00), (0.30, 0.005, 0.08),
+        make_box(f"Rack_{ri}_Label", (-4.6 + ri * 2.3, 8.0715, z0 + 2.00), (0.30, 0.005, 0.08),   # on the rack's front face (2026-09-25: 37 cm inside it)
                  (0.88, 0.86, 0.78, 1.0))
     make_box("Rack_2_Door_Ajar", (0.35, 8.02, z0 + 1.05), (0.55, 0.03, 2.00), (0.28, 0.29, 0.32, 1.0))
 

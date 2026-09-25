@@ -12,7 +12,7 @@ from _props.food_service import make_coffee_pots, make_donut_display
 from _props.decor import make_wall_clock, make_floor_plant, make_faded_poster, make_calendar
 from _props.safety import make_smoke_detector, make_hvac_vent, make_fluorescent_tube_fixture, make_ceiling_speaker
 
-ROOM_W = 5.0; ROOM_D = 4.0; CEIL = 2.6
+ROOM_W = 5.6; ROOM_D = 4.6; CEIL = 2.6   # 2026-09-25: 5.0 × 4.0 read cramped on the sheet (the user: "rooms too cramped")
 PAL_WALL = {"wall": (0.74, 0.74, 0.70, 1.0), "baseboard": (0.32, 0.30, 0.28, 1.0)}
 COL_FLOOR = (0.62, 0.58, 0.52, 1.0); COL_SEAM = (0.32, 0.30, 0.28, 1.0); COL_WOOD = (0.42, 0.32, 0.22, 1.0)
 COL_ACCENT = (0.86, 0.62, 0.28, 1.0)
@@ -125,13 +125,13 @@ def build_board():
 
 def build_break_decor():
     # Wall clock on the N wall beside the bulletin board
-    make_wall_clock("Clock", (1.70, 3.900, 2.10), frozen_hour=12, frozen_min=30, facing='-Y')
+    make_wall_clock("Clock", (1.70, ROOM_D - 0.100, 2.10), frozen_hour=12, frozen_min=30, facing='-Y')   # on the N wall's face wherever it is (2026-09-25: literal 3.9 floated when the room grew)
     # Wall calendar on the E wall (make_calendar was imported/unused)
     make_calendar("Calendar", (ROOM_W/2.0-0.06, 1.20, 1.60))
     # Corner floor plant (make_floor_plant was imported/unused)
     make_floor_plant("Plant", (ROOM_W/2.0-0.55, 0.60, 0.0))
     # Swing-lid trash bin by the counter
-    tx, ty = -ROOM_W/2.0+0.95, 0.45
+    tx, ty = -ROOM_W/2.0+1.25, 0.45   # east of the dishwasher (2026-09-25: at +0.95 the widened room put it inside the dishwasher)
     make_cyl("Trash_Body", (tx, ty, 0.34), 0.20, 0.68, (0.34, 0.36, 0.34, 1.0), segments=12, axis='Z')
     make_cyl("Trash_Rim", (tx, ty, 0.68), 0.21, 0.03, (0.24, 0.26, 0.24, 1.0), segments=12, axis='Z')
     make_box("Trash_SwingLid", (tx, ty, 0.71), (0.30, 0.30, 0.04), (0.28, 0.30, 0.28, 1.0))
@@ -159,8 +159,8 @@ def build_hero_props():
     # Jessa's small dishwasher, under-counter
     # at the counter's S end, against the walls (2026-09-23: half inside
     # the counter carcass and 8 cm into the W wall)
-    make_box("Small_Dishwasher", (-2.14, 0.39, 0.44), (0.52, 0.58, 0.85), (0.78, 0.76, 0.72, 1.0))
-    make_box("Dishwasher_Handle", (-1.865, 0.39, 0.78), (0.03, 0.42, 0.04), (0.55, 0.57, 0.58, 1.0))
+    make_box("Small_Dishwasher", (-ROOM_W/2.0+0.66, 0.39, 0.44), (0.52, 0.58, 0.85), (0.78, 0.76, 0.72, 1.0))
+    make_box("Dishwasher_Handle", (-ROOM_W/2.0+0.935, 0.39, 0.78), (0.03, 0.42, 0.04), (0.55, 0.57, 0.58, 1.0))
     # Jacket hooks by the doorway
     for hi, hx in enumerate((1.35, 1.6, 1.85)):
         make_cyl(f"Jacket_Hook_{hi}", (hx, 0.10, 1.70), 0.015, 0.06, (0.20, 0.19, 0.20, 1.0), axis='Y', segments=6)

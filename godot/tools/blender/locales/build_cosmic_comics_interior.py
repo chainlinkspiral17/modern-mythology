@@ -142,7 +142,7 @@ def build_key_wall():
 
 def build_statue_tower():
     # Freestanding glass statue tower near the entrance — three tiers.
-    tx, ty = 0.0, 1.05
+    tx, ty = 1.55, 1.05   # east of the front door's swing (x to 0.95) — 2026-09-25: centred on the door it stood in its swing, and north of that it hit the new-arrivals table
     make_chamfer_box("Tower_Base", (tx, ty, 0.30), (0.90, 0.90, 0.60), COL_WOOD)
     make_box("Tower_Glass", (tx, ty, 1.20), (0.86, 0.86, 1.20), (0.70, 0.80, 0.92, 0.30))
     for tier, tz in enumerate([0.66, 1.10, 1.54]):

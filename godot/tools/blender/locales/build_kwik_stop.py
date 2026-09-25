@@ -1034,7 +1034,7 @@ def build_ice_machine():
     # ICE label
     make_box("IceMachine_Sign", (cx - 0.50, cy, 1.20),
              (0.02, 0.80, 0.30), COL_ICE_BLUE)
-    make_box("IceMachine_SignText", (cx - 0.51 + 0.0131, cy, 1.20),
+    make_box("IceMachine_SignText", (cx - 0.51 + 0.0131 - 0.0562, cy, 1.20),
              (0.005, 0.40, 0.16), COL_PAPER)
     # Floor drain pan at base
     make_box("IceMachine_DrainPan", (cx, cy, 0.04),
@@ -1823,7 +1823,7 @@ def build_donut_display():
 
 def build_creamer_sugar_caddy():
     # On the coffee counter — coffee station is at cx=-5.30, cy=4.50.
-    cx, cy = -4.90, 5.50  # north end of the coffee counter, east of the pots (2026-09-22: it shared space with pot 1, then the lid dispenser)
+    cx, cy = -5.30, 5.92  # the coffee counter's north end (2026-09-22: it shared space with pot 1, then the lid dispenser; 2026-09-25: then the Slurpee base)
     base_z = 0.92  # ON the coffee counter top (0.88)
     # Sugar caddy — a tray with sugar packet slots and creamer cups
     make_box("Caddy_Tray", (cx, cy, base_z),
@@ -2077,12 +2077,13 @@ def build_credit_card_terminal():
     # Screen
     make_box("CCTerm_Screen", (cx, cy - 0.131, base_z + 0.10),
              (0.12, 0.005, 0.06), COL_TERMINAL_SCRN)
-    # PIN pad — 4 rows × 3 cols
+    # PIN pad — 4 rows × 3 cols, laid on the body's top face
+    # (2026-09-25: the keys hung in the body's middle, 13 cm inside it)
     for r in range(4):
         for c in range(3):
             make_box(f"CCTerm_Key_{r}_{c}",
-                     (cx - 0.05 + c * 0.05, cy, base_z + 0.04 - r * 0.018),
-                     (0.04, 0.005, 0.012), COL_PAPER_AGED)
+                     (cx - 0.05 + c * 0.05, cy - 0.06 + r * 0.035, base_z + 0.12 + 0.0031),
+                     (0.04, 0.012, 0.005), COL_PAPER_AGED)
     # Card swipe slot
     make_box("CCTerm_Slot", (cx, cy + 0.13, base_z + 0.06),
              (0.14, 0.005, 0.012), COL_METAL_BLACK)

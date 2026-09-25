@@ -355,8 +355,8 @@ metadata/fov = 60.0
 
 ; insert: the glass grail tower by the entrance
 [node name="shot_insert_tower" type="Marker3D" parent="." groups=["vn_shot"]]
-position = Vector3(1.5, 1.55, -1.4)
-rotation = Vector3(-0.260051, 1.63736, 0)
+position = Vector3(1.490, 2.000, -2.982)
+rotation = Vector3(-0.3274, -3.1052, 0.0)
 metadata/fov = 42.0
 
 ; insert: the one-way mirror into the back office

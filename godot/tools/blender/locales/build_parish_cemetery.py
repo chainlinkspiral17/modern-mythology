@@ -391,39 +391,40 @@ def build_judgement_wave2_props():
     # ── the_reading_of_the_hard_names ─────────────────────────
 
     # Sister Beatrice's second-hour lectern at central mausoleum.
+    # 2026-09-25: 15 cm further from the door — its post stood 3 cm inside the door's 0.9 m clearance
     # The mausoleum body is SOLID stone (y in [-2.2,+2.2]) — the old
     # "vestibule" placement at y=-0.60 buried the lectern and all 22
     # names a meter inside the mass. It stands on the south approach
     # in front of the bronze door (door face y=-2.21).
     make_box("Beatrice_Lectern_Post",
-             (0.0, -3.10, 0.60),
+             (0.0, -3.25, 0.60),
              (0.06, 0.06, 1.20),
              (0.62, 0.42, 0.26, 1.0))
     # Angled reading surface
     # on the post (2026-09-23: 2.5 cm over it)
     make_box("Beatrice_Lectern_Surface",
-             (0.0, -3.12, 1.215),
+             (0.0, -3.27, 1.215),
              (0.32, 0.24, 0.03),
              (0.72, 0.56, 0.34, 1.0))
     # Bound reading list open on the surface
     make_box("Beatrice_ReadingList_Cover",
-             (0.0, -3.12, 1.237),
+             (0.0, -3.27, 1.237),
              (0.28, 0.22, 0.014),
              (0.42, 0.20, 0.16, 1.0))    # bookbinder maroon
     # Open page (cream)
     make_box("Beatrice_ReadingList_Page",
-             (0.0, -3.12, 1.2445),
+             (0.0, -3.27, 1.2445),
              (0.26, 0.20, 0.001),
              (0.94, 0.90, 0.80, 1.0))
     # Twenty-two name lines (small dark stripes)
     for ni in range(11):
         make_box("Beatrice_ReadingList_Name_L_%d" % ni,
-                 (-0.06, -3.12 - 0.06 + ni * 0.013, 1.2455),
+                 (-0.06, -3.27 - 0.06 + ni * 0.013, 1.2455),
                  (0.09, 0.006, 0.0005),
                  (0.20, 0.16, 0.12, 1.0))
     for ni in range(11):
         make_box("Beatrice_ReadingList_Name_R_%d" % ni,
-                 (+0.06, -3.12 - 0.06 + ni * 0.013, 1.2455),
+                 (+0.06, -3.27 - 0.06 + ni * 0.013, 1.2455),
                  (0.09, 0.006, 0.0005),
                  (0.20, 0.16, 0.12, 1.0))
 

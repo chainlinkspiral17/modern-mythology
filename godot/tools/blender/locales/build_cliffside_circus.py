@@ -97,8 +97,10 @@ def build_main_building():
 
 def build_satellites():
     """Two smaller shacks east of the main building."""
-    for i, (sx, sy, w, d, h) in enumerate(((2.2, 9.8, 2.6, 2.2, 2.4),
-                                            (5.6, 9.0, 2.0, 1.8, 2.1))):
+    # set back from the enclosure rail (y 7.9) and the pool's coping (to
+    # 7.4) so each door has 0.9 m in front of it (2026-09-25: 0.8 and 0.7)
+    for i, (sx, sy, w, d, h) in enumerate(((2.2, 10.2, 2.6, 2.2, 2.4),
+                                            (5.6, 9.8, 2.0, 1.8, 2.1))):
         make_box(f"Shack_{i}_Body", (sx, sy, h / 2.0), (w, d, h), COL_SHACK)
         make_box(f"Shack_{i}_Roof", (sx, sy, h + 0.18), (w + 0.5, d + 0.5, 0.36), COL_SHACK_ROOF)
         make_box(f"Shack_{i}_Door", (sx - w * 0.2, sy - d / 2.0 + 0.02, 0.95),

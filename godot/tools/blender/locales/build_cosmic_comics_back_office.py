@@ -30,7 +30,7 @@ from _props.food_service import make_coffee_pots, make_donut_display
 from _props.decor import make_wall_clock, make_floor_plant, make_faded_poster, make_calendar
 from _props.safety import make_smoke_detector, make_hvac_vent, make_fluorescent_tube_fixture, make_ceiling_speaker
 
-ROOM_W = 4.0; ROOM_D = 5.0; CEIL = 2.6
+ROOM_W = 4.6; ROOM_D = 5.2; CEIL = 2.6   # 2026-09-25: 4.0 × 5.0 read cramped on the sheet (the user: "rooms too cramped")
 PAL_WALL = {"wall": (0.78, 0.70, 0.58, 1.0), "baseboard": (0.42, 0.32, 0.22, 1.0)}
 COL_FLOOR = (0.62, 0.52, 0.42, 1.0); COL_SEAM = (0.32, 0.22, 0.14, 1.0); COL_WOOD = (0.42, 0.30, 0.20, 1.0)
 COL_ACCENT = (0.78, 0.42, 0.22, 1.0)
@@ -205,7 +205,7 @@ def build_backoffice_detail():
     make_box("Desk_ArtBoard_0", (0.35 + DESK_DX, 3.5 + DESK_DY, 0.815), (0.34, 0.44, 0.006), (0.94, 0.93, 0.88, 1.0))
     make_box("Desk_ArtBoard_1", (0.42 + DESK_DX, 3.55 + DESK_DY, 0.822), (0.34, 0.44, 0.006), (0.90, 0.90, 0.84, 1.0))
     # on the desk (2026-09-23: 5 cm over it)
-    make_cyl("Desk_Mug", (0.7 + DESK_DX, 3.2 + DESK_DY, 0.81), 0.04, 0.10, (0.30, 0.44, 0.52, 1.0), segments=8)
+    make_cyl("Desk_Mug", (0.7 + DESK_DX, ROOM_D-1.8 + DESK_DY, 0.81), 0.04, 0.10, (0.30, 0.44, 0.52, 1.0), segments=8)   # keyed to the desk's y (2026-09-25: the desk moved with ROOM_D, the mug did not)
     # on the desk
     make_cyl("Desk_PenCup", (-0.75 + DESK_DX, 3.3 + DESK_DY, 0.815), 0.045, 0.11, (0.20, 0.20, 0.24, 1.0), segments=8)
     for k in range(4):
@@ -226,8 +226,9 @@ def build_hero_props():
     make_box("SpeakSpell_Grille", (-1.36, 1.05, 1.695), (0.06, 0.06, 0.012), (0.94, 0.42, 0.30, 1.0))
     make_box("SpeakSpell_Crack", (-1.57, 0.92, 1.66), (0.03, 0.03, 0.045), (0.44, 0.10, 0.09, 1.0))
     # One-way mirror to the sales floor (installed 1983)
-    make_box("OneWay_Mirror_Frame", (1.4, 0.10, 1.70), (1.20, 0.04, 0.95), (0.30, 0.26, 0.22, 1.0))
-    make_box("OneWay_Mirror", (1.4, 0.08, 1.70), (1.10, 0.02, 0.85), (0.46, 0.52, 0.56, 1.0))
+    # east of the office door's reach (x 0.95) — 2026-09-25: its frame overlapped the doorway by 15 cm
+    make_box("OneWay_Mirror_Frame", (1.55, 0.10, 1.70), (1.20, 0.04, 0.95), (0.30, 0.26, 0.22, 1.0))
+    make_box("OneWay_Mirror", (1.55, 0.08, 1.70), (1.10, 0.02, 0.85), (0.46, 0.52, 0.56, 1.0))
     # Desk drawer pedestal (top drawer takes the slip; green folder
     # in the second)
     make_chamfer_box("Desk_Pedestal", (0.62 + DESK_DX, 3.5 + DESK_DY, 0.38), (0.52, 0.72, 0.70), (0.40, 0.30, 0.20, 1.0))
@@ -243,8 +244,9 @@ def build_hero_props():
     # Mini-fridge + floor safe (one of the six keys)
     make_chamfer_box("Mini_Fridge", (1.65, 0.75, 0.42), (0.55, 0.55, 0.84), (0.82, 0.80, 0.76, 1.0))
     make_box("Mini_Fridge_Handle", (1.38, 0.55, 0.55), (0.03, 0.03, 0.30), iron)
-    make_chamfer_box("Office_Safe", (1.62, 4.4, 0.28), (0.50, 0.50, 0.56), (0.24, 0.25, 0.28, 1.0))
-    make_cyl("Safe_Dial", (1.62, 4.14, 0.32), 0.06, 0.03, (0.60, 0.62, 0.64, 1.0), axis='Y', segments=10)
+    # in the NE corner, east of the service door's swing (x 0.75..1.65) — 2026-09-25: it stood in it
+    make_chamfer_box("Office_Safe", (1.92, 4.4, 0.28), (0.50, 0.50, 0.56), (0.24, 0.25, 0.28, 1.0))
+    make_cyl("Safe_Dial", (1.92, 4.14, 0.32), 0.06, 0.03, (0.60, 0.62, 0.64, 1.0), axis='Y', segments=10)
     # The office door + the slide bolt Sam did not realize was there
     make_box("Office_Door", (0.0, 0.05, 1.03), (1.90, 0.05, 2.05), (0.40, 0.30, 0.20, 1.0))
     make_box("Office_Bolt_Plate", (0.85, 0.02, 1.20), (0.16, 0.02, 0.05), iron)
@@ -313,7 +315,7 @@ def build_draft4_2026_09():
     make_traffic_wear("Wear_Path_Entry_B", [(-0.2, 0.9), (-0.9, 1.15), (-1.15, 1.4)], width=0.34, tint=floor_dk)
     make_floor_stain("Wear_Caster_Oval", (ch_x, ch_y + 0.05), radius=0.42, tint=(0.46, 0.38, 0.30, 1.0), segments=12)
     make_box("Wear_Forearm", (dx + 0.10, dy - 0.32, 0.762), (0.42, 0.10, 0.004), (0.52, 0.40, 0.28, 1.0))
-    for ri, (rx, ry) in enumerate(((-1.72, 0.85), (-1.62, 1.18), (-1.15, 1.22))):
+    for ri, (rx, ry) in enumerate(((-1.72, 0.85), (-1.62, 1.18), (-1.45, 1.22))):   # ring 2 back on the top that moved west with the room (2026-09-25)
         make_cyl(f"Wear_Ring_W_{ri}", (rx, ry, 1.303), 0.04, 0.003, (0.42, 0.30, 0.20, 1.0), segments=10)
     make_box("Wear_Ink_Spot", (-1.5 + 0.20, 2.6 - 0.30, 0.822), (0.08, 0.05, 0.002), (0.12, 0.12, 0.16, 1.0))
     for hi, (hx, hz) in enumerate(((-0.62, 1.95), (-0.55, 1.35), (0.25, 1.98), (0.62, 1.30), (0.05, 1.25))):
