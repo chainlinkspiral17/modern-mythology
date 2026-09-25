@@ -31,6 +31,7 @@ from _props.food_service import make_coffee_pots, make_donut_display
 from _props.decor import make_wall_clock, make_floor_plant, make_faded_poster, make_calendar
 from _props.safety import make_smoke_detector, make_hvac_vent, make_fluorescent_tube_fixture, make_ceiling_speaker
 
+# 2026-09-25: the counter run and the stove stood at ROOM_D-0.45 — 0.55 m off the N wall in every kitchen from this template; ROOM_D-0.45 puts their backs on the wall face
 ROOM_W = 6.0; ROOM_D = 5.0; CEIL = 2.6
 PAL_WALL = {"wall": (0.92, 0.86, 0.74, 1.0), "baseboard": (0.42, 0.32, 0.22, 1.0)}
 COL_FLOOR = (0.74, 0.58, 0.38, 1.0); COL_SEAM = (0.42, 0.30, 0.18, 1.0); COL_WOOD = (0.46, 0.34, 0.22, 1.0)
@@ -61,24 +62,24 @@ def build_counter():
     # a narrow face against the wall and the run jutting into
     # the room. Swapped 2026-08-12 (same bug as the New
     # Orleans bar and the pit stop's lunch counter).
-    top_z = make_counter("Counter", (-ROOM_W/4.0, ROOM_D-1.0, 0.0), length=0.70, depth=2.40, height=0.92,
+    top_z = make_counter("Counter", (-ROOM_W/4.0, ROOM_D-0.45, 0.0), length=0.70, depth=2.40, height=0.92,
                          palette={"formica": (0.78, 0.66, 0.42, 1.0), "top": (0.32, 0.22, 0.14, 1.0), "kick": (0.32, 0.22, 0.14, 1.0)})
-    make_counter_bullnose("Counter", (-ROOM_W/4.0, ROOM_D-1.0 - 0.35, top_z), length=2.40, axis='X')
+    make_counter_bullnose("Counter", (-ROOM_W/4.0, ROOM_D-0.45 - 0.35, top_z), length=2.40, axis='X')
     # Sink
-    make_box("Sink_Bowl", (-ROOM_W/4.0, ROOM_D-1.0, 0.86), (0.50, 0.40, 0.12), (0.86, 0.86, 0.84, 1.0))
+    make_box("Sink_Bowl", (-ROOM_W/4.0, ROOM_D-0.45, 0.86), (0.50, 0.40, 0.12), (0.86, 0.86, 0.84, 1.0))
     # draft 4 (2026-09-18): a gooseneck faucet with its handle
     make_lathe("Sink_Faucet_Base", (-ROOM_W/4.0, ROOM_D-0.78, top_z), [(0.035, 0.0), (0.03, 0.01), (0.02, 0.02), (0.02, 0.06)], P.METAL_STEEL, segments=8)
-    make_tube("Sink_Faucet", [(-ROOM_W/4.0, ROOM_D-0.78, top_z+0.05), (-ROOM_W/4.0, ROOM_D-0.78, top_z+0.24), (-ROOM_W/4.0, ROOM_D-0.84, top_z+0.30), (-ROOM_W/4.0, ROOM_D-0.94, top_z+0.30), (-ROOM_W/4.0, ROOM_D-1.00, top_z+0.24)], 0.014, P.METAL_STEEL, segments=6)
+    make_tube("Sink_Faucet", [(-ROOM_W/4.0, ROOM_D-0.78, top_z+0.05), (-ROOM_W/4.0, ROOM_D-0.78, top_z+0.24), (-ROOM_W/4.0, ROOM_D-0.84, top_z+0.30), (-ROOM_W/4.0, ROOM_D-0.94, top_z+0.30), (-ROOM_W/4.0, ROOM_D-0.45, top_z+0.24)], 0.014, P.METAL_STEEL, segments=6)
     make_cyl("Sink_Faucet_Handle", (-ROOM_W/4.0+0.07, ROOM_D-0.78, top_z+0.06), 0.008, 0.06, P.METAL_STEEL, axis='X', segments=5)
     # Stove
-    make_chamfer_box("Stove_Body", (ROOM_W/4.0, ROOM_D-1.0, 0.45), (0.70, 0.70, 0.92), (0.86, 0.84, 0.80, 1.0))
-    make_box("Stove_Top", (ROOM_W/4.0, ROOM_D-1.0, 0.92), (0.70, 0.70, 0.04), P.METAL_BLACK)
+    make_chamfer_box("Stove_Body", (ROOM_W/4.0, ROOM_D-0.45, 0.45), (0.70, 0.70, 0.92), (0.86, 0.84, 0.80, 1.0))
+    make_box("Stove_Top", (ROOM_W/4.0, ROOM_D-0.45, 0.92), (0.70, 0.70, 0.04), P.METAL_BLACK)
     for bi, (ox, oy) in enumerate(((-0.17, -0.17), (0.17, -0.17), (-0.17, 0.17), (0.17, 0.17))):
-        make_cyl(f"Stove_Burner_{bi}", (ROOM_W/4.0+ox, ROOM_D-1.0+oy, 0.945), 0.09, 0.01, (0.14, 0.14, 0.15, 1.0), segments=10)
+        make_cyl(f"Stove_Burner_{bi}", (ROOM_W/4.0+ox, ROOM_D-0.45+oy, 0.945), 0.09, 0.01, (0.14, 0.14, 0.15, 1.0), segments=10)
     for ki in range(4):
-        make_lathe(f"Stove_Knob_{ki}", (ROOM_W/4.0 - 0.24 + ki * 0.16, ROOM_D-1.0-0.352, 0.80), [(0.0, 0.0), (0.02, 0.0), (0.022, 0.012), (0.014, 0.02), (0.0, 0.02)], (0.16, 0.16, 0.17, 1.0), segments=8)
+        make_lathe(f"Stove_Knob_{ki}", (ROOM_W/4.0 - 0.24 + ki * 0.16, ROOM_D-0.45-0.352, 0.80), [(0.0, 0.0), (0.02, 0.0), (0.022, 0.012), (0.014, 0.02), (0.0, 0.02)], (0.16, 0.16, 0.17, 1.0), segments=8)
     # on the oven door (2026-09-23: 1.8 cm in front of it)
-    make_tube("Stove_Oven_Bar", [(ROOM_W/4.0-0.28, ROOM_D-1.0-0.362, 0.62), (ROOM_W/4.0+0.28, ROOM_D-1.0-0.362, 0.62)], 0.012, P.METAL_STEEL, segments=6)
+    make_tube("Stove_Oven_Bar", [(ROOM_W/4.0-0.28, ROOM_D-0.45-0.362, 0.62), (ROOM_W/4.0+0.28, ROOM_D-0.45-0.362, 0.62)], 0.012, P.METAL_STEEL, segments=6)
 
 def build_table():
     tx, ty = 0.0, ROOM_D/2.0
@@ -119,7 +120,7 @@ def build_fridge():
 
 def build_dressing():
     """Counter + table + wall dressing so it reads as a family kitchen."""
-    cw_x = -ROOM_W/4.0; cw_y = ROOM_D-1.0
+    cw_x = -ROOM_W/4.0; cw_y = ROOM_D-0.45
     make_coffee_pots("Coffee", (cw_x-1.0, cw_y, 0.94), pots=1)
     make_box("DishRack_Base", (cw_x+0.9, cw_y, 0.95), (0.34, 0.30, 0.03), P.METAL_STEEL)
     for ti in range(5):
@@ -215,8 +216,8 @@ def build_draft4_2026_09():
     make_traffic_wear("Wear_Path_B", [(-0.3, 3.1), (-1.0, 3.5), (-1.5, 3.7)], width=0.42, tint=floor_dk)
     for ci, (cx, cy) in enumerate([(tx-0.80, ty), (tx+0.80, ty), (tx, ty-0.62), (tx, ty+0.62)]):
         make_floor_stain(f"Wear_Patch_Seat_{ci}", (cx, cy), radius=0.26, tint=(0.66, 0.52, 0.34, 1.0), segments=10)
-    make_box("Wear_Elbow_Strip", (-ROOM_W/4.0, ROOM_D-1.0-0.36, 0.9174), (2.2, 0.06, 0.004), (0.28, 0.19, 0.12, 1.0))
-    make_scuff_band("Wear_Drip", (-ROOM_W/4.0, ROOM_D-1.0-0.35), 0.6, axis='X', height=0.12, band_z=0.60, tint=(0.62, 0.52, 0.34, 1.0))
+    make_box("Wear_Elbow_Strip", (-ROOM_W/4.0, ROOM_D-0.45-0.36, 0.9174), (2.2, 0.06, 0.004), (0.28, 0.19, 0.12, 1.0))
+    make_scuff_band("Wear_Drip", (-ROOM_W/4.0, ROOM_D-0.45-0.35), 0.6, axis='X', height=0.12, band_z=0.60, tint=(0.62, 0.52, 0.34, 1.0))
     make_box("Wear_Hand_Patch", (ROOM_W/2.0-0.55-0.362, 1.0-0.10, 1.30), (0.003, 0.14, 0.20), (0.74, 0.74, 0.76, 1.0))
     make_chamfer_box("Wear_Daisy_Spot", (-2.28, 1.5, 0.535), (0.50, 0.55, 0.02), (0.42, 0.36, 0.30, 1.0), chamfer=0.008)
     for hi in range(6):
@@ -227,7 +228,7 @@ def build_draft4_2026_09():
     make_wall_outlet("Outlet_E_1", (ROOM_W/2.0, 2.0), axis='Y', face_sign=-1, z=1.00, aged=True)
     make_cord_run("Cord_1", (2.82, 2.2, 0.92), (ROOM_W/2.0 - 0.13, 2.0, 1.00), sag=0.02)
     make_wall_outlet("Outlet_N_1", (-2.55, ROOM_D), axis='X', face_sign=-1, z=1.10, aged=True)
-    make_cord_run("Cord_2", (-2.45, ROOM_D-1.0+0.10, 0.96), (-2.55, ROOM_D - 0.12, 1.10), sag=0.03)
+    make_cord_run("Cord_2", (-2.45, ROOM_D-0.45+0.10, 0.96), (-2.55, ROOM_D - 0.12, 1.10), sag=0.03)
     make_wall_outlet("Outlet_E_2", (ROOM_W/2.0, 0.55), axis='Y', face_sign=-1, z=0.30, aged=True)
     make_cord_run("Cord_3", (ROOM_W/2.0-0.22, 0.75, 0.10), (ROOM_W/2.0 - 0.13, 0.55, 0.30), sag=0.0)
     # D5

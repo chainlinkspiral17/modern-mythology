@@ -157,7 +157,7 @@ def build_details():
     make_cyl("Turntable_Label", (2.48, 1.52, 0.745), 0.06, 0.012, (0.62, 0.28, 0.24, 1.0),
              segments=10)
     make_box("Turntable_Arm", (2.72, 1.72, 0.75), (0.20, 0.03, 0.02), COL_FRAME)
-    make_box("Record_Crate", (2.55, 0.95, 0.20), (0.45, 0.35, 0.38), COL_WOOD)
+    make_box("Record_Crate", (2.675, 0.95, 0.20), (0.45, 0.35, 0.38), COL_WOOD)   # against the E wall (2026-09-25: 13 cm off it)
     for i in range(5):
         make_box(f"Record_{i}", (2.44 + i * 0.055, 0.95, 0.42), (0.012, 0.30, 0.30),
                  (0.14 + 0.04 * (i % 3), 0.13, 0.14, 1.0))

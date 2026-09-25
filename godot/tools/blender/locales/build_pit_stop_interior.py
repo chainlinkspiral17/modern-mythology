@@ -221,7 +221,7 @@ def build_kitchen():
     make_box("WalkIn_Latch", (-3.64, 7.35, 1.05), (0.05, 0.12, 0.10), (0.30, 0.30, 0.32, 1.0))
     make_box("WalkIn_Hinge_T", (-3.66, 6.68, 1.75), (0.04, 0.06, 0.14), COL_STEEL_DK)
     make_box("WalkIn_Hinge_B", (-3.66, 6.68, 0.45), (0.04, 0.06, 0.14), COL_STEEL_DK)
-    make_box("Milk_Crate", (-3.35, 6.45, 0.17), (0.35, 0.35, 0.33), (0.72, 0.28, 0.20, 1.0))
+    make_box("Milk_Crate", (-3.35, 6.275, 0.17), (0.35, 0.35, 0.33), (0.72, 0.28, 0.20, 1.0))   # against the partition's N face at 6.1 (2026-09-25: 18 cm off it)
     make_box("Milk_Crate_Rim", (-3.35, 6.45, 0.335), (0.37, 0.37, 0.03), (0.62, 0.22, 0.16, 1.0))
     # The BACK OFFICE door in the E wall (vol6_ch4: Ben at the back
     # office door as Jesse comes through the kitchen).
@@ -344,7 +344,7 @@ def build_use_states_2026_08():
         make_box(f"Trash_Crumple_{ci}", (4.9+cxo, 0.9+cyo, 0.035), (0.07, 0.06, 0.06), (0.88, 0.87, 0.82, 1.0))
     # Second milk crate stacked askew by the walk-in (Jesse's seat
     # has a spare — crates accumulate).
-    make_box("Milk_Crate_2", (-3.30, 6.42, 0.50), (0.35, 0.35, 0.33), (0.24, 0.36, 0.62, 1.0))
+    make_box("Milk_Crate_2", (-3.30, 6.245, 0.50), (0.35, 0.35, 0.33), (0.24, 0.36, 0.62, 1.0))   # stacked on the first, which moved (2026-09-25)
     # Swing-door wedge kicked half under the door.
     make_box("Swing_Door_Wedge", (3.35, PART_Y-0.18, 0.03), (0.10, 0.14, 0.06), (0.52, 0.40, 0.28, 1.0))
 

@@ -12,6 +12,7 @@ from _props.food_service import make_coffee_pots, make_donut_display
 from _props.decor import make_wall_clock, make_floor_plant, make_faded_poster, make_calendar
 from _props.safety import make_smoke_detector, make_hvac_vent, make_fluorescent_tube_fixture, make_ceiling_speaker
 
+# 2026-09-25: the counter run and the stove stood at ROOM_D-0.45 — 0.55 m off the N wall in every kitchen from this template; ROOM_D-0.45 puts their backs on the wall face
 ROOM_W = 6.5; ROOM_D = 5.5; CEIL = 2.6
 PAL_WALL = {"wall": (0.92, 0.86, 0.74, 1.0), "baseboard": (0.42, 0.32, 0.22, 1.0)}
 COL_FLOOR = (0.74, 0.58, 0.38, 1.0); COL_SEAM = (0.42, 0.30, 0.18, 1.0); COL_WOOD = (0.46, 0.34, 0.22, 1.0)
@@ -42,15 +43,15 @@ def build_counter():
     # a narrow face against the wall and the run jutting into
     # the room. Swapped 2026-08-12 (same bug as the New
     # Orleans bar and the pit stop's lunch counter).
-    top_z = make_counter("Counter", (-ROOM_W/4.0, ROOM_D-1.0, 0.0), length=0.70, depth=2.40, height=0.92,
+    top_z = make_counter("Counter", (-ROOM_W/4.0, ROOM_D-0.45, 0.0), length=0.70, depth=2.40, height=0.92,
                          palette={"formica": (0.78, 0.66, 0.42, 1.0), "top": (0.32, 0.22, 0.14, 1.0), "kick": (0.32, 0.22, 0.14, 1.0)})
-    make_counter_bullnose("Counter", (-ROOM_W/4.0, ROOM_D-1.0 - 0.35, top_z), length=2.40, axis='X')
+    make_counter_bullnose("Counter", (-ROOM_W/4.0, ROOM_D-0.45 - 0.35, top_z), length=2.40, axis='X')
     # Sink
-    make_box("Sink_Bowl", (-ROOM_W/4.0, ROOM_D-1.0, 0.86), (0.50, 0.40, 0.12), (0.86, 0.86, 0.84, 1.0))
-    make_cyl("Sink_Faucet", (-ROOM_W/4.0, ROOM_D-1.10, top_z+0.04), 0.015, 0.30, P.METAL_STEEL)
+    make_box("Sink_Bowl", (-ROOM_W/4.0, ROOM_D-0.45, 0.86), (0.50, 0.40, 0.12), (0.86, 0.86, 0.84, 1.0))
+    make_cyl("Sink_Faucet", (-ROOM_W/4.0, ROOM_D-0.55, top_z+0.04), 0.015, 0.30, P.METAL_STEEL)
     # Stove
-    make_chamfer_box("Stove_Body", (ROOM_W/4.0, ROOM_D-1.0, 0.45), (0.70, 0.70, 0.92), (0.86, 0.84, 0.80, 1.0))
-    make_box("Stove_Top", (ROOM_W/4.0, ROOM_D-1.0, 0.92), (0.70, 0.70, 0.04), P.METAL_BLACK)
+    make_chamfer_box("Stove_Body", (ROOM_W/4.0, ROOM_D-0.45, 0.45), (0.70, 0.70, 0.92), (0.86, 0.84, 0.80, 1.0))
+    make_box("Stove_Top", (ROOM_W/4.0, ROOM_D-0.45, 0.92), (0.70, 0.70, 0.04), P.METAL_BLACK)
 
 def build_table():
     tx, ty = 0.0, ROOM_D/2.0
@@ -75,7 +76,7 @@ def build_fridge():
 
 def build_dressing():
     """Counter + table + wall dressing for a working family kitchen."""
-    cw_x = -ROOM_W/4.0; cw_y = ROOM_D-1.0
+    cw_x = -ROOM_W/4.0; cw_y = ROOM_D-0.45
     make_coffee_pots("Coffee", (cw_x-1.0, cw_y, 0.94), pots=1)
     make_box("DishRack_Base", (cw_x+0.9, cw_y, 0.95), (0.34, 0.30, 0.03), P.METAL_STEEL)
     for ti in range(5):
@@ -117,12 +118,12 @@ def build_hero_props():
     for s in range(3):
         make_box(f"Stair_Tread_{s}", (1.4, 0.20 + s * 0.28, (0.185 + s * 0.18) / 2.0), (0.80, 0.28, 0.185 + s * 0.18), wood)   # solid step (2026-09-08)
     # Oven face on the stove front (the pot roast on warm)
-    sx, sy = ROOM_W/4.0, ROOM_D-1.0
+    sx, sy = ROOM_W/4.0, ROOM_D-0.45
     make_chamfer_box("Oven_Door", (sx, sy-0.36, 0.50), (0.60, 0.03, 0.55), (0.72, 0.70, 0.66, 1.0))
     make_box("Oven_Window", (sx, sy-0.375, 0.55), (0.40, 0.015, 0.26), (0.14, 0.12, 0.10, 1.0))
     make_box("Oven_Handle", (sx, sy-0.39, 0.80), (0.50, 0.03, 0.04), (0.55, 0.57, 0.58, 1.0))
     # Microwave, counter east end
-    make_chamfer_box("Microwave", (-0.25, ROOM_D-1.0, 1.14), (0.50, 0.38, 0.30), (0.30, 0.30, 0.32, 1.0))
+    make_chamfer_box("Microwave", (-0.25, ROOM_D-0.45, 1.14), (0.50, 0.38, 0.30), (0.30, 0.30, 0.32, 1.0))
     # ── THE POT ROAST · the chapter's hero object ──────────────
     # (2026-08-12, shot_marker_audit --props) [shot:insert pot_roast]
     # fires 3x in a MODEL CHAPTER — "Eileen has made a pot roast…
@@ -178,7 +179,7 @@ def build_hero_props():
         make_cyl(f"Setting_{si}_Plate", (tx+dx, ty+dy, 0.77), 0.11, 0.012, (0.90, 0.88, 0.84, 1.0), segments=12)
         make_box(f"Setting_{si}_Fork", (tx+dx-0.15, ty+dy, 0.772), (0.02, 0.12, 0.008), (0.60, 0.62, 0.63, 1.0))
     # Coffee mugs by the pot: three poured, one never drunk
-    for mi, (mx, my) in enumerate(((-2.3, ROOM_D-1.15), (-2.15, ROOM_D-0.95), (0.35, ty-0.05))):
+    for mi, (mx, my) in enumerate(((-2.3, ROOM_D-0.40), (-2.15, ROOM_D-0.65), (0.35, ty-0.05))):   # on the counter, which is on the wall now (2026-09-25)
         make_cyl(f"Mug_{mi}", (mx, my, 0.99 if mi < 2 else 0.79), 0.04, 0.09,
                  [(0.72, 0.30, 0.22, 1.0), (0.30, 0.40, 0.52, 1.0), (0.86, 0.82, 0.74, 1.0)][mi], segments=10)
 

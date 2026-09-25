@@ -283,6 +283,15 @@ IOOUT="$(python3 inside_out_audit.py 2>/dev/null)" || {
 echo "$IOOUT" | tail -1
 echo ""
 
+# ── Placement (2026-09-25, the user: "objects just hanging out in the
+# middle of rooms, not against walls") — REPORT: wall-class pieces off
+# every wall, tall thin slabs reaching no wall, storage tight on a bed.
+# The residue is deliberate (a nurse station, a reception desk, a milk
+# crate that is a seat, a TV on a crate) — gate once those are named.
+echo "── placement_audit.py (report) ──"
+python3 placement_audit.py 2>/dev/null | tail -1 || true
+echo ""
+
 # ── Scene-syntax gate (2026-09-25) ────────────────────────────
 # highway_101 and small_wood_road were skipped on every contact sheet:
 # `Color(r, g, b)` — Godot's parser wants four arguments — and the

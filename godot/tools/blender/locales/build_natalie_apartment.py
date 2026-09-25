@@ -189,7 +189,7 @@ def build_living_room():
     make_box("Book", (sx + 0.30, sy - 0.80, 0.42), (0.20, 0.28, 0.04), COL_BOOK_SPINES[0])
     # Bookshelf along east wall (draft 3: at y 2.2 — at 1.5 its side ran
     # into the writing chair)
-    sx2 = +2.90
+    sx2 = +3.04   # its back on the E wall's face (2026-09-25: 14 cm off it)
     make_box("Bookshelf_Side_L", (sx2 - 0.36, SHELF_Y, 1.00),
              (0.04, 0.36, 2.00), COL_BED_FRAME)
     make_box("Bookshelf_Side_R", (sx2 + 0.36, SHELF_Y, 1.00),
@@ -233,9 +233,9 @@ def build_kitchenette():
     # Coffee pots on the counter
     make_coffee_pots("Coffee", (-2.35, 5.20, top_z), pots=1)   # (draft 3: west, off the phone)
     # Fridge — east end of counter run
-    make_box("Fridge_Body", (0.80, 5.050, 1.00),
+    make_box("Fridge_Body", (-3.05, 0.480, 1.00),   # SW corner, door to the room (2026-09-25: between the stove and the bed it left 30 cm to make the bed by; the NW corner is the counters' L)
              (0.70, 0.70, 2.00), (0.86, 0.84, 0.80, 1.0))
-    make_box("Fridge_Handle", (0.46, 4.85, 1.40),
+    make_box("Fridge_Handle", (-2.69, 0.28, 1.40),
              (0.03, 0.04, 0.10), P.METAL_STEEL)
 
 
@@ -261,7 +261,7 @@ def build_decor():
     # clear of the window (2026-09-24: once the clock faced the room it overlapped it)
     make_wall_clock("Clock", (-3.400, 3.65, 2.10),
                     frozen_hour=4, frozen_min=22, facing='+X')
-    make_faded_poster("Poster_W", (-3.3965, 1.0, 1.40), into_room=+1)
+    make_faded_poster("Poster_W", (-3.3965, 1.15, 1.40), into_room=+1)
     make_faded_poster("Poster_E", (3.3965, 4.5, 1.50),
                       palette={"body": COL_ACCENT_ROSE}, into_room=-1)
     make_floor_plant("Plant", (-2.5, 1.50, 0.0),

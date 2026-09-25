@@ -326,6 +326,14 @@ Every ending's reading now carries the arcana's record. The design
 row's Claude-side items are through; what remains on it is Deck-
 gated (the bursts) or user-gated (Salmonberry).
 
+**Status (2026-09-25, evening) · draft 35 · against the wall, or
+dropped.** The user's verdict on the complete sheet: objects hanging
+out mid-room, a door behind a sign, a cramped bedroom. `placement_
+audit.py` (OFF_WALL · FREE_SLAB · HALF_SLAB · TIGHT) found the kitchen
+template had every counter run 0.55 m off its wall, and 22 pieces
+standing free; all moved, with their dressing. The diner's corkboard
+is off the Precipice Door. Roadmap: THIRTY-FIFTH PASS.
+
 **Status (2026-09-25, later) · draft 34 · the first complete sheet.**
 1559 frames, all 122 locales, no skips; the seven frames that had
 screened black or flat on every sheet each had a cause (a lens beyond

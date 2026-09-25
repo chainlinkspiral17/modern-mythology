@@ -15,6 +15,7 @@ from _props.detail import (make_traffic_wear, make_floor_stain,
                            make_wall_tint_band, make_threshold,
                            make_wall_outlet, make_light_switch)
 
+# 2026-09-25: the counter run and the stove stood at ROOM_D-0.45 — 0.55 m off the N wall in every kitchen from this template; ROOM_D-0.45 puts their backs on the wall face
 ROOM_W = 6.0; ROOM_D = 5.0; CEIL = 2.6
 PAL_WALL = {"wall":(0.92,0.86,0.74,1.0),"baseboard":(0.42,0.32,0.22,1.0)}
 COL_FLOOR = (0.74,0.58,0.38,1.0); COL_SEAM = (0.42,0.30,0.18,1.0); COL_WOOD = (0.46,0.34,0.22,1.0)
@@ -37,15 +38,15 @@ def build_counter():
     # a narrow face against the wall and the run jutting into
     # the room. Swapped 2026-08-12 (same bug as the New
     # Orleans bar and the pit stop's lunch counter).
-    top_z = make_counter("Counter", (-ROOM_W/4.0, ROOM_D-1.35, 0.0), length=0.70, depth=2.40, height=0.92,
+    top_z = make_counter("Counter", (-ROOM_W/4.0, ROOM_D-0.80, 0.0), length=0.70, depth=2.40, height=0.92,
                          palette={"formica": (0.78, 0.66, 0.42, 1.0), "top": (0.32, 0.22, 0.14, 1.0), "kick": (0.32, 0.22, 0.14, 1.0)})
-    make_counter_bullnose("Counter", (-ROOM_W/4.0, ROOM_D-1.35 - 0.35, top_z), length=2.40, axis='X')
+    make_counter_bullnose("Counter", (-ROOM_W/4.0, ROOM_D-0.80 - 0.35, top_z), length=2.40, axis='X')
     # Sink + faucet (was missing)
-    make_box("Sink_Bowl", (-ROOM_W/4.0, ROOM_D-1.0, 0.86), (0.50, 0.40, 0.12), (0.86, 0.86, 0.84, 1.0))
-    make_cyl("Sink_Faucet", (-ROOM_W/4.0, ROOM_D-1.10, top_z+0.04), 0.015, 0.30, P.METAL_STEEL)
+    make_box("Sink_Bowl", (-ROOM_W/4.0, ROOM_D-0.45, 0.86), (0.50, 0.40, 0.12), (0.86, 0.86, 0.84, 1.0))
+    make_cyl("Sink_Faucet", (-ROOM_W/4.0, ROOM_D-0.55, top_z+0.04), 0.015, 0.30, P.METAL_STEEL)
     # Stove (was missing)
-    make_box("Stove_Body", (ROOM_W/4.0, ROOM_D-1.0, 0.45), (0.70, 0.70, 0.92), (0.86, 0.84, 0.80, 1.0))
-    make_box("Stove_Top", (ROOM_W/4.0, ROOM_D-1.0, 0.92), (0.70, 0.70, 0.04), P.METAL_BLACK)
+    make_box("Stove_Body", (ROOM_W/4.0, ROOM_D-0.45, 0.45), (0.70, 0.70, 0.92), (0.86, 0.84, 0.80, 1.0))
+    make_box("Stove_Top", (ROOM_W/4.0, ROOM_D-0.45, 0.92), (0.70, 0.70, 0.04), P.METAL_BLACK)
 
 def build_table():
     tx, ty = 0.0, ROOM_D/2.0
@@ -64,7 +65,7 @@ def build_fridge():
     make_box("Fridge_Handle", (fx-0.38, fy-0.20, 1.30), (0.04, 0.04, 0.50), P.METAL_STEEL)
 
 def build_dressing():
-    cw_x = -ROOM_W/4.0; cw_y = ROOM_D-1.0
+    cw_x = -ROOM_W/4.0; cw_y = ROOM_D-0.45
     make_coffee_pots("Coffee", (cw_x-1.0, cw_y, 0.94), pots=1)
     make_calendar("Calendar", (-ROOM_W/2.0+0.05, 2.0, 1.6))
     tx, ty = 0.0, ROOM_D/2.0
@@ -87,11 +88,11 @@ def build_hero_props():
     dogs), the water glass, the stair mouth, burners + oven face on
     the blank stove."""
     make_window("Window_N", (-1.5, ROOM_D-0.10, 1.52), width=1.20, height=1.00)
-    make_cyl("Water_Glass", (-1.55, 3.30, 1.02), 0.035, 0.12, (0.55, 0.62, 0.66, 0.5), segments=8)
+    make_cyl("Water_Glass", (-1.55, 3.8500, 1.02), 0.035, 0.12, (0.55, 0.62, 0.66, 0.5), segments=8)
     make_box("Stair_Newel", (0.92, 0.15, 0.60), (0.10, 0.10, 1.20), (0.46, 0.34, 0.22, 1.0))
     for s in range(3):
         make_box(f"Stair_Tread_{s}", (1.4, 0.20 + s * 0.28, (0.185 + s * 0.18) / 2.0), (0.80, 0.28, 0.185 + s * 0.18), (0.46, 0.34, 0.22, 1.0))   # solid step (2026-09-08)
-    sx, sy = ROOM_W/4.0, ROOM_D-1.0
+    sx, sy = ROOM_W/4.0, ROOM_D-0.45
     for bi, (ox, oy) in enumerate(((-0.16, -0.16), (0.16, -0.16), (-0.16, 0.16), (0.16, 0.16))):
         make_cyl(f"Stove_Burner_{bi}", (sx+ox, sy+oy, 0.95), 0.09, 0.012, (0.16, 0.16, 0.18, 1.0), segments=10)
     make_box("Oven_Door_Face", (sx, sy-0.36, 0.50), (0.60, 0.03, 0.55), (0.72, 0.70, 0.66, 1.0))

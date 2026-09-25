@@ -242,8 +242,9 @@ def build_hero_props():
     make_chamfer_box("Milk_Crate", (-0.20 + DESK_DX, 2.40 + DESK_DY, 0.16), (0.36, 0.36, 0.32), (0.62, 0.28, 0.24, 1.0))
     make_box("Milk_Crate_Rim", (-0.20 + DESK_DX, 2.40 + DESK_DY, 0.315), (0.38, 0.38, 0.03), (0.52, 0.22, 0.20, 1.0))
     # Mini-fridge + floor safe (one of the six keys)
-    make_chamfer_box("Mini_Fridge", (1.65, 0.75, 0.42), (0.55, 0.55, 0.84), (0.82, 0.80, 0.76, 1.0))
-    make_box("Mini_Fridge_Handle", (1.38, 0.55, 0.55), (0.03, 0.03, 0.30), iron)
+    # against the E wall's face (2026-09-25: 27 cm off it since the widening)
+    make_chamfer_box("Mini_Fridge", (ROOM_W/2.0 - 0.375, 0.75, 0.42), (0.55, 0.55, 0.84), (0.82, 0.80, 0.76, 1.0))
+    make_box("Mini_Fridge_Handle", (ROOM_W/2.0 - 0.645, 0.55, 0.55), (0.03, 0.03, 0.30), iron)
     # in the NE corner, east of the service door's swing (x 0.75..1.65) — 2026-09-25: it stood in it
     make_chamfer_box("Office_Safe", (1.92, 4.4, 0.28), (0.50, 0.50, 0.56), (0.24, 0.25, 0.28, 1.0))
     make_cyl("Safe_Dial", (1.92, 4.14, 0.32), 0.06, 0.03, (0.60, 0.62, 0.64, 1.0), axis='Y', segments=10)

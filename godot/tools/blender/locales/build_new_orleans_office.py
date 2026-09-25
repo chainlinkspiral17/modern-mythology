@@ -125,7 +125,7 @@ def build_bookcase_and_filing():
     # Floor-to-near-ceiling bookcase west wall
     # the case's sides (2026-09-23: six shelves on nothing)
     for sy_ in (1.78, 4.22):
-        make_box(f"BookCase_Side_{sy_:.2f}", (-3.0, sy_, 1.30), (0.40, 0.04, 2.60), COL_OAK_DARK)
+        make_box(f"BookCase_Side_{sy_:.2f}", (-3.2, sy_, 1.30), (0.40, 0.04, 2.60), COL_OAK_DARK)   # to the W wall's face (2026-09-25: 20 cm off it)
     for shf in range(6):
         sz = 0.30 + shf*0.45
         make_box(f"BookCase_Shelf_{shf}", (-3.0, 3.0, sz), (0.40, 2.40, 0.04), COL_OAK_DARK)

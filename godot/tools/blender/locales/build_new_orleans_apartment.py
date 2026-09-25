@@ -122,7 +122,7 @@ def build_armoire():
     # Wardrobe west wall
     # 2026-08-09: was (-2.80, 3.0) — inside the rented sofa. East
     # wall now, between the TV stand and the bed corner.
-    ax, ay = 2.80, 3.55
+    ax, ay = 3.15, 3.55   # its back on the E wall's face (2026-09-25: 35 cm off it)
     make_box("Armoire_Body", (ax, ay, 1.20), (0.50, 1.40, 2.40), COL_BED_WOOD)
     make_box("Armoire_Door_L", (ax+0.21, ay-0.34, 1.20), (0.04, 0.66, 2.30), (0.42, 0.30, 0.20, 1.0))
     make_box("Armoire_Door_R", (ax+0.21, ay+0.34, 1.20), (0.04, 0.66, 2.30), (0.42, 0.30, 0.20, 1.0))
@@ -180,9 +180,9 @@ def build_hero_props():
     make_box("Lace_Curtain", (-2.50, 0.14, 1.80), (1.4, 0.03, 1.9), (0.86, 0.82, 0.66, 0.5))
     # vol1: TV + console + the bass in the corner
     make_box("TV", (2.80, 2.2, 0.95), (0.10, 0.85, 0.55), (0.12, 0.12, 0.14, 1.0))
-    make_box("TV_Screen", (2.74, 2.2, 0.95), (0.02, 0.72, 0.44), (0.30, 0.36, 0.42, 1.0))
-    make_box("TV_Stand", (2.80, 2.2, 0.34), (0.55, 0.90, 0.62), (0.36, 0.28, 0.20, 1.0))
-    make_box("Game_Console", (2.63, 1.85, 0.686), (0.20, 0.28, 0.07), (0.22, 0.22, 0.26, 1.0))   # (draft 3: in front of the TV, not under it)
+    make_box("TV_Screen", (3.065, 2.2, 0.95), (0.02, 0.72, 0.44), (0.30, 0.36, 0.42, 1.0))   # on its stand, which moved to the wall (2026-09-25)
+    make_box("TV_Stand", (3.125, 2.2, 0.34), (0.55, 0.90, 0.62), (0.36, 0.28, 0.20, 1.0))   # on the E wall's face (2026-09-25: 33 cm off it)
+    make_box("Game_Console", (2.9550, 1.85, 0.686), (0.20, 0.28, 0.07), (0.22, 0.22, 0.26, 1.0))   # (draft 3: in front of the TV, not under it)
     for wi in range(2):
         make_box(f"Controller_Cord_{wi}", (2.5 - wi * 0.4, 2.0 + wi * 0.2, 0.02), (0.5, 0.02, 0.01), (0.14, 0.14, 0.16, 1.0))
     # (draft 3: the bass as a bass — body, neck, headstock, four strings —
@@ -241,8 +241,8 @@ def build_use_states_d4():
     make_rot_box("Microwave_Door_Ajar", (1.01, 5.24, 1.12), (0.36, 0.02, 0.22),
                  (0.36, 0.38, 0.40, 1.0), yaw=-1.22)
     # Cans: two standing on the TV stand, one on its side by the bin
-    make_can("Can_TV_0", 2.62, 2.08, 0.66, (0.72, 0.20, 0.18, 1.0))
-    make_can("Can_TV_1", 2.62, 2.30, 0.66, (0.72, 0.20, 0.18, 1.0))
+    make_can("Can_TV_0", 2.945, 2.08, 0.66, (0.72, 0.20, 0.18, 1.0))
+    make_can("Can_TV_1", 2.945, 2.30, 0.66, (0.72, 0.20, 0.18, 1.0))
     make_cyl("Can_Floor", (2.45, 1.15, 0.033), 0.033, 0.12,
              (0.66, 0.18, 0.16, 1.0), segments=8, axis='Y')
     make_cyl("Trash_Bin", (2.85, 0.75, 0.18), 0.14, 0.36,
@@ -281,11 +281,11 @@ def build_draft3_2026_09():
     make_cyl("Wear_Ash", (0.35, 5.50, 0.9665), 0.12, 0.002, (0.52, 0.50, 0.48, 1.0), segments=12)
     make_cyl("Wear_Can_Ring", (2.45, 1.35, 0.007), 0.04, 0.002, (0.30, 0.20, 0.14, 1.0), segments=8)
     # D3
-    make_wall_outlet("Outlet_E_2", (ROOM_W / 2.0, 2.2), axis='Y', face_sign=-1, z=0.30, aged=True)
+    make_wall_outlet("Outlet_E_2", (ROOM_W / 2.0, 1.55), axis='Y', face_sign=-1, z=0.30, aged=True)   # south of the TV stand, which is on the wall now (2026-09-25)
     # back off the TV, then down BEHIND the stand to the outlet
     # (2026-09-24: one diagonal ran through the stand)
     make_tube("Cord_1", [(2.85, 2.2, 0.75), (3.10, 2.2, 0.75)], 0.008, cord, segments=5)
-    make_tube("Cord_1b", [(3.10, 2.2, 0.75), (3.10, 2.2, 0.30), (ROOM_W / 2.0 - 0.13, 2.2, 0.30)], 0.008, cord, segments=5)
+    make_tube("Cord_1b", [(3.10, 1.72, 0.75), (3.10, 1.72, 0.30), (ROOM_W / 2.0 - 0.13, 1.55, 0.30)], 0.008, cord, segments=5)
     make_wall_outlet("Outlet_N_1", (1.5, ROOM_D), axis='X', face_sign=-1, z=1.15, aged=True)
     make_tube("Cord_2", [(1.44, 5.75, 1.05), (1.50, ROOM_D - 0.13, 1.15)], 0.008, cord, segments=5)
     make_tube("Cord_3", [(2.80, 5.00, 0.30), (ROOM_W / 2.0 - 0.13, 4.25, 0.30)], 0.008, cord, segments=5)

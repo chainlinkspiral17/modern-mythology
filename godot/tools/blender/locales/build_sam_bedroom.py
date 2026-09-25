@@ -187,11 +187,11 @@ def build_hero_props():
         make_box(f"Curtain_{cx:+.2f}", (cx, ROOM_D - 0.12, 1.50), (0.44, 0.04, 1.20), (0.55, 0.60, 0.70, 1.0))
     # Dresser with the phone on it ("Sam's phone, on her dresser,
     # buzzes")
-    make_chamfer_box("Dresser", (1.62, 2.45, 0.42), (0.50, 1.00, 0.84), (0.46, 0.34, 0.22, 1.0))
+    make_chamfer_box("Dresser", (ROOM_W/2.0 - 0.35, 2.45, 0.42), (0.50, 1.00, 0.84), (0.46, 0.34, 0.22, 1.0))   # back on the E wall's face (2026-09-25: 43 cm off it since the widening)
     for di in range(3):
-        make_box(f"Dresser_Drawer_{di}", (1.36, 2.45, 0.20 + di * 0.26), (0.02, 0.86, 0.20), (0.38, 0.28, 0.18, 1.0))
-        make_lathe(f"Dresser_Pull_{di}", (1.35, 2.45, 0.19 + di * 0.26), [(0.0, 0.0), (0.012, 0.0), (0.014, 0.01), (0.008, 0.02), (0.0, 0.02)], (0.60, 0.56, 0.42, 1.0), segments=8)
-    make_box("Sams_Phone", (1.62, 2.0, 0.855), (0.08, 0.15, 0.012), (0.12, 0.12, 0.14, 1.0))
+        make_box(f"Dresser_Drawer_{di}", (1.7900, 2.45, 0.20 + di * 0.26), (0.02, 0.86, 0.20), (0.38, 0.28, 0.18, 1.0))
+        make_lathe(f"Dresser_Pull_{di}", (1.7800, 2.45, 0.19 + di * 0.26), [(0.0, 0.0), (0.012, 0.0), (0.014, 0.01), (0.008, 0.02), (0.0, 0.02)], (0.60, 0.56, 0.42, 1.0), segments=8)
+    make_box("Sams_Phone", (2.0500, 2.0, 0.855), (0.08, 0.15, 0.012), (0.12, 0.12, 0.14, 1.0))
     # Closet bi-fold in the S wall east segment
     for ci, cx in enumerate((1.10, 1.60)):
         make_box(f"Closet_Leaf_{ci}", (cx, 0.10, 1.05), (0.48, 0.05, 2.10), (0.82, 0.80, 0.74, 1.0))
@@ -222,11 +222,11 @@ def build_hero_props_2026_09():
     for sgn in (-1, 1):
         make_box(f"Sams_Door_Frame_{'W' if sgn < 0 else 'E'}",
                  (0.49 * sgn, 0.06, 1.06), (0.07, 0.09, 2.12), (0.72, 0.68, 0.60, 1.0))
-    make_box("Wednesday_List", (1.62, 2.45, 0.8425), (0.21, 0.28, 0.003),
+    make_box("Wednesday_List", (2.0500, 2.45, 0.8425), (0.21, 0.28, 0.003),
              (0.94, 0.93, 0.88, 1.0))
-    make_box("List_Header_Bar", (1.62, 2.56, 0.8445), (0.13, 0.012, 0.001),
+    make_box("List_Header_Bar", (2.0500, 2.56, 0.8445), (0.13, 0.012, 0.001),
              (0.28, 0.28, 0.32, 1.0))
-    make_cyl("List_Pen", (1.50, 2.32, 0.845), 0.005, 0.13,
+    make_cyl("List_Pen", (1.9300, 2.32, 0.845), 0.005, 0.13,
              (0.24, 0.28, 0.52, 1.0), axis='Y', segments=6)
 
 

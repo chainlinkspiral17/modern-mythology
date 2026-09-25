@@ -78,7 +78,7 @@ def build_living():
     for i, (lx, ly) in enumerate([(-0.30,-0.32),(0.30,-0.32),(-0.30,0.32),(0.30,0.32)]):
         make_box(f"ArmC_Leg_{i}", (ax+lx, ay+ly, 0.12), (0.06, 0.06, 0.24), COL_WOOD)
     # Bookshelf east wall — overflowing
-    sx2 = +2.50
+    sx2 = +2.66   # its back on the E wall's face (2026-09-25: 16 cm off it)
     for shf in range(6):
         sz = 0.20 + shf*0.40
         make_box(f"BookShelf_{shf}", (sx2, 1.55, sz), (0.40, 1.40, 0.02), COL_WOOD)

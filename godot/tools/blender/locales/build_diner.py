@@ -3716,9 +3716,11 @@ def build_back_hallway():
     make_box("Bathroom_Sign", (bd_x - 0.03, bd_y, 1.95), (0.02, 0.15, 0.08), (0.20, 0.16, 0.10, 1.0))
 
     # the card wall — pinned cards on a corkboard panel on the north wall
-    cw_x = hx_center
-    cw_y = hy_center + HALL_D/2 - 0.04
-    make_box("CardWall_Corkboard", (cw_x, cw_y, 1.50), (3.0, 0.02, 1.40), COL_CARDWALL)
+    # west of the precipice door (x 0.875..1.525 on this wall) — 2026-09-25,
+    # the user: "a door behind a sign": the 3 m board hung across it
+    cw_x = hx_center - 0.70
+    cw_y = hy_center + HALL_D/2 - 0.01   # on the wall face (2026-09-25: the door it used to lean on is not under it any more)
+    make_box("CardWall_Corkboard", (cw_x, cw_y, 1.50), (1.6, 0.02, 1.40), COL_CARDWALL)
     # individual cards pinned to the corkboard (a small grid of slightly varied colors and sizes)
     card_specs = [
         # (offset_x, offset_z, w, h, color)
@@ -3738,8 +3740,8 @@ def build_back_hallway():
         (-0.10, -0.50, 0.36, 0.46, COL_CARD_PINK),
         ( 0.50, -0.45, 0.30, 0.40, COL_CARD_PAPER),
     ]
-    for i, (ox, oz, w, h, col) in enumerate(card_specs):
-        make_box(f"CardWall_Card_{i}", (cw_x + ox, cw_y - 0.012, 1.50 + oz), (w, 0.002, h), col)
+    for i, (ox, oz, w, h, col) in enumerate(card_specs):   # the grid scaled to the 1.6 m board
+        make_box(f"CardWall_Card_{i}", (cw_x + ox * 0.52, cw_y - 0.012, 1.50 + oz), (w * 0.72, 0.002, h), col)
 
     # ── THE PRECIPICE DOOR ──
     # A too-tall narrow door that doesn't match the trim. Placed at

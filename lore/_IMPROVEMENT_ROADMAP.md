@@ -2797,6 +2797,62 @@ door); nightmare cell's 46 dots (they no longer report — verify on
 the sheet); the near-black screen should read 0 — if the smear is
 still black at dusk, give the ridge a practical.
 
+THIRTY-FIFTH PASS. Sheet from 7580635c: near-black 1 (the stockroom's
+default smear — the dock's dusk one reads now), flat 0. The user:
+"still seeing a lot of objects just hanging out in the middle of
+rooms, not arranged properly, up against walls or on top surfaces.
+New door-like polygons in the middle of rooms. A door behind a sign
+in the diner. One of the bedrooms looks too cramped, a bed and a
+dresser both against a short wall."
+· PLACEMENT AUDIT (report): OFF_WALL — a wall-class piece (dresser,
+  wardrobe, bookcase, cabinet, locker, fridge, desk, crate, hamper…)
+  whose back is > 12 cm from every wall and that leans on nothing;
+  FREE_SLAB — a tall thin box reaching no wall at either end; TIGHT —
+  storage within 45 cm of a bed on the same wall. First run 38 / 59 /
+  2; after the wall regex learned that walls are named Hull, WallSeg,
+  Lobby_Wall, Case_Back, Cub_Part: 35 / 1 / 2. Now 13 / 0 / 0, the 13
+  deliberate (a nurse station, a reception desk, a milk crate that is
+  Sam's seat, a TV on a crate, a wood stove 14 cm off its wall).
+· THE KITCHEN TEMPLATE: seven kitchens (henderson, kowalski, ramos,
+  grandmother, bianca, caldwell, miller) put the counter run and the
+  stove at ROOM_D-1.0 — 0.55 m off the N wall in every one. ROOM_D-
+  0.45 puts their backs on the wall face; everything keyed ROOM_D-1.0x
+  moved with them (a −0.55 pass over ROOM_D-1.00..1.45), and the
+  literal stragglers by name (kettle, skillet, eggs, chorizo, mugs,
+  photographs, knife lines, water glass, toaster, grinder, bills
+  drawer, two dishwasher faces that stood 0.4–0.7 m in front of their
+  counters, Hans's oven and its cord).
+· 22 PIECES TO THEIR WALLS: ben's gear crate and footlocker (at the
+  bed's foot now), jesse's record crate (mid-floor → beside the amp)
+  and dresser (2 cm into one wall, 5 into the other), sam's dresser
+  with its drawers and the Wednesday list, safehouse's dresser and
+  fridge (its locker stays: the door swing), diego's and graciela's
+  nightstands (to the beds' heads / the wall, phone along), the back
+  office's mini-fridge, natalie's bookshelf and fridge (SW corner —
+  between the stove and the bed it left 30 cm, the NW corner is the
+  counters' L; its sink was IN the W counter all along), new
+  orleans's armoire, TV stand (screen, cans, console, cord and outlet
+  along), the office bookcase, the school's teacher desk, chillwave's
+  crate, the gym's fan crate, pit stop's milk crates (onto the
+  partition's N face — south of it they blocked the walk-in), the
+  drive-in's mini-fridge, wagner's record crate, nexcorp's beer
+  fridge, montreal's bookshelf, maya's hamper.
+· THE DINER'S DOOR BEHIND A SIGN: the card wall's 3 m corkboard hung
+  across the Precipice Door (x 0.875..1.525 on the hall's N wall). It
+  is 1.6 m wide now, west of the door, its 15 cards scaled to it.
+· "A bed and a dresser both against a short wall": none measured
+  tight (the TIGHT rule found natalie's fridge 30 cm off her bed —
+  moved); the candidates by eye are ben (4.4 m) and jesse. NEXT: look
+  at ben's and jesse's frames for which one the user meant.
+NEXT (draft 36): judge the moved pieces on the sheet (ben, jesse, sam,
+safehouse, the seven kitchens); name the 13 deliberate OFF_WALL pieces
+(a `free=True` tag or a name class) and gate placement; simon's TV on
+a crate mid-room and the back office's milk crate — decide; the
+"door-like polygons" — FREE_SLAB found none after the wall names were
+learned, so the user's polygons are something else: look at the
+frames for tall thin things (the shed's swung leaves? the bedroom
+partitions' cased-opening posts? Lena's Part_E post at 0.25 × 0.16?).
+
 **2026-09-19 · DESIGN · the two decorative checks made real, the first
 remembered choice.** Nate's basement (ch6) and Tem staying (ch8): the
 empathy checks' pass branches land on a line of their own now (a

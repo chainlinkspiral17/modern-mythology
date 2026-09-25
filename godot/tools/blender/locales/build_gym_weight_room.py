@@ -160,7 +160,7 @@ def build_wall_dressing():
         make_box(f"Record_Line_{r}", (ex - 0.006 - 0.0071, 4.9, 1.9 - r * 0.11),
                  (0.005, 0.95, 0.025), (0.72, 0.60, 0.24, 1.0))
     # Box fan in the SW corner on a milk crate (basement, August)
-    make_box("Fan_Crate", (-3.3, 0.6, 0.17), (0.34, 0.34, 0.34), (0.60, 0.28, 0.12, 1.0))
+    make_box("Fan_Crate", (-3.48, 0.6, 0.17), (0.34, 0.34, 0.34), (0.60, 0.28, 0.12, 1.0))   # against the W wall (2026-09-25: 18 cm off it)
     make_box("BoxFan", (-3.3, 0.6, 0.62), (0.16, 0.55, 0.55), COL_FAN)
     make_cyl("BoxFan_Grille", (-3.21, 0.6, 0.62), 0.24, 0.02, COL_FIXTURE,
              segments=14, axis='X')

@@ -105,8 +105,9 @@ def build_bed():
     make_cyl("Cat_Mister", (bx - 0.75, by + 0.15, 0.57), 0.16, 0.10, COL_CAT, segments=10)
     make_box("Cat_Tail", (bx - 0.60, by + 0.28, 0.545), (0.22, 0.05, 0.03), COL_CAT)
     # Footlocker at the foot of the bed
-    make_box("Footlocker", (bx - 1.25, by, 0.20), (0.35, 0.9, 0.38), COL_FRAME_DK)
-    make_box("Footlocker_Lid", (bx - 1.25, by, 0.40), (0.36, 0.92, 0.03), COL_FRAME)
+    # its east face 2 cm off the platform's foot (2026-09-25: 7 cm — it read as standing in the room)
+    make_box("Footlocker", (bx - 1.20, by, 0.20), (0.35, 0.9, 0.38), COL_FRAME_DK)
+    make_box("Footlocker_Lid", (bx - 1.20, by, 0.40), (0.36, 0.92, 0.03), COL_FRAME)
 
 
 def build_desk():
@@ -153,9 +154,9 @@ def build_gear_and_pack():
     make_box("Backpack_Pocket", (-1.15, 0.42, 0.18), (0.26, 0.06, 0.24), (0.18, 0.26, 0.21, 1.0))
     make_box("Backpack_Strap", (-1.02, 0.55, 0.30), (0.04, 0.18, 0.42), (0.14, 0.20, 0.16, 1.0))
     # Gear corner NW: helmet on a crate, shoulder pads, cleats
-    make_box("Gear_Crate", (-1.45, 3.6, 0.18), (0.45, 0.45, 0.36), COL_FRAME_DK)
-    make_cyl("Helmet", (-1.45, 3.6, 0.48), 0.15, 0.24, COL_HELMET, segments=12)
-    make_box("Helmet_Mask", (-1.45, 3.38, 0.42), (0.22, 0.05, 0.12), COL_FRAME_DK)
+    make_box("Gear_Crate", (-ROOM_W/2.0 + 0.33, 3.6, 0.18), (0.45, 0.45, 0.36), COL_FRAME_DK)   # against the W wall (2026-09-25: 43 cm off it)
+    make_cyl("Helmet", (-1.8700, 3.6, 0.48), 0.15, 0.24, COL_HELMET, segments=12)
+    make_box("Helmet_Mask", (-1.8700, 3.38, 0.42), (0.22, 0.05, 0.12), COL_FRAME_DK)
     make_box("ShoulderPads", (-0.95, 3.75, 0.12), (0.55, 0.35, 0.22), COL_HELMET)
     for k in range(2):
         make_box(f"Cleat_{k}", (-1.3 + k * 0.24, 3.15, 0.06), (0.12, 0.30, 0.10),

@@ -158,6 +158,36 @@ banisters classed · pans as containers.
 
 ## Recent lessons
 
+### 2026-09-25 (later) · placement: against the wall, or dropped
+
+- **A template offset is a defect in every room built from it.**
+  Seven kitchens put the counter run at ROOM_D-1.0 with a 0.7 m
+  counter and a 0.2 m wall: 0.55 m of air behind every counter and
+  stove, in every kitchen, since the template was written. Nothing
+  caught it: support passes (the counter stands on the floor), clip
+  passes (nothing touches), doorway passes. `placement_audit.py`
+  OFF_WALL is the check: a wall-class piece whose back is more than
+  12 cm from every wall and that leans on nothing. When one class of
+  fix repeats across builders, look for the template.
+- **Walls are not all named Wall_.** The first FREE_SLAB run said 59
+  door-shaped polygons stood in rooms; 58 were walls called Hull,
+  WallSeg, Lobby_Wall, VestHallPartition, Case_Back, Cub_Part,
+  BlockFreezer_Back. Any audit that reasons about walls needs the
+  wide regex (`wall|partition|part|wallseg|hull|_back$|facade…`),
+  and the union AABB of a multi-part piece, not its biggest part
+  (natalie's bookshelf read 0.84 m off the wall by its side panel).
+- **Moving a piece moves its dressing, and the dressing is literal.**
+  Every wall-ward move this pass left something behind: drawers and
+  a phone on a dresser, a helmet on a crate, cans and a console on a
+  TV stand, a cord and an outlet, a corkboard's cards. `shift_names.py
+  <builder> <axis> <delta> <name-regex>` (scratch) moves the named
+  calls; the `"%d" % i` name form escapes it and needs sed. The real
+  fix is anchors: dressing keyed to the piece's variables.
+- **Read the geometry before calling something wrong.** Natalie's
+  sink "stood 0.3 m in front of the counter" — it was IN the west leg
+  of an L-shaped counter. One print of the boxes along that wall would
+  have said so before the sink moved twice.
+
 ### 2026-09-25 · the scene that would not parse; the doorway gate
 
 - **A locale skipped on every sheet with its GLB present is a .tscn

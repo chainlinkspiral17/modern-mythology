@@ -107,7 +107,7 @@ def build_counter():
 def build_stove():
     # Commercial deck oven: stainless body, two glass doors with warm
     # interiors + bar handles, a vent hood above.
-    sx, sy = +ROOM_W/4.0, ROOM_D-1.0
+    sx, sy = +ROOM_W/4.0, ROOM_D-0.5
     make_chamfer_box("Oven_Body", (sx, sy, 0.75), (1.00, 0.80, 1.50), (0.80, 0.82, 0.86, 1.0))
     for di, dz in enumerate([0.55, 1.05]):
         make_box(f"Oven_Door_{di}", (sx-0.42, sy, dz), (0.06, 0.66, 0.40), (0.28, 0.24, 0.22, 1.0))
@@ -473,7 +473,7 @@ def build_draft4_2026_09():
     make_wall_outlet("Outlet_N_1", (-2.30, ROOM_D-0.02), axis='X', face_sign=-1, z=1.175, aged=True)
     make_tube("Cord_1", [(-2.35, 4.19, 1.00), (-2.30, 4.86, 1.175)], 0.008, cord, segments=5)
     make_wall_outlet("Outlet_N_2", (2.35, ROOM_D), axis='X', face_sign=-1, z=0.40, aged=True)
-    make_tube("Cord_2", [(1.80, 4.41, 0.40), (2.35, 4.86, 0.40)], 0.008, cord, segments=5)
+    make_tube("Cord_2", [(2.02, 4.60, 0.40), (2.35, 4.86, 0.40)], 0.008, cord, segments=5)
     make_wall_outlet("Outlet_E_1", (ROOM_W/2.0-0.02, 3.4), axis='Y', face_sign=-1, z=0.35, aged=True)
     make_tube("Cord_3", [(2.79, 3.30, 0.30), (2.86, 3.40, 0.35)], 0.008, cord, segments=5)
     # ── D5 · the hemlock outside Win_W (4 AM: near-black green) ──

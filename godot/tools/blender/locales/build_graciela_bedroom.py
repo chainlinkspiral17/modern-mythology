@@ -218,7 +218,7 @@ def build_nightstand():
     """Nightstand on the near (east-of-bed) side: a warm lamp (secondary
     practical), reading glasses, a well-thumbed missal, a glass of
     water, a pill organizer."""
-    nx, ny = 0.98, 2.7
+    nx, ny = ROOM_W/2.0 - 0.30, 2.7   # against the E wall's face (2026-09-25: 72 cm off it, mid-floor)
     top_z = 0.56
     make_box("Nightstand_Body", (nx, ny, top_z / 2.0), (0.40, 0.40, top_z), COL_WOOD)
     make_box("Nightstand_Drawer", (nx, ny - 0.20, 0.40), (0.34, 0.02, 0.16), COL_WOOD_DK)
@@ -281,8 +281,8 @@ def build_dressing():
 def build_hero_props():
     """2026-08-03 tail pass: the nightstand telephone ("She will
     call Sam later. Not yet.")."""
-    make_box("Phone_Base", (0.98, 2.86, 0.60), (0.14, 0.10, 0.05), (0.24, 0.24, 0.26, 1.0))
-    make_box("Phone_Handset", (0.98, 2.86, 0.66), (0.16, 0.05, 0.04), (0.20, 0.20, 0.22, 1.0))
+    make_box("Phone_Base", (ROOM_W/2.0 - 0.30, 2.86, 0.60), (0.14, 0.10, 0.05), (0.24, 0.24, 0.26, 1.0))   # on the nightstand, which moved to the wall (2026-09-25)
+    make_box("Phone_Handset", (ROOM_W/2.0 - 0.30, 2.86, 0.66), (0.16, 0.05, 0.04), (0.20, 0.20, 0.22, 1.0))
 
 
 

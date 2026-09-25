@@ -183,7 +183,8 @@ def build_dressing():
     make_lathe("Tonearm_Pivot", (rcx + 0.17, rcy - 0.16, 0.57), [(0.02, 0.0), (0.02, 0.03), (0.0, 0.03)], P.METAL_STEEL, segments=8)
     make_tube("Tonearm", [(rcx + 0.17, rcy - 0.16, 0.605), (rcx + 0.05, rcy + 0.02, 0.60)], 0.005, P.METAL_STEEL, segments=5)
     # Wicker hamper, corner
-    make_lathe("Hamper", (-ROOM_W/2.0+0.5, 0.6, 0.0), [(0.21, 0.0), (0.23, 0.02), (0.27, 0.62), (0.28, 0.66), (0.26, 0.68), (0.0, 0.66)], (0.74, 0.62, 0.44, 1.0), segments=12)
+    # against the W wall's face (2026-09-25: 12 cm off it)
+    make_lathe("Hamper", (-ROOM_W/2.0+0.39, 0.6, 0.0), [(0.21, 0.0), (0.23, 0.02), (0.27, 0.62), (0.28, 0.66), (0.26, 0.68), (0.0, 0.66)], (0.74, 0.62, 0.44, 1.0), segments=12)
     make_lathe("Hamper_Lid", (-ROOM_W/2.0+0.5, 0.6, 0.68), [(0.29, 0.0), (0.29, 0.02), (0.20, 0.045), (0.0, 0.05)], (0.68, 0.56, 0.40, 1.0), segments=12)
     # Floor plant, SE corner
     make_floor_plant("Plant", (ROOM_W/2.0-0.5, 0.7, 0.0), palette={"leaf": (0.40, 0.60, 0.42, 1.0), "pot": (0.42, 0.72, 0.70, 1.0)})

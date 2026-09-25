@@ -117,9 +117,10 @@ def build_dressing():
         make_cyl(f"Amp_Knob_{ki}", (ax-0.14+ki*0.14, ay-0.20, 0.56), 0.02, 0.03, P.METAL_STEEL, segments=6)
     # Crate of records on the floor
     # out of the door's swing (2026-09-24, the user: doorways obstructed)
-    make_box("Record_Crate", (0.5, 1.300, 0.20), (0.46, 0.46, 0.40), COL_WOOD)
+    # against the E wall south of the amp (2026-09-25: it stood 1.6 m off any wall, mid-floor)
+    make_box("Record_Crate", (2.07, 1.200, 0.20), (0.46, 0.46, 0.40), COL_WOOD)
     for ri in range(5):
-        make_box(f"Record_{ri}", (0.5, 0.42+ri*0.07 + 0.700, 0.24), (0.42, 0.02, 0.34), P.SNACK_TINTS[ri % len(P.SNACK_TINTS)])
+        make_box(f"Record_{ri}", (2.07, 0.42+ri*0.07 + 0.600, 0.24), (0.42, 0.02, 0.34), P.SNACK_TINTS[ri % len(P.SNACK_TINTS)])
     # Egg-crate acoustic foam grid on the east wall
     ex = ROOM_W/2.0 - 0.04
     for r in range(4):
@@ -129,7 +130,7 @@ def build_dressing():
     for li in range(4):
         make_box(f"Lyric_{li}", (-ROOM_W/2.0+0.06, 0.7+(li%2)*0.5, 2.05-(li//2)*0.5), (0.02, 0.24, 0.30), (0.88, 0.84, 0.76, 1.0))
     # Dresser against the north-east wall
-    make_box("Dresser", (ROOM_W/2.0-0.30, ROOM_D-0.5, 0.45), (0.44, 0.9, 0.90), COL_WOOD)
+    make_box("Dresser", (ROOM_W/2.0-0.32, ROOM_D-0.55, 0.45), (0.44, 0.9, 0.90), COL_WOOD)   # in the NE corner on both faces (2026-09-25: 2 cm into the E wall, 5 cm into the N)
     for di in range(3):
         make_box(f"Dresser_Drawer_{di}", (ROOM_W/2.0-0.52, ROOM_D-0.5, 0.24+di*0.24), (0.02, 0.78, 0.16), (0.28, 0.20, 0.14, 1.0))
     # Warm string lights along the north wall

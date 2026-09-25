@@ -114,7 +114,7 @@ def build_chair():
         make_box(f"Chair_Leg_{i}", (cx+lx, cy+ly, 0.22), (0.05, 0.05, 0.44), COL_DARK)
 
 def build_dresser():
-    dx, dy = 1.66, 2.60
+    dx, dy = ROOM_W/2.0 - 0.36, 2.60   # against the E wall's face (2026-09-25: 38 cm off it since the widening)
     make_box("Dresser_Body", (dx, dy, 0.46), (0.52, 1.20, 0.92), COL_WOOD)
     for di, dz in enumerate([0.24, 0.54, 0.84]):
         make_box(f"Dresser_Drawer_{di}", (dx-0.24, dy, dz), (0.03, 1.06, 0.24), (0.34, 0.24, 0.16, 1.0))
@@ -181,7 +181,7 @@ def build_corkboard():
         make_box(f"Cork_String_{si}", (bx+mx, ROOM_D-0.1365, bz+mz), (ln, 0.003, 0.008), (0.82,0.20,0.16,1.0))
 
 def build_minifridge():
-    fx, fy = 1.58, 0.85
+    fx, fy = ROOM_W/2.0 - 0.38, 0.85   # against the E wall's face (2026-09-25: 44 cm off it)
     make_box("Fridge_Body", (fx, fy, 0.42), (0.56, 0.56, 0.84), (0.86, 0.84, 0.80, 1.0))
     make_box("Fridge_Door", (fx-0.29, fy, 0.42), (0.03, 0.52, 0.80), (0.90, 0.88, 0.84, 1.0))
     make_box("Fridge_Handle", (fx-0.31, fy+0.20, 0.52), (0.03, 0.04, 0.28), P.METAL_STEEL)

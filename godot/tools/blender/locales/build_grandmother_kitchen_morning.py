@@ -11,6 +11,7 @@ from _props.food_service import make_coffee_pots, make_donut_display
 from _props.decor import make_wall_clock, make_floor_plant, make_faded_poster, make_calendar
 from _props.safety import make_smoke_detector, make_hvac_vent, make_fluorescent_tube_fixture, make_ceiling_speaker
 
+# 2026-09-25: the counter run and the stove stood at ROOM_D-0.45 — 0.55 m off the N wall in every kitchen from this template; ROOM_D-0.45 puts their backs on the wall face
 ROOM_W = 5.0; ROOM_D = 5.0; CEIL = 2.6
 PAL_WALL = {"wall": (0.96, 0.84, 0.62, 1.0), "baseboard": (0.62, 0.42, 0.22, 1.0)}
 COL_FLOOR = (0.62, 0.46, 0.30, 1.0); COL_SEAM = (0.32, 0.22, 0.14, 1.0); COL_WOOD = (0.42, 0.30, 0.18, 1.0)
@@ -41,12 +42,12 @@ def build_counter():
     # a narrow face against the wall and the run jutting into
     # the room. Swapped 2026-08-12 (same bug as the New
     # Orleans bar and the pit stop's lunch counter).
-    top_z = make_counter("Counter", (-ROOM_W/4.0, ROOM_D-1.0, 0.0), length=0.70, depth=2.40, height=0.92,
+    top_z = make_counter("Counter", (-ROOM_W/4.0, ROOM_D-0.45, 0.0), length=0.70, depth=2.40, height=0.92,
                          palette={"formica": (0.78, 0.66, 0.42, 1.0), "top": (0.32, 0.22, 0.14, 1.0), "kick": (0.32, 0.22, 0.14, 1.0)})
-    make_counter_bullnose("Counter", (-ROOM_W/4.0, ROOM_D-1.0 - 0.35, top_z), length=2.40, axis='X')
+    make_counter_bullnose("Counter", (-ROOM_W/4.0, ROOM_D-0.45 - 0.35, top_z), length=2.40, axis='X')
     # Sink
-    make_box("Sink_Bowl", (-ROOM_W/4.0, ROOM_D-1.0, 0.86), (0.50, 0.40, 0.12), (0.86, 0.86, 0.84, 1.0))
-    make_cyl("Sink_Faucet", (-ROOM_W/4.0, ROOM_D-1.10, top_z+0.04), 0.015, 0.30, P.METAL_STEEL)
+    make_box("Sink_Bowl", (-ROOM_W/4.0, ROOM_D-0.45, 0.86), (0.50, 0.40, 0.12), (0.86, 0.86, 0.84, 1.0))
+    make_cyl("Sink_Faucet", (-ROOM_W/4.0, ROOM_D-0.55, top_z+0.04), 0.015, 0.30, P.METAL_STEEL)
     # Stove
     # (stove lives in build_stove() — the duplicate that used to sit
     # here collided with it on export)
@@ -66,7 +67,7 @@ def build_table():
             make_box(f"Chair_{ci}_Leg_{li}", (cx+lx, cy+ly, 0.22), (0.05, 0.05, 0.42), COL_WOOD)
 
 def build_stove():
-    sx, sy = +ROOM_W/4.0, ROOM_D-1.0
+    sx, sy = +ROOM_W/4.0, ROOM_D-0.45
     make_chamfer_box("Stove_Body", (sx, sy, 0.45), (0.80, 0.70, 0.90), (0.92, 0.88, 0.82, 1.0))
     make_box("Stove_Top", (sx, sy, 0.92), (0.80, 0.70, 0.04), P.METAL_BLACK)
     for bi, (bx, by) in enumerate([(-0.22, -0.16), (+0.22, -0.16), (-0.22, +0.16), (+0.22, +0.16)]):
@@ -99,7 +100,7 @@ def build_dressing():
     # Braided oval rug under the table
     make_cyl("Rug", (0.0, ROOM_D/2.0, 0.008), 1.30, 0.006, (0.72, 0.46, 0.34, 1.0), segments=20)
     # Tea kettle on the stove
-    kx, ky = ROOM_W/4.0, ROOM_D-1.0
+    kx, ky = ROOM_W/4.0, ROOM_D-0.45
     make_cyl("Kettle_Body", (kx-0.2, ky, 1.02), 0.10, 0.16, (0.72, 0.68, 0.30, 1.0), segments=12)
     make_cyl("Kettle_Spout", (kx-0.30, ky, 1.06), 0.02, 0.10, (0.72, 0.68, 0.30, 1.0), axis='X', segments=6)
     make_cyl("Kettle_Handle", (kx-0.2, ky, 1.115), 0.015, 0.14, P.METAL_BLACK, axis='X', segments=6)   # on the lid (2026-09-24: 6.5 cm over it)
@@ -110,8 +111,8 @@ def build_dressing():
         make_cyl(f"Fruit_{fi}", (0.14+fi*0.05, ROOM_D/2.0, 0.86), 0.04, 0.08, fc, segments=8)
     # Potted herbs on the counter
     for hi, hc in enumerate([(0.36, 0.52, 0.30, 1.0), (0.42, 0.56, 0.34, 1.0)]):
-        make_cyl(f"HerbPot_{hi}", (-ROOM_W/4.0-0.6+hi*0.3, ROOM_D-1.0, 1.00), 0.06, 0.12, (0.66, 0.40, 0.26, 1.0), segments=8)
-        make_cyl(f"Herb_{hi}", (-ROOM_W/4.0-0.6+hi*0.3, ROOM_D-1.0, 1.14), 0.07, 0.14, hc, segments=8)
+        make_cyl(f"HerbPot_{hi}", (-ROOM_W/4.0-0.6+hi*0.3, ROOM_D-0.45, 1.00), 0.06, 0.12, (0.66, 0.40, 0.26, 1.0), segments=8)
+        make_cyl(f"Herb_{hi}", (-ROOM_W/4.0-0.6+hi*0.3, ROOM_D-0.45, 1.14), 0.07, 0.14, hc, segments=8)
     # Corner floor plant
     make_floor_plant("Plant", (ROOM_W/2.0-0.5, 0.7, 0.0), palette={"leaf": (0.36, 0.48, 0.30, 1.0), "pot": (0.62, 0.42, 0.28, 1.0)})
 
@@ -130,8 +131,8 @@ def build_hero_props():
     # The small wooden salt box
     make_chamfer_box("Salt_Box", (-0.95, ROOM_D-0.20, 1.095), (0.10, 0.10, 0.09), (0.58, 0.44, 0.28, 1.0))
     # Microwave, counter east end
-    make_chamfer_box("Microwave", (-0.45, ROOM_D-1.0, 1.14), (0.50, 0.38, 0.30), (0.82, 0.80, 0.76, 1.0))
-    make_chamfer_box("Microwave_Door", (-0.45, ROOM_D-1.20, 1.14), (0.38, 0.02, 0.22), (0.20, 0.20, 0.22, 1.0))
+    make_chamfer_box("Microwave", (-0.45, ROOM_D-0.45, 1.14), (0.50, 0.38, 0.30), (0.82, 0.80, 0.76, 1.0))
+    make_chamfer_box("Microwave_Door", (-0.45, ROOM_D-0.65, 1.14), (0.38, 0.02, 0.22), (0.20, 0.20, 0.22, 1.0))
     # The yellow plate with the chip, set at his place
     make_cyl("Yellow_Plate", (0.0, ROOM_D/2.0-0.30, 0.77), 0.12, 0.012, (0.90, 0.82, 0.38, 1.0), segments=14)
     make_box("Plate_Chip", (0.115, ROOM_D/2.0-0.30, 0.775), (0.02, 0.02, 0.014), (0.96, 0.93, 0.74, 1.0))

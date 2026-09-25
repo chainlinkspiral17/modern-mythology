@@ -15,6 +15,7 @@ from _props.detail import (make_traffic_wear, make_floor_stain,
                            make_wall_tint_band, make_threshold,
                            make_wall_outlet, make_light_switch)
 
+# 2026-09-25: the counter run and the stove stood at ROOM_D-0.45 — 0.55 m off the N wall in every kitchen from this template; ROOM_D-0.45 puts their backs on the wall face
 ROOM_W = 5.5; ROOM_D = 5.0; CEIL = 2.6
 PAL_WALL = {"wall":(0.96,0.84,0.62,1.0),"baseboard":(0.62,0.42,0.22,1.0)}
 COL_FLOOR = (0.62,0.46,0.30,1.0); COL_SEAM = (0.32,0.22,0.14,1.0); COL_WOOD = (0.42,0.30,0.18,1.0)
@@ -37,15 +38,15 @@ def build_counter():
     # a narrow face against the wall and the run jutting into
     # the room. Swapped 2026-08-12 (same bug as the New
     # Orleans bar and the pit stop's lunch counter).
-    top_z = make_counter("Counter", (-ROOM_W/4.0, ROOM_D-1.35, 0.0), length=0.70, depth=2.40, height=0.92,
+    top_z = make_counter("Counter", (-ROOM_W/4.0, ROOM_D-0.80, 0.0), length=0.70, depth=2.40, height=0.92,
                          palette={"formica": (0.78, 0.66, 0.42, 1.0), "top": (0.32, 0.22, 0.14, 1.0), "kick": (0.32, 0.22, 0.14, 1.0)})
-    make_counter_bullnose("Counter", (-ROOM_W/4.0, ROOM_D-1.35 - 0.35, top_z), length=2.40, axis='X')
+    make_counter_bullnose("Counter", (-ROOM_W/4.0, ROOM_D-0.80 - 0.35, top_z), length=2.40, axis='X')
     # Sink + faucet (was missing)
-    make_box("Sink_Bowl", (-ROOM_W/4.0, ROOM_D-1.0, 0.86), (0.50, 0.40, 0.12), (0.86, 0.86, 0.84, 1.0))
-    make_cyl("Sink_Faucet", (-ROOM_W/4.0, ROOM_D-1.10, top_z+0.04), 0.015, 0.30, P.METAL_STEEL)
-    make_box("Sink_Faucet_Spout", (-ROOM_W/4.0, ROOM_D-1.20, top_z+0.19), (0.03, 0.16, 0.03), P.METAL_STEEL)   # off the riser's top (2026-09-24: 7.5 cm over it)
+    make_box("Sink_Bowl", (-ROOM_W/4.0, ROOM_D-0.45, 0.86), (0.50, 0.40, 0.12), (0.86, 0.86, 0.84, 1.0))
+    make_cyl("Sink_Faucet", (-ROOM_W/4.0, ROOM_D-0.55, top_z+0.04), 0.015, 0.30, P.METAL_STEEL)
+    make_box("Sink_Faucet_Spout", (-ROOM_W/4.0, ROOM_D-0.65, top_z+0.19), (0.03, 0.16, 0.03), P.METAL_STEEL)   # off the riser's top (2026-09-24: 7.5 cm over it)
     # Coffee maker on the counter (make_coffee_pots was imported/unused)
-    make_coffee_pots("Coffee", (-ROOM_W/4.0-0.85, ROOM_D-1.0, top_z), pots=1)
+    make_coffee_pots("Coffee", (-ROOM_W/4.0-0.85, ROOM_D-0.45, top_z), pots=1)
 
 def build_table():
     import math
@@ -67,7 +68,7 @@ def build_table():
         make_cyl(f"Fruit_{gi}", (tx+gx, ty+gy, 0.86), 0.05, 0.10, gc, segments=8)
 
 def build_stove():
-    sx, sy = +ROOM_W/4.0, ROOM_D-1.0
+    sx, sy = +ROOM_W/4.0, ROOM_D-0.45
     make_box("Stove_Body", (sx, sy, 0.45), (0.80, 0.70, 0.90), (0.92, 0.88, 0.82, 1.0))
     make_box("Stove_Top", (sx, sy, 0.92), (0.80, 0.70, 0.04), P.METAL_BLACK)
     for bi, (bx, by) in enumerate([(-0.18, -0.16), (0.18, -0.16), (-0.18, 0.16), (0.18, 0.16)]):
@@ -118,7 +119,7 @@ def build_hero_props():
                  (0.30, 0.22, 0.16, 1.0), segments=5)
     make_box("Rosary_Cross", (0.12, 2.42, 0.775), (0.03, 0.012, 0.045), (0.44, 0.34, 0.22, 1.0))
     # The drawer with the bills (blue pen + envelopes)
-    make_box("Bills_Drawer", (-1.62, 3.55, 0.80), (0.03, 0.55, 0.14), (0.36, 0.26, 0.16, 1.0))
+    make_box("Bills_Drawer", (-1.62, 4.1000, 0.80), (0.03, 0.55, 0.14), (0.36, 0.26, 0.16, 1.0))
 
 
 
@@ -174,13 +175,13 @@ def build_hero_props_2026_09():
         make_box(f"Hands_Worn_Patch_{nm}", (hx2, hy2, 0.761), (0.14, 0.12, 0.002),
                  (0.52, 0.40, 0.27, 1.0))
     # ── THE EGGS · skillet on burner 0 (1.2, 3.84), top 0.96 ──
-    make_cyl("Iron_Skillet", (1.2, 3.84, 0.9775), 0.14, 0.035,
+    make_cyl("Iron_Skillet", (1.2, 4.39, 0.9775), 0.14, 0.035,
              (0.16, 0.16, 0.17, 1.0), segments=12)
-    make_box("Skillet_Handle", (0.98, 3.84, 0.975), (0.16, 0.03, 0.012),
+    make_box("Skillet_Handle", (0.98, 4.3900, 0.975), (0.16, 0.03, 0.012),
              (0.14, 0.14, 0.15, 1.0))
-    make_cyl("Scrambled_Eggs", (1.2, 3.84, 1.005), 0.10, 0.020,
+    make_cyl("Scrambled_Eggs", (1.2, 4.3900, 1.005), 0.10, 0.020,
              (0.94, 0.82, 0.45, 1.0), segments=10)
-    for ci2, (cx2, cy2) in enumerate(((1.15, 3.80), (1.26, 3.86), (1.19, 3.90))):
+    for ci2, (cx2, cy2) in enumerate(((1.15, 4.35), (1.26, 4.41), (1.19, 4.45))):
         make_cyl(f"Chorizo_Crumble_{ci2}", (cx2, cy2, 1.019), 0.018, 0.008,
                  (0.58, 0.22, 0.16, 1.0), segments=6)
     # ── THE SOUP · bowl + spoon at Sam's place ──

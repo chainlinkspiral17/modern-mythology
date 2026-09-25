@@ -11,6 +11,7 @@ from _props.food_service import make_coffee_pots, make_donut_display
 from _props.decor import make_wall_clock, make_floor_plant, make_faded_poster, make_calendar
 from _props.safety import make_smoke_detector, make_hvac_vent, make_fluorescent_tube_fixture, make_ceiling_speaker
 
+# 2026-09-25: the counter run and the stove stood at ROOM_D-0.45 — 0.55 m off the N wall in every kitchen from this template; ROOM_D-0.45 puts their backs on the wall face
 ROOM_W = 7.0; ROOM_D = 6.0; CEIL = 2.6
 PAL_WALL = {"wall": (0.92, 0.86, 0.74, 1.0), "baseboard": (0.42, 0.32, 0.22, 1.0)}
 COL_FLOOR = (0.74, 0.58, 0.38, 1.0); COL_SEAM = (0.42, 0.30, 0.18, 1.0); COL_WOOD = (0.46, 0.34, 0.22, 1.0)
@@ -41,23 +42,23 @@ def build_counter():
     # a narrow face against the wall and the run jutting into
     # the room. Swapped 2026-08-12 (same bug as the New
     # Orleans bar and the pit stop's lunch counter).
-    top_z = make_counter("Counter", (-ROOM_W/4.0, ROOM_D-1.0, 0.0), length=0.70, depth=2.40, height=0.92,
+    top_z = make_counter("Counter", (-ROOM_W/4.0, ROOM_D-0.45, 0.0), length=0.70, depth=2.40, height=0.92,
                          palette={"formica": (0.78, 0.66, 0.42, 1.0), "top": (0.32, 0.22, 0.14, 1.0), "kick": (0.32, 0.22, 0.14, 1.0)})
-    make_counter_bullnose("Counter", (-ROOM_W/4.0, ROOM_D-1.0 - 0.35, top_z), length=2.40, axis='X')
+    make_counter_bullnose("Counter", (-ROOM_W/4.0, ROOM_D-0.45 - 0.35, top_z), length=2.40, axis='X')
     # Sink
-    make_box("Sink_Bowl", (-ROOM_W/4.0, ROOM_D-1.0, 0.86), (0.50, 0.40, 0.12), (0.86, 0.86, 0.84, 1.0))
-    make_cyl("Sink_Faucet", (-ROOM_W/4.0, ROOM_D-1.10, top_z+0.04), 0.015, 0.30, P.METAL_STEEL)
+    make_box("Sink_Bowl", (-ROOM_W/4.0, ROOM_D-0.45, 0.86), (0.50, 0.40, 0.12), (0.86, 0.86, 0.84, 1.0))
+    make_cyl("Sink_Faucet", (-ROOM_W/4.0, ROOM_D-0.55, top_z+0.04), 0.015, 0.30, P.METAL_STEEL)
     # Stove, with the cast-iron roasting pan on it ("roast something
     # — tonight, a chicken — in the cast-iron")
-    make_chamfer_box("Stove_Body", (ROOM_W/4.0, ROOM_D-1.0, 0.45), (0.70, 0.70, 0.92), (0.86, 0.84, 0.80, 1.0))
-    make_box("Stove_Top", (ROOM_W/4.0, ROOM_D-1.0, 0.92), (0.70, 0.70, 0.04), P.METAL_BLACK)
-    make_box("CastIron_Pan", (ROOM_W/4.0, ROOM_D-1.0, 0.99), (0.42, 0.30, 0.10), (0.16, 0.16, 0.17, 1.0))
+    make_chamfer_box("Stove_Body", (ROOM_W/4.0, ROOM_D-0.45, 0.45), (0.70, 0.70, 0.92), (0.86, 0.84, 0.80, 1.0))
+    make_box("Stove_Top", (ROOM_W/4.0, ROOM_D-0.45, 0.92), (0.70, 0.70, 0.04), P.METAL_BLACK)
+    make_box("CastIron_Pan", (ROOM_W/4.0, ROOM_D-0.45, 0.99), (0.42, 0.30, 0.10), (0.16, 0.16, 0.17, 1.0))
     # Dishwasher under-counter beside the sink (three scenes end on it)
-    make_chamfer_box("Dishwasher_Face", (-ROOM_W/4.0+0.90, ROOM_D-0.68, 0.44), (0.60, 0.04, 0.82), (0.80, 0.78, 0.74, 1.0))
-    make_box("Dishwasher_Handle", (-ROOM_W/4.0+0.90, ROOM_D-0.70, 0.80), (0.44, 0.03, 0.04), P.METAL_STEEL)
+    make_chamfer_box("Dishwasher_Face", (-ROOM_W/4.0+0.90, ROOM_D-0.82, 0.44), (0.60, 0.04, 0.82), (0.80, 0.78, 0.74, 1.0))
+    make_box("Dishwasher_Handle", (-ROOM_W/4.0+0.90, ROOM_D-0.855, 0.80), (0.44, 0.03, 0.04), P.METAL_STEEL)   # face and handle on the counter's front (2026-09-25: 67 cm in front of it)
     # Microwave on the counter
-    make_chamfer_box("Microwave", (-ROOM_W/4.0-0.85, ROOM_D-1.0, 1.10), (0.48, 0.36, 0.28), (0.30, 0.30, 0.32, 1.0))
-    make_chamfer_box("Microwave_Door", (-ROOM_W/4.0-0.85, ROOM_D-1.19, 1.10), (0.36, 0.02, 0.20), (0.14, 0.14, 0.16, 1.0))
+    make_chamfer_box("Microwave", (-ROOM_W/4.0-0.85, ROOM_D-0.45, 1.10), (0.48, 0.36, 0.28), (0.30, 0.30, 0.32, 1.0))
+    make_chamfer_box("Microwave_Door", (-ROOM_W/4.0-0.85, ROOM_D-0.64, 1.10), (0.36, 0.02, 0.20), (0.14, 0.14, 0.16, 1.0))
     # Upper cabinets + the under-cabinet light over the sink ("She
     # does not turn on the overhead. She turns on, instead, the
     # small under-cabinet light over the sink")
@@ -106,7 +107,7 @@ def build_table():
         make_cyl(f"Fruit_{fi}", (tx+fx2, ty+fy2, 0.86), 0.05, 0.09, fc, segments=8)
 
 def build_fridge():
-    fx, fy = +ROOM_W/2.0 - 0.50, ROOM_D - 1.0
+    fx, fy = +ROOM_W/2.0 - 0.50, ROOM_D-0.45
     make_chamfer_box("Fridge_Body", (fx, fy, 1.00), (0.70, 0.70, 2.00), (0.86, 0.84, 0.80, 1.0))
     make_chamfer_box("Fridge_DoorTop", (fx-0.34, fy, 1.50), (0.04, 0.66, 0.80), (0.86, 0.84, 0.80, 1.0))
     make_chamfer_box("Fridge_DoorBot", (fx-0.34, fy, 0.40), (0.04, 0.66, 1.00), (0.86, 0.84, 0.80, 1.0))
@@ -138,8 +139,8 @@ def build_window():
 def build_ceiling_infra():
     # "She does not turn on the overhead" — but it exists: a single
     # nook pendant + two recessed cans, not shop fluorescents.
-    make_cyl("Nook_Pendant_Cord", (2.0, ROOM_D-1.0, CEIL-0.18), 0.008, 0.36, P.METAL_BLACK)
-    make_cyl("Nook_Pendant_Shade", (2.0, ROOM_D-1.0, CEIL-0.44), 0.16, 0.16, (0.62, 0.50, 0.34, 1.0), segments=12)
+    make_cyl("Nook_Pendant_Cord", (2.0, ROOM_D-0.45, CEIL-0.18), 0.008, 0.36, P.METAL_BLACK)
+    make_cyl("Nook_Pendant_Shade", (2.0, ROOM_D-0.45, CEIL-0.44), 0.16, 0.16, (0.62, 0.50, 0.34, 1.0), segments=12)
     for ci, (cx, cy) in enumerate(((-1.5, 2.0), (1.0, 2.0))):
         make_cyl(f"Recessed_Can_{ci}", (cx, cy, CEIL-0.02), 0.10, 0.03, (0.92, 0.90, 0.84, 1.0), segments=10)
     make_smoke_detector("Smoke", (0.0, ROOM_D/2.0, CEIL))
@@ -149,7 +150,7 @@ def build_dressing():
     """Counter + wall dressing: a drip coffee maker, a dish rack, a
     paper-towel stand, and a wall calendar — the small stuff that
     reads as a family's working kitchen."""
-    cw_x = -ROOM_W/4.0; cw_y = ROOM_D-1.0
+    cw_x = -ROOM_W/4.0; cw_y = ROOM_D-0.45
     # Drip coffee maker at the left end of the west counter
     # on the counter top (0.98), set back on it (2026-09-25: its burner
     # overhung the counter's front by 17 cm into the pantry door's swing,
@@ -191,13 +192,13 @@ def build_phone_and_toast_2026_08():
         make_cyl("Phone_Wall_Cord_%d" % ci, (px + dx, ROOM_D - 0.13, pz + dz),
                  0.011, 0.14, beige_dk, segments=6)
     # Eileen's cell, flat on the counter by the bullnose edge.
-    make_box("Phone_Cell", (-2.20, ROOM_D - 1.28, 0.955), (0.075, 0.15, 0.012),
+    make_box("Phone_Cell", (-2.20, ROOM_D-0.73, 0.955), (0.075, 0.15, 0.012),
              (0.12, 0.12, 0.14, 1.0))
 
     # ── The french toast, mid-making: skillet with two thick slices,
     # the challah with its cut end showing, the bowl of whisked egg,
     # the cinnamon. It is being MADE, not plated — that is the shot.
-    sx, sy = ROOM_W/4.0, ROOM_D - 1.0
+    sx, sy = ROOM_W/4.0, ROOM_D-0.45
     bread = (0.83, 0.68, 0.44, 1.0)
     crust = (0.62, 0.44, 0.24, 1.0)
     make_cyl("FrenchToast_Skillet", (sx - 0.16, sy + 0.10, 0.965), 0.14, 0.035,
@@ -211,13 +212,13 @@ def build_phone_and_toast_2026_08():
                  (0.109, 0.089, 0.006), crust)
     # The challah on the counter beside the stove, cut end toward
     # the skillet; two slices' worth already gone.
-    make_box("FrenchToast_Challah", (-1.65, ROOM_D - 1.05, 0.99), (0.30, 0.13, 0.11), crust)
-    make_box("FrenchToast_Challah_Cut", (-1.49, ROOM_D - 1.05, 0.99), (0.012, 0.125, 0.105), bread)
-    make_cyl("FrenchToast_EggBowl", (-1.95, ROOM_D - 1.10, 0.975), 0.095, 0.055,
+    make_box("FrenchToast_Challah", (-1.65, ROOM_D-0.50, 0.99), (0.30, 0.13, 0.11), crust)
+    make_box("FrenchToast_Challah_Cut", (-1.49, ROOM_D-0.50, 0.99), (0.012, 0.125, 0.105), bread)
+    make_cyl("FrenchToast_EggBowl", (-1.95, ROOM_D-0.55, 0.975), 0.095, 0.055,
              (0.90, 0.88, 0.84, 1.0), segments=12)
-    make_cyl("FrenchToast_Egg", (-1.95, ROOM_D - 1.10, 1.015), 0.078, 0.008,
+    make_cyl("FrenchToast_Egg", (-1.95, ROOM_D-0.55, 1.015), 0.078, 0.008,
              (0.94, 0.80, 0.42, 1.0), segments=12)
-    make_cyl("FrenchToast_Cinnamon", (-1.78, ROOM_D - 1.22, 0.985), 0.028, 0.075,
+    make_cyl("FrenchToast_Cinnamon", (-1.78, ROOM_D-0.67, 0.985), 0.028, 0.075,
              (0.55, 0.34, 0.18, 1.0), segments=8)
 
 
@@ -257,11 +258,11 @@ def build_wear_personality_2026_08():
                     height=0.06, band_z=1.02, tint=(0.70, 0.66, 0.58, 1.0))
     # ── Sixteen years of French toast · the cutting board lives by
     # the stove; its center is worn pale with knife lines.
-    make_box("Wear_Board", (-1.65, 4.72, 0.955), (0.38, 0.26, 0.018),
+    make_box("Wear_Board", (-1.65, 5.27, 0.955), (0.38, 0.26, 0.018),
              (0.62, 0.50, 0.34, 1.0))
-    make_box("Wear_Board_Center", (-1.65, 4.72, 0.9826), (0.24, 0.15, 0.004), floor_pale)
+    make_box("Wear_Board_Center", (-1.65, 5.2700, 0.9826), (0.24, 0.15, 0.004), floor_pale)
     for ki in range(3):
-        make_box("Wear_Board_Knifeline_%d" % ki, (-1.70 + ki * 0.05, 4.72, 0.968),
+        make_box("Wear_Board_Knifeline_%d" % ki, (-1.70 + ki * 0.05, 5.27, 0.968),
                  (0.005, 0.13, 0.002), (0.44, 0.34, 0.22, 1.0))
     # ── The chairs tell the household ──
     # (Table sits at tx=0.5 — the first draft of this pass put the
@@ -440,7 +441,7 @@ def build_photographs_2026_09():
     at the photographs."): three prints fanned on the counter east
     of the sink."""
     for pi, (dx, dy) in enumerate(((0.0, 0.0), (0.03, 0.02), (0.06, 0.04))):
-        make_box(f"Photographs_{pi}", (-1.18 + dx, 4.95 + dy, 0.9808 + pi * 0.0012), (0.10, 0.15, 0.001), (0.78, 0.76, 0.70, 1.0))   # on the counter top at 0.98 (2026-09-25: 4 mm inside it)
+        make_box(f"Photographs_{pi}", (-1.18 + dx, 4.95 + dy + 0.5500, 0.9808 + pi * 0.0012), (0.10, 0.15, 0.001), (0.78, 0.76, 0.70, 1.0))   # on the counter top at 0.98 (2026-09-25: 4 mm inside it)
 
 
 def main():

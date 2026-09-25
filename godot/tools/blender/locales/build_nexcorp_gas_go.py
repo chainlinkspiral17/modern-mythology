@@ -405,7 +405,7 @@ def build_floor_props():
     # North wall, between the locker room and Skip's office — it was
     # at (-5.5, 8.0), which is INSIDE the locker bank: lockers 5-6,
     # the bench end and the west wall all ran through its body.
-    fx, fy = -3.6, 8.35
+    fx, fy = -3.6, 8.50   # its back on the N wall's face (2026-09-25: 15 cm off it)
     from _props.structure import make_case_shell   # make_box's delegate has put _props on the path
     # an open shell (2026-09-24: a solid body with the shelves and
     # six-packs inside it, behind a glass slab that renders opaque)

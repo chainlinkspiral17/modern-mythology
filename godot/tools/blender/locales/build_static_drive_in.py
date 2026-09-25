@@ -297,7 +297,7 @@ def build_moon_wave2_props():
 
     # Mini-fridge with the sandwich (Natalie's turkey-and-provolone)
     fridge_x = -0.90
-    fridge_y = +0.45   # inside (2026-09-23: at -0.20 it stood in the south wall)
+    fridge_y = +0.28   # its back on the S wall's face (2026-09-23: at -0.20 it stood in the south wall; 2026-09-25: at 0.45 it stood 17 cm off it)
     make_box("MiniFridge_Body",
              (fridge_x, fridge_y, 0.36),
              (0.36, 0.36, 0.72),

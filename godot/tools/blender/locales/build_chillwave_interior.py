@@ -141,7 +141,7 @@ def build_back_inventory():
     make_box("InvShelf_W_Frame", (-ROOM_W/2.0+0.20, 6.2, 1.35), (0.30, 2.7, 2.70), COL_CEDAR_DK)
     # The WOODEN CRATE by the back-room doorway (trade-ins waiting
     # to be shelved).
-    make_box("Crate", (2.6, PART_Y+0.55, 0.22), (0.55, 0.55, 0.42), (0.58, 0.44, 0.28, 1.0))
+    make_box("Crate", (2.6, PART_Y+0.375, 0.22), (0.55, 0.55, 0.42), (0.58, 0.44, 0.28, 1.0))   # against the partition's back face (2026-09-25: 17 cm off it)
     make_box("Crate_Slat_A", (2.6, PART_Y+0.55, 0.44), (0.57, 0.57, 0.03), COL_CEDAR_DK)
     for si in range(3):
         make_box(f"Crate_InStick_{si}", (2.45+si*0.15, PART_Y+0.55, 0.50),

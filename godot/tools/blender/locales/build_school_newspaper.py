@@ -142,7 +142,7 @@ def build_perimeter():
     make_box("Win_Sill", (3.82, 3.0, 0.98), (0.24, 4.3, 0.06), COL_FRAME)
     # Teacher's desk, NE corner
     make_box("TDesk_Top", (2.9, 5.35, 0.74), (1.5, 0.8, 0.06), COL_TDESK)
-    make_box("TDesk_Body", (3.25, 5.35, 0.38), (0.7, 0.75, 0.70), COL_TDESK)
+    make_box("TDesk_Body", (3.25, 5.53, 0.38), (0.7, 0.75, 0.70), COL_TDESK)   # on the N wall's face (2026-09-25: 18 cm off it)
     for lx in (2.22, 3.58):
         make_box(f"TDesk_Leg_{lx:.2f}", (lx, 5.35, 0.36), (0.06, 0.7, 0.72), COL_BOARD_FR)
     make_box("TDesk_Phone", (2.6, 5.5, 0.82), (0.26, 0.20, 0.12), COL_TYPE)

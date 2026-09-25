@@ -102,8 +102,9 @@ def build_dressing():
     medals, a Mexico/club flag on the west wall, a duffel bag, and a desk
     chair. make_floor_plant is imported/wired as a corner sprout."""
     bx, by = -0.85, ROOM_D - 0.98
-    make_box("Nightstand", (bx+1.2, by, 0.28), (0.40, 0.40, 0.56), COL_WOOD)
-    make_box("Clock", (bx+1.2, by, 0.62), (0.15, 0.10, 0.10), P.METAL_BLACK)
+    # at the bed's head, against the W wall (2026-09-25: at bx+1.2 it stood 0.7 m off every wall)
+    make_box("Nightstand", (-ROOM_W/2.0 + 0.30, by + 0.75, 0.28), (0.40, 0.40, 0.56), COL_WOOD)
+    make_box("Clock", (-ROOM_W/2.0 + 0.30, by + 0.75, 0.62), (0.15, 0.10, 0.10), P.METAL_BLACK)
     # Dresser against the east wall
     make_box("Dresser", (ROOM_W/2.0-0.30, ROOM_D-1.3, 0.45), (0.44, 1.0, 0.90), COL_WOOD)
     for di in range(3):
