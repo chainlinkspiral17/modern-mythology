@@ -39,6 +39,7 @@
   .keys { display: flex; gap: 6px; }
   .key { font: 10px monospace; padding: 1px 6px; border: 1px solid var(--border); border-radius: 3px; color: var(--fg-dim); }
   .key.ok { color: var(--green-ok); border-color: var(--green-ok); }
+  .key.bad { color: var(--red-bad); border-color: var(--red-bad); }
 
   .banner {
     margin: 12px 20px 0; padding: 10px 14px; border-left: 3px solid var(--brass);
@@ -159,9 +160,30 @@
   <div class="conn">
     <div id="conn-dot" class="conn-dot"></div>
     <span id="conn-text">not connected</span>
-    <span class="keys" id="keys"></span>
+    <span class="keys" id="keys" title="click to set / test API keys" style="cursor:pointer"></span>
+    <button id="btn-keys" class="secondary small">keys</button>
   </div>
 </header>
+
+<div id="keys-panel" class="banner" style="display:none">
+  <strong>API keys.</strong> Paste a key and click <em>save + test</em>: the runner writes it to the gitignored file next to
+  <code>meshy_pipeline.py</code> and makes one cheap authenticated call. Only the providers you use need a key.
+  <div class="row" style="margin-top:8px">
+    <div><label>Google — Gemini API key (AIza…) · <a href="https://aistudio.google.com/apikey" target="_blank" style="color:var(--brass)">aistudio.google.com/apikey</a></label>
+      <input id="key-google" type="text" placeholder="AIza…" autocomplete="off" spellcheck="false"></div>
+    <div><label>Runway — dev API key (key_…) · <a href="https://dev.runwayml.com" target="_blank" style="color:var(--brass)">dev.runwayml.com</a></label>
+      <input id="key-runway" type="text" placeholder="key_…" autocomplete="off" spellcheck="false"></div>
+    <div><label>Meshy — API key (msy_…) · <a href="https://www.meshy.ai/api" target="_blank" style="color:var(--brass)">meshy.ai/api</a></label>
+      <input id="key-meshy" type="text" placeholder="msy_…" autocomplete="off" spellcheck="false"></div>
+  </div>
+  <div class="actions">
+    <button id="btn-keys-save">save + test</button>
+    <button id="btn-keys-test" class="secondary">test existing keys</button>
+    <span class="spacer"></span>
+    <span style="font-size:11px">CLI: <code>python3 godot/tools/meshy_pipeline.py doctor</code></span>
+  </div>
+  <div id="keys-status" style="margin-top:8px;font:11px monospace;white-space:pre-wrap"></div>
+</div>
 
 <div id="banner-offline" class="banner" style="display:none">
   <strong>Offline mode.</strong> Generation needs the local runner. On the Deck:
@@ -341,8 +363,13 @@ async function boot() {
     state.connected = true;
     $('conn-dot').classList.add('ok');
     $('conn-text').textContent = 'connected to meshy_pipeline.py serve';
-    renderKeys(state.roster.keys || {});
+    renderKeys(state.roster.keys || {}, state.roster.key_report);
     $('roster-src').textContent = 'served';
+    if (!Object.values(state.roster.key_report || {}).some(r => r.present)) {
+      $('keys-panel').style.display = '';
+      renderKeyStatus(state.roster.key_report || {});
+      log('info', 'No API keys found yet — paste them in the KEYS panel (saved to gitignored files) or run meshy_pipeline.py doctor.');
+    }
     log('ok', `Roster loaded from the runner: ${state.roster.entries.length} entries.`);
     startJobPolling();
   } catch (err) {
@@ -377,9 +404,54 @@ function normaliseRoster() {
   state.roster.aspects = state.roster.aspects || ['1:1', '16:9', '2:3', '21:9', '3:2', '3:4', '4:3', '4:5', '5:4', '9:16'];
 }
 
-function renderKeys(keys) {
-  $('keys').innerHTML = ['google', 'runway', 'meshy'].map(k =>
-    `<span class="key ${keys[k] ? 'ok' : ''}" title="${keys[k] ? 'key found' : 'no key: export ' + k.toUpperCase() + '_API_KEY or write godot/tools/.' + k + '_key'}">${k}</span>`).join('');
+function renderKeys(keys, report) {
+  $('keys').innerHTML = ['google', 'runway', 'meshy'].map(k => {
+    const r = report?.[k];
+    const cls = r ? (r.ok === true ? 'ok' : (r.ok === false ? 'bad' : (r.present ? 'ok' : ''))) : (keys[k] ? 'ok' : '');
+    const title = r ? (r.present ? `${r.source} ${r.masked} ${r.message || ''}` : 'no key — click to add') : (keys[k] ? 'key found' : 'no key — click to add');
+    return `<span class="key ${cls}" title="${esc(title)}">${k}</span>`;
+  }).join('');
+}
+
+function renderKeyStatus(report) {
+  const lines = [];
+  for (const k of ['google', 'runway', 'meshy']) {
+    const r = report[k]; if (!r) continue;
+    const st = r.ok === true ? '✓' : (r.ok === false ? '✗' : '·');
+    lines.push(`${st} ${k.padEnd(7)} ${(r.source || 'MISSING').padEnd(34)} ${(r.masked || '').padEnd(14)} ${r.message || ''}`);
+    if (!r.present) lines.push(`         → paste above, or: export ${r.env}=…  /  echo '…' > ${r.file}`);
+  }
+  $('keys-status').textContent = lines.join('\n');
+}
+
+async function testKeys() {
+  if (!state.connected) { $('keys-status').textContent = 'Not connected to the runner — start meshy_pipeline.py serve first.'; return; }
+  $('keys-status').textContent = 'testing…';
+  try {
+    const r = await api('GET', '/api/keys?check=1');
+    renderKeyStatus(r.keys); renderKeys(state.roster.keys || {}, r.keys);
+    const bad = Object.values(r.keys).filter(x => x.ok === false).length;
+    log(bad ? 'err' : 'ok', `Key test: ${Object.values(r.keys).filter(x => x.ok).length} ok, ${bad} failing.`);
+  } catch (err) { $('keys-status').textContent = 'test failed: ' + err.message; }
+}
+
+async function saveKeys() {
+  if (!state.connected) { $('keys-status').textContent = 'Not connected to the runner — start meshy_pipeline.py serve first.'; return; }
+  const report = {};
+  for (const k of ['google', 'runway', 'meshy']) {
+    const v = $('key-' + k).value.trim();
+    if (!v) continue;
+    $('keys-status').textContent = `saving + testing ${k}…`;
+    try {
+      const r = await api('POST', '/api/keys', { provider: k, key: v });
+      report[k] = r.keys[k];
+      if (r.keys[k].ok) $('key-' + k).value = '';
+      log(r.keys[k].ok ? 'ok' : 'err', `${k}: ${r.keys[k].message}`);
+    } catch (err) { report[k] = { present: true, ok: false, message: err.message, source: '', masked: '' }; log('err', `${k}: ${err.message}`); }
+  }
+  if (!Object.keys(report).length) { $('keys-status').textContent = 'Paste at least one key first.'; return; }
+  // refresh the full picture (untouched providers included)
+  await testKeys();
 }
 
 // ════════════════════════════════════════════════════════════════
@@ -568,7 +640,7 @@ async function api(method, path, body, ctype) {
 async function refreshRoster(keepSelection = true) {
   if (!state.connected) return;
   const data = await api('GET', '/api/roster');
-  state.roster = data; normaliseRoster(); renderKeys(data.keys || {});
+  state.roster = data; normaliseRoster(); renderKeys(data.keys || {}, data.key_report);
   renderRoster();
   if (keepSelection && state.selected) { renderViews(); renderPreview(); }
 }
@@ -636,8 +708,9 @@ function renderJobs() {
   for (const j of [...state.jobs].reverse()) {
     const d = document.createElement('div'); d.className = 'job';
     const tail = (j.log || []).slice(-4).join('\n');
+    const keyHint = j.error && /HTTP (401|403)|API key not found|API_KEY_INVALID/.test(j.error) ? '\n→ API key problem: open KEYS (top right) to save + test the key.' : '';
     d.innerHTML = `<div class="head"><span class="st ${j.status}">${j.status.toUpperCase()}</span><span>${esc(j.action)}</span><span>${esc(j.slug)}</span><span style="color:var(--fg-dim)">${esc(j.id)}</span></div>
-      <div class="lines">${esc(tail)}${j.error ? '\n' + esc(j.error) : ''}</div>`;
+      <div class="lines">${esc(tail)}${j.error ? '\n' + esc(j.error) : ''}${esc(keyHint)}</div>`;
     box.appendChild(d);
   }
 }
@@ -705,6 +778,11 @@ function batchCommand() {
 function bind() {
   for (const id of ['f-search', 'f-kind', 'f-vol', 'f-state']) $(id).addEventListener('input', renderRoster);
   $('btn-batch').addEventListener('click', batchCommand);
+  const toggleKeys = () => { const k = $('keys-panel'); k.style.display = k.style.display === 'none' ? '' : 'none'; if (k.style.display === '') renderKeyStatus(state.roster?.key_report || {}); };
+  $('btn-keys').addEventListener('click', toggleKeys);
+  $('keys').addEventListener('click', toggleKeys);
+  $('btn-keys-save').addEventListener('click', saveKeys);
+  $('btn-keys-test').addEventListener('click', testKeys);
   $('o-provider').addEventListener('change', onProviderChange);
   for (const id of ['o-model', 'o-count', 'o-multiview', 'o-texture']) $(id).addEventListener('change', updateCosts);
   for (const id of ['e-prompt', 'e-canon', 'o-append']) $(id).addEventListener('input', refreshFullPrompt);

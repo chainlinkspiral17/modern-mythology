@@ -39,6 +39,7 @@ Usage:
   python3 godot/tools/meshy_pipeline.py mesh frasier_temple --texture
   python3 godot/tools/meshy_pipeline.py run all --provider google --texture --dry-run
   python3 godot/tools/meshy_pipeline.py serve                    # http://127.0.0.1:8765/hero_uploader/
+  python3 godot/tools/meshy_pipeline.py doctor                   # where are the keys, do they work
 
 Selectors are roster slugs, globs on slug, `vol5`/`vol6`/`vol7`,
 `hero`/`demon`/`prop`, or `all`.
@@ -173,27 +174,161 @@ def slugify(s):
     return s[:80] or "untitled"
 
 
+KEY_PREFIX_HINT = {
+    "google": ("AIza", "a Gemini API key from https://aistudio.google.com/apikey (starts with AIza…)"),
+    "runway": ("key_", "a Runway dev API key from https://dev.runwayml.com (starts with key_…)"),
+    "meshy": ("msy_", "a Meshy API key from https://www.meshy.ai/api (starts with msy_…)"),
+}
+
+
+def clean_key(raw):
+    """Tolerate the ways a key gets pasted: quotes, `export NAME=…`, a
+    `Bearer ` prefix, a BOM, CRLF, trailing comments."""
+    k = (raw or "").replace("\ufeff", "").strip()
+    k = k.splitlines()[0].strip() if k else ""
+    k = re.sub(r"^(export\s+)?[A-Z_]+\s*=\s*", "", k)          # export MESHY_API_KEY=…
+    k = k.strip().strip("\"'`").strip()
+    k = re.sub(r"^Bearer\s+", "", k, flags=re.I)
+    k = k.split("#")[0].strip() if " #" in k else k
+    return k.strip().strip("\"'`")
+
+
+def key_source(provider):
+    """Return (key, source). source is 'env:NAME', 'file:<path>' or ''."""
+    for env in KEY_ENVS[provider]:
+        k = clean_key(os.environ.get(env, ""))
+        if k:
+            return k, f"env:{env}"
+    kf = KEY_FILES[provider]
+    if kf.exists():
+        try:
+            k = clean_key(kf.read_text(errors="replace"))
+        except OSError:
+            k = ""
+        if k:
+            return k, f"file:{rel(kf)}"
+    return "", ""
+
+
 def get_api_key(provider, required=True):
     """Env var first, then the gitignored key file. Returns '' if missing
     and not required."""
-    for env in KEY_ENVS[provider]:
-        k = os.environ.get(env, "").strip()
-        if k:
-            return k
+    k, _ = key_source(provider)
+    if k or not required:
+        return k
     kf = KEY_FILES[provider]
-    if kf.exists():
-        lines = kf.read_text().strip().splitlines()
-        if lines and lines[0].strip():
-            return lines[0].strip()
-    if not required:
-        return ""
     envs = " or ".join(KEY_ENVS[provider])
     sys.exit(
         f"{provider} API key not found.\n"
         f"  Either:  export {KEY_ENVS[provider][0]}=...\n"
         f"  Or:      echo '...' > {kf.relative_to(REPO.parent)}\n"
-        f"           (env {envs}; the key file is gitignored.)"
+        f"           (env {envs}; the key file is gitignored.)\n"
+        f"  Or:      paste it in Hero Studio → KEYS, or run: meshy_pipeline.py doctor"
     )
+
+
+def save_key(provider, raw):
+    """Write a cleaned key to the gitignored key file (mode 600)."""
+    k = clean_key(raw)
+    if not k:
+        raise ValueError("empty key")
+    kf = KEY_FILES[provider]
+    kf.parent.mkdir(parents=True, exist_ok=True)
+    kf.write_text(k + "\n")
+    try:
+        os.chmod(kf, 0o600)
+    except OSError:
+        pass
+    return kf
+
+
+def mask_key(k):
+    if not k:
+        return ""
+    return k[:6] + "…" + k[-4:] if len(k) > 12 else k[:3] + "…"
+
+
+def _classify_http_error(msg, provider):
+    m = re.search(r"HTTP (\d{3})", msg)
+    code = int(m.group(1)) if m else 0
+    if code in (401, 403):
+        return f"rejected ({code}): the key is wrong, revoked, or not {KEY_PREFIX_HINT[provider][1]}"
+    if code == 400 and provider == "google" and ("API_KEY_INVALID" in msg or "API key not valid" in msg):
+        return "rejected (400 API_KEY_INVALID): not a valid Gemini API key — " + KEY_PREFIX_HINT["google"][1]
+    if code == 429:
+        return "key works but the account is rate-limited / out of quota (429)"
+    if code == 402:
+        return "key works but the account has no credits (402)"
+    if code:
+        return f"unexpected HTTP {code}: {msg[-200:]}"
+    if "CERTIFICATE" in msg.upper() or "SSL" in msg.upper():
+        return "TLS error reaching the API (network/proxy/cert): " + msg[-160:]
+    if "urlopen error" in msg or "Name or service not known" in msg or "timed out" in msg.lower():
+        return "network error: cannot reach the API host (" + msg[-160:] + ")"
+    return msg[-240:]
+
+
+def check_key(provider, key):
+    """One cheap authenticated call per provider. Returns {ok, message}."""
+    if not key:
+        return {"ok": False, "message": "no key: " + KEY_PREFIX_HINT[provider][1]}
+    warn = ""
+    pref = KEY_PREFIX_HINT[provider][0]
+    if not key.startswith(pref):
+        warn = f" (note: expected the key to start with {pref!r})"
+    try:
+        if provider == "meshy":
+            r = http_json("GET", f"{MESHY_BASE}/balance", headers={"Authorization": f"Bearer {key}"}, timeout=30)
+            bal = r.get("result", r.get("balance"))
+            return {"ok": True, "message": f"ok — balance {bal} credits" + warn}
+        if provider == "runway":
+            r = http_json("GET", f"{RUNWAY_BASE}/organization",
+                          headers={"Authorization": f"Bearer {key}", "X-Runway-Version": RUNWAY_API_VERSION}, timeout=30)
+            bal = r.get("creditBalance", "?")
+            return {"ok": True, "message": f"ok — {bal} credits" + warn}
+        if provider == "google":
+            r = http_json("GET", f"{GOOGLE_BASE}/models?pageSize=5", headers={"x-goog-api-key": key}, timeout=30)
+            n = len(r.get("models", []))
+            return {"ok": True, "message": f"ok — Gemini API reachable ({n}+ models listed)" + warn}
+    except RuntimeError as e:
+        return {"ok": False, "message": _classify_http_error(str(e), provider) + warn}
+    except (urllib.error.URLError, OSError, ValueError) as e:
+        return {"ok": False, "message": _classify_http_error(str(e), provider) + warn}
+    except Exception as e:  # noqa: BLE001 — a doctor must not crash the runner
+        return {"ok": False, "message": f"check failed: {type(e).__name__}: {e}"[:300]}
+    return {"ok": False, "message": "unknown provider"}
+
+
+def key_report(providers=None, check=True):
+    out = {}
+    for prov in providers or list(KEY_FILES):
+        k, src = key_source(prov)
+        row = {"present": bool(k), "source": src, "masked": mask_key(k),
+               "file": rel(KEY_FILES[prov]), "env": KEY_ENVS[prov][0]}
+        if check:
+            row.update(check_key(prov, k))
+        else:
+            row.update({"ok": None, "message": ""})
+        out[prov] = row
+    return out
+
+
+def cmd_doctor(args):
+    print(f"repo: {REPO.parent}")
+    print(f"key files live in: {rel(TOOLS)}/  (.google_key  .runway_key  .meshy_key — gitignored)\n")
+    rep = key_report(args.providers or None, check=not args.no_check)
+    bad = 0
+    for prov, r in rep.items():
+        state = "OK " if r["ok"] else ("-- " if r["ok"] is None else "BAD")
+        src = r["source"] or "MISSING"
+        print(f"[{state}] {prov:7} {src:34} {r['masked']:16} {r['message']}")
+        if r["ok"] is False:
+            bad += 1
+            if not r["present"]:
+                print(f"        → export {r['env']}=…   or   echo '…' > {r['file']}")
+    if bad:
+        print("\nfix the BAD rows above; Hero Studio → KEYS can save + test them too.", file=sys.stderr)
+    return 1 if bad else 0
 
 
 def data_uri(path_or_bytes, mime=None):
@@ -1042,6 +1177,7 @@ def make_handler(runner, roster_path):
                 for e in roster["entries"]:
                     e["status"] = entry_status(e)
                 roster["keys"] = {k: bool(get_api_key(k, required=False)) for k in KEY_FILES}
+                roster["key_report"] = key_report(check=False)
                 roster["providers"] = {
                     "google": {"models": list(GOOGLE_MODELS), "default": GOOGLE_DEFAULT_MODEL},
                     "runway": {"models": list(RUNWAY_MODELS), "default": RUNWAY_DEFAULT_MODEL},
@@ -1054,6 +1190,9 @@ def make_handler(runner, roster_path):
                 return self._json(roster)
             if p == "/api/jobs":
                 return self._json({"jobs": runner.snapshot()})
+            if p == "/api/keys":
+                q = urllib.parse.parse_qs(urllib.parse.urlparse(self.path).query)
+                return self._json({"keys": key_report(check=q.get("check", ["0"])[0] == "1")})
             if p == "/api/prompt":
                 q = urllib.parse.parse_qs(urllib.parse.urlparse(self.path).query)
                 return self._prompt_preview((q.get("slug") or [""])[0], {}, (q.get("provider") or ["google"])[0])
@@ -1093,6 +1232,34 @@ def make_handler(runner, roster_path):
                 except json.JSONDecodeError:
                     return self._json({"error": "bad json"}, 400)
                 return self._prompt_preview(req.get("slug", ""), req, req.get("provider") or "google")
+            if p == "/api/keys":
+                # Only from the local machine: the key is written to the
+                # gitignored file next to this script, then tested.
+                if self.client_address[0] not in ("127.0.0.1", "::1"):
+                    return self._json({"error": "keys can only be set from localhost"}, 403)
+                try:
+                    req = json.loads(self._body().decode("utf-8") or "{}")
+                except json.JSONDecodeError:
+                    return self._json({"error": "bad json"}, 400)
+                prov = req.get("provider")
+                if prov not in KEY_FILES:
+                    return self._json({"error": "provider must be google|runway|meshy"}, 400)
+                if req.get("key"):
+                    try:
+                        kf = save_key(prov, req["key"])
+                    except (ValueError, OSError) as ex:
+                        return self._json({"error": str(ex)}, 400)
+                    saved = clean_key(req["key"])
+                    # test the key that was just saved (not whatever an env var says)
+                    rep = {"present": True, "source": f"file:{rel(kf)}", "masked": mask_key(saved),
+                           "file": rel(kf), "env": KEY_ENVS[prov][0]}
+                    rep.update(check_key(prov, saved))
+                    env_set = [e for e in KEY_ENVS[prov] if os.environ.get(e)]
+                    if env_set:
+                        rep["message"] += (f" (note: env {env_set[0]} is set in the runner's shell and takes "
+                                           f"precedence over the file — unset it or restart serve without it)")
+                    return self._json({"keys": {prov: rep}})
+                return self._json({"keys": key_report([prov])})
             if p == "/api/jobs":
                 try:
                     req = json.loads(self._body().decode("utf-8") or "{}")
@@ -1148,9 +1315,10 @@ def cmd_serve(args):
     runner = JobRunner(ROSTER_PATH)
     handler = make_handler(runner, ROSTER_PATH)
     srv = ThreadingHTTPServer((args.host, args.port), handler)
-    keys = {k: bool(get_api_key(k, required=False)) for k in KEY_FILES}
+    rep = key_report(check=False)
     print(f"Hero Studio  →  http://{args.host}:{args.port}/hero_uploader/")
-    print("keys: " + "  ".join(f"{k}={'ok' if v else 'MISSING'}" for k, v in keys.items()))
+    print("keys: " + "  ".join(f"{k}={r['source'] or 'MISSING'}" for k, r in rep.items()))
+    print("      (paste/test keys in the page under KEYS, or run: meshy_pipeline.py doctor)")
     print("Ctrl-C to stop.", flush=True)
     try:
         srv.serve_forever()
@@ -1226,11 +1394,20 @@ def main():
     p = sub.add_parser("run", help="image then mesh")
     common_opts(p); add_image_opts(p); add_mesh_opts(p)
 
+    p = sub.add_parser("doctor", help="find + test the API keys (one cheap call per provider)")
+    p.add_argument("providers", nargs="*", help="google runway meshy (default: all)")
+    p.add_argument("--no-check", action="store_true", help="only report where keys were found")
+
     p = sub.add_parser("serve", help="serve the browser UI + JSON API")
     p.add_argument("--host", default="127.0.0.1")
     p.add_argument("--port", type=int, default=8765)
 
     args = ap.parse_args()
+    if args.cmd == "doctor":
+        bad = [x for x in args.providers if x not in KEY_FILES]
+        if bad:
+            sys.exit(f"unknown provider(s) {bad}; choose from {sorted(KEY_FILES)}")
+        return cmd_doctor(args)
     if args.cmd == "serve":
         load_roster()  # validate early
         return cmd_serve(args)

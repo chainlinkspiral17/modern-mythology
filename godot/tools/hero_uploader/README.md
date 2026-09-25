@@ -21,6 +21,34 @@ providers you use need a key:
 cd /home/deck/Downloads/modern-mythology && echo 'msy_...' > godot/tools/.meshy_key && echo 'AIza...' > godot/tools/.google_key && echo 'key_...' > godot/tools/.runway_key
 ```
 
+Or paste them in the page: **KEYS** (top right) saves each key to those
+files and tests it with one cheap authenticated call. To check from the
+terminal (where each key was found, masked, and whether the provider
+accepts it):
+
+```bash
+cd /home/deck/Downloads/modern-mythology && python3 godot/tools/meshy_pipeline.py doctor
+```
+
+Common reasons a key "doesn't work":
+
+- **Wrong kind of key.** Google needs a *Gemini API* key from
+  <https://aistudio.google.com/apikey> (starts with `AIza`), not a
+  Google Cloud service-account JSON or an OAuth client. Runway needs a
+  *dev API* key from <https://dev.runwayml.com> (`key_…`), not the
+  web-app login. Meshy keys come from <https://www.meshy.ai/api>
+  (`msy_…`).
+- **Pasted with decoration.** Quotes, `export NAME=…`, a `Bearer `
+  prefix, CRLF or a BOM are all stripped automatically now.
+- **Env var shadows the file.** If `MESHY_API_KEY` (etc.) is exported in
+  the shell that runs the server, it wins over the file; `doctor` shows
+  which one is being used.
+- **File in the wrong place.** The files live next to the script:
+  `godot/tools/.google_key`, `.runway_key`, `.meshy_key` — relative to
+  the repo root, not your home directory.
+- **No credits / not enabled.** `doctor` reports the credit balance
+  (Meshy, Runway) or a 4xx from the provider with the reason.
+
 Start the runner and open the page:
 
 ```bash
