@@ -1,0 +1,40 @@
+highway_101                  4291336 bytes
+small_wood_road              2344264 bytes
+diner                        mtime 2026-09-25 12:38 · Khronos glTF Blender I/O v5.2.39 · materials 0
+    Bathroom_Door                  COLOR_0 (0.147, 0.063, 0.0273, 1.0)  (componentType 5123 normalized)
+    Booth_1_Table_Band             COLOR_0 (0.5711, 0.2961, 0.0545, 1.0)  (componentType 5123 normalized)
+    Booth_1_Table_Foot             COLOR_0 (0.0222, 0.0176, 0.0137, 1.0)  (componentType 5123 normalized)
+    Booth_1_Table_Number           COLOR_0 (0.5711, 0.2961, 0.0545, 1.0)  (componentType 5123 normalized)
+kwik_stop                    mtime 2026-09-25 12:47 · Khronos glTF Blender I/O v5.2.39 · materials 0
+    BackDoor                       COLOR_0 (0.147, 0.0742, 0.0273, 1.0)  (componentType 5123 normalized)
+    BackDoor_Frame                 COLOR_0 (0.0742, 0.0396, 0.0176, 1.0)  (componentType 5123 normalized)
+    BackDoor_Hinge_0               COLOR_0 (0.0273, 0.0222, 0.0176, 1.0)  (componentType 5123 normalized)
+    BackDoor_Hinge_1               COLOR_0 (0.0273, 0.0222, 0.0176, 1.0)  (componentType 5123 normalized)
+cedar_tower                  mtime 2026-09-25 12:37 · Khronos glTF Blender I/O v5.2.39 · materials 0
+    Desk_0_0                       COLOR_0 (0.2961, 0.147, 0.063, 1.0)  (componentType 5123 normalized)
+    Desk_0_0_Leg                   COLOR_0 (0.147, 0.0742, 0.0331, 1.0)  (componentType 5123 normalized)
+    Desk_0_0_Monitor               COLOR_0 (0.0176, 0.0194, 0.0242, 1.0)  (componentType 5123 normalized)
+    Desk_0_1                       COLOR_0 (0.2961, 0.147, 0.063, 1.0)  (componentType 5123 normalized)
+henderson_kitchen            mtime 2026-09-25 12:46 · Khronos glTF Blender I/O v5.2.39 · materials 0
+    Basement_Door                  COLOR_0 (0.147, 0.0844, 0.0396, 1.0)  (componentType 5123 normalized)
+    Basement_Doorframe             COLOR_0 (0.1946, 0.107, 0.0467, 1.0)  (componentType 5123 normalized)
+    Counter_Bullnose_0             COLOR_0 (0.0273, 0.0176, 0.0137, 1.0)  (componentType 5123 normalized)
+    Counter_Bullnose_1             COLOR_0 (0.0273, 0.0176, 0.0137, 1.0)  (componentType 5123 normalized)
+hans_bakery_back_kitchen     mtime 2026-09-25 12:41 · Khronos glTF Blender I/O v5.2.39 · materials 0
+    Communal_Table_Top             COLOR_0 (0.1779, 0.0953, 0.0396, 1.0)  (componentType 5123 normalized)
+    Counter_Bullnose_0             COLOR_0 (0.0273, 0.0176, 0.0137, 1.0)  (componentType 5123 normalized)
+    Counter_Bullnose_1             COLOR_0 (0.0273, 0.0176, 0.0137, 1.0)  (componentType 5123 normalized)
+    Counter_Bullnose_2             COLOR_0 (0.0273, 0.0176, 0.0137, 1.0)  (componentType 5123 normalized)
+el_rancho_taqueria           mtime 2026-09-25 12:38 · Khronos glTF Blender I/O v5.2.39 · materials 0
+    Floor_SeamX_0                  COLOR_0 (0.0844, 0.0396, 0.0176, 1.0)  (componentType 5123 normalized)
+    Floor_SeamX_1                  COLOR_0 (0.0844, 0.0396, 0.0176, 1.0)  (componentType 5123 normalized)
+    Floor_SeamX_2                  COLOR_0 (0.0844, 0.0396, 0.0176, 1.0)  (componentType 5123 normalized)
+    Floor_SeamX_3                  COLOR_0 (0.0844, 0.0396, 0.0176, 1.0)  (componentType 5123 normalized)
+grunion_beach                mtime 2026-09-25 12:41 · Khronos glTF Blender I/O v5.2.39 · materials 0
+    Ground_Far                     COLOR_0 (0.0742, 0.063, 0.0467, 1.0)  (componentType 5123 normalized)
+vehicle_cab                  mtime 2026-09-25 12:51 · Khronos glTF Blender I/O v5.2.39 · materials 0
+    Bed_Rope_Coil                  COLOR_0 (0.4793, 0.3662, 0.1779, 1.0)  (componentType 5123 normalized)
+    Cab_Back_Wall                  COLOR_0 (0.0396, 0.0953, 0.0467, 1.0)  (componentType 5123 normalized)
+    Cab_Door_Card_L                COLOR_0 (0.063, 0.0595, 0.0513, 1.0)  (componentType 5123 normalized)
+    Cab_Door_Card_R                COLOR_0 (0.063, 0.0595, 0.0513, 1.0)  (componentType 5123 normalized)
+glb_color_check · 121 GLB(s) · 0 without vertex colours
