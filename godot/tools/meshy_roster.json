@@ -577,7 +577,41 @@
       "tag": "ch1 · DEVIL station · the only shipped demon",
       "aspect": "3:4",
       "pose": "a-pose",
-      "prompt": "A lean man of no particular age sitting-height tall, in a black suit two decades out of date, white shirt buttoned to the neck with no tie, hair slicked flat, a smile held a half-second too long. Skin slightly too smooth, eyes slightly too dark, hands too still. The man at the empty bar stool."
+      "prompt": "A lean man of no particular age sitting-height tall, in a black suit two decades out of date, white shirt buttoned to the neck with no tie, hair slicked flat, a smile held a half-second too long. Skin slightly too smooth, eyes slightly too dark, hands too still. The man at the empty bar stool.",
+      "canon": [
+        {
+          "src": "tools/gauntlet_studio.html",
+          "text": "Indeterminate age, lean, expensively underdressed. Hair too neat for the hour. A glass of something amber in front of him on the closed bar. Looking just slightly past the viewer's shoulder — the look of someone who already won the conversation. Bar mirror cracked behind him reflecting nothing."
+        },
+        {
+          "src": "tools/gauntlet_studio.html",
+          "text": "THE DEMON (medium + hard scenarios) — lean man, expensively underdressed, hair too neat for the hour. Sits at the DEVIL station's empty bar stool. He doesn't look at you directly. He helps when you don't ask."
+        },
+        {
+          "src": "tools/gauntlet_studio.html",
+          "text": "The empty bar stool at DEVIL station, but the indent on the seat is wrong — pressed down as if just-occupied. The air above the stool is faintly warped. A glass of amber liquid sits on the floor beside it that wasn't there a minute ago. No visible figure."
+        },
+        {
+          "src": "games/magician/visitors.json",
+          "text": "He nods at you without turning his head."
+        },
+        {
+          "src": "games/magician/visitors.json",
+          "text": "A glass of amber liquid is on the floor beside the stool that wasn't there before."
+        },
+        {
+          "src": "games/magician/visitors.json",
+          "text": "The glass goes cold the moment it leaves your hand. He doesn't drink it."
+        },
+        {
+          "src": "tools/gauntlet_studio.html",
+          "text": "The Demon's empty bar stool is now occupied; the figure on it has Frasier's silhouette."
+        },
+        {
+          "src": "lore/_VOL5_WIKI.md",
+          "text": "The Demon (at the Bar)** — the lean man at the Devil station's empty bar stool."
+        }
+      ]
     },
     {
       "slug": "the_drifter",
@@ -594,7 +628,41 @@
       "tag": "Magician scenario visitor",
       "aspect": "3:4",
       "pose": "a-pose",
-      "prompt": "A drifter in a rain-darkened army surplus coat with too many pockets, a plastic bag of belongings in one hand, boots split at the toe, a beard that hides the mouth, eyes that don't quite point the same way. Stands in a doorway the way weather does."
+      "prompt": "A drifter in a rain-darkened army surplus coat with too many pockets, a plastic bag of belongings in one hand, boots split at the toe, a beard that hides the mouth, eyes that don't quite point the same way. Stands in a doorway the way weather does.",
+      "canon": [
+        {
+          "src": "tools/gauntlet_studio.html",
+          "text": "Indeterminate-age man in a wet army-surplus jacket, river mud on the boots. Stands in the threshold of the open bay door but doesn't step inside. The light hits his face from inside the warehouse (warm) while the river-night is behind him (cold blue). His eyes ask for water before his mouth does. Not threatening. Not comfortable."
+        },
+        {
+          "src": "tools/gauntlet_studio.html",
+          "text": "THE DRIFTER AT THE BAY — indeterminate-age man, wet army-surplus jacket, river mud on the boots. Stands in the threshold of the open bay door, asks for water."
+        },
+        {
+          "src": "games/magician/visitors.json",
+          "text": "A man in a wet jacket, asking with his eyes before he asks with his mouth."
+        },
+        {
+          "src": "games/magician/visitors.json",
+          "text": "A shadow in the bay door's gap."
+        },
+        {
+          "src": "games/magician/visitors.json",
+          "text": "He nods once. Doesn't step inside the threshold."
+        },
+        {
+          "src": "games/magician/visitors.json",
+          "text": "He drinks it standing in the open bay door. Hands the cup back wordless."
+        },
+        {
+          "src": "games/magician/visitors.json",
+          "text": "He came up the river bank, not the road. He won't be back. He wasn't dangerous, but he wasn't comfortable either."
+        },
+        {
+          "src": "lore/_VOL5_WIKI.md",
+          "text": "The Drifter at the Bay** — the threshold figure in the army-surplus jacket."
+        }
+      ]
     },
     {
       "slug": "the_birdwatcher",
@@ -611,7 +679,37 @@
       "tag": "Magician scenario visitor",
       "aspect": "3:4",
       "pose": "a-pose",
-      "prompt": "A middle-aged bird-watcher in a khaki vest, bucket hat and binoculars, pencil behind the ear, a field notebook held open. Head tilted at an angle a neck should not allow, watching something above and behind the viewer. Everything about the outfit is correct; nothing about the posture is."
+      "prompt": "A middle-aged bird-watcher in a khaki vest, bucket hat and binoculars, pencil behind the ear, a field notebook held open. Head tilted at an angle a neck should not allow, watching something above and behind the viewer. Everything about the outfit is correct; nothing about the posture is.",
+      "canon": [
+        {
+          "src": "tools/gauntlet_studio.html",
+          "text": "Late-fifties woman in a faded blue windbreaker, binoculars around her neck, two thin braids of grey-blonde hair. Caught through the river window from the inside — her hand on the glass, mouthing sorry-i'm-sorry, gesturing UP toward the iron struts above the river bank where the osprey nest is. Apologetic, jovial. Painted with the river light behind her."
+        },
+        {
+          "src": "tools/gauntlet_studio.html",
+          "text": "THE BIRD-WATCHER — late 50s woman, faded blue windbreaker, binoculars around her neck, two thin grey-blonde braids. Visible through the river window from outside, watching the osprey nest in the iron struts."
+        },
+        {
+          "src": "games/magician/visitors.json",
+          "text": "A woman in a windbreaker, binoculars around her neck, mouthing sorry through the pane."
+        },
+        {
+          "src": "games/magician/visitors.json",
+          "text": "A glint against the river-window from the outside walk."
+        },
+        {
+          "src": "games/magician/visitors.json",
+          "text": "Sits with her back to the wall, binoculars up."
+        },
+        {
+          "src": "games/magician/visitors.json",
+          "text": "She apologized for the binoculars."
+        },
+        {
+          "src": "lore/_VOL5_WIKI.md",
+          "text": "The Bird-Watcher** — the woman in the windbreaker at the river window."
+        }
+      ]
     },
     {
       "slug": "the_critic",
@@ -628,7 +726,37 @@
       "tag": "Magician scenario visitor",
       "aspect": "3:4",
       "pose": "a-pose",
-      "prompt": "The Critic: a gaunt figure in a black turtleneck and an oversized camel overcoat, thick black glasses, a small notepad and fountain pen, thin lips permanently mid-verdict. The reflection in the glasses does not match the room."
+      "prompt": "The Critic: a gaunt figure in a black turtleneck and an oversized camel overcoat, thick black glasses, a small notepad and fountain pen, thin lips permanently mid-verdict. The reflection in the glasses does not match the room.",
+      "canon": [
+        {
+          "src": "games/magician/visitors.json",
+          "text": "He's at the threshold. Black coat. Won't step over until you do."
+        },
+        {
+          "src": "games/magician/visitors.json",
+          "text": "The critic, holding a thin notebook, smiling the wrong amount."
+        },
+        {
+          "src": "games/magician/visitors.json",
+          "text": "A black town car at the bay door. The driver waits."
+        },
+        {
+          "src": "games/magician/gravity_deck_watch_party.json",
+          "text": "His thin notebook is open. He's writing without looking at the page."
+        },
+        {
+          "src": "games/magician/gravity_deck_blow_out_the_candles.json",
+          "text": "He's at the JUDGEMENT platform, taking notes. The notes are already past-tense."
+        },
+        {
+          "src": "games/magician/visitors.json",
+          "text": "He's at the JUDGEMENT platform, looking at the blank stage."
+        },
+        {
+          "src": "games/magician/gravity_deck_watch_party.json",
+          "text": "He's on his phone at the bay door. His notes are already a post."
+        }
+      ]
     },
     {
       "slug": "the_superfan",
@@ -645,7 +773,37 @@
       "tag": "Magician scenario visitor",
       "aspect": "3:4",
       "pose": "a-pose",
-      "prompt": "The Superfan: a beaming figure in a homemade 'Whispers from the Liminal' t-shirt, cargo shorts, a lanyard heavy with pins and laminated passes, a tote bag of tapes, arms open for a hug. The smile has too many teeth and does not reach the eyes."
+      "prompt": "The Superfan: a beaming figure in a homemade 'Whispers from the Liminal' t-shirt, cargo shorts, a lanyard heavy with pins and laminated passes, a tote bag of tapes, arms open for a hug. The smile has too many teeth and does not reach the eyes.",
+      "canon": [
+        {
+          "src": "games/magician/visitors.json",
+          "text": "She's at the bay, holding a small box-set she made for Elicia, hands trembling slightly."
+        },
+        {
+          "src": "games/magician/visitors.json",
+          "text": "She locks the bike to the iron strut. Carefully."
+        },
+        {
+          "src": "games/magician/visitors.json",
+          "text": "She sits very still beside you. She is not looking at Elicia. She is looking at the floor. Her hands are steady now. She breathes out."
+        },
+        {
+          "src": "games/magician/gravity_deck_blow_out_the_candles.json",
+          "text": "She's mouthing what Elicia is about to say. Then Elicia says it. The superfan is one beat ahead. Then two. Then three."
+        },
+        {
+          "src": "games/magician/gravity_deck_watch_party.json",
+          "text": "She mouths the line a half-second before Elicia says it. Nobody knows whether to be charmed or alarmed."
+        },
+        {
+          "src": "games/magician/visitors.json",
+          "text": "A bicycle bell from outside. Closer."
+        },
+        {
+          "src": "games/magician/visitors.json",
+          "text": "she came alone"
+        }
+      ]
     },
     {
       "slug": "the_twins",
@@ -663,7 +821,41 @@
       "tag": "Magician scenario visitor · single mesh, twin figures",
       "aspect": "3:4",
       "pose": "a-pose",
-      "prompt": "Two identical figures standing shoulder to shoulder as one silhouette: matching grey school blazers, white shirts, dark shorts, knee socks, same pale bowl haircut, holding hands. Quinn looks left, Quill looks right; a single mesh, two heads."
+      "prompt": "Two identical figures standing shoulder to shoulder as one silhouette: matching grey school blazers, white shirts, dark shorts, knee socks, same pale bowl haircut, holding hands. Quinn looks left, Quill looks right; a single mesh, two heads.",
+      "canon": [
+        {
+          "src": "games/magician/visitors.json",
+          "text": "They are also wearing the same outfit. They are also finishing each other's sentences. They are also at the river window without having walked through the bay door first."
+        },
+        {
+          "src": "games/magician/visitors.json",
+          "text": "Two shapes at the river-window glass."
+        },
+        {
+          "src": "games/magician/visitors.json",
+          "text": "They tap together. Two slow knocks, one each, at the same time."
+        },
+        {
+          "src": "games/magician/visitors.json",
+          "text": "Quinn and Quill, smiling apologetically."
+        },
+        {
+          "src": "games/magician/visitors.json",
+          "text": "They nod at the same time. Quinn says hi first. Quill says hi second."
+        },
+        {
+          "src": "games/magician/visitors.json",
+          "text": "They drink in sync, set the glasses down in sync."
+        },
+        {
+          "src": "games/magician/gravity_deck_blow_out_the_candles.json",
+          "text": "Quinn and Quill are mid-conversation at the river window. The river outside has started to mirror the cadence of their speech."
+        },
+        {
+          "src": "games/magician/setup_blow_out_the_candles.json",
+          "text": "THE TWINS (a pair of visitors who arrive together and share patience)"
+        }
+      ]
     },
     {
       "slug": "drunk_uncle",
@@ -679,7 +871,37 @@
       "tag": "Magician scenario visitor",
       "aspect": "3:4",
       "pose": "a-pose",
-      "prompt": "A heavy-set uncle in a wrinkled short-sleeve dress shirt with a loosened tie, belly over the belt, one shoe untied, a plastic cup in one hand, flushed cheeks, a wide wet grin. Listing slightly to one side; the shadow he casts stands up straight."
+      "prompt": "A heavy-set uncle in a wrinkled short-sleeve dress shirt with a loosened tie, belly over the belt, one shoe untied, a plastic cup in one hand, flushed cheeks, a wide wet grin. Listing slightly to one side; the shadow he casts stands up straight.",
+      "canon": [
+        {
+          "src": "games/magician/visitors.json",
+          "text": "Drunk uncle, three beers in already, beaming."
+        },
+        {
+          "src": "games/magician/visitors.json",
+          "text": "He's banging the door, doesn't realize it slides."
+        },
+        {
+          "src": "games/magician/visitors.json",
+          "text": "A laugh you can hear through the bay door."
+        },
+        {
+          "src": "games/magician/visitors.json",
+          "text": "He accepts the beer he is already holding. He toasts you with it."
+        },
+        {
+          "src": "games/magician/gravity_deck_blow_out_the_candles.json",
+          "text": "He's leaning on the steamboat model with his elbow. He doesn't notice. He's telling Mackenzie about the war."
+        },
+        {
+          "src": "games/magician/visitors.json",
+          "text": "Not actually Elicia's uncle. The kind of person who has been somebody's uncle long enough that everyone refers to him that way."
+        },
+        {
+          "src": "games/magician/setup_blow_out_the_candles.json",
+          "text": "DRUNK UNCLE (loud, gruff, will not be greeted)"
+        }
+      ]
     },
     {
       "slug": "mackenzie_remote",
@@ -695,7 +917,41 @@
       "tag": "the call-in demon · glitch variant of mackenzie_roberts",
       "aspect": "3:4",
       "pose": "a-pose",
-      "prompt": "Mackenzie Roberts as she appears over the BBS: the same weaver in her cream hand-knit cardigan and floral dress, but rendered as a person made of phosphor-green terminal scanlines and static, edges tearing horizontally, the yarn in her hands becoming cable. Not the real Mackenzie."
+      "prompt": "Mackenzie Roberts as she appears over the BBS: the same weaver in her cream hand-knit cardigan and floral dress, but rendered as a person made of phosphor-green terminal scanlines and static, edges tearing horizontally, the yarn in her hands becoming cable. Not the real Mackenzie.",
+      "canon": [
+        {
+          "src": "tools/gauntlet_studio.html",
+          "text": "MACKENZIE — never appears in person; only as a chat window on the BBS terminal (her name + a blinking cursor)."
+        },
+        {
+          "src": "games/magician/visitors.json",
+          "text": "Cursor blink. A name he knows but hasn't seen in years."
+        },
+        {
+          "src": "games/magician/visitors.json",
+          "text": "[mackenzie@graustark] hey are you there"
+        },
+        {
+          "src": "tools/gauntlet_studio.html",
+          "text": "Tight on the phosphor-green CRT at HERMIT. The screen is brighter than the rest of the room. A blinking cursor in the chat window. No human face — but a feeling that someone is sitting on the other side of the line, waiting."
+        },
+        {
+          "src": "tools/gauntlet_studio.html",
+          "text": "Mid-thirties, denim jacket over a band tee, glasses caught between her teeth. Phone receiver pressed to her ear, eyes closed against the booth wall — the conversation is the only thing in the world for the next four minutes."
+        },
+        {
+          "src": "tools/gauntlet_studio.html",
+          "text": "MACKENZIE: mid-30s, denim jacket over band tee, glasses caught between her teeth or pushed up into the hair. Hands that know how to weave but have not, in fourteen months, picked up a thread."
+        },
+        {
+          "src": "games/magician/visitors.json",
+          "text": "Mackenzie at the bay, jacket damp, glasses fogging."
+        },
+        {
+          "src": "vol5/vol5_ch6_lovers.json",
+          "text": "Mackenzie offered a wry smile. Leaned against the doorframe. Her quiet grace always seemed most potent when she was observing life's small persistent absurdities"
+        }
+      ]
     },
     {
       "slug": "faust",
@@ -713,7 +969,41 @@
       "pose": "a-pose",
       "prompt": "Faust, a pharmacist in his early 30s who wakes at 4 a.m. Pale, sleepless, dark hair uncombed, stubble. White pharmacy coat worn open over a grey t-shirt, black jeans, black sneakers, a lanyard with an ID badge. Looks like a man who has read every label in the building.",
       "texture_prompt": "white cotton pharmacy coat, grey tee, black denim, black sneakers, pale skin, dark hair",
-      "notes": "Look is not pinned down in canon; this prompt is a proposal — edit before spending credits."
+      "notes": "Look is not pinned down in canon; this prompt is a proposal — edit before spending credits.",
+      "canon": [
+        {
+          "src": "vol1/vol1_ch2_act_one.json",
+          "text": "Faust looks in the mirror at his early-morning haggard."
+        },
+        {
+          "src": "vol1/vol1_ch2_act_one.json",
+          "text": "Cut back. Faust puts on his medical blue uniform and white jacket and heads to work."
+        },
+        {
+          "src": "vol1/vol1_ch2_act_one.json",
+          "text": "Faust bicycles to work."
+        },
+        {
+          "src": "vol1/vol1_ch2_painting.json",
+          "text": "Reminder — he's just a kid. And look at how he's looking at me."
+        },
+        {
+          "src": "vol1/vol1_ch2_painting.json",
+          "text": "Faust takes a hit off the joint he has and leans back."
+        },
+        {
+          "src": "vol1/vol1_ch4_dream_bar.json",
+          "text": "Faust gets up out of his chair — drunk and staggering."
+        },
+        {
+          "src": "vol1/vol1_ch3_judgement_day.json",
+          "text": "We three shall be the Handsome Triumvirate — but aren't we already? I mean, look at us."
+        },
+        {
+          "src": "vol1/vol1_ch2_skatepark.json",
+          "text": "I feel old just coming out here."
+        }
+      ]
     },
     {
       "slug": "wagner",
@@ -750,7 +1040,37 @@
       "pose": "a-pose",
       "prompt": "Jacob, Faust's friend, late 20s, a jogger and gamer. Fit, short brown hair, an easy smile. Grey running hoodie, black track pants with a white stripe, bright running shoes, earbuds around the neck.",
       "texture_prompt": "grey cotton hoodie, black polyester track pants, white and orange running shoes",
-      "notes": "Look is not pinned down in canon; this prompt is a proposal — edit before spending credits."
+      "notes": "Look is not pinned down in canon; this prompt is a proposal — edit before spending credits.",
+      "canon": [
+        {
+          "src": "vol1/vol1_ch2_park.json",
+          "text": "Faust is jogging with his friend, Jacob."
+        },
+        {
+          "src": "vol1/vol1_ch2_park.json",
+          "text": "INT. JACOB'S APARTMENT — DAY. Jacob and Faust playing video games."
+        },
+        {
+          "src": "vol1/vol1_ch2_park.json",
+          "text": "Working on cool video games. Smorking. Getting laid regular. Playing some bass. Top Gear torrented for later this evening."
+        },
+        {
+          "src": "vol1/vol1_ch3_outside_b.json",
+          "text": "Jacob also flies. But in planes, though."
+        },
+        {
+          "src": "vol1/vol1_ch3_bar.json",
+          "text": "Jacob shrugs, half-respectful. He has known you long enough to read a silence."
+        },
+        {
+          "src": "vol1/vol1_ch2_skatepark.json",
+          "text": "Faust is with his friends Wagner and Jacob, waiting to push off into the pool."
+        },
+        {
+          "src": "vol1/vol1_ch3_judgement_day.json",
+          "text": "We three shall be the Handsome Triumvirate — but aren't we already? I mean, look at us."
+        }
+      ]
     },
     {
       "slug": "joan",
@@ -768,7 +1088,41 @@
       "pose": "a-pose",
       "prompt": "Joan, late 20s, who takes Faust to Club Sharp in a beautiful car. Sleek dark hair, red lipstick, a fitted emerald cocktail dress, a short black leather jacket over it, black heels, car keys with a heavy fob in one hand. Confident, amused.",
       "texture_prompt": "emerald satin dress, black leather jacket, black patent heels, dark hair, red lips",
-      "notes": "Look is not pinned down in canon; this prompt is a proposal — edit before spending credits."
+      "notes": "Look is not pinned down in canon; this prompt is a proposal — edit before spending credits.",
+      "canon": [
+        {
+          "src": "vol1/vol1_ch4_club_sharp_b.json",
+          "text": "I can see every last eyelash and blemish of skin. You are far too real in my mind's eye to be a dream."
+        },
+        {
+          "src": "vol1/vol1_ch4_club_sharp_b.json",
+          "text": "Coming from my feminine ideal — hello there. Are you trying to seduce me?"
+        },
+        {
+          "src": "vol1/vol1_ch4_club_sharp_b.json",
+          "text": "I play my part well enough, lovely miss."
+        },
+        {
+          "src": "vol1/vol1_ch4_dream_bar.json",
+          "text": "Dickens beckons Joan over. She looks down at the table and realizes Faust has drawn her, too."
+        },
+        {
+          "src": "vol1/vol1_ch4_dream_bar.json",
+          "text": "Joan sits next to Faust, close, looking in on the drawings."
+        },
+        {
+          "src": "vol1/vol1_ch4_club_sharp.json",
+          "text": "Joan takes Faust by the hand and leads him to a beautiful car waiting outside."
+        },
+        {
+          "src": "vol1/vol1_ch4_club_sharp.json",
+          "text": "We were each made in some way perfect — reflecting a singular point of view."
+        },
+        {
+          "src": "vol1/vol1_ch4_club_sharp_b.json",
+          "text": "Dickens Dean shrugs. Faust looks at her, trying to get at her. He leans in close."
+        }
+      ]
     },
     {
       "slug": "david_jarvis",
@@ -787,7 +1141,41 @@
       "pose": "a-pose",
       "prompt": "David Jarvis, historical figure, Eric Jarvis's only son, a hard-drinking man who died at 33. 1930s-era: a rumpled brown three-piece suit, collar open, a flat cap, worn leather shoes, a hip flask in one hand, dark hair and a heavy jaw.",
       "texture_prompt": "brown wool three-piece suit, cream cotton shirt, brown flat cap, brown leather shoes, steel hip flask",
-      "notes": "Look is not pinned down in canon; this prompt is a proposal — edit before spending credits."
+      "notes": "Look is not pinned down in canon; this prompt is a proposal — edit before spending credits.",
+      "canon": [
+        {
+          "src": "vol2/vol2_ch2_cliffside.json",
+          "text": "Since the age of fifteen, he was known as a hard-drinking, hard-hitting man. He was eventually killed at the age of thirty-three for allegedly raping a prominent mill owner's daughter."
+        },
+        {
+          "src": "vol2/vol2_ch2_cliffside.json",
+          "text": "He was often seen nursing a bottle, standing watch over her like a protective older brother — intimidating the rowdies who'd climb over the rail, wade into the pool, try and grab a feel."
+        },
+        {
+          "src": "vol2/vol2_ch2_cliffside.json",
+          "text": "A split tree had gashed David's arm — and while he was being tended to, he implored his father to go after the trapped girl."
+        },
+        {
+          "src": "vol2/vol2_ch2_ghost.json",
+          "text": "He was a frequent and noisy drunk both on the job and off, and made few friends."
+        },
+        {
+          "src": "vol2/vol2_ch2_cliffside.json",
+          "text": "David grew up on the road. A brutal life for any child of that era — leaving his siblings dead and buried across the landscape of his youth."
+        },
+        {
+          "src": "vol2/vol2_ch2_ghost.json",
+          "text": "A week after the disaster at Cliffside, while David holed up in rented lodgings on the physical mend, he wandered out onto the beach to watch the sunset and break the silence of his self-imposed exile."
+        },
+        {
+          "src": "vol2/vol2_ch2_disappearance.json",
+          "text": "David Jarvis was at once both reported killed in 1910 — and working as a fisherman later that year."
+        },
+        {
+          "src": "vol2/vol2_ch2_ghost.json",
+          "text": "And to the select few that knew the young man, it was more a product of his psychological grief and torment than an actual real supernatural manifestation of the tragedy that lingered."
+        }
+      ]
     },
     {
       "slug": "jo",
