@@ -295,6 +295,9 @@ def load_roster(path=ROSTER_PATH):
         e.setdefault("pose", "a-pose" if e["kind"] != "prop" else None)
         e.setdefault("texture_prompt", "")
         e.setdefault("tag", "")
+        e.setdefault("canon", [])
+        if not isinstance(e["canon"], list):
+            sys.exit(f"roster entry {e['slug']}: canon must be a list of {{src, text}}")
     data.setdefault("style", {})
     data.setdefault("defaults", {})
     return data
@@ -325,30 +328,86 @@ def entry_out_path(entry):
     return OUT_DIRS[entry["kind"]] / entry["file"]
 
 
-def build_prompt(roster, entry, view="front"):
-    """Style preamble (per kind) + entry prompt + view instruction."""
-    style = roster["style"].get(entry["kind"], "")
-    parts = [style.replace("{name}", entry["name"]).strip(), entry["prompt"].strip()]
+RUNWAY_PROMPT_BUDGET = 1000     # promptText hard cap (UTF-16 units)
+
+
+def canon_text(entry, limit=None):
+    """The story's own description: the entry's `canon` quotes joined, in
+    order, optionally cut at a sentence boundary to fit `limit` chars."""
+    quotes = [q["text"].strip() for q in (entry.get("canon") or []) if q.get("text", "").strip()]
+    out = ""
+    for q in quotes:
+        cand = (out + " " + q).strip()
+        if limit and len(cand) > limit:
+            break
+        out = cand
+    if limit and not out and quotes:          # first quote alone is too long: hard-cut it
+        out = quotes[0][:limit - 1].rsplit(" ", 1)[0] + "…"
+    return out
+
+
+def description_for(roster, entry, budget=None):
+    """What the image model is told the subject looks like.
+
+    Canon quotes from the text come first and are the description when
+    they exist. The hand-written `prompt` is a FALLBACK for entries the
+    text never describes, unless prompt_mode is "append" (then it rides
+    after the quotes as extra direction)."""
+    mode = entry.get("prompt_mode") or roster["defaults"].get("prompt_mode", "fallback")
+    canon = canon_text(entry, budget)
+    prompt = (entry.get("prompt") or "").strip()
+    if canon:
+        head = f"The story describes {entry['name']} like this: "
+        desc = head + canon
+        if mode == "append" and prompt:
+            desc += " Additional direction: " + prompt
+        return desc
+    return prompt
+
+
+def build_prompt(roster, entry, view="front", provider=None):
+    """Description (canon quotes, else fallback prompt) + style preamble +
+    view instruction. Runway's promptText is capped at 1000 chars, so for
+    it the short preamble is used and the quotes are trimmed to fit."""
+    style_key = entry["kind"]
+    if provider == "runway":
+        style = roster["style"].get(style_key + "_short") or roster["style"].get(style_key, "")
+        style = style.replace("{name}", entry["name"]).strip()
+        suffix = roster["style"].get("suffix", "").strip()
+        view_txt = _view_text(roster, view)
+        fixed = len(style) + len(suffix) + len(view_txt) + 6
+        desc = description_for(roster, entry, budget=max(200, RUNWAY_PROMPT_BUDGET - fixed))
+        parts = [desc, style, suffix, view_txt]
+        return "\n".join(p for p in parts if p)[:RUNWAY_PROMPT_BUDGET]
+    style = roster["style"].get(style_key, "")
+    parts = [description_for(roster, entry), style.replace("{name}", entry["name"]).strip()]
     suffix = roster["style"].get("suffix", "").strip()
     if suffix:
         parts.append(suffix)
-    if view == "side":
-        parts.append(roster["style"].get(
-            "view_side",
-            "Same subject, identical design, colors and details as the reference "
-            "image, now seen from the left side in strict profile (90 degrees), "
-            "same pose, same plain background, whole subject in frame."))
-    elif view == "back":
-        parts.append(roster["style"].get(
-            "view_back",
-            "Same subject, identical design, colors and details as the reference "
-            "image, now seen directly from behind (180 degrees), same pose, same "
-            "plain background, whole subject in frame."))
+    parts.append(_view_text(roster, view))
     return "\n".join(p for p in parts if p)
 
 
+def _view_text(roster, view):
+    if view == "side":
+        return roster["style"].get(
+            "view_side",
+            "Same subject, identical design, colors and details as the reference "
+            "image, now seen from the left side in strict profile (90 degrees), "
+            "same pose, same plain background, whole subject in frame.")
+    if view == "back":
+        return roster["style"].get(
+            "view_back",
+            "Same subject, identical design, colors and details as the reference "
+            "image, now seen directly from behind (180 degrees), same pose, same "
+            "plain background, whole subject in frame.")
+    return ""
+
+
 def texture_prompt_for(entry):
-    tp = (entry.get("texture_prompt") or entry["prompt"]).strip()
+    """Meshy texture guidance (<= 600 chars): explicit texture_prompt, else
+    the canon quotes, else the fallback prompt."""
+    tp = (entry.get("texture_prompt") or "").strip() or canon_text(entry, 600) or entry["prompt"].strip()
     return tp[:600]
 
 
@@ -666,8 +725,9 @@ def stage_image(roster, entry, opts, log=print):
     dry = bool(opts.get("dry_run"))
     saved = []
 
-    front_prompt = build_prompt(roster, entry, "front")
+    front_prompt = build_prompt(roster, entry, "front", provider)
     log(f"  image · {entry['slug']} · {provider}/{model} · {aspect} · x{count}"
+        + (f" · canon quotes: {len(entry.get('canon') or [])}" if entry.get("canon") else " · NO canon quotes (fallback prompt)")
         + (" · multiview" if len(views) > 1 else ""))
     if dry:
         log("    [DRY] prompt:\n      " + front_prompt.replace("\n", "\n      "))
@@ -697,7 +757,7 @@ def stage_image(roster, entry, opts, log=print):
     for view in views[1:]:
         if not front:
             break
-        prompt = build_prompt(roster, entry, view)
+        prompt = build_prompt(roster, entry, view, provider)
         if provider == "google":
             if GOOGLE_MODELS.get(model) == "imagen":
                 log(f"    skip {view}: Imagen cannot take a reference image; use a gemini-* model")
@@ -911,6 +971,12 @@ class JobRunner:
             # per-job prompt override from the UI (does not rewrite the roster)
             if job["opts"].get("prompt"):
                 entry = dict(entry, prompt=job["opts"]["prompt"])
+            if job["opts"].get("canon_text") is not None:
+                # UI edited the quotes for this run: one synthetic quote
+                ct = job["opts"]["canon_text"].strip()
+                entry = dict(entry, canon=[{"src": "edited in Hero Studio", "text": ct}] if ct else [])
+            if job["opts"].get("prompt_mode"):
+                entry = dict(entry, prompt_mode=job["opts"]["prompt_mode"])
             if job["opts"].get("texture_prompt"):
                 entry = dict(entry, texture_prompt=job["opts"]["texture_prompt"])
             opts = dict(job["opts"])
@@ -990,15 +1056,7 @@ def make_handler(runner, roster_path):
                 return self._json({"jobs": runner.snapshot()})
             if p == "/api/prompt":
                 q = urllib.parse.parse_qs(urllib.parse.urlparse(self.path).query)
-                roster = load_roster(roster_path)
-                slug = (q.get("slug") or [""])[0]
-                e = next((e for e in roster["entries"] if e["slug"] == slug), None)
-                if e is None:
-                    return self._json({"error": "unknown slug"}, 404)
-                return self._json({"front": build_prompt(roster, e, "front"),
-                                   "side": build_prompt(roster, e, "side"),
-                                   "back": build_prompt(roster, e, "back"),
-                                   "texture": texture_prompt_for(e)})
+                return self._prompt_preview((q.get("slug") or [""])[0], {}, (q.get("provider") or ["google"])[0])
             if p == "/" or p == "":
                 self.send_response(302)
                 self.send_header("Location", "/hero_uploader/")
@@ -1006,10 +1064,35 @@ def make_handler(runner, roster_path):
                 return
             return super().do_GET()
 
+        def _prompt_preview(self, slug, overrides, provider):
+            roster = load_roster(roster_path)
+            e = next((e for e in roster["entries"] if e["slug"] == slug), None)
+            if e is None:
+                return self._json({"error": "unknown slug"}, 404)
+            if overrides.get("prompt"):
+                e = dict(e, prompt=overrides["prompt"])
+            if overrides.get("canon_text") is not None:
+                ct = overrides["canon_text"].strip()
+                e = dict(e, canon=[{"src": "edited", "text": ct}] if ct else [])
+            if overrides.get("prompt_mode"):
+                e = dict(e, prompt_mode=overrides["prompt_mode"])
+            return self._json({"front": build_prompt(roster, e, "front", provider),
+                               "side": build_prompt(roster, e, "side", provider),
+                               "back": build_prompt(roster, e, "back", provider),
+                               "texture": texture_prompt_for(e),
+                               "chars": len(build_prompt(roster, e, "front", provider)),
+                               "budget": RUNWAY_PROMPT_BUDGET if provider == "runway" else None})
+
         def do_POST(self):
             p = urllib.parse.urlparse(self.path).path
             roster = load_roster(roster_path)
             by_slug = {e["slug"]: e for e in roster["entries"]}
+            if p == "/api/prompt":
+                try:
+                    req = json.loads(self._body().decode("utf-8") or "{}")
+                except json.JSONDecodeError:
+                    return self._json({"error": "bad json"}, 400)
+                return self._prompt_preview(req.get("slug", ""), req, req.get("provider") or "google")
             if p == "/api/jobs":
                 try:
                     req = json.loads(self._body().decode("utf-8") or "{}")

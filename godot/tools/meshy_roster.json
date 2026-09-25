@@ -10,9 +10,11 @@
     "tag": "one-line canon note shown in the UI",
     "aspect": "concept image aspect: 3:4 for figures, 1:1 for objects, 4:3/16:9 for vehicles",
     "pose": "a-pose | t-pose | null (Meshy pose_mode; null for props)",
-    "prompt": "the visual description (appended to the kind's style preamble)",
+    "prompt": "hand-written fallback description, used only when the text has no canon quotes (or appended when prompt_mode = append)",
     "texture_prompt": "optional Meshy texture guidance (<= 600 chars); defaults to prompt",
-    "notes": "optional authoring notes"
+    "notes": "optional authoring notes",
+    "canon": "list of {src, text}: VERBATIM sentences from the story text describing the look. When present these ARE the description sent to the image model; `prompt` is then only a fallback (or extra direction when prompt_mode is 'append'). Fill/refresh with godot/tools/meshy_canon.py.",
+    "prompt_mode": "fallback (default: prompt used only when canon is empty) | append (prompt added after the canon quotes)"
   },
   "defaults": {
     "provider": "google",
@@ -22,7 +24,8 @@
     "pbr": true,
     "texture_resolution": "4k",
     "model_type": "standard",
-    "polycount": 10000
+    "polycount": 10000,
+    "prompt_mode": "fallback"
   },
   "style": {
     "hero": "Full-body concept render of {name}, a character from a literary visual novel set in the American South. Standing in a relaxed A-pose (arms slightly away from the body, palms turned in), facing the camera straight on, feet flat and fully visible, whole body in frame with margin above the head and below the feet. Plain flat light-grey seamless studio background, even soft frontal lighting, no cast shadow on the background, nothing on the floor, one subject only. Grounded semi-realistic painterly style, natural proportions, clean readable silhouette, clothing colours clearly separated from skin and hair.",
@@ -30,7 +33,10 @@
     "prop": "Single-object concept render of {name}, a story-critical prop from a literary visual novel. The object alone, centered, three-quarter view from slightly above, whole object in frame with margin, on a plain flat light-grey seamless background with nothing under it, even soft studio lighting, no cast shadow on the background, no hands, no people, no other objects. Semi-realistic painterly style with a clear material read (worn wood, tarnished brass, creased paper, scuffed plastic).",
     "suffix": "No text, no captions, no labels, no watermark, no border.",
     "view_side": "Same subject, identical design, colours, clothing and details as the reference image, now seen from the left side in strict profile (90 degrees), same pose, same plain light-grey background, whole subject in frame.",
-    "view_back": "Same subject, identical design, colours, clothing and details as the reference image, now seen directly from behind (180 degrees), same pose, same plain light-grey background, whole subject in frame."
+    "view_back": "Same subject, identical design, colours, clothing and details as the reference image, now seen directly from behind (180 degrees), same pose, same plain light-grey background, whole subject in frame.",
+    "hero_short": "Full-body concept render of {name}: relaxed A-pose, facing camera, feet visible, whole body in frame, plain flat light-grey seamless background, even soft light, no cast shadow, one subject, semi-realistic painterly style, clean silhouette.",
+    "demon_short": "Full-body concept render of {name}: uncanny figure, relaxed A-pose, facing camera, whole body in frame, plain flat light-grey seamless background, even soft light, one subject, bold exaggerated silhouette, muted palette with one sickly accent, almost human, wrong in one or two ways.",
+    "prop_short": "Single-object concept render of {name}: the object alone, centered, three-quarter view from slightly above, whole object in frame, plain flat light-grey seamless background, even soft light, no hands, no other objects, clear material read."
   },
   "entries": [
     {

@@ -216,12 +216,18 @@
         </div>
         <div id="e-notes" class="banner" style="margin:10px 0 0; display:none"></div>
 
-        <h3>1 · Prompt</h3>
-        <label>visual description (roster prompt · edits apply to this run only)</label>
-        <textarea id="e-prompt" rows="5"></textarea>
-        <label>Meshy texture prompt (≤ 600 chars · blank = use the description)</label>
-        <textarea id="e-texprompt" rows="2"></textarea>
-        <details style="margin-top:6px"><summary style="cursor:pointer;color:var(--fg-dim);font-size:11px">full prompt as sent (style preamble + description)</summary>
+        <h3>1 · Description from the text</h3>
+        <label>canon quotes — verbatim from the scenes / lore · this IS the description the image model gets · edits apply to this run only</label>
+        <textarea id="e-canon" rows="6"></textarea>
+        <div id="e-canon-src" style="font:10px monospace;color:var(--fg-dim);margin-top:4px"></div>
+        <div class="row">
+          <div><label>fallback prompt (hand-written · used only when there are no quotes)</label>
+            <textarea id="e-prompt" rows="3"></textarea></div>
+          <div><label>Meshy texture prompt (≤ 600 chars · blank = quotes, else fallback)</label>
+            <textarea id="e-texprompt" rows="3"></textarea></div>
+        </div>
+        <label class="check"><input id="o-append" type="checkbox"> also append the fallback prompt after the quotes (extra art direction)</label>
+        <details style="margin-top:6px"><summary style="cursor:pointer;color:var(--fg-dim);font-size:11px">full prompt as sent <span id="e-chars"></span></summary>
           <pre id="e-fullprompt"></pre></details>
 
         <h3>2 · Concept image</h3>
@@ -404,10 +410,11 @@ function renderRoster() {
     if (grp !== last) { const h = document.createElement('div'); h.className = 'group-hdr'; h.textContent = grp; list.appendChild(h); last = grp; }
     const c = document.createElement('div');
     c.className = 'card' + (e.slug === state.selected ? ' selected' : '');
+    const noCanon = !(e.canon && e.canon.length);
     const img = e.status.chosen?.front ? 'on' : (e.status.candidates?.front?.length ? 'half' : 'off');
     const glb = e.status.glb_installed ? 'on' : 'off';
     c.innerHTML = `<div class="dots" title="image · GLB"><span class="${img}">●</span><span class="${glb}">●</span></div>
-      <div><div class="name"><span class="kind ${e.kind}">${e.kind}</span>${esc(e.name)}</div>
+      <div><div class="name"><span class="kind ${e.kind}">${e.kind}</span>${esc(e.name)}${noCanon ? ' <span title="no description of the look in the text — fallback prompt" style="color:var(--vinyl);font-size:10px">no canon</span>' : ''}</div>
       <div class="meta">${esc(e.file)}${e.tag ? ' · ' + esc(e.tag) : ''}</div></div>`;
     c.addEventListener('click', () => select(e.slug));
     list.appendChild(c);
@@ -429,6 +436,10 @@ function select(slug) {
   $('e-notes').style.display = e.notes ? '' : 'none'; $('e-notes').textContent = e.notes || '';
   $('e-prompt').value = e.prompt || '';
   $('e-texprompt').value = e.texture_prompt || '';
+  $('e-canon').value = (e.canon || []).map(q => q.text).join('\n\n');
+  $('e-canon').placeholder = 'No description of the look in the text yet — the fallback prompt will be used. Add quotes here (or to canon[] in meshy_roster.json; try: python3 godot/tools/meshy_canon.py ' + e.slug + ').';
+  $('e-canon-src').textContent = (e.canon || []).length ? 'sources: ' + [...new Set((e.canon || []).map(q => q.src))].join(' · ') : 'no canon quotes';
+  $('o-append').checked = (e.prompt_mode || state.roster.defaults?.prompt_mode) === 'append';
   $('o-pose').value = e.pose || '';
   fillSelect($('o-aspect'), state.roster.aspects, e.aspect);
   $('o-provider').value = state.roster.defaults?.provider || 'google';
@@ -456,11 +467,37 @@ function onProviderChange() {
   updateCosts();
 }
 
-async function refreshFullPrompt() {
-  const e = entry(); if (!e) return;
-  const style = (state.roster.style || {})[e.kind] || '';
-  const parts = [style.replace('{name}', e.name), $('e-prompt').value.trim(), state.roster.style?.suffix || ''];
-  $('e-fullprompt').textContent = parts.filter(Boolean).join('\n');
+let promptTimer = null;
+function refreshFullPrompt() {
+  clearTimeout(promptTimer);
+  promptTimer = setTimeout(async () => {
+    const e = entry(); if (!e) return;
+    const provider = $('o-provider').value;
+    if (state.connected) {
+      try {
+        const r = await api('POST', '/api/prompt', { slug: e.slug, provider, ...promptOverrides() });
+        $('e-fullprompt').textContent = r.front;
+        $('e-chars').textContent = `(${r.chars} chars${r.budget ? ' / ' + r.budget + ' Runway cap' : ''})`;
+        return;
+      } catch (err) { /* fall through to the local approximation */ }
+    }
+    const style = (state.roster.style || {})[e.kind] || '';
+    const canon = $('e-canon').value.trim();
+    const desc = canon ? `The story describes ${e.name} like this: ${canon.replace(/\s+/g, ' ')}` + ($('o-append').checked && $('e-prompt').value.trim() ? ' Additional direction: ' + $('e-prompt').value.trim() : '') : $('e-prompt').value.trim();
+    const parts = [desc, style.replace('{name}', e.name), state.roster.style?.suffix || ''];
+    $('e-fullprompt').textContent = parts.filter(Boolean).join('\n');
+    $('e-chars').textContent = '';
+  }, 250);
+}
+
+function promptOverrides() {
+  const e = entry();
+  const o = { prompt: $('e-prompt').value.trim(), prompt_mode: $('o-append').checked ? 'append' : 'fallback' };
+  const canonNow = $('e-canon').value.trim();
+  const canonRoster = (e?.canon || []).map(q => q.text).join('\n\n').trim();
+  if (canonNow !== canonRoster) o.canon_text = canonNow;   // only send when edited
+  if ($('e-texprompt').value.trim()) o.texture_prompt = $('e-texprompt').value.trim();
+  return o;
 }
 
 function updateCosts() {
@@ -540,7 +577,7 @@ function imageOpts() {
   return {
     provider: $('o-provider').value, model: $('o-model').value, aspect: $('o-aspect').value,
     count: Number($('o-count').value || 1), multiview: $('o-multiview').checked,
-    overwrite: $('o-overwrite-img').checked, prompt: $('e-prompt').value.trim(),
+    overwrite: $('o-overwrite-img').checked, ...promptOverrides(),
   };
 }
 function meshOpts() {
@@ -548,10 +585,9 @@ function meshOpts() {
     texture: $('o-texture').value === '1', texture_resolution: $('o-texres').value,
     model_type: $('o-modeltype').value, polycount: Number($('o-polycount').value || 10000),
     ultra: $('o-ultra').checked, multiview: $('o-mesh-multiview').checked,
-    overwrite: $('o-overwrite-glb').checked, prompt: $('e-prompt').value.trim(),
+    overwrite: $('o-overwrite-glb').checked, ...promptOverrides(),
   };
   if ($('o-pose').value) o.pose = $('o-pose').value;
-  if ($('e-texprompt').value.trim()) o.texture_prompt = $('e-texprompt').value.trim();
   return o;
 }
 
@@ -671,7 +707,8 @@ function bind() {
   $('btn-batch').addEventListener('click', batchCommand);
   $('o-provider').addEventListener('change', onProviderChange);
   for (const id of ['o-model', 'o-count', 'o-multiview', 'o-texture']) $(id).addEventListener('change', updateCosts);
-  $('e-prompt').addEventListener('input', refreshFullPrompt);
+  for (const id of ['e-prompt', 'e-canon', 'o-append']) $(id).addEventListener('input', refreshFullPrompt);
+  $('o-provider').addEventListener('change', refreshFullPrompt);
   $('btn-image').addEventListener('click', () => submitJob('image'));
   $('btn-mesh').addEventListener('click', () => submitJob('mesh'));
   $('btn-run').addEventListener('click', () => submitJob('run'));

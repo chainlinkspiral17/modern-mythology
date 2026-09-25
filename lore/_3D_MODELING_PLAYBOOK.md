@@ -347,6 +347,14 @@ Louisville's hurricane-deck proportions"). Don't guess at numbers.
   all follow it. When adding a character: roster first, CharLayer key
   second, `HERO_GLB_PATHS` (world spawns) only if it stands in a
   locale.
+- **The text is the prompt.** Per user direction, image generation
+  pulls from the characters' and props' descriptions in the story:
+  each roster entry has `canon` (verbatim quotes with sources) and the
+  prompt builder sends those first; the hand-written `prompt` is a
+  fallback for entries the text never describes. `meshy_canon.py`
+  finds candidate sentences (keyword heuristic, over-collects — read
+  before trusting). Runway caps promptText at 1000 chars, so it gets a
+  short preamble and the quotes trimmed at a sentence boundary.
 - **Prompt shape that Meshy likes:** one subject, relaxed A-pose
   facing camera, feet visible, flat light-grey seamless background,
   even frontal light, no cast shadow, no text. Props: three-quarter

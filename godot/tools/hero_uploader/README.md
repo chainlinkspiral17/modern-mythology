@@ -30,13 +30,38 @@ cd /home/deck/Downloads/modern-mythology && python3 godot/tools/meshy_pipeline.p
 → <http://127.0.0.1:8765/hero_uploader/>. Header dots show which keys
 were found. Stdlib only, no pip installs.
 
+## Where the prompts come from
+
+Image generation is grounded in the story text. Each roster entry
+carries `canon`: verbatim sentences from the scene scripts
+(`godot/resources/scenes/vol*/*.json`), the gauntlet data and the lore
+that describe how the character or object looks. When quotes exist
+they ARE the description sent to the image model ("The story describes
+Sam Miller like this: …"); the hand-written `prompt` is only a fallback
+for entries the text never describes (the page marks those *no canon*),
+or extra direction if you tick *append*. Runway's 1000-character
+prompt cap is respected automatically (short preamble, quotes trimmed
+at a sentence boundary).
+
+To find candidate quotes for an entry from the text:
+
+```bash
+cd /home/deck/Downloads/modern-mythology && python3 godot/tools/meshy_canon.py sam_miller
+```
+
+`meshy_canon.py --write` stores candidates for entries that have none;
+it is a keyword heuristic and over-collects, so read what it found
+before spending credits. `--report` lists who still has nothing.
+
 ## Workflow in the page
 
 1. **Pick** a character / prop on the left (filter by kind, volume,
    state; search by name, slug, key or tag).
-2. **Prompt** — the roster description is editable per run; the style
-   preamble for the kind (A-pose, flat grey background, etc.) is added
-   automatically. Expand *full prompt as sent* to see it.
+2. **Description from the text** — the canon quotes are shown (with
+   their sources) and editable per run; the style preamble for the kind
+   (A-pose, flat grey background, etc.) is added automatically. Expand
+   *full prompt as sent* to see exactly what the runner will send,
+   including the Runway character count.
 3. **Generate image** — choose provider + model + aspect + how many
    candidates. Tick *side + back views* to also render a profile and a
    back view from the chosen front (Gemini image models or Runway with a
