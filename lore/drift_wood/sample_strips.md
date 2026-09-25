@@ -124,17 +124,19 @@ Greyhound station — Wood outside the tinted window, hands in his
 coat, the bus leaving without him. The strip has told the reader
 both things and has chosen neither. That is the volume.*
 
-### Era 3 · Sunday, June 2, 2002 · the corner box
+### Era 2 · digest cover, Friday, June 7, 2002 · the corner box
 
-A landscape Sunday — the logging road, potholes full of sky. In the
-bottom-left corner, boxed, hand-lettered in the strip's own display
-face, as if it were an ad from the syndicate:
+The laundromat digest's weekly cover — quarter-letter, one image,
+the proto-Sunday. A landscape: the logging road, potholes full of
+sky. In the bottom-left corner, boxed, hand-lettered in the strip's
+own display face, as if it were an ad from a syndicate the strip
+doesn't have:
 
 > **COMING 2003 · A GRAPHIC NOVEL BY A. FINCH · "SLASH"**
 > *A crime story of the Oregon coast.*
 
-The box reappears on June 1, 2008 (*COMING 2009 · "THE LONG WAY
-BACK" · a travelogue*) and June 5, 2016 (*COMING 2017 · "CEDAR" · a
+The box reappears on the Sundays of June 1, 2008 (*COMING 2009 ·
+"THE LONG WAY BACK" · a travelogue*) and June 5, 2016 (*COMING 2017 · "CEDAR" · a
 novel of the timber country*). Same corner, same face. Nothing
 ever comes. No strip ever refers to the boxes. The reader who
 notices them has understood the strip's author better than any

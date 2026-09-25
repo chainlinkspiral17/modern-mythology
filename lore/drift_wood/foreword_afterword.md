@@ -127,7 +127,7 @@ Each is a strip or a margin, never a statement.
 
 | plant | where | what it foreshadows (the afterword's reading) |
 |---|---|---|
-| The *COMING 2003 / 2009 / 2017* corner boxes | Sundays, June 2002 / 2008 / 2016 | The novel that never came; the four-year cycle of the life. |
+| The *COMING 2003 / 2009 / 2017* corner boxes | a digest cover, June 2002; Sundays, June 2008 / 2016 | The novel that never came; the four-year cycle of the life. |
 | The three Seattle dailies, then the framing shop | Sept 2000 | Every leaving he didn't do. |
 | Wood drawn at two-thirds size for six weeks | Nov–Dec 2006 | What the name did to him. |
 | The one grease sack | March 2005 | The father. |

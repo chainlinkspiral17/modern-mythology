@@ -14,78 +14,14 @@ never do.
 
 ## PART ONE · SCOPE
 
-### The archive versus the book
-
-In fiction there are over ten thousand strips and pages. The
-volume is the retrospective, which is a *selection* — the editor's
-cut — and the VN can only show what gets made. So the scope is two
-numbers per run: what exists in the boxes, and what the reader
-sees.
-
-| run | years | in the boxes (fiction) | in the book (the volume) |
-|---|---|---|---|
-| 1 · The Timberline | 1997–99 | ~40 | 14 |
-| 2 · The Weekday Daily | 1999–2003 | ~1,000 | 30 |
-| 3 · Newspaper, early | 2004–11 | ~2,100 dailies · ~350 Sundays | 44 |
-| 4 · Newspaper, peak | 2012–Jul 2014 | ~750 dailies · ~130 Sundays | 24 |
-| 5 · Low Tide | Nov–Dec 2014 | ~35 | 12 (all of it that matters) |
-| 6 · The Last Sunday | 2015–2020 | ~1,500 dailies · ~250 Sundays | 36 |
-| 7 · ROFLCOPTER | 2021–27 | ~2,800 pages | 40 |
-| **total** | | **~10,000** | **~200** |
-
-Two hundred units is the working target. It is the size of a real
-retrospective's "selected" section, it is achievable, and it is
-enough that the reader feels the years. If it grows, it grows in
-Runs 3 and 6, where the years are longest.
-
-### Three tiers of unit
-
-Not every unit needs finished art. The tiers, and the working
-split of the ~200:
-
-| tier | what the reader sees | count | notes |
-|---|---|---|---|
-| **A · drawn** | a finished strip or page as an image: the art is the content | ~70 | every Sunday landscape, every silent page, the specified pages, the last public Sunday, the final page, the corner boxes. Art-directed from `the_strip.md` |
-| **B · scripted** | the strip presented as its panel script in the strip's own grid — panel captions and balloons, typeset, on the era's paper — with a spot drawing where one exists | ~110 | most dailies. Cheap to author, honest about what it is, and reads like a script in a retrospective's notes section |
-| **C · implied** | dividers, counts, gaps, reprints, "no file" | ~20 | the box number and dates; the sentence *nine months of reprints*; the blank divider for January 2021 |
-
-Tier B is the load-bearing decision: the volume can be *read* long
-before it can be *seen*, and the panel-script format is already
-what the brief and `sample_strips.md` are written in. Tier A gets
-drawn in the order the foreshadowing index needs them
-(`foreword_afterword.md`).
-
-### Drawing order for Tier A (proposed)
-
-1. "The Empty Chair" and "The Box" (specified; the volume's canon).
-2. The final page (April 2027).
-3. The last public Sunday (Dec 27, 2020).
-4. The Greyhound station (Oct 2000).
-5. "Lanes" (2009) and "Lanes" again (2019).
-6. The dock at 11:30 PM (July 2014).
-7. The three corner-box Sundays (2002, 2008, 2016).
-8. The first ROFLCOPTER page (main street twice).
-9. "The Carry."
-10. Everything else, in run order.
-
-### What the concept sheet already covers
-
-Era IV Wood, the bait shop, the waterfront, the bird, the eye
-sign, the stone head. Sheets still needed: Wood at seventeen (the
-overcoat); Wood at twenty-six (the CRT); Wood at thirty-four (the
-thrift-store suit); the strip's Chloe at three ages; Gully at
-three ages; both dogs; the garage apartment interior; the frame
-shop; the Timberline newsroom; the Driftwood Motel desk; Gully's
-interior. See `_CONCEPT_ART.md`.
-
-### What is out of scope
-
-- The parody week itself as finished art (Tier B: it's a stick
-  figure; the reader gets the idea from four scripted strips).
-- Any strip that would require the author on the page.
-- Any strip whose only job is to state a fact. If the year's fact
-  can't be drawn as a gap or a background, it goes to the
-  afterword.
+Superseded (September 2026) by `_THE_COMPLETE_RUN.md`: the eventual
+scope is **about 1,500 pages of finished material — a two-volume
+physical set (DRIFT WOOD · ROFLCOPTER) and one digital edition**,
+selected from the ~10,000-strip archive. The edition plan, the page
+budgets, the selection principle and the arc-by-arc catalogue of
+the whole run live there. The per-year entries below remain the
+spine; the unit counts and tiers in them are the earlier 200-unit
+sketch and should be read as *minimums*, not the budget.
 
 ---
 
@@ -115,7 +51,7 @@ Ages: Arthur is born in 1980. Barnaby is found at ~1 in 1999.
 ### 1998 · age 18 · Run 1
 
 - **Wood.** Eighteen strips. The strip finds its two-hander: Wood
-  monologues, Chloe dismantles. A Sunday-sized special for the
+  monologues, Chloe dismantles. A full-page special for the
   paper's spring issue — Wood's first landscape, the estuary at
   low tide, over-inked, with a caption that explains it. (The last
   landscape he'll caption.)
@@ -165,15 +101,16 @@ Ages: Arthur is born in 1980. Barnaby is found at ~1 in 1999.
 
 ### 2002 · age 22 · Run 2
 
-- **Wood.** June 2: the logging-road Sunday with the corner box —
-  *COMING 2003 · "SLASH."* A noir Sunday in October: Wood in a
-  trench coat under the bowling-alley neon, played straight, never
-  repeated.
+- **Wood.** The laundromat digest has a weekly cover drawing now —
+  the proto-Sunday, quarter-letter, one image. June 7: the
+  logging-road cover with the corner box — *COMING 2003 ·
+  "SLASH."* A noir cover in October: Wood in a trench coat under
+  the bowling-alley neon, played straight, never repeated.
 - **Arthur.** The noir is going nowhere and he's told the strip it
   isn't.
-- **Units.** The corner-box Sunday [A]; the noir Sunday [A].
-- **Mark.** A gull. The noir Sunday: none — the only unsigned
-  Sunday of the run.
+- **Units.** The corner-box cover [A]; the noir cover [A].
+- **Mark.** A gull. The noir cover: none — the only unsigned
+  cover of the run.
 
 ### 2003 · age 23 · Run 2 → the first private stretch
 
