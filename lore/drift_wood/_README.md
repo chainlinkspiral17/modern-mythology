@@ -21,6 +21,7 @@ synthesizing wiki is `../_VOL10_WIKI.md`.
 | `foreword_afterword.md` | the bookends — the only prose, the only place the author is seen; the ending (the work is published; the specter foreshadowed); who writes them; the foreshadowing index |
 | `_CONCEPT_ART.md` | the September 2026 character/environment sheet, described, with where it departs from the brief |
 | `_THE_COMPLETE_RUN.md` | **the edition and the full scope**: ~1,500 pages as a two-volume physical set (DRIFT WOOD · ROFLCOPTER) plus one digital edition; page budgets; the editor's-cut selection principle; the complete run roughed arc by arc, 1997–2027, with a selection mark on every arc, fixture and sequence; production phases |
+| `scripts/` | generated, readable script sheets — one per strip JSON in `godot/tools/comic/strips/`, with the whole-strip prompt. Edit the JSON, run `comic_tool.py md`, commit both |
 | `_SCOPE_AND_YEARS.md` | **scope** (the ~10,000-strip archive vs the ~200-unit book; three tiers of unit; drawing order) and **the years**, 1997–2027, one entry each: line, what the strip shows, what the reader infers, the units the book takes, the margin mark |
 | `_ARC_OUTLINE.md` | the book as seven runs of strips between the bookends; proposed scene-id plan; the player-as-editor canon |
 | `the_strip.md` | *Drift Wood* → *ROFLCOPTER* as an artifact: the names, the four eras, the motifs, the two fully-specified Sunday pages |
@@ -30,6 +31,12 @@ synthesizing wiki is `../_VOL10_WIKI.md`.
 | `chloe_sterling.md` | Chloe Sterling — as inferred from the strip's Chloe and (lean) the afterword |
 | `todd_gulliver.md` | Todd "Gully" Gulliver — as inferred from the strip's Gully |
 | `barnaby.md` | Barnaby, and Barnaby II — three silent Sundays and a margin mark |
+
+## the tool
+
+The strips are produced by `godot/tools/comic/` (README there):
+scripts as JSON, whole-strip prompts for the concept run through
+Runway or Google, per-panel and Blender/Meshy hooks for later.
 
 ## the shape
 

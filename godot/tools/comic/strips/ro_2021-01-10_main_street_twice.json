@@ -1,0 +1,72 @@
+{
+  "id": "ro_2021-01-10_main_street_twice",
+  "title": "Main street, twice",
+  "strip": "roflcopter",
+  "date": "2021-01-10",
+  "run": 7,
+  "era": "era4",
+  "format": "page",
+  "tier": "A",
+  "selection": "full",
+  "venue": "nobody · box 21",
+  "arc": "No Grid",
+  "source": "lore/drift_wood/sample_strips.md",
+  "logline": "1997 on the left, 2021 on the right, joined at the center with no middle.",
+  "cast": [
+    "wood_17",
+    "wood_44",
+    "barnaby_ii"
+  ],
+  "location": "dw_main_street",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "roflcopter",
+    "note": "ROFLCOPTER, tiny — the first time the name is lettered in his hand, spelled right."
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "single page, no borders",
+      "composition": "One drawing. The main street of Small Wood from the top of the hill by the school: 1997 on the left half, 2021 on the right, joined at the center line with no seam. The mill's smokestack on the left becoming a cell mast on the right; a hardware store becoming an empty storefront becoming, very small, a skate shop's first sign; the same crow on the same seawall at both ends. Nobody in it. Then, on inspection: a seventeen-year-old in an overcoat far left, a man with a three-legged dog far right, walking toward each other and never meeting because the drawing has no middle.",
+      "characters": [
+        {
+          "id": "wood_17",
+          "pose": "far left, tiny, walking toward center",
+          "expression": ""
+        },
+        {
+          "id": "wood_44",
+          "pose": "far right, tiny, walking toward center",
+          "expression": ""
+        },
+        {
+          "id": "barnaby_ii",
+          "pose": "at his heel, tiny",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "mill smokestack → cell mast",
+        "hardware store → empty storefront → skate shop sign",
+        "the same crow on the seawall at both ends",
+        "fog"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a single full-page ink and soft watercolor drawing of a small coastal timber town's main street seen from the top of a hill, the left half as it was in the 1990s with a mill smokestack and a hardware store, the right half decades later with a cell mast and an empty storefront, joined seamlessly at the center, a crow on the seawall at both ends, and two tiny figures far apart walking toward the middle, muted ochre, slate and sea-foam, no panel borders",
+        "negative": "",
+        "notes": "The bird is not here yet. The crow is."
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "",
+    "palette": "",
+    "paper": ""
+  },
+  "notes": "The first private page. Signed with the reclaimed name.",
+  "layout": "single page, no borders"
+}

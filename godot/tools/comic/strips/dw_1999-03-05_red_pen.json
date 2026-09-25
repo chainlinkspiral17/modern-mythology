@@ -1,0 +1,189 @@
+{
+  "id": "dw_1999-03-05_red_pen",
+  "title": "Drift Wood #21 · the red pen",
+  "strip": "drift_wood",
+  "date": "1999-03-05",
+  "run": 1,
+  "era": "era1",
+  "format": "biweekly",
+  "tier": "B",
+  "selection": "full",
+  "venue": "The Timberline",
+  "arc": "Seattle, Said",
+  "source": "lore/drift_wood/sample_strips.md",
+  "logline": "Chloe proofs the drawing, not the text. Seattle, said sideways.",
+  "cast": [
+    "wood_17",
+    "chloe_17"
+  ],
+  "location": "dw_timberline_newsroom",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "crab",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "medium",
+      "composition": "The newsroom after hours. Two desks pushed together under one lamp. WOOD inks a strip; CHLOE proofs his page with a red pen she is using on the drawing, not the text. A dark window behind them.",
+      "characters": [
+        {
+          "id": "wood_17",
+          "pose": "hunched, inking",
+          "expression": "concentrating"
+        },
+        {
+          "id": "chloe_17",
+          "pose": "red pen on his page, leaning in",
+          "expression": "dry"
+        }
+      ],
+      "props": [
+        "two desks",
+        "desk lamp",
+        "red pen",
+        "bristol page",
+        "dark window"
+      ],
+      "balloons": [
+        {
+          "who": "CHLOE",
+          "text": "Your cashier has six fingers."
+        },
+        {
+          "who": "WOOD",
+          "text": "It's expressive."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "two teenagers at desks pushed together in a dark school newsroom under one desk lamp, a boy inking a comic page, a girl with heavy eyeliner marking his drawing with a red pen, black window behind",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "close",
+      "composition": "Over Chloe's shoulder onto the page: the six-fingered cashier, circled in red.",
+      "characters": [
+        {
+          "id": "chloe_17",
+          "pose": "red pen circling",
+          "expression": "precise"
+        },
+        {
+          "id": "wood_17",
+          "pose": "off-panel or edge, protesting hand",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the drawn cashier",
+        "red circle"
+      ],
+      "balloons": [
+        {
+          "who": "CHLOE",
+          "text": "It's a sixth finger."
+        },
+        {
+          "who": "WOOD",
+          "text": "Egon Schiele—"
+        },
+        {
+          "who": "CHLOE",
+          "text": "—had the correct number of fingers and drew them wrong on purpose. You drew this one wrong by accident and now you're citing Vienna."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "over-the-shoulder close-up of a red pen circling a crudely drawn six-fingered hand on a comic page under lamp light",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "medium",
+      "composition": "Silence. Wood, deadpan, adding a seventh finger.",
+      "characters": [
+        {
+          "id": "wood_17",
+          "pose": "pen to page, adding a finger",
+          "expression": "deadpan"
+        },
+        {
+          "id": "chloe_17",
+          "pose": "watching, unreadable",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "pen",
+        "page"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a teenage boy at a desk deliberately adding another finger to a drawing while a girl beside him watches unreadably, desk lamp, deep black shadows",
+        "negative": "",
+        "notes": "No balloons. The beat is the pen."
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "wide",
+      "composition": "The two desks and the dark window, mostly. Both heads down, both pens moving.",
+      "characters": [
+        {
+          "id": "wood_17",
+          "pose": "head down, pen moving",
+          "expression": "still"
+        },
+        {
+          "id": "chloe_17",
+          "pose": "head down, red pen moving",
+          "expression": "still"
+        }
+      ],
+      "props": [
+        "two desks",
+        "lamp",
+        "dark window"
+      ],
+      "balloons": [
+        {
+          "who": "CHLOE",
+          "text": "I'm going to Seattle."
+        },
+        {
+          "who": "WOOD",
+          "text": "I know."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "wide shot of two desks pushed together in a dark newsroom, two teenagers with heads down and pens moving, a large black window taking up most of the frame, one small lamp",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "",
+    "palette": "",
+    "paper": ""
+  },
+  "notes": "The crab mark: the first time he uses it; it comes back facing away on the Greyhound cover.",
+  "layout": "2x2"
+}

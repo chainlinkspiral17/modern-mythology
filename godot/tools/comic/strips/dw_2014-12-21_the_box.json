@@ -1,0 +1,210 @@
+{
+  "id": "dw_2014-12-21_the_box",
+  "title": "The Box",
+  "strip": "drift_wood",
+  "date": "2014-12-21",
+  "run": 5,
+  "era": "era3",
+  "format": "sunday",
+  "tier": "A",
+  "selection": "full",
+  "venue": "Arthur's site · the coastal weeklies",
+  "arc": "Low Tide at Alsea Bay (Arc 4, Sunday 3)",
+  "source": "lore/drift_wood/_SOURCE_BRIEF.md (Sunday page spec · The Box)",
+  "logline": "Found him by the log dump in Toledo. His name is not my problem.",
+  "cast": [
+    "wood_34",
+    "gully_35",
+    "barnaby_ii"
+  ],
+  "location": "dw_garage",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "scruff",
+    "note": "The flat stroke from last week is gone. In its place, a tiny three-legged scruff of ink, fast asleep."
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "expansive wide",
+      "composition": "Tier 1 · The Departure. From the porch steps down the sloped gravel driveway to the coastal highway. A clear freezing morning after three weeks of rain: pale eggshell-blue winter sky above the Sitka spruce; frost glazing the puddle edges. Lower left, GULLY walking away down the gravel toward his idling flatbed, seen from behind — faded brown canvas Carhartt, hood down, breath pluming, hands deep in pockets. He doesn't look back. Dead center foreground on the top weathered cedar step: a heavy waxed produce box stamped in faded blue ALICE'S WHOLESALE BAIT & SMOKED MEATS, flaps folded, one corner pushed ajar from inside.",
+      "characters": [
+        {
+          "id": "gully_35",
+          "pose": "walking away down the driveway, hood down, hands in pockets",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "waxed produce box on the porch step",
+        "faded blue stamp",
+        "gravel driveway with frost",
+        "idling flatbed truck",
+        "spruce",
+        "eggshell sky"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a wide cinematic view down a sloped gravel driveway from a porch on a clear freezing winter morning after rain, frost on puddle edges, a stocky man in a brown canvas work jacket walking away toward an idling flatbed truck without looking back, and dead center in the foreground on the top cedar porch step a waxed cardboard produce box with one corner pushed open from inside, pale eggshell sky over Sitka spruce, luminous wet-on-wet watercolor",
+        "negative": "",
+        "notes": "The box stamp ALICE'S WHOLESALE BAIT & SMOKED MEATS may be lettered by the generator or after."
+      },
+      "stage": null,
+      "name": "The Departure"
+    },
+    {
+      "n": 2,
+      "shot": "medium, downward",
+      "composition": "Tier 2 · The Doorstep. Looking down at the porch from Wood's eye level as the aluminum storm door creaks open. His left hand pushes the glass door; his right holds a chipped white enamel mug of black coffee. Threadbare gray thermal, unbuttoned red flannel, sock feet on the cold threshold. The box flaps pushed open: from a nest of shredded newspaper and a grease-stained wool work sock, a small wiry snout with bristly gray whiskers, damp black nose twitching.",
+      "characters": [
+        {
+          "id": "wood_34",
+          "pose": "pushing a storm door open, mug in hand, sock feet",
+          "expression": "wary"
+        },
+        {
+          "id": "barnaby_ii",
+          "pose": "snout emerging from the box",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "aluminum storm door",
+        "chipped enamel mug",
+        "shredded newspaper",
+        "wool work sock",
+        "the box"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "looking down from a doorway as an aluminum storm door swings open, a man's hand on the glass and his other hand holding a chipped white enamel mug, sock feet on a cold threshold, and in an open cardboard box on the step a small wiry gray-whiskered puppy snout emerging from shredded newspaper, winter morning light, watercolor",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null,
+      "name": "The Doorstep"
+    },
+    {
+      "n": 3,
+      "shot": "eye-level, low",
+      "composition": "Tier 3 · The Assessment. Wood has set the mug on the porch rail (steam curling) and crouched on his haunches, elbows on knees. The puppy has scrambled out and stands planted on the floorboards: wiry terrier/border mix, one ear pinned back, one cocked up like a radar dish, coat like unraveled steel wool, the left hind leg ending cleanly below the hock — healed, unbothered. A sturdy tripod, chest out, barking a small gravelly puff of vapor into Wood's face. Wood stares down with zero sentimentality, eyebrows flat, mouth a line. Taped to the box with peeling electrical tape, a torn strip of butcher paper in blocky grease-pencil: Found him by the log dump in Toledo. Vet says he's four months. His name is not my problem.",
+      "characters": [
+        {
+          "id": "wood_34",
+          "pose": "crouched, elbows on knees, staring down",
+          "expression": "zero sentimentality"
+        },
+        {
+          "id": "barnaby_ii",
+          "pose": "planted on three legs, chest out, barking",
+          "expression": "fierce"
+        }
+      ],
+      "props": [
+        "mug steaming on the rail",
+        "butcher-paper note in grease pencil",
+        "electrical tape",
+        "the box"
+      ],
+      "balloons": [
+        {
+          "who": "PUPPY",
+          "text": "Yip.",
+          "kind": "sfx"
+        },
+        {
+          "who": "WOOD",
+          "text": "I am in the middle of a deadline, and I don't like you."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "eye-level low panel on a porch: a crouching man in a red flannel with elbows on his knees staring flatly down at a small three-legged wiry terrier puppy planted like a tripod on the floorboards, chest out, barking a puff of vapor into his face, a steaming mug on the porch rail, a note taped to a cardboard box, winter sun, watercolor",
+        "negative": "",
+        "notes": "The note text may be lettered by the generator in blocky grease-pencil capitals, or after."
+      },
+      "stage": null,
+      "name": "The Assessment"
+    },
+    {
+      "n": 4,
+      "shot": "interior wide",
+      "composition": "Tier 4 · The Infiltration. Looking back into the studio from the threshold, the door swung open. The three-legged pup does not limp; he scuttles with erratic joyful momentum, already halfway across the room, four tiny damp paw-and-stump prints across the worn fir boards. He has bypassed the empty woven dog bed under the drafting table entirely and is headfirst in Wood's overturned wicker scrap basket, tail whipping like a metronome, crumpled rejected pencil sketches flying out behind. Wood in the doorway, hands on hips, flannel hanging open, deadpan exhaustion of a man who knows he has already lost.",
+      "characters": [
+        {
+          "id": "barnaby_ii",
+          "pose": "headfirst in an overturned wicker basket, tail up, sketches flying",
+          "expression": "joyful"
+        },
+        {
+          "id": "wood_34",
+          "pose": "in the doorway, hands on hips, flannel open",
+          "expression": "deadpan, already lost"
+        }
+      ],
+      "props": [
+        "overturned wicker scrap basket",
+        "crumpled sketches in the air",
+        "damp paw prints",
+        "the empty dog bed, bypassed",
+        "drafting table"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "an interior wide view of a garage art studio from the open doorway: a three-legged wiry puppy headfirst inside an overturned wicker wastebasket with crumpled sketches flying out and its tail whipping, a trail of tiny damp paw prints across worn fir floorboards past an untouched empty dog bed under a drafting table, a man standing in the doorway with hands on his hips watching in deadpan exhaustion, kinetic animal weight, watercolor",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null,
+      "name": "The Infiltration"
+    },
+    {
+      "n": 5,
+      "shot": "warm low close",
+      "composition": "Tier 5 · The Occupation. Low angle at the base of the drafting table. The winter sun has cleared the ridge and cuts a bright warm amber blade of light across the floor. Wood has slid off his stool and sits flat on the floorboards, legs splayed, back against the sturdy pine table leg. The puppy sprawled dead asleep across his crossed ankles, chin wedged over his wool sock, breath puffing against the yarn; clutched tightly in its front paws, Wood's favorite wooden crow-quill nib holder, the end already dented by needle teeth. Wood's hand resting on the scruff of the pup's neck, thumb brushing behind the upright ear. Not drawing. Not looking at the blank paper above. Looking at the dust motes turning in the winter light.",
+      "characters": [
+        {
+          "id": "wood_34",
+          "pose": "sitting on the floor, back against the table leg, hand on the pup's scruff",
+          "expression": "exhausted, faint reluctant surrender"
+        },
+        {
+          "id": "barnaby_ii",
+          "pose": "asleep across his ankles, nib holder in its paws",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "a warm blade of sunlight across the floor",
+        "the wooden nib holder, dented",
+        "dust motes",
+        "drafting table leg",
+        "blank paper above"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a warm quiet low-angle close-up at the base of a drafting table: a man sitting flat on the floorboards with his back against the table leg, a small three-legged wiry puppy asleep across his crossed ankles clutching a wooden pen holder in its paws, the man's hand resting on the puppy's scruff, a bright amber blade of winter sunlight across the floor with dust motes turning in it, watercolor",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null,
+      "name": "The Occupation"
+    }
+  ],
+  "art": {
+    "line": "India ink (Hunt 102, sable brush) on 140 lb Arches cold-press",
+    "palette": "cerulean and titanium white winter sky; sap and hooker's greens; raw umber and sepia deck planks; a warm kraft-brown anchor",
+    "paper": "140 lb Arches cold-press"
+  },
+  "notes": "Minimal dialogue. The volume's second CG to commission.",
+  "layout": "5 panels, varied multi-tier, portrait page"
+}
