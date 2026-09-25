@@ -374,8 +374,17 @@ def cmd_keys(args):
     return 0
 
 
+def _git_head():
+    try:
+        import subprocess
+        return subprocess.run(["git", "-C", str(REPO.parent), "log", "-1", "--format=%h %s"],
+                              capture_output=True, text=True, timeout=5).stdout.strip()[:70] or "?"
+    except Exception:  # noqa: BLE001
+        return "?"
+
+
 def cmd_doctor(args):
-    print(f"repo: {REPO.parent}")
+    print(f"repo: {REPO.parent}   git: {_git_head()}   python: {sys.version.split()[0]}")
     print(f"key files live in: {rel(TOOLS)}/  (.google_key  .runway_key  .meshy_key — gitignored)\n")
     rep = key_report(args.providers or None, check=not args.no_check)
     bad = 0
@@ -1214,6 +1223,12 @@ def make_handler(runner, roster_path):
                 return str(base / "__forbidden__")
             return str(full)
 
+        def end_headers(self):
+            # The page is edited often; never let the browser serve a stale copy.
+            self.send_header("Cache-Control", "no-store, must-revalidate")
+            self.send_header("Pragma", "no-cache")
+            super().end_headers()
+
         def log_message(self, fmt, *args):
             if self.path.startswith("/api/jobs") or self.path.startswith("/api/roster"):
                 return
@@ -1381,6 +1396,7 @@ def cmd_serve(args):
     handler = make_handler(runner, ROSTER_PATH)
     srv = ThreadingHTTPServer((args.host, args.port), handler)
     rep = key_report(check=False)
+    print(f"meshy_pipeline.py  {rel(Path(__file__))}  (git: {_git_head()})")
     print(f"Hero Studio  →  http://{args.host}:{args.port}/hero_uploader/")
     print("keys: " + "  ".join(f"{k}={r['source'] or 'MISSING'}" for k, r in rep.items()))
     print("      (paste/test keys in the page under KEYS, or run: meshy_pipeline.py doctor)")
