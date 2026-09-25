@@ -3,7 +3,9 @@
 The synthesizing entry point for vol 10 of *Modern Mythology* — the
 final volume, working title **ROFLCOPTR**, which begins as **Drift
 Wood**, a high-school newspaper comic strip in Small Wood, Oregon,
-1997. Thirty years of a daily strip, and the man who drew it.
+1997. Twenty-three years of a public strip, six of a private one,
+and the man who drew them. **Drift Wood is everything before the
+burnout; ROFLCOPTER is the personal voyage after it.**
 
 Status: **outlining / prep** (September 2026). Nothing here is
 engine-consumed yet. Source of the tone and scope is the user's
@@ -15,12 +17,17 @@ A bittersweet chronicle of arrested development, shifting media
 landscapes, and Pacific Northwest melancholy. **Arthur "Woody"
 Finch** is Small Wood High's golden boy in 1997 — editor of *The
 Timberline*, an effortless draftsman, voted Most Likely to Win a
-Pulitzer. He never leaves. He draws a strip about the town every
-day for thirty years, from crow-quill xerox in the school paper, to
-a web-comic he accidentally renames after a misspelled meme in
-2006, to Sunday watercolor pages of coastal weather that a niche
-crowd of illustrators calls the best work being made anywhere, to
-a cedar log at the mouth of the bay at dawn in April 2027.
+Pulitzer. He never leaves. He draws *Drift Wood* about the town
+for twenty-three years — every two weeks in the school paper, five
+days a week in the college years, then six dailies and a Sunday on
+a newspaper cadence for sixteen more — and is known the whole time
+for a one-week meme parody he drew at 3:42 AM in 2006. The Sunday
+watercolors become the best work a niche crowd of illustrators
+knows of. He burns out the way Watterson did and stops, December
+2020, without announcing it. Then he keeps drawing, privately,
+pages instead of strips, and names them *ROFLCOPTER* — the meme's
+name, spelled right, taken back. The personal voyage ends on a
+cedar log at the mouth of the bay at dawn, April 2027.
 
 The volume's thesis, in the brief's words: *talent without
 discipline is just a very articulate form of self-sabotage* — and
@@ -37,8 +44,13 @@ faster than anything in the saga in the dailies.
 
 This volume, like the saga, is nested and loose:
 
-- **The strip** — *Drift Wood* (1997–2006), then *ROLFCOPTR*
-  (2006–2027). The in-fiction artifact. Dailies and Sundays.
+- **The strip** — *Drift Wood* (1997–2020). The public artifact.
+  Biweekly, then weekday-daily, then dailies and Sundays.
+- **The meme** — *ROLFCOPTR* (one week in November 2006). The
+  albatross. Not the strip; the thing people think the strip is.
+- **The personal voyage** — *ROFLCOPTER* (2021–2027). The private
+  work: pages, no grid, no readers, the whole town and everywhere
+  the strip never went. The masterwork, unpublished.
 - **The phantom graphic novel** — the work Arthur never finishes,
   which changes genre every four years. A work that exists only as
   Box 4B and as the thing the strip is *not*.
@@ -53,11 +65,11 @@ This volume, like the saga, is nested and loose:
   itself a found document. Vol 10 closes the same town from the
   other end of the shelf. This is felt, not enforced.
 
-The spelling is deliberate. **ROLFCOPTR** is the strip (the
-misspelled 2004 meme Arthur chained himself to). **ROFLCOPTR** /
-*ROFLcopter* is the volume (the engine's main-menu title, the
-outside-the-fiction name). The gap between them is the joke and the
-point: he couldn't even get the meme right.
+The spellings are deliberate. **ROLFCOPTR** is the meme (misspelled,
+3:42 AM, 2006). **ROFLCOPTER** is the private work (spelled right,
+2021). **ROFLCOPTR** / *ROFLcopter* is the volume (the engine's
+main-menu title, the outside-the-fiction name). He couldn't get the
+meme right; he gets it right when nobody is watching.
 
 ## Quick reference · who and what
 
@@ -158,28 +170,33 @@ at old-Yachats. The map holds.
 
 ## The artifacts
 
-### The strip · *Drift Wood* → *ROLFCOPTR*
+### The strip · *Drift Wood* → *ROFLCOPTER*
 
 Four eras, each with its own line and its own paper. Full spec in
 `drift_wood/the_strip.md`.
 
 | Era | Years | Line | Where it ran |
 |---|---|---|---|
-| I · The High School Zine Era | 1997–2003 | crow-quill + ballpoint on cardstock, xeroxed hard | *The Timberline*, then the laundromat rack |
-| II · The Webcomic Diaspora | 2004–2011 | brush-pen, muddy digital flats, rubbery line | Arthur's own site; Digg front page, Nov 2006 |
-| III · The Masterwork of Mediocrity | 2012–2020 | Derington-sharp brush and ink; Watterson wet-on-wet Sundays | web + a niche of illustrators |
-| IV · The Pacific Twilight | 2021–2027 | spare, knowing; muted ochre / slate / sea-foam | web; the retrospective |
+| I · The High School Zine Era | 1997–2003 | crow-quill + ballpoint on cardstock, xeroxed hard | *The Timberline* every two weeks; the college paper weekdays; the laundromat digest |
+| II · The Webcomic Diaspora | 2004–2011 | brush-pen, muddy digital flats, rubbery line | Arthur's own site on a newspaper cadence; the ROLFCOPTR incident, Nov 2006; coastal weeklies from ~2008 |
+| III · The Masterwork of Mediocrity | 2012–2020 | Derington-sharp brush and ink; Watterson wet-on-wet Sundays | web + coastal papers + a niche of illustrators; ends Dec 27, 2020 |
+| IV · ROFLCOPTER · The Pacific Twilight | 2021–2027 | spare, knowing; muted ochre / slate / sea-foam; pages, no grid | nobody. The garage. Boxes 21–40 |
 
 Two Sunday pages are fully specified, tier by tier, and are the
 volume's visual canon: **"The Empty Chair"** (November 30, 2014)
 and **"The Box"** (December 21, 2014).
+
+Cadence, venues, the two sabbaticals, the 2018–2020 burnout and
+the private era are in `drift_wood/publication_history.md`.
+Drafted strips for every era are in `drift_wood/sample_strips.md`.
 
 ### The phantom graphic novel
 
 Rewritten since 1998. A gritty crime noir (2002), an
 autobiographical indie travelogue (2008), a sprawling magical-
 realist timber allegory (2016), the "serious timber-faller
-allegory" he swears he'll return to after one week of ROLFCOPTR.
+allegory" he swears he'll return to after one week of the
+ROLFCOPTR parody.
 Lives in **Box 4B**, holding down a corner of the rug. Sixty pages,
 2001–2003, mostly unreadable. The retrospective editor asks for it
 first.
@@ -304,21 +321,24 @@ strip's own panel grid as the presentation. Decision reserved.
    what the strip's eras are.
 3. **`drift_wood/the_strip.md`** — the four eras and the two
    fully-specified Sunday pages.
-4. **`drift_wood/arthur_finch.md`** and the other three character
+4. **`drift_wood/publication_history.md`** — the cadences, the
+   names, the burnout, the personal voyage.
+5. **`drift_wood/sample_strips.md`** — drafted strips per era.
+6. **`drift_wood/arthur_finch.md`** and the other three character
    files.
-5. **`drift_wood/_ARC_OUTLINE.md`** — the five arcs as chapters and
-   the proposed scene-id plan.
-6. **`drift_wood/_CONCEPT_ART.md`** — the September 2026 sheet.
-7. **`_VOL7_WIKI.md`** — only for the Smolvud echoes and the far
+7. **`drift_wood/_ARC_OUTLINE.md`** — the arcs as chapters and the
+   proposed scene-id plan.
+8. **`drift_wood/_CONCEPT_ART.md`** — the September 2026 sheet.
+9. **`_VOL7_WIKI.md`** — only for the Smolvud echoes and the far
    horizon.
-8. **Vol 2's title scene** — there is no vol 2 wiki; read
+10. **Vol 2's title scene** — there is no vol 2 wiki; read
    `godot/resources/scenes/vol2/vol2_title.json` for the found-
    notebook frame if the nesting matters to the chapter at hand.
 
 ## Status
 
-Outlining. The brief is transcribed and the reference files are
-drafted from it without invention beyond what is marked. No scene
-JSON exists. The engine's volume slot exists and is locked.
+Outlining, now fleshing out. The brief is transcribed; the
+reference files are drafted from it and from the user's cadence
+notes; sample strips exist for every era. No scene JSON exists. The engine's volume slot exists and is locked.
 
 The chapter is held.

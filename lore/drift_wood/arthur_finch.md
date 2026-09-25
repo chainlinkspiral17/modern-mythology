@@ -20,22 +20,26 @@ As long as the magnum opus remains uncompleted, it remains perfect.
 
 | when | what |
 |---|---|
-| 1997 | Editor of *The Timberline*. *Drift Wood* begins. |
+| 1997 | Editor of *The Timberline*. *Drift Wood* begins, every two weeks. |
 | 1998 | The phantom graphic novel begins being rewritten. |
 | Nov 1999 | Finds Barnaby tied to a rusted dumpster behind the bowling alley on a freezing night. |
+| 1999 | Chloe leaves for college. *Drift Wood* goes weekday-daily in the Newport college paper (lean). |
 | 2000 | Turns down the PNCA scholarship — *"a commercial racket designed to castrate raw vision"* — and takes the part-time job at Heceta Frame & Matting on 101. Chloe boards the southbound Greyhound (Arc 1). |
 | 2001–03 | Box 4B: sixty pages of the gritty crime noir. Mostly unreadable. |
 | ~2005 | Turns twenty-five. Five hundred loose pages. Father gets sick. Framing shop cuts his hours. |
-| Nov 2006 | The 72-hour sprint. ROLFCOPTR. Digg. The 509. $800/month in ringtone banners (Arc 2). |
+| 2004 | *Drift Wood* goes online on a newspaper cadence: six dailies and a Sunday. |
+| Nov 2006 | The 72-hour sprint. The *ROLFCOPTR* parody. Digg. The 509. $800/month in ringtone banners. He is the ROLFCOPTR guy forever (Arc 2). |
 | 2008 | Walks the abandoned cedar mill with Chloe. The travelogue draft. |
 | 2010s | Night auditor, Driftwood Motel. 1993 Subaru Legacy, oil-burning. Garage apartment behind the tavern. |
 | July 2014 | Drives to the San Juan Islands on a doughnut spare for Chloe's wedding (Arc 3). |
 | Nov–Dec 2014 | Barnaby's decline and death; "The Empty Chair"; "The Box" (Arc 4). |
+| 2010 · 2015 | Nine-month sabbaticals: after his father; after Barnaby. |
 | 2016 | The magical-realist timber allegory draft. |
 | 2018 | The 24-hour diner in Newport with Chloe. |
-| 2021–27 | Era IV. The snark falls away. |
+| Dec 27, 2020 | The last public *Drift Wood* Sunday. Announces nothing. |
+| 2021–27 | *ROFLCOPTER*. Pages, no grid, no readers. The personal voyage. The snark falls away. |
 | 2024 | Todd's dock, lukewarm Rainier, Chloe's confession about packaging. |
-| Autumn 2026–Spring 2027 | The retrospective. The editor. Box 4B. The final page (Arc 5). |
+| Autumn 2026–Spring 2027 | The retrospective of *Drift Wood*. The editor finds boxes 21–40. Box 4B. The final ROFLCOPTER page (Arc 5). |
 
 ## II. WHERE HE LIVES, WHERE HE WORKS
 
@@ -83,13 +87,14 @@ whatever he is insecure about:
 
 - 2002 — a gritty crime noir (Box 4B, 2001–03).
 - 2006 — "the serious timber-faller allegory" he swears he'll return
-  to after one week of ROLFCOPTR.
+  to after one week of the ROLFCOPTR parody.
 - 2008 — an autobiographical indie travelogue.
 - 2016 — a sprawling magical-realist timber allegory.
 
 He reworks the first thirty pages of five different novels for
 years. In 2027 the editor asks where it is. He points at the box
-holding the rug down.
+holding the rug down. The novel he was trying to write is in boxes
+21 through 40, and it isn't a novel; it's *ROFLCOPTER*.
 
 ## VI. THE CONCEPT-SHEET ARTHUR
 

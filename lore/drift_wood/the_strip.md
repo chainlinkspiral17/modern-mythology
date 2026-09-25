@@ -1,4 +1,4 @@
-# THE STRIP · *Drift Wood* → *ROLFCOPTR*
+# THE STRIP · *Drift Wood* → *ROFLCOPTER*
 ## Small Wood, OR · 1997–2027 · by A. Finch
 
 The artifact at the center of vol 10. A daily four-panel strip and a
@@ -13,31 +13,39 @@ tier by tier. The life it recorded is in the character files and
 
 ---
 
-## I. THE NAME
+## I. THE NAMES
 
-**Drift Wood** (1997–2006). The high-school name. Runs in *The
-Timberline*, Small Wood High's paper, then on a free alt-weekly rack
-at the local laundromat after Arthur graduates.
+**Drift Wood** (1997–2020). The public strip, under one name for
+twenty-three years: *The Timberline* every two weeks, the college
+paper five days a week, then six dailies and a Sunday page on the
+web and in a handful of coastal papers. The name never changes
+because the strip never stops being about the town.
 
-**ROLFCOPTR** (late 2006–2027). Renamed during a 72-hour manic
-sprint in November 2006, on clearance instant noodles and generic
-citrus soda, as a one-week scorched-earth parody of early-internet
-slang: *a stick figure screaming internet acronyms into an uncaring
-abyss.* Hits the front page of Digg. The server returns a 509
-(Bandwidth Limit Exceeded). Forty thousand visitors a day.
-Advertisers offer $800 a month for ringtone banners. Arthur is saved
-from eviction and condemned to the name. He never gets to go back to
-the serious timber-faller allegory.
+**ROLFCOPTR** (November 2006; one week, then forever). Not the
+strip. A 72-hour parody drawn beside it, on clearance instant
+noodles and generic citrus soda: *a stick figure screaming internet
+acronyms into an uncaring abyss.* Front page of Digg. A 509 from
+the server. Forty thousand visitors a day who came for the
+helicopter. $800 a month in ringtone banners that pay the rent for
+a year. He kills the parody after a month; the name outlives it.
+For the rest of his public life he is "the ROLFCOPTR guy," and
+*Drift Wood* is the strip by him. Arthur, at a wedding in 2014:
+*"I run a webcomic named after a misspelled 2004 meme about an
+imaginary helicopter."* — which is what strangers think, and what
+he has stopped correcting.
 
-The spelling is the misspelled 2004 meme. Arthur, at a wedding in
-2014: *"I run a webcomic named after a misspelled 2004 meme about an
-imaginary helicopter."*
+**ROFLCOPTER** (January 2021–April 2027). The private work. When
+*Drift Wood* ends he starts drawing pages for no one and signs them
+with the albatross, spelled right for the first time. An imaginary
+helicopter is a way of leaving a town without leaving it. The
+personal voyage.
 
-Outside the fiction, the volume is *ROFLCOPTR* / *ROFLcopter*. The
-strip inside it is *ROLFCOPTR*. Keep both spellings; the gap is the
-joke.
+Outside the fiction the volume is *ROFLCOPTR* / *ROFLcopter*. Inside
+it, three spellings are three things. The gap is the joke and then
+it's the point.
 
----
+Cadence, venues, counts and the burnout are in
+`publication_history.md`.
 
 ## II. THE FOUR ERAS
 
@@ -70,7 +78,7 @@ compensate.
 - **Arc 2 aesthetic (November 2006):** digital flats over physical
   ink; saturated neon monitor glow cutting through dark garage
   interiors; jagged, hyperactive linework.
-- **Subject:** beneath the meme name the storytelling darkens.
+- **Subject:** beneath the meme's shadow the storytelling darkens.
   Arthur turns twenty-five; the graphic novel is five hundred loose
   pages; his father gets sick; the framing shop cuts his hours.
 
@@ -99,8 +107,10 @@ compensate.
 - **Arc 5 aesthetic (2026–27):** masterwork level. Watterson's fluid
   Sunday layouts with Derington's spatial discipline. Luminous
   sunbreaks through coastal cloud.
-- **Subject:** the strip slows. Small Wood is half tourist Airbnbs,
-  half boarded-up memory. Arthur accepts that *this* was the work.
+- **Subject:** the public strip has ended (Dec 27, 2020). These are
+  the ROFLCOPTER pages — no grid, no schedule, no readers. Small
+  Wood is half tourist Airbnbs, half boarded-up memory. Arthur
+  accepts that *this* was the work.
 
 ---
 
