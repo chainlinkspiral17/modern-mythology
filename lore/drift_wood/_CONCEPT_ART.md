@@ -57,9 +57,9 @@ problem, *but*). The palette (slate, sea-foam, ochre, gray).
 
 | on the sheet | in the brief | note |
 |---|---|---|
-| **A bird**, no dog | Barnaby, then Barnaby II, a specified 5-week arc | The open question. Options: the bird is Era IV only (a bird that shouldn't be on this coast, which Arthur notices and never explains); the bird is the strip-within-the-strip's mascot (ROLFCOPTR's stick-figure era needs a mascot that isn't the real dog); or the bird is a Sunday-landscape motif. Recommend keeping Barnaby's arc intact and letting the bird be the thing Arthur draws *instead of* himself in the post-2014 dailies. |
+| **A bird**, no dog | Barnaby, then Barnaby II, a specified 5-week arc | The open question. Options: the bird is Era IV only (a bird that shouldn't be on this coast, which Arthur notices and never explains); the bird is the private work's companion (the *ROFLCOPTER* pages are the voyage, and the voyage gets its own animal); or the bird is a Sunday-landscape motif. Recommend keeping Barnaby's arc intact and letting the bird be the thing Arthur draws *instead of* himself in the post-2014 dailies. |
 | *WOOD* | *Arthur "Woody" Finch* | Probably the strip's own name for its lead — Arthur draws himself as "Wood." Works within works. |
-| A rotor on the logo | *an imaginary helicopter* | Matches. |
+| A rotor on the logo, lettered *ROLFCOPTR* | *an imaginary helicopter* | Matches. The sheet is Era IV, which is the private *ROFLCOPTER* work; the sheet uses the meme's spelling. The user's spellings vary (ROFLCOPTR, ROFLCOPTER, ROLFCOPTR); the lore's lean is: meme = ROLFCOPTR, private work = ROFLCOPTER, volume = ROFLCOPTR. Settle once. |
 | A yellow **eye** sign | nothing | New. Reads as the town watching, or as the substrate's *watched* terrain from vol 6 without saying so. Keep as an environmental motif; never explain it. |
 | A **moss-grown stone head** | nothing | New. A carved face by a wall, half sunk. Could be a Small Wood landmark (a mill-era monument, a timber baron, a mascot), or the saga's far-horizon "ground where the riverboat was" seen from Small Wood. Reserved. Strong Sunday-landscape subject. |
 | Fish weathervane | nothing | Environmental. Keep. |
@@ -74,7 +74,5 @@ problem, *but*). The palette (slate, sea-foam, ochre, gray).
 - The **environment vocabulary** is set: cedar shingle, pilings,
   rigging in fog, street-sign poles with odd signage, moss on
   stone. Feed this to the Sunday-landscape list in `the_strip.md`.
-- The **logo** is usable as the volume's title card as is, with the
-  spelling question settled in the fiction's favor (ROLFCOPTR on
-  the strip; the engine's menu says ROFLcopter, and that gap is
-  allowed).
+- The **logo** is usable as the volume's title card as is, once
+  the spelling is settled (see the table above).
