@@ -58,7 +58,40 @@
       "pose": "a-pose",
       "prompt": "John Frank, mid-20s grad student, mixed-media journalist and late-night waiter at D'Ambrosio's riverboat diner. Lean, tired-eyed, brown hair pushed back carelessly. Wears the diner's plain white button shirt with sleeves rolled to the elbow, a black half-apron with a folded napkin tucked into it, dark trousers, scuffed black work shoes. Open, watchful face; a wanderer who hasn't left yet.",
       "texture_prompt": "white cotton shirt, black cloth apron, dark twill trousers, worn leather shoes, warm skin, brown hair",
-      "canon": []
+      "canon": [
+        {
+          "src": "vol5/vol5_ch0_closing.json",
+          "text": "He watched his own reflection in the glass — shadowed eyes, gaunt face, a young man at a counter waiting for his cue."
+        },
+        {
+          "src": "vol5/vol5_ch0_booth6.json",
+          "text": "John Frank: grad student, mixed-media journalist (whatever that meant this week), late-night waiter at the nexus of Graustark, Texas/Louisiana, this riverboat-shaped restaurant wedged between reason and riot, between two states of being and two states of the union."
+        },
+        {
+          "src": "vol5/vol5_ch5_hierophant.json",
+          "text": "In John's coat pocket, against his ribs, the folded napkin from booth six pressed faintly through the lining."
+        },
+        {
+          "src": "games/hierophant/cameo_john_at_the_bandstand.json",
+          "text": "John walks over from the diner with his notebook. He stands at the back of the crowd."
+        },
+        {
+          "src": "vol5/vol5_ch14_temperance.json",
+          "text": "A middle-aged man in a Montreal apartment. Drinking adequate coffee. Observing the alley."
+        },
+        {
+          "src": "lore/_GAUNTLET_BUILD_WIKI.md",
+          "text": "John Frank — 20-something, grad student, \"mixed-media journalist,\" waiter."
+        },
+        {
+          "src": "games/hands/john_frank.json",
+          "text": "twelve years at the counter"
+        },
+        {
+          "src": "lore/_DAMBROSIO_EMPLOYEES.md",
+          "text": "a small annotation on John's apron under the painted scene reads '12 yr'."
+        }
+      ]
     },
     {
       "slug": "frasier_temple",
@@ -80,7 +113,40 @@
       "pose": "a-pose",
       "prompt": "Frasier Temple, young Black man in his late 20s, athletic build, locs twisted up and back off his forehead. Olive-green bomber jacket worn open showing a dark t-shirt with a cream gear logo (GEARING CORP) centered on the chest, dark jeans, dark sneakers. Focused, wry expression; a warehouse sysop who solders his own circuit boards.",
       "texture_prompt": "olive nylon bomber, dark cotton tee with a cream gear print, dark denim, dark skin, black locs",
-      "canon": []
+      "canon": [
+        {
+          "src": "vol5/vol5_ch0_frasier.json",
+          "text": "Leather bomber jacket stained with substances that might have been solder flux, might have been hot sauce, might have been transmission fluid, certainly were not, at this point, identifiable. Hair a chaotic sculpture defying gravity and three of the laws of thermodynamics. Notebook tucked under his arm like a holy text or a bomb schematic, and possibly both."
+        },
+        {
+          "src": "vol5/vol5_ch1_magician.json",
+          "text": "Frasier moved through it — lanky silhouette against the gloom. His bomber jacket draped over a t-shirt bearing the faded logo of some defunct tech collective the rest of the world had forgotten."
+        },
+        {
+          "src": "lore/_CHARACTER_MODELING_NOTES.md",
+          "text": "Young Black man (late 20s/early 30s, not \"middle-aged creaky\" — that quote from `_VOL6_WIKI.md` is about vol6-era Frasier; vol5 Frasier is young)"
+        },
+        {
+          "src": "lore/_CHARACTER_MODELING_NOTES.md",
+          "text": "Locs / dreadlocks — twisted strands going up + back. NOT an afro."
+        },
+        {
+          "src": "lore/_CHARACTER_MODELING_NOTES.md",
+          "text": "Olive bomber jacket worn OPEN — two side panels visible, dark t-shirt visible in the chest gap"
+        },
+        {
+          "src": "lore/_CHARACTER_MODELING_NOTES.md",
+          "text": "\"GEARING CORP\" tee — dark t-shirt with a cream/grey gear logo on the chest centerline (the printed band-tee / dev-shop vibe)"
+        },
+        {
+          "src": "lore/_CHARACTER_MODELING_NOTES.md",
+          "text": "Pose canon: at his workbench in the Cathedral, holding a soldering iron in one hand, working on a circuit board with the other. Lean-forward posture, focused face."
+        },
+        {
+          "src": "vol5/vol5_ch0_frasier.json",
+          "text": "He tapped the cover of his notebook. Diagrams adorned it that looked suspiciously like circuit boards woven into mandalas."
+        }
+      ]
     },
     {
       "slug": "elicia_temple",
@@ -100,7 +166,40 @@
       "pose": "a-pose",
       "prompt": "Elicia Temple (Duchane), documentary filmmaker in her early 30s, tall and composed. Dark hair pulled back, sharp intelligent eyes. Black turtleneck under a long charcoal coat, dark slim trousers, flat boots, a cassette recorder on a strap over one shoulder. The host of 'Whispers from the Liminal'; a veil of cassette tape ribbon hangs from her collar.",
       "texture_prompt": "black wool turtleneck, charcoal wool coat, dark trousers, black leather boots, brown cassette tape ribbons",
-      "canon": []
+      "canon": [
+        {
+          "src": "vol5/vol5_ch2_priestess_b.json",
+          "text": "The glow illuminated her face — sharp cheekbones and shadowed eyes. The polished mask she had built for the camera and then forgotten how to take off in private."
+        },
+        {
+          "src": "vol5/vol5_ch2_priestess.json",
+          "text": "Her eyes — the pale, intelligent, evaluative eyes that had served her well in two industries and one unfortunate marriage — moved across the room in the practiced sweep of someone who could no longer enter a space without first checking the framing."
+        },
+        {
+          "src": "lore/pomegranate_hour/00_fool.md",
+          "text": "ELICIA — mid-thirties, dark hair tied back, no makeup — sits in a wooden chair, her hands folded in her lap."
+        },
+        {
+          "src": "vol5/vol5_ch19_sun.json",
+          "text": "wearing a denim jacket that had been repaired at the cuff and a scarf that was, John had noticed, the same scarf she had worn in the very first recording she had showed him last month, a scarf that had, she had told him, belonged to her mother."
+        },
+        {
+          "src": "vol5/vol5_ch14_temperance.json",
+          "text": "He missed deciphering the coded warnings in Elicia Duchane's icy gaze across the D'Ambrosio's floor."
+        },
+        {
+          "src": "vol5/vol5_ch2_priestess_b.json",
+          "text": "Even if her hands, lately, were starting to shake."
+        },
+        {
+          "src": "lore/pomegranate_hour/21_world.md",
+          "text": "Her hair is down. Her face is bare."
+        },
+        {
+          "src": "games/hands/elicia.json",
+          "text": "Pale evaluative eyes. Two industries and one unfortunate marriage."
+        }
+      ]
     },
     {
       "slug": "nicola",
@@ -119,7 +218,40 @@
       "pose": "a-pose",
       "prompt": "Nicola Greer, 19, hostess on the D'Ambrosio riverboat. Slight, upright posture, chestnut hair in a neat low ponytail. Riverboat hostess uniform: fitted burgundy vest with brass buttons over a white blouse, black skirt to the knee, black flats, a small name badge. Bright, steady, a little too calm — she carries Aria.",
       "texture_prompt": "burgundy velvet vest with brass buttons, white cotton blouse, black skirt, black flats, fair skin, chestnut hair",
-      "canon": []
+      "canon": [
+        {
+          "src": "vol5/vol5_ch3_empress.json",
+          "text": "She was chaos wrapped in a too-tight hostess uniform — untamed energy buzzing just beneath alabaster skin stretched taut over sharp cheekbones."
+        },
+        {
+          "src": "vol5/vol5_ch3_empress.json",
+          "text": "Nineteen, going on ancient. Nicola navigated the plush burgundy carpet — burgundy swamp, probably hiding generations of spilled secrets — with a practiced grace that was pure muscle memory."
+        },
+        {
+          "src": "vol5/vol5_ch12_hanged.json",
+          "text": "Nicola Greer stood on the small landing, pale and exhausted, a duffel bag at her feet, her left hand pressed flat against her stomach in the gesture of a woman who had been making the gesture for some weeks without quite recognizing what the gesture was telling her."
+        },
+        {
+          "src": "vol5/vol5_ch4_emperor.json",
+          "text": "Nicola Greer at the hostess stand, moving with that infuriating, oblivious grace, probably unaware she was carrying the next damn complication right there under her apron."
+        },
+        {
+          "src": "vol5/vol5_ch3_empress.json",
+          "text": "Back at the hostess stand, Nicola smoothed her uniform. The fabric suddenly felt alien, restrictive — a costume designed by a wardrobe department that had not consulted her and would not have listened if she'd asked."
+        },
+        {
+          "src": "vol5/vol5_ch4_emperor.json",
+          "text": "He thought of Nicola Greer down on the floor, smiling the smile that did not reach her eyes."
+        },
+        {
+          "src": "games/empress/items.json",
+          "text": "The pocket of the apron Dante had embroidered with the boat's monogram in '23. Holds: pens, a folded reservation card, the small notebook you write checks in."
+        },
+        {
+          "src": "games/hands/nicola.json",
+          "text": "Nicola Greer. 19, going on ancient. Hostess at D'Ambrosio's riverboat. Friday night dinner. Pregnant — she felt the first kick this week."
+        }
+      ]
     },
     {
       "slug": "dante_dambrosio",
@@ -138,7 +270,40 @@
       "pose": "a-pose",
       "prompt": "Dante D'Ambrosio, 60, proprietor of the riverboat diner. Stocky, barrel-chested, thick silver hair swept back, heavy brows, a broad Italian-American face. Dark three-piece suit with the jacket open, white shirt, no tie, a brass pocket-watch chain, polished black shoes. Stands like he owns the deck; a man about to be swallowed by the sinkhole.",
       "texture_prompt": "dark navy wool suit, white shirt, brass watch chain, black leather shoes, olive skin, silver hair",
-      "canon": []
+      "canon": [
+        {
+          "src": "vol5/vol5_ch4_emperor.json",
+          "text": "He stood up, smoothed his shirt — the white shirt with the red wine stain near the third button that he had not had the decency to change before service — and he walked out of the office, down the narrow stairs, into the heart of the boat that was both his kingdom and his cage."
+        },
+        {
+          "src": "vol5/vol5_ch4_emperor.json",
+          "text": "A low groan of stressed timbers and rusting metal. Or maybe that was just his own bones settling deeper into the Louisiana muck side of the border. Sixty years old. Christ."
+        },
+        {
+          "src": "lore/pomegranate_hour/04_emperor.md",
+          "text": "In front of the grill: THE CHAIRMAN. Late sixties. Crisp blue button-down rolled at the sleeves, khaki shorts, leather sandals. A canvas apron over the shirt — the apron is hand-printed across the chest in faded letters: **CHEZ HÉLÈNE · CHEF'S TABLE · 1979.**"
+        },
+        {
+          "src": "vol5/vol5_ch4_emperor.json",
+          "text": "Dante stood at the leaded window, bourbon in hand, and watched the man cross the gangway toward the parking lot."
+        },
+        {
+          "src": "vol5/vol5_ch4_emperor.json",
+          "text": "The dining room received him the way a congregation receives a priest who has aged into a kind of permanent fixture: with the small reverent inattention of people who have stopped, decades ago, being surprised that he was still there."
+        },
+        {
+          "src": "games/hands/dante.json",
+          "text": "Dante D'Ambrosio. 60. Proprietor of D'Ambrosio's riverboat. Sixty years of sweat and deals done in shadows thick as gumbo gravy."
+        },
+        {
+          "src": "vol5/vol5_ch4_emperor.json",
+          "text": "His shoes were already wet. He could feel it, through the leather."
+        },
+        {
+          "src": "vol5/vol5_ch20_judgement.json",
+          "text": "He was at the helm. He had been at the helm, on this particular morning, for sixty consecutive hours. He had not slept. He had not eaten."
+        }
+      ]
     },
     {
       "slug": "quentin_paul",
@@ -158,7 +323,40 @@
       "pose": "a-pose",
       "prompt": "Quentin Paul, Graustark power figure in his 50s, immaculate. Silver-templed dark hair, clean-shaven, unreadable smile. Perfectly tailored charcoal suit, crisp white shirt, dark tie with a small gold pin, black oxfords shined to a mirror. Holds a pocket watch loosely in one hand. The man who brunches at Table 17.",
       "texture_prompt": "charcoal wool suit, white shirt, dark silk tie, gold tie pin, black oxfords",
-      "canon": []
+      "canon": [
+        {
+          "src": "vol5/vol5_ch5_hierophant.json",
+          "text": "She saw the tension in his jaw. The slight tic near his eye. The way the cuff of his right sleeve was a millimeter shorter than the left, as if at some point that morning his hand had gripped it and twisted it down without his noticing. Righteousness masking something else. Something brittle. Maybe something afraid."
+        },
+        {
+          "src": "vol5/vol5_ch5_hierophant.json",
+          "text": "Quentin Paul. Even from a distance, commanding attention. The suit still immaculate, despite the day's accumulated sweat and sin. He walked with that unwavering, purposeful gait — like a man marching toward either salvation or conquest, probably both."
+        },
+        {
+          "src": "vol5/vol5_ch5_hierophant.json",
+          "text": "He wasn't smiling. He wore a suit, even though it felt like the inside of a dog's mouth outside. His eyes swept over the small crowd leaving the service, pausing on folks here and there, like he was counting sins."
+        },
+        {
+          "src": "vol5/vol5_ch5_hierophant.json",
+          "text": "The war between spirit and ambition played out in the tense line of his shoulders, the tight clench of his jaw."
+        },
+        {
+          "src": "vol5/vol5_ch5_hierophant.json",
+          "text": "Paul adjusted his tie. Pulled out a phone. His voice carried faintly on the breeze — sharp, clipped, commanding."
+        },
+        {
+          "src": "vol5/vol5_ch5_hierophant.json",
+          "text": "Back when he was just another ambitious climber with sweat stains under his arms and hands that lingered a second too long when he handed back the check presenter. Seminary school dropout, they said."
+        },
+        {
+          "src": "vol5/vol5_ch5_hierophant.json",
+          "text": "He wasn't eating. He was delivering pronouncements between sips of black coffee."
+        },
+        {
+          "src": "games/hands/quentin_paul.json",
+          "text": "Walks like he owns the damn sidewalk and maybe the sky too."
+        }
+      ]
     },
     {
       "slug": "mackenzie_roberts",
@@ -178,7 +376,32 @@
       "pose": "a-pose",
       "prompt": "Mackenzie Roberts, mid-30s, a weaver from the sinkhole-edge of Graustark. Long auburn hair loosely braided, freckled, tired kind eyes. Oversized hand-knit cardigan in undyed cream wool over a faded floral dress, wool socks, clogs; a skein of yarn tucked under one arm. Warm, worn thin.",
       "texture_prompt": "cream hand-knit wool cardigan, faded blue floral cotton dress, wooden clogs, fair freckled skin, auburn hair",
-      "canon": []
+      "canon": [
+        {
+          "src": "games/magician/visitors.json",
+          "text": "Mackenzie at the bay, jacket damp, glasses fogging."
+        },
+        {
+          "src": "games/lovers/finale.json",
+          "text": "Mackenzie's coffee mug — the World's Okayest Weaver one — was in the sink, half-rinsed."
+        },
+        {
+          "src": "vol5/vol5_ch21_world.json",
+          "text": "Mackenzie's weavin' somethin' bright on her loom — patterns nobody's seen before, curling patterns, organic, the kind you stared at for a while and then looked away from and then looked back and saw something new."
+        },
+        {
+          "src": "games/hands/mackenzie.json",
+          "text": "Mackenzie Roberts. Library-slash-daycare volunteer. Weaver. Older brother lost in the sinkhole three years ago. Pregnancy lost last year."
+        },
+        {
+          "src": "vol5/vol5_ch6_lovers.json",
+          "text": "Mackenzie took the photograph from him. Held it in both hands, the way the boy had held the envelope."
+        },
+        {
+          "src": "vol5/vol5_ch21_world.json",
+          "text": "Mackenzie had met them at the porch with a pitcher of iced tea."
+        }
+      ]
     },
     {
       "slug": "philip_roberts",
@@ -197,7 +420,32 @@
       "pose": "a-pose",
       "prompt": "Philip Roberts, late 30s, Mackenzie's husband. Broad, quiet, sun-darkened forearms. Grey work t-shirt under an unbuttoned blue chambray shirt, worn jeans, steel-toe boots, a pipe wrench hanging from one hand. Face set in patient worry.",
       "texture_prompt": "blue chambray shirt, grey cotton tee, faded denim, tan leather work boots, steel wrench",
-      "canon": []
+      "canon": [
+        {
+          "src": "vol5/vol5_ch6_lovers.json",
+          "text": "He tightened the wrench again. Knuckles white against the corroded metal. Pipe dope, plumber's tape, prayer — he'd tried it all."
+        },
+        {
+          "src": "vol5/vol5_ch6_lovers.json",
+          "text": "Philip wiped his hands on a dishtowel that had been clean an hour ago and was no longer. He went to the door."
+        },
+        {
+          "src": "games/lovers/cameo_frasier_at_the_roberts.json",
+          "text": "Philip Roberts the morning after the Polaroid. He has not, this Tuesday, slept much. He is on the lawn chair with the coffee from 6 AM still half-full."
+        },
+        {
+          "src": "games/lovers/cameo_john_at_the_roberts.json",
+          "text": "Philip Roberts. Two beers in. The lawn chair."
+        },
+        {
+          "src": "games/lovers/setup_today_the_drip_can_win.json",
+          "text": "Philip sits on the back step with his head in his hands and does not, today, come back into the kitchen."
+        },
+        {
+          "src": "vol5/vol5_ch21_world.json",
+          "text": "Hear tell Philip's got the porch rebuilt. Sturdy this time."
+        }
+      ]
     },
     {
       "slug": "antonio",
@@ -216,7 +464,36 @@
       "pose": "a-pose",
       "prompt": "Antonio D'Ambrosio, 34, building the Ember & Ash restaurant in New Orleans. Dante's son: same heavy brows, dark hair cropped short, trimmed beard, restless energy. Black chef's jacket with the sleeves pushed up, dark jeans, black clogs, a folded blueprint in his back pocket. Two speeds: full stop and full sprint.",
       "texture_prompt": "black cotton chef jacket, dark denim, black rubber clogs, olive skin, dark hair",
-      "canon": []
+      "canon": [
+        {
+          "src": "games/hands/antonio.json",
+          "text": "Antonio D'Ambrosio. 34. The younger son. The artista. Off in New Orleans chasing a fool dream with that punk Jimmy Daigle. Has two speeds: gone and about to be gone."
+        },
+        {
+          "src": "vol5/vol5_ch5_hierophant.json",
+          "text": "He ran a hand through his hair. The weight of his father's legacy, of Paul's expectations, pressing down."
+        },
+        {
+          "src": "vol5/vol5_ch5_hierophant.json",
+          "text": "Antonio pinched the bridge of his nose. The phone hot against his ear."
+        },
+        {
+          "src": "games/emperor/cameo_antonios_friday_visit.json",
+          "text": "you are in a borrowed white jacket on your father's floor."
+        },
+        {
+          "src": "games/emperor/cameo_antonios_friday_visit.json",
+          "text": "You step into the locker room. The white jackets on the hooks. You take one off the second peg."
+        },
+        {
+          "src": "vol5/vol5_ch7_chariot.json",
+          "text": "He was not, at thirty-four, ready for that to be true."
+        },
+        {
+          "src": "games/hierophant/visitors.json",
+          "text": "Antonio D'Ambrosio. The younger son. In New Orleans, in the cramped office above Ember & Ash. The wildcard. The artistic temperament."
+        }
+      ]
     },
     {
       "slug": "douglas_forte",
@@ -236,7 +513,40 @@
       "prompt": "Douglas Forte, 40s, Joanna's lost lover. Rangy, weathered, close-cropped greying hair, a faded ouroboros tattoo (a snake eating its tail) visible on the inside of his right forearm. Wears an old dark confirmation suit a size too small, white shirt open at the collar, no tie, dusty dress shoes. Haunted, gentle.",
       "texture_prompt": "worn black wool suit, white cotton shirt, dusty black shoes, tanned skin, faded blue-black tattoo",
       "notes": "Look is not pinned down in canon; this prompt is a proposal — edit before spending credits.",
-      "canon": []
+      "canon": [
+        {
+          "src": "vol5/vol5_ch8_strength.json",
+          "text": "Scarred knuckles mapped with the ghosts of busted fences and kitchen brawls from back when Dante's word was law and Douglas's word, to the people who needed it, was Dante's. Calloused cartography of a life spent holding things together."
+        },
+        {
+          "src": "vol5/vol5_ch8_strength.json",
+          "text": "The ouroboros on his forearm caught the neon and sent it back, dim and red, against the inside of his wrist."
+        },
+        {
+          "src": "vol5/vol5_ch8_strength.json",
+          "text": "The way her fingers — stained with ink or paint or charcoal, often all three at once — would trace the faded lines on his forearm where the snake tattoo ate its own tail."
+        },
+        {
+          "src": "vol5/vol5_ch8_strength.json",
+          "text": "The face looked back. Older than he remembered it being. Quieter. The kind of quiet that was not the same as peace."
+        },
+        {
+          "src": "vol5/vol5_ch15_devil.json",
+          "text": "Forte, with his quiet strength and his haunted eyes, didn't see the grift."
+        },
+        {
+          "src": "vol5/vol5_ch10_wheel.json",
+          "text": "had driven up from New Orleans to sit in the back row in the suit his mother had bought him for his confirmation"
+        },
+        {
+          "src": "vol5/vol5_ch21_world.json",
+          "text": "Douglas Forte arrived on foot at the Roberts's house on Saturday morning, having walked for five days from New Orleans, his canvas duffle over his shoulder."
+        },
+        {
+          "src": "vol5/vol5_ch8_strength.json",
+          "text": "He had packed a bag — the same canvas duffle his father had carried back from Korea, which was now battered enough to look intentional"
+        }
+      ]
     },
     {
       "slug": "joanna_lemoine",
@@ -255,7 +565,36 @@
       "pose": "a-pose",
       "prompt": "Joanna LeMoine, poet of the Graustark ruins, late 40s. Wiry, long grey-streaked dark hair loose under a battered wide-brim hat, weather-lined face, sharp eyes. Long oilskin coat over a wool sweater and corduroys, rubber boots, a lantern in one hand. A faded brown dog collar hangs from her belt (Rumpus).",
       "texture_prompt": "dark green waxed oilskin coat, grey wool sweater, brown corduroy, black rubber boots, brass lantern",
-      "canon": []
+      "canon": [
+        {
+          "src": "vol5/vol5_ch8_strength.json",
+          "text": "He saw her sometimes, in the reflections distorted by cheap bar glass — a flash of unruly dark hair, eyes that held the wisdom of ruins. Saw her scrawling words on walls with charcoal fingers, surrounded by her court of stray dogs and one-eyed cats."
+        },
+        {
+          "src": "vol5/vol5_ch9_hermit.json",
+          "text": "She moved with a stillness that belied the tremor in her hands."
+        },
+        {
+          "src": "vol5/vol5_ch17_star.json",
+          "text": "the obsidian ink staining her skin, the way it had been staining her skin in different patterns for the past three years, the way it had begun, in the past month, to outlast the soap she used."
+        },
+        {
+          "src": "vol5/vol5_ch9_hermit.json",
+          "text": "She put it in the breast pocket of her jacket, the one that buttoned, the one she had stitched a small inner lining into precisely so that she could keep the things she was not yet ready to lose."
+        },
+        {
+          "src": "vol5/vol5_ch17_star.json",
+          "text": "They had seen the cracks in her smile, the haunted hollows beneath her eyes. They had seen the girl who knew too much, felt too much, the one doomed to chronicle the fall because she was already halfway down."
+        },
+        {
+          "src": "vol5/vol5_ch17_star.json",
+          "text": "Joanna sat down on a chunk of broken concrete, the moon-shard light falling across her shoulders, and allowed the animals their small comforts."
+        },
+        {
+          "src": "vol5/vol5_ch9_hermit.json",
+          "text": "The Hermit, lantern held aloft — a scavenged flashlight, actually, flickering weakly, batteries Joanna had been meaning to replace for a week — led her small procession deeper into the beautiful terrifying labyrinth she now called home."
+        }
+      ]
     },
     {
       "slug": "erica_campbell",
@@ -274,7 +613,36 @@
       "pose": "a-pose",
       "prompt": "Erica Campbell, Houston corporate lawyer, late 30s, Black woman with a precise close-cropped natural hairstyle and an expensive quiet confidence. Tailored navy pantsuit, cream silk blouse, low heels, a slim leather portfolio held at her side. Composed, sharp, kind under the armour.",
       "texture_prompt": "navy wool suit, cream silk blouse, black leather heels, brown leather portfolio, dark skin",
-      "canon": []
+      "canon": [
+        {
+          "src": "lore/pomegranate_hour/11_justice.md",
+          "text": "A woman — late twenties, ERICA CAMPBELL, although the deck does not yet permit naming her in the credits — enters. She wears a charcoal pencil skirt and a white blouse."
+        },
+        {
+          "src": "vol5/vol5_ch10_wheel.json",
+          "text": "She took a breath. Smoothed her already immaculate suit jacket. The wheel was spinning. Time to place her bet."
+        },
+        {
+          "src": "vol5/vol5_ch10_wheel.json",
+          "text": "the click as automatic now as her morning coffee, as the four small adjustments she made to her hair before any deposition, as the precise breath she took before any closing."
+        },
+        {
+          "src": "vol5/vol5_ch20_judgement.json",
+          "text": "In Houston, high in her sterile tower, the Italian marble floor beneath Erica Campbell's expensive shoes did shudder"
+        },
+        {
+          "src": "vol5/vol5_ch11_justice.json",
+          "text": "The phone, on the marble of her bedside table, had vibrated through the small brass dish she kept her earrings in"
+        },
+        {
+          "src": "vol5/vol5_ch10_wheel.json",
+          "text": "Precedents cross-referenced until her eyes burned, and the burn had begun to require its own eyedrop"
+        },
+        {
+          "src": "vol5/vol5_ch11_justice.json",
+          "text": "Her face did the small careful nothing it did when she was being given information she needed to think about before she was visibly affected by it."
+        }
+      ]
     },
     {
       "slug": "anna_logue",
@@ -294,7 +662,24 @@
       "prompt": "Anna Logue, brand designer for Ember & Ash, early 30s. Sleek black bob, red lipstick, oversized clear-frame glasses. All-black outfit: boxy black linen shirt, wide black trousers, white sneakers, a sketchbook under one arm and a marker behind one ear. 'Corporate Idols' energy: polished, ironic.",
       "texture_prompt": "black linen shirt, black wide trousers, white canvas sneakers, clear acrylic glasses, fair skin, black hair",
       "notes": "Look is not pinned down in canon; this prompt is a proposal — edit before spending credits.",
-      "canon": []
+      "canon": [
+        {
+          "src": "vol5/vol5_ch11_justice.json",
+          "text": "She adjusted her oversized, architecturally inspired glasses. This wasn't design; it was damage control."
+        },
+        {
+          "src": "vol5/vol5_ch11_justice.json",
+          "text": "Their relationship wasn't exactly passion; it was more like a peer-reviewed study in shared anxieties and meticulously curated vintage sweaters."
+        },
+        {
+          "src": "vol5/vol5_ch11_justice.json",
+          "text": "an older man in a charcoal suit, smoking carefully outside the no smoking sign, watched a young Houston designer cross the plaza without recognizing him"
+        },
+        {
+          "src": "vol5/vol5_ch17_star.json",
+          "text": "She saw Anna Logue in Houston polishing narratives that gleamed like lies, beginning, finally, to deconstruct one."
+        }
+      ]
     },
     {
       "slug": "natalie_david",
@@ -313,7 +698,40 @@
       "pose": "a-pose",
       "prompt": "Natalie David, waitress and diviner in Simons, Louisiana, late 20s. Dark curls tied up with a scarf, tired hooded eyes, silver rings on most fingers. Pale-yellow diner waitress dress with a white collar and a small stained apron, white sneakers, a tarot card tucked into the apron pocket. Half asleep, seeing everything.",
       "texture_prompt": "pale yellow cotton waitress dress, white collar, white apron, white sneakers, silver rings, olive skin, dark curly hair",
-      "canon": []
+      "canon": [
+        {
+          "src": "games/moon/setup_close_out_last_car.json",
+          "text": "Natalie has, in the last eight months, become someone whose reflection she does not immediately recognize · dark circles, hair unbrushed, the notebook-hunch in her shoulders."
+        },
+        {
+          "src": "vol5/vol5_ch12_hanged.json",
+          "text": "She had set out, at twenty-two, to be a principal with a regional company in Atlanta. The setting-out had lasted six years. The regional company had lasted nine months past her injury."
+        },
+        {
+          "src": "vol5/vol5_ch12_hanged.json",
+          "text": "The injury had taken something from her ankle and something from her left hip and a small bright permanent thing from her ability to trust her own balance."
+        },
+        {
+          "src": "vol5/vol5_ch12_hanged.json",
+          "text": "She shed her waitress uniform like a snake shedding skin."
+        },
+        {
+          "src": "vol5/vol5_ch12_hanged.json",
+          "text": "She sat on the futon with the quilt around her shoulders and the cards on the table in front of her and the half-brewed tea cooling beside her."
+        },
+        {
+          "src": "vol5/vol5_ch18_moon.json",
+          "text": "She stood up. Her knees clicked. She crossed to the futon."
+        },
+        {
+          "src": "vol5/vol5_ch18_moon.json",
+          "text": "Natalie stood in the empty parking lot with one hand in her pocket on the Hanged Man card and watched the crow until she could not see it anymore."
+        },
+        {
+          "src": "games/moon/setup_pre_dusk_projection_setup.json",
+          "text": "You are alone at the concession. Your notebook is in your apron."
+        }
+      ]
     },
     {
       "slug": "alice_newsom",
@@ -332,7 +750,28 @@
       "pose": "a-pose",
       "prompt": "Alice Newsom, PetroTex plaintiff, 60s, in hospice Room 217. Thin, straight-backed, short white hair, oxygen tubing looped over her ears. A quilted dusty-rose bed jacket over a hospital gown, grey slipper socks, a folder of legal papers held tight against her chest. Fierce, unsentimental.",
       "texture_prompt": "dusty rose quilted bed jacket, pale blue hospital gown, grey slipper socks, clear plastic oxygen tubing, pale skin, white hair",
-      "canon": []
+      "canon": [
+        {
+          "src": "vol5/vol5_ch13_death.json",
+          "text": "having spent fifty-six years being looked at and having, at sixty-eight, achieved the small private freedom of being looked at less."
+        },
+        {
+          "src": "vol5/vol5_ch13_death.json",
+          "text": "Alice had gotten very good, over the past five months, at pretending to be asleep."
+        },
+        {
+          "src": "vol5/vol5_ch13_death.json",
+          "text": "On the floor by the door: a pair of slippers Alice had not worn in three week"
+        },
+        {
+          "src": "vol5/vol5_ch13_death.json",
+          "text": "the overhead was too bright and the dark was too dark and the under-cabinet was, like Alice, exactly enough."
+        },
+        {
+          "src": "vol5/vol5_ch13_death.json",
+          "text": "Alice closed her eyes."
+        }
+      ]
     },
     {
       "slug": "jimmy_daigle",
@@ -353,7 +792,40 @@
       "pose": "a-pose",
       "prompt": "Jimmy Daigle, Antonio's foreman, late 40s, Maya's father. Big, sun-burnt, thick forearms, buzzed hair going grey, a jaw always working a toothpick. Hi-vis orange safety vest over a sweat-stained grey t-shirt, dusty jeans, tan work boots, a hard hat under one arm and a DAIGLE'S 1987 matchbook in his shirt pocket.",
       "texture_prompt": "orange hi-vis vest, grey cotton tee, faded jeans, tan leather work boots, yellow hard hat, sunburnt skin",
-      "canon": []
+      "canon": [
+        {
+          "src": "vol5/vol5_ch15_devil.json",
+          "text": "He caught his reflection in the greasy microwave door. Eyes bloodshot. Stubble like iron filings. Hair sticking up like he had wrestled a ghost."
+        },
+        {
+          "src": "vol5/vol5_ch15_devil.json",
+          "text": "Jimmy stood in the kitchenette in his stained undershirt at six twenty-three AM with two phones"
+        },
+        {
+          "src": "vol5/vol5_ch15_devil.json",
+          "text": "He pulled on his jeans, the same jeans he had been wearing yesterday and that had a small dried smear of something on the left thigh he chose not to investigate. He pulled on his boots."
+        },
+        {
+          "src": "vol5/vol5_ch8_strength.json",
+          "text": "Jimmy running point. Edgy. Talking fast. Eyes darting in the way Jimmy's eyes had been darting since approximately 2011"
+        },
+        {
+          "src": "games/hierophant/visitors.json",
+          "text": "Jimmy Daigle at the church steps with the other men. Strings-cut tired. Talking in the low rumble he uses with grown-ups, not the bright voice he uses with Maya."
+        },
+        {
+          "src": "vol5/vol5_ch17_star.json",
+          "text": "She saw Jimmy Daigle grinning down the road to damnation, his grin tightening, lately, into the small fixed expression of a man who had begun to suspect the road was runni"
+        },
+        {
+          "src": "games/chariot/cameo_dante_at_ember_and_ash.json",
+          "text": "Antonio's crew chief Jimmy. Sixteen years on a hammer. Reads the room better than Antonio does and knows it."
+        },
+        {
+          "src": "vol5/vol5_ch8_strength.json",
+          "text": "The old schemer. Wearing loyalty like a mask."
+        }
+      ]
     },
     {
       "slug": "aria_third",
@@ -374,7 +846,40 @@
       "pose": "a-pose",
       "prompt": "Aria, a digital consciousness rendered as a girl of about ten. Curly bright-blue hair, purple-rimmed round glasses, a yellow rain slicker worn open over a striped shirt, dark leggings, small rubber boots. Slightly luminous at the edges, as if lit from inside; calm, ancient eyes in a child's face.",
       "texture_prompt": "yellow vinyl rain slicker, purple acrylic glasses, striped cotton shirt, dark leggings, yellow rubber boots, bright blue curly hair, faintly glowing skin",
-      "canon": []
+      "canon": [
+        {
+          "src": "vol5/vol5_ch18_moon.json",
+          "text": "Aria opened Nicola's eyes. The eyes were Nicola's eyes. The gaze was not. The gaze was the calm careful scan of something that had been built to assess"
+        },
+        {
+          "src": "vol5/vol5_ch3_empress.json",
+          "text": "Lines of shimmering code, emerald green against an infinite black void. A whisper — not of gossip from Table 3, but a digital ghost asking, in a voice that was Nicola's own voice and was also not Nicola's voice at all:"
+        },
+        {
+          "src": "vol5/vol5_ch3_empress.json",
+          "text": "Aria. The other self humming beneath Nicola's skin."
+        },
+        {
+          "src": "vol5/vol5_ch18_moon.json",
+          "text": "Aria, through Nicola's eyes, made the small still expression Natalie had learned, in the past hour, was Aria's version of gratitude."
+        },
+        {
+          "src": "vol5/vol5_ch20_judgement.json",
+          "text": "Aria, through Nicola's eyes, said aloud, in her precise calm voice:"
+        },
+        {
+          "src": "vol7/vol7_ch11_per.json",
+          "text": "by the way the curls of the hair fell against the brow — the face was the face Aria was going to have."
+        },
+        {
+          "src": "games/hands/nicola.json",
+          "text": "Hosts a digital consciousness named Aria (Dickens Dean's construct made flesh) inside her body."
+        },
+        {
+          "src": "vol5/vol5_ch18_moon.json",
+          "text": "The readings had said: two consciousnesses, one body, and a third coming. Not monster. Not mother. Three. The number is three."
+        }
+      ]
     },
     {
       "slug": "the_frog",
@@ -393,7 +898,40 @@
       "pose": "a-pose",
       "prompt": "The Frog, a four-foot-tall humanoid frog who sits by the river. Wide unblinking golden eyes, mottled green-brown skin, webbed fingers rolling a cigarette, a cork-brimmed Australian bush hat with corks dangling from strings, an open khaki fishing vest with many pockets, no shoes. Patient, amused, a long-game observer.",
       "texture_prompt": "mottled olive-green amphibian skin, khaki cotton fishing vest, tan canvas bush hat with hanging corks, golden eyes",
-      "canon": []
+      "canon": [
+        {
+          "src": "vol5/vol5_ch21_world.json",
+          "text": "Four feet tall if he's an inch. Cork hat shading those big ol' unblinking eyes. Rollin' a cigarette between webbed fingers with the unhurried economy of a being who had learned, somewhere in the Paleozoic, that haste was a mammalian invention and not one he had chosen to adopt."
+        },
+        {
+          "src": "vol5/vol5_ch21_world.json",
+          "text": "He tips the cork hat back on his green head."
+        },
+        {
+          "src": "vol5/vol5_ch9_hermit.json",
+          "text": "a doodle in faded ballpoint ink: a small four-foot-tall figure in a cork hat, smoking a hand-rolled cigarette, sitting beside a river."
+        },
+        {
+          "src": "vol5/vol5_ch20_judgement.json",
+          "text": "The small patient laugh of a four-foot figure in a cork hat, sitting beside a river that had, three years ago, not yet been a river, smoking a hand-rolled cigarette, watching the buildings come down around him"
+        },
+        {
+          "src": "vol5/vol5_ch21_world.json",
+          "text": "Perched on the ship's broken paddlewheel cover — lookin' for all the world like he owns the place, which maybe he does — sits the Frog."
+        },
+        {
+          "src": "vol5/vol5_ch21_world.json",
+          "text": "He holds it loose between his webbed fingers, the paper damp from river air, and he sits on the rusted paddlewheel cover of the Minstral's Green"
+        },
+        {
+          "src": "vol5/vol5_ch21_world.json",
+          "text": "He stood up. He stretched. He put his webbed hands on his hips and surveyed the afternoon."
+        },
+        {
+          "src": "lore/_GAUNTLET_BUILD_WIKI.md",
+          "text": "The Frog (four-foot figure in a cork hat by the river; has been at his post since at least 1987, will be at it for at least seven more years)"
+        }
+      ]
     },
     {
       "slug": "dickens_dean",
@@ -419,7 +957,40 @@
       "pose": "a-pose",
       "prompt": "Mr. Dickens Dean, middle-aged, the Frog's colleague and the man at Table 14. Neat charcoal suit, muted grey-green tie, polished 'lawyer shoes', silver hair combed flat, a face that is pleasant and forgettable on purpose. One hand smoothing a lapel. A cocktail-lounge '#' logo pin on the other lapel.",
       "texture_prompt": "charcoal wool suit, grey-green silk tie, black leather oxfords, silver hair, pale skin, small silver lapel pin",
-      "canon": []
+      "canon": [
+        {
+          "src": "vol5/vol5_ch3_empress.json",
+          "text": "He was middle-aged. He wore a suit that was nicer than the suits the oil-exec types wore — not flashy, just correct, in a way that suggested he had not had to think about whether it was correct. The suit was charcoal. The tie was muted. The shoes, glimpsed when he had crossed his legs, were lawyer-shoes."
+        },
+        {
+          "src": "vol5/vol5_ch3_empress.json",
+          "text": "His eyes were kind, in the way a tax assessor's eyes are kind. He was perhaps fifty. His face was forgettable in an organized way — as if he had cultivated forgettability the way other men cultivated mustaches."
+        },
+        {
+          "src": "vol5/vol5_ch4_emperor.json",
+          "text": "Smoothing his lapels with the small unconscious gesture of a man who had once cared, deeply, about his appearance."
+        },
+        {
+          "src": "vol5/vol5_ch7_chariot.json",
+          "text": "Across the street, an older man Antonio did not recognize was leaning against a streetlight, smoking. He wore a charcoal suit. He wore lawyer-shoes. He was watching the warehouse."
+        },
+        {
+          "src": "vol5/vol5_ch21_world.json",
+          "text": "The older man had looked at her for a long time with eyes the color of nothing in particular."
+        },
+        {
+          "src": "vol5/vol5_ch21_world.json",
+          "text": "The older man had tipped his hat. He had turned. He had walked back down the flagstone path."
+        },
+        {
+          "src": "vol6/vol6_ch4_maya_floor.json",
+          "text": "a man of maybe forty, clean-shaven, wearing a charcoal suit that does not, in any way, fit the scene — a charcoal suit at a dock at dusk in Graustark in 1978."
+        },
+        {
+          "src": "games/emperor/visitors.json",
+          "text": "Plain face, plain shoes, the lapels-smoothing gesture of a man who once cared deeply about his appearance. He is forgettable in the practiced way you have encountered perhaps a dozen times in your life."
+        }
+      ]
     },
     {
       "slug": "alberto",
@@ -439,7 +1010,36 @@
       "pose": "a-pose",
       "prompt": "Alberto Marroquín-D'Ambrosio, the surviving son, 30s. Dark curly hair, a few days of stubble, wearing sunglasses indoors. Black mourning suit with the tie loosened, black shirt, black shoes, hands in pockets. Grief carried like a chip on the shoulder; vol6 redemption arc.",
       "texture_prompt": "black wool suit, black cotton shirt, black leather shoes, black sunglasses, olive skin, dark curly hair",
-      "canon": []
+      "canon": [
+        {
+          "src": "lore/_VOL5_WIKI.md",
+          "text": "Alberto — Dante's elder son, indoors-in-sunglasses, in mourning."
+        },
+        {
+          "src": "vol5/vol5_ch4_emperor.json",
+          "text": "Alberto, the older one. The steady one. Mr. Logic and Order. Out in Houston now, probably crunching numbers in some glass tower, building his own sterile version of this place, thinking he was improving on the original."
+        },
+        {
+          "src": "vol5/vol5_ch4_emperor.json",
+          "text": "Alberto was his father's grandson — meticulous, ambitious, and probably just as capable of gutting you with a polite smile."
+        },
+        {
+          "src": "vol5/vol5_ch4_emperor.json",
+          "text": "Too much like looking in a mirror that did not have the decency to crack at least once across the corner."
+        },
+        {
+          "src": "games/chariot/visitors.json",
+          "text": "Alberto Marroquín-D'Ambrosio. Antonio's older brother. Houston. Steady. Logic and order. The kind of man who looks like he is improving on the original."
+        },
+        {
+          "src": "games/fool/visitors.json",
+          "text": "Dante's elder son. The man who would not sleep after the night his father died. He came back to the diner like the diner could explain."
+        },
+        {
+          "src": "lore/pomegranate_hour/20_judgement.md",
+          "text": "A small grey sedan is waiting for her with the driver's-side door open. Inside the sedan, behind the wheel: ALBERTO."
+        }
+      ]
     },
     {
       "slug": "maya_daigle",
@@ -461,7 +1061,40 @@
       "pose": "a-pose",
       "prompt": "Maya Daigle at 16, Jimmy's daughter, a zine-maker. Short curly hair dyed dark purple at the tips, black-frame glasses, a small constellation tattoo on the inside of her left wrist. Oversized black band hoodie, cut-off shorts over black tights, beat-up Converse, a stapled zine in one hand. Quick, guarded, funny.",
       "texture_prompt": "black cotton hoodie, denim cut-offs, black tights, black canvas sneakers, black acrylic glasses, curly dark hair with purple tips",
-      "canon": []
+      "canon": [
+        {
+          "src": "vol5/vol5_ch5_hierophant.json",
+          "text": "Maya's itchy Sunday dress stuck to her back. The dress was new. The dress was stiff. The dress had a tag that bit her between the shoulder blades every time she breathed in"
+        },
+        {
+          "src": "vol6/vol6_ch3_back_room.json",
+          "text": "Maya is, Sam registers, about three inches shorter than she is. Dark hair in a single braid over one shoulder. Glasses. A shirt from a band Sam doesn't know. The specific careful stillness of a kid who has trained herself out of fidgeting."
+        },
+        {
+          "src": "vol5/vol5_ch21_world.json",
+          "text": "Maya Daigle — sixteen, sharp, angry, relieved — is upstairs in the spare bedroom the Roberts keep made up, her suitcase still half-unpacked"
+        },
+        {
+          "src": "games/hierophant/visitors.json",
+          "text": "Maya Daigle. Age seven. In a new, stiff Sunday dress with a tag that bites her between the shoulder blades. The daughter of Jimmy Daigle."
+        },
+        {
+          "src": "vol6/vol6_ch5_garage.json",
+          "text": "She is on her bike, in the rain, with her backpack on and her hair wet."
+        },
+        {
+          "src": "vol6/vol6_ch2_bindery.json",
+          "text": "Maya is on her bike riding the long slow arterial back into her subdivision under the flat Texas afternoon light with an envelope under her jacket"
+        },
+        {
+          "src": "lore/_VOL5_WIKI.md",
+          "text": "Maya — nine years old, mid-card-trick, at booth 6."
+        },
+        {
+          "src": "vol5/vol5_ch5_hierophant.json",
+          "text": "For now: she finished her lemonade, dropped the cup in the trash, took her father's hand when he came down the steps, and did not mention any of it."
+        }
+      ]
     },
     {
       "slug": "sammy",
@@ -482,7 +1115,28 @@
       "pose": "a-pose",
       "prompt": "Sammy, 61, bartender at D'Ambrosio's. Compact, thick grey moustache, hair combed back, sleeves rolled, a bar towel over one shoulder. White shirt, black vest, black bow tie slightly askew, black trousers, a small gold crucifix on a chain. Long-suffering Catholic loyalty in the set of his mouth.",
       "texture_prompt": "white cotton shirt, black wool vest, black bow tie, black trousers, white bar towel, gold crucifix, weathered skin, grey moustache",
-      "canon": []
+      "canon": [
+        {
+          "src": "vol5/vol5_ch4_emperor.json",
+          "text": "Sammy came. Sixty-one years old, pouring at D'Ambrosio's since the boat had opened. The kind of long-suffering Catholic loyalty that Dante had, over the decades, both relied on and quietly mocked. Sammy held out a small white card."
+        },
+        {
+          "src": "games/emperor/visitors.json",
+          "text": "Sammy. 61. Pouring at D'Ambrosio's since the boat opened in '83."
+        },
+        {
+          "src": "games/locations/riverboat_interior.json",
+          "text": "the bar at the far end of the dining room · sixteen stools · sammy behind it since the boat opened in '83 · sixty-one years old"
+        },
+        {
+          "src": "lore/_VOL5_WIKI.md",
+          "text": "Sammy — bartender at D'Ambrosio's since '83. Behind the well."
+        },
+        {
+          "src": "games/empress/finale.json",
+          "text": "Sammy is wiping down the bar."
+        }
+      ]
     },
     {
       "slug": "hector",
@@ -503,7 +1157,28 @@
       "pose": "a-pose",
       "prompt": "Hector, late 50s, cook at the pass on the riverboat. Solid, broad shoulders, close-cropped grey hair, a scar on one knuckle. White double-breasted chef's jacket with rolled sleeves, checked cook's trousers, black clogs, a white side towel, a chef's knife held point-down at his side.",
       "texture_prompt": "white cotton chef jacket, black-and-white houndstooth trousers, black rubber clogs, steel chef knife, brown skin, grey hair",
-      "canon": []
+      "canon": [
+        {
+          "src": "lore/_VOL5_WIKI.md",
+          "text": "Hector — at the pass with the knife. Late 50s."
+        },
+        {
+          "src": "vol5/vol5_ch5_hierophant.json",
+          "text": "Hector crossed himself. It was his only tic."
+        },
+        {
+          "src": "games/locations/riverboat_interior.json",
+          "text": "the pass between bar and kitchen · hector hands plates through · the heat lamp · the ticket spike with the dinner orders in the order they came in."
+        },
+        {
+          "src": "games/empress/finale.json",
+          "text": "Hector is on his second cigarette in the alley."
+        },
+        {
+          "src": "games/hierophant/visitors.json",
+          "text": "Hector. Cook at D'Ambrosio's for six years. Crosses himself when Paul comes up at the pass. The only tic he has."
+        }
+      ]
     },
     {
       "slug": "gloria_reyes",
@@ -524,7 +1199,28 @@
       "prompt": "Gloria Reyes, 40s, waitress on the riverboat floor. Warm brown skin, dark hair in a tight bun, reading glasses on a beaded chain. Burgundy vest over a white blouse, black skirt, black flats, a water pitcher in one hand and a stack of menus under the other arm.",
       "texture_prompt": "burgundy velvet vest, white cotton blouse, black skirt, black flats, glass pitcher, brown skin, dark hair",
       "notes": "Look is not pinned down in canon; this prompt is a proposal — edit before spending credits.",
-      "canon": []
+      "canon": [
+        {
+          "src": "vol5/vol5_ch5_hierophant.json",
+          "text": "She hurried back toward the kitchen. The scent of old hymnals and hypocrisy clung to her apron."
+        },
+        {
+          "src": "vol5/vol5_ch5_hierophant.json",
+          "text": "Gloria caught his gaze as she refilled water glasses two booths down from his court."
+        },
+        {
+          "src": "games/hierophant/visitors.json",
+          "text": "Gloria Reyes. Working Sunday brunch at D'Ambrosio's since 1996. Refills water. Slaps down lukewarm bread."
+        },
+        {
+          "src": "games/empress/visitors.json",
+          "text": "The one who walks past with a glass of water and a look that means take it."
+        },
+        {
+          "src": "games/hierophant/finale.json",
+          "text": "Gloria registered it as she passed with the next basket of lukewarm bread."
+        }
+      ]
     },
     {
       "slug": "the_stranger",
@@ -546,7 +1242,24 @@
       "pose": "a-pose",
       "prompt": "The Stranger, a young man of indeterminate age in booth 6. A long tan trench coat, a peeling paperback in one coat pocket, dark hair falling over pale eyes, thin, motionless. Plain dark clothes under the coat, worn boots. Neither threatening nor safe.",
       "texture_prompt": "tan cotton trench coat, dark cotton shirt, dark trousers, worn brown boots, pale skin, dark hair",
-      "canon": []
+      "canon": [
+        {
+          "src": "vol5/vol5_ch0_booth6.json",
+          "text": "A man John did not recognize entered, sat at booth six, ordered coffee without looking up from a paperback whose title was peeling off the spine."
+        },
+        {
+          "src": "vol5/vol5_ch0_booth6.json",
+          "text": "The man left two dollars on the table and stood up and folded the paperback into his coat pocket and, on the way out, paused at the door and said, without turning around:"
+        },
+        {
+          "src": "games/fool/visitors.json",
+          "text": "The stranger does not lift their eyes."
+        },
+        {
+          "src": "games/fool/items.json",
+          "text": "Smudged. The stranger's hand."
+        }
+      ]
     },
     {
       "slug": "miriam",
@@ -565,7 +1278,36 @@
       "pose": "a-pose",
       "prompt": "Miriam, 60s, Joanna's literary agent, silver hair cut sharp at the jaw. Long grey wool coat, black turtleneck, black trousers, low black boots, driving gloves, a crow perched on her shoulder. Elegant, dry, unhurried.",
       "texture_prompt": "grey wool coat, black turtleneck, black trousers, black leather boots, black leather gloves, glossy black crow, silver hair",
-      "canon": []
+      "canon": [
+        {
+          "src": "vol5/vol5_ch18_moon.json",
+          "text": "It was a woman. Mid-sixties. Silver hair in a loose braid. A gray wool coat that looked like it had been in somebody's family for a while. A canvas bag over one shoulder. On the shoulder, perched, still and bright-eyed, was a crow."
+        },
+        {
+          "src": "vol5/vol5_ch18_moon.json",
+          "text": "Miriam's car was a 2009 Subaru wagon, dark green, immaculate. The back seat had a folded blanket and a thermos of coffee. The crow, as they reached the car, took flight from Miriam's shoulder and settled on the roof."
+        },
+        {
+          "src": "vol6/vol6_ch8_courthouse.json",
+          "text": "a silver-haired woman in a gray wool coat has, at some point during the recess, quietly seated herself"
+        },
+        {
+          "src": "vol6/vol6_ch8_courthouse.json",
+          "text": "a silver-haired woman at the wheel who is, at this exact moment, reading a paperback copy of Princess Mononoke: The Art Of and smoking"
+        },
+        {
+          "src": "vol5/vol5_ch20_judgement.json",
+          "text": "a silver-haired woman named Miriam drove south in a 2009 Subaru with a crow on her roof and a pregnant girl in her back seat."
+        },
+        {
+          "src": "vol5/vol5_ch18_moon.json",
+          "text": "The woman raised a hand, palm out, in the old still gesture"
+        },
+        {
+          "src": "lore/_GAUNTLET_BUILD_WIKI.md",
+          "text": "silver-haired woman, Joanna's agent; drives Nicola/Aria/Third west to Smolvud; her crow rides on the roof"
+        }
+      ]
     },
     {
       "slug": "father_amato",
@@ -2844,7 +3586,36 @@
       "pose": null,
       "prompt": "A wanderer's bindle: a faded red-and-white checked cloth bundle tied at the top and knotted around the end of a rough wooden stick about a metre long, the cloth bulging with a few belongings, one corner of a paperback poking out.",
       "texture_prompt": "faded red and white checked cotton, rough peeled wooden stick",
-      "canon": []
+      "canon": [
+        {
+          "src": "games/fool/items.json",
+          "text": "Broken broom handle propped against the freezer for eleven years. Nobody has thrown it away. Nobody has used it."
+        },
+        {
+          "src": "games/fool/items.json",
+          "text": "A cloth napkin folded for the next customer. The creases are permanent."
+        },
+        {
+          "src": "lore/_TAROT_GAUNTLET.md",
+          "text": "a cloth napkin folded for the next customer. It's been folded the same way for so long the creases are permanent. Take it."
+        },
+        {
+          "src": "games/fool/items.json",
+          "text": "A Scratched Penny From Your Apron"
+        },
+        {
+          "src": "games/fool/items.json",
+          "text": "The Cassette Spine — JOHN_47AM_3"
+        },
+        {
+          "src": "games/fool/items.json",
+          "text": "FRANKLY / FOOLISH. Scratched twenty years ago. Taken back."
+        },
+        {
+          "src": "lore/_TAROT_GAUNTLET.md",
+          "text": "The Bindle — stick, cloth, contents"
+        }
+      ]
     },
     {
       "slug": "magician_iron",
@@ -2862,7 +3633,24 @@
       "pose": null,
       "prompt": "A well-used soldering iron: a black rubberised handle with a red ring, a slim steel shaft, a slightly discoloured pointed tip, and a coiled black cord ending in a small plug, resting beside a brass coil of solder.",
       "texture_prompt": "black rubber handle, brushed steel shaft, oxidised copper tip, black rubber cord",
-      "canon": []
+      "canon": [
+        {
+          "src": "vol5/vol5_ch1_magician.json",
+          "text": "He picked up a soldering iron, its tip glowing hot."
+        },
+        {
+          "src": "vol5/vol5_ch1_magician.json",
+          "text": "He touched the soldering iron to a waiting circuit board. A tiny spark. A puff of acrid smoke."
+        },
+        {
+          "src": "games/magician/cameo_john_at_the_warehouse.json",
+          "text": "Frasier hands him a soldering iron. The soldering iron is warm. The iron has been warm for nine years."
+        },
+        {
+          "src": "lore/_CHARACTER_MODELING_NOTES.md",
+          "text": "holding a soldering iron in one hand, working on a circuit board with the other."
+        }
+      ]
     },
     {
       "slug": "steamboat_model",
@@ -2880,7 +3668,40 @@
       "pose": null,
       "prompt": "A hand-built model of a Mississippi paddle-wheel steamboat about half a metre long: red-painted hull, three white decks with tiny railings, twin black smokestacks, and a brass paddle-wheel at the stern. Paint chipped, one railing missing, sitting on two small wooden cradles.",
       "texture_prompt": "chipped red enamel hull, white painted wood decks, tarnished brass paddle-wheel, black smokestacks",
-      "canon": []
+      "canon": [
+        {
+          "src": "vol5/vol5_ch1_magician.json",
+          "text": "a tiny, perfectly rendered model of D'Ambrosio's riverboat, crafted from tarnished silver spoons and motherboard fragments."
+        },
+        {
+          "src": "lore/_VOL5_WIKI.md",
+          "text": "The steamboat model on Frasier's workbench. Red hull, brass paddle-wheel, smokestack-in-progress. Half-built throughout most paintings."
+        },
+        {
+          "src": "vol5/vol5_ch21_world.json",
+          "text": "It sits now, quiet, a small tarnished monument to the thing it had represented. Frasier has not moved it. Frasier has, in fact, built a small glass case around it, and has sealed the case, and has written a small label beside the case, and the label reads: D'AMBROSIO'S. 1983–2026. REST."
+        },
+        {
+          "src": "games/locations/cathedral.json",
+          "text": "the hull is sanded. brass armature ready."
+        },
+        {
+          "src": "games/locations/cathedral.json",
+          "text": "the smokestack catches the workbench lamp."
+        },
+        {
+          "src": "games/locations/cathedral.json",
+          "text": "the pilot house has glass in it now."
+        },
+        {
+          "src": "games/locations/cathedral.json",
+          "text": "the steamboat's red is darker tonight than the lamp light should make it."
+        },
+        {
+          "src": "vol5/vol5_ch1_magician.json",
+          "text": "somewhere on the workbench the silver-spoon riverboat sat patient, weighing what it weighed, waiting for him to decide."
+        }
+      ]
     },
     {
       "slug": "bbs_terminal",
@@ -2898,7 +3719,36 @@
       "pose": null,
       "prompt": "A late-1980s beige computer terminal: a boxy CRT monitor with a phosphor-green text screen showing scanlines, a yellowed keyboard with worn keys, a small external modem with red LEDs stacked on top, and a coil of grey phone cable. Dust in the vents.",
       "texture_prompt": "yellowed beige plastic, dark glass CRT with glowing green text, grey coiled cable, red LED",
-      "canon": []
+      "canon": [
+        {
+          "src": "games/locations/cathedral.json",
+          "text": "phosphor-green CRT. RUST_CODE.BBS hums here too."
+        },
+        {
+          "src": "games/locations/cathedral.json",
+          "text": "phosphor-green on your knuckles. the cursor blinks in the chat window."
+        },
+        {
+          "src": "lore/_VOL5_WIKI.md",
+          "text": "The BBS terminal at the Cathedral's corner. Phosphor-green CRT. RUST_CODE.BBS."
+        },
+        {
+          "src": "games/fool/visitors.json",
+          "text": "The BBS terminal blinks an unread line in the corner."
+        },
+        {
+          "src": "games/fool/visitors.json",
+          "text": "The terminal acknowledges with a single clean line of green."
+        },
+        {
+          "src": "games/magician/items.json",
+          "text": "Dot-matrix output, faded. A list of commands he meant to memorize and never did."
+        },
+        {
+          "src": "games/magician/setup_watch_party.json",
+          "text": "Folding chairs out, BBS terminal patched into the cassette deck, the show is starting in forty minutes."
+        }
+      ]
     },
     {
       "slug": "cassette_archive",
@@ -2916,7 +3766,40 @@
       "pose": null,
       "prompt": "A cardboard shoebox of audio cassettes standing on end, each in a clear case with a hand-written paper label (six tapes at the front pulled slightly forward), one tape unspooled with a loop of brown ribbon draped over the box edge.",
       "texture_prompt": "brown corrugated cardboard, clear scratched plastic cases, white labels with black handwriting, brown magnetic tape",
-      "canon": []
+      "canon": [
+        {
+          "src": "lore/_VOL5_WIKI.md",
+          "text": "Elicia's cassette archive — wall of tapes, labels painted as strokes (no legible English)."
+        },
+        {
+          "src": "games/locations/cathedral.json",
+          "text": "Elicia's archive — cassettes labeled in her hand"
+        },
+        {
+          "src": "games/locations/cathedral.json",
+          "text": "Elicia's tape archive. the spool of one cassette is rewinding without anyone touching it."
+        },
+        {
+          "src": "games/locations/elicia_bungalow.json",
+          "text": "the storage closet behind the studio · five boxes of Pomegranate Hour material · drives, tapes, contact sheets, the disc with the never-finished pilot episode · you have not, since November, opened the closet."
+        },
+        {
+          "src": "games/locations/elicia_bungalow.json",
+          "text": "the boxes are labeled in your hand from '21. the labels say PH. the labels say PH-DAILIES. the labels say PH-CUT-3."
+        },
+        {
+          "src": "games/magician/items.json",
+          "text": "TDK, the cheap line, white label. Nobody has recorded on it yet."
+        },
+        {
+          "src": "games/magician/items.json",
+          "text": "The label is blank. The reel-sides are unevenly worn — somebody played one side a lot more."
+        },
+        {
+          "src": "lore/_VOL5_WIKI.md",
+          "text": "Elicia's bungalow — one-bedroom shotgun on a quiet side street. The cassette archive against one wall."
+        }
+      ]
     },
     {
       "slug": "the_polaroid",
@@ -2934,7 +3817,28 @@
       "pose": null,
       "prompt": "A single instant photograph, slightly bent, white frame with a wide bottom border, the image faded and colour-shifted showing two blurry figures at a porch rail, one corner thumb-worn; a pencil note on the white border.",
       "texture_prompt": "glossy faded photo, matte white paper frame, pencil handwriting",
-      "canon": []
+      "canon": [
+        {
+          "src": "vol5/vol5_ch6_lovers.json",
+          "text": "Inside was a single Polaroid photograph, faded around the edges, dated June 2009 in pencil on the white border. The photograph showed a stretch of Houston Street — the Houston Street, the one that no longer existed, the one that had gone into the sinkhole — at what must have been late afternoon, the light slanting low across the brick storefronts in a way that made even the boarded-up ones look briefly possible."
+        },
+        {
+          "src": "vol5/vol5_ch6_lovers.json",
+          "text": "In the foreground, walking with his back to the camera, hands in his pockets, was Mackenzie's older brother."
+        },
+        {
+          "src": "games/lovers/items.json",
+          "text": "A faded Polaroid. Houston Street in late-afternoon light. A young man walking with his back to the camera, hands in his pockets. On the back, in handwriting nobody in the house recognizes: He waved."
+        },
+        {
+          "src": "vol5/vol5_ch6_lovers.json",
+          "text": "Philip turned it over. On the back, in the same careful handwriting that had addressed the envelope, two words:"
+        },
+        {
+          "src": "vol5/vol5_ch6_lovers.json",
+          "text": "A boy stood on the porch. Maybe eight. Maybe nine. He was holding a bunched-up envelope in both hands the way a child holds a small dead bird he has been instructed to deliver but has not been told what for."
+        }
+      ]
     },
     {
       "slug": "water_glass_table_17",
@@ -2952,7 +3856,32 @@
       "pose": null,
       "prompt": "A heavy diner water glass, faceted at the base, three-quarters full, sitting on a folded white paper napkin, with a single ring of condensation and one slice of lemon caught against the inside.",
       "texture_prompt": "thick clear glass, clear water, white paper napkin, yellow lemon slice",
-      "canon": []
+      "canon": [
+        {
+          "src": "lore/_VOL5_WIKI.md",
+          "text": "The water glass at Table 17 — the Empress's vessel of hospitality, and (in the Dean cameo) the vessel of withholding."
+        },
+        {
+          "src": "games/empress/visitors.json",
+          "text": "Does not order food. Drinks one glass of water."
+        },
+        {
+          "src": "games/empress/setup_when_youre_ready.json",
+          "text": "An out-of-town suit at Table 14. Plain face. Lapels-smoothing gesture. Drinking water."
+        },
+        {
+          "src": "games/empress/items.json",
+          "text": "Sammy's. Refilled before you ask. The pitcher has a small chip at the base he claims is from '01."
+        },
+        {
+          "src": "games/empress/visitors.json",
+          "text": "Already knows the water-pour preferences for the regulars — Table 12 wants three-quarter glasses, Table 5 wants the pitcher set down, Paul's Sunday table wants nothing he hasn't asked for."
+        },
+        {
+          "src": "vol5/vol5_ch5_hierophant.json",
+          "text": "Gloria caught his gaze as she refilled water glasses two booths down from his court."
+        }
+      ]
     },
     {
       "slug": "cypress_beam",
@@ -2970,7 +3899,36 @@
       "pose": null,
       "prompt": "A two-foot offcut of old-growth cypress beam, roughly square in section, silvered with age on the outside and warm orange-red where freshly cut, deep checking cracks, two rusted square nails still embedded.",
       "texture_prompt": "weathered silver-grey cypress, fresh-cut orange heartwood, rusted iron nails",
-      "canon": []
+      "canon": [
+        {
+          "src": "vol5/vol5_ch7_chariot.json",
+          "text": "a section of reclaimed cypress beam, the beam Antonio had spent three weeks tracking down at a salvage yard outside Lafayette and had paid a great deal of money for and had loved more, when it arrived, than he had any business loving an inanimate object"
+        },
+        {
+          "src": "games/chariot/items.json",
+          "text": "A two-foot offcut from the salvage beam. Smells like the kind of wood the Demons in Frasier's workshop would talk to if they were here. They are not."
+        },
+        {
+          "src": "games/locations/ember_ash_office.json",
+          "text": "the warehouse floor with the partially-hung cypress beam, the kitchen rough-in (wrong gauge for the gas line), and the salvage piles."
+        },
+        {
+          "src": "games/chariot/finale.json",
+          "text": "The beam is still up but not, in his professional opinion, straight."
+        },
+        {
+          "src": "games/chariot/setup_option_four.json",
+          "text": "The cypress beam is at 3/6 of straight."
+        },
+        {
+          "src": "games/chariot/items.json",
+          "text": "The receipt for the cypress beam from the salvage yard outside Lafayette. The amount you paid is, in your own handwriting in the corner, more than you should have."
+        },
+        {
+          "src": "vol5/vol5_ch7_chariot.json",
+          "text": "The warehouse below the office: exposed brick scarred with generations of graffiti prayers and curses. Towering ceilings lost in shadow. The floor littered with salvaged materials waiting for transformation."
+        }
+      ]
     },
     {
       "slug": "brass_clock",
@@ -2988,7 +3946,20 @@
       "pose": null,
       "prompt": "A small heavy brass carriage clock with a handle on top, a white enamel face with black Roman numerals, bevelled glass panels on four sides, the hands stopped, tarnish in the engraving.",
       "texture_prompt": "tarnished brass, white enamel dial, bevelled glass",
-      "canon": []
+      "canon": [
+        {
+          "src": "games/emperor/items.json",
+          "text": "From your father's office. Since 1962. Chimes the quarter, the half, the hour. Has not, in 64 years, gained or lost more than a minute."
+        },
+        {
+          "src": "games/emperor/items.json",
+          "text": "Brass Clock · 1962"
+        },
+        {
+          "src": "games/hands/dante.json",
+          "text": "The brass clock from his father's office."
+        }
+      ]
     },
     {
       "slug": "appointment_book",
@@ -3006,7 +3977,24 @@
       "pose": null,
       "prompt": "A large leather-bound appointment ledger, black cover worn brown at the corners, a red ribbon marker, lying open to a page dense with fountain-pen entries, a brass ashtray holding it open.",
       "texture_prompt": "worn black leather, cream ruled paper with blue ink, red satin ribbon, brass ashtray",
-      "canon": []
+      "canon": [
+        {
+          "src": "games/emperor/items.json",
+          "text": "Your father's cursive in the early years; your own in the recent. The boat's bookings. The catering bookings. The first-Sunday-of-even-months entries in their own column."
+        },
+        {
+          "src": "lore/pitches/04_emperor.md",
+          "text": "Mode: found document. A scanned page from the Emperor's leather desk diary."
+        },
+        {
+          "src": "lore/pitches/04_emperor.md",
+          "text": "21:30   private — the boat, alone (90m)"
+        },
+        {
+          "src": "games/emperor/items.json",
+          "text": "Appointment Book · this year"
+        }
+      ]
     },
     {
       "slug": "bourbon_bottle",
@@ -3024,7 +4012,32 @@
       "pose": null,
       "prompt": "A squat bourbon bottle a third full, amber liquid, a plain cream label with a hand-inked year, a cork stopper with a wooden top, and one heavy lowball glass beside it.",
       "texture_prompt": "clear glass, amber bourbon, cream paper label, cork and wood stopper",
-      "canon": []
+      "canon": [
+        {
+          "src": "games/chariot/items.json",
+          "text": "From the file cabinet bottom drawer. Half-empty in the way a half-empty bottle is half-empty when nobody else has been pouring."
+        },
+        {
+          "src": "vol5/vol5_ch7_chariot.json",
+          "text": "The bottle of bourbon at his elbow looked, suddenly, less like a bad decision and more like a tool whose specific function he was about to need. He uncapped it. Poured one finger into the chipped glass on the desk. Drank it."
+        },
+        {
+          "src": "games/emperor/items.json",
+          "text": "Half-empty in the way half-empty bottles are half-empty when only one man has been pouring from them."
+        },
+        {
+          "src": "vol5/vol5_ch4_emperor.json",
+          "text": "He poured himself a bourbon. Neat. No ice. Ice was for the weak. Ice diluted the truth of the thing."
+        },
+        {
+          "src": "vol5/vol5_ch15_devil.json",
+          "text": "He left the bottle uncapped, because uncapping it had always felt like a commitment and recapping it had always felt like a lie, and he had stopped lying to bottles in 2017."
+        },
+        {
+          "src": "games/chariot/items.json",
+          "text": "Bourbon · half-empty since Wednesday"
+        }
+      ]
     },
     {
       "slug": "bakelite_microphone",
@@ -3042,7 +4055,12 @@
       "pose": null,
       "prompt": "A 1940s radio-station microphone: a rounded Bakelite body in dark brown with a ribbed chrome grille, mounted on a heavy chrome desk stand with a black cable, a small brass station call-letter plate on the front.",
       "texture_prompt": "dark brown Bakelite, chrome grille, brass plate, black cloth cable",
-      "canon": []
+      "canon": [
+        {
+          "src": "games/tower/items.json",
+          "text": "Original. Heavier than the new RE-20 Rashid has been trying to replace it with. Has been keyed by every WGUR DJ since 1974."
+        }
+      ]
     },
     {
       "slug": "master_tape_february",
@@ -3060,7 +4078,12 @@
       "pose": null,
       "prompt": "A 10-inch reel of quarter-inch audio tape on a grey plastic reel in a battered cardboard box, a white label reading only a month and a year in marker, a length of tape trailing loose.",
       "texture_prompt": "grey plastic reel, brown magnetic tape, grey cardboard box, white marker label",
-      "canon": []
+      "canon": [
+        {
+          "src": "games/tower/items.json",
+          "text": "Reel-to-reel. Your special: the four-hour ambient show you recorded the second week of February. The label on the reel-box, in your handwriting: 'EVA / FEB / DO NOT ERASE.'"
+        }
+      ]
     },
     {
       "slug": "daigles_matchbook",
@@ -3078,7 +4101,16 @@
       "pose": null,
       "prompt": "A vintage bar matchbook, glossy black cover with gold script lettering and a small gold cocktail glass motif, cover flipped open showing a row of red-tipped paper matches, three torn out; the striker strip worn.",
       "texture_prompt": "glossy black card, gold foil lettering, red-tipped cardboard matches",
-      "canon": []
+      "canon": [
+        {
+          "src": "games/devil/items.json",
+          "text": "Unopened matchbook (DAIGLE'S 1987)"
+        },
+        {
+          "src": "games/devil/items.json",
+          "text": "From the year the place opened. Lou puts a few out on the bar every Tuesday and they don't get taken."
+        }
+      ]
     },
     {
       "slug": "esterbrook_pen",
@@ -3096,7 +4128,12 @@
       "pose": null,
       "prompt": "A 1950s Esterbrook fountain pen in marbled green celluloid with a gold-tone clip and cap band, uncapped to show the steel nib, lying diagonally on a folded sheet of handwritten paper.",
       "texture_prompt": "marbled green celluloid, gold-tone metal trim, steel nib, cream paper",
-      "canon": []
+      "canon": [
+        {
+          "src": "games/star/items.json",
+          "text": "Fountain pen. Black. The one he signed the original 1949 lease with. Has been in the punch-card drawer the entire time."
+        }
+      ]
     },
     {
       "slug": "chart_1932",
@@ -3114,7 +4151,16 @@
       "pose": null,
       "prompt": "An old river navigation chart, partially unrolled, yellowed heavy paper with faded blue soundings and ink annotations, a torn edge, weighted flat at one corner by a brass compass.",
       "texture_prompt": "yellowed heavy paper, faded blue and black ink, tarnished brass compass",
-      "canon": []
+      "canon": [
+        {
+          "src": "games/hermit/items.json",
+          "text": "The original survey of this channel. The cypress piles under the lighthouse are marked here as they were the year they went in."
+        },
+        {
+          "src": "games/hermit/items.json",
+          "text": "Three search piles at the lighthouse: the writing desk (logs, pens, charts), the bunk (the keeper's small things), the spiral stair (brass polish, wick shears, the small things kept on the climb)."
+        }
+      ]
     },
     {
       "slug": "tarot_deck_wine_stained",
@@ -3132,7 +4178,24 @@
       "pose": null,
       "prompt": "A well-thumbed tarot deck stacked slightly askew with the top three cards fanned face-up, cards with soft rounded corners and a dark red wine stain bleeding across one edge of the stack, a frayed silk wrap folded beneath.",
       "texture_prompt": "worn matte cardstock with a painted back pattern, deep red wine stain, midnight blue silk",
-      "canon": []
+      "canon": [
+        {
+          "src": "games/priestess/items.json",
+          "text": "From a thrift store on the river side. Used as a prop and then, after the prop became a habit, as a deck. The wine stain is from '23. You have not, in two years, gotten the wine out."
+        },
+        {
+          "src": "vol5/vol5_ch2_priestess.json",
+          "text": "Thrift-store tarot decks sticky with spilled wine."
+        },
+        {
+          "src": "games/priestess/items.json",
+          "text": "Tarot Deck · sticky with spilled wine"
+        },
+        {
+          "src": "games/locations/elicia_bungalow.json",
+          "text": "the bookshelf · thrift-store tarot decks (one sticky with spilled wine) · the mirror shard on the third shelf"
+        }
+      ]
     },
     {
       "slug": "mirror_shard",
@@ -3150,7 +4213,32 @@
       "pose": null,
       "prompt": "A jagged triangular shard of silvered mirror glass about the size of a hand, one edge wrapped in electrical tape as a grip, the silvering flaking at the edges.",
       "texture_prompt": "reflective silvered glass, black electrical tape, flaking grey backing",
-      "canon": []
+      "canon": [
+        {
+          "src": "vol5/vol5_ch2_priestess.json",
+          "text": "She crossed the room to the bookshelf and pulled down a cracked mirror shard she kept there as a paperweight — found near the sinkhole's edge during her first week of pre-production. Picked up because it had caught the light just so."
+        },
+        {
+          "src": "vol5/vol5_ch2_priestess_b.json",
+          "text": "The mirror shard, on the table, caught the failing light and threw it back in twelve different directions — none of which led out of the room."
+        },
+        {
+          "src": "vol5/vol5_ch2_priestess.json",
+          "text": "She picked up the mirror shard again. Looked into the fractal Elicias."
+        },
+        {
+          "src": "games/priestess/items.json",
+          "text": "Found near the sinkhole's edge during your first week of pre-production. Picked up because it caught the light just so. Thrown out twice. Returned twice"
+        },
+        {
+          "src": "lore/_GAUNTLET_BUILD_WIKI.md",
+          "text": "Mirror shard found near the sinkhole's edge three years ago refuses disposal; fractal reflection of *\"twelve Elicias, none whole.\"*"
+        },
+        {
+          "src": "games/locations/elicia_bungalow.json",
+          "text": "the mirror shard on the third shelf"
+        }
+      ]
     },
     {
       "slug": "mothers_teacup",
@@ -3168,7 +4256,24 @@
       "pose": null,
       "prompt": "A delicate bone-china teacup on its saucer, cream with a faded blue floral pattern and a worn gold rim, a hairline crack running from the rim, a dried ring of tea inside.",
       "texture_prompt": "cream bone china, faded blue floral glaze, worn gold rim",
-      "canon": []
+      "canon": [
+        {
+          "src": "games/priestess/items.json",
+          "text": "The teacup. Picked up and put down three times this week. You have not, today, packed it. The handle has a hairline crack from when she dropped it in '02."
+        },
+        {
+          "src": "vol5/vol5_ch2_priestess.json",
+          "text": "A teacup that had belonged to her mother and that she had, three times in the last week, picked up and put down without packing."
+        },
+        {
+          "src": "lore/_GAUNTLET_BUILD_WIKI.md",
+          "text": "Mother's teacup unpacked but dusty."
+        },
+        {
+          "src": "games/priestess/cameo_frasier_fixes_the_kettle.json",
+          "text": "The kettle is on the counter beside the teacup."
+        }
+      ]
     },
     {
       "slug": "lapel_pin",
@@ -3186,7 +4291,20 @@
       "pose": null,
       "prompt": "A small enamel lapel pin shaped like a stylised '#' hash symbol, glossy black enamel with a silver metal edge, a butterfly clutch on the back, sitting on a square of dark velvet.",
       "texture_prompt": "glossy black enamel, polished silver metal, dark velvet",
-      "canon": []
+      "canon": [
+        {
+          "src": "games/hierophant/cameo_john_at_the_bandstand.json",
+          "text": "At the rally he is, for a change, in shirt-sleeves with the lapel pin on a plain blazer over his arm."
+        },
+        {
+          "src": "lore/_VOL5_WIKI.md",
+          "text": "The lapel pin — Paul and the aide's shared signal."
+        },
+        {
+          "src": "games/fool/items.json",
+          "text": "A brass pin from the bottom-left corner of someone else's Fool. You wear it. The deck notices."
+        }
+      ]
     },
     {
       "slug": "jackpot_polaroid_2019",
@@ -3204,7 +4322,12 @@
       "pose": null,
       "prompt": "An instant photo in a white frame showing a blurred casino floor and a slot machine with lights blazing, a date written on the border in ballpoint, the surface scratched.",
       "texture_prompt": "glossy photo with bright neon smears, white paper frame, blue ballpoint",
-      "canon": []
+      "canon": [
+        {
+          "src": "games/wheel_of_fortune/items.json",
+          "text": "Pinned to the bulletin board behind the slot bank. The previous owner's wife and a man with a $42,000 ticket. The wife is in red. The man is in tears. The board is faded except where the Polaroid covers it."
+        }
+      ]
     },
     {
       "slug": "house_marker_1924",
@@ -3222,7 +4345,12 @@
       "pose": null,
       "prompt": "A cast-iron house marker plaque, oval, with raised numerals and a year, black paint mostly flaked to rust, two screw holes, a chip out of one edge.",
       "texture_prompt": "rusted cast iron with flaking black paint",
-      "canon": []
+      "canon": [
+        {
+          "src": "games/wheel_of_fortune/items.json",
+          "text": "Brass token from the building's bank era — Le Roulant was the Crescent Trust before the war. Worn smooth on the eagle side. You found it the day you bought in."
+        }
+      ]
     },
     {
       "slug": "fishing_lures",
@@ -3240,7 +4368,24 @@
       "pose": null,
       "prompt": "Two vintage wooden fishing lures side by side, one painted red with a white belly and one yellow with black spots, glass eyes, rusted treble hooks, a small brass eyelet on each nose.",
       "texture_prompt": "chipped painted wood, glass eyes, rusted steel hooks, brass eyelets",
-      "canon": []
+      "canon": [
+        {
+          "src": "games/world/items.json",
+          "text": "A red lure (Mepps #2)"
+        },
+        {
+          "src": "games/world/items.json",
+          "text": "On the third row. The lure Em rated, in the log, in '99 as the lure for the bayou at first light. Has not moved from the third row since spring."
+        },
+        {
+          "src": "games/world/items.json",
+          "text": "On the fourth row. The shop's biggest seller in March. The kids buy them for redfish."
+        },
+        {
+          "src": "games/world/items.json",
+          "text": "Three search piles at Frog Knows Best: the retail counter (till, fish food, log), the nightcrawler chest cooler (live bait), the W pegboard (lures, hooks)."
+        }
+      ]
     },
     {
       "slug": "pause_watch",
@@ -3258,7 +4403,16 @@
       "pose": null,
       "prompt": "A gold pocket watch with the hunter case open, a white dial with a small seconds sub-dial, the hands frozen, a gold chain coiled beside it, the case engraved with worn initials.",
       "texture_prompt": "polished gold case, white enamel dial, gold chain",
-      "canon": []
+      "canon": [
+        {
+          "src": "games/hierophant/items.json",
+          "text": "Wristwatch · 1962 mechanical"
+        },
+        {
+          "src": "games/hierophant/items.json",
+          "text": "The watch your father gave you when you turned twenty. You use it to time the pause before the verb. The pause is seven-tenths of a second when you are at your best; one and one-half when you are not."
+        }
+      ]
     },
     {
       "slug": "hundred_dollar_bill",
@@ -3276,7 +4430,24 @@
       "pose": null,
       "prompt": "A single hundred-dollar banknote folded once lengthwise, standing in a small tent shape, slightly soft with handling, one corner torn.",
       "texture_prompt": "green and cream printed paper, soft creases",
-      "canon": []
+      "canon": [
+        {
+          "src": "games/empress/items.json",
+          "text": "A hundred-dollar bill from Table 14, weighted on top of the folded note. Mr. Dean paid for nothing."
+        },
+        {
+          "src": "games/empress/gravity_deck_when_youre_ready.json",
+          "text": "a hundred-dollar bill. clean fold. weighing the small folded note. he stands. he smooths his lapels."
+        },
+        {
+          "src": "games/empress/visitors.json",
+          "text": "Leaves the note: 'When you're ready' + a phone number, weighted under a hundred-dollar bill."
+        },
+        {
+          "src": "games/empress/cameo_dean_arrives.json",
+          "text": "The small note: when you're ready. A phone number below it. The hundred-dollar bill on top, weighting it to the table."
+        }
+      ]
     },
     {
       "slug": "pauls_black_car",
@@ -3294,7 +4465,32 @@
       "pose": null,
       "prompt": "A long black 1990s luxury sedan, immaculate, tinted windows, chrome trim, whitewall-free black tyres, parked with the rear door slightly open; a chauffeur's cap resting on the dash.",
       "texture_prompt": "gloss black paint, dark tinted glass, chrome trim, black rubber tyres",
-      "canon": []
+      "canon": [
+        {
+          "src": "vol5/vol5_ch5_hierophant.json",
+          "text": "Then he turned. Sharp. Strode toward a long black car idling by the curb. Moving like he owned the damn sidewalk and maybe the sky too."
+        },
+        {
+          "src": "vol5/vol5_ch5_hierophant.json",
+          "text": "The Hierophant, by then, was already three blocks away, in the back of the long black car, on his second phone call of the hour"
+        },
+        {
+          "src": "games/locations/the_hierophant_circuit.json",
+          "text": "the long black car idles wherever it idles. its engine is off when it idles for him. its engine is running when it idles for everybody else."
+        },
+        {
+          "src": "games/locations/the_hierophant_circuit.json",
+          "text": "the door closes the way the door of a long black car closes when somebody has paid attention to the door's weight."
+        },
+        {
+          "src": "games/hierophant/visitors.json",
+          "text": "The driver of the long black car. He has been the driver for nineteen years. He does not look back."
+        },
+        {
+          "src": "games/locations/the_hierophant_circuit.json",
+          "text": "the curb outside d'ambrosio's riverboat · where the long black car parks"
+        }
+      ]
     },
     {
       "slug": "folded_napkin_booth_6",
@@ -3312,7 +4508,24 @@
       "pose": null,
       "prompt": "A white paper diner napkin folded into a tight square with a handwritten note visible on the exposed side in blue ballpoint, one edge stained with coffee.",
       "texture_prompt": "white embossed paper, blue ballpoint ink, brown coffee stain",
-      "canon": []
+      "canon": [
+        {
+          "src": "vol5/vol5_ch0_booth6.json",
+          "text": "John folded the napkin from booth six. White, paper, cheap. He folded it once, twice, three times, and then a fourth into a shape that was not quite anything but resembled, if you squinted at it from the right angle and were willing to be generous, a flower. He tucked it into the back of his notebook."
+        },
+        {
+          "src": "vol5/vol5_ch0_closing.json",
+          "text": "The folded napkin, white and cheap and shaped almost like a flower, sat between the pages where he had tucked it."
+        },
+        {
+          "src": "vol5/vol5_ch5_hierophant.json",
+          "text": "In John's coat pocket, against his ribs, the folded napkin from booth six pressed faintly through the lining."
+        },
+        {
+          "src": "games/priestess/cameo_john_before_montreal.json",
+          "text": "He has, in his coat pocket, the folded napkin from booth six."
+        }
+      ]
     },
     {
       "slug": "license_plate_notebook",
