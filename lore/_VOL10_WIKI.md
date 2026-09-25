@@ -205,7 +205,9 @@ volume's visual canon: **"The Empty Chair"** (November 30, 2014)
 and **"The Box"** (December 21, 2014).
 
 Cadence, venues, the two sabbaticals, the 2018–2020 burnout and
-the private era are in `drift_wood/publication_history.md`.
+the private era are in `drift_wood/publication_history.md`. The
+scope of what the book shows (~200 units of ~10,000) and every
+year 1997–2027 are in `drift_wood/_SCOPE_AND_YEARS.md`.
 Drafted strips for every era are in `drift_wood/sample_strips.md`.
 
 ### The phantom graphic novel
@@ -354,12 +356,14 @@ strip's own panel grid as the presentation. Decision reserved.
    with the delusion-and-leak samples.
 8. **`drift_wood/arthur_finch.md`** and the other three character
    files, read as inference documents.
-9. **`drift_wood/_ARC_OUTLINE.md`** — the book's structure as runs
-   of strips and the proposed scene-id plan.
-10. **`drift_wood/_CONCEPT_ART.md`** — the September 2026 sheet.
-11. **`_VOL7_WIKI.md`** — only for the Smolvud echoes and the far
+9. **`drift_wood/_SCOPE_AND_YEARS.md`** — how much of the archive
+   the book shows, and every year 1997–2027.
+10. **`drift_wood/_ARC_OUTLINE.md`** — the book's structure as runs
+    of strips and the proposed scene-id plan.
+11. **`drift_wood/_CONCEPT_ART.md`** — the September 2026 sheet.
+12. **`_VOL7_WIKI.md`** — only for the Smolvud echoes and the far
     horizon.
-12. **Vol 2's title scene** — there is no vol 2 wiki; read
+13. **Vol 2's title scene** — there is no vol 2 wiki; read
    `godot/resources/scenes/vol2/vol2_title.json` for the found-
    notebook frame if the nesting matters to the chapter at hand.
 

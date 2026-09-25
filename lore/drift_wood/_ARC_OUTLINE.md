@@ -13,7 +13,8 @@ Between the bookends there is no author on the page
 (`_AUTHORIAL_RULE.md`). Every unit below is a **run of strips**, a
 **gap**, or a **divider** — never a dramatized day. The brief's five
 arcs and the user's cadence seams give the runs their edges.
-Nothing here is in `index.json`.
+Nothing here is in `index.json`. Per-year content and the unit
+budget per run are in `_SCOPE_AND_YEARS.md`.
 
 Working assumptions (change freely):
 
