@@ -319,7 +319,7 @@ def build_use_states_2026_08():
     # half-finished coffee two stools down from the register.
     make_box("Counter_Rag", (0.2, 4.42, 1.005), (0.24, 0.18, 0.02), (0.72, 0.74, 0.70, 1.0))
     make_cyl("Counter_Coffee", (2.4, 4.40, 1.05), 0.04, 0.09, (0.92, 0.90, 0.86, 1.0), segments=8)
-    make_cyl("Counter_Coffee_Ring", (2.55, 4.36, 1.001), 0.05, 0.003, (0.66, 0.60, 0.52, 1.0), segments=8)
+    make_cyl("Counter_Coffee_Ring", (2.55, 4.36, 1.0121), 0.05, 0.003, (0.66, 0.60, 0.52, 1.0), segments=8)
     # The grill mid-order: two patties, the spatula resting on the
     # flat-top edge, a side towel over the hood bar.
     for pi, pxo in enumerate([-0.25, 0.05]):
@@ -426,9 +426,9 @@ def build_hero_props_2026_09():
     make_cyl("Door_Bell_Clapper", (0.30, 0.18, 2.375), 0.008, 0.020,
              (0.30, 0.26, 0.20, 1.0), segments=6)
     # ── THE TEN · flat on the lunch counter (top 1.005) ──
-    make_box("Ten_Dollar_Bill", (1.7, 4.45, 1.0058), (0.156, 0.066, 0.0015),
+    make_box("Ten_Dollar_Bill", (1.7, 4.45, 1.0113), (0.156, 0.066, 0.0015),
              (0.66, 0.66, 0.58, 1.0))
-    make_box("Bill_Pencil_Line", (1.7, 4.45, 1.0069), (0.100, 0.008, 0.0005),
+    make_box("Bill_Pencil_Line", (1.7, 4.45, 1.0109), (0.100, 0.008, 0.0005),
              (0.38, 0.37, 0.36, 1.0))
     # ── BEN'S PHONE · on the prep line (top 0.95) ──
     make_box("Bens_Phone", (1.55, 7.05, 0.9555), (0.070, 0.140, 0.011),

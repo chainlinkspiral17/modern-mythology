@@ -85,6 +85,16 @@ the result is intelligible-enough with 30% static overlay.
 
 ## Recent lessons
 
+### 2026-09-24 · a place sound from a script, rendered, not recorded
+
+- **tools/audio/sprinkler_chug.py** — the impact sprinklers' "chug": each
+  event is ADDED MODULO the loop length into one buffer, so the loop is
+  seamless by construction (no fold, no tail to trim). Three heads out
+  of phase at slightly different tick rates read as a block of lawns,
+  not a metronome. Peak normalised to -6 dBFS; played at -13 dB on the
+  SFX bus. The loop region is set at runtime (loop_end from length ×
+  mix_rate) the way AudioMgr._set_stream_loop does.
+
 ### 2026-09-11 · the VN score · six volumes were playing vol5's music
 
 The catalog is not the score. `music_catalog.json` carried 207

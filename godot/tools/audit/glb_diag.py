@@ -52,6 +52,10 @@ def first_value(j, b, acc_i):
 
 
 def main():
+    # the presets the contact sheet has skipped (2026-09-24): does the file exist?
+    for nm in ("highway_101", "small_wood_road"):
+        fp = os.path.join(GLB_DIR, nm + ".glb")
+        print("%-28s %s" % (nm, ("%d bytes" % os.path.getsize(fp)) if os.path.exists(fp) else "NO FILE"))
     names = sys.argv[1:] or DEFAULT
     for name in names:
         path = os.path.join(GLB_DIR, name + ".glb")

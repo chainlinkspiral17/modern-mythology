@@ -465,7 +465,7 @@ def build_draft4_2026_09():
     # counter's face below the drawers, the proofer's door-edge patch
     sx, sy = +ROOM_W/4.0, ROOM_D-1.0
     for di, dz in enumerate([0.55, 1.05]):
-        make_box(f"Wear_Grip_{di}", (sx-0.452, sy, dz-0.19), (0.004, 0.30, 0.08), (0.36, 0.32, 0.30, 1.0))
+        make_box(f"Wear_Grip_{di}", (sx-0.452 - 0.0506, sy, dz-0.19), (0.004, 0.30, 0.08), (0.36, 0.32, 0.30, 1.0))
     make_scuff_band("Wear_Kick", (-1.0, ROOM_D-1.0-0.356), 0.8, axis='X', height=0.10, band_z=0.30, tint=(0.24, 0.16, 0.10, 1.0))
     make_box("Wear_Proofer_Edge", (ROOM_W/2.0-0.55-0.342, ROOM_D-1.4+0.24, 1.05), (0.003, 0.05, 0.60), (0.62, 0.62, 0.64, 1.0))
     # ── D3 ──

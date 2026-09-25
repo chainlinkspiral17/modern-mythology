@@ -328,12 +328,12 @@ def build_hull_and_decks():
                 # split round the stairwell
                 for k, (x0, x1) in enumerate(((HULL_X_W, STAIR_HOLE[0]), (STAIR_HOLE[1], HULL_X_E))):
                     make_box(f"Hull_{label}_Seam_{i}_{k}",
-                             ((x0 + x1) / 2.0, y, zf + 0.012),
+                             ((x0 + x1) / 2.0, y, zf + 0.0006),   # on the deck (it floated 12 mm up)
                              (x1 - x0, 0.01, 0.001),
                              (0.20, 0.14, 0.08, 1.0))
                 continue
             make_box(f"Hull_{label}_Seam_{i}",
-                     (0.0, y, zf + 0.012),
+                     (0.0, y, zf + 0.0006),   # on the deck (it floated 12 mm up)
                      (12.0, 0.01, 0.001),
                      (0.20, 0.14, 0.08, 1.0))
 
@@ -349,8 +349,10 @@ def build_hull_and_decks():
         # Tin stamp pattern (subtle raised tiles)
         for i in range(-2, 3):
             for j in range(-5, 6):
+                # UNDER the ceiling's face (2026-09-24: at zc + 0.02 all 165
+                # tiles sat inside the 10 cm slab — the tin never showed)
                 make_box(f"Hull_{label}_Tile_{i}_{j}",
-                         (i * 1.6, j * 1.6, zc + 0.02),
+                         (i * 1.6, j * 1.6, zc - 0.003),
                          (1.40, 1.40, 0.005),
                          (0.74, 0.56, 0.30, 1.0))
 

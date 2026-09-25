@@ -150,14 +150,14 @@ def build_wall_dressing():
     # THE DEPTH CHART (ch13/ch19 object of dread) — big, gridded
     make_box("DepthChart", (ex, 3.4, 1.6), (0.02, 0.9, 1.0), COL_PAPER)
     for r in range(8):
-        make_box(f"DepthChart_Row_{r}", (ex - 0.006, 3.4, 1.98 - r * 0.11),
+        make_box(f"DepthChart_Row_{r}", (ex - 0.006 - 0.0071, 3.4, 1.98 - r * 0.11),
                  (0.005, 0.78, 0.03), (0.35, 0.35, 0.38, 1.0))
     make_box("DepthChart_Head", (ex - 0.006, 3.4, 2.04), (0.006, 0.8, 0.06),
              (0.48, 0.14, 0.14, 1.0))
     # Record board — green with gold lines
     make_box("RecordBoard", (ex, 4.9, 1.6), (0.02, 1.1, 0.9), COL_BOARD)
     for r in range(6):
-        make_box(f"Record_Line_{r}", (ex - 0.006, 4.9, 1.9 - r * 0.11),
+        make_box(f"Record_Line_{r}", (ex - 0.006 - 0.0071, 4.9, 1.9 - r * 0.11),
                  (0.005, 0.95, 0.025), (0.72, 0.60, 0.24, 1.0))
     # Box fan in the SW corner on a milk crate (basement, August)
     make_box("Fan_Crate", (-3.3, 0.6, 0.17), (0.34, 0.34, 0.34), (0.60, 0.28, 0.12, 1.0))

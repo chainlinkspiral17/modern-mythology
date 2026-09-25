@@ -256,7 +256,7 @@ def build_wear_personality_2026_08():
     # the stove; its center is worn pale with knife lines.
     make_box("Wear_Board", (-1.65, 4.72, 0.955), (0.38, 0.26, 0.018),
              (0.62, 0.50, 0.34, 1.0))
-    make_box("Wear_Board_Center", (-1.65, 4.72, 0.966), (0.24, 0.15, 0.004), floor_pale)
+    make_box("Wear_Board_Center", (-1.65, 4.72, 0.9826), (0.24, 0.15, 0.004), floor_pale)
     for ki in range(3):
         make_box("Wear_Board_Knifeline_%d" % ki, (-1.70 + ki * 0.05, 4.72, 0.968),
                  (0.005, 0.13, 0.002), (0.44, 0.34, 0.22, 1.0))

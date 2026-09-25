@@ -38,7 +38,7 @@ def build_shell():
     # Peeling wallpaper strips on E wall
     for pi in range(3):
         py = 1.0 + pi*1.5
-        make_box(f"Peel_{pi}", (ROOM_W/2.0-0.06, py, 1.50 + (pi%2)*0.20), (0.005, 0.36, 0.50), COL_WALLPAPER_PEEL)
+        make_box(f"Peel_{pi}", (ROOM_W/2.0-0.06 - 0.0431, py, 1.50 + (pi%2)*0.20), (0.005, 0.36, 0.50), COL_WALLPAPER_PEEL)
 
 def build_bed():
     bx, by = -0.1, 3.85         # head to the N wall, clear of the desk at x 0.6..1.6 (2026-09-10)
@@ -87,7 +87,7 @@ def build_decor():
     make_cyl("Canvas_Duffle", (+1.20, 1.50, 0.16), 0.17, 0.62, (0.42, 0.40, 0.30, 1.0), segments=10, axis='Y')
     make_box("Duffle_Strap", (+1.20, 1.50, 0.34), (0.30, 0.05, 0.02), (0.30, 0.28, 0.22, 1.0))
     # Strap detail
-    make_box("Suitcase_Strap", (+1.20, 1.50, 0.22), (0.04, 0.40, 0.005), (0.86, 0.62, 0.28, 1.0))
+    make_box("Suitcase_Strap", (+1.20, 1.50, 0.3331), (0.04, 0.40, 0.005), (0.86, 0.62, 0.28, 1.0))
 
 def build_ceiling_infra():
     # Bare bulb on cord (only light)

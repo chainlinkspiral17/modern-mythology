@@ -143,7 +143,7 @@ def build_red_dots():
         if dz < 0.35 or dz > 2.9 or dy < 0.5 or dy > ROOM_D - 0.4:
             continue
         s = 0.014 + 0.006 * ((i * 7) % 3)
-        make_box(f"Dot_{i}", (wx, dy, dz), (0.006, s, s), COL_DOT)
+        make_box(f"Dot_{i}", (wx + 0.0086, dy, dz), (0.006, s, s), COL_DOT)
 
 
 def build_hero_props():

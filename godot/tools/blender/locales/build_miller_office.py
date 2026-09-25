@@ -210,10 +210,10 @@ def build_wall_dressing():
     make_box("Map_Frame", (wx, 3.4, 1.70), (0.03, 1.30, 0.90), COL_WALNUT_DK)
     make_box("Map_Paper", (wx + 0.012, 3.4, 1.70), (0.01, 1.16, 0.78), COL_MAP)
     for gi in range(5):
-        make_box(f"Map_Road_{gi}", (wx + 0.016, 3.0 + gi * 0.18, 1.70), (0.005, 0.02, 0.72), COL_MAP_INK)
+        make_box(f"Map_Road_{gi}", (wx + 0.016 + 0.0371, 3.0 + gi * 0.18, 1.70), (0.005, 0.02, 0.72), COL_MAP_INK)
     for gi in range(4):
-        make_box(f"Map_RoadH_{gi}", (wx + 0.016, 3.4, 1.42 + gi * 0.18), (0.005, 1.10, 0.02), COL_MAP_INK)
-    make_box("Map_Zone_G", (wx + 0.02, 3.7, 1.55), (0.004, 0.16, 0.16), COL_SCANNER_LED)  # the flagged zone
+        make_box(f"Map_RoadH_{gi}", (wx + 0.016 + 0.0371, 3.4, 1.42 + gi * 0.18), (0.005, 1.10, 0.02), COL_MAP_INK)
+    make_box("Map_Zone_G", (wx + 0.02 + 0.0326, 3.7, 1.55), (0.004, 0.16, 0.16), COL_SCANNER_LED)  # the flagged zone
     # Framed commendations (two)
     make_box("Commend_1_Frame", (wx, 1.7, 1.9), (0.03, 0.34, 0.44), COL_FRAME_GOLD)
     make_box("Commend_1_Cert", (wx + 0.012, 1.7, 1.9), (0.01, 0.26, 0.34), COL_PAPER)

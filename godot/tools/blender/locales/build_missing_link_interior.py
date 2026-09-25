@@ -241,8 +241,8 @@ def build_decor():
     make_box("LinkSign_Enamel", (px, 0.04, 2.05), (0.92, 0.02, 0.36), (0.90, 0.86, 0.70, 1.0))
     make_box("LinkSign_Title", (px, 0.02, 2.18), (0.72, 0.005, 0.06), COL_BLACK)
     # The ape-man silhouette painted beneath the name
-    make_box("LinkSign_Figure_Body", (px, 0.02, 1.98), (0.10, 0.005, 0.14), COL_BLACK)
-    make_cyl("LinkSign_Figure_Head", (px, 0.02, 2.08), 0.05, 0.005, COL_BLACK, axis='Y', segments=8)
+    make_box("LinkSign_Figure_Body", (px, 0.1031, 1.98), (0.10, 0.005, 0.14), COL_BLACK)
+    make_cyl("LinkSign_Figure_Head", (px, 0.1031, 2.08), 0.05, 0.005, COL_BLACK, axis='Y', segments=8)
     # Entry mat
     make_box("EntryMat", (0.0, 0.70, 0.011), (1.4, 0.7, 0.006), (0.24, 0.22, 0.20, 1.0))
 

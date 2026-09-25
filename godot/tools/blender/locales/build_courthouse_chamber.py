@@ -277,7 +277,7 @@ def build_justice_dressing():
              segments=10, axis='Z')
     # Coffee level inside (almost full)
     make_cyl("AnnaCoffeeCup_Liquid",
-             (pt_x + 0.18, pt_y, table_top_z + 0.095),
+             (pt_x + 0.18, pt_y, table_top_z + 0.095 + 0.0181),
              0.036, 0.005,
              (0.30, 0.18, 0.10, 1.0),
              segments=10, axis='Z')

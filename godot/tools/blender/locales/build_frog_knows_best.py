@@ -372,7 +372,7 @@ def build_world_wave2_props():
              (0.15, 0.21, 0.001),
              (0.94, 0.90, 0.80, 1.0))
     make_box("Aurelie_Notebook_Speckle",
-             (aur_x - 0.04, aur_y, counter_z + 0.0145),
+             (aur_x - 0.04, aur_y, counter_z + 0.0145 - 0.0054),
              (0.03, 0.20, 0.0005),
              (0.24, 0.20, 0.16, 1.0))
     for li in range(10):

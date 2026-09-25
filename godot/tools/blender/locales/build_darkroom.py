@@ -117,9 +117,9 @@ def build_wet_bench():
         make_box(f"Tray_{tray_names[ti]}_Liquid", (bx, ty, tz + 0.035),
                  (0.34, 0.46, 0.025), tray_liq[ti])
     # A print floating face-up in the developer (the image "coming up")
-    make_box("Tray_Dev_Print", (bx, tray_ys[0], top_z + 0.10),
+    make_box("Tray_Dev_Print", (bx, tray_ys[0], top_z + 0.10 + 0.0126),
              (0.22, 0.30, 0.004), COL_PRINT)
-    make_box("Tray_Dev_Print_Img", (bx, tray_ys[0], top_z + 0.103),
+    make_box("Tray_Dev_Print_Img", (bx, tray_ys[0], top_z + 0.103 + 0.0086),
              (0.16, 0.22, 0.002), COL_PRINT_IMG)
     # Bamboo print tongs resting on the splash
     for k in range(2):
@@ -202,7 +202,7 @@ def build_dry_bench():
     make_box("Sink_Water", (sx, ny, top_z + 0.13), (0.44, 0.40, 0.06), COL_WATER)
     # Prints washing in the tray
     for k in range(3):
-        make_box(f"Sink_Print_{k}", (sx - 0.12 + k * 0.11, ny + 0.04, top_z + 0.15),
+        make_box(f"Sink_Print_{k}", (sx - 0.12 + k * 0.11, ny + 0.04, top_z + 0.15 + 0.0321),
                  (0.14, 0.18, 0.003), COL_PRINT)
     # Faucet + a thin water stream
     make_cyl("Sink_Faucet", (sx, ny + 0.20, top_z + 0.24), 0.02, 0.14, COL_STEEL_DK, segments=6)

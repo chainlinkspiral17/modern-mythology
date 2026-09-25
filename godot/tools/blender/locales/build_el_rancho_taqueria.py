@@ -75,7 +75,7 @@ def build_menu_board():
     row_cols = [(0.98,0.86,0.44,1.0),(0.92,0.62,0.28,1.0),(0.86,0.44,0.30,1.0),(0.72,0.82,0.60,1.0)]
     for col_i in range(2):
         for row in range(4):
-            make_box(f"Menu_{col_i}_{row}", (mx-0.55+col_i*1.10, my-0.03, mz+0.28-row*0.18),
+            make_box(f"Menu_{col_i}_{row}", (mx-0.55+col_i*1.10, my-0.03 - 0.0131, mz+0.28-row*0.18),
                      (0.80, 0.005, 0.05), row_cols[row])
 
 def build_salsa_station():

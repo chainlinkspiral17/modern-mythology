@@ -260,7 +260,7 @@ def build_bedroom():
     # apartment." The residue it left on the duvet where she slept.
     for ci, (dx, w) in enumerate(((-0.16, 0.06), (0.0, 0.05), (0.16, 0.06))):
         make_box("Charcoal_Letter_%d" % ci, (bx - 0.10 + dx, by - 0.36, 0.5915), (w, 0.07, 0.003), (0.16, 0.15, 0.15, 1.0))
-    make_box("Charcoal_Smudge", (bx - 0.10, by - 0.30, 0.5705), (0.40, 0.06, 0.001), (0.36, 0.34, 0.34, 1.0))
+    make_box("Charcoal_Smudge", (bx - 0.10, by - 0.30, 0.5911), (0.40, 0.06, 0.001), (0.36, 0.34, 0.34, 1.0))
     make_chamfer_box("Nightstand", (bx+0.95, by+0.7, 0.30), (0.42, 0.42, 0.60), COL_WOOD, chamfer=0.01)
     make_box("Nightstand_Drawer_Seam", (bx+0.95, by+0.7-0.212, 0.44), (0.34, 0.004, 0.006), (0.34, 0.24, 0.16, 1.0))
     make_lathe("Nightstand_Pull", (bx+0.95, by+0.7-0.215, 0.36), [(0.0, 0.0), (0.012, 0.0), (0.014, 0.01), (0.008, 0.02), (0.0, 0.02)],

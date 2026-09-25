@@ -2185,13 +2185,13 @@ def build_road_network():
     crosswalk_col = (0.92, 0.88, 0.78, 1.0)
     for ci in range(8):
         cx_o = FRONTAGE_X - 5.0 + ci * 1.4
-        make_box(f"Crosswalk_NS_{ci}_a", (cx_o, cross_y - 4.5, 0.008),
+        make_box(f"Crosswalk_NS_{ci}_a", (cx_o, cross_y - 4.5, -0.0031),
                  (0.50, 0.20, 0.005), crosswalk_col)
-        make_box(f"Crosswalk_NS_{ci}_b", (cx_o, cross_y + 4.5, 0.008),
+        make_box(f"Crosswalk_NS_{ci}_b", (cx_o, cross_y + 4.5, -0.0031),
                  (0.50, 0.20, 0.005), crosswalk_col)
 
     # ── STOP BAR + STOP SIGN at the intersection
-    make_box("StopBar_S", (FRONTAGE_X, cross_y - 5.5, 0.008),
+    make_box("StopBar_S", (FRONTAGE_X, cross_y - 5.5, -0.0031),
              (road_w - 0.6, 0.40, 0.005), white_line)
     # Stop sign on a pole
     ss_x = FRONTAGE_X + road_w/2 + side_w + 0.4

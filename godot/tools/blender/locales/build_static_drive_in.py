@@ -107,7 +107,7 @@ def build_popcorn_machine():
     make_box("Popcorn_Cart", (px, py, 0.50), (0.54, 0.54, 1.00), COL_POPCORN_RED)   # the cart under the machine (2026-09-08)
     make_box("Popcorn_Base", (px, py, 1.20), (0.50, 0.50, 0.40), COL_POPCORN_RED)
     make_box("Popcorn_Kettle_BG", (px, py, 1.60), (0.50, 0.50, 0.40), COL_POPCORN_RED)
-    make_box("Popcorn_Window", (px, py-0.20, 1.60), (0.42, 0.005, 0.36), COL_GLASS)
+    make_box("Popcorn_Window", (px, py-0.20 - 0.0531, 1.60), (0.42, 0.005, 0.36), COL_GLASS)
     # Kettle inside
     make_cyl("Popcorn_Kettle", (px, py, 1.70), 0.10, 0.20, P.METAL_BLACK, segments=10)
     # Striped peaked roof
@@ -205,7 +205,7 @@ def build_moon_dressing():
              (0.86, 0.18, 0.16, 1.0))
     # Flip-out viewfinder screen (a small open panel)
     make_box("MoonCam_Viewfinder",
-             (cam_x - 0.07, cam_y, counter_z + 0.06),
+             (cam_x - 0.07 + 0.0231, cam_y, counter_z + 0.06),
              (0.005, 0.06, 0.04),
              (0.62, 0.86, 0.74, 1.0))   # phosphor mint
 

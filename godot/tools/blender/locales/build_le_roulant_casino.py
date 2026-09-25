@@ -95,10 +95,10 @@ def build_slot_bank():
         sy = 1.50 + si * 1.20
         make_box(f"Slot_{si}_Pedestal", (sx, sy, 0.40), (0.60, 0.50, 0.80), COL_SLOT_BODY)
         make_box(f"Slot_{si}_Body", (sx, sy, 1.30, ), (0.60, 0.50, 1.00), COL_SLOT_BODY)
-        make_box(f"Slot_{si}_Screen", (sx+0.26, sy, 1.30), (0.005, 0.40, 0.40), COL_SLOT_SCREEN)
+        make_box(f"Slot_{si}_Screen", (sx+0.26 + 0.0431, sy, 1.30), (0.005, 0.40, 0.40), COL_SLOT_SCREEN)
         # Three reel windows
         for ri in range(3):
-            make_box(f"Slot_{si}_Reel_{ri}", (sx+0.27, sy - 0.16 + ri*0.16, 1.30),
+            make_box(f"Slot_{si}_Reel_{ri}", (sx+0.27 + 0.0331, sy - 0.16 + ri*0.16, 1.30),
                      (0.005, 0.12, 0.20), (0.92, 0.92, 0.86, 1.0))
         # Crank handle
         make_box(f"Slot_{si}_Crank", (sx+0.30, sy+0.28, 1.00), (0.06, 0.06, 0.20), COL_BRASS)
@@ -178,12 +178,12 @@ def build_wheel_dressing():
     # Third-quadrant scuff — a darker arc on the wheel surface,
     # SE side of the wheel (the canonical "hesitates here" spot)
     make_box("RouletteWheel_ThirdQuadrantScuff",
-             (wheel_cx + 0.16, wheel_cy - 0.16, wheel_top_z + 0.002),
+             (wheel_cx + 0.16, wheel_cy - 0.16, wheel_top_z + 0.002 - 0.0131),
              (0.18, 0.10, 0.001),
              (0.18, 0.14, 0.10, 1.0))   # darker scuff
     # A scratch streak radiating outward from the scuff
     make_box("RouletteWheel_ScuffStreak",
-             (wheel_cx + 0.22, wheel_cy - 0.22, wheel_top_z + 0.003),
+             (wheel_cx + 0.22, wheel_cy - 0.22, wheel_top_z + 0.003 - 0.0139),
              (0.04, 0.04, 0.0005),
              (0.32, 0.24, 0.16, 1.0))
 
@@ -343,7 +343,7 @@ def build_wheel_wave2_props():
 
     # Form 47.C closing sheet on the table
     make_box("CountRoom_Form47C",
-             (cr_x, cr_y - 0.20, ct_z + 0.014),
+             (cr_x, cr_y - 0.20, ct_z + 0.014 + 0.0076),
              (0.22, 0.28, 0.002),
              (0.94, 0.90, 0.80, 1.0))
     # Three signature lines
@@ -360,17 +360,17 @@ def build_wheel_wave2_props():
                  (0.14, 0.16, 0.44, 1.0))
     # Wheel-service ticket #7794 stapled to top edge
     make_box("CountRoom_ServiceTicket7794",
-             (cr_x, cr_y - 0.06, ct_z + 0.017),
+             (cr_x, cr_y - 0.06, ct_z + 0.017 + 0.0041),
              (0.14, 0.09, 0.001),
              (0.94, 0.86, 0.42, 1.0))
     # Staple mark
     make_box("CountRoom_ServiceTicket7794_Staple",
-             (cr_x, cr_y - 0.02, ct_z + 0.018),
+             (cr_x, cr_y - 0.02, ct_z + 0.018 + 0.0030),
              (0.008, 0.02, 0.0008),
              (0.72, 0.72, 0.72, 1.0))
     # Ticket number in dark block
     make_box("CountRoom_ServiceTicket_Number",
-             (cr_x - 0.02, cr_y - 0.07, ct_z + 0.0185),
+             (cr_x - 0.02, cr_y - 0.07, ct_z + 0.0185 + 0.0024),
              (0.05, 0.010, 0.0005),
              (0.20, 0.16, 0.12, 1.0))
 

@@ -120,7 +120,7 @@ def build_hero_props():
     make_box("Booth_Table", (-3.4, 1.35, 0.74), (1.10, 0.75, 0.05), wood)
     make_box("Booth_Table_Leg", (-3.4, 1.35, 0.37), (0.10, 0.10, 0.72), (0.20, 0.19, 0.20, 1.0))
     make_cyl("Saltshaker", (-3.25, 1.30, 0.80), 0.022, 0.08, (0.88, 0.88, 0.84, 0.9), segments=8)
-    make_box("Folded_Twenty", (-3.25, 1.30, 0.765), (0.05, 0.035, 0.006), (0.55, 0.62, 0.50, 1.0))
+    make_box("Folded_Twenty", (-3.25, 1.30, 0.8036), (0.05, 0.035, 0.006), (0.55, 0.62, 0.50, 1.0))
     for bi, (bx, by) in enumerate(((-3.6, 1.5), (-3.15, 1.55))):
         make_cyl(f"Empty_Bottle_{bi}", (bx, by, 0.86), 0.03, 0.20, (0.36, 0.26, 0.14, 0.8), segments=8)
     # Three neon beer signs on the W wall — two dead brands, one live
@@ -187,9 +187,9 @@ def build_hero_props_2026_09():
     deliberately blind and VnDirector holds the wide (the
     closeup_douglas precedent).
     """
-    make_box("Hands_Sticky_Patch_A", (-3.30, 1.25, 0.7615), (0.14, 0.11, 0.0015),
+    make_box("Hands_Sticky_Patch_A", (-3.30, 1.25, 0.7664), (0.14, 0.11, 0.0015),
              (0.38, 0.30, 0.22, 1.0))
-    make_box("Hands_Sticky_Patch_B", (-3.52, 1.42, 0.7615), (0.11, 0.13, 0.0015),
+    make_box("Hands_Sticky_Patch_B", (-3.52, 1.42, 0.7664), (0.11, 0.13, 0.0015),
              (0.36, 0.28, 0.21, 1.0))
 
 

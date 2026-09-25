@@ -274,11 +274,11 @@ def build_lockers():
         # Vent grille
         for j in range(3):
             make_box(f"Locker_{i+1}_Vent_{j}",
-                     (lx + 0.22, ly, 1.70 + j * 0.08),
+                     (lx + 0.22 + 0.0331, ly, 1.70 + j * 0.08),
                      (0.005, 0.30, 0.02), COL_METAL_BLACK)
         # Number plate — #4 is Skip's, paint it brass instead of paper
         plate_col = (0.78, 0.62, 0.30, 1.0) if (i + 1) == 4 else COL_PAPER
-        make_box(f"Locker_{i+1}_Plate", (lx + 0.22, ly, 1.85),
+        make_box(f"Locker_{i+1}_Plate", (lx + 0.22 + 0.0331, ly, 1.85),
                  (0.005, 0.18, 0.06), plate_col)
         # The combination lock on #4 (Skip's: ex-wife's birthday backward)
         if (i + 1) == 4:

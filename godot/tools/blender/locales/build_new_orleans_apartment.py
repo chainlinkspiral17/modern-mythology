@@ -53,7 +53,7 @@ def build_shell():
     # East wall is brick
     make_wall("Wall_E", (+ROOM_W/2.0, ROOM_D/2.0, 0), length=ROOM_D+0.4, height=CEIL, axis='Y', palette={"wall": COL_BRICK, "baseboard": COL_BRICK_SEAM}, baseboard_face_sign=-1)
     for r in range(int(CEIL*4)):
-        make_box(f"Wall_E_Brick_{r}", (+ROOM_W/2.0-0.04, ROOM_D/2.0, r*0.25+0.12), (0.005, ROOM_D, 0.012), COL_BRICK_SEAM)
+        make_box(f"Wall_E_Brick_{r}", (+ROOM_W/2.0-0.04 - 0.0631, ROOM_D/2.0, r*0.25+0.12), (0.005, ROOM_D, 0.012), COL_BRICK_SEAM)
     make_wall("Wall_W", (-ROOM_W/2.0, ROOM_D/2.0, 0), length=ROOM_D+0.4, height=CEIL, axis='Y', palette=PAL, baseboard_face_sign=+1)
     make_wall("Wall_N", (0.0, ROOM_D, 0), length=ROOM_W+0.4, height=CEIL, axis='X', palette=PAL, baseboard_face_sign=-1)
     # Draft 3: the south wall CUT around both windows (x ±2.5, 1.4 wide,

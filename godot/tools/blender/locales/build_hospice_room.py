@@ -81,7 +81,7 @@ def build_shell():
     # (the sill at 0.9 — a hospice window over a bed's head; the wall
     # behind the mattress is the spandrel, which the bed rule reads)
     make_box("Window_N_Frame", (WIN_X, ROOM_D, 1.70), (2.00, 0.04, 1.60), COL_MEDICAL)
-    make_box("Window_N_Glass", (WIN_X, ROOM_D, 1.70), (1.80, 0.005, 1.40), (0.92, 0.92, 0.86, 0.50))
+    make_box("Window_N_Glass", (WIN_X, ROOM_D + 0.0231, 1.70), (1.80, 0.005, 1.40), (0.92, 0.92, 0.86, 0.50))
     make_box("Window_N_Mullion", (WIN_X, ROOM_D - 0.005, 1.70), (0.04, 0.02, 1.40), COL_MEDICAL)
     # the sill (the votive stands on it), the sheer curtains inside
     make_box("Window_N_Sill", (WIN_X, ROOM_D - 0.15, 0.88), (2.20, 0.16, 0.04), (0.62, 0.58, 0.54, 1.0))

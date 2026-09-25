@@ -326,7 +326,7 @@ def build_front_facade():
              (0.62, 0.42, 0.26, 1.0))
     # Storm door glass
     make_box("FrontDoor_StormGlass",
-             (fd_x, fd_y - 0.105, fd_h / 2.0 + 0.20),
+             (fd_x, fd_y - 0.105 - 0.0081, fd_h / 2.0 + 0.20),
              (fd_w - 0.10, 0.005, fd_h - 0.50),
              COL_WINDOW_GLASS)
     # Brass knob (the "sticky latch")
@@ -335,7 +335,7 @@ def build_front_facade():
                     0.030, COL_METAL_BRASS)
     # Strike plate
     make_box("FrontDoor_Strike",
-             (fd_x + fd_w / 2.0 - 0.10, fd_y - 0.022, 1.00),
+             (fd_x + fd_w / 2.0 - 0.10, fd_y - 0.022 + 0.0241, 1.00),
              (0.10, 0.003, 0.16),
              COL_METAL_BRASS)
     # WELCOME mat
@@ -453,24 +453,24 @@ def build_front_hallway():
     polaroid_y = table_cy - 0.05
     # Polaroid backing (the white border)
     make_box("Polaroid_Backing",
-             (polaroid_x, polaroid_y, table_top_z + 0.012),
+             (polaroid_x, polaroid_y, table_top_z + 0.012 + 0.0096),
              (0.090, 0.108, 0.002),
              COL_POLAROID_FRAME)
     # Image area (slightly inset, faded blue-grey + soft figure hints)
     make_box("Polaroid_Image",
-             (polaroid_x, polaroid_y + 0.008, table_top_z + 0.014),
+             (polaroid_x, polaroid_y + 0.008, table_top_z + 0.014 + 0.0069),
              (0.078, 0.078, 0.0005),
              (0.62, 0.62, 0.58, 1.0))
     # A small dark figure-silhouette in the image (deliberately ambiguous)
     make_box("Polaroid_Figure",
-             (polaroid_x, polaroid_y + 0.008, table_top_z + 0.0145),
+             (polaroid_x, polaroid_y + 0.008, table_top_z + 0.0145 + 0.0063),
              (0.018, 0.026, 0.0003),
              (0.32, 0.28, 0.24, 1.0))
     # Polaroid white bottom strip (the canonical handwriting space)
     # Already covered by the backing's white extending below; add a
     # thin pencil mark to read as someone's handwritten word
     make_box("Polaroid_Pencil",
-             (polaroid_x - 0.02, polaroid_y - 0.044, table_top_z + 0.0146),
+             (polaroid_x - 0.02, polaroid_y - 0.044, table_top_z + 0.0146 + 0.0062),
              (0.026, 0.005, 0.0003),
              (0.30, 0.24, 0.18, 1.0))
 
@@ -699,7 +699,7 @@ def build_kitchen():
              (0.78, 0.86, 0.92, 0.85), segments=4, axis='Z')
     # A small puddle at the bottom of the basin where the drip lands
     make_cyl("Kitchen_Faucet_Puddle",
-             (faucet_cx, faucet_cy - 0.16, cnt_top_z - 0.030),
+             (faucet_cx, faucet_cy - 0.16, cnt_top_z - 0.030 + 0.0331),
              0.040, 0.005,
              (0.62, 0.74, 0.82, 0.8), segments=10, axis='Z')
 
@@ -899,7 +899,7 @@ def build_back_porch():
              (bd_w + 0.04, 0.02, bd_h),
              (0.62, 0.42, 0.26, 1.0))
     make_box("BackDoor_ScreenMesh",
-             (bd_x, bd_y + 0.105, bd_h / 2.0),
+             (bd_x, bd_y + 0.105 + 0.0081, bd_h / 2.0),
              (bd_w - 0.10, 0.005, bd_h - 0.20),
              COL_SCREEN_MESH)
     # Knob

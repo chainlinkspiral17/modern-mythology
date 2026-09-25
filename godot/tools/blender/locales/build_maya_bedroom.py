@@ -288,7 +288,7 @@ def build_draft4_2026_09():
     make_scuff_band("Wear_Wall_Rub", (bx, ROOM_D), 1.30, axis='X', height=0.10, band_z=0.95, tint=(0.66, 0.60, 0.78, 1.0))
     make_scuff_band("Wear_Kick_Foot", (bx, by - 0.93), 1.10, axis='X', height=0.05, band_z=0.06, tint=(0.44, 0.34, 0.42, 1.0))
     for hi, (hy, hz) in enumerate(((ROOM_D-1.25, 1.75), (ROOM_D-0.75, 1.30), (ROOM_D-1.0, 1.85))):
-        make_cyl(f"Wear_PinHole_{hi}", (-ROOM_W/2.0 + 0.085, hy, hz), 0.004, 0.006, (0.40, 0.28, 0.18, 1.0), axis='X', segments=4)
+        make_cyl(f"Wear_PinHole_{hi}", (-ROOM_W/2.0 + 0.085 + 0.0186, hy, hz), 0.004, 0.006, (0.40, 0.28, 0.18, 1.0), axis='X', segments=4)
     # ── D3 ──
     make_light_switch("Switch_Door", (1.15, 0.0), axis='X', face_sign=1, z=1.20, aged=True)   # on the wall east of the door gap (2026-09-22: it hung in the doorway)
     make_wall_outlet("Outlet_E_1", (ROOM_W/2.0, 1.20), axis='Y', face_sign=-1, z=0.30, aged=True)

@@ -25,7 +25,7 @@ def build_shell():
     make_wall("Wall_W", (-ROOM_W/2.0, ROOM_D/2.0, 0), length=ROOM_D+0.4, height=CEIL, axis='Y', palette={"wall": COL_BRICK, "baseboard": COL_BRICK_SEAM}, baseboard_face_sign=+1)
     # Brick course lines
     for r in range(int(CEIL*4)):
-        make_box(f"Wall_W_Brick_{r}", (-ROOM_W/2.0+0.04, ROOM_D/2.0, r*0.25+0.12), (0.005, ROOM_D, 0.012), COL_BRICK_SEAM)
+        make_box(f"Wall_W_Brick_{r}", (-ROOM_W/2.0+0.04 + 0.0631, ROOM_D/2.0, r*0.25+0.12), (0.005, ROOM_D, 0.012), COL_BRICK_SEAM)
     make_wall("Wall_E", (+ROOM_W/2.0, ROOM_D/2.0, 0), length=ROOM_D+0.4, height=CEIL, axis='Y', palette=PAL_WALL, baseboard_face_sign=-1)
     make_wall("Wall_N", (0.0, ROOM_D, 0), length=ROOM_W+0.4, height=CEIL, axis='X', palette=PAL_WALL, baseboard_face_sign=-1)
     make_wall("Wall_S", (0.0, 0.0, 0), length=ROOM_W+0.4, height=CEIL, axis='X', palette=PAL_WALL, baseboard_face_sign=+1)
@@ -80,7 +80,7 @@ def build_plotter_and_mood_board():
     for pi in range(8):
         col = P.SNACK_TINTS[pi % len(P.SNACK_TINTS)]
         make_box(f"MoodPin_{pi}",
-                 (+4.94, 5.0 + (pi%4 - 1.5)*0.50, 1.50 + (pi//4)*0.50),
+                 (4.8969, 5.0 + (pi%4 - 1.5)*0.50, 1.50 + (pi//4)*0.50),
                  (0.005, 0.34, 0.26), col)
 
 def _task_chair(name, cx, cy, seat_col=(0.20, 0.22, 0.26, 1.0)):

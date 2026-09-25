@@ -291,7 +291,7 @@ def build_road_history_2026_08():
     # (DRAFT 3: sheets that follow the grade — a flat disc on the
     # slope floated at one edge and sank at the other)
     road_sheet("Gravel_ParkFan", 10.1, 13.0, 0.3, 2.8, (0.44, 0.40, 0.36, 1.0), lift=0.004)
-    make_cyl("Gravel_OilShadow", (0.45, 11.8, z_top(11.8) + 0.014), 0.28, 0.006, oil, segments=8)
+    make_cyl("Gravel_OilShadow", (0.45, 11.8, z_top(11.8) + 0.014 + 0.1161), 0.28, 0.006, oil, segments=8)
     # Needle drift over the shoulder edges — the forest reclaiming.
     for ni, (nx, ny, nl) in enumerate(((2.9, -2.0, 7.0), (-2.9, 2.5, 6.0),
                                        (2.85, -16.0, 8.0), (-2.85, -12.0, 5.0))):

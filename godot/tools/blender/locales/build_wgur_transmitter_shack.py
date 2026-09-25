@@ -103,11 +103,11 @@ def build_transmitter_rack():
         rx = -ROOM_W/2.0 + 0.55
         ry = 1.20 + bi * 0.80
         make_box(f"Rack_{bi}_Body", (rx, ry, 1.00), (0.50, 0.60, 2.00), COL_RACK_GREY)
-        make_box(f"Rack_{bi}_Front", (rx + 0.24, ry, 1.00), (0.005, 0.50, 1.80), COL_RACK_PANEL)
+        make_box(f"Rack_{bi}_Front", (rx + 0.24 + 0.0131, ry, 1.00), (0.005, 0.50, 1.80), COL_RACK_PANEL)
         # VU meters + dials per bay (4 stacked panels)
         for pi in range(4):
             pz = 0.30 + pi * 0.46
-            make_box(f"Rack_{bi}_Panel_{pi}", (rx + 0.245, ry, pz),
+            make_box(f"Rack_{bi}_Panel_{pi}", (rx + 0.245 + 0.0081, ry, pz),
                      (0.005, 0.50, 0.40), COL_RACK_PANEL)
             # VU window
             make_box(f"VU_{bi}_{pi}", (rx + 0.247, ry, pz + 0.06),
@@ -252,7 +252,7 @@ def build_tower_dressing():
                  (0.18, 0.96, 0.40, 1.0))
     # "RENDER QUEUE" label above the digits
     make_box("WGUR_Terminal_QueueLabel",
-             (term_x, term_y - 0.201, desk_top_z + 0.30),
+             (term_x, term_y - 0.201 - 0.0101, desk_top_z + 0.30),
              (0.18, 0.001, 0.012),
              (0.18, 0.96, 0.40, 1.0))
 
@@ -318,7 +318,7 @@ def build_tower_dressing():
              (0.94, 0.90, 0.80, 1.0))
     # Handwritten "FEB" on the label
     make_box("WGUR_TapeCassette_LabelText",
-             (spk_x, spk_y + 0.10, desk_top_z + 0.083),
+             (spk_x, spk_y + 0.10, desk_top_z + 0.083 + 0.0378),
              (0.05, 0.020, 0.0005),
              (0.18, 0.16, 0.10, 1.0))
 

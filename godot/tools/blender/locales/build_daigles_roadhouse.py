@@ -115,10 +115,10 @@ def build_jukebox():
 def build_neon_schlitz():
     # Iconic neon over the bar centerline
     make_box("Neon_Schlitz_BG", (0.0, ROOM_D-0.06, 2.20), (1.40, 0.04, 0.40), COL_NEON_SCHLITZ)
-    make_box("Neon_Schlitz_Letters", (0.0, ROOM_D-0.08, 2.20), (1.20, 0.005, 0.24), P.PAPER)
+    make_box("Neon_Schlitz_Letters", (0.0, ROOM_D-0.08 - 0.0231, 2.20), (1.20, 0.005, 0.24), P.PAPER)
     # Smaller "BEER" neon next to it
     make_box("Neon_Beer_BG", (-2.20, ROOM_D-0.06, 2.20), (0.80, 0.04, 0.30), (0.96, 0.72, 0.20, 1.0))
-    make_box("Neon_Beer_Letters", (-2.20, ROOM_D-0.08, 2.20), (0.64, 0.005, 0.18), P.PAPER)
+    make_box("Neon_Beer_Letters", (-2.20, ROOM_D-0.08 - 0.0231, 2.20), (0.64, 0.005, 0.18), P.PAPER)
 
 
 def build_gator_head():
@@ -154,7 +154,7 @@ def build_decor():
         nx = +ROOM_W/2.0 - 0.06
         ny = 1.40 + (ni % 2) * 0.30
         nz = 1.30 + (ni // 2) * 0.30
-        make_box(f"Notice_{ni}", (nx, ny, nz), (0.005, 0.18, 0.14), (0.92, 0.86, 0.74, 1.0))
+        make_box(f"Notice_{ni}", (nx - 0.0431, ny, nz), (0.005, 0.18, 0.14), (0.92, 0.86, 0.74, 1.0))
 
 
 def build_devil_dressing():

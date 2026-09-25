@@ -744,7 +744,7 @@ def build_the_leap_dressing():
                  r, 0.045, cream, segments=12, axis='Z')
     make_cyl("CoffeeMug_Rim", (mug_x, mug_y, counter_top_z + 0.118),
              0.049, 0.012, cream_dk, segments=12, axis='Z')
-    make_cyl("CoffeeMug_Coffee", (mug_x, mug_y, counter_top_z + 0.112),
+    make_cyl("CoffeeMug_Coffee", (mug_x, mug_y, counter_top_z + 0.112 + 0.0141),
              0.040, 0.006, (0.20, 0.12, 0.07, 1.0), segments=12, axis='Z')
     # Ring handle: four small cubes arcing off the -Y side
     for k in range(4):
@@ -1153,7 +1153,7 @@ def build_west_extension():
              (0.60, 0.06, 0.16), COL_BAR_WOOD)
     for i, c in enumerate("BAR"):
         make_box(f"WestExt_BarSign_Char_{i}",
-                 (bar_part_door_x + (i - 1) * 0.16, +2.0 - 0.04,
+                 (bar_part_door_x + (i - 1) * 0.16, +2.0 - 0.04 - 0.0131,
                   bar_part_door_h + 0.30),
                  (0.10, 0.005, 0.08), COL_BRASS)
 
@@ -1190,7 +1190,7 @@ def build_west_extension():
     for i, c in enumerate("FORMAL"):
         make_box(f"WestExt_FormalSign_Char_{i}",
                  (formal_part_door_x + (i - 2.5) * 0.20,
-                  -1.0 - 0.04, formal_part_door_h + 0.30),
+                  -1.0 - 0.04 - 0.0131, formal_part_door_h + 0.30),
                  (0.14, 0.005, 0.08), COL_BRASS)
 
     # ── BAR (NORTH section of extension, Y=+2..+6) ──
@@ -4627,11 +4627,11 @@ def build_gauntlet_decor():
     ]
     for i, (fx, fy, col) in enumerate(fan_cards):
         make_box(f"Gauntlet_FanCard_{i}",
-                 (fx, fy, counter_top_z + 0.022),
+                 (fx, fy, counter_top_z + 0.022 + 0.0306),
                  (0.10, 0.16, 0.004), col)
         # Sigil dot on each card
         make_box(f"Gauntlet_FanCard_{i}_Sigil",
-                 (fx, fy, counter_top_z + 0.025),
+                 (fx, fy, counter_top_z + 0.025 + 0.0266),
                  (0.03, 0.04, 0.002), COL_BRASS)
     # A patron-left coffee cup beside the cards (suggests a player
     # mid-game)
@@ -5896,7 +5896,7 @@ def build_counter_hero_props():
     make_box("FrPhone_Screen", (ph_x, ph_y, ph_z + 0.021),
              (0.072, 0.132, 0.004), COL_PHONE_SCREEN)
     # Spiderweb cracks across the screen (thin dark bars, offset)
-    make_box("FrPhone_Crack_A", (ph_x, ph_y + 0.02, ph_z + 0.0235),
+    make_box("FrPhone_Crack_A", (ph_x, ph_y + 0.02, ph_z + 0.0235 - 0.0271),
              (0.070, 0.004, 0.002), COL_PHONE_CRACK)
     make_box("FrPhone_Crack_B", (ph_x + 0.012, ph_y - 0.03, ph_z + 0.0235),
              (0.006, 0.090, 0.002), COL_PHONE_CRACK)

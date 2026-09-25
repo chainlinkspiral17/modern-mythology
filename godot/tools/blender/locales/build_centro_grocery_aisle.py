@@ -352,12 +352,12 @@ def build_hero_props_2026_09():
     make_box("Thermometer_Needle", (-3.70, 7.336, 1.43), (0.008, 0.004, 0.030),
              (0.80, 0.22, 0.18, 1.0))
     # ── THE FIVE · on the checkout belt, between ribs ──
-    make_box("Five_Dollar_Bill", (3.50, 1.42, 0.9358), (0.156, 0.066, 0.0015),
+    make_box("Five_Dollar_Bill", (3.50, 1.42, 0.9614), (0.156, 0.066, 0.0015),
              (0.62, 0.68, 0.56, 1.0))
     # ── THE CHAIN-ISSUED SCANNER · shelf 1, east aisle head ──
     make_box("Chain_Scanner", (2.55, 2.48, 0.7825), (0.060, 0.150, 0.045),
              (0.22, 0.22, 0.25, 1.0))
-    make_box("Scanner_Window", (2.55, 2.415, 0.7825), (0.036, 0.006, 0.020),
+    make_box("Scanner_Window", (2.55, 2.4014, 0.7825), (0.036, 0.006, 0.020),
              (0.70, 0.24, 0.20, 1.0))
     # ── RUSSELL'S CLIPBOARD + PEN · flat on the pallet load ──
     make_box("Russell_Clipboard", (-1.0, 1.40, 0.766), (0.240, 0.320, 0.012),
@@ -393,7 +393,7 @@ def build_draft4_2026_09():
     make_traffic_wear("Wear_Path_C", [(-2.8, 4.6), (0.0, 4.6), (2.8, 4.6)], width=0.50, tint=tile_dk)
     for ei, ex in enumerate([-3.5, +3.5]):
         make_scuff_band(f"Wear_Kick_End_{ei}", (ex, ROOM_D/2.0 + 1.0 - 0.45), 0.9, axis='X', height=0.05, band_z=0.03, tint=(0.50, 0.50, 0.46, 1.0))
-    make_box("Wear_Belt_Centre", (3.50, 1.75, 0.9365), (0.30, 1.50, 0.002), (0.20, 0.20, 0.22, 1.0))
+    make_box("Wear_Belt_Centre", (3.50, 1.75, 0.9616), (0.30, 1.50, 0.002), (0.20, 0.20, 0.22, 1.0))
     make_floor_stain("Wear_Wet_Spot", (1.55, 1.45), radius=0.22, tint=(0.70, 0.70, 0.68, 1.0), segments=10)
     for li, lx in enumerate((-1.80, -1.40)):
         make_box(f"Wear_Wheel_Line_{li}", (lx, 3.05, 0.004), (0.02, 1.10, 0.003), (0.60, 0.60, 0.56, 1.0))

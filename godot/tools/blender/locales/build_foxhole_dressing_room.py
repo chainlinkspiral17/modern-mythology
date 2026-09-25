@@ -109,13 +109,13 @@ def build_setlist_stickers():
     # Taped setlist on the east wall by the door.
     make_box("Setlist_Paper", (1.95, 0.90, 1.45), (0.02, 0.24, 0.32), P.PAPER)
     for li in range(6):
-        make_box(f"Setlist_Line_{li}", (1.938, 0.90, 1.58 - li*0.05), (0.002, 0.18, 0.012), (0.20,0.18,0.16,1.0))
+        make_box(f"Setlist_Line_{li}", (1.8984, 0.90, 1.58 - li*0.05), (0.002, 0.18, 0.012), (0.20,0.18,0.16,1.0))
     for ti, (ty, tz) in enumerate([(0.80,1.62),(1.02,1.55),(0.86,1.32)]):
-        make_box(f"Setlist_Tape_{ti}", (1.94, ty, tz), (0.006, 0.05, 0.03), (0.86,0.82,0.70,0.7))
+        make_box(f"Setlist_Tape_{ti}", (1.8964, ty, tz), (0.006, 0.05, 0.03), (0.86,0.82,0.70,0.7))
     # Sticker cluster on the same wall.
     sticker_cols = [(0.86,0.24,0.20,1.0),(0.24,0.62,0.72,1.0),(0.92,0.72,0.24,1.0),(0.42,0.62,0.36,1.0)]
     for si, (sy, sz) in enumerate([(1.40,1.70),(1.55,1.55),(1.42,1.42),(1.58,1.78)]):
-        make_box(f"Sticker_{si}", (1.94, sy, sz), (0.006, 0.10, 0.10), sticker_cols[si])
+        make_box(f"Sticker_{si}", (1.8964, sy, sz), (0.006, 0.10, 0.10), sticker_cols[si])
 
 def build_mini_fridge():
     fx, fy = 1.55, 3.45

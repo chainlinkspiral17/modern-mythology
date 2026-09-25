@@ -135,7 +135,7 @@ def build_chairs():
 def build_doors():
     # Screen door to the YARD (south)
     make_box("ScreenDoor_Frame", (0.0, 0.0, 1.05), (1.00, 0.04, 2.10), COL_WOOD)
-    make_box("ScreenDoor_Mesh", (0.0, 0.0, 1.05), (0.96, 0.005, 2.00), COL_SCREEN)
+    make_box("ScreenDoor_Mesh", (0.0, 0.0231, 1.05), (0.96, 0.005, 2.00), COL_SCREEN)
     # The door to the HOUSE (north) — Sam knocks on this frame
     make_box("House_Door_Frame", (-0.9, ROOM_D-0.06, 1.08), (1.04, 0.10, 2.16), COL_WOOD)
     make_box("House_Door", (-0.9, ROOM_D-0.04, 1.05), (0.90, 0.05, 2.05), (0.50, 0.38, 0.26, 1.0))

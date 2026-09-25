@@ -315,7 +315,7 @@ def build_strength_wave2_props():
              (0.62, 0.62, 0.60, 1.0), segments=12, axis='Z')
     # Water inside (thin blue disc)
     make_cyl("DawnDogBowl_Water",
-             (wag_x + 0.36, wag_y - 0.60, 0.03),
+             (wag_x + 0.36, wag_y - 0.60, 0.0431),
              0.08, 0.005,
              (0.62, 0.78, 0.82, 0.85), segments=12, axis='Z')
 

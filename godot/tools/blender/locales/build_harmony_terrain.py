@@ -5882,7 +5882,7 @@ def _build_kwik_shop_strip(cx, cy, ground_z):
     _make_box_local("KwikShop_KwikStop_SamPhone_Screen",
                     (counter_x + counter_w / 2 - 0.45,
                      counter_y - counter_d / 2 + 0.18,
-                     ground_z + counter_h + 0.018),
+                     ground_z + counter_h + 0.018 - 0.0196),
                     (0.06, 0.14, 0.002),
                     (0.42, 0.68, 0.78, 1.0))
 
@@ -7214,7 +7214,7 @@ def _build_cosmic_comics(cx, cy, ground_z):
         fy = bb_y - 0.50 + (k_f % 3) * 0.50
         fz = bb_z + 0.35 - (k_f // 3) * 0.50
         _make_box_local(f"{name_prefix}_Bulletin_Flyer_{k_f}",
-                        (bb_x + 0.04, fy, fz),
+                        (bb_x + 0.04 + 0.0431, fy, fz),
                         (0.005, 0.32, 0.32), col_f)
 
 

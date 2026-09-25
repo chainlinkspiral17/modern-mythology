@@ -491,7 +491,7 @@ def build_wear_personality_2026_08():
                          floor_z=10.02, tint=cedar_dk, segments=8)
     # Kettle ring on the wood-stove top (a different household's
     # kettle than the cabin's, same physics).
-    make_cyl("Wear_QStove_Ring", (5.0, 6.6, 10.845), 0.095, 0.004,
+    make_cyl("Wear_QStove_Ring", (5.0, 6.6, 10.8374), 0.095, 0.004,
              (0.10, 0.10, 0.11, 1.0), segments=10)
     # ── PORTAL LANDING (z 15) · the wear STOPS at the door ──
     make_traffic_wear("Wear_Landing_Line",

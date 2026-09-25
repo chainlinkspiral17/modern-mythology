@@ -96,7 +96,7 @@ def build_console_desk():
     make_box("Monitor_Case", (mx, my, top_z + 0.22), (0.42, 0.40, 0.38), (0.86, 0.82, 0.74, 1.0))
     make_box("Monitor_Screen", (mx, my - 0.20, top_z + 0.24), (0.32, 0.02, 0.26), COL_SCREEN)
     for di, dxo in enumerate([-0.06, 0.0, +0.06]):
-        make_box(f"Monitor_Phosphor_{di}", (mx + dxo, my - 0.201, top_z + 0.26),
+        make_box(f"Monitor_Phosphor_{di}", (mx + dxo, my - 0.201 - 0.0101, top_z + 0.26),
                  (0.02, 0.001, 0.05), COL_PHOSPHOR)
     make_box("Keyboard", (mx, my - 0.34, top_z + 0.03), (0.36, 0.14, 0.03), (0.20, 0.20, 0.22, 1.0))
     # Small second monitor (log/queue), E side
@@ -182,10 +182,10 @@ def build_on_air_sign():
     """ON AIR sign over the S door (lit red)."""
     sx, sy, sz = 0.0, 0.12, 2.18
     make_box("OnAir_Backing", (sx, sy, sz), (0.90, 0.06, 0.30), (0.10, 0.10, 0.12, 1.0))
-    make_box("OnAir_Face", (sx, sy - 0.032, sz), (0.80, 0.005, 0.22), (0.16, 0.06, 0.06, 1.0))
+    make_box("OnAir_Face", (sx, sy - 0.032 + 0.0151, sz), (0.80, 0.005, 0.22), (0.16, 0.06, 0.06, 1.0))
     # "ON" + "AIR" letter blocks (emissive red)
-    make_box("OnAir_ON", (sx - 0.20, sy - 0.035, sz), (0.26, 0.001, 0.12), COL_ONAIR)
-    make_box("OnAir_AIR", (sx + 0.22, sy - 0.035, sz), (0.30, 0.001, 0.12), COL_ONAIR)
+    make_box("OnAir_ON", (sx - 0.20, sy - 0.035 + 0.0161, sz), (0.26, 0.001, 0.12), COL_ONAIR)
+    make_box("OnAir_AIR", (sx + 0.22, sy - 0.035 + 0.0161, sz), (0.30, 0.001, 0.12), COL_ONAIR)
 
 
 def build_coffee_and_clutter():
@@ -212,7 +212,7 @@ def build_coffee_and_clutter():
     mug_x, mug_y = 0.55, dy - 0.42
     make_cyl("Mug_Body", (mug_x, mug_y, top_z + 0.05), 0.045, 0.10, (0.72, 0.30, 0.22, 1.0),
              axis='Z', segments=12)
-    make_cyl("Mug_Coffee", (mug_x, mug_y, top_z + 0.095), 0.038, 0.006, (0.20, 0.12, 0.08, 1.0),
+    make_cyl("Mug_Coffee", (mug_x, mug_y, top_z + 0.095 + 0.0086), 0.038, 0.006, (0.20, 0.12, 0.08, 1.0),
              axis='Z', segments=12)
     make_cyl("Mug_Handle", (mug_x + 0.055, mug_y, top_z + 0.05), 0.022, 0.012, (0.72, 0.30, 0.22, 1.0),
              axis='X', segments=8)

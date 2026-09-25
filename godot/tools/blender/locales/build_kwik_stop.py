@@ -599,7 +599,7 @@ def build_beer_cooler():
         # The "infinite recursion" inner mirror — on the back panel's
         # face, with a slight tint shift
         make_box(f"Cooler_{i}_BackMirror",
-                 (cx, cy + 0.4775, 1.31),
+                 (cx, cy + 0.4775 - 0.0806, 1.31),
                  (1.20, 0.005, 2.00), (0.18, 0.30, 0.42, 0.85))
         # Glass door: two glints frame to frame (no glass slab)
         for gi, (gx, gw) in enumerate(((-0.34, 0.03), (-0.26, 0.012))):
@@ -908,7 +908,7 @@ def build_floor_props():
     make_box("Entry_Mat", (0.0, 0.85, 0.012),
              (3.20, 1.30, 0.02), COL_RUBBER_MAT)
     # WELCOME letter band (lighter rectangle)
-    make_box("Entry_Mat_Text", (0.0, 0.85, 0.014),
+    make_box("Entry_Mat_Text", (0.0, 0.85, 0.0236),
              (1.80, 0.20, 0.002), COL_RUBBER_MAT_TXT)
     # Mat edge — slightly darker line around the perimeter
     for sgn, ax in [('+X', +1.60), ('-X', -1.60)]:
@@ -1034,7 +1034,7 @@ def build_ice_machine():
     # ICE label
     make_box("IceMachine_Sign", (cx - 0.50, cy, 1.20),
              (0.02, 0.80, 0.30), COL_ICE_BLUE)
-    make_box("IceMachine_SignText", (cx - 0.51, cy, 1.20),
+    make_box("IceMachine_SignText", (cx - 0.51 + 0.0131, cy, 1.20),
              (0.005, 0.40, 0.16), COL_PAPER)
     # Floor drain pan at base
     make_box("IceMachine_DrainPan", (cx, cy, 0.04),
@@ -1053,7 +1053,7 @@ def build_lottery_display():
     make_box("Lottery_BannerYellow", (cx - 0.005, cy, base_z + 0.16),
              (0.005, 0.56, 0.10), COL_LOTTERY_YEL)
     # Red Powerball stripe
-    make_box("Lottery_BannerRed", (cx - 0.005, cy, base_z + 0.04),
+    make_box("Lottery_BannerRed", (cx - 0.005 - 0.0081, cy, base_z + 0.04),
              (0.005, 0.56, 0.10), COL_LOTTERY_RED)
     # Five scratch-off tickets in a row, dispensed from below
     for t in range(5):
@@ -1255,7 +1255,7 @@ def build_exterior_through_windows():
     make_box("Canopy_Skirt", (0.0, canopy_y - 2.10, canopy_z - 0.05),
              (10.0, 0.10, 0.40), COL_CANOPY_TRIM)
     make_box("Canopy_Skirt_Branding",
-             (0.0, canopy_y - 2.11, canopy_z + 0.05),
+             (0.0, canopy_y - 2.11 - 0.0431, canopy_z + 0.05),
              (3.20, 0.005, 0.18), COL_PAPER)
     # Canopy support columns (2)
     for sgn, sx in [(-1, -3.6), (+1, +3.6)]:
@@ -1268,7 +1268,7 @@ def build_exterior_through_windows():
         make_box(f"Pump_{sgn:+d}_Base", (px, canopy_y, 0.30),
                  (0.50, 0.60, 0.60), COL_PUMP_BODY)
         # Pump screen + buttons
-        make_box(f"Pump_{sgn:+d}_Display", (px, canopy_y - 0.26, 1.20),   # on the body's face
+        make_box(f"Pump_{sgn:+d}_Display", (px, canopy_y - 0.26 - 0.0131, 1.20),   # on the body's face
                  (0.40, 0.005, 0.50), COL_PUMP_FACE)
         # Pump body between base and head (2026-09-09: the head hung
         # 1 m above the base with only the display between them)
@@ -1284,7 +1284,7 @@ def build_exterior_through_windows():
         # Price-display LEDs (three digits)
         for d_i in range(3):
             make_box(f"Pump_{sgn:+d}_LED_{d_i}",
-                     (px - 0.15 + d_i * 0.15, canopy_y - 0.265, 1.40),   # on the display's face
+                     (px - 0.15 + d_i * 0.15, canopy_y - 0.265 - 0.0081, 1.40),   # on the display's face
                      (0.10, 0.005, 0.14), (0.94, 0.18, 0.08, 1.0))
     # ── Parked sedan silhouette beside the right pump ───────────
     car_x, car_y = +3.20, -1.40
@@ -1452,7 +1452,7 @@ def build_wall_ornaments():
     for ang_i, (mx, mz) in enumerate([(0.0, +0.13), (+0.13, 0.0),
                                        (0.0, -0.13), (-0.13, 0.0)]):
         make_box(f"Clock_Tick_{ang_i}",
-                 (clock_x + mx, clock_y - 0.025, clock_z + mz),
+                 (clock_x + mx, clock_y - 0.025 - 0.0101, clock_z + mz),
                  (0.02, 0.005, 0.02), COL_METAL_BLACK)
     # Hour + minute hands (frozen at 11:47, vol6's canonical hour)
     make_box("Clock_HourHand",
@@ -1477,7 +1477,7 @@ def build_wall_ornaments():
     # ── Calendar (girl, beach, faded — corner-store classic)
     make_box("Calendar", (-5.88, 5.40, 1.70),
              (0.005, 0.40, 0.50), COL_POSTER_FADED)
-    make_box("Calendar_GridTop", (-5.88 + 0.002, 5.40, 1.55),
+    make_box("Calendar_GridTop", (-5.88 + 0.002 + 0.0191, 5.40, 1.55),
              (0.001, 0.34, 0.20), COL_PAPER)
     # ── Sun-faded vintage movie poster, east wall above HotCase
     make_box("Poster_Faded", (5.88, 3.20, 2.00),
@@ -1561,7 +1561,7 @@ def build_customer_detritus():
              (0.005, 0.22, 0.002), COL_NEWSPRINT)
     # Candy wrapper on the floor near the south door
     make_box("Detritus_CandyWrap",
-             (1.20, 0.60, 0.014),
+             (1.20, 0.60, 0.0236),
              (0.10, 0.06, 0.002), (0.92, 0.32, 0.20, 1.0))
     # Crumpled receipt under the magazine rack (existing rack at south)
     make_box("Detritus_Receipt",
@@ -2165,7 +2165,7 @@ def build_pizza_warmer():
             dx2 = math.cos(ang) * 0.032
             dy2 = math.sin(ang) * 0.032
             make_cyl(f"Pizza_Pep_{pi}_{di}",
-                     (px + dx2, py + py_off + dy2, base_z - 0.1555),
+                     (px + dx2, py + py_off + dy2, base_z - 0.1555 + 0.0286),
                      0.014, 0.005, (0.74, 0.18, 0.16, 1.0))
     # Heat lamp glow, under the top panel
     make_box("Pizza_HeatLamp", (px, py, base_z + 0.17),
@@ -2306,7 +2306,7 @@ def build_bug_zapper():
     # Blue tubes inside (2)
     for ti in range(2):
         make_box(f"BugZap_Tube_{ti}",
-                 (bx, by - 0.04, bz + 0.06 - ti * 0.12),
+                 (bx, by - 0.04 - 0.0131, bz + 0.06 - ti * 0.12),
                  (0.46, 0.005, 0.04), COL_BLACKLIGHT_BLU)
     # Wire grille (4 horizontal bars)
     for wi in range(4):
@@ -2371,13 +2371,13 @@ def build_entry_mat_grime():
     make_box("EntryMat_Body", (mx, my, 0.012),
              (3.00, 1.20, 0.010), COL_BLACK_RUBBER)
     # WELCOME text band (light tan)
-    make_box("EntryMat_Welcome", (mx, my, 0.015),
+    make_box("EntryMat_Welcome", (mx, my, 0.0231),
              (2.20, 0.20, 0.001), (0.72, 0.62, 0.42, 1.0))
     # Dirt streaks (3 darker patches)
     for di in range(6):
         sx = (di - 2.5) * 0.40
         make_box(f"EntryMat_Dirt_{di}",
-                 (sx, my + (di % 2) * 0.20 - 0.10, 0.013),
+                 (sx, my + (di % 2) * 0.20 - 0.10, 0.0236),
                  (0.18, 0.14, 0.002), (0.32, 0.26, 0.18, 1.0))
 
 

@@ -215,7 +215,7 @@ def build_draft4_2026_09():
     make_traffic_wear("Wear_Path_B", [(-0.3, 3.1), (-1.0, 3.5), (-1.5, 3.7)], width=0.42, tint=floor_dk)
     for ci, (cx, cy) in enumerate([(tx-0.80, ty), (tx+0.80, ty), (tx, ty-0.62), (tx, ty+0.62)]):
         make_floor_stain(f"Wear_Patch_Seat_{ci}", (cx, cy), radius=0.26, tint=(0.66, 0.52, 0.34, 1.0), segments=10)
-    make_box("Wear_Elbow_Strip", (-ROOM_W/4.0, ROOM_D-1.0-0.36, 0.927), (2.2, 0.06, 0.004), (0.28, 0.19, 0.12, 1.0))
+    make_box("Wear_Elbow_Strip", (-ROOM_W/4.0, ROOM_D-1.0-0.36, 0.9174), (2.2, 0.06, 0.004), (0.28, 0.19, 0.12, 1.0))
     make_scuff_band("Wear_Drip", (-ROOM_W/4.0, ROOM_D-1.0-0.35), 0.6, axis='X', height=0.12, band_z=0.60, tint=(0.62, 0.52, 0.34, 1.0))
     make_box("Wear_Hand_Patch", (ROOM_W/2.0-0.55-0.362, 1.0-0.10, 1.30), (0.003, 0.14, 0.20), (0.74, 0.74, 0.76, 1.0))
     make_chamfer_box("Wear_Daisy_Spot", (-2.28, 1.5, 0.535), (0.50, 0.55, 0.02), (0.42, 0.36, 0.30, 1.0), chamfer=0.008)

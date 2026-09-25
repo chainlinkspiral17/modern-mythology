@@ -356,7 +356,7 @@ def build_shell():
              (0.0, INTERIOR_Y_S - 0.90, 0.012),
              (1.20, 0.80, 0.02), COL_FABRIC_RUG)
     make_box("WelcomeMat_Letters",
-             (0.0, INTERIOR_Y_S - 0.90, 0.014),
+             (0.0, INTERIOR_Y_S - 0.90, 0.0236),
              (0.80, 0.18, 0.002), COL_TRIM_WHITE)
 
     # Windows — south wall (living room), east wall (studio),
@@ -752,7 +752,7 @@ def build_bookshelf():
                  (0.10, 0.13, 0.08), tint)
     # One of them sticky with spilled wine — dark drip mark
     make_box("Bookshelf_TarotDeck_WineStain",
-             (sh_x - 0.07, sh_y - 0.30, 0.18 + 0.001),
+             (sh_x - 0.07, sh_y - 0.30, 0.18 + 0.001 + 0.0126),
              (0.07, 0.09, 0.001), (0.32, 0.08, 0.12, 1.0))
 
     # Shelf 1 — framing books (chunky textbooks)
@@ -1581,7 +1581,7 @@ def build_priestess_dressing():
     # Anya's face — a small silhouette on the screen. A peach-toned
     # oval-ish box for the face + two dark dots for eyes.
     make_box("Priestess_AnyaMonitor_Face",
-             (anya_cx, anya_cy - 0.181, desk_top_z + 0.21),
+             (anya_cx, anya_cy - 0.181 - 0.0121, desk_top_z + 0.21),
              (0.14, 0.005, 0.16),
              (0.72, 0.60, 0.48, 1.0))
     for sgn in (-1, +1):
@@ -1591,7 +1591,7 @@ def build_priestess_dressing():
                  (0.18, 0.12, 0.10, 1.0))
     # Hint of a microphone pickup at the bottom of the screen
     make_box("Priestess_AnyaMonitor_MicHint",
-             (anya_cx, anya_cy - 0.182, desk_top_z + 0.15),
+             (anya_cx, anya_cy - 0.182 - 0.0101, desk_top_z + 0.15),
              (0.04, 0.003, 0.014),
              (0.32, 0.28, 0.22, 1.0))
 
@@ -1608,7 +1608,7 @@ def build_priestess_dressing():
              (0.10, 0.10, 0.12, 1.0))
     # Email window — white panel with two text-line strips
     make_box("Priestess_JohnMonitor_EmailBg",
-             (john_cx, john_cy - 0.141, desk_top_z + 0.16),
+             (john_cx, john_cy - 0.141 - 0.0111, desk_top_z + 0.16),
              (0.18, 0.003, 0.13),
              (0.92, 0.92, 0.88, 1.0))
     for line in range(3):
@@ -1859,7 +1859,7 @@ def build_desk_tech_and_tea():
              (0.92, 0.90, 0.86, 1.0), segments=8)
     make_box("SideTable_Teacup_Handle", (-2.005, 1.68, 0.678),
              (0.014, 0.018, 0.035), (0.92, 0.90, 0.86, 1.0))
-    make_cyl("SideTable_Tea", (-2.05, 1.68, 0.699), 0.028, 0.006,
+    make_cyl("SideTable_Tea", (-2.05, 1.68, 0.7066), 0.028, 0.006,
              (0.36, 0.24, 0.14, 1.0), segments=8)
 
 

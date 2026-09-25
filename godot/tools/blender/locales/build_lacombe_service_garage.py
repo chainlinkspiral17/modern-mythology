@@ -138,7 +138,7 @@ def build_oil_drums_and_vending():
     # Vending machine in SE corner (the office vestibule)
     vx, vy = +ROOM_W/2.0 - 0.40, 1.00
     make_box("Vending_Body", (vx, vy, 0.90), (0.40, 0.50, 1.80), COL_VEND_BLUE)
-    make_box("Vending_Window", (vx-0.18, vy, 1.20), (0.005, 0.40, 0.80), (0.78, 0.84, 0.86, 0.55))
+    make_box("Vending_Window", (vx-0.18 - 0.0231, vy, 1.20), (0.005, 0.40, 0.80), (0.78, 0.84, 0.86, 0.55))
     # Bottles inside (column of three)
     for bi in range(3):
         make_cyl(f"Vend_Bottle_{bi}", (vx-0.10, vy, 0.90 + bi*0.30),

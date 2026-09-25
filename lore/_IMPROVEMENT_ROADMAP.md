@@ -2631,6 +2631,45 @@ the buried-decal families still open (riverboat ceiling tiles 165,
 street paint, brick courses, rack labels, calendar grids, the
 courthouse notice behind its wainscot); doorway_audit to a gate once
 the façade false positives are tuned.
+THIRTY-SECOND PASS. Sheet from 1568b794 reads: the widened bedrooms have
+room, the posters show, the ceilings are clean, the refilled doorways
+read as doors. (Note: 35ba44db — the 31st pass — was pushed with the
+suite FAILING, DESK 1 / BED 1 from the safehouse widening; 1568b794
+fixed it. The commit step now refuses to run unless the log ends EXIT 0.)
+· SPRINKLER SOUND: tools/audio/sprinkler_chug.py renders a seamless 8 s
+  loop (22050 Hz mono): three impact heads out of phase — the arm's
+  "tch" (noise burst + 2.2–2.5 kHz ring + thump) stepping the arc, a
+  fast ratchet on the return — over the spray's hiss;
+  assets/audio/sfx/env/sprinkler_chug_loop.wav; SprinklerFX plays it
+  (SFX bus, -13 dB) when the first lot comes on.
+· BURIED DETAILS 1351 → 423: the riverboat's 165 tin tiles hung inside
+  the ceiling slabs (now under their faces; deck seams on the deck, not
+  12 mm above); scratch fix_buried.py brought 366 more out to their
+  host's nearest face — a coffee inside its mug, a monitor's glow
+  inside its screen, wear marks inside counter tops, notices inside
+  walls — only where every object a call emits needs the same move,
+  capped at 12 cm. Left for a hand look (moves too big to trust): the
+  Civic's and the lot sedan's phone/tablet screens (1.2 m inside the
+  car body — placed in the wrong car?), Ben's truck hood sheen (0.56 m
+  in), cedar tower rack labels (0.37 m), the kwik stop card-terminal
+  keys and sugar dividers, the roulette service-case decal, the cone
+  sign, a shirt stain, the asylum votive pool (1.1 m under a wall);
+  plus 84 in mixed loops (the nightmare cell's 46 dots among them).
+· SKIPPED PRESETS: highway 101 and small wood road have been skipped
+  on every sheet; the repo only lacks their GLBs (not in git) — so on
+  the Deck the builds or their import fail. Background3D now records
+  WHY a location did not load (last_load_error) and the contact sheet
+  writes it to _report.json (skip_reasons); glb_diag prints whether
+  the two GLBs exist and their size.
+· DEFERRED, with the plan: board lords' alley door opens into a back
+  office 0.8 m deep (partition at y 6.1, Devon's desk and chair in it)
+  — move the partition south (the register must give) or lengthen the
+  building; lena's bedroom door sits between the kitchen chairs and
+  the bed foot — move the door along its wall or turn the bed.
+NEXT (draft 33): the sheet's skip_reasons for the two roads; the big
+buried moves by hand; the 84 mixed-loop details; the two deferred
+doors; doorway_audit's façade false positives → gate; more small rooms
+to widen (lena, finn, grandmother, cosmic back office, centro break).
 
 **2026-09-19 · DESIGN · the two decorative checks made real, the first
 remembered choice.** Nate's basement (ch6) and Tem staying (ch8): the

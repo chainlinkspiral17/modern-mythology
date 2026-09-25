@@ -121,7 +121,7 @@ def build_armchair_and_tv():
     tx, ty = -0.50, 2.20
     make_box("TV_Crate", (tx, ty, 0.40), (0.60, 0.50, 0.80), COL_CRATE)
     make_box("TV_Body",  (tx, ty, 0.94), (0.60, 0.50, 0.50), COL_TV_BODY)
-    make_box("TV_Screen", (tx+0.26, ty, 0.94), (0.005, 0.40, 0.36), COL_TV_SCREEN_STATIC)
+    make_box("TV_Screen", (tx+0.26 + 0.0431, ty, 0.94), (0.005, 0.40, 0.36), COL_TV_SCREEN_STATIC)
     # Antenna
     for sgn in (-1, +1):
         make_box(f"TV_Antenna_{sgn:+d}", (tx, ty+sgn*0.10, 1.30), (0.008, 0.008, 0.40), P.METAL_BLACK)
@@ -279,7 +279,7 @@ def build_hanged_man_dressing():
     tv_screen_z = 0.94
     # Static-grey screen overlay (on the screen face)
     make_box("TV_StaticScreen",
-             (tv_x, tv_y, tv_screen_z),
+             (tv_x + 0.0351, tv_y, tv_screen_z),
              (0.005, 0.40, 0.36),
              (0.62, 0.62, 0.60, 1.0))
     # 6 thin noise streaks across the screen (horizontal scan lines)
@@ -479,12 +479,12 @@ def build_hanged_man_wave2_props():
     # (Present in seventh-evening state alongside first-night state ·
     # this is a placeholder for the sanctioned-tipped-forever option)
     make_box("SeventhEvening_ChairStickyNote",
-             (ch_x - 0.06, ch_y + 0.10, 0.16),
+             (ch_x - 0.06, ch_y + 0.10, 0.1709),
              (0.05, 0.05, 0.0005),
              (0.94, 0.88, 0.42, 1.0))
     # Small handwriting block on the note
     make_box("SeventhEvening_ChairStickyNote_Text",
-             (ch_x - 0.06, ch_y + 0.10, 0.161),
+             (ch_x - 0.06, ch_y + 0.10 + 0.0711, 0.161),
              (0.04, 0.001, 0.001),
              (0.20, 0.16, 0.12, 1.0))
 

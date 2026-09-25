@@ -326,7 +326,7 @@ def build_table():
                  0.104, 0.010, cedar_dk, segments=16)
     # One bowl holds a little water from the wash; the other is dry —
     # the difference the chapter turns on, stated in one highlight.
-    make_cyl("Bowl_Substrate_Water", (tx + 0.22, ty - 0.06, top_z + 0.104),
+    make_cyl("Bowl_Substrate_Water", (tx + 0.22, ty - 0.06, top_z + 0.104 + 0.0186),
              0.094, 0.004, (0.58, 0.62, 0.60, 0.85), segments=14)
 
     # Braided oval rug under the table

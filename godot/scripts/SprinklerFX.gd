@@ -37,6 +37,10 @@ const JET_ELEV_DEG: float = 24.0
 const ARC_SPEED: float = 4.2           # the cracked head's thin arc
 const LOT_STAGGER: float = 1.4         # s between lots coming on
 const WATER: Color = Color(0.86, 0.92, 0.98, 0.55)
+# the sound of it: three impact heads out of phase over the spray's hiss,
+# rendered by tools/audio/sprinkler_chug.py as a seamless 8 s loop
+const CHUG_PATH: String = "res://assets/audio/sfx/env/sprinkler_chug_loop.wav"
+const CHUG_DB: float = -13.0
 
 class Head:
 	var jet: CPUParticles3D
@@ -52,6 +56,7 @@ class Head:
 
 var _heads: Array[Head] = []
 var _t: float = 0.0
+var _chug: AudioStreamPlayer = null
 
 
 func _ready() -> void:
@@ -105,6 +110,19 @@ func _ready() -> void:
 		h.mist.emitting = false
 		_aim(h)
 		_heads.append(h)
+	if not _heads.is_empty() and ResourceLoader.exists(CHUG_PATH):
+		var st: AudioStreamWAV = load(CHUG_PATH) as AudioStreamWAV
+		if st != null:
+			st.loop_mode = AudioStreamWAV.LOOP_FORWARD
+			st.loop_begin = 0
+			st.loop_end = int(st.get_length() * float(st.mix_rate))
+			_chug = AudioStreamPlayer.new()
+			_chug.name = "Sprinkler_Chug"
+			_chug.stream = st
+			_chug.volume_db = CHUG_DB
+			if AudioServer.get_bus_index("SFX") >= 0:
+				_chug.bus = "SFX"
+			add_child(_chug)
 
 
 func _collect(node: Node, acc: Array[MeshInstance3D]) -> void:
@@ -205,6 +223,8 @@ func _process(delta: float) -> void:
 			h.started = true
 			h.jet.emitting = true
 			h.mist.emitting = true
+			if _chug != null and not _chug.playing:
+				_chug.play()
 		if h.returning:
 			h.angle -= RETURN_DEG_PER_S * delta
 			if h.angle <= h.a0:

@@ -2259,6 +2259,9 @@ func queue_load(preset_id: String) -> void:
 
 
 var _pending_preset: String = ""
+# why the last load_location returned false (2026-09-24: two presets were
+# skipped on every contact sheet with no reason on the page)
+var last_load_error: String = ""
 
 
 func load_location(preset_id: String) -> bool:
@@ -2267,6 +2270,7 @@ func load_location(preset_id: String) -> bool:
 		return true
 	if not CAMERA_PRESETS.has(preset_id):
 		push_warning("[Background3D] Unknown preset: %s" % preset_id)
+		last_load_error = "unknown preset"
 		return false
 	var spec: Dictionary = CAMERA_PRESETS[preset_id]
 	# Pre-check the required GLB BEFORE asking Godot to parse the
@@ -2277,6 +2281,7 @@ func load_location(preset_id: String) -> bool:
 	var req_glb: String = spec.get("requires_glb", "")
 	if req_glb != "" and not FileAccess.file_exists(req_glb):
 		push_warning("[Background3D] GLB missing: %s — build it with `cd godot/tools/blender && ./run_cathedral.sh build_<name>.py`. Falling back to 2D bg." % req_glb)
+		last_load_error = "GLB missing: %s" % req_glb
 		return false
 	# Tear down the previously-loaded location
 	if _location_instance != null and is_instance_valid(_location_instance):
@@ -2287,6 +2292,7 @@ func load_location(preset_id: String) -> bool:
 	var ps: PackedScene = load(spec.get("scene", "")) as PackedScene
 	if ps == null:
 		push_warning("[Background3D] Could not load scene %s" % spec.get("scene", ""))
+		last_load_error = "scene failed to load (GLB present — import error?): %s" % String(spec.get("scene", ""))
 		return false
 	_location_instance = ps.instantiate()
 	# CRITICAL: suppress interactive nodes BEFORE adding to tree.

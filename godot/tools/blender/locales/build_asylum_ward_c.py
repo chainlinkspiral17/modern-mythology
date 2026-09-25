@@ -52,7 +52,7 @@ def build_shell():
         # Door
         make_box(f"Door_{di}", (-ROOM_W/2.0 + 0.04, dy, 1.05), (0.08, 1.20, 2.10), COL_DOOR)
         # Small wire-glass window in each door
-        make_box(f"Door_Glass_{di}", (-ROOM_W/2.0 + 0.02, dy, 1.60),
+        make_box(f"Door_Glass_{di}", (-ROOM_W/2.0 + 0.02 - 0.0231, dy, 1.60),
                  (0.005, 0.30, 0.40), COL_DOOR_GLASS)
         # Room number plate
         make_box(f"Door_Plate_{di}", (-ROOM_W/2.0 + 0.06, dy-0.70, 2.00),
@@ -277,7 +277,7 @@ def build_death_dressing():
              segments=10, axis='Z')
     # Wick
     make_box("BeatriceVotive_Wick",
-             (votive_x, votive_y, votive_z + 0.06),
+             (votive_x + 0.0316, votive_y, votive_z + 0.06),
              (0.002, 0.002, 0.020),
              (0.18, 0.14, 0.10, 1.0))
     # Tiny flame above (warm amber)
@@ -499,7 +499,7 @@ def build_death_wave2_props():
              (0.96, 0.96, 0.96, 1.0))
     # A slight body-shape indent in the mattress (implied absence)
     make_box("Ward5_BodyImpression",
-             (ward5_x, ward5_y - 0.10, 0.44),
+             (ward5_x, ward5_y - 0.10, 0.4831),
              (0.34, 0.80, 0.005),
              (0.72, 0.72, 0.74, 1.0))
 

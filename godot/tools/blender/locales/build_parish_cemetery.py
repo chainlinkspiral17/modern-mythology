@@ -546,7 +546,7 @@ def build_judgement_wave2_props():
              (0.24, 0.14, 0.10, 1.0))    # aged leather
     # Gold-stamped 'REGISTER' on the cover
     make_box("ParishRegister_Book_GoldStamp",
-             (reg_x, reg_y - 0.041, 1.25),
+             (reg_x, reg_y - 0.041 - 0.1001, 1.25),
              (0.20, 0.001, 0.03),
              (0.86, 0.72, 0.20, 1.0))
 

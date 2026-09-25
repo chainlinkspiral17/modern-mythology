@@ -342,7 +342,7 @@ def build_hero_props():
 
     make_box("Shop_Phone", (1.90, 5.78, top + 0.008), (0.16, 0.075, 0.014),
              (0.10, 0.10, 0.12, 1.0))
-    make_box("Shop_Phone_Screen", (1.90, 5.78, top + 0.017), (0.14, 0.062, 0.004),
+    make_box("Shop_Phone_Screen", (1.90, 5.78, top + 0.017 - 0.0196), (0.14, 0.062, 0.004),
              (0.42, 0.50, 0.58, 1.0))
 
 
@@ -418,7 +418,7 @@ def build_draft3_2026_09():
         make_box(f"Wear_Sit_{si}", (sx, 0.55, 0.4515), (0.42, 0.30, 0.003), (0.36, 0.26, 0.16, 1.0))
     make_floor_stain("Wear_Stand_Glass", (-3.75, 3.8), radius=0.30, tint=floor_dk, segments=10)
     make_box("Wear_Win_Smudge", (-2.75, 0.104, 1.05), (1.40, 0.004, 0.10), (0.62, 0.66, 0.68, 0.5))
-    make_box("Wear_Elbow", (2.25, 5.03, 0.953), (2.20, 0.06, 0.003), (0.24, 0.17, 0.11, 1.0))
+    make_box("Wear_Elbow", (2.25, 5.03, 0.9479), (2.20, 0.06, 0.003), (0.24, 0.17, 0.11, 1.0))
     # D3
     make_light_switch("Switch_1", (1.15, 0.0), axis='X', face_sign=1, z=1.25, aged=True)
     make_wall_outlet("Outlet_N_1", (-2.4, ROOM_D), axis='X', face_sign=-1, z=0.35, aged=True)

@@ -228,7 +228,7 @@ def build_eviction_notice_2026_08():
     ink = (0.30, 0.28, 0.26, 1.0)
     stamp = (0.42, 0.20, 0.18, 1.0)
     # The GHOST of the lease renewal — same spot, sun-bleached edge
-    make_box("EvictionGhost_Patch", (dx, 0.072, dz + 0.015),
+    make_box("EvictionGhost_Patch", (dx, 0.0766, dz + 0.015),
              (0.175, 0.002, 0.115), ghost)
     # The envelope, hung a few degrees off true (staggered boxes)
     make_box("EvictionNotice_Envelope", (dx, 0.075, dz),

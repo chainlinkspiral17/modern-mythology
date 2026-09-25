@@ -112,7 +112,11 @@ func _shoot_presets(manifest: Dictionary) -> void:
 		var loaded: bool = bool(bg.call("load_location", pid))
 		if not loaded:
 			(_report["skipped_glb"] as Array).append(pid)
-			print("[VnContactSheet] SKIP %s (GLB not built or scene failed)" % pid)
+			var why: String = String(bg.get("last_load_error"))
+			if not _report.has("skip_reasons"):
+				_report["skip_reasons"] = {}
+			(_report["skip_reasons"] as Dictionary)[pid] = why
+			print("[VnContactSheet] SKIP %s (%s)" % [pid, why])
 			continue
 		await _settle(SETTLE_LOAD)
 		_report["presets"] = int(_report["presets"]) + 1
