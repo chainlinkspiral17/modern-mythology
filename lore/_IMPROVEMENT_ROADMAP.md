@@ -2844,6 +2844,23 @@ dresser both against a short wall."
   tight (the TIGHT rule found natalie's fridge 30 cm off her bed —
   moved); the candidates by eye are ben (4.4 m) and jesse. NEXT: look
   at ben's and jesse's frames for which one the user meant.
+THIRTY-SIXTH PASS (the kitchens finished). Sheet from 0cbf8598: 36
+frames changed, 30 of them kitchen inserts and closeups — the
+counters moved under them. The user: "seeing lots more new issues …
+hopefully it's all work in progress and not stuff getting broken."
+Frame-by-frame diff against the previous sheet (a scratch PIL
+compare) is the tool for that question: every changed frame was a
+moved kitchen, a reframed marker, or film grain. What the diff DID
+find: (a) Ramos, Bianca and Caldwell wrote their counter as ROOM_D-
+1.35, so the −0.55 pass left those three counters 0.30 m off the
+wall while their stoves went to it — counters at ROOM_D-0.50 now;
+(b) `make_coffee_pots` centres THREE pots on its anchor (py = cy −
+0.50 + i·0.50), so a lone pot lands 0.5 m in front of the anchor —
+five kitchens had their coffee maker hanging off the counter's front
+edge, and had since the kits were placed; anchors are at the wall
+plane now, pots at the counter centre; (c) Ramos's pulled-out bills
+drawer stood half inside the counter; (d) Miller's phone insert had
+the moved counter filling its frame — 1.5 m off the wall phone, level.
 NEXT (draft 36): judge the moved pieces on the sheet (ben, jesse, sam,
 safehouse, the seven kitchens); name the 13 deliberate OFF_WALL pieces
 (a `free=True` tag or a name class) and gate placement; simon's TV on

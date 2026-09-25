@@ -92,6 +92,8 @@ def audit(loc, boxes):
     for stem, parts in pieces.items():
         n = max(parts, key=lambda b: b[2][0] * b[2][1] * b[2][2])[0]
         c, h = union(parts)                        # the whole piece, not its biggest part
+        if min(h[0], h[1]) < 0.05:
+            continue                               # a face panel or a handle on something else (a dishwasher front in a counter run)
         w = nearest_wall(c, h, walls)
         if w and w[1] <= 0.12:
             continue

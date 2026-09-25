@@ -37,9 +37,9 @@ def build_counter():
     # a narrow face against the wall and the run jutting into
     # the room. Swapped 2026-08-12 (same bug as the New
     # Orleans bar and the pit stop's lunch counter).
-    top_z = make_counter("Counter", (-ROOM_W/4.0, ROOM_D-0.80, 0.0), length=0.70, depth=2.40, height=0.92,
+    top_z = make_counter("Counter", (-ROOM_W/4.0, ROOM_D-0.50, 0.0), length=0.70, depth=2.40, height=0.92,
                          palette={"formica": (0.78, 0.66, 0.42, 1.0), "top": (0.32, 0.22, 0.14, 1.0), "kick": (0.32, 0.22, 0.14, 1.0)})
-    make_counter_bullnose("Counter", (-ROOM_W/4.0, ROOM_D-0.80 - 0.35, top_z), length=2.40, axis='X')
+    make_counter_bullnose("Counter", (-ROOM_W/4.0, ROOM_D-0.50 - 0.35, top_z), length=2.40, axis='X')
     # Sink + faucet (was missing)
     make_box("Sink_Bowl", (-ROOM_W/4.0, ROOM_D-0.45, 0.86), (0.50, 0.40, 0.12), (0.86, 0.86, 0.84, 1.0))
     make_cyl("Sink_Faucet", (-ROOM_W/4.0, ROOM_D-0.55, top_z+0.04), 0.015, 0.30, P.METAL_STEEL)
@@ -50,7 +50,7 @@ def build_counter():
     for bi, (bx, by) in enumerate([(-0.16, -0.16), (0.16, -0.16), (-0.16, 0.16), (0.16, 0.16)]):
         make_cyl(f"Stove_Burner_{bi}", (ROOM_W/4.0+bx, ROOM_D-0.45+by, 0.95), 0.09, 0.02, P.METAL_STEEL)
     # Coffee maker on the counter (make_coffee_pots was imported/unused)
-    make_coffee_pots("Coffee", (-ROOM_W/4.0-0.90, ROOM_D-0.45, top_z), pots=1)
+    make_coffee_pots("Coffee", (-ROOM_W/4.0-0.90, ROOM_D, top_z), pots=1)   # the kit puts a lone pot 0.5 in front of its anchor: anchor at the wall plane, pot at the counter centre (2026-09-25)
 
 def build_table():
     tx, ty = 0.0, ROOM_D/2.0
@@ -104,13 +104,13 @@ def build_hero_props():
     grinder."""
     make_window("Window_N", (-1.5, ROOM_D-0.10, 1.52), width=1.30, height=1.05)
     make_cyl("Kettle", (1.34, 4.39, 1.05), 0.09, 0.18, (0.62, 0.64, 0.65, 1.0), segments=10)
-    make_box("Toaster", (-0.55, 4.1500, 1.06), (0.28, 0.18, 0.16), (0.72, 0.72, 0.70, 1.0))
+    make_box("Toaster", (-0.55, 4.4500, 1.06), (0.28, 0.18, 0.16), (0.72, 0.72, 0.70, 1.0))
     # in the counter run's south face (2026-09-09: stood as a loose panel 30 cm off it)
     make_box("Dishwasher_Face", (-1.85, 4.185, 0.42), (0.60, 0.03, 0.84), (0.80, 0.78, 0.74, 1.0))
     make_box("Back_Door", (ROOM_W/2.0-0.05, 3.4, 1.05), (0.05, 0.90, 2.10), (0.62, 0.50, 0.36, 1.0))
     make_cyl("Robe_Hook", (ROOM_W/2.0-0.12, 3.05, 1.62), 0.015, 0.06, (0.30, 0.28, 0.26, 1.0), axis='X', segments=6)
     make_box("Green_Robe", (ROOM_W/2.0-0.18, 3.05, 1.24), (0.10, 0.20, 0.76), (0.30, 0.52, 0.36, 1.0))
-    make_cyl("Grinder", (-1.55, 4.1000, 1.08), 0.05, 0.20, (0.24, 0.24, 0.26, 1.0), segments=8)   # on the counter (was 30 cm south of it)
+    make_cyl("Grinder", (-1.55, 4.4000, 1.08), 0.05, 0.20, (0.24, 0.24, 0.26, 1.0), segments=8)   # on the counter (was 30 cm south of it)
 
 
 

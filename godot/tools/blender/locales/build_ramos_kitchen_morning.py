@@ -38,15 +38,15 @@ def build_counter():
     # a narrow face against the wall and the run jutting into
     # the room. Swapped 2026-08-12 (same bug as the New
     # Orleans bar and the pit stop's lunch counter).
-    top_z = make_counter("Counter", (-ROOM_W/4.0, ROOM_D-0.80, 0.0), length=0.70, depth=2.40, height=0.92,
+    top_z = make_counter("Counter", (-ROOM_W/4.0, ROOM_D-0.50, 0.0), length=0.70, depth=2.40, height=0.92,
                          palette={"formica": (0.78, 0.66, 0.42, 1.0), "top": (0.32, 0.22, 0.14, 1.0), "kick": (0.32, 0.22, 0.14, 1.0)})
-    make_counter_bullnose("Counter", (-ROOM_W/4.0, ROOM_D-0.80 - 0.35, top_z), length=2.40, axis='X')
+    make_counter_bullnose("Counter", (-ROOM_W/4.0, ROOM_D-0.50 - 0.35, top_z), length=2.40, axis='X')
     # Sink + faucet (was missing)
     make_box("Sink_Bowl", (-ROOM_W/4.0, ROOM_D-0.45, 0.86), (0.50, 0.40, 0.12), (0.86, 0.86, 0.84, 1.0))
     make_cyl("Sink_Faucet", (-ROOM_W/4.0, ROOM_D-0.55, top_z+0.04), 0.015, 0.30, P.METAL_STEEL)
     make_box("Sink_Faucet_Spout", (-ROOM_W/4.0, ROOM_D-0.65, top_z+0.19), (0.03, 0.16, 0.03), P.METAL_STEEL)   # off the riser's top (2026-09-24: 7.5 cm over it)
     # Coffee maker on the counter (make_coffee_pots was imported/unused)
-    make_coffee_pots("Coffee", (-ROOM_W/4.0-0.85, ROOM_D-0.45, top_z), pots=1)
+    make_coffee_pots("Coffee", (-ROOM_W/4.0-0.85, ROOM_D, top_z), pots=1)   # the kit puts a lone pot 0.5 in front of its anchor: anchor at the wall plane, pot at the counter centre (2026-09-25)
 
 def build_table():
     import math
@@ -119,7 +119,7 @@ def build_hero_props():
                  (0.30, 0.22, 0.16, 1.0), segments=5)
     make_box("Rosary_Cross", (0.12, 2.42, 0.775), (0.03, 0.012, 0.045), (0.44, 0.34, 0.22, 1.0))
     # The drawer with the bills (blue pen + envelopes)
-    make_box("Bills_Drawer", (-1.62, 4.1000, 0.80), (0.03, 0.55, 0.14), (0.36, 0.26, 0.16, 1.0))
+    make_box("Bills_Drawer", (-1.62, 3.875, 0.80), (0.03, 0.55, 0.14), (0.36, 0.26, 0.16, 1.0))
 
 
 

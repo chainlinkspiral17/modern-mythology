@@ -121,7 +121,7 @@ def build_fridge():
 def build_dressing():
     """Counter + table + wall dressing so it reads as a family kitchen."""
     cw_x = -ROOM_W/4.0; cw_y = ROOM_D-0.45
-    make_coffee_pots("Coffee", (cw_x-1.0, cw_y, 0.94), pots=1)
+    make_coffee_pots("Coffee", (cw_x-1.0, cw_y+0.50, 0.94), pots=1)   # the kit puts a lone pot 0.5 in front of its anchor (2026-09-25)
     make_box("DishRack_Base", (cw_x+0.9, cw_y, 0.95), (0.34, 0.30, 0.03), P.METAL_STEEL)
     for ti in range(5):
         make_box(f"DishRack_Tine_{ti}", (cw_x+0.74+ti*0.06, cw_y, 1.05), (0.01, 0.24, 0.16), P.METAL_STEEL)
