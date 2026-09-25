@@ -38,14 +38,16 @@ const PORTRAIT_3D_DEMON_ROOT := "res://assets/3d/characters/demons/"
 const PORTRAIT_3D_DEMON_KEY_TO_GLB := {
 	# ch1 — the only demon for The Magician's first scenarios
 	"the_demon":         "the_demon.glb",
-	# Reserved slots (placeholders — drop models in as they're built)
-	# "the_drifter":     "the_drifter.glb",
-	# "the_birdwatcher": "the_birdwatcher.glb",
-	# "the_critic":      "the_critic.glb",
-	# "the_superfan":    "the_superfan.glb",
-	# "the_twins":       "the_twins.glb",
-	# "drunk_uncle":     "drunk_uncle.glb",
-	# "mackenzie_remote":"mackenzie_remote.glb",
+	# Remaining slots — generated via godot/tools/meshy_pipeline.py
+	# (roster kind: demon). A missing file falls through to 2D, so
+	# listing them is safe before the GLBs exist.
+	"the_drifter":       "the_drifter.glb",
+	"the_birdwatcher":   "the_birdwatcher.glb",
+	"the_critic":        "the_critic.glb",
+	"the_superfan":      "the_superfan.glb",
+	"the_twins":         "the_twins.glb",
+	"drunk_uncle":       "drunk_uncle.glb",
+	"mackenzie_remote":  "mackenzie_remote.glb",
 }
 
 const PORTRAIT_3D_KEY_TO_GLB := {
@@ -101,6 +103,91 @@ const PORTRAIT_3D_KEY_TO_GLB := {
 	"sal":               "sal_carratura.glb",
 	"sal_carratura":     "sal_carratura.glb",
 	"finn":              "finn.glb",
+	# ── Roster additions (godot/tools/meshy_roster.json is the source
+	# of truth; entries below only matter once the GLB exists —
+	# missing files fall through to the 2D portrait ladder). Keys
+	# whose short form collides across volumes (carl, wren, nate,
+	# ben, margaret) are NOT aliased here; use the long slug in the
+	# scene JSON when the 3D portrait is wanted.
+	# vol5 ensemble
+	"paul":              "quentin_paul.glb",
+	"quentin_paul":      "quentin_paul.glb",
+	"mackenzie":         "mackenzie_roberts.glb",
+	"mackenzie_roberts": "mackenzie_roberts.glb",
+	"philip":            "philip_roberts.glb",
+	"philip_roberts":    "philip_roberts.glb",
+	"douglas_forte":     "douglas_forte.glb",
+	"joanna":            "joanna_lemoine.glb",
+	"joanna_lemoine":    "joanna_lemoine.glb",
+	"erica":             "erica_campbell.glb",
+	"erica_campbell":    "erica_campbell.glb",
+	"anna":              "anna_logue.glb",
+	"anna_logue":        "anna_logue.glb",
+	"natalie":           "natalie_david.glb",
+	"natalie_david":     "natalie_david.glb",
+	"alice_newsom":      "alice_newsom.glb",
+	"jimmy":             "jimmy_daigle.glb",
+	"jimmy_daigle":      "jimmy_daigle.glb",
+	"aria":              "aria_third.glb",
+	"aria_third":        "aria_third.glb",
+	"the_frog":          "the_frog.glb",
+	"dean":              "dickens_dean.glb",
+	"dickens_dean":      "dickens_dean.glb",
+	"d._dean":           "dickens_dean.glb",
+	"sammy":             "sammy.glb",
+	"hector":            "hector.glb",
+	"gloria":            "gloria_reyes.glb",
+	"gloria_reyes":      "gloria_reyes.glb",
+	"stranger":          "the_stranger.glb",
+	"the_stranger":      "the_stranger.glb",
+	"miriam":            "miriam.glb",
+	"father_amato":      "father_amato.glb",
+	# vol1–4
+	"faust":             "faust.glb",
+	"wagner":            "wagner.glb",
+	"jacob":             "jacob.glb",
+	"joan":              "joan.glb",
+	"david_jarvis":      "david_jarvis.glb",
+	"jo":                "jo.glb",
+	# vol6 additions
+	"carl_drummer":      "carl_drummer.glb",
+	"jesse":             "jesse_henderson.glb",
+	"jesse_henderson":   "jesse_henderson.glb",
+	"ben_kowalski":      "ben_kowalski.glb",
+	"bianca":            "bianca_miller.glb",
+	"bianca_miller":     "bianca_miller.glb",
+	"mrs._miller":       "bianca_miller.glb",
+	"chief_miller":      "chief_miller.glb",
+	"graciela":          "graciela_ramos.glb",
+	"graciela_ramos":    "graciela_ramos.glb",
+	"abuela":            "graciela_ramos.glb",
+	"linda":             "linda_caldwell.glb",
+	"linda_caldwell":    "linda_caldwell.glb",
+	"ms._caldwell":      "linda_caldwell.glb",
+	"curtis":            "curtis.glb",
+	"henderson":         "thomas_henderson.glb",
+	"ramirez":           "ramirez.glb",
+	"claire":            "claire_moyer.glb",
+	"claire_moyer":      "claire_moyer.glb",
+	"vince":             "vince_kane.glb",
+	"vince_kane":        "vince_kane.glb",
+	"guidry":            "coach_guidry.glb",
+	"coach_guidry":      "coach_guidry.glb",
+	"nate_bassist":      "nate_bassist.glb",
+	"em":                "em_keys.glb",
+	"wren_vol6":         "wren_vol6.glb",
+	# vol7 additions
+	"cale":              "cale.glb",
+	"hans":              "hans.glb",
+	"greta":             "greta.glb",
+	"marit":             "marit.glb",
+	"marina":            "marina.glb",
+	"roy":               "roy.glb",
+	"aud":               "aud.glb",
+	"jameson":           "jameson.glb",
+	"mateo":             "mateo.glb",
+	"margaret_coop":     "margaret_coop.glb",
+	"soren":             "soren.glb",
 }
 const PORTRAIT_TEX_ROOT  := "res://assets/characters/"
 

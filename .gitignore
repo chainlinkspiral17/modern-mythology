@@ -29,3 +29,13 @@ godot/assets/sky/*.hdr
 godot/assets/sky/*.exr
 godot/assets/sky/*.png
 godot/assets/sky/*.jpg
+
+# API key files for godot/tools/*_render.py / meshy_pipeline.py — never commit
+godot/tools/.runway_key
+godot/tools/.meshy_key
+godot/tools/.google_key
+godot/tools/.*_key
+
+# Meshy pipeline concept-art candidates + manifest — curate manually; the
+# chosen GLB lands in assets/3d/... and IS committed
+godot/assets/concept/meshy/

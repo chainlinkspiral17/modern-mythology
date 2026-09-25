@@ -331,6 +331,56 @@ Louisville's hurricane-deck proportions"). Don't guess at numbers.
 
 ## Recent lessons
 
+### 2026-09-25 · Hero Studio — prompt → image → Meshy → GLB
+
+- **The "Meshy tool" is now a pipeline, not an uploader.**
+  `godot/tools/meshy_pipeline.py` (stdlib only) drives Google
+  (Gemini image / Imagen) or Runway text-to-image for concept art,
+  then Meshy image-to-3D / multi-image-to-3D, and installs the GLB at
+  the canonical path. `godot/tools/hero_uploader/index.html` is its
+  browser front-end (run `meshy_pipeline.py serve`); dropping a GLB
+  by hand still works.
+- **One roster, three consumers.** `godot/tools/meshy_roster.json`
+  lists every VN character (75), demon slot (8) and hero prop (62)
+  with slug, kind, canonical file, speaker keys, aspect, pose and
+  prompt. The runner, the page and `CharLayer.PORTRAIT_3D_KEY_TO_GLB`
+  all follow it. When adding a character: roster first, CharLayer key
+  second, `HERO_GLB_PATHS` (world spawns) only if it stands in a
+  locale.
+- **Prompt shape that Meshy likes:** one subject, relaxed A-pose
+  facing camera, feet visible, flat light-grey seamless background,
+  even frontal light, no cast shadow, no text. Props: three-quarter
+  view from slightly above, floating on the same background. The
+  style preamble lives in the roster `style` block so it is applied
+  uniformly; per-entry prompts only describe the subject.
+- **Multi-view beats single-view for characters.** Generate side +
+  back with the chosen front as a *reference image* (Gemini
+  `inlineData`, Runway `referenceImages` + `@front` tag) and send all
+  three to `multi-image-to-3d`. Imagen cannot take references — use a
+  `gemini-*` model when multiview is wanted.
+- **Draft first, texture second, when iterating.** `should_texture:
+  false` is a cheap silhouette check; the API rejects texture knobs
+  on untextured runs, so the runner only sends `enable_pbr` /
+  `texture_resolution` / `texture_prompt` when texturing. Smart
+  topology (`model_type: smart-topology`, 100–15000 tris) is the
+  budget path for background-scale props; standard mode needs a
+  remesh for polycount control.
+- **Vendor docs were egress-blocked; SDK sources were not.** The
+  request shapes came from `runwayml/sdk-python`, `googleapis/
+  python-genai` README and the `meshy-cli` npm package (its
+  `toPayload()` is the field list). If a call 4xx's, diff against
+  those before guessing.
+- **Key collisions are a scene-data problem, not a roster problem.**
+  `carl` (16-year-old drummer vs Carl Reno), `wren` (vol6 28 vs vol7
+  15), `nate`, `ben`, `margaret` mean different people per volume.
+  The roster carries both with long slugs; CharLayer aliases only the
+  unambiguous short keys.
+- **Canon-sparse looks are flagged, not invented silently.** Entries
+  whose appearance the prose never pins down carry `notes: "Look is
+  not pinned down in canon…"` so the user edits the prompt before
+  spending credits.
+
+
 ### 2026-07-02 · hero-pass wave 2 (diner / Gas & Go / Cosmic Comics)
 
 - **Old scaffolds hide geometry bugs that only a polish pass finds.**

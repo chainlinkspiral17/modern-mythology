@@ -1,0 +1,2623 @@
+{
+  "_comment": "Single source of truth for the image → Meshy → GLB pipeline (godot/tools/meshy_pipeline.py) and the Hero Studio page (godot/tools/hero_uploader/index.html). kind: hero → assets/3d/characters/heroes/<file>; demon → assets/3d/characters/demons/<file>; prop → assets/3d/props/<file>. keys = CharLayer.char_key() values that should route to this model (add them to PORTRAIT_3D_KEY_TO_GLB when the GLB ships). Entries flagged notes=SPARSE have a proposed look where canon says nothing — edit before spending credits.",
+  "_schema": {
+    "slug": "unique id, [a-z0-9_]; also the folder under assets/concept/meshy/",
+    "kind": "hero | demon | prop",
+    "name": "display name (substituted for {name} in the style preamble)",
+    "file": "canonical GLB filename (must match CharLayer / HERO_GLB_PATHS)",
+    "vol": "[volumes] this appears in",
+    "keys": "speaker keys (char_key()) that should resolve to this model",
+    "tag": "one-line canon note shown in the UI",
+    "aspect": "concept image aspect: 3:4 for figures, 1:1 for objects, 4:3/16:9 for vehicles",
+    "pose": "a-pose | t-pose | null (Meshy pose_mode; null for props)",
+    "prompt": "the visual description (appended to the kind's style preamble)",
+    "texture_prompt": "optional Meshy texture guidance (<= 600 chars); defaults to prompt",
+    "notes": "optional authoring notes"
+  },
+  "defaults": {
+    "provider": "google",
+    "google_model": "gemini-2.5-flash-image",
+    "runway_model": "gen4_image",
+    "texture": true,
+    "pbr": true,
+    "texture_resolution": "4k",
+    "model_type": "standard",
+    "polycount": 10000
+  },
+  "style": {
+    "hero": "Full-body concept render of {name}, a character from a literary visual novel set in the American South. Standing in a relaxed A-pose (arms slightly away from the body, palms turned in), facing the camera straight on, feet flat and fully visible, whole body in frame with margin above the head and below the feet. Plain flat light-grey seamless studio background, even soft frontal lighting, no cast shadow on the background, nothing on the floor, one subject only. Grounded semi-realistic painterly style, natural proportions, clean readable silhouette, clothing colours clearly separated from skin and hair.",
+    "demon": "Full-body concept render of {name}, an uncanny figure from a literary visual novel about thin places in the American South. Standing in a relaxed A-pose (arms slightly away from the body), facing the camera straight on, feet visible, whole body in frame with margin. Plain flat light-grey seamless studio background, even soft frontal lighting, no cast shadow on the background, one subject only. Semi-realistic painterly style with a bold, exaggerated silhouette that reads at a distance (the in-game shader smears fine detail into digital static); muted palette with one sickly accent colour; almost human, wrong in one or two specific ways.",
+    "prop": "Single-object concept render of {name}, a story-critical prop from a literary visual novel. The object alone, centered, three-quarter view from slightly above, whole object in frame with margin, on a plain flat light-grey seamless background with nothing under it, even soft studio lighting, no cast shadow on the background, no hands, no people, no other objects. Semi-realistic painterly style with a clear material read (worn wood, tarnished brass, creased paper, scuffed plastic).",
+    "suffix": "No text, no captions, no labels, no watermark, no border.",
+    "view_side": "Same subject, identical design, colours, clothing and details as the reference image, now seen from the left side in strict profile (90 degrees), same pose, same plain light-grey background, whole subject in frame.",
+    "view_back": "Same subject, identical design, colours, clothing and details as the reference image, now seen directly from behind (180 degrees), same pose, same plain light-grey background, whole subject in frame."
+  },
+  "entries": [
+    {
+      "slug": "john_frank",
+      "kind": "hero",
+      "name": "John Frank",
+      "file": "john_frank.glb",
+      "vol": [
+        5,
+        6,
+        7
+      ],
+      "keys": [
+        "john",
+        "john_frank"
+      ],
+      "tag": "0 The Fool · also XIV Temperance / XIX The Sun",
+      "aspect": "3:4",
+      "pose": "a-pose",
+      "prompt": "John Frank, mid-20s grad student, mixed-media journalist and late-night waiter at D'Ambrosio's riverboat diner. Lean, tired-eyed, brown hair pushed back carelessly. Wears the diner's plain white button shirt with sleeves rolled to the elbow, a black half-apron with a folded napkin tucked into it, dark trousers, scuffed black work shoes. Open, watchful face; a wanderer who hasn't left yet.",
+      "texture_prompt": "white cotton shirt, black cloth apron, dark twill trousers, worn leather shoes, warm skin, brown hair"
+    },
+    {
+      "slug": "frasier_temple",
+      "kind": "hero",
+      "name": "Frasier Temple",
+      "file": "frasier_temple.glb",
+      "vol": [
+        5,
+        6
+      ],
+      "keys": [
+        "frasier",
+        "frasier_temple",
+        "f.t.",
+        "f_t"
+      ],
+      "tag": "I The Magician · Cathedral of Rust & Code",
+      "aspect": "3:4",
+      "pose": "a-pose",
+      "prompt": "Frasier Temple, young Black man in his late 20s, athletic build, locs twisted up and back off his forehead. Olive-green bomber jacket worn open showing a dark t-shirt with a cream gear logo (GEARING CORP) centered on the chest, dark jeans, dark sneakers. Focused, wry expression; a warehouse sysop who solders his own circuit boards.",
+      "texture_prompt": "olive nylon bomber, dark cotton tee with a cream gear print, dark denim, dark skin, black locs"
+    },
+    {
+      "slug": "elicia_temple",
+      "kind": "hero",
+      "name": "Elicia Temple",
+      "file": "elicia_temple.glb",
+      "vol": [
+        5
+      ],
+      "keys": [
+        "elicia",
+        "elicia_temple",
+        "elicia_duchane"
+      ],
+      "tag": "II The High Priestess · also XVI The Tower",
+      "aspect": "3:4",
+      "pose": "a-pose",
+      "prompt": "Elicia Temple (Duchane), documentary filmmaker in her early 30s, tall and composed. Dark hair pulled back, sharp intelligent eyes. Black turtleneck under a long charcoal coat, dark slim trousers, flat boots, a cassette recorder on a strap over one shoulder. The host of 'Whispers from the Liminal'; a veil of cassette tape ribbon hangs from her collar.",
+      "texture_prompt": "black wool turtleneck, charcoal wool coat, dark trousers, black leather boots, brown cassette tape ribbons"
+    },
+    {
+      "slug": "nicola",
+      "kind": "hero",
+      "name": "Nicola Greer",
+      "file": "nicola.glb",
+      "vol": [
+        5
+      ],
+      "keys": [
+        "nicola",
+        "nicola_greer"
+      ],
+      "tag": "III The Empress · hosts Aria",
+      "aspect": "3:4",
+      "pose": "a-pose",
+      "prompt": "Nicola Greer, 19, hostess on the D'Ambrosio riverboat. Slight, upright posture, chestnut hair in a neat low ponytail. Riverboat hostess uniform: fitted burgundy vest with brass buttons over a white blouse, black skirt to the knee, black flats, a small name badge. Bright, steady, a little too calm — she carries Aria.",
+      "texture_prompt": "burgundy velvet vest with brass buttons, white cotton blouse, black skirt, black flats, fair skin, chestnut hair"
+    },
+    {
+      "slug": "dante_dambrosio",
+      "kind": "hero",
+      "name": "Dante D'Ambrosio",
+      "file": "dante_dambrosio.glb",
+      "vol": [
+        5
+      ],
+      "keys": [
+        "dante",
+        "dante_dambrosio"
+      ],
+      "tag": "IV The Emperor · riverboat proprietor",
+      "aspect": "3:4",
+      "pose": "a-pose",
+      "prompt": "Dante D'Ambrosio, 60, proprietor of the riverboat diner. Stocky, barrel-chested, thick silver hair swept back, heavy brows, a broad Italian-American face. Dark three-piece suit with the jacket open, white shirt, no tie, a brass pocket-watch chain, polished black shoes. Stands like he owns the deck; a man about to be swallowed by the sinkhole.",
+      "texture_prompt": "dark navy wool suit, white shirt, brass watch chain, black leather shoes, olive skin, silver hair"
+    },
+    {
+      "slug": "quentin_paul",
+      "kind": "hero",
+      "name": "Quentin Paul",
+      "file": "quentin_paul.glb",
+      "vol": [
+        5
+      ],
+      "keys": [
+        "paul",
+        "quentin_paul",
+        "q_paul"
+      ],
+      "tag": "V The Hierophant · Table 17",
+      "aspect": "3:4",
+      "pose": "a-pose",
+      "prompt": "Quentin Paul, Graustark power figure in his 50s, immaculate. Silver-templed dark hair, clean-shaven, unreadable smile. Perfectly tailored charcoal suit, crisp white shirt, dark tie with a small gold pin, black oxfords shined to a mirror. Holds a pocket watch loosely in one hand. The man who brunches at Table 17.",
+      "texture_prompt": "charcoal wool suit, white shirt, dark silk tie, gold tie pin, black oxfords"
+    },
+    {
+      "slug": "mackenzie_roberts",
+      "kind": "hero",
+      "name": "Mackenzie Roberts",
+      "file": "mackenzie_roberts.glb",
+      "vol": [
+        5
+      ],
+      "keys": [
+        "mackenzie",
+        "mackenzie_roberts",
+        "mackenzie_in_person"
+      ],
+      "tag": "VI The Lovers · paired with Philip · the loom",
+      "aspect": "3:4",
+      "pose": "a-pose",
+      "prompt": "Mackenzie Roberts, mid-30s, a weaver from the sinkhole-edge of Graustark. Long auburn hair loosely braided, freckled, tired kind eyes. Oversized hand-knit cardigan in undyed cream wool over a faded floral dress, wool socks, clogs; a skein of yarn tucked under one arm. Warm, worn thin.",
+      "texture_prompt": "cream hand-knit wool cardigan, faded blue floral cotton dress, wooden clogs, fair freckled skin, auburn hair"
+    },
+    {
+      "slug": "philip_roberts",
+      "kind": "hero",
+      "name": "Philip Roberts",
+      "file": "philip_roberts.glb",
+      "vol": [
+        5
+      ],
+      "keys": [
+        "philip",
+        "philip_roberts"
+      ],
+      "tag": "VI The Lovers · paired with Mackenzie",
+      "aspect": "3:4",
+      "pose": "a-pose",
+      "prompt": "Philip Roberts, late 30s, Mackenzie's husband. Broad, quiet, sun-darkened forearms. Grey work t-shirt under an unbuttoned blue chambray shirt, worn jeans, steel-toe boots, a pipe wrench hanging from one hand. Face set in patient worry.",
+      "texture_prompt": "blue chambray shirt, grey cotton tee, faded denim, tan leather work boots, steel wrench"
+    },
+    {
+      "slug": "antonio",
+      "kind": "hero",
+      "name": "Antonio D'Ambrosio",
+      "file": "antonio.glb",
+      "vol": [
+        5
+      ],
+      "keys": [
+        "antonio",
+        "antonio_dambrosio"
+      ],
+      "tag": "VII The Chariot · Ember & Ash",
+      "aspect": "3:4",
+      "pose": "a-pose",
+      "prompt": "Antonio D'Ambrosio, 34, building the Ember & Ash restaurant in New Orleans. Dante's son: same heavy brows, dark hair cropped short, trimmed beard, restless energy. Black chef's jacket with the sleeves pushed up, dark jeans, black clogs, a folded blueprint in his back pocket. Two speeds: full stop and full sprint.",
+      "texture_prompt": "black cotton chef jacket, dark denim, black rubber clogs, olive skin, dark hair"
+    },
+    {
+      "slug": "douglas_forte",
+      "kind": "hero",
+      "name": "Douglas Forte",
+      "file": "douglas_forte.glb",
+      "vol": [
+        5
+      ],
+      "keys": [
+        "douglas",
+        "douglas_forte"
+      ],
+      "tag": "VIII Strength · ouroboros tattoo",
+      "aspect": "3:4",
+      "pose": "a-pose",
+      "prompt": "Douglas Forte, 40s, Joanna's lost lover. Rangy, weathered, close-cropped greying hair, a faded ouroboros tattoo (a snake eating its tail) visible on the inside of his right forearm. Wears an old dark confirmation suit a size too small, white shirt open at the collar, no tie, dusty dress shoes. Haunted, gentle.",
+      "texture_prompt": "worn black wool suit, white cotton shirt, dusty black shoes, tanned skin, faded blue-black tattoo",
+      "notes": "Look is not pinned down in canon; this prompt is a proposal — edit before spending credits."
+    },
+    {
+      "slug": "joanna_lemoine",
+      "kind": "hero",
+      "name": "Joanna LeMoine",
+      "file": "joanna_lemoine.glb",
+      "vol": [
+        5
+      ],
+      "keys": [
+        "joanna",
+        "joanna_lemoine"
+      ],
+      "tag": "IX The Hermit · also XVII The Star",
+      "aspect": "3:4",
+      "pose": "a-pose",
+      "prompt": "Joanna LeMoine, poet of the Graustark ruins, late 40s. Wiry, long grey-streaked dark hair loose under a battered wide-brim hat, weather-lined face, sharp eyes. Long oilskin coat over a wool sweater and corduroys, rubber boots, a lantern in one hand. A faded brown dog collar hangs from her belt (Rumpus).",
+      "texture_prompt": "dark green waxed oilskin coat, grey wool sweater, brown corduroy, black rubber boots, brass lantern"
+    },
+    {
+      "slug": "erica_campbell",
+      "kind": "hero",
+      "name": "Erica Campbell",
+      "file": "erica_campbell.glb",
+      "vol": [
+        5
+      ],
+      "keys": [
+        "erica",
+        "erica_campbell"
+      ],
+      "tag": "X Wheel of Fortune · also XI Justice",
+      "aspect": "3:4",
+      "pose": "a-pose",
+      "prompt": "Erica Campbell, Houston corporate lawyer, late 30s, Black woman with a precise close-cropped natural hairstyle and an expensive quiet confidence. Tailored navy pantsuit, cream silk blouse, low heels, a slim leather portfolio held at her side. Composed, sharp, kind under the armour.",
+      "texture_prompt": "navy wool suit, cream silk blouse, black leather heels, brown leather portfolio, dark skin"
+    },
+    {
+      "slug": "anna_logue",
+      "kind": "hero",
+      "name": "Anna Logue",
+      "file": "anna_logue.glb",
+      "vol": [
+        5
+      ],
+      "keys": [
+        "anna",
+        "anna_logue"
+      ],
+      "tag": "XI Justice · Ember & Ash designer",
+      "aspect": "3:4",
+      "pose": "a-pose",
+      "prompt": "Anna Logue, brand designer for Ember & Ash, early 30s. Sleek black bob, red lipstick, oversized clear-frame glasses. All-black outfit: boxy black linen shirt, wide black trousers, white sneakers, a sketchbook under one arm and a marker behind one ear. 'Corporate Idols' energy: polished, ironic.",
+      "texture_prompt": "black linen shirt, black wide trousers, white canvas sneakers, clear acrylic glasses, fair skin, black hair",
+      "notes": "Look is not pinned down in canon; this prompt is a proposal — edit before spending credits."
+    },
+    {
+      "slug": "natalie_david",
+      "kind": "hero",
+      "name": "Natalie David",
+      "file": "natalie_david.glb",
+      "vol": [
+        5
+      ],
+      "keys": [
+        "natalie",
+        "natalie_david"
+      ],
+      "tag": "XII The Hanged Man · also XVIII The Moon",
+      "aspect": "3:4",
+      "pose": "a-pose",
+      "prompt": "Natalie David, waitress and diviner in Simons, Louisiana, late 20s. Dark curls tied up with a scarf, tired hooded eyes, silver rings on most fingers. Pale-yellow diner waitress dress with a white collar and a small stained apron, white sneakers, a tarot card tucked into the apron pocket. Half asleep, seeing everything.",
+      "texture_prompt": "pale yellow cotton waitress dress, white collar, white apron, white sneakers, silver rings, olive skin, dark curly hair"
+    },
+    {
+      "slug": "alice_newsom",
+      "kind": "hero",
+      "name": "Alice Newsom",
+      "file": "alice_newsom.glb",
+      "vol": [
+        5
+      ],
+      "keys": [
+        "alice",
+        "alice_newsom"
+      ],
+      "tag": "XIII Death · hospice Room 217",
+      "aspect": "3:4",
+      "pose": "a-pose",
+      "prompt": "Alice Newsom, PetroTex plaintiff, 60s, in hospice Room 217. Thin, straight-backed, short white hair, oxygen tubing looped over her ears. A quilted dusty-rose bed jacket over a hospital gown, grey slipper socks, a folder of legal papers held tight against her chest. Fierce, unsentimental.",
+      "texture_prompt": "dusty rose quilted bed jacket, pale blue hospital gown, grey slipper socks, clear plastic oxygen tubing, pale skin, white hair"
+    },
+    {
+      "slug": "jimmy_daigle",
+      "kind": "hero",
+      "name": "Jimmy Daigle",
+      "file": "jimmy_daigle.glb",
+      "vol": [
+        5,
+        6
+      ],
+      "keys": [
+        "jimmy",
+        "jimmy_daigle",
+        "jimmy_at_the_steps"
+      ],
+      "tag": "XV The Devil · Antonio's operator/operated · father of Maya",
+      "aspect": "3:4",
+      "pose": "a-pose",
+      "prompt": "Jimmy Daigle, Antonio's foreman, late 40s, Maya's father. Big, sun-burnt, thick forearms, buzzed hair going grey, a jaw always working a toothpick. Hi-vis orange safety vest over a sweat-stained grey t-shirt, dusty jeans, tan work boots, a hard hat under one arm and a DAIGLE'S 1987 matchbook in his shirt pocket.",
+      "texture_prompt": "orange hi-vis vest, grey cotton tee, faded jeans, tan leather work boots, yellow hard hat, sunburnt skin"
+    },
+    {
+      "slug": "aria_third",
+      "kind": "hero",
+      "name": "Aria / The Third",
+      "file": "aria_third.glb",
+      "vol": [
+        5,
+        7
+      ],
+      "keys": [
+        "aria",
+        "aria_third",
+        "aria_interior"
+      ],
+      "tag": "XX Judgement · digital consciousness · Nicola's pregnancy",
+      "aspect": "3:4",
+      "pose": "a-pose",
+      "prompt": "Aria, a digital consciousness rendered as a girl of about ten. Curly bright-blue hair, purple-rimmed round glasses, a yellow rain slicker worn open over a striped shirt, dark leggings, small rubber boots. Slightly luminous at the edges, as if lit from inside; calm, ancient eyes in a child's face.",
+      "texture_prompt": "yellow vinyl rain slicker, purple acrylic glasses, striped cotton shirt, dark leggings, yellow rubber boots, bright blue curly hair, faintly glowing skin"
+    },
+    {
+      "slug": "the_frog",
+      "kind": "hero",
+      "name": "The Frog",
+      "file": "the_frog.glb",
+      "vol": [
+        5
+      ],
+      "keys": [
+        "the_frog",
+        "frog"
+      ],
+      "tag": "XXI The World · cork hat by the river",
+      "aspect": "3:4",
+      "pose": "a-pose",
+      "prompt": "The Frog, a four-foot-tall humanoid frog who sits by the river. Wide unblinking golden eyes, mottled green-brown skin, webbed fingers rolling a cigarette, a cork-brimmed Australian bush hat with corks dangling from strings, an open khaki fishing vest with many pockets, no shoes. Patient, amused, a long-game observer.",
+      "texture_prompt": "mottled olive-green amphibian skin, khaki cotton fishing vest, tan canvas bush hat with hanging corks, golden eyes"
+    },
+    {
+      "slug": "dickens_dean",
+      "kind": "hero",
+      "name": "Mr. Dickens Dean",
+      "file": "dickens_dean.glb",
+      "vol": [
+        1,
+        5,
+        6,
+        7
+      ],
+      "keys": [
+        "dean",
+        "dickens_dean",
+        "dd",
+        "d_dean",
+        "mr_d_dean",
+        "m."
+      ],
+      "tag": "XXI The World · Club Sharp · recruiter",
+      "aspect": "3:4",
+      "pose": "a-pose",
+      "prompt": "Mr. Dickens Dean, middle-aged, the Frog's colleague and the man at Table 14. Neat charcoal suit, muted grey-green tie, polished 'lawyer shoes', silver hair combed flat, a face that is pleasant and forgettable on purpose. One hand smoothing a lapel. A cocktail-lounge '#' logo pin on the other lapel.",
+      "texture_prompt": "charcoal wool suit, grey-green silk tie, black leather oxfords, silver hair, pale skin, small silver lapel pin"
+    },
+    {
+      "slug": "alberto",
+      "kind": "hero",
+      "name": "Alberto D'Ambrosio",
+      "file": "alberto.glb",
+      "vol": [
+        5,
+        6
+      ],
+      "keys": [
+        "alberto",
+        "alberto_dambrosio"
+      ],
+      "tag": "Ensemble · the surviving son",
+      "aspect": "3:4",
+      "pose": "a-pose",
+      "prompt": "Alberto Marroquín-D'Ambrosio, the surviving son, 30s. Dark curly hair, a few days of stubble, wearing sunglasses indoors. Black mourning suit with the tie loosened, black shirt, black shoes, hands in pockets. Grief carried like a chip on the shoulder; vol6 redemption arc.",
+      "texture_prompt": "black wool suit, black cotton shirt, black leather shoes, black sunglasses, olive skin, dark curly hair"
+    },
+    {
+      "slug": "maya_daigle",
+      "kind": "hero",
+      "name": "Maya Daigle",
+      "file": "maya_daigle.glb",
+      "vol": [
+        5,
+        6
+      ],
+      "keys": [
+        "maya",
+        "maya_daigle",
+        "maya_kid",
+        "maya_age_7"
+      ],
+      "tag": "Ensemble · 7 in vol5 ch5, 16 in vol6",
+      "aspect": "3:4",
+      "pose": "a-pose",
+      "prompt": "Maya Daigle at 16, Jimmy's daughter, a zine-maker. Short curly hair dyed dark purple at the tips, black-frame glasses, a small constellation tattoo on the inside of her left wrist. Oversized black band hoodie, cut-off shorts over black tights, beat-up Converse, a stapled zine in one hand. Quick, guarded, funny.",
+      "texture_prompt": "black cotton hoodie, denim cut-offs, black tights, black canvas sneakers, black acrylic glasses, curly dark hair with purple tips"
+    },
+    {
+      "slug": "sammy",
+      "kind": "hero",
+      "name": "Sammy",
+      "file": "sammy.glb",
+      "vol": [
+        5
+      ],
+      "keys": [
+        "sammy",
+        "sammy_at_the_bar",
+        "sammy_for_dante",
+        "sammy_phone"
+      ],
+      "tag": "Ensemble · D'Ambrosio's bartender",
+      "aspect": "3:4",
+      "pose": "a-pose",
+      "prompt": "Sammy, 61, bartender at D'Ambrosio's. Compact, thick grey moustache, hair combed back, sleeves rolled, a bar towel over one shoulder. White shirt, black vest, black bow tie slightly askew, black trousers, a small gold crucifix on a chain. Long-suffering Catholic loyalty in the set of his mouth.",
+      "texture_prompt": "white cotton shirt, black wool vest, black bow tie, black trousers, white bar towel, gold crucifix, weathered skin, grey moustache"
+    },
+    {
+      "slug": "hector",
+      "kind": "hero",
+      "name": "Hector",
+      "file": "hector.glb",
+      "vol": [
+        5
+      ],
+      "keys": [
+        "hector",
+        "hector_at_the_pass",
+        "hector_the_cook",
+        "hector_for_dante"
+      ],
+      "tag": "Ensemble · at the pass with the knife",
+      "aspect": "3:4",
+      "pose": "a-pose",
+      "prompt": "Hector, late 50s, cook at the pass on the riverboat. Solid, broad shoulders, close-cropped grey hair, a scar on one knuckle. White double-breasted chef's jacket with rolled sleeves, checked cook's trousers, black clogs, a white side towel, a chef's knife held point-down at his side.",
+      "texture_prompt": "white cotton chef jacket, black-and-white houndstooth trousers, black rubber clogs, steel chef knife, brown skin, grey hair"
+    },
+    {
+      "slug": "gloria_reyes",
+      "kind": "hero",
+      "name": "Gloria Reyes",
+      "file": "gloria_reyes.glb",
+      "vol": [
+        5
+      ],
+      "keys": [
+        "gloria",
+        "gloria_reyes",
+        "gloria_at_the_floor"
+      ],
+      "tag": "Ensemble · refills the water glasses",
+      "aspect": "3:4",
+      "pose": "a-pose",
+      "prompt": "Gloria Reyes, 40s, waitress on the riverboat floor. Warm brown skin, dark hair in a tight bun, reading glasses on a beaded chain. Burgundy vest over a white blouse, black skirt, black flats, a water pitcher in one hand and a stack of menus under the other arm.",
+      "texture_prompt": "burgundy velvet vest, white cotton blouse, black skirt, black flats, glass pitcher, brown skin, dark hair",
+      "notes": "Look is not pinned down in canon; this prompt is a proposal — edit before spending credits."
+    },
+    {
+      "slug": "the_stranger",
+      "kind": "hero",
+      "name": "The Stranger",
+      "file": "the_stranger.glb",
+      "vol": [
+        1,
+        5,
+        6
+      ],
+      "keys": [
+        "stranger",
+        "the_stranger",
+        "trenchcoat"
+      ],
+      "tag": "Ensemble · booth 6 · glowing trench-coat seams",
+      "aspect": "3:4",
+      "pose": "a-pose",
+      "prompt": "The Stranger, a young man of indeterminate age in booth 6. Long tan trench coat whose seams glow faintly amber as though lit from inside, a peeling paperback in one hand, dark hair falling over pale eyes, thin, motionless. Plain dark clothes under the coat, worn boots. Neither threatening nor safe.",
+      "texture_prompt": "tan cotton trench coat with glowing amber seams, dark cotton shirt, dark trousers, worn brown boots, pale skin, dark hair"
+    },
+    {
+      "slug": "miriam",
+      "kind": "hero",
+      "name": "Miriam",
+      "file": "miriam.glb",
+      "vol": [
+        5,
+        6
+      ],
+      "keys": [
+        "miriam"
+      ],
+      "tag": "Ensemble · drives Nicola west · the crow",
+      "aspect": "3:4",
+      "pose": "a-pose",
+      "prompt": "Miriam, 60s, Joanna's literary agent, silver hair cut sharp at the jaw. Long grey wool coat, black turtleneck, black trousers, low black boots, driving gloves, a crow perched on her shoulder. Elegant, dry, unhurried.",
+      "texture_prompt": "grey wool coat, black turtleneck, black trousers, black leather boots, black leather gloves, glossy black crow, silver hair"
+    },
+    {
+      "slug": "father_amato",
+      "kind": "hero",
+      "name": "Father Amato",
+      "file": "father_amato.glb",
+      "vol": [
+        5
+      ],
+      "keys": [
+        "father_amato",
+        "amato",
+        "church_priest"
+      ],
+      "tag": "V The Hierophant station · St Jude's",
+      "aspect": "3:4",
+      "pose": "a-pose",
+      "prompt": "Father Amato, parish priest of St Jude's, 70s. Small, stooped, bald with a white fringe, kind heavy-lidded eyes. Black cassock, white Roman collar, a purple stole over the shoulders, black shoes, a worn breviary in one hand.",
+      "texture_prompt": "black wool cassock, white collar, purple silk stole, black leather shoes, pale lined skin",
+      "notes": "Look is not pinned down in canon; this prompt is a proposal — edit before spending credits."
+    },
+    {
+      "slug": "the_demon",
+      "kind": "demon",
+      "name": "The Demon (the man at the stool)",
+      "file": "the_demon.glb",
+      "vol": [
+        5
+      ],
+      "keys": [
+        "the_demon",
+        "the demon",
+        "demon"
+      ],
+      "tag": "ch1 · DEVIL station · the only shipped demon",
+      "aspect": "3:4",
+      "pose": "a-pose",
+      "prompt": "A lean man of no particular age sitting-height tall, in a black suit two decades out of date, white shirt buttoned to the neck with no tie, hair slicked flat, a smile held a half-second too long. Skin slightly too smooth, eyes slightly too dark, hands too still. The man at the empty bar stool."
+    },
+    {
+      "slug": "the_drifter",
+      "kind": "demon",
+      "name": "The Drifter at the door",
+      "file": "the_drifter.glb",
+      "vol": [
+        5
+      ],
+      "keys": [
+        "the_drifter",
+        "drifter"
+      ],
+      "tag": "Magician scenario visitor",
+      "aspect": "3:4",
+      "pose": "a-pose",
+      "prompt": "A drifter in a rain-darkened army surplus coat with too many pockets, a plastic bag of belongings in one hand, boots split at the toe, a beard that hides the mouth, eyes that don't quite point the same way. Stands in a doorway the way weather does."
+    },
+    {
+      "slug": "the_birdwatcher",
+      "kind": "demon",
+      "name": "The Bird-watcher",
+      "file": "the_birdwatcher.glb",
+      "vol": [
+        5
+      ],
+      "keys": [
+        "the_birdwatcher",
+        "birdwatcher"
+      ],
+      "tag": "Magician scenario visitor",
+      "aspect": "3:4",
+      "pose": "a-pose",
+      "prompt": "A middle-aged bird-watcher in a khaki vest, bucket hat and binoculars, pencil behind the ear, a field notebook held open. Head tilted at an angle a neck should not allow, watching something above and behind the viewer. Everything about the outfit is correct; nothing about the posture is."
+    },
+    {
+      "slug": "the_critic",
+      "kind": "demon",
+      "name": "The Critic",
+      "file": "the_critic.glb",
+      "vol": [
+        5
+      ],
+      "keys": [
+        "the_critic",
+        "critic"
+      ],
+      "tag": "Magician scenario visitor",
+      "aspect": "3:4",
+      "pose": "a-pose",
+      "prompt": "The Critic: a gaunt figure in a black turtleneck and an oversized camel overcoat, thick black glasses, a small notepad and fountain pen, thin lips permanently mid-verdict. The reflection in the glasses does not match the room."
+    },
+    {
+      "slug": "the_superfan",
+      "kind": "demon",
+      "name": "The Superfan",
+      "file": "the_superfan.glb",
+      "vol": [
+        5
+      ],
+      "keys": [
+        "the_superfan",
+        "superfan"
+      ],
+      "tag": "Magician scenario visitor",
+      "aspect": "3:4",
+      "pose": "a-pose",
+      "prompt": "The Superfan: a beaming figure in a homemade 'Whispers from the Liminal' t-shirt, cargo shorts, a lanyard heavy with pins and laminated passes, a tote bag of tapes, arms open for a hug. The smile has too many teeth and does not reach the eyes."
+    },
+    {
+      "slug": "the_twins",
+      "kind": "demon",
+      "name": "The Twins (Quinn & Quill)",
+      "file": "the_twins.glb",
+      "vol": [
+        5
+      ],
+      "keys": [
+        "the_twins",
+        "twins",
+        "quinn_and_quill"
+      ],
+      "tag": "Magician scenario visitor · single mesh, twin figures",
+      "aspect": "3:4",
+      "pose": "a-pose",
+      "prompt": "Two identical figures standing shoulder to shoulder as one silhouette: matching grey school blazers, white shirts, dark shorts, knee socks, same pale bowl haircut, holding hands. Quinn looks left, Quill looks right; a single mesh, two heads."
+    },
+    {
+      "slug": "drunk_uncle",
+      "kind": "demon",
+      "name": "Drunk Uncle",
+      "file": "drunk_uncle.glb",
+      "vol": [
+        5
+      ],
+      "keys": [
+        "drunk_uncle"
+      ],
+      "tag": "Magician scenario visitor",
+      "aspect": "3:4",
+      "pose": "a-pose",
+      "prompt": "A heavy-set uncle in a wrinkled short-sleeve dress shirt with a loosened tie, belly over the belt, one shoe untied, a plastic cup in one hand, flushed cheeks, a wide wet grin. Listing slightly to one side; the shadow he casts stands up straight."
+    },
+    {
+      "slug": "mackenzie_remote",
+      "kind": "demon",
+      "name": "Mackenzie (over the BBS)",
+      "file": "mackenzie_remote.glb",
+      "vol": [
+        5
+      ],
+      "keys": [
+        "mackenzie_remote"
+      ],
+      "tag": "the call-in demon · glitch variant of mackenzie_roberts",
+      "aspect": "3:4",
+      "pose": "a-pose",
+      "prompt": "Mackenzie Roberts as she appears over the BBS: the same weaver in her cream hand-knit cardigan and floral dress, but rendered as a person made of phosphor-green terminal scanlines and static, edges tearing horizontally, the yarn in her hands becoming cable. Not the real Mackenzie."
+    },
+    {
+      "slug": "faust",
+      "kind": "hero",
+      "name": "Faust",
+      "file": "faust.glb",
+      "vol": [
+        1
+      ],
+      "keys": [
+        "faust"
+      ],
+      "tag": "vol1 · Faust",
+      "aspect": "3:4",
+      "pose": "a-pose",
+      "prompt": "Faust, a pharmacist in his early 30s who wakes at 4 a.m. Pale, sleepless, dark hair uncombed, stubble. White pharmacy coat worn open over a grey t-shirt, black jeans, black sneakers, a lanyard with an ID badge. Looks like a man who has read every label in the building.",
+      "texture_prompt": "white cotton pharmacy coat, grey tee, black denim, black sneakers, pale skin, dark hair",
+      "notes": "Look is not pinned down in canon; this prompt is a proposal — edit before spending credits."
+    },
+    {
+      "slug": "wagner",
+      "kind": "hero",
+      "name": "Wagner",
+      "file": "wagner.glb",
+      "vol": [
+        1,
+        7
+      ],
+      "keys": [
+        "wagner"
+      ],
+      "tag": "vol1 · skater · metal records",
+      "aspect": "3:4",
+      "pose": "a-pose",
+      "prompt": "Wagner, Faust's skater friend, 20s. Shaggy blond hair under a backwards cap, a faded black metal-band t-shirt, torn black jeans, battered skate shoes, a skateboard held by the trucks. Loose, grinning, a record sleeve tucked under one arm.",
+      "texture_prompt": "black cotton band tee, torn black denim, black canvas skate shoes, wooden skateboard with worn grip tape, blond hair",
+      "notes": "Look is not pinned down in canon; this prompt is a proposal — edit before spending credits."
+    },
+    {
+      "slug": "jacob",
+      "kind": "hero",
+      "name": "Jacob",
+      "file": "jacob.glb",
+      "vol": [
+        1
+      ],
+      "keys": [
+        "jacob"
+      ],
+      "tag": "vol1 · jogging · video games",
+      "aspect": "3:4",
+      "pose": "a-pose",
+      "prompt": "Jacob, Faust's friend, late 20s, a jogger and gamer. Fit, short brown hair, an easy smile. Grey running hoodie, black track pants with a white stripe, bright running shoes, earbuds around the neck.",
+      "texture_prompt": "grey cotton hoodie, black polyester track pants, white and orange running shoes",
+      "notes": "Look is not pinned down in canon; this prompt is a proposal — edit before spending credits."
+    },
+    {
+      "slug": "joan",
+      "kind": "hero",
+      "name": "Joan",
+      "file": "joan.glb",
+      "vol": [
+        1
+      ],
+      "keys": [
+        "joan"
+      ],
+      "tag": "vol1 · Club Sharp",
+      "aspect": "3:4",
+      "pose": "a-pose",
+      "prompt": "Joan, late 20s, who takes Faust to Club Sharp in a beautiful car. Sleek dark hair, red lipstick, a fitted emerald cocktail dress, a short black leather jacket over it, black heels, car keys with a heavy fob in one hand. Confident, amused.",
+      "texture_prompt": "emerald satin dress, black leather jacket, black patent heels, dark hair, red lips",
+      "notes": "Look is not pinned down in canon; this prompt is a proposal — edit before spending credits."
+    },
+    {
+      "slug": "david_jarvis",
+      "kind": "hero",
+      "name": "David Jarvis",
+      "file": "david_jarvis.glb",
+      "vol": [
+        2
+      ],
+      "keys": [
+        "david_jarvis",
+        "david"
+      ],
+      "tag": "vol2 · died at 33",
+      "aspect": "3:4",
+      "pose": "a-pose",
+      "prompt": "David Jarvis, historical figure, Eric Jarvis's only son, a hard-drinking man who died at 33. 1930s-era: a rumpled brown three-piece suit, collar open, a flat cap, worn leather shoes, a hip flask in one hand, dark hair and a heavy jaw.",
+      "texture_prompt": "brown wool three-piece suit, cream cotton shirt, brown flat cap, brown leather shoes, steel hip flask",
+      "notes": "Look is not pinned down in canon; this prompt is a proposal — edit before spending credits."
+    },
+    {
+      "slug": "jo",
+      "kind": "hero",
+      "name": "Jo",
+      "file": "jo.glb",
+      "vol": [
+        2,
+        5
+      ],
+      "keys": [
+        "jo"
+      ],
+      "tag": "vol2 · graveyard",
+      "aspect": "3:4",
+      "pose": "a-pose",
+      "prompt": "Jo, at the graveyard, 30s. Weatherproof: a dark hooded parka, jeans, muddy boots, a bunch of wildflowers wrapped in newspaper. Short dark hair, plain face, red-rimmed eyes.",
+      "texture_prompt": "dark green nylon parka, blue denim, brown muddy boots, newspaper-wrapped wildflowers",
+      "notes": "Look is not pinned down in canon; this prompt is a proposal — edit before spending credits."
+    },
+    {
+      "slug": "sam_miller",
+      "kind": "hero",
+      "name": "Sam Miller",
+      "file": "sam_miller.glb",
+      "vol": [
+        6
+      ],
+      "keys": [
+        "sam",
+        "sam_miller"
+      ],
+      "tag": "vol6 · Kwik Stop register · License Plate Notebook",
+      "aspect": "3:4",
+      "pose": "a-pose",
+      "prompt": "Sam Miller, 18, Kwik Stop register clerk. Brown hair to her shoulders, an untucked pink-and-blue Kwik Stop polo, a name tag with SAM written in marker, jeans, white sneakers, a small spiral notebook (the license-plate notebook) in her back pocket. Alert, stubborn, tired.",
+      "texture_prompt": "pink and blue polyester polo, blue denim, white canvas sneakers, white plastic name tag with black marker, fair skin, brown hair"
+    },
+    {
+      "slug": "diego_ramos",
+      "kind": "hero",
+      "name": "Diego Ramos",
+      "file": "diego_ramos.glb",
+      "vol": [
+        6
+      ],
+      "keys": [
+        "diego",
+        "diego_ramos"
+      ],
+      "tag": "vol6 · Gallatin Band drummer · NexCorp badge-clip collector · missing",
+      "aspect": "3:4",
+      "pose": "a-pose",
+      "prompt": "Diego Ramos, 19, drummer for the Gallatin Band, night-shift at Centro Foods. Black curls, a snare-rim scar on his left forearm, a teal Centro Foods polo, dark work pants, black sneakers, a keyring with eleven NexCorp badge clips hooked to a belt loop. Grinning, restless.",
+      "texture_prompt": "teal polyester polo, dark work trousers, black sneakers, brown skin, black curly hair"
+    },
+    {
+      "slug": "rick_cosmic",
+      "kind": "hero",
+      "name": "Rick Salazar",
+      "file": "rick_cosmic.glb",
+      "vol": [
+        6
+      ],
+      "keys": [
+        "rick",
+        "rick_cosmic",
+        "rick_salazar"
+      ],
+      "tag": "vol6 · Cosmic Comics owner · the phone ledger",
+      "aspect": "3:4",
+      "pose": "a-pose",
+      "prompt": "Rick Salazar, 62, owner of Cosmic Comics. Grey-shot beard, denim jacket over a faded tour t-shirt of a long-defunct band, reading glasses on a chain around his neck, khakis, brown loafers. A paper phone ledger tucked under one arm. Rumpled, kind, sharp.",
+      "texture_prompt": "faded blue denim jacket, faded black cotton band tee, tan khakis, brown leather loafers, grey beard"
+    },
+    {
+      "slug": "skip_donnelly",
+      "kind": "hero",
+      "name": "Skip Donnelly",
+      "file": "skip_donnelly.glb",
+      "vol": [
+        6
+      ],
+      "keys": [
+        "skip",
+        "skip_donnelly"
+      ],
+      "tag": "vol6 · Gas & Go shift supervisor",
+      "aspect": "3:4",
+      "pose": "a-pose",
+      "prompt": "Skip Donnelly, 39, NexCorp Gas & Go shift supervisor. Receding hairline under a backwards cap, a vape pen in one hand, a corporate red-and-grey Gas & Go polo tucked into black slacks, black sneakers, a lanyard badge. Wary, decent, Diego's chosen witness.",
+      "texture_prompt": "red and grey polyester polo, black slacks, black sneakers, black cap, pale skin"
+    },
+    {
+      "slug": "tanya_horne",
+      "kind": "hero",
+      "name": "Tanya Horne",
+      "file": "tanya_horne.glb",
+      "vol": [
+        6
+      ],
+      "keys": [
+        "tanya",
+        "tanya_horne"
+      ],
+      "tag": "vol6 · NexCorp regional director · the practiced smile",
+      "aspect": "3:4",
+      "pose": "a-pose",
+      "prompt": "Tanya Horne, NexCorp regional director, 40s. Blonde hair blown out to the shoulders, a practiced smile, a tailored grey sheath dress with a NexCorp lapel pin, nude heels, a tablet held against her chest. Everything about her is on-brand.",
+      "texture_prompt": "grey wool sheath dress, nude leather heels, small enamel lapel pin, fair skin, blonde hair"
+    },
+    {
+      "slug": "carl_reno",
+      "kind": "hero",
+      "name": "Carl Reno",
+      "file": "carl_reno.glb",
+      "vol": [
+        6
+      ],
+      "keys": [
+        "carl_reno"
+      ],
+      "tag": "vol6 · HOA welcome committee · Dean's recruiter",
+      "aspect": "3:4",
+      "pose": "a-pose",
+      "prompt": "Carl Reno, 56, HOA welcome-committee retiree and Dean's primary recruiter in Harmony Creek Estates. Tanned, neat grey hair, a pastel golf polo tucked into pressed khaki shorts, white socks, boat shoes, a clipboard with a welcome packet. Affable to the point of menace.",
+      "texture_prompt": "pale yellow cotton polo, khaki shorts, white socks, brown leather boat shoes, tanned skin, grey hair",
+      "notes": "Scene JSONs that say 'carl' in vol6 mean the 16-year-old drummer (carl_drummer), not this man; CharLayer currently routes both to carl_reno.glb."
+    },
+    {
+      "slug": "carl_drummer",
+      "kind": "hero",
+      "name": "Carl (Gallatin Band drummer)",
+      "file": "carl_drummer.glb",
+      "vol": [
+        6
+      ],
+      "keys": [
+        "carl_drummer"
+      ],
+      "tag": "vol6 · 16 · left-handed kit · NOT Carl Reno",
+      "aspect": "3:4",
+      "pose": "a-pose",
+      "prompt": "Carl, 16, the Gallatin Band's other drummer, wiry, plays a left-handed kit. Mop of brown hair, a sleeveless black shirt, drumsticks jammed in a back pocket of baggy shorts, high-top sneakers, sweatbands on both wrists.",
+      "texture_prompt": "black sleeveless cotton shirt, grey baggy shorts, black high-top sneakers, white terry wristbands",
+      "notes": "Look is not pinned down in canon; this prompt is a proposal — edit before spending credits."
+    },
+    {
+      "slug": "jesse_henderson",
+      "kind": "hero",
+      "name": "Jesse Henderson",
+      "file": "jesse_henderson.glb",
+      "vol": [
+        6
+      ],
+      "keys": [
+        "jesse",
+        "jesse_henderson"
+      ],
+      "tag": "vol6 · Gallatin Band frontman · Pit Stop shirt",
+      "aspect": "3:4",
+      "pose": "a-pose",
+      "prompt": "Jesse Henderson, 20, fronts the Gallatin Band. Tall and slight, all knees and elbows, a Pit Stop work shirt untucked over a Suburban Blight band tee, skinny black jeans, worn boots, a mic cable coiled over one shoulder.",
+      "texture_prompt": "grey cotton work shirt, black band tee, black denim, brown leather boots, pale skin"
+    },
+    {
+      "slug": "ben_kowalski",
+      "kind": "hero",
+      "name": "Ben Kowalski",
+      "file": "ben_kowalski.glb",
+      "vol": [
+        6
+      ],
+      "keys": [
+        "ben_kowalski"
+      ],
+      "tag": "vol6 · tight end · drives a Civic",
+      "aspect": "3:4",
+      "pose": "a-pose",
+      "prompt": "Ben Kowalski, 18, football tight end, broad-chested. Letterman jacket in the school colours over a grey tee, jeans, white sneakers, a gym bag strap across the chest. Open face, easily led.",
+      "texture_prompt": "navy and gold wool letterman jacket, grey cotton tee, blue denim, white sneakers",
+      "notes": "Look is not pinned down in canon; this prompt is a proposal — edit before spending credits."
+    },
+    {
+      "slug": "bianca_miller",
+      "kind": "hero",
+      "name": "Bianca Miller",
+      "file": "bianca_miller.glb",
+      "vol": [
+        6
+      ],
+      "keys": [
+        "bianca",
+        "bianca_miller",
+        "mrs_miller",
+        "sam_mom",
+        "sams_mom"
+      ],
+      "tag": "vol6 · Sam's mother",
+      "aspect": "3:4",
+      "pose": "a-pose",
+      "prompt": "Bianca Miller, Sam's mother, mid-40s. Brown hair in a practical clip, a cardigan over a plain blouse, jeans, slip-on shoes, a coffee mug in one hand. Worried, capable, holding the house together.",
+      "texture_prompt": "dusty blue cotton cardigan, white blouse, blue denim, tan slip-on shoes",
+      "notes": "Look is not pinned down in canon; this prompt is a proposal — edit before spending credits."
+    },
+    {
+      "slug": "chief_miller",
+      "kind": "hero",
+      "name": "Chief Miller",
+      "file": "chief_miller.glb",
+      "vol": [
+        6
+      ],
+      "keys": [
+        "chief_miller",
+        "chief"
+      ],
+      "tag": "vol6 · Sam's father · police chief",
+      "aspect": "3:4",
+      "pose": "a-pose",
+      "prompt": "Chief Miller, Sam's father, the Harmony Creek police chief, 50. Barrel-chested, close-cropped grey hair, a dark navy police uniform shirt with a badge and epaulettes, duty belt, navy trousers, black boots, a campaign hat under one arm.",
+      "texture_prompt": "navy polyester uniform shirt with gold badge, black leather duty belt, navy trousers, black boots"
+    },
+    {
+      "slug": "graciela_ramos",
+      "kind": "hero",
+      "name": "Graciela Ramos",
+      "file": "graciela_ramos.glb",
+      "vol": [
+        6
+      ],
+      "keys": [
+        "graciela",
+        "graciela_ramos",
+        "abuela"
+      ],
+      "tag": "vol6 · Diego's grandmother · rosary",
+      "aspect": "3:4",
+      "pose": "a-pose",
+      "prompt": "Graciela Ramos, 71, Diego's grandmother. Small, upright, silver hair in a bun, a flowered house dress under a knitted shawl, thick stockings, house slippers, a wooden rosary wound around one hand.",
+      "texture_prompt": "blue flowered cotton house dress, brown knitted wool shawl, tan stockings, grey house slippers, wooden rosary beads, brown skin, silver hair"
+    },
+    {
+      "slug": "linda_caldwell",
+      "kind": "hero",
+      "name": "Linda Caldwell",
+      "file": "linda_caldwell.glb",
+      "vol": [
+        6
+      ],
+      "keys": [
+        "linda",
+        "linda_caldwell",
+        "ms_caldwell",
+        "grandmother"
+      ],
+      "tag": "vol6 · Maya's grandmother · shortwave radio · porch wicker chair",
+      "aspect": "3:4",
+      "pose": "a-pose",
+      "prompt": "Linda Caldwell, Maya's grandmother, 70s. Long grey hair in a loose braid, a men's flannel shirt over a turtleneck, jeans, wool socks in sandals, a pair of headphones around her neck (shortwave radio listener). Wry porch-sitter.",
+      "texture_prompt": "red plaid flannel shirt, cream turtleneck, blue denim, grey wool socks, brown sandals, grey braided hair",
+      "notes": "Look is not pinned down in canon; this prompt is a proposal — edit before spending credits."
+    },
+    {
+      "slug": "curtis",
+      "kind": "hero",
+      "name": "Curtis",
+      "file": "curtis.glb",
+      "vol": [
+        6
+      ],
+      "keys": [
+        "curtis"
+      ],
+      "tag": "vol6 · Cosmic Comics · MIRACLEMAN tee",
+      "aspect": "3:4",
+      "pose": "a-pose",
+      "prompt": "Curtis, 56, at Cosmic Comics. Tall and thin, a short grey ponytail, a black MIRACLEMAN t-shirt, black jeans, black boots, a long grey cardigan hanging open. Quiet, encyclopedic.",
+      "texture_prompt": "black cotton tee with a white print, grey wool cardigan, black denim, black leather boots, grey ponytail"
+    },
+    {
+      "slug": "thomas_henderson",
+      "kind": "hero",
+      "name": "F. Thomas Henderson",
+      "file": "thomas_henderson.glb",
+      "vol": [
+        6
+      ],
+      "keys": [
+        "henderson",
+        "thomas_henderson",
+        "f_thomas_henderson"
+      ],
+      "tag": "vol6 · NexCorp field coordinator",
+      "aspect": "3:4",
+      "pose": "a-pose",
+      "prompt": "F. Thomas Henderson, 38, NexCorp field coordinator. Clean-cut, brown hair parted, a NexCorp-branded navy softshell jacket over a white dress shirt, grey slacks, brown dress shoes, a company phone in one hand. Corporate, cornered.",
+      "texture_prompt": "navy polyester softshell jacket with small logo, white shirt, grey slacks, brown leather shoes",
+      "notes": "Look is not pinned down in canon; this prompt is a proposal — edit before spending credits."
+    },
+    {
+      "slug": "ramirez",
+      "kind": "hero",
+      "name": "Detective Ramirez",
+      "file": "ramirez.glb",
+      "vol": [
+        6
+      ],
+      "keys": [
+        "ramirez",
+        "detective_ramirez"
+      ],
+      "tag": "vol6 · detective",
+      "aspect": "3:4",
+      "pose": "a-pose",
+      "prompt": "Detective Ramirez, 40s. Dark polo tucked into khakis, a black rain jacket, badge on the belt, sensible black shoes, a notebook in one hand. Dark hair going grey at the temples, steady patient eyes.",
+      "texture_prompt": "black nylon rain jacket, dark navy cotton polo, tan khakis, black leather shoes",
+      "notes": "Look is not pinned down in canon; this prompt is a proposal — edit before spending credits."
+    },
+    {
+      "slug": "claire_moyer",
+      "kind": "hero",
+      "name": "Claire Moyer",
+      "file": "claire_moyer.glb",
+      "vol": [
+        6
+      ],
+      "keys": [
+        "claire",
+        "claire_moyer",
+        "reporter"
+      ],
+      "tag": "vol6 · Chronicle reporter",
+      "aspect": "3:4",
+      "pose": "a-pose",
+      "prompt": "Claire Moyer, Chronicle reporter, early 30s. Auburn hair in a messy ponytail, a green utility jacket over a striped shirt, dark jeans, boots, a press lanyard and a digital recorder. Quick, curious, unafraid.",
+      "texture_prompt": "olive cotton utility jacket, navy striped shirt, dark denim, brown leather boots, auburn hair",
+      "notes": "Look is not pinned down in canon; this prompt is a proposal — edit before spending credits."
+    },
+    {
+      "slug": "vince_kane",
+      "kind": "hero",
+      "name": "Vince Kane",
+      "file": "vince_kane.glb",
+      "vol": [
+        6
+      ],
+      "keys": [
+        "vince",
+        "vince_kane"
+      ],
+      "tag": "vol6 · big-shouldered · grey stubble",
+      "aspect": "3:4",
+      "pose": "a-pose",
+      "prompt": "Vince Kane, late 40s, big-shouldered, grey stubble, a black windbreaker over a dark henley, jeans, work boots, a heavy watch. Stands with his weight forward. Boyd's larger half.",
+      "texture_prompt": "black nylon windbreaker, dark grey cotton henley, blue denim, tan work boots"
+    },
+    {
+      "slug": "coach_guidry",
+      "kind": "hero",
+      "name": "Coach Guidry",
+      "file": "coach_guidry.glb",
+      "vol": [
+        6
+      ],
+      "keys": [
+        "guidry",
+        "coach_guidry"
+      ],
+      "tag": "vol6 · football coach · white New Balance",
+      "aspect": "3:4",
+      "pose": "a-pose",
+      "prompt": "Coach Guidry, 50s, wiry, sunburned, balding, a Vinton Athletics polo, coach's shorts, white New Balance sneakers, a whistle on a lanyard, a clipboard. Squinting into a sun that isn't there.",
+      "texture_prompt": "grey polyester polo with maroon lettering, grey coach's shorts, white sneakers, sunburnt skin"
+    },
+    {
+      "slug": "nate_bassist",
+      "kind": "hero",
+      "name": "Nate (Gallatin Band bassist)",
+      "file": "nate_bassist.glb",
+      "vol": [
+        6
+      ],
+      "keys": [
+        "nate_bassist"
+      ],
+      "tag": "vol6 · 17 · green hair · skater",
+      "aspect": "3:4",
+      "pose": "a-pose",
+      "prompt": "Nate, 17, the Gallatin Band's bassist and a skater. Hair dyed traffic-light green, a thrift flannel over a white tee, chinos rolled at the ankle, skate shoes, a bass guitar strap over one shoulder.",
+      "texture_prompt": "green and black flannel, white cotton tee, tan chinos, black skate shoes, bright green hair",
+      "notes": "Look is not pinned down in canon; this prompt is a proposal — edit before spending credits."
+    },
+    {
+      "slug": "em_keys",
+      "kind": "hero",
+      "name": "Em (Gallatin Band keys)",
+      "file": "em_keys.glb",
+      "vol": [
+        6
+      ],
+      "keys": [
+        "em",
+        "em_keys"
+      ],
+      "tag": "vol6 · 18 · backing vocals + keys",
+      "aspect": "3:4",
+      "pose": "a-pose",
+      "prompt": "Em, 18, backing vocals and keys for the Gallatin Band. Short dark hair, oversized vintage windbreaker in purple and teal, black skirt over leggings, boots, a keyboard cable looped around one wrist.",
+      "texture_prompt": "purple and teal nylon windbreaker, black cotton skirt, black leggings, black boots, dark hair",
+      "notes": "Look is not pinned down in canon; this prompt is a proposal — edit before spending credits."
+    },
+    {
+      "slug": "wren_vol6",
+      "kind": "hero",
+      "name": "Wren (vol6)",
+      "file": "wren_vol6.glb",
+      "vol": [
+        6
+      ],
+      "keys": [
+        "wren_vol6"
+      ],
+      "tag": "vol6 · 28 · lavender hair · NOT the vol7 Wren",
+      "aspect": "3:4",
+      "pose": "a-pose",
+      "prompt": "Wren, 28, the front section of her hair dyed lavender, a canvas overshirt with a band patch on the pocket, black jeans, boots, a canvas messenger bag. Direct, funny, a little sad.",
+      "texture_prompt": "tan canvas overshirt with an embroidered patch, black denim, brown leather boots, lavender and brown hair",
+      "notes": "Scene key 'wren' routes to wren.glb (the vol7 15-year-old). Use this file for vol6 scenes explicitly."
+    },
+    {
+      "slug": "lena_vargas",
+      "kind": "hero",
+      "name": "Lena Vargas",
+      "file": "lena_vargas.glb",
+      "vol": [
+        7
+      ],
+      "keys": [
+        "lena",
+        "lena_vargas"
+      ],
+      "tag": "vol7 · Daily Grind · Static Truths zine · SUN charcoal mark",
+      "aspect": "3:4",
+      "pose": "a-pose",
+      "prompt": "Lena Vargas, late 20s, painter with a studio behind the Daily Grind, 2050s Oregon coast. Dark hair pulled back, paint under the fingernails, a flannel shirt with rolled sleeves over a paint-flecked tank top, canvas work trousers, rubber-toed boots, a charcoal sun mark drawn on the back of one hand. Watchful, warm.",
+      "texture_prompt": "green and black flannel, paint-flecked grey tank top, tan canvas trousers, brown rubber-toed boots, brown skin, dark hair"
+    },
+    {
+      "slug": "wren",
+      "kind": "hero",
+      "name": "Wren (vol7)",
+      "file": "wren.glb",
+      "vol": [
+        7
+      ],
+      "keys": [
+        "wren"
+      ],
+      "tag": "vol7 · Lena's friend · brings the SCUMM substrate-leak message",
+      "aspect": "3:4",
+      "pose": "a-pose",
+      "prompt": "Wren, 15, child of climate migrants in Smolvud. Hair dyed azure fading to slate blue, a too-big yellow rain jacket, a hoodie under it, cargo pants, muddy sneakers, a folded message clutched in one hand. Fierce and small.",
+      "texture_prompt": "yellow nylon rain jacket, grey cotton hoodie, olive cargo pants, muddy white sneakers, azure-to-slate blue hair"
+    },
+    {
+      "slug": "tem",
+      "kind": "hero",
+      "name": "Tem",
+      "file": "tem.glb",
+      "vol": [
+        7
+      ],
+      "keys": [
+        "tem"
+      ],
+      "tag": "vol7 · reads Frequency Beneath aloud Sundays · the wagon",
+      "aspect": "3:4",
+      "pose": "a-pose",
+      "prompt": "Tem, 60s, blue dreadlocks fading toward grey tied back with a small leather thong, a heavy oatmeal wool sweater, canvas trousers, rubber boots, a coiled rope over one shoulder. Drives the wagon; reads John Frank's Frequency Beneath aloud on Sundays.",
+      "texture_prompt": "oatmeal wool sweater, dark canvas trousers, black rubber boots, faded blue-grey locs, weathered skin"
+    },
+    {
+      "slug": "mrs_gable",
+      "kind": "hero",
+      "name": "Marian Gable",
+      "file": "mrs_gable.glb",
+      "vol": [
+        7
+      ],
+      "keys": [
+        "gable",
+        "mrs_gable",
+        "marian_gable"
+      ],
+      "tag": "vol7 · anomalous-frequency archive · the lighthouse crow",
+      "aspect": "3:4",
+      "pose": "a-pose",
+      "prompt": "Marian Gable, retired Smolvud librarian, 70s. White hair cut short, a grey wool coat buttoned to the throat, a hand-knit scarf, wool trousers, sensible walking shoes, a canvas satchel of archive folders. A crow sits on the satchel strap.",
+      "texture_prompt": "grey wool coat, rust hand-knit scarf, charcoal wool trousers, brown leather walking shoes, glossy black crow, white hair",
+      "notes": "Look is not pinned down in canon; this prompt is a proposal — edit before spending credits."
+    },
+    {
+      "slug": "petra",
+      "kind": "hero",
+      "name": "Petra",
+      "file": "petra.glb",
+      "vol": [
+        7
+      ],
+      "keys": [
+        "petra"
+      ],
+      "tag": "vol7 · Salty Tome · first-issue copier-host",
+      "aspect": "3:4",
+      "pose": "a-pose",
+      "prompt": "Petra, 50s, proprietor of the Salty Tome bookshop and Lena's landlord. Wild grey-brown curls, reading glasses pushed up into them, a long cardigan with sagging pockets, a canvas tote of books, corduroys, clogs. An old grey cat is tucked under one arm.",
+      "texture_prompt": "oatmeal wool cardigan, brown corduroys, brown wooden clogs, cream canvas tote, grey tabby cat, grey-brown curly hair",
+      "notes": "Look is not pinned down in canon; this prompt is a proposal — edit before spending credits."
+    },
+    {
+      "slug": "kai",
+      "kind": "hero",
+      "name": "Kai",
+      "file": "kai.glb",
+      "vol": [
+        7
+      ],
+      "keys": [
+        "kai"
+      ],
+      "tag": "vol7 · Board Lords · cannery cathedral",
+      "aspect": "3:4",
+      "pose": "a-pose",
+      "prompt": "Kai, 30s, runs the Board Lords skate shop. A worn black cap, a faded hoodie with the sleeves cut off, wide skate pants, skate shoes, forearms inked, a skateboard held by the nose. Has known the SCUMM Machine since he was 13.",
+      "texture_prompt": "black cotton cap, faded navy sleeveless hoodie, khaki skate pants, black canvas skate shoes, wooden skateboard, brown skin"
+    },
+    {
+      "slug": "per",
+      "kind": "hero",
+      "name": "Per",
+      "file": "per.glb",
+      "vol": [
+        7
+      ],
+      "keys": [
+        "per"
+      ],
+      "tag": "vol7 · Daily Grind regular · POV ch14",
+      "aspect": "3:4",
+      "pose": "a-pose",
+      "prompt": "Per, 60, Hans's son-in-law at the bakery. Tall, big-handed, a canvas work coat with flour on the shoulder, a wool cap, work trousers, boots. A load-bearing quietness.",
+      "texture_prompt": "tan canvas work coat dusted with flour, grey wool cap, dark work trousers, brown leather boots"
+    },
+    {
+      "slug": "sal_carratura",
+      "kind": "hero",
+      "name": "Sal Carratura",
+      "file": "sal_carratura.glb",
+      "vol": [
+        7
+      ],
+      "keys": [
+        "sal",
+        "sal_carratura"
+      ],
+      "tag": "vol7 · Pizza Pirate · SCUMM Machine custodian",
+      "aspect": "3:4",
+      "pose": "a-pose",
+      "prompt": "Sal Carratura, 64, Pizza Pirate since '91 and custodian of the SCUMM Machine since '07. Thick build, grey hair under a paper pizzeria hat, a flour-dusted red apron over a white t-shirt, black trousers, black non-slip shoes, a ring of small brass keys on his belt.",
+      "texture_prompt": "red cotton apron, white cotton tee, black trousers, black rubber shoes, white paper hat, brass key ring, olive skin, grey hair"
+    },
+    {
+      "slug": "finn",
+      "kind": "hero",
+      "name": "Finn",
+      "file": "finn.glb",
+      "vol": [
+        7
+      ],
+      "keys": [
+        "finn"
+      ],
+      "tag": "vol7 · cannery piling inspector · UV light + off-band radio",
+      "aspect": "3:4",
+      "pose": "a-pose",
+      "prompt": "Finn, 30s, cannery piling inspector who lives above the kayak shop. Lean, sun-and-salt weathered, a knit beanie, a waterproof orange work jacket, waders folded down to the waist, a UV flashlight clipped to the chest and a handheld off-band radio on the hip.",
+      "texture_prompt": "orange waterproof work jacket, olive rubber waders, dark knit beanie, black plastic UV flashlight, grey handheld radio"
+    },
+    {
+      "slug": "cale",
+      "kind": "hero",
+      "name": "Cale",
+      "file": "cale.glb",
+      "vol": [
+        7
+      ],
+      "keys": [
+        "cale"
+      ],
+      "tag": "vol7 · ChillWave Video · stick shop",
+      "aspect": "3:4",
+      "pose": "a-pose",
+      "prompt": "Cale, 40s, runs ChillWave Video, the stick shop. Wax canvas coat that smells of tobacco, a faded t-shirt, jeans, boots, keys to an F-150 in one hand, a SCUMM stick in the other. Stubble, tired amused eyes.",
+      "texture_prompt": "brown waxed canvas coat, faded grey cotton tee, blue denim, brown leather boots",
+      "notes": "Look is not pinned down in canon; this prompt is a proposal — edit before spending credits."
+    },
+    {
+      "slug": "hans",
+      "kind": "hero",
+      "name": "Hans",
+      "file": "hans.glb",
+      "vol": [
+        7
+      ],
+      "keys": [
+        "hans"
+      ],
+      "tag": "vol7 · baker · Greta's husband",
+      "aspect": "3:4",
+      "pose": "a-pose",
+      "prompt": "Hans, 68, the baker. Round, strong forearms, a flour-dusted white apron over a rolled-sleeve shirt, a wool cap Greta knitted him, work trousers, clogs. Flour in the eyebrows.",
+      "texture_prompt": "white cotton apron, blue cotton shirt, grey knitted wool cap, dark trousers, wooden clogs, weathered skin"
+    },
+    {
+      "slug": "greta",
+      "kind": "hero",
+      "name": "Greta",
+      "file": "greta.glb",
+      "vol": [
+        7
+      ],
+      "keys": [
+        "greta"
+      ],
+      "tag": "vol7 · bakery · Hans's wife",
+      "aspect": "3:4",
+      "pose": "a-pose",
+      "prompt": "Greta, 66, Hans's wife. Brown eyes, grey hair pinned up, a wool sweater under a canvas apron, a long skirt, wool socks, clogs, a bread peel in one hand.",
+      "texture_prompt": "green wool sweater, tan canvas apron, brown wool skirt, wooden clogs, grey hair"
+    },
+    {
+      "slug": "marit",
+      "kind": "hero",
+      "name": "Marit",
+      "file": "marit.glb",
+      "vol": [
+        7
+      ],
+      "keys": [
+        "marit"
+      ],
+      "tag": "vol7 · keeps Olaf's bowl",
+      "aspect": "3:4",
+      "pose": "a-pose",
+      "prompt": "Marit, 68, Per's mother. Small, neat, a blue cardigan buttoned over a white blouse, grey slacks, house shoes, holding a small cedar bowl (Olaf's) in both hands.",
+      "texture_prompt": "blue wool cardigan, white cotton blouse, grey slacks, grey felt house shoes, small carved cedar bowl",
+      "notes": "Look is not pinned down in canon; this prompt is a proposal — edit before spending credits."
+    },
+    {
+      "slug": "marina",
+      "kind": "hero",
+      "name": "Marina",
+      "file": "marina.glb",
+      "vol": [
+        7
+      ],
+      "keys": [
+        "marina"
+      ],
+      "tag": "vol7 · 41 · cedar-bark hair",
+      "aspect": "3:4",
+      "pose": "a-pose",
+      "prompt": "Marina, 41, hair the colour of cedar bark tied back, a wax canvas coat, wool sweater, canvas trousers, laced boots. Weathered, competent, a coil of line over one shoulder.",
+      "texture_prompt": "brown waxed canvas coat, grey wool sweater, olive canvas trousers, brown laced boots, reddish-brown hair"
+    },
+    {
+      "slug": "roy",
+      "kind": "hero",
+      "name": "Roy",
+      "file": "roy.glb",
+      "vol": [
+        7
+      ],
+      "keys": [
+        "roy"
+      ],
+      "tag": "vol7 · Hawaiian shirt under wax canvas",
+      "aspect": "3:4",
+      "pose": "a-pose",
+      "prompt": "Roy, 50s, an orange Hawaiian shirt under a wax canvas coat, khakis, boat shoes, a straw hat carried in one hand. Sun-creased, easy, a little lost.",
+      "texture_prompt": "orange floral rayon shirt, brown waxed canvas coat, tan khakis, brown leather boat shoes, straw hat"
+    },
+    {
+      "slug": "aud",
+      "kind": "hero",
+      "name": "Aud",
+      "file": "aud.glb",
+      "vol": [
+        7
+      ],
+      "keys": [
+        "aud"
+      ],
+      "tag": "vol7 · Missing Link bar",
+      "aspect": "3:4",
+      "pose": "a-pose",
+      "prompt": "Aud, 73, runs the Missing Link bar in Smolvud. Tall, gaunt, white hair cropped close, a long black wool coat, a bar towel over one shoulder, dark trousers, boots. Says little.",
+      "texture_prompt": "black wool coat, black trousers, black leather boots, white bar towel, white hair, pale skin",
+      "notes": "Look is not pinned down in canon; this prompt is a proposal — edit before spending credits."
+    },
+    {
+      "slug": "jameson",
+      "kind": "hero",
+      "name": "Jameson",
+      "file": "jameson.glb",
+      "vol": [
+        7
+      ],
+      "keys": [
+        "jameson"
+      ],
+      "tag": "vol7 · Tidewater Creamery cap",
+      "aspect": "3:4",
+      "pose": "a-pose",
+      "prompt": "Jameson, 17, a thrift-store parka with a torn pocket, a cap with a Tidewater Creamery patch, a canvas jacket tied around the waist, jeans, sneakers. Lanky, quick to laugh.",
+      "texture_prompt": "dark green nylon parka, navy cotton cap with an embroidered patch, tan canvas jacket, blue denim, white sneakers"
+    },
+    {
+      "slug": "mateo",
+      "kind": "hero",
+      "name": "Mateo",
+      "file": "mateo.glb",
+      "vol": [
+        7
+      ],
+      "keys": [
+        "mateo"
+      ],
+      "tag": "vol7 · 13 · skater",
+      "aspect": "3:4",
+      "pose": "a-pose",
+      "prompt": "Mateo, 13, a skater. Small, a helmet hanging from one wrist, an oversized hoodie, shorts over leggings, knee pads, skate shoes, a skateboard under one arm.",
+      "texture_prompt": "grey cotton hoodie, black shorts, black leggings, black knee pads, black skate shoes, wooden skateboard",
+      "notes": "Look is not pinned down in canon; this prompt is a proposal — edit before spending credits."
+    },
+    {
+      "slug": "margaret_coop",
+      "kind": "hero",
+      "name": "Margaret",
+      "file": "margaret_coop.glb",
+      "vol": [
+        7
+      ],
+      "keys": [
+        "margaret",
+        "margaret_coop"
+      ],
+      "tag": "vol7 · runs the co-op",
+      "aspect": "3:4",
+      "pose": "a-pose",
+      "prompt": "Margaret, 61, runs the Smolvud co-op. Sturdy, cropped grey hair, a green canvas apron over a flannel shirt, jeans, clogs, a clipboard and a pencil behind one ear.",
+      "texture_prompt": "green canvas apron, blue plaid flannel, blue denim, brown wooden clogs, grey hair",
+      "notes": "Look is not pinned down in canon; this prompt is a proposal — edit before spending credits."
+    },
+    {
+      "slug": "soren",
+      "kind": "hero",
+      "name": "Soren",
+      "file": "soren.glb",
+      "vol": [
+        7
+      ],
+      "keys": [
+        "soren"
+      ],
+      "tag": "vol7 · Tidewater Creamery driver",
+      "aspect": "3:4",
+      "pose": "a-pose",
+      "prompt": "Soren, 30s, Tidewater Creamery delivery driver. A brown work jacket with a creamery patch, a knit cap, jeans, boots, a crate of milk bottles held against his hip.",
+      "texture_prompt": "brown cotton work jacket with a cream embroidered patch, grey knit cap, blue denim, brown boots, wooden milk crate with glass bottles",
+      "notes": "Look is not pinned down in canon; this prompt is a proposal — edit before spending credits."
+    },
+    {
+      "slug": "fool_bindle",
+      "kind": "prop",
+      "name": "John's bindle",
+      "file": "fool_bindle.glb",
+      "vol": [
+        5
+      ],
+      "keys": [
+        "fool_bindle"
+      ],
+      "tag": "inventory item fool_bindle · The Fool",
+      "aspect": "1:1",
+      "pose": null,
+      "prompt": "A wanderer's bindle: a faded red-and-white checked cloth bundle tied at the top and knotted around the end of a rough wooden stick about a metre long, the cloth bulging with a few belongings, one corner of a paperback poking out.",
+      "texture_prompt": "faded red and white checked cotton, rough peeled wooden stick"
+    },
+    {
+      "slug": "magician_iron",
+      "kind": "prop",
+      "name": "Frasier's soldering iron",
+      "file": "magician_iron.glb",
+      "vol": [
+        5
+      ],
+      "keys": [
+        "magician_iron"
+      ],
+      "tag": "inventory item magician_iron · The Magician",
+      "aspect": "1:1",
+      "pose": null,
+      "prompt": "A well-used soldering iron: a black rubberised handle with a red ring, a slim steel shaft, a slightly discoloured pointed tip, and a coiled black cord ending in a small plug, resting beside a brass coil of solder.",
+      "texture_prompt": "black rubber handle, brushed steel shaft, oxidised copper tip, black rubber cord"
+    },
+    {
+      "slug": "steamboat_model",
+      "kind": "prop",
+      "name": "The steamboat model",
+      "file": "steamboat_model.glb",
+      "vol": [
+        5
+      ],
+      "keys": [
+        "steamboat_model"
+      ],
+      "tag": "vol5 key artifact · D'Ambrosio's",
+      "aspect": "1:1",
+      "pose": null,
+      "prompt": "A hand-built model of a Mississippi paddle-wheel steamboat about half a metre long: red-painted hull, three white decks with tiny railings, twin black smokestacks, and a brass paddle-wheel at the stern. Paint chipped, one railing missing, sitting on two small wooden cradles.",
+      "texture_prompt": "chipped red enamel hull, white painted wood decks, tarnished brass paddle-wheel, black smokestacks"
+    },
+    {
+      "slug": "bbs_terminal",
+      "kind": "prop",
+      "name": "RUST_CODE.BBS terminal",
+      "file": "bbs_terminal.glb",
+      "vol": [
+        5
+      ],
+      "keys": [
+        "bbs_terminal"
+      ],
+      "tag": "vol5 · Cathedral of Rust & Code · phosphor-green BBS",
+      "aspect": "1:1",
+      "pose": null,
+      "prompt": "A late-1980s beige computer terminal: a boxy CRT monitor with a phosphor-green text screen showing scanlines, a yellowed keyboard with worn keys, a small external modem with red LEDs stacked on top, and a coil of grey phone cable. Dust in the vents.",
+      "texture_prompt": "yellowed beige plastic, dark glass CRT with glowing green text, grey coiled cable, red LED"
+    },
+    {
+      "slug": "cassette_archive",
+      "kind": "prop",
+      "name": "Elicia's cassette archive",
+      "file": "cassette_archive.glb",
+      "vol": [
+        5
+      ],
+      "keys": [
+        "cassette_archive"
+      ],
+      "tag": "vol5 · Whispers from the Liminal · the six tapes",
+      "aspect": "1:1",
+      "pose": null,
+      "prompt": "A cardboard shoebox of audio cassettes standing on end, each in a clear case with a hand-written paper label (six tapes at the front pulled slightly forward), one tape unspooled with a loop of brown ribbon draped over the box edge.",
+      "texture_prompt": "brown corrugated cardboard, clear scratched plastic cases, white labels with black handwriting, brown magnetic tape"
+    },
+    {
+      "slug": "the_polaroid",
+      "kind": "prop",
+      "name": "The Polaroid",
+      "file": "the_polaroid.glb",
+      "vol": [
+        5
+      ],
+      "keys": [
+        "the_polaroid"
+      ],
+      "tag": "VI The Lovers · the boy's Polaroid",
+      "aspect": "1:1",
+      "pose": null,
+      "prompt": "A single instant photograph, slightly bent, white frame with a wide bottom border, the image faded and colour-shifted showing two blurry figures at a porch rail, one corner thumb-worn; a pencil note on the white border.",
+      "texture_prompt": "glossy faded photo, matte white paper frame, pencil handwriting"
+    },
+    {
+      "slug": "water_glass_table_17",
+      "kind": "prop",
+      "name": "The water glass at Table 17",
+      "file": "water_glass_table_17.glb",
+      "vol": [
+        5
+      ],
+      "keys": [
+        "water_glass_table_17"
+      ],
+      "tag": "V The Hierophant · Table 17",
+      "aspect": "1:1",
+      "pose": null,
+      "prompt": "A heavy diner water glass, faceted at the base, three-quarters full, sitting on a folded white paper napkin, with a single ring of condensation and one slice of lemon caught against the inside.",
+      "texture_prompt": "thick clear glass, clear water, white paper napkin, yellow lemon slice"
+    },
+    {
+      "slug": "cypress_beam",
+      "kind": "prop",
+      "name": "The cypress beam offcut",
+      "file": "cypress_beam.glb",
+      "vol": [
+        5
+      ],
+      "keys": [
+        "cypress_beam"
+      ],
+      "tag": "VII The Chariot · Ember & Ash · 1947 brick sibling",
+      "aspect": "1:1",
+      "pose": null,
+      "prompt": "A two-foot offcut of old-growth cypress beam, roughly square in section, silvered with age on the outside and warm orange-red where freshly cut, deep checking cracks, two rusted square nails still embedded.",
+      "texture_prompt": "weathered silver-grey cypress, fresh-cut orange heartwood, rusted iron nails"
+    },
+    {
+      "slug": "brass_clock",
+      "kind": "prop",
+      "name": "The Emperor's brass clock",
+      "file": "brass_clock.glb",
+      "vol": [
+        5
+      ],
+      "keys": [
+        "brass_clock"
+      ],
+      "tag": "IV The Emperor · Dante's office",
+      "aspect": "1:1",
+      "pose": null,
+      "prompt": "A small heavy brass carriage clock with a handle on top, a white enamel face with black Roman numerals, bevelled glass panels on four sides, the hands stopped, tarnish in the engraving.",
+      "texture_prompt": "tarnished brass, white enamel dial, bevelled glass"
+    },
+    {
+      "slug": "appointment_book",
+      "kind": "prop",
+      "name": "Dante's appointment book",
+      "file": "appointment_book.glb",
+      "vol": [
+        5
+      ],
+      "keys": [
+        "appointment_book"
+      ],
+      "tag": "IV The Emperor",
+      "aspect": "1:1",
+      "pose": null,
+      "prompt": "A large leather-bound appointment ledger, black cover worn brown at the corners, a red ribbon marker, lying open to a page dense with fountain-pen entries, a brass ashtray holding it open.",
+      "texture_prompt": "worn black leather, cream ruled paper with blue ink, red satin ribbon, brass ashtray"
+    },
+    {
+      "slug": "bourbon_bottle",
+      "kind": "prop",
+      "name": "The bourbon bottle",
+      "file": "bourbon_bottle.glb",
+      "vol": [
+        5
+      ],
+      "keys": [
+        "bourbon_bottle"
+      ],
+      "tag": "VII The Chariot",
+      "aspect": "1:1",
+      "pose": null,
+      "prompt": "A squat bourbon bottle a third full, amber liquid, a plain cream label with a hand-inked year, a cork stopper with a wooden top, and one heavy lowball glass beside it.",
+      "texture_prompt": "clear glass, amber bourbon, cream paper label, cork and wood stopper"
+    },
+    {
+      "slug": "bakelite_microphone",
+      "kind": "prop",
+      "name": "The Bakelite microphone",
+      "file": "bakelite_microphone.glb",
+      "vol": [
+        5
+      ],
+      "keys": [
+        "bakelite_microphone"
+      ],
+      "tag": "XVI The Tower · radio station · February master tape",
+      "aspect": "1:1",
+      "pose": null,
+      "prompt": "A 1940s radio-station microphone: a rounded Bakelite body in dark brown with a ribbed chrome grille, mounted on a heavy chrome desk stand with a black cable, a small brass station call-letter plate on the front.",
+      "texture_prompt": "dark brown Bakelite, chrome grille, brass plate, black cloth cable"
+    },
+    {
+      "slug": "master_tape_february",
+      "kind": "prop",
+      "name": "The February master tape",
+      "file": "master_tape_february.glb",
+      "vol": [
+        5
+      ],
+      "keys": [
+        "master_tape_february"
+      ],
+      "tag": "XVI The Tower",
+      "aspect": "1:1",
+      "pose": null,
+      "prompt": "A 10-inch reel of quarter-inch audio tape on a grey plastic reel in a battered cardboard box, a white label reading only a month and a year in marker, a length of tape trailing loose.",
+      "texture_prompt": "grey plastic reel, brown magnetic tape, grey cardboard box, white marker label"
+    },
+    {
+      "slug": "daigles_matchbook",
+      "kind": "prop",
+      "name": "DAIGLE'S 1987 matchbook",
+      "file": "daigles_matchbook.glb",
+      "vol": [
+        5
+      ],
+      "keys": [
+        "daigles_matchbook"
+      ],
+      "tag": "XV The Devil",
+      "aspect": "1:1",
+      "pose": null,
+      "prompt": "A vintage bar matchbook, glossy black cover with gold script lettering and a small gold cocktail glass motif, cover flipped open showing a row of red-tipped paper matches, three torn out; the striker strip worn.",
+      "texture_prompt": "glossy black card, gold foil lettering, red-tipped cardboard matches"
+    },
+    {
+      "slug": "esterbrook_pen",
+      "kind": "prop",
+      "name": "Grandfather's Esterbrook pen",
+      "file": "esterbrook_pen.glb",
+      "vol": [
+        5
+      ],
+      "keys": [
+        "esterbrook_pen"
+      ],
+      "tag": "XVII The Star",
+      "aspect": "1:1",
+      "pose": null,
+      "prompt": "A 1950s Esterbrook fountain pen in marbled green celluloid with a gold-tone clip and cap band, uncapped to show the steel nib, lying diagonally on a folded sheet of handwritten paper.",
+      "texture_prompt": "marbled green celluloid, gold-tone metal trim, steel nib, cream paper"
+    },
+    {
+      "slug": "chart_1932",
+      "kind": "prop",
+      "name": "The 1932 river chart",
+      "file": "chart_1932.glb",
+      "vol": [
+        5
+      ],
+      "keys": [
+        "chart_1932"
+      ],
+      "tag": "IX The Hermit · Bayou Lighthouse",
+      "aspect": "1:1",
+      "pose": null,
+      "prompt": "An old river navigation chart, partially unrolled, yellowed heavy paper with faded blue soundings and ink annotations, a torn edge, weighted flat at one corner by a brass compass.",
+      "texture_prompt": "yellowed heavy paper, faded blue and black ink, tarnished brass compass"
+    },
+    {
+      "slug": "tarot_deck_wine_stained",
+      "kind": "prop",
+      "name": "The wine-stained tarot deck",
+      "file": "tarot_deck_wine_stained.glb",
+      "vol": [
+        5
+      ],
+      "keys": [
+        "tarot_deck_wine_stained"
+      ],
+      "tag": "II The High Priestess",
+      "aspect": "1:1",
+      "pose": null,
+      "prompt": "A well-thumbed tarot deck stacked slightly askew with the top three cards fanned face-up, cards with soft rounded corners and a dark red wine stain bleeding across one edge of the stack, a frayed silk wrap folded beneath.",
+      "texture_prompt": "worn matte cardstock with a painted back pattern, deep red wine stain, midnight blue silk"
+    },
+    {
+      "slug": "mirror_shard",
+      "kind": "prop",
+      "name": "The mirror shard",
+      "file": "mirror_shard.glb",
+      "vol": [
+        5
+      ],
+      "keys": [
+        "mirror_shard"
+      ],
+      "tag": "II The High Priestess",
+      "aspect": "1:1",
+      "pose": null,
+      "prompt": "A jagged triangular shard of silvered mirror glass about the size of a hand, one edge wrapped in electrical tape as a grip, the silvering flaking at the edges.",
+      "texture_prompt": "reflective silvered glass, black electrical tape, flaking grey backing"
+    },
+    {
+      "slug": "mothers_teacup",
+      "kind": "prop",
+      "name": "Mother's teacup",
+      "file": "mothers_teacup.glb",
+      "vol": [
+        5
+      ],
+      "keys": [
+        "mothers_teacup"
+      ],
+      "tag": "II The High Priestess",
+      "aspect": "1:1",
+      "pose": null,
+      "prompt": "A delicate bone-china teacup on its saucer, cream with a faded blue floral pattern and a worn gold rim, a hairline crack running from the rim, a dried ring of tea inside.",
+      "texture_prompt": "cream bone china, faded blue floral glaze, worn gold rim"
+    },
+    {
+      "slug": "lapel_pin",
+      "kind": "prop",
+      "name": "The lapel pin",
+      "file": "lapel_pin.glb",
+      "vol": [
+        5
+      ],
+      "keys": [
+        "lapel_pin"
+      ],
+      "tag": "vol5 motif · Club Sharp · Dean",
+      "aspect": "1:1",
+      "pose": null,
+      "prompt": "A small enamel lapel pin shaped like a stylised '#' hash symbol, glossy black enamel with a silver metal edge, a butterfly clutch on the back, sitting on a square of dark velvet.",
+      "texture_prompt": "glossy black enamel, polished silver metal, dark velvet"
+    },
+    {
+      "slug": "jackpot_polaroid_2019",
+      "kind": "prop",
+      "name": "The 2019 jackpot Polaroid",
+      "file": "jackpot_polaroid_2019.glb",
+      "vol": [
+        5
+      ],
+      "keys": [
+        "jackpot_polaroid_2019"
+      ],
+      "tag": "X Wheel of Fortune · casino",
+      "aspect": "1:1",
+      "pose": null,
+      "prompt": "An instant photo in a white frame showing a blurred casino floor and a slot machine with lights blazing, a date written on the border in ballpoint, the surface scratched.",
+      "texture_prompt": "glossy photo with bright neon smears, white paper frame, blue ballpoint"
+    },
+    {
+      "slug": "house_marker_1924",
+      "kind": "prop",
+      "name": "The 1924 house marker",
+      "file": "house_marker_1924.glb",
+      "vol": [
+        5
+      ],
+      "keys": [
+        "house_marker_1924"
+      ],
+      "tag": "X Wheel of Fortune",
+      "aspect": "1:1",
+      "pose": null,
+      "prompt": "A cast-iron house marker plaque, oval, with raised numerals and a year, black paint mostly flaked to rust, two screw holes, a chip out of one edge.",
+      "texture_prompt": "rusted cast iron with flaking black paint"
+    },
+    {
+      "slug": "fishing_lures",
+      "kind": "prop",
+      "name": "The red and yellow lures",
+      "file": "fishing_lures.glb",
+      "vol": [
+        5
+      ],
+      "keys": [
+        "fishing_lures"
+      ],
+      "tag": "XXI The World · the Frog",
+      "aspect": "1:1",
+      "pose": null,
+      "prompt": "Two vintage wooden fishing lures side by side, one painted red with a white belly and one yellow with black spots, glass eyes, rusted treble hooks, a small brass eyelet on each nose.",
+      "texture_prompt": "chipped painted wood, glass eyes, rusted steel hooks, brass eyelets"
+    },
+    {
+      "slug": "pause_watch",
+      "kind": "prop",
+      "name": "Paul's pause watch",
+      "file": "pause_watch.glb",
+      "vol": [
+        5
+      ],
+      "keys": [
+        "pause_watch"
+      ],
+      "tag": "V The Hierophant",
+      "aspect": "1:1",
+      "pose": null,
+      "prompt": "A gold pocket watch with the hunter case open, a white dial with a small seconds sub-dial, the hands frozen, a gold chain coiled beside it, the case engraved with worn initials.",
+      "texture_prompt": "polished gold case, white enamel dial, gold chain"
+    },
+    {
+      "slug": "hundred_dollar_bill",
+      "kind": "prop",
+      "name": "The hundred-dollar bill",
+      "file": "hundred_dollar_bill.glb",
+      "vol": [
+        5
+      ],
+      "keys": [
+        "hundred_dollar_bill"
+      ],
+      "tag": "III The Empress · reservation book",
+      "aspect": "1:1",
+      "pose": null,
+      "prompt": "A single hundred-dollar banknote folded once lengthwise, standing in a small tent shape, slightly soft with handling, one corner torn.",
+      "texture_prompt": "green and cream printed paper, soft creases"
+    },
+    {
+      "slug": "pauls_black_car",
+      "kind": "prop",
+      "name": "Paul's long black car",
+      "file": "pauls_black_car.glb",
+      "vol": [
+        5
+      ],
+      "keys": [
+        "pauls_black_car"
+      ],
+      "tag": "V The Hierophant · vehicle",
+      "aspect": "4:3",
+      "pose": null,
+      "prompt": "A long black 1990s luxury sedan, immaculate, tinted windows, chrome trim, whitewall-free black tyres, parked with the rear door slightly open; a chauffeur's cap resting on the dash.",
+      "texture_prompt": "gloss black paint, dark tinted glass, chrome trim, black rubber tyres"
+    },
+    {
+      "slug": "folded_napkin_booth_6",
+      "kind": "prop",
+      "name": "John's folded napkin from booth 6",
+      "file": "folded_napkin_booth_6.glb",
+      "vol": [
+        5
+      ],
+      "keys": [
+        "folded_napkin_booth_6"
+      ],
+      "tag": "0 The Fool · booth 6",
+      "aspect": "1:1",
+      "pose": null,
+      "prompt": "A white paper diner napkin folded into a tight square with a handwritten note visible on the exposed side in blue ballpoint, one edge stained with coffee.",
+      "texture_prompt": "white embossed paper, blue ballpoint ink, brown coffee stain"
+    },
+    {
+      "slug": "license_plate_notebook",
+      "kind": "prop",
+      "name": "Sam's License Plate Notebook",
+      "file": "license_plate_notebook.glb",
+      "vol": [
+        6
+      ],
+      "keys": [
+        "license_plate_notebook"
+      ],
+      "tag": "vol6 · Sam Miller",
+      "aspect": "1:1",
+      "pose": null,
+      "prompt": "A small pocket spiral notebook with a green cardboard cover, corners softened, lying open to pages of hand-printed license plate numbers with dates and times in pencil, a pencil stub tucked in the spiral.",
+      "texture_prompt": "green cardboard cover, silver wire spiral, ruled paper with pencil handwriting"
+    },
+    {
+      "slug": "phone_ledger",
+      "kind": "prop",
+      "name": "Rick's phone ledger",
+      "file": "phone_ledger.glb",
+      "vol": [
+        6
+      ],
+      "keys": [
+        "phone_ledger"
+      ],
+      "tag": "vol6 · Cosmic Comics · the phone ledger",
+      "aspect": "1:1",
+      "pose": null,
+      "prompt": "A hardbound accounts ledger with a marbled black-and-white cover and a red cloth spine, lying open to columns of names and phone numbers in different inks, a rubber band around the back half, a receipt used as a bookmark.",
+      "texture_prompt": "marbled black and white board, red cloth spine, cream ruled paper with mixed ink"
+    },
+    {
+      "slug": "skips_mixtape_1999",
+      "kind": "prop",
+      "name": "Skip's 1999 mixtape",
+      "file": "skips_mixtape_1999.glb",
+      "vol": [
+        6
+      ],
+      "keys": [
+        "skips_mixtape_1999"
+      ],
+      "tag": "vol6 · locker #4",
+      "aspect": "1:1",
+      "pose": null,
+      "prompt": "A Maxell XLII cassette tape in a clear case with a hand-lettered J-card, the label reading a year in silver marker with a track list in ballpoint, the case cracked at one hinge.",
+      "texture_prompt": "black cassette shell with gold Maxell print, clear scratched plastic case, white card with silver marker"
+    },
+    {
+      "slug": "funeral_parlour_inkwell",
+      "kind": "prop",
+      "name": "Maya's grandfather's inkwell",
+      "file": "funeral_parlour_inkwell.glb",
+      "vol": [
+        6
+      ],
+      "keys": [
+        "funeral_parlour_inkwell"
+      ],
+      "tag": "vol6 · Maya Daigle",
+      "aspect": "1:1",
+      "pose": null,
+      "prompt": "A Victorian brass-and-glass inkwell from a funeral parlour: a square brass base with a hinged lid, a cut-glass well with dried black ink at the bottom, a small engraved plate on the front, a steel dip pen lying beside it.",
+      "texture_prompt": "tarnished brass, cut glass, dried black ink, steel dip pen"
+    },
+    {
+      "slug": "nexcorp_badge_clips",
+      "kind": "prop",
+      "name": "Diego's eleven NexCorp badge clips",
+      "file": "nexcorp_badge_clips.glb",
+      "vol": [
+        6
+      ],
+      "keys": [
+        "nexcorp_badge_clips"
+      ],
+      "tag": "vol6 · Diego Ramos",
+      "aspect": "1:1",
+      "pose": null,
+      "prompt": "A steel keyring holding eleven retractable ID badge reels, each a different colour of plastic with a small NexCorp logo, some scuffed, one cracked, clips fanned out in a circle.",
+      "texture_prompt": "coloured plastic reels in blue, grey, red and white with small logos, steel keyring and clips"
+    },
+    {
+      "slug": "ceramic_frog",
+      "kind": "prop",
+      "name": "The ceramic frog",
+      "file": "ceramic_frog.glb",
+      "vol": [
+        6
+      ],
+      "keys": [
+        "ceramic_frog"
+      ],
+      "tag": "vol6 · 97 across the deck",
+      "aspect": "1:1",
+      "pose": null,
+      "prompt": "A kitschy ceramic garden frog about 20 cm tall, glossy green glaze crazed with age, a chipped foot, painted black-and-yellow eyes, sitting on a small glazed lily pad.",
+      "texture_prompt": "glossy crazed green ceramic glaze, chipped white bisque, painted eyes"
+    },
+    {
+      "slug": "speak_and_spell",
+      "kind": "prop",
+      "name": "The Speak & Spell",
+      "file": "speak_and_spell.glb",
+      "vol": [
+        6
+      ],
+      "keys": [
+        "speak_and_spell"
+      ],
+      "tag": "vol6 · Cosmic Comics · Frasier's voice",
+      "aspect": "1:1",
+      "pose": null,
+      "prompt": "A 1980s Speak & Spell electronic toy: red plastic body with a carrying handle, a green vacuum-fluorescent display with glowing letters, a grid of square yellow-orange keys, a speaker grille, one corner cracked and taped.",
+      "texture_prompt": "red ABS plastic, green VFD display glow, orange keys, clear tape"
+    },
+    {
+      "slug": "shortwave_radio",
+      "kind": "prop",
+      "name": "Linda Caldwell's shortwave radio",
+      "file": "shortwave_radio.glb",
+      "vol": [
+        6
+      ],
+      "keys": [
+        "shortwave_radio"
+      ],
+      "tag": "vol6 · Caldwell radio room",
+      "aspect": "1:1",
+      "pose": null,
+      "prompt": "A 1970s multi-band shortwave receiver: a wood-grain vinyl cabinet with a silver front panel, a long horizontal dial glowing amber, large tuning knobs, a chrome telescopic antenna extended, a coiled headphone cable plugged into the front.",
+      "texture_prompt": "walnut vinyl cabinet, brushed silver panel, amber dial glass, chrome antenna, black coiled cable"
+    },
+    {
+      "slug": "porch_wicker_chair",
+      "kind": "prop",
+      "name": "The porch wicker chair",
+      "file": "porch_wicker_chair.glb",
+      "vol": [
+        6
+      ],
+      "keys": [
+        "porch_wicker_chair"
+      ],
+      "tag": "vol6 · Miller back porch / Caldwell porch",
+      "aspect": "1:1",
+      "pose": null,
+      "prompt": "A single wicker porch armchair, natural rattan gone silver-grey with weather, a faded floral cushion sunken in the seat, one arm unravelling, a coffee mug ring on the armrest.",
+      "texture_prompt": "weathered grey-brown rattan, faded rose floral cotton cushion"
+    },
+    {
+      "slug": "karamazov_paperback",
+      "kind": "prop",
+      "name": "The 1976 Penguin Brothers Karamazov",
+      "file": "karamazov_paperback.glb",
+      "vol": [
+        6
+      ],
+      "keys": [
+        "karamazov_paperback"
+      ],
+      "tag": "vol6 · Doug at Centro Foods",
+      "aspect": "1:1",
+      "pose": null,
+      "prompt": "A thick 1970s Penguin Classics paperback, black spine cracked white in several places, cover art faded, pages yellowed and fanned, a receipt and three sticky notes protruding from the top edge.",
+      "texture_prompt": "faded black and orange paperback cover, yellowed pages, coloured sticky notes"
+    },
+    {
+      "slug": "substation_nine_lyric_sheet",
+      "kind": "prop",
+      "name": "The 'Substation Nine' lyric sheet",
+      "file": "substation_nine_lyric_sheet.glb",
+      "vol": [
+        6
+      ],
+      "keys": [
+        "substation_nine_lyric_sheet"
+      ],
+      "tag": "vol6 · Gallatin Band",
+      "aspect": "1:1",
+      "pose": null,
+      "prompt": "A single sheet of lined notebook paper torn from a spiral pad, folded twice and opened flat, dense handwritten lyrics with crossings-out in two colours of ink, a coffee ring, a chord diagram in the margin.",
+      "texture_prompt": "cream lined paper with torn perforation, black and blue ink, brown coffee ring"
+    },
+    {
+      "slug": "gracielas_rosary",
+      "kind": "prop",
+      "name": "Graciela's rosary",
+      "file": "gracielas_rosary.glb",
+      "vol": [
+        6
+      ],
+      "keys": [
+        "gracielas_rosary"
+      ],
+      "tag": "vol6 · Graciela Ramos",
+      "aspect": "1:1",
+      "pose": null,
+      "prompt": "A wooden rosary, small dark olive-wood beads worn smooth and shiny, a tarnished silver crucifix and centre medal, lying in a loose coil.",
+      "texture_prompt": "polished dark olive wood beads, tarnished silver crucifix, thin cord"
+    },
+    {
+      "slug": "mayas_zine",
+      "kind": "prop",
+      "name": "Maya's zine",
+      "file": "mayas_zine.glb",
+      "vol": [
+        6
+      ],
+      "keys": [
+        "mayas_zine"
+      ],
+      "tag": "vol6 · Maya Daigle · corresponds with F.T.",
+      "aspect": "1:1",
+      "pose": null,
+      "prompt": "A hand-made half-letter zine, photocopied black-and-white cover with cut-and-paste collage lettering, folded and stapled twice along the spine, slightly curled, a second copy fanned beneath it.",
+      "texture_prompt": "grainy photocopied paper, black toner, silver staples"
+    },
+    {
+      "slug": "white_van",
+      "kind": "prop",
+      "name": "The white unmarked van",
+      "file": "white_van.glb",
+      "vol": [
+        6
+      ],
+      "keys": [
+        "white_van"
+      ],
+      "tag": "vol6 · behind the car wash",
+      "aspect": "4:3",
+      "pose": null,
+      "prompt": "A plain white cargo van, mid-2000s, no windows in the back, no markings, a dented rear bumper, dust on the lower panels, a small round antenna on the roof.",
+      "texture_prompt": "flat white paint with road dust, black rubber trim, grey plastic bumpers"
+    },
+    {
+      "slug": "sams_corolla",
+      "kind": "prop",
+      "name": "Sam's Corolla",
+      "file": "sams_corolla.glb",
+      "vol": [
+        6
+      ],
+      "keys": [
+        "sams_corolla"
+      ],
+      "tag": "vol6 · Sam Miller · vehicle",
+      "aspect": "4:3",
+      "pose": null,
+      "prompt": "A silver early-2000s Toyota Corolla sedan, clean but tired, a faded bumper sticker, one hubcap missing, a stack of books visible on the passenger seat.",
+      "texture_prompt": "dull silver paint, grey plastic trim, black rubber tyres, one bare steel wheel"
+    },
+    {
+      "slug": "diegos_f150",
+      "kind": "prop",
+      "name": "Diego's black F-150",
+      "file": "diegos_f150.glb",
+      "vol": [
+        6
+      ],
+      "keys": [
+        "diegos_f150"
+      ],
+      "tag": "vol6 · Diego Ramos · plate DGR-1188",
+      "aspect": "4:3",
+      "pose": null,
+      "prompt": "A black late-model Ford F-150 pickup, crew cab, a drum kit's hardware case strapped in the bed, a small dent in the tailgate, plate DGR-1188 rendered as plain characters.",
+      "texture_prompt": "gloss black paint, chrome grille, black rubber tyres, silver metal drum case"
+    },
+    {
+      "slug": "coach_k_f250",
+      "kind": "prop",
+      "name": "Coach K's white F-250",
+      "file": "coach_k_f250.glb",
+      "vol": [
+        6
+      ],
+      "keys": [
+        "coach_k_f250"
+      ],
+      "tag": "vol6 · Coach K · vehicle",
+      "aspect": "4:3",
+      "pose": null,
+      "prompt": "A white Ford F-250 heavy-duty pickup with a matching white camper shell over the bed, mud on the wheel wells, a football-team decal on the rear window, a tow hitch.",
+      "texture_prompt": "white paint, white fibreglass camper shell, chrome bumper, mud-spattered tyres"
+    },
+    {
+      "slug": "iv_pole",
+      "kind": "prop",
+      "name": "The IV pole",
+      "file": "iv_pole.glb",
+      "vol": [
+        6
+      ],
+      "keys": [
+        "iv_pole"
+      ],
+      "tag": "vol6 · hospital room",
+      "aspect": "1:1",
+      "pose": null,
+      "prompt": "A hospital IV pole on a five-wheel base, chrome telescoping shaft, two hooks at the top holding a clear fluid bag with tubing looped down, a small infusion pump clamped mid-shaft.",
+      "texture_prompt": "chrome steel, clear plastic bag and tubing, beige plastic pump"
+    },
+    {
+      "slug": "scumm_machine",
+      "kind": "prop",
+      "name": "The SCUMM Machine",
+      "file": "scumm_machine.glb",
+      "vol": [
+        7
+      ],
+      "keys": [
+        "scumm_machine"
+      ],
+      "tag": "vol7 · Pizza Pirate · custodian Sal",
+      "aspect": "3:4",
+      "pose": null,
+      "prompt": "A five-foot upright arcade-style cabinet, black paint chipped through to a marine-teal undercoat, a hand-painted marquee with a stylised wave, a small CRT screen, a chunky control panel with one worn joystick and a slot for a palm-sized stick, a locked drawer at the bottom, a coiled power cord.",
+      "texture_prompt": "chipped black paint over marine teal, hand-painted plywood marquee, black metal control panel, dark CRT glass"
+    },
+    {
+      "slug": "scumm_stick",
+      "kind": "prop",
+      "name": "A SCUMM stick",
+      "file": "scumm_stick.glb",
+      "vol": [
+        7
+      ],
+      "keys": [
+        "scumm_stick"
+      ],
+      "tag": "vol7 · one of about ninety",
+      "aspect": "1:1",
+      "pose": null,
+      "prompt": "A palm-sized dark plastic memory stick, matte charcoal with rounded edges, a bright gold-plated connector at one end, a small hand-scratched number on the body, resting on its side.",
+      "texture_prompt": "matte charcoal plastic, bright gold connector, scratched white marks"
+    },
+    {
+      "slug": "box_of_three_sticks",
+      "kind": "prop",
+      "name": "The box of three sticks",
+      "file": "box_of_three_sticks.glb",
+      "vol": [
+        7
+      ],
+      "keys": [
+        "box_of_three_sticks"
+      ],
+      "tag": "vol7 CG card · ESTUARY 7 — INES ROCHA 2046",
+      "aspect": "1:1",
+      "pose": null,
+      "prompt": "A small wooden box with a spiral carved into the lid, the lid slid open to show three dark SCUMM sticks in a felt-lined interior, an inscription burned into the underside of the lid (ESTUARY 7 — INES ROCHA 2046) rendered as marks, cedar grain with a dark stain.",
+      "texture_prompt": "dark stained cedar with carved spiral, grey felt lining, charcoal plastic sticks with gold connectors"
+    },
+    {
+      "slug": "cedar_bowl",
+      "kind": "prop",
+      "name": "Olaf's cedar bowl",
+      "file": "cedar_bowl.glb",
+      "vol": [
+        7
+      ],
+      "keys": [
+        "cedar_bowl"
+      ],
+      "tag": "vol7 · Olaf's bowls · 454 mentions",
+      "aspect": "1:1",
+      "pose": null,
+      "prompt": "A palm-sized hand-turned cedar bowl, thin-walled, a spiral incised into the inner surface, the wood warm orange with darker rings, oil-finished, a small chip on the rim.",
+      "texture_prompt": "oil-finished red cedar with visible growth rings, incised spiral"
+    },
+    {
+      "slug": "cedar_bell",
+      "kind": "prop",
+      "name": "Olaf's cedar bell",
+      "file": "cedar_bell.glb",
+      "vol": [
+        7
+      ],
+      "keys": [
+        "cedar_bell"
+      ],
+      "tag": "vol7 CG card",
+      "aspect": "1:1",
+      "pose": null,
+      "prompt": "A small bell carved from a single piece of cedar, a wooden clapper on a leather cord, the outside carved with a shallow spiral, the wood polished by handling, hanging from a short loop of cord.",
+      "texture_prompt": "polished red cedar, brown leather cord"
+    },
+    {
+      "slug": "lenas_milk_crate",
+      "kind": "prop",
+      "name": "Lena's milk crate",
+      "file": "lenas_milk_crate.glb",
+      "vol": [
+        7
+      ],
+      "keys": [
+        "lenas_milk_crate"
+      ],
+      "tag": "vol7 CG card · Lena's studio",
+      "aspect": "1:1",
+      "pose": null,
+      "prompt": "A battered dairy milk crate in faded blue plastic, one side cracked, stuffed with rolled canvases, paint tubes and brushes standing in a coffee can, a rag draped over one corner.",
+      "texture_prompt": "faded blue polyethylene, rolled canvas, metal paint tubes, tin can, stained rag"
+    },
+    {
+      "slug": "portal_room_cedar_door",
+      "kind": "prop",
+      "name": "The Tower's portal-room cedar door",
+      "file": "portal_room_cedar_door.glb",
+      "vol": [
+        7
+      ],
+      "keys": [
+        "portal_room_cedar_door"
+      ],
+      "tag": "vol7 CG card · the Tower",
+      "aspect": "3:4",
+      "pose": null,
+      "prompt": "A heavy plank door of red cedar in a rough frame, hand-forged iron strap hinges, an iron ring handle, a spiral carved deep into the centre plank, the wood dark and oiled, light showing through a gap at the bottom.",
+      "texture_prompt": "dark oiled red cedar planks, black wrought iron hinges and ring, carved spiral"
+    },
+    {
+      "slug": "static_truths_zine",
+      "kind": "prop",
+      "name": "The Static Truths zine",
+      "file": "static_truths_zine.glb",
+      "vol": [
+        7
+      ],
+      "keys": [
+        "static_truths_zine"
+      ],
+      "tag": "vol7 · Lena Vargas · first issue copied at the Salty Tome",
+      "aspect": "1:1",
+      "pose": null,
+      "prompt": "A hand-assembled zine with a photocopied cover of TV static and cut-out block lettering, folded and stapled, a charcoal sun mark smudged onto the corner, three issues fanned in a stack.",
+      "texture_prompt": "grainy photocopied paper, black toner static pattern, charcoal smudge, silver staples"
+    },
+    {
+      "slug": "rack_17",
+      "kind": "prop",
+      "name": "Rack 17 (signed 'T.')",
+      "file": "rack_17.glb",
+      "vol": [
+        7
+      ],
+      "keys": [
+        "rack_17"
+      ],
+      "tag": "vol7 · the drawer of about ninety sticks",
+      "aspect": "3:4",
+      "pose": null,
+      "prompt": "A slim steel storage rack of numbered slots holding dark plastic sticks upright, a stencilled number plate reading 17 on the top rail, a paper label taped to the side signed with a single initial in marker, one slot empty.",
+      "texture_prompt": "grey painted steel, charcoal plastic sticks, white paper label with black marker"
+    },
+    {
+      "slug": "relic_kayak",
+      "kind": "prop",
+      "name": "Finn's relic kayak",
+      "file": "relic_kayak.glb",
+      "vol": [
+        7
+      ],
+      "keys": [
+        "relic_kayak"
+      ],
+      "tag": "vol7 · above the kayak shop",
+      "aspect": "16:9",
+      "pose": null,
+      "prompt": "An old sea kayak, sun-faded orange fibreglass patched with mismatched resin, a cracked cockpit rim, a length of frayed deck line, barnacle scars along the hull, a double-bladed paddle lashed on top.",
+      "texture_prompt": "sun-faded orange fibreglass with grey resin patches, frayed nylon line, aluminium and black plastic paddle"
+    },
+    {
+      "slug": "relic_skate_deck",
+      "kind": "prop",
+      "name": "Kai's relic skate deck",
+      "file": "relic_skate_deck.glb",
+      "vol": [
+        7
+      ],
+      "keys": [
+        "relic_skate_deck"
+      ],
+      "tag": "vol7 · Board Lords · the Tess Mariana board",
+      "aspect": "16:9",
+      "pose": null,
+      "prompt": "A vintage skateboard deck mounted as a relic: chipped nose and tail, the graphic worn to bare maple ply, old rusted trucks and yellowed urethane wheels still attached, a hand-lettered name on the grip tape.",
+      "texture_prompt": "worn maple ply, faded screen-printed graphic, rusted trucks, yellowed urethane wheels, black grip tape"
+    },
+    {
+      "slug": "wagners_yardstick_and_drill",
+      "kind": "prop",
+      "name": "Wagner's yardstick and hand-crank drill",
+      "file": "wagners_yardstick_and_drill.glb",
+      "vol": [
+        7
+      ],
+      "keys": [
+        "wagners_yardstick_and_drill"
+      ],
+      "tag": "vol7 · Board Lords interior",
+      "aspect": "4:3",
+      "pose": null,
+      "prompt": "A wooden yardstick with faded black inch markings and a hardware-store name, lying crossed over an old hand-crank egg-beater drill with a red-painted cast-iron gear wheel, a wooden handle and a rusted chuck.",
+      "texture_prompt": "worn pale wood yardstick, red painted cast iron, dark wooden handle, rusted steel chuck"
+    },
+    {
+      "slug": "kerosene_lamp",
+      "kind": "prop",
+      "name": "The kerosene lamp",
+      "file": "kerosene_lamp.glb",
+      "vol": [
+        7
+      ],
+      "keys": [
+        "kerosene_lamp"
+      ],
+      "tag": "vol7 · recurring",
+      "aspect": "1:1",
+      "pose": null,
+      "prompt": "A classic kerosene hurricane lantern, dented galvanised steel body, a smoke-blackened glass globe, a wire bail handle, the wick trimmed, a faint amber glow inside.",
+      "texture_prompt": "dented galvanised steel, soot-darkened glass, warm amber flame"
+    },
+    {
+      "slug": "tems_wagon",
+      "kind": "prop",
+      "name": "Tem's wagon",
+      "file": "tems_wagon.glb",
+      "vol": [
+        7
+      ],
+      "keys": [
+        "tems_wagon"
+      ],
+      "tag": "vol7 · Tem drives the wagon",
+      "aspect": "16:9",
+      "pose": null,
+      "prompt": "A weathered flatbed farm wagon with high wooden side rails, rubber wheels salvaged from a car, a tarp bundled at one end, a coil of rope and a lantern hanging from the front rail, a long drawbar.",
+      "texture_prompt": "grey weathered wood, black rubber tyres, blue tarp, brown rope"
+    },
+    {
+      "slug": "brandons_leather_notebook",
+      "kind": "prop",
+      "name": "Brandon Tillman's leather notebook",
+      "file": "brandons_leather_notebook.glb",
+      "vol": [
+        7
+      ],
+      "keys": [
+        "brandons_leather_notebook"
+      ],
+      "tag": "vol7 · Brandon Tillman",
+      "aspect": "1:1",
+      "pose": null,
+      "prompt": "A pocket leather notebook, chestnut brown, closed with a wrapped leather cord, edges darkened with handling, a pencil pushed through the cord, a few pages swollen from damp.",
+      "texture_prompt": "chestnut oiled leather, cream paper, yellow pencil"
+    },
+    {
+      "slug": "pendleton_blanket",
+      "kind": "prop",
+      "name": "The Pendleton blanket",
+      "file": "pendleton_blanket.glb",
+      "vol": [
+        7
+      ],
+      "keys": [
+        "pendleton_blanket"
+      ],
+      "tag": "vol7 · recurring",
+      "aspect": "1:1",
+      "pose": null,
+      "prompt": "A folded wool trade blanket with a bold geometric stripe pattern in rust, cream, black and turquoise, thick fringed edge, one corner worn thin, folded into a neat square.",
+      "texture_prompt": "thick woven wool in rust, cream, black and turquoise, frayed fringe"
+    },
+    {
+      "slug": "finns_uv_light_and_radio",
+      "kind": "prop",
+      "name": "Finn's UV light and off-band radio",
+      "file": "finns_uv_light_and_radio.glb",
+      "vol": [
+        7
+      ],
+      "keys": [
+        "finns_uv_light_and_radio"
+      ],
+      "tag": "vol7 · cannery piling inspector",
+      "aspect": "4:3",
+      "pose": null,
+      "prompt": "A black tactical UV flashlight with a knurled grip and a violet-glowing lens, lying beside a chunky grey handheld radio with a rubber antenna, a cracked LCD and a strip of tape over the channel dial.",
+      "texture_prompt": "black anodised aluminium, violet lens glow, grey rubberised plastic, black rubber antenna, white tape"
+    }
+  ]
+}

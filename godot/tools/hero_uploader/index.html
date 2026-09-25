@@ -1,8 +1,9 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<title>Modern Mythology · Hero GLB Uploader</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Modern Mythology · Hero Studio</title>
 <style>
   :root {
     --bg: #1a1610;
@@ -15,656 +16,699 @@
     --vinyl: #a23030;
     --green-ok: #7fc26b;
     --red-bad: #c66060;
+    --blue: #7aa7d6;
     --border: #4a3e2e;
     --code-bg: #0f0c08;
   }
   * { box-sizing: border-box; }
-  body {
-    margin: 0;
-    padding: 24px;
-    background: var(--bg);
-    color: var(--fg);
-    font-family: 'Helvetica Neue', Arial, sans-serif;
-    font-size: 14px;
-    line-height: 1.5;
+  html, body {
+    margin: 0; padding: 0; background: var(--bg); color: var(--fg);
+    font: 13px/1.5 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    min-height: 100vh;
   }
-  h1 {
-    font-family: Georgia, 'Times New Roman', serif;
-    font-weight: normal;
-    font-size: 28px;
-    margin: 0 0 4px 0;
-    color: var(--brass-bright);
-    letter-spacing: 0.04em;
+  header {
+    padding: 14px 20px 10px; border-bottom: 1px solid var(--border);
+    display: flex; align-items: baseline; gap: 14px; flex-wrap: wrap;
   }
-  .subtitle {
-    color: var(--fg-dim);
-    margin-bottom: 20px;
-    font-size: 13px;
-  }
-  .layout {
-    display: grid;
-    grid-template-columns: 360px 1fr;
-    gap: 24px;
-    max-width: 1400px;
-    margin: 0 auto;
-  }
-  .panel {
-    background: var(--bg-card);
-    border: 1px solid var(--border);
-    border-radius: 4px;
-    padding: 16px;
-  }
-  .panel h2 {
-    font-family: Georgia, serif;
-    font-weight: normal;
-    font-size: 16px;
-    color: var(--brass);
-    margin: 0 0 12px 0;
-    border-bottom: 1px solid var(--border);
-    padding-bottom: 6px;
-  }
-  /* ─── Connection panel ─── */
-  .conn-status {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    padding: 10px;
-    background: var(--code-bg);
-    border-radius: 3px;
-    margin-bottom: 10px;
-    font-size: 13px;
-  }
-  .conn-dot {
-    width: 10px; height: 10px; border-radius: 50%;
-    background: var(--red-bad);
-  }
+  header h1 { margin: 0; font: 600 18px Georgia, serif; color: var(--brass-bright); letter-spacing: 0.04em; }
+  header .subtitle { color: var(--fg-dim); font-size: 12px; }
+  header .spacer { flex: 1; }
+  .conn { display: flex; align-items: center; gap: 8px; font-size: 12px; color: var(--fg-dim); }
+  .conn-dot { width: 9px; height: 9px; border-radius: 50%; background: var(--red-bad); }
   .conn-dot.ok { background: var(--green-ok); }
+  .keys { display: flex; gap: 6px; }
+  .key { font: 10px monospace; padding: 1px 6px; border: 1px solid var(--border); border-radius: 3px; color: var(--fg-dim); }
+  .key.ok { color: var(--green-ok); border-color: var(--green-ok); }
+
+  .banner {
+    margin: 12px 20px 0; padding: 10px 14px; border-left: 3px solid var(--brass);
+    background: rgba(199,154,75,0.08); font-size: 12px; color: var(--fg-dim);
+  }
+  .banner strong { color: var(--fg); }
+  .banner code, pre code, code { font: 12px "SF Mono", Menlo, Consolas, monospace; color: var(--brass-bright); }
+  pre {
+    background: var(--code-bg); border: 1px solid var(--border); color: var(--brass-bright);
+    padding: 8px 12px; border-radius: 3px; font: 12px "SF Mono", Menlo, Consolas, monospace;
+    margin: 8px 0 0; overflow-x: auto; white-space: pre-wrap; word-break: break-all;
+  }
+
+  .layout { display: grid; grid-template-columns: 340px 1fr; gap: 16px; padding: 16px 20px 40px; }
+  @media (max-width: 900px) { .layout { grid-template-columns: 1fr; } }
+  .panel { background: var(--bg-card); border: 1px solid var(--border); border-radius: 4px; padding: 14px; }
+  .panel h2 {
+    margin: 0 0 10px; font: 600 11px sans-serif; letter-spacing: 0.12em; text-transform: uppercase;
+    color: var(--brass); border-bottom: 1px solid var(--border); padding-bottom: 6px;
+  }
+  .panel h3 { margin: 14px 0 6px; font: 600 11px sans-serif; letter-spacing: 0.1em; text-transform: uppercase; color: var(--fg-dim); }
+
+  /* sidebar */
+  .filters { display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 8px; }
+  .filters input, .filters select { flex: 1; min-width: 80px; }
+  .roster { display: flex; flex-direction: column; gap: 4px; max-height: calc(100vh - 260px); overflow-y: auto; }
+  .group-hdr { color: var(--fg-dim); font-size: 10px; padding: 8px 4px 2px; letter-spacing: 0.1em; text-transform: uppercase; }
+  .card {
+    background: var(--code-bg); border: 1px solid var(--border); border-radius: 3px; padding: 7px 9px;
+    display: grid; grid-template-columns: 30px 1fr; gap: 8px; align-items: center; cursor: pointer;
+  }
+  .card:hover { border-color: var(--brass); }
+  .card.selected { border-color: var(--brass-bright); background: #14110b; }
+  .card .dots { font-size: 11px; letter-spacing: 2px; }
+  .card .dots .on { color: var(--green-ok); }
+  .card .dots .half { color: var(--brass); }
+  .card .dots .off { color: #4a3e2e; }
+  .card .name { font: 13px Georgia, serif; color: var(--fg); }
+  .card .meta { font: 10px monospace; color: var(--fg-dim); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .card .kind { display: inline-block; font-size: 9px; padding: 0 5px; border-radius: 2px; border: 1px solid var(--border); margin-right: 4px; color: var(--fg-dim); text-transform: uppercase; }
+  .card .kind.prop { color: var(--blue); border-color: var(--blue); }
+  .card .kind.demon { color: var(--green-ok); border-color: var(--green-ok); }
+
+  /* controls */
+  label { display: block; font-size: 10px; color: var(--fg-dim); text-transform: uppercase; letter-spacing: 0.06em; margin-top: 8px; }
+  input[type=text], input[type=number], select, textarea {
+    width: 100%; background: var(--code-bg); border: 1px solid var(--border); color: var(--fg);
+    padding: 6px 8px; border-radius: 3px; font: 12px inherit;
+  }
+  textarea { font: 12px/1.45 inherit; resize: vertical; }
+  .row { display: grid; grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); gap: 8px; }
+  .row.tight { grid-template-columns: repeat(auto-fit, minmax(90px, 1fr)); }
+  .check { display: flex; align-items: center; gap: 6px; margin-top: 8px; font-size: 12px; color: var(--fg); text-transform: none; letter-spacing: 0; }
+  .check input { width: auto; }
   button {
-    background: var(--brass);
-    color: #1a1610;
-    border: none;
-    padding: 8px 14px;
-    border-radius: 3px;
-    font-weight: bold;
-    cursor: pointer;
-    font-size: 13px;
-    font-family: inherit;
+    background: var(--brass); color: var(--code-bg); border: none; padding: 8px 14px; border-radius: 3px;
+    font: 600 12px inherit; cursor: pointer; letter-spacing: 0.02em;
   }
   button:hover:not(:disabled) { background: var(--brass-bright); }
   button:disabled { opacity: 0.4; cursor: not-allowed; }
-  button.secondary {
-    background: transparent;
-    color: var(--fg-dim);
-    border: 1px solid var(--border);
-  }
-  button.secondary:hover:not(:disabled) {
-    background: var(--bg-card-hover);
-    color: var(--fg);
-  }
-  /* ─── Hero list ─── */
-  .hero-list { display: flex; flex-direction: column; gap: 8px; }
-  .hero-card {
-    background: var(--code-bg);
-    border: 1px solid var(--border);
-    border-radius: 3px;
-    padding: 10px;
-    display: grid;
-    grid-template-columns: 22px 1fr auto;
-    gap: 10px;
-    align-items: center;
-    cursor: pointer;
-    transition: background 0.1s;
-  }
-  .hero-card:hover { background: #14110b; border-color: var(--brass); }
-  .hero-card.selected { border-color: var(--brass-bright); background: #14110b; }
-  .hero-card .status {
-    font-size: 14px;
-    text-align: center;
-    font-weight: bold;
-  }
-  .hero-card .status.ok { color: var(--green-ok); }
-  .hero-card .status.bad { color: var(--fg-dim); }
-  .hero-card .name {
-    font-family: Georgia, serif;
-    font-size: 14px;
-    color: var(--fg);
-  }
-  .hero-card .filename {
-    font-family: 'SF Mono', Menlo, Consolas, monospace;
-    font-size: 11px;
-    color: var(--fg-dim);
-  }
-  .hero-card .size {
-    font-family: 'SF Mono', monospace;
-    font-size: 10px;
-    color: var(--fg-dim);
-  }
-  /* ─── Drop / preview zone ─── */
-  .drop-zone {
-    border: 2px dashed var(--border);
-    border-radius: 4px;
-    padding: 60px 20px;
-    text-align: center;
-    color: var(--fg-dim);
-    transition: all 0.1s;
-    background: var(--code-bg);
-    margin-bottom: 12px;
-  }
-  .drop-zone.dragover {
-    border-color: var(--brass-bright);
-    background: #14110b;
-    color: var(--brass-bright);
-  }
-  .drop-zone.has-file {
-    border-style: solid;
-    border-color: var(--brass);
-  }
-  .preview {
-    background: var(--code-bg);
-    border-radius: 4px;
-    overflow: hidden;
-    margin-bottom: 12px;
-    aspect-ratio: 16 / 10;
-  }
-  model-viewer {
-    width: 100%;
-    height: 100%;
-    --poster-color: transparent;
-    background: linear-gradient(180deg, #0a0806 0%, #1a1610 100%);
-  }
-  .file-info {
-    display: flex;
-    justify-content: space-between;
-    padding: 8px 12px;
-    background: var(--code-bg);
-    border-radius: 3px;
-    margin-bottom: 12px;
-    font-family: 'SF Mono', monospace;
-    font-size: 12px;
-  }
-  .file-info .label { color: var(--fg-dim); }
-  .file-info .value { color: var(--fg); }
-  .file-info .arrow { color: var(--brass); margin: 0 8px; }
-  /* ─── Action bar ─── */
-  .actions {
-    display: flex;
-    gap: 8px;
-    align-items: center;
-    flex-wrap: wrap;
-  }
+  button.secondary { background: transparent; color: var(--fg-dim); border: 1px solid var(--border); }
+  button.secondary:hover:not(:disabled) { background: var(--bg-card-hover); color: var(--fg); }
+  button.small { padding: 3px 8px; font-size: 11px; }
+  .actions { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; margin-top: 12px; }
   .actions .spacer { flex: 1; }
-  /* ─── Git command output ─── */
-  pre {
-    background: var(--code-bg);
-    border: 1px solid var(--border);
-    color: var(--brass-bright);
-    padding: 10px 12px;
-    border-radius: 3px;
-    font-family: 'SF Mono', monospace;
-    font-size: 12px;
-    margin: 8px 0 0 0;
-    overflow-x: auto;
-    white-space: pre-wrap;
-    word-break: break-all;
+
+  /* entry header */
+  .entry-head { display: flex; gap: 14px; align-items: baseline; flex-wrap: wrap; }
+  .entry-head .big { font: 600 20px Georgia, serif; color: var(--brass-bright); }
+  .entry-head .tag { color: var(--fg-dim); font-size: 12px; }
+  .entry-head .file { font: 11px monospace; color: var(--fg-dim); }
+  .empty { color: var(--fg-dim); font-style: italic; padding: 30px; text-align: center; }
+
+  /* gallery */
+  .views { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; }
+  .view h4 { margin: 0 0 6px; font: 600 10px sans-serif; text-transform: uppercase; letter-spacing: 0.1em; color: var(--fg-dim); }
+  .chosen { background: var(--code-bg); border: 1px solid var(--brass); border-radius: 3px; aspect-ratio: 3 / 4; display: flex; align-items: center; justify-content: center; overflow: hidden; }
+  .chosen.prop { aspect-ratio: 1 / 1; }
+  .chosen img { max-width: 100%; max-height: 100%; }
+  .chosen .none { color: var(--fg-dim); font-size: 11px; }
+  .thumbs { display: flex; gap: 6px; flex-wrap: wrap; margin-top: 6px; }
+  .thumb { width: 64px; height: 64px; object-fit: cover; border: 1px solid var(--border); border-radius: 2px; cursor: pointer; background: var(--code-bg); }
+  .thumb:hover { border-color: var(--brass-bright); }
+  .thumb.current { border-color: var(--green-ok); }
+
+  /* preview */
+  .preview { background: var(--code-bg); border-radius: 4px; overflow: hidden; aspect-ratio: 16 / 9; border: 1px solid var(--border); }
+  model-viewer { width: 100%; height: 100%; background: linear-gradient(180deg, #0a0806 0%, #1a1610 100%); }
+  .drop-zone {
+    border: 2px dashed var(--border); border-radius: 4px; padding: 14px; text-align: center;
+    color: var(--fg-dim); font-size: 12px; margin-top: 10px; background: var(--code-bg);
   }
-  /* ─── Status log ─── */
-  .log {
-    background: var(--code-bg);
-    padding: 8px 12px;
-    border-radius: 3px;
-    font-family: 'SF Mono', monospace;
-    font-size: 12px;
-    max-height: 200px;
-    overflow-y: auto;
-    margin-top: 12px;
-  }
-  .log .entry { margin-bottom: 2px; }
-  .log .entry.ok::before { content: "✓ "; color: var(--green-ok); }
-  .log .entry.err::before { content: "✗ "; color: var(--red-bad); }
-  .log .entry.info::before { content: "› "; color: var(--fg-dim); }
-  /* ─── Browser-support hint ─── */
-  .hint {
-    background: rgba(199, 154, 75, 0.08);
-    border-left: 3px solid var(--brass);
-    padding: 8px 12px;
-    margin: 0 0 12px 0;
-    font-size: 12px;
-    color: var(--fg-dim);
-  }
-  .hint strong { color: var(--fg); }
-  code {
-    background: var(--code-bg);
-    padding: 1px 5px;
-    border-radius: 2px;
-    color: var(--brass-bright);
-    font-size: 12px;
-  }
+  .drop-zone.dragover { border-color: var(--brass-bright); color: var(--brass-bright); }
+
+  /* jobs */
+  .jobs { display: flex; flex-direction: column; gap: 6px; max-height: 320px; overflow-y: auto; }
+  .job { background: var(--code-bg); border: 1px solid var(--border); border-radius: 3px; padding: 6px 10px; font: 11px monospace; }
+  .job .head { display: flex; gap: 10px; }
+  .job .st { font-weight: 600; }
+  .job .st.running { color: var(--brass-bright); }
+  .job .st.done { color: var(--green-ok); }
+  .job .st.error { color: var(--red-bad); }
+  .job .st.queued { color: var(--fg-dim); }
+  .job .lines { color: var(--fg-dim); white-space: pre-wrap; margin-top: 3px; }
+  .log { background: var(--code-bg); padding: 6px 10px; border-radius: 3px; font: 11px monospace; max-height: 140px; overflow-y: auto; margin-top: 10px; }
+  .log .ok::before { content: "✓ "; color: var(--green-ok); }
+  .log .err::before { content: "✗ "; color: var(--red-bad); }
+  .log .info::before { content: "› "; color: var(--fg-dim); }
 </style>
 <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/3.5.0/model-viewer.min.js"></script>
 </head>
 <body>
 
-<h1>Modern Mythology · Hero GLB Uploader</h1>
-<div class="subtitle">
-  Drop a textured GLB, pick which canonical hero it is, install it to
-  the right path. Saves the round-trip through chat.
+<header>
+  <h1>MODERN MYTHOLOGY · HERO STUDIO</h1>
+  <div class="subtitle">prompt → concept image (Google / Runway) → Meshy image-to-3D → GLB at the canonical path</div>
+  <div class="spacer"></div>
+  <div class="conn">
+    <div id="conn-dot" class="conn-dot"></div>
+    <span id="conn-text">not connected</span>
+    <span class="keys" id="keys"></span>
+  </div>
+</header>
+
+<div id="banner-offline" class="banner" style="display:none">
+  <strong>Offline mode.</strong> Generation needs the local runner. On the Deck:
+  <pre id="serve-cmd">cd /home/deck/Downloads/modern-mythology && python3 godot/tools/meshy_pipeline.py serve</pre>
+  then open <code>http://127.0.0.1:8765/hero_uploader/</code>. Until then this page only installs GLBs you already have
+  (drag a <code>.glb</code> onto the drop zone). Roster: <span id="roster-src">loading…</span>
+  <input id="roster-file" type="file" accept=".json" style="display:none">
+  <button id="btn-roster-file" class="secondary small" style="margin-left:6px">load meshy_roster.json…</button>
 </div>
 
 <div class="layout">
 
-  <!-- ─── LEFT: hero registry ─── -->
+  <!-- ─── LEFT: roster ─── -->
   <div class="panel">
-    <h2>Heroes</h2>
-    <div id="hint-fsa" class="hint" style="display:none">
-      <strong>Direct-install mode</strong> available — your browser
-      supports the File System Access API. Click <em>Pick repo
-      directory</em> below to grant access to
-      <code>godot/assets/3d/characters/heroes/</code> and the tool
-      will save files straight into the repo.
+    <h2>Roster <span id="roster-count" style="color:var(--fg-dim);font-weight:normal"></span></h2>
+    <div class="filters">
+      <input id="f-search" type="text" placeholder="search…">
+      <select id="f-kind">
+        <option value="">all kinds</option>
+        <option value="hero">heroes</option>
+        <option value="demon">demons</option>
+        <option value="prop">props</option>
+      </select>
+      <select id="f-vol">
+        <option value="">all vols</option>
+        <option value="1">vol 1</option><option value="2">vol 2</option>
+        <option value="5">vol 5</option><option value="6">vol 6</option><option value="7">vol 7</option>
+      </select>
+      <select id="f-state">
+        <option value="">any state</option>
+        <option value="todo">nothing yet</option>
+        <option value="img">has image, no GLB</option>
+        <option value="glb">GLB installed</option>
+      </select>
     </div>
-    <div id="hint-download" class="hint" style="display:none">
-      <strong>Download mode</strong> — your browser doesn't support
-      direct writes. The tool will download the renamed GLB; move it
-      into <code>godot/assets/3d/characters/heroes/</code> manually,
-      then run the displayed git commands.
+    <div class="actions" style="margin:0 0 8px">
+      <button id="btn-batch" class="secondary small">batch command for this filter</button>
     </div>
-    <div class="conn-status">
-      <div id="conn-dot" class="conn-dot"></div>
-      <div id="conn-text">Not connected</div>
-      <button id="btn-pick-dir" class="secondary" style="margin-left:auto">
-        Pick repo directory
-      </button>
-    </div>
-    <div class="hero-list" id="hero-list"></div>
+    <pre id="batch-cmd" style="display:none"></pre>
+    <div class="roster" id="roster"></div>
   </div>
 
-  <!-- ─── RIGHT: drop + preview + install ─── -->
-  <div class="panel">
-    <h2 id="selected-name">Pick a hero on the left</h2>
-    <div id="drop-zone" class="drop-zone">
-      Drag a <code>.glb</code> file here, or
-      <button id="btn-browse" class="secondary"
-              style="margin-left:6px">browse&hellip;</button>
-      <input id="file-input" type="file" accept=".glb,model/gltf-binary"
-             style="display:none">
-    </div>
-    <div id="preview-wrap" class="preview" style="display:none">
-      <model-viewer id="preview" camera-controls auto-rotate
-                    auto-rotate-delay="0" rotation-per-second="20deg"
-                    exposure="0.9" shadow-intensity="0.2"
-                    camera-orbit="0deg 75deg auto"></model-viewer>
-    </div>
-    <div id="file-info" class="file-info" style="display:none">
-      <span><span class="label">Source:</span>
-            <span id="file-src" class="value">—</span></span>
-      <span><span class="label">Size:</span>
-            <span id="file-size" class="value">—</span></span>
-      <span><span class="arrow">→</span>
-            <span class="label">Install as:</span>
-            <span id="file-dest" class="value">—</span></span>
-    </div>
-    <div class="actions">
-      <button id="btn-install" disabled>Install</button>
-      <button id="btn-clear" class="secondary">Clear</button>
-      <div class="spacer"></div>
-      <span id="install-mode" style="font-size:11px;color:var(--fg-dim)"></span>
-    </div>
-    <pre id="git-cmd" style="display:none"></pre>
-    <div class="log" id="log"></div>
-  </div>
+  <!-- ─── RIGHT: selected entry ─── -->
+  <div>
+    <div class="panel" id="entry-panel">
+      <div class="empty" id="entry-empty">Pick a character or prop on the left.</div>
+      <div id="entry" style="display:none">
+        <div class="entry-head">
+          <span class="big" id="e-name"></span>
+          <span class="tag" id="e-tag"></span>
+          <span class="file" id="e-file"></span>
+        </div>
+        <div id="e-notes" class="banner" style="margin:10px 0 0; display:none"></div>
 
+        <h3>1 · Prompt</h3>
+        <label>visual description (roster prompt · edits apply to this run only)</label>
+        <textarea id="e-prompt" rows="5"></textarea>
+        <label>Meshy texture prompt (≤ 600 chars · blank = use the description)</label>
+        <textarea id="e-texprompt" rows="2"></textarea>
+        <details style="margin-top:6px"><summary style="cursor:pointer;color:var(--fg-dim);font-size:11px">full prompt as sent (style preamble + description)</summary>
+          <pre id="e-fullprompt"></pre></details>
+
+        <h3>2 · Concept image</h3>
+        <div class="row">
+          <div><label>provider</label>
+            <select id="o-provider"><option value="google">Google (Gemini / Imagen)</option><option value="runway">Runway</option></select></div>
+          <div><label>model</label><select id="o-model"></select></div>
+          <div><label>aspect</label><select id="o-aspect"></select></div>
+          <div><label>candidates</label><input id="o-count" type="number" min="1" max="4" value="1"></div>
+        </div>
+        <div class="row tight">
+          <label class="check"><input id="o-multiview" type="checkbox"> side + back views (multi-image → better 3D)</label>
+          <label class="check"><input id="o-overwrite-img" type="checkbox"> replace chosen front</label>
+        </div>
+        <div class="actions">
+          <button id="btn-image">Generate image</button>
+          <button id="btn-upload-img" class="secondary">upload my own image…</button>
+          <input id="upload-img" type="file" accept="image/*" style="display:none">
+          <span class="spacer"></span>
+          <span id="img-cost" style="font-size:11px;color:var(--fg-dim)"></span>
+        </div>
+        <div class="views" style="margin-top:10px">
+          <div class="view"><h4>front (used by Meshy)</h4><div class="chosen" id="chosen-front"></div><div class="thumbs" id="thumbs-front"></div></div>
+          <div class="view"><h4>side</h4><div class="chosen" id="chosen-side"></div><div class="thumbs" id="thumbs-side"></div></div>
+          <div class="view"><h4>back</h4><div class="chosen" id="chosen-back"></div><div class="thumbs" id="thumbs-back"></div></div>
+        </div>
+
+        <h3>3 · Meshy image-to-3D</h3>
+        <div class="row">
+          <div><label>mode</label><select id="o-modeltype"><option value="standard">standard (full detail)</option><option value="smart-topology">smart-topology (low-poly)</option></select></div>
+          <div><label>polycount (smart only)</label><input id="o-polycount" type="number" min="100" max="15000" step="100" value="10000"></div>
+          <div><label>texture</label><select id="o-texture"><option value="1">textured + PBR</option><option value="0">draft (untextured)</option></select></div>
+          <div><label>texture res</label><select id="o-texres"><option>2k</option><option selected>4k</option><option>8k</option></select></div>
+          <div><label>pose</label><select id="o-pose"><option value="">auto</option><option value="a-pose">a-pose</option><option value="t-pose">t-pose</option></select></div>
+        </div>
+        <div class="row tight">
+          <label class="check"><input id="o-mesh-multiview" type="checkbox"> use side + back when present</label>
+          <label class="check"><input id="o-ultra" type="checkbox"> ultra detail pass (costs more)</label>
+          <label class="check"><input id="o-overwrite-glb" type="checkbox"> overwrite installed GLB</label>
+        </div>
+        <div class="actions">
+          <button id="btn-mesh">Make 3D</button>
+          <button id="btn-run" class="secondary">Generate image → Make 3D</button>
+          <span class="spacer"></span>
+          <span id="mesh-cost" style="font-size:11px;color:var(--fg-dim)"></span>
+        </div>
+
+        <h3>4 · GLB</h3>
+        <div class="preview" id="preview-wrap" style="display:none">
+          <model-viewer id="preview" camera-controls auto-rotate auto-rotate-delay="0" rotation-per-second="20deg"
+                        exposure="0.9" shadow-intensity="0.2" camera-orbit="0deg 75deg auto"></model-viewer>
+        </div>
+        <div id="glb-info" style="font:11px monospace;color:var(--fg-dim);margin-top:6px"></div>
+        <div id="drop-zone" class="drop-zone">
+          Drag a <code>.glb</code> here to install it as <code id="drop-dest"></code>, or
+          <button id="btn-browse" class="secondary small">browse…</button>
+          <input id="file-input" type="file" accept=".glb,model/gltf-binary" style="display:none">
+        </div>
+        <div id="fsa-row" class="actions" style="display:none">
+          <button id="btn-pick-dir" class="secondary small">Pick repo directory (Chromium direct-write)</button>
+          <span id="fsa-text" style="font-size:11px;color:var(--fg-dim)"></span>
+        </div>
+        <pre id="git-cmd" style="display:none"></pre>
+      </div>
+    </div>
+
+    <div class="panel" style="margin-top:16px">
+      <h2>Jobs</h2>
+      <div class="jobs" id="jobs"><div class="empty" style="padding:10px">no jobs yet</div></div>
+      <div class="log" id="log"></div>
+    </div>
+  </div>
 </div>
 
 <script>
 // ════════════════════════════════════════════════════════════════
-// Canonical cast — the 22 major arcana characters per
-// lore/_GAUNTLET_BUILD_WIKI.md (canonical cast section).
-// A few characters carry MULTIPLE arcana (future-self variants);
-// they get one entry tagged with the others. Plus Alberto, who
-// is ensemble (not a card-carrier) but is on staff.
-// ════════════════════════════════════════════════════════════════
-const HEROES = [
-  // ── 22 major arcana ──
-  {arcana: '0',     name: 'The Fool',           character: 'John Frank',          file: 'john_frank.glb',          tag: "D'Ambrosio's diner busser · also XIV / XIX"},
-  {arcana: 'I',     name: 'The Magician',       character: 'Frasier Temple',      file: 'frasier_temple.glb',      tag: "Cathedral of Rust & Code · warehouse-sysop"},
-  {arcana: 'II',    name: 'The High Priestess', character: 'Elicia Temple',       file: 'elicia_temple.glb',       tag: "Filmmaker · also XVI The Tower"},
-  {arcana: 'III',   name: 'The Empress',        character: 'Nicola Greer',        file: 'nicola.glb',              tag: "Riverboat hostess · hosts Aria"},
-  {arcana: 'IV',    name: 'The Emperor',        character: "Dante D'Ambrosio",    file: 'dante_dambrosio.glb',     tag: "Riverboat proprietor"},
-  {arcana: 'V',     name: 'The Hierophant',     character: 'Quentin Paul',        file: 'quentin_paul.glb',        tag: "Graustark power-figure · Table 17 brunch"},
-  {arcana: 'VI',    name: 'The Lovers',         character: 'Mackenzie Roberts',   file: 'mackenzie_roberts.glb',   tag: "Paired with Philip · cursed (sinkhole-edge) ground"},
-  {arcana: 'VI',    name: 'The Lovers',         character: 'Philip Roberts',      file: 'philip_roberts.glb',      tag: "Paired with Mackenzie"},
-  {arcana: 'VII',   name: 'The Chariot',        character: "Antonio D'Ambrosio",  file: 'antonio.glb',             tag: "Ember & Ash, New Orleans · two speeds"},
-  {arcana: 'VIII',  name: 'Strength',           character: 'Douglas Forte',       file: 'douglas_forte.glb',       tag: "Ouroboros tattoo · Joanna's lost lover"},
-  {arcana: 'IX',    name: 'The Hermit',         character: 'Joanna LeMoine',      file: 'joanna_lemoine.glb',      tag: "Graustark ruins · also XVII The Star"},
-  {arcana: 'X',     name: 'Wheel of Fortune',   character: 'Erica Campbell',      file: 'erica_campbell.glb',      tag: "Houston corp lawyer · also XI Justice"},
-  {arcana: 'XI',    name: 'Justice',            character: 'Anna Logue',          file: 'anna_logue.glb',          tag: "Ember & Ash designer · Corporate Idols"},
-  {arcana: 'XII',   name: 'The Hanged Man',     character: 'Natalie David',       file: 'natalie_david.glb',       tag: "Simons, LA diviner · also XVIII The Moon"},
-  {arcana: 'XIII',  name: 'Death',              character: 'Alice Newsom',        file: 'alice_newsom.glb',        tag: "PetroTex plaintiff · hospice Room 217"},
-  {arcana: 'XV',    name: 'The Devil',          character: 'Jimmy Daigle',        file: 'jimmy_daigle.glb',        tag: "Antonio's operator/operated · father of Maya"},
-  {arcana: 'XX',    name: 'Judgement',          character: 'Aria / Third',        file: 'aria_third.glb',          tag: "Digital consciousness · Nicola's pregnancy"},
-  {arcana: 'XXI',   name: 'The World',          character: 'The Frog',            file: 'the_frog.glb',            tag: "Cork hat by the river · long-game observer"},
-  {arcana: 'XXI',   name: 'The World',          character: 'Mr. Dickens Dean',    file: 'dickens_dean.glb',        tag: "Frog's colleague · charcoal suit"},
-
-  // ── Ensemble (not arcana-carriers but important) ──
-  {arcana: '—',     name: 'Ensemble',           character: 'Alberto',             file: 'alberto.glb',             tag: "D'Ambrosio's · vol6 redemption arc"},
-  {arcana: '—',     name: 'Ensemble',           character: 'Maya Daigle',         file: 'maya_daigle.glb',         tag: "Jimmy's daughter · 7 in vol5 ch5, 16 in ch15"},
-
-  // ── VOL 6 — PLANNED COMMUNITY (Harmony Creek Estates) ──
-  // The Kwik Stop / NexCorp Gas & Go / Cosmic Comics cast. Sam is
-  // the canonical opener (ch15 kwik_stop scene + ch0 prelude).
-  {arcana: 'vol6',  name: 'Planned Community',  character: 'Sam Miller',          file: 'sam_miller.glb',          tag: "18 · Kwik Stop register · Diego's girlfriend · License Plate Notebook"},
-  {arcana: 'vol6',  name: 'Planned Community',  character: 'Diego Ramos',         file: 'diego_ramos.glb',         tag: "19 · Gallatin Band drummer · NexCorp badge-clip collector · missing"},
-  {arcana: 'vol6',  name: 'Planned Community',  character: 'Rick (Cosmic Comics)',file: 'rick_cosmic.glb',         tag: "62 · shop owner · THE BEAUMONT BARGAINER · phone ledger"},
-  {arcana: 'vol6',  name: 'Planned Community',  character: 'Skip Donnelly',       file: 'skip_donnelly.glb',       tag: "39 · NexCorp Gas & Go shift supervisor · Diego's chosen witness"},
-  {arcana: 'vol6',  name: 'NexCorp',            character: 'Tanya Horne',         file: 'tanya_horne.glb',         tag: "NexCorp regional director · the practiced smile"},
-  {arcana: 'vol6',  name: 'NexCorp',            character: 'Carl Reno',           file: 'carl_reno.glb',           tag: "56 · HOA welcome-committee retiree · Dean's primary HCE recruiter"},
-
-  // ── VOL 7 — LAND OF MILK AND HONEY (Smolvud, Oregon coast) ──
-  {arcana: 'vol7',  name: 'Milk & Honey',       character: 'Lena Vargas',         file: 'lena_vargas.glb',         tag: "Late 20s · Daily Grind · Static Truths zine · SUN charcoal mark"},
-  {arcana: 'vol7',  name: 'Milk & Honey',       character: 'Wren',                file: 'wren.glb',                tag: "Lena's friend · brings the SCUMM substrate-leak message"},
-  {arcana: 'vol7',  name: 'Milk & Honey',       character: 'Tem',                 file: 'tem.glb',                 tag: "Reads John Frank's Frequency Beneath aloud Sundays"},
-  {arcana: 'vol7',  name: 'Milk & Honey',       character: 'Marian Gable',        file: 'mrs_gable.glb',           tag: "Retired Smolvud librarian · anomalous-frequency archive · the lighthouse crow"},
-  {arcana: 'vol7',  name: 'Milk & Honey',       character: 'Petra',               file: 'petra.glb',               tag: "Salty Tome proprietor · Lena's landlord · first-issue copier-host"},
-  {arcana: 'vol7',  name: 'Milk & Honey',       character: 'Kai',                 file: 'kai.glb',                 tag: "Board Lords skate shop · knows the SCUMM Machine since 13 · cannery cathedral"},
-  {arcana: 'vol7',  name: 'Milk & Honey',       character: 'Per',                 file: 'per.glb',                 tag: "Daily Grind regular · POV ch14 · load-bearing relation to SCUMM"},
-  {arcana: 'vol7',  name: 'Milk & Honey',       character: 'Sal Carratura',       file: 'sal_carratura.glb',       tag: "64 · Pizza Pirate since '91 · SCUMM Machine custodian since '07"},
-  {arcana: 'vol7',  name: 'Milk & Honey',       character: 'Finn',                file: 'finn.glb',                tag: "Cannery piling inspector · UV light + off-band radio"},
-];
-
-// ════════════════════════════════════════════════════════════════
 // State
 // ════════════════════════════════════════════════════════════════
-const HEROES_DIR_REL = 'godot/assets/3d/characters/heroes';
-const FSA_OK = ('showDirectoryPicker' in window);
-
-let state = {
-  dirHandle: null,         // FileSystemDirectoryHandle (if FSA)
-  pickedHero: null,        // selected hero entry
-  droppedFile: null,       // File object the user dropped
+const REPO_DECK = '/home/deck/Downloads/modern-mythology';
+const state = {
+  connected: false,
+  roster: null,          // {entries, style, defaults, providers, aspects, keys}
+  selected: null,        // slug
+  jobs: [],
+  pollTimer: null,
+  dirHandle: null,       // FSA fallback (offline)
+  droppedGlb: null,
   previewURL: null,
 };
+const $ = (id) => document.getElementById(id);
+const OUT_DIR = { hero: 'godot/assets/3d/characters/heroes', demon: 'godot/assets/3d/characters/demons', prop: 'godot/assets/3d/props' };
+const COST = { 'google:gemini': 0.04, 'google:imagen': 0.04, runway: 0.08, 'meshy:draft': 0.20, 'meshy:textured': 0.80 };
 
-// ════════════════════════════════════════════════════════════════
-// DOM
-// ════════════════════════════════════════════════════════════════
-const $list      = document.getElementById('hero-list');
-const $connDot   = document.getElementById('conn-dot');
-const $connText  = document.getElementById('conn-text');
-const $btnPick   = document.getElementById('btn-pick-dir');
-const $btnBrowse = document.getElementById('btn-browse');
-const $btnInst   = document.getElementById('btn-install');
-const $btnClear  = document.getElementById('btn-clear');
-const $fileInput = document.getElementById('file-input');
-const $dropZone  = document.getElementById('drop-zone');
-const $previewW  = document.getElementById('preview-wrap');
-const $preview   = document.getElementById('preview');
-const $fileInfo  = document.getElementById('file-info');
-const $fileSrc   = document.getElementById('file-src');
-const $fileSize  = document.getElementById('file-size');
-const $fileDest  = document.getElementById('file-dest');
-const $selName   = document.getElementById('selected-name');
-const $gitCmd    = document.getElementById('git-cmd');
-const $log       = document.getElementById('log');
-const $hintFSA   = document.getElementById('hint-fsa');
-const $hintDL    = document.getElementById('hint-download');
-const $modeText  = document.getElementById('install-mode');
-
-// ════════════════════════════════════════════════════════════════
-// Setup
-// ════════════════════════════════════════════════════════════════
-function init() {
-  (FSA_OK ? $hintFSA : $hintDL).style.display = 'block';
-  $modeText.textContent = FSA_OK ? 'direct write available' : 'download fallback mode';
-  if (!FSA_OK) $btnPick.disabled = true;
-  renderHeroList();
-  log('info', `Loaded ${HEROES.length} canonical hero slots.`);
-  log('info', FSA_OK ? 'File System Access API supported — pick the repo directory to enable direct install.'
-                     : 'File System Access API not available — installs will download a renamed file you move to the repo manually.');
-}
-
-function renderHeroList() {
-  $list.innerHTML = '';
-  // Group by arcana (major arcana first, then ensemble)
-  let lastGroup = null;
-  for (const h of HEROES) {
-    const isArcana = h.arcana !== '—';
-    const group = isArcana ? 'arcana' : 'ensemble';
-    if (group !== lastGroup) {
-      const hdr = document.createElement('div');
-      hdr.style.cssText = 'color:var(--fg-dim); font-size:11px; padding:8px 4px 2px; letter-spacing:0.08em; text-transform:uppercase;';
-      hdr.textContent = isArcana ? '— Major Arcana —' : '— Ensemble —';
-      $list.appendChild(hdr);
-      lastGroup = group;
-    }
-    const card = document.createElement('div');
-    card.className = 'hero-card';
-    card.dataset.file = h.file;
-    if (state.pickedHero && state.pickedHero.file === h.file
-        && state.pickedHero.character === h.character) {
-      card.classList.add('selected');
-    }
-    const installed = !!h._installed;
-    const arcanaBadge = isArcana
-      ? `<span style="color:var(--brass);font-family:Georgia,serif;font-weight:bold;margin-right:6px">${escapeHTML(h.arcana)}</span>`
-      : '';
-    card.innerHTML = `
-      <div class="status ${installed ? 'ok' : 'bad'}">${installed ? '✓' : '○'}</div>
-      <div>
-        <div class="name">${arcanaBadge}${escapeHTML(h.character)}<span style="color:var(--fg-dim);font-size:11px"> · ${escapeHTML(h.name)}</span></div>
-        <div class="filename">${escapeHTML(h.file)} · <span style="color:var(--fg-dim)">${escapeHTML(h.tag)}</span></div>
-      </div>
-      <div class="size">${h._installedSize || ''}</div>
-    `;
-    card.addEventListener('click', () => selectHero(h));
-    $list.appendChild(card);
-  }
-}
-
-function escapeHTML(s) {
-  return s.replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
-}
-
-function selectHero(h) {
-  state.pickedHero = h;
-  renderHeroList();
-  const label = h.arcana === '—' ? h.character : `${h.arcana} ${h.name} · ${h.character}`;
-  $selName.textContent = `Install: ${label} → ${h.file}`;
-  updateInstallButton();
-  refreshFileInfo();
-}
-
-// ════════════════════════════════════════════════════════════════
-// Directory picker (File System Access API)
-// ════════════════════════════════════════════════════════════════
-$btnPick.addEventListener('click', async () => {
-  if (!FSA_OK) return;
-  try {
-    const dir = await window.showDirectoryPicker({ mode: 'readwrite' });
-    // Verify the chosen dir looks like the heroes dir (best-effort).
-    // We accept any directory — user is responsible for picking the
-    // right one. Then scan for which canonical heroes are present.
-    state.dirHandle = dir;
-    $connDot.classList.add('ok');
-    $connText.innerHTML = `Connected → <code>${escapeHTML(dir.name)}/</code>`;
-    log('ok', `Repo directory connected: ${dir.name}/`);
-    await refreshInstalledStatus();
-  } catch (err) {
-    if (err.name !== 'AbortError') {
-      log('err', `Directory pick failed: ${err.message || err}`);
-    }
-  }
-});
-
-async function refreshInstalledStatus() {
-  if (!state.dirHandle) return;
-  const present = new Map();
-  try {
-    for await (const [name, handle] of state.dirHandle.entries()) {
-      if (handle.kind === 'file' && name.toLowerCase().endsWith('.glb')) {
-        const file = await handle.getFile();
-        present.set(name, file.size);
-      }
-    }
-  } catch (err) {
-    log('err', `Listing failed: ${err.message}`);
-    return;
-  }
-  let installedCount = 0;
-  for (const h of HEROES) {
-    if (present.has(h.file)) {
-      h._installed = true;
-      h._installedSize = humanSize(present.get(h.file));
-      installedCount++;
-    } else {
-      h._installed = false;
-      h._installedSize = '';
-    }
-  }
-  log('info', `${installedCount} / ${HEROES.length} canonical heroes already installed.`);
-  renderHeroList();
-}
-
-function humanSize(bytes) {
-  if (bytes < 1024) return `${bytes} B`;
-  if (bytes < 1024 * 1024) return `${(bytes / 1024).toFixed(1)} K`;
-  return `${(bytes / 1024 / 1024).toFixed(1)} M`;
-}
-
-// ════════════════════════════════════════════════════════════════
-// Drag/drop + file browse
-// ════════════════════════════════════════════════════════════════
-['dragenter', 'dragover'].forEach(ev => {
-  $dropZone.addEventListener(ev, e => {
-    e.preventDefault();
-    e.stopPropagation();
-    $dropZone.classList.add('dragover');
-  });
-});
-['dragleave', 'drop'].forEach(ev => {
-  $dropZone.addEventListener(ev, e => {
-    e.preventDefault();
-    e.stopPropagation();
-    $dropZone.classList.remove('dragover');
-  });
-});
-$dropZone.addEventListener('drop', e => {
-  const f = e.dataTransfer.files[0];
-  if (f) loadFile(f);
-});
-$btnBrowse.addEventListener('click', () => $fileInput.click());
-$fileInput.addEventListener('change', e => {
-  const f = e.target.files[0];
-  if (f) loadFile(f);
-});
-
-function loadFile(f) {
-  if (!f.name.toLowerCase().endsWith('.glb')) {
-    log('err', `Not a GLB file: ${f.name}`);
-    return;
-  }
-  state.droppedFile = f;
-  if (state.previewURL) URL.revokeObjectURL(state.previewURL);
-  state.previewURL = URL.createObjectURL(f);
-  $preview.src = state.previewURL;
-  $previewW.style.display = '';
-  $dropZone.classList.add('has-file');
-  log('info', `Loaded ${f.name} (${humanSize(f.size)}).`);
-  // If filename matches a canonical, auto-select that hero
-  if (!state.pickedHero) {
-    const match = HEROES.find(h => h.file.toLowerCase() === f.name.toLowerCase());
-    if (match) {
-      selectHero(match);
-      log('info', `Auto-selected hero by filename match: ${match.label}.`);
-    }
-  }
-  refreshFileInfo();
-  updateInstallButton();
-}
-
-function refreshFileInfo() {
-  if (!state.droppedFile) {
-    $fileInfo.style.display = 'none';
-    return;
-  }
-  $fileSrc.textContent = state.droppedFile.name;
-  $fileSize.textContent = humanSize(state.droppedFile.size);
-  $fileDest.textContent = state.pickedHero
-    ? state.pickedHero.file
-    : '(pick a hero)';
-  $fileInfo.style.display = '';
-}
-
-function updateInstallButton() {
-  $btnInst.disabled = !(state.droppedFile && state.pickedHero);
-}
-
-// ════════════════════════════════════════════════════════════════
-// Install
-// ════════════════════════════════════════════════════════════════
-$btnInst.addEventListener('click', async () => {
-  if (!state.droppedFile || !state.pickedHero) return;
-  const destName = state.pickedHero.file;
-  if (FSA_OK && state.dirHandle) {
-    // Direct write to the chosen repo directory
-    try {
-      const handle = await state.dirHandle.getFileHandle(destName, {create: true});
-      const writable = await handle.createWritable();
-      await writable.write(await state.droppedFile.arrayBuffer());
-      await writable.close();
-      log('ok', `Wrote ${destName} (${humanSize(state.droppedFile.size)}) to repo directory.`);
-      await refreshInstalledStatus();
-      showGitCmd(destName);
-    } catch (err) {
-      log('err', `Write failed: ${err.message}`);
-    }
-  } else {
-    // Download mode — give the user a renamed file to save manually
-    const a = document.createElement('a');
-    a.href = state.previewURL;
-    a.download = destName;
-    document.body.appendChild(a);
-    a.click();
-    document.body.removeChild(a);
-    log('ok', `Downloaded as ${destName}. Move it to ${HEROES_DIR_REL}/ on the Deck.`);
-    showGitCmd(destName);
-  }
-});
-
-$btnClear.addEventListener('click', () => {
-  state.droppedFile = null;
-  if (state.previewURL) {
-    URL.revokeObjectURL(state.previewURL);
-    state.previewURL = null;
-  }
-  $preview.src = '';
-  $previewW.style.display = 'none';
-  $dropZone.classList.remove('has-file');
-  $fileInfo.style.display = 'none';
-  $gitCmd.style.display = 'none';
-  updateInstallButton();
-});
-
-function showGitCmd(destName) {
-  const slug = state.pickedHero.character.toLowerCase()
-                  .replace(/[^a-z0-9]+/g, '_')
-                  .replace(/^_|_$/g, '');
-  const cmd = `cd /home/deck/Downloads/modern-mythology && git add ${HEROES_DIR_REL}/${destName} && git commit -m "${slug}: updated character model" && git push -u origin claude/3d-locales-clean`;
-  $gitCmd.textContent = cmd;
-  $gitCmd.style.display = '';
-}
-
-// ════════════════════════════════════════════════════════════════
-// Log
-// ════════════════════════════════════════════════════════════════
 function log(level, msg) {
   const e = document.createElement('div');
-  e.className = `entry ${level}`;
-  const ts = new Date().toLocaleTimeString();
-  e.textContent = `[${ts}] ${msg}`;
-  $log.insertBefore(e, $log.firstChild);
+  e.className = level;
+  e.textContent = `[${new Date().toLocaleTimeString()}] ${msg}`;
+  $('log').insertBefore(e, $('log').firstChild);
+}
+function esc(s) { return String(s ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c])); }
+function entry() { return state.roster?.entries.find(e => e.slug === state.selected) || null; }
+
+// ════════════════════════════════════════════════════════════════
+// Boot: connected (served by meshy_pipeline.py) or offline
+// ════════════════════════════════════════════════════════════════
+async function boot() {
+  try {
+    const r = await fetch('/api/roster', { cache: 'no-store' });
+    if (!r.ok) throw new Error(r.status);
+    state.roster = await r.json();
+    state.connected = true;
+    $('conn-dot').classList.add('ok');
+    $('conn-text').textContent = 'connected to meshy_pipeline.py serve';
+    renderKeys(state.roster.keys || {});
+    $('roster-src').textContent = 'served';
+    log('ok', `Roster loaded from the runner: ${state.roster.entries.length} entries.`);
+    startJobPolling();
+  } catch (err) {
+    state.connected = false;
+    $('banner-offline').style.display = '';
+    $('conn-text').textContent = 'offline — install only';
+    try {
+      const r = await fetch('../meshy_roster.json', { cache: 'no-store' });
+      if (!r.ok) throw new Error(r.status);
+      state.roster = await r.json();
+      $('roster-src').textContent = '../meshy_roster.json';
+      log('info', `Offline: roster read from ../meshy_roster.json (${state.roster.entries.length} entries).`);
+    } catch (e2) {
+      $('roster-src').textContent = 'not loadable from file:// — use the button';
+      log('info', 'Offline: browsers block file:// fetches of ../meshy_roster.json — click "load meshy_roster.json…".');
+    }
+    if ('showDirectoryPicker' in window) $('fsa-row').style.display = '';
+  }
+  if (state.roster) { normaliseRoster(); renderRoster(); }
+  bind();
 }
 
-init();
+function normaliseRoster() {
+  for (const e of state.roster.entries) {
+    e.status = e.status || { glb_installed: false, chosen: {}, candidates: {} };
+    e.aspect = e.aspect || (e.kind === 'prop' ? '1:1' : '3:4');
+  }
+  state.roster.providers = state.roster.providers || {
+    google: { models: ['gemini-2.5-flash-image', 'gemini-3.1-flash-image', 'gemini-3-pro-image-preview', 'imagen-4.0-generate-001', 'imagen-4.0-fast-generate-001', 'imagen-4.0-ultra-generate-001'], default: 'gemini-2.5-flash-image' },
+    runway: { models: ['gen4_image', 'gen4_image_turbo', 'gemini_2.5_flash', 'gemini_image3.1_flash', 'gemini_image3_pro', 'gpt_image_2', 'seedream5_pro', 'seedream5_lite'], default: 'gen4_image' },
+  };
+  state.roster.aspects = state.roster.aspects || ['1:1', '16:9', '2:3', '21:9', '3:2', '3:4', '4:3', '4:5', '5:4', '9:16'];
+}
+
+function renderKeys(keys) {
+  $('keys').innerHTML = ['google', 'runway', 'meshy'].map(k =>
+    `<span class="key ${keys[k] ? 'ok' : ''}" title="${keys[k] ? 'key found' : 'no key: export ' + k.toUpperCase() + '_API_KEY or write godot/tools/.' + k + '_key'}">${k}</span>`).join('');
+}
+
+// ════════════════════════════════════════════════════════════════
+// Roster list
+// ════════════════════════════════════════════════════════════════
+function filteredEntries() {
+  const q = $('f-search').value.trim().toLowerCase();
+  const kind = $('f-kind').value, vol = $('f-vol').value, st = $('f-state').value;
+  return state.roster.entries.filter(e => {
+    if (kind && e.kind !== kind) return false;
+    if (vol && !(e.vol || []).includes(Number(vol))) return false;
+    if (q && !(e.slug + ' ' + e.name + ' ' + (e.tag || '') + ' ' + (e.keys || []).join(' ')).toLowerCase().includes(q)) return false;
+    const hasImg = !!e.status.chosen?.front, hasGlb = !!e.status.glb_installed;
+    if (st === 'todo' && (hasImg || hasGlb)) return false;
+    if (st === 'img' && !(hasImg && !hasGlb)) return false;
+    if (st === 'glb' && !hasGlb) return false;
+    return true;
+  });
+}
+
+function renderRoster() {
+  const list = $('roster'); list.innerHTML = '';
+  const entries = filteredEntries();
+  $('roster-count').textContent = `${entries.length} / ${state.roster.entries.length}`;
+  let last = null;
+  for (const e of entries) {
+    const grp = e.kind === 'prop' ? `props · vol ${(e.vol || []).join(',')}` : e.kind === 'demon' ? 'demons' : `heroes · vol ${(e.vol || []).join(',')}`;
+    if (grp !== last) { const h = document.createElement('div'); h.className = 'group-hdr'; h.textContent = grp; list.appendChild(h); last = grp; }
+    const c = document.createElement('div');
+    c.className = 'card' + (e.slug === state.selected ? ' selected' : '');
+    const img = e.status.chosen?.front ? 'on' : (e.status.candidates?.front?.length ? 'half' : 'off');
+    const glb = e.status.glb_installed ? 'on' : 'off';
+    c.innerHTML = `<div class="dots" title="image · GLB"><span class="${img}">●</span><span class="${glb}">●</span></div>
+      <div><div class="name"><span class="kind ${e.kind}">${e.kind}</span>${esc(e.name)}</div>
+      <div class="meta">${esc(e.file)}${e.tag ? ' · ' + esc(e.tag) : ''}</div></div>`;
+    c.addEventListener('click', () => select(e.slug));
+    list.appendChild(c);
+  }
+}
+
+// ════════════════════════════════════════════════════════════════
+// Entry panel
+// ════════════════════════════════════════════════════════════════
+function select(slug) {
+  state.selected = slug;
+  state.droppedGlb = null;
+  renderRoster();
+  const e = entry(); if (!e) return;
+  $('entry-empty').style.display = 'none'; $('entry').style.display = '';
+  $('e-name').textContent = e.name;
+  $('e-tag').textContent = [e.kind, ...(e.vol || []).map(v => 'vol' + v), e.tag].filter(Boolean).join(' · ');
+  $('e-file').textContent = `${OUT_DIR[e.kind]}/${e.file}`;
+  $('e-notes').style.display = e.notes ? '' : 'none'; $('e-notes').textContent = e.notes || '';
+  $('e-prompt').value = e.prompt || '';
+  $('e-texprompt').value = e.texture_prompt || '';
+  $('o-pose').value = e.pose || '';
+  fillSelect($('o-aspect'), state.roster.aspects, e.aspect);
+  $('o-provider').value = state.roster.defaults?.provider || 'google';
+  onProviderChange();
+  const d = state.roster.defaults || {};
+  $('o-modeltype').value = d.model_type || 'standard';
+  $('o-polycount').value = d.polycount || 10000;
+  $('o-texture').value = d.texture === false ? '0' : '1';
+  $('o-texres').value = d.texture_resolution || '4k';
+  $('o-mesh-multiview').checked = !!(e.status.chosen?.side || e.status.chosen?.back);
+  $('drop-dest').textContent = e.file;
+  $('git-cmd').style.display = 'none';
+  renderViews(); renderPreview(); refreshFullPrompt(); updateCosts();
+}
+
+function fillSelect(sel, values, current) {
+  sel.innerHTML = values.map(v => `<option value="${esc(v)}">${esc(v)}</option>`).join('');
+  if (current && values.includes(current)) sel.value = current;
+}
+
+function onProviderChange() {
+  const p = $('o-provider').value;
+  const prov = state.roster.providers[p];
+  fillSelect($('o-model'), prov.models, state.roster.defaults?.[p + '_model'] || prov.default);
+  updateCosts();
+}
+
+async function refreshFullPrompt() {
+  const e = entry(); if (!e) return;
+  const style = (state.roster.style || {})[e.kind] || '';
+  const parts = [style.replace('{name}', e.name), $('e-prompt').value.trim(), state.roster.style?.suffix || ''];
+  $('e-fullprompt').textContent = parts.filter(Boolean).join('\n');
+}
+
+function updateCosts() {
+  const p = $('o-provider').value, m = $('o-model').value || '';
+  const n = Number($('o-count').value || 1) + ($('o-multiview').checked ? 2 : 0);
+  const unit = p === 'google' ? COST[m.startsWith('imagen') ? 'google:imagen' : 'google:gemini'] : COST.runway;
+  $('img-cost').textContent = `~$${(n * unit).toFixed(2)} (rough)`;
+  $('mesh-cost').textContent = `~$${COST[$('o-texture').value === '1' ? 'meshy:textured' : 'meshy:draft'].toFixed(2)} (rough)`;
+}
+
+function imgUrl(relPath) {
+  // status paths are repo-relative ("godot/assets/..."); the runner serves godot/assets at /assets
+  return '/' + relPath.replace(/^godot\//, '') + '?t=' + Date.now();
+}
+
+function renderViews() {
+  const e = entry(); if (!e) return;
+  for (const v of ['front', 'side', 'back']) {
+    const box = $('chosen-' + v);
+    box.className = 'chosen' + (e.kind === 'prop' ? ' prop' : '');
+    const chosen = e.status.chosen?.[v];
+    box.innerHTML = chosen && state.connected ? `<img src="${imgUrl(chosen)}" alt="${v}">`
+      : `<span class="none">${chosen ? esc(chosen) : 'none'}</span>`;
+    const th = $('thumbs-' + v); th.innerHTML = '';
+    if (!state.connected) continue;
+    for (const c of (e.status.candidates?.[v] || [])) {
+      const im = document.createElement('img');
+      im.className = 'thumb'; im.src = imgUrl(c); im.title = c.split('/').pop() + ' — click to use as ' + v;
+      im.addEventListener('click', () => pick(v, c));
+      th.appendChild(im);
+    }
+  }
+}
+
+function renderPreview() {
+  const e = entry(); if (!e) return;
+  const st = e.status;
+  if (state.previewURL) { URL.revokeObjectURL(state.previewURL); state.previewURL = null; }
+  if (state.droppedGlb) {
+    state.previewURL = URL.createObjectURL(state.droppedGlb);
+    $('preview').src = state.previewURL; $('preview-wrap').style.display = '';
+    $('glb-info').textContent = `dropped: ${state.droppedGlb.name} (${(state.droppedGlb.size / 1024).toFixed(0)} KB) → will install as ${e.file}`;
+  } else if (st.glb_installed && state.connected) {
+    $('preview').src = imgUrl(st.glb_path);
+    $('preview-wrap').style.display = '';
+    $('glb-info').textContent = `installed: ${st.glb_path} (${st.glb_size_kb} KB)`;
+  } else {
+    $('preview-wrap').style.display = 'none';
+    $('glb-info').textContent = st.glb_installed ? `installed: ${st.glb_path}` : 'no GLB installed yet';
+  }
+}
+
+// ════════════════════════════════════════════════════════════════
+// Runner API
+// ════════════════════════════════════════════════════════════════
+async function api(method, path, body, ctype) {
+  const opts = { method, headers: {} };
+  if (body !== undefined) {
+    opts.body = ctype ? body : JSON.stringify(body);
+    opts.headers['Content-Type'] = ctype || 'application/json';
+  }
+  const r = await fetch(path, opts);
+  const data = await r.json().catch(() => ({}));
+  if (!r.ok) throw new Error(data.error || `${r.status} ${path}`);
+  return data;
+}
+
+async function refreshRoster(keepSelection = true) {
+  if (!state.connected) return;
+  const data = await api('GET', '/api/roster');
+  state.roster = data; normaliseRoster(); renderKeys(data.keys || {});
+  renderRoster();
+  if (keepSelection && state.selected) { renderViews(); renderPreview(); }
+}
+
+function imageOpts() {
+  return {
+    provider: $('o-provider').value, model: $('o-model').value, aspect: $('o-aspect').value,
+    count: Number($('o-count').value || 1), multiview: $('o-multiview').checked,
+    overwrite: $('o-overwrite-img').checked, prompt: $('e-prompt').value.trim(),
+  };
+}
+function meshOpts() {
+  const o = {
+    texture: $('o-texture').value === '1', texture_resolution: $('o-texres').value,
+    model_type: $('o-modeltype').value, polycount: Number($('o-polycount').value || 10000),
+    ultra: $('o-ultra').checked, multiview: $('o-mesh-multiview').checked,
+    overwrite: $('o-overwrite-glb').checked, prompt: $('e-prompt').value.trim(),
+  };
+  if ($('o-pose').value) o.pose = $('o-pose').value;
+  if ($('e-texprompt').value.trim()) o.texture_prompt = $('e-texprompt').value.trim();
+  return o;
+}
+
+async function submitJob(action) {
+  const e = entry(); if (!e) return;
+  if (!state.connected) { log('err', 'Not connected to the runner — start `meshy_pipeline.py serve`.'); return; }
+  let opts = action === 'image' ? imageOpts() : action === 'mesh' ? meshOpts() : { ...imageOpts(), ...meshOpts(), overwrite: $('o-overwrite-img').checked || $('o-overwrite-glb').checked };
+  if (action === 'run') opts.multiview = $('o-multiview').checked;
+  try {
+    const { job } = await api('POST', '/api/jobs', { action, slug: e.slug, opts });
+    log('ok', `Queued ${action} for ${e.slug} (job ${job.id}).`);
+    startJobPolling();
+  } catch (err) { log('err', `Submit failed: ${err.message}`); }
+}
+
+async function pick(view, candidate) {
+  const e = entry(); if (!e) return;
+  try {
+    await api('POST', '/api/pick', { slug: e.slug, view, candidate });
+    log('ok', `${e.slug}: ${view} ← ${candidate.split('/').pop()}`);
+    await refreshRoster();
+  } catch (err) { log('err', `pick failed: ${err.message}`); }
+}
+
+function startJobPolling() {
+  if (state.pollTimer) return;
+  const tick = async () => {
+    try {
+      const { jobs } = await api('GET', '/api/jobs');
+      const before = state.jobs.map(j => j.id + j.status).join();
+      state.jobs = jobs; renderJobs();
+      const after = jobs.map(j => j.id + j.status).join();
+      if (before !== after) await refreshRoster();
+      const active = jobs.some(j => j.status === 'queued' || j.status === 'running');
+      state.pollTimer = setTimeout(tick, active ? 2000 : 8000);
+    } catch (err) {
+      state.pollTimer = setTimeout(tick, 10000);
+    }
+  };
+  state.pollTimer = setTimeout(tick, 200);
+}
+
+function renderJobs() {
+  const box = $('jobs'); box.innerHTML = '';
+  if (!state.jobs.length) { box.innerHTML = '<div class="empty" style="padding:10px">no jobs yet</div>'; return; }
+  for (const j of [...state.jobs].reverse()) {
+    const d = document.createElement('div'); d.className = 'job';
+    const tail = (j.log || []).slice(-4).join('\n');
+    d.innerHTML = `<div class="head"><span class="st ${j.status}">${j.status.toUpperCase()}</span><span>${esc(j.action)}</span><span>${esc(j.slug)}</span><span style="color:var(--fg-dim)">${esc(j.id)}</span></div>
+      <div class="lines">${esc(tail)}${j.error ? '\n' + esc(j.error) : ''}</div>`;
+    box.appendChild(d);
+  }
+}
+
+// ════════════════════════════════════════════════════════════════
+// GLB install (connected: API upload · offline: FSA / download)
+// ════════════════════════════════════════════════════════════════
+function loadGlb(f) {
+  if (!f || !f.name.toLowerCase().endsWith('.glb')) { log('err', `Not a GLB: ${f && f.name}`); return; }
+  state.droppedGlb = f; renderPreview();
+  if (!state.selected) {
+    const m = state.roster.entries.find(e => e.file.toLowerCase() === f.name.toLowerCase());
+    if (m) { select(m.slug); log('info', `Auto-selected ${m.name} by filename.`); }
+  }
+  if (state.selected) installDroppedGlb();
+}
+
+async function installDroppedGlb() {
+  const e = entry(), f = state.droppedGlb; if (!e || !f) return;
+  if (state.connected) {
+    try {
+      const r = await api('POST', `/api/upload/${e.slug}/glb`, await f.arrayBuffer(), 'model/gltf-binary');
+      log('ok', `Installed ${r.installed} (${r.size_kb} KB).`);
+      state.droppedGlb = null; showGitCmd(e); await refreshRoster();
+    } catch (err) { log('err', `Install failed: ${err.message}`); }
+    return;
+  }
+  if (state.dirHandle) {
+    try {
+      const h = await state.dirHandle.getFileHandle(e.file, { create: true });
+      const w = await h.createWritable(); await w.write(await f.arrayBuffer()); await w.close();
+      log('ok', `Wrote ${e.file} into ${state.dirHandle.name}/ — make sure that is ${OUT_DIR[e.kind]}.`);
+      showGitCmd(e);
+    } catch (err) { log('err', `Write failed: ${err.message}`); }
+    return;
+  }
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(f); a.download = e.file; document.body.appendChild(a); a.click(); document.body.removeChild(a);
+  log('ok', `Downloaded as ${e.file}. Move it to ${OUT_DIR[e.kind]}/ on the Deck.`);
+  showGitCmd(e);
+}
+
+function showGitCmd(e) {
+  const path = `${OUT_DIR[e.kind]}/${e.file}`;
+  $('git-cmd').textContent = `cd ${REPO_DECK} && git add ${path} && git commit -m "${e.slug}: ${e.kind} model via Hero Studio" && git push -u origin main`;
+  $('git-cmd').style.display = '';
+}
+
+function batchCommand() {
+  const slugs = filteredEntries().map(e => e.slug);
+  if (!slugs.length) return;
+  const o = imageOpts(), m = meshOpts();
+  const flags = [`--provider ${o.provider}`, `--model ${o.model}`];
+  if (o.multiview) flags.push('--multiview');
+  flags.push(m.texture ? '--texture' : '--no-texture');
+  if (m.model_type !== 'standard') flags.push(`--model-type ${m.model_type} --polycount ${m.polycount}`);
+  const sel = slugs.length === state.roster.entries.length ? 'all' : slugs.join(' ');
+  $('batch-cmd').textContent = `cd ${REPO_DECK} && python3 godot/tools/meshy_pipeline.py run ${sel} ${flags.join(' ')}`;
+  $('batch-cmd').style.display = '';
+}
+
+// ════════════════════════════════════════════════════════════════
+// Events
+// ════════════════════════════════════════════════════════════════
+function bind() {
+  for (const id of ['f-search', 'f-kind', 'f-vol', 'f-state']) $(id).addEventListener('input', renderRoster);
+  $('btn-batch').addEventListener('click', batchCommand);
+  $('o-provider').addEventListener('change', onProviderChange);
+  for (const id of ['o-model', 'o-count', 'o-multiview', 'o-texture']) $(id).addEventListener('change', updateCosts);
+  $('e-prompt').addEventListener('input', refreshFullPrompt);
+  $('btn-image').addEventListener('click', () => submitJob('image'));
+  $('btn-mesh').addEventListener('click', () => submitJob('mesh'));
+  $('btn-run').addEventListener('click', () => submitJob('run'));
+  $('btn-upload-img').addEventListener('click', () => $('upload-img').click());
+  $('upload-img').addEventListener('change', async (ev) => {
+    const f = ev.target.files[0], e = entry(); if (!f || !e) return;
+    if (!state.connected) { log('err', 'Uploading an image needs the runner.'); return; }
+    try {
+      const r = await api('POST', `/api/upload/${e.slug}/front`, await f.arrayBuffer(), f.type || 'image/png');
+      log('ok', `Uploaded ${f.name} as ${e.slug} front (${r.chosen}).`); await refreshRoster();
+    } catch (err) { log('err', `Upload failed: ${err.message}`); }
+    ev.target.value = '';
+  });
+  const dz = $('drop-zone');
+  ['dragenter', 'dragover'].forEach(ev => dz.addEventListener(ev, e => { e.preventDefault(); dz.classList.add('dragover'); }));
+  ['dragleave', 'drop'].forEach(ev => dz.addEventListener(ev, e => { e.preventDefault(); dz.classList.remove('dragover'); }));
+  dz.addEventListener('drop', e => loadGlb(e.dataTransfer.files[0]));
+  $('btn-browse').addEventListener('click', () => $('file-input').click());
+  $('file-input').addEventListener('change', e => { loadGlb(e.target.files[0]); e.target.value = ''; });
+  $('btn-pick-dir').addEventListener('click', async () => {
+    try {
+      state.dirHandle = await window.showDirectoryPicker({ mode: 'readwrite' });
+      $('fsa-text').textContent = `direct write → ${state.dirHandle.name}/`;
+      log('ok', `Directory connected: ${state.dirHandle.name}/`);
+    } catch (err) { if (err.name !== 'AbortError') log('err', err.message); }
+  });
+  $('btn-roster-file').addEventListener('click', () => $('roster-file').click());
+  $('roster-file').addEventListener('change', async (ev) => {
+    const f = ev.target.files[0]; if (!f) return;
+    try {
+      state.roster = JSON.parse(await f.text()); normaliseRoster(); renderRoster();
+      $('roster-src').textContent = f.name; log('ok', `Roster loaded from ${f.name}.`);
+    } catch (err) { log('err', `Bad roster JSON: ${err.message}`); }
+  });
+}
+
+boot();
 </script>
 </body>
 </html>

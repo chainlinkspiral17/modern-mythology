@@ -1,5 +1,17 @@
 # Character Modeling Notes — Reference
 
+## Hero pipeline v3 — prompt → image → Meshy (decided 2026-09-25)
+
+Supersedes the Mixamo/RPM step below for appearance: each character
+and hero prop has a prompt in `godot/tools/meshy_roster.json`;
+`godot/tools/meshy_pipeline.py` renders a concept image with Google
+(Gemini image / Imagen) or Runway, optionally side + back views, then
+runs Meshy image-to-3D (or multi-image-to-3d) and installs the GLB at
+the canonical path. Browser front-end: `godot/tools/hero_uploader/`.
+Canon looks captured in this file (Frasier block below) are already
+folded into the roster prompts; keep this file for the *why*, the
+roster for the *what*.
+
 ## Hero pipeline — Mixamo / Ready Player Me (decided 2026-06-16)
 
 After acknowledging that procedural primitive sculpts cannot

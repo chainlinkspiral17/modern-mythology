@@ -1,94 +1,98 @@
-# Hero GLB Uploader
+# Hero Studio (was: Hero GLB Uploader)
 
-A self-contained HTML tool for installing textured hero GLBs into
-`godot/assets/3d/characters/heroes/` with the right canonical
-filenames.
+One page that walks a roster entry through the whole 3D pipeline:
 
-## What it does
+```
+roster prompt ──► concept image (Google Gemini/Imagen or Runway) ──► Meshy image-to-3D ──► GLB at the canonical path
+                  + optional side/back views (multi-image-to-3d)              heroes/ · demons/ · props/
+```
 
-- Lists every canonical hero slot (mirrors `HERO_GLB_PATHS` in
-  `godot/tools/blender/locales/build_graustark.py`) with a status dot
-  showing whether each slot is currently filled.
-- Drag-and-drop a `.glb` (or browse for one), preview it rotating in
-  3D, then click **Install** to write the file with the canonical
-  filename to the repo.
-- Generates the matching `git add && git commit && git push`
-  command to paste afterward.
+The page is a front-end for `godot/tools/meshy_pipeline.py`. The roster
+of **every VN character, demon slot and hero prop** lives in
+`godot/tools/meshy_roster.json` — that file is the single source of
+truth for names, canonical filenames, speaker keys and prompts.
 
-## Two modes
+## Run it (Steam Deck)
 
-The tool uses the browser's [File System Access
-API](https://developer.mozilla.org/en-US/docs/Web/API/File_System_Access_API)
-when available so it can write straight into the repo with no
-download round-trip.
-
-- **Direct-install mode** (Chromium-family browsers — Chrome, Edge,
-  Brave, Vivaldi): click **Pick repo directory**, navigate to
-  `godot/assets/3d/characters/heroes/`, grant write access once, and
-  every subsequent install writes that file directly to disk.
-
-- **Download mode** (Firefox, Safari): the tool downloads the GLB
-  with the canonical filename. Move the downloaded file into
-  `godot/assets/3d/characters/heroes/` yourself, then run the
-  displayed git command.
-
-## How to open it
-
-It's a static page — no server, no build step.
-
-On the Steam Deck:
+Keys go in env vars or gitignored files next to the script — only the
+providers you use need a key:
 
 ```bash
-xdg-open /home/deck/Downloads/modern-mythology/godot/tools/hero_uploader/index.html
+cd /home/deck/Downloads/modern-mythology && echo 'msy_...' > godot/tools/.meshy_key && echo 'AIza...' > godot/tools/.google_key && echo 'key_...' > godot/tools/.runway_key
 ```
 
-Or just navigate Files → that folder → double-click `index.html`.
+Start the runner and open the page:
 
-For direct-install mode on the Deck you'll need a Chromium browser
-(Chrome / Edge / Brave installed via Flatpak). Firefox is fine for
-download mode.
-
-## Workflow
-
-1. Open `index.html` in a browser.
-2. (Chromium only) Click **Pick repo directory** → select
-   `godot/assets/3d/characters/heroes/`.
-3. Drag a `.glb` onto the page (or click **browse**).
-4. The tool auto-selects the matching hero slot if the filename
-   already matches a canonical (e.g. dragging `frasier_temple.glb`
-   selects `Cath_Frasier`). Otherwise click the right slot in the
-   list on the left.
-5. Click **Install**.
-6. Copy the displayed git command, paste it in a terminal, push.
-
-## Canonical roster
-
-The hero list mirrors the **22 major arcana characters** named in
-`lore/_GAUNTLET_BUILD_WIKI.md` ("Canonical cast" section), plus a
-short ensemble list (currently Alberto and Maya Daigle — important
-but not card-carriers).
-
-Some characters carry multiple arcana — same person at different
-points in time (e.g. John Frank is 0 The Fool, XIV Temperance, and
-XIX The Sun). One model per character; the future-self variants
-can be expressed via pose / shader / scene context, not separate
-GLBs.
-
-The Lovers (VI) and The World (XXI) are PAIRS — two entries each
-(Mackenzie + Philip Roberts; The Frog + Mr. Dickens Dean).
-
-## Adding a new character
-
-Edit `index.html` and add a row to the `HEROES` array. Use the
-existing schema:
-
-```js
-{arcana: 'V', name: 'The Hierophant', character: 'Quentin Paul',
- file: 'quentin_paul.glb', tag: 'Graustark · Table 17 brunch'},
+```bash
+cd /home/deck/Downloads/modern-mythology && python3 godot/tools/meshy_pipeline.py serve
 ```
 
-If the character is also referenced from a scene SPAWN in
-`godot/tools/blender/locales/build_graustark.py`, also add an
-entry to `HERO_GLB_PATHS` there — that dict maps scene-spawn
-labels (e.g. `'Cath_Frasier'`) to filenames, which is a different
-concern from the canonical character roster the uploader manages.
+→ <http://127.0.0.1:8765/hero_uploader/>. Header dots show which keys
+were found. Stdlib only, no pip installs.
+
+## Workflow in the page
+
+1. **Pick** a character / prop on the left (filter by kind, volume,
+   state; search by name, slug, key or tag).
+2. **Prompt** — the roster description is editable per run; the style
+   preamble for the kind (A-pose, flat grey background, etc.) is added
+   automatically. Expand *full prompt as sent* to see it.
+3. **Generate image** — choose provider + model + aspect + how many
+   candidates. Tick *side + back views* to also render a profile and a
+   back view from the chosen front (Gemini image models or Runway with a
+   reference; Imagen can't take references). Candidates appear as
+   thumbnails; click one to make it the chosen `front.png` / `side.png`
+   / `back.png`. *Upload my own image* uses a hand-picked reference
+   instead.
+4. **Make 3D** — Meshy settings (standard vs smart-topology, textured
+   PBR vs draft, texture resolution, pose). *Use side + back* sends all
+   chosen views to `multi-image-to-3d`. The GLB is downloaded straight to
+   `godot/assets/3d/characters/heroes/<file>` (or `demons/`, `props/`)
+   and shows up in the viewer.
+5. **Install / commit** — you can still drag any `.glb` onto the drop
+   zone to install it under the canonical name (from Mixamo, RPM, the
+   Meshy web app…). The page prints the git command to paste.
+6. **Batch** — *batch command for this filter* prints a one-line
+   `meshy_pipeline.py run …` for every visible entry, for overnight runs.
+
+Jobs run one at a time in the runner; the Jobs panel tails their logs.
+
+## CLI equivalents
+
+```bash
+cd /home/deck/Downloads/modern-mythology && python3 godot/tools/meshy_pipeline.py list
+cd /home/deck/Downloads/modern-mythology && python3 godot/tools/meshy_pipeline.py run frasier_temple --provider google --multiview --texture
+cd /home/deck/Downloads/modern-mythology && python3 godot/tools/meshy_pipeline.py run demon --provider runway --model gen4_image --no-texture
+cd /home/deck/Downloads/modern-mythology && python3 godot/tools/meshy_pipeline.py run all --dry-run
+```
+
+Selectors: slugs, globs (`vol6_*`, `the_*`), `vol5`/`vol6`/`vol7`,
+`hero`/`demon`/`prop`, `all`. `--dry-run` prints prompts and costs
+without spending anything. Outputs that already exist are skipped
+unless `--overwrite`.
+
+Concept candidates land in `godot/assets/concept/meshy/<slug>/`
+(gitignored, like the Runway videos — curate what you keep). The GLBs
+are committed as before.
+
+## Offline mode
+
+Opened straight from `file://` (no runner) the page falls back to the
+old behaviour: install a dropped GLB via the File System Access API
+(Chromium) or download-with-canonical-name (Firefox). Load the roster
+with the *load meshy_roster.json…* button since browsers block
+`file://` fetches across folders.
+
+## Adding a character or prop
+
+Add an entry to `godot/tools/meshy_roster.json` (schema is in the
+file's `_schema` block). If the VN should route a speaker to the new
+model, add its `keys` to `PORTRAIT_3D_KEY_TO_GLB` in
+`godot/scenes/game/CharLayer.gd`; a missing GLB falls through to the 2D
+portrait ladder so listing early is safe. World spawns in
+`build_graustark.py` (`HERO_GLB_PATHS`) remain a separate concern.
+
+Known key collisions (`carl`, `wren`, `nate`, `ben`, `margaret` mean
+different people in different volumes) are called out in the roster
+`notes`; use the long slug (`carl_drummer`, `wren_vol6`) in scene JSON
+when the 3D portrait is wanted.
