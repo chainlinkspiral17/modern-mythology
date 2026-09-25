@@ -20,7 +20,8 @@ synthesizing wiki is `../_VOL10_WIKI.md`.
 | `_AUTHORIAL_RULE.md` | **we don't see the author, but we feel him.** The governing rule: the volume is the strip; Wood is not Arthur; delusion and leak in the same panel; epiphanies are weather. Read first |
 | `foreword_afterword.md` | the bookends — the only prose, the only place the author is seen; the ending (the work is published; the specter foreshadowed); who writes them; the foreshadowing index |
 | `_CONCEPT_ART.md` | the September 2026 character/environment sheet, described, with where it departs from the brief |
-| `_ARC_OUTLINE.md` | the five arcs as chapters; proposed scene-id plan; the strip-as-presentation question |
+| `_SCOPE_AND_YEARS.md` | **scope** (the ~10,000-strip archive vs the ~200-unit book; three tiers of unit; drawing order) and **the years**, 1997–2027, one entry each: line, what the strip shows, what the reader infers, the units the book takes, the margin mark |
+| `_ARC_OUTLINE.md` | the book as seven runs of strips between the bookends; proposed scene-id plan; the player-as-editor canon |
 | `the_strip.md` | *Drift Wood* → *ROFLCOPTER* as an artifact: the names, the four eras, the motifs, the two fully-specified Sunday pages |
 | `publication_history.md` | the five cadences (biweekly · weekday-daily · newspaper · sabbaticals · private), the 2006 meme incident, the 2018–2020 burnout, the personal voyage |
 | `sample_strips.md` | drafted strips for every era, including the last public Sunday and the first private page |
