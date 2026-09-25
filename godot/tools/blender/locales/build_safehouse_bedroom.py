@@ -24,7 +24,7 @@ from _props.detail import (make_traffic_wear, make_floor_stain,
                            make_wall_tint_band, make_threshold,
                            make_wall_outlet, make_light_switch)
 
-ROOM_W = 4.8; ROOM_D = 5.6; CEIL = 2.6
+ROOM_W = 4.8; ROOM_D = 5.0; CEIL = 2.6   # widened only (2026-09-24): the N-wall bed / desk / nightstand are placed absolutely
 PAL_WALL = {"wall":(0.78,0.70,0.58,1.0),"baseboard":(0.42,0.32,0.22,1.0)}
 COL_FLOOR = (0.62,0.52,0.42,1.0); COL_SEAM = (0.32,0.22,0.14,1.0); COL_WOOD = (0.42,0.30,0.20,1.0)
 COL_ACCENT = (0.78,0.42,0.22,1.0)
