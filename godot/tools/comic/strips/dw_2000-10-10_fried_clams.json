@@ -1,0 +1,152 @@
+{
+  "id": "dw_2000-10-10_fried_clams",
+  "title": "Fried clams",
+  "strip": "drift_wood",
+  "date": "2000-10-10",
+  "run": 2,
+  "era": "era1",
+  "format": "daily4",
+  "tier": "A",
+  "selection": "full",
+  "venue": "the Newport college paper / the laundromat digest",
+  "arc": "The Driftwood Ledger (Arc 1, week 2)",
+  "source": "lore/drift_wood/_SOURCE_BRIEF.md (Arc 1, Daily, Tuesday, Week 2)",
+  "logline": "Daumier didn't need a cohort. Gully has clams.",
+  "cast": [
+    "wood_20",
+    "gully_17"
+  ],
+  "location": "dw_frame_shop",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "medium",
+      "composition": "The frame shop backroom. WOOD cutting mat board with a dull utility knife, a monologue balloon bubbling over the panel border.",
+      "characters": [
+        {
+          "id": "wood_20",
+          "pose": "bent over a mat cutter, knife mid-stroke",
+          "expression": "fervent"
+        }
+      ],
+      "props": [
+        "mat board",
+        "utility knife",
+        "foam core offcuts",
+        "a stack of frames"
+      ],
+      "balloons": [
+        {
+          "who": "WOOD",
+          "text": "Daumier didn't need a four-year cohort in an air-conditioned loft. Melville didn't get an MFA."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a thin young man in a chore coat cutting mat board with a utility knife in a cluttered picture-framing backroom, frames stacked against the wall, harsh xerox contrast, frantic vertical hatching",
+        "negative": "",
+        "notes": "Let the balloon break the panel border."
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "medium",
+      "composition": "GULLY leans through the shop's side door holding two wax-paper grease sacks. Rain behind him.",
+      "characters": [
+        {
+          "id": "gully_17",
+          "pose": "leaning in through a door, two grease sacks held up",
+          "expression": "cheerful"
+        }
+      ],
+      "props": [
+        "two wax-paper sacks",
+        "door",
+        "rain"
+      ],
+      "balloons": [
+        {
+          "who": "GULLY",
+          "text": "Got fried clams from the docks. They're mostly rubber, but the tartar sauce is aggressive."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a stocky young man in a backwards cap leaning in through a shop side door holding up two grease-stained paper sacks, rain hatching behind him",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "close",
+      "composition": "Wood stares at him, mid-knife-stroke, utterly dead-eyed.",
+      "characters": [
+        {
+          "id": "wood_20",
+          "pose": "frozen mid-cut, staring",
+          "expression": "dead-eyed"
+        }
+      ],
+      "props": [
+        "utility knife"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "close-up of a young man frozen mid-cut with a utility knife, staring dead-eyed at someone off-panel, heavy black spotting",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "wide",
+      "composition": "Silent wide shot. Both of them on upturned five-gallon spackle buckets in the rain alley behind the shop, chewing fried clams in total silence.",
+      "characters": [
+        {
+          "id": "wood_20",
+          "pose": "sitting on a bucket, chewing, sack in lap",
+          "expression": "blank"
+        },
+        {
+          "id": "gully_17",
+          "pose": "sitting on a bucket, chewing, content",
+          "expression": "content"
+        }
+      ],
+      "props": [
+        "two spackle buckets",
+        "grease sacks",
+        "alley",
+        "rain"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "wide silent shot of two young men sitting on upturned spackle buckets in a narrow rain alley behind a shop, eating from paper sacks, cold coastal rain rendered as frantic vertical hatching",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "",
+    "palette": "",
+    "paper": ""
+  },
+  "notes": "The Arthur-and-Gully beat, canonical form: eight sentences, one reply, silence."
+}

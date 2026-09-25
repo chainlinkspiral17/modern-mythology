@@ -1,0 +1,161 @@
+{
+  "id": "dw_2001-10-09_lot_c",
+  "title": "Lot C",
+  "strip": "drift_wood",
+  "date": "2001-10-09",
+  "run": 2,
+  "era": "era1",
+  "format": "daily4",
+  "tier": "B",
+  "selection": "full",
+  "venue": "the Newport college paper",
+  "arc": "Lot C",
+  "source": "lore/drift_wood/sample_strips.md",
+  "logline": "Philosophically he is auditing everything.",
+  "cast": [
+    "wood_20",
+    "security_guard"
+  ],
+  "location": "dw_newport_lot",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "wide",
+      "composition": "The community-college parking lot in Newport, rain. WOOD in an old Datsun with the engine off, drawing on the steering wheel.",
+      "characters": [
+        {
+          "id": "wood_20",
+          "pose": "in a car, drawing on a pad against the wheel",
+          "expression": "absorbed"
+        }
+      ],
+      "props": [
+        "Datsun",
+        "rain",
+        "a sign: LOT C"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a young man drawing on a pad propped against the steering wheel of an old parked Datsun in a rainy community college parking lot, a LOT C sign",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "medium",
+      "composition": "A CAMPUS SECURITY guard at the driver's window, tapping.",
+      "characters": [
+        {
+          "id": "security_guard",
+          "pose": "bent to the window, tapping",
+          "expression": "officious"
+        },
+        {
+          "id": "wood_20",
+          "pose": "looking up slowly",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "window",
+        "clipboard"
+      ],
+      "balloons": [
+        {
+          "who": "SECURITY",
+          "text": "You a student?"
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a campus security guard in a windbreaker bent to a car window tapping the glass in the rain, a young man inside looking up slowly",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "close",
+      "composition": "Wood, through the half-rolled window.",
+      "characters": [
+        {
+          "id": "wood_20",
+          "pose": "half-rolled window, deadpan",
+          "expression": "deadpan"
+        }
+      ],
+      "props": [],
+      "balloons": [
+        {
+          "who": "WOOD",
+          "text": "I'm auditing Composition II so I can use the print shop. Philosophically I'm auditing everything."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "close-up of a young man's deadpan face through a half-rolled car window in the rain",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "wide",
+      "composition": "The guard walking away. Wood not moving the car.",
+      "characters": [
+        {
+          "id": "security_guard",
+          "pose": "walking away, back turned",
+          "expression": "done"
+        },
+        {
+          "id": "wood_20",
+          "pose": "unmoved in the car",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "rain",
+        "LOT C sign"
+      ],
+      "balloons": [
+        {
+          "who": "SECURITY",
+          "text": "Lot C is for students."
+        },
+        {
+          "who": "WOOD",
+          "text": "Lot C is for cowards.",
+          "kind": "small"
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "wide shot of a security guard walking away across a rainy parking lot while an old Datsun sits unmoved under a LOT C sign",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "",
+    "palette": "",
+    "paper": ""
+  },
+  "notes": ""
+}

@@ -1,0 +1,81 @@
+{
+  "id": "ro_2027-04-25_final_page",
+  "title": "The final page",
+  "strip": "roflcopter",
+  "date": "2027-04-25",
+  "run": 7,
+  "era": "era4",
+  "format": "page",
+  "tier": "A",
+  "selection": "full",
+  "venue": "the last page of the book",
+  "arc": "The Final Page",
+  "source": "lore/drift_wood/_SOURCE_BRIEF.md (Arc 5, The Final Sunday Spread)",
+  "logline": "The bay at low tide. The chimney, the mug, the tide line, the sandpipers, the cedar branch going out.",
+  "cast": [
+    "wood_44",
+    "chloe_44",
+    "gully_48",
+    "barnaby_ii"
+  ],
+  "location": "dw_mudflats",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "finch",
+    "note": "Arthur Finch, 1997–2027. A cedar branch."
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "full-bleed page, no borders",
+      "composition": "A sweeping watercolor vista of Alsea Bay opening into the Pacific at low tide. Morning sun breaks through low coastal clouds, turning the wet sand into a mirror of gold and slate. Middle distance, small but sharply inked: the tackle shop's chimney smoking gently; CHLOE sitting on the wooden dock with a ceramic mug; WOOD walking the tide line with his sketchbook under his arm; BARNABY II charging headlong into a scattering flock of sandpipers. Bottom right, outside any border: the signature, dated 1997–2027, flanked by a tiny cedar branch floating out to sea.",
+      "characters": [
+        {
+          "id": "wood_44",
+          "pose": "walking the tide line, sketchbook under arm, small",
+          "expression": "at peace"
+        },
+        {
+          "id": "chloe_44",
+          "pose": "sitting on the dock with a mug, small",
+          "expression": ""
+        },
+        {
+          "id": "gully_48",
+          "pose": "implied by the chimney; or on the dock, tiny",
+          "expression": ""
+        },
+        {
+          "id": "barnaby_ii",
+          "pose": "charging sandpipers, small",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "Alsea Bay at low tide",
+        "sunbreak through cloud",
+        "wet sand mirror",
+        "tackle shop chimney smoking",
+        "wooden dock",
+        "sandpipers",
+        "a cedar branch floating out"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a sweeping full-bleed watercolor vista of a Pacific Northwest bay opening to the ocean at low tide, morning sun breaking through low clouds and turning wet sand into a mirror of gold and slate, in the middle distance small and sharply inked a shingle tackle shop with its chimney smoking, a woman sitting on a wooden dock with a mug, a man walking the tide line with a sketchbook under his arm, and a small three-legged dog charging into a scattering flock of sandpipers, a single cedar branch floating out to sea in the lower right, luminous, no panel borders",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "",
+    "palette": "",
+    "paper": ""
+  },
+  "notes": "The last page of Vol. II. The afterword follows.",
+  "layout": "full-bleed page"
+}

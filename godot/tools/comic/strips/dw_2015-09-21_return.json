@@ -1,0 +1,154 @@
+{
+  "id": "dw_2015-09-21_return",
+  "title": "Nobody forgets the helicopter",
+  "strip": "drift_wood",
+  "date": "2015-09-21",
+  "run": 6,
+  "era": "era3",
+  "format": "daily4",
+  "tier": "B",
+  "selection": "full",
+  "venue": "Arthur's site · the coastal weeklies",
+  "arc": "Return",
+  "source": "lore/drift_wood/sample_strips.md",
+  "logline": "Nine months. Maybe they've forgotten the helicopter.",
+  "cast": [
+    "wood_34",
+    "barnaby_ii"
+  ],
+  "location": "dw_garage",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "scruff",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "medium",
+      "composition": "The drafting table. Fresh bristol, blue-pencil grid. The three-legged pup asleep on WOOD's foot.",
+      "characters": [
+        {
+          "id": "wood_34",
+          "pose": "at the table, brush loaded",
+          "expression": "tentative"
+        },
+        {
+          "id": "barnaby_ii",
+          "pose": "asleep on his foot",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "fresh bristol",
+        "blue-pencil grid",
+        "swing-arm lamp"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a lean man at a drafting table with a loaded brush over fresh bristol, a small three-legged wiry dog asleep on his foot under the table, clean brush-and-ink line",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "close",
+      "composition": "Wood to the pup.",
+      "characters": [
+        {
+          "id": "wood_34",
+          "pose": "looking down, brush poised",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [
+        {
+          "who": "WOOD",
+          "text": "Nine months. Maybe they've forgotten the helicopter."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "close on a man at a drafting table looking down at a sleeping dog on his foot, brush poised",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "close",
+      "composition": "He inks the banner: D-R-I-F-T W-O-O-D.",
+      "characters": [
+        {
+          "id": "wood_34",
+          "pose": "hand lettering",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "banner reading DRIFT WOOD"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "close-up of an ink-stained hand lettering DRIFT WOOD in bold brush capitals on bristol",
+        "negative": "",
+        "notes": "Generator may letter DRIFT WOOD; if garbled, letter after."
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "medium",
+      "composition": "A laptop behind him, a comment notification unread on its screen. The pup does not wake.",
+      "characters": [
+        {
+          "id": "wood_34",
+          "pose": "back to the laptop, drawing",
+          "expression": "resigned"
+        },
+        {
+          "id": "barnaby_ii",
+          "pose": "asleep",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "laptop with a notification"
+      ],
+      "balloons": [
+        {
+          "who": "SCREEN",
+          "text": "is this the rolfcoptr guy",
+          "kind": "sfx"
+        },
+        {
+          "who": "WOOD",
+          "text": "Nobody forgets the helicopter."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a man drawing at a table with his back to a glowing laptop showing one unread notification, a small three-legged dog asleep on his foot",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "",
+    "palette": "",
+    "paper": ""
+  },
+  "notes": ""
+}

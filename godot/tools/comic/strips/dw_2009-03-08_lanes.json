@@ -1,0 +1,95 @@
+{
+  "id": "dw_2009-03-08_lanes",
+  "title": "Lanes",
+  "strip": "drift_wood",
+  "date": "2009-03-08",
+  "run": 3,
+  "era": "era2",
+  "format": "sunday",
+  "tier": "A",
+  "selection": "full",
+  "venue": "Arthur's site · the coastal weeklies",
+  "arc": "Lanes",
+  "source": "lore/drift_wood/sample_strips.md",
+  "logline": "The first true silent Sunday. The neon with the L out. The glow on the ridge.",
+  "cast": [],
+  "location": "dw_bowling_alley",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull_dog",
+    "note": "A gull, and a dog beside it — the only time while the dog lives."
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "wide tier",
+      "composition": "Tier 1: SMALL WOOD LANES from across the highway at night. Its neon — the L flickering out — hammered by rain and doubled in the wet asphalt. One car in the lot.",
+      "characters": [],
+      "props": [
+        "neon sign SMALL WOOD LANES with a dead L",
+        "rain",
+        "wet asphalt reflection",
+        "one car"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a bowling alley across a two-lane highway at night, its neon sign with one dead letter reflected in rain-hammered wet asphalt, one car in the lot, wet-on-wet watercolor, bruised indigo sky",
+        "negative": "",
+        "notes": "The sign text may be lettered by the generator: SMALL WOOD LANES with the first L dark. If it garbles, letter it after."
+      },
+      "stage": null,
+      "name": "The sign"
+    },
+    {
+      "n": 2,
+      "shot": "medium tier",
+      "composition": "Tier 2: closer. The dumpster behind the alley, chained. On the chain-link, a wet ring of rope where a leash was tied once. Nothing else.",
+      "characters": [],
+      "props": [
+        "rusted dumpster",
+        "chain-link",
+        "a wet ring of rope"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a rusted dumpster behind a building at night, chained, a small wet loop of rope tied to the chain-link fence, rain, watercolor, muted",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null,
+      "name": "The rope"
+    },
+    {
+      "n": 3,
+      "shot": "wide tier",
+      "composition": "Tier 3: wide again, later. The neon off. The lot empty. On the ridge east of town, far and small, a glow that is not the moon and that the composition treats as weather.",
+      "characters": [],
+      "props": [
+        "dark bowling alley",
+        "empty lot",
+        "a faint glow on the forested ridge"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "the same bowling alley later with its neon off and the lot empty, and far on the forested ridge behind the town a faint pale glow that is not the moon, treated like weather, wet-on-wet watercolor",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null,
+      "name": "The ridge"
+    }
+  ],
+  "art": {
+    "line": "",
+    "palette": "",
+    "paper": ""
+  },
+  "notes": "No words. The glow on the ridge appears here first and is never asked about.",
+  "layout": "3 tiers, portrait"
+}

@@ -1,0 +1,158 @@
+{
+  "id": "dw_2012-08-23_motel_map",
+  "title": "The map",
+  "strip": "drift_wood",
+  "date": "2012-08-23",
+  "run": 4,
+  "era": "era3",
+  "format": "daily4",
+  "tier": "B",
+  "selection": "full",
+  "venue": "Arthur's site · the coastal weeklies",
+  "arc": "Night Audit",
+  "source": "lore/drift_wood/sample_strips.md",
+  "logline": "A perfect map of Small Wood in ninety seconds. Accurate in 1997.",
+  "cast": [
+    "wood_34",
+    "motel_guest"
+  ],
+  "location": "dw_motel_desk",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "medium",
+      "composition": "The Driftwood Motel night-audit desk, 2:10 AM. A CRT, a bell, a key rack. WOOD in a motel polo drawing on the back of a registration card. Down the hall, the ice machine — its hum drawn as a low flat line under the panel.",
+      "characters": [
+        {
+          "id": "wood_34",
+          "pose": "at the desk in a polo, drawing on a card",
+          "expression": "absorbed"
+        }
+      ],
+      "props": [
+        "CRT",
+        "desk bell",
+        "key rack",
+        "registration card",
+        "ice machine hum line"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a lean man in a motel polo shirt drawing on the back of a card at a night-audit desk with a CRT and a bell, key rack behind, a dim hallway with an ice machine, razor-sharp brush and ink, clean architectural perspective",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "medium",
+      "composition": "A GUEST in a bathrobe at the counter.",
+      "characters": [
+        {
+          "id": "motel_guest",
+          "pose": "in a bathrobe, hair flat on one side",
+          "expression": "sleepless"
+        },
+        {
+          "id": "wood_34",
+          "pose": "not looking up yet",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "bathrobe"
+      ],
+      "balloons": [
+        {
+          "who": "GUEST",
+          "text": "Do you have a map of the town?"
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a man in a white bathrobe with hair flat on one side leaning on a motel front desk at night, a clerk not yet looking up",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "close",
+      "composition": "Wood slides the registration card across: on the back, a perfect ink map of Small Wood, every building, drawn in the ninety seconds since panel 1.",
+      "characters": [
+        {
+          "id": "wood_34",
+          "pose": "sliding the card across",
+          "expression": "neutral"
+        }
+      ],
+      "props": [
+        "the card with an intricate ink map"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "close-up of a hand sliding a small card across a desk, on its back an intricate perfect ink map of a small coastal town with every building drawn",
+        "negative": "",
+        "notes": "The map should read as astonishingly detailed for its size."
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "medium",
+      "composition": "The guest holds the card up.",
+      "characters": [
+        {
+          "id": "motel_guest",
+          "pose": "holding the card up to the light",
+          "expression": "puzzled"
+        },
+        {
+          "id": "wood_34",
+          "pose": "back to drawing",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "card",
+        "hum line continuing"
+      ],
+      "balloons": [
+        {
+          "who": "GUEST",
+          "text": "Is this... accurate?"
+        },
+        {
+          "who": "WOOD",
+          "text": "It was in 1997."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a man in a bathrobe holding a small card up to the light at a motel desk while the clerk goes back to drawing, a hallway ice machine in the background",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "",
+    "palette": "",
+    "paper": ""
+  },
+  "notes": "The ice machine's hum line runs under all four panels — the substrate's pitch, if the reader of vol 6 wants it; a motel noise otherwise."
+}

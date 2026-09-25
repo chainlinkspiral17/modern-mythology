@@ -1,0 +1,167 @@
+{
+  "id": "dw_2000-10-29_greyhound",
+  "title": "The Greyhound station",
+  "strip": "drift_wood",
+  "date": "2000-10-29",
+  "run": 2,
+  "era": "era1",
+  "format": "special",
+  "tier": "A",
+  "selection": "full",
+  "venue": "the laundromat digest — the only oversized cover of the run",
+  "arc": "The Driftwood Ledger (Arc 1, week 4)",
+  "source": "lore/drift_wood/_SOURCE_BRIEF.md (Arc 1, Sunday Spread, Week 4)",
+  "logline": "Chloe boards the southbound bus to Eugene to connect north. Neither waves.",
+  "cast": [
+    "wood_20",
+    "chloe_17"
+  ],
+  "location": "dw_greyhound",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "crab",
+    "note": "The crab, facing away."
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "wide tier",
+      "composition": "Widescreen five-tier layout. Tier 1: the Greyhound stop on 101 in drizzle. The bus, tinted windows. CHLOE at the door with two bags.",
+      "characters": [
+        {
+          "id": "chloe_17",
+          "pose": "boarding, two bags, not looking back",
+          "expression": "set"
+        }
+      ],
+      "props": [
+        "Greyhound bus",
+        "two bags",
+        "drizzle",
+        "a bench"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a Greyhound bus with tinted windows at a roadside stop on a coastal highway in drizzle, a young woman with two bags stepping up to the door, towering black Sitka spruce behind, stark black-and-white with xerox grain",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null,
+      "name": "The stop"
+    },
+    {
+      "n": 2,
+      "shot": "medium tier",
+      "composition": "Tier 2: WOOD outside the tinted window, hands stuffed deep in his oversized chore coat. Her shape barely visible through the tint. Neither waves.",
+      "characters": [
+        {
+          "id": "wood_20",
+          "pose": "standing, hands deep in coat pockets, looking at the window",
+          "expression": "held"
+        },
+        {
+          "id": "chloe_17",
+          "pose": "a shape behind tinted glass",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "tinted bus window",
+        "chore coat"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a thin young man in an oversized chore coat standing outside a bus with hands deep in his pockets, a faint figure behind the tinted window, neither waving, rain",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null,
+      "name": "The window"
+    },
+    {
+      "n": 3,
+      "shot": "close tier",
+      "composition": "Tier 3: the bus door folding shut. Wood's reflection in the dark glass.",
+      "characters": [
+        {
+          "id": "wood_20",
+          "pose": "reflected in glass",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "bus door",
+        "reflection"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "close-up of a bus door folding shut with a young man's reflection in the dark glass, rain streaks",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null,
+      "name": "The door"
+    },
+    {
+      "n": 4,
+      "shot": "wide tier",
+      "composition": "Tier 4: zoom out. Red taillights of the bus pulling away up 101.",
+      "characters": [
+        {
+          "id": "wood_20",
+          "pose": "small, alone at the stop",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "taillights",
+        "highway",
+        "spruce"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a bus pulling away up a two-lane coastal highway, its taillights small, a lone figure left at the roadside stop, black spruce walls on both sides",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null,
+      "name": "Taillights"
+    },
+    {
+      "n": 5,
+      "shot": "wide tier",
+      "composition": "Tier 5: the taillights disappearing around a serpentine bend of Highway 101, enveloped by towering ink-black Sitka spruces and coastal drizzle. No figure.",
+      "characters": [],
+      "props": [
+        "the bend of 101",
+        "Sitka spruce",
+        "drizzle"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "two red taillights disappearing around a serpentine bend of a coastal highway swallowed by towering ink-black Sitka spruce and drizzle, no people, stark black and white",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null,
+      "name": "The bend"
+    }
+  ],
+  "art": {
+    "line": "",
+    "palette": "",
+    "paper": ""
+  },
+  "notes": "Sundays don't exist yet in 2000; this ran as the digest's only oversized cover. The margin crab faces away.",
+  "layout": "5 tiers, portrait"
+}

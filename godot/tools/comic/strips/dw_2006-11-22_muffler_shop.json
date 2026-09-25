@@ -1,0 +1,145 @@
+{
+  "id": "dw_2006-11-22_muffler_shop",
+  "title": "You famous now?",
+  "strip": "drift_wood",
+  "date": "2006-11-22",
+  "run": 3,
+  "era": "era2",
+  "format": "daily4",
+  "tier": "B",
+  "selection": "full",
+  "venue": "Arthur's site",
+  "arc": "The 3:00 AM Protocol (Arc 2, week 3)",
+  "source": "lore/drift_wood/_SOURCE_BRIEF.md (Arc 2, Daily, Wednesday, Week 3)",
+  "logline": "The guy who runs the muffler shop in Waldport says his nephew saw this on a computer in Boise.",
+  "cast": [
+    "wood_26",
+    "gully_27"
+  ],
+  "location": "dw_garage",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull_small",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "medium",
+      "composition": "The garage, daytime for once. GULLY in the door holding a printout. WOOD at the table, drawn at two-thirds his usual size.",
+      "characters": [
+        {
+          "id": "gully_27",
+          "pose": "in the doorway holding up a printout",
+          "expression": "delighted"
+        },
+        {
+          "id": "wood_26",
+          "pose": "at the drafting table, drawn small",
+          "expression": "wary"
+        }
+      ],
+      "props": [
+        "printout",
+        "drafting table",
+        "swing-arm lamp"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a stocky man in a rubber apron holding up a printed page in the doorway of a cluttered garage studio, a thin man at a drafting table drawn noticeably smaller than him",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "medium",
+      "composition": "Gully reads from the printout.",
+      "characters": [
+        {
+          "id": "gully_27",
+          "pose": "reading the page",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "printout"
+      ],
+      "balloons": [
+        {
+          "who": "GULLY",
+          "text": "Hey Woody. The guy who runs the muffler shop in Waldport says his nephew saw this on a computer in Boise."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a stocky man reading aloud from a printout in a garage doorway",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "medium",
+      "composition": "Gully, lowering the page.",
+      "characters": [
+        {
+          "id": "gully_27",
+          "pose": "page lowered, grinning",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [
+        {
+          "who": "GULLY",
+          "text": "You famous now?"
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a stocky man lowering a printout and grinning at someone off-panel",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "medium",
+      "composition": "Wood drops his face into his open inkwell.",
+      "characters": [
+        {
+          "id": "wood_26",
+          "pose": "face down in an inkwell",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "inkwell",
+        "ink spreading"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a small thin man at a drafting table with his face dropped into an open inkwell, ink spreading on the table, muddy digital flats",
+        "negative": "",
+        "notes": "Wood at two-thirds size in all four panels; Gully normal."
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "",
+    "palette": "",
+    "paper": ""
+  },
+  "notes": ""
+}

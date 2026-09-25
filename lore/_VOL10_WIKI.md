@@ -375,7 +375,9 @@ strip's own panel grid as the presentation. Decision reserved.
 
 ## Status
 
-Outlining, now fleshing out. The brief is transcribed; the
+Outlining, now fleshing out; the comic pipeline exists
+(`godot/tools/comic/`) with nineteen complete strip scripts and a
+renderer for the concept run. The brief is transcribed; the
 reference files are drafted from it and from the user's notes on
 cadence, the authorial rule, and the bookends; sample strips exist
 for every era. No scene JSON exists. The engine's volume slot exists and is locked.
