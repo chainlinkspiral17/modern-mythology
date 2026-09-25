@@ -1,6 +1,8 @@
 # ARTHUR "WOODY" FINCH · the chronicler
 ## Small Wood, OR · born ~1980 · the strip's author
 
+*An inference document. Arthur never appears in the volume's panels — only "Wood," the character he draws himself as, and only the foreword and afterword speak of him directly. What follows is what the strip and the bookends let the reader know. See `_AUTHORIAL_RULE.md`.*
+
 Seventeen in 1997: gaunt, slouching under an oversized thrift-store
 wool overcoat, a bristol pad clutched like a shield. Editor of *The
 Timberline*. Effortless draftsman. Voted Most Likely to Win a

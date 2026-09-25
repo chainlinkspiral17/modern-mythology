@@ -29,6 +29,18 @@ pages instead of strips, and names them *ROFLCOPTER* — the meme's
 name, spelled right, taken back. The personal voyage ends on a
 cedar log at the mouth of the bay at dawn, April 2027.
 
+**We don't see the author, but we feel him.** The volume is the
+strip, read in order, with a foreword before and an afterword
+after — the only prose, and the only place Arthur is seen. In the
+panels there is only **Wood**, the character he draws himself as,
+and the tragicomedy is the distance between what Wood is shown to
+be and what the strips betray: the delusions of grandeur, the
+failing through life, the hopes, dreams, fears and epiphanies,
+rendered through the work. If there is a happy ending, it's that
+the work is published — and that the specter of his own life is
+foreshadowed in its pages. See `drift_wood/_AUTHORIAL_RULE.md` and
+`drift_wood/foreword_afterword.md`.
+
 The volume's thesis, in the brief's words: *talent without
 discipline is just a very articulate form of self-sabotage* — and
 then, thirty years later, the reversal: *ten thousand days of
@@ -55,11 +67,11 @@ This volume, like the saga, is nested and loose:
   which changes genre every four years. A work that exists only as
   Box 4B and as the thing the strip is *not*.
 - **The retrospective** — the 2027 Seattle publisher's complete
-  edition of the strip, with a young editor's apparatus. The frame
-  that lets the volume look back at itself.
-- **The volume** — the VN chapters, which are the *life* the strip
-  was a record of. The reader sees the strip and the days it was
-  drawn on.
+  edition, with a foreword and an afterword that tell the author's
+  life and hardships. The book the reader is holding.
+- **The volume** — *is* the retrospective. Foreword, the strip in
+  runs, the private pages, afterword. No scenes of the life; only
+  the record of it and two essays about the man who kept it.
 - **Vol 2, *Small Wood Volumes*** — a notebook found in a copy shop
   and finished by someone else. The saga's first Small Wood work is
   itself a found document. Vol 10 closes the same town from the
@@ -75,8 +87,13 @@ meme right; he gets it right when nobody is watching.
 
 ### The primary cast
 
+*Everyone below is known through the strip and the bookends only.
+In the panels, Arthur is "Wood"; Chloe and Todd are the strip's
+Chloe and Gully. The biographies are what the reader infers.*
+
 | Character | What |
 |---|---|
+| **Wood** | The strip's lead. Arthur as he draws himself — taller in 1997, two-thirds size after the meme, absent for months in 2021, then from behind, then a reflection. The gap between Wood and Arthur is the volume's engine · `drift_wood/_AUTHORIAL_RULE.md` |
 | **Arthur "Woody" Finch** | Born ~1980 · the protagonist and the strip's author · 1997 editor of *The Timberline* · turns down the PNCA scholarship in 2000 · Heceta Frame & Matting on Highway 101 (2000s) · night auditor at the Driftwood Motel (2010s–2027) · childhood bedroom → garage apartment behind the cedar-shake tavern · 1993 Subaru Legacy wagon, oil-burning · signs *A. Finch — Small Wood, OR* with a tiny gull or crab · `drift_wood/arthur_finch.md` |
 | **Chloe Sterling** | Arthur's intellectual equal and harshest mirror · *Timberline* culture editor, smudged eyeliner, battered Discman · leaves (1999 / autumn 2000, see below) · Seattle, Chicago, Europe, Portland · senior strategist at a boutique design agency · marries Julian in July 2014 (San Juan Islands), divorces quietly in 2021 · sits on Todd's dock with a Rainier in 2024 · `drift_wood/chloe_sterling.md` |
 | **Todd "Gully" Gulliver** | The anchor · backwards cap, work boots, ten-second delay · inherits a shingle shack by the boat launch from his uncle in 2003 → **Gully's Tackle & Roast**, bait shop + espresso bar, the town's living room · marries Maria (county nurse) 2009, ranch house on a half-acre of hemlock, two kids · lends Arthur money under thin pretexts · pins Arthur's pencil roughs above the register · `drift_wood/todd_gulliver.md` |
@@ -84,7 +101,8 @@ meme right; he gets it right when nobody is watching.
 | **Barnaby II** | Three-legged wirehair terrier/border pup · arrives in a box stamped ALICE'S WHOLESALE BAIT & SMOKED MEATS · Todd's note: *His name is not my problem* · sentry through the 2027 finale · `drift_wood/barnaby.md` |
 | **Julian** | Chloe's husband, 2014–2021 · senior interface architect at a tech firm · affable, wealthy, not a villain |
 | **Maria Gulliver** | Todd's wife · pragmatic county nurse |
-| **The editor** | Young, from the boutique Seattle publisher, 2026–27 · expects a recluse, finds a man with a routine · the retrospective's eyes · unnamed in the brief (reserved) |
+| **The editor** | Young, from the boutique Seattle publisher, 2026–27 · expects a recluse, finds a man with a routine · writes the foreword (lean) · appears in the strip once, in the brief's Box 4B daily · unnamed (reserved) |
+| **The afterword's author** | Chloe (lean). The one prose voice from inside the strip's cast · `drift_wood/foreword_afterword.md` |
 | **Arthur's father** | Gets sick in Phase Two (mid-2000s) · otherwise reserved |
 
 ### The concept-sheet variant (September 2026, work in progress)
@@ -288,10 +306,10 @@ writer chooses on purpose:
 
 Reserved. No gallery game is designed. The saga's frame (every
 volume has an authorial canon and a player canon) implies one. The
-obvious shape is also the right one: **the player draws the
-strip.** A daily four-panel grid; the Sunday tiers; the signature
-mark chosen at the end of each week. What the player notices is
-what gets kept. See `drift_wood/_ARC_OUTLINE.md` for the shape.
+shape that fits the rule: **the player is the editor.** Forty boxes
+in a garage, a page count, a deadline; the player chooses what the
+retrospective includes and never meets the author either. See
+`drift_wood/_ARC_OUTLINE.md`.
 
 The engine currently lists vol 10 as *ROFLcopter* with the `glitch`
 skin. The brief argues for a skin that **drifts with the eras** —
@@ -300,6 +318,11 @@ strip's own panel grid as the presentation. Decision reserved.
 
 ## Reserved
 
+- Whether the specter is literal — whether Arthur is alive when
+  the book is published. Decides the afterword's tense. Nothing
+  else needs it yet (`drift_wood/foreword_afterword.md`).
+- Who writes the foreword and afterword (lean: the editor; Chloe).
+- The hardships the afterword names that the strip never showed.
 - The tavern's name.
 - The editor's name.
 - Arthur's father and mother; the childhood bedroom; when he moves
@@ -319,26 +342,32 @@ strip's own panel grid as the presentation. Decision reserved.
    before anything else here.
 2. **`drift_wood/_README.md`** — how the files are organized and
    what the strip's eras are.
-3. **`drift_wood/the_strip.md`** — the four eras and the two
+3. **`drift_wood/_AUTHORIAL_RULE.md`** — we don't see the author.
+   Read before writing any strip or scene.
+4. **`drift_wood/foreword_afterword.md`** — the bookends, the
+   ending, the foreshadowing index.
+5. **`drift_wood/the_strip.md`** — the four eras and the two
    fully-specified Sunday pages.
-4. **`drift_wood/publication_history.md`** — the cadences, the
+6. **`drift_wood/publication_history.md`** — the cadences, the
    names, the burnout, the personal voyage.
-5. **`drift_wood/sample_strips.md`** — drafted strips per era.
-6. **`drift_wood/arthur_finch.md`** and the other three character
-   files.
-7. **`drift_wood/_ARC_OUTLINE.md`** — the arcs as chapters and the
-   proposed scene-id plan.
-8. **`drift_wood/_CONCEPT_ART.md`** — the September 2026 sheet.
-9. **`_VOL7_WIKI.md`** — only for the Smolvud echoes and the far
-   horizon.
-10. **Vol 2's title scene** — there is no vol 2 wiki; read
+7. **`drift_wood/sample_strips.md`** — drafted strips per era,
+   with the delusion-and-leak samples.
+8. **`drift_wood/arthur_finch.md`** and the other three character
+   files, read as inference documents.
+9. **`drift_wood/_ARC_OUTLINE.md`** — the book's structure as runs
+   of strips and the proposed scene-id plan.
+10. **`drift_wood/_CONCEPT_ART.md`** — the September 2026 sheet.
+11. **`_VOL7_WIKI.md`** — only for the Smolvud echoes and the far
+    horizon.
+12. **Vol 2's title scene** — there is no vol 2 wiki; read
    `godot/resources/scenes/vol2/vol2_title.json` for the found-
    notebook frame if the nesting matters to the chapter at hand.
 
 ## Status
 
 Outlining, now fleshing out. The brief is transcribed; the
-reference files are drafted from it and from the user's cadence
-notes; sample strips exist for every era. No scene JSON exists. The engine's volume slot exists and is locked.
+reference files are drafted from it and from the user's notes on
+cadence, the authorial rule, and the bookends; sample strips exist
+for every era. No scene JSON exists. The engine's volume slot exists and is locked.
 
 The chapter is held.

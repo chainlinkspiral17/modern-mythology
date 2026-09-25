@@ -1,205 +1,202 @@
 # ROFLCOPTR · arc outline · prep
 
-The brief specifies five arcs across thirty years. The user's
-cadence notes add two more seams: the burnout that ends the public
-strip (Dec 2020) and the private work after it (*ROFLCOPTER*,
-2021–27). This file turns that into a proposed **chapter shape**
-and a scene-id plan, without writing any scenes. Nothing here is in
-`index.json`.
+The volume is the 2027 retrospective, read cover to cover:
+
+```
+FOREWORD
+  Drift Wood · 1997–2020     the public strip, in runs
+  ROFLCOPTER · 2021–2027     the private pages
+AFTERWORD
+```
+
+Between the bookends there is no author on the page
+(`_AUTHORIAL_RULE.md`). Every unit below is a **run of strips**, a
+**gap**, or a **divider** — never a dramatized day. The brief's five
+arcs and the user's cadence seams give the runs their edges.
+Nothing here is in `index.json`.
 
 Working assumptions (change freely):
 
-- **Acts fall on cadence seams.** Biweekly → weekday-daily (1999).
+- **Runs fall on cadence seams.** Biweekly → weekday-daily (1999).
   Daily → newspaper (2004). Newspaper → nothing (Dec 2020). Nothing
-  → pages (Jan 2021). The brief's five arcs sit inside those.
-- **The strip is on screen.** Each act contains its key dailies and
-  Sundays *as drawn* — CG nodes or a strip-panel presentation — and
-  the days they were drawn on as VN scenes.
-- **The retrospective frames it.** The 2026 editor's visit opens
-  the volume as a prologue and closes it, so the thirty years read
-  as the archive being opened. Works within works.
-- **Two names, never confused.** *Drift Wood* through Act V.
-  *ROFLCOPTER* from Act VI. *ROLFCOPTR* only in Act II and as the
-  thing strangers say afterward.
+  → pages (Jan 2021).
+- **A run is a chapter.** Each holds its key dailies and Sundays as
+  drawn (CG nodes or a strip-panel presentation), the gaps between
+  them as gaps, and a divider card with the box number and dates.
+- **The reader infers.** No narration between strips. The only
+  prose is the foreword before and the afterword after.
+- **Names.** *Drift Wood* through Run 6. *ROFLCOPTER* from Run 7.
+  *ROLFCOPTR* only in Run 3 and as the thing strangers say after.
 
 ---
 
-## Proposed structure
+## FOREWORD
 
-### Prologue · The Archive (autumn 2026)
+Prose. The editor's (lean). Who he was as the town knew him; what
+the strip is; how to read it (Wood is not Arthur; watch the
+margin); that there were hardships, unnamed. Four or five pages.
+See `foreword_afterword.md`.
 
-The editor drives down from Seattle to collect *Drift Wood*,
-1997–2020, expecting a recluse. Arthur's routine: morning shift at
-the Driftwood, afternoons at Gully's, evening walk with Barnaby II.
-The garage. Boxes 1–20. She does not open 21 yet. Era IV line.
+- `vol10_foreword`
 
-- `vol10_ch0_driftwood_motel` · `vol10_ch0_gullys` ·
-  `vol10_ch0_garage` · `vol10_ch0_box_one`
+## Run 1 · The Timberline (Sept 1997 – June 1999) · every two weeks
 
-### Act I · The Timberline / "The Driftwood Ledger" (1997 – autumn 2000)
+~40 strips. The over-written, over-inked ones. Cafeteria
+existentialism. Truffaut to a cashier. The red pen on the drawing.
+Chloe and the shared marginalia. Todd in the back row. The last
+issue Arthur edits.
 
-Every two weeks. The newsroom, the back page, the red pen on the
-drawing. Todd in the margins. Chloe leaves for college (June 1999);
-the strip goes weekday-daily in Newport. The scholarship turned
-down. Heceta Frame & Matting. The fried-clam daily. The Greyhound
-Sunday: red taillights around the bend of 101.
+- `vol10_r1_divider` (Box 1 · 1997–1999)
+- `vol10_r1_first_strip` (#1, `sample_strips.md`) ·
+  `vol10_r1_cashier` · `vol10_r1_red_pen` (#21) ·
+  `vol10_r1_last_issue`
+- Gap: summer 1999. Nothing. A divider that says so.
 
-- `vol10_ch1_timberline` · `vol10_ch1_red_pen` ·
-  `vol10_ch1_last_issue` · `vol10_ch1_newport_lot` ·
-  `vol10_ch1_frame_shop` · `vol10_ch1_fried_clams` ·
-  `vol10_ch1_greyhound`
-- Strips: "Drift Wood" #1 and #21 (`sample_strips.md`); the
-  Newport parking-lot daily; the Greyhound Sunday (brief).
+## Run 2 · The Weekday Daily (Sept 1999 – 2003) · Monday to Friday
 
-**Interlude i · 2001–2005.** Weekdays for the college paper,
-weekends for Box 4B. Barnaby (found Nov 1999 — can head Act I).
-The digest on the laundromat rack. The daily "for the rack." 2004:
-online, six and a Sunday. Father gets sick. The one grease sack.
-Told as a run of dailies.
+~1,000 strips, sampled. The line learning to commit. Barnaby found
+behind the bowling alley (a strip where a dog is simply there the
+next Monday). The Seattle dailies and the framing shop Wednesday
+(delusion-and-leak). The Greyhound Sunday. The fried-clam daily.
+"Lot C is for cowards." The *COMING 2003* corner box. "For who?"
+"The rack."
 
-### Act II · "The 3:00 AM Protocol" (November 2006, 3 weeks)
+- `vol10_r2_divider` (Boxes 2–5)
+- `vol10_r2_dog_monday` · `vol10_r2_seattle_mon_tue_wed` ·
+  `vol10_r2_greyhound_sunday` · `vol10_r2_fried_clams` ·
+  `vol10_r2_lot_c` · `vol10_r2_coming_2003` · `vol10_r2_the_rack`
+- Gap: most of 2003–04, five a week for nobody. The divider notes
+  the box is full and nothing in it ran.
 
-The *ROLFCOPTR* parody. *"If they want garbage, I will build them a
-cathedral of garbage."* The 509. The Waldport muffler shop's
-printout. Arthur's face in the inkwell. He runs the parody a month
-for the banner money, kills it, and is the ROLFCOPTR guy for the
-rest of his life.
+## Run 3 · The Newspaper Run, early (2004 – 2011) · six and a Sunday
 
-- `vol10_ch2_message_boards` · `vol10_ch2_sprint` ·
-  `vol10_ch2_509` · `vol10_ch2_todd_printout` ·
-  `vol10_ch2_banner_ads` · `vol10_ch2_kill_it`
-- Daily CG: **3:42 AM, the CRT** (brief).
+Online, newspaper cadence. Muddy flats. The one grease sack. The
+ROLFCOPTR week (the parody itself, all of it, as the strip's
+readers saw it — then Wood back at two-thirds size). The muffler-
+shop printout. The *COMING 2009* box. The cedar-mill walk with
+Chloe (a Sunday). "Lanes." The father: never drawn; the gap is
+nine months of re-inked 2001 reprints, and the divider says
+*reprints*.
 
-**Interlude ii · 2007–2013.** The coastal weeklies pick up the
-dailies (~2008). The cedar mill walk with Chloe (2008). "Lanes,"
-the first real silent Sunday (2009). Father's death; the first
-sabbatical; re-inking the 2001 strips (2010). The Driftwood Motel
-night desk, the ninety-second map (2012). Era III's line arriving.
+- `vol10_r3_divider` (Boxes 6–11)
+- `vol10_r3_grease_sack` · `vol10_r3_rolfcoptr_week` ·
+  `vol10_r3_two_thirds` · `vol10_r3_muffler_shop` ·
+  `vol10_r3_coming_2009` · `vol10_r3_cedar_mill_sunday` ·
+  `vol10_r3_lanes`
+- Gap: 2010, sabbatical. `vol10_r3_reprints`.
 
-### Act III · "The Glass Pavilion" (July 2014, 3 weeks)
+## Run 4 · The Newspaper Run, peak (2012 – July 2014) · Era III line
 
-The drive north on a doughnut spare. The pavilion on Puget Sound.
-The cocktail-hour daily (*"Who's backing you?"*). The dock at
-11:30 PM: *"Someone has to make sure the fog doesn't get stolen."*
-*"You're a coward, Arthur Finch."* *"I know."*
+The ninety-second motel map. The Subaru north on a doughnut spare.
+The cocktail hour. The dock at 11:30 PM — the one panel in
+twenty-three years where the strip's Chloe says the author's name.
 
-- `vol10_ch3_subaru_north` · `vol10_ch3_pavilion` ·
-  `vol10_ch3_cocktail_hour` · `vol10_ch3_dock`
-- Sunday CG: **The Dock, 11:30 PM** (brief).
+- `vol10_r4_divider` (Boxes 12–14)
+- `vol10_r4_motel_map` · `vol10_r4_subaru_north` ·
+  `vol10_r4_cocktail_hour` · `vol10_r4_dock_sunday`
 
-### Act IV · "Low Tide at Alsea Bay" (Nov–Dec 2014, 5 weeks)
+## Run 5 · Low Tide (Nov – Dec 2014) · the Silent Sunday Trilogy
 
-The gravel path Barnaby can't make. The table lowered. The carry.
-The clinic. Then the Silent Sunday Trilogy — three chapters that
-are almost entirely CG, almost entirely without text.
+The gravel path. The table lowered. Then three Sundays with no
+words. Nothing in this run says what happened. The divider gives
+only the dates.
 
-- `vol10_ch4_gravel_path` · `vol10_ch4_table_lowered` ·
-  `vol10_ch4_clinic`
-- `vol10_ch4_the_carry` · `vol10_ch4_the_empty_chair` ·
-  `vol10_ch4_the_box` — the last two fully specified in
+- `vol10_r5_divider` (Box 15)
+- `vol10_r5_gravel_path` · `vol10_r5_table_lowered` ·
+  `vol10_r5_the_carry` · `vol10_r5_the_empty_chair` ·
+  `vol10_r5_the_box` — the last two fully specified in
   `the_strip.md`; the first two CGs to commission.
+- Gap: 2015, sabbatical. Landscapes rerun. `vol10_r5_landscapes`.
 
-**Interlude iii · 2015–2018.** The second sabbatical; Barnaby II
-drawn every day and published never. The return daily (Sept 2015:
-*"Nobody forgets the helicopter."*). The timber allegory (2016).
-The Newport diner with Chloe (2018). The papers shrinking the
-Sunday. The aggregator's vertical scroll.
+## Run 6 · The Last Sunday (Sept 2015 – Dec 27, 2020)
 
-### Act V · The Last Sunday (2018 – December 27, 2020)
+"Nobody forgets the helicopter." The *COMING 2017* box. "Lanes"
+again with more letters out. The Newport diner Sunday. The Sunday
+page visibly shrinking (the strip drawn to a smaller grid because
+the papers asked). Airbnb signs in the backgrounds. Then the last
+public Sunday: the 1997 cafeteria redrawn, the droplet falling,
+Wood into fog, *thank you for reading* too small for newsprint.
+Then a divider with no strips on it: *January 2021 — no file.*
 
-New. The Watterson burnout, translated. The streaming pitch, the
-sticker company, the dog-food bag, each refused. The Sunday page
-being unmade downstream. Small Wood half Airbnbs; the people he
-drew leaving or dying. He announces nothing. The last public *Drift
-Wood* Sunday: the 1997 cafeteria redrawn, the droplet finally
-falling, the walk into fog. *thank you for reading*, too small for
-newsprint.
+- `vol10_r6_divider` (Boxes 16–20)
+- `vol10_r6_return` · `vol10_r6_coming_2017` ·
+  `vol10_r6_lanes_again` · `vol10_r6_newport_diner` ·
+  `vol10_r6_smaller_grid` · `vol10_r6_last_sunday`
+- `vol10_r6_no_file`
 
-- `vol10_ch5_the_pitch` · `vol10_ch5_the_scroll` ·
-  `vol10_ch5_airbnb_street` · `vol10_ch5_one_more` ·
-  `vol10_ch5_last_sunday` · `vol10_ch5_january_file`
-- Sunday CG: **the last public Sunday** (`sample_strips.md`).
+## Run 7 · ROFLCOPTER (Jan 2021 – April 2027) · the personal voyage
 
-### Act VI · ROFLCOPTER · the personal voyage (2021 – spring 2027)
+No grid. Main street twice, joined with no middle. Wood absent for
+months, then from behind, then as a reflection. The bird. The
+library. The mill's last year in forty pages. The Greyhound's route
+north. Chloe's rooms. The glow on the ridge, larger. The dock and
+the Rainier (a page, 2024, the strip's Chloe and Gully older). The
+editor's visit — as the brief has it, a *strip*: "Box 4B." "Ten
+thousand days of noticing things." The final page.
 
-New. The first page with no grid: main street 1997 and 2021 joined
-at the center with no middle, signed with the meme's name spelled
-right. The sprawl: the mill's last year (1994) in forty pages
-researched at the library; the Greyhound's route north; Chloe's
-rooms he never saw; the glow on the ridge drawn larger and never
-asked about. Chloe's divorce (2021); the dock and the Rainier
-(2024); the vol 7 summer (August 2025) passing unnamed in the
-background. The routine from outside; the most work he's ever done
-from inside. The editor returns, opens box 21.
+- `vol10_r7_divider` (Boxes 21–40)
+- `vol10_r7_no_grid` · `vol10_r7_main_street_twice` ·
+  `vol10_r7_the_bird` · `vol10_r7_from_behind` ·
+  `vol10_r7_library` · `vol10_r7_mill_1994` ·
+  `vol10_r7_route_north` · `vol10_r7_the_ridge` ·
+  `vol10_r7_dock_2024` · `vol10_r7_box_4b` ·
+  `vol10_r7_ten_thousand_days` · `vol10_r7_final_page`
 
-- `vol10_ch6_no_grid` · `vol10_ch6_main_street_twice` ·
-  `vol10_ch6_the_library` · `vol10_ch6_mill_1994` ·
-  `vol10_ch6_the_dock_2024` · `vol10_ch6_the_ridge` ·
-  `vol10_ch6_box_21`
-- Pages: the first private page; the mill spread
-  (`sample_strips.md`).
+## AFTERWORD
 
-### Act VII · "The 30-Year Ledger" (spring 2027)
+Prose. Chloe's (lean). The life and the hardships, told straight.
+How the book came to exist. Then the turn back into the pages: the
+corner boxes, the flat stroke, the droplet, the figure from behind
+— the life, drawn before it happened. Ten pages. Whether the
+specter is literal is reserved and decides this piece's tense.
 
-The brief's Arc 5, resolved. Box 4B holding the rug down. *"So...
-you wasted thirty years drawing a daily newspaper strip about a
-small town?"* *"Ten thousand days of noticing things. Nothing gets
-wasted unless you weren't looking."* The decision about boxes
-21–40 (lean: *Drift Wood* is published; *ROFLCOPTER* is not). The
-final page: the bay, the chimney, the mug, the tide line, the
-sandpipers, the cedar branch. *Arthur Finch, 1997–2027.*
+- `vol10_afterword` · `vol10_end`
 
-- `vol10_ch7_box_4b` · `vol10_ch7_ten_thousand_days` ·
-  `vol10_ch7_boxes_21_to_40` · `vol10_ch7_final_page` ·
-  `vol10_end`
-
-### Epilogue · reserved
+## Epilogue · reserved
 
 Whether the saga's far-horizon image (the feral child, the ceramic
-frog, the ground where the riverboat was) is the last thing on
-screen after the cedar branch. See `_VOL10_WIKI.md` → Reserved.
+frog, the ground where the riverboat was) follows the afterword.
+See `_VOL10_WIKI.md` → Reserved.
 
 ---
 
 ## The presentation question (for the engine, later)
 
-Vol 10 is a comic strip inside a visual novel. Three ways to show
-it, not exclusive:
+Vol 10 is a book of comic strips inside a visual novel. The reader
+turns pages. Three ways to show it, not exclusive:
 
-1. **CG nodes** for the specified Sundays and key dailies, in the
-   existing engine, with the `glitch` (or a new) skin. Cheapest.
-   Already supported.
-2. **An era-drifting skin.** The HUD and dialogue box change paper
-   with the cadences: xerox grain and ballpoint (Timberline), CRT
-   glow and muddy flats (newspaper run, early), Arches cold-press
-   and watercolor bleed (late run), and then — for Act VI — no
-   frame at all, the page as the screen. The main menu already
-   assigns skins per volume; per-chapter skin would be new.
-3. **A strip-panel presentation** for the dailies: the four-panel
-   grid as the scene format, typewriter text inside balloons, the
-   signature mark drawn at the end of each week. The player-canon
-   candidate and the largest engine lift.
+1. **CG nodes** for every strip and page, with divider cards as
+   interlude nodes and the bookends as narrate nodes. Cheapest.
+   Already supported. The whole volume is images and two essays.
+2. **An era-drifting skin.** The frame around the strips changes
+   paper with the cadences: newsprint and xerox grain (Runs 1–2),
+   a browser window and CRT glow (Run 3), the coastal weekly's
+   page (Runs 4–6), and then — for Run 7 — no frame at all, the
+   page as the screen. Per-chapter skin would be new.
+3. **A strip-panel presentation** for the dailies: typewriter text
+   inside balloons, the signature mark drawn last. Largest lift.
 
 Recommendation for prep: assume (1) for authoring; keep (2) and (3)
-open until Act I is scripted and read.
+open until Run 1 is assembled and read.
 
-## The player canon (reserved; sketch)
+## The player canon · the editor (reserved; sketch)
 
-**The player draws the strip, on its schedule.** Every two weeks
-in Act I; five a week in the interlude; six and a Sunday from 2004.
-The player picks which noticed things become the panels, which
-Sunday is a landscape instead of a joke, which mark signs the page
-(gull, crab, flat stroke, three-legged scruff). Choices are not
-win/lose; they decide what the archive contains.
+**The player is the editor.** Boxes 1 through 40 in a garage; a
+publisher's page count; a deadline. The player goes through the
+strips and chooses what the retrospective includes — which runs,
+which Sundays, whether the ROLFCOPTR week goes in, whether boxes
+21–40 go in at all, what the dividers say. The player never meets
+the author either; the brief's one editor-and-Wood conversation is
+a strip the player *finds*, not a scene the player plays.
 
-Then, in Act V, the schedule ends. In Act VI the player keeps
-drawing with no one watching, no grid, no deadline — and the game
-has to make that feel like the point rather than the loss. The
-unlock web is boxes 21–40. The retrospective's count is the
-volume's last number.
+Choices are not win/lose. They decide what the book is, and
+therefore what the reader of the authorial canon — the volume as
+written — would have gotten instead. The foreword and afterword are
+fixed; the book between them is the player's. The unlock web is
+the archive. The last number is the page count.
 
 ## Not yet written
 
 No scene JSON. No `index.json` entry. No bg or CG paths. No
-`_ART_MANIFEST.md`. Next prep step: agree the scene-id list above,
-then `vol10_ch0_*` stubs.
+`_ART_MANIFEST.md`. Next prep step: agree the run list above, then
+`vol10_foreword` and `vol10_r1_*` stubs.

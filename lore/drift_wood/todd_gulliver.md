@@ -1,6 +1,8 @@
 # TODD "GULLY" GULLIVER · the anchor
 ## Gully's Tackle & Roast · by the boat launch · since 2003
 
+*An inference document. In the panels he is Gully. What follows is what the strip lets the reader infer about the man behind him. See `_AUTHORIAL_RULE.md`.*
+
 The archetypal slacker at the back of the journalism classroom in
 1997: backwards ball cap, muddy work boots, a ten-second delay,
 drawing crude caricatures of teachers on the margins of discarded
