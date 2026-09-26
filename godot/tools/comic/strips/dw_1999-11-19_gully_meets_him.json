@@ -1,0 +1,189 @@
+{
+  "id": "dw_1999-11-19_gully_meets_him",
+  "title": "Gully meets him",
+  "strip": "drift_wood",
+  "date": "1999-11-19",
+  "run": 2,
+  "era": "era1",
+  "format": "daily4",
+  "tier": "B",
+  "selection": "full",
+  "venue": "the coast community-college paper, Newport · the laundromat digest",
+  "arc": "The Dog Monday",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (1999)",
+  "logline": "Gully and the dog. Instant. Wood watches an alliance form.",
+  "cast": [
+    "wood_20",
+    "gully_17",
+    "barnaby"
+  ],
+  "location": "dw_boat_launch",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "wide",
+      "composition": "The boat launch. GULLY on the dock. WOOD arriving with BARNABY on the leash. The dog sees Gully and goes flat-out.",
+      "characters": [
+        {
+          "id": "gully_17",
+          "pose": "on the dock, turning",
+          "expression": ""
+        },
+        {
+          "id": "wood_20",
+          "pose": "holding the leash, being pulled",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "lunging joyfully toward Gully",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "dock",
+        "crab pots",
+        "leash taut"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a small dog lunging joyfully toward a boy in a backwards cap on a wooden dock, dragging a young man in a chore coat by the leash, brush-pen black and white",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "medium",
+      "composition": "Gully on one knee, the dog all over him.",
+      "characters": [
+        {
+          "id": "gully_17",
+          "pose": "kneeling, the dog on him",
+          "expression": "delighted"
+        },
+        {
+          "id": "barnaby",
+          "pose": "all over him",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [
+        {
+          "who": "GULLY",
+          "text": "Who's this."
+        },
+        {
+          "who": "WOOD",
+          "text": "Barnaby. He was behind the Lanes."
+        },
+        {
+          "who": "GULLY",
+          "text": "He smells like the Lanes."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a boy in a backwards cap kneeling on a dock laughing while a scruffy dog climbs all over him",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "close",
+      "composition": "Gully, producing a maple bar from his jacket. Barnaby's entire soul.",
+      "characters": [
+        {
+          "id": "gully_17",
+          "pose": "holding out a maple bar",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "transfixed",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "maple bar"
+      ],
+      "balloons": [
+        {
+          "who": "WOOD",
+          "text": "Don't—"
+        },
+        {
+          "who": "GULLY",
+          "text": "Half."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "close-up of a boy holding out a maple bar to a transfixed small dog, a hand reaching to stop him too late",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "wide",
+      "composition": "The dock. Gully and the dog sitting at the edge, feet and paws over the water. Wood behind them, drawing, already knowing which of them the dog will love more.",
+      "characters": [
+        {
+          "id": "gully_17",
+          "pose": "sitting on the dock edge",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "beside him",
+          "expression": ""
+        },
+        {
+          "id": "wood_20",
+          "pose": "behind, drawing",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "dock edge",
+        "water"
+      ],
+      "balloons": [
+        {
+          "who": "WOOD",
+          "text": "Traitor.",
+          "kind": "small"
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a boy in a backwards cap and a small dog sitting side by side on the edge of a dock over the water, a young man behind them drawing, black and white",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "brush-pen now — the weekday deadline teaches the hand to commit; still xeroxed, still black and white",
+    "palette": "",
+    "paper": "the college paper's newsprint; the digest's quarter-letter xerox"
+  },
+  "notes": "Gully and the dog. It matters in 2014."
+}

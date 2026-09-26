@@ -1,0 +1,147 @@
+{
+  "id": "dw_1999-09-24_first_digest",
+  "title": "The first digest",
+  "strip": "drift_wood",
+  "date": "1999-09-24",
+  "run": 2,
+  "era": "era1",
+  "format": "daily4",
+  "tier": "B",
+  "selection": "full",
+  "venue": "the coast community-college paper, Newport · the laundromat digest",
+  "arc": "Newport",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (1999)",
+  "logline": "Friday. Five strips, one staple. The rack at the laundromat. Distribution.",
+  "cast": [
+    "wood_20",
+    "laundromat_owner"
+  ],
+  "location": "dw_laundromat",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "medium",
+      "composition": "The laundromat. WOOD at the folding table with a stapler and five strips. The OWNER watching from the dryers.",
+      "characters": [
+        {
+          "id": "wood_20",
+          "pose": "stapling",
+          "expression": ""
+        },
+        {
+          "id": "laundromat_owner",
+          "pose": "watching, folding",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "stapler",
+        "five strips",
+        "dryers",
+        "the free rack by the door"
+      ],
+      "balloons": [
+        {
+          "who": "OWNER",
+          "text": "What's that."
+        },
+        {
+          "who": "WOOD",
+          "text": "This week. Five days. One digest."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a young man stapling five photocopied comic strips into a booklet at a laundromat folding table while an older man folds towels by the dryers",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "close",
+      "composition": "The digest. A cover drawn on the spot: the laundromat itself, the rack, this exact moment.",
+      "characters": [],
+      "props": [
+        "the digest cover"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "close-up of a small stapled zine whose cover is a brush-pen drawing of the very laundromat it sits in",
+        "negative": "",
+        "notes": "The first digest cover. The cover is a drawing of where it's being read."
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "medium",
+      "composition": "Wood setting the digest in the free rack, between a real-estate flyer and a church bulletin.",
+      "characters": [
+        {
+          "id": "wood_20",
+          "pose": "placing the digest in the rack",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "free rack",
+        "flyers"
+      ],
+      "balloons": [
+        {
+          "who": "WOOD",
+          "text": "Between property and God. Where the reader lives."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a young man placing a small stapled zine into a free-paper rack between a real estate flyer and a church bulletin by a laundromat door",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "wide",
+      "composition": "The laundromat from the door. The rack. The digest in it. A woman with a basket reaching for the real-estate flyer. Not the digest. Not yet.",
+      "characters": [
+        {
+          "id": "wood_20",
+          "pose": "by the door, watching, small",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "rack",
+        "a woman with a laundry basket"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a laundromat seen from its door, a free rack with a small zine in it, a woman with a laundry basket reaching past it for a flyer, a young man watching from the doorway, black and white",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "brush-pen now — the weekday deadline teaches the hand to commit; still xeroxed, still black and white",
+    "palette": "",
+    "paper": "the college paper's newsprint; the digest's quarter-letter xerox"
+  },
+  "notes": "The laundromat digest begins. The cover drawn on the spot is the proto-Sunday."
+}

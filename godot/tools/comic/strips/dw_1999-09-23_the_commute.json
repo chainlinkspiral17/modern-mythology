@@ -1,0 +1,129 @@
+{
+  "id": "dw_1999-09-23_the_commute",
+  "title": "The commute",
+  "strip": "drift_wood",
+  "date": "1999-09-23",
+  "run": 2,
+  "era": "era1",
+  "format": "daily4",
+  "tier": "B",
+  "selection": "full",
+  "venue": "the coast community-college paper, Newport · the laundromat digest",
+  "arc": "Newport",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (1999)",
+  "logline": "Twenty minutes home. The novel is still in the car.",
+  "cast": [
+    "wood_20"
+  ],
+  "location": "dw_newport_lot",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "wide",
+      "composition": "101 south, late afternoon. The Datsun. The sea on the right now.",
+      "characters": [
+        {
+          "id": "wood_20",
+          "pose": "driving",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "Datsun",
+        "the sea",
+        "a log truck ahead"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "an old Datsun driving south on a coastal highway behind a log truck, the gray Pacific on the right, late afternoon, brush-pen black and white",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "close",
+      "composition": "Wood, driving, talking to the passenger seat.",
+      "characters": [
+        {
+          "id": "wood_20",
+          "pose": "driving, talking",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [
+        {
+          "who": "WOOD",
+          "text": "Chapter one. A man returns to the town he never left. No — a man never leaves the town he was returning to. No."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "close-up of a young man driving and talking to the empty passenger seat, working something out",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "close",
+      "composition": "The log truck's load ahead. Cedar. He watches it instead.",
+      "characters": [],
+      "props": [
+        "log truck load of cedar"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "close-up through a windshield of the back of a log truck loaded with cedar logs on a coastal highway",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "medium",
+      "composition": "The Datsun pulling in behind the tavern at dusk — no, behind his parents' house. The garage doesn't exist yet. He sits in the car a minute with the engine off.",
+      "characters": [
+        {
+          "id": "wood_20",
+          "pose": "sitting in the parked car, engine off",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "a small house",
+        "driveway",
+        "dusk"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "an old Datsun parked in the driveway of a small coastal house at dusk, a young man sitting inside with the engine off, black and white, no words",
+        "negative": "",
+        "notes": "Not the garage yet. The garage apartment doesn't appear until 2004."
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "brush-pen now — the weekday deadline teaches the hand to commit; still xeroxed, still black and white",
+    "palette": "",
+    "paper": "the college paper's newsprint; the digest's quarter-letter xerox"
+  },
+  "notes": ""
+}

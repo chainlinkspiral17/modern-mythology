@@ -1,0 +1,165 @@
+{
+  "id": "dw_1999-11-15_dog_monday",
+  "title": "Dog Monday",
+  "strip": "drift_wood",
+  "date": "1999-11-15",
+  "run": 2,
+  "era": "era1",
+  "format": "daily4",
+  "tier": "A",
+  "selection": "full",
+  "venue": "the coast community-college paper, Newport · the laundromat digest",
+  "arc": "The Dog Monday",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (1999)",
+  "logline": "A dog under the table. No introduction. He's there the next day too.",
+  "cast": [
+    "wood_20",
+    "barnaby"
+  ],
+  "location": "dw_wood_bedroom",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull_dog",
+    "note": "A gull with a dog beside it — once. Then never again while the dog lives."
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "medium",
+      "composition": "Wood's bedroom, morning. The drawing table. Under it, a low-slung terrier-hound mix, wet, asleep, as if he had always been there. WOOD drawing above him, not remarking.",
+      "characters": [
+        {
+          "id": "wood_20",
+          "pose": "drawing",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "asleep under the table, wet",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "drawing table",
+        "a wet dog under it",
+        "a towel on the floor"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a young man drawing at a bedroom table with a scruffy low-slung wet terrier-hound mix asleep underneath it as if it had always been there, a towel on the floor, brush-pen black and white",
+        "negative": "",
+        "notes": "The dog is simply there. Do not stage a reveal."
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "close",
+      "composition": "The dog. Folded velvet ears. One eye open.",
+      "characters": [
+        {
+          "id": "barnaby",
+          "pose": "one eye open",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "close-up of a scruffy terrier-hound with folded velvet ears opening one eye",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "medium",
+      "composition": "Wood's mother's voice from the door. Wood keeps drawing.",
+      "characters": [
+        {
+          "id": "wood_20",
+          "pose": "drawing",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [
+        {
+          "who": "MOTHER",
+          "text": "Arthur, there's a dog."
+        },
+        {
+          "who": "WOOD",
+          "text": "Yes."
+        },
+        {
+          "who": "MOTHER",
+          "text": "Whose dog."
+        },
+        {
+          "who": "WOOD",
+          "text": "He was behind the bowling alley. Tied to the dumpster. It was freezing."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a young man drawing at a table answering a voice from the doorway without looking up, a dog under the table",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "medium",
+      "composition": "The dog's chin now on Wood's slipper. Wood's pen has stopped. He looks down. The panel holds.",
+      "characters": [
+        {
+          "id": "wood_20",
+          "pose": "pen stopped, looking down",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "chin on his slipper",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "slipper"
+      ],
+      "balloons": [
+        {
+          "who": "MOTHER",
+          "text": "Does he have a name.",
+          "kind": "small"
+        },
+        {
+          "who": "WOOD",
+          "text": "Barnaby.",
+          "kind": "small"
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "close on a dog resting its chin across a young man's slipper under a drawing table, the man's pen stopped, looking down",
+        "negative": "",
+        "notes": "The name is said once, small. The strip never explains it."
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "brush-pen now — the weekday deadline teaches the hand to commit; still xeroxed, still black and white",
+    "palette": "",
+    "paper": "the college paper's newsprint; the digest's quarter-letter xerox"
+  },
+  "notes": "The dog arrives. The dumpster from #26. The one time the margin gull has company until 'Lanes'."
+}

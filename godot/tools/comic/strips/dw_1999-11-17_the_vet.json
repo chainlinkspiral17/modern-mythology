@@ -1,0 +1,184 @@
+{
+  "id": "dw_1999-11-17_the_vet",
+  "title": "The vet",
+  "strip": "drift_wood",
+  "date": "1999-11-17",
+  "run": 2,
+  "era": "era1",
+  "format": "daily4",
+  "tier": "B",
+  "selection": "full",
+  "venue": "the coast community-college paper, Newport · the laundromat digest",
+  "arc": "The Dog Monday",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (1999)",
+  "logline": "The county vet guesses a year. Wood guesses a name for the breed. Neither is right.",
+  "cast": [
+    "wood_20",
+    "barnaby",
+    "extra_vet"
+  ],
+  "location": "dw_vet",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "medium",
+      "composition": "A county veterinary clinic. BARNABY on the steel table, unimpressed. A VET with a stethoscope. WOOD holding the sock.",
+      "characters": [
+        {
+          "id": "barnaby",
+          "pose": "on the table",
+          "expression": ""
+        },
+        {
+          "id": "extra_vet",
+          "pose": "listening to the dog's chest",
+          "expression": ""
+        },
+        {
+          "id": "wood_20",
+          "pose": "holding a sock",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "steel table",
+        "stethoscope",
+        "a poster of dog breeds"
+      ],
+      "balloons": [
+        {
+          "who": "VET",
+          "text": "About a year. Terrier and something. Hound, maybe. Beagle."
+        },
+        {
+          "who": "WOOD",
+          "text": "I was going to say 'coastal.'"
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a small veterinary clinic, a scruffy terrier-hound on a steel table, a vet listening with a stethoscope, a young man holding a sock",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "close",
+      "composition": "The breed poster. Wood's finger on it, on nothing in particular.",
+      "characters": [
+        {
+          "id": "wood_20",
+          "pose": "finger on a poster",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "dog breed poster"
+      ],
+      "balloons": [
+        {
+          "who": "WOOD",
+          "text": "He's not on here."
+        },
+        {
+          "who": "VET",
+          "text": "They're never on there."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "close-up of a young man's finger on a dog-breed poster pointing at nothing in particular",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "medium",
+      "composition": "The vet, writing.",
+      "characters": [
+        {
+          "id": "extra_vet",
+          "pose": "writing on a chart",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "chart"
+      ],
+      "balloons": [
+        {
+          "who": "VET",
+          "text": "Name?"
+        },
+        {
+          "who": "WOOD",
+          "text": "Barnaby."
+        },
+        {
+          "who": "VET",
+          "text": "Owner?"
+        },
+        {
+          "who": "WOOD",
+          "text": "...Finch."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a vet writing on a clipboard chart while a young man answers, a dog on the table",
+        "negative": "",
+        "notes": "Owner: Finch. The world's paperwork uses the real name; the strip lets it through as it did the yearbook."
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "wide",
+      "composition": "Outside. Barnaby on a real leash now, bought at the counter. Wood, the receipt in his teeth, tying his shoe. The dog waiting like he's done it forever.",
+      "characters": [
+        {
+          "id": "barnaby",
+          "pose": "on a leash, waiting",
+          "expression": ""
+        },
+        {
+          "id": "wood_20",
+          "pose": "tying his shoe, receipt in teeth",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "new leash",
+        "clinic door",
+        "rain"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "outside a vet clinic in the rain, a scruffy dog on a new leash waiting patiently while a young man ties his shoe with a receipt in his teeth, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "brush-pen now — the weekday deadline teaches the hand to commit; still xeroxed, still black and white",
+    "palette": "",
+    "paper": "the college paper's newsprint; the digest's quarter-letter xerox"
+  },
+  "notes": ""
+}

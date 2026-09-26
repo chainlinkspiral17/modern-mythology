@@ -1,0 +1,157 @@
+{
+  "id": "dw_1999-11-16_the_walk",
+  "title": "The walk",
+  "strip": "drift_wood",
+  "date": "1999-11-16",
+  "run": 2,
+  "era": "era1",
+  "format": "daily4",
+  "tier": "B",
+  "selection": "full",
+  "venue": "the coast community-college paper, Newport · the laundromat digest",
+  "arc": "The Dog Monday",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (1999)",
+  "logline": "The dog wants out. The strip discovers the beach.",
+  "cast": [
+    "wood_20",
+    "barnaby"
+  ],
+  "location": "dw_beach",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "medium",
+      "composition": "Morning. BARNABY at the bedroom door, leash in mouth. There is no leash. He has a sock. WOOD at the table.",
+      "characters": [
+        {
+          "id": "barnaby",
+          "pose": "at the door with a sock in his mouth",
+          "expression": ""
+        },
+        {
+          "id": "wood_20",
+          "pose": "at the table, looking over",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "sock",
+        "door"
+      ],
+      "balloons": [
+        {
+          "who": "WOOD",
+          "text": "I'm working."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a scruffy dog standing at a bedroom door holding a sock in its mouth, looking at a young man at a drawing table",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "medium",
+      "composition": "Barnaby, still at the door. The sock. Wood's pen. A standoff.",
+      "characters": [
+        {
+          "id": "barnaby",
+          "pose": "unmoved",
+          "expression": ""
+        },
+        {
+          "id": "wood_20",
+          "pose": "pen hovering",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a standoff between a dog holding a sock at a door and a young man at a drawing table with his pen hovering",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "wide",
+      "composition": "The beach. Sideways rain. Barnaby ahead, barking at a wave. Wood behind, coat over his head.",
+      "characters": [
+        {
+          "id": "barnaby",
+          "pose": "barking at the surf",
+          "expression": ""
+        },
+        {
+          "id": "wood_20",
+          "pose": "coat over his head, following",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "surf",
+        "rain",
+        "kelp"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a wide beach in sideways rain, a low-slung dog barking at a breaking wave, a young man behind with his coat pulled over his head, brush-pen black and white",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "wide",
+      "composition": "Wood stopped, coat off his head, looking at the light through the spruce grove at the beach's edge. Barnaby dragging him toward it by the sock.",
+      "characters": [
+        {
+          "id": "wood_20",
+          "pose": "stopped, looking at the light",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "pulling the sock",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "spruce grove",
+        "light through it",
+        "surf"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a young man stopped on a beach looking at light breaking through a spruce grove while a small dog tugs him forward by a sock, no words",
+        "negative": "",
+        "notes": "The first Arthur-and-Barnaby walk: the strip drops the jokes and lets the landscape in."
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "brush-pen now — the weekday deadline teaches the hand to commit; still xeroxed, still black and white",
+    "palette": "",
+    "paper": "the college paper's newsprint; the digest's quarter-letter xerox"
+  },
+  "notes": "The first walk. The template for fifteen years of them."
+}

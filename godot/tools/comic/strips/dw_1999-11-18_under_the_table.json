@@ -1,0 +1,132 @@
+{
+  "id": "dw_1999-11-18_under_the_table",
+  "title": "Under the table",
+  "strip": "drift_wood",
+  "date": "1999-11-18",
+  "run": 2,
+  "era": "era1",
+  "format": "daily4",
+  "tier": "B",
+  "selection": "full",
+  "venue": "the coast community-college paper, Newport · the laundromat digest",
+  "arc": "The Dog Monday",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (1999)",
+  "logline": "Wood tries to draw the dog. The dog does not hold still. Then he does.",
+  "cast": [
+    "wood_20",
+    "barnaby"
+  ],
+  "location": "dw_wood_bedroom",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "medium",
+      "composition": "Wood's table. WOOD trying to draw BARNABY, who is walking in a circle.",
+      "characters": [
+        {
+          "id": "wood_20",
+          "pose": "drawing, frustrated",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "circling",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "pad",
+        "the circle drawn as motion lines"
+      ],
+      "balloons": [
+        {
+          "who": "WOOD",
+          "text": "Hold still. Watterson could draw a tiger from memory. I have the real thing and he won't—"
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a young man at a drawing table trying to sketch a small dog that keeps walking in a circle, motion lines, black and white",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "close",
+      "composition": "The pad: six false starts of a dog, each one a different dog.",
+      "characters": [],
+      "props": [
+        "pad with six half-drawn dogs"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "close-up of a drawing pad covered in six abandoned half-drawn sketches of a dog, each slightly different",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "medium",
+      "composition": "Barnaby stops. Curls under the table into a tight ball, an ammonite. Asleep in one motion.",
+      "characters": [
+        {
+          "id": "barnaby",
+          "pose": "curled in a tight ball under the table",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a scruffy dog curling into a tight spiral under a drawing table and falling instantly asleep",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "close",
+      "composition": "The pad: one drawing. The ball. Perfect. Wood's hand not moving, so as not to wake it.",
+      "characters": [
+        {
+          "id": "wood_20",
+          "pose": "hand still, pen up",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the pad with one finished drawing of a curled dog"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "close-up of a finished brush-pen drawing of a dog curled into a tight ball, and a hand holding the pen very still above it, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "brush-pen now — the weekday deadline teaches the hand to commit; still xeroxed, still black and white",
+    "palette": "",
+    "paper": "the college paper's newsprint; the digest's quarter-letter xerox"
+  },
+  "notes": "The strip learns the dog's weight. Watterson invoked once; the strip means it."
+}
