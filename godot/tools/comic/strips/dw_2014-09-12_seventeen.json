@@ -1,0 +1,163 @@
+{
+  "id": "dw_2014-09-12_seventeen",
+  "title": "Seventeen",
+  "strip": "drift_wood",
+  "date": "2014-09-12",
+  "run": 4,
+  "era": "era3",
+  "format": "daily4",
+  "tier": "B",
+  "selection": "part",
+  "venue": "Arthur's site · the coastal weeklies",
+  "arc": "The Anniversary",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (2014 · fixtures · deepening xiv)",
+  "logline": "September 12 at Gully's: the corn, the end stool, the old dog under it, and the count. Seventeen, Gully says. The corn's been here every year, Wood says; he hasn't. Corn doesn't count, Gully says, and puts down a second tray.",
+  "cast": [
+    "wood_34",
+    "gully_35",
+    "barnaby"
+  ],
+  "location": "dw_gullys",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "crab",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "medium",
+      "composition": "Gully's counter, WOOD on the end stool, a tray of corn, old BARNABY under the stool, GULLY behind the counter.",
+      "characters": [
+        {
+          "id": "wood_34",
+          "pose": "on the end stool",
+          "expression": ""
+        },
+        {
+          "id": "gully_35",
+          "pose": "behind the counter",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "under the stool",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the corn"
+      ],
+      "balloons": [
+        {
+          "who": "GULLY",
+          "text": "Seventeen."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a thin man on a shop's end stool with a paper tray of corn, a stocky man behind the counter and an old dog beneath the stool, black ink",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "medium",
+      "composition": "WOOD, a hand on the tray.",
+      "characters": [
+        {
+          "id": "wood_34",
+          "pose": "hand on the tray",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [
+        {
+          "who": "WOOD",
+          "text": "The corn's been here every year. I haven't."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a thin man at a counter with his hand on a paper tray of corn, black ink",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "medium",
+      "composition": "GULLY setting a second tray down beside the first.",
+      "characters": [
+        {
+          "id": "gully_35",
+          "pose": "setting down a second tray",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "a second tray"
+      ],
+      "balloons": [
+        {
+          "who": "GULLY",
+          "text": "Corn doesn't count."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a stocky man in an apron setting a second paper tray of corn beside the first on a counter, black ink",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "wide",
+      "composition": "The two trays, the two of them eating, Gully's corkboard above with the 2003 rough and the 61 MI postcard, the dog asleep.",
+      "characters": [
+        {
+          "id": "wood_34",
+          "pose": "eating",
+          "expression": ""
+        },
+        {
+          "id": "gully_35",
+          "pose": "eating",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "asleep",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the corkboard"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "two men eating corn at a shop counter beneath a crowded corkboard with an old dog asleep at their feet, black ink",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "razor-sharp, confident brush and ink; pristine perspective; crisp silhouettes; zero crosshatch in close-ups",
+    "palette": "dailies: black ink, one spot tone at most. Sundays: wet-on-wet — gray-green moss, fog, rusted tin, bruised dusk",
+    "paper": "bristol for dailies; 140 lb Arches cold-press for Sundays"
+  },
+  "notes": "Seventeen. Corn doesn't count."
+}

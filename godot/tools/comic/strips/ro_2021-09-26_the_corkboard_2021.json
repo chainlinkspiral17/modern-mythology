@@ -11,7 +11,7 @@
   "venue": "nobody · boxes 21–40",
   "arc": "unsequenced",
   "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (Run 7 · deepening xii)",
-  "logline": "Gully's corkboard in September 2021, the whole inventory: the yearbook photo lowest, the walk map, the Florence gull, the 61 MI postcard, the backward digest, the sticker upside down, TAKE-OUT ONLY. A private page of a public object. Nothing new on it.",
+  "logline": "Gully's corkboard in September 2021, the whole inventory: the 2003 rough of Gully hanging the sign, lost-cat flyers, kayak cards, a tide table, tourist snapshots, the printout under page fourteen, the 61 MI postcard, the red-framed crab, TAKE-OUT ONLY. A private page of a public object. Nothing new on it.",
   "cast": [],
   "location": "dw_gullys",
   "margin": {
@@ -23,7 +23,7 @@
     {
       "n": 1,
       "shot": "single page",
-      "composition": "A crowded corkboard filling the page: a small yearbook photo pinned lowest, a hand-drawn map, a photo of a large gull, a postcard, a small comic digest pinned backward, a sticker upside down, a hand-lettered card.",
+      "composition": "A crowded shop corkboard filling the page: a pencil rough of a man hanging a sign, lost-cat flyers, kayak cards, a tide table, tourist snapshots, a yellowed printout with a weekly's page pinned over it, a postcard with marker on its face, a small red-framed crab drawing, a hand-lettered card.",
       "characters": [],
       "props": [
         "the corkboard"
@@ -32,9 +32,9 @@
       "caption": "",
       "sfx": "",
       "image": {
-        "prompt": "a single full comic page with no panel borders, spare knowing ink line with economy, muted ochre and slate blue and sea-foam green washes, a crowded corkboard filling the page with a small yearbook photo pinned lowest, a hand-drawn map, a photo of a large gull, a postcard, a small booklet pinned backward, an upside-down sticker and a hand-lettered card, no words legible",
+        "prompt": "a single full comic page with no panel borders, spare knowing ink line with economy, muted ochre and slate blue and sea-foam green washes, a crowded shop corkboard filling the page with a pencil sketch of a man hanging a sign, lost-cat flyers, kayak cards, a tide table, tourist snapshots, a yellowed printout with a newspaper page pinned over it, a postcard with marker on its face, a small red-framed crab drawing and a hand-lettered card, no words legible",
         "negative": "",
-        "notes": "Inventory per objects.md; letter TAKE-OUT ONLY after if at all."
+        "notes": "Gully's corkboard inventory per objects.md (not Wood's garage board). Letter TAKE-OUT ONLY and 61 MI after, if at all."
       },
       "stage": null
     }

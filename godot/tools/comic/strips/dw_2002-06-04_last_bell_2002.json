@@ -1,0 +1,139 @@
+{
+  "id": "dw_2002-06-04_last_bell_2002",
+  "title": "Last Bell, 2002",
+  "strip": "drift_wood",
+  "date": "2002-06-04",
+  "run": 2,
+  "era": "era1",
+  "format": "daily4",
+  "tier": "B",
+  "selection": "part",
+  "venue": "the coast community-college paper, Newport · the laundromat digest",
+  "arc": "Last Bell",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (2002 · fixtures · deepening xiv)",
+  "logline": "The far sidewalk, the dog at three, the kids. One of them recognizes him from the digest. Wood walks away before the panel decides how he feels about it.",
+  "cast": [
+    "wood_20",
+    "barnaby",
+    "extra_student"
+  ],
+  "location": "dw_school_front",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "wide",
+      "composition": "The school from across the road at the bell, WOOD and BARNABY on the far sidewalk.",
+      "characters": [
+        {
+          "id": "wood_20",
+          "pose": "standing",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "sitting",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the bell"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a young man and a small dog on a sidewalk across from a small-town high school with a jagged sound shape at its door, brush-pen black and white",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "wide",
+      "composition": "Students streaming past on the near side of the road; two look across.",
+      "characters": [
+        {
+          "id": "extra_student",
+          "pose": "two looking across",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "students streaming along a road with two of them looking across at a young man and a dog, brush-pen black and white",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "medium",
+      "composition": "One student, to the other, pointing with a chin.",
+      "characters": [
+        {
+          "id": "extra_student",
+          "pose": "pointing with a chin",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [
+        {
+          "who": "STUDENT",
+          "text": "That's the guy from the digest."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a teenage student nodding toward someone across the street while talking to a friend, brush-pen black and white",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "wide",
+      "composition": "WOOD already walking away up the beach road with the dog, from behind, small.",
+      "characters": [
+        {
+          "id": "wood_20",
+          "pose": "walking away",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a young man and a small dog walking away up a beach road seen from behind, small, brush-pen black and white",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "brush-pen, committed; xerox; black and white",
+    "palette": "",
+    "paper": "newsprint / the digest"
+  },
+  "notes": "Recognized. Walks away."
+}

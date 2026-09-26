@@ -1,0 +1,57 @@
+{
+  "id": "ro_2027-01-31_the_pup_at_twelve_the_bed_by_the_door",
+  "title": "The pup at twelve, the bed by the door",
+  "strip": "roflcopter",
+  "date": "2027-01-31",
+  "run": 7,
+  "era": "era4",
+  "format": "page",
+  "tier": "A",
+  "selection": "full",
+  "venue": "nobody · boxes 21–40",
+  "arc": "unsequenced",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (Run 7 · deepening xiv)",
+  "logline": "The bed by the door with the blanket, the pup in it, twelve, and the door open an inch for the cold air he likes. The lamp across the room. The last January page but one.",
+  "cast": [
+    "barnaby_ii"
+  ],
+  "location": "dw_garage",
+  "margin": {
+    "signature": "ROFLCOPTER",
+    "mark": "roflcopter",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "single page",
+      "composition": "A dog bed with a wool blanket beside a garage door open an inch onto a dark alley, an old three-legged dog lying in it, a lit lamp across the room.",
+      "characters": [
+        {
+          "id": "barnaby_ii",
+          "pose": "in the bed, twelve",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the door, an inch"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a single full comic page with no panel borders, spare knowing ink line with economy, muted ochre and slate blue and sea-foam green washes, a dog bed with a wool blanket beside a garage door open an inch onto a dark alley with an old three-legged dog lying in it, a lit lamp across the room, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "spare, knowing; economy of line; Era I's black spotting back on purpose in the mill run",
+    "palette": "muted ochres, slate blues, misty sea-foam greens; luminous sunbreaks in the last spring",
+    "paper": "Arches; bristol; the backs of motel registration cards"
+  },
+  "notes": "The door an inch.",
+  "layout": "single page, no borders"
+}

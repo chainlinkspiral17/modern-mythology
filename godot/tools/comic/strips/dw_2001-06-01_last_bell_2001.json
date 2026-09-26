@@ -1,0 +1,152 @@
+{
+  "id": "dw_2001-06-01_last_bell_2001",
+  "title": "Last Bell, 2001",
+  "strip": "drift_wood",
+  "date": "2001-06-01",
+  "run": 2,
+  "era": "era1",
+  "format": "daily4",
+  "tier": "B",
+  "selection": "part",
+  "venue": "the coast community-college paper, Newport · the laundromat digest",
+  "arc": "Last Bell",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (2001 · fixtures · deepening xiv)",
+  "logline": "Two years out: Wood on the far sidewalk at 3:05 with the dog, the bell, the kids, and Gully's flatbed passing with a honk. Gully has the last word through the window; Wood has the one after it.",
+  "cast": [
+    "wood_20",
+    "barnaby",
+    "gully_17",
+    "extra_student"
+  ],
+  "location": "dw_school_front",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "wide",
+      "composition": "The school from across the road, 3:05, the bell shape at the door. WOOD on the far sidewalk with BARNABY on a leash.",
+      "characters": [
+        {
+          "id": "wood_20",
+          "pose": "standing",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "sitting",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the bell"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a young man and a small dog on a sidewalk across from a small-town high school with a jagged sound shape at its door, brush-pen black and white",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "wide",
+      "composition": "The doors open; students pour toward the beach road.",
+      "characters": [
+        {
+          "id": "extra_student",
+          "pose": "the crowd",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "students pouring out of a school's front doors toward a beach road, brush-pen black and white",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "medium",
+      "composition": "A flatbed truck passing between the school and the sidewalk, GULLY's arm out the window, the honk as a small shape.",
+      "characters": [
+        {
+          "id": "gully_17",
+          "pose": "arm out the window",
+          "expression": ""
+        },
+        {
+          "id": "wood_20",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the flatbed"
+      ],
+      "balloons": [
+        {
+          "who": "GULLY",
+          "text": "You're not in there anymore."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a flatbed truck passing with a young man's arm out the window and a honk drawn as a small shape, another young man on the sidewalk beyond, brush-pen black and white",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "medium",
+      "composition": "WOOD watching the truck go, the dog looking up at him.",
+      "characters": [
+        {
+          "id": "wood_20",
+          "pose": "watching the truck",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "looking up",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [
+        {
+          "who": "WOOD",
+          "text": "I know."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a young man watching a truck drive away with a small dog looking up at him, brush-pen black and white",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "brush-pen over rough blue pencil; xerox grain; stark spotting; rain in frantic vertical hatching (Arc 1's aesthetic)",
+    "palette": "",
+    "paper": "newsprint / the digest"
+  },
+  "notes": "Two years out."
+}

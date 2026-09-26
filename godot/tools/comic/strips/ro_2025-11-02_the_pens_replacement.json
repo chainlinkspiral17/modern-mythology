@@ -1,0 +1,49 @@
+{
+  "id": "ro_2025-11-02_the_pens_replacement",
+  "title": "The pen's replacement",
+  "strip": "roflcopter",
+  "date": "2025-11-02",
+  "run": 7,
+  "era": "era4",
+  "format": "page",
+  "tier": "A",
+  "selection": "full",
+  "venue": "nobody · boxes 21–40",
+  "arc": "unsequenced",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (Run 7 · deepening xiv)",
+  "logline": "A new brush pen beside the old one on the drafting table, the old one's barrel worn to metal, the new one's black. The page doesn't pick one up. Both there when it ends.",
+  "cast": [],
+  "location": "dw_garage",
+  "margin": {
+    "signature": "ROFLCOPTER",
+    "mark": "roflcopter",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "single page",
+      "composition": "Two brush pens side by side on a drafting table under the lamp, one worn through to bare metal and one new and black, a sheet beneath them.",
+      "characters": [],
+      "props": [
+        "two pens"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a single full comic page with no panel borders, spare knowing ink line with economy, muted ochre and slate blue and sea-foam green washes, two brush pens lying side by side on a drafting table under a lamp, one worn through to bare metal and one new and black, a sheet beneath them, no words",
+        "negative": "",
+        "notes": "Compare ro_2024-06-16."
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "spare, knowing; economy of line; Era I's black spotting back on purpose in the mill run",
+    "palette": "muted ochres, slate blues, misty sea-foam greens; luminous sunbreaks in the last spring",
+    "paper": "Arches; bristol; the backs of motel registration cards"
+  },
+  "notes": "Both there when it ends.",
+  "layout": "single page, no borders"
+}

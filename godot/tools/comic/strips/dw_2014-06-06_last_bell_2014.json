@@ -1,0 +1,166 @@
+{
+  "id": "dw_2014-06-06_last_bell_2014",
+  "title": "Last Bell, 2014",
+  "strip": "drift_wood",
+  "date": "2014-06-06",
+  "run": 4,
+  "era": "era3",
+  "format": "daily4",
+  "tier": "B",
+  "selection": "part",
+  "venue": "Arthur's site · the coastal weeklies",
+  "arc": "Last Bell",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (2014 · fixtures · deepening xiv)",
+  "logline": "Sixteen years of standing across the road, Gully says, with his daughter on his shoulders. Fifteen, Wood says. He missed one. The old dog lies down in the middle of it.",
+  "cast": [
+    "wood_34",
+    "barnaby",
+    "gully_35",
+    "extra_gully_kid",
+    "extra_student"
+  ],
+  "location": "dw_school_front",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "crab",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "wide",
+      "composition": "The school at 3:05 from across the road, the bell shape, WOOD on the far sidewalk with old BARNABY, and GULLY arriving with a four-year-old on his shoulders.",
+      "characters": [
+        {
+          "id": "wood_34",
+          "pose": "standing",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "lying down",
+          "expression": ""
+        },
+        {
+          "id": "gully_35",
+          "pose": "daughter on his shoulders",
+          "expression": ""
+        },
+        {
+          "id": "extra_gully_kid",
+          "pose": "four, on his shoulders",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the bell"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a man with an old dog lying at his feet on a sidewalk across from a high school with a jagged sound shape at its door, a stocky man arriving with a small girl on his shoulders, black ink",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "medium",
+      "composition": "GULLY beside him, both watching the doors.",
+      "characters": [
+        {
+          "id": "gully_35",
+          "pose": "watching",
+          "expression": ""
+        },
+        {
+          "id": "wood_34",
+          "pose": "watching",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [
+        {
+          "who": "GULLY",
+          "text": "Sixteen years you've done this."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "two men side by side on a sidewalk watching a school's doors, one with a small girl on his shoulders, black ink",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "medium",
+      "composition": "WOOD not looking away from the doors.",
+      "characters": [
+        {
+          "id": "wood_34",
+          "pose": "watching",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [
+        {
+          "who": "WOOD",
+          "text": "Fifteen. I missed one."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a thin man watching across a street with students beginning to pour out beyond, black ink",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "wide",
+      "composition": "Students pouring past; the girl on Gully's shoulders waving at them; the old dog asleep on the sidewalk.",
+      "characters": [
+        {
+          "id": "extra_student",
+          "pose": "the crowd",
+          "expression": ""
+        },
+        {
+          "id": "extra_gully_kid",
+          "pose": "waving",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "asleep",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "students pouring along a road while a small girl on a man's shoulders waves at them and an old dog sleeps on the sidewalk, black ink",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "razor-sharp, confident brush and ink; pristine perspective; crisp silhouettes; zero crosshatch in close-ups",
+    "palette": "dailies: black ink, one spot tone at most. Sundays: wet-on-wet — gray-green moss, fog, rusted tin, bruised dusk",
+    "paper": "bristol for dailies; 140 lb Arches cold-press for Sundays"
+  },
+  "notes": "Fifteen. The 2010 one missed."
+}

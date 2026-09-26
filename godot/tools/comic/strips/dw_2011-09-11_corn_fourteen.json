@@ -11,7 +11,7 @@
   "venue": "Arthur's site · the coastal weeklies",
   "arc": "Fixtures",
   "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (2011 · Sundays · deepening ix)",
-  "logline": "September 11 at Gully's, a Sunday: the counter from the door, the end stool, the tray of corn, Gully's back at the grill, the corkboard with the walk map and the Florence gull. Fourteen.",
+  "logline": "September 11 at Gully's, a Sunday: the counter from the door, the end stool, the tray of corn, Gully's back at the grill, Gully's corkboard with the 2003 rough and the 61 MI postcard. Fourteen.",
   "cast": [
     "wood_26",
     "gully_27"
@@ -75,7 +75,7 @@
     {
       "n": 3,
       "shot": "medium tier",
-      "composition": "Tier 3: the corkboard above: a hand-drawn walk map, a photo of a large gull, a postcard, a yearbook photo lowest.",
+      "composition": "Tier 3: the corkboard above: the 2003 pencil rough of Gully hanging the sign, lost-cat flyers, a tide table, tourist snapshots, the 61 MI postcard, the printout under page fourteen.",
       "characters": [],
       "props": [
         "the corkboard"
@@ -84,7 +84,7 @@
       "caption": "",
       "sfx": "",
       "image": {
-        "prompt": "a crowded corkboard with a hand-drawn map, a photo of a large gull on a piling, a postcard and a small yearbook photo pinned lowest, watercolor, no words legible",
+        "prompt": "a crowded shop corkboard with a pencil sketch, lost-cat flyers, a tide table, tourist snapshots and a postcard with marker on it, watercolor, no words legible",
         "negative": "",
         "notes": ""
       },
@@ -97,6 +97,6 @@
     "palette": "limited, muddy; Sundays in watercolor, improving",
     "paper": "bristol; the browser"
   },
-  "notes": "Fourteen. The corkboard inventory as of 2011.",
+  "notes": "Fourteen. Gully's corkboard inventory as of 2011 (objects.md).",
   "layout": "tiers, portrait page"
 }

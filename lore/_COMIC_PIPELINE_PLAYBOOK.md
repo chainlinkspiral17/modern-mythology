@@ -114,6 +114,35 @@ a page says "fifty" check it against the year first.
 
 ## Recent lessons
 
+### 2026-09-26 · Deepening xiv · the missing public fixtures; two corkboards · 1,090 → 1,168
+
+Eleven public fixtures the year-by-fixture table showed missing (Last
+Bell 2001–03, the Fourth and Tourist Season 2002, and six of 2014's
+nine), then sixty-seven private pages: fifty-nine unsequenced, four
+Bird, four Mill. A grep for corkboard items by location caught four
+strips putting Wood's garage board on Gully's wall; fixed before commit.
+
+- **There are two corkboards, and they hold different things.** Wood's
+  (bedroom 1998–2003, garage 2004–27) holds the yearbook photo lowest,
+  the walk map, the Florence gull, the backward digest, the sticker
+  upside down. Gully's (above the register, 2003–) holds the 2003 rough,
+  lost-cat flyers, tide tables, tourist snapshots, the printout under
+  page fourteen, the 61 MI postcard, the red-framed crab, TAKE-OUT ONLY.
+  A page at Gully's that names the walk map is wrong. `objects.md` now
+  says so in one sentence at the end of the corkboard section.
+- **Audit by location and keyword, not by memory.** The four bad strips
+  read fine on their own; only the query "items from list A at location
+  B" found them. Add a location-keyword check to the batch post-checks
+  whenever a batch touches a load-bearing object.
+- **A fixture table per year finds the real gaps.** Matching arc names
+  and id keywords against the nine fixtures per public year showed most
+  years complete and the gaps concentrated in 2001–03 and 2014; the Run 1
+  summers and the two sabbaticals are not gaps, since no paper ran.
+- **Fixture dailies carry the counts in dialogue.** "Sixteen years."
+  "Fifteen. I missed one." The 2010 sabbatical, the seventeenth corn, the
+  uncle's chair empty since February 2001: each is a line a reader can
+  check against the run, so the dialogue was checked against it first.
+
 ### 2026-09-26 · Deepening xiii · the short sequences to their share · 1,024 → 1,090
 
 Sixty-six private pages. The Stone Head, The Dock, Spring, What People

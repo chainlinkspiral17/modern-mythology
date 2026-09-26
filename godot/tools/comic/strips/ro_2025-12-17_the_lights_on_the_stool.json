@@ -1,0 +1,49 @@
+{
+  "id": "ro_2025-12-17_the_lights_on_the_stool",
+  "title": "The lights on the stool",
+  "strip": "roflcopter",
+  "date": "2025-12-17",
+  "run": 7,
+  "era": "era4",
+  "format": "page",
+  "tier": "A",
+  "selection": "full",
+  "venue": "nobody · boxes 21–40",
+  "arc": "unsequenced",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (Run 7 · deepening xiv)",
+  "logline": "The string lights on at Gully's, and this year one strand wound around the shop stool beside the lawn chair. The stool lit. The chair not. The page reads it and says nothing.",
+  "cast": [],
+  "location": "dw_gullys",
+  "margin": {
+    "signature": "ROFLCOPTER",
+    "mark": "roflcopter",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "single page",
+      "composition": "A dock at night with an old lawn chair unlit and a shop stool beside it wound with a strand of colored lights, the shack's eave lit behind.",
+      "characters": [],
+      "props": [
+        "the lit stool"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a single full comic page with no panel borders, spare knowing ink line with economy, muted ochre and slate blue and sea-foam green washes, a wooden dock at night with an old lawn chair unlit and a shop stool beside it wrapped in a strand of colored lights, a shingle shack's lit eave behind, no people, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "spare, knowing; economy of line; Era I's black spotting back on purpose in the mill run",
+    "palette": "muted ochres, slate blues, misty sea-foam greens; luminous sunbreaks in the last spring",
+    "paper": "Arches; bristol; the backs of motel registration cards"
+  },
+  "notes": "The stool lit; the chair not.",
+  "layout": "single page, no borders"
+}

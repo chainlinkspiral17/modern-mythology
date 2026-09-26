@@ -1,0 +1,141 @@
+{
+  "id": "dw_2014-03-14_grunion_2014",
+  "title": "The Grunion Run, 2014",
+  "strip": "drift_wood",
+  "date": "2014-03-14",
+  "run": 4,
+  "era": "era3",
+  "format": "daily4",
+  "tier": "B",
+  "selection": "part",
+  "venue": "Arthur's site · the coastal weeklies",
+  "arc": "The Grunion Run",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (2014 · fixtures · deepening xiv)",
+  "logline": "The run, and the dog at fifteen doesn't go down to the water. Wood sits with him above the tide line while the lanterns work the surf. The panels get wider going down.",
+  "cast": [
+    "wood_34",
+    "barnaby",
+    "extra_tourists"
+  ],
+  "location": "dw_beach",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "crab",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "wide",
+      "composition": "The night beach, lanterns along the surf, people bent at the water.",
+      "characters": [
+        {
+          "id": "extra_tourists",
+          "pose": "bent at the surf",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "lanterns"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a night beach with lanterns along a surf line and people bent at the water, black ink with one spot tone",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "medium",
+      "composition": "BARNABY, old, sitting on the sand above the tide line, looking at the lights.",
+      "characters": [
+        {
+          "id": "barnaby",
+          "pose": "sitting, old",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "an old dog sitting on dark sand above a tide line looking at distant lantern lights, black ink",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "medium",
+      "composition": "WOOD sitting down beside him, coat pulled around.",
+      "characters": [
+        {
+          "id": "wood_34",
+          "pose": "sitting down",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [
+        {
+          "who": "WOOD",
+          "text": "We'll watch from here."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a man in a coat sitting down on dark sand beside an old dog, black ink",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "wide",
+      "composition": "The two of them from behind, small, the surf silver with fish far below them.",
+      "characters": [
+        {
+          "id": "wood_34",
+          "pose": "from behind",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "from behind",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "fish"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a man and an old dog seen from behind sitting on dark sand with a surf line silver with small fish far below, black ink with one spot tone",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "razor-sharp, confident brush and ink; pristine perspective; crisp silhouettes; zero crosshatch in close-ups",
+    "palette": "dailies: black ink, one spot tone at most. Sundays: wet-on-wet — gray-green moss, fog, rusted tin, bruised dusk",
+    "paper": "bristol for dailies; 140 lb Arches cold-press for Sundays"
+  },
+  "notes": "Fifteen. From here."
+}

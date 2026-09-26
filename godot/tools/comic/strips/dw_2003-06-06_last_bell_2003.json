@@ -1,0 +1,125 @@
+{
+  "id": "dw_2003-06-06_last_bell_2003",
+  "title": "Last Bell, 2003",
+  "strip": "drift_wood",
+  "date": "2003-06-06",
+  "run": 2,
+  "era": "era1",
+  "format": "daily4",
+  "tier": "B",
+  "selection": "part",
+  "venue": "the coast community-college paper, Newport · the laundromat digest",
+  "arc": "Last Bell",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (2003 · fixtures · deepening xiv)",
+  "logline": "Two weeks after the rack: the far sidewalk empty for three panels while the bell goes and the kids come out, and Wood arriving late in the fourth from the laundromat's direction with the dog. No mark in the margin; the strip is four months into none.",
+  "cast": [
+    "wood_20",
+    "barnaby",
+    "extra_student"
+  ],
+  "location": "dw_school_front",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "none",
+    "note": "No mark (May 23 – Sept 2003)."
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "wide",
+      "composition": "The school from across the road at 3:05, the bell shape, and the far sidewalk EMPTY.",
+      "characters": [],
+      "props": [
+        "the bell",
+        "the empty sidewalk"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a small-town high school seen from across a road with a jagged sound shape at its door and the near sidewalk empty, brush-pen black and white",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "wide",
+      "composition": "Students pouring out toward the beach road; the sidewalk still empty.",
+      "characters": [
+        {
+          "id": "extra_student",
+          "pose": "the crowd",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "students pouring out of a school toward a beach road with the sidewalk across the road empty, brush-pen black and white",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "wide",
+      "composition": "The last of them gone; the sidewalk empty; a gull on the curb.",
+      "characters": [],
+      "props": [
+        "a gull"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "an empty sidewalk across from a school with a gull on the curb, brush-pen black and white",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "medium",
+      "composition": "WOOD arriving from the left with BARNABY, late, looking at the shut doors.",
+      "characters": [
+        {
+          "id": "wood_20",
+          "pose": "arriving late",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [
+        {
+          "who": "WOOD",
+          "text": "Missed it."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a young man and a small dog arriving on a sidewalk and looking at a school's shut doors, brush-pen black and white",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "brush-pen, committed; xerox; black and white",
+    "palette": "",
+    "paper": "newsprint / the digest"
+  },
+  "notes": "No mark. Four months of none."
+}
