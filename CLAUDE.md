@@ -31,8 +31,13 @@ touching code:
 6. `lore/_COMMUNITY_PLANNED_PLAYBOOK.md` — mission stages, BBS
    thread gating, pressure curve, three-slot save. Read before
    editing problems.json, agents.json, or CommunityPlannedGame.gd.
-7. The latest commit message on the working branch — recent context.
-8. If working on a specific volume, the relevant `lore/_VOL{N}_WIKI.md`.
+7. `lore/_COMIC_PIPELINE_PLAYBOOK.md` — the Vol 10 strip run: JSON
+   as source of truth, id/date discipline, the objects timeline
+   before any fixture, reserved facts drawn around, the batch
+   cycle. Read before touching `godot/tools/comic/` or
+   `lore/drift_wood/`.
+8. The latest commit message on the working branch — recent context.
+9. If working on a specific volume, the relevant `lore/_VOL{N}_WIKI.md`.
 
 ## DEBUG HUD — F4 IS THE MASTER TOGGLE (hard rule)
 
@@ -88,6 +93,10 @@ Playbooks currently maintained:
   primary difficulty axis, named loss conditions as pedagogy.
 - `lore/_COMMUNITY_PLANNED_PLAYBOOK.md` — mission stages, BBS-lookup
   gating, mid-summer pressure curve (W6/W12/W18), three-slot save.
+- `lore/_COMIC_PIPELINE_PLAYBOOK.md` — the Vol 10 strip scripts and
+  render tools: JSON as source, id/date, the objects timeline,
+  reserved facts, no lettering in prompts, the batch cycle,
+  deepening order.
 
 When a new domain accumulates ≥ 5 distinct lessons, spin up a
 playbook for it.
