@@ -1,0 +1,50 @@
+{
+  "id": "ro_2021-03-21_gullys_from_the_dock",
+  "title": "Gully's from the dock",
+  "strip": "roflcopter",
+  "date": "2021-03-21",
+  "run": 7,
+  "era": "era4",
+  "format": "page",
+  "tier": "A",
+  "selection": "full",
+  "venue": "nobody · boxes 21–40",
+  "arc": "Absent",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (Run 7 sequences · deepening ii)",
+  "logline": "The shack from the dock's end, morning, the door open, nobody at the counter through it, the end stool's leg visible. Gully's flatbed gone. The pup not here either.",
+  "cast": [],
+  "location": "dw_gullys",
+  "margin": {
+    "signature": "ROFLCOPTER",
+    "mark": "roflcopter",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "single page",
+      "composition": "The shingle shack from the dock's far end at morning: the open door, and through it the counter's edge and the end stool's leg, nobody in the frame. The lot empty. The corkboard a crowded shape through the door. Fog thinning.",
+      "characters": [],
+      "props": [
+        "the open door",
+        "the end stool's leg"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a single full comic page with no panel borders, spare knowing ink line with economy, muted ochre and slate blue and sea-foam green washes, a shingle bait shack seen from the far end of its dock in morning fog with the door open and only the edge of a counter and a stool's leg visible inside, no people, an empty lot, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "spare, knowing; economy of line; Era I's black spotting back on purpose in the mill run",
+    "palette": "muted ochres, slate blues, misty sea-foam greens; luminous sunbreaks in the last spring",
+    "paper": "Arches; bristol; the backs of motel registration cards"
+  },
+  "notes": "Absent. The stool's leg through the door.",
+  "layout": "single page, no borders"
+}

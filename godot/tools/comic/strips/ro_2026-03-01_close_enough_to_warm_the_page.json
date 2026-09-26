@@ -1,0 +1,61 @@
+{
+  "id": "ro_2026-03-01_close_enough_to_warm_the_page",
+  "title": "Close enough to warm the page",
+  "strip": "roflcopter",
+  "date": "2026-03-01",
+  "run": 7,
+  "era": "era4",
+  "format": "page",
+  "tier": "A",
+  "selection": "full",
+  "venue": "nobody · boxes 21–40",
+  "arc": "The Ridge",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (Run 7 sequences · deepening ii)",
+  "logline": "Two weeks before the sequence stops. The glow close enough that the page's paper is warm-toned edge to edge; the trees drawn in ink on ochre; the man and the dog silhouettes now. Nothing seen. Everything lit.",
+  "cast": [
+    "wood_44",
+    "barnaby_ii"
+  ],
+  "location": "dw_the_ridge",
+  "margin": {
+    "signature": "ROFLCOPTER",
+    "mark": "roflcopter",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "single page",
+      "composition": "The forest with the whole page warm — the paper itself toned ochre — the cedar trunks in dark ink against it, and a man and a small dog as black silhouettes walking between the trunks toward the warmth's source, which is off the page. No detail in the light.",
+      "characters": [
+        {
+          "id": "wood_44",
+          "pose": "a silhouette",
+          "expression": ""
+        },
+        {
+          "id": "barnaby_ii",
+          "pose": "a silhouette",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a single full comic page with no panel borders, spare knowing ink line with economy, muted ochre and slate blue and sea-foam green washes, a forest of dark ink cedar trunks against a page toned entirely warm ochre with a man and a small three-legged dog as black silhouettes walking between the trunks toward an unseen light source off the page, no words",
+        "negative": "",
+        "notes": "Tone the whole paper. The source stays off the page."
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "spare, knowing; economy of line; Era I's black spotting back on purpose in the mill run",
+    "palette": "muted ochres, slate blues, misty sea-foam greens; luminous sunbreaks in the last spring",
+    "paper": "Arches; bristol; the backs of motel registration cards"
+  },
+  "notes": "The page warm edge to edge. Silhouettes.",
+  "layout": "single page, no borders"
+}

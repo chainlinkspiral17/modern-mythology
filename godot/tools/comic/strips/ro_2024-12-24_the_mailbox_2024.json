@@ -1,0 +1,50 @@
+{
+  "id": "ro_2024-12-24_the_mailbox_2024",
+  "title": "The mailbox, 2024",
+  "strip": "roflcopter",
+  "date": "2024-12-24",
+  "run": 7,
+  "era": "era4",
+  "format": "page",
+  "tier": "A",
+  "selection": "full",
+  "venue": "nobody · boxes 21–40",
+  "arc": "unsequenced",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (Run 7 sequences · deepening ii)",
+  "logline": "Christmas Eve. The mailbox, flag down — and this year a card inside, the flap open, the card's edge showing. The page doesn't take it out. Whether she comes: reserved. The card is enough.",
+  "cast": [],
+  "location": "dw_main_street",
+  "margin": {
+    "signature": "ROFLCOPTER",
+    "mark": "roflcopter",
+    "note": "The crab, small, beside the word."
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "single page",
+      "composition": "A roadside mailbox at dusk, flag down, the door open, and inside, the pale edge of a card in an envelope. Rain on the metal. A porch light far back. The page leaves the card where it is.",
+      "characters": [],
+      "props": [
+        "the mailbox",
+        "a card's edge"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a single full comic page with no panel borders, spare knowing ink line with economy, muted ochre and slate blue and sea-foam green washes, a roadside mailbox at dusk with its flag down and its door open showing the pale edge of an envelope inside, rain on the metal, a distant porch light, no people, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "spare, knowing; economy of line; Era I's black spotting back on purpose in the mill run",
+    "palette": "muted ochres, slate blues, misty sea-foam greens; luminous sunbreaks in the last spring",
+    "paper": "Arches; bristol; the backs of motel registration cards"
+  },
+  "notes": "A card inside. Left there.",
+  "layout": "single page, no borders"
+}

@@ -1,0 +1,57 @@
+{
+  "id": "ro_2027-04-11_morning_the_sandpipers",
+  "title": "Morning, the sandpipers",
+  "strip": "roflcopter",
+  "date": "2027-04-11",
+  "run": 7,
+  "era": "era4",
+  "format": "page",
+  "tier": "A",
+  "selection": "full",
+  "venue": "nobody · boxes 21–40",
+  "arc": "Spring",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (Run 7 sequences · deepening ii)",
+  "logline": "A morning two weeks before the last page: the pup charging a flock of sandpipers at the tide line, the flock lifting, the sun on the mud. The final page's bottom-right corner, rehearsed.",
+  "cast": [
+    "barnaby_ii"
+  ],
+  "location": "dw_mudflats",
+  "margin": {
+    "signature": "ROFLCOPTER",
+    "mark": "roflcopter",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "single page",
+      "composition": "The tide line at sunrise: a scatter of sandpipers lifting all at once as a small three-legged dog charges into them, the mud gold, the channels blue, the birds' shadows on the wet sand. Nothing else.",
+      "characters": [
+        {
+          "id": "barnaby_ii",
+          "pose": "charging the flock",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "sandpipers"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a single full comic page with no panel borders, spare knowing ink line with economy, muted ochre and slate blue and sea-foam green washes, a small three-legged dog charging into a lifting flock of sandpipers at a sunlit tide line on golden mudflats with the birds' shadows on the wet sand, no words",
+        "negative": "",
+        "notes": "The final page's lower-right, alone, two weeks early."
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "spare, knowing; economy of line; Era I's black spotting back on purpose in the mill run",
+    "palette": "muted ochres, slate blues, misty sea-foam greens; luminous sunbreaks in the last spring",
+    "paper": "Arches; bristol; the backs of motel registration cards"
+  },
+  "notes": "The sandpipers, rehearsed.",
+  "layout": "single page, no borders"
+}

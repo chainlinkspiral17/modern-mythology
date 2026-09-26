@@ -1,0 +1,55 @@
+{
+  "id": "ro_2027-03-28_morning_rain",
+  "title": "Morning, rain",
+  "strip": "roflcopter",
+  "date": "2027-03-28",
+  "run": 7,
+  "era": "era4",
+  "format": "page",
+  "tier": "A",
+  "selection": "full",
+  "venue": "nobody · boxes 21–40",
+  "arc": "Spring",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (Run 7 sequences · deepening ii)",
+  "logline": "One of the month of mornings, in rain: the flats gray, the tide line a thread, the rain in resist, and the light still inside it, from nowhere, the way the fog morning had it.",
+  "cast": [
+    "barnaby_ii"
+  ],
+  "location": "dw_mudflats",
+  "margin": {
+    "signature": "ROFLCOPTER",
+    "mark": "roflcopter",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "single page",
+      "composition": "The mudflats at dawn in rain, gray on gray, the rain in watercolor resist, the tide line a dark thread, the pup a small shape far out with his back to the weather. The light everywhere and from nowhere.",
+      "characters": [
+        {
+          "id": "barnaby_ii",
+          "pose": "far out, back to the rain",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a single full comic page with no panel borders, spare knowing ink line with economy, muted ochre and slate blue and sea-foam green washes, mudflats at dawn in rain rendered with watercolor resist, gray on gray with a dark tide line and a small three-legged dog far out with its back to the weather, light from nowhere, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "spare, knowing; economy of line; Era I's black spotting back on purpose in the mill run",
+    "palette": "muted ochres, slate blues, misty sea-foam greens; luminous sunbreaks in the last spring",
+    "paper": "Arches; bristol; the backs of motel registration cards"
+  },
+  "notes": "Rain morning. Light from nowhere.",
+  "layout": "single page, no borders"
+}

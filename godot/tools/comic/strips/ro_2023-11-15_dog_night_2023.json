@@ -1,0 +1,61 @@
+{
+  "id": "ro_2023-11-15_dog_night_2023",
+  "title": "Dog Night, 2023",
+  "strip": "roflcopter",
+  "date": "2023-11-15",
+  "run": 7,
+  "era": "era4",
+  "format": "page",
+  "tier": "A",
+  "selection": "full",
+  "venue": "nobody · boxes 21–40",
+  "arc": "unsequenced",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (Run 7 sequences · deepening ii)",
+  "logline": "Twenty-four years. The alley. This time drawn from the dumpster's side: the man's front, at last, in the private pages — but in the dark, under the hood, the face a shadow. The pup looking up at him.",
+  "cast": [
+    "wood_44",
+    "barnaby_ii"
+  ],
+  "location": "dw_bowling_alley",
+  "margin": {
+    "signature": "ROFLCOPTER",
+    "mark": "roflcopter",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "single page",
+      "composition": "The alley from beside the dumpster, facing the man: a figure in a rain shell with the hood up, his face a shadow under it, hands in pockets, and the small three-legged dog at his boot looking up at the hood. The sign's dead tubes above. Rain.",
+      "characters": [
+        {
+          "id": "wood_44",
+          "pose": "facing, face in shadow under a hood",
+          "expression": ""
+        },
+        {
+          "id": "barnaby_ii",
+          "pose": "looking up",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a single full comic page with no panel borders, spare knowing ink line with economy, muted ochre and slate blue and sea-foam green washes, a rain-dark alley seen from beside a dumpster facing a man in a rain shell with his hood up and his face lost in shadow, a small three-legged dog at his boot looking up at him, a neon sign with dead tubes above, no words",
+        "negative": "",
+        "notes": "From the front, for once. The hood keeps the rule."
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "spare, knowing; economy of line; Era I's black spotting back on purpose in the mill run",
+    "palette": "muted ochres, slate blues, misty sea-foam greens; luminous sunbreaks in the last spring",
+    "paper": "Arches; bristol; the backs of motel registration cards"
+  },
+  "notes": "From the front. The hood keeps it.",
+  "layout": "single page, no borders"
+}

@@ -1,0 +1,50 @@
+{
+  "id": "ro_2023-05-07_newport_at_4_10",
+  "title": "Newport at 4:10",
+  "strip": "roflcopter",
+  "date": "2023-05-07",
+  "run": 7,
+  "era": "era4",
+  "format": "page",
+  "tier": "A",
+  "selection": "full",
+  "venue": "nobody · boxes 21–40",
+  "arc": "The Route North",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (Run 7 sequences · deepening ii)",
+  "logline": "The bus stop in Newport, the bench, the schedule in its case, 4:10 on it, no bus. The place she left from, drawn twenty-three years later with nobody on the bench.",
+  "cast": [],
+  "location": "dw_greyhound",
+  "margin": {
+    "signature": "ROFLCOPTER",
+    "mark": "roflcopter",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "single page",
+      "composition": "A bus stop on a Newport street: a bench, a schedule behind scratched plastic with one departure legible, a trash can, the coast's gray. No bus, no one. The bench's slats worn where people waited.",
+      "characters": [],
+      "props": [
+        "the bench",
+        "4:10 behind plastic"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a single full comic page with no panel borders, spare knowing ink line with economy, muted ochre and slate blue and sea-foam green washes, a bus stop with an empty bench and a schedule behind scratched plastic where one departure time is legible, a trash can, gray coastal light, no bus, no people, no words",
+        "negative": "",
+        "notes": "Letter after: 4:10 legible; the rest scratched."
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "spare, knowing; economy of line; Era I's black spotting back on purpose in the mill run",
+    "palette": "muted ochres, slate blues, misty sea-foam greens; luminous sunbreaks in the last spring",
+    "paper": "Arches; bristol; the backs of motel registration cards"
+  },
+  "notes": "The bench, empty, 4:10.",
+  "layout": "single page, no borders"
+}

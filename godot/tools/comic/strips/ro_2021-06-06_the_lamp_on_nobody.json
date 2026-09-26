@@ -1,0 +1,58 @@
+{
+  "id": "ro_2021-06-06_the_lamp_on_nobody",
+  "title": "The lamp on, nobody",
+  "strip": "roflcopter",
+  "date": "2021-06-06",
+  "run": 7,
+  "era": "era4",
+  "format": "page",
+  "tier": "A",
+  "selection": "full",
+  "venue": "nobody · boxes 21–40",
+  "arc": "Absent",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (Run 7 sequences · deepening ii)",
+  "logline": "The last Absent page. The garage from the doorway, the lamp on this time, the chair empty, the pup awake in the bed looking at the door. The next page has a back in it.",
+  "cast": [
+    "barnaby_ii"
+  ],
+  "location": "dw_garage",
+  "margin": {
+    "signature": "ROFLCOPTER",
+    "mark": "roflcopter",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "single page",
+      "composition": "The garage from its doorway, evening: the lamp on, its circle on the empty table, the chair pushed back, the three jars, and the pup in the bed beneath, awake, looking at the doorway — at the reader, at whoever is about to come in.",
+      "characters": [
+        {
+          "id": "barnaby_ii",
+          "pose": "awake, looking at the door",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the lamp, on",
+        "the empty chair"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a single full comic page with no panel borders, spare knowing ink line with economy, muted ochre and slate blue and sea-foam green washes, a garage studio from its doorway at evening with a green lamp lit over an empty drafting table and a small three-legged dog awake in a bed beneath looking toward the door, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "spare, knowing; economy of line; Era I's black spotting back on purpose in the mill run",
+    "palette": "muted ochres, slate blues, misty sea-foam greens; luminous sunbreaks in the last spring",
+    "paper": "Arches; bristol; the backs of motel registration cards"
+  },
+  "notes": "The lamp on. The pup looking at the door. Next: a back.",
+  "layout": "single page, no borders"
+}

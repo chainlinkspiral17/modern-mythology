@@ -1,0 +1,57 @@
+{
+  "id": "ro_2024-02-09_crab_derby_forty",
+  "title": "The Crab Derby, forty",
+  "strip": "roflcopter",
+  "date": "2024-02-09",
+  "run": 7,
+  "era": "era4",
+  "format": "page",
+  "tier": "A",
+  "selection": "full",
+  "venue": "nobody · boxes 21–40",
+  "arc": "unsequenced",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (Run 7 sequences · deepening ii)",
+  "logline": "The fortieth annual. Twenty-six flyers on the wall and the newest lettered by Gully's daughter, fourteen, who now letters better than the man on the end stool. The page is the wall and one hand pinning.",
+  "cast": [
+    "extra_gully_kid"
+  ],
+  "location": "dw_gullys",
+  "margin": {
+    "signature": "ROFLCOPTER",
+    "mark": "roflcopter",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "single page",
+      "composition": "The shingle wall with twenty-six crab flyers in a row, and at the end a fourteen-year-old's hand pinning the twenty-seventh: clean lettering, a good crab. Only the hand and the forearm. The row's hands changing along the wall.",
+      "characters": [
+        {
+          "id": "extra_gully_kid",
+          "pose": "a hand pinning",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "twenty-seven flyers"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a single full comic page with no panel borders, spare knowing ink line with economy, muted ochre and slate blue and sea-foam green washes, a shingle wall with a long row of twenty-six weathered crab flyers in changing hands and a teenage girl's hand and forearm pinning a cleanly lettered new one at the end, no other words legible",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "spare, knowing; economy of line; Era I's black spotting back on purpose in the mill run",
+    "palette": "muted ochres, slate blues, misty sea-foam greens; luminous sunbreaks in the last spring",
+    "paper": "Arches; bristol; the backs of motel registration cards"
+  },
+  "notes": "Twenty-seven flyers. Her hand.",
+  "layout": "single page, no borders"
+}

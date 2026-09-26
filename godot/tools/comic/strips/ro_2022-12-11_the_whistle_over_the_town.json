@@ -1,0 +1,51 @@
+{
+  "id": "ro_2022-12-11_the_whistle_over_the_town",
+  "title": "The whistle, over the town",
+  "strip": "roflcopter",
+  "date": "2022-12-11",
+  "run": 7,
+  "era": "era4",
+  "format": "page",
+  "tier": "A",
+  "selection": "full",
+  "venue": "nobody · boxes 21–40",
+  "arc": "The Mill, 1994",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (Run 7 sequences · deepening ii)",
+  "logline": "The last mill whistle, 1994, drawn as sound over the whole town: a jagged shape from the stack laid across every roof, the school, the Lanes, the bay. Era I's spotting.",
+  "cast": [],
+  "location": "dw_cedar_mill",
+  "margin": {
+    "signature": "ROFLCOPTER",
+    "mark": "roflcopter",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "single page",
+      "composition": "The town from the bluff in 1994 — the mill's stack, the school, the Lanes all lit, the bay — and from the stack a great jagged sound-shape spreading across every roof to the page's edges. Heavy black spotting. The whistle as weather.",
+      "characters": [],
+      "props": [
+        "the whistle shape",
+        "the stack",
+        "the Lanes, all lit"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a single full comic page with no borders, heavy black ink spotting in a 1990s zine style over a muted ochre wash, a small coastal town from a bluff with a mill smokestack and a jagged sound shape spreading from it across every rooftop to the page edges, no words",
+        "negative": "",
+        "notes": "Era I's spotting for the mill sequence. The Lanes fully lit: 1994."
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "spare, knowing; economy of line; Era I's black spotting back on purpose in the mill run",
+    "palette": "muted ochres, slate blues, misty sea-foam greens; luminous sunbreaks in the last spring",
+    "paper": "Arches; bristol; the backs of motel registration cards"
+  },
+  "notes": "The whistle as weather. The Lanes all lit.",
+  "layout": "single page, no borders"
+}

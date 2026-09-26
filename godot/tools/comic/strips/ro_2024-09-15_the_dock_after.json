@@ -1,0 +1,49 @@
+{
+  "id": "ro_2024-09-15_the_dock_after",
+  "title": "The dock, after",
+  "strip": "roflcopter",
+  "date": "2024-09-15",
+  "run": 7,
+  "era": "era4",
+  "format": "page",
+  "tier": "A",
+  "selection": "full",
+  "venue": "nobody · boxes 21–40",
+  "arc": "The Dock",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (Run 7 sequences · deepening ii)",
+  "logline": "The dock two weeks after: the chairs gone in, and on the planks, two pale rings where two cans stood. The sequence ends on the rings.",
+  "cast": [],
+  "location": "dw_gullys",
+  "margin": {
+    "signature": "ROFLCOPTER",
+    "mark": "roflcopter",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "single page",
+      "composition": "Dock planks in September light, close: two faint pale rings on the wood where two cans of beer sweated a fortnight ago, and nothing else — the chairs gone, the bay beyond, a gull's shadow crossing.",
+      "characters": [],
+      "props": [
+        "two rings"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a single full comic page with no panel borders, spare knowing ink line with economy, muted ochre and slate blue and sea-foam green washes, a close view of weathered dock planks with two faint pale rings where cans once stood, a gull's shadow crossing, water beyond, no people, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "spare, knowing; economy of line; Era I's black spotting back on purpose in the mill run",
+    "palette": "muted ochres, slate blues, misty sea-foam greens; luminous sunbreaks in the last spring",
+    "paper": "Arches; bristol; the backs of motel registration cards"
+  },
+  "notes": "Two rings on the planks. The sequence ends.",
+  "layout": "single page, no borders"
+}

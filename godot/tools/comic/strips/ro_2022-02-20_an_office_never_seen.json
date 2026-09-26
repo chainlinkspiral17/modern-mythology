@@ -1,0 +1,50 @@
+{
+  "id": "ro_2022-02-20_an_office_never_seen",
+  "title": "An office, never seen",
+  "strip": "roflcopter",
+  "date": "2022-02-20",
+  "run": 7,
+  "era": "era4",
+  "format": "page",
+  "tier": "A",
+  "selection": "full",
+  "venue": "nobody · boxes 21–40",
+  "arc": "Rooms He Never Saw",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (Run 7 sequences · deepening ii)",
+  "logline": "Julian's office, drawn from one sentence in 2014: a desk, a window, a printed Sunday — the dog at the top of the stairs — pinned where a man read it and had to go for a walk.",
+  "cast": [],
+  "location": "dw_seattle_hill",
+  "margin": {
+    "signature": "ROFLCOPTER",
+    "mark": "roflcopter",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "single page",
+      "composition": "A clean office with a glass wall and a city beyond, a standing desk, and pinned to a fabric panel beside a monitor, a printout of a watercolor Sunday: a dog at the top of bluff stairs. The chair empty. A jacket on it, gray.",
+      "characters": [],
+      "props": [
+        "the printed Sunday",
+        "a gray jacket"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a single full comic page with no panel borders, spare knowing ink line with economy, muted ochre and slate blue and sea-foam green washes, a clean modern office with a glass wall onto a city, a standing desk, and a printed watercolor comic page pinned to a fabric panel beside a monitor, an empty chair with a gray jacket on it, no people, no words",
+        "negative": "",
+        "notes": "dw_2014-03-16 printed and pinned. Julian's office, from his one sentence (dw_2014-07-23). Drawn fair."
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "spare, knowing; economy of line; Era I's black spotting back on purpose in the mill run",
+    "palette": "muted ochres, slate blues, misty sea-foam greens; luminous sunbreaks in the last spring",
+    "paper": "Arches; bristol; the backs of motel registration cards"
+  },
+  "notes": "The office where a stranger read the Sunday.",
+  "layout": "single page, no borders"
+}

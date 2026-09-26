@@ -1,0 +1,50 @@
+{
+  "id": "ro_2023-01-29_the_lunchroom",
+  "title": "The lunchroom",
+  "strip": "roflcopter",
+  "date": "2023-01-29",
+  "run": 7,
+  "era": "era4",
+  "format": "page",
+  "tier": "A",
+  "selection": "full",
+  "venue": "nobody · boxes 21–40",
+  "arc": "The Mill, 1994",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (Run 7 sequences · deepening ii)",
+  "logline": "The mill's lunchroom, the last shift: forty lunch pails on a shelf, one for each face in the photo. One pail with a boy's name scratched in it, turned away.",
+  "cast": [],
+  "location": "dw_cedar_mill",
+  "margin": {
+    "signature": "ROFLCOPTER",
+    "mark": "roflcopter",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "single page",
+      "composition": "A mill lunchroom: a long table, benches, a wall shelf with forty dented lunch pails in a row, a coffee urn, a calendar on 1994. One pail at the shelf's end turned so its scratched name faces the wall. Heavy spotting. Nobody.",
+      "characters": [],
+      "props": [
+        "forty lunch pails",
+        "one turned away"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a single full comic page with no borders, heavy black ink spotting in a 1990s zine style over a muted ochre wash, a mill lunchroom with a long table and forty dented lunch pails on a wall shelf and a coffee urn and a calendar, one pail turned to the wall, no people, no words",
+        "negative": "",
+        "notes": "The boy at the photo's edge (ro_2022-11-13) has a pail. Turned away. Reserved."
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "spare, knowing; economy of line; Era I's black spotting back on purpose in the mill run",
+    "palette": "muted ochres, slate blues, misty sea-foam greens; luminous sunbreaks in the last spring",
+    "paper": "Arches; bristol; the backs of motel registration cards"
+  },
+  "notes": "Forty pails. One turned to the wall.",
+  "layout": "single page, no borders"
+}

@@ -1,0 +1,55 @@
+{
+  "id": "ro_2021-09-05_in_the_motel_glass",
+  "title": "In the motel glass",
+  "strip": "roflcopter",
+  "date": "2021-09-05",
+  "run": 7,
+  "era": "era4",
+  "format": "page",
+  "tier": "A",
+  "selection": "full",
+  "venue": "nobody · boxes 21–40",
+  "arc": "From Behind",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (Run 7 sequences · deepening ii)",
+  "logline": "The night desk again, and in the glass door: a reflection of a clerk at the desk, drawing. He's in the glass, not at the desk. The desk itself is drawn empty.",
+  "cast": [
+    "wood_44"
+  ],
+  "location": "dw_motel_desk",
+  "margin": {
+    "signature": "ROFLCOPTER",
+    "mark": "roflcopter",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "single page",
+      "composition": "The motel's glass door at night from inside, and in it the reflection of the desk behind the viewer: a man in a maroon polo bent over a pad. The desk itself, at the page's edge, is empty. Only the reflection has him.",
+      "characters": [
+        {
+          "id": "wood_44",
+          "pose": "a reflection only",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a single full comic page with no panel borders, spare knowing ink line with economy, muted ochre and slate blue and sea-foam green washes, a motel's glass door at night reflecting a desk behind the viewer where a man in a maroon polo bends over a pad, while the actual desk at the page's edge is empty, no words",
+        "negative": "",
+        "notes": "He is in the reflection and not at the desk. Both drawn."
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "spare, knowing; economy of line; Era I's black spotting back on purpose in the mill run",
+    "palette": "muted ochres, slate blues, misty sea-foam greens; luminous sunbreaks in the last spring",
+    "paper": "Arches; bristol; the backs of motel registration cards"
+  },
+  "notes": "In the glass, not at the desk.",
+  "layout": "single page, no borders"
+}

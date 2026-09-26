@@ -1,0 +1,49 @@
+{
+  "id": "ro_2021-09-12_corn_twenty_four",
+  "title": "Corn, twenty-four",
+  "strip": "roflcopter",
+  "date": "2021-09-12",
+  "run": 7,
+  "era": "era4",
+  "format": "page",
+  "tier": "A",
+  "selection": "full",
+  "venue": "nobody · boxes 21–40",
+  "arc": "unsequenced",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (Run 7 sequences · deepening ii)",
+  "logline": "September 12. The first private anniversary. A tray of corn on the long table and nothing else, the way the next years will do it. The tray drawn from the side this time, the butter, the salt.",
+  "cast": [],
+  "location": "dw_garage",
+  "margin": {
+    "signature": "ROFLCOPTER",
+    "mark": "roflcopter",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "single page",
+      "composition": "A paper tray of buttered corn on the bare drafting table, seen from the side at table height, the butter pooling, salt on the wood. The lamp's edge. Nothing else.",
+      "characters": [],
+      "props": [
+        "the corn"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a single full comic page with no panel borders, spare knowing ink line with economy, muted ochre and slate blue and sea-foam green washes, a paper tray of buttered corn on a bare wooden table seen from the side at table height with butter pooling and salt grains on the wood, the edge of a lamp, nothing else, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "spare, knowing; economy of line; Era I's black spotting back on purpose in the mill run",
+    "palette": "muted ochres, slate blues, misty sea-foam greens; luminous sunbreaks in the last spring",
+    "paper": "Arches; bristol; the backs of motel registration cards"
+  },
+  "notes": "Twenty-four. From the side.",
+  "layout": "single page, no borders"
+}

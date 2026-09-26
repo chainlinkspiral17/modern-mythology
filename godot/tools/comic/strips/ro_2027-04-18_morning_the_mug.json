@@ -1,0 +1,50 @@
+{
+  "id": "ro_2027-04-18_morning_the_mug",
+  "title": "Morning, the mug",
+  "strip": "roflcopter",
+  "date": "2027-04-18",
+  "run": 7,
+  "era": "era4",
+  "format": "page",
+  "tier": "A",
+  "selection": "full",
+  "venue": "nobody · boxes 21–40",
+  "arc": "Spring",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (Run 7 sequences · deepening ii)",
+  "logline": "A week before the last page: the chipped white enamel mug on the dock's plank, steaming, nobody's hand on it yet. The dock, the water, the chimney across the bay smoking. Chloe's mug, before Chloe.",
+  "cast": [],
+  "location": "dw_gullys",
+  "margin": {
+    "signature": "ROFLCOPTER",
+    "mark": "roflcopter",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "single page",
+      "composition": "The dock at sunrise, close on a chipped white enamel mug set on the planks, steaming, and beyond it the bay and the cannery chimney across the water with a thread of smoke. No hand on the mug. The plank's grain. The light coming.",
+      "characters": [],
+      "props": [
+        "the mug",
+        "the chimney, smoking"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a single full comic page with no panel borders, spare knowing ink line with economy, muted ochre and slate blue and sea-foam green washes, a chipped white enamel mug steaming on a dock's planks at sunrise with a bay beyond and a distant chimney with a thread of smoke, no hand on the mug, no people, no words",
+        "negative": "",
+        "notes": "The final page's mug and chimney, a week early, without her."
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "spare, knowing; economy of line; Era I's black spotting back on purpose in the mill run",
+    "palette": "muted ochres, slate blues, misty sea-foam greens; luminous sunbreaks in the last spring",
+    "paper": "Arches; bristol; the backs of motel registration cards"
+  },
+  "notes": "The mug before the hand. The chimney smoking.",
+  "layout": "single page, no borders"
+}

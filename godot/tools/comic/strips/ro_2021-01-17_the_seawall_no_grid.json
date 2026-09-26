@@ -1,0 +1,50 @@
+{
+  "id": "ro_2021-01-17_the_seawall_no_grid",
+  "title": "The seawall, no grid",
+  "strip": "roflcopter",
+  "date": "2021-01-17",
+  "run": 7,
+  "era": "era4",
+  "format": "page",
+  "tier": "A",
+  "selection": "full",
+  "venue": "nobody · boxes 21–40",
+  "arc": "No Grid",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (Run 7 sequences · deepening ii)",
+  "logline": "The seawall drawn straight across the page where three gutters would have been. Nothing interrupts it. The first page the eye reads as one thing.",
+  "cast": [],
+  "location": "dw_main_street",
+  "margin": {
+    "signature": "ROFLCOPTER",
+    "mark": "roflcopter",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "single page",
+      "composition": "The seawall's long curve across the full width of the page, uninterrupted, the bay above it, main street's backs below it, the places where a Sunday's gutters would have fallen marked by nothing at all. A crow on the wall. Wet January light.",
+      "characters": [],
+      "props": [
+        "the seawall",
+        "a crow"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a single full comic page with no panel borders, spare knowing ink line with economy, muted ochre and slate blue and sea-foam green washes, a long concrete seawall curving across the entire width of a page with a bay above and the backs of a small town below, a crow on the wall, nothing interrupting the line, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "spare, knowing; economy of line; Era I's black spotting back on purpose in the mill run",
+    "palette": "muted ochres, slate blues, misty sea-foam greens; luminous sunbreaks in the last spring",
+    "paper": "Arches; bristol; the backs of motel registration cards"
+  },
+  "notes": "One line, no gutters.",
+  "layout": "single page, no borders"
+}

@@ -1,0 +1,55 @@
+{
+  "id": "ro_2023-03-05_the_bird_in_the_rain",
+  "title": "The bird in the rain",
+  "strip": "roflcopter",
+  "date": "2023-03-05",
+  "run": 7,
+  "era": "era4",
+  "format": "page",
+  "tier": "A",
+  "selection": "full",
+  "venue": "nobody · boxes 21–40",
+  "arc": "The Bird",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (Run 7 sequences · deepening ii)",
+  "logline": "March rain on the seawall. The bird on the wall, soaked, its colors running in the wash the way the 2004 sky ran into the mud — on purpose now.",
+  "cast": [
+    "the_bird"
+  ],
+  "location": "dw_main_street",
+  "margin": {
+    "signature": "ROFLCOPTER",
+    "mark": "roflcopter",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "single page",
+      "composition": "The seawall in hard March rain, gray on gray, and on the wall the rainbow bird, soaked, its colors bleeding downward into the wet concrete in the watercolor — the only page where the bird's color runs.",
+      "characters": [
+        {
+          "id": "the_bird",
+          "pose": "soaked, colors running",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a single full comic page with no panel borders, spare knowing ink line with economy, muted ochre and slate blue and sea-foam green washes, a concrete seawall in heavy March rain painted gray on gray with a small rainbow bird perched on it whose colors bleed downward into the wet wash, no words",
+        "negative": "",
+        "notes": "The bleed of 2004's bad color, on purpose. The one time the bird runs."
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "spare, knowing; economy of line; Era I's black spotting back on purpose in the mill run",
+    "palette": "muted ochres, slate blues, misty sea-foam greens; luminous sunbreaks in the last spring",
+    "paper": "Arches; bristol; the backs of motel registration cards"
+  },
+  "notes": "The bird's colors run, once, on purpose.",
+  "layout": "single page, no borders"
+}

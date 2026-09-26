@@ -1,0 +1,50 @@
+{
+  "id": "ro_2021-03-07_the_last_ruled_sheet",
+  "title": "The last ruled sheet",
+  "strip": "roflcopter",
+  "date": "2021-03-07",
+  "run": 7,
+  "era": "era4",
+  "format": "page",
+  "tier": "A",
+  "selection": "full",
+  "venue": "nobody · boxes 21–40",
+  "arc": "No Grid",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (Run 7 sequences · deepening ii)",
+  "logline": "The last sheet with blue-pencil tiers on it, found under the table, used as a drop cloth: paint on the ruling. The grid's end, drawn as a stain.",
+  "cast": [],
+  "location": "dw_garage",
+  "margin": {
+    "signature": "ROFLCOPTER",
+    "mark": "roflcopter",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "single page",
+      "composition": "Close on a sheet of Arches on the garage floor, three tiers ruled in blue pencil, and across the ruling a spill of ochre wash and the ring of a jar — used as a drop cloth. The ruling shows through the stain. Nothing else on the page.",
+      "characters": [],
+      "props": [
+        "the ruled sheet",
+        "a stain"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a single full comic page with no panel borders, spare knowing ink line with economy, muted ochre and slate blue and sea-foam green washes, a close view of a watercolor sheet on a concrete floor ruled into three tiers in faint blue pencil with an ochre paint spill and a jar's ring stained across the ruling, no words",
+        "negative": "",
+        "notes": "The grid under the stain. Keep the blue lines faintly legible."
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "spare, knowing; economy of line; Era I's black spotting back on purpose in the mill run",
+    "palette": "muted ochres, slate blues, misty sea-foam greens; luminous sunbreaks in the last spring",
+    "paper": "Arches; bristol; the backs of motel registration cards"
+  },
+  "notes": "The grid, ended as a drop cloth.",
+  "layout": "single page, no borders"
+}
