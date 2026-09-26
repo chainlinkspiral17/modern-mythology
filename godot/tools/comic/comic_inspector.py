@@ -388,7 +388,7 @@ pre{white-space:pre-wrap;word-break:break-word;background:var(--bg-1);border:1px
 .card .cap b{color:var(--text)}.card.missing{opacity:.55}
 .gen{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,max-content));gap:8px 14px;align-items:center;background:var(--bg-1);border:1px solid var(--rule);padding:10px 12px;max-width:110ch}
 .gen label{color:var(--dim);display:flex;gap:6px;align-items:center}
-.gen select,.gen input[type=number],.gen input[type=text]{background:var(--ink);border:1px solid var(--rule);color:var(--text);font:inherit;padding:3px 6px;width:130px}
+.gen select,.gen input[type=number],.gen input[type=text]{background:var(--ink);border:1px solid var(--rule);color:var(--text);font:inherit;padding:3px 6px;width:130px}.gen select{width:auto;min-width:150px;max-width:300px}
 button.go{background:var(--ink);border:1px solid var(--gold);color:var(--gold-hi);padding:6px 16px;font:inherit;cursor:pointer;letter-spacing:.14em}
 button.go:disabled{opacity:.4;cursor:default}
 button.sm{background:var(--ink);border:1px solid var(--rule);color:var(--text);padding:2px 8px;font:inherit;cursor:pointer;font-size:11px}
@@ -463,8 +463,8 @@ async function open(id){SEL=id;render();const el=$('#detail');el.innerHTML='<p c
 function modelOptions(prov){const ms=MODELS[prov]||[];return '<option value="">default ('+(ms[0]?ms[0].id:'provider default')+')</option>'+ms.map(m=>`<option value="${m.id}" title="${esc(m.note)}">${esc(m.label)}${m.verified?'':' · unverified id'}</option>`).join('')+'<option value="__custom">other id…</option>';}
 function onProv(){const p=$('#g-prov').value;$('#g-model').innerHTML=modelOptions(p);$('#g-custom').style.display='none';onModel();}
 function onModel(){const v=$('#g-model').value;$('#g-custom').style.display=v==='__custom'?'inline-block':'none';const p=$('#g-prov').value;const m=(MODELS[p]||[]).find(x=>x.id===v);$('#g-note').textContent=m?m.note:(v==='__custom'?'type the exact id from the provider\'s docs; it is passed through unchanged':'');}
-function genForm(kind,id,fmt){const prov=KEYS.runway?'runway':'google';
- return `<div class="gen"><label>provider <select id="g-prov" onchange="onProv()"><option value="runway" ${KEYS.runway?'':'disabled'} ${prov==='runway'?'selected':''}>runway${KEYS.runway?'':' (no key)'}</option><option value="google" ${KEYS.google?'':'disabled'} ${prov==='google'?'selected':''}>google${KEYS.google?'':' (no key)'}</option></select></label>
+function genForm(kind,id,fmt){const prov=KEYS.runway?'runway':'google';const nokey=!KEYS.runway&&!KEYS.google;
+ return `${nokey?'<div class="job" style="border-color:var(--red)"><span class="st failed">NO KEYS</span> · nothing can generate until a key file exists. Runway: put the key on one line in <code>godot/tools/.runway_key</code>. Google: <code>godot/tools/.google_key</code>. Then reload this page.</div>':''}<div class="gen"><label>provider <select id="g-prov" onchange="onProv()"><option value="runway" ${KEYS.runway?'':'disabled'} ${prov==='runway'?'selected':''}>runway${KEYS.runway?'':' (no key)'}</option><option value="google" ${KEYS.google?'':'disabled'} ${prov==='google'?'selected':''}>google${KEYS.google?'':' (no key)'}</option></select></label>
  <label>model <select id="g-model" onchange="onModel()">${modelOptions(prov)}</select><input type="text" id="g-custom" placeholder="exact model id" style="display:none;width:200px"></label>
  <label>variants <input type="number" id="g-var" min="1" max="6" value="1"></label><label>seed <input type="number" id="g-seed" placeholder="random"></label>
  ${kind==='strip'?`<label><input type="checkbox" id="g-letter" checked> letter balloons</label><label><input type="checkbox" id="g-refs" checked> attach references</label><label><input type="checkbox" id="g-draft"> allow draft refs</label>`:''}
@@ -473,11 +473,11 @@ function genForm(kind,id,fmt){const prov=KEYS.runway?'runway':'google';
 async function generate(kind,id){let model=$('#g-model').value;if(model==='__custom')model=$('#g-custom').value.trim();const b={kind,id,provider:$('#g-prov').value,model,variants:+$('#g-var').value,seed:$('#g-seed').value,overwrite:$('#g-over').checked,dry_run:$('#g-dry').checked};
  if(kind==='strip'){b.letter=$('#g-letter').checked;b.refs=$('#g-refs').checked;b.include_draft=$('#g-draft').checked;}
  $('#g-go').disabled=true;const r=await api('/api/generate',{method:'POST',body:JSON.stringify(b)});$('#g-go').disabled=false;
- $('#g-msg').textContent=r.error?('✗ '+r.error):'queued → JOBS · every run is a new take';if(!r.error)watch(r.job.id,()=>{if(SEL===id)open(id);if(MODE==='strips')loadStrips();else loadSheets();});}
-function watch(jid,done){const t=setInterval(async()=>{const j=(await api('/api/jobs')).jobs.find(x=>x.id===jid);if(!j)return clearInterval(t);const m=$('#g-msg');if(m)m.textContent=`${j.status} · ${j.log.slice(-1)[0]||''}`;if(j.status==='done'||j.status==='failed'){clearInterval(t);done&&done();}},2000);}
+ $('#g-msg').textContent=r.error?('✗ '+r.error):'queued → JOBS · every run is a new take';if(!r.error){showLastRun(id);watch(r.job.id,()=>{if(SEL===id){TAB='renders';open(id);}if(MODE==='strips')loadStrips();else loadSheets();});}}
+function watch(jid,done){const t=setInterval(async()=>{const j=(await api('/api/jobs')).jobs.find(x=>x.id===jid);if(!j)return clearInterval(t);const m=$('#g-msg');if(m)m.textContent=`${j.status}`;if(j.status==='done'||j.status==='failed'){clearInterval(t);done&&done();}},2000);}
 function gallery(rs){if(!rs.length)return '<p class="empty">no renders on disk yet</p>';return '<div class="gal">'+rs.map(r=>`<div class="card ${r.exists?'':'missing'}">${r.exists?`<img src="${r.url}" onclick="lb('${r.url}')">`:'<div class="empty">file not on disk (see manifest / fetch_concept.py)</div>'}<div class="cap"><b>${esc(r.provider||r.provider_dir)}${r.model?' · '+esc(r.model):''}${r.seed!=null?' · seed '+r.seed:''}</b><span>${esc((r.rendered_at||'').slice(0,16))}</span></div><div class="cap"><span>${esc(r.file||'')}</span></div></div>`).join('')+'</div>';}
 function lb(u){$('#lbimg').src=u;$('#lightbox').style.display='flex';}$('#lightbox').onclick=()=>$('#lightbox').style.display='none';
-function renderStrip(d){const s=d.strip,p=d.prompt,rv=s.review||{};const el=$('#detail');
+function renderStrip(d){const s=d.strip,p=d.prompt,rv=s.review||{};const el=$('#detail');setTimeout(()=>showLastRun(s.id),0);
  const tabs=[['sheet','SHEET'],['panels','PANELS'],['prompt','PROMPT'],['refs','REFS'],['renders',`RENDERS ${d.renders.filter(r=>r.exists).length}`],['json','JSON']];
  el.innerHTML=`<div class="head"><h1>${esc(s.title)}</h1><div class="meta">${s.id} · ${s.date} · ${s.strip} · run ${s.run} · ${s.era} · ${s.format} · tier ${s.tier} · ${s.selection} · ${esc(s.arc)} · ${esc(s.location)} · mark ${esc(s.margin?.mark)}</div><div class="log">${esc(s.logline)}</div>
  ${d.errors.length?`<pre style="border-color:var(--red)">${esc(d.errors.join('\n'))}</pre>`:''}
@@ -488,15 +488,33 @@ function renderStrip(d){const s=d.strip,p=d.prompt,rv=s.review||{};const el=$('#
  <div class="pane ${TAB==='prompt'?'on':''}" id="p-prompt"><h2>whole-strip prompt · lettered <button class="sm" onclick="copy('pl')">copy</button></h2><pre id="pl">${esc(p.lettered)}</pre><p class="empty">negative: ${esc(p.negative_lettered)} · runway ${p.runway_ratio} · google ${p.google_aspect}</p>
   <h2>unlettered (production) <button class="sm" onclick="copy('pu')">copy</button></h2><pre id="pu">${esc(p.unlettered)}</pre><p class="empty">negative: ${esc(p.negative_unlettered)}</p></div>
  <div class="pane ${TAB==='refs'?'on':''}" id="p-refs"><div class="refs">${['runway','google'].map(pr=>`<h2>${pr} would attach (${d.refs[pr].length})</h2>`+(d.refs[pr].length?d.refs[pr].map(r=>`<div class="ref">${r.url?`<img src="${r.url}" onclick="lb('${r.url}')">`:'<div class="empty">no image yet</div>'}<div><b>@${esc(r.tag)}</b> · ${esc(r.id)} · ${r.kind} · <span class="pill ${r.status==='approved'?'ok':'A'}">${r.status}</span> · score ${r.score}<br><span class="why">${esc(r.why.join(', '))}</span><br><small>${esc(r.tags.join(' '))}</small><br><button class="sm ok" onclick="refStatus('${r.id}','approved')">approve</button> <button class="sm bad" onclick="refStatus('${r.id}','rejected')">reject</button></div></div>`).join(''):'<p class="empty">none approved that match · render the sheets first (SHEETS mode) or tick "allow draft refs"</p>')).join('')}</div></div>
- <div class="pane ${TAB==='renders'?'on':''}" id="p-renders"><h2>generate</h2>${genForm('strip',s.id,s.format)}<h2>on disk</h2>${gallery(d.renders)}</div>
+ <div class="pane ${TAB==='renders'?'on':''}" id="p-renders"><h2>generate</h2>${genForm('strip',s.id,s.format)}<div id="lastrun"></div><h2>on disk</h2>${gallery(d.renders)}</div>
  <div class="pane ${TAB==='json'?'on':''}" id="p-json"><pre>${esc(JSON.stringify(s,null,2))}</pre><p class="empty">file: strips/${s.id}.json · edit the JSON, then <button class="sm" onclick="regenMd()">regenerate the md sheets</button></p></div>`;}
-function renderSheet(s){const el=$('#detail');el.innerHTML=`<div class="head"><h1>${esc(s.id)}</h1><div class="meta">${s.kind} · ${s.era} · ${s.ratio} · <span class="pill ${s.status==='approved'?'ok':'A'}">${s.status}</span> · ${esc(s.tags.join(' '))}</div><div class="log">${esc(s.prompt)}</div>
+function renderSheet(s){const el=$('#detail');showLastRun(s.id);el.innerHTML=`<div class="head"><h1>${esc(s.id)}</h1><div class="meta">${s.kind} · ${s.era} · ${s.ratio} · <span class="pill ${s.status==='approved'?'ok':'A'}">${s.status}</span> · ${esc(s.tags.join(' '))}</div><div class="log">${esc(s.prompt)}</div>
  <div class="review"><button class="sm ok" onclick="refStatus('${s.id}','approved')">approve</button><button class="sm bad" onclick="refStatus('${s.id}','rejected')">reject</button><button class="sm" onclick="refStatus('${s.id}','draft')">draft</button><span class="empty">${esc(s.notes||'')}</span></div></div>
- <h2>generate</h2>${genForm('sheet',s.id)}<h2>on disk</h2>${gallery(s.renders)}<p class="empty">after a render, run <code>comic_tool.py refs sync</code> (or just approve here — sync also picks the file up).</p>`;}
+ <h2>generate</h2>${genForm('sheet',s.id)}<div id="lastrun"></div><h2>on disk</h2>${gallery(s.renders)}<p class="empty">after a render, run <code>comic_tool.py refs sync</code> (or just approve here — sync also picks the file up).</p>`;}
 function renderRef(r){const el=$('#detail');el.innerHTML=`<div class="head"><h1>${esc(r.id)}</h1><div class="meta">${r.kind} · <span class="pill ${r.status==='approved'?'ok':'A'}">${r.status}</span> · ${esc((r.tags||[]).join(' '))}</div><div class="log">${esc(r.notes||'')}</div>
  <div class="review"><button class="sm ok" onclick="refStatus('${r.id}','approved')">approve</button><button class="sm bad" onclick="refStatus('${r.id}','rejected')">reject</button><button class="sm" onclick="refStatus('${r.id}','draft')">draft</button></div></div>
  ${r.url?`<div class="gal"><div class="card"><img src="${r.url}" onclick="lb('${r.url}')"><div class="cap"><span>${esc(r.file||r.url)}</span></div></div></div>`:'<p class="empty">no image on disk'+(r.runway_task_id?' · runway task '+esc(r.runway_task_id):'')+'</p>'}
  <h2>registry entry</h2><pre>${esc(JSON.stringify(r,null,2))}</pre>`;}
+function explain(j){const log=j.log.join('\n');
+ if(/no API key/.test(log))return 'No API key for '+j.provider+'. Put it in godot/tools/.'+(j.provider==='runway'?'runway_key':'google_key')+' (one line) or export the env var, then generate again.';
+ if(/submit 4(00|22)/.test(log))return 'The provider rejected the request (HTTP 400). Usually the model id is wrong for this API, or the ratio is not one this model accepts. The body below names the field. Try the default model, or fix the id in the "other id…" box.';
+ if(/submit 401|submit 403|PERMISSION_DENIED|API key not valid/.test(log))return 'The key was refused (401/403). Check the key file has the right key and nothing else in it.';
+ if(/submit 429|RESOURCE_EXHAUSTED|insufficient/i.test(log))return 'Out of credits or rate-limited (429). Wait, or add credits on the provider.';
+ if(/task FAILED|CANCELLED/.test(log))return 'The provider accepted the job and then failed it (often content moderation on a prompt with people, or an internal error). Try again with a different seed or model.';
+ if(/dry run/.test(log))return 'That was a dry run: the prompt was printed and nothing was sent. Untick "dry run" to render.';
+ if(/exists, skip/.test(log))return 'The file already existed and skip mode was on. Every run is a new take now; if you still see this, pull the latest.';
+ if(/Traceback/.test(log))return 'The tool itself crashed. The traceback below is the bug; paste it to me.';
+ if(/wrote 0 strip prompts|wrote 0 sheet prompts/.test(log))return 'No strip matched that id when composing the prompt; the id may have changed. Reload the page.';
+ if(j.status==='done'&&/✓/.test(log))return 'Rendered. It is in the gallery below (reload the tab if not).';
+ if(j.status==='done')return 'Finished with nothing rendered; read the log.';
+ if(j.status==='running')return 'Running… the provider usually takes 20–90 seconds.';
+ return '';}
+function showLastRun(id){api('/api/jobs').then(d=>{const box=$('#lastrun');if(!box)return;const js=d.jobs.filter(j=>j.target===id);if(!js.length){box.innerHTML='<p class="empty">no runs yet this session. Pick a provider and model above and press GENERATE. The result, or the reason it failed, appears here.</p>';return;}
+ const j=js[0];const bad=j.log.filter(l=>/✗|error|Error|Traceback|FAILED|400|401|403|429|500/.test(l));const why=explain(j);
+ box.innerHTML=`<div class="job" style="border-color:${j.status==='failed'?'var(--red)':j.status==='done'?'var(--em)':'var(--gold)'}"><span class="st ${j.status}">${j.status.toUpperCase()}</span> · ${esc(j.target)} · ${j.provider}${j.commands[1].includes('--model')?' · '+esc(j.commands[1].split('--model ')[1].split(' ')[0]):''}<div style="margin:6px 0;color:var(--text)">${esc(why)}</div>${bad.length?'<pre style="border-color:var(--red)">'+esc(bad.join('\n'))+'</pre>':''}<details><summary style="cursor:pointer;color:var(--dim)">full log</summary><pre>${esc(j.commands.join('\n'))}\n\n${esc(j.log.join('\n'))}</pre></details>${js.length>1?'<div class="empty">'+(js.length-1)+' earlier run'+(js.length>2?'s':'')+' under JOBS</div>':''}</div>`;
+ if(j.status==='running'||j.status==='queued')setTimeout(()=>{if(SEL===id)showLastRun(id);},2000);});}
 function renderJobs(){api('/api/jobs').then(d=>{const el=$('#detail');el.innerHTML='<h2>jobs (this session)</h2><div class="jobs">'+(d.jobs.length?d.jobs.map(j=>`<div class="job"><span class="st ${j.status}">${j.status.toUpperCase()}</span> · ${j.kind} · <b>${esc(j.target)}</b> · ${j.provider}<pre>${esc(j.commands.join('\n'))}\n\n${esc(j.log.join('\n'))}</pre></div>`).join(''):'<p class="empty">nothing run yet · pick a strip → RENDERS → GENERATE</p>')+'</div>';});}
 function tab(t){TAB=t;document.querySelectorAll('.pane').forEach(p=>p.classList.toggle('on',p.id==='p-'+t));document.querySelectorAll('.tabs button').forEach((b,i)=>b.classList.toggle('on',['sheet','panels','prompt','refs','renders','json'][i]===t));}
 function copy(id){navigator.clipboard.writeText($('#'+id).textContent);}
@@ -512,8 +530,8 @@ document.addEventListener('keydown',e=>{if(e.target.tagName==='INPUT'||e.target.
  if(e.key==='g'&&MODE==='strips'&&SEL){tab('renders');}if(/^[1-6]$/.test(e.key)&&MODE==='strips'&&SEL)tab(['sheet','panels','prompt','refs','renders','json'][+e.key-1]);
  if(e.key==='/'){e.preventDefault();$('#q').focus();}});
 setInterval(()=>{if(MODE==='jobs')renderJobs();},4000);
-const _open=open;open=function(id){history.replaceState(null,'','#'+MODE+'/'+encodeURIComponent(id));return _open(id);};
-loadKeys();(async()=>{const h=location.hash.slice(1).split('/');await loadStrips();if(h[0]&&h[1]){if(h[0]!=='strips'){setMode(h[0]);await (h[0]==='sheets'?loadSheets():loadRefs());}open(decodeURIComponent(h[1]));}})();
+const _open=open;open=function(id){history.replaceState(null,'','#'+MODE+'/'+encodeURIComponent(id)+'/'+TAB);return _open(id);};
+loadKeys();(async()=>{const h=location.hash.slice(1).split('/');await loadStrips();if(h[0]&&h[1]){if(h[2])TAB=h[2];if(h[0]!=='strips'){setMode(h[0]);await (h[0]==='sheets'?loadSheets():loadRefs());}open(decodeURIComponent(h[1]));}})();
 </script></body></html>
 """
 
