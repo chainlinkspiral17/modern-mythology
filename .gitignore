@@ -36,6 +36,13 @@ godot/tools/.meshy_key
 godot/tools/.google_key
 godot/tools/.*_key
 
-# Meshy pipeline concept-art candidates + manifest — curate manually; the
-# chosen GLB lands in assets/3d/... and IS committed
-godot/assets/concept/meshy/
+# Meshy pipeline concept-art candidates — curate manually; the chosen GLB
+# lands in assets/3d/... and IS committed. The manifest (the run's names)
+# and each character's chosen front image ARE tracked since 2026-09-26,
+# so a fresh clone brings Hero Studio back the way it was left.
+godot/assets/concept/meshy/*
+!godot/assets/concept/meshy/manifest.json
+!godot/assets/concept/meshy/*/
+godot/assets/concept/meshy/*/*
+!godot/assets/concept/meshy/*/front.png
+!godot/assets/concept/meshy/*/front.jpg
