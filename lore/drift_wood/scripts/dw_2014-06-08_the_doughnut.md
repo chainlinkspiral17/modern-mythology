@@ -1,0 +1,72 @@
+# Sunday · the doughnut
+
+`dw_2014-06-08_the_doughnut` · **DRIFT WOOD** · 2014-06-08 · sunday (3-5 horizontal tiers, full page) · run 4 · The Masterwork of Mediocrity · tier B · selection full
+Venue: Arthur's site · the coastal weeklies · arc: *Sundays*
+
+*The Legacy's doughnut spare, close, in watercolor: the narrow tread, the yellow rim, the dust. A month before it carries him four hundred miles. The strip's one Sunday about a tire.*
+
+**Line.** razor-sharp, confident brush and ink; pristine perspective; crisp silhouettes; zero crosshatch in close-ups  
+**Palette.** dailies: black ink, one spot tone at most. Sundays: wet-on-wet — gray-green moss, fog, rusted tin, bruised dusk  
+**Paper.** bristol for dailies; 140 lb Arches cold-press for Sundays
+
+---
+
+## Tier 1 · Tire
+
+*wide tier.* Tier 1: the front left of a faded green wagon on gravel: the doughnut spare, narrow, its yellow rim, the mismatch with the other wheel visible.
+
+Props: the doughnut spare
+
+<details><summary>image generation</summary>
+
+**prompt.** comic Sunday page tier, confident brush-and-ink line over wet-on-wet watercolor washes on cold-press paper, Pacific Northwest coastal light, gray-green moss, fog, rusted galvanized tin, water bleeding softly over the ink edge, the front of a faded green station wagon on gravel with a narrow temporary spare tire on a yellow rim mismatched against the full-size wheel behind, no words, no text, no lettering, no speech balloons, no signature
+
+**negative.** photorealistic, 3D render, airbrush, neon, anime, text, letters, watermark, signature, extra fingers
+
+**notes.** The doughnut (dw_2013-10-14). Four hundred miles on it in July.
+
+</details>
+
+## Tier 2 · Tread
+
+*medium tier.* Tier 2: the tread, close. Thin. A pebble in it.
+
+Props: the tread
+
+<details><summary>image generation</summary>
+
+**prompt.** comic Sunday page tier, confident brush-and-ink line over wet-on-wet watercolor washes on cold-press paper, Pacific Northwest coastal light, gray-green moss, fog, rusted galvanized tin, water bleeding softly over the ink edge, close on a temporary spare tire's thin tread with a pebble caught in it, no words, no text, no lettering, no speech balloons, no signature
+
+**negative.** photorealistic, 3D render, airbrush, neon, anime, text, letters, watermark, signature, extra fingers
+
+</details>
+
+## Tier 3 · Road
+
+*wide tier.* Tier 3: 101 north from the driver's seat, the road going on. Held.
+
+Props: 101
+
+<details><summary>image generation</summary>
+
+**prompt.** comic Sunday page tier, confident brush-and-ink line over wet-on-wet watercolor washes on cold-press paper, Pacific Northwest coastal light, gray-green moss, fog, rusted galvanized tin, water bleeding softly over the ink edge, a coastal highway seen from a driver's seat going north, no words, no text, no lettering, no speech balloons, no signature
+
+**negative.** photorealistic, 3D render, airbrush, neon, anime, text, letters, watermark, signature, extra fingers
+
+</details>
+
+---
+
+<details><summary>whole-strip prompt (concept run)</summary>
+
+**prompt.** a full-page Sunday comic in horizontal tiers stacked top to bottom, each tier one wide panel (3 tiers). Style: comic Sunday page tier, confident brush-and-ink line over wet-on-wet watercolor washes on cold-press paper, Pacific Northwest coastal light, gray-green moss, fog, rusted galvanized tin, water bleeding softly over the ink edge. Title of the strip: DRIFT WOOD. The strip: The Legacy's doughnut spare, close, in watercolor: the narrow tread, the yellow rim, the dust. A month before it carries him four hundred miles. The strip's one Sunday about a tire. Tier 1: the front of a faded green station wagon on gravel with a narrow temporary spare tire on a yellow rim mismatched against the full-size wheel behind, no words. No dialogue in this tier. Tier 2: close on a temporary spare tire's thin tread with a pebble caught in it, no words. No dialogue in this tier. Tier 3: a coastal highway seen from a driver's seat going north, no words. No dialogue in this tier. Lettering: every balloon and caption contains its complete text exactly as written, in clean hand-lettered comic capitals, large enough to read; size each balloon to fit its whole sentence and never cut a word at a balloon or panel edge; no words other than the ones given. Bottom right margin: tiny signature "A. Finch — Small Wood, OR" beside a tiny stylized gull, two strokes.
+
+**negative.** photorealistic, 3D render, airbrush, neon, anime, watermark, extra fingers
+
+</details>
+
+**Margin.** A. Finch — Small Wood, OR · mark: *gull* — a tiny stylized gull, two strokes
+
+*Notes.* A Sunday about a tire. The road north.
+
+Source: lore/drift_wood/_THE_COMPLETE_RUN.md (Sundays · deepening viii)

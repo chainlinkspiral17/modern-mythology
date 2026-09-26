@@ -1,0 +1,90 @@
+{
+  "id": "dw_2009-09-13_hemlocks_from_the_road",
+  "title": "Sunday · hemlocks from the road",
+  "strip": "drift_wood",
+  "date": "2009-09-13",
+  "run": 3,
+  "era": "era2",
+  "format": "sunday",
+  "tier": "B",
+  "selection": "full",
+  "venue": "Arthur's site · the coastal weeklies",
+  "arc": "The Ranch House",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (Sundays · deepening viii)",
+  "logline": "Gully's half-acre from the road, before Wood visits: the hemlocks, the gravel, the ranch house's one lit window, dusk. The strip is very quiet about it a month early.",
+  "cast": [],
+  "location": "dw_ranch_house",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "wide tier",
+      "composition": "Tier 1: a gravel drive leaving the road into hemlocks at dusk, a small ranch house among them with one window lit, a flatbed in the drive.",
+      "characters": [],
+      "props": [
+        "the drive",
+        "one lit window",
+        "the flatbed"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a gravel drive leading from a road into hemlock trees at dusk with a small ranch house among them showing one lit window and a flatbed truck parked, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null,
+      "name": "Road"
+    },
+    {
+      "n": 2,
+      "shot": "medium tier",
+      "composition": "Tier 2: the lit window, close, from the road: a kitchen, a figure at a sink, the back of a head.",
+      "characters": [],
+      "props": [
+        "the window"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a lit kitchen window seen from outside at dusk with the back of a woman's head at a sink, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null,
+      "name": "Window"
+    },
+    {
+      "n": 3,
+      "shot": "wide tier",
+      "composition": "Tier 3: the hemlocks, forty-one of them, dark, the road going on. Held.",
+      "characters": [],
+      "props": [
+        "hemlocks"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a stand of dark hemlock trees beside a road at dusk, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null,
+      "name": "Trees"
+    }
+  ],
+  "art": {
+    "line": "brush-pen scanned; muddy digital flats",
+    "palette": "limited, muddy; Sundays in watercolor, improving",
+    "paper": "bristol; the browser"
+  },
+  "notes": "Gully's house from the road, a month before he visits. One window.",
+  "layout": "tiers, portrait page"
+}

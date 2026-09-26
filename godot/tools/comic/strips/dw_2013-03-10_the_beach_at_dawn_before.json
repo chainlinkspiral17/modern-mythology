@@ -1,0 +1,88 @@
+{
+  "id": "dw_2013-03-10_the_beach_at_dawn_before",
+  "title": "Sunday · the beach at dawn, before",
+  "strip": "drift_wood",
+  "date": "2013-03-10",
+  "run": 4,
+  "era": "era3",
+  "format": "sunday",
+  "tier": "B",
+  "selection": "full",
+  "venue": "Arthur's site · the coastal weeklies",
+  "arc": "The Ring",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (Sundays · deepening viii)",
+  "logline": "The Sunday before the ring week: the beach at dawn, empty, the drift log, the tide out. The strip doesn't know what Monday brings and draws the place very carefully anyway.",
+  "cast": [],
+  "location": "dw_beach",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "crab",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "wide tier",
+      "composition": "Tier 1: the beach at dawn in March, gray-pink, the drift log, the tide out, nobody.",
+      "characters": [],
+      "props": [
+        "the drift log"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "an empty beach at March dawn in gray-pink light with a bleached drift log and the tide out, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null,
+      "name": "Dawn"
+    },
+    {
+      "n": 2,
+      "shot": "medium tier",
+      "composition": "Tier 2: the log, close, its grain, a place worn smooth where people sit.",
+      "characters": [],
+      "props": [
+        "the log's worn place"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "close on a bleached drift log with a place worn smooth on top where people have sat, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null,
+      "name": "Log"
+    },
+    {
+      "n": 3,
+      "shot": "wide tier",
+      "composition": "Tier 3: the light coming across the wet sand. Held.",
+      "characters": [],
+      "props": [
+        "light on sand"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "dawn light coming across wet sand toward a drift log, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null,
+      "name": "Light"
+    }
+  ],
+  "art": {
+    "line": "razor-sharp, confident brush and ink; pristine perspective; crisp silhouettes; zero crosshatch in close-ups",
+    "palette": "dailies: black ink, one spot tone at most. Sundays: wet-on-wet — gray-green moss, fog, rusted tin, bruised dusk",
+    "paper": "bristol for dailies; 140 lb Arches cold-press for Sundays"
+  },
+  "notes": "The log before the ring. Drawn carefully.",
+  "layout": "tiers, portrait page"
+}

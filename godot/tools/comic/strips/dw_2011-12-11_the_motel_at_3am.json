@@ -1,0 +1,92 @@
+{
+  "id": "dw_2011-12-11_the_motel_at_3am",
+  "title": "Sunday · the motel at 3 AM",
+  "strip": "drift_wood",
+  "date": "2011-12-11",
+  "run": 3,
+  "era": "era2",
+  "format": "sunday",
+  "tier": "B",
+  "selection": "full",
+  "venue": "Arthur's site · the coastal weeklies",
+  "arc": "Night Audit",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (Sundays · deepening viii)",
+  "logline": "Three months into nights: the Driftwood Motel from 101 at 3 AM in December rain, VACANCY lit, the office lit, the ice machine's hum drawn as a line under all three tiers.",
+  "cast": [],
+  "location": "dw_motel_desk",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "wide tier",
+      "composition": "Tier 1: the motel from across 101 at 3 AM in rain: the two-story walkway, three room lights, VACANCY, the office glowing. The hum line beneath.",
+      "characters": [],
+      "props": [
+        "VACANCY",
+        "the office",
+        "hum line"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a two-story roadside motel across a highway at 3 AM in rain with a lit VACANCY sign and a glowing office and three room lights, a flat line beneath the tier, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null,
+      "name": "101"
+    },
+    {
+      "n": 2,
+      "shot": "medium tier",
+      "composition": "Tier 2: through the office glass: the desk, a figure bent over it, drawing. The hum line.",
+      "characters": [],
+      "props": [
+        "the desk through glass",
+        "hum line"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a motel office seen through its glass door at night with a figure bent over the desk drawing, a flat line beneath the tier, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null,
+      "name": "Desk"
+    },
+    {
+      "n": 3,
+      "shot": "wide tier",
+      "composition": "Tier 3: the sign, DRIFTWOOD, half its tubes lit, rain through the light. The hum line. Held.",
+      "characters": [],
+      "props": [
+        "DRIFTWOOD",
+        "hum line"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a motel's neon sign with half its tubes lit in rain, a flat line beneath the tier, no words",
+        "negative": "",
+        "notes": "Letter after: DRIFTWOOD."
+      },
+      "stage": null,
+      "name": "Sign"
+    }
+  ],
+  "art": {
+    "line": "brush-pen scanned; muddy digital flats",
+    "palette": "limited, muddy; Sundays in watercolor, improving",
+    "paper": "bristol; the browser"
+  },
+  "notes": "The motel from 101. The hum under three tiers.",
+  "layout": "tiers, portrait page"
+}

@@ -1,0 +1,89 @@
+{
+  "id": "dw_2014-09-14_the_sound_remembered",
+  "title": "Sunday · the Sound, remembered",
+  "strip": "drift_wood",
+  "date": "2014-09-14",
+  "run": 4,
+  "era": "era3",
+  "format": "sunday",
+  "tier": "A",
+  "selection": "full",
+  "venue": "Arthur's site · the coastal weeklies",
+  "arc": "The Glass Pavilion (Arc 3, week 3)",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (Sundays · deepening viii)",
+  "logline": "Six weeks home. The Sound from the pavilion's dock, drawn from the sketchbook's two lines and memory, in the garage, with the bay outside the window. Two waters on one page.",
+  "cast": [],
+  "location": "dw_garage",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "wide tier",
+      "composition": "Tier 1: Puget Sound at dawn from a dock — the layered islands, the far lights — drawn softer than the July Sunday, as memory.",
+      "characters": [],
+      "props": [
+        "the Sound, remembered"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "Puget Sound at dawn from a dock with layered islands and distant lights, painted softly as a memory, no words",
+        "negative": "",
+        "notes": "dw_2014-07-20 redrawn from memory. Softer, less exact."
+      },
+      "stage": null,
+      "name": "Sound"
+    },
+    {
+      "n": 2,
+      "shot": "medium tier",
+      "composition": "Tier 2: the garage window: the bay, the real one, gray, exact, with the three jars on the sill.",
+      "characters": [],
+      "props": [
+        "the bay, real",
+        "three jars"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a garage window with three jars on the sill and a gray exact bay beyond, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null,
+      "name": "Window"
+    },
+    {
+      "n": 3,
+      "shot": "wide tier",
+      "composition": "Tier 3: the drafting table with the Sound drying on it and the window above with the bay in it. Two waters. Held.",
+      "characters": [],
+      "props": [
+        "two waters"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a drafting table with a watercolor of a distant sound drying on it beneath a window showing a real gray bay, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null,
+      "name": "Both"
+    }
+  ],
+  "art": {
+    "line": "razor-sharp, confident brush and ink; pristine perspective; crisp silhouettes; zero crosshatch in close-ups",
+    "palette": "dailies: black ink, one spot tone at most. Sundays: wet-on-wet — gray-green moss, fog, rusted tin, bruised dusk",
+    "paper": "bristol for dailies; 140 lb Arches cold-press for Sundays"
+  },
+  "notes": "Two waters. The one remembered, softer.",
+  "layout": "tiers, portrait page"
+}

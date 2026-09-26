@@ -1,0 +1,109 @@
+{
+  "id": "dw_2011-07-10_the_lamp_on_the_beach",
+  "title": "Sunday · the lamp on the beach",
+  "strip": "drift_wood",
+  "date": "2011-07-10",
+  "run": 3,
+  "era": "era2",
+  "format": "sunday",
+  "tier": "A",
+  "selection": "full",
+  "venue": "Arthur's site · the coastal weeklies",
+  "arc": "Let Go",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (Sundays · deepening viii)",
+  "logline": "The green swing-arm lamp on the beach at dusk, clamped to the drift log, lit from an extension cord that runs off the page. The strip's absurd object, drawn as a landscape with dignity.",
+  "cast": [
+    "wood_26",
+    "barnaby"
+  ],
+  "location": "dw_beach",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "wide tier",
+      "composition": "Tier 1: the drift log at dusk with a green swing-arm lamp clamped to it, lit, its cord running away up the beach off the page, and a man and a dog in its circle of light.",
+      "characters": [
+        {
+          "id": "wood_26",
+          "pose": "in the lamp's light",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the lamp on the log",
+        "the cord"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a bleached drift log on a beach at dusk with a green swing-arm desk lamp clamped to it and lit, its cord running off the page, a man and a dog sitting in its small circle of light, no words",
+        "negative": "",
+        "notes": "The lamp from May 2011 (dw_2011-05-20, dw_2011-06-03)."
+      },
+      "stage": null,
+      "name": "Lamp"
+    },
+    {
+      "n": 2,
+      "shot": "medium tier",
+      "composition": "Tier 2: the circle of light on the sand, a pad in it, a hand drawing.",
+      "characters": [
+        {
+          "id": "wood_26",
+          "pose": "a hand drawing",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the pad"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a circle of lamplight on sand with a drawing pad and a hand drawing in it, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null,
+      "name": "Circle"
+    },
+    {
+      "n": 3,
+      "shot": "wide tier",
+      "composition": "Tier 3: the beach from far off: one small light on a dark beach, the sea. Held.",
+      "characters": [],
+      "props": [
+        "one light"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a dark beach at dusk seen from far off with one small warm light on it and the sea beyond, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null,
+      "name": "Far"
+    }
+  ],
+  "art": {
+    "line": "brush-pen scanned; muddy digital flats",
+    "palette": "limited, muddy; Sundays in watercolor, improving",
+    "paper": "bristol; the browser"
+  },
+  "notes": "The lamp on the log, lit. One light on a dark beach.",
+  "layout": "tiers, portrait page"
+}

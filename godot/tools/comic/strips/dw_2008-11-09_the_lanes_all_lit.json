@@ -1,0 +1,88 @@
+{
+  "id": "dw_2008-11-09_the_lanes_all_lit",
+  "title": "Sunday · the Lanes, all lit",
+  "strip": "drift_wood",
+  "date": "2008-11-09",
+  "run": 3,
+  "era": "era2",
+  "format": "sunday",
+  "tier": "A",
+  "selection": "full",
+  "venue": "Arthur's site · the coastal weeklies",
+  "arc": "Sundays",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (Sundays · deepening viii)",
+  "logline": "The bowling alley at dusk with every letter lit, the week before the ninth Dog Night. The last Sunday the sign is whole. The strip doesn't know; the reader with the sign table does.",
+  "cast": [],
+  "location": "dw_bowling_alley",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "wide tier",
+      "composition": "Tier 1: SMALL WOOD LANES at dusk from across the highway, every tube lit, pink and blue, the lot half full, the hill behind.",
+      "characters": [],
+      "props": [
+        "the sign, all lit"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a bowling alley across a two-lane highway at dusk with its pink and blue neon sign fully lit and a half-full lot, a forested hill behind, no words",
+        "negative": "",
+        "notes": "All fifteen letters lit. The last whole Sunday of the sign (objects.md sign table)."
+      },
+      "stage": null,
+      "name": "Sign"
+    },
+    {
+      "n": 2,
+      "shot": "medium tier",
+      "composition": "Tier 2: the tubes, close: the L of LANES flickering, the strip's one hint.",
+      "characters": [],
+      "props": [
+        "the L, flickering"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "close on pink neon letters where one letter's tube flickers slightly, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null,
+      "name": "Tubes"
+    },
+    {
+      "n": 3,
+      "shot": "wide tier",
+      "composition": "Tier 3: the alley beside it, the dumpster, dusk, nobody. Held.",
+      "characters": [],
+      "props": [
+        "the dumpster"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "an alley beside a bowling alley at dusk with a dumpster and nobody, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null,
+      "name": "Alley"
+    }
+  ],
+  "art": {
+    "line": "brush-pen scanned; muddy digital flats",
+    "palette": "limited, muddy; Sundays in watercolor, improving",
+    "paper": "bristol; the browser"
+  },
+  "notes": "Every letter lit. The last time.",
+  "layout": "tiers, portrait page"
+}

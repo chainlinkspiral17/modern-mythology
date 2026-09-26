@@ -1,0 +1,88 @@
+{
+  "id": "dw_2011-02-13_wagners_lit",
+  "title": "Sunday · Wagner's, lit",
+  "strip": "drift_wood",
+  "date": "2011-02-13",
+  "run": 3,
+  "era": "era2",
+  "format": "sunday",
+  "tier": "B",
+  "selection": "full",
+  "venue": "Arthur's site · the coastal weeklies",
+  "arc": "The Corner",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (Sundays · deepening viii)",
+  "logline": "The hardware store on the corner, lit, a Sunday evening in February, the week before the strip starts letting it close in the backgrounds. Everything on the shelves. The last time.",
+  "cast": [],
+  "location": "dw_main_street",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "wide tier",
+      "composition": "Tier 1: Wagner's Hardware on the corner at dusk, windows lit, shelves full through the glass, a man in an apron at the register, the sign whole.",
+      "characters": [],
+      "props": [
+        "Wagner's, lit"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a small-town hardware store on a corner at dusk with lit windows showing full shelves and a man in an apron at the register, no words",
+        "negative": "",
+        "notes": "The week before dw_2011-02-21. Letter after: WAGNER'S HARDWARE · SINCE 1962."
+      },
+      "stage": null,
+      "name": "Corner"
+    },
+    {
+      "n": 2,
+      "shot": "medium tier",
+      "composition": "Tier 2: through the glass, the shelves: bins of nails, coils of rope, the things a town keeps.",
+      "characters": [],
+      "props": [
+        "the shelves"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "hardware store shelves seen through a window with bins of nails and coils of rope, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null,
+      "name": "Shelves"
+    },
+    {
+      "n": 3,
+      "shot": "wide tier",
+      "composition": "Tier 3: the corner from across the street, the store the only lit thing on the block. Held.",
+      "characters": [],
+      "props": [
+        "the corner"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a small-town street corner at dusk with one lit storefront and the rest dark, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null,
+      "name": "Street"
+    }
+  ],
+  "art": {
+    "line": "brush-pen scanned; muddy digital flats",
+    "palette": "limited, muddy; Sundays in watercolor, improving",
+    "paper": "bristol; the browser"
+  },
+  "notes": "Wagner's, whole, the week before.",
+  "layout": "tiers, portrait page"
+}

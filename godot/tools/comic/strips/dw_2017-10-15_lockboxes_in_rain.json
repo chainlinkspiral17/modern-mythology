@@ -1,0 +1,88 @@
+{
+  "id": "dw_2017-10-15_lockboxes_in_rain",
+  "title": "Sunday · lockboxes in rain",
+  "strip": "drift_wood",
+  "date": "2017-10-15",
+  "run": 6,
+  "era": "era3",
+  "format": "sunday",
+  "tier": "B",
+  "selection": "full",
+  "venue": "Arthur's site · the coastal weeklies · from 2017 the aggregator",
+  "arc": "Lockboxes",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (Sundays · deepening viii)",
+  "logline": "October: the summer over, the tourists gone, the lockboxes still on every door, rain running off them. Twelve gray boxes on twelve doors on an empty street.",
+  "cast": [],
+  "location": "dw_main_street",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "scruff",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "wide tier",
+      "composition": "Tier 1: main street in October rain, empty, the row of old houses, a gray lockbox on each door with rain running off it.",
+      "characters": [],
+      "props": [
+        "twelve lockboxes in rain"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a small-town street of old wooden houses in October rain with a gray key lockbox on every front door and no one anywhere, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null,
+      "name": "Street"
+    },
+    {
+      "n": 2,
+      "shot": "medium tier",
+      "composition": "Tier 2: one box, close, rain beading on its dial. Nobody has turned it since August.",
+      "characters": [],
+      "props": [
+        "a lockbox, wet"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "close on a gray key lockbox on a door with rain beading on its dial, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null,
+      "name": "Box"
+    },
+    {
+      "n": 3,
+      "shot": "wide tier",
+      "composition": "Tier 3: four doors down: her porch, the box on the knob, the step wet, the light off. Held.",
+      "characters": [],
+      "props": [
+        "her porch"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "an old wooden house's porch in rain with a lockbox on the doorknob and the porch light off, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null,
+      "name": "Porch"
+    }
+  ],
+  "art": {
+    "line": "razor-sharp brush and ink; the pup's weight learned; Sundays wet-on-wet",
+    "palette": "dailies: ink and one tone. Sundays: gray-green, fog, rust, bruised dusk",
+    "paper": "bristol; Arches for Sundays"
+  },
+  "notes": "The boxes after the season. Her porch, dark.",
+  "layout": "tiers, portrait page"
+}

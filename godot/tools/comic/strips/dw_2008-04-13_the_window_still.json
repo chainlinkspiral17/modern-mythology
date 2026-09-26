@@ -1,0 +1,89 @@
+{
+  "id": "dw_2008-04-13_the_window_still",
+  "title": "Sunday · the window, still",
+  "strip": "drift_wood",
+  "date": "2008-04-13",
+  "run": 3,
+  "era": "era2",
+  "format": "sunday",
+  "tier": "B",
+  "selection": "full",
+  "venue": "Arthur's site · the coastal weeklies",
+  "arc": "Sundays",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (Sundays · deepening viii)",
+  "logline": "Heceta Frame & Matting's window from the sidewalk, eight years after Wood filled it with empty frames: some of them are still there, with the town in them. The owner never changed it.",
+  "cast": [],
+  "location": "dw_frame_shop",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "wide tier",
+      "composition": "Tier 1: the frame shop's window from the sidewalk on 101: a dozen frames still, some empty, some now holding what customers brought — a boat, a diploma, a child's drawing — the road reflected across all of them.",
+      "characters": [],
+      "props": [
+        "the window",
+        "frames, some filled"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a frame shop's front window from a sidewalk holding a dozen frames of which some are still empty and some now hold a photo of a boat, a diploma and a child's drawing, the road reflected across the glass, no words",
+        "negative": "",
+        "notes": "dw_2000-04-25's window, eight years on. 'People will bring their own.'"
+      },
+      "stage": null,
+      "name": "Window"
+    },
+    {
+      "n": 2,
+      "shot": "medium tier",
+      "composition": "Tier 2: one empty frame among them, framing the reflection of a rusted small car parked across the road.",
+      "characters": [],
+      "props": [
+        "an empty frame framing the Datsun"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "an empty picture frame in a shop window framing the reflection of a rusted small car parked across the street, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null,
+      "name": "Empty"
+    },
+    {
+      "n": 3,
+      "shot": "wide tier",
+      "composition": "Tier 3: the shop's sign above, HECETA FRAME & MATTING, all letters present, the paint fading. Held.",
+      "characters": [],
+      "props": [
+        "the sign"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a fading painted shop sign above a window with all its letters present, no words",
+        "negative": "",
+        "notes": "Letter after: HECETA FRAME & MATTING. All letters; one goes by 2014."
+      },
+      "stage": null,
+      "name": "Sign"
+    }
+  ],
+  "art": {
+    "line": "brush-pen scanned; muddy digital flats",
+    "palette": "limited, muddy; Sundays in watercolor, improving",
+    "paper": "bristol; the browser"
+  },
+  "notes": "The empty frames, eight years on. People brought their own.",
+  "layout": "tiers, portrait page"
+}

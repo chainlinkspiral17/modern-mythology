@@ -1,0 +1,89 @@
+{
+  "id": "dw_2018-10-14_the_ridge_in_fall",
+  "title": "Sunday · the ridge in fall",
+  "strip": "drift_wood",
+  "date": "2018-10-14",
+  "run": 6,
+  "era": "era3",
+  "format": "sunday",
+  "tier": "A",
+  "selection": "full",
+  "venue": "Arthur's site · the coastal weeklies · from 2017 the aggregator",
+  "arc": "Sundays",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (Sundays · deepening viii)",
+  "logline": "The ridge in October from the mudflats, the alders yellow in the conifers, the glow above the treeline larger than April 2016 had it. The strip measures by drawing.",
+  "cast": [],
+  "location": "dw_the_ridge",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "scruff",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "wide tier",
+      "composition": "Tier 1: the forested ridge in October from the flats: the alders gone yellow among the dark conifers, and above the treeline the glow, warm, wider than before.",
+      "characters": [],
+      "props": [
+        "yellow alders",
+        "the glow, wider"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a forested ridge in October seen across mudflats with yellow alders among dark conifers and a warm glow above the treeline wider than a hand, no words",
+        "negative": "",
+        "notes": "Wider than dw_2016-04-10. The reader can compare."
+      },
+      "stage": null,
+      "name": "Ridge"
+    },
+    {
+      "n": 2,
+      "shot": "medium tier",
+      "composition": "Tier 2: the alders, close, the yellow, one leaf letting go.",
+      "characters": [],
+      "props": [
+        "a leaf"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "yellow alder leaves among dark conifer branches with one leaf falling, close, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null,
+      "name": "Alders"
+    },
+    {
+      "n": 3,
+      "shot": "wide tier",
+      "composition": "Tier 3: a tidal channel with the ridge's yellow and the glow's warmth both in it. Held.",
+      "characters": [],
+      "props": [
+        "the channel"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a tidal channel reflecting yellow trees and a faint warm glow, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null,
+      "name": "Water"
+    }
+  ],
+  "art": {
+    "line": "razor-sharp brush and ink; the pup's weight learned; Sundays wet-on-wet",
+    "palette": "dailies: ink and one tone. Sundays: gray-green, fog, rust, bruised dusk",
+    "paper": "bristol; Arches for Sundays"
+  },
+  "notes": "The glow, wider. The alders yellow.",
+  "layout": "tiers, portrait page"
+}

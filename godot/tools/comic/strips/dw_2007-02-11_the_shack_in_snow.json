@@ -1,0 +1,89 @@
+{
+  "id": "dw_2007-02-11_the_shack_in_snow",
+  "title": "Sunday · the shack in snow",
+  "strip": "drift_wood",
+  "date": "2007-02-11",
+  "run": 3,
+  "era": "era2",
+  "format": "sunday",
+  "tier": "B",
+  "selection": "full",
+  "venue": "Arthur's site (six dailies + a Sunday)",
+  "arc": "Sundays",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (Sundays · deepening viii)",
+  "logline": "Rare coastal snow on Gully's shack and dock, the derby flyers under a white ledge, the lawn chair with a cap of it, the bay steaming. The strip's first snow.",
+  "cast": [],
+  "location": "dw_gullys",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "wide tier",
+      "composition": "Tier 1: the shack and dock under an inch of rare snow, the bay steaming in the cold, the flyers' wall with a white ledge on each one.",
+      "characters": [],
+      "props": [
+        "snow",
+        "the flyers under snow"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a shingle bait shack and its dock under a thin rare coastal snow with the bay steaming behind and a row of pinned flyers each capped with snow, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null,
+      "name": "Snow"
+    },
+    {
+      "n": 2,
+      "shot": "medium tier",
+      "composition": "Tier 2: the lawn chair with a cap of snow. Empty since 2001.",
+      "characters": [],
+      "props": [
+        "the chair in snow"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "an old aluminum lawn chair on a dock with a cap of snow on its seat, no words",
+        "negative": "",
+        "notes": "The chair, empty (Feb 2001–Jul 2008)."
+      },
+      "stage": null,
+      "name": "Chair"
+    },
+    {
+      "n": 3,
+      "shot": "wide tier",
+      "composition": "Tier 3: the dock's planks in snow with one set of boot prints and one set of dog prints going to the end and back. Held.",
+      "characters": [],
+      "props": [
+        "prints in snow"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "snow on dock planks with a set of boot prints and a set of small dog prints going to the end and back, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null,
+      "name": "Prints"
+    }
+  ],
+  "art": {
+    "line": "brush-pen scanned; muddy digital flats",
+    "palette": "limited, muddy; Sundays in watercolor, improving",
+    "paper": "bristol; the browser"
+  },
+  "notes": "The strip's first snow. The chair capped.",
+  "layout": "tiers, portrait page"
+}

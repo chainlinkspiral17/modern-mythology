@@ -1,0 +1,91 @@
+{
+  "id": "dw_2012-02-12_the_ice_machine_hall",
+  "title": "Sunday · the ice machine hall",
+  "strip": "drift_wood",
+  "date": "2012-02-12",
+  "run": 4,
+  "era": "era3",
+  "format": "sunday",
+  "tier": "B",
+  "selection": "full",
+  "venue": "Arthur's site · the coastal weeklies",
+  "arc": "Night Audit",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (Sundays · deepening viii)",
+  "logline": "The motel's hallway at 2 AM as a landscape: the carpet's pattern, the numbered doors, the ice machine at the end lit like a shrine, the hum line. Era III's perspective on a corridor.",
+  "cast": [],
+  "location": "dw_motel_desk",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "wide tier",
+      "composition": "Tier 1: the motel corridor at 2 AM in one-point perspective: patterned carpet, numbered doors, and at the far end the ice machine lit blue-white. The hum line.",
+      "characters": [],
+      "props": [
+        "the corridor",
+        "the ice machine",
+        "hum line"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a motel corridor at 2 AM in precise one-point perspective with patterned carpet and numbered doors and an ice machine glowing blue-white at the far end, a flat line beneath, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null,
+      "name": "Hall"
+    },
+    {
+      "n": 2,
+      "shot": "medium tier",
+      "composition": "Tier 2: the ice machine, close: the scoop, the flap, the light. The hum line.",
+      "characters": [],
+      "props": [
+        "the ice machine",
+        "hum line"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a motel ice machine close up with its scoop and flap and blue-white light, a flat line beneath, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null,
+      "name": "Machine"
+    },
+    {
+      "n": 3,
+      "shot": "wide tier",
+      "composition": "Tier 3: the corridor from the machine's end, back toward the office's glow. The hum line. Held.",
+      "characters": [],
+      "props": [
+        "hum line"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a motel corridor seen from the ice machine's end toward a distant glowing office door, a flat line beneath, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null,
+      "name": "Back"
+    }
+  ],
+  "art": {
+    "line": "razor-sharp, confident brush and ink; pristine perspective; crisp silhouettes; zero crosshatch in close-ups",
+    "palette": "dailies: black ink, one spot tone at most. Sundays: wet-on-wet — gray-green moss, fog, rusted tin, bruised dusk",
+    "paper": "bristol for dailies; 140 lb Arches cold-press for Sundays"
+  },
+  "notes": "The corridor as a landscape. Era III's one-point perspective.",
+  "layout": "tiers, portrait page"
+}

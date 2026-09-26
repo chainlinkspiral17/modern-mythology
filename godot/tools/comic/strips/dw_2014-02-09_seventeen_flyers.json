@@ -1,0 +1,100 @@
+{
+  "id": "dw_2014-02-09_seventeen_flyers",
+  "title": "Sunday · seventeen flyers",
+  "strip": "drift_wood",
+  "date": "2014-02-09",
+  "run": 4,
+  "era": "era3",
+  "format": "sunday",
+  "tier": "B",
+  "selection": "full",
+  "venue": "Arthur's site · the coastal weeklies",
+  "arc": "The Crab Derby",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (Sundays · deepening viii)",
+  "logline": "The flyer wall at seventeen, the week of the thirtieth derby. The strip counts by drawing. Barnaby, fifteen, asleep against the wall's foot.",
+  "cast": [
+    "barnaby"
+  ],
+  "location": "dw_gullys",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "wide tier",
+      "composition": "Tier 1: the shingle wall with seventeen crab flyers in a row, 1998 to 2014, and at its foot an old dog asleep in the one patch of February sun.",
+      "characters": [
+        {
+          "id": "barnaby",
+          "pose": "asleep at the wall's foot",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "seventeen flyers"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a shingle wall with seventeen hand-lettered crab flyers in a row and an old dog asleep at its foot in a patch of winter sun, no words legible",
+        "negative": "",
+        "notes": "Seventeen: 1998–2014."
+      },
+      "stage": null,
+      "name": "Wall"
+    },
+    {
+      "n": 2,
+      "shot": "medium tier",
+      "composition": "Tier 2: the middle of the row: 2006's four crabs, 2011's baby scribble, the hands changing.",
+      "characters": [],
+      "props": [
+        "the 2006 and 2011 flyers"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "two crab flyers side by side on a wall, one with four crabs and one with a child's scribble beside a crab, no words legible",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null,
+      "name": "Middle"
+    },
+    {
+      "n": 3,
+      "shot": "wide tier",
+      "composition": "Tier 3: the patch of sun moved off the dog onto the wall. The dog still asleep. Held.",
+      "characters": [
+        {
+          "id": "barnaby",
+          "pose": "asleep",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "an old dog asleep at the foot of a wall as a patch of winter sun moves off him onto the shingles, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null,
+      "name": "Sun"
+    }
+  ],
+  "art": {
+    "line": "razor-sharp, confident brush and ink; pristine perspective; crisp silhouettes; zero crosshatch in close-ups",
+    "palette": "dailies: black ink, one spot tone at most. Sundays: wet-on-wet — gray-green moss, fog, rusted tin, bruised dusk",
+    "paper": "bristol for dailies; 140 lb Arches cold-press for Sundays"
+  },
+  "notes": "Seventeen. The sun moves off the dog.",
+  "layout": "tiers, portrait page"
+}

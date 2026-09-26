@@ -1,0 +1,89 @@
+{
+  "id": "dw_2007-09-09_the_corn_sunday",
+  "title": "Sunday · the corn",
+  "strip": "drift_wood",
+  "date": "2007-09-09",
+  "run": 3,
+  "era": "era2",
+  "format": "sunday",
+  "tier": "A",
+  "selection": "full",
+  "venue": "Arthur's site (six dailies + a Sunday)",
+  "arc": "The Anniversary",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (Sundays · deepening viii)",
+  "logline": "The Sunday before the tenth anniversary: the drafting table from above with a tray of corn on it and the first strip pinned to the wall above, drawn in the Sunday's watercolor. An object as a landscape, three years before the invitation gets the same treatment.",
+  "cast": [],
+  "location": "dw_garage",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "wide tier",
+      "composition": "Tier 1: the drafting table from above: a paper tray of buttered corn, a mug, a brush, and at the top edge the wall with a yellowed strip pinned to it.",
+      "characters": [],
+      "props": [
+        "the corn",
+        "#1 on the wall"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a drafting table seen from above with a paper tray of buttered corn and a mug and a brush, a yellowed old comic strip pinned to the wall at the top edge, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null,
+      "name": "Table"
+    },
+    {
+      "n": 2,
+      "shot": "medium tier",
+      "composition": "Tier 2: the corn, close, in watercolor: the butter pooling, the kernels, the salt.",
+      "characters": [],
+      "props": [
+        "the corn"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a paper tray of buttered corn in watercolor, close, butter pooling and salt on the kernels, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null,
+      "name": "Corn"
+    },
+    {
+      "n": 3,
+      "shot": "wide tier",
+      "composition": "Tier 3: the first strip on the wall, close enough to see it's a strip and not enough to read it. Ten years. Held.",
+      "characters": [],
+      "props": [
+        "#1"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a yellowed four-panel comic strip pinned to a garage wall, close enough to see the panels but not to read them, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null,
+      "name": "Strip"
+    }
+  ],
+  "art": {
+    "line": "brush-pen scanned; muddy digital flats",
+    "palette": "limited, muddy; Sundays in watercolor, improving",
+    "paper": "bristol; the browser"
+  },
+  "notes": "The corn as a Sunday. Ten years.",
+  "layout": "tiers, portrait page"
+}

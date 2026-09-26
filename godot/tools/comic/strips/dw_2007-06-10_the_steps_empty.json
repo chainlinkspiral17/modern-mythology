@@ -1,0 +1,89 @@
+{
+  "id": "dw_2007-06-10_the_steps_empty",
+  "title": "Sunday · the steps, empty",
+  "strip": "drift_wood",
+  "date": "2007-06-10",
+  "run": 3,
+  "era": "era2",
+  "format": "sunday",
+  "tier": "B",
+  "selection": "full",
+  "venue": "Arthur's site (six dailies + a Sunday)",
+  "arc": "Last Bell",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (Sundays · deepening viii)",
+  "logline": "The school's front steps the Sunday after the bell, drawn close: the worn places, a dropped pencil, a gum wrapper, the bell shape absent. The strip's steps without the strip's people.",
+  "cast": [],
+  "location": "dw_school_front",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "wide tier",
+      "composition": "Tier 1: the school's front steps, close, empty, a June Sunday: worn patches, a dropped yellow pencil, a gum wrapper, the doors shut.",
+      "characters": [],
+      "props": [
+        "the steps",
+        "a pencil"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a school's empty concrete front steps on a June Sunday with worn patches and a dropped yellow pencil and a gum wrapper, doors shut, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null,
+      "name": "Steps"
+    },
+    {
+      "n": 2,
+      "shot": "medium tier",
+      "composition": "Tier 2: the pencil, close. Chewed. Somebody's.",
+      "characters": [],
+      "props": [
+        "the pencil"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a chewed yellow pencil lying on a concrete step, close, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null,
+      "name": "Pencil"
+    },
+    {
+      "n": 3,
+      "shot": "wide tier",
+      "composition": "Tier 3: the road to the beach from the steps, empty, the light long. Held.",
+      "characters": [],
+      "props": [
+        "the road"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "an empty road toward a beach in long June light seen from school steps, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null,
+      "name": "Road"
+    }
+  ],
+  "art": {
+    "line": "brush-pen scanned; muddy digital flats",
+    "palette": "limited, muddy; Sundays in watercolor, improving",
+    "paper": "bristol; the browser"
+  },
+  "notes": "Somebody's pencil. The steps without the people.",
+  "layout": "tiers, portrait page"
+}

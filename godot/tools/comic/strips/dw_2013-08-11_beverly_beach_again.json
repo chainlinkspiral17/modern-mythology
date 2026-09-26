@@ -1,0 +1,107 @@
+{
+  "id": "dw_2013-08-11_beverly_beach_again",
+  "title": "Sunday · Beverly Beach, again",
+  "strip": "drift_wood",
+  "date": "2013-08-11",
+  "run": 4,
+  "era": "era3",
+  "format": "sunday",
+  "tier": "B",
+  "selection": "full",
+  "venue": "Arthur's site · the coastal weeklies",
+  "arc": "Sundays",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (Sundays · deepening viii)",
+  "logline": "Beverly Beach in August, where the sand dollar came from in May: the cliffs, the surf, the tide pools, the dog at thirteen in the shallows. The strip's second visit; the sand dollar's home.",
+  "cast": [
+    "wood_34",
+    "barnaby"
+  ],
+  "location": "dw_beach",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "wide tier",
+      "composition": "Tier 1: a different beach: high sandstone cliffs, a wide surf, tide pools at their foot, August light.",
+      "characters": [],
+      "props": [
+        "cliffs",
+        "tide pools"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a beach beneath high sandstone cliffs with wide surf and tide pools at their foot in August light, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null,
+      "name": "Cliffs"
+    },
+    {
+      "n": 2,
+      "shot": "medium tier",
+      "composition": "Tier 2: a tide pool, close: anemones, a sand dollar half buried, the dog's reflection over it.",
+      "characters": [
+        {
+          "id": "barnaby",
+          "pose": "reflected",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "a sand dollar"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a tide pool with anemones and a half-buried sand dollar and an old dog's reflection on its surface, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null,
+      "name": "Pool"
+    },
+    {
+      "n": 3,
+      "shot": "wide tier",
+      "composition": "Tier 3: the old dog standing in the shallows, a man behind on the sand, the cliffs. Held.",
+      "characters": [
+        {
+          "id": "barnaby",
+          "pose": "in the shallows",
+          "expression": ""
+        },
+        {
+          "id": "wood_34",
+          "pose": "on the sand",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "an old dog standing in shallow surf with a thin man behind on the sand beneath sandstone cliffs, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null,
+      "name": "Shallows"
+    }
+  ],
+  "art": {
+    "line": "razor-sharp, confident brush and ink; pristine perspective; crisp silhouettes; zero crosshatch in close-ups",
+    "palette": "dailies: black ink, one spot tone at most. Sundays: wet-on-wet — gray-green moss, fog, rusted tin, bruised dusk",
+    "paper": "bristol for dailies; 140 lb Arches cold-press for Sundays"
+  },
+  "notes": "The sand dollar's beach. The dog in the shallows at thirteen.",
+  "layout": "tiers, portrait page"
+}
