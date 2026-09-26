@@ -114,6 +114,28 @@ a page says "fifty" check it against the year first.
 
 ## Recent lessons
 
+### 2026-09-26 · The render tool: model passthrough and new takes
+
+User feedback: the model menu was inadequate (Runway has many more
+than gen4), and a second generate on a strip did nothing.
+
+- **Never skip silently on a repeat.** The runner refused to
+  re-render a strip whose file existed unless `--overwrite` was set,
+  and the inspector didn't set it. A second click looked like a
+  broken tool. Every run is now a new take (`_t2`, `_t3`…) with the
+  model and take recorded in the manifest; skipping is opt-in.
+- **Pass the model through; don't gate it on a list.** `--model` was
+  google-only and Runway was hardcoded to gen4_image. Both providers
+  now send whatever id is given; a `MODELS` table with `verified`
+  flags only fills the menu. Ids I couldn't confirm from the
+  container (the dev API docs are egress-blocked here) are marked
+  unverified in the UI, and the 400 body prints the id.
+- **Runway's MCP ids are not the dev API's ids.** The concept run's
+  `nano-banana-pro` is the MCP's name; the dev API spells the same
+  family `gemini_2.5_flash` / a `gemini_3_pro` variant. Keep both
+  spellings in the table's notes so the next session doesn't re-learn
+  it.
+
 ### 2026-09-26 · Deepening v–vii · every arc at its key week; Vol. II at five a sequence · 578 → 724
 
 Three more batches: the large ◐ arcs' key weeks and both Sunday
