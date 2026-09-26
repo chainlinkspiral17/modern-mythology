@@ -1,0 +1,181 @@
+{
+  "id": "dw_2009-03-13_grunion_xii",
+  "title": "The Grunion Run, xii",
+  "strip": "drift_wood",
+  "date": "2009-03-13",
+  "run": 3,
+  "era": "era2",
+  "format": "daily4",
+  "tier": "A",
+  "selection": "one",
+  "venue": "Arthur's site · the coastal weeklies",
+  "arc": "The Grunion Run",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (2008–2011 · deepening)",
+  "logline": "Twelfth year. Five days after 'Lanes.' Wood draws the run and the ridge glow is in the background, small, for the first time on a beach.",
+  "cast": [
+    "wood_26",
+    "gully_27",
+    "extra_maria",
+    "barnaby"
+  ],
+  "location": "dw_beach",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "wide",
+      "composition": "The beach, lanterns, the run. GULLY and MARIA at the thermos. WOOD with the pad. BARNABY, ten, at the surf but not in it. Beyond the bluff, east, faint: the glow.",
+      "characters": [
+        {
+          "id": "gully_27",
+          "pose": "thermos",
+          "expression": ""
+        },
+        {
+          "id": "extra_maria",
+          "pose": "cups",
+          "expression": ""
+        },
+        {
+          "id": "wood_26",
+          "pose": "pad",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "at the surf's edge",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "lanterns",
+        "fish",
+        "the ridge glow, faint, beyond the bluff"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a night beach festival with lanterns and a coffee line, a man with a drawing pad, an old dog at the surf's edge, and faintly beyond the bluff to the east a pale glow on the ridge, muddy watercolor",
+        "negative": "",
+        "notes": "The glow, five days after 'Lanes,' on the beach for the first time. Small."
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "close",
+      "composition": "Maria, handing Wood a cup, looking at the pad.",
+      "characters": [
+        {
+          "id": "extra_maria",
+          "pose": "handing a cup",
+          "expression": ""
+        },
+        {
+          "id": "wood_26",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "cup"
+      ],
+      "balloons": [
+        {
+          "who": "MARIA",
+          "text": "You drew the ridge."
+        },
+        {
+          "who": "WOOD",
+          "text": "It's there."
+        },
+        {
+          "who": "MARIA",
+          "text": "It's always there. You never drew it."
+        },
+        {
+          "who": "WOOD",
+          "text": "...It's there this year."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a practical woman handing a paper cup to a man with a drawing pad and looking at what he's drawn, lantern light",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "close",
+      "composition": "The pad: the run, and the glow, small, on the ridge.",
+      "characters": [],
+      "props": [
+        "pad"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "close-up of a drawing pad showing a lantern-lit beach and a faint glow on a distant ridge",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "wide",
+      "composition": "Silent. The fish. The lanterns. The dog at the edge. The glow. Nobody looking at it but the reader.",
+      "characters": [
+        {
+          "id": "wood_26",
+          "pose": "",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "",
+          "expression": ""
+        },
+        {
+          "id": "gully_27",
+          "pose": "small",
+          "expression": ""
+        },
+        {
+          "id": "extra_maria",
+          "pose": "small",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "fish",
+        "lanterns",
+        "glow"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "silent wide night beach panel: silver fish under lanterns, an old dog at the surf's edge, people at a coffee line, and on the ridge beyond a faint glow nobody is looking at, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "brush-pen; the flats cleaner; Sundays the point",
+    "palette": "limited; Sundays gray-green, rust, fog",
+    "paper": "bristol; newsprint a week behind"
+  },
+  "notes": "Maria notices he's drawn the ridge. 'It's there this year.' The only time anyone remarks on it."
+}

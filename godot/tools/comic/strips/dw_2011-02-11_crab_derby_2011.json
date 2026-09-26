@@ -1,0 +1,152 @@
+{
+  "id": "dw_2011-02-11_crab_derby_2011",
+  "title": "The Crab Derby, 2011",
+  "strip": "drift_wood",
+  "date": "2011-02-11",
+  "run": 3,
+  "era": "era2",
+  "format": "daily4",
+  "tier": "B",
+  "selection": "one",
+  "venue": "Arthur's site · the coastal weeklies",
+  "arc": "The Crab Derby",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (2008–2011 · deepening)",
+  "logline": "Twenty-seventh annual. Gully's got a baby on his hip — his own. The flyer gets a fourth crab, very small.",
+  "cast": [
+    "wood_26",
+    "gully_27",
+    "barnaby",
+    "extra_gully_kid"
+  ],
+  "location": "dw_gullys",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "medium",
+      "composition": "Gully's. GULLY with a baby on his hip — a girl, one — and the twenty. WOOD. BARNABY, twelve, sniffing the baby's foot.",
+      "characters": [
+        {
+          "id": "gully_27",
+          "pose": "baby on hip, twenty",
+          "expression": ""
+        },
+        {
+          "id": "extra_gully_kid",
+          "pose": "a baby",
+          "expression": ""
+        },
+        {
+          "id": "wood_26",
+          "pose": "",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "sniffing the baby's foot",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "baby",
+        "twenty"
+      ],
+      "balloons": [
+        {
+          "who": "GULLY",
+          "text": "Twenty-seven. She's watching. Do it right."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a man in an apron with a baby girl on his hip holding out a twenty at a shop counter, a thin man with a pad, an old dog sniffing the baby's foot, muddy flats",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "close",
+      "composition": "The flyer: two crabs facing, a cup, the small third crab — and a fourth, tiny, between the two big ones.",
+      "characters": [],
+      "props": [
+        "flyer with four crabs"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "close-up of a crab flyer with two large crabs facing each other, a cup, a small crab, and a tiny fourth crab between the two large ones",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "medium",
+      "composition": "The baby reaching for the pen. Wood letting her hold it. A scribble on the corner.",
+      "characters": [
+        {
+          "id": "extra_gully_kid",
+          "pose": "holding the pen",
+          "expression": ""
+        },
+        {
+          "id": "wood_26",
+          "pose": "letting her",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "pen",
+        "scribble"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a baby gripping a pen with a thin man's hand guiding it toward the corner of a flyer, a scribble appearing",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "medium",
+      "composition": "Seventeen flyers. The seventeenth: four crabs and a scribble. Gully pinning with his free hand.",
+      "characters": [
+        {
+          "id": "gully_27",
+          "pose": "pinning one-handed, baby on hip",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "seventeen flyers"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "seventeen crab flyers on a shingle wall, a man with a baby on his hip pinning the newest one-handed, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "brush-pen; the flats cleaner; Sundays the point",
+    "palette": "limited; Sundays gray-green, rust, fog",
+    "paper": "bristol; newsprint a week behind"
+  },
+  "notes": "Gully's daughter, one, scribbles. Four crabs now."
+}

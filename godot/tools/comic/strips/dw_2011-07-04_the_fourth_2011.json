@@ -1,0 +1,171 @@
+{
+  "id": "dw_2011-07-04_the_fourth_2011",
+  "title": "The Fourth, 2011",
+  "strip": "drift_wood",
+  "date": "2011-07-04",
+  "run": 3,
+  "era": "era2",
+  "format": "daily4",
+  "tier": "B",
+  "selection": "one",
+  "venue": "Arthur's site · the coastal weeklies",
+  "arc": "The Fourth on the Bay",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (2008–2011 · deepening)",
+  "logline": "White fireworks. The last Fourth before the motel. Wood on the steps with the dog in his lap, carried down. The chair, Maria's now, with the baby.",
+  "cast": [
+    "wood_26",
+    "gully_27",
+    "extra_maria",
+    "barnaby",
+    "extra_gully_kid"
+  ],
+  "location": "dw_gullys",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "wide",
+      "composition": "The dock, fireworks white on blue. GULLY pouring. MARIA in the lawn chair with the baby. WOOD on the steps, BARNABY in his lap, twelve, not walking down tonight.",
+      "characters": [
+        {
+          "id": "gully_27",
+          "pose": "pouring",
+          "expression": ""
+        },
+        {
+          "id": "extra_maria",
+          "pose": "in the chair with the baby",
+          "expression": ""
+        },
+        {
+          "id": "wood_26",
+          "pose": "steps, dog in lap",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "in his lap",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "fireworks",
+        "chair",
+        "baby"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a crowded dock at night under white fireworks, a man in an apron pouring, a woman in an old lawn chair holding a baby, a thin man on shack steps with an old dog in his lap, muddy watercolor",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "close",
+      "composition": "The dog's face in Wood's lap, looking up at the white.",
+      "characters": [
+        {
+          "id": "barnaby",
+          "pose": "looking up",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "close-up of an old dog's face in a man's lap looking up at fireworks, white light on it, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "medium",
+      "composition": "Gully sitting down on the steps for his minute.",
+      "characters": [
+        {
+          "id": "gully_27",
+          "pose": "beside him",
+          "expression": ""
+        },
+        {
+          "id": "wood_26",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [
+        {
+          "who": "GULLY",
+          "text": "Motel called. They want you August."
+        },
+        {
+          "who": "WOOD",
+          "text": "I know."
+        },
+        {
+          "who": "GULLY",
+          "text": "Nights."
+        },
+        {
+          "who": "WOOD",
+          "text": "I know."
+        },
+        {
+          "who": "GULLY",
+          "text": "...You'll draw more."
+        },
+        {
+          "who": "WOOD",
+          "text": "That's what they said."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "two men on shack steps at night, one with an old dog in his lap, fireworks light",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "wide",
+      "composition": "The finale. White. The chair with the baby. The steps with the dog. Everyone where they'll be.",
+      "characters": [],
+      "props": [
+        "finale",
+        "chair",
+        "steps"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a fireworks finale in white over a blue night bay above a crowded dock with a woman and baby in a lawn chair and two men and a dog on shack steps, watercolor, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "brush-pen; the flats cleaner; Sundays the point",
+    "palette": "limited; Sundays gray-green, rust, fog",
+    "paper": "bristol; newsprint a week behind"
+  },
+  "notes": ""
+}

@@ -1,0 +1,99 @@
+{
+  "id": "dw_2008-01-13_the_rain_2008",
+  "title": "Sunday · the Rain, 2008",
+  "strip": "drift_wood",
+  "date": "2008-01-13",
+  "run": 3,
+  "era": "era2",
+  "format": "sunday",
+  "tier": "A",
+  "selection": "full",
+  "venue": "Arthur's site · the coastal weeklies",
+  "arc": "The Rain",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (2008–2011 · deepening)",
+  "logline": "Eleventh January. The garage window, the alley, the tavern's beer sign in a puddle. Three tiers, one place.",
+  "cast": [],
+  "location": "dw_garage",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "wide tier",
+      "composition": "Tier 1: the gravel alley behind the tavern in rain from the garage porch. The beer sign's neon in a puddle. Nobody.",
+      "characters": [],
+      "props": [
+        "alley",
+        "puddle",
+        "beer-sign neon"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a gravel alley behind a tavern in January rain seen from a garage porch, a beer sign's neon reflected in a puddle, nobody, watercolor, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null,
+      "name": "Alley"
+    },
+    {
+      "n": 2,
+      "shot": "medium tier",
+      "composition": "Tier 2: the casement window from outside, the lamp inside, two jars on the sill, a shape at the table.",
+      "characters": [
+        {
+          "id": "wood_26",
+          "pose": "a shape inside",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "window",
+        "lamp",
+        "two jars"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a small casement window seen from a rainy alley with a lamp lit inside, two jars on the sill, the shape of a man at a table, watercolor",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null,
+      "name": "Window"
+    },
+    {
+      "n": 3,
+      "shot": "wide tier",
+      "composition": "Tier 3: the alley, later. The lamp off. The puddle dark. Held.",
+      "characters": [],
+      "props": [
+        "alley",
+        "dark window"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "the same alley later with the window dark and the puddle black, rain, watercolor, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null,
+      "name": "Dark"
+    }
+  ],
+  "art": {
+    "line": "brush-pen; the flats cleaner; Sundays the point",
+    "palette": "limited; Sundays gray-green, rust, fog",
+    "paper": "bristol; newsprint a week behind"
+  },
+  "notes": "",
+  "layout": "tiers, portrait page"
+}

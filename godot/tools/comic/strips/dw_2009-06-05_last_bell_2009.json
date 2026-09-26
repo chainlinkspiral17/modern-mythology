@@ -1,0 +1,144 @@
+{
+  "id": "dw_2009-06-05_last_bell_2009",
+  "title": "Last Bell, 2009",
+  "strip": "drift_wood",
+  "date": "2009-06-05",
+  "run": 3,
+  "era": "era2",
+  "format": "daily4",
+  "tier": "B",
+  "selection": "one",
+  "venue": "Arthur's site · the coastal weeklies",
+  "arc": "Last Bell",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (2008–2011 · deepening)",
+  "logline": "One week before the wedding. The bell. Wood buys the thrift-store suit that afternoon. The strip draws the suit, not the bell.",
+  "cast": [
+    "wood_26",
+    "barnaby"
+  ],
+  "location": "dw_main_street",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "medium",
+      "composition": "A thrift store on main street, 3:05 PM. The bell through the window. WOOD holding a wool suit on a hanger up to himself. BARNABY.",
+      "characters": [
+        {
+          "id": "wood_26",
+          "pose": "holding a suit up to himself",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "thrift store",
+        "wool suit on a hanger"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "BRRRRING",
+      "image": {
+        "prompt": "a thin man in a thrift store holding a wool suit on a hanger up against himself, a bell sound drawn through the window, a dog, muddy flats",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "close",
+      "composition": "The suit. Gray wool. A smell drawn as faint wavy lines: mothballs.",
+      "characters": [],
+      "props": [
+        "suit",
+        "mothball lines"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "close-up of a gray wool suit on a thrift-store hanger with faint wavy odor lines rising from it",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "medium",
+      "composition": "Wood, to the dog.",
+      "characters": [
+        {
+          "id": "wood_26",
+          "pose": "",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [
+        {
+          "who": "WOOD",
+          "text": "Best man. Nine dollars. It smells like a closet somebody died in."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a man holding a suit and talking to a dog with dry resignation",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "wide",
+      "composition": "Wood walking home up main street with the suit over his shoulder, the dog, the school letting out behind him. The bell, off-page.",
+      "characters": [
+        {
+          "id": "wood_26",
+          "pose": "suit over his shoulder",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "main street",
+        "kids in the distance"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a thin man walking up a small-town main street with a suit over his shoulder and an old dog beside him, students dispersing in the distance, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "brush-pen; the flats cleaner; Sundays the point",
+    "palette": "limited; Sundays gray-green, rust, fog",
+    "paper": "bristol; newsprint a week behind"
+  },
+  "notes": "The suit: nine dollars, mothballs. It returns in 2014."
+}
