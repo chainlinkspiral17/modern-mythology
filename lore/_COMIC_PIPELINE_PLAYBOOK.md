@@ -114,6 +114,36 @@ a page says "fifty" check it against the year first.
 
 ## Recent lessons
 
+### 2026-09-26 · Deepening ii and the inspector · 404 → 442 scripts
+
+Twenty-nine Sundays and ten dailies filled the half-marked arcs of
+2014–2018 and gave Runs 3 and 6 two landscape Sundays a year. Then
+`comic_inspector.py`: a local page over the run with generation.
+
+- **Sundays are where a year's continuity is confessed.** The 2008
+  mudflats Sunday now holds the composition 'The Carry' and the final
+  page reuse; the 2006 seawall Sunday hints the glow three years
+  before 'Lanes.' When a late page needs a rhyme, plant it in an
+  earlier Sunday rather than a daily; the book's Sundays are read
+  as a sequence of their own.
+- **Check for date collisions before writing a batch.** Two strips
+  landed on days that already had one (the scroll, the pitch
+  meeting) and one Sunday preceded the daily it followed from. `ls
+  strips | grep YYYY-MM` before the heredoc; a Sunday that
+  continues an arc is dated the Sunday *after* the arc's key daily.
+- **The inspector runs the CLI, it doesn't reimplement it.** Generate
+  = `comic_tool.py strip-prompts --only <id>` then `comic_render.py
+  --queue <that>`; the outputs and manifests are the CLI's. Any new
+  option goes into the CLI first and the page just passes it through.
+- **Review travels in the JSON.** The page writes a `review` block
+  (status, note, date) into the strip file; the validator ignores
+  it, `md` shows it, a commit carries it. That is the revision
+  channel: the user marks, the next session reads `review.status ==
+  "revise"` and rewrites.
+- **Write strip files without a trailing newline.** The batch
+  writers use `json.dump`; a writer that appends `\n` turns every
+  touched strip into a one-line diff. Match the existing shape.
+
 ### 2026-09-26 · The deepening pass · 255 → 404 scripts
 
 One session took the rough batch through the thin years: every
