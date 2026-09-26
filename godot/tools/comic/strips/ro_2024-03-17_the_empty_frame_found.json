@@ -1,0 +1,51 @@
+{
+  "id": "ro_2024-03-17_the_empty_frame_found",
+  "title": "The empty frame, found",
+  "strip": "roflcopter",
+  "date": "2024-03-17",
+  "run": 7,
+  "era": "era4",
+  "format": "page",
+  "tier": "A",
+  "selection": "full",
+  "venue": "nobody · boxes 21–40",
+  "arc": "What People Framed",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (Run 7 sequences · deepening)",
+  "logline": "The 8×10 black frame from March 2001, in a thrift-store bin with something in it at last. What's in it is reserved. The page draws the bin, the frame, and the light on the glass, which hides it.",
+  "cast": [],
+  "location": "dw_main_street",
+  "margin": {
+    "signature": "ROFLCOPTER",
+    "mark": "roflcopter",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "single page",
+      "composition": "A thrift store's bin of frames, tilted, a hand-lettered $2 tag. Among them, the plain black 8×10 from 2001, and there is something in it now — a photograph, a paper, a drawing — but the window's light lies across the glass in a white sheet and hides it completely. The page refuses to tilt it.",
+      "characters": [],
+      "props": [
+        "the bin",
+        "$2",
+        "the 8x10 with glare"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a single full comic page with no panel borders, spare knowing ink line with economy, muted ochre and slate blue and sea-foam green washes, a thrift-store bin of secondhand picture frames with a hand-lettered two-dollar tag, one plain black eight-by-ten frame among them with something inside that a sheet of white window glare across the glass completely hides, no people, no words",
+        "negative": "",
+        "notes": "Reserved: what is in the frame. The glare is the device."
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "spare, knowing; economy of line; Era I's black spotting back on purpose in the mill run",
+    "palette": "muted ochres, slate blues, misty sea-foam greens; luminous sunbreaks in the last spring",
+    "paper": "Arches; bristol; the backs of motel registration cards"
+  },
+  "notes": "'I'll know when I see it.' He did, apparently. We don't.",
+  "layout": "single page, no borders"
+}

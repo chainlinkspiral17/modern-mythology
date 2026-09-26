@@ -1,0 +1,60 @@
+{
+  "id": "ro_2021-01-06_across_the_grid",
+  "title": "Across the grid",
+  "strip": "roflcopter",
+  "date": "2021-01-06",
+  "run": 7,
+  "era": "era4",
+  "format": "page",
+  "tier": "A",
+  "selection": "full",
+  "venue": "nobody · boxes 21–40",
+  "arc": "No Grid",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (Run 7 sequences · deepening)",
+  "logline": "The first private page. A Sunday grid ruled in blue pencil on the sheet, and the drawing ignoring it: the garage from the doorway, drawn straight across the tiers.",
+  "cast": [
+    "barnaby_ii"
+  ],
+  "location": "dw_garage",
+  "margin": {
+    "signature": "ROFLCOPTER",
+    "mark": "roflcopter",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "single page",
+      "composition": "The sheet itself is the subject: faint blue-pencil Sunday tiers ruled and abandoned, and over them, ignoring every line, the garage from its doorway — the long table, the lamp off, the three jars on the sill, the pup asleep in the bed. The drawing crosses the tier lines like they aren't there.",
+      "characters": [
+        {
+          "id": "barnaby_ii",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "blue-pencil tiers",
+        "the table",
+        "three jars",
+        "the bed"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a single full comic page with no panel borders, spare knowing ink line with economy, muted ochre and slate blue and sea-foam green washes, a comic page where faint blue pencil grid lines for a Sunday layout are visible beneath an ink drawing that ignores them completely, a garage studio from its doorway with a long drafting table, a lamp off, three jars on a windowsill and a small three-legged dog asleep in a bed, no words",
+        "negative": "",
+        "notes": "Leave the blue grid faintly visible. The first page of Vol. II; the grid never appears again."
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "spare, knowing; economy of line; Era I's black spotting back on purpose in the mill run",
+    "palette": "muted ochres, slate blues, misty sea-foam greens; luminous sunbreaks in the last spring",
+    "paper": "Arches; bristol; the backs of motel registration cards"
+  },
+  "notes": "The grid ruled, then ignored. Day one.",
+  "layout": "single page, no borders"
+}

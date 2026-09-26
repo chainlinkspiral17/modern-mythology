@@ -378,12 +378,15 @@ strip's own panel grid as the presentation. Decision reserved.
 
 ## Status
 
-A rough batch of the full run exists: 255 strip scripts in
+A rough batch of the full run exists, deepened once: 404 strip scripts in
 `godot/tools/comic/strips/` from Drift Wood #1 (Sept 12, 1997) to
 the final ROFLCOPTER page (April 25, 2027), every year and every
 sequence represented, with the style guides in `drift_wood/style/`
-and a tagged reference registry. Next passes deepen the years the
-complete run budgets more pages to (Runs 3 and 6), and render. The brief is transcribed; the
+and a tagged reference registry. The deepening pass has filled the nine
+annual fixtures for every public year (2010's reprints excepted) and
+the half-marked arcs of 2001–2003 and 2012–2013. Next: the
+ROFLCOPTER sequences to Vol. II's weight, more selected Sundays, and
+render. The brief is transcribed; the
 reference files are drafted from it and from the user's notes on
 cadence, the authorial rule, and the bookends; sample strips exist
 for every era. No scene JSON exists. The engine's volume slot exists and is locked.

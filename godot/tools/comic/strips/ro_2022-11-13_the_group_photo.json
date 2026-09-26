@@ -1,0 +1,59 @@
+{
+  "id": "ro_2022-11-13_the_group_photo",
+  "title": "The group photo",
+  "strip": "roflcopter",
+  "date": "2022-11-13",
+  "run": 7,
+  "era": "era4",
+  "format": "page",
+  "tier": "A",
+  "selection": "full",
+  "venue": "nobody · boxes 21–40",
+  "arc": "The Mill, 1994",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (Run 7 sequences · deepening)",
+  "logline": "The mill's last-shift group photo, redrawn as a page: forty faces on the loading dock under the stack, Era I's black spotting brought back on purpose. Gully's uncle in the second row. A boy at the edge who might be anyone.",
+  "cast": [
+    "extra_uncle"
+  ],
+  "location": "dw_cedar_mill",
+  "margin": {
+    "signature": "ROFLCOPTER",
+    "mark": "roflcopter",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "single page",
+      "composition": "A group photograph as a drawing: forty men and a few women on a loading dock under the cedar mill's stack, 1994, in rows, the light flat, the line deliberately heavy with Era I's black spotting — every shadow a solid. In the second row, flat face, rain hood down: Gully's uncle, forty-something. At the far right edge, half cut off, a boy of thirteen or fourteen in a mill jacket too big for him, face turned away. A date scratched in the corner: '94.",
+      "characters": [
+        {
+          "id": "extra_uncle",
+          "pose": "second row, hood down, forty-something",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the loading dock",
+        "the stack",
+        "'94 scratched in the corner"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a single full comic page with no borders, heavy black ink spotting in a 1990s zine style over a muted ochre wash, a drawn group photograph of about forty mill workers in rows on a loading dock beneath a tall smokestack, one weathered man in the second row with a rain hood down, a half-cut-off teenage boy at the far right edge with his face turned away, no words",
+        "negative": "",
+        "notes": "The boy at the edge is reserved. Draw him turned away. Era I's spotting on purpose — the only sequence where the old line returns."
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "spare, knowing; economy of line; Era I's black spotting back on purpose in the mill run",
+    "palette": "muted ochres, slate blues, misty sea-foam greens; luminous sunbreaks in the last spring",
+    "paper": "Arches; bristol; the backs of motel registration cards"
+  },
+  "notes": "Forty faces. The uncle. The boy at the edge, reserved.",
+  "layout": "single page, no borders"
+}

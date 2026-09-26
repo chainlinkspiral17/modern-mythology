@@ -1,0 +1,58 @@
+{
+  "id": "ro_2022-09-18_the_piling",
+  "title": "The piling",
+  "strip": "roflcopter",
+  "date": "2022-09-18",
+  "run": 7,
+  "era": "era4",
+  "format": "page",
+  "tier": "A",
+  "selection": "full",
+  "venue": "nobody · boxes 21–40",
+  "arc": "The Bird",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (Run 7 sequences · deepening)",
+  "logline": "The bird on a dock piling in fog. Wrong for the coast, every color, not explained. The dock, the fog, the bird. It stays.",
+  "cast": [
+    "the_bird"
+  ],
+  "location": "dw_gullys",
+  "margin": {
+    "signature": "ROFLCOPTER",
+    "mark": "roflcopter",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "single page",
+      "composition": "Fog on the bay, the dock dissolving into it. One piling in the foreground, barnacled, and on it the small rainbow bird — every color, sharp in a page where nothing else is — looking out at the water. No people. Gully's shack a gray shape. The fog takes the rest.",
+      "characters": [
+        {
+          "id": "the_bird",
+          "pose": "on the piling, looking out",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the piling",
+        "fog"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a single full comic page with no panel borders, spare knowing ink line with economy, muted ochre and slate blue and sea-foam green washes, a barnacled dock piling in thick fog with a small brilliantly rainbow-colored bird perched on top looking out at the water, the dock and a shingle shack dissolving into gray behind, no people, no words",
+        "negative": "",
+        "notes": "The bird is the only saturated color on the page."
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "spare, knowing; economy of line; Era I's black spotting back on purpose in the mill run",
+    "palette": "muted ochres, slate blues, misty sea-foam greens; luminous sunbreaks in the last spring",
+    "paper": "Arches; bristol; the backs of motel registration cards"
+  },
+  "notes": "The bird, second sighting. The piling. Not explained.",
+  "layout": "single page, no borders"
+}

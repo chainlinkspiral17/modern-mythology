@@ -1,0 +1,70 @@
+{
+  "id": "ro_2024-09-01_what_she_says",
+  "title": "What she says",
+  "strip": "roflcopter",
+  "date": "2024-09-01",
+  "run": 7,
+  "era": "era4",
+  "format": "page",
+  "tier": "A",
+  "selection": "full",
+  "venue": "nobody · boxes 21–40",
+  "arc": "The Dock",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (Run 7 sequences · deepening)",
+  "logline": "The dock, late. Chloe, forty-four, in a chair beside the empty lawn chair. One balloon: what she says. Wood's reply is not drawn; the space where it would be is bay.",
+  "cast": [
+    "chloe_44",
+    "wood_44"
+  ],
+  "location": "dw_gullys",
+  "margin": {
+    "signature": "ROFLCOPTER",
+    "mark": "roflcopter",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "single page",
+      "composition": "The dock at dusk from the shack steps. CHLOE, forty-four, hair cut short, in a folding chair beside Maria's old lawn chair, which is empty. She is looking at the water, not the viewer. One balloon over her, small. Where Wood's reply would sit — the right third of the page — there is only the bay, drawn with more care than anything else, and the ridge glow beyond it.",
+      "characters": [
+        {
+          "id": "chloe_44",
+          "pose": "in a folding chair beside the empty lawn chair, looking at the water",
+          "expression": ""
+        },
+        {
+          "id": "wood_44",
+          "pose": "not drawn; the reply space is bay",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the empty lawn chair",
+        "the bay",
+        "the ridge glow"
+      ],
+      "balloons": [
+        {
+          "who": "CHLOE",
+          "text": "I read all of it. Every year. I want you to know I read all of it."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a single full comic page with no panel borders, spare knowing ink line with economy, muted ochre and slate blue and sea-foam green washes, a dock at dusk seen from shack steps with a forty-four-year-old woman with short hair sitting in a folding chair beside an empty old lawn chair looking out at the water, one small speech balloon above her, the right third of the page given entirely to the bay and a faint warm glow on a far ridge, no words in the image",
+        "negative": "",
+        "notes": "Letter after. One balloon. No reply balloon; the bay is the reply."
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "spare, knowing; economy of line; Era I's black spotting back on purpose in the mill run",
+    "palette": "muted ochres, slate blues, misty sea-foam greens; luminous sunbreaks in the last spring",
+    "paper": "Arches; bristol; the backs of motel registration cards"
+  },
+  "notes": "'I read all of it.' The reply is the bay.",
+  "layout": "single page, no borders"
+}

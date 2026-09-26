@@ -1,0 +1,59 @@
+{
+  "id": "ro_2021-04-04_the_end_stool",
+  "title": "The end stool",
+  "strip": "roflcopter",
+  "date": "2021-04-04",
+  "run": 7,
+  "era": "era4",
+  "format": "page",
+  "tier": "A",
+  "selection": "full",
+  "venue": "nobody · boxes 21–40",
+  "arc": "Absent",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (Run 7 sequences · deepening)",
+  "logline": "Gully's counter. The end stool empty. Gully's hand on the counter beside it, the rest of him out of frame. No Wood in the pages from January to June.",
+  "cast": [
+    "gully_48"
+  ],
+  "location": "dw_gullys",
+  "margin": {
+    "signature": "ROFLCOPTER",
+    "mark": "roflcopter",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "single page",
+      "composition": "The counter at Gully's from stool height. The end stool, empty, its seat worn to a paler ring. A coffee already poured in front of it. At the frame's left edge: a hand on the counter, thick, a canvas cuff — Gully — and nothing else of him. The corkboard above, crowded, the 2003 rough still at its center.",
+      "characters": [
+        {
+          "id": "gully_48",
+          "pose": "a hand and a cuff at the frame edge",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the end stool",
+        "a poured coffee",
+        "the corkboard"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a single full comic page with no panel borders, spare knowing ink line with economy, muted ochre and slate blue and sea-foam green washes, a bait-and-espresso counter seen from stool height with the end stool empty and worn pale, a poured coffee in front of it, a stocky man's hand and canvas jacket cuff resting on the counter at the frame's edge, a crowded corkboard above, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "spare, knowing; economy of line; Era I's black spotting back on purpose in the mill run",
+    "palette": "muted ochres, slate blues, misty sea-foam greens; luminous sunbreaks in the last spring",
+    "paper": "Arches; bristol; the backs of motel registration cards"
+  },
+  "notes": "Absent. The coffee poured anyway.",
+  "layout": "single page, no borders"
+}

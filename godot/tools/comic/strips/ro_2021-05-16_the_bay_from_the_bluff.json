@@ -1,0 +1,51 @@
+{
+  "id": "ro_2021-05-16_the_bay_from_the_bluff",
+  "title": "The bay from the bluff",
+  "strip": "roflcopter",
+  "date": "2021-05-16",
+  "run": 7,
+  "era": "era4",
+  "format": "page",
+  "tier": "A",
+  "selection": "full",
+  "venue": "nobody · boxes 21–40",
+  "arc": "Absent",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (Run 7 sequences · deepening)",
+  "logline": "The bay in May from the bluff path. Nobody. The drift log. The dock. The ridge with its glow, faint in daylight. The town without him in it.",
+  "cast": [],
+  "location": "dw_bay",
+  "margin": {
+    "signature": "ROFLCOPTER",
+    "mark": "roflcopter",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "single page",
+      "composition": "The bay from the bluff, high and wide, a spring afternoon: the estuary mouth, the drift log tiny on the beach, Gully's dock and shack, the cannery's rust, main street's backs, and east, above the trees, the ridge with the glow barely there in daylight — a warmth in the haze. No figure anywhere. The pup isn't here either.",
+      "characters": [],
+      "props": [
+        "the drift log",
+        "the dock",
+        "the ridge glow, faint"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a single full comic page with no panel borders, spare knowing ink line with economy, muted ochre and slate blue and sea-foam green washes, a high wide view of an Oregon bay from a bluff path on a spring afternoon with a distant drift log, a dock and shingle shack, a rusted cannery, the backs of a small main street, and a faint warm glow in the haze above a forested ridge to the east, no figures, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "spare, knowing; economy of line; Era I's black spotting back on purpose in the mill run",
+    "palette": "muted ochres, slate blues, misty sea-foam greens; luminous sunbreaks in the last spring",
+    "paper": "Arches; bristol; the backs of motel registration cards"
+  },
+  "notes": "Absent. The glow visible even by day now.",
+  "layout": "single page, no borders"
+}

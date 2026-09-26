@@ -1,0 +1,51 @@
+{
+  "id": "ro_2023-08-06_the_on_ramp",
+  "title": "The on-ramp",
+  "strip": "roflcopter",
+  "date": "2023-08-06",
+  "run": 7,
+  "era": "era4",
+  "format": "page",
+  "tier": "A",
+  "selection": "full",
+  "venue": "nobody · boxes 21–40",
+  "arc": "The Route North",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (Run 7 sequences · deepening)",
+  "logline": "The last bend before Seattle: the interstate rising, the city ahead in haze, the page stopping at the on-ramp. He never drove it. The sequence stops where the bus didn't.",
+  "cast": [],
+  "location": "dw_101",
+  "margin": {
+    "signature": "ROFLCOPTER",
+    "mark": "roflcopter",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "single page",
+      "composition": "From the shoulder of a highway on-ramp: the ramp rising and curving left, the interstate beyond, and past it, in morning haze, a city's skyline — Seattle drawn from memory of a postcard, the tower right, the rest approximate. The page's drawing ends at the top of the ramp; the lower third is bare paper with the road's edge line continuing alone into it.",
+      "characters": [],
+      "props": [
+        "the on-ramp",
+        "the skyline, approximate",
+        "bare paper"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a single full comic page with no panel borders, spare knowing ink line with economy, muted ochre and slate blue and sea-foam green washes, a highway on-ramp rising and curving toward an interstate with a hazy city skyline beyond, the drawing stopping partway so the lower third of the page is bare paper with only the road's edge line continuing into the blank, no vehicles, no people, no words",
+        "negative": "",
+        "notes": "The drawing stops. The page is a third blank on purpose."
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "spare, knowing; economy of line; Era I's black spotting back on purpose in the mill run",
+    "palette": "muted ochres, slate blues, misty sea-foam greens; luminous sunbreaks in the last spring",
+    "paper": "Arches; bristol; the backs of motel registration cards"
+  },
+  "notes": "The sequence stops at the on-ramp. The paper is left.",
+  "layout": "single page, no borders"
+}
