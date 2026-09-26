@@ -1,0 +1,123 @@
+{
+  "id": "dw_2017-11-16_dog_night_2017_after",
+  "title": "Dog Night, 2017 · after",
+  "strip": "drift_wood",
+  "date": "2017-11-16",
+  "run": 6,
+  "era": "era3",
+  "format": "daily4",
+  "tier": "B",
+  "selection": "part",
+  "venue": "Arthur's site · the coastal weeklies · from 2017 the aggregator",
+  "arc": "The Dog Night",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (2017 · fixture week · deepening xvii)",
+  "logline": "The morning after eighteen years: the box under the table, and the pup asleep against it as he does now, and Wood drawing the outline from memory — the rectangle in the gravel — on a small sheet, and pinning it on the garage board. The board gets a rectangle. Nobody asks what it is.",
+  "cast": [
+    "wood_34",
+    "barnaby_ii"
+  ],
+  "location": "dw_garage",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "scruff",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "medium",
+      "composition": "The garage. The PUP asleep against the small box under the table. WOOD at the table drawing.",
+      "characters": [
+        {
+          "id": "barnaby_ii",
+          "pose": "asleep against the box",
+          "expression": ""
+        },
+        {
+          "id": "wood_34",
+          "pose": "drawing",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the box"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "razor-sharp brush and ink, a small three-legged dog asleep against a small cardboard box under a drafting table while a man draws above",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "medium",
+      "composition": "The sheet: a rectangle, darker inside, gravel texture. Nothing else.",
+      "characters": [],
+      "props": [
+        "the drawn outline"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "razor-sharp brush and ink, a small sheet of paper with a single darker rectangle drawn on it in gravel texture and nothing else",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "medium",
+      "composition": "WOOD pinning it on the garage corkboard beside the walk map.",
+      "characters": [
+        {
+          "id": "wood_34",
+          "pose": "pinning it",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the corkboard",
+        "the walk map"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "razor-sharp brush and ink, a man pinning a small drawing of a rectangle to a crowded corkboard beside a hand-drawn map",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "medium",
+      "composition": "The board: the yearbook photo lowest, the walk map, the gull, and now a rectangle.",
+      "characters": [],
+      "props": [
+        "the corkboard"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "razor-sharp brush and ink, a crowded corkboard with a small yearbook photo pinned lowest, a hand-drawn map, a photo of a large gull and a small drawing of a rectangle",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "razor-sharp brush and ink; the pup's weight learned; Sundays wet-on-wet",
+    "palette": "dailies: ink and one tone. Sundays: gray-green, fog, rust, bruised dusk",
+    "paper": "bristol; Arches for Sundays"
+  },
+  "notes": "Wood's garage board gets the outline (2017). Add to objects.md."
+}

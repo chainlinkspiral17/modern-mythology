@@ -1,0 +1,145 @@
+{
+  "id": "dw_2017-07-05_the_fourth_2017_after",
+  "title": "The Fourth, 2017 · after",
+  "strip": "drift_wood",
+  "date": "2017-07-05",
+  "run": 6,
+  "era": "era3",
+  "format": "daily4",
+  "tier": "B",
+  "selection": "part",
+  "venue": "Arthur's site · the coastal weeklies · the aggregator",
+  "arc": "The Fourth on the Bay",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (2017 · fixture week · deepening xvii)",
+  "logline": "The morning after the lockbox Fourth: the dock swept, and the strangers gone into their rentals, and Gully counting the coffee cups in the bin — forty — and saying that's forty coffees. Wood says that's forty people. Gully says same thing. The strip disagrees quietly, in the panel widths.",
+  "cast": [
+    "wood_34",
+    "gully_35",
+    "barnaby_ii"
+  ],
+  "location": "dw_gullys",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "scruff",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "medium",
+      "composition": "The dock in the morning. GULLY with a bin of paper cups, counting. WOOD on the steps. The PUP.",
+      "characters": [
+        {
+          "id": "gully_35",
+          "pose": "counting cups",
+          "expression": ""
+        },
+        {
+          "id": "wood_34",
+          "pose": "on the steps",
+          "expression": ""
+        },
+        {
+          "id": "barnaby_ii",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "a bin of cups"
+      ],
+      "balloons": [
+        {
+          "who": "GULLY",
+          "text": "Forty. That's forty coffees."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "razor-sharp brush and ink, a stocky man in an apron counting paper cups in a bin on a dock while a thin man sits on shack steps with a small three-legged dog",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "medium",
+      "composition": "WOOD.",
+      "characters": [
+        {
+          "id": "wood_34",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [
+        {
+          "who": "WOOD",
+          "text": "That's forty people."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "razor-sharp brush and ink, a thin man on steps answering",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "medium",
+      "composition": "GULLY, shrugging the bin up.",
+      "characters": [
+        {
+          "id": "gully_35",
+          "pose": "shrugging",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [
+        {
+          "who": "GULLY",
+          "text": "Same thing."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "razor-sharp brush and ink, a stocky man shrugging with a bin of cups in his arms",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "wide",
+      "composition": "The houses behind the dock, each doorframe with a key-safe, blinds down, forty people not in the panel.",
+      "characters": [],
+      "props": [
+        "key-safes"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "razor-sharp brush and ink, a row of rental houses behind a dock each with a small gray lockbox on its doorframe and blinds drawn, no people",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "razor-sharp brush and ink; Sundays wet-on-wet",
+    "palette": "ink and one tone; Sundays gray-green, fog, rust",
+    "paper": "bristol; Arches"
+  },
+  "notes": "Forty coffees; forty people. The strip disagrees in the widths."
+}

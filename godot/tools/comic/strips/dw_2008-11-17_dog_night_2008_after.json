@@ -1,0 +1,149 @@
+{
+  "id": "dw_2008-11-17_dog_night_2008_after",
+  "title": "Dog Night, 2008 · after",
+  "strip": "drift_wood",
+  "date": "2008-11-17",
+  "run": 3,
+  "era": "era2",
+  "format": "daily4",
+  "tier": "B",
+  "selection": "part",
+  "venue": "Arthur's site (six dailies + a Sunday)",
+  "arc": "The Dog Night",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (2008 · fixture week · deepening xvii)",
+  "logline": "The Monday after nine years: Wood at Gully's asking, sideways, if the Lanes got a new manager. Gully says the Lanes got a new bulb. Wood says he saw. Gully pours. The strip lets the reader decide who climbed the ladder.",
+  "cast": [
+    "wood_26",
+    "gully_27",
+    "barnaby"
+  ],
+  "location": "dw_gullys",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "medium",
+      "composition": "Gully's. WOOD on the stool. GULLY with the pot. BARNABY.",
+      "characters": [
+        {
+          "id": "wood_26",
+          "pose": "on the stool",
+          "expression": ""
+        },
+        {
+          "id": "gully_27",
+          "pose": "with the pot",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [
+        {
+          "who": "WOOD",
+          "text": "Lanes get a new manager?"
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen line with muddy early-digital flats, a thin man on a shop's end stool asking a stocky man in an apron a sideways question",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "medium",
+      "composition": "GULLY.",
+      "characters": [
+        {
+          "id": "gully_27",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [
+        {
+          "who": "GULLY",
+          "text": "Lanes got a new bulb."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen line with muddy early-digital flats, a stocky man in an apron answering while holding a coffee pot",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "medium",
+      "composition": "WOOD.",
+      "characters": [
+        {
+          "id": "wood_26",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [
+        {
+          "who": "WOOD",
+          "text": "I saw."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen line with muddy early-digital flats, a thin man on a stool answering shortly",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "medium",
+      "composition": "GULLY pouring. A ladder, leaned against the shack's outside wall, visible through the window behind him.",
+      "characters": [
+        {
+          "id": "gully_27",
+          "pose": "pouring",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "a ladder, through the window"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen line with muddy early-digital flats, a stocky man pouring coffee with a ladder visible leaning against the outside wall through the window behind him",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "brush-pen scanned; muddy digital flats",
+    "palette": "limited; Sundays in watercolor, good now",
+    "paper": "bristol; the browser; from 2008 coastal newsprint a week behind"
+  },
+  "notes": "The ladder through the window. The reader decides."
+}

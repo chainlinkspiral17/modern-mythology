@@ -94,6 +94,7 @@ by year of arrival. Photo-side out is the default for postcards;
 | 2008 | the Florence weekly with the gull printed huge, pinned over the Feb 25 page, both over the parody printout | Mar 2008 |
 | 1999 | the backward digest (the print tech's misfold, Sept 30, 1999) | kept; on the board through 2027 |
 | 2019 | one glossy stick-figure sticker (the helicopter figure), stuck by nose-transfer, upside down, below the yearbook photo | the only sticker of thirty the pup didn't eat (Nov 2019); stays |
+| 2017 | a small sheet with a single darker rectangle on it: the dumpster's outline in the alley gravel, drawn from memory the morning after Dog Night | beside the walk map (Nov 16, 2017) |
 
 Gully's corkboard (above the register, 2003–): starts with one
 pencil rough of Gully hanging the sign; adds lost-cat flyers, kayak
@@ -106,6 +107,16 @@ photo print of the ramp with the pup on it, pinned by a hand that
 isn't Wood's (Sept 2022, private pages). **The walk map, the
 Florence gull, the yearbook photo, the backward digest and the
 sticker are on Wood's garage board, never Gully's.**
+
+## Gully's high shelf · the things that don't get thrown out
+
+Above the counter, out of reach of customers. Inventory by arrival:
+a thermos; a tin; a folded flag; **Maria's lantern** (Mar 13, 2006 —
+"She'll want it back." "She won't."); **a tourist's stick-figure
+shirt** (Jul 5, 2007; a second shirt in 2017 goes in the bin — the
+rule is not said); **the girl's notebook**, open to *the fish moved
+/ the people did / both* (Mar 16, 2019). The uncle's chair is not on
+the shelf; it becomes Maria's chair (Jul 2009).
 
 ## The sign · SMALL WOOD LANES · letter deaths
 

@@ -1,0 +1,130 @@
+{
+  "id": "dw_2006-02-13_crab_derby_2006_after",
+  "title": "Crab Derby, 2006 · after",
+  "strip": "drift_wood",
+  "date": "2006-02-13",
+  "run": 3,
+  "era": "era2",
+  "format": "daily4",
+  "tier": "B",
+  "selection": "part",
+  "venue": "Arthur's site (six dailies + a Sunday)",
+  "arc": "The Crab Derby",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (2006 · fixture week · deepening xvii)",
+  "logline": "The Monday after: the flyer on the wall and a woman with a dark braid reading it from the dock, her hand on the rail, and Gully behind the counter not looking out the window with his whole body. Wood on the stool drawing the not-looking.",
+  "cast": [
+    "wood_26",
+    "gully_27",
+    "extra_maria",
+    "barnaby"
+  ],
+  "location": "dw_gullys",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "medium",
+      "composition": "Through the window: a woman with a dark braid on the dock reading the new flyer on the wall.",
+      "characters": [
+        {
+          "id": "extra_maria",
+          "pose": "reading the flyer, from the dock",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the flyer"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen line with muddy early-digital flats, through a shop window a woman with a dark braid on a dock reading a flyer pinned to a shingle wall",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "medium",
+      "composition": "GULLY behind the counter with his back to the window, rigid, wiping a clean cup.",
+      "characters": [
+        {
+          "id": "gully_27",
+          "pose": "back to the window, wiping",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "a clean cup"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen line with muddy early-digital flats, a stocky man in an apron with his back to a window wiping a cup that is already clean",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "medium",
+      "composition": "WOOD on the stool with the pad, drawing Gully's back.",
+      "characters": [
+        {
+          "id": "wood_26",
+          "pose": "drawing",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the pad"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen line with muddy early-digital flats, a thin man on a stool drawing a stocky man's rigid back on a pad",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "medium",
+      "composition": "The pad: Gully's back, the cup, and above it, tiny, the window with the braid in it.",
+      "characters": [],
+      "props": [
+        "the drawing"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen line with muddy early-digital flats, a pad showing a drawing of a man's back and a cup with a tiny window above containing a woman with a braid",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "brush-pen scanned; muddy digital flats",
+    "palette": "limited, muddy; Sundays in watercolor, improving",
+    "paper": "bristol; the browser"
+  },
+  "notes": "Draws the not-looking."
+}

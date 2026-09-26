@@ -1,0 +1,145 @@
+{
+  "id": "dw_2009-03-12_grunion_xii_before",
+  "title": "The Grunion Run, 2009 · before",
+  "strip": "drift_wood",
+  "date": "2009-03-12",
+  "run": 3,
+  "era": "era2",
+  "format": "daily4",
+  "tier": "B",
+  "selection": "part",
+  "venue": "Arthur's site · the coastal weeklies",
+  "arc": "The Grunion Run",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (2009 · fixture week · deepening xvii)",
+  "logline": "Four days after 'Lanes': Wood on the beach the day before the twelfth run, looking not at the water but back at the town, at the ridge, in daylight, where there's nothing. Gully setting lantern posts. Gully asks what he's looking at. Nothing, Wood says. Gully looks too.",
+  "cast": [
+    "wood_26",
+    "gully_27",
+    "barnaby"
+  ],
+  "location": "dw_beach",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "wide",
+      "composition": "The beach by day. GULLY driving lantern posts into the sand. WOOD with his back to the water, looking at the ridge behind the town. BARNABY.",
+      "characters": [
+        {
+          "id": "gully_27",
+          "pose": "driving posts",
+          "expression": ""
+        },
+        {
+          "id": "wood_26",
+          "pose": "looking at the ridge",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "lantern posts"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen line with muddy early-digital flats, a stocky man driving wooden posts into beach sand while a thin man stands with his back to the water looking toward a wooded ridge beyond a town",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "medium",
+      "composition": "The ridge in daylight: trees, the cut, nothing over it.",
+      "characters": [],
+      "props": [
+        "the ridge, nothing over it"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen line with muddy early-digital flats, a wooded ridge beyond a small town in flat daylight with nothing above it",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "medium",
+      "composition": "GULLY, straightening.",
+      "characters": [
+        {
+          "id": "gully_27",
+          "pose": "straightening",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [
+        {
+          "who": "GULLY",
+          "text": "What're you looking at."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen line with muddy early-digital flats, a stocky man straightening up from driving a post to ask a question",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "medium",
+      "composition": "WOOD. And GULLY looking too, now.",
+      "characters": [
+        {
+          "id": "wood_26",
+          "pose": "",
+          "expression": ""
+        },
+        {
+          "id": "gully_27",
+          "pose": "looking at the ridge",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [
+        {
+          "who": "WOOD",
+          "text": "Nothing."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen line with muddy early-digital flats, two men on a beach both looking back toward a ridge beyond a town",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "brush-pen; the flats cleaner; Sundays the point",
+    "palette": "limited; Sundays gray-green, rust, fog",
+    "paper": "bristol; newsprint a week behind"
+  },
+  "notes": "Four days after 'Lanes.' Nothing. Gully looks too."
+}

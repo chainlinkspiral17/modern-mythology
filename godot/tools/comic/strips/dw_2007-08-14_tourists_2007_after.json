@@ -1,0 +1,144 @@
+{
+  "id": "dw_2007-08-14_tourists_2007_after",
+  "title": "Tourist Season, 2007 · the next day",
+  "strip": "drift_wood",
+  "date": "2007-08-14",
+  "run": 3,
+  "era": "era2",
+  "format": "daily4",
+  "tier": "B",
+  "selection": "part",
+  "venue": "Arthur's site (six dailies + a Sunday)",
+  "arc": "Tourist Season",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (2007 · fixture week · deepening xvii)",
+  "logline": "The day after the tourist who came for the dog: the same tourist on the seawall with a bag of the good treats from the grocery, and the dog, eight, accepting them with dignity, and Wood not knowing where to stand. He stands where he always stands.",
+  "cast": [
+    "wood_26",
+    "barnaby",
+    "extra_tourists"
+  ],
+  "location": "dw_main_street",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "wide",
+      "composition": "The seawall. A TOURIST crouched with a bag of dog treats. BARNABY accepting one with dignity. WOOD a few steps off, hands in his coat.",
+      "characters": [
+        {
+          "id": "extra_tourists",
+          "pose": "crouched with treats",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "accepting, dignified",
+          "expression": ""
+        },
+        {
+          "id": "wood_26",
+          "pose": "hands in his coat",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "a bag of treats"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen line with muddy early-digital flats, a tourist crouched on a seawall offering a dog treat to a small dog while a thin man stands a few steps away with his hands in his coat",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "medium",
+      "composition": "The dog taking the treat like a favor granted.",
+      "characters": [
+        {
+          "id": "barnaby",
+          "pose": "taking the treat",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen line with muddy early-digital flats, a small dog taking a treat from a hand with an air of granting a favor",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "medium",
+      "composition": "The TOURIST, to Wood, not looking up.",
+      "characters": [
+        {
+          "id": "extra_tourists",
+          "pose": "to Wood",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [
+        {
+          "who": "TOURIST",
+          "text": "He's exactly like the strip."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen line with muddy early-digital flats, a tourist crouched with a dog speaking without looking up at the man nearby",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "medium",
+      "composition": "WOOD.",
+      "characters": [
+        {
+          "id": "wood_26",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [
+        {
+          "who": "WOOD",
+          "text": "The strip's like him."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen line with muddy early-digital flats, a thin man with his hands in his coat correcting someone mildly",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "brush-pen scanned; muddy digital flats; Sundays in watercolor, improving",
+    "palette": "limited, muddy; Sundays gray-green, rust, one warm",
+    "paper": "bristol; the browser; newsprint from 2008"
+  },
+  "notes": "The strip's like him."
+}

@@ -1,0 +1,142 @@
+{
+  "id": "dw_2006-02-09_crab_derby_2006_before",
+  "title": "Crab Derby, 2006 · before",
+  "strip": "drift_wood",
+  "date": "2006-02-09",
+  "run": 3,
+  "era": "era2",
+  "format": "daily4",
+  "tier": "B",
+  "selection": "part",
+  "venue": "Arthur's site (six dailies + a Sunday)",
+  "arc": "The Crab Derby",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (2006 · fixture week · deepening xvii)",
+  "logline": "The day before the twenty-second: Gully at the counter with pen on his forearm — MARIA — 4PM — and Wood at the flyer pretending not to read arms. The strip draws the forearm in the corner of every panel and never mentions it.",
+  "cast": [
+    "wood_26",
+    "gully_27",
+    "barnaby"
+  ],
+  "location": "dw_gullys",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "medium",
+      "composition": "The shack. WOOD drawing the flyer. GULLY's forearm on the counter, pen on it, in the panel's corner.",
+      "characters": [
+        {
+          "id": "wood_26",
+          "pose": "drawing",
+          "expression": ""
+        },
+        {
+          "id": "gully_27",
+          "pose": "forearm on the counter",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the flyer",
+        "pen on a forearm"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen line with muddy early-digital flats, a thin man drawing a flyer at a counter with a stocky man's forearm resting nearby bearing handwriting in pen",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "medium",
+      "composition": "GULLY wiping the counter, the forearm in the corner again.",
+      "characters": [
+        {
+          "id": "gully_27",
+          "pose": "wiping",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [
+        {
+          "who": "GULLY",
+          "text": "Two crabs. A cup. Nothing new."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen line with muddy early-digital flats, a stocky man in an apron wiping a counter with handwriting visible on his forearm",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "medium",
+      "composition": "WOOD, inking, the forearm in the corner.",
+      "characters": [
+        {
+          "id": "wood_26",
+          "pose": "inking",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [
+        {
+          "who": "WOOD",
+          "text": "Nothing new."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen line with muddy early-digital flats, a thin man inking a flyer with a man's inked forearm at the edge of the frame",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "medium",
+      "composition": "The finished flyer; the forearm gone out of frame; the clock on the wall at 3:50.",
+      "characters": [],
+      "props": [
+        "the flyer",
+        "the clock, 3:50"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen line with muddy early-digital flats, a finished flyer on a counter beneath a wall clock reading ten to four",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "brush-pen scanned; muddy digital flats",
+    "palette": "limited, muddy; Sundays in watercolor, improving",
+    "paper": "bristol; the browser"
+  },
+  "notes": "MARIA — 4PM in the corner. Never mentioned."
+}

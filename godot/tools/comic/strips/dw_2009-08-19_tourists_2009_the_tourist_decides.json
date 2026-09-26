@@ -1,0 +1,161 @@
+{
+  "id": "dw_2009-08-19_tourists_2009_the_tourist_decides",
+  "title": "Tourist Season, 2009 · the tourist decides",
+  "strip": "drift_wood",
+  "date": "2009-08-19",
+  "run": 3,
+  "era": "era2",
+  "format": "daily4",
+  "tier": "B",
+  "selection": "part",
+  "venue": "Arthur's site · the coastal weeklies",
+  "arc": "Tourist Season",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (2009 · fixture week · deepening xvii)",
+  "logline": "Two days after: the same tourist back with the paper, holding the strip's Gully up beside the real one, deciding. The real one pours. The tourist says the strip's is better looking. Gully says told you. Wood draws the nose bigger.",
+  "cast": [
+    "wood_26",
+    "gully_27",
+    "barnaby",
+    "extra_tourists"
+  ],
+  "location": "dw_gullys",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "medium",
+      "composition": "Gully's. A TOURIST holding a newspaper strip up beside GULLY's face, comparing. WOOD on the stool. BARNABY.",
+      "characters": [
+        {
+          "id": "extra_tourists",
+          "pose": "comparing",
+          "expression": ""
+        },
+        {
+          "id": "gully_27",
+          "pose": "being compared",
+          "expression": ""
+        },
+        {
+          "id": "wood_26",
+          "pose": "on the stool",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the newspaper"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen line with muddy early-digital flats, a tourist holding a newspaper comic strip up beside a stocky man's face to compare them while a thin man watches from a stool",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "medium",
+      "composition": "GULLY pouring the tourist's coffee mid-comparison.",
+      "characters": [
+        {
+          "id": "gully_27",
+          "pose": "pouring",
+          "expression": ""
+        },
+        {
+          "id": "extra_tourists",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen line with muddy early-digital flats, a stocky man in an apron pouring coffee for a tourist who is still holding a newspaper up beside his face",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "medium",
+      "composition": "The TOURIST, deciding.",
+      "characters": [
+        {
+          "id": "extra_tourists",
+          "pose": "deciding",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [
+        {
+          "who": "TOURIST",
+          "text": "The strip's is better looking."
+        },
+        {
+          "who": "GULLY",
+          "text": "Told you."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen line with muddy early-digital flats, a tourist lowering a newspaper with a verdict while a stocky man answers over the coffee pot",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "medium",
+      "composition": "WOOD on the stool, pen to pad, the nose going bigger.",
+      "characters": [
+        {
+          "id": "wood_26",
+          "pose": "drawing",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the pad"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen line with muddy early-digital flats, a thin man on a stool drawing a caricature's nose even larger on a pad",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "brush-pen; the flats cleaner; Sundays the point",
+    "palette": "limited; Sundays gray-green, rust, fog",
+    "paper": "bristol; newsprint a week behind"
+  },
+  "notes": "Told you."
+}

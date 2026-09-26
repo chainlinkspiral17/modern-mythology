@@ -1,0 +1,61 @@
+{
+  "id": "ro_2025-08-04_the_zine_read_by_a_stranger",
+  "title": "The zine, read by a stranger",
+  "strip": "roflcopter",
+  "date": "2025-08-04",
+  "run": 7,
+  "era": "era4",
+  "format": "page",
+  "tier": "A",
+  "selection": "full",
+  "venue": "nobody · boxes 21–40",
+  "arc": "An August",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (Run 7 · deepening xviii)",
+  "logline": "A stranger on the seawall bench reading a stapled zine, from behind, and over her shoulder the page can see a photocopied drawing of three letters on skin. The page doesn't read further. A man in plaid at the bench's other end doesn't either.",
+  "cast": [
+    "wood_44",
+    "extra_tourists"
+  ],
+  "location": "dw_main_street",
+  "margin": {
+    "signature": "ROFLCOPTER",
+    "mark": "roflcopter",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "single page",
+      "composition": "Over a seated stranger's shoulder on a seawall bench, an open stapled zine showing a photocopied drawing of three letters on skin, a man in plaid from behind at the bench's far end, the bay.",
+      "characters": [
+        {
+          "id": "wood_44",
+          "pose": "from behind, at the bench's end",
+          "expression": ""
+        },
+        {
+          "id": "extra_tourists",
+          "pose": "reading, from behind",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a single full comic page with no panel borders, spare knowing ink line with economy, muted ochre and slate blue and sea-foam green washes, over a seated stranger's shoulder on a seawall bench an open stapled zine showing a photocopied drawing of three letters on skin, a man in plaid flannel seen from behind at the bench's far end, a bay beyond, no words legible",
+        "negative": "",
+        "notes": "Vol 7: Static Truths, issue one; the SUN mark. Not read further."
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "spare, knowing; economy of line; Era I's black spotting back on purpose in the mill run",
+    "palette": "muted ochres, slate blues, misty sea-foam greens; luminous sunbreaks in the last spring",
+    "paper": "Arches; bristol; the backs of motel registration cards"
+  },
+  "notes": "Doesn't read further.",
+  "layout": "single page, no borders"
+}

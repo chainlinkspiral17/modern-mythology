@@ -1,0 +1,145 @@
+{
+  "id": "dw_2018-07-05_the_fourth_2018_after",
+  "title": "The Fourth, 2018 · after",
+  "strip": "drift_wood",
+  "date": "2018-07-05",
+  "run": 6,
+  "era": "era3",
+  "format": "daily4",
+  "tier": "B",
+  "selection": "part",
+  "venue": "Arthur's site · the coastal weeklies · the aggregator",
+  "arc": "The Fourth on the Bay",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (2018 · fixture week · deepening xvii)",
+  "logline": "The morning after the Fourth with her seat left empty on purpose: Gully asking why the strip had an empty stool on the dock, since there's no stool on the dock. Wood says there was. Gully says there wasn't. The strip, which drew it, doesn't take sides.",
+  "cast": [
+    "wood_34",
+    "gully_35",
+    "barnaby_ii"
+  ],
+  "location": "dw_gullys",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "crab",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "medium",
+      "composition": "Gully's. GULLY with yesterday's strip on the counter. WOOD on the end stool. The PUP.",
+      "characters": [
+        {
+          "id": "gully_35",
+          "pose": "with the strip",
+          "expression": ""
+        },
+        {
+          "id": "wood_34",
+          "pose": "on the stool",
+          "expression": ""
+        },
+        {
+          "id": "barnaby_ii",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "yesterday's strip"
+      ],
+      "balloons": [
+        {
+          "who": "GULLY",
+          "text": "There's no stool on the dock. You drew a stool."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "razor-sharp brush and ink, a stocky man in an apron holding a comic strip up at a counter while a thin man sits on the end stool",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "medium",
+      "composition": "WOOD.",
+      "characters": [
+        {
+          "id": "wood_34",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [
+        {
+          "who": "WOOD",
+          "text": "There was."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "razor-sharp brush and ink, a thin man on a stool answering quietly",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "medium",
+      "composition": "GULLY.",
+      "characters": [
+        {
+          "id": "gully_35",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [
+        {
+          "who": "GULLY",
+          "text": "There wasn't."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "razor-sharp brush and ink, a stocky man in an apron insisting",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "medium",
+      "composition": "The strip, close: the dock, the family, the fireworks, and an empty stool at the planks' edge, drawn plainly.",
+      "characters": [],
+      "props": [
+        "the empty stool, drawn"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "razor-sharp brush and ink, close on a drawn comic panel of a dock under fireworks with a family and an empty stool at the planks' edge",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "razor-sharp brush and ink; Sundays wet-on-wet",
+    "palette": "ink and one tone; Sundays gray-green, fog, rust",
+    "paper": "bristol; Arches"
+  },
+  "notes": "The strip doesn't take sides. The crab in the margin."
+}

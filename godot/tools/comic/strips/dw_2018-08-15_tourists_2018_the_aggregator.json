@@ -1,0 +1,134 @@
+{
+  "id": "dw_2018-08-15_tourists_2018_the_aggregator",
+  "title": "Tourist Season, 2018 · the aggregator",
+  "strip": "drift_wood",
+  "date": "2018-08-15",
+  "run": 6,
+  "era": "era3",
+  "format": "daily4",
+  "tier": "B",
+  "selection": "part",
+  "venue": "Arthur's site · the coastal weeklies · the aggregator",
+  "arc": "Tourist Season",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (2018 · fixture week · deepening xvii)",
+  "logline": "Two days after: an email from the aggregator on the garage's screen, asking for the Sunday vertical and the signature bigger, and Wood reading it with the pup's chin on his knee, and the stick chorus — twelve years old now — climbing back out of the monitor for the first time since 2006. Wood switches it off. One stays on the desk.",
+  "cast": [
+    "wood_34",
+    "barnaby_ii",
+    "extra_stick_chorus"
+  ],
+  "location": "dw_garage",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "scruff",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "medium",
+      "composition": "The garage. WOOD at a laptop, the screen a gray rectangle. The PUP's chin on his knee.",
+      "characters": [
+        {
+          "id": "wood_34",
+          "pose": "at the laptop",
+          "expression": ""
+        },
+        {
+          "id": "barnaby_ii",
+          "pose": "chin on his knee",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the laptop"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "razor-sharp brush and ink, a thin man at a laptop with a gray screen and a small three-legged dog's chin on his knee",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "medium",
+      "composition": "The screen: gray; and a stick figure climbing out over the bottom edge onto the desk, old habit.",
+      "characters": [
+        {
+          "id": "extra_stick_chorus",
+          "pose": "one, climbing out",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "razor-sharp brush and ink, a laptop screen drawn as a gray rectangle with one tiny stick figure climbing out over its bottom edge",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "medium",
+      "composition": "WOOD looking at it. Twelve years.",
+      "characters": [
+        {
+          "id": "wood_34",
+          "pose": "looking at the stick figure",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [
+        {
+          "who": "WOOD",
+          "text": "You again."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "razor-sharp brush and ink, a thin man looking down at a tiny stick figure on his desk with weary recognition",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "medium",
+      "composition": "The laptop closed. The stick figure left on the desk in the lamp's light, sitting on the edge.",
+      "characters": [
+        {
+          "id": "extra_stick_chorus",
+          "pose": "left on the desk",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "razor-sharp brush and ink, a closed laptop on a desk with one tiny stick figure sitting on the desk's edge in lamplight",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "razor-sharp brush and ink; Sundays wet-on-wet",
+    "palette": "ink and one tone; Sundays gray-green, fog, rust",
+    "paper": "bristol; Arches"
+  },
+  "notes": "The chorus returns once, twelve years on. One stays."
+}

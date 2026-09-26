@@ -1,0 +1,49 @@
+{
+  "id": "ro_2024-04-01_the_empty_frame_the_last_time",
+  "title": "The empty frame, the last time",
+  "strip": "roflcopter",
+  "date": "2024-04-01",
+  "run": 7,
+  "era": "era4",
+  "format": "page",
+  "tier": "A",
+  "selection": "full",
+  "venue": "nobody · boxes 21–40",
+  "arc": "What People Framed",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (Run 7 · deepening xviii)",
+  "logline": "The 8×10 black frame from March 2001 one more time, in a window on a side street, with something in it the page draws as glare. The page has followed it from the shop to the bin to a buyer to here, and stops following. The sequence's last page in the box.",
+  "cast": [],
+  "location": "dw_main_street",
+  "margin": {
+    "signature": "ROFLCOPTER",
+    "mark": "roflcopter",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "single page",
+      "composition": "A black picture frame standing in a side-street house's window, its contents lost in glare, curtains behind it, the street's reflection on the glass.",
+      "characters": [],
+      "props": [
+        "the frame, in a window"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a single full comic page with no panel borders, spare knowing ink line with economy, muted ochre and slate blue and sea-foam green washes, a black picture frame standing in a side-street house window with its contents lost in glare, curtains behind and the street reflected on the glass, no words",
+        "negative": "",
+        "notes": "Compare ro_2024-03-17, ro_2024-03-10. Contents reserved."
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "spare, knowing; economy of line; Era I's black spotting back on purpose in the mill run",
+    "palette": "muted ochres, slate blues, misty sea-foam greens; luminous sunbreaks in the last spring",
+    "paper": "Arches; bristol; the backs of motel registration cards"
+  },
+  "notes": "Stops following.",
+  "layout": "single page, no borders"
+}

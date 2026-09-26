@@ -1,0 +1,126 @@
+{
+  "id": "dw_2005-11-16_dog_night_2005_after",
+  "title": "Dog Night, 2005 · after",
+  "strip": "drift_wood",
+  "date": "2005-11-16",
+  "run": 3,
+  "era": "era2",
+  "format": "daily4",
+  "tier": "B",
+  "selection": "part",
+  "venue": "Arthur's site (six dailies + a Sunday)",
+  "arc": "The Dog Night",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (2005 · fixture week · deepening xvii)",
+  "logline": "The morning after six years: the dog asleep on the blanket, and Wood at the drafting table drawing last night's strip with the panels wider than the paper allows, so he tapes a second sheet on. The strip shows the tape.",
+  "cast": [
+    "wood_26",
+    "barnaby"
+  ],
+  "location": "dw_garage",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "medium",
+      "composition": "The garage. WOOD at the table with a strip that runs off the right edge of the sheet. BARNABY asleep.",
+      "characters": [
+        {
+          "id": "wood_26",
+          "pose": "drawing",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "asleep",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "a strip running off the sheet"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen line with muddy early-digital flats, a thin man at a drafting table drawing a comic strip that runs off the right edge of the paper, a dog asleep beneath",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "medium",
+      "composition": "WOOD taping a second sheet to the first.",
+      "characters": [
+        {
+          "id": "wood_26",
+          "pose": "taping a sheet on",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "tape"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen line with muddy early-digital flats, a man taping a second sheet of paper to the edge of the first on a drafting table",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "medium",
+      "composition": "The taped seam, close, running through the last panel's alley.",
+      "characters": [],
+      "props": [
+        "the seam"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen line with muddy early-digital flats, close on a taped seam between two sheets of paper running through a drawn alley",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "medium",
+      "composition": "WOOD drawing across the tape.",
+      "characters": [
+        {
+          "id": "wood_26",
+          "pose": "drawing across the seam",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen line with muddy early-digital flats, a man's pen drawing straight across a taped seam between two sheets",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "brush-pen scanned; muddy digital flats",
+    "palette": "limited, muddy; Sundays in watercolor, improving",
+    "paper": "bristol; the browser"
+  },
+  "notes": "The tape shows."
+}

@@ -1,0 +1,147 @@
+{
+  "id": "dw_2007-02-08_crab_derby_2007_before",
+  "title": "Crab Derby, 2007 · before",
+  "strip": "drift_wood",
+  "date": "2007-02-08",
+  "run": 3,
+  "era": "era2",
+  "format": "daily4",
+  "tier": "B",
+  "selection": "part",
+  "venue": "Arthur's site (six dailies + a Sunday)",
+  "arc": "The Crab Derby",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (2007 · fixture week · deepening xvii)",
+  "logline": "The day before the twenty-third: a tourist in the shack in February, which is wrong, looking at the 1998 flyer on the wall the way people look at things they want. Gully sees the look. Wood, on the stool, sees Gully see it.",
+  "cast": [
+    "wood_26",
+    "gully_27",
+    "barnaby",
+    "extra_tourists"
+  ],
+  "location": "dw_gullys",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "medium",
+      "composition": "The shack in February. A TOURIST in a good coat looking at the oldest flyer on the wall. GULLY behind the counter. WOOD on the stool.",
+      "characters": [
+        {
+          "id": "extra_tourists",
+          "pose": "looking at the 1998 flyer",
+          "expression": ""
+        },
+        {
+          "id": "gully_27",
+          "pose": "behind the counter",
+          "expression": ""
+        },
+        {
+          "id": "wood_26",
+          "pose": "on the stool",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the 1998 flyer"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen line with muddy early-digital flats, a tourist in a good coat studying the oldest flyer on a bait-shack wall while a stocky man watches from behind the counter",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "medium",
+      "composition": "The tourist's face: the look.",
+      "characters": [
+        {
+          "id": "extra_tourists",
+          "pose": "the look",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen line with muddy early-digital flats, close on a tourist's face wearing the look of someone who wants a thing",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "medium",
+      "composition": "GULLY's face: seeing it.",
+      "characters": [
+        {
+          "id": "gully_27",
+          "pose": "seeing it",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen line with muddy early-digital flats, close on a stocky man's face noticing something across his shop",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "medium",
+      "composition": "WOOD on the stool, pen already moving on the pad.",
+      "characters": [
+        {
+          "id": "wood_26",
+          "pose": "drawing",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the pad"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "brush-pen line with muddy early-digital flats, a thin man on a stool with his pen already moving on a pad",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "brush-pen scanned; muddy digital flats; Sundays in watercolor, improving",
+    "palette": "limited, muddy; Sundays gray-green, rust, one warm",
+    "paper": "bristol; the browser; newsprint from 2008"
+  },
+  "notes": "The look, seen, and seen being seen."
+}

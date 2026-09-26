@@ -1,0 +1,121 @@
+{
+  "id": "dw_2018-11-14_dog_night_2018_before",
+  "title": "Dog Night, 2018 · before",
+  "strip": "drift_wood",
+  "date": "2018-11-14",
+  "run": 6,
+  "era": "era3",
+  "format": "daily4",
+  "tier": "B",
+  "selection": "part",
+  "venue": "Arthur's site · the coastal weeklies · the aggregator",
+  "arc": "The Dog Night",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (2018 · fixture week · deepening xvii)",
+  "logline": "The night before nineteen years: the glow over the ridge behind the Lanes' roofline, wider than last year, and Wood not looking at it, on purpose, drawing the sign's six dark letters instead on the pad while the pup does the bin. The strip draws the glow anyway, in the corner, small.",
+  "cast": [
+    "wood_34",
+    "barnaby_ii"
+  ],
+  "location": "dw_bowling_alley",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "scruff",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "wide",
+      "composition": "The alley at night. The sign with six letters dark. Above the roofline, in the corner, a warm glow, wider. WOOD with a pad, facing the sign. The PUP at the bin.",
+      "characters": [
+        {
+          "id": "wood_34",
+          "pose": "drawing the sign, back to the glow",
+          "expression": ""
+        },
+        {
+          "id": "barnaby_ii",
+          "pose": "at the bin",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the sign, six dark",
+        "the glow, in the corner"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "razor-sharp brush and ink, a man in a night alley drawing a neon sign with six letters dark on a pad with his back to a warm glow over the roofline in the corner, a small three-legged dog at a bin",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "medium",
+      "composition": "The pad: the sign, the six dark letters carefully shaped.",
+      "characters": [],
+      "props": [
+        "the pad"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "razor-sharp brush and ink, a pad showing a drawing of a neon sign with six of its letters drawn as dark gray glass",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "medium",
+      "composition": "WOOD's shoulders, set, not turning.",
+      "characters": [
+        {
+          "id": "wood_34",
+          "pose": "not turning",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "razor-sharp brush and ink, a man's back and set shoulders in a night alley refusing to turn around",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "medium",
+      "composition": "The pad's corner, where the paper runs out: a small warm smudge, not drawn on purpose.",
+      "characters": [],
+      "props": [
+        "the smudge"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "razor-sharp brush and ink, close on the corner of a sketch pad with a small warm smudge where the drawing runs out",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "razor-sharp brush and ink; Sundays wet-on-wet; 2019: the Sunday drawn to a smaller grid",
+    "palette": "ink and one tone; Sundays gray-green, fog, rust; 2020: ochre and slate arriving",
+    "paper": "bristol; Arches"
+  },
+  "notes": "Not looking at it on purpose. The smudge anyway."
+}

@@ -1,0 +1,49 @@
+{
+  "id": "ro_2021-10-27_seattle_the_bathroom_mirror",
+  "title": "Seattle, the bathroom mirror",
+  "strip": "roflcopter",
+  "date": "2021-10-27",
+  "run": 7,
+  "era": "era4",
+  "format": "page",
+  "tier": "A",
+  "selection": "full",
+  "venue": "nobody · boxes 21–40",
+  "arc": "Rooms He Never Saw",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (Run 7 · deepening xviii)",
+  "logline": "The first Seattle apartment's bathroom, invented: a mirror over a sink, and in it nothing, because he doesn't know what she looked like at twenty in a mirror in a city. The page draws the mirror empty and the toothbrush cup with one brush.",
+  "cast": [],
+  "location": "dw_seattle_hill",
+  "margin": {
+    "signature": "ROFLCOPTER",
+    "mark": "roflcopter",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "single page",
+      "composition": "A small apartment bathroom with a mirror over the sink reflecting an empty room, a cup on the sink holding a single toothbrush, tile.",
+      "characters": [],
+      "props": [
+        "one toothbrush"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a single full comic page with no panel borders, spare knowing ink line with economy, muted ochre and slate blue and sea-foam green washes, a small apartment bathroom with a mirror over the sink reflecting only an empty room and a cup on the sink holding a single toothbrush, tile, no people, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "spare, knowing; economy of line; Era I's black spotting back on purpose in the mill run",
+    "palette": "muted ochres, slate blues, misty sea-foam greens; luminous sunbreaks in the last spring",
+    "paper": "Arches; bristol; the backs of motel registration cards"
+  },
+  "notes": "The mirror empty because he doesn't know.",
+  "layout": "single page, no borders"
+}

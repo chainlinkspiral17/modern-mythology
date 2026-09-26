@@ -1,0 +1,155 @@
+{
+  "id": "dw_2017-03-09_grunion_xx_before",
+  "title": "The Grunion Run, 2017 · before",
+  "strip": "drift_wood",
+  "date": "2017-03-09",
+  "run": 6,
+  "era": "era3",
+  "format": "daily4",
+  "tier": "B",
+  "selection": "part",
+  "venue": "Arthur's site · the coastal weeklies · the aggregator",
+  "arc": "The Grunion Run",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (2017 · fixture week · deepening xvii)",
+  "logline": "The day before the twentieth run: Gully with the lanterns on the counter, nine, and a lockbox key-safe he's pulled off a rental's doorframe by mistake — no, on purpose — sitting beside them. He puts it back before dark. Wood watched him take it.",
+  "cast": [
+    "wood_34",
+    "gully_35",
+    "barnaby_ii"
+  ],
+  "location": "dw_gullys",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "scruff",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "medium",
+      "composition": "The shack. Nine lanterns on the counter. Beside them, a small gray key-safe, unscrewed. GULLY. WOOD on the stool. The PUP.",
+      "characters": [
+        {
+          "id": "gully_35",
+          "pose": "behind the counter",
+          "expression": ""
+        },
+        {
+          "id": "wood_34",
+          "pose": "on the stool",
+          "expression": ""
+        },
+        {
+          "id": "barnaby_ii",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "nine lanterns",
+        "a key-safe, unscrewed"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "razor-sharp brush and ink, nine kerosene lanterns on a shop counter beside a small gray lockbox with screws lying loose, a stocky man in an apron and a thin man on a stool",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "medium",
+      "composition": "WOOD looking at the key-safe.",
+      "characters": [
+        {
+          "id": "wood_34",
+          "pose": "looking",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [
+        {
+          "who": "WOOD",
+          "text": "Where'd that come from."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "razor-sharp brush and ink, a thin man on a stool eyeing a small gray lockbox on a counter",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "medium",
+      "composition": "GULLY, wiping a lantern.",
+      "characters": [
+        {
+          "id": "gully_35",
+          "pose": "wiping a lantern",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [
+        {
+          "who": "GULLY",
+          "text": "A doorframe."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "razor-sharp brush and ink, a stocky man in an apron wiping a lantern's glass and answering without looking up",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "medium",
+      "composition": "Dusk: GULLY from behind at a rental's door, screwing it back on. WOOD and the PUP at the road.",
+      "characters": [
+        {
+          "id": "gully_35",
+          "pose": "screwing it back on, from behind",
+          "expression": ""
+        },
+        {
+          "id": "wood_34",
+          "pose": "at the road",
+          "expression": ""
+        },
+        {
+          "id": "barnaby_ii",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "razor-sharp brush and ink, a stocky man seen from behind at dusk screwing a small lockbox back onto a house's doorframe while a thin man and a small dog wait at the road",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "razor-sharp brush and ink; Sundays wet-on-wet",
+    "palette": "ink and one tone; Sundays gray-green, fog, rust",
+    "paper": "bristol; Arches"
+  },
+  "notes": "A doorframe. Put back before dark."
+}

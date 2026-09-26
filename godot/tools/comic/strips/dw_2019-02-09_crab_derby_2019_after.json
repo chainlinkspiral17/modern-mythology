@@ -1,0 +1,151 @@
+{
+  "id": "dw_2019-02-09_crab_derby_2019_after",
+  "title": "Crab Derby, 2019 · after",
+  "strip": "drift_wood",
+  "date": "2019-02-09",
+  "run": 6,
+  "era": "era3",
+  "format": "daily4",
+  "tier": "B",
+  "selection": "part",
+  "venue": "Arthur's site · the coastal weeklies · the aggregator",
+  "arc": "The Crab Derby",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (2019 · fixture week · deepening xvii)",
+  "logline": "The Saturday after: the real crab on the wall among thirty-four cartoons, and Wood at the wall a long time, and the girl coming to stand beside him and looking at the row too, and asking which one's his favorite. He points at 1998. She says that one's wrong. He says that's why.",
+  "cast": [
+    "wood_34",
+    "extra_gully_kid",
+    "barnaby_ii"
+  ],
+  "location": "dw_gullys",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "scruff",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "wide",
+      "composition": "The wall: thirty-five flyers, the newest a shaded real crab. WOOD before it. The GIRL coming to stand beside him. The PUP.",
+      "characters": [
+        {
+          "id": "wood_34",
+          "pose": "before the wall",
+          "expression": ""
+        },
+        {
+          "id": "extra_gully_kid",
+          "pose": "beside him",
+          "expression": ""
+        },
+        {
+          "id": "barnaby_ii",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "thirty-five flyers"
+      ],
+      "balloons": [
+        {
+          "who": "GIRL",
+          "text": "Which one's your favorite?"
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "razor-sharp brush and ink, a thin man standing before a long row of flyers on a shingle wall with a girl of nine coming to stand beside him and a small three-legged dog nearby",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "medium",
+      "composition": "WOOD pointing at the first, framed in cheap plastic: the enormous crab, the six legs.",
+      "characters": [
+        {
+          "id": "wood_34",
+          "pose": "pointing at 1998",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the 1998 flyer"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "razor-sharp brush and ink, a thin man pointing at the first flyer in a row, an old one in a cheap plastic frame with an enormous six-legged crab",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "medium",
+      "composition": "The GIRL.",
+      "characters": [
+        {
+          "id": "extra_gully_kid",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [
+        {
+          "who": "GIRL",
+          "text": "That one's wrong."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "razor-sharp brush and ink, a girl of nine delivering a verdict on an old drawing",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "medium",
+      "composition": "WOOD.",
+      "characters": [
+        {
+          "id": "wood_34",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [
+        {
+          "who": "WOOD",
+          "text": "That's why."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "razor-sharp brush and ink, a thin man answering a child with a small shrug",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "razor-sharp brush and ink; Sundays wet-on-wet",
+    "palette": "ink and one tone; Sundays gray-green, fog, rust",
+    "paper": "bristol; Arches"
+  },
+  "notes": "That's why."
+}

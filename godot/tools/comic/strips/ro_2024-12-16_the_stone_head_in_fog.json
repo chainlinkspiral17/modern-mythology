@@ -1,0 +1,49 @@
+{
+  "id": "ro_2024-12-16_the_stone_head_in_fog",
+  "title": "The stone head in fog",
+  "strip": "roflcopter",
+  "date": "2024-12-16",
+  "run": 7,
+  "era": "era4",
+  "format": "page",
+  "tier": "A",
+  "selection": "full",
+  "venue": "nobody · boxes 21–40",
+  "arc": "The Stone Head",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (Run 7 · deepening xviii)",
+  "logline": "The face in December fog, the wall gone, the grass gone, the face alone in gray at the page's center with the fog's light inside it. The sequence's Spring page, three years early: the way the mornings will be drawn.",
+  "cast": [],
+  "location": "dw_stone_head",
+  "margin": {
+    "signature": "ROFLCOPTER",
+    "mark": "roflcopter",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "single page",
+      "composition": "A moss-grown carved stone face alone in dense December fog with nothing else visible, the fog's light luminous around it.",
+      "characters": [],
+      "props": [
+        "the fog"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a single full comic page with no panel borders, spare knowing ink line with economy, muted ochre and slate blue and sea-foam green washes, a moss-grown carved stone face alone in dense fog with nothing else visible and the fog's light luminous around it, no words",
+        "negative": "",
+        "notes": "The luminous-fog manner of Spring (ro_2027-03-14), used early."
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "spare, knowing; economy of line; Era I's black spotting back on purpose in the mill run",
+    "palette": "muted ochres, slate blues, misty sea-foam greens; luminous sunbreaks in the last spring",
+    "paper": "Arches; bristol; the backs of motel registration cards"
+  },
+  "notes": "The way the mornings will be drawn.",
+  "layout": "single page, no borders"
+}

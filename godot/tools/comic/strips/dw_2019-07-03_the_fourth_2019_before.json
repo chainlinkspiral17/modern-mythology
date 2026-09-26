@@ -1,0 +1,124 @@
+{
+  "id": "dw_2019-07-03_the_fourth_2019_before",
+  "title": "The Fourth, 2019 · before",
+  "strip": "drift_wood",
+  "date": "2019-07-03",
+  "run": 6,
+  "era": "era3",
+  "format": "daily4",
+  "tier": "B",
+  "selection": "part",
+  "venue": "Arthur's site · the coastal weeklies · the aggregator",
+  "arc": "The Fourth on the Bay",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (2019 · fixture week · deepening xvii)",
+  "logline": "The day before: the Lanes' sign across the bay being tested for the holiday, letters flickering on one at a time from the roofline, and Wood on the dock counting the ones that don't come back. Seven. The strip draws the test from across the water, small, and the count in his mouth, unlettered.",
+  "cast": [
+    "wood_34",
+    "barnaby_ii"
+  ],
+  "location": "dw_gullys",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "scruff",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "wide",
+      "composition": "The dock at dusk. Across the bay, the Lanes' sign on the roofline, letters coming on one by one. WOOD at the rail. The PUP.",
+      "characters": [
+        {
+          "id": "wood_34",
+          "pose": "at the rail, counting",
+          "expression": ""
+        },
+        {
+          "id": "barnaby_ii",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the sign, across the bay"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "razor-sharp brush and ink, a man at a dock rail at dusk watching a distant neon sign across a bay light up letter by letter, a small three-legged dog beside him",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "medium",
+      "composition": "The sign, small and far: eight lit, seven dark.",
+      "characters": [],
+      "props": [
+        "eight lit, seven dark"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "razor-sharp brush and ink, a distant neon sign across water with eight letters lit and seven dark",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "medium",
+      "composition": "WOOD's mouth moving on a number, unlettered.",
+      "characters": [
+        {
+          "id": "wood_34",
+          "pose": "counting, lips moving",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "razor-sharp brush and ink, close on a man's face with his lips moving on a silent count",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "medium",
+      "composition": "The pup looking at the water, not the sign.",
+      "characters": [
+        {
+          "id": "barnaby_ii",
+          "pose": "looking at the water",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "razor-sharp brush and ink, a small three-legged dog on a dock looking down at the water while a man looks across it",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "razor-sharp brush and ink; Sundays wet-on-wet",
+    "palette": "ink and one tone; Sundays gray-green, fog, rust",
+    "paper": "bristol; Arches"
+  },
+  "notes": "Seven dark. The count unlettered."
+}
