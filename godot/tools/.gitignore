@@ -3,3 +3,4 @@ __pycache__/
 
 # RunwayML API key (runway_render.py)
 .runway_key
+.google_key
