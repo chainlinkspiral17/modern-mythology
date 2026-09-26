@@ -53,6 +53,7 @@ under `godot/assets/comic/vol10/concept/` with their own manifest.
 | `eras.json` | per-era style blocks (line, paper, palette, prompt prefix/suffix, negative, Blender Freestyle settings), the formats, the margin marks |
 | `heroes_vol10.json` | the cast as Meshy hero slots with text-to-3D prompts, and the locale builds the sets will need — for the production pipeline |
 | `comic_tool.py` | `validate` · `index` · `md` · `strip-prompts` · `sheets` · `prompts` · `stage` · `new` |
+| `references.json` | the tagged reference-image registry and the auto-selection policy (see References below) |
 | `style_sheets.json` | the reference-sheet queue (characters by era, era swatches, hero locations, objects); `comic_tool.py sheets` composes the prompts; the human guides are `lore/drift_wood/style/` |
 | `comic_render.py` | the runner: `--provider runway` (gen4_image on the dev API) or `--provider google` (Imagen 4, or `--model gemini-2.5-flash-image`) |
 | `out/` | generated queues (gitignored) |
@@ -125,6 +126,74 @@ dialogue or none: `dw_2001-10-09_lot_c`, `dw_2003-05-23_the_rack`,
   `GEMINI_API_KEY` or `godot/tools/.google_key`.
 - Both runners print the response body on a non-200 so field-name
   drift in the APIs is visible, not silent.
+
+## References · tagged, auto-selected, future-proof
+
+`references.json` is the registry of reference images: model sheets,
+era swatches, location sheets, object sheets, approved strips, and
+concept art. Each entry carries **tags** — hero ids (`wood_34`),
+location ids (`dw_garage`), era ids (`era3`), object keywords
+(`produce box`, `lamp`) — a `file` (repo path) and/or `url` /
+`runway_task_id`, and a `status`: `missing` (expected, not yet
+rendered), `draft` (exists, unreviewed), `approved` (use it).
+
+**Automatic selection.** `strip-prompts` scores every approved
+reference against each strip — its `cast`, `location`, `era`, `arc`
+and the words in its props and compositions — and attaches the top
+three (Runway) or four (Google) as `reference_images`, adding
+"Match the attached references: @wood_34 for the character; @garage
+for the setting; …" to the prompt. A strip's own earlier render is
+never used as its own reference. Weights and limits are in
+`references.json` → `policy`.
+
+**Manual selection.** A strip JSON can carry:
+
+```jsonc
+"references": {"use": ["sheet_wood_34", "sheet_loc_garage"], "exclude": ["concept_*"], "auto": true}
+```
+
+`use` pins; `exclude` blocks; `auto: false` turns off scoring for
+that strip.
+
+**Commands.**
+
+```bash
+cd /home/deck/Downloads/modern-mythology/godot/tools/comic && python3 comic_tool.py refs list
+```
+
+```bash
+cd /home/deck/Downloads/modern-mythology/godot/tools/comic && python3 comic_tool.py refs suggest --only "dw_2014*"
+```
+
+```bash
+cd /home/deck/Downloads/modern-mythology/godot/tools/comic && python3 comic_tool.py sheets && python3 comic_render.py --provider runway --queue out/sheets.json --only "sheet_wood_*" && python3 comic_tool.py refs sync && python3 comic_tool.py refs approve --id "sheet_wood_*"
+```
+
+```bash
+cd /home/deck/Downloads/modern-mythology/godot/tools/comic && python3 comic_tool.py refs add --file lore/drift_wood/refs/sheet_01_wood.png --kind concept --tags "wood_44,the_bird,era4,dw_gullys" --approve
+```
+
+The loop: render sheets → `refs sync` (registers what now exists as
+draft) → look → `refs approve` → from then on every `strip-prompts`
+run attaches them where relevant. `refs suggest` shows the picks
+before spending anything; `--include-draft` previews with
+unreviewed sheets.
+
+**How the renderers use them.** Runway (dev API): local files are
+sent as data URIs with their `@tag`; URLs pass through; an entry
+that is only a Runway task id (an MCP-hosted image) is skipped with
+a note until its PNG is fetched. Google: `gemini-2.5-flash-image`
+receives them as inline image parts; Imagen ignores references.
+Sheet renders land in `godot/assets/comic/vol10/sheets/` with their
+tags in the manifest, which is what `refs sync` reads.
+
+**Future-proofing.** Tags are free strings, so new kinds (a pose
+sheet, a lettering sample, a real photo of Alsea Bay) register
+without code changes; `kind` and `prefer_kinds` order ties; the
+Blender/Meshy path can register its rendered stills as `strip`
+references the same way. Nothing in a strip JSON refers to a file —
+only to ids and tags — so references can be re-rendered, replaced or
+moved without touching the scripts.
 
 ## Adding a strip
 

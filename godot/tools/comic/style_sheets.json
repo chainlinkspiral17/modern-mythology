@@ -1,257 +1,469 @@
 {
-  "_comment": "Reference-sheet generation queue. comic_tool.py sheets composes one prompt per entry: the era's line block + the sheet prompt. Sources: lore/drift_wood/style/*.md. Render with comic_render.py --queue out/sheets.json.",
+  "_comment": "Reference-sheet generation queue. comic_tool.py sheets composes one prompt per entry: the era's line block + the sheet prompt. Sources: lore/drift_wood/style/*.md. Render with comic_render.py --queue out/sheets.json. Each sheet carries tags (hero ids, location ids, era, object keywords) so references.json can auto-match strips.",
   "sheets": [
     {
       "id": "sheet_wood_17",
       "kind": "character",
       "era": "era1",
       "ratio": "16:9",
-      "prompt": "model sheet, three-quarter front, profile and back views plus four expression heads, of a gaunt seventeen-year-old boy in an oversized wool overcoat to the knee holding a bristol drawing pad flat against his chest, unkempt dark hair falling forward, sharp jaw, sneakers; expressions: fervent, deadpan, deflated, caught; labeled WOOD 1997"
+      "prompt": "model sheet, three-quarter front, profile and back views plus four expression heads, of a gaunt seventeen-year-old boy in an oversized wool overcoat to the knee holding a bristol drawing pad flat against his chest, unkempt dark hair falling forward, sharp jaw, sneakers; expressions: fervent, deadpan, deflated, caught; labeled WOOD 1997",
+      "tags": [
+        "character",
+        "era1",
+        "wood_17"
+      ]
     },
     {
       "id": "sheet_wood_20",
       "kind": "character",
       "era": "era1",
       "ratio": "16:9",
-      "prompt": "model sheet of a thin young man in his early twenties in a worn brown canvas chore coat with a frayed cuff and a mismatched button, stubble, dark uncombed hair, hands in pockets; front, profile, seated-on-a-bucket pose, plus expression heads: dead-eyed, earnest, blank, wounded; labeled WOOD 2000"
+      "prompt": "model sheet of a thin young man in his early twenties in a worn brown canvas chore coat with a frayed cuff and a mismatched button, stubble, dark uncombed hair, hands in pockets; front, profile, seated-on-a-bucket pose, plus expression heads: dead-eyed, earnest, blank, wounded; labeled WOOD 2000",
+      "tags": [
+        "character",
+        "era1",
+        "wood_20"
+      ]
     },
     {
       "id": "sheet_wood_26",
       "kind": "character",
       "era": "era2",
       "ratio": "16:9",
-      "prompt": "model sheet of a thin man in his mid-twenties, hunched, black hoodie open over a dark band tee with a faded eagle, ink-stained right hand, tired eyes; front, profile, seated at a CRT pose, plus a second figure of the same man at two-thirds scale beside a normal-scale scruffy dog; expression heads: manic, resigned, bemused, wry; labeled WOOD 2006"
+      "prompt": "model sheet of a thin man in his mid-twenties, hunched, black hoodie open over a dark band tee with a faded eagle, ink-stained right hand, tired eyes; front, profile, seated at a CRT pose, plus a second figure of the same man at two-thirds scale beside a normal-scale scruffy dog; expression heads: manic, resigned, bemused, wry; labeled WOOD 2006",
+      "tags": [
+        "character",
+        "era2",
+        "wood_26"
+      ]
     },
     {
       "id": "sheet_wood_34",
       "kind": "character",
       "era": "era3",
       "ratio": "16:9",
-      "prompt": "model sheet of a lean man in his mid-thirties with a receding hairline and weathered sharp jaw, blue plaid flannel open over a dark band tee, faded jeans, brown boots, thick drawing hands; front, profile, back, a crouching pose, and a second figure in a maroon motel polo a size too big; expression heads: quiet, flat, trapped, zero sentimentality, exhausted surrender; labeled WOOD 2014"
+      "prompt": "model sheet of a lean man in his mid-thirties with a receding hairline and weathered sharp jaw, blue plaid flannel open over a dark band tee, faded jeans, brown boots, thick drawing hands; front, profile, back, a crouching pose, and a second figure in a maroon motel polo a size too big; expression heads: quiet, flat, trapped, zero sentimentality, exhausted surrender; labeled WOOD 2014",
+      "tags": [
+        "character",
+        "era3",
+        "wood_34"
+      ]
     },
     {
       "id": "sheet_wood_44",
       "kind": "character",
       "era": "era4",
       "ratio": "16:9",
-      "prompt": "model sheet of a man in his mid-forties with a receding hairline and unkempt brown hair at the sides, stubble, tired kind eyes, blue plaid flannel open over a charcoal band tee with a faded wing graphic, ripped faded jeans, brown boots, slight stoop; front view, back view, reflection-in-glass view, walking-away view; a small rainbow songbird at his feet; labeled WOOD 2024"
+      "prompt": "model sheet of a man in his mid-forties with a receding hairline and unkempt brown hair at the sides, stubble, tired kind eyes, blue plaid flannel open over a charcoal band tee with a faded wing graphic, ripped faded jeans, brown boots, slight stoop; front view, back view, reflection-in-glass view, walking-away view; a small rainbow songbird at his feet; labeled WOOD 2024",
+      "tags": [
+        "character",
+        "era4",
+        "wood_44"
+      ]
     },
     {
       "id": "sheet_chloe_17",
       "kind": "character",
       "era": "era1",
       "ratio": "16:9",
-      "prompt": "model sheet of a seventeen-year-old girl with heavy smudged black eyeliner, straight dark shoulder-length hair, an oversized black cardigan, a portable CD player on her belt with headphones around her neck, a paperback folded open in one hand, a red pen in the other; front, profile, seated-reading pose; expression heads: dry, level, quietly furious, tender for one panel; labeled CHLOE 1998"
+      "prompt": "model sheet of a seventeen-year-old girl with heavy smudged black eyeliner, straight dark shoulder-length hair, an oversized black cardigan, a portable CD player on her belt with headphones around her neck, a paperback folded open in one hand, a red pen in the other; front, profile, seated-reading pose; expression heads: dry, level, quietly furious, tender for one panel; labeled CHLOE 1998",
+      "tags": [
+        "character",
+        "era1",
+        "chloe_17"
+      ]
     },
     {
       "id": "sheet_chloe_28",
       "kind": "character",
       "era": "era2",
       "ratio": "16:9",
-      "prompt": "model sheet of a woman in her late twenties with short expensive dark hair, lighter smudged eyeliner, a camel wool coat, city boots, one hand in her coat pocket; front, profile, back (leaving), seated on a dock edge; expression heads: dry, fond, hollow, exhausted tenderness; labeled CHLOE 2008"
+      "prompt": "model sheet of a woman in her late twenties with short expensive dark hair, lighter smudged eyeliner, a camel wool coat, city boots, one hand in her coat pocket; front, profile, back (leaving), seated on a dock edge; expression heads: dry, fond, hollow, exhausted tenderness; labeled CHLOE 2008",
+      "tags": [
+        "character",
+        "era2",
+        "chloe_28"
+      ]
     },
     {
       "id": "sheet_chloe_34",
       "kind": "character",
       "era": "era3",
       "ratio": "16:9",
-      "prompt": "model sheet of a woman in her mid-thirties with dark hair pinned up, faint eyeliner, a tailored light gray cashmere sweater and slim charcoal trousers, a plain ring with a small stone; front, profile, back, plus a second figure in a simple wedding gown barefoot holding her heels; expression heads: level, hollow, fond, cutting; labeled CHLOE 2014"
+      "prompt": "model sheet of a woman in her mid-thirties with dark hair pinned up, faint eyeliner, a tailored light gray cashmere sweater and slim charcoal trousers, a plain ring with a small stone; front, profile, back, plus a second figure in a simple wedding gown barefoot holding her heels; expression heads: level, hollow, fond, cutting; labeled CHLOE 2014",
+      "tags": [
+        "character",
+        "era3",
+        "chloe_34"
+      ]
     },
     {
       "id": "sheet_chloe_44",
       "kind": "character",
       "era": "era4",
       "ratio": "16:9",
-      "prompt": "model sheet of a woman in her mid-forties with dark hair streaked gray and no makeup, a worn navy rain jacket, jeans and olive rubber boots, holding a white ceramic mug in both hands; front, profile, seated on a dock; expression heads: clear, unhurried, wry, at rest; labeled CHLOE 2024"
+      "prompt": "model sheet of a woman in her mid-forties with dark hair streaked gray and no makeup, a worn navy rain jacket, jeans and olive rubber boots, holding a white ceramic mug in both hands; front, profile, seated on a dock; expression heads: clear, unhurried, wry, at rest; labeled CHLOE 2024",
+      "tags": [
+        "character",
+        "era4",
+        "chloe_44"
+      ]
     },
     {
       "id": "sheet_gully_17",
       "kind": "character",
       "era": "era1",
       "ratio": "16:9",
-      "prompt": "model sheet of a stocky teenage boy in a blue baseball cap worn backwards, a faded green hoodie with his hands in the front pocket, muddy tan work boots, round easy face; front, profile, seated-drawing-on-a-napkin pose; expression heads: cheerful, plain, content, absorbed; labeled GULLY 1998"
+      "prompt": "model sheet of a stocky teenage boy in a blue baseball cap worn backwards, a faded green hoodie with his hands in the front pocket, muddy tan work boots, round easy face; front, profile, seated-drawing-on-a-napkin pose; expression heads: cheerful, plain, content, absorbed; labeled GULLY 1998",
+      "tags": [
+        "character",
+        "era1",
+        "gully_17"
+      ]
     },
     {
       "id": "sheet_gully_27",
       "kind": "character",
       "era": "era2",
       "ratio": "16:9",
-      "prompt": "model sheet of a stocky man in his late twenties in a black rubber fisherman's apron over a red plaid flannel with the sleeves pushed up, a backwards cap, thick forearms; front, profile, behind-a-counter pose, kneeling-to-a-dog pose; expression heads: grin, careful, steady, delighted; labeled GULLY 2006"
+      "prompt": "model sheet of a stocky man in his late twenties in a black rubber fisherman's apron over a red plaid flannel with the sleeves pushed up, a backwards cap, thick forearms; front, profile, behind-a-counter pose, kneeling-to-a-dog pose; expression heads: grin, careful, steady, delighted; labeled GULLY 2006",
+      "tags": [
+        "character",
+        "era2",
+        "gully_27"
+      ]
     },
     {
       "id": "sheet_gully_35",
       "kind": "character",
       "era": "era3",
       "ratio": "16:9",
-      "prompt": "model sheet of a stocky man in his mid-thirties in a faded brown canvas work jacket with the hood down, a gray hoodie beneath, backwards cap, jeans, tan boots; front, profile, and the key pose: walking away down a gravel drive with hands in pockets seen from behind; expression heads: tired kindness, thoughtful, easy; labeled GULLY 2014"
+      "prompt": "model sheet of a stocky man in his mid-thirties in a faded brown canvas work jacket with the hood down, a gray hoodie beneath, backwards cap, jeans, tan boots; front, profile, and the key pose: walking away down a gravel drive with hands in pockets seen from behind; expression heads: tired kindness, thoughtful, easy; labeled GULLY 2014",
+      "tags": [
+        "character",
+        "era3",
+        "gully_35"
+      ]
     },
     {
       "id": "sheet_gully_48",
       "kind": "character",
       "era": "era4",
       "ratio": "16:9",
-      "prompt": "model sheet of a heavyset man in his late forties with gray in his beard and no hat, a green flannel and a black fleece vest, jeans and rubber boots, standing on a dock pointing at the water; front, profile, seated on a dock edge; labeled GULLY 2024"
+      "prompt": "model sheet of a heavyset man in his late forties with gray in his beard and no hat, a green flannel and a black fleece vest, jeans and rubber boots, standing on a dock pointing at the water; front, profile, seated on a dock edge; labeled GULLY 2024",
+      "tags": [
+        "character",
+        "era4",
+        "gully_48"
+      ]
     },
     {
       "id": "sheet_barnaby",
       "kind": "character",
       "era": "era2",
       "ratio": "16:9",
-      "prompt": "model sheet of a scruffy low-slung terrier-hound mix with a long body, short legs, folded velvet ears and a wiry white-and-tan coat; standing, curled in a tight spiral, chin resting on a slipper, mid-bark at a wave, being carried in a blanket; plus three heads at ages one, eight and fifteen with the muzzle graying and the eyes clouding; labeled BARNABY 1999–2014"
+      "prompt": "model sheet of a scruffy low-slung terrier-hound mix with a long body, short legs, folded velvet ears and a wiry white-and-tan coat; standing, curled in a tight spiral, chin resting on a slipper, mid-bark at a wave, being carried in a blanket; plus three heads at ages one, eight and fifteen with the muzzle graying and the eyes clouding; labeled BARNABY 1999–2014",
+      "tags": [
+        "character",
+        "era2",
+        "barnaby"
+      ]
     },
     {
       "id": "sheet_barnaby_ii",
       "kind": "character",
       "era": "era3",
       "ratio": "16:9",
-      "prompt": "model sheet of a small wiry-haired terrier-and-border-collie mix with three legs, the left hind leg ending cleanly below the hock, one ear pinned back and one upright, steel-wool coat, gray whiskers; standing like a tripod with chest out, mid-scuttle with motion lines, asleep across a man's ankles holding a wooden pen holder, standing inside a cardboard produce box; puppy and adult heads; labeled BARNABY II 2014–"
+      "prompt": "model sheet of a small wiry-haired terrier-and-border-collie mix with three legs, the left hind leg ending cleanly below the hock, one ear pinned back and one upright, steel-wool coat, gray whiskers; standing like a tripod with chest out, mid-scuttle with motion lines, asleep across a man's ankles holding a wooden pen holder, standing inside a cardboard produce box; puppy and adult heads; labeled BARNABY II 2014–",
+      "tags": [
+        "character",
+        "era3",
+        "barnaby_ii"
+      ]
     },
     {
       "id": "sheet_the_bird",
       "kind": "character",
       "era": "era4",
       "ratio": "16:9",
-      "prompt": "model sheet of a small plump songbird with a teal head, rose-pink breast, green wing and long teal tail, perched on a weathered seawall, on a dock piling, on a window sill beside three jars, and in flight; soft watercolor; labeled THE BIRD"
+      "prompt": "model sheet of a small plump songbird with a teal head, rose-pink breast, green wing and long teal tail, perched on a weathered seawall, on a dock piling, on a window sill beside three jars, and in flight; soft watercolor; labeled THE BIRD",
+      "tags": [
+        "character",
+        "era4",
+        "the_bird"
+      ]
     },
     {
       "id": "sheet_supporting",
       "kind": "character",
       "era": "era3",
       "ratio": "16:9",
-      "prompt": "a lineup model sheet of supporting characters, front views, labeled: MARIA (practical woman in a county-issue rain shell), THE UNCLE (weathered fisherman in a rain hood beside a green-webbed lawn chair with an oxygen line), THE FRAME SHOP OWNER (woman in reading glasses on a cord at a mat cutter), THE EDITOR (young woman in a dark green coat with a tote and notebook), GULLY'S DAUGHTER at six with a marker, and two figures drawn deliberately withheld: a mother shown only as a hand setting down toast, and a father shown only as a back in a faded mill jacket"
+      "prompt": "a lineup model sheet of supporting characters, front views, labeled: MARIA (practical woman in a county-issue rain shell), THE UNCLE (weathered fisherman in a rain hood beside a green-webbed lawn chair with an oxygen line), THE FRAME SHOP OWNER (woman in reading glasses on a cord at a mat cutter), THE EDITOR (young woman in a dark green coat with a tote and notebook), GULLY'S DAUGHTER at six with a marker, and two figures drawn deliberately withheld: a mother shown only as a hand setting down toast, and a father shown only as a back in a faded mill jacket",
+      "tags": [
+        "character",
+        "era3",
+        "extra_maria",
+        "extra_uncle",
+        "extra_owner_heceta",
+        "the_editor",
+        "extra_gully_kid",
+        "extra_mother",
+        "extra_father"
+      ]
     },
     {
       "id": "sheet_chorus_and_meme",
       "kind": "character",
       "era": "era2",
       "ratio": "16:9",
-      "prompt": "a sheet of small crude stick figures drawn in ballpoint: a crowd of them at the back of a panel holding tiny signs, two sitting on a bed, one typing at a tiny keyboard, thirty arranged like wallpaper; and separately the meme figure: a stick figure with a four-line helicopter rotor scribbled on its head hovering six inches above nothing; labeled THE CHORUS and ROLFCOPTR"
+      "prompt": "a sheet of small crude stick figures drawn in ballpoint: a crowd of them at the back of a panel holding tiny signs, two sitting on a bed, one typing at a tiny keyboard, thirty arranged like wallpaper; and separately the meme figure: a stick figure with a four-line helicopter rotor scribbled on its head hovering six inches above nothing; labeled THE CHORUS and ROLFCOPTR",
+      "tags": [
+        "character",
+        "era2",
+        "extra_stick_chorus",
+        "extra_stick_hero"
+      ]
     },
     {
       "id": "sheet_era1",
       "kind": "era",
       "era": "era1",
       "ratio": "16:9",
-      "prompt": "a reference swatch sheet for a 1990s black-and-white zine comic strip: samples of scratchy crow-quill hatching, ballpoint scribble, heavy black spotting, frantic vertical rain hatching, hand-ruled panel borders slightly bowed, a cramped hand-lettered speech balloon breaking a panel border, a tiny two-stroke gull and a tiny crab, all on photocopied cardstock with xerox grain, no color, no gray; labeled ERA I 1997–2003"
+      "prompt": "a reference swatch sheet for a 1990s black-and-white zine comic strip: samples of scratchy crow-quill hatching, ballpoint scribble, heavy black spotting, frantic vertical rain hatching, hand-ruled panel borders slightly bowed, a cramped hand-lettered speech balloon breaking a panel border, a tiny two-stroke gull and a tiny crab, all on photocopied cardstock with xerox grain, no color, no gray; labeled ERA I 1997–2003",
+      "tags": [
+        "era",
+        "era1"
+      ]
     },
     {
       "id": "sheet_era2",
       "kind": "era",
       "era": "era2",
       "ratio": "16:9",
-      "prompt": "a reference swatch sheet for a mid-2000s webcomic: samples of rubbery brush-pen line, muddy slightly misregistered digital flat colors, a saturated CRT-glow lighting sample, an over-wet watercolor sky that bled past its ink beside a controlled one, rust bleeding orange into gray on corrugated tin, a small stick figure drawn at the back of a panel, a tiny gull drawn at two-thirds size beside a normal one; labeled ERA II 2004–2011"
+      "prompt": "a reference swatch sheet for a mid-2000s webcomic: samples of rubbery brush-pen line, muddy slightly misregistered digital flat colors, a saturated CRT-glow lighting sample, an over-wet watercolor sky that bled past its ink beside a controlled one, rust bleeding orange into gray on corrugated tin, a small stick figure drawn at the back of a panel, a tiny gull drawn at two-thirds size beside a normal one; labeled ERA II 2004–2011",
+      "tags": [
+        "era",
+        "era2"
+      ]
     },
     {
       "id": "sheet_era3",
       "kind": "era",
       "era": "era3",
       "ratio": "16:9",
-      "prompt": "a reference swatch sheet for a masterwork-era comic strip: samples of razor-sharp confident brush-and-ink line with clean architectural perspective, a crisp silhouette, a close-up hand with zero crosshatching, wet-on-wet watercolor samples of gray-green moss, coastal fog, rusted galvanized tin and a bruised dusk sky with water bleeding over an ink edge, a desaturated Payne's gray and raw umber swatch, and a tiny three-legged scruff of ink asleep beside a flat horizontal stroke; labeled ERA III 2012–2020"
+      "prompt": "a reference swatch sheet for a masterwork-era comic strip: samples of razor-sharp confident brush-and-ink line with clean architectural perspective, a crisp silhouette, a close-up hand with zero crosshatching, wet-on-wet watercolor samples of gray-green moss, coastal fog, rusted galvanized tin and a bruised dusk sky with water bleeding over an ink edge, a desaturated Payne's gray and raw umber swatch, and a tiny three-legged scruff of ink asleep beside a flat horizontal stroke; labeled ERA III 2012–2020",
+      "tags": [
+        "era",
+        "era3"
+      ]
     },
     {
       "id": "sheet_era4",
       "kind": "era",
       "era": "era4",
       "ratio": "16:9",
-      "prompt": "a reference swatch sheet for a private late-career comic page: samples of a spare knowing ink line with generous white, soft watercolor swatches of muted ochre, slate blue and misty sea-foam green, a luminous sunbreak wash, a figure drawn from behind in three strokes, a reflection in rain-streaked glass, and the word ROFLCOPTER lettered tiny in a margin; labeled ERA IV 2021–2027"
+      "prompt": "a reference swatch sheet for a private late-career comic page: samples of a spare knowing ink line with generous white, soft watercolor swatches of muted ochre, slate blue and misty sea-foam green, a luminous sunbreak wash, a figure drawn from behind in three strokes, a reflection in rain-streaked glass, and the word ROFLCOPTER lettered tiny in a margin; labeled ERA IV 2021–2027",
+      "tags": [
+        "era",
+        "era4"
+      ]
     },
     {
       "id": "sheet_loc_garage",
       "kind": "location",
       "era": "era3",
       "ratio": "16:9",
-      "prompt": "an environment sheet of a garage apartment studio from three angles plus detail insets: cedar-shingle walls, corrugated tin ceiling, splintered fir floorboards, a drafting table with a green enameled swing-arm lamp under a small wood-mullioned casement window, three jars on the sill (brushes, nibs, a sand dollar), a cinderblock bookcase, numbered banker's boxes, a wicker wastebasket, a crowded corkboard, an old comic strip pinned to the wall, a braided wool dog bed under the table; inset: the porch with three cedar steps and an aluminum storm door; labeled THE GARAGE"
+      "prompt": "an environment sheet of a garage apartment studio from three angles plus detail insets: cedar-shingle walls, corrugated tin ceiling, splintered fir floorboards, a drafting table with a green enameled swing-arm lamp under a small wood-mullioned casement window, three jars on the sill (brushes, nibs, a sand dollar), a cinderblock bookcase, numbered banker's boxes, a wicker wastebasket, a crowded corkboard, an old comic strip pinned to the wall, a braided wool dog bed under the table; inset: the porch with three cedar steps and an aluminum storm door; labeled THE GARAGE",
+      "tags": [
+        "location",
+        "era3",
+        "dw_garage",
+        "dw_tavern"
+      ]
     },
     {
       "id": "sheet_loc_gullys",
       "kind": "location",
       "era": "era2",
       "ratio": "16:9",
-      "prompt": "an environment sheet of a weathered shingle shack at a boat launch: exterior with a hand-painted sign reading GULLY'S TACKLE & ROAST, a wooden dock on pilings, crab pots, a chalkboard menu in a crab pot, an old green-webbed lawn chair under the eave, a row of crab flyers on the wall; interior with a counter holding a chrome two-group espresso machine between a bait cooler and an old register, a single stool, a crowded corkboard above the register; labeled GULLY'S"
+      "prompt": "an environment sheet of a weathered shingle shack at a boat launch: exterior with a hand-painted sign reading GULLY'S TACKLE & ROAST, a wooden dock on pilings, crab pots, a chalkboard menu in a crab pot, an old green-webbed lawn chair under the eave, a row of crab flyers on the wall; interior with a counter holding a chrome two-group espresso machine between a bait cooler and an old register, a single stool, a crowded corkboard above the register; labeled GULLY'S",
+      "tags": [
+        "location",
+        "era2",
+        "dw_gullys",
+        "dw_boat_launch"
+      ]
     },
     {
       "id": "sheet_loc_frame_shop",
       "kind": "location",
       "era": "era1",
       "ratio": "16:9",
-      "prompt": "an environment sheet of a small roadside picture-framing shop: exterior as a low building on a coastal highway with a hand-lettered hours card in the window; interior with sample frames covering the walls, a mat cutter on a green vinyl mat, foam core, a counter; and the side alley with two upturned spackle buckets in rain; labeled HECETA FRAME & MATTING"
+      "prompt": "an environment sheet of a small roadside picture-framing shop: exterior as a low building on a coastal highway with a hand-lettered hours card in the window; interior with sample frames covering the walls, a mat cutter on a green vinyl mat, foam core, a counter; and the side alley with two upturned spackle buckets in rain; labeled HECETA FRAME & MATTING",
+      "tags": [
+        "location",
+        "era1",
+        "dw_frame_shop"
+      ]
     },
     {
       "id": "sheet_loc_lanes",
       "kind": "location",
       "era": "era2",
       "ratio": "16:9",
-      "prompt": "an environment sheet of a small-town bowling alley: seen across a two-lane highway at night with a pink and blue neon sign on the roofline reading SMALL WOOD LANES, a gravel lot; and behind it a rusted chained dumpster beside a chain-link fence under a single bare bulb; an inset row showing the neon sign with progressively more letters dark; labeled SMALL WOOD LANES"
+      "prompt": "an environment sheet of a small-town bowling alley: seen across a two-lane highway at night with a pink and blue neon sign on the roofline reading SMALL WOOD LANES, a gravel lot; and behind it a rusted chained dumpster beside a chain-link fence under a single bare bulb; an inset row showing the neon sign with progressively more letters dark; labeled SMALL WOOD LANES",
+      "tags": [
+        "location",
+        "era2",
+        "dw_bowling_alley"
+      ]
     },
     {
       "id": "sheet_loc_motel",
       "kind": "location",
       "era": "era3",
       "ratio": "16:9",
-      "prompt": "an environment sheet of a small roadside motel: a low L of rooms off a coastal highway with a pole sign reading DRIFTWOOD MOTEL VACANCY in pale neon; the lobby with a night-audit desk, a CRT, a desk bell, a key rack, a vending machine, a glass door, a dim hallway with an ice machine; labeled THE DRIFTWOOD MOTEL"
+      "prompt": "an environment sheet of a small roadside motel: a low L of rooms off a coastal highway with a pole sign reading DRIFTWOOD MOTEL VACANCY in pale neon; the lobby with a night-audit desk, a CRT, a desk bell, a key rack, a vending machine, a glass door, a dim hallway with an ice machine; labeled THE DRIFTWOOD MOTEL",
+      "tags": [
+        "location",
+        "era3",
+        "dw_motel_desk"
+      ]
     },
     {
       "id": "sheet_loc_beach",
       "kind": "location",
       "era": "era3",
       "ratio": "16:9",
-      "prompt": "an environment sheet of a long gray Pacific Northwest beach below a bluff: a steep gravel path down, kelp on wet sand, sandpipers, a dark spruce grove at the beach's edge with light breaking through, a massive bleached drift cedar log, the surf a white line; inset: the same beach at night for a fish-run festival with lanterns, buckets and silver fish at the surf line; labeled THE BEACH"
+      "prompt": "an environment sheet of a long gray Pacific Northwest beach below a bluff: a steep gravel path down, kelp on wet sand, sandpipers, a dark spruce grove at the beach's edge with light breaking through, a massive bleached drift cedar log, the surf a white line; inset: the same beach at night for a fish-run festival with lanterns, buckets and silver fish at the surf line; labeled THE BEACH",
+      "tags": [
+        "location",
+        "era3",
+        "dw_beach"
+      ]
     },
     {
       "id": "sheet_loc_mudflats",
       "kind": "location",
       "era": "era3",
       "ratio": "16:9",
-      "prompt": "an environment sheet of a Pacific Northwest estuary at low tide from a bluff: long bands of mudflat, a channel reflecting the sky, old cannery pilings, log booms, a heron, a far wall of spruce, the bay mouth opening to the ocean; insets at dawn, dusk and under a bruised indigo storm sky; labeled ALSEA BAY"
+      "prompt": "an environment sheet of a Pacific Northwest estuary at low tide from a bluff: long bands of mudflat, a channel reflecting the sky, old cannery pilings, log booms, a heron, a far wall of spruce, the bay mouth opening to the ocean; insets at dawn, dusk and under a bruised indigo storm sky; labeled ALSEA BAY",
+      "tags": [
+        "location",
+        "era3",
+        "dw_mudflats"
+      ]
     },
     {
       "id": "sheet_loc_main_street",
       "kind": "location",
       "era": "era1",
       "ratio": "16:9",
-      "prompt": "an environment sheet of a small coastal timber-town main street: a corner hardware store reading WAGNER'S HARDWARE, a row of wooden houses, a laundromat, a crosswalk, a log truck; the same street shown twice, once in the late 1990s and once decades later with a cell mast, key lockboxes on the doors and an empty corner storefront; labeled MAIN STREET 1997 / 2021"
+      "prompt": "an environment sheet of a small coastal timber-town main street: a corner hardware store reading WAGNER'S HARDWARE, a row of wooden houses, a laundromat, a crosswalk, a log truck; the same street shown twice, once in the late 1990s and once decades later with a cell mast, key lockboxes on the doors and an empty corner storefront; labeled MAIN STREET 1997 / 2021",
+      "tags": [
+        "location",
+        "era1",
+        "dw_main_street",
+        "dw_chloe_porch"
+      ]
     },
     {
       "id": "sheet_loc_mill",
       "kind": "location",
       "era": "era3",
       "ratio": "16:9",
-      "prompt": "an environment sheet of an abandoned cedar mill: a long sagging shed, a brick smokestack, blackberry over the loading dock, a rusted chain across the drive; interior with light in long bars through missing roof panels onto a rusted saw and sawdust; inset: a small cedar sapling growing from the smokestack's rim; labeled THE CEDAR MILL"
+      "prompt": "an environment sheet of an abandoned cedar mill: a long sagging shed, a brick smokestack, blackberry over the loading dock, a rusted chain across the drive; interior with light in long bars through missing roof panels onto a rusted saw and sawdust; inset: a small cedar sapling growing from the smokestack's rim; labeled THE CEDAR MILL",
+      "tags": [
+        "location",
+        "era3",
+        "dw_cedar_mill"
+      ]
     },
     {
       "id": "sheet_loc_roflcopter_sets",
       "kind": "location",
       "era": "era4",
       "ratio": "16:9",
-      "prompt": "an environment sheet for private late pages: a library back room with archive boxes, an empty chair and reading-room glass; a moss-grown carved stone face half sunk in grass beside a bench by a shingle wall; a yellow square street sign bearing a single eye on a pole with a fish weathervane above; a forested ridge east of a town with a faint glow on it; soft watercolor; labeled ROFLCOPTER SETS"
+      "prompt": "an environment sheet for private late pages: a library back room with archive boxes, an empty chair and reading-room glass; a moss-grown carved stone face half sunk in grass beside a bench by a shingle wall; a yellow square street sign bearing a single eye on a pole with a fish weathervane above; a forested ridge east of a town with a faint glow on it; soft watercolor; labeled ROFLCOPTER SETS",
+      "tags": [
+        "location",
+        "era4",
+        "dw_library_back_room",
+        "dw_stone_head",
+        "dw_the_ridge"
+      ]
     },
     {
       "id": "sheet_objects_marks",
       "kind": "objects",
       "era": "era3",
       "ratio": "16:9",
-      "prompt": "a reference sheet of tiny hand-drawn margin marks in a row, each labeled: a two-stroke gull; a tiny crab from above; the gull with a small dog silhouette beside it; the gull at two-thirds size; a single clean horizontal stroke; a three-legged scruff of ink asleep; the gull and the scruff together; the word ROFLCOPTER lettered tiny; and a signature line reading A. Finch — Small Wood, OR"
+      "prompt": "a reference sheet of tiny hand-drawn margin marks in a row, each labeled: a two-stroke gull; a tiny crab from above; the gull with a small dog silhouette beside it; the gull at two-thirds size; a single clean horizontal stroke; a three-legged scruff of ink asleep; the gull and the scruff together; the word ROFLCOPTER lettered tiny; and a signature line reading A. Finch — Small Wood, OR",
+      "tags": [
+        "objects",
+        "era3",
+        "mark",
+        "signature"
+      ]
     },
     {
       "id": "sheet_objects_paper",
       "kind": "objects",
       "era": "era2",
       "ratio": "16:9",
-      "prompt": "a reference sheet of paper objects laid flat: a waxed produce box stamped ALICE'S WHOLESALE BAIT & SMOKED MEATS; a butcher-paper note in blocky grease pencil taped with electrical tape; a postcard back covered edge to edge in tiny cramped handwritten capitals; a bus schedule with every departure circled in pencil; a crab derby flyer with a large meticulously hatched crab; a small stapled quarter-letter zine; a hand-lettered corner box advertisement in a squared display face; a yellowed newspaper page with a tide table beside a comic strip"
+      "prompt": "a reference sheet of paper objects laid flat: a waxed produce box stamped ALICE'S WHOLESALE BAIT & SMOKED MEATS; a butcher-paper note in blocky grease pencil taped with electrical tape; a postcard back covered edge to edge in tiny cramped handwritten capitals; a bus schedule with every departure circled in pencil; a crab derby flyer with a large meticulously hatched crab; a small stapled quarter-letter zine; a hand-lettered corner box advertisement in a squared display face; a yellowed newspaper page with a tide table beside a comic strip",
+      "tags": [
+        "objects",
+        "era2",
+        "produce box",
+        "note",
+        "postcard",
+        "bus schedule",
+        "flyer",
+        "digest",
+        "corner box",
+        "newspaper"
+      ]
     },
     {
       "id": "sheet_objects_tools",
       "kind": "objects",
       "era": "era3",
       "ratio": "16:9",
-      "prompt": "a reference sheet of a cartoonist's tools laid on a green vinyl drafting mat: a green enameled swing-arm lamp, a crow-quill pen, a sable brush, a wooden pen holder with teeth marks near the ferrule, bristol board taped down with brown kraft tape and a faint blue-pencil four-panel grid, three jars holding brushes, rusted nibs and a sand dollar, a braided wool dog bed worn into a crescent, a chipped white enamel mug"
+      "prompt": "a reference sheet of a cartoonist's tools laid on a green vinyl drafting mat: a green enameled swing-arm lamp, a crow-quill pen, a sable brush, a wooden pen holder with teeth marks near the ferrule, bristol board taped down with brown kraft tape and a faint blue-pencil four-panel grid, three jars holding brushes, rusted nibs and a sand dollar, a braided wool dog bed worn into a crescent, a chipped white enamel mug",
+      "tags": [
+        "objects",
+        "era3",
+        "lamp",
+        "brush",
+        "nib",
+        "bristol",
+        "jars",
+        "dog bed",
+        "mug",
+        "drafting table"
+      ]
     },
     {
       "id": "sheet_objects_vehicles_food",
       "kind": "objects",
       "era": "era3",
       "ratio": "16:9",
-      "prompt": "a reference sheet: a faded green 1993 Subaru Legacy wagon with one hubcap, a blue tarp in the back and a tiny spare tire, trailing a faint blue haze; an old small Datsun; a flatbed truck with a winch; a chrome two-group espresso machine; a giant thermos with paper cups; two wax-paper grease sacks of fried clams; a day-old maple bar; a paper tray of corn; a green-webbed folding lawn chair with a rusted frame"
+      "prompt": "a reference sheet: a faded green 1993 Subaru Legacy wagon with one hubcap, a blue tarp in the back and a tiny spare tire, trailing a faint blue haze; an old small Datsun; a flatbed truck with a winch; a chrome two-group espresso machine; a giant thermos with paper cups; two wax-paper grease sacks of fried clams; a day-old maple bar; a paper tray of corn; a green-webbed folding lawn chair with a rusted frame",
+      "tags": [
+        "objects",
+        "era3",
+        "subaru",
+        "legacy",
+        "datsun",
+        "flatbed",
+        "espresso",
+        "thermos",
+        "clams",
+        "maple bar",
+        "corn",
+        "lawn chair"
+      ]
     }
   ]
 }
