@@ -1,0 +1,111 @@
+{
+  "id": "dw_2007-05-13_the_walk_as_a_map",
+  "title": "Sunday · the walk, as a map",
+  "strip": "drift_wood",
+  "date": "2007-05-13",
+  "run": 3,
+  "era": "era2",
+  "format": "sunday",
+  "tier": "A",
+  "selection": "part",
+  "venue": "Arthur's site (six dailies + a Sunday)",
+  "arc": "Fixtures",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (2007 · Sundays · deepening ix)",
+  "logline": "The walk drawn as a map in three tiers: the alley to the seawall, the seawall to the flats, the flats home. Two small figures moving along the line. The Sunday that ends up pinned to the corkboard.",
+  "cast": [
+    "wood_26",
+    "barnaby"
+  ],
+  "location": "dw_main_street",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "wide tier",
+      "composition": "Tier 1: a hand-drawn map tier: the tavern, the alley, the garage, a dotted line to the seawall, two tiny figures on it.",
+      "characters": [
+        {
+          "id": "wood_26",
+          "pose": "tiny on the line",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "tiny",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the dotted line"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a hand-drawn watercolor map of a small coastal town with a dotted walking line from an alley to a seawall and two tiny figures on it, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null,
+      "name": "Alley"
+    },
+    {
+      "n": 2,
+      "shot": "wide tier",
+      "composition": "Tier 2: the map continues: seawall, bait shack, the flats, the line looping.",
+      "characters": [
+        {
+          "id": "wood_26",
+          "pose": "tiny",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "tiny",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a hand-drawn watercolor map continuing along a seawall to a bait shack and tidal flats with a dotted line looping and two tiny figures, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null,
+      "name": "Seawall"
+    },
+    {
+      "n": 3,
+      "shot": "wide tier",
+      "composition": "Tier 3: the map's end: the flats back to the alley, the line closing, an X at the garage.",
+      "characters": [],
+      "props": [
+        "an X"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a hand-drawn watercolor map with a dotted line returning across tidal flats to an alley and a small X at a garage, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null,
+      "name": "Home"
+    }
+  ],
+  "art": {
+    "line": "brush-pen scanned; muddy digital flats",
+    "palette": "limited, muddy; Sundays in watercolor, improving",
+    "paper": "bristol; the browser"
+  },
+  "notes": "The walk map (objects.md · corkboard, 2007).",
+  "layout": "tiers, portrait page"
+}

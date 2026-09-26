@@ -1,0 +1,102 @@
+{
+  "id": "dw_2017-02-12_twenty_flyers",
+  "title": "Sunday · twenty flyers",
+  "strip": "drift_wood",
+  "date": "2017-02-12",
+  "run": 6,
+  "era": "era3",
+  "format": "sunday",
+  "tier": "B",
+  "selection": "part",
+  "venue": "Arthur's site · the coastal weeklies · from 2017 the aggregator",
+  "arc": "Fixtures",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (2017 · Sundays · deepening ix)",
+  "logline": "Twenty. The girl, seven, pinning the newest at the height she can reach — lower than the row — and the middle tier her brother, four, with the tin. The wall's two rows now: one at Gully's height and one at hers.",
+  "cast": [
+    "extra_gully_kid"
+  ],
+  "location": "dw_gullys",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "scruff",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "wide tier",
+      "composition": "Tier 1: the shingle wall with twenty flyers: a long row high and a short row low beneath it.",
+      "characters": [],
+      "props": [
+        "twenty flyers"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a shingle wall with a long row of paper flyers up high and a short second row pinned low beneath it, watercolor, no words legible",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null,
+      "name": "Two rows"
+    },
+    {
+      "n": 2,
+      "shot": "medium tier",
+      "composition": "Tier 2: a boy of four holding a tin of pushpins up with both hands.",
+      "characters": [
+        {
+          "id": "extra_gully_kid",
+          "pose": "four, with the tin",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the tin"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a small boy holding a tin of pushpins up with both hands, watercolor",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null,
+      "name": "Tin"
+    },
+    {
+      "n": 3,
+      "shot": "medium tier",
+      "composition": "Tier 3: a girl of seven pinning a flyer at the top of her reach, on tiptoe, low on the wall.",
+      "characters": [
+        {
+          "id": "extra_gully_kid",
+          "pose": "seven, on tiptoe",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the newest flyer"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a girl of seven on tiptoe pinning a paper flyer low on a shingle wall at the top of her reach, watercolor",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null,
+      "name": "Reach"
+    }
+  ],
+  "art": {
+    "line": "razor-sharp brush and ink; the pup's weight learned; Sundays wet-on-wet",
+    "palette": "dailies: ink and one tone. Sundays: gray-green, fog, rust, bruised dusk",
+    "paper": "bristol; Arches for Sundays"
+  },
+  "notes": "Twenty. The low row begins.",
+  "layout": "tiers, portrait page"
+}

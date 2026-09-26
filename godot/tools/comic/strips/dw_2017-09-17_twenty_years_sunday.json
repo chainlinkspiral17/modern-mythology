@@ -1,0 +1,101 @@
+{
+  "id": "dw_2017-09-17_twenty_years_sunday",
+  "title": "Sunday · Twenty Years",
+  "strip": "drift_wood",
+  "date": "2017-09-17",
+  "run": 6,
+  "era": "era3",
+  "format": "sunday",
+  "tier": "A",
+  "selection": "full",
+  "venue": "Arthur's site · the coastal weeklies · from 2017 the aggregator",
+  "arc": "Twenty Years",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (2017 · Sundays · deepening ix)",
+  "logline": "The arc's Sunday: the cafeteria from the beach road at dusk, its windows lit for something, the 1997 grid drawn faint under the paint of the first tier, a man and a pup on the road, and the corn at Gully's in the last with twenty flyers behind it.",
+  "cast": [
+    "wood_34",
+    "barnaby_ii"
+  ],
+  "location": "dw_cafeteria",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "scruff",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "wide tier",
+      "composition": "Tier 1: the high school cafeteria's windows lit at dusk from the beach road, and beneath the watercolor, faint, the 1997 strip's four-panel grid showing through.",
+      "characters": [],
+      "props": [
+        "the faint grid"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a school cafeteria's lit windows at dusk seen from a beach road with a faint four-panel comic grid showing through beneath the watercolor, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null,
+      "name": "Faint"
+    },
+    {
+      "n": 2,
+      "shot": "wide tier",
+      "composition": "Tier 2: a man and a small three-legged dog on the beach road, stopped, looking at the windows.",
+      "characters": [
+        {
+          "id": "wood_34",
+          "pose": "stopped",
+          "expression": ""
+        },
+        {
+          "id": "barnaby_ii",
+          "pose": "beside him",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a man and a small three-legged dog stopped on a beach road at dusk looking toward lit windows, watercolor, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null,
+      "name": "Road"
+    },
+    {
+      "n": 3,
+      "shot": "medium tier",
+      "composition": "Tier 3: Gully's counter, a tray of corn, and behind it through the door the wall with twenty flyers.",
+      "characters": [],
+      "props": [
+        "the corn",
+        "twenty flyers"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a paper tray of buttered corn on a wooden counter with a shingle wall of many paper flyers visible through a door behind, watercolor, no words legible",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null,
+      "name": "Corn"
+    }
+  ],
+  "art": {
+    "line": "razor-sharp brush and ink; the pup's weight learned; Sundays wet-on-wet",
+    "palette": "dailies: ink and one tone. Sundays: gray-green, fog, rust, bruised dusk",
+    "paper": "bristol; Arches for Sundays"
+  },
+  "notes": "Twenty. The grid under the paint.",
+  "layout": "tiers, portrait page"
+}

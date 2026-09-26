@@ -1,0 +1,49 @@
+{
+  "id": "ro_2022-12-24_the_flag_up",
+  "title": "The flag up",
+  "strip": "roflcopter",
+  "date": "2022-12-24",
+  "run": 7,
+  "era": "era4",
+  "format": "page",
+  "tier": "A",
+  "selection": "full",
+  "venue": "nobody · boxes 21–40",
+  "arc": "unsequenced",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (Run 7 · deepening ix)",
+  "logline": "Christmas Eve: the mailbox with its flag up. He's mailed something. To whom, the page doesn't say. The crab beside the word in the margin.",
+  "cast": [],
+  "location": "dw_main_street",
+  "margin": {
+    "signature": "ROFLCOPTER",
+    "mark": "roflcopter",
+    "note": "The crab, small, beside the word."
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "single page",
+      "composition": "A roadside mailbox at dusk with its red flag raised, the door shut, rain on the road, a porch light far back. The flag the page's one red.",
+      "characters": [],
+      "props": [
+        "the flag, up"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a single full comic page with no panel borders, spare knowing ink line with economy, muted ochre and slate blue and sea-foam green washes, a roadside mailbox at dusk with its red flag raised and door shut, a wet road and a distant porch light, the flag the only red on the page, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "spare, knowing; economy of line; Era I's black spotting back on purpose in the mill run",
+    "palette": "muted ochres, slate blues, misty sea-foam greens; luminous sunbreaks in the last spring",
+    "paper": "Arches; bristol; the backs of motel registration cards"
+  },
+  "notes": "Flag up. Something sent.",
+  "layout": "single page, no borders"
+}

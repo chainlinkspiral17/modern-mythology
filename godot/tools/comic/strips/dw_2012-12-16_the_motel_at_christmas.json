@@ -1,0 +1,99 @@
+{
+  "id": "dw_2012-12-16_the_motel_at_christmas",
+  "title": "Sunday · the motel at Christmas",
+  "strip": "drift_wood",
+  "date": "2012-12-16",
+  "run": 4,
+  "era": "era3",
+  "format": "sunday",
+  "tier": "B",
+  "selection": "part",
+  "venue": "Arthur's site · the coastal weeklies",
+  "arc": "Fixtures",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (2012 · Sundays · deepening ix)",
+  "logline": "The motel from 101 in December: a string of lights on the office, one car in the lot, the ice machine's glow, and in the last tier the desk from the lot with a small tree on it and a man behind it not looking up. The hum line under the page.",
+  "cast": [
+    "wood_34"
+  ],
+  "location": "dw_motel_desk",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "wide tier",
+      "composition": "Tier 1: a small motel from the highway at night with a string of colored lights on its office and one car in the lot.",
+      "characters": [],
+      "props": [
+        "colored lights",
+        "one car"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a small roadside motel at night with a string of colored lights along its office roofline and one car in the lot, watercolor, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null,
+      "name": "Lights"
+    },
+    {
+      "n": 2,
+      "shot": "medium tier",
+      "composition": "Tier 2: the ice machine in the breezeway, its blue glow, a wreath on the vending machine.",
+      "characters": [],
+      "props": [
+        "the ice machine",
+        "a wreath"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "an ice machine glowing blue in a motel breezeway with a wreath hung on the vending machine beside it, watercolor",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null,
+      "name": "Ice"
+    },
+    {
+      "n": 3,
+      "shot": "wide tier",
+      "composition": "Tier 3: the office from the lot through glass: a small tree on the desk, a man in a maroon polo behind it, head down, a thin line beneath.",
+      "characters": [
+        {
+          "id": "wood_34",
+          "pose": "at the desk, head down",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "a small tree",
+        "the hum line"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a motel office seen through its glass door from the lot with a small tinsel tree on the desk and a man in a maroon polo behind it with his head down, a thin horizontal line beneath the image, watercolor",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null,
+      "name": "Desk"
+    }
+  ],
+  "art": {
+    "line": "razor-sharp, confident brush and ink; pristine perspective; crisp silhouettes; zero crosshatch in close-ups",
+    "palette": "dailies: black ink, one spot tone at most. Sundays: wet-on-wet — gray-green moss, fog, rusted tin, bruised dusk",
+    "paper": "bristol for dailies; 140 lb Arches cold-press for Sundays"
+  },
+  "notes": "The hum line under the motel. A tree on the desk.",
+  "layout": "tiers, portrait page"
+}

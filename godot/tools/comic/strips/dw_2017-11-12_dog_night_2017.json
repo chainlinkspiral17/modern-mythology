@@ -1,0 +1,111 @@
+{
+  "id": "dw_2017-11-12_dog_night_2017",
+  "title": "Sunday · Dog Night, 2017",
+  "strip": "drift_wood",
+  "date": "2017-11-12",
+  "run": 6,
+  "era": "era3",
+  "format": "sunday",
+  "tier": "B",
+  "selection": "part",
+  "venue": "Arthur's site · the coastal weeklies · from 2017 the aggregator",
+  "arc": "Fixtures",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (2017 · Sundays · deepening ix)",
+  "logline": "Eighteen years, the third with the pup. The alley, the sign with five letters dark, the pup at the dumpster where the first dog's nose went. The man's hand on him in the last tier.",
+  "cast": [
+    "wood_34",
+    "barnaby_ii"
+  ],
+  "location": "dw_bowling_alley",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "scruff",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "wide tier",
+      "composition": "Tier 1: the bowling sign over the alley at night with five of its letters dark.",
+      "characters": [],
+      "props": [
+        "the sign, five dark"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a neon bowling alley sign above a rainy alley at night with five of its letters dark, watercolor, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null,
+      "name": "Five"
+    },
+    {
+      "n": 2,
+      "shot": "medium tier",
+      "composition": "Tier 2: the pup's nose to the dumpster's corner, the man waiting with the leash slack.",
+      "characters": [
+        {
+          "id": "wood_34",
+          "pose": "waiting",
+          "expression": ""
+        },
+        {
+          "id": "barnaby_ii",
+          "pose": "nose to the corner",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the dumpster"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a small three-legged dog sniffing a dumpster's corner in a rainy alley while a man waits with a slack leash, watercolor",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null,
+      "name": "Corner"
+    },
+    {
+      "n": 3,
+      "shot": "wide tier",
+      "composition": "Tier 3: the two of them under the sign from behind, his hand on the pup's back.",
+      "characters": [
+        {
+          "id": "wood_34",
+          "pose": "hand on the dog",
+          "expression": ""
+        },
+        {
+          "id": "barnaby_ii",
+          "pose": "under the sign",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a man and a small three-legged dog from behind beneath a mostly dark neon sign, his hand resting on the dog's back, watercolor, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null,
+      "name": "Hand"
+    }
+  ],
+  "art": {
+    "line": "razor-sharp brush and ink; the pup's weight learned; Sundays wet-on-wet",
+    "palette": "dailies: ink and one tone. Sundays: gray-green, fog, rust, bruised dusk",
+    "paper": "bristol; Arches for Sundays"
+  },
+  "notes": "Eighteen. Five dark.",
+  "layout": "tiers, portrait page"
+}

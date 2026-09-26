@@ -1,0 +1,111 @@
+{
+  "id": "dw_2012-05-13_the_flats_wet",
+  "title": "Sunday · the flats, wet-on-wet",
+  "strip": "drift_wood",
+  "date": "2012-05-13",
+  "run": 4,
+  "era": "era3",
+  "format": "sunday",
+  "tier": "B",
+  "selection": "part",
+  "venue": "Arthur's site · the coastal weeklies",
+  "arc": "Fixtures",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (2012 · Sundays · deepening ix)",
+  "logline": "The mudflats in the new line: the channels bleeding into each other, the chimney a gray smear, and a man and a very old dog crossing slowly, the prints two-and-four and close together.",
+  "cast": [
+    "wood_34",
+    "barnaby"
+  ],
+  "location": "dw_mudflats",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "wide tier",
+      "composition": "Tier 1: the flats wet-on-wet, channels bleeding into each other, the chimney a smear.",
+      "characters": [],
+      "props": [
+        "the chimney"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "tidal mudflats painted wet-on-wet with channels bleeding together and a distant chimney as a gray smear, watercolor, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null,
+      "name": "Bleed"
+    },
+    {
+      "n": 2,
+      "shot": "medium tier",
+      "composition": "Tier 2: a man and an old dog crossing slowly, the prints close together.",
+      "characters": [
+        {
+          "id": "wood_34",
+          "pose": "walking slowly",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "old, slow",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "prints"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a man and an old dog crossing wet mudflats slowly with a close trail of prints, watercolor",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null,
+      "name": "Slow"
+    },
+    {
+      "n": 3,
+      "shot": "wide tier",
+      "composition": "Tier 3: the two of them stopped, the dog sitting, the tide far.",
+      "characters": [
+        {
+          "id": "wood_34",
+          "pose": "stopped",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "sitting",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a man standing and an old dog sitting on wide mudflats with the tide far out, watercolor, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null,
+      "name": "Rest"
+    }
+  ],
+  "art": {
+    "line": "razor-sharp, confident brush and ink; pristine perspective; crisp silhouettes; zero crosshatch in close-ups",
+    "palette": "dailies: black ink, one spot tone at most. Sundays: wet-on-wet — gray-green moss, fog, rusted tin, bruised dusk",
+    "paper": "bristol for dailies; 140 lb Arches cold-press for Sundays"
+  },
+  "notes": "Thirteen. Slower.",
+  "layout": "tiers, portrait page"
+}

@@ -1,0 +1,96 @@
+{
+  "id": "dw_2012-01-15_the_rain_2012",
+  "title": "Sunday · the Rain, 2012",
+  "strip": "drift_wood",
+  "date": "2012-01-15",
+  "run": 4,
+  "era": "era3",
+  "format": "sunday",
+  "tier": "A",
+  "selection": "part",
+  "venue": "Arthur's site · the coastal weeklies",
+  "arc": "The Rain",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (2012 · Sundays · deepening ix)",
+  "logline": "Fifteenth January, and the first Rain Sunday with the Era III line: the alley wet-on-wet, the garage window dark at three in the morning because he's at the motel desk, and the last tier the motel from the lot with a hum line under it.",
+  "cast": [
+    "wood_34"
+  ],
+  "location": "dw_garage",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "wide tier",
+      "composition": "Tier 1: the alley behind the tavern in January rain, wet-on-wet, the beer sign's neon bleeding into the puddle.",
+      "characters": [],
+      "props": [
+        "the puddle"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a gravel alley behind a tavern in January rain painted wet-on-wet with a beer sign's neon bleeding into a puddle, watercolor, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null,
+      "name": "Alley"
+    },
+    {
+      "n": 2,
+      "shot": "medium tier",
+      "composition": "Tier 2: the casement window dark, three jars on the sill, no lamp, 3 AM.",
+      "characters": [],
+      "props": [
+        "three jars"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a small dark casement window seen from a rainy alley with three jars on the sill and no lamp lit, watercolor, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null,
+      "name": "Dark"
+    },
+    {
+      "n": 3,
+      "shot": "wide tier",
+      "composition": "Tier 3: the motel from its lot at 3 AM, the office lit, a shape at the desk, a thin line under the tier.",
+      "characters": [
+        {
+          "id": "wood_34",
+          "pose": "a shape at the desk",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the hum line"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a small motel seen from its lot at three in the morning with only the office lit and the shape of a man at the desk, a thin horizontal line beneath the image, watercolor",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null,
+      "name": "Motel"
+    }
+  ],
+  "art": {
+    "line": "razor-sharp, confident brush and ink; pristine perspective; crisp silhouettes; zero crosshatch in close-ups",
+    "palette": "dailies: black ink, one spot tone at most. Sundays: wet-on-wet — gray-green moss, fog, rusted tin, bruised dusk",
+    "paper": "bristol for dailies; 140 lb Arches cold-press for Sundays"
+  },
+  "notes": "Fifteenth Rain. The window dark; the hum line under the motel.",
+  "layout": "tiers, portrait page"
+}

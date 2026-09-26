@@ -1,0 +1,64 @@
+{
+  "id": "ro_2022-02-11_twenty_five_flyers",
+  "title": "Twenty-five flyers",
+  "strip": "roflcopter",
+  "date": "2022-02-11",
+  "run": 7,
+  "era": "era4",
+  "format": "page",
+  "tier": "A",
+  "selection": "full",
+  "venue": "nobody · boxes 21–40",
+  "arc": "unsequenced",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (Run 7 · deepening ix)",
+  "logline": "The Crab Derby: the wall at twenty-five, the girl, twelve, on tiptoe pinning, and at the page's edge a shoulder in plaid holding the tin of pins. He's in the page as a shoulder and a hand with a tin.",
+  "cast": [
+    "extra_gully_kid",
+    "wood_44"
+  ],
+  "location": "dw_gullys",
+  "margin": {
+    "signature": "ROFLCOPTER",
+    "mark": "roflcopter",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "single page",
+      "composition": "The shingle wall with twenty-five flyers, a twelve-year-old girl on tiptoe pinning the newest, and at the left edge a man's shoulder in plaid and a hand holding out a small tin of pushpins.",
+      "characters": [
+        {
+          "id": "extra_gully_kid",
+          "pose": "pinning, on tiptoe",
+          "expression": ""
+        },
+        {
+          "id": "wood_44",
+          "pose": "a shoulder and a hand with a tin",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "twenty-five flyers",
+        "a tin of pins"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a single full comic page with no panel borders, spare knowing ink line with economy, muted ochre and slate blue and sea-foam green washes, a shingle wall with a row of twenty-five crab flyers where a twelve-year-old girl on tiptoe pins the newest, a man's plaid shoulder and hand holding a tin of pushpins entering at the page's left edge, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "spare, knowing; economy of line; Era I's black spotting back on purpose in the mill run",
+    "palette": "muted ochres, slate blues, misty sea-foam greens; luminous sunbreaks in the last spring",
+    "paper": "Arches; bristol; the backs of motel registration cards"
+  },
+  "notes": "Twenty-five. A hand with a tin.",
+  "layout": "single page, no borders"
+}

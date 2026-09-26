@@ -1,0 +1,101 @@
+{
+  "id": "dw_2011-03-13_grunion_2011",
+  "title": "Sunday · the Grunion Run, 2011",
+  "strip": "drift_wood",
+  "date": "2011-03-13",
+  "run": 3,
+  "era": "era2",
+  "format": "sunday",
+  "tier": "B",
+  "selection": "part",
+  "venue": "Arthur's site · the coastal weeklies",
+  "arc": "Fixtures",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (2011 · Sundays · deepening ix)",
+  "logline": "The run in three tiers with the fish taking all of them, silver and thick this year, and the people at the edges of the page. The dog, twelve, sits it out on the sand.",
+  "cast": [
+    "barnaby",
+    "extra_tourists"
+  ],
+  "location": "dw_beach",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "wide tier",
+      "composition": "Tier 1: the surf line thick with silver fish, lantern light on them.",
+      "characters": [],
+      "props": [
+        "fish"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a night surf line thick with silver fish under lantern light, watercolor, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null,
+      "name": "Thick"
+    },
+    {
+      "n": 2,
+      "shot": "wide tier",
+      "composition": "Tier 2: people bent at the page's edges, the fish the whole middle.",
+      "characters": [
+        {
+          "id": "extra_tourists",
+          "pose": "bent, at the edges",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "lanterns"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a night beach with people bent at the edges of the frame and the whole middle silver with small fish, watercolor",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null,
+      "name": "Edges"
+    },
+    {
+      "n": 3,
+      "shot": "wide tier",
+      "composition": "Tier 3: an old dog sitting on the sand above the tide line, watching.",
+      "characters": [
+        {
+          "id": "barnaby",
+          "pose": "sitting, old",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "an old dog sitting on dark sand above a silver surf line watching it, watercolor, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null,
+      "name": "Sits"
+    }
+  ],
+  "art": {
+    "line": "brush-pen scanned; muddy digital flats",
+    "palette": "limited, muddy; Sundays in watercolor, improving",
+    "paper": "bristol; the browser"
+  },
+  "notes": "Twelve. Sits it out.",
+  "layout": "tiers, portrait page"
+}

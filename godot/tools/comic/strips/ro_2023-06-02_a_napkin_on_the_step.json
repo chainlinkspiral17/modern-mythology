@@ -1,0 +1,49 @@
+{
+  "id": "ro_2023-06-02_a_napkin_on_the_step",
+  "title": "A napkin on the step",
+  "strip": "roflcopter",
+  "date": "2023-06-02",
+  "run": 7,
+  "era": "era4",
+  "format": "page",
+  "tier": "A",
+  "selection": "full",
+  "venue": "nobody · boxes 21–40",
+  "arc": "unsequenced",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (Run 7 · deepening ix)",
+  "logline": "Last Bell, after: the school steps empty at 3:20, the kids gone to the beach, and on the third step a napkin with a drawing on it, left. The page doesn't turn it over.",
+  "cast": [],
+  "location": "dw_school_front",
+  "margin": {
+    "signature": "ROFLCOPTER",
+    "mark": "roflcopter",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "single page",
+      "composition": "The school's front steps empty after the bell, the doors shut, and on the third step a paper napkin with ink on its visible corner, weighted by a pebble, the road to the beach empty beyond.",
+      "characters": [],
+      "props": [
+        "a napkin with a drawing"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a single full comic page with no panel borders, spare knowing ink line with economy, muted ochre and slate blue and sea-foam green washes, empty school steps after the last bell with a paper napkin bearing a corner of an ink drawing weighted by a pebble on the third step, an empty road toward a beach beyond, no words",
+        "negative": "",
+        "notes": "Whose: reserved. The page doesn't turn it over."
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "spare, knowing; economy of line; Era I's black spotting back on purpose in the mill run",
+    "palette": "muted ochres, slate blues, misty sea-foam greens; luminous sunbreaks in the last spring",
+    "paper": "Arches; bristol; the backs of motel registration cards"
+  },
+  "notes": "A napkin, left. Not turned over.",
+  "layout": "single page, no borders"
+}

@@ -1,0 +1,58 @@
+{
+  "id": "ro_2023-01-08_the_rain_2023",
+  "title": "The Rain, 2023",
+  "strip": "roflcopter",
+  "date": "2023-01-08",
+  "run": 7,
+  "era": "era4",
+  "format": "page",
+  "tier": "A",
+  "selection": "full",
+  "venue": "nobody · boxes 21–40",
+  "arc": "unsequenced",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (Run 7 · deepening ix)",
+  "logline": "The twenty-sixth January. The sill, the rain, the three jars — and a fourth now, small, holding the chewed nib handle from the box in 2014. The pup's, kept.",
+  "cast": [
+    "barnaby_ii"
+  ],
+  "location": "dw_garage",
+  "margin": {
+    "signature": "ROFLCOPTER",
+    "mark": "roflcopter",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "single page",
+      "composition": "The casement window in January rain from inside, three jars on the sill and a fourth, smaller, holding a single chewed wooden nib handle; the pup asleep in the bed below.",
+      "characters": [
+        {
+          "id": "barnaby_ii",
+          "pose": "asleep",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "four jars",
+        "the chewed nib"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a single full comic page with no panel borders, spare knowing ink line with economy, muted ochre and slate blue and sea-foam green washes, a garage window in January rain from inside with three jars on the sill and a fourth small jar holding a single chewed wooden pen handle, a small three-legged dog asleep in a bed below, no words",
+        "negative": "",
+        "notes": "The nib from dw_2014-12-21 / 12-22. The fourth jar joins the sill inventory (objects.md)."
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "spare, knowing; economy of line; Era I's black spotting back on purpose in the mill run",
+    "palette": "muted ochres, slate blues, misty sea-foam greens; luminous sunbreaks in the last spring",
+    "paper": "Arches; bristol; the backs of motel registration cards"
+  },
+  "notes": "A fourth jar: the chewed nib.",
+  "layout": "single page, no borders"
+}

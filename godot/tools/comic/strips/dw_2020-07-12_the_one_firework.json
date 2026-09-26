@@ -1,0 +1,95 @@
+{
+  "id": "dw_2020-07-12_the_one_firework",
+  "title": "Sunday · the one firework, after",
+  "strip": "drift_wood",
+  "date": "2020-07-12",
+  "run": 6,
+  "era": "era3",
+  "format": "sunday",
+  "tier": "B",
+  "selection": "part",
+  "venue": "Arthur's site · the coastal weeklies · the aggregator",
+  "arc": "Fixtures",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (2020 · Sundays · deepening ix)",
+  "logline": "Eight days after the Fourth: the dock, the single spent tube standing in a coffee can, the lawn chair, and the girl of ten looking at the tube like an object. The last tier the bay, nothing on it.",
+  "cast": [
+    "extra_gully_kid"
+  ],
+  "location": "dw_gullys",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "scruff",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "medium tier",
+      "composition": "Tier 1: a single spent firework tube standing in a coffee can on the dock's planks.",
+      "characters": [],
+      "props": [
+        "the spent tube",
+        "a coffee can"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a single spent cardboard firework tube standing in a coffee can on dock planks, watercolor, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null,
+      "name": "Can"
+    },
+    {
+      "n": 2,
+      "shot": "medium tier",
+      "composition": "Tier 2: a girl of ten crouched looking at the can, the lawn chair behind her.",
+      "characters": [
+        {
+          "id": "extra_gully_kid",
+          "pose": "crouched",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the lawn chair"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a girl of ten crouched on a dock looking at a coffee can holding a spent firework tube with an old lawn chair behind her, watercolor",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null,
+      "name": "Looking"
+    },
+    {
+      "n": 3,
+      "shot": "wide tier",
+      "composition": "Tier 3: the bay, empty, no boats, no tourists, flat.",
+      "characters": [],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "an empty flat bay with no boats under a pale July sky, watercolor, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null,
+      "name": "Bay"
+    }
+  ],
+  "art": {
+    "line": "razor-sharp brush and ink; Sundays wet-on-wet; 2019: the Sunday drawn to a smaller grid",
+    "palette": "ink and one tone; Sundays gray-green, fog, rust; 2020: ochre and slate arriving",
+    "paper": "bristol; Arches"
+  },
+  "notes": "The one firework (dw_2020-07-04), kept in a can.",
+  "layout": "tiers, portrait page"
+}

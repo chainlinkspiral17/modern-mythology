@@ -1,0 +1,79 @@
+{
+  "id": "ro_2021-07-04_the_fourth_from_behind",
+  "title": "The Fourth, from behind",
+  "strip": "roflcopter",
+  "date": "2021-07-04",
+  "run": 7,
+  "era": "era4",
+  "format": "page",
+  "tier": "A",
+  "selection": "full",
+  "venue": "nobody · boxes 21–40",
+  "arc": "unsequenced",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (Run 7 · deepening ix)",
+  "logline": "White fireworks over the dock, and on the shack steps, from behind: a back in plaid, the pup beside it. The first Fourth in the private pages; the first with him in it, as a back, two weeks into the sequence.",
+  "cast": [
+    "wood_44",
+    "barnaby_ii",
+    "gully_48",
+    "extra_maria",
+    "extra_gully_kid"
+  ],
+  "location": "dw_gullys",
+  "margin": {
+    "signature": "ROFLCOPTER",
+    "mark": "roflcopter",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "single page",
+      "composition": "The dock at night under white fireworks seen from behind a man sitting on the shack steps in blue plaid with a small three-legged dog beside him; beyond, the family on the dock, the lawn chair, the ramp.",
+      "characters": [
+        {
+          "id": "wood_44",
+          "pose": "from behind, on the steps",
+          "expression": ""
+        },
+        {
+          "id": "barnaby_ii",
+          "pose": "beside him",
+          "expression": ""
+        },
+        {
+          "id": "gully_48",
+          "pose": "on the dock",
+          "expression": ""
+        },
+        {
+          "id": "extra_maria",
+          "pose": "the chair",
+          "expression": ""
+        },
+        {
+          "id": "extra_gully_kid",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a single full comic page with no panel borders, spare knowing ink line with economy, muted ochre and slate blue and sea-foam green washes, white fireworks over a dock at night seen from behind a man in blue plaid flannel sitting on shack steps with a small three-legged dog beside him, a family on the dock beyond with an old lawn chair, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "spare, knowing; economy of line; Era I's black spotting back on purpose in the mill run",
+    "palette": "muted ochres, slate blues, misty sea-foam greens; luminous sunbreaks in the last spring",
+    "paper": "Arches; bristol; the backs of motel registration cards"
+  },
+  "notes": "The first Fourth of Vol. II. A back on the steps.",
+  "layout": "single page, no borders"
+}

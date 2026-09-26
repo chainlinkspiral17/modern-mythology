@@ -1,0 +1,64 @@
+{
+  "id": "ro_2025-03-14_two_lanterns_and_the_lamp_unlit",
+  "title": "Two lanterns and the lamp, unlit",
+  "strip": "roflcopter",
+  "date": "2025-03-14",
+  "run": 7,
+  "era": "era4",
+  "format": "page",
+  "tier": "A",
+  "selection": "full",
+  "venue": "nobody · boxes 21–40",
+  "arc": "unsequenced",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (Run 7 · deepening ix)",
+  "logline": "The Grunion Run: two lanterns, and beside the near one, on the sand, the green swing-arm lamp, unlit, brought again. Two years before it's lit. The fish don't care.",
+  "cast": [
+    "wood_44",
+    "barnaby_ii"
+  ],
+  "location": "dw_beach",
+  "margin": {
+    "signature": "ROFLCOPTER",
+    "mark": "roflcopter",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "single page",
+      "composition": "A night beach with two lanterns, and beside the near one a green swing-arm desk lamp standing on the sand unlit, a man from behind sitting beside it, the pup at the surf, the fish silver.",
+      "characters": [
+        {
+          "id": "wood_44",
+          "pose": "from behind",
+          "expression": ""
+        },
+        {
+          "id": "barnaby_ii",
+          "pose": "at the surf",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the lamp, unlit",
+        "two lanterns"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a single full comic page with no panel borders, spare knowing ink line with economy, muted ochre and slate blue and sea-foam green washes, a night beach with two lanterns and an unlit green swing-arm desk lamp standing on the sand beside the nearer one, a man seen from behind sitting beside it, a small three-legged dog at a surf line silver with fish, no words",
+        "negative": "",
+        "notes": "Compare ro_2027-03-12: lit."
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "spare, knowing; economy of line; Era I's black spotting back on purpose in the mill run",
+    "palette": "muted ochres, slate blues, misty sea-foam greens; luminous sunbreaks in the last spring",
+    "paper": "Arches; bristol; the backs of motel registration cards"
+  },
+  "notes": "The lamp unlit, again. Two years before.",
+  "layout": "single page, no borders"
+}

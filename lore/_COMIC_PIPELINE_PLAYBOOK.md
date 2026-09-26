@@ -114,6 +114,35 @@ a page says "fifty" check it against the year first.
 
 ## Recent lessons
 
+### 2026-09-26 · Deepening viii and ix · the Sundays and the private seasons · 724 → 852
+
+Two batches of breadth after every arc reached its key week: forty-one
+Sundays (viii) then forty-one ROFLCOPTER pages and forty-six more Sundays
+(ix). The thin years were found by counting Sundays per year, not by
+rereading the catalogue; the ROFLCOPTER pages were found by walking the
+nine fixtures through 2021–2027 and asking which had no private page yet.
+
+- **The fixtures run through the private years too.** Crab Derby, the
+  Grunion Run, Last Bell, the Fourth, Tourist Season, the Rain, Dog Night,
+  Christmas Eve each get an unsequenced page in most private years. They
+  carry the counts (flyers = year − 1997; one chair 2023, two 2026; the lamp
+  unlit 2025, lit 2027) and the sequence's rule for the year: absent in
+  early 2021, a back after June 2021, a knee and a hand by 2024.
+- **Cross-references get checked, not remembered.** Every "compare
+  ro_2026-12-24" written in a note was grepped against the strip ids before
+  the commit. Two batches ago a note pointed at a strip that had been
+  renamed; the check is cheap and the wrong pointer would have survived into
+  the sheets.
+- **Sundays are counted per year before writing.** A year with six Sundays
+  gets four or five; a year with eleven gets none. The catalogue's "12 of
+  ~50" is the ceiling per year, not the target: the physical book's
+  Sunday pages are shared across 2004–2020.
+- **A Sunday helper asserts three things.** `weekday() == 6`, the date is
+  not already used by a daily of the same strip, and the id's date equals
+  the date field. All three have failed silently in earlier batches; the
+  assertions now run before the file is written, so a bad date aborts the
+  batch instead of landing in the repo.
+
 ### 2026-09-26 · Balloons cutting off text · the 1000-character chop
 
 User feedback: rendered balloons kept cutting off text. The cause

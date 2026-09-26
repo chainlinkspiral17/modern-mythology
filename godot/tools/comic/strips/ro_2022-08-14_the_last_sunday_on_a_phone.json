@@ -1,0 +1,57 @@
+{
+  "id": "ro_2022-08-14_the_last_sunday_on_a_phone",
+  "title": "The last Sunday, on a phone",
+  "strip": "roflcopter",
+  "date": "2022-08-14",
+  "run": 7,
+  "era": "era4",
+  "format": "page",
+  "tier": "A",
+  "selection": "full",
+  "venue": "nobody · boxes 21–40",
+  "arc": "unsequenced",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (Run 7 · deepening ix)",
+  "logline": "Tourist Season: a tourist on the seawall bench holding a phone, and on it the last public Sunday — the 1997 cafeteria redrawn, the droplet, the figure into fog — scrolled to its last tier. The page reads it over her shoulder and doesn't say whose it is.",
+  "cast": [
+    "extra_tourists"
+  ],
+  "location": "dw_main_street",
+  "margin": {
+    "signature": "ROFLCOPTER",
+    "mark": "roflcopter",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "single page",
+      "composition": "Over a tourist's shoulder on the seawall bench: her phone, and on it a watercolor Sunday's last tier — a figure walking into fog with 'thank you for reading' too small to read — the real bay gray beyond the screen.",
+      "characters": [
+        {
+          "id": "extra_tourists",
+          "pose": "on the bench with a phone",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the last Sunday on a phone"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a single full comic page with no panel borders, spare knowing ink line with economy, muted ochre and slate blue and sea-foam green washes, over a seated tourist's shoulder on a seawall bench, a phone screen showing the last tier of a watercolor comic page with a small figure walking into fog, the real gray bay beyond, no words legible",
+        "negative": "",
+        "notes": "dw_2020-12-27's last tier on a screen. Twenty months on."
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "spare, knowing; economy of line; Era I's black spotting back on purpose in the mill run",
+    "palette": "muted ochres, slate blues, misty sea-foam greens; luminous sunbreaks in the last spring",
+    "paper": "Arches; bristol; the backs of motel registration cards"
+  },
+  "notes": "The last Sunday, read on the seawall by a stranger.",
+  "layout": "single page, no borders"
+}

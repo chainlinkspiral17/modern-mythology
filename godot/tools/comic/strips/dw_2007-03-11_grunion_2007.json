@@ -1,0 +1,113 @@
+{
+  "id": "dw_2007-03-11_grunion_2007",
+  "title": "Sunday · the Grunion Run, 2007",
+  "strip": "drift_wood",
+  "date": "2007-03-11",
+  "run": 3,
+  "era": "era2",
+  "format": "sunday",
+  "tier": "B",
+  "selection": "part",
+  "venue": "Arthur's site (six dailies + a Sunday)",
+  "arc": "Fixtures",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (2007 · Sundays · deepening ix)",
+  "logline": "The Grunion Run: lanterns down the beach, the fish coming in silver, a man and a dog at the water's edge in the middle tier. The tenth run the strip has drawn.",
+  "cast": [
+    "wood_26",
+    "barnaby",
+    "extra_tourists"
+  ],
+  "location": "dw_beach",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "wide tier",
+      "composition": "Tier 1: a night beach with a line of lanterns and people bent at the surf.",
+      "characters": [
+        {
+          "id": "extra_tourists",
+          "pose": "bent at the surf",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "lanterns"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a night beach with a line of lanterns and people bent at a surf line, watercolor, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null,
+      "name": "Lanterns"
+    },
+    {
+      "n": 2,
+      "shot": "medium tier",
+      "composition": "Tier 2: the surf close, silver with fish, a dog's paws in it.",
+      "characters": [
+        {
+          "id": "barnaby",
+          "pose": "paws in the surf",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "fish"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "close on a surf line silver with small fish and a dog's paws in the water, watercolor",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null,
+      "name": "Silver"
+    },
+    {
+      "n": 3,
+      "shot": "wide tier",
+      "composition": "Tier 3: a man in a chore coat sitting on the sand with the dog, the lanterns far.",
+      "characters": [
+        {
+          "id": "wood_26",
+          "pose": "sitting",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "beside him",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a man in a canvas chore coat sitting on dark sand with a dog beside him and distant lanterns, watercolor",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null,
+      "name": "Edge"
+    }
+  ],
+  "art": {
+    "line": "brush-pen scanned; muddy digital flats",
+    "palette": "limited, muddy; Sundays in watercolor, improving",
+    "paper": "bristol; the browser"
+  },
+  "notes": "Tenth run drawn.",
+  "layout": "tiers, portrait page"
+}

@@ -1,0 +1,109 @@
+{
+  "id": "dw_2018-03-11_grunion_2018",
+  "title": "Sunday · the Grunion Run, 2018",
+  "strip": "drift_wood",
+  "date": "2018-03-11",
+  "run": 6,
+  "era": "era3",
+  "format": "sunday",
+  "tier": "B",
+  "selection": "part",
+  "venue": "Arthur's site · the coastal weeklies · the aggregator",
+  "arc": "Fixtures",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (2018 · Sundays · deepening ix)",
+  "logline": "The run with phones in it: half the lanterns are screens now, blue among the orange, and the fish come in anyway. The pup at the surf. The man on the sand with neither.",
+  "cast": [
+    "wood_34",
+    "barnaby_ii",
+    "extra_tourists"
+  ],
+  "location": "dw_beach",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "crab",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "wide tier",
+      "composition": "Tier 1: a night beach with orange lanterns and blue phone screens mixed along the surf.",
+      "characters": [
+        {
+          "id": "extra_tourists",
+          "pose": "with phones",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "lanterns",
+        "phones"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a night beach with orange lanterns and blue phone screens mixed along a surf line, watercolor, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null,
+      "name": "Blue"
+    },
+    {
+      "n": 2,
+      "shot": "wide tier",
+      "composition": "Tier 2: the fish silver in the surf, a small three-legged dog at the edge.",
+      "characters": [
+        {
+          "id": "barnaby_ii",
+          "pose": "at the surf",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "fish"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a surf line silver with small fish at night with a small three-legged dog at its edge, watercolor",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null,
+      "name": "Anyway"
+    },
+    {
+      "n": 3,
+      "shot": "medium tier",
+      "composition": "Tier 3: a man on the sand from behind with no lantern and no phone, the lights far.",
+      "characters": [
+        {
+          "id": "wood_34",
+          "pose": "from behind, no light",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a man seen from behind sitting on dark sand with no lantern and no phone and distant mixed lights along the surf, watercolor, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null,
+      "name": "Neither"
+    }
+  ],
+  "art": {
+    "line": "razor-sharp brush and ink; Sundays wet-on-wet; 2019: the Sunday drawn to a smaller grid",
+    "palette": "ink and one tone; Sundays gray-green, fog, rust; 2020: ochre and slate arriving",
+    "paper": "bristol; Arches"
+  },
+  "notes": "Half the lanterns are screens.",
+  "layout": "tiers, portrait page"
+}

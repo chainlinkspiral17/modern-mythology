@@ -1,0 +1,105 @@
+{
+  "id": "dw_2005-06-12_last_bell_2005",
+  "title": "Sunday · Last Bell, 2005",
+  "strip": "drift_wood",
+  "date": "2005-06-12",
+  "run": 3,
+  "era": "era2",
+  "format": "sunday",
+  "tier": "B",
+  "selection": "part",
+  "venue": "Arthur's site (six dailies + a Sunday)",
+  "arc": "Fixtures",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (2005 · Sundays · deepening ix)",
+  "logline": "The school at the last bell from across the road, three tiers: the bell, the doors, the road to the beach with the kids on it and a man and a dog on the far sidewalk, not moving.",
+  "cast": [
+    "wood_26",
+    "barnaby",
+    "extra_student"
+  ],
+  "location": "dw_school_front",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "wide tier",
+      "composition": "Tier 1: the high school from across the road at 3:05, a jagged bell shape at the door.",
+      "characters": [],
+      "props": [
+        "the bell"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a small-town high school seen from across a road with a jagged sound shape at the front door, watercolor",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null,
+      "name": "Bell"
+    },
+    {
+      "n": 2,
+      "shot": "wide tier",
+      "composition": "Tier 2: the doors open, students pouring out toward the beach road.",
+      "characters": [
+        {
+          "id": "extra_student",
+          "pose": "the crowd",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "students pouring out of a school's front doors toward a beach road, watercolor, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null,
+      "name": "Doors"
+    },
+    {
+      "n": 3,
+      "shot": "wide tier",
+      "composition": "Tier 3: the far sidewalk: a man in a chore coat and a dog, still, the crowd passing.",
+      "characters": [
+        {
+          "id": "wood_26",
+          "pose": "still",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "sitting",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a man in a canvas chore coat and a dog standing still on a far sidewalk while a crowd of students passes, watercolor",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null,
+      "name": "Sidewalk"
+    }
+  ],
+  "art": {
+    "line": "brush-pen scanned; muddy digital flats",
+    "palette": "limited, muddy; Sundays in watercolor, improving",
+    "paper": "bristol; the browser"
+  },
+  "notes": "The fixture as a Sunday.",
+  "layout": "tiers, portrait page"
+}

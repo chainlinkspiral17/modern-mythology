@@ -1,0 +1,107 @@
+{
+  "id": "dw_2017-06-11_last_bell_lockboxes",
+  "title": "Sunday · Last Bell, with lockboxes",
+  "strip": "drift_wood",
+  "date": "2017-06-11",
+  "run": 6,
+  "era": "era3",
+  "format": "sunday",
+  "tier": "B",
+  "selection": "part",
+  "venue": "Arthur's site · the coastal weeklies · from 2017 the aggregator",
+  "arc": "Lockboxes",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (2017 · Sundays · deepening ix)",
+  "logline": "The school at the last bell, and across the road the rental houses each with a key-safe on the doorframe, drawn in every tier, never mentioned. The man and the pup on the sidewalk between the school and the boxes.",
+  "cast": [
+    "wood_34",
+    "barnaby_ii",
+    "extra_student"
+  ],
+  "location": "dw_school_front",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "scruff",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "wide tier",
+      "composition": "Tier 1: the school at 3:05 from the road, the bell shape, students starting out; a rental house's doorframe at the tier's edge with a small gray key-safe.",
+      "characters": [
+        {
+          "id": "extra_student",
+          "pose": "the crowd",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "a key-safe"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a small-town high school at the last bell with students starting out and at the frame's edge a house doorframe with a small gray lockbox on it, watercolor",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null,
+      "name": "Bell"
+    },
+    {
+      "n": 2,
+      "shot": "medium tier",
+      "composition": "Tier 2: three doorframes in a row across the road, each with a key-safe, blinds down.",
+      "characters": [],
+      "props": [
+        "three key-safes"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "three house doorframes in a row each with a small gray lockbox and blinds drawn, watercolor, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null,
+      "name": "Boxes"
+    },
+    {
+      "n": 3,
+      "shot": "wide tier",
+      "composition": "Tier 3: the man and the pup on the sidewalk, the students passing on one side, the lockboxed doors on the other.",
+      "characters": [
+        {
+          "id": "wood_34",
+          "pose": "standing",
+          "expression": ""
+        },
+        {
+          "id": "barnaby_ii",
+          "pose": "sitting",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a man and a small three-legged dog on a sidewalk between a crowd of passing students on one side and a row of locked-up houses on the other, watercolor",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null,
+      "name": "Between"
+    }
+  ],
+  "art": {
+    "line": "razor-sharp brush and ink; the pup's weight learned; Sundays wet-on-wet",
+    "palette": "dailies: ink and one tone. Sundays: gray-green, fog, rust, bruised dusk",
+    "paper": "bristol; Arches for Sundays"
+  },
+  "notes": "Lockboxes in the backgrounds, never mentioned.",
+  "layout": "tiers, portrait page"
+}

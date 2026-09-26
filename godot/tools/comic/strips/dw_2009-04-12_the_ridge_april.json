@@ -1,0 +1,88 @@
+{
+  "id": "dw_2009-04-12_the_ridge_april",
+  "title": "Sunday · the ridge in April",
+  "strip": "drift_wood",
+  "date": "2009-04-12",
+  "run": 3,
+  "era": "era2",
+  "format": "sunday",
+  "tier": "B",
+  "selection": "part",
+  "venue": "Arthur's site · the coastal weeklies",
+  "arc": "Fixtures",
+  "source": "lore/drift_wood/sample_strips.md (2009 · Sundays · deepening ix)",
+  "logline": "The ridge behind town from the beach road, three tiers of the same view as the light changes: morning haze, noon flat, dusk with no glow. The strip has not drawn the glow since 1994's mill. Not yet.",
+  "cast": [],
+  "location": "dw_logging_road",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull_dog",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "wide tier",
+      "composition": "Tier 1: the wooded ridge behind town in morning haze from the beach road.",
+      "characters": [],
+      "props": [
+        "the ridge"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a wooded ridge behind a small coastal town in morning haze from a beach road, watercolor, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null,
+      "name": "Morning"
+    },
+    {
+      "n": 2,
+      "shot": "wide tier",
+      "composition": "Tier 2: the same ridge at noon, flat light, the clear-cut patch visible.",
+      "characters": [],
+      "props": [
+        "the clear-cut"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "the same wooded ridge at noon in flat light with a clear-cut patch visible, watercolor, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null,
+      "name": "Noon"
+    },
+    {
+      "n": 3,
+      "shot": "wide tier",
+      "composition": "Tier 3: the ridge at dusk, dark, no glow, one star.",
+      "characters": [],
+      "props": [
+        "one star"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "the same wooded ridge at dusk dark against a sky with one star and no glow, watercolor, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null,
+      "name": "Dusk"
+    }
+  ],
+  "art": {
+    "line": "",
+    "palette": "",
+    "paper": ""
+  },
+  "notes": "No glow. Not yet (the Lanes, 2009-03-08, was the hint).",
+  "layout": "tiers, portrait page"
+}

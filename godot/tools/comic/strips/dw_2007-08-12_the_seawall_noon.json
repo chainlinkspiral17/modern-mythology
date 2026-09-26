@@ -1,0 +1,102 @@
+{
+  "id": "dw_2007-08-12_the_seawall_noon",
+  "title": "Sunday · the seawall, noon",
+  "strip": "drift_wood",
+  "date": "2007-08-12",
+  "run": 3,
+  "era": "era2",
+  "format": "sunday",
+  "tier": "B",
+  "selection": "part",
+  "venue": "Arthur's site (six dailies + a Sunday)",
+  "arc": "Fixtures",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (2007 · Sundays · deepening ix)",
+  "logline": "Tourist Season: the seawall at noon in three tiers of heat — the crowd, the gulls, the water — and in the last tier one dog under the bench, the only one in shade.",
+  "cast": [
+    "barnaby",
+    "extra_tourists"
+  ],
+  "location": "dw_main_street",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "wide tier",
+      "composition": "Tier 1: the seawall at noon crowded with tourists in bright shirts, heat wobble.",
+      "characters": [
+        {
+          "id": "extra_tourists",
+          "pose": "the crowd",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a seawall at noon crowded with tourists in bright shirts under a white sky, watercolor, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null,
+      "name": "Crowd"
+    },
+    {
+      "n": 2,
+      "shot": "medium tier",
+      "composition": "Tier 2: gulls on the wall among dropped fries, one with a whole bun.",
+      "characters": [],
+      "props": [
+        "gulls",
+        "a bun"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "gulls on a seawall among dropped fries with one holding a whole bun, watercolor",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null,
+      "name": "Gulls"
+    },
+    {
+      "n": 3,
+      "shot": "wide tier",
+      "composition": "Tier 3: under the bench, the dog, the only shade on the page.",
+      "characters": [
+        {
+          "id": "barnaby",
+          "pose": "under the bench",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the bench"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a dog lying under a seawall bench in the only patch of shade on a hot noon, watercolor, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null,
+      "name": "Shade"
+    }
+  ],
+  "art": {
+    "line": "brush-pen scanned; muddy digital flats",
+    "palette": "limited, muddy; Sundays in watercolor, improving",
+    "paper": "bristol; the browser"
+  },
+  "notes": "The only shade.",
+  "layout": "tiers, portrait page"
+}

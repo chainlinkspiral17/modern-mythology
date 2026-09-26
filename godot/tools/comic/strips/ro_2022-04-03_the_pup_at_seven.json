@@ -1,0 +1,58 @@
+{
+  "id": "ro_2022-04-03_the_pup_at_seven",
+  "title": "The pup at seven",
+  "strip": "roflcopter",
+  "date": "2022-04-03",
+  "run": 7,
+  "era": "era4",
+  "format": "page",
+  "tier": "A",
+  "selection": "full",
+  "venue": "nobody · boxes 21–40",
+  "arc": "unsequenced",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (Run 7 · deepening ix)",
+  "logline": "The pup on the flats at seven, mid-scuttle, the two-one prints, a channel jumped. The dog page of the year. Nobody else.",
+  "cast": [
+    "barnaby_ii"
+  ],
+  "location": "dw_mudflats",
+  "margin": {
+    "signature": "ROFLCOPTER",
+    "mark": "roflcopter",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "single page",
+      "composition": "The mudflats at low tide with a small three-legged dog in mid-jump over a channel, the two-one prints behind him, the chimney far across the bay.",
+      "characters": [
+        {
+          "id": "barnaby_ii",
+          "pose": "mid-jump over a channel",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "a channel",
+        "prints"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a single full comic page with no panel borders, spare knowing ink line with economy, muted ochre and slate blue and sea-foam green washes, tidal mudflats with a small three-legged dog in mid-jump over a narrow channel, a two-one trail of prints behind, a distant chimney across the bay, no people, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "spare, knowing; economy of line; Era I's black spotting back on purpose in the mill run",
+    "palette": "muted ochres, slate blues, misty sea-foam greens; luminous sunbreaks in the last spring",
+    "paper": "Arches; bristol; the backs of motel registration cards"
+  },
+  "notes": "The dog page. A channel jumped.",
+  "layout": "single page, no borders"
+}

@@ -1,0 +1,86 @@
+{
+  "id": "dw_2005-07-10_the_dock_after",
+  "title": "Sunday · the dock, after",
+  "strip": "drift_wood",
+  "date": "2005-07-10",
+  "run": 3,
+  "era": "era2",
+  "format": "sunday",
+  "tier": "B",
+  "selection": "part",
+  "venue": "Arthur's site (six dailies + a Sunday)",
+  "arc": "Fixtures",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (2005 · Sundays · deepening ix)",
+  "logline": "The dock six days after the Fourth: spent tubes in the planks' gaps, the shack shut, the bay flat. Nobody. The Sunday is the cleaning-up the strip never shows anyone doing.",
+  "cast": [],
+  "location": "dw_gullys",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "wide tier",
+      "composition": "Tier 1: the dock's planks close, spent firework tubes wedged in the gaps, gull droppings.",
+      "characters": [],
+      "props": [
+        "spent tubes"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "close on weathered dock planks with spent cardboard firework tubes wedged in the gaps, watercolor, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null,
+      "name": "Planks"
+    },
+    {
+      "n": 2,
+      "shot": "medium tier",
+      "composition": "Tier 2: the shingle shack shut, the CLOSED card in the door, a broom against the wall.",
+      "characters": [],
+      "props": [
+        "a broom"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a shingle bait shack with a closed sign in its door and a broom leaning against the wall, watercolor",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null,
+      "name": "Shack"
+    },
+    {
+      "n": 3,
+      "shot": "wide tier",
+      "composition": "Tier 3: the bay flat and gray to the far shore.",
+      "characters": [],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a flat gray bay to a far shore under a low sky, watercolor, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null,
+      "name": "Bay"
+    }
+  ],
+  "art": {
+    "line": "brush-pen scanned; muddy digital flats",
+    "palette": "limited, muddy; Sundays in watercolor, improving",
+    "paper": "bristol; the browser"
+  },
+  "notes": "Nobody. The cleaning-up.",
+  "layout": "tiers, portrait page"
+}
