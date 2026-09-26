@@ -11,7 +11,9 @@ with its thumbnail filed as a concept candidate so Hero Studio shows it.
 
     python3 godot/tools/meshy_recover.py list [--days 7] [--all]
     python3 godot/tools/meshy_recover.py fetch <task_id> <slug>
-    python3 godot/tools/meshy_recover.py fetch-all --days 7     # every finished task → recovered/<id>.glb + thumbnail, to sort by eye
+    python3 godot/tools/meshy_recover.py fetch-all --days 7     # every finished task → recovered/<id>.glb + thumbnail
+    python3 godot/tools/meshy_recover.py contact                # one page of the recovered thumbnails with their ids
+    python3 godot/tools/meshy_recover.py assign mapping.txt     # lines of `<id> <slug>` → GLBs to the heroes folder, thumbnails as candidates
 
 Keys come from the same files the pipeline uses (godot/tools/.meshy_key).
 """
@@ -126,12 +128,88 @@ def cmd_fetch_all(args):
     return 0
 
 
+RECOVERED = M.CONCEPT_ROOT / "recovered"
+
+
+def cmd_contact(args):
+    """One page of every recovered thumbnail with its task id, served by
+    the runner at /assets/concept/meshy/recovered/index.html."""
+    ids = sorted(p.stem for p in RECOVERED.glob("*.glb"))
+    cards = []
+    for i in ids:
+        png = RECOVERED / f"{i}.png"
+        img = f'<img src="{i}.png">' if png.exists() else '<div class="none">no thumbnail</div>'
+        cards.append(f'<figure>{img}<figcaption><code>{i}</code></figcaption></figure>')
+    html = ("<!doctype html><meta charset=utf-8><title>recovered models</title>"
+            "<style>body{background:#111;color:#ddd;font:13px monospace;margin:16px}"
+            ".grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:12px}"
+            "figure{margin:0;background:#1a1a1a;padding:8px;border:1px solid #333}img{width:100%;display:block}"
+            ".none{height:200px;display:grid;place-items:center;color:#666}figcaption{margin-top:6px;word-break:break-all}</style>"
+            f"<h2>{len(ids)} recovered model(s)</h2><p>Write one line per model — <code>&lt;id&gt; &lt;roster slug&gt;</code> — into a text file, then "
+            "<code>python3 godot/tools/meshy_recover.py assign that_file.txt</code>. Skip the ones you do not want.</p>"
+            f'<div class="grid">{"".join(cards)}</div>')
+    RECOVERED.mkdir(parents=True, exist_ok=True)
+    (RECOVERED / "index.html").write_text(html)
+    print(f"{len(ids)} model(s) → {M.rel(RECOVERED / 'index.html')}")
+    print("with the runner up:  http://127.0.0.1:8765/assets/concept/meshy/recovered/index.html")
+    return 0
+
+
+def cmd_assign(args):
+    """Each line `<task id> <roster slug>`: the GLB goes to the slug's
+    canonical path, the thumbnail to its concept folder as a candidate
+    and as front.png if it has none (so Hero Studio shows the model as
+    installed and the image as chosen)."""
+    import shutil
+    roster = M.load_roster()
+    by = {e["slug"]: e for e in roster["entries"]}
+    n = 0
+    for raw in Path(args.mapping).read_text().splitlines():
+        line = raw.split("#", 1)[0].strip()
+        if not line:
+            continue
+        parts = line.split()
+        if len(parts) != 2:
+            print(f"  skip (need `<id> <slug>`): {raw}")
+            continue
+        tid, slug = parts
+        entry = by.get(slug)
+        if entry is None:
+            print(f"  skip: no roster slug {slug!r} ({tid})")
+            continue
+        src = RECOVERED / f"{tid}.glb"
+        if not src.exists():
+            print(f"  skip: {M.rel(src)} not recovered yet ({slug})")
+            continue
+        out = M.entry_out_path(entry)
+        out.parent.mkdir(parents=True, exist_ok=True)
+        shutil.move(str(src), str(out))
+        cdir = M.entry_dir(entry)
+        cdir.mkdir(parents=True, exist_ok=True)
+        thumb = RECOVERED / f"{tid}.png"
+        if thumb.exists():
+            cand = cdir / f"{slug}_front_meshy_recovered.png"
+            shutil.copy2(str(thumb), str(cand))
+            front = cdir / "front.png"
+            if not front.exists():
+                shutil.move(str(thumb), str(front))
+            else:
+                thumb.unlink()
+        M.append_manifest({"kind": "assigned", "task": tid, "slug": slug, "glb": M.rel(out), "when": M.now_iso()})
+        print(f"  {slug:28s} ← {tid}  → {M.rel(out)}")
+        n += 1
+    print(f"assigned {n}")
+    return 0
+
+
 def main():
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     sub = ap.add_subparsers(dest="cmd", required=True)
     p = sub.add_parser("list"); p.add_argument("--days", type=int, default=7); p.add_argument("--all", action="store_true"); p.set_defaults(fn=cmd_list)
     p = sub.add_parser("fetch"); p.add_argument("task_id"); p.add_argument("slug"); p.set_defaults(fn=cmd_fetch)
     p = sub.add_parser("fetch-all"); p.add_argument("--days", type=int, default=7); p.set_defaults(fn=cmd_fetch_all)
+    p = sub.add_parser("contact"); p.set_defaults(fn=cmd_contact)
+    p = sub.add_parser("assign"); p.add_argument("mapping"); p.set_defaults(fn=cmd_assign)
     args = ap.parse_args()
     return args.fn(args)
 
