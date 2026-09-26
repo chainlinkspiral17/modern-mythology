@@ -1,0 +1,88 @@
+{
+  "id": "dw_2004-12-12_the_mailbox_2004",
+  "title": "Sunday · the mailbox, 2004",
+  "strip": "drift_wood",
+  "date": "2004-12-12",
+  "run": 3,
+  "era": "era2",
+  "format": "sunday",
+  "tier": "B",
+  "selection": "part",
+  "venue": "Arthur's site (newspaper cadence: six dailies + a Sunday)",
+  "arc": "Fixtures",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (2004 · Sundays · deepening xii)",
+  "logline": "The first mailbox Sunday: the roadside box in December rain, three tiers, flag down in all three, and the porch light in the last. The December fixture finds its shape.",
+  "cast": [],
+  "location": "dw_main_street",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "wide tier",
+      "composition": "Tier 1: a roadside mailbox in December rain, flag down.",
+      "characters": [],
+      "props": [
+        "the mailbox"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a roadside mailbox in December rain with its flag down, watercolor, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null,
+      "name": "Rain"
+    },
+    {
+      "n": 2,
+      "shot": "wide tier",
+      "composition": "Tier 2: a mail truck passing without stopping, spray.",
+      "characters": [],
+      "props": [
+        "a mail truck"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a mail truck passing a roadside mailbox without stopping, throwing spray, watercolor, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null,
+      "name": "Truck"
+    },
+    {
+      "n": 3,
+      "shot": "wide tier",
+      "composition": "Tier 3: the mailbox at dusk, flag down, a porch light far back.",
+      "characters": [],
+      "props": [
+        "a porch light"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a roadside mailbox at dusk with its flag down and a distant porch light, watercolor, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null,
+      "name": "Light"
+    }
+  ],
+  "art": {
+    "line": "brush-pen",
+    "palette": "first watercolor: gray, sea-green, everything bleeding",
+    "paper": "cheap watercolor paper, buckled"
+  },
+  "notes": "The December fixture finds its shape.",
+  "layout": "tiers, portrait page"
+}

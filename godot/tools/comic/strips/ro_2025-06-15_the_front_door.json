@@ -1,0 +1,61 @@
+{
+  "id": "ro_2025-06-15_the_front_door",
+  "title": "The front door",
+  "strip": "roflcopter",
+  "date": "2025-06-15",
+  "run": 7,
+  "era": "era4",
+  "format": "page",
+  "tier": "A",
+  "selection": "full",
+  "venue": "nobody · boxes 21–40",
+  "arc": "The Tavern, Named",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (Run 7 · deepening xii)",
+  "logline": "The tavern's front door from the lot, and a man in plaid going in it from behind, the pup sitting outside — the first time in twenty-one years the page has him use the front. The sign above, out of frame.",
+  "cast": [
+    "wood_44",
+    "barnaby_ii"
+  ],
+  "location": "dw_tavern",
+  "margin": {
+    "signature": "ROFLCOPTER",
+    "mark": "roflcopter",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "single page",
+      "composition": "A tavern's front door from its gravel lot with a man in plaid from behind stepping in, an old three-legged dog sitting outside the door, the sign above cut off by the page's top edge.",
+      "characters": [
+        {
+          "id": "wood_44",
+          "pose": "going in, from behind",
+          "expression": ""
+        },
+        {
+          "id": "barnaby_ii",
+          "pose": "outside",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a single full comic page with no panel borders, spare knowing ink line with economy, muted ochre and slate blue and sea-foam green washes, a tavern's front door seen from a gravel lot with a man in plaid flannel seen from behind stepping inside and an old three-legged dog sitting outside the door, the sign cut off by the page's top edge, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "spare, knowing; economy of line; Era I's black spotting back on purpose in the mill run",
+    "palette": "muted ochres, slate blues, misty sea-foam greens; luminous sunbreaks in the last spring",
+    "paper": "Arches; bristol; the backs of motel registration cards"
+  },
+  "notes": "The front, for once.",
+  "layout": "single page, no borders"
+}

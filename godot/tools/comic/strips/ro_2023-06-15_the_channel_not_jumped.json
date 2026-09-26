@@ -1,0 +1,57 @@
+{
+  "id": "ro_2023-06-15_the_channel_not_jumped",
+  "title": "The channel not jumped",
+  "strip": "roflcopter",
+  "date": "2023-06-15",
+  "run": 7,
+  "era": "era4",
+  "format": "page",
+  "tier": "A",
+  "selection": "full",
+  "venue": "nobody · boxes 21–40",
+  "arc": "unsequenced",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (Run 7 · deepening xii)",
+  "logline": "The pup at eight on the flats at a channel he jumped last year, stopped at its edge, looking at the water. The two-one prints end at the edge. The page draws the deciding, and then the going around.",
+  "cast": [
+    "barnaby_ii"
+  ],
+  "location": "dw_mudflats",
+  "margin": {
+    "signature": "ROFLCOPTER",
+    "mark": "roflcopter",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "single page",
+      "composition": "A small three-legged dog stopped at the edge of a tidal channel on the flats looking at the water, its prints ending at the edge, a second trail of prints starting off to the side around the channel's end.",
+      "characters": [
+        {
+          "id": "barnaby_ii",
+          "pose": "at the channel's edge",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "prints"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a single full comic page with no panel borders, spare knowing ink line with economy, muted ochre and slate blue and sea-foam green washes, a small three-legged dog stopped at the edge of a tidal channel on mudflats looking at the water with its prints ending at the edge and a second trail starting off around the channel's end, no words",
+        "negative": "",
+        "notes": "Compare ro_2022-04-03 (jumped)."
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "spare, knowing; economy of line; Era I's black spotting back on purpose in the mill run",
+    "palette": "muted ochres, slate blues, misty sea-foam greens; luminous sunbreaks in the last spring",
+    "paper": "Arches; bristol; the backs of motel registration cards"
+  },
+  "notes": "Around, this year.",
+  "layout": "single page, no borders"
+}

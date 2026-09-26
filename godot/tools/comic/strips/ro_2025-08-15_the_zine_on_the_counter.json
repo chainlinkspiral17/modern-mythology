@@ -1,0 +1,49 @@
+{
+  "id": "ro_2025-08-15_the_zine_on_the_counter",
+  "title": "The zine on the counter",
+  "strip": "roflcopter",
+  "date": "2025-08-15",
+  "run": 7,
+  "era": "era4",
+  "format": "page",
+  "tier": "A",
+  "selection": "full",
+  "venue": "nobody · boxes 21–40",
+  "arc": "An August",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (Run 7 · deepening xii)",
+  "logline": "A zine on Gully's counter by the end stool, left: stapled, quarter-letter, a crab on the cover drawn in a hand that isn't his. Gully's daughter's? The page doesn't open it. The corn tray beside it.",
+  "cast": [],
+  "location": "dw_gullys",
+  "margin": {
+    "signature": "ROFLCOPTER",
+    "mark": "roflcopter",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "single page",
+      "composition": "A stapled quarter-size zine lying on a shop counter beside an empty end stool, a crab drawn on its cover in a different hand, a paper tray beside it, the corkboard above.",
+      "characters": [],
+      "props": [
+        "the zine"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a single full comic page with no panel borders, spare knowing ink line with economy, muted ochre and slate blue and sea-foam green washes, a stapled small zine lying on a shop counter beside an empty end stool with a crab drawn on its cover, a paper tray beside it and a crowded corkboard above, no words legible",
+        "negative": "",
+        "notes": "Whose: reserved. Not opened."
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "spare, knowing; economy of line; Era I's black spotting back on purpose in the mill run",
+    "palette": "muted ochres, slate blues, misty sea-foam greens; luminous sunbreaks in the last spring",
+    "paper": "Arches; bristol; the backs of motel registration cards"
+  },
+  "notes": "A crab in another hand. Not opened.",
+  "layout": "single page, no borders"
+}

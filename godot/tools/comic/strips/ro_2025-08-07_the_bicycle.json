@@ -1,0 +1,50 @@
+{
+  "id": "ro_2025-08-07_the_bicycle",
+  "title": "The bicycle",
+  "strip": "roflcopter",
+  "date": "2025-08-07",
+  "run": 7,
+  "era": "era4",
+  "format": "page",
+  "tier": "A",
+  "selection": "full",
+  "venue": "nobody · boxes 21–40",
+  "arc": "An August",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (Run 7 · deepening xii)",
+  "logline": "A girl's bicycle against the seawall, close: a basket, a zine in the basket, a sticker on the frame with an eye on it. The town's other story in one object. The page doesn't touch it.",
+  "cast": [],
+  "location": "dw_main_street",
+  "margin": {
+    "signature": "ROFLCOPTER",
+    "mark": "roflcopter",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "single page",
+      "composition": "A bicycle leaning against a seawall, close: a wire basket with a stapled zine in it, a small eye sticker on the frame, the bay beyond.",
+      "characters": [],
+      "props": [
+        "the bicycle",
+        "the eye sticker"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a single full comic page with no panel borders, spare knowing ink line with economy, muted ochre and slate blue and sea-foam green washes, a bicycle leaning against a seawall seen close with a wire basket holding a stapled zine and a small eye sticker on the frame, a bay beyond, no words legible",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "spare, knowing; economy of line; Era I's black spotting back on purpose in the mill run",
+    "palette": "muted ochres, slate blues, misty sea-foam greens; luminous sunbreaks in the last spring",
+    "paper": "Arches; bristol; the backs of motel registration cards"
+  },
+  "notes": "Doesn't touch it.",
+  "layout": "single page, no borders"
+}

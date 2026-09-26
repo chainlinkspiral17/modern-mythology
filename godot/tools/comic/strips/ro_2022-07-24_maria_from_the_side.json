@@ -1,0 +1,61 @@
+{
+  "id": "ro_2022-07-24_maria_from_the_side",
+  "title": "Maria, from the side",
+  "strip": "roflcopter",
+  "date": "2022-07-24",
+  "run": 7,
+  "era": "era4",
+  "format": "page",
+  "tier": "A",
+  "selection": "full",
+  "venue": "nobody · boxes 21–40",
+  "arc": "unsequenced",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (Run 7 · deepening xii)",
+  "logline": "Maria in the lawn chair in July from the side, the braid gray now, a mug, the ramp beside her, the bird on the piling behind her not looked at. The strip's Maria at fifty-one, drawn the way the strip drew her: without a line of dialogue.",
+  "cast": [
+    "extra_maria",
+    "the_bird"
+  ],
+  "location": "dw_gullys",
+  "margin": {
+    "signature": "ROFLCOPTER",
+    "mark": "roflcopter",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "single page",
+      "composition": "A woman with a gray braid in an old lawn chair on a dock in July from the side, a mug in her hands, a plank ramp beside her, a small rainbow bird on a piling behind her unlooked at.",
+      "characters": [
+        {
+          "id": "extra_maria",
+          "pose": "in the chair, from the side",
+          "expression": ""
+        },
+        {
+          "id": "the_bird",
+          "pose": "on a piling, behind",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a single full comic page with no panel borders, spare knowing ink line with economy, muted ochre and slate blue and sea-foam green washes, a woman with a gray braid sitting in an old lawn chair on a dock in July seen from the side holding a mug, a plank ramp beside her and a small rainbow bird on a piling behind her, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "spare, knowing; economy of line; Era I's black spotting back on purpose in the mill run",
+    "palette": "muted ochres, slate blues, misty sea-foam greens; luminous sunbreaks in the last spring",
+    "paper": "Arches; bristol; the backs of motel registration cards"
+  },
+  "notes": "Without a line, as always.",
+  "layout": "single page, no borders"
+}

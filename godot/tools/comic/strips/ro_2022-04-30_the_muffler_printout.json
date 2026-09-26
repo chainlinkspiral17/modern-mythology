@@ -1,0 +1,49 @@
+{
+  "id": "ro_2022-04-30_the_muffler_printout",
+  "title": "The muffler printout",
+  "strip": "roflcopter",
+  "date": "2022-04-30",
+  "run": 7,
+  "era": "era4",
+  "format": "page",
+  "tier": "A",
+  "selection": "full",
+  "venue": "nobody · boxes 21–40",
+  "arc": "unsequenced",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (Run 7 · deepening xii)",
+  "logline": "The muffler-shop printout pinned by Gully's door since 2006, yellowed, the page drawing it as a rectangle of light with the crab in one corner. What it says: reserved. That it's still up: the page.",
+  "cast": [],
+  "location": "dw_gullys",
+  "margin": {
+    "signature": "ROFLCOPTER",
+    "mark": "roflcopter",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "single page",
+      "composition": "A yellowed sheet of paper pinned by a shingle shack's door, its printing faded to gray blocks, a small crab drawn in one corner, the dock beyond.",
+      "characters": [],
+      "props": [
+        "the printout"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a single full comic page with no panel borders, spare knowing ink line with economy, muted ochre and slate blue and sea-foam green washes, a yellowed sheet of paper pinned beside a shingle shack's door with its printing faded to gray blocks and a small ink crab in one corner, a dock beyond, no words legible",
+        "negative": "",
+        "notes": "The muffler printout (objects.md · Gully's dock). Words reserved."
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "spare, knowing; economy of line; Era I's black spotting back on purpose in the mill run",
+    "palette": "muted ochres, slate blues, misty sea-foam greens; luminous sunbreaks in the last spring",
+    "paper": "Arches; bristol; the backs of motel registration cards"
+  },
+  "notes": "Still up.",
+  "layout": "single page, no borders"
+}

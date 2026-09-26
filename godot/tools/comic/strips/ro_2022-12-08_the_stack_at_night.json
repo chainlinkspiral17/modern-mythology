@@ -1,0 +1,49 @@
+{
+  "id": "ro_2022-12-08_the_stack_at_night",
+  "title": "The stack at night, 1994",
+  "strip": "roflcopter",
+  "date": "2022-12-08",
+  "run": 7,
+  "era": "era4",
+  "format": "page",
+  "tier": "A",
+  "selection": "full",
+  "venue": "nobody · boxes 21–40",
+  "arc": "The Mill, 1994",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (Run 7 · deepening xii)",
+  "logline": "The stack at night from the beach road, 1994, the mill's windows lit for the night shift, the smoke against stars, the town's few lights below it. The mill as the town's lamp. Era I spotting for the night.",
+  "cast": [],
+  "location": "dw_cedar_mill",
+  "margin": {
+    "signature": "ROFLCOPTER",
+    "mark": "roflcopter",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "single page",
+      "composition": "A mill at night from a beach road: its long windows lit, the stack's smoke against stars, a few town lights below, black spotting for the dark.",
+      "characters": [],
+      "props": [
+        "the lit windows"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a single full comic page with no panel borders, spare knowing ink line with economy, muted ochre and slate blue and sea-foam green washes, in the Era I manner, heavy black spotting brought back on purpose, a lumber mill at night seen from a coastal road with its long windows lit and its stack's smoke against a starry sky, a few small town lights below, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "spare, knowing; economy of line; Era I's black spotting back on purpose in the mill run",
+    "palette": "muted ochres, slate blues, misty sea-foam greens; luminous sunbreaks in the last spring",
+    "paper": "Arches; bristol; the backs of motel registration cards"
+  },
+  "notes": "The town's lamp.",
+  "layout": "single page, no borders"
+}
