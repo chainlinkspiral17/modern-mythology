@@ -1,0 +1,168 @@
+{
+  "id": "dw_2009-06-12_best_man",
+  "title": "Best man",
+  "strip": "drift_wood",
+  "date": "2009-06-12",
+  "run": 3,
+  "era": "era2",
+  "format": "daily4",
+  "tier": "A",
+  "selection": "full",
+  "venue": "Arthur's site · the coastal weeklies",
+  "arc": "Best Man",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (2009–2011)",
+  "logline": "Gully marries Maria. Wood is best man. The strip cuts before the speech.",
+  "cast": [
+    "wood_26",
+    "gully_27",
+    "extra_maria",
+    "barnaby"
+  ],
+  "location": "dw_gullys",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "wide",
+      "composition": "Gully's dock, June, strung with lights, folding chairs, the whole town. GULLY in a borrowed jacket over the apron — no, no apron, the one day. MARIA in a plain dress, practical shoes. A county judge. WOOD beside Gully in the thrift-store wool suit. BARNABY as ring bearer, sort of.",
+      "characters": [
+        {
+          "id": "gully_27",
+          "pose": "in a jacket, no apron",
+          "expression": ""
+        },
+        {
+          "id": "extra_maria",
+          "pose": "plain dress",
+          "expression": ""
+        },
+        {
+          "id": "wood_26",
+          "pose": "beside him, wool suit",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "with a ribbon",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "string lights",
+        "folding chairs",
+        "dock",
+        "a judge"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a wedding on a wooden dock in June strung with lights and folding chairs, a stocky groom in a borrowed jacket, a bride in a plain dress and practical shoes, a county judge, a thin best man in an ill-fitting wool suit, a gray-muzzled dog wearing a ribbon, muddy watercolor",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "close",
+      "composition": "Gully, to Wood, sideways, during the vows.",
+      "characters": [
+        {
+          "id": "gully_27",
+          "pose": "sideways",
+          "expression": ""
+        },
+        {
+          "id": "wood_26",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [
+        {
+          "who": "GULLY",
+          "text": "Speech is after the chowder."
+        },
+        {
+          "who": "WOOD",
+          "text": "I've prepared eleven minutes."
+        },
+        {
+          "who": "GULLY",
+          "text": "You've got two."
+        },
+        {
+          "who": "WOOD",
+          "text": "I'll talk fast."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "close-up of a groom whispering sideways to his best man during vows on a dock",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "medium",
+      "composition": "The chowder. The tables. Wood standing with a glass, a folded paper in his other hand, opening his mouth.",
+      "characters": [
+        {
+          "id": "wood_26",
+          "pose": "standing, glass raised, paper in hand",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "chowder pots",
+        "glass",
+        "folded speech"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a thin man in a wool suit standing at a dock-side table with a raised glass and a folded paper, about to speak, string lights",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "wide",
+      "composition": "Wide, from the water. The dock. The lights. The whole town at the tables. A small figure standing with a glass. The strip cuts here. Whatever he said is the town's.",
+      "characters": [],
+      "props": [
+        "dock from the water",
+        "lights",
+        "tables",
+        "a small standing figure"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a wedding on a dock seen from out on the water at dusk, string lights, tables, one small figure standing with a raised glass, watercolor, no words",
+        "negative": "",
+        "notes": "Cut before the speech. Never shown. The afterword may quote it."
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "brush-pen; the flats cleaner; the Sundays the point now",
+    "palette": "limited; Sundays in watercolor",
+    "paper": "bristol; newsprint a week behind"
+  },
+  "notes": "Gully and Maria. The speech is cut. The dog wears a ribbon."
+}

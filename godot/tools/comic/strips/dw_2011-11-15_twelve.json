@@ -1,0 +1,138 @@
+{
+  "id": "dw_2011-11-15_twelve",
+  "title": "Twelve",
+  "strip": "drift_wood",
+  "date": "2011-11-15",
+  "run": 3,
+  "era": "era2",
+  "format": "daily4",
+  "tier": "A",
+  "selection": "full",
+  "venue": "Arthur's site · the coastal weeklies",
+  "arc": "Twelve / The Dog Night",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (2009–2011)",
+  "logline": "Twelve years. The walks are shorter. The panels are wider. The Dog Night plus three.",
+  "cast": [
+    "wood_26",
+    "barnaby"
+  ],
+  "location": "dw_bowling_alley",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "wide",
+      "composition": "The dumpster. WOOD setting BARNABY down. The panel is wider than a standard panel — the strip has made room.",
+      "characters": [
+        {
+          "id": "wood_26",
+          "pose": "setting the dog down",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "dumpster",
+        "bulb"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a man setting an old dog down on gravel behind a bowling alley at night, the panel wider than standard, muddy watercolor, no words",
+        "negative": "",
+        "notes": "Wider panels this year. The strip makes room for the dog to take his time."
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "wide",
+      "composition": "The dog walking three steps to the dumpster. Three steps take a panel.",
+      "characters": [
+        {
+          "id": "barnaby",
+          "pose": "three slow steps",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "an old dog taking three slow steps toward a rusted dumpster under a bulb, a wide panel giving them room, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "wide",
+      "composition": "The dog sitting. Wood sitting. Wide. The bulb. Both looking at the chain-link where the rope was, twelve years ago.",
+      "characters": [
+        {
+          "id": "wood_26",
+          "pose": "sitting",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "sitting",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "chain-link"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a man and an old dog sitting side by side on gravel looking at a chain-link fence under a bulb, wide panel, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "wide",
+      "composition": "The sign. SMALL WOOD LANES with the S dark. Wood carrying the dog. Wide. Slow.",
+      "characters": [
+        {
+          "id": "wood_26",
+          "pose": "carrying the dog",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "neon with the S dark"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a man carrying an old dog away beneath a bowling-alley neon sign with its first letter dark, a wide slow panel, watercolor, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "brush-pen; the flats cleaner; the Sundays the point now",
+    "palette": "limited; Sundays in watercolor",
+    "paper": "bristol; newsprint a week behind"
+  },
+  "notes": "Twelve. Wide panels. The S still dark."
+}

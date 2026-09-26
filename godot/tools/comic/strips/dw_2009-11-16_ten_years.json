@@ -1,0 +1,141 @@
+{
+  "id": "dw_2009-11-16_ten_years",
+  "title": "Ten years under the table",
+  "strip": "drift_wood",
+  "date": "2009-11-16",
+  "run": 3,
+  "era": "era2",
+  "format": "daily4",
+  "tier": "A",
+  "selection": "full",
+  "venue": "Arthur's site · the coastal weeklies",
+  "arc": "Ten Years Under the Table / The Dog Night",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (2009–2011)",
+  "logline": "The Dog Night extended to five. The dog is ten. The walks are the same. The strip is not.",
+  "cast": [
+    "wood_26",
+    "barnaby"
+  ],
+  "location": "dw_bowling_alley",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "wide",
+      "composition": "The dumpster. The bulb. The dog is ten. He sits before Wood stops walking.",
+      "characters": [
+        {
+          "id": "wood_26",
+          "pose": "stopping",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "already sitting",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "dumpster",
+        "bulb"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a man and a gray-muzzled dog behind a bowling alley at night under a bulb, the dog already sitting before the man has stopped walking, muddy watercolor, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "close",
+      "composition": "The dog. Ten. The eyes cloudier. Drawn with the same four strokes as 2000 and two more.",
+      "characters": [
+        {
+          "id": "barnaby",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "close-up of an old dog's face under a bulb, eyes slightly cloudy, drawn in a few tender strokes, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "medium",
+      "composition": "Wood sitting on the gravel. The dog climbing into his lap, which he has never done here.",
+      "characters": [
+        {
+          "id": "wood_26",
+          "pose": "sitting",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "climbing into his lap",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a man sitting on gravel at night as an old dog climbs into his lap under a bulb, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "wide",
+      "composition": "Walking away, slowly, the dog carried the last stretch. The sign, all lit.",
+      "characters": [
+        {
+          "id": "wood_26",
+          "pose": "carrying the dog",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "carried",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "neon"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a man walking away under a fully lit bowling-alley neon sign carrying an old dog in his arms, watercolor, no words",
+        "negative": "",
+        "notes": "The first time he carries him. It's short. It's a preview."
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "brush-pen; the flats cleaner; the Sundays the point now",
+    "palette": "limited; Sundays in watercolor",
+    "paper": "bristol; newsprint a week behind"
+  },
+  "notes": "Ten. Carried the last stretch. The strip is previewing 2014 without knowing."
+}

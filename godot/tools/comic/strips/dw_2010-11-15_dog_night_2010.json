@@ -1,0 +1,137 @@
+{
+  "id": "dw_2010-11-15_dog_night_2010",
+  "title": "The Dog Night, 2010",
+  "strip": "drift_wood",
+  "date": "2010-11-15",
+  "run": 3,
+  "era": "era2",
+  "format": "daily4",
+  "tier": "A",
+  "selection": "full",
+  "venue": "Arthur's site · the coastal weeklies",
+  "arc": "The Dog Night",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (2010)",
+  "logline": "Eleven years. The first Dog Night after the sabbatical. He carries the dog both ways.",
+  "cast": [
+    "wood_26",
+    "barnaby"
+  ],
+  "location": "dw_bowling_alley",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "wide",
+      "composition": "The dumpster, night, the bulb. WOOD arriving carrying BARNABY. Setting him down on the gravel gently.",
+      "characters": [
+        {
+          "id": "wood_26",
+          "pose": "setting the dog down",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "being set down",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "dumpster",
+        "bulb",
+        "gravel"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a man gently setting an old dog down on gravel behind a bowling alley at night under a bulb, muddy watercolor, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "close",
+      "composition": "The dog standing. Looking at the dumpster. Sitting.",
+      "characters": [
+        {
+          "id": "barnaby",
+          "pose": "sitting",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "close-up of an old dog looking at a rusted dumpster and then sitting, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "medium",
+      "composition": "Wood on the gravel beside him. His hand on the dog. Both looking at nothing in particular.",
+      "characters": [
+        {
+          "id": "wood_26",
+          "pose": "sitting, hand on the dog",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a man sitting on gravel with his hand resting on an old dog beside him, both looking at nothing, bulb light, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "wide",
+      "composition": "Walking away, the dog carried. The sign: SMALL WOOD LANES, and for the first time one letter is dark. The S.",
+      "characters": [
+        {
+          "id": "wood_26",
+          "pose": "carrying the dog",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "neon with the first letter dark"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a man carrying an old dog away beneath a bowling-alley neon sign where the first letter has gone dark, night, watercolor, no words",
+        "negative": "",
+        "notes": "The first dead letter: the S. 'Lanes' 2009 had the L flicker; this year one is fully out. Track the sign from here."
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "brush-pen; the flats cleaner; the Sundays the point now",
+    "palette": "limited; Sundays in watercolor",
+    "paper": "bristol; newsprint a week behind"
+  },
+  "notes": "Carried both ways. The first letter dies on the sign."
+}
