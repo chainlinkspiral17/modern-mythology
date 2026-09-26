@@ -1,0 +1,154 @@
+{
+  "id": "dw_2000-04-27_what_people_frame_1",
+  "title": "What people frame, i",
+  "strip": "drift_wood",
+  "date": "2000-04-27",
+  "run": 2,
+  "era": "era1",
+  "format": "daily4",
+  "tier": "B",
+  "selection": "full",
+  "venue": "the coast community-college paper, Newport · the laundromat digest",
+  "arc": "Heceta Frame & Matting",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (1999–2000)",
+  "logline": "The first customer. A fishing license. Wood learns the town by what it puts on the wall.",
+  "cast": [
+    "wood_20",
+    "extra_customer_1"
+  ],
+  "location": "dw_frame_shop",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "medium",
+      "composition": "The frame shop counter. A CUSTOMER, a fisherman, sliding a laminated fishing license across. WOOD.",
+      "characters": [
+        {
+          "id": "extra_customer_1",
+          "pose": "sliding a license across",
+          "expression": ""
+        },
+        {
+          "id": "wood_20",
+          "pose": "behind the counter",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "fishing license",
+        "counter",
+        "sample frames"
+      ],
+      "balloons": [
+        {
+          "who": "CUSTOMER",
+          "text": "Frame this."
+        },
+        {
+          "who": "WOOD",
+          "text": "A... fishing license."
+        },
+        {
+          "who": "CUSTOMER",
+          "text": "Fifty years. Same number."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a weathered fisherman sliding a laminated fishing license across a frame-shop counter to a young man in a chore coat",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "close",
+      "composition": "The license. A number. Fifty years of renewal stickers layered on the back like tree rings.",
+      "characters": [],
+      "props": [
+        "license with layered stickers"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "close-up of an old fishing license with fifty years of renewal stickers layered on its back like tree rings",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "medium",
+      "composition": "Wood, choosing a frame with more care than he's shown anything. Cedar. Plain.",
+      "characters": [
+        {
+          "id": "wood_20",
+          "pose": "holding up a plain cedar frame",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "cedar frame sample"
+      ],
+      "balloons": [
+        {
+          "who": "WOOD",
+          "text": "Cedar. No mat. It doesn't need help."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a young man holding up a plain cedar frame sample against a fishing license with great care",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "medium",
+      "composition": "The fisherman leaving with the framed license under his arm. Wood at the counter, drawing it from memory before it's out the door.",
+      "characters": [
+        {
+          "id": "extra_customer_1",
+          "pose": "leaving with the frame",
+          "expression": ""
+        },
+        {
+          "id": "wood_20",
+          "pose": "drawing at the counter",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "framed license",
+        "pad"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a fisherman walking out of a frame shop with a small framed license under his arm while the young man at the counter sketches it from memory, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "brush-pen, committed; black and white; xerox",
+    "palette": "",
+    "paper": "newsprint / the digest"
+  },
+  "notes": "The frame-job dailies begin. The town, one wall at a time."
+}

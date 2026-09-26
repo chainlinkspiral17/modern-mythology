@@ -1,0 +1,135 @@
+{
+  "id": "dw_2000-05-11_what_people_frame_3",
+  "title": "What people frame, iii",
+  "strip": "drift_wood",
+  "date": "2000-05-11",
+  "run": 2,
+  "era": "era1",
+  "format": "daily4",
+  "tier": "B",
+  "selection": "full",
+  "venue": "the coast community-college paper, Newport · the laundromat digest",
+  "arc": "Heceta Frame & Matting",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (1999–2000)",
+  "logline": "A child's drawing, framed by a father who says nothing. Wood says nothing back. A first.",
+  "cast": [
+    "wood_20",
+    "extra_father"
+  ],
+  "location": "dw_frame_shop",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "medium",
+      "composition": "The counter. A FATHER in a mill jacket — the mill's been closed six years — with a child's crayon drawing: a house, a dog, a very tall tree.",
+      "characters": [
+        {
+          "id": "extra_father",
+          "pose": "holding out a crayon drawing",
+          "expression": ""
+        },
+        {
+          "id": "wood_20",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "crayon drawing",
+        "mill jacket with a faded logo"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a quiet man in a faded mill jacket holding out a child's crayon drawing of a house, a dog and a very tall tree at a frame-shop counter",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "close",
+      "composition": "The drawing. The tree is taller than the house. The dog is bigger than the tree.",
+      "characters": [],
+      "props": [
+        "the crayon drawing"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "close-up of a child's crayon drawing where the tree is taller than the house and the dog is bigger than the tree",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "medium",
+      "composition": "Wood opening his mouth. Closing it. Choosing a frame. Red. The father nods once.",
+      "characters": [
+        {
+          "id": "wood_20",
+          "pose": "holding up a red frame, saying nothing",
+          "expression": ""
+        },
+        {
+          "id": "extra_father",
+          "pose": "nodding once",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "red frame"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a young man silently holding up a red frame to a man in a mill jacket who nods once, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "wide",
+      "composition": "The father gone. Wood at the counter, looking at the door. The pad open beside him. He doesn't draw this one.",
+      "characters": [
+        {
+          "id": "wood_20",
+          "pose": "looking at the door, pad open, pen down",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "pad, blank",
+        "door"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a young man alone at a frame-shop counter looking at the door, an open blank drawing pad beside him with the pen set down, black and white, no words",
+        "negative": "",
+        "notes": "The first customer he doesn't draw. Note the blank pad."
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "brush-pen, committed; black and white; xerox",
+    "palette": "",
+    "paper": "newsprint / the digest"
+  },
+  "notes": "The first time Wood says nothing. The first customer he doesn't draw."
+}

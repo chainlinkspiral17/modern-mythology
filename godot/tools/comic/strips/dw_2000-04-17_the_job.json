@@ -1,0 +1,161 @@
+{
+  "id": "dw_2000-04-17_the_job",
+  "title": "The job",
+  "strip": "drift_wood",
+  "date": "2000-04-17",
+  "run": 2,
+  "era": "era1",
+  "format": "daily4",
+  "tier": "B",
+  "selection": "full",
+  "venue": "the coast community-college paper, Newport · the laundromat digest",
+  "arc": "Heceta Frame & Matting",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (1999–2000)",
+  "logline": "A HELP WANTED sign on 101. Wood applies with a monologue. He gets it anyway.",
+  "cast": [
+    "wood_20",
+    "extra_owner_heceta"
+  ],
+  "location": "dw_frame_shop",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "wide",
+      "composition": "Highway 101. A low building: HECETA FRAME & MATTING. A HELP WANTED card in the window. WOOD's Datsun pulling in.",
+      "characters": [
+        {
+          "id": "wood_20",
+          "pose": "in the car",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "frame shop exterior",
+        "HELP WANTED card",
+        "101"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a low roadside building with a sign reading HECETA FRAME & MATTING on a coastal highway, a HELP WANTED card in the window, an old Datsun pulling in, brush-pen black and white",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "medium",
+      "composition": "Inside. Frames on every wall. The OWNER, a woman in reading glasses, at a mat cutter. Wood in the door, already talking.",
+      "characters": [
+        {
+          "id": "extra_owner_heceta",
+          "pose": "at a mat cutter, glasses",
+          "expression": ""
+        },
+        {
+          "id": "wood_20",
+          "pose": "in the doorway, mid-speech",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "walls of frames",
+        "mat cutter",
+        "a radio"
+      ],
+      "balloons": [
+        {
+          "who": "WOOD",
+          "text": "I should say up front that I consider the frame a form of criticism. What you exclude is—"
+        },
+        {
+          "who": "OWNER",
+          "text": "Can you cut a forty-five."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "the interior of a small picture-framing shop with frames covering the walls, a woman in reading glasses at a mat cutter, a young man in a chore coat talking in the doorway",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "close",
+      "composition": "Wood at the mat cutter. The blade. The corner. Clean.",
+      "characters": [
+        {
+          "id": "wood_20",
+          "pose": "cutting a mat corner",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "mat cutter",
+        "a clean forty-five"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "close-up of a young man's hands guiding a mat cutter through a clean forty-five-degree corner on mat board",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "medium",
+      "composition": "The owner, looking at the corner. Then at him.",
+      "characters": [
+        {
+          "id": "extra_owner_heceta",
+          "pose": "holding the mat corner up to the light",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the cut mat"
+      ],
+      "balloons": [
+        {
+          "who": "OWNER",
+          "text": "Tuesdays, Thursdays, Saturdays. Eight-fifty. Don't talk to the customers about criticism."
+        },
+        {
+          "who": "WOOD",
+          "text": "What about—"
+        },
+        {
+          "who": "OWNER",
+          "text": "Or film."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a woman in reading glasses holding a cut mat corner up to the light and speaking flatly to a young man",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "brush-pen, committed; black and white; xerox",
+    "palette": "",
+    "paper": "newsprint / the digest"
+  },
+  "notes": "Eight-fifty an hour. Three days. The scholarship letter is still pinned on the corkboard at home."
+}

@@ -1,0 +1,171 @@
+{
+  "id": "dw_2000-07-04_the_fourth",
+  "title": "The Fourth on the bay",
+  "strip": "drift_wood",
+  "date": "2000-07-04",
+  "run": 2,
+  "era": "era1",
+  "format": "daily4",
+  "tier": "B",
+  "selection": "full",
+  "venue": "the coast community-college paper, Newport · the laundromat digest",
+  "arc": "The Fourth on the Bay",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (1999–2000)",
+  "logline": "Fireworks over Alsea Bay from the uncle's dock. The only night with color. The strip can't afford color.",
+  "cast": [
+    "wood_20",
+    "gully_17",
+    "barnaby",
+    "extra_uncle"
+  ],
+  "location": "dw_boat_launch",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "gull",
+    "note": ""
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "wide",
+      "composition": "The dock at night, July. The UNCLE in a lawn chair with an oxygen line, small. GULLY and WOOD on the dock edge. BARNABY under the chair. Fireworks over the bay drawn in pure black and white: white bursts, black sky.",
+      "characters": [
+        {
+          "id": "extra_uncle",
+          "pose": "in a lawn chair with an oxygen line",
+          "expression": ""
+        },
+        {
+          "id": "gully_17",
+          "pose": "dock edge",
+          "expression": ""
+        },
+        {
+          "id": "wood_20",
+          "pose": "dock edge",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "under the chair",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "lawn chair",
+        "oxygen line",
+        "fireworks",
+        "the bay"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "POM — pom",
+      "image": {
+        "prompt": "a wooden dock at night with fireworks bursting white against a black sky over a bay, two young men on the dock edge, an old man in a lawn chair with an oxygen line, a small dog under the chair, high-contrast black and white",
+        "negative": "",
+        "notes": "The uncle's oxygen line: the first sign. Small. Not remarked."
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "close",
+      "composition": "Wood, looking up.",
+      "characters": [
+        {
+          "id": "wood_20",
+          "pose": "looking up",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [
+        {
+          "who": "WOOD",
+          "text": "This is the one night a year the strip should be in color."
+        },
+        {
+          "who": "GULLY",
+          "text": "So do it in color."
+        },
+        {
+          "who": "WOOD",
+          "text": "The copier's black and white."
+        },
+        {
+          "who": "GULLY",
+          "text": "So it's the one night a year you're wrong."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "close-up of a young man looking up at fireworks beside a boy in a backwards cap, white light on their faces",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "close",
+      "composition": "The uncle, from the chair, not looking up.",
+      "characters": [
+        {
+          "id": "extra_uncle",
+          "pose": "in the chair",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [
+        {
+          "who": "UNCLE",
+          "text": "They were red in '71."
+        },
+        {
+          "who": "GULLY",
+          "text": "They're red now, Uncle."
+        },
+        {
+          "who": "UNCLE",
+          "text": "Not in his."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "close-up of an old man in a lawn chair with an oxygen line speaking without looking up at the fireworks",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "wide",
+      "composition": "The finale. The bay. All white on black. The three of them and the dog, tiny. The only night the strip admits what it can't do.",
+      "characters": [],
+      "props": [
+        "fireworks finale",
+        "the bay",
+        "the dock, tiny figures"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a wide night panel of a fireworks finale over a bay rendered entirely in white bursts on black, a dock with three tiny figures and a dog, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "brush-pen, committed; black and white; xerox",
+    "palette": "",
+    "paper": "newsprint / the digest"
+  },
+  "notes": "The first Fourth. The uncle's oxygen line appears, unremarked. 'They were red in '71' — the 1971 wedding photo's dock."
+}

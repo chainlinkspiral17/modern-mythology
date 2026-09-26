@@ -1,0 +1,157 @@
+{
+  "id": "dw_2000-09-18_seattle_mon",
+  "title": "Seattle, Monday",
+  "strip": "drift_wood",
+  "date": "2000-09-18",
+  "run": 2,
+  "era": "era1",
+  "format": "daily4",
+  "tier": "A",
+  "selection": "full",
+  "venue": "the coast community-college paper, Newport · the laundromat digest",
+  "arc": "Seattle, Three Days",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (1999–2000)",
+  "logline": "Wood and Chloe on the Greyhound, side by side. The strip says he went. The strip is lying.",
+  "cast": [
+    "wood_20",
+    "chloe_17"
+  ],
+  "location": "dw_greyhound",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "crab",
+    "note": "The crab."
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "medium",
+      "composition": "The inside of a Greyhound. WOOD and CHLOE side by side, the overcoat and the Discman. The window full of spruce going by.",
+      "characters": [
+        {
+          "id": "wood_20",
+          "pose": "by the window, coat",
+          "expression": ""
+        },
+        {
+          "id": "chloe_17",
+          "pose": "aisle seat, Discman",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "bus seats",
+        "window with spruce blurring"
+      ],
+      "balloons": [
+        {
+          "who": "CHLOE",
+          "text": "You actually came."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "two young people side by side in Greyhound bus seats, a thin man in an oversized chore coat by the window and a young woman with a Discman on the aisle, spruce blurring past the glass, brush-pen black and white",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "close",
+      "composition": "Wood.",
+      "characters": [
+        {
+          "id": "wood_20",
+          "pose": "",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [
+        {
+          "who": "WOOD",
+          "text": "Someone has to make sure you don't get interesting without supervision."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "close-up of a young man in a bus seat, deadpan, spruce in the window",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "medium",
+      "composition": "Chloe, one earbud out, handing him the other.",
+      "characters": [
+        {
+          "id": "chloe_17",
+          "pose": "handing over an earbud",
+          "expression": ""
+        },
+        {
+          "id": "wood_20",
+          "pose": "taking it",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "Discman",
+        "earbuds"
+      ],
+      "balloons": [
+        {
+          "who": "CHLOE",
+          "text": "Side B. You skipped it."
+        },
+        {
+          "who": "WOOD",
+          "text": "I never skip."
+        },
+        {
+          "who": "CHLOE",
+          "text": "You skip."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a young woman handing one earbud to the young man beside her on a bus",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "wide",
+      "composition": "The bus from outside, small on 101, heading north. Both of them in the window. That's what the strip claims.",
+      "characters": [],
+      "props": [
+        "Greyhound on a coastal highway",
+        "two silhouettes in a window"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a Greyhound bus small on a coastal highway heading north between spruce, two silhouettes visible in one window, black and white, no words",
+        "negative": "",
+        "notes": "This is the delusion. Draw it straight, no wink."
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "brush-pen, committed; black and white; xerox",
+    "palette": "",
+    "paper": "newsprint / the digest"
+  },
+  "notes": "Delusion-and-leak, day one. The strip shows the leaving he didn't do."
+}

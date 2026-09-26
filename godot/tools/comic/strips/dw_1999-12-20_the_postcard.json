@@ -1,0 +1,144 @@
+{
+  "id": "dw_1999-12-20_the_postcard",
+  "title": "The postcard",
+  "strip": "drift_wood",
+  "date": "1999-12-20",
+  "run": 2,
+  "era": "era1",
+  "format": "daily4",
+  "tier": "B",
+  "selection": "full",
+  "venue": "the coast community-college paper, Newport · the laundromat digest",
+  "arc": "Chloe's First Christmas Away",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (1999–2000)",
+  "logline": "A postcard from Seattle in tiny manic handwriting. Wood reads it aloud to the dog. He edits.",
+  "cast": [
+    "wood_20",
+    "barnaby"
+  ],
+  "location": "dw_wood_bedroom",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "crab",
+    "note": "The crab."
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "medium",
+      "composition": "Wood's bedroom. A postcard on the table: a photo of a needle-shaped tower. WOOD holding it. BARNABY under the table, listening because he's there.",
+      "characters": [
+        {
+          "id": "wood_20",
+          "pose": "holding a postcard",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "under the table, one ear up",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "postcard of a tower",
+        "table"
+      ],
+      "balloons": [
+        {
+          "who": "WOOD",
+          "text": "Listen to this. 'Wood — there is a gallery here that only shows things made of light.'"
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a young man at a bedroom drawing table reading a postcard of a needle-shaped tower aloud, a scruffy dog under the table with one ear up, brush-pen black and white",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "close",
+      "composition": "The postcard's back: handwriting so small and dense it's a texture. Wood's thumb over part of it.",
+      "characters": [],
+      "props": [
+        "postcard back, dense handwriting",
+        "a thumb"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "close-up of the back of a postcard covered edge to edge in tiny cramped manic handwriting, a thumb covering one corner",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "medium",
+      "composition": "Wood reading on. Skipping. The dog's ear goes down.",
+      "characters": [
+        {
+          "id": "wood_20",
+          "pose": "reading, skipping a line",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "ear down",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [
+        {
+          "who": "WOOD",
+          "text": "'...guerrilla theater in a parking garage...' — skip — '...you'd hate it, you'd love hating it...' — skip —"
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a young man reading a postcard and visibly skipping lines while a dog under the table lowers its ear",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "close",
+      "composition": "Wood, thumb still over the last line. He doesn't read it out. He puts the card on the corkboard, thumb side to the wall.",
+      "characters": [
+        {
+          "id": "wood_20",
+          "pose": "pinning the card face out, back hidden",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "corkboard",
+        "postcard pinned photo-side out"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "close-up of a hand pinning a postcard to a corkboard with its photo side facing out and its written side to the wall, no words",
+        "negative": "",
+        "notes": "The line he doesn't read stays hidden all run. The afterword can quote it or not."
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "brush-pen, committed; black and white; xerox",
+    "palette": "",
+    "paper": "newsprint / the digest"
+  },
+  "notes": "What was under his thumb: reserved."
+}

@@ -1,0 +1,144 @@
+{
+  "id": "dw_1999-12-24_christmas_eve",
+  "title": "Christmas Eve",
+  "strip": "drift_wood",
+  "date": "1999-12-24",
+  "run": 2,
+  "era": "era1",
+  "format": "daily4",
+  "tier": "B",
+  "selection": "full",
+  "venue": "the coast community-college paper, Newport · the laundromat digest",
+  "arc": "Chloe's First Christmas Away / December",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (1999–2000)",
+  "logline": "Does Chloe come home. The strip walks to her house to find out, and draws the house instead.",
+  "cast": [
+    "wood_20",
+    "barnaby"
+  ],
+  "location": "dw_main_street",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "crab",
+    "note": "The crab."
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "wide",
+      "composition": "Main street, Christmas Eve, rain, the hardware store lights all out this year. WOOD walking BARNABY. Four houses down: Chloe's.",
+      "characters": [
+        {
+          "id": "wood_20",
+          "pose": "walking the dog",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "on the leash",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "hardware store, dark",
+        "rain",
+        "a row of houses"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a young man walking a small dog down a small-town main street on a rainy Christmas Eve, a hardware store with dead lights, a row of houses ahead, black and white",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "medium",
+      "composition": "Chloe's house. A wreath. Lights inside. A car in the driveway with Washington plates — no. Oregon plates. Her parents' car.",
+      "characters": [
+        {
+          "id": "wood_20",
+          "pose": "stopped on the sidewalk",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "sniffing the hedge",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "a house with a wreath",
+        "a car with Oregon plates",
+        "lit windows"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a young man stopped on a wet sidewalk in front of a small house with a wreath and lit windows, a car with Oregon plates in the driveway, a dog sniffing the hedge",
+        "negative": "",
+        "notes": "Plates: OREGON. Not hers. Letter after if needed."
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "close",
+      "composition": "A silhouette in the window. Her mother. Not her.",
+      "characters": [],
+      "props": [
+        "window silhouette"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "close-up of a lit house window at night with a woman's silhouette that is clearly not a teenager",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "wide",
+      "composition": "Wood on the sidewalk, drawing the house on the pad in the rain. Barnaby waiting. The strip's Christmas Eve is a drawing of a house she isn't in.",
+      "characters": [
+        {
+          "id": "wood_20",
+          "pose": "drawing the house in the rain",
+          "expression": ""
+        },
+        {
+          "id": "barnaby",
+          "pose": "waiting",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "pad",
+        "rain",
+        "the house"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a young man standing on a rainy sidewalk at night drawing a lit house on a pad while a small dog waits at his feet, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "brush-pen, committed; black and white; xerox",
+    "palette": "",
+    "paper": "newsprint / the digest"
+  },
+  "notes": "The December fixture proper. She does not come home. The strip draws the house."
+}

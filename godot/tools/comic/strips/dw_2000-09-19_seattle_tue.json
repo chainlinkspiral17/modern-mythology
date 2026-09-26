@@ -1,0 +1,167 @@
+{
+  "id": "dw_2000-09-19_seattle_tue",
+  "title": "Seattle, Tuesday",
+  "strip": "drift_wood",
+  "date": "2000-09-19",
+  "run": 2,
+  "era": "era1",
+  "format": "daily4",
+  "tier": "A",
+  "selection": "full",
+  "venue": "the coast community-college paper, Newport · the laundromat digest",
+  "arc": "Seattle, Three Days",
+  "source": "lore/drift_wood/_THE_COMPLETE_RUN.md (1999–2000)",
+  "logline": "Seattle. A different rain. A gallery window. Wood is crying. It's the trying.",
+  "cast": [
+    "wood_20",
+    "chloe_17"
+  ],
+  "location": "dw_seattle_hill",
+  "margin": {
+    "signature": "A. Finch — Small Wood, OR",
+    "mark": "crab",
+    "note": "The crab."
+  },
+  "panels": [
+    {
+      "n": 1,
+      "shot": "wide",
+      "composition": "Seattle, drawn from a postcard and nerve: a steep hill of wet brick, buildings taller than any in the strip, rain that is somehow a different rain. WOOD and CHLOE under one umbrella.",
+      "characters": [
+        {
+          "id": "wood_20",
+          "pose": "under an umbrella",
+          "expression": ""
+        },
+        {
+          "id": "chloe_17",
+          "pose": "holding the umbrella",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "wet brick hill",
+        "tall buildings",
+        "umbrella",
+        "different rain"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a steep city hill of wet brick with tall buildings, two young people sharing one umbrella in a fine city rain, drawn from imagination, brush-pen black and white",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 2,
+      "shot": "medium",
+      "composition": "A gallery window. Something made of light inside. Wood stopped in front of it.",
+      "characters": [
+        {
+          "id": "wood_20",
+          "pose": "stopped at a gallery window",
+          "expression": ""
+        },
+        {
+          "id": "chloe_17",
+          "pose": "beside him",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "gallery window",
+        "a glowing artwork"
+      ],
+      "balloons": [
+        {
+          "who": "WOOD",
+          "text": "Everything here is trying so hard."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "a young man stopped in front of a gallery window glowing with an artwork made of light, a young woman beside him under an umbrella",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 3,
+      "shot": "close",
+      "composition": "Chloe, looking at him, not the window.",
+      "characters": [
+        {
+          "id": "chloe_17",
+          "pose": "looking at him",
+          "expression": ""
+        },
+        {
+          "id": "wood_20",
+          "pose": "face wet",
+          "expression": ""
+        }
+      ],
+      "props": [],
+      "balloons": [
+        {
+          "who": "CHLOE",
+          "text": "You're crying."
+        },
+        {
+          "who": "WOOD",
+          "text": "It's the trying."
+        }
+      ],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "close-up of a young woman looking at a young man whose face is wet under an umbrella in front of a lit window",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    },
+    {
+      "n": 4,
+      "shot": "wide",
+      "composition": "The two of them walking on up the hill, small, the umbrella, the city. The strip's most beautiful drawing of a place the author has never been.",
+      "characters": [
+        {
+          "id": "wood_20",
+          "pose": "walking up the hill, small",
+          "expression": ""
+        },
+        {
+          "id": "chloe_17",
+          "pose": "beside him, small",
+          "expression": ""
+        }
+      ],
+      "props": [
+        "the hill",
+        "the city",
+        "the umbrella"
+      ],
+      "balloons": [],
+      "caption": "",
+      "sfx": "",
+      "image": {
+        "prompt": "two small figures under one umbrella walking up a steep wet city hill between tall buildings at dusk, drawn with more care than the town ever got, black and white, no words",
+        "negative": "",
+        "notes": ""
+      },
+      "stage": null
+    }
+  ],
+  "art": {
+    "line": "brush-pen, committed; black and white; xerox",
+    "palette": "",
+    "paper": "newsprint / the digest"
+  },
+  "notes": ""
+}
